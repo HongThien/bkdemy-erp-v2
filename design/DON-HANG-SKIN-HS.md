@@ -1256,3 +1256,37 @@ YÊU CẦU RIÊNG:
 - Mọi khung 9-slice nộp kèm 1 file `.slice.json` {"left":..,"right":..,"top":..,"bottom":..}.
 ```
 **Tích hợp (khi kit về):** thêm khoá `anhBxh` vào định nghĩa style (`skin/styles/<id>.ts`) trỏ các file trên; `BangXepHangHS.tsx` dùng `border-image`/`<img>` nếu style có `anhBxh`, không có thì giữ bản vẽ code hiện tại (mỗi style tự quyết, không `if (skin === …)`). Thêm `xep_hang` vào `anhO` để ô lớn dùng `o_xep_hang.png`.
+
+## Đơn 16 (07/10) — NỀN MÀN TRONG: Bảng xếp hạng · Nhiệm vụ · Thành tựu (3 ảnh nền cùng một họ — "trời đêm chibi" tối giản)
+> **Thùy 07/10:** "Đặt đơn cho ChatGPT các hình nền phía trong — đơn giản thôi, đẹp nhưng đừng nhiều màu quá; dễ nhất là trời đêm hoặc vũ trụ có chút ánh sáng và các ngôi sao là đủ. Cho Bảng xếp hạng, màn Nhiệm vụ, màn Thành tựu. Nhớ chung 1 vibe: Chibi · adventure · fantasy."
+> **Vì sao đơn giản:** 3 màn này toàn CHỮ + DANH SÁCH (20 dòng xếp hạng, thẻ nhiệm vụ, thẻ thành tựu có thanh tiến độ). Nền chỉ để có không khí, TUYỆT ĐỐI không được tranh chữ. Quy ước app: màn TRONG dùng nền tối/đơn sắc (mục G4 06/10) — các ảnh này là bản "đơn sắc có hồn" thay cho nền phẳng, vẫn giữ nguyên tinh thần đó.
+> **Cách gửi:** 1 context ChatGPT MỚI. Dán `CHATGPT-UI-KIT.md` → dán khối đơn → đính kèm `public/bk-ui/hs/skin/rpg/bg_dao_troi_chibi_ngang.jpg` (CHỈ để lấy nét trời sao chibi, không chép bố cục) + ảnh chụp 3 màn mẫu
+> `hs.html?xem=gami&man=bxh` · `man=nhiem_vu` · `man=thanh_tuu` (để thấy chữ/thẻ sẽ nằm ở đâu). Kit về: `design/handoff/hs-nen-man-trong-v1.zip` → giải vào `public/bk-ui/hs/skin/rpg/nen/`.
+> **Style RPG (Anime) trước**; style Khối vuông làm sau (cùng 3 tên file, đổi nét sang hình khối vuông).
+```
+App:            hs
+Màn:            nền cho 3 màn TRONG: bang-xep-hang · nhiem-vu · thanh-tuu
+Mô tả chung:    BẦU TRỜI ĐÊM CHIBI tối giản — họ nền chung: xanh navy rất sâu → tím chàm ở chân trời (dải chuyển mịn, KHÔNG viền gắt), vài đám mây chibi mảnh tròn trịa
+                (rất tối, chỉ hơi sáng ở mép), thưa thớt SAO nhỏ li ti + 5–8 ngôi sao lớn có tia chữ thập lấp lánh, một chút ánh sáng ấm vàng dịu ở MỘT điểm nhấn (xem từng ảnh).
+                Cảm giác: yên tĩnh, ấm, phiêu lưu — như bầu trời trên lâu đài của app. KHÔNG nhân vật, KHÔNG công trình lớn, KHÔNG chữ, KHÔNG biểu tượng game.
+MÀU (giới hạn):  chỉ 3 họ màu — (1) navy/chàm đậm làm nền, (2) vàng ấm cho sao + điểm sáng, (3) một chút xanh ngọc rất nhạt ở mép mây. Không hồng, không cam, không đỏ. Không tinh vân sặc sỡ.
+VÙNG AN TOÀN:   ≈80% giữa khung PHẲNG và TỐI (độ sáng ≤ 22%, không hoạ tiết nhỏ, không sao lớn) để chữ + thẻ nằm lên đọc rõ. Mọi điểm nhấn (sao lớn, ánh sáng, mây) đặt ở
+                RÌA: ≈12% trên cùng, ≈15% dưới cùng, hai góc. Không có gì sáng hơn vàng nhạt ở giữa khung.
+KÍCH THƯỚC:     mỗi màn 2 bản: NGANG 1672×941 (iPad/PC) và DỌC 941×1672 (điện thoại). JPG chất lượng 92 (nền đặc, không trong suốt). Dung lượng mỗi file ≤ 450KB.
+Phong cách:     chibi game tươi nhưng ĐÊM và YÊN: mây tròn mập nét mềm, sao 4 cánh bo tròn, ánh sáng toả mềm kiểu glow — KHÔNG 3D render, KHÔNG nhiễu hạt, KHÔNG chữ.
+Phiên bản kit:  v1
+
+TỪNG ẢNH (cùng họ nền, chỉ khác ĐIỂM NHẤN ở rìa):
+1) nen_bxh_ngang.jpg · nen_bxh_doc.jpg — BẢNG XẾP HẠNG ("bảng vinh danh"): điểm nhấn = vầng sáng vàng ấm dịu ở GÓC TRÊN PHẢI như vầng trăng/đèn trời, vài sao lớn dọc mép trên; chân trời dưới có dải mây tối ôm lên.
+   Gợi ý rất nhẹ ở góc dưới trái: bóng mờ của vài ngọn cờ/đèn lồng nhỏ xa (chỉ là hình bóng tối, không chi tiết).
+2) nen_nhiem_vu_ngang.jpg · nen_nhiem_vu_doc.jpg — NHIỆM VỤ ("bảng giao việc của hội mạo hiểm giả"): điểm nhấn = ánh đèn lồng/lửa trại ấm ở GÓC DƯỚI TRÁI toả lên mép dưới, mây tối thấp quanh đó;
+   mép trên chỉ có sao thưa. Cảm giác "cuối ngày nhận việc cho mai".
+3) nen_thanh_tuu_ngang.jpg · nen_thanh_tuu_doc.jpg — THÀNH TỰU ("kho chiến tích"): điểm nhấn = mưa sao băng mảnh vàng nhạt rơi chéo ở RÌA TRÊN, vài đốm sáng lơ lửng như đom đóm ở hai mép;
+   mây tối thấp ở đáy. Cảm giác "lấp lánh vừa phải, đáng nhận".
+
+YÊU CẦU RIÊNG:
+- reference/reference_3_nen.png: 1 tấm ghép 3 nền NGANG cạnh nhau để duyệt "chung một họ" TRƯỚC khi xuất file chính thức (chỉnh màu/độ sáng cho đồng bộ).
+- Kiểm tra: đặt chữ trắng cỡ 14px + thẻ bán trong suốt lên giữa khung ⇒ vẫn đọc rõ (tương phản ≥ 7:1 ở vùng giữa).
+- DESIGN.md: mã #hex 3 màu chủ đạo; vị trí điểm nhấn (≈% ngang/dọc) từng ảnh; độ sáng trung bình vùng giữa.
+```
+**Tích hợp (khi kit về):** thêm khoá `nenMan` vào định nghĩa style (`skin/styles/<id>.ts`): `{ bxh, nhiem_vu, thanh_tuu }` (mỗi khoá có bản ngang + dọc); `ManHS` nhận prop `nenAnh` (khoá màn) và phủ ảnh lên `--sk-nen-trong` (không có ảnh ⇒ giữ nền đơn sắc hiện tại). Không dùng `if (skin === …)` (xem `design/STYLE-HS.md`).
