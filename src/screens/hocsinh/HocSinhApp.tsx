@@ -60,6 +60,8 @@ import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import MoiQuayMayMan from './MoiQuayMayMan'
+import { thanhTuuChot, type TtMoi } from '../../lib/thanhtuu_moi'
+import { MungThanhTuu } from './thanhtuu/ThanhTuuMoiView'
 import BangXepHangHS from './bxh/BangXepHangHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
@@ -411,6 +413,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [htdDang, setHtdDang] = useState<{ ma_dang: string; ten_dang: string; xong: boolean } | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   const [cap2, setCap2] = useState<boolean | null>(null) // Thùy 11/09: cấp 2 (lớp 6-9) có layout KHU riêng
+  const [ttMoi, setTtMoi] = useState<TtMoi[]>([]) // bậc thành tựu vừa ghi sổ (chúc mừng ở màn chính)
   const [maymanCoLuot, setMaymanCoLuot] = useState<boolean>(false) // badge ô "May mắn" (đủ điều kiện + chưa quay hôm nay)
   const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
   const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
@@ -477,6 +480,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
   const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
   useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
+  // Thành tựu mới (06/10): mỗi lần về màn chính chốt các bậc mới (server idempotent — bậc đã ghi KHÔNG trả lại) rồi chúc mừng
+  useEffect(() => {
+    if (direct || khu) return
+    thanhTuuChot().then((m) => { if (m.length) setTtMoi((x) => [...x, ...m]) }).catch(() => undefined)
+  }, [direct, khu])
   // RANK + NHIỆM VỤ của MÔN đang chọn trên màn chính (Thùy 01/10: ô Nhiệm vụ · ô Rank · huy hiệu bậc cạnh tên).
   // undefined = đang tải (ô hiện "…") · null = môn chưa mở rank/nhiệm vụ ⇒ ẩn ô + huy hiệu (dữ liệu quyết định, không if theo môn).
   // Tải lại mỗi lần về màn chính (vừa làm Thử thách/nhiệm vụ về là thấy số mới); lỗi mạng giữ số cũ, không xoá ô.
@@ -721,7 +729,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay)
-  const moiQuay = <MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
+  const moiQuay = <><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} /><MungThanhTuu moi={ttMoi} onDong={() => setTtMoi([])} /></>
   if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>

@@ -20,6 +20,8 @@ import * as TG from '../thegioi/mauTheGioi'
 import HomeHS912 from '../HomeHS912'
 import { BangXepHangView } from '../bxh/BangXepHangHS'
 import type { BxhKetQua, BxhLoai } from '../../../lib/bxh'
+import type { TtCuaToi } from '../../../lib/thanhtuu_moi'
+import { MungThanhTuu, ThanhTuuMoiView } from '../thanhtuu/ThanhTuuMoiView'
 import type { HomeCard } from '../HomeHS'
 import type { LichBoTro } from '../../../lib/botro_yeu_ca'
 
@@ -27,6 +29,7 @@ const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'nhiem_vu', ten: 'Nhiệm vụ', tt: ['Giữa tháng', 'Đầu tháng', 'Chưa mở'] },
   { id: 'bxh', ten: 'Bảng xếp hạng', tt: ['Em hạng 6 (khối)', 'Chưa có hạng', 'Bảng sắp có'] },
+  { id: 'thanh_tuu', ten: 'Thành tựu mùa', tt: ['Giữa mùa', 'Mới vào', 'Lớp phủ chúc mừng'] },
   { id: 'album', ten: 'Album', tt: ['Giữa năm (1 thẻ mở)', 'Mới vào (0 sao)', 'Lớp phủ sao mới'] },
   { id: 'rank', ten: 'Rank', tt: ['Captain giữa mùa', 'Novice đầu mùa', 'God of War', 'Lớp phủ lên bậc'] },
   { id: 'ho_so', ten: 'Hồ sơ', tt: ['Em khá (Captain)', 'Em mới (Novice)', 'Em bậc thần', 'Chọn 3 huy hiệu khoe'] },
@@ -97,6 +100,20 @@ function MauHome({ tt }: { tt: number }) {
   )
 }
 
+// Thành tựu mùa — dữ liệu giả cùng hình dạng fn_thanh_tuu_cua_toi (mig 202610071018)
+const bac = (a: [number, number][], dat: number, dv = 'ngày') => a.map(([nguong, exp], i) => ({ bac: i + 1, nguong, exp, xu: 0, dat: i < dat, dat_at: i < dat ? '2026-10-05T10:00:00+07:00' : null, dv }))
+const LOAI_MAU = (moi: boolean): TtCuaToi['loai'] => [
+  { ma: 'TT05', ten: 'Chuỗi làm bài', mo_ta: 'Số ngày liên tiếp có lượt luyện được tính', kieu: 'lien_tiep', don_vi: 'ngày', an: false, san_sang: true, tien_do: moi ? 2 : 16, bac: bac([[7, 100], [14, 200], [30, 300], [60, 400], [90, 500], [150, 600], [210, 700], [300, 800]], moi ? 0 : 2) },
+  { ma: 'TT06', ten: 'Nhiệm vụ ngày liên tiếp', mo_ta: 'Số ngày liên tiếp hoàn thành nhiệm vụ ngày', kieu: 'lien_tiep', don_vi: 'ngày', an: false, san_sang: true, tien_do: null, bac: bac([[7, 100], [14, 200], [30, 500], [60, 600], [90, 800]], moi ? 0 : 1) },
+  { ma: 'TT07', ten: 'Luyện yếu đạt liên tiếp', mo_ta: 'Số lượt Luyện dạng yếu đạt liên tiếp (đúng từ 7/10 câu)', kieu: 'lien_tiep', don_vi: 'lượt', an: false, san_sang: true, tien_do: null, bac: bac([[3, 200], [5, 300], [10, 1000]], moi ? 0 : 2) },
+  { ma: 'TT08', ten: 'Tổng câu luyện đạt', mo_ta: 'Tổng số câu đúng trong các lượt luyện được tính (cả mùa)', kieu: 'tich_luy', don_vi: 'câu', an: false, san_sang: true, tien_do: moi ? 38 : 1340, bac: bac([[1000, 100], [2000, 200], [5000, 300], [10000, 400]], moi ? 0 : 1) },
+  { ma: 'TT10', ten: 'Top 1 khối', mo_ta: 'Đứng nhất khối ở Mock Test tháng', kieu: 'mot_lan', don_vi: 'hạng', an: false, san_sang: true, tien_do: null, bac: bac([[1, 700]], 0) },
+  { ma: 'TT15', ten: moi ? 'Thành tựu ẩn' : 'Master Phân số', mo_ta: moi ? 'Hãy khám phá để mở khoá' : 'Master một chủ đề kiến thức', kieu: 'mot_lan', don_vi: 'chủ đề', an: true, san_sang: false, tien_do: null, bac: [] },
+  { ma: 'TT04', ten: 'Vào app liên tiếp', mo_ta: 'Số ngày liên tiếp mở app', kieu: 'lien_tiep', don_vi: 'ngày', an: false, san_sang: false, tien_do: null, bac: bac([[7, 30], [14, 50]], 0) },
+]
+const TT_GIUA_MUA: TtCuaToi = { mua: '2026-27', tien_do: {}, tong_exp_mua: 600, loai: LOAI_MAU(false) }
+const TT_MOI_VAO: TtCuaToi = { mua: '2026-27', tien_do: {}, tong_exp_mua: 0, loai: LOAI_MAU(true) }
+
 // Bảng xếp hạng — dữ liệu giả cùng hình dạng fn_bxh (mig 202610070954)
 const BXH_DM: BxhLoai[] = [
   { ma: 'A1', nhom: 'hoc_tap', ten: 'Siêng luyện', mo_ta: 'Số lượt Luyện dạng yếu đạt (đúng từ 7/10 câu)', don_vi: 'lượt', gan_mon: true, ky_cho_phep: ['tuan', 'thang'], ky_mac_dinh: 'thang', san_sang: true, ghi_chu: null },
@@ -133,6 +150,11 @@ function Man({ man, tt }: { man: string; tt: number }) {
     return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game)." /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
   }
   if (man === 'bxh') return <MauBxh tt={tt} />
+  if (man === 'thanh_tuu') {
+    const d = tt === 2 ? TT_MOI_VAO : TT_GIUA_MUA
+    return <Khung><Dau tieuDe="Thành tựu của em" phu="Thành tựu mùa · giải thưởng cuối tháng · huy hiệu" /><ThanhTuuMoiView d={d} />
+      {tt === 3 && <MungThanhTuu moi={[{ ma: 'TT05', bac: 2, mon: 'Toán', exp: 200, xu: 0, ten: 'Chuỗi làm bài' }, { ma: 'TT07', bac: 1, mon: 'Toán', exp: 200, xu: 0, ten: 'Luyện yếu đạt liên tiếp' }]} onDong={noop} />}</Khung>
+  }
   if (man === 'album') {
     const al = tt === 2 ? M.ALBUM_MOI : M.ALBUM_GIUA_NAM
     return <Khung><Dau tieuDe="Huy hiệu Toán" phu={tieuDeAlbum(al)} />

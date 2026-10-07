@@ -7,12 +7,21 @@
 import { useEffect, useState } from 'react'
 import { thanhTuuCuaToi, LOAI_GIAI_TEN, THANH_TUU_ICON, THANH_TUU_MAU, type ThanhTuuHS as TT } from '../../lib/thanhtuu_hs'
 import { ManHS, DauTrangHS, NhomHS, TrongHS, MAU, THE, HEAD } from './skin/KhungHS'
+import { thanhTuuChot, thanhTuuMoiCuaToi, type TtCuaToi, type TtMoi } from '../../lib/thanhtuu_moi'
+import { MungThanhTuu, ThanhTuuMoiView } from './thanhtuu/ThanhTuuMoiView'
 
 function labelThang(ym: string): string { const [y, m] = ym.split('-'); return `Tháng ${parseInt(m, 10)}/${y}` }
 
 export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onAlbum?: () => void }) {
   const [items, setItems] = useState<TT[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
+  // Thành tựu 15 loại (06/10): chốt các bậc mới rồi đọc lại — chốt idempotent nên mở màn nhiều lần không thưởng lại
+  const [tt, setTt] = useState<TtCuaToi | null>(null)
+  const [moi, setMoi] = useState<TtMoi[]>([])
+  useEffect(() => {
+    thanhTuuChot().catch(() => [] as TtMoi[]).then((m) => { setMoi(m); return thanhTuuMoiCuaToi() })
+      .then(setTt).catch((e) => setErr(e?.message ?? String(e)))
+  }, [])
   useEffect(() => {
     thanhTuuCuaToi().then(setItems).catch((e) => { setErr(e?.message ?? String(e)); setItems([]) })
   }, [])
@@ -24,9 +33,12 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
 
   return (
     <ManHS>
-      <DauTrangHS tieuDe="Thành tựu của em" phu="Giải thưởng cuối tháng · huy hiệu sắp có" onBack={onXong} />
+      <DauTrangHS tieuDe="Thành tựu của em" phu="Thành tựu mùa · giải thưởng cuối tháng · huy hiệu" onBack={onXong} />
+      <MungThanhTuu moi={moi} onDong={() => setMoi([])} />
+      {tt ? <ThanhTuuMoiView d={tt} /> : !err && <TrongHS>Đang tải…</TrongHS>}
+      <NhomHS>Giải thưởng cuối tháng</NhomHS>
 
-      {items === null && <TrongHS>Đang tải…</TrongHS>}
+      {items === null && !tt && <TrongHS>Đang tải…</TrongHS>}
       {err && <p className="rounded-2xl px-3 py-2 text-center text-[12px] font-semibold" style={{ ...THE, color: MAU.sai }}>⚠ {err}</p>}
 
       {items && !coData && (
@@ -34,7 +46,7 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
           <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-[20px]" style={{ background: MAU.surface2 }}>
             <span className="text-[36px]">🏅</span>
           </div>
-          <p className="text-[16px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chưa có thành tựu nào</p>
+          <p className="text-[16px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chưa có giải thưởng nào</p>
           <p className="mx-auto mt-1.5 max-w-[280px] text-[12.5px] leading-relaxed" style={{ color: MAU.muted }}>
             Cố lên nhé! Cuối tháng thầy cô sẽ trao giải cho các bạn <b style={{ color: MAU.acc }}>xuất sắc / tiến bộ / chăm chỉ</b>.
           </p>
