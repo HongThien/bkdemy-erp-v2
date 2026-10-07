@@ -38,6 +38,17 @@ export function angleMark(v, p, q, r = 30, n = 1) {
   return s
 }
 
+/** Ô vuông đánh dấu góc vuông tại v, giữa tia v→p và v→q */
+export function rightAngle(v, p, q, s = 14) {
+  const u1 = unit(sub(p, v)), u2 = unit(sub(q, v))
+  const a = { x: v.x + u1.x * s, y: v.y + u1.y * s }, b = { x: v.x + u2.x * s, y: v.y + u2.y * s }
+  const c = { x: a.x + u2.x * s, y: a.y + u2.y * s }
+  return `<path d="M ${f(a.x)} ${f(a.y)} L ${f(c.x)} ${f(c.y)} L ${f(b.x)} ${f(b.y)}" fill="none"/>`
+}
+
+/** Điểm cách O một đoạn L theo góc ang (độ, ngược chiều kim đồng hồ từ trục +x; y hướng xuống) */
+export const ray = (O, ang, L) => P(O.x + L * Math.cos(ang * Math.PI / 180), O.y - L * Math.sin(ang * Math.PI / 180))
+
 export const dot = (p) => `<circle cx="${f(p.x)}" cy="${f(p.y)}" r="4.5" fill="#222" stroke="none"/>`
 export const label = (p, t, dx, dy) =>
   `<text x="${f(p.x + dx)}" y="${f(p.y + dy)}" text-anchor="middle" fill="#111" stroke="none" font-family="'Times New Roman',Times,serif" font-style="italic" font-size="26">${t}</text>`
