@@ -1206,3 +1206,53 @@ Phiên bản kit:  v1
 ## Đơn 14 (06/10) — icon ô "Trò chơi" (khối Giải trí)
 Ô mới `tro_choi` (danh sách game; hiện 1 game Nông trại BK + Săn lùng Quái Vật sắp ra mắt). Đang MƯỢN icon: RPG = rương `o_ruong.png`, Khối vuông = `o_may_man.png`; Tối giản đã có SVG riêng `o_tro_choi.svg` (tay cầm game).
 Cần vẽ riêng cho RPG + Khối vuông: 1 icon ô vuông PNG trong suốt 160–192px (tay cầm game / bàn cờ — cùng nét với các icon ô hiện có của style), tên file `o_tro_choi.png` ⇒ khai ở `anhO.tro_choi`.
+
+## Đơn 15 (07/10) — BẢNG XẾP HẠNG: bộ đồ hoạ "chibi adventure fantasy" cho màn Bảng xếp hạng + ô lớn ngoài màn chính
+> **Thùy 07/10:** "Bảng xếp hạng chưa có UI chuẩn… header gọn, đa số không gian cho danh sách… 3 bộ lọc dạng dropdown (Bảng · Khối/Toàn BK · Tuần/Tháng)… vibe hợp nền chibi adventure fantasy; nếu không làm được thì làm đơn cho ChatGPT."
+> **Đã làm bằng code (chạy được ngay, đang dùng huy chương emoji + khiên vẽ CSS + màu theo style):** `screens/hocsinh/bxh/BangXepHangHS.tsx` — xem `hs.html?xem=gami&man=bxh`. Bố cục KHÔNG đổi khi có ảnh; đơn này chỉ thay các mảnh vẽ tay.
+> **Cách gửi:** 1 context ChatGPT MỚI (app máy tính). Dán `CHATGPT-UI-KIT.md` → dán khối đơn → đính kèm `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (nền app, giữ không khí) + `public/bk-ui/hs/skin/rpg/o_cup.png` · `o_rank.png`
+> (đúng nét icon ô hiện có) + ảnh chụp `hs.html?xem=gami&man=bxh&tt=1` (chỉ lấy BỐ CỤC: 3 ô lọc phía trên, dải hạng của em, 2 cột 1–10 | 11–20).
+> Kit về: `design/handoff/hs-bang-xep-hang-v1.zip` → giải vào `public/bk-ui/hs/skin/rpg/bxh/`. **Style RPG (Anime) trước**; style Khối vuông làm sau khi RPG duyệt (cùng danh sách file, đổi nét).
+```
+App:            hs
+Màn:            bang-xep-hang (chọn bảng bằng dropdown, xem top 20 theo Khối / Toàn BK, theo Tuần / Tháng)
+Mô tả màn:      App học "Giải cứu thế giới — đánh quái vật", nền lâu đài/đảo trời chibi phép thuật ban đêm. Màn Bảng xếp hạng là "BẢNG VINH DANH" của các chiến binh nhỏ:
+                THANH TRÊN CÙNG rất gọn (nút quay lại + tên màn + 3 ô chọn nằm ngang). Bên dưới là DẢI HẠNG CỦA EM (mỏng, nổi bật, chỉ mình em thấy)
+                rồi DANH SÁCH 20 DÒNG chia 2 cột (1–10 bên trái, 11–20 bên phải) chiếm gần hết màn — đây là phần chính.
+                Mỗi dòng: huy hiệu hạng (top 3 = huy chương chibi vàng/bạc/đồng; 4–20 = khiên nhỏ có số do code ghi) · tên · lớp · điểm.
+                Cảm giác: tấm bảng nhiệm vụ của hội mạo hiểm giả — giấy da / gỗ sẫm / viền đồng-vàng, đèn lồng, phù văn, KHÔNG rườm rà (20 dòng phải đọc được ở cỡ nhỏ).
+Phần tử ĐỘNG:   TÊN người, tên lớp, điểm, số hạng trên khiên, nhãn 3 ô lọc, giá trị đang chọn, chữ trong dải hạng của em — tất cả do code (KHÔNG vẽ chữ/số vào ảnh).
+Trạng thái:     khung dòng 2 trạng thái (thường · "em" sáng viền vàng); khung ô lọc 2 trạng thái (đóng · mở); các bảng sau có icon riêng.
+Phong cách:     chibi game tươi, khối tròn mập, đúng nét icon ô `o_cup.png`/`o_rank.png` đính kèm; viền vàng đồng ấm, tông tím xanh đêm; KHÔNG 3D render, KHÔNG chữ.
+Giữ nguyên:     nền trong suốt cho mọi asset; màu chủ đạo vàng ấm (code đổi được độ sáng, KHÔNG đổi hue); mọi khung phải CO GIÃN được (9-slice) vì chiều rộng thay đổi theo iPad/điện thoại.
+Phiên bản kit:  v1
+
+DANH SÁCH ASSET (PNG nền trong suốt; tên file đúng như dưới):
+A. Huy hiệu hạng
+  huy_chuong_1.png · huy_chuong_2.png · huy_chuong_3.png — 160×160. Huy chương chibi hình khiên/vương miện: 1 = vàng + vương miện nhỏ; 2 = bạc; 3 = đồng. Cùng bố cục, chỉ khác kim loại + biểu tượng đỉnh. Dây ruy băng ngắn phía trên.
+  khien_hang.png — 120×140. Khiên TRỐNG trung tính (xanh tím sẫm viền đồng) cho hạng 4–20; phần giữa để trống phẳng để code đè số (chừa vùng tối ≥55% diện tích).
+B. Khung & nền
+  khung_hang.png — 640×96, 9-slice (lề 28px 4 phía): dải ruy-băng giấy da/gỗ cho MỖI DÒNG, ruột gần trong suốt-tối để chữ sáng đọc rõ, viền đồng mảnh.
+  khung_hang_em.png — như trên nhưng SÁNG: viền vàng đậm + quầng sáng mảnh + 2 ngôi sao nhỏ ở hai đầu (dòng của chính em).
+  khung_dai_hang_em.png — 960×104, 9-slice (lề 32px): dải "hạng của em" nổi bật hơn dòng thường (cuộn giấy phép thuật sáng, có chỗ tròn bên trái cho số hạng).
+  khung_o_chon.png — 320×100, 9-slice (lề 24px): ô chọn (dropdown) ĐÓNG — bảng gỗ nhỏ viền đồng, bên phải có chỗ trống cho mũi tên.
+  khung_o_chon_mo.png — cùng kích thước, trạng thái MỞ (viền vàng sáng hơn).
+  khung_menu_chon.png — 480×480, 9-slice (lề 40px): khung danh sách thả xuống (giấy da tối viền đồng, 4 góc có mảnh kim loại nhỏ), ruột phẳng để đặt chữ.
+  mui_ten.png — 48×32: mũi tên tam giác nhỏ quay xuống dạng tinh thể vàng (code xoay 180° khi mở).
+C. Biểu tượng
+  o_xep_hang.png — 192×192: icon ô LỚN ngoài màn chính (chiếc cúp + vương miện + cuộn bảng danh dự; to hơn, nổi hơn o_cup.png; đây là "ô lớn trong lưới" nên chi tiết hơn các icon ô thường).
+  huy_hieu_bxh.png — 96×96: phiên bản nhỏ gọn của icon trên, đặt cạnh tên màn ở header.
+  bang_a1.png … bang_a5.png, bang_b1.png, bang_c1.png, bang_e1.png — 96×96 mỗi bảng 1 biểu tượng, cùng nét, dễ phân biệt khi nhỏ (hiện trong danh sách thả xuống):
+     A1 Siêng luyện = thanh kiếm đang mài / búa+đe nhỏ · A2 Tổng câu đúng = chồng cuộn giấy có dấu ✓ · A3 Tỉ lệ đạt = khiên có vòng % (KHÔNG chữ số)
+     A4 Master chủ đề = quyển sách phép phát sáng · A5 Chuỗi làm bài = ngọn lửa liên tiếp (3 ngọn nối nhau) · B1 Mock Test tháng = cuộn đề thi + bút lông
+     C1 Leo tháp Sinh tồn = ngọn tháp có mũi tên lên · E1 Bộ sưu tập huy hiệu = chiếc hộp trưng bày huy hiệu nhỏ.
+D. Trạng thái rỗng
+  trong.png — 360×300: chibi chiến binh (nhân vật chính: áo choàng xanh, đúng bộ nhân vật chính hiện có `nv_nam_chibi.png`/`nv_nu_chibi.png`) ngồi cạnh bảng gỗ trống, tay chống cằm chờ — dùng khi "Em chưa có hạng".
+  (không vẽ chữ; câu chữ do code)
+
+YÊU CẦU RIÊNG:
+- reference/reference_bxh.png: TOÀN CẢNH màn ngang iPad 1672×941 đủ thanh trên + 3 ô chọn + dải hạng của em + 20 dòng mẫu 2 cột (chữ giữ chỗ bằng vạch xám, KHÔNG chữ thật). Duyệt TRƯỚC khi sinh asset.
+- DESIGN.md: cỡ chữ gợi ý, vùng chạm tối thiểu ≥44px cao cho dòng, vùng an toàn chữ trong mỗi khung 9-slice (số px lề trong), màu viền chủ đạo (mã #hex) để code khớp.
+- Mọi khung 9-slice nộp kèm 1 file `.slice.json` {"left":..,"right":..,"top":..,"bottom":..}.
+```
+**Tích hợp (khi kit về):** thêm khoá `anhBxh` vào định nghĩa style (`skin/styles/<id>.ts`) trỏ các file trên; `BangXepHangHS.tsx` dùng `border-image`/`<img>` nếu style có `anhBxh`, không có thì giữ bản vẽ code hiện tại (mỗi style tự quyết, không `if (skin === …)`). Thêm `xep_hang` vào `anhO` để ô lớn dùng `o_xep_hang.png`.

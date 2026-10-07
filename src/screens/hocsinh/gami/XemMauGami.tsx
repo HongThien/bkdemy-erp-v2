@@ -123,8 +123,8 @@ const BXH_DM: BxhLoai[] = [
   { ma: 'C1', nhom: 'game', ten: 'Leo tháp Sinh tồn', mo_ta: 'Tầng cao nhất trong 5 phút', don_vi: 'tầng', gan_mon: true, ky_cho_phep: ['hien_tai'], ky_mac_dinh: 'hien_tai', san_sang: false, ghi_chu: 'Sắp có' },
 ]
 const TEN_MAU = ['Nguyễn Khôi Nguyên', 'Trịnh Bảo Ngọc', 'Lê Minh Anh', 'Phạm Gia Hân', 'Đỗ Quang Huy', 'Vũ Thảo Vy', 'Bùi Đức Anh', 'Hoàng Mai Chi']
-const BXH_TOP = (toiHang: number | null) => Array.from({ length: 12 }, (_, i) => ({
-  hang: i + 1, ten: TEN_MAU[i % TEN_MAU.length], ma_hs: `HS0${500 + i * 7}`, lop: i % 2 ? '9B2' : '9A2', gia_tri: 24 - i * 2, la_toi: toiHang === i + 1,
+const BXH_TOP = (toiHang: number | null) => Array.from({ length: 20 }, (_, i) => ({
+  hang: i + 1, ten: TEN_MAU[i % TEN_MAU.length], ma_hs: `HS0${500 + i * 7}`, lop: i % 2 ? '9B2' : '9A2', gia_tri: 40 - i * 2, la_toi: toiHang === i + 1,
 }))
 function MauBxh({ tt }: { tt: number }) {
   const [loai, setLoai] = useState(tt === 3 ? 'C1' : 'A1')
