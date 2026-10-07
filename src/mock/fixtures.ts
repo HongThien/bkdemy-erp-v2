@@ -109,6 +109,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'huyhieu',     nhom: 'Gamification', ten: 'Huy hiệu',                 founderOnly: false }, // ADMIN: chốt tháng · ma trận · (xem trao) — DB chặn chốt bằng co_quyen_ghi('huyhieu') · spec-huy-hieu-build.md
   { id: 'huyhieu_trao', nhom: 'Gamification', ten: 'Trao huy hiệu',           founderOnly: false }, // GV: CHỈ trao bản cứng lớp mình (Thùy 28/09: chốt không cần GV)
   { id: 'chuoi_nghi',  nhom: 'Gamification', ten: 'Ngày nghỉ của chuỗi',    founderOnly: false }, // lễ/Tết/tuần thi không làm đứt chuỗi làm bài HS — DB chặn ghi bằng co_quyen_ghi('chuoi_nghi')
+  { id: 'tinh_nang',   nhom: 'Gamification', ten: 'Mở tính năng app HS',      founderOnly: true }, // công tắc mở dần từng tính năng cho HS (Thùy 07/10) — DB chặn ghi bằng co_quyen_ghi('tinh_nang')
   { id: 'traogiai',    nhom: 'Gamification', ten: 'Trao giải',                founderOnly: false }, // thưởng tháng theo lớp (Xuất sắc/Tiến bộ/Chăm chỉ) — xem lib/traogiai.ts
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
