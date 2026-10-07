@@ -2,7 +2,7 @@
 // Bufopia; hình theo skin RPG + bộ chiến đấu 2D Đấu trường. Content cắm qua nguon/ (registry môn).
 import { useEffect, useMemo, useState } from 'react'
 import { DS_MON, NGUON, khoCap, khoMon, nguonCua, useCap, useMon } from './nguon'
-import { KHOI_NHUNG, MON_NHUNG, VAO_NHUNG, baoThoat } from './lib/nhung'
+import { KHOI_NHUNG, MON_NHUNG, NHUNG, VAO_NHUNG, baoThoat } from './lib/nhung'
 import { useHoSo, tuYeu, tuDenHan } from './lib/hoSo'
 import { taiHoSo, bangXepHang, type DongBxh } from './lib/api'
 import { khoCaiDat, useCaiDat, phat } from './lib/amThanh'
@@ -57,7 +57,8 @@ export default function App() {
   const [linkCho, setLinkCho] = useState<Man | null>(() => docLinkMoi())
   const db = h.db
 
-  useEffect(() => { void taiHoSo() }, [])
+  const [sanSang, setSanSang] = useState(!NHUNG)
+  useEffect(() => { void taiHoSo().finally(() => setSanSang(true)) }, [])
   useEffect(() => {
     if (!db) return
     vaoSanh({ ma: db.ma, ten: db.ten, nv: db.nv, cap: db.cap })
@@ -97,7 +98,8 @@ export default function App() {
   }
 
   let noiDung: React.ReactNode
-  if (!toi) noiDung = <Home onDi={() => {}} />
+  if (!sanSang) noiDung = <div className="man man-giua"><div className="tim-tran giay"><h2>Đang vào game…</h2></div></div>
+  else if (!toi) noiDung = <Home onDi={() => {}} />
   else switch (man.ten) {
     case 'home': noiDung = <Home onDi={(d) => setMan(d === 'dau' ? { ten: 'chu_de' } : d === 'giai' ? { ten: 'giai', tran: { mon: nguon.mon, cap, chuDe: 'tron', tenChuDe: 'Trộn tất cả', soCau: 10 } } : d === 'noi_tu' ? { ten: 'noi_tu' } : d === 'thap' ? { ten: 'thap' } : { ten: 'goc' })} />; break
     case 'chu_de': noiDung = <ChonChuDe nguon={nguon} cap={cap} setCap={setCap} onChon={(chuDe, tenChuDe) => setMan({ ten: 'che_do', chuDe, tenChuDe })} onLui={veNha} />; break

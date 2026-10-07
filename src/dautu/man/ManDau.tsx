@@ -8,6 +8,7 @@ import { ChuMon } from '../../screens/kho/ui'
 import { doc, phat, useCaiDat } from '../lib/amThanh'
 import { capNhatNho, khoHoSo } from '../lib/hoSo'
 import { ghiTran, type CheDo, type KetQuaGhi } from '../lib/api'
+import { dongTuCau, ghiNhatKy } from '../lib/nhatKy'
 import { Avatar, Nut } from '../ui/Chung'
 import { SanDau2D, type SuKienSan } from '../ui/SanDau2D'
 import { HINH_GAME } from '../hinhGame'
@@ -85,7 +86,14 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
         const cheDo: CheDo = phien.loai === 'doi' ? 'doi' : phien.loai
         const ketQua = laDoi ? 'xong' : kq.thang === -1 ? 'hoa' : kq.thang === toi ? 'thang' : 'thua'
         ghiTran({ mon: phien.mon, cheDo, chuDe: phien.chuDe, ketQua, soDung: s.dung[toi], soCau: s.ds.length, diem: s.diem[toi], doiThu: s.nguoi[ban]?.ten })
-          .then((r) => { setKetQuaGhi(r); if (r?.len_cap) setTimeout(() => phat('len_cap'), 900) })
+          .then((r) => {
+            setKetQuaGhi(r); if (r?.len_cap) setTimeout(() => phat('len_cap'), 900)
+            // NHẬT KÝ TỪNG CÂU của ghế mình (không ghi khi 2 người 1 máy — cùng 1 tài khoản)
+            if (r?.tran_id && !laDoi) {
+              const cau = (s.nk ?? []).filter((x) => x.ghe === toi && s.ds[x.i]).map((x) => dongTuCau(x.i + 1, s.ds[x.i], x.chon, x.dung, x.ms))
+              void ghiNhatKy({ mon: phien.mon, cheDo, chuDe: phien.chuDe, tranId: r.tran_id, cau })
+            }
+          })
       }
     }
   }, [s?.seq, s?.mid])

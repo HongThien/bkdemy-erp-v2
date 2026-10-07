@@ -5,6 +5,7 @@ import type { MucBot, NguoiTran } from '../lib/trongTai'
 import { BOT } from '../lib/bot'
 import { doc, phat } from '../lib/amThanh'
 import { ghiTran } from '../lib/api'
+import { ghiNhatKy, type DongNhatKy } from '../lib/nhatKy'
 import { maSo } from '../lib/tienich'
 import { datTrangThai } from '../lib/mang'
 import { Avatar, DauMan, Nut, chepVao } from '../ui/Chung'
@@ -39,6 +40,10 @@ export function ManNoiTu({ toi, vaoPhong, onLui }: { toi: NguoiTran; vaoPhong?: 
     </div>
   )
 }
+
+/** Nhật ký: mỗi từ em nối được = 1 dòng (đúng); game không đo thời gian từng lượt nên ms = 0. */
+const tuCuaToi = (tu: { w: string; ai: number; vi?: string }[], ai: number): DongNhatKy[] =>
+  tu.filter((t) => t.ai === ai).map((t, k) => ({ thu_tu: k + 1, de: 'Nối từ', dap_an: t.vi ?? '', tra_loi: t.w, dung: true, ms: 0 }))
 
 function VanNoiTu({ toi, cd, onLui }: { toi: NguoiTran; cd: CheDoNT; onLui: () => void }) {
   const [s, setS] = useState<SnapNT | null>(null)
@@ -87,6 +92,7 @@ function VanNoiTu({ toi, cd, onLui }: { toi: NguoiTran; cd: CheDoNT; onLui: () =
     const thang = s.thang === ai
     phat(thang ? 'thang' : 'thua')
     ghiTran({ mon: 'Tiếng Anh', cheDo: 'noi_tu', chuDe: 'noi_tu', ketQua: thang ? 'thang' : 'thua', soDung: s.tu.filter((t) => t.ai === ai).length, soCau: s.tu.filter((t) => t.ai === ai).length, diem: s.nguoi[ai]?.diem ?? 0, doiThu: s.nguoi.filter((_, i) => i !== ai).map((n) => n.ten).join(', ') })
+      .then((r) => { if (r?.tran_id) void ghiNhatKy({ mon: 'Tiếng Anh', cheDo: 'noi_tu', chuDe: 'noi_tu', tranId: r.tran_id, cau: tuCuaToi(s.tu, ai) }) })
   }, [s?.pha])
 
   const ai = s ? s.nguoi.findIndex((n) => n.ma === toi.ma) : -1
@@ -104,6 +110,7 @@ function VanNoiTu({ toi, cd, onLui }: { toi: NguoiTran; cd: CheDoNT; onLui: () =
     if (cd.loai === 'tu_do' && s && !daGhi.current && s.tu.length) {
       daGhi.current = true
       ghiTran({ mon: 'Tiếng Anh', cheDo: 'noi_tu', chuDe: 'noi_tu', ketQua: 'xong', soDung: s.tu.length, soCau: s.tu.length, diem: s.nguoi[0].diem })
+        .then((r) => { if (r?.tran_id) void ghiNhatKy({ mon: 'Tiếng Anh', cheDo: 'noi_tu', chuDe: 'noi_tu', tranId: r.tran_id, cau: tuCuaToi(s.tu, 0) }) })
     }
     onLui()
   }

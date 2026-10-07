@@ -1,14 +1,46 @@
 import type { RealtimeChannel, RealtimePresenceState } from '@supabase/supabase-js'
 // Supabase cho game Đấu Từ: anon, không giữ phiên (game không đăng nhập). Realtime = broadcast + presence.
 import { createClient } from '@supabase/supabase-js'
+import { NHUNG } from './nhung'
 
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const key = import.meta.env.VITE_SUPABASE_KEY as string | undefined
 
 export const coMang = Boolean(url && key)
 
+// Nhúng trong app HS ⇒ hỏi khung cha token của HS (postMessage cùng origin), nhớ 20 giây; khung cha tự refresh nên game KHÔNG đụng refresh token.
+// Không có token (mở rời / hết phiên) ⇒ chạy như khách (hồ sơ theo máy, bản demo cũ).
+let tokenNho: { t: string; den: number } | null = null
+let dangXin: Promise<string | null> | null = null
+function xinToken(): Promise<string | null> {
+  if (!NHUNG || typeof window === 'undefined' || window.parent === window) return Promise.resolve(null)
+  if (tokenNho && tokenNho.den > Date.now()) return Promise.resolve(tokenNho.t)
+  if (dangXin) return dangXin
+  dangXin = new Promise<string | null>((xong) => {
+    const nghe = (e: MessageEvent) => {
+      const d = e.data as { dtv?: string; token?: string | null } | null
+      if (e.origin !== location.origin || d?.dtv !== 'token') return
+      window.removeEventListener('message', nghe); clearTimeout(het)
+      if (d.token) tokenNho = { t: d.token, den: Date.now() + 20_000 }
+      xong(d.token ?? null)
+    }
+    const het = setTimeout(() => { window.removeEventListener('message', nghe); xong(null) }, 2500)
+    window.addEventListener('message', nghe)
+    window.parent.postMessage({ dtv: 'cho_token' }, location.origin)
+  }).finally(() => { dangXin = null })
+  return dangXin
+}
+const fetchCoToken: typeof fetch = async (input, init) => {
+  const t = await xinToken()
+  if (!t) return fetch(input, init)
+  const h = new Headers(init?.headers)
+  h.set('Authorization', 'Bearer ' + t)
+  return fetch(input, { ...init, headers: h })
+}
+
 export const sb = createClient(url ?? 'http://localhost', key ?? 'x', {
   auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+  global: { fetch: fetchCoToken },
   realtime: { params: { eventsPerSecond: 30 } },
 })
 

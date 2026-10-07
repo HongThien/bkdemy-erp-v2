@@ -1,6 +1,7 @@
 // LEO THÁP — menu 2 chế độ + bảng xếp hạng (hôm nay / kỷ lục) · màn leo · kết quả. Luật ở lib/thap.ts.
 // Câu lấy từ NGUỒN của môn (nguon/): tháp hôm nay = chuỗi TẤT ĐỊNH theo (môn + khối + chế độ + ngày VN); BXH tách theo môn + khối.
 import { useEffect, useRef, useState } from 'react'
+import { dongTuCau, ghiNhatKy, type DongNhatKy } from '../lib/nhatKy'
 import { THAP, MS_SONG_CON, PHAT_SAI_MS, bxhThap, ghiThap, giayVoTan, type BxhThap, type CheDoThap } from '../lib/thap'
 import { capNhatNho } from '../lib/hoSo'
 import { CD_NHUNG, CHE_NHUNG, KHOI_NHUNG, TCD_NHUNG } from '../lib/nhung'
@@ -84,7 +85,7 @@ export function BangThap({ che, mon, nhom, gon, lamMoi }: { che: CheDoThap; mon:
 }
 
 type Pha = 'tai' | 'dem' | 'choi' | 'chet' | 'xong'
-interface KetQuaLeo { tang: number; sai: number; ms: number; cauSai: Cau[] }
+interface KetQuaLeo { tang: number; sai: number; ms: number; cauSai: Cau[]; nk: DongNhatKy[] }
 
 function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; toi: NguoiTran; nguon: NguonCau; cap: string; onLeoLai: () => void; onLui: () => void }) {
   const [ds, setDs] = useState<Cau[] | null>(null)
@@ -104,6 +105,11 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
   const lucCau = useRef(0)
   const khoa = useRef(false)
   const cauSai = useRef<Cau[]>([])
+  const nk = useRef<Map<number, DongNhatKy>>(new Map()) // nhật ký theo thứ tự câu (mỗi câu 1 dòng: lần chọn đầu hoặc hết giờ)
+  const ghiCau = (chon: string, dung: boolean) => {
+    if (!cau || nk.current.has(i)) return
+    nk.current.set(i, dongTuCau(i + 1, cau, chon, dung, performance.now() - lucCau.current))
+  }
   const daXong = useRef(false)
   const gioi = NHAN_VAT[nvChuan(toi.nv)].gioi
   const goc = nguon.giayThap
@@ -134,7 +140,7 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
     if (daXong.current) return
     daXong.current = true
     const ms = Math.min(performance.now() - batDau.current, che === 'song_con' ? MS_SONG_CON : Infinity)
-    setKq({ tang: cuoi.tang, sai: cuoi.sai, ms, cauSai: cauSai.current })
+    setKq({ tang: cuoi.tang, sai: cuoi.sai, ms, cauSai: cauSai.current, nk: [...nk.current.values()].sort((a, b) => a.thu_tu - b.thu_tu) })
     setPha('xong')
   }
 
@@ -150,6 +156,7 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
   const chet = () => {
     if (pha !== 'choi' || !cau) return
     setPha('chet'); setPose('guc'); setHienDung(true); phat('thua')
+    ghiCau('', false) // hết giờ (nếu đã chọn sai ở nhánh vô tận thì dòng đó đã có, không ghi đè)
     cauSai.current = [...cauSai.current, cau]
     if (cau.tuId) capNhatNho(cau.tuId, false, 12)
     setTimeout(() => ketThuc({ tang, sai: sai + 1 }), 1800)
@@ -159,6 +166,7 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
     if (pha !== 'choi' || !cau || khoa.current || opt === daSai) return
     const giay = (performance.now() - lucCau.current) / 1000
     if (opt === cau.dung) {
+      ghiCau(opt, true)
       phat('dung')
       if (cau.tuId) capNhatNho(cau.tuId, true, giay)
       const t = tang + 1
@@ -170,6 +178,7 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
       return
     }
     // sai
+    ghiCau(opt, false)
     phat('sai')
     if (cau.tuId) capNhatNho(cau.tuId, false, giay)
     if (che === 'vo_tan') { setDaSai(opt); chet(); return }
@@ -275,7 +284,10 @@ function KetQuaThap({ che, nguon, cap, kq, onLeoLai, onLui }: { che: CheDoThap; 
     if (da.current) return
     da.current = true
     phat(kq.tang >= 10 ? 'thang' : 'thong_bao')
-    ghiThap(che, nguon.mon, nhom, kq.tang, kq.sai, kq.ms).then((r) => { setGhi(r); if (r?.len_cap) setTimeout(() => phat('len_cap'), 800) }).catch((e) => setLoi((e as Error).message))
+    ghiThap(che, nguon.mon, nhom, kq.tang, kq.sai, kq.ms).then((r) => {
+      setGhi(r); if (r?.len_cap) setTimeout(() => phat('len_cap'), 800)
+      if (r?.luot_id) void ghiNhatKy({ mon: nguon.mon, cheDo: che, chuDe: nhom, luotId: r.luot_id, cau: kq.nk })
+    }).catch((e) => setLoi((e as Error).message))
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
   const toi = ghi?.bxh.toi
   const cauSai = kq.cauSai.filter((c, k, a) => a.findIndex((x) => x.id === c.id) === k)

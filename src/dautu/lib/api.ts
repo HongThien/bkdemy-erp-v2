@@ -1,6 +1,7 @@
 // Gọi các hàm fn_dtv_* (mọi tính toán ở Postgres). Lỗi mạng ⇒ trả null, game vẫn chơi được.
 import { sb, coMang } from './sb'
-import { datDB, khoHoSo, type HoSoDB, type NvId } from './hoSo'
+import { datDB, datTaiKhoan, khoHoSo, type HoSoDB, type Nho, type NvId } from './hoSo'
+import { NHUNG } from './nhung'
 
 async function goi<T>(fn: string, args: Record<string, unknown>): Promise<T | null> {
   if (!coMang) return null
@@ -15,7 +16,24 @@ export async function luuHoSo(ten: string, nv: NvId) {
   return db
 }
 
+/** Nhúng trong app HS: lấy (tự tạo lần đầu) hồ sơ Đấu Từ GẮN TÀI KHOẢN + sổ nhớ của em. Xong là mọi hàm sau dùng uid hs_<id>. Thất bại (khách / hết phiên) ⇒ false, game chạy như bản demo theo máy. */
+let hsSanSang: Promise<boolean> | null = null
+export function hoSoTaiKhoanSanSang(): Promise<boolean> {
+  if (!NHUNG || !coMang) return Promise.resolve(false)
+  hsSanSang ??= (async () => {
+    try {
+      const { data, error } = await sb.rpc('fn_dtv_ho_so_hs', {})
+      if (error) throw new Error(error.message)
+      const r = data as { uid: string; ho_so: HoSoDB; so_nho: Record<string, Nho> }
+      datTaiKhoan(r.uid, r.ho_so, r.so_nho ?? {})
+      return true
+    } catch (e) { console.warn('Chưa lấy được hồ sơ tài khoản (chạy như khách):', (e as Error).message); return false }
+  })()
+  return hsSanSang
+}
+
 export async function taiHoSo() {
+  if (NHUNG && (await hoSoTaiKhoanSanSang())) return khoHoSo.lay().db
   try {
     const db = await goi<HoSoDB | null>('fn_dtv_ho_so', { p_uid: khoHoSo.lay().uid })
     if (db) datDB(db)
@@ -24,7 +42,7 @@ export async function taiHoSo() {
 }
 
 export type CheDo = 'bot' | 'doi' | 'mang' | 'giai' | 'on_tap' | 'noi_tu'
-export interface KetQuaGhi { ho_so: HoSoDB; xp_nhan: number; len_cap: boolean }
+export interface KetQuaGhi { ho_so: HoSoDB; xp_nhan: number; len_cap: boolean; tran_id?: string }
 
 export async function ghiTran(a: {
   mon: string; cheDo: CheDo; chuDe: string; ketQua: 'thang' | 'thua' | 'hoa' | 'xong'; soDung: number; soCau: number; diem: number; doiThu?: string

@@ -65,7 +65,7 @@ export async function ghiThap(cheDo: CheDoThap, mon: string, nhom: string, tang:
   if (!coMang || !khoHoSo.lay().db) return null
   const { data, error } = await sb.rpc('fn_dtv_thap_ghi_mon', { p_uid: khoHoSo.lay().uid, p_che_do: cheDo, p_mon: mon, p_nhom: nhom, p_tang: tang, p_sai: sai, p_ms: Math.round(ms) })
   if (error) throw new Error(error.message)
-  const kq = data as { ho_so: HoSoDB; xp_nhan: number; len_cap: boolean; bxh: BxhThap }
+  const kq = data as { ho_so: HoSoDB; xp_nhan: number; len_cap: boolean; bxh: BxhThap; luot_id?: string }
   if (kq?.ho_so) datDB(kq.ho_so)
   return kq
 }

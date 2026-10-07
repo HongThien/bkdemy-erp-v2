@@ -3,6 +3,8 @@
 // ⚠ Nợ khi khớp HS BK: sổ nhớ từ phải chuyển thành nhật ký trả lời ở DB, mức nhớ suy động bằng fn (CLAUDE §1, §2.0).
 import { useEffect, useState } from 'react'
 import { chuoiNgauNhien, docLS, ghiLS, taoKho } from './tienich'
+import { NHUNG } from './nhung'
+import { sb } from './sb'
 
 export type NvId = 'tham_hiem_nam' | 'tham_hiem_nu' | 'hiep_si_dem' | 'phap_su'
 
@@ -43,12 +45,32 @@ function layUid() {
   return u
 }
 
-export const khoHoSo = taoKho<HoSo>({ uid: layUid(), db: docLS<HoSoDB | null>(K_DB, null), nho: docLS(K_NHO, {}) })
+// NHÚNG trong app HS: hồ sơ/sổ nhớ lấy từ DB theo TÀI KHOẢN (api.taiHoSo) — KHÔNG đọc bản chụp của máy (máy có thể dùng chung nhiều em).
+export const khoHoSo = taoKho<HoSo>(NHUNG
+  ? { uid: layUid(), db: null, nho: {} }
+  : { uid: layUid(), db: docLS<HoSoDB | null>(K_DB, null), nho: docLS(K_NHO, {}) })
+
+export const laUidTaiKhoan = (uid: string) => uid.startsWith('hs_')
 
 export function datDB(db: HoSoDB) {
   khoHoSo.dat((h) => ({ ...h, db }))
-  ghiLS(K_DB, db)
+  if (!laUidTaiKhoan(khoHoSo.lay().uid)) ghiLS(K_DB, db)
 }
+
+/** Nhận hồ sơ theo tài khoản từ DB: đổi uid sang hs_<id>, nạp sổ nhớ của em (không lưu gì xuống máy). */
+export function datTaiKhoan(uid: string, db: HoSoDB, nho: Record<string, Nho>) {
+  khoHoSo.dat((h) => ({ ...h, uid, db, nho }))
+}
+
+// Sổ nhớ theo tài khoản: chép lên DB sau mỗi lần đổi (gộp 1,5 giây; gửi nốt khi đóng khung).
+let henLuu: ReturnType<typeof setTimeout> | null = null
+function luuSoNhoLenDB() {
+  const h = khoHoSo.lay()
+  if (!laUidTaiKhoan(h.uid)) return
+  void sb.rpc('fn_dtv_so_nho_luu', { p_uid: h.uid, p_nho: h.nho }).then(({ error }) => { if (error) console.warn('Chưa lưu được sổ nhớ:', error.message) })
+}
+function hoanLuuSoNho() { if (henLuu) clearTimeout(henLuu); henLuu = setTimeout(() => { henLuu = null; luuSoNhoLenDB() }, 1500) }
+if (typeof window !== 'undefined') window.addEventListener('pagehide', () => { if (henLuu) { clearTimeout(henLuu); henLuu = null; luuSoNhoLenDB() } })
 
 export function useHoSo() {
   const [h, setH] = useState(khoHoSo.lay())
@@ -69,7 +91,7 @@ export function capNhatNho(id: string, dung: boolean, giay: number) {
     const bay = Date.now()
     const moi: Nho = { gap: cu.gap + 1, nhanh, muc, cuoi: bay, han: bay + ngayOn * NGAY, giay, lyDo: !dung ? 'Trả lời sai' : giay >= 4 ? 'Trả lời chậm' : 'Đúng nhanh' }
     const nho = { ...h.nho, [id]: moi }
-    ghiLS(K_NHO, nho)
+    if (laUidTaiKhoan(h.uid)) hoanLuuSoNho(); else ghiLS(K_NHO, nho)
     return { ...h, nho }
   })
 }

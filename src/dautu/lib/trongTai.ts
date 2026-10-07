@@ -33,6 +33,8 @@ export interface Snap {
   giayThang: number
   ketQua: KetQua | null
   seq: number
+  /** nhật ký từng câu: mỗi ghế mỗi câu 1 dòng (chon '' = không trả lời / hết giờ); ms = phản xạ */
+  nk: { i: number; ghe: 0 | 1; chon: string; dung: boolean; ms: number }[]
 }
 
 export const GIAY_VONG = 12
@@ -65,7 +67,7 @@ export class TrongTai {
     this.s = {
       mid: o.mid, nguoi: o.nguoi, ds: o.ds, i: 0, pha: 'dem', conLai: MS_DEM, tong: MS_DEM,
       diem: [0, 0], chuoi: [0, 0], chuoiMax: [0, 0], dung: [0, 0], thu: [0, 0], tg: [[], []], sai: [[], []],
-      dungCham: [false, false], thangVong: null, cong: [0, 0], giayThang: 0, ketQua: null, seq: 0,
+      dungCham: [false, false], thangVong: null, cong: [0, 0], giayThang: 0, ketQua: null, seq: 0, nk: [],
     }
   }
 
@@ -126,6 +128,7 @@ export class TrongTai {
     const r = Math.max(50, Math.min(rt ?? troiQua, troiQua + 400))
     const cau = s.ds[s.i]
     s.thu[ghe]++
+    s.nk.push({ i: s.i, ghe, chon: opt, dung: opt === cau.dung, ms: Math.round(r) })
     if (opt !== cau.dung) {
       s.sai[ghe].push(opt)
       const khac = (1 - ghe) as 0 | 1
@@ -168,6 +171,8 @@ export class TrongTai {
   }
 
   private ketVong() {
+    // ghế nào chưa có dòng ở câu này = không kịp trả lời (hết giờ / đối thủ đã ăn câu)
+    for (const g of [0, 1] as const) if (!this.s.nk.some((x) => x.i === this.s.i && x.ghe === g)) this.s.nk.push({ i: this.s.i, ghe: g, chon: '', dung: false, ms: Math.round(performance.now() - this.batDauVong) })
     this.s.pha = 'ket'
     this.s.tong = MS_KET
     this.datHen(MS_KET, () => (this.s.i + 1 < this.s.ds.length ? this.batVong(this.s.i + 1) : this.ketThuc()))

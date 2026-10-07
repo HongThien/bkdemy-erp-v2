@@ -5,6 +5,7 @@ import { capNhatNho, tuDenHan, tuYeu, useHoSo, TEN_MUC, type MucNho } from '../l
 import { phuongAnOn } from '../lib/boDe'
 import { doc, phat } from '../lib/amThanh'
 import { ghiTran, gopTu, tuDaGop } from '../lib/api'
+import { ghiNhatKy, type DongNhatKy } from '../lib/nhatKy'
 import { tron } from '../lib/tienich'
 import { DauMan, Nut, toast } from '../ui/Chung'
 
@@ -56,16 +57,19 @@ function OnTu({ onLui }: { onLui: () => void }) {
   const [batDau, setBatDau] = useState(false)
   const luc = useRef(0)
   const dungLanDau = useRef(0)
+  const nk = useRef<DongNhatKy[]>([]) // mỗi từ 1 dòng: tra_loi = lần chọn ĐẦU, dung = đúng ngay lần đầu
+  const lanDau = useRef<string | null>(null)
   const id = ds[i]
   useEffect(() => {
     if (!batDau || !id) return
-    setOpts(phuongAnOn(id)); setSai([]); setDung(null); luc.current = performance.now()
+    setOpts(phuongAnOn(id)); setSai([]); setDung(null); luc.current = performance.now(); lanDau.current = null
     doc(TU_THEO_ID.get(id)!.en)
   }, [i, batDau])
   useEffect(() => {
     if (batDau && i >= ds.length && ds.length) {
       phat('thang')
       ghiTran({ mon: 'Tiếng Anh', cheDo: 'on_tap', chuDe: 'on_tap', ketQua: 'xong', soDung: dungLanDau.current, soCau: ds.length, diem: 0 })
+        .then((r) => { if (r?.tran_id) void ghiNhatKy({ mon: 'Tiếng Anh', cheDo: 'on_tap', chuDe: 'on_tap', tranId: r.tran_id, cau: nk.current }) })
     }
   }, [i, batDau])
 
@@ -85,8 +89,10 @@ function OnTu({ onLui }: { onLui: () => void }) {
   const t = TU_THEO_ID.get(id)!
   const chon = (o: string) => {
     if (dung !== null || sai.includes(o)) return
+    if (lanDau.current === null) lanDau.current = o
     if (o === id) {
       const g = (performance.now() - luc.current) / 1000
+      nk.current.push({ thu_tu: i + 1, ma_cau: id, cau_id: id, tu_id: id, de: t.en, dap_an: t.vi, tra_loi: TU_THEO_ID.get(lanDau.current)?.vi ?? '', dung: !sai.length, ms: Math.round(g * 1000) })
       if (!sai.length) dungLanDau.current++
       capNhatNho(id, !sai.length, g)
       setDung(Math.round(g * 10) / 10); phat('dung')

@@ -9,6 +9,7 @@ import { rankBat } from '../phieuluu/coBat'
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NhomHS, NutHS, TheHS, THE_TRON, useManDoc, useMonHS } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import { khoiCuaHS } from '../../../lib/tuluyen'
+import { supabase } from '../../../lib/supabase'
 import { anhDauNv, tenNv, type NvId } from '../skin/nhanVat'
 
 type OHocTap = { id: string; ten: string; sub: string; onClick: () => void; nhan?: string }
@@ -199,7 +200,16 @@ export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp, khoi: khoiEp, the
   const [khoi, setKhoi] = useState<string | null | undefined>(khoiEp ?? undefined)
   useEffect(() => { if (khoiEp === undefined) khoiCuaHS().then(setKhoi).catch(() => setKhoi(null)) }, [khoiEp])
   useEffect(() => {
-    const f = (e: MessageEvent) => { if (e.origin === location.origin && (e.data as { dtv?: string } | null)?.dtv === 'thoat') onBack() }
+    const f = (e: MessageEvent) => {
+      if (e.origin !== location.origin) return
+      const d = (e.data as { dtv?: string } | null)?.dtv
+      if (d === 'thoat') onBack()
+      // Game hỏi token đăng nhập của em (mọi dữ liệu Đấu Từ gắn tài khoản). Khung cha giữ phiên + tự refresh; game chỉ mượn token.
+      else if (d === 'cho_token') {
+        const nguon = e.source as Window | null
+        void supabase.auth.getSession().then(({ data }) => nguon?.postMessage({ dtv: 'token', token: data.session?.access_token ?? null }, location.origin)).catch(() => nguon?.postMessage({ dtv: 'token', token: null }, location.origin))
+      }
+    }
     window.addEventListener('message', f); return () => window.removeEventListener('message', f)
   }, [onBack])
   if (khoi === undefined) return <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }} />
