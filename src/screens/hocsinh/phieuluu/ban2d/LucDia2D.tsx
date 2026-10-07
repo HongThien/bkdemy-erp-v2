@@ -6,7 +6,7 @@ import { DauTrangHS, HEAD, THE, THE_TRON, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
 import { boCucDuong, duongCong } from './boCuc'
-import { CHO_MOC_VUNG, EMOJI_MOC, anhMoc, anhNenVung, anhVat } from './hinh2d'
+import { EMOJI_MOC, anhMoc, anhNenVung, anhVat, choMocVung } from './hinh2d'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri, xoay } from './San2D'
 import { QuaiTam, VungDatTam } from './HinhTam'
 import { DuongThree } from './LopDuong'
@@ -25,9 +25,9 @@ function LucDiaCu({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon
   const lon = useMedia('(min-width:1024px)')
   const [hov, setHov] = useState<string | null>(null)
   const vungs = useMemo(() => luc.vung.map((v) => ({ v, t: thongKeVung(v) })), [luc])
-  // mốc đặt đúng các khoảng đất trống vẽ trong tranh (CHO_MOC_VUNG); nhiều chuyên đề hơn số chỗ / chưa có tranh ⇒ bố cục chung
+  // mốc đặt đúng các khoảng đất trống vẽ trong tranh (sổ hình của style: choMocVung); nhiều chuyên đề hơn số chỗ / chưa có tranh ⇒ bố cục chung
   const diem = useMemo(() => {
-    const cho = anhNen ? CHO_MOC_VUNG[luc.biome] : undefined
+    const cho = anhNen ? choMocVung(luc.biome) : undefined
     if (cho && luc.vung.length <= cho.length) return cho.slice(0, luc.vung.length).map((c) => ({ x: c.x / 100, y: c.y / 100 }))
     return boCucDuong(luc.vung.map((v) => v.ma), { x0: 0.13, x1: 0.87, y0: 0.27, y1: 0.76 })
   }, [luc, anhNen])

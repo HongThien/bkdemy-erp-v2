@@ -5,7 +5,7 @@
 //  · ảnh giải mã xong rồi mới hiện màn (trần 1,5s — mạng chậm vẫn vào được);
 //  · `ManCho`: 1 màn chờ DUY NHẤT dùng cho mọi chỗ đợi (Suspense · tải bản đồ · sinh lượt luyện) — cùng nền, cùng nhịp, không nhấp nháy giữa các kiểu chờ.
 import { banDoPhieuLuu, type BanDoPL } from '../../../lib/phieuluu'
-import { anhNenTheGioi, anhLucDiaV2, VI_TRI_LUC_DIA_V2 } from './ban2d/hinh2d'
+import { anhNenTheGioi, anhLucDia, viTriLucDia } from './ban2d/hinh2d'
 
 const TUOI_MS = 25_000
 const DEM = new Map<string, { p: Promise<BanDoPL>; t: number }>()
@@ -37,7 +37,7 @@ export function nhoAnh(urls: (string | null | undefined)[], tran = 1500): Promis
 }
 
 /** Ảnh tầng THẾ GIỚI: nền biển + các lục địa rời. */
-export const anhTheGioi = (): string[] => [anhNenTheGioi(), ...VI_TRI_LUC_DIA_V2.map((v) => anhLucDiaV2(v.biome))].filter((u): u is string => !!u)
+export const anhTheGioi = (): string[] => [anhNenTheGioi(), ...viTriLucDia().map((v) => anhLucDia(v.biome))].filter((u): u is string => !!u)
 
 let daNapChunk = false
 /** Nạp trước mọi thứ cho "Học theo chủ đề" của môn này. Gọi lúc rảnh (vào khu Học tập). An toàn gọi nhiều lần. */

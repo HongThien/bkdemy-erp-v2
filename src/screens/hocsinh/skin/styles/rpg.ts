@@ -9,6 +9,7 @@ import { LOI_GAME } from '../loi'
 import { RPG_3D } from '../the3d/bangMauRpg'
 import { HOC_TAP_RPG } from './rpgHocTap'
 import { CHINH_PHUC_RPG } from './rpgChinhPhuc'
+import { BAN_DO_RPG } from './rpgBanDo2d'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -77,6 +78,10 @@ export const RPG: Skin = {
   theTiep: { bg: 'linear-gradient(100deg, rgba(233,199,123,0.26) 0%, rgba(20,26,51,0.78) 70%)', ink: '#f3ead0', border: '1px solid rgba(233,199,123,0.7)' },
   nenTen: 'rgba(20,26,51,0.6)',
   the3d: RPG_3D,
+  banDo2d: BAN_DO_RPG,
+  // Game nhúng (src/dautu — Đấu trường BK, leo tháp): đúng các hình game đang dùng trước 07/10.
+  game: { nenMenu: `${A}/bg_lau_dai_chibi_ngang.jpg`, nenDau: `${A}/bg_dao_troi_chibi_ngang.jpg`,
+    icon: { dau: `${A}/o_tu_luyen.png`, giai: `${A}/o_cup.png`, thap: `${A}/phieuluu2d/moc_thap.webp`, noi_tu: `${A}/o_so_tay.png`, goc: `${A}/o_nhiem_vu.png` } },
   // Sân Đấu trường (Thùy 02/10, kit design/bk-ui-src/AppHS/Animation/chien_dau/ — nén bởi scripts/anime-chien-dau-2d.mjs)
   sanDau: '/bk-ui/hs/skin/rpg/dau_truong/nen_san_dau.jpg',
   // Khu Học tập: 5 đảo lơ lửng trong vũ trụ — kit hs-hoc-tap-v2 (Đơn 14 Kit B, Thùy duyệt 03/10), nén bằng scripts/anime-hoc-tap.mjs.

@@ -3,8 +3,8 @@
 // Thế giới còn là cửa vào các kiểu luyện khác (spec §4.2): "Săn quái lang thang" = Tự luyện tổng hợp · "Đấu trường" = Thử thách.
 import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react'
 import { sinhTuLuyenChuDe } from '../../../lib/tuluyen'
-import { ketQuaLuotHocThat, loiLuotKhongTinh, type KetQuaLuot } from '../../../lib/chuoi'
-import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS, TrongHS, useLoi } from '../skin/KhungHS'
+import { BaoLuotHS } from '../BaoLuot'
+import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TrongHS, useLoi } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import type { SkinId } from '../skin/kieu'
 import { tuBanDoPL, type BanDoV, type ChangV, type LucDiaV, type VungV } from './kieu'
@@ -145,19 +145,12 @@ export function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe, sin
 
 function KetQuaTrongDau({ chang, kq, heT, veKhu, onTiep, onVe }: { chang: ChangV; kq: { dung: number; tong: number; baiLamId: string | null }; heT: boolean; veKhu: boolean; onTiep: () => void; onVe: () => void }) {
   const loi = useLoi()
-  const [r, setR] = useState<KetQuaLuot | null | undefined>(undefined)
-  useEffect(() => { if (!kq.baiLamId) { setR(null); return } ketQuaLuotHocThat(kq.baiLamId).then(setR).catch(() => setR(null)) }, [kq.baiLamId])
-  const khong = r ? loiLuotKhongTinh(r) : null
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center gap-2 p-5 text-center">
       <p className="text-[13px]" style={{ color: MAU.muted }}>{chang.ten}</p>
       <p className="text-[34px] font-bold leading-none" style={{ ...HEAD, color: MAU.ink }}>{heT ? loi.hetDoiHinh : `${kq.dung}/${kq.tong} đúng`}</p>
       {heT && <p className="text-[15px]" style={{ color: MAU.ink }}>{kq.dung}/{kq.tong} câu đúng</p>}
-      <TheHS className="w-full px-4 py-3 text-[14px]">
-        {r === undefined ? <span style={{ color: MAU.muted }}>Đang tính…</span>
-          : r?.tinh ? <span style={{ color: MAU.dung, fontWeight: 600 }}>{loi.ketQua.duocTinh}</span>
-          : <span style={{ color: MAU.canhBao }}>{khong ?? 'Lượt này chưa được tính.'}</span>}
-      </TheHS>
+      <BaoLuotHS baiLamId={kq.baiLamId} />
       <p className="text-[12.5px]" style={{ color: MAU.muted }}>{loi.ketQua.ghiNhan}</p>
       <div className="mt-1 flex flex-wrap justify-center gap-2"><NutHS onClick={onTiep}>{loi.ketQua.luyenTiep}</NutHS><NutHS phu onClick={onVe}>{veKhu ? loi.ketQua.veKhu : loi.ketQua.veChang}</NutHS></div>
     </div>

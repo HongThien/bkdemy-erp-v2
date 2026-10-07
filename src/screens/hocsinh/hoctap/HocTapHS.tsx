@@ -203,7 +203,7 @@ export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp, khoi: khoiEp, the
     window.addEventListener('message', f); return () => window.removeEventListener('message', f)
   }, [onBack])
   if (khoi === undefined) return <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }} />
-  const src = `/dautu.html?nhung=1&vao=${vao}&mon=${encodeURIComponent(mon ?? 'Toán')}${khoi ? `&khoi=${encodeURIComponent(khoi)}` : ''}${Object.entries(them ?? {}).map(([k, v]) => `&${k}=${encodeURIComponent(v)}`).join('')}`
+  const src = `/dautu.html?nhung=1&skin=${laySkin(null).id}&vao=${vao}&mon=${encodeURIComponent(mon ?? 'Toán')}${khoi ? `&khoi=${encodeURIComponent(khoi)}` : ''}${Object.entries(them ?? {}).map(([k, v]) => `&${k}=${encodeURIComponent(v)}`).join('')}`
   return (
     <div className="fixed inset-0 z-40 flex flex-col" style={{ background: 'var(--sk-bg)', animation: 'ht-hien-mo .45s ease-out both' }}>
       <style>{'@keyframes ht-hien-mo { from { opacity: 0 } to { opacity: 1 } }'}</style>

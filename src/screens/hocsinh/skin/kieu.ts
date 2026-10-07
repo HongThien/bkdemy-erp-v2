@@ -29,6 +29,25 @@ export type MauDoc = {
 // sangDoc/toiDoc: bản cho màn DỌC (điện thoại) — tranh vẽ riêng khổ 9:16, không có thì dùng bản thường.
 export type HinhNen = { id: string; ten: string; sang?: string; toi?: string; sangDoc?: string; toiDoc?: string }
 
+// SỔ HÌNH BẢN ĐỒ PHIÊU LƯU 2D của 1 style (phieuluu/ban2d/hinh2d.ts đọc qua đây — màn KHÔNG gõ đường dẫn ảnh). Mỗi style khai ở
+// skin/styles/<id>BanDo2d.ts. Danh sách nào thiếu biome ⇒ màn vẽ HÌNH TẠM bằng màu biome của `the3d` (ghép dần được).
+export type BanDo2D = {
+  g: string                 // thư mục ảnh (public)
+  nenTheGioi: string        // file nền tầng thế giới (trong g)
+  /** GHÉP THEO TRANH: chủ đề thứ i ⇒ mảnh i (biome + tâm x,y + bề rộng w, % khung 16:9). Ảnh mảnh = `${g}/${tienToLucDia}${biome}.webp` */
+  lucDia: { biome: string; x: number; y: number; w: number }[]
+  tienToLucDia: string
+  tlLucDia: number          // rộng / cao khung ảnh mảnh (mọi mảnh cùng tỉ lệ)
+  nhanDuoi?: number         // nhãn tên lục địa đặt dưới tâm mảnh bao nhiêu × bề rộng mảnh (mặc định 0,04 — mảnh dẹt)
+  nenVung: string[]; nenChang: string[]; nenDang: string[]   // biome có tranh nen_vung_ / nen_chang_ / nen_dang_<biome>.jpg
+  moc: string[]             // công trình mốc đã có (moc_<loại>.webp) — vòng lại theo thứ tự
+  vat: string[]             // vật nhỏ đã có: be_da · may_suong · la_ban · co_chinh_phuc (<tên>.webp)
+  /** chỗ đặt mốc dò trên từng nền vùng (% khung) — không có ⇒ bố cục đường chung (boCuc.ts) */
+  choMoc?: Record<string, { x: number; y: number }[]>
+  /** có KIT lục địa Đơn 12 (nền vẽ sẵn đường + 8 công trình/biome, phieuluu/ban2d/kitLucDia*.ts) — kit vẽ theo nét của style này */
+  kit?: boolean
+}
+
 // BOSS RIÊNG (mỗi GV 1 boss — design/FLOW-NPC-BOSS-CUOI.md): 6 tư thế + chân dung, PNG trong suốt cùng khung vuông, chân chạm đáy.
 // Khoá của `Skin.boss` = mã boss (`boss_<ma_gv>`) — cũng là `loai_quai` DB trả về. Thiếu boss ở style nào ⇒ rơi về quái thường.
 /** Thông số dựng boss CHIBI 3D bằng code (skin/the3d/bossChibi3D.ts) — mỗi GV 1 dòng. Màu lấy từ bảng màu của style. */
@@ -121,6 +140,12 @@ export type Skin = {
   nhanVat?: { nam: string; nu: string }
   // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).
   the3d?: BangMau3D
+  // Sổ hình bản đồ phiêu lưu 2D (xem `BanDo2D`). Không khai ⇒ mọi tầng vẽ hình tạm theo màu `the3d`.
+  banDo2d?: BanDo2D
+  // Ảnh QUÁI theo mã loài (`loai` — skin/the3d/loai.ts), PNG/WebP trong suốt cắt sát. Không có loài đó ⇒ quái tạm CC0 (ban2d/quaiCc0.ts).
+  quai2d?: Record<string, string>
+  // Hình của GAME NHÚNG (src/dautu — Đấu trường BK, leo tháp): nền menu · nền màn đấu/leo tháp · icon 5 mục menu. Không khai ⇒ game dùng hình mặc định của nó.
+  game?: { nenMenu: string; nenDau: string; icon: { dau: string; giai: string; thap: string; noi_tu: string; goc: string } }
   // Boss riêng của từng giáo viên (ảnh 2D chibi, hoạt ảnh bằng code). Khoá = mã boss.
   boss?: Record<string, BossAnh>
   // THẺ CÂU HỎI TRONG MÀN ĐẤU (Thùy 02/10: "viền card + font chưa mang vibe game") — không khai ⇒ dùng thẻ thường của style.

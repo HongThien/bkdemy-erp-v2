@@ -103,6 +103,8 @@ export const LOI_GAME: Partial<LoiHS> = {
 let skinDangAp: SkinId | null = null
 const nghe = new Set<() => void>()
 export function datSkinDangAp(id: SkinId) { if (skinDangAp === id) return; skinDangAp = id; nghe.forEach((f) => f()) }
+/** id style đang áp (null = chưa gắn) — registry.laySkin(null) đọc chỗ này */
+export const skinDangApId = (): SkinId | null => skinDangAp
 export const layLoi = (rieng?: Partial<LoiHS>): LoiHS => ({ ...LOI_FORMAL, ...rieng })
 
 /** Lời chữ của style đang áp. `loiCuaSkin` truyền từ registry để tránh import vòng (registry ↔ loi). */

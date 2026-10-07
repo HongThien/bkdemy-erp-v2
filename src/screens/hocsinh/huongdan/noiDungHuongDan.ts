@@ -255,7 +255,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
 
   // ───────────────────────── THÀNH TÍCH & PHẦN THƯỞNG ─────────────────────────
   {
-    id: 'chuoi', nhom: 'thuong', ten: 'Chuỗi làm bài', icon: { o: 'btvn', emoji: '🔥' }, sap: true,
+    id: 'chuoi', nhom: 'thuong', ten: 'Chuỗi làm bài', icon: { o: 'btvn', emoji: '🔥' },
     tomTat: 'Số ngày liên tiếp em có ít nhất một lượt học thật.',
     game: { ten: 'Ngọn lửa chuỗi', tomTat: 'Giữ lửa mỗi ngày để lên mốc chuỗi.' },
     khoi: [
@@ -271,7 +271,11 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
         'Hết thẻ thì chuỗi đứt và bắt đầu lại.',
       ] },
       { tieu: 'Các mốc', y: ['Mốc chuỗi: 3, 7, 14, 30, 50, 100, 200 và 365 ngày. Các mốc lớn được đưa tin lên Thế giới BK.'] },
-      { tieu: 'Tình trạng', loai: 'luuy', y: ['Phần tính chuỗi đã hoạt động ở hệ thống; màn hiển thị ngọn lửa trên màn chính đang được hoàn thiện.'] },
+      { tieu: 'Xem chuỗi ở đâu', y: [
+        'Ngọn lửa và số ngày ở góc trên màn chính. Lửa xám nghĩa là hôm nay em chưa có lượt được tính.',
+        'Bấm vào ngọn lửa để xem 7 ngày gần nhất, kỷ lục, số thẻ đóng băng còn lại và ngày lỡ còn sửa được.',
+        'Chạm mốc thì app mừng em một lần.',
+      ] },
     ],
   },
   {
@@ -449,12 +453,20 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     ],
   },
   {
-    id: 'gop_y', nhom: 'cong_dong', ten: 'Góp ý và báo lỗi', icon: { o: 'so_tay', emoji: '💬' }, sap: true,
+    id: 'gop_y', nhom: 'cong_dong', ten: 'Góp ý và báo lỗi', icon: { o: 'so_tay', emoji: '💬' },
     tomTat: 'Gửi ý kiến hoặc báo lỗi trực tiếp tới đội phát triển.',
     khoi: [
-      { tieu: 'Dự kiến', y: [
-        'Mỗi ngày gửi được một số lượng góp ý nhất định, mỗi góp ý cần mô tả đủ rõ (từ 10 chữ).',
-        'Phần gửi góp ý trong app đang được hoàn thiện; trong lúc chờ, em báo cho thầy cô hoặc trung tâm.',
+      { tieu: 'Mở ở đâu', y: [
+        'Màn chính: nút ⋯ ở góc trên → "Góp ý & báo lỗi". Hoặc trong Hồ sơ của em.',
+      ] },
+      { tieu: 'Gửi thế nào', y: [
+        'Chọn "Báo lỗi" khi app chạy sai, hoặc "Góp ý tưởng" khi em muốn app có thêm điều gì.',
+        'Mô tả từ 10 đến 1.500 chữ; có thể đính kèm 1 ảnh chụp màn hình (chọn tệp hoặc dán vào ô chữ).',
+        'Mỗi ngày gửi tối đa 5 lần.',
+      ] },
+      { tieu: 'Theo dõi', y: [
+        'Mục "Góp ý của em" hiện trạng thái: Đã nhận · Đang xem · Đã xử lý · Chưa làm được, kèm lời trả lời của thầy cô.',
+        'Có lời trả lời mới thì nút ⋯ ở màn chính hiện chấm đỏ.',
       ] },
     ],
   },

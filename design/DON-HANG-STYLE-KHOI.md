@@ -10,6 +10,7 @@
 > |---|---|---|---|
 > | **K1** | Màn chính + bộ hình của style: 3 nền × 2 khổ · 2 nhân vật · 15 icon ô · 2 icon banner · 2 trang trí | 4 ảnh toàn cảnh + 27 hình | Gửi được ngay (ChatGPT vẽ song song) |
 > | **K2** | Bản đồ phiêu lưu + quái vật (bản khối vuông của Đơn 6 RPG) | 1 ảnh toàn cảnh + 40 hình | Sau khi K1 #01 được duyệt |
+> | **K3** | Khu HỌC TẬP: 5 icon ô · cổng 5 đảo · Chinh phục BK · phần bản đồ K2 còn thiếu · nền màn dạng bài · sân Đấu trường (soạn 06/10) | 2 ảnh toàn cảnh + 47 hình | Gửi được ngay (K1 + K2 đã duyệt) |
 >
 > ✅ **ĐÃ DỰNG CODE 03/10** (Thùy: "thêm làm lựa chọn, dựng ngay" — đè mục ① bên dưới): `skin/styles/khoi.ts`, hiện trong "Phong cách" cạnh
 > Anime RPG + Tối giản. Chưa có bản đồ phiêu lưu / Đấu trường cho style này (hình K2 có, chờ luồng bản đồ). Chi tiết: `spec-giao-dien-hs.md` §10.
@@ -309,6 +310,140 @@ Bắt đầu với #01.
 
 ---
 
+## Đơn K3 — Khu HỌC TẬP (bản khối vuông của Đơn 14 Kit A + B, Đơn 7, Đơn 13) — soạn 06/10, gửi được ngay
+
+> ✅ **KIỂM HÀNG + DỰNG 07/10 — đủ 49/49.** 49 hình về tên mặc định "ChatGPT Image Oct 7…" ở gốc `bk-ui-src/` ⇒ Claude nhận diện BẰNG MẮT (tấm ghép), khớp
+> đúng thứ tự + nội dung đơn, không hình trùng/lệch ⇒ chuyển + đổi tên vào `design/bk-ui-src/khoi/hoc-tap/k3_<số>_<tên>.png` (sổ: `_doi_ten.log.txt`).
+> Chất lượng: kích thước đúng chuẩn (tháp 1024×1536 · đế 1536×1024/1254² · cầu + mây 1774×887 · sân 2095×751 ≈ 2,8:1), nền trong suốt thật, 4 góc trong.
+> Nền dạng bài: mặt đường lát đá ở ≈70–74,5% chiều cao (code đặt chân công trình 72,8%) — khớp. Lệch nhỏ chấp nhận: đảo 1254² (đơn ghi 1024) · cầu 1774×887 (đơn ghi 2048×1024).
+> Nén + đo: `node scripts/khoi-hoc-tap.mjs` (sinh `skin/styles/khoiHocTap.ts`) · sổ bản đồ + quái: `skin/styles/khoiBanDo2d.ts` · bảng màu: `skin/the3d/bangMauKhoi.ts`.
+> Soi không cần đăng nhập: `hs.html?xem=hoc_tap&skin=khoi` · `hs.html?xem=phieu_luu&skin=khoi` (+ `&tang=luc_dia&luc=C` · `&tang=chang&luc=C&vung=C1` · `&tang=dau…`).
+
+> **Vì sao có đơn này (kiểm 06/10):** khu Học tập (`hoctap/HocTapHS.tsx`, `spec-che-do-game.md` §7) ra đời 03/10, SAU K1/K2 ⇒ style Khối vuông
+> chưa có hình nào cho khu này. Hiện trạng khi em chọn Khối vuông: cổng Học tập là lưới ô thường và **cả 5 ô hiện dấu ■** (thiếu icon) ·
+> Học theo chủ đề KHÔNG có bản đồ (vào thẳng danh sách) · Chinh phục BK vào thẳng game leo tháp với **nền RPG** · Đấu trường sân trơn màu.
+> Đã kiểm Drive "kho ảnh hs.app" 06/10: `khoi/` = đúng K1 + K2, `gami/` = bộ gamification chung — không có hình Học tập.
+>
+> **Quyết định thiết kế (Claude đề xuất 06/10 — Thùy bác chỗ nào thì sửa trước khi gửi):**
+>
+> | # | Vấn đề | Chọn | Vì sao |
+> |---|---|---|---|
+> | 1 | Bầu trời cổng Học tập | RPG = vũ trụ đêm ⇒ Khối vuông = **trời HOÀNG HÔN pastel + biển mây khối**, 5 đảo khối nổi | Style SÁNG duy nhất (K1 §0 #3). Cùng họ với `nen_the_gioi` K2 (biển mây ban ngày). Chữ tên đảo của style là chữ TỐI ⇒ dưới mỗi đảo phải sáng dịu |
+> | 2 | Bố cục 5 đảo | **Y như RPG**: (1) giữa hơi cao · (3) trái-trên · (4) phải-trên · (2) trái-dưới · (5) phải-dưới | Vị trí đặt bằng code (`VT_NGANG`/`VT_DOC`), dùng chung mọi style ⇒ không phải sửa code |
+> | 3 | Đường nối giữa các đảo | **Code vẽ**, KHÔNG vẽ trong ảnh | Như RPG (`TroiDao` vẽ SVG) |
+> | 4 | Bản đồ phiêu lưu | Chỉ vẽ **phần K2 còn thiếu** so với bộ RPG đang chạy: 2 vùng `anh_dao` + `dong_gio` (đảo + nền vùng) · 5 mốc · bệ đá · sương · **nền màn dạng bài** | RPG có 10 vùng, K2 vẽ 8. Màn dạng bài dùng `nen_dang_*` (đường lát thẳng vẽ sẵn) TRƯỚC `nen_chang_*` ⇒ **không vẽ `nen_chang`**. Cổng đã có (`cong_khu_vuc` K2), la bàn đã có (`khoi_o_the_gioi` K1) ⇒ dùng lại |
+> | 5 | Kit lục địa (Đơn 12: nền có đường + 8 công trình × 6 vùng = 54 hình) | **KHÔNG đặt trong K3** | Thiếu kit thì app dùng bản vẽ chung (nền vùng + mốc). Để đơn sau nếu Thùy muốn y hệt RPG |
+> | 6 | Nhân vật chính (6 nhân vật × ~20 tư thế chạy + chiến đấu) | **KHÔNG đặt trong K3** — đơn K4 riêng | Nặng nhất (~120 hình), cần Thùy chốt có đổi nhân vật theo style hay giữ 1 bộ chung như gamification |
+> | 7 | Giải Vô địch BK | **KHÔNG đặt** | Bộ RPG (Đơn 14 Kit C) cũng chưa vẽ ⇒ làm 2 style cùng lúc khi Thùy mở Kit C |
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `design/CHATGPT-UI-KIT.md` → dán khối **PHONG CÁCH CHUNG — KHỐI VUÔNG** → dán khối đơn dưới. Đính kèm:
+> - mẫu PHONG CÁCH đã duyệt: `design/bk-ui-src/khoi/khoi/khoi_man_chinh_ipad.png` (K1 #01) · `khoi/khoi/khoi_o_tu_luyen.png` + `khoi_o_cup.png` (2 icon) ·
+>   `khoi/khoi/phieu-luu/k2_01_ban_do_toan_canh.png` + `nen_the_gioi.png` + `dao_rung.png` (bản đồ + đảo khối) — tất cả lấy NÉT, không chép cảnh;
+> - mẫu BỐ CỤC (style RPG — ghi rõ với ChatGPT "chỉ lấy bố cục, vẽ mới hoàn toàn bằng khối vuông"): `design/bk-ui-src/AppHS/hs-hoc-tap-v2/reference/reference_hoc_tap.png`
+>   (cổng 5 đảo) · ảnh chụp màn Chinh phục BK của RPG (mở `hs.html?xem=hoc_tap` → Chinh phục BK, chụp màn hình; kit gốc `hs-chinh-phuc-bk-v4` không có
+>   trong máy này) · `design/bk-ui-src/AppHS/Animation/chien_dau/nam/reference/reference_chien_dau_nam.png` (sân đấu).
+>
+> Tải về **đúng thứ tự #** vào `design/bk-ui-src/khoi/hoc-tap/` (tên mặc định cũng được — Claude nhận diện bằng mắt) rồi thả lên Drive cùng thư mục `khoi`.
+> Xong nhóm nào báo Claude kiểm nhóm đó. **Nhóm B (5 icon) xong là app hết dấu ■ ngay** — nên làm đầu.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            hoc-tap-khoi (khu HỌC TẬP của style "Khối vuông": cổng 5 đảo · Chinh phục BK · bổ sung bản đồ phiêu lưu · sân Đấu trường)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Style "Khối vuông" đã có màn chính + bản đồ phiêu lưu
+                (hình đính kèm). Đơn này vẽ KHU HỌC TẬP: bấm "Học tập" ngoài màn chính ⇒ ra 5 chế độ học, mỗi chế độ 1 HÒN ĐẢO KHỐI nổi trên trời:
+                Học theo chủ đề (vào bản đồ phiêu lưu) · Luyện dạng yếu · Đấu trường BK (đấu với bạn / với máy) · Chinh phục BK (leo tháp,
+                càng lên càng khó) · Giải Vô địch BK (giải đấu tuần). Bố cục lấy theo ảnh style cũ đính kèm — CHỈ lấy bố cục, VẼ MỚI hoàn toàn
+                bằng khối vuông theo PHONG CÁCH CHUNG. Thiết bị chính: iPad NGANG 1180×820 và máy tính.
+Phong cách:     theo PHONG CÁCH CHUNG — KHỐI VUÔNG + hình đã duyệt đính kèm: khối lập phương texture pixel 16×16, địa hình bậc thang, không bo cong,
+                ánh nắng hoàng hôn hồng-cam như màn chính, mây = khối dẹt trắng. Tươi sáng, KHÔNG u tối.
+Phiên bản kit:  v1 (giao từng hình — xem CÁCH GIAO HÀNG trong PHONG CÁCH CHUNG)
+
+══ CHUẨN TỪNG LOẠI ══
+- VẬT PHẨM (icon ô): vuông 1254×1254, nền TRONG SUỐT thật, vật ở GIỮA ~80% khung, không chữ/số, KHÔNG ô túi đồ phía sau. Cùng cỡ điểm ảnh,
+  cùng hướng sáng trái-trên, cùng độ chi tiết với 2 icon đính kèm. [sprite] = sprite pixel 16×16 phóng to · [khối] = khối 3/4 texture pixel.
+- NỀN (cổng Học tập, Chinh phục, vùng đất, màn dạng bài): nền ĐẶC, KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ. Ngang 1672×941 · dọc 941×1672.
+- ĐẢO / THÁP / ĐẾ / CẦU / MỐC: nền TRONG SUỐT thật, đúng 1 vật, chừa lề trong suốt quanh vật (cho hào quang code vẽ), không bóng đổ ra nền.
+  ĐẢO NỔI = mặt trên khối cỏ nhỏ gọn tròn trịa kiểu đảo game (vẫn là khối, mép bậc thang); ĐÁY = khối đất + đá xếp bậc NHỌN DẦN xuống như
+  hình nón ngược; có 1–2 dòng thác nước khối hoặc rễ cây rủ xuống; vài khối đá vụn lơ lửng quanh đáy.
+- KHÔNG chữ, số, logo, khung trong MỌI hình (trừ 2 ảnh toàn cảnh #01, #14 được có chữ mẫu).
+
+══ DANH SÁCH (đúng thứ tự ưu tiên — dừng ở đâu cũng dùng được phần đã có) ══
+A. Duyệt phong cách
+   #01 khoi_hoc_tap_ipad — ảnh toàn cảnh iPad NGANG 1672×941: trời hoàng hôn pastel hồng-cam-tím, mặt trời vuông, biển mây khối dẹt bên dưới,
+       5 ĐẢO KHỐI nổi (đúng 5 đảo ở mục C), bố cục: đảo (1) TO NHẤT ở giữa hơi cao · (3) trái-trên · (4) phải-trên · (2) trái-dưới · (5) phải-dưới;
+       dải ánh sáng mảnh nối 4 đảo về đảo giữa; dưới mỗi đảo có tên + 1 dòng chú thích mẫu (chữ pixel tối); trên cùng thanh tiêu đề "Học tập".
+       ≈12% trên cùng KHÔNG đặt đảo (thanh tiêu đề).                                                    → DỪNG, chờ Thùy duyệt
+B. 5 icon ô (dùng khi màn hiện dạng lưới ô — mỗi ô 1 ĐỒ VẬT KHÁC HẲN các icon đã có)
+   #02 khoi_o_hoc_chu_de   — [sprite] QUẢ ĐỊA CẦU nhỏ trên đế gỗ (lục địa xanh lá, biển xanh dương) — khác tấm bản đồ giấy + la bàn đã có
+   #03 khoi_o_luyen_yeu    — [sprite] BÚA RÈN đầu sắt cán gỗ đặt chéo + 3 đốm tia lửa cam
+   #04 khoi_o_dau_truong   — [sprite] 2 LÁ CỜ HIỆU cán gỗ bắt chéo nhau: 1 lá đỏ, 1 lá xanh dương
+   #05 khoi_o_chinh_phuc   — [khối] NGỌN THÁP đá khối nhỏ, nhiều tầng, đỉnh là 1 khối đèn vàng phát sáng
+   #06 khoi_o_giai_vo_dich — [khối] BỤC VINH QUANG 3 bậc (bậc giữa cao nhất, 1 ngôi sao vàng pixel đặt trên) — khác chiếc cúp đã có
+C. Cổng Học tập (vẽ lại ĐÚNG như #01 đã duyệt)
+   #07 khoi_ht_nen_ngang — đúng cảnh #01 nhưng KHÔNG có 5 đảo, KHÔNG dải ánh sáng, KHÔNG chữ (chỗ đặt đảo = trời/mây trống). 1672×941.
+       Vùng dưới mỗi vị trí đảo phải SÁNG DỊU, ít chi tiết (chữ tên đảo màu tối đặt lên phải đọc được).
+   #08 khoi_ht_nen_doc   — như #07 khổ DỌC 941×1672 cho điện thoại (bố cục dọc: 1 đảo giữa ở trên + 2 hàng đôi).
+   #09 dao_hoc_chu_de   — đảo TO NHẤT: rừng cây anh đào khối + 1 QUẢ ĐỊA CẦU khối khổng lồ phát sáng trên bệ đá (cổng vào cuộc phiêu lưu)
+   #10 dao_luyen_yeu    — đảo LÒ RÈN: mái ván gỗ, lò đá có lửa cam, cái đe sắt, 1 thanh kiếm đang rèn đặt trên đe
+   #11 dao_dau_truong   — đảo ĐẤU TRƯỜNG: vòng tường đá khối tròn thấp (kiểu đấu trường cổ thu nhỏ), sân cát giữa, 2 cột cờ hiệu đỏ + xanh dương
+   #12 dao_chinh_phuc   — đảo có NGỌN THÁP đá khối cao xuyên mây, đỉnh là khối đèn vàng toả sáng
+   #13 dao_giai_vo_dich — đảo có BỤC VINH QUANG khối 3 bậc + CÚP VÀNG khối khổng lồ ở bậc giữa, pháo hoa pixel nhỏ phía trên
+       Đảo #09–#13: vuông 1024×1024 (cạnh ≥1024), đảo nằm GIỮA ảnh, công trình chiếm phần lớn mặt đảo — nhìn hình là biết chế độ gì.
+D. Chinh phục BK (màn chọn tháp để leo)
+   #14 khoi_chinh_phuc_ipad — ảnh toàn cảnh iPad NGANG 1672×941: CHÍNH GIỮA 1 THÁP TỔNG khối thật to, hùng vĩ nhất màn (đỉnh toả sáng vàng,
+       mây khối cuộn quanh thân, cao gần hết khung) đứng trên 1 ĐẢO ĐÁ khối nổi; XUNG QUANH vòng cung 2 bên, thấp và xa hơn: 8 THÁP CHỦ ĐỀ nhỏ,
+       mỗi tháp đứng trên 1 đảo khối nhỏ, nối về đảo giữa bằng CẦU VÁN GỖ khối. Trời hoàng hôn, biển mây phía dưới. Dưới chân mỗi tháp có
+       tên + "Tầng 12" mẫu. ≈12% trên cùng và ≈14% dưới cùng không đặt tháp (thanh trên + 2 nút chế độ).            → DỪNG, chờ Thùy duyệt
+   #15 khoi_cp_nen      — đúng cảnh #14 nhưng CHỈ trời + biển mây: KHÔNG tháp, KHÔNG đảo, KHÔNG cầu, KHÔNG chữ. 1672×941.
+   #16 thap_tong        — THÁP TỔNG vẽ lại đúng #14, KHÔNG có đảo dưới chân. 1024×1536 (đứng), chân tháp CHẠM ĐÁY ảnh.
+   #17–#24 thap_cd_1 … thap_cd_8 — 8 THÁP CHỦ ĐỀ vẽ lại đúng #14, MỖI THÁP 1 CHẤT LIỆU KHỐI khác nhau, cùng phong cách + ánh sáng:
+       1 đá cuội rêu · 2 gạch đỏ · 3 ván gỗ + mái lá · 4 băng xanh trong · 5 đá đen + mạch dung nham cam · 6 thạch anh trắng
+       · 7 thân gỗ + khối lá xanh (tháp cây) · 8 pha lê tím. Mỗi tháp 1024×1536, chân chạm đáy, KHÔNG có đảo dưới chân.
+   #25 de_tong          — ĐẢO ĐÁ khối nổi LỚN dưới tháp tổng (mặt trên PHẲNG rộng để đặt tháp, đáy nón ngược khối). Ngang 1536×1024,
+       mặt đá phẳng ở khoảng tâm ngang 50% · cao 35% khung.
+   #26 de_cd            — ĐẢO khối nổi NHỎ dưới tháp chủ đề, cùng kiểu #25. Vuông 1024×1024, mặt phẳng ở khoảng 50% ngang · 40% cao.
+   #27 cau              — CẦU VÁN GỖ khối nhìn ngang, 2 bên có dây thừng + 2 đèn lồng nhỏ, 2 đầu cầu ở sát mép TRÁI và mép PHẢI ảnh,
+       ngang 2048×1024 (code kéo dãn cầu từ đảo này sang đảo kia).
+E. Bản đồ phiêu lưu — phần còn thiếu (cùng chuẩn với bản đồ khối đã vẽ đính kèm)
+   #28 dao_anh_dao      — đảo khối nổi vùng ANH ĐÀO (cây anh đào khối tán hồng, suối nhỏ), 1024×1024 trong suốt, như dao_rung đính kèm
+   #29 dao_dong_gio     — đảo khối nổi vùng CÁNH ĐỒNG GIÓ: đồi cỏ lúa vàng, núi đá, 2 cối xay gió khối, cùng chuẩn
+   #30 nen_vung_anh_dao — nền vùng đất anh đào nhìn chéo từ trên cao, ngang 1672×941, NHIỀU khoảng đất bằng trống rải khắp để đặt 6–10 điểm,
+       KHÔNG đường đi vẽ sẵn, hơi tối nhẹ ở viền (như các nen_vung đã vẽ)
+   #31 nen_vung_dong_gio — nền vùng cánh đồng gió, cùng chuẩn #30
+   #32–#36 MỐC (512×512 trong suốt, nhìn chéo từ trên cao, giữa khung ~70% — mỗi mốc = 1 công trình khối nhỏ đặt lên bản đồ vùng):
+       #32 moc_thanh (lâu đài khối nhỏ) · #33 moc_thap (tháp canh gỗ + đá) · #34 moc_trai (lều vải + lửa trại khối)
+       · #35 moc_den (đền đá cổ có cột khối) · #36 moc_cau (cầu đá khối bắc qua suối nhỏ)
+   #37 be_da            — BỆ ĐÁ khối thấp hình bát giác xếp bậc, viền rêu, vài ô pixel vàng phát sáng mờ trên mặt (để quái đứng lên). 512×512 trong suốt.
+   #38 may_suong        — 1 ĐÁM MÂY SƯƠNG khối dẹt trắng xanh, mép thưa dần (che vùng chưa mở). Ngang 1024×512, trong suốt.
+F. Nền MÀN DẠNG BÀI (màn đi ngang — công trình + quái đứng trên đường do code đặt)
+   Chuẩn: ngang 1672×941, nền đặc, nhìn NGANG như màn game đi ngang: trời + cảnh xa nửa trên; 1 CON ĐƯỜNG lát khối đá THẲNG NGANG chạy hết bề
+   ngang ảnh, mặt đường bằng phẳng, TÂM đường ở ≈74% chiều cao (dải ≈72–76%); dưới đường là đất/cỏ khối; phía trên đường để thoáng (KHÔNG cây
+   to, không nhà che đường). KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ.
+   #39 nen_dang_rung · #40 nen_dang_bang · #41 nen_dang_nui_lua · #42 nen_dang_bien_dao · #43 nen_dang_anh_dao · #44 nen_dang_sa_mac
+   · #45 nen_dang_dam_lay     (mở rộng nếu còn thời gian: #46 nen_dang_thanh_co · #47 nen_dang_troi_sao · #48 nen_dang_dong_gio)
+G. Sân Đấu trường
+   #49 nen_san_dau — ngang 2400×860, nền đặc, góc nhìn NGANG nhẹ từ trên cao: ĐẤU TRƯỜNG đá khối ngoài trời lúc hoàng hôn, mặt sân lát khối đá
+       phẳng chiếm dải dưới (mặt sân bắt đầu ở ≈62% chiều cao), 2 bên có cột đá khối + đèn lồng, nền xa là tường khán đài khối + cờ hiệu + trời
+       hoàng hôn. Vùng GIỮA (25–75% ngang) THOÁNG, không vật cao (đòn đánh bay qua). Chỗ đứng: nhân vật bên TRÁI, đối thủ bên PHẢI, cùng ở ≈78%
+       chiều cao. KHÔNG nhân vật, KHÔNG chữ.
+
+LUẬT RIÊNG:
+  - Mọi khối / công trình / vật TỰ VẼ theo danh sách ĐƯỢC / CẤM ở PHONG CÁCH CHUNG (không chép bàn chế tạo, cổng Nether, khối/texture y nguyên game).
+  - Hình cùng họ (5 đảo · 9 tháp · 5 mốc · nền dạng bài) PHẢI cùng cỡ điểm ảnh, cùng góc nhìn, cùng hướng sáng với hình đã duyệt trước đó.
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình (trừ #01, #14). KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+> **Khi hình về (Claude làm):** kiểm từng hình đối chiếu danh sách (soi hình trùng/lệch, KHÔNG gán theo giờ tải) · nén theo bảng đổi tên dưới ·
+> khai `hocTap` + `chinhPhuc` + `sanDau` + 5 icon vào `skin/styles/khoi.ts` (dạng file sinh như `rpgHocTap.ts`/`rpgChinhPhuc.ts`, đo `hop` phần nhìn thấy) ·
+> **việc CODE đi kèm (không cần hình):** bảng màu 3D `skin/the3d/bangMauKhoi.ts` (bản đồ chỉ bật khi style có `the3d`) · bỏ đường dẫn `/rpg/` gõ
+> thẳng ở `phieuluu/ban2d/hinh2d.ts`, `LucDiaKit.tsx`, `Chang2D.tsx` và game nhúng `src/dautu/` (nền, icon menu, linh vật) — chuyển sang đọc theo style ·
+> `npm run check:style-hs` ✔ · soi bằng mắt `hs.html?xem=hoc_tap&skin=khoi`.
+
+---
+
 ## Bảng đổi tên: file ChatGPT giao → file code (Claude làm, Thùy không cần làm)
 
 | ChatGPT giao | Code dùng (`public/bk-ui/hs/skin/khoi/`) | Nén |
@@ -320,6 +455,13 @@ Bắt đầu với #01.
 | `khoi_b_lich` · `khoi_b_kiem_tra_lai` | `b_lich.png` · `b_kiem_tra_lai.png` | PNG 160px |
 | `khoi_tt_goc` · `khoi_tt_gach` | `corner.png` · `divider.png` | PNG 192px · 768×96 |
 | K2: `nen_vung_*` · `dao_*` · `quai_*` · `boss_*` · `nen_the_gioi` · `co_chinh_phuc`… | **cùng tên với Đơn 6**, trong thư mục bản đồ phiêu lưu của style `khoi` (cây thư mục do luồng Giao diện chốt khi dựng bản đồ) | nền JPG · quái PNG |
+
+| K3 #01 · #14 `khoi_hoc_tap_ipad` · `khoi_chinh_phuc_ipad` | `design/handoff/hs-skin-khoi-v1/reference/*.jpg` (ảnh chuẩn, không vào app) | JPG q85 |
+| K3 #02–#06 `khoi_o_hoc_chu_de` … `khoi_o_giai_vo_dich` | `o_hoc_chu_de.png` · `o_luyen_yeu.png` · `o_dau_truong.png` · `o_chinh_phuc.png` · `o_giai_vo_dich.png` | PNG 160px |
+| K3 #07–#13 `khoi_ht_nen_ngang/doc` · `dao_<ô>` | `hoctap/nen_ngang.jpg` · `hoctap/nen_doc.jpg` · `hoctap/dao_<ô>.webp` (như RPG) | JPG q82 · WebP 768² |
+| K3 #15–#27 `khoi_cp_nen` · `thap_*` · `de_*` · `cau` | `chinhphuc/nen.jpg` · `thap_tong.webp` · `thap_cd_<i>.webp` · `de_tong.webp` · `de_cd.webp` · `cau_sang.webp` (như RPG) | JPG · WebP 512×768 / 768×512 / 512² / 1024×512 |
+| K3 #28–#48 `dao_*` · `nen_vung_*` · `moc_*` · `be_da` · `may_suong` · `nen_dang_*` | cùng tên với `rpg/phieuluu2d/` (`dao_<vùng>` ⇒ `luc_dia_v2_<vùng>.webp`), trong thư mục bản đồ của style `khoi` | nền JPG q82 1672×941 · mốc WebP 256² |
+| K3 #49 `nen_san_dau` | `dau_truong/nen_san_dau.jpg` | JPG 1600×574 |
 
 Ô → icon (khai `anhO` trong `skin/styles/khoi.ts`): `giao_trinh → o_tren_lop` · `thanh_tuu`, `xep_hang → o_cup` · còn lại cùng tên ô.
 

@@ -18,6 +18,7 @@
 | Trang trí (hoa văn góc, gạch phân cách) | `corner.png`, `divider.png` → `trangTri` | |
 | Font | `hs.html` (Google Fonts, có tiếng Việt) | chỉ khai font style thật sự dùng |
 | Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng · màn đấu) | `skin/the3d/bangMau<id>.ts` → khai `the3d` trong style (hợp đồng `skin/the3d/kieuMau.ts`) | Cảnh 3D viết bằng CODE, chỉ đọc màu qua bảng này (không gõ hex trong màn). Thiếu `the3d` ⇒ màn phiêu lưu báo "style chưa có bản đồ 3D". Quái/boss cắm qua `skin/the3d/nguonQuai.ts` (Thùy thiết kế riêng) |
+| Sổ hình BẢN ĐỒ PHIÊU LƯU 2D · ảnh QUÁI · hình GAME NHÚNG (07/10) | `skin/styles/<id>BanDo2d.ts` → khai `banDo2d` + `quai2d` · `game` trong style (hợp đồng `BanDo2D` ở `skin/kieu.ts`) | Màn bản đồ (`phieuluu/ban2d/hinh2d.ts`) và game Đấu trường/leo tháp (`src/dautu/hinhGame.ts`, nhận `?skin=`) CHỈ đọc qua đây — cấm gõ `/rpg/` trong màn. Thiếu biome nào ⇒ hình tạm; thiếu `quai2d` ⇒ quái tạm CC0. Mẫu: `rpgBanDo2d.ts` · `khoiBanDo2d.ts` |
 | Ảnh gốc từ ChatGPT (chưa nén) | `design/bk-ui-src/…` · ảnh toàn cảnh chuẩn trong `design/handoff/<kit>/reference/` | nguồn để nén lại khi cần |
 
 Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.jpg`, `nv_*_chibi.png`; icon/banner còn anime cũ): `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;
@@ -26,6 +27,8 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
 ## 2. Cách style chạy (đừng phá)
 
 - `useApSkinGoc(gd)` (HocSinhApp) + `ganSkinMacDinh()` (main-hs) gắn biến `--sk-*` lên `<html>` theo style em đang chọn.
+- **`laySkin(null)` = style ĐANG ÁP** (07/10 — trước đó rơi thẳng về RPG ⇒ khu Học tập/Chinh phục/quái luôn vẽ hình RPG dù em chọn style khác).
+  Màn cần hình của style mà không có `gd` trong tay thì gọi `laySkin(null)`. Trang xem thử: `ganSkinXemThu()` (KhungHS) đọc `&skin=`.
 - Mọi màn CHỈ đọc biến qua **`skin/KhungHS.tsx`**:
   - Khung: `ManHS` (trang) · `DauTrangHS` (nút quay lại + tiêu đề) · `TheHS` (thẻ) · `NutHS` (nút chính / `phu`) · `NhanHS` (nhãn) ·
     `BadgeHS` · `NhomHS` (tiêu đề nhóm) · `TrongHS` (rỗng / đang tải / lỗi).

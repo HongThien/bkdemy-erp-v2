@@ -20,6 +20,7 @@ import { GocLuyen } from './man/GocLuyen'
 import { ManLeoThap } from './man/LeoThap'
 import { BxhModal, CaiDatModal, HoSoModal, TaoNhanVat } from './man/HopThoai'
 import './dautu.css'
+import { HINH_GAME } from './hinhGame'
 
 type Man =
   | { ten: 'home' }
@@ -114,7 +115,7 @@ export default function App() {
   const trongTran = man.ten === 'tran' || man.ten === 'phong' || man.ten === 'giai'
 
   return (
-    <div className="app-dautu" style={{ backgroundImage: 'url(/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg)' }}>
+    <div className="app-dautu" style={{ backgroundImage: `url(${HINH_GAME.nenMenu})` }}>
       <div className="app-mo" />
       {!(trongTran && man.ten === 'tran') && <ThanhTren onHop={setHop} laNha={man.ten === 'home'} />}
       <main className="app-than">{noiDung}</main>
@@ -179,11 +180,11 @@ function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai' | 'thap') 
   const nguon = useMon()
   const canOn = useMemo(() => tuYeu(h.nho).length + tuDenHan(h.nho).length, [h.nho])
   const tatCa = [
-    { id: 'dau' as const, icon: '/bk-ui/hs/skin/rpg/o_tu_luyen.png', tieu: nguon.coNhoTu ? 'Đấu từ vựng' : `Đấu ${nguon.ten}`, mo: nguon.coNhoTu ? 'Chọn chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn từ!' : 'Chọn khối và chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn điểm!', nut: 'Chọn chủ đề', mau: 'xanh' },
-    { id: 'giai' as const, icon: '/bk-ui/hs/skin/rpg/o_cup.png', tieu: 'Giải đấu 8 người', mo: 'Tứ kết → Bán kết → Chung kết, đấu trực tiếp chọn nhà vô địch.', nut: 'Vào giải', mau: 'vang' },
-    { id: 'thap' as const, icon: '/bk-ui/hs/skin/rpg/phieuluu2d/moc_thap.webp', tieu: 'Leo tháp', mo: 'Tháp hôm nay: Sinh tồn 5 phút hoặc Vô tận — cả trường đua bảng xếp hạng!', nut: 'Leo tháp', mau: 'do' },
-    { id: 'noi_tu' as const, icon: '/bk-ui/hs/skin/rpg/o_so_tay.png', tieu: 'Nối từ', mo: 'Nối từ tự do, nghe phát âm và học cách dùng từ trong ngữ cảnh!', nut: 'Chơi nối từ', mau: 'tim' },
-    { id: 'goc' as const, icon: '/bk-ui/hs/skin/rpg/o_nhiem_vu.png', tieu: 'Góc luyện tập', mo: 'Ôn từ yếu, thẻ ghi nhớ, tiến độ học tập và góp từ mới.', nut: canOn ? `Ôn ${canOn} từ` : 'Vào luyện tập', mau: 'lam' },
+    { id: 'dau' as const, icon: HINH_GAME.icon.dau, tieu: nguon.coNhoTu ? 'Đấu từ vựng' : `Đấu ${nguon.ten}`, mo: nguon.coNhoTu ? 'Chọn chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn từ!' : 'Chọn khối và chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn điểm!', nut: 'Chọn chủ đề', mau: 'xanh' },
+    { id: 'giai' as const, icon: HINH_GAME.icon.giai, tieu: 'Giải đấu 8 người', mo: 'Tứ kết → Bán kết → Chung kết, đấu trực tiếp chọn nhà vô địch.', nut: 'Vào giải', mau: 'vang' },
+    { id: 'thap' as const, icon: HINH_GAME.icon.thap, tieu: 'Leo tháp', mo: 'Tháp hôm nay: Sinh tồn 5 phút hoặc Vô tận — cả trường đua bảng xếp hạng!', nut: 'Leo tháp', mau: 'do' },
+    { id: 'noi_tu' as const, icon: HINH_GAME.icon.noi_tu, tieu: 'Nối từ', mo: 'Nối từ tự do, nghe phát âm và học cách dùng từ trong ngữ cảnh!', nut: 'Chơi nối từ', mau: 'tim' },
+    { id: 'goc' as const, icon: HINH_GAME.icon.goc, tieu: 'Góc luyện tập', mo: 'Ôn từ yếu, thẻ ghi nhớ, tiến độ học tập và góp từ mới.', nut: canOn ? `Ôn ${canOn} từ` : 'Vào luyện tập', mau: 'lam' },
   ]
   // Nối từ + Góc luyện tập là phần riêng của môn Anh (sổ nhớ từ) — không thuộc khung 6 chế độ
   const the = tatCa.filter((t) => nguon.coNhoTu || (t.id !== 'noi_tu' && t.id !== 'goc'))
@@ -211,8 +212,8 @@ function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai' | 'thap') 
           </button>
         ))}
       </div>
-      <img src="/bk-ui/hs/skin/rpg/nv_nu_chibi.png" alt="" className="linh-vat trai" />
-      <img src="/bk-ui/hs/skin/rpg/nv_nam_chibi.png" alt="" className="linh-vat phai" />
+      <img src={HINH_GAME.linhVat.nu} alt="" className="linh-vat trai" />
+      <img src={HINH_GAME.linhVat.nam} alt="" className="linh-vat phai" />
     </div>
   )
 }

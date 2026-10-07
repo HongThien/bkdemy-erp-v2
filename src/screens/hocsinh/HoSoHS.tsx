@@ -201,10 +201,11 @@ export function TheTVHS({ hoTen, anhUrl, bac, khoe }: { hoTen: string; anhUrl: s
 }
 
 // ── CONTAINER ──
-export default function HoSoHS({ hoTen, anhUrl, avatar, mons, mon, onChonMon, onBack, onRank, onAlbum }: {
+export default function HoSoHS({ hoTen, anhUrl, avatar, mons, mon, onChonMon, onBack, onRank, onAlbum, onGopY }: {
   hoTen: string; anhUrl: string | null; avatar?: ReactNode
   mons: LopMonHS[]; mon: string | null; onChonMon: (m: string) => void
   onBack: () => void; onRank?: () => void; onAlbum?: () => void
+  onGopY?: () => void // Góp ý & báo lỗi (spec-v1 §6: nút ở menu ⋯ + Hồ sơ)
 }) {
   const [rank, setRank] = useState<RankCuaToi | null | undefined>(undefined)
   const [nv, setNv] = useState<NhiemVuCuaToi | null>(null)
@@ -231,6 +232,7 @@ export default function HoSoHS({ hoTen, anhUrl, avatar, mons, mon, onChonMon, on
         ? <p className="px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>
         : <HoSoView hoTen={hoTen} anhUrl={anhUrl} avatar={avatar} mons={mons} mon={mon} onChonMon={onChonMon}
             rank={rank ?? null} nv={nv} hs={hs} onRank={onRank} onAlbum={onAlbum} onDoiKhoe={hs ? () => setChonKhoe(true) : undefined} />}
+      {onGopY && <NutHS phu onClick={onGopY} className="self-center">💬 Góp ý & báo lỗi</NutHS>}
       {chonKhoe && hs && mon && (
         <ChonKhoe hs={hs} onHuy={() => setChonKhoe(false)}
           onLuu={async (keys) => { const moi = await datKhoe(mon, keys); setHs((h) => (h ? { ...h, khoe: moi } : h)); setChonKhoe(false) }} />

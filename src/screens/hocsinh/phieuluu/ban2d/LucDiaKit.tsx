@@ -9,7 +9,7 @@ import { KIT_LUC_DIA, SAO_KIT } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
 import { HERO_CHAY } from '../../skin/heroChay'
 import { anhChayNv, hopVeNv, khungChayTheoMs, napChayNv, type NvId } from '../../skin/nhanVat'
-import { anhNenDang, anhVat } from './hinh2d'
+import { anhNenDang, anhVat, coKitLucDia } from './hinh2d'
 import { Co, CssBan2D, MuiTen, Sao5, Suong, useChuyenDong, useKhung2D } from './San2D'
 import { QuaiTam } from './HinhTam'
 
@@ -57,7 +57,7 @@ function xepNhan(moc: Hop[], chan: { x: number; y: number }[], nhan: ({ w: numbe
   return kq
 }
 
-export const coKit = (biome: string, soVung: number) => !!KIT_LUC_DIA[biome] && soVung > 0 && soVung <= KIT_LUC_DIA[biome].moc.length
+export const coKit = (biome: string, soVung: number) => coKitLucDia() && !!KIT_LUC_DIA[biome] && soVung > 0 && soVung <= KIT_LUC_DIA[biome].moc.length
 
 /** Đường tâm → dãy điểm dày (Catmull-Rom) + độ dài tích luỹ. Toạ độ chuẩn hoá theo CHIỀU RỘNG (x∈0–1, y∈0–0,563) để cự ly đúng. */
 function dungDuong(duong: [number, number][]) {

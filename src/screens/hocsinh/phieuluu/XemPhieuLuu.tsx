@@ -1,9 +1,9 @@
 // TRANG XEM THỬ bản đồ phiêu lưu (hs.html?xem=phieu_luu): dữ liệu giả cùng hình dạng hợp đồng, không gọi DB, không cần đăng nhập.
 // Dùng để soi cảnh 3D ở 1180×820 / 1440×900 / 390×844 trước khi nối dữ liệu thật (spec-v1-app-hs.md §13.3 việc 1).
-// Mở thẳng một tầng: &tang=luc_dia&luc=C · &tang=chang&luc=C&vung=C1 (+ &nd=N số dạng, &biome=… vùng) · mặc định bản 2D; &ban=3d để so với bản 3D cũ · &gioi=nu
+// Mở thẳng một tầng: &tang=luc_dia&luc=C · &tang=chang&luc=C&vung=C1 (+ &nd=N số dạng, &biome=… vùng) · mặc định bản 2D; &ban=3d để so với bản 3D cũ · &gioi=nu · &skin=khoi (style khác)
 import { useState } from 'react'
 import { laySkin } from '../skin/registry'
-import { GD_MAC_DINH, DauTrangHS } from '../skin/KhungHS'
+import { DauTrangHS, ganSkinXemThu, useApSkinGoc } from '../skin/KhungHS'
 import { MAU_BAN_DO as MAU, banDoNhieu } from './mau'
 import { tuBanDoPL, type BanDoV } from './kieu'
 import { TheGioiView } from './TheGioiView'
@@ -41,8 +41,9 @@ type Tang = { t: 'the_gioi' } | { t: 'luc_dia'; luc: string } | { t: 'chang'; lu
 
 export default function XemPhieuLuu() { return new URLSearchParams(location.search).get('that') ? <XemThat /> : <XemBanDo /> }
 function XemBanDo() {
+  const [gd] = useState(ganSkinXemThu); useApSkinGoc(gd) // gắn style TRƯỚC layBanDo (gán biome theo sổ hình của style)
   const [MAU_BAN_DO] = useState(layBanDo)
-  const b = laySkin(GD_MAC_DINH.skin).the3d!
+  const b = laySkin(gd.skin).the3d ?? laySkin(null).the3d!
   const q = new URLSearchParams(location.search)
   const [tang, setTang] = useState<Tang>(() => {
     const t = q.get('tang'), luc = q.get('luc') ?? 'C'

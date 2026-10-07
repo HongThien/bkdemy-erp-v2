@@ -7,11 +7,12 @@ import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 
 import { anhDau, hopDau, HERO_DAU, TU_THE_DAU, type TuTheDau } from '../../screens/hocsinh/skin/heroDau'
 import { AURA, LOC_BOSS, napFx, phatDon, type Don, type Hop, type TtBoss, type TtHero } from '../../screens/hocsinh/thuthach/hieuUng'
 import { NHAN_VAT, nvChuan } from './Chung'
+import { HINH_GAME } from '../hinhGame'
 
 export interface SuKienSan { seq: number; loai: 'danh' | 'ket'; ben: -1 | 0 | 1 }
 
 const R = '/bk-ui/hs/skin/rpg'
-const NEN = R + '/dau_truong/nen_san_dau.jpg'
+const NEN = HINH_GAME.sanDau // sân theo style em đang dùng (hinhGame.ts)
 type TtBossAnh = 'dung' | 'trung' | 'chieu' | 'gian' | 'ha' | 'noi'
 const anhBoss = (p: TtBossAnh) => `${R}/boss_thuy_${p}.png`
 

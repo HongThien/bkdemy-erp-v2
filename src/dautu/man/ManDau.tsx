@@ -10,6 +10,7 @@ import { capNhatNho, khoHoSo } from '../lib/hoSo'
 import { ghiTran, type CheDo, type KetQuaGhi } from '../lib/api'
 import { Avatar, Nut } from '../ui/Chung'
 import { SanDau2D, type SuKienSan } from '../ui/SanDau2D'
+import { HINH_GAME } from '../hinhGame'
 
 const PHIM: string[][] = [['a', 's', 'z', 'x'], ['j', 'k', 'n', 'm']]
 const PHIM_SO = ['1', '2', '3', '4']
@@ -130,7 +131,7 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
   const phai = laDoi ? 1 : ban
 
   return (
-    <div className={'man man-dau' + (laDoi ? ' che-do-doi' : '')} style={{ backgroundImage: 'url(/bk-ui/hs/skin/rpg/bg_dao_troi_chibi_ngang.jpg)' }}>
+    <div className={'man man-dau' + (laDoi ? ' che-do-doi' : '')} style={{ backgroundImage: `url(${HINH_GAME.nenDau})` }}>
       <div className="dau-hud">
         <TheNguoi s={s} g={trai as 0 | 1} ben="trai" />
         <div className="hud-giua">
