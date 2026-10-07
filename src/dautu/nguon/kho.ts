@@ -2,7 +2,8 @@
 // MCQ chung `_kho_dk_mcq_sql` (fn_dtv_kho_bo_cau) — client chỉ gọi hàm, không lọc/tính gì.
 import { sb, coMang } from '../lib/sb'
 import { chuoiNgauNhien } from '../lib/tienich'
-import type { Cau, CapNguon, ChuDeNguon, NguonCau } from './kieu'
+import { khoHoSo } from '../lib/hoSo'
+import type { Cau, CapNguon, ChuDeNguon, CheDoThap, DeMayChu, KetThapMayChu, KqCham, NguonCau } from './kieu'
 
 interface DongKho { ma_cau: string; de: string; anh: string | null; giai: string | null; dang: string; muc: number | null; opts: string[]; dung: number }
 
@@ -22,6 +23,13 @@ const sangCau = (r: DongKho): Cau => ({
   opts: r.opts.map((t, i) => ({ id: `${r.ma_cau}#${i}`, text: t })),
   dung: `${r.ma_cau}#${r.dung}`,
   giai: r.giai,
+})
+
+interface DongPhat { thu_tu: number; ma_cau: string; de: string; anh: string | null; dang: string; muc: number | null; opts: string[] }
+// Câu phát từ máy chủ: KHÔNG có đáp án — dung = '' (hiện đáp án đúng sau khi máy chủ chấm xong câu đó)
+const sangCauPhat = (r: DongPhat): Cau => ({
+  id: r.ma_cau, de: r.de, anh: r.anh, nhan: 'Chọn đáp án đúng:', phu: r.dang,
+  opts: r.opts.map((t, i) => ({ id: `${r.ma_cau}#${i}`, text: t })), dung: '', giai: null,
 })
 
 const tenKhoi = (k: string) => (/^\d+T$/.test(k) ? `Lớp ${k.slice(0, -1)} (nâng cao)` : `Lớp ${k}`)
@@ -57,5 +65,16 @@ export function taoNguonKho(o: { mon: string; ten: string; icon: string; giayMoi
     taoBoDe: (c) => layBo(c.cap, c.chuDe === 'tron' || c.chuDe === 'auto' ? null : c.chuDe, c.soCau, chuoiNgauNhien(12), false),
     taoThap: (che, ngay, cap, chuDe) => layBo(cap, chuDe ?? null, 200, `thap|${che}|${o.mon}|${cap}|${chuDe ? chuDe + '|' : ''}${ngay}`, true),
     nhomThap: (cap, chuDe) => (chuDe ? `${cap}|${chuDe}` : cap),
+    async taoDeMayChu(che: CheDoThap, cap: string, chuDe?: string | null): Promise<DeMayChu> {
+      const uid = khoHoSo.lay().uid
+      const de = await rpc<{ de_id: string; so_cau: number; giay_goc: number; nhom: string }>('fn_dtv_de_moi', { p_uid: uid, p_mon: o.mon, p_che_do: che, p_khoi: cap, p_chu_de: chuDe ?? null })
+      return {
+        deId: de.de_id, soCau: de.so_cau, giayGoc: de.giay_goc, nhom: de.nhom,
+        lay: (tu, so) => rpc<DongPhat[]>('fn_dtv_de_lay', { p_uid: uid, p_de_id: de.de_id, p_tu: tu, p_so: so }).then((ds) => ds.map(sangCauPhat)),
+        batDau: () => rpc<void>('fn_dtv_de_bat_dau', { p_uid: uid, p_de_id: de.de_id }).then(() => undefined),
+        cham: (thuTu, idx, ms) => rpc<KqCham>('fn_dtv_cham', { p_uid: uid, p_de_id: de.de_id, p_thu_tu: thuTu, p_chon: idx, p_ms: Math.round(ms) }),
+        ket: () => rpc<KetThapMayChu>('fn_dtv_thap_ket', { p_uid: uid, p_de_id: de.de_id }),
+      }
+    },
   }
 }

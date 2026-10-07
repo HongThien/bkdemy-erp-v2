@@ -1,7 +1,8 @@
 // LEO THÁP — menu 2 chế độ + bảng xếp hạng (hôm nay / kỷ lục) · màn leo · kết quả. Luật ở lib/thap.ts.
 // Câu lấy từ NGUỒN của môn (nguon/): tháp hôm nay = chuỗi TẤT ĐỊNH theo (môn + khối + chế độ + ngày VN); BXH tách theo môn + khối.
 import { useEffect, useRef, useState } from 'react'
-import { dongTuCau, ghiNhatKy, type DongNhatKy } from '../lib/nhatKy'
+import { dongTuCau, ghiNhatKy, laTaiKhoan, type DongNhatKy } from '../lib/nhatKy'
+import type { DeMayChu, KetThapMayChu } from '../nguon/kieu'
 import { THAP, MS_SONG_CON, PHAT_SAI_MS, bxhThap, ghiThap, giayVoTan, type BxhThap, type CheDoThap } from '../lib/thap'
 import { capNhatNho } from '../lib/hoSo'
 import { CD_NHUNG, CHE_NHUNG, KHOI_NHUNG, TCD_NHUNG } from '../lib/nhung'
@@ -85,7 +86,7 @@ export function BangThap({ che, mon, nhom, gon, lamMoi }: { che: CheDoThap; mon:
 }
 
 type Pha = 'tai' | 'dem' | 'choi' | 'chet' | 'xong'
-interface KetQuaLeo { tang: number; sai: number; ms: number; cauSai: Cau[]; nk: DongNhatKy[] }
+interface KetQuaLeo { tang: number; sai: number; ms: number; cauSai: Cau[]; nk: DongNhatKy[]; de?: DeMayChu }
 
 function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; toi: NguoiTran; nguon: NguonCau; cap: string; onLeoLai: () => void; onLui: () => void }) {
   const [ds, setDs] = useState<Cau[] | null>(null)
@@ -111,17 +112,26 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
     nk.current.set(i, dongTuCau(i + 1, cau, chon, dung, performance.now() - lucCau.current))
   }
   const daXong = useRef(false)
+  const de = useRef<DeMayChu | null>(null) // ĐỀ CHẤM Ở MÁY CHỦ (tài khoản + môn có kho DB); null ⇒ bản cũ (game tự khai)
+  const dangTaiLo = useRef(false)
   const gioi = NHAN_VAT[nvChuan(toi.nv)].gioi
   const goc = nguon.giayThap
   const buoc = Math.max(1, Math.round(goc * 0.1))
 
   // tháp hôm nay (tất định) → đếm ngược 3s
   useEffect(() => {
+    if (laTaiKhoan() && nguon.taoDeMayChu) {
+      nguon.taoDeMayChu(che, cap, CD_NHUNG)
+        .then(async (d) => { de.current = d; const lo = await d.lay(1, 20); setDs(lo); setPha('dem') })
+        .catch((e) => setLoiTai((e as Error).message))
+      return
+    }
     nguon.taoThap(che, ngayVN(), cap, CD_NHUNG).then((d) => { setDs(d); setPha('dem') }).catch((e) => setLoiTai((e as Error).message))
   }, [che, nguon, cap])
   useEffect(() => {
     if (pha !== 'dem') return
-    const h = setTimeout(() => {
+    const h = setTimeout(async () => {
+      if (de.current) { try { await de.current.batDau() } catch (e) { setLoiTai((e as Error).message); return } } // đóng dấu giờ ở máy chủ
       const t = performance.now()
       batDau.current = t
       lucCau.current = t
@@ -140,32 +150,57 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
     if (daXong.current) return
     daXong.current = true
     const ms = Math.min(performance.now() - batDau.current, che === 'song_con' ? MS_SONG_CON : Infinity)
-    setKq({ tang: cuoi.tang, sai: cuoi.sai, ms, cauSai: cauSai.current, nk: [...nk.current.values()].sort((a, b) => a.thu_tu - b.thu_tu) })
+    setKq({ tang: cuoi.tang, sai: cuoi.sai, ms, cauSai: cauSai.current, nk: [...nk.current.values()].sort((a, b) => a.thu_tu - b.thu_tu), de: de.current ?? undefined })
     setPha('xong')
   }
 
   // hết giờ · hết câu trong tháp hôm nay
   useEffect(() => {
     if (pha !== 'choi') return
-    if (ds && i >= ds.length) { ketThuc({ tang, sai }); return }
+    if (ds && i >= (de.current?.soCau ?? ds.length)) { ketThuc({ tang, sai }); return }
     if (bay < han.current) return
     if (che === 'song_con') { phat('thong_bao'); ketThuc({ tang, sai }) }
     else chet()
   }, [bay]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const chet = () => {
+  const chet = (cauRoi?: Cau) => {
     if (pha !== 'choi' || !cau) return
+    // hết giờ câu (Vô tận) ở máy chủ cũng phải ghi nhận: gửi "bỏ qua" để máy chủ đóng lượt + lộ đáp án (sau khi đã mất câu)
+    if (de.current && !khoa.current && !nk.current.has(i)) void de.current.cham(i + 1, -1, (performance.now() - lucCau.current)).then((r) => setDs((p) => p && p.map((c, k) => (k === i ? { ...c, dung: c.opts[r.dung_idx]?.id ?? '', giai: r.giai } : c)))).catch(() => undefined)
     setPha('chet'); setPose('guc'); setHienDung(true); phat('thua')
     ghiCau('', false) // hết giờ (nếu đã chọn sai ở nhánh vô tận thì dòng đó đã có, không ghi đè)
-    cauSai.current = [...cauSai.current, cau]
+    cauSai.current = [...cauSai.current, cauRoi ?? cau]
     if (cau.tuId) capNhatNho(cau.tuId, false, 12)
     setTimeout(() => ketThuc({ tang, sai: sai + 1 }), 1800)
   }
 
-  const chon = (opt: string) => {
+  // Lô câu kế (chấm ở máy chủ): còn ≤ 6 câu thì xin thêm 20
+  useEffect(() => {
+    const d = de.current
+    if (!d || !ds || dangTaiLo.current || ds.length >= d.soCau || i + 6 < ds.length) return
+    dangTaiLo.current = true
+    d.lay(ds.length + 1, 20).then((lo) => setDs((p) => (p ? [...p, ...lo] : lo))).catch(() => undefined).finally(() => { dangTaiLo.current = false })
+  }, [i, ds?.length]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const chon = async (opt: string) => {
     if (pha !== 'choi' || !cau || khoa.current || opt === daSai) return
     const giay = (performance.now() - lucCau.current) / 1000
-    if (opt === cau.dung) {
+    let dung = opt === cau.dung
+    let cauHT: Cau = cau // câu kèm đáp án đúng (chấm ở máy chủ thì chỉ có SAU khi trả lời)
+    if (de.current) {
+      // CHẤM Ở MÁY CHỦ: khoá nút trong lúc chờ; kết quả (đúng/sai + đáp án + lời giải) do DB trả về
+      khoa.current = true
+      try {
+        const r = await de.current.cham(i + 1, cau.opts.findIndex((o) => o.id === opt), giay * 1000)
+        const cauChuan: Cau = { ...cau, dung: cau.opts[r.dung_idx]?.id ?? '', giai: r.giai }
+        setDs((p) => p && p.map((c, k) => (k === i ? cauChuan : c)))
+        cauHT = cauChuan
+        dung = r.dung
+        if (r.het_gio) { khoa.current = false; chet(); return }
+      } catch (e) { khoa.current = false; phat('thong_bao'); setLoiTai((e as Error).message); return }
+      khoa.current = false
+    }
+    if (dung) {
       ghiCau(opt, true)
       phat('dung')
       if (cau.tuId) capNhatNho(cau.tuId, true, giay)
@@ -181,8 +216,8 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
     ghiCau(opt, false)
     phat('sai')
     if (cau.tuId) capNhatNho(cau.tuId, false, giay)
-    if (che === 'vo_tan') { setDaSai(opt); chet(); return }
-    cauSai.current = [...cauSai.current, cau]
+    if (che === 'vo_tan') { setDaSai(opt); chet(cauHT); return }
+    cauSai.current = [...cauSai.current, cauHT]
     setSai(sai + 1); setDaSai(opt); setHienDung(true); setPose('trung')
     han.current -= PHAT_SAI_MS
     khoa.current = true
@@ -276,7 +311,7 @@ function ThapVe({ tang, gioi, pose, che, buoc }: { tang: number; gioi: 'nam' | '
 }
 
 function KetQuaThap({ che, nguon, cap, kq, onLeoLai, onLui }: { che: CheDoThap; nguon: NguonCau; cap: string; kq: KetQuaLeo; onLeoLai: () => void; onLui: () => void }) {
-  const [ghi, setGhi] = useState<Awaited<ReturnType<typeof ghiThap>> | null>(null)
+  const [ghi, setGhi] = useState<(Awaited<ReturnType<typeof ghiThap>> & Partial<KetThapMayChu>) | null>(null)
   const [loi, setLoi] = useState('')
   const da = useRef(false)
   const nhom = nguon.nhomThap(cap, CD_NHUNG)
@@ -284,9 +319,11 @@ function KetQuaThap({ che, nguon, cap, kq, onLeoLai, onLui }: { che: CheDoThap; 
     if (da.current) return
     da.current = true
     phat(kq.tang >= 10 ? 'thang' : 'thong_bao')
-    ghiThap(che, nguon.mon, nhom, kq.tang, kq.sai, kq.ms).then((r) => {
+    // Có đề chấm ở máy chủ ⇒ máy chủ CHỐT tầng/sai/giờ từ các câu đã chấm (không nhận số do game khai) và đã tự ghi nhật ký câu.
+    const p = kq.de ? kq.de.ket() : ghiThap(che, nguon.mon, nhom, kq.tang, kq.sai, kq.ms)
+    p.then((r) => {
       setGhi(r); if (r?.len_cap) setTimeout(() => phat('len_cap'), 800)
-      if (r?.luot_id) void ghiNhatKy({ mon: nguon.mon, cheDo: che, chuDe: nhom, luotId: r.luot_id, cau: kq.nk })
+      if (!kq.de && r?.luot_id) void ghiNhatKy({ mon: nguon.mon, cheDo: che, chuDe: nhom, luotId: r.luot_id, cau: kq.nk })
     }).catch((e) => setLoi((e as Error).message))
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
   const toi = ghi?.bxh.toi
@@ -296,7 +333,7 @@ function KetQuaThap({ che, nguon, cap, kq, onLeoLai, onLui }: { che: CheDoThap; 
       <DauMan tieuDe={`${THAP[che].icon} ${THAP[che].ten} — kết quả`} phu={`${nguon.icon} ${nguon.ten}${TCD_NHUNG ? ` · ${TCD_NHUNG}` : nhom ? ` · Lớp ${nhom}` : ''}`} onLui={onLui} />
       <div className="luoi-2">
         <div className="giay o-phong ket-thap">
-          <div className="so-to">{kq.tang}</div>
+          <div className="so-to">{ghi?.tang ?? kq.tang}</div>
           <div className="nhan-so-to">tầng</div>
           <p>{che === 'song_con' ? `Sai ${kq.sai} câu · leo trong ${Math.floor(kq.ms / 60000)}:${String(Math.floor((kq.ms % 60000) / 1000)).padStart(2, '0')}` : `Trụ được ${(kq.ms / 1000).toFixed(1)} giây`}</p>
           {loi ? <p className="loi">Chưa ghi được kết quả: {loi}</p> : !ghi ? <p className="mo">Đang ghi kết quả…</p> : (

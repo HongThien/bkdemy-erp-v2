@@ -25,6 +25,22 @@ export interface ChuDeNguon { id: string; ten: string; icon: string; mau?: strin
 export interface CauHinhBo { cap: string; chuDe: string; soCau: number; tiLeDao?: number; uuTien?: string[] }
 export type CheDoThap = 'song_con' | 'vo_tan'
 
+/** ĐỀ THÁP CHẤM Ở MÁY CHỦ (P1 phase 2): câu phát KHÔNG kèm đáp án (Cau.dung = ''), chấm từng câu ở DB, tầng do DB tính. */
+export interface KqCham { dung: boolean; dung_idx: number; giai: string | null; het_gio: boolean; so_dung: number; so_sai: number }
+export interface KetThapMayChu {
+  ho_so: import('../lib/hoSo').HoSoDB; xp_nhan: number; len_cap: boolean; luot_id: string
+  tang: number; sai: number; ms: number
+  bxh: { so_nguoi: number; top: { hang: number; ma: string; ten: string; nv: string; tang: number; sai: number; ms: number }[]; toi: { hang: number; tang: number; sai: number; ms: number } | null }
+}
+export interface DeMayChu {
+  deId: string; soCau: number; giayGoc: number; nhom: string
+  lay(tu: number, so: number): Promise<Cau[]>
+  batDau(): Promise<void>
+  /** idx = chỉ số phương án (0–3) · -1 = bỏ qua / hết giờ phía game */
+  cham(thuTu: number, idx: number, ms: number): Promise<KqCham>
+  ket(): Promise<KetThapMayChu>
+}
+
 export interface NguonCau {
   mon: string // nhãn môn (CLAUDE §1.6) — 'Tiếng Anh' | 'Toán' | 'KHTN'
   ten: string
@@ -40,6 +56,8 @@ export interface NguonCau {
   taoBoDe(o: CauHinhBo): Promise<Cau[]>
   /** chuDe: tháp CHỦ ĐỀ (Chinh phục BK) — null = tháp tổng của khối */
   taoThap(cheDo: CheDoThap, ngay: string, cap: string, chuDe?: string | null): Promise<Cau[]>
+  /** có ⇒ tài khoản học sinh leo tháp bằng ĐỀ CHẤM Ở MÁY CHỦ (môn có kho DB); không có (Tiếng Anh) ⇒ vẫn bản cũ, kết quả do game khai */
+  taoDeMayChu?(cheDo: CheDoThap, cap: string, chuDe?: string | null): Promise<DeMayChu>
   /** nhóm bảng xếp hạng tháp: Anh 1 tháp chung (''), môn kho tách theo khối; tháp chủ đề = 'khối|mã chủ đề' (mỗi tháp 1 BXH riêng) */
   nhomThap(cap: string, chuDe?: string | null): string
 }

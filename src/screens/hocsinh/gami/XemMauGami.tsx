@@ -132,7 +132,7 @@ const BXH_TOP = (toiHang: number | null) => Array.from({ length: 20 }, (_, i) =>
 function MauBxh({ tt }: { tt: number }) {
   const [loai, setLoai] = useState(tt === 3 ? 'C1' : 'A1')
   const [pv, setPv] = useState<'khoi' | 'toan_bk'>('khoi')
-  const [ky, setKy] = useState<'tuan' | 'thang' | 'mua' | 'hien_tai'>('thang')
+  const [ky, setKy] = useState<'hom_nay' | 'tuan' | 'thang' | 'mua' | 'hien_tai'>('thang')
   const [hienMa, setHienMa] = useState(false)
   const d = BXH_DM.find((x) => x.ma === loai) ?? BXH_DM[0]
   const kq: BxhKetQua = !d.san_sang ? { ma: d.ma, ten: d.ten, san_sang: false, ghi_chu: d.ghi_chu ?? 'Sắp có' }

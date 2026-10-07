@@ -319,6 +319,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
         'Tỉ lệ đạt: phần trăm dạng bài em đã đạt.',
         'Chuỗi làm bài: số ngày liên tiếp có lượt luyện được tính.',
         'Mock Test tháng: điểm Mock Test gần nhất; đề mỗi khối khác nhau nên Toàn BK so trực tiếp điểm.',
+        'Leo tháp Sinh tồn: tầng cao nhất trong 5 phút ở Chinh phục BK (Toán, KHTN). Chỉ tính lượt do máy chủ chấm; hòa tầng thì ít câu sai hơn đứng trên.',
         'Một số bảng khác đang ghi “Sắp có”.',
       ] },
       { tieu: 'Quy ước', loai: 'luat', y: [

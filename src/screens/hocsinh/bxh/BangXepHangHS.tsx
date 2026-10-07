@@ -10,7 +10,7 @@ import { bxhDanhMuc, bxhXem, type BxhKetQua, type BxhKy, type BxhLoai, type BxhP
 import { monCuaHS } from '../../../lib/tuluyen'
 import { DauTrangHS, MAU, HEAD, ManHS, THE, THE_TRON, TrongHS, useMonHS } from '../skin/KhungHS'
 
-const TEN_KY: Record<BxhKy, string> = { tuan: 'Tuần này', thang: 'Tháng này', mua: 'Cả mùa', hien_tai: 'Hiện tại' }
+const TEN_KY: Record<BxhKy, string> = { hom_nay: 'Hôm nay', tuan: 'Tuần này', thang: 'Tháng này', mua: 'Cả mùa', hien_tai: 'Kỷ lục / hiện tại' }
 const TEN_PV: Record<BxhPhamVi, string> = { khoi: 'Khối mình', toan_bk: 'Toàn BK' }
 const HUY_CHUONG = ['🥇', '🥈', '🥉']
 const KHIEN = 'polygon(50% 0, 100% 14%, 100% 64%, 50% 100%, 0 64%, 0 14%)'

@@ -5,7 +5,7 @@
 import { supabase } from './supabase'
 
 export type BxhNhom = 'hoc_tap' | 'ket_qua_lop' | 'game' | 'suu_tap'
-export type BxhKy = 'tuan' | 'thang' | 'mua' | 'hien_tai'
+export type BxhKy = 'hom_nay' | 'tuan' | 'thang' | 'mua' | 'hien_tai'
 export type BxhPhamVi = 'khoi' | 'toan_bk'
 export type BxhLoai = {
   ma: string; nhom: BxhNhom; ten: string; mo_ta: string; don_vi: string; gan_mon: boolean
