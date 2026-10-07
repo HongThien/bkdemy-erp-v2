@@ -35768,3 +35768,4 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm (DB khớp từng bước):** tạo mới Đ (Câu 2) + C ý Hình (Câu 19, max 1đ ⇒ 0.5) ✔ · đổi điểm 0.75 ✔ · nhận xét ✔ · đổi Đ→S→C→Đ ⇒ 0 / 0.13 / 0.25 ✔ · F5 vẫn còn ✔ · đổi HS qua lại không dính ✔ · 9A2 (đã đóng) khoá Đ/C/S ✔ · 9B1 (0 ô) mở màn ⇒ tự dựng 20 ô (18 Đại + 2 ý Hình), tổng max 9đ = tổng đề ✔.
 - **Bẫy test:** Browser pane ẩn ⇒ `el.blur()` không phát focusout ⇒ tưởng nhận xét không lưu; phát `FocusEvent('focusout')` mới đúng.
 - **Dữ liệu test còn lại (chờ Thùy quyết xoá):** 2 dòng `gami_grades` admin tạo: Quỳnh Anh Câu 2 (id 051f216c…) + Câu 19 (91c492f0…). Câu 1 đã trả về 0.25 (graded_by đổi sang admin). 9B1 có thêm 20 ô chấm (cấu trúc, đúng như mở tab MT).
+- **Dọn test (Thùy duyệt "Xóa đi"):** xoá 2 dòng `gami_grades` test của Quỳnh Anh · 9A1 · MT 04/10 (Câu 2 Đ 0.25 · Câu 19 C 0.75), 1 transaction, kiểm đúng 2 dòng mới commit. Quỳnh Anh còn lại đúng 8 dòng như trước test.
