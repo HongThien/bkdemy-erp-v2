@@ -58,6 +58,16 @@ export async function ghiTran(a: {
   } catch { return null }
 }
 
+/** Kết thúc trận có ĐỀ CHẤM Ở MÁY CHỦ: số câu đúng/số câu do máy chủ đếm; thắng/thua/điểm vẫn do game (chỉ để tính XP luyện tập). */
+export async function tranKet(a: { deId: string; ketQua: 'thang' | 'thua' | 'hoa'; diem: number; doiThu?: string }): Promise<KetQuaGhi | null> {
+  if (!khoHoSo.lay().db) return null
+  try {
+    const kq = await goi<KetQuaGhi>('fn_dtv_tran_ket', { p_uid: khoHoSo.lay().uid, p_de_id: a.deId, p_ket_qua: a.ketQua, p_diem: a.diem, p_doi_thu: a.doiThu ?? '' })
+    if (kq?.ho_so) datDB(kq.ho_so)
+    return kq
+  } catch { return null }
+}
+
 export type TieuChi = 'xp' | 'chuoi_thang' | 'chuoi_ngay'
 export interface DongBxh { hang: number; ma: string; ten: string; nv: NvId; cap: number; gt: number }
 export async function bangXepHang(tc: TieuChi) {

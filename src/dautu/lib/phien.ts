@@ -2,6 +2,7 @@
 // Câu lấy từ NGUỒN của môn (nguon/) — phiên không biết môn.
 import { ganBot, nguoiBot } from './bot'
 import { TrongTai, type MucBot, type NguoiTran, type Snap } from './trongTai'
+import { laTaiKhoan } from './nhatKy'
 import { taoKho } from './tienich'
 import type { CauHinhBo, NguonCau } from '../nguon/kieu'
 
@@ -21,6 +22,10 @@ export interface PhienDau {
   choiLai?(): void
   roi(): void
   tt: ReturnType<typeof taoKho<TrangThaiPhien>>
+  /** đề chấm ở máy chủ của trận hiện tại (có ⇒ kết quả ghi bằng fn_dtv_tran_ket) */
+  deId?: string
+  /** chờ máy chủ chấm nốt các câu đã gửi (gọi trước khi ghi kết quả trận) */
+  chamXong?: () => Promise<void>
 }
 
 export const ttMoi = () => taoKho<TrangThaiPhien>({ doiThuRoi: false, doiThuMuonLai: false, toiMuonLai: false, thongBao: '' })
@@ -32,6 +37,7 @@ function phienCucBo(loai: 'bot' | 'doi', o: { nguon: NguonCau; cauHinh: CauHinhB
   let huyNghe: (() => void) | null = null
   let lan = 0
   let daRoi = false
+  let deId: string | undefined
   const nghe = new Set<(s: Snap) => void>()
   const tt = ttMoi()
   const moiTran = async () => {
@@ -39,10 +45,17 @@ function phienCucBo(loai: 'bot' | 'doi', o: { nguon: NguonCau; cauHinh: CauHinhB
     huyBot?.(); huyNghe?.(); tai?.huy(); tai = null
     tt.dat((x) => ({ ...x, thongBao: '' }))
     try {
-      const ds = await o.nguon.taoBoDe(o.cauHinh)
+      // ĐỀ CHẤM Ở MÁY CHỦ (tài khoản + môn có kho): câu không kèm đáp án, đúng/sai do máy chủ quyết, bot chỉ quyết đúng/sai
+      const sv = loai === 'bot' && !!o.nguon.taoDeTran && laTaiKhoan()
+      const de = sv ? await o.nguon.taoDeTran!(o.cauHinh) : null
+      const ds = de ? await de.lay(1, de.soCau) : await o.nguon.taoBoDe(o.cauHinh)
       if (daRoi || lanNay !== lan) return
       if (ds.length < 3) { tt.dat((x) => ({ ...x, thongBao: 'Chủ đề này chưa đủ câu trắc nghiệm — chọn chủ đề khác nhé' })); return }
-      const t = new TrongTai({ mid: 'cb-' + Date.now(), nguoi: o.nguoi, ds, giayVong: o.nguon.giayMoiCau })
+      deId = de?.deId
+      const t = new TrongTai({
+        mid: 'cb-' + Date.now(), nguoi: o.nguoi, ds, giayVong: o.nguon.giayMoiCau,
+        cham: de ? { ghe: [0], goi: (i, opt, ms) => de.cham(i + 1, opt == null ? -1 : ds[i].opts.findIndex((x) => x.id === opt), ms).then((r) => ({ dung: r.dung, dungId: ds[i].opts[r.dung_idx]?.id ?? '', giai: r.giai })) } : undefined,
+      })
       tai = t
       if (o.bot) huyBot = ganBot(t, 1, o.bot)
       huyNghe = t.dangKy((s) => nghe.forEach((f) => f(s)))
@@ -55,6 +68,8 @@ function phienCucBo(loai: 'bot' | 'doi', o: { nguon: NguonCau; cauHinh: CauHinhB
   return {
     loai, gheToi: loai === 'doi' ? [0, 1] : [0], coTamDung: true, mon: o.nguon.mon, chuDe: o.cauHinh.chuDe, tenChuDe: o.tenChuDe, tt,
     dangKy(f) { nghe.add(f); if (tai) f(tai.snap); return () => { nghe.delete(f) } },
+    get deId() { return deId },
+    chamXong: () => tai?.chamXong() ?? Promise.resolve(),
     traLoi: (g, opt) => tai?.traLoi(g, opt),
     tamDung: (on) => tai?.tamDung(on),
     choiLai: () => { void moiTran() },

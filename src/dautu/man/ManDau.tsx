@@ -7,7 +7,7 @@ import type { Cau } from '../nguon/kieu'
 import { ChuMon } from '../../screens/kho/ui'
 import { doc, phat, useCaiDat } from '../lib/amThanh'
 import { capNhatNho, khoHoSo } from '../lib/hoSo'
-import { ghiTran, type CheDo, type KetQuaGhi } from '../lib/api'
+import { ghiTran, tranKet, type CheDo, type KetQuaGhi } from '../lib/api'
 import { dongTuCau, ghiNhatKy } from '../lib/nhatKy'
 import { Avatar, Nut } from '../ui/Chung'
 import { SanDau2D, type SuKienSan } from '../ui/SanDau2D'
@@ -85,11 +85,16 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
         phat(kq.thang === -1 ? 'thong_bao' : thang ? 'thang' : 'thua')
         const cheDo: CheDo = phien.loai === 'doi' ? 'doi' : phien.loai
         const ketQua = laDoi ? 'xong' : kq.thang === -1 ? 'hoa' : kq.thang === toi ? 'thang' : 'thua'
-        ghiTran({ mon: phien.mon, cheDo, chuDe: phien.chuDe, ketQua, soDung: s.dung[toi], soCau: s.ds.length, diem: s.diem[toi], doiThu: s.nguoi[ban]?.ten })
+        const deId = phien.deId
+        // Đề chấm ở máy chủ: đợi máy chủ chấm nốt rồi chốt bằng fn_dtv_tran_ket (số đúng do máy chủ đếm, nhật ký câu máy chủ tự ghi)
+        const ghi = deId && ketQua !== 'xong'
+          ? (phien.chamXong?.() ?? Promise.resolve()).then(() => tranKet({ deId, ketQua, diem: s.diem[toi], doiThu: s.nguoi[ban]?.ten }))
+          : ghiTran({ mon: phien.mon, cheDo, chuDe: phien.chuDe, ketQua, soDung: s.dung[toi], soCau: s.ds.length, diem: s.diem[toi], doiThu: s.nguoi[ban]?.ten })
+        ghi
           .then((r) => {
             setKetQuaGhi(r); if (r?.len_cap) setTimeout(() => phat('len_cap'), 900)
             // NHẬT KÝ TỪNG CÂU của ghế mình (không ghi khi 2 người 1 máy — cùng 1 tài khoản)
-            if (r?.tran_id && !laDoi) {
+            if (r?.tran_id && !laDoi && !deId) {
               const cau = (s.nk ?? []).filter((x) => x.ghe === toi && s.ds[x.i]).map((x) => dongTuCau(x.i + 1, s.ds[x.i], x.chon, x.dung, x.ms))
               void ghiNhatKy({ mon: phien.mon, cheDo, chuDe: phien.chuDe, tranId: r.tran_id, cau })
             }

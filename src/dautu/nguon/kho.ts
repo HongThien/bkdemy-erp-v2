@@ -3,14 +3,14 @@
 import { sb, coMang } from '../lib/sb'
 import { chuoiNgauNhien } from '../lib/tienich'
 import { khoHoSo } from '../lib/hoSo'
-import type { Cau, CapNguon, ChuDeNguon, CheDoThap, DeMayChu, KetThapMayChu, KqCham, NguonCau } from './kieu'
+import type { Cau, CapNguon, CauHinhBo, ChuDeNguon, CheDoThap, DeMayChu, DeTran, KetThapMayChu, KqCham, NguonCau } from './kieu'
 
 interface DongKho { ma_cau: string; de: string; anh: string | null; giai: string | null; dang: string; muc: number | null; opts: string[]; dung: number }
 
 async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
   if (!coMang) throw new Error('Không có mạng — môn này cần kho câu trên máy chủ')
   const { data, error } = await sb.rpc(fn, args)
-  if (error) throw new Error(error.message)
+  if (error) throw new Error(/permission denied/i.test(error.message) ? 'Môn này chỉ chơi được khi đăng nhập tài khoản học sinh (đấu online môn này đang được nâng cấp).' : error.message)
   return data as T
 }
 
@@ -65,6 +65,15 @@ export function taoNguonKho(o: { mon: string; ten: string; icon: string; giayMoi
     taoBoDe: (c) => layBo(c.cap, c.chuDe === 'tron' || c.chuDe === 'auto' ? null : c.chuDe, c.soCau, chuoiNgauNhien(12), false),
     taoThap: (che, ngay, cap, chuDe) => layBo(cap, chuDe ?? null, 200, `thap|${che}|${o.mon}|${cap}|${chuDe ? chuDe + '|' : ''}${ngay}`, true),
     nhomThap: (cap, chuDe) => (chuDe ? `${cap}|${chuDe}` : cap),
+    async taoDeTran(c: CauHinhBo): Promise<DeTran> {
+      const uid = khoHoSo.lay().uid
+      const de = await rpc<{ de_id: string; so_cau: number }>('fn_dtv_de_tran_moi', { p_uid: uid, p_mon: o.mon, p_khoi: c.cap, p_chu_de: c.chuDe === 'tron' || c.chuDe === 'auto' ? null : c.chuDe, p_so: c.soCau })
+      return {
+        deId: de.de_id, soCau: de.so_cau,
+        lay: (tu, so) => rpc<DongPhat[]>('fn_dtv_de_lay', { p_uid: uid, p_de_id: de.de_id, p_tu: tu, p_so: so }).then((ds) => ds.map(sangCauPhat)),
+        cham: (thuTu, idx, ms) => rpc<{ dung: boolean; dung_idx: number; giai: string | null }>('fn_dtv_cham_tran', { p_uid: uid, p_de_id: de.de_id, p_thu_tu: thuTu, p_chon: idx, p_ms: Math.round(ms) }),
+      }
+    },
     async taoDeMayChu(che: CheDoThap, cap: string, chuDe?: string | null): Promise<DeMayChu> {
       const uid = khoHoSo.lay().uid
       const de = await rpc<{ de_id: string; so_cau: number; giay_goc: number; nhom: string }>('fn_dtv_de_moi', { p_uid: uid, p_mon: o.mon, p_che_do: che, p_khoi: cap, p_chu_de: chuDe ?? null })

@@ -42,6 +42,7 @@ export function ganBot(tai: TrongTai, ghe: 0 | 1, muc: MucBot) {
     hen = setTimeout(() => {
       const hienTai = tai.snap
       if (hienTai.pha !== 'vong' || hienTai.i !== s.i) return
+      if (hienTai.ds[hienTai.i].dung === '') { lan++; tai.traLoiBot(ghe, !(Math.random() < xacSuatSai)); return } // đáp án ở máy chủ: bot không biết đáp án
       const conSai = cau.opts.map((o) => o.id).filter((o) => o !== cau.dung && !hienTai.sai[ghe].includes(o))
       const opt = Math.random() < xacSuatSai && conSai.length ? chon(conSai) : cau.dung
       lan++

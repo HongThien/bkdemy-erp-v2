@@ -37,6 +37,10 @@ export interface Snap {
   nk: { i: number; ghe: 0 | 1; chon: string; dung: boolean; ms: number }[]
 }
 
+/** Kết quả chấm 1 câu ở máy chủ (đề chấm ngoài): dungId = id phương án đúng (lộ SAU khi đã trả lời/bỏ qua). */
+export interface KqChamTran { dung: boolean; dungId: string; giai: string | null }
+export type ChamTran = (i: number, opt: string | null, ms: number) => Promise<KqChamTran>
+
 export const GIAY_VONG = 12
 const MS_DEM = 3000
 const MS_KET = 1900
@@ -61,8 +65,15 @@ export class TrongTai {
   private dungLuc = 0
   private nghe = new Set<(s: Snap) => void>()
   private msVong: number
+  // CHẤM Ở MÁY CHỦ (đề chấm ngoài): ghế nào trong gheCham thì đúng/sai do máy chủ quyết. Mọi cuộc gọi xếp hàng tuần tự (máy chủ đòi đúng thứ tự câu).
+  private cham: ChamTran | null = null
+  private gheCham = new Set<number>()
+  private dangCho = new Set<number>()
+  private daCham = new Set<string>()
+  private hang: Promise<unknown> = Promise.resolve()
 
-  constructor(o: { mid: string; nguoi: [NguoiTran, NguoiTran]; ds: Cau[]; giayVong?: number }) {
+  constructor(o: { mid: string; nguoi: [NguoiTran, NguoiTran]; ds: Cau[]; giayVong?: number; cham?: { ghe: (0 | 1)[]; goi: ChamTran } }) {
+    if (o.cham) { this.cham = o.cham.goi; this.gheCham = new Set(o.cham.ghe) }
     this.msVong = (o.giayVong ?? GIAY_VONG) * 1000
     this.s = {
       mid: o.mid, nguoi: o.nguoi, ds: o.ds, i: 0, pha: 'dem', conLai: MS_DEM, tong: MS_DEM,
@@ -123,16 +134,57 @@ export class TrongTai {
   /** rt = thời gian phản xạ (ms) do máy người chơi đo; bỏ trống = trọng tài tự đo (người chơi cùng máy, bot). */
   traLoi(ghe: 0 | 1, opt: string, rt?: number) {
     const s = this.s
-    if (s.ketQua || s.pha !== 'vong' || s.sai[ghe].length > 0 || this.ungVien.some((u) => u.ghe === ghe)) return // đã bấm câu này rồi
+    if (s.ketQua || s.pha !== 'vong' || s.sai[ghe].length > 0 || this.ungVien.some((u) => u.ghe === ghe) || this.dangCho.has(ghe)) return // đã bấm câu này rồi
     const troiQua = performance.now() - this.batDauVong
     const r = Math.max(50, Math.min(rt ?? troiQua, troiQua + 400))
-    const cau = s.ds[s.i]
+    if (this.cham && this.gheCham.has(ghe)) { this.guiCham(ghe, opt, r); return }
+    this.apDung(ghe, opt, opt === s.ds[s.i].dung, r)
+  }
+
+  /** BOT khi đáp án nằm ở máy chủ: bot không biết đáp án, chỉ quyết "đúng/sai" theo xác suất của mức bot. */
+  traLoiBot(ghe: 0 | 1, dung: boolean, rt?: number) {
+    const s = this.s
+    if (s.ketQua || s.pha !== 'vong' || s.sai[ghe].length > 0 || this.ungVien.some((u) => u.ghe === ghe)) return
+    const troiQua = performance.now() - this.batDauVong
+    this.apDung(ghe, dung ? '#bot-dung' : '?', dung, Math.max(50, Math.min(rt ?? troiQua, troiQua + 400)))
+  }
+
+  /** gửi câu trả lời của ghế "chấm ngoài" lên máy chủ; chốt vòng được HOÃN tới khi có kết quả (độ trễ mạng không làm người chơi thua oan) */
+  private guiCham(ghe: 0 | 1, opt: string, r: number) {
+    const i = this.s.i
+    this.dangCho.add(ghe)
+    this.xepHang(() => this.cham!(i, opt, r)).then((res) => {
+      this.dangCho.delete(ghe); this.daCham.add(i + ':' + ghe)
+      this.loDapAn(i, res)
+      if (this.s.i === i && this.s.pha === 'vong' && !this.s.ketQua) this.apDung(ghe, opt, res.dung, r)
+      else this.phat()
+    }).catch(() => { this.dangCho.delete(ghe) }) // mất mạng: coi như chưa bấm
+  }
+
+  private loDapAn(i: number, res: KqChamTran) {
+    const c = this.s.ds[i]
+    if (!c) return
+    c.dung = res.dungId
+    if (res.giai) c.giai = res.giai
+  }
+
+  private xepHang<T>(f: () => Promise<T>): Promise<T> {
+    const p = this.hang.then(f, f)
+    this.hang = p.then(() => undefined, () => undefined)
+    return p
+  }
+
+  /** chờ mọi cuộc gọi máy chủ đã xếp hàng (trước khi ghi kết quả trận) */
+  chamXong(): Promise<void> { return this.hang.then(() => undefined) }
+
+  private apDung(ghe: 0 | 1, opt: string, dung: boolean, r: number) {
+    const s = this.s
     s.thu[ghe]++
-    s.nk.push({ i: s.i, ghe, chon: opt, dung: opt === cau.dung, ms: Math.round(r) })
-    if (opt !== cau.dung) {
+    s.nk.push({ i: s.i, ghe, chon: opt.startsWith('#bot') || opt === '?' ? '' : opt, dung, ms: Math.round(r) })
+    if (!dung) {
       s.sai[ghe].push(opt)
       const khac = (1 - ghe) as 0 | 1
-      if (s.sai[khac].length > 0 && !this.ungVien.length && !this.henBu) { this.hetGio(); return } // cả 2 đã sai ⇒ hết câu, khỏi chờ đồng hồ
+      if (s.sai[khac].length > 0 && !this.ungVien.length && !this.henBu && this.dangCho.size === 0) { this.hetGio(); return } // cả 2 đã sai ⇒ hết câu, khỏi chờ đồng hồ
       this.phat()
       return
     }
@@ -141,6 +193,7 @@ export class TrongTai {
   }
 
   private chotVong() {
+    if (this.dangCho.size > 0) { this.henBu = setTimeout(() => this.chotVong(), 80); return } // còn câu trả lời đang chờ máy chủ chấm
     this.henBu = null
     const s = this.s
     if (s.pha !== 'vong' || !this.ungVien.length) return
@@ -164,6 +217,7 @@ export class TrongTai {
 
   private hetGio() {
     if (this.henBu) return // đang chờ bù trễ — chotVong sẽ chốt
+    if (this.dangCho.size > 0 && this.s.pha === 'vong') { this.hen = setTimeout(() => this.hetGio(), 80); return } // chờ máy chủ chấm nốt câu đã bấm
     const s = this.s
     s.thangVong = -1
     s.chuoi = [0, 0]
@@ -173,6 +227,15 @@ export class TrongTai {
   private ketVong() {
     // ghế nào chưa có dòng ở câu này = không kịp trả lời (hết giờ / đối thủ đã ăn câu)
     for (const g of [0, 1] as const) if (!this.s.nk.some((x) => x.i === this.s.i && x.ghe === g)) this.s.nk.push({ i: this.s.i, ghe: g, chon: '', dung: false, ms: Math.round(performance.now() - this.batDauVong) })
+    // ghế chấm ở máy chủ mà chưa trả lời câu này (bot ăn trước / hết giờ) ⇒ "bỏ qua" để máy chủ ghi nhận + lộ đáp án (sau khi mất câu)
+    if (this.cham) {
+      const i = this.s.i, ms = performance.now() - this.batDauVong
+      for (const g of this.gheCham) {
+        if (this.daCham.has(i + ':' + g) || this.dangCho.has(g)) continue
+        this.daCham.add(i + ':' + g)
+        this.xepHang(() => this.cham!(i, null, ms)).then((res) => { this.loDapAn(i, res); this.phat() }).catch(() => undefined)
+      }
+    }
     this.s.pha = 'ket'
     this.s.tong = MS_KET
     this.datHen(MS_KET, () => (this.s.i + 1 < this.s.ds.length ? this.batVong(this.s.i + 1) : this.ketThuc()))

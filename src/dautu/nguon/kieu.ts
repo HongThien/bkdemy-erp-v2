@@ -32,6 +32,12 @@ export interface KetThapMayChu {
   tang: number; sai: number; ms: number
   bxh: { so_nguoi: number; top: { hang: number; ma: string; ten: string; nv: string; tang: number; sai: number; ms: number }[]; toi: { hang: number; tang: number; sai: number; ms: number } | null }
 }
+/** ĐỀ TRẬN với bot chấm ở máy chủ: phát câu không đáp án; idx -1 = bỏ qua (mất câu để xem đáp án) */
+export interface DeTran {
+  deId: string; soCau: number
+  lay(tu: number, so: number): Promise<Cau[]>
+  cham(thuTu: number, idx: number, ms: number): Promise<{ dung: boolean; dung_idx: number; giai: string | null }>
+}
 export interface DeMayChu {
   deId: string; soCau: number; giayGoc: number; nhom: string
   lay(tu: number, so: number): Promise<Cau[]>
@@ -58,6 +64,8 @@ export interface NguonCau {
   taoThap(cheDo: CheDoThap, ngay: string, cap: string, chuDe?: string | null): Promise<Cau[]>
   /** có ⇒ tài khoản học sinh leo tháp bằng ĐỀ CHẤM Ở MÁY CHỦ (môn có kho DB); không có (Tiếng Anh) ⇒ vẫn bản cũ, kết quả do game khai */
   taoDeMayChu?(cheDo: CheDoThap, cap: string, chuDe?: string | null): Promise<DeMayChu>
+  /** có ⇒ trận với bot của tài khoản học sinh dùng ĐỀ CHẤM Ở MÁY CHỦ (môn có kho DB) */
+  taoDeTran?(c: CauHinhBo): Promise<DeTran>
   /** nhóm bảng xếp hạng tháp: Anh 1 tháp chung (''), môn kho tách theo khối; tháp chủ đề = 'khối|mã chủ đề' (mỗi tháp 1 BXH riêng) */
   nhomThap(cap: string, chuDe?: string | null): string
 }
