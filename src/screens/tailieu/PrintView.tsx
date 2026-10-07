@@ -1176,8 +1176,12 @@ export const gtPageCss = (sc: string) => `
 @page{
   margin:11mm 13mm 15mm;
   @bottom-center{content:"BK Academy   ·   Tel: 0963.209.309   ·   17A10 KĐT Geleximco";font-family:${GT_SANS};color:#6a7a93;font-weight:700;font-size:8pt;vertical-align:middle}
-  @bottom-right{content:counter(page) " / " counter(pages);font-family:${GT_SANS};color:#233755;font-weight:900;font-size:8.5pt;vertical-align:middle}
+  @bottom-right{content:counter(page) " / " counter(pages);font-family:${GT_SANS};color:#233755;font-weight:900;font-size:8.5pt;vertical-align:middle;max-width:24mm}
 }
+/* max-width ở @bottom-right là BẮT BUỘC: có ô giữa + ô phải mà ô phải không khai max-width thì paged.js 0.4.3 tự ước
+   tỉ lệ và chia ô giữa chỉ ~75mm ⇒ dòng liên hệ rớt "Geleximco" xuống dòng 2 (Thùy báo 07/10). Có max-width thì
+   paged.js chia "24mm | phần còn lại | 24mm" ⇒ ô giữa ~136mm, 1 dòng, vẫn căn giữa trang. white-space:nowrap
+   KHÔNG có tác dụng — paged.js không chép thuộc tính đó sang ô lề. */
 ${sc}.pagedjs_pagebox::before{content:"";position:absolute;top:0;left:0;right:0;height:4mm;background:${GT_GRAD};z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 ${sc}.pagedjs_pagebox::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3mm;background:${GT_GRAD};z-index:2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 /* In cả lớp: mỗi HS bắt đầu ở TRANG LẺ (mặt trước) → in 2 mặt mỗi HS luôn chẵn trang, không dính HS sau
