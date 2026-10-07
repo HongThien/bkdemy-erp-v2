@@ -1,0 +1,69 @@
+# kho-rules/ — ĐƯỜNG ĐI của một tài liệu từ file → bộ luật theo khối → lời giải chuẩn → kho
+
+> **Đọc file này trước khi gán dạng / giải bài cho BẤT KỲ khối nào.** Thùy chốt 07/10: *"mỗi khối cần có quy tắc riêng… nhiệm vụ
+> là thiết kế đường đi chứ không chỉ giải bài."* File này là đường đi; mỗi khối là một file luật riêng bên dưới.
+
+## 1. Bố cục thư mục
+
+```
+kho-rules/
+  README.md                 ← đường đi chung (file này)
+  dai/
+    k4T.md                  ← luật GÁN DẠNG + GIẢI + TRÌNH BÀY khối 4T   (từ sách Toán arc 4 quyển 1, 07/10)
+    k4T-mau-thu.md          ← lô giải thử đang/đã duyệt của 4T (lô 1: 13 câu)
+    k5T.md · k5T-mau-thu.md ← khối 5T (04/10)
+    k6.md … k12.md          ← mỗi khối một file khi tới lượt (chưa có)
+    so-do/                  ← mô tả JSON + SVG sơ đồ đoạn thẳng của các câu mẫu
+  hgt/ · khtn/ · anh/ …     ← nhánh khác, cùng khuôn
+```
+
+**Một khối = một file `k<khối>.md`**, không gộp nhiều khối vào một file: luật tiểu học (cấm ẩn, sơ đồ đoạn thẳng) và luật THPT
+(cho phép đạo hàm, logic) mâu thuẫn nhau; gộp lại thì agent phải tự lọc theo khối và sẽ lọc sai. Luật **chung cho mọi khối**
+(định dạng LaTeX, 2 phần Hướng dẫn / Trình bày, kiểm trước khi ghi) viết ở §3 dưới đây, file khối **chỉ ghi phần khác**.
+
+## 2. Đường đi — 7 bước, lặp cho tới khi CEO không còn sửa
+
+| Bước | Ai | Làm gì | Ra gì |
+|---|---|---|---|
+| **B1 Đọc** | máy | Word MathType ⇒ `scripts/kho/mathtype-thu/doc-docx.mjs <docx> --ra <thư mục>` (0 OMML thì `docx-doc.mjs` KHÔNG dùng được). Word OMML ⇒ `scripts/docx-doc.mjs`. PDF ⇒ `scripts/kho/de-thi/boc-pdf.mjs`. Đọc **toàn bộ**, không đọc mẫu | `goc.txt` + báo cáo công thức hỏng (phải = 0 hoặc liệt kê) |
+| **B2 Hồ sơ sách** | Claude | Cấu trúc (chuyên đề / ví dụ có lời giải / luyện tập / phiếu) · đếm bài · ảnh · **chuyên đề sách ↔ chủ đề bản đồ** · chỗ bản đồ thiếu dạng | §5–§6 của `k<khối>.md` |
+| **B3 Rút luật từ lời giải mẫu** | Claude | Lời giải mẫu của **chính sách** (phần "Bài làm") là chuẩn trình bày của khối. Rút: cấm/cho phép · khuôn Phần 2 theo chuyên đề · mấu chốt/bẫy theo chuyên đề | §0–§2 của `k<khối>.md` (nháp v0) |
+| **B4 Lô giải thử** | Claude | 10–15 câu, phủ nhiều khuôn, **ưu tiên dạng đang 0 câu**. Mỗi câu: gán dạng (mã + lý do) → Phần 1 → Phần 2 → thử ngược đáp số. Sơ đồ ⇒ vẽ bằng `scripts/kho/so-do-doan-thang.mjs` | `k<khối>-mau-thu.md` + gửi trong chat |
+| **B5 CEO duyệt trong chat** | Thùy | Chỉ nói chỗ sai, theo số câu | — |
+| **B6 Ghi nhật ký → nâng luật** | Claude | Mỗi chỗ sửa ⇒ 1 dòng §7 (ngày · câu · CEO sửa gì · luật rút ra) ⇒ sửa §1–§3 ⇒ sửa lại câu trong lô. **Không sửa câu mà không ghi luật** | `k<khối>.md` bản mới |
+| **B7 Lặp** | — | Lô kế tiếp 15–30 câu theo luật mới. Một lô đi qua CEO **không sửa gì** ⇒ `k<khối>.md` lên **v1** ⇒ được giải hàng loạt + ghi kho | v1 ⇒ mở cổng ghi |
+
+Sau v1: giải hàng loạt vẫn qua **cổng ghi** (`scripts/kho/cong-ghi.mjs`): câu + biên bản kiểm (đáp số thử ngược / máy tính lại /
+so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method='claude_code'`, `da_duyet=false`, dạng vào `dang_chinh`
+(nếu chắc) hoặc `dang_ai_de_xuat` (nếu không), sơ đồ ⇒ `anh_dap_an`. Người duyệt ở màn Duyệt lời giải; mỗi lần người sửa
+⇒ trigger `kho_sua_log` ghi khâu nào ⇒ đó là **thước đo** (skill 7): tỉ lệ người sửa theo lô, theo khối, theo khâu.
+
+## 3. Luật CHUNG mọi khối (file khối không lặp lại)
+
+- **Hai phần** `**Phần 1. Hướng dẫn**` (mấu chốt · vì sao nghĩ ra · các bước theo mạch nghĩ · chú ý bẫy) và `**Phần 2. Trình bày**`
+  (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất.
+- **Mỗi câu lời giải / mỗi phép tính một dòng**, cách nhau dòng trống (CEO 07/10). Phần 2 bài tính mở bằng dòng chép lại đề.
+- **Gán dạng trước, giải sau**: mã dạng + lý do 1 câu; không khớp ⇒ dạng chờ `…000000`, không ép. Bài nhiều ý độc lập ⇒ tách câu,
+  mỗi câu đủ 2 phần (CEO 07/10).
+- **Giải theo lời giải mẫu của khối**, không theo thói quen của Claude. Khối chưa có file luật ⇒ **không giải hàng loạt**, làm B1–B7 trước.
+- Định dạng: `\dfrac`, `\times`, chia `:`, số không chèn dấu cách hàng nghìn, `$…$` mỗi công thức, `\overline{abc}` không `\text`.
+- **Kiểm trước khi ghi**: đáp số thử ngược vào đề; lệch đáp án gốc ⇒ không ghi, báo người. Không chắc ⇒ để trống (CLAUDE.md §1.5).
+- **Sơ đồ / hình**: AI viết mô tả có cấu trúc, máy render (không để AI vẽ điểm ảnh). Hiện có: sơ đồ đoạn thẳng
+  (`scripts/kho/so-do-doan-thang.mjs`). Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
+
+## 4. Việc kỹ thuật còn treo để đường đi chạy trơn
+
+| # | Việc | Vì sao |
+|---|---|---|
+| 1 | App HS hiển thị `anh_dap_an` **dưới** lời giải; cần cú pháp chèn ảnh **đúng chỗ** trong `loi_giai` (vd `[[anh:so-do]]`) để sơ đồ nằm ngay sau "Ta có sơ đồ:" | Sách tiểu học đặt sơ đồ giữa bài giải; để dưới cùng là sai khuôn |
+| 2 | Script "nhập sách": từ `goc.txt` tách từng bài luyện tập (nhãn `1.5.`, ý `a) b)`), giữ `nguon = tên sách + số bài` | Để lô giải sau v1 không chép tay đề; danh tính bám số bài trong sách |
+| 3 | Lệnh `--ghi` nối lô đã duyệt vào kho qua cổng ghi (câu + lời giải + dạng + SVG) | Hiện lô thử chỉ nằm trong md |
+| 4 | Báo cáo thước đo theo khối: % câu người sửa theo khâu (`kho_sua_log`), % dạng người đổi (`kho_doi_dang_log`) | Để biết v1 của một khối có "đứng" không |
+
+## 5. Trạng thái từng khối
+
+| Khối | File | Phiên bản | Lô đã duyệt | Nguồn luật |
+|---|---|---|---|---|
+| 4T | `dai/k4T.md` | v0 (07/10, đã nhận 1 vòng sửa) | lô 1: 13 câu, CEO sửa 2 chỗ (câu 7 dãy số, câu 8 sơ đồ) | Toán arc 4 quyển 1 (Archimedes 2023) |
+| 5T | `dai/k5T.md` | v0 (04/10) | lô 1: 12 câu | kho 5T sẵn có (chuyên đề Số thập phân) |
+| 6–12 | — | chưa | — | chờ CEO đưa sách mẫu từng khối |

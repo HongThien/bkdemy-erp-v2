@@ -147,15 +147,11 @@ Số hạng thứ nhất là: $20-4=16$
 
 Mấu chốt: dãy cách đều, hai số liền nhau hơn kém nhau $5$. Từ số hạng thứ nhất đến số hạng thứ $85$ có $85-1=84$ khoảng cách, nên số hạng thứ $85$ bằng số đầu cộng $84$ lần khoảng cách.
 
-**Phần 2. Trình bày**
+**Phần 2. Trình bày** *(sửa theo CEO 07/10: bỏ dòng khoảng cách / số khoảng cách)*
 
 Bài giải
 
-Khoảng cách giữa hai số hạng liền nhau là: $16-11=5$
-
-Từ số hạng thứ nhất đến số hạng thứ $85$ có số khoảng cách là: $85-1=84$ (khoảng cách)
-
-Số hạng thứ $85$ của dãy là: $11+84\times 5=431$
+Số hạng thứ $85$ của dãy là: $11+\left(85-1\right)\times 5=431$
 
 Đáp số: $431$
 
@@ -167,11 +163,9 @@ Số hạng thứ $85$ của dãy là: $11+84\times 5=431$
 
 Mấu chốt: tổng dãy cách đều bằng (số đầu + số cuối) nhân với số số hạng rồi chia $2$. Chưa biết số cuối nên phải tìm số hạng thứ $100$ trước (như câu 7a).
 
-**Phần 2. Trình bày**
+**Phần 2. Trình bày** *(sửa theo CEO 07/10)*
 
 Bài giải
-
-Khoảng cách giữa hai số hạng liền nhau là: $16-11=5$
 
 Số hạng thứ $100$ của dãy là: $11+\left(100-1\right)\times 5=506$
 
@@ -187,15 +181,11 @@ Tổng $100$ số hạng đầu tiên của dãy là: $\left(11+506\right)\times
 
 Mấu chốt: từ $11$ đến $951$ có $(951-11):5$ khoảng cách; số thứ tự bằng số khoảng cách **cộng $1$**. Trước khi tính phải kiểm tra $951$ có thuộc dãy không: $951-11=940$ chia hết cho $5$ nên thuộc dãy.
 
-**Phần 2. Trình bày**
+**Phần 2. Trình bày** *(sửa theo CEO 07/10)*
 
 Bài giải
 
-Khoảng cách giữa hai số hạng liền nhau là: $16-11=5$
-
-Từ $11$ đến $951$ có số khoảng cách là: $\left(951-11\right):5=188$ (khoảng cách)
-
-Số $951$ là số hạng thứ: $188+1=189$
+Số $951$ là số hạng thứ: $\left(951-11\right):5+1=189$
 
 Đáp số: thứ $189$
 
@@ -215,7 +205,11 @@ Bài giải
 
 Tổng số tuổi của hai mẹ con hiện nay là: $35+3\times 2=41$ (tuổi)
 
-Ta có sơ đồ: Tuổi con: $1$ đoạn; Tuổi mẹ: $1$ đoạn và $25$ tuổi; tổng $41$ tuổi.
+Ta có sơ đồ:
+
+![Sơ đồ: Tuổi con 1 đoạn; Tuổi mẹ 1 đoạn và 25 tuổi; tổng 41 tuổi](so-do/k4T-cau8.svg)
+
+*(hình do máy vẽ từ `so-do/k4T-cau8.json` bằng `scripts/kho/so-do-doan-thang.mjs` — CEO 07/10 yêu cầu có hình; khi ghi kho SVG lên `anh_dap_an`)*
 
 Tuổi con hiện nay là: $\left(41-25\right):2=8$ (tuổi)
 
@@ -309,7 +303,9 @@ Bài giải
 
 Sau $5$ năm nữa, tổng số tuổi của hai mẹ con là: $35+5\times 2=45$ (tuổi)
 
-Ta có sơ đồ sau $5$ năm nữa: Tuổi con: $1$ phần; Tuổi mẹ: $4$ phần.
+Ta có sơ đồ sau $5$ năm nữa:
+
+![Sơ đồ: Tuổi con 1 phần; Tuổi mẹ 4 phần; tổng 45 tuổi](so-do/k4T-cau12.svg)
 
 Tổng số phần bằng nhau là: $1+4=5$ (phần)
 

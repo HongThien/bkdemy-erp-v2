@@ -50,9 +50,13 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 - Bài **lập luận** (viết số, chữ số, chia hết): Phần 2 = **lập luận ngắn + kết luận**, đúng mẫu VD 1.1: "Số tự nhiên lớn nhất
   khi nó nhiều chữ số nhất và chữ số lớn nhất đứng ở hàng cao nhất… Ta có: $19=0+1+2+3+4+9$. Sắp xếp… được số cần tìm là 943210."
 - Bài **tính / tính thuận tiện / tìm $y$**: Phần 2 chỉ có các dòng biến đổi, **mở bằng dòng chép lại nguyên biểu thức của đề**.
-- Bài **có tỉ số / số phần** (tổng–tỉ, hiệu–tỉ, TBC, tính ngược): Phần 2 PHẢI có dòng `Ta có sơ đồ:` rồi mô tả sơ đồ bằng lời
-  (`Số bé: 3 phần; Số lớn: 5 phần` · `Tuổi con sau 3 năm: 1 phần; Tuổi mẹ sau 3 năm: 4 phần`). App chưa vẽ sơ đồ; khi có công
-  cụ vẽ (skill 5) dòng này thành hình.
+- Bài **có tỉ số / số phần** (tổng–hiệu, tổng–tỉ, hiệu–tỉ, TBC, tính ngược): Phần 2 PHẢI có dòng `Ta có sơ đồ:` + **HÌNH sơ đồ
+  đoạn thẳng** (CEO 07/10: "có vẽ được hình không" ⇒ phải vẽ). Hình do máy vẽ từ mô tả có cấu trúc:
+  `node scripts/kho/so-do-doan-thang.mjs mo-ta.json --out so-do.svg` (mô tả: hàng = đại lượng, `phan` = số phần bằng nhau,
+  `them` = đoạn thêm của tổng–hiệu, `tong`/`hieu` = ngoặc, `dau_hoi` = hàng cần tìm, `tieu_de` = thời điểm "Sau 5 năm nữa").
+  Khi ghi kho: SVG lên storage → `anh_dap_an`; mô tả bằng lời (`Tuổi con: 1 phần; Tuổi mẹ: 4 phần`) vẫn ghi ngay sau
+  `Ta có sơ đồ:` để làm alt và để in giấy khi chưa có hình. Hạn chế hiện tại: app HS hiển thị `anh_dap_an` **dưới** lời giải,
+  không đúng vị trí dòng "Ta có sơ đồ:" — việc sửa app ghi ở `kho-rules/README.md` §4.
 - Bài **nhiều ý a) b) c)**: nếu các ý **độc lập** (mỗi ý một dạng, vd LT 6.6 a/b/c) ⇒ **tách thành các câu riêng** khi vào kho
   (memory `tach-y-hinh-vs-dai`); nếu ý sau dùng kết quả ý trước ⇒ giữ một câu, Phần 2 ghi a) b) c).
 - Ghi chung vào 1 ô `loi_giai`, nhãn in đậm `**…**`.
@@ -66,7 +70,7 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 | 3 Đo lường | `T14T03` | Đổi từng dòng `1 kg 6 hg = 160 dag`; lời văn thì đổi về **cùng đơn vị** ở dòng đầu (`2 tấn = 2000 kg`) | Bảng đơn vị: khối lượng/độ dài liền kề gấp 10; diện tích gấp **100**. Thế kỉ: năm 1990 ⇒ thế kỉ XX. Lịch: 7 ngày một vòng |
 | 4 Kỹ năng tính toán | `T14T04` · `T14T09` | Tính giá trị: `Nếu m=105, n=182 thì …=…=…`. Tìm $m$: theo cột. Thay đổi thành phần: 1 câu nêu quy luật ("thêm 21 vào số hạng ⇒ tổng tăng 21") → 1 phép tính → `Đáp số` | Trừ một tổng/một hiệu: $a-(b-c)=a-b+c$. Thêm vào **số trừ** ⇒ hiệu **giảm**. Gấp một số hạng lên $k$ lần ⇒ tổng tăng $(k-1)$ lần số hạng đó |
 | 5 Chu vi, diện tích | `T14T05` | Lời văn: `Bài giải` từng bước, đơn vị `(cm)`, `($cm^2$)` | Chu vi bằng nhau ⇒ nửa chu vi = dài + rộng. "Tăng rộng thêm 4 cm thành hình vuông" ⇒ dài − rộng = 4 |
-| 6 Dãy số cách đều | `T14T06` | Mỗi đại lượng một dòng có nhãn: `Khoảng cách: 5` · `Số số hạng: (199−1):2+1=100` · `Số hạng thứ 85: 11+(85−1)×5=431` · `Tổng: (11+506)×100:2=25850` | Ba công thức (số số hạng · số hạng thứ $n$ · tổng) đều từ "khoảng cách × (số khoảng)"; số khoảng = số số hạng − 1 |
+| 6 Dãy số cách đều | `T14T06` | **Chỉ dòng phép tính kết quả** (CEO 07/10): `Số hạng thứ 85 của dãy là: $11+(85-1)\times 5=431$` · `Số số hạng của dãy là: $(199-1):2+1=100$` · `Tổng … là: $(11+506)\times 100:2=25850$`. KHÔNG có dòng "Khoảng cách là: 16−11=5", KHÔNG có dòng "số khoảng cách là: 85−1=84" — những thứ đó nằm ở Phần 1 | Ba công thức (số số hạng · số hạng thứ $n$ · tổng) đều từ "khoảng cách × (số khoảng)"; số khoảng = số số hạng − 1. Trước khi hỏi "số X là số hạng thứ mấy" phải kiểm X có thuộc dãy không |
 | 7 Trồng cây | `T14T07` | `Số khoảng cách: 450:5=90 (khoảng)` → `Số cây một bên: 90+1=91` → hai bên `×2` | 2 đầu đều trồng: cây = khoảng + 1; 1 đầu: = khoảng; không đầu nào: = khoảng − 1; **khép kín: = khoảng**. Cắt gỗ = "trồng cây không đầu": số lần cắt = số đoạn − 1 |
 | 8 Tổng – hiệu | `T14T08` | `Ta có sơ đồ:` (mô tả) → `Số bé là: (tổng − hiệu):2` → `Số lớn là: …` → `Đáp số` | Tuổi: **hiệu không đổi** theo thời gian; tổng đổi theo "mỗi người thêm $t$" ⇒ tổng thêm $2t$. "Hai số tự nhiên liên tiếp" ⇒ hiệu 1; "giữa chúng có $k$ số lẻ" ⇒ hiệu $2(k+1)$ |
 | 9 Lời văn nhân chia | `T14T09` (thiếu dạng, xem §5) | 1 câu nêu quy luật thành phần → phép tính → `Đáp số` | Tích riêng đặt thẳng cột ⇒ số bị nhân với **tổng các chữ số** của thừa số (VD 9.3). Viết nhầm 45 thành 54 ⇒ tích tăng $(54-45)$ lần số đó. Số dư lớn nhất = số chia − 1 |
@@ -88,7 +92,9 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 
 ## 3. Định dạng (giữ quy ước kho Đại)
 
-- Các bước cách nhau bằng dòng trống (`\n\n`). Phân số `\dfrac`. Mỗi công thức một cặp `$…$`.
+- **Mỗi câu lời giải / mỗi phép tính một dòng riêng**, các dòng cách nhau bằng dòng trống (`\n\n`) — CEO 07/10 "sau mỗi câu
+  thì phải xuống dòng"; không gộp hai câu lời giải trên một dòng, kể cả khi trích trong chat. Phân số `\dfrac`. Mỗi công thức
+  một cặp `$…$`.
 - Dấu nhân `\times`, dấu chia `:` (không `\div`, không `/`). Số lớn **không** chèn dấu cách ngăn hàng nghìn trong công thức
   (`25850`, không `25 850`) — sách in có khoảng trắng nhưng app so đáp số bằng máy.
 - Đơn vị trong ngoặc sau phép tính: `$448:8=56$ (kg)`. Đáp số có đơn vị: `Đáp số: 336 kg táo`.
@@ -173,4 +179,7 @@ Luật gán:
 
 | Ngày | Câu | CEO sửa gì | Luật rút ra |
 |---|---|---|---|
-| 07/10 | — | (chờ duyệt lô 1: `k4T-mau-thu.md`, 13 câu) | — |
+| 07/10 | Lô 1, câu 7 (dãy số) | Phần 2 của em có dòng "Khoảng cách… là: 16−11=5" và "số khoảng cách… là: 85−1=84" — CEO: *"Cái m đang viết là hướng dẫn. Trình bày không cần viết số khoảng cách hay tính khoảng cách."* Ba ý tách 3 câu thì **mỗi câu vẫn đủ 2 phần**. | §2 CĐ6 sửa: Phần 2 chỉ còn dòng phép tính kết quả `Số hạng thứ 85 của dãy là: $11+(85-1)\times 5=431$`; khoảng cách / số khoảng cách nói ở Phần 1. Áp tương tự CĐ7 (trồng cây): số khoảng cách là bước trung gian **được** ghi vì sách ghi, nhưng "khoảng cách giữa hai cây" không ghi. |
+| 07/10 | Lô 1, câu 8 (tổng–hiệu) | CEO hỏi *"m có vẽ được hình không"* ⇒ sơ đồ đoạn thẳng phải là HÌNH, không chỉ mô tả bằng lời. | Có máy vẽ: `scripts/kho/so-do-doan-thang.mjs` (mô tả JSON → SVG). §1.5 sửa: bài có sơ đồ ⇒ Phần 2 ghi `Ta có sơ đồ:` + **hình SVG** (lưu `anh_dap_an`), dòng mô tả bằng lời giữ lại làm alt. |
+| 07/10 | Cả lô | *"Sau mỗi câu thì phải xuống dòng."* | §3: mỗi câu lời giải / mỗi phép tính **một dòng riêng** (dòng trống giữa các dòng), kể cả khi trích dẫn trong chat. |
+| 07/10 | Cả lô | *"Còn lại khá ổn."* 11/13 câu không sửa. | Giữ nguyên luật §1, §1.5, §2 (trừ CĐ6). |
