@@ -12,10 +12,11 @@ import { TU_THE_DAU, type TuTheDau } from '../skin/heroDau'
 import { anhDauNv, hopDauNv, tayDauNv, type NvId } from '../skin/nhanVat'
 import { BossAnhHS } from '../boss/BossSan'
 import type { TuTheBoss } from '../boss/noiDungBoss'
+import { chonBossNgauNhien } from '../skin/the3d/loai'
 import { NGUONG, NHAN_DO_KHO, SO_CAU_TRAN, SO_TRAN, type CauTT, type KetThucLuot } from './kieu'
 import { AURA, LOC_BOSS, TEN_DON, chonDon, napFx, phatDon, type Don, type Hop, type TtBoss, type TtHero } from './hieuUng'
 
-const BOSS = 'boss_thuy' // DÙNG TẠM cho cả 3 trận (Thùy 02/10) — đủ quái thì thay qua sổ boss của style
+// Boss của lượt đấu = NGẪU NHIÊN trong các boss có hoạt ảnh của style (Thùy 07/10; trước đó cố định 'boss_thuy'), chọn 1 lần lúc mở màn rồi giữ cho cả 3 trận.
 const CHU = ['A', 'B', 'C', 'D', 'E', 'F']
 /** Nhân vật chính = nhà thám hiểm áo choàng xanh (bộ chiến đấu 15 tư thế, skin/heroDau.ts). Người dẫn truyện = bé gái chibi + cú trắng (Thùy 02/10). */
 const DAN: 'nam' | 'nu' = 'nu'
@@ -119,6 +120,7 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
   const [lyDo, setLyDo] = useState<KetThucLuot['lyDo']>('thua')
   const [hoiBo, setHoiBo] = useState(false)
   const [hero, setHero] = useState<TtHero>('nghi')
+  const [BOSS] = useState(() => chonBossNgauNhien()) // 1 lần lúc mở màn — giữ nguyên suốt 3 trận (không đổi giữa các lần render)
   const [boss, setBoss] = useState<TuTheBoss>('dung')
   const [mau, setMau] = useState(100)
   const [don, setDon] = useState<Don | null>(null)

@@ -78,18 +78,38 @@ export type ClipBoss = {
   lap?: boolean
   /** bề rộng khung ảnh + hoành độ neo chân trong ảnh (px). Mặc định 768 / 384; laser 2048 / 450 */
   rong?: number; px?: number
+  /** chiều cao khung + tung độ neo chân (px). Mặc định 640 / 580 (Minh Quân); Trang/Cường khung khác (số đo sinh bởi scripts/anime-boss-trang-cuong.mjs → styles/rpgBossMeta.ts) */
+  cao?: number; py?: number
   /** lật ngang quanh neo — ảnh vẽ hướng PHẢI mà boss đứng bên phải nhìn sang TRÁI (laser) */
   lat?: boolean
 }
-/** 1 chiêu tấn công riêng của boss (thay đòn "ma thuật" chung). tia = laser vẽ sẵn trong ảnh · don/mua = tên lửa bay (ảnh FX riêng) */
+/** 1 chiêu tấn công riêng của boss (thay đòn "ma thuật" chung). tia = laser vẽ sẵn trong ảnh · don/mua = vật bay (ảnh FX riêng) · song = nổ tại tay + sóng xung kích lan tới nhân vật */
 export type ChieuBoss = {
-  ten: string; kieu: 'tia' | 'don' | 'mua'; clip: ClipBoss
+  ten: string; kieu: 'tia' | 'don' | 'mua' | 'song'; clip: ClipBoss
+  /** câu thoại hiện trong bong bóng trên đầu boss lúc bắt đầu chiêu (≈1,9 giây) */
+  thoai?: string
+  /** bàn gỗ đứng yên suốt chiêu (đập thước xuống bàn): toạ độ = tâm mép TRÊN bàn so với neo chân (px khung), rong = bề rộng ảnh (px khung) */
+  ban?: { anh: string; x: number; y: number; rong: number }
+  /** nạp lửa: từ `tuMs` tới `phongMs` ngọn lửa bốc ở vị trí `vi` (so với neo, px khung), lớn dần */
+  sac?: { anh: string; vi: [number, number]; tuMs: number; rong: number; /** CSS background của quầng sáng sau ngọn lửa */ nen: string }
+  /** nhát chém hồ quang ở tay boss lúc phóng (kiếm) — màu nét + màu quầng */
+  chem?: { net: string; bong: string }
   /** tia: chiều dài tia trong ảnh gốc, tính từ neo chân tới đầu tia (px, khung gốc) — để biết boss phải LAO tới gần nhân vật bao nhiêu thì tia chạm */
   daiTia?: number
   /** ms (từ lúc bắt đầu clip) đòn chạm nhân vật — tia: lúc tia chạm · tên lửa: lúc phóng */
   phongMs: number
   /** tên lửa: số quả · cách nhau (ms) · thời gian bay (ms) · điểm nòng trong ảnh (px, khung 768×640, đúng neo (384,580)) */
-  qua?: { n: number; cach: number; bay: number; nong: [number, number][] }
+  qua?: {
+    n: number; cach: number; bay: number; nong: [number, number][]
+    /** điểm gốc của `nong`: mặc định (384,580) = neo khung 768×640; [0,0] = nong đã tính SO VỚI NEO chân */
+    neo?: [number, number]
+    /** ảnh riêng của chiêu (thay `anhTenLua`) + bề rộng = keCao × rong (mặc định 0.4; ảnh tỉ lệ theo `ty` = cao/rộng) */
+    anh?: string; rong?: number; ty?: number
+    /** false = không xoay theo quỹ đạo (chữ BTVN); mặc định true. Ảnh riêng (`anh`) vẽ mũi hướng PHẢI — bay sang trái được lật ngang cho khỏi ngược đầu */
+    xoay?: boolean; quang?: string
+    /** độ vồng quỹ đạo (× chiều cao sân); mặc định: nhiều quả ⇒ 0.5, một quả ⇒ 0 */
+    vong?: number
+  }
 }
 export type BossAnh = {
   /** boss có hoạt ảnh theo khung: tư thế nào có ở đây thì phát clip, không thì dùng ảnh tĩnh cùng tên */
@@ -97,7 +117,13 @@ export type BossAnh = {
   /** các chiêu riêng (xoay vòng mỗi lần boss tấn công) + ảnh FX tên lửa (mũi hướng PHẢI) */
   chieuRieng?: ChieuBoss[]; anhTenLua?: string
   /** màu hiệu ứng của chiêu riêng: nền tia nổ (CSS background) + màu quầng tên lửa */
-  fx?: { no: string; vet: string }
+  fx?: {
+    no: string; vet: string
+    /** bong bóng thoại của chiêu (ChieuBoss.thoai) */
+    thoai?: { nen: string; vien: string; chu: string }
+    /** sóng xung kích (ChieuBoss kieu 'song'): màu viền + quầng */
+    song?: { vien: string; bong: string }
+  }
   /** Cách dựng boss trong cảnh trận 3D. 'anh' = tấm ảnh 2D quay mặt camera + hoạt ảnh code (quaiAnh.ts) — MẶC ĐỊNH, nhẹ, giống bản vẽ 100%.
    *  'relief' = phù điêu từ chính ảnh (quaiRelief.ts, có khối nhẹ) · 'chibi' = dựng khối bằng code (bossChibi3D.ts, cần mo3d; thô — chỉ để thử). */
   dang?: 'anh' | 'relief' | 'chibi'

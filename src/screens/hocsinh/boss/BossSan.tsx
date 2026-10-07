@@ -30,7 +30,7 @@ const CSS = `
 @media (prefers-reduced-motion: reduce) { [data-bs], [data-bs] * { animation: none !important } [data-bs="ha"] { opacity: .35 } }
 `
 
-// Khung PNG của boss có hoạt ảnh theo khung: 768×640, neo chân (384,580). Phóng sao cho phần thân (~520px cao) gần đầy ô vuông `cao`, chân đặt ở 98% chiều cao ô.
+// Khung PNG của boss có hoạt ảnh theo khung: mặc định 768×640, neo chân (384,580) (Minh Quân); khung khác khai ở ClipBoss.rong/cao/px/py (Trang, Cường). Phóng sao cho phần thân (~520px cao) gần đầy ô vuông `cao`, chân đặt ở 98% chiều cao ô.
 const KHUNG_W = 768, KHUNG_H = 640, NEO_Y = 580
 const nho = new Set<string>()
 /** Nạp + giải mã trước mọi khung (1 lần/ảnh) để đổi clip không chớp. */
@@ -51,13 +51,13 @@ function ClipHinh({ clip, cao, bong }: { clip: ClipBoss; cao: number; bong: bool
     if (clip.src.length > 1) buoc()
     return () => window.clearTimeout(id)
   }, [clip, giam])
-  const s = (cao * 1.25) / KHUNG_W, rong = clip.rong ?? KHUNG_W, px = clip.px ?? KHUNG_W / 2
+  const s = (cao * 1.25) / KHUNG_W, rong = clip.rong ?? KHUNG_W, px = clip.px ?? KHUNG_W / 2, caoKhung = clip.cao ?? KHUNG_H, neoY = clip.py ?? NEO_Y
   return (
     <>
       {clip.src.map((u, k) => (
-        <img key={u} src={u} alt="" draggable={false} className="absolute max-w-none select-none"
+        <img key={`${k}-${u}`} src={u} alt="" draggable={false} className="absolute max-w-none select-none"
           style={{
-            width: rong * s, height: KHUNG_H * s, left: cao / 2 - px * s, top: cao * 0.98 - NEO_Y * s, opacity: k === i ? 1 : 0,
+            width: rong * s, height: caoKhung * s, left: cao / 2 - px * s, top: cao * 0.98 - neoY * s, opacity: k === i ? 1 : 0,
             transform: clip.lat ? 'scaleX(-1)' : undefined, transformOrigin: clip.lat ? `${px * s}px 50%` : undefined,
             filter: bong ? 'brightness(0) opacity(.85)' : undefined,
           }} />

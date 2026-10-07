@@ -49,7 +49,7 @@ export function tuBanDoPL(bd: BanDoPL): BanDoV {
           const soCum = m.quai.filter((q) => q.ma !== m.ma_dang).length
           return {
             ma: m.ma_dang, ten: m.ten, muc_do: m.muc_do ?? 3, trang_thai: m.trang_thai, mastery: m.mastery, da_day: m.da_day, so_cum: soCum,
-            quai: chonDoiHinh(m.ma_dang, soCum).map((q, i, a) => (i === a.length - 1 ? q : { ...q, loai: loaiHopLe(q.loai, m.ma_dang + i) })),
+            quai: chonDoiHinh(m.ma_dang, soCum, m.quai.find((q) => q.la_boss && q.loai_quai.startsWith('boss_'))?.loai_quai).map((q, i, a) => (i === a.length - 1 ? q : { ...q, loai: loaiHopLe(q.loai, m.ma_dang + i) })),
             hp: null, so_cau_luot: null,
           }
         }),

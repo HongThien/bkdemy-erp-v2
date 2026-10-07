@@ -1,6 +1,7 @@
 // TÊN LOÀI QUÁI + chọn đội hình — KHÔNG import three (React dùng ở bundle chính, không kéo three vào).
 // Quái vật do Thùy thiết kế riêng; file này chỉ giữ danh sách loài mà DB gán (_phieu_luu_bo) và quy tắc chọn đội hình của chặng.
 import { bam } from './hinhHoc'
+import { laySkin } from '../registry'
 
 export type KeHoach = 'slime' | 'thu' | 'rua' | 'chim' | 'ca' | 'sao' | 'nam' | 'golem' | 'con'
 export const KE_HOACH: Record<string, KeHoach> = {
@@ -27,12 +28,20 @@ export const TEN_LOAI: Record<string, string> = {
 
 /** Đội hình của 1 chặng (dạng): cụm thật + con tạm cho đủ 3, tối đa 7 (spec-v1-app-hs §4.5). Quái cuối = boss (loài thường + vương miện).
  *  Elite khác loài boss và khác nhau từng đôi một. Tất định theo mã dạng. */
-/** Boss TẠM (Thùy 06/10: "hiện tại để tất cả boss là t trước, sau này đổi"): mọi quái cuối đội hình dùng boss riêng này (Skin.boss). Style không khai ⇒ ảnh tạm theo loài. */
+/** Boss dự phòng khi style KHÔNG khai boss nào (Skin.boss rỗng): giữ hành vi cũ — mã này rơi về ảnh quái tạm theo loài. */
 export const LOAI_BOSS_TAM = 'boss_thuy'
-export function chonDoiHinh(maDang: string, soCum: number): { loai: string; boss: boolean }[] {
+/** Boss có hoạt ảnh của style ĐANG ÁP = các khoá của Skin.boss (RPG: Thùy · Minh Quân · Trang · Cường). Đối xứng — không if theo id style. Boss cuối cốt truyện (final-boss-form-*) và boss chưa có hoạt ảnh KHÔNG khai ở Skin.boss nên tự nằm ngoài. */
+export const dsBossNgauNhien = (): string[] => Object.keys(laySkin(null).boss ?? {})
+/** Chọn NGẪU NHIÊN 1 boss trong danh sách trên (Thùy 07/10: "tất cả boss là random giữa các boss đã tạo"). Gọi LÚC TẠO trận/đội hình rồi giữ kết quả (state/useMemo/dữ liệu bản đồ) — không gọi trong render. `rieng` = boss DB chỉ định (nếu style có) thì tôn trọng. */
+export function chonBossNgauNhien(rieng?: string | null): string {
+  const ds = dsBossNgauNhien()
+  if (rieng && ds.includes(rieng)) return rieng
+  return ds.length ? ds[Math.floor(Math.random() * ds.length)] : LOAI_BOSS_TAM
+}
+export function chonDoiHinh(maDang: string, soCum: number, bossRieng?: string | null): { loai: string; boss: boolean }[] {
   const n = Math.min(7, Math.max(3, soCum)), boss = LOAI_THUONG[bam(maDang) % LOAI_THUONG.length]
   const pool = LOAI_THUONG.filter((l) => l !== boss), out: { loai: string; boss: boolean }[] = []
   for (let i = 0; i < n - 1; i++) out.push({ loai: pool[(bam(maDang + 'e') + i * 5) % pool.length], boss: false })
-  out.push({ loai: LOAI_BOSS_TAM, boss: true })
+  out.push({ loai: chonBossNgauNhien(bossRieng), boss: true })
   return out
 }

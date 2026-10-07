@@ -11,6 +11,7 @@ import { HOC_TAP_RPG } from './rpgHocTap'
 import { CHINH_PHUC_RPG } from './rpgChinhPhuc'
 import { BAN_DO_RPG } from './rpgBanDo2d'
 import { ANH_NV, ANH_TT } from './rpgGiaoDien'
+import { BOSS_TRANG, BOSS_CUONG } from './rpgBossTC'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -127,6 +128,9 @@ export const RPG: Skin = {
       dung: `${MQ}/talk_01.webp`, noi: `${MQ}/talk_03.webp`, chieu: `${MQ}/missile_rain_04.webp`, trung: `${MQ}/hit_03.webp`, gian: `${MQ}/taunt_04.webp`, ha: `${MQ}/defeat_06.webp`,
       chandung: `${MQ}/dialogue_upper.webp`,
     },
+    // 07/10: Trang + Cường (kit hoạt ảnh Thùy đưa — rpgBossTC.ts). Cùng Minh Quân + Thùy ⇒ 4 boss có hoạt ảnh, mỗi trận boss chọn NGẪU NHIÊN trong số này (the3d/loai.ts).
+    boss_trang: BOSS_TRANG,
+    boss_cuong: BOSS_CUONG,
     boss_thuy: {
       ten: 'Thùy', cao: 2.9, dang: 'anh',
       mo3d: { da: '#efc197', toc: '#17141c', kinh: true, ao: '#2a2143', aoLot: '#b88f4a', vien: '#e9c77b', ngoc: '#7a4dff', hao: '#9b6bff', haoGian: '#ffc94d' },

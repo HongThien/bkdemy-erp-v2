@@ -91,7 +91,9 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
     })
   }
 
-  // CHIÊU RIÊNG của boss có hoạt ảnh (vd Minh Quân: tia laser · tên lửa đơn · mưa tên lửa): phát clip, tới đúng khung "phóng" thì tia chạm / tên lửa bay (ảnh FX riêng) và nhân vật bị đánh.
+  // CHIÊU RIÊNG của boss có hoạt ảnh (Skin.boss[..].chieuRieng): phát clip, tới đúng khung "phóng" thì tia chạm / vật bay (ảnh FX riêng) và nhân vật bị đánh.
+  //   Minh Quân: tia laser · tên lửa đơn · mưa tên lửa. Trang/Cường (07/10): ném BTVN · mưa BTVN · đập thước (song) · sách hoá cầu lửa · vung kiếm phóng gà — thêm
+  //   `thoai` (bong bóng), `ban` (bàn gỗ), `sac` (lửa nạp ở sách), `chem` (hồ quang kiếm); ảnh bay riêng từng chiêu qua `qua.anh`.
   const dienBoss = async (ch: ChieuBoss): Promise<void> => {
     const goc = chuyenRef.current
     if (!goc || !heroRef.current || !bossRef.current) return
@@ -101,27 +103,81 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
     const h = hop(heroRef.current), bb = hop(bossRef.current), k = (keCao * 1.25) / 768
     const tam = { x: h.x + h.w / 2, y: h.y + h.h * 0.5 }
     const dat: number[] = []
+    const rac: Element[] = [] // phần tử dựng thêm vào sân — dọn hết khi chiêu xong
     const hen = (ms: number, f: () => void) => { dat.push(window.setTimeout(f, ms)) }
+    const them = <T extends Element>(e: T, ms = 0): T => { goc.appendChild(e); rac.push(e); if (ms) window.setTimeout(() => e.remove(), ms); return e }
     const trung = () => { setHero('bi_danh'); rung(9, 380) }
-    const no = (x: number, y: number) => {
+    const no = (x: number, y: number, co = 96) => {
       const e = document.createElement('div')
-      Object.assign(e.style, { position: 'absolute', left: '0', top: '0', width: '96px', height: '96px', borderRadius: '50%', zIndex: '26', pointerEvents: 'none', background: infoBoss?.fx?.no ?? 'transparent' })
+      Object.assign(e.style, { position: 'absolute', left: '0', top: '0', width: `${co}px`, height: `${co}px`, borderRadius: '50%', zIndex: '26', pointerEvents: 'none', background: infoBoss?.fx?.no ?? 'transparent' })
       goc.appendChild(e)
-      const a = e.animate([{ transform: `translate(${x - 48}px, ${y - 48}px) scale(.3)`, opacity: 1 }, { transform: `translate(${x - 48}px, ${y - 48}px) scale(1.5)`, opacity: 0 }], { duration: 380, easing: 'ease-out', fill: 'forwards' })
+      const a = e.animate([{ transform: `translate(${x - co / 2}px, ${y - co / 2}px) scale(.3)`, opacity: 1 }, { transform: `translate(${x - co / 2}px, ${y - co / 2}px) scale(1.5)`, opacity: 0 }], { duration: 380, easing: 'ease-out', fill: 'forwards' })
       a.onfinish = () => e.remove()
       window.setTimeout(() => e.remove(), 1200) // tab nền không chạy hoạt ảnh ⇒ onfinish không bắn: dọn cưỡng bức
     }
-    const bay = (sx: number, sy: number, tx: number, ty: number, ms: number, vong: boolean) => {
-      const anh = infoBoss?.anhTenLua; if (!anh) return
-      const w = keCao * 0.4, hh = (w * 223) / 536
+    // đường bay cong (Bézier bậc 2) của 1 vật có ảnh. `anh` riêng của chiêu (Trang/Cường) vẽ mũi hướng PHẢI mà boss bay sang TRÁI ⇒ lật ngang thay vì xoay ngược đầu; chữ (xoay=false) giữ thẳng.
+    const bay = (sx: number, sy: number, tx: number, ty: number, ms: number, vong: number, q: NonNullable<ChieuBoss['qua']>) => {
+      const anh = q.anh ?? infoBoss?.anhTenLua; if (!anh) return
+      const w = keCao * (q.rong ?? 0.4), hh = w * (q.ty ?? 223 / 536), rieng = !!q.anh
       const im = new Image(); im.src = anh
-      Object.assign(im.style, { position: 'absolute', left: '0', top: '0', width: `${w}px`, maxWidth: 'none', zIndex: '25', pointerEvents: 'none', filter: `drop-shadow(0 0 8px ${infoBoss?.fx?.vet ?? 'transparent'})` })
+      Object.assign(im.style, { position: 'absolute', left: '0', top: '0', width: `${w}px`, maxWidth: 'none', zIndex: '25', pointerEvents: 'none', filter: `drop-shadow(0 0 8px ${q.quang ?? infoBoss?.fx?.vet ?? 'transparent'})` })
       goc.appendChild(im)
-      const cx = (sx + tx) / 2, cy = Math.min(sy, ty) - (vong ? sanCao * 0.5 : 0)
+      const cx = (sx + tx) / 2, cy = Math.min(sy, ty) - vong * sanCao
       const pt = (p: number) => ({ x: (1 - p) ** 2 * sx + 2 * (1 - p) * p * cx + p * p * tx, y: (1 - p) ** 2 * sy + 2 * (1 - p) * p * cy + p * p * ty })
-      const kf = Array.from({ length: 17 }, (_, i) => { const p = i / 16, a = pt(p), b = pt(Math.min(1, p + 0.02)); return { transform: `translate(${a.x - w / 2}px, ${a.y - hh / 2}px) rotate(${(Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI}deg)`, offset: p } })
+      const kf = Array.from({ length: 17 }, (_, i) => {
+        const p = i / 16, a = pt(p), b = pt(Math.min(1, p + 0.02)), dx = b.x - a.x, dy = b.y - a.y, lat = rieng && dx < 0 && q.xoay !== false
+        const g = q.xoay === false ? 0 : lat ? (Math.atan2(dy, -dx) * 180) / Math.PI : (Math.atan2(dy, dx) * 180) / Math.PI
+        return { transform: `translate(${a.x - w / 2}px, ${a.y - hh / 2}px) rotate(${g}deg)${lat ? ' scaleX(-1)' : ''}`, offset: p }
+      })
       im.animate(kf, { duration: ms, easing: 'linear', fill: 'forwards' }).onfinish = () => im.remove()
       window.setTimeout(() => im.remove(), ms + 800)
+    }
+    const ax = bb.x + keCao / 2, ay = bb.y + keCao * 0.98 // neo chân boss trên sân
+    // bong bóng thoại trên đầu boss
+    if (ch.thoai) {
+      const b = document.createElement('div'); b.textContent = ch.thoai
+      const rong = sanRef.current?.clientWidth ?? 600, bx = Math.min(Math.max(ax, 90), rong - 90)
+      Object.assign(b.style, { position: 'absolute', left: `${bx}px`, top: `${Math.max(6, bb.y + keCao * 0.12 - 44)}px`, transform: 'translateX(-50%)', zIndex: '27', pointerEvents: 'none', whiteSpace: 'nowrap', font: '700 15px system-ui', color: infoBoss?.fx?.thoai?.chu ?? 'inherit', background: infoBoss?.fx?.thoai?.nen ?? 'transparent', border: `2px solid ${infoBoss?.fx?.thoai?.vien ?? 'transparent'}`, borderRadius: '12px', padding: '6px 14px' })
+      them(b, 1900); b.animate([{ opacity: 0 }, { opacity: 1, offset: 0.08 }, { opacity: 1, offset: 0.88 }, { opacity: 0 }], { duration: 1900, fill: 'forwards' })
+    }
+    // bàn gỗ (đập thước): đứng yên suốt chiêu, mép trên bàn = điểm thước chạm
+    if (ch.ban) {
+      const im = new Image(); im.src = ch.ban.anh
+      const w = ch.ban.rong * k
+      Object.assign(im.style, { position: 'absolute', left: `${ax + ch.ban.x * k - w / 2}px`, top: `${ay + ch.ban.y * k}px`, width: `${w}px`, maxWidth: 'none', zIndex: '11', pointerEvents: 'none' })
+      them(im)
+    }
+    // lửa nạp ở sách (sách hoá cầu lửa): lớn dần từ tuMs tới lúc phóng
+    if (ch.sac) {
+      const sc = ch.sac, cxx = ax + sc.vi[0] * k, cyy = ay + sc.vi[1] * k, w0 = sc.rong * k, dur = Math.max(200, ch.phongMs - sc.tuMs)
+      hen(sc.tuMs, () => {
+        const cont = document.createElement('div')
+        Object.assign(cont.style, { position: 'absolute', left: `${cxx}px`, top: `${cyy}px`, width: '0', height: '0', zIndex: '26', pointerEvents: 'none' })
+        const lq = document.createElement('div')
+        Object.assign(lq.style, { position: 'absolute', left: `${-w0 * 0.55}px`, top: `${-w0 * 0.55}px`, width: `${w0 * 1.1}px`, height: `${w0 * 1.1}px`, borderRadius: '50%', background: sc.nen })
+        cont.appendChild(lq)
+        for (let i = 0; i < 3; i++) {
+          const f = document.createElement('img'); f.src = sc.anh
+          Object.assign(f.style, { position: 'absolute', left: `${(i - 1) * w0 * 0.25 - w0 / 2}px`, top: `${-w0 * 0.25 + 4}px`, width: `${w0}px`, maxWidth: 'none', opacity: '0.8', transformOrigin: '50% 50%', transform: `rotate(${-90 + (i - 1) * 9}deg)` })
+          cont.appendChild(f)
+        }
+        them(cont)
+        cont.animate([{ transform: 'scale(.45)', opacity: 0.4 }, { transform: 'scale(1)', opacity: 1 }], { duration: dur, easing: 'ease-in', fill: 'forwards' })
+        window.setTimeout(() => cont.remove(), dur + 40)
+      })
+    }
+    // hồ quang kiếm ở tay boss
+    if (ch.chem && ch.qua) {
+      const [hx, hy] = ch.qua.nong[0], neo = ch.qua.neo ?? [384, 580], r = 126 * k, c0x = ax + (hx - neo[0] + 34) * k, c0y = ay + (hy - neo[1]) * k
+      const a0 = Math.PI + 1.4, a1 = Math.PI - 1.25, P = (a: number) => `${r + r * Math.cos(a)} ${r + r * Math.sin(a)}`
+      hen(ch.phongMs, () => {
+        const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        s.setAttribute('width', String(2 * r)); s.setAttribute('height', String(2 * r)); s.setAttribute('viewBox', `0 0 ${2 * r} ${2 * r}`)
+        Object.assign(s.style, { position: 'absolute', left: `${c0x - r}px`, top: `${c0y - r}px`, zIndex: '26', pointerEvents: 'none', overflow: 'visible', filter: `drop-shadow(0 0 10px ${ch.chem?.bong})` })
+        s.innerHTML = `<path d="M ${P(a0)} A ${r} ${r} 0 0 0 ${P(a1)}" fill="none" stroke="${ch.chem?.net}" stroke-width="${Math.max(5, 28 * k)}" stroke-linecap="round"/>`
+        them(s, 600)
+        s.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, easing: 'ease-out', fill: 'forwards' })
+      })
     }
     let het = tong
     if (ch.kieu === 'tia') {
@@ -131,17 +187,33 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
       hen(ch.phongMs + 80, () => { setHero('bi_danh'); rung(12, 1000) })
     }
     else if (ch.qua) {
-      const q = ch.qua
-      for (let i = 0; i < q.n; i++) {
-        const [nx, ny] = q.nong[i % q.nong.length]
-        const sx = bb.x + keCao / 2 + (nx - 384) * k, sy = bb.y + keCao * 0.98 + (ny - 580) * k
-        const d = q.n === 1 ? tam : { x: h.x + h.w * (0.2 + 0.6 * ((i * 0.37) % 1)), y: h.y + h.h * (0.4 + 0.5 * ((i * 0.61) % 1)) }
-        hen(ch.phongMs + i * q.cach, () => { bay(sx, sy, d.x, d.y, q.bay, q.n > 1); hen(q.bay, () => { no(d.x, d.y); trung() }) })
+      const q = ch.qua, neo = q.neo ?? [384, 580]
+      const diem = (i: number) => { const [nx, ny] = q.nong[i % q.nong.length]; return { x: ax + (nx - neo[0]) * k, y: ay + (ny - neo[1]) * k } }
+      if (ch.kieu === 'song') {
+        // đập thước: nổ ngay chỗ thước + sóng xung kích (elip tím) lan tới ngực nhân vật rồi nổ tại chỗ nhân vật
+        const g0 = diem(0), d = { x: h.x + h.w / 2, y: h.y + h.h * 0.55 }, ew = 127 * k, eh = 446 * k
+        hen(ch.phongMs, () => {
+          no(g0.x, g0.y, 150); no(g0.x, g0.y, 100)
+          const e = document.createElement('div')
+          Object.assign(e.style, { position: 'absolute', left: '0', top: '0', width: `${ew}px`, height: `${eh}px`, borderRadius: '50%', border: `${Math.max(4, 16 * k)}px solid ${infoBoss?.fx?.song?.vien ?? 'transparent'}`, boxShadow: `0 0 18px ${infoBoss?.fx?.song?.bong ?? 'transparent'}`, zIndex: '25', pointerEvents: 'none', boxSizing: 'border-box' })
+          them(e, q.bay + 900)
+          e.animate([{ transform: `translate(${g0.x - ew / 2}px, ${g0.y - eh * 0.45}px)`, opacity: 1 }, { transform: `translate(${d.x - ew / 2}px, ${d.y - eh / 2}px)`, opacity: 0.45 }], { duration: q.bay, easing: 'linear', fill: 'forwards' }).onfinish = () => e.remove()
+          hen(q.bay, () => { no(d.x, d.y, 150); trung() })
+        })
+        het = Math.max(tong, ch.phongMs + q.bay + 500)
+      } else {
+        const vong = q.vong ?? (q.n > 1 ? 0.5 : 0)
+        for (let i = 0; i < q.n; i++) {
+          const { x: sx, y: sy } = diem(i)
+          const d = q.n === 1 ? tam : { x: h.x + h.w * (0.2 + 0.6 * ((i * 0.37) % 1)), y: h.y + h.h * (0.4 + 0.5 * ((i * 0.61) % 1)) }
+          hen(ch.phongMs + i * q.cach, () => { if (i === 0 && ch.sac) no(sx, sy, 120); bay(sx, sy, d.x, d.y, q.bay, vong, q); hen(q.bay, () => { no(d.x, d.y, q.n > 8 ? 70 : 96); trung() }) })
+        }
+        het = Math.max(tong, ch.phongMs + (q.n - 1) * q.cach + q.bay + 400)
       }
-      het = Math.max(tong, ch.phongMs + (q.n - 1) * q.cach + q.bay + 400)
     }
     await new Promise((r) => setTimeout(r, het + 200))
     dat.forEach((t) => window.clearTimeout(t))
+    rac.forEach((e) => e.remove())
     setClipBoss(null); setLao(0)
   }
 

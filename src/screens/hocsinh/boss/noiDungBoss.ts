@@ -77,6 +77,93 @@ export const BOSS: Record<string, NoiDungBoss> = {
       ],
     },
   },
+  // TRANG + CƯỜNG (07/10) — hoạt ảnh Thùy đưa; BẢN NHÁP lời thoại/tên chiêu do Claude soạn theo luật giọng ở đầu file, Thùy / Trang / Cường duyệt, sửa tự do.
+  boss_trang: {
+    ten: 'Trang',
+    vai: 'Phù thủy sách phép',
+    cuaMieng: 'Sách phép đã mở. Em chuẩn bị chưa?',
+    chieu: [
+      { ma: 'bay_btvn', ten: 'Bay BTVN', thu: 'Những dạng em đã nắm: trả lời đúng là né được bài tập bay tới', phase: 1, loai_cau: 'dat' },
+      { ma: 'dap_thuoc', ten: 'Đập Thước', thu: 'Dạng em chưa từng thử: đúng một câu là hoá giải sóng xung kích', phase: 1, loai_cau: 'chua_do' },
+      { ma: 'mua_btvn', ten: 'Mưa BTVN', thu: 'Gọi lại dạng em từng chưa vững: từng câu đúng là đỡ một tờ bài tập', phase: 2, loai_cau: 'yeu' },
+    ],
+    thoai: {
+      gap_lan_dau: [
+        { noi: 'Chào em! Ta là Trang, phù thủy giữ cuốn sách phép của lớp.', mat: 'noi' },
+        { noi: 'Ta ra bài, em trả lời. Càng nắm vững, ta càng yếu.', mat: 'noi' },
+        { noi: 'Sách phép đã mở. Em chuẩn bị chưa?', mat: 'dung' },
+      ],
+      chua_du_suc: [
+        { noi: 'Chưa đến lúc đâu. Em còn vài chặng ở các vùng trước chưa đi qua.', mat: 'noi' },
+        { noi: 'Đi thêm rồi quay lại, ta vẫn đợi.', mat: 'dung' },
+      ],
+      bat_dau: [{ noi: 'Mở sách! Ta thử bài của em đây!', mat: 'chieu' }],
+      dung: [
+        { noi: 'Chuẩn! Dạng này em nắm chắc rồi đấy.', mat: 'trung' },
+        { noi: 'Trúng đích! Em nghĩ rất gọn.', mat: 'trung' },
+      ],
+      sai: [
+        { noi: 'Chưa tới thôi. Em đọc lại đề một lần nữa nhé.', mat: 'noi' },
+        { noi: 'Không vội. Từng bước một, ta chờ được.', mat: 'noi' },
+      ],
+      mau_75: [{ noi: 'Khá lắm, ta bắt đầu thấy mình chao đảo rồi.', mat: 'noi' }],
+      mau_50: [{ noi: 'Một nửa rồi! Em làm ta phải nghiêm túc đấy.', mat: 'gian' }],
+      mau_25: [{ noi: 'Sắp tới rồi… cố thêm chút nữa!', mat: 'noi' }],
+      chuyen_pha: [{ noi: 'Giờ ta tung cả xấp bài tập. Ôn lại những dạng em từng thấy khó nào!', mat: 'chieu' }],
+      ha: [
+        { noi: 'Sách phép khép lại rồi. Em đã nắm chắc {so_dang} dạng, điều đó không tự nhiên mà có.', mat: 'ha' },
+        { noi: 'Giỏi lắm! Ta tự hào về em.', mat: 'ha' },
+      ],
+      roi_giua_tran: [{ noi: 'Hẹn em lần sau. Ta vẫn chờ em ở đây.', mat: 'dung' }],
+      gap_lai: [
+        { noi: 'Lại gặp em rồi! Muốn luyện thêm không? Ta vẫn còn vài câu đố hay.', mat: 'noi' },
+        { noi: 'Ta thấy có dạng mới em nên ôn lại. Thử không?', mat: 'noi' },
+      ],
+    },
+  },
+  boss_cuong: {
+    ten: 'Cường',
+    vai: 'Kiếm sư không gian',
+    cuaMieng: 'Kiếm đã ra khỏi vỏ. Em chuẩn bị chưa?',
+    chieu: [
+      { ma: 'bay_btvn', ten: 'Bay BTVN', thu: 'Những dạng em đã nắm: trả lời đúng là né được bài tập bay tới', phase: 1, loai_cau: 'dat' },
+      { ma: 'ga_the', ten: 'Gà Thế', thu: 'Dạng em chưa từng thử: đúng một câu là chặn được nhát chém', phase: 1, loai_cau: 'chua_do' },
+      { ma: 'mua_btvn', ten: 'Mưa BTVN', thu: 'Gọi lại dạng em từng chưa vững: từng câu đúng là đỡ một tờ bài tập', phase: 2, loai_cau: 'yeu' },
+    ],
+    thoai: {
+      gap_lan_dau: [
+        { noi: 'Chào em! Ta là Cường, kiếm sư lang thang giữa các vì sao.', mat: 'noi' },
+        { noi: 'Ta ra bài, em trả lời. Càng nắm vững, ta càng yếu.', mat: 'noi' },
+        { noi: 'Kiếm đã ra khỏi vỏ. Em chuẩn bị chưa?', mat: 'dung' },
+      ],
+      chua_du_suc: [
+        { noi: 'Chưa đến lúc đâu. Em còn vài chặng ở các vùng trước chưa đi qua.', mat: 'noi' },
+        { noi: 'Đi thêm rồi quay lại, ta vẫn đợi.', mat: 'dung' },
+      ],
+      bat_dau: [{ noi: 'Rút kiếm! Ta thử bài của em đây!', mat: 'chieu' }],
+      dung: [
+        { noi: 'Chuẩn! Dạng này em nắm chắc rồi đấy.', mat: 'trung' },
+        { noi: 'Trúng đích! Em nghĩ rất gọn.', mat: 'trung' },
+      ],
+      sai: [
+        { noi: 'Chưa tới thôi. Em đọc lại đề một lần nữa nhé.', mat: 'noi' },
+        { noi: 'Không vội. Từng bước một, ta chờ được.', mat: 'noi' },
+      ],
+      mau_75: [{ noi: 'Khá lắm, ta bắt đầu thấy mình chao đảo rồi.', mat: 'noi' }],
+      mau_50: [{ noi: 'Một nửa rồi! Em làm ta phải nghiêm túc đấy.', mat: 'gian' }],
+      mau_25: [{ noi: 'Sắp tới rồi… cố thêm chút nữa!', mat: 'noi' }],
+      chuyen_pha: [{ noi: 'Giờ ta nghiêm túc đây. Ôn lại những dạng em từng thấy khó nào!', mat: 'chieu' }],
+      ha: [
+        { noi: 'Kiếm của ta gục rồi. Em đã nắm chắc {so_dang} dạng, điều đó không tự nhiên mà có.', mat: 'ha' },
+        { noi: 'Giỏi lắm! Ta tự hào về em.', mat: 'ha' },
+      ],
+      roi_giua_tran: [{ noi: 'Hẹn em lần sau. Ta vẫn chờ em ở đây.', mat: 'dung' }],
+      gap_lai: [
+        { noi: 'Lại gặp em rồi! Muốn luyện thêm không? Ta vẫn còn vài câu đố hay.', mat: 'noi' },
+        { noi: 'Ta thấy có dạng mới em nên ôn lại. Thử không?', mat: 'noi' },
+      ],
+    },
+  },
   boss_thuy: {
     ten: 'Thùy',
     vai: 'Người gác cổng Tháp Tri Thức',
