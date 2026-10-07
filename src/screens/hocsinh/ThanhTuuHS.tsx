@@ -44,7 +44,7 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
   const coData = items && items.length > 0
 
   return (
-    <ManHS>
+    <ManHS nenAnh="thanh_tuu">
       <DauTrangHS tieuDe="Thành tựu của em" phu="Thành tựu mùa · giải thưởng cuối tháng · huy hiệu" onBack={onXong} />
       <MungThanhTuu nhan={vuaNhan} onDong={() => setVuaNhan(null)} />
       {tt ? <ThanhTuuMoiView d={tt} onNhan={nhanQua} dangNhan={dangNhan} /> : !err && <TrongHS>Đang tải…</TrongHS>}

@@ -181,7 +181,7 @@ export default function NhiemVuHS({ gioiTinh, onBack, onLuyenYeu, onVongQuay }: 
   }, [])
 
   return (
-    <Khung gioiTinh={gioiTinh}>
+    <Khung gioiTinh={gioiTinh} nenAnh="nhiem_vu">
       <NutBack onBack={onBack} />
       <h1 className="text-[28px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Nhiệm vụ {d?.mon ?? ''}</h1>
       <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game).</p>

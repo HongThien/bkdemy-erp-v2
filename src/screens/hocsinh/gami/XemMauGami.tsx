@@ -150,12 +150,12 @@ function Man({ man, tt }: { man: string; tt: number }) {
   if (man === 'home') return <MauHome tt={tt} />
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
-    return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game)." /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
+    return <Khung nenAnh="nhiem_vu"><Dau tieuDe="Nhiệm vụ Toán" phu="Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game)." /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
   }
   if (man === 'bxh') return <MauBxh tt={tt} />
   if (man === 'thanh_tuu') {
     const d = tt === 2 ? TT_MOI_VAO : TT_GIUA_MUA
-    return <Khung><Dau tieuDe="Thành tựu của em" phu="Thành tựu mùa · giải thưởng cuối tháng · huy hiệu" /><ThanhTuuMoiView d={d} />
+    return <Khung nenAnh="thanh_tuu"><Dau tieuDe="Thành tựu của em" phu="Thành tựu mùa · giải thưởng cuối tháng · huy hiệu" /><ThanhTuuMoiView d={d} />
       {tt === 3 && <MungThanhTuu nhan={{ ma: 'TT05', bac: 2, mon: 'Toán', exp: 200, xu: 0, ten: 'Chuỗi làm bài', moi: true }} onDong={noop} />}</Khung>
   }
   if (man === 'album') {

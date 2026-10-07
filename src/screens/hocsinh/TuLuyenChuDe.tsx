@@ -26,8 +26,8 @@ const T_SKIN = {
 }
 export const THEME = { nam: T_SKIN, nu: T_SKIN }
 
-export function Khung({ children }: { gioiTinh?: 'nam' | 'nu' | null; children: React.ReactNode }) {
-  return <ManHS className="!gap-0">{children}</ManHS>
+export function Khung({ children, nenAnh }: { gioiTinh?: 'nam' | 'nu' | null; children: React.ReactNode; nenAnh?: 'bxh' | 'nhiem_vu' | 'thanh_tuu' }) {
+  return <ManHS className="!gap-0" nenAnh={nenAnh}>{children}</ManHS>
 }
 // Nút quay lại + nhãn MÔN đang chọn (01/10: mọi màn tự luyện thuộc góc học tập của 1 môn — em biết đang ở môn nào).
 export function NutBack({ onBack }: { onBack: () => void }) {

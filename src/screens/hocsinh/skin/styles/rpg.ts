@@ -47,10 +47,30 @@ export const RPG: Skin = {
     { id: 'dem_sao', ten: 'Đêm sao', toi: 'radial-gradient(1.5px 1.5px at 20% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 70% 30%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 40% 60%, #e9c77b 50%, transparent 51%), radial-gradient(1px 1px at 85% 75%, #fff 50%, transparent 51%), radial-gradient(90% 60% at 50% 0%, #2c3a66 0%, #141a33 70%), #141a33' },
   ],
   // Mỗi ô 1 hình khác nhau. Khối 9 có Thành tựu, khối 10–12 có Bảng xếp hạng (không bao giờ cùng lưới) ⇒ dùng chung cúp.
+  // Đơn 16 (07/10): nền trời đêm riêng cho 3 màn trong. Đơn 15: bộ khung/huy chương/icon màn Bảng xếp hạng (slice theo *.slice.json của kit).
+  nenMan: {
+    bxh: { ngang: `${A}/nen/nen_bxh_ngang.jpg`, doc: `${A}/nen/nen_bxh_doc.jpg` },
+    nhiem_vu: { ngang: `${A}/nen/nen_nhiem_vu_ngang.jpg`, doc: `${A}/nen/nen_nhiem_vu_doc.jpg` },
+    thanh_tuu: { ngang: `${A}/nen/nen_thanh_tuu_ngang.jpg`, doc: `${A}/nen/nen_thanh_tuu_doc.jpg` },
+  },
+  anhBxh: {
+    huyChuong: [`${A}/bxh/huy_chuong_1.png`, `${A}/bxh/huy_chuong_2.png`, `${A}/bxh/huy_chuong_3.png`],
+    khien: `${A}/bxh/khien_hang.png`, muiTen: `${A}/bxh/mui_ten.png`, huyHieu: `${A}/bxh/huy_hieu_bxh.png`, trong: `${A}/bxh/trong.png`,
+    khungHang: { src: `${A}/bxh/khung_hang.png`, w: 640, h: 96, cat: 28 },
+    khungHangEm: { src: `${A}/bxh/khung_hang_em.png`, w: 640, h: 96, cat: 28 },
+    khungDai: { src: `${A}/bxh/khung_dai_hang_em.png`, w: 960, h: 104, cat: 32 },
+    khungChon: { src: `${A}/bxh/khung_o_chon.png`, w: 320, h: 100, cat: 24 },
+    khungChonMo: { src: `${A}/bxh/khung_o_chon_mo.png`, w: 320, h: 100, cat: 24 },
+    khungMenu: { src: `${A}/bxh/khung_menu_chon.png`, w: 480, h: 480, cat: 40 },
+    iconBang: {
+      A1: `${A}/bxh/bang_a1.png`, A2: `${A}/bxh/bang_a2.png`, A3: `${A}/bxh/bang_a3.png`, A4: `${A}/bxh/bang_a4.png`, A5: `${A}/bxh/bang_a5.png`,
+      B1: `${A}/bxh/bang_b1.png`, C1: `${A}/bxh/bang_c1.png`, E1: `${A}/bxh/bang_e1.png`,
+    },
+  },
   anhO: {
     giao_trinh: `${A}/o_tren_lop.png`, et: `${A}/o_et.png`, btvn: `${A}/o_btvn.png`, tu_luyen: `${A}/o_tu_luyen.png`,
     thong_tin: `${A}/o_thong_tin.png`, so_tay: `${A}/o_so_tay.png`, de_thi_thu: `${A}/o_thi_thu.png`,
-    bai_tap_giao: `${A}/o_bai_tap_giao.png`, thanh_tuu: `${A}/o_cup.png`, xep_hang: `${A}/o_cup.png`,
+    bai_tap_giao: `${A}/o_bai_tap_giao.png`, thanh_tuu: `${A}/o_cup.png`, xep_hang: `${A}/bxh/o_xep_hang.png`, // 07/10: icon ô lớn riêng (Đơn 15)
     may_man: `${A}/o_ruong.png`, vi_xu: `${A}/o_vi_xu.png`, hoc_tu_dau: `${A}/o_hoc_tu_dau.png`,
     the_gioi: `${A}/o_pha_le.png`, // TẠM (cầu pha lê) — thay bằng tg_o_the_gioi khi kit Đơn 5 về
     // 01/10 — 2 ô mới trên màn chính, hình lấy từ kit gamification cùng nét RPG (chưa đặt vẽ riêng): sổ nhiệm vụ (nv_tuan) · khiên Hero.

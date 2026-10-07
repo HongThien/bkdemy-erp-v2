@@ -59,6 +59,15 @@ export type MoHinhChibi = {
   /** hào quang thường · khi giận (pha 2) */
   hao: string; haoGian: string
 }
+export type NenManId = 'bxh' | 'nhiem_vu' | 'thanh_tuu'
+/** Khung 9-slice: cat = độ dày góc (px trên ảnh GỐC w×h; 4 cạnh bằng nhau theo file .slice.json của kit) */
+export type Khung9 = { src: string; w: number; h: number; cat: number }
+export type AnhBxh = {
+  huyChuong: [string, string, string]; khien: string; muiTen: string; huyHieu: string; trong: string
+  khungHang: Khung9; khungHangEm: Khung9; khungDai: Khung9; khungChon: Khung9; khungChonMo: Khung9; khungMenu: Khung9
+  /** mã bảng (A1…E1) → icon */
+  iconBang: Record<string, string>
+}
 /** 1 đoạn HOẠT ẢNH THEO KHUNG của boss có animation vẽ riêng (vd Minh Quân — design/bk-ui-src/AppHS/Animation/minh-quan-boss). Mọi khung cùng neo chân. */
 export type ClipBoss = {
   src: string[]
@@ -125,6 +134,10 @@ export type Skin = {
   // id Ô CHỨC NĂNG → icon vẽ riêng của style. MỌI ô trong KHU/KHU_CAP2 (HocSinhApp) phải có — ô mới thêm mà thiếu icon
   // thì `npm run check:style-hs` báo, và app tạm hiện dauThayIcon.
   anhO?: Record<string, string>
+  // NỀN MÀN TRONG có hồn (Đơn 16, 07/10): ảnh trời đêm riêng cho 3 màn — không khai ⇒ giữ nền đơn sắc (--sk-nen-trong). ngang = iPad/PC · doc = điện thoại dọc.
+  nenMan?: Partial<Record<NenManId, { ngang: string; doc: string }>>
+  // BỘ ĐỒ HOẠ màn Bảng xếp hạng (Đơn 15) — không khai ⇒ màn tự vẽ bằng code (khung đơn sắc + huy chương emoji).
+  anhBxh?: AnhBxh
   // true ⇒ icon ô là nét đơn sắc dùng làm MẶT NẠ, tô bằng màu chữ của style (style đơn sắc: 1 bộ icon đúng cả sáng lẫn tối)
   anhOMask?: boolean
   // Ô thiếu icon ⇒ hiện DẤU này (màu nhấn) thay vì emoji — emoji lẫn icon vẽ tay trông lệch (Thùy 28/09).

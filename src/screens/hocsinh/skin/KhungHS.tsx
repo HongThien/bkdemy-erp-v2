@@ -10,6 +10,7 @@
 // ============================================================================
 import { useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import { laySkin, cheDoThat, bienCss, type GiaoDien } from './registry'
+import type { NenManId, Skin } from './kieu'
 import { datSkinDangAp, layLoi, useSkinDangAp, type LoiHS } from './loi'
 import { layMonHienTai, ngheMonHienTai } from '../../../lib/tuluyen'
 
@@ -89,12 +90,28 @@ export const HEAD: CSSProperties = {
 // Thay mọi `Khung`/THEME.bg + decor + quote cũ. rong: 'thuong' (điện thoại 430 · iPad 820 · PC 1180) | 'hep' (màn đọc/làm bài 720).
 // nen (Thùy 06/10): 'trong' = màn BÊN TRONG — nền ĐƠN SẮC/tối riêng của style (--sk-nen-trong), không tranh, cho đỡ rối (MẶC ĐỊNH) ·
 // 'tranh' = màn BÊN NGOÀI — tranh nền của style (Home, khu Học tập). Chỉ màn ngoài mới xin 'tranh'.
-export function ManHS({ children, rong = 'thuong', className = '', nen = 'trong' }: { children: ReactNode; rong?: 'thuong' | 'hep'; className?: string; nen?: 'trong' | 'tranh' }) {
+/** Style ĐANG ÁP (đổi style ⇒ vẽ lại). Màn chỉ đọc thuộc tính khai trong Skin (anhBxh, nenMan…) — KHÔNG so sánh id style. */
+export const useSkinHT = (): Skin => laySkin(useSkinDangAp())
+
+// nenAnh (Đơn 16, 07/10): màn TRONG có ảnh nền trời đêm riêng nếu style khai nenMan[nenAnh]; không khai ⇒ giữ nền đơn sắc. Ngang/dọc theo hướng màn.
+function NenAnh({ id }: { id: NenManId }) {
+  const a = useSkinHT().nenMan?.[id]
+  if (!a) return null
+  return (
+    <picture aria-hidden className="pointer-events-none fixed inset-0 z-0">
+      <source media="(orientation: portrait)" srcSet={a.doc} />
+      <img src={a.ngang} alt="" className="h-full w-full object-cover" draggable={false} />
+    </picture>
+  )
+}
+
+export function ManHS({ children, rong = 'thuong', className = '', nen = 'trong', nenAnh }: { children: ReactNode; rong?: 'thuong' | 'hep'; className?: string; nen?: 'trong' | 'tranh'; nenAnh?: NenManId }) {
   const w = rong === 'hep' ? 'max-w-[720px]' : 'max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]'
   return (
     <div className="min-h-[100dvh]" style={nen === 'tranh'
       ? { background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)', textShadow: 'var(--sk-chu-bong)' }
       : { background: 'var(--sk-nen-trong)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
+      {nen !== 'tranh' && nenAnh && <NenAnh id={nenAnh} />}
       <div className={`relative mx-auto flex ${w} flex-col gap-3 px-4 pb-[calc(24px+env(safe-area-inset-bottom))] pt-[calc(12px+env(safe-area-inset-top))] ${className}`}>
         {children}
       </div>
