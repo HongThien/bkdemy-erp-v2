@@ -72,10 +72,10 @@ function MauTheGioi({ tt }: { tt: number }) {
 const CHOI = new Set(['xep_hang', 'may_man', 'vi_xu', 'the_gioi']) // khối Giải trí (như KHU_CHOI của HocSinhApp)
 const oHome = (id: string, ten: string, sub: string, badge?: number, subMau: HomeCard['subMau'] = 'xam') => ({ id, ten, sub, subMau, badge, nhom: CHOI.has(id) ? 'choi' : 'hoc', doodle: '', ill: '', tone: {} } as unknown as HomeCard)
 const O_HOME: HomeCard[] = [
-  oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('nhiem_vu', 'Nhiệm vụ', 'Hôm nay còn 2 nhiệm vụ', 2, 'ton'),
+  oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('nhiem_vu', 'Nhiệm vụ', 'Hôm nay còn 2 lượt thưởng', 1, 'ton'),
   { ...oHome('rank', 'Rank', 'Captain ★★ · hạng 12/54', 0, 'ton'), anh: anhBac(3, 'bieu_tuong') ?? undefined }, oHome('thong_tin', 'Thông tin học tập', 'Xem dạng đang yếu'), oHome('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
   oHome('de_thi_thu', 'Làm đề thi thử', 'Sắp có'), oHome('bai_tap_giao', 'Bài tập được giao', '2 bài chưa làm', 2, 'ton'), oHome('xep_hang', 'Thành tựu', 'Xem giải thưởng của em'),
-  oHome('may_man', 'May mắn', 'Có 1 lượt quay!', 1, 'ton'), oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
+  oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
 ]
 const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: null, phong: '204', mon: 'Toán', nguoi: 'Cô Lan', diem_danh: null, hom_nay: false, vao_ca: false }
 // &skin=<id>[&nen=<id>] ⇒ xem mọi màn bằng style khác (vd skin=khoi) — không cần đăng nhập, không lưu DB.

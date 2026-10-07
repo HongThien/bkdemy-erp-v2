@@ -17,7 +17,7 @@ Trang đầu: **Hướng dẫn chơi** — Mọi chức năng của app và các
 **Bố cục**
 - Trên cùng là thẻ Thế giới BK, ngay dưới là thanh chọn môn (Toán, KHTN, Tiếng Anh).
 - Khối “Học tập” thay đổi theo môn đang chọn: Học tập, Thông tin học tập, Sổ tay kiến thức, Làm đề thi thử và các ô bài của thầy cô.
-- Khối “Giải trí” dùng chung cho mọi môn: Thế giới BK, Nhiệm vụ, Thư viện BK, May mắn, Thành tựu, Ví xu. Đổi môn thì khối này không đổi.
+- Khối “Giải trí” dùng chung cho mọi môn: Thế giới BK, Nhiệm vụ, Thư viện BK, Trò chơi, May mắn, Thành tựu, Ví xu. Đổi môn thì khối này không đổi.
 
 **Các nút khác**
 - Chạm ảnh đại diện để mở Hồ sơ (cấp bậc, huy hiệu, đổi ảnh, giao diện).
@@ -252,44 +252,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 **[LƯU Ý] Lưu ý**
 - Nhiệm vụ hiện mở cho môn Toán; các môn khác sẽ mở sau. Nhiệm vụ không cộng Điểm Rank.
 
-### 13. Rank
-**Tóm tắt:** Cấp bậc theo môn, tích luỹ trong một mùa; lên bậc không bao giờ bị tụt trong mùa.
-*Giọng game:* **Cấp bậc chiến binh** — Từ Novice đến Supreme God: leo từng bậc trong mùa.
-*Tutorial tương ứng:* chặng `rank`
-
-**[LUẬT] Điểm Rank đến từ đâu**
-- ET: mỗi bài ET được chấm là 100 điểm.
-- BTVN: nộp đúng hạn 100 điểm, nộp muộn 50 điểm.
-- Mock Test (MT) sát hạch tại trung tâm: từ 500 đến 1000 điểm theo thứ hạng.
-- Thử thách: 10, 20 hoặc 30 điểm theo số câu đúng (xem mục Thử thách).
-
-**Mùa và bậc**
-- Một mùa kéo dài một năm, từ 1 tháng 7 đến 30 tháng 6 năm sau. Hết mùa, em bắt đầu lại từ Novice.
-- Có 10 bậc, từ thấp đến cao như bảng dưới. Điểm cần cho từng bậc xem trong màn Rank (mỗi môn có thể khác nhau).
-- Các bậc đầu có 3 sao. Đã lên bậc thì không tụt bậc trong mùa.
-
-**Bảng đua tháng**
-- Xếp hạng theo Điểm Rank kiếm được trong tháng, giữa các em cùng khối và cùng môn. Bảng này không làm đổi bậc.
-
-**[LƯU Ý] Lưu ý**
-- Rank hiện mở cho môn Toán; các môn khác sẽ mở sau.
-
-**Mười bậc Rank (thấp đến cao)**
-
-| Thứ tự | Bậc |
-|---|---|
-| 1 | Novice |
-| 2 | Soldier |
-| 3 | Captain |
-| 4 | General |
-| 5 | Hero |
-| 6 | Legend |
-| 7 | King |
-| 8 | Emperor |
-| 9 | God of War |
-| 10 | Supreme God |
-
-### 14. Huy hiệu, Thành tựu và Album
+### 13. Huy hiệu, Thành tựu và Album
 **Tóm tắt:** Tám huy hiệu ghi nhận chuyên cần, bài tập và tiến bộ theo từng tháng.
 *Giọng game:* **Bộ sưu tập huy hiệu** — Tám huy hiệu thần thoại, mỗi cái nâng tới 5 sao.
 *Tutorial tương ứng:* chặng `huy_hieu`
@@ -317,8 +280,8 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 **[LƯU Ý] Lưu ý**
 - Huy hiệu hiện mở cho môn Toán; các môn khác sẽ mở sau.
 
-### 15. EXP, xu và Ví xu
-**Tóm tắt:** EXP tích luỹ từ việc học; cuối tháng đổi thành xu để đổi quà tại trung tâm.
+### 14. EXP, xu và Ví xu
+**Tóm tắt:** EXP tích luỹ từ việc học, đổi thành xu ngay trong ngày để đổi quà tại trung tâm.
 *Giọng game:* **Kho báu xu** — Gom EXP, đổi thành xu và rinh quà.
 *Tutorial tương ứng:* chặng `xu_may_man`
 
@@ -328,14 +291,14 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 
 **[LUẬT] Đổi sang xu**
 - Xu được tính theo từng môn và từng tháng từ tổng EXP của tháng đó: cứ 100 EXP là 1 xu (làm tròn lên).
-- Việc chốt xu diễn ra cuối tháng.
+- Xu cập nhật ngay khi em có EXP, không đợi cuối tháng. Nếu EXP bị giảm (phạt BTVN, sửa điểm) thì xu cũng giảm theo.
 - Xu kiếm từ hoạt động trên app có trần mỗi tháng cho mỗi môn; xu từ việc học trên lớp không bị tính vào trần này.
 
 **Dùng xu**
 - Xu dùng để đổi quà ở tủ quà tại trung tâm. App chỉ hiện số dư và lịch sử; việc đổi quà thực hiện trực tiếp tại trung tâm.
 - Danh mục và giá quà do trung tâm thông báo.
 
-### 16. Vòng quay May mắn
+### 15. Vòng quay May mắn
 **Tóm tắt:** Mỗi ngày một lượt quay miễn phí để nhận EXP.
 *Giọng game:* **Vòng quay may mắn** — Quay mỗi ngày một lần để rinh EXP.
 *Tutorial tương ứng:* chặng `xu_may_man`
@@ -348,7 +311,25 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 **Phần thưởng**
 - Giải thưởng là EXP; các mức và tỉ lệ nằm trong màn vòng quay.
 - Kết quả luôn do hệ thống quyết định; hoạt hình chỉ minh hoạ.
-- EXP từ vòng quay được quy đổi thành xu cuối tháng theo quy tắc chung.
+- EXP từ vòng quay được quy đổi thành xu ngay theo quy tắc chung.
+
+### 16. Trò chơi
+**Tóm tắt:** Nơi chứa các game giải trí của BK; hiện có Nông trại BK.
+*Giọng game:* **Khu trò chơi** — Giải lao với Nông trại BK, game mới sẽ lần lượt mở.
+
+**Ô Trò chơi**
+- Ô Trò chơi nằm ở khối Giải trí trên màn chính và dùng chung cho mọi môn.
+- Mỗi game là một thẻ. Thẻ sáng thì chạm để chơi; thẻ mờ ghi “Sắp ra mắt” là game chưa mở.
+- Chạm nút ‹ ở góc dưới bên phải màn game để quay về danh sách.
+
+**Nông trại BK**
+- Trồng cây, nuôi gà và bò, sang vườn bạn bè. Mỗi ngày vào một lần, khoảng mười đến mười lăm phút là đủ.
+- Ngày trong game đổi lúc 5 giờ sáng giờ Việt Nam. Cây chín sau 1, 2 hoặc 3 ngày tuỳ loại.
+- Càng chăm vườn đều đặn thì càng mở thêm ô đất và loại cây mới.
+
+**[LƯU Ý] Lưu ý**
+- Nông trại BK hiện là bản thử: tiến độ được lưu ngay trên thiết bị đang dùng, chưa theo tài khoản và chưa nối với xu hay việc học. Đổi thiết bị thì vườn bắt đầu lại.
+- Săn lùng Quái Vật là game tiếp theo, chưa có ngày mở.
 
 ## Nhóm: Cộng đồng & hỗ trợ
 *Thế giới BK, hồ sơ, góp ý*
@@ -392,7 +373,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 
 ## Tutorial "Hành trình tân thủ"
 
-**Mở đầu:** Chào mừng em đến với BK Academy! Mình sẽ dẫn em đi 12 chặng ngắn để biết app có gì. Mỗi chặng chưa tới 1 phút. Chạm vào màn hình để nghe tiếp nhé.
+**Mở đầu:** Chào mừng em đến với BK Academy! Mình sẽ dẫn em đi 11 chặng ngắn để biết app có gì. Mỗi chặng chưa tới 1 phút. Chạm vào màn hình để nghe tiếp nhé.
 
 ### Chặng 1: Nhân vật và giao diện (`giao_dien`)
 *Chọn cách dùng app hợp với em* · Mở khoá: Giao diện — chọn kiểu mặc định hoặc kiểu game, đổi bất cứ lúc nào
@@ -451,24 +432,15 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 4. Điểm của các chế độ này hiện chưa cộng vào Rank, chuỗi hay nhiệm vụ. Đây là sân thi đấu riêng.
 
 ### Chặng 8: Nhiệm vụ (`nhiem_vu`)
-*Việc ngày · tuần · tháng* · Mở khoá: Nhiệm vụ — xong việc lên Chặng, nhận EXP đổi xu
+*Việc ngày · tuần · tháng* · Mở khoá: Nhiệm vụ — luyện dạng yếu mỗi ngày, nhận EXP và điểm học tập
 
 1. Chặng 8: Nhiệm vụ. Ở khối Giải trí trên màn chính, chạm ô Nhiệm vụ. Hiện nhiệm vụ mở cho môn Toán.
-2. Mỗi ngày có 3 việc nhỏ: vượt 1 Thử thách, luyện 20 câu đúng mới, sửa 2 câu dạng em từng sai. Mỗi việc +10 Điểm Chặng.
-3. Hôm nào lỡ thì việc được giữ 3 ngày cho em làm bù. Xong 2 việc trong ngày là có 1 lượt quay May mắn.
-4. Việc tuần mỗi việc +40, việc tháng mỗi việc +150. Xong 12 việc trong tuần thì mở rương tuần.
-5. Đủ 50 Điểm Chặng là lên 1 cấp, mỗi cấp được thêm EXP. Cuối tháng EXP đổi ra xu.
+2. Nhiệm vụ chỉ có một việc: Luyện dạng yếu. Mỗi lượt em làm đúng từ 7 trên 10 câu là được 20 EXP và 20 điểm học tập. Mỗi ngày tính tối đa 4 lượt.
+3. Có ít nhất 1 lượt đạt trong ngày là em được quay may mắn 1 lần. Vòng quay tự hiện ra khi em có lượt, không cần tìm ô riêng.
+4. Việc tuần: có lượt đạt ở 5 ngày khác nhau, hoặc đủ 12 lượt đạt trong tuần, mỗi việc +100 EXP và +50 điểm. Việc tháng: có lượt đạt ở 20 ngày, +300 EXP và +200 điểm.
+5. Điểm học tập tích lại để em chơi game, kho chứa tối đa 6.000 điểm. EXP thì đổi ra xu ngay.
 
-### Chặng 9: Rank và Bảng xếp hạng (`rank`)
-*10 bậc, đua cả mùa* · Mở khoá: Rank — tích Điểm Rank cả mùa, leo 10 bậc
-
-1. Chặng 9: Rank. Vào Thư viện BK, chạm Rank. Rank tính riêng từng môn, hiện mở cho môn Toán.
-2. Điểm Rank đến từ việc học thật: mỗi bài ET 100 điểm, BTVN đúng hạn 100 (muộn 50), Thử thách 10 đến 30, bài MT tới 1.000 điểm theo thứ hạng.
-3. Điểm cộng dồn cả mùa để leo 10 bậc, từ Novice lên Supreme God. Mùa chạy từ 1/7 đến 30/6 năm sau. Đã lên bậc thì không tụt trong mùa.
-4. Bảng đua tháng xếp em với các bạn cùng khối trong tháng này. Bảng tháng không làm đổi bậc của em.
-5. Mỗi môn có Rank riêng. Đổi môn ở thanh chọn môn trên màn chính.
-
-### Chặng 10: Huy hiệu và Thành tựu (`huy_hieu`)
+### Chặng 9: Huy hiệu và Thành tựu (`huy_hieu`)
 *8 huy hiệu, nâng dần theo tháng* · Mở khoá: Huy hiệu — tháng nào đạt chuẩn thì huy hiệu thêm một bước
 
 1. Chặng 10: Huy hiệu. Vào Hồ sơ hoặc ô Thành tựu để xem Album. Có 8 huy hiệu, mỗi huy hiệu ghi nhận một thói quen tốt.
@@ -477,15 +449,15 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 4. Kết quả chốt sau ngày 10 của tháng kế tiếp. Trước đó em thấy chữ tạm tính.
 5. Em ghim tối đa 3 huy hiệu để khoe ở Hồ sơ.
 
-### Chặng 11: EXP, xu và May mắn (`xu_may_man`)
-*Từ EXP đến quà và vòng quay* · Mở khoá: EXP và xu — cuối tháng EXP đổi ra xu để đổi quà ở trung tâm
+### Chặng 10: EXP, xu và May mắn (`xu_may_man`)
+*Từ EXP đến quà và vòng quay* · Mở khoá: EXP và xu — EXP đổi ra xu ngay để đổi quà ở trung tâm
 
 1. Chặng 11: EXP và xu. EXP đến từ việc học ở lớp và việc làm trên app như nhiệm vụ, vòng quay, huy hiệu.
-2. Cuối tháng, EXP đổi ra xu theo từng môn: cứ 100 EXP được 1 xu. Xu kiếm từ hoạt động trên app có giới hạn mỗi tháng.
+2. Có EXP là đổi ra xu ngay, theo từng môn: cứ 100 EXP trong tháng được 1 xu. Xu kiếm từ nhiệm vụ trên app tối đa 20 xu mỗi tháng, từ vòng quay tối đa 10 xu mỗi tháng.
 3. Ô Ví xu cho em xem số dư và lịch sử. Muốn đổi quà thì đến tủ quà tại trung tâm, app chưa có nút đổi.
-4. Ô May mắn là vòng quay miễn phí, mỗi ngày một lượt. Xong 2 nhiệm vụ ngày thì có lượt quay, giải thưởng là EXP.
+4. Vòng quay may mắn mỗi ngày một lượt, mở khi em có ít nhất 1 lượt Luyện dạng yếu đạt. Giải thưởng là EXP.
 
-### Chặng 12: Thế giới BK (`the_gioi`)
+### Chặng 11: Thế giới BK (`the_gioi`)
 *Khoe thành tích, thả tim bạn bè* · Mở khoá: Thế giới BK — khoe thành tích thật, tương tác với bạn
 
 1. Chặng cuối: Thế giới BK, nơi xem các bạn ở BK vừa đạt gì. Có 3 kênh: Thế giới, Bạn bè, Lớp.

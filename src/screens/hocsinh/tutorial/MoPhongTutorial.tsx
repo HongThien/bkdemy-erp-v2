@@ -199,31 +199,31 @@ function MpNhiemVu() {
       <Soi id="khoi_ngay" style={THE}>
         <div className="p-3">
           <p className="text-[12px] font-bold" style={mo}>HÔM NAY</p>
-          <DongNv ma="N1" ten="Vượt 1 Thử thách" diem={10} xong />
-          <DongNv ma="N2" ten="Luyện 20 câu" diem={10} />
-          <DongNv ma="N3" ten="Sửa sai 2 câu" diem={10} />
+          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 1 (+20 EXP · +20 ĐHT)" diem={20} xong />
+          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 2" diem={20} />
+          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 3" diem={20} />
         </div>
       </Soi>
       <Soi id="quay" style={THE}>
         <div className="flex items-center gap-3 p-3">
           <img src={`${GOC}/nhiem-vu/vong_quay.png`} alt="" className="h-10 w-10 object-contain" />
-          <span className="flex-1 text-[13px]" style={chu()}>Xong 2 nhiệm vụ hôm nay để quay</span><b style={{ color: MAU.acc }}>1/2</b>
+          <span className="flex-1 text-[13px]" style={chu()}>Có 1 lượt đạt hôm nay để quay</span><b style={{ color: MAU.acc }}>1/1</b>
         </div>
       </Soi>
       <Soi id="khoi_tuan" style={THE}>
         <div className="p-3">
-          <div className="flex items-center justify-between"><p className="text-[12px] font-bold" style={mo}>TUẦN 1 · MỖI VIỆC +40</p>
+          <div className="flex items-center justify-between"><p className="text-[12px] font-bold" style={mo}>TUẦN 1 · MỖI VIỆC +100 EXP</p>
             <img src={`${GOC}/nhiem-vu/ruong_dong.png`} alt="" className="h-9 w-9 object-contain" /></div>
           <div className="mt-1 grid grid-cols-4 gap-1">
-            {['T1', 'T2', 'T3', 'T4'].map((m) => <img key={m} src={`${GOC}/nhiem-vu/${m}.png`} alt="" className="mx-auto h-9 w-9 object-contain" />)}
+            {['T1', 'T2'].map((m) => <img key={m} src={`${GOC}/nhiem-vu/${m}.png`} alt="" className="mx-auto h-9 w-9 object-contain" />)}
           </div>
         </div>
       </Soi>
       <Soi id="chang" style={THE}>
         <div className="p-3">
-          <div className="flex justify-between text-[12.5px]"><span style={chu()}>Chặng tháng · cấp 7/30</span><b style={chu()}>30/50</b></div>
-          <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-3/5 rounded-full" style={{ background: MAU.acc }} /></div>
-          <p className="mt-1 text-[11.5px]" style={mo}>Lên cấp +25 EXP · EXP đổi ra xu ngay</p>
+          <div className="flex justify-between text-[12.5px]"><span style={chu()}>Điểm học tập</span><b style={chu()}>1.840/6.000</b></div>
+          <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-[30%] rounded-full" style={{ background: MAU.acc }} /></div>
+          <p className="mt-1 text-[11.5px]" style={mo}>Dùng để chơi game · nhiệm vụ mỗi ngày đều cộng</p>
         </div>
       </Soi>
     </div>
@@ -494,7 +494,7 @@ function MpXuMayMan() {
         <div className="flex items-center gap-3 p-3"><IconO id="vi_xu" /><div><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>Ví xu · 12 xu</b><p className="text-[12px]" style={mo}>Đổi quà tại tủ quà ở trung tâm</p></div></div>
       </Soi>
       <Soi id="quay_so" style={THE}>
-        <div className="flex items-center gap-3 p-3"><IconO id="may_man" /><div className="flex-1"><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>May mắn</b><p className="text-[12px]" style={mo}>1 lượt quay miễn phí mỗi ngày</p></div>
+        <div className="flex items-center gap-3 p-3"><IconO id="may_man" /><div className="flex-1"><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>May mắn</b><p className="text-[12px]" style={mo}>Có lượt đạt trong ngày là được quay</p></div>
           <span className="rounded-lg px-3 py-2 text-[12px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Quay</span></div>
       </Soi>
     </div>

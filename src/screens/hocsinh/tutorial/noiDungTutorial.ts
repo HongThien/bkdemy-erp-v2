@@ -110,13 +110,13 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
   },
   {
     id: 'nhiem_vu', ten: 'Nhiệm vụ', phu: 'Việc ngày · tuần · tháng', icon: { gami: 'nhiem-vu/ruong_mo.png' },
-    kyNang: 'Nhiệm vụ — xong việc lên Chặng, nhận EXP đổi xu',
+    kyNang: 'Nhiệm vụ — luyện dạng yếu mỗi ngày, nhận EXP và điểm học tập',
     buoc: [
       { noi: 'Chặng 8: Nhiệm vụ. Ở khối Giải trí trên màn chính, chạm ô Nhiệm vụ. Hiện nhiệm vụ mở cho môn Toán.', soi: 'link_nhiem_vu' },
-      { noi: 'Mỗi ngày có 3 việc nhỏ: vượt 1 Thử thách, luyện 20 câu đúng mới, sửa 2 câu dạng em từng sai. Mỗi việc +10 Điểm Chặng.', soi: 'khoi_ngay' },
-      { noi: 'Hôm nào lỡ thì việc được giữ 3 ngày cho em làm bù. Xong 2 việc trong ngày là có 1 lượt quay May mắn.', soi: 'quay' },
-      { noi: 'Việc tuần mỗi việc +40, việc tháng mỗi việc +150. Xong 12 việc trong tuần thì mở rương tuần.', soi: 'khoi_tuan' },
-      { noi: 'Đủ 50 Điểm Chặng là lên 1 cấp, mỗi cấp được thêm EXP. EXP đổi ra xu ngay.', soi: 'chang' },
+      { noi: 'Nhiệm vụ chỉ có một việc: Luyện dạng yếu. Mỗi lượt em làm đúng từ 7 trên 10 câu là được 20 EXP và 20 điểm học tập. Mỗi ngày tính tối đa 4 lượt.', soi: 'khoi_ngay' },
+      { noi: 'Có ít nhất 1 lượt đạt trong ngày là em được quay may mắn 1 lần. Vòng quay tự hiện ra khi em có lượt, không cần tìm ô riêng.', soi: 'quay' },
+      { noi: 'Việc tuần: có lượt đạt ở 5 ngày khác nhau, hoặc đủ 12 lượt đạt trong tuần, mỗi việc +100 EXP và +50 điểm. Việc tháng: có lượt đạt ở 20 ngày, +300 EXP và +200 điểm.', soi: 'khoi_tuan' },
+      { noi: 'Điểm học tập tích lại để em chơi game, kho chứa tối đa 6.000 điểm. EXP thì đổi ra xu ngay.', soi: 'chang' },
     ],
   },
   {
@@ -146,9 +146,9 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     kyNang: 'EXP và xu — EXP đổi ra xu ngay để đổi quà ở trung tâm',
     buoc: [
       { noi: 'Chặng 11: EXP và xu. EXP đến từ việc học ở lớp và việc làm trên app như nhiệm vụ, vòng quay, huy hiệu.', soi: 'exp_xu' },
-      { noi: 'Có EXP là đổi ra xu ngay, theo từng môn: cứ 100 EXP trong tháng được 1 xu. Xu kiếm từ hoạt động trên app có giới hạn mỗi tháng.', soi: 'exp_xu' },
+      { noi: 'Có EXP là đổi ra xu ngay, theo từng môn: cứ 100 EXP trong tháng được 1 xu. Xu kiếm từ nhiệm vụ trên app tối đa 20 xu mỗi tháng, từ vòng quay tối đa 10 xu mỗi tháng.', soi: 'exp_xu' },
       { noi: 'Ô Ví xu cho em xem số dư và lịch sử. Muốn đổi quà thì đến tủ quà tại trung tâm, app chưa có nút đổi.', soi: 'vi_xu' },
-      { noi: 'Ô May mắn là vòng quay miễn phí, mỗi ngày một lượt. Xong 2 nhiệm vụ ngày thì có lượt quay, giải thưởng là EXP.', soi: 'quay_so' },
+      { noi: 'Vòng quay may mắn mỗi ngày một lượt, mở khi em có ít nhất 1 lượt Luyện dạng yếu đạt. Giải thưởng là EXP.', soi: 'quay_so' },
     ],
   },
   {

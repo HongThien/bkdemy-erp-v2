@@ -35640,3 +35640,4 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ### 2026-10-07 — SỬA GHI CHÉP 06/10 khuya
 - Lệnh patch "ẩn ô May mắn + MoiQuayMayMan" bị ngắt ở bước hiển thị nhưng ĐÃ CHẠY: HocSinhApp đã bỏ 2 ô `may_man` (KHU_CAP2 + BOX_CAP1) và gắn lời mời quay vào 3 màn chính (đã nằm trong fc0d5bc2); chỉ `MoiQuayMayMan.tsx` bị sót chưa commit ⇒ HEAD fc0d5bc2 thiếu file. Mục (1)(2) "CHƯA làm" ở DEVLOG 06/10 khuya là LỖI THỜI: hai việc này ĐÃ XONG (commit file bù). Còn lại: verify preview · tutorial · cron 202610061810 · tiêu ĐHT cho game.
+- **07/10 — verify preview + tutorial:** xem mẫu `hs.html?xem=gami&man=nhiem_vu&tt=1|2` vẽ đúng (ĐHT, 4 ô lượt, W1/W2, M1, vòng quay); tutorial chặng 8 + 11 (noiDungTutorial.ts, MoPhongTutorial.tsx) và HUONG-DAN-CHOI-DUYET.md đã viết lại theo luật mới (Soi id giữ nguyên); mock Home bỏ ô May mắn. Chưa verify được bằng HS thật (cần đăng nhập + lượt Luyện dạng yếu thật).
