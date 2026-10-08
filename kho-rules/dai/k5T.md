@@ -163,11 +163,11 @@ chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, kh
 
 | Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
-| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách (công thức WMF ⇒ WMF → PNG / PDF trước, §5) → B2 hồ sơ + `tach-bai` → B3 nâng luật v0 theo "Bài làm" của sách (bảng khuôn theo 31 CĐ thay §2) → B4 lô thử 10–15 câu phủ nhiều CĐ, ưu tiên CĐ chưa có trong kho (%, hình học, chuyển động, giả thiết tạm, khử…) → CEO duyệt → ghi §9 → nâng luật → lặp tới khi một lô không bị sửa ⇒ **v1** | **Đang ở đây** — chưa làm B1 |
+| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách (công thức WMF ⇒ WMF → PNG / PDF trước, §5) → B2 hồ sơ + `tach-bai` → B3 nâng luật v0 theo "Bài làm" của sách (bảng khuôn theo 31 CĐ thay §2) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — chưa làm B1 |
 | **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu cần hình (CĐ18–24) chờ đường vẽ hình (README §4 việc #7) | Sau v1 |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 
-**Còn mở:** 271 câu Số thập phân giải lại 04/10 đang chờ học thuật ký ở màn Duyệt lời giải — duyệt luôn, hay để tới bước 3 (xếp vào bản đồ mới rồi duyệt một thể)?
+**271 câu Số thập phân giải lại 04/10:** CEO 08/10 *"giải là duyệt luôn"* ⇒ duyệt ngay ở màn Duyệt lời giải AI › Lời giải mới từ Claude (câu đã có dạng T15T0202 nên bấm duyệt được), **không chờ bước 3**. 2 câu cờ `nghi` (T15T020205020 đề nghi sai số liệu · T15T020206068 đề mơ hồ) cần người xem kỹ. Bước 3 vẫn xếp lại chúng vào bản đồ mới như mọi câu.
 
 ## 8. GÁN DẠNG — chưa viết
 
@@ -185,3 +185,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 04/10 | Đường ghi | *"Sao không đưa lên kho duyệt như bình thường"* ⇒ bỏ trang duyệt riêng, ghi `da_duyet=false`, duyệt ở màn Duyệt lời giải AI | Mọi lô 5T đi đường duyệt chuẩn |
 | 08/10 | (từ 4T) | Sơ đồ là HÌNH đúng tỉ lệ (máy vẽ) · mọi câu đủ 2 phần · mỗi câu lời giải một dòng · giải ≠ gán dạng | §1.5, §3, §7 — cập nhật bản v0 theo luật đã chốt ở `k4T.md` §7 |
 | 08/10 | Quy trình | *"Bản đồ t sẽ làm."* Chốt 3 bước cho mọi khối: rút luật giải (CEO duyệt) → giải toàn bộ tài liệu lên DB chờ sẵn → CEO xong bản đồ thì Claude xếp bài vào, CEO duyệt | README §0; §7 viết lại; bỏ các câu hỏi về cách chia bản đồ (việc của CEO) |
+| 08/10 | Bước 1 + 271 câu STP | *"Giải là duyệt luôn. Bản chất là m đi giải 1 lượt các dạng bài để học cách giải để giải toàn bộ bài đấy."* | README §0: lô thử = một vòng phủ MỌI dạng bài của sách; v1 khi đủ dạng + lô cuối không sửa. 271 câu STP duyệt luôn, không chờ bản đồ (§7) |

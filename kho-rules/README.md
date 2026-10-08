@@ -7,10 +7,15 @@
 
 | Bước | Ai | Làm gì | Xong khi | Chi tiết |
 |---|---|---|---|---|
-| **1. Rút luật giải** | Claude đọc sách + giải thử · **CEO duyệt** | Đọc sách của khối → giải thử từng lô → CEO duyệt trong chat → mỗi chỗ CEO sửa rút thành **luật giải** → ghi vào `k<khối>.md` để lô sau giải tốt hơn | Luật **đủ tốt**: một lô qua CEO không sửa gì ⇒ `k<khối>.md` lên **v1** | §2 (B1–B7) |
+| **1. Rút luật giải** | Claude đọc sách + giải thử · **CEO duyệt** | Đọc sách của khối → **giải MỘT LƯỢT QUA CÁC DẠNG BÀI của sách** (mỗi dạng ít nhất 1 câu) để học cách giải → CEO duyệt trong chat → mỗi chỗ CEO sửa rút thành **luật giải** → ghi vào `k<khối>.md` để lô sau giải tốt hơn | Đã đi qua **đủ các dạng bài** và luật **đủ tốt**: lô cuối qua CEO không sửa gì ⇒ `k<khối>.md` lên **v1** | §2 (B1–B7) |
 | **2. Giải toàn bộ tài liệu** | Claude (dây chuyền trạm) | Giải **hết** tài liệu theo luật v1 → đưa lên DB **chờ sẵn**: câu nằm ở **dạng chờ** `…000000` của khối (`ghi-lo.mjs --chua-gan-dang`), `da_duyet=false` | Mọi bài của tài liệu đã vào DB, hoặc nằm trong danh sách treo có lý do | §2b |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ** · Claude xếp bài · **CEO duyệt** | Khi CEO làm xong bản đồ kiến thức của khối ⇒ Claude xếp từng câu đã giải vào bản đồ (đọc lý thuyết · ví dụ · mô tả nhận biết của bản đồ) → CEO duyệt | CEO duyệt xong việc xếp của khối | `k<khối>.md` mục GÁN DẠNG · `spec-ban-do-4-tang.md` §0 (B3–B4) |
 
+- **Bản chất bước 1 (CEO 08/10):** *"m đi giải 1 lượt các dạng bài để học cách giải để giải toàn bộ bài đấy."* Lô thử không phải
+  mẫu ngẫu nhiên — là một vòng phủ mọi dạng bài trong sách (theo chuyên đề + các mục "Tóm tắt lí thuyết" / VÍ DỤ), để khi sang bước 2
+  không còn dạng nào giải lần đầu mà chưa có luật. Dạng nào bước 2 mới gặp ⇒ dừng dạng đó, giải thử cho CEO duyệt như bước 1.
+- **Câu đã giải xong thì duyệt luôn** (CEO 08/10, ca 271 câu STP của 5T): câu đã có dạng trong bản đồ cũ không phải chờ bước 3 mới duyệt.
+  Câu ở dạng chờ thì vẫn chưa bấm duyệt được (dòng dưới).
 - **Bản đồ kiến thức là việc của CEO.** Claude KHÔNG tự dựng / tự sửa bản đồ, không đặt câu hỏi "bản đồ nên chia thế nào" trong
   bước 1–2. Thứ Claude đưa được cho bản đồ: hồ sơ sách (danh sách chuyên đề, chỗ bản đồ hiện có thiếu dạng) — làm tư liệu, không làm quyết định.
 - **Bước 1–2 không chờ bản đồ, bước 3 không chờ bước 2 xong hết** — giải và xếp là 2 việc độc lập; câu giải xong thì nằm dạng chờ
@@ -46,10 +51,10 @@ kho-rules/
 | **B1 Đọc** | máy | Word MathType ⇒ `scripts/kho/mathtype-thu/doc-docx.mjs <docx> --ra <thư mục>` (0 OMML thì `docx-doc.mjs` KHÔNG dùng được). Word OMML ⇒ `scripts/docx-doc.mjs`. PDF ⇒ `scripts/kho/de-thi/boc-pdf.mjs`. Đọc **toàn bộ**, không đọc mẫu | `goc.txt` + báo cáo công thức hỏng (phải = 0 hoặc liệt kê) |
 | **B2 Hồ sơ sách** | Claude | Cấu trúc (chuyên đề / ví dụ có lời giải / luyện tập / phiếu) · đếm bài · ảnh · **chuyên đề sách ↔ chủ đề bản đồ** · chỗ bản đồ thiếu dạng | §5–§6 của `k<khối>.md` |
 | **B3 Rút luật từ lời giải mẫu** | Claude | Lời giải mẫu của **chính sách** (phần "Bài làm") là chuẩn trình bày của khối. Rút: cấm/cho phép · khuôn Phần 2 theo chuyên đề · mấu chốt/bẫy theo chuyên đề | §0–§2 của `k<khối>.md` (nháp v0) |
-| **B4 Lô giải thử** | Claude | 10–15 câu, phủ nhiều khuôn, **ưu tiên dạng đang 0 câu**. Mỗi câu: Phần 1 → Phần 2 → thử ngược đáp số (gán dạng là lượt riêng — §3). Sơ đồ ⇒ vẽ bằng `scripts/kho/so-do-doan-thang.mjs` | `k<khối>-mau-thu.md` + gửi trong chat |
+| **B4 Lô giải thử** | Claude | Mỗi lô 10–20 câu; các lô cộng lại **phủ MỌI dạng bài của sách** (lập bảng dạng ↔ lô ở `k<khối>.md`, đánh dấu dạng đã qua CEO), **ưu tiên dạng đang 0 câu**. Mỗi câu: Phần 1 → Phần 2 → thử ngược đáp số (gán dạng là lượt riêng — §3). Sơ đồ ⇒ vẽ bằng `scripts/kho/so-do-doan-thang.mjs` | `k<khối>-mau-thu.md` + gửi trong chat |
 | **B5 CEO duyệt trong chat** | Thùy | Chỉ nói chỗ sai, theo số câu | — |
 | **B6 Ghi nhật ký → nâng luật** | Claude | Mỗi chỗ sửa ⇒ 1 dòng §7 (ngày · câu · CEO sửa gì · luật rút ra) ⇒ sửa §1–§3 ⇒ sửa lại câu trong lô. **Không sửa câu mà không ghi luật** | `k<khối>.md` bản mới |
-| **B7 Lặp** | — | Lô kế tiếp 15–30 câu theo luật mới. Một lô đi qua CEO **không sửa gì** ⇒ `k<khối>.md` lên **v1** ⇒ được giải hàng loạt + ghi kho | v1 ⇒ mở cổng ghi |
+| **B7 Lặp** | — | Lô kế tiếp theo luật mới, sang các dạng chưa qua. Đã phủ đủ dạng **và** lô cuối qua CEO **không sửa gì** ⇒ `k<khối>.md` lên **v1** ⇒ được giải hàng loạt + ghi kho | v1 ⇒ mở cổng ghi |
 
 ## 2b. Bước 2 (giải toàn bộ tài liệu) — DÂY CHUYỀN giải hàng loạt sau v1 (đã chạy 4T lô 5–7, 287 câu, 08/10)
 

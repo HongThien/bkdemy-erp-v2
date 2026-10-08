@@ -374,7 +374,7 @@
 
 **⭐ Quy trình 3 bước MỌI KHỐI (CEO 08/10, `kho-rules/README.md` §0):** (1) đọc sách → giải thử → CEO duyệt → rút luật vào `k<khối>.md` · (2) luật đủ tốt (v1) ⇒ giải TOÀN BỘ tài liệu lên DB dạng chờ · (3) CEO xong bản đồ ⇒ Claude xếp bài vào ⇒ CEO duyệt. **Bản đồ là việc của CEO.**
 
-**Việc kế tiếp:** 5T bước 1 — B1 đọc sách (đường WMF → PNG/PDF, README §4 việc #6) → B2 hồ sơ + tach-bai → B3 nâng luật theo "Bài làm" → lô thử gửi CEO duyệt. Còn mở: 271 câu STP duyệt luôn hay để bước 3 (`k5T.md` §7). Song song: 4T bước 2 lô 8+ (`k4T.md` §8).
+**Việc kế tiếp:** 5T bước 1 — B1 đọc sách (đường WMF → PNG/PDF, README §4 việc #6) → B2 hồ sơ + tach-bai → B3 nâng luật theo "Bài làm" → lô thử gửi CEO duyệt. Bước 1 = giải một lượt qua MỌI dạng bài của sách (CEO 08/10). 271 câu STP: CEO "giải là duyệt luôn" — duyệt ngay ở màn Duyệt lời giải, không chờ bản đồ. Song song: 4T bước 2 lô 8+ (`k4T.md` §8).
 
 ### ⭐⭐⭐ 7 SKILL HỌC LIỆU — TOÀN BỘ NHIỆM VỤ (Thùy chốt 06/10) · bản đồ trạng thái + điều kiện đi tiếp · ĐỌC ĐẦU TIÊN khi làm bất cứ gì về kho
 
