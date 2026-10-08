@@ -35897,3 +35897,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — Bản đồ 4 tầng: ĐỔI HƯỚNG — CEO viết bản đồ form mới, AI gán nhãn mọi câu tới tầng 4, học thuật duyệt
 - **Thùy:** câu nào sớm muộn cũng phải khớp tầng 3/4 ⇒ phải có cơ chế gán (không gán trước thì gán sau). Cho AI đề xuất tới tầng 4. Kế hoạch: Thùy viết bản đồ kiến thức FORM MỚI ⇒ AI tự gán nhãn tới tầng 4 ⇒ Học thuật duyệt.
 - **Hệ quả t nêu:** đây đúng là 'dựng bản đồ mới rồi chuyển sang' (Thùy hỏi trước đó, t đã khuyên không) — đúng ở tầng NỘI DUNG (soạn + gán nhãn trên bản nháp), còn DANH TÍNH vẫn tái dùng mã cũ lúc chuyển (bảng đối ứng cũ→mới suy từ nhãn câu) để giữ 49 bảng tham chiếu + ~5% đo không câu. Dừng nhân sự chỉ lúc chuyển. Chờ CEO 3 câu: nơi viết bản đồ (file điền sẵn từ bản đồ cũ?) · bắt buộc mô tả + câu mẫu mỗi dạng bài? · chạy thử 1 khối (K6 — đã có nhãn cụm người làm, đo được độ chính xác AI) trước?
+
+## 08/10 — "Sao không load được dữ liệu của 9S" (Chấm MT)
+- **Gốc:** `_mt_ky_thi` (mig 202610081051) gọi `_tt_mua()` khi TẠO kỳ thi MT cho buổi chưa có kỳ; `_tt_mua` chỉ cấp EXECUTE cho claude_build ⇒ app báo "permission denied for function _tt_mua", màn Chấm MT không tải được đề. Dính 17 buổi chưa từng có kỳ (9S1, 9C1, 12B1, 11B1, 8S1, 8B1, 8B2, 7S2, 7B2, 8S0, 4A1…). Lúc kiểm chỉ dùng 9A1 (có kỳ sẵn) nên không lộ — **bài học: kiểm hàm mới bằng cả ca "chưa có dữ liệu gốc", và nhớ claude_build test không thấy lỗi quyền EXECUTE của authenticated.**
+- **Sửa (mig 202610081139):** `_mt_ky_thi` đọc mùa thẳng từ `gami_mua` (authenticated đọc được qua RLS), không nới quyền `_tt_mua`.
+- **Kèm (mig 202610081140):** HS chấm xong trước khi có trigger chưa có điểm tổng ⇒ cộng bù 1 lần cho buổi MT từ 01/10: +19 điểm tổng 'cau' (9B1 13 · 9C1 3 · 9S1 3), 225 điểm tay không đụng, buổi trước 01/10 không đụng.
+- **Kiểm:** app local 9S1 → tải được 26 câu / 12 HS, 3 em xong hiện điểm 7.5 · 8.75 · 8.25.
