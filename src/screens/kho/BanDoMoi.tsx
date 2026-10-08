@@ -21,6 +21,11 @@ import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
 import { MathText, inp } from './ui'
 
+// ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
+// (ngăn 📦, nhãn dạng cũ, ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB vẫn giữ: tới bước XẾP BÀI
+// (kho-rules/README.md bước 3 — Claude đọc bản đồ mới để gán, học thuật duyệt) thì bật lại bảng gán câu.
+const HIEN_KHOP_CU = false
+
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
 const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false }
 
@@ -227,17 +232,17 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
         )}
         <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
-        <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
+        {HIEN_KHOP_CU && <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
           className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
           📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
-        </button>
+        </button>}
         <span className="ml-auto flex gap-3 text-[11.5px] text-slate-500">
           <span>Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
           <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
         </span>
       </div>
       {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-slate-50 px-4 py-1 text-[12px] text-slate-600">
+      {HIEN_KHOP_CU && <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-slate-50 px-4 py-1 text-[12px] text-slate-600">
         <span className="font-semibold text-slate-700">Khớp bản đồ cũ:</span>
         <span className={cay.tong.dang_cu_chua_gan ? 'text-rose-600' : 'text-emerald-600'}>
           Dạng cũ chưa gắn <b>{cay.tong.dang_cu_chua_gan}</b>/{cay.tong.dang_cu}{cay.tong.dang_cu_chua_gan ? ` (${cay.tong.cau_dang_cu_chua_gan} câu)` : ' ✓'}
@@ -246,7 +251,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           Câu chưa gán dạng bài <b>{cay.tong.cau_chua_gan}</b>/{cay.tong.cau}{cay.tong.cau_chua_gan ? '' : ' ✓'}
         </span>
         <span className="text-slate-400">(dạng cũ của khối {khoi}; bản sao đi theo câu gốc)</span>
-      </div>
+      </div>}
       {loi && (
         <div className="flex items-start gap-2 border-b border-rose-200 bg-rose-50 px-4 py-2 text-[13px] text-rose-700">
           <span className="flex-1">⚠ {loi}</span>
@@ -265,7 +270,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             <div className="min-h-0 flex-1 overflow-y-auto p-1.5">
               {!chuDe.o.length && <div className="p-2 text-[12px] text-slate-400">Chưa có — bấm «+ Chuyên đề».</div>}
               {chuDe.o.map((x) => {
-                const conChuaGan = x.chua_gan > 0 || x.nhom.some((n) => n.chua_gan > 0)
+                const conChuaGan = HIEN_KHOP_CU && (x.chua_gan > 0 || x.nhom.some((n) => n.chua_gan > 0))
                 const dangChonCD = o?.chuyen_de_id === x.chuyen_de_id
                 const k = `o:${x.chuyen_de_id}`
                 // Kéo CHUYÊN ĐỀ ⇒ vạch chèn (đặt TRƯỚC chuyên đề này) · kéo NHÓM ⇒ khung + nhãn "chuyển nhóm vào đây" — 2 việc nhìn khác hẳn nhau
@@ -304,7 +309,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           </div>
         )}
 
-        {nganCu && (
+        {HIEN_KHOP_CU && nganCu && (
           <NganCu ds={dangCu} batDauKeo={batDauKeo} ketThucKeo={ketThucKeo}
             onGo={(id, ten) => void lam(() => goDoiUng(id), `Đã gỡ gắn «${ten}»`)} onDong={() => setNganCu(false)} />
         )}
@@ -327,7 +332,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 
       {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
 
-      {ganMo && (
+      {HIEN_KHOP_CU && ganMo && (
         <BangGanCau g={ganMo} onDong={() => setGanMo(null)} onDaGan={(n) => { thongBao(n); void napLai() }} />
       )}
 
@@ -414,13 +419,13 @@ function SoDoChuyenDe(p: {
             <span className="flex-1 text-[14px] font-semibold"><MathText>{o.ten}</MathText></span>
             <span className="text-[11px] opacity-80">{o.nhom.length} nhóm</span>
           </div>
-          {o.chua_gan > 0 && (
+          {HIEN_KHOP_CU && o.chua_gan > 0 && (
             <button onClick={(e) => { e.stopPropagation(); p.moGan(o, null) }} title="Câu của dạng cũ gắn vào chuyên đề này mà chưa thuộc dạng bài nào — bấm để gán"
               className="flex w-full items-center gap-1.5 bg-rose-50 px-4 py-1.5 text-left text-[12px] font-semibold text-rose-700 hover:bg-rose-100">
               ⚠ {o.chua_gan} câu chưa gán dạng bài <span className="ml-auto font-normal">gán →</span>
             </button>
           )}
-          {o.dang_cu.length > 0 && <DangCuGan ds={o.dang_cu} />}
+          {HIEN_KHOP_CU && o.dang_cu.length > 0 && <DangCuGan ds={o.dang_cu} />}
           {(o.mo_ta.trim() || o.cung_co_o.length > 0) && (
             <div className="space-y-1 px-4 py-2 text-[12px] text-slate-600">
               {o.mo_ta.trim() && <div className="line-clamp-2">{o.mo_ta}</div>}
@@ -513,13 +518,13 @@ function BoxNhom(p: {
         {n.tien_de.length > 0 && (
           <div className="text-[10.5px] text-slate-400">Học sau: {n.tien_de.map((t) => `#${p.soCuaNhom.get(t) ?? '?'}`).join(', ')}</div>
         )}
-        {n.chua_gan > 0 && (
+        {HIEN_KHOP_CU && n.chua_gan > 0 && (
           <button onClick={(e) => { e.stopPropagation(); p.moGan() }} title="Câu của dạng cũ gắn vào nhóm này mà chưa thuộc dạng bài nào — bấm để gán"
             className="flex items-center gap-1 rounded-md bg-rose-50 px-2 py-1 text-left text-[11.5px] font-semibold text-rose-700 hover:bg-rose-100">
             ⚠ {n.chua_gan} câu chưa gán dạng bài <span className="ml-auto font-normal">gán →</span>
           </button>
         )}
-        {n.dang_cu.length > 0 && <DangCuGan ds={n.dang_cu} gon />}
+        {HIEN_KHOP_CU && n.dang_cu.length > 0 && <DangCuGan ds={n.dang_cu} gon />}
         {n.dang_bai.map((d) => (
           <CardDangBai key={d.id} n={n} d={d} chon={p.chonDangBai === d.id} sang={sang}
             batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam} ganVao={p.ganVao} />
@@ -560,9 +565,9 @@ function CardDangBai(p: {
       <span className="mt-px shrink-0 text-[10.5px] font-bold text-violet-500">{n.so}.{d.so}</span>
       <span className="flex-1 leading-snug text-violet-950">
         <MathText>{d.ten}</MathText>
-        {d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
+        {HIEN_KHOP_CU && d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
       </span>
-      {d.so_cau > 0 && <span title="Số câu đang thuộc dạng bài này" className="shrink-0 rounded bg-white px-1 text-[10.5px] text-violet-600">{d.so_cau} câu</span>}
+      {HIEN_KHOP_CU && d.so_cau > 0 && <span title="Số câu đang thuộc dạng bài này" className="shrink-0 rounded bg-white px-1 text-[10.5px] text-violet-600">{d.so_cau} câu</span>}
       <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" />
     </div>
   )
@@ -685,8 +690,8 @@ function ChiTiet(p: {
       {o.so_chu_de > 1 && <div className="rounded-md bg-sky-50 px-2.5 py-1.5 text-[12px] text-sky-800">Chuyên đề này có mặt ở <b>{o.so_chu_de} chủ đề</b> — đổi tên/mô tả áp cho tất cả.</div>}
       <TruongMoTa key={`mt-${o.chuyen_de_id}`} gt={o.mo_ta} goiY="Mô tả chuyên đề (tuỳ chọn)…" onLuu={(m) => lam(() => suaChuyenDe(o.chuyen_de_id, { mo_ta: m }))} />
       <div className="text-[12px] text-slate-500">Trong chủ đề <b><MathText>{cd.ten}</MathText></b>: thứ {o.so} · {o.nhom.length} nhóm bài · mã nháp <code>{o.chuyen_de_id}</code></div>
-      <DangCuChiTiet ds={o.dang_cu} chuaGan={o.chua_gan} truongHop="③ câu phải gán vào 1 dạng bài thuộc chuyên đề này"
-        onGo={goCu({ chuDe: cd.id, chuyenDe: o.chuyen_de_id })} onGan={() => p.moGan(o, null)} />
+      {HIEN_KHOP_CU && <DangCuChiTiet ds={o.dang_cu} chuaGan={o.chua_gan} truongHop="③ câu phải gán vào 1 dạng bài thuộc chuyên đề này"
+        onGo={goCu({ chuDe: cd.id, chuyenDe: o.chuyen_de_id })} onGan={() => p.moGan(o, null)} />}
       <ChonDich nhan="⇄ Chuyển sang chủ đề khác" moTa="Chuyển cả chuyên đề cùng các nhóm bài. Chủ đề đích đã có chuyên đề này thì dồn vào."
         lua={cay.chu_de.filter((c) => c.id !== cd.id).map((c) => ({ id: c.id, nhan: c.ten }))}
         onChon={(id) => void lam(() => chuyenO(cd.id, o.chuyen_de_id, id), 'Đã chuyển chuyên đề').then(p.onDaXoa)} />
@@ -717,8 +722,8 @@ function ChiTiet(p: {
         <span>📖 Lý thuyết</span><span className="text-[11.5px] font-normal">{n.co_ly_thuyet ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
       </button>
 
-      <DangCuChiTiet ds={n.dang_cu} chuaGan={n.chua_gan} truongHop="② câu phải gán vào 1 dạng bài của nhóm này"
-        onGo={goCu({ nhom: n.id })} onGan={() => p.moGan(o, n)} />
+      {HIEN_KHOP_CU && <DangCuChiTiet ds={n.dang_cu} chuaGan={n.chua_gan} truongHop="② câu phải gán vào 1 dạng bài của nhóm này"
+        onGo={goCu({ nhom: n.id })} onGan={() => p.moGan(o, n)} />}
       <div className="rounded-md border border-slate-200 p-2.5">
         <div className="text-[12.5px] font-medium text-slate-700">↧ Học sau (tiền đề)</div>
         {n.tien_de.length === 0 && <div className="mt-1 text-[11.5px] text-slate-400">Không có — nhóm này nối thẳng từ chuyên đề (đầu nhánh).</div>}
@@ -739,7 +744,7 @@ function ChiTiet(p: {
         lua={moiO.filter((x) => !(x.cd.id === cd.id && x.o.chuyen_de_id === o.chuyen_de_id)).map((x) => ({ id: oKey(x.cd.id, x.o.chuyen_de_id), nhan: `${x.cd.ten} › ${x.o.ten}` }))}
         onChon={(k) => { const [c, ch] = k.split('|'); void lam(() => chuyenNhom(n.id, c, ch, null), 'Đã chuyển nhóm bài').then(p.onDaXoa) }} />
       <HaNhom cay={cay} n={n} onHa={(dich) => void lam(() => haNhom(n.id, dich), 'Đã hạ thành dạng bài').then(p.onDaXoa)} />
-      <NutXoa nhan="Xoá nhóm bài" moTa="Chỉ xoá được khi không còn dạng bài bên trong. Lý thuyết, mô tả, mũi tên mất theo; dạng cũ đang gắn vào được GỠ (quay về «chưa gắn», hiện đỏ ở ngăn Bản đồ cũ)."
+      <NutXoa nhan="Xoá nhóm bài" moTa="Chỉ xoá được khi không còn dạng bài bên trong. Lý thuyết, mô tả, mũi tên mất theo."
         onXoa={() => { if (window.confirm(`Xoá nhóm bài «${n.ten}»?`)) void lam(() => xoaNhom(n.id), 'Đã xoá').then(p.onDaXoa) }} />
     </>)
   }
@@ -762,9 +767,9 @@ function ChiTiet(p: {
         <span>📝 Ví dụ</span><span className="text-[11.5px] font-normal">{d.co_vi_du ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
       </button>
     </div>
-    <div className="text-[12px] text-slate-500">Đang có <b>{d.so_cau}</b> câu (kể cả bản sao).</div>
-    <DangCuChiTiet ds={d.dang_cu} chuaGan={0} truongHop="① mọi câu tự về dạng bài này (nếu dạng cũ chỉ gắn đúng chỗ này)"
-      onGo={goCu({ dangBai: d.id })} />
+    {HIEN_KHOP_CU && <div className="text-[12px] text-slate-500">Đang có <b>{d.so_cau}</b> câu (kể cả bản sao).</div>}
+    {HIEN_KHOP_CU && <DangCuChiTiet ds={d.dang_cu} chuaGan={0} truongHop="① mọi câu tự về dạng bài này (nếu dạng cũ chỉ gắn đúng chỗ này)"
+      onGo={goCu({ dangBai: d.id })} />}
     <ChonDich nhan="⇄ Chuyển sang nhóm khác" moTa="Hoặc kéo card thả vào box nhóm khác (cùng chuyên đề)."
       lua={moiO.flatMap((x) => x.o.nhom.filter((y) => y.id !== n.id).map((y) => ({ id: y.id, nhan: `${x.cd.ten} › ${x.o.ten} › #${y.so} ${y.ten}` })))}
       onChon={(id) => void lam(() => chuyenDangBai(d.id, id, null), 'Đã chuyển dạng bài').then(p.onDaXoa)} />
@@ -772,7 +777,7 @@ function ChiTiet(p: {
       className="rounded-md border border-slate-200 px-3 py-2 text-left text-[12.5px] font-medium text-slate-700 hover:border-indigo-300 hover:text-indigo-700">
       ⬆ Nâng thành nhóm bài <span className="font-normal text-slate-400">(nhánh mới trong cùng chuyên đề)</span>
     </button>
-    <NutXoa nhan="Xoá dạng bài" moTa="Lý thuyết, ví dụ và mô tả mất theo; cụm cũ / dạng cũ gắn vào được GỠ (câu của chúng quay về «chưa gán»). Dạng bài đã có câu được gán thì không xoá được."
+    <NutXoa nhan="Xoá dạng bài" moTa="Lý thuyết, ví dụ và mô tả mất theo."
       onXoa={() => { if (window.confirm(`Xoá dạng bài «${d.ten}»?`)) void lam(() => xoaDangBai(d.id), 'Đã xoá').then(p.onDaXoa) }} />
   </>)
 }

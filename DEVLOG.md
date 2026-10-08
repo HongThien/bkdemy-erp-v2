@@ -36120,3 +36120,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Tách:** tach-bai.mjs thêm "LUYỆN TÂP", tự chuyển VD→LT khi số bài quay lại (CĐ3, 4 sách thiếu tiêu đề — báo ra), khu Ôn tập `ON` + `muc`. Sách 4T tách lại so từng byte với bản trước: Y HỆT. 5T: 750 bài (VD 82 · LT 543 · ON 125); cần người: LT 21.1 (nhãn in trùng), VD 25.1.
 - **B3:** đọc 82 VD ⇒ k5T.md §1 CHO PHÉP (khử được "Gọi giá … là X" + trừ hai dòng; $S_{ABC}$ + tỉ số diện tích kèm "(Chung đường cao…)"; $r\times r$; %), §5 hồ sơ + bảng dạng bài 31 CĐ, 3 lỗi in sách.
 - **B4 lô sách 1:** 26 câu phủ dạng CĐ1–9, đáp số máy tính lại từ đề 26/26, 5 sơ đồ máy vẽ (soát ảnh qua Edge headless bằng puppeteer-core — chạy từ PowerShell, Bash không mở được trình duyệt), KaTeX 474 công thức 0 hỏng. Cuối `k5T-mau-thu.md`, kèm 3 câu hỏi (chọn cách mặc định khi sách nhiều cách · sơ đồ hai hiệu số · CĐ8 theo sách không sơ đồ).
+
+## 08/10 (tiếp) — Bỏ bước tham chiếu bản đồ cũ khỏi màn soạn (Thùy: làm bản đồ mới từ đầu, sửa trên vỏ cũ mất công hơn)
+- Thùy hỏi việc giữ dạng cũ khi chuyển/nâng/hạ có ý nghĩa cho gán dạng sau không ⇒ t trả lời: không bắt buộc (câu vẫn giữ dạng/cụm cũ trong kho, t đọc lại được; nhãn 📦 chỉ là đường tắt). Thùy chốt: bỏ phần tham chiếu.
+- BanDoMoi.tsx: công tắc HIEN_KHOP_CU=false tắt ngăn 📦 / nhãn dạng cũ / ⚠ chưa gán / dòng Khớp bản đồ cũ / bảng gán câu / mục dạng cũ trong popup. DB (doi_ung, doi_ung_cum, gan_cau, _bdm_cau_giai…) giữ nguyên để dùng ở bước xếp bài. KHÔNG xoá dữ liệu: đo log thấy Thùy đã sửa vỏ ~200 lần chiều nay (thêm/xoá/hạ nhóm, tiền đề, gộp chuyên đề).
+- Kiểm app local K8: màn mở, 2 box, không còn chữ/nhãn nào của bản đồ cũ. Spec: ghi chú đầu file (luồng xếp bài = kho-rules/README bước 3).

@@ -23,6 +23,13 @@
 - **Thứ tự** (dự kiến): soạn khối nào khớp khối đó, **K6 trước** (đã có cụm người gán ⇒ đo được độ chính xác khớp trước khi chạy ~15 nghìn câu gốc). Chuyển (B5) vẫn **1 lần ở cuối**.
 - Từ các mục dưới: §4 "backfill từ cột chữ cũ" và §5 "chuyển trên bản đồ thật" **không còn là đường chính** — tầng 1–2 lấy từ bản nháp lúc B5; §5 áp cho chỉnh lẻ SAU khi chuyển.
 
+> **⭐ Cập nhật 08/10 chiều (CEO):** CEO **dựng bản đồ mới TỪ ĐẦU**, không bám bản đồ cũ ("sửa trên vỏ cũ còn mất công hơn").
+> ⇒ Màn soạn **tắt mọi phần tham chiếu bản đồ cũ** (công tắc `HIEN_KHOP_CU = false` trong `BanDoMoi.tsx`: ngăn 📦, nhãn dạng cũ,
+> ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB của §9.2 **giữ nguyên, không xoá** — dùng lại ở bước XẾP BÀI.
+> **Xếp bài** = `kho-rules/README.md` bước (3): CEO làm xong bản đồ khối nào ⇒ Claude ĐỌC bản đồ mới (mô tả · lý thuyết · ví dụ)
+> ⇒ (a) đề xuất gắn dạng cũ → bản mới ở mức dạng (học thuật xác nhận) · (b) gán từng câu gốc (bản sao theo gốc) ⇒ CEO/học thuật duyệt.
+> Vỏ đã chép (§9.3) CEO đang sửa tiếp (≈200 lần sửa trong buổi chiều 08/10) — KHÔNG xoá.
+
 ## 1. Quyết định CEO (07/10)
 
 | # | Quyết định | Hệ quả kỹ thuật |
