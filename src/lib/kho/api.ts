@@ -1058,10 +1058,10 @@ function recordUsageKhac(u: { in: number; out: number }, model: string) {
 // không vướng gì. OCR / bóc bài gốc / nhập chuỗi câu / cắt bbox hình VẪN Ở GEMINI — nó là nhà duy
 // nhất trong 3 nhà này làm được khoản đọc ảnh + toạ độ hình.
 //
-// ⚠ KEY NẰM TRONG BUNDLE TRÌNH DUYỆT (`VITE_*`) — ai mở app là đọc được, đăng nhập KHÔNG che được
-//   (file JS tải về trước cả màn login). Khác Gemini, key Anthropic/DeepSeek KHÔNG khoá theo tên miền
-//   được. Chấp nhận vì 2 tài khoản đều nạp-tới-đâu-tiêu-tới-đó (Thùy 14/08) ⇒ mất tối đa = số dư.
-//   ⛔ TRƯỚC KHI DEPLOY ERP RA ĐỊA CHỈ PUBLIC: chuyển 2 lời gọi này qua proxy ở `worker/`.
+// ⭐ KEY CHỈ Ở SERVER (Thùy 08/10): mọi lời gọi AI của Kho (Gemini · DeepSeek · Claude) đi qua
+//   `api/kho-ai.mjs` — trình duyệt gửi prompt + file kèm token đăng nhập, server gắn key rồi chuyển.
+//   Trước đây key nằm trong bundle (`VITE_*`) ⇒ ai mở web cũng đọc được; đã thu hồi.
+//   ⛔ ĐỪNG thêm lại key AI dạng `VITE_*` — mọi biến `VITE_*` đều bị nhúng vào file JS trình duyệt.
 // Bội số tiền = ĐO THẬT trên bài DC000006, 2 biến thể, cùng prompt (15/08/2026):
 //   DeepSeek 27đ · Haiku ~150đ · Sonnet 597đ · Opus 787đ.
 // ⚠ Sonnet KHÔNG rẻ bằng tỉ lệ giá niêm yết (1,7×) vì nó xài nhiều output token hơn Opus
@@ -1077,18 +1077,32 @@ export const AI_MODELS: { nha: AiNha; value: string; label: string; sub: string 
 ]
 export const nhaCuaModel = (m: string): AiNha => (m.startsWith('claude') ? 'claude' : 'deepseek')
 
+// ── CỬA GỌI AI QUA SERVER (api/kho-ai.mjs) ─────────────────────────────────────
+// Trả NGUYÊN Response của nhà AI (server chỉ gắn key) ⇒ code parse bên dưới giữ y như cũ.
+// Dev cục bộ: Vite không phục vụ /api ⇒ đặt VITE_KHO_AI_URL=https://<tên miền ERP đã deploy>
+// trong .env.local (chỉ là địa chỉ, không phải secret).
+const KHO_AI_URL = ((import.meta.env.VITE_KHO_AI_URL as string | undefined) ?? '').replace(/\/$/, '') + '/api/kho-ai'
+// Vercel chặn body request > ~4,5MB — báo trước bằng lời dễ hiểu thay vì để server trả 413.
+const KHO_AI_BODY_MAX = 4_300_000
+async function goiKhoAi(nha: 'gemini' | 'deepseek' | 'claude', model: string, body: unknown): Promise<Response> {
+  const payload = JSON.stringify({ nha, model, body })
+  const bytes = new Blob([payload]).size
+  if (bytes > KHO_AI_BODY_MAX) throw new Error(`File gửi kèm quá lớn (${(bytes / 1e6).toFixed(1)}MB, giới hạn ~4,3MB) → tách file / gửi từng trang rồi thử lại.`)
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) throw new Error('Chưa đăng nhập — mở lại trang rồi thử lại.')
+  return fetch(KHO_AI_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+    body: payload,
+  })
+}
+
 // DeepSeek — chuẩn OpenAI. JSON mode cần chữ "json" xuất hiện trong prompt (prompt clone đã có).
 async function callDeepSeekJson(prompt: string, model: string): Promise<string> {
-  const key = import.meta.env.VITE_DEEPSEEK_KEY as string | undefined
-  if (!key) throw new Error('Chưa có VITE_DEEPSEEK_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
-  const res = await fetch('https://api.deepseek.com/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
-    body: JSON.stringify({
-      model, max_tokens: 8192, stream: false,
-      response_format: { type: 'json_object' },
-      messages: [{ role: 'user', content: prompt }],
-    }),
+  const res = await goiKhoAi('deepseek', model, {
+    max_tokens: 8192, stream: false,
+    response_format: { type: 'json_object' },
+    messages: [{ role: 'user', content: prompt }],
   })
   if (!res.ok) throw new Error(`DeepSeek lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
@@ -1100,21 +1114,17 @@ async function callDeepSeekJson(prompt: string, model: string): Promise<string> 
   return txt
 }
 
-// Claude — dùng SDK chính thức (@anthropic-ai/sdk đã có sẵn trong repo).
-// `dangerouslyAllowBrowser` = thừa nhận key nằm ở client (xem cảnh báo đầu mục).
+// Claude — Messages API thô qua server (response cùng shape với SDK: content / usage / stop_reason).
 // Suy luận: để adaptive — clone toán là GENERATION, cần nghĩ; Opus 5 mặc định đã bật.
 async function callClaudeJson(prompt: string, model: string): Promise<string> {
-  // Nhận cả 2 tên biến — .env.local đang dùng VITE_ANTHROPIC_API_KEY.
-  const key = (import.meta.env.VITE_ANTHROPIC_API_KEY ?? import.meta.env.VITE_ANTHROPIC_KEY) as string | undefined
-  if (!key) throw new Error('Chưa có VITE_ANTHROPIC_API_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
-  const { default: Anthropic } = await import('@anthropic-ai/sdk')
-  const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true })
   // Haiku 4.5 KHÔNG nhận adaptive thinking (API trả 400); Haiku 5.5 thì nhận — chỉ chặn đúng 4.5.
-  const res = await client.messages.create({
-    model, max_tokens: 16000,
-    ...(model.startsWith('claude-haiku-4') ? {} : { thinking: { type: 'adaptive' as const } }),
+  const r = await goiKhoAi('claude', model, {
+    max_tokens: 16000,
+    ...(model.startsWith('claude-haiku-4') ? {} : { thinking: { type: 'adaptive' } }),
     messages: [{ role: 'user', content: prompt }],
   })
+  if (!r.ok) throw new Error(`Claude lỗi ${r.status}: ${(await r.text()).slice(0, 300)}`)
+  const res = await r.json() as { content: { type: string; text?: string }[]; usage?: { input_tokens?: number; output_tokens?: number }; stop_reason?: string }
   const u = res.usage
   recordUsageKhac({ in: u?.input_tokens ?? 0, out: u?.output_tokens ?? 0 }, model)
   if (res.stop_reason === 'refusal') throw new Error('Claude từ chối yêu cầu này — đổi nhà hoặc sửa đề bài.')
@@ -1131,7 +1141,7 @@ export async function callAiClone(prompt: string, model: string): Promise<string
   return nhaCuaModel(model) === 'claude' ? callClaudeJson(prompt, model) : callDeepSeekJson(prompt, model)
 }
 
-// ── AUTO: gọi Gemini API thẳng từ client (key VITE_GEMINI_KEY — rủi ro lộ, chấp nhận) ──
+// ── AUTO: gọi Gemini API qua server (api/kho-ai.mjs giữ key GEMINI_API_KEY) ──
 export type GeminiFile = { mimeType: string; dataBase64: string }  // ảnh/PDF base64 (bỏ tiền tố data:)
 // Schema ép JSON hợp lệ (Type enum UPPERCASE). 1 câu = de_bai (bắt buộc) + đáp án/lời giải/lựa chọn (tuỳ).
 // ⚠ de_bai/loi_giai có description ÉP GIỮ XUỐNG DÒNG: responseSchema (constrained decoding) hay gộp
@@ -1184,11 +1194,8 @@ function loiRecitation(model: string): Error {
 }
 // Gọi 1 lần + ĐẾM TIỀN. Tách riêng vì retry RECITATION phải tính tiền TỪNG LẦN: lần bị chặn vẫn bị
 // tính input token (ảnh là phần đắt nhất), không ghi nhận = đồng hồ báo thiếu tiền thật đã tiêu.
-async function geminiOnce(model: string, key: string, parts: any[], genCfg: any) {
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
-  })
+async function geminiOnce(model: string, parts: any[], genCfg: any) {
+  const res = await goiKhoAi('gemini', model, { contents: [{ parts }], generationConfig: genCfg })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
   const u = data?.usageMetadata ?? {}
@@ -1202,14 +1209,14 @@ async function geminiOnce(model: string, key: string, parts: any[], genCfg: any)
   return { text, finish: cand?.finishReason as string | undefined, usage }
 }
 // Chạy có retry khi bị RECITATION. MAX_TOKENS / rỗng vì lý do khác thì KHÔNG retry (retry vô ích, chỉ tốn tiền).
-async function geminiVoiRetry(model: string, key: string, basePrompt: string, files: GeminiFile[], genCfg: any, loiMaxTokens: string) {
+async function geminiVoiRetry(model: string, basePrompt: string, files: GeminiFile[], genCfg: any, loiMaxTokens: string) {
   let last: { text: string; finish?: string; usage: GeminiUsage } | null = null
   for (let i = 0; i < RECITATION_TEMPS.length; i++) {
     const prompt = i === 0 ? basePrompt : basePrompt + RECITATION_SALT
     const parts: any[] = [{ text: prompt }]
     for (const f of files) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
     const cfg = RECITATION_TEMPS[i] === undefined ? genCfg : { ...genCfg, temperature: RECITATION_TEMPS[i] }
-    last = await geminiOnce(model, key, parts, cfg)
+    last = await geminiOnce(model, parts, cfg)
     if (last.finish === 'MAX_TOKENS') throw new Error(loiMaxTokens)
     if (last.text.trim()) return last
     if (last.finish !== 'RECITATION') break // rỗng vì lý do khác (SAFETY, OTHER…) → retry không cứu được
@@ -1219,14 +1226,12 @@ async function geminiVoiRetry(model: string, key: string, basePrompt: string, fi
   throw new Error(`Gemini trả rỗng${last?.finish ? ` (lý do: ${last.finish})` : ''}.`)
 }
 export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
-  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
-  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
   const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
   // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
   // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
   const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
   if (opts?.schema) genCfg.responseSchema = opts.schema
-  const r = await geminiVoiRetry(model, key, prompt, opts?.files ?? [], genCfg,
+  const r = await geminiVoiRetry(model, prompt, opts?.files ?? [], genCfg,
     'AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
   return r.text
 }
@@ -1235,12 +1240,10 @@ export async function callGeminiJson(prompt: string, opts?: { model?: string; fi
 // responseSchema = constrained decoding → Gemini BUỘC xuất JSON hợp lệ cấu trúc + tự escape chuỗi
 // (hết lỗi "Bad escaped character" / "Expected , or }" do LaTeX 1-backslash hay " chưa escape).
 export async function callGeminiRich(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<{ text: string; usage: GeminiUsage }> {
-  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
-  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local.')
   const model = opts?.model || 'gemini-2.5-flash'
   const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
   if (opts?.schema) genCfg.responseSchema = opts.schema
-  const r = await geminiVoiRetry(model, key, prompt, opts?.files ?? [], genCfg,
+  const r = await geminiVoiRetry(model, prompt, opts?.files ?? [], genCfg,
     'AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
   return { text: r.text, usage: r.usage }
 }

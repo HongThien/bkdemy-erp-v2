@@ -54,7 +54,8 @@ const CO_LOP_CHU = lopChu.replace(/\s/g, '').length > 40 * SO_TRANG
 console.log(`${basename(tep)} · ${SO_TRANG} trang · ${(buf.length / 1024).toFixed(0)} KB · ${CO_LOP_CHU ? 'có lớp chữ' : 'PDF SCAN (không lớp chữ)'} · model ${MODEL}`)
 
 // ── 2) Gemini ────────────────────────────────────────────────────────────────
-const KEY = bien('VITE_GEMINI_KEY')?.gia_tri
+// Tên chuẩn GEMINI_API_KEY (không VITE_ — Thùy 08/10, key AI không được nằm trong bundle trình duyệt); tên cũ vẫn nhận.
+const KEY = (bien('GEMINI_API_KEY') ?? bien('VITE_GEMINI_KEY'))?.gia_tri
 const S = (type, extra = {}) => ({ type, ...extra })
 const SCHEMA_BOC = S('OBJECT', {
   properties: {
@@ -119,7 +120,7 @@ const PROMPT_ML = `Đây là file PDF một đề thi Toán (Việt Nam). KHÔNG
 Mỗi câu của đề chỉ liệt kê MỘT lần dù file in lại câu đó ở phần lời giải.`
 
 async function gemini(prompt, schema, nhan, tepGui = { mime: 'application/pdf', buf }) {
-  if (!KEY) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local')
+  if (!KEY) throw new Error('Chưa có GEMINI_API_KEY trong .env.local')
   const body = {
     contents: [{ role: 'user', parts: [{ inline_data: { mime_type: tepGui.mime, data: tepGui.buf.toString('base64') } }, { text: prompt }] }],
     generationConfig: { temperature: 0, responseMimeType: 'application/json', responseSchema: schema, maxOutputTokens: 65536 },
