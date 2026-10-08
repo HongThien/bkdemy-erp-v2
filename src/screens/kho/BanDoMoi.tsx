@@ -13,7 +13,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type DragEvent, 
 import {
   getCay, themChuDe, suaChuDe, xoaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, goO, xoaChuyenDe,
   themNhom, suaNhom, xoaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
-  nangDangBai, haNhom, themTienDe, goTienDe, getLyThuyetNhom, getViDuDangBai, lyThuyetNhomApi, viDuDangBaiApi,
+  nangDangBai, haNhom, themTienDe, goTienDe, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, lyThuyetNhomApi, viDuDangBaiApi,
   getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
@@ -628,6 +628,9 @@ function ChiTiet(p: {
       <ChonDich nhan="⇄ Chuyển sang chủ đề khác" moTa="Chuyển cả chuyên đề cùng các nhóm bài. Chủ đề đích đã có chuyên đề này thì dồn vào."
         lua={cay.chu_de.filter((c) => c.id !== cd.id).map((c) => ({ id: c.id, nhan: c.ten }))}
         onChon={(id) => void lam(() => chuyenO(cd.id, o.chuyen_de_id, id), 'Đã chuyển chuyên đề').then(p.onDaXoa)} />
+      <ChonDich nhan="⧉ Gộp vào chuyên đề khác (dùng chung)" moTa="Chuyên đề này biến mất; mọi chủ đề đang dùng nó chuyển sang chuyên đề đích (chủ đề đã có đích thì dồn nhóm vào). Nhóm, mũi tên, dạng cũ gắn vào đi theo."
+        lua={cay.chuyen_de.filter((x) => x.id !== o.chuyen_de_id).map((x) => ({ id: x.id, nhan: `${x.ten}${x.so_chu_de ? ` · ở ${x.so_chu_de} chủ đề · K${x.khoi.join(',')}` : ''}` }))}
+        onChon={(id) => { const ten = cay.chuyen_de.find((x) => x.id === id)?.ten ?? id; if (window.confirm(`Gộp «${o.ten}» vào «${ten}»? «${o.ten}» sẽ biến mất.`)) void lam(() => gopChuyenDe(o.chuyen_de_id, id), `Đã gộp vào «${ten}»`).then(p.onDaXoa) }} />
       <NutXoa nhan="Gỡ khỏi chủ đề này" moTa="Chỉ gỡ được khi chuyên đề không còn nhóm bài nào trong chủ đề này. Chuyên đề vẫn còn ở các chủ đề khác."
         onXoa={() => void lam(() => goO(cd.id, o.chuyen_de_id), 'Đã gỡ').then(p.onDaXoa)} />
       {o.so_chu_de <= 1 && (
@@ -674,7 +677,7 @@ function ChiTiet(p: {
         lua={moiO.filter((x) => !(x.cd.id === cd.id && x.o.chuyen_de_id === o.chuyen_de_id)).map((x) => ({ id: oKey(x.cd.id, x.o.chuyen_de_id), nhan: `${x.cd.ten} › ${x.o.ten}` }))}
         onChon={(k) => { const [c, ch] = k.split('|'); void lam(() => chuyenNhom(n.id, c, ch, null), 'Đã chuyển nhóm bài').then(p.onDaXoa) }} />
       <HaNhom cay={cay} n={n} onHa={(dich) => void lam(() => haNhom(n.id, dich), 'Đã hạ thành dạng bài').then(p.onDaXoa)} />
-      <NutXoa nhan="Xoá nhóm bài" moTa="Chỉ xoá được khi không còn dạng bài bên trong. Lý thuyết, mô tả và mũi tên của nhóm mất theo."
+      <NutXoa nhan="Xoá nhóm bài" moTa="Chỉ xoá được khi không còn dạng bài bên trong. Lý thuyết, mô tả, mũi tên mất theo; dạng cũ đang gắn vào được GỠ (quay về «chưa gắn», hiện đỏ ở ngăn Bản đồ cũ)."
         onXoa={() => { if (window.confirm(`Xoá nhóm bài «${n.ten}»?`)) void lam(() => xoaNhom(n.id), 'Đã xoá').then(p.onDaXoa) }} />
     </>)
   }
@@ -701,7 +704,7 @@ function ChiTiet(p: {
       className="rounded-md border border-slate-200 px-3 py-2 text-left text-[12.5px] font-medium text-slate-700 hover:border-indigo-300 hover:text-indigo-700">
       ⬆ Nâng thành nhóm bài <span className="font-normal text-slate-400">(nhánh mới trong cùng chuyên đề)</span>
     </button>
-    <NutXoa nhan="Xoá dạng bài" moTa="Ví dụ và mô tả mất theo."
+    <NutXoa nhan="Xoá dạng bài" moTa="Ví dụ và mô tả mất theo; cụm cũ / dạng cũ gắn vào được GỠ (câu của chúng quay về «chưa gán»). Dạng bài đã có câu được gán thì không xoá được."
       onXoa={() => { if (window.confirm(`Xoá dạng bài «${d.ten}»?`)) void lam(() => xoaDangBai(d.id), 'Đã xoá').then(p.onDaXoa) }} />
   </>)
 }

@@ -169,6 +169,11 @@ export async function chuyenDangBai(id: string, nhomId: string, thuTuDich: strin
   const { error } = await supabase.rpc('fn_bdm_chuyen_dang_bai', { p_id: id, p_nhom_id: nhomId, p_thu_tu_dich: thuTuDich })
   if (error) loi(error)
 }
+// Gộp chuyên đề X vào Y (thành dùng chung): nhóm, mũi tên, đối ứng đi theo; X biến mất
+export async function gopChuyenDe(tu: string, vao: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bdm_gop_chuyen_de', { p_tu: tu, p_vao: vao })
+  if (error) loi(error)
+}
 export async function chuyenO(chuDeCu: string, chuyenDeId: string, chuDeMoi: string): Promise<void> {
   const { error } = await supabase.rpc('fn_bdm_chuyen_o', { p_chu_de_cu: chuDeCu, p_chuyen_de_id: chuyenDeId, p_chu_de_moi: chuDeMoi })
   if (error) loi(error)

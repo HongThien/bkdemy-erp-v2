@@ -35970,3 +35970,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — Xoá dữ liệu thử bản đồ mới (Thùy duyệt 'Xóa dữ liệu thử')
 - 1 transaction, xoá theo đúng id đã liệt kê, đối số dòng trước khi commit: gan_cau 2 · doi_ung 3 · nhom_tien_de 3 · dang_bai 2 · nhom 5 · o 4 (gồm 2 dòng nối của 'qqqq' vào chủ đề [TEST]) · chuyen_de 1 ([TEST] Tìm x) · chu_de 2. Bản nháp còn 0 chủ đề/nhóm/dạng bài.
 - GIỮ: danh mục chuyên đề 'qqqq' (NCH00002 — không phải t tạo, Thùy chưa trả lời có xoá không; giờ 0 chủ đề) · toàn bộ dai_bdm_log (lịch sử, có cả dòng ghi các lần xoá này).
+
+## 08/10 (tiếp) — Chép vỏ bản đồ cũ sang bản mới (Thùy: chép tất, kèm lý thuyết, bỏ Chưa phân dạng + chủ đề thùng)
+- scripts/bdm-chep-vo.mjs (chạy thử ROLLBACK → --ghi): 79 chủ đề · 195 chuyên đề · 681 dạng→nhóm (+372 lý thuyết) · 329 cụm→dạng bài + đối ứng 681 (②) + 329 (cụm). Bỏ 12 'Chưa phân dạng' + 6 chủ đề thùng (T11105 T10703 T10804 T10910 T10911 T10908). Giữ 'Các mô hình toán thực tế nâng cao' (K9), 'Toán Chuyên' (K8) cho Thùy xem. Lưu ý: số cụm thật là 329 (con số 134 lúc sparring là sai do query union trùng tên cột).
+- Mig 202610081348: xoá trong vỏ tự gỡ đối ứng (gan_cau vẫn restrict) + fn_bdm_gop_chuyen_de (thử ROLLBACK trên dữ liệu thật K8).
+- **Sai của t:** fn_bdm_cay (mig 202610081319) đếm chưa gán bằng subquery per nhóm ⇒ K12 75 GIÂY khi bản nháp đầy dữ liệu thật; thử khô lúc viết chỉ vài nhóm nên không lộ. Sửa mig 202610081354: đếm 1 lần/khối, kết quả so từng ký tự giống bản cũ (K3, K6, K8T), mọi khối < 0,15s. Bài học: đo hàm tổng hợp trên quy mô THẬT trước khi coi là xong.
+- UI: nút ⧉ Gộp vào chuyên đề khác + câu nhắc xoá đúng hành vi mới. Xem app local K12: mở ~1,5s, hiện đúng.

@@ -321,6 +321,22 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 - Kiểm (khối 3, đích `[TEST]` + dạng cũ thật): ① 52 câu tự về · ② badge 43 câu (13 gốc) · gán 2 gốc ⇒ −12 câu (gốc+10 bản sao),
   card 52→64, đầu màn 1159→1147 — khớp nhau. Gán cụm thử SQL trong ROLLBACK trên K6 (cụm 32 câu). `fn_bdm_cay` K6 ca nặng <100ms.
 
+### 9.3 Vỏ bản đồ cũ đã chép sang bản mới (CEO 08/10) — `scripts/bdm-chep-vo.mjs`
+
+- **Đã chép (08/10, 1 transaction, kiểm số khớp):** 79 chủ đề · 195 chuyên đề (mỗi cái riêng — CEO gộp thành dùng chung
+  bằng ⧉ *Gộp vào chuyên đề khác*) · **681 dạng → nhóm bài** (kèm **372 lý thuyết** + mô tả ngắn có sẵn) · **329 cụm → dạng bài**.
+  Thứ tự theo mã cũ (K12 theo `dai_chuyen_de_thu_tu`). KHÔNG chép câu.
+- **Đối ứng ghi luôn lúc chép:** dạng cũ → nhóm chép từ nó (②, 681) · cụm cũ → dạng bài chép từ nó (329). ⇒ câu có cụm TỰ về
+  dạng bài; câu chưa có cụm hiện ⚠ "chưa gán" trên nhóm (≈23 nghìn — phần AI gán ở B3). Badge hiện ngay từ đầu là SỐ THẬT.
+- **Bỏ (CEO):** "Chưa phân dạng" 12 khối · chủ đề thùng: Ôn tập khối 10 (K11) · Đề thi đầu vào M9 (K7, K8) · Ôn tập 8 · Đề thi
+  đầu vào · Các dạng bài Toán nâng cao (K9). Vẫn ở ngăn Bản đồ cũ dạng "chưa gắn". **Giữ để CEO xem:** "Các mô hình toán thực tế
+  nâng cao" (K9) · "Toán Chuyên" (K8).
+- **Sửa vỏ thoải mái (mig 202610081348):** xoá nhóm / dạng bài / gỡ chuyên đề ⇒ đối ứng TỰ GỠ (dạng cũ / cụm cũ quay về "chưa
+  gắn", hiện đỏ) thay vì chặn; câu đã gán vẫn chặn. `fn_bdm_gop_chuyen_de` (thử ROLLBACK trên 2 "Rút gọn biểu thức" K8: đích có
+  mặt ở 2 chủ đề, mỗi chủ đề giữ nhóm, tổng khối không đổi).
+- **Tốc độ (mig 202610081354):** sau khi chép, `fn_bdm_cay` K12 mất 75 giây (đếm "chưa gán" bằng subquery trong từng nhóm) ⇒
+  đếm 1 lần/khối thành bảng tra: mọi khối < 0,15 giây, kết quả giống hệt bản cũ. Màn K12 mở ~1,5 giây.
+
 ### 9.1 Màn kéo thả trên bản đồ THẬT (sau B5 — chỉnh lẻ)
 
 - **Lọc theo khối**, mỗi lần một khối.
