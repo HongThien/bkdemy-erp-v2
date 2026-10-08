@@ -13,7 +13,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type DragEvent, 
 import {
   getCay, themChuDe, suaChuDe, xoaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, goO, xoaChuyenDe,
   themNhom, suaNhom, xoaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
-  nangDangBai, haNhom, themTienDe, goTienDe, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, lyThuyetNhomApi, viDuDangBaiApi,
+  nangDangBai, haNhom, themTienDe, goTienDe, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
   getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
@@ -33,6 +33,7 @@ type Keo =
   | { loai: 'o'; chuDeId: string; chuyenDeId: string }
   | { loai: 'nhom'; id: string; chuDeId: string; chuyenDeId: string }
   | { loai: 'dang_bai'; id: string; nhomId: string }
+type LoaiNoiDung = 'nhom' | 'db_lt' | 'db_vd' // lý thuyết nhóm · lý thuyết dạng bài · ví dụ dạng bài
 type Chon = { loai: 'chu_de' } | { loai: 'o' } | { loai: 'nhom'; id: string } | { loai: 'dang_bai'; id: string }
 type VungProps = { onDragOver: (e: DragEvent) => void; onDragLeave: (e: DragEvent) => void; onDrop: (e: DragEvent) => void }
 
@@ -77,7 +78,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [chon, setChon] = useState<Chon | null>(null)
   const [hover, setHover] = useState<string | null>(null)
   const [dangKeo, setDangKeo] = useState<Keo['loai'] | null>(null)
-  const [lt, setLt] = useState<{ loai: 'nhom' | 'dang_bai'; id: string; ten: string; current: LyThuyet } | null>(null)
+  const [lt, setLt] = useState<{ loai: LoaiNoiDung; id: string; ten: string; current: LyThuyet } | null>(null)
   const [nganCu, setNganCu] = useState(NHO.nganCu)
   const [dangCu, setDangCu] = useState<BdmDangCu[] | null>(null)
   const [ganMo, setGanMo] = useState<GanMo | null>(null)
@@ -185,20 +186,20 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
     }
   }
 
-  async function moLyThuyet(loai: 'nhom' | 'dang_bai', id: string, ten: string) {
+  async function moLyThuyet(loai: LoaiNoiDung, id: string, ten: string) {
     setLoi(null)
-    try { setLt({ loai, id, ten, current: loai === 'nhom' ? await getLyThuyetNhom(id) : await getViDuDangBai(id) }) }
+    try { setLt({ loai, id, ten, current: loai === 'nhom' ? await getLyThuyetNhom(id) : loai === 'db_lt' ? await getLyThuyetDangBai(id) : await getViDuDangBai(id) }) }
     catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
   }
 
   // Tiến độ soạn của khối — đếm thứ đang hiển thị (badge)
   const tienDo = useMemo(() => {
-    let nhom = 0, nhomMoTa = 0, nhomLt = 0, db = 0, dbMoTa = 0, dbVd = 0
+    let nhom = 0, nhomMoTa = 0, nhomLt = 0, db = 0, dbMoTa = 0, dbLt = 0, dbVd = 0
     for (const cd of cay?.chu_de ?? []) for (const x of cd.o) for (const n of x.nhom) {
       nhom++; if (n.mo_ta.trim()) nhomMoTa++; if (n.co_ly_thuyet) nhomLt++
-      for (const d of n.dang_bai) { db++; if (d.mo_ta.trim()) dbMoTa++; if (d.co_vi_du) dbVd++ }
+      for (const d of n.dang_bai) { db++; if (d.mo_ta.trim()) dbMoTa++; if (d.co_ly_thuyet) dbLt++; if (d.co_vi_du) dbVd++ }
     }
-    return { nhom, nhomMoTa, nhomLt, db, dbMoTa, dbVd }
+    return { nhom, nhomMoTa, nhomLt, db, dbMoTa, dbLt, dbVd }
   }, [cay])
 
   if (loiTai) return <div className="p-8 text-sm text-rose-600">Không tải được bản đồ mới: {loiTai}</div>
@@ -232,7 +233,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         </button>
         <span className="ml-auto flex gap-3 text-[11.5px] text-slate-500">
           <span>Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
-          <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · ví dụ {tienDo.dbVd}</span>
+          <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
         </span>
       </div>
       {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
@@ -331,8 +332,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       )}
 
       {lt && (
-        <LyThuyetModal ma={lt.id} ten={`${lt.loai === 'nhom' ? 'Lý thuyết' : 'Ví dụ'} — ${lt.ten}`} current={lt.current}
-          api={lt.loai === 'nhom' ? lyThuyetNhomApi : viDuDangBaiApi}
+        <LyThuyetModal ma={lt.id} ten={`${lt.loai === 'db_vd' ? 'Ví dụ' : 'Lý thuyết'} — ${lt.ten}`} current={lt.current}
+          api={lt.loai === 'nhom' ? lyThuyetNhomApi : lt.loai === 'db_lt' ? lyThuyetDangBaiApi : viDuDangBaiApi}
           onClose={() => setLt(null)}
           onSaved={() => { setLt(null); thongBao('Đã lưu'); void napLai() }} />
       )}
@@ -351,7 +352,7 @@ function SoDoChuyenDe(p: {
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
   ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
   moGan: (o: BdmO, n: BdmNhom | null) => void
-  moLyThuyet: (loai: 'nhom' | 'dang_bai', id: string, ten: string) => void
+  moLyThuyet: (loai: LoaiNoiDung, id: string, ten: string) => void
 }) {
   const { cd, o, chon, sang, vung, lam } = p
   const khung = useRef<HTMLDivElement>(null)
@@ -470,6 +471,19 @@ function BoxNhom(p: {
 }) {
   const { n, cd, o, sang, vung, lam } = p
   const cungO = (k: Keo) => k.loai === 'nhom' && k.chuDeId === cd.id && k.chuyenDeId === o.chuyen_de_id && k.id !== n.id
+  // Anh em = nhóm có CÙNG tập tiền đề (cùng rẽ ra từ 1 chỗ). Đổi thu_tu với anh em liền trước/sau ⇒ đổi trái/phải
+  // và đổi số thứ tự. Nhóm nối thẳng (không có anh em) ⇒ thứ tự do mũi tên quyết định, nút khoá.
+  const khoaTd = (x: BdmNhom) => [...x.tien_de].sort().join(',')
+  const anhEm = o.nhom.filter((x) => khoaTd(x) === khoaTd(n)).sort((a, b) => a.so - b.so)
+  const viTri = anhEm.findIndex((x) => x.id === n.id)
+  const doiCho = (khac: BdmNhom | undefined, nhan: string) => {
+    if (!khac) return
+    const ids = [...o.nhom].sort((a, b) => a.thu_tu - b.thu_tu || a.id.localeCompare(b.id)).map((x) => x.id)
+    const i = ids.indexOf(n.id), j = ids.indexOf(khac.id)
+    ;[ids[i], ids[j]] = [ids[j], ids[i]]
+    void lam(() => sapXep('nhom', ids), nhan)
+  }
+  const goiYKhoa = anhEm.length <= 1 ? 'Nhóm này không có nhóm cùng nhánh rẽ để đổi chỗ — thứ tự do mũi tên tiền đề quyết định' : ''
   return (
     <div ref={p.refHop} data-hop draggable onDragStart={(e) => p.batDauKeo(e, { loai: 'nhom', id: n.id, chuDeId: cd.id, chuyenDeId: o.chuyen_de_id })} onDragEnd={p.ketThucKeo}
       {...vung(`n:${n.id}`, (k) => cungO(k) || (k.loai === 'dang_bai' && k.nhomId !== n.id) || k.loai === 'dang_cu', (k) => {
@@ -478,10 +492,16 @@ function BoxNhom(p: {
         if (k.loai === 'dang_bai') return lam(() => chuyenDangBai(k.id, n.id, null), 'Đã chuyển dạng bài')
       })}
       onClick={() => p.onChon({ loai: 'nhom', id: n.id })}
-      className={`cursor-grab overflow-hidden rounded-xl border bg-white shadow-sm active:cursor-grabbing ${sang(`n:${n.id}`)} ${p.chon ? 'border-amber-400 ring-2 ring-amber-300' : 'border-slate-200 hover:border-indigo-300'}`}>
+      className={`group/nhom cursor-grab overflow-hidden rounded-xl border bg-white shadow-sm active:cursor-grabbing ${sang(`n:${n.id}`)} ${p.chon ? 'border-amber-400 ring-2 ring-amber-300' : 'border-slate-200 hover:border-indigo-300'}`}>
       <div className="flex items-start gap-2 bg-slate-700 px-3 py-2 text-white">
         <span className="mt-px rounded bg-white/20 px-1.5 text-[11px] font-bold">{n.so}</span>
         <span className="flex-1 text-[13px] font-semibold leading-snug"><MathText>{n.ten}</MathText></span>
+        <span className="hidden shrink-0 gap-0.5 group-hover/nhom:flex">
+          <button onClick={(e) => { e.stopPropagation(); doiCho(anhEm[viTri - 1], 'Đã đưa lên trước') }} disabled={viTri <= 0}
+            title={goiYKhoa || 'Đổi chỗ với nhóm cùng nhánh bên trái (học trước)'} className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">◀</button>
+          <button onClick={(e) => { e.stopPropagation(); doiCho(anhEm[viTri + 1], 'Đã đưa ra sau') }} disabled={viTri < 0 || viTri >= anhEm.length - 1}
+            title={goiYKhoa || 'Đổi chỗ với nhóm cùng nhánh bên phải (học sau)'} className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">▶</button>
+        </span>
         <button onClick={(e) => { e.stopPropagation(); p.moLyThuyet() }} draggable={false}
           title={n.co_ly_thuyet ? 'Xem / sửa lý thuyết' : 'Gán lý thuyết cho nhóm này'}
           className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ${n.co_ly_thuyet ? 'bg-sky-400/30 text-white hover:bg-sky-400/50' : 'bg-white/15 text-white/80 hover:bg-white/30'}`}>
@@ -543,17 +563,18 @@ function CardDangBai(p: {
         {d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
       </span>
       {d.so_cau > 0 && <span title="Số câu đang thuộc dạng bài này" className="shrink-0 rounded bg-white px-1 text-[10.5px] text-violet-600">{d.so_cau} câu</span>}
-      <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_vi_du} nhanNoiDung="ví dụ" />
+      <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" />
     </div>
   )
 }
 
 // Chấm tiến độ: mô tả · lý thuyết/ví dụ — xám = chưa có
-function DauTienDo({ moTa, noiDung, nhanNoiDung }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string }) {
+function DauTienDo({ moTa, noiDung, nhanNoiDung, noiDung2, nhanNoiDung2 }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string; noiDung2?: boolean; nhanNoiDung2?: string }) {
   return (
     <span className="flex shrink-0 gap-0.5 pt-1">
       <span title={moTa ? 'Đã có mô tả' : 'Chưa có mô tả'} className={`h-2 w-2 rounded-full ${moTa ? 'bg-emerald-400' : 'bg-slate-300'}`} />
       <span title={noiDung ? `Đã có ${nhanNoiDung}` : `Chưa có ${nhanNoiDung}`} className={`h-2 w-2 rounded-full ${noiDung ? 'bg-sky-400' : 'bg-slate-300'}`} />
+      {nhanNoiDung2 && <span title={noiDung2 ? `Đã có ${nhanNoiDung2}` : `Chưa có ${nhanNoiDung2}`} className={`h-2 w-2 rounded-full ${noiDung2 ? 'bg-violet-400' : 'bg-slate-300'}`} />}
     </span>
   )
 }
@@ -616,7 +637,7 @@ function ThemChuyenDe({ cay, cd, onThem }: { cay: BdmCay; cd: BdmChuDe; onThem: 
 function ChiTiet(p: {
   chon: Chon; cay: BdmCay; cd: BdmChuDe; o: BdmO | null | undefined; khoi: string; onDong: () => void
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
-  moLyThuyet: (loai: 'nhom' | 'dang_bai', id: string, ten: string) => void
+  moLyThuyet: (loai: LoaiNoiDung, id: string, ten: string) => void
   onDaXoa: () => void
   moGan: (o: BdmO, n: BdmNhom | null) => void
 }) {
@@ -731,21 +752,27 @@ function ChiTiet(p: {
     <div className="text-[12px] text-slate-500"><MathText>{o.ten}</MathText> › <MathText>{n.ten}</MathText> · thứ <b>{n.so}.{d.so}</b> · mã nháp <code>{d.id}</code></div>
     <TruongMoTa key={`mt-${d.id}`} gt={d.mo_ta} goiY="Khuôn đề của dạng bài này: đề cho gì, hỏi gì, khác các dạng bài cùng nhóm ở đâu…"
       nhan="Mô tả nhận biết" chuThich="Claude dựa vào mô tả này để khớp câu cũ vào đúng dạng bài." onLuu={(m) => lam(() => suaDangBai(d.id, { mo_ta: m }))} />
-    <button onClick={() => p.moLyThuyet('dang_bai', d.id, d.ten)}
-      className="flex items-center justify-between rounded-md border border-violet-200 bg-violet-50 px-3 py-2 text-[13px] font-semibold text-violet-700 hover:bg-violet-100">
-      <span>📝 Ví dụ</span><span className="text-[11.5px] font-normal">{d.co_vi_du ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
-    </button>
+    <div className="grid grid-cols-2 gap-2">
+      <button onClick={() => p.moLyThuyet('db_lt', d.id, d.ten)}
+        className="flex flex-col items-start rounded-md border border-indigo-200 bg-indigo-50 px-3 py-2 text-[13px] font-semibold text-indigo-700 hover:bg-indigo-100">
+        <span>📖 Lý thuyết</span><span className="text-[11.5px] font-normal">{d.co_ly_thuyet ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
+      </button>
+      <button onClick={() => p.moLyThuyet('db_vd', d.id, d.ten)}
+        className="flex flex-col items-start rounded-md border border-violet-200 bg-violet-50 px-3 py-2 text-[13px] font-semibold text-violet-700 hover:bg-violet-100">
+        <span>📝 Ví dụ</span><span className="text-[11.5px] font-normal">{d.co_vi_du ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
+      </button>
+    </div>
     <div className="text-[12px] text-slate-500">Đang có <b>{d.so_cau}</b> câu (kể cả bản sao).</div>
     <DangCuChiTiet ds={d.dang_cu} chuaGan={0} truongHop="① mọi câu tự về dạng bài này (nếu dạng cũ chỉ gắn đúng chỗ này)"
       onGo={goCu({ dangBai: d.id })} />
     <ChonDich nhan="⇄ Chuyển sang nhóm khác" moTa="Hoặc kéo card thả vào box nhóm khác (cùng chuyên đề)."
       lua={moiO.flatMap((x) => x.o.nhom.filter((y) => y.id !== n.id).map((y) => ({ id: y.id, nhan: `${x.cd.ten} › ${x.o.ten} › #${y.so} ${y.ten}` })))}
       onChon={(id) => void lam(() => chuyenDangBai(d.id, id, null), 'Đã chuyển dạng bài').then(p.onDaXoa)} />
-    <button onClick={() => { if (window.confirm(`Nâng «${d.ten}» thành nhóm bài (cùng chuyên đề «${o.ten}», thành nhánh mới)? Ví dụ sẽ thành lý thuyết của nhóm mới.`)) void lam(() => nangDangBai(d.id, cd.id, o.chuyen_de_id), 'Đã nâng thành nhóm bài').then(p.onDaXoa) }}
+    <button onClick={() => { if (window.confirm(`Nâng «${d.ten}» thành nhóm bài (cùng chuyên đề «${o.ten}», thành nhánh mới)? Lý thuyết + ví dụ gộp thành lý thuyết của nhóm mới.`)) void lam(() => nangDangBai(d.id, cd.id, o.chuyen_de_id), 'Đã nâng thành nhóm bài').then(p.onDaXoa) }}
       className="rounded-md border border-slate-200 px-3 py-2 text-left text-[12.5px] font-medium text-slate-700 hover:border-indigo-300 hover:text-indigo-700">
       ⬆ Nâng thành nhóm bài <span className="font-normal text-slate-400">(nhánh mới trong cùng chuyên đề)</span>
     </button>
-    <NutXoa nhan="Xoá dạng bài" moTa="Ví dụ và mô tả mất theo; cụm cũ / dạng cũ gắn vào được GỠ (câu của chúng quay về «chưa gán»). Dạng bài đã có câu được gán thì không xoá được."
+    <NutXoa nhan="Xoá dạng bài" moTa="Lý thuyết, ví dụ và mô tả mất theo; cụm cũ / dạng cũ gắn vào được GỠ (câu của chúng quay về «chưa gán»). Dạng bài đã có câu được gán thì không xoá được."
       onXoa={() => { if (window.confirm(`Xoá dạng bài «${d.ten}»?`)) void lam(() => xoaDangBai(d.id), 'Đã xoá').then(p.onDaXoa) }} />
   </>)
 }
@@ -807,7 +834,7 @@ function HaNhom({ cay, n, onHa }: { cay: BdmCay; n: BdmNhom; onHa: (dich: string
       </div>
     </div>
   )
-  return <ChonDich nhan="⬇ Hạ thành dạng bài của nhóm khác" moTa="Lý thuyết của nhóm sẽ thành ví dụ của dạng bài. (Nhóm khác đang trỏ mũi tên vào nhóm này thì DB chặn — gỡ trước.)"
+  return <ChonDich nhan="⬇ Hạ thành dạng bài của nhóm khác" moTa="Lý thuyết của nhóm sẽ thành lý thuyết của dạng bài. (Nhóm khác đang trỏ mũi tên vào nhóm này thì DB chặn — gỡ trước.)"
     lua={lua} onChon={(id) => { if (window.confirm(`Hạ «${n.ten}» thành dạng bài?`)) onHa(id) }} />
 }
 

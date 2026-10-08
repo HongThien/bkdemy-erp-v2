@@ -8,7 +8,7 @@ import type { LyThuyetApi } from '../../screens/kho/branches'
 // so = số thứ tự hệ tự đánh (tính ở DB): chuyên đề trái→phải · nhóm theo tiền đề (chiều sâu, trái trước) · dạng bài trên→dưới
 // dang_cu = dạng cũ (bản đồ đang chạy) CEO gắn vào đích này · chua_gan = số câu (kể cả bản sao) chưa ra được dạng bài
 export type BdmDangCuRef = { ma: string; ten: string }
-export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
+export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_ly_thuyet: boolean; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
 export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[] }
 export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; dang_cu: BdmDangCuRef[]; chua_gan: number; nhom: BdmNhom[] }
 export type BdmChuDe = { id: string; ten: string; thu_tu: number; o: BdmO[] }
@@ -208,6 +208,24 @@ export const lyThuyetNhomApi: LyThuyetApi = {
   },
   remove: async (id) => {
     const { error } = await supabase.from('dai_bdm_nhom').update({ ly_thuyet: '', ly_thuyet_file_url: null, ly_thuyet_ten_file: null }).eq('id', id)
+    if (error) loi(error)
+  },
+}
+// Dạng bài (tầng 4) có 2 ô riêng: LÝ THUYẾT + VÍ DỤ (CEO 08/10)
+export async function getLyThuyetDangBai(id: string): Promise<LyThuyet> {
+  const { data, error } = await supabase.from('dai_bdm_dang_bai').select('ly_thuyet, ly_thuyet_file_url, ly_thuyet_ten_file').eq('id', id).single()
+  if (error) loi(error)
+  const r = data as { ly_thuyet: string; ly_thuyet_file_url: string | null; ly_thuyet_ten_file: string | null }
+  return { noi_dung: r.ly_thuyet, file_url: r.ly_thuyet_file_url, ten_file: r.ly_thuyet_ten_file }
+}
+export const lyThuyetDangBaiApi: LyThuyetApi = {
+  list: async () => ({}),
+  upsert: async (id, noiDung, fileUrl, tenFile) => {
+    const { error } = await supabase.from('dai_bdm_dang_bai').update({ ly_thuyet: noiDung, ly_thuyet_file_url: fileUrl, ly_thuyet_ten_file: tenFile }).eq('id', id)
+    if (error) loi(error)
+  },
+  remove: async (id) => {
+    const { error } = await supabase.from('dai_bdm_dang_bai').update({ ly_thuyet: '', ly_thuyet_file_url: null, ly_thuyet_ten_file: null }).eq('id', id)
     if (error) loi(error)
   },
 }

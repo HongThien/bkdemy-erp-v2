@@ -36088,3 +36088,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - 102 câu (có PCT 29 II.3 mới tách ở `tach-bai`), 18 sơ đồ; khop 102. Opus đọc toàn bộ + xem ảnh mọi sơ đồ. Sửa 1 câu: **PCT 31 I.8** Sonnet viết "MỖI số trong hai số đầu hơn TBC 2" (sai — chỉ TBC của hai số đầu là 13) ⇒ "Trung bình cộng của hai số đầu hơn…", "Tổng hai số đầu hơn…" (vết ở `k4T-lo10E.sua.json`).
 - **Vá máy vẽ `so-do-doan-thang`:** ngoặc hiệu đặt dưới hàng 2 ⇒ sơ đồ 3 hàng (PCT 29 I.10: hộp I / III / II) bị đè chữ "20 ngôi sao" lên hàng 3. Giờ đặt dưới hàng CUỐI. Quét `kho-rules/dai/so-do/`: chỉ 1 sơ đồ 3 hàng có hiệu, sơ đồ 2 hàng vẽ y như cũ.
 - Cách hiểu đã chọn (ghi cho CEO): PCT 31 I.6 "ăn một nửa của 3/5 chiếc bánh — phần còn lại" ⇒ còn lại của 3/5 chiếc = 3/10 (hiểu theo cả chiếc ⇒ 7/10) · PCT 31 II.3 "ngày thứ năm và sáu" gộp hai ngày ⇒ ngày cuối 5 bài.
+
+## 08/10 (tiếp) — Bản đồ mới: đổi thứ tự nhóm bằng ◀▶ + dạng bài có 2 ô lý thuyết / ví dụ
+- Thùy: nhóm bài cũng đổi thứ tự như chuyên đề · tầng 4 có cả lý thuyết lẫn ví dụ, 2 ô riêng.
+- Nhóm: ◀▶ trên header box (hiện khi rê) đổi thu_tu với nhóm CÙNG NHÁNH RẼ (cùng tập tiền đề) ⇒ đổi trái/phải + số thứ tự. Không anh em ⇒ khoá + nhắc 'thứ tự do mũi tên quyết định' (đổi với nhóm nối thẳng không làm đổi gì vì DFS đi hết nhánh).
+- Mig 202610081521: dai_bdm_dang_bai thêm ly_thuyet (+file) · fn_bdm_cay thêm co_ly_thuyet dạng bài (phần còn lại so từng ký tự giống) · nâng dạng bài: LT + ví dụ gộp vào LT nhóm (không mất) · hạ nhóm: LT nhóm → LT dạng bài (trước vào ví dụ). Thử khô ROLLBACK.
+- UI: popup dạng bài 2 nút 📖/📝 · card dạng bài 3 chấm (mô tả · LT · ví dụ) · tiến độ thêm LT dạng bài. Kiểm app local K6 'Dấu hiệu chia hết': ▶ rồi ◀ ⇒ về y cũ (dữ liệu Thùy không đổi).
