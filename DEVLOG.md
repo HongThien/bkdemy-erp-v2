@@ -36060,3 +36060,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — Bản đồ mới: popup giữa màn cho nhóm/dạng bài + nút 📖 lý thuyết trên box nhóm
 - Thùy: bấm nhóm/dạng bài ⇒ popup GIỮA màn (không ở góc); gán lý thuyết nhóm cần nút ngay trên card. Chủ đề/chuyên đề giữ khung phải. Esc đóng popup; phím ↑↓ không chạy khi popup mở. Nút 📖 (chưa có LT thì '📖 +LT') mở thẳng LyThuyetModal, không bật popup.
 - Kiểm app local K6 (chỉ mở/đóng, không lưu): popup tâm đúng giữa, Esc đóng, 📖 mở lý thuyết.
+
+## 08/10 (tiếp) — Bản đồ mới: đổi thứ tự chuyên đề không lẫn với chuyển nhóm
+- Thùy: đổi thứ tự chuyên đề bị lẫn với ghép nhóm (cùng 1 vùng thả). Sửa: ▲▼ trên từng chuyên đề (hiện khi rê/chọn) + Alt+↑↓ dời chuyên đề đang chọn — không cần kéo. Khi kéo: kéo CHUYÊN ĐỀ hiện vạch chèn (đặt trước), kéo NHÓM hiện khung xanh + nhãn '⤵ thả: chuyển nhóm vào đây'.
+- Kiểm app local K6 'Tính chia hết…': ▲ rồi ▼ ⇒ thứ tự về y như cũ (dữ liệu Thùy không đổi); dragover (không thả) hiện đúng 2 kiểu.

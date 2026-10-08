@@ -106,6 +106,15 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   useEffect(() => { if (chuDe && o) NHO.chuyenDe[chuDe.id] = o.chuyen_de_id }, [chuDe?.id, o?.chuyen_de_id]) // eslint-disable-line react-hooks/exhaustive-deps
   const chonChuDe = (id: string) => { setChuDeId(id); setChuyenDeId(null); setChon(null) }
   const chonChuyenDe = (id: string) => { setChuyenDeId(id); setChon(null) }
+  // Đổi thứ tự chuyên đề 1 bậc (▲▼ / Alt+↑↓) — không phải kéo, không lẫn với chuyển nhóm
+  const doiThuTuCD = (chuyenDeId: string, d: -1 | 1) => {
+    if (!chuDe) return
+    const ids = chuDe.o.map((x) => x.chuyen_de_id)
+    const i = ids.indexOf(chuyenDeId)
+    if (i < 0 || i + d < 0 || i + d >= ids.length) return
+    ;[ids[i], ids[i + d]] = [ids[i + d], ids[i]]
+    void lam(() => sapXep('o', ids.map((c) => oKey(chuDe.id, c))), d < 0 ? 'Đã đưa lên' : 'Đã đưa xuống')
+  }
   const buocChuyenDe = (d: -1 | 1) => {
     if (!chuDe || !o) return
     const i = chuDe.o.findIndex((x) => x.chuyen_de_id === o.chuyen_de_id) + d
@@ -116,8 +125,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
     const f = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && !lt && !ganMo && chon) { setChon(null); return }
       if (dangGo(e.target) || lt || ganMo || chon?.loai === 'nhom' || chon?.loai === 'dang_bai') return
-      if (e.key === 'ArrowUp') { e.preventDefault(); buocChuyenDe(-1) }
-      if (e.key === 'ArrowDown') { e.preventDefault(); buocChuyenDe(1) }
+      if (e.key === 'ArrowUp') { e.preventDefault(); if (e.altKey && o) doiThuTuCD(o.chuyen_de_id, -1); else buocChuyenDe(-1) }
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (e.altKey && o) doiThuTuCD(o.chuyen_de_id, 1); else buocChuyenDe(1) }
     }
     window.addEventListener('keydown', f)
     return () => window.removeEventListener('keydown', f)
@@ -256,24 +265,41 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
               {!chuDe.o.length && <div className="p-2 text-[12px] text-slate-400">Chưa có — bấm «+ Chuyên đề».</div>}
               {chuDe.o.map((x) => {
                 const conChuaGan = x.chua_gan > 0 || x.nhom.some((n) => n.chua_gan > 0)
+                const dangChonCD = o?.chuyen_de_id === x.chuyen_de_id
+                const k = `o:${x.chuyen_de_id}`
+                // Kéo CHUYÊN ĐỀ ⇒ vạch chèn (đặt TRƯỚC chuyên đề này) · kéo NHÓM ⇒ khung + nhãn "chuyển nhóm vào đây" — 2 việc nhìn khác hẳn nhau
+                const vachChen = hover === k && dangKeo === 'o'
+                const nhanNhom = hover === k && dangKeo === 'nhom'
                 return (
-                  <button key={x.chuyen_de_id} draggable onDragStart={(e) => batDauKeo(e, { loai: 'o', chuDeId: chuDe.id, chuyenDeId: x.chuyen_de_id })} onDragEnd={ketThucKeo}
-                    {...vung(`o:${x.chuyen_de_id}`, (k) => (k.loai === 'o' && k.chuDeId === chuDe.id && k.chuyenDeId !== x.chuyen_de_id) || (k.loai === 'nhom' && k.chuyenDeId !== x.chuyen_de_id), (k) => {
-                      if (k.loai === 'o') return lam(() => sapXep('o', chenTruoc(chuDe.o.map((y) => y.chuyen_de_id), k.chuyenDeId, x.chuyen_de_id).map((c) => oKey(chuDe.id, c))), 'Đã sắp lại chuyên đề')
-                      if (k.loai === 'nhom') return lam(() => chuyenNhom(k.id, chuDe.id, x.chuyen_de_id, null), `Đã chuyển nhóm sang «${x.ten}»`)
+                  <div key={x.chuyen_de_id} draggable onDragStart={(e) => batDauKeo(e, { loai: 'o', chuDeId: chuDe.id, chuyenDeId: x.chuyen_de_id })} onDragEnd={ketThucKeo}
+                    {...vung(k, (kk) => (kk.loai === 'o' && kk.chuDeId === chuDe.id && kk.chuyenDeId !== x.chuyen_de_id) || (kk.loai === 'nhom' && kk.chuyenDeId !== x.chuyen_de_id), (kk) => {
+                      if (kk.loai === 'o') return lam(() => sapXep('o', chenTruoc(chuDe.o.map((y) => y.chuyen_de_id), kk.chuyenDeId, x.chuyen_de_id).map((c) => oKey(chuDe.id, c))), 'Đã sắp lại chuyên đề')
+                      if (kk.loai === 'nhom') return lam(() => chuyenNhom(kk.id, chuDe.id, x.chuyen_de_id, null), `Đã chuyển nhóm sang «${x.ten}»`)
                     })}
                     onClick={() => chonChuyenDe(x.chuyen_de_id)}
-                    className={`mb-0.5 flex w-full items-start gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] transition ${sang(`o:${x.chuyen_de_id}`)} ${
-                      o?.chuyen_de_id === x.chuyen_de_id ? 'bg-sky-600 font-semibold text-white' : 'text-slate-700 hover:bg-sky-50'}`}>
+                    className={`group relative mb-0.5 flex w-full cursor-pointer items-start gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] transition ${
+                      vachChen ? 'before:absolute before:-top-1 before:left-0 before:right-0 before:h-1 before:rounded before:bg-indigo-500' : ''} ${
+                      nhanNhom ? 'ring-2 ring-emerald-500 ring-offset-1' : ''} ${
+                      dangChonCD ? 'bg-sky-600 font-semibold text-white' : 'text-slate-700 hover:bg-sky-50'}`}>
                     <span className="mt-px w-5 shrink-0 text-right text-[11px] opacity-70">{x.so}</span>
-                    <span className="flex-1 leading-snug"><MathText>{x.ten}</MathText></span>
+                    <span className="flex-1 leading-snug">
+                      <MathText>{x.ten}</MathText>
+                      {nhanNhom && <span className="mt-0.5 block text-[10.5px] font-semibold text-emerald-700">⤵ thả: chuyển nhóm vào đây</span>}
+                    </span>
                     {x.so_chu_de > 1 && <span title="Chuyên đề dùng chung nhiều chủ đề" className="mt-px shrink-0 text-[10px] opacity-70">⇆{x.so_chu_de}</span>}
                     {conChuaGan && <span title="Còn câu chưa gán dạng bài" className="mt-px shrink-0 text-[10px]">⚠</span>}
-                  </button>
+                    {/* ▲▼ đổi thứ tự — hiện khi rê chuột hoặc đang chọn; không cần kéo */}
+                    <span className={`flex shrink-0 flex-col ${dangChonCD ? 'flex' : 'hidden group-hover:flex'}`}>
+                      <button onClick={(e) => { e.stopPropagation(); doiThuTuCD(x.chuyen_de_id, -1) }} disabled={x.so <= 1} title="Lên trên (Alt+↑)"
+                        className={`rounded px-1.5 text-[11px] leading-[13px] disabled:opacity-20 ${dangChonCD ? 'hover:bg-white/25' : 'hover:bg-slate-200'}`}>▲</button>
+                      <button onClick={(e) => { e.stopPropagation(); doiThuTuCD(x.chuyen_de_id, 1) }} disabled={x.so >= chuDe.o.length} title="Xuống dưới (Alt+↓)"
+                        className={`rounded px-1.5 text-[11px] leading-[13px] disabled:opacity-20 ${dangChonCD ? 'hover:bg-white/25' : 'hover:bg-slate-200'}`}>▼</button>
+                    </span>
+                  </div>
                 )
               })}
             </div>
-            <div className="border-t border-slate-100 px-3 py-1.5 text-[10.5px] text-slate-400">↑ ↓ để chuyển chuyên đề · kéo để sắp thứ tự</div>
+            <div className="border-t border-slate-100 px-3 py-1.5 text-[10.5px] leading-relaxed text-slate-400">↑ ↓ chọn chuyên đề · ▲▼ hoặc Alt+↑ ↓ đổi thứ tự · thả box nhóm vào tên chuyên đề = chuyển nhóm</div>
           </div>
         )}
 
