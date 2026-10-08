@@ -173,23 +173,26 @@ export async function quetGayTuDong(): Promise<number> {
   // ── (a) Việc VẬN HÀNH (chấm bài/đánh giá/ET/BTVN/MT) — tái dùng đúng invariant
   // listAllStaffTasks, KHÔNG tính lại deadline. Lùi 7 ngày để bắt buổi cuối tháng
   // trước có deadline lấn sang tháng này (vd ET trưa hôm sau).
+  // ⭐ CEO 08/10: trễ tính theo LẦN ĐÓNG ĐẦU TIÊN (mở lại rồi đóng lại không làm task thành trễ) — số phút
+  // trễ do DB tính (fn_viec_tien_do, mig 202610081427), KHÔNG đo ở JS bằng doneAt (= lần đóng CUỐI).
   const rows = await listAllStaffTasks(congNgay(monthStart, -7), today)
-  for (const r of rows) {
-    if (r.deadline == null || r.deadline < monthStartMs || r.deadline < GAY_MOC_LICH_SU_MS) continue
+  const ungVien = rows.filter((r) => {
+    if (r.deadline == null || r.deadline < monthStartMs || r.deadline < GAY_MOC_LICH_SU_MS || r.deadline > now) return false
     // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua.
     // MT: owner (trưởng khối → GV lớp) đã do fn_viec_buoi_thuong chọn duy nhất — không tra phan_cong_lop.
-    if (r.tab !== 'mt' && nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
-    if (mien.has(r.nhan_su_id)) continue
-    let tre = 0
-    if (r.done && r.doneAt) tre = new Date(r.doneAt).getTime() - r.deadline
-    else if (!r.done) tre = now - r.deadline
-    if (tre <= 0) continue // đúng hạn (hoặc chưa tới hạn) — "1 phút cũng phạt" nên KHÔNG có ân hạn
+    if (r.tab !== 'mt' && nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) return false
+    return !mien.has(r.nhan_su_id)
+  })
+  const tienDo = await tienDoTask(ungVien.map((r) => r.refKey))
+  for (const r of ungVien) {
+    const td = tienDo.get(r.refKey)
+    if (!td || td.tre_phut == null || td.tre_phut <= 0) continue // đúng hạn ở lần đóng đầu — "1 phút cũng phạt" nên KHÔNG có ân hạn
     props.push({
       nhan_su_id: r.nhan_su_id, nguon: 'vanhanh',
       ref_key: r.refKey,
-      mo_ta: `${r.label} — ${r.lop} ${ddmmVN(r.ngay)}${r.done ? '' : ' (chưa xong)'}`,
-      deadline_at: new Date(r.deadline).toISOString(),
-      tre_phut: Math.ceil(tre / 60000),
+      mo_ta: `${r.label} — ${r.lop} ${ddmmVN(r.ngay)}${td.dong_dau ? '' : ' (chưa xong)'}`,
+      deadline_at: td.han ?? new Date(r.deadline!).toISOString(),
+      tre_phut: td.tre_phut,
     })
   }
 
@@ -238,11 +241,30 @@ export async function quetGayTuDong(): Promise<number> {
     })
   }
 
-  if (!props.length) return 0
-  // ignoreDuplicates: dòng đã tồn tại (kể cả đã chốt/bỏ qua) GIỮ NGUYÊN — không đè quyết định của người.
-  const { error: eUp } = await supabase.from('gay_de_xuat').upsert(props, { onConflict: 'ref_key', ignoreDuplicates: true })
-  if (eUp) throw eUp
+  if (props.length) {
+    // ignoreDuplicates: dòng đã tồn tại (kể cả đã chốt/bỏ qua) GIỮ NGUYÊN — không đè quyết định của người.
+    const { error: eUp } = await supabase.from('gay_de_xuat').upsert(props, { onConflict: 'ref_key', ignoreDuplicates: true })
+    if (eUp) throw eUp
+  }
+  // Đề xuất ĐANG CHỜ: đo lại theo lần đóng đầu ở DB — đúng hạn ⇒ máy tự rút (lý do ghi rõ), lệch phút ⇒ cập nhật.
+  // Gậy đã chốt KHÔNG đụng. trg_log_gay_de_xuat tự ghi vết.
+  const { error: eTL } = await supabase.rpc('fn_gay_de_xuat_tinh_lai')
+  if (eTL) throw eTL
   return props.length
+}
+
+// ── TIẾN ĐỘ TASK BUỔI HỌC (CEO 08/10): hạn · đóng LẦN ĐẦU · đóng cuối · số lần mở lại · phút trễ (theo lần đầu).
+// Tính ở DB (fn_viec_tien_do) — dùng cho máy quét + ghi chú lịch sử đóng ngay trên dòng gậy/đề xuất.
+export type TienDoTask = { ref_key: string; han: string | null; dong_dau: string | null; dong_cuoi: string | null; so_mo_lai: number; tre_phut: number | null }
+export async function tienDoTask(refKeys: string[]): Promise<Map<string, TienDoTask>> {
+  const keys = [...new Set(refKeys.filter((k) => k?.startsWith('vh:')))]
+  const out = new Map<string, TienDoTask>()
+  for (let i = 0; i < keys.length; i += 400) { // tránh body/URL quá dài
+    const { data, error } = await supabase.rpc('fn_viec_tien_do', { p_ref_keys: keys.slice(i, i + 400) }).limit(1000)
+    if (error) throw error
+    for (const r of (data ?? []) as TienDoTask[]) out.set(r.ref_key, r)
+  }
+  return out
 }
 
 export async function listDeXuat(trangThai: GayDeXuat['trang_thai'] = 'cho'): Promise<GayDeXuatFull[]> {

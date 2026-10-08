@@ -16,10 +16,11 @@ import {
   GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, MA_LOI_KHONG_DAT_CHUAN, kyHienTai, nhanKy,
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
-  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, lichSuGay,
+  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, tienDoTask,
   type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
-  type KhoangNgay, type TaskCuaNhanSu, type GayLichSuEvent, type GayLichSuLoai,
+  type KhoangNgay, type TaskCuaNhanSu, type TienDoTask,
 } from '../../lib/gay'
+import { LichSuTask, GhiChuDong } from '../../components/LichSuDongTask'
 import { homNayVN, congNgay, tuanCuaNgay, khoangTuan, nhanTuan, ddmmVN } from '../../lib/tuan'
 
 type Tab = 'bang' | 'dexuat' | 'danhgo' | 'danhmuc' | 'chot'
@@ -58,43 +59,7 @@ const pill = (tone: 'red' | 'emerald' | 'amber' | 'zero') => ({
   zero: 'inline-flex min-w-[30px] items-center justify-center rounded-full border border-slate-200 bg-white px-2 py-0.5 text-xs font-medium text-slate-400',
 }[tone])
 
-// ── LỊCH SỬ 1 TASK (CEO 23/09): timeline hạn · đóng/mở lại · dữ liệu HS nhập sau khi đóng ·
-// HS nộp muộn — để leader biết gậy là do nhân sự đóng muộn hay HS nộp muộn thật rồi nhân sự
-// mở lại điền. Toàn bộ do fn_gay_lich_su ghép ở DB; đây chỉ render. Dùng ở đề xuất (ref_key)
-// và ở dòng ledger gắn task (ref_id).
-const LS_DOT: Record<GayLichSuLoai, string> = {
-  han: 'bg-amber-400', dong: 'bg-emerald-500', mo_lai: 'bg-indigo-500', doi_moc: 'bg-slate-400',
-  nhap: 'bg-slate-300', hs_nop: 'bg-rose-400', viec: 'bg-slate-400',
-}
-const LS_TEXT: Record<GayLichSuLoai, string> = {
-  han: 'font-semibold text-amber-700', dong: 'font-medium text-emerald-700', mo_lai: 'font-medium text-indigo-700',
-  doi_moc: 'text-slate-600', nhap: 'text-slate-600', hs_nop: 'font-medium text-rose-700', viec: 'text-slate-600',
-}
-function LichSuTask({ refKey }: { refKey: string }) {
-  const [evs, setEvs] = useState<GayLichSuEvent[] | null>(null)
-  const [err, setErr] = useState('')
-  useEffect(() => {
-    let alive = true
-    setEvs(null); setErr('')
-    lichSuGay(refKey).then((r) => { if (alive) setEvs(r) }).catch((e: any) => { if (alive) setErr(String(e.message ?? e)) })
-    return () => { alive = false }
-  }, [refKey])
-  if (err) return <p className="text-xs text-red-600">{err}</p>
-  if (!evs) return <p className="text-xs text-slate-400">Đang tải lịch sử…</p>
-  if (!evs.length) return <p className="text-xs text-slate-400">Chưa có vết nào cho task này (log đóng/mở lại chỉ ghi từ 23/09/2026; việc OPS gộp theo ca chưa có timeline).</p>
-  return (
-    <ol className="ml-1.5 space-y-1 border-l-2 border-slate-200 pl-3" onClick={(ev) => ev.stopPropagation()}>
-      {evs.map((e, i) => (
-        <li key={i} className="relative text-xs leading-5">
-          <span className={`absolute -left-[17px] top-1.5 h-2.5 w-2.5 rounded-full ring-2 ring-white ${LS_DOT[e.loai] ?? 'bg-slate-300'}`} />
-          <span className="font-mono text-slate-500">{ddmmhh(e.at)}</span>{' '}
-          <span className={LS_TEXT[e.loai] ?? 'text-slate-600'}>{e.mo_ta}</span>
-          {e.actor && <span className="text-slate-400"> · {e.actor}</span>}
-        </li>
-      ))}
-    </ol>
-  )
-}
+// LỊCH SỬ 1 TASK + ghi chú đóng lần đầu: components/LichSuDongTask.tsx (dùng chung với màn Chất lượng vận hành).
 
 export default function GayScreen() {
   const quyen = useStore((s) => s.quyen)
@@ -246,6 +211,9 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
   lamThuHoi: (id: string) => void
 }) {
   const [lsId, setLsId] = useState<string | null>(null) // dòng ledger đang xoè lịch sử task
+  // ghi chú đóng task (hạn · đóng lần đầu · mở lại) cho các dòng gắn task — chỉ tải khi xoè người này
+  const [tdMap, setTdMap] = useState<Map<string, TienDoTask>>(new Map())
+  useEffect(() => { if (!mo) return; tienDoTask(r.entries.map((e) => e.ref_id ?? '')).then(setTdMap).catch(() => {}) }, [mo, r.entries])
   return (
     <>
       <tr className="cursor-pointer border-b border-slate-50 transition hover:bg-slate-50/60" onClick={onMo}>
@@ -285,6 +253,7 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
                       <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={(ev) => { ev.stopPropagation(); setThuHoiId(e.id); setThuHoiLyDo('') }}>Thu hồi</button>
                     )
                   )}
+                {e.ref_id && tdMap.has(e.ref_id) && <div className="w-full pl-[42px]"><GhiChuDong td={tdMap.get(e.ref_id)} /></div>}
                 {lsId === e.id && e.ref_id && <div className="mt-1.5 w-full pl-1" onClick={(ev) => ev.stopPropagation()}><LichSuTask refKey={e.ref_id} /></div>}
               </div>
             ))}
@@ -312,6 +281,8 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   const [boQuaId, setBoQuaId] = useState<string | null>(null)
   const [boQuaLyDo, setBoQuaLyDo] = useState('')
   const [lichSuId, setLichSuId] = useState<string | null>(null) // đề xuất đang xoè timeline
+  const [tdMap, setTdMap] = useState<Map<string, TienDoTask>>(new Map()) // ghi chú đóng task theo ref_key
+  useEffect(() => { if (!dxs.length) return; tienDoTask(dxs.map((d) => d.ref_key)).then(setTdMap).catch(() => {}) }, [dxs])
   const loiChamDeadline = lois.find((l) => l.ma === MA_LOI_CHAM_DEADLINE)?.id ?? lois[0]?.id ?? ''
 
   const load = async () => {
@@ -396,6 +367,7 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
                           {lichSuId === d.id ? 'Ẩn lịch sử ▲' : 'Lịch sử ▼'}
                         </button>
                       </p>
+                      {tdMap.has(d.ref_key) && <div className="mt-0.5"><GhiChuDong td={tdMap.get(d.ref_key)} /></div>}
                       {lichSuId === d.id && <div className="mt-2"><LichSuTask refKey={d.ref_key} /></div>}
                     </div>
                     {duocLam ? (

@@ -2,7 +2,7 @@
 
 > Thay màn Chất lượng vận hành cũ (CL − (100 − TĐ), leader chấm chất lượng tay, toán ở JS — đã outdate).
 > Làm **Trợ giảng** trước; GV / OPS dùng lại khung này sau.
-> Code: mig `202610081343_hieu_suat_ta.sql` + `202610081414_hieu_suat_ta_theo_gay.sql` · `src/lib/hieusuat_ta.ts` · `src/screens/dashboard/HieuSuatTAScreen.tsx` (lá `db_chatluong`).
+> Code: mig `202610081343_hieu_suat_ta.sql` + `202610081414_hieu_suat_ta_theo_gay.sql` + `202610081427_gay_tre_theo_lan_dong_dau.sql` + `202610081433_…` · `src/lib/hieusuat_ta.ts` · `src/screens/dashboard/HieuSuatTAScreen.tsx` (lá `db_chatluong`).
 
 ## 1. Công thức
 
@@ -13,11 +13,12 @@
 | Bổ trợ (bù · yếu · đuổi) | 35% | chỉ tiêu **8 giờ / tháng** — quản lý chấm tay (xem §3) |
 
 - **Điểm 1 task CHỈ dựa vào HỆ GẬY** (CEO 08/10, sửa lần 2 — không tự đo lại): **không có gậy = 100**.
-  - Gậy **"Chậm deadline"** đã vào sổ ⇒ trừ **tiến độ** theo số phút trễ mà gậy đã ghi (`gay_de_xuat.tre_phut`):
-    ≤ 6h −10 · 6–12h −20 · 12–24h −30 · > 24h −40 (1 task chỉ trừ tiến độ 1 lần; gậy không ghi phút ⇒ −10 + cờ).
+  - Gậy **"Chậm deadline"** đã vào sổ ⇒ trừ **tiến độ** theo mức trễ của **LẦN ĐÓNG ĐẦU TIÊN** (cùng cách hệ Gậy đo, §5b):
+    ≤ 6h −10 · 6–12h −20 · 12–24h −30 · > 24h −40 (1 task chỉ trừ tiến độ 1 lần). Gậy đã chốt mà lần đóng đầu đúng hạn
+    (chốt trước khi sửa máy quét) ⇒ −10 + cờ "xem lại gậy".
   - Gậy **loại khác** đã vào sổ ⇒ trừ **chất lượng** −15 mỗi gậy. Sàn 0.
   - Gậy còn **chờ chốt** hoặc **đã thu hồi** ⇒ không trừ (task hiện cờ "có đề xuất gậy chờ chốt").
-  - Giờ trễ tự đo từ giờ đóng vẫn HIỆN để tham khảo, KHÔNG vào điểm.
+  - Không có gậy ⇒ dù số đo cho thấy trễ, vẫn 100 (gậy là nguồn duy nhất quyết có trừ hay không).
 - **Gậy ↔ task** khớp bằng khoá `vh:<buổi>|<btvn|et>|<nhân sự>` (= `ref_key` của `fn_viec_buoi_thuong`). Màn chi tiết có khối
   **"Gậy của tháng"** liệt kê MỌI gậy của TA (vào sổ / thu hồi / chờ chốt), gắn task nào, có vào điểm không và vì sao
   (không phải lớp TA chính · không thuộc BTVN/ET · gậy bổ trợ · ngoài task) — đối chiếu 1-1 với màn Gậy, không gậy nào rơi mất.
@@ -56,9 +57,22 @@
   (giờ ghi thêm của bổ trợ được hiện cộng bên cạnh giờ hệ thống).
 - Quyền ghi: `co_quyen_ghi('db_chatluong')`; quyền xem: `co_chuc_nang('db_chatluong')`.
 
+## 5b. Hệ Gậy — trễ theo LẦN ĐÓNG ĐẦU + ghi chú lịch sử đóng (CEO 08/10, mig 202610081427 + 202610081433)
+
+- Trước đây máy quét đo trễ bằng giờ đóng HIỆN TẠI (= lần đóng cuối) và chụp số phút lúc quét ⇒ task mở lại rồi đóng lại thành "trễ",
+  task chưa đóng lúc quét thì số phút đông cứng. Đo 08/10: 25/119 đề xuất đang chờ có lần đóng đầu đúng hạn, 28 lệch phút.
+- Nay: `_viec_dong_dau` = MỘT nguồn "lần đóng đầu"; `fn_viec_tien_do(ref_keys)` = hạn · đóng đầu · đóng cuối · số lần mở lại · phút trễ
+  (tính ở Postgres). Máy quét chỉ đề xuất khi lần đóng đầu trễ (hoặc quá hạn chưa đóng).
+- Mỗi lần quét, `fn_gay_de_xuat_tinh_lai` đo lại đề xuất ĐANG CHỜ: lần đóng đầu đúng hạn ⇒ **máy tự rút** (bo_qua, lý do ghi rõ, người quyết
+  để trống = máy); lệch phút ⇒ cập nhật; đã đóng ⇒ bỏ chữ "(chưa xong)". Gậy ĐÃ CHỐT không đụng — người chốt tự thu hồi nếu sai.
+  Lần quét đầu 08/10: rút 25, sửa 72.
+- **Ghi chú lịch sử đóng** hiện thẳng trên mỗi dòng đề xuất và mỗi gậy gắn task (màn Gậy): *hạn · đóng lần đầu (trễ/đúng hạn) · mở lại N lần ·
+  đóng cuối*; bấm "Lịch sử" xem timeline đầy đủ. Màn hiệu suất: bấm 1 task / 1 gậy để xem timeline. Component chung `src/components/LichSuDongTask.tsx`.
+
 ## 6. Giới hạn đã biết
 
-- Gậy tự động đo trễ theo giờ đóng HIỆN TẠI (lần đóng cuối) ⇒ task bị mở lại rồi đóng lại có thể nhận gậy trễ dù lần đầu đúng hạn
-  (vd Nguyễn Hà Giang 7S1 20/09: lần đầu đúng hạn, gậy ghi trễ 47h) — người chốt gậy xem cờ "Đã mở lại" để quyết.
+- Gậy đã chốt TRƯỚC 08/10 vẫn theo cách đo cũ (vd Nguyễn Hà Giang BTVN 7S1 20/09: lần đầu đúng hạn, mở lại, gậy đã vào sổ) — màn hiệu suất
+  gắn cờ "Có gậy trễ nhưng lần đóng đầu ĐÚNG HẠN", người chốt xem và thu hồi ở màn Gậy.
+- Lịch sử đóng/mở chỉ có từ 23/09/2026; trước đó "lần đóng đầu" = lần đóng còn lưu.
 - Phân công lớp (`phan_cong_lop`) không có lịch sử ⇒ TA đổi lớp giữa chừng thì task cũ của lớp tính cho TA chính hiện tại.
 - Tham số (tỉ trọng, thang trễ, 15/gậy, 8h) nằm ở 4 hàm `_hsta_*` — đổi số = 1 migration sửa đúng hàm đó.

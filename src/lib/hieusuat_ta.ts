@@ -121,7 +121,7 @@ export const TEN_LOAI_CA: Record<HstaCa['loai'], string> = { bu: 'Bù', bo_tro_y
 export const TEN_CO: Record<string, string> = {
   chua_dong: 'Chưa đóng',
   gay_cho_chot: 'Có đề xuất gậy chờ chốt',
-  gay_khong_ro_phut: 'Gậy trễ không ghi số phút — trừ mức thấp nhất',
+  gay_dau_dung_han: 'Có gậy trễ nhưng lần đóng đầu ĐÚNG HẠN — xem lại gậy',
   khong_cau_co_gay: 'Không có câu nhưng đã có gậy — vẫn tính',
   mo_lai: 'Đã mở lại',
   nop_muon_cao: '≥40% muộn / không làm',

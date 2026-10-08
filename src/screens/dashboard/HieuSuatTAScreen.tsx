@@ -8,7 +8,8 @@
 //   · Mỗi ô: hệ thống ĐỀ XUẤT + quản lý CHỐT; "Ghi thêm" cho việc ngoài hệ thống.
 // Sau mutation KHÔNG reload cả bảng (CLAUDE.md §2): vá đúng dòng TA đó, refetch nền 1 dòng.
 // Rời màn rồi quay lại = đúng chỗ cũ: cache module-level NHO (sống tới F5), nút ↻ ép quét lại.
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import { LichSuTask } from '../../components/LichSuDongTask'
 import { createPortal } from 'react-dom'
 import {
   layBangThang, layDongThang, layTask, layCaBoTro, layGay, chot, layGhiThem, themGhiThem, xoaGhiThem,
@@ -291,21 +292,24 @@ function Co({ ds }: { ds: string[] }) {
 function KhoiTask({ tieuDe, ds, loai, deXuat }: { tieuDe: string; ds: HstaTask[]; loai: 'btvn' | 'et'; deXuat: number | null }) {
   const th = 'border-b border-slate-100 px-2 py-1.5 text-left text-[10.5px] font-medium text-slate-400'
   const td = 'px-2 py-1.5 align-top'
+  const [mo, setMo] = useState<string | null>(null) // task đang xoè lịch sử đóng
   return (
     <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
       <div className="flex items-center gap-2 bg-slate-700 px-4 py-2 text-[13px] font-semibold text-white">
-        {tieuDe} <span className="font-normal text-slate-300">· {ds.length} task · trung bình {deXuat == null ? '—' : fmtSo(deXuat)}</span>
+        {tieuDe} <span className="font-normal text-slate-300">· {ds.length} task · trung bình {deXuat == null ? '—' : fmtSo(deXuat)} · bấm 1 dòng để xem lịch sử đóng</span>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-[12px]">
           <thead><tr>
             <th className={th}>Ngày</th><th className={th}>Lớp</th><th className={th}>Hạn</th><th className={th}>Đóng lần đầu</th>
-            <th className={th}>Trễ theo giờ đóng (tham khảo)</th><th className={th}>Gậy tiến độ</th><th className={th}>Gậy chất lượng</th><th className={th}>Điểm</th>
+            <th className={th}>Trễ (lần đóng đầu)</th><th className={th}>Gậy tiến độ</th><th className={th}>Gậy chất lượng</th><th className={th}>Điểm</th>
             <th className={th}>{loai === 'btvn' ? 'Dữ liệu: nộp đúng hạn / muộn / không làm / phép' : 'Dữ liệu: ô đã chấm / ô cần'}</th><th className={th}>Cần xem</th>
           </tr></thead>
           <tbody>
             {ds.map((t) => (
-              <tr key={t.buoi_id} className={`border-b border-slate-50 last:border-0 ${t.tinh ? '' : 'bg-slate-50 text-slate-400'}`}>
+              <Fragment key={t.buoi_id}>
+              <tr onClick={() => setMo(mo === t.buoi_id ? null : t.buoi_id)}
+                className={`cursor-pointer border-b border-slate-50 last:border-0 hover:bg-indigo-50/40 ${t.tinh ? '' : 'bg-slate-50 text-slate-400'}`}>
                 <td className={td}>{fmtNgay(t.ngay)}</td>
                 <td className={td}>{t.ten_lop}</td>
                 <td className={td}>{fmtTs(t.han)}</td>
@@ -329,6 +333,13 @@ function KhoiTask({ tieuDe, ds, loai, deXuat }: { tieuDe: string; ds: HstaTask[]
                   <Co ds={t.co} />
                 </td>
               </tr>
+              {mo === t.buoi_id && (
+                <tr className="bg-slate-50/70"><td colSpan={10} className="px-4 py-2.5">
+                  <div className="mb-1 text-[11px] font-semibold text-slate-500">Lịch sử đóng task</div>
+                  <LichSuTask refKey={`vh:${t.buoi_id}|${t.dau_viec}|${t.nhan_su_id}`} />
+                </td></tr>
+              )}
+              </Fragment>
             ))}
             {!ds.length && <tr><td colSpan={10} className="px-4 py-6 text-center text-slate-400">Không có task.</td></tr>}
           </tbody>
@@ -348,18 +359,21 @@ const tenGanVoi = (g: string) => g === 'btvn' ? 'Chấm BTVN' : g === 'et' ? 'Ch
 function KhoiGay({ ds }: { ds: HstaGay[] }) {
   const th = 'border-b border-slate-100 px-2 py-1.5 text-left text-[10.5px] font-medium text-slate-400'
   const td = 'px-2 py-1.5 align-top'
+  const [mo, setMo] = useState<string | null>(null) // gậy đang xoè lịch sử đóng task
   return (
     <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
-      <div className="bg-slate-700 px-4 py-2 text-[13px] font-semibold text-white">Gậy của tháng <span className="font-normal text-slate-300">· {ds.length} dòng — chỉ gậy ĐÃ VÀO SỔ của Chấm BTVN / Chấm ET ở lớp TA chính mới trừ điểm</span></div>
+      <div className="bg-slate-700 px-4 py-2 text-[13px] font-semibold text-white">Gậy của tháng <span className="font-normal text-slate-300">· {ds.length} dòng — chỉ gậy ĐÃ VÀO SỔ của Chấm BTVN / Chấm ET ở lớp TA chính mới trừ điểm · trễ tính theo lần đóng đầu · bấm 1 dòng để xem lịch sử đóng</span></div>
       <div className="overflow-x-auto">
         <table className="w-full text-[12px]">
           <thead><tr>
             <th className={th}>Ngày task</th><th className={th}>Lớp</th><th className={th}>Việc</th><th className={th}>Lỗi</th><th className={th}>Số gậy</th>
-            <th className={th}>Trễ (gậy ghi)</th><th className={th}>Trạng thái</th><th className={th}>Vào điểm</th><th className={th}>Nội dung</th>
+            <th className={th}>Trễ (lần đóng đầu)</th><th className={th}>Trạng thái</th><th className={th}>Vào điểm</th><th className={th}>Nội dung</th>
           </tr></thead>
           <tbody>
             {ds.map((g) => (
-              <tr key={g.nguon + g.id} className={`border-b border-slate-50 last:border-0 ${g.tinh_vao ? '' : 'text-slate-500'}`}>
+              <Fragment key={g.nguon + g.id}>
+              <tr onClick={() => g.ref_key && setMo(mo === g.nguon + g.id ? null : g.nguon + g.id)}
+                className={`border-b border-slate-50 last:border-0 ${g.ref_key ? 'cursor-pointer hover:bg-indigo-50/40' : ''} ${g.tinh_vao ? '' : 'text-slate-500'}`}>
                 <td className={td}>{g.ngay_task ? fmtNgay(g.ngay_task) : '—'}</td>
                 <td className={td}>{g.ten_lop ?? ''}</td>
                 <td className={td}>{tenGanVoi(g.gan_voi)}</td>
@@ -370,6 +384,13 @@ function KhoiGay({ ds }: { ds: HstaGay[] }) {
                 <td className={td}>{g.tinh_vao === 'tien_do' ? <b className="text-rose-600">Tiến độ</b> : g.tinh_vao === 'chat_luong' ? <b className="text-rose-600">Chất lượng</b> : <span className="text-[11px]">Không — {g.ly_do_khong_tinh}</span>}</td>
                 <td className={td}>{g.ly_do ?? ''}{g.nguoi && <div className="text-[10.5px] text-slate-400">{g.nguoi} · {fmtTs(g.tao_at)}</div>}</td>
               </tr>
+              {mo === g.nguon + g.id && g.ref_key && (
+                <tr className="bg-slate-50/70"><td colSpan={9} className="px-4 py-2.5">
+                  <div className="mb-1 text-[11px] font-semibold text-slate-500">Lịch sử đóng task</div>
+                  <LichSuTask refKey={g.ref_key} />
+                </td></tr>
+              )}
+              </Fragment>
             ))}
             {!ds.length && <tr><td colSpan={9} className="px-4 py-6 text-center text-slate-400">Không có gậy nào — mọi task chấm đều 100.</td></tr>}
           </tbody>
