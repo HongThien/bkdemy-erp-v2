@@ -1,6 +1,8 @@
 # kho-rules/dai/k4T.md — Luật GÁN DẠNG + GIẢI + TRÌNH BÀY khối 4T (Toán 4 nâng cao)
 
-> **Trạng thái: NHÁP v0 (07/10) — chờ CEO duyệt lô giải thử `k4T-mau-thu.md`.** Theo `spec-luong-kho.md` C10: mọi lần
+> **Trạng thái: ⭐ v1 (08/10) — lô 4 (20 câu) qua CEO không sửa gì** (*"OK rồi đấy"*). Bốn lô thử 75 câu ở `k4T-mau-thu.md`.
+> Từ v1: được giải hàng loạt + ghi kho qua cổng (`scripts/kho/sach/ghi-lo.mjs`). Luật vẫn sống: CEO sửa ở lô nào ⇒ ghi §7, nâng luật.
+> *(lịch sử: NHÁP v0 07/10 → v1 08/10)* Theo `spec-luong-kho.md` C10: mọi lần
 > gán dạng / giải câu 4T PHẢI đọc file này trước. **Mỗi lần CEO sửa một chỗ ⇒ ghi vào §7 (nhật ký) rồi nâng luật ở §1–§5.**
 > Lặp cho tới khi một lô đi qua mà CEO không sửa gì ⇒ v1.
 >
@@ -194,3 +196,4 @@ Luật gán:
 | 07/10 | Sau lô 2 | *"Chạy thêm đủ các lô đi, khi nào hoàn hảo đã."* | Chưa lên v1. Tiêu chí v1 giữ nguyên: một lô qua CEO **không sửa gì**. |
 | 08/10 | Lô 3 (câu 6 + mọi sơ đồ cũ) | *"Vẽ sơ đồ phải đúng tỉ lệ với số liệu bài toán."* Đoạn thêm / đoạn thiếu đang vẽ dài cố định (tuổi con 8 và đoạn hơn 25 trông gần bằng nhau). | Máy vẽ viết lại: bắt buộc `gia_tri_phan`, mọi đoạn dài theo giá trị thật, tự kiểm nhãn tổng/hiệu khớp (lệch ⇒ từ chối vẽ). Vẽ lại cả 7 sơ đồ lô 1–3. |
 | 08/10 | Lô 3 câu 19, 20 (trắc nghiệm phiếu cuối tuần) | Trả lời câu hỏi: *"Mọi câu đều giải chi tiết với cấu trúc 2 phần như trên."* | §1.5: mọi câu, kể cả Phần I trắc nghiệm, đủ 2 phần. |
+| 08/10 | Lô 4 cả lô (20 câu, 10 sơ đồ) | *"OK rồi đấy. Tiếp nào."* Không sửa câu nào. | **Lên v1.** Câu 18 (tính ngược có phân số ⇒ `230101` theo tiền lệ lô 1) được duyệt cùng lô ⇒ giữ. |

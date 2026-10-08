@@ -35907,3 +35907,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — Bản đồ 4 tầng: CEO chốt phương án
 - **Thùy:** trên ERP có 1 UI BẢN ĐỒ MỚI; Thùy chuẩn bị đầy đủ trên đó (lý thuyết, ví dụ, mô tả). Claude làm nhiệm vụ KHỚP bản đồ cũ → mới bằng cách đọc lý thuyết/ví dụ/mô tả. (Trước đó: học thuật duyệt; AI đề xuất tới tầng 4.)
 - **Kỹ thuật t chọn (R2):** bản mới sống ở bảng NHÁP riêng (không đụng bản đang chạy) · màn chia đôi cũ|mới, kéo từ cũ sang = chép tên + lý thuyết + ghi đối ứng (tuỳ CEO dùng) · khớp câu gốc, clone đi theo gốc · câu không khớp ⇒ rổ 'chưa khớp', không ép · lúc chuyển: nhóm mới nhận lại mã nhóm cũ tương ứng (đối ứng suy từ nhãn câu). Chờ CEO: chuẩn bị + khớp theo từng khối (K6 thử trước)?
+
+## 08/10 (tiếp) — 4T LÊN v1 + đường ghi kho (README §4 việc #2, #3)
+- CEO duyệt lô 4 "OK rồi đấy", không sửa ⇒ k4T.md v1 (§7 + README §5).
+- `scripts/kho/sach/tach-bai.mjs`: goc.txt → 910 bài có danh tính (sách · khu · số · ý); bắt nhãn không đậm (LT 6.1), bỏ ô trống ghi đáp số của phiếu, báo nhãn ý lặp (LT 11.3 — sách thiếu nhãn 11.4, không đoán).
+- `lo-tu-md.mjs`: md đã duyệt → 75 câu JSON (đề nguyên văn sách theo mã bài, lời giải 2 phần, sơ đồ theo file mô tả, đáp số dòng "Đáp số" hoặc bảng tay có soát).
+- `kho-rules/dai/lo/k4T-kiem.mjs`: máy tự tính lại đáp số TỪ ĐỀ cho 75 câu (vét cạn/thay ngược/mô phỏng) — 75/75 đạt sau khi sửa 1 lỗi của chính hàm kiểm (LT 10.14 lấy nhầm vị trí chữ số); thử đáp án sai ⇒ bắt được. Lô 1 lần đầu được máy kiểm.
+- `ghi-lo.mjs`: cổng ghi (kiem-doc/dap-so/hinh-a = code; kiem-dang/hinh-b = model khác gán mù), insertCauBatch (mã câu, lọc trùng, dạng chờ), kiem_may_boi=claude_code như ghi-tsa (CHECK bảng không có day_chuyen). Chạy thử: 15 câu dạng chờ qua cổng, 60 câu chờ biên bản model khác. CHƯA ghi DB.

@@ -58,14 +58,14 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | # | Việc | Vì sao |
 |---|---|---|
 | 1 | App HS hiển thị `anh_dap_an` **dưới** lời giải; cần cú pháp chèn ảnh **đúng chỗ** trong `loi_giai` (vd `[[anh:so-do]]`) để sơ đồ nằm ngay sau "Ta có sơ đồ:" | Sách tiểu học đặt sơ đồ giữa bài giải; để dưới cùng là sai khuôn |
-| 2 | Script "nhập sách": từ `goc.txt` tách từng bài luyện tập (nhãn `1.5.`, ý `a) b)`), giữ `nguon = tên sách + số bài` | Để lô giải sau v1 không chép tay đề; danh tính bám số bài trong sách |
-| 3 | Lệnh `--ghi` nối lô đã duyệt vào kho qua cổng ghi (câu + lời giải + dạng + SVG) | Hiện lô thử chỉ nằm trong md |
+| 2 | ✅ 08/10 `scripts/kho/sach/tach-bai.mjs`: `goc.txt` → bài có danh tính (sách · khu · số · ý), báo mã trùng / nhãn ý lặp / dòng lạc. 4T: 910 bài (VD 60 · LT 366 · PTL 30 · PCT 454), 0 dòng lạc, 1 bài cần người (LT 11.3 sách thiếu nhãn 11.4) | Để lô giải sau v1 không chép tay đề; danh tính bám số bài trong sách |
+| 3 | ✅ 08/10 `scripts/kho/sach/lo-tu-md.mjs` (md đã duyệt → lô JSON, đề lấy nguyên văn sách) + `ghi-lo.mjs` (cổng ghi: kiem-doc/kiem-dap-so/kiem-hinh-a bằng code, kiem-dang/kiem-hinh-b bằng model khác gán mù; mặc định chạy thử ROLLBACK). Bộ kiểm đáp số theo khối: `kho-rules/dai/lo/k4T-kiem.mjs` | Hiện lô thử chỉ nằm trong md |
 | 4 | Báo cáo thước đo theo khối: % câu người sửa theo khâu (`kho_sua_log`), % dạng người đổi (`kho_doi_dang_log`) | Để biết v1 của một khối có "đứng" không |
 
 ## 5. Trạng thái từng khối
 
 | Khối | File | Phiên bản | Lô đã duyệt | Nguồn luật |
 |---|---|---|---|---|
-| 4T | `dai/k4T.md` | v0 (07/10, đã nhận 2 vòng) | lô 1: 13 câu, CEO sửa 2 chỗ (câu 7 dãy số, câu 8 sơ đồ) · lô 2: 20 câu, không sửa lời giải, chốt 2 luật gán dạng | Toán arc 4 quyển 1 (Archimedes 2023) |
+| 4T | `dai/k4T.md` | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** | Toán arc 4 quyển 1 (Archimedes 2023) |
 | 5T | `dai/k5T.md` | v0 (04/10) | lô 1: 12 câu | kho 5T sẵn có (chuyên đề Số thập phân) |
 | 6–12 | — | chưa | — | chờ CEO đưa sách mẫu từng khối |
