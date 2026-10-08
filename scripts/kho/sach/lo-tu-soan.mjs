@@ -34,6 +34,8 @@ export function chuanSoan(lg) {
   const doi = []
   let s = lg
   if (s.includes('\\"')) { s = s.replace(/\\"/g, '"'); doi.push('bỏ \\" thừa') }
+  // "\n\n" bị escape 2 lần ⇒ hiện nguyên chữ "\n\n" (không lẫn LaTeX: không lệnh nào là \n\n)
+  if (s.includes('\\n\\n')) { s = s.replace(/\\n\\n/g, '\n\n'); doi.push('"\\n\\n" chữ ⇒ xuống dòng') }
   const [p1, p2] = s.split('**Phần 2. Trình bày**')
   if (p2 != null) {
     const dong = p2.split(/\n\n/).map((d) => d.trim()).filter(Boolean)
@@ -44,8 +46,21 @@ export function chuanSoan(lg) {
   return { loi_giai: s, doi }
 }
 
+/** Câu TÁCH theo chữ cái của một bài gộp nhiều biểu thức độc lập (mẫu đã duyệt lô 3: "LT 18.14B" = "Tính: $B=…$"):
+ *  mã "<mã bài><CHỮ>" mà sách không có ⇒ đề = dòng lệnh đầu bài + đúng công thức `$CHỮ=…$` cắt từ đề sách. Không thấy ⇒ null. */
+export function deTachChu(ma, theoMa) {
+  const m = ma.match(/^(.+\d)([A-Z])$/); if (!m) return null
+  const goc = theoMa.get(m[1]); if (!goc || goc.y !== null) return null
+  const ct = [...goc.noi_dung.matchAll(/\$([^$]*)\$/g)].map((x) => x[1].trim()).filter((s) => s.startsWith(`${m[2]}=`))
+  if (ct.length !== 1) return null
+  const lenh = goc.noi_dung.split('\n')[0].trim()
+  if (lenh.includes('$')) return null
+  return { ...goc, ma, noi_dung: `${lenh} $${ct[0]}$`, anh: goc.anh }
+}
+
 export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null) {
-  const theoMa = new Map(bai.map((b) => [b.ma, b]))
+  const theoMa0 = new Map(bai.map((b) => [b.ma, b]))
+  const theoMa = { get: (ma) => theoMa0.get(ma) ?? deTachChu(ma, theoMa0) }
   const cau = [], loi = [], bo = [], daSua = [], suaMay = []
   for (const s0 of soan) {
     const s = { ...s0, ...(sua[s0.ma_nguon] ?? {}) }

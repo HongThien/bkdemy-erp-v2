@@ -127,7 +127,60 @@ export function giaiY(trai, phai, ten = 'y') {
   return y
 }
 
+/** như giaiY nhưng ẩn nằm ở SỐ CHIA (a : y …) ⇒ bậc nhất theo 1/y; thử ngược bắt buộc */
+export function giaiYChia(trai, phai, ten = 'y') {
+  const theoZ = (z) => tinh(trai, { [ten]: [z[1], z[0]] }) // y = 1/z
+  const f1 = theoZ([1, 1]), f2 = theoZ([2, 1]), r = tinh(phai), k = tru(f2, f1), b = tru(f1, k)
+  const z = chia(tru(r, b), k), y = [z[1], z[0]]
+  if (ps(tinh(trai, { [ten]: y })) !== ps(r)) throw new Error('giải y (số chia): thử ngược sai')
+  return y
+}
+/** các số tự nhiên x với a < x < b (a, b là biểu thức) */
+const giuaTN = (a, b) => { const A = tinh(a), B = tinh(b), ra = []; for (let x = Math.floor(A[0] / A[1]) + 1; x * B[1] < B[0]; x++) ra.push(String(x)); return ra }
+const tong = (n0, n1, f) => { let s = P(0); for (let k = n0; k <= n1; k++) s = cong(s, f(k)); return s }
+
 export const KIEM = {
+  // ── lô 8D: CĐ 19 (nhân chia phân số, dãy phân số), PTL 5 — máy tính biểu thức trên đề ──
+  'VD 19.1a': () => [ps(tinh('\\frac{2\\times 3\\times 4}{3\\times 4\\times 5}'))], 'VD 19.1b': () => [ps(tinh('\\frac{8}{9}\\times\\frac{4}{11}+\\frac{8}{9}\\times\\frac{5}{11}+\\frac{8}{9}\\times\\frac{2}{11}'))],
+  'VD 19.2': () => { const r = tinh('\\frac{3}{8}:\\frac{7}{8}'); return [ps(nhan(cong(P(7, 8), r), P(2)))] }, // sách in nhầm 45/28 (lấy diện tích làm chiều dài)
+  'VD 19.3a': () => [ps(tong(2, 19, (k) => P(1, k * (k + 1))))], 'VD 19.3b': () => [ps(tong(1, 7, (k) => P(1, 2 ** k)))],
+  'LT 19.1a': () => [ps(tinh('\\frac{2}{5}\\times\\frac{1}{2}:\\frac{1}{3}'))], 'LT 19.1b': () => [ps(tinh('\\frac{2}{3}\\times\\frac{10}{21}\\times\\frac{3}{2}'))],
+  'LT 19.1c': () => [ps(tinh('\\frac{1}{2}\\times\\frac{1}{5}+\\frac{1}{5}'))], 'LT 19.1d': () => [ps(tinh('\\frac{2}{7}:\\frac{2}{3}-\\frac{1}{7}'))],
+  'LT 19.1e': () => [ps(tinh('\\frac{2}{9}:\\frac{2}{3}\\times\\frac{1}{2}'))], 'LT 19.1f': () => [ps(tinh('\\frac{21}{5}\\times 12\\times\\frac{5}{21}'))],
+  'LT 19.2a': () => [ps(tinh('\\frac{5}{2}\\times\\frac{23}{81}\\times\\frac{2}{5}'))], 'LT 19.2b': () => [ps(tinh('\\frac{5}{17}\\times\\frac{21}{4}\\times\\frac{34}{15}\\times\\frac{1}{7}'))],
+  'LT 19.2c': () => [ps(tinh('\\frac{3}{17}\\times\\frac{21}{5}:\\frac{3}{17}:\\frac{1}{5}'))],
+  'LT 19.3a': () => [ps(giaiYChia('\\frac{2}{7}:y', '\\frac{14}{5}'))], 'LT 19.3b': () => [ps(giaiY('y\\times\\frac{2}{5}', '\\frac{5}{2}'))],
+  'LT 19.3c': () => [ps(giaiY('y:\\frac{5}{4}', '\\frac{44}{5}:\\frac{5}{2}'))], 'LT 19.3d': () => [ps(giaiY('\\frac{16}{27}\\times y:\\frac{2}{9}', '\\frac{10}{27}'))],
+  'LT 19.4a': () => [ps(tinh('\\frac{1}{5}\\times\\frac{3}{4}+\\frac{1}{5}\\times\\frac{1}{4}'))], 'LT 19.4c': () => [ps(tinh('\\frac{7}{15}\\times\\frac{5}{9}+\\frac{5}{9}\\times\\frac{7}{15}+\\frac{5}{9}\\times\\frac{1}{15}'))],
+  'LT 19.4d': () => [ps(tinh('\\frac{7}{16}\\times\\frac{99}{24}-\\frac{25}{8}\\times\\frac{14}{32}'))],
+  'LT 19.5a': () => [ps(giaiY('y\\times\\frac{2}{7}+y\\times\\frac{5}{7}', '\\frac{24}{15}'))], 'LT 19.5b': () => [ps(giaiY('y\\times\\frac{21}{15}-y\\times\\frac{9}{15}', '\\frac{8}{5}+\\frac{2}{3}'))],
+  'LT 19.5c': () => [ps(giaiYChia('\\frac{22}{5}:y+\\frac{18}{5}:y', '\\frac{12}{35}\\times\\frac{7}{2}'))], 'LT 19.5d': () => [ps(giaiY('y:\\frac{15}{13}-y:\\frac{15}{12}', '\\frac{2}{3}:\\frac{5}{7}'))],
+  'LT 19.6a': () => [ps(tinh('\\frac{18}{13}\\times\\frac{24}{29}-\\frac{1}{13}\\times\\frac{24}{29}-\\frac{4}{13}\\times\\frac{24}{29}'))],
+  'LT 19.6c': () => [ps(tinh('\\frac{11}{12}\\times\\frac{9}{19}-\\frac{22}{24}\\times\\frac{6}{19}+\\frac{11}{12}\\times\\frac{16}{19}'))],
+  'LT 19.6d': () => [ps(tinh('\\frac{20}{23}\\times\\frac{4}{5}+\\frac{30}{23}\\times\\frac{4}{5}-\\frac{8}{46}\\times\\frac{4}{5}'))],
+  'LT 19.7': () => [ps(nhan(P(7, 8), P(4))), ps(nhan(P(7, 8), P(7, 8)))],
+  'LT 19.8': () => { const r = P(5, 9), d = nhan(r, P(2)); return [ps(nhan(cong(d, r), P(2))), ps(nhan(d, r))] },
+  'LT 19.9': () => [ps(tinh('\\frac{18}{5}:3\\times 2'))],
+  'LT 19.10a': () => giuaTN('\\frac{6}{16}:\\frac{3}{16}', '\\frac{20}{21}:\\frac{4}{21}'), 'LT 19.10b': () => giuaTN('\\frac{57}{4}\\times\\frac{32}{24}', '\\frac{100}{21}:\\frac{25}{126}'),
+  'LT 19.10c': () => giuaTN('\\frac{8}{21}\\times\\frac{7}{2}', '\\frac{11}{8}\\times 4'), 'LT 19.10d': () => giuaTN('\\frac{2}{3}\\times 6', '1\\times 6'),
+  'LT 19.11a': () => [ps(giaiYChia('\\frac{3}{5}:\\frac{7}{9}:\\frac{x}{11}', '\\frac{3}{7}:\\frac{5}{11}:\\frac{10}{9}', 'x'))],
+  'LT 19.11b': () => [ps(giaiY('\\frac{x}{13}:\\frac{16}{7}:\\frac{15}{23}', '\\frac{23}{13}:\\frac{15}{7}:\\frac{16}{11}', 'x'))],
+  'LT 19.12a': () => [ps(tinh('\\frac{15\\times 14-1}{13\\times 15+14}'))], 'LT 19.12b': () => [ps(tinh('\\frac{2022\\times 2024+1}{2022\\times 2023+2023}'))],
+  // câu TÁCH theo chữ cái (đề = "Tính: $X=…$", deTachChu trong lo-tu-soan)
+  'LT 18.14A': () => [ps(tong(2, 9, (k) => P(1, k * (k + 1))))], 'LT 18.14C': () => [ps(tong(0, 5, (i) => P(3, (1 + 3 * i) * (4 + 3 * i))))],
+  'LT 19.13A': () => [ps(tong(1, 10, (k) => P(1, 2 ** k)))], 'LT 19.13B': () => [ps(tong(0, 6, (k) => P(1, 3 * 2 ** k)))],
+  'LT 19.14A': () => [ps(tong(1, 6, (k) => P(1, 3 ** k)))], 'LT 19.14B': () => [ps(tong(1, 5, (k) => P(1, 4 ** k)))], 'LT 19.14C': () => [ps(tong(1, 5, (k) => P(1, 5 ** k)))],
+  'LT 19.15A': () => [ps(tong(3, 20, (k) => P(1, k * (k + 1))))], 'LT 19.15B': () => [ps(tong(0, 14, (i) => P(2, (2 * i + 1) * (2 * i + 3))))],
+  'LT 19.15C': () => [ps(tong(0, 19, (i) => P(4, (4 * i + 3) * (4 * i + 7))))],
+  'LT 19.15F': () => [ps(tong(1, 100, (k) => P((k % 2 ? 1 : -1) * (2 * k + 1), k * (k + 1))))],
+  'PTL 5.1a': () => [ps(P(2323, 2424))], 'PTL 5.1b': () => [ps(P(4848, 9696))], 'PTL 5.1c': () => [ps(P(125125, 120120))], 'PTL 5.1d': () => [ps(P(121212, 161616))],
+  ...Object.fromEntries([['a', [7, 9], [5, 7]], ['b', [56, 57], [35, 33]], ['c', [12, 67], [6, 43]], ['d', [102, 157], [105, 151]], ['e', [79, 83], [101, 105]], ['f', [421, 418], [258, 255]]]
+    .map(([y, a, b]) => [`PTL 5.2${y}`, () => { const s = a[0] * b[1] - b[0] * a[1]; return [`${a[0]}/${a[1]}${s > 0 ? '>' : s < 0 ? '<' : '='}${b[0]}/${b[1]}`] }])),
+  // PTL 5.3 (đề mở: 6 phân số giữa 3/8 và 5/8) — không có hàm, soát tay
+  'PTL 5.4a': () => [ps(tinh('\\frac{4}{6}+\\frac{7}{13}+\\frac{17}{9}+\\frac{19}{13}+\\frac{1}{9}+\\frac{14}{6}'))], 'PTL 5.4b': () => [ps(tinh('\\frac{7}{9}-\\frac{4}{17}+\\frac{11}{9}+\\frac{21}{17}'))],
+  'PTL 5.4c': () => [ps(tinh('\\frac{13}{18}\\times\\frac{13}{17}+\\frac{13}{18}\\times\\frac{21}{17}'))], 'PTL 5.4d': () => [ps(tinh('\\frac{5}{12}:\\frac{15}{16}-\\frac{5}{12}\\times\\frac{1}{15}'))],
+  'PTL 5.5a': () => [ps(tinh('\\frac{195}{197}\\times\\frac{190}{193}\\times\\frac{97}{95}\\times\\frac{193}{195}\\times\\frac{197}{194}'))],
+  'PTL 5.5c': () => [ps(tong(0, 27, (i) => P(2, (2 * i + 1) * (2 * i + 3))))], 'PTL 5.5d': () => [ps(tong(2, 10, (k) => P(1, k * (k + 1))))],
   // ── lô 8A: CĐ 14 (rút về đơn vị), CĐ 15 (dãy số liệu, khả năng), PTL 4 — máy tính từ số liệu đề ──
   'VD 14.1': () => [String(448 / 8 * 6)], 'VD 14.2': () => [String(2100 / (15 / 5))],
   'LT 14.1': () => [String(981 / 9 * 3)], 'LT 14.2': () => [String(96 / 8 * (8 - 2))], 'LT 14.3': () => [String(594 / 11 * (11 + 3))],

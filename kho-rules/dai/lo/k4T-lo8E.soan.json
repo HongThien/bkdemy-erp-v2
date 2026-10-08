@@ -1,0 +1,79 @@
+[
+ {
+  "ma_nguon": "LT 18.14A",
+  "gop_y": false,
+  "dap_an": "$A=\\dfrac{2}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi phân số có tử số $1$ và mẫu là tích hai số liên tiếp (hơn kém nhau $1$), nên tử số **đúng bằng hiệu** hai số ở mẫu. Viết tử số thành hiệu hai số đó, ví dụ $\\dfrac{1}{2\\times 3}=\\dfrac{3-2}{2\\times 3}=\\dfrac{3}{2\\times 3}-\\dfrac{2}{2\\times 3}=\\dfrac{1}{2}-\\dfrac{1}{3}$. Làm vậy với từng phân số thì số đứng giữa vừa cộng vừa trừ nên **triệt tiêu**, chỉ còn số đầu trừ số cuối: $\\dfrac{1}{2}-\\dfrac{1}{10}$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}+\\dfrac{1}{6\\times 7}+\\dfrac{1}{7\\times 8}+\\dfrac{1}{8\\times 9}+\\dfrac{1}{9\\times 10}$\n\n$A=\\dfrac{3-2}{2\\times 3}+\\dfrac{4-3}{3\\times 4}+\\dfrac{5-4}{4\\times 5}+\\dfrac{6-5}{5\\times 6}+\\dfrac{7-6}{6\\times 7}+\\dfrac{8-7}{7\\times 8}+\\dfrac{9-8}{8\\times 9}+\\dfrac{10-9}{9\\times 10}$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{6}+\\dfrac{1}{6}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{8}+\\dfrac{1}{8}-\\dfrac{1}{9}+\\dfrac{1}{9}-\\dfrac{1}{10}$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{10}$\n\n$A=\\dfrac{5}{10}-\\dfrac{1}{10}$\n\n$A=\\dfrac{4}{10}$\n\n$A=\\dfrac{4:2}{10:2}$\n\n$A=\\dfrac{2}{5}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 18.14C",
+  "gop_y": false,
+  "dap_an": "$C=\\dfrac{18}{19}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các thừa số ở mẫu hơn kém nhau $3$ và tử số cũng là $3$, nên tử số **đúng bằng hiệu** hai thừa số ở mẫu. Viết tử số thành hiệu hai thừa số đó, ví dụ $\\dfrac{3}{1\\times 4}=\\dfrac{4-1}{1\\times 4}=\\dfrac{4}{1\\times 4}-\\dfrac{1}{1\\times 4}=1-\\dfrac{1}{4}$. Làm vậy với từng phân số thì số đứng giữa vừa cộng vừa trừ nên **triệt tiêu**, chỉ còn $1-\\dfrac{1}{19}$.\n\n**Phần 2. Trình bày**\n\n$C=\\dfrac{3}{1\\times 4}+\\dfrac{3}{4\\times 7}+\\dfrac{3}{7\\times 10}+\\dfrac{3}{10\\times 13}+\\dfrac{3}{13\\times 16}+\\dfrac{3}{16\\times 19}$\n\n$C=\\dfrac{4-1}{1\\times 4}+\\dfrac{7-4}{4\\times 7}+\\dfrac{10-7}{7\\times 10}+\\dfrac{13-10}{10\\times 13}+\\dfrac{16-13}{13\\times 16}+\\dfrac{19-16}{16\\times 19}$\n\n$C=1-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{10}+\\dfrac{1}{10}-\\dfrac{1}{13}+\\dfrac{1}{13}-\\dfrac{1}{16}+\\dfrac{1}{16}-\\dfrac{1}{19}$\n\n$C=1-\\dfrac{1}{19}$\n\n$C=\\dfrac{19}{19}-\\dfrac{1}{19}$\n\n$C=\\dfrac{18}{19}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.13A",
+  "gop_y": false,
+  "dap_an": "$A=\\dfrac{1023}{1024}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số hạng **bằng nửa số hạng đứng trước** (hơn kém nhau $2$ lần). Nhân cả tổng với $2$ thì các số hạng dịch lên một bậc, hầu hết trùng với tổng cũ. Lấy $2\\times A-A$ thì phần trùng triệt tiêu, chỉ còn số hạng đầu của $2\\times A$ là $1$ và số hạng cuối của $A$ là $\\dfrac{1}{1024}$.\\n\\nChú ý: $2\\times A-A$ chính là $A$ nên không cần chia thêm cho $2$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+.....+\\dfrac{1}{1024}$\n\n$2\\times A=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+.....+\\dfrac{1}{512}$\n\n$2\\times A-A=1-\\dfrac{1}{1024}$\n\n$A=\\dfrac{1024}{1024}-\\dfrac{1}{1024}$\n\n$A=\\dfrac{1023}{1024}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.13B",
+  "gop_y": false,
+  "dap_an": "$B=\\dfrac{127}{192}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số hạng **bằng nửa số hạng đứng trước** (hơn kém nhau $2$ lần). Nhân cả tổng với $2$ thì các số hạng dịch lên một bậc, hầu hết trùng với tổng cũ. Số hạng đầu của $B$ là $\\dfrac{1}{3}$ nên số hạng đầu của $2\\times B$ là $\\dfrac{2}{3}$. Lấy $2\\times B-B$ thì phần trùng triệt tiêu, chỉ còn $\\dfrac{2}{3}-\\dfrac{1}{192}$ ($\\dfrac{1}{192}$ là số hạng cuối của $B$).\\n\\nChú ý: $2\\times B-B$ chính là $B$ nên không cần chia thêm cho $2$.\n\n**Phần 2. Trình bày**\n\n$B=\\dfrac{1}{3}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{24}+\\dfrac{1}{48}+\\dfrac{1}{96}+\\dfrac{1}{192}$\n\n$2\\times B=\\dfrac{2}{3}+\\dfrac{1}{3}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{24}+\\dfrac{1}{48}+\\dfrac{1}{96}$\n\n$2\\times B-B=\\dfrac{2}{3}-\\dfrac{1}{192}$\n\n$B=\\dfrac{128}{192}-\\dfrac{1}{192}$\n\n$B=\\dfrac{127}{192}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.14A",
+  "gop_y": false,
+  "dap_an": "$A=\\dfrac{364}{729}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số hạng **bằng số hạng đứng trước chia cho $3$**. Nhân cả tổng với $3$ thì các số hạng dịch lên một bậc, hầu hết trùng với tổng cũ. Lấy $3\\times A-A$ thì phần trùng triệt tiêu, chỉ còn $1-\\dfrac{1}{729}$. Mà $3\\times A-A=2\\times A$ nên $2\\times A=\\dfrac{728}{729}$, rồi chia cho $2$ để được $A$.\\n\\nChú ý: số lần cần chia lúc cuối là **số nhân trừ $1$**, tức $3-1=2$, không phải $3$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{3}+\\dfrac{1}{9}+\\dfrac{1}{27}+\\dfrac{1}{81}+\\dfrac{1}{243}+\\dfrac{1}{729}$\n\n$3\\times A=1+\\dfrac{1}{3}+\\dfrac{1}{9}+\\dfrac{1}{27}+\\dfrac{1}{81}+\\dfrac{1}{243}$\n\n$3\\times A-A=1-\\dfrac{1}{729}$\n\n$2\\times A=\\dfrac{728}{729}$\n\n$A=\\dfrac{728}{729}:2$\n\n$A=\\dfrac{364}{729}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.14B",
+  "gop_y": false,
+  "dap_an": "$B=\\dfrac{341}{1024}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số hạng **bằng số hạng đứng trước chia cho $4$**. Nhân cả tổng với $4$ thì các số hạng dịch lên một bậc, hầu hết trùng với tổng cũ. Lấy $4\\times B-B$ thì phần trùng triệt tiêu, chỉ còn $1-\\dfrac{1}{1024}$. Mà $4\\times B-B=3\\times B$ nên $3\\times B=\\dfrac{1023}{1024}$, rồi chia cho $3$ để được $B$.\\n\\nChú ý: số lần cần chia lúc cuối là **số nhân trừ $1$**, tức $4-1=3$, không phải $4$.\n\n**Phần 2. Trình bày**\n\n$B=\\dfrac{1}{4}+\\dfrac{1}{16}+\\dfrac{1}{64}+\\dfrac{1}{256}+\\dfrac{1}{1024}$\n\n$4\\times B=1+\\dfrac{1}{4}+\\dfrac{1}{16}+\\dfrac{1}{64}+\\dfrac{1}{256}$\n\n$4\\times B-B=1-\\dfrac{1}{1024}$\n\n$3\\times B=\\dfrac{1023}{1024}$\n\n$B=\\dfrac{1023}{1024}:3$\n\n$B=\\dfrac{1023}{1024}\\times\\dfrac{1}{3}$\n\n$B=\\dfrac{1023}{3072}$\n\n$B=\\dfrac{1023:3}{3072:3}$\n\n$B=\\dfrac{341}{1024}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.14C",
+  "gop_y": false,
+  "dap_an": "$C=\\dfrac{781}{3125}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số hạng **bằng số hạng đứng trước chia cho $5$**. Nhân cả tổng với $5$ thì các số hạng dịch lên một bậc, hầu hết trùng với tổng cũ. Lấy $5\\times C-C$ thì phần trùng triệt tiêu, chỉ còn $1-\\dfrac{1}{3125}$. Mà $5\\times C-C=4\\times C$ nên $4\\times C=\\dfrac{3124}{3125}$, rồi chia cho $4$ để được $C$.\\n\\nChú ý: số lần cần chia lúc cuối là **số nhân trừ $1$**, tức $5-1=4$, không phải $5$.\n\n**Phần 2. Trình bày**\n\n$C=\\dfrac{1}{5}+\\dfrac{1}{25}+\\dfrac{1}{125}+\\dfrac{1}{625}+\\dfrac{1}{3125}$\n\n$5\\times C=1+\\dfrac{1}{5}+\\dfrac{1}{25}+\\dfrac{1}{125}+\\dfrac{1}{625}$\n\n$5\\times C-C=1-\\dfrac{1}{3125}$\n\n$4\\times C=\\dfrac{3124}{3125}$\n\n$C=\\dfrac{3124}{3125}:4$\n\n$C=\\dfrac{3124}{3125}\\times\\dfrac{1}{4}$\n\n$C=\\dfrac{3124}{12500}$\n\n$C=\\dfrac{3124:4}{12500:4}$\n\n$C=\\dfrac{781}{3125}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.15A",
+  "gop_y": false,
+  "dap_an": "$A=\\dfrac{2}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi phân số có tử số $1$ và mẫu là tích hai số liên tiếp (hơn kém nhau $1$), nên tử số **đúng bằng hiệu** hai số ở mẫu. Viết tử số thành hiệu hai số đó, ví dụ $\\dfrac{1}{3\\times 4}=\\dfrac{4-3}{3\\times 4}=\\dfrac{1}{3}-\\dfrac{1}{4}$. Làm vậy với từng phân số thì số đứng giữa vừa cộng vừa trừ nên **triệt tiêu**, chỉ còn $\\dfrac{1}{3}-\\dfrac{1}{21}$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}+.....+\\dfrac{1}{20\\times 21}$\n\n$A=\\dfrac{4-3}{3\\times 4}+\\dfrac{5-4}{4\\times 5}+\\dfrac{6-5}{5\\times 6}+.....+\\dfrac{21-20}{20\\times 21}$\n\n$A=\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{6}+.....+\\dfrac{1}{20}-\\dfrac{1}{21}$\n\n$A=\\dfrac{1}{3}-\\dfrac{1}{21}$\n\n$A=\\dfrac{7}{21}-\\dfrac{1}{21}$\n\n$A=\\dfrac{6}{21}$\n\n$A=\\dfrac{6:3}{21:3}$\n\n$A=\\dfrac{2}{7}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.15B",
+  "gop_y": false,
+  "dap_an": "$B=\\dfrac{30}{31}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai thừa số ở mẫu hơn kém nhau $2$ và tử số cũng là $2$, nên tử số **đúng bằng hiệu** hai thừa số ở mẫu. Viết tử số thành hiệu hai thừa số đó, ví dụ $\\dfrac{2}{1\\times 3}=\\dfrac{3-1}{1\\times 3}=\\dfrac{3}{1\\times 3}-\\dfrac{1}{1\\times 3}=1-\\dfrac{1}{3}$. Làm vậy với từng phân số thì số đứng giữa vừa cộng vừa trừ nên **triệt tiêu**, chỉ còn $1-\\dfrac{1}{31}$.\n\n**Phần 2. Trình bày**\n\n$B=\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\dfrac{2}{5\\times 7}+.....+\\dfrac{2}{29\\times 31}$\n\n$B=\\dfrac{3-1}{1\\times 3}+\\dfrac{5-3}{3\\times 5}+\\dfrac{7-5}{5\\times 7}+.....+\\dfrac{31-29}{29\\times 31}$\n\n$B=1-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{7}+.....+\\dfrac{1}{29}-\\dfrac{1}{31}$\n\n$B=1-\\dfrac{1}{31}$\n\n$B=\\dfrac{30}{31}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.15C",
+  "gop_y": false,
+  "dap_an": "$C=\\dfrac{80}{249}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai thừa số ở mẫu hơn kém nhau $4$ và tử số cũng là $4$, nên tử số **đúng bằng hiệu** hai thừa số ở mẫu. Viết tử số thành hiệu hai thừa số đó, ví dụ $\\dfrac{4}{3\\times 7}=\\dfrac{7-3}{3\\times 7}=\\dfrac{7}{3\\times 7}-\\dfrac{3}{3\\times 7}=\\dfrac{1}{3}-\\dfrac{1}{7}$. Làm vậy với từng phân số thì số đứng giữa vừa cộng vừa trừ nên **triệt tiêu**, chỉ còn $\\dfrac{1}{3}-\\dfrac{1}{83}$.\n\n**Phần 2. Trình bày**\n\n$C=\\dfrac{4}{3\\times 7}+\\dfrac{4}{7\\times 11}+\\dfrac{4}{11\\times 15}+.....+\\dfrac{4}{79\\times 83}$\n\n$C=\\dfrac{7-3}{3\\times 7}+\\dfrac{11-7}{7\\times 11}+\\dfrac{15-11}{11\\times 15}+.....+\\dfrac{83-79}{79\\times 83}$\n\n$C=\\dfrac{1}{3}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{11}+\\dfrac{1}{11}-\\dfrac{1}{15}+.....+\\dfrac{1}{79}-\\dfrac{1}{83}$\n\n$C=\\dfrac{1}{3}-\\dfrac{1}{83}$\n\n$C=\\dfrac{83}{249}-\\dfrac{3}{249}$\n\n$C=\\dfrac{80}{249}$",
+  "so_do_mo_ta": null
+ },
+ {
+  "ma_nguon": "LT 19.15F",
+  "gop_y": false,
+  "dap_an": "$F=\\dfrac{100}{101}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tử số của mỗi phân số bằng **tổng** hai thừa số ở mẫu ($3=1+2$; $5=2+3$; $7=3+4$; …; $201=100+101$), nên $\\dfrac{1+2}{1\\times 2}=\\dfrac{1}{1}+\\dfrac{1}{2}$, $\\dfrac{2+3}{2\\times 3}=\\dfrac{1}{2}+\\dfrac{1}{3}$, … Các phân số lại được cộng, trừ xen kẽ nên khi bỏ ngoặc, các số ở giữa **triệt tiêu** từng cặp, chỉ còn số đầu và số cuối.\\n\\nChú ý: dấu trừ đứng trước ngoặc làm đổi dấu cả hai số trong ngoặc đó.\n\n**Phần 2. Trình bày**\n\n$F=\\dfrac{3}{1\\times 2}-\\dfrac{5}{2\\times 3}+\\dfrac{7}{3\\times 4}-.....-\\dfrac{201}{100\\times 101}$\n\n$F=\\dfrac{1+2}{1\\times 2}-\\dfrac{2+3}{2\\times 3}+\\dfrac{3+4}{3\\times 4}-.....-\\dfrac{100+101}{100\\times 101}$\n\n$F=\\left(\\dfrac{1}{1}+\\dfrac{1}{2}\\right)-\\left(\\dfrac{1}{2}+\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}+\\dfrac{1}{4}\\right)-.....-\\left(\\dfrac{1}{100}+\\dfrac{1}{101}\\right)$\n\n$F=1+\\dfrac{1}{2}-\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}+\\dfrac{1}{4}-.....-\\dfrac{1}{100}-\\dfrac{1}{101}$\n\n$F=1-\\dfrac{1}{101}$\n\n$F=\\dfrac{100}{101}$",
+  "so_do_mo_ta": null
+ }
+]

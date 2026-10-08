@@ -1,0 +1,5 @@
+{
+ "LT 19.13": { "bo": "bản gộp A+B — 2 biểu thức độc lập, tách thành LT 19.13A/B (lô 8E)" },
+ "LT 19.14": { "bo": "bản gộp A+B+C — tách thành LT 19.14A/B/C (lô 8E)" },
+ "LT 19.15": { "bo": "bản gộp A–F mà D, E đã có trong kho (lô 3) — tách A/B/C/F (lô 8E)" }
+}

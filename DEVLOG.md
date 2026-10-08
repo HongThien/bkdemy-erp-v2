@@ -36035,3 +36035,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **8A (CĐ14 rút về đơn vị, CĐ15 dãy số liệu/khả năng, PTL4):** 44 câu, kiem_may khop 44, 3 sơ đồ (LT 14.6 hiệu–số phần, LT 14.7 tổng–số phần, PTL 4.2 TBC) Opus xem ảnh ký kiem-hinh-b. Người soát sửa 3: Sonnet chèn dòng **mô tả sơ đồ bằng chữ trong ngoặc** sau "Ta có sơ đồ:" — các lô trước không có, bỏ (ảnh là sơ đồ).
 - **Cách hiểu đã chọn (ghi cho CEO):** LT 15.13 coi 2 xúc xắc phân biệt ⇒ 36 / 6 / 30 (nếu coi giống hệt: 21 / 6 / 15). LT 14.18 coi số xe không đổi (6 xe, 38 em/xe). VD 15.1, LT 15.1/15.3/15.7 tách ý a (đếm) và b (TBC) — ý b tự đếm lại nên đứng một mình.
 - Bẫy: `sed` sửa hàng loạt trên dòng chứa nhiều hàm kiểm ⇒ greedy ăn sang hàm kế bên, cú pháp gãy (bắt ngay vì import lỗi). Lại thêm 1 lần: sửa code chỉ bằng Edit.
+
+### 08/10 — Kho 4T lô 8D + 8E ghi DB
+- **8D (CĐ19 nhân chia phân số + PTL5):** 60 câu soạn → ghi 57 (khop 56 · PTL 5.3 đề mở "viết 6 phân số giữa 3/8 và 5/8" không có hàm, Opus soát tay). Hàm kiểm mới: `giaiYChia` (ẩn ở số chia ⇒ bậc nhất theo 1/y), `giuaTN` (số tự nhiên giữa 2 biểu thức), `tong` (dãy phân số). **VD 19.2: lời giải SÁCH in nhầm** chu vi 45/28 (lấy diện tích 3/8 làm chiều dài) — kho ghi đáp số đúng 73/28. Sonnet dùng `\cancel{}` để gạch thừa số (mới so với lô trước; KaTeX 0.17 render được).
+- **Câu gộp nhiều biểu thức độc lập ⇒ TÁCH theo chữ cái** (luật "ý độc lập thì tách", mẫu LT 18.14B lô 3): bỏ bản gộp LT 18.14 / 19.13 / 19.14 / 19.15, Sonnet tách lại ⇒ **lô 8E 11 câu** (18.14A/C · 19.13A/B · 19.14A/B/C · 19.15A/B/C/F; 18.14B, 19.15D/E đã có). `lo-tu-soan.mjs` thêm `deTachChu`: mã "<bài><CHỮ>" sách không có ⇒ đề = dòng lệnh + đúng công thức `$CHỮ=…$` cắt từ đề sách (máy dựng, không gõ tay; ra y hệt LT 18.14B đã có).
+- `chuanSoan` thêm sửa máy: chuỗi CHỮ "\n\n" (escape 2 lần) ⇒ xuống dòng thật (6 câu 8E dính). Quét lại cả 12 lô trong repo: sạch.
+- Kho từ sách: 514 câu.
