@@ -308,6 +308,7 @@
 - **`spec-khtn-du-hanh.md` — ĐỌC trước khi sửa/làm bài KHTN dạng thế giới 3D** (thư mục `khtn-site/`, CEO chốt 29/09): 2 kiểu bài du hành / tương tác ·
   nhịp trạm (phim lời dẫn → giao việc quan sát → bay tự do → trả lời lúc nào cũng được) · trạm luyện tập bộ 6 câu + hoạt cảnh theo đáp án ·
   KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
+- **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
   Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
