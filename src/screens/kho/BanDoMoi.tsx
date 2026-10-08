@@ -14,16 +14,21 @@ import {
   getCay, themChuDe, suaChuDe, xoaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, goO, xoaChuyenDe,
   themNhom, suaNhom, xoaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, themTienDe, goTienDe, getLyThuyetNhom, getViDuDangBai, lyThuyetNhomApi, viDuDangBaiApi,
-  type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
+  type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
 import type { LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
 import { MathText, inp } from './ui'
 
-// Nhớ chủ đề / chuyên đề đang xem — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
-const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string> } = { chuDe: {}, chuyenDe: {} }
+// Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
+const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false }
+
+// Đích của bảng gán câu: câu chưa gán của 1 nhóm (②) hoặc 1 chuyên đề trong chủ đề (③)
+type GanMo = { nhan: string; dich: { nhom: string } | { chuDe: string; chuyenDe: string }; lua: { id: string; nhan: string }[] }
 
 type Keo =
+  | { loai: 'dang_cu'; ma: string; ten: string }
   | { loai: 'chu_de'; id: string }
   | { loai: 'o'; chuDeId: string; chuyenDeId: string }
   | { loai: 'nhom'; id: string; chuDeId: string; chuyenDeId: string }
@@ -73,16 +78,27 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
   const [hover, setHover] = useState<string | null>(null)
   const [dangKeo, setDangKeo] = useState<Keo['loai'] | null>(null)
   const [lt, setLt] = useState<{ loai: 'nhom' | 'dang_bai'; id: string; ten: string; current: LyThuyet } | null>(null)
+  const [nganCu, setNganCu] = useState(NHO.nganCu)
+  const [dangCu, setDangCu] = useState<BdmDangCu[] | null>(null)
+  const [ganMo, setGanMo] = useState<GanMo | null>(null)
   const keoRef = useRef<Keo | null>(null)
   const baoTimer = useRef<number | undefined>(undefined)
 
   // Đổi KHỐI = đổi ngữ cảnh ⇒ reset + tải lại
   useEffect(() => {
     let song = true
-    setCay(null); setLoiTai(null); setChon(null); setChuDeId(NHO.chuDe[khoi] ?? null)
+    setCay(null); setLoiTai(null); setChon(null); setChuDeId(NHO.chuDe[khoi] ?? null); setDangCu(null)
     getCay(khoi).then((c) => { if (song) setCay(c) }).catch((e) => { if (song) setLoiTai(String(e.message ?? e)) })
     return () => { song = false }
   }, [khoi])
+  // Ngăn bản đồ cũ: tải khi mở (và khi đổi khối lúc đang mở)
+  useEffect(() => {
+    NHO.nganCu = nganCu
+    if (!nganCu || dangCu) return
+    let song = true
+    getDangCu(khoi).then((d) => { if (song) setDangCu(d) }).catch((e) => { if (song) setLoi(String(e.message ?? e)) })
+    return () => { song = false }
+  }, [nganCu, khoi, dangCu])
 
   const chuDe = cay?.chu_de.find((c) => c.id === chuDeId) ?? cay?.chu_de[0] ?? null
   const o = chuDe ? (chuDe.o.find((x) => x.chuyen_de_id === (chuyenDeId ?? NHO.chuyenDe[chuDe.id])) ?? chuDe.o[0] ?? null) : null
@@ -106,7 +122,24 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
     return () => window.removeEventListener('keydown', f)
   })
 
-  const napLai = () => getCay(khoi).then(setCay).catch((e) => setLoi(String(e.message ?? e)))
+  // Tải lại NỀN (không xoá màn): cây + ngăn bản đồ cũ nếu đang mở
+  const napLai = () => Promise.all([
+    getCay(khoi).then(setCay),
+    nganCu ? getDangCu(khoi).then(setDangCu) : Promise.resolve(),
+  ]).catch((e) => setLoi(String(e.message ?? e)))
+  // Thả dạng cũ vào đích ① dạng bài · ② nhóm · ③ chuyên đề
+  const ganVao = (dich: BdmDich, nhan: string) => (k: Keo) =>
+    k.loai === 'dang_cu' ? lam(() => ganDangCu(k.ma, dich), `Đã gắn «${k.ten}» vào ${nhan}`) : undefined
+  // Mở bảng gán câu cho 1 đích — lựa chọn = các dạng bài dưới đích
+  const moGan = (o: BdmO, n: BdmNhom | null) => {
+    if (!chuDe) return
+    const ds = n ? [n] : o.nhom
+    setGanMo({
+      nhan: n ? `nhóm #${n.so} ${n.ten}` : `chuyên đề ${o.ten}`,
+      dich: n ? { nhom: n.id } : { chuDe: chuDe.id, chuyenDe: o.chuyen_de_id },
+      lua: ds.flatMap((x) => x.dang_bai.map((d) => ({ id: d.id, nhan: `${x.so}.${d.so} ${d.ten}${n ? '' : ` (nhóm ${x.ten})`}` }))),
+    })
+  }
   const thongBao = (s: string) => { setBao(s); window.clearTimeout(baoTimer.current); baoTimer.current = window.setTimeout(() => setBao(null), 2000) }
   async function lam(viec: () => Promise<unknown>, xong = 'Đã lưu') {
     setLoi(null)
@@ -174,9 +207,24 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
           <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa}/{tienDo.db} · ví dụ {tienDo.dbVd}/{tienDo.db}</span>
         </span>
       </div>
+      {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-white px-6 py-1.5 text-[12px] text-slate-600">
+        <span className="font-semibold text-slate-700">Khớp bản đồ cũ:</span>
+        <span className={cay.tong.dang_cu_chua_gan ? 'text-rose-600' : 'text-emerald-600'}>
+          Dạng cũ chưa gắn <b>{cay.tong.dang_cu_chua_gan}</b>/{cay.tong.dang_cu}{cay.tong.dang_cu_chua_gan ? ` (${cay.tong.cau_dang_cu_chua_gan} câu)` : ' ✓'}
+        </span>
+        <span className={cay.tong.cau_chua_gan ? 'text-rose-600' : 'text-emerald-600'}>
+          Câu chưa gán dạng bài <b>{cay.tong.cau_chua_gan}</b>/{cay.tong.cau}{cay.tong.cau_chua_gan ? '' : ' ✓'}
+        </span>
+        <span className="text-slate-400">(tính trên dạng cũ của khối {khoi}; bản sao đi theo câu gốc)</span>
+      </div>
 
       {/* Thanh CHỦ ĐỀ — mỗi màn 1 chủ đề */}
       <div className="flex items-center gap-1.5 overflow-x-auto border-b border-slate-200 bg-white px-6 py-2">
+        <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
+          className={`mr-2 shrink-0 rounded-lg border px-2.5 py-1.5 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
+          📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
+        </button>
         <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chủ đề</span>
         {cay.chu_de.map((cd, i) => (
           <button key={cd.id} draggable onDragStart={(e) => batDauKeo(e, { loai: 'chu_de', id: cd.id })} onDragEnd={ketThucKeo}
@@ -198,6 +246,12 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
         <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" rong onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
       </div>
 
+      <div className="flex min-h-0 flex-1">
+      {nganCu && (
+        <NganCu ds={dangCu} batDauKeo={batDauKeo} ketThucKeo={ketThucKeo}
+          onGo={(id, ten) => void lam(() => goDoiUng(id), `Đã gỡ gắn «${ten}»`)} onDong={() => setNganCu(false)} />
+      )}
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
       {!chuDe ? (
         <div className="flex flex-1 items-center justify-center text-[13px] text-slate-400">Khối {khoi} chưa có chủ đề nào — bấm «+ Chủ đề» để bắt đầu.</div>
       ) : (
@@ -236,18 +290,25 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
               <div className="flex flex-1 items-center justify-center text-[13px] text-slate-400">Chủ đề chưa có chuyên đề — bấm «+ Chuyên đề» ở thanh trên.</div>
             ) : (
               <SoDoChuyenDe key={`${chuDe.id}|${o.chuyen_de_id}`} cd={chuDe} o={o} chon={chon} hover={hover} dangKeo={dangKeo} sang={sang}
-                batDauKeo={batDauKeo} ketThucKeo={ketThucKeo} vung={vung} onChon={setChon} onChonChuDe={chonChuDe} lam={lam} />
+                batDauKeo={batDauKeo} ketThucKeo={ketThucKeo} vung={vung} onChon={setChon} onChonChuDe={chonChuDe} lam={lam}
+                ganVao={ganVao} moGan={moGan} />
             )}
 
             {chon && o && (
               <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o} khoi={khoi} onDong={() => setChon(null)}
-                lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} />
+                lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
             )}
           </div>
         </>
       )}
+      </div>
+      </div>
 
       {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
+
+      {ganMo && (
+        <BangGanCau g={ganMo} onDong={() => setGanMo(null)} onDaGan={(n) => { thongBao(n); void napLai() }} />
+      )}
 
       {lt && (
         <LyThuyetModal ma={lt.id} ten={`${lt.loai === 'nhom' ? 'Lý thuyết' : 'Ví dụ'} — ${lt.ten}`} current={lt.current}
@@ -268,6 +329,8 @@ function SoDoChuyenDe(p: {
   vung: (key: string, nhan: (k: Keo) => boolean, tha: (k: Keo) => Promise<void> | void) => VungProps
   onChon: (c: Chon) => void; onChonChuDe: (id: string) => void
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
+  ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
+  moGan: (o: BdmO, n: BdmNhom | null) => void
 }) {
   const { cd, o, chon, sang, vung, lam } = p
   const khung = useRef<HTMLDivElement>(null)
@@ -322,12 +385,20 @@ function SoDoChuyenDe(p: {
       <div className="relative flex min-w-max flex-col items-center gap-14">
         {/* Box CHUYÊN ĐỀ */}
         <div ref={goc} data-hop onClick={() => p.onChon({ loai: 'o' })}
-          className={`w-[360px] cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm ${dangChon({ loai: 'o' }) ? 'border-amber-400 ring-2 ring-amber-300' : 'border-sky-200 hover:border-sky-400'}`}>
+          {...vung(`goc:${o.chuyen_de_id}`, (k) => k.loai === 'dang_cu', p.ganVao({ chuDe: cd.id, chuyenDe: o.chuyen_de_id }, `chuyên đề «${o.ten}»`))}
+          className={`w-[360px] cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm ${sang(`goc:${o.chuyen_de_id}`)} ${dangChon({ loai: 'o' }) ? 'border-amber-400 ring-2 ring-amber-300' : 'border-sky-200 hover:border-sky-400'}`}>
           <div className="flex items-center gap-2 bg-sky-600 px-4 py-2 text-white">
             <span className="rounded bg-white/25 px-1.5 text-[11px] font-bold">{o.so}</span>
             <span className="flex-1 text-[14px] font-semibold"><MathText>{o.ten}</MathText></span>
             <span className="text-[11px] opacity-80">{o.nhom.length} nhóm</span>
           </div>
+          {o.chua_gan > 0 && (
+            <button onClick={(e) => { e.stopPropagation(); p.moGan(o, null) }} title="Câu của dạng cũ gắn vào chuyên đề này mà chưa thuộc dạng bài nào — bấm để gán"
+              className="flex w-full items-center gap-1.5 bg-rose-50 px-4 py-1.5 text-left text-[12px] font-semibold text-rose-700 hover:bg-rose-100">
+              ⚠ {o.chua_gan} câu chưa gán dạng bài <span className="ml-auto font-normal">gán →</span>
+            </button>
+          )}
+          {o.dang_cu.length > 0 && <DangCuGan ds={o.dang_cu} />}
           {(o.mo_ta.trim() || o.cung_co_o.length > 0) && (
             <div className="space-y-1 px-4 py-2 text-[12px] text-slate-600">
               {o.mo_ta.trim() && <div className="line-clamp-2">{o.mo_ta}</div>}
@@ -351,7 +422,8 @@ function SoDoChuyenDe(p: {
                 <BoxNhom n={n} cd={cd} o={o} chon={dangChon({ loai: 'nhom', id: n.id })} chonDangBai={chon?.loai === 'dang_bai' ? chon.id : null}
                   dangKeo={p.dangKeo} sang={sang} soCuaNhom={soCuaNhom}
                   refHop={(el) => { if (el) hop.current.set(n.id, el); else hop.current.delete(n.id) }}
-                  batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam} />
+                  batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam}
+                  ganVao={p.ganVao} moGan={() => p.moGan(o, n)} />
               </div>
             ))}
           </div>
@@ -371,12 +443,15 @@ function BoxNhom(p: {
   vung: (key: string, nhan: (k: Keo) => boolean, tha: (k: Keo) => Promise<void> | void) => VungProps
   onChon: (c: Chon) => void
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
+  ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
+  moGan: () => void
 }) {
   const { n, cd, o, sang, vung, lam } = p
   const cungO = (k: Keo) => k.loai === 'nhom' && k.chuDeId === cd.id && k.chuyenDeId === o.chuyen_de_id && k.id !== n.id
   return (
     <div ref={p.refHop} data-hop draggable onDragStart={(e) => p.batDauKeo(e, { loai: 'nhom', id: n.id, chuDeId: cd.id, chuyenDeId: o.chuyen_de_id })} onDragEnd={p.ketThucKeo}
-      {...vung(`n:${n.id}`, (k) => cungO(k) || (k.loai === 'dang_bai' && k.nhomId !== n.id), (k) => {
+      {...vung(`n:${n.id}`, (k) => cungO(k) || (k.loai === 'dang_bai' && k.nhomId !== n.id) || k.loai === 'dang_cu', (k) => {
+        if (k.loai === 'dang_cu') return p.ganVao({ nhom: n.id }, `nhóm «${n.ten}»`)(k)
         if (k.loai === 'nhom') return lam(() => sapXep('nhom', chenTruoc(o.nhom.map((x) => x.id).sort((a, b) => (o.nhom.find((y) => y.id === a)!.thu_tu - o.nhom.find((y) => y.id === b)!.thu_tu)), k.id, n.id)), 'Đã đổi thứ tự (đặt bên trái)')
         if (k.loai === 'dang_bai') return lam(() => chuyenDangBai(k.id, n.id, null), 'Đã chuyển dạng bài')
       })}
@@ -391,9 +466,16 @@ function BoxNhom(p: {
         {n.tien_de.length > 0 && (
           <div className="text-[10.5px] text-slate-400">Học sau: {n.tien_de.map((t) => `#${p.soCuaNhom.get(t) ?? '?'}`).join(', ')}</div>
         )}
+        {n.chua_gan > 0 && (
+          <button onClick={(e) => { e.stopPropagation(); p.moGan() }} title="Câu của dạng cũ gắn vào nhóm này mà chưa thuộc dạng bài nào — bấm để gán"
+            className="flex items-center gap-1 rounded-md bg-rose-50 px-2 py-1 text-left text-[11.5px] font-semibold text-rose-700 hover:bg-rose-100">
+            ⚠ {n.chua_gan} câu chưa gán dạng bài <span className="ml-auto font-normal">gán →</span>
+          </button>
+        )}
+        {n.dang_cu.length > 0 && <DangCuGan ds={n.dang_cu} gon />}
         {n.dang_bai.map((d) => (
           <CardDangBai key={d.id} n={n} d={d} chon={p.chonDangBai === d.id} sang={sang}
-            batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam} />
+            batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam} ganVao={p.ganVao} />
         ))}
         <ThemNhanh nhan="+ dạng bài" goiY="Tên dạng bài…" onThem={(ten) => lam(() => themDangBai(n.id, ten), 'Đã thêm dạng bài')} />
       </div>
@@ -414,11 +496,13 @@ function CardDangBai(p: {
   vung: (key: string, nhan: (k: Keo) => boolean, tha: (k: Keo) => Promise<void> | void) => VungProps
   onChon: (c: Chon) => void
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
+  ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
 }) {
   const { n, d, sang, vung, lam } = p
   return (
     <div draggable onDragStart={(e) => p.batDauKeo(e, { loai: 'dang_bai', id: d.id, nhomId: n.id })} onDragEnd={p.ketThucKeo}
-      {...vung(`d:${d.id}`, (k) => k.loai === 'dang_bai' && k.id !== d.id, (k) => {
+      {...vung(`d:${d.id}`, (k) => (k.loai === 'dang_bai' && k.id !== d.id) || k.loai === 'dang_cu', (k) => {
+        if (k.loai === 'dang_cu') return p.ganVao({ dangBai: d.id }, `dạng bài «${d.ten}»`)(k)
         if (k.loai !== 'dang_bai') return
         const ids = chenTruoc(n.dang_bai.map((x) => x.id), k.id, d.id)
         return lam(() => (k.nhomId === n.id ? sapXep('dang_bai', ids) : chuyenDangBai(k.id, n.id, ids)), k.nhomId === n.id ? 'Đã đổi thứ tự' : 'Đã chuyển dạng bài')
@@ -427,7 +511,11 @@ function CardDangBai(p: {
       className={`flex cursor-grab items-start gap-1.5 rounded-lg border px-2 py-1.5 text-[12px] active:cursor-grabbing ${sang(`d:${d.id}`)} ${
         p.chon ? 'border-amber-400 bg-amber-50' : 'border-violet-200 bg-violet-50 hover:border-violet-400'}`}>
       <span className="mt-px shrink-0 text-[10.5px] font-bold text-violet-500">{n.so}.{d.so}</span>
-      <span className="flex-1 leading-snug text-violet-950"><MathText>{d.ten}</MathText></span>
+      <span className="flex-1 leading-snug text-violet-950">
+        <MathText>{d.ten}</MathText>
+        {d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
+      </span>
+      {d.so_cau > 0 && <span title="Số câu đang thuộc dạng bài này" className="shrink-0 rounded bg-white px-1 text-[10.5px] text-violet-600">{d.so_cau} câu</span>}
       <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_vi_du} nhanNoiDung="ví dụ" />
     </div>
   )
@@ -503,8 +591,10 @@ function ChiTiet(p: {
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
   moLyThuyet: (loai: 'nhom' | 'dang_bai', id: string, ten: string) => void
   onDaXoa: () => void
+  moGan: (o: BdmO, n: BdmNhom | null) => void
 }) {
   const { chon, cay, cd, o, lam } = p
+  const goCu = (dich: BdmDich) => (ma: string, ten: string) => void lam(() => goDoiUngTheoDich(ma, dich), `Đã gỡ gắn «${ten}»`)
   const khung = (tieuDe: string, mau: string, noiDung: ReactNode) => (
     <div className="flex w-[380px] shrink-0 flex-col border-l border-slate-200 bg-white">
       <div className={`flex items-center gap-2 px-4 py-2.5 text-white ${mau}`}>
@@ -533,6 +623,8 @@ function ChiTiet(p: {
       {o.so_chu_de > 1 && <div className="rounded-md bg-sky-50 px-2.5 py-1.5 text-[12px] text-sky-800">Chuyên đề này có mặt ở <b>{o.so_chu_de} chủ đề</b> — đổi tên/mô tả áp cho tất cả.</div>}
       <TruongMoTa key={`mt-${o.chuyen_de_id}`} gt={o.mo_ta} goiY="Mô tả chuyên đề (tuỳ chọn)…" onLuu={(m) => lam(() => suaChuyenDe(o.chuyen_de_id, { mo_ta: m }))} />
       <div className="text-[12px] text-slate-500">Trong chủ đề <b><MathText>{cd.ten}</MathText></b>: thứ {o.so} · {o.nhom.length} nhóm bài · mã nháp <code>{o.chuyen_de_id}</code></div>
+      <DangCuChiTiet ds={o.dang_cu} chuaGan={o.chua_gan} truongHop="③ câu phải gán vào 1 dạng bài thuộc chuyên đề này"
+        onGo={goCu({ chuDe: cd.id, chuyenDe: o.chuyen_de_id })} onGan={() => p.moGan(o, null)} />
       <ChonDich nhan="⇄ Chuyển sang chủ đề khác" moTa="Chuyển cả chuyên đề cùng các nhóm bài. Chủ đề đích đã có chuyên đề này thì dồn vào."
         lua={cay.chu_de.filter((c) => c.id !== cd.id).map((c) => ({ id: c.id, nhan: c.ten }))}
         onChon={(id) => void lam(() => chuyenO(cd.id, o.chuyen_de_id, id), 'Đã chuyển chuyên đề').then(p.onDaXoa)} />
@@ -560,6 +652,8 @@ function ChiTiet(p: {
         <span>📖 Lý thuyết</span><span className="text-[11.5px] font-normal">{n.co_ly_thuyet ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
       </button>
 
+      <DangCuChiTiet ds={n.dang_cu} chuaGan={n.chua_gan} truongHop="② câu phải gán vào 1 dạng bài của nhóm này"
+        onGo={goCu({ nhom: n.id })} onGan={() => p.moGan(o, n)} />
       <div className="rounded-md border border-slate-200 p-2.5">
         <div className="text-[12.5px] font-medium text-slate-700">↧ Học sau (tiền đề)</div>
         {n.tien_de.length === 0 && <div className="mt-1 text-[11.5px] text-slate-400">Không có — nhóm này nối thẳng từ chuyên đề (đầu nhánh).</div>}
@@ -597,6 +691,9 @@ function ChiTiet(p: {
       className="flex items-center justify-between rounded-md border border-violet-200 bg-violet-50 px-3 py-2 text-[13px] font-semibold text-violet-700 hover:bg-violet-100">
       <span>📝 Ví dụ</span><span className="text-[11.5px] font-normal">{d.co_vi_du ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
     </button>
+    <div className="text-[12px] text-slate-500">Đang có <b>{d.so_cau}</b> câu (kể cả bản sao).</div>
+    <DangCuChiTiet ds={d.dang_cu} chuaGan={0} truongHop="① mọi câu tự về dạng bài này (nếu dạng cũ chỉ gắn đúng chỗ này)"
+      onGo={goCu({ dangBai: d.id })} />
     <ChonDich nhan="⇄ Chuyển sang nhóm khác" moTa="Hoặc kéo card thả vào box nhóm khác (cùng chuyên đề)."
       lua={moiO.flatMap((x) => x.o.nhom.filter((y) => y.id !== n.id).map((y) => ({ id: y.id, nhan: `${x.cd.ten} › ${x.o.ten} › #${y.so} ${y.ten}` })))}
       onChon={(id) => void lam(() => chuyenDangBai(d.id, id, null), 'Đã chuyển dạng bài').then(p.onDaXoa)} />
@@ -675,6 +772,208 @@ function NutXoa({ nhan, moTa, onXoa }: { nhan: string; moTa: string; onXoa: () =
     <div className="mt-2 border-t border-slate-100 pt-3">
       <button onClick={onXoa} className="text-[12.5px] font-semibold text-rose-600 hover:text-rose-700">🗑 {nhan}</button>
       <div className="text-[11px] text-slate-400">{moTa}</div>
+    </div>
+  )
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// Khớp bản đồ cũ: ngăn dạng cũ · nhãn dạng cũ trên box · bảng gán câu
+// ════════════════════════════════════════════════════════════════════════════
+
+// Nhãn nhỏ trên box: các dạng cũ đang gắn vào đây
+function DangCuGan({ ds, gon }: { ds: BdmDangCuRef[]; gon?: boolean }) {
+  return (
+    <div className={`flex flex-wrap gap-1 ${gon ? '' : 'border-b border-slate-100 px-4 py-1.5'}`} title="Dạng cũ (bản đồ đang chạy) đã gắn vào đây">
+      {ds.map((x) => <span key={x.ma} className="max-w-full truncate rounded bg-amber-50 px-1.5 text-[10.5px] text-amber-800">📦 {x.ten}</span>)}
+    </div>
+  )
+}
+
+function DangCuChiTiet({ ds, chuaGan, truongHop, onGo, onGan }: {
+  ds: BdmDangCuRef[]; chuaGan: number; truongHop: string; onGo: (ma: string, ten: string) => void; onGan?: () => void
+}) {
+  return (
+    <div className="rounded-md border border-amber-200 bg-amber-50/40 p-2.5">
+      <div className="text-[12.5px] font-medium text-slate-700">📦 Dạng cũ gắn vào đây</div>
+      <div className="text-[11px] text-slate-400">Trường hợp {truongHop}. Kéo dạng cũ từ ngăn «Bản đồ cũ» thả vào box để gắn thêm.</div>
+      {ds.length === 0 && <div className="mt-1 text-[11.5px] text-slate-400">Chưa có.</div>}
+      {ds.map((x) => (
+        <div key={x.ma} className="mt-1 flex items-center gap-2 text-[12.5px]">
+          <span className="flex-1"><MathText>{x.ten}</MathText> <span className="text-[10.5px] text-slate-400">{x.ma}</span></span>
+          <button onClick={() => onGo(x.ma, x.ten)} className="text-[11.5px] text-rose-500 hover:text-rose-700">gỡ</button>
+        </div>
+      ))}
+      {onGan && chuaGan > 0 && (
+        <button onClick={onGan} className="mt-2 w-full rounded-md bg-rose-600 py-1.5 text-[12.5px] font-semibold text-white hover:bg-rose-700">⚠ Gán {chuaGan} câu chưa có dạng bài →</button>
+      )}
+    </div>
+  )
+}
+
+// Ngăn trái: dạng cũ của khối — kéo thả vào dạng bài (①) / nhóm (②) / chuyên đề (③)
+function NganCu({ ds, batDauKeo, ketThucKeo, onGo, onDong }: {
+  ds: BdmDangCu[] | null
+  batDauKeo: (e: DragEvent, k: Keo) => void; ketThucKeo: () => void
+  onGo: (id: number, ten: string) => void; onDong: () => void
+}) {
+  const [chiChuaGan, setChiChuaGan] = useState(true)
+  const [q, setQ] = useState('')
+  const loc = (ds ?? []).filter((x) => (!chiChuaGan || x.dich.length === 0) && (!q.trim() || boDau(x.ten).includes(boDau(q.trim()))))
+  // nhóm theo chủ đề › chuyên đề cũ (chỉ để hiển thị)
+  const nhom: { khoa: string; ds: BdmDangCu[] }[] = []
+  for (const x of loc) {
+    const k = `${x.chu_de} › ${x.chuyen_de}`
+    const cuoi = nhom[nhom.length - 1]
+    if (cuoi && cuoi.khoa === k) cuoi.ds.push(x); else nhom.push({ khoa: k, ds: [x] })
+  }
+  return (
+    <div className="flex w-[300px] shrink-0 flex-col border-r border-amber-200 bg-amber-50/40">
+      <div className="flex items-center gap-2 border-b border-amber-200 px-3 py-2">
+        <span className="flex-1 text-[13px] font-semibold text-amber-900">📦 Bản đồ cũ</span>
+        <button onClick={onDong} className="text-amber-600 hover:text-amber-900">✕</button>
+      </div>
+      <div className="space-y-1.5 border-b border-amber-200 px-3 py-2">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm dạng cũ…" className={`${inp} py-1 text-[12.5px]`} />
+        <label className="flex items-center gap-1.5 text-[12px] text-slate-600">
+          <input type="checkbox" checked={chiChuaGan} onChange={(e) => setChiChuaGan(e.target.checked)} /> Chỉ hiện dạng cũ chưa gắn
+        </label>
+        <div className="text-[11px] text-slate-400">Kéo thả vào: card dạng bài ① · box nhóm ② · box chuyên đề ③</div>
+      </div>
+      <div className="min-h-0 flex-1 overflow-y-auto p-2">
+        {!ds && <div className="p-2 text-[12px] text-slate-400">Đang tải…</div>}
+        {ds && !loc.length && <div className="p-2 text-[12px] text-emerald-600">{chiChuaGan ? '✓ Mọi dạng cũ của khối đã gắn.' : 'Không có.'}</div>}
+        {nhom.map((g) => (
+          <div key={g.khoa} className="mb-2">
+            <div className="px-1 pb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400"><MathText>{g.khoa}</MathText></div>
+            {g.ds.map((x) => (
+              <div key={x.ma} draggable onDragStart={(e) => batDauKeo(e, { loai: 'dang_cu', ma: x.ma, ten: x.ten })} onDragEnd={ketThucKeo}
+                className={`mb-1 cursor-grab rounded-md border bg-white px-2 py-1.5 active:cursor-grabbing ${x.dich.length ? 'border-slate-200' : 'border-rose-300'}`}>
+                <div className="text-[12px] font-medium leading-snug text-slate-800"><MathText>{x.ten}</MathText></div>
+                <div className="mt-0.5 flex flex-wrap gap-x-2 text-[10.5px] text-slate-400">
+                  <span>{x.ma}</span><span>{x.so_cau} câu</span>{x.so_cum > 0 && <span>{x.so_cum} cụm</span>}
+                  {x.dich.length > 0 && x.chua_gan > 0 && <span className="text-rose-600">{x.chua_gan} chưa gán</span>}
+                </div>
+                {x.dich.map((d) => (
+                  <div key={d.id} className="mt-0.5 flex items-center gap-1 text-[10.5px] text-emerald-700">
+                    <span className="flex-1 truncate">→ {d.nhan}</span>
+                    <button onClick={() => onGo(d.id, x.ten)} className="text-rose-400 hover:text-rose-600">gỡ</button>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// Bảng gán câu chưa có dạng bài (② ③): gán cả CỤM CŨ hoặc tích chọn từng CÂU GỐC — bản sao đi theo gốc.
+// Sau khi gán: vá danh sách TẠI CHỖ (bỏ câu/cụm vừa gán), không tải lại cả bảng (CLAUDE §2 React).
+// Tổng "còn N câu" sau khi gán lấy lại từ DB (không tự trừ ở client — §2.0).
+function BangGanCau({ g, onDong, onDaGan }: { g: GanMo; onDong: () => void; onDaGan: (thongBao: string) => void }) {
+  const [du, setDu] = useState<BdmCauChuaGan | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [chon, setChon] = useState<Set<string>>(new Set())
+  const [dich, setDich] = useState('')
+  const [dichCum, setDichCum] = useState<Record<string, string>>({})
+  const [ban, setBan] = useState(false)
+  const TRANG = 200
+  useEffect(() => {
+    let song = true
+    getCauChuaGan(g.dich, TRANG, 0).then((d) => { if (song) setDu(d) }).catch((e) => { if (song) setLoi(String(e.message ?? e)) })
+    return () => { song = false }
+  }, [g])
+  const taiThem = async () => {
+    if (!du) return
+    try { const d = await getCauChuaGan(g.dich, TRANG, du.cau.length); setDu({ ...du, cau: [...du.cau, ...d.cau] }) }
+    catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
+  }
+  // Ghi → vá danh sách tại chỗ → lấy lại 2 con số tổng từ DB (nền)
+  async function gan(viec: () => Promise<void>, bo: (d: BdmCauChuaGan) => BdmCauChuaGan, tb: string) {
+    setBan(true); setLoi(null)
+    try {
+      await viec()
+      setDu((d) => (d ? bo(d) : d)); setChon(new Set()); onDaGan(tb)
+      const moi = await getCauChuaGan(g.dich, 1, 0)
+      setDu((d) => (d ? { ...d, tong_cau: moi.tong_cau, tong_goc: moi.tong_goc } : d))
+    }
+    catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
+    finally { setBan(false) }
+  }
+  const tenDb = (id: string) => g.lua.find((x) => x.id === id)?.nhan ?? id
+  const ganChon = () => {
+    const ids = [...chon]
+    return gan(() => ganCau(ids, dich), (d) => ({ ...d, cau: d.cau.filter((c) => !chon.has(c.ma_cau)) }),
+      `Đã gán ${ids.length} câu gốc vào ${tenDb(dich)}`)
+  }
+  const ganCaCum = (ma: string) => gan(() => ganCum(ma, dichCum[ma]),
+    (d) => ({ ...d, cum: d.cum.filter((c) => c.ma_cum !== ma), cau: d.cau.filter((c) => c.ma_cum !== ma) }),
+    `Đã gán cả cụm vào ${tenDb(dichCum[ma])}`)
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
+      <div className="flex max-h-full w-full max-w-5xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 bg-rose-600 px-4 py-2.5 text-white">
+          <span className="flex-1 text-[14px] font-semibold">Gán câu chưa có dạng bài — <MathText>{g.nhan}</MathText></span>
+          {du && <span className="text-[12px] opacity-90">còn {du.tong_cau} câu ({du.tong_goc} câu gốc)</span>}
+          <button onClick={onDong} className="ml-2 text-white/80 hover:text-white">✕</button>
+        </div>
+        {loi && <div className="border-b border-rose-200 bg-rose-50 px-4 py-2 text-[13px] text-rose-700">⚠ {loi}</div>}
+        {!g.lua.length && <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-[13px] text-amber-800">Chưa có dạng bài nào ở đích này — tạo dạng bài trước rồi mới gán.</div>}
+        {!du ? <div className="p-8 text-center text-[13px] text-slate-400">Đang tải câu…</div> : (
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            {du.cum.length > 0 && (
+              <div className="border-b border-slate-200 bg-slate-50 px-4 py-3">
+                <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Gán cả cụm cũ (cả cụm vào 1 dạng bài)</div>
+                {du.cum.map((c) => (
+                  <div key={c.ma_cum} className="mb-1 flex items-center gap-2 text-[12.5px]">
+                    <span className="w-56 truncate font-medium text-slate-700">{c.ten || `Cụm ${c.thu_tu}`} <span className="font-normal text-slate-400">{c.ma_cum} · {c.so_cau} câu</span></span>
+                    <select value={dichCum[c.ma_cum] ?? ''} onChange={(e) => setDichCum({ ...dichCum, [c.ma_cum]: e.target.value })} className={`${inp} flex-1 py-1 text-[12.5px]`}>
+                      <option value="">— chọn dạng bài —</option>
+                      {g.lua.map((x) => <option key={x.id} value={x.id}>{x.nhan}</option>)}
+                    </select>
+                    <button disabled={!dichCum[c.ma_cum] || ban} onClick={() => void ganCaCum(c.ma_cum)}
+                      className="shrink-0 rounded-md bg-slate-700 px-3 py-1 text-[12.5px] font-semibold text-white disabled:opacity-40">Gán cụm</button>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="divide-y divide-slate-100">
+              {du.cau.map((c) => (
+                <label key={c.ma_cau} className={`flex cursor-pointer items-start gap-3 px-4 py-2 hover:bg-slate-50 ${chon.has(c.ma_cau) ? 'bg-indigo-50' : ''}`}>
+                  <input type="checkbox" className="mt-1" checked={chon.has(c.ma_cau)}
+                    onChange={(e) => { const s = new Set(chon); if (e.target.checked) s.add(c.ma_cau); else s.delete(c.ma_cau); setChon(s) }} />
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-0.5 flex flex-wrap gap-x-2 text-[10.5px] text-slate-400">
+                      <span>{c.ma_cau}</span><span>{c.loai_cau}</span><span>dạng cũ {c.ma_dang_cu}</span>
+                      {c.ma_cum && <span>cụm {c.ma_cum}</span>}
+                      {c.so_ban_sao > 0 && <span className="text-indigo-500">+{c.so_ban_sao} bản sao đi theo</span>}
+                    </div>
+                    <div className="line-clamp-4 text-[13px] leading-relaxed text-slate-800"><MathText>{c.noi_dung}</MathText></div>
+                    {c.anh_de && <img src={c.anh_de} alt="" className="mt-1 max-h-28 rounded border border-slate-200" />}
+                  </div>
+                </label>
+              ))}
+            </div>
+            {du.cau.length < du.tong_goc && (
+              <div className="p-3 text-center"><button onClick={() => void taiThem()} className="text-[12.5px] font-medium text-indigo-600 hover:underline">Tải thêm câu ({du.cau.length}/{du.tong_goc} câu gốc)</button></div>
+            )}
+            {du.tong_cau === 0 && <div className="p-8 text-center text-[13px] text-emerald-600">✓ Mọi câu ở đây đã có dạng bài.</div>}
+          </div>
+        )}
+        <div className="flex items-center gap-2 border-t border-slate-200 bg-white px-4 py-2.5">
+          <span className="text-[12.5px] text-slate-600">Đã chọn <b>{chon.size}</b> câu gốc</span>
+          <button onClick={() => setChon(new Set(du?.cau.map((c) => c.ma_cau) ?? []))} className="text-[12px] text-indigo-600 hover:underline">chọn hết đang hiện</button>
+          <button onClick={() => setChon(new Set())} className="text-[12px] text-slate-400 hover:underline">bỏ chọn</button>
+          <select value={dich} onChange={(e) => setDich(e.target.value)} className={`${inp} ml-auto w-80 py-1 text-[12.5px]`}>
+            <option value="">— gán vào dạng bài —</option>
+            {g.lua.map((x) => <option key={x.id} value={x.id}>{x.nhan}</option>)}
+          </select>
+          <button disabled={!chon.size || !dich || ban} onClick={() => void ganChon()}
+            className="rounded-md bg-rose-600 px-4 py-1.5 text-[13px] font-semibold text-white disabled:opacity-40">Gán</button>
+        </div>
+      </div>
     </div>
   )
 }

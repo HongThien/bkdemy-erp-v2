@@ -35952,3 +35952,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Sơ đồ: 4 (LT 5.10, 5.11, 6.15, 3.15) — Opus xem ảnh làm biên bản kiem-hinh-b (model khác Sonnet). Phát hiện veSoDo ghi _end/_y vào mô tả người gọi ⇒ file JSON bẩn: sửa hàm vẽ dùng bản sao; 22 sơ đồ cũ vẽ lại y hệt.
 - dau-vao-soan.mjs: lọc sớm đề trùng câu kho nguồn khác (LT 7.2, 7.4, 7.7 trùng câu sẵn có ⇒ insertCauBatch cũng bỏ). Lỗi vá mất dấu \ (\s+ ⇒ s+) bắt được nhờ kết quả lạ, sửa bằng Edit.
 - Ghi: 6C 22 (3 trùng), 6B 47, 6A 26 ⇒ kho có 217 câu từ sách (T14T000000…), kiem_may khop toàn bộ.
+
+## 08/10 (tiếp) — Bản đồ mới: khớp bản đồ cũ → mới (3 trường hợp) + gán câu tới tầng 4
+- **Thùy:** dạng cũ (tầng 3 cũ) sang bản mới có 3 ca: thành tầng 4 (không chỉnh) · vẫn tầng 3 · thành tầng 2 ⇒ 2 ca sau câu phải gán vào 1 tầng 4 bên dưới. Cần UI + thông báo trên mỗi card số câu chưa gán. LUẬT: mọi câu phải gán tầng 4. Chốt: 1 dạng cũ gắn nhiều chỗ được nhưng đa số AI gán; gán theo cụm cũ OK; UI cho cả người và AI.
+- **Mig 202610081319** (--only): dai_bdm_doi_ung / doi_ung_cum / gan_cau + _bdm_cau_giai (nguồn duy nhất) + fn_bdm_cay thêm tong/chua_gan/so_cau/dang_cu + fn_bdm_dang_cu + fn_bdm_cau_chua_gan + fn_bdm_gan_cau/gan_cum + sửa chuyen_o/nang/ha giữ đối ứng. Thử khô ROLLBACK trên K6 thật trước khi áp.
+- **Màn:** ngăn 📦 Bản đồ cũ (kéo thả ①②③), badge ⚠ chưa gán, bảng gán câu (cụm / câu gốc), dòng Khớp bản đồ cũ. Heredoc >120 dòng lại bị cắt (đúng memory) ⇒ script patch qua Write. Kiểm app local: số khớp mọi bước (spec §9.2). Vite reload liên tục do phiên khác sửa file.
+- **Dữ liệu thử thêm (chờ Thùy cho xoá):** dai_bdm_doi_ung 3 dòng (T103000000 & T103010102 → dạng bài [TEST] Phép cộng; T103010101 → nhóm [TEST] Tìm x với tổng hiệu) + dai_bdm_gan_cau 2 dòng (2 câu gốc T103010101… → [TEST] Phép cộng). Chỉ là bảng nháp; câu thật không đổi.

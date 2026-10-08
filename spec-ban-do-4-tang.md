@@ -302,6 +302,25 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 - Kiểm bố cục v2 (08/10 chiều, khối 3 `[TEST]`): rẽ nhánh N1→N2→N4 + N3→N4 (ca nhập) đúng hàng/cột, 5 mũi tên ·
   nối bằng kéo vào dải + bằng ô chọn · vòng tròn bị chặn kèm câu báo · ◀ ▶ / ← → · chuyển nhóm còn mũi tên bị chặn.
 
+### 9.2 Khớp bản đồ cũ → mới (CEO 08/10) — mig `202610081319`
+
+- **Luật chuẩn: MỌI câu phải thuộc 1 dạng bài (tầng 4).** Dạng cũ (`dai_ban_do`) CEO gắn vào bản mới theo 3 trường hợp:
+  **①** gắn vào **dạng bài** ⇒ câu tự về (không phải chỉnh) · **②** gắn vào **nhóm bài** · **③** gắn vào **chuyên đề** (ô) ⇒
+  câu phải được gán vào 1 dạng bài bên dưới. 1 dạng cũ gắn được nhiều chỗ (CEO: "có thể"); chỉ khi gắn ĐÚNG 1 chỗ và là
+  dạng bài thì câu mới tự rơi.
+- Bảng: `dai_bdm_doi_ung` (đối ứng, đúng 1 loại đích) · `dai_bdm_doi_ung_cum` (gán **cả cụm cũ**) · `dai_bdm_gan_cau`
+  (gán **câu gốc**, `nguon` người/AI — bản sao đi theo gốc). **Nguồn duy nhất** "câu thuộc dạng bài nào" =
+  `_bdm_cau_giai`: gán câu (chính nó → gốc) > gán cụm cũ > đối ứng ①; không ra ⇒ **chưa gán dạng bài**.
+- Màn: ngăn **📦 Bản đồ cũ** (dạng cũ của khối, lọc "chưa gắn", tìm) — kéo thả vào card dạng bài ① / box nhóm ② / box
+  chuyên đề ③ · badge **⚠ N câu chưa gán dạng bài** trên box nhóm/chuyên đề ⇒ **bảng gán câu** (gán cả cụm cũ, hoặc tích
+  chọn câu gốc → chọn dạng bài → Gán; vá danh sách tại chỗ) · card dạng bài hiện **N câu** · dòng **Khớp bản đồ cũ** đầu màn:
+  dạng cũ chưa gắn + câu chưa gán của khối — **khối xong khi cả hai về 0**.
+- Giữ công khi sắp lại: nâng dạng bài ⇒ đối ứng ①→② tự đổi; hạ nhóm ⇒ ②→① · dồn chuyên đề mang theo đối ứng · xoá dạng
+  bài đang có câu/cụm gán hoặc dạng cũ gắn vào ⇒ DB chặn (câu báo rõ).
+- **Đa số câu ②③ do AI (Claude) gán** (CEO 08/10) ⇒ B3 = bảng đề xuất AI cắm vào chính bảng gán câu này, học thuật nhận.
+- Kiểm (khối 3, đích `[TEST]` + dạng cũ thật): ① 52 câu tự về · ② badge 43 câu (13 gốc) · gán 2 gốc ⇒ −12 câu (gốc+10 bản sao),
+  card 52→64, đầu màn 1159→1147 — khớp nhau. Gán cụm thử SQL trong ROLLBACK trên K6 (cụm 32 câu). `fn_bdm_cay` K6 ca nặng <100ms.
+
 ### 9.1 Màn kéo thả trên bản đồ THẬT (sau B5 — chỉnh lẻ)
 
 - **Lọc theo khối**, mỗi lần một khối.

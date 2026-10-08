@@ -6,15 +6,33 @@ import type { LyThuyet } from './api'
 import type { LyThuyetApi } from '../../screens/kho/branches'
 
 // so = số thứ tự hệ tự đánh (tính ở DB): chuyên đề trái→phải · nhóm theo tiền đề (chiều sâu, trái trước) · dạng bài trên→dưới
-export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_vi_du: boolean }
-export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_bai: BdmDangBai[] }
-export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; nhom: BdmNhom[] }
+// dang_cu = dạng cũ (bản đồ đang chạy) CEO gắn vào đích này · chua_gan = số câu (kể cả bản sao) chưa ra được dạng bài
+export type BdmDangCuRef = { ma: string; ten: string }
+export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
+export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[] }
+export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; dang_cu: BdmDangCuRef[]; chua_gan: number; nhom: BdmNhom[] }
 export type BdmChuDe = { id: string; ten: string; thu_tu: number; o: BdmO[] }
 export type BdmChuyenDe = { id: string; ten: string; so_chu_de: number; khoi: string[] }
-export type BdmCay = { chu_de: BdmChuDe[]; chuyen_de: BdmChuyenDe[]; so_chu_de_theo_khoi: Record<string, number> }
+// tong: tổng hợp khối (dạng cũ CỦA khối) — khối xong khi dang_cu_chua_gan = 0 và cau_chua_gan = 0
+export type BdmTong = { dang_cu: number; dang_cu_chua_gan: number; cau_dang_cu_chua_gan: number; cau: number; cau_chua_gan: number }
+export type BdmCay = { chu_de: BdmChuDe[]; chuyen_de: BdmChuyenDe[]; so_chu_de_theo_khoi: Record<string, number>; tong: BdmTong }
+export type BdmDangCu = {
+  ma: string; ten: string; chu_de: string; chuyen_de: string; so_cau: number; so_cum: number; chua_gan: number
+  dich: { id: number; loai: 'dang_bai' | 'nhom' | 'o'; nhan: string }[]
+}
+export type BdmDich = { dangBai: string } | { nhom: string } | { chuDe: string; chuyenDe: string }
+export type BdmCauChuaGan = {
+  tong_cau: number; tong_goc: number
+  cum: { ma_cum: string; ten: string | null; thu_tu: number; ma_dang_cu: string; so_cau: number }[]
+  cau: { ma_cau: string; noi_dung: string; loai_cau: string; anh_de: string | null; ma_cum: string | null; ma_dang_cu: string; so_ban_sao: number }[]
+}
 
 // Lỗi Postgres → câu người đọc được (FK chặn xoá khi còn con · ô trùng).
 function loi(e: { code?: string; message?: string } | null): never {
+  const m = e?.message ?? ''
+  if (e?.code === '23503' && m.includes('dai_bdm_doi_ung_cum')) throw new Error('Dạng bài này đang có cụm cũ được gán — gỡ gán trước.')
+  if (e?.code === '23503' && m.includes('dai_bdm_gan_cau')) throw new Error('Dạng bài này đang có câu được gán — chuyển hoặc gỡ gán trước.')
+  if (e?.code === '23503' && m.includes('dai_bdm_doi_ung')) throw new Error('Còn dạng cũ đang gắn vào đây — gỡ ở ngăn «Bản đồ cũ» hoặc khung chi tiết trước.')
   if (e?.code === '23503') throw new Error('Còn mục con bên trong — chuyển hoặc xoá các mục con trước.')
   if (e?.code === '23505') throw new Error('Đã có sẵn — không thêm trùng.')
   throw new Error(e?.message ?? 'Lỗi không rõ')
@@ -99,6 +117,41 @@ export async function themTienDe(nhomHocSau: string, nhomHocTruoc: string): Prom
 }
 export async function goTienDe(nhomHocSau: string, nhomHocTruoc: string): Promise<void> {
   const { error } = await supabase.from('dai_bdm_nhom_tien_de').delete().match({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
+  if (error) loi(error)
+}
+
+// ── Đối ứng dạng cũ → bản mới (① dạng bài · ② nhóm · ③ chuyên đề) + gán câu/cụm ──
+export async function getDangCu(khoi: string): Promise<BdmDangCu[]> {
+  const { data, error } = await supabase.rpc('fn_bdm_dang_cu', { p_khoi: khoi })
+  if (error) loi(error)
+  return (data ?? []) as BdmDangCu[]
+}
+const cotDich = (d: BdmDich) => ('dangBai' in d ? { dich_dang_bai: d.dangBai } : 'nhom' in d ? { dich_nhom: d.nhom } : { dich_chu_de: d.chuDe, dich_chuyen_de: d.chuyenDe })
+export async function ganDangCu(maDangCu: string, d: BdmDich): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_doi_ung').insert({ ma_dang_cu: maDangCu, ...cotDich(d) })
+  if (error) loi(error)
+}
+export async function goDoiUng(id: number): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_doi_ung').delete().eq('id', id)
+  if (error) loi(error)
+}
+export async function goDoiUngTheoDich(maDangCu: string, d: BdmDich): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_doi_ung').delete().match({ ma_dang_cu: maDangCu, ...cotDich(d) })
+  if (error) loi(error)
+}
+export async function getCauChuaGan(d: { nhom: string } | { chuDe: string; chuyenDe: string }, limit = 200, offset = 0): Promise<BdmCauChuaGan> {
+  const { data, error } = await supabase.rpc('fn_bdm_cau_chua_gan', 'nhom' in d
+    ? { p_nhom: d.nhom, p_chu_de: null, p_chuyen_de: null, p_limit: limit, p_offset: offset }
+    : { p_nhom: null, p_chu_de: d.chuDe, p_chuyen_de: d.chuyenDe, p_limit: limit, p_offset: offset })
+  if (error) loi(error)
+  return data as BdmCauChuaGan
+}
+export async function ganCau(maCauGocs: string[], dangBai: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bdm_gan_cau', { p_ma_caus: maCauGocs, p_dang_bai: dangBai, p_nguon: 'nguoi' })
+  if (error) loi(error)
+}
+export async function ganCum(maCum: string, dangBai: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bdm_gan_cum', { p_ma_cum: maCum, p_dang_bai: dangBai })
   if (error) loi(error)
 }
 
