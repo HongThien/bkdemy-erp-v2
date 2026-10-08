@@ -28,7 +28,7 @@ kho-rules/
 | **B1 Đọc** | máy | Word MathType ⇒ `scripts/kho/mathtype-thu/doc-docx.mjs <docx> --ra <thư mục>` (0 OMML thì `docx-doc.mjs` KHÔNG dùng được). Word OMML ⇒ `scripts/docx-doc.mjs`. PDF ⇒ `scripts/kho/de-thi/boc-pdf.mjs`. Đọc **toàn bộ**, không đọc mẫu | `goc.txt` + báo cáo công thức hỏng (phải = 0 hoặc liệt kê) |
 | **B2 Hồ sơ sách** | Claude | Cấu trúc (chuyên đề / ví dụ có lời giải / luyện tập / phiếu) · đếm bài · ảnh · **chuyên đề sách ↔ chủ đề bản đồ** · chỗ bản đồ thiếu dạng | §5–§6 của `k<khối>.md` |
 | **B3 Rút luật từ lời giải mẫu** | Claude | Lời giải mẫu của **chính sách** (phần "Bài làm") là chuẩn trình bày của khối. Rút: cấm/cho phép · khuôn Phần 2 theo chuyên đề · mấu chốt/bẫy theo chuyên đề | §0–§2 của `k<khối>.md` (nháp v0) |
-| **B4 Lô giải thử** | Claude | 10–15 câu, phủ nhiều khuôn, **ưu tiên dạng đang 0 câu**. Mỗi câu: gán dạng (mã + lý do) → Phần 1 → Phần 2 → thử ngược đáp số. Sơ đồ ⇒ vẽ bằng `scripts/kho/so-do-doan-thang.mjs` | `k<khối>-mau-thu.md` + gửi trong chat |
+| **B4 Lô giải thử** | Claude | 10–15 câu, phủ nhiều khuôn, **ưu tiên dạng đang 0 câu**. Mỗi câu: Phần 1 → Phần 2 → thử ngược đáp số (gán dạng là lượt riêng — §3). Sơ đồ ⇒ vẽ bằng `scripts/kho/so-do-doan-thang.mjs` | `k<khối>-mau-thu.md` + gửi trong chat |
 | **B5 CEO duyệt trong chat** | Thùy | Chỉ nói chỗ sai, theo số câu | — |
 | **B6 Ghi nhật ký → nâng luật** | Claude | Mỗi chỗ sửa ⇒ 1 dòng §7 (ngày · câu · CEO sửa gì · luật rút ra) ⇒ sửa §1–§3 ⇒ sửa lại câu trong lô. **Không sửa câu mà không ghi luật** | `k<khối>.md` bản mới |
 | **B7 Lặp** | — | Lô kế tiếp 15–30 câu theo luật mới. Một lô đi qua CEO **không sửa gì** ⇒ `k<khối>.md` lên **v1** ⇒ được giải hàng loạt + ghi kho | v1 ⇒ mở cổng ghi |
@@ -44,7 +44,11 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
   (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất. **Mọi câu** đủ 2 phần, kể cả câu
   trắc nghiệm mà sách chỉ đòi ghi đáp số (CEO 08/10).
 - **Mỗi câu lời giải / mỗi phép tính một dòng**, cách nhau dòng trống (CEO 07/10). Phần 2 bài tính mở bằng dòng chép lại đề.
-- **Gán dạng trước, giải sau**: mã dạng + lý do 1 câu; không khớp ⇒ dạng chờ `…000000`, không ép. Bài nhiều ý độc lập ⇒ tách câu,
+- **⭐ GIẢI và GÁN DẠNG là 2 việc ĐỘC LẬP (CEO 08/10):** *"giải trước rồi up lên DB ở trạng thái chưa gán dạng; sau này hoàn thiện
+  bản đồ thì có 1 lần chạy gán các bài đó vào bản đồ."* Lượt giải ghi câu vào **dạng chờ** `…000000` (`ghi-lo.mjs --chua-gan-dang`),
+  khuôn trình bày theo CHUYÊN ĐỀ của sách (không cần dạng). Lượt gán dạng chạy riêng theo §5 file khối, kiểm bằng model khác gán mù.
+  Hệ quả DB: câu dạng chờ chưa bấm duyệt được (`_kho_la_dang_cho`) ⇒ duyệt lời giải sau khi gán dạng.
+  *(Lô thử 1–4 của 4T có gán dạng — dạng đề xuất lưu ở `kho-rules/dai/lo/k4T-lo1-4.json`, KHÔNG ghi DB.)* Không khớp dạng ⇒ dạng chờ, không ép. Bài nhiều ý độc lập ⇒ tách câu,
   mỗi câu đủ 2 phần (CEO 07/10).
 - **Giải theo lời giải mẫu của khối**, không theo thói quen của Claude. Khối chưa có file luật ⇒ **không giải hàng loạt**, làm B1–B7 trước.
 - Định dạng: `\dfrac`, `\times`, chia `:`, số không chèn dấu cách hàng nghìn, `$…$` mỗi công thức, `\overline{abc}` không `\text`.

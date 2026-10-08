@@ -115,6 +115,9 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 
 ## 5. GÁN DẠNG — sách ↔ bản đồ 4T (`dai_ban_do`, khối `4T`, 77 dạng + dạng chờ `T14T000000`)
 
+> **CEO 08/10: mục này dùng cho LƯỢT GÁN DẠNG RIÊNG, chạy sau khi bản đồ 4T hoàn thiện — KHÔNG dùng lúc giải.** Lượt giải ghi câu
+> vào `T14T000000`. Bản đồ còn đổi ⇒ bảng dấu hiệu + bảng thiếu dưới đây phải soát lại theo bản đồ mới trước lượt gán.
+
 Bản đồ 4T được dựng từ chính quyển này: **chuyên đề 1–22 ↔ chủ đề `T14T01`–`T14T22` cùng số**, chuyên đề 24 ↔ `T14T23`.
 Luật gán:
 
@@ -198,3 +201,4 @@ Luật gán:
 | 08/10 | Lô 3 câu 19, 20 (trắc nghiệm phiếu cuối tuần) | Trả lời câu hỏi: *"Mọi câu đều giải chi tiết với cấu trúc 2 phần như trên."* | §1.5: mọi câu, kể cả Phần I trắc nghiệm, đủ 2 phần. |
 | 08/10 | Lô 4 cả lô (20 câu, 10 sơ đồ) | *"OK rồi đấy. Tiếp nào."* Không sửa câu nào. | **Lên v1.** Câu 18 (tính ngược có phân số ⇒ `230101` theo tiền lệ lô 1) được duyệt cùng lô ⇒ giữ. |
 | 08/10 | Kiểm độc lập trước khi ghi (Sonnet gán dạng mù 57 câu) | *(không phải CEO sửa — model khác bắt mâu thuẫn trong luật)* 4 câu tổng–hiệu ẩn Sonnet đưa về dạng chờ vì §5 bảng thiếu vẫn ghi "T14T08 thiếu tổng–hiệu ẩn", trái với các câu CEO đã duyệt ở `080101`. | Sửa §5: bỏ dòng thiếu đó. Bài học: mỗi lần CEO duyệt một câu vào dạng mà bảng thiếu đang liệt kê ⇒ PHẢI xoá dòng thiếu ngay, nếu không luật tự mâu thuẫn. |
+| 08/10 | Sau khi CEO xem kết quả kiểm | *"Bản đồ 4T t chưa hoàn thiện hết. Hiện tại là m giải trước rồi up lên DB ở trạng thái chưa gán dạng. Sau này hoàn thiện bản đồ thì sẽ có 1 lần chạy gán … 2 việc này độc lập."* | Giải ≠ gán dạng. Ghi kho bằng `--chua-gan-dang` (mọi câu vào `T14T000000`); §5 chỉ dùng cho lượt gán sau. Đã ghi 74 câu lô 1–4 (T14T000000001–074), LT 5.19 chờ hình. |

@@ -2,7 +2,12 @@
 // ghi-lo.mjs — GHI một lô câu đã giải (lo-tu-md.mjs) vào kho Đại QUA CỔNG GHI (kho-rules/README.md §4 việc #3).
 //
 //   node scripts/kho/sach/ghi-lo.mjs <lo.json> --sach "Toán arc 4 Q1" --kiem <k4T-kiem.mjs> --so-do <thư mục so-do>
-//        [--kiem-ngoai <bien-ban-model-khac.json>] [--ghi]
+//        [--kiem-ngoai <bien-ban-model-khac.json>] [--chua-gan-dang] [--ghi]
+//
+// --chua-gan-dang (CEO 08/10: "giải trước, up lên DB ở trạng thái chưa gán dạng … gán dạng là việc độc lập, chạy sau khi bản đồ
+//   hoàn thiện"): mọi câu vào DẠNG CHỜ của khối (…000000), kể cả câu lô thử đã có dạng đề xuất — dạng đề xuất chỉ nằm trong lô JSON
+//   ở repo, KHÔNG ghi DB (dang_ai_de_xuat = dạng chờ như insertCauBatch), để lượt gán dạng sau chạy độc lập. Không cần trạm kiem-dang.
+//   Hệ quả DB: câu dạng chờ chưa bấm duyệt được (_kho_la_dang_cho) — duyệt lời giải sau khi gán dạng.
 //
 // Không --ghi: CHẠY THỬ — xét cổng, chèn trong 1 transaction rồi ROLLBACK, sơ đồ không upload. --ghi: upload SVG + COMMIT.
 //
@@ -25,12 +30,13 @@ import pg from 'pg'
 import { createClient } from '@supabase/supabase-js'
 import { xetGoi, bamNoiDung } from '../cong-ghi.mjs'
 import { veSoDo } from '../so-do-doan-thang.mjs'
-import { insertCauBatch } from '../../_kho_insert.mjs'
+import { insertCauBatch, maDangCho } from '../../_kho_insert.mjs'
 
 const GOC_REPO = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..')
 const a = process.argv.slice(2)
 const lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
 const GHI = a.includes('--ghi')
+const CHUA_GAN = a.includes('--chua-gan-dang')
 const loTep = a[0], SACH = lay('--sach'), kiemTep = lay('--kiem'), soDoDir = lay('--so-do'), ngoaiTep = lay('--kiem-ngoai')
 if (!loTep || !SACH || !kiemTep || !soDoDir) { console.error('Dùng: node scripts/kho/sach/ghi-lo.mjs <lo.json> --sach "<tên>" --kiem <kiem.mjs> --so-do <dir> [--kiem-ngoai <json>] [--ghi]'); process.exit(2) }
 
@@ -84,7 +90,7 @@ for (const c of lo) {
   const { url, kiemA, loi } = await soDo(c)
   if (loi) { tuChoi.push({ c, ly_do: [`sơ đồ: ${loi}`] }); continue }
   const cau = {
-    dang_chinh: c.dang_chinh, loai_cau: c.loai_cau, noi_dung: c.noi_dung, lua_chon: null, menh_de: null,
+    dang_chinh: CHUA_GAN ? maDangCho('dai', c.khoi) : c.dang_chinh, loai_cau: c.loai_cau, noi_dung: c.noi_dung, lua_chon: null, menh_de: null,
     dap_an: c.dap_an, loi_giai: c.loi_giai, anh_de: null, anh_dap_an: url, ma_cum: null,
     nguon_giai: 'ai', hinh_do_may_ve: !!c.so_do,
   }
@@ -95,7 +101,7 @@ for (const c of lo) {
   bb('kiem-dap-so', 'code', kiemDapSo(c.ma_nguon, c.dap_an), LAN_KIEM_CODE)
   if (kiemA) bb('kiem-hinh-a', 'code', kiemA, LAN_KIEM_CODE)
   const n = ngoai?.cau?.[c.ma_nguon]
-  if (n && !/000000$/.test(c.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
+  if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
     ? { ket_qua: 'dat', ghi_chu: `model khác gán mù ra cùng dạng (${n.dang})` }
     : { ket_qua: 'khong_dat', ghi_chu: `model khác gán mù ra ${n.dang}: ${String(n.ly_do ?? '').slice(0, 160)}` }, ngoai.lan_chay, ngoai.model)
   if (n && c.so_do && n.hinh_dung != null) bb('kiem-hinh-b', 'model_khac', n.hinh_dung
@@ -130,7 +136,7 @@ try {
     }
   }
   const { rows: [dem] } = await db.query(`select count(*) filter (where ten_de_goc like $1) n_sach, count(*) n_4T from dai_cau_hoi where xoa_at is null and dang_chinh like 'T14T%'`, [`${SACH} · %`])
-  console.log(GHI ? '■ GHI THẬT' : '□ CHẠY THỬ (sẽ ROLLBACK)', `· qua cổng ${giu.length} · chèn mới ${Object.values(theoKiem).reduce((x, y) => x + y, 0)} · kiem_may ${JSON.stringify(theoKiem)}`)
+  console.log(GHI ? '■ GHI THẬT' : '□ CHẠY THỬ (sẽ ROLLBACK)', CHUA_GAN ? '· CHƯA GÁN DẠNG (mọi câu vào dạng chờ)' : '', `· qua cổng ${giu.length} · chèn mới ${Object.values(theoKiem).reduce((x, y) => x + y, 0)} · kiem_may ${JSON.stringify(theoKiem)}`)
   console.log(`  kho 4T sau lượt này: ${dem.n_4t} câu (từ sách này: ${dem.n_sach})`)
   if (daCo.length) console.log(`  Đã có từ lượt trước, bỏ qua (${daCo.length}): ${daCo.join(', ')}`)
   if (trungKho.length) console.log(`  Trùng nội dung câu sẵn có trong kho, không chèn (${trungKho.length}): ${trungKho.join(', ')}`)

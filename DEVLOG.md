@@ -35926,3 +35926,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Sonnet (subagent) gán dạng MÙ 57 câu theo luật §5 + xem 16 ảnh sơ đồ: dạng trùng 51/57 (89%) · sơ đồ 16/16 đúng (ghi chú LT 22.14 đoạn 5 hơi dài hơn tỉ lệ: 0,3 phần so với 0,26 — do vạch tối thiểu, chấp nhận).
 - 6 câu lệch dạng: 4 câu tổng–hiệu ẩn (LT 8.6, 8.14, 8.20, PTL 2.5) — LỖI LUẬT của em: §5 bảng thiếu còn ghi "T14T08 thiếu tổng–hiệu ẩn" trái với các câu CEO đã duyệt ⇒ sửa §5, ghi §7. 2 câu còn lại là chọn lựa thật: LT 18.12 (em 230101 tính ngược theo luật phương pháp, Sonnet 180102) · LT 18.14B (em 190201 chuẩn vì tử = hiệu, Sonnet 190202 nhưng tự ghi "có thể là chuẩn"). Giữ cờ nghi cho cả 6 — không chạy lại Sonnet cho đẹp số.
 - Chạy thử ghi-lo: 74 qua cổng (khop 68 · nghi 6), LT 5.19 không ghi (hình EMF). Biên bản Sonnet lưu `kho-rules/dai/lo/k4T-lo1-4.kiem-ngoai.json`. CHƯA ghi thật — chờ CEO gật.
+
+## 08/10 (tiếp) — 4T: GHI THẬT 74 câu lô 1–4 vào kho ở DẠNG CHỜ (CEO: giải ≠ gán dạng)
+- CEO: "bản đồ 4T chưa hoàn thiện — giải trước, up DB ở trạng thái chưa gán dạng; sau này 1 lần chạy gán; 2 việc độc lập". ghi-lo.mjs thêm --chua-gan-dang (mọi câu vào T14T000000, dang_ai_de_xuat cũng dạng chờ; dạng đề xuất chỉ ở lô JSON trong repo).
+- Chạy thử 74/74 khop ⇒ --ghi: T14T000000001…074, ten_de_goc "Toán arc 4 Q1 · <mã>", nguon_giai ai/claude_code, da_duyet false, kiem_may khop, 16 SVG lên kho-anh/sach/2026-10 (tải lại HTTP 200 image/svg+xml). LT 5.19 không ghi (hình EMF).
+- Hệ quả: câu dạng chờ chưa bấm duyệt được (_kho_la_dang_cho) ⇒ duyệt lời giải sau lượt gán dạng. Ghi vào README §3 + k4T §5 + §7.
+- Còn ~1.200 đơn vị câu (1.271 tổng, 41 có hình).
