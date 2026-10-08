@@ -1,1 +1,1 @@
-{ "hang": [ { "nhan": "Trung bình cộng", "phan": 1 }, { "nhan": "Cây chanh", "phan": 1, "them": "4 cây" }, { "nhan": "Cam và bưởi", "phan": 2, "bot": "4 cây" } ], "dau_hoi": ["Cây chanh"] }
+{"gia_tri_phan":25,"hang":[{"nhan":"Trung bình cộng","phan":1},{"nhan":"Cây chanh","phan":1,"them":"4 cây"},{"nhan":"Cam và bưởi","phan":2,"bot":"4 cây"}],"dau_hoi":["Cây chanh"]}

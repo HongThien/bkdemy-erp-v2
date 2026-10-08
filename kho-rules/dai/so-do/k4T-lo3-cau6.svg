@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 156" width="288" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
-<rect width="288" height="156" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476 156" width="476" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="476" height="156" fill="#fff"/>
 <text x="132" y="37" text-anchor="end" fill="#0f172a">Trung bình cộng:</text>
-<line x1="142" y1="32" x2="198" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="32" x2="305" y2="32" stroke="#0f172a" stroke-width="2"/>
 <line x1="142" y1="25" x2="142" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="198" y1="25" x2="198" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="305" y1="25" x2="305" y2="39" stroke="#0f172a" stroke-width="2"/>
 <text x="132" y="81" text-anchor="end" fill="#0f172a">Cây chanh:</text>
-<line x1="142" y1="76" x2="198" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="76" x2="305" y2="76" stroke="#0f172a" stroke-width="2"/>
 <line x1="142" y1="69" x2="142" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="198" y1="69" x2="198" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="198" y1="76" x2="234" y2="76" stroke="#0f172a" stroke-width="2"/>
-<line x1="234" y1="69" x2="234" y2="83" stroke="#0f172a" stroke-width="2"/>
-<text x="216" y="66" text-anchor="middle" font-size="12" fill="#b45309">4 cây</text>
-<text x="170" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="305" y1="69" x2="305" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="305" y1="76" x2="331.1" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="331.1" y1="69" x2="331.1" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="318.1" y="66" text-anchor="middle" font-size="12" fill="#b45309">4 cây</text>
+<text x="236.6" y="96" text-anchor="middle" fill="#dc2626">?</text>
 <text x="132" y="125" text-anchor="end" fill="#0f172a">Cam và bưởi:</text>
-<line x1="142" y1="120" x2="230" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="120" x2="442" y2="120" stroke="#0f172a" stroke-width="2"/>
 <line x1="142" y1="113" x2="142" y2="127" stroke="#0f172a" stroke-width="2"/>
-<line x1="198" y1="113" x2="198" y2="127" stroke="#0f172a" stroke-width="2"/>
-<line x1="254" y1="113" x2="254" y2="127" stroke="#0f172a" stroke-width="1"/>
-<line x1="230" y1="120" x2="254" y2="120" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
-<line x1="230" y1="113" x2="230" y2="127" stroke="#0f172a" stroke-width="2"/>
-<text x="242" y="110" text-anchor="middle" font-size="12" fill="#b45309">4 cây</text>
+<line x1="305" y1="113" x2="305" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="468.1" y1="113" x2="468.1" y2="127" stroke="#0f172a" stroke-width="1"/>
+<line x1="442" y1="120" x2="468.1" y2="120" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="442" y1="113" x2="442" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="455" y="110" text-anchor="middle" font-size="12" fill="#b45309">4 cây</text>
 </svg>

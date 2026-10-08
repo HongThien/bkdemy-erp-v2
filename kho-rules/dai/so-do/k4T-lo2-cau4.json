@@ -1,1 +1,1 @@
-{ "hang": [ { "nhan": "Chiều rộng", "phan": 1 }, { "nhan": "Chiều dài", "phan": 1, "them": "6 cm" } ], "tong": "32 cm", "dau_hoi": ["Chiều rộng", "Chiều dài"] }
+{"gia_tri_phan":13,"hang":[{"nhan":"Chiều rộng","phan":1},{"nhan":"Chiều dài","phan":1,"them":"6 cm"}],"tong":"32 cm","dau_hoi":["Chiều rộng","Chiều dài"]}

@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 282 112" width="282" height="112" font-family="Arial, Helvetica, sans-serif" font-size="14">
-<rect width="282" height="112" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 112" width="490" height="112" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="490" height="112" fill="#fff"/>
 <text x="100" y="37" text-anchor="end" fill="#0f172a">Chiều rộng:</text>
-<line x1="110" y1="32" x2="166" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="32" x2="315.3" y2="32" stroke="#0f172a" stroke-width="2"/>
 <line x1="110" y1="25" x2="110" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="166" y1="25" x2="166" y2="39" stroke="#0f172a" stroke-width="2"/>
-<text x="138" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="315.3" y1="25" x2="315.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="212.6" y="52" text-anchor="middle" fill="#dc2626">?</text>
 <text x="100" y="81" text-anchor="end" fill="#0f172a">Chiều dài:</text>
-<line x1="110" y1="76" x2="166" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="76" x2="315.3" y2="76" stroke="#0f172a" stroke-width="2"/>
 <line x1="110" y1="69" x2="110" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="166" y1="69" x2="166" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="166" y1="76" x2="202" y2="76" stroke="#0f172a" stroke-width="2"/>
-<line x1="202" y1="69" x2="202" y2="83" stroke="#0f172a" stroke-width="2"/>
-<text x="184" y="66" text-anchor="middle" font-size="12" fill="#b45309">6 cm</text>
-<text x="138" y="96" text-anchor="middle" fill="#dc2626">?</text>
-<path d="M216,24 q8,0 8,8 L224,46 q0,8 8,8 q-8,0 -8,8 L224,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
-<text x="238" y="59" fill="#0f172a">32 cm</text>
+<line x1="315.3" y1="69" x2="315.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="315.3" y1="76" x2="410" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="410" y1="69" x2="410" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="362.6" y="66" text-anchor="middle" font-size="12" fill="#b45309">6 cm</text>
+<text x="260" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M424,24 q8,0 8,8 L432,46 q0,8 8,8 q-8,0 -8,8 L432,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="446" y="59" fill="#0f172a">32 cm</text>
 </svg>

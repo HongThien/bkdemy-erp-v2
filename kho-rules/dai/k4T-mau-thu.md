@@ -1408,6 +1408,8 @@ Vậy chữ số thứ $545$ của A là chữ số $9$ của số $399$.
 
 **Đếm:** 20 câu · **13 câu vào dạng đang 0 câu** · 4 câu dạng chờ · 1 câu áp luật "phương pháp thắng chủ đề" (câu 7).
 
-**❓ Một câu hỏi cho CEO:** câu Phần I của phiếu cuối tuần (sách: "chỉ ghi đáp số, không cần giải thích") — kho vẫn cần lời giải
+**CEO trả lời 08/10:** *"Mọi câu đều giải chi tiết với cấu trúc 2 phần như trên"* ⇒ giữ đủ 2 phần. Và *"vẽ sơ đồ phải đúng tỉ lệ"* ⇒ máy vẽ viết lại, các sơ đồ lô 1–3 đã vẽ lại đúng tỉ lệ.
+
+~~❓ Một câu hỏi cho CEO:~~ câu Phần I của phiếu cuối tuần (sách: "chỉ ghi đáp số, không cần giải thích") — kho vẫn cần lời giải
 cho HS xem sau khi làm. Em đang viết **đủ 2 phần như tự luận** (câu 19, 20). Giữ vậy, hay Phần 2 của câu trắc nghiệm chỉ cần
 các dòng tính ngắn (không câu lời giải)?

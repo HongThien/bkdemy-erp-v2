@@ -35874,3 +35874,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm:** preview `?xem=tutorial&dot=1[&chang=N]` desktop 1024 + mobile 375: Lộc chào, chỉ tay, cổ vũ; mô phỏng Chuỗi/Trò chơi sáng đúng phần; không lỗi console. tsc sạch (lỗi BuoiHocScreen là của phiên khác), `check:style-hs` ✔.
 - **CHƯA kiểm:** tài khoản HS thật (tự mở lần đầu, ghi DB, pill Lộc, nút "Thử ngay"); khối 1–5 (HomeCap1 chỉ có pill, chưa có menu xem lại); Lộc ở màn bản đồ chặng (nhỏ góc phải) chưa xem.
 - **Cần Thùy quyết:** 12 chặng trong lần đầu có thể HƠI DÀI — đề xuất lần đầu chỉ 4–5 chặng lõi (Học tập · Luyện dạng yếu · Chuỗi · Nhiệm vụ · Thành tựu), phần còn lại Lộc "kể dần" qua pill. Lời thoại Lộc là bản nháp Claude soạn ở `noiDungTutorial.ts`.
+
+## 08/10 — 4T lô 3: CEO "khá ổn", 2 lưu ý ⇒ máy vẽ sơ đồ ĐÚNG TỈ LỆ + mọi câu đủ 2 phần
+- (1) "Vẽ sơ đồ phải đúng tỉ lệ với số liệu": đoạn them/bot cũ vẽ dài cố định. Viết lại `so-do-doan-thang.mjs`: bắt buộc `gia_tri_phan`, mọi đoạn theo giá trị thật, tự kiểm số trong nhãn tổng/hiệu khớp các hàng (thử sơ đồ sai tổng 40≠41 ⇒ từ chối, exit 1). Vẽ lại 7 sơ đồ lô 1–3, soát ảnh Chrome headless.
+- (2) "Mọi câu giải chi tiết 2 phần" — kể cả Phần I trắc nghiệm phiếu cuối tuần. Ghi §1.5 + §7 k4T.md + README §3.
+- Lô 3 có sửa (sơ đồ) ⇒ chưa v1, làm lô 4.

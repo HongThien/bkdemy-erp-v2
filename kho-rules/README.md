@@ -41,7 +41,8 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 ## 3. Luật CHUNG mọi khối (file khối không lặp lại)
 
 - **Hai phần** `**Phần 1. Hướng dẫn**` (mấu chốt · vì sao nghĩ ra · các bước theo mạch nghĩ · chú ý bẫy) và `**Phần 2. Trình bày**`
-  (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất.
+  (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất. **Mọi câu** đủ 2 phần, kể cả câu
+  trắc nghiệm mà sách chỉ đòi ghi đáp số (CEO 08/10).
 - **Mỗi câu lời giải / mỗi phép tính một dòng**, cách nhau dòng trống (CEO 07/10). Phần 2 bài tính mở bằng dòng chép lại đề.
 - **Gán dạng trước, giải sau**: mã dạng + lý do 1 câu; không khớp ⇒ dạng chờ `…000000`, không ép. Bài nhiều ý độc lập ⇒ tách câu,
   mỗi câu đủ 2 phần (CEO 07/10).
@@ -49,7 +50,8 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 - Định dạng: `\dfrac`, `\times`, chia `:`, số không chèn dấu cách hàng nghìn, `$…$` mỗi công thức, `\overline{abc}` không `\text`.
 - **Kiểm trước khi ghi**: đáp số thử ngược vào đề; lệch đáp án gốc ⇒ không ghi, báo người. Không chắc ⇒ để trống (CLAUDE.md §1.5).
 - **Sơ đồ / hình**: AI viết mô tả có cấu trúc, máy render (không để AI vẽ điểm ảnh). Hiện có: sơ đồ đoạn thẳng
-  (`scripts/kho/so-do-doan-thang.mjs`). Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
+  (`scripts/kho/so-do-doan-thang.mjs`) — **vẽ đúng tỉ lệ số liệu** (bắt buộc `gia_tri_phan`), máy tự kiểm tổng/hiệu khớp đề
+  rồi mới vẽ (CEO 08/10). Hình nào máy vẽ sau này cũng theo luật này: số liệu ⇒ kích thước thật, máy kiểm. Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
 
 ## 4. Việc kỹ thuật còn treo để đường đi chạy trơn
 

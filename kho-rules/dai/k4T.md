@@ -45,6 +45,8 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 | `**Phần 2. Trình bày**` | **Đúng cái HS viết vào bài thi**, theo khuôn của chuyên đề (§2) | Không giải thích dài, không "Ta có nhận xét" |
 
 - Phần 1 là phần quan trọng nhất. Bài quá dễ (1–2 phép tính) thì Phần 1 ngắn nhưng vẫn nêu mấu chốt.
+- **MỌI câu đều giải chi tiết đủ 2 phần** — kể cả câu Phần I trắc nghiệm của phiếu cuối tuần (sách ghi "chỉ ghi đáp số"):
+  kho vẫn viết đủ Phần 1 + Phần 2 như bài tự luận (CEO 08/10).
 - Bài **lời văn**: Phần 2 = `Bài giải` → mỗi bước **1 câu lời giải + 1 phép tính (đơn vị)** → `Đáp số: …`.
   Câu lời giải theo mẫu sách: *"Số ki-lô-gam gạo loại II là:"*, *"Tổng số phần bằng nhau là:"*, *"Tuổi con hiện nay là:"*.
 - Bài **lập luận** (viết số, chữ số, chia hết): Phần 2 = **lập luận ngắn + kết luận**, đúng mẫu VD 1.1: "Số tự nhiên lớn nhất
@@ -52,7 +54,8 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 - Bài **tính / tính thuận tiện / tìm $y$**: Phần 2 chỉ có các dòng biến đổi, **mở bằng dòng chép lại nguyên biểu thức của đề**.
 - Bài **có tỉ số / số phần** (tổng–hiệu, tổng–tỉ, hiệu–tỉ, TBC, tính ngược): Phần 2 PHẢI có dòng `Ta có sơ đồ:` + **HÌNH sơ đồ
   đoạn thẳng** (CEO 07/10: "có vẽ được hình không" ⇒ phải vẽ). Hình do máy vẽ từ mô tả có cấu trúc:
-  `node scripts/kho/so-do-doan-thang.mjs mo-ta.json --out so-do.svg` (mô tả: hàng = đại lượng, `phan` = số phần bằng nhau,
+  `node scripts/kho/so-do-doan-thang.mjs mo-ta.json --out so-do.svg` (mô tả: **`gia_tri_phan` = giá trị THẬT của 1 phần, BẮT BUỘC** — máy vẽ **đúng tỉ lệ số liệu** (CEO 08/10) và **tự kiểm**
+  số trong nhãn `tong`/`hieu` khớp các hàng, lệch thì từ chối vẽ; hàng = đại lượng, `phan` = số phần bằng nhau,
   `them` = đoạn thêm của tổng–hiệu, `bot` = đoạn còn THIẾU vẽ nét đứt (bài hơn/kém trung bình cộng: "cam và bưởi = 2 lần TBC bớt 4"), `tong`/`hieu` = ngoặc, `dau_hoi` = hàng cần tìm, `tieu_de` = thời điểm "Sau 5 năm nữa").
   Khi ghi kho: SVG lên storage → `anh_dap_an`; mô tả bằng lời (`Tuổi con: 1 phần; Tuổi mẹ: 4 phần`) vẫn ghi ngay sau
   `Ta có sơ đồ:` để làm alt và để in giấy khi chưa có hình. Hạn chế hiện tại: app HS hiển thị `anh_dap_an` **dưới** lời giải,
@@ -188,3 +191,6 @@ Luật gán:
 | 07/10 | Lô 2, câu 4 (LT 5.4 chu vi → tổng–hiệu) | Trả lời câu hỏi gán dạng: *"Giải bằng tổng hiệu thì phải nằm trong dạng tổng hiệu."* | §5 điều 1 + 3: phương pháp thắng chủ đề cùng số. Áp luôn câu 5 (LT 5.9, "tăng rộng thành hình vuông" ⇒ tổng–hiệu rồi tính diện tích): từ dạng chờ ⇒ `080101`. |
 | 07/10 | Lô 2, câu 13 (LT 14.13 rút về đơn vị dạng 2) | *"Chung dạng."* | Dạng 1 và dạng 2 của sách cùng `T14T140101`; bỏ "dạng 2" khỏi bảng thiếu §5. |
 | 07/10 | Lô 2 cả lô | *"Khá ok rồi."* Không sửa nội dung lời giải câu nào. | Lô 2 = lô đầu tiên không bị sửa trình bày. Chờ CEO quyết lên v1 hay chạy thêm lô 3. |
+| 07/10 | Sau lô 2 | *"Chạy thêm đủ các lô đi, khi nào hoàn hảo đã."* | Chưa lên v1. Tiêu chí v1 giữ nguyên: một lô qua CEO **không sửa gì**. |
+| 08/10 | Lô 3 (câu 6 + mọi sơ đồ cũ) | *"Vẽ sơ đồ phải đúng tỉ lệ với số liệu bài toán."* Đoạn thêm / đoạn thiếu đang vẽ dài cố định (tuổi con 8 và đoạn hơn 25 trông gần bằng nhau). | Máy vẽ viết lại: bắt buộc `gia_tri_phan`, mọi đoạn dài theo giá trị thật, tự kiểm nhãn tổng/hiệu khớp (lệch ⇒ từ chối vẽ). Vẽ lại cả 7 sơ đồ lô 1–3. |
+| 08/10 | Lô 3 câu 19, 20 (trắc nghiệm phiếu cuối tuần) | Trả lời câu hỏi: *"Mọi câu đều giải chi tiết với cấu trúc 2 phần như trên."* | §1.5: mọi câu, kể cả Phần I trắc nghiệm, đủ 2 phần. |

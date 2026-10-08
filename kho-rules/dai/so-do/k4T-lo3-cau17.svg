@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 142" width="650" height="142" font-family="Arial, Helvetica, sans-serif" font-size="14">
-<rect width="650" height="142" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 626 142" width="626" height="142" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="626" height="142" fill="#fff"/>
 <text x="102" y="37" text-anchor="end" fill="#0f172a">Số thứ nhất:</text>
-<line x1="112" y1="32" x2="616" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="32" x2="592" y2="32" stroke="#0f172a" stroke-width="2"/>
 <line x1="112" y1="25" x2="112" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="168" y1="25" x2="168" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="224" y1="25" x2="224" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="280" y1="25" x2="280" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="336" y1="25" x2="336" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="392" y1="25" x2="392" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="448" y1="25" x2="448" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="504" y1="25" x2="504" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="560" y1="25" x2="560" y2="39" stroke="#0f172a" stroke-width="2"/>
-<line x1="616" y1="25" x2="616" y2="39" stroke="#0f172a" stroke-width="2"/>
-<text x="364" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="165.3" y1="25" x2="165.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="218.7" y1="25" x2="218.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="272" y1="25" x2="272" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="325.3" y1="25" x2="325.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="378.7" y1="25" x2="378.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="432" y1="25" x2="432" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="485.3" y1="25" x2="485.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="538.7" y1="25" x2="538.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="592" y1="25" x2="592" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="352" y="52" text-anchor="middle" fill="#dc2626">?</text>
 <text x="102" y="81" text-anchor="end" fill="#0f172a">Số thứ hai:</text>
-<line x1="112" y1="76" x2="504" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="76" x2="485.3" y2="76" stroke="#0f172a" stroke-width="2"/>
 <line x1="112" y1="69" x2="112" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="168" y1="69" x2="168" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="224" y1="69" x2="224" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="280" y1="69" x2="280" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="336" y1="69" x2="336" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="392" y1="69" x2="392" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="448" y1="69" x2="448" y2="83" stroke="#0f172a" stroke-width="2"/>
-<line x1="504" y1="69" x2="504" y2="83" stroke="#0f172a" stroke-width="2"/>
-<text x="308" y="96" text-anchor="middle" fill="#dc2626">?</text>
-<line x1="504" y1="102" x2="616" y2="102" stroke="#0f172a" stroke-width="1"/>
-<line x1="504" y1="98" x2="504" y2="106" stroke="#0f172a" stroke-width="1"/>
-<line x1="616" y1="98" x2="616" y2="106" stroke="#0f172a" stroke-width="1"/>
-<text x="560" y="118" text-anchor="middle" font-size="12" fill="#0f172a">320</text>
+<line x1="165.3" y1="69" x2="165.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="218.7" y1="69" x2="218.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="272" y1="69" x2="272" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="325.3" y1="69" x2="325.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="378.7" y1="69" x2="378.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="432" y1="69" x2="432" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="485.3" y1="69" x2="485.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="298.7" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="485.3" y1="102" x2="592" y2="102" stroke="#0f172a" stroke-width="1"/>
+<line x1="485.3" y1="98" x2="485.3" y2="106" stroke="#0f172a" stroke-width="1"/>
+<line x1="592" y1="98" x2="592" y2="106" stroke="#0f172a" stroke-width="1"/>
+<text x="538.7" y="118" text-anchor="middle" font-size="12" fill="#0f172a">320</text>
 </svg>
