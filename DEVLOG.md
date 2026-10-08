@@ -36041,3 +36041,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Câu gộp nhiều biểu thức độc lập ⇒ TÁCH theo chữ cái** (luật "ý độc lập thì tách", mẫu LT 18.14B lô 3): bỏ bản gộp LT 18.14 / 19.13 / 19.14 / 19.15, Sonnet tách lại ⇒ **lô 8E 11 câu** (18.14A/C · 19.13A/B · 19.14A/B/C · 19.15A/B/C/F; 18.14B, 19.15D/E đã có). `lo-tu-soan.mjs` thêm `deTachChu`: mã "<bài><CHỮ>" sách không có ⇒ đề = dòng lệnh + đúng công thức `$CHỮ=…$` cắt từ đề sách (máy dựng, không gõ tay; ra y hệt LT 18.14B đã có).
 - `chuanSoan` thêm sửa máy: chuỗi CHỮ "\n\n" (escape 2 lần) ⇒ xuống dòng thật (6 câu 8E dính). Quét lại cả 12 lô trong repo: sạch.
 - Kho từ sách: 514 câu.
+
+## 08/10 (tiếp) — CEO chốt QUY TRÌNH 3 BƯỚC cho mọi khối kho ("Bản đồ t sẽ làm")
+- **Thùy:** (1) m đọc sách – giải thử – t duyệt – rút rule giải ghi md · (2) rule đủ tốt thì giải toàn bộ tài liệu, đưa lên DB chờ sẵn · (3) t xong bản đồ kiến thức thì m xếp bài vào bản đồ, t duyệt. "Khối nào cũng sẽ làm thế này."
+- Ghi: `kho-rules/README.md` §0 (bảng 3 bước; §2 = bước 1, §2b = bước 2; §5 thêm cột "đang ở bước"); CLAUDE.md thêm mục đọc bắt buộc `kho-rules/README.md`; `spec-luong-kho.md` thêm cảnh báo thứ tự cũ "bản đồ → gán → giải" không còn đúng; `k5T.md` §7 viết lại theo 3 bước (5T ở bước 1; giải cả phần Ôn tập), bỏ 3 câu hỏi về cách chia bản đồ (việc của CEO), còn mở 1 câu (271 câu STP duyệt khi nào); `k4T.md` đầu file: 4T ở bước 2; HANDOFF.

@@ -310,6 +310,10 @@
   KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
 - **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
+- **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):
+  **(1)** Claude đọc sách → giải thử → CEO duyệt → rút luật giải ghi vào `kho-rules/dai/k<khối>.md` · **(2)** luật đủ tốt (một lô không bị sửa = v1)
+  ⇒ giải TOÀN BỘ tài liệu, lên DB chờ sẵn ở dạng chờ `…000000` · **(3)** CEO làm xong bản đồ kiến thức khối đó ⇒ Claude xếp các bài vào bản đồ ⇒ CEO duyệt.
+  **Bản đồ kiến thức là việc của CEO** — Claude không tự dựng/sửa bản đồ. Khối nào đang ở bước nào: README §5.
 - **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
   Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
   (đo tỉ lệ LỌT, câu bẫy, ngưỡng theo mức nặng) · hậu kiểm báo sai · phương pháp build 6 việc (dựng bài thi trước). Toán Đại, K12 trước.

@@ -3,6 +3,10 @@
 > **Trạng thái: THIẾT KẾ — CEO đã trả lời 4 vòng (28/09). KIẾN TRÚC §5 ĐÃ CHỐT (3 lớp, workflow, 6 điểm phản biện, hậu kiểm
 > báo sai). Cách build skill/agent/flow ở §9 — CTO đề xuất, chờ CEO gật để vào P0.** Chưa build gì. Khi chốt ⇒ chép intent lên Notion, file này thành spec build.
 > **Đích vận hành (CEO):** đoạn đầu người tham gia nhiều để xây logic; **về sau phần lớn phải TỰ ĐỘNG.**
+> **⚠ 08/10 — THỨ TỰ LÀM theo khối đã đổi (CEO chốt, áp mọi khối): `kho-rules/README.md` §0** — (1) đọc sách, giải thử, CEO duyệt,
+> rút luật giải vào `kho-rules/dai/k<khối>.md` → (2) luật đủ tốt thì giải TOÀN BỘ tài liệu, lên DB ở dạng chờ → (3) CEO xong bản đồ
+> kiến thức khối đó thì Claude xếp bài vào bản đồ, CEO duyệt. Bản đồ là việc của CEO. Chỗ nào dưới đây ghi "bản đồ → gán dạng → giải"
+> (vd V3-1, §0 "đề xuất cập nhật bản đồ") thì theo README §0.
 
 ## 0. Đích (CEO 28/09)
 

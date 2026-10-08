@@ -3,6 +3,7 @@
 > **Trạng thái: ⭐ v1 (08/10) — lô 4 (20 câu) qua CEO không sửa gì** (*"OK rồi đấy"*). Bốn lô thử 75 câu ở `k4T-mau-thu.md`.
 > Từ v1: được giải hàng loạt + ghi kho qua cổng (`scripts/kho/sach/ghi-lo.mjs`). Luật vẫn sống: CEO sửa ở lô nào ⇒ ghi §7, nâng luật.
 > **Tiến độ (08/10 chiều): 361 câu từ sách đã vào kho ở dạng chờ `T14T000000`** (lô 1–4 + CĐ1 + lô 6 + lô 7; 360 `kiem_may=khop`).
+> **Quy trình 3 bước (`kho-rules/README.md` §0): 4T đang ở BƯỚC 2** (giải toàn bộ sách); bước 3 (xếp vào bản đồ) chờ CEO xong bản đồ 4T.
 > Còn lại + câu treo + lệnh chạy lô kế: **§8**. Dây chuyền giải hàng loạt: `kho-rules/README.md` §2b.
 > *(lịch sử: NHÁP v0 07/10 → v1 08/10)* Theo `spec-luong-kho.md` C10: mọi lần
 > gán dạng / giải câu 4T PHẢI đọc file này trước. **Mỗi lần CEO sửa một chỗ ⇒ ghi vào §7 (nhật ký) rồi nâng luật ở §1–§5.**

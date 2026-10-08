@@ -2,12 +2,13 @@
 
 > **Trạng thái: NHÁP v0 (04/10) · cập nhật 08/10 theo bài học 4T.** Theo `spec-luong-kho.md` C10: mọi lần giải / gán dạng câu 5T
 > PHẢI đọc file này trước. Mỗi lần CEO sửa ⇒ ghi §9 (nhật ký) rồi nâng luật ở §1–§4.
-> **Đi theo đường 7 bước ở `kho-rules/README.md` §2, khuôn đã chạy trọn ở 4T** (`k4T.md` v1 — đọc §1.5, §7 của nó để biết CEO đã
+> **Quy trình 3 bước mọi khối: `kho-rules/README.md` §0** (1 rút luật giải → 2 giải toàn bộ tài liệu, lên DB dạng chờ → 3 CEO xong bản đồ thì xếp bài vào, CEO duyệt).
+> **5T đang ở BƯỚC 1.** Đi theo 7 bước nhỏ ở `kho-rules/README.md` §2, khuôn đã chạy trọn ở 4T (`k4T.md` v1 — đọc §1.5, §7 của nó để biết CEO đã
 > sửa những gì; các luật đó áp luôn cho 5T trừ chỗ ghi khác ở đây).
 >
 > **Đang ở đâu (08/10):** v0 mới rút từ 1 chuyên đề (Số thập phân, 12 câu mẫu `k5T-mau-thu.md`). Nguồn chuẩn **đổi sang sách**
 > "Tài liệu tham khảo Toán 5" (31 chuyên đề — §5). Chưa làm B1–B2 trên sách. Bản đồ 5T mới phủ ~9/31 chuyên đề (§6).
-> **Việc kế tiếp + câu hỏi chờ CEO: §7.**
+> **Việc kế tiếp: §7.** Bản đồ kiến thức 5T là việc của CEO.
 
 ## 0. Nguyên tắc gốc
 
@@ -156,25 +157,21 @@ T15T02 289 (**16 đã duyệt** — 271 câu Số thập phân giải lại 04/1
 | **3, 4, 5, 7, 9, 11, 14–31** | **CHƯA CÓ** — 22/31 chuyên đề: công việc chung, dãy phân số, tỉ lệ thuận nghịch, hai hiệu số, tính ngược, đơn vị đo, toàn bộ tỉ số %, toàn bộ hình học (tam giác, thang, tròn, hộp, xếp hình, sơn mặt), toàn bộ chuyển động, giả thiết tạm, khử |
 
 **Hệ quả:** khác 4T (bản đồ 4T dựng từ chính sách 4T, chuyên đề $k$ ↔ chủ đề `T14T0k`), bản đồ 5T hiện là bản đồ từ kho cũ, phủ ~9/31
-chuyên đề sách. Lượt gán dạng 5T (§8) chỉ chạy được khi bản đồ 5T đủ — đó là việc "bản đồ kiến thức 5T".
+chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, không phải đề xuất cách chia — bản đồ là việc của CEO (README §0).
 
-## 7. Kế hoạch 5T — 2 việc ĐỘC LẬP (theo luật CEO 08/10 "giải ≠ gán dạng") + câu chờ CEO
+## 7. Kế hoạch 5T theo quy trình 3 bước (README §0, CEO chốt 08/10)
 
-| Việc | Ai | Bước | Phụ thuộc |
+| Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
-| **A. Bản đồ kiến thức 5T** | CEO soạn, Claude chuẩn bị | Soạn trên **Kho › 🆕 Bản đồ mới** (spec-ban-do-4-tang §0 B2: chia tầng · chép lý thuyết · mô tả nhận biết tầng 3–4). Claude có thể đưa sẵn: danh sách chuyên đề + "Tóm tắt lí thuyết" + dạng gợi ý từ 31 CĐ sách | Không cần việc B |
-| **B. Kho 5T từ sách** | Claude (+ Sonnet soạn) | B1 đọc (WMF → PNG/PDF, §5) → B2 hồ sơ + `tach-bai` → B3 nâng luật v0 theo "Bài làm" của sách (bảng 31 CĐ thay §2) → B4 lô thử 10–15 câu phủ nhiều CĐ, ưu tiên CĐ chưa có trong kho → B5–B7 CEO duyệt tới v1 → dây chuyền trạm như 4T lô 5–7 (`kho-rules/README.md` §2b), ghi `--chua-gan-dang` vào `T15T000000` | Không cần việc A |
-| **C. Gán dạng 5T** | Claude khớp, Học thuật duyệt | Như spec-ban-do-4-tang B3–B4, dùng §8 dưới (viết khi bản đồ xong) | Cần A + B |
+| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách (công thức WMF ⇒ WMF → PNG / PDF trước, §5) → B2 hồ sơ + `tach-bai` → B3 nâng luật v0 theo "Bài làm" của sách (bảng khuôn theo 31 CĐ thay §2) → B4 lô thử 10–15 câu phủ nhiều CĐ, ưu tiên CĐ chưa có trong kho (%, hình học, chuyển động, giả thiết tạm, khử…) → CEO duyệt → ghi §9 → nâng luật → lặp tới khi một lô không bị sửa ⇒ **v1** | **Đang ở đây** — chưa làm B1 |
+| **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu cần hình (CĐ18–24) chờ đường vẽ hình (README §4 việc #7) | Sau v1 |
+| **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 
-**Câu chờ CEO (R1 — đích, không phải cách đi):**
-1. Bản đồ 5T có dựng **theo 31 chuyên đề của sách** như 4T (chuyên đề sách ↔ chủ đề bản đồ) không, hay giữ khung T15T01/T15T02 hiện tại rồi thêm?
-2. Hình học tiểu học (CĐ18–24) và chuyển động (CĐ25–29) nằm trong nhánh **Đại** của 5T (như 4T: "Chu vi diện tích" là `T14T05`)?
-3. Phần **Ôn tập kiến thức trọng tâm** (~123 bài) có nhập kho không, hay chỉ 31 chuyên đề?
-4. 271 câu Số thập phân đã giải lại 04/10 đang chờ học thuật ký — giữ nguyên chờ, hay đợi bản đồ 5T mới rồi duyệt một thể?
+**Còn mở:** 271 câu Số thập phân giải lại 04/10 đang chờ học thuật ký ở màn Duyệt lời giải — duyệt luôn, hay để tới bước 3 (xếp vào bản đồ mới rồi duyệt một thể)?
 
 ## 8. GÁN DẠNG — chưa viết
 
-Viết khi bản đồ 5T xong (việc A): bảng dấu hiệu nhận dạng theo chủ đề nhiều dạng + bảng chỗ bản đồ chưa có dạng, đúng khuôn `k4T.md` §5.
+Viết ở bước 3, khi CEO xong bản đồ 5T: bảng dấu hiệu nhận dạng theo chủ đề nhiều dạng + bảng chỗ bản đồ chưa có dạng, đúng khuôn `k4T.md` §5.
 Luật chung đã chốt ở 4T áp luôn: **phương pháp thắng chủ đề** (giải bằng tổng–hiệu ⇒ dạng tổng–hiệu dù câu nằm ở chuyên đề khác) ·
 không khớp ⇒ dạng chờ, không ép · bài nhiều ý độc lập tách rồi gán từng ý · CEO duyệt một câu vào dạng mà bảng thiếu đang liệt kê ⇒ xoá
 dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T) · kiểm bằng model khác gán MÙ.
@@ -187,3 +184,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 04/10 | Bài lời văn, bài lập luận | Lời văn: "1 câu lời giải → 1 phép tính"; lập luận: biến đổi kèm "Vì … nên …" | §1.5 |
 | 04/10 | Đường ghi | *"Sao không đưa lên kho duyệt như bình thường"* ⇒ bỏ trang duyệt riêng, ghi `da_duyet=false`, duyệt ở màn Duyệt lời giải AI | Mọi lô 5T đi đường duyệt chuẩn |
 | 08/10 | (từ 4T) | Sơ đồ là HÌNH đúng tỉ lệ (máy vẽ) · mọi câu đủ 2 phần · mỗi câu lời giải một dòng · giải ≠ gán dạng | §1.5, §3, §7 — cập nhật bản v0 theo luật đã chốt ở `k4T.md` §7 |
+| 08/10 | Quy trình | *"Bản đồ t sẽ làm."* Chốt 3 bước cho mọi khối: rút luật giải (CEO duyệt) → giải toàn bộ tài liệu lên DB chờ sẵn → CEO xong bản đồ thì Claude xếp bài vào, CEO duyệt | README §0; §7 viết lại; bỏ các câu hỏi về cách chia bản đồ (việc của CEO) |

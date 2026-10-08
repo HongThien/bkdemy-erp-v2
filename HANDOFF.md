@@ -372,7 +372,9 @@
 
 **5T:** `k5T.md` v0 (04/10, Số thập phân, 12 câu mẫu; 271 câu STP giải lại vẫn chờ học thuật ký). Nguồn chuẩn đổi sang sách `E:\BK ACADEMY\Tài liệu tham khảo\5T\Tài liệu tham khảo Toán 5.docx` — 31 CĐ (phân số · tỉ số · STP · % · hình học · chuyển động · giả thiết tạm · khử) + phần ôn tập, ~730 bài thô. **⚠ công thức là ảnh WMF (0 công thức chữ, 1.154 ảnh)** ⇒ B1 của 4T mù, phải WMF → PNG (`scripts/anh/docx_trich.mjs`) hoặc PDF (README §4 việc #6). Bản đồ 5T hiện 3 chủ đề · 22 dạng, phủ ~9/31 CĐ sách.
 
-**Việc kế tiếp:** (A) bản đồ kiến thức 5T — chờ CEO trả lời 4 câu ở `k5T.md` §7 (dựng theo 31 CĐ sách? hình học/chuyển động thuộc Đại? nhập phần ôn tập? 271 câu STP duyệt khi nào?) · (B) kho 5T: B1–B2 trên sách (đường đọc WMF) → B3 nâng luật theo "Bài làm" của sách → lô thử → v1 → dây chuyền như 4T · (song song) 4T lô 8+ theo `k4T.md` §8.
+**⭐ Quy trình 3 bước MỌI KHỐI (CEO 08/10, `kho-rules/README.md` §0):** (1) đọc sách → giải thử → CEO duyệt → rút luật vào `k<khối>.md` · (2) luật đủ tốt (v1) ⇒ giải TOÀN BỘ tài liệu lên DB dạng chờ · (3) CEO xong bản đồ ⇒ Claude xếp bài vào ⇒ CEO duyệt. **Bản đồ là việc của CEO.**
+
+**Việc kế tiếp:** 5T bước 1 — B1 đọc sách (đường WMF → PNG/PDF, README §4 việc #6) → B2 hồ sơ + tach-bai → B3 nâng luật theo "Bài làm" → lô thử gửi CEO duyệt. Còn mở: 271 câu STP duyệt luôn hay để bước 3 (`k5T.md` §7). Song song: 4T bước 2 lô 8+ (`k4T.md` §8).
 
 ### ⭐⭐⭐ 7 SKILL HỌC LIỆU — TOÀN BỘ NHIỆM VỤ (Thùy chốt 06/10) · bản đồ trạng thái + điều kiện đi tiếp · ĐỌC ĐẦU TIÊN khi làm bất cứ gì về kho
 

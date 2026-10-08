@@ -3,6 +3,21 @@
 > **Đọc file này trước khi gán dạng / giải bài cho BẤT KỲ khối nào.** Thùy chốt 07/10: *"mỗi khối cần có quy tắc riêng… nhiệm vụ
 > là thiết kế đường đi chứ không chỉ giải bài."* File này là đường đi; mỗi khối là một file luật riêng bên dưới.
 
+## 0. ⭐ QUY TRÌNH 3 BƯỚC — KHỐI NÀO CŨNG LÀM THẾ NÀY (CEO chốt 08/10)
+
+| Bước | Ai | Làm gì | Xong khi | Chi tiết |
+|---|---|---|---|---|
+| **1. Rút luật giải** | Claude đọc sách + giải thử · **CEO duyệt** | Đọc sách của khối → giải thử từng lô → CEO duyệt trong chat → mỗi chỗ CEO sửa rút thành **luật giải** → ghi vào `k<khối>.md` để lô sau giải tốt hơn | Luật **đủ tốt**: một lô qua CEO không sửa gì ⇒ `k<khối>.md` lên **v1** | §2 (B1–B7) |
+| **2. Giải toàn bộ tài liệu** | Claude (dây chuyền trạm) | Giải **hết** tài liệu theo luật v1 → đưa lên DB **chờ sẵn**: câu nằm ở **dạng chờ** `…000000` của khối (`ghi-lo.mjs --chua-gan-dang`), `da_duyet=false` | Mọi bài của tài liệu đã vào DB, hoặc nằm trong danh sách treo có lý do | §2b |
+| **3. Xếp vào bản đồ** | **CEO làm bản đồ** · Claude xếp bài · **CEO duyệt** | Khi CEO làm xong bản đồ kiến thức của khối ⇒ Claude xếp từng câu đã giải vào bản đồ (đọc lý thuyết · ví dụ · mô tả nhận biết của bản đồ) → CEO duyệt | CEO duyệt xong việc xếp của khối | `k<khối>.md` mục GÁN DẠNG · `spec-ban-do-4-tang.md` §0 (B3–B4) |
+
+- **Bản đồ kiến thức là việc của CEO.** Claude KHÔNG tự dựng / tự sửa bản đồ, không đặt câu hỏi "bản đồ nên chia thế nào" trong
+  bước 1–2. Thứ Claude đưa được cho bản đồ: hồ sơ sách (danh sách chuyên đề, chỗ bản đồ hiện có thiếu dạng) — làm tư liệu, không làm quyết định.
+- **Bước 1–2 không chờ bản đồ, bước 3 không chờ bước 2 xong hết** — giải và xếp là 2 việc độc lập; câu giải xong thì nằm dạng chờ
+  tới khi bản đồ khối đó xong. Hệ quả DB: câu dạng chờ chưa bấm duyệt lời giải được (`_kho_la_dang_cho`) ⇒ lời giải được duyệt sau bước 3.
+- Thứ tự cũ "bản đồ → gán dạng → giải" (`spec-luong-kho.md` V3-1, §7) **không còn đúng** — theo bảng trên.
+- Đang ở đâu từng khối: §5.
+
 ## 1. Bố cục thư mục
 
 ```
@@ -24,7 +39,7 @@ kho-rules/
 (cho phép đạo hàm, logic) mâu thuẫn nhau; gộp lại thì agent phải tự lọc theo khối và sẽ lọc sai. Luật **chung cho mọi khối**
 (định dạng LaTeX, 2 phần Hướng dẫn / Trình bày, kiểm trước khi ghi) viết ở §3 dưới đây, file khối **chỉ ghi phần khác**.
 
-## 2. Đường đi — 7 bước, lặp cho tới khi CEO không còn sửa
+## 2. Bước 1 (rút luật giải) — 7 bước nhỏ, lặp cho tới khi CEO không còn sửa
 
 | Bước | Ai | Làm gì | Ra gì |
 |---|---|---|---|
@@ -36,7 +51,7 @@ kho-rules/
 | **B6 Ghi nhật ký → nâng luật** | Claude | Mỗi chỗ sửa ⇒ 1 dòng §7 (ngày · câu · CEO sửa gì · luật rút ra) ⇒ sửa §1–§3 ⇒ sửa lại câu trong lô. **Không sửa câu mà không ghi luật** | `k<khối>.md` bản mới |
 | **B7 Lặp** | — | Lô kế tiếp 15–30 câu theo luật mới. Một lô đi qua CEO **không sửa gì** ⇒ `k<khối>.md` lên **v1** ⇒ được giải hàng loạt + ghi kho | v1 ⇒ mở cổng ghi |
 
-## 2b. Sau v1 — DÂY CHUYỀN giải hàng loạt (đã chạy 4T lô 5–7, 287 câu, 08/10)
+## 2b. Bước 2 (giải toàn bộ tài liệu) — DÂY CHUYỀN giải hàng loạt sau v1 (đã chạy 4T lô 5–7, 287 câu, 08/10)
 
 Người làm ≠ người kiểm ở mọi trạm. Một lô = 1 nhóm khu sách (vd CĐ8–13 + PTL 2–3), chia 3 phần A/B/C chạy song song.
 
@@ -93,8 +108,8 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 
 ## 5. Trạng thái từng khối
 
-| Khối | File | Phiên bản | Lô đã duyệt | Nguồn luật |
-|---|---|---|---|---|
-| 4T | `dai/k4T.md` | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–7: **361 câu đã ghi kho (dạng chờ)**, còn ~850 — `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
-| 5T | `dai/k5T.md` | v0 (04/10, cập nhật 08/10) | lô 1: 12 câu (Số thập phân) · 271 câu STP giải lại, chờ học thuật ký | v0 từ kho cũ; **nguồn chuẩn đổi sang sách "Tài liệu tham khảo Toán 5" (31 CĐ, công thức WMF)** — chưa làm B1–B2. Bản đồ 5T phủ ~9/31 CĐ ⇒ kế hoạch + 4 câu chờ CEO ở `k5T.md` §7 |
-| 6–12 | — | chưa | — | chờ CEO đưa sách mẫu từng khối |
+| Khối | File | Đang ở bước (§0) | Phiên bản luật | Lô đã duyệt / đã giải | Nguồn |
+|---|---|---|---|---|---|
+| 4T | `dai/k4T.md` | **Bước 2** đang chạy · bước 3 chờ CEO xong bản đồ 4T | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–8: số câu đã ghi + phần còn lại ở `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
+| 5T | `dai/k5T.md` | **Bước 1** — chưa đọc sách (B1 vướng công thức WMF) | v0 (04/10, rút từ kho cũ) | lô 1: 12 câu (Số thập phân) · 271 câu STP giải lại, chờ học thuật ký | Sách "Tài liệu tham khảo Toán 5" (31 CĐ) — `k5T.md` §5, §7 |
+| 6–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
