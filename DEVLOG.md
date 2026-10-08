@@ -36083,3 +36083,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **10C** (PCT 15–21): 102 câu, 10 sơ đồ. **10D** (PCT 22–28): 103 câu, 7 sơ đồ. Opus đọc toàn bộ + xem ảnh mọi sơ đồ; 0 câu phải sửa nội dung. Hàm kiểm từ đề cho cả 3 lô viết TRƯỚC khi đọc bản soạn; lệch còn lại chỉ là cách ghi đáp án (a=6,b=0 · "8/12 và 14/21" · dãy xếp ";" · dấu so sánh) ⇒ thêm khối "khớp cách ghi" cuối `KIEM`, số không đổi.
 - Cách hiểu đã chọn (ghi cho CEO): PCT 23 II.3 xúc xắc phân biệt ⇒ 5 (như LT 15.13) · PCT 24 I.9 / I.10 tính cả phân số mẫu 1 (24/1, 5/1) ⇒ 8 / 80 (như LT 16.13) · PCT 23 I.3 số chia nhỏ nhất 7 (ô số chia in 2 ô liền — nếu bắt 2 chữ số ⇒ 10, số bị chia 86).
 - Kho từ sách: 1111 câu.
+
+### 08/10 — Kho 4T lô 10E ghi DB (PCT 29–35) — lô cuối của sách
+- 102 câu (có PCT 29 II.3 mới tách ở `tach-bai`), 18 sơ đồ; khop 102. Opus đọc toàn bộ + xem ảnh mọi sơ đồ. Sửa 1 câu: **PCT 31 I.8** Sonnet viết "MỖI số trong hai số đầu hơn TBC 2" (sai — chỉ TBC của hai số đầu là 13) ⇒ "Trung bình cộng của hai số đầu hơn…", "Tổng hai số đầu hơn…" (vết ở `k4T-lo10E.sua.json`).
+- **Vá máy vẽ `so-do-doan-thang`:** ngoặc hiệu đặt dưới hàng 2 ⇒ sơ đồ 3 hàng (PCT 29 I.10: hộp I / III / II) bị đè chữ "20 ngôi sao" lên hàng 3. Giờ đặt dưới hàng CUỐI. Quét `kho-rules/dai/so-do/`: chỉ 1 sơ đồ 3 hàng có hiệu, sơ đồ 2 hàng vẽ y như cũ.
+- Cách hiểu đã chọn (ghi cho CEO): PCT 31 I.6 "ăn một nửa của 3/5 chiếc bánh — phần còn lại" ⇒ còn lại của 3/5 chiếc = 3/10 (hiểu theo cả chiếc ⇒ 7/10) · PCT 31 II.3 "ngày thứ năm và sáu" gộp hai ngày ⇒ ngày cuối 5 bài.

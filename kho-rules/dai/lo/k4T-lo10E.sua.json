@@ -1,0 +1,5 @@
+{
+ "PCT 31 I.8": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng của $3$ số là $11$ thì tổng ba số là $11\\times 3=33$; trung bình cộng của hai số đầu là $13$ thì tổng hai số đó là $13\\times 2=26$. Số thứ ba là hiệu hai tổng. Cách nghĩ theo sơ đồ: trung bình cộng của hai số đầu hơn $11$ là $13-11=2$, nên tổng hai số đầu hơn hai lần trung bình cộng của ba số là $2\\times 2=4$; vì vậy số thứ ba kém trung bình cộng của ba số đúng $4$.\n\nChú ý: \"thêm một số thứ ba\" nghĩa là có ba số, chia cho $3$ chứ không phải chia cho $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTrung bình cộng của hai số đầu hơn trung bình cộng của ba số là: $13-11=2$\n\nTổng hai số đầu hơn hai lần trung bình cộng của ba số là: $2\\times 2=4$\n\nSố thứ ba kém trung bình cộng của ba số $4$ đơn vị nên số thứ ba là: $11-4=7$\n\nĐáp số: $7$"
+ }
+}

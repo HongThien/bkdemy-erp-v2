@@ -1,0 +1,1149 @@
+[
+ {
+  "ma_nguon": "PCT 29 I.1",
+  "gop_y": false,
+  "dap_an": "$5$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hỏi \"gấp mấy lần\" thì lấy số lớn **chia** cho số bé. Ở đây số lớn là $\\dfrac{1}{5}$, số bé là $\\dfrac{1}{25}$.\n\nChia cho một phân số là nhân với phân số đảo ngược: $\\dfrac{1}{5}:\\dfrac{1}{25}=\\dfrac{1}{5}\\times\\dfrac{25}{1}$. Cách khác: $\\dfrac{1}{5}=\\dfrac{5}{25}$ nên gấp $\\dfrac{1}{25}$ đúng $5$ lần.\n\nChú ý: không chia số bé cho số lớn, vì như vậy sẽ ra $\\dfrac{1}{5}$ chứ không phải $5$.\n\n**Phần 2. Trình bày**\n\nPhân số $\\dfrac{1}{5}$ gấp phân số $\\dfrac{1}{25}$ số lần là:\n\n$\\dfrac{1}{5}:\\dfrac{1}{25}=\\dfrac{1}{5}\\times\\dfrac{25}{1}=\\dfrac{25}{5}=5$ (lần)\n\nĐáp số: $5$ lần",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.10",
+  "gop_y": false,
+  "dap_an": "$150$ ngôi sao",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả ba hộp đều tính theo **số ngôi sao lúc đầu**, nên quy đồng về mẫu $15$: hộp I là $\\dfrac{6}{15}$, hộp II là $\\dfrac{5}{15}$, hộp III là phần còn lại $\\dfrac{4}{15}$.\n\nHộp I nhiều hơn hộp III $\\dfrac{6}{15}-\\dfrac{4}{15}=\\dfrac{2}{15}$ số ngôi sao, và đề cho phần chênh đó là $20$ ngôi sao. Biết giá trị của $\\dfrac{2}{15}$ thì tìm cả bằng phép chia.\n\nChú ý: $20$ ngôi sao ứng với $\\dfrac{2}{15}$ (phần chênh), không ứng với hộp III. Thử lại: hộp I $60$, hộp II $50$, hộp III $40$, hơn nhau $60-40=20$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nSố ngôi sao ở hộp III chiếm số phần số ngôi sao là: $1-\\dfrac{2}{5}-\\dfrac{1}{3}=\\dfrac{15}{15}-\\dfrac{6}{15}-\\dfrac{5}{15}=\\dfrac{4}{15}$ (số ngôi sao)\n\nHộp I đựng nhiều hơn hộp III số phần số ngôi sao là: $\\dfrac{2}{5}-\\dfrac{4}{15}=\\dfrac{6}{15}-\\dfrac{4}{15}=\\dfrac{2}{15}$ (số ngôi sao)\n\nHà gấp được số ngôi sao là: $20:\\dfrac{2}{15}=20\\times\\dfrac{15}{2}=150$ (ngôi sao)\n\nĐáp số: $150$ ngôi sao",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Hộp I",
+     "phan": 6
+    },
+    {
+     "nhan": "Hộp III",
+     "phan": 4
+    },
+    {
+     "nhan": "Hộp II",
+     "phan": 5
+    }
+   ],
+   "tong": "?",
+   "hieu": "20 ngôi sao"
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.2",
+  "gop_y": false,
+  "dap_an": "$>$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai phân số khác mẫu, tử số cũng khác nhau nên **quy đồng mẫu số** rồi so sánh hai tử số.\n\nMẫu số chung là $7\\times 11=77$. Nhân cả tử và mẫu của $\\dfrac{6}{7}$ với $11$, của $\\dfrac{9}{11}$ với $7$. Hai phân số cùng mẫu thì phân số nào có tử lớn hơn thì lớn hơn.\n\nChú ý: phải nhân **cả tử lẫn mẫu** với cùng một số.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{6}{7}=\\dfrac{6\\times 11}{7\\times 11}=\\dfrac{66}{77}$\n\n$\\dfrac{9}{11}=\\dfrac{9\\times 7}{11\\times 7}=\\dfrac{63}{77}$\n\nVì $66>63$ nên $\\dfrac{66}{77}>\\dfrac{63}{77}$, vậy $\\dfrac{6}{7}>\\dfrac{9}{11}$.\n\nĐáp số: dấu $>$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.3",
+  "gop_y": false,
+  "dap_an": "$A<B$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở $A$ hai tích có **thừa số chung** $\\dfrac{3}{7}$ nên đưa $\\dfrac{3}{7}$ ra ngoài ngoặc: $a\\times b-a\\times c=a\\times\\left(b-c\\right)$. Hai phân số trong ngoặc cùng mẫu $5$ nên trừ rất dễ: $\\dfrac{11}{5}-\\dfrac{1}{5}=\\dfrac{10}{5}=2$.\n\nTìm được $A=\\dfrac{6}{7}$ rồi so với $B=\\dfrac{7}{8}$ bằng cách **so sánh phần bù**: phân số nào có phần bù (so với $1$) bé hơn thì lớn hơn.\n\nChú ý: $\\dfrac{6}{7}$ và $\\dfrac{7}{8}$ đều có mẫu hơn tử $1$ đơn vị nên so phần bù nhanh hơn quy đồng.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{3}{7}\\times\\dfrac{11}{5}-\\dfrac{3}{7}\\times\\dfrac{1}{5}$\n\n$A=\\dfrac{3}{7}\\times\\left(\\dfrac{11}{5}-\\dfrac{1}{5}\\right)$\n\n$A=\\dfrac{3}{7}\\times 2$\n\n$A=\\dfrac{6}{7}$\n\nBước 1: Tìm phần bù. Phần bù của $A$ là $1-\\dfrac{6}{7}=\\dfrac{1}{7}$. Phần bù của $B$ là $1-\\dfrac{7}{8}=\\dfrac{1}{8}$.\n\nBước 2: So sánh phần bù. Vì $\\dfrac{1}{7}>\\dfrac{1}{8}$ nên $A$ có phần bù lớn hơn, do đó $A<B$.\n\nĐáp số: $A<B$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.4",
+  "gop_y": false,
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tử và mẫu đều là tích nên **rút gọn các thừa số giống nhau**, không cần nhân ra. Viết $35=5\\times 7$ thì thấy $5$ và $7$ có ở cả tử lẫn mẫu.\n\nSau khi gạch $5$ và $7$, còn $\\dfrac{2\\times 6}{12}=\\dfrac{12}{12}=1$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2\\times 35\\times 6}{5\\times 7\\times 12}$\n\n$=\\dfrac{2\\times 5\\times 7\\times 6}{5\\times 7\\times 12}$\n\n$=\\dfrac{2\\times\\cancel{5}\\times\\cancel{7}\\times 6}{\\cancel{5}\\times\\cancel{7}\\times 12}$\n\n$=\\dfrac{2\\times 6}{12}$\n\n$=\\dfrac{12}{12}$\n\n$=1$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.5",
+  "gop_y": false,
+  "dap_an": "$x=\\dfrac{3}{20}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chưa biết $x$ nằm trong phép chia $\\dfrac{7}{24}:x$, mà phép chia này là **số trừ** của phép trừ $\\dfrac{13}{6}-\\left(\\dfrac{7}{24}:x\\right)=\\dfrac{2}{9}$. Tìm số trừ trước: số trừ bằng số bị trừ trừ đi hiệu. Rồi $x$ là **số chia**: số chia bằng số bị chia chia cho thương.\n\nChú ý: không lấy $\\dfrac{13}{6}-\\dfrac{2}{9}$ chia cho $\\dfrac{7}{24}$; phải tìm cả cụm $\\dfrac{7}{24}:x$ trước.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{13}{6}-\\dfrac{7}{24}:x=\\dfrac{2}{9}$\n\n$\\begin{array}{l} \\dfrac{7}{24}:x=\\dfrac{13}{6}-\\dfrac{2}{9} \\\\ \\dfrac{7}{24}:x=\\dfrac{39}{18}-\\dfrac{4}{18} \\\\ \\dfrac{7}{24}:x=\\dfrac{35}{18} \\\\ x=\\dfrac{7}{24}:\\dfrac{35}{18} \\\\ x=\\dfrac{7}{24}\\times\\dfrac{18}{35} \\\\ x=\\dfrac{7\\times 18}{24\\times 35} \\\\ x=\\dfrac{3}{20} \\end{array}$\n\nĐáp số: $x=\\dfrac{3}{20}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.6",
+  "gop_y": false,
+  "dap_an": "$32$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $11$; $18$; $25$; ... ; $53$ là dãy số **cách đều** ($7$ đơn vị), nên trung bình cộng của cả dãy bằng trung bình cộng của số đầu và số cuối: $\\left(\\text{đầu}+\\text{cuối}\\right):2$.\n\nLý do: số thứ hai cộng số thứ sáu cũng bằng đầu cộng cuối, số thứ ba cộng số thứ năm cũng vậy, số ở giữa đúng bằng nửa tổng đó.\n\nThử lại: dãy có $7$ số, tổng $=11+18+25+32+39+46+53=224$, $224:7=32$.\n\n**Phần 2. Trình bày**\n\nDãy số trên là dãy số cách đều.\n\nTrung bình cộng của dãy số là: $\\left(11+53\\right):2=32$\n\nĐáp số: $32$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.7",
+  "gop_y": false,
+  "dap_an": "$n=23$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tính giá trị của hai tích ở hai đầu bằng cách **rút gọn chéo**, rồi tìm số tự nhiên nằm giữa hai giá trị đó.\n\nCụ thể $\\dfrac{48}{11}\\times\\dfrac{121}{24}$ có $48$ chia cho $24$ được $2$ và $121$ chia cho $11$ được $11$; $\\dfrac{100}{21}\\times\\dfrac{126}{25}$ có $100$ chia cho $25$ được $4$ và $126$ chia cho $21$ được $6$.\n\nChú ý: dấu $<$ ở hai phía nên $n$ không được bằng $22$ hay $24$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{48}{11}\\times\\dfrac{121}{24}=\\dfrac{48}{24}\\times\\dfrac{121}{11}=2\\times 11=22$\n\n$\\dfrac{100}{21}\\times\\dfrac{126}{25}=\\dfrac{100}{25}\\times\\dfrac{126}{21}=4\\times 6=24$\n\nDo đó $22<n<24$. Số tự nhiên lớn hơn $22$ và bé hơn $24$ chỉ có số $23$.\n\nĐáp số: $n=23$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.8",
+  "gop_y": false,
+  "dap_an": "Kẹo cam: $144$ chiếc ; kẹo dâu: $96$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các túi kẹo như nhau nên coi **mỗi túi là một phần**. Kẹo cam có $12$ phần, kẹo dâu có $8$ phần, tất cả $240$ chiếc. Tìm tổng số phần, rồi rút về **một túi**.\n\nCác bước: tổng số túi ($12+8$), số kẹo một túi ($240$ chia tổng số túi), rồi nhân với số túi mỗi loại.\n\nChú ý: $240$ chiếc là số kẹo của **cả hai loại**, không chia $240$ cho $12$ hay cho $8$. Thử lại: $144+96=240$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổng số túi kẹo mẹ mua là: $12+8=20$ (túi)\n\nMỗi túi kẹo có số chiếc kẹo là: $240:20=12$ (chiếc)\n\nSố chiếc kẹo cam là: $12\\times 12=144$ (chiếc)\n\nSố chiếc kẹo dâu là: $12\\times 8=96$ (chiếc)\n\nĐáp số: Kẹo cam: $144$ chiếc ; kẹo dâu: $96$ chiếc",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Kẹo cam",
+     "phan": 12
+    },
+    {
+     "nhan": "Kẹo dâu",
+     "phan": 8
+    }
+   ],
+   "tong": "240 chiếc",
+   "dau_hoi": [
+    "Kẹo cam",
+    "Kẹo dâu"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 I.9",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{16}{5}$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích hình vuông $=$ cạnh $\\times$ cạnh. Phải tìm một phân số mà nhân với chính nó ra $\\dfrac{16}{25}$: tử $4\\times 4=16$, mẫu $5\\times 5=25$, nên cạnh là $\\dfrac{4}{5}$ m. Có cạnh rồi thì chu vi $=$ cạnh $\\times\\,4$.\n\nChú ý: $\\dfrac{16}{25}$ m$^2$ là **diện tích**, không phải cạnh; không lấy $\\dfrac{16}{25}\\times 4$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $\\dfrac{4}{5}\\times\\dfrac{4}{5}=\\dfrac{16}{25}$ nên cạnh hình vuông dài $\\dfrac{4}{5}$ m.\n\nChu vi hình vuông là: $\\dfrac{4}{5}\\times 4=\\dfrac{16}{5}$ (m)\n\nĐáp số: $\\dfrac{16}{5}$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 II.1a",
+  "gop_y": false,
+  "dap_an": "$2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{27}{21}$ rút gọn (chia cả tử và mẫu cho $3$) được $\\dfrac{9}{7}$, **giống hệt** số $\\dfrac{9}{7}$ đứng ngoài ngoặc. Trừ đi một hiệu thì bỏ ngoặc và đổi dấu các số trong ngoặc: $a-\\left(b-c\\right)=a-b+c$.\n\nSau khi bỏ ngoặc, hai số $\\dfrac{9}{7}$ triệt tiêu nhau, còn hai phân số cùng mẫu $12$ cộng lại.\n\nChú ý: bỏ ngoặc có dấu trừ phía trước thì $\\dfrac{7}{12}$ phải đổi thành dấu **cộng**.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{17}{12}+\\dfrac{9}{7}-\\left(\\dfrac{27}{21}-\\dfrac{7}{12}\\right)$\n\n$=\\dfrac{17}{12}+\\dfrac{9}{7}-\\left(\\dfrac{9}{7}-\\dfrac{7}{12}\\right)$\n\n$=\\dfrac{17}{12}+\\dfrac{9}{7}-\\dfrac{9}{7}+\\dfrac{7}{12}$\n\n$=\\left(\\dfrac{17}{12}+\\dfrac{7}{12}\\right)+\\left(\\dfrac{9}{7}-\\dfrac{9}{7}\\right)$\n\n$=\\dfrac{24}{12}+0$\n\n$=2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 II.1b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{32}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức chỉ có nhân và chia nên làm từ trái sang phải, nhưng **đổi phép chia thành phép nhân với phân số đảo ngược** để gom lại thành một phân số lớn rồi rút gọn.\n\nSau khi đổi: $\\dfrac{7}{8}\\times\\dfrac{9}{14}\\times\\dfrac{3}{18}$. Ghép các cặp dễ rút gọn: $\\dfrac{7}{14}=\\dfrac{1}{2}$ và $\\dfrac{9}{18}=\\dfrac{1}{2}$.\n\nChú ý: chỉ đảo ngược phân số **đứng ngay sau dấu chia** ($\\dfrac{14}{9}$), không đảo $\\dfrac{3}{18}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7}{8}:\\dfrac{14}{9}\\times\\dfrac{3}{18}$\n\n$=\\dfrac{7}{8}\\times\\dfrac{9}{14}\\times\\dfrac{3}{18}$\n\n$=\\dfrac{7\\times 9\\times 3}{8\\times 14\\times 18}$\n\n$=\\dfrac{7}{14}\\times\\dfrac{9}{18}\\times\\dfrac{3}{8}$\n\n$=\\dfrac{1}{2}\\times\\dfrac{1}{2}\\times\\dfrac{3}{8}$\n\n$=\\dfrac{3}{32}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 II.1c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ba số hạng đều **chia cho cùng một số** $\\dfrac{7}{3}$ nên gom lại: $a:c+b:c+d:c=\\left(a+b+d\\right):c$. Ba phân số trong ngoặc cùng mẫu $19$ và $8+7+4=19$ nên tổng bằng $1$.\n\nCòn lại $1:\\dfrac{7}{3}$, là nhân với phân số đảo ngược.\n\nChú ý: chỉ gom được khi **số chia giống nhau** ở cả ba số hạng.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{8}{19}:\\dfrac{7}{3}+\\dfrac{7}{19}:\\dfrac{7}{3}+\\dfrac{4}{19}:\\dfrac{7}{3}$\n\n$=\\left(\\dfrac{8}{19}+\\dfrac{7}{19}+\\dfrac{4}{19}\\right):\\dfrac{7}{3}$\n\n$=\\dfrac{19}{19}:\\dfrac{7}{3}$\n\n$=1:\\dfrac{7}{3}$\n\n$=1\\times\\dfrac{3}{7}$\n\n$=\\dfrac{3}{7}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 II.1d",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{25}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: toàn là nhân và chia phân số nên đổi phép chia $:\\dfrac{34}{21}$ thành nhân với $\\dfrac{21}{34}$, viết thành **một phân số lớn** rồi tìm các cặp rút gọn được: $\\dfrac{13}{39}=\\dfrac{1}{3}$, $\\dfrac{17}{34}=\\dfrac{1}{2}$, $\\dfrac{56}{14\\times 4}=1$.\n\nPhần còn lại $\\dfrac{70\\times 21\\times 25}{15\\times 49}$ rút gọn tiếp: $\\dfrac{70}{49}=\\dfrac{10}{7}$ và $\\dfrac{21}{15}=\\dfrac{7}{5}$.\n\nChú ý: không nhân hết các số ra rồi mới rút gọn, số sẽ rất lớn và dễ sai.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{13}{14}\\times\\dfrac{17}{4}\\times\\dfrac{56}{15}\\times\\dfrac{70}{39}:\\dfrac{34}{21}\\times\\dfrac{25}{49}$\n\n$=\\dfrac{13}{14}\\times\\dfrac{17}{4}\\times\\dfrac{56}{15}\\times\\dfrac{70}{39}\\times\\dfrac{21}{34}\\times\\dfrac{25}{49}$\n\n$=\\dfrac{13\\times 17\\times 56\\times 70\\times 21\\times 25}{14\\times 4\\times 15\\times 39\\times 34\\times 49}$\n\n$=\\dfrac{13}{39}\\times\\dfrac{17}{34}\\times\\dfrac{56}{14\\times 4}\\times\\dfrac{70\\times 21\\times 25}{15\\times 49}$\n\n$=\\dfrac{1}{3}\\times\\dfrac{1}{2}\\times 1\\times\\dfrac{70\\times 21\\times 25}{15\\times 49}$\n\n$=\\dfrac{1}{3}\\times\\dfrac{1}{2}\\times\\dfrac{70}{49}\\times\\dfrac{21}{15}\\times 25$\n\n$=\\dfrac{1}{3}\\times\\dfrac{1}{2}\\times\\dfrac{10}{7}\\times\\dfrac{7}{5}\\times 25$\n\n$=\\dfrac{1}{3}\\times\\dfrac{1}{2}\\times 2\\times 25$\n\n$=\\dfrac{25}{3}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 II.2",
+  "gop_y": false,
+  "dap_an": "$270$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích mảnh đất hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Đào ao hết $\\dfrac{2}{5}$ diện tích thì phần làm vườn là phần còn lại $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ diện tích.\n\nCác bước: tìm diện tích mảnh đất, tìm phần của diện tích dành cho vườn, rồi lấy diện tích nhân với phân số đó.\n\nChú ý: đề hỏi diện tích phần **vườn**, không phải phần đào ao ($\\dfrac{2}{5}$ diện tích). Cách khác: tính diện tích ao $450\\times\\dfrac{2}{5}=180$ rồi lấy $450-180=270$, kết quả như nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $25\\times 18=450$ ($m^2$)\n\nPhần đất làm vườn chiếm số phần diện tích mảnh đất là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (diện tích)\n\nDiện tích phần đất làm vườn là: $450\\times\\dfrac{3}{5}=270$ ($m^2$)\n\nĐáp số: $270$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề in dính liền vào cuối II.2 một bài khác (\"Bài 3. Tính: (1+1/3)×(1+1/8)×…×(1+1/9999)\"). Đã tách bài đó thành câu riêng PCT 29 II.3; câu này chỉ giải bài mảnh đất."
+ },
+ {
+  "ma_nguon": "PCT 30 I.1",
+  "gop_y": false,
+  "dap_an": "$4$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $\\dfrac{2}{5}$ của $10$ kg là $10\\times\\dfrac{2}{5}$.\n\nCách nghĩ khác: $10$ kg chia $5$ phần được $2$ kg một phần, lấy $2$ phần là $4$ kg.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{5}$ của $10$ kg là: $10\\times\\dfrac{2}{5}=4$ (kg)\n\nĐáp số: $4$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.10",
+  "gop_y": false,
+  "dap_an": "$9$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chuyển một số đơn vị từ tử số xuống mẫu số thì tử số **giảm** đi bấy nhiêu, mẫu số **tăng** lên bấy nhiêu, nên **tổng tử số và mẫu số không đổi**: $51+61=112$.\n\nPhân số mới bằng $\\dfrac{3}{5}$ nên tử số là $3$ phần, mẫu số là $5$ phần, tổng $8$ phần bằng $112$. Tìm giá trị một phần, tử số mới, rồi so với tử số cũ $51$.\n\nThử lại: $\\dfrac{51-9}{61+9}=\\dfrac{42}{70}=\\dfrac{3}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi chuyển một số đơn vị từ tử số xuống mẫu số thì tổng của tử số và mẫu số không đổi.\n\nTổng của tử số và mẫu số là: $51+61=112$\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nGiá trị một phần là: $112:8=14$\n\nTử số mới là: $14\\times 3=42$\n\nSố đơn vị phải chuyển từ tử số xuống mẫu số là: $51-42=9$ (đơn vị)\n\nĐáp số: $9$ đơn vị",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 14,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 3
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 5
+    }
+   ],
+   "tong": "112",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.2",
+  "gop_y": false,
+  "dap_an": "$y=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y$ xuất hiện hai lần ($y\\times\\dfrac{3}{2}$ và $y$). Viết $y=y\\times 1$ rồi **gom** lại: $y\\times\\dfrac{3}{2}+y\\times 1=y\\times\\left(\\dfrac{3}{2}+1\\right)$.\n\nKhi đó $y$ là thừa số chưa biết: thừa số bằng tích chia cho thừa số đã biết.\n\nChú ý: không được coi $y\\times\\dfrac{3}{2}+y$ là $y\\times\\dfrac{3}{2}$ rồi cộng $y$ ở ngoài; phải đưa $y$ ra ngoài ngoặc thì mới tìm được.\n\n**Phần 2. Trình bày**\n\n$y\\times\\dfrac{3}{2}+y=\\dfrac{5}{4}$\n\n$\\begin{array}{l} y\\times\\dfrac{3}{2}+y\\times 1=\\dfrac{5}{4} \\\\ y\\times\\left(\\dfrac{3}{2}+1\\right)=\\dfrac{5}{4} \\\\ y\\times\\dfrac{5}{2}=\\dfrac{5}{4} \\\\ y=\\dfrac{5}{4}:\\dfrac{5}{2} \\\\ y=\\dfrac{5}{4}\\times\\dfrac{2}{5} \\\\ y=\\dfrac{1}{2} \\end{array}$\n\nĐáp số: $y=\\dfrac{1}{2}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.3",
+  "gop_y": false,
+  "dap_an": "$14$ can",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lít nước mắm **không đổi**, chỉ đổi cách chia vào can. Tìm tổng số lít trước ($4$ lít $\\times$ $28$ can), rồi chia cho $8$ lít mỗi can.\n\nCách nghĩ khác: mỗi can chứa nhiều gấp đôi ($8:4=2$) thì số can ít đi một nửa ($28:2=14$).\n\nChú ý: mỗi can chứa nhiều hơn thì số can phải **ít đi**, nên đáp số bé hơn $28$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lít nước mắm có tất cả là: $4\\times 28=112$ (lít)\n\nNếu mỗi can chứa $8$ lít thì đóng được số can là: $112:8=14$ (can)\n\nĐáp số: $14$ can",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.4",
+  "gop_y": false,
+  "dap_an": "$112$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tờ giấy hình vuông nên diện tích $=$ cạnh $\\times$ cạnh $=12\\times 12$. Mai dùng $\\dfrac{7}{9}$ diện tích thì lấy diện tích **nhân** với $\\dfrac{7}{9}$.\n\nChú ý: đơn vị diện tích là $cm^2$, không phải cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích tờ giấy hình vuông là: $12\\times 12=144$ ($cm^2$)\n\nDiện tích giấy Mai đã dùng là: $144\\times\\dfrac{7}{9}=112$ ($cm^2$)\n\nĐáp số: $112$ $cm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.5",
+  "gop_y": false,
+  "dap_an": "$14$ viên kẹo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Lan cho An $\\dfrac{2}{3}$ số kẹo, tức là số kẹo cho đi $=42\\times\\dfrac{2}{3}$. Số kẹo còn lại $=42-$ số kẹo đã cho.\n\nCách khác: kẹo còn lại là $1-\\dfrac{2}{3}=\\dfrac{1}{3}$ số kẹo, $42\\times\\dfrac{1}{3}=14$, cùng kết quả.\n\nChú ý: đề hỏi số kẹo **còn lại**, không phải số kẹo đã cho An.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố viên kẹo Lan cho An là: $42\\times\\dfrac{2}{3}=28$ (viên)\n\nSố viên kẹo Lan còn lại là: $42-28=14$ (viên)\n\nĐáp số: $14$ viên kẹo",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.6",
+  "gop_y": false,
+  "dap_an": "$>$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả hai phân số đều lớn hơn $1$ (tử lớn hơn mẫu). Phần hơn $1$ của mỗi phân số lần lượt là $\\dfrac{6}{7}$ và $\\dfrac{6}{17}$, có **tử số bằng nhau**, nên so sánh theo mẫu: mẫu càng bé thì phân số càng lớn.\n\nPhân số nào có phần hơn lớn hơn thì lớn hơn.\n\n**Phần 2. Trình bày**\n\nBước 1: Tìm phần hơn của mỗi phân số so với $1$:\n\n$\\dfrac{13}{7}-1=\\dfrac{6}{7}$ ; $\\dfrac{23}{17}-1=\\dfrac{6}{17}$\n\nBước 2: So sánh phần hơn. Hai phân số $\\dfrac{6}{7}$ và $\\dfrac{6}{17}$ có tử số bằng nhau, mẫu số $7<17$ nên $\\dfrac{6}{7}>\\dfrac{6}{17}$.\n\nVậy $\\dfrac{13}{7}>\\dfrac{23}{17}$.\n\nĐáp số: dấu $>$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.7",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: xác suất để xảy ra một sự kiện $=$ **số khả năng thuận lợi** chia cho **tổng số khả năng**, viết thành phân số. Học sinh bắt đề ngẫu nhiên nên $30$ đề đều có khả năng được bắt như nhau.\n\nCó $30$ khả năng bắt được đề, trong đó có $20$ khả năng bắt được đề cơ bản. Rút gọn phân số nếu được.\n\n**Phần 2. Trình bày**\n\nCó $30$ đề thi nên có $30$ khả năng bắt được đề, các khả năng này như nhau.\n\nCó $20$ khả năng bắt được đề cơ bản.\n\nXác suất để học sinh bắt được đề cơ bản là: $\\dfrac{20}{30}=\\dfrac{2}{3}$\n\nĐáp số: $\\dfrac{2}{3}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 I.8",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: liệt kê **mọi kết quả** có thể xảy ra khi gieo hai đồng xu (kết quả của đồng xu thứ nhất kết hợp với kết quả của đồng xu thứ hai), rồi lấy số kết quả NN chia cho tổng số kết quả.\n\nMỗi đồng xu có $2$ khả năng nên có $2\\times 2=4$ kết quả, trong đó chỉ có $1$ kết quả là NN.\n\nChú ý: kết quả SN (đồng xu thứ nhất sấp, thứ hai ngửa) và NS là **hai** kết quả khác nhau, không gộp làm một.\n\n**Phần 2. Trình bày**\n\nCác kết quả có thể xảy ra khi gieo hai đồng xu là:\n\n+ SS (cả hai đồng xu đều sấp)\n\n+ SN (đồng xu thứ nhất sấp, đồng xu thứ hai ngửa)\n\n+ NS (đồng xu thứ nhất ngửa, đồng xu thứ hai sấp)\n\n+ NN (cả hai đồng xu đều ngửa)\n\nCó tất cả $4$ kết quả có khả năng xảy ra như nhau, trong đó có $1$ kết quả là NN.\n\nXác suất để nhận được kết quả NN là: $\\dfrac{1}{4}$\n\nĐáp số: $\\dfrac{1}{4}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề nói hai đồng xu \"giống nhau\": mình hiểu vẫn phân biệt thứ tự (SN khác NS) nên có 4 kết quả đồng khả năng, đáp số 1/4. Nếu sách coi SN và NS là một kết quả (3 kết quả) thì ra 1/3 — cách hiểu đó sai vì 3 kết quả không đồng khả năng."
+ },
+ {
+  "ma_nguon": "PCT 30 I.9",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{27}{28}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược** từ kết quả cuối. Các phép làm lần lượt: lấy số cần tìm trừ $\\dfrac{3}{7}$, rồi nhân với $\\dfrac{14}{9}$, được $\\dfrac{5}{6}$. Đi ngược lại: $\\dfrac{5}{6}$ chia $\\dfrac{14}{9}$ (ngược của nhân), rồi cộng $\\dfrac{3}{7}$ (ngược của trừ).\n\nThử lại: $\\dfrac{27}{28}-\\dfrac{3}{7}=\\dfrac{15}{28}$, $\\dfrac{15}{28}\\times\\dfrac{14}{9}=\\dfrac{5}{6}$.\n\nChú ý: chia cho $\\dfrac{14}{9}$ là nhân với $\\dfrac{9}{14}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của phân số cần tìm và $\\dfrac{3}{7}$ là: $\\dfrac{5}{6}:\\dfrac{14}{9}=\\dfrac{5}{6}\\times\\dfrac{9}{14}=\\dfrac{45}{84}=\\dfrac{15}{28}$\n\nPhân số cần tìm là: $\\dfrac{15}{28}+\\dfrac{3}{7}=\\dfrac{15}{28}+\\dfrac{12}{28}=\\dfrac{27}{28}$\n\nĐáp số: $\\dfrac{27}{28}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 II.1a",
+  "gop_y": false,
+  "dap_an": "$39$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $52\\times\\dfrac{3}{4}$.\n\nCách nghĩ: $52:4=13$ là một phần, lấy $3$ phần là $13\\times 3=39$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{4}$ của $52$ là: $52\\times\\dfrac{3}{4}=39$\n\nĐáp số: $39$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 II.1b",
+  "gop_y": false,
+  "dap_an": "$40$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $72\\times\\dfrac{5}{9}$.\n\nCách nghĩ: $72:9=8$ là một phần, lấy $5$ phần là $8\\times 5=40$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{9}$ của $72$ là: $72\\times\\dfrac{5}{9}=40$\n\nĐáp số: $40$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 II.1c",
+  "gop_y": false,
+  "dap_an": "$6$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $27\\times\\dfrac{2}{9}$. Kết quả giữ đơn vị mét như số đã cho.\n\nCách nghĩ: $27:9=3$ m là một phần, lấy $2$ phần là $6$ m.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{9}$ của $27$ m là: $27\\times\\dfrac{2}{9}=6$ (m)\n\nĐáp số: $6$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 II.1d",
+  "gop_y": false,
+  "dap_an": "$144$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $252\\times\\dfrac{4}{7}$. Kết quả giữ đơn vị ki-lô-gam.\n\nCách nghĩ: $252:7=36$ kg là một phần, lấy $4$ phần là $36\\times 4=144$ kg.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4}{7}$ của $252$ kg là: $252\\times\\dfrac{4}{7}=144$ (kg)\n\nĐáp số: $144$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 II.2",
+  "gop_y": false,
+  "dap_an": "Con: $10$ tuổi ; mẹ: $38$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài tuổi thì **hiệu số tuổi không đổi theo thời gian**. Mẹ sinh con khi mẹ $28$ tuổi nên lúc nào mẹ cũng hơn con $28$ tuổi. Hiện nay tuổi con bằng $\\dfrac{1}{5}$ tuổi mẹ, tức tuổi con là $1$ phần, tuổi mẹ là $5$ phần, nên $28$ tuổi ứng với $5-1=4$ phần. Vẽ sơ đồ ở thời điểm **hiện nay**.\n\nSau khi tìm tuổi hiện nay của mỗi người thì mỗi người cộng thêm $3$ tuổi.\n\nChú ý: đề hỏi tuổi **sau ba năm nữa**, không phải tuổi hiện nay. Thử lại: hiện nay mẹ $35$, con $7$; $7=35\\times\\dfrac{1}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMẹ sinh con khi mẹ $28$ tuổi nên mẹ hơn con $28$ tuổi (hiệu số tuổi không đổi).\n\nTa có sơ đồ (hiện nay):\n\nHiệu số phần bằng nhau là: $5-1=4$ (phần)\n\nTuổi con hiện nay là: $28:4\\times 1=7$ (tuổi)\n\nTuổi mẹ hiện nay là: $7+28=35$ (tuổi)\n\nTuổi con sau ba năm nữa là: $7+3=10$ (tuổi)\n\nTuổi mẹ sau ba năm nữa là: $35+3=38$ (tuổi)\n\nĐáp số: Con: $10$ tuổi ; mẹ: $38$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hiện nay",
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 5
+    },
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    }
+   ],
+   "hieu": "28 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 30 II.3",
+  "gop_y": false,
+  "dap_an": "Nam: $72$ hoa điểm tốt ; Hà: $84$ hoa điểm tốt",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho hai phân số **của hai số khác nhau** bằng nhau: $\\dfrac{1}{3}$ số của Nam $=\\dfrac{2}{7}$ số của Hà. Viết $\\dfrac{1}{3}=\\dfrac{2}{6}$ để **tử số bằng nhau**: $\\dfrac{2}{6}$ số của Nam $=\\dfrac{2}{7}$ số của Hà.\n\nHai phần bằng nhau mà tử cùng là $2$ nên mỗi \"một phần\" của hai bạn bằng nhau: số của Nam chia $6$ phần thì số của Hà chia $7$ phần như thế. Hà hơn Nam $1$ phần, mà Nam ít hơn Hà $12$ hoa nên $1$ phần là $12$ hoa.\n\nThử lại: $72:3=24$ và $84\\times\\dfrac{2}{7}=24$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $\\dfrac{1}{3}=\\dfrac{2}{6}$ nên $\\dfrac{2}{6}$ số hoa điểm tốt của Nam bằng $\\dfrac{2}{7}$ số hoa điểm tốt của Hà.\n\nDo đó nếu số hoa của Nam chia thành $6$ phần bằng nhau thì số hoa của Hà là $7$ phần như thế.\n\nTa có sơ đồ:\n\nHà nhiều hơn Nam số phần là: $7-6=1$ (phần)\n\nGiá trị một phần là: $12:1=12$ (hoa điểm tốt)\n\nSố hoa điểm tốt của Nam là: $12\\times 6=72$ (hoa)\n\nSố hoa điểm tốt của Hà là: $12\\times 7=84$ (hoa)\n\nĐáp số: Nam: $72$ hoa điểm tốt ; Hà: $84$ hoa điểm tốt",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Hà",
+     "phan": 7
+    },
+    {
+     "nhan": "Nam",
+     "phan": 6
+    }
+   ],
+   "hieu": "12 hoa",
+   "dau_hoi": [
+    "Hà",
+    "Nam"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{2}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm phân số của một số (ở đây số đó cũng là phân số) thì **nhân** số đó với phân số: $\\dfrac{1}{3}$ của $\\dfrac{6}{5}$ là $\\dfrac{6}{5}\\times\\dfrac{1}{3}$.\n\nNhân hai phân số: tử nhân tử, mẫu nhân mẫu, rồi rút gọn.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{3}$ của $\\dfrac{6}{5}$ là: $\\dfrac{6}{5}\\times\\dfrac{1}{3}=\\dfrac{6}{15}=\\dfrac{2}{5}$\n\nĐáp số: $\\dfrac{2}{5}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.10",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{10}{11}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi mẫu số là **tích hai số lẻ liên tiếp**: $3=1\\times 3$, $15=3\\times 5$, $35=5\\times 7$, $63=7\\times 9$, $99=9\\times 11$, và tử số $2$ đúng bằng **hiệu hai thừa số** ở mẫu ($3-1=2$). Viết tử thành hiệu thì mỗi phân số tách được thành hiệu hai phân số: $\\dfrac{3-1}{1\\times 3}=\\dfrac{1}{1}-\\dfrac{1}{3}$. Các số ở giữa triệt tiêu, chỉ còn số đầu trừ số cuối.\n\nThử lại bằng cách cộng từng bước: $\\dfrac{2}{3}+\\dfrac{2}{15}=\\dfrac{4}{5}$, rồi $\\dfrac{6}{7}$, $\\dfrac{8}{9}$, $\\dfrac{10}{11}$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{2}{3}+\\dfrac{2}{15}+\\dfrac{2}{35}+\\dfrac{2}{63}+\\dfrac{2}{99}$\n\n$A=\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\dfrac{2}{5\\times 7}+\\dfrac{2}{7\\times 9}+\\dfrac{2}{9\\times 11}$\n\n$A=\\dfrac{3-1}{1\\times 3}+\\dfrac{5-3}{3\\times 5}+\\dfrac{7-5}{5\\times 7}+\\dfrac{9-7}{7\\times 9}+\\dfrac{11-9}{9\\times 11}$\n\n$A=\\dfrac{1}{1}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{9}+\\dfrac{1}{9}-\\dfrac{1}{11}$\n\n$A=1-\\dfrac{1}{11}$\n\n$A=\\dfrac{10}{11}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.2",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{7}{8}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức chỉ có cộng, trừ nên tính từ trái sang phải. Viết $1=\\dfrac{8}{8}$ rồi **quy đồng mẫu số** về $8$: $\\dfrac{1}{4}=\\dfrac{2}{8}$.\n\nChú ý: $1-\\dfrac{3}{8}$ làm trước, đừng lấy $\\dfrac{3}{8}+\\dfrac{1}{4}$ rồi trừ vào $1$.\n\n**Phần 2. Trình bày**\n\n$1-\\dfrac{3}{8}+\\dfrac{1}{4}$\n\n$=\\dfrac{8}{8}-\\dfrac{3}{8}+\\dfrac{2}{8}$\n\n$=\\dfrac{7}{8}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.3",
+  "gop_y": false,
+  "dap_an": "$x=8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: rút gọn $\\dfrac{15}{36}$ (chia cả tử và mẫu cho $3$) được $\\dfrac{5}{12}$, **cùng mẫu số $12$** với vế bên trái. Hai phân số cùng mẫu số mà bằng nhau thì tử số bằng nhau: $x-3=5$.\n\nRồi $x$ là số bị trừ: số bị trừ bằng hiệu cộng số trừ.\n\nThử lại: $\\dfrac{8-3}{12}=\\dfrac{5}{12}=\\dfrac{15}{36}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-3}{12}=\\dfrac{15}{36}$\n\n$\\dfrac{x-3}{12}=\\dfrac{5}{12}$ (rút gọn $\\dfrac{15}{36}$ bằng cách chia cả tử và mẫu cho $3$)\n\nHai phân số có cùng mẫu số và bằng nhau nên tử số bằng nhau:\n\n$\\begin{array}{l} x-3=5 \\\\ x=5+3 \\\\ x=8 \\end{array}$\n\nĐáp số: $x=8$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.4",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{17}$ ; $\\dfrac{3}{16}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết $\\dfrac{1}{6}$ và $\\dfrac{1}{5}$ thành phân số có **tử số là $3$**: $\\dfrac{1}{6}=\\dfrac{3}{18}$ và $\\dfrac{1}{5}=\\dfrac{3}{15}$. Hai phân số cùng tử số thì phân số nào có mẫu số lớn hơn thì bé hơn.\n\nPhân số $\\dfrac{3}{\\ldots}$ nằm giữa $\\dfrac{3}{18}$ và $\\dfrac{3}{15}$ thì mẫu số phải bé hơn $18$ và lớn hơn $15$.\n\nChú ý: tử số cố định là $3$, chỉ thử các mẫu số nguyên $16$ và $17$.\n\n**Phần 2. Trình bày**\n\nTa có: $\\dfrac{1}{6}=\\dfrac{1\\times 3}{6\\times 3}=\\dfrac{3}{18}$ ; $\\dfrac{1}{5}=\\dfrac{1\\times 3}{5\\times 3}=\\dfrac{3}{15}$\n\nCác phân số có tử số là $3$ nằm giữa $\\dfrac{3}{18}$ và $\\dfrac{3}{15}$ thì có mẫu số lớn hơn $15$ và bé hơn $18$, tức là mẫu số bằng $16$ hoặc $17$.\n\nVậy các phân số cần tìm là $\\dfrac{3}{17}$ và $\\dfrac{3}{16}$.\n\nĐáp số: $\\dfrac{3}{17}$ ; $\\dfrac{3}{16}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.5",
+  "gop_y": false,
+  "dap_an": "$11$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm bạn cao nhất (số lớn nhất) và bạn thấp nhất (số bé nhất) trong bốn số, rồi lấy số lớn **trừ** số bé.\n\nTrong các số $129$; $132$; $125$; $136$: lớn nhất là $136$ (bạn Yến), bé nhất là $125$ (bạn Trang).\n\n**Phần 2. Trình bày**\n\nBạn cao nhất là Yến: $136$ cm. Bạn thấp nhất là Trang: $125$ cm.\n\nBạn cao nhất cao hơn bạn thấp nhất số xăng-ti-mét là: $136-125=11$ (cm)\n\nĐáp số: $11$ cm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.6",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{10}$ chiếc bánh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"một nửa của $\\dfrac{3}{5}$ chiếc bánh\" là $\\dfrac{3}{5}\\times\\dfrac{1}{2}$ chiếc bánh, đó là phần Minh đã ăn. Phần còn lại $=$ phần bánh lúc đầu $-$ phần đã ăn.\n\nChú ý: nhân phân số với $\\dfrac{1}{2}$ là nhân thêm vào mẫu số ($5\\times 2=10$), không chia tử số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBạn Minh đã ăn số phần chiếc bánh là: $\\dfrac{3}{5}\\times\\dfrac{1}{2}=\\dfrac{3}{10}$ (chiếc bánh)\n\nPhần bánh còn lại sau khi Minh ăn là: $\\dfrac{3}{5}-\\dfrac{3}{10}=\\dfrac{6}{10}-\\dfrac{3}{10}=\\dfrac{3}{10}$ (chiếc bánh)\n\nĐáp số: $\\dfrac{3}{10}$ chiếc bánh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề: \"ăn một nửa của 3/5 chiếc bánh... phân số chỉ phần bánh còn lại\". Mình hiểu bánh đang có là 3/5 chiếc, ăn nửa thì còn 3/10 chiếc. Cách hiểu khác: tính phần còn lại so với cả chiếc bánh (Minh ăn 3/10 chiếc, cả chiếc còn 1-3/10=7/10). Cần người chọn."
+ },
+ {
+  "ma_nguon": "PCT 31 I.7",
+  "gop_y": false,
+  "dap_an": "$135$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi $72$ cm nên **nửa chu vi** $=$ dài $+$ rộng $=36$ cm; dài hơn rộng $6$ cm. Đây là bài tổng – hiệu, vẽ sơ đồ để tìm chiều rộng, chiều dài, rồi tính diện tích.\n\nLan cắt $\\dfrac{4}{7}$ miếng bìa thì diện tích còn lại là $1-\\dfrac{4}{7}=\\dfrac{3}{7}$ diện tích.\n\nChú ý: dùng **nửa** chu vi (không dùng $72$) khi tìm hai cạnh; đề hỏi diện tích còn lại, không phải phần đã cắt.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi miếng bìa là: $72:2=36$ (cm)\n\nTa có sơ đồ:\n\nChiều rộng miếng bìa là: $\\left(36-6\\right):2=15$ (cm)\n\nChiều dài miếng bìa là: $15+6=21$ (cm)\n\nDiện tích miếng bìa là: $21\\times 15=315$ ($cm^2$)\n\nPhần diện tích còn lại chiếm số phần diện tích miếng bìa là: $1-\\dfrac{4}{7}=\\dfrac{3}{7}$ (diện tích)\n\nDiện tích còn lại của miếng bìa là: $315\\times\\dfrac{3}{7}=135$ ($cm^2$)\n\nĐáp số: $135$ $cm^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 15,
+   "hang": [
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "6 cm"
+    },
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    }
+   ],
+   "tong": "36 cm",
+   "dau_hoi": [
+    "Chiều rộng"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.8",
+  "gop_y": false,
+  "dap_an": "$7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng của $3$ số là $11$ thì tổng ba số là $11\\times 3=33$; trung bình cộng của hai số đầu là $13$ thì tổng hai số đó là $13\\times 2=26$. Số thứ ba là hiệu hai tổng. Cách nghĩ theo sơ đồ: mỗi số trong hai số đầu hơn trung bình cộng $11$ là $13-11=2$, hai số hơn $4$, nên số thứ ba kém trung bình cộng đúng $4$.\n\nChú ý: \"thêm một số thứ ba\" nghĩa là có ba số, chia cho $3$ chứ không phải chia cho $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nMỗi số trong hai số đầu hơn trung bình cộng của ba số là: $13-11=2$\n\nHai số đầu hơn hai lần trung bình cộng của ba số là: $2\\times 2=4$\n\nSố thứ ba kém trung bình cộng của ba số $4$ đơn vị nên số thứ ba là: $11-4=7$\n\nĐáp số: $7$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 11,
+   "hang": [
+    {
+     "nhan": "Trung bình cộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Số thứ ba",
+     "phan": 1,
+     "bot": "4"
+    },
+    {
+     "nhan": "Hai số đầu",
+     "phan": 2,
+     "them": "4"
+    }
+   ],
+   "dau_hoi": [
+    "Số thứ ba"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 I.9",
+  "gop_y": false,
+  "dap_an": "$84$ con bò",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: gà và lợn đều tính theo **tổng số con** ($240$ con), nên số gà $=240\\times\\dfrac{2}{5}$, số lợn $=240\\times\\dfrac{1}{4}$. Số bò là phần còn lại sau khi lấy tổng trừ gà và lợn.\n\nThử bằng phân số: bò chiếm $1-\\dfrac{2}{5}-\\dfrac{1}{4}=\\dfrac{7}{20}$ tổng số, $240\\times\\dfrac{7}{20}=84$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố con gà là: $240\\times\\dfrac{2}{5}=96$ (con)\n\nSố con lợn là: $240\\times\\dfrac{1}{4}=60$ (con)\n\nSố con bò là: $240-96-60=84$ (con)\n\nĐáp số: $84$ con bò",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 II.1a",
+  "gop_y": false,
+  "dap_an": "$36$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của một số, cần tìm số đó thì **lấy giá trị đã cho chia cho phân số**: $24:\\dfrac{2}{3}$.\n\nThử lại: $36\\times\\dfrac{2}{3}=24$.\n\n**Phần 2. Trình bày**\n\nSố cần điền là: $24:\\dfrac{2}{3}=24\\times\\dfrac{3}{2}=36$\n\nĐáp số: $36$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 II.1b",
+  "gop_y": false,
+  "dap_an": "$144$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của một số, cần tìm số đó thì **lấy giá trị đã cho chia cho phân số**: $120:\\dfrac{5}{6}$.\n\nThử lại: $144\\times\\dfrac{5}{6}=120$.\n\n**Phần 2. Trình bày**\n\nSố cần điền là: $120:\\dfrac{5}{6}=120\\times\\dfrac{6}{5}=144$\n\nĐáp số: $144$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 II.1c",
+  "gop_y": false,
+  "dap_an": "$117$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của một số, cần tìm số đó thì **lấy giá trị đã cho chia cho phân số**: $91:\\dfrac{7}{9}$.\n\nThử lại: $117\\times\\dfrac{7}{9}=91$.\n\n**Phần 2. Trình bày**\n\nSố cần điền là: $91:\\dfrac{7}{9}=91\\times\\dfrac{9}{7}=117$\n\nĐáp số: $117$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 II.1d",
+  "gop_y": false,
+  "dap_an": "$33$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của một số, cần tìm số đó thì **lấy giá trị đã cho chia cho phân số**: $121:\\dfrac{11}{3}$. Phân số này lớn hơn $1$ nên số cần tìm **bé hơn** $121$.\n\nThử lại: $33\\times\\dfrac{11}{3}=121$.\n\n**Phần 2. Trình bày**\n\nSố cần điền là: $121:\\dfrac{11}{3}=121\\times\\dfrac{3}{11}=33$\n\nĐáp số: $33$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 31 II.2",
+  "gop_y": false,
+  "dap_an": "$217$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{7}$ đều là phân số của **tổng số gạo**. Buổi sáng bán nhiều hơn buổi chiều $\\dfrac{3}{5}-\\dfrac{2}{7}=\\dfrac{11}{35}$ tổng số gạo, và đề cho phần chênh đó là $77$ kg. Biết giá trị của $\\dfrac{11}{35}$ thì tìm tổng số gạo bằng phép chia.\n\nChú ý: đề hỏi số gạo **đã bán** trong hai buổi, không phải tổng số gạo của cửa hàng. Hai buổi bán $\\dfrac{3}{5}+\\dfrac{2}{7}=\\dfrac{31}{35}$ tổng số gạo, còn dư $\\dfrac{4}{35}$ chưa bán nên không trả lời $245$ kg.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBuổi sáng bán nhiều hơn buổi chiều số phần tổng số gạo là: $\\dfrac{3}{5}-\\dfrac{2}{7}=\\dfrac{21}{35}-\\dfrac{10}{35}=\\dfrac{11}{35}$ (tổng số gạo)\n\nTổng số gạo của cửa hàng là: $77:\\dfrac{11}{35}=77\\times\\dfrac{35}{11}=245$ (kg)\n\nSố gạo buổi sáng bán được là: $245\\times\\dfrac{3}{5}=147$ (kg)\n\nSố gạo buổi chiều bán được là: $245\\times\\dfrac{2}{7}=70$ (kg)\n\nCả hai buổi, cửa hàng bán được số ki-lô-gam gạo là: $147+70=217$ (kg)\n\nĐáp số: $217$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề hỏi \"cả hai buổi bán được bao nhiêu kg\": hiểu là tổng gạo ĐÃ BÁN = 147+70 = 217 kg (hai buổi chỉ bán 31/35 tổng số gạo). Nếu sách muốn hỏi tổng số gạo của cửa hàng thì đáp số là 245 kg."
+ },
+ {
+  "ma_nguon": "PCT 31 II.3",
+  "gop_y": false,
+  "dap_an": "$5$ bài",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đi **từng giai đoạn**, mỗi phân số tính theo đúng \"số gốc\" của nó: $\\dfrac{3}{5}$ tính theo $40$ bài; $\\dfrac{1}{4}$ ở ngày thứ tư tính theo **số bài còn lại sau ba ngày đầu**; $\\dfrac{1}{4}$ ở ngày thứ năm và sáu tính theo **số bài đã làm trong bốn ngày đầu**.\n\nCuối cùng lấy $40$ bài trừ số bài đã làm sau sáu ngày để ra số bài ngày cuối.\n\nChú ý: ba mốc tính khác nhau ($40$ bài; $16$ bài còn lại; $28$ bài đã làm) nên không được cộng thẳng các phân số lại. Thử lại: $24+4+7+5=40$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong ba ngày đầu, Mai hoàn thành số bài là: $40\\times\\dfrac{3}{5}=24$ (bài)\n\nSố bài còn lại sau ba ngày đầu là: $40-24=16$ (bài)\n\nNgày thứ tư, Mai hoàn thành số bài là: $16\\times\\dfrac{1}{4}=4$ (bài)\n\nTrong bốn ngày đầu, Mai hoàn thành số bài là: $24+4=28$ (bài)\n\nNgày thứ năm và ngày thứ sáu, Mai hoàn thành thêm số bài là: $28\\times\\dfrac{1}{4}=7$ (bài)\n\nTrong sáu ngày đầu, Mai hoàn thành số bài là: $28+7=35$ (bài)\n\nNgày cuối cùng, Mai cần hoàn thành số bài là: $40-35=5$ (bài)\n\nĐáp số: $5$ bài",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề: \"Ngày thứ năm và sáu, Mai hoàn thành thêm số bài bằng 1/4 số bài đã hoàn thành ở bốn ngày đầu\". Hiểu là TỔNG hai ngày = 1/4 × 28 = 7 bài. Nếu mỗi ngày làm 7 bài thì 28+14 = 42 > 40 (vô lý) nên không chọn cách hiểu đó."
+ },
+ {
+  "ma_nguon": "PCT 32 I.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{22}{23}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: so sánh từng phân số với $1$. Tử số bé hơn mẫu số thì phân số bé hơn $1$; tử số bằng mẫu số thì bằng $1$; tử số lớn hơn mẫu số thì lớn hơn $1$.\n\nCó một phân số bé hơn $1$, một phân số bằng $1$, một phân số lớn hơn $1$ nên không cần quy đồng.\n\n**Phần 2. Trình bày**\n\nTa có: $\\dfrac{22}{23}<1$ (tử số bé hơn mẫu số) ; $\\dfrac{19}{19}=1$ ; $\\dfrac{21}{20}>1$ (tử số lớn hơn mẫu số).\n\nVì $\\dfrac{22}{23}<1=\\dfrac{19}{19}<\\dfrac{21}{20}$ nên phân số bé nhất là $\\dfrac{22}{23}$.\n\nĐáp số: $\\dfrac{22}{23}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.10",
+  "gop_y": false,
+  "dap_an": "$813$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: gọi số là $\\overline{abc}$. Tỉ số chữ số hàng chục và hàng đơn vị là $\\dfrac{1}{3}$ nên chữ số hàng đơn vị **gấp $3$ lần** chữ số hàng chục. Biết hàng chục thì suy ra hàng đơn vị, rồi hàng trăm $=12-$ (hàng chục $+$ hàng đơn vị).\n\nThử lần lượt chữ số hàng chục là $1$; $2$; $3$ (từ $4$ trở lên thì hàng đơn vị lớn hơn $9$), loại trường hợp hàng trăm bằng $0$, rồi chọn số lớn nhất.\n\nChú ý: hàng chục bằng $0$ thì hàng đơn vị cũng bằng $0$, khi đó hàng trăm phải là $12$, không phải chữ số.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abc}$. Chữ số hàng đơn vị gấp $3$ lần chữ số hàng chục.\n\nNếu chữ số hàng chục là $1$ thì hàng đơn vị là $3$, hàng trăm là $12-1-3=8$. Ta được số $813$.\n\nNếu chữ số hàng chục là $2$ thì hàng đơn vị là $6$, hàng trăm là $12-2-6=4$. Ta được số $426$.\n\nNếu chữ số hàng chục là $3$ thì hàng đơn vị là $9$, hàng trăm là $12-3-9=0$: không được vì chữ số hàng trăm phải khác $0$.\n\nNếu chữ số hàng chục từ $4$ trở lên thì chữ số hàng đơn vị lớn hơn $9$: không được. Nếu hàng chục bằng $0$ thì hàng đơn vị bằng $0$, hàng trăm bằng $12$: không được.\n\nCác số thỏa mãn là $813$ và $426$. Số lớn nhất là $813$.\n\nĐáp số: $813$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.2",
+  "gop_y": false,
+  "dap_an": "$x=6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: rút gọn $\\dfrac{28}{32}$ (chia cả tử và mẫu cho $4$) được $\\dfrac{7}{8}$, **cùng mẫu số $8$** với vế bên trái. Hai phân số cùng mẫu bằng nhau thì tử số bằng nhau: $13-x=7$.\n\nRồi $x$ là số trừ: số trừ bằng số bị trừ trừ đi hiệu.\n\nThử lại: $\\dfrac{13-6}{8}=\\dfrac{7}{8}=\\dfrac{28}{32}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{13-x}{8}=\\dfrac{28}{32}$\n\n$\\dfrac{13-x}{8}=\\dfrac{7}{8}$ (rút gọn $\\dfrac{28}{32}$ bằng cách chia cả tử và mẫu cho $4$)\n\nHai phân số có cùng mẫu số và bằng nhau nên tử số bằng nhau:\n\n$\\begin{array}{l} 13-x=7 \\\\ x=13-7 \\\\ x=6 \\end{array}$\n\nĐáp số: $x=6$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{5}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức chỉ có cộng, trừ nên tính từ trái sang phải. Mẫu số chung là $24$: $\\dfrac{3}{8}=\\dfrac{9}{24}$ và $\\dfrac{1}{4}=\\dfrac{6}{24}$.\n\nCuối cùng rút gọn $\\dfrac{20}{24}$ (chia cả tử và mẫu cho $4$).\n\n**Phần 2. Trình bày**\n\n$\\dfrac{23}{24}-\\dfrac{3}{8}+\\dfrac{1}{4}$\n\n$=\\dfrac{23}{24}-\\dfrac{9}{24}+\\dfrac{6}{24}$\n\n$=\\dfrac{20}{24}$\n\n$=\\dfrac{5}{6}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.4",
+  "gop_y": false,
+  "dap_an": "$A>B$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả hai phân số có tử số kém mẫu số đúng $2$ đơn vị ($2025-2023=2$ và $2023-2021=2$), nên so sánh bằng **phần bù** (phần còn thiếu để bằng $1$): phân số nào có phần bù bé hơn thì lớn hơn.\n\nPhần bù có cùng tử số $2$, nên mẫu số càng lớn thì phần bù càng bé.\n\n**Phần 2. Trình bày**\n\nBước 1: Tìm phần bù. Phần bù của $A$ là $1-\\dfrac{2023}{2025}=\\dfrac{2}{2025}$. Phần bù của $B$ là $1-\\dfrac{2021}{2023}=\\dfrac{2}{2023}$.\n\nBước 2: So sánh phần bù. Hai phân số $\\dfrac{2}{2025}$ và $\\dfrac{2}{2023}$ có tử số bằng nhau, mẫu số $2025>2023$ nên $\\dfrac{2}{2025}<\\dfrac{2}{2023}$.\n\nPhần bù của $A$ bé hơn phần bù của $B$ nên $A>B$.\n\nĐáp số: $A>B$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.5",
+  "gop_y": false,
+  "dap_an": "$9$ điểm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng $=$ tổng các số liệu chia cho số các số liệu. Đếm nhanh bằng cách nhóm các điểm giống nhau: có $3$ điểm $10$, $4$ điểm $9$, $3$ điểm $8$.\n\nChú ý: số các số liệu là $10$ (số bạn trong nhóm), đừng chia cho $3$ (số loại điểm).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số điểm của nhóm bạn là: $10\\times 3+9\\times 4+8\\times 3=30+36+24=90$ (điểm)\n\nSố bạn trong nhóm là: $3+4+3=10$ (bạn)\n\nTrung bình cộng điểm thi môn Toán của nhóm bạn đó là: $90:10=9$ (điểm)\n\nĐáp số: $9$ điểm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.6",
+  "gop_y": false,
+  "dap_an": "$200$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chiều rộng bằng $\\dfrac{2}{3}$ chiều dài nên chiều rộng $=60\\times\\dfrac{2}{3}$. Có hai cạnh rồi thì chu vi $=\\left(\\text{dài}+\\text{rộng}\\right)\\times 2$.\n\nChú ý: đề hỏi **chu vi** (cm), không phải diện tích ($cm^2$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng của hình chữ nhật là: $60\\times\\dfrac{2}{3}=40$ (cm)\n\nChu vi của hình chữ nhật là: $\\left(60+40\\right)\\times 2=200$ (cm)\n\nĐáp số: $200$ cm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.7",
+  "gop_y": false,
+  "dap_an": "$70000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tiền mua vở và mua sách đều tính theo **số tiền ban đầu** $200000$ đồng. Số tiền còn lại $=$ số tiền ban đầu $-$ tiền mua vở $-$ tiền mua sách.\n\nThử bằng phân số: còn lại $1-\\dfrac{2}{5}-\\dfrac{1}{4}=\\dfrac{7}{20}$, $200000\\times\\dfrac{7}{20}=70000$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền An mua vở là: $200000\\times\\dfrac{2}{5}=80000$ (đồng)\n\nSố tiền An mua sách là: $200000\\times\\dfrac{1}{4}=50000$ (đồng)\n\nSố tiền An còn lại là: $200000-80000-50000=70000$ (đồng)\n\nĐáp số: $70000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.8",
+  "gop_y": false,
+  "dap_an": "$7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bớt đi ở tử số một số và thêm vào mẫu số **cùng số đó** thì **tổng của tử số và mẫu số không đổi**: $31+53=84$.\n\nPhân số mới bằng $\\dfrac{2}{5}$ nên tử số mới là $2$ phần, mẫu số mới là $5$ phần, tổng $7$ phần bằng $84$. Tìm tử số mới rồi so với tử số cũ $31$.\n\nThử lại: $\\dfrac{31-7}{53+7}=\\dfrac{24}{60}=\\dfrac{2}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi bớt đi ở tử số và thêm vào mẫu số cùng một số thì tổng của tử số và mẫu số không đổi.\n\nTổng của tử số và mẫu số là: $31+53=84$\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $2+5=7$ (phần)\n\nGiá trị một phần là: $84:7=12$\n\nTử số mới là: $12\\times 2=24$\n\nSố tự nhiên cần tìm là: $31-24=7$\n\nĐáp số: $7$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 2
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 5
+    }
+   ],
+   "tong": "84",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 I.9",
+  "gop_y": false,
+  "dap_an": "$13$ ; $39$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai số lẻ liên tiếp hơn kém nhau $2$ và có đúng **một số chẵn ở giữa**. Giữa hai số lẻ cần tìm có $13$ số chẵn thì từ số bé đến số lớn có $13$ khoảng, mỗi khoảng $2$ đơn vị nên **hiệu** hai số lẻ là $13\\times 2=26$.\n\nSố lớn gấp $3$ lần số bé, nên số bé là $1$ phần, số lớn là $3$ phần, hiệu $3-1=2$ phần bằng $26$.\n\nThử lại: giữa $13$ và $39$ có các số chẵn $14$; $16$; ...; $38$, đếm được $\\left(38-14\\right):2+1=13$ số. Đúng như đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai số lẻ liên tiếp cách nhau $2$ đơn vị và ở giữa có $1$ số chẵn; giữa hai số lẻ cần tìm có $13$ số chẵn nên có $13$ khoảng như vậy.\n\nHiệu của hai số lẻ cần tìm là: $13\\times 2=26$\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $3-1=2$ (phần)\n\nSố lẻ bé là: $26:2\\times 1=13$\n\nSố lẻ lớn là: $13\\times 3=39$\n\nĐáp số: $13$ ; $39$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 13,
+   "hang": [
+    {
+     "nhan": "Số lớn",
+     "phan": 3
+    },
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    }
+   ],
+   "hieu": "26",
+   "dau_hoi": [
+    "Số lớn",
+    "Số bé"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 II.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số của hai số $a$ và $b$ là $a:b$, viết thành phân số $\\dfrac{a}{b}$. Ở đây cần **số nam** trước (lấy $30$ trừ số nữ), rồi viết tỉ số số nữ và số nam, rút gọn.\n\nChú ý: đề hỏi tỉ số **nữ : nam**, không phải nữ : cả đội ($12:30$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố công nhân nam của đội là: $30-12=18$ (người)\n\nTỉ số của số công nhân nữ và số công nhân nam là: $12:18=\\dfrac{12}{18}=\\dfrac{2}{3}$\n\nĐáp số: $\\dfrac{2}{3}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 II.2",
+  "gop_y": false,
+  "dap_an": "$72$ quả bóng bay",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số bóng hồng bằng $\\dfrac{4}{5}$ số bóng trắng nên số bóng hồng $=40\\times\\dfrac{4}{5}$. Tất cả $=$ bóng trắng $+$ bóng hồng.\n\nChú ý: đề hỏi **tất cả** hai màu, đừng dừng ở số bóng hồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố quả bóng màu hồng là: $40\\times\\dfrac{4}{5}=32$ (quả)\n\nKelly có tất cả số quả bóng bay là: $40+32=72$ (quả)\n\nĐáp số: $72$ quả bóng bay",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 32 II.3",
+  "gop_y": false,
+  "dap_an": "Bách: $89$ viên bi ; Tùng: $44$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Bách thắng Tùng $6$ viên nghĩa là Bách **được thêm** $6$ viên còn Tùng **mất đi** $6$ viên, nên hiệu số bi của hai bạn tăng thêm $6+6=12$ viên. Lúc này hiệu là $45+12=57$ viên.\n\nBi của Bách bằng $\\dfrac{5}{2}$ bi của Tùng: Tùng $2$ phần, Bách $5$ phần, hiệu $3$ phần bằng $57$ viên. Vẽ sơ đồ ở thời điểm **lúc này**. Tìm số bi lúc này rồi trả lại $6$ viên để về lúc đầu.\n\nThử lại: lúc đầu $89-44=45$ viên; lúc này $95$ và $38$, $95=38\\times\\dfrac{5}{2}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi chơi, Bách thêm $6$ viên và Tùng bớt $6$ viên nên hiệu số bi của hai bạn tăng thêm: $6+6=12$ (viên)\n\nLúc này Bách nhiều hơn Tùng số viên bi là: $45+12=57$ (viên)\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $5-2=3$ (phần)\n\nLúc này Tùng có số viên bi là: $57:3\\times 2=38$ (viên)\n\nLúc này Bách có số viên bi là: $38+57=95$ (viên)\n\nLúc đầu Tùng có số viên bi là: $38+6=44$ (viên)\n\nLúc đầu Bách có số viên bi là: $95-6=89$ (viên)\n\nĐáp số: Bách: $89$ viên bi ; Tùng: $44$ viên bi",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc này",
+   "gia_tri_phan": 19,
+   "hang": [
+    {
+     "nhan": "Bách",
+     "phan": 5
+    },
+    {
+     "nhan": "Tùng",
+     "phan": 2
+    }
+   ],
+   "hieu": "57 viên",
+   "dau_hoi": [
+    "Tùng"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{5}{9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân ba phân số thành **một phân số lớn** (tử nhân tử, mẫu nhân mẫu) rồi rút gọn các thừa số giống nhau ở tử và mẫu, không nhân hết ra. Viết $28=7\\times 4$ thì thấy $7$ và $4$ có ở cả tử lẫn mẫu.\n\nSau khi gạch $7$ và $4$, còn $\\dfrac{25}{9\\times 5}=\\dfrac{25}{45}$, rút gọn cho $5$ được $\\dfrac{5}{9}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7}{9}\\times\\dfrac{25}{28}\\times\\dfrac{4}{5}$\n\n$=\\dfrac{7\\times 25\\times 4}{9\\times 28\\times 5}$\n\n$=\\dfrac{7\\times 25\\times 4}{9\\times 7\\times 4\\times 5}$\n\n$=\\dfrac{\\cancel{7}\\times 25\\times\\cancel{4}}{9\\times\\cancel{7}\\times\\cancel{4}\\times 5}$\n\n$=\\dfrac{25}{9\\times 5}$\n\n$=\\dfrac{25}{45}$\n\n$=\\dfrac{5}{9}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.10",
+  "gop_y": false,
+  "dap_an": "$90$ con hạc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{2}{5}$ tính theo số hạc **ban đầu**, còn $\\dfrac{5}{9}$ tính theo số hạc **còn lại sau khi cho Hà** ($\\dfrac{3}{5}$ số hạc ban đầu). Đổi $\\dfrac{5}{9}$ của $\\dfrac{3}{5}$ thành phần của số hạc ban đầu: $\\dfrac{3}{5}\\times\\dfrac{5}{9}=\\dfrac{1}{3}$.\n\nLan còn lại $1-\\dfrac{2}{5}-\\dfrac{1}{3}=\\dfrac{4}{15}$ số hạc ban đầu, và đó là $24$ con. Rồi chia để tìm số hạc ban đầu.\n\nThử lại: $90$ con, cho Hà $36$ con còn $54$; cho Nhi $54\\times\\dfrac{5}{9}=30$ con, còn $24$ con.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi tặng Hà, số hạc còn lại chiếm số phần số hạc ban đầu là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số hạc)\n\nSố hạc tặng Nhi chiếm số phần số hạc ban đầu là: $\\dfrac{3}{5}\\times\\dfrac{5}{9}=\\dfrac{1}{3}$ (số hạc)\n\nSố hạc còn lại cuối cùng chiếm số phần số hạc ban đầu là: $1-\\dfrac{2}{5}-\\dfrac{1}{3}=\\dfrac{15}{15}-\\dfrac{6}{15}-\\dfrac{5}{15}=\\dfrac{4}{15}$ (số hạc)\n\nBan đầu Lan có số con hạc là: $24:\\dfrac{4}{15}=24\\times\\dfrac{15}{4}=90$ (con)\n\nĐáp số: $90$ con hạc",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.2",
+  "gop_y": false,
+  "dap_an": "$<$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai vế khác đơn vị ($m^2$, $cm^2$, $dm^2$) nên phải **đổi về cùng một đơn vị** rồi mới so sánh. Chọn đơn vị bé nhất là $cm^2$.\n\nBảng đơn vị diện tích: hai đơn vị liền nhau hơn kém **100 lần**: $1\\ dm^2=100\\ cm^2$ và $1\\ m^2=100\\ dm^2=10000\\ cm^2$.\n\nChú ý: đừng so sánh hai số $25$ và $725$ khi đơn vị chưa cùng loại.\n\n**Phần 2. Trình bày**\n\n$7\\ m^2\\ 25\\ cm^2=70000\\ cm^2+25\\ cm^2=70025\\ cm^2$\n\n$725\\ dm^2=72500\\ cm^2$\n\nVì $70025<72500$ nên $7\\ m^2\\ 25\\ cm^2<725\\ dm^2$.\n\nĐáp số: dấu $<$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.3",
+  "gop_y": false,
+  "dap_an": "$42$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài **rút về đơn vị**: các hộp như nhau nên tìm số bi của **một hộp** ($30:5$) rồi nhân với số hộp cần tính ($7$).\n\nChú ý: $30$ viên là số bi của $5$ hộp, không phải của một hộp.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$5$ hộp: $30$ viên bi\n\n$7$ hộp: … viên bi?\n\nBài giải\n\nMột hộp có số viên bi là: $30:5=6$ (viên)\n\n$7$ hộp có số viên bi là: $6\\times 7=42$ (viên)\n\nĐáp số: $42$ viên bi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.4",
+  "gop_y": false,
+  "dap_an": "$1079$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số **nhỏ nhất** thì chữ số hàng cao phải bé nhất có thể. Hàng nghìn không được là $0$ nên bé nhất là $1$; hàng trăm bé nhất là $0$ (các chữ số phải khác nhau nên khác $1$). Hai chữ số còn lại phải có tổng $17-1-0=16$.\n\nHai chữ số **khác nhau** có tổng $16$ chỉ có $7$ và $9$ (vì $8+8$ bị trùng). Muốn số nhỏ nhất thì hàng chục là $7$, hàng đơn vị là $9$.\n\nThử lại: $1+0+7+9=17$, bốn chữ số $1$; $0$; $7$; $9$ khác nhau.\n\n**Phần 2. Trình bày**\n\nSố tự nhiên nhỏ nhất thì chữ số hàng nghìn phải bé nhất, mà hàng nghìn khác $0$, nên hàng nghìn là $1$.\n\nChữ số hàng trăm bé nhất có thể là $0$.\n\nTổng hai chữ số hàng chục và hàng đơn vị là: $17-1-0=16$\n\nHai chữ số khác nhau có tổng bằng $16$ là $7$ và $9$. Muốn số nhỏ nhất thì hàng chục là $7$, hàng đơn vị là $9$.\n\nSố cần tìm là $1079$.\n\nĐáp số: $1079$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.5",
+  "gop_y": false,
+  "dap_an": "$147$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị ($105$ $m^2$) của $\\dfrac{5}{7}$ diện tích mảnh đất, cần tìm cả mảnh đất thì **lấy giá trị đó chia cho phân số**: $105:\\dfrac{5}{7}$.\n\nThử lại: $147\\times\\dfrac{5}{7}=105$.\n\nChú ý: đề hỏi diện tích cả mảnh đất, không phải diện tích kho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $105:\\dfrac{5}{7}=105\\times\\dfrac{7}{5}=147$ ($m^2$)\n\nĐáp số: $147$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.6",
+  "gop_y": false,
+  "dap_an": "$A<B$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai phân số không cùng tử, không cùng mẫu, tử – mẫu cũng không cùng hiệu nên chọn một **phân số trung gian**: lấy tử của $A$ và mẫu của $B$, được $\\dfrac{40}{55}$. Rồi so $A$ với phân số trung gian (cùng tử), so phân số trung gian với $B$ (cùng mẫu).\n\nCùng tử số thì mẫu lớn hơn là phân số bé hơn; cùng mẫu số thì tử lớn hơn là phân số lớn hơn.\n\n**Phần 2. Trình bày**\n\nTa chọn phân số trung gian là $\\dfrac{40}{55}$.\n\n$\\dfrac{40}{57}<\\dfrac{40}{55}$ (tử số bằng nhau, mẫu số $57>55$).\n\n$\\dfrac{40}{55}<\\dfrac{41}{55}$ (mẫu số bằng nhau, tử số $40<41$).\n\nVậy $\\dfrac{40}{57}<\\dfrac{41}{55}$ hay $A<B$.\n\nĐáp số: $A<B$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.7",
+  "gop_y": false,
+  "dap_an": "$52$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình mỗi giờ $=$ **tổng quãng đường** chia cho **tổng thời gian**. Tính quãng đường của từng chặng ($55\\times 2$ và $50\\times 3$) rồi cộng, thời gian là $2+3=5$ giờ.\n\nChú ý: không lấy $\\left(55+50\\right):2$, vì hai chặng đi trong số giờ khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường ô tô đi trong $2$ giờ đầu là: $55\\times 2=110$ (km)\n\nQuãng đường ô tô đi trong $3$ giờ sau là: $50\\times 3=150$ (km)\n\nTổng thời gian ô tô đi là: $2+3=5$ (giờ)\n\nTrung bình mỗi giờ ô tô đi được số ki-lô-mét là: $\\left(110+150\\right):5=52$ (km)\n\nĐáp số: $52$ km",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.8",
+  "gop_y": false,
+  "dap_an": "$28$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"chắc chắn có đủ $3$ màu\" ta nghĩ đến **trường hợp xấu nhất**: bốc mãi mà vẫn chưa đủ ba màu. Trường hợp xấu nhất là bốc hết hai màu có nhiều bi nhất (đỏ $15$ và tím $12$) mà chưa có bi nâu.\n\nLúc đó bốc thêm **một viên nữa** thì chắc chắn là bi nâu, được đủ ba màu.\n\nChú ý: nếu chọn hai màu khác (đỏ và nâu: $23$ viên) thì ít hơn; phải lấy trường hợp xấu **nhất**, tức hai màu nhiều bi nhất.\n\n**Phần 2. Trình bày**\n\nTrường hợp xấu nhất là bốc hết bi đỏ và bi tím mà chưa có bi nâu.\n\nSố viên bi bốc được trong trường hợp đó là: $15+12=27$ (viên)\n\nBốc thêm $1$ viên nữa thì chắc chắn là bi nâu, khi đó có đủ $3$ màu.\n\nSố viên bi ít nhất cần bốc là: $27+1=28$ (viên)\n\nĐáp số: $28$ viên bi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 I.9",
+  "gop_y": false,
+  "dap_an": "$480$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Nam đã đi $\\dfrac{3}{4}$ quãng đường thì còn lại $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ quãng đường, và đề cho phần còn lại đó là $120$ m. Biết giá trị của $\\dfrac{1}{4}$ quãng đường thì tìm cả quãng đường bằng phép chia.\n\nChú ý: $120$ m là quãng đường **còn lại** ($\\dfrac{1}{4}$), không phải quãng đường đã đi. Thử lại: $480\\times\\dfrac{3}{4}=360$, $480-360=120$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường còn lại chiếm số phần quãng đường là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (quãng đường)\n\nQuãng đường từ nhà Nam đến trường dài là: $120:\\dfrac{1}{4}=120\\times 4=480$ (m)\n\nĐáp số: $480$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 II.1a",
+  "gop_y": false,
+  "dap_an": "$x=14$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số của $x$ và $18$ là $\\dfrac{7}{9}$ nghĩa là $x:18=\\dfrac{7}{9}$, tức $x$ bằng $\\dfrac{7}{9}$ của $18$. Tìm $x$ là **số bị chia**: số bị chia bằng thương nhân số chia.\n\nThử lại: $14:18=\\dfrac{14}{18}=\\dfrac{7}{9}$.\n\n**Phần 2. Trình bày**\n\nTỉ số của $x$ và $18$ là $\\dfrac{7}{9}$ nên:\n\n$\\begin{array}{l} x:18=\\dfrac{7}{9} \\\\ x=\\dfrac{7}{9}\\times 18 \\\\ x=14 \\end{array}$\n\nĐáp số: $x=14$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 II.1b",
+  "gop_y": false,
+  "dap_an": "$x=50$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số của $125$ và $x$ là $\\dfrac{5}{2}$ nghĩa là $125:x=\\dfrac{5}{2}$. Tìm $x$ là **số chia**: số chia bằng số bị chia chia cho thương.\n\nThử lại: $125:50=\\dfrac{125}{50}=\\dfrac{5}{2}$.\n\nChú ý: $x$ đứng sau nên là số chia; đừng lấy $\\dfrac{5}{2}\\times 125$.\n\n**Phần 2. Trình bày**\n\nTỉ số của $125$ và $x$ là $\\dfrac{5}{2}$ nên:\n\n$\\begin{array}{l} 125:x=\\dfrac{5}{2} \\\\ x=125:\\dfrac{5}{2} \\\\ x=125\\times\\dfrac{2}{5} \\\\ x=50 \\end{array}$\n\nĐáp số: $x=50$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 II.2",
+  "gop_y": false,
+  "dap_an": "Con: $5$ tuổi ; mẹ: $35$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau $4$ năm, **mỗi người** thêm $4$ tuổi nên tổng số tuổi của hai mẹ con tăng $4\\times 2=8$ tuổi. Tìm tổng số tuổi **hiện nay**, rồi giải bài tổng – tỉ: tuổi mẹ gấp $7$ lần tuổi con, vẽ sơ đồ ở thời điểm hiện nay (con $1$ phần, mẹ $7$ phần).\n\nThử lại: sau $4$ năm, con $9$ tuổi, mẹ $39$ tuổi, tổng $48$ tuổi.\n\nChú ý: $48$ là tổng số tuổi **sau $4$ năm nữa**, không phải hiện nay; không chia thẳng $48$ cho $8$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau $4$ năm nữa, tổng số tuổi của hai mẹ con tăng thêm: $4\\times 2=8$ (tuổi)\n\nTổng số tuổi của hai mẹ con hiện nay là: $48-8=40$ (tuổi)\n\nTa có sơ đồ (hiện nay):\n\nTổng số phần bằng nhau là: $1+7=8$ (phần)\n\nTuổi con hiện nay là: $40:8\\times 1=5$ (tuổi)\n\nTuổi mẹ hiện nay là: $40-5=35$ (tuổi)\n\nĐáp số: Con: $5$ tuổi ; mẹ: $35$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hiện nay",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 7
+    }
+   ],
+   "tong": "40 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 33 II.3",
+  "gop_y": false,
+  "dap_an": "Cam: $12$ cây ; ổi: $14$ cây ; táo: $21$ cây ; nhãn: $37$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số cây cam, ổi, táo là $\\dfrac{1}{7}$, $\\dfrac{1}{6}$, $\\dfrac{1}{4}$ **số cây trong vườn** và phải là số cây nguyên vẹn, nên số cây trong vườn phải **chia hết cho $7$, cho $6$ và cho $4$**. Số cây lại chưa đến $100$ nên liệt kê để tìm.\n\nCác số chia hết cho $7$ và bé hơn $100$ là $7$; $14$; ...; $98$. Trong đó chọn số chia hết cho $4$: $28$; $56$; $84$. Rồi chọn số chia hết cho $6$: chỉ $84$.\n\nCó số cây trong vườn rồi thì tính từng loại, nhãn là phần còn lại. Thử lại: $12+14+21+37=84$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây trong vườn phải chia hết cho $7$; $6$ và $4$ (để các số cây cam, ổi, táo là số tự nhiên).\n\nCác số chia hết cho $7$ và bé hơn $100$, đồng thời chia hết cho $4$ là $28$; $56$; $84$. Trong ba số này chỉ có $84$ chia hết cho $6$ ($84:6=14$).\n\nVậy vườn có $84$ cây.\n\nSố cây cam là: $84:7=12$ (cây)\n\nSố cây ổi là: $84:6=14$ (cây)\n\nSố cây táo là: $84:4=21$ (cây)\n\nSố cây nhãn là: $84-12-14-21=37$ (cây)\n\nĐáp số: Cam: $12$ cây ; ổi: $14$ cây ; táo: $21$ cây ; nhãn: $37$ cây",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.1",
+  "gop_y": false,
+  "dap_an": "$6900$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả ba tích đều có **thừa số chung** $69$, nên đưa $69$ ra ngoài ngoặc: $a\\times c+b\\times c-d\\times c=\\left(a+b-d\\right)\\times c$. Trong ngoặc: $63+79-42=100$.\n\nChú ý: nhớ dấu trừ ở tích cuối, tính $63+79-42$ chứ không phải $63+79+42$.\n\n**Phần 2. Trình bày**\n\n$A=63\\times 69+79\\times 69-42\\times 69$\n\n$A=\\left(63+79-42\\right)\\times 69$\n\n$A=100\\times 69$\n\n$A=6900$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.10",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{7}{30}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các mẫu số $12$; $20$; $30$; ...; $72$; $90$ là tích của **hai số liên tiếp**: $3\\times 4$, $4\\times 5$, $5\\times 6$, ..., $8\\times 9$, $9\\times 10$; tử số $1$ đúng bằng hiệu hai thừa số ở mẫu. Viết tử thành hiệu thì mỗi phân số tách thành hiệu hai phân số: $\\dfrac{4-3}{3\\times 4}=\\dfrac{1}{3}-\\dfrac{1}{4}$.\n\nCác số ở giữa triệt tiêu, chỉ còn số đầu trừ số cuối: $\\dfrac{1}{3}-\\dfrac{1}{10}$.\n\n**Phần 2. Trình bày**\n\n$B=\\dfrac{1}{12}+\\dfrac{1}{20}+\\dfrac{1}{30}+\\ldots+\\dfrac{1}{72}+\\dfrac{1}{90}$\n\n$B=\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}+\\ldots+\\dfrac{1}{8\\times 9}+\\dfrac{1}{9\\times 10}$\n\n$B=\\dfrac{4-3}{3\\times 4}+\\dfrac{5-4}{4\\times 5}+\\dfrac{6-5}{5\\times 6}+\\ldots+\\dfrac{9-8}{8\\times 9}+\\dfrac{10-9}{9\\times 10}$\n\n$B=\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{6}+\\ldots+\\dfrac{1}{8}-\\dfrac{1}{9}+\\dfrac{1}{9}-\\dfrac{1}{10}$\n\n$B=\\dfrac{1}{3}-\\dfrac{1}{10}$\n\n$B=\\dfrac{10}{30}-\\dfrac{3}{30}$\n\n$B=\\dfrac{7}{30}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.2",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{73}{24}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức có chia và cộng, **làm phép chia trước, phép cộng sau**. Chia cho $\\dfrac{9}{24}$ là nhân với phân số đảo ngược $\\dfrac{24}{9}$.\n\nRút gọn $\\dfrac{15}{16}\\times\\dfrac{24}{9}$: $\\dfrac{15}{9}=\\dfrac{5}{3}$ và $\\dfrac{24}{16}=\\dfrac{3}{2}$, được $\\dfrac{5}{2}$. Rồi cộng $\\dfrac{13}{24}+\\dfrac{5}{2}$ sau khi quy đồng mẫu số về $24$.\n\nChú ý: không cộng $\\dfrac{13}{24}+\\dfrac{15}{16}$ trước.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{13}{24}+\\dfrac{15}{16}:\\dfrac{9}{24}$\n\n$=\\dfrac{13}{24}+\\dfrac{15}{16}\\times\\dfrac{24}{9}$\n\n$=\\dfrac{13}{24}+\\dfrac{15}{9}\\times\\dfrac{24}{16}$\n\n$=\\dfrac{13}{24}+\\dfrac{5}{3}\\times\\dfrac{3}{2}$\n\n$=\\dfrac{13}{24}+\\dfrac{5}{2}$\n\n$=\\dfrac{13}{24}+\\dfrac{60}{24}$\n\n$=\\dfrac{73}{24}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.3",
+  "gop_y": false,
+  "dap_an": "$60$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Nick đọc $\\dfrac{3}{10}$ số trang của quyển sách, nên số trang đã đọc $=200\\times\\dfrac{3}{10}$.\n\nCách nghĩ: $200:10=20$ trang là một phần, lấy $3$ phần là $60$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNick đã đọc được số trang sách là: $200\\times\\dfrac{3}{10}=60$ (trang)\n\nĐáp số: $60$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.4",
+  "gop_y": false,
+  "dap_an": "$112$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị ($64$) của $\\dfrac{4}{7}$ số cần tìm, thì số đó bằng $64$ **chia** cho $\\dfrac{4}{7}$.\n\nThử lại: $112\\times\\dfrac{4}{7}=64$.\n\n**Phần 2. Trình bày**\n\nSố cần tìm là: $64:\\dfrac{4}{7}=64\\times\\dfrac{7}{4}=112$\n\nĐáp số: $112$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.5",
+  "gop_y": false,
+  "dap_an": "Hùng: $21$ cái tem ; Dũng: $27$ cái tem",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Hùng cho Dũng thì **tổng số tem của hai bạn không đổi** ($48$ cái). Sau khi cho, Dũng có gấp đôi Hùng nên vẽ sơ đồ ở thời điểm **sau khi cho**: Hùng $1$ phần, Dũng $2$ phần, tổng $3$ phần bằng $48$.\n\nMuốn biết lúc đầu thì trả lại: Hùng đã cho đi $5$ cái nên lúc đầu có thêm $5$; Dũng đã nhận $5$ cái nên lúc đầu ít hơn $5$.\n\nThử lại: $21+27=48$; $21-5=16$, $27+5=32=16\\times 2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHùng cho Dũng $5$ cái tem thì tổng số tem của hai bạn không đổi, vẫn là $48$ cái.\n\nTa có sơ đồ (sau khi Hùng cho Dũng):\n\nTổng số phần bằng nhau là: $1+2=3$ (phần)\n\nSau khi cho, Hùng có số cái tem là: $48:3\\times 1=16$ (cái)\n\nSau khi cho, Dũng có số cái tem là: $48-16=32$ (cái)\n\nLúc đầu Hùng có số cái tem là: $16+5=21$ (cái)\n\nLúc đầu Dũng có số cái tem là: $32-5=27$ (cái)\n\nĐáp số: Hùng: $21$ cái tem ; Dũng: $27$ cái tem",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi Hùng cho Dũng 5 cái tem",
+   "gia_tri_phan": 16,
+   "hang": [
+    {
+     "nhan": "Hùng",
+     "phan": 1
+    },
+    {
+     "nhan": "Dũng",
+     "phan": 2
+    }
+   ],
+   "tong": "48 cái",
+   "dau_hoi": [
+    "Hùng",
+    "Dũng"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.6",
+  "gop_y": false,
+  "dap_an": "$837$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi từng điều kiện thành bài tổng – hiệu. (1) Chữ số hàng trăm kém tổng (chục $+$ đơn vị) là $2$, và hàng trăm cộng (chục $+$ đơn vị) bằng $18$: tìm tổng (chục $+$ đơn vị) và hàng trăm. (2) Hàng đơn vị hơn hàng chục $4$, tổng hai chữ số này đã biết: tìm từng chữ số.\n\nCó hai bài tổng – hiệu nối tiếp nên vẽ hai sơ đồ.\n\nThử lại: $8+3+7=18$; $8$ kém $3+7=10$ là $2$; $7-3=4$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abc}$. Tổng ba chữ số là $18$; chữ số hàng trăm kém tổng hai chữ số hàng chục và hàng đơn vị là $2$.\n\nTa có sơ đồ:\n\nTổng của chữ số hàng chục và chữ số hàng đơn vị là: $\\left(18+2\\right):2=10$\n\nChữ số hàng trăm là: $10-2=8$\n\nChữ số hàng chục và hàng đơn vị có tổng bằng $10$, chữ số hàng đơn vị hơn chữ số hàng chục $4$.\n\nTa có sơ đồ:\n\nChữ số hàng đơn vị là: $\\left(10+4\\right):2=7$\n\nChữ số hàng chục là: $7-4=3$\n\nSố cần tìm là $837$.\n\nĐáp số: $837$",
+  "so_do_mo_ta": [
+   {
+    "gia_tri_phan": 8,
+    "hang": [
+     {
+      "nhan": "Hàng trăm",
+      "phan": 1
+     },
+     {
+      "nhan": "Hàng chục và hàng đơn vị",
+      "phan": 1,
+      "them": "2"
+     }
+    ],
+    "tong": "18",
+    "dau_hoi": [
+     "Hàng trăm"
+    ]
+   },
+   {
+    "gia_tri_phan": 3,
+    "hang": [
+     {
+      "nhan": "Hàng chục",
+      "phan": 1
+     },
+     {
+      "nhan": "Hàng đơn vị",
+      "phan": 1,
+      "them": "4"
+     }
+    ],
+    "tong": "10",
+    "dau_hoi": [
+     "Hàng chục",
+     "Hàng đơn vị"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.7",
+  "gop_y": false,
+  "dap_an": "$51$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phân tích cấu tạo số: $\\overline{ab}=a\\times 10+b$. Vế phải $\\left(a+b\\right)\\times 8+3=a\\times 8+b\\times 8+3$. Cho hai vế bằng nhau rồi **bớt cả hai vế đi $a\\times 8$ và $b$**, được $a\\times 2=b\\times 7+3$.\n\n$a$ là chữ số nên $a\\times 2$ không lớn hơn $18$, do đó $b\\times 7+3$ cũng không lớn hơn $18$; chỉ thử $b=0$; $1$; $2$.\n\nThử lại: $\\left(5+1\\right)\\times 8+3=51$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{ab}$ ($a$ khác $0$; $a$, $b$ là các chữ số).\n\nTa có: $\\overline{ab}=a\\times 10+b$ và $\\left(a+b\\right)\\times 8+3=a\\times 8+b\\times 8+3$.\n\nNên: $a\\times 10+b=a\\times 8+b\\times 8+3$\n\nBớt cả hai vế đi $a\\times 8$ và $b$ ta được: $a\\times 2=b\\times 7+3$\n\nVì $a\\times 2$ không lớn hơn $18$ nên $b\\times 7+3$ không lớn hơn $18$, do đó $b$ chỉ có thể bằng $0$; $1$ hoặc $2$.\n\nNếu $b=0$ thì $a\\times 2=3$: không có chữ số $a$ nào thỏa mãn.\n\nNếu $b=1$ thì $a\\times 2=10$ nên $a=5$.\n\nNếu $b=2$ thì $a\\times 2=17$: không có chữ số $a$ nào thỏa mãn (vì $17$ là số lẻ).\n\nVậy số cần tìm là $51$.\n\nĐáp số: $51$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.8",
+  "gop_y": false,
+  "dap_an": "$12$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài tuổi thì **hiệu số tuổi không đổi**: anh luôn hơn em $3$ tuổi. Ba năm sau tổng số tuổi là $33$, đây là bài tổng – hiệu ở thời điểm \"ba năm sau\", tìm tuổi em lúc đó rồi **trừ $3$ năm** để về hiện nay.\n\nThử lại: hiện nay em $12$, anh $15$ (hơn $3$); ba năm sau $15+18=33$.\n\nChú ý: đề hỏi tuổi em **hiện nay**, không phải tuổi em ba năm sau ($15$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của anh và em luôn là $3$ tuổi.\n\nTa có sơ đồ (ba năm sau):\n\nBa năm sau, tuổi em là: $\\left(33-3\\right):2=15$ (tuổi)\n\nTuổi em hiện nay là: $15-3=12$ (tuổi)\n\nĐáp số: $12$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Ba năm sau",
+   "gia_tri_phan": 15,
+   "hang": [
+    {
+     "nhan": "Tuổi anh",
+     "phan": 1,
+     "them": "3 tuổi"
+    },
+    {
+     "nhan": "Tuổi em",
+     "phan": 1
+    }
+   ],
+   "tong": "33 tuổi",
+   "dau_hoi": [
+    "Tuổi em"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 I.9",
+  "gop_y": false,
+  "dap_an": "$400$ quả dừa",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lần thứ hai bán $\\dfrac{1}{2}$ số dừa **còn lại sau lần thứ nhất** (không phải $\\dfrac{1}{2}$ số dừa ban đầu). Quy mọi phần về **số dừa lúc đầu**: sau lần 1 còn $\\dfrac{3}{4}$, lần 2 bán $\\dfrac{3}{4}\\times\\dfrac{1}{2}=\\dfrac{3}{8}$, còn lại $\\dfrac{3}{4}-\\dfrac{3}{8}=\\dfrac{3}{8}$.\n\nSố dừa còn lại ($150$ quả) ứng với $\\dfrac{3}{8}$ số dừa ban đầu, nên chia $150$ cho $\\dfrac{3}{8}$.\n\nThử lại: $400$ quả, lần 1 bán $100$ còn $300$, lần 2 bán $150$, còn $150$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần bán thứ nhất, số dừa còn lại chiếm số phần số dừa ban đầu là: $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ (số dừa)\n\nLần thứ hai người đó bán số phần số dừa ban đầu là: $\\dfrac{3}{4}\\times\\dfrac{1}{2}=\\dfrac{3}{8}$ (số dừa)\n\nSố dừa chưa bán chiếm số phần số dừa ban đầu là: $\\dfrac{3}{4}-\\dfrac{3}{8}=\\dfrac{6}{8}-\\dfrac{3}{8}=\\dfrac{3}{8}$ (số dừa)\n\nSố quả dừa người đó mang đi bán là: $150:\\dfrac{3}{8}=150\\times\\dfrac{8}{3}=400$ (quả)\n\nĐáp số: $400$ quả dừa",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 II.1a",
+  "gop_y": false,
+  "dap_an": "$2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi chỗ các số hạng để ghép những phân số **cùng mẫu**: $\\dfrac{5}{12}$ với $\\dfrac{7}{12}$ (tổng bằng $1$) và $\\dfrac{13}{11}$ với $\\dfrac{2}{11}$ (hiệu bằng $1$).\n\nGiữ nguyên dấu của từng số hạng khi đổi chỗ: $-\\dfrac{2}{11}$ đi cùng $\\dfrac{13}{11}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{12}+\\dfrac{13}{11}+\\dfrac{7}{12}-\\dfrac{2}{11}$\n\n$=\\left(\\dfrac{5}{12}+\\dfrac{7}{12}\\right)+\\left(\\dfrac{13}{11}-\\dfrac{2}{11}\\right)$\n\n$=\\dfrac{12}{12}+\\dfrac{11}{11}$\n\n$=1+1$\n\n$=2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 II.1b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai số hạng có **thừa số chung** $\\dfrac{7}{28}$. Đổi phép chia $:\\dfrac{5}{9}$ thành nhân với $\\dfrac{9}{5}$ để thấy rõ thừa số chung, rồi đưa $\\dfrac{7}{28}$ ra ngoài ngoặc: $\\dfrac{9}{5}-\\dfrac{4}{5}=1$.\n\nCuối cùng rút gọn $\\dfrac{7}{28}$ (chia cả tử và mẫu cho $7$) được $\\dfrac{1}{4}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7}{28}:\\dfrac{5}{9}-\\dfrac{7}{28}\\times\\dfrac{4}{5}$\n\n$=\\dfrac{7}{28}\\times\\dfrac{9}{5}-\\dfrac{7}{28}\\times\\dfrac{4}{5}$\n\n$=\\dfrac{7}{28}\\times\\left(\\dfrac{9}{5}-\\dfrac{4}{5}\\right)$\n\n$=\\dfrac{7}{28}\\times 1$\n\n$=\\dfrac{7}{28}$\n\n$=\\dfrac{1}{4}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 II.2",
+  "gop_y": false,
+  "dap_an": "Số bé: $36$ ; số lớn: $108$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng của hai số là $72$ thì **tổng hai số** $=72\\times 2=144$. Số lớn gấp ba lần số bé: số bé $1$ phần, số lớn $3$ phần. Đây là bài tổng – tỉ.\n\nThử lại: $36+108=144$, $144:2=72$ và $108:36=3$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $72\\times 2=144$\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $1+3=4$ (phần)\n\nSố bé là: $144:4\\times 1=36$\n\nSố lớn là: $144-36=108$\n\nĐáp số: Số bé: $36$ ; số lớn: $108$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 36,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 3
+    }
+   ],
+   "tong": "144",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 34 II.3",
+  "gop_y": false,
+  "dap_an": "$40$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: buổi chiều bán $\\dfrac{3}{4}$ số cam **còn lại sau buổi sáng** nên còn lại $\\dfrac{1}{4}$ số cam đó. Quy về **số cam lúc đầu**: sau buổi sáng còn $1-\\dfrac{2}{5}=\\dfrac{3}{5}$, cuối ngày còn $\\dfrac{3}{5}\\times\\dfrac{1}{4}=\\dfrac{3}{20}$.\n\nSố cam còn lại cuối ngày ($6$ kg) ứng với $\\dfrac{3}{20}$ số cam lúc đầu, nên chia $6$ cho $\\dfrac{3}{20}$.\n\nThử lại: $40$ kg, sáng bán $16$ còn $24$, chiều bán $18$, còn $6$ kg.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau buổi sáng, số cam còn lại chiếm số phần số cam lúc đầu là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số cam)\n\nSau buổi chiều, số cam còn lại chiếm số phần số cam còn lại sau buổi sáng là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$\n\nSố cam còn lại cuối ngày chiếm số phần số cam lúc đầu là: $\\dfrac{3}{5}\\times\\dfrac{1}{4}=\\dfrac{3}{20}$ (số cam)\n\nLúc đầu quầy hàng có số ki-lô-gam cam là: $6:\\dfrac{3}{20}=6\\times\\dfrac{20}{3}=40$ (kg)\n\nĐáp số: $40$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.1",
+  "gop_y": false,
+  "dap_an": "$7000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép các số để tròn nghìn cho dễ tính: $2387+1613=4000$ và $3457-457=3000$. Biểu thức chỉ có cộng, trừ nên được đổi chỗ các số hạng, **giữ nguyên dấu** của từng số.\n\n**Phần 2. Trình bày**\n\n$2387+3457+1613-457$\n\n$=\\left(2387+1613\\right)+\\left(3457-457\\right)$\n\n$=4000+3000$\n\n$=7000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.10",
+  "gop_y": false,
+  "dap_an": "$1350$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cứ $3$ số tự nhiên liên tiếp thì có đúng một số chia hết cho $3$. Đếm số các số chia hết cho $3$ từ $1$ đến $2024$ ($2024:3$), rồi lấy $2024$ trừ đi.\n\n$2024:3=674$ (dư $2$): các số chia hết cho $3$ là $3$; $6$; ...; $2022$, có $674$ số.\n\nThử lại: có $674$ nhóm $3$ số liên tiếp, mỗi nhóm có $2$ số không chia hết cho $3$, thêm $2$ số ở cuối là $2023$ và $2024$: $674\\times 2+2=1350$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $2024:3=674$ (dư $2$) nên từ $1$ đến $2024$ có $674$ số chia hết cho $3$.\n\nSố các số không chia hết cho $3$ là: $2024-674=1350$ (số)\n\nĐáp số: $1350$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.2",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{11}{48}$ ; $\\dfrac{55}{48}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài **tổng – tỉ** với các số là phân số. Tỉ số hai phân số là $\\dfrac{1}{5}$ nghĩa là phân số bé bằng $\\dfrac{1}{5}$ phân số lớn: số bé $1$ phần, số lớn $5$ phần, tổng $6$ phần bằng $\\dfrac{11}{8}$.\n\nMột phần $=\\dfrac{11}{8}:6$ (chia phân số cho số tự nhiên là nhân thêm vào mẫu số).\n\nThử lại: $\\dfrac{11}{48}+\\dfrac{55}{48}=\\dfrac{66}{48}=\\dfrac{11}{8}$ và $\\dfrac{11}{48}:\\dfrac{55}{48}=\\dfrac{1}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $1+5=6$ (phần)\n\nPhân số bé là: $\\dfrac{11}{8}:6\\times 1=\\dfrac{11}{8}\\times\\dfrac{1}{6}=\\dfrac{11}{48}$\n\nPhân số lớn là: $\\dfrac{11}{48}\\times 5=\\dfrac{55}{48}$\n\nĐáp số: $\\dfrac{11}{48}$ ; $\\dfrac{55}{48}$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 0.2291666667,
+   "hang": [
+    {
+     "nhan": "Phân số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Phân số lớn",
+     "phan": 5
+    }
+   ],
+   "tong": "tổng 11/8",
+   "dau_hoi": [
+    "Phân số bé",
+    "Phân số lớn"
+   ]
+  },
+  "ghi_chu_nghi": "Đề \"tỉ số là 1/5\" không nói thứ tự: hiểu là phân số bé = 1/5 phân số lớn. Nếu hiểu ngược (lớn : bé = 1/5) thì phải đổi vai trò, nhưng vẫn ra đúng cặp phân số 11/48 và 55/48, chỉ khác thứ tự nên đáp số không đổi."
+ },
+ {
+  "ma_nguon": "PCT 35 I.3",
+  "gop_y": false,
+  "dap_an": "$3$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích hình vuông $=$ cạnh $\\times$ cạnh. Tìm phân số nhân với chính nó ra $\\dfrac{9}{16}$: tử $3\\times 3=9$, mẫu $4\\times 4=16$, nên cạnh là $\\dfrac{3}{4}$ m. Chu vi $=$ cạnh $\\times\\,4$.\n\nChú ý: $\\dfrac{9}{16}$ m$^2$ là diện tích, không phải cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $\\dfrac{3}{4}\\times\\dfrac{3}{4}=\\dfrac{9}{16}$ nên cạnh hình vuông dài $\\dfrac{3}{4}$ m.\n\nChu vi hình vuông là: $\\dfrac{3}{4}\\times 4=3$ (m)\n\nĐáp số: $3$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.4",
+  "gop_y": false,
+  "dap_an": "$246$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: gọi $\\overline{abc}$ là $A$ rồi viết hai số bằng cấu tạo số. Viết thêm chữ số $1$ vào bên **phải**: $\\overline{abc1}=A\\times 10+1$. Viết thêm chữ số $1$ vào bên **trái**: $\\overline{1abc}=1000+A$ (vì $A$ có ba chữ số).\n\nCộng hai số: $A\\times 10+A=A\\times 11$ và $1+1000=1001$.\n\nThử lại: $2461+1246=3707$.\n\n**Phần 2. Trình bày**\n\nGọi $\\overline{abc}$ là $A$. Ta có: $\\overline{abc1}=A\\times 10+1$ và $\\overline{1abc}=1000+A$.\n\nNên: $A\\times 10+1+1000+A=3707$\n\n$\\begin{array}{l} A\\times 11+1001=3707 \\\\ A\\times 11=3707-1001 \\\\ A\\times 11=2706 \\\\ A=2706:11 \\\\ A=246 \\end{array}$\n\nVậy $\\overline{abc}=246$.\n\nĐáp số: $246$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.5",
+  "gop_y": false,
+  "dap_an": "$150000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{2}{3}$ và $\\dfrac{1}{5}$ đều là phân số của **số tiền ban đầu**. Tìm phần tiền đã tiêu ($\\dfrac{2}{3}+\\dfrac{1}{5}$), suy ra phần còn lại, mà phần còn lại là $20000$ đồng. Biết giá trị của một phân số của số tiền thì chia để tìm cả số tiền.\n\nThử lại: $150000$ đồng, mua vở $100000$, mua bút $30000$, còn $150000-100000-30000=20000$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMai mua vở và bút hết số phần số tiền là: $\\dfrac{2}{3}+\\dfrac{1}{5}=\\dfrac{10}{15}+\\dfrac{3}{15}=\\dfrac{13}{15}$ (số tiền)\n\nSố tiền còn lại chiếm số phần số tiền là: $1-\\dfrac{13}{15}=\\dfrac{2}{15}$ (số tiền)\n\nBan đầu Mai có số tiền là: $20000:\\dfrac{2}{15}=20000\\times\\dfrac{15}{2}=150000$ (đồng)\n\nĐáp số: $150000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.6",
+  "gop_y": false,
+  "dap_an": "$585$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số có ba chữ số mà đọc xuôi, đọc ngược như nhau thì chữ số hàng trăm **bằng** chữ số hàng đơn vị: số có dạng $\\overline{aba}$. Chia hết cho $5$ thì chữ số hàng đơn vị là $0$ hoặc $5$; hàng trăm khác $0$ nên $a=5$. Chia hết cho $9$ thì **tổng các chữ số chia hết cho $9$**.\n\nThử lại: $585:5=117$ và $585:9=65$.\n\n**Phần 2. Trình bày**\n\nSố đọc xuôi, đọc ngược đều như nhau nên chữ số hàng trăm bằng chữ số hàng đơn vị. Gọi số cần tìm là $\\overline{aba}$.\n\nSố đó chia hết cho $5$ nên chữ số hàng đơn vị $a$ là $0$ hoặc $5$. Chữ số hàng trăm khác $0$ nên $a=5$, số có dạng $\\overline{5b5}$.\n\nSố đó chia hết cho $9$ nên tổng các chữ số $5+b+5=10+b$ chia hết cho $9$.\n\nVì $b$ là chữ số nên $10+b$ nằm từ $10$ đến $19$, số chia hết cho $9$ trong khoảng đó là $18$. Suy ra $b=18-10=8$.\n\nVậy số cần tìm là $585$.\n\nĐáp số: $585$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.7",
+  "gop_y": false,
+  "dap_an": "Ngăn trên: $83$ quyển ; ngăn dưới: $97$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược** từ lúc cuối. Lúc cuối hai ngăn bằng nhau, mỗi ngăn $180:2=90$ quyển. Ngăn trên được thêm $15$ quyển rồi lại bớt $8$ quyển nên tổng cộng được thêm $15-8=7$ quyển. Vậy lúc đầu ngăn trên ít hơn $90$ là $7$ quyển.\n\nThử lại: ngăn trên $83+15=98$, bớt $8$ còn $90$; ngăn dưới $97-15=82$, thêm $8$ được $90$.\n\nChú ý: tổng số sách không đổi ($180$ quyển), chỉ có sách chuyển qua lại giữa hai ngăn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc sau, mỗi ngăn có số quyển sách là: $180:2=90$ (quyển)\n\nNgăn trên được thêm số quyển sách (sau hai lần chuyển) là: $15-8=7$ (quyển)\n\nLúc đầu ngăn trên có số quyển sách là: $90-7=83$ (quyển)\n\nLúc đầu ngăn dưới có số quyển sách là: $180-83=97$ (quyển)\n\nĐáp số: Ngăn trên: $83$ quyển ; ngăn dưới: $97$ quyển",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.8",
+  "gop_y": false,
+  "dap_an": "$180$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{2}{5}$ tính theo cả cuốn sách, còn $\\dfrac{4}{9}$ tính theo **số trang còn lại sau ngày thứ nhất**. Quy mọi phần về **cả cuốn sách**: sau ngày 1 còn $\\dfrac{3}{5}$ cuốn, ngày 2 đọc $\\dfrac{3}{5}\\times\\dfrac{4}{9}=\\dfrac{4}{15}$ cuốn.\n\nCòn lại $\\dfrac{3}{5}-\\dfrac{4}{15}=\\dfrac{1}{3}$ cuốn sách, ứng với $60$ trang. Chia $60$ cho $\\dfrac{1}{3}$.\n\nThử lại: $180$ trang, ngày 1 đọc $72$ còn $108$; ngày 2 đọc $108\\times\\dfrac{4}{9}=48$, còn $60$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau ngày thứ nhất, số trang còn lại chiếm số phần cuốn sách là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (cuốn sách)\n\nNgày thứ hai Nam đọc được số phần cuốn sách là: $\\dfrac{3}{5}\\times\\dfrac{4}{9}=\\dfrac{4}{15}$ (cuốn sách)\n\nSố trang còn lại sau hai ngày chiếm số phần cuốn sách là: $\\dfrac{3}{5}-\\dfrac{4}{15}=\\dfrac{9}{15}-\\dfrac{4}{15}=\\dfrac{1}{3}$ (cuốn sách)\n\nCuốn sách đó có số trang là: $60:\\dfrac{1}{3}=60\\times 3=180$ (trang)\n\nĐáp số: $180$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 I.9",
+  "gop_y": false,
+  "dap_an": "$9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cùng cộng thêm một số vào tử số **và** mẫu số thì **hiệu của mẫu số và tử số không đổi**: $71-41=30$. Phân số mới bằng $\\dfrac{5}{8}$ nên tử số $5$ phần, mẫu số $8$ phần, hiệu $3$ phần bằng $30$.\n\nTìm tử số mới rồi trừ tử số cũ $41$ để biết đã cộng thêm bao nhiêu.\n\nThử lại: $\\dfrac{41+9}{71+9}=\\dfrac{50}{80}=\\dfrac{5}{8}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi cùng cộng thêm một số tự nhiên vào tử số và mẫu số thì hiệu của mẫu số và tử số không đổi.\n\nHiệu của mẫu số và tử số là: $71-41=30$\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $8-5=3$ (phần)\n\nGiá trị một phần là: $30:3=10$\n\nTử số mới là: $10\\times 5=50$\n\nSố tự nhiên $a$ cần tìm là: $50-41=9$\n\nĐáp số: $9$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 8
+    },
+    {
+     "nhan": "Tử số mới",
+     "phan": 5
+    }
+   ],
+   "hieu": "30",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 II.1",
+  "gop_y": false,
+  "dap_an": "$105$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược** từ kết quả cuối. Các phép làm lần lượt: trừ $80$, nhân $25$, cộng $77$, được $702$. Đi ngược lại từ $702$: trừ $77$ (ngược của cộng), chia $25$ (ngược của nhân), cộng $80$ (ngược của trừ).\n\nThử lại: $\\left(105-80\\right)\\times 25+77=625+77=702$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sau khi trừ đi $80$ rồi nhân với $25$ là: $702-77=625$\n\nSố sau khi trừ đi $80$ là: $625:25=25$\n\nSố tự nhiên cần tìm là: $25+80=105$\n\nĐáp số: $105$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 II.2",
+  "gop_y": false,
+  "dap_an": "Ngày thứ nhất: $540$ lượt ; ngày thứ hai: $720$ lượt",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ngày thứ ba đã biết ($890$ lượt) nên trừ đi để được **tổng của ngày thứ nhất và thứ hai**. Ngày thứ nhất bằng $\\dfrac{3}{4}$ ngày thứ hai: ngày thứ nhất $3$ phần, ngày thứ hai $4$ phần. Đây là bài tổng – tỉ.\n\nThử lại: $540+720+890=2150$ và $540:720=\\dfrac{3}{4}$.\n\nChú ý: đề cho tổng $2150$ của **ba ngày**, không phải của hai ngày; phải trừ $890$ trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lượt khách của ngày thứ nhất và ngày thứ hai là: $2150-890=1260$ (lượt)\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+4=7$ (phần)\n\nSố lượt khách của ngày thứ nhất là: $1260:7\\times 3=540$ (lượt)\n\nSố lượt khách của ngày thứ hai là: $1260-540=720$ (lượt)\n\nĐáp số: Ngày thứ nhất: $540$ lượt ; ngày thứ hai: $720$ lượt",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 180,
+   "hang": [
+    {
+     "nhan": "Ngày thứ nhất",
+     "phan": 3
+    },
+    {
+     "nhan": "Ngày thứ hai",
+     "phan": 4
+    }
+   ],
+   "tong": "1260 lượt",
+   "dau_hoi": [
+    "Ngày thứ nhất",
+    "Ngày thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 35 II.3",
+  "gop_y": false,
+  "dap_an": "$540$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích trồng cây tính theo **diện tích xây nhà**, không phải theo cả mảnh đất. Đổi về phần của cả mảnh đất: $\\dfrac{5}{9}\\times\\dfrac{11}{25}=\\dfrac{11}{45}$. Rồi cộng nhà và cây, phần còn lại là kho ($108$ $m^2$).\n\nBiết giá trị ($108$ $m^2$) của phần kho thì chia cho phân số để tìm cả mảnh đất.\n\nThử lại: $540\\times\\dfrac{5}{9}=300$ (nhà), $300\\times\\dfrac{11}{25}=132$ (cây), $300+132+108=540$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích trồng cây chiếm số phần diện tích mảnh đất là: $\\dfrac{5}{9}\\times\\dfrac{11}{25}=\\dfrac{11}{45}$ (diện tích mảnh đất)\n\nDiện tích xây nhà và trồng cây chiếm số phần diện tích mảnh đất là: $\\dfrac{5}{9}+\\dfrac{11}{45}=\\dfrac{25}{45}+\\dfrac{11}{45}=\\dfrac{36}{45}=\\dfrac{4}{5}$ (diện tích mảnh đất)\n\nDiện tích xây kho chiếm số phần diện tích mảnh đất là: $1-\\dfrac{4}{5}=\\dfrac{1}{5}$ (diện tích mảnh đất)\n\nDiện tích mảnh đất là: $108:\\dfrac{1}{5}=108\\times 5=540$ ($m^2$)\n\nĐáp số: $540$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 29 II.3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{200}{101}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi thừa số cộng ra một phân số có dạng đặc biệt: $1+\\dfrac{1}{3}=\\dfrac{4}{3}$, $1+\\dfrac{1}{8}=\\dfrac{9}{8}$, $1+\\dfrac{1}{15}=\\dfrac{16}{15}$, ... Tử số là $2\\times 2$, $3\\times 3$, $4\\times 4$, ...; mẫu số là $1\\times 3$, $2\\times 4$, $3\\times 5$, ... (hai số hơn kém nhau $2$). Thừa số cuối $1+\\dfrac{1}{9999}=\\dfrac{10000}{9999}=\\dfrac{100\\times 100}{99\\times 101}$.\n\nViết tích thành hai dãy phân số: một dãy $\\dfrac{2\\times 3\\times\\ldots\\times 100}{1\\times 2\\times\\ldots\\times 99}$, dãy kia $\\dfrac{2\\times 3\\times\\ldots\\times 100}{3\\times 4\\times\\ldots\\times 101}$. Các thừa số giống nhau ở tử và mẫu **triệt tiêu**.\n\nChú ý: khi triệt tiêu, nhớ dãy bên dưới của phân số thứ hai bắt đầu từ $3$ nên ở tử còn lại $2$, ở mẫu còn lại $101$.\n\n**Phần 2. Trình bày**\n\n$\\left(1+\\dfrac{1}{3}\\right)\\times\\left(1+\\dfrac{1}{8}\\right)\\times\\left(1+\\dfrac{1}{15}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{9999}\\right)$\n\n$=\\dfrac{4}{3}\\times\\dfrac{9}{8}\\times\\dfrac{16}{15}\\times\\ldots\\times\\dfrac{10000}{9999}$\n\n$=\\dfrac{2\\times 2}{1\\times 3}\\times\\dfrac{3\\times 3}{2\\times 4}\\times\\dfrac{4\\times 4}{3\\times 5}\\times\\ldots\\times\\dfrac{100\\times 100}{99\\times 101}$\n\n$=\\dfrac{2\\times 3\\times 4\\times\\ldots\\times 100}{1\\times 2\\times 3\\times\\ldots\\times 99}\\times\\dfrac{2\\times 3\\times 4\\times\\ldots\\times 100}{3\\times 4\\times 5\\times\\ldots\\times 101}$\n\n$=\\dfrac{100}{1}\\times\\dfrac{2}{101}$\n\n$=\\dfrac{200}{101}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Nguồn: đề này bị in dính vào cuối đề PCT 29 II.2 (mã gốc \"Bài 3\"); đây là bài thứ 3 của Phần II nên đặt mã PCT 29 II.3 — cần người xác nhận mã trước khi ghi kho."
+ }
+]

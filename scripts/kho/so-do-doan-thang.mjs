@@ -120,7 +120,7 @@ export function veSoDo(m) {
   if (m.hieu && hang.length >= 2) {
     const a = hang[0], b = hang[1]
     const x1 = r1(Math.min(a._end, b._end)), x2 = r1(Math.max(a._end, b._end))
-    const y = Math.max(a._y, b._y) + 34   // dưới dấu "?" của hàng (y+20), không đè
+    const y = Math.max(...hang.map((h) => h._y)) + 34   // dưới dấu "?" của hàng CUỐI (y+20) — sơ đồ 3 hàng mà đặt dưới hàng 2 là đè hàng 3
     out.push(`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#0f172a" stroke-width="1"/>`)
     out.push(`<line x1="${x1}" y1="${y - 4}" x2="${x1}" y2="${y + 4}" stroke="#0f172a" stroke-width="1"/>`)
     out.push(`<line x1="${x2}" y1="${y - 4}" x2="${x2}" y2="${y + 4}" stroke="#0f172a" stroke-width="1"/>`)
