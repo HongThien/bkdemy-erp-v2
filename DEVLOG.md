@@ -35822,3 +35822,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Mig `202610072118_tinh_nang_dot_1` (ĐÃ ÁP):** thêm mã `chinh_phuc`, `giai_vo_dich` (đóng = "Sắp ra mắt", không ẩn) + đóng `thong_tin, so_tay, chuoi, xep_hang, rank, thu_vien, the_gioi, de_thi_thu`. Trạng thái DB sau áp: MỞ = hoc_tap, nhiem_vu, thanh_tuu, vi_xu, tro_choi.
 - **App:** `HocTapHS` prop `sapRa` (đảo mờ + 🔒 "Sắp ra mắt" ở bản đồ đảo; ô mờ + nhãn ở lưới) · `NhiemVuArt` phóng to (ví 46px, tiêu đề 34px, icon 92–116px, hàng nhiệm vụ cao 120) + "Làm luôn ›" full-width dưới dòng nhiệm vụ ngày (bố cục 2 cột ban đầu quá chật ⇒ chuyển nút xuống dưới) · `NhiemVuHS` (bản code) đổi nhãn "Làm luôn ›" · `XemHocTap` thêm `&sap=1`. tsc sạch (3 lỗi cũ), check:style-hs ✔. Preview 1024×768 đã xem Nhiệm vụ OK; **CHƯA xem Học tập `&sap=1` và bản điện thoại sau khi phóng to** (tool bị ngắt).
 - **Còn nghi vấn cần Thùy:** BXH + Chuỗi đang ĐÓNG theo nghĩa đen danh sách (xem HANDOFF ①).
+
+## 08/10 — Kiểm tiếp đợt 1 (phần tối 07/10 bị ngắt)
+- **Học tập `?xem=hoc_tap&sap=1`:** Chinh phục BK + Giải Vô địch BK hiện xám + 🔒 "Sắp ra mắt", bấm vào KHÔNG chuyển màn (đúng ý). Các đảo còn lại bình thường.
+- **Nhiệm vụ trên điện thoại 375:** bản phóng to làm dòng nhiệm vụ ngày bị bóp chữ từng từ + phần thưởng tràn (trang 377>375) ⇒ sửa: dòng cho phép xuống hàng, thưởng xuống dưới chữ (`flex-wrap`, `basis-[150px]`), tick đặt tuyệt đối góc phải trên mobile, tiêu đề khối không cắt trên mobile. Sau sửa 375 = 375, desktop 1024 vẫn ổn.
+- **Còn chưa kiểm:** e2e bằng tài khoản HS thật (ô đóng ẩn trên màn chính, "Làm luôn" vào đúng Luyện dạng yếu) + màn admin công tắc trên trình duyệt (cần đăng nhập).

@@ -21,9 +21,9 @@ function Tick({ xong }: { xong: boolean }) {
   )
 }
 // Thưởng: ngọc ĐHT + tinh thể EXP kèm số
-function Thuong({ a, exp, dht }: { a: AnhNv; exp: number; dht: number }) {
+function Thuong({ a, exp, dht, className = '' }: { a: AnhNv; exp: number; dht: number; className?: string }) {
   return (
-    <span className="flex shrink-0 flex-col items-end gap-1 text-[15px] font-extrabold leading-none tabular-nums md:text-[17px]">
+    <span className={`flex shrink-0 flex-row items-center gap-x-4 text-[15px] font-extrabold leading-none tabular-nums sm:flex-col sm:items-end sm:gap-1 md:text-[17px] ${className}`}>
       <span className="flex items-center gap-1" style={{ color: MAU.acc }}><Anh src={a.icon.tinhTheExp} c={30} />+{exp} EXP</span>
       <span className="flex items-center gap-1" style={{ color: MAU.muted }}><Anh src={a.icon.ngocDht} c={30} />+{dht} ĐHT</span>
     </span>
@@ -47,7 +47,7 @@ function Khoi({ a, icon, ten, phu, children }: { a: AnhNv; icon: string; ten: st
     <section className="min-w-0 p-0" style={kieuKhungCat(a.khoi, 14, { background: RUOT, borderRadius: 18 })}>
       <div className="flex items-center gap-3 px-2.5 pt-1" style={kieuKhungCat(a.tieuDe, 10, { minHeight: 84, background: 'rgba(60,40,20,0.55)', borderRadius: 12, margin: '4px 4px 0' })}>
         <Anh src={icon} c={64} className="-my-1 md:!h-[76px] md:!w-[76px]" />
-        <h2 className="min-w-0 flex-1 truncate text-[23px] font-extrabold uppercase leading-tight tracking-[0.03em] md:text-[28px]" style={{ ...HEAD, textTransform: 'uppercase' }}>{ten}</h2>
+        <h2 className="min-w-0 flex-1 sm:truncate text-[19px] font-extrabold uppercase leading-tight tracking-[0.03em] sm:text-[23px] md:text-[28px]" style={{ ...HEAD, textTransform: 'uppercase' }}>{ten}</h2>
         {phu && <span className="shrink-0 text-right text-[14.5px] font-semibold leading-tight md:text-[16px]" style={{ color: MAU.muted }}>{phu}</span>}
       </div>
       <div className="flex flex-col gap-3 px-3 pb-4 pt-3">{children}</div>
@@ -56,15 +56,15 @@ function Khoi({ a, icon, ten, phu, children }: { a: AnhNv; icon: string; ten: st
 }
 function Dong({ a, icon, ten, mota, xong, hien, can, exp, dht }: { a: AnhNv; icon: string; ten: string; mota: string; xong: boolean; hien: number; can: number; exp: number; dht: number }) {
   return (
-    <div className="flex items-center gap-3 px-2" style={kieuKhungCat(a.nhiemVu, 8, { minHeight: 120, background: RUOT, borderRadius: 14 })}>
+    <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1 px-2 sm:flex-nowrap" style={kieuKhungCat(a.nhiemVu, 8, { minHeight: 120, background: RUOT, borderRadius: 14 })}>
       <Anh src={icon} c={68} className="md:!h-[92px] md:!w-[92px]" />
-      <span className="min-w-0 flex-1 py-2">
+      <span className="min-w-0 flex-1 basis-[150px] py-2 pr-9 sm:pr-0">
         <span className="block text-[18px] font-bold leading-tight md:text-[21px]">{ten}</span>
         <span className="mt-0.5 block text-[14px] leading-snug md:text-[15px]" style={{ color: MAU.muted }}>{mota}</span>
         <Thanh hien={xong ? can : hien} can={can} />
       </span>
-      <Thuong a={a} exp={exp} dht={dht} />
-      <Tick xong={xong} />
+      <Thuong a={a} exp={exp} dht={dht} className="w-full justify-start sm:w-auto" />
+      <span className="absolute right-2 top-2 sm:static"><Tick xong={xong} /></span>
     </div>
   )
 }
@@ -124,9 +124,9 @@ export function NhiemVuViewArt({ d, a, onLuyenYeu, onVongQuay }: { d: NhiemVuCua
       <div className="grid items-start gap-3 md:grid-cols-2">
         <Khoi a={a} icon={a.icon.ngay} ten="Hôm nay" phu={<span className="hidden first-letter:uppercase sm:inline">{homNay()}</span>}>
           <div className="flex flex-col gap-3 px-2.5 py-3" style={kieuKhungCat(a.nhiemVu, 8, { background: RUOT, borderRadius: 14 })}>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 sm:flex-nowrap">
             <Anh src={a.icon.luyenYeu} c={76} className="md:!h-[116px] md:!w-[116px]" />
-            <span className="min-w-0 flex-1">
+            <span className="min-w-0 flex-1 basis-[150px]">
               <span className="block text-[19px] font-bold leading-tight md:text-[22px]">Luyện dạng yếu</span>
               <span className="mt-0.5 block text-[14px] leading-snug md:text-[15px]" style={{ color: MAU.muted }}>Mỗi lượt đúng từ {Math.round(c.dat_ti_le * 10)}/10 câu trở lên được thưởng · tối đa {c.lan_ngay} lượt mỗi ngày</span>
               <span className="mt-2 grid gap-1.5" style={{ gridTemplateColumns: `repeat(${c.lan_ngay}, minmax(0, 1fr))` }}>
@@ -141,7 +141,7 @@ export function NhiemVuViewArt({ d, a, onLuyenYeu, onVongQuay }: { d: NhiemVuCua
                 })}
               </span>
             </span>
-            <Thuong a={a} exp={c.exp_luot} dht={c.dht_luot} />
+            <Thuong a={a} exp={c.exp_luot} dht={c.dht_luot} className="w-full justify-start sm:w-auto" />
             </div>
             {onLuyenYeu && <Nut a={a} icon={a.icon.luyenYeu} on onClick={onLuyenYeu}>Làm luôn ›</Nut>}
           </div>
