@@ -114,6 +114,7 @@ export const adminLeaves: AdminLeaf[] = [
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
   { id: 'bdkt',        nhom: 'Học thuật', ten: 'Bản đồ kiến thức (Kho)',      founderOnly: false },
+  { id: 'bdm',         nhom: 'Học thuật', ten: 'Bản đồ mới (soạn 4 tầng)',    founderOnly: false }, // nháp Đại — CEO soạn vỏ + khớp bản đồ cũ (spec-ban-do-4-tang.md)
   { id: 'sotay',       nhom: 'Học thuật', ten: 'Sổ tay công thức',            founderOnly: false }, // thẻ công thức app HS: sửa · duyệt · gắn hình (spec-so-tay-cong-thuc.md)
   { id: 'tl',          nhom: 'Học thuật', ten: 'Kho tài liệu',                founderOnly: false },
   { id: 'nhapkho',     nhom: 'Học thuật', ten: 'Nhập kho (từ tài liệu)',      founderOnly: false }, // ingest-first: bóc PDF → gán dạng → đẩy kho

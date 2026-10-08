@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
@@ -13,6 +13,7 @@ import { BuoiDuoiDetail } from './botro/BoTroDuoiScreen'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
+import BanDoMoiScreen from './kho/BanDoMoi'
 import SoTayCongThucScreen from './sotay/SoTayCongThucScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
@@ -572,6 +573,14 @@ export default function NhanSuHome({ user }: { user: User }) {
   const [openBuoi, setOpenBuoi] = useState<OpenBuoi | null>(null)
   const isMobile = useIsMobile()
   const [navOpen, setNavOpen] = useState(false)
+  // Cây trái DESKTOP tự ẩn (CEO 08/10: "chỉ chuột vào mới hiện — nhiều không gian hiển thị hơn"): dải mỏng mép trái,
+  // rê chuột vào ⇒ cây trượt ra (đè lên nội dung), rời ⇒ ẩn. 📌 Ghim = giữ cố định như cũ (sở thích từng máy).
+  const [navGhim, setNavGhim] = useState(() => { try { return localStorage.getItem('nav.ghim') === '1' } catch { return false } })
+  const [navHien, setNavHien] = useState(false)
+  const navTimer = useRef<number | undefined>(undefined)
+  const doiGhim = (v: boolean) => { setNavGhim(v); setNavHien(false); try { localStorage.setItem('nav.ghim', v ? '1' : '0') } catch { /* bỏ qua */ } }
+  const moNav = () => { window.clearTimeout(navTimer.current); navTimer.current = window.setTimeout(() => setNavHien(true), 120) }
+  const dongNav = () => { window.clearTimeout(navTimer.current); navTimer.current = window.setTimeout(() => setNavHien(false), 250) }
 
   useEffect(() => { getMyScope().then(setScope).finally(() => setLoading(false)) }, [])
 
@@ -593,7 +602,8 @@ export default function NhanSuHome({ user }: { user: User }) {
   const chonLeaf = (id: string) => { setStaffLeaf(id); setNavOpen(false) } // mobile: chọn xong tự đóng drawer
 
   return (
-    <div className={isMobile ? 'flex h-full min-h-0 flex-col overflow-hidden' : 'grid h-full min-h-0 grid-cols-[240px_1fr] grid-rows-[minmax(0,1fr)] overflow-hidden'}>
+    <div className={isMobile ? 'flex h-full min-h-0 flex-col overflow-hidden'
+      : `relative grid h-full min-h-0 ${navGhim ? 'grid-cols-[240px_1fr]' : 'grid-cols-[14px_1fr]'} grid-rows-[minmax(0,1fr)] overflow-hidden`}>
       {isMobile ? (
         <>
           {/* Top bar mobile: ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ trên điện thoại).
@@ -617,10 +627,33 @@ export default function NhanSuHome({ user }: { user: User }) {
           )}
         </>
       ) : (
-        <aside className="min-h-0 overflow-auto border-r bg-white/60 p-3">
-          <PersonalCard user={user} />
-          <NavTree groups={groups} selected={staffLeaf} onSelect={setStaffLeaf} />
-        </aside>
+        navGhim ? (
+          <aside className="min-h-0 overflow-auto border-r bg-white/60 p-3">
+            <div className="mb-1 flex justify-end">
+              <button onClick={() => doiGhim(false)} title="Bỏ ghim — cây tự ẩn, rê chuột vào mép trái để hiện"
+                className="rounded px-1.5 text-[11px] text-slate-400 hover:bg-slate-100 hover:text-slate-600">📌 Bỏ ghim</button>
+            </div>
+            <PersonalCard user={user} />
+            <NavTree groups={groups} selected={staffLeaf} onSelect={setStaffLeaf} />
+          </aside>
+        ) : (
+          <>
+            {/* Dải mép trái: rê chuột vào để hiện cây */}
+            <div onMouseEnter={moNav} onMouseLeave={dongNav} title="Rê chuột vào để mở menu"
+              className="flex min-h-0 cursor-pointer flex-col items-center border-r border-slate-200 bg-slate-100 pt-3 text-[11px] text-slate-400 hover:bg-indigo-100 hover:text-indigo-600">
+              ☰
+            </div>
+            <aside onMouseEnter={moNav} onMouseLeave={dongNav}
+              className={`absolute inset-y-0 left-0 z-50 w-[260px] overflow-auto border-r border-slate-200 bg-white p-3 shadow-2xl transition-transform duration-150 ${navHien ? 'translate-x-0' : '-translate-x-full'}`}>
+              <div className="mb-1 flex justify-end">
+                <button onClick={() => doiGhim(true)} title="Ghim — cây luôn hiện, chiếm cột trái như cũ"
+                  className="rounded px-1.5 text-[11px] text-slate-400 hover:bg-slate-100 hover:text-slate-600">📌 Ghim</button>
+              </div>
+              <PersonalCard user={user} />
+              <NavTree groups={groups} selected={staffLeaf} onSelect={(id) => { setStaffLeaf(id); setNavHien(false) }} />
+            </aside>
+          </>
+        )
       )}
       {/* Khung phải: min-w-0 để bảng rộng (vd chấm bài nhiều bài) CUỘN trong khung thay vì bung cột → tràn layout. */}
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
@@ -646,6 +679,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       ) : staffLeaf === 'viec' ? (
         <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={setOpenBuoi} /></section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
+      : staffLeaf === 'bdm' ? <BanDoMoiScreen />
       : staffLeaf === 'sotay' ? <SoTayCongThucScreen />
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />

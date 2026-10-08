@@ -36002,3 +36002,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Đối chiếu sổ gậy:** mọi gậy BTVN/ET đang hiệu lực của TA chính khớp 1-1 task và được tính. Phát hiện: 3 gậy Trang đã chốt ở 12B1 (Trần Hoàng Đạt) gắn task buổi KHÔNG có câu ⇒ luật mới: có gậy vào sổ thì task luôn tính (cờ khong_cau_co_gay). 1 gậy BTVN 11B1 của Đạt — Đạt chỉ là GV lớp đó ⇒ không vào điểm TA, vẫn hiện kèm lý do. Gậy ingame/danhgia = việc khác, hiện "không thuộc BTVN/ET".
 - **Chú ý:** gậy tự động đo trễ theo lần đóng CUỐI ⇒ task mở lại có thể nhận gậy trễ dù lần đầu đúng hạn (Hà Giang 7S1 20/09: lần đầu đúng hạn, gậy ghi 47h). Đã ghi vào spec §6.
 - **Bài học:** node -e trong chuỗi bash nháy kép ⇒ backtick bị bash chạy như lệnh, dính 3 lần trong ngày (mất chữ âm thầm) ⇒ chuỗi có backtick phải dùng Write/Edit.
+
+## 08/10 (tiếp) — Bản đồ mới thành mục riêng + menu trái tự ẩn + xoá 'qqqq'
+- **Thùy:** xoá luôn qqqq · cây trái ERP dạng động, chỉ chuột vào mới hiện · Bản đồ mới là 1 lá riêng trên cây; chủ đề = dropdown, chuyên đề = cột danh sách bên trái.
+- Xoá dai_bdm_chuyen_de NCH00002 'qqqq' (0 ô đang dùng, 1 dòng, 1 transaction).
+- NhanSuHome: desktop mặc định cây tự ẩn — dải 14px mép trái, rê chuột (trễ 120ms) ⇒ cây trượt ra đè nội dung, rời (trễ 250ms) ⇒ ẩn; chọn mục ⇒ ẩn. 📌 Ghim/Bỏ ghim = sở thích từng máy (localStorage nav.ghim), ghim thì về bố cục 240px cũ. Áp cho MỌI nhân sự (Thùy yêu cầu cho ERP).
+- Lá mới 'bdm' (Học thuật · 'Bản đồ mới (soạn 4 tầng)') — admin thấy ngay; nhân sự khác cần CEO cấp ở màn Phân quyền. Gỡ tab Bản đồ mới khỏi màn Kho. BanDoMoiScreen: chọn khối đầu màn (nhớ bdm.khoi), dropdown chủ đề + ⚙ (đổi tên, ▲▼ thứ tự, xoá), cột chuyên đề dọc (kéo sắp, thả nhóm vào để chuyển, ⚠ còn câu chưa gán, phím ↑↓).
+- Kiểm app local (chỉ xem, không sửa dữ liệu Thùy): cây ẩn/hiện khi rê chuột, lá mới mở đúng, đổi chủ đề, ↓ chuyển chuyên đề, K6 hiện sơ đồ thật.

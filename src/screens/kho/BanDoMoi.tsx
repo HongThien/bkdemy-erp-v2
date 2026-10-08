@@ -17,7 +17,7 @@ import {
   getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
-import type { LyThuyet } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
 import { MathText, inp } from './ui'
 
@@ -67,7 +67,7 @@ function xepLuoi(nhom: BdmNhom[]) {
   return { cot, soCot: maxCot + 1, soHang: Math.max(0, ...nhom.map((n) => n.tang)) + 1 }
 }
 
-export default function BanDoMoi({ khoi }: { khoi: string }) {
+function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [cay, setCay] = useState<BdmCay | null>(null)
   const [loiTai, setLoiTai] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -115,8 +115,8 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
   useEffect(() => {
     const f = (e: KeyboardEvent) => {
       if (dangGo(e.target) || lt) return
-      if (e.key === 'ArrowLeft') buocChuyenDe(-1)
-      if (e.key === 'ArrowRight') buocChuyenDe(1)
+      if (e.key === 'ArrowUp') { e.preventDefault(); buocChuyenDe(-1) }
+      if (e.key === 'ArrowDown') { e.preventDefault(); buocChuyenDe(1) }
     }
     window.addEventListener('keydown', f)
     return () => window.removeEventListener('keydown', f)
@@ -198,17 +198,35 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
 
   return (
     <div className="flex h-full min-h-0 flex-col">
-      {/* Giải thích + tiến độ */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-amber-200 bg-amber-50 px-6 py-1.5 text-[12px] text-amber-900">
-        <span className="font-semibold">🆕 Bản đồ mới — bản nháp khối {khoi}</span>
-        <span className="text-amber-800/80">Chưa ảnh hưởng bản đồ đang chạy.</span>
-        <span className="ml-auto flex gap-3">
-          <span>Nhóm bài <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa}/{tienDo.nhom} · lý thuyết {tienDo.nhomLt}/{tienDo.nhom}</span>
-          <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa}/{tienDo.db} · ví dụ {tienDo.dbVd}/{tienDo.db}</span>
+      {/* Đầu màn: khối · CHỦ ĐỀ (dropdown, mỗi màn 1 chủ đề) · bản đồ cũ · tiến độ */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-slate-200 bg-white px-4 py-2">
+        <span className="text-[14px] font-semibold text-slate-900">🆕 Bản đồ mới</span>
+        <span className="rounded bg-amber-100 px-1.5 text-[11px] font-medium text-amber-800">nháp · Đại · chưa ảnh hưởng bản đồ đang chạy</span>
+        {dauMan}
+        <span className="flex items-center gap-1.5">
+          <span className="ml-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chủ đề</span>
+          <select value={chuDe?.id ?? ''} onChange={(e) => chonChuDe(e.target.value)} disabled={!cay.chu_de.length}
+            className={`${inp} w-auto max-w-[420px] py-1 text-[13px] font-medium`}>
+            {!cay.chu_de.length && <option value="">— chưa có chủ đề —</option>}
+            {cay.chu_de.map((cd, i) => <option key={cd.id} value={cd.id}>{i + 1}. {cd.ten}</option>)}
+          </select>
+        </span>
+        {chuDe && (
+          <button onClick={() => setChon({ loai: 'chu_de' })} title="Sửa tên / thứ tự / xoá chủ đề"
+            className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
+        )}
+        <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
+        <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
+          className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
+          📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
+        </button>
+        <span className="ml-auto flex gap-3 text-[11.5px] text-slate-500">
+          <span>Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
+          <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · ví dụ {tienDo.dbVd}</span>
         </span>
       </div>
       {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-white px-6 py-1.5 text-[12px] text-slate-600">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-slate-50 px-4 py-1 text-[12px] text-slate-600">
         <span className="font-semibold text-slate-700">Khớp bản đồ cũ:</span>
         <span className={cay.tong.dang_cu_chua_gan ? 'text-rose-600' : 'text-emerald-600'}>
           Dạng cũ chưa gắn <b>{cay.tong.dang_cu_chua_gan}</b>/{cay.tong.dang_cu}{cay.tong.dang_cu_chua_gan ? ` (${cay.tong.cau_dang_cu_chua_gan} câu)` : ' ✓'}
@@ -216,92 +234,67 @@ export default function BanDoMoi({ khoi }: { khoi: string }) {
         <span className={cay.tong.cau_chua_gan ? 'text-rose-600' : 'text-emerald-600'}>
           Câu chưa gán dạng bài <b>{cay.tong.cau_chua_gan}</b>/{cay.tong.cau}{cay.tong.cau_chua_gan ? '' : ' ✓'}
         </span>
-        <span className="text-slate-400">(tính trên dạng cũ của khối {khoi}; bản sao đi theo câu gốc)</span>
+        <span className="text-slate-400">(dạng cũ của khối {khoi}; bản sao đi theo câu gốc)</span>
       </div>
-
-      {/* Thanh CHỦ ĐỀ — mỗi màn 1 chủ đề */}
-      <div className="flex items-center gap-1.5 overflow-x-auto border-b border-slate-200 bg-white px-6 py-2">
-        <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
-          className={`mr-2 shrink-0 rounded-lg border px-2.5 py-1.5 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
-          📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
-        </button>
-        <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chủ đề</span>
-        {cay.chu_de.map((cd, i) => (
-          <button key={cd.id} draggable onDragStart={(e) => batDauKeo(e, { loai: 'chu_de', id: cd.id })} onDragEnd={ketThucKeo}
-            {...vung(`cd:${cd.id}`, (k) => (k.loai === 'chu_de' && k.id !== cd.id) || (k.loai === 'o' && k.chuDeId !== cd.id), (k) => {
-              if (k.loai === 'chu_de') return lam(() => sapXep('chu_de', chenTruoc(cay.chu_de.map((c) => c.id), k.id, cd.id)), 'Đã sắp lại chủ đề')
-              if (k.loai === 'o') {
-                const daCo = cd.o.some((x) => x.chuyen_de_id === k.chuyenDeId)
-                if (daCo && !window.confirm(`Chủ đề «${cd.ten}» đã có chuyên đề này — dồn các nhóm bài vào chuyên đề sẵn có?`)) return
-                return lam(() => chuyenO(k.chuDeId, k.chuyenDeId, cd.id), daCo ? 'Đã dồn vào chuyên đề sẵn có' : `Đã chuyển sang «${cd.ten}»`)
-              }
-            })}
-            onClick={() => (chuDe?.id === cd.id ? setChon({ loai: 'chu_de' }) : chonChuDe(cd.id))}
-            title={chuDe?.id === cd.id ? 'Bấm lần nữa để sửa / xoá chủ đề' : 'Mở chủ đề'}
-            className={`flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-1.5 text-[13px] font-medium transition ${sang(`cd:${cd.id}`)} ${
-              chuDe?.id === cd.id ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
-            <span className="text-[11px] opacity-70">{i + 1}</span><MathText>{cd.ten}</MathText>
-          </button>
-        ))}
-        <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" rong onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
-      </div>
+      {loi && (
+        <div className="flex items-start gap-2 border-b border-rose-200 bg-rose-50 px-4 py-2 text-[13px] text-rose-700">
+          <span className="flex-1">⚠ {loi}</span>
+          <button onClick={() => setLoi(null)} className="text-rose-400 hover:text-rose-700">✕</button>
+        </div>
+      )}
 
       <div className="flex min-h-0 flex-1">
-      {nganCu && (
-        <NganCu ds={dangCu} batDauKeo={batDauKeo} ketThucKeo={ketThucKeo}
-          onGo={(id, ten) => void lam(() => goDoiUng(id), `Đã gỡ gắn «${ten}»`)} onDong={() => setNganCu(false)} />
-      )}
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-      {!chuDe ? (
-        <div className="flex flex-1 items-center justify-center text-[13px] text-slate-400">Khối {khoi} chưa có chủ đề nào — bấm «+ Chủ đề» để bắt đầu.</div>
-      ) : (
-        <>
-          {/* Thanh CHUYÊN ĐỀ — trái→phải = thứ tự học */}
-          <div className="flex items-center gap-1.5 border-b border-slate-200 bg-slate-50 px-6 py-2">
-            <button onClick={() => buocChuyenDe(-1)} title="Chuyên đề trước (←)" className="rounded-md px-2 py-1 text-slate-500 hover:bg-white hover:text-indigo-600">◀</button>
-            <div className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto">
-              {chuDe.o.map((x) => (
-                <button key={x.chuyen_de_id} draggable onDragStart={(e) => batDauKeo(e, { loai: 'o', chuDeId: chuDe.id, chuyenDeId: x.chuyen_de_id })} onDragEnd={ketThucKeo}
-                  {...vung(`o:${x.chuyen_de_id}`, (k) => (k.loai === 'o' && k.chuDeId === chuDe.id && k.chuyenDeId !== x.chuyen_de_id) || (k.loai === 'nhom' && k.chuyenDeId !== x.chuyen_de_id), (k) => {
-                    if (k.loai === 'o') return lam(() => sapXep('o', chenTruoc(chuDe.o.map((y) => y.chuyen_de_id), k.chuyenDeId, x.chuyen_de_id).map((c) => oKey(chuDe.id, c))), 'Đã sắp lại chuyên đề')
-                    if (k.loai === 'nhom') return lam(() => chuyenNhom(k.id, chuDe.id, x.chuyen_de_id, null), `Đã chuyển nhóm sang «${x.ten}»`)
-                  })}
-                  onClick={() => chonChuyenDe(x.chuyen_de_id)}
-                  className={`flex shrink-0 items-center gap-1.5 rounded-md border px-2.5 py-1 text-[12.5px] transition ${sang(`o:${x.chuyen_de_id}`)} ${
-                    o?.chuyen_de_id === x.chuyen_de_id ? 'border-sky-500 bg-sky-600 font-semibold text-white' : 'border-slate-200 bg-white text-slate-600 hover:border-sky-300'}`}>
-                  <span className="text-[11px] opacity-70">{x.so}</span><MathText>{x.ten}</MathText>
-                  {x.so_chu_de > 1 && <span title="Chuyên đề dùng chung nhiều chủ đề" className="text-[10px] opacity-70">⇆{x.so_chu_de}</span>}
-                </button>
-              ))}
+        {/* Cột CHUYÊN ĐỀ — trên→dưới = thứ tự học; kéo để sắp; thả nhóm vào để chuyển */}
+        {chuDe && (
+          <div className="flex w-[260px] shrink-0 flex-col border-r border-slate-200 bg-white">
+            <div className="flex items-center gap-2 border-b border-slate-100 px-3 py-2">
+              <span className="flex-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chuyên đề ({chuDe.o.length})</span>
+              <ThemChuyenDe cay={cay} cd={chuDe} onThem={(a) => lam(() => themChuyenDeVaoChuDe(chuDe.id, a), 'Đã thêm chuyên đề')} />
             </div>
-            <button onClick={() => buocChuyenDe(1)} title="Chuyên đề sau (→)" className="rounded-md px-2 py-1 text-slate-500 hover:bg-white hover:text-indigo-600">▶</button>
-            <ThemChuyenDe cay={cay} cd={chuDe} onThem={(a) => lam(() => themChuyenDeVaoChuDe(chuDe.id, a), 'Đã thêm chuyên đề')} />
-          </div>
-
-          {loi && (
-            <div className="flex items-start gap-2 border-b border-rose-200 bg-rose-50 px-6 py-2 text-[13px] text-rose-700">
-              <span className="flex-1">⚠ {loi}</span>
-              <button onClick={() => setLoi(null)} className="text-rose-400 hover:text-rose-700">✕</button>
+            <div className="min-h-0 flex-1 overflow-y-auto p-1.5">
+              {!chuDe.o.length && <div className="p-2 text-[12px] text-slate-400">Chưa có — bấm «+ Chuyên đề».</div>}
+              {chuDe.o.map((x) => {
+                const conChuaGan = x.chua_gan > 0 || x.nhom.some((n) => n.chua_gan > 0)
+                return (
+                  <button key={x.chuyen_de_id} draggable onDragStart={(e) => batDauKeo(e, { loai: 'o', chuDeId: chuDe.id, chuyenDeId: x.chuyen_de_id })} onDragEnd={ketThucKeo}
+                    {...vung(`o:${x.chuyen_de_id}`, (k) => (k.loai === 'o' && k.chuDeId === chuDe.id && k.chuyenDeId !== x.chuyen_de_id) || (k.loai === 'nhom' && k.chuyenDeId !== x.chuyen_de_id), (k) => {
+                      if (k.loai === 'o') return lam(() => sapXep('o', chenTruoc(chuDe.o.map((y) => y.chuyen_de_id), k.chuyenDeId, x.chuyen_de_id).map((c) => oKey(chuDe.id, c))), 'Đã sắp lại chuyên đề')
+                      if (k.loai === 'nhom') return lam(() => chuyenNhom(k.id, chuDe.id, x.chuyen_de_id, null), `Đã chuyển nhóm sang «${x.ten}»`)
+                    })}
+                    onClick={() => chonChuyenDe(x.chuyen_de_id)}
+                    className={`mb-0.5 flex w-full items-start gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] transition ${sang(`o:${x.chuyen_de_id}`)} ${
+                      o?.chuyen_de_id === x.chuyen_de_id ? 'bg-sky-600 font-semibold text-white' : 'text-slate-700 hover:bg-sky-50'}`}>
+                    <span className="mt-px w-5 shrink-0 text-right text-[11px] opacity-70">{x.so}</span>
+                    <span className="flex-1 leading-snug"><MathText>{x.ten}</MathText></span>
+                    {x.so_chu_de > 1 && <span title="Chuyên đề dùng chung nhiều chủ đề" className="mt-px shrink-0 text-[10px] opacity-70">⇆{x.so_chu_de}</span>}
+                    {conChuaGan && <span title="Còn câu chưa gán dạng bài" className="mt-px shrink-0 text-[10px]">⚠</span>}
+                  </button>
+                )
+              })}
             </div>
-          )}
-
-          <div className="flex min-h-0 flex-1">
-            {!o ? (
-              <div className="flex flex-1 items-center justify-center text-[13px] text-slate-400">Chủ đề chưa có chuyên đề — bấm «+ Chuyên đề» ở thanh trên.</div>
-            ) : (
-              <SoDoChuyenDe key={`${chuDe.id}|${o.chuyen_de_id}`} cd={chuDe} o={o} chon={chon} hover={hover} dangKeo={dangKeo} sang={sang}
-                batDauKeo={batDauKeo} ketThucKeo={ketThucKeo} vung={vung} onChon={setChon} onChonChuDe={chonChuDe} lam={lam}
-                ganVao={ganVao} moGan={moGan} />
-            )}
-
-            {chon && o && (
-              <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o} khoi={khoi} onDong={() => setChon(null)}
-                lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
-            )}
+            <div className="border-t border-slate-100 px-3 py-1.5 text-[10.5px] text-slate-400">↑ ↓ để chuyển chuyên đề · kéo để sắp thứ tự</div>
           </div>
-        </>
-      )}
-      </div>
+        )}
+
+        {nganCu && (
+          <NganCu ds={dangCu} batDauKeo={batDauKeo} ketThucKeo={ketThucKeo}
+            onGo={(id, ten) => void lam(() => goDoiUng(id), `Đã gỡ gắn «${ten}»`)} onDong={() => setNganCu(false)} />
+        )}
+
+        {!chuDe ? (
+          <div className="flex flex-1 items-center justify-center text-[13px] text-slate-400">Khối {khoi} chưa có chủ đề nào — bấm «+ Chủ đề» để bắt đầu.</div>
+        ) : !o ? (
+          <div className="flex flex-1 items-center justify-center text-[13px] text-slate-400">Chủ đề chưa có chuyên đề — bấm «+ Chuyên đề» ở cột trái.</div>
+        ) : (
+          <SoDoChuyenDe key={`${chuDe.id}|${o.chuyen_de_id}`} cd={chuDe} o={o} chon={chon} hover={hover} dangKeo={dangKeo} sang={sang}
+            batDauKeo={batDauKeo} ketThucKeo={ketThucKeo} vung={vung} onChon={setChon} onChonChuDe={chonChuDe} lam={lam}
+            ganVao={ganVao} moGan={moGan} />
+        )}
+
+        {chon && chuDe && (chon.loai === 'chu_de' || o) && (
+          <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o ?? chuDe.o[0]} khoi={khoi} onDong={() => setChon(null)}
+            lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
+        )}
       </div>
 
       {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
@@ -559,7 +552,7 @@ function ThemChuyenDe({ cay, cd, onThem }: { cay: BdmCay; cd: BdmChuDe; onThem: 
     <div className="relative shrink-0">
       <button onClick={() => setMo(!mo)} className="rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12.5px] font-medium text-slate-500 hover:border-sky-400 hover:text-sky-700">+ Chuyên đề</button>
       {mo && (
-        <div className="absolute right-0 top-full z-30 mt-1 w-80 rounded-lg border border-sky-300 bg-white p-2 shadow-lg">
+        <div className="absolute left-0 top-full z-30 mt-1 w-80 rounded-lg border border-sky-300 bg-white p-2 shadow-lg">
           <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm chuyên đề có sẵn hoặc gõ tên mới…"
             onKeyDown={(e) => { if (e.key === 'Escape') dong() }} className={inp} />
           <div className="mt-1.5 max-h-64 overflow-y-auto">
@@ -587,7 +580,7 @@ function ThemChuyenDe({ cay, cd, onThem }: { cay: BdmCay; cd: BdmChuDe; onThem: 
 // Khung chi tiết (phải): tên · mô tả · lý thuyết/ví dụ · tiền đề · chuyển · nâng/hạ · gỡ/xoá
 // ════════════════════════════════════════════════════════════════════════════
 function ChiTiet(p: {
-  chon: Chon; cay: BdmCay; cd: BdmChuDe; o: BdmO; khoi: string; onDong: () => void
+  chon: Chon; cay: BdmCay; cd: BdmChuDe; o: BdmO | null | undefined; khoi: string; onDong: () => void
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
   moLyThuyet: (loai: 'nhom' | 'dang_bai', id: string, ten: string) => void
   onDaXoa: () => void
@@ -611,12 +604,13 @@ function ChiTiet(p: {
     return khung('Chủ đề', 'bg-indigo-600', <>
       <TruongTen key={cd.id} gt={cd.ten} onLuu={(t) => lam(() => suaChuDe(cd.id, t))} />
       <div className="text-[12px] text-slate-500">Khối <b>{p.khoi}</b> · {cd.o.length} chuyên đề · mã nháp <code>{cd.id}</code></div>
-      <div className="text-[11.5px] text-slate-400">Kéo các nút chủ đề trên thanh để đổi thứ tự.</div>
+      <ThuTuChuDe cay={cay} cd={cd} lam={lam} />
       <NutXoa nhan="Xoá chủ đề" moTa="Chỉ xoá được khi chủ đề không còn chuyên đề nào."
         onXoa={() => { if (window.confirm(`Xoá chủ đề «${cd.ten}»?`)) void lam(() => xoaChuDe(cd.id), 'Đã xoá').then(p.onDaXoa) }} />
     </>)
   }
 
+  if (!o) return null
   if (chon.loai === 'o') {
     return khung('Chuyên đề (dùng chung)', 'bg-sky-600', <>
       <TruongTen key={o.chuyen_de_id} gt={o.ten} onLuu={(t2) => lam(() => suaChuyenDe(o.chuyen_de_id, { ten: t2 }))} />
@@ -977,6 +971,45 @@ function BangGanCau({ g, onDong, onDaGan }: { g: GanMo; onDong: () => void; onDa
             className="rounded-md bg-rose-600 px-4 py-1.5 text-[13px] font-semibold text-white disabled:opacity-40">Gán</button>
         </div>
       </div>
+    </div>
+  )
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// Màn bọc — mục riêng «Bản đồ mới» trên cây ERP (CEO 08/10). Chọn khối ở đầu màn; nhớ khối gần nhất (sở thích cá nhân).
+// ════════════════════════════════════════════════════════════════════════════
+const docKhoi = () => {
+  try { const k = localStorage.getItem('bdm.khoi'); return k && (KHOI_OPTIONS as readonly string[]).includes(k) ? k : DEFAULT_KHOI } catch { return DEFAULT_KHOI }
+}
+export default function BanDoMoiScreen() {
+  const [khoi, setKhoi] = useState<string>(docKhoi)
+  useEffect(() => { try { localStorage.setItem('bdm.khoi', khoi) } catch { /* trình duyệt chặn lưu — bỏ qua */ } }, [khoi])
+  const chonKhoi = (
+    <span className="flex items-center gap-0.5">
+      <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Khối</span>
+      {KHOI_OPTIONS.map((k) => (
+        <button key={k} onClick={() => setKhoi(k)}
+          className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${khoi === k
+            ? (k.endsWith('T') ? 'bg-violet-600 text-white' : 'bg-indigo-600 text-white')
+            : (k.endsWith('T') ? 'text-violet-600 hover:bg-violet-50' : 'text-slate-500 hover:bg-slate-100')}`}>{k}</button>
+      ))}
+    </span>
+  )
+  return <div className="h-full min-h-0 bg-[#fafafb]"><BanDoMoi key={khoi} khoi={khoi} dauMan={chonKhoi} /></div>
+}
+
+function ThuTuChuDe({ cay, cd, lam }: { cay: BdmCay; cd: BdmChuDe; lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void> }) {
+  const ids = cay.chu_de.map((c) => c.id)
+  const i = ids.indexOf(cd.id)
+  const doi = (d: -1 | 1) => {
+    const moi = [...ids]; [moi[i], moi[i + d]] = [moi[i + d], moi[i]]
+    void lam(() => sapXep('chu_de', moi), 'Đã đổi thứ tự chủ đề')
+  }
+  return (
+    <div className="flex items-center gap-2 text-[12.5px] text-slate-600">
+      <span>Thứ tự trong khối: <b>{i + 1}</b>/{ids.length}</span>
+      <button disabled={i <= 0} onClick={() => doi(-1)} className="rounded border border-slate-200 px-2 py-0.5 disabled:opacity-30">▲ lên</button>
+      <button disabled={i >= ids.length - 1} onClick={() => doi(1)} className="rounded border border-slate-200 px-2 py-0.5 disabled:opacity-30">▼ xuống</button>
     </div>
   )
 }
