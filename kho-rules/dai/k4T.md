@@ -213,33 +213,44 @@ Luật gán:
 | 08/10 | LT 3.3b ("tính đến nay") | *"Ghi cụ thể năm ra."* | Bài có mốc "nay/hiện nay" phụ thuộc năm ⇒ tính đến **năm sách in (2023)**, ghi rõ năm trong lời giải + đáp số. |
 | 08/10 | LT 10.12 (lô 2) trùng câu kho đã duyệt | CEO gật xoá mềm bản sách (T14T000000022). | Lọc trùng phải so **sau chuẩn hoá** (`chuanDe`: bỏ `$`, ngoặc, `\ `, khoảng trắng) — nguyên văn để lọt. Đã vào `ghi-lo` + `dau-vao-soan`. |
 
-## 8. TIẾN ĐỘ GIẢI HÀNG LOẠT + CÂU TREO (cập nhật 08/10 chiều — số đo DB live)
+## 8. TIẾN ĐỘ GIẢI HÀNG LOẠT + CÂU TREO (cập nhật 08/10 tối — số đo DB live)
 
-**Đã ghi kho (dạng chờ `T14T000000`, `da_duyet=false`, ghi bằng `ghi-lo.mjs --chua-gan-dang`):**
+**✅ GIẢI XONG CẢ SÁCH (08/10).** Mọi câu nằm ở dạng chờ `T14T000000`, `da_duyet=false`, ghi bằng `ghi-lo.mjs --chua-gan-dang`.
+Giải ≠ gán dạng (CEO 08/10): khi bản đồ 4T hoàn thiện sẽ có MỘT lượt chạy gán toàn bộ câu dạng chờ vào bản đồ.
 
 | Lô | Khu sách | Câu ghi | Soạn / soát | Lô JSON (`kho-rules/dai/lo/`) |
 |---|---|---|---|---|
 | 1–4 (lô thử, CEO duyệt) | rải 24 CĐ + phiếu | 74 | Opus soạn, CEO duyệt | `k4T-lo1-4.json` (+ dạng đề xuất, + `.kiem-ngoai` Sonnet gán mù) |
-| 5 (CĐ1, thí điểm trạm) | VD 1, LT 1 | 48 | Sonnet soạn, Opus soát (0 sửa nội dung) | `k4T-cd01.json` |
-| 6A/6B/6C | CĐ2–7 + PTL 1 | 95 | 3 Sonnet song song, Opus soát (sửa 1) | `k4T-lo6{A,B,C}.json` · `.soan` · `.sua` |
-| 7A/7B/7C | CĐ8–13 + PTL 2–3 | 144 | 3 Sonnet song song, Opus soát (sửa 2) | `k4T-lo7{A,B,C}.json` · `.soan` · `.sua` · `.kiem-ngoai` |
-| **Tổng** | | **361** (mã tới `T14T000000362`, 1 mã đã xoá mềm) | 288 Sonnet · 73 Opus (`ai_model`) | 40 câu có sơ đồ (`anh_dap_an`) · 360 `khop` · 1 `khong_kiem_duoc` |
+| 5 (CĐ1, thí điểm trạm) | VD 1, LT 1 | 48 | Sonnet soạn, Opus soát | `k4T-cd01.json` |
+| 6A–6C | CĐ2–7 + PTL 1 | 95 | 3 Sonnet song song, Opus soát | `k4T-lo6{A,B,C}` |
+| 7A–7C | CĐ8–13 + PTL 2–3 | 144 | như trên | `k4T-lo7{A,B,C}` |
+| 8A–8F | CĐ14–19 + PTL 4–5 | 248 | như trên | `k4T-lo8{A..F}` |
+| 9A–9B | CĐ20–24 + PTL 6 | 95 | như trên | `k4T-lo9{A,B}` |
+| 10A–10E | 35 phiếu cuối tuần | 509 | như trên | `k4T-lo10{A..E}` |
+| **Tổng (DB)** | | **1213** | 1140 Sonnet · 73 Opus (`ai_model`) | 124 câu có sơ đồ · 1205 `khop` · 8 `khong_kiem_duoc` (đề mở, soát tay) |
 
-**Còn lại (ước — đo lại bằng `dau-vao-soan.mjs`, DB là sự thật):** tổng ~1.271 đơn vị câu sau tách ý (910 bài). Chưa làm:
-**CĐ14–24** (VD + LT, mới có vài câu từ lô thử) · VD 5–8, 11 · **PTL 4–6** · **35 phiếu cuối tuần** (~455 bài, mới 5 câu). Trừ ~41 câu
-có hình EMF trong đề (chưa có đường). ⇒ còn **~850 câu**. Gợi ý chia: lô 8 = CĐ14–19 + PTL 4 · lô 9 = CĐ20–24 + PTL 5–6 · lô 10+ = PCT theo 5 phiếu/lô.
+Mỗi lô có đủ 4 tệp: `.json` (lô ghi) · `.soan.json` (bản Sonnet) · `.sua.json` (vết người soát sửa) · `.kiem-ngoai.json` (biên bản sơ đồ).
+Hàm kiểm từ ĐỀ cho mọi khu: `k4T-kiem.mjs`. Sơ đồ: `kho-rules/dai/so-do/4T-*.json`.
 
-**Lệnh một lô (khuôn lô 7):** xem `kho-rules/README.md` §2b — `dau-vao-soan` (khu) → viết bộ kiểm trong `k4T-kiem.mjs` TRƯỚC →
-3 Sonnet soạn song song → Opus soát (sửa vào `.sua.json`) → `lo-tu-soan` → `ghi-lo` chạy thử → `--ghi`.
+**Lệnh một lô:** `kho-rules/README.md` §2b — `dau-vao-soan` → viết hàm kiểm TRƯỚC khi đọc bản soạn → Sonnet soạn → `lo-tu-soan`
+(+ `--sua`; có cổng KaTeX) → máy kiểm đáp số → Opus đọc toàn bộ + xem ảnh mọi sơ đồ → biên bản → `ghi-lo` chạy thử → `--ghi`
+(KHÔNG chạy 2 lượt ghi song song — cấp mã câu va nhau).
 
-**Câu đang treo (không ghi / chờ người):**
+**Câu CHƯA ghi (47 bài sách) — cần người:**
 
-| Câu | Vì sao treo | Cần gì |
+| Câu | Vì sao chưa ghi | Cần gì |
 |---|---|---|
-| LT 1.5c · LT 1.5d (đã ghi) | Đề mơ hồ: "hiệu các chữ số là 4" (15 hay 40?) · "thương là 2" (12 hay 21?) — sách không có đáp án | CEO chọn cách hiểu; đang ghi theo "lớn trừ/chia bé" |
-| VD 10.1 · VD 10.2 (7 ý) | Sách in sẵn đáp án trong đề ⇒ đề không đứng một mình | CEO: bỏ, hay viết lại đề |
-| LT 11.19 | Thêm sơ đồ tỉ số, nhưng sơ đồ do Opus (người soát) vẽ ⇒ không có model khác ký `kiem-hinh-b` — cổng chặn đúng | Một model khác (Sonnet) xem ảnh ký biên bản rồi ghi |
-| LT 11.1 (đã ghi) | Hàm kiểm rỗng đã xoá ⇒ `kiem_may='khong_kiem_duoc'`; bảng số dư soát tay khớp | Viết hàm kiểm thật hoặc để người duyệt |
-| LT 5.19 + ~41 câu có hình | Hình trong đề là EMF, chưa đổi được ⇒ không ghi câu thiếu hình | Đường đổi EMF → PNG (`scripts/anh/docx_trich.mjs`?) hoặc vẽ lại bằng code |
+| 31 bài có hình EMF/WMF trong đề + LT 3.4 · LT 15.9 · PCT 17 I.6 (hình PNG là dữ kiện) | Đề không đứng được nếu thiếu hình; chưa có đường đưa hình đề vào câu | Đường EMF → PNG (`scripts/anh/docx_trich.mjs`) hoặc vẽ lại bằng code, rồi giải như lô thường |
+| VD 10.1 · VD 10.2 (7 ý) · VD 20.1 · VD 20.2 | Sách in sẵn phép tính + đáp số trong đề | CEO: bỏ, hay viết lại đề |
+| LT 16.2c "5xy−3" · LT 17.5c "−7/15" · LT 17.9b "215/213 : 213/211" | Đề sách in lỗi (đề–lời giải lệch) | Người sửa đề rồi ghi |
+| PCT 6 I.6 | Đề in "ba trong bốn chữ số 0; 2; 5" — thiếu một chữ số | Người xem sách gốc |
 | LT 11.3 | Sách thiếu nhãn 11.4 (`tach-bai` báo) | Người xem sách quyết |
-| 1 SVG mồ côi `…_LT-3-15.svg` trong `kho-anh/sach/2026-10` | Upload trước khi lọc câu đã có (lỗi đã sửa ở `ghi-lo`) | Chờ CEO gật xoá (Luật xoá) |
+| LT 11.19 | Sơ đồ do Opus (người soát) vẽ ⇒ không model khác ký biên bản — cổng chặn đúng | Sonnet xem ảnh ký biên bản rồi ghi |
+
+**Đã ghi nhưng CEO nên xem cách hiểu (sách không có đáp án / đề mơ hồ):**
+LT 1.5c · 1.5d ("hiệu các chữ số là 4", "thương là 2" — đang lấy lớn trừ/chia bé) · LT 14.18 (số xe không đổi) ·
+LT 15.13 + PCT 23 II.3 (xúc xắc phân biệt) · LT 16.13 + PCT 24 I.9/I.10 (tính cả phân số mẫu 1) · LT 24.17 ("bớt lại 6 quả" ⇒ 36; hiểu khác ⇒ 60) ·
+PCT 12 I.3 (không ngoặc ⇒ 1503; có ngoặc ⇒ 139) · PCT 23 I.3 (số chia nhỏ nhất 7) · PCT 31 I.6 (còn lại của 3/5 chiếc = 3/10; theo cả chiếc ⇒ 7/10) ·
+PCT 31 II.3 (ngày 5–6 gộp ⇒ 5 bài) · **VD 19.2: lời giải sách in nhầm** (45/28) — kho ghi đúng 73/28.
+
+**Việc phụ treo:** 1 SVG mồ côi `kho-anh/sach/2026-10/…_LT-3-15.svg` (upload trước khi lọc câu đã có) — chờ CEO gật xoá (Luật xoá).

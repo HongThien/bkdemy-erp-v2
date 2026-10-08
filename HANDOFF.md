@@ -362,19 +362,19 @@
     - thử state Nông Trại: chặn `Storage.prototype.setItem` TRƯỚC (bản lưu thật `nongtrai_ngay_v1`);
     - cmd Windows đổi ổ phải `cd /d`;
     - đừng sửa file tiếng Việt bằng `Get/Set-Content` PS 5.1.
-### ▶ CONTEXT 4T + 5T (Thùy mở 07/10 · cập nhật 08/10 chiều) — kho tiểu học theo đường đi `kho-rules/README.md`
+### ▶ CONTEXT 4T + 5T (Thùy mở 07/10 · cập nhật 08/10 tối) — kho tiểu học theo đường đi `kho-rules/README.md`
 
 **Đọc theo thứ tự, không bỏ:** `CLAUDE.md` (§1.5, §2.0, Luật xoá) → `kho-rules/README.md` (đường 7 bước · **§2b dây chuyền giải hàng loạt** · §3 luật chung · §4 việc kỹ thuật treo · §5 trạng thái khối) → `kho-rules/dai/k4T.md` (luật khối v1, §7 nhật ký CEO sửa, **§8 tiến độ + câu treo**) → `kho-rules/dai/k5T.md` (v0 + hồ sơ sách 31 CĐ + bản đồ hiện có + **§7 kế hoạch + 4 câu chờ CEO**) → memory `tach-y-hinh-vs-dai`. Bản đồ 4 tầng mới: `spec-ban-do-4-tang.md` §0.
 
 **Luật nền CEO 08/10:** GIẢI và GÁN DẠNG là 2 việc độc lập — lượt giải ghi câu vào dạng chờ `…000000` (`ghi-lo.mjs --chua-gan-dang`), lượt gán chạy sau khi bản đồ khối đó xong (= B3 của spec-ban-do-4-tang). Câu dạng chờ chưa bấm duyệt được ⇒ duyệt lời giải sau khi gán.
 
-**4T:** `k4T.md` **v1** (lô 4 không sửa). Nguồn `E:\BK ACADEMY\Tài liệu tham khảo\4T\Toán arc 4 quyển 1  2023.docx` (MathType, đọc bằng `scripts/kho/mathtype-thu/doc-docx.mjs`; dựng lại 1 giây). **361 câu đã ghi kho** (`T14T000000…`, 288 Sonnet soạn · 73 Opus; 360 khop) qua dây chuyền dau-vao-soan → bộ kiểm viết trước → 3 Sonnet song song → Opus soát → lo-tu-soan → ghi-lo. Còn ~850 câu: CĐ14–24, PTL 4–6, 35 phiếu cuối tuần (trừ ~41 câu có hình EMF). Câu treo chờ CEO: `k4T.md` §8. Bản đồ 4T (24 chủ đề · 78 dạng, nhiều chủ đề 1 dạng) CEO hoàn thiện trên **ERP › Học thuật › Bản đồ mới**.
+**4T:** `k4T.md` **v1** (lô 4 không sửa). Nguồn `E:\BK ACADEMY\Tài liệu tham khảo\4T\Toán arc 4 quyển 1  2023.docx` (MathType, đọc bằng `scripts/kho/mathtype-thu/doc-docx.mjs`; dựng lại 1 giây). **✅ Bước 2 XONG 08/10 tối: 1213 câu đã ghi kho** (`T14T000000…`, dạng chờ, 1140 Sonnet soạn · 73 Opus; 1205 khop · 8 soát tay; 124 câu có sơ đồ) qua dây chuyền dau-vao-soan → hàm kiểm viết TỪ ĐỀ trước → Sonnet soạn → lo-tu-soan (cổng KaTeX) → Opus đọc toàn bộ + xem ảnh sơ đồ → ghi-lo. Còn 47 bài sách chưa ghi (34 có hình trong đề · 4 VD sách in sẵn đáp số · 3 đề in lỗi · PCT 6 I.6 · LT 11.3 · LT 11.19) + danh sách cách hiểu CEO nên xem: `k4T.md` §8. Việc 4T còn lại = **bước 3 gán dạng** khi CEO xong bản đồ. Bản đồ 4T (24 chủ đề · 78 dạng, nhiều chủ đề 1 dạng) CEO hoàn thiện trên **ERP › Học thuật › Bản đồ mới**.
 
 **5T:** `k5T.md` v0 (04/10, Số thập phân, 12 câu mẫu; 271 câu STP giải lại vẫn chờ học thuật ký). Nguồn chuẩn đổi sang sách `E:\BK ACADEMY\Tài liệu tham khảo\5T\Tài liệu tham khảo Toán 5.docx` — 31 CĐ (phân số · tỉ số · STP · % · hình học · chuyển động · giả thiết tạm · khử) + phần ôn tập, ~730 bài thô. **⚠ công thức là ảnh WMF (0 công thức chữ, 1.154 ảnh)** ⇒ B1 của 4T mù, phải WMF → PNG (`scripts/anh/docx_trich.mjs`) hoặc PDF (README §4 việc #6). Bản đồ 5T hiện 3 chủ đề · 22 dạng, phủ ~9/31 CĐ sách.
 
 **⭐ Quy trình 3 bước MỌI KHỐI (CEO 08/10, `kho-rules/README.md` §0):** (1) đọc sách → giải thử → CEO duyệt → rút luật vào `k<khối>.md` · (2) luật đủ tốt (v1) ⇒ giải TOÀN BỘ tài liệu lên DB dạng chờ · (3) CEO xong bản đồ ⇒ Claude xếp bài vào ⇒ CEO duyệt. **Bản đồ là việc của CEO.**
 
-**Việc kế tiếp:** 5T bước 1 — B1 đọc sách (đường WMF → PNG/PDF, README §4 việc #6) → B2 hồ sơ + tach-bai → B3 nâng luật theo "Bài làm" → lô thử gửi CEO duyệt. Bước 1 = giải một lượt qua MỌI dạng bài của sách (CEO 08/10). 271 câu STP: CEO "giải là duyệt luôn" — duyệt ngay ở màn Duyệt lời giải, không chờ bản đồ. Song song: 4T bước 2 lô 8+ (`k4T.md` §8).
+**Việc kế tiếp:** 5T bước 1 — B1 đọc sách (đường WMF → PNG/PDF, README §4 việc #6) → B2 hồ sơ + tach-bai → B3 nâng luật theo "Bài làm" → lô thử gửi CEO duyệt. Bước 1 = giải một lượt qua MỌI dạng bài của sách (CEO 08/10). 271 câu STP: CEO "giải là duyệt luôn" — duyệt ngay ở màn Duyệt lời giải, không chờ bản đồ. 4T: chờ bản đồ để gán (bước 3); 34 bài có hình trong đề chờ đường hình (cùng đường WMF → PNG của 5T).
 
 ### ⭐⭐⭐ 7 SKILL HỌC LIỆU — TOÀN BỘ NHIỆM VỤ (Thùy chốt 06/10) · bản đồ trạng thái + điều kiện đi tiếp · ĐỌC ĐẦU TIÊN khi làm bất cứ gì về kho
 
