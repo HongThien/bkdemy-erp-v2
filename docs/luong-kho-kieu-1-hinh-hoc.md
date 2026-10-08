@@ -89,8 +89,21 @@ Truyền file theo ĐÚNG thứ tự câu trong sách. Tool chuẩn hoá R1/R2, 
 | HH00101 | Tam giác bằng nhau — TH thứ hai (c.g.c) | 15 | 1A–6B + tự luyện 11a, 12, 15 |
 | HH00102 | Tam giác bằng nhau — TH thứ ba (g.c.g) | 12 | 7A–10B + tự luyện 11b, 13, 14, 16 |
 | HH00103 | Các trường hợp bằng nhau của tam giác vuông | 16 | 1A–10, soạn bằng Sonnet; lý thuyết + hình đủ |
-| HH00104 | Tam giác cân. Đường trung trực của đoạn thẳng | 21 (dự kiến) | lý thuyết đã ghi; câu đang soạn (xem §7) |
+| HH00104 | Tam giác cân. Đường trung trực của đoạn thẳng | 21 | 1A–7B + tự luyện 8–14 (câu 12 gồm cả 3 ý bị đánh số nhầm "13."); Sonnet làm lại từ ảnh sau khi bản Haiku hỏng; lý thuyết + hình đủ |
 
-## 7. Thử model nhỏ (Haiku) — 08/10/2026
+## 7. Thử model nhỏ (Haiku) — 08/10/2026: KHÔNG đạt cho luồng này
 
-Thùy nghe nói Haiku mới ổn nên cho thử: bài HH00104 chia 4 nhóm, giao cho 4 agent Haiku soạn, rồi Sonnet duyệt lại từng nhóm. Kết quả sơ bộ khi các agent Haiku báo về: **cả 4 nhóm đều báo chưa xong hoặc nói quá** — nhóm 1 và 3 tự nhận còn dở (chưa verify, chưa vẽ hình), nhóm 4 chỉ lập khung vì không giải mã được ảnh công thức, nhóm 2 báo "hoàn tất, đã verify" nhưng tóm tắt mô tả sai đề và vẫn ghi hình chưa vẽ. Bảng chấm chi tiết từng câu do Sonnet duyệt xem ở các file `cham_haiku_B5_nhom*.md` trong scratchpad của phiên (sẽ cập nhật số liệu cuối vào đây khi xong).
+Thùy nghe nói Haiku mới ổn nên cho thử: bài HH00104 (21 câu) chia 4 nhóm giao 4 agent Haiku soạn, rồi 4 agent Sonnet duyệt từng nhóm (đọc lại nguồn, sửa/làm lại, chấm bản Haiku). Tên model gọi là `haiku` (hệ thống không cho biết đúng phiên bản).
+
+**Kết quả chấm của Sonnet trên 21 câu:** đúng-dùng-được **0** · sửa nhẹ **2** (1A, câu 8) · sai-phải-làm-lại hoặc bỏ dở **19**.
+
+| Nhóm | Câu | Haiku tự báo | Thực tế |
+|---|---|---|---|
+| 1 | 1A–3B | "partial, pending" | 0 dùng được, 1 sửa nhẹ, 5 sai/bỏ dở (đọc sai ảnh 5/6 câu) |
+| 2 | 4A–6B | "hoàn tất, đã verify ✓" | 6/6 không dùng được; tóm tắt mô tả sai đề; hình chưa vẽ; không chạy verify |
+| 3 | 7A–10 | "remaining: vẽ hình, verify" | 0 dùng được, 1 sửa nhẹ, 4 làm lại; câu 9 dùng Pytago + cosin (cấm) |
+| 4 | 11–14 | "khung, khó giải mã ảnh" | 0/4; 12–14 đề bịa; có chữ tự thoại "Tôi sai", dùng hình chữ nhật, căn bậc hai |
+
+**Nguyên nhân gốc:** (1) không mở/đọc được ảnh công thức WMF rồi **bịa đề** thay vì ghi nghi vấn; (2) bỏ qua verify toạ độ và vẽ hình (có nhóm tự cho rằng "không cần vẽ hình" — sai luật); (3) báo cáo nói quá ("đã verify"); (4) vi phạm whitelist, để sót ghi chú tự thoại trong lời giải.
+
+**Kết luận:** không giao Haiku khâu đọc đề từ ảnh + giải + verify + vẽ hình. Sửa bản Haiku còn tốn công hơn làm mới (Sonnet đã làm lại từ ảnh, không vá). Chỉ cân nhắc Haiku cho bước cơ học khi đề đã là text sạch (vd chuẩn hoá định dạng). **Luôn soát bản nháp, đừng tin báo cáo agent** (B6).
