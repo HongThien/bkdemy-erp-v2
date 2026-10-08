@@ -59,7 +59,7 @@ export function veSoDo(m) {
   // lề trái nới theo nhãn dài nhất (≈7,6 px/ký tự cỡ 14) để nhãn như "Trung bình cộng:" không bị cắt
   const LEFT = Math.max(110, Math.ceil(Math.max(...hang.map((h) => String(h.nhan).length + 1)) * 7.6) + 20)
   const W = Math.ceil(LEFT + MAXW + (m.tong ? 70 : 24) + 10)
-  const Hh = TOP + hang.length * H + 10 + (m.hieu ? 30 : 0)
+  const Hh = TOP + hang.length * H + 10 + (m.hieu ? 38 : 0)
   const out = []
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${Hh}" width="${W}" height="${Hh}" font-family="Arial, Helvetica, sans-serif" font-size="14">`)
   out.push(`<rect width="${W}" height="${Hh}" fill="#fff"/>`)
@@ -103,7 +103,7 @@ export function veSoDo(m) {
   if (m.hieu && hang.length >= 2) {
     const a = hang[0], b = hang[1]
     const x1 = r1(Math.min(a._end, b._end)), x2 = r1(Math.max(a._end, b._end))
-    const y = Math.max(a._y, b._y) + 26
+    const y = Math.max(a._y, b._y) + 34   // dưới dấu "?" của hàng (y+20), không đè
     out.push(`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#0f172a" stroke-width="1"/>`)
     out.push(`<line x1="${x1}" y1="${y - 4}" x2="${x1}" y2="${y + 4}" stroke="#0f172a" stroke-width="1"/>`)
     out.push(`<line x1="${x2}" y1="${y - 4}" x2="${x2}" y2="${y + 4}" stroke="#0f172a" stroke-width="1"/>`)

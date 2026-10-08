@@ -35888,3 +35888,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 08/10 (tiếp) — Bản đồ 4 tầng: CEO trả lời 5 câu trước khi bắt đầu
 - (1) Tạm dừng TOÀN BỘ nhân sự. (2) Cần đủ thao tác gộp/tách/hạ/nâng tầng. (3) CEO làm rõ 4 tầng trên bản đồ hiện tại TRƯỚC rồi mới chuyển; KHÔNG làm theo từng câu — hành vi chính: chuyển + nâng/hạ tầng đối tượng tầng 3–4, thêm/sửa đối tượng tầng 2–3. (4) Chuẩn bị xong rồi xếp một mạch. (5) Gắn lại câu ô buổi bù + Hình buổi bù: BỎ QUA, làm bản đồ trước.
+
+## 08/10 (tiếp) — 4T lô 4: 20 câu (tỉ số dạng 0 câu, tổng–hiệu ẩn, cấu tạo số, tính ngược, phiếu), chờ CEO duyệt
+- 10 sơ đồ vẽ theo luật tỉ lệ mới, máy kiểm nhãn tổng/hiệu 10/10 qua. Soát ảnh: dấu ? hàng dưới đè vạch hiệu ⇒ hạ ngoặc hiệu xuống (y+34); bỏ ? thừa ở hàng TBC câu 7. Vẽ lại toàn bộ sơ đồ lô 1–4.
+- Đáp số thay ngược vào đề bằng máy 20/20. §5 k4T.md: bỏ "tính ngược với phân số" khỏi bảng thiếu (tiền lệ LT 24.12 CEO duyệt ở 230101).
+- Chưa phủ: 220201, 220202, 190102, 190204 (sách không có câu hợp).

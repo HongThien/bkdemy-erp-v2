@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 626 142" width="626" height="142" font-family="Arial, Helvetica, sans-serif" font-size="14">
-<rect width="626" height="142" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 626 150" width="626" height="150" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="626" height="150" fill="#fff"/>
 <text x="102" y="37" text-anchor="end" fill="#0f172a">Số thứ nhất:</text>
 <line x1="112" y1="32" x2="592" y2="32" stroke="#0f172a" stroke-width="2"/>
 <line x1="112" y1="25" x2="112" y2="39" stroke="#0f172a" stroke-width="2"/>
@@ -24,8 +24,8 @@
 <line x1="432" y1="69" x2="432" y2="83" stroke="#0f172a" stroke-width="2"/>
 <line x1="485.3" y1="69" x2="485.3" y2="83" stroke="#0f172a" stroke-width="2"/>
 <text x="298.7" y="96" text-anchor="middle" fill="#dc2626">?</text>
-<line x1="485.3" y1="102" x2="592" y2="102" stroke="#0f172a" stroke-width="1"/>
-<line x1="485.3" y1="98" x2="485.3" y2="106" stroke="#0f172a" stroke-width="1"/>
-<line x1="592" y1="98" x2="592" y2="106" stroke="#0f172a" stroke-width="1"/>
-<text x="538.7" y="118" text-anchor="middle" font-size="12" fill="#0f172a">320</text>
+<line x1="485.3" y1="110" x2="592" y2="110" stroke="#0f172a" stroke-width="1"/>
+<line x1="485.3" y1="106" x2="485.3" y2="114" stroke="#0f172a" stroke-width="1"/>
+<line x1="592" y1="106" x2="592" y2="114" stroke="#0f172a" stroke-width="1"/>
+<text x="538.7" y="126" text-anchor="middle" font-size="12" fill="#0f172a">320</text>
 </svg>

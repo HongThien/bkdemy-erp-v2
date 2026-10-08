@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476 156" width="476" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="476" height="156" fill="#fff"/>
+<text x="132" y="37" text-anchor="end" fill="#0f172a">Trung bình cộng:</text>
+<line x1="142" y1="32" x2="237.5" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="25" x2="142" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="237.5" y1="25" x2="237.5" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="132" y="81" text-anchor="end" fill="#0f172a">Dũng:</text>
+<line x1="142" y1="76" x2="223.8" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="69" x2="142" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="237.5" y1="69" x2="237.5" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="223.8" y1="76" x2="237.5" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="223.8" y1="69" x2="223.8" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="230.6" y="66" text-anchor="middle" font-size="12" fill="#b45309">20000 đồng</text>
+<text x="132" y="125" text-anchor="end" fill="#0f172a">An, Bình và Chi:</text>
+<line x1="142" y1="120" x2="428.4" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="113" x2="142" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="237.5" y1="113" x2="237.5" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="332.9" y1="113" x2="332.9" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="428.4" y1="113" x2="428.4" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="428.4" y1="120" x2="442" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="442" y1="113" x2="442" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="435.2" y="110" text-anchor="middle" font-size="12" fill="#b45309">20000 đồng</text>
+</svg>

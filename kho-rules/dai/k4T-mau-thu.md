@@ -1,4 +1,4 @@
-# 4T · LÔ GIẢI THỬ — lô 1 (13 câu, CEO duyệt 07/10) + lô 2 (20 câu, CEO duyệt 07/10) + lô 3 (20 câu, chờ duyệt) · sách "Toán arc 4 quyển 1" theo luật `k4T.md` (CHƯA ghi DB)
+# 4T · LÔ GIẢI THỬ — lô 1 (13) · lô 2 (20) · lô 3 (20) CEO đã duyệt · lô 4 (20, chờ duyệt) · sách "Toán arc 4 quyển 1" theo luật `k4T.md` (CHƯA ghi DB)
 
 > Mỗi câu: **gán dạng** (mã + lý do) → **Phần 1. Hướng dẫn** → **Phần 2. Trình bày**. Chọn câu để phủ nhiều khuôn (lập luận · đếm ·
 > tính thuận tiện · thay đổi thành phần · dãy số · tổng–hiệu · cấu tạo số · phân số · tổng–tỉ · tính ngược) và ưu tiên dạng đang
@@ -1413,3 +1413,602 @@ Vậy chữ số thứ $545$ của A là chữ số $9$ của số $399$.
 ~~❓ Một câu hỏi cho CEO:~~ câu Phần I của phiếu cuối tuần (sách: "chỉ ghi đáp số, không cần giải thích") — kho vẫn cần lời giải
 cho HS xem sau khi làm. Em đang viết **đủ 2 phần như tự luận** (câu 19, 20). Giữ vậy, hay Phần 2 của câu trắc nghiệm chỉ cần
 các dòng tính ngắn (không câu lời giải)?
+
+
+---
+---
+
+# 4T · LÔ GIẢI THỬ 4 — 20 câu: tỉ số (dạng 0 câu) · tổng–hiệu ẩn · cấu tạo số · tính ngược · phiếu (08/10, CHƯA ghi DB)
+
+> Áp đủ luật sau lô 3: **sơ đồ đúng tỉ lệ** (máy vẽ theo `gia_tri_phan`, tự kiểm nhãn tổng/hiệu — 10 sơ đồ lô này đều qua) ·
+> **mọi câu đủ 2 phần** · phương pháp thắng chủ đề. Đáp số thay ngược vào đề bằng máy: 20/20 khớp.
+> Sơ đồ: `so-do/k4T-lo4-cau<số câu>.svg`.
+
+---
+
+## Câu 1 — LT 8.14 · Tìm hai số lẻ có tổng bằng 1004, biết giữa chúng có 8 số lẻ khác.
+
+**Dạng:** `T14T080101` — tổng hiệu (hiệu ẩn qua "giữa chúng có $k$ số").
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đã có tổng, phải tự tìm **hiệu**. Hai số lẻ liền nhau hơn kém nhau $2$. Giữa hai số có $8$ số lẻ khác thì từ số bé đến số lớn có $8+1=9$ khoảng, mỗi khoảng $2$ đơn vị ⇒ hiệu $=9\times 2=18$.
+
+Chú ý: lỗi hay gặp là lấy $8\times 2=16$ (quên khoảng cuối).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Giữa hai số lẻ có $8$ số lẻ khác nên hiệu của hai số là: $\left(8+1\right)\times 2=18$
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số bé 1 đoạn; Số lớn 1 đoạn và 18; tổng 1004](so-do/k4T-lo4-cau1.svg)
+
+Số bé là: $\left(1004-18\right):2=493$
+
+Số lớn là: $493+18=511$
+
+Đáp số: Số bé: $493$; Số lớn: $511$
+
+---
+
+## Câu 2 — LT 8.20 · (*) An tính tổng độ dài ba cạnh của một hình chữ nhật được kết quả là 42 cm. Nam cũng tính tổng độ dài ba cạnh của hình chữ nhật đó nhưng được kết quả là 39 cm. Tính diện tích của hình chữ nhật đó.
+
+**Dạng:** `T14T080101` — tổng hiệu (giải bằng tổng–hiệu ⇒ dạng tổng–hiệu, luật CEO lô 2).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: "ba cạnh" của hình chữ nhật là **hai cạnh bằng nhau và một cạnh kia**. Hai bạn ra hai kết quả khác nhau nên một bạn lấy **2 dài + 1 rộng** (kết quả lớn hơn, An), bạn kia lấy **1 dài + 2 rộng** (Nam). Cộng hai kết quả được **3 dài + 3 rộng** = $3$ lần nửa chu vi. Trừ hai kết quả được **dài − rộng**. Có tổng và hiệu ⇒ tổng–hiệu.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Vì $42>39$ nên An tính tổng hai chiều dài và một chiều rộng, Nam tính tổng một chiều dài và hai chiều rộng.
+
+Tổng kết quả của hai bạn bằng ba lần tổng chiều dài và chiều rộng: $42+39=81$ (cm)
+
+Tổng chiều dài và chiều rộng là: $81:3=27$ (cm)
+
+Chiều dài hơn chiều rộng là: $42-39=3$ (cm)
+
+Ta có sơ đồ:
+
+![Sơ đồ: Chiều rộng 1 đoạn; Chiều dài 1 đoạn và 3 cm; tổng 27 cm](so-do/k4T-lo4-cau2.svg)
+
+Chiều rộng hình chữ nhật là: $\left(27-3\right):2=12$ (cm)
+
+Chiều dài hình chữ nhật là: $12+3=15$ (cm)
+
+Diện tích hình chữ nhật là: $15\times 12=180$ ($cm^2$)
+
+Đáp số: $180$ $cm^2$
+
+---
+
+## Câu 3 — Phiếu tự luyện 2, bài 5 · Tổng của ba số là 615. Biết số thứ hai hơn số thứ nhất 30 đơn vị nhưng kém số thứ ba 15 đơn vị. Tìm số thứ nhất.
+
+**Dạng:** `T14T080101` — tổng hiệu (ba số; giải bằng tổng–hiệu). *(phiếu ⇒ gán theo dấu hiệu đề và phương pháp)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: so **mọi số với số bé nhất** (số thứ nhất): số thứ hai hơn nó $30$; số thứ ba hơn số thứ hai $15$ nên hơn số thứ nhất $30+15=45$. Bớt các phần hơn khỏi tổng thì còn **3 lần số thứ nhất**.
+
+Chú ý: "kém số thứ ba 15" nghĩa là số thứ ba **lớn hơn** số thứ hai $15$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số thứ ba hơn số thứ nhất là: $30+15=45$
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số thứ nhất 1 đoạn; Số thứ hai 1 đoạn và 30; Số thứ ba 1 đoạn và 45; tổng 615](so-do/k4T-lo4-cau3.svg)
+
+Ba lần số thứ nhất là: $615-30-45=540$
+
+Số thứ nhất là: $540:3=180$
+
+Đáp số: $180$
+
+---
+
+## Câu 4 — LT 12.1a · Tìm số tự nhiên, biết nếu viết thêm chữ số 5 vào tận cùng bên phải thì số đó tăng thêm 887 đơn vị.
+
+**Dạng:** `T14T000000` — **dạng chờ** (viết thêm chữ số **bên phải** — `k4T.md` §5 đã ghi thiếu; `T14T12` chỉ có "bên trái"). *LT 12.1 có 2 ý độc lập ⇒ tách, đây là ý a.*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: viết thêm chữ số $5$ vào bên phải số $A$ thì được $\overline{A5}=A\times 10+5$ (số cũ **gấp 10 lần** rồi cộng $5$). Số mới hơn số cũ $887$ ⇒ $A\times 10+5=A+887$. **Bớt cả hai vế đi $A$** được $A\times 9+5=887$, rồi tính ngược.
+
+**Phần 2. Trình bày**
+
+Gọi số cần tìm là $A$. Viết thêm chữ số $5$ vào bên phải ta được số $\overline{A5}$.
+
+Ta có: $\overline{A5}=A+887$
+
+$A\times 10+5=A+887$
+
+$A\times 9+5=887$ (Bớt cả hai vế đi $A$)
+
+$\begin{array}{l} A\times 9=887-5 \\ A\times 9=882 \\ A=882:9 \\ A=98 \end{array}$
+
+Đáp số: $98$
+
+---
+
+## Câu 5 — LT 12.4 · Tìm số tự nhiên có hai chữ số, biết nếu viết thêm chữ số 8 vào bên trái số đó thì ta được số mới gấp 51 lần số cần tìm.
+
+**Dạng:** `T14T120101` — viết thêm chữ số vào bên trái số cho trước.
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: viết thêm $8$ vào bên trái số có **hai** chữ số $\overline{ab}$ thì số đó **cộng thêm $800$**: $\overline{8ab}=800+\overline{ab}$. Số mới gấp $51$ lần ⇒ $\overline{ab}\times 51=800+\overline{ab}$; bớt cả hai vế đi $\overline{ab}$ thì $\overline{ab}\times 50=800$.
+
+**Phần 2. Trình bày**
+
+Gọi số cần tìm là $\overline{ab}$ ($a$ khác $0$; $a,b<10$). Số mới là $\overline{8ab}$.
+
+Ta có: $\overline{ab}\times 51=\overline{8ab}$
+
+$\overline{ab}\times 51=800+\overline{ab}$
+
+$\overline{ab}\times 50=800$ (Bớt cả hai vế đi $\overline{ab}$)
+
+$\begin{array}{l} \overline{ab}=800:50 \\ \overline{ab}=16 \end{array}$
+
+Đáp số: $16$
+
+---
+
+## Câu 6 — Phiếu tự luyện 3, bài 1 · Khi nhân một số tự nhiên với 35, một học sinh đã đặt các tích riêng thẳng cột như trong phép cộng nên được kết quả sai là 2096. Tìm tích đúng của phép nhân đó.
+
+**Dạng:** `T14T000000` — **dạng chờ** (chuyên đề 9 "tích riêng đặt thẳng cột" — `T14T09` chưa có dạng này, như lô 1 câu 9).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: nhân với $35$ có hai tích riêng: số đó $\times 5$ và số đó $\times 3$ (tích riêng thứ hai phải **lùi sang trái một hàng**, tức là thật ra là $\times 30$). Đặt thẳng cột thì bạn đó đã cộng "số đó $\times 5$" với "số đó $\times 3$" ⇒ kết quả sai là số đó nhân với $3+5=8$ (VD 9.3).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khi đặt các tích riêng thẳng cột như trong phép cộng thì học sinh đó đã nhân số tự nhiên với: $3+5=8$
+
+Số tự nhiên đó là: $2096:8=262$
+
+Tích đúng của phép nhân là: $262\times 35=9170$
+
+Đáp số: $9170$
+
+---
+
+## Câu 7 — LT 13.17 · Bốn bạn An, Bình, Chi, Dũng góp tiền chung để mua sách. An góp 120000 đồng, Bình góp 150000 đồng, Chi góp nhiều hơn An 50000 đồng, Dũng góp kém mức trung bình cộng của cả bốn bạn là 20000 đồng. Tính tổng số tiền mà bốn bạn góp được.
+
+**Dạng:** `T14T000000` — **dạng chờ** ("kém trung bình cộng", như lô 3 câu 6).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tổng $4$ bạn $=4$ lần TBC. Dũng **kém** TBC $20000$ đồng nên ba bạn còn lại phải **bù**: An + Bình + Chi $=3$ lần TBC **thêm** $20000$ đồng. Vậy **ba lần TBC = tổng ba bạn − 20000**. (Bốn bạn ⇒ "ba lần", không phải "hai lần" như bài ba bạn.) Tìm số tiền của Chi trước.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Chi góp số tiền là: $120000+50000=170000$ (đồng)
+
+Ta có sơ đồ:
+
+![Sơ đồ: Trung bình cộng 1 đoạn; Dũng 1 đoạn còn thiếu 20000 đồng; An, Bình và Chi 3 đoạn và 20000 đồng](so-do/k4T-lo4-cau7.svg)
+
+Ba lần trung bình cộng số tiền của bốn bạn là: $120000+150000+170000-20000=420000$ (đồng)
+
+Trung bình cộng số tiền của bốn bạn là: $420000:3=140000$ (đồng)
+
+Tổng số tiền bốn bạn góp được là: $140000\times 4=560000$ (đồng)
+
+Đáp số: $560000$ đồng
+
+---
+
+## Câu 8 — Phiếu cuối tuần 24, Phần II bài 2 · Chú Hùng đi xe máy từ quê lên thành phố với quãng đường dài 150 km. Biết rằng cứ 100 km thì tiêu hao hết 2 lít xăng và giá mỗi lít xăng là 23000 đồng. Hỏi chú Hùng tốn ít nhất bao nhiêu tiền mua xăng để đủ cho xe máy đi hết quãng đường đó?
+
+**Dạng:** `T14T140101` — rút về đơn vị (một đại lượng).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: $150$ km không chia hết cho $100$ km, nên rút về **$50$ km** (vì $100$ và $150$ đều là số lần của $50$): $100$ km tốn $2$ lít ⇒ $50$ km tốn $1$ lít ⇒ $150$ km tốn $3$ lít. Có số lít thì nhân giá tiền. "Ít nhất" = mua vừa đủ số xăng cần, không thừa.
+
+**Phần 2. Trình bày**
+
+Tóm tắt:
+
+$100$ km: $2$ lít xăng
+
+$150$ km: … lít xăng?
+
+Bài giải
+
+Đi $50$ km thì tiêu hao hết số xăng là: $2:2=1$ (lít)
+
+$150$ km gấp $50$ km số lần là: $150:50=3$ (lần)
+
+Đi hết quãng đường $150$ km cần số xăng là: $1\times 3=3$ (lít)
+
+Chú Hùng tốn ít nhất số tiền mua xăng là: $23000\times 3=69000$ (đồng)
+
+Đáp số: $69000$ đồng
+
+---
+
+## Câu 9 — LT 21.16 · Một cửa hàng ngày thứ nhất bán được $\dfrac{2}{5}$ số gạo, ngày thứ hai bán được $\dfrac{3}{10}$ số gạo, tính ra ngày thứ nhất bán được nhiều hơn ngày thứ hai 72 kg gạo. Hỏi ban đầu, cửa hàng có bao nhiêu ki-lô-gam gạo?
+
+**Dạng:** `T14T210103` — tìm số biết giá trị phân số, biết **hiệu** các thành phần. *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: $72$ kg **không** ứng với phần còn lại mà ứng với **phần chênh** giữa hai ngày: $\dfrac{2}{5}-\dfrac{3}{10}$ số gạo. Cả hai phân số đều là của **cùng một tổng** (số gạo ban đầu) nên trừ được.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+$72$ kg gạo chiếm số phần số gạo ban đầu là: $\dfrac{2}{5}-\dfrac{3}{10}=\dfrac{4}{10}-\dfrac{3}{10}=\dfrac{1}{10}$ (số gạo)
+
+Ban đầu cửa hàng có số ki-lô-gam gạo là: $72:\dfrac{1}{10}=720$ (kg)
+
+Đáp số: $720$ kg gạo
+
+---
+
+## Câu 10 — LT 21.19 · (*) An, Bình, Chi góp tiền mua một quả bóng. Số tiền An góp bằng $\dfrac{5}{8}$ số tiền của hai bạn còn lại, số tiền Bình góp bằng $\dfrac{3}{10}$ số tiền của hai bạn còn lại, Chi góp 125000 đồng. Tính giá tiền quả bóng đó.
+
+**Dạng:** `T14T210102` — tìm số biết giá trị phân số, ba đại lượng. *(phải đổi "phân số của hai bạn còn lại" thành "phân số của giá quả bóng" rồi giải như ba đại lượng)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: $\dfrac{5}{8}$ là của **hai bạn kia**, không phải của **cả quả bóng** — phải đổi về cùng một tổng. Nếu hai bạn kia là $8$ phần thì An là $5$ phần, cả ba là $5+8=13$ phần ⇒ An góp $\dfrac{5}{13}$ giá quả bóng. Tương tự Bình góp $\dfrac{3}{3+10}=\dfrac{3}{13}$. Phần của Chi là phần còn lại, ứng với $125000$ đồng.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số tiền An góp bằng $\dfrac{5}{8}$ số tiền của hai bạn còn lại nên An góp số phần giá tiền quả bóng là: $\dfrac{5}{5+8}=\dfrac{5}{13}$ (giá tiền)
+
+Số tiền Bình góp bằng $\dfrac{3}{10}$ số tiền của hai bạn còn lại nên Bình góp số phần giá tiền quả bóng là: $\dfrac{3}{3+10}=\dfrac{3}{13}$ (giá tiền)
+
+$125000$ đồng Chi góp chiếm số phần giá tiền quả bóng là: $1-\left(\dfrac{5}{13}+\dfrac{3}{13}\right)=\dfrac{5}{13}$ (giá tiền)
+
+Giá tiền quả bóng là: $125000:5\times 13=325000$ (đồng)
+
+Đáp số: $325000$ đồng
+
+---
+
+## Câu 11 — LT 22.9 · Một sân vận động hình chữ nhật có chu vi là 500 m, chiều rộng bằng $\dfrac{2}{3}$ chiều dài. Tính diện tích của sân vận động đó.
+
+**Dạng:** `T14T220102` — tổng tỉ **ẩn tổng** (tổng = nửa chu vi). *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tỉ số đã cho, **tổng** chiều dài và chiều rộng chưa cho thẳng mà ẩn trong chu vi: tổng = nửa chu vi $=500:2$. Chiều rộng $2$ phần, chiều dài $3$ phần ⇒ tổng–tỉ. Xong mới tính diện tích.
+
+Chú ý: lỗi hay gặp là chia $500$ cho $5$ phần (quên lấy nửa chu vi).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Nửa chu vi sân vận động là: $500:2=250$ (m)
+
+Ta có sơ đồ:
+
+![Sơ đồ: Chiều rộng 2 phần; Chiều dài 3 phần; tổng 250 m](so-do/k4T-lo4-cau11.svg)
+
+Tổng số phần bằng nhau là: $2+3=5$ (phần)
+
+Chiều rộng sân vận động là: $250:5\times 2=100$ (m)
+
+Chiều dài sân vận động là: $250-100=150$ (m)
+
+Diện tích sân vận động là: $150\times 100=15000$ ($m^2$)
+
+Đáp số: $15000$ $m^2$
+
+---
+
+## Câu 12 — LT 23.10 · Trong vườn có 48 cây gồm ba loại: cam, hồng, bưởi. Số cây cam chiếm $\dfrac{1}{3}$ tổng số cây, số cây bưởi bằng $\dfrac{5}{3}$ số cây hồng. Hỏi mỗi loại trong vườn có bao nhiêu cây?
+
+**Dạng:** `T14T220102` — tổng tỉ **ẩn tổng** (tổng hồng + bưởi phải tính). *(chuyên đề 23 ⇒ về `T14T22` theo phương pháp)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hai bước. Bước 1: tìm số cây cam ($\dfrac{1}{3}$ của $48$) ⇒ còn lại là **tổng** cây hồng và bưởi. Bước 2: "bưởi bằng $\dfrac{5}{3}$ hồng" ⇒ hồng $3$ phần, bưởi $5$ phần ⇒ tổng–tỉ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số cây cam trong vườn là: $48\times\dfrac{1}{3}=16$ (cây)
+
+Số cây hồng và cây bưởi là: $48-16=32$ (cây)
+
+Ta có sơ đồ:
+
+![Sơ đồ: Cây hồng 3 phần; Cây bưởi 5 phần; tổng 32 cây](so-do/k4T-lo4-cau12.svg)
+
+Tổng số phần bằng nhau là: $3+5=8$ (phần)
+
+Số cây hồng trong vườn là: $32:8\times 3=12$ (cây)
+
+Số cây bưởi trong vườn là: $32-12=20$ (cây)
+
+Đáp số: Cam: $16$ cây; Hồng: $12$ cây; Bưởi: $20$ cây
+
+---
+
+## Câu 13 — LT 22.11 · Hiệu của hai số là số lớn nhất có hai chữ số. Tỉ số của hai số đó là $\dfrac{20}{9}$. Tìm hai số đó.
+
+**Dạng:** `T14T220103` — hiệu tỉ **ẩn hiệu**. *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hiệu ẩn trong câu chữ: "số lớn nhất có hai chữ số" là $99$. Tỉ số $\dfrac{20}{9}$ ⇒ số lớn $20$ phần, số bé $9$ phần, hiệu $11$ phần ứng với $99$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số lớn nhất có hai chữ số là $99$ nên hiệu của hai số là $99$.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số bé 9 phần; Số lớn 20 phần; hiệu 99](so-do/k4T-lo4-cau13.svg)
+
+Hiệu số phần bằng nhau là: $20-9=11$ (phần)
+
+Số bé là: $99:11\times 9=81$
+
+Số lớn là: $81+99=180$
+
+Đáp số: Số bé: $81$; Số lớn: $180$
+
+---
+
+## Câu 14 — LT 22.14 · Tìm hai số có tổng bằng 252, biết rằng nếu lấy số lớn hơn chia cho số bé được thương bằng 12 và số dư là 5.
+
+**Dạng:** `T14T220104` — tổng tỉ **ẩn tỉ số** (tỉ số qua phép chia có dư). *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: số lớn chia số bé được $12$ dư $5$ ⇒ số lớn $=$ số bé $\times 12+5$. Nếu **bớt $5$** ở số lớn thì số lớn gấp **đúng $12$ lần** số bé ⇒ bớt $5$ ở tổng: $252-5=247$ ứng với $1+12=13$ phần.
+
+Chú ý: kiểm lại số dư $5$ phải **bé hơn** số chia (số bé $19$) — đúng.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số lớn chia số bé được thương là $12$ và số dư là $5$ nên số lớn bằng $12$ lần số bé thêm $5$ đơn vị.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số bé 1 phần; Số lớn 12 phần và 5; tổng 252](so-do/k4T-lo4-cau14.svg)
+
+Mười ba lần số bé là: $252-5=247$
+
+Số bé là: $247:13=19$
+
+Số lớn là: $252-19=233$
+
+Đáp số: Số bé: $19$; Số lớn: $233$
+
+---
+
+## Câu 15 — LT 22.17 · (*) Hai bao gạo chứa tất cả 85 kg gạo. Nếu chuyển 5 kg gạo từ bao I sang bao II thì số gạo ở bao I sẽ bằng $\dfrac{2}{3}$ số gạo ở bao II. Hỏi mỗi bao chứa bao nhiêu ki-lô-gam gạo?
+
+**Dạng:** `T14T220301` — tỉ số có sự thay đổi: **chuyển** giữa các đại lượng. *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: chuyển gạo từ bao này sang bao kia thì **tổng không đổi** ($85$ kg). Tỉ số $\dfrac{2}{3}$ là của **lúc sau** ⇒ vẽ sơ đồ lúc sau, giải tổng–tỉ ra bao I lúc sau, rồi **cộng lại $5$ kg** để về lúc đầu.
+
+Chú ý: lỗi hay gặp là quên đổi về lúc đầu, hoặc trừ $5$ khỏi tổng.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khi chuyển gạo từ bao I sang bao II thì tổng số gạo của hai bao không đổi, vẫn là $85$ kg.
+
+Ta có sơ đồ sau khi chuyển:
+
+![Sơ đồ: Sau khi chuyển 5 kg — Bao I 2 phần; Bao II 3 phần; tổng 85 kg](so-do/k4T-lo4-cau15.svg)
+
+Tổng số phần bằng nhau là: $2+3=5$ (phần)
+
+Số gạo ở bao I sau khi chuyển là: $85:5\times 2=34$ (kg)
+
+Lúc đầu bao I chứa số gạo là: $34+5=39$ (kg)
+
+Lúc đầu bao II chứa số gạo là: $85-39=46$ (kg)
+
+Đáp số: Bao I: $39$ kg; Bao II: $46$ kg
+
+---
+
+## Câu 16 — LT 22.19 · (*) Hiệu hai số là 244. Nếu cùng bớt đi 15 đơn vị ở mỗi số thì được hai số mới có tỉ số là $\dfrac{7}{3}$. Tìm hai số ban đầu.
+
+**Dạng:** `T14T220302` — tỉ số có sự thay đổi: **tăng giảm** các đại lượng. *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: **cùng bớt** một số đơn vị ở cả hai số thì **hiệu không đổi** ($244$) — giống tuổi hai người qua các năm. Tỉ số $\dfrac{7}{3}$ là của hai số **mới** ⇒ vẽ sơ đồ số mới, giải hiệu–tỉ ra số bé mới, rồi **cộng lại $15$**.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khi cùng bớt đi $15$ đơn vị ở mỗi số thì hiệu hai số không đổi, vẫn là $244$.
+
+Ta có sơ đồ sau khi cùng bớt $15$:
+
+![Sơ đồ: Sau khi cùng bớt 15 — Số bé mới 3 phần; Số lớn mới 7 phần; hiệu 244](so-do/k4T-lo4-cau16.svg)
+
+Hiệu số phần bằng nhau là: $7-3=4$ (phần)
+
+Số bé mới là: $244:4\times 3=183$
+
+Số bé ban đầu là: $183+15=198$
+
+Số lớn ban đầu là: $198+244=442$
+
+Đáp số: Số bé: $198$; Số lớn: $442$
+
+---
+
+## Câu 17 — LT 24.2 · Tìm một số, biết lấy số đó trừ đi 8 rồi chia cho 5, lấy thương tìm được cộng với 98, được bao nhiêu nhân với 5 thì được kết quả là 2505.
+
+**Dạng:** `T14T230101` — tính ngược: tìm số ban đầu trong chuỗi phép tính.
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: viết chuỗi phép tính thành **lưu đồ**, đặt tên các kết quả trung gian (A, B, C), rồi đi **ngược từ $2505$**: nhân $5$ ⇒ ngược là chia $5$; cộng $98$ ⇒ trừ $98$; chia $5$ ⇒ nhân $5$; trừ $8$ ⇒ cộng $8$ (VD 24.1).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Theo đề bài ta có:
+
+Số cần tìm $\xrightarrow{-8}$ A $\xrightarrow{:5}$ B $\xrightarrow{+98}$ C $\xrightarrow{\times 5}$ $2505$
+
+C là: $2505:5=501$
+
+B là: $501-98=403$
+
+A là: $403\times 5=2015$
+
+Số cần tìm là: $2015+8=2023$
+
+Đáp số: $2023$
+
+---
+
+## Câu 18 — LT 24.16 · (*) Một cửa hàng bán gạo, ngày thứ nhất cửa hàng bán $\dfrac{2}{5}$ số gạo, ngày thứ hai cửa hàng bán $\dfrac{1}{3}$ số gạo còn lại sau ngày thứ nhất và 20 kg. Ngày thứ ba cửa hàng bán 60 kg nữa thì vừa hết số gạo. Hỏi lúc đầu, cửa hàng đó có bao nhiêu ki-lô-gam gạo?
+
+**Dạng:** `T14T230101` — tính ngược từ cuối. *(tính ngược có phân số — cùng kiểu lô 1 câu 13 LT 24.12 CEO đã duyệt ở `230101`; vì vậy em bỏ "tính ngược với phân số" khỏi bảng thiếu §5)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đi **ngược từ ngày thứ ba**. Ngày thứ hai bán "$\dfrac{1}{3}$ số còn lại **và** $20$ kg" ⇒ trước khi bán thêm $20$ kg, số gạo là $60+20=80$ kg, đó là phần còn lại sau khi bán $\dfrac{1}{3}$, tức $\dfrac{2}{3}$ số gạo còn lại sau ngày thứ nhất. Tương tự, số còn lại sau ngày thứ nhất là $\dfrac{3}{5}$ số gạo lúc đầu.
+
+Chú ý: mỗi phân số là của **một "tổng" khác nhau** — $\dfrac{1}{3}$ của số còn lại, $\dfrac{2}{5}$ của số lúc đầu.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số gạo còn lại trước khi bán thêm $20$ kg ở ngày thứ hai là: $60+20=80$ (kg)
+
+$80$ kg gạo chiếm số phần số gạo còn lại sau ngày thứ nhất là: $1-\dfrac{1}{3}=\dfrac{2}{3}$ (số gạo còn lại)
+
+Số gạo còn lại sau ngày thứ nhất là: $80:\dfrac{2}{3}=120$ (kg)
+
+$120$ kg gạo chiếm số phần số gạo lúc đầu là: $1-\dfrac{2}{5}=\dfrac{3}{5}$ (số gạo)
+
+Lúc đầu cửa hàng có số gạo là: $120:\dfrac{3}{5}=200$ (kg)
+
+Đáp số: $200$ kg gạo
+
+---
+
+## Câu 19 — LT 24.6 · Ba bạn An, Bình, Chi sưu tầm được tất cả 120 con tem. Nếu An cho Bình 15 con tem, Bình cho Chi 10 con tem thì lúc này số tem của ba bạn bằng nhau. Hỏi lúc đầu, mỗi bạn sưu tầm được bao nhiêu con tem?
+
+**Dạng:** `T14T000000` — **dạng chờ** (tính ngược **chuyển qua lại giữa nhiều người**, lập bảng — `k4T.md` §5 đã ghi thiếu ở `T14T23`).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: cho qua cho lại thì **tổng không đổi** ($120$) ⇒ lúc cuối mỗi bạn $120:3=40$ con. Đi **ngược từ cuối**, mỗi lần cho thì người cho **cộng lại**, người nhận **trừ đi**; lập bảng như VD 24.3 để không nhầm ai với ai.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Lúc cuối mỗi bạn có số con tem là: $120:3=40$ (con tem)
+
+Ta có bảng sau:
+
+| | An | Bình | Chi |
+|---|---|---|---|
+| Lúc cuối | $40$ | $40$ | $40$ |
+| Trước khi Bình cho Chi | $40$ | $40+10=50$ | $40-10=30$ |
+| Trước khi An cho Bình (lúc đầu) | $40+15=55$ | $50-15=35$ | $30$ |
+
+Giải thích bảng:
+
+Trước khi Bình cho Chi, số tem của Bình là: $40+10=50$ (con tem)
+
+Trước khi Bình cho Chi, số tem của Chi là: $40-10=30$ (con tem)
+
+Lúc đầu số tem của An là: $40+15=55$ (con tem)
+
+Lúc đầu số tem của Bình là: $50-15=35$ (con tem)
+
+Đáp số: An: $55$ con tem; Bình: $35$ con tem; Chi: $30$ con tem
+
+---
+
+## Câu 20 — Phiếu cuối tuần 10, Phần I bài 9 · Tìm $x$, biết: $\left(x+1\right)+\left(x+5\right)+\left(x+9\right)+\ldots+\left(x+113\right)+\left(x+117\right)=2130$
+
+**Dạng:** `T14T000000` — **dạng chờ** (tìm $x$ với số tự nhiên + dãy cách đều — `T14T04` chưa có "tìm $y$"). *Phần I trắc nghiệm — vẫn đủ 2 phần (luật CEO 08/10).*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: gom hai loại số hạng riêng: **các chữ $x$** và **các số $1$ ; $5$ ; $9$ ; … ; $117$** (dãy cách đều $4$). Mỗi ngoặc có một $x$ ⇒ số chữ $x$ bằng số số hạng của dãy $1$ ; $5$ ; … ; $117$. Tính tổng dãy số đó, rồi tìm $x$ theo cột.
+
+**Phần 2. Trình bày**
+
+Số các số hạng của dãy $1$ ; $5$ ; $9$ ; … ; $117$ là: $\left(117-1\right):4+1=30$
+
+Tổng của dãy $1$ ; $5$ ; $9$ ; … ; $117$ là: $\left(1+117\right)\times 30:2=1770$
+
+Ta có: $x\times 30+1770=2130$
+
+$\begin{array}{l} x\times 30=2130-1770 \\ x\times 30=360 \\ x=360:30 \\ x=12 \end{array}$
+
+Đáp số: $x=12$
+
+---
+
+## Bảng tóm tắt lô 4
+
+| # | Nguồn | Dạng | Đáp số | Ghi chú |
+|---|---|---|---|---|
+| 1 | LT 8.14 | `080101` | 493 ; 511 | hiệu ẩn; sơ đồ đúng tỉ lệ (đoạn hơn 18 rất ngắn so với 493) |
+| 2 | LT 8.20 | `080101` | 180 cm² | (*) suy hiệu từ hai kết quả |
+| 3 | PTL 2.5 | `080101` | 180 | ba số, sơ đồ 3 hàng |
+| 4 | LT 12.1a | `000000` chờ | 98 | thiếu "thêm bên phải" |
+| 5 | LT 12.4 | `120101` | 16 | |
+| 6 | PTL 3.1 | `000000` chờ | 9170 | thiếu dạng CĐ9 |
+| 7 | LT 13.17 | `000000` chờ | 560000 đồng | kém TBC, 4 bạn ⇒ "ba lần TBC" |
+| 8 | PCT 24 II.2 | `140101` | 69000 đồng | rút về 50 km |
+| 9 | LT 21.16 | `210103` | 720 kg | dạng 0 câu |
+| 10 | LT 21.19 | `210102` | 325000 đồng | (*) đổi về phân số của tổng |
+| 11 | LT 22.9 | `220102` | 15000 m² | dạng 0 câu |
+| 12 | LT 23.10 | `220102` | 16 ; 12 ; 20 cây | |
+| 13 | LT 22.11 | `220103` | 81 ; 180 | dạng 0 câu |
+| 14 | LT 22.14 | `220104` | 19 ; 233 | dạng 0 câu |
+| 15 | LT 22.17 | `220301` | 39 ; 46 kg | dạng 0 câu |
+| 16 | LT 22.19 | `220302` | 198 ; 442 | dạng 0 câu |
+| 17 | LT 24.2 | `230101` | 2023 | lưu đồ |
+| 18 | LT 24.16 | `230101` | 200 kg | (*) |
+| 19 | LT 24.6 | `000000` chờ | 55 ; 35 ; 30 | lập bảng |
+| 20 | PCT 10 I.9 | `000000` chờ | $x=12$ | trắc nghiệm, đủ 2 phần |
+
+**Đếm:** 20 câu · 10 sơ đồ (máy kiểm tổng/hiệu: 10/10 qua) · **11 câu vào dạng đang 0 câu trong kho** (`120101` `210102` `210103` `220102` `220103` `220104` `220301` `220302` `230101`) · 6 câu dạng chờ.
+**Chưa phủ được** (không có câu hợp trong sách đã đọc): `220201` (quy về đại lượng nhỏ nhất) · `220202` (tỉ số đôi một) ·
+`190102` (dãy tích kép) · `190204` (tìm $x$ với dãy hiệu–tích).

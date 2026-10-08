@@ -168,7 +168,7 @@ Luật gán:
 | `T14T17` So sánh | **phần hơn** (sách tách phần hơn và phần bù). Tra kho 07/10: `170203`/`170204` cùng TÊN "phần bù" nhưng câu thật khác nhau — `170203` = phần bù cùng tử 1 ($dfrac{33}{34}$ và $dfrac{34}{35}$), `170204` = phần bù khác tử, phải so tiếp ($dfrac{4}{5}$ và $dfrac{7}{9}$) ⇒ nên đổi tên `170204`, và phần hơn vẫn thiếu · viết phân số nằm giữa hai phân số | LT 17.9–17.10, 17.15–17.16 |
 | `T14T16` Phân số | tìm $y$ từ hai phân số bằng nhau · phân số bằng nhau / tối giản (nhận biết) · lập phân số theo điều kiện | LT 16.1–16.4, 16.11–16.15 |
 | CĐ 23 "Bài toán cơ bản về phân số" | không có chủ đề riêng; câu rơi về `T14T20`/`T14T21`/`T14T22` theo phương pháp | LT 23.1–23.15 |
-| `T14T23` Tính ngược (chỉ "chuỗi phép tính") | chuyển qua lại giữa 2–3 người · tính ngược với phân số · bảng (VD 24.3) | LT 24.4–24.17 |
+| `T14T23` Tính ngược (chỉ "chuỗi phép tính") | chuyển qua lại giữa 2–3 người · bảng (VD 24.3). *(Tính ngược có phân số **thuộc** `230101` — tiền lệ lô 1 câu 13 LT 24.12 CEO đã duyệt)* | LT 24.4–24.17 |
 
 ## 6. Hồ sơ nguồn — đếm nhanh để lên kế hoạch nhập
 
