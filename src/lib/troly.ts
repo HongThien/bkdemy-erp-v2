@@ -24,11 +24,11 @@
 import { listDotDuoi, listDotChoDuyetDuoi, type DotDuoi } from './botro_duoi'
 import { getMyTasks, buoiAoCuaNgay, diemDanhTienDo, TASKS_BY_VAI, type VaiViec } from './gami'
 import { getMyProfile, getMyScope } from './nhansu'
-import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL } from './opsvanhanh'
+import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, laNguoiDuyetOps, listOpsDuyetTheoNgay } from './opsvanhanh'
 import { listCanScanDaCham } from './detest'
 import { listViecCuaToi, listViecToiGiao, type ViecFull, type TrangThaiViec } from './giaoviec'
 import { anhChupBoTroBu, NGAY_AP_HAN_48H, type AnhChupBu } from './botro'
-import { ngayCuaTs } from './tuan'
+import { ngayCuaTs, congNgay } from './tuan'
 import { supabase } from './supabase'
 import { todayVN, soNgayLech } from './giaoviec-config'
 
@@ -709,6 +709,8 @@ export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[])
 //   ⑥ listCanScanDaCham     — bài test đã chấm chờ scan (pool Ops, KHÔNG theo người)
 //   ⑦ listViecCuaToi        — task PHÁT TRIỂN được giao cho tôi (đang mở)
 //   ⑧ listViecToiGiao       — task tôi GIAO, người ta nộp rồi, đang CHỜ TÔI nghiệm thu
+//   ⑨ listOpsDuyetTheoNgay  — report/báo tan/prep ĐÃ ĐÓNG chờ TÔI duyệt, gom THEO NGÀY (trưởng/phó
+//                             Vận hành + admin — Thùy 08/10; khối "Duyệt việc OPS theo ngày" ở VietCuaToi)
 // ⑧ là loại dễ quên nhất mà lại đúng chỗ nghẽn đã đo được: `vh_ops_task` 427/447 dòng đóng
 // mà chưa duyệt. Việc "chờ tôi duyệt" vẫn là việc CỦA TÔI, dù tôi không phải người làm.
 // Nguồn nào không áp cho người đang đăng nhập thì tự trả rỗng — không cần gate thêm ở đây,
@@ -730,11 +732,11 @@ export async function hoiTroLy(phien: string, cauHoi: string, lichSu: LuotHoi[])
 // CỜ trên từng dòng, không phải rổ thứ năm — cùng một việc vừa quá hạn vừa đang dở thì đáng
 // nằm ở rổ NỢ với dấu "đang dở", chứ không phải xuất hiện hai lần ở hai rổ.
 // ════════════════════════════════════════════════════════════════════════════
-export type NhomViec = 'buoi' | 'diemdanh' | 'report_tan' | 'prep' | 'duyet_duoi' | 'scan_test' | 'giao_viec' | 'nghiem_thu'
+export type NhomViec = 'buoi' | 'diemdanh' | 'report_tan' | 'prep' | 'duyet_duoi' | 'scan_test' | 'giao_viec' | 'nghiem_thu' | 'duyet_ops'
 const TEN_NHOM: Record<NhomViec, string> = {
   buoi: 'Buổi học', diemdanh: 'Điểm danh', report_tan: 'Report / Báo tan',
   prep: 'Chuẩn bị phòng', duyet_duoi: 'Bổ trợ đuổi', scan_test: 'Test đầu vào',
-  giao_viec: 'Phát triển', nghiem_thu: 'Chờ bạn nghiệm thu',
+  giao_viec: 'Phát triển', nghiem_thu: 'Chờ bạn nghiệm thu', duyet_ops: 'Duyệt việc OPS',
 }
 // Trạng thái việc phát triển còn ĐANG MỞ với người làm. 'cho_nghiem_thu' KHÔNG nằm đây —
 // nộp rồi thì bóng sang sân người giao, để nguyên trong danh sách người làm là nhắc nhầm người.
@@ -916,6 +918,24 @@ export async function viecHomNay(): Promise<BangHomNay> {
       khoa: `scan:${c.id}`, nhom: 'scan_test', nhomTen: TEN_NHOM.scan_test,
       nhan: 'Scan bài test đã chấm', boiCanh: `${c.hoTenHs}${c.khoi ? ` · khối ${c.khoi}` : ''} · ${c.mon}`, ngay: c.ngay,
       coHan: false, soNgay: Math.max(0, soNgayLech(c.ngay, homNay)), hanLuc: null, quaGio: false,
+      dangDo: false, buoiId: null, tab: null,
+    })
+  }
+
+  // ── ⑨ DUYỆT VIỆC OPS THEO NGÀY (trưởng/phó Vận hành + admin) ──────────────
+  // Mỗi NGÀY còn việc chờ duyệt = 1 dòng (đúng đơn vị "duyệt 1 lần cho xong" của Thùy 08/10). Duyệt không có
+  // mốc hạn trong hệ ⇒ rổ KHÔNG HẠN, soNgay = số ngày tồn để thấy độ cũ. Quét 120 ngày như khối ở VietCuaToi.
+  const duocDuyetOps = await anToan('quyền duyệt OPS', laNguoiDuyetOps(), false)
+  const choDuyetOps = duocDuyetOps
+    ? await anToan('việc OPS chờ duyệt', listOpsDuyetTheoNgay(congNgay(homNay, -120), homNay), [] as Awaited<ReturnType<typeof listOpsDuyetTheoNgay>>)
+    : []
+  const opsTheoNgay = new Map<string, number>()
+  for (const r of choDuyetOps) opsTheoNgay.set(r.ngay, (opsTheoNgay.get(r.ngay) ?? 0) + 1)
+  for (const [ngay, so] of opsTheoNgay) {
+    gom.push({
+      khoa: `duyetops:${ngay}`, nhom: 'duyet_ops', nhomTen: TEN_NHOM.duyet_ops,
+      nhan: 'Duyệt cả ngày (report · báo tan · prep)', boiCanh: `${so} việc đã đóng chờ duyệt`, ngay,
+      coHan: false, soNgay: Math.max(0, soNgayLech(ngay, homNay)), hanLuc: null, quaGio: false,
       dangDo: false, buoiId: null, tab: null,
     })
   }

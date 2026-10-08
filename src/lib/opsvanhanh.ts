@@ -292,6 +292,44 @@ export async function duyetOpsHangLoat(rows: OpsChoDuyet[], chatLuong = 100): Pr
   const { error } = await supabase.from('vh_ops_task').upsert(payload, { onConflict: 'tkb_id,ngay,tab' })
   if (error) throw error
 }
+// ── DUYỆT THEO NGÀY (Thùy 08/10: "duyệt của Lộc gom cả 1 ngày vào 1 chỗ, duyệt 1 lần, đưa ra Việc của tôi").
+// Gom Report + Báo tan + Prep phòng ĐÃ ĐÓNG chưa duyệt; hạn/trễ do DB tính (fn_ops_cho_duyet lấy hạn từ
+// fn_viec_ops_thuong). Duyệt = 1 RPC cho cả ngày, ghi ĐÚNG danh sách đang hiện + chất lượng ngoại lệ (mig 202610081800).
+export type OpsDuyetLoai = 'report' | 'tan' | 'prep'
+export type OpsDuyetDong = {
+  loai: OpsDuyetLoai; ngay: string; tkbId: string | null; phong: string | null; luot: string | null
+  tenViec: string; ca: string | null; nhanSuTen: string | null; anhUrl: string | null
+  dongAt: string; han: string | null; trePhut: number; chatLuong: number
+}
+export const opsDuyetKhoa = (r: Pick<OpsDuyetDong, 'loai' | 'tkbId' | 'phong' | 'luot'>) => `${r.loai}|${r.tkbId ?? ''}|${r.phong ?? ''}|${r.luot ?? ''}`
+export async function laNguoiDuyetOps(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('fn_ops_la_nguoi_duyet')
+  if (error) throw error
+  return !!data
+}
+export async function listOpsDuyetTheoNgay(tu: string, den: string): Promise<OpsDuyetDong[]> {
+  // Đọc THEO TRANG: PostgREST cắt mỗi lượt ở 1000 dòng bất kể .limit() — tồn từ tháng 7 đã ~1400 dòng
+  // (bản đầu dùng .limit(5000), app nhận 1000, rụng im lặng 20 ngày cũ nhất).
+  const TRANG = 1000
+  const data: any[] = []
+  for (let i = 0; ; i += TRANG) {
+    const { data: d, error } = await supabase.rpc('fn_ops_cho_duyet', { p_tu: tu, p_den: den }).range(i, i + TRANG - 1)
+    if (error) throw error
+    data.push(...(d ?? []))
+    if (!d || d.length < TRANG) break
+  }
+  return data.map((r): OpsDuyetDong => ({
+    loai: r.loai, ngay: r.ngay, tkbId: r.tkb_id, phong: r.phong, luot: r.luot, tenViec: r.ten_viec, ca: r.ca,
+    nhanSuTen: r.nhan_su_ten, anhUrl: r.anh_url, dongAt: r.dong_at, han: r.han, trePhut: r.tre_phut ?? 0, chatLuong: Number(r.chat_luong),
+  }))
+}
+export async function duyetOpsNgay(ngay: string, rows: (OpsDuyetDong & { chatLuongMoi?: number })[]): Promise<number> {
+  const items = rows.map((r) => ({ loai: r.loai, tkb_id: r.tkbId, phong: r.phong, luot: r.luot, chat_luong: r.chatLuongMoi ?? r.chatLuong }))
+  const { data, error } = await supabase.rpc('fn_ops_duyet_ngay', { p_ngay: ngay, p_items: items })
+  if (error) throw error
+  return Number(data ?? 0)
+}
+
 export function hieuSuatOpsOf(r: OpsChoDuyet, chatLuong: number): number {
   return tinhHieuSuat(deXuatTienDoOps(r.doneAt, r.deadline).diem, chatLuong)
 }
