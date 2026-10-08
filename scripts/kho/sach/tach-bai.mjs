@@ -80,7 +80,8 @@ export function tachBai(txt, tenSach) {
       dong_bai(); cur = { khu, so: `${m[1]}.${m[2]}`, sao: /\(\*/.test(m[3]), _de: [m[3].replace(/^\(\*+\)\s*/, '')], _giai: null, anh: [], _dong: i + 1 }; cheDo = 'de'; continue
     }
     if (!cur) { if (t && khu) boQua.push({ dong: i + 1, text: t.slice(0, 80) }); continue }
-    for (const a of raw.matchAll(/\[\[img:([^\]]+)\]\]/g)) cur.anh.push(a[1])
+    // hình trong phần ĐỀ ≠ hình trong "Bài làm" của sách (sơ đồ lời giải — máy vẽ lại được, không chặn bài)
+    for (const a of raw.matchAll(/\[\[img:([^\]]+)\]\]/g)) (cheDo === 'giai' ? (cur.anh_giai ??= []) : cur.anh).push(a[1])
     const s = sach(bo(raw))
     if (!s) continue
     if (cheDo === 'giai') cur._giai.push(s)
@@ -98,7 +99,7 @@ export function tachBai(txt, tenSach) {
     // nhãn ý lặp trong một bài (vd LT 11.3 có hai lượt a b c — sách in thiếu nhãn "11.4.") ⇒ KHÔNG đoán ý nào thuộc bài nào:
     // giữ bản ghi cả bài + cảnh báo, không đẻ bản ghi ý (mã "LT 11.3a" sẽ trùng hai câu khác nhau)
     const lap = y.length !== new Set(y.map((x) => x.nhan)).size
-    ra.push({ sach: tenSach, ma, khu: b.khu, so: b.so, y: null, sao: b.sao, so_y: y.length, noi_dung: caBai, anh: b.anh, loi_giai_sach: loi, dong_goc: b._dong,
+    ra.push({ sach: tenSach, ma, khu: b.khu, so: b.so, y: null, sao: b.sao, so_y: y.length, noi_dung: caBai, anh: b.anh, anh_giai: b.anh_giai ?? [], loi_giai_sach: loi, dong_goc: b._dong,
       ...(lap ? { canh_bao: 'nhãn ý lặp lại trong bài — sách có thể in thiếu nhãn bài kế tiếp; người tách tay' } : {}) })
     if (lap) continue
     for (const x of y) ra.push({ sach: tenSach, ma: `${ma}${x.nhan}`, khu: b.khu, so: b.so, y: x.nhan, sao: b.sao, de_chung: dan || null,
