@@ -6,6 +6,8 @@ export type AnhNv = {
   khoi: KhungCat; tieuDe: KhungCat; vi: KhungCat; nhiemVu: KhungCat; nut: KhungCat
   icon: { so: string; ngay: string; tuan: string; thang: string; luyenYeu: string; chamDeu: string; luyenNhieu: string; benBi: string; quay: string; ngocDht: string; tinhTheExp: string }
 }
+/** NGƯỜI DẪN TRUYỆN (Lộc) — chuỗi khung PNG/webp theo động tác. lap=true: lặp mãi · lap=false: phát 1 lần rồi GIỮ khung `giu` (1-based). Mọi khung cùng kích thước, cùng neo chân. */
+export type NguoiDanAnh = { rong: number; cao: number; fps: number; anim: Record<string, { src: string[]; lap: boolean; giu?: number }> }
 export type AnhTt = {
   thanhTuu: KhungCat; tongKet: KhungCat; nutNhan: KhungCat; nhanQua: KhungCat
   icon: { huyHieu: string; album: string; tinhTheExp: string; giaiTienBo: string; theoMa: Record<string, string> }

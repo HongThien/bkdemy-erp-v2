@@ -528,7 +528,68 @@ function MpXuMayMan() {
   )
 }
 
+// ── Chuỗi làm bài (banner ở màn chính) ───────────────────────────────────────
+function MpChuoi() {
+  const ngay: [string, string, 'hoc' | 'lo' | 'nay'][] = [['T6', '02/10', 'hoc'], ['T7', '03/10', 'hoc'], ['CN', '04/10', 'hoc'], ['T2', '05/10', 'hoc'], ['T3', '06/10', 'hoc'], ['T4', '07/10', 'lo'], ['Nay', '08/10', 'nay']]
+  return (
+    <div className="grid gap-3">
+      <Soi id="lua" giu={['bay_ngay', 'chua_giu', 'ngay_lo', 'moc']} style={{ ...THE, clipPath: 'none', border: `2px solid ${MAU.acc}` }}>
+        <div className="flex items-center gap-3 p-3.5">
+          <span className="text-[44px] leading-none" style={{ filter: 'grayscale(1) opacity(.65)' }} aria-hidden>🔥</span>
+          <div className="min-w-0 flex-1 leading-tight">
+            <p className="text-[12px] font-bold uppercase tracking-[0.06em]" style={mo}>Chuỗi làm bài</p>
+            <p className="text-[24px] font-bold" style={{ ...HEAD, ...chu() }}>12 ngày liên tiếp</p>
+            <Soi id="chua_giu" className="mt-0.5"><p className="text-[13px]" style={mo}>Hôm nay chưa giữ chuỗi — luyện 1 lượt để không bị đứt</p></Soi>
+          </div>
+        </div>
+        <Soi id="bay_ngay" className="mx-3.5 flex gap-1">
+          {ngay.map(([t, d, k]) => (
+            <div key={d} className="flex flex-1 flex-col items-center gap-1">
+              <span className="text-[11px] font-bold" style={{ color: k === 'nay' ? MAU.acc : MAU.muted }}>{t}</span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full text-[16px]" style={{ background: k === 'hoc' ? MAU.acc : MAU.surface2, border: `2px solid ${k === 'lo' ? MAU.canhBao : k === 'nay' ? MAU.acc : 'transparent'}` }}>{k === 'hoc' ? '🔥' : k === 'lo' ? '⏳' : ''}</span>
+              <span className="text-[10.5px]" style={mo}>{d}</span>
+            </div>
+          ))}
+        </Soi>
+        <Soi id="ngay_lo" className="mx-3.5 mt-2.5"><p className="text-[13px] font-bold" style={{ color: MAU.canhBao }}>Em lỡ 07/10 — vẫn sửa được, bấm để xem cách bù.</p></Soi>
+        <div className="p-3.5 pt-2.5"><span className="block rounded-lg py-2.5 text-center text-[14px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Luyện ngay để giữ chuỗi</span></div>
+      </Soi>
+      <Soi id="moc" style={THE}>
+        <div className="flex items-center justify-around p-3 text-center">
+          {[3, 7, 14, 30, 50, 100].map((n) => (
+            <div key={n}><p className="text-[18px] font-bold" style={{ ...HEAD, color: n <= 7 ? MAU.acc : MAU.muted }}>{n}</p><p className="text-[10.5px]" style={mo}>ngày</p></div>
+          ))}
+        </div>
+      </Soi>
+    </div>
+  )
+}
+
+// ── Trò chơi (danh sách game) ────────────────────────────────────────────────
+function MpTroChoi() {
+  return (
+    <div className="grid gap-3">
+      <Soi id="o_tro_choi" style={THE}>
+        <div className="flex items-center gap-3 p-3"><IconO id="tro_choi" lon /><div><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>Trò chơi</b><p className="text-[12px]" style={mo}>Giải lao sau giờ học</p></div></div>
+      </Soi>
+      <Soi id="ds_game" giu={['nong_trai']} className="grid gap-2">
+        <Soi id="nong_trai" style={THE}>
+          <div className="flex gap-3 p-3">
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[16px] text-[30px]" style={{ background: MAU.surface2 }}>🌾</span>
+            <div className="min-w-0 flex-1"><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>Nông trại BK</b><p className="text-[12px]" style={mo}>Trồng trọt, thu hoạch, mở rộng vườn của em</p><p className="mt-1 text-[12.5px] font-bold" style={{ color: MAU.acc }}>Chơi ngay ›</p></div>
+          </div>
+        </Soi>
+        <div style={{ ...THE, opacity: 0.55 }} className="flex gap-3 p-3">
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[16px] text-[28px] font-extrabold" style={{ background: MAU.surface2, border: '1.5px dashed var(--sk-line)', color: MAU.muted }}>?</span>
+          <div className="min-w-0 flex-1"><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>Game mới</b> <NhanHS mau="var(--sk-muted)">Sắp ra mắt</NhanHS><p className="mt-0.5 text-[12px]" style={mo}>Đang chuẩn bị</p></div>
+        </div>
+      </Soi>
+    </div>
+  )
+}
+
 const MAN: Record<ChuongTutorial['id'], () => JSX.Element> = {
+  chuoi: MpChuoi, tro_choi: MpTroChoi,
   giao_dien: MpGiaoDien, hoc_tap: MpHocTap, chu_de: MpChuDe, tu_luyen: MpTuLuyen, luot_that: MpLuotThat, thu_thach: MpThuThach, dau_chinh_phuc: MpDauChinhPhuc,
   nhiem_vu: MpNhiemVu, bxh: MpBxh, rank: MpRank, huy_hieu: MpHuyHieu, xu_may_man: MpXuMayMan, the_gioi: MpTheGioi,
 }

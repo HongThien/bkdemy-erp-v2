@@ -66,6 +66,7 @@ type HomeProps = {
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]; data: Home912 | null
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
   onGopY?: () => void; gopYMoi?: number
+  onTutorial?: () => void // menu ⋯: xem lại hướng dẫn của Lộc (tutorial theo tính năng đang mở)
   chuoi?: Chuoi | null; onLuyenChuoi?: () => void // chuỗi làm bài (spec-v1 §3): ngọn lửa đầu màn chính · undefined = đang tải, null = lỗi (ẩn) // Góp ý & báo lỗi (menu ⋯) + số lời trả lời em chưa đọc ⇒ chấm đỏ trên ⋯
   onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
   gioiTinh?: 'nam' | 'nu' | null // chỉ để chọn NHÂN VẬT của style — không đổi màu theo giới tính
@@ -211,6 +212,7 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
               <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); setDoHoa(true) }}>Đồ hoạ</button>
               {p.onGopY && <button className="flex items-center justify-between px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onGopY!() }}>
                 Góp ý & báo lỗi {!!p.gopYMoi && <Badge n={p.gopYMoi} />}</button>}
+              {p.onTutorial && <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onTutorial!() }}>Hướng dẫn của Lộc</button>}
               <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onDoiMK() }}>Đổi mật khẩu</button>
               <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onThoat() }}>Thoát</button>
             </div>
