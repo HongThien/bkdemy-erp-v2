@@ -35885,3 +35885,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `CHUONG_LOI` = Học tập · Luyện dạng yếu · Chuỗi · Nhiệm vụ · Thành tựu. `chuongMo(mo, chiId?)` lọc TRƯỚC khi đánh số (sửa lỗi đánh số "Chặng N" lệch khi chỉ chạy tập con — Lộc báo phần mới trước đó đánh số theo toàn bộ).
 - HocSinhApp: lần đầu tự mở ⇒ 5 chặng lõi; Bỏ qua ở lượt đầu ⇒ ghi bo_qua MỌI chặng đang mở (không nhắc từng cái). Hết 5 chặng lõi, 7 chặng còn lại (chủ đề · lượt học thật · đấu trường · BXH · ví xu · trò chơi · giao diện) vào lời mời của Lộc ở góc màn chính (em ✕ tắt được).
 - Lời mở đầu Lộc đổi: "Còn nhiều thứ khác trong app, mình sẽ kể dần cho em đỡ ngợp." Xem thử: `?xem=tutorial&dot=1&loi=1`. tsc sạch, check:style-hs ✔.
+
+## 08/10 (tiếp) — Bản đồ 4 tầng: CEO trả lời 5 câu trước khi bắt đầu
+- (1) Tạm dừng TOÀN BỘ nhân sự. (2) Cần đủ thao tác gộp/tách/hạ/nâng tầng. (3) CEO làm rõ 4 tầng trên bản đồ hiện tại TRƯỚC rồi mới chuyển; KHÔNG làm theo từng câu — hành vi chính: chuyển + nâng/hạ tầng đối tượng tầng 3–4, thêm/sửa đối tượng tầng 2–3. (4) Chuẩn bị xong rồi xếp một mạch. (5) Gắn lại câu ô buổi bù + Hình buổi bù: BỎ QUA, làm bản đồ trước.
