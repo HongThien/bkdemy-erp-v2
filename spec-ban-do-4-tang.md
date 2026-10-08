@@ -98,7 +98,15 @@ Gốc rễ: thiết kế nói "mastery đi theo câu", nhưng **`fn_mastery_cell
 
 Mất thật chỉ còn **57** ô `gami_session_problems` không có câu, trỏ vào mã đã mất (với `tu_luyen_dang_lan` và các bảng vận hành thì xử lý ở việc riêng).
 
-⇒ **Luật mới:** khoá chính không bao giờ đổi. Mọi lần "chuyển" chỉ sửa **con trỏ cha**. Hai hàm cũ ngừng được gọi từ P1 (§11), xoá theo Luật xoá ở P6.
+**Nguồn sinh ra mã mất** (phiên kiểm lỗi B, `docs/bao-cao-loi-b-ma-mo-coi.md`):
+- **11/16 mã** do thao tác "Gộp câu" (`fn_dai_gop_cau_dang`, chỉ đổi `dang_chinh` của câu) rồi **xoá cứng** dòng nhóm (`deleteDaiDang` trong `src/lib/kho/api.ts`).
+- Hai hàm chuyển thì có sửa đủ 8 bảng.
+- Đối chiếu bằng 2 nhân chứng độc lập (`dang_chinh` hiện tại của câu + lần đổi cuối trong `kho_doi_dang_log`): **1.879/1.879** dòng có câu khớp, 0 lệch.
+
+⇒ **Luật mới:**
+- Khoá chính không bao giờ đổi. Mọi lần "chuyển" chỉ sửa **con trỏ cha**.
+- **Cấm xoá cứng nhóm bài:** dùng `xoa_at` (kho rác) và `gop_vao` (§4).
+- Hai hàm chuyển, `deleteDaiDang` và đường xoá cứng trong `api.ts` ngừng được gọi từ P1 (thu quyền ở DB, không chỉ ẩn nút). Bản thân hàm xoá theo Luật xoá ở P6.
 
 ---
 
@@ -140,7 +148,11 @@ alter table dai_ban_do
   add constraint dai_ban_do_o_fk foreign key (ma_chu_de, ma_chuyen_de)
       references dai_chu_de_chuyen_de (ma_chu_de, ma_chuyen_de),
   add column bat_buoc   boolean not null default true,   -- false = không chặn "xong chuyên đề" (nâng cao, ôn tập, thùng)
-  add column updated_at timestamptz not null default now();
+  add column xoa_at     timestamptz,                     -- kho rác: CẤM xoá cứng (tham chiếu bằng chữ ở 43 cột)
+  add column gop_vao    text references dai_ban_do(ma_dang), -- biển chỉ đường: nhóm đã gộp ⇒ đo không có câu tính về đây
+  add column updated_at timestamptz not null default now(),
+  add constraint dai_ban_do_gop_chi_khi_xoa check (gop_vao is null or xoa_at is not null);
+revoke delete on dai_ban_do from authenticated, anon;  -- xoá = đặt xoa_at qua RPC
 -- ten_chu_de · ten_chuyen_de · khoi: GIỮ làm bản chép tương thích, do TRIGGER điền từ bảng cha (§4.1)
 
 -- ── Tầng 4: Dạng bài = dai_cum_bai (giữ nguyên) ──
@@ -267,16 +279,23 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 ## 10. Mastery "đi theo câu" (Q10 — CEO 08/10: "câu đang thuộc dạng nào thì tính về dạng đó")
 
 - **Hiện nay:** `fn_mastery_cells` lấy `ma_dang` từ **bản chép lưu trên dòng đo** (`gami_session_problems`, `bai_test_cau`, `bt_grades`).
-- **Luật:** dòng đo có `ma_cau` ⇒ tính về nhóm **hiện tại** của câu (`dang_chinh`). Câu đã xoá mềm (`xoa_at`) vẫn còn `dang_chinh` nên vẫn tính được. Đo 08/10: **0** câu bị xoá cứng.
-- **Phủ:** 94% `gami_grades` (128.305/136.055) và 96% `bai_test_cau` có câu ⇒ tự đi theo, không cần làm gì thêm.
-- **Phần còn lại (~5,7%, 7.750 lượt chấm, ô chấm gắn thẳng nhóm, không có câu).** Nguồn gốc:
-  - **`ingame` (bài trên lớp): 4.746.** Pha này **chưa bao giờ** ghi `ma_cau`; GV chấm theo nhóm của giáo án. Vẫn đang phát sinh (1.315 lượt từ 15/08).
-  - **ET/BTVN/MT trước mig `0106`** (tháng 6–7, trước khi ô chấm có cột `ma_cau`). Backfill khi đó chỉ map khi số ô bằng số câu, lệch thì để trống, đúng luật "không đoán".
-  - Lẻ: 439 lượt ET sau 15/08 chưa rõ nguồn ⇒ kiểm lúc build.
-
-  Phần này giữ bản chép, cộng thêm **biển chỉ đường** `dai_ban_do_chuyen_huong (ma_cu → ma_moi)`:
-  - **Gộp** A vào B ⇒ ghi A → B, nên đo của A tính về B.
-  - **Tách** A thành A + A′ ⇒ dòng không có câu ở lại nhóm **giữ mã A** (không chia được thì không đoán, §1.5).
+- **Luật phân giải nhóm của một lần đo** (một hàm duy nhất `_do_nhom_cua_o(ma_cau, ma_dang_chep)`):
+  1. Có `ma_cau`, câu **còn trong kho** (không `xoa_at`), và nhóm hiện tại của câu là **nhóm thật** (không phải dạng chờ "Chưa phân dạng", không `xoa_at`) ⇒ tính về **nhóm hiện tại của câu**.
+  2. Ngược lại (không có câu · câu đã vào rác hoặc biến mất · câu đang nằm dạng chờ) ⇒ dùng **mã chép trên ô chấm**, rồi đi theo chuỗi `gop_vao` tới nhóm còn sống.
+  - Lý do của điều kiện ở (1): 4 mã `T1120301xx` (chuyên đề xoá 24/09) có câu đã dồn về dạng chờ `T112000000`. Đi theo câu mà không lọc thì **157 lượt chấm** thành mastery của "Chưa phân dạng". Có 2 ô mang `ma_cau` mà câu đã biến khỏi `dai_cau_hoi` ⇒ phải giữ mã chép.
+- **Phủ:** 94% `gami_grades` (128.305/136.055) và 96% `bai_test_cau` có câu.
+- **Lượt chấm không có câu (7.750).** Phần thật sự vào mastery Đại nhỏ hơn con số này:
+  - **`ingame` 4.746:** pha này không ghi câu, **và `fn_mastery_cells` không tính `ingame`** ⇒ không ảnh hưởng mastery.
+  - **ET/BTVN/MT tháng 6–7, trước mig `0106`:** ô chấm chưa có cột câu. Backfill khi đó chỉ map khi số ô bằng số câu.
+  - **ET buổi bù trước 29/09: 1.392 ô.** `ensureBuoiBuETProblems` (`src/lib/botro.ts`) chép ô ET của buổi mẹ sang từng em nhưng **không ghi `ma_cau`**. Sửa ở `d7ebbd6a` (29/09); từ 30/09 ô nào cũng có câu. Có thể **gắn lại câu** bằng 2 nhân chứng (thứ tự ô của em ↔ ô buổi mẹ đã có `ma_cau`, **và** dãy `ma_dang` khớp 100%, **và** đề buổi mẹ không sửa sau ngày chép). Lệch dù 1 ô thì bỏ cả em đó. Việc riêng, chỉ ghi khi CEO gật.
+  - Ô Hình mang `hinh_baitoan_id`, không có `ma_dang` ⇒ không vào mastery Đại (đo riêng ở `fn_mastery_cells_hinh`).
+- **Gộp** A vào B ⇒ `A.gop_vao = B` (A vào rác), nên đo không có câu của A tính về B.
+- **Tách** A thành A + A′ ⇒ đo không có câu ở lại nhóm **giữ mã A** (không chia được thì không đoán, §1.5).
+- **Không chỉ `fn_mastery_cells`:** các hàm sau cũng đọc mã chép trên ô chấm lịch sử, nên phải chuyển sang `_do_nhom_cua_o`. Danh sách lọc bằng mắt, phải rà lại lúc build:
+  - `fn_btyeu_dang_yeu_2_cua_so` · `fn_btyeu_de_xuat_dang_moi` · `fn_btyeu_lich_su_hs`
+  - `fn_hs_bu_dang` · `fn_thanh_tuu_thang` · `fn_hs_xep_hang_ti_le_dat`
+  - `_troly_cc_hoc_tap_hoc_sinh` · `_bxh_gia_tri` · `hs_dang_evals`
+- **Báo cáo trước/sau** tách riêng nhóm "nhãn cũ do gộp" (gsp 249 + btc 845, đã khớp 2 nhân chứng, CEO không phải soi lại) với phần còn lại.
 - **Bật ở P1**, trước khi CEO xếp lại, vì các thao tác gộp và tách chỉ an toàn khi đã có luật này.
   - Hôm nay có **366** dòng `gami_session_problems` và **1.129** dòng `bai_test_cau` mà bản chép khác nhóm hiện tại của câu ⇒ mastery các ô đó đổi ngay khi bật.
   - Kèm báo cáo trước/sau theo (HS × nhóm) để CEO xem. Không phải cổng chờ duyệt.
@@ -288,11 +307,11 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 
 | Pha | Việc | Phá cũ? | Xong khi |
 |---|---|---|---|
-| **P1 Nền DB** | §4: bảng, backfill, trigger, RPC §5, chống vòng. Ngừng gọi 2 hàm chuyển cũ | Không | Bản chép chữ trên `dai_ban_do` **không đổi dòng nào** so với trước backfill. 25 hàm cũ chạy y nguyên. `npm run schema` |
+| **P1 Nền DB** | Sao lưu ra file · §4: bảng, backfill, trigger, RPC §5 (gồm gộp/tách), chống vòng, `xoa_at` + `gop_vao`, cấm xoá cứng · ngừng gọi 2 hàm chuyển cũ + `fn_dai_gop_cau_dang` + `deleteDaiDang` · **§10 `_do_nhom_cua_o` cho `fn_mastery_cells` và 9 hàm kia**, kèm báo cáo trước/sau | Không (mastery đổi đúng chỗ nhãn cũ) | Bản chép chữ trên `dai_ban_do` **không đổi dòng nào** so với trước backfill. 25 hàm cũ chạy y nguyên. Báo cáo §10 gửi CEO. `npm run schema` |
 | **P2 Màn Card** | §9 phần cây, kéo thả, gợi ý gộp, đổi nhãn trong Kho | Không | CEO tự kéo được và dồn "Tìm x" K6 về 1 chuyên đề trên app thật |
 | **P3 Thứ tự** | §9 chế độ Thứ tự, 3 tầng tiền đề, cảnh báo | Không | CEO khai xong thứ tự 1 khối mẫu |
 | **P4 Lý thuyết tầng 4** | `dai_cum_ly_thuyet`, màn sửa, in (§8), tuỳ chọn đề xuất tách | Không | In được 1 nhóm = lý thuyết + N ví dụ |
-| **P5 Bên dùng** | `fn_ban_do_mo_khoa` → Học từ đầu · bổ trợ gốc→ngọn · §10 sau cổng kiểm | Đổi hành vi | Soi bằng tài khoản HS thật |
+| **P5 Bên dùng** | `fn_ban_do_mo_khoa` → Học từ đầu · bổ trợ gốc→ngọn | Đổi hành vi | Soi bằng tài khoản HS thật |
 | **P6 Thu gọn** | Chuyển 25 hàm và 36 file sang bảng mới, đổi nhãn toàn app, rồi **xoá** cột chữ cũ, 2 hàm chuyển cũ, `dai_chuyen_de_thu_tu` | **Có** | Theo Luật xoá: liệt kê chính xác, CEO gật rồi mới làm |
 
 ---
@@ -303,6 +322,9 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 - **Mã có logic** (Q4): cột `ma_hien_thi` sinh từ vị trí, sinh lại được bất cứ lúc nào, không đụng khoá chính.
 - Áp khuôn cho **HGT, KHTN** qua registry `_kho_*`.
 - Chẩn đoán gốc rễ ("yếu B vì hổng A") và bổ trợ tự kéo tiền đề (Q9).
+- **Hình, ghi nhận lúc đào gốc 08/10 (ngoài phạm vi spec này):**
+  - **Buổi bù không có phần Hình.** `ensureBuoiBuETProblems` chỉ chép câu Đại của ET buổi mẹ. 0 ô Hình nào thuộc buổi bù; 12 lượt em bù có buổi mẹ chứa Hình ET ⇒ các em này **không bao giờ được chấm Hình** của buổi đó. Lỗi vẫn đang có.
+  - **Mastery Hình đo theo BÀI TOÁN** (`fn_mastery_cells_hinh` nhóm theo `hinh_baitoan_id`), không theo dạng. Mỗi bài thường chỉ đo 1 lần ⇒ điểm nắm không cộng dồn qua các buổi, trái mô hình lõi (HS × KP). Cần chốt KP của Hình cùng với cấu trúc Hình mới.
 - Sửa **lỗi B** (2.077 dòng mồ côi): việc riêng, cần nhân chứng thứ hai.
 - Bản đồ phiêu lưu app HS (`spec-v1-app-hs.md` §4) đổi theo mô hình mới: lục địa = chủ đề, khu vực = ô, màn = nhóm bài, quái = dạng bài. Chuyên đề dùng chung thì hiện thành khu vực ở nhiều lục địa.
 
