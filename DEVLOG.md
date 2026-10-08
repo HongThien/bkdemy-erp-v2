@@ -35853,3 +35853,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Chưa kiểm live:** nút "Chấm cả bài" và "Dùng điểm từ câu" (chỉ kiểm trong ROLLBACK — bấm thật sẽ ghi đè cả bài HS thật) · thi lại qua giao diện.
 - **Dữ liệu đã đụng khi test:** Hải 9A1 Câu 4 (về lại S/0đ, nhận xét rỗng; người chấm đổi sang admin).
 - **Vá an toàn (mig 202610081113):** `diem_thi.nguon` mặc định đổi 'cau' → 'tay'. Lý do: DB đã chạy luật mới nhưng app thật chưa deploy — màn nhập điểm MT tay cũ ghi diem_thi không kèm nguồn ⇒ thành 'cau' ⇒ trigger có thể xoá số khi HS thiếu điểm câu. Đường mới luôn ghi 'cau' tường minh. Lúc áp: 0 dòng 'cau' (chưa ai dính).
+
+## 08/10 (tiếp) — Đính chính '2.077 dòng mồ côi': là NHÃN CŨ, không phải mất dữ liệu
+- **Thùy hỏi:** thiết kế gốc mastery đi theo câu, sao mồ côi được? Đào gốc: bai_test_cau 852/852 + gsp 272/329 'mồ côi' đều có câu còn sống thuộc nhóm đang sống. Gốc rễ = fn_mastery_cells đọc ma_dang CHÉP trên ô chấm (sp.ma_dang/btc.ma_dang), không đọc dang_chinh hiện tại ⇒ lệch thiết kế. Câu đổi dạng / nhóm gộp-xoá ⇒ nhãn chép cũ dần. Chuyển §10 (đọc theo câu) ⇒ tự lành; mất thật chỉ 57 ô gsp không câu.
+- **5,7% lượt chấm không câu (7.750):** ingame 4.746 (pha này chưa bao giờ ghi ma_cau, GV chấm theo nhóm giáo án, vẫn phát sinh) + ET/BTVN/MT tháng 6–7 trước mig 0106 (backfill chỉ map khi số ô = số câu) + 439 ET sau 15/08 chưa rõ. Sai của t: báo 'rụng khỏi mastery / mồ côi' trước khi đào gốc ⇒ phóng đại. Sửa spec §3.2 + §10.

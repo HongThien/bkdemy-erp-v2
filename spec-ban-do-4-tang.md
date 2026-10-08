@@ -88,8 +88,15 @@ Bảng mới tạo từ nay **không** dùng chữ `dang` hay `cum` với nghĩa
 | `buoi_danh_gia_dang` | 31 / 3.009 | K7 |
 | `bo_tro_yeu_dang` · `bo_tro_duoi_dang` · `ca_test_cau` · `hoc_tu_dau_dang` | 28 · 15 · 24 · 1 | |
 
-Toàn bộ là mã Đại (`T106…`, `T107…`, `T111…`, `T112…`). Hậu quả: các lần đo này **rụng khỏi mastery mà không báo lỗi gì**, vì không còn nhóm nào nhận.
-Sửa lỗi B là **việc riêng**: muốn map lại thì cần nhân chứng thứ hai theo CLAUDE.md §2 (`ma_cau` → nhóm hiện tại của câu), không đoán theo tên.
+Toàn bộ là mã Đại (`T106…`, `T107…`, `T111…`, `T112…`).
+
+**Đính chính 08/10, sau khi đào gốc:** đây **không phải dữ liệu mất**, mà là **nhãn cũ**.
+- `bai_test_cau`: **852/852** dòng có câu, câu vẫn còn và đang thuộc một nhóm đang sống.
+- `gami_session_problems`: **272/329** dòng cũng vậy.
+
+Gốc rễ: thiết kế nói "mastery đi theo câu", nhưng **`fn_mastery_cells` đang đọc mã nhóm chép trên ô chấm** (`sp.ma_dang`, `btc.ma_dang`), không đọc nhóm hiện tại của câu. Câu đổi dạng (4.715 lần trong `kho_doi_dang_log`) hoặc nhóm bị gộp/xoá thì nhãn chép trên ô chấm đứng yên ⇒ cũ dần. Hiện các lần đo này đúng là đang rụng khỏi mastery, nhưng **chuyển sang đọc theo câu (§10) thì tự lành**.
+
+Mất thật chỉ còn **57** ô `gami_session_problems` không có câu, trỏ vào mã đã mất (với `tu_luyen_dang_lan` và các bảng vận hành thì xử lý ở việc riêng).
 
 ⇒ **Luật mới:** khoá chính không bao giờ đổi. Mọi lần "chuyển" chỉ sửa **con trỏ cha**. Hai hàm cũ ngừng được gọi từ P1 (§11), xoá theo Luật xoá ở P6.
 
@@ -262,7 +269,12 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 - **Hiện nay:** `fn_mastery_cells` lấy `ma_dang` từ **bản chép lưu trên dòng đo** (`gami_session_problems`, `bai_test_cau`, `bt_grades`).
 - **Luật:** dòng đo có `ma_cau` ⇒ tính về nhóm **hiện tại** của câu (`dang_chinh`). Câu đã xoá mềm (`xoa_at`) vẫn còn `dang_chinh` nên vẫn tính được. Đo 08/10: **0** câu bị xoá cứng.
 - **Phủ:** 94% `gami_grades` (128.305/136.055) và 96% `bai_test_cau` có câu ⇒ tự đi theo, không cần làm gì thêm.
-- **Phần còn lại (~5%, dòng đo gắn thẳng nhóm, không có câu):** giữ bản chép, cộng thêm **biển chỉ đường** `dai_ban_do_chuyen_huong (ma_cu → ma_moi)`:
+- **Phần còn lại (~5,7%, 7.750 lượt chấm, ô chấm gắn thẳng nhóm, không có câu).** Nguồn gốc:
+  - **`ingame` (bài trên lớp): 4.746.** Pha này **chưa bao giờ** ghi `ma_cau`; GV chấm theo nhóm của giáo án. Vẫn đang phát sinh (1.315 lượt từ 15/08).
+  - **ET/BTVN/MT trước mig `0106`** (tháng 6–7, trước khi ô chấm có cột `ma_cau`). Backfill khi đó chỉ map khi số ô bằng số câu, lệch thì để trống, đúng luật "không đoán".
+  - Lẻ: 439 lượt ET sau 15/08 chưa rõ nguồn ⇒ kiểm lúc build.
+
+  Phần này giữ bản chép, cộng thêm **biển chỉ đường** `dai_ban_do_chuyen_huong (ma_cu → ma_moi)`:
   - **Gộp** A vào B ⇒ ghi A → B, nên đo của A tính về B.
   - **Tách** A thành A + A′ ⇒ dòng không có câu ở lại nhóm **giữ mã A** (không chia được thì không đoán, §1.5).
 - **Bật ở P1**, trước khi CEO xếp lại, vì các thao tác gộp và tách chỉ an toàn khi đã có luật này.
