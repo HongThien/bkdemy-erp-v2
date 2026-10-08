@@ -35879,3 +35879,4 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (1) "Vẽ sơ đồ phải đúng tỉ lệ với số liệu": đoạn them/bot cũ vẽ dài cố định. Viết lại `so-do-doan-thang.mjs`: bắt buộc `gia_tri_phan`, mọi đoạn theo giá trị thật, tự kiểm số trong nhãn tổng/hiệu khớp các hàng (thử sơ đồ sai tổng 40≠41 ⇒ từ chối, exit 1). Vẽ lại 7 sơ đồ lô 1–3, soát ảnh Chrome headless.
 - (2) "Mọi câu giải chi tiết 2 phần" — kể cả Phần I trắc nghiệm phiếu cuối tuần. Ghi §1.5 + §7 k4T.md + README §3.
 - Lô 3 có sửa (sơ đồ) ⇒ chưa v1, làm lô 4.
+- **08/10 (Thùy: "để điểm tối đa của 1 bài là 3 điểm"):** `MT_DIEM_OPTS` 0.25→2 ⇒ 0.25→3 (bước 0.25) — áp cho ô điểm câu Đại và ô điểm từng ý Hình ở màn soạn MT; màn Chấm MT tự theo (ý chưa đặt điểm chọn được tới 3đ). DB không giới hạn nên không cần migration. Kiểm: màn soạn K9 hiện đủ 12 mức tới 3đ.

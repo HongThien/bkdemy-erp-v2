@@ -115,12 +115,13 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 //   hien (in ảnh) · o_trong (chừa ô Vẽ hình, GV vẫn thấy ảnh đối chiếu) · khong (không ảnh, không ô).
 //   Kế thừa enum + xoay vòng từ builder Hình Luyện cũ (lib/kho/hinhGiaoTrinh.ts).
 // diemByCau (MT — Thùy 30/09) = điểm CHO TỪNG CÂU (per ma_cau; Hình: per Ý `HINH:<uuid>#<i>` từ 07/10 — xem diemBaiHinh).
-// Dropdown 8 mức 0.25→2.0 (bước 0.25). Thiếu key → DEFAULT_DIEM_MT = 1.0. Tổng in trên đầu đề MT
+// Dropdown 12 mức 0.25→3.0 (bước 0.25; trước 08/10 tối đa 2.0). Thiếu key → DEFAULT_DIEM_MT = 1.0. Tổng in trên đầu đề MT
 // (Tổng: N điểm) = sum diemByCau ?? default cho MỌI câu đang có trong phần. Chỉ MT dùng — ET/BTVN
 // không có ràng buộc điểm số (ET chỉ ngưỡng làm được, BTVN không chấm điểm).
 export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhCheDoByCau?: Record<string, 'hien' | 'o_trong' | 'khong'>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null }; diemByCau?: Record<string, number> }
 export const DEFAULT_DIEM_MT = 1
-export const MT_DIEM_OPTS: number[] = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+// 08/10 (Thùy): điểm tối đa 1 câu / 1 ý Hình nâng từ 2đ lên 3đ.
+export const MT_DIEM_OPTS: number[] = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3]
 // ⭐ 07/10 (Thùy): điểm bài HÌNH do người soạn đặt THEO TỪNG Ý — key `HINH:<uuid>#<i>` (i = thứ tự ý từ 0, đúng thứ
 // tự "Câu 19, 20…" trên phiếu) — KHÔNG tự chia đều điểm bài. Ý chưa đặt ⇒ DEFAULT_DIEM_MT như câu Đại.
 // Đề CŨ (trước 07/10) chỉ có key cả bài `HINH:<uuid>` mà chưa có key ý nào ⇒ `cu`: giữ nguyên tổng bài, từng ý CHƯA
