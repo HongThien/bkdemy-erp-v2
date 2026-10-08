@@ -1,0 +1,272 @@
+{
+ "model": "claude-sonnet-5-5",
+ "lan_chay": "kiem-ngoai-sonnet-4T-20261008-1200",
+ "cau": {
+  "LT 1.5b": {
+   "dang": "T14T010102",
+   "ly_do": "Lớn nhất, 2 chữ số, biết tích chữ số 24: phân tích tích thành chữ số lớn nhất."
+  },
+  "LT 1.9c": {
+   "dang": "T14T010106",
+   "ly_do": "Nhỏ nhất, chữ số khác nhau, biết tổng 40, không cho số chữ số: tìm số chữ số tối thiểu rồi sắp."
+  },
+  "LT 1.4a": {
+   "dang": "T14T010107",
+   "ly_do": "Lập số chẵn lớn nhất từ các chữ số cho trước (0;2;5;9;6;8), giữ chữ số cuối chẵn."
+  },
+  "PCT 3 I.7": {
+   "dang": "T14T020103",
+   "ly_do": "Đếm số lẻ 4 chữ số khác nhau từ 0;4;7;9: đếm có điều kiện (lẻ, chữ số 0 không đứng đầu)."
+  },
+  "LT 4.16": {
+   "dang": "T14T090101",
+   "ly_do": "Gấp số hạng thứ hai lên 5 lần thì tổng tăng 16 = 4 lần số hạng đó: thay đổi thành phần trong phép cộng."
+  },
+  "LT 6.6a": {
+   "dang": "T14T060101",
+   "ly_do": "Số hạng thứ 85 của dãy cách đều 5: công thức số hạng thứ n."
+  },
+  "LT 6.6b": {
+   "dang": "T14T060103",
+   "ly_do": "Tổng 100 số hạng đầu của dãy cách đều: tổng dãy cách đều."
+  },
+  "LT 6.6c": {
+   "dang": "T14T060104",
+   "ly_do": "Số 951 là số hạng thứ mấy: tìm vị trí của số trong dãy."
+  },
+  "LT 8.6": {
+   "dang": "T14T000000",
+   "ly_do": "Tổng ẩn (lùi 3 năm: 35+3x2=41) rồi tổng–hiệu; luật nêu rõ tổng–hiệu ẩn (tuổi) chưa có dạng ở T14T08 (chỉ có 'cơ bản'), không ép.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: con 1 đoạn, mẹ 1 đoạn + 25 tuổi (25/8 đoạn đúng tỉ lệ), ngoặc 41, nhãn 'Hiện nay'."
+  },
+  "LT 12.3": {
+   "dang": "T14T120101",
+   "ly_do": "Viết thêm chữ số 3 vào bên trái số có hai chữ số: số mới = 300 + số cũ."
+  },
+  "LT 21.5": {
+   "dang": "T14T210101",
+   "ly_do": "Cho đi 7/12 còn 25 viên => 5/12 số bi = 25, tìm số ban đầu: hai đại lượng (số ban đầu, số còn lại)."
+  },
+  "LT 22.10": {
+   "dang": "T14T220102",
+   "ly_do": "Tổng tuổi sau 5 năm = 35+2x5 = 45 (tổng ẩn), tỉ 1/4: tổng–tỉ ẩn tổng (tuổi sau n năm).",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: 'Sau 5 năm nữa', con 1 phần, mẹ 4 phần, tổng 45."
+  },
+  "LT 24.12": {
+   "dang": "T14T230101",
+   "ly_do": "Cho 2/3 và 4 kẹo còn 6: làm ngược từ cuối; tiền lệ CEO đã duyệt tính ngược có phân số thuộc 230101."
+  },
+  "LT 3.1": {
+   "dang": "T14T030101",
+   "ly_do": "Đổi các số đo khối lượng về cùng đơn vị rồi sắp xếp: đổi đơn vị đo khối lượng."
+  },
+  "LT 5.4": {
+   "dang": "T14T080101",
+   "ly_do": "Nửa chu vi 32 + hơn kém 6 => tổng–hiệu cơ bản (luật điều 3, CEO 07/10).",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: rộng 1 đoạn, dài thêm 6 cm đúng tỉ lệ (6/13), tổng 32."
+  },
+  "LT 5.9": {
+   "dang": "T14T080101",
+   "ly_do": "Nửa chu vi 22, tăng rộng 4 thì thành hình vuông => dài hơn rộng 4: tổng–hiệu, bước cuối mới tính diện tích (luật điều 3).",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: rộng 1 đoạn, dài thêm 4 cm đúng tỉ lệ (4/9), tổng 22."
+  },
+  "LT 10.5b": {
+   "dang": "T14T100103",
+   "ly_do": "Lập số 3 chữ số khác nhau từ 0;3;6;9 chia hết cho 5 và 9: lập số từ các chữ số cho trước để chia hết."
+  },
+  "LT 10.12": {
+   "dang": "T14T100102",
+   "ly_do": "Tìm chữ số a,b để 65a3b chia hết cho 36 (4 và 9): tìm chữ số để chia hết."
+  },
+  "LT 10.14": {
+   "dang": "T14T100102",
+   "ly_do": "Tìm chữ số * của tích bằng dấu hiệu chia hết cho 9 (tích có thừa số 18): tìm chữ số để chia hết."
+  },
+  "LT 11.9": {
+   "dang": "T14T110104",
+   "ly_do": "Dãy chữ lặp chu kì 11 chữ cái, tìm chữ thứ 352 bằng phép chia có dư: dãy đối tượng lặp lại."
+  },
+  "LT 11.12": {
+   "dang": "T14T110105",
+   "ly_do": "Số chia 3;4;5;7 cùng dư 1: tìm số khi chia cho nhiều số cùng dư (BCNN + 1)."
+  },
+  "LT 14.13": {
+   "dang": "T14T140101",
+   "ly_do": "15 hàng 180 người => 12 người/hàng, rút về một hàng rồi tính số hàng cho 204 người."
+  },
+  "LT 15.4": {
+   "dang": "T14T150101",
+   "ly_do": "Đếm số liệu, tính trung bình cộng, so sánh với trung bình: xác định các đại lượng cơ bản của thống kê."
+  },
+  "LT 16.6c": {
+   "dang": "T14T160202",
+   "ly_do": "135135/130130 = 135x1001 / 130x1001: rút gọn dạng đặc biệt (tách thừa số chung 1001)."
+  },
+  "LT 16.8e": {
+   "dang": "T14T160103",
+   "ly_do": "Quy đồng mẫu số ba phân số 1/3; 3/5; 5/7: quy đồng mẫu nhiều phân số."
+  },
+  "LT 17.12a": {
+   "dang": "T14T170204",
+   "ly_do": "Phần bù: 1-41/42=1/42 và 1-37/39=2/39 khác tử số, phải so sánh tiếp: phần bù khác tử (170204)."
+  },
+  "LT 7.5": {
+   "dang": "T14T070101",
+   "ly_do": "Đèn mắc dọc đường thẳng, mỗi bên 75 đèn, một đầu có đèn một đầu không: trồng cây một đầu trên đường thẳng."
+  },
+  "LT 7.8": {
+   "dang": "T14T070101",
+   "ly_do": "Cưa cây gỗ 540 cm thành 12 đoạn => 11 lần cưa, 10 lần nghỉ: cắt gỗ (dạng đường thẳng)."
+  },
+  "LT 7.13": {
+   "dang": "T14T070102",
+   "ly_do": "Cọc rào xung quanh vườn hình chữ nhật (đường khép kín) có chừa cửa: trồng cây khép kín."
+  },
+  "LT 13.2": {
+   "dang": "T14T130101",
+   "ly_do": "Tính ngày 1 = 270, ngày 2 = 252, ngày 3 = 306 rồi trung bình cộng: trung bình cộng của một nhóm."
+  },
+  "LT 13.19": {
+   "ly_do": "Không cần gán dạng (can_gan_dang=false); chỉ soát sơ đồ.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: TBC 1 đoạn; chanh = 1 đoạn + 4 cây; cam và bưởi = 2 đoạn thiếu 4 (nét đứt) đúng tỉ lệ."
+  },
+  "LT 18.12": {
+   "dang": "T14T180102",
+   "ly_do": "Tìm phân số: x + 4/5 - 1/4 = 7/10, cộng trừ nhiều phân số (tìm thành phần chưa biết)."
+  },
+  "LT 19.2d": {
+   "dang": "T14T180301",
+   "ly_do": "Biểu thức phân số chứa hai phép chia rồi cộng: tính biểu thức chứa phép chia."
+  },
+  "LT 19.4b": {
+   "dang": "T14T180202",
+   "ly_do": "7/8 là thừa số chung, đặt ra ngoài: tính thuận tiện kết hợp phép nhân (phân phối)."
+  },
+  "LT 19.6b": {
+   "dang": "T14T180302",
+   "ly_do": "Cùng chia cho 7/8: đặt ra ngoài, tính thuận tiện kết hợp phép chia."
+  },
+  "LT 18.14B": {
+   "dang": "T14T190202",
+   "ly_do": "2/(3x5)+...: tử bằng khoảng cách hai thừa số (>1), tách thành hiệu 1/3-1/5 rồi triệt tiêu: dãy hiệu–tích tử chưa chuẩn (có thể coi là chuẩn nếu hiểu chuẩn = tử bằng khoảng cách)."
+  },
+  "LT 19.15E": {
+   "dang": "T14T190202",
+   "ly_do": "4/(1x3)+...: tử 4 = 2 x khoảng cách 2, phải đưa tử về chuẩn: hiệu–tích tử chưa chuẩn."
+  },
+  "LT 19.15D": {
+   "dang": "T14T190203",
+   "ly_do": "1/2+1/6+1/12+1/20+... mẫu là tích hai số liên tiếp nhưng phải viết lại 1x2,2x3,...: hiệu–tích mẫu chưa chuẩn."
+  },
+  "PTL 5.5b": {
+   "dang": "T14T190101",
+   "ly_do": "Mỗi thừa số (1-1/n) = (n-1)/n, nhân dây chuyền 1/2x2/3x...x19/20 triệt tiêu: dãy tích đơn."
+  },
+  "LT 20.3": {
+   "dang": "T14T200101",
+   "ly_do": "Chiều rộng bằng 5/6 chiều dài: giá trị phân số của một số, một bước."
+  },
+  "LT 20.13": {
+   "dang": "T14T200102",
+   "ly_do": "Bán 3/4 rồi 1/3 số còn lại: giá trị phân số nhiều bước."
+  },
+  "LT 23.4": {
+   "dang": "T14T220203",
+   "ly_do": "1/3 số thứ nhất = 3/7 số thứ hai: quy về cùng tử (9 phần và 7 phần) rồi hiệu–tỉ.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: số thứ nhất 9 phần, số thứ hai 7 phần, hiệu 2 phần ghi 320, các phần bằng nhau."
+  },
+  "LT 23.13": {
+   "dang": "T14T210102",
+   "ly_do": "Ngày 3 sửa nốt 700 m = 1-5/9-1/4 = 5/36 đoạn đường: tìm đại lượng từ giá trị phân số, ba đại lượng (ba ngày)."
+  },
+  "LT 8.14": {
+   "dang": "T14T000000",
+   "ly_do": "Hiệu ẩn qua 'giữa chúng có 8 số lẻ khác' rồi tổng–hiệu; luật nêu tổng–hiệu ẩn (giữa chúng có k số) chưa có dạng, không ép.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: số bé 1 đoạn, số lớn 1 đoạn + 18 (đoạn nhỏ đúng tỉ lệ), tổng 1004."
+  },
+  "LT 8.20": {
+   "dang": "T14T000000",
+   "ly_do": "Tổng và hiệu cả hai đều ẩn (từ tổng ba cạnh 42 và 39) rồi tổng–hiệu; luật nêu tổng–hiệu ẩn chưa có dạng.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: rộng 1 đoạn, dài thêm 3 cm (3/12), tổng 27."
+  },
+  "PTL 2.5": {
+   "dang": "T14T000000",
+   "ly_do": "Tổng–hiệu ba số (số hai hơn số một 30, kém số ba 15): luật nêu 'ba số' trong tổng–hiệu ẩn chưa có dạng.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: thứ nhất 1 đoạn, thứ hai +30, thứ ba +45 đúng tỉ lệ (30:45:180), tổng 615 bao cả ba hàng."
+  },
+  "LT 12.4": {
+   "dang": "T14T120101",
+   "ly_do": "Viết thêm chữ số 8 vào bên trái số có hai chữ số: số mới = 800 + số cũ."
+  },
+  "LT 13.17": {
+   "ly_do": "Không cần gán dạng (can_gan_dang=false); chỉ soát sơ đồ.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: Dũng thiếu 20000 (nét đứt) so với TBC; An-Bình-Chi = 3 đoạn + 20000, tỉ lệ khớp."
+  },
+  "PCT 24 II.2": {
+   "dang": "T14T140101",
+   "ly_do": "100 km hết 2 lít => rút về 1 km (hoặc 50 km = 1 lít), tính 150 km dùng 3 lít rồi nhân giá: rút về đơn vị một đại lượng."
+  },
+  "LT 21.16": {
+   "dang": "T14T210103",
+   "ly_do": "2/5-3/10 = 1/10 số gạo = 72 kg: giá trị hiệu các thành phần phân số."
+  },
+  "LT 21.19": {
+   "dang": "T14T210102",
+   "ly_do": "Đổi phân số của 'hai bạn còn lại' thành phân số của tổng: An 5/13, Bình 3/13, Chi 5/13 = 125000: ba đại lượng."
+  },
+  "LT 22.9": {
+   "dang": "T14T220102",
+   "ly_do": "Nửa chu vi 250 là tổng ẩn (từ chu vi 500), tỉ 2/3: tổng–tỉ ẩn tổng.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: rộng 2 phần, dài 3 phần, tổng 250."
+  },
+  "LT 23.10": {
+   "dang": "T14T220102",
+   "ly_do": "Trừ cam (1/3) còn 32 cây là tổng ẩn của hồng và bưởi, tỉ 3:5: tổng–tỉ ẩn tổng.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: hồng 3 phần, bưởi 5 phần, tổng 32 (đã bỏ cam, khớp trình bày)."
+  },
+  "LT 22.11": {
+   "dang": "T14T220103",
+   "ly_do": "Hiệu = 99 (số lớn nhất có hai chữ số) ẩn trong lời, tỉ 9:20: hiệu–tỉ ẩn hiệu.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: số bé 9 phần, số lớn 20 phần, hiệu 11 phần ghi 99."
+  },
+  "LT 22.14": {
+   "dang": "T14T220104",
+   "ly_do": "Thương 12 dư 5 => số lớn = 12 lần số bé + 5, tổng 252: tỉ số ẩn ('thương là ...').",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: số bé 1 phần, số lớn 12 phần + 5, tổng 252; đoạn 5 hơi dài hơn tỉ lệ thật (~0.3 phần thay vì 0.26) nhưng chấp nhận được."
+  },
+  "LT 22.17": {
+   "dang": "T14T220301",
+   "ly_do": "Chuyển 5 kg từ bao I sang bao II, tổng không đổi, rồi có tỉ 2/3: chuyển giữa các đại lượng.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: 'Sau khi chuyển 5 kg', bao I 2 phần, bao II 3 phần, tổng 85."
+  },
+  "LT 22.19": {
+   "dang": "T14T220302",
+   "ly_do": "Cùng bớt 15 ở mỗi số, hiệu không đổi, tỉ 7/3: tăng giảm từng đại lượng rồi có tỉ số.",
+   "hinh_dung": true,
+   "hinh_ghi": "Đúng: 'Sau khi cùng bớt 15', số bé mới 3 phần, số lớn mới 7 phần, hiệu 4 phần ghi 244."
+  },
+  "LT 24.2": {
+   "dang": "T14T230101",
+   "ly_do": "Chuỗi phép tính ngược từ kết quả 2505: tìm số ban đầu."
+  },
+  "LT 24.16": {
+   "dang": "T14T230101",
+   "ly_do": "Bán 2/5, rồi 1/3 số còn lại + 20 kg, ngày ba 60 kg: làm ngược từ cuối (tiền lệ 230101 có phân số)."
+  }
+ }
+}

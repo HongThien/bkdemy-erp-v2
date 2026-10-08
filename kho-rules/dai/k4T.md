@@ -162,7 +162,7 @@ Luật gán:
 | `T14T04` Tính toán | tính giá trị biểu thức chứa chữ · tính thuận tiện **cộng trừ** (kết hợp, trừ một tổng/hiệu, 19+199+1999) · tìm $y$ với số tự nhiên · điền chữ số vào dấu * | LT 4.1–4.9, 4.20, hầu hết PCT |
 | `T14T09` Quan hệ đại lượng (chỉ có "phép cộng") | thay đổi thành phần phép **trừ / nhân / chia** · tích riêng thẳng cột · viết nhầm thừa số · số dư lớn nhất | LT 4.12–4.19, LT 9.1–9.19, PCT 14 |
 | `T14T05` Chu vi diện tích (chỉ có "chu vi cơ bản") | diện tích HCN/HV · thay đổi kích thước **không quy về tổng–hiệu** (vd LT 5.7 "tăng rộng 5 dm thì diện tích tăng 45 dm²"; còn "tăng rộng thành hình vuông" ⇒ `080101`) · hình ghép / cắt góc / tô màu trên lưới ô vuông · lát gạch | LT 5.2–5.20, PCT 7, 8, 12, 13 |
-| `T14T08` Tổng hiệu (chỉ "cơ bản") | tổng–hiệu **ẩn** (tuổi, giữa chúng có k số, xoá chữ số, ba số) | LT 8.4–8.20 |
+| `T14T08` Tổng hiệu (chỉ "cơ bản") | *(không còn thiếu — CEO đã duyệt tổng–hiệu ẨN vào `080101`: tuổi lùi/tiến năm (lô 1 câu 8), giữa chúng có k số, ba cạnh HCN, ba số (lô 4 câu 1–3). Nếu muốn tách "ẩn" thành dạng riêng thì CEO lập dạng; tới lúc đó vẫn `080101`.)* | — |
 | `T14T12` Cấu tạo số (chỉ "thêm bên trái") | thêm/xoá chữ số **bên phải** · thêm **vào giữa** · thay chữ số · $\overline{ab}=k\times(a+b)+r$ | LT 12.1–12.18 |
 | `T14T13` TBC (chỉ "của một nhóm") | hơn/kém TBC · bằng TBC · TBC dãy cách đều · thêm số thứ n đổi TBC | LT 13.2–13.20 |
 | `T14T14` Rút về đơn vị (chỉ "một đại lượng" — gồm cả dạng 1 và dạng 2 "tìm số phần", CEO 07/10) | hai đại lượng ("dép và giày") · năng suất thay đổi (14.14–14.20) | LT 14.4–14.20 |
@@ -197,3 +197,4 @@ Luật gán:
 | 08/10 | Lô 3 (câu 6 + mọi sơ đồ cũ) | *"Vẽ sơ đồ phải đúng tỉ lệ với số liệu bài toán."* Đoạn thêm / đoạn thiếu đang vẽ dài cố định (tuổi con 8 và đoạn hơn 25 trông gần bằng nhau). | Máy vẽ viết lại: bắt buộc `gia_tri_phan`, mọi đoạn dài theo giá trị thật, tự kiểm nhãn tổng/hiệu khớp (lệch ⇒ từ chối vẽ). Vẽ lại cả 7 sơ đồ lô 1–3. |
 | 08/10 | Lô 3 câu 19, 20 (trắc nghiệm phiếu cuối tuần) | Trả lời câu hỏi: *"Mọi câu đều giải chi tiết với cấu trúc 2 phần như trên."* | §1.5: mọi câu, kể cả Phần I trắc nghiệm, đủ 2 phần. |
 | 08/10 | Lô 4 cả lô (20 câu, 10 sơ đồ) | *"OK rồi đấy. Tiếp nào."* Không sửa câu nào. | **Lên v1.** Câu 18 (tính ngược có phân số ⇒ `230101` theo tiền lệ lô 1) được duyệt cùng lô ⇒ giữ. |
+| 08/10 | Kiểm độc lập trước khi ghi (Sonnet gán dạng mù 57 câu) | *(không phải CEO sửa — model khác bắt mâu thuẫn trong luật)* 4 câu tổng–hiệu ẩn Sonnet đưa về dạng chờ vì §5 bảng thiếu vẫn ghi "T14T08 thiếu tổng–hiệu ẩn", trái với các câu CEO đã duyệt ở `080101`. | Sửa §5: bỏ dòng thiếu đó. Bài học: mỗi lần CEO duyệt một câu vào dạng mà bảng thiếu đang liệt kê ⇒ PHẢI xoá dòng thiếu ngay, nếu không luật tự mâu thuẫn. |

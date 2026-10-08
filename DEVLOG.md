@@ -35921,3 +35921,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Màn:** src/screens/kho/BanDoMoi.tsx + src/lib/kho/banDoMoi.ts, tab trong KhoScreen. Kéo thả HTML5 thuần, khung chi tiết dùng lại LyThuyetModal. Kiểm app local khối 3 dữ liệu [TEST]: OK (xem spec §9.0). Vite reload giữa chừng do phiên khác sửa kho-rules/*.md — không phải lỗi màn.
 - **Dữ liệu thử còn trong DB (chờ Thùy cho xoá):** khối 3 — chủ đề NCD00001 '[TEST] Chủ đề A', NCD00002 '[TEST] Chủ đề B'; chuyên đề NCH00001 '[TEST] Tìm x'; 2 ô; nhóm NNB00001, NNB00002; dạng bài NDB00001, NDB00003. dai_bdm_log có các dòng của lượt thử.
 - **Spec:** thêm §0 phương án chốt, §9.0 đã build, §11 lộ trình B1–B5 + P1 song song.
+
+## 08/10 (tiếp) — 4T: kiểm độc lập Sonnet + chạy thử ghi 75 câu
+- Sonnet (subagent) gán dạng MÙ 57 câu theo luật §5 + xem 16 ảnh sơ đồ: dạng trùng 51/57 (89%) · sơ đồ 16/16 đúng (ghi chú LT 22.14 đoạn 5 hơi dài hơn tỉ lệ: 0,3 phần so với 0,26 — do vạch tối thiểu, chấp nhận).
+- 6 câu lệch dạng: 4 câu tổng–hiệu ẩn (LT 8.6, 8.14, 8.20, PTL 2.5) — LỖI LUẬT của em: §5 bảng thiếu còn ghi "T14T08 thiếu tổng–hiệu ẩn" trái với các câu CEO đã duyệt ⇒ sửa §5, ghi §7. 2 câu còn lại là chọn lựa thật: LT 18.12 (em 230101 tính ngược theo luật phương pháp, Sonnet 180102) · LT 18.14B (em 190201 chuẩn vì tử = hiệu, Sonnet 190202 nhưng tự ghi "có thể là chuẩn"). Giữ cờ nghi cho cả 6 — không chạy lại Sonnet cho đẹp số.
+- Chạy thử ghi-lo: 74 qua cổng (khop 68 · nghi 6), LT 5.19 không ghi (hình EMF). Biên bản Sonnet lưu `kho-rules/dai/lo/k4T-lo1-4.kiem-ngoai.json`. CHƯA ghi thật — chờ CEO gật.
