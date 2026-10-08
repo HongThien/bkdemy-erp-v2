@@ -418,8 +418,8 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     setRowsByPhan((rb) => ({ ...rb, [p.id]: Array.from({ length: DEFAULT_ROWS_PER_PHAN }, () => ({ maDang: null, maCau: null, nhanh: nhanhMacDinh })) }))
     await reload(); markSaved()
   }
-  // ⭐ 08/10 (Thùy) — phần tính vào điểm NÂNG CAO hay Cơ bản (điểm MT tổng tự cộng theo phần). Bản đã gán lớp
-  // chép cờ lúc gán ⇒ đổi ở đây phải gán lại mới sang lớp.
+  // ⭐ 08/10 (Thùy) — phần tính vào điểm NÂNG CAO hay Cơ bản (điểm MT tổng tự cộng theo phần). Lớp đã gán đọc
+  // cờ + điểm câu của ĐỀ GỐC này (mig 202610081402) ⇒ sửa ở đây là màn chấm theo ngay lần mở kế tiếp, không cần gán lại.
   async function setPhanNangCao(p: PhanResolved, v: boolean) {
     await updatePhan(p.id, { nang_cao: v })
     setPhans((ps) => ps.map((x) => (x.id === p.id ? { ...x, nang_cao: v } : x))); markSaved()
