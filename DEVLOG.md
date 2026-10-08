@@ -36094,3 +36094,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Nhóm: ◀▶ trên header box (hiện khi rê) đổi thu_tu với nhóm CÙNG NHÁNH RẼ (cùng tập tiền đề) ⇒ đổi trái/phải + số thứ tự. Không anh em ⇒ khoá + nhắc 'thứ tự do mũi tên quyết định' (đổi với nhóm nối thẳng không làm đổi gì vì DFS đi hết nhánh).
 - Mig 202610081521: dai_bdm_dang_bai thêm ly_thuyet (+file) · fn_bdm_cay thêm co_ly_thuyet dạng bài (phần còn lại so từng ký tự giống) · nâng dạng bài: LT + ví dụ gộp vào LT nhóm (không mất) · hạ nhóm: LT nhóm → LT dạng bài (trước vào ví dụ). Thử khô ROLLBACK.
 - UI: popup dạng bài 2 nút 📖/📝 · card dạng bài 3 chấm (mô tả · LT · ví dụ) · tiến độ thêm LT dạng bài. Kiểm app local K6 'Dấu hiệu chia hết': ▶ rồi ◀ ⇒ về y cũ (dữ liệu Thùy không đổi).
+
+## 2026-10-08 (15h45) — "Cứ yếu là bổ trợ": số lần đo chỉ để xếp ưu tiên (Hà Thu 9A2)
+
+- **Hỏi:** Hà Thu yếu nhiều dạng mà máy chỉ đề xuất 3 — "tối đa 3 à?". Đo: KHÔNG có trần 3; mastery 7 dạng yếu, 3 dạng đủ ≥3 lần đo nên
+  được đề xuất, 4 dạng còn lại bị LOẠI vì <3 lần đo (luật 07-22 / 23/09 "tin thấp bỏ qua").
+- **Thùy chốt:** số lần đo KHÔNG phải điều kiện xác nhận yếu, chỉ để XẾP ƯU TIÊN; "cứ yếu là phải bổ trợ".
+- **Sửa:** engine `src/gami/danhgia.js` (diện = mọi dạng yếu <0.5 có đo trong 2 cửa sổ; dạng đủ GATE_N lên trước), `src/lib/danhgia.ts`
+  (trongDien + câu lý do), test `verify_danhgia.mjs` (đổi ca gate + thêm ca thứ tự) PASS; mig 202610081543: `fn_btyeu_dang_yeu_2_cua_so` +
+  `fn_btyeu_de_xuat_dang_moi` bỏ n≥3, order (n≥3) desc, score. Chạy thử (rollback): Hà Thu 3 → 5 dạng; toàn hệ đề xuất 100 → 126.
+- **Vẫn giữ:** phạm vi recency (2 cửa sổ / có đo mới sau ngày mở case) ⇒ 2 dạng của Hà Thu đo lần cuối 18/07 và 08/09 không vào.

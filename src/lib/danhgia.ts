@@ -332,7 +332,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
           scoreTruoc: (mTruoc as any)?.score ?? null, mucTruoc: (mTruoc as any)?.muc ?? null,
           daMo,
           // 2 mốc trễ: đã mở thì ở lại tới khi > 0.5 · chưa mở thì phải < 0.5 + đủ độ tin.
-          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N && ganDay,
+          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && ganDay, // Thùy 08/10: cứ yếu là bổ trợ — lần đo chỉ để xếp ưu tiên
           ganDay,
           cuoiCungAt: moiNhat.t,
         })
@@ -628,7 +628,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     const che = s.deXuatKienThuc.bangChung.btvnChe as string[]
     if (che.length) lyDo.push(`⚠ ${che.length} dạng "BTVN che": yếu ở ET/MT nhưng ổn ở bài tự làm`)
     const thieu = s.deXuatKienThuc.bangChung.yeuThieuDo as string[]
-    if (thieu.length) lyDo.push(`⚠ ${thieu.length} dạng yếu nhưng CHƯA đủ ${DANHGIA_CONFIG.GATE_N} lần đo — chưa gọi bổ trợ`)
+    if (thieu.length) lyDo.push(`${thieu.length} dạng yếu mới đo dưới ${DANHGIA_CONFIG.GATE_N} lần — vẫn bổ trợ, xếp sau`)
 
     const doiLevel = s.deXuatKienThuc.deXuat !== s.levelKienThuc || s.deXuatThaiDo.deXuat !== s.levelThaiDo
     if (doiLevel) uuTien += 8

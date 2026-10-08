@@ -251,9 +251,12 @@ export function deXuatLevelKienThuc(input) {
   //     **> 0.5**; đúng 0.5 thì Ở LẠI (Thùy: "0.5 thì vẫn giữ level").
   // Không có `daMo` thì coi như chưa mở — an toàn: chỉ ảnh hưởng đúng ca score = 0.5.
   //   · Thùy 23/09: dạng CHƯA mở còn phải có lần đo trong 2 CỬA SỔ gần nhất (`ganDay`; thiếu field = coi là gần).
-  const dien = dangs.filter((d) => (d.daMo ? d.score <= cfg.MOC : d.score < cfg.MOC && d.n >= cfg.GATE_N && d.ganDay !== false))
-  // Yếu thật (<0.5) nhưng chưa đủ lần đo → CHỈ cảnh báo, không gọi bổ trợ (Thùy 07-22).
-  const yeuThieuDo = dangs.filter((d) => !d.daMo && d.score < cfg.MOC && d.n < cfg.GATE_N)
+  // Thùy 08/10: "cứ yếu là phải bổ trợ" — số lần đo KHÔNG còn là điều kiện xác nhận yếu, chỉ để XẾP ƯU TIÊN:
+  //   dạng đủ GATE_N lần đo lên trước, dạng ít lần đo xếp sau (vẫn vào diện). Thay luật 07-22 "thiếu lần đo → chỉ cảnh báo".
+  const dien = dangs.filter((d) => (d.daMo ? d.score <= cfg.MOC : d.score < cfg.MOC && d.ganDay !== false))
+    .sort((a, b) => Number((b.n ?? 0) >= cfg.GATE_N) - Number((a.n ?? 0) >= cfg.GATE_N) || a.score - b.score)
+  // Dạng yếu ÍT lần đo (vẫn trong diện) — chỉ để hiện "xếp sau", không loại.
+  const yeuThieuDo = dien.filter((d) => !d.daMo && d.n < cfg.GATE_N)
   // Cần luyện (0.5 ≤ score < 0.8) → luồng ôn tập/lặp, KHÔNG bổ trợ, KHÔNG lên level (spec §4.3).
   // Lưu ý 0.5 nằm ở ĐÂY (nhãn "cần luyện", khớp masteryOfDang + màn Kết quả học tập).
   const canLuyen = dangs.filter((d) => d.score >= cfg.MOC && d.score < MASTERY_CONFIG.DAT)
@@ -305,7 +308,7 @@ export function deXuatLevelKienThuc(input) {
 
   // Còn diện hoặc còn so-lớp kém, chưa có tín hiệu "không work" → L0 lên L1; đang ở L1+ thì GIỮ, xử nốt.
   if (levelHienTai === 0) {
-    if (dien.length > 0) lyDo.push(`${dien.length} dạng yếu (<0.5, đủ ${cfg.GATE_N} lần đo)`)
+    if (dien.length > 0) lyDo.push(`${dien.length} dạng yếu (<0.5)${yeuThieuDo.length ? ` — ${yeuThieuDo.length} dạng ít lần đo xếp sau` : ''}`)
     if (coSoLopKem) lyDo.push('⑤ điểm ET/BTVN tổng dưới 80% TB lớp (≥2/3 bài gần nhất)')
     return ket(1, lyDo, { dien, yeuThieuDo, canLuyen, btvnChe })
   }

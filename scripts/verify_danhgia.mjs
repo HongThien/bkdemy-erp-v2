@@ -113,10 +113,12 @@ ok(lenRoiRot([{ value: 1, t: 'a' }]) === false, '1 mốc đo thì MÙ chuyện l
 const NOW = Date.parse('2026-07-22T12:00:00+07:00')
 const D = (o) => ({ ma_dang: 'D1', score: 0.3, n: 5, ...o })
 
-// Gate độ tin: yếu nhưng n < 3 → KHÔNG vào diện, chỉ cảnh báo.
+// Thùy 08/10: "cứ yếu là bổ trợ" — yếu dù mới 2 lần đo VẪN vào diện; lần đo chỉ để xếp ưu tiên (đủ lần đo lên trước).
 const gate = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ n: 2 })], bayGio: NOW })
-ok(gate.deXuat === 0, 'yếu nhưng mới 2 lần đo → KHÔNG đề xuất lên level')
-ok(eq(gate.bangChung.yeuThieuDo, ['D1']) && eq(gate.bangChung.dien, []), 'ô yếu thiếu lần đo → nằm ở cảnh báo, không nằm ở diện')
+ok(gate.deXuat === 1, 'yếu dù mới 2 lần đo → VẪN đề xuất L1')
+ok(eq(gate.bangChung.dien, ['D1']) && eq(gate.bangChung.yeuThieuDo, ['D1']), 'ô yếu ít lần đo → nằm trong diện, đánh dấu ít lần đo')
+const uu = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ ma_dang: 'IT', n: 1, score: 0 }), D({ ma_dang: 'NHIEU', n: 6, score: 0.4 })], bayGio: NOW })
+ok(eq(uu.bangChung.dien, ['NHIEU', 'IT']), 'dạng đủ lần đo xếp TRƯỚC dạng ít lần đo, kể cả khi điểm cao hơn')
 
 // L0 → L1 khi có dạng yếu đủ độ tin.
 ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({})], bayGio: NOW }).deXuat === 1, '1 dạng yếu đủ độ tin → đề xuất L1 (Thùy chốt: 1 dạng là đủ)')
