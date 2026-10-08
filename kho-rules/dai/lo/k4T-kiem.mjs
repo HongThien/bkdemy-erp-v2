@@ -21,7 +21,105 @@ const itNhatChacChan = (soLuong, dat) => {
   dq(0, []); return maxChuaDat + 1
 }
 
+/**
+ * TÌM SỐ theo điều kiện chữ số (chuyên đề 1) — tìm theo từng hàng, lớn nhất thì thử chữ số từ 9 xuống, nhỏ nhất từ 0 lên;
+ * cái đầu tiên đi hết là đáp số (thứ tự từ điển = thứ tự số khi cùng số chữ số). Không cho số chữ số (`L` bỏ trống) ⇒
+ * lớn nhất = nhiều chữ số nhất còn làm được; nhỏ nhất = ít chữ số nhất.
+ * o = { L?, lon, kn (khác nhau), chon (chữ số được dùng), tong, tich, cuoi: 'chan'|'le'|'0', co: { <vị trí từ trái, 0-based>: chữ số } }
+ */
+export function timSo(o) {
+  const chon = o.chon ?? [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const thu = (L) => {
+    const kq = []
+    const dq = (i, dung, tong, tich) => {
+      if (i === L) {
+        if (o.tong != null && tong !== o.tong) return false
+        if (o.tich != null && tich !== o.tich) return false
+        return true
+      }
+      const conLai = L - i
+      if (o.tong != null && (tong > o.tong || o.tong - tong > 9 * conLai)) return false
+      if (o.tich != null && (tich === 0 || o.tich % tich !== 0)) return false
+      const ds = o.lon ? [...chon].sort((a, b) => b - a) : [...chon].sort((a, b) => a - b)
+      for (const d of ds) {
+        if (i === 0 && d === 0 && L > 1) continue
+        if (o.kn && dung.has(d)) continue
+        if (o.co && o.co[i] != null && o.co[i] !== d) continue
+        if (i === L - 1 && o.cuoi === 'chan' && d % 2) continue
+        if (i === L - 1 && o.cuoi === 'le' && d % 2 === 0) continue
+        if (i === L - 1 && o.cuoi === '0' && d !== 0) continue
+        kq.push(d); dung.add(d)
+        if (dq(i + 1, dung, tong + d, tich * d)) return true
+        kq.pop(); if (!kq.includes(d)) dung.delete(d)
+      }
+      return false
+    }
+    return dq(0, new Set(), 0, 1) ? Number(kq.join('')) : null
+  }
+  if (o.L) return thu(o.L)
+  const ds = []; for (let L = 1; L <= (o.kn ? Math.min(10, chon.length) : 12); L++) { const v = thu(L); if (v !== null) ds.push(v) }
+  if (!ds.length) return null
+  return o.lon ? ds[ds.length - 1] : ds[0]
+}
+/** xoá bớt chữ số, giữ thứ tự: vét mọi dãy con dài `k` (không bắt đầu bằng 0) */
+export function dayCon(chuoi, k, lon) {
+  let best = null
+  const n = chuoi.length
+  const dq = (i, cur) => { if (cur.length === k) { if (cur[0] !== '0' && (best === null || (lon ? cur > best : cur < best))) best = cur; return } if (n - i < k - cur.length) return; dq(i + 1, cur + chuoi[i]); dq(i + 1, cur) }
+  dq(0, ''); return best
+}
+
 export const KIEM = {
+  // ── chuyên đề 1 (lô 5) — viết TRƯỚC khi thấy lời giải, chỉ từ đề ──
+  'VD 1.1': () => [String(timSo({ lon: true, kn: true, tong: 19 }))],
+  'VD 1.2': () => [String(timSo({ lon: false, kn: true, tong: 19 }))],
+  'VD 1.3': () => [String(timSo({ lon: false, tong: 19 }))],
+  'LT 1.1a': () => [String(19000000 + 2000 + 34 * 10 + 5)],
+  'LT 1.1b': () => [String(25000000 + 34000 + 900 + 78)],
+  'LT 1.1c': () => [String(87 * 10000000 + 302000 + 67)],
+  'LT 1.2': () => [String(motNghiem(tim(100, 999, (n) => { const [a, b, c] = chuSo(n); return b === 3 * c && b * 2 === a }), '1.2'))],
+  'LT 1.3a': () => [String(timSo({ L: 4, lon: true, kn: true, cuoi: 'le' }))],
+  'LT 1.3b': () => [String(timSo({ L: 5, lon: false, kn: true, cuoi: 'le' }))],
+  'LT 1.3c': () => [String(timSo({ L: 6, lon: true, co: { 1: 1 } }))],
+  'LT 1.3d': () => [String(timSo({ L: 5, lon: false, kn: true, cuoi: 'chan', co: { 1: 2 } }))],
+  'LT 1.3e': () => [String(timSo({ L: 5, lon: true, kn: true, cuoi: '0', co: { 2: 5 } }))],
+  'LT 1.4b': () => [String(timSo({ L: 4, lon: true, kn: true, chon: [0, 2, 5, 9, 6, 8] }))],
+  'LT 1.4c': () => [String(timSo({ L: 4, lon: false, kn: true, chon: [0, 2, 5, 9, 6, 8] }))],
+  'LT 1.4d': () => [String(timSo({ lon: true, kn: true, cuoi: 'le', chon: [0, 2, 5, 9, 6, 8] }))],
+  'LT 1.5a': () => [String(timSo({ L: 2, lon: true, tong: 16 }))],
+  'LT 1.5c': () => [String(tim(10, 99, (n) => { const [a, b] = chuSo(n); return Math.abs(a - b) === 4 })[0])],
+  'LT 1.5d': () => [String(tim(10, 99, (n) => { const [a, b] = chuSo(n); return (b && a === 2 * b) || (a && b === 2 * a) })[0])],
+  'LT 1.6a': () => [String(timSo({ L: 3, lon: false, tong: 14 }))],
+  'LT 1.6b': () => [String(timSo({ L: 4, lon: false, tong: 15 }))],
+  'LT 1.6c': () => [String(timSo({ L: 5, lon: false, tong: 17 }))],
+  'LT 1.6d': () => [String(timSo({ L: 6, lon: false, tong: 32, cuoi: 'chan' }))],
+  'LT 1.7a': () => [String(timSo({ L: 3, lon: true, tong: 10 }))],
+  'LT 1.7b': () => [String(timSo({ L: 5, lon: true, tong: 30 }))],
+  'LT 1.7c': () => [String(timSo({ L: 4, lon: false, kn: true, tong: 9 }))],
+  'LT 1.7d': () => [String(timSo({ L: 4, lon: true, kn: true, tong: 25, cuoi: 'chan' }))],
+  'LT 1.8a': () => [String(timSo({ lon: true, kn: true, tong: 6 }))],
+  'LT 1.8b': () => [String(timSo({ lon: true, kn: true, tong: 17, cuoi: 'le' }))],
+  'LT 1.8c': () => [String(timSo({ lon: true, kn: true, tong: 31 }))],
+  'LT 1.8d': () => [String(timSo({ lon: true, kn: true, tong: 35, cuoi: 'le' }))],
+  'LT 1.9a': () => [String(timSo({ lon: false, kn: true, tong: 12 }))],
+  'LT 1.9b': () => [String(timSo({ lon: false, kn: true, tong: 18 }))],
+  'LT 1.9d': () => [String(timSo({ lon: false, kn: true, tong: 22, cuoi: 'chan' }))],
+  'LT 1.10a': () => tim(10, 99, (n) => chuSo(n).reduce((a, b) => a * b, 1) === 18).map(String),
+  'LT 1.10b': () => tim(10, 99, (n) => chuSo(n).reduce((a, b) => a * b, 1) === 40).map(String),
+  'LT 1.10c': () => tim(100, 999, (n) => khacNhau(n) && chuSo(n).reduce((a, b) => a * b, 1) === 6).map(String),
+  'LT 1.11a': () => [String(timSo({ lon: true, kn: true, tich: 30 }))],
+  'LT 1.11b': () => [String(timSo({ lon: true, kn: true, tich: 120 }))],
+  'LT 1.11c': () => [String(timSo({ lon: true, kn: true, tich: 420, cuoi: 'chan' }))],
+  'LT 1.12a': () => [String(timSo({ lon: false, tich: 40 }))],
+  'LT 1.12b': () => [String(timSo({ lon: false, tich: 180 }))],
+  'LT 1.12c': () => [String(timSo({ lon: false, tich: 420 }))],
+  'LT 1.13a': () => [dayCon('205316795', 4, false)],
+  'LT 1.13b': () => [dayCon('205316795', 4, true)],
+  'LT 1.14a': () => [dayCon('1234567891011', 13 - 8, false)],
+  'LT 1.14b': () => [dayCon('1234567891011', 13 - 8, true)],
+  'LT 1.15a': () => [dayCon('2524232221', 10 - 5, true)],
+  'LT 1.15b': () => [dayCon('2524232221', 10 - 5, false)],
+
   // ── lô 1 ──
   'LT 1.5b': () => [String(Math.max(...tim(10, 99, (n) => chuSo(n).reduce((a, b) => a * b, 1) === 24)))],
   'LT 1.9c': () => { // nhỏ nhất, chữ số khác nhau, tổng 40: vét mọi tập chữ số, ít chữ số nhất, xếp tăng (0 không đứng đầu)

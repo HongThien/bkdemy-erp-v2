@@ -2,7 +2,8 @@
 // ghi-lo.mjs — GHI một lô câu đã giải (lo-tu-md.mjs) vào kho Đại QUA CỔNG GHI (kho-rules/README.md §4 việc #3).
 //
 //   node scripts/kho/sach/ghi-lo.mjs <lo.json> --sach "Toán arc 4 Q1" --kiem <k4T-kiem.mjs> --so-do <thư mục so-do>
-//        [--kiem-ngoai <bien-ban-model-khac.json>] [--chua-gan-dang] [--ghi]
+//        [--kiem-ngoai <bien-ban-model-khac.json>] [--chua-gan-dang] [--model-lam <model soạn>] [--lan-lam "<mô tả lượt làm>"] [--ghi]
+//   --model-lam: model THẬT đã soạn lời giải (ghi vào ai_model + vết trạm làm) — mặc định claude-opus-5-5. Đo chất lượng theo cách soạn cần cột này đúng.
 //
 // --chua-gan-dang (CEO 08/10: "giải trước, up lên DB ở trạng thái chưa gán dạng … gán dạng là việc độc lập, chạy sau khi bản đồ
 //   hoàn thiện"): mọi câu vào DẠNG CHỜ của khối (…000000), kể cả câu lô thử đã có dạng đề xuất — dạng đề xuất chỉ nằm trong lô JSON
@@ -37,6 +38,7 @@ const a = process.argv.slice(2)
 const lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
 const GHI = a.includes('--ghi')
 const CHUA_GAN = a.includes('--chua-gan-dang')
+const MODEL_LAM = lay('--model-lam') ?? 'claude-opus-5-5'
 const loTep = a[0], SACH = lay('--sach'), kiemTep = lay('--kiem'), soDoDir = lay('--so-do'), ngoaiTep = lay('--kiem-ngoai')
 if (!loTep || !SACH || !kiemTep || !soDoDir) { console.error('Dùng: node scripts/kho/sach/ghi-lo.mjs <lo.json> --sach "<tên>" --kiem <kiem.mjs> --so-do <dir> [--kiem-ngoai <json>] [--ghi]'); process.exit(2) }
 
@@ -82,7 +84,7 @@ async function soDo(c) {
 }
 
 // ── dựng gói + xét cổng ──────────────────────────────────────────────────────
-const LAN_LAM = 'giai:lo-giai-thu-4T (Claude Code, lời giải CEO duyệt trong chat 07–08/10)'
+const LAN_LAM = lay('--lan-lam') ?? 'giai:lo-giai-thu-4T (Claude Code, lời giải CEO duyệt trong chat 07–08/10)'
 const LAN_KIEM_CODE = `kiem-code:${new Date().toISOString().slice(0, 16)}`
 const giu = [], tuChoi = [], boQua = []
 for (const c of lo) {
@@ -107,7 +109,7 @@ for (const c of lo) {
   if (n && c.so_do && n.hinh_dung != null) bb('kiem-hinh-b', 'model_khac', n.hinh_dung
     ? { ket_qua: 'dat', ghi_chu: `model khác xem ảnh sơ đồ: khớp đề${n.hinh_ghi ? ' — ' + n.hinh_ghi : ''}` }
     : { ket_qua: 'khong_dat', ghi_chu: `model khác xem ảnh sơ đồ: ${n.hinh_ghi ?? 'không khớp'}` }, ngoai.lan_chay, ngoai.model)
-  const kq = xetGoi({ cau, vet: { lam: { tram: 'giai', lan_chay: LAN_LAM, model: 'claude-opus-5-5' }, kiem } })
+  const kq = xetGoi({ cau, vet: { lam: { tram: 'giai', lan_chay: LAN_LAM, model: MODEL_LAM }, kiem } })
   if (!kq.duoc_ghi) { tuChoi.push({ c, ly_do: kq.ly_do }); continue }
   giu.push({ c, cau, kq })
 }
@@ -122,7 +124,7 @@ try {
   const coMap = new Map(co.map((r) => [r.ten_de_goc, r.ma_cau]))
   const moi = giu.filter(({ c }) => { const k = `${SACH} · ${c.ma_nguon}`; if (coMap.has(k)) { daCo.push(`${c.ma_nguon} (${coMap.get(k)})`); return false } return true })
   if (moi.length) {
-    const cauList = moi.map(({ c, cau }) => ({ ...cau, khoi: c.khoi, nguon: 'le', giai_method: 'claude_code', ai_model: 'claude-opus-5-5', ten_de_goc: `${SACH} · ${c.ma_nguon}` }))
+    const cauList = moi.map(({ c, cau }) => ({ ...cau, khoi: c.khoi, nguon: 'le', giai_method: 'claude_code', ai_model: MODEL_LAM, ten_de_goc: `${SACH} · ${c.ma_nguon}` }))
     const { maCauList, trung } = await insertCauBatch({ client: db, subject: 'dai', cauList })
     const laTrung = new Set(trung.map((t) => t.idx))
     for (let i = 0; i < moi.length; i++) {

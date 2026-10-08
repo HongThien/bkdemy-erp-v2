@@ -35932,3 +35932,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Chạy thử 74/74 khop ⇒ --ghi: T14T000000001…074, ten_de_goc "Toán arc 4 Q1 · <mã>", nguon_giai ai/claude_code, da_duyet false, kiem_may khop, 16 SVG lên kho-anh/sach/2026-10 (tải lại HTTP 200 image/svg+xml). LT 5.19 không ghi (hình EMF).
 - Hệ quả: câu dạng chờ chưa bấm duyệt được (_kho_la_dang_cho) ⇒ duyệt lời giải sau lượt gán dạng. Ghi vào README §3 + k4T §5 + §7.
 - Còn ~1.200 đơn vị câu (1.271 tổng, 41 có hình).
+
+## 08/10 (tiếp) — 4T giải hàng loạt: THÍ ĐIỂM CĐ1 Sonnet soạn + Opus soát ⇒ ghi 48 câu
+- Bộ kiểm CĐ1 viết TRƯỚC khi thấy lời giải (timSo: tìm số theo điều kiện chữ số; dayCon: xoá chữ số giữ thứ tự); đối chứng khớp 3 VD sách + 3 câu CEO duyệt.
+- Sonnet soạn 48 câu (VD 1.1–1.3, LT 1.1–1.15) theo k4T v1 + 75 mẫu. Đáp số 48/48 khớp bộ kiểm. Opus đọc soát 48/48: 0 sửa nội dung. Lỗi định dạng có quy luật (\\" thừa · Phần 2 nhiều câu một dòng) ⇒ lo-tu-soan.mjs chuẩn hoá bằng máy (36 câu), đếm riêng.
+- Ghi --chua-gan-dang --model-lam claude-sonnet-5-5: T14T000000075…122, kiem_may khop 48. ai_model đúng model soạn (ghi-lo thêm --model-lam/--lan-lam).
+- Câu mơ hồ đề (Sonnet nêu): LT 1.5c "hiệu các chữ số là 4" ⇒ 15 (hiểu lớn trừ bé; nếu chục trừ đơn vị ⇒ 40) · LT 1.5d "thương là 2" ⇒ 12 (nếu chục chia đơn vị ⇒ 21). Sách không có đáp án để đối chiếu.
