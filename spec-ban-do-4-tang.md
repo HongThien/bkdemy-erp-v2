@@ -1,11 +1,27 @@
 # SPEC — Bản đồ kiến thức 4 tầng (Chủ đề · Chuyên đề · Nhóm bài · Dạng bài) + thứ tự học
 
-> **Trạng thái:** CEO đã chốt quyết định qua 3 vòng sparring (07/10/2026); spec này là bản viết lại hoàn chỉnh. **Chưa build gì.**
+> **Trạng thái (08/10):** CEO chốt **phương án "bản đồ mới trên ERP"** (§0). Đã build: bảng nháp + màn soạn (B1, mig `202610081147`, tab Kho › 🆕 Bản đồ mới).
+> Các bước B2–B5 chưa làm.
 > **Phạm vi đợt này:** nhánh **Đại** (`dai_*`). HGT/KHTN cùng khuôn ⇒ áp sau qua registry. Hình (`hinh_*`) và Tiếng Anh tự cấu trúc riêng (§1.6 CLAUDE.md), không nằm trong spec này.
 > **Thay thế một phần:** `spec-cum-bai.md` (định nghĩa "cụm") và `spec-luong-kho.md` §2 (phân tầng Dạng / Cụm / Biến thể). Hai file đó vẫn đúng ở các phần khác.
 > Số liệu đo trên DB live 07/10 trong phiên read-only.
 
 ---
+
+## 0. Phương án chốt (CEO 08/10) — đọc trước, các mục sau chi tiết hoá
+
+| Bước | Ai | Việc | Nhân sự |
+|---|---|---|---|
+| **B1 Màn soạn** ✅ | Claude | Bảng nháp `dai_bdm_*` (§9.0) + tab **Kho › 🆕 Bản đồ mới**. Không đụng bản đồ đang chạy | Dùng bình thường |
+| **B2 Soạn** | **CEO** | ① chia tầng (kéo thả) · ② tự chép lý thuyết từ bản đồ cũ sang (để review luôn) · ③ viết **mô tả nhận biết** tầng 3–4 | Dùng bình thường |
+| **B3 Khớp** | **Claude** | Đọc lý thuyết · ví dụ · mô tả của bản mới ⇒ xếp từng **câu gốc** vào 1 dạng bài mới, kèm lý do + độ chắc. Bản sao đi theo gốc. Không khớp được ⇒ rổ "chưa khớp", không ép. Ghi vào chỗ **đề xuất**, không ghi thẳng | Dùng bình thường |
+| **B4 Duyệt** | **Học thuật** | Duyệt theo từng dạng bài; câu không chắc hoặc lệch hẳn nhãn cũ lên trước | Dùng bình thường |
+| **B5 Chuyển** | Claude | Sao lưu → áp 1 lần (nhóm mới **nhận lại mã nhóm cũ** tương ứng — đối ứng suy từ nhãn câu; nhóm cũ hết vai ⇒ `xoa_at` + `gop_vao`) → §10 mastery đi theo câu → báo cáo trước/sau → mở lại | **Dừng toàn bộ** |
+
+- **Không màn chia đôi cũ|mới** (CEO 08/10): CEO tự chép lý thuyết vì đằng nào cũng phải review.
+- **Câu về sau:** câu nào chưa có dạng bài = việc trong hàng đợi học thuật (luật bất biến, không bảng việc); câu mới vào kho đi qua cùng bộ khớp B3.
+- **Thứ tự** (dự kiến): soạn khối nào khớp khối đó, **K6 trước** (đã có cụm người gán ⇒ đo được độ chính xác khớp trước khi chạy ~15 nghìn câu gốc). Chuyển (B5) vẫn **1 lần ở cuối**.
+- Từ các mục dưới: §4 "backfill từ cột chữ cũ" và §5 "chuyển trên bản đồ thật" **không còn là đường chính** — tầng 1–2 lấy từ bản nháp lúc B5; §5 áp cho chỉnh lẻ SAU khi chuyển.
 
 ## 1. Quyết định CEO (07/10)
 
@@ -258,7 +274,25 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 
 ---
 
-## 9. Màn bản đồ kéo thả (Kho › Bản đồ, `src/screens/kho/BanDo.tsx`, thêm chế độ "Card")
+## 9. Màn bản đồ kéo thả
+
+### 9.0 Đã build (B1, 08/10): Kho › 🆕 Bản đồ mới — `src/screens/kho/BanDoMoi.tsx` · `src/lib/kho/banDoMoi.ts`
+
+- Bảng nháp (mig `202610081147`): `dai_bdm_chu_de` (khối) · `dai_bdm_chuyen_de` (dùng chung) · `dai_bdm_o` · `dai_bdm_nhom`
+  (`mo_ta`, `ly_thuyet`) · `dai_bdm_dang_bai` (`mo_ta`, `vi_du`) · `dai_bdm_log` (trigger ghi mọi thêm/sửa/xoá + người làm).
+  Mã nháp `NCD/NCH/NNB/NDB…` cố định từ lúc sinh. Xoá bị FK chặn khi còn con.
+- RPC: `fn_bdm_cay(khoi)` (cây jsonb + danh mục chuyên đề dùng chung) · `fn_bdm_sap_xep` · `fn_bdm_chuyen_nhom` ·
+  `fn_bdm_chuyen_dang_bai` · `fn_bdm_chuyen_o` (chuyển cả chuyên đề sang chủ đề khác; trùng thì dồn) ·
+  `fn_bdm_nang_dang_bai` (ví dụ → lý thuyết) · `fn_bdm_ha_nhom` (chỉ khi nhóm không còn dạng bài; lý thuyết → ví dụ).
+- Màn: cột = chủ đề; trong cột = thẻ chuyên đề (nhãn "ở N chủ đề" nếu dùng chung) › thẻ nhóm › chip dạng bài.
+  Kéo thả HTML5 thuần (không thêm thư viện): sắp cột · chuyển/sắp chuyên đề · nhóm · dạng bài. Bấm thẻ ⇒ khung chi tiết
+  (tên · mô tả nhận biết · 📖 lý thuyết / 📝 ví dụ dùng nguyên `LyThuyetModal` · nâng/hạ · gỡ/xoá). Chấm tiến độ trên từng
+  thẻ (mô tả · lý thuyết/ví dụ) + bộ đếm tiến độ khối. Thêm chuyên đề: chọn từ danh mục dùng chung hoặc tạo mới.
+- Kiểm 08/10 trên app local (khối 3, dữ liệu `[TEST]`): thêm 4 tầng · chuyên đề dùng chung 2 chủ đề · kéo nhóm sang chủ đề
+  khác · sắp dạng bài · chuyển dạng bài sang nhóm khác · sắp cột · mô tả lưu khi rời ô · mở lý thuyết · nâng rồi hạ
+  (DB khớp, log đủ actor). Chưa thử trên UI: chuyển cả chuyên đề (đã thử SQL trong ROLLBACK) · lưu lý thuyết.
+
+### 9.1 Màn kéo thả trên bản đồ THẬT (sau B5 — chỉnh lẻ)
 
 - **Lọc theo khối**, mỗi lần một khối.
 - **Bố cục:** mỗi chủ đề là một cột. Trong cột là các card chuyên đề (ô), trong đó là card nhóm bài, trong đó là chip dạng bài.
@@ -307,14 +341,19 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 
 ## 11. Lộ trình (expand → contract)
 
-| Pha | Việc | Phá cũ? | Xong khi |
+Theo phương án §0 (08/10). Cột "Nhân sự" = có phải dừng không.
+
+| Pha | Việc | Nhân sự | Xong khi |
 |---|---|---|---|
-| **P1 Nền DB** | Sao lưu ra file · §4: bảng, backfill, trigger, RPC §5 (gồm gộp/tách), chống vòng, `xoa_at` + `gop_vao`, cấm xoá cứng · ngừng gọi 2 hàm chuyển cũ + `fn_dai_gop_cau_dang` + `deleteDaiDang` · **§10 `_do_nhom_cua_o` cho `fn_mastery_cells` và 9 hàm kia**, kèm báo cáo trước/sau | Không (mastery đổi đúng chỗ nhãn cũ) | Bản chép chữ trên `dai_ban_do` **không đổi dòng nào** so với trước backfill. 25 hàm cũ chạy y nguyên. Báo cáo §10 gửi CEO. `npm run schema` |
-| **P2 Màn Card** | §9 phần cây, kéo thả, gợi ý gộp, đổi nhãn trong Kho | Không | CEO tự kéo được và dồn "Tìm x" K6 về 1 chuyên đề trên app thật |
-| **P3 Thứ tự** | §9 chế độ Thứ tự, 3 tầng tiền đề, cảnh báo | Không | CEO khai xong thứ tự 1 khối mẫu |
-| **P4 Lý thuyết tầng 4** | `dai_cum_ly_thuyet`, màn sửa, in (§8), tuỳ chọn đề xuất tách | Không | In được 1 nhóm = lý thuyết + N ví dụ |
+| **B1 Màn soạn** ✅ | §9.0 | Dùng bình thường | ✅ 08/10 |
+| **B2 Soạn** | CEO chia tầng + chép lý thuyết + viết mô tả, khối nào xong báo khối đó | Dùng bình thường | Khối có đủ mô tả nhóm + dạng bài |
+| **B3 Khớp** | Bảng đề xuất (câu gốc → dạng bài nháp, lý do, độ chắc) · khớp K6 trước, đo tỉ lệ khớp so với cụm người gán · rồi các khối khác | Dùng bình thường | K6 đạt ngưỡng CEO chốt; mọi khối có đề xuất |
+| **B4 Duyệt** | Màn duyệt theo dạng bài cho học thuật | Dùng bình thường | Mọi câu gốc có nhãn đã duyệt hoặc nằm rổ "chưa khớp" có người quyết |
+| **P1 Nền DB thật** (làm song song B2–B4) | Sao lưu ra file · bảng tầng 1–2 thật + ô · `xoa_at` + `gop_vao` + cấm xoá cứng · ngừng gọi 2 hàm chuyển cũ + `fn_dai_gop_cau_dang` + `deleteDaiDang` · **§10 `_do_nhom_cua_o`** cho `fn_mastery_cells` + 9 hàm (bật được trước B5 — không phụ thuộc bản mới) | Dùng bình thường | 25 hàm cũ chạy y nguyên · báo cáo §10 gửi CEO |
+| **B5 Chuyển** | Khớp bù câu mới → đối ứng nhóm/dạng bài cũ→mới (từ nhãn câu; chia nhiều nơi ⇒ học thuật chọn) → áp 1 transaction: tầng 1–2 từ nháp, nhóm nhận mã cũ / tạo mã mới, câu đổi `dang_chinh` + `ma_cum`, nhóm cũ hết vai ⇒ `xoa_at` + `gop_vao` → kiểm → báo cáo mastery | **DỪNG TOÀN BỘ** | Số câu mỗi khối không đổi; mọi câu có nhóm thật; báo cáo trước/sau |
+| **P3 Thứ tự** | §6 + §9.1 chế độ Thứ tự | Dùng bình thường | CEO khai xong thứ tự 1 khối mẫu |
 | **P5 Bên dùng** | `fn_ban_do_mo_khoa` → Học từ đầu · bổ trợ gốc→ngọn | Đổi hành vi | Soi bằng tài khoản HS thật |
-| **P6 Thu gọn** | Chuyển 25 hàm và 36 file sang bảng mới, đổi nhãn toàn app, rồi **xoá** cột chữ cũ, 2 hàm chuyển cũ, `dai_chuyen_de_thu_tu` | **Có** | Theo Luật xoá: liệt kê chính xác, CEO gật rồi mới làm |
+| **P6 Thu gọn** | Chuyển 25 hàm + 36 file sang bảng mới, đổi nhãn toàn app, rồi **xoá** cột chữ cũ, 2 hàm chuyển cũ, `dai_chuyen_de_thu_tu`, bảng nháp | **Có** (xoá) | Theo Luật xoá: liệt kê chính xác, CEO gật rồi mới làm |
 
 ---
 

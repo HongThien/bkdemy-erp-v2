@@ -11,8 +11,9 @@ import GanMauPanel from './GanMauPanel'
 import { anhBranch, daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch, tsaBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
+import BanDoMoi from './BanDoMoi'
 
-type Tab = 'dai' | 'hinh' | 'hinhgt' | 'mcq'
+type Tab = 'dai' | 'hinh' | 'hinhgt' | 'mcq' | 'bdm' // bdm = Bản đồ mới (nháp Đại, spec-ban-do-4-tang.md)
 type Mon = 'toan' | 'khtn' | 'anh' | 'tsa'
 // ⭐ 16/09 (CEO): tab Hình học tách 2 phase — Học kiến thức (Bài) vs Luyện tập (Mô hình/Dạng/Bổ đề cũ).
 // Toggle chỉ hiện khi tab='hinh'. Nhớ preference/localStorage riêng.
@@ -27,7 +28,7 @@ const readKhoi = () => {
 }
 const readTab = () => {
   const v = localStorage.getItem('kho.tab')
-  return (v === 'hinh' || v === 'hinhgt' || v === 'mcq' ? v : 'dai') as Tab
+  return (v === 'hinh' || v === 'hinhgt' || v === 'mcq' || v === 'bdm' ? v : 'dai') as Tab
 }
 const readMon = () => { const v = localStorage.getItem('kho.mon'); return (v === 'khtn' || v === 'anh' || v === 'tsa' ? v : 'toan') as Mon }
 const readHinhPhase = () => (localStorage.getItem('kho.hinh.phase') === 'luyen' ? 'luyen' : 'hoc') as HinhPhase
@@ -73,6 +74,7 @@ export default function KhoScreen() {
   // Nếu môn đang chọn không được phép → nhảy về môn đầu tiên được phép.
   useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(','), mon])
   const profileLoading = !isAll && me === null  // chưa load hồ sơ → chưa biết môn
+  const laBdm = mon === 'toan' && tab === 'bdm'
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -96,6 +98,7 @@ export default function KhoScreen() {
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
             <TabBtn active={tab === 'hinhgt'} onClick={() => setTab('hinhgt')}>Hình giải tích</TabBtn>
             <TabBtn active={tab === 'mcq'} onClick={() => setTab('mcq')}>Phủ MCQ</TabBtn>
+            <TabBtn active={tab === 'bdm'} onClick={() => setTab('bdm')}>🆕 Bản đồ mới</TabBtn>
           </div>
         )}
         {/* ⭐ Phase Hình học (CEO 16/09): chỉ hiện khi tab='hinh'. Học = Bài (mới); Luyện = Mô hình/Dạng cũ. */}
@@ -107,33 +110,33 @@ export default function KhoScreen() {
         )}
         {allowed.length > 0 && !profileLoading && (mon !== 'toan' || tab !== 'mcq') && <>
         {/* Tìm câu (chỉ nhánh có câu: Đại/KHTN) */}
-        {config.cauTbl && (
+        {config.cauTbl && !laBdm && (
           <button onClick={() => setTimCau(true)}
             className="ml-auto flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">
             🔍 Tìm câu
           </button>
         )}
-        {loGanMau && (
+        {loGanMau && !laBdm && (
           <button onClick={() => setGanMau(true)} title={`Gán tay dạng cho ${loGanMau.soMau} câu mẫu — ${loGanMau.ten}`}
             className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700">
             🎯 Gán mẫu
           </button>
         )}
-        {coDeXuat && (
+        {coDeXuat && !laBdm && (
           <button onClick={() => setDeXuat(true)} title="Đề xuất dạng/cụm mới và câu hỏi của dây chuyền nhập kho — chờ học thuật quyết"
             className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-amber-300 hover:text-amber-700">
             💡 Đề xuất
             {!!soDeXuat && <span className="rounded-full bg-amber-500 px-1.5 text-[11px] font-bold leading-5 text-white">{soDeXuat}</span>}
           </button>
         )}
-        {config.cauTbl && (
+        {config.cauTbl && !laBdm && (
           <button onClick={() => setRac(true)} title="Câu đã xoá khỏi kho — vẫn giữ để tài liệu cũ in đủ câu"
             className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-rose-300 hover:text-rose-700">
             🗑 Kho rác
           </button>
         )}
         {/* Khối */}
-        <div className={`${config.cauTbl ? '' : 'ml-auto '}flex items-center gap-1`}>
+        <div className={`${config.cauTbl && !laBdm ? '' : 'ml-auto '}flex items-center gap-1`}>
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
           {KHOI_OPTIONS.map((k) => {
             const tc = k.endsWith('T') // Tăng cường (CLC)
@@ -174,6 +177,9 @@ export default function KhoScreen() {
             ? (hinhPhase === 'hoc'
                 ? <KhoHinhHocScreen key={`hh-${khoi}`} khoi={khoi} />
                 : <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />)
+            : laBdm
+            // Bản đồ mới (nháp 4 tầng, Đại) — CEO soạn; không đụng bản đồ đang chạy
+            ? <BanDoMoi key={`bdm-${khoi}`} khoi={khoi} />
             : mon === 'toan' && tab === 'mcq'
             // Phủ MCQ (CEO 01/10) — xuyên TẤT CẢ khối cùng lúc (không theo khoi ở header), chỉ Đại/HGT.
             ? <McqCoverage />

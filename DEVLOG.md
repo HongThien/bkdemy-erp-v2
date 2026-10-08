@@ -35914,3 +35914,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `lo-tu-md.mjs`: md đã duyệt → 75 câu JSON (đề nguyên văn sách theo mã bài, lời giải 2 phần, sơ đồ theo file mô tả, đáp số dòng "Đáp số" hoặc bảng tay có soát).
 - `kho-rules/dai/lo/k4T-kiem.mjs`: máy tự tính lại đáp số TỪ ĐỀ cho 75 câu (vét cạn/thay ngược/mô phỏng) — 75/75 đạt sau khi sửa 1 lỗi của chính hàm kiểm (LT 10.14 lấy nhầm vị trí chữ số); thử đáp án sai ⇒ bắt được. Lô 1 lần đầu được máy kiểm.
 - `ghi-lo.mjs`: cổng ghi (kiem-doc/dap-so/hinh-a = code; kiem-dang/hinh-b = model khác gán mù), insertCauBatch (mã câu, lọc trùng, dạng chờ), kiem_may_boi=claude_code như ghi-tsa (CHECK bảng không có day_chuyen). Chạy thử: 15 câu dạng chờ qua cổng, 60 câu chờ biên bản model khác. CHƯA ghi DB.
+
+## 08/10 (tiếp) — Bản đồ mới B1: bảng nháp + màn soạn (Kho › 🆕 Bản đồ mới)
+- **Thùy:** không cần màn chia đôi; việc của Thùy = chia tầng · tự chép lý thuyết (để review) · viết mô tả tầng 3–4 cho Claude khớp.
+- **Mig 202610081147** (áp bằng --only, 15 mig treo của luồng khác không đụng): dai_bdm_chu_de/chuyen_de/o/nhom/dang_bai + dai_bdm_log (trigger, actor = jwt_uid — auth.uid() chết vì claude_build không có quyền schema auth, đúng bẫy mig 202610072102) + RPC fn_bdm_cay/sap_xep/chuyen_nhom/chuyen_dang_bai/chuyen_o/nang_dang_bai/ha_nhom. anon không execute. Thử khô ROLLBACK trước khi áp. Sai giữa chừng: trigger tự đặt thu_tu khi đổi cha sẽ xáo thứ tự nhóm khi chuyển cả ô (ON UPDATE CASCADE) ⇒ trigger chỉ INSERT, RPC tự đặt.
+- **Màn:** src/screens/kho/BanDoMoi.tsx + src/lib/kho/banDoMoi.ts, tab trong KhoScreen. Kéo thả HTML5 thuần, khung chi tiết dùng lại LyThuyetModal. Kiểm app local khối 3 dữ liệu [TEST]: OK (xem spec §9.0). Vite reload giữa chừng do phiên khác sửa kho-rules/*.md — không phải lỗi màn.
+- **Dữ liệu thử còn trong DB (chờ Thùy cho xoá):** khối 3 — chủ đề NCD00001 '[TEST] Chủ đề A', NCD00002 '[TEST] Chủ đề B'; chuyên đề NCH00001 '[TEST] Tìm x'; 2 ô; nhóm NNB00001, NNB00002; dạng bài NDB00001, NDB00003. dai_bdm_log có các dòng của lượt thử.
+- **Spec:** thêm §0 phương án chốt, §9.0 đã build, §11 lộ trình B1–B5 + P1 song song.
