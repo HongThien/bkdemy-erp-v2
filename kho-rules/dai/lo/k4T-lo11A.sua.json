@@ -1,0 +1,5 @@
+{
+ "PCT 8 II.2": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hình H là hình chữ nhật lớn bị khuyết một hình vuông ở góc trên bên phải. Có thể chia hình H thành hai hình chữ nhật rồi cộng, hoặc lấy hình chữ nhật lớn trừ hình khuyết.\n\nCách đọc hình: cạnh dưới dài $21$ cm, cạnh bên trái cao $12$ cm. Bên phải, phần thấp có cạnh ngang $6$ cm và cạnh đứng $6$ cm; phần khuyết ở góc trên bên phải rộng $6$ cm, cao $12-6=6$ cm. Phần chữ nhật bên trái cao $12$ cm có chiều rộng là $21-6$ cm.\n\nCách nhanh hơn: hình chữ nhật lớn $21\\times 12$ trừ phần khuyết $6\\times 6$ cũng ra cùng kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng phần chữ nhật bên trái (cao $12$ cm) là: $21-6=15$ (cm)\n\nDiện tích phần chữ nhật bên trái là: $15\\times 12=180$ ($cm^2$)\n\nDiện tích phần chữ nhật bên phải (rộng $6$ cm, cao $6$ cm) là: $6\\times 6=36$ ($cm^2$)\n\nDiện tích hình H là: $180+36=216$ ($cm^2$)\n\nĐáp số: $216$ $cm^2$"
+ }
+}

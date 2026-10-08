@@ -161,7 +161,115 @@ const lonNhatKhacNhau = (dk) => { let best = -1; for (let m = 1; m < 1024; m++) 
 const demSoTu = (chu, k, dk = () => true) => { let n = 0; const di = (s, dung) => { if (s.length === k) { if (s[0] !== '0' && dk(Number(s))) n++; return } for (const c of chu) if (!dung.has(c)) { dung.add(c); di(s + c, dung); dung.delete(c) } }; di('', new Set()); return n }
 const tongSoTu = (chu, k) => { let t = 0; const di = (s, dung) => { if (s.length === k) { if (s[0] !== '0') t += Number(s); return } for (const c of chu) if (!dung.has(c)) { dung.add(c); di(s + c, dung); dung.delete(c) } }; di('', new Set()); return t }
 
+// ── trợ giúp lô 11: bài có HÌNH trong đề — dữ kiện là TOẠ ĐỘ / SỐ ĐẾM đọc từ hình gốc của sách (kho-rules/dai/hinh-de/), máy tính phần còn lại ──
+/** diện tích đa giác (toạ độ ô lưới, công thức dây giày) — kiểm đếm "ô nguyên + nửa ô" của lời giải */
+const dtDaGiac = (d) => Math.abs(d.reduce((s, [x, y], i) => { const [u, v] = d[(i + 1) % d.length]; return s + x * v - u * y }, 0)) / 2
+/** hoán vị (vét cạn) */
+const hoanVi = (a) => (a.length <= 1 ? [a] : a.flatMap((x, i) => hoanVi([...a.slice(0, i), ...a.slice(i + 1)]).map((r) => [x, ...r])))
+const thangHang = ([ax, ay], [bx, by], [cx, cy]) => (bx - ax) * (cy - ay) - (by - ay) * (cx - ax) === 0
+/** ĐẾM TAM GIÁC trong hình gồm các đoạn thẳng đã vẽ: ba điểm đôi một nằm trên cùng một đoạn đã vẽ và không thẳng hàng */
+const demTamGiac = (doan) => {
+  const diem = [...new Map(doan.flat().map((p) => [p.join(','), p])).values()]
+  const tren = ([x, y], [[ax, ay], [bx, by]]) => thangHang([ax, ay], [bx, by], [x, y]) && x >= Math.min(ax, bx) && x <= Math.max(ax, bx) && y >= Math.min(ay, by) && y <= Math.max(ay, by)
+  const noi = (p, q) => doan.some((s) => tren(p, s) && tren(q, s))
+  let n = 0
+  for (let i = 0; i < diem.length; i++) for (let j = i + 1; j < diem.length; j++) for (let k = j + 1; k < diem.length; k++) {
+    const [p, q, r] = [diem[i], diem[j], diem[k]]
+    if (!thangHang(p, q, r) && noi(p, q) && noi(q, r) && noi(p, r)) n++
+  }
+  return n
+}
+/** các GÓC (độ) có đỉnh tại một điểm của hình: mỗi tia = một hướng đi theo đoạn đã vẽ từ đỉnh đó; bỏ góc bẹt */
+const cacGoc = (doan, dinh) => {
+  const huong = new Map()
+  for (const [a, b] of doan) for (const [p, q] of [[a, b], [b, a]]) {
+    const trong = thangHang(a, b, dinh) && dinh[0] >= Math.min(a[0], b[0]) && dinh[0] <= Math.max(a[0], b[0]) && dinh[1] >= Math.min(a[1], b[1]) && dinh[1] <= Math.max(a[1], b[1])
+    if (!trong || (q[0] === dinh[0] && q[1] === dinh[1])) continue
+    const goc = Math.round(Math.atan2(q[1] - dinh[1], q[0] - dinh[0]) * 1800 / Math.PI) / 10
+    huong.set(goc, true)
+  }
+  const h = [...huong.keys()], ra = []
+  for (let i = 0; i < h.length; i++) for (let j = i + 1; j < h.length; j++) { let d = Math.abs(h[i] - h[j]); if (d > 180) d = 360 - d; if (d < 179.5) ra.push(d) }
+  return ra
+}
+const gocDinh = (P, Q, R) => { const a = Math.atan2(P[1] - Q[1], P[0] - Q[0]), b = Math.atan2(R[1] - Q[1], R[0] - Q[0]); let d = Math.abs(a - b) * 180 / Math.PI; return d > 180 ? 360 - d : d }
+const songSong = ([a, b], [c, d]) => (b[0] - a[0]) * (d[1] - c[1]) - (b[1] - a[1]) * (d[0] - c[0]) === 0
+
 export const KIEM = {
+  // ── lô 11: 32 bài có HÌNH trong đề (Opus đọc hình gốc 08/10 — số trong mảng/toạ độ là ĐỌC TỪ HÌNH, phần còn lại máy tính) ──
+  // LT 3.4 (image25): đĩa trái 4 ngũ giác + 3 hình tròn, nhãn "2 kg" dưới đĩa trái; đĩa phải 1 hình vuông + 2 tròn + 3 ngũ giác; cân thăng bằng
+  'LT 3.4': () => { const T = 400, ng = motNghiem(tim(1, 2000, (n) => 4 * n + 3 * T === 2000), '3.4 ngũ giác'); return [String(motNghiem(tim(1, 2000, (v) => v + 2 * T + 3 * ng === 2000), '3.4 vuông'))] },
+  // LT 3.14: biển 60 (image28 chỉ minh hoạ, số đã có trong đề). Với tốc độ tối đa, trong 1/10 giờ đi được 60:10 km; người lái đi 5 km
+  'LT 3.14': () => [5 <= 60 / 10 ? 'có' : 'không'],
+  // PTL 1.5 (image99): tam giác 6 ô — 3 ô đỉnh, 3 ô giữa cạnh. Vét cạn; nghiệm phải duy nhất (sai khác quay/lật)
+  'PTL 1.5': () => { const ds = new Set(); for (const [a, b, c, x, y, z] of hoanVi([2, 3, 4, 5, 6, 7])) if (a + x + b === 14 && b + y + c === 14 && c + z + a === 14) ds.add([a, b, c].sort().join(';')); return [motNghiem([...ds], 'PTL 1.5')] },
+  // LT 5.13 (image108): đa giác tô màu trên lưới, đỉnh (cột, hàng) đọc từ hình; ô cạnh 1 cm
+  'LT 5.13': () => [String(dtDaGiac([[1, 1], [1, 3], [2, 4], [3, 5], [4, 4], [5, 4], [6, 5], [7, 4], [8, 3], [8, 1], [7, 2], [6, 3], [5, 2], [4, 2], [3, 3], [2, 2]]))],
+  // LT 5.15 (image109): cạnh trên 12, xuống 4, bậc 5 cm, ngang 4, xuống 2, đáy 3 ⇒ chỗ thụt vào rộng 12−4−3
+  'LT 5.15': () => { const thut = 12 - 4 - 3; return [String(dtDaGiac([[0, 0], [12, 0], [12, 11], [12 - 3, 11], [12 - 3, 9], [thut, 9], [thut, 4], [0, 4]]))] },
+  // LT 5.17 (image110): ngoài 16 × 9, viền 2 cm mỗi phía, phần tô màu = viền
+  'LT 5.17': () => [String(16 * 9 - (16 - 2 * 2) * (9 - 2 * 2))],
+  // LT 5.19 (image111): cắt 4 góc vuông 2 cm khỏi hình vuông 10 cm — đi quanh mép phần còn lại
+  'LT 5.19': () => { const d = [[2, 0], [8, 0], [8, 2], [10, 2], [10, 8], [8, 8], [8, 10], [2, 10], [2, 8], [0, 8], [0, 2], [2, 2]]; const cv = d.reduce((s, [x, y], i) => { const [u, v] = d[(i + 1) % d.length]; return s + Math.abs(u - x) + Math.abs(v - y) }, 0); return [String(cv), String(dtDaGiac(d))] },
+  // LT 5.20 (image113): đa giác tô vàng trên lưới, đỉnh (cột, hàng) đọc từ hình; mỗi ô 1 cm²
+  'LT 5.20': () => [String(dtDaGiac([[1, 2], [8, 2], [10, 1], [10, 3], [5, 5], [5, 3]]))],
+  // LT 6.13 (image119): hình sau = hình trước + nối trung điểm các cạnh của tam giác ở GIỮA vừa tạo. Dựng thật tới hình 12 rồi đếm tam giác
+  'LT 6.13': () => {
+    const S = 1 << 14, doan = [[[0, 0], [S, 0]], [[S, 0], [S / 2, S]], [[S / 2, S], [0, 0]]]
+    let giua = [[0, 0], [S, 0], [S / 2, S]]; const dem = [demTamGiac(doan)]
+    for (let h = 2; h <= 12; h++) { const [p, q, r] = giua, m = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; giua = [m(p, q), m(q, r), m(r, p)]; doan.push([giua[0], giua[1]], [giua[1], giua[2]], [giua[2], giua[0]]); if (h <= 4) dem.push(demTamGiac(doan)) }
+    if (dem.join() !== '1,5,9,13') throw new Error(`6.13 đếm hình 1–4: ${dem}`)
+    return [String(demTamGiac(doan))]
+  },
+  // VD 15.2 (image218): 4A..4F = 45; 66; 84; 49; 72; 98 (khớp lời giải sách)
+  'VD 15.2a': () => [String(tbc(45, 66, 84, 49, 72, 98))], 'VD 15.2b': () => [String([45, 66, 84, 49, 72, 98].filter((x) => x > 60).length)],
+  // LT 15.5 (image221–224): số hình tròn ô tô 8, xe máy 12, xe đạp điện 6, xe đạp 4; mỗi hình 5 xe
+  'LT 15.5a': () => [String(12 * 5)], 'LT 15.5b': () => { const d = { 'xe ô tô': 8, 'xe máy': 12, 'xe đạp điện': 6, 'xe đạp': 4 }, m = Math.min(...Object.values(d)); return [Object.keys(d).find((k) => d[k] === m), String(m * 5)] },
+  'LT 15.5c': () => [String((12 - 8) * 5)],
+  // LT 15.6 (image225–230): số hình kem vani 3, sô-cô-la 6, dâu 4, sầu riêng 11, xoài 6; mỗi hình 5 chiếc
+  'LT 15.6a': () => { const d = { vani: 3, 'sô-cô-la': 6, 'dâu': 4, 'sầu riêng': 11, 'xoài': 6 }; return [Object.keys(d).find((k) => d[k] === Math.max(...Object.values(d)))] },
+  'LT 15.6b': () => { const d = { vani: 3, 'sô-cô-la': 6, 'dâu': 4, 'sầu riêng': 11, 'xoài': 6 }, k = Object.keys(d), cap = []; for (let i = 0; i < k.length; i++) for (let j = i + 1; j < k.length; j++) if (d[k[i]] === d[k[j]]) cap.push([k[i], k[j]]); return motNghiem(cap, '15.6b') },
+  'LT 15.6c': () => [String((3 + 6 + 4 + 11 + 6) * 5)],
+  // LT 15.8 (image231): tháng 1–6 = 100; 124; 148; 128; 156; 214 — giữ cả bài (ý c dùng tổng của ý b, như LT 15.4)
+  'LT 15.8': () => { const d = [100, 124, 148, 128, 156, 214], t = d.reduce((a, b) => a + b, 0); return [`tháng ${d.indexOf(Math.max(...d)) + 1}`, String(t), String(t / 6 - 10)] },
+  // LT 15.9 (image232): chiều cao cột tính bằng số khoảng kẻ ngang: T2..CN = 2; 3; 4; 4; 5; 4; 6
+  'LT 15.9': () => { const h = [2, 3, 4, 4, 5, 4, 6], k = 150 / (h[6] - h[1]); return [String(h[5] * k)] },
+  // LT 15.10 (image233): tháng 1–6 = 3; 5; 3; 4; 6; 6 khoảng kẻ
+  'LT 15.10': () => { const h = [3, 5, 3, 4, 6, 6], k = (45 * 6) / h.reduce((a, b) => a + b, 0); return [String(h[3] * k)] },
+  // PCT 24 I.5 (image788): 2 hàng × 7 ô; tô hàng trên 6 ô (trừ ô thứ 4), hàng dưới 3 ô (ô 3–5)
+  'PCT 24 I.5': () => [`${6 + 3}/${2 * 7}`],
+  // PCT 2 I.9 (image998): thẻ 0; 1; 4; 5; 8; 9 — dùng cả 6 thẻ, số gần 500000 nhất
+  'PCT 2 I.9': () => { const ds = hoanVi([0, 1, 4, 5, 8, 9]).filter((p) => p[0]).map((p) => Number(p.join(''))), m = Math.min(...ds.map((n) => Math.abs(n - 500000))); return [String(motNghiem(ds.filter((n) => Math.abs(n - 500000) === m), 'PCT 2 I.9'))] },
+  // PCT 2 I.10 (image999): ○○○○ − ○○○○, chữ số 1–8 mỗi chữ số một lần, hiệu nhỏ nhất (lớn hơn 0)
+  'PCT 2 I.10': () => { let m = Infinity; for (const p of hoanVi([1, 2, 3, 4, 5, 6, 7, 8])) { const a = Number(p.slice(0, 4).join('')), b = Number(p.slice(4).join('')); if (a > b && a - b < m) m = a - b } return [String(m)] },
+  // PCT 3 I.3 (image1004): O (497;570), OA nằm ngang sang phải, B (757;118) — toạ độ ảnh; thước đo vạch trong chỉ 60
+  'PCT 3 I.3': () => [String(Math.round(gocDinh([1040, 570], [497, 570], [757, 118])))],
+  // PCT 4 I.3 (image1013): ngũ giác A(568;212) B(930;612) C(930;1438) D(170;1438) E(170;612)
+  'PCT 4 I.3': () => { const d = [[568, 212], [930, 612], [930, 1438], [170, 1438], [170, 612]]; return [String(d.filter((p, i) => gocDinh(d[(i + 4) % 5], p, d[(i + 1) % 5]) > 90.5).length)] },
+  // PCT 5 I.10: hình cân đĩa chỉ minh hoạ (không chứa dữ kiện)
+  'PCT 5 I.10': () => { const le = motNghiem(tim(1, 100, (l) => 2 * l === 4 * 1), 'lê'); return [String(3 * le)] },
+  // PCT 7 I.10 (image1043): Jessica, Joan, Chloe, Alison, Kelly nhận 1;2;3;4;5 rồi 5;4;3;2;1 rồi lặp lại
+  'PCT 7 I.10': () => { const ten = ['Jessica', 'Joan', 'Chloe', 'Alison', 'Kelly'], luot = [0, 1, 2, 3, 4, 0, 1, 2, 3, 4], so = [1, 2, 3, 4, 5, 5, 4, 3, 2, 1]; let da = 0; for (let i = 0; ; i++) { da += so[i % 10]; if (da >= 136) return [ten[luot[i % 10]]] } },
+  // PCT 8 I.10 (image1051): tăng mỗi chiều 4 cm — phần tăng không phụ thuộc chiều dài/rộng cụ thể (thử mọi cặp có nửa chu vi 108)
+  'PCT 8 I.10': () => { const t = new Set(tim(1, 107, (r) => true).map((r) => (108 - r + 4) * (r + 4) - (108 - r) * r)); return [String(motNghiem([...t], 'PCT 8 I.10'))] },
+  // PCT 8 II.2 (image1054): đáy 21, cạnh trái 12, bậc bên phải: ngang 6, cao 6
+  'PCT 8 II.2': () => [String(dtDaGiac([[0, 0], [21 - 6, 0], [21 - 6, 12 - 6], [21, 12 - 6], [21, 12], [0, 12]]))],
+  // PCT 14 I.1 (image1105): E(100;126) G(682;126) H(982;597) I(100;597), cạnh EG, GH, HI, IE
+  'PCT 14 I.1': () => { const E = [100, 126], G = [682, 126], H = [982, 597], I = [100, 597], c = { EG: [E, G], GH: [G, H], HI: [H, I], IE: [I, E] }, k = Object.keys(c), ra = []; for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (songSong(c[k[i]], c[k[j]])) ra.push(k[i], k[j]); if (ra.length !== 2) throw new Error(`14 I.1: ${ra}`); return ra },
+  // PCT 14 I.2 (image1106): A(557;212) B(930;592) C(930;1418) D(172;1418) E(172;592) — cạnh nào vuông góc AE (lệch ≤ 1° do vẽ tay)
+  'PCT 14 I.2': () => { const A = [557, 212], B = [930, 592], C = [930, 1418], D = [172, 1418], E = [172, 592], c = { AB: [A, B], BC: [B, C], CD: [C, D], DE: [D, E] }; return [motNghiem(Object.keys(c).filter((k) => { const [p, q] = c[k], g0 = Math.abs(Math.atan2(q[1] - p[1], q[0] - p[0]) - Math.atan2(E[1] - A[1], E[0] - A[0])) * 180 / Math.PI % 180; return Math.abs(g0 - 90) <= 1 }), '14 I.2')] },
+  // PCT 14 I.3 (image1107): lục giác (6 đỉnh)
+  'PCT 14 I.3': () => [`${6} cạnh`, `${6} góc`],
+  // PCT 14 I.6 (image1108): lập phương cạnh a cắt đôi theo đường giữa ⇒ khối a × a × a/2 (ba kích thước không bằng nhau ⇒ không phải lập phương)
+  'PCT 14 I.6': () => { const a = 2, k = [a, a, a / 2]; return [new Set(k).size === 1 ? 'lập phương' : 'hộp chữ nhật'] }, // "hình/khối hộp chữ nhật" đều được
+  // PCT 15 I.4 (image1110): C, B, E thẳng hàng, B nằm giữa; hình thoi có 4 cạnh bằng nhau ⇒ CB = AD, BE = EF
+  'PCT 15 I.4': () => [String(4 + 6)],
+  // PCT 15 I.6 (image1111): ô lưới A(3;3) B(6;1) C(8;3) (cột; hàng) — D là đỉnh thứ tư của hình bình hành với 3 điểm đã có
+  'PCT 15 I.6': () => { const A = [3, 3], B = [6, 1], C = [8, 3]; if (thangHang(A, B, C)) throw new Error('15 I.6 thẳng hàng'); const ds = new Set([[A[0] + C[0] - B[0], A[1] + C[1] - B[1]], [A[0] + B[0] - C[0], A[1] + B[1] - C[1]], [B[0] + C[0] - A[0], B[1] + C[1] - A[1]]].map(String)); return [String(ds.size)] },
+  // PCT 17 I.6 (image1130): kim giờ chỉ số 5, kim phút chỉ số 12 ⇒ góc = 5 × 30°
+  'PCT 17 I.6': () => { const g0 = 5 * 30; return [g0 < 90 ? 'nhọn' : g0 === 90 ? 'vuông' : g0 < 180 ? 'tù' : 'bẹt'] },
+  // PCT 17 I.7 (image1131): tứ giác T(298;18) L(18;430) R(1080;428) D(298;850) + 2 đường chéo TD, LR cắt nhau tại O(298;430)
+  'PCT 17 I.7': () => { const T = [298, 18], L = [18, 430], R = [1080, 430], D = [298, 850], O = [298, 430], doan = [[T, L], [L, D], [D, R], [R, T], [T, D], [L, R]]; return [String([T, L, R, D, O].flatMap((p) => cacGoc(doan, p)).filter((g0) => g0 < 89.5).length)] },
   // ── lô 10E: Phiếu cuối tuần 29–35 ──
   'PCT 29 I.1': () => [so(chia(P(1, 5), P(1, 25)))], 'PCT 29 I.2': () => [6 * 11 > 9 * 7 ? '>' : '<'],
   'PCT 29 I.3': () => { const A = tinh('\\frac{3}{7}\\times\\frac{11}{5}-\\frac{3}{7}\\times\\frac{1}{5}'), B = P(7, 8), s = A[0] * B[1] - B[0] * A[1]; return [s < 0 ? 'A<B' : s > 0 ? 'A>B' : 'A=B'] },

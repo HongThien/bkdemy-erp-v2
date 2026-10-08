@@ -2,7 +2,7 @@
 // ghi-lo.mjs — GHI một lô câu đã giải (lo-tu-md.mjs) vào kho Đại QUA CỔNG GHI (kho-rules/README.md §4 việc #3).
 //
 //   node scripts/kho/sach/ghi-lo.mjs <lo.json> --sach "Toán arc 4 Q1" --kiem <k4T-kiem.mjs> --so-do <thư mục so-do>
-//        [--kiem-ngoai <bien-ban-model-khac.json>] [--chua-gan-dang] [--model-lam <model soạn>] [--lan-lam "<mô tả lượt làm>"] [--ghi]
+//        [--kiem-ngoai <bien-ban-model-khac.json>] [--hinh-de <kho-rules/dai/hinh-de/4T.json>] [--chua-gan-dang] [--model-lam <model soạn>] [--lan-lam "<mô tả lượt làm>"] [--ghi]
 //   --model-lam: model THẬT đã soạn lời giải (ghi vào ai_model + vết trạm làm) — mặc định claude-opus-5-5. Đo chất lượng theo cách soạn cần cột này đúng.
 //
 // --chua-gan-dang (CEO 08/10: "giải trước, up lên DB ở trạng thái chưa gán dạng … gán dạng là việc độc lập, chạy sau khi bản đồ
@@ -18,13 +18,15 @@
 //   kiem-dang     model_khac  model KHÁC gán dạng MÙ (không thấy dạng đã chọn) — từ --kiem-ngoai; thiếu ⇒ cổng từ chối câu đó
 //   kiem-hinh-a   code        máy vẽ sơ đồ tự kiểm nhãn tổng/hiệu khớp các hàng (so-do-doan-thang.mjs) — sai thì không vẽ
 //   kiem-hinh-b   model_khac  model KHÁC nhìn ảnh sơ đồ + đề, xác nhận sơ đồ đúng bài — từ --kiem-ngoai
+//   kiem-hinh-de  code        (câu có hình ĐỀ, --hinh-de) PNG dựng từ đúng tập ảnh gốc mà tach-bai thấy trong đề bài đó; PNG đọc được, cỡ 80–2000
 // kiem_may do CỔNG suy từ biên bản (một trạm không đạt ⇒ 'nghi'). da_duyet luôn false — người duyệt ở màn Duyệt.
 // Danh tính: ten_de_goc = "<sách> · <mã bài>" ⇒ chạy lại không nhân đôi (câu đã có thì bỏ qua). Câu trùng nội dung với kho
 // (insertCauBatch lọc) ⇒ không chèn, liệt kê.
-// Câu có ảnh trong sách (EMF chưa đổi được) ⇒ KHÔNG ghi, liệt kê (thà thiếu còn hơn câu mất hình — như ghi-tsa.mjs).
+// Câu có ảnh trong sách: lô phải mang hình đề (lo-tu-soan --hinh-de) + chạy với --hinh-de ⇒ upload PNG → anh_de TRƯỚC khi băm biên bản
+// (anh_de nằm trong nội dung băm — gắn hình sau khi ghi là làm biên bản mất hiệu lực). Thiếu hình đề ⇒ KHÔNG ghi, liệt kê (thà thiếu còn hơn câu mất hình).
 // ============================================================================
 import { readFileSync, existsSync } from 'node:fs'
-import { join, dirname, resolve } from 'node:path'
+import { join, dirname, resolve, basename } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { randomUUID } from 'node:crypto'
 import pg from 'pg'
@@ -39,7 +41,7 @@ const lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
 const GHI = a.includes('--ghi')
 const CHUA_GAN = a.includes('--chua-gan-dang')
 const MODEL_LAM = lay('--model-lam') ?? 'claude-opus-5-5'
-const loTep = a[0], SACH = lay('--sach'), kiemTep = lay('--kiem'), soDoDir = lay('--so-do'), ngoaiTep = lay('--kiem-ngoai')
+const loTep = a[0], SACH = lay('--sach'), kiemTep = lay('--kiem'), soDoDir = lay('--so-do'), ngoaiTep = lay('--kiem-ngoai'), hinhDeTep = lay('--hinh-de')
 if (!loTep || !SACH || !kiemTep || !soDoDir) { console.error('Dùng: node scripts/kho/sach/ghi-lo.mjs <lo.json> --sach "<tên>" --kiem <kiem.mjs> --so-do <dir> [--kiem-ngoai <json>] [--ghi]'); process.exit(2) }
 
 const docEnv = (f) => existsSync(f) ? Object.fromEntries(readFileSync(f, 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#'))
@@ -83,6 +85,30 @@ async function soDo(c) {
   return { url: storage().storage.from('kho-anh').getPublicUrl(path).data.publicUrl, kiemA }
 }
 
+// ── hình ĐỀ lấy từ ảnh gốc của sách (kho-rules/dai/hinh-de/dung-hinh-de.ps1): kiểm đúng ảnh của đúng bài + upload ─────────
+const manHinhDe = hinhDeTep ? JSON.parse(readFileSync(hinhDeTep, 'utf8')) : null
+/** kiem-hinh-de (code): manifest nói PNG này dựng từ ảnh nào của sách — phải TRÙNG tập ảnh tach-bai thấy trong đề bài đó; PNG đọc được, cỡ hợp lý */
+function kiemHinhDe(c) {
+  const h = manHinhDe?.[c.hinh_de_ma]
+  if (!h) return { ket_qua: 'khong_dat', ghi_chu: `manifest hình đề không có bài ${c.hinh_de_ma}` }
+  if (h.tep !== basename(c.anh_de_tep)) return { ket_qua: 'khong_dat', ghi_chu: `tệp ${basename(c.anh_de_tep)} ≠ manifest ${h.tep}` }
+  const a = [...h.nguon].sort().join(','), b = [...(c.anh_sach ?? [])].sort().join(',')
+  if (a !== b) return { ket_qua: 'khong_dat', ghi_chu: `ảnh nguồn ${a} ≠ ảnh trong đề sách ${b}` }
+  if (!existsSync(c.anh_de_tep)) return { ket_qua: 'khong_dat', ghi_chu: `không thấy tệp ${c.anh_de_tep}` }
+  const buf = readFileSync(c.anh_de_tep)
+  if (buf.readUInt32BE(0) !== 0x89504e47) return { ket_qua: 'khong_dat', ghi_chu: 'tệp không phải PNG' }
+  const w = buf.readUInt32BE(16), hh = buf.readUInt32BE(20)
+  if (w < 80 || hh < 80 || w > 2000 || hh > 2000) return { ket_qua: 'khong_dat', ghi_chu: `cỡ ảnh ${w}×${hh} ngoài khoảng 80–2000` }
+  return { ket_qua: 'dat', ghi_chu: `hình đề ${h.tep} (${w}×${hh}, ${h.cach}) dựng từ đúng ảnh sách của ${c.hinh_de_ma}: ${a}` }
+}
+async function hinhDe(c) {
+  const path = `sach/${thang}/${randomUUID()}_${c.ma_nguon.replace(/\W+/g, '-')}-de.png`
+  if (!GHI) return `dry://kho-anh/${path}`
+  const { error } = await storage().storage.from('kho-anh').upload(path, readFileSync(c.anh_de_tep), { contentType: 'image/png', upsert: false })
+  if (error) throw new Error(`upload ${path}: ${error.message}`)
+  return storage().storage.from('kho-anh').getPublicUrl(path).data.publicUrl
+}
+
 // ── dựng gói + xét cổng ──────────────────────────────────────────────────────
 const LAN_LAM = lay('--lan-lam') ?? 'giai:lo-giai-thu-4T (Claude Code, lời giải CEO duyệt trong chat 07–08/10)'
 const LAN_KIEM_CODE = `kiem-code:${new Date().toISOString().slice(0, 16)}`
@@ -95,14 +121,17 @@ const { rows: coTruoc } = await db.query(`select ten_de_goc from dai_cau_hoi whe
 const daCoTruoc = new Set(coTruoc.map((r) => r.ten_de_goc))
 const boTruoc = []
 for (const c of lo) {
-  if (c.anh_sach?.length) { boQua.push({ c, ly_do: `bài có hình trong sách (${c.anh_sach.join(', ')}) — chưa đổi EMF, chưa cắt ảnh đề` }); continue }
+  const coHinhDe = c.anh_sach?.length > 0
+  if (coHinhDe && (!c.anh_de_tep || !manHinhDe)) { boQua.push({ c, ly_do: `bài có hình trong sách (${c.anh_sach.join(', ')}) — lô không mang hình đề (lo-tu-soan --hinh-de) hoặc thiếu --hinh-de` }); continue }
   if (daCoTruoc.has(`${SACH} · ${c.ma_nguon}`)) { boTruoc.push(c.ma_nguon); continue }
+  const kiemDe = coHinhDe ? kiemHinhDe(c) : null
+  if (kiemDe?.ket_qua === 'khong_dat') { tuChoi.push({ c, ly_do: [`hình đề: ${kiemDe.ghi_chu}`] }); continue }   // hình sai bài thì không upload
   const { url, kiemA, loi } = await soDo(c)
   if (loi) { tuChoi.push({ c, ly_do: [`sơ đồ: ${loi}`] }); continue }
   const cau = {
     dang_chinh: CHUA_GAN ? maDangCho('dai', c.khoi) : c.dang_chinh, loai_cau: c.loai_cau, noi_dung: c.noi_dung, lua_chon: null, menh_de: null,
-    dap_an: c.dap_an, loi_giai: c.loi_giai, anh_de: null, anh_dap_an: url, ma_cum: null,
-    nguon_giai: 'ai', hinh_do_may_ve: !!c.so_do,
+    dap_an: c.dap_an, loi_giai: c.loi_giai, anh_de: coHinhDe ? await hinhDe(c) : null, anh_dap_an: url, ma_cum: null,
+    nguon_giai: 'ai', hinh_do_may_ve: !!c.so_do, hinh_de_sach: coHinhDe,
   }
   const bam = bamNoiDung(cau)
   const kiem = []
@@ -110,6 +139,7 @@ for (const c of lo) {
   bb('kiem-doc', 'code', kiemDoc(c), LAN_KIEM_CODE)
   bb('kiem-dap-so', 'code', kiemDapSo(c.ma_nguon, c.dap_an), LAN_KIEM_CODE)
   if (kiemA) bb('kiem-hinh-a', 'code', kiemA, LAN_KIEM_CODE)
+  if (kiemDe) bb('kiem-hinh-de', 'code', kiemDe, LAN_KIEM_CODE)
   const n = ngoai?.cau?.[c.ma_nguon]
   if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
     ? { ket_qua: 'dat', ghi_chu: `model khác gán mù ra cùng dạng (${n.dang})` }

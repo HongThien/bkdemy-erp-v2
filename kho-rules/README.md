@@ -73,7 +73,7 @@ Người làm ≠ người kiểm ở mọi trạm. Một lô = 1 nhóm khu sác
 
 **Thước đo một lô** (ghi vào DEVLOG): số câu ghi / trùng bỏ / treo · đáp số khớp bộ kiểm · số câu người soát phải sửa (`.sua.json`) ·
 số câu máy chuẩn hoá định dạng. 4T: CĐ1 0/48 sửa · lô 6 1/99 · lô 7 2/151 · lô 8–10 (852 câu) vài câu/lô ⇒ trạm soạn Sonnet đứng được với luật v1.
-**4T xong cả sách 08/10: 1213 câu.** Bài học lô 8–10: hàm kiểm vét cạn bắt 3 lần Opus tính nhẩm sai (⇒ đúng lý do viết hàm TỪ ĐỀ);
+**4T xong cả sách 08/10: 1250 câu** (1213 + lô 11 = 37 câu từ 32 bài có hình trong đề). Bài học lô 8–10: hàm kiểm vét cạn bắt 3 lần Opus tính nhẩm sai (⇒ đúng lý do viết hàm TỪ ĐỀ);
 lỗi Sonnet còn lọt máy kiểm là lỗi DIỄN ĐẠT đúng đáp số mà sai lập luận (vd "mỗi số trong hai số đầu hơn TBC 2") ⇒ Opus vẫn phải đọc từng câu.
 *(Vá file bằng `node -e` làm mất dấu `\` trong regex 4 lần ở lô 6–7 ⇒ sửa regex luôn dùng Edit.)*
 
@@ -111,7 +111,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 4 | Báo cáo thước đo theo khối: % câu người sửa theo khâu (`kho_sua_log`), % dạng người đổi (`kho_doi_dang_log`) | Để biết v1 của một khối có "đứng" không |
 | 5 | Đưa **brief giao Sonnet soạn** vào repo (`kho-rules/mau-brief-soan.md`, khuôn như `docs/mau-brief-soan-hinh-hoc.md`) | Lô 5–7 4T brief chỉ nằm trong phiên làm; 5T phải dùng lại, không viết lại từ trí nhớ |
 | 6 | ✅ 08/10 **Đọc sách có công thức là ảnh WMF**: WMF của MathType nhúng sẵn MTEF ⇒ `scripts/kho/mathtype-thu/wmf-mtef.mjs` (5T: 1.031/1.031, KaTeX 0 hỏng, không cần OCR/PDF). `tach-bai.mjs` thêm: "LUYỆN TÂP", sách thiếu tiêu đề LUYỆN TẬP (số bài quay lại), khu Ôn tập `ON` — sách 4T tách ra y hệt trước | Word cũ đã "chuyển công thức thành ảnh" vẫn đọc được chính xác |
-| 7 | **Câu có hình trong đề** (4T ~41 câu EMF; 5T CĐ18–24 hình học) — đổi ảnh hoặc vẽ lại bằng code, ghi kèm hình | Hiện cổng không ghi câu thiếu hình (đúng), nên các câu này đứng ngoài kho |
+| 7 | ✅ 08/10 (4T lô 11, 32 bài) **Câu có hình trong đề** — hình GỐC của sách: `scripts/kho/sach/trich-media.mjs` → manifest `kho-rules/dai/hinh-de/<khối>.json` (PNG nào dựng từ ảnh sách nào) → `dung-hinh-de.ps1` (EMF → PNG; bảng Word chữ + biểu tượng ⇒ ghép ảnh bảng từ ảnh gốc) → `lo-tu-soan --hinh-de` → `ghi-lo --hinh-de` upload `anh_de` TRƯỚC khi băm biên bản + trạm `kiem-hinh-de` (code: đúng ảnh của đúng bài). Còn: 5T CĐ18–24 (công thức cũng là WMF — xem #6) | `anh_de` nằm trong băm nội dung ⇒ gắn hình sau khi ghi (kiểu `gan_hinh.mjs`) làm biên bản mất hiệu lực |
 
 ## 5. Trạng thái từng khối
 

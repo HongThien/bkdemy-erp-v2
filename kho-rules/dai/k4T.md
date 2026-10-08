@@ -2,7 +2,7 @@
 
 > **Trạng thái: ⭐ v1 (08/10) — lô 4 (20 câu) qua CEO không sửa gì** (*"OK rồi đấy"*). Bốn lô thử 75 câu ở `k4T-mau-thu.md`.
 > Từ v1: được giải hàng loạt + ghi kho qua cổng (`scripts/kho/sach/ghi-lo.mjs`). Luật vẫn sống: CEO sửa ở lô nào ⇒ ghi §7, nâng luật.
-> **Tiến độ (08/10 chiều): 361 câu từ sách đã vào kho ở dạng chờ `T14T000000`** (lô 1–4 + CĐ1 + lô 6 + lô 7; 360 `kiem_may=khop`).
+> **Tiến độ (08/10 tối): 1250 câu từ sách đã vào kho ở dạng chờ `T14T000000`** (lô 1–11, cả 32 bài có hình trong đề; số theo lô ở §8).
 > **Quy trình 3 bước (`kho-rules/README.md` §0): 4T đang ở BƯỚC 2** (giải toàn bộ sách); bước 3 (xếp vào bản đồ) chờ CEO xong bản đồ 4T.
 > Còn lại + câu treo + lệnh chạy lô kế: **§8**. Dây chuyền giải hàng loạt: `kho-rules/README.md` §2b.
 > *(lịch sử: NHÁP v0 07/10 → v1 08/10)* Theo `spec-luong-kho.md` C10: mọi lần
@@ -190,7 +190,7 @@ Luật gán:
 | LUYỆN TẬP 24 chuyên đề | ~330 | Không — **lô giải chính** (skill 4) |
 | 6 Phiếu tự luyện | 30 | Không |
 | 35 Phiếu cuối tuần (10 TN + 3 TL mỗi phiếu) | ~455 | Không; Phần I chỉ cần đáp số nhưng kho vẫn cần lời giải |
-| Hình | 52 ảnh (`image*.emf/png`) | Câu có hình: cắt từ docx (`word/media/`), chưa vẽ lại |
+| Hình | 52 ảnh (`image*.emf/png`): 32 bài có hình trong đề · 2 ảnh lý thuyết CĐ5 · 18 sơ đồ trong "Bài làm" | Hình đề = ảnh gốc đổi PNG, `kho-rules/dai/hinh-de/` (lô 11, §8) |
 
 ## 7. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
@@ -227,7 +227,8 @@ Giải ≠ gán dạng (CEO 08/10): khi bản đồ 4T hoàn thiện sẽ có M�
 | 8A–8F | CĐ14–19 + PTL 4–5 | 248 | như trên | `k4T-lo8{A..F}` |
 | 9A–9B | CĐ20–24 + PTL 6 | 95 | như trên | `k4T-lo9{A,B}` |
 | 10A–10E | 35 phiếu cuối tuần | 509 | như trên | `k4T-lo10{A..E}` |
-| **Tổng (DB)** | | **1213** | 1140 Sonnet · 73 Opus (`ai_model`) | 124 câu có sơ đồ · 1205 `khop` · 8 `khong_kiem_duoc` (đề mở, soát tay) |
+| 11A–11C | 32 bài có HÌNH trong đề (rải CĐ3, 5, 6, 15 + PTL 1 + 12 phiếu) | 37 | 3 Sonnet mở xem hình, Opus soát | `k4T-lo11{A,B,C}` (+ `k4T-lo11.brief.md`) · hình đề `kho-rules/dai/hinh-de/` |
+| **Tổng (DB)** | | **1250** | 1177 Sonnet · 73 Opus (`ai_model`) | 124 câu có sơ đồ · 37 câu có hình đề (`anh_de`) · 1242 `khop` · 8 `khong_kiem_duoc` (đề mở, soát tay) |
 
 Mỗi lô có đủ 4 tệp: `.json` (lô ghi) · `.soan.json` (bản Sonnet) · `.sua.json` (vết người soát sửa) · `.kiem-ngoai.json` (biên bản sơ đồ).
 Hàm kiểm từ ĐỀ cho mọi khu: `k4T-kiem.mjs`. Sơ đồ: `kho-rules/dai/so-do/4T-*.json`.
@@ -236,11 +237,16 @@ Hàm kiểm từ ĐỀ cho mọi khu: `k4T-kiem.mjs`. Sơ đồ: `kho-rules/dai/
 (+ `--sua`; có cổng KaTeX) → máy kiểm đáp số → Opus đọc toàn bộ + xem ảnh mọi sơ đồ → biên bản → `ghi-lo` chạy thử → `--ghi`
 (KHÔNG chạy 2 lượt ghi song song — cấp mã câu va nhau).
 
-**Câu CHƯA ghi (47 bài sách) — cần người:**
+**Bài có HÌNH trong đề — ✅ ghi xong 08/10 (lô 11).** Thực tế 32 bài (27 EMF + 5 PNG), không phải "31 + 3" như bản trước ước. Hình đề = HÌNH GỐC
+của sách (EMF → PNG; LT 15.5 / 15.6 ghép bảng từ đúng ảnh biểu tượng gốc), gắn `anh_de` ngay trong cổng ghi (`ghi-lo --hinh-de`, trạm `kiem-hinh-de`).
+Cách làm cho sách sau: `trich-media.mjs` → manifest `kho-rules/dai/hinh-de/<khối>.json` → `dung-hinh-de.ps1` → `lo-tu-soan --hinh-de` → `ghi-lo --hinh-de`.
+Bài có ý độc lập tách câu (VD 15.2a/b, LT 15.5a–c, LT 15.6a–c); LT 15.8 giữ cả bài (ý c dùng tổng ý b — như LT 15.4).
+
+**Câu CHƯA ghi (15 bài sách) — cần người:**
 
 | Câu | Vì sao chưa ghi | Cần gì |
 |---|---|---|
-| 31 bài có hình EMF/WMF trong đề + LT 3.4 · LT 15.9 · PCT 17 I.6 (hình PNG là dữ kiện) | Đề không đứng được nếu thiếu hình; chưa có đường đưa hình đề vào câu | Đường EMF → PNG (`scripts/anh/docx_trich.mjs`) hoặc vẽ lại bằng code, rồi giải như lô thường |
+| LT 7.2 · LT 7.4 · LT 7.7 · LT 10.8 (a–d) · LT 10.10–10.13 | KHÔNG phải thiếu: đề trùng câu đã có trong kho từ nguồn khác (`dau-vao-soan --khu "LT 7,LT 10"` báo trùng, đo 08/10 tối) — kho không ghi bản thứ hai | Không cần làm gì |
 | VD 10.1 · VD 10.2 (7 ý) · VD 20.1 · VD 20.2 | Sách in sẵn phép tính + đáp số trong đề | CEO: bỏ, hay viết lại đề |
 | LT 16.2c "5xy−3" · LT 17.5c "−7/15" · LT 17.9b "215/213 : 213/211" | Đề sách in lỗi (đề–lời giải lệch) | Người sửa đề rồi ghi |
 | PCT 6 I.6 | Đề in "ba trong bốn chữ số 0; 2; 5" — thiếu một chữ số | Người xem sách gốc |
@@ -251,6 +257,8 @@ Hàm kiểm từ ĐỀ cho mọi khu: `k4T-kiem.mjs`. Sơ đồ: `kho-rules/dai/
 LT 1.5c · 1.5d ("hiệu các chữ số là 4", "thương là 2" — đang lấy lớn trừ/chia bé) · LT 14.18 (số xe không đổi) ·
 LT 15.13 + PCT 23 II.3 (xúc xắc phân biệt) · LT 16.13 + PCT 24 I.9/I.10 (tính cả phân số mẫu 1) · LT 24.17 ("bớt lại 6 quả" ⇒ 36; hiểu khác ⇒ 60) ·
 PCT 12 I.3 (không ngoặc ⇒ 1503; có ngoặc ⇒ 139) · PCT 23 I.3 (số chia nhỏ nhất 7) · PCT 31 I.6 (còn lại của 3/5 chiếc = 3/10; theo cả chiếc ⇒ 7/10) ·
-PCT 31 II.3 (ngày 5–6 gộp ⇒ 5 bài) · **VD 19.2: lời giải sách in nhầm** (45/28) — kho ghi đúng 73/28.
+PCT 31 II.3 (ngày 5–6 gộp ⇒ 5 bài) · **VD 19.2: lời giải sách in nhầm** (45/28) — kho ghi đúng 73/28 ·
+*lô 11 (đọc hình):* **LT 3.4** nhãn "2 kg" = cả đĩa trái ⇒ hình vuông 600 g (nếu là khối lượng 4 ngũ giác ⇒ 900 g) · **PCT 4 I.3 / PCT 14 I.2** góc A
+hình ngôi nhà đo ~87° ⇒ coi là vuông (2 góc tù; AE ⊥ AB) · PCT 7 I.10 bảng = số lá mỗi lượt ⇒ Jessica · PCT 2 I.9 dùng hết 6 thẻ ⇒ 501489 · LT 6.13 đếm cả tam giác ghép ⇒ 45.
 
 **Việc phụ treo:** 1 SVG mồ côi `kho-anh/sach/2026-10/…_LT-3-15.svg` (upload trước khi lọc câu đã có) — chờ CEO gật xoá (Luật xoá).

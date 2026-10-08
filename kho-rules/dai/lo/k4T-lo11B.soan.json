@@ -1,0 +1,75 @@
+[
+ {
+  "ma_nguon": "VD 15.2a",
+  "dap_an": "$69$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Trung bình mỗi lớp quyên góp được = tổng số quyển vở của cả khối : số lớp.\n\nCách đọc hình: mỗi cột là một lớp (có $6$ cột: 4A, 4B, 4C, 4D, 4E, 4F), con số ghi trên đầu cột chính là số quyển vở của lớp đó. Đọc đủ sáu số, cộng lại được tổng, rồi chia cho $6$ lớp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát biểu đồ, số quyển vở quyên góp của các lớp 4A, 4B, 4C, 4D, 4E, 4F lần lượt là: $45$; $66$; $84$; $49$; $72$; $98$ (quyển vở).\n\nSố quyển vở cả khối Bốn quyên góp được là: $45+66+84+49+72+98=414$ (quyển vở)\n\nTrung bình mỗi lớp quyên góp được số quyển vở là: $414:6=69$ (quyển vở)\n\nĐáp số: $69$ quyển vở"
+ },
+ {
+  "ma_nguon": "VD 15.2b",
+  "dap_an": "$4$ lớp",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: So sánh số quyển vở ghi trên đầu mỗi cột với $60$, lớp nào có số lớn hơn $60$ thì lấy.\n\nCách đọc hình: đọc số trên đầu từng cột (hoặc xem cột nào vượt qua đường kẻ $60$). Chú ý \"trên $60$\" nghĩa là lớn hơn $60$, nên số đúng bằng $60$ (nếu có) không tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát biểu đồ, số quyển vở của các lớp 4A, 4B, 4C, 4D, 4E, 4F lần lượt là: $45$; $66$; $84$; $49$; $72$; $98$ (quyển vở).\n\nCác số lớn hơn $60$ là: $66$; $84$; $72$; $98$, ứng với các lớp 4B, 4C, 4E, 4F.\n\nSố lớp quyên góp trên $60$ quyển vở là: $4$ (lớp)\n\nVậy có $4$ lớp quyên góp trên $60$ quyển vở.\n\nĐáp số: $4$ lớp"
+ },
+ {
+  "ma_nguon": "LT 15.5a",
+  "dap_an": "$60$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Mỗi hình tròn tượng trưng cho $5$ chiếc xe, nên số xe = số hình tròn $\\times 5$.\n\nCách đọc hình: tìm dòng \"Xe máy\", đếm số hình tròn trên dòng đó (đếm lần lượt từng hình, không bỏ sót), rồi nhân với $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, dòng \"Xe máy\" có $12$ hình tròn.\n\nSố chiếc xe máy trong bãi đỗ xe là: $12\\times 5=60$ (chiếc)\n\nĐáp số: $60$ chiếc xe máy"
+ },
+ {
+  "ma_nguon": "LT 15.5b",
+  "dap_an": "Xe đạp ($20$ chiếc)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Loại xe có ít hình tròn nhất thì có số lượng ít nhất (mỗi hình tròn đều ứng với $5$ chiếc xe).\n\nCách đọc hình: đếm số hình tròn ở từng dòng rồi so sánh, không cần tính ra số xe mới biết loại ít nhất; tính ra để kiểm tra lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, số hình tròn của xe ô tô, xe máy, xe đạp điện, xe đạp lần lượt là: $8$; $12$; $6$; $4$ (hình).\n\nVì $4$ nhỏ hơn $6$, $6$ nhỏ hơn $8$, $8$ nhỏ hơn $12$ nên xe đạp có ít hình tròn nhất.\n\nSố chiếc xe đạp trong bãi đỗ xe là: $4\\times 5=20$ (chiếc)\n\nVậy loại xe có số lượng ít nhất là xe đạp ($20$ chiếc)."
+ },
+ {
+  "ma_nguon": "LT 15.5c",
+  "dap_an": "$20$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Tính số xe ô tô và số xe máy (số hình tròn $\\times 5$) rồi tìm hiệu hai số đó.\n\nCách đọc hình: đếm hình tròn ở dòng \"Xe ô tô\" và dòng \"Xe máy\". Cũng có thể lấy hiệu số hình tròn rồi nhân với $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, dòng \"Xe ô tô\" có $8$ hình tròn, dòng \"Xe máy\" có $12$ hình tròn.\n\nSố chiếc xe ô tô là: $8\\times 5=40$ (chiếc)\n\nSố chiếc xe máy là: $12\\times 5=60$ (chiếc)\n\nSố xe máy nhiều hơn số xe ô tô là: $60-40=20$ (chiếc)\n\nĐáp số: $20$ chiếc xe"
+ },
+ {
+  "ma_nguon": "LT 15.6a",
+  "dap_an": "Kem vị sầu riêng ($55$ chiếc)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Mỗi hình kem ứng với $5$ chiếc, nên loại nào có nhiều hình kem nhất thì bán được nhiều nhất.\n\nCách đọc hình: đếm số hình kem ở từng dòng cẩn thận (dòng kem sầu riêng dài nhất, dễ đếm sót), rồi so sánh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, số hình kem của kem vị vani, sô-cô-la, dâu, sầu riêng, xoài lần lượt là: $3$; $6$; $4$; $11$; $6$ (hình).\n\nVì $11$ lớn hơn $3$; $6$; $4$ nên kem vị sầu riêng có nhiều hình kem nhất.\n\nSố chiếc kem vị sầu riêng bán ra là: $11\\times 5=55$ (chiếc)\n\nVậy loại kem ốc quế bán ra nhiều nhất là kem vị sầu riêng ($55$ chiếc)."
+ },
+ {
+  "ma_nguon": "LT 15.6b",
+  "dap_an": "Kem vị sô-cô-la và kem vị xoài ($30$ chiếc)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Hai loại có cùng số lượng khi có cùng số hình kem.\n\nCách đọc hình: đếm số hình kem ở từng dòng rồi tìm hai dòng có số hình bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, số hình kem của kem vị vani, sô-cô-la, dâu, sầu riêng, xoài lần lượt là: $3$; $6$; $4$; $11$; $6$ (hình).\n\nHai dòng có cùng số hình kem là dòng kem vị sô-cô-la và dòng kem vị xoài, đều có $6$ hình.\n\nSố chiếc kem mỗi loại bán ra là: $6\\times 5=30$ (chiếc)\n\nVậy hai loại kem bán ra có cùng số lượng là kem vị sô-cô-la và kem vị xoài ($30$ chiếc mỗi loại)."
+ },
+ {
+  "ma_nguon": "LT 15.6c",
+  "dap_an": "$150$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Mỗi hình kem ứng với $5$ chiếc, nên chỉ cần cộng số hình kem của cả năm loại rồi nhân với $5$.\n\nCách đọc hình: đếm số hình kem ở cả $5$ dòng (không bỏ dòng nào).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, số hình kem của kem vị vani, sô-cô-la, dâu, sầu riêng, xoài lần lượt là: $3$; $6$; $4$; $11$; $6$ (hình).\n\nTổng số hình kem của cả năm loại là: $3+6+4+11+6=30$ (hình)\n\nTổng số chiếc kem ốc quế bán ra trong ngày là: $30\\times 5=150$ (chiếc)\n\nĐáp số: $150$ chiếc kem"
+ },
+ {
+  "ma_nguon": "LT 15.8",
+  "dap_an": "a) Tháng 6; b) $870$ cái; c) $135$ cái",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Đọc số ghi trên đầu mỗi cột; tổng = cộng $6$ số; trung bình cộng = tổng : $6$; tháng 7 ít hơn trung bình cộng $10$ cái thì lấy trung bình cộng trừ $10$.\n\nCách đọc hình: mỗi cột là một tháng, số ghi trên đầu cột là số điện thoại bán được của tháng đó. Cột cao nhất ứng với số lớn nhất.\n\nÝ a) so sánh $6$ số. Ý b) cộng $6$ số. Ý c) dùng kết quả ý b): tìm trung bình cộng trước, rồi trừ $10$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát biểu đồ, số điện thoại bán được từ tháng 1 đến tháng 6 lần lượt là: $100$; $124$; $148$; $128$; $156$; $214$ (cái).\n\na) Vì $214$ lớn hơn các số còn lại nên tháng 6 bán được nhiều nhất.\n\nb) Tổng số điện thoại iPhone 14 bán được trong $6$ tháng đầu năm là: $100+124+148+128+156+214=870$ (cái)\n\nc) Trung bình mỗi tháng trong $6$ tháng đầu năm bán được số điện thoại là: $870:6=145$ (cái)\n\nSố điện thoại iPhone 14 bán được trong tháng 7 là: $145-10=135$ (cái)\n\nĐáp số: a) Tháng 6; b) $870$ cái; c) $135$ cái",
+  "ghi_chu_nghi": "Hình: cột tháng 6 vẽ cao khoảng 207 (thấp hơn số ghi 214 một chút), các cột khác khớp số ghi. Em lấy số GHI trên đầu cột (214) vì tổng 870 chia 6 ra đúng 145, còn 863 thì không chia hết; nếu số ghi sai thì đáp số b) và c) đổi."
+ },
+ {
+  "ma_nguon": "LT 15.9",
+  "dap_an": "$200$ cốc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Các đường kẻ ngang cách đều nhau nên mỗi khoảng kẻ (\"ô\") ứng với cùng một số cốc. Đếm số ô của hai cột đã biết hiệu để tìm $1$ ô là bao nhiêu cốc, rồi đếm số ô của cột thứ Bảy.\n\nCách đọc hình: biểu đồ không ghi số, nên đếm từ đường đáy (số $0$) lên đỉnh mỗi cột xem có bao nhiêu khoảng kẻ. Bẫy: đếm khoảng giữa các đường kẻ chứ không đếm số đường kẻ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát biểu đồ, số ô của các cột từ thứ Hai đến Chủ nhật lần lượt là: $2$; $3$; $4$; $4$; $5$; $4$; $6$ (ô).\n\nChủ nhật có $6$ ô, thứ Ba có $3$ ô.\n\nChủ nhật nhiều hơn thứ Ba số ô là: $6-3=3$ (ô)\n\nSố cốc trà sữa ứng với $1$ ô là: $150:3=50$ (cốc)\n\nThứ Bảy có $4$ ô, số cốc trà sữa bán được trong ngày thứ Bảy là: $50\\times 4=200$ (cốc)\n\nĐáp số: $200$ cốc trà sữa"
+ },
+ {
+  "ma_nguon": "LT 15.10",
+  "dap_an": "$40$ xe máy",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Các đường kẻ ngang cách đều nên mỗi ô ứng với cùng một số xe. Biết trung bình mỗi tháng $45$ xe thì biết tổng $6$ tháng; đếm tổng số ô của $6$ cột để tìm $1$ ô ứng với bao nhiêu xe.\n\nCách đọc hình: biểu đồ không ghi số, nên đếm từ đường đáy lên đỉnh mỗi cột xem có bao nhiêu khoảng kẻ. Bẫy: đếm khoảng giữa các đường kẻ chứ không đếm số đường kẻ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát biểu đồ, số ô của các cột từ tháng 1 đến tháng 6 lần lượt là: $3$; $5$; $3$; $4$; $6$; $6$ (ô).\n\nTổng số ô của $6$ tháng là: $3+5+3+4+6+6=27$ (ô)\n\nTổng số xe máy bán được trong $6$ tháng là: $45\\times 6=270$ (xe máy)\n\nSố xe máy ứng với $1$ ô là: $270:27=10$ (xe máy)\n\nTháng 4 có $4$ ô, số xe máy bán được trong tháng 4 là: $10\\times 4=40$ (xe máy)\n\nĐáp số: $40$ xe máy"
+ },
+ {
+  "ma_nguon": "PCT 24 I.5",
+  "dap_an": "$\\dfrac{9}{14}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Phân số chỉ phần được tô màu có tử số là số ô được tô màu, mẫu số là tổng số ô bằng nhau của cả hình.\n\nCách đọc hình: hình có $2$ hàng, mỗi hàng $7$ ô vuông bằng nhau. Đếm ô tô màu theo từng hàng (hàng trên có một ô trắng ở giữa, chú ý đừng đếm nhầm), rồi cộng lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát hình, hình có $2$ hàng, mỗi hàng có $7$ ô vuông bằng nhau.\n\nSố ô vuông của cả hình là: $7\\times 2=14$ (ô)\n\nHàng trên có $6$ ô tô màu, hàng dưới có $3$ ô tô màu.\n\nSố ô vuông được tô màu là: $6+3=9$ (ô)\n\nPhân số chỉ số phần được tô màu là $\\dfrac{9}{14}$.\n\nĐáp số: $\\dfrac{9}{14}$"
+ },
+ {
+  "ma_nguon": "PCT 7 I.10",
+  "dap_an": "Jessica",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Cách phát lặp đi lặp lại theo từng chu kì gồm hai vòng. Tìm số lá bài của một chu kì, chia $136$ cho số đó để biết còn thừa bao nhiêu lá, rồi xem lá cuối rơi vào đâu.\n\nCách đọc hình: bảng ghi số lá mỗi người nhận trong từng vòng. Vòng $1$: Jessica, Joan, Chloe, Alison, Kelly nhận $1$; $2$; $3$; $4$; $5$ lá. Vòng $2$ phát ngược lại: $5$; $4$; $3$; $2$; $1$ lá. Vòng $3$ lặp lại như vòng $1$ ($1$; $2$; ...), nên cứ hai vòng thì lặp lại một lần.\n\nMỗi vòng phát hết $1+2+3+4+5=15$ lá. Vòng lẻ (vòng $1$, $3$, $5$, ...) phát theo thứ tự Jessica đến Kelly, vòng chẵn phát ngược lại, người nhận đầu tiên của vòng chẵn là Jessica.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát bảng, mỗi vòng phát hết số lá bài là: $1+2+3+4+5=15$ (lá bài)\n\nHai vòng liền nhau (một chu kì) phát hết số lá bài là: $15\\times 2=30$ (lá bài)\n\nTa có: $136:30=4$ (dư $16$)\n\nSau $4$ chu kì (tức $8$ vòng) đã phát hết $30\\times 4=120$ lá, còn lại số lá bài là: $136-120=16$ (lá bài)\n\nVòng $9$ phát $15$ lá nên còn lại số lá bài là: $16-15=1$ (lá bài)\n\nLá bài cuối cùng là lá đầu tiên của vòng $10$, mà vòng $10$ phát ngược lại, người nhận đầu tiên là Jessica ($5$ lá).\n\nVậy người nhận lá bài cuối cùng là Jessica.\n\nĐáp số: Jessica",
+  "ghi_chu_nghi": "Hình là bảng chữ (không có hình vẽ). Em hiểu mỗi ô là \"số lá mỗi người nhận được trong một vòng\" (1;2;3;4;5 rồi 5;4;3;2;1 rồi lặp lại, dòng 3 là 1;2;... theo dấu chấm lửng) và 136 lá phát hết theo kiểu đó, đáp số Jessica. Nếu hiểu khác (mỗi lần phát 1 lá theo thứ tự Jessica...Kelly rồi Kelly...Jessica) thì chu kì 10 lá và đáp số là Kelly. Chọn cách thứ nhất vì bảng ghi rõ \"2 lá, 3 lá...\"."
+ },
+ {
+  "ma_nguon": "PCT 5 I.10",
+  "dap_an": "$6$ quả táo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Đổi mọi thứ về cùng một loại quả là quả táo. Hai bên cân bằng nghĩa là khối lượng hai bên bằng nhau.\n\nCách nghĩ: $2$ quả lê nặng bằng $4$ quả táo thì $1$ quả lê nặng bằng $4:2=2$ quả táo. $1$ quả dưa hấu nặng bằng $3$ quả lê, mà mỗi quả lê nặng bằng $2$ quả táo. Hình vẽ chỉ là một cái cân đĩa minh hoạ, không có thêm số liệu nào, mọi dữ kiện đã nằm ở đề bài.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$2$ quả lê cân bằng với $4$ quả táo.\n\nMột quả lê cân bằng với số quả táo là: $4:2=2$ (quả)\n\n$1$ quả dưa hấu cân bằng với $3$ quả lê.\n\nMột quả dưa hấu cân bằng với số quả táo là: $2\\times 3=6$ (quả)\n\nVậy phải đặt $6$ quả táo ở đĩa cân còn lại.\n\nĐáp số: $6$ quả táo",
+  "ghi_chu_nghi": "Hình chỉ là một cái cân đĩa trống (không có quả nào), không chứa dữ kiện; mọi số liệu lấy từ đề chữ."
+ }
+]

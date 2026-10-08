@@ -1,0 +1,5 @@
+{
+ "VD 15.2b": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: So sánh số quyển vở ghi trên đầu mỗi cột với $60$, lớp nào có số lớn hơn $60$ thì lấy.\n\nCách đọc hình: đọc số trên đầu từng cột (hoặc xem cột nào vượt qua đường kẻ $60$). Chú ý \"trên $60$\" nghĩa là lớn hơn $60$, nên số đúng bằng $60$ (nếu có) không tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuan sát biểu đồ, số quyển vở của các lớp 4A, 4B, 4C, 4D, 4E, 4F lần lượt là: $45$; $66$; $84$; $49$; $72$; $98$ (quyển vở).\n\nCác số lớn hơn $60$ là: $66$; $84$; $72$; $98$, ứng với các lớp 4B, 4C, 4E, 4F.\n\nVậy có $4$ lớp quyên góp trên $60$ quyển vở.\n\nĐáp số: $4$ lớp"
+ }
+}

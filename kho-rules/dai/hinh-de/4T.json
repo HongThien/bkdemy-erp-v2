@@ -1,0 +1,289 @@
+{
+ "LT 3.4": {
+  "tep": "4T-LT-3-4.png",
+  "nguon": [
+   "image25.png"
+  ],
+  "cach": "png"
+ },
+ "LT 3.14": {
+  "tep": "4T-LT-3-14.png",
+  "nguon": [
+   "image28.png"
+  ],
+  "cach": "png"
+ },
+ "PTL 1.5": {
+  "tep": "4T-PTL-1-5.png",
+  "nguon": [
+   "image99.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 5.13": {
+  "tep": "4T-LT-5-13.png",
+  "nguon": [
+   "image108.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 5.15": {
+  "tep": "4T-LT-5-15.png",
+  "nguon": [
+   "image109.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 5.17": {
+  "tep": "4T-LT-5-17.png",
+  "nguon": [
+   "image110.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 5.19": {
+  "tep": "4T-LT-5-19.png",
+  "nguon": [
+   "image111.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 5.20": {
+  "tep": "4T-LT-5-20.png",
+  "nguon": [
+   "image113.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 6.13": {
+  "tep": "4T-LT-6-13.png",
+  "nguon": [
+   "image119.emf"
+  ],
+  "cach": "emf"
+ },
+ "VD 15.2": {
+  "tep": "4T-VD-15-2.png",
+  "nguon": [
+   "image218.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 15.5": {
+  "tep": "4T-LT-15-5.png",
+  "nguon": [
+   "image221.emf",
+   "image222.emf",
+   "image223.emf",
+   "image224.emf"
+  ],
+  "cach": "bang",
+  "bang": {
+   "cao_bieu_tuong": 44,
+   "hang": [
+    {
+     "chu": "Xe ô tô",
+     "anh": "image221.emf"
+    },
+    {
+     "chu": "Xe máy",
+     "anh": "image222.emf"
+    },
+    {
+     "chu": "Xe đạp điện",
+     "anh": "image223.emf"
+    },
+    {
+     "chu": "Xe đạp",
+     "anh": "image224.emf"
+    }
+   ]
+  }
+ },
+ "LT 15.6": {
+  "tep": "4T-LT-15-6.png",
+  "nguon": [
+   "image225.emf",
+   "image226.emf",
+   "image227.emf",
+   "image228.emf",
+   "image229.emf",
+   "image230.emf"
+  ],
+  "cach": "bang",
+  "bang": {
+   "cao_bieu_tuong": 62,
+   "tieu_de": [
+    "Các loại kem",
+    "Số kem được bán ra trong một ngày"
+   ],
+   "hang": [
+    {
+     "chu": "Kem vị vani",
+     "anh": "image225.emf"
+    },
+    {
+     "chu": "Kem vị sô-cô-la",
+     "anh": "image226.emf"
+    },
+    {
+     "chu": "Kem vị dâu",
+     "anh": "image227.emf"
+    },
+    {
+     "chu": "Kem vị sầu riêng",
+     "anh": "image228.emf"
+    },
+    {
+     "chu": "Kem vị xoài",
+     "anh": "image229.emf"
+    }
+   ],
+   "chu_thich": {
+    "truoc": "Mỗi",
+    "anh": "image230.emf",
+    "sau": "ứng với 5 chiếc kem ốc quế."
+   }
+  }
+ },
+ "LT 15.8": {
+  "tep": "4T-LT-15-8.png",
+  "nguon": [
+   "image231.emf"
+  ],
+  "cach": "emf"
+ },
+ "LT 15.9": {
+  "tep": "4T-LT-15-9.png",
+  "nguon": [
+   "image232.png"
+  ],
+  "cach": "png"
+ },
+ "LT 15.10": {
+  "tep": "4T-LT-15-10.png",
+  "nguon": [
+   "image233.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 24 I.5": {
+  "tep": "4T-PCT-24-I-5.png",
+  "nguon": [
+   "image788.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 2 I.9": {
+  "tep": "4T-PCT-2-I-9.png",
+  "nguon": [
+   "image998.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 2 I.10": {
+  "tep": "4T-PCT-2-I-10.png",
+  "nguon": [
+   "image999.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 3 I.3": {
+  "tep": "4T-PCT-3-I-3.png",
+  "nguon": [
+   "image1004.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 4 I.3": {
+  "tep": "4T-PCT-4-I-3.png",
+  "nguon": [
+   "image1013.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 5 I.10": {
+  "tep": "4T-PCT-5-I-10.png",
+  "nguon": [
+   "image1021.png"
+  ],
+  "cach": "png"
+ },
+ "PCT 7 I.10": {
+  "tep": "4T-PCT-7-I-10.png",
+  "nguon": [
+   "image1043.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 8 I.10": {
+  "tep": "4T-PCT-8-I-10.png",
+  "nguon": [
+   "image1051.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 8 II.2": {
+  "tep": "4T-PCT-8-II-2.png",
+  "nguon": [
+   "image1054.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 14 I.1": {
+  "tep": "4T-PCT-14-I-1.png",
+  "nguon": [
+   "image1105.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 14 I.2": {
+  "tep": "4T-PCT-14-I-2.png",
+  "nguon": [
+   "image1106.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 14 I.3": {
+  "tep": "4T-PCT-14-I-3.png",
+  "nguon": [
+   "image1107.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 14 I.6": {
+  "tep": "4T-PCT-14-I-6.png",
+  "nguon": [
+   "image1108.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 15 I.4": {
+  "tep": "4T-PCT-15-I-4.png",
+  "nguon": [
+   "image1110.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 15 I.6": {
+  "tep": "4T-PCT-15-I-6.png",
+  "nguon": [
+   "image1111.emf"
+  ],
+  "cach": "emf"
+ },
+ "PCT 17 I.6": {
+  "tep": "4T-PCT-17-I-6.png",
+  "nguon": [
+   "image1130.png"
+  ],
+  "cach": "png"
+ },
+ "PCT 17 I.7": {
+  "tep": "4T-PCT-17-I-7.png",
+  "nguon": [
+   "image1131.emf"
+  ],
+  "cach": "emf"
+ }
+}

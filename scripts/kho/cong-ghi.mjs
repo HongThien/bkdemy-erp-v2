@@ -58,6 +58,7 @@ export function tramBatBuoc(cau) {
   const coDapSo = (cau?.dap_an ?? '') !== '' || (cau?.loi_giai ?? '') !== '' || (Array.isArray(cau?.menh_de) && cau.menh_de.length > 0)
   if (cau?.nguon_giai === 'ai' && coDapSo) ds.push('kiem-dap-so')           // đáp số/lời giải do AI viết
   if (cau?.hinh_do_may_ve) ds.push('kiem-hinh-a', 'kiem-hinh-b')            // §5.6: A = code, B = model khác
+  if (cau?.hinh_de_sach) ds.push('kiem-hinh-de')                             // hình ĐỀ lấy từ ảnh gốc của sách: đúng ảnh của đúng bài (code)
   return ds
 }
 

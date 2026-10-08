@@ -8,10 +8,12 @@
 // --sua = bản SỬA của người soát: { "<ma_nguon>": { dap_an?, loi_giai?, so_do?, bo?: "lý do không ghi" } } — đè lên bản soạn,
 //         để vết sửa nằm riêng (đo được tỉ lệ người soát phải sửa — thước đo của trạm soạn).
 // ĐỀ luôn lấy nguyên văn sách theo mã (không lấy từ bản soạn). Câu trong lô mà sách không có mã đó ⇒ dừng, báo.
+// --hinh-de <kho-rules/dai/hinh-de/<khối>.json> = manifest HÌNH ĐỀ (dung-hinh-de.ps1): bài có hình trong sách ⇒ câu mang anh_de_tep + hinh_de_ma
+//         (ghi-lo upload + kiểm đúng ảnh của đúng bài). Bài có hình mà manifest thiếu ⇒ dừng.
 // Mọi câu vào DẠNG CHỜ của khối (giải ≠ gán dạng, CEO 08/10).
 // ============================================================================
 import { readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { join, dirname } from 'node:path'
 import { veSoDo } from '../so-do-doan-thang.mjs'
 import { pathToFileURL } from 'node:url'
 import { chuanDinhDang } from './lo-tu-md.mjs'
@@ -59,7 +61,10 @@ export function deTachChu(ma, theoMa) {
   return { ...goc, ma, noi_dung: `${lenh} $${ct[0]}$`, anh: goc.anh }
 }
 
-export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null) {
+/** mã BÀI (cả bài) của một bản ghi tach-bai — bản ghi ý "LT 15.5a" ⇒ "LT 15.5" (cùng cách đặt mã của tach-bai.mjs) */
+export const maBaiGoc = (b) => (b.khu.startsWith('PCT') ? `${b.khu}.${b.so}` : `${b.khu.split(' ')[0]} ${b.so}`)
+
+export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null, hinhDe = null) {
   const theoMa0 = new Map(bai.map((b) => [b.ma, b]))
   const theoMa = { get: (ma) => theoMa0.get(ma) ?? deTachChu(ma, theoMa0) }
   const cau = [], loi = [], bo = [], daSua = [], suaMay = []
@@ -79,9 +84,16 @@ export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null) {
       s.so_do = `${khoi}-${s.ma_nguon.replace(/\W+/g, '-')}.json`
       writeFileSync(join(soDoDir, s.so_do), JSON.stringify(s.so_do_mo_ta) + '\n')
     }
+    // bài có HÌNH trong đề ⇒ phải có hình đề dựng sẵn (kho-rules/dai/hinh-de/<khối>.json, theo MÃ BÀI) — thiếu thì dừng, không ghi đề mất hình
+    let hinh = {}
+    if (goc.anh?.length && hinhDe) {
+      const maBai = maBaiGoc(goc), h = hinhDe.man[maBai]
+      if (!h) { loi.push(`${s.ma_nguon}: bài có hình (${goc.anh.join(', ')}) mà manifest hình đề không có "${maBai}"`); continue }
+      hinh = { anh_de_tep: join(hinhDe.dir, h.tep).replace(/\\/g, '/'), hinh_de_ma: maBai }   // '/' để lô JSON trong repo chạy được ở mọi máy
+    }
     const nhieu = /;|\bvà\b|,/.test(String(s.dap_an).replace(/\$[^$]*\$/g, 'x')) && !/^\$[^$]*\$$/.test(s.dap_an)
     cau.push({ ma_nguon: s.ma_nguon, lo, khoi, dang_chinh: maDangCho('dai', khoi), loai_cau: nhieu ? 'tu_luan' : 'tra_loi_ngan',
-      noi_dung: chuanDinhDang(goc.noi_dung), noi_dung_sach: goc.noi_dung, dap_an: String(s.dap_an).trim(), loi_giai: s.loi_giai, so_do: s.so_do ?? null, anh_sach: goc.anh })
+      noi_dung: chuanDinhDang(goc.noi_dung), noi_dung_sach: goc.noi_dung, dap_an: String(s.dap_an).trim(), loi_giai: s.loi_giai, so_do: s.so_do ?? null, anh_sach: goc.anh, ...hinh })
   }
   // mọi công thức phải RENDER được bằng KaTeX (app dùng KaTeX) — lỗi ⇒ dừng lô, không để chữ đỏ ra kho (đã dính \timesh ở LT 4.2d)
   for (const c of cau) for (const k of ['noi_dung', 'loi_giai', 'dap_an']) {
@@ -98,9 +110,10 @@ export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null) {
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const a = process.argv.slice(2), lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
   const [soanTep, baiTep] = a
-  if (!soanTep || !baiTep || !lay('--khoi') || !lay('--lo') || !lay('--ra')) { console.error('Dùng: node scripts/kho/sach/lo-tu-soan.mjs <soan.json> <bai.json> --khoi 4T --lo 5 --ra <lo.json> [--sua <sua.json>] [--so-do-dir <dir>]'); process.exit(2) }
+  if (!soanTep || !baiTep || !lay('--khoi') || !lay('--lo') || !lay('--ra')) { console.error('Dùng: node scripts/kho/sach/lo-tu-soan.mjs <soan.json> <bai.json> --khoi 4T --lo 5 --ra <lo.json> [--sua <sua.json>] [--so-do-dir <dir>] [--hinh-de <manifest.json>]'); process.exit(2) }
   const sua = lay('--sua') ? JSON.parse(readFileSync(lay('--sua'), 'utf8')) : {}
-  const { cau, loi, bo, daSua, suaMay } = dungLoSoan(JSON.parse(readFileSync(soanTep, 'utf8')), JSON.parse(readFileSync(baiTep, 'utf8')), lay('--khoi'), Number(lay('--lo')), sua, lay('--so-do-dir'))
+  const hinhDe = lay('--hinh-de') ? { man: JSON.parse(readFileSync(lay('--hinh-de'), 'utf8')), dir: dirname(lay('--hinh-de')) } : null
+  const { cau, loi, bo, daSua, suaMay } = dungLoSoan(JSON.parse(readFileSync(soanTep, 'utf8')), JSON.parse(readFileSync(baiTep, 'utf8')), lay('--khoi'), Number(lay('--lo')), sua, lay('--so-do-dir'), hinhDe)
   if (loi.length) { console.error(`✘ ${loi.length} lỗi — KHÔNG ghi lô:`); for (const l of loi) console.error('  ', l); process.exit(1) }
   writeFileSync(lay('--ra'), JSON.stringify(cau, null, 1))
   console.log(`✔ ${cau.length} câu · máy sửa định dạng ${suaMay.length} · người soát sửa ${daSua.length}${daSua.length ? ' (' + daSua.join(', ') + ')' : ''} · bỏ ${bo.length}${bo.length ? ': ' + bo.join(' | ') : ''}`)
