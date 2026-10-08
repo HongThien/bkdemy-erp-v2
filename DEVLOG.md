@@ -35903,3 +35903,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sửa (mig 202610081139):** `_mt_ky_thi` đọc mùa thẳng từ `gami_mua` (authenticated đọc được qua RLS), không nới quyền `_tt_mua`.
 - **Kèm (mig 202610081140):** HS chấm xong trước khi có trigger chưa có điểm tổng ⇒ cộng bù 1 lần cho buổi MT từ 01/10: +19 điểm tổng 'cau' (9B1 13 · 9C1 3 · 9S1 3), 225 điểm tay không đụng, buổi trước 01/10 không đụng.
 - **Kiểm:** app local 9S1 → tải được 26 câu / 12 HS, 3 em xong hiện điểm 7.5 · 8.75 · 8.25.
+
+## 08/10 (tiếp) — Bản đồ 4 tầng: CEO chốt phương án
+- **Thùy:** trên ERP có 1 UI BẢN ĐỒ MỚI; Thùy chuẩn bị đầy đủ trên đó (lý thuyết, ví dụ, mô tả). Claude làm nhiệm vụ KHỚP bản đồ cũ → mới bằng cách đọc lý thuyết/ví dụ/mô tả. (Trước đó: học thuật duyệt; AI đề xuất tới tầng 4.)
+- **Kỹ thuật t chọn (R2):** bản mới sống ở bảng NHÁP riêng (không đụng bản đang chạy) · màn chia đôi cũ|mới, kéo từ cũ sang = chép tên + lý thuyết + ghi đối ứng (tuỳ CEO dùng) · khớp câu gốc, clone đi theo gốc · câu không khớp ⇒ rổ 'chưa khớp', không ép · lúc chuyển: nhóm mới nhận lại mã nhóm cũ tương ứng (đối ứng suy từ nhãn câu). Chờ CEO: chuẩn bị + khớp theo từng khối (K6 thử trước)?
