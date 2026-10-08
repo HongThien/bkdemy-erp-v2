@@ -36064,3 +36064,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — Bản đồ mới: đổi thứ tự chuyên đề không lẫn với chuyển nhóm
 - Thùy: đổi thứ tự chuyên đề bị lẫn với ghép nhóm (cùng 1 vùng thả). Sửa: ▲▼ trên từng chuyên đề (hiện khi rê/chọn) + Alt+↑↓ dời chuyên đề đang chọn — không cần kéo. Khi kéo: kéo CHUYÊN ĐỀ hiện vạch chèn (đặt trước), kéo NHÓM hiện khung xanh + nhãn '⤵ thả: chuyển nhóm vào đây'.
 - Kiểm app local K6 'Tính chia hết…': ▲ rồi ▼ ⇒ thứ tự về y như cũ (dữ liệu Thùy không đổi); dragover (không thả) hiện đúng 2 kiểu.
+
+### 08/10 — Kho 4T lô 8F + 9A + 9B ghi DB
+- **8F** (8 câu): tách LT 16.7 A–H (bản gộp đã bỏ ở 8B). **9A** (CĐ20–21, 41 câu, 4 sơ đồ): giữ VD 20.1/20.2 (sách in sẵn phép tính + đáp số trong đề, như VD 10.1/10.2). **9B** (CĐ22–24 + PTL6, 54 câu, 23 sơ đồ). Cả hai khop 100%, Opus đọc soát toàn bộ + xem ảnh mọi sơ đồ, 0 câu phải sửa.
+- Sơ đồ chỉ minh hoạ TỈ SỐ (VD 23.3, LT 23.1–23.3: đề không cho số liệu) ⇒ máy lấy 1 phần = đơn vị vẽ, không ngoặc tổng/hiệu — biên bản ghi rõ.
+- Cách hiểu đã chọn (ghi cho CEO): LT 24.17 "lấy ra một nửa rồi **bớt lại** 6 quả vào giỏ" hiểu là bỏ lại 6 quả ⇒ 36 (hiểu "bớt thêm 6 ra" ⇒ 60).
+- Hàm kiểm từ đề đã viết trước cho PCT 1–21 (lô 10A–10C) trong lúc Sonnet soạn; vét cạn bắt 3 lần em tính tay sai (PCT 2 II.2c, VD 22.3, PCT 16 I.7 vị trí chữ số) — máy kiểm thắng tính nhẩm, đúng lý do phải viết hàm kiểm TỪ ĐỀ chứ không chép đáp án bản soạn.
+- Brief soạn phiếu cuối tuần dùng chung: `scratchpad/giai/brief-pct.md` (luật đã chắt từ lô 8: không dòng mô tả sơ đồ bằng chữ, xuống dòng thật, tách biểu thức có tên). Kho từ sách: 704 câu.

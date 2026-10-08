@@ -1,0 +1,98 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-lo9B-20261008",
+ "cau": {
+  "VD 22.2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 3 phần · Số lớn 5 phần · ngoặc tổng 96 · phần = 12, đúng tỉ lệ"
+  },
+  "VD 22.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số lớn 7 phần · Số bé 5 phần · hiệu 58 · phần = 29, đúng tỉ lệ"
+  },
+  "VD 22.4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tuổi mẹ 4 phần · Tuổi con 1 phần · hiệu 27 tuổi · phần = 9, đúng tỉ lệ"
+  },
+  "LT 22.4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số thứ nhất 2 phần · Số thứ hai 3 phần · ngoặc tổng 215 · phần = 43, đúng tỉ lệ"
+  },
+  "LT 22.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Nữ 3 phần · Nam 5 phần · ngoặc tổng 32 học sinh · phần = 4, đúng tỉ lệ"
+  },
+  "LT 22.6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số thứ nhất 9 phần · Số thứ hai 5 phần · hiệu 136 · phần = 34, đúng tỉ lệ"
+  },
+  "LT 22.7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tuổi chị 5 phần · Tuổi em 2 phần · hiệu 6 tuổi · phần = 2, đúng tỉ lệ"
+  },
+  "LT 22.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 3 phần · Số lớn 7 phần · ngoặc tổng 150 · phần = 15, đúng tỉ lệ"
+  },
+  "LT 22.12": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 1 phần · Số lớn 7 phần · ngoặc tổng 216 · phần = 27, đúng tỉ lệ"
+  },
+  "LT 22.13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số chia 1 phần · Số bị chia 5 phần · ngoặc tổng 288 · phần = 48, đúng tỉ lệ"
+  },
+  "LT 22.15": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số thứ nhất 1 phần · Số thứ hai 10 phần · ngoặc tổng 396 · phần = 36, đúng tỉ lệ"
+  },
+  "LT 22.16": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số cần tìm 10 phần · Số sau khi xóa 1 phần · hiệu 2115 · phần = 235, đúng tỉ lệ"
+  },
+  "LT 22.18": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều dài mới 3 phần · Chiều rộng mới 2 phần · ngoặc tổng 60 cm · phần = 12, đúng tỉ lệ"
+  },
+  "LT 22.20": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bạn nam 19 phần · Số bạn nữ 15 phần · hiệu 4 bạn · phần = 1, đúng tỉ lệ"
+  },
+  "VD 23.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số thứ nhất 8 phần · Số thứ hai 7 phần · chỉ minh hoạ tỉ số (đề không cho số liệu, 1 phần = đơn vị vẽ)"
+  },
+  "LT 23.1": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tuổi mẹ 8 phần · Tuổi anh 3 phần · Tuổi em 2 phần · chỉ minh hoạ tỉ số (đề không cho số liệu, 1 phần = đơn vị vẽ)"
+  },
+  "LT 23.2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số thứ nhất 5 phần · Số thứ hai 6 phần · chỉ minh hoạ tỉ số (đề không cho số liệu, 1 phần = đơn vị vẽ)"
+  },
+  "LT 23.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tuổi An 3 phần · Tuổi Bình 2 phần · chỉ minh hoạ tỉ số (đề không cho số liệu, 1 phần = đơn vị vẽ)"
+  },
+  "LT 23.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Bi xanh 3 phần · Bi đỏ 4 phần · ngoặc tổng 140 viên · phần = 20, đúng tỉ lệ"
+  },
+  "PTL 6.4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số thứ hai 9 phần · Số thứ nhất 4 phần · hiệu 990 · phần = 198, đúng tỉ lệ"
+  },
+  "PTL 6.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 4 phần · ngoặc tổng 25 m · phần = 5, đúng tỉ lệ"
+  },
+  "LT 24.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Thùng thứ nhất 1 phần · Thùng thứ hai 2 phần · ngoặc tổng 90 chai · phần = 30, đúng tỉ lệ"
+  },
+  "LT 24.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Hộp thứ nhất 5 phần · Hộp thứ hai 7 phần · ngoặc tổng 24 cái bánh · phần = 2, đúng tỉ lệ"
+  }
+ }
+}

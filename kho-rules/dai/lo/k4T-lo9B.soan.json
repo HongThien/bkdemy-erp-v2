@@ -1,0 +1,814 @@
+[
+ {
+  "ma_nguon": "VD 22.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{5}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số của hai số $a$ và $b$ là $a:b$, viết được dưới dạng phân số $\\dfrac{a}{b}$. Đề hỏi tỉ số của số học sinh **nam** và số học sinh **nữ**, mà đề chỉ cho cả lớp và số học sinh nữ, nên phải tìm số học sinh nam trước.\n\nCác bước: số học sinh nam $=$ số học sinh cả lớp $-$ số học sinh nữ; rồi lập tỉ số nam : nữ và rút gọn phân số.\n\nChú ý: đúng thứ tự đề hỏi (nam trước, nữ sau). Nếu hỏi ngược lại (nữ : nam) thì tỉ số là $\\dfrac{3}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLớp 4A có số học sinh nam là: $32-12=20$ (học sinh)\n\nTỉ số của số học sinh nam và số học sinh nữ của lớp 4A là: $20:12=\\dfrac{20}{12}=\\dfrac{20:4}{12:4}=\\dfrac{5}{3}$\n\nĐáp số: $\\dfrac{5}{3}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 22.2",
+  "gop_y": false,
+  "dap_an": "Số bé: $36$ ; số lớn: $60$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho **tổng** và **tỉ số** của hai số (dạng tổng – tỉ). Tỉ số $\\dfrac{3}{5}$ nghĩa là số bé gồm $3$ phần, số lớn gồm $5$ phần bằng nhau. Vẽ sơ đồ đoạn thẳng rồi tìm giá trị một phần.\n\nCác bước: tổng số phần bằng nhau ($3+5$), giá trị một phần ($96$ chia cho tổng số phần), số bé ($3$ phần), số lớn ($5$ phần hoặc lấy tổng trừ số bé). Thử lại: $36+60=96$ và $36:60=\\dfrac{3}{5}$.\n\nChú ý: $96$ là tổng của **cả hai số** nên chia cho $8$ phần (cả $3$ và $5$), không chia cho $3$ hay $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nGiá trị của một phần là: $96:8=12$\n\nSố bé là: $12\\times 3=36$\n\nSố lớn là: $96-36=60$\n\nĐáp số: Số bé: $36$ ; số lớn: $60$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 3
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 5
+    }
+   ],
+   "tong": "96",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 22.3",
+  "gop_y": false,
+  "dap_an": "Số bé: $145$ ; số lớn: $203$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho **hiệu** và **tỉ số** của hai số (dạng hiệu – tỉ). Tỉ số $\\dfrac{7}{5}$ nghĩa là số lớn gồm $7$ phần, số bé gồm $5$ phần bằng nhau; chênh lệch giữa hai số là $7-5=2$ phần và đúng bằng $58$.\n\nCác bước: hiệu số phần bằng nhau ($7-5$), giá trị một phần ($58$ chia cho hiệu số phần), số bé ($5$ phần), số lớn (số bé cộng $58$). Thử lại: $203-145=58$ và $203:145=\\dfrac{7}{5}$.\n\nChú ý: $58$ là hiệu nên chia cho **hiệu số phần** ($2$), không chia cho tổng số phần ($12$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $7-5=2$ (phần)\n\nGiá trị của một phần là: $58:2=29$\n\nSố bé là: $29\\times 5=145$\n\nSố lớn là: $145+58=203$\n\nĐáp số: Số bé: $145$ ; số lớn: $203$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 29,
+   "hang": [
+    {
+     "nhan": "Số lớn",
+     "phan": 7
+    },
+    {
+     "nhan": "Số bé",
+     "phan": 5
+    }
+   ],
+   "hieu": "58",
+   "dau_hoi": [
+    "Số lớn",
+    "Số bé"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 22.4",
+  "gop_y": false,
+  "dap_an": "Con: $6$ tuổi ; mẹ: $33$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **hiệu số tuổi** của hai mẹ con không bao giờ thay đổi (cùng thêm bao nhiêu tuổi thì hiệu vẫn giữ nguyên). Vì vậy sau $3$ năm nữa mẹ vẫn hơn con $27$ tuổi, và lúc đó tuổi mẹ gấp $4$ lần tuổi con nên có bài toán hiệu – tỉ.\n\nCác bước: vẽ sơ đồ **sau $3$ năm nữa** (tuổi con $1$ phần, tuổi mẹ $4$ phần), tìm tuổi con sau $3$ năm, rồi lùi lại $3$ năm để ra tuổi hiện nay. Thử lại: $33+3=36=4\\times 9$ và $6+3=9$.\n\nChú ý: sơ đồ chỉ đúng ở thời điểm có tỉ số (sau $3$ năm), nên tuổi tìm được lần đầu là tuổi **sau $3$ năm**; phải trừ đi $3$ mới ra tuổi hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của mẹ và con không đổi nên sau $3$ năm nữa mẹ vẫn hơn con $27$ tuổi.\n\nTa có sơ đồ sau $3$ năm nữa:\n\nHiệu số phần bằng nhau là: $4-1=3$ (phần)\n\nTuổi con sau $3$ năm nữa là: $27:3\\times 1=9$ (tuổi)\n\nTuổi con hiện nay là: $9-3=6$ (tuổi)\n\nTuổi mẹ hiện nay là: $6+27=33$ (tuổi)\n\nĐáp số: Con: $6$ tuổi ; mẹ: $33$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau 3 năm nữa",
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 4
+    },
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    }
+   ],
+   "hieu": "27 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số của số bi xanh và số bi đỏ là số bi xanh : số bi đỏ, viết được dưới dạng phân số. Đề cho số bi cả hai màu và số bi xanh nên phải tìm số bi đỏ trước.\n\nCác bước: số bi đỏ $=$ số bi cả hai màu $-$ số bi xanh; rồi lập tỉ số xanh : đỏ và rút gọn.\n\nChú ý: đề hỏi tỉ số của bi xanh và bi đỏ, không phải bi xanh và **tất cả** số bi ($15:50$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố viên bi đỏ là: $50-15=35$ (viên)\n\nTỉ số của số bi xanh và số bi đỏ là: $15:35=\\dfrac{15}{35}=\\dfrac{15:5}{35:5}=\\dfrac{3}{7}$\n\nĐáp số: $\\dfrac{3}{7}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.2",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề hỏi tỉ số của số học sinh nữ và số học sinh **cả lớp**, nên mẫu số là số học sinh cả lớp (nữ cộng nam), không phải số học sinh nam.\n\nCác bước: số học sinh cả lớp $=$ nữ $+$ nam; rồi lập tỉ số nữ : cả lớp và rút gọn.\n\nChú ý: dễ nhầm với tỉ số nữ : nam ($12:16$). Cả lớp có $12+16$ bạn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh cả lớp 4B là: $12+16=28$ (học sinh)\n\nTỉ số của số học sinh nữ và số học sinh cả lớp là: $12:28=\\dfrac{12}{28}=\\dfrac{12:4}{28:4}=\\dfrac{3}{7}$\n\nĐáp số: $\\dfrac{3}{7}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{7}{20}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tuổi của hai mẹ con cùng tăng thêm $5$ khi qua $5$ năm, nên phải tính **tuổi sau $5$ năm** của từng người rồi mới lập tỉ số con : mẹ.\n\nCác bước: tuổi mẹ hiện nay ($9+26$); tuổi con và tuổi mẹ sau $5$ năm; tỉ số con : mẹ rồi rút gọn.\n\nChú ý: không dùng tuổi hiện nay ($9$ và $35$) để lập tỉ số, vì đề hỏi tỉ số **sau $5$ năm nữa**.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTuổi mẹ hiện nay là: $9+26=35$ (tuổi)\n\nSau $5$ năm nữa tuổi con là: $9+5=14$ (tuổi)\n\nSau $5$ năm nữa tuổi mẹ là: $35+5=40$ (tuổi)\n\nTỉ số của tuổi con và tuổi mẹ sau $5$ năm nữa là: $14:40=\\dfrac{14}{40}=\\dfrac{14:2}{40:2}=\\dfrac{7}{20}$\n\nĐáp số: $\\dfrac{7}{20}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.4",
+  "gop_y": false,
+  "dap_an": "Số thứ nhất: $86$ ; số thứ hai: $129$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dạng tổng – tỉ. Tỉ số $\\dfrac{2}{3}$ nghĩa là số thứ nhất gồm $2$ phần, số thứ hai gồm $3$ phần bằng nhau.\n\nCác bước: tổng số phần ($2+3$), giá trị một phần ($215$ chia cho tổng số phần), số thứ nhất ($2$ phần), số thứ hai ($3$ phần hoặc lấy tổng trừ số thứ nhất). Thử lại: $86+129=215$ và $86:129=\\dfrac{2}{3}$.\n\nChú ý: $215$ là tổng của cả hai số, nên chia cho $5$ phần chứ không chia cho $2$ hay $3$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nGiá trị của một phần là: $215:5=43$\n\nSố thứ nhất là: $43\\times 2=86$\n\nSố thứ hai là: $215-86=129$\n\nĐáp số: Số thứ nhất: $86$ ; số thứ hai: $129$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 43,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 2
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 3
+    }
+   ],
+   "tong": "215",
+   "dau_hoi": [
+    "Số thứ nhất",
+    "Số thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.5",
+  "gop_y": false,
+  "dap_an": "$12$ học sinh nữ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"số học sinh nữ bằng $\\dfrac{3}{5}$ số học sinh nam\" nghĩa là nếu số học sinh nam chia thành $5$ phần bằng nhau thì số học sinh nữ là $3$ phần như thế. Cả lớp $32$ học sinh là tổng của $3$ phần và $5$ phần (dạng tổng – tỉ).\n\nCác bước: tổng số phần ($3+5$), giá trị một phần ($32:8$), số học sinh nữ ($3$ phần). Thử lại: $12+20=32$ và $12:20=\\dfrac{3}{5}$.\n\nChú ý: $\\dfrac{3}{5}$ là tỉ số của nữ so với **nam**, không phải so với cả lớp; vì vậy số nữ không phải là $32\\times \\dfrac{3}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nSố học sinh ứng với một phần là: $32:8=4$ (học sinh)\n\nLớp đó có số học sinh nữ là: $4\\times 3=12$ (học sinh)\n\nĐáp số: $12$ học sinh nữ",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Nữ",
+     "phan": 3
+    },
+    {
+     "nhan": "Nam",
+     "phan": 5
+    }
+   ],
+   "tong": "32 học sinh",
+   "dau_hoi": [
+    "Nữ"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.6",
+  "gop_y": false,
+  "dap_an": "Số thứ nhất: $306$ ; số thứ hai: $170$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dạng hiệu – tỉ. Tỉ số $\\dfrac{9}{5}$ nghĩa là số thứ nhất gồm $9$ phần, số thứ hai gồm $5$ phần bằng nhau; chênh lệch $9-5=4$ phần đúng bằng $136$.\n\nCác bước: hiệu số phần ($9-5$), giá trị một phần ($136:4$), số thứ hai ($5$ phần), số thứ nhất (số thứ hai cộng $136$). Thử lại: $306-170=136$ và $306:170=\\dfrac{9}{5}$.\n\nChú ý: $136$ là hiệu nên chia cho hiệu số phần ($4$), không chia cho tổng số phần ($14$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $9-5=4$ (phần)\n\nGiá trị của một phần là: $136:4=34$\n\nSố thứ hai là: $34\\times 5=170$\n\nSố thứ nhất là: $170+136=306$\n\nĐáp số: Số thứ nhất: $306$ ; số thứ hai: $170$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 34,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 9
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 5
+    }
+   ],
+   "hieu": "136",
+   "dau_hoi": [
+    "Số thứ nhất",
+    "Số thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.7",
+  "gop_y": false,
+  "dap_an": "Em: $4$ tuổi ; chị: $10$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho **hiệu** ($6$ tuổi) và **tỉ số** (tuổi em bằng $\\dfrac{2}{5}$ tuổi chị): tuổi em gồm $2$ phần, tuổi chị gồm $5$ phần bằng nhau. Dạng hiệu – tỉ.\n\nCác bước: hiệu số phần ($5-2$), giá trị một phần ($6$ chia cho hiệu số phần), tuổi em ($2$ phần), tuổi chị (tuổi em cộng $6$). Thử lại: $10-4=6$ và $4:10=\\dfrac{2}{5}$.\n\nChú ý: tuổi em là số phần **nhỏ** ($2$), tuổi chị là số phần **lớn** ($5$); đừng đảo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $5-2=3$ (phần)\n\nGiá trị của một phần là: $6:3=2$ (tuổi)\n\nTuổi em hiện nay là: $2\\times 2=4$ (tuổi)\n\nTuổi chị hiện nay là: $4+6=10$ (tuổi)\n\nĐáp số: Em: $4$ tuổi ; chị: $10$ tuổi",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Tuổi chị",
+     "phan": 5
+    },
+    {
+     "nhan": "Tuổi em",
+     "phan": 2
+    }
+   ],
+   "hieu": "6 tuổi",
+   "dau_hoi": [
+    "Tuổi chị",
+    "Tuổi em"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.8",
+  "gop_y": false,
+  "dap_an": "Số bé: $45$ ; số lớn: $105$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **trung bình cộng** của hai số là $75$ nên **tổng** hai số bằng $75\\times 2$. Rồi đây là bài tổng – tỉ: số bé bằng $\\dfrac{3}{7}$ số lớn nên số bé gồm $3$ phần, số lớn gồm $7$ phần bằng nhau.\n\nCác bước: tìm tổng ($75\\times 2$), tổng số phần ($3+7$), giá trị một phần, số bé, số lớn. Thử lại: $(45+105):2=75$ và $45:105=\\dfrac{3}{7}$.\n\nChú ý: $75$ là trung bình cộng chứ không phải tổng; quên nhân $2$ là sai ngay bước đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $75\\times 2=150$\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+7=10$ (phần)\n\nGiá trị của một phần là: $150:10=15$\n\nSố bé là: $15\\times 3=45$\n\nSố lớn là: $150-45=105$\n\nĐáp số: Số bé: $45$ ; số lớn: $105$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 15,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 3
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 7
+    }
+   ],
+   "tong": "150",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.12",
+  "gop_y": false,
+  "dap_an": "Số bé: $27$ ; số lớn: $189$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"gấp số bé lên bảy lần thì được số lớn\" nghĩa là số lớn gấp $7$ lần số bé, tức là tỉ số của số bé và số lớn là $\\dfrac{1}{7}$: số bé gồm $1$ phần, số lớn gồm $7$ phần bằng nhau. Dạng tổng – tỉ.\n\nCác bước: tổng số phần ($1+7$), giá trị một phần ($216$ chia cho tổng số phần), số bé ($1$ phần), số lớn ($7$ phần). Thử lại: $27+189=216$ và $189:27=7$.\n\nChú ý: một phần chính là số bé, nên số lớn là số bé nhân $7$ chứ không phải cộng $7$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $1+7=8$ (phần)\n\nSố bé là: $216:8\\times 1=27$\n\nSố lớn là: $216-27=189$\n\nĐáp số: Số bé: $27$ ; số lớn: $189$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 27,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 7
+    }
+   ],
+   "tong": "216",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.13",
+  "gop_y": false,
+  "dap_an": "Số bị chia: $240$ ; số chia: $48$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trong phép chia hết, số bị chia $=$ thương $\\times$ số chia. Thương bằng $5$ nên số bị chia gấp $5$ lần số chia: số chia gồm $1$ phần, số bị chia gồm $5$ phần bằng nhau. Dạng tổng – tỉ.\n\nCác bước: tổng số phần ($1+5$), giá trị một phần chính là số chia ($288$ chia cho tổng số phần), số bị chia ($5$ phần). Thử lại: $240+48=288$ và $240:48=5$.\n\nChú ý: thương $5$ là tỉ số của số bị chia so với số chia (số bị chia gấp $5$ lần), không phải tỉ số của số chia so với số bị chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì thương của phép chia là $5$ nên số bị chia gấp $5$ lần số chia.\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $1+5=6$ (phần)\n\nSố chia là: $288:6\\times 1=48$\n\nSố bị chia là: $288-48=240$\n\nĐáp số: Số bị chia: $240$ ; số chia: $48$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Số chia",
+     "phan": 1
+    },
+    {
+     "nhan": "Số bị chia",
+     "phan": 5
+    }
+   ],
+   "tong": "288",
+   "dau_hoi": [
+    "Số chia",
+    "Số bị chia"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.15",
+  "gop_y": false,
+  "dap_an": "Số thứ nhất: $36$ ; số thứ hai: $360$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết thêm chữ số $0$ vào bên phải một số thì số đó gấp lên $10$ lần (ví dụ $36$ thành $360$). Vậy số thứ hai gấp $10$ lần số thứ nhất: số thứ nhất gồm $1$ phần, số thứ hai gồm $10$ phần bằng nhau. Dạng tổng – tỉ.\n\nCác bước: tổng số phần ($1+10$), giá trị một phần chính là số thứ nhất ($396$ chia cho tổng số phần), số thứ hai ($10$ phần). Thử lại: $36+360=396$.\n\nChú ý: số thứ hai là số thứ nhất **viết thêm** chữ số $0$ chứ không phải cộng thêm $0$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nViết thêm chữ số $0$ vào bên phải số thứ nhất thì được số thứ hai nên số thứ hai gấp $10$ lần số thứ nhất.\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $1+10=11$ (phần)\n\nSố thứ nhất là: $396:11\\times 1=36$\n\nSố thứ hai là: $396-36=360$\n\nĐáp số: Số thứ nhất: $36$ ; số thứ hai: $360$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 36,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 1
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 10
+    }
+   ],
+   "tong": "396",
+   "dau_hoi": [
+    "Số thứ nhất",
+    "Số thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.16",
+  "gop_y": false,
+  "dap_an": "$2350$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: xóa chữ số $0$ ở tận cùng thì số đó giảm đi $10$ lần (ví dụ $2350$ thành $235$). Vậy số cần tìm gấp $10$ lần số mới: số mới gồm $1$ phần, số cần tìm gồm $10$ phần bằng nhau, và chênh lệch $10-1=9$ phần đúng bằng $2115$. Dạng hiệu – tỉ.\n\nCác bước: hiệu số phần ($10-1$), giá trị một phần chính là số mới ($2115$ chia cho hiệu số phần), số cần tìm ($10$ phần). Thử lại: $2350-235=2115$.\n\nChú ý: $2115$ là hiệu của hai số nên chia cho hiệu số phần ($9$), không chia cho tổng số phần ($11$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nXóa chữ số $0$ ở tận cùng thì số đó giảm đi $10$ lần nên số cần tìm gấp $10$ lần số sau khi xóa.\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $10-1=9$ (phần)\n\nSố sau khi xóa chữ số $0$ là: $2115:9\\times 1=235$\n\nSố cần tìm là: $235\\times 10=2350$\n\nĐáp số: $2350$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 235,
+   "hang": [
+    {
+     "nhan": "Số cần tìm",
+     "phan": 10
+    },
+    {
+     "nhan": "Số sau khi xóa",
+     "phan": 1
+    }
+   ],
+   "hieu": "2115",
+   "dau_hoi": [
+    "Số cần tìm"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 22.18",
+  "gop_y": false,
+  "dap_an": "Chiều dài: $35$ cm ; chiều rộng: $25$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: khi tăng chiều dài thêm $1$ cm và bớt chiều rộng đi $1$ cm thì **tổng** chiều dài và chiều rộng (tức nửa chu vi) **không đổi**, vẫn bằng $120:2=60$ cm. \"Gấp rưỡi\" nghĩa là gấp $1+\\dfrac{1}{2}=\\dfrac{3}{2}$ lần: ở hình mới chiều dài gồm $3$ phần, chiều rộng gồm $2$ phần bằng nhau. Dạng tổng – tỉ trên hình **mới**.\n\nCác bước: nửa chu vi; tổng số phần ($3+2$); chiều dài và chiều rộng của hình mới; rồi trả về hình ban đầu (chiều dài mới trừ $1$, chiều rộng mới cộng $1$). Thử lại: $(35+25)\\times 2=120$; hình mới $36$ và $24$ có $36:24=\\dfrac{3}{2}$.\n\nChú ý: số tìm được từ sơ đồ là kích thước hình **mới**; đề hỏi hình **ban đầu** nên phải đổi lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi của hình chữ nhật ban đầu là: $120:2=60$ (cm)\n\nHình chữ nhật mới có nửa chu vi không đổi, vẫn là $60$ cm, và chiều dài gấp rưỡi chiều rộng.\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+2=5$ (phần)\n\nChiều rộng của hình chữ nhật mới là: $60:5\\times 2=24$ (cm)\n\nChiều dài của hình chữ nhật mới là: $60-24=36$ (cm)\n\nChiều dài của hình chữ nhật ban đầu là: $36-1=35$ (cm)\n\nChiều rộng của hình chữ nhật ban đầu là: $24+1=25$ (cm)\n\nĐáp số: Chiều dài: $35$ cm ; chiều rộng: $25$ cm",
+  "so_do_mo_ta": {
+   "tieu_de": "Hình chữ nhật mới",
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Chiều dài mới",
+     "phan": 3
+    },
+    {
+     "nhan": "Chiều rộng mới",
+     "phan": 2
+    }
+   ],
+   "tong": "60 cm",
+   "dau_hoi": [
+    "Chiều dài mới",
+    "Chiều rộng mới"
+   ]
+  },
+  "ghi_chu_nghi": "Đề in \"chu vì\" (thiếu dấu), hiểu là chu vi; \"gấp rưỡi\" hiểu là gấp $1,5$ lần ($\\dfrac{3}{2}$). Không ảnh hưởng kết quả."
+ },
+ {
+  "ma_nguon": "LT 22.20",
+  "gop_y": false,
+  "dap_an": "Số bạn nam: $17$ ; số bạn nữ: $13$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cuối học kỳ I **cả nam lẫn nữ** cùng thêm $2$ bạn nên **hiệu** số nam và số nữ không đổi, vẫn là $4$ bạn. Lúc sau số nữ bằng $\\dfrac{15}{19}$ số nam: số nữ gồm $15$ phần, số nam gồm $19$ phần bằng nhau; chênh lệch $19-15=4$ phần đúng bằng $4$ bạn. Dạng hiệu – tỉ, vẽ sơ đồ ở thời điểm **lúc sau**.\n\nCác bước: hiệu số phần, giá trị một phần, số nam và số nữ lúc sau, rồi trừ đi $2$ bạn mỗi loại để ra số lúc đầu năm. Thử lại: $17-13=4$; sau khi thêm: $19$ nam, $15$ nữ và $15:19=\\dfrac{15}{19}$.\n\nChú ý: đề hỏi số bạn **đầu năm học**, không phải số bạn lúc sau; đừng quên trừ đi $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCả nam và nữ cùng thêm $2$ bạn nên hiệu số nam và số nữ không đổi, lúc sau số nam vẫn nhiều hơn số nữ $4$ bạn.\n\nTa có sơ đồ lúc sau:\n\nHiệu số phần bằng nhau là: $19-15=4$ (phần)\n\nGiá trị của một phần là: $4:4=1$ (bạn)\n\nLúc sau số bạn nam là: $1\\times 19=19$ (bạn)\n\nLúc sau số bạn nữ là: $1\\times 15=15$ (bạn)\n\nĐầu năm học số bạn nam là: $19-2=17$ (bạn)\n\nĐầu năm học số bạn nữ là: $15-2=13$ (bạn)\n\nĐáp số: Nam: $17$ bạn ; nữ: $13$ bạn",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc sau (thêm 2 bạn nam, 2 bạn nữ)",
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Số bạn nam",
+     "phan": 19
+    },
+    {
+     "nhan": "Số bạn nữ",
+     "phan": 15
+    }
+   ],
+   "hieu": "4 bạn",
+   "dau_hoi": [
+    "Số bạn nam",
+    "Số bạn nữ"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 23.1",
+  "gop_y": false,
+  "dap_an": "$40$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"$\\dfrac{1}{3}$ số trang sách\" là chia quyển sách thành $3$ phần bằng nhau, lấy $1$ phần (tức chia cho $3$). Ngày thứ hai lại lấy $\\dfrac{2}{3}$ của số trang **còn lại**, không phải của cả quyển sách.\n\nCác bước: trang đọc ngày thứ nhất; trang còn lại sau ngày thứ nhất; trang đọc ngày thứ hai ($\\dfrac{2}{3}$ của số trang còn lại); ngày thứ ba đọc phần còn lại của cả quyển. Thử lại: $60+80+40=180$.\n\nChú ý: \"$\\dfrac{2}{3}$ số trang còn lại\" lấy trên $120$ trang, không lấy trên $180$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNgày thứ nhất An đọc được số trang sách là: $180:3=60$ (trang)\n\nSố trang sách còn lại sau ngày thứ nhất là: $180-60=120$ (trang)\n\nNgày thứ hai An đọc được số trang sách là: $120\\times\\dfrac{2}{3}=80$ (trang)\n\nNgày thứ ba An đọc được số trang sách là: $180-60-80=40$ (trang)\n\nĐáp số: $40$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 23.2",
+  "gop_y": false,
+  "dap_an": "$1200$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho tỉ lệ của hai đợt đầu so với **kế hoạch** (cả ba đợt), còn đợt ba cho bằng số cây cụ thể ($320$ cây). Coi cả kế hoạch là $1$ (đơn vị): đợt ba chiếm phần còn lại sau khi trừ đi hai đợt đầu. Biết $320$ cây ứng với bao nhiêu phần thì tìm được cả kế hoạch.\n\nCác bước: hai đợt đầu chiếm $\\dfrac{1}{3}+\\dfrac{2}{5}$ (quy đồng mẫu số); đợt ba chiếm $1$ trừ phân số đó; $320$ cây ứng với phân số đó nên tổng số cây là $320$ chia cho phần ứng với nó (chia cho tử, nhân với mẫu). Thử lại: $1200\\times\\dfrac{1}{3}=400$; $1200\\times\\dfrac{2}{5}=480$; $400+480+320=1200$.\n\nChú ý: \"tìm một số khi biết giá trị của phân số của số đó\" thì làm phép **chia** (chia cho tử rồi nhân với mẫu), không nhân $320$ với phân số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai đợt đầu tổ trồng được số phần tổng số cây là: $\\dfrac{1}{3}+\\dfrac{2}{5}=\\dfrac{5}{15}+\\dfrac{6}{15}=\\dfrac{11}{15}$ (tổng số cây)\n\n$320$ cây chiếm số phần tổng số cây là: $1-\\dfrac{11}{15}=\\dfrac{4}{15}$ (tổng số cây)\n\nCả ba đợt tổ đó trồng được số cây là: $320:4\\times 15=1200$ (cây)\n\nĐáp số: $1200$ cây",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 23.3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{8}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ta so sánh hai số qua **cùng một số phần**. Quy đồng tử số để hai phân số có tử bằng nhau: $\\dfrac{1}{4}=\\dfrac{2}{8}$. Khi đó $\\dfrac{2}{8}$ số thứ nhất bằng $\\dfrac{2}{7}$ số thứ hai, nghĩa là: chia số thứ nhất thành $8$ phần bằng nhau, chia số thứ hai thành $7$ phần bằng nhau thì $2$ phần của số thứ nhất bằng $2$ phần của số thứ hai, nên **mỗi phần của hai số bằng nhau**.\n\nVậy số thứ nhất gồm $8$ phần, số thứ hai gồm $7$ phần như thế; tỉ số của số thứ nhất và số thứ hai là $\\dfrac{8}{7}$.\n\nChú ý: mẫu số của phân số cho biết số phần chia ra. Số thứ nhất chia $8$ phần (mẫu của $\\dfrac{2}{8}$), số thứ hai chia $7$ phần (mẫu của $\\dfrac{2}{7}$); đừng lấy tỉ số $\\dfrac{1}{4}:\\dfrac{2}{7}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $\\dfrac{1}{4}=\\dfrac{1\\times 2}{4\\times 2}=\\dfrac{2}{8}$ nên $\\dfrac{2}{8}$ số thứ nhất bằng $\\dfrac{2}{7}$ số thứ hai.\n\nTa có sơ đồ:\n\nSố thứ nhất gồm $8$ phần, số thứ hai gồm $7$ phần bằng nhau như thế.\n\nTỉ số của số thứ nhất và số thứ hai là $\\dfrac{8}{7}$\n\nĐáp số: $\\dfrac{8}{7}$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 8
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 7
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{2}{3}$ tuổi anh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tuổi em và tuổi anh đều cho theo **tuổi mẹ**, nên lấy tuổi mẹ làm chuẩn. Quy đồng mẫu số để hai phân số có cùng mẫu: $\\dfrac{1}{4}=\\dfrac{2}{8}$. Chia tuổi mẹ thành $8$ phần bằng nhau thì tuổi em là $2$ phần, tuổi anh là $3$ phần.\n\nVậy tuổi em bằng $\\dfrac{2}{3}$ tuổi anh.\n\nChú ý: đề hỏi tuổi em bằng mấy phần tuổi **anh** (lấy tuổi anh làm chuẩn), không phải bằng mấy phần tuổi mẹ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có $\\dfrac{1}{4}=\\dfrac{1\\times 2}{4\\times 2}=\\dfrac{2}{8}$.\n\nTa có sơ đồ:\n\nChia tuổi mẹ thành $8$ phần bằng nhau thì tuổi em là $2$ phần, tuổi anh là $3$ phần.\n\nTuổi em bằng số phần tuổi anh là: $2:3=\\dfrac{2}{3}$\n\nĐáp số: $\\dfrac{2}{3}$ tuổi anh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 8
+    },
+    {
+     "nhan": "Tuổi anh",
+     "phan": 3
+    },
+    {
+     "nhan": "Tuổi em",
+     "phan": 2
+    }
+   ],
+   "dau_hoi": [
+    "Tuổi em"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.2",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{5}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: làm giống VD 23.3, quy đồng **tử số** của hai phân số: $\\dfrac{1}{3}=\\dfrac{2}{6}$. Khi đó $\\dfrac{2}{5}$ số thứ nhất bằng $\\dfrac{2}{6}$ số thứ hai, nghĩa là $2$ phần của số thứ nhất (chia $5$ phần) bằng $2$ phần của số thứ hai (chia $6$ phần), nên mỗi phần của hai số bằng nhau.\n\nVậy số thứ nhất gồm $5$ phần, số thứ hai gồm $6$ phần như thế; tỉ số của số thứ nhất và số thứ hai là $\\dfrac{5}{6}$.\n\nChú ý: mẫu số cho biết số phần chia ra. Số thứ nhất chia $5$ phần, số thứ hai chia $6$ phần; đừng nhầm thành $\\dfrac{6}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có $\\dfrac{1}{3}=\\dfrac{1\\times 2}{3\\times 2}=\\dfrac{2}{6}$ nên $\\dfrac{2}{5}$ số thứ nhất bằng $\\dfrac{2}{6}$ số thứ hai.\n\nTa có sơ đồ:\n\nSố thứ nhất gồm $5$ phần, số thứ hai gồm $6$ phần bằng nhau như thế.\n\nTỉ số của số thứ nhất và số thứ hai là $\\dfrac{5}{6}$\n\nĐáp số: $\\dfrac{5}{6}$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 5
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 6
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"hai lần tuổi An bằng ba lần tuổi Bình\". Chọn số phần sao cho cả \"hai lần\" lẫn \"ba lần\" đều ra số phần nguyên: lấy $2\\times 3=6$ phần (số $6$ chia hết cho cả $2$ và $3$). Hai lần tuổi An là $6$ phần nên tuổi An là $3$ phần; ba lần tuổi Bình cũng là $6$ phần nên tuổi Bình là $2$ phần.\n\nVậy tỉ số tuổi của An và Bình là $\\dfrac{3}{2}$.\n\nChú ý: người có \"số lần\" **nhỏ hơn** thì tuổi **lớn hơn**: An chỉ cần $2$ lần mà bằng $3$ lần của Bình, nên An nhiều tuổi hơn Bình. Vì vậy tỉ số An : Bình lớn hơn $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi hai lần tuổi An và ba lần tuổi Bình cùng bằng $6$ phần.\n\nTuổi An là: $6:2=3$ (phần)\n\nTuổi Bình là: $6:3=2$ (phần)\n\nTa có sơ đồ:\n\nTỉ số tuổi của An và Bình là: $3:2=\\dfrac{3}{2}$\n\nĐáp số: $\\dfrac{3}{2}$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Tuổi An",
+     "phan": 3
+    },
+    {
+     "nhan": "Tuổi Bình",
+     "phan": 2
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.5",
+  "gop_y": false,
+  "dap_an": "Bi đỏ: $80$ viên ; bi xanh: $60$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"ba lần số bi đỏ bằng bốn lần số bi xanh\". Chọn $12$ phần ($3\\times 4=12$, chia hết cho cả $3$ và $4$): ba lần số bi đỏ là $12$ phần nên số bi đỏ là $4$ phần; bốn lần số bi xanh là $12$ phần nên số bi xanh là $3$ phần. Rồi đây là bài tổng – tỉ với tổng là $140$ viên.\n\nCác bước: tổng số phần ($3+4$), giá trị một phần ($140$ chia cho tổng số phần), số bi xanh ($3$ phần), số bi đỏ ($4$ phần). Thử lại: $3\\times 80=240=4\\times 60$ và $60+80=140$.\n\nChú ý: màu có \"số lần\" **nhỏ hơn** (ba lần – bi đỏ) thì số bi **nhiều hơn** (đỏ $4$ phần, xanh $3$ phần). Đừng ghi ngược.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi ba lần số bi đỏ và bốn lần số bi xanh cùng bằng $12$ phần.\n\nSố bi đỏ là: $12:3=4$ (phần)\n\nSố bi xanh là: $12:4=3$ (phần)\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $3+4=7$ (phần)\n\nGiá trị của một phần là: $140:7=20$ (viên)\n\nSố viên bi xanh là: $20\\times 3=60$ (viên)\n\nSố viên bi đỏ là: $140-60=80$ (viên)\n\nĐáp số: Bi đỏ: $80$ viên ; bi xanh: $60$ viên",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 20,
+   "hang": [
+    {
+     "nhan": "Bi xanh",
+     "phan": 3
+    },
+    {
+     "nhan": "Bi đỏ",
+     "phan": 4
+    }
+   ],
+   "tong": "140 viên",
+   "dau_hoi": [
+    "Bi xanh",
+    "Bi đỏ"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.6",
+  "gop_y": false,
+  "dap_an": "$45000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả hai phân số ($\\dfrac{3}{10}$ và $\\dfrac{1}{4}$) đều là phần của **số tiền ban đầu** ($100000$ đồng). Tìm số tiền mua vở và mua sách rồi trừ khỏi số tiền ban đầu.\n\nCác bước: tiền mua vở; tiền mua sách; tiền còn lại $=$ số tiền ban đầu $-$ hai khoản đã tiêu. (Cách khác: số phần còn lại là $1-\\dfrac{3}{10}-\\dfrac{1}{4}=\\dfrac{9}{20}$ của $100000$ đồng, cũng ra $45000$ đồng.)\n\nChú ý: cả hai khoản đều tính trên $100000$ đồng, không phải tính khoản sau trên số tiền còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChi mua vở hết số tiền là: $100000\\times\\dfrac{3}{10}=30000$ (đồng)\n\nChi mua sách hết số tiền là: $100000\\times\\dfrac{1}{4}=25000$ (đồng)\n\nChi còn lại số tiền là: $100000-30000-25000=45000$ (đồng)\n\nĐáp số: $45000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.7",
+  "gop_y": false,
+  "dap_an": "Xe thứ nhất: $560$ tấn ; xe thứ hai: $504$ tấn ; xe thứ ba: $336$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: xe thứ nhất chở $\\dfrac{2}{5}$ của **tổng** ($1400$ tấn); xe thứ hai chở $\\dfrac{3}{5}$ của số xi măng **còn lại** sau xe thứ nhất (không phải của tổng); xe thứ ba chở nốt phần còn lại sau hai xe.\n\nCác bước: số tấn của xe thứ nhất; số xi măng còn lại; số tấn của xe thứ hai ($\\dfrac{3}{5}$ của số còn lại); số tấn của xe thứ ba (số còn lại trừ xe thứ hai). Thử lại: $560+504+336=1400$.\n\nChú ý: mỗi phân số phải nhân với đúng **số làm chuẩn** của nó: $\\dfrac{2}{5}$ nhân với $1400$, còn $\\dfrac{3}{5}$ nhân với $840$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nXe thứ nhất chở được số tấn xi-măng là: $1400\\times\\dfrac{2}{5}=560$ (tấn)\n\nSố tấn xi-măng còn lại sau xe thứ nhất là: $1400-560=840$ (tấn)\n\nXe thứ hai chở được số tấn xi-măng là: $840\\times\\dfrac{3}{5}=504$ (tấn)\n\nXe thứ ba chở được số tấn xi-măng là: $840-504=336$ (tấn)\n\nĐáp số: Xe thứ nhất: $560$ tấn ; xe thứ hai: $504$ tấn ; xe thứ ba: $336$ tấn",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.8",
+  "gop_y": false,
+  "dap_an": "$5$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số bạn thi cờ vua cho theo số bạn thi **bóng bàn** (không theo cả lớp). Phải tìm số bạn bóng bàn trước, rồi mới tìm cờ vua, cuối cùng lấy cả lớp trừ đi hai môn đó ra số bạn thi bóng đá.\n\nCác bước: số bạn bóng bàn ($\\dfrac{1}{3}$ của $30$); số bạn cờ vua ($\\dfrac{3}{2}$ của số bạn bóng bàn); số bạn bóng đá là $30$ trừ đi số bạn bóng bàn và số bạn cờ vua. Thử lại: $10+15+5=30$.\n\nChú ý: $\\dfrac{3}{2}$ lớn hơn $1$ nên số bạn cờ vua **nhiều hơn** số bạn bóng bàn. Vì mỗi bạn chỉ thi một môn nên ba nhóm cộng lại đúng bằng $30$ bạn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn thi đấu bóng bàn là: $30\\times\\dfrac{1}{3}=10$ (bạn)\n\nSố bạn thi đấu cờ vua là: $10\\times\\dfrac{3}{2}=15$ (bạn)\n\nSố bạn thi đấu bóng đá là: $30-10-15=5$ (bạn)\n\nĐáp số: $5$ bạn",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.9",
+  "gop_y": false,
+  "dap_an": "Thẻ vàng: $20$ tấm ; thẻ xanh: $15$ tấm ; thẻ đỏ: $10$ tấm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số thẻ vàng cho theo **tổng số thẻ** ($\\dfrac{4}{9}$ của $45$); số thẻ xanh cho theo số thẻ **vàng** ($\\dfrac{3}{4}$ của số thẻ vàng); thẻ đỏ là phần còn lại.\n\nCác bước: số thẻ vàng; số thẻ xanh; số thẻ đỏ là $45$ trừ đi số thẻ vàng và số thẻ xanh. Thử lại: $20+15+10=45$.\n\nChú ý: $\\dfrac{3}{4}$ nhân với số thẻ **vàng** ($20$), không nhân với $45$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tấm thẻ vàng là: $45\\times\\dfrac{4}{9}=20$ (tấm)\n\nSố tấm thẻ xanh là: $20\\times\\dfrac{3}{4}=15$ (tấm)\n\nSố tấm thẻ đỏ là: $45-20-15=10$ (tấm)\n\nĐáp số: Thẻ vàng: $20$ tấm ; thẻ xanh: $15$ tấm ; thẻ đỏ: $10$ tấm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.11",
+  "gop_y": false,
+  "dap_an": "$35$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở mỗi loại, đề cho **giá trị của một phân số** của số học sinh loại đó, nên tìm số học sinh loại đó bằng phép **chia** (chia cho tử, nhân với mẫu): ví dụ $\\dfrac{2}{5}$ số học sinh giỏi là $4$ bạn thì $\\dfrac{1}{5}$ số đó là $4:2=2$ bạn, nên cả số học sinh giỏi là $2\\times 5$.\n\nLàm tương tự cho học sinh khá và học sinh trung bình, rồi cộng ba loại. Thử lại: $\\dfrac{2}{5}\\times 10=4$; $\\dfrac{3}{4}\\times 20=15$; $\\dfrac{1}{5}\\times 5=1$.\n\nChú ý: ba phân số là của **ba số khác nhau** (giỏi, khá, trung bình), không phải của cả lớp; phải tìm từng số rồi mới cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh giỏi là: $4:2\\times 5=10$ (bạn)\n\nSố học sinh khá là: $15:3\\times 4=20$ (bạn)\n\nSố học sinh trung bình là: $1:1\\times 5=5$ (bạn)\n\nLớp 4A có số học sinh là: $10+20+5=35$ (học sinh)\n\nĐáp số: $35$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.12",
+  "gop_y": false,
+  "dap_an": "$165$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai phân số ($\\dfrac{4}{15}$ và $\\dfrac{2}{5}$) đều là phần của **cả quãng đường AB**. Cộng chúng lại được phần quãng đường đi trong hai giờ đầu; phần còn lại ($1$ trừ phân số đó) ứng với $55$ km của giờ thứ ba, từ đó tìm cả quãng đường bằng phép chia.\n\nCác bước: quy đồng rồi cộng ($\\dfrac{4}{15}+\\dfrac{6}{15}$), rút gọn; tìm phần của giờ thứ ba; rồi tìm cả quãng đường. Thử lại: $165\\times\\dfrac{4}{15}=44$; $165\\times\\dfrac{2}{5}=66$; $44+66+55=165$.\n\nChú ý: $55$ km ứng với phân số **còn lại** (không phải ứng với tổng $\\dfrac{2}{3}$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai giờ đầu ô tô đi được số phần quãng đường AB là: $\\dfrac{4}{15}+\\dfrac{2}{5}=\\dfrac{4}{15}+\\dfrac{6}{15}=\\dfrac{10}{15}=\\dfrac{2}{3}$ (quãng đường AB)\n\n$55$ km chiếm số phần quãng đường AB là: $1-\\dfrac{2}{3}=\\dfrac{1}{3}$ (quãng đường AB)\n\nQuãng đường AB dài là: $55\\times 3=165$ (km)\n\nĐáp số: $165$ km",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.14",
+  "gop_y": false,
+  "dap_an": "$175$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ngày thứ hai bán $\\dfrac{1}{4}$ của số vải **còn lại** sau ngày thứ nhất, nên sau ngày thứ hai vẫn còn $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ số vải còn lại đó. Phần này chính là $75$ m bán nốt ở ngày thứ ba. Đi **ngược** từ cuối lên đầu.\n\nCác bước: tìm số vải còn lại sau ngày thứ nhất (biết $\\dfrac{3}{4}$ của nó là $75$ m); số vải còn lại này chiếm $1-\\dfrac{3}{7}=\\dfrac{4}{7}$ tổng số vải, từ đó tìm tổng. Thử lại: $175\\times\\dfrac{3}{7}=75$; $175-75=100$; $100\\times\\dfrac{1}{4}=25$; $100-25=75$.\n\nChú ý: đề hỏi \"số mét vải cửa hàng đã bán\" là bán hết cả ba ngày, nghĩa là tổng số vải lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau ngày thứ nhất, số vải còn lại chiếm số phần tổng số vải là: $1-\\dfrac{3}{7}=\\dfrac{4}{7}$ (tổng số vải)\n\nSố vải còn lại sau ngày thứ hai chiếm số phần số vải còn lại sau ngày thứ nhất là: $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ (số vải còn lại sau ngày thứ nhất)\n\nSố mét vải còn lại sau ngày thứ nhất là: $75:3\\times 4=100$ (m)\n\nSố mét vải cửa hàng đã bán là: $100:4\\times 7=175$ (m)\n\nĐáp số: $175$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 23.15",
+  "gop_y": false,
+  "dap_an": "$200$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ngày thứ hai Hà đọc $\\dfrac{3}{5}$ của số trang **còn lại** sau ngày thứ nhất, nên sau ngày thứ hai còn $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ số trang còn lại đó, và đó chính là $60$ trang cuối. Đi **ngược** từ cuối lên đầu.\n\nCác bước: tìm số trang còn lại sau ngày thứ nhất (biết $\\dfrac{2}{5}$ của nó là $60$ trang); số trang này chiếm $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ cả cuốn sách, từ đó tìm số trang cả cuốn. Thử lại: $200\\times\\dfrac{1}{4}=50$; $200-50=150$; $150\\times\\dfrac{3}{5}=90$; $150-90=60$.\n\nChú ý: mỗi lần tìm \"cả số\" phải chia cho tử và nhân với mẫu của **phân số ứng với số đã biết**.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau ngày thứ nhất, số trang còn lại chiếm số phần cả cuốn sách là: $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ (cuốn sách)\n\nSố trang bạn đọc nốt chiếm số phần số trang còn lại sau ngày thứ nhất là: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (số trang còn lại)\n\nSố trang còn lại sau ngày thứ nhất là: $60:2\\times 5=150$ (trang)\n\nCuốn sách đó có số trang là: $150:3\\times 4=200$ (trang)\n\nĐáp số: $200$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 6.1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số của số câu **sai** và số câu **đúng**. Đề cho tổng số câu và số câu đúng nên phải tìm số câu sai trước.\n\nCác bước: số câu sai $=$ tổng số câu $-$ số câu đúng; rồi lập tỉ số sai : đúng và rút gọn.\n\nChú ý: mẫu số là số câu **đúng** ($45$), không phải tổng số câu ($50$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHà trả lời sai số câu là: $50-45=5$ (câu)\n\nTỉ số của số câu trả lời sai và số câu trả lời đúng là: $5:45=\\dfrac{5}{45}=\\dfrac{5:5}{45:5}=\\dfrac{1}{9}$\n\nĐáp số: $\\dfrac{1}{9}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 6.2",
+  "gop_y": false,
+  "dap_an": "$128$ quả trứng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: buổi sáng bác bán $\\dfrac{2}{5}$ của **$160$ quả**; buổi chiều bán $\\dfrac{2}{3}$ của số trứng **còn lại sau buổi sáng**. Hai phân số có số làm chuẩn khác nhau nên không cộng $\\dfrac{2}{5}+\\dfrac{2}{3}$ rồi nhân với $160$.\n\nCác bước: số trứng bán buổi sáng; số trứng còn lại; số trứng bán buổi chiều; cộng hai buổi. Thử lại: $64+96=160$ và $64+64=128$.\n\nChú ý: đề hỏi số trứng bán **cả hai buổi**, không phải số trứng còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBuổi sáng bác Minh bán được số quả trứng là: $160\\times\\dfrac{2}{5}=64$ (quả)\n\nSố quả trứng còn lại sau buổi sáng là: $160-64=96$ (quả)\n\nBuổi chiều bác Minh bán được số quả trứng là: $96\\times\\dfrac{2}{3}=64$ (quả)\n\nCả hai buổi bác Minh bán được số quả trứng là: $64+64=128$ (quả)\n\nĐáp số: $128$ quả trứng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 6.3",
+  "gop_y": false,
+  "dap_an": "$630$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cả hai phân số ($\\dfrac{1}{3}$ và $\\dfrac{3}{7}$) đều là phần của **cả đoạn đường**. Cộng hai phân số rồi lấy $1$ trừ đi sẽ ra phần của ngày thứ ba, ứng với $150$ m. Biết $150$ m ứng với bao nhiêu phần thì tìm được cả đoạn đường bằng phép chia.\n\nCác bước: quy đồng mẫu số rồi cộng ($\\dfrac{7}{21}+\\dfrac{9}{21}$); phần của ngày thứ ba; cả đoạn đường (chia cho tử, nhân với mẫu). Thử lại: $630\\times\\dfrac{1}{3}=210$; $630\\times\\dfrac{3}{7}=270$; $210+270+150=630$.\n\nChú ý: $150$ m ứng với phần **còn lại** ($\\dfrac{5}{21}$), không phải ứng với cả đoạn đường.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai ngày đầu đội sửa được số phần đoạn đường là: $\\dfrac{1}{3}+\\dfrac{3}{7}=\\dfrac{7}{21}+\\dfrac{9}{21}=\\dfrac{16}{21}$ (đoạn đường)\n\n$150$ m chiếm số phần đoạn đường là: $1-\\dfrac{16}{21}=\\dfrac{5}{21}$ (đoạn đường)\n\nĐoạn đường đó dài là: $150:5\\times 21=630$ (m)\n\nĐáp số: $630$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 6.4",
+  "gop_y": false,
+  "dap_an": "Số thứ nhất: $792$ ; số thứ hai: $1782$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số tròn chục lớn nhất có ba chữ số là $990$ ($999$ không tròn chục; số tròn chục có chữ số tận cùng là $0$), nên **hiệu** hai số là $990$. Số thứ nhất bằng $\\dfrac{4}{9}$ số thứ hai: số thứ nhất gồm $4$ phần, số thứ hai gồm $9$ phần bằng nhau. Dạng hiệu – tỉ.\n\nCác bước: hiệu số phần ($9-4$), giá trị một phần ($990$ chia cho hiệu số phần), số thứ nhất ($4$ phần), số thứ hai (số thứ nhất cộng $990$). Thử lại: $1782-792=990$ và $792:1782=\\dfrac{4}{9}$.\n\nChú ý: $990$ là hiệu nên chia cho hiệu số phần ($5$), không chia cho tổng số phần ($13$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tròn chục lớn nhất có ba chữ số là $990$ nên hiệu của hai số là $990$.\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $9-4=5$ (phần)\n\nGiá trị của một phần là: $990:5=198$\n\nSố thứ nhất là: $198\\times 4=792$\n\nSố thứ hai là: $792+990=1782$\n\nĐáp số: Số thứ nhất: $792$ ; số thứ hai: $1782$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 198,
+   "hang": [
+    {
+     "nhan": "Số thứ hai",
+     "phan": 9
+    },
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 4
+    }
+   ],
+   "hieu": "990",
+   "dau_hoi": [
+    "Số thứ hai",
+    "Số thứ nhất"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 6.5",
+  "gop_y": false,
+  "dap_an": "$100$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho **chu vi** và **tỉ số** hai cạnh; muốn tính diện tích phải tìm chiều dài và chiều rộng. Chu vi $=$ (dài $+$ rộng) $\\times\\,2$ nên **nửa chu vi** chính là tổng chiều dài và chiều rộng. Chiều dài gấp $4$ lần chiều rộng: chiều rộng $1$ phần, chiều dài $4$ phần. Dạng tổng – tỉ.\n\nCác bước: nửa chu vi; tổng số phần ($1+4$); chiều rộng; chiều dài; diện tích $=$ dài $\\times$ rộng. Thử lại: $(20+5)\\times 2=50$.\n\nChú ý: $50$ m là chu vi, không phải tổng hai cạnh; phải chia $2$ trước khi chia phần. Đơn vị diện tích là $m^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi của hình chữ nhật là: $50:2=25$ (m)\n\nTa có sơ đồ:\n\nTổng số phần bằng nhau là: $1+4=5$ (phần)\n\nChiều rộng của hình chữ nhật là: $25:5\\times 1=5$ (m)\n\nChiều dài của hình chữ nhật là: $25-5=20$ (m)\n\nDiện tích của hình chữ nhật là: $20\\times 5=100$ ($m^2$)\n\nĐáp số: $100$ $m^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 4
+    }
+   ],
+   "tong": "25 m",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "ghi_chu_nghi": "Đề in \"chiểu rộng\" (thiếu dấu), hiểu là chiều rộng. Không ảnh hưởng kết quả."
+ },
+ {
+  "ma_nguon": "VD 24.1",
+  "gop_y": false,
+  "dap_an": "$30$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho các phép tính **xuôi** (gấp $3$ lần, cộng $10$, chia $5$) và kết quả cuối ($20$). Muốn tìm số ban đầu ta **tính ngược từ cuối lên**, mỗi phép tính đổi thành phép tính ngược lại: chia $5$ đổi thành nhân $5$; cộng $10$ đổi thành trừ $10$; gấp $3$ lần đổi thành chia $3$.\n\nThử lại bằng cách đi xuôi: $30\\times 3=90$; $90+10=100$; $100:5=20$ đúng với đề.\n\nChú ý: phải đi ngược **đúng thứ tự** từ phép tính cuối về phép tính đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKết quả trước khi chia cho $5$ là: $20\\times 5=100$\n\nKết quả trước khi cộng với $10$ là: $100-10=90$\n\nSố cần tìm là: $90:3=30$\n\nĐáp số: $30$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 24.2",
+  "gop_y": false,
+  "dap_an": "$75$ quả dừa",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: buổi chiều bán $\\dfrac{2}{5}$ của số dừa **còn lại sau buổi sáng**, nên sau buổi chiều còn $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ số dừa đó, và đó là $30$ quả. Đi **ngược** từ cuối lên đầu: tìm số dừa sau buổi sáng, rồi tìm số dừa lúc đầu.\n\nSau buổi sáng còn $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ số dừa lúc đầu. Thử lại: $75\\times\\dfrac{1}{3}=25$; $75-25=50$; $50\\times\\dfrac{2}{5}=20$; $50-20=30$.\n\nChú ý: mỗi bước phải chia cho **tử** và nhân với **mẫu** của phân số ứng với số đã biết ($30$ ứng với $\\dfrac{3}{5}$, rồi $50$ ứng với $\\dfrac{2}{3}$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau buổi chiều, số quả dừa còn lại chiếm số phần số dừa còn lại sau buổi sáng là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số dừa còn lại sau buổi sáng)\n\nSố quả dừa còn lại sau buổi sáng là: $30:3\\times 5=50$ (quả)\n\nSau buổi sáng, số quả dừa còn lại chiếm số phần số dừa lúc đầu là: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số dừa lúc đầu)\n\nLúc đầu cửa hàng có số quả dừa là: $50:2\\times 3=75$ (quả)\n\nĐáp số: $75$ quả dừa",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 24.3",
+  "gop_y": false,
+  "dap_an": "Bảo: $40$ viên bi ; Bình: $25$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài chuyển bi qua lại giữa hai bạn, ta **tính ngược** từ kết quả cuối ($30$ và $35$). Trong mỗi lần chuyển, người nhận được số bi đúng bằng số bi mình đang có, nên **số bi của người nhận gấp đôi lên**; đi ngược thì người nhận phải **chia đôi**, còn người cho thì **lấy lại** số bi đã cho.\n\nCác bước: (1) Bình cho Bảo số bi bằng số bi còn lại của Bảo: trước lần này Bảo có một nửa số bi cuối, Bình có số cuối cộng với số bi đã cho Bảo. (2) Bảo cho Bình số bi bằng số bi Bình đang có: trước lần này Bình có một nửa, Bảo có thêm số bi đã cho Bình. Tổng số bi hai bạn luôn là $30+35=65$; thử lại bằng cách đi xuôi.\n\nChú ý: số bi đã cho ở lần 2 là $25$ viên (bằng số bi lúc đầu của Bình), không phải $50$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCuối cùng Bảo có $30$ viên bi, Bình có $35$ viên bi.\n\nBình cho Bảo số bi đúng bằng số bi còn lại của Bảo, nên trước khi Bình cho, Bảo có số viên bi là: $30:2=15$ (viên)\n\nTrước khi Bình cho, Bình có số viên bi là: $35+15=50$ (viên)\n\nBảo cho Bình số bi đúng bằng số bi Bình đang có, nên lúc đầu Bình có số viên bi là: $50:2=25$ (viên)\n\nLúc đầu Bảo có số viên bi là: $15+25=40$ (viên)\n\nĐáp số: Bảo: $40$ viên bi ; Bình: $25$ viên bi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.1",
+  "gop_y": false,
+  "dap_an": "$28$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược từ cuối lên**: kết quả cuối là $250$. Mỗi phép tính đổi thành phép tính ngược lại: trừ $70$ đổi thành cộng $70$; nhân $8$ đổi thành chia $8$; cộng $12$ đổi thành trừ $12$.\n\nThử lại bằng cách đi xuôi: $28+12=40$; $40\\times 8=320$; $320-70=250$ đúng với đề.\n\nChú ý: đọc kỹ thứ tự: cộng $12$ rồi mới nhân $8$ (cả tổng nhân $8$), sau đó mới trừ $70$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKết quả trước khi trừ đi $70$ là: $250+70=320$\n\nKết quả trước khi nhân với $8$ là: $320:8=40$\n\nSố cần tìm là: $40-12=28$\n\nĐáp số: $28$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{12}{35}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược từ cuối lên** với phân số. Các phép tính xuôi: cộng $\\dfrac{6}{7}$, chia $\\dfrac{3}{5}$, trừ $\\dfrac{1}{2}$, được $\\dfrac{3}{2}$. Đi ngược: trừ $\\dfrac{1}{2}$ đổi thành cộng $\\dfrac{1}{2}$; chia $\\dfrac{3}{5}$ đổi thành nhân $\\dfrac{3}{5}$; cộng $\\dfrac{6}{7}$ đổi thành trừ $\\dfrac{6}{7}$.\n\nThử lại bằng cách đi xuôi: $\\dfrac{12}{35}+\\dfrac{6}{7}=\\dfrac{12}{35}+\\dfrac{30}{35}=\\dfrac{42}{35}=\\dfrac{6}{5}$; $\\dfrac{6}{5}:\\dfrac{3}{5}=2$; $2-\\dfrac{1}{2}=\\dfrac{3}{2}$.\n\nChú ý: muốn trừ hai phân số khác mẫu thì phải quy đồng mẫu số trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThương trước khi trừ đi $\\dfrac{1}{2}$ là: $\\dfrac{3}{2}+\\dfrac{1}{2}=\\dfrac{4}{2}=2$\n\nTổng trước khi chia cho $\\dfrac{3}{5}$ là: $2\\times\\dfrac{3}{5}=\\dfrac{6}{5}$\n\nPhân số cần tìm là: $\\dfrac{6}{5}-\\dfrac{6}{7}=\\dfrac{6\\times 7}{5\\times 7}-\\dfrac{6\\times 5}{7\\times 5}=\\dfrac{42}{35}-\\dfrac{30}{35}=\\dfrac{12}{35}$\n\nĐáp số: $\\dfrac{12}{35}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.4",
+  "gop_y": false,
+  "dap_an": "Hùng: $20$ nhãn vở ; Minh: $16$ nhãn vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau hai lần cho nhau, hai bạn có số nhãn vở **bằng nhau**, mà tổng số nhãn vở không đổi ($36$), nên lúc cuối mỗi bạn có $36:2=18$ nhãn vở. Từ đó **tính ngược**: người đã cho đi thì lấy lại, người đã nhận thì trả bớt.\n\nCác bước: (1) Trước khi Minh cho Hùng $5$ nhãn vở: Hùng ít hơn $5$, Minh nhiều hơn $5$. (2) Trước khi Hùng cho Minh $7$ nhãn vở: Hùng nhiều hơn $7$, Minh ít hơn $7$. Thử lại: $20+16=36$; $20-7=13$, $16+7=23$; rồi $13+5=18$, $23-5=18$.\n\nChú ý: đi ngược thì lần cho **sau cùng** (Minh cho Hùng $5$) phải đảo trước, lần cho trước (Hùng cho Minh $7$) đảo sau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc cuối hai bạn có số nhãn vở bằng nhau, mỗi bạn có số nhãn vở là: $36:2=18$ (nhãn vở)\n\nTrước khi Minh cho Hùng $5$ nhãn vở, Hùng có số nhãn vở là: $18-5=13$ (nhãn vở)\n\nTrước khi Minh cho Hùng $5$ nhãn vở, Minh có số nhãn vở là: $18+5=23$ (nhãn vở)\n\nLúc đầu Hùng có số nhãn vở là: $13+7=20$ (nhãn vở)\n\nLúc đầu Minh có số nhãn vở là: $23-7=16$ (nhãn vở)\n\nĐáp số: Hùng: $20$ nhãn vở ; Minh: $16$ nhãn vở",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.5",
+  "gop_y": false,
+  "dap_an": "Hà: $24$ chiếc tem ; Huệ: $14$ chiếc tem ; Mai: $37$ chiếc tem",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lúc cuối cả ba bạn đều có $25$ chiếc tem. Với **mỗi bạn**, ta lần ngược các lần cho – nhận: bạn nào đã **cho** thì lấy lại số đã cho (cộng), bạn nào đã **nhận** thì bỏ số đã nhận đi (trừ).\n\nHà: cho Huệ $11$ (cộng lại $11$) và nhận của Mai $12$ (trừ $12$). Huệ: chỉ nhận của Hà $11$ (trừ $11$). Mai: chỉ cho Hà $12$ (cộng lại $12$). Thử lại: tổng lúc đầu $24+14+37=75=25\\times 3$.\n\nChú ý: tổng số tem của ba bạn không đổi nên luôn kiểm tra được: tổng lúc đầu phải bằng $25\\times 3=75$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc cuối mỗi bạn có $25$ chiếc tem.\n\nLúc đầu Hà có số chiếc tem là: $25-12+11=24$ (chiếc)\n\nLúc đầu Huệ có số chiếc tem là: $25-11=14$ (chiếc)\n\nLúc đầu Mai có số chiếc tem là: $25+12=37$ (chiếc)\n\nĐáp số: Hà: $24$ chiếc ; Huệ: $14$ chiếc ; Mai: $37$ chiếc",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.7",
+  "gop_y": false,
+  "dap_an": "Hoàng: $25$ quyển ; Minh: $32$ quyển ; Long: $33$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổng số quyển vở của ba bạn không đổi ($90$), lúc cuối ba bạn bằng nhau nên mỗi bạn có $90:3=30$ quyển. Rồi với **mỗi bạn** lần ngược các lần cho – nhận: bạn đã **cho** thì cộng lại, bạn đã **nhận** thì trừ đi.\n\nHoàng: cho Minh $5$ (cộng lại $5$), nhận của Long $10$ (trừ $10$). Minh: nhận của Hoàng $5$ (trừ $5$), cho Long $7$ (cộng lại $7$). Long: nhận của Minh $7$ (trừ $7$), cho Hoàng $10$ (cộng lại $10$). Thử lại: $25+32+33=90$.\n\nChú ý: mỗi bạn vừa cho vừa nhận nên phải xét cả hai việc; kiểm tra tổng ba số lúc đầu phải bằng $90$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc cuối ba bạn có số quyển vở bằng nhau, mỗi bạn có số quyển vở là: $90:3=30$ (quyển)\n\nLúc đầu Hoàng có số quyển vở là: $30+5-10=25$ (quyển)\n\nLúc đầu Minh có số quyển vở là: $30-5+7=32$ (quyển)\n\nLúc đầu Long có số quyển vở là: $30-7+10=33$ (quyển)\n\nĐáp số: Hoàng: $25$ quyển ; Minh: $32$ quyển ; Long: $33$ quyển",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.8",
+  "gop_y": false,
+  "dap_an": "Thùng thứ nhất: $39$ chai ; thùng thứ hai: $51$ chai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng của hai thùng là $45$ nên **tổng** là $45\\times 2=90$ chai. Chuyển chai qua lại giữa hai thùng thì **tổng không đổi**, nên lúc sau hai thùng vẫn có $90$ chai và thùng thứ hai gấp $2$ lần thùng thứ nhất (dạng tổng – tỉ). Tìm số chai lúc sau rồi **tính ngược** hai lần chuyển để ra số chai lúc đầu.\n\nCác bước: tổng; tổng số phần ($1+2$); số chai mỗi thùng lúc sau ($30$ và $60$); tính ngược: thùng thứ nhất đã cho $14$ (cộng lại) và nhận $5$ (trừ đi); thùng thứ hai đã nhận $14$ (trừ đi) và cho $5$ (cộng lại). Thử lại: $39-14+5=30$; $51+14-5=60$; $60=2\\times 30$.\n\nChú ý: lúc đầu thùng thứ nhất có **nhiều hơn** lúc sau vì nó đã cho đi nhiều hơn nhận về ($14>5$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số chai nước rửa tay ở hai thùng là: $45\\times 2=90$ (chai)\n\nChuyển qua lại giữa hai thùng thì tổng số chai không đổi, lúc sau hai thùng vẫn có $90$ chai và thùng thứ hai gấp $2$ lần thùng thứ nhất.\n\nTa có sơ đồ lúc sau:\n\nTổng số phần bằng nhau là: $1+2=3$ (phần)\n\nLúc sau thùng thứ nhất có số chai là: $90:3\\times 1=30$ (chai)\n\nLúc sau thùng thứ hai có số chai là: $90-30=60$ (chai)\n\nLúc đầu thùng thứ nhất có số chai là: $30+14-5=39$ (chai)\n\nLúc đầu thùng thứ hai có số chai là: $60-14+5=51$ (chai)\n\nĐáp số: Thùng thứ nhất: $39$ chai ; thùng thứ hai: $51$ chai",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc sau khi chuyển",
+   "gia_tri_phan": 30,
+   "hang": [
+    {
+     "nhan": "Thùng thứ nhất",
+     "phan": 1
+    },
+    {
+     "nhan": "Thùng thứ hai",
+     "phan": 2
+    }
+   ],
+   "tong": "90 chai",
+   "dau_hoi": [
+    "Thùng thứ nhất",
+    "Thùng thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.9",
+  "gop_y": false,
+  "dap_an": "Hộp thứ nhất: $13$ cái ; hộp thứ hai: $11$ cái",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chuyển bánh qua lại giữa hai hộp thì **tổng không đổi** ($24$ cái). Lúc sau hộp thứ nhất bằng $\\dfrac{5}{7}$ hộp thứ hai: hộp thứ nhất gồm $5$ phần, hộp thứ hai gồm $7$ phần bằng nhau (dạng tổng – tỉ). Tìm số bánh lúc sau rồi **tính ngược** hai lần chuyển.\n\nCác bước: tổng số phần ($5+7$); số bánh mỗi hộp lúc sau ($10$ và $14$); tính ngược: hộp thứ nhất đã cho $5$ (cộng lại) và nhận $2$ (trừ đi); hộp thứ hai đã nhận $5$ (trừ đi) và cho $2$ (cộng lại). Thử lại: $13-5+2=10$; $11+5-2=14$; $10:14=\\dfrac{5}{7}$.\n\nChú ý: số bánh tìm được từ sơ đồ là số bánh **lúc sau**; đề hỏi số bánh **lúc đầu**.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChuyển bánh qua lại giữa hai hộp thì tổng số bánh không đổi, lúc sau hai hộp vẫn có $24$ cái bánh.\n\nTa có sơ đồ lúc sau:\n\nTổng số phần bằng nhau là: $5+7=12$ (phần)\n\nGiá trị của một phần là: $24:12=2$ (cái)\n\nLúc sau hộp thứ nhất có số cái bánh là: $2\\times 5=10$ (cái)\n\nLúc sau hộp thứ hai có số cái bánh là: $24-10=14$ (cái)\n\nLúc đầu hộp thứ nhất có số cái bánh là: $10+5-2=13$ (cái)\n\nLúc đầu hộp thứ hai có số cái bánh là: $14-5+2=11$ (cái)\n\nĐáp số: Hộp thứ nhất: $13$ cái ; hộp thứ hai: $11$ cái",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc sau khi chuyển",
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Hộp thứ nhất",
+     "phan": 5
+    },
+    {
+     "nhan": "Hộp thứ hai",
+     "phan": 7
+    }
+   ],
+   "tong": "24 cái bánh",
+   "dau_hoi": [
+    "Hộp thứ nhất",
+    "Hộp thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.10",
+  "gop_y": false,
+  "dap_an": "Tùng: $25$ viên bi ; Quân: $15$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược** từ kết quả cuối (mỗi bạn $20$ viên). Trong mỗi lần chuyển, người nhận được số bi đúng bằng số bi mình đang có, nên số bi của người nhận **gấp đôi lên**; đi ngược thì người nhận **chia đôi**, còn người cho thì **lấy lại** số bi đã cho.\n\nCác bước: (1) Quân chuyển cho Tùng số bi bằng số bi còn lại của Tùng: trước lần này Tùng có một nửa số bi cuối, Quân có số cuối cộng với số bi đã chuyển. (2) Tùng chuyển cho Quân số bi bằng số bi Quân đang có: trước lần này Quân có một nửa, Tùng có thêm số bi đã chuyển. Thử lại: $25$ và $15$ → Tùng cho Quân $15$: $10$ và $30$ → Quân cho Tùng $10$: $20$ và $20$.\n\nChú ý: tổng số bi hai bạn không đổi, luôn bằng $20+20=40$; lúc đầu $25+15=40$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCuối cùng mỗi bạn có $20$ viên bi.\n\nQuân chuyển cho Tùng số bi đúng bằng số bi còn lại của Tùng, nên trước khi Quân chuyển, Tùng có số viên bi là: $20:2=10$ (viên)\n\nTrước khi Quân chuyển, Quân có số viên bi là: $20+10=30$ (viên)\n\nTùng chuyển cho Quân số bi đúng bằng số bi Quân đang có, nên lúc đầu Quân có số viên bi là: $30:2=15$ (viên)\n\nLúc đầu Tùng có số viên bi là: $10+15=25$ (viên)\n\nĐáp số: Tùng: $25$ viên bi ; Quân: $15$ viên bi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.11",
+  "gop_y": false,
+  "dap_an": "Việt: $22$ quyển ; Nam: $14$ quyển ; Mai: $12$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổng số vở của ba bạn không đổi ($48$), lúc cuối ba bạn bằng nhau nên mỗi bạn có $48:3=16$ quyển. Rồi **tính ngược từng lần chuyển** (từ lần cuối lên lần đầu). Mỗi lần, người nhận được số vở đúng bằng số vở mình đang có, nên số vở của người nhận **gấp đôi lên**; đi ngược thì người nhận **chia đôi**, người cho thì **lấy lại** số vở đã cho. Người thứ ba đứng ngoài lần đó nên số vở không đổi.\n\nThứ tự các lần: (1) Việt cho Nam; (2) Nam cho Mai; (3) Mai cho Việt. Đi ngược: lần (3) trước, rồi (2), rồi (1). Thử lại bằng cách đi xuôi: $22,14,12$ → Việt cho Nam $14$: $8,28,12$ → Nam cho Mai $12$: $8,16,24$ → Mai cho Việt $8$: $16,16,16$.\n\nChú ý: số vở được cho bằng số vở **của người nhận ngay lúc đó** (không phải lúc đầu); luôn kiểm tra tổng ba số bằng $48$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc cuối ba bạn có số quyển vở bằng nhau, mỗi bạn có số quyển vở là: $48:3=16$ (quyển)\n\nMai cho Việt số vở đúng bằng số vở Việt đang có, nên trước khi Mai cho, Việt có số quyển vở là: $16:2=8$ (quyển)\n\nTrước khi Mai cho, Mai có số quyển vở là: $16+8=24$ (quyển)\n\nNam cho Mai số vở đúng bằng số vở Mai đang có, nên trước khi Nam cho, Mai có số quyển vở là: $24:2=12$ (quyển)\n\nTrước khi Nam cho, Nam có số quyển vở là: $16+12=28$ (quyển)\n\nViệt cho Nam số vở đúng bằng số vở Nam đang có, nên lúc đầu Nam có số quyển vở là: $28:2=14$ (quyển)\n\nLúc đầu Việt có số quyển vở là: $8+14=22$ (quyển)\n\nĐáp số: Việt: $22$ quyển ; Nam: $14$ quyển ; Mai: $12$ quyển",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.13",
+  "gop_y": false,
+  "dap_an": "Lần thứ nhất: $18$ con ; lần thứ hai: $12$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lần thứ hai bán $\\dfrac{2}{5}$ của số gà **còn lại sau lần thứ nhất**, nên sau lần thứ hai còn $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ số gà đó, và đó là $18$ con. Đi **ngược** từ cuối lên đầu để tìm tổng số gà, rồi tính số gà bán mỗi lần.\n\nCác bước: số gà còn lại sau lần thứ nhất ($18$ ứng với $\\dfrac{3}{5}$); tổng số gà (số còn lại sau lần một ứng với $\\dfrac{5}{8}$); số gà bán lần thứ nhất; số gà bán lần thứ hai. Thử lại: $48-18=30$; $30\\times\\dfrac{2}{5}=12$; $30-12=18$.\n\nChú ý: đề hỏi số gà bán **mỗi lần**, nên phải tính cả hai lần chứ không dừng ở tổng số gà.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần thứ nhất, số gà còn lại chiếm số phần tổng số gà là: $1-\\dfrac{3}{8}=\\dfrac{5}{8}$ (tổng số gà)\n\nSau lần thứ hai, số gà còn lại chiếm số phần số gà còn lại sau lần thứ nhất là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số gà còn lại sau lần thứ nhất)\n\nSố gà còn lại sau lần thứ nhất là: $18:3\\times 5=30$ (con)\n\nTổng số gà là: $30:5\\times 8=48$ (con)\n\nLần thứ nhất người đó bán được số con gà là: $48-30=18$ (con)\n\nLần thứ hai người đó bán được số con gà là: $30-18=12$ (con)\n\nĐáp số: Lần thứ nhất: $18$ con ; lần thứ hai: $12$ con",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.14",
+  "gop_y": false,
+  "dap_an": "$360000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mua vở hết $\\dfrac{3}{4}$ của số tiền **còn lại sau khi mua sách**, nên sau khi mua vở còn $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ số tiền đó, và đó là giá cây bút $30000$ đồng. Đi **ngược** từ cuối lên đầu.\n\nCác bước: số tiền còn lại sau khi mua sách ($30000$ ứng với $\\dfrac{1}{4}$); số tiền mang theo (số tiền còn lại ứng với $1-\\dfrac{2}{3}=\\dfrac{1}{3}$). Thử lại: $360000\\times\\dfrac{2}{3}=240000$; $360000-240000=120000$; $120000\\times\\dfrac{3}{4}=90000$; $120000-90000=30000$.\n\nChú ý: $\\dfrac{3}{4}$ tính trên số tiền **còn lại** ($120000$ đồng), không tính trên số tiền mang theo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi mua sách, số tiền còn lại chiếm số phần số tiền mang theo là: $1-\\dfrac{2}{3}=\\dfrac{1}{3}$ (số tiền mang theo)\n\nSau khi mua vở, số tiền còn lại chiếm số phần số tiền còn lại sau khi mua sách là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (số tiền còn lại sau khi mua sách)\n\nSố tiền còn lại sau khi mua sách là: $30000\\times 4=120000$ (đồng)\n\nSố tiền Hùng mang theo là: $120000\\times 3=360000$ (đồng)\n\nĐáp số: $360000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.15",
+  "gop_y": false,
+  "dap_an": "$210$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ngày thứ hai Tuấn đọc $\\dfrac{2}{3}$ của số trang **còn lại sau ngày thứ nhất**, nên sau ngày thứ hai còn $1-\\dfrac{2}{3}=\\dfrac{1}{3}$ số trang đó, và đó là $42$ trang cuối. Đi **ngược** từ cuối lên đầu.\n\nCác bước: số trang còn lại sau ngày thứ nhất ($42$ ứng với $\\dfrac{1}{3}$); số trang cả quyển (số còn lại ứng với $1-\\dfrac{2}{5}=\\dfrac{3}{5}$). Thử lại: $210\\times\\dfrac{2}{5}=84$; $210-84=126$; $126\\times\\dfrac{2}{3}=84$; $126-84=42$.\n\nChú ý: $\\dfrac{2}{3}$ tính trên $126$ trang còn lại, không tính trên $210$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau ngày thứ nhất, số trang còn lại chiếm số phần cả quyển sách là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (quyển sách)\n\nSố trang đọc nốt chiếm số phần số trang còn lại sau ngày thứ nhất là: $1-\\dfrac{2}{3}=\\dfrac{1}{3}$ (số trang còn lại)\n\nSố trang còn lại sau ngày thứ nhất là: $42\\times 3=126$ (trang)\n\nQuyển sách đó có số trang là: $126:3\\times 5=210$ (trang)\n\nĐáp số: $210$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 24.17",
+  "gop_y": false,
+  "dap_an": "$36$ quả cam",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **tính ngược từ cuối lên**. Cuối cùng còn $12$ quả. Lần thứ hai lấy $\\dfrac{1}{3}$ số cam còn lại và $4$ quả nữa: trước khi lấy $4$ quả có $12+4=16$ quả, và $16$ quả này là $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ số cam trong giỏ trước lần thứ hai. Lần thứ nhất lấy ra một nửa rồi bỏ lại $6$ quả vào giỏ: trước khi bỏ lại có $24-6=18$ quả, và $18$ quả này là một nửa số cam lúc đầu.\n\nThử lại bằng cách đi xuôi: $36:2=18$ (lấy ra một nửa còn $18$ quả); $18+6=24$ (bỏ lại $6$ quả); lấy ra $\\dfrac{1}{3}$ của $24$ là $8$ quả và $4$ quả nữa, còn $24-8-4=12$ quả đúng với đề.\n\nChú ý: \"bỏ lại $6$ quả vào giỏ\" làm số cam trong giỏ **tăng thêm** $6$, nên đi ngược phải **trừ** $6$. Phân số $\\dfrac{1}{3}$ tính trên số cam còn lại trong giỏ lúc đó ($24$ quả), không phải trên số cam lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrước khi lấy $4$ quả ở lần thứ hai, trong giỏ có số quả cam là: $12+4=16$ (quả)\n\nSau khi lấy $\\dfrac{1}{3}$ số cam, số cam còn lại chiếm số phần số cam trong giỏ trước lần thứ hai là: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số cam trong giỏ)\n\nSố cam trong giỏ trước lần thứ hai (sau lần thứ nhất) là: $16:2\\times 3=24$ (quả)\n\nSau khi lấy ra một nửa, trước khi bỏ lại $6$ quả, trong giỏ có số quả cam là: $24-6=18$ (quả)\n\nLúc đầu trong giỏ có số quả cam là: $18\\times 2=36$ (quả)\n\nĐáp số: $36$ quả cam",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề in \"bớt lại 6 quả vào giỏ\"; hiểu là \"bỏ lại 6 quả vào giỏ\" (đặt trả $6$ quả vào giỏ) nên đáp số $36$. Cách hiểu khác: \"bớt thêm $6$ quả\" ra ngoài (lấy ra một nửa rồi lấy tiếp $6$ quả) cũng ra số nguyên, đáp số $60$ (lấy ra $30$ còn $30$, bớt $6$ còn $24$, lấy $8$ và $4$ quả nữa còn $12$). Chọn $36$ vì cụm \"lại ... vào giỏ\". Không chắc 100%; nên đối chiếu sách gốc."
+ }
+]
