@@ -1,0 +1,1106 @@
+[
+ {
+  "ma_nguon": "PCT 8 I.1",
+  "gop_y": false,
+  "dap_an": "$918$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: muốn cộng thế kỉ với năm thì phải đổi **thế kỉ ra năm** trước. Cứ $1$ thế kỉ là $100$ năm.\n\nBước 1: đổi $9$ thế kỉ ra năm (nhân với $100$). Bước 2: cộng thêm $18$ năm.\n\nChú ý: $1$ thế kỉ có $100$ năm chứ không phải $10$ năm, nên $9$ thế kỉ là $900$ năm.\n\n**Phần 2. Trình bày**\n\nĐổi: $9$ thế kỉ $=9\\times 100=900$ (năm)\n\n$9$ thế kỉ $18$ năm $=900+18=918$ (năm)\n\nVậy số cần điền vào chỗ trống là $918$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.2",
+  "gop_y": false,
+  "dap_an": "$=$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai số đo dùng các đơn vị khác nhau ($m$, $cm$, $dm$) nên phải **đổi về cùng một đơn vị** rồi mới so sánh. Ở đây đổi hết ra xăng-ti-mét.\n\nNhớ: $1$ m $=100$ cm; $1$ dm $=10$ cm.\n\nChú ý: không so sánh riêng $56$ với $50$ hay $40$ với $64$, vì $40$ là số xăng-ti-mét còn $64$ là số đề-xi-mét.\n\n**Phần 2. Trình bày**\n\nĐổi: $56$ m $40$ cm $=5600+40=5640$ (cm)\n\n$50$ m $64$ dm $=5000+640=5640$ (cm)\n\nVì $5640=5640$ nên $56$ m $40$ cm $=50$ m $64$ dm.\n\nVậy dấu cần điền vào ô trống là $=$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.3",
+  "gop_y": false,
+  "dap_an": "$80312$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đơn vị đo diện tích liền nhau hơn kém nhau **$100$ lần**: $1$ $dm^2=100$ $cm^2$, $1$ $m^2=100$ $dm^2$. Vậy $1$ $m^2=100\\times 100=10000$ $cm^2$.\n\nBước 1: đổi $8$ $m^2$ ra $cm^2$. Bước 2: cộng thêm $312$ $cm^2$.\n\nChú ý: đừng nhầm với đơn vị độ dài ($1$ m $=100$ cm). Với diện tích phải nhân $100$ hai lần nên $8$ $m^2$ là $80000$ $cm^2$, không phải $800$ $cm^2$.\n\n**Phần 2. Trình bày**\n\nĐổi: $1$ $m^2=10000$ $cm^2$\n\n$8$ $m^2=8\\times 10000=80000$ ($cm^2$)\n\n$8$ $m^2$ $312$ $cm^2$ $=80000+312=80312$ ($cm^2$)\n\nVậy số cần điền vào chỗ trống là $80312$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.4",
+  "gop_y": false,
+  "dap_an": "$432$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: muốn tính diện tích hình chữ nhật phải biết cả chiều dài và chiều rộng. Đề cho chiều dài, còn chiều rộng thì tìm từ câu \"chiều dài gấp ba lần chiều rộng\".\n\nBước 1 (chia): chiều rộng bằng chiều dài chia cho $3$. Bước 2 (nhân): diện tích bằng chiều dài nhân chiều rộng.\n\nChú ý: \"chiều dài **gấp** ba lần chiều rộng\" nghĩa là chiều rộng bé hơn, nên phải **chia** $36$ cho $3$, không nhân.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng khu vườn là: $36:3=12$ (m)\n\nDiện tích khu vườn là: $36\\times 12=432$ ($m^2$)\n\nĐáp số: $432$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.5",
+  "gop_y": false,
+  "dap_an": "$1600$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hình vuông có $4$ cạnh bằng nhau nên chu vi bằng cạnh nhân $4$, suy ra cạnh bằng chu vi chia cho $4$. Diện tích hình vuông bằng cạnh nhân cạnh.\n\nBước 1 (chia): tìm cạnh viên gạch. Bước 2 (nhân): tính diện tích.\n\nChú ý: $160$ cm là chu vi (tổng bốn cạnh), không phải cạnh; đừng lấy $160\\times 160$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh viên gạch là: $160:4=40$ (cm)\n\nDiện tích viên gạch là: $40\\times 40=1600$ ($cm^2$)\n\nĐáp số: $1600$ $cm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.6",
+  "gop_y": false,
+  "dap_an": "$20$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng phút với phút, giây với giây. Đủ $60$ giây thì đổi thành $1$ phút ($1$ phút $=60$ giây).\n\nỞ đây $15+45=60$ giây, đúng bằng $1$ phút, nên thêm $1$ vào số phút.\n\nChú ý: kết quả cuối cùng không được để \"$19$ phút $60$ giây\", phải đổi $60$ giây thành $1$ phút.\n\n**Phần 2. Trình bày**\n\nCộng số phút: $12+7=19$ (phút)\n\nCộng số giây: $15+45=60$ (giây)\n\nĐổi: $60$ giây $=1$ phút\n\nTổng thời gian là: $19+1=20$ (phút)\n\nVậy $12$ phút $15$ giây $+7$ phút $45$ giây $=20$ phút.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.7",
+  "gop_y": false,
+  "dap_an": "Chiều dài $36$ cm; chiều rộng $27$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi $126$ cm nên nửa chu vi (chiều dài cộng chiều rộng) là $63$ cm. Khi **tăng chiều rộng** thêm $3$ cm thì phần diện tích tăng thêm là một hình chữ nhật có chiều dài **bằng chiều dài ban đầu** và chiều rộng $3$ cm. Vậy diện tích tăng thêm bằng chiều dài nhân $3$.\n\nBước 1: tìm nửa chu vi. Bước 2: chiều dài bằng $108:3$. Bước 3: chiều rộng bằng nửa chu vi trừ chiều dài.\n\nChú ý: chỉ chiều rộng tăng, chiều dài giữ nguyên; kiểm lại: $36\\times 30-36\\times 27=1080-972=108$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $126:2=63$ (cm)\n\nPhần diện tích tăng thêm là hình chữ nhật có chiều dài bằng chiều dài ban đầu và chiều rộng $3$ cm, nên chiều dài hình chữ nhật ban đầu là: $108:3=36$ (cm)\n\nChiều rộng hình chữ nhật ban đầu là: $63-36=27$ (cm)\n\nĐáp số: Chiều dài $36$ cm; chiều rộng $27$ cm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.8",
+  "gop_y": false,
+  "dap_an": "$2$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi vòng quanh hồ là đi hết **chu vi** hình chữ nhật. Tính chu vi, nhân với $5$ vòng, rồi đổi mét ra ki-lô-mét ($1$ km $=1000$ m).\n\nChú ý: đề hỏi ki-lô-mét nhưng các số đo cho bằng mét, phải đổi ở bước cuối cùng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi cái hồ là: $\\left(120+80\\right)\\times 2=400$ (m)\n\nChú Hùng chạy $5$ vòng được số mét là: $400\\times 5=2000$ (m)\n\nĐổi: $2000$ m $=2$ km\n\nĐáp số: $2$ km",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 I.9",
+  "gop_y": false,
+  "dap_an": "$819$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nửa chu vi (chiều dài cộng chiều rộng) là $120:2=60$ cm. Khi **tăng chiều dài** thêm $8$ cm thì phần diện tích tăng thêm là hình chữ nhật có chiều dài $8$ cm và chiều rộng **bằng chiều rộng ban đầu**. Vậy diện tích tăng thêm bằng chiều rộng nhân $8$.\n\nBước 1: nửa chu vi. Bước 2: chiều rộng bằng $168:8$. Bước 3: chiều dài bằng nửa chu vi trừ chiều rộng. Bước 4: diện tích ban đầu.\n\nChú ý: bài này tăng chiều **dài** nên tìm được chiều **rộng** trước (ngược với bài tăng chiều rộng).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $120:2=60$ (cm)\n\nPhần diện tích tăng thêm là hình chữ nhật có chiều dài $8$ cm và chiều rộng bằng chiều rộng ban đầu, nên chiều rộng ban đầu là: $168:8=21$ (cm)\n\nChiều dài ban đầu là: $60-21=39$ (cm)\n\nDiện tích hình chữ nhật ban đầu là: $39\\times 21=819$ ($cm^2$)\n\nĐáp số: $819$ $cm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 II.1a",
+  "gop_y": false,
+  "dap_an": "$24$ $km^2$ $200$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân một số đo ghép với một số thì **nhân từng phần** với số đó: $km^2$ nhân với $8$, $m^2$ nhân với $8$, rồi ghép lại.\n\nChú ý: kiểm tra phần $m^2$ sau khi nhân: $200$ $m^2$ bé hơn $1$ $km^2$ ($1$ $km^2=1000000$ $m^2$) nên không phải đổi sang $km^2$.\n\n**Phần 2. Trình bày**\n\n$3$ $km^2\\times 8=24$ $km^2$\n\n$25$ $m^2\\times 8=200$ $m^2$\n\nVậy $3$ $km^2$ $25$ $m^2$ $\\times 8=24$ $km^2$ $200$ $m^2$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 II.1b",
+  "gop_y": false,
+  "dap_an": "$74$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $2$ $dm^2$ không chia hết cho $4$ thành số $dm^2$ nguyên, nên **đổi hết ra đơn vị bé** ($cm^2$) rồi chia. Nhớ: $1$ $dm^2=100$ $cm^2$.\n\nBước 1: đổi $2$ $dm^2$ $96$ $cm^2$ ra $cm^2$. Bước 2: chia cho $4$.\n\nChú ý: $1$ $dm^2=100$ $cm^2$ (gấp $100$ lần), không phải $10$ lần.\n\n**Phần 2. Trình bày**\n\nĐổi: $2$ $dm^2$ $96$ $cm^2$ $=200+96=296$ ($cm^2$)\n\n$296:4=74$ ($cm^2$)\n\nVậy $2$ $dm^2$ $96$ $cm^2$ $:4=74$ $cm^2$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 8 II.3",
+  "gop_y": false,
+  "dap_an": "$18$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích nền nhà bằng diện tích một viên gạch nhân với số viên (mạch vữa không đáng kể). Viên gạch hình vuông cạnh $30$ cm nên diện tích bằng $30\\times 30$. Đề hỏi $m^2$ nên cuối cùng đổi $cm^2$ ra $m^2$ ($1$ $m^2=10000$ $cm^2$).\n\nBước 1: diện tích một viên. Bước 2: diện tích cả căn phòng. Bước 3: đổi đơn vị.\n\nChú ý: $1$ $m^2=10000$ $cm^2$ chứ không phải $100$ $cm^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một viên gạch là: $30\\times 30=900$ ($cm^2$)\n\nDiện tích căn phòng là: $900\\times 200=180000$ ($cm^2$)\n\nĐổi: $180000$ $cm^2$ $=18$ $m^2$\n\nĐáp số: $18$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.1",
+  "gop_y": false,
+  "dap_an": "$6000000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **giá trị** của một chữ số bằng chữ số đó nhân với giá trị của hàng mà nó đứng. Phải xác định chữ số $6$ đứng ở hàng nào.\n\nĐọc số $86325479$ từ phải sang trái: đơn vị ($9$), chục ($7$), trăm ($4$), nghìn ($5$), chục nghìn ($2$), trăm nghìn ($3$), triệu ($6$), chục triệu ($8$). Vậy chữ số $6$ ở hàng triệu.\n\nChú ý: giá trị của chữ số $6$ là $6$ triệu, không phải $6$.\n\n**Phần 2. Trình bày**\n\nSố $86325479$ có: $8$ chục triệu, $6$ triệu, $3$ trăm nghìn, $2$ chục nghìn, $5$ nghìn, $4$ trăm, $7$ chục, $9$ đơn vị.\n\nChữ số $6$ đứng ở hàng triệu nên giá trị của chữ số $6$ là: $6\\times 1000000=6000000$\n\nVậy giá trị của chữ số $6$ trong số $86325479$ là $6000000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.2",
+  "gop_y": false,
+  "dap_an": "$1451$ ; $2344$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm quy luật. Ta thấy $111+112=223$, $112+223=335$, $223+335=558$, $335+558=893$. Vậy **kể từ số hạng thứ ba, mỗi số hạng bằng tổng hai số hạng đứng liền trước nó**.\n\nÁp dụng quy luật đó hai lần để tìm hai số tiếp theo.\n\nChú ý: dãy này không cách đều nên không dùng công thức dãy cách đều.\n\n**Phần 2. Trình bày**\n\nNhận xét: $111+112=223$ ; $112+223=335$ ; $223+335=558$ ; $335+558=893$.\n\nKể từ số hạng thứ ba, mỗi số hạng bằng tổng của hai số hạng đứng liền trước nó.\n\nSố hạng thứ bảy là: $558+893=1451$\n\nSố hạng thứ tám là: $893+1451=2344$\n\nVậy hai số cần điền vào chỗ trống lần lượt là $1451$ và $2344$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.3",
+  "gop_y": false,
+  "dap_an": "$1$ kg $212$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi các số đo về **cùng một đơn vị** (gam) rồi so sánh. Nhớ: $1$ kg $=1000$ g; $1$ hg $=100$ g; $1$ dag $=10$ g.\n\nChú ý: $2$ hg là $200$ g, còn $21$ dag là $210$ g; đừng đọc nhầm hai đơn vị này.\n\n**Phần 2. Trình bày**\n\nĐổi các số đo ra gam:\n\n$1$ kg $212$ g $=1000+212=1212$ (g)\n\n$1$ kg $2$ hg $=1000+200=1200$ (g)\n\n$1$ kg $21$ dag $=1000+210=1210$ (g)\n\n$10$ hg $20$ g $=1000+20=1020$ (g)\n\nTa có $1212>1210>1200>1020$.\n\nVậy số đo khối lượng lớn nhất là $1$ kg $212$ g.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.4",
+  "gop_y": false,
+  "dap_an": "$5590$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thay $n$ bằng $5$ rồi tính theo thứ tự: trong ngoặc trước, sau đó nhân, cuối cùng cộng.\n\nChú ý: không cộng $1520$ với $370$ trước khi nhân với $11$.\n\n**Phần 2. Trình bày**\n\nThay $n=5$ vào biểu thức ta có:\n\n$A=1520+\\left(375-5\\right)\\times 11$\n\n$=1520+370\\times 11$\n\n$=1520+4070$\n\n$=5590$\n\nVậy giá trị của biểu thức $A$ là $5590$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.5",
+  "gop_y": false,
+  "dap_an": "$240$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức $B$ có giá trị $432$ nghĩa là $a:12+412=432$. Ở đây $412$ là số hạng đã biết, $a:12$ là số hạng chưa biết, $432$ là tổng; $a$ là số bị chia.\n\nBước 1: số hạng chưa biết bằng tổng trừ số hạng đã biết. Bước 2: số bị chia bằng thương nhân số chia.\n\nKiểm lại: $240:12+412=20+412=432$ đúng.\n\n**Phần 2. Trình bày**\n\nĐể biểu thức $B$ có giá trị bằng $432$ thì:\n\n$\\begin{array}{l} a:12+412=432 \\\\ a:12=432-412 \\\\ a:12=20 \\\\ a=20\\times 12 \\\\ a=240 \\end{array}$\n\nVậy $a=240$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.6",
+  "gop_y": false,
+  "dap_an": "$175$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề hỏi **tạ** nhưng số đo cho bằng tấn và ki-lô-gam, nên đổi hết ra tạ. Nhớ: $1$ tấn $=10$ tạ; $1$ tạ $=100$ kg.\n\nBước 1: đổi $9$ tấn và $500$ kg ra tạ. Bước 2: tìm số xi măng xe thứ hai chở (ít hơn thì trừ). Bước 3: cộng hai xe.\n\nChú ý: \"ít hơn $500$ kg\" là $5$ tạ, không phải $500$ tạ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $9$ tấn $=90$ tạ ; $500$ kg $=5$ tạ\n\nXe thứ hai chở được số tạ xi măng là: $90-5=85$ (tạ)\n\nCả hai xe chở được số tạ xi măng là: $90+85=175$ (tạ)\n\nĐáp số: $175$ tạ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.7",
+  "gop_y": false,
+  "dap_an": "số hạng thứ $675$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $2$ ; $5$ ; $8$ ; $11$ ; … là dãy **cách đều**, mỗi số hơn số liền trước $3$ đơn vị. Muốn biết $2024$ là số hạng thứ mấy, trước hết phải xem $2024$ có thuộc dãy không: hiệu $2024-2$ phải chia hết cho $3$.\n\nNếu thuộc dãy thì số thứ tự bằng (số cuối trừ số đầu) chia khoảng cách, rồi cộng $1$.\n\nChú ý: phải cộng thêm $1$ vì số đầu tiên cũng là một số hạng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có $2024-2=2022$ và $2022:3=674$ nên $2024$ thuộc dãy.\n\nSố $2024$ là số hạng thứ: $\\left(2024-2\\right):3+1=675$\n\nĐáp số: số hạng thứ $675$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.8",
+  "gop_y": false,
+  "dap_an": "$52$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép các số hạng liền nhau thành từng **cặp**: $100-96$, $92-88$, … mỗi cặp bằng $4$. Số $4$ cuối cùng đứng lẻ một mình.\n\nCác số $100$ ; $96$ ; … ; $4$ cách đều nhau $4$ đơn vị, đếm xem có bao nhiêu số rồi bỏ số $4$ cuối ra, số còn lại ghép cặp.\n\nChú ý: số các số hạng là số lẻ nên không ghép hết thành cặp được; số $+4$ ở cuối phải cộng thêm.\n\n**Phần 2. Trình bày**\n\nSố các số hạng của biểu thức là: $\\left(100-4\\right):4+1=25$ (số)\n\nBỏ số hạng cuối $+4$, còn $24$ số hạng được ghép thành số cặp là: $24:2=12$ (cặp)\n\nMỗi cặp có giá trị là: $100-96=4$ ; $92-88=4$ ; … ; $12-8=4$\n\nGiá trị của biểu thức là: $4\\times 12+4=52$\n\nĐáp số: $52$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.9",
+  "gop_y": false,
+  "dap_an": "$7$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: coi cạnh hình vuông là $1$ **phần**. Chu vi hình vuông là $4$ phần, chu vi hình chữ nhật gấp $4$ lần nên là $16$ phần, nửa chu vi là $8$ phần. Chiều rộng hình chữ nhật bằng cạnh hình vuông, tức $1$ phần, nên chiều dài là $8-1=7$ phần.\n\nChú ý: đề cho chu vi gấp $4$ lần (chu vi hình vuông đã là $4$ phần), nên chu vi hình chữ nhật là $4\\times 4=16$ phần, không phải $4$ phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi độ dài cạnh hình vuông là $1$ phần.\n\nChu vi hình vuông là: $1\\times 4=4$ (phần)\n\nChu vi hình chữ nhật là: $4\\times 4=16$ (phần)\n\nNửa chu vi hình chữ nhật là: $16:2=8$ (phần)\n\nChiều rộng hình chữ nhật bằng cạnh hình vuông, tức là $1$ phần, nên chiều dài hình chữ nhật là: $8-1=7$ (phần)\n\nĐáp số: $7$ lần",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 I.10",
+  "gop_y": false,
+  "dap_an": "$9$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi chữ số lớn hơn chữ số bên trái nó nên các chữ số **khác nhau** và được viết theo thứ tự **tăng dần** từ trái sang phải. Vì vậy chỉ cần **chọn** ra $8$ chữ số khác nhau; chọn xong thì chỉ có đúng một cách xếp thành số.\n\nChữ số $0$ bé nhất nên nếu dùng thì phải đứng đầu, mà số có tám chữ số không thể bắt đầu bằng $0$. Vậy chỉ dùng $9$ chữ số $1$ ; $2$ ; … ; $9$ và chọn $8$ trong $9$ chữ số, tức là **bỏ đi $1$ chữ số**.\n\nChú ý: bỏ đi mỗi chữ số khác nhau cho một số khác nhau, nên có bao nhiêu cách bỏ thì có bấy nhiêu số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi chữ số lớn hơn chữ số bên trái nó nên các chữ số khác nhau và xếp theo thứ tự tăng dần; chọn xong $8$ chữ số thì chỉ lập được đúng một số.\n\nChữ số $0$ nhỏ nhất, nếu dùng sẽ phải đứng đầu, không thể làm chữ số hàng cao nhất, nên không dùng chữ số $0$.\n\nTa chọn $8$ trong $9$ chữ số $1$ ; $2$ ; … ; $9$, tức là bỏ đi $1$ chữ số nên có $9$ cách chọn.\n\nCác số đó là: $12345678$ ; $12345679$ ; $12345689$ ; $12345789$ ; $12346789$ ; $12356789$ ; $12456789$ ; $13456789$ ; $23456789$.\n\nĐáp số: $9$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 II.1",
+  "gop_y": false,
+  "dap_an": "$6000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số tiền trả lại bằng số tiền Mai đưa trừ đi tổng số tiền Mai phải trả. Số tiền mua vở bằng giá một quyển nhân số quyển, số tiền mua bút cũng tính tương tự.\n\nCác bước: tiền mua vở, tiền mua bút, tổng tiền mua, rồi tiền trả lại.\n\nChú ý: đề cho cả giá $1$ quyển và số quyển, phải nhân hai số đó lại, không cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền Mai mua vở là: $8000\\times 8=64000$ (đồng)\n\nSố tiền Mai mua bút mực là: $15000\\times 2=30000$ (đồng)\n\nTổng số tiền Mai phải trả là: $64000+30000=94000$ (đồng)\n\nSố tiền cô bán hàng phải trả lại Mai là: $100000-94000=6000$ (đồng)\n\nĐáp số: $6000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 II.2a",
+  "gop_y": false,
+  "dap_an": "$5100$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở biểu thức $y:34-24=126$, $24$ là số trừ, $126$ là hiệu, nên $y:34$ là số bị trừ: **số bị trừ bằng hiệu cộng số trừ**. Khi biết $y:34$ thì $y$ là số bị chia: **số bị chia bằng thương nhân số chia**.\n\nKiểm lại: $5100:34=150$; $150-24=126$ đúng.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y:34-24=126 \\\\ y:34=126+24 \\\\ y:34=150 \\\\ y=150\\times 34 \\\\ y=5100 \\end{array}$\n\nVậy $y=5100$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 II.2b",
+  "gop_y": false,
+  "dap_an": "$1651$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở biểu thức $\\left(y+2024\\right):105=35$, $y+2024$ là số bị chia nên **bằng thương nhân số chia**: $35\\times 105$. Sau đó $y$ là số hạng chưa biết nên bằng tổng trừ số hạng đã biết.\n\nKiểm lại: $\\left(1651+2024\\right):105=3675:105=35$ đúng.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} \\left(y+2024\\right):105=35 \\\\ y+2024=35\\times 105 \\\\ y+2024=3675 \\\\ y=3675-2024 \\\\ y=1651 \\end{array}$\n\nVậy $y=1651$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 9 II.3",
+  "gop_y": false,
+  "dap_an": "$1998$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số có ba chữ số khác nhau lập từ $5$ ; $3$ ; $1$: hàng trăm có $3$ cách chọn, hàng chục còn $2$ cách, hàng đơn vị còn $1$ cách, tất cả $3\\times 2\\times 1=6$ số. Liệt kê đủ $6$ số rồi cộng.\n\nCách cộng nhanh: ghép hai số có các chữ số đảo ngược ($135$ và $531$,…) thì mỗi cặp có tổng bằng nhau.\n\nChú ý: phải dùng mỗi chữ số đúng một lần trong mỗi số; không bỏ sót số nào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChữ số hàng trăm có $3$ cách chọn, chữ số hàng chục có $2$ cách chọn, chữ số hàng đơn vị có $1$ cách chọn nên lập được số các số là: $3\\times 2\\times 1=6$ (số)\n\nCác số đó là: $135$ ; $153$ ; $315$ ; $351$ ; $513$ ; $531$.\n\nGhép thành từng cặp: $135+531=666$ ; $153+513=666$ ; $315+351=666$.\n\nTổng các số đó là: $666\\times 3=1998$\n\nĐáp số: $1998$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.1",
+  "gop_y": false,
+  "dap_an": "$63$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia nhẩm bằng cách tách số bị chia thành hai số dễ chia cho $12$: $756=720+36$, vì $720:12=60$ và $36:12=3$.\n\nKiểm lại: $12\\times 63=756$ đúng.\n\n**Phần 2. Trình bày**\n\n$756:12$\n\n$=\\left(720+36\\right):12$\n\n$=720:12+36:12$\n\n$=60+3$\n\n$=63$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.2",
+  "gop_y": false,
+  "dap_an": "$138$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thay $m=204$ vào biểu thức rồi tính theo thứ tự: chia trước, cộng sau.\n\nPhép chia $8568:204=42$ (kiểm lại: $204\\times 42=8568$).\n\nChú ý: không cộng $8568$ với $96$ trước khi chia.\n\n**Phần 2. Trình bày**\n\nThay $m=204$ vào biểu thức ta có:\n\n$8568:204+96$\n\n$=42+96$\n\n$=138$\n\nVậy giá trị của biểu thức là $138$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.3",
+  "gop_y": false,
+  "dap_an": "$675$ số hạng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $1$ ; $4$ ; $7$ ; $10$ ; … là dãy **cách đều**, mỗi số hơn số liền trước $3$ đơn vị. Số số hạng bằng (số cuối trừ số đầu) chia khoảng cách, rồi cộng $1$.\n\nTrước tiên kiểm tra $2023$ có thuộc dãy không: $2023-1=2022$ chia hết cho $3$ nên thuộc.\n\nChú ý: phải cộng $1$ vì số đầu tiên cũng được tính là một số hạng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố số hạng của dãy là: $\\left(2023-1\\right):3+1=675$ (số hạng)\n\nĐáp số: $675$ số hạng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.4",
+  "gop_y": false,
+  "dap_an": "$2002$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $2024$ ; $2022$ ; $2020$ ; … giảm dần, mỗi số kém số liền trước $2$ đơn vị. Số hạng thứ $n$ bằng số đầu **trừ** $\\left(n-1\\right)$ lần khoảng cách.\n\nChú ý: dãy giảm dần nên phải trừ chứ không cộng; và nhân với $\\left(12-1\\right)=11$ chứ không phải $12$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố hạng thứ $12$ của dãy là: $2024-\\left(12-1\\right)\\times 2=2002$\n\nĐáp số: $2002$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.5",
+  "gop_y": false,
+  "dap_an": "$10100$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các số $2$ ; $4$ ; $6$ ; … ; $200$ cách đều nhau $2$ đơn vị. Muốn tính tổng, ta đếm số số hạng trước, rồi lấy (số đầu + số cuối) nhân số số hạng chia $2$.\n\nChú ý: số số hạng là $\\left(200-2\\right):2+1$; đừng quên cộng $1$.\n\n**Phần 2. Trình bày**\n\nSố số hạng của tổng là: $\\left(200-2\\right):2+1=100$ (số hạng)\n\nTổng cần tìm là: $\\left(200+2\\right)\\times 100:2=10100$\n\nĐáp số: $10100$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.6",
+  "gop_y": false,
+  "dap_an": "$36$ ; $49$ ; $64$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: xét hiệu của hai số liền nhau: $4-1=3$, $9-4=5$, $16-9=7$, $25-16=9$. Các hiệu $3$ ; $5$ ; $7$ ; $9$ ; … **tăng dần $2$ đơn vị**, nên các hiệu tiếp theo là $11$ ; $13$ ; $15$.\n\nCách khác: các số hạng là $1\\times 1$, $2\\times 2$, $3\\times 3$, $4\\times 4$, $5\\times 5$, nên ba số tiếp theo là $6\\times 6$, $7\\times 7$, $8\\times 8$.\n\n**Phần 2. Trình bày**\n\nHiệu của hai số liền nhau lần lượt là: $4-1=3$ ; $9-4=5$ ; $16-9=7$ ; $25-16=9$.\n\nCác hiệu tăng dần $2$ đơn vị nên các hiệu tiếp theo là $11$ ; $13$ ; $15$.\n\nSố hạng thứ sáu là: $25+11=36$\n\nSố hạng thứ bảy là: $36+13=49$\n\nSố hạng thứ tám là: $49+15=64$\n\nVậy ba số cần viết tiếp là $36$ ; $49$ ; $64$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.7",
+  "gop_y": false,
+  "dap_an": "$6450$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $100$ số tự nhiên liên tiếp kể từ $15$ là dãy cách đều, hơn kém nhau $1$. Tìm số cuối cùng: $15+\\left(100-1\\right)\\times 1$. Rồi tính tổng bằng (số đầu + số cuối) nhân số số hạng chia $2$.\n\nChú ý: \"kể từ $15$\" nghĩa là $15$ là số thứ nhất, nên số cuối là $114$ chứ không phải $115$.\n\n**Phần 2. Trình bày**\n\nSố cuối cùng trong $100$ số là: $15+\\left(100-1\\right)\\times 1=114$\n\nTổng $100$ số đó là: $\\left(15+114\\right)\\times 100:2=6450$\n\nĐáp số: $6450$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 I.8",
+  "gop_y": false,
+  "dap_an": "$300$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các số chia hết cho $3$ cách đều nhau $3$ đơn vị. Tìm số nhỏ nhất và lớn nhất có ba chữ số chia hết cho $3$, rồi đếm bằng công thức của dãy cách đều.\n\nSố lớn nhất là $999$ ($9+9+9=27$ chia hết cho $3$). Số nhỏ nhất: $100$, $101$ không chia hết cho $3$ (tổng chữ số $1$ và $2$), còn $102$ có tổng chữ số $3$ nên chia hết.\n\nKiểm lại bằng cách khác: từ $1$ đến $999$ có $999:3=333$ số chia hết cho $3$, từ $1$ đến $99$ có $99:3=33$ số, nên số có ba chữ số là $333-33=300$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lớn nhất có ba chữ số chia hết cho $3$ là $999$, số nhỏ nhất là $102$.\n\nSố các số tự nhiên có ba chữ số chia hết cho $3$ là: $\\left(999-102\\right):3+1=300$ (số)\n\nĐáp số: $300$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 II.1a",
+  "gop_y": false,
+  "dap_an": "$20$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai phép chia có **cùng số chia** $20$ nên có thể cộng hai số bị chia trước rồi chia một lần: $a:c+b:c=\\left(a+b\\right):c$.\n\nỞ đây $280+120=400$ là số tròn trăm, chia cho $20$ rất dễ.\n\n**Phần 2. Trình bày**\n\n$280:20+120:20$\n\n$=\\left(280+120\\right):20$\n\n$=400:20$\n\n$=20$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 II.1b",
+  "gop_y": false,
+  "dap_an": "$12$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia một số cho một **tích** thì chia lần lượt cho từng thừa số: $432:\\left(4\\times 9\\right)=432:4:9$.\n\nChú ý: không bỏ ngoặc rồi viết $432:4\\times 9$ (cách này sẽ ra $972$, sai).\n\n**Phần 2. Trình bày**\n\n$432:\\left(4\\times 9\\right)$\n\n$=432:4:9$\n\n$=108:9$\n\n$=12$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 II.1c",
+  "gop_y": false,
+  "dap_an": "$75$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia một **tích** cho một số thì có thể chia **một thừa số** cho số đó (thừa số nào chia hết) rồi nhân với thừa số còn lại: $\\left(a\\times b\\right):c=\\left(a:c\\right)\\times b$ khi $a$ chia hết cho $c$.\n\nỞ đây $18$ chia hết cho $6$ còn $25$ thì không, nên chia $18$ cho $6$.\n\n**Phần 2. Trình bày**\n\n$\\left(18\\times 25\\right):6$\n\n$=\\left(18:6\\right)\\times 25$\n\n$=3\\times 25$\n\n$=75$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 II.1d",
+  "gop_y": false,
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia một **hiệu** cho một số thì có thể chia từng số cho số đó rồi trừ: $\\left(a-b\\right):c=a:c-b:c$.\n\nỞ đây $275$ và $125$ đều chia hết cho $25$ nên cách này gọn.\n\n**Phần 2. Trình bày**\n\n$\\left(275-125\\right):25$\n\n$=275:25-125:25$\n\n$=11-5$\n\n$=6$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 II.2",
+  "gop_y": true,
+  "dap_an": "a) $160$; b) $6480$; c) có, là số hạng thứ $1012$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $2$ ; $4$ ; $6$ ; $8$ ; … là dãy **cách đều**, mỗi số hơn số liền trước $2$ đơn vị. Ý a) dùng công thức số hạng thứ $n$. Ý b) dùng ngay số hạng thứ $80$ vừa tìm được ở ý a) làm **số cuối**, rồi tính tổng. Ý c) kiểm tra $2024$ có thuộc dãy không rồi mới đếm thứ tự.\n\nDãy gồm các số chẵn kể từ $2$ nên số chẵn nào cũng thuộc dãy, mà $2024$ là số chẵn.\n\nChú ý: ở ý b) số cuối là $160$ (số hạng thứ $80$), không phải $80$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số hạng thứ $80$ của dãy là: $2+\\left(80-1\\right)\\times 2=160$\n\nb) Tổng $80$ số hạng đầu tiên của dãy là: $\\left(2+160\\right)\\times 80:2=6480$\n\nc) Dãy gồm các số chẵn kể từ $2$, mà $2024$ là số chẵn nên số $2024$ thuộc dãy.\n\nSố $2024$ là số hạng thứ: $\\left(2024-2\\right):2+1=1012$\n\nĐáp số: a) $160$; b) $6480$; c) có, là số hạng thứ $1012$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 10 II.3",
+  "gop_y": false,
+  "dap_an": "$850$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số trang có số chữ số khác nhau nên chia thành từng nhóm: trang có $1$ chữ số ($3$ đến $9$), trang có $2$ chữ số ($10$ đến $99$), trang có $3$ chữ số ($100$ đến $320$). Mỗi nhóm đếm số trang rồi nhân với số chữ số của mỗi số trang.\n\nSố trang từ $a$ đến $b$ là $b-a+1$.\n\nChú ý: sách đánh số từ trang $3$ chứ không phải trang $1$, nên nhóm $1$ chữ số chỉ có $9-3+1=7$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ trang $3$ đến trang $9$ có số trang là: $9-3+1=7$ (trang)\n\nĐánh số $7$ trang này cần số chữ số là: $7\\times 1=7$ (chữ số)\n\nTừ trang $10$ đến trang $99$ có số trang là: $99-10+1=90$ (trang)\n\nĐánh số $90$ trang này cần số chữ số là: $90\\times 2=180$ (chữ số)\n\nTừ trang $100$ đến trang $320$ có số trang là: $320-100+1=221$ (trang)\n\nĐánh số $221$ trang này cần số chữ số là: $221\\times 3=663$ (chữ số)\n\nĐánh số cả quyển sách cần số chữ số là: $7+180+663=850$ (chữ số)\n\nĐáp số: $850$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.1",
+  "gop_y": false,
+  "dap_an": "$2765$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia lần lượt cho $5$ rồi cho $2$ (từ trái sang phải). Cách nhanh: chia cho $5$ rồi cho $2$ cũng như chia cho $5\\times 2=10$.\n\nKiểm lại: $2765\\times 10=27650$ đúng.\n\n**Phần 2. Trình bày**\n\n$27650:5:2$\n\n$=5530:2$\n\n$=2765$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.2",
+  "gop_y": false,
+  "dap_an": "$660$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi số đo ghép $6$ m $7$ cm ra **xăng-ti-mét** ($1$ m $=100$ cm) rồi cộng với $53$ cm.\n\nChú ý: $1$ m $=100$ cm nên $6$ m $=600$ cm, do đó $6$ m $7$ cm là $607$ cm; đừng viết nhầm thành $67$ cm.\n\n**Phần 2. Trình bày**\n\nĐổi: $6$ m $7$ cm $=600+7=607$ (cm)\n\n$607+53=660$ (cm)\n\nVậy số cần điền vào chỗ trống là $660$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.3",
+  "gop_y": false,
+  "dap_an": "thế kỉ XV",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thế kỉ thứ nhất gồm các năm $1$ đến $100$, thế kỉ thứ hai từ năm $101$ đến $200$, … Muốn biết một năm thuộc thế kỉ nào ta lấy số năm chia cho $100$: nếu **còn dư** thì thế kỉ là thương **cộng $1$**; nếu chia hết thì thế kỉ đúng bằng thương.\n\nThế kỉ thường viết bằng chữ số La Mã: $15$ là $XV$.\n\nChú ý: năm $1428$ chia $100$ được $14$ dư $28$ nên thuộc thế kỉ thứ $15$, không phải thế kỉ $14$.\n\n**Phần 2. Trình bày**\n\nTa có $1428:100=14$ (dư $28$).\n\nVì còn dư nên năm $1428$ thuộc thế kỉ thứ: $14+1=15$\n\nThế kỉ thứ $15$ viết bằng chữ số La Mã là $XV$.\n\nVậy năm $1428$ thuộc thế kỉ XV.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.4",
+  "gop_y": false,
+  "dap_an": "$7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở vế phải có $77\\times 70$, nên thừa số thứ hai $77$ ở vế trái được tách thành $7+70$. Khi nhân một số với một tổng thì nhân số đó với từng số hạng rồi cộng lại: $77\\times\\left(7+70\\right)=77\\times 7+77\\times 70$.\n\nKiểm lại: $77\\times 7+77\\times 70=539+5390=5929=77\\times 77$ đúng.\n\n**Phần 2. Trình bày**\n\nTa có $77=7+70$ nên:\n\n$77\\times 77=77\\times\\left(7+70\\right)=77\\times 7+77\\times 70$\n\nVậy số cần điền vào chỗ trống là $7$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.5",
+  "gop_y": false,
+  "dap_an": "$a=1039$ ; $b=983$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đây là bài **tổng–hiệu**: tổng $a+b=2022$, hiệu $a-b=56$ nên $a$ là số lớn, $b$ là số bé. Số bé bằng (tổng trừ hiệu) chia $2$, số lớn bằng số bé cộng hiệu.\n\nKiểm lại: $1039+983=2022$ và $1039-983=56$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $a-b=56$ nên $a$ là số lớn, $b$ là số bé.\n\nTa có sơ đồ:\n\nSố bé $b$ là: $\\left(2022-56\\right):2=983$\n\nSố lớn $a$ là: $983+56=1039$\n\nĐáp số: $a=1039$ ; $b=983$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 983,
+   "hang": [
+    {
+     "nhan": "Số bé (b)",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn (a)",
+     "phan": 1,
+     "them": "56"
+    }
+   ],
+   "tong": "2022",
+   "dau_hoi": [
+    "Số bé (b)",
+    "Số lớn (a)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.6",
+  "gop_y": false,
+  "dap_an": "$5800$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề hỏi **ki-lô-gam** nhưng xe thứ nhất chở bằng tấn, nên đổi $3$ tấn ra ki-lô-gam ($1$ tấn $=1000$ kg). Xe thứ hai chở ít hơn nên lấy trừ.\n\nChú ý: \"ít hơn $200$ kg\" thì trừ $200$ kg, không phải $200$ tấn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $3$ tấn $=3000$ kg\n\nXe thứ hai chở được số ki-lô-gam gạo là: $3000-200=2800$ (kg)\n\nCả hai xe chở được số ki-lô-gam gạo là: $3000+2800=5800$ (kg)\n\nĐáp số: $5800$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.7",
+  "gop_y": false,
+  "dap_an": "$17919$ $dm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi cho bằng mét còn hiệu cho bằng đề-xi-mét, nên **đổi hết ra đề-xi-mét** ($1$ m $=10$ dm) để tính bằng số tự nhiên. Nửa chu vi là tổng chiều dài và chiều rộng, chiều dài hơn chiều rộng $82$ dm, đó là bài **tổng–hiệu**.\n\nBước 1: đổi và tìm nửa chu vi. Bước 2: tìm chiều rộng rồi chiều dài. Bước 3: tính diện tích.\n\nChú ý: $82$ dm không trừ trực tiếp với $56$ m; phải đổi cùng đơn vị. Có thể đổi kết quả: $17919$ $dm^2=179$ $m^2$ $19$ $dm^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $56$ m $=560$ dm\n\nNửa chu vi mảnh đất là: $560:2=280$ (dm)\n\nTa có sơ đồ:\n\nChiều rộng mảnh đất là: $\\left(280-82\\right):2=99$ (dm)\n\nChiều dài mảnh đất là: $99+82=181$ (dm)\n\nDiện tích mảnh đất là: $181\\times 99=17919$ ($dm^2$)\n\nĐáp số: $17919$ $dm^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 99,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "82 dm"
+    }
+   ],
+   "tong": "280 dm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.8",
+  "gop_y": false,
+  "dap_an": "$82$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trồng cây **hai bên** đường nên tính cây của một bên rồi nhân $2$. Một bên đường dài $2$ km $=2000$ m, cứ $50$ m có một khoảng cách nên có $2000:50=40$ khoảng. **Hai đầu đều có cây** thì số cây bằng số khoảng cách **cộng $1$**.\n\nChú ý: cộng $1$ trước rồi mới nhân $2$ (số cây một bên là $41$); không nhân $2$ số khoảng cách rồi mới cộng $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $2$ km $=2000$ m\n\nSố khoảng cách giữa các cây ở một bên đường là: $2000:50=40$ (khoảng)\n\nSố cây trồng ở một bên đường là: $40+1=41$ (cây)\n\nSố cây trồng ở cả hai bên đường là: $41\\times 2=82$ (cây)\n\nĐáp số: $82$ cây",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.9",
+  "gop_y": false,
+  "dap_an": "$32$ lá cờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cắm cờ **xung quanh** sân là đường **khép kín** (đi một vòng quay về chỗ cũ), nên số lá cờ **bằng** số khoảng cách. Số khoảng cách bằng chu vi chia cho $4$ m.\n\nĐiều kiện \"mỗi góc đều có cờ\" đúng vì $36:4=9$ và $28:4=7$ (chia hết).\n\nChú ý: đường khép kín nên không cộng $1$ như đường thẳng hai đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi sân bóng là: $\\left(36+28\\right)\\times 2=128$ (m)\n\nVì $36:4=9$ và $28:4=7$ nên mỗi góc sân đều có một lá cờ.\n\nSố lá cờ cần cắm là: $128:4=32$ (lá cờ)\n\nĐáp số: $32$ lá cờ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 I.10",
+  "gop_y": false,
+  "dap_an": "$41$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trồng một bên đường, hai đầu đều có cây nên số cây bằng số khoảng cách cộng $1$: $1200:15=80$ khoảng, vậy có $81$ cây. Trồng **xen kẽ** hoa sữa và hoa chuông vàng, đầu và cuối đều là hoa sữa nên số cây hoa sữa **nhiều hơn** số cây hoa chuông vàng đúng $1$ cây. Đó là bài **tổng–hiệu**: tổng $81$ cây, hiệu $1$ cây.\n\nChú ý: nếu chia đôi $81$ rồi làm tròn sẽ dễ sai; phải giải bằng tổng–hiệu: hoa chuông là $\\left(81-1\\right):2=40$ cây, hoa sữa là $40+1=41$ cây.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố khoảng cách giữa các cây là: $1200:15=80$ (khoảng)\n\nSố cây trồng trên đường là: $80+1=81$ (cây)\n\nTrồng xen kẽ, hai đầu đều là hoa sữa nên số cây hoa sữa nhiều hơn số cây hoa chuông vàng $1$ cây.\n\nTa có sơ đồ:\n\nSố cây hoa chuông vàng là: $\\left(81-1\\right):2=40$ (cây)\n\nSố cây hoa sữa là: $40+1=41$ (cây)\n\nĐáp số: $41$ cây",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 40,
+   "hang": [
+    {
+     "nhan": "Hoa chuông vàng",
+     "phan": 1
+    },
+    {
+     "nhan": "Hoa sữa",
+     "phan": 1,
+     "them": "1 cây"
+    }
+   ],
+   "tong": "81 cây",
+   "dau_hoi": [
+    "Hoa sữa"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 II.1a",
+  "gop_y": false,
+  "dap_an": "$800$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai phép chia có **cùng số chia** $5$ nên cộng hai số bị chia trước rồi chia một lần: $a:c+b:c=\\left(a+b\\right):c$.\n\nỞ đây $2485+1515=4000$ là số tròn nghìn nên chia rất dễ.\n\n**Phần 2. Trình bày**\n\n$2485:5+1515:5$\n\n$=\\left(2485+1515\\right):5$\n\n$=4000:5$\n\n$=800$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 II.1b",
+  "gop_y": false,
+  "dap_an": "$2008$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $9372$ và $372$ có hiệu là số tròn nghìn $9000$, mà cả hai đều chia cho $9$, nên gộp $9372:9-372:9=\\left(9372-372\\right):9$. Còn $72:9=8$ tính riêng.\n\nChú ý: giữ nguyên dấu: sau $9372:9$ là dấu trừ nên trừ $372:9$, còn $72:9$ có dấu cộng.\n\n**Phần 2. Trình bày**\n\n$9372:9-372:9+72:9+1000$\n\n$=\\left(9372-372\\right):9+72:9+1000$\n\n$=9000:9+8+1000$\n\n$=1000+8+1000$\n\n$=2008$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 II.1c",
+  "gop_y": false,
+  "dap_an": "$280000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép các thừa số để được số tròn: $8\\times 125=1000$ nên $80\\times 125=10000$; còn lại ghép $7\\times 4=28$. Nhân giao hoán và kết hợp cho phép đổi chỗ và nhóm các thừa số.\n\nKiểm lại: $80\\times 7=560$; $560\\times 125=70000$; $70000\\times 4=280000$ đúng.\n\n**Phần 2. Trình bày**\n\n$80\\times 7\\times 125\\times 4$\n\n$=\\left(80\\times 125\\right)\\times\\left(7\\times 4\\right)$\n\n$=10000\\times 28$\n\n$=280000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 II.1d",
+  "gop_y": false,
+  "dap_an": "$600$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia một số cho một **tích** thì chia lần lượt cho từng thừa số: $\\left(500\\times 54\\right):\\left(5\\times 9\\right)=500\\times 54:5:9$. Rồi ghép $500:5$ và $54:9$ (đều chia hết).\n\nChú ý: không tính $500\\times 54$ trước (số lớn dễ nhầm); cách ghép chia hết gọn hơn nhiều.\n\n**Phần 2. Trình bày**\n\n$\\left(500\\times 54\\right):\\left(5\\times 9\\right)$\n\n$=500\\times 54:5:9$\n\n$=\\left(500:5\\right)\\times\\left(54:9\\right)$\n\n$=100\\times 6$\n\n$=600$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 II.2",
+  "gop_y": true,
+  "dap_an": "a) $91$; b) $1425$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $4$ ; $7$ ; $10$ ; $13$ ; … là dãy **cách đều**, mỗi số hơn số liền trước $3$ đơn vị. Ý a) dùng công thức số hạng thứ $n$. Ý b) dùng ngay số hạng thứ $30$ vừa tìm được ở ý a) làm **số cuối** để tính tổng.\n\nChú ý: số cuối của $30$ số hạng đầu là $91$, không phải $30$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số hạng thứ $30$ của dãy là: $4+\\left(30-1\\right)\\times 3=91$\n\nb) Tổng $30$ số hạng đầu tiên của dãy là: $\\left(4+91\\right)\\times 30:2=1425$\n\nĐáp số: a) $91$; b) $1425$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 11 II.3",
+  "gop_y": false,
+  "dap_an": "$4000$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đèn mắc ở **hai bên** đường nên mỗi bên có $160:2=80$ đèn. Trước cổng trường **có** đèn còn cổng bệnh viện **không có** đèn: một đầu có, một đầu không thì số đèn **bằng** số khoảng cách. Vậy quãng đường bằng số khoảng cách nhân $50$ m.\n\nChú ý: không cộng $1$ (vì chỉ một đầu có đèn) và không dùng $160$ (đó là số đèn cả hai bên).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đèn cao áp ở mỗi bên đường là: $160:2=80$ (đèn)\n\nMột đầu đường có đèn, đầu kia không có đèn nên số khoảng cách bằng số đèn, tức là $80$ khoảng.\n\nQuãng đường từ trường đến cổng bệnh viện là: $80\\times 50=4000$ (m)\n\nĐáp số: $4000$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.1",
+  "gop_y": false,
+  "dap_an": "$56$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở $x\\times 12+1248=1920$, $1248$ là số hạng đã biết nên $x\\times 12$ là số hạng chưa biết: **số hạng bằng tổng trừ số hạng kia**. Sau đó $x$ là thừa số chưa biết: **thừa số bằng tích chia thừa số kia**.\n\nKiểm lại: $56\\times 12+1248=672+1248=1920$ đúng.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} x\\times 12+1248=1920 \\\\ x\\times 12=1920-1248 \\\\ x\\times 12=672 \\\\ x=672:12 \\\\ x=56 \\end{array}$\n\nVậy $x=56$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.2",
+  "gop_y": false,
+  "dap_an": "$1680$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các quyển vở cùng loại nên mỗi quyển đều có $48$ trang; số trang của $35$ quyển bằng số trang một quyển nhân số quyển.\n\nChú ý: đây là phép nhân $48\\times 35$, không phải phép cộng hay chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$35$ quyển vở cùng loại có số trang là: $48\\times 35=1680$ (trang)\n\nĐáp số: $1680$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.3",
+  "gop_y": false,
+  "dap_an": "$1503$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thay $a=12$ vào biểu thức rồi tính theo thứ tự: nhân, chia trước (từ trái sang phải), cộng sau. Trong $124\\times a+180:a$ có hai phép tính làm trước là $124\\times 12$ và $180:12$, sau đó mới cộng.\n\nChú ý: đề in \"$180:a$\" không có ngoặc nên chỉ chia riêng $180$ cho $a$, không chia cả tổng $124\\times a+180$.\n\n**Phần 2. Trình bày**\n\nThay $a=12$ vào biểu thức ta có:\n\n$A=124\\times 12+180:12$\n\n$=1488+15$\n\n$=1503$\n\nVậy giá trị của biểu thức $A$ là $1503$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề in \"A=124×a+180: a\" (không có ngoặc). Hiểu theo thứ tự phép tính: A = 124×12 + (180:12) = 1488 + 15 = 1503. Nếu đề gốc thực sự là (124×a+180):a thì A = (1488+180):12 = 139. Cần người đối chiếu sách."
+ },
+ {
+  "ma_nguon": "PCT 12 I.4",
+  "gop_y": false,
+  "dap_an": "$1050$ chiếc thẻ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi bạn (nữ hoặc nam) đều nhận $35$ thẻ nên chỉ cần biết **tất cả bao nhiêu học sinh** rồi nhân với $35$.\n\nChú ý: có thể tính riêng thẻ của nữ và của nam rồi cộng, kết quả vẫn bằng nhau: $12\\times 35+18\\times 35=420+630=1050$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh lớp $4A$ là: $12+18=30$ (học sinh)\n\nSố thẻ lớp $4A$ nhận được tất cả là: $30\\times 35=1050$ (thẻ)\n\nĐáp số: $1050$ thẻ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.5",
+  "gop_y": false,
+  "dap_an": "$1680$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi $172$ cm nên nửa chu vi (chiều dài cộng chiều rộng) là $86$ cm. Biết **tổng** $86$ và **hiệu** $26$ thì giải bài toán tổng–hiệu: chiều rộng bằng (tổng trừ hiệu) chia $2$, chiều dài bằng chiều rộng cộng hiệu. Cuối cùng tính diện tích.\n\nChú ý: $172$ cm là chu vi, không phải tổng hai kích thước; phải chia $2$ trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi tấm bìa là: $172:2=86$ (cm)\n\nTa có sơ đồ:\n\nChiều rộng tấm bìa là: $\\left(86-26\\right):2=30$ (cm)\n\nChiều dài tấm bìa là: $30+26=56$ (cm)\n\nDiện tích tấm bìa là: $56\\times 30=1680$ ($cm^2$)\n\nĐáp số: $1680$ $cm^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 30,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "26 cm"
+    }
+   ],
+   "tong": "86 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.6",
+  "gop_y": false,
+  "dap_an": "$2263$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai vế đều là tích có **chung thừa số $2024$**. Ở vế trái, $y-584$ là thừa số chưa biết nên bằng tích chia cho thừa số đã biết: $\\left(2024\\times 1679\\right):2024=1679$. Không cần tính tích lớn.\n\nSau đó $y-584=1679$, $y$ là số bị trừ nên bằng hiệu cộng số trừ.\n\nKiểm lại: $\\left(2263-584\\right)\\times 2024=1679\\times 2024$ đúng.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} \\left(y-584\\right)\\times 2024=2024\\times 1679 \\\\ y-584=2024\\times 1679:2024 \\\\ y-584=1679 \\\\ y=1679+584 \\\\ y=2263 \\end{array}$\n\nVậy $y=2263$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.7",
+  "gop_y": false,
+  "dap_an": "$950$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổ xăng từ thùng này sang thùng kia thì **tổng số xăng của hai thùng không đổi** ($1750$ lít). Sau khi đổ ta biết cả tổng ($1750$) lẫn hiệu ($20$), giải tổng–hiệu được số xăng **lúc sau** của từng thùng. Thùng thứ nhất đã đổ đi $65$ lít nên lúc đầu có thêm $65$ lít so với lúc sau.\n\nChú ý: cuối cùng phải **cộng** $65$ (không trừ) vì thùng thứ nhất là thùng đã đổ bớt đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổ xăng từ thùng này sang thùng kia thì tổng số xăng của hai thùng không đổi, vẫn là $1750$ lít.\n\nTa có sơ đồ:\n\nSố lít xăng ở thùng thứ hai lúc sau là: $\\left(1750-20\\right):2=865$ (lít)\n\nSố lít xăng ở thùng thứ nhất lúc sau là: $865+20=885$ (lít)\n\nBan đầu thùng thứ nhất chứa số lít xăng là: $885+65=950$ (lít)\n\nĐáp số: $950$ lít",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi đổ 65 lít",
+   "gia_tri_phan": 865,
+   "hang": [
+    {
+     "nhan": "Thùng thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "Thùng thứ nhất",
+     "phan": 1,
+     "them": "20 lít"
+    }
+   ],
+   "tong": "1750 lít",
+   "dau_hoi": [
+    "Thùng thứ nhất"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.8",
+  "gop_y": false,
+  "dap_an": "Alice: $17$ tuổi; chị: $26$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **hiệu số tuổi không đổi** theo thời gian ($9$ tuổi), còn tổng số tuổi thì tăng. Sau $6$ năm mỗi người thêm $6$ tuổi nên tổng tăng $6\\times 2=12$ tuổi. Vậy tổng số tuổi **hiện nay** là $55-12=43$. Biết tổng và hiệu thì giải bài toán tổng–hiệu.\n\nChú ý: phải trừ $12$ (cả hai người đều thêm tuổi) chứ không trừ $6$.\n\nKiểm lại: sau $6$ năm Alice $23$ tuổi, chị $32$ tuổi, tổng $55$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau $6$ năm nữa mỗi người thêm $6$ tuổi nên tổng số tuổi của hai chị em tăng thêm: $6\\times 2=12$ (tuổi)\n\nTổng số tuổi của hai chị em hiện nay là: $55-12=43$ (tuổi)\n\nTa có sơ đồ:\n\nTuổi Alice hiện nay là: $\\left(43-9\\right):2=17$ (tuổi)\n\nTuổi chị hiện nay là: $17+9=26$ (tuổi)\n\nĐáp số: Alice $17$ tuổi; chị $26$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hiện nay",
+   "gia_tri_phan": 17,
+   "hang": [
+    {
+     "nhan": "Tuổi Alice",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi chị",
+     "phan": 1,
+     "them": "9 tuổi"
+    }
+   ],
+   "tong": "43 tuổi",
+   "dau_hoi": [
+    "Tuổi Alice",
+    "Tuổi chị"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.9",
+  "gop_y": false,
+  "dap_an": "$137$ ; $140$ ; $143$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số thứ hai lớn hơn số thứ nhất $3$ đơn vị và bé hơn số thứ ba $3$ đơn vị, nên số thứ hai là số **ở giữa**. Nếu lấy $3$ đơn vị từ số thứ ba chuyển sang số thứ nhất thì tổng không đổi và **cả ba số đều bằng số thứ hai**. Vậy số thứ hai bằng tổng chia $3$.\n\nKiểm lại: $137+140+143=420$; $140-137=3$; $143-140=3$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChuyển $3$ đơn vị từ số thứ ba sang số thứ nhất thì tổng ba số vẫn là $420$ và ba số trở thành bằng nhau, đều bằng số thứ hai.\n\nSố thứ hai là: $420:3=140$\n\nSố thứ nhất là: $140-3=137$\n\nSố thứ ba là: $140+3=143$\n\nĐáp số: $137$ ; $140$ ; $143$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 I.10",
+  "gop_y": false,
+  "dap_an": "$9$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi tam giác là tổng ba cạnh. Biết chu vi và cạnh thứ nhất thì tìm được **tổng hai cạnh còn lại**: $31-10=21$ cm. Cạnh thứ hai lớn hơn cạnh thứ ba $3$ cm nên có tổng ($21$) và hiệu ($3$): bài toán tổng–hiệu, cạnh thứ ba là số bé.\n\nKiểm lại: cạnh thứ ba $9$ cm, cạnh thứ hai $12$ cm; $10+12+9=31$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng độ dài cạnh thứ hai và cạnh thứ ba là: $31-10=21$ (cm)\n\nTa có sơ đồ:\n\nĐộ dài cạnh thứ ba là: $\\left(21-3\\right):2=9$ (cm)\n\nĐáp số: $9$ cm",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Cạnh thứ ba",
+     "phan": 1
+    },
+    {
+     "nhan": "Cạnh thứ hai",
+     "phan": 1,
+     "them": "3 cm"
+    }
+   ],
+   "tong": "21 cm",
+   "dau_hoi": [
+    "Cạnh thứ ba"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 II.1a",
+  "gop_y": false,
+  "dap_an": "$14000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép các số hạng thành từng cặp có tổng là số tròn nghìn: $7642+1358=9000$ và $1191+3809=5000$ (số đơn vị cộng lại thành $10$).\n\nPhép cộng có tính chất giao hoán và kết hợp nên đổi chỗ các số hạng được.\n\n**Phần 2. Trình bày**\n\n$7642+1191+1358+3809$\n\n$=\\left(7642+1358\\right)+\\left(1191+3809\\right)$\n\n$=9000+5000$\n\n$=14000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 II.1b",
+  "gop_y": false,
+  "dap_an": "$13201$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhận ra các cặp số đẹp: $6753+1247=8000$ và $2456-1456=1000$. Khi đổi chỗ phải **mang theo dấu** đứng trước mỗi số: $+2456$ ghép với $-1456$.\n\nChú ý: số $4201$ không ghép được, giữ nguyên.\n\nKiểm lại: $8000+4201+1000=13201$, tính theo thứ tự từ trái sang phải cũng ra $13201$.\n\n**Phần 2. Trình bày**\n\n$6753+4201-1456+1247+2456$\n\n$=\\left(6753+1247\\right)+4201+\\left(2456-1456\\right)$\n\n$=8000+4201+1000$\n\n$=13201$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 II.2",
+  "gop_y": false,
+  "dap_an": "$308$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nửa chu vi là $72:2=36$ cm. Giảm chiều dài $4$ cm và tăng chiều rộng $4$ cm thì được hình vuông, tức là hai cạnh mới bằng nhau, nên chiều dài hơn chiều rộng $4+4=8$ cm. Biết tổng $36$ và hiệu $8$ thì giải tổng–hiệu, rồi tính diện tích.\n\nChú ý: hiệu là $4+4=8$ cm chứ không phải $4$ cm (chiều dài giảm $4$ và chiều rộng tăng $4$ mới gặp nhau).\n\nKiểm lại: $22-4=18$ và $14+4=18$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $72:2=36$ (cm)\n\nGiảm chiều dài $4$ cm và tăng chiều rộng $4$ cm thì được hình vuông nên chiều dài hơn chiều rộng là: $4+4=8$ (cm)\n\nTa có sơ đồ:\n\nChiều rộng hình chữ nhật là: $\\left(36-8\\right):2=14$ (cm)\n\nChiều dài hình chữ nhật là: $14+8=22$ (cm)\n\nDiện tích hình chữ nhật là: $22\\times 14=308$ ($cm^2$)\n\nĐáp số: $308$ $cm^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 14,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "8 cm"
+    }
+   ],
+   "tong": "36 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 12 II.3",
+  "gop_y": false,
+  "dap_an": "Hà: $74$ con; Hoa: $91$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau khi mỗi bạn gấp thêm, **tổng** tăng $12+9=21$ con, và ta biết **hiệu** lúc sau ($14$ con). Giải tổng–hiệu được số hạc **lúc sau** của từng bạn, rồi trừ số vừa gấp thêm để ra số hạc lúc đầu.\n\nChú ý: Hà gấp thêm $12$ con nên lúc đầu Hà ít hơn lúc sau $12$ con; Hoa gấp thêm $9$ con nên lúc đầu Hoa ít hơn lúc sau $9$ con. Đừng trừ nhầm cho nhau.\n\nKiểm lại: $74+91=165$; sau đó Hà $86$ con, Hoa $100$ con, Hà ít hơn Hoa $14$ con đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc sau, tổng số hạc giấy của hai bạn là: $165+12+9=186$ (con)\n\nTa có sơ đồ:\n\nSố hạc giấy của Hà lúc sau là: $\\left(186-14\\right):2=86$ (con)\n\nSố hạc giấy của Hoa lúc sau là: $86+14=100$ (con)\n\nLúc đầu Hà có số con hạc giấy là: $86-12=74$ (con)\n\nLúc đầu Hoa có số con hạc giấy là: $100-9=91$ (con)\n\nĐáp số: Hà $74$ con; Hoa $91$ con",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 86,
+   "hang": [
+    {
+     "nhan": "Hà (lúc sau)",
+     "phan": 1
+    },
+    {
+     "nhan": "Hoa (lúc sau)",
+     "phan": 1,
+     "them": "14 con"
+    }
+   ],
+   "tong": "186 con",
+   "dau_hoi": [
+    "Hà (lúc sau)",
+    "Hoa (lúc sau)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.1",
+  "gop_y": false,
+  "dap_an": "$16496$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức có phép trừ và phép chia nên **chia trước, trừ sau**: $6528:204$ làm trước.\n\nPhép chia $6528:204=32$ (kiểm lại: $204\\times 32=6528$).\n\nChú ý: không trừ $16528-6528=10000$ trước rồi mới chia.\n\n**Phần 2. Trình bày**\n\n$16528-6528:204$\n\n$=16528-32$\n\n$=16496$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.2",
+  "gop_y": false,
+  "dap_an": "$a=103$ ; $b=79$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài **tổng–hiệu**: tổng $a+b=182$, hiệu $a-b=24$ nên $a$ là số lớn, $b$ là số bé. Số bé bằng (tổng trừ hiệu) chia $2$, số lớn bằng số bé cộng hiệu.\n\nKiểm lại: $103+79=182$ và $103-79=24$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $a-b=24$ nên $a$ là số lớn, $b$ là số bé.\n\nTa có sơ đồ:\n\nSố bé $b$ là: $\\left(182-24\\right):2=79$\n\nSố lớn $a$ là: $79+24=103$\n\nĐáp số: $a=103$ ; $b=79$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 79,
+   "hang": [
+    {
+     "nhan": "Số bé (b)",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn (a)",
+     "phan": 1,
+     "them": "24"
+    }
+   ],
+   "tong": "182",
+   "dau_hoi": [
+    "Số bé (b)",
+    "Số lớn (a)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.3",
+  "gop_y": false,
+  "dap_an": "$4$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài **tổng–hiệu**: tổng số tuổi $13$, chị hơn em $5$ tuổi. Tuổi em là số bé, bằng (tổng trừ hiệu) chia $2$.\n\nKiểm lại: em $4$ tuổi, chị $9$ tuổi; $4+9=13$ và $9-4=5$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTuổi em hiện nay là: $\\left(13-5\\right):2=4$ (tuổi)\n\nĐáp số: $4$ tuổi",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Tuổi em",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi chị",
+     "phan": 1,
+     "them": "5 tuổi"
+    }
+   ],
+   "tong": "13 tuổi",
+   "dau_hoi": [
+    "Tuổi em"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.4",
+  "gop_y": false,
+  "dap_an": "$m=89$ ; $n=101$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $2\\times m+2\\times n=2\\times\\left(m+n\\right)$ (nhân một số với một tổng), nên $m+n=380:2=190$. Đã biết **tổng** $190$ và **hiệu** $n-m=12$ nên $n$ là số lớn, $m$ là số bé: bài tổng–hiệu.\n\nKiểm lại: $2\\times 89+2\\times 101=178+202=380$ và $101-89=12$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có $2\\times m+2\\times n=2\\times\\left(m+n\\right)$ nên tổng $m+n$ là: $380:2=190$\n\nVì $n-m=12$ nên $n$ là số lớn, $m$ là số bé.\n\nTa có sơ đồ:\n\nSố $m$ là: $\\left(190-12\\right):2=89$\n\nSố $n$ là: $89+12=101$\n\nĐáp số: $m=89$ ; $n=101$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 89,
+   "hang": [
+    {
+     "nhan": "Số bé (m)",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn (n)",
+     "phan": 1,
+     "them": "12"
+    }
+   ],
+   "tong": "190",
+   "dau_hoi": [
+    "Số bé (m)",
+    "Số lớn (n)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.5",
+  "gop_y": false,
+  "dap_an": "$2400$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nửa chu vi là $196:2=98$ cm. Hai số chẵn **liên tiếp** hơn kém nhau $2$ đơn vị, nên chiều dài hơn chiều rộng $2$ cm. Biết tổng $98$ và hiệu $2$ thì giải tổng–hiệu, rồi tính diện tích.\n\nKiểm lại: $48$ và $50$ là hai số chẵn liên tiếp, $48+50=98$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $196:2=98$ (cm)\n\nHai số chẵn liên tiếp hơn kém nhau $2$ đơn vị nên chiều dài hơn chiều rộng $2$ cm.\n\nTa có sơ đồ:\n\nChiều rộng hình chữ nhật là: $\\left(98-2\\right):2=48$ (cm)\n\nChiều dài hình chữ nhật là: $48+2=50$ (cm)\n\nDiện tích hình chữ nhật là: $50\\times 48=2400$ ($cm^2$)\n\nĐáp số: $2400$ $cm^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "2 cm"
+    }
+   ],
+   "tong": "98 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.6",
+  "gop_y": false,
+  "dap_an": "năm $1987$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổng hai năm sinh là $3967$ (số **lẻ**) nên hai năm sinh có một số chẵn và một số lẻ. Hai số khác tính chẵn lẻ thì các số nằm **giữa** chúng xếp xen kẽ chẵn, lẻ và có số chẵn **bằng** số lẻ (vd. giữa $10$ và $17$ có $11,12,13,14,15,16$: $3$ lẻ, $3$ chẵn). Giữa có $3$ số chẵn nên cũng có $3$ số lẻ, tức là có $6$ số; vậy hai năm sinh hơn kém nhau $6+1=7$ năm.\n\nMẹ John nhiều tuổi hơn nên sinh sớm hơn, năm sinh **bé hơn**. Biết tổng $3967$ và hiệu $7$ thì giải tổng–hiệu.\n\nKiểm lại: $1980$ và $1987$; giữa có $1982,1984,1986$ là $3$ số chẵn; $1980+1987=3967$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng hai năm sinh là $3967$, là số lẻ, nên một năm sinh là số chẵn, một năm sinh là số lẻ.\n\nHai số khác tính chẵn lẻ nên các số ở giữa hai năm sinh xếp xen kẽ, số chẵn bằng số lẻ; giữa có $3$ số chẵn thì cũng có $3$ số lẻ.\n\nSố các số nằm giữa hai năm sinh là: $3+3=6$ (số)\n\nHai năm sinh hơn kém nhau: $6+1=7$ (năm)\n\nMẹ John nhiều tuổi hơn mẹ Ryan nên sinh sớm hơn, năm sinh của mẹ John bé hơn.\n\nTa có sơ đồ:\n\nNăm sinh của mẹ John là: $\\left(3967-7\\right):2=1980$\n\nNăm sinh của mẹ Ryan là: $1980+7=1987$\n\nĐáp số: năm $1987$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1980,
+   "hang": [
+    {
+     "nhan": "Năm sinh mẹ John",
+     "phan": 1
+    },
+    {
+     "nhan": "Năm sinh mẹ Ryan",
+     "phan": 1,
+     "them": "7"
+    }
+   ],
+   "tong": "3967",
+   "dau_hoi": [
+    "Năm sinh mẹ Ryan"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.7",
+  "gop_y": false,
+  "dap_an": "$2023$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép **bốn số liền nhau** thành một nhóm: $2022+2021-2020-2019=\\left(2022-2020\\right)+\\left(2021-2019\\right)=2+2=4$. Nhóm nào cũng bằng $4$.\n\nTừ $2022$ đến $1$ có $2022$ số; $2022:4=505$ (dư $2$) nên có $505$ nhóm và còn hai số cuối cùng là $+2+1$.\n\nChú ý: hai số cuối đứng với dấu $+$ (không thuộc nhóm đủ bốn số), nên cộng thêm $2+1=3$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $2022+2021-2020-2019=\\left(2022-2020\\right)+\\left(2021-2019\\right)=2+2=4$\n\nTừ $2022$ đến $1$ có $2022$ số hạng.\n\nTa có $2022:4=505$ (dư $2$) nên có $505$ nhóm, mỗi nhóm bằng $4$, còn lại hai số hạng cuối là $+2+1$.\n\nGiá trị của biểu thức là: $4\\times 505+2+1=2023$\n\nĐáp số: $2023$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.8",
+  "gop_y": false,
+  "dap_an": "$1008$ ; $1016$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"giữa chúng có $7$ số tự nhiên khác\" nghĩa là hai số cách nhau $7+1=8$ đơn vị (vd. giữa $3$ và $5$ có $1$ số là $4$, hiệu $2$). Biết tổng $2024$ và hiệu $8$ thì giải tổng–hiệu.\n\nKiểm lại: $1008$ và $1016$; giữa có $1009,\\ldots,1015$ là $7$ số; $1008+1016=2024$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai số hơn kém nhau: $7+1=8$\n\nTa có sơ đồ:\n\nSố bé là: $\\left(2024-8\\right):2=1008$\n\nSố lớn là: $1008+8=1016$\n\nĐáp số: $1008$ và $1016$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1008,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "8"
+    }
+   ],
+   "tong": "2024",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.9",
+  "gop_y": false,
+  "dap_an": "Jose: $752$; Mie: $785$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổng $1537$ là số **lẻ** nên hai số khác tính chẵn lẻ. Khi đó các số nằm **giữa** hai số xếp xen kẽ chẵn, lẻ và có số lẻ **bằng** số chẵn. Giữa có $16$ số lẻ nên cũng có $16$ số chẵn, tất cả $32$ số; vậy hai số hơn kém nhau $32+1=33$. Số Jose viết bé hơn. Giải tổng–hiệu.\n\nKiểm lại: $752$ và $785$; giữa có $753,754,\\ldots,784$ là $32$ số, trong đó $16$ số lẻ; $752+785=1537$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng hai số là $1537$, là số lẻ, nên hai số khác tính chẵn lẻ.\n\nCác số ở giữa xếp xen kẽ chẵn, lẻ nên giữa có $16$ số lẻ thì cũng có $16$ số chẵn.\n\nSố các số nằm giữa hai số là: $16+16=32$ (số)\n\nHai số hơn kém nhau: $32+1=33$\n\nTa có sơ đồ:\n\nSố Jose viết là: $\\left(1537-33\\right):2=752$\n\nSố Mie viết là: $752+33=785$\n\nĐáp số: Jose viết $752$; Mie viết $785$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 752,
+   "hang": [
+    {
+     "nhan": "Số Jose viết",
+     "phan": 1
+    },
+    {
+     "nhan": "Số Mie viết",
+     "phan": 1,
+     "them": "33"
+    }
+   ],
+   "tong": "1537",
+   "dau_hoi": [
+    "Số Jose viết",
+    "Số Mie viết"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 I.10",
+  "gop_y": false,
+  "dap_an": "$108$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi hình chữ nhật mới chia $2$ thì được nửa chu vi mới. Gấp đôi chiều dài: nửa chu vi mới là $2$ chiều dài $+$ $1$ chiều rộng $=66:2=33$ cm. Gấp đôi chiều rộng: nửa chu vi mới là $1$ chiều dài $+$ $2$ chiều rộng $=60:2=30$ cm. Cộng hai kết quả được $3$ chiều dài $+$ $3$ chiều rộng $=63$, nên (chiều dài $+$ chiều rộng) $=63:3=21$ cm.\n\nCó tổng $21$ và hiệu $3$ thì giải tổng–hiệu, rồi tính diện tích.\n\nKiểm lại: dài $12$, rộng $9$: $2\\times 12+9=33$ và $12+2\\times 9=30$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình mới khi gấp đôi chiều dài (hai chiều dài cộng một chiều rộng) là: $66:2=33$ (cm)\n\nNửa chu vi hình mới khi gấp đôi chiều rộng (một chiều dài cộng hai chiều rộng) là: $60:2=30$ (cm)\n\nBa chiều dài cộng ba chiều rộng là: $33+30=63$ (cm)\n\nNửa chu vi hình chữ nhật ban đầu là: $63:3=21$ (cm)\n\nTa có sơ đồ:\n\nChiều rộng hình chữ nhật là: $\\left(21-3\\right):2=9$ (cm)\n\nChiều dài hình chữ nhật là: $9+3=12$ (cm)\n\nDiện tích hình chữ nhật là: $12\\times 9=108$ ($cm^2$)\n\nĐáp số: $108$ $cm^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "3 cm"
+    }
+   ],
+   "tong": "21 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 II.1a",
+  "gop_y": false,
+  "dap_an": "$100$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai phép chia có **cùng số chia** $45$ và ở giữa là dấu trừ nên trừ hai số bị chia trước rồi chia một lần: $a:c-b:c=\\left(a-b\\right):c$.\n\nỞ đây $6075-1575=4500$ chia cho $45$ rất dễ.\n\n**Phần 2. Trình bày**\n\n$6075:45-1575:45$\n\n$=\\left(6075-1575\\right):45$\n\n$=4500:45$\n\n$=100$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 II.1b",
+  "gop_y": false,
+  "dap_an": "$3600$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhìn hai tích $12\\times 44\\times 3$ và $4\\times 56\\times 9$. Ghép $12\\times 3=36$ và $4\\times 9=36$ để xuất hiện **thừa số chung $36$**; sau đó đưa $36$ ra ngoài: $36\\times 44+36\\times 56=36\\times\\left(44+56\\right)$.\n\nKiểm lại: $12\\times 44\\times 3=1584$; $4\\times 56\\times 9=2016$; $1584+2016=3600$ đúng.\n\n**Phần 2. Trình bày**\n\n$12\\times 44\\times 3+4\\times 56\\times 9$\n\n$=\\left(12\\times 3\\right)\\times 44+\\left(4\\times 9\\right)\\times 56$\n\n$=36\\times 44+36\\times 56$\n\n$=36\\times\\left(44+56\\right)$\n\n$=36\\times 100$\n\n$=3600$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 II.2",
+  "gop_y": false,
+  "dap_an": "$999$ ; $1025$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai số lẻ liên tiếp hơn kém nhau $2$ đơn vị. Giữa hai số có $12$ số lẻ khác nên có $12+1=13$ khoảng cách, mỗi khoảng $2$ đơn vị, vậy hai số hơn kém nhau $13\\times 2=26$. Biết tổng $2024$ và hiệu $26$ thì giải tổng–hiệu.\n\nKiểm lại: $999$ và $1025$ đều lẻ, giữa có $1001,1003,\\ldots,1023$ là $12$ số lẻ; $999+1025=2024$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai số lẻ hơn kém nhau: $\\left(12+1\\right)\\times 2=26$\n\nTa có sơ đồ:\n\nSố bé là: $\\left(2024-26\\right):2=999$\n\nSố lớn là: $999+26=1025$\n\nĐáp số: $999$ và $1025$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 999,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "26"
+    }
+   ],
+   "tong": "2024",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 13 II.3",
+  "gop_y": false,
+  "dap_an": "Thùng thứ nhất: $262$ lít; thùng thứ hai: $245$ lít; thùng thứ ba: $217$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài tổng–hiệu **hai tầng**. Tầng 1: thùng thứ ba so với **hai thùng đầu gộp lại**: tổng ba thùng là $724$, thùng thứ ba ít hơn hai thùng đầu $290$ lít, nên giải tổng–hiệu được thùng thứ ba và tổng hai thùng đầu. Tầng 2: biết tổng hai thùng đầu và thùng thứ nhất nhiều hơn thùng thứ hai $17$ lít, giải tổng–hiệu lần nữa.\n\nKiểm lại: $262+245+217=724$; $\\left(262+245\\right)-217=290$; $262-245=17$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nSố lít mật ong ở thùng thứ ba là: $\\left(724-290\\right):2=217$ (lít)\n\nSố lít mật ong ở hai thùng đầu là: $217+290=507$ (lít)\n\nTa có sơ đồ:\n\nSố lít mật ong ở thùng thứ hai là: $\\left(507-17\\right):2=245$ (lít)\n\nSố lít mật ong ở thùng thứ nhất là: $245+17=262$ (lít)\n\nĐáp số: Thùng thứ nhất $262$ lít; thùng thứ hai $245$ lít; thùng thứ ba $217$ lít",
+  "so_do_mo_ta": [
+   {
+    "gia_tri_phan": 217,
+    "hang": [
+     {
+      "nhan": "Thùng thứ ba",
+      "phan": 1
+     },
+     {
+      "nhan": "Hai thùng đầu",
+      "phan": 1,
+      "them": "290 lít"
+     }
+    ],
+    "tong": "724 lít",
+    "dau_hoi": [
+     "Thùng thứ ba",
+     "Hai thùng đầu"
+    ]
+   },
+   {
+    "gia_tri_phan": 245,
+    "hang": [
+     {
+      "nhan": "Thùng thứ hai",
+      "phan": 1
+     },
+     {
+      "nhan": "Thùng thứ nhất",
+      "phan": 1,
+      "them": "17 lít"
+     }
+    ],
+    "tong": "507 lít",
+    "dau_hoi": [
+     "Thùng thứ hai",
+     "Thùng thứ nhất"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 I.4",
+  "gop_y": false,
+  "dap_an": "$550$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **gấp** một thừa số lên bao nhiêu lần thì tích gấp lên bấy nhiêu lần; **giảm** một thừa số đi bao nhiêu lần thì tích giảm đi bấy nhiêu lần.\n\nGấp thừa số thứ nhất lên $2$ lần: tích gấp $2$ lần. Giảm thừa số thứ hai đi $3$ lần: tích giảm $3$ lần. Vậy tích mới bằng $825$ nhân $2$ rồi chia $3$.\n\nChú ý: giảm thừa số thứ hai thì tích **giảm** (chia), không phải tăng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGấp thừa số thứ nhất lên hai lần thì tích gấp lên hai lần: $825\\times 2=1650$\n\nGiảm thừa số thứ hai đi ba lần thì tích giảm đi ba lần, tích mới là: $1650:3=550$\n\nĐáp số: $550$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 I.5",
+  "gop_y": false,
+  "dap_an": "$1215$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **giảm số bị chia** đi $3$ lần thì thương **giảm** $3$ lần; **giảm số chia** đi $5$ lần thì thương **tăng** $5$ lần. Vậy thương mới bằng thương ban đầu chia $3$ rồi nhân $5$.\n\nTính ngược lại: thương ban đầu bằng thương mới nhân $3$ rồi chia $5$.\n\nKiểm lại: $1215:3=405$; $405\\times 5=2025$ đúng.\n\nChú ý: hai thay đổi tác động ngược chiều lên thương (một giảm, một tăng), không được cộng gộp cùng chiều.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiảm số bị chia đi $3$ lần thì thương giảm đi $3$ lần; giảm số chia đi $5$ lần thì thương tăng lên $5$ lần.\n\nNên thương mới bằng thương ban đầu chia $3$ rồi nhân $5$.\n\nThương ban đầu là: $2025\\times 3:5=1215$\n\nĐáp số: $1215$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 I.7",
+  "gop_y": false,
+  "dap_an": "$2811$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số nhỏ nhất có ba chữ số khác nhau là $102$ (không phải $100$ hay $101$ vì có chữ số lặp lại). Gọi số cần tìm là $a$ thì $\\left(a+45\\right):28=102$. Làm ngược từng bước: $a+45$ là số bị chia nên bằng thương nhân số chia, rồi $a$ là số hạng chưa biết nên bằng tổng trừ $45$.\n\nKiểm lại: $\\left(2811+45\\right):28=2856:28=102$ đúng.\n\n**Phần 2. Trình bày**\n\nSố nhỏ nhất có ba chữ số khác nhau là $102$.\n\nGọi số cần tìm là $a$. Ta có:\n\n$\\begin{array}{l} \\left(a+45\\right):28=102 \\\\ a+45=102\\times 28 \\\\ a+45=2856 \\\\ a=2856-45 \\\\ a=2811 \\end{array}$\n\nVậy số cần tìm là $2811$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 I.8",
+  "gop_y": false,
+  "dap_an": "$71$ và $63$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thêm $8$ vào thừa số thứ nhất, giữ nguyên thừa số thứ hai thì tích mới hơn tích cũ đúng **$8$ lần thừa số thứ hai**. Vậy thừa số thứ hai bằng (tích mới trừ tích cũ) chia $8$. Có thừa số thứ hai rồi, thừa số thứ nhất bằng tích cũ chia thừa số thứ hai.\n\nKiểm lại: $71\\times 63=4473$ và $\\left(71+8\\right)\\times 63=79\\times 63=4977$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThêm $8$ vào thừa số thứ nhất và giữ nguyên thừa số thứ hai thì tích tăng thêm $8$ lần thừa số thứ hai.\n\nTích tăng thêm là: $4977-4473=504$\n\nThừa số thứ hai là: $504:8=63$\n\nThừa số thứ nhất là: $4473:63=71$\n\nĐáp số: $71$ và $63$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 I.9",
+  "gop_y": false,
+  "dap_an": "Số chia $25$; thương $141$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trong phép chia có dư, **số dư luôn bé hơn số chia**, nên số dư lớn nhất bằng số chia **trừ $1$**. Vậy số chia là $24+1=25$. Số bị chia trừ số dư thì chia hết cho số chia, ra thương.\n\nKiểm lại: $25\\times 141+24=3525+24=3549$ đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố dư lớn nhất bằng số chia trừ $1$ nên số chia là: $24+1=25$\n\nSố bị chia trừ đi số dư là: $3549-24=3525$\n\nThương của phép chia là: $3525:25=141$\n\nĐáp số: Số chia $25$; thương $141$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 I.10",
+  "gop_y": false,
+  "dap_an": "$338$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân với $33$ gồm nhân với $3$ chục và $3$ đơn vị; hai tích riêng đều bằng số cần tìm nhân $3$. Viết đúng thì tích riêng thứ hai phải lùi sang trái một cột. Anna viết hai tích riêng **thẳng cột** nên kết quả sai bằng số cần tìm nhân $3$ cộng số cần tìm nhân $3$, tức là số cần tìm nhân $\\left(3+3\\right)$.\n\nKiểm lại: $338\\times 6=2028$ đúng. (Kết quả đúng của phép nhân là $338\\times 33=11154$.)\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai tích riêng đều bằng số cần tìm nhân $3$. Anna viết thẳng cột nên kết quả sai bằng số cần tìm nhân $3$ cộng số cần tìm nhân $3$, tức là số cần tìm nhân $\\left(3+3\\right)$.\n\nSố tự nhiên cần tìm là: $2028:\\left(3+3\\right)=338$\n\nĐáp số: $338$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 II.1",
+  "gop_y": false,
+  "dap_an": "$768$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: muốn tính diện tích hình chữ nhật phải biết cả chiều dài và chiều rộng. Đề cho chiều dài, còn chiều rộng thì tìm từ câu \"chiều dài gấp ba lần chiều rộng\".\n\nBước 1 (chia): chiều rộng bằng chiều dài chia cho $3$. Bước 2 (nhân): diện tích bằng chiều dài nhân chiều rộng.\n\nChú ý: chiều dài **gấp** ba lần chiều rộng nên chiều rộng bé hơn, phải **chia** $48$ cho $3$, không nhân.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng khu vườn là: $48:3=16$ (m)\n\nDiện tích khu vườn là: $48\\times 16=768$ ($m^2$)\n\nĐáp số: $768$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 II.2",
+  "gop_y": false,
+  "dap_an": "$11250$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi khối mua số vở bằng số học sinh nhân số vở mỗi bạn mua; rồi cộng số vở của hai khối.\n\nChú ý: hai khối mua số quyển khác nhau ($15$ và $20$), không nhân chung một số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối Bốn mua tất cả số quyển vở là: $330\\times 15=4950$ (quyển)\n\nKhối Năm mua tất cả số quyển vở là: $315\\times 20=6300$ (quyển)\n\nCả hai khối mua tất cả số quyển vở là: $4950+6300=11250$ (quyển)\n\nĐáp số: $11250$ quyển vở",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 14 II.3",
+  "gop_y": false,
+  "dap_an": "$805$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết nhầm $23$ thành $32$ nghĩa là đã nhân số đó với $32$ thay vì $23$, nên kết quả tăng thêm $\\left(32-23\\right)$ lần số đó. Vậy số đó bằng $315$ chia $\\left(32-23\\right)$. Có số đó rồi thì nhân với $23$ để ra tích đúng.\n\nKiểm lại: $35\\times 32=1120$ và $1120-805=315$ đúng.\n\nChú ý: đề hỏi **tích đúng** (nhân với $23$), không phải tích sai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNhân với $32$ thay vì $23$ thì kết quả tăng thêm số cần tìm nhân với hiệu hai thừa số.\n\nHiệu của hai thừa số là: $32-23=9$\n\nSố tự nhiên cần tìm là: $315:9=35$\n\nTích đúng của phép nhân là: $35\\times 23=805$\n\nĐáp số: $805$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

@@ -1,0 +1,82 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-lo10B-20261008",
+ "cau": {
+  "PCT 11 I.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé (b) 1 phần · Số lớn (a) 1 phần + 56 · ngoặc tổng 2022 · phần = 983, đúng tỉ lệ"
+  },
+  "PCT 11 I.7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 1 phần + 82 dm · ngoặc tổng 280 dm · phần = 99, đúng tỉ lệ"
+  },
+  "PCT 11 I.10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Hoa chuông vàng 1 phần · Hoa sữa 1 phần + 1 cây · ngoặc tổng 81 cây · phần = 40, đúng tỉ lệ"
+  },
+  "PCT 12 I.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 1 phần + 26 cm · ngoặc tổng 86 cm · phần = 30, đúng tỉ lệ"
+  },
+  "PCT 12 I.7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Thùng thứ hai 1 phần · Thùng thứ nhất 1 phần + 20 lít · ngoặc tổng 1750 lít · phần = 865, đúng tỉ lệ"
+  },
+  "PCT 12 I.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tuổi Alice 1 phần · Tuổi chị 1 phần + 9 tuổi · ngoặc tổng 43 tuổi · phần = 17, đúng tỉ lệ"
+  },
+  "PCT 12 I.10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Cạnh thứ ba 1 phần · Cạnh thứ hai 1 phần + 3 cm · ngoặc tổng 21 cm · phần = 9, đúng tỉ lệ"
+  },
+  "PCT 12 II.2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 1 phần + 8 cm · ngoặc tổng 36 cm · phần = 14, đúng tỉ lệ"
+  },
+  "PCT 12 II.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Hà (lúc sau) 1 phần · Hoa (lúc sau) 1 phần + 14 con · ngoặc tổng 186 con · phần = 86, đúng tỉ lệ"
+  },
+  "PCT 13 I.2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé (b) 1 phần · Số lớn (a) 1 phần + 24 · ngoặc tổng 182 · phần = 79, đúng tỉ lệ"
+  },
+  "PCT 13 I.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tuổi em 1 phần · Tuổi chị 1 phần + 5 tuổi · ngoặc tổng 13 tuổi · phần = 4, đúng tỉ lệ"
+  },
+  "PCT 13 I.4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé (m) 1 phần · Số lớn (n) 1 phần + 12 · ngoặc tổng 190 · phần = 89, đúng tỉ lệ"
+  },
+  "PCT 13 I.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 1 phần + 2 cm · ngoặc tổng 98 cm · phần = 48, đúng tỉ lệ"
+  },
+  "PCT 13 I.6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Năm sinh mẹ John 1 phần · Năm sinh mẹ Ryan 1 phần + 7 · ngoặc tổng 3967 · phần = 1980, đúng tỉ lệ"
+  },
+  "PCT 13 I.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 1 phần · Số lớn 1 phần + 8 · ngoặc tổng 2024 · phần = 1008, đúng tỉ lệ"
+  },
+  "PCT 13 I.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số Jose viết 1 phần · Số Mie viết 1 phần + 33 · ngoặc tổng 1537 · phần = 752, đúng tỉ lệ"
+  },
+  "PCT 13 I.10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 1 phần + 3 cm · ngoặc tổng 21 cm · phần = 9, đúng tỉ lệ"
+  },
+  "PCT 13 II.2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 1 phần · Số lớn 1 phần + 26 · ngoặc tổng 2024 · phần = 999, đúng tỉ lệ"
+  },
+  "PCT 13 II.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Thùng thứ ba 1 phần · Hai thùng đầu 1 phần + 290 lít · ngoặc tổng 724 lít · phần = 217 ‖ Thùng thứ hai 1 phần · Thùng thứ nhất 1 phần + 17 lít · ngoặc tổng 507 lít · phần = 245, đúng tỉ lệ"
+  }
+ }
+}

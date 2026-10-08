@@ -162,6 +162,50 @@ const demSoTu = (chu, k, dk = () => true) => { let n = 0; const di = (s, dung) =
 const tongSoTu = (chu, k) => { let t = 0; const di = (s, dung) => { if (s.length === k) { if (s[0] !== '0') t += Number(s); return } for (const c of chu) if (!dung.has(c)) { dung.add(c); di(s + c, dung); dung.delete(c) } }; di('', new Set()); return t }
 
 export const KIEM = {
+  // ── lô 10D: Phiếu cuối tuần 22–28 ──
+  'PCT 22 I.1': () => [String(18625 / 125)], 'PCT 22 I.2': () => [String(1880 / 40)], 'PCT 22 I.3': () => [String(Math.ceil(1072 / 25))], 'PCT 22 I.4': () => [String(864 / 12 + 336 / 12)],
+  'PCT 22 I.5': () => [String(1320 / 66)], 'PCT 22 I.6': () => [String(954 / 9)], 'PCT 22 I.7': () => [String(Math.max(...tim(100, 999, khacNhau)) / 7)], 'PCT 22 I.8': () => [String((252 * 35) / 210)],
+  'PCT 22 I.9': () => [String((3150 + 3150 / 5) / 7)], 'PCT 22 I.10': () => [String(motNghiem(tim(2, 2022, (d) => 288 * d + d - 1 === 2022), '22 I.10'))],
+  'PCT 22 II.1a': () => [String(105 * 214)], 'PCT 22 II.1b': () => [String(1242 / 27)], 'PCT 22 II.1c': () => [String(Math.floor(8872 / 22)), String(8872 % 22)], 'PCT 22 II.1d': () => [String(Math.floor(945 / 221)), String(945 % 221)],
+  'PCT 22 II.2': () => [String((552 / 23) * 7)], 'PCT 22 II.3': () => [String(motNghiem(tim(0, 200, (n) => 3 * (n + 4) === 36 + 44 + n), '22 II.3'))],
+  'PCT 23 I.1': () => [String(9548 - 6448 / 31)], 'PCT 23 I.2': () => [String(motNghiem(tim(1, 882, (y) => 2882 - 882 / y === 2833), '23 I.2'))], 'PCT 23 I.3': () => [String(8 * 7 + 6)],
+  'PCT 23 I.4': () => [String((1216 * 3) / 24)], 'PCT 23 I.5': () => [String([30, 35, 32, 33, 31, 29, 28, 32].reduce((a, b) => a + b))], 'PCT 23 I.6': () => { const d = [33, 32, 30, 29, 31, 34, 35]; return [String(tbc(Math.min(...d), Math.max(...d)))] },
+  'PCT 23 I.7': () => [String(2075 / 25 - 64)], 'PCT 23 I.8': () => [String((96000 / 4) * 5 + (72000 / 6) * 2)], 'PCT 23 I.9': () => [String(motNghiem(tim(0, 500, (t) => 3 * (t - 2) === 40 + 30 + t), '23 I.9'))],
+  'PCT 23 I.10': () => { const a = motNghiem(tim(1, 1375, (a) => a % 2 === 1 && 11 * a + 110 === 1375), '23 I.10'); return [String(a + 20)] },
+  // PCT 23 II.1a (sắp xếp ngày theo quãng đường): soát tay — thứ tự Thứ tư < Thứ sáu < Thứ hai < Thứ ba < Thứ năm
+  'PCT 23 II.1b': () => [String(tbc(4600, 4620, 4254, 5000, 4376))], 'PCT 23 II.2': () => [String((448 / 32) * 15)],
+  'PCT 23 II.3': () => [String(tim(11, 66, (n) => { const a = Math.floor(n / 10), b = n % 10; return a >= 1 && a <= 6 && b >= 1 && b <= 6 && a + b === 8 }).length)], // 2 xúc xắc phân biệt (như LT 15.13)
+  'PCT 24 I.1': () => [String(tbc(28, 30, 33, 34, 35))], 'PCT 24 I.2': () => [String((300000 / 5) * 8)],
+  'PCT 24 I.3': () => { const d = [28, 22, 19, 24, 32, 30, 31]; return [['thứ Hai', 'thứ Ba', 'thứ Tư', 'thứ Năm', 'thứ Sáu', 'thứ Bảy', 'Chủ nhật'][d.indexOf(Math.max(...d))]] },
+  'PCT 24 I.4': () => [String((480 / 24) * (24 - 15))], 'PCT 24 I.6': () => ['12/13'], 'PCT 24 I.7': () => [ps(P(54, 78))], 'PCT 24 I.9': () => [String(tim(1, 24, (a) => 24 % a === 0).length)],
+  'PCT 24 I.10': () => [String(tim(1, 99, (b) => toiGianP(5, b)).length)],
+  'PCT 24 II.1a': () => { const f = [[3, 12], [11, 19], [15, 45], [9, 25], [36, 54]]; return f.map(([a, b]) => `${a}/${b}`) }, 'PCT 24 II.1b': () => [[3, 12], [15, 45], [36, 54]].map(([a, b]) => ps(P(a, b))),
+  ...(() => { const d = [30, 32, 31, 34, 35, 36, 30, 32, 31, 33, 28], t = tbc(...d); return { 'PCT 24 II.3a': () => [String(d.length)], 'PCT 24 II.3b': () => [String(t)], 'PCT 24 II.3c': () => [String(d.filter((x) => x > t).length)] } })(),
+  'PCT 25 I.1': () => [String(tbc(7, 8, 9, 10, 9, 9, 10, 10, 10, 8, 9, 9))], 'PCT 25 I.2': () => [String(108 / (72 / 6))], 'PCT 25 I.3': () => [String(23 * 3 - 18 - 24)],
+  'PCT 25 I.4': () => [String((9 * 13600 + 7 * 12400) / 16)], 'PCT 25 I.5': () => [ps(P(56, 72))], 'PCT 25 I.6': () => [[[12, 15], [20, 100], [16, 32], [9, 24]].filter(([a, b]) => a * 8 === 3 * b).map(([a, b]) => `${a}/${b}`)[0]],
+  'PCT 25 I.7': () => [String((3 * 24) / 4 + 5)], 'PCT 25 I.8': () => [ps(P(12 * 7 * 4, 36 * 6))], 'PCT 25 I.9': () => { const t = (375 * 2 - 500) / 2; return [ps(P(t, t + 500))] },
+  'PCT 25 I.10': () => ['1/30', '1/42'], 'PCT 25 II.1a': () => [String((3 * 24) / 8)], 'PCT 25 II.1b': () => [String((5 * 36) / 6 - 5)], 'PCT 25 II.1c': () => [String((12 * 40) / 15 - 4)],
+  'PCT 25 II.2': () => { const m = motNghiem(tim(1, 27, (m) => m - 7 === 27 - m), '25 II.2'); return [`${27 - m}/${m}`] },
+  'PCT 25 II.3a': () => [ps(tinh('\\frac{24\\times 45}{3\\times 5\\times 8\\times 9}'))], 'PCT 25 II.3b': () => [ps(tinh('\\frac{3636\\times 54}{4848\\times 45}'))],
+  'PCT 26 I.1': () => ['<'], 'PCT 26 I.2': () => ['9/8'], 'PCT 26 I.3': () => nhomBang([[8, 12], [20, 8], [14, 21], [12, 16]]), 'PCT 26 I.4': () => [String(3 * 24)], 'PCT 26 I.5': () => [`${(7 / 42) * 48}/48`],
+  'PCT 26 I.6': () => [xep([[3, 4], [7, 8], [13, 16]], true).split('>')[0]], 'PCT 26 I.7': () => [xep([[1, 3], [4, 7], [2, 9]]).split('<')[0]], 'PCT 26 I.8': () => [ss([2023, 2025], [2025, 2027])],
+  'PCT 26 I.9': () => [xep([[3, 2], [7, 8], [6, 5], [3, 4]], true)], 'PCT 26 I.10': () => [String(tim(0, 12, (n) => 4 * n > 12 && 8 * n < 60).length)],
+  'PCT 26 II.1a': () => quyDong([3, 4], [11, 12]), 'PCT 26 II.1b': () => quyDong([3, 7], [5, 9]), 'PCT 26 II.1c': () => quyDong([1, 2], [3, 5], [11, 20]),
+  'PCT 26 II.2': () => [String(motNghiem(tim(0, 53, (m) => (53 - m) * 9 === 5 * 90), '26 II.2'))], 'PCT 26 II.3': () => [2023 * 2024 > 2022 * 2025 ? 'A>1' : 'A<1'],
+  'PCT 27 I.1': () => [ps(tinh('\\frac{1}{9}+\\frac{2}{9}+\\frac{5}{9}'))], 'PCT 27 I.2': () => [ps(giaiY('y+\\frac{1}{5}', '\\frac{9}{10}'))], 'PCT 27 I.3': () => [ps(tinh('\\frac{1}{4}+\\frac{1}{2}'))],
+  'PCT 27 I.4': () => [ps(tinh('\\frac{1}{4}+\\frac{1}{4}+\\frac{1}{5}'))], 'PCT 27 I.5': () => [ps(tinh('\\frac{7}{20}+\\frac{5}{8}+\\frac{13}{20}+\\frac{11}{8}'))], 'PCT 27 I.6': () => [ps(tinh('\\frac{1}{4}+\\frac{1}{5}+\\frac{3}{10}'))],
+  'PCT 27 I.7': () => tim(0, 20, (n) => n > 5 && n < 8).map(String), 'PCT 27 I.8': () => [ps(giaiY('y-2-\\frac{7}{8}', '\\frac{9}{4}'))],
+  'PCT 27 I.9': () => [ps(tinh('\\frac{30\\times 25\\times 7\\times 8}{75\\times 8\\times 12\\times 14}'))], 'PCT 27 I.10': () => [ps(tong(0, 4, (i) => P(2, (5 + 2 * i) * (7 + 2 * i))))],
+  'PCT 27 II.1a': () => [ps(tinh('\\frac{1}{2}+\\frac{2}{5}+\\frac{3}{10}'))], 'PCT 27 II.1b': () => [ps(tinh('\\frac{5}{4}-\\frac{7}{12}+\\frac{3}{8}'))], 'PCT 27 II.1c': () => [ps(tinh('\\frac{11}{5}-\\frac{7}{15}-\\frac{4}{3}'))],
+  'PCT 27 II.2': () => [ps(tinh('\\frac{7}{4}-\\frac{1}{2}-(\\frac{1}{2}+\\frac{1}{8})'))],
+  'PCT 27 II.3a': () => [ps(tinh('\\frac{8}{27}+\\frac{4}{15}+\\frac{19}{27}+\\frac{11}{15}'))], 'PCT 27 II.3b': () => [ps(tinh('\\frac{66}{30}+\\frac{12}{7}+\\frac{27}{81}-\\frac{5}{25}+\\frac{6}{9}-\\frac{10}{14}'))],
+  'PCT 28 I.1': () => [String(tbc(138, 142, 144, 140))], 'PCT 28 I.2': () => [String((96 / 8) * 5)], 'PCT 28 I.3': () => [xep([[3, 2], [18, 4], [20, 12]], true).split('>')[0]], 'PCT 28 I.4': () => [ss([9, 10], [3, 4])],
+  'PCT 28 I.5': () => [ps(tinh('\\frac{11}{12}+\\frac{5}{18}'))], 'PCT 28 I.6': () => [ps(P(4, 6))], 'PCT 28 I.7': () => [String(motNghiem(tim(0, 100, (n) => 3 * (n + 2) === 16 + 14 + n), '28 I.7'))],
+  'PCT 28 I.8': () => { const bao = 400 / (8 - 6); return [String((8 * bao) / 100), String((6 * bao) / 100)] }, 'PCT 28 I.9': () => [`${(17 + 5) / 2}/${(17 - 5) / 2}`],
+  'PCT 28 I.10': () => { const t = 2021 * 2022 + 18, m = 2020 * 2024 - 2000; return [t === m ? 'B=1' : t > m ? 'B>1' : 'B<1'] },
+  'PCT 28 II.1a': () => [ps(tinh('2\\times\\frac{3}{16}\\times\\frac{4}{15}\\times 5'))], 'PCT 28 II.1b': () => [ps(tinh('\\frac{6}{7}\\times\\frac{14}{9}\\times\\frac{3}{18}'))],
+  'PCT 28 II.1c': () => [ps(tinh('\\frac{9}{13}\\times\\frac{1}{3}+\\frac{9}{13}\\times\\frac{1}{4}+\\frac{7}{12}\\times\\frac{4}{13}'))], 'PCT 28 II.1d': () => [ps(tinh('\\frac{5}{8}\\times\\frac{5}{6}+\\frac{2}{3}\\times\\frac{10}{16}-\\frac{5}{8}\\times\\frac{1}{2}'))],
+  'PCT 28 II.2': () => [ps(tinh('\\frac{1}{8}+\\frac{1}{6}+2\\times\\frac{1}{6}'))], 'PCT 28 II.3': () => [ps(tong(0, 20, (i) => P(2, (1 + 4 * i) * (5 + 4 * i))))],
   // ── lô 10C: Phiếu cuối tuần 15–21 ──
   'PCT 15 I.1': () => [String([752, 2875, 10349, 98586].filter((x) => x % 5 === 0))], 'PCT 15 I.2': () => [String([918, 2020, 2022, 4653].filter((x) => x % 3 === 0 && x % 9 !== 0))],
   'PCT 15 I.3': () => [String(Math.min(...tim(1000, 9999, (n) => khacNhau(n) && chuSo(n).every((c) => [0, 2, 5, 4].includes(c)) && n % 10 === 0)))],
@@ -884,6 +928,17 @@ export const KIEM = {
   'LT 24.16': () => [String(motNghiem(tim(1, 5000, (t) => { if (t % 5) return false; const c1 = t - (t * 2) / 5; if (c1 % 3) return false; return c1 - (c1 / 3 + 20) === 60 }), '24.16'))],
   'LT 24.6': () => { const ds = []; for (let a = 15; a <= 120; a++) for (let b = 0; b <= 120 - a; b++) { const c = 120 - a - b; if (a - 15 === 40 && b + 15 - 10 === 40 && c + 10 === 40) ds.push([a, b, c]) } const [r] = ds; if (ds.length !== 1) throw new Error('24.6'); return r.map(String) },
   'PCT 10 I.9': () => [`x=${motNghiem(tim(0, 1000, (x) => { let s = 0; for (let k = 1; k <= 117; k += 4) s += x + k; return s === 2130 }), 'PCT 10 I.9')}`],
+  // ── phiếu cuối tuần: khớp CÁCH GHI đáp án của bản soạn (số không đổi) + câu GỘP ý (lô 10B–10D) ──
+  'PCT 15 I.9': () => tim(0, 99, (ab) => { const a = Math.floor(ab / 10), b = ab % 10, n = 50370 + a * 1000 + b; return khacNhau(n) && n % 15 === 0 }).map((ab) => `a=${Math.floor(ab / 10)},b=${ab % 10}`),
+  'PCT 15 II.3': () => tim(0, 99, (ab) => (20370 + Math.floor(ab / 10) * 1000 + (ab % 10)) % 45 === 0).map((ab) => `a=${Math.floor(ab / 10)},b=${ab % 10}`),
+  'PCT 26 I.3': () => nhomBang([[8, 12], [20, 8], [14, 21], [12, 16]]).flatMap((g) => g.split('=')),
+  'PCT 26 I.9': () => [xep([[3, 2], [7, 8], [6, 5], [3, 4]], true).replace(/>/g, ';')], // thứ tự đúng, ghi cách nhau " ; "
+  'PCT 28 I.4': () => [9 * 4 > 3 * 10 ? '>' : '<'],
+  'PCT 23 II.1a': () => { const d = { 'thứ hai': 4600, 'thứ ba': 4620, 'thứ tư': 4254, 'thứ năm': 5000, 'thứ sáu': 4376 }; return [Object.entries(d).sort((x, y) => x[1] - y[1]).map(([k]) => k).join(';')] },
+  'PCT 10 II.2': () => [String(2 * 80), String(tim(1, 80, () => true).reduce((s, k) => s + 2 * k, 0)), String(2024 / 2)],
+  'PCT 11 II.2': () => [String(4 + 29 * 3), String(tim(0, 29, () => true).reduce((s, k) => s + 4 + 3 * k, 0))],
+  'PCT 24 II.1': () => [...KIEM['PCT 24 II.1a'](), ...KIEM['PCT 24 II.1b']()],
+  'PCT 24 II.3': () => [...KIEM['PCT 24 II.3a'](), ...KIEM['PCT 24 II.3b'](), ...KIEM['PCT 24 II.3c']()],
 }
 
 /** Chuẩn hoá để so giá trị máy tính với chuỗi đáp án: bỏ $, khoảng trắng, \dfrac{a}{b} → a/b, \  ; về dạng thường. */

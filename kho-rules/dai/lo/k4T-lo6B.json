@@ -122,7 +122,7 @@
   "khoi": "4T",
   "dang_chinh": "T14T000000",
   "loai_cau": "tra_loi_ngan",
-  "noi_dung": "Tính giá trị biểu thức:\n$\\left(e+g\\right)\\timesh$ với $e=12987;g=11023$ và $h=2$.",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\left(e+g\\right)\\times h$ với $e=12987;g=11023$ và $h=2$.",
   "noi_dung_sach": "Tính giá trị biểu thức:\n$\\left( \\text{e}+\\text{g} \\right)\\times\\text{h}$ với $\\text{e}=12987;\\text{g}=11023$ và $\\text{h}=2$.",
   "dap_an": "$48020$",
   "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **thay chữ bằng số** rồi tính. Biểu thức có dấu ngoặc nên tính **trong ngoặc trước**: $e+g$, sau đó nhân với $h$.\n\n**Phần 2. Trình bày**\n\nNếu $e=12987;g=11023;h=2$ thì:\n\n$\\left(e+g\\right)\\times h$\n\n$=\\left(12987+11023\\right)\\times 2$\n\n$=24010\\times 2$\n\n$=48020$",

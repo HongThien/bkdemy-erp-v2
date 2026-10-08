@@ -41,7 +41,8 @@ export function maTuTieuDe(t, cha) {
 
 export const chuanDinhDang = (s) => s
   .replace(/\\overline\{([^}]*)\}/g, (_, x) => `\\overline{${x.replace(/\\ /g, '')}}`)   // sách gõ \overline{17a8\ b} — dấu cách thừa làm lọc trùng trượt
-  .replace(/\\frac\b/g, '\\dfrac').replace(/\\text\{\s*([a-zA-Z])\s*\}/g, '$1').replace(/\\overline\{\\text\{([^}]*)\}\}/g, '\\overline{$1}')
+  // \text{m} ⇒ m; nhưng đứng ngay sau một LỆNH (\times\text{m}) thì phải chèn dấu cách, kẻo thành \timesm = lệnh lạ, KaTeX báo lỗi đỏ (dính LT 4.2d, PCT 19 I.3)
+  .replace(/\\frac\b/g, '\\dfrac').replace(/(\\[a-zA-Z]+)?\\text\{\s*([a-zA-Z])\s*\}/g, (_, lenh, x) => (lenh ? `${lenh} ${x}` : x)).replace(/\\overline\{\\text\{([^}]*)\}\}/g, '\\overline{$1}')
   .replace(/\\left\(\s+/g, '\\left(').replace(/\s+\\right\)/g, '\\right)').replace(/\\left\( /g, '\\left(').replace(/[ \t]{2,}/g, ' ')
 
 export function dungLo(md, bai, khoi, chiLo = null) {

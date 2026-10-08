@@ -16,6 +16,7 @@ import { veSoDo } from '../so-do-doan-thang.mjs'
 import { pathToFileURL } from 'node:url'
 import { chuanDinhDang } from './lo-tu-md.mjs'
 import { maDangCho } from '../../_kho_insert.mjs'
+import katex from 'katex'
 
 /** Tách một dòng có nhiều câu thành mỗi câu một dòng (luật §3 "mỗi câu lời giải một dòng"): cắt sau ". " khi chữ kế tiếp viết hoa,
  *  KHÔNG cắt trong công thức $…$. */
@@ -81,6 +82,12 @@ export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null) {
     const nhieu = /;|\bvà\b|,/.test(String(s.dap_an).replace(/\$[^$]*\$/g, 'x')) && !/^\$[^$]*\$$/.test(s.dap_an)
     cau.push({ ma_nguon: s.ma_nguon, lo, khoi, dang_chinh: maDangCho('dai', khoi), loai_cau: nhieu ? 'tu_luan' : 'tra_loi_ngan',
       noi_dung: chuanDinhDang(goc.noi_dung), noi_dung_sach: goc.noi_dung, dap_an: String(s.dap_an).trim(), loi_giai: s.loi_giai, so_do: s.so_do ?? null, anh_sach: goc.anh })
+  }
+  // mọi công thức phải RENDER được bằng KaTeX (app dùng KaTeX) — lỗi ⇒ dừng lô, không để chữ đỏ ra kho (đã dính \timesh ở LT 4.2d)
+  for (const c of cau) for (const k of ['noi_dung', 'loi_giai', 'dap_an']) {
+    const s = String(c[k] ?? '')
+    if ((s.match(/\$/g) || []).length % 2) loi.push(`${c.ma_nguon}: ${k} có số dấu $ lẻ`)
+    for (const m of s.matchAll(/\$([^$]+)\$/g)) { try { katex.renderToString(m[1], { throwOnError: true, strict: 'ignore' }) } catch (e) { loi.push(`${c.ma_nguon}: ${k} công thức KaTeX lỗi — ${m[1].slice(0, 60)}`) } }
   }
   const dem = {}; for (const c of cau) dem[c.ma_nguon] = (dem[c.ma_nguon] || 0) + 1
   for (const [k, n] of Object.entries(dem)) if (n > 1) loi.push(`mã "${k}" ${n} lần`)

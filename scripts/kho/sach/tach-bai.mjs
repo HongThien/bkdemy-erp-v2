@@ -44,6 +44,9 @@ export function tachBai(txt, tenSach) {
     bai.push(cur); cur = null
   }
   for (let i = 0; i < dong.length; i++) {
+    // sách in DÍNH hai bài phiếu cuối tuần trên một dòng ("…làm vườn. [[b]]Bài 3.[[/b]] Tính: …", PCT 29) ⇒ cắt thành dòng riêng tại nhãn thứ hai
+    const dinh = dong[i].search(/(?<=\S\s*)\[\[b\]\]\s*Bài\s*\d+\.\s*\[\[\/b\]\]/)
+    if (dinh > 0) { dong.splice(i, 1, dong[i].slice(0, dinh).trimEnd(), dong[i].slice(dinh)) }
     const raw = dong[i], t = bo(raw).trim()
     let m
     if ((m = t.match(/^CHUYÊN ĐỀ\s*(\d+)/))) { dong_bai(); cd = Number(m[1]); khu = null; cheDo = 'ly_thuyet'; continue }

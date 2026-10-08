@@ -36071,3 +36071,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Cách hiểu đã chọn (ghi cho CEO): LT 24.17 "lấy ra một nửa rồi **bớt lại** 6 quả vào giỏ" hiểu là bỏ lại 6 quả ⇒ 36 (hiểu "bớt thêm 6 ra" ⇒ 60).
 - Hàm kiểm từ đề đã viết trước cho PCT 1–21 (lô 10A–10C) trong lúc Sonnet soạn; vét cạn bắt 3 lần em tính tay sai (PCT 2 II.2c, VD 22.3, PCT 16 I.7 vị trí chữ số) — máy kiểm thắng tính nhẩm, đúng lý do phải viết hàm kiểm TỪ ĐỀ chứ không chép đáp án bản soạn.
 - Brief soạn phiếu cuối tuần dùng chung: `scratchpad/giai/brief-pct.md` (luật đã chắt từ lô 8: không dòng mô tả sơ đồ bằng chữ, xuống dòng thật, tách biểu thức có tên). Kho từ sách: 704 câu.
+
+### 08/10 — Kho 4T lô 10B ghi DB + 3 bản vá công cụ (bắt từ quét KaTeX)
+- **10B** (PCT 8–14, 93 câu, 19 sơ đồ): khop 93, Opus đọc toàn bộ + xem ảnh 19 sơ đồ, 0 sửa. Cách hiểu: PCT 12 I.3 "124×a+180: a" không ngoặc ⇒ theo thứ tự phép tính = 1503 (nếu đề gốc có ngoặc ⇒ 139). Kho từ sách: 797.
+- **Bẫy mới — `chuanDinhDang` làm hỏng công thức:** đề sách `\times\text{m}` ⇒ bỏ `\text{}` thành `\timesm` (lệnh không tồn tại ⇒ KaTeX lỗi đỏ). Đã ra kho 1 câu: **LT 4.2d (T14T000000154)** — UPDATE `\timesh` → `\times h` (đúng 1 chỗ, transaction, trigger ghi vết) + sửa `k4T-lo6B.json`. Vá hàm: `\text{x}` đứng ngay sau một lệnh ⇒ chèn dấu cách. Quét KaTeX toàn bộ 797 câu sách trong DB: 0 lỗi.
+- **Cổng mới trong `lo-tu-soan`:** mọi công thức ở đề/lời giải/đáp án phải render KaTeX (throwOnError) + số `$` chẵn — lỗi ⇒ từ chối lô. Trước giờ máy kiểm ĐÁP SỐ nhưng không ai kiểm công thức có HIỂN THỊ được không.
+- **`tach-bai`:** sách in DÍNH hai bài trên một dòng (PCT 29: "…làm vườn. **Bài 3.** Tính: …") ⇒ cắt dòng tại nhãn "Bài N." thứ hai. Chạy lại: so với bản cũ đúng 1 bài đổi (PCT 29 II.2 bỏ phần dính) + 1 bài thêm (PCT 29 II.3), 0 mất.
