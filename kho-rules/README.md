@@ -11,9 +11,12 @@ kho-rules/
   dai/
     k4T.md                  ← luật GÁN DẠNG + GIẢI + TRÌNH BÀY khối 4T   (từ sách Toán arc 4 quyển 1, 07/10)
     k4T-mau-thu.md          ← lô giải thử đang/đã duyệt của 4T (lô 1: 13 câu)
-    k5T.md · k5T-mau-thu.md ← khối 5T (04/10)
+    k5T.md · k5T-mau-thu.md ← khối 5T (v0 04/10; 08/10 thêm hồ sơ sách 31 CĐ + bản đồ hiện có + kế hoạch §7)
     k6.md … k12.md          ← mỗi khối một file khi tới lượt (chưa có)
     so-do/                  ← mô tả JSON + SVG sơ đồ đoạn thẳng của các câu mẫu
+    lo/                     ← LÔ đã ghi / sắp ghi của từng khối (sự thật về câu đã ghi vẫn là DB):
+                               k<khối>-<lô>.json (lô qua cổng) · .soan.json (bản model soạn) · .sua.json (bản sửa của người soát —
+                               đo tỉ lệ phải sửa) · .kiem-ngoai.json (biên bản model khác) · k<khối>-kiem.mjs (bộ kiểm đáp số của khối)
   hgt/ · khtn/ · anh/ …     ← nhánh khác, cùng khuôn
 ```
 
@@ -32,6 +35,25 @@ kho-rules/
 | **B5 CEO duyệt trong chat** | Thùy | Chỉ nói chỗ sai, theo số câu | — |
 | **B6 Ghi nhật ký → nâng luật** | Claude | Mỗi chỗ sửa ⇒ 1 dòng §7 (ngày · câu · CEO sửa gì · luật rút ra) ⇒ sửa §1–§3 ⇒ sửa lại câu trong lô. **Không sửa câu mà không ghi luật** | `k<khối>.md` bản mới |
 | **B7 Lặp** | — | Lô kế tiếp 15–30 câu theo luật mới. Một lô đi qua CEO **không sửa gì** ⇒ `k<khối>.md` lên **v1** ⇒ được giải hàng loạt + ghi kho | v1 ⇒ mở cổng ghi |
+
+## 2b. Sau v1 — DÂY CHUYỀN giải hàng loạt (đã chạy 4T lô 5–7, 287 câu, 08/10)
+
+Người làm ≠ người kiểm ở mọi trạm. Một lô = 1 nhóm khu sách (vd CĐ8–13 + PTL 2–3), chia 3 phần A/B/C chạy song song.
+
+| # | Trạm | Ai | Lệnh / việc | Bẫy đã cắn |
+|---|---|---|---|---|
+| 0 | Tách bài (1 lần / sách) | máy | `node scripts/kho/sach/tach-bai.mjs <goc.txt> --sach "<sách>" --ra bai.json` | Sách thiếu nhãn / nhãn ý lặp ⇒ báo, không đoán. Hình trong `Bài làm` (sơ đồ) ≠ hình của đề — tách riêng, sơ đồ máy vẽ lại |
+| 1 | Đầu vào | máy | `node scripts/kho/sach/dau-vao-soan.mjs bai.json --sach "<sách>" --khu "LT 8,LT 9,PTL 2" --ra in.json` — đọc DB bỏ bài đã có, bỏ đề trùng kho (sau chuẩn hoá), để riêng bài có hình / bài cần người | Lọc trùng nguyên văn để lọt "5 và 9" ↔ "$5$ và $9$" ⇒ khoá `chuanDe` |
+| 2 | Bộ kiểm đáp số | Claude (Opus) | Viết hàm vào `kho-rules/dai/lo/k<khối>-kiem.mjs` **TỪ ĐỀ, TRƯỚC khi mở bản soạn** (vét cạn / thay ngược / mô phỏng); đối chứng với VD sách + câu CEO đã duyệt | Hàm rỗng trả "đạt" giả ⇒ cấm, để `khong_kiem_duoc` thật. Lệch khuôn đáp án ("a=8; b=6" vs 86) là lỗi HÀM KIỂM, sửa hàm không sửa câu |
+| 3 | Soạn | **Sonnet** (subagent, 3 song song) | Đọc `k<khối>.md` v1 + lô mẫu đã duyệt ⇒ ra `.soan.json` `[{ma_nguon, dap_an, loi_giai, so_do_mo_ta?, ghi_chu_nghi?}]`. Câu mơ hồ ⇒ `ghi_chu_nghi`, không tự chọn im lặng | Haiku không đạt (đo ở Hình kiểu 1). Brief soạn **chưa nằm trong repo** — §4 việc #5 |
+| 4 | Soát | **Opus** (≠ model soạn) | Đọc từng câu theo luật khối; sửa ⇒ ghi vào `.sua.json` (không sửa đè bản soạn); xem ảnh sơ đồ ⇒ biên bản `kiem-hinh-b` vào `.kiem-ngoai.json` | Sơ đồ do chính người soát vẽ thêm ⇒ không ai ký `kiem-hinh-b` độc lập ⇒ cổng chặn (đúng) — phải nhờ model thứ ba |
+| 5 | Dựng lô | máy | `node scripts/kho/sach/lo-tu-soan.mjs x.soan.json bai.json --khoi 4T --lo 7 --sua x.sua.json --so-do-dir kho-rules/dai/so-do --ra x.json` — đề lấy nguyên văn sách, chuẩn hoá định dạng bằng máy (tách câu một dòng, `\\"` thừa) | — |
+| 6 | Cổng ghi | máy + biên bản | `node scripts/kho/sach/ghi-lo.mjs x.json --sach "<sách>" --kiem kho-rules/dai/lo/k<khối>-kiem.mjs --so-do kho-rules/dai/so-do [--kiem-ngoai x.kiem-ngoai.json] --chua-gan-dang --model-lam claude-sonnet-5-5` ⇒ chạy thử (ROLLBACK) ⇒ đọc báo cáo ⇒ thêm `--ghi` | Upload sơ đồ phải SAU khi lọc câu đã có (lỗi đã sửa, để lại 1 SVG mồ côi) |
+| 7 | Máy vẽ đổi | máy | `node scripts/kho/sach/ve-lai-so-do.mjs --sach "<sách>" --so-do kho-rules/dai/so-do <lô…> [--ghi]` — so ảnh đang lưu, chỉ thay ảnh khác | Ảnh cũ để lại bucket, xoá phải CEO gật |
+
+**Thước đo một lô** (ghi vào DEVLOG): số câu ghi / trùng bỏ / treo · đáp số khớp bộ kiểm · số câu người soát phải sửa (`.sua.json`) ·
+số câu máy chuẩn hoá định dạng. 4T: CĐ1 0/48 sửa · lô 6 1/99 · lô 7 2/151 ⇒ trạm soạn Sonnet đứng được với luật v1.
+*(Vá file bằng `node -e` làm mất dấu `\` trong regex 4 lần ở lô 6–7 ⇒ sửa regex luôn dùng Edit.)*
 
 Sau v1: giải hàng loạt vẫn qua **cổng ghi** (`scripts/kho/cong-ghi.mjs`): câu + biên bản kiểm (đáp số thử ngược / máy tính lại /
 so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method='claude_code'`, `da_duyet=false`, dạng vào `dang_chinh`
@@ -65,11 +87,14 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 2 | ✅ 08/10 `scripts/kho/sach/tach-bai.mjs`: `goc.txt` → bài có danh tính (sách · khu · số · ý), báo mã trùng / nhãn ý lặp / dòng lạc. 4T: 910 bài (VD 60 · LT 366 · PTL 30 · PCT 454), 0 dòng lạc, 1 bài cần người (LT 11.3 sách thiếu nhãn 11.4) | Để lô giải sau v1 không chép tay đề; danh tính bám số bài trong sách |
 | 3 | ✅ 08/10 `scripts/kho/sach/lo-tu-md.mjs` (md đã duyệt → lô JSON, đề lấy nguyên văn sách) + `ghi-lo.mjs` (cổng ghi: kiem-doc/kiem-dap-so/kiem-hinh-a bằng code, kiem-dang/kiem-hinh-b bằng model khác gán mù; mặc định chạy thử ROLLBACK). Bộ kiểm đáp số theo khối: `kho-rules/dai/lo/k4T-kiem.mjs` | Hiện lô thử chỉ nằm trong md |
 | 4 | Báo cáo thước đo theo khối: % câu người sửa theo khâu (`kho_sua_log`), % dạng người đổi (`kho_doi_dang_log`) | Để biết v1 của một khối có "đứng" không |
+| 5 | Đưa **brief giao Sonnet soạn** vào repo (`kho-rules/mau-brief-soan.md`, khuôn như `docs/mau-brief-soan-hinh-hoc.md`) | Lô 5–7 4T brief chỉ nằm trong phiên làm; 5T phải dùng lại, không viết lại từ trí nhớ |
+| 6 | **Đọc sách có công thức là ảnh WMF** (5T: 0 công thức chữ, 1.154 ảnh) — WMF → PNG (`scripts/anh/docx_trich.mjs`) rồi model đọc ảnh, hoặc xuất PDF; `tach-bai.mjs` nhận đầu vào đó | 4T là MathType đọc thẳng nên B1 của 4T không dùng được cho 5T |
+| 7 | **Câu có hình trong đề** (4T ~41 câu EMF; 5T CĐ18–24 hình học) — đổi ảnh hoặc vẽ lại bằng code, ghi kèm hình | Hiện cổng không ghi câu thiếu hình (đúng), nên các câu này đứng ngoài kho |
 
 ## 5. Trạng thái từng khối
 
 | Khối | File | Phiên bản | Lô đã duyệt | Nguồn luật |
 |---|---|---|---|---|
-| 4T | `dai/k4T.md` | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** | Toán arc 4 quyển 1 (Archimedes 2023) |
-| 5T | `dai/k5T.md` | v0 (04/10) | lô 1: 12 câu | kho 5T sẵn có (chuyên đề Số thập phân) |
+| 4T | `dai/k4T.md` | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–7: **361 câu đã ghi kho (dạng chờ)**, còn ~850 — `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
+| 5T | `dai/k5T.md` | v0 (04/10, cập nhật 08/10) | lô 1: 12 câu (Số thập phân) · 271 câu STP giải lại, chờ học thuật ký | v0 từ kho cũ; **nguồn chuẩn đổi sang sách "Tài liệu tham khảo Toán 5" (31 CĐ, công thức WMF)** — chưa làm B1–B2. Bản đồ 5T phủ ~9/31 CĐ ⇒ kế hoạch + 4 câu chờ CEO ở `k5T.md` §7 |
 | 6–12 | — | chưa | — | chờ CEO đưa sách mẫu từng khối |

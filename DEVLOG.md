@@ -36022,3 +36022,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Đã kiểm trên app (phiên Thùy):** mở tab Đề xuất ⇒ quét chạy thật: 186 → 161 đề xuất chờ (rút 25, đúng như chạy thử ROLLBACK; 3 ca "(chưa xong)" soát log phase đều là đóng đầu đúng hạn rồi mở lại). Không còn đề xuất ghi sai "(chưa xong)". Ghi chú hiện đúng trên Bảng gậy + Đề xuất.
 - **Gậy đã chốt KHÔNG đụng:** gậy Hà Giang BTVN 7S1 20/09 (lần đầu đúng hạn) vẫn vào sổ ⇒ hiệu suất trừ −10 + cờ "xem lại gậy" — Trang thu hồi ở màn Gậy nếu đồng ý.
 - **Chú ý triển khai:** app đang deploy vẫn chạy máy quét CŨ (đo lần đóng cuối, không gọi tinh_lai) tới khi Thùy deploy bản mới — trong lúc đó đề xuất MỚI có thể theo cách cũ; lần quét đầu bằng bản mới sẽ tự rút/sửa.
+
+## 08/10 (tiếp) — Cập nhật đường đi kho 4T + 5T (Thùy: "đọc lại spec, cập nhật thêm, rồi làm bản đồ kiến thức 5T và kho")
+- **README:** thêm §2b dây chuyền giải hàng loạt (8 trạm, lệnh thật, bẫy đã cắn ở lô 5–7) + thước đo lô (sửa 0/48 · 1/99 · 2/151); §1 thêm thư mục `lo/`; §4 thêm việc #5 brief Sonnet chưa vào repo · #6 đọc sách công thức WMF · #7 câu có hình trong đề; §5 trạng thái 4T (361 câu) / 5T.
+- **k4T.md:** đầu file tiến độ; §1 cấm "ước/bội"; §5 nối với Bản đồ mới (lượt gán = B3 spec-ban-do-4-tang); §7 thêm 3 dòng (ước · LT 3.3b năm 2023 · lọc trùng chuẩn hoá); **§8 mới** tiến độ theo lô + còn ~850 câu + bảng câu treo.
+- **k5T.md** viết lại: luật v0 cập nhật theo 4T (sơ đồ là HÌNH đúng tỉ lệ — bản 04/10 còn ghi "mô tả bằng lời"; mọi câu 2 phần; mỗi câu một dòng); §5 hồ sơ sách "Tài liệu tham khảo Toán 5" (31 CĐ, đếm thô ~730 bài); §6 bản đồ 5T hiện có ↔ sách; §7 kế hoạch 3 việc A bản đồ / B kho / C gán + 4 câu chờ CEO; §9 nhật ký.
+- **Phát hiện:** sách 5T `doc-docx.mjs` báo **0 công thức chữ, 1.154 ảnh WMF** ⇒ đường đọc của 4T (MathType) mù phần toán — phải WMF → PNG hoặc PDF trước B1. Bản đồ 5T (DB live, read-only): 3 chủ đề · 7 chuyên đề · 22 dạng, phủ ~9/31 CĐ sách; T15T02 289 câu mới 16 đã duyệt (271 câu STP giải lại vẫn chờ ký).
+- **HANDOFF:** khối "CONTEXT 4T" (còn ghi v0 / lô 2) thay bằng "CONTEXT 4T + 5T" trạng thái hiện tại.

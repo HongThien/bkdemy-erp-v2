@@ -362,15 +362,17 @@
     - thử state Nông Trại: chặn `Storage.prototype.setItem` TRƯỚC (bản lưu thật `nongtrai_ngay_v1`);
     - cmd Windows đổi ổ phải `cd /d`;
     - đừng sửa file tiếng Việt bằng `Get/Set-Content` PS 5.1.
-### ▶ CONTEXT 4T (Thùy mở 07/10) — chạy skill 3 + 4 trên khối 4T theo đường đi `kho-rules/README.md`
+### ▶ CONTEXT 4T + 5T (Thùy mở 07/10 · cập nhật 08/10 chiều) — kho tiểu học theo đường đi `kho-rules/README.md`
 
-**Đọc theo thứ tự, không bỏ:** `CLAUDE.md` (§1.5, §2.0, Luật xoá) → `kho-rules/README.md` (đường đi 7 bước + luật chung) → `kho-rules/dai/k4T.md` (luật khối, §7 nhật ký là chỗ CEO đã sửa) → `kho-rules/dai/k4T-mau-thu.md` (lô 1 đã duyệt, 13 câu, mẫu đúng) → memory `tach-y-hinh-vs-dai`.
+**Đọc theo thứ tự, không bỏ:** `CLAUDE.md` (§1.5, §2.0, Luật xoá) → `kho-rules/README.md` (đường 7 bước · **§2b dây chuyền giải hàng loạt** · §3 luật chung · §4 việc kỹ thuật treo · §5 trạng thái khối) → `kho-rules/dai/k4T.md` (luật khối v1, §7 nhật ký CEO sửa, **§8 tiến độ + câu treo**) → `kho-rules/dai/k5T.md` (v0 + hồ sơ sách 31 CĐ + bản đồ hiện có + **§7 kế hoạch + 4 câu chờ CEO**) → memory `tach-y-hinh-vs-dai`. Bản đồ 4 tầng mới: `spec-ban-do-4-tang.md` §0.
 
-**Nguồn:** `E:BK ACADEMYTài liệu tham khảoTToán arc 4 quyển 1  2023.docx`. Đọc bằng `node scripts/kho/mathtype-thu/doc-docx.mjs "<docx>" --ra <thư mục>` (MathType; `docx-doc.mjs` KHÔNG đọc được file này). Bản đã đọc 07/10 nằm ở scratchpad phiên cũ — dựng lại 1 giây, đừng tìm.
+**Luật nền CEO 08/10:** GIẢI và GÁN DẠNG là 2 việc độc lập — lượt giải ghi câu vào dạng chờ `…000000` (`ghi-lo.mjs --chua-gan-dang`), lượt gán chạy sau khi bản đồ khối đó xong (= B3 của spec-ban-do-4-tang). Câu dạng chờ chưa bấm duyệt được ⇒ duyệt lời giải sau khi gán.
 
-**Trạng thái:** k4T.md v0 đã qua 1 vòng sửa (câu 7 dãy số · câu 8 sơ đồ · xuống dòng). Bài luyện tập của sách CHƯA có trong kho. Bản đồ 4T 77 dạng, nhiều chủ đề chỉ 1 dạng ⇒ chỗ thiếu liệt kê ở k4T.md §5 (CEO lập dạng). Sơ đồ đoạn thẳng: `scripts/kho/so-do-doan-thang.mjs` (JSON → SVG), mẫu `kho-rules/dai/so-do/`.
+**4T:** `k4T.md` **v1** (lô 4 không sửa). Nguồn `E:\BK ACADEMY\Tài liệu tham khảo\4T\Toán arc 4 quyển 1  2023.docx` (MathType, đọc bằng `scripts/kho/mathtype-thu/doc-docx.mjs`; dựng lại 1 giây). **361 câu đã ghi kho** (`T14T000000…`, 288 Sonnet soạn · 73 Opus; 360 khop) qua dây chuyền dau-vao-soan → bộ kiểm viết trước → 3 Sonnet song song → Opus soát → lo-tu-soan → ghi-lo. Còn ~850 câu: CĐ14–24, PTL 4–6, 35 phiếu cuối tuần (trừ ~41 câu có hình EMF). Câu treo chờ CEO: `k4T.md` §8. Bản đồ 4T (24 chủ đề · 78 dạng, nhiều chủ đề 1 dạng) CEO hoàn thiện trên **ERP › Học thuật › Bản đồ mới**.
 
-**Việc kế tiếp (B7 lặp):** lô 2 = 20 câu, các chuyên đề chưa có trong lô 1 (3 đo lường · 5 chu vi diện tích · 10 chia hết · 11 chia có dư · 16 phân số · 17 so sánh · 14 rút về đơn vị · 15 thống kê) → gửi trong chat cho CEO duyệt → ghi §7 → nâng luật → lô 3 → tới khi một lô không bị sửa ⇒ v1. Song song: 4 việc kỹ thuật ở README §4 (ưu tiên #2 script tách bài từ `goc.txt` và #3 lệnh --ghi qua cổng ghi) để sau v1 ghi kho được ngay.
+**5T:** `k5T.md` v0 (04/10, Số thập phân, 12 câu mẫu; 271 câu STP giải lại vẫn chờ học thuật ký). Nguồn chuẩn đổi sang sách `E:\BK ACADEMY\Tài liệu tham khảo\5T\Tài liệu tham khảo Toán 5.docx` — 31 CĐ (phân số · tỉ số · STP · % · hình học · chuyển động · giả thiết tạm · khử) + phần ôn tập, ~730 bài thô. **⚠ công thức là ảnh WMF (0 công thức chữ, 1.154 ảnh)** ⇒ B1 của 4T mù, phải WMF → PNG (`scripts/anh/docx_trich.mjs`) hoặc PDF (README §4 việc #6). Bản đồ 5T hiện 3 chủ đề · 22 dạng, phủ ~9/31 CĐ sách.
+
+**Việc kế tiếp:** (A) bản đồ kiến thức 5T — chờ CEO trả lời 4 câu ở `k5T.md` §7 (dựng theo 31 CĐ sách? hình học/chuyển động thuộc Đại? nhập phần ôn tập? 271 câu STP duyệt khi nào?) · (B) kho 5T: B1–B2 trên sách (đường đọc WMF) → B3 nâng luật theo "Bài làm" của sách → lô thử → v1 → dây chuyền như 4T · (song song) 4T lô 8+ theo `k4T.md` §8.
 
 ### ⭐⭐⭐ 7 SKILL HỌC LIỆU — TOÀN BỘ NHIỆM VỤ (Thùy chốt 06/10) · bản đồ trạng thái + điều kiện đi tiếp · ĐỌC ĐẦU TIÊN khi làm bất cứ gì về kho
 

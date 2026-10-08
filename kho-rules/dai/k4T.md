@@ -2,6 +2,8 @@
 
 > **Trạng thái: ⭐ v1 (08/10) — lô 4 (20 câu) qua CEO không sửa gì** (*"OK rồi đấy"*). Bốn lô thử 75 câu ở `k4T-mau-thu.md`.
 > Từ v1: được giải hàng loạt + ghi kho qua cổng (`scripts/kho/sach/ghi-lo.mjs`). Luật vẫn sống: CEO sửa ở lô nào ⇒ ghi §7, nâng luật.
+> **Tiến độ (08/10 chiều): 361 câu từ sách đã vào kho ở dạng chờ `T14T000000`** (lô 1–4 + CĐ1 + lô 6 + lô 7; 360 `kiem_may=khop`).
+> Còn lại + câu treo + lệnh chạy lô kế: **§8**. Dây chuyền giải hàng loạt: `kho-rules/README.md` §2b.
 > *(lịch sử: NHÁP v0 07/10 → v1 08/10)* Theo `spec-luong-kho.md` C10: mọi lần
 > gán dạng / giải câu 4T PHẢI đọc file này trước. **Mỗi lần CEO sửa một chỗ ⇒ ghi vào §7 (nhật ký) rồi nâng luật ở §1–§5.**
 > Lặp cho tới khi một lô đi qua mà CEO không sửa gì ⇒ v1.
@@ -27,6 +29,7 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 | Số âm, luỹ thừa, số thập phân, phần trăm | — (4T chưa học) |
 | Công thức tổ hợp ($A^k_n$, "chỉnh hợp") | đếm theo **từng hàng**: "Chữ số hàng trăm có … cách chọn…" (VD 2.1) |
 | Chia hết: "đồng dư", "mod" | "chia cho 9 dư bấy nhiêu thì tổng chữ số chia 9 dư bấy nhiêu" (CĐ11) |
+| "ước", "bội" (kiến thức lớp 6) | "12 chia hết cho chữ số đó" *(soát lô 6, PTL 1.1c, 08/10)* |
 | Phân số: "quy đồng rồi so tử" viết tắt | ghi rõ phép nhân cả tử lẫn mẫu: $\dfrac{3}{5}=\dfrac{3\times 3}{5\times 3}=\dfrac{9}{15}$ (VD 17.1) |
 
 **CHO PHÉP vì sách làm vậy (khác luật 5T):**
@@ -117,6 +120,9 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 
 > **CEO 08/10: mục này dùng cho LƯỢT GÁN DẠNG RIÊNG, chạy sau khi bản đồ 4T hoàn thiện — KHÔNG dùng lúc giải.** Lượt giải ghi câu
 > vào `T14T000000`. Bản đồ còn đổi ⇒ bảng dấu hiệu + bảng thiếu dưới đây phải soát lại theo bản đồ mới trước lượt gán.
+> **Bản đồ mới = bản 4 tầng CEO soạn ở ERP › Học thuật › Bản đồ mới** (`spec-ban-do-4-tang.md` §0: B2 CEO soạn → B3 Claude khớp câu
+> vào dạng bài mới → B4 Học thuật duyệt). Lượt gán 361+ câu dạng chờ của 4T chính là B3 của khối 4T; bảng dưới là đầu vào cho B3,
+> mã `T14T…` trong bảng là mã bản đồ CŨ (vỏ đã chép sang bản nháp, nhóm bài giữ đối ứng ②).
 
 Bản đồ 4T được dựng từ chính quyển này: **chuyên đề 1–22 ↔ chủ đề `T14T01`–`T14T22` cùng số**, chuyên đề 24 ↔ `T14T23`.
 Luật gán:
@@ -202,3 +208,37 @@ Luật gán:
 | 08/10 | Lô 4 cả lô (20 câu, 10 sơ đồ) | *"OK rồi đấy. Tiếp nào."* Không sửa câu nào. | **Lên v1.** Câu 18 (tính ngược có phân số ⇒ `230101` theo tiền lệ lô 1) được duyệt cùng lô ⇒ giữ. |
 | 08/10 | Kiểm độc lập trước khi ghi (Sonnet gán dạng mù 57 câu) | *(không phải CEO sửa — model khác bắt mâu thuẫn trong luật)* 4 câu tổng–hiệu ẩn Sonnet đưa về dạng chờ vì §5 bảng thiếu vẫn ghi "T14T08 thiếu tổng–hiệu ẩn", trái với các câu CEO đã duyệt ở `080101`. | Sửa §5: bỏ dòng thiếu đó. Bài học: mỗi lần CEO duyệt một câu vào dạng mà bảng thiếu đang liệt kê ⇒ PHẢI xoá dòng thiếu ngay, nếu không luật tự mâu thuẫn. |
 | 08/10 | Sau khi CEO xem kết quả kiểm | *"Bản đồ 4T t chưa hoàn thiện hết. Hiện tại là m giải trước rồi up lên DB ở trạng thái chưa gán dạng. Sau này hoàn thiện bản đồ thì sẽ có 1 lần chạy gán … 2 việc này độc lập."* | Giải ≠ gán dạng. Ghi kho bằng `--chua-gan-dang` (mọi câu vào `T14T000000`); §5 chỉ dùng cho lượt gán sau. Đã ghi 74 câu lô 1–4 (T14T000000001–074), LT 5.19 chờ hình. |
+| 08/10 | Soát lô 6A (Opus soát bản Sonnet) | *(không phải CEO — người soát bắt)* PTL 1.1c dùng "ước" (lớp 6). | §1 thêm cấm "ước/bội". |
+| 08/10 | LT 3.3b ("tính đến nay") | *"Ghi cụ thể năm ra."* | Bài có mốc "nay/hiện nay" phụ thuộc năm ⇒ tính đến **năm sách in (2023)**, ghi rõ năm trong lời giải + đáp số. |
+| 08/10 | LT 10.12 (lô 2) trùng câu kho đã duyệt | CEO gật xoá mềm bản sách (T14T000000022). | Lọc trùng phải so **sau chuẩn hoá** (`chuanDe`: bỏ `$`, ngoặc, `\ `, khoảng trắng) — nguyên văn để lọt. Đã vào `ghi-lo` + `dau-vao-soan`. |
+
+## 8. TIẾN ĐỘ GIẢI HÀNG LOẠT + CÂU TREO (cập nhật 08/10 chiều — số đo DB live)
+
+**Đã ghi kho (dạng chờ `T14T000000`, `da_duyet=false`, ghi bằng `ghi-lo.mjs --chua-gan-dang`):**
+
+| Lô | Khu sách | Câu ghi | Soạn / soát | Lô JSON (`kho-rules/dai/lo/`) |
+|---|---|---|---|---|
+| 1–4 (lô thử, CEO duyệt) | rải 24 CĐ + phiếu | 74 | Opus soạn, CEO duyệt | `k4T-lo1-4.json` (+ dạng đề xuất, + `.kiem-ngoai` Sonnet gán mù) |
+| 5 (CĐ1, thí điểm trạm) | VD 1, LT 1 | 48 | Sonnet soạn, Opus soát (0 sửa nội dung) | `k4T-cd01.json` |
+| 6A/6B/6C | CĐ2–7 + PTL 1 | 95 | 3 Sonnet song song, Opus soát (sửa 1) | `k4T-lo6{A,B,C}.json` · `.soan` · `.sua` |
+| 7A/7B/7C | CĐ8–13 + PTL 2–3 | 144 | 3 Sonnet song song, Opus soát (sửa 2) | `k4T-lo7{A,B,C}.json` · `.soan` · `.sua` · `.kiem-ngoai` |
+| **Tổng** | | **361** (mã tới `T14T000000362`, 1 mã đã xoá mềm) | 288 Sonnet · 73 Opus (`ai_model`) | 40 câu có sơ đồ (`anh_dap_an`) · 360 `khop` · 1 `khong_kiem_duoc` |
+
+**Còn lại (ước — đo lại bằng `dau-vao-soan.mjs`, DB là sự thật):** tổng ~1.271 đơn vị câu sau tách ý (910 bài). Chưa làm:
+**CĐ14–24** (VD + LT, mới có vài câu từ lô thử) · VD 5–8, 11 · **PTL 4–6** · **35 phiếu cuối tuần** (~455 bài, mới 5 câu). Trừ ~41 câu
+có hình EMF trong đề (chưa có đường). ⇒ còn **~850 câu**. Gợi ý chia: lô 8 = CĐ14–19 + PTL 4 · lô 9 = CĐ20–24 + PTL 5–6 · lô 10+ = PCT theo 5 phiếu/lô.
+
+**Lệnh một lô (khuôn lô 7):** xem `kho-rules/README.md` §2b — `dau-vao-soan` (khu) → viết bộ kiểm trong `k4T-kiem.mjs` TRƯỚC →
+3 Sonnet soạn song song → Opus soát (sửa vào `.sua.json`) → `lo-tu-soan` → `ghi-lo` chạy thử → `--ghi`.
+
+**Câu đang treo (không ghi / chờ người):**
+
+| Câu | Vì sao treo | Cần gì |
+|---|---|---|
+| LT 1.5c · LT 1.5d (đã ghi) | Đề mơ hồ: "hiệu các chữ số là 4" (15 hay 40?) · "thương là 2" (12 hay 21?) — sách không có đáp án | CEO chọn cách hiểu; đang ghi theo "lớn trừ/chia bé" |
+| VD 10.1 · VD 10.2 (7 ý) | Sách in sẵn đáp án trong đề ⇒ đề không đứng một mình | CEO: bỏ, hay viết lại đề |
+| LT 11.19 | Thêm sơ đồ tỉ số, nhưng sơ đồ do Opus (người soát) vẽ ⇒ không có model khác ký `kiem-hinh-b` — cổng chặn đúng | Một model khác (Sonnet) xem ảnh ký biên bản rồi ghi |
+| LT 11.1 (đã ghi) | Hàm kiểm rỗng đã xoá ⇒ `kiem_may='khong_kiem_duoc'`; bảng số dư soát tay khớp | Viết hàm kiểm thật hoặc để người duyệt |
+| LT 5.19 + ~41 câu có hình | Hình trong đề là EMF, chưa đổi được ⇒ không ghi câu thiếu hình | Đường đổi EMF → PNG (`scripts/anh/docx_trich.mjs`?) hoặc vẽ lại bằng code |
+| LT 11.3 | Sách thiếu nhãn 11.4 (`tach-bai` báo) | Người xem sách quyết |
+| 1 SVG mồ côi `…_LT-3-15.svg` trong `kho-anh/sach/2026-10` | Upload trước khi lọc câu đã có (lỗi đã sửa ở `ghi-lo`) | Chờ CEO gật xoá (Luật xoá) |
