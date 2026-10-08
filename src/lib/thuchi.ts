@@ -3,6 +3,7 @@
 // Mọi tính toán/chuyển trạng thái nằm ở Postgres (fn_chi_* — migration 202609022329); client chỉ gọi RPC
 // + hiển thị. Ảnh chứng từ: bucket public 'kho-anh' prefix thuchi/ (khuôn bao_loi report/).
 import { supabase } from './supabase'
+import { thuNhoAnh } from './anhNho'
 import { buildVietQR } from './vietqr'
 
 // ── Types (khớp cột RPC) ─────────────────────────────────────────
@@ -119,15 +120,6 @@ export async function uploadAnhChi(file: File): Promise<string> {
   const { error } = await supabase.storage.from(CHI_BUCKET).upload(path, blob, { contentType: 'image/jpeg', upsert: false })
   if (error) throw error
   return path
-}
-async function thuNhoAnh(file: File, max = 1600, q = 0.85): Promise<Blob> {
-  const bmp = await createImageBitmap(file)
-  const k = Math.min(1, max / Math.max(bmp.width, bmp.height))
-  const c = document.createElement('canvas')
-  c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k)
-  c.getContext('2d')!.drawImage(bmp, 0, 0, c.width, c.height)
-  bmp.close()
-  return new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('toBlob null'))), 'image/jpeg', q))
 }
 
 // ── Phía kế toán (ERP, leaf thuchi) ──────────────────────────────

@@ -14,6 +14,7 @@ import {
   timNhanXetMau, luuNhanXetMau, dsThangGanDay, nhanThang,
   type CaTestChoTraBai, type PhieuKetQua, type NhanXet,
 } from '../../lib/detest'
+import AnhBaiDaCham from './AnhBaiDaCham'
 import { listLop } from '../../lib/nhansu'
 import { updateUngVien } from '../../lib/tuyensinh'
 import { useStore } from '../../store/useStore'
@@ -318,7 +319,10 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone, onReopen }: { c: CaTestCh
           </div>
         </div>
         <div className="ml-auto flex flex-wrap items-center gap-2">
-          {c.baiDaChamUrl && <a href={c.baiDaChamUrl} target="_blank" rel="noreferrer" className="rounded-md border border-slate-500 px-3 py-1.5 text-[13px] hover:bg-slate-700">📄 Bài đã chấm</a>}
+          {/* Thùy 08/10: ảnh bài đã chấm (người chấm up ở màn Chấm) — bấm phóng to để xem lúc trả bài */}
+          {c.baiDaChamAnh.length > 0
+            ? <span className="flex items-center gap-1.5 text-[12px] text-slate-300">Bài đã chấm <AnhBaiDaCham urls={c.baiDaChamAnh} toi cao="h-9 w-9" /></span>
+            : <span className="text-[12px] text-amber-300">Chưa có ảnh bài đã chấm</span>}
           {copyTT && <span className={`text-[12px] ${copyTT.startsWith('⚠') ? 'text-rose-300' : 'text-emerald-300'}`}>{copyTT}</span>}
           <button onClick={xuatAnh} disabled={!phieu} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium hover:bg-indigo-500 disabled:opacity-40">📋 Copy ảnh gửi PH</button>
           {daTra

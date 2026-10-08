@@ -10,12 +10,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   listCanCham, listDaChamTheoThang, getCaTestCauKq, chamCauTest, dongChamTest, moLaiChamTest, getPhieuKetQua,
-  setDiemNhap, ganDeDangDung, ganDeCaTest, listDeTestDauVao, gopDeTrung, dsThangGanDay, nhanThang,
+  setDiemNhap, uploadAnhDaCham, themAnhDaCham, boAnhDaCham, ganDeDangDung, ganDeCaTest, listDeTestDauVao, gopDeTrung, dsThangGanDay, nhanThang,
   type CaTestChoCham, type CaTestCau, type PhieuKetQua, type DeTestHienThi,
 } from '../../lib/detest'
 import { useStore } from '../../store/useStore'
 import { SuaCaTheoIdModal, HuyCaTestModal, NutSuaHuy } from './CaTestSuaHuy'
 import { MathText } from '../kho/ui'
+import AnhBaiDaCham from './AnhBaiDaCham'
 
 type KQ = 'correct' | 'partial' | 'wrong'
 // Cùng khuôn màu ET_KQ (ta/ChamBuoi.tsx) — người chấm quen mắt giữa ET và test đầu vào.
@@ -223,6 +224,14 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
   const tong = phieu?.tong
   const duCau = !!tong && tong.soCau > 0 && tong.daCham >= tong.soCau
   const coDiem = phieu?.diemNhap != null
+  // Thùy 08/10: up ảnh bài đã chấm là 1 BƯỚC của chấm — đóng chấm cần ≥1 ảnh. Vá tại chỗ (onPatch), không reload.
+  const coAnh = item.baiDaChamAnh.length > 0
+  async function themAnh(files: File[]) {
+    const urls: string[] = []
+    for (const fl of files) urls.push(await uploadAnhDaCham(fl))
+    onPatch({ baiDaChamAnh: await themAnhDaCham(item.id, urls) })
+  }
+  async function boAnh(url: string) { onPatch({ baiDaChamAnh: await boAnhDaCham(item.id, url) }) }
   const toggleDe = (id: string) => setMoDe((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   // Click lại mức đang chọn = bỏ chấm (UX ET). Điểm câu do trigger DB tính; tổng/% hỏi lại DB sau mỗi lần ghi.
@@ -366,7 +375,12 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
         </div>
       )}
 
-      {/* Thanh dưới: điểm nhập tay + đóng chấm */}
+      {/* Thanh dưới: ảnh bài đã chấm + điểm nhập tay + đóng chấm */}
+      <div className="flex shrink-0 flex-wrap items-center gap-2 border-t border-slate-200 bg-slate-50 px-4 py-2">
+        <label className="text-[12px] font-semibold uppercase tracking-wide text-slate-400">Ảnh bài đã chấm</label>
+        <AnhBaiDaCham urls={item.baiDaChamAnh} onThem={daChamXong ? undefined : themAnh} onBo={daChamXong ? undefined : boAnh} />
+        {!coAnh && !daChamXong && <span className="text-[11px] text-amber-600">chụp/chọn đủ các trang bài đã chấm — bắt buộc trước khi đóng chấm</span>}
+      </div>
       <div className="flex shrink-0 flex-wrap items-center gap-3 border-t border-slate-200 bg-white px-4 py-2.5">
         <label className="text-[12px] font-semibold uppercase tracking-wide text-slate-400">Điểm bài</label>
         <input value={diemText} onChange={(e) => setDiemText(e.target.value)} onBlur={luuDiem} onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }}
@@ -376,7 +390,7 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
         {err && <span className="text-[12px] text-rose-600">{err}</span>}
         <div className="ml-auto">
           {!daChamXong ? (
-            <button onClick={dong} disabled={busy || !duCau || !coDiem} title={!duCau ? 'Cần tích hết mọi câu' : !coDiem ? 'Cần nhập điểm bài' : ''}
+            <button onClick={dong} disabled={busy || !duCau || !coDiem || !coAnh} title={!duCau ? 'Cần tích hết mọi câu' : !coDiem ? 'Cần nhập điểm bài' : !coAnh ? 'Cần upload ảnh bài đã chấm' : ''}
               className="rounded-lg bg-emerald-600 px-4 py-2 text-[14px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">
               {busy ? 'Đang xử lý…' : '✓ Xác nhận (đóng chấm)'}
             </button>

@@ -13,6 +13,7 @@ import { pickCuaHinhRow } from './mt'
 import { loadLuoi } from './kho/hinh'
 import { updateUngVien, toggleViec } from './tuyensinh'
 import { homNayVN } from './tuan'
+import { thuNhoAnh } from './anhNho'
 import type { MenhDe } from './kho/api'
 
 const LIMIT = 10000
@@ -262,6 +263,7 @@ export type CaTestChoCham = {
   nguoiChamId: string | null; nguoiTraBaiId: string | null
   trangThai: 'dang_test' | 'hoan_thanh'  // "Việc của tôi" hiện cả ca ĐANG test (CEO 13/09: có ca mới là thấy)
   diemNhap: number | null // CEO ④ 09/09: điểm NHẬP TAY, độc lập Đ/C/S (ca_test.diem_nhap)
+  baiDaChamAnh: string[]  // Thùy 08/10: ảnh/scan bài ĐÃ CHẤM (nhiều trang) — người chấm up ở màn Chấm (ca_test.bai_da_cham_anh)
   thieuDe: boolean        // ca đã hoàn thành mà chưa có đề → hiện trong hàng đợi kèm nút "Gán đề đang dùng", KHÔNG lọc mất
   // ⭐ 15/09 (Tuệ Nhi): Ops tạo ứng viên khối 8 → tự gán đề K8 (39 câu) → sửa khối thành 7 → ca vẫn giữ đề K8, TA chấm
   // bài giấy 34 câu vào 39 dòng của đề sai. Đổi khối KHÔNG tự đổi đề ⇒ màn chấm/điểm danh phải nêu cờ lệch + nút gán lại.
@@ -271,7 +273,7 @@ export type CaTestChoCham = {
 // Hàng đợi CHUNG (team học thuật) — đã điểm danh xong + chưa chấm xong. ⭐ 09/09: KHÔNG còn lọc
 // `tai_lieu_id not null` — 5 ca thiếu đề từng biến mất im lặng khỏi mọi màn (HANDOFF bài học 09/09).
 // `nguoi_cham` = người được gán (CEO ② 09/09: vào "Việc của tôi"); pool chung vẫn mở cho người khác.
-const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, diem_nhap, nguoi_cham_id, nguoi_tra_bai_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_cham:nguoi_cham_id(ho_ten), tai_lieu:tai_lieu_id(khoi, ten)'
+const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, diem_nhap, bai_da_cham_anh, nguoi_cham_id, nguoi_tra_bai_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_cham:nguoi_cham_id(ho_ten), tai_lieu:tai_lieu_id(khoi, ten)'
 function mapChoCham(r: any): CaTestChoCham {
   const khoi = r.ung_vien?.khoi ?? null, deKhoi = r.tai_lieu?.khoi ?? null
   return {
@@ -279,6 +281,7 @@ function mapChoCham(r: any): CaTestChoCham {
     hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
     nguoiChamId: r.nguoi_cham_id ?? null, nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, trangThai: r.trang_thai,
     diemNhap: r.diem_nhap == null ? null : Number(r.diem_nhap), thieuDe: !r.tai_lieu_id,
+    baiDaChamAnh: r.bai_da_cham_anh ?? [],
     deKhoi, deTen: r.tai_lieu?.ten ?? null, lechKhoi: !!khoi && !!deKhoi && khoi !== deKhoi,
   }
 }
@@ -387,10 +390,34 @@ export async function dongChamTest(caTestId: string, ungVienId: string): Promise
   if (p.tong.soCau === 0) throw new Error('Ca chưa có đề/câu.')
   if (p.tong.daCham < p.tong.soCau) throw new Error(`Còn ${p.tong.soCau - p.tong.daCham} câu chưa chấm.`)
   if (p.diemNhap == null) throw new Error('Chưa nhập điểm.')
+  if (!(p.baiDaChamAnh ?? []).length) throw new Error('Chưa upload ảnh bài đã chấm.')
   const { error } = await supabase.from('ca_test').update({ cham_xong_at: new Date().toISOString() }).eq('id', caTestId).is('cham_xong_at', null)
   if (error) throw error
   await toggleViec(ungVienId, 'cham_bai', true).catch(() => {})
 }
+// ── ẢNH BÀI ĐÃ CHẤM (Thùy 08/10) — một BƯỚC của khâu chấm: người chấm chụp/chọn ảnh các trang bài đã chấm, đóng chấm
+// bắt buộc có ≥1 ảnh. Trả bài xem lại được; sau này PH xem (bucket public, tên file ngẫu nhiên — như bai_url).
+// Thêm/bỏ qua RPC nguyên tử (mig 202610081748), trả về danh sách mới để màn vá tại chỗ.
+const ANH_DA_CHAM_BUCKET = 'kho-anh'
+export async function uploadAnhDaCham(file: File): Promise<string> {
+  const laPdf = file.type === 'application/pdf'
+  const blob: Blob = laPdf ? file : await thuNhoAnh(file).catch(() => file)
+  const path = `test-da-cham/${Date.now()}-${crypto.randomUUID().slice(0, 8)}.${laPdf ? 'pdf' : 'jpg'}`
+  const { error } = await supabase.storage.from(ANH_DA_CHAM_BUCKET).upload(path, blob, { contentType: laPdf ? 'application/pdf' : 'image/jpeg', upsert: false })
+  if (error) throw error
+  return supabase.storage.from(ANH_DA_CHAM_BUCKET).getPublicUrl(path).data.publicUrl
+}
+export async function themAnhDaCham(caTestId: string, urls: string[]): Promise<string[]> {
+  const { data, error } = await supabase.rpc('fn_ca_test_anh_da_cham_them', { p_ca_test_id: caTestId, p_urls: urls })
+  if (error) throw error
+  return (data ?? []) as string[]
+}
+export async function boAnhDaCham(caTestId: string, url: string): Promise<string[]> {
+  const { data, error } = await supabase.rpc('fn_ca_test_anh_da_cham_bo', { p_ca_test_id: caTestId, p_url: url })
+  if (error) throw error
+  return (data ?? []) as string[]
+}
+export const laPdfUrl = (u: string) => /\.pdf($|\?)/i.test(u)
 export async function moLaiChamTest(caTestId: string): Promise<void> {
   const { error } = await supabase.from('ca_test').update({ cham_xong_at: null }).eq('id', caTestId)
   if (error) throw error
@@ -404,12 +431,13 @@ export type CaTestChoScanDaCham = CaTestChoCham
 export async function listCanScanDaCham(): Promise<CaTestChoScanDaCham[]> {
   const { data, error } = await supabase.from('ca_test')
     .select(CHO_CHAM_SELECT)
-    .eq('trang_thai', 'hoan_thanh').is('bai_da_cham_url', null).order('ngay').limit(LIMIT)
+    // 08/10: người chấm tự up ảnh ở màn Chấm ⇒ Ops chỉ còn ca ĐÃ ĐÓNG chấm mà chưa có ảnh (tồn trước 08/10).
+    .eq('trang_thai', 'hoan_thanh').not('cham_xong_at', 'is', null).eq('bai_da_cham_anh', '{}').order('ngay').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map(mapChoCham)
 }
 export async function listDaScanDaCham(ngay?: string): Promise<CaTestChoScanDaCham[]> {
-  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('bai_da_cham_url', 'is', null)
+  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).neq('bai_da_cham_anh', '{}')
   if (ngay) q = q.eq('ngay', ngay)
   const { data, error } = await q.order('ngay', { ascending: false }).limit(LIMIT)
   if (error) throw error
@@ -417,8 +445,7 @@ export async function listDaScanDaCham(ngay?: string): Promise<CaTestChoScanDaCh
 }
 export async function dongScanDaCham(caTestId: string, url: string): Promise<void> {
   if (!url) throw new Error('Cần ảnh/scan bài đã chấm.')
-  const { error } = await supabase.from('ca_test').update({ bai_da_cham_url: url }).eq('id', caTestId)
-  if (error) throw error
+  await themAnhDaCham(caTestId, [url])  // 08/10: ghi vào danh sách ảnh (cột 1-file cũ không ghi nữa)
 }
 
 // ============================================================================
@@ -470,19 +497,19 @@ export async function luuNhanXetMau(mon: string, nhom: NhanXetMau['nhom'], noiDu
 // ============================================================================
 export type CaTestChoTraBai = CaTestChoCham & {
   choChamXong: boolean; choScanDaCham: boolean; choLopDeXuat: boolean
-  baiDaChamUrl: string | null; lopDeXuatId: string | null; nhanXet: NhanXet | null
+  lopDeXuatId: string | null; nhanXet: NhanXet | null
   nguoiTraBaiTen: string | null
   traBaiXongAt: string | null   // đã đóng trả bài lúc nào (null = chưa) — subtab "Đã trả" mở lại để sửa (CEO 15/09)
 }
 function mapTraBai(r: any): CaTestChoTraBai {
   return {
     ...mapChoCham(r),
-    choChamXong: !r.cham_xong_at, choScanDaCham: !r.bai_da_cham_url, choLopDeXuat: !r.ung_vien?.lop_du_kien_id,
-    baiDaChamUrl: r.bai_da_cham_url ?? null, lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null, nhanXet: r.nhan_xet ?? null,
+    choChamXong: !r.cham_xong_at, choScanDaCham: !(r.bai_da_cham_anh ?? []).length, choLopDeXuat: !r.ung_vien?.lop_du_kien_id,
+    lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null, nhanXet: r.nhan_xet ?? null,
     nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null, traBaiXongAt: r.tra_bai_xong_at ?? null,
   }
 }
-const TRA_BAI_SELECT = CHO_CHAM_SELECT + ', tra_bai_xong_at, bai_da_cham_url, nhan_xet, nguoi_tra_bai:nguoi_tra_bai_id(ho_ten)'
+const TRA_BAI_SELECT = CHO_CHAM_SELECT + ', tra_bai_xong_at, nhan_xet, nguoi_tra_bai:nguoi_tra_bai_id(ho_ten)'
 export async function listCanTraBai(): Promise<CaTestChoTraBai[]> {
   const { data, error } = await supabase.from('ca_test').select(TRA_BAI_SELECT)
     .eq('trang_thai', 'hoan_thanh').is('tra_bai_xong_at', null).order('ngay').limit(LIMIT)
@@ -538,6 +565,7 @@ export type PhieuKetQua = {
   theoMucDo: { coBan: NhomTiLe | null; nangCao: NhomTiLe | null }   // muc_do ≤3 / ≥4 (độ khó của DẠNG neo)
   theoNhanh: { dai: NhomTiLe | null; hinh: NhomTiLe | null }        // pick từ bản đồ nào → tính từ đấy (CEO ⑦)
   nhanXet: NhanXet | null; baiDaChamUrl: string | null
+  baiDaChamAnh: string[]   // mig 202610081748 — nguồn ảnh bài đã chấm (baiDaChamUrl = cột cũ 1 file, đã chép vào đây)
   // GV + lịch CHỈ in trên ẢNH gửi PH (CEO ⑧), UI trả bài không hiện.
   // gvChinh/tgChinh (mig 202609151030): người `la_chinh` của lớp + avatar tài khoản nhân sự — phiếu in "Giáo viên" / "Giáo viên bổ trợ".
   lopDeXuat: {
@@ -552,5 +580,5 @@ export async function getPhieuKetQua(caTestId: string): Promise<PhieuKetQua> {
   if (error) throw error
   if (!data) throw new Error('Không tìm thấy ca test (hoặc không có quyền xem).')
   const p = data as PhieuKetQua
-  return { ...p, diemNhap: p.diemNhap == null ? null : Number(p.diemNhap), theoChuyenDe: p.theoChuyenDe ?? [], theoMucDo: p.theoMucDo ?? { coBan: null, nangCao: null }, theoNhanh: p.theoNhanh ?? { dai: null, hinh: null } }
+  return { ...p, baiDaChamAnh: p.baiDaChamAnh ?? [], diemNhap: p.diemNhap == null ? null : Number(p.diemNhap), theoChuyenDe: p.theoChuyenDe ?? [], theoMucDo: p.theoMucDo ?? { coBan: null, nangCao: null }, theoNhanh: p.theoNhanh ?? { dai: null, hinh: null } }
 }
