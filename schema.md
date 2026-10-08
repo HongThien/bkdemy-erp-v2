@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-343 bảng · 20 view · 0 enum · 132 trigger · 852 function
+349 bảng · 20 view · 0 enum · 146 trigger · 863 function
 
 ## _app_secrets
 
@@ -1020,6 +1020,80 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | mo_ta_ngan | text | Y |  |  |  |
+
+## dai_bdm_chu_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('NCD'::text \|\| lpad((nextval('dai_bdm_chu_de_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| khoi | text |  |  |  |  |
+| ten | text |  |  |  |  |
+| thu_tu | integer |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## dai_bdm_chuyen_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('NCH'::text \|\| lpad((nextval('dai_bdm_chuyen_de_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## dai_bdm_dang_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('NDB'::text \|\| lpad((nextval('dai_bdm_dang_bai_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| nhom_id | text |  |  | FK→dai_bdm_nhom.id |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| vi_du | text |  | ''::text |  |  |
+| vi_du_file_url | text | Y |  |  |  |
+| vi_du_ten_file | text | Y |  |  |  |
+| thu_tu | integer |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## dai_bdm_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('dai_bdm_log_id_seq'::regclass) | PK |  |
+| bang | text |  |  |  |  |
+| khoa | text |  |  |  |  |
+| hanh_dong | text |  |  |  | `them` · `sua` · `xoa` |
+| cu | jsonb | Y |  |  |  |
+| moi | jsonb | Y |  |  |  |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## dai_bdm_nhom
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('NNB'::text \|\| lpad((nextval('dai_bdm_nhom_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| chu_de_id | text |  |  | FK→dai_bdm_o.chu_de_id |  |
+| chuyen_de_id | text |  |  | FK→dai_bdm_o.chuyen_de_id |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| ly_thuyet | text |  | ''::text |  |  |
+| ly_thuyet_file_url | text | Y |  |  |  |
+| ly_thuyet_ten_file | text | Y |  |  |  |
+| thu_tu | integer |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## dai_bdm_o
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| chu_de_id | text |  |  | PK FK→dai_bdm_chu_de.id |  |
+| chuyen_de_id | text |  |  | PK FK→dai_bdm_chuyen_de.id |  |
+| thu_tu | integer |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## dai_cau_bo_de
 
@@ -2975,7 +3049,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -4087,7 +4161,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -6521,6 +6595,20 @@ WITH luot AS (
 | chi_nhan_tien | tg_chi_nhan_tien_log | BEFORE | INSERT/DELETE/UPDATE | trg_chi_nhan_tien_log |
 | chi_so | tg_chi_so_bf | BEFORE | INSERT/DELETE/UPDATE | trg_chi_so_bf |
 | dai_ban_do | trg_dai_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
+| dai_bdm_chu_de | trg_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_chu_de | trg_bdm_chu_de_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
+| dai_bdm_chu_de | trg_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_chuyen_de | trg_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_chuyen_de | trg_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_dang_bai | trg_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _bdm_bump_nhom |
+| dai_bdm_dang_bai | trg_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_dang_bai | trg_bdm_dang_bai_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
+| dai_bdm_dang_bai | trg_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_nhom | trg_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_nhom | trg_bdm_nhom_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
+| dai_bdm_nhom | trg_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_o | trg_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_o | trg_bdm_o_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_cau_form_dien | dai_cau_form_dien_kiem | BEFORE | INSERT/UPDATE | dai_cau_form_dien_kiem |
 | dai_cau_form_tn | dai_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | dai_cau_form_tn_kiem |
 | dai_cau_hoi | dai_cau_hoi_thu_hoi_dien | AFTER | UPDATE | dai_cau_form_dien_thu_hoi |
@@ -6619,6 +6707,10 @@ WITH luot AS (
 ## Functions
 
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
+- `_bdm_bump_nhom()` → trigger
+- `_bdm_ghi_log()` → trigger
+- `_bdm_thu_tu()` → trigger
+- `_bdm_touch()` → trigger
 - `_bt_cau_trang_thai_json(p_bt uuid, p_cau uuid[])` → jsonb
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
 - `_btvn_hs_xem_anh(p_name text)` → boolean
@@ -6869,6 +6961,13 @@ WITH luot AS (
 - `fn_ban_qua_chot(p_buoi uuid, p_kq jsonb)` → jsonb
 - `fn_ban_qua_tinh_hinh(p_buoi uuid)` → jsonb
 - `fn_bao_loi_tra_loi(p_id uuid, p_noi_dung text)` → void
+- `fn_bdm_cay(p_khoi text)` → jsonb
+- `fn_bdm_chuyen_dang_bai(p_id text, p_nhom_id text, p_thu_tu_dich text[])` → void
+- `fn_bdm_chuyen_nhom(p_id text, p_chu_de_id text, p_chuyen_de_id text, p_thu_tu_dich text[])` → void
+- `fn_bdm_chuyen_o(p_chu_de_cu text, p_chuyen_de_id text, p_chu_de_moi text)` → void
+- `fn_bdm_ha_nhom(p_id text, p_nhom_dich text)` → text
+- `fn_bdm_nang_dang_bai(p_id text, p_chu_de_id text, p_chuyen_de_id text)` → text
+- `fn_bdm_sap_xep(p_loai text, p_ids text[])` → void
 - `fn_bo_dau(p text)` → text
 - `fn_bo_tro_trong_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_bo_tro_tu_kiem(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
@@ -7130,8 +7229,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_mo_app()` → void
@@ -7399,8 +7498,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -7465,9 +7564,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -7528,6 +7627,10 @@ WITH luot AS (
 | chuoi_ngay_nghi | chuoi_ngay_nghi_check | `CHECK (((den >= tu) AND ((den - tu) <= 60)))` |
 | chuoi_ngay_nghi | chuoi_ngay_nghi_ly_do_check | `CHECK ((length(btrim(ly_do)) > 0))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
+| dai_bdm_chu_de | dai_bdm_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| dai_bdm_chuyen_de | dai_bdm_chuyen_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| dai_bdm_dang_bai | dai_bdm_dang_bai_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| dai_bdm_nhom | dai_bdm_nhom_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | dai_cau_menh_de | dai_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
