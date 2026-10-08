@@ -35945,3 +35945,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Mig 202610081238** (--only): dai_bdm_nhom_tien_de + trigger chặn chéo/vòng + constraint trigger deferred + _bdm_so_nhom + fn_bdm_cay thêm so/tang/tien_de/cung_co_o + chặn chuyển/hạ nhóm còn mũi tên. Sai giữa chừng: bản đầu chỉ ưu tiên con của nhóm VỪA xếp ⇒ nhảy sang gốc khác trước khi quay lại nhánh anh em; sửa thành DFS quay lui (thử khô ROLLBACK cả 2 lần).
 - **Màn viết lại** BanDoMoi.tsx; kiểm app local khối 3 [TEST] (spec §9.0). Thấy chuyên đề 'qqqq' (2 chủ đề [TEST]) do tài khoản admin tạo 12:14 — không phải t, nhiều khả năng Thùy thử trên production — KHÔNG đụng.
 - **Dữ liệu thử thêm (chờ Thùy cho xoá cùng lượt trước):** nhóm [TEST] N2 sau N1, [TEST] N3 độc lập, [TEST] N4 cần N2 và N3 + 3 mũi tên, trong chủ đề [TEST] Chủ đề A.
+
+## 08/10 (tiếp) — 4T lô 6 (CĐ2–7 + PTL1): 3 Sonnet song song, Opus soát, ghi 95 câu
+- Bộ kiểm viết TRƯỚC (từ đề) cho ~100 câu: lịch tháng Hai (moiThang), điền chữ số phép cộng/trừ (dienChuSo — LT 4.4a/b, 4.20 đều 1 nghiệm), dãy, trồng cây. Đáp số 6A 27/27 · 6B 47/47 · 6C 25/25.
+- Soát: 6B 0 sửa · 6C 0 sửa · 6A sửa 1 (PTL 1.1c dùng "ước" — kiến thức lớp 6 ⇒ "12 chia hết cho chữ số đó"), giữ lại 1 (LT 3.3b "tính đến nay" — đáp số đổi theo năm, chờ CEO). Máy sửa định dạng 1. Bản sửa người soát lưu riêng `kho-rules/dai/lo/k4T-lo6A.sua.json`.
+- Sơ đồ: 4 (LT 5.10, 5.11, 6.15, 3.15) — Opus xem ảnh làm biên bản kiem-hinh-b (model khác Sonnet). Phát hiện veSoDo ghi _end/_y vào mô tả người gọi ⇒ file JSON bẩn: sửa hàm vẽ dùng bản sao; 22 sơ đồ cũ vẽ lại y hệt.
+- dau-vao-soan.mjs: lọc sớm đề trùng câu kho nguồn khác (LT 7.2, 7.4, 7.7 trùng câu sẵn có ⇒ insertCauBatch cũng bỏ). Lỗi vá mất dấu \ (\s+ ⇒ s+) bắt được nhờ kết quả lạ, sửa bằng Edit.
+- Ghi: 6C 22 (3 trùng), 6B 47, 6A 26 ⇒ kho có 217 câu từ sách (T14T000000…), kiem_may khop toàn bộ.

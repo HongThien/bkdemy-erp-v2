@@ -1,0 +1,5 @@
+{ "model": "claude-opus-5-5", "lan_chay": "kiem-hinh-opus-lo6C-20261008",
+  "cau": {
+    "LT 5.10": { "hinh_dung": true, "hinh_ghi": "Opus xem ảnh: rộng 5 / dài 5+6, tổng 16 cm, đúng tỉ lệ, đúng thời điểm (hình ban đầu)" },
+    "LT 5.11": { "hinh_dung": true, "hinh_ghi": "Opus xem ảnh: rộng 6 / dài 6+8, tổng 20 cm, đúng tỉ lệ" },
+    "LT 6.15": { "hinh_dung": true, "hinh_ghi": "Opus xem ảnh: số nhà đầu 50 / cuối 50+38, tổng 138, đúng tỉ lệ" } } }

@@ -27,7 +27,7 @@ const r1 = (x) => Math.round(x * 10) / 10
 
 export function veSoDo(m) {
   const H = 44, TOP = m.tieu_de ? 34 : 14, TICK = 7
-  const hang = m.hang || []
+  const hang = (m.hang || []).map((h) => ({ ...h }))   // bản sao: hàm vẽ ghi _end/_y vào hàng — KHÔNG được làm bẩn mô tả của người gọi
   if (!hang.length) throw new Error('hang rỗng')
   const gtp = Number(m.gia_tri_phan)
   if (!(gtp > 0)) throw new Error('Thiếu "gia_tri_phan" (giá trị thật của 1 phần) — sơ đồ phải đúng tỉ lệ với số liệu')

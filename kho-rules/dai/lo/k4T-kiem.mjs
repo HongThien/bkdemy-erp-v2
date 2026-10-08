@@ -69,7 +69,97 @@ export function dayCon(chuoi, k, lon) {
   dq(0, ''); return best
 }
 
+/** lịch: tháng dài L ngày, ngày 1 là thứ t1 (0 = Thứ Hai … 6 = Chủ nhật) */
+const TEN_THU = ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ nhật']
+const moiThang = (Ls, f) => { const kq = new Set(); for (const L of Ls) for (let t1 = 0; t1 < 7; t1++) { const thu = (d) => (t1 + d - 1) % 7; const r = f(L, thu); if (r != null) kq.add(r) } return [...kq] }
+/** tìm chữ số cho các ô * / chữ cái trong phép tính cột (vét mọi cách điền) — khuon: [ 'a56b7', '6c54d', '95e92' ], phep: '+'|'-' */
+const dienChuSo = (khuon, phep) => {
+  const bien = [...new Set(khuon.join('').replace(/[0-9]/g, ''))], kq = []
+  const dq = (i, gan) => {
+    if (i === bien.length) { const so = khuon.map((k) => Number([...k].map((c) => (/\d/.test(c) ? c : gan[c])).join('')))
+      if (khuon.some((k, j) => /\D/.test(k[0]) && gan[k[0]] === 0)) return
+      if ((phep === '+' ? so[0] + so[1] : so[0] - so[1]) === so[2]) kq.push({ ...gan }); return }
+    for (let d = 0; d <= 9; d++) dq(i + 1, { ...gan, [bien[i]]: d })
+  }
+  dq(0, {}); return kq
+}
+
 export const KIEM = {
+  // ── lô 6A: VD 2, CĐ 3, PTL 1 ──
+  'VD 2.1a': () => [String(tim(100, 999, (n) => chuSo(n).every((c) => [2, 3, 5].includes(c))).length)],
+  'VD 2.1b': () => [String(tim(100, 999, (n) => khacNhau(n) && chuSo(n).every((c) => [2, 3, 5].includes(c))).length)],
+  'VD 3.1': () => ['160', '120', '30000', '130', '4200', '7m5cm', '300'],
+  'VD 3.2a': () => ['7tấn5tạ'], 'VD 3.2b': () => ['6giờ'], 'VD 3.2c': () => ['10dm'],
+  'VD 3.3': () => [String(2000 - 600 * 2 - 600)],
+  'LT 3.2': () => { const t = { An: 13 * 60, Bình: 60 * 60 / 5, Cường: 700, Dũng: 12 * 60 + 45 }; return [Object.entries(t).sort((a, b) => a[1] - b[1])[0][0]] },
+  'LT 3.3a': () => [String(1990 - 100), 'XIX'],
+  'LT 3.3b': () => ['XI'], // "tính đến nay" phụ thuộc năm đang đứng — không kiểm số năm
+  'LT 3.5': () => { const r = moiThang([28, 29], (L, thu) => tim(1, L, (d) => thu(d) === 3).length === 5 ? `${TEN_THU[thu(1)]}|${Math.max(...tim(1, L, (d) => thu(d) === 6))}` : null); if (r.length !== 1) throw new Error('3.5'); const [t, cn] = r[0].split('|'); return [t, cn] },
+  'LT 3.7': () => { const r = moiThang([28, 29], (L, thu) => tim(1, L, (d) => thu(d) === 4 && d % 2 === 1).length === 3 ? TEN_THU[thu(24)] : null); if (r.length !== 1) throw new Error('3.7'); return r },
+  'LT 3.8': () => ['29', '2'],
+  'LT 3.9': () => [String((3000 - 800 - 800 / 4) / 1000)],
+  'LT 3.10': () => [String((40 * 30) / (6 * 1))],
+  'LT 3.11': () => [String((1000 + 2 * 200 - 800) / 200)],
+  'LT 3.12': () => { const s = (950 + 1050 + 1100) / 2; return [String(s - 1050), String(s - 1100), String(s - 950)] },
+  'LT 3.15': () => { const than = motNghiem(tim(1, 100, (t) => t % 2 === 0 && t === (1 + t / 2) + 1), '3.15'); return [String(1 + (1 + than / 2) + than)] },
+  'PTL 1.1a': () => [String(timSo({ L: 5, lon: false, kn: true, cuoi: 'le' }))],
+  'PTL 1.1b': () => [String(timSo({ L: 5, lon: true, cuoi: '0', co: { 1: 7 } }))],
+  'PTL 1.1c': () => [String(timSo({ L: 3, lon: true, tich: 12 }))],
+  'PTL 1.1d': () => [String(timSo({ L: 5, lon: false, tong: 26, cuoi: 'chan' }))],
+  'PTL 1.1e': () => [String(timSo({ lon: true, kn: true, tong: 16 }))],
+  'PTL 1.2a': () => [String(tim(1000, 9999, (n) => khacNhau(n) && chuSo(n).every((c) => [0, 1, 2, 3].includes(c))).length)],
+  'PTL 1.2b': () => [String(tim(1000, 9999, (n) => n % 2 && khacNhau(n) && chuSo(n).every((c) => [0, 1, 2, 3].includes(c))).length)],
+  'PTL 1.3': () => [String(10 ** 4)],
+  'PTL 1.4': () => { const kg = 25 * 50 * 20; return [String(kg / 1000), String(kg * 17000)] },
+  'PTL 1.4a': () => [String((25 * 50 * 20) / 1000)], 'PTL 1.4b': () => [String(25 * 50 * 20 * 17000)],
+  // ── lô 6B: CĐ 4 ──
+  'VD 4.1': () => [String(105 + (735 - 182))], 'VD 4.2': () => ['15'], 'VD 4.3': () => [String(305 - 21)], 'VD 4.4': () => [String(40 + 13)],
+  'LT 4.1a': () => { const [m, n, p] = [57, 21, 1]; return [m + n + p, m + (n + p), m - n - p, m - (n + p)].map(String) },
+  'LT 4.1b': () => { const [m, n, p] = [2023, 1995, 5]; return [m + n + p, m + (n + p), m - n - p, m - (n + p)].map(String) },
+  'LT 4.2a': () => [String(538 + 853 - 402)], 'LT 4.2b': () => [String(5287 + 287 * 9)], 'LT 4.2c': () => [String((5201 * 6) / 3)], 'LT 4.2d': () => [String((12987 + 11023) * 2)],
+  'LT 4.3a': () => [String(motNghiem(tim(0, 200, (b) => 154 - (b + 9) === 125), '4.3a'))],
+  'LT 4.3b': () => [String(motNghiem(tim(0, 200, (b) => b * 6 - 25 === 125), '4.3b'))],
+  'LT 4.3c': () => [String(motNghiem(tim(0, 2023, (b) => (2023 - b) % 8 === 0 && (2023 - b) / 8 === 125), '4.3c'))],
+  'LT 4.3d': () => [String(motNghiem(tim(0, 5000, (b) => b % 5 === 0 && b / 5 + 35 === 125), '4.3d'))],
+  'LT 4.4a': () => { const r = dienChuSo(['p876', '2q2r', '77s7'], '-'); if (r.length !== 1) throw new Error(`4.4a: ${r.length} nghiệm`); return [`${r[0].p}876`, `2${r[0].q}2${r[0].r}`, `77${r[0].s}7`] },
+  'LT 4.4b': () => { const r = dienChuSo(['1p5q7', '376r', '16s36'], '+'); if (r.length !== 1) throw new Error(`4.4b: ${r.length} nghiệm`); return [`1${r[0].p}5${r[0].q}7`, `376${r[0].r}`, `16${r[0].s}36`] },
+  'LT 4.5a': () => [String(2026 - 2024 / 4)], 'LT 4.5b': () => [String(motNghiem(tim(1, 2024, (m) => 2024 % m === 0 && 2026 - 2024 / m === 2018), '4.5b'))],
+  'LT 4.6a': () => [String(485 + 136 + 264 + 515)], 'LT 4.6b': () => [String(3456 + 4567 + 6544 + 5433)], 'LT 4.6c': () => [String(732 + 184 + 216 - 132)], 'LT 4.6d': () => [String(636 + 278 - 236 - 178 + 500)],
+  'LT 4.7a': () => [String(5492 + (508 - 325))], 'LT 4.7b': () => [String(527 - (186 + 327))], 'LT 4.7c': () => [String(2234 - (234 - 50))], 'LT 4.7e': () => [String(644 - (243 - 156) + 143)], 'LT 4.7f': () => [String(200 - 1 - 2 - 3 - 4)],
+  'LT 4.8a': () => [String(19 + 199 + 1999 + 19999)], 'LT 4.8b': () => [String(37 + 397 + 3997 + 39997)], 'LT 4.8c': () => [String(21 + 201 + 2001 + 20001)], 'LT 4.8d': () => [String(55555 - 49 - 499 - 4999)],
+  'LT 4.9a': () => [String(7890 - 123 - 456)], 'LT 4.9b': () => [String(3456 - 234 - 567)], 'LT 4.9c': () => [String(56 + 3456 + 456)], 'LT 4.9d': () => [String(1000 + 2567 - 3456)],
+  'LT 4.9e': () => [String((51 + 149) / 2)], 'LT 4.9f': () => [String(motNghiem(tim(1, 1525, (x) => 1525 % x === 0 && 1525 / x + 125 === 130), '4.9f'))],
+  'LT 4.10': () => [String(34270 + 489 - 345)], 'LT 4.11': () => [String(1995 - 206 + 625)], 'LT 4.12': () => [String(886 + 230)], 'LT 4.13': () => [String(2024 - 405)], 'LT 4.14': () => [String(1234 - 112 - 297)],
+  'LT 4.15': () => [String(timSo({ L: 4, lon: true, cuoi: '0' }) - timSo({ L: 4, lon: false, kn: true }))],
+  'LT 4.17': () => { const a = motNghiem(tim(0, 80, (a) => 4 * a + (80 - a) === 185), '4.17'); return [String(a), String(80 - a)] },
+  'LT 4.18': () => { const b = motNghiem(tim(0, 2000, (b) => 2 * (b + 299) - b === 833), '4.18'); return [String(b + 299), String(b)] },
+  'LT 4.19': () => { const b = motNghiem(tim(0, 2000, (b) => (b + 710) - 4 * b === 335), '4.19'); return [String(b + 710), String(b)] },
+  'LT 4.20': () => { const r = dienChuSo(['a56b7', '6c54d', '95e92'], '+'); if (r.length !== 1) throw new Error(`4.20: ${r.length} nghiệm`); const g = r[0]; return [`a=${g.a}`, `b=${g.b}`, `c=${g.c}`, `d=${g.d}`, `e=${g.e}`] },
+  // ── lô 6C: CĐ 5, 6, 7 ──
+  'LT 5.2': () => { const cv = (6 + 12) * 2, c = cv / 4; return [String(c * c)] },
+  'LT 5.5': () => { const c = motNghiem(tim(1, 9, (c) => c * c === 81), '5.5'); const d = (c * 4) / 2 - 4; return [String(d * 4)] },
+  'LT 5.7': () => { const d = 45 / 5, r = 30 / 2 - d; return [String(d * r)] },
+  'LT 5.10': () => { const r = motNghiem(tim(1, 16, (r) => (16 - r) - 3 === r + 3), '5.10'); return [String(r * (16 - r))] },
+  'LT 5.11': () => { const r = motNghiem(tim(1, 20, (r) => r + 5 === (20 - r) - 3), '5.11'); return [String(r * (20 - r))] },
+  'LT 6.1d': () => ['30', '35', '40'], 'LT 6.1e': () => ['22', '26', '30'], 'LT 6.1f': () => ['39', '46', '53'],
+  'LT 6.3': () => { const ds = tim(1845, 2024, () => true); return [ds.filter((x) => x % 2).length, ds.filter((x) => x % 2 === 0).length, ds.filter((x) => x % 10 === 0).length].map(String) },
+  'LT 6.7': () => { let A = 0, B = 0; for (let k = 1; k <= 199; k += 2) A += k; for (let k = 100; k >= 5; k -= 5) B += k; return [`A=${A}`, `B=${B}`] },
+  'LT 6.8c': () => [String(motNghiem(tim(0, 300, (x) => { let s = 0; for (let k = 1; k <= 34; k += 3) s += x + k; return s === 282 }), '6.8c'))],
+  'LT 6.9a': () => { let s = 0; for (let k = 12; k < 22; k++) s += k; return [String(s)] },
+  'LT 6.9b': () => { let s = 0; for (let i = 0; i < 12; i++) s += 60 + 2 * i; return [String(s)] },
+  'LT 6.9c': () => { let s = 0; for (let i = 0; i < 16; i++) s += 21 + 2 * i; return [String(s)] },
+  'LT 6.9d': () => [String(tim(10, 99, (n) => n % 10 === 3).reduce((a, b) => a + b, 0))],
+  'LT 6.10': () => [String(tim(10, 99, (n) => n % 4 === 0).length)],
+  'LT 6.11': () => [String(tim(100, 999, (n) => n % 5 !== 0).length)],
+  'LT 6.15': () => { const a = motNghiem(tim(0, 1380, (a) => a % 2 === 0 && [...Array(20)].reduce((s, _, i) => s + a + 2 * i, 0) === 1380), '6.15'); return [String(a), String(a + 38)] },
+  'LT 6.17': () => { let d = 0; for (let p = 1; ; p++) { d += String(p).length; if (d === 492) return [String(p)]; if (d > 492) throw new Error('6.17: không vừa khít') } },
+  'LT 6.20': () => { let B = '1000', so = 1000; const vt = []; for (let k = 999; B.length < 421; k--) { B += k; vt.push(k) } let L = 4; let soCua = 1000; for (const k of vt) { if (L >= 421) break; L += 3; soCua = k } return [B[420], String(soCua)] },
+  'LT 7.2': () => [String((450 / 5 + 1) * 2)],
+  'LT 7.4': () => [String(35 * 50)],
+  'LT 7.7': () => [String((1500 / 50 - 1) * 2)],
+  'LT 7.11': () => [String(((90 + 45) * 2) / 3)],
+  'LT 7.15': () => { const n = 960 / 8 + 1; const bl = tim(0, n - 1, (i) => i % 3 === 0).length; if ((n - 1) % 3) throw new Error('7.15: cuối không phải bằng lăng'); return [String(n - bl)] },
+
   // ── chuyên đề 1 (lô 5) — viết TRƯỚC khi thấy lời giải, chỉ từ đề ──
   'VD 1.1': () => [String(timSo({ lon: true, kn: true, tong: 19 }))],
   'VD 1.2': () => [String(timSo({ lon: false, kn: true, tong: 19 }))],

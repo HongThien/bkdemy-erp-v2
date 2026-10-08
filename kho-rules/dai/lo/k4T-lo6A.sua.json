@@ -1,0 +1,9 @@
+{
+ "PTL 1.1c": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất thì chữ số hàng trăm phải lớn nhất có thể. Tích ba chữ số là $12$ nên $12$ phải chia hết cho từng chữ số; các chữ số mà $12$ chia hết là $1$ ; $2$ ; $3$ ; $4$ ; $6$. Chữ số hàng trăm lớn nhất là $6$, khi đó hai chữ số còn lại có tích $12:6=2$, chỉ có thể là $2$ và $1$; chữ số lớn hơn đứng ở hàng chục.\n\nChú ý: không dùng chữ số $0$, vì có chữ số $0$ thì tích bằng $0$.\n\n**Phần 2. Trình bày**\n\nSố lớn nhất nên chữ số hàng trăm phải lớn nhất có thể.\n\nTích các chữ số bằng $12$ nên $12$ chia hết cho chữ số hàng trăm; chữ số lớn nhất mà $12$ chia hết là $6$.\n\nTích hai chữ số còn lại là: $12:6=2$\n\nHai chữ số có tích bằng $2$ là $2$ và $1$.\n\nChữ số hàng chục lớn hơn nên là $2$, chữ số hàng đơn vị là $1$.\n\nVậy số cần tìm là $621$.",
+  "_ly_do": "\"ước\" là kiến thức lớp 6 — đổi sang \"12 chia hết cho chữ số đó\" (k4T §0)"
+ },
+ "LT 3.3b": {
+  "bo": "\"tính đến nay\" — đáp số đổi theo năm (2023 ⇒ 1013; 2026 ⇒ 1016); chờ CEO chốt năm mốc"
+ }
+}

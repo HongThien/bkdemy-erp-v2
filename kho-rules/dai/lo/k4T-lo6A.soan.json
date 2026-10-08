@@ -1,0 +1,234 @@
+[
+ {
+  "ma_nguon": "VD 2.1a",
+  "gop_y": false,
+  "dap_an": "$27$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đếm theo **từng hàng**, xem mỗi hàng có bao nhiêu cách chọn chữ số rồi **nhân** các số cách chọn với nhau. Dấu hiệu: đề chỉ nói \"có ba chữ số\", **không** bắt các chữ số khác nhau, nên một chữ số được dùng lại nhiều lần.\n\nBa chữ số $2$ ; $3$ ; $5$ đều khác $0$ nên chữ số hàng trăm cũng không bị loại: cả ba hàng (trăm, chục, đơn vị) đều có $3$ cách chọn.\n\n**Phần 2. Trình bày**\n\nGọi số có ba chữ số có dạng $\\overline{abc}$ ($a$ khác $0$; $a,b,c<10$).\n\nVới ba chữ số đã cho $2$ ; $3$ ; $5$ đều khác $0$.\n\nChữ số hàng trăm $a$, hàng chục $b$ và hàng đơn vị $c$ mỗi chữ số đều có $3$ cách chọn.\n\nViết được số các số có ba chữ số là: $3\\times 3\\times 3=27$ (số)\n\nĐáp số: $27$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 2.1b",
+  "gop_y": false,
+  "dap_an": "$6$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: vẫn đếm theo từng hàng, nhưng \"khác nhau\" nghĩa là chữ số đã chọn cho hàng trước **không được chọn lại** ở hàng sau. Hàng trăm có $3$ cách (một trong ba chữ số), hàng chục chỉ còn $2$ cách, hàng đơn vị còn $1$ cách.\n\nKiểm tra bằng cách liệt kê: $235$ ; $253$ ; $325$ ; $352$ ; $523$ ; $532$, đúng $6$ số.\n\n**Phần 2. Trình bày**\n\nGọi số có ba chữ số có dạng $\\overline{abc}$ ($a$ khác $0$; $a,b,c<10$ và $a,b,c$ khác nhau).\n\nVới ba chữ số đã cho $2$ ; $3$ ; $5$ đều khác $0$.\n\nChữ số hàng trăm $a$ có $3$ cách chọn là một trong ba chữ số trên.\n\nChữ số hàng chục $b$ có $2$ cách chọn vì phải khác chữ số hàng trăm đã chọn.\n\nChữ số hàng đơn vị $c$ còn $1$ cách chọn vì không được trùng với $a$ và $b$.\n\nViết được số các số có ba chữ số khác nhau là: $3\\times 2\\times 1=6$ (số)\n\nĐáp số: $6$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 3.1",
+  "gop_y": false,
+  "dap_an": "$160$ dag; $120$ dm; $30000$ $cm^2$; $130$ phút; $4200$ kg; $7$ m $5$ cm; $3$ $m^2$ $15$ $dm^2$; $300$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi đơn vị đo thì phải nhớ **bảng đơn vị** và xem hai đơn vị liền nhau gấp nhau bao nhiêu lần. Đơn vị khối lượng và độ dài liền kề gấp $10$ lần nhau (kg, hg, dag, g ; tấn, tạ, yến, kg ; m, dm, cm), đơn vị diện tích liền kề gấp $100$ lần nhau. Thời gian: $1$ giờ $=60$ phút ; $1$ thế kỉ $=100$ năm.\n\nĐổi từng dòng, mỗi dòng dùng một quan hệ: $1$ kg $=100$ dag nên $1$ kg $6$ hg $=100+60=160$ dag ; $1$ tạ $=100$ kg nên $4$ tấn $2$ tạ $=4000+200=4200$ kg ; $1$ $m^2=10000$ $cm^2$ nên $3$ $m^2=30000$ $cm^2$ ; $315$ $dm^2$ gồm $300$ $dm^2=3$ $m^2$ và $15$ $dm^2$ còn lại.\n\nChú ý: đổi từ đơn vị lớn sang đơn vị bé thì nhân, ngược lại thì chia. Số đo hai đơn vị như $705$ cm $=7$ m $5$ cm thì lấy thương và số dư của phép chia $705$ cho $100$.\n\n**Phần 2. Trình bày**\n\n$1$ kg $6$ hg $=160$ dag\n\n$12$ m $=120$ dm\n\n$3$ $m^2$ $=30000$ $cm^2$\n\n$2$ giờ $10$ phút $=130$ phút\n\n$4$ tấn $2$ tạ $=4200$ kg\n\n$705$ cm $=7$ m $5$ cm\n\n$315$ $dm^2$ $=3$ $m^2$ $15$ $dm^2$\n\n$3$ thế kỉ $=300$ năm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 3.2a",
+  "gop_y": false,
+  "dap_an": "$7$ tấn $5$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân **từng đơn vị riêng**, rồi nếu số ở đơn vị bé đủ để đổi lên đơn vị lớn thì **đổi lên** cho gọn. Nhân $2$ tấn $5$ tạ với $3$: $2$ tấn nhân $3$ được $6$ tấn, $5$ tạ nhân $3$ được $15$ tạ. Vì $1$ tấn $=10$ tạ nên $15$ tạ $=1$ tấn $5$ tạ, cộng vào $6$ tấn được $7$ tấn $5$ tạ.\n\nKiểm tra: $2$ tấn $5$ tạ $=2500$ kg ; $2500\\times 3=7500$ kg $=7$ tấn $5$ tạ.\n\n**Phần 2. Trình bày**\n\n$2$ tấn $5$ tạ $\\times 3$\n\n$=6$ tấn $15$ tạ\n\n$=7$ tấn $5$ tạ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 3.2b",
+  "gop_y": false,
+  "dap_an": "$6$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng giờ với giờ, phút với phút: $3+2=5$ giờ ; $15+45=60$ phút. Vì $60$ phút $=1$ giờ nên $5$ giờ $60$ phút $=6$ giờ.\n\nChú ý: số phút không viết quá $59$, đủ $60$ phút phải đổi thành $1$ giờ.\n\n**Phần 2. Trình bày**\n\n$3$ giờ $15$ phút $+2$ giờ $45$ phút\n\n$=5$ giờ $60$ phút\n\n$=6$ giờ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 3.2c",
+  "gop_y": false,
+  "dap_an": "$6$ $m^2$ $10$ $dm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng $m^2$ với $m^2$, $dm^2$ với $dm^2$: $4+2=6$ $m^2$ và $3+7=10$ $dm^2$. Vì $1$ $m^2=100$ $dm^2$ nên $10$ $dm^2$ chưa đủ để đổi lên $m^2$, giữ nguyên.\n\nChú ý: đơn vị diện tích liền kề gấp $100$ lần (không phải $10$ lần), nên không đổi $10$ $dm^2$ thành $1$ $m^2$.\n\n**Phần 2. Trình bày**\n\n$4$ $m^2$ $3$ $dm^2$ $+2$ $m^2$ $7$ $dm^2$\n\n$=6$ $m^2$ $10$ $dm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 3.3",
+  "gop_y": false,
+  "dap_an": "$200$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: kho chứa $2$ tấn nhưng các số khác tính bằng ki-lô-gam, nên **đổi $2$ tấn ra ki-lô-gam** trước ($1$ tấn $=1000$ kg). Gạo loại III là phần còn lại: lấy cả kho trừ gạo loại I và gạo loại II. Gạo loại II gấp đôi gạo loại I nên tìm trước bằng phép nhân với $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $2$ tấn $=2000$ kg\n\nSố ki-lô-gam gạo loại II là: $600\\times 2=1200$ (kg)\n\nSố ki-lô-gam gạo loại III là: $2000-1200-600=200$ (kg)\n\nĐáp số: $200$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.2",
+  "gop_y": false,
+  "dap_an": "Cường",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bốn bạn chạy **cùng một quãng đường** $1$ km nên bạn nào chạy hết **ít thời gian nhất** là chạy nhanh nhất. Các thời gian đang tính bằng đơn vị khác nhau (phút, giờ, giây) nên phải **đổi về cùng một đơn vị**; chọn giây cho khỏi có phân số ($1$ phút $=60$ giây).\n\nVới Bình: $1$ giờ $=60$ phút nên $\\dfrac{1}{5}$ giờ là $60:5=12$ phút $=720$ giây.\n\nChú ý: số $700$ trông lớn nhất nhưng đó là $700$ giây, chưa tới $12$ phút. Không so sánh các số khi đơn vị còn khác nhau.\n\n**Phần 2. Trình bày**\n\nCác bạn cùng chạy quãng đường dài $1$ km nên bạn nào chạy hết ít thời gian nhất thì chạy nhanh nhất.\n\nĐổi thời gian của các bạn ra giây:\n\nThời gian của An: $13$ phút $=13\\times 60=780$ (giây)\n\nThời gian của Bình: $\\dfrac{1}{5}$ giờ $=60:5=12$ (phút)\n\n$12$ phút $=12\\times 60=720$ (giây)\n\nThời gian của Cường: $700$ giây\n\nThời gian của Dũng: $12$ phút $45$ giây $=12\\times 60+45=765$ (giây)\n\nVì $700<720<765<780$ nên Cường chạy hết ít thời gian nhất.\n\nVậy Cường là người chạy nhanh nhất.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.3a",
+  "gop_y": false,
+  "dap_an": "Năm $1890$; thế kỉ XIX",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"kỉ niệm $100$ năm ngày sinh\" nghĩa là từ ngày sinh đến năm kỉ niệm đã qua $100$ năm, nên **năm sinh = năm kỉ niệm trừ $100$**.\n\nThế kỉ I từ năm $1$ đến năm $100$, thế kỉ II từ năm $101$ đến năm $200$, và cứ thế. Cách tìm nhanh: **bỏ hai chữ số cuối rồi cộng $1$** (nếu hai chữ số cuối là $00$ thì không cộng): năm $1890$ bỏ $90$ còn $18$, cộng $1$ được $19$, đó là thế kỉ XIX.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBác Hồ sinh vào năm: $1990-100=1890$\n\nTừ năm $1801$ đến năm $1900$ là thế kỉ XIX.\n\nNăm $1890$ thuộc thế kỉ XIX.\n\nĐáp số: năm $1890$ ; thế kỉ XIX",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.3b",
+  "gop_y": false,
+  "dap_an": "Thế kỉ XI; $1013$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai ý. Về thế kỉ: bỏ hai chữ số cuối của năm $1010$ còn $10$, cộng $1$ được $11$, đó là thế kỉ XI (từ năm $1001$ đến năm $1100$). Về số năm đã qua: lấy năm tính đến trừ năm $1010$.\n\nChú ý: \"đến nay\" phụ thuộc năm đang tính; ở đây tính đến năm $2023$ (năm của quyển sách).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ năm $1001$ đến năm $1100$ là thế kỉ XI nên năm $1010$ thuộc thế kỉ XI.\n\nTính đến năm $2023$, Lý Thái Tổ dời đô về Thăng Long đã được: $2023-1010=1013$ (năm)\n\nĐáp số: thế kỉ XI ; $1013$ năm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "\"Tính đến nay\" phụ thuộc năm hiện tại. Em tính theo năm 2023 (năm xuất bản quyển sách) ra 1013 năm; nếu tính đến 2026 thì là 1016 năm. Cần người chốt năm mốc (hoặc đổi cách hỏi) trước khi ghi."
+ },
+ {
+  "ma_nguon": "LT 3.5",
+  "gop_y": true,
+  "dap_an": "Ngày mùng $1$ là thứ Năm; Chủ nhật cuối cùng là ngày $25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tháng Hai chỉ có $28$ hoặc $29$ ngày. Vì $28=7\\times 4$ nên tháng $28$ ngày chỉ có đúng **$4$ ngày** cho mỗi thứ trong tuần. Muốn có $5$ ngày thứ Năm thì tháng phải có $29$ ngày. Khi đó $29:7=4$ (dư $1$): ngày dư là ngày $29$ cùng thứ với ngày mùng $1$, nên chỉ thứ của ngày mùng $1$ mới có $5$ ngày.\n\nVậy ngày mùng $1$ là thứ Năm. Từ thứ Năm đến Chủ nhật là $3$ ngày nên Chủ nhật đầu tiên là ngày $1+3=4$; cứ $7$ ngày lại có một Chủ nhật.\n\n**Phần 2. Trình bày**\n\nTháng Hai có $28$ hoặc $29$ ngày.\n\nTa có $28:7=4$ nên tháng Hai có $28$ ngày thì mỗi thứ trong tuần chỉ có đúng $4$ ngày.\n\nTháng Hai có $5$ ngày thứ Năm nên tháng đó có $29$ ngày.\n\nTa có $29:7=4$ (dư $1$) nên ngày $29$ cùng thứ với ngày mùng $1$, chỉ thứ của ngày mùng $1$ mới có $5$ ngày.\n\nVậy ngày mùng $1$ là thứ Năm và các ngày thứ Năm của tháng là: $1$ ; $8$ ; $15$ ; $22$ ; $29$.\n\nNgày mùng $1$ là thứ Năm nên ngày $2$ là thứ Sáu, ngày $3$ là thứ Bảy, ngày $4$ là Chủ nhật.\n\nCác ngày Chủ nhật của tháng là: $4$ ; $11$ ; $18$ ; $25$.\n\nVậy ngày mùng $1$ của tháng đó là thứ Năm và Chủ nhật cuối cùng của tháng là ngày $25$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.7",
+  "gop_y": false,
+  "dap_an": "Chủ nhật",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai ngày thứ Sáu liền nhau cách nhau $7$ ngày (số lẻ) nên các ngày thứ Sáu trong tháng **chẵn, lẻ xen kẽ**. Tháng có $4$ ngày thứ Sáu thì chỉ có $2$ ngày lẻ; muốn có $3$ ngày lẻ thì phải có $5$ ngày thứ Sáu theo kiểu lẻ, chẵn, lẻ, chẵn, lẻ, tức là ngày thứ Sáu đầu tiên là ngày lẻ.\n\nTháng Hai có nhiều nhất $29$ ngày mà $1+7\\times 4=29$ nên ngày thứ Sáu đầu tiên chỉ có thể là ngày $1$.\n\n**Phần 2. Trình bày**\n\nHai ngày thứ Sáu liền nhau cách nhau $7$ ngày nên các ngày thứ Sáu trong tháng là ngày chẵn, ngày lẻ xen kẽ nhau.\n\nTháng có $4$ ngày thứ Sáu thì chỉ có $2$ ngày lẻ, mà tháng này có $3$ ngày thứ Sáu là ngày lẻ nên tháng có $5$ ngày thứ Sáu và ngày thứ Sáu đầu tiên là ngày lẻ.\n\nTháng Hai có nhiều nhất $29$ ngày mà $1+7\\times 4=29$ nên ngày thứ Sáu đầu tiên là ngày $1$.\n\nCác ngày thứ Sáu của tháng đó là: $1$ ; $8$ ; $15$ ; $22$ ; $29$.\n\nNgày $24$ sau ngày thứ Sáu $22$ là: $24-22=2$ (ngày)\n\nVậy ngày $24$ của tháng đó là Chủ nhật.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.8",
+  "gop_y": false,
+  "dap_an": "Ngày $29$ tháng $2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trong $12$ năm Lan mới tổ chức $3$ lần sinh nhật, nghĩa là cứ $12:3=4$ năm mới có **một lần** sinh nhật. Ngày chỉ xuất hiện $4$ năm một lần là ngày $29$ tháng $2$ (chỉ năm nhuận mới có).\n\nChú ý: sinh vào bất kì ngày nào khác thì năm nào Lan cũng tổ chức được sinh nhật, không thể chỉ có $3$ lần trong $12$ năm.\n\n**Phần 2. Trình bày**\n\nSố năm giữa hai lần tổ chức sinh nhật của Lan là: $12:3=4$ (năm)\n\nCứ $4$ năm mới có một năm nhuận, năm nhuận mới có ngày $29$ tháng $2$.\n\nVậy Lan sinh vào ngày $29$ tháng $2$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.9",
+  "gop_y": false,
+  "dap_an": "$2$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi $3$ tấn ra ki-lô-gam để cùng đơn vị với $800$ kg ($1$ tấn $=1000$ kg). Ngày thứ hai xuất $\\dfrac{1}{4}$ số gạo ngày đầu, tìm bằng phép nhân với $\\dfrac{1}{4}$. Ngày thứ ba bằng cả $3$ tấn trừ đi hai ngày đầu, rồi đổi kết quả về tấn.\n\nChú ý: đề hỏi bao nhiêu **tấn**, đừng quên đổi lại ở cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $3$ tấn $=3000$ kg\n\nNgày thứ hai kho xuất số ki-lô-gam gạo là: $800\\times\\dfrac{1}{4}=200$ (kg)\n\nNgày thứ ba kho xuất số ki-lô-gam gạo là: $3000-800-200=2000$ (kg)\n\nĐổi: $2000$ kg $=2$ tấn\n\nĐáp số: $2$ tấn gạo",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.10",
+  "gop_y": false,
+  "dap_an": "$200$ tấm gỗ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số tấm gỗ bằng diện tích sàn chia cho diện tích một tấm gỗ. Đề cho hai đơn vị khác nhau (m và dm) nên phải **đổi về dm** ($1$ m $=10$ dm) trước khi tính diện tích.\n\nKiểm tra lát vừa khít: chiều rộng $30$ dm chia hết cho $6$ dm nên mỗi hàng ngang xếp được $5$ tấm, và có $40$ hàng như thế, không phải cắt tấm nào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $4$ m $=40$ dm ; $3$ m $=30$ dm\n\nDiện tích sàn căn phòng là: $40\\times 30=1200$ ($dm^2$)\n\nDiện tích một tấm gỗ là: $6\\times 1=6$ ($dm^2$)\n\nSố tấm gỗ cần dùng là: $1200:6=200$ (tấm)\n\nĐáp số: $200$ tấm gỗ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.11",
+  "gop_y": false,
+  "dap_an": "$3$ quả cân",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cân thăng bằng thì khối lượng hai đĩa **bằng nhau**. Đĩa bên kia có $1$ quả cân $1$ kg và $2$ quả cân $200$ g, nên thịt lợn và thịt bò cộng lại nặng $1000+200\\times 2=1400$ g. Biết thịt bò nặng $800$ g thì thịt lợn là phần còn lại. Cuối cùng chia khối lượng thịt lợn cho $200$ g để biết số quả cân.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $1$ kg $=1000$ g\n\nThịt lợn và thịt bò cùng nặng là: $1000+200\\times 2=1400$ (g)\n\nThịt lợn nặng là: $1400-800=600$ (g)\n\nSố quả cân $200$ g cần đặt ở đĩa còn lại là: $600:200=3$ (quả)\n\nĐáp số: $3$ quả cân",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.12",
+  "gop_y": false,
+  "dap_an": "Thửa thứ nhất: $500$ kg; Thửa thứ hai: $450$ kg; Thửa thứ ba: $600$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng cả ba tổng đã cho thì mỗi thửa ruộng được tính **đúng hai lần**, nên chia kết quả cho $2$ để ra tổng sản lượng cả ba thửa. Biết tổng cả ba thửa, bớt đi tổng của hai thửa nào thì ra thửa còn lại: bớt $950$ (thửa thứ nhất và thứ hai) ra thửa thứ ba, bớt $1050$ (thửa thứ hai và thứ ba) ra thửa thứ nhất, bớt $1100$ (thửa thứ ba và thứ nhất) ra thửa thứ hai.\n\nKiểm tra: $500+450=950$ ; $450+600=1050$ ; $600+500=1100$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCộng ba tổng đã cho thì mỗi thửa ruộng được tính hai lần.\n\nHai lần tổng sản lượng thóc của ba thửa là: $950+1050+1100=3100$ (kg)\n\nTổng sản lượng thóc của ba thửa là: $3100:2=1550$ (kg)\n\nSản lượng thóc thửa thứ ba là: $1550-950=600$ (kg)\n\nSản lượng thóc thửa thứ nhất là: $1550-1050=500$ (kg)\n\nSản lượng thóc thửa thứ hai là: $1550-1100=450$ (kg)\n\nĐáp số: Thửa thứ nhất: $500$ kg; Thửa thứ hai: $450$ kg; Thửa thứ ba: $600$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 3.15",
+  "gop_y": false,
+  "dap_an": "$8$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cái thân nặng bằng cái đầu và cái đuôi, mà cái đầu lại nặng bằng cái đuôi và một nửa cái thân. Thay cái đầu vào thì cái thân nặng bằng **một nửa cái thân và hai lần cái đuôi**. Vậy cái thân hơn một nửa cái thân đúng hai lần cái đuôi; mà cái thân hơn một nửa cái thân chính là **một nửa cái thân**, nên một nửa cái thân nặng bằng hai lần cái đuôi.\n\nBiết nửa thân thì tìm thân, rồi tìm đầu, cuối cùng cộng đầu, thân, đuôi.\n\nKiểm tra: đuôi $1$ kg, đầu $3$ kg, thân $4$ kg. Đầu $=1+4:2=3$ (đúng); thân $=3+1=4$ (đúng).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCái thân nặng bằng cái đầu và cái đuôi, mà cái đầu nặng bằng cái đuôi và một nửa cái thân, nên cái thân nặng bằng một nửa cái thân và hai lần cái đuôi.\n\nTa có sơ đồ:\n\n(Cái thân: $2$ phần bằng nhau, mỗi phần là một nửa cái thân; cái đầu và cái đuôi: $1$ phần bằng một nửa cái thân và thêm $2$ kg (hai lần cái đuôi); hai hàng dài bằng nhau.)\n\nHai lần cái đuôi nặng là: $1\\times 2=2$ (kg)\n\nCái thân hơn một nửa cái thân là hai lần cái đuôi nên một nửa cái thân nặng $2$ kg.\n\nCái thân nặng là: $2\\times 2=4$ (kg)\n\nCái đầu nặng là: $1+2=3$ (kg)\n\nCon cá nặng là: $1+3+4=8$ (kg)\n\nĐáp số: $8$ kg",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Cái thân",
+     "phan": 2
+    },
+    {
+     "nhan": "Cái đầu và cái đuôi",
+     "phan": 1,
+     "them": "2 kg"
+    }
+   ],
+   "dau_hoi": [
+    "Cái thân"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.1a",
+  "gop_y": false,
+  "dap_an": "$10235$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số nhỏ nhất thì các hàng cao lấy chữ số **nhỏ nhất có thể**, nhưng điều kiện \"lẻ\" bắt hàng đơn vị phải là chữ số lẻ. Chọn từ hàng cao xuống: hàng chục nghìn nhỏ nhất (khác $0$) là $1$, rồi $0$, $2$, $3$ (các chữ số khác nhau); hàng đơn vị lấy chữ số lẻ nhỏ nhất chưa dùng.\n\nChú ý: $10234$ là số nhỏ nhất có năm chữ số khác nhau nhưng là số chẵn. Hai số lẻ gần nhất là $10235$ và $10243$; số $10235$ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nSố tự nhiên nhỏ nhất khi các chữ số ở hàng cao nhỏ nhất có thể.\n\nChữ số hàng chục nghìn nhỏ nhất (khác $0$) là $1$, chữ số hàng nghìn là $0$, chữ số hàng trăm là $2$, chữ số hàng chục là $3$ (các chữ số khác nhau).\n\nSố cần tìm là số lẻ nên chữ số hàng đơn vị là chữ số lẻ nhỏ nhất chưa dùng.\n\nCác chữ số lẻ $1$ và $3$ đã dùng nên chữ số hàng đơn vị là $5$.\n\nVậy số cần tìm là $10235$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.1b",
+  "gop_y": false,
+  "dap_an": "$97990$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"tròn chục\" nghĩa là chữ số hàng đơn vị là $0$. Số lớn nhất thì các hàng còn lại lấy chữ số lớn nhất là $9$, nhưng chữ số hàng nghìn đề đã cho là $7$ nên giữ nguyên. Đề không bắt các chữ số khác nhau nên chữ số $9$ được dùng lại.\n\nChú ý: không đổi hàng nghìn thành $9$, vì đề đã cho cố định là $7$.\n\n**Phần 2. Trình bày**\n\nSố cần tìm là số tròn chục nên chữ số hàng đơn vị là $0$.\n\nSố lớn nhất nên chữ số hàng chục nghìn, hàng trăm và hàng chục là chữ số lớn nhất, đó là $9$.\n\nChữ số hàng nghìn là $7$ theo đề bài.\n\nVậy số cần tìm là $97990$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.1c",
+  "gop_y": false,
+  "dap_an": "$621$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất thì chữ số hàng trăm phải lớn nhất có thể. Tích ba chữ số là $12$ nên mỗi chữ số là ước của $12$; các ước có một chữ số là $1$ ; $2$ ; $3$ ; $4$ ; $6$. Chữ số hàng trăm lớn nhất là $6$, khi đó hai chữ số còn lại có tích $12:6=2$, chỉ có thể là $2$ và $1$; chữ số lớn hơn đứng ở hàng chục.\n\nChú ý: không dùng chữ số $0$, vì có chữ số $0$ thì tích bằng $0$.\n\n**Phần 2. Trình bày**\n\nSố lớn nhất nên chữ số hàng trăm phải lớn nhất có thể.\n\nTích các chữ số bằng $12$ nên chữ số hàng trăm là ước của $12$ và lớn nhất là $6$.\n\nTích hai chữ số còn lại là: $12:6=2$\n\nHai chữ số có tích bằng $2$ là $2$ và $1$.\n\nChữ số hàng chục lớn hơn nên là $2$, chữ số hàng đơn vị là $1$.\n\nVậy số cần tìm là $621$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.1d",
+  "gop_y": false,
+  "dap_an": "$10898$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số nhỏ nhất thì các hàng cao lấy chữ số nhỏ nhất có thể, rồi **dồn tổng vào các hàng thấp**. Hàng chục nghìn là $1$, hàng nghìn là $0$, ba hàng còn lại phải có tổng $26-1-0=25$. Ba hàng ấy nhiều nhất là $9+9+9=27$, nhưng hàng đơn vị phải là chữ số chẵn nên nhiều nhất là $9+9+8=26$. Cần tổng $25$, tức là kém $1$, nên bớt $1$ ở hàng cao nhất trong ba hàng đó là hàng trăm: $9-1=8$.\n\nKiểm tra: $1+0+8+9+8=26$ và $10898$ là số chẵn.\n\n**Phần 2. Trình bày**\n\nSố tự nhiên nhỏ nhất khi các chữ số ở hàng cao nhỏ nhất có thể, nên chữ số hàng chục nghìn là $1$ và chữ số hàng nghìn là $0$.\n\nTổng ba chữ số còn lại là: $26-1-0=25$\n\nSố cần tìm là số chẵn nên chữ số hàng đơn vị lớn nhất là $8$, chữ số hàng chục lớn nhất là $9$.\n\nTổng hai chữ số này là: $9+8=17$\n\nChữ số hàng trăm là: $25-17=8$\n\nVậy số cần tìm là $10898$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.1e",
+  "gop_y": false,
+  "dap_an": "$643210$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất thì phải có **nhiều chữ số nhất**, nên chọn các chữ số **nhỏ** khác nhau: $0+1+2+3+4+5=15$ chưa tới $16$, mà thêm chữ số $6$ nữa thì $15+6=21$ đã vượt $16$. Vậy số cần tìm có $6$ chữ số. Tổng $15$ còn thiếu $1$ so với $16$, nên dồn $1$ vào chữ số lớn nhất ($5$ thành $6$) để các chữ số vẫn khác nhau: $16=0+1+2+3+4+6$. Sắp xếp từ lớn đến bé.\n\nChú ý: chữ số $0$ vẫn được dùng, đặt ở hàng đơn vị.\n\n**Phần 2. Trình bày**\n\nSố tự nhiên lớn nhất khi nó nhiều chữ số nhất và chữ số lớn nhất đứng ở hàng cao nhất.\n\nViết số $16$ thành tổng nhiều chữ số khác nhau nhất nên các chữ số cần chọn càng nhỏ càng tốt: $0$ ; $1$ ; $2$ ; $\\ldots$.\n\nTa có: $0+1+2+3+4+5=15<16$ và $0+1+2+3+4+5+6=21>16$ nên số cần tìm có $6$ chữ số.\n\nTa có: $16=0+1+2+3+4+6$\n\nSắp xếp các chữ số theo thứ tự từ lớn đến nhỏ để được số cần tìm là $643210$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.2a",
+  "gop_y": false,
+  "dap_an": "$18$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đếm theo từng hàng; hàng cao nhất (hàng nghìn) **không được là $0$**, và \"khác nhau\" nên hàng sau bớt dần. Hàng nghìn: bỏ chữ số $0$, còn $3$ cách. Hàng trăm: còn $3$ chữ số (kể cả $0$), có $3$ cách. Hàng chục: $2$ cách. Hàng đơn vị: $1$ cách.\n\nChú ý: lỗi hay gặp là nhân $4\\times 3\\times 2\\times 1=24$, quên rằng hàng nghìn không được là $0$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm có dạng $\\overline{abcd}$ ($a$ khác $0$; $a,b,c,d$ khác nhau).\n\nChữ số hàng nghìn $a$ khác $0$ nên có $3$ cách chọn.\n\nChữ số hàng trăm $b$ khác $a$ nên có $3$ cách chọn.\n\nChữ số hàng chục $c$ có $2$ cách chọn, chữ số hàng đơn vị $d$ có $1$ cách chọn.\n\nSố các số có bốn chữ số khác nhau lập được là: $3\\times 3\\times 2\\times 1=18$ (số)\n\nĐáp số: $18$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.2b",
+  "gop_y": false,
+  "dap_an": "$8$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: có điều kiện số lẻ nên chọn **hàng đơn vị trước**: chỉ có $2$ chữ số lẻ là $1$ và $3$. Rồi chọn hàng nghìn (không được là $0$ và phải khác hàng đơn vị): còn $2$ cách. Hàng trăm: $2$ cách. Hàng chục: $1$ cách.\n\nLiệt kê để kiểm tra: $1023$ ; $1203$ ; $2013$ ; $2031$ ; $2103$ ; $2301$ ; $3021$ ; $3201$, đúng $8$ số.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm có dạng $\\overline{abcd}$ ($a$ khác $0$; $a,b,c,d$ khác nhau).\n\nSố cần tìm là số lẻ nên chữ số hàng đơn vị $d$ có $2$ cách chọn ($1$ hoặc $3$).\n\nChữ số hàng nghìn $a$ khác $0$ và khác $d$ nên có $2$ cách chọn.\n\nChữ số hàng trăm $b$ có $2$ cách chọn, chữ số hàng chục $c$ có $1$ cách chọn.\n\nSố các số lẻ có bốn chữ số khác nhau lập được là: $2\\times 2\\times 2\\times 1=8$ (số)\n\nĐáp số: $8$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 1.3",
+  "gop_y": false,
+  "dap_an": "$10000$ cách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mật khẩu gồm $4$ ký tự, mỗi ký tự là **một chữ số từ $0$ đến $9$**, tức là có $10$ cách chọn cho mỗi vị trí. Khác với bài viết số, mật khẩu **được bắt đầu bằng chữ số $0$** (như $0123$) và đề không bắt các chữ số khác nhau nên các chữ số **được lặp lại** (như $7777$). Vì vậy cả bốn vị trí đều có $10$ cách.\n\n**Phần 2. Trình bày**\n\nMật khẩu gồm bốn ký tự, mỗi ký tự là một trong $10$ chữ số từ $0$ đến $9$.\n\nMỗi ký tự đều có $10$ cách chọn.\n\nSố cách đặt mật khẩu là: $10\\times 10\\times 10\\times 10=10000$ (cách)\n\nĐáp số: $10000$ cách",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề không nói \"khác nhau\" và không cấm bắt đầu bằng 0, nên em tính mật khẩu lặp được và đầu 0 được (10^4 = 10000). Nếu sách hiểu khác (khác nhau => 5040) thì lệch."
+ },
+ {
+  "ma_nguon": "PTL 1.4",
+  "gop_y": true,
+  "dap_an": "a) $25$ tấn; b) $425000000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ý a) cần **diện tích** mảnh vườn (dài nhân rộng), rồi nhân với $20$ kg khoai cho mỗi $m^2$, kết quả đổi từ ki-lô-gam sang **tấn** ($1$ tấn $=1000$ kg). Chiều dài gấp đôi chiều rộng nên bằng $25\\times 2$. Ý b) dùng ngay số ki-lô-gam khoai tìm được ở ý a) nhân với giá $17000$ đồng cho mỗi ki-lô-gam.\n\nChú ý: ở ý b) phải nhân với số **ki-lô-gam** ($25000$), không nhân với số tấn ($25$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Chiều dài mảnh vườn là: $25\\times 2=50$ (m)\n\nDiện tích mảnh vườn là: $50\\times 25=1250$ ($m^2$)\n\nSố ki-lô-gam khoai bác Hùng thu hoạch được là: $1250\\times 20=25000$ (kg)\n\nĐổi: $25000$ kg $=25$ tấn\n\nb) Số tiền bác Hùng có khi bán hết số khoai là: $25000\\times 17000=425000000$ (đồng)\n\nĐáp số: a) $25$ tấn; b) $425000000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]
