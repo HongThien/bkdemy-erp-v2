@@ -20,7 +20,7 @@
 | Q7 | "Học xong A" = **đã được dạy, và bằng chứng là đã được đo**. | Xong ⟺ ô (HS × nhóm bài) không còn ở trạng thái `chưa-đo`. §6.2 |
 | Q8 | Chặn thứ tự chủ yếu ở **tự học trên app** (GV đã tự nắm thứ tự). Bổ trợ yếu nhiều dạng ⇒ học **gốc trước, ngọn sau**, áp **cả 2 tầng**: giữa các nhóm bài và giữa các dạng bài trong nhóm. | §6.3 · §7 |
 | Q9 | Bổ trợ **chưa** tự kéo nhóm tiền đề đang yếu/chưa đo vào case. | Chỉ xếp lại thứ tự những gì đã có trong case. |
-| Q10 | Chuyển dạng bài sang nhóm khác ⇒ **lịch sử đo đi theo câu**. | §10, có cổng kiểm trước khi bật. |
+| Q10 | Chuyển dạng bài sang nhóm khác ⇒ **lịch sử đo đi theo câu**. | §10, bật ở P1 kèm báo cáo trước/sau. |
 
 ---
 
