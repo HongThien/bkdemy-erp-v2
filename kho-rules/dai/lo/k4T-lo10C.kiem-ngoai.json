@@ -1,0 +1,46 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-lo10C-20261008",
+ "cau": {
+  "PCT 19 I.6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Hai số 2 phần · phần = 75, đúng tỉ lệ"
+  },
+  "PCT 19 I.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Số a và 518 2 phần · phần = 458, đúng tỉ lệ"
+  },
+  "PCT 20 I.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 1 phần · Số lớn 1 phần + 102 · ngoặc tổng 372 · phần = 135, đúng tỉ lệ"
+  },
+  "PCT 20 I.6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Số thứ ba 1 phần + 36 · Số thứ nhất và thứ hai 2 phần − 36 · phần = 235, đúng tỉ lệ"
+  },
+  "PCT 20 I.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Chi 1 phần · An và Bình 2 phần · phần = 39, đúng tỉ lệ"
+  },
+  "PCT 20 I.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Tony 1 phần − 4 tấm · Lucie và Lily 2 phần + 4 tấm · phần = 23, đúng tỉ lệ"
+  },
+  "PCT 20 II.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Kho C 1 phần + 6 tấn · Kho A và kho B 2 phần − 6 tấn · phần = 57, đúng tỉ lệ"
+  },
+  "PCT 15 II.1": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Số bé 1 phần · Số lớn 1 phần + 100 · ngoặc tổng 998 · phần = 449, đúng tỉ lệ"
+  },
+  "PCT 16 I.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Chiều rộng 1 phần · Chiều dài 1 phần + 25 m · ngoặc tổng 175 m · phần = 75, đúng tỉ lệ"
+  },
+  "PCT 17 I.10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trứng gà đã bán 1 phần · Trứng vịt đã bán 2 phần · ngoặc tổng 99 quả · phần = 33, đúng tỉ lệ"
+  }
+ }
+}

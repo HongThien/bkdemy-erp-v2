@@ -36077,3 +36077,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bẫy mới — `chuanDinhDang` làm hỏng công thức:** đề sách `\times\text{m}` ⇒ bỏ `\text{}` thành `\timesm` (lệnh không tồn tại ⇒ KaTeX lỗi đỏ). Đã ra kho 1 câu: **LT 4.2d (T14T000000154)** — UPDATE `\timesh` → `\times h` (đúng 1 chỗ, transaction, trigger ghi vết) + sửa `k4T-lo6B.json`. Vá hàm: `\text{x}` đứng ngay sau một lệnh ⇒ chèn dấu cách. Quét KaTeX toàn bộ 797 câu sách trong DB: 0 lỗi.
 - **Cổng mới trong `lo-tu-soan`:** mọi công thức ở đề/lời giải/đáp án phải render KaTeX (throwOnError) + số `$` chẵn — lỗi ⇒ từ chối lô. Trước giờ máy kiểm ĐÁP SỐ nhưng không ai kiểm công thức có HIỂN THỊ được không.
 - **`tach-bai`:** sách in DÍNH hai bài trên một dòng (PCT 29: "…làm vườn. **Bài 3.** Tính: …") ⇒ cắt dòng tại nhãn "Bài N." thứ hai. Chạy lại: so với bản cũ đúng 1 bài đổi (PCT 29 II.2 bỏ phần dính) + 1 bài thêm (PCT 29 II.3), 0 mất.
+
+### 08/10 — Kho 4T lô 10A + 10C + 10D ghi DB (phiếu cuối tuần 1–7, 15–28)
+- **10A** (PCT 1–7): 109 câu, khop 108 + PCT 5 II.3 (bài cân đĩa, đề mở) soát tay. Giữ **PCT 6 I.6** (đề in "ba trong bốn chữ số 0; 2; 5" — thiếu một chữ số, đáp án phụ thuộc chữ số mất).
+- **10C** (PCT 15–21): 102 câu, 10 sơ đồ. **10D** (PCT 22–28): 103 câu, 7 sơ đồ. Opus đọc toàn bộ + xem ảnh mọi sơ đồ; 0 câu phải sửa nội dung. Hàm kiểm từ đề cho cả 3 lô viết TRƯỚC khi đọc bản soạn; lệch còn lại chỉ là cách ghi đáp án (a=6,b=0 · "8/12 và 14/21" · dãy xếp ";" · dấu so sánh) ⇒ thêm khối "khớp cách ghi" cuối `KIEM`, số không đổi.
+- Cách hiểu đã chọn (ghi cho CEO): PCT 23 II.3 xúc xắc phân biệt ⇒ 5 (như LT 15.13) · PCT 24 I.9 / I.10 tính cả phân số mẫu 1 (24/1, 5/1) ⇒ 8 / 80 (như LT 16.13) · PCT 23 I.3 số chia nhỏ nhất 7 (ô số chia in 2 ô liền — nếu bắt 2 chữ số ⇒ 10, số bị chia 86).
+- Kho từ sách: 1111 câu.

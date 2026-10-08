@@ -1,0 +1,882 @@
+[
+ {
+  "ma_nguon": "PCT 1 I.1",
+  "gop_y": false,
+  "dap_an": "$60543$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đọc từng hàng của số: $6$ chục nghìn là $60000$, $5$ trăm là $500$, $4$ chục là $40$, $3$ đơn vị là $3$. Đề **không nhắc tới hàng nghìn** nên chữ số hàng nghìn là $0$.\n\nChú ý: nếu quên chữ số $0$ ở hàng nghìn sẽ viết nhầm thành $6543$.\n\n**Phần 2. Trình bày**\n\nSố gồm $6$ chục nghìn, $5$ trăm, $4$ chục và $3$ đơn vị là: $60000+500+40+3=60543$\n\nĐáp số: $60543$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.2",
+  "gop_y": false,
+  "dap_an": "$75000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **giá trị** của một chữ số phụ thuộc vào **hàng** mà nó đứng. Trong số $85762$: chữ số $8$ ở hàng chục nghìn nên có giá trị $80000$; chữ số $5$ ở hàng nghìn nên có giá trị $5000$. \"Hơn\" là phép trừ.\n\nChú ý: đừng lấy $8-5=3$, vì đó là hiệu của hai chữ số chứ không phải hiệu của hai giá trị.\n\n**Phần 2. Trình bày**\n\nTrong số $85762$, giá trị của chữ số $8$ là $80000$.\n\nGiá trị của chữ số $5$ là $5000$.\n\nGiá trị của chữ số $8$ hơn giá trị của chữ số $5$ là: $80000-5000=75000$\n\nĐáp số: $75000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.3",
+  "gop_y": false,
+  "dap_an": "$1190$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: so sánh các số từ hàng cao xuống hàng thấp để tìm số lớn nhất và số bé nhất, rồi lấy số lớn trừ số bé. Cả bốn số đều có $5$ chữ số. Số $89900$ có chữ số hàng chục nghìn là $8$ nên bé nhất. Ba số còn lại cùng chữ số hàng chục nghìn là $9$, so tiếp hàng nghìn rồi hàng chục để sắp thứ tự.\n\nChú ý: $91090$ và $91009$ giống nhau đến hàng trăm, phải so tới hàng chục mới phân biệt được.\n\n**Phần 2. Trình bày**\n\nSắp xếp theo thứ tự từ bé đến lớn: $89900<90900<91009<91090$\n\nSố lớn nhất là $91090$, số bé nhất là $89900$.\n\nSố lớn nhất hơn số bé nhất số đơn vị là: $91090-89900=1190$ (đơn vị)\n\nĐáp số: $1190$ đơn vị",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.4",
+  "gop_y": false,
+  "dap_an": "$10115$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thay $m=4$ vào biểu thức, tính phần trong ngoặc trước rồi mới nhân.\n\nChú ý: phải tính $4+1=5$ trước, không nhân $4\\times 2023$ rồi mới cộng $1$.\n\n**Phần 2. Trình bày**\n\nNếu $m=4$ thì $\\left(m+1\\right)\\times 2023=\\left(4+1\\right)\\times 2023=5\\times 2023=10115$\n\nĐáp số: $10115$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.5",
+  "gop_y": false,
+  "dap_an": "$x=2023$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở vế trái có phép chia và phép trừ, **phép chia làm trước**: $1024:8=128$. Khi đó $x-128=1895$, $x$ là **số bị trừ** nên $x$ bằng hiệu cộng số trừ.\n\nChú ý: không lấy $1895+1024$ rồi mới chia $8$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} x-1024:8=1895 \\\\ x-128=1895 \\\\ x=1895+128 \\\\ x=2023 \\end{array}$\n\nĐáp số: $x=2023$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.6",
+  "gop_y": false,
+  "dap_an": "$3500$ chiếc bút bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số bút nhập về chia làm hai phần: phần đã bán (tuần đầu và tuần thứ hai) và phần còn lại. Vậy số bút nhập về = số đã bán + số còn lại.\n\nChú ý: phải cộng số bán của cả hai tuần trước, rồi mới cộng với số còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau hai tuần cửa hàng bán được số chiếc bút bi là: $1235+1545=2780$ (chiếc)\n\nCửa hàng nhập về số chiếc bút bi là: $2780+720=3500$ (chiếc)\n\nĐáp số: $3500$ chiếc bút bi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.7",
+  "gop_y": false,
+  "dap_an": "$9536$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trong phép chia có dư: **số bị chia = thương × số chia + số dư**. Số chia là số tự nhiên lớn nhất có một chữ số, tức là $9$. Số dư kém số chia $4$ đơn vị nên số dư là $9-4=5$.\n\nChú ý: số dư luôn nhỏ hơn số chia, kiểm tra $5<9$ là hợp lý.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tự nhiên lớn nhất có một chữ số là $9$ nên số chia là $9$.\n\nSố dư là: $9-4=5$\n\nSố bị chia là: $1059\\times 9+5=9536$\n\nĐáp số: $9536$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.8",
+  "gop_y": false,
+  "dap_an": "$>$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết vế trái thành số có bốn chữ số: $a\\times 1000+8\\times 100+b\\times 10+2=\\overline{a8b2}$ (chữ số hàng nghìn là $a$, hàng trăm là $8$, hàng chục là $b$, hàng đơn vị là $2$). Rồi so với $\\overline{a7b3}$ từ hàng cao xuống hàng thấp.\n\nChú ý: hai số có cùng chữ số hàng nghìn $a$, nên so tiếp hàng trăm: $8>7$ là đủ kết luận, không cần xét hàng đơn vị ($2<3$).\n\n**Phần 2. Trình bày**\n\nTa có: $a\\times 1000+8\\times 100+b\\times 10+2=\\overline{a8b2}$\n\nHai số $\\overline{a8b2}$ và $\\overline{a7b3}$ có cùng chữ số hàng nghìn là $a$.\n\nChữ số hàng trăm: $8>7$ nên $\\overline{a8b2}>\\overline{a7b3}$.\n\nVậy dấu cần điền là $>$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.9",
+  "gop_y": false,
+  "dap_an": "$2485$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: gọi số cần tìm là $\\overline{abcd}$ và tính mọi chữ số theo chữ số hàng nghìn $a$: hàng trăm $b=a\\times 2$, hàng chục $c=b\\times 2=a\\times 4$, hàng đơn vị $d=c-3$. Chữ số hàng chục không quá $9$ nên $a\\times 4$ không quá $9$, vậy $a$ chỉ có thể là $1$ hoặc $2$. Thử từng trường hợp rồi kiểm tra điều kiện \"bốn chữ số khác nhau\".\n\nChú ý: $a=1$ cho số $1241$ thỏa các điều kiện gấp đôi nhưng có hai chữ số $1$ trùng nhau nên bị loại.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$ ($a$ khác $0$).\n\nChữ số hàng trăm là $a\\times 2$, chữ số hàng chục là $a\\times 2\\times 2=a\\times 4$.\n\nChữ số hàng chục không quá $9$ nên $a\\times 4$ không quá $9$, vậy $a=1$ hoặc $a=2$.\n\nNếu $a=1$: các chữ số hàng trăm, hàng chục, hàng đơn vị là $2$ ; $4$ ; $4-3=1$, được số $1241$. Chữ số hàng nghìn và hàng đơn vị cùng là $1$ nên loại.\n\nNếu $a=2$: các chữ số hàng trăm, hàng chục, hàng đơn vị là $4$ ; $8$ ; $8-3=5$, được số $2485$ có bốn chữ số khác nhau, thỏa mãn đề bài.\n\nVậy số cần tìm là $2485$.\n\nĐáp số: $2485$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 I.10",
+  "gop_y": false,
+  "dap_an": "$x=110$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đếm chữ số $1$ theo từng nhóm số. Từ $1$ đến $99$: đếm riêng chữ số $1$ ở hàng đơn vị ($1$ ; $11$ ; $21$ ; … ; $91$ có $10$ chữ số) và ở hàng chục ($10$ đến $19$ có $10$ chữ số), được $20$ chữ số. Còn thiếu $33-20=13$ chữ số thì đếm tiếp trong các số ba chữ số từ $100$.\n\nChú ý: số $11$ có hai chữ số $1$ (đếm ở cả hai hàng), số $110$ cũng có hai chữ số $1$.\n\n**Phần 2. Trình bày**\n\nTừ $1$ đến $99$, chữ số $1$ ở hàng đơn vị có ở các số $1$ ; $11$ ; $21$ ; … ; $91$, tất cả $10$ chữ số.\n\nChữ số $1$ ở hàng chục có ở các số từ $10$ đến $19$, tất cả $10$ chữ số.\n\nTừ $1$ đến $99$ có số chữ số $1$ là: $10+10=20$ (chữ số)\n\nSố chữ số $1$ cần có thêm là: $33-20=13$ (chữ số)\n\nTừ $100$ đến $109$ có $10$ số, mỗi số có một chữ số $1$ ở hàng trăm, riêng số $101$ có thêm một chữ số $1$ ở hàng đơn vị, nên có: $10+1=11$ (chữ số)\n\nSố chữ số $1$ cần có thêm là: $13-11=2$ (chữ số)\n\nSố $110$ có hai chữ số $1$ nên đến số $110$ thì có đủ $33$ chữ số $1$.\n\nVậy $x=110$.\n\nĐáp số: $x=110$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 II.1a",
+  "gop_y": false,
+  "dap_an": "$107954$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đặt các chữ số cùng hàng thẳng cột, cộng từ phải sang trái, được $10$ trở lên thì viết hàng đơn vị và nhớ $1$ sang hàng bên trái.\n\nCác bước: hàng đơn vị $6+8=14$ viết $4$ nhớ $1$; hàng chục $1+3+1=5$; hàng trăm $5+4=9$; hàng nghìn $2+5=7$; hàng chục nghìn $3+7=10$ viết $0$ nhớ $1$; hạ $1$ xuống hàng trăm nghìn.\n\n**Phần 2. Trình bày**\n\nĐặt tính rồi tính:\n\n$\\begin{array}{rr} & 32516 \\\\ + & 75438 \\\\ \\hline & 107954 \\end{array}$\n\nVậy $32516+75438=107954$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 II.1b",
+  "gop_y": false,
+  "dap_an": "$34985$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đặt các chữ số cùng hàng thẳng cột, trừ từ phải sang trái. Chữ số ở số bị trừ bé hơn chữ số ở số trừ thì mượn $1$ ở hàng bên trái (rồi nhớ trả lại).\n\nCác bước: hàng đơn vị $10-5=5$ nhớ $1$; hàng chục $10-(1+1)=8$ nhớ $1$; hàng trăm $10-(0+1)=9$ nhớ $1$; hàng nghìn $10-(5+1)=4$ nhớ $1$; hàng chục nghìn $8-(4+1)=3$.\n\n**Phần 2. Trình bày**\n\nĐặt tính rồi tính:\n\n$\\begin{array}{rr} & 80000 \\\\ - & 45015 \\\\ \\hline & 34985 \\end{array}$\n\nVậy $80000-45015=34985$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 II.1c",
+  "gop_y": false,
+  "dap_an": "$19230$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đặt tính, nhân lần lượt từng chữ số của số bị nhân với $6$ từ phải sang trái, nhớ sang hàng bên trái.\n\nCác bước: $6\\times 5=30$ viết $0$ nhớ $3$; $6\\times 0=0$, thêm $3$ được $3$; $6\\times 2=12$ viết $2$ nhớ $1$; $6\\times 3=18$, thêm $1$ được $19$.\n\n**Phần 2. Trình bày**\n\nĐặt tính rồi tính:\n\n$\\begin{array}{rr} & 3205 \\\\ \\times & 6 \\\\ \\hline & 19230 \\end{array}$\n\nVậy $3205\\times 6=19230$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 II.1d",
+  "gop_y": false,
+  "dap_an": "$750$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đặt tính chia, chia từng hàng từ trái sang phải: lấy $67$ chia cho $9$, hạ chữ số tiếp theo xuống rồi chia tiếp.\n\nCác bước: $67:9=7$ (dư $4$); hạ $5$ được $45$, $45:9=5$ (dư $0$); hạ $0$ được $0$, $0:9=0$. Thử lại: $750\\times 9=6750$.\n\n**Phần 2. Trình bày**\n\nĐặt tính chia, ta chia lần lượt:\n\n$67:9=7$ (dư $4$)\n\nHạ $5$ được $45$, $45:9=5$ (dư $0$)\n\nHạ $0$ được $0$, $0:9=0$\n\nVậy $6750:9=750$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 II.2",
+  "gop_y": false,
+  "dap_an": "Tổ thứ ba nhiều hơn tổ thứ nhất, nhiều hơn $76$ đôi giày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"tổ thứ nhất nhiều hơn tổ thứ hai $542$ đôi\" nên tổ thứ hai = tổ thứ nhất trừ $542$. Biết cả ba tổ làm được $34469$ đôi thì tổ thứ ba = tổng trừ đi hai tổ đã biết. Cuối cùng so sánh tổ thứ ba với tổ thứ nhất, lấy số lớn trừ số bé.\n\nChú ý: câu hỏi có hai ý (tổ nào nhiều hơn và nhiều hơn bao nhiêu), phải trả lời đủ cả hai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổ thứ hai sản xuất được số đôi giày là: $11645-542=11103$ (đôi)\n\nHai tổ thứ nhất và thứ hai sản xuất được số đôi giày là: $11645+11103=22748$ (đôi)\n\nTổ thứ ba sản xuất được số đôi giày là: $34469-22748=11721$ (đôi)\n\nTa có $11721>11645$ nên tổ thứ ba sản xuất được nhiều đôi giày hơn tổ thứ nhất.\n\nTổ thứ ba sản xuất nhiều hơn tổ thứ nhất số đôi giày là: $11721-11645=76$ (đôi)\n\nĐáp số: Tổ thứ ba nhiều hơn tổ thứ nhất, nhiều hơn $76$ đôi giày",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 1 II.3",
+  "gop_y": false,
+  "dap_an": "$1012$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép các số liền nhau thành từng cặp \"số lẻ trừ số chẵn liền sau\": $\\left(2023-2022\\right)$ ; $\\left(2021-2020\\right)$ ; … ; $\\left(3-2\\right)$. Mỗi cặp bằng $1$ và số $1$ ở cuối đứng một mình. Số cặp bằng số các số lẻ từ $3$ đến $2023$.\n\nChú ý: số cuối cùng $+1$ không nằm trong cặp nào, phải cộng thêm sau cùng.\n\n**Phần 2. Trình bày**\n\n$2023-2022+2021-2020+\\ldots+3-2+1$\n\n$=\\left(2023-2022\\right)+\\left(2021-2020\\right)+\\ldots+\\left(3-2\\right)+1$\n\nMỗi ngoặc có giá trị bằng $1$.\n\nSố ngoặc là: $\\left(2023-3\\right):2+1=1011$ (ngoặc)\n\n$=1\\times 1011+1$\n\n$=1012$\n\nĐáp số: $1012$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.1",
+  "gop_y": false,
+  "dap_an": "$10000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thay $m=5$ và $n=24$ vào biểu thức rồi tính, nhân trước, trừ sau.\n\nChú ý: phép nhân $2024\\times 5$ và $24\\times 5$ làm riêng, sau đó mới trừ.\n\n**Phần 2. Trình bày**\n\nVới $m=5$ và $n=24$ thì $A=2024\\times m-n\\times 5=2024\\times 5-24\\times 5$\n\n$=10120-120$\n\n$=10000$\n\nĐáp số: $A=10000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.2",
+  "gop_y": false,
+  "dap_an": "$876514$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số nào có nhiều chữ số hơn thì lớn hơn; cùng số chữ số thì so từ hàng cao xuống hàng thấp. Hai số $86745$ và $86754$ chỉ có $5$ chữ số nên bé hơn các số có $6$ chữ số. Còn lại $876145$ và $876514$.\n\nChú ý: $86745$ nhìn giống $876145$ nhưng thiếu một chữ số, đừng so sánh theo chữ số đầu tiên mà quên đếm số chữ số.\n\n**Phần 2. Trình bày**\n\nCác số $86745$ và $86754$ có $5$ chữ số, bé hơn các số có $6$ chữ số.\n\nHai số $876145$ và $876514$ có ba chữ số đầu giống nhau ($876$). Chữ số hàng trăm: $1<5$ nên $876145<876514$.\n\nVậy số lớn nhất là $876514$.\n\nĐáp số: $876514$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.3",
+  "gop_y": false,
+  "dap_an": "$39000$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: làm tròn đến hàng nghìn thì nhìn chữ số hàng **trăm** ngay bên phải. Chữ số hàng trăm từ $5$ trở lên thì làm tròn lên (tăng chữ số hàng nghìn thêm $1$), nhỏ hơn $5$ thì giữ nguyên chữ số hàng nghìn; các chữ số bên phải đều thành $0$.\n\nChú ý: không nhìn chữ số hàng chục hay hàng đơn vị.\n\n**Phần 2. Trình bày**\n\nSố $38631$ có chữ số hàng nghìn là $8$, chữ số hàng trăm là $6$.\n\nChữ số hàng trăm là $6$, lớn hơn $5$ nên làm tròn lên: $38631$ làm tròn đến hàng nghìn là $39000$.\n\nVậy số khán giả đến sân khoảng $39000$ người.\n\nĐáp số: $39000$ người",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.4",
+  "gop_y": false,
+  "dap_an": "$y=17575$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y\\times 5$ là **số hạng chưa biết** của phép cộng nên bằng tổng trừ số hạng đã biết: $90000-2125$. Sau đó $y$ là **thừa số chưa biết** nên $y$ bằng tích chia cho thừa số kia.\n\nChú ý: phải tìm $y\\times 5$ trước rồi mới chia $5$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 2125+y\\times 5=90000 \\\\ y\\times 5=90000-2125 \\\\ y\\times 5=87875 \\\\ y=87875:5 \\\\ y=17575 \\end{array}$\n\nĐáp số: $y=17575$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.5",
+  "gop_y": false,
+  "dap_an": "$3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm từng số trước. Số có năm chữ số bé nhất là $10000$ (số chẵn) nên số lẻ bé nhất có năm chữ số là $10001$. Số có bốn chữ số lớn nhất là $9999$ (số lẻ) nên số chẵn lớn nhất có bốn chữ số là $9998$. Hiệu là số lớn trừ số bé.\n\nChú ý: $10000$ là số chẵn và $9999$ là số lẻ, phải chọn lại số đúng tính chất chẵn, lẻ theo đề.\n\n**Phần 2. Trình bày**\n\nSố lẻ bé nhất có năm chữ số là $10001$.\n\nSố chẵn lớn nhất có bốn chữ số là $9998$.\n\nHiệu của hai số đó là: $10001-9998=3$\n\nĐáp số: $3$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.6",
+  "gop_y": false,
+  "dap_an": "$984210$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất khi các chữ số lớn đứng ở hàng cao. Ta chọn lần lượt từng hàng từ trái sang phải: chọn chữ số lớn nhất mà **các hàng còn lại vẫn làm được** (khác nhau, tổng đúng $24$). Năm chữ số khác nhau nhỏ nhất có tổng $0+1+2+3+4=10$; bốn chữ số khác nhau nhỏ nhất có tổng $0+1+2+3=6$; ba chữ số khác nhau nhỏ nhất có tổng $0+1+2=3$.\n\nChú ý: không chọn bừa $9$ ; $8$ ; $7$ rồi mới tìm ba chữ số sau, vì $9+8+7=24$ đã đủ tổng mà còn thiếu ba chữ số.\n\n**Phần 2. Trình bày**\n\nSố lớn nhất khi chữ số lớn nhất đứng ở hàng cao nhất. Ta chọn chữ số từng hàng, từ hàng cao xuống.\n\nHàng cao nhất chọn $9$: năm chữ số còn lại có tổng $24-9=15$. Năm chữ số khác nhau bé nhất có tổng $0+1+2+3+4=10$, nhỏ hơn $15$ nên làm được.\n\nHàng tiếp theo chọn $8$: bốn chữ số còn lại có tổng $15-8=7$. Bốn chữ số khác nhau bé nhất có tổng $0+1+2+3=6$, nhỏ hơn $7$ nên làm được.\n\nHàng tiếp theo: nếu chọn $7$ ; $6$ ; $5$ thì ba chữ số còn lại có tổng $0$ ; $1$ ; $2$, đều nhỏ hơn $0+1+2=3$ nên không làm được. Chọn $4$ thì ba chữ số còn lại có tổng $7-4=3=0+1+2$, làm được.\n\nBa chữ số còn lại là $0$ ; $1$ ; $2$, xếp từ lớn đến bé là $2$ ; $1$ ; $0$.\n\nTa có: $24=9+8+4+2+1+0$\n\nVậy số cần tìm là $984210$.\n\nĐáp số: $984210$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.7",
+  "gop_y": false,
+  "dap_an": "$5789$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số nhỏ nhất khi **ít chữ số nhất**. Ba chữ số khác nhau lớn nhất có tổng $9+8+7=24$, chưa đủ $29$, nên cần ít nhất $4$ chữ số. Bốn chữ số khác nhau lớn nhất có tổng $9+8+7+6=30$, hơn $29$ là $1$ nên phải bớt đi $1$.\n\nCách bớt: không thể bớt $1$ ở chữ số $9$, $8$ hay $7$ vì sẽ trùng với chữ số đứng cạnh; chỉ bớt được ở chữ số $6$ thành $5$. Cuối cùng sắp xếp các chữ số từ bé đến lớn.\n\nChú ý: không chọn chữ số $0$, vì có $0$ thì bốn chữ số khác nhau có tổng lớn nhất là $9+8+7+0=24$, không đủ.\n\n**Phần 2. Trình bày**\n\nSố nhỏ nhất khi có ít chữ số nhất và chữ số nhỏ đứng ở hàng cao.\n\nBa chữ số khác nhau lớn nhất có tổng là: $9+8+7=24$, nhỏ hơn $29$ nên số cần tìm có ít nhất $4$ chữ số.\n\nBốn chữ số khác nhau lớn nhất có tổng là: $9+8+7+6=30$, hơn $29$ là $1$ nên bớt chữ số $6$ đi $1$ thành $5$.\n\nTa có: $29=5+7+8+9$\n\nSắp xếp các chữ số từ bé đến lớn, được số cần tìm là $5789$.\n\nĐáp số: $5789$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 I.8",
+  "gop_y": false,
+  "dap_an": "$8321$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tích các chữ số bằng $48$ nên **không có chữ số $0$** (có $0$ thì tích bằng $0$). Số lớn nhất là số có **nhiều chữ số nhất**; chữ số $1$ không làm đổi tích nên được dùng để thêm chữ số. Phân tích $48$ thành tích các chữ số khác nhau.\n\nNăm chữ số khác nhau có tích bé nhất là $1\\times 2\\times 3\\times 4\\times 5=120$, lớn hơn $48$ nên tối đa $4$ chữ số. Hai cách: $48=1\\times 2\\times 3\\times 8$ và $48=1\\times 2\\times 4\\times 6$. Xếp từ lớn đến bé rồi chọn số lớn hơn.\n\nChú ý: đừng bỏ sót chữ số $1$, vì thiếu nó sẽ chỉ còn số có $3$ chữ số.\n\n**Phần 2. Trình bày**\n\nTích các chữ số bằng $48$ nên không có chữ số $0$.\n\nSố lớn nhất là số có nhiều chữ số nhất. Năm chữ số khác nhau có tích bé nhất là $1\\times 2\\times 3\\times 4\\times 5=120$, lớn hơn $48$ nên số cần tìm có nhiều nhất $4$ chữ số.\n\nPhân tích $48$ thành tích bốn chữ số khác nhau: $48=1\\times 2\\times 3\\times 8$ hoặc $48=1\\times 2\\times 4\\times 6$.\n\nXếp các chữ số từ lớn đến bé, ta được các số $8321$ và $6421$.\n\nVì $8321>6421$ nên số cần tìm là $8321$.\n\nĐáp số: $8321$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 II.1a",
+  "gop_y": false,
+  "dap_an": "$y=38712$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y$ là **số bị trừ** nên $y$ bằng hiệu cộng số trừ: $14526+24186$.\n\nChú ý: số bị trừ là số lớn nhất trong phép trừ, nên $y$ phải lớn hơn $24186$ và $14526$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y-24186=14526 \\\\ y=14526+24186 \\\\ y=38712 \\end{array}$\n\nĐáp số: $y=38712$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 II.1b",
+  "gop_y": false,
+  "dap_an": "$y=25766$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y$ là **số trừ** nên $y$ bằng số bị trừ trừ đi hiệu: $76123-50357$.\n\nChú ý: số trừ = số bị trừ − hiệu (không phải hiệu + số bị trừ). Thử lại: $76123-25766=50357$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 76123-y=50357 \\\\ y=76123-50357 \\\\ y=25766 \\end{array}$\n\nĐáp số: $y=25766$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 II.2a",
+  "gop_y": false,
+  "dap_an": "$499$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số nhỏ nhất khi **ít chữ số nhất**. Mỗi chữ số lớn nhất là $9$ nên hai chữ số có tổng lớn nhất $9+9=18$, chưa đủ $22$; vậy cần ít nhất $3$ chữ số. Với ba chữ số, muốn số nhỏ nhất thì chữ số hàng trăm phải nhỏ nhất, hai chữ số sau lấy lớn nhất ($9$ và $9$).\n\nChú ý: đề không bắt buộc các chữ số khác nhau nên được dùng hai chữ số $9$.\n\n**Phần 2. Trình bày**\n\nSố nhỏ nhất khi có ít chữ số nhất và chữ số hàng cao nhỏ nhất.\n\nHai chữ số có tổng lớn nhất là $9+9=18$, nhỏ hơn $22$ nên số cần tìm có ít nhất $3$ chữ số.\n\nĐể số nhỏ nhất thì chữ số hàng chục và hàng đơn vị lớn nhất, đều là $9$. Chữ số hàng trăm là: $22-9-9=4$\n\nVậy số cần tìm là $499$.\n\nĐáp số: $499$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 II.2b",
+  "gop_y": false,
+  "dap_an": "$843210$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất khi **nhiều chữ số nhất**. Các chữ số khác nhau nên dùng chữ số nhỏ để có nhiều chữ số: $0+1+2+3+4+5=15$ (sáu chữ số) còn nhỏ hơn $18$, nhưng $0+1+2+3+4+5+6=21$ (bảy chữ số) đã vượt $18$. Vậy tối đa $6$ chữ số. Sau đó chọn lần lượt từng hàng từ trái sang phải, chữ số lớn nhất mà các hàng còn lại vẫn làm được.\n\nChú ý: chữ số hàng cao nhất không thể là $9$, vì khi đó năm chữ số còn lại có tổng $9$, nhỏ hơn mức bé nhất $0+1+2+3+4=10$.\n\n**Phần 2. Trình bày**\n\nSố lớn nhất khi có nhiều chữ số nhất và chữ số lớn đứng ở hàng cao.\n\nBảy chữ số khác nhau có tổng bé nhất là $0+1+2+3+4+5+6=21$, lớn hơn $18$ nên số cần tìm có nhiều nhất $6$ chữ số.\n\nSáu chữ số khác nhau có tổng bé nhất là $0+1+2+3+4+5=15$, nhỏ hơn $18$ nên làm được.\n\nChữ số hàng cao nhất: chọn $9$ thì năm chữ số còn lại có tổng $18-9=9$, nhỏ hơn $0+1+2+3+4=10$ nên không làm được. Chọn $8$ thì năm chữ số còn lại có tổng $18-8=10=0+1+2+3+4$, làm được.\n\nTa có: $18=8+4+3+2+1+0$\n\nXếp các chữ số từ lớn đến bé, được số cần tìm là $843210$.\n\nĐáp số: $843210$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 II.2c",
+  "gop_y": false,
+  "dap_an": "$986543210$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất khi **nhiều chữ số nhất**. Mười chữ số $0$ ; $1$ ; … ; $9$ có tổng $45$, lớn hơn $38$ nên không dùng đủ mười chữ số. Dùng $9$ chữ số khác nhau tức là bớt đi một chữ số trong mười chữ số đó; tổng $38$ nên chữ số bị bớt đi là $45-38=7$. Xếp các chữ số còn lại từ lớn đến bé.\n\nChú ý: kiểm tra chín chữ số bé nhất $0+1+\\ldots+8=36$ nhỏ hơn $38$, nên việc có chín chữ số là có thể làm được.\n\n**Phần 2. Trình bày**\n\nMười chữ số $0$ ; $1$ ; $2$ ; … ; $9$ có tổng là: $0+1+2+3+4+5+6+7+8+9=45$\n\nVì $45>38$ nên số cần tìm có nhiều nhất $9$ chữ số, tức là bớt đi một chữ số trong mười chữ số trên.\n\nChữ số bị bớt đi là: $45-38=7$\n\nTa có: $38=0+1+2+3+4+5+6+8+9$\n\nXếp các chữ số từ lớn đến bé, được số cần tìm là $986543210$.\n\nĐáp số: $986543210$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 2 II.3",
+  "gop_y": false,
+  "dap_an": "$6312$ ; $6321$ ; $8413$ ; $8431$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: gọi số cần tìm là $\\overline{abcd}$. Theo đề: hàng trăm $b=c+d$ và hàng nghìn $a=b+c+d$. Vì $c+d=b$ nên $a=b+b=b\\times 2$. Chữ số $a$ không quá $9$ nên $b$ không quá $4$. Thử $b=1$ ; $2$ ; $3$ ; $4$ và tìm hai chữ số $c$, $d$ có tổng bằng $b$, mọi chữ số phải khác nhau.\n\nChú ý: bài có nhiều đáp số. Khi $b=3$ hoặc $b=4$ đổi chỗ $c$ và $d$ cho ra hai số khác nhau; cần loại các cách có chữ số trùng nhau (như $0+3$ khi $b=3$).\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$ ($a$ khác $0$; bốn chữ số khác nhau).\n\nTheo đề: $b=c+d$ và $a=b+c+d$. Vì $c+d=b$ nên $a=b+b=b\\times 2$.\n\nChữ số $a$ không quá $9$ nên $b$ không quá $4$ (và $b$ khác $0$ vì $a$ khác $0$).\n\nNếu $b=1$ thì $c+d=1=0+1$, trùng chữ số $b=1$: loại.\n\nNếu $b=2$ thì $a=4$ và $c+d=2=0+2$ hoặc $1+1$: trùng chữ số $2$ hoặc hai chữ số bằng nhau: loại.\n\nNếu $b=3$ thì $a=6$ và $c+d=3=1+2$ (không dùng $0+3$ vì trùng chữ số $3$): được các số $6312$ và $6321$.\n\nNếu $b=4$ thì $a=8$ và $c+d=4=1+3$ (không dùng $0+4$ vì trùng chữ số $4$, không dùng $2+2$ vì hai chữ số bằng nhau): được các số $8413$ và $8431$.\n\nVậy các số cần tìm là $6312$ ; $6321$ ; $8413$ ; $8431$.\n\nĐáp số: $6312$ ; $6321$ ; $8413$ ; $8431$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.1",
+  "gop_y": false,
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết số $10685$ theo cấu tạo thập phân: $1$ chục nghìn, $0$ nghìn, $6$ trăm, $8$ chục, $5$ đơn vị. Vế phải của đề đã bỏ hàng nghìn (vì chữ số $0$) nên chỗ trống ở hàng trăm là chữ số $6$.\n\nChú ý: phải nhân với $100$, nên chỗ trống là chữ số hàng trăm ($6$), không phải $600$.\n\n**Phần 2. Trình bày**\n\nSố $10685$ gồm $1$ chục nghìn, $0$ nghìn, $6$ trăm, $8$ chục và $5$ đơn vị.\n\nTa có: $10685=1\\times 10000+6\\times 100+8\\times 10+5$\n\nVậy số cần điền là $6$.\n\nĐáp số: $6$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.2",
+  "gop_y": false,
+  "dap_an": "$987652$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm số lẻ lớn nhất có sáu chữ số khác nhau trước, rồi lấy số đó trừ $1$. Các hàng cao lấy chữ số lớn nhất: $9$ ; $8$ ; $7$ ; $6$ ; $5$. Hàng đơn vị phải là chữ số lẻ chưa dùng: còn $3$ và $1$, chọn $3$ cho lớn nhất.\n\nChú ý: đề hỏi số **liền trước** của số lẻ đó, không phải chính số lẻ đó.\n\n**Phần 2. Trình bày**\n\nSố lớn nhất khi chữ số lớn nhất đứng ở hàng cao nhất, nên năm hàng đầu là $9$ ; $8$ ; $7$ ; $6$ ; $5$.\n\nSố lẻ nên chữ số hàng đơn vị là chữ số lẻ chưa dùng, lớn nhất là $3$. Số lẻ lớn nhất có sáu chữ số khác nhau là $987653$.\n\nSố liền trước của $987653$ là: $987653-1=987652$\n\nĐáp số: $987652$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.4",
+  "gop_y": false,
+  "dap_an": "$a=736$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức có giá trị bằng $500$ nghĩa là $a:8+408=500$. Phép cộng: $a:8$ là **số hạng chưa biết** nên bằng tổng trừ số hạng kia. Phép chia: $a$ là **số bị chia** nên bằng thương nhân số chia.\n\nChú ý: sau khi có $a:8=92$ phải **nhân** với $8$ để tìm $a$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} a:8+408=500 \\\\ a:8=500-408 \\\\ a:8=92 \\\\ a=92\\times 8 \\\\ a=736 \\end{array}$\n\nĐáp số: $a=736$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.5",
+  "gop_y": false,
+  "dap_an": "$1686$ cây xanh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"ít hơn ngày thứ nhất $35$ cây\" nên ngày thứ hai = $592-35$. \"Ngày thứ hai nhiều hơn ngày thứ ba $20$ cây\" nghĩa là ngày thứ ba ít hơn ngày thứ hai $20$ cây nên ngày thứ ba = ngày thứ hai trừ $20$. Cộng ba ngày lại.\n\nChú ý: số $20$ so sánh với ngày thứ **hai**, không phải ngày thứ nhất; đừng lấy $592-20$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNgày thứ hai đội cắt tỉa được số cây là: $592-35=557$ (cây)\n\nNgày thứ ba đội cắt tỉa được số cây là: $557-20=537$ (cây)\n\nCả ba ngày đội cắt tỉa được số cây là: $592+557+537=1686$ (cây)\n\nĐáp số: $1686$ cây xanh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.6",
+  "gop_y": false,
+  "dap_an": "$24$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đếm theo từng hàng, bắt đầu từ hàng nghìn. Bốn chữ số $1$ ; $3$ ; $6$ ; $8$ đều khác $0$ nên hàng nghìn có $4$ cách chọn; mỗi hàng sau có ít hơn hàng trước $1$ cách vì các chữ số phải khác nhau.\n\nChú ý: mỗi lần chọn xong một chữ số thì số cách chọn của hàng sau giảm đi $1$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$.\n\nChữ số hàng nghìn $a$ có $4$ cách chọn.\n\nChữ số hàng trăm $b$ khác $a$ nên có $3$ cách chọn.\n\nChữ số hàng chục $c$ có $2$ cách chọn, chữ số hàng đơn vị $d$ có $1$ cách chọn.\n\nSố các số lập được là: $4\\times 3\\times 2\\times 1=24$ (số)\n\nĐáp số: $24$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.8",
+  "gop_y": false,
+  "dap_an": "$64$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hàng đơn vị đã cố định là $5$, nên chọn hàng trăm trước rồi đến hàng chục. Hàng trăm khác $0$ và khác $5$ (đã dùng ở hàng đơn vị). Hàng chục khác $5$ và khác chữ số hàng trăm, nhưng **được là $0$**.\n\nChú ý: hàng chục có $10-2=8$ cách chọn (bỏ $5$ và chữ số hàng trăm), không phải $7$ cách.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{ab5}$ ($a$ khác $0$; ba chữ số khác nhau).\n\nChữ số hàng trăm $a$ khác $0$ và khác $5$ nên có $8$ cách chọn.\n\nChữ số hàng chục $b$ khác $5$ và khác $a$ nên có $8$ cách chọn (kể cả chữ số $0$).\n\nSố các số cần tìm là: $8\\times 8=64$ (số)\n\nĐáp số: $64$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.9",
+  "gop_y": false,
+  "dap_an": "$2220$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lập đủ các số có ba chữ số khác nhau từ $1$ ; $2$ ; $7$ ($3\\times 2\\times 1=6$ số) rồi cộng lại. Cách tính nhanh: mỗi chữ số đứng ở mỗi hàng đúng $2$ lần, nên tổng các chữ số ở mỗi hàng là $\\left(1+2+7\\right)\\times 2=20$, tổng $=20\\times 100+20\\times 10+20=2220$.\n\nChú ý: phải liệt kê đủ $6$ số, không sót số nào.\n\n**Phần 2. Trình bày**\n\nCác số có ba chữ số khác nhau lập từ $1$ ; $2$ ; $7$ là: $127$ ; $172$ ; $217$ ; $271$ ; $712$ ; $721$.\n\nTổng các số đó là: $127+172+217+271+712+721=2220$\n\nĐáp số: $2220$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 I.10",
+  "gop_y": false,
+  "dap_an": "$20$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia trường hợp theo chữ số hàng nghìn (khác $0$ và không quá $4$), rồi liệt kê có hệ thống cách chia phần tổng còn lại cho ba hàng sau.\n\nChú ý: các chữ số có thể bằng nhau (như $1111$, $2200$), và chữ số $0$ được dùng ở các hàng sau.\n\n**Phần 2. Trình bày**\n\nChữ số hàng nghìn khác $0$ và không quá $4$. Ta xét từng trường hợp.\n\nHàng nghìn là $4$: ba chữ số còn lại đều là $0$, có $1$ số ($4000$).\n\nHàng nghìn là $3$: ba chữ số còn lại có tổng $1$, gồm một chữ số $1$ và hai chữ số $0$: $3100$ ; $3010$ ; $3001$, có $3$ số.\n\nHàng nghìn là $2$: ba chữ số còn lại có tổng $2$: một chữ số $2$ và hai chữ số $0$ ($2200$ ; $2020$ ; $2002$) hoặc hai chữ số $1$ và một chữ số $0$ ($2110$ ; $2101$ ; $2011$), có $3+3=6$ số.\n\nHàng nghìn là $1$: ba chữ số còn lại có tổng $3$: một chữ số $3$ và hai chữ số $0$ ($1300$ ; $1030$ ; $1003$), các chữ số $2$ ; $1$ ; $0$ ($1210$ ; $1201$ ; $1120$ ; $1102$ ; $1021$ ; $1012$), ba chữ số $1$ ($1111$), có $3+6+1=10$ số.\n\nSố các số tìm được là: $1+3+6+10=20$ (số)\n\nĐáp số: $20$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 II.1a",
+  "gop_y": false,
+  "dap_an": "$y=2556$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở vế trái có phép chia và phép trừ, **phép chia làm trước**: $3963:3=1321$. Khi đó $y-1321=1235$, $y$ là **số bị trừ** nên $y$ bằng hiệu cộng số trừ.\n\nChú ý: không lấy $1235+3963$ rồi mới chia $3$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y-3963:3=1235 \\\\ y-1321=1235 \\\\ y=1235+1321 \\\\ y=2556 \\end{array}$\n\nĐáp số: $y=2556$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 II.1b",
+  "gop_y": false,
+  "dap_an": "$y=1717$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: vế trái có phép cộng rồi phép trừ nên làm từ trái sang phải: $\\left(2086+y\\right)-1048=2755$. Vậy $2086+y$ là **số bị trừ**, bằng hiệu cộng số trừ. Sau đó $y$ là số hạng chưa biết nên bằng tổng trừ số hạng kia.\n\nChú ý: thử lại $2086+1717-1048=3803-1048=2755$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 2086+y-1048=2755 \\\\ \\left(2086+y\\right)-1048=2755 \\\\ 2086+y=2755+1048 \\\\ 2086+y=3803 \\\\ y=3803-2086 \\\\ y=1717 \\end{array}$\n\nĐáp số: $y=1717$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 II.1c",
+  "gop_y": false,
+  "dap_an": "$y=637$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y\\times 5$ là **số trừ**, nên $y\\times 5$ bằng số bị trừ trừ hiệu: $4912-1727$. Sau đó $y$ là thừa số chưa biết nên bằng tích chia thừa số kia.\n\nChú ý: không lấy $4912-1727$ rồi chia ngay mà quên bước tìm $y\\times 5$; thử lại $4912-637\\times 5=4912-3185=1727$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 4912-y\\times 5=1727 \\\\ y\\times 5=4912-1727 \\\\ y\\times 5=3185 \\\\ y=3185:5 \\\\ y=637 \\end{array}$\n\nĐáp số: $y=637$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 II.1d",
+  "gop_y": false,
+  "dap_an": "$y=6335$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tính vế phải trước: $64\\times 3=192$, rồi $905+192=1097$. Khi đó $y:7+192=1097$, nên $y:7$ là số hạng chưa biết: $1097-192=905$. Cuối cùng $y$ là **số bị chia** nên bằng thương nhân số chia: $905\\times 7$.\n\nChú ý: ở vế phải phải nhân $64\\times 3$ trước rồi mới cộng $905$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y:7+192=905+64\\times 3 \\\\ y:7+192=905+192 \\\\ y:7+192=1097 \\\\ y:7=1097-192 \\\\ y:7=905 \\\\ y=905\\times 7 \\\\ y=6335 \\end{array}$\n\nĐáp số: $y=6335$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 II.2",
+  "gop_y": false,
+  "dap_an": "$72$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số có bốn chữ số nhỏ hơn $4000$ thì chữ số hàng nghìn chỉ có thể là $1$ ; $2$ ; $3$ ($3$ cách). Từ năm chữ số $1$ ; $2$ ; $3$ ; $4$ ; $5$ (không có chữ số $0$), các hàng còn lại lấy các chữ số chưa dùng nên số cách giảm dần.\n\nChú ý: hàng nghìn không được là $4$ hay $5$ vì khi đó số lớn hơn hoặc bằng $4000$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$.\n\nSố nhỏ hơn $4000$ nên chữ số hàng nghìn $a$ là $1$ ; $2$ hoặc $3$: có $3$ cách chọn.\n\nChữ số hàng trăm $b$ khác $a$ nên có $4$ cách chọn.\n\nChữ số hàng chục $c$ có $3$ cách chọn, chữ số hàng đơn vị $d$ có $2$ cách chọn.\n\nSố các số lập được là: $3\\times 4\\times 3\\times 2=72$ (số)\n\nĐáp số: $72$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 3 II.3",
+  "gop_y": false,
+  "dap_an": "$151$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chia các số thành nhóm theo số chữ số. Từ $1$ đến $9$ có $9$ số, mỗi số $1$ chữ số. Từ $10$ đến $80$ là các số có hai chữ số, số các số là hiệu cộng $1$.\n\nChú ý: số các số từ $10$ đến $80$ là $80-10+1=71$ (không phải $70$).\n\n**Phần 2. Trình bày**\n\nTừ $1$ đến $9$ có $9$ số, mỗi số có $1$ chữ số, cần dùng $9$ chữ số.\n\nTừ $10$ đến $80$ có số các số là: $80-10+1=71$ (số)\n\nViết $71$ số có hai chữ số cần dùng số chữ số là: $71\\times 2=142$ (chữ số)\n\nViết liên tiếp các số tự nhiên từ $1$ đến $80$ cần dùng số chữ số là: $9+142=151$ (chữ số)\n\nĐáp số: $151$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.1",
+  "gop_y": false,
+  "dap_an": "$205924$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đọc và viết số theo từng lớp. Lớp nghìn: \"hai trăm linh năm\" là $205$. Lớp đơn vị: \"chín trăm hai mươi tư\" là $924$. Ghép hai lớp lại.\n\nChú ý: \"linh năm\" nghĩa là hàng chục là $0$ và hàng đơn vị là $5$, nên lớp nghìn là $205$ chứ không phải $25$.\n\n**Phần 2. Trình bày**\n\nLớp nghìn: hai trăm linh năm nghìn là $205$ nghìn.\n\nLớp đơn vị: chín trăm hai mươi tư là $924$.\n\nSố cần viết là $205924$.\n\nĐáp số: $205924$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.2",
+  "gop_y": false,
+  "dap_an": "$1000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phân tích số $821005$ theo hàng: $8$ trăm nghìn, $2$ chục nghìn, $1$ nghìn, $0$ trăm, $0$ chục, $5$ đơn vị. Chỗ trống là giá trị của chữ số $1$ ở hàng nghìn, tức $1000$.\n\nChú ý: các hàng trăm và hàng chục đều là chữ số $0$ nên không xuất hiện trong tổng.\n\n**Phần 2. Trình bày**\n\nSố $821005$ có chữ số $8$ ở hàng trăm nghìn, chữ số $2$ ở hàng chục nghìn, chữ số $1$ ở hàng nghìn, chữ số $0$ ở hàng trăm và hàng chục, chữ số $5$ ở hàng đơn vị.\n\nTa có: $821005=800000+20000+1000+5$\n\nVậy số cần điền là $1000$.\n\nĐáp số: $1000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.4",
+  "gop_y": false,
+  "dap_an": "$99993$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất có năm chữ số là $99999$ nhưng số này không có chữ số $3$. Phải có chữ số $3$ trong số, để số lớn nhất ta đặt chữ số $3$ ở hàng thấp nhất (hàng đơn vị), các hàng cao còn lại giữ chữ số $9$.\n\nChú ý: đặt chữ số $3$ ở hàng càng cao thì số càng nhỏ, vì thế $3$ phải đứng cuối.\n\n**Phần 2. Trình bày**\n\nSố lớn nhất có năm chữ số là $99999$ nhưng không có chữ số $3$.\n\nMuốn số lớn nhất mà vẫn có một chữ số $3$ thì đặt chữ số $3$ ở hàng đơn vị, bốn hàng còn lại đều là chữ số $9$.\n\nVậy số cần tìm là $99993$.\n\nĐáp số: $99993$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.5",
+  "gop_y": false,
+  "dap_an": "$3$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số cần tìm phải đồng thời lớn hơn $20000$ **và** nhỏ hơn $90000$. Số có $4$ chữ số thì bé hơn $20000$; số có $6$ chữ số thì lớn hơn $90000$. Các số có $5$ chữ số thì so sánh từ hàng chục nghìn.\n\nChú ý: $20877$ có hàng chục nghìn là $2$ nhưng hàng trăm là $8$ khác $0$ nên lớn hơn $20000$.\n\n**Phần 2. Trình bày**\n\n$38794$ có $5$ chữ số, $38794>20000$ và $38794<90000$: thỏa mãn.\n\n$5831$ có $4$ chữ số nên nhỏ hơn $20000$: không thỏa mãn.\n\n$108943$ có $6$ chữ số nên lớn hơn $90000$: không thỏa mãn.\n\n$20877>20000$ và $20877<90000$: thỏa mãn.\n\n$46800>20000$ và $46800<90000$: thỏa mãn.\n\nVậy có $3$ số thỏa mãn đề bài.\n\nĐáp số: $3$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.6",
+  "gop_y": false,
+  "dap_an": "$6$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đếm theo từng hàng. Ba chữ số $1$ ; $4$ ; $9$ đều khác $0$ nên hàng trăm có $3$ cách chọn; hàng chục còn $2$ cách; hàng đơn vị còn $1$ cách (các chữ số phải khác nhau).\n\nChú ý: có thể liệt kê để thử lại: $149$ ; $194$ ; $419$ ; $491$ ; $914$ ; $941$ (đủ $6$ số).\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abc}$.\n\nChữ số hàng trăm $a$ có $3$ cách chọn.\n\nChữ số hàng chục $b$ khác $a$ nên có $2$ cách chọn, chữ số hàng đơn vị $c$ có $1$ cách chọn.\n\nSố các số lập được là: $3\\times 2\\times 1=6$ (số)\n\nĐáp số: $6$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.7",
+  "gop_y": false,
+  "dap_an": "$743210$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lớn nhất khi **nhiều chữ số nhất**, nên dùng các chữ số nhỏ: $0+1+2+3+4+5=15$ (sáu chữ số) còn nhỏ hơn $17$, nhưng $0+1+2+3+4+5+6=21$ (bảy chữ số) đã vượt $17$. Vậy tối đa $6$ chữ số. Rồi chọn từng hàng từ trái sang phải, chữ số lớn nhất mà các hàng còn lại vẫn làm được.\n\nChú ý: hàng cao nhất không thể là $9$ hay $8$, vì khi đó năm chữ số còn lại có tổng $8$ hoặc $9$, nhỏ hơn mức bé nhất $0+1+2+3+4=10$.\n\n**Phần 2. Trình bày**\n\nBảy chữ số khác nhau có tổng bé nhất là $0+1+2+3+4+5+6=21$, lớn hơn $17$ nên số cần tìm có nhiều nhất $6$ chữ số.\n\nSáu chữ số khác nhau có tổng bé nhất là $0+1+2+3+4+5=15$, nhỏ hơn $17$ nên làm được.\n\nChữ số hàng cao nhất: chọn $9$ thì năm chữ số còn lại có tổng $17-9=8$; chọn $8$ thì năm chữ số còn lại có tổng $17-8=9$. Cả hai đều nhỏ hơn $0+1+2+3+4=10$ nên không làm được.\n\nChọn $7$ thì năm chữ số còn lại có tổng $17-7=10=0+1+2+3+4$, làm được.\n\nTa có: $17=7+4+3+2+1+0$\n\nXếp các chữ số từ lớn đến bé, được số cần tìm là $743210$.\n\nĐáp số: $743210$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.8",
+  "gop_y": false,
+  "dap_an": "$18$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bốn chữ số khác nhau có tổng nhỏ nhất là $0+1+2+3=6$, bằng đúng tổng đề cho. Vậy bốn chữ số cần dùng chỉ có thể là $0$ ; $1$ ; $2$ ; $3$. Sau đó đếm số cách xếp bốn chữ số này thành số có bốn chữ số (hàng nghìn khác $0$).\n\nChú ý: hàng nghìn có $3$ cách (bỏ $0$), nhưng hàng trăm lại có $3$ cách vì chữ số $0$ được dùng lại ở hàng này.\n\n**Phần 2. Trình bày**\n\nBốn chữ số khác nhau có tổng nhỏ nhất là $0+1+2+3=6$ nên bốn chữ số cần dùng chỉ có thể là $0$ ; $1$ ; $2$ ; $3$.\n\nGọi số cần tìm là $\\overline{abcd}$.\n\nChữ số hàng nghìn $a$ khác $0$ nên có $3$ cách chọn.\n\nChữ số hàng trăm $b$ có $3$ cách chọn, chữ số hàng chục $c$ có $2$ cách chọn, chữ số hàng đơn vị $d$ có $1$ cách chọn.\n\nSố các số cần tìm là: $3\\times 3\\times 2\\times 1=18$ (số)\n\nĐáp số: $18$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.9",
+  "gop_y": false,
+  "dap_an": "$90$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số đối xứng có ba chữ số có dạng $\\overline{aba}$ (chữ số hàng trăm bằng chữ số hàng đơn vị). Chỉ cần chọn $a$ và $b$: $a$ khác $0$ nên có $9$ cách; $b$ là chữ số bất kì nên có $10$ cách.\n\nChú ý: $b$ được phép bằng $a$ (như $111$ ; $222$ vẫn là số đối xứng).\n\n**Phần 2. Trình bày**\n\nSố đối xứng có ba chữ số có dạng $\\overline{aba}$ (chữ số hàng trăm bằng chữ số hàng đơn vị).\n\nChữ số $a$ khác $0$ nên có $9$ cách chọn.\n\nChữ số $b$ có thể là một trong các chữ số từ $0$ đến $9$ nên có $10$ cách chọn.\n\nSố các số đối xứng có ba chữ số là: $9\\times 10=90$ (số)\n\nĐáp số: $90$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 I.10",
+  "gop_y": false,
+  "dap_an": "$42$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số chẵn thì chữ số hàng đơn vị là $0$ hoặc $4$, nên chia hai trường hợp và chọn hàng đơn vị **trước**. Trường hợp hàng đơn vị là $0$ thì không còn lo hàng nghìn bằng $0$. Trường hợp hàng đơn vị là $4$ thì hàng nghìn phải khác $0$ và khác $4$.\n\nChú ý: ở trường hợp hàng đơn vị là $4$, hàng trăm vẫn được là $0$ nên có $3$ cách chứ không phải $2$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$ ($a$ khác $0$; bốn chữ số khác nhau). Số chẵn nên chữ số hàng đơn vị $d$ là $0$ hoặc $4$.\n\nTrường hợp 1: $d=0$. Chữ số hàng nghìn $a$ có $4$ cách chọn (một trong các chữ số $1$ ; $4$ ; $7$ ; $9$), chữ số hàng trăm $b$ có $3$ cách chọn, chữ số hàng chục $c$ có $2$ cách chọn. Có: $4\\times 3\\times 2=24$ (số)\n\nTrường hợp 2: $d=4$. Chữ số hàng nghìn $a$ khác $0$ và khác $4$ nên có $3$ cách chọn ($1$ ; $7$ hoặc $9$), chữ số hàng trăm $b$ còn $5-2=3$ chữ số để chọn (kể cả $0$), chữ số hàng chục $c$ có $2$ cách chọn. Có: $3\\times 3\\times 2=18$ (số)\n\nSố các số chẵn lập được là: $24+18=42$ (số)\n\nĐáp số: $42$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.1a",
+  "gop_y": false,
+  "dap_an": "$y=5000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở vế trái, phép nhân $1234\\times 4$ làm trước, được $4936$. Khi đó $y-4936=64$ nên $y$ là **số bị trừ**, bằng hiệu cộng số trừ.\n\nChú ý: không lấy $64+1234$ rồi mới nhân $4$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y-1234\\times 4=64 \\\\ y-4936=64 \\\\ y=64+4936 \\\\ y=5000 \\end{array}$\n\nĐáp số: $y=5000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.1b",
+  "gop_y": false,
+  "dap_an": "$y=3385$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y:5$ là **số hạng chưa biết** nên bằng tổng trừ số hạng kia: $2701-2024$. Sau đó $y$ là **số bị chia** nên $y$ bằng thương nhân số chia.\n\nChú ý: sau khi có $y:5=677$ phải **nhân** với $5$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y:5+2024=2701 \\\\ y:5=2701-2024 \\\\ y:5=677 \\\\ y=677\\times 5 \\\\ y=3385 \\end{array}$\n\nĐáp số: $y=3385$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.1c",
+  "gop_y": false,
+  "dap_an": "$y=1881$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\left(y+2700\\right)$ là **số bị chia** nên bằng thương nhân số chia: $509\\times 9$. Sau đó $y$ là số hạng chưa biết nên bằng tổng trừ số hạng kia.\n\nChú ý: làm phần trong ngoặc như một số, tìm giá trị của cả ngoặc trước.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} \\left(y+2700\\right):9=509 \\\\ y+2700=509\\times 9 \\\\ y+2700=4581 \\\\ y=4581-2700 \\\\ y=1881 \\end{array}$\n\nĐáp số: $y=1881$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.1d",
+  "gop_y": false,
+  "dap_an": "$y=600$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai tích có thừa số chung $y$. Nhân một số với một hiệu: $y\\times 9-y\\times 5=y\\times\\left(9-5\\right)$. Khi đó $y\\times 4=2400$.\n\nChú ý: đừng tính $y\\times 9=2400+y\\times 5$ vì vẫn còn $y$ ở cả hai vế; hãy đặt $y$ làm thừa số chung trước.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y\\times 9-y\\times 5=2400 \\\\ y\\times\\left(9-5\\right)=2400 \\\\ y\\times 4=2400 \\\\ y=2400:4 \\\\ y=600 \\end{array}$\n\nĐáp số: $y=600$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.2a",
+  "gop_y": false,
+  "dap_an": "$96$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đếm theo từng hàng. Năm chữ số $0$ ; $2$ ; $3$ ; $6$ ; $9$ có chữ số $0$ nên hàng nghìn phải khác $0$ ($4$ cách). Các hàng sau lấy các chữ số chưa dùng: hàng trăm còn $4$ chữ số (kể cả $0$), rồi $3$, rồi $2$.\n\nChú ý: hàng trăm có $4$ cách chứ không phải $3$, vì chữ số $0$ chưa được dùng ở hàng nghìn nên được chọn ở hàng này.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$ ($a$ khác $0$; bốn chữ số khác nhau).\n\nChữ số hàng nghìn $a$ khác $0$ nên có $4$ cách chọn.\n\nChữ số hàng trăm $b$ có $4$ cách chọn (còn $5-1=4$ chữ số, kể cả $0$).\n\nChữ số hàng chục $c$ có $3$ cách chọn, chữ số hàng đơn vị $d$ có $2$ cách chọn.\n\nSố các số lập được là: $4\\times 4\\times 3\\times 2=96$ (số)\n\nĐáp số: $96$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.2b",
+  "gop_y": false,
+  "dap_an": "$36$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số lẻ nên chữ số hàng đơn vị là $3$ hoặc $9$ ($2$ cách); chọn hàng đơn vị **trước**. Sau đó hàng nghìn khác $0$ và khác chữ số hàng đơn vị ($3$ cách), rồi các hàng còn lại.\n\nChú ý: hàng trăm còn $5-2=3$ chữ số để chọn (kể cả $0$), hàng chục còn $2$ chữ số.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$ ($a$ khác $0$; bốn chữ số khác nhau).\n\nSố lẻ nên chữ số hàng đơn vị $d$ là $3$ hoặc $9$: có $2$ cách chọn.\n\nChữ số hàng nghìn $a$ khác $0$ và khác $d$ nên có $5-2=3$ cách chọn.\n\nChữ số hàng trăm $b$ có $3$ cách chọn, chữ số hàng chục $c$ có $2$ cách chọn.\n\nSố các số lẻ lập được là: $2\\times 3\\times 3\\times 2=36$ (số)\n\nĐáp số: $36$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 4 II.3",
+  "gop_y": false,
+  "dap_an": "$98763$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm xem Sam có thể lấy ra những thẻ nào. Hai thẻ có tổng $5$: $1+4$ hoặc $2+3$. Hai thẻ có tổng $7$: $1+6$ ; $2+5$ ; $3+4$. Mỗi thẻ chỉ lấy một lần nên hai cặp không được dùng chung thẻ. Với mỗi cách lấy, các thẻ còn lại xếp từ lớn đến bé thì được số lớn nhất.\n\nChú ý: đề không nói rõ Sam lấy những thẻ nào, nên phải xét hết các cách lấy rồi chọn số lớn nhất.\n\n**Phần 2. Trình bày**\n\nHai thẻ có tổng bằng $5$: $1+4$ hoặc $2+3$.\n\nHai thẻ có tổng bằng $7$: $1+6$ ; $2+5$ ; $3+4$.\n\nHai lần lấy không dùng chung thẻ nên chỉ có hai cách lấy: lấy các thẻ $1$ ; $4$ rồi $2$ ; $5$, hoặc lấy các thẻ $2$ ; $3$ rồi $1$ ; $6$.\n\nCách 1: các thẻ còn lại là $3$ ; $6$ ; $7$ ; $8$ ; $9$, số lớn nhất ghép được là $98763$.\n\nCách 2: các thẻ còn lại là $4$ ; $5$ ; $7$ ; $8$ ; $9$, số lớn nhất ghép được là $98754$.\n\nVì $98763>98754$ nên số lớn nhất Sam ghép được là $98763$.\n\nĐáp số: $98763$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề không nói Sam lấy cặp thẻ nào; có đúng 2 cách lấy (1,4 rồi 2,5 -> còn 3,6,7,8,9 -> 98763; hoặc 2,3 rồi 1,6 -> còn 4,5,7,8,9 -> 98754). Em hiểu 'số lớn nhất mà Sam ghép được' là lớn nhất trong mọi cách lấy => 98763. Nếu hiểu Sam lấy cách thứ hai thì đáp số là 98754."
+ },
+ {
+  "ma_nguon": "PCT 5 I.1",
+  "gop_y": false,
+  "dap_an": "$405$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bảng đơn vị đo diện tích: hai đơn vị liền nhau gấp **$100$ lần** nhau, nên $1$ $m^2=100$ $dm^2$. Đổi $3$ $m^2$ ra $dm^2$ rồi cộng với $105$ $dm^2$.\n\nChú ý: đơn vị diện tích gấp $100$ lần (không phải $10$ lần như đơn vị độ dài), nên $3$ $m^2=300$ $dm^2$.\n\n**Phần 2. Trình bày**\n\n$1$ $m^2=100$ $dm^2$ nên $3$ $m^2=300$ $dm^2$.\n\n$3$ $m^2$ $105$ $dm^2$ $=300$ $dm^2$ $+105$ $dm^2$ $=405$ $dm^2$\n\nĐáp số: $405$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.2",
+  "gop_y": false,
+  "dap_an": "$2$ kg $125$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các khối lượng viết bằng đơn vị khác nhau nên chưa so sánh được, phải đổi tất cả về cùng một đơn vị nhỏ nhất là gam. Nhớ: $1$ kg $=1000$ g; $1$ hg $=100$ g; $1$ dag $=10$ g.\n\nChú ý: $20$ hg $10$ g có số $20$ trông lớn nhưng chỉ là $2010$ g, bé nhất trong bốn khối lượng.\n\n**Phần 2. Trình bày**\n\n$2$ kg $1$ hg $=2100$ g\n\n$2$ kg $125$ g $=2125$ g\n\n$2$ kg $12$ dag $=2120$ g\n\n$20$ hg $10$ g $=2010$ g\n\nVì $2125$ g $>2120$ g $>2100$ g $>2010$ g nên khối lượng nặng nhất là $2$ kg $125$ g.\n\nĐáp số: $2$ kg $125$ g",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.3",
+  "gop_y": false,
+  "dap_an": "$7$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng giờ với giờ, phút với phút; số phút được $60$ trở lên thì đổi thành $1$ giờ ($1$ giờ $=60$ phút) rồi cộng vào số giờ.\n\nChú ý: $35+25=60$ phút chính là $1$ giờ.\n\n**Phần 2. Trình bày**\n\n$4$ giờ $35$ phút $+2$ giờ $25$ phút $=6$ giờ $60$ phút\n\n$60$ phút $=1$ giờ nên $6$ giờ $60$ phút $=7$ giờ.\n\nĐáp số: $7$ giờ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.4",
+  "gop_y": false,
+  "dap_an": "$<$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai số đo có đơn vị khác nhau nên phải đổi về cùng một đơn vị (xăng-ti-mét) rồi mới so sánh.\n\nChú ý: $6$ m $145$ cm là $745$ cm (không phải $6145$ cm hay $651$ cm); $1$ m $=100$ cm.\n\n**Phần 2. Trình bày**\n\n$6$ m $145$ cm $=600$ cm $+145$ cm $=745$ cm\n\nVì $705<745$ nên $705$ cm $<6$ m $145$ cm.\n\nVậy dấu cần điền là $<$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.5",
+  "gop_y": false,
+  "dap_an": "$86$ nghìn đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tiền phải trả lại = tiền mẹ đưa − tiền mẹ đã mua. Tiền mua là tổng ba món; mẹ đưa $2$ tờ $500$ nghìn đồng.\n\nChú ý: hai tờ $500$ nghìn đồng là $500\\times 2=1000$ nghìn đồng (không phải $500$ nghìn đồng).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMẹ mua tất cả hết số tiền là: $350+420+144=914$ (nghìn đồng)\n\nMẹ đưa cô thu ngân số tiền là: $500\\times 2=1000$ (nghìn đồng)\n\nCô thu ngân phải trả lại mẹ số tiền là: $1000-914=86$ (nghìn đồng)\n\nĐáp số: $86$ nghìn đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.6",
+  "gop_y": false,
+  "dap_an": "$64$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi gạo tẻ về đơn vị tạ để cùng đơn vị với $12$ tạ: $1$ tấn $=10$ tạ nên $3$ tấn $8$ tạ $=38$ tạ. Gạo nếp = gạo tẻ − $12$ tạ. Rồi cộng hai loại.\n\nChú ý: \"ít hơn\" thì làm phép trừ; câu hỏi là cả gạo tẻ **và** gạo nếp nên phải cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$3$ tấn $8$ tạ $=38$ tạ\n\nSố gạo nếp là: $38-12=26$ (tạ)\n\nTrong kho có tất cả số tạ gạo tẻ và gạo nếp là: $38+26=64$ (tạ)\n\nĐáp số: $64$ tạ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.7",
+  "gop_y": false,
+  "dap_an": "thứ Bảy",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: một tuần có $7$ ngày nên cứ sau $7$ ngày thì lại về đúng thứ cũ. Tháng $3$ có $31$ ngày nên ngày cuối là ngày $31$. Từ ngày $8$ đến ngày $31$ cách nhau $31-8=23$ ngày; $23:7=3$ (dư $2$): qua $3$ tuần vẫn là thứ Năm, rồi tính thêm $2$ ngày.\n\nChú ý: số ngày cách nhau là hiệu hai ngày ($31-8$), không phải $31$ hay $23+1$.\n\n**Phần 2. Trình bày**\n\nTháng $3$ có $31$ ngày nên ngày cuối cùng của tháng $3$ là ngày $31$.\n\nTừ ngày $8$ đến ngày $31$ có số ngày là: $31-8=23$ (ngày)\n\nTa có: $23:7=3$ (dư $2$)\n\nSau $3$ tuần lễ (đến ngày $29$) vẫn là thứ Năm, sau thêm $2$ ngày (đến ngày $31$) là thứ Bảy.\n\nVậy ngày cuối cùng của tháng $3$ năm đó là thứ Bảy.\n\nĐáp số: thứ Bảy",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.8",
+  "gop_y": false,
+  "dap_an": "$1200$ viên gạch",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi các số đo về cùng một đơn vị: $8$ m $=80$ dm, $6$ m $=60$ dm. Số viên gạch = diện tích nền phòng chia diện tích một viên gạch.\n\nChú ý: phải đổi về cùng đơn vị đề-xi-mét rồi mới tính diện tích. Có thể thử lại: theo chiều dài xếp được $80:2=40$ viên, theo chiều rộng xếp được $60:2=30$ viên, $40\\times 30=1200$ viên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$8$ m $=80$ dm ; $6$ m $=60$ dm\n\nDiện tích căn phòng là: $80\\times 60=4800$ ($dm^2$)\n\nDiện tích một viên gạch là: $2\\times 2=4$ ($dm^2$)\n\nSố viên gạch cần để lát kín nền căn phòng là: $4800:4=1200$ (viên)\n\nĐáp số: $1200$ viên gạch",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 I.9",
+  "gop_y": false,
+  "dap_an": "$1140$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đi bộ một vòng quanh vườn hoa là đi hết **chu vi**, nên chu vi = vận tốc mỗi phút × số phút. Tìm chiều rộng từ mảnh đất hình vuông: tìm số nhân với chính nó ra $900$. Có chu vi thì có nửa chu vi, trừ chiều rộng được chiều dài.\n\nChú ý: $34$ m là quãng đường đi trong **một phút**, chưa phải chu vi; chu vi là $34\\times 4$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi vườn hoa là: $34\\times 4=136$ (m)\n\nNửa chu vi vườn hoa là: $136:2=68$ (m)\n\nTa có $30\\times 30=900$ nên cạnh mảnh đất hình vuông là $30$ m, cũng là chiều rộng vườn hoa.\n\nChiều dài vườn hoa là: $68-30=38$ (m)\n\nDiện tích vườn hoa là: $38\\times 30=1140$ ($m^2$)\n\nĐáp số: $1140$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1a",
+  "gop_y": false,
+  "dap_an": "$3050$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ kg $=1000$ g. Đổi $3$ kg ra gam rồi cộng với $50$ g.\n\nChú ý: $50$ g nằm ở hàng chục, nên kết quả là $3050$ chứ không phải $350$.\n\n**Phần 2. Trình bày**\n\n$3$ kg $=3000$ g\n\n$3$ kg $50$ g $=3000$ g $+50$ g $=3050$ g\n\nĐáp số: $3050$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1b",
+  "gop_y": false,
+  "dap_an": "$7080$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ km $=1000$ m; $1$ dam $=10$ m. Đổi từng phần ra mét rồi cộng.\n\nChú ý: $8$ dam chỉ là $80$ m, không phải $800$ m.\n\n**Phần 2. Trình bày**\n\n$7$ km $=7000$ m ; $8$ dam $=80$ m\n\n$7$ km $8$ dam $=7000$ m $+80$ m $=7080$ m\n\nĐáp số: $7080$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1c",
+  "gop_y": false,
+  "dap_an": "$205$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ giờ $=60$ phút. Đổi $3$ giờ ra phút rồi cộng với $25$ phút.\n\nChú ý: $1$ giờ có $60$ phút (không phải $100$ phút).\n\n**Phần 2. Trình bày**\n\n$3$ giờ $=60\\times 3=180$ phút\n\n$3$ giờ $25$ phút $=180$ phút $+25$ phút $=205$ phút\n\nĐáp số: $205$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1d",
+  "gop_y": false,
+  "dap_an": "$4500$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ tấn $=1000$ kg và $1$ tạ $=100$ kg. Đổi từng phần ra ki-lô-gam rồi cộng.\n\nChú ý: $5$ tạ là $500$ kg, không phải $50$ kg.\n\n**Phần 2. Trình bày**\n\n$4$ tấn $=4000$ kg ; $5$ tạ $=500$ kg\n\n$4$ tấn $5$ tạ $=4000$ kg $+500$ kg $=4500$ kg\n\nĐáp số: $4500$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1e",
+  "gop_y": false,
+  "dap_an": "$295$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ $dm^2=100$ $cm^2$. Đổi $2$ $dm^2$ ra $cm^2$ rồi cộng với $95$ $cm^2$.\n\nChú ý: đơn vị diện tích gấp $100$ lần nhau, nên $2$ $dm^2=200$ $cm^2$ (không phải $20$ $cm^2$).\n\n**Phần 2. Trình bày**\n\n$2$ $dm^2=200$ $cm^2$\n\n$2$ $dm^2$ $95$ $cm^2$ $=200$ $cm^2$ $+95$ $cm^2$ $=295$ $cm^2$\n\nĐáp số: $295$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1f",
+  "gop_y": false,
+  "dap_an": "$3$ thế kỉ $20$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ thế kỉ $=100$ năm. Chia $320$ cho $100$: thương là số thế kỉ, số dư là số năm còn lại.\n\nChú ý: $320:100=3$ (dư $20$) nên là $3$ thế kỉ $20$ năm.\n\n**Phần 2. Trình bày**\n\nTa có: $320:100=3$ (dư $20$)\n\nVậy $320$ năm $=3$ thế kỉ $20$ năm.\n\nĐáp số: $3$ thế kỉ $20$ năm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1g",
+  "gop_y": false,
+  "dap_an": "$451$ kg $68$ dag",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ kg $=100$ dag. Chia $45168$ cho $100$: thương là số ki-lô-gam, số dư là số đề-ca-gam còn lại.\n\nChú ý: chia cho $100$ nên số dư là hai chữ số cuối: $68$.\n\n**Phần 2. Trình bày**\n\nTa có: $45168:100=451$ (dư $68$)\n\nVậy $45168$ dag $=451$ kg $68$ dag.\n\nĐáp số: $451$ kg $68$ dag",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.1h",
+  "gop_y": false,
+  "dap_an": "$4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $1$ giờ $=60$ phút, nên đổi phút ra giờ bằng cách chia cho $60$.\n\nChú ý: phải chia cho $60$ (không phải $100$).\n\n**Phần 2. Trình bày**\n\nTa có: $240:60=4$\n\nVậy $240$ phút $=4$ giờ.\n\nĐáp số: $4$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.2",
+  "gop_y": false,
+  "dap_an": "$22500$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi hình chữ nhật gồm hai lần (chiều dài + chiều rộng), nên nửa chu vi là tổng chiều dài và chiều rộng; trừ chiều rộng được chiều dài. Có hai cạnh thì tính diện tích, rồi nhân với số ki-lô-gam khoai tây thu được trên $1$ $m^2$.\n\nChú ý: $350$ m là chu vi, phải chia $2$ trước khi trừ chiều rộng $75$ m.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi mảnh đất là: $350:2=175$ (m)\n\nChiều dài mảnh đất là: $175-75=100$ (m)\n\nDiện tích mảnh đất là: $100\\times 75=7500$ ($m^2$)\n\nNgười ta thu hoạch được số ki-lô-gam khoai tây là: $7500\\times 3=22500$ (kg)\n\nĐáp số: $22500$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 5 II.3",
+  "gop_y": false,
+  "dap_an": "Ví dụ: cân lần thứ nhất bằng cả hai quả cân ($5+1=6$ kg) được $6$ kg đường, cân lần thứ hai bằng quả cân $1$ kg được $1$ kg đường; gộp lại được $6+1=7$ kg đường",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cân đĩa thăng bằng nghĩa là hai bên nặng bằng nhau. Đặt quả cân lên một đĩa, đổ đường vào đĩa kia cho đến khi cân thăng bằng thì đường nặng đúng bằng quả cân. Với hai quả cân $1$ kg và $5$ kg có thể lấy được $1$ kg, $5$ kg hoặc $5+1=6$ kg đường mỗi lần cân. Muốn có $7$ kg thì cân hai lần: $7=6+1$.\n\nChú ý: quả cân được dùng lại nhiều lần; không cần lấy đủ $7$ kg trong một lần cân. Bài có nhiều cách làm khác (như $5+1+1$).\n\n**Phần 2. Trình bày**\n\nLần cân thứ nhất: đặt cả hai quả cân $5$ kg và $1$ kg lên một đĩa, đổ đường vào đĩa kia đến khi cân thăng bằng, được số ki-lô-gam đường là: $5+1=6$ (kg)\n\nLần cân thứ hai: chỉ để quả cân $1$ kg trên một đĩa, đổ đường vào đĩa kia đến khi cân thăng bằng, lấy thêm được $1$ kg đường.\n\nSố đường lấy ra sau hai lần cân là: $6+1=7$ (kg)\n\nĐáp số: Cân hai lần ($6$ kg rồi $1$ kg) lấy được $7$ kg đường",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề mở, nhiều cách làm hợp lệ: ví dụ 5+1+1 (cân ba lần: 5 kg, 1 kg, 1 kg) hoặc 6+1 (hai lần, cách đã chọn). Nếu hệ chấm đáp án bằng máy thì dap_an chỉ mang tính ví dụ."
+ },
+ {
+  "ma_nguon": "PCT 6 I.1",
+  "gop_y": false,
+  "dap_an": "$5047$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân với $103$ có thể tách $103=100+3$: $49\\times 103=49\\times 100+49\\times 3$. Nhân một số với một tổng bằng tổng các tích.\n\nChú ý: không viết $49\\times 103=4900+3$; phải nhân $49$ với cả $100$ và $3$.\n\n**Phần 2. Trình bày**\n\n$49\\times 103=49\\times\\left(100+3\\right)$\n\n$=49\\times 100+49\\times 3$\n\n$=4900+147$\n\n$=5047$\n\nĐáp số: $5047$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.2",
+  "gop_y": false,
+  "dap_an": "$77$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân một tổng với một số: $\\left(32+43\\right)\\times 77=32\\times 77+43\\times 77$. Hai tích có thừa số chung là $77$; đổi chỗ các thừa số ta được $77\\times 32+77\\times 43$.\n\nChú ý: số cần điền là thừa số được nhân với cả $32$ và $43$.\n\n**Phần 2. Trình bày**\n\n$\\left(32+43\\right)\\times 77=32\\times 77+43\\times 77$\n\n$=77\\times 32+77\\times 43$\n\nVậy số cần điền là $77$.\n\nĐáp số: $77$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.3",
+  "gop_y": false,
+  "dap_an": "$<$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tính tích $56\\times 731$ rồi so sánh với $40963$. Có thể tách $56=50+6$: $731\\times 56=731\\times 50+731\\times 6$.\n\nChú ý: hai số $40936$ và $40963$ chỉ khác nhau ở hai chữ số cuối (đổi chỗ $3$ và $6$), phải so đúng hàng chục.\n\n**Phần 2. Trình bày**\n\n$56\\times 731=731\\times 50+731\\times 6$\n\n$=36550+4386$\n\n$=40936$\n\nHai số $40936$ và $40963$ có ba chữ số đầu giống nhau ($409$). Chữ số hàng chục: $3<6$ nên $40936<40963$.\n\nVậy dấu cần điền là $<$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.4",
+  "gop_y": false,
+  "dap_an": "$2682$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biểu thức có cộng và nhân thì **nhân làm trước, cộng làm sau**: $125\\times 18=2250$ rồi cộng $432$.\n\nChú ý: không cộng $432+125$ trước.\n\n**Phần 2. Trình bày**\n\n$A=432+125\\times 18$\n\n$=432+2250$\n\n$=2682$\n\nĐáp số: $A=2682$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.5",
+  "gop_y": false,
+  "dap_an": "$y=234$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $5\\times y$ là **số hạng chưa biết** nên bằng tổng trừ số hạng kia: $2801-1631$. Sau đó $y$ là thừa số chưa biết nên bằng tích chia thừa số kia.\n\nChú ý: phải tìm $5\\times y$ trước rồi mới chia $5$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 1631+5\\times y=2801 \\\\ 5\\times y=2801-1631 \\\\ 5\\times y=1170 \\\\ y=1170:5 \\\\ y=234 \\end{array}$\n\nĐáp số: $y=234$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.6",
+  "gop_y": false,
+  "dap_an": "$195365$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm số nhỏ nhất có ba chữ số khác nhau tạo từ các chữ số $0$ ; $2$ ; $5$ trước. Số nhỏ nhất thì hàng trăm nhỏ nhất **nhưng khác $0$**, nên hàng trăm là $2$; rồi đến hàng chục $0$, hàng đơn vị $5$. Số đó là $205$. Sau đó nhân $953$ với $205$, tách $205=200+5$.\n\nChú ý: không viết $025$ vì đó không phải là số có ba chữ số.\n\n**Phần 2. Trình bày**\n\nSố nhỏ nhất có ba chữ số khác nhau lập từ $0$ ; $2$ ; $5$: chữ số hàng trăm khác $0$ và nhỏ nhất là $2$, tiếp đến hàng chục là $0$, hàng đơn vị là $5$. Số đó là $205$.\n\nTích cần tìm là: $953\\times 205=953\\times 200+953\\times 5$\n\n$=190600+4765$\n\n$=195365$\n\nĐáp số: $195365$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề in 'ba trong bốn chữ số 0; 2; 5' nhưng chỉ liệt kê ba chữ số (có thể thiếu một chữ số). Em hiểu chỉ dùng ba chữ số 0, 2, 5 => số nhỏ nhất 205 => tích 953 x 205 = 195365. Nếu chữ số bị thiếu nhỏ hơn 2 (vd 1) thì số nhỏ nhất là 102 => tích 97206; cần đối chiếu sách gốc."
+ },
+ {
+  "ma_nguon": "PCT 6 I.7",
+  "gop_y": false,
+  "dap_an": "$1355$ chiếc áo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số áo đã làm trong $7$ ngày đầu = $1235\\times 7$. Số áo cần làm thêm = số áo được giao − số áo đã làm.\n\nChú ý: phải nhân số áo mỗi ngày với $7$ ngày trước khi trừ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $7$ ngày đầu tổ sản xuất được số chiếc áo là: $1235\\times 7=8645$ (chiếc)\n\nTổ đó cần phải sản xuất thêm số chiếc áo là: $10000-8645=1355$ (chiếc)\n\nĐáp số: $1355$ chiếc áo",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.8",
+  "gop_y": false,
+  "dap_an": "$3312$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: khi một thừa số giảm $3$ lần thì tích giảm $3$ lần; thừa số kia giảm $12$ lần thì tích lại giảm thêm $12$ lần. Vậy tích giảm đi $3\\times 12=36$ lần. Muốn tìm tích ban đầu, lấy tích mới nhân $36$.\n\nChú ý: số lần giảm của tích là **nhân** hai số lần ($3\\times 12$), không phải cộng ($3+12$). Thử lại: $3312:36=92$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi giảm thừa số thứ nhất đi $3$ lần và giảm thừa số thứ hai đi $12$ lần thì tích giảm đi số lần là: $3\\times 12=36$ (lần)\n\nTích ban đầu là: $92\\times 36=3312$\n\nĐáp số: $3312$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.9",
+  "gop_y": false,
+  "dap_an": "$1212$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hiệu = số bị trừ − số trừ. Thêm vào số bị trừ thì hiệu **tăng** thêm bấy nhiêu; bớt số trừ đi thì hiệu **cũng tăng** thêm bấy nhiêu. Số tự nhiên lớn nhất có ba chữ số là $999$.\n\nChú ý: bớt số trừ làm hiệu tăng (không phải giảm), nên cả hai thay đổi đều làm hiệu tăng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của hai số là số tự nhiên lớn nhất có ba chữ số nên hiệu là $999$.\n\nThêm vào số bị trừ $124$ đơn vị thì hiệu tăng thêm $124$ đơn vị. Bớt số trừ đi $89$ đơn vị thì hiệu tăng thêm $89$ đơn vị.\n\nHiệu mới là: $999+124+89=1212$\n\nĐáp số: $1212$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 I.10",
+  "gop_y": false,
+  "dap_an": "$6660$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số các số có ba chữ số khác nhau lập từ ba trong bốn chữ số $1$ ; $2$ ; $3$ ; $4$ là $4\\times 3\\times 2=24$ số. Bốn chữ số có vai trò như nhau nên ở mỗi hàng, mỗi chữ số xuất hiện đúng $24:4=6$ lần. Tổng các chữ số ở mỗi hàng là $\\left(1+2+3+4\\right)\\times 6=60$. Tổng $24$ số = $60$ trăm + $60$ chục + $60$ đơn vị.\n\nChú ý: không có chữ số $0$ nên hàng trăm lấy được cả bốn chữ số, không phải bớt trường hợp nào.\n\n**Phần 2. Trình bày**\n\nSố các số có ba chữ số khác nhau lập được là: $4\\times 3\\times 2=24$ (số)\n\nỞ mỗi hàng, mỗi chữ số trong bốn chữ số $1$ ; $2$ ; $3$ ; $4$ xuất hiện số lần là: $24:4=6$ (lần)\n\nTổng các chữ số ở một hàng là: $\\left(1+2+3+4\\right)\\times 6=60$\n\nTổng của $24$ số là: $60\\times 100+60\\times 10+60=6660$\n\nĐáp số: $6660$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 II.1a",
+  "gop_y": false,
+  "dap_an": "$1829350$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép hai số hạng có tổng tròn: $277315+722685=1000000$. Dùng tính chất giao hoán và kết hợp để đổi chỗ, ghép nhóm.\n\nChú ý: dấu hiệu là hai số có các chữ số cuối bù nhau ($315$ và $685$ cộng được $1000$).\n\n**Phần 2. Trình bày**\n\n$277315+829350+722685$\n\n$=\\left(277315+722685\\right)+829350$\n\n$=1000000+829350$\n\n$=1829350$\n\nĐáp số: $1829350$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 II.1b",
+  "gop_y": false,
+  "dap_an": "$500000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ghép hai số có cùng phần đuôi để trừ: $473125-73125=400000$, và ghép hai số cộng tròn: $68241+31759=100000$.\n\nChú ý: khi đổi chỗ số hạng, dấu đi kèm phải theo số đó: số $73125$ đứng sau dấu $-$ nên vẫn bị trừ.\n\n**Phần 2. Trình bày**\n\n$473125+68241-73125+31759$\n\n$=\\left(473125-73125\\right)+\\left(68241+31759\\right)$\n\n$=400000+100000$\n\n$=500000$\n\nĐáp số: $500000$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 II.1c",
+  "gop_y": false,
+  "dap_an": "$607200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai tích có thừa số chung $2024$. Nhân một số với một hiệu: $2024\\times 321-2024\\times 21=2024\\times\\left(321-21\\right)$.\n\nChú ý: đừng nhân từng tích riêng rồi mới trừ vì tính rất dài.\n\n**Phần 2. Trình bày**\n\n$2024\\times 321-2024\\times 21$\n\n$=2024\\times\\left(321-21\\right)$\n\n$=2024\\times 300$\n\n$=607200$\n\nĐáp số: $607200$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 II.1d",
+  "gop_y": false,
+  "dap_an": "$202400$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $4048$ gấp đôi $2024$ ($4048=2024\\times 2$). Viết $4048\\times 53=2024\\times 2\\times 53=2024\\times 106$ để hai tích có thừa số chung $2024$. Rồi nhân một số với một hiệu.\n\nChú ý: phải đổi $4048$ thành $2024\\times 2$ trước thì mới thấy thừa số chung.\n\n**Phần 2. Trình bày**\n\n$4048\\times 53-2024\\times 6$\n\n$=2024\\times 2\\times 53-2024\\times 6$\n\n$=2024\\times 106-2024\\times 6$\n\n$=2024\\times\\left(106-6\\right)$\n\n$=2024\\times 100$\n\n$=202400$\n\nĐáp số: $202400$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 II.2",
+  "gop_y": false,
+  "dap_an": "$3750$ con hạc giấy",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm số hạc của nam và số hạc của nữ riêng (số học sinh nhân số hạc mỗi bạn), rồi cộng lại.\n\nChú ý: số hạc mỗi bạn nam ($10$ con) khác số hạc mỗi bạn nữ ($15$ con), không nhân chung.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác bạn nam gấp được số con hạc giấy là: $195\\times 10=1950$ (con)\n\nCác bạn nữ gấp được số con hạc giấy là: $120\\times 15=1800$ (con)\n\nKhối lớp Bốn gấp được tất cả số con hạc giấy là: $1950+1800=3750$ (con)\n\nĐáp số: $3750$ con hạc giấy",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 6 II.3",
+  "gop_y": false,
+  "dap_an": "$x=35032$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: có $5$ ngoặc, mỗi ngoặc có một chữ $x$ nên có $5$ chữ $x$, viết là $x\\times 5$. Các số $1$ ; $2$ ; $3$ ; $4$ ; $5$ cộng lại được $15$. Biểu thức thành $x\\times 5+15=175175$; $x\\times 5$ là số hạng chưa biết, $x$ là thừa số chưa biết.\n\nChú ý: đừng quên cộng các số $1+2+3+4+5=15$; thử lại $35032\\times 5+15=175160+15=175175$.\n\n**Phần 2. Trình bày**\n\nTa có: $\\left(x+1\\right)+\\left(x+2\\right)+\\left(x+3\\right)+\\left(x+4\\right)+\\left(x+5\\right)=x\\times 5+\\left(1+2+3+4+5\\right)=x\\times 5+15$\n\n$\\begin{array}{l} x\\times 5+15=175175 \\\\ x\\times 5=175175-15 \\\\ x\\times 5=175160 \\\\ x=175160:5 \\\\ x=35032 \\end{array}$\n\nĐáp số: $x=35032$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.1",
+  "gop_y": false,
+  "dap_an": "$5972361$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đọc và viết số theo từng lớp. Lớp triệu: năm triệu là $5$. Lớp nghìn: chín trăm bảy mươi hai nghìn là $972$. Lớp đơn vị: ba trăm sáu mươi mốt là $361$. Ghép ba lớp lại.\n\nChú ý: \"mốt\" là chữ số $1$ ở hàng đơn vị; mỗi lớp (trừ lớp cao nhất) phải đủ ba chữ số.\n\n**Phần 2. Trình bày**\n\nLớp triệu: năm triệu là $5$ triệu.\n\nLớp nghìn: chín trăm bảy mươi hai nghìn là $972$ nghìn.\n\nLớp đơn vị: ba trăm sáu mươi mốt là $361$.\n\nSố cần viết là $5972361$.\n\nĐáp số: $5972361$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.2",
+  "gop_y": false,
+  "dap_an": "$725306$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bốn số đều có $6$ chữ số nên so sánh từ hàng cao xuống hàng thấp. Hai số bắt đầu bằng $72$ bé hơn hai số bắt đầu bằng $73$. Còn lại $725306$ và $725630$.\n\nChú ý: cần so tới hàng trăm mới phân biệt được hai số cùng bắt đầu bằng $725$.\n\n**Phần 2. Trình bày**\n\nCả bốn số đều có $6$ chữ số. Hai số $725306$ và $725630$ có hai chữ số đầu là $72$, bé hơn hai số $730256$ và $730562$ có hai chữ số đầu là $73$.\n\nHai số $725306$ và $725630$ có ba chữ số đầu giống nhau ($725$). Chữ số hàng trăm: $3<6$ nên $725306<725630$.\n\nVậy số bé nhất là $725306$.\n\nĐáp số: $725306$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.3",
+  "gop_y": false,
+  "dap_an": "$<$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tính vế trái thành một số: $40000+300+5=40305$. Rồi so sánh $40305$ với $40350$ từ hàng cao xuống hàng thấp.\n\nChú ý: hai số chỉ khác nhau ở hàng chục và hàng đơn vị nên phải so tới hàng chục.\n\n**Phần 2. Trình bày**\n\n$40000+300+5=40305$\n\nHai số $40305$ và $40350$ có ba chữ số đầu giống nhau ($403$). Chữ số hàng chục: $0<5$ nên $40305<40350$.\n\nVậy dấu cần điền là $<$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.4",
+  "gop_y": false,
+  "dap_an": "$43215$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm quy luật của dãy số bằng cách lấy hai số liền nhau trừ nhau: $43155-43135=20$, mỗi số hơn số liền trước $20$ đơn vị. Số cần điền đứng ngay sau $43195$.\n\nChú ý: thử lại bằng số cuối đã cho: số vừa tìm cộng thêm $20$ phải ra $43235$.\n\n**Phần 2. Trình bày**\n\nHai số liền nhau hơn kém nhau: $43155-43135=20$\n\nQuy luật: mỗi số bằng số liền trước cộng thêm $20$.\n\nSố cần điền là: $43195+20=43215$\n\nThử lại: $43215+20=43235$ (đúng với số cho trước).\n\nĐáp số: $43215$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.5",
+  "gop_y": false,
+  "dap_an": "$7480$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: kí hiệu θ chỉ là tên một phép toán mới, tính theo công thức đề cho: $a\\text{ θ }b=a\\times b+a-b$. Thay $a=278$ và $b=26$, nhân trước, rồi cộng trừ từ trái sang phải.\n\nChú ý: $a$ và $b$ không đổi chỗ được: phải lấy $a=278$ làm số đứng trước kí hiệu.\n\n**Phần 2. Trình bày**\n\n$278\\text{ θ }26=278\\times 26+278-26$\n\n$=7228+278-26$\n\n$=7506-26$\n\n$=7480$\n\nĐáp số: $7480$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.6",
+  "gop_y": false,
+  "dap_an": "$165$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi hình chữ nhật là hai lần (chiều dài + chiều rộng), nên nửa chu vi là tổng chiều dài và chiều rộng. Trừ chiều dài được chiều rộng, rồi tính diện tích.\n\nChú ý: phải chia chu vi cho $2$ trước khi trừ chiều dài.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $52:2=26$ (cm)\n\nChiều rộng hình chữ nhật là: $26-15=11$ (cm)\n\nDiện tích hình chữ nhật là: $15\\times 11=165$ ($cm^2$)\n\nĐáp số: $165$ $cm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.7",
+  "gop_y": false,
+  "dap_an": "$80$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích hình vuông = cạnh × cạnh, nên cạnh là số nhân với chính nó ra $400$. Thử: $10\\times 10=100$, $20\\times 20=400$. Có cạnh thì chu vi = cạnh × $4$.\n\nChú ý: đừng nhầm $400$ với chu vi; $400$ là diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có $20\\times 20=400$ nên cạnh hình vuông là $20$ m.\n\nChu vi hình vuông là: $20\\times 4=80$ (m)\n\nĐáp số: $80$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.8",
+  "gop_y": false,
+  "dap_an": "$38$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cạnh sân hình vuông = chu vi chia $4$. Mở rộng về bên phải $2$ m và bên trái $3$ m thì sân chỉ dài thêm theo **một chiều** là $2+3=5$ m, chiều còn lại giữ nguyên. Sân mới là hình chữ nhật.\n\nChú ý: chỉ có một chiều được kéo dài, nên chiều kia vẫn bằng cạnh hình vuông cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh sân hình vuông lúc đầu là: $28:4=7$ (m)\n\nChiều dài sân sau khi mở rộng là: $7+2+3=12$ (m)\n\nChiều rộng sân vẫn là $7$ m.\n\nChu vi sân sau khi mở rộng là: $\\left(12+7\\right)\\times 2=38$ (m)\n\nĐáp số: $38$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 I.9",
+  "gop_y": false,
+  "dap_an": "$30$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai hình chữ nhật có cùng chiều dài. Phần bị bớt đi là hình chữ nhật có chiều dài bằng chiều dài ban đầu và chiều rộng $4$ cm, nên diện tích bớt đi chính là chiều dài nhân $4$. Từ đó tìm chiều dài, rồi chiều rộng, rồi chu vi.\n\nChú ý: thử lại: $8\\times\\left(7-4\\right)=24$ ($cm^2$) đúng với đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích bớt đi là: $56-24=32$ ($cm^2$)\n\nPhần bớt đi là hình chữ nhật có chiều rộng $4$ cm nên chiều dài hình chữ nhật ban đầu là: $32:4=8$ (cm)\n\nChiều rộng hình chữ nhật ban đầu là: $56:8=7$ (cm)\n\nChu vi hình chữ nhật ban đầu là: $\\left(8+7\\right)\\times 2=30$ (cm)\n\nĐáp số: $30$ cm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 II.1a",
+  "gop_y": false,
+  "dap_an": "$7$ tấn $170$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng tấn với tấn, ki-lô-gam với ki-lô-gam; số ki-lô-gam từ $1000$ trở lên thì đổi $1000$ kg thành $1$ tấn rồi cộng vào số tấn.\n\nChú ý: $280+890=1170$ kg, nhớ đổi ra $1$ tấn $170$ kg.\n\n**Phần 2. Trình bày**\n\n$2$ tấn $280$ kg $+4$ tấn $890$ kg $=6$ tấn $1170$ kg\n\n$1170$ kg $=1$ tấn $170$ kg nên $6$ tấn $1170$ kg $=7$ tấn $170$ kg.\n\nĐáp số: $7$ tấn $170$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 II.1b",
+  "gop_y": false,
+  "dap_an": "$2$ tấn $3$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: làm lần lượt từ trái sang phải: cộng trước, trừ sau; tấn với tấn, tạ với tạ. Số tạ từ $10$ trở lên thì đổi $10$ tạ thành $1$ tấn ($1$ tấn $=10$ tạ).\n\nChú ý: $1$ tấn $=10$ tạ, nên $2+5=7$ tạ chưa phải đổi.\n\n**Phần 2. Trình bày**\n\n$4$ tấn $2$ tạ $+3$ tấn $5$ tạ $=7$ tấn $7$ tạ\n\n$7$ tấn $7$ tạ $-5$ tấn $4$ tạ $=2$ tấn $3$ tạ\n\nĐáp số: $2$ tấn $3$ tạ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 II.1c",
+  "gop_y": false,
+  "dap_an": "$11$ tấn $7$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: nhân trước, cộng sau. Nhân từng phần: tấn nhân $3$, tạ nhân $3$, rồi đổi $10$ tạ thành $1$ tấn. Sau đó đổi $15$ tạ thành $1$ tấn $5$ tạ để cộng.\n\nChú ý: $4$ tạ $\\times 3=12$ tạ $=1$ tấn $2$ tạ, nhớ cộng vào số tấn.\n\n**Phần 2. Trình bày**\n\n$3$ tấn $4$ tạ $\\times 3=9$ tấn $12$ tạ $=10$ tấn $2$ tạ\n\n$15$ tạ $=1$ tấn $5$ tạ\n\n$10$ tấn $2$ tạ $+15$ tạ $=10$ tấn $2$ tạ $+1$ tấn $5$ tạ $=11$ tấn $7$ tạ\n\nĐáp số: $11$ tấn $7$ tạ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 II.1d",
+  "gop_y": false,
+  "dap_an": "$7$ kg $505$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi $3$ kg $2$ g ra gam: $3002$ g, rồi nhân $5$ và chia $2$ lần lượt từ trái sang phải. Cuối cùng đổi gam ra ki-lô-gam và gam.\n\nChú ý: $3$ kg $2$ g là $3002$ g (không phải $302$ g), vì $2$ g đứng ở hàng đơn vị.\n\n**Phần 2. Trình bày**\n\n$3$ kg $2$ g $=3002$ g\n\n$3$ kg $2$ g $\\times 5:2=3002$ g $\\times 5:2$\n\n$=15010$ g $:2$\n\n$=7505$ g\n\n$=7$ kg $505$ g\n\nĐáp số: $7$ kg $505$ g",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 II.2",
+  "gop_y": false,
+  "dap_an": "$128$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cắt chiều dài đi $4$ cm thì phần bị cắt là hình chữ nhật có chiều dài $4$ cm và chiều rộng bằng chiều rộng tờ giấy. Diện tích phần cắt là $32$ $cm^2$ nên chiều rộng = $32:4$. Có nửa chu vi thì tìm được chiều dài.\n\nChú ý: thử lại: $\\left(16-4\\right)\\times 8=96$ ($cm^2$), diện tích giảm $128-96=32$ ($cm^2$) đúng với đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi tờ giấy là: $48:2=24$ (cm)\n\nPhần bị cắt đi là hình chữ nhật có chiều dài $4$ cm và diện tích $32$ $cm^2$ nên chiều rộng tờ giấy là: $32:4=8$ (cm)\n\nChiều dài tờ giấy là: $24-8=16$ (cm)\n\nDiện tích ban đầu của tờ giấy là: $16\\times 8=128$ ($cm^2$)\n\nĐáp số: $128$ $cm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PCT 7 II.3",
+  "gop_y": false,
+  "dap_an": "Bể thứ nhất: $3450$ lít; bể thứ hai: $3600$ lít; bể thứ ba: $3580$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cộng ba điều kiện lại với nhau thì mỗi bể được tính **hai lần**, nên tổng ba số bằng hai lần số nước của cả ba bể. Chia $2$ được số nước của cả ba bể. Muốn biết một bể thì lấy tổng cả ba bể trừ đi số nước của **hai bể còn lại**.\n\nChú ý: bể thứ ba = tổng cả ba bể trừ (bể thứ nhất + bể thứ hai) $=10630-7050$; làm tương tự cho hai bể kia. Thử lại: $3450+3600=7050$, $3600+3580=7180$, $3580+3450=7030$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai lần số lít nước của cả ba bể là: $7050+7180+7030=21260$ (lít)\n\nCả ba bể chứa số lít nước là: $21260:2=10630$ (lít)\n\nBể thứ ba chứa số lít nước là: $10630-7050=3580$ (lít)\n\nBể thứ nhất chứa số lít nước là: $10630-7180=3450$ (lít)\n\nBể thứ hai chứa số lít nước là: $10630-7030=3600$ (lít)\n\nĐáp số: Bể thứ nhất: $3450$ lít; bể thứ hai: $3600$ lít; bể thứ ba: $3580$ lít",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

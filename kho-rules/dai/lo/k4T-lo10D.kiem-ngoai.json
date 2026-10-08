@@ -1,0 +1,34 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-lo10D-20261008",
+ "cau": {
+  "PCT 22 II.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Ngọc 1 phần − 4 ngôi sao · Hà và Linh 2 phần + 4 ngôi sao · phần = 38, đúng tỉ lệ"
+  },
+  "PCT 23 I.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Cây táo 1 phần + 2 cây · Cam và bưởi 2 phần − 2 cây · phần = 36, đúng tỉ lệ"
+  },
+  "PCT 25 I.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tử số 1 phần · Mẫu số 1 phần + 500 · ngoặc tổng 750 · phần = 125, đúng tỉ lệ"
+  },
+  "PCT 25 II.2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Tử số 1 phần · Mẫu số 1 phần + 7 · ngoặc tổng 27 · phần = 10, đúng tỉ lệ"
+  },
+  "PCT 28 I.7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Trung bình cộng 1 phần · Ngọc 1 phần − 2 tấm · My và Lan 2 phần + 2 tấm · phần = 14, đúng tỉ lệ"
+  },
+  "PCT 28 I.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Xe thứ nhất 8 phần · Xe thứ hai 6 phần · hiệu 400 kg · phần = 200, đúng tỉ lệ"
+  },
+  "PCT 28 I.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: Mẫu số 1 phần · Tử số 1 phần + 5 · ngoặc tổng 17 · phần = 6, đúng tỉ lệ"
+  }
+ }
+}
