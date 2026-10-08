@@ -61,7 +61,7 @@ import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
 import KhaoSatScreen from './khaosat/KhaoSatScreen'
 import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
-import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
+import HieuSuatTAScreen from './dashboard/HieuSuatTAScreen' // thay ChatLuongVanHanhScreen (outdate, CEO 08/10)
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import XemAppScreen from './dashboard/XemAppScreen'
 import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
@@ -658,7 +658,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
       : staffLeaf === 'gay' ? <GayScreen />
       : staffLeaf === 'thuchi' ? <ThuChiScreen />
-      : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
+      : staffLeaf === 'db_chatluong' ? <HieuSuatTAScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
       : staffLeaf === 'db_xemapp' ? <XemAppScreen />
       : staffLeaf === 'db_thongbao' ? <ThongBaoPhScreen />
