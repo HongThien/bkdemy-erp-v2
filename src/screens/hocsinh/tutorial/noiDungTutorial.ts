@@ -35,7 +35,7 @@ export const MO_DAU = [
 export const MO_DAU_LOC: BuocTutorial[] = [
   { noi: 'Chào em! Mình là Lộc, tinh linh dẫn đường của BK Academy.', loc: 'greeting' },
   { noi: 'Mình sẽ dẫn em đi {n} chặng ngắn để biết app có gì, mỗi chặng chưa tới 1 phút.', loc: 'open_book' },
-  { noi: 'App mở dần từng phần cho em đỡ ngợp. Có phần mới, mình sẽ ghé kể cho em nghe.', loc: 'explaining' },
+  { noi: 'Còn nhiều thứ khác trong app, mình sẽ kể dần cho em đỡ ngợp. Có phần mới mở ra, mình cũng sẽ ghé báo.', loc: 'explaining' },
   { noi: 'Chạm vào màn hình để nghe tiếp nhé.', loc: 'winking' },
 ]
 export const KET_THUC_LOC = {
@@ -224,14 +224,17 @@ export const THU_NGAY: Partial<Record<IdChuong, { dich: DichThu; nut: string }>>
   tro_choi: { dich: 'tro_choi', nut: 'Thử ngay: vào Trò chơi' }, dau_chinh_phuc: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' },
 }
 
-/** Các chặng của hành trình theo công tắc tính năng: `mo(ma)` = tính năng ma đang MỞ cho em. Đánh số lại "Chặng N:"; thay {sr1}/{sr2} theo việc Chinh phục BK / Giải Vô địch BK đã mở chưa. */
-export function chuongMo(mo: (ma: string) => boolean): ChuongTutorial[] {
+/** 5 CHẶNG LÕI cho LẦN ĐẦU (Thùy 08/10: 12 chặng một lúc hơi dài): Học tập · Luyện dạng yếu · Chuỗi · Nhiệm vụ · Thành tựu. Các chặng còn lại Lộc "kể dần" qua lời mời ở góc màn chính. */
+export const CHUONG_LOI: readonly IdChuong[] = ['hoc_tap', 'tu_luyen', 'chuoi', 'nhiem_vu', 'huy_hieu']
+
+/** Các chặng của hành trình theo công tắc tính năng (`chiId`: chỉ các chặng này, đánh số lại trong tập đó): `mo(ma)` = tính năng ma đang MỞ cho em. Đánh số lại "Chặng N:"; thay {sr1}/{sr2} theo việc Chinh phục BK / Giải Vô địch BK đã mở chưa. */
+export function chuongMo(mo: (ma: string) => boolean, chiId?: readonly string[]): ChuongTutorial[] {
   const sapRa = !mo('chinh_phuc') || !mo('giai_vo_dich')
   const sr1 = sapRa ? ' Hai ô Chinh phục BK và Giải Vô địch BK đang mờ vì sắp ra mắt.' : ''
   const sr2 = sapRa
     ? 'Đấu trường BK mở rồi, em vào thi đấu được ngay. Chinh phục BK (leo tháp) và Giải Vô địch BK sắp ra mắt, em cứ chờ nhé.'
     : 'Đấu trường BK để thi đấu. Chinh phục BK là leo tháp, mỗi tháp có bảng xếp hạng riêng. Giải Vô địch BK có đăng ký và nhánh đấu.'
-  return CHUONG_TAT_CA.filter((c) => { const m = TINH_NANG_CHUONG[c.id]; return !m || mo(m) }).map((c, i) => ({
+  return CHUONG_TAT_CA.filter((c) => { const m = TINH_NANG_CHUONG[c.id]; return (!m || mo(m)) && (!chiId || chiId.includes(c.id)) }).map((c, i) => ({
     ...c, buoc: c.buoc.map((b, j) => {
       const noi = b.noi.replace('{sr1}', sr1).replace('{sr2}', sr2)
       return { ...b, noi: j === 0 ? noi.replace(/^Chặng [^:]*:/, `Chặng ${i + 1}:`) : noi }

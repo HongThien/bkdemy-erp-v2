@@ -6,7 +6,7 @@
 //   nói ⇒ talking, nói xong ⇒ đứng idle. Style không có ⇒ nhân vật tĩnh của style như cũ.
 // CHẶNG THEO CÔNG TẮC TÍNH NĂNG (07/10): prop `mo(ma)` = tính năng đang MỞ cho em (fn_hs_tinh_nang_mo) ⇒ chỉ dẫn qua tính năng đang có (chuongMo). Không truyền ⇒ bản mặc định.
 // `chuong` (id chặng) = chế độ MỘT CHẶNG (từ nút "Xem hướng dẫn tương tác" trong Hướng dẫn chơi). `danhSach` = chỉ các chặng này (chế độ "có phần mới": chặng em chưa xem).
-// Tiến độ: `onXongChuong(id)` gọi khi em xem hết chặng (app ghi DB theo tài khoản). `onThu(dich)` = nút "Thử ngay". Demo: hs.html?xem=tutorial (&chang=N · &dot=1 giả lập đợt 1).
+// Tiến độ: `onXongChuong(id)` gọi khi em xem hết chặng (app ghi DB theo tài khoản). `onThu(dich)` = nút "Thử ngay". Demo: hs.html?xem=tutorial (&chang=N · &dot=1 giả lập đợt 1 · &loi=1 chỉ 5 chặng lõi lần đầu).
 // Nội dung ở noiDungTutorial.ts · màn mô phỏng ở MoPhongTutorial.tsx. Màu/hình CHỈ từ skin (design/STYLE-HS.md).
 // ============================================================================
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
@@ -15,7 +15,7 @@ import { laySkin } from '../skin/registry'
 import { GOC } from '../gami/hinh'
 import MoPhongTutorial from './MoPhongTutorial'
 import { LocHS } from './LocHS'
-import { CHUONG, MO_DAU, MO_DAU_LOC, KET_THUC, KET_THUC_LOC, NGUOI_DAN, NGUOI_DAN_LOC, THU_NGAY, chuongMo, type ChuongTutorial, type DichThu } from './noiDungTutorial'
+import { CHUONG, CHUONG_LOI, MO_DAU, MO_DAU_LOC, KET_THUC, KET_THUC_LOC, NGUOI_DAN, NGUOI_DAN_LOC, THU_NGAY, chuongMo, type ChuongTutorial, type DichThu } from './noiDungTutorial'
 
 type Pha = 'mo_dau' | 'ban_do' | 'chuong' | 'mo_khoa' | 'ket_thuc'
 
@@ -165,8 +165,8 @@ export default function TutorialHS({ onXong, chuong, mo, danhSach, onXongChuong,
   const q = useMemo(() => new URLSearchParams(location.search), [])
   const dot1 = !!q.get('dot')
   const ds = useMemo(
-    () => danhSach ?? (mo ? chuongMo(mo) : dot1 ? chuongMo((ma) => ['hoc_tap', 'nhiem_vu', 'chuoi', 'thanh_tuu', 'vi_xu', 'xep_hang', 'tro_choi'].includes(ma)) : CHUONG),
-    [danhSach, mo, dot1])
+    () => danhSach ?? (mo ? chuongMo(mo) : dot1 ? chuongMo((ma) => ['hoc_tap', 'nhiem_vu', 'chuoi', 'thanh_tuu', 'vi_xu', 'xep_hang', 'tro_choi'].includes(ma), q.get('loi') ? CHUONG_LOI : undefined) : CHUONG),
+    [danhSach, mo, dot1, q])
   const sk = laySkin(null)
   const loc = !!sk.nguoiDan
   const ten = loc ? NGUOI_DAN_LOC : NGUOI_DAN

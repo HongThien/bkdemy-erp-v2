@@ -79,7 +79,7 @@ import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
 import { LocMoi } from './tutorial/LocMoi'
-import { chuongMo, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
+import { chuongMo, CHUONG_LOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
 import { tutorialDaXem, tutorialGhi } from '../../lib/tutorial_hs'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
@@ -484,12 +484,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // mời kể đúng phần mới. `tutXong` undefined = chưa tải/lỗi ⇒ không tự mở, không nhắc (hỏng thì im, không chặn app).
   const [tutXong, setTutXong] = useState<Set<string> | undefined>(undefined)
   const [tutDs, setTutDs] = useState<string[] | null>(null) // null = cả hành trình theo công tắc · mảng = chỉ các chặng này
+  const tutLanDau = useRef(false) // đang chạy lượt TỰ MỞ lần đầu (5 chặng lõi) ⇒ Bỏ qua = bỏ qua luôn mọi chặng đang mở (không nhắc từng cái)
   const daTuMoTut = useRef(false)
   useEffect(() => { if (direct === null) tutorialDaXem().then(setTutXong).catch(() => {}) }, [direct])
   const chuongMoi = tn === undefined || tutXong === undefined ? [] : chuongMo(moTN).filter((c) => !tutXong.has(c.id))
   useEffect(() => {
     if (direct !== null || daTuMoTut.current || !tutXong || tn === undefined) return
-    if (tutXong.size === 0 && chuongMo(moTN).length > 0) { daTuMoTut.current = true; setTutDs(null); setDirect('tutorial') }
+    if (tutXong.size === 0 && chuongMo(moTN, CHUONG_LOI).length > 0) { daTuMoTut.current = true; tutLanDau.current = true; setTutDs([...CHUONG_LOI]); setDirect('tutorial') }
   }) // eslint-disable-line react-hooks/exhaustive-deps
   const thuNgay = (d: DichThu) => {
     setTuHome(d !== 'hoc_tap' && d !== 'luyen_yeu') // màn lẻ mở từ tutorial ⇒ "Quay lại" về màn chính
@@ -637,11 +638,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'tro_choi') return <TroChoiHS onBack={() => setDirect(null)} onChoi={(id) => { if (id === 'nong_trai') setDirect('nong_trai') }} />
   // HƯỚNG DẪN CHƠI (Thùy 03/10): gallery giải thích mọi chức năng — vào từ Thư viện BK.
   if (direct === 'tutorial') {
-    const dsT = tutDs ? chuongMo(moTN).filter((c) => tutDs.includes(c.id)) : undefined
+    const dsT = tutDs ? chuongMo(moTN, tutDs) : undefined
     return <TutorialHS mo={moTN} danhSach={dsT && dsT.length ? dsT : undefined}
       onXongChuong={(id) => { void tutorialGhi([id], 'xem').catch(() => {}); setTutXong((s) => new Set([...(s ?? []), id])) }}
-      onBoQua={(ids) => { void tutorialGhi(ids, 'bo_qua').catch(() => {}); setTutXong((s) => new Set([...(s ?? []), ...ids])) }}
-      onThu={thuNgay} onXong={() => setDirect(null)} />
+      onBoQua={(ids0) => { const ids = tutLanDau.current ? chuongMo(moTN).map((c) => c.id) : ids0; void tutorialGhi(ids, 'bo_qua').catch(() => {}); setTutXong((s) => new Set([...(s ?? []), ...ids])) }}
+      onThu={thuNgay} onXong={() => { tutLanDau.current = false; setDirect(null) }} />
   }
   if (direct === 'huong_dan') return tutChuong !== undefined
     ? <TutorialHS chuong={tutChuong} onXong={() => setTutChuong(undefined)} />
@@ -776,7 +777,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = moTN('nhiem_vu') && (maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay))
   const moiQuay = <><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
-    {tutXong && tutXong.size > 0 && <LocMoi n={chuongMoi.length} ten={NGUOI_DAN_LOC} onMo={() => { setTutDs(chuongMoi.map((c) => c.id)); setDirect('tutorial') }} />}</>
+    {tutXong && tutXong.size > 0 && <LocMoi n={chuongMoi.length} ten={NGUOI_DAN_LOC} onMo={() => { tutLanDau.current = false; setTutDs(chuongMoi.map((c) => c.id)); setDirect('tutorial') }} />}</>
   if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>
@@ -860,7 +861,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
       onGopY={() => { setTuHoSo(false); setDirect('gop_y') }} gopYMoi={gopYMoi}
-      onTutorial={() => { setTutDs(null); setDirect('tutorial') }}
+      onTutorial={() => { tutLanDau.current = false; setTutDs(null); setDirect('tutorial') }}
       chuoi={moTN('chuoi') ? chuoi : null} onLuyenChuoi={() => setDirect('tu_luyen_chon')}
       theGioi={tgHome} onTheGioi={moTN('the_gioi') ? () => setDirect('the_gioi') : undefined}
       rank={moTN('rank') && rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTN('rank') ? moTuHome('rank') : undefined} /></>
