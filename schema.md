@@ -1381,7 +1381,7 @@
 | diem_thi_lai_co_ban | numeric | Y |  |  |  |
 | diem_thi_lai_nang_cao | numeric | Y |  |  |  |
 | full_thi_lai | boolean |  | false |  |  |
-| nguon | text |  | 'cau'::text |  | `tay` · `cau` |
+| nguon | text |  | 'tay'::text |  | `tay` · `cau` |
 
 ## dtv_cau_log
 
