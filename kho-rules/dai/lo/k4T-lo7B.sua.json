@@ -1,0 +1,46 @@
+{
+ "VD 10.1a": {
+  "bo": "VÍ DỤ sách in sẵn đáp án ngay trong đề (\"số chia hết cho 2 là: …\") — không phải câu hỏi"
+ },
+ "VD 10.1b": {
+  "bo": "như VD 10.1a"
+ },
+ "VD 10.1c": {
+  "bo": "như VD 10.1a"
+ },
+ "VD 10.1d": {
+  "bo": "như VD 10.1a"
+ },
+ "VD 10.2a": {
+  "bo": "VÍ DỤ sách in sẵn đáp án ngay trong đề — không phải câu hỏi"
+ },
+ "VD 10.2b": {
+  "bo": "như VD 10.2a"
+ },
+ "VD 10.2c": {
+  "bo": "như VD 10.2a"
+ },
+ "LT 11.19": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau khi bán một rổ cam, số chanh gấp $4$ lần số cam, nên nếu số cam còn lại là $1$ phần thì số chanh là $4$ phần như thế, tổng số quả còn lại là $5$ phần bằng nhau, tức là **chia hết cho $5$**. Biết tổng cả $5$ rổ, ta tìm rổ cam bị bán nhờ dấu hiệu chia hết cho $5$.\n\nChú ý: tổng cả $5$ rổ là $635$ chia hết cho $5$, mà số quả còn lại cũng chia hết cho $5$ nên rổ đã bán cũng phải chia hết cho $5$; trong các rổ chỉ có rổ $115$ quả có tận cùng là $5$. Kiểm tra lại: ba rổ chanh $132+136+148=416$ và một rổ cam còn lại $104$, đúng $416=104\\times 4$.\n\n**Phần 2. Trình bày**\n\nTổng số quả trong $5$ rổ là: $104+115+132+136+148=635$ (quả)\n\nSau khi bán một rổ cam, nếu số cam còn lại là $1$ phần thì số chanh là $4$ phần như thế.\n\nTổng số quả còn lại là $1+4=5$ (phần) nên số quả còn lại chia hết cho $5$.\n\nVì $635$ chia hết cho $5$ nên số quả của rổ cam đã bán cũng chia hết cho $5$.\n\nTrong $5$ rổ chỉ có rổ $115$ quả có chữ số tận cùng là $5$, nên rổ cam đã bán có $115$ quả.\n\nSố quả cam và chanh còn lại là: $635-115=520$ (quả)\n\nTa có sơ đồ:\n\n(Số cam còn lại 1 phần; Số chanh 4 phần; tổng 520 quả)\n\nSố quả cam còn lại là: $520:5=104$ (quả)\n\nSố quả chanh là: $520-104=416$ (quả)\n\nSố quả cam lúc đầu là: $104+115=219$ (quả)\n\nThử lại: $416:104=4$ ; ba rổ chanh là $132+136+148=416$ (quả).\n\nĐáp số: cam $219$ quả ; chanh $416$ quả",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 104,
+   "hang": [
+    {
+     "nhan": "Số cam còn lại",
+     "phan": 1
+    },
+    {
+     "nhan": "Số chanh",
+     "phan": 4
+    }
+   ],
+   "tong": "520 quả",
+   "dau_hoi": [
+    "Số cam còn lại",
+    "Số chanh"
+   ]
+  },
+  "_ly_do": "bài có tỉ số (chanh gấp 4 lần cam) ⇒ luật §1.5 bắt có sơ đồ; bản soạn thiếu vì đề giao lô ghi so_do null",
+  "bo": "giữ lại: lời giải Sonnet soạn + sơ đồ Opus thêm ⇒ không có model nào vừa khác người soạn vừa khác người vẽ để ký kiem-hinh-b (cổng chặn đúng). Ghi lại khi có người duyệt hình."
+ }
+}

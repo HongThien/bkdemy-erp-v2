@@ -50,7 +50,7 @@ const lo = JSON.parse(readFileSync(loTep, 'utf8'))
 const ngoai = ngoaiTep ? JSON.parse(readFileSync(ngoaiTep, 'utf8')) : null   // { model, lan_chay, cau: { "<ma>": { dang, ly_do, hinh_dung?, hinh_ghi? } } }
 
 // ── chuẩn hoá để so đề với sách (chỉ định dạng — chữ và số phải giữ nguyên) ─────────────
-const chuanDe = (s) => String(s).normalize('NFC')
+const chuanDe = (s) => String(s).normalize('NFC').replace(/\\ /g, '')   // dấu cách LaTeX "\ " (sách gõ \overline{17a8\ b}) — chỉ định dạng
   .replace(/\\d?frac/g, '\\frac').replace(/\\text\{\s*([^}]*)\}/g, '$1').replace(/\\left|\\right/g, '')
   .replace(/\$|\s+|…|\.{3,}|\{|\}/g, '').toLowerCase()
 function kiemDoc(c) {
@@ -122,7 +122,18 @@ try {
   await db.query('begin')
   const { rows: co } = await db.query(`select ten_de_goc, ma_cau from dai_cau_hoi where xoa_at is null and ten_de_goc like $1`, [`${SACH} · %`])
   const coMap = new Map(co.map((r) => [r.ten_de_goc, r.ma_cau]))
-  const moi = giu.filter(({ c }) => { const k = `${SACH} · ${c.ma_nguon}`; if (coMap.has(k)) { daCo.push(`${c.ma_nguon} (${coMap.get(k)})`); return false } return true })
+  // GẦN TRÙNG câu kho nguồn khác cùng khối (cùng bài, khác cách gõ: "5 và 9" ↔ "$5$ và $9$", "17a8\ b" ↔ "17a8b") — insertCauBatch chỉ bắt
+  // trùng nguyên văn nên lọt (đo 08/10: 8 câu CĐ10 lọt/sắp lọt). So bằng khoá chuanDe (bỏ $, ngoặc, khoảng trắng, \text…) ⇒ không chèn, liệt kê.
+  const tienTo = [...new Set(giu.map(({ c }) => maDangCho('dai', c.khoi).slice(0, 4)))]
+  const { rows: khoKhac } = await db.query(`select ma_cau, noi_dung from dai_cau_hoi where xoa_at is null and lua_chon is null and menh_de is null
+     and left(dang_chinh, 4) = any($1::text[]) and coalesce(ten_de_goc, '') not like $2`, [tienTo, `${SACH} · %`])
+  const ganTrung = new Map(khoKhac.map((r) => [chuanDe(r.noi_dung), r.ma_cau]))
+  const moi = giu.filter(({ c }) => {
+    const k = `${SACH} · ${c.ma_nguon}`
+    if (coMap.has(k)) { daCo.push(`${c.ma_nguon} (${coMap.get(k)})`); return false }
+    const g = ganTrung.get(chuanDe(c.noi_dung)); if (g) { trungKho.push(`${c.ma_nguon} ≈ ${g}`); return false }
+    return true
+  })
   if (moi.length) {
     const cauList = moi.map(({ c, cau }) => ({ ...cau, khoi: c.khoi, nguon: 'le', giai_method: 'claude_code', ai_model: MODEL_LAM, ten_de_goc: `${SACH} · ${c.ma_nguon}` }))
     const { maCauList, trung } = await insertCauBatch({ client: db, subject: 'dai', cauList })

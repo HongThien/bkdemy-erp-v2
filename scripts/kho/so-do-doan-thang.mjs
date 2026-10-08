@@ -26,6 +26,22 @@ const soDau = (s) => { const k = String(s ?? '').replace(/\s/g, '').match(/^\d+/
 const r1 = (x) => Math.round(x * 10) / 10
 
 export function veSoDo(m) {
+  // BÀI CẦN NHIỀU SƠ ĐỒ (vd tổng–hiệu hai tầng: bà ↔ (mẹ+con), rồi mẹ ↔ con) ⇒ mô tả là MẢNG: vẽ từng cái (mỗi cái tự kiểm
+  // số liệu như thường), xếp chồng từ trên xuống thành MỘT ảnh — đúng thứ tự các dòng "Ta có sơ đồ:" trong lời giải.
+  if (Array.isArray(m)) {
+    if (!m.length) throw new Error('mảng sơ đồ rỗng')
+    const tung = m.map((x, i) => { try { return veSoDo(x) } catch (e) { throw new Error(`sơ đồ thứ ${i + 1}: ${e.message}`) } })
+    let y = 0, W = 0
+    const khoi = tung.map((s) => {
+      const w = Number(s.match(/width="([\d.]+)"/)[1]), h = Number(s.match(/height="([\d.]+)"/)[1])
+      const than = s.replace(/^<svg[^>]*>\n?/, '').replace(/<\/svg>\s*$/, '')
+      const g = `<g transform="translate(0,${y})">\n${than}\n</g>`
+      y += h + 12; W = Math.max(W, w); return g
+    })
+    const H = y - 12
+    return [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="Arial, Helvetica, sans-serif" font-size="14">`,
+      `<rect width="${W}" height="${H}" fill="#fff"/>`, ...khoi, '</svg>'].join('\n')
+  }
   const H = 44, TOP = m.tieu_de ? 34 : 14, TICK = 7
   const hang = (m.hang || []).map((h) => ({ ...h }))   // bản sao: hàm vẽ ghi _end/_y vào hàng — KHÔNG được làm bẩn mô tả của người gọi
   if (!hang.length) throw new Error('hang rỗng')
@@ -58,7 +74,8 @@ export function veSoDo(m) {
   const U = MAXW / maxGt, PHAN = gtp * U
   // lề trái nới theo nhãn dài nhất (≈7,6 px/ký tự cỡ 14) để nhãn như "Trung bình cộng:" không bị cắt
   const LEFT = Math.max(110, Math.ceil(Math.max(...hang.map((h) => String(h.nhan).length + 1)) * 7.6) + 20)
-  const W = Math.ceil(LEFT + MAXW + (m.tong ? 70 : 24) + 10)
+  // lề phải: ngoặc tổng (14 + 22 px) + chữ nhãn tổng (≈ 8 px/ký tự cỡ 14) — trước để cố định 70 px ⇒ "41 tuổi", "520 quả" bị cắt mép
+  const W = Math.ceil(LEFT + MAXW + (m.tong ? 36 + String(m.tong).length * 8.5 : 24) + 10)
   const Hh = TOP + hang.length * H + 10 + (m.hieu ? 38 : 0)
   const out = []
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${Hh}" width="${W}" height="${Hh}" font-family="Arial, Helvetica, sans-serif" font-size="14">`)

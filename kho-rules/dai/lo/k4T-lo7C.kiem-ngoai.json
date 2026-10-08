@@ -1,0 +1,42 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-lo7C-20261008",
+ "cau": {
+  "VD 13.4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "VD 13.5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "VD 13.6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "LT 13.13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "LT 13.14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "LT 13.15": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "LT 13.16": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "LT 13.18": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  },
+  "LT 13.20": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus xem ảnh: TBC 1 đoạn, đoạn thêm/thiếu đúng chiều và số, đúng tỉ lệ"
+  }
+ }
+}

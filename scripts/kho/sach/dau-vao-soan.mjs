@@ -27,10 +27,12 @@ const db = new pg.Client({ connectionString: env.DATABASE_URL, ssl: { rejectUnau
 await db.connect()
 const { rows } = await db.query(`select ten_de_goc from dai_cau_hoi where xoa_at is null and ten_de_goc like $1`, [`${SACH} · %`])
 // câu kho từ NGUỒN KHÁC (câu của chính sách này đã nằm trong `da`, không tính là trùng)
-const { rows: kho } = await db.query(String.raw`select distinct regexp_replace(lower(noi_dung), '\s+', '', 'g') k from dai_cau_hoi
+const { rows: kho } = await db.query(`select noi_dung from dai_cau_hoi
   where xoa_at is null and lua_chon is null and menh_de is null and coalesce(ten_de_goc, '') not like $1`, [`${SACH} · %`])
-const trungKho = new Set(kho.map((r) => r.k))
-const khoa = (de) => chuanDinhDang(de).toLowerCase().replace(/\s+/g, '')
+// khoá so: CÙNG cách với ghi-lo.mjs chuanDe (bỏ $, ngoặc nhọn, \ , \text, \left/\right, khoảng trắng) ⇒ bắt cả gần trùng khác cách gõ
+const khoa = (de) => String(de).normalize('NFC').replace(/\\ /g, '').replace(/\\d?frac/g, '\\frac').replace(/\\text\{\s*([^}]*)\}/g, '$1')
+  .replace(/\\left|\\right/g, '').replace(/\$|\s+|…|\.{3,}|\{|\}/g, '').toLowerCase()
+const trungKho = new Set(kho.map((r) => khoa(r.noi_dung)))
 await db.end()
 const da = new Set(rows.map((r) => r.ten_de_goc.slice(SACH.length + 3)))
 

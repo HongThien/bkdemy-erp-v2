@@ -40,6 +40,7 @@ export function maTuTieuDe(t, cha) {
 }
 
 export const chuanDinhDang = (s) => s
+  .replace(/\\overline\{([^}]*)\}/g, (_, x) => `\\overline{${x.replace(/\\ /g, '')}}`)   // sách gõ \overline{17a8\ b} — dấu cách thừa làm lọc trùng trượt
   .replace(/\\frac\b/g, '\\dfrac').replace(/\\text\{\s*([a-zA-Z])\s*\}/g, '$1').replace(/\\overline\{\\text\{([^}]*)\}\}/g, '\\overline{$1}')
   .replace(/\\left\(\s+/g, '\\left(').replace(/\s+\\right\)/g, '\\right)').replace(/\\left\( /g, '\\left(').replace(/[ \t]{2,}/g, ' ')
 

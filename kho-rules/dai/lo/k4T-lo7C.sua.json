@@ -1,0 +1,7 @@
+{
+ "LT 12.12": {
+  "dap_an": "$40$; $41$; $42$; $43$; $44$; $45$; $46$; $47$; $48$; $49$ (có $10$ số)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết thêm chữ số $2$ vào **giữa** hai chữ số của $\\overline{ab}$ thì được $\\overline{a2b}$. So hai số: chữ số $a$ từ hàng chục lên hàng trăm (từ $a\\times 10$ thành $a\\times 100$, tăng thêm $a\\times 90$), thêm chữ số $2$ ở hàng chục (thêm $20$), chữ số $b$ giữ nguyên hàng đơn vị. Vậy số mới hơn số cũ là $a\\times 90+20$.\n\nCó $a\\times 90+20=380$ nên tìm được $a$. Chữ số $b$ không bị điều kiện nào ràng buộc nên $b$ nhận **mọi giá trị** từ $0$ đến $9$, từ đó đếm số các số.\n\nChú ý: đề hỏi \"có bao nhiêu số\", đừng dừng ở một số.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{ab}$ ($a$ khác $0$; $a,b<10$). Số mới là $\\overline{a2b}$.\n\nTa có: $\\overline{a2b}=\\overline{ab}+380$\n\n$a\\times 100+20+b=a\\times 10+b+380$\n\n$a\\times 90+20=380$ (Bớt cả hai vế đi $a\\times 10$ và $b$)\n\n$\\begin{array}{l} a\\times 90=380-20 \\\\ a\\times 90=360 \\\\ a=360:90 \\\\ a=4 \\end{array}$\n\nChữ số $b$ có thể là $0$; $1$; $2$; $3$; $4$; $5$; $6$; $7$; $8$; $9$.\n\nCác số cần tìm là: $40$; $41$; $42$; $43$; $44$; $45$; $46$; $47$; $48$; $49$.\n\nCó $10$ số như vậy.\n\nĐáp số: $40$; $41$; $42$; $43$; $44$; $45$; $46$; $47$; $48$; $49$ (có $10$ số)",
+  "_ly_do": "đề hỏi TÌM số + có bao nhiêu số ⇒ đáp số phải liệt kê các số, không chỉ \"10 số\""
+ }
+}

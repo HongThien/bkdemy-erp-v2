@@ -1,0 +1,47 @@
+{
+ "LT 8.18": {
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Trường hợp 1: hai số cùng chẵn",
+    "gia_tri_phan": 1002,
+    "hang": [
+     {
+      "nhan": "Số bé",
+      "phan": 1
+     },
+     {
+      "nhan": "Số lớn",
+      "phan": 1,
+      "them": "18"
+     }
+    ],
+    "tong": "2022",
+    "dau_hoi": [
+     "Số bé",
+     "Số lớn"
+    ]
+   },
+   {
+    "tieu_de": "Trường hợp 2: hai số cùng lẻ",
+    "gia_tri_phan": 1003,
+    "hang": [
+     {
+      "nhan": "Số bé",
+      "phan": 1
+     },
+     {
+      "nhan": "Số lớn",
+      "phan": 1,
+      "them": "16"
+     }
+    ],
+    "tong": "2022",
+    "dau_hoi": [
+     "Số bé",
+     "Số lớn"
+    ]
+   }
+  ],
+  "_ly_do": "thêm tiêu đề trường hợp cho 2 sơ đồ xếp chồng (đọc hình phải biết sơ đồ nào ứng trường hợp nào)"
+ }
+}

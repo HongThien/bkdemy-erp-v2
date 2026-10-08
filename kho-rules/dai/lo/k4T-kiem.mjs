@@ -84,7 +84,148 @@ const dienChuSo = (khuon, phep) => {
   dq(0, {}); return kq
 }
 
+/** mọi cặp (bé, lớn) có tổng S thoả điều kiện f — vét cạn */
+const capTong = (S, f) => { const r = []; for (let a = 0; 2 * a <= S; a++) if (f(a, S - a)) r.push([a, S - a]); return r }
+
+/** số có hai chữ số ab (a ≥ 1) thoả f(a, b, n) — vét cạn */
+const hai = (f) => tim(10, 99, (n) => f(Math.floor(n / 10), n % 10, n))
+/** đáp án dạng "a=8; b=6": mỗi chữ cái ứng một chữ số của nghiệm */
+const chuCai = (ten, n) => [...String(n)].map((d, i) => `${ten[i]}=${d}`)
+const tbc = (...a) => a.reduce((x, y) => x + y, 0) / a.length
+
+/** điền chữ số vào khuôn ("83a", "*415*", "2a3b"): mọi số thoả f; chữ số đầu khác 0; mỗi * / chữ cái là một chữ số riêng */
+const dien = (khuon, f) => { const r = []; const dq = (i, s) => { if (i === khuon.length) { if (s[0] !== '0' && f(Number(s))) r.push(Number(s)); return } if (/\d/.test(khuon[i])) dq(i + 1, s + khuon[i]); else for (let d = 0; d <= 9; d++) dq(i + 1, s + d) }; dq(0, ''); return r }
+/** như dien nhưng trả "a=6", "b=0"… cho từng chữ cái của mọi nghiệm (đáp án viết theo chữ cái) */
+const dienChu = (khuon, f) => dien(khuon, f).flatMap((n) => [...khuon].map((c, i) => (/\d/.test(c) ? null : `${c === 'x' ? '*' : c}=${String(n)[i]}`)).filter(Boolean))
+const lap3 = (cs) => tim(100, 999, (n) => khacNhau(n) && chuSo(n).every((c) => cs.includes(c)))
+const ds7B = { 'LT 10.1': [3745, 8698, 3946, 2970, 3565, 4870], 'LT 10.2': [1725, 3648, 5790, 5687, 3240], 'LT 10.3': [123, 1890, 2010, 3945, 5768, 12846] }
+const loc = (k, f) => ds7B[k].filter(f).map(String)
+
 export const KIEM = {
+  // ── lô 7B: CĐ 10, 11 — viết từ đề ──
+  'VD 10.3': () => dien('43ab', (n) => n % 90 === 0).map(String),
+  'LT 10.1a': () => loc('LT 10.1', (n) => n % 2 === 0), 'LT 10.1b': () => loc('LT 10.1', (n) => n % 5 === 0), 'LT 10.1c': () => loc('LT 10.1', (n) => n % 10 === 0),
+  'LT 10.2a': () => loc('LT 10.2', (n) => n % 2 === 0 && n % 5), 'LT 10.2b': () => loc('LT 10.2', (n) => n % 5 === 0 && n % 2), 'LT 10.2c': () => loc('LT 10.2', (n) => n % 10 === 0), 'LT 10.2d': () => loc('LT 10.2', (n) => n % 2 && n % 5),
+  'LT 10.3a': () => loc('LT 10.3', (n) => n % 2 === 0), 'LT 10.3b': () => loc('LT 10.3', (n) => n % 5 === 0), 'LT 10.3c': () => loc('LT 10.3', (n) => n % 10 === 0),
+  'LT 10.3d': () => loc('LT 10.3', (n) => n % 3 === 0), 'LT 10.3e': () => loc('LT 10.3', (n) => n % 9 === 0), 'LT 10.3f': () => loc('LT 10.3', (n) => n % 30 === 0), 'LT 10.3g': () => loc('LT 10.3', (n) => n % 90 === 0),
+  'LT 10.4a': () => lap3([0, 1, 3, 5]).filter((n) => n % 2 === 0).map(String), 'LT 10.4b': () => lap3([0, 1, 3, 5]).filter((n) => n % 3 === 0).map(String), 'LT 10.4c': () => lap3([0, 1, 3, 5]).filter((n) => n % 5 === 0).map(String),
+  'LT 10.5a': () => lap3([0, 3, 6, 9]).filter((n) => n % 9 === 0).map(String), 'LT 10.5c': () => lap3([0, 3, 6, 9]).filter((n) => n % 90 === 0).map(String),
+  'LT 10.6a': () => dien('83a', (n) => n % 2 === 0).map(String), 'LT 10.6b': () => dien('83a', (n) => n % 4 === 0).map(String), 'LT 10.6c': () => dien('83a', (n) => n % 5 === 0).map(String),
+  'LT 10.6d': () => dien('83a', (n) => n % 10 === 0).map(String), 'LT 10.6e': () => dien('83a', (n) => n % 3 === 0).map(String), 'LT 10.6f': () => dien('83a', (n) => n % 9 === 0).map(String),
+  'LT 10.7a': () => dien('2a3b', (n) => n % 30 === 0).map(String), 'LT 10.7b': () => dien('2a3b', (n) => n % 90 === 0).map(String), 'LT 10.7c': () => dien('2a3b', (n) => n % 45 === 0).map(String),
+  'LT 10.8a': () => dien('85a44b', (n) => n % 30 === 0).map(String), 'LT 10.8b': () => dien('3a12b', (n) => n % 90 === 0).map(String),
+  'LT 10.8c': () => dien('17a8b', (n) => n % 45 === 0).map(String), 'LT 10.8d': () => dien('45a7b', (n) => n % 90 === 0).map(String),
+  'LT 10.9a': () => dien('p415q', (n) => n % 45 === 0).map(String), 'LT 10.9b': () => dien('p7452q', (n) => n % 45 === 0).map(String),
+  'LT 10.9c': () => dien('p9651q', (n) => n % 45 === 0).map(String), 'LT 10.9d': () => dien('p40522q', (n) => n % 45 === 0).map(String),
+  'LT 10.10': () => dienChu('2141x', (n) => n % 6 === 0),
+  'LT 10.11': () => dienChu('1a38b', (n) => n % 45 === 0),
+  'LT 10.13': () => dienChu('5a07b', (n) => n % 24 === 0),
+  'LT 10.15': () => { const m = String(21 * 22 * 23 * 24 * 25).match(/^637(\d)600$/); if (!m) throw new Error('10.15 khuôn'); return [`*=${m[1]}`] },
+  'LT 11.2a': () => dien('56a', (n) => n % 2).map(String), 'LT 11.2b': () => dien('56a', (n) => n % 5 === 0 && n % 2).map(String), 'LT 11.2c': () => dien('56a', (n) => n % 5 === 3).map(String),
+  'LT 11.2d': () => dien('56a', (n) => n % 2 === 0 && n % 5 === 4).map(String), 'LT 11.2e': () => dien('56a', (n) => n % 3 === 0 && n % 2).map(String), 'LT 11.2f': () => dien('56a', (n) => n % 3 === 0 && n % 9).map(String),
+  'LT 11.5': () => [String(tim(100, 999, (n) => n % 5 === 0).length)], 'LT 11.6': () => [String(tim(100, 999, (n) => n % 3 !== 0).length)],
+  'LT 11.7': () => [['vàng', 'xanh', 'đỏ', 'tím', 'hồng'][(253 - 1) % 5]],
+  'LT 11.8a': () => [['cam', 'xanh lá', 'trắng'][(100 - 1) % 3]],
+  'LT 11.8b': () => { const d = [0, 0, 0]; for (let i = 0; i < 160; i++) d[i % 3]++; return d.map(String) },
+  'LT 11.10a': () => { const w = 'ARCHIMEDESACADEMY', dem = (c) => [...w].filter((x) => x === c).length, cum = 60 / dem('H'); return [String(cum * dem('M')), String(cum * dem('A'))] },
+  'LT 11.10b': () => { const w = 'ARCHIMEDESACADEMY'; return [50 % [...w].filter((x) => x === 'E').length === 0 ? 'đúng' : 'sai'] },
+  'LT 11.11a': () => [String(tim(1, 1000, (n) => n % 30 === 0)[0])], 'LT 11.11b': () => [String(tim(2, 1000, (n) => n % 2 === 1 && n % 3 === 1 && n % 5 === 1)[0])],
+  'LT 11.11c': () => [String(tim(10, 99, (n) => n % 2 === 1 && n % 3 === 2 && n % 4 === 3 && n % 5 === 4)[0])],
+  'LT 11.13': () => dien('253x', (n) => n % 9 === 1).map(String),
+  'LT 11.14': () => dien('a798b', (n) => khacNhau(n) && n % 5 === 2 && n % 9 === 0).map(String),
+  'LT 11.15': () => [String(Math.max(...dien('567xyz', (n) => n % 2 === 1 && khacNhau(n) && n % 5 === 1 && n % 9 === 1)))],
+  'LT 11.16': () => tim(1000, 9999, (n) => n % 45 === 0 && String(n) === [...String(n)].reverse().join('')).map(String),
+  'LT 11.17': () => tim(1000, 9999, (n) => { const [a, b, c, d] = String(n); return n % 30 === 0 && b === d && a === c }).map(String),
+  'LT 11.18': () => [String(Math.max(...tim(1000, 9999, (n) => n % 3 === 2 && n % 4 === 3 && n % 5 === 4 && n % 7 === 6)))],
+  'LT 11.19': () => { const r = [104, 115, 132, 136, 148], kq = []
+    for (let m = 1; m < 32; m++) { const cam = r.filter((_, i) => m & (1 << i)), chanh = r.filter((_, i) => !(m & (1 << i)))
+      for (const ban of cam) { const conCam = cam.reduce((a, b) => a + b, 0) - ban, ch = chanh.reduce((a, b) => a + b, 0); if (conCam > 0 && ch === 4 * conCam) kq.push([cam.reduce((a, b) => a + b, 0), ch]) } }
+    return motNghiem(kq, '11.19').map(String) },
+
+  // ── lô 7C: CĐ 12, PTL 3, CĐ 13 — viết từ đề ──
+  'VD 12.1': () => [String(motNghiem(tim(1, 10000, (A) => A * 10 + 3 === A + 417), 'VD 12.1'))],
+  'VD 12.2': () => [String(motNghiem(hai((a, b, n) => 200 + n === 5 * n), 'VD 12.2'))],
+  'LT 12.1b': () => [String(motNghiem(tim(1, 10000, (A) => A * 10 + 8 - A === 2816), '12.1b'))],
+  'LT 12.2a': () => [String(motNghiem(tim(10, 100000, (N) => N % 10 === 2 && N - Math.floor(N / 10) === 929), '12.2a'))],
+  'LT 12.2b': () => [String(motNghiem(tim(10, 100000, (N) => N % 10 === 7 && N - Math.floor(N / 10) === 4075), '12.2b'))],
+  'LT 12.5': () => [String(motNghiem(tim(300, 399, (n) => n === 7 * (n - 300)), '12.5'))],
+  'LT 12.6': () => [String(motNghiem(tim(9000, 9999, (n) => n === 11 * (n - 9000)), '12.6'))],
+  'LT 12.8': () => [String(motNghiem(tim(100, 199, (n) => n + 500 === 5 * n), '12.8'))],
+  'LT 12.9': () => [String(motNghiem(tim(100, 999, (n) => { const [a, b, c] = chuSo(n); return a === c && n === 21 * (n % 100) }), '12.9'))],
+  'LT 12.10': () => [String(motNghiem(hai((a, b, n) => 3003 + 10 * n - n === 3381), '12.10'))],
+  'LT 12.11a': () => chuCai('ab', motNghiem(hai((a, b, n) => n + 774 === 10 * n), '12.11a')),
+  'LT 12.11b': () => chuCai('abc', motNghiem(tim(100, 999, (n) => n * 9 === 1000 + n), '12.11b')),
+  'LT 12.11c': () => chuCai('ab', motNghiem(hai((a, b, n) => n === 2 * (a + b)), '12.11c')),
+  'LT 12.11d': () => chuCai('ab', motNghiem(hai((a, b, n) => n === 6 * (a + b)), '12.11d')),
+  'LT 12.12': () => { const ds = hai((a, b, n) => 100 * a + 20 + b - n === 380); return [String(ds.length), String(ds[0]), String(ds[ds.length - 1])] },
+  'LT 12.13': () => { const ds = tim(100, 999, (n) => chuSo(n)[1] === 2 && n - (Math.floor(n / 100) * 10 + (n % 10)) === 650); return [String(ds[0]), String(ds[ds.length - 1])] },
+  'LT 12.14': () => [String(motNghiem(hai((a, b, n) => 100 * a + b === 9 * n), '12.14'))],
+  'LT 12.15': () => [String(motNghiem(tim(100, 999, (n) => { const [a, m, c] = chuSo(n); return m === 6 && n === 12 * (a * 10 + c) }), '12.15'))],
+  'LT 12.16': () => [String(motNghiem(hai((a, b, n) => 1000 * a + 120 + b === 85 * n), '12.16'))],
+  'LT 12.17': () => [String(motNghiem(hai((a, b, n) => { const s = a + b; return Math.floor(n / s) === 9 && n % s === 1 }), '12.17'))],
+  'LT 12.18': () => [String(motNghiem(hai((a, b, n) => { const s = a + b; return Math.floor(n / s) === 5 && n % s === 12 }), '12.18'))],
+  'PTL 3.2a': () => tim(17000, 17999, (n) => chuSo(n)[3] === 8 && n % 90 === 0).map(String),
+  'PTL 3.2b': () => tim(34000, 34999, (n) => chuSo(n)[3] === 1 && n % 36 === 0).flatMap((n) => [`x=${chuSo(n)[2]}`, `y=${chuSo(n)[4]}`]),
+  'PTL 3.3': () => { const w = 'HAPPYTEACHERSDAY'; const ch = w[(1102 - 1) % w.length]; return [ch, 'DAY'] }, // chỉ đếm CHỮ CÁI (dấu nháy không phải chữ cái)
+  'PTL 3.4': () => [String(motNghiem(tim(1, 10000, (A) => A * 10 + 2 - A === 4106), 'PTL 3.4'))],
+  'PTL 3.5': () => { const cs = (n) => chuSo(n).reduce((a, b) => a + b, 0); const kq = new Set(); for (let B = 9; B <= 9 * 2024; B += 9) kq.add(cs(cs(B))); if (kq.size !== 1) throw new Error('PTL 3.5'); return [String([...kq][0])] },
+  'VD 13.1': () => [String(tbc(36, 39, 42, 43))], 'VD 13.2': () => [String(11 * 4 - 9 * 3)], 'VD 13.3': () => [String(tbc(...tim(2, 20, (x) => x % 2 === 0)))],
+  'VD 13.4': () => [String(motNghiem(tim(0, 100, (m) => m === tbc(24, 28, m)), 'VD 13.4'))],
+  'VD 13.5': () => { const t = motNghiem(tim(0, 200, (t) => t === tbc(39, 41, t) + 8), 'VD 13.5'); return [String(39 + 41 + t)] },
+  'VD 13.6': () => [String(motNghiem(tim(0, 100, (c) => c === tbc(36, 34, c) - 4), 'VD 13.6'))],
+  'LT 13.1': () => [String(tbc(147, 140, 139, 146, 143))],
+  'LT 13.3': () => [String((3 * 5000 + 2 * 4500) / 5 / 100)],
+  'LT 13.4': () => [String((3200 * 4 + 3000) / 5)],
+  'LT 13.6': () => [String(30 * 3 - 23 * 2)],
+  'LT 13.7': () => { const tieu = 15000000 * 3 - 20000000; return [String(tieu / 4), String(tieu / 4 - tieu / 5)] },
+  'LT 13.8a': () => [String(tbc(...tim(3, 99, () => true)))], 'LT 13.8b': () => [String(tbc(...tim(12, 2022, (x) => (x - 12) % 3 === 0)))],
+  'LT 13.9': () => [String(tbc(...tim(1, 999, (x) => x % 2 === 1)))],
+  'LT 13.10': () => { const a = motNghiem(tim(0, 500, (a) => tbc(a, a + 1, a + 2) === 126), '13.10'); return [a, a + 1, a + 2].map(String) },
+  'LT 13.11': () => { const a = motNghiem(tim(0, 500, (a) => a % 2 === 0 && a + (a + 2) + (a + 4) === 444), '13.11'); return [a, a + 2, a + 4].map(String) },
+  'LT 13.12': () => { const a = motNghiem(tim(0, 1000, (a) => a % 2 === 1 && [0, 2, 4, 6, 8].reduce((s, k) => s + a + k, 0) === 975), '13.12'); return [0, 2, 4, 6, 8].map((k) => String(a + k)) },
+  'LT 13.13': () => { const q = motNghiem(tim(0, 2000, (q) => q * 1000 === tbc(340000, 560000, q * 1000)), '13.13'); return [String(340000 + 560000 + q * 1000)] },
+  'LT 13.14': () => { const t2 = 142 - 26, t3 = motNghiem(tim(0, 500, (t) => t === tbc(142, t2, t)), '13.14'); return [String(142 + t2 + t3)] },
+  'LT 13.15': () => [String(motNghiem(tim(0, 100, (h) => h === tbc(30, 20, h) - 6), '13.15'))],
+  'LT 13.16': () => [String(motNghiem(tim(0, 100, (c) => c === tbc(14, 12, c) - 2), '13.16'))],
+  'LT 13.18': () => [String(motNghiem(tim(0, 100, (g) => g === tbc(12, 15, g) + 3), '13.18'))],
+  'LT 13.20': () => { const x2 = 45 + 10, x3 = motNghiem(tim(0, 500, (x) => x === tbc(45, x2, x) + 6), '13.20'); return [String(45 + x2 + x3)] },
+
+  // ── lô 7A: CĐ 8, PTL 2, CĐ 9 — viết TRƯỚC khi mở bản soạn ──
+  'LT 8.2': () => motNghiem(capTong(1005, (a, b) => b === a + 1), '8.2')[0] !== undefined ? capTong(1005, (a, b) => b === a + 1)[0].map(String) : [],
+  'LT 8.4': () => capTong(24, (m, a) => a - m === 6)[0].map(String),
+  'LT 8.7': () => motNghiem(capTong(346, (b, l) => l === 300 + b && b < 100), '8.7').map(String),
+  'LT 8.8': () => motNghiem(capTong(572, (b, l) => l === Number('4' + String(b))), '8.8').map(String),
+  'LT 8.11': () => motNghiem(capTong(474, (x, y) => true).flatMap(([x, y]) => [[x, y], [y, x]]).filter(([d1, d2]) => d1 + 40 === d2 + 28 - 16), '8.11').map(String),
+  'LT 8.12': () => { const r = []; for (let b = 0; b <= 100; b++) for (let m = 0; m <= 100 - b; m++) { const c = 100 - b - m; if (b === m + c + 20 && m === c + 28) r.push([b, m, c]) } return motNghiem(r, '8.12').map(String) },
+  'LT 8.16': () => motNghiem(capTong(852, (a, b) => a % 2 === 1 && b % 2 === 1 && tim(a + 1, b - 1, (x) => x % 2 === 0).length === 5), '8.16').map(String),
+  'LT 8.18': () => capTong(2022, (a, b) => b > a && tim(a + 1, b - 1, (x) => x % 2 === 0).length === 8).flat().map(String),
+  'PTL 2.1a': () => motNghiem(capTong(600, (a, b) => b - a === 50), 'PTL 2.1a').map(String),
+  'PTL 2.1b': () => motNghiem(capTong(51 - 8, (c, b) => b - c === 31), 'PTL 2.1b').map(String),
+  'PTL 2.2': () => { const [r, d] = motNghiem(capTong(65, (r, d) => d - r === 35), 'PTL 2.2'); return [String((r * d * 20) / 1000)] },
+  'PTL 2.3a': () => [String(3 * 50)], 'PTL 2.3b': () => { let s = 0; for (let i = 1; i <= 50; i++) s += 3 * i; return [String(s)] }, 'PTL 2.3c': () => [String(1203 / 3)],
+  'PTL 2.4': () => [String(41 * 50)],
+  'VD 9.1': () => [String(124 * 4)], 'VD 9.2': () => [String(324 / 6)],
+  'VD 9.3': () => { const x = motNghiem(tim(1, 1000, (x) => x * 3 + x * 2 === 275), 'VD 9.3'); return [String(x * 32)] },
+  'LT 9.1': () => [String(motNghiem(tim(0, 5000, (x) => (x + 30) % 25 === 0 && (x + 30) / 25 === 98), '9.1'))],
+  'LT 9.2a': () => [String(452 * 2 * 3)],
+  'LT 9.2b': () => { const r = []; for (let a = 1; a <= 100; a++) for (let b = 10; b <= 1000; b += 10) if (a * 5 * (b / 10) === 350) r.push(a * b); const s = [...new Set(r)]; if (s.length !== 1) throw new Error('9.2b'); return [String(s[0])] },
+  'LT 9.3a': () => [String(324 / 3)], 'LT 9.3b': () => [String(3616 / 16)],
+  'LT 9.4': () => { const r = []; for (let b = 1; b <= 500; b++) { const a = 12 * b; const q = a / b; if (a % (2 * b) === 0 && a / (2 * b) === 6 && a % (3 * q) === 0 && a / (3 * q) === 6) r.push([a, b]) } return motNghiem(r, '9.4').map(String) },
+  'LT 9.5': () => { const b = (4810 - 2860) / 30; return [String(2860 / b), String(b)] },
+  'LT 9.6': () => [String((6270 - 5610) / 6)],
+  'LT 9.8': () => { const x = motNghiem(tim(1, 1000, (x) => x * 140 - x * 40 === 1200), '9.8'); return [String(x * 140)] },
+  'LT 9.9': () => [String(motNghiem(tim(1, 10000, (x) => x * 103 - x * 13 === 37080), '9.9'))],
+  'LT 9.10': () => [String(motNghiem(tim(1, 10000, (x) => x * 281 - x * 218 === 20475), '9.10'))],
+  'LT 9.11': () => { const x = motNghiem(tim(1, 10000, (x) => x * (2 + 1 + 5) === 6528), '9.11'); return [String(x * 215)] },
+  'LT 9.12': () => { const x = motNghiem(tim(1, 10000, (x) => x * 15 - x * (1 + 5) === 279), '9.12'); return [String(x * 15)] },
+  'LT 9.13': () => { const n = 8 * 50 + 3; return [String(Math.floor(n / 24)), String(n % 24)] },
+  'LT 9.14': () => { const r = tim(32, 5000, (d) => 4959 % d === 31 && 31 === d - 1); const d = motNghiem(r, '9.14'); return [String(d), String((4959 - 31) / d)] },
+  'LT 9.15': () => { const d = motNghiem(tim(2, 2000, (d) => Math.floor(1719 / d) === 19 && 1719 % d === d - 1), '9.15'); return [String(d), String(d - 1)] },
+  'LT 9.16': () => { const kq = new Set(); for (let q = 0; q < 50; q++) { const A = 12 * q + 8; kq.add(12 * (q + 2) - A) } if (kq.size !== 1) throw new Error('9.16'); return [String([...kq][0])] },
+  'LT 9.17': () => { const kq = new Set(); for (let q = 0; q < 50; q++) { const A = 112 * q + 79; kq.add(`${Math.floor(A / 56) - 2 * q}|${A % 56}`) } if (kq.size !== 1) throw new Error('9.17'); return [[...kq][0].split('|')[1]] },
+  'LT 9.18': () => [String(motNghiem(tim(1, 100000, (n) => n % 48 === 17 && Math.floor(n / 12) === 65 && n % 12 !== 0), '9.18'))],
+  'LT 9.19': () => [String(motNghiem(tim(1, 100000, (n) => { const a = Math.floor(n / 23); return n % 23 === 20 && a > 0 && n % a === 7 }), '9.19'))],
+
   // ── lô 6A: VD 2, CĐ 3, PTL 1 ──
   'VD 2.1a': () => [String(tim(100, 999, (n) => chuSo(n).every((c) => [2, 3, 5].includes(c))).length)],
   'VD 2.1b': () => [String(tim(100, 999, (n) => khacNhau(n) && chuSo(n).every((c) => [2, 3, 5].includes(c))).length)],
