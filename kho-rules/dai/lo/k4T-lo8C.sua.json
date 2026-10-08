@@ -1,0 +1,8 @@
+{
+ "LT 18.14": {
+  "bo": "B đã có trong kho (LT 18.14B, lô 3) — A và C là 2 ý độc lập phải tách câu riêng như B; để lượt sau, không ghi gộp trùng B"
+ },
+ "LT 18.9b": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phân số thứ nhất và phân số thứ ba là phân số \"lặp\": $124124=124\\times 1001$ và $186186=186\\times 1001$ nên $\\dfrac{124124}{186186}=\\dfrac{124}{186}$ (chia cho $1001$); rút gọn tiếp cho $62$ được $\\dfrac{2}{3}$. Tương tự $\\dfrac{1313}{6565}=\\dfrac{13}{65}$ (chia cho $101$), rồi chia cho $13$ được $\\dfrac{1}{5}$.\n\nBiểu thức thành $\\dfrac{2}{3}+\\dfrac{4}{5}+\\dfrac{1}{5}-\\dfrac{2}{3}$. Nhóm: $\\dfrac{2}{3}-\\dfrac{2}{3}=0$ và $\\dfrac{4}{5}+\\dfrac{1}{5}=1$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{124124}{186186}+\\dfrac{4}{5}+\\dfrac{1313}{6565}-\\dfrac{2}{3}$\n\n$=\\dfrac{124124:1001}{186186:1001}+\\dfrac{4}{5}+\\dfrac{1313:101}{6565:101}-\\dfrac{2}{3}$\n\n$=\\dfrac{124}{186}+\\dfrac{4}{5}+\\dfrac{13}{65}-\\dfrac{2}{3}$\n\n$=\\dfrac{124:62}{186:62}+\\dfrac{4}{5}+\\dfrac{13:13}{65:13}-\\dfrac{2}{3}$\n\n$=\\dfrac{2}{3}+\\dfrac{4}{5}+\\dfrac{1}{5}-\\dfrac{2}{3}$\n\n$=\\left(\\dfrac{2}{3}-\\dfrac{2}{3}\\right)+\\left(\\dfrac{4}{5}+\\dfrac{1}{5}\\right)$\n\n$=0+1$\n\n$=1$"
+ }
+}

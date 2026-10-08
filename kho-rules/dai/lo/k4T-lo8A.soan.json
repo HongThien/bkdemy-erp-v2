@@ -1,0 +1,409 @@
+[
+ {
+  "ma_nguon": "VD 14.1",
+  "gop_y": false,
+  "dap_an": "$336$ kg táo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho số táo của $8$ thùng mà hỏi số táo của $6$ thùng, nên ta **rút về đơn vị**: tìm số táo của **một thùng** trước, rồi mới tính cho số thùng cần hỏi. Dấu hiệu trong đề: các thùng đựng \"đều\" nhau, nghĩa là thùng nào cũng đựng số táo như nhau.\n\nBước 1: lấy $448$ kg chia cho $8$ thùng để biết một thùng đựng bao nhiêu ki-lô-gam. Bước 2: biết một thùng rồi thì $6$ thùng có số táo gấp $6$ lần, nên nhân với $6$.\n\nChú ý: dạng này là \"chia rồi nhân\". Đừng lấy $448$ nhân ngay với $6$, vì $448$ kg là số táo của $8$ thùng chứ không phải của một thùng.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$8$ thùng: $448$ kg táo\n\n$6$ thùng: … kg táo?\n\nBài giải\n\nMột thùng đựng được số táo là: $448:8=56$ (kg)\n\n$6$ thùng có tất cả số ki-lô-gam táo là: $56\\times 6=336$ (kg)\n\nĐáp số: $336$ kg táo",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 14.2",
+  "gop_y": false,
+  "dap_an": "$700$ bộ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết $5$ bộ quần áo dùng hết $15$ m vải, ta rút về **một bộ**: một bộ dùng hết $15:5$ mét vải. Có số vải của một bộ rồi mới trả lời được câu hỏi \"$2100$ m vải thì may được bao nhiêu bộ\".\n\nBước 1 (chia): tìm số mét vải của một bộ. Bước 2 (chia): lấy $2100$ m vải chia cho số mét vải của một bộ để biết may được bao nhiêu bộ.\n\nChú ý: câu hỏi tìm **số bộ** (tìm số phần) nên bước cuối là phép **chia**, không phải phép nhân. Dạng này là \"chia rồi chia\".\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$5$ bộ: $15$ m vải\n\n… bộ: $2100$ m vải\n\nBài giải\n\nMột bộ quần áo phải dùng hết số mét vải là: $15:5=3$ (m)\n\nSố bộ quần áo may được là: $2100:3=700$ (bộ)\n\nĐáp số: $700$ bộ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.1",
+  "gop_y": false,
+  "dap_an": "$327$ bộ quần áo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: năng suất mỗi ngày như nhau nên ta rút về **một ngày**: số bộ quần áo làm được trong một ngày bằng $981:9$. Biết một ngày rồi thì $3$ ngày làm được gấp $3$ lần.\n\nBước 1 (chia): tìm số bộ quần áo làm được trong một ngày. Bước 2 (nhân): nhân với $3$ ngày.\n\nChú ý: $981$ bộ là số bộ của $9$ ngày, không phải của $3$ ngày.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$9$ ngày: $981$ bộ quần áo\n\n$3$ ngày: … bộ quần áo?\n\nBài giải\n\nMột ngày xưởng may làm được số bộ quần áo là: $981:9=109$ (bộ)\n\n$3$ ngày xưởng may làm được số bộ quần áo là: $109\\times 3=327$ (bộ)\n\nĐáp số: $327$ bộ quần áo",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.2",
+  "gop_y": false,
+  "dap_an": "$72$ cái bánh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $8$ hộp bánh như nhau nên rút về **một hộp**: một hộp có $96:8$ cái bánh. Hùng ăn hết $2$ hộp thì còn lại $8-2=6$ hộp.\n\nCác bước: tìm số bánh của một hộp, tìm số hộp còn lại, rồi nhân số bánh một hộp với số hộp còn lại.\n\nChú ý: đề hỏi số bánh **còn lại**, không phải số bánh đã ăn. Cách khác là tính số bánh đã ăn ($12\\times 2$) rồi lấy $96$ trừ đi, kết quả vẫn như nhau.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$8$ hộp: $96$ cái bánh\n\nĂn hết $2$ hộp, còn lại: … cái bánh?\n\nBài giải\n\nMột hộp có số cái bánh là: $96:8=12$ (cái)\n\nSố hộp bánh còn lại là: $8-2=6$ (hộp)\n\nSố cái bánh còn lại là: $12\\times 6=72$ (cái)\n\nĐáp số: $72$ cái bánh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.3",
+  "gop_y": false,
+  "dap_an": "$756$ tạ hàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi xe chở số hàng như nhau nên rút về **một xe**: một xe chở $594:11$ tạ. Đề hỏi số hàng chở vào kho **tất cả**, nên phải tính cho cả $11+3$ xe.\n\nCác bước: tìm số tạ hàng một xe chở, tìm tổng số xe, rồi nhân hai số đó.\n\nChú ý: $594$ tạ chỉ là hàng của $11$ xe đầu; $3$ xe sau cũng chở thêm hàng nên không được quên.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$11$ xe: $594$ tạ hàng\n\n$11+3=14$ xe: … tạ hàng?\n\nBài giải\n\nMột xe tải chở được số tạ hàng là: $594:11=54$ (tạ)\n\nSố xe tải chở hàng vào kho tất cả là: $11+3=14$ (xe)\n\nSố tạ hàng chở vào kho tất cả là: $54\\times 14=756$ (tạ)\n\nĐáp số: $756$ tạ hàng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.5",
+  "gop_y": false,
+  "dap_an": "$32$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $6$ gói kẹo như nhau nên rút về **một gói**: một gói có $240:6$ cái kẹo. Cô chỉ lấy $4$ gói để chia, nên tính số kẹo của $4$ gói. Rồi chia số kẹo đó cho số kẹo mỗi bạn được để biết có bao nhiêu bạn.\n\nCác bước: số kẹo một gói (chia), số kẹo của $4$ gói (nhân), số bạn (chia). Bước cuối tìm **số bạn** (số phần) nên là phép chia.\n\nChú ý: chia cho $5$ cái kẹo mỗi bạn là chia số kẹo của $4$ gói ($160$ cái), không phải cả $240$ cái.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$6$ gói: $240$ cái kẹo\n\n$4$ gói chia cho các bạn, mỗi bạn $5$ cái: … bạn?\n\nBài giải\n\nMột gói kẹo có số cái kẹo là: $240:6=40$ (cái)\n\n$4$ gói kẹo có số cái kẹo là: $40\\times 4=160$ (cái)\n\nLớp 4A có số bạn là: $160:5=32$ (bạn)\n\nĐáp số: $32$ bạn",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.6",
+  "gop_y": false,
+  "dap_an": "Đoàn thứ nhất: $666$ bao xi măng; đoàn thứ hai: $444$ bao xi măng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi xe chở số bao như nhau nên rút về **một xe**. Đoàn thứ nhất có nhiều hơn đoàn thứ hai $9-6=3$ xe, và $3$ xe đó chở đúng $222$ bao (chính là phần chênh lệch). Vậy một xe chở $222:3$ bao.\n\nBiết một xe rồi thì mỗi đoàn chở bằng số bao một xe nhân với số xe của đoàn đó. Thử lại: hiệu hai đoàn phải bằng $222$ bao.\n\nChú ý: $222$ là phần **hơn**, nên chia cho số xe **hơn** ($3$ xe), không chia cho $9$ hay $6$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Đoàn thứ nhất: 9 đoạn bằng nhau, mỗi đoạn là số bao của 1 xe; đoàn thứ hai: 6 đoạn như thế; đoàn thứ nhất hơn đoàn thứ hai 3 đoạn, ứng với 222 bao)\n\nĐoàn xe thứ nhất nhiều hơn đoàn xe thứ hai số xe là: $9-6=3$ (xe)\n\nMỗi xe chở số bao xi măng là: $222:3=74$ (bao)\n\nĐoàn xe thứ nhất chở số bao xi măng là: $74\\times 9=666$ (bao)\n\nĐoàn xe thứ hai chở số bao xi măng là: $74\\times 6=444$ (bao)\n\nĐáp số: Đoàn thứ nhất: $666$ bao; đoàn thứ hai: $444$ bao",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 74,
+   "hang": [
+    {
+     "nhan": "Đoàn thứ nhất",
+     "phan": 9
+    },
+    {
+     "nhan": "Đoàn thứ hai",
+     "phan": 6
+    }
+   ],
+   "hieu": "222 bao",
+   "dau_hoi": [
+    "Đoàn thứ nhất",
+    "Đoàn thứ hai"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.7",
+  "gop_y": false,
+  "dap_an": "Hồng: $32$ viên kẹo; Huệ: $40$ viên kẹo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi lần chia, Hồng nhận $4$ viên và Huệ nhận $5$ viên, nên lần nào Hồng cũng được $4$ phần và Huệ được $5$ phần theo cùng một nhịp. Vẽ sơ đồ: Hồng $4$ phần, Huệ $5$ phần, các phần bằng nhau, tất cả $72$ viên.\n\nCác bước: tổng số phần ($4+5=9$), giá trị một phần ($72:9$), rồi nhân với số phần của từng bạn. Thử lại: hai số cộng lại phải ra $72$.\n\nChú ý: có thể nghĩ theo \"lần chia\": mỗi lần chia hết $4+5=9$ viên, nên $72$ viên chia được $72:9=8$ lần; Hồng nhận $4\\times 8$, Huệ nhận $5\\times 8$. Hai cách cho cùng kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Hồng: 4 phần bằng nhau; Huệ: 5 phần bằng nhau như thế; cả hai bạn nhận 72 viên kẹo)\n\nTổng số phần bằng nhau là: $4+5=9$ (phần)\n\nGiá trị của một phần là: $72:9=8$ (viên)\n\nHồng nhận được số viên kẹo là: $8\\times 4=32$ (viên)\n\nHuệ nhận được số viên kẹo là: $8\\times 5=40$ (viên)\n\nĐáp số: Hồng: $32$ viên kẹo; Huệ: $40$ viên kẹo",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Hồng",
+     "phan": 4
+    },
+    {
+     "nhan": "Huệ",
+     "phan": 5
+    }
+   ],
+   "tong": "72 viên",
+   "dau_hoi": [
+    "Hồng",
+    "Huệ"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.8",
+  "gop_y": false,
+  "dap_an": "$24$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cưa một khúc gỗ thành $7$ đoạn **không phải** cưa $7$ lần. Mỗi lần cưa thêm đúng $1$ đoạn (từ $1$ khúc ra $2$ đoạn, rồi $3$ đoạn,…) nên thành $7$ đoạn chỉ cần cưa $7-1=6$ lần. Thời gian mỗi lần cưa như nhau nên rút về **một lần cưa**.\n\nCác bước: số lần cưa thành $7$ đoạn, thời gian một lần cưa (chia), số lần cưa thành $4$ đoạn, thời gian cưa thành $4$ đoạn (nhân).\n\nChú ý: lỗi hay gặp là lấy $48:7$ hoặc lấy $4$ đoạn nhân với thời gian một lần; phải dùng **số lần cưa** = số đoạn trừ $1$.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nThành $7$ đoạn: $48$ phút\n\nThành $4$ đoạn: … phút?\n\nBài giải\n\nSố lần cưa để khúc gỗ thành $7$ đoạn là: $7-1=6$ (lần)\n\nThời gian cưa một lần là: $48:6=8$ (phút)\n\nSố lần cưa để khúc gỗ thành $4$ đoạn là: $4-1=3$ (lần)\n\nThời gian cưa khúc gỗ thành $4$ đoạn là: $8\\times 3=24$ (phút)\n\nĐáp số: $24$ phút",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.9",
+  "gop_y": false,
+  "dap_an": "$21$ hàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $42$ học sinh xếp đều thành $3$ hàng nên rút về **một hàng**: một hàng có $42:3$ học sinh. Rồi hỏi $294$ học sinh xếp được bao nhiêu hàng: lấy $294$ chia cho số học sinh của một hàng.\n\nBước 1 (chia): số học sinh một hàng. Bước 2 (chia): số hàng. Dạng này là \"chia rồi chia\" vì bước cuối tìm **số hàng**.\n\nChú ý: không nhân $294$ với $3$; mỗi hàng vẫn phải có số học sinh như cũ ($14$ em).\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$3$ hàng: $42$ học sinh\n\n… hàng: $294$ học sinh\n\nBài giải\n\nMỗi hàng có số học sinh là: $42:3=14$ (học sinh)\n\nSố hàng xếp được $294$ học sinh là: $294:14=21$ (hàng)\n\nĐáp số: $21$ hàng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.10",
+  "gop_y": false,
+  "dap_an": "$36$ hàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho số cây theo **luống** nhưng hỏi số **hàng**, nên trước hết phải đổi sang cùng một đơn vị: $4$ luống, mỗi luống $3$ hàng thì có $4\\times 3$ hàng. Rồi rút về **một hàng**: một hàng có $240:12$ cây hoa.\n\nCác bước: số hàng của $4$ luống (nhân), số cây một hàng (chia), số hàng cần trồng $720$ cây (chia).\n\nChú ý: không chia $240$ cho $4$ luống rồi dừng ở \"một luống\"; câu hỏi tính theo hàng.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$4$ luống, mỗi luống $3$ hàng: $240$ cây hoa\n\n… hàng: $720$ cây hoa\n\nBài giải\n\nSố hàng hoa ở $4$ luống là: $4\\times 3=12$ (hàng)\n\nMỗi hàng trồng được số cây hoa là: $240:12=20$ (cây)\n\nSố hàng hoa trồng được $720$ cây là: $720:20=36$ (hàng)\n\nĐáp số: $36$ hàng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.11",
+  "gop_y": false,
+  "dap_an": "$78$ túi đường",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chỉ số đường **còn lại** sau khi bán mới được đóng túi, nên trước hết tính $850-694$. Rồi rút về đơn vị: cứ $10$ kg đóng được $5$ túi, vậy **một túi** đựng $10:5=2$ kg.\n\nCác bước: số ki-lô-gam đường còn lại (trừ), số ki-lô-gam một túi (chia), số túi (chia số đường còn lại cho số ki-lô-gam một túi).\n\nChú ý: không đóng túi cả $850$ kg; $694$ kg đã bán rồi.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$10$ kg đường: $5$ túi\n\n$850-694=156$ kg đường: … túi?\n\nBài giải\n\nSố ki-lô-gam đường còn lại sau khi bán là: $850-694=156$ (kg)\n\nMột túi đựng số ki-lô-gam đường là: $10:5=2$ (kg)\n\nSố túi đường đóng được là: $156:2=78$ (túi)\n\nĐáp số: $78$ túi đường",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.12",
+  "gop_y": false,
+  "dap_an": "$7$ quyển truyện tranh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết $65000$ đồng mua được $5$ quyển, ta rút về **một quyển**: giá một quyển là $65000:5$. Tiền của Dũng là $65000+26000$, rồi lấy tiền của Dũng chia cho giá một quyển để biết mua được bao nhiêu quyển (chia rồi chia).\n\nCác bước: giá một quyển, số tiền của Dũng, số quyển Dũng mua được.\n\nChú ý: Dũng có **nhiều hơn** Nam nên cộng thêm $26000$ đồng, không trừ.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$65000$ đồng: $5$ quyển\n\n$65000+26000$ đồng: … quyển?\n\nBài giải\n\nGiá tiền một quyển truyện tranh là: $65000:5=13000$ (đồng)\n\nSố tiền của Dũng là: $65000+26000=91000$ (đồng)\n\nDũng mua được số quyển truyện tranh là: $91000:13000=7$ (quyển)\n\nĐáp số: $7$ quyển truyện tranh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.14",
+  "gop_y": false,
+  "dap_an": "$31$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"cứ $5$ học sinh trồng $25$ cây\" cho biết **dự định mỗi học sinh trồng** $25:5$ cây. Thực tế mỗi học sinh trồng nhiều hơn dự định $2$ cây, nên thực tế mỗi học sinh trồng $5+2$ cây. Có số cây mỗi học sinh trồng thực tế rồi, lấy $217$ cây chia cho số cây đó để tìm số học sinh.\n\nCác bước: số cây dự định một học sinh (chia), số cây thực tế một học sinh (cộng), số học sinh (chia).\n\nChú ý: chia $217$ cho số cây **thực tế** ($7$ cây), không chia cho số cây dự định ($5$ cây), vì $217$ cây là số cây thực tế trồng được.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nDự định $5$ học sinh: $25$ cây\n\nThực tế mỗi học sinh nhiều hơn dự định $2$ cây: $217$ cây, … học sinh?\n\nBài giải\n\nTheo dự định, mỗi học sinh trồng số cây là: $25:5=5$ (cây)\n\nThực tế, mỗi học sinh trồng số cây là: $5+2=7$ (cây)\n\nLớp 4C có số học sinh là: $217:7=31$ (học sinh)\n\nĐáp số: $31$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.15",
+  "gop_y": false,
+  "dap_an": "$8$ gói thạch",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cứ $5$ gói thạch thì có $150$ cái nên rút về **một gói**: một gói có $150:5$ cái. Số cái thạch cần chia là $40$ em nhân $6$ cái mỗi em. Rồi lấy số cái cần chia chia cho số cái của một gói để biết phải mua mấy gói.\n\nCác bước: số cái thạch một gói (chia), số cái thạch cần dùng (nhân), số gói phải mua (chia).\n\nChú ý: bước cuối tìm **số gói** (số phần) nên là phép chia.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$5$ gói: $150$ cái thạch\n\n$40$ em, mỗi em $6$ cái thạch: … gói?\n\nBài giải\n\nMột gói thạch có số cái thạch là: $150:5=30$ (cái)\n\nSố cái thạch cần để chia cho $40$ em nhỏ là: $6\\times 40=240$ (cái)\n\nSố gói thạch phải mua là: $240:30=8$ (gói)\n\nĐáp số: $8$ gói thạch",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.16",
+  "gop_y": false,
+  "dap_an": "$22$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: thêm $3$ công nhân thì mỗi ngày sản xuất thêm $875-770$ sản phẩm. Năng suất mỗi người như nhau nên phần tăng thêm đó chính là số sản phẩm của đúng $3$ người, từ đó rút về **một công nhân**: $(875-770):3$ sản phẩm mỗi ngày.\n\nRồi lúc đầu cả tổ làm $770$ sản phẩm mỗi ngày, chia cho số sản phẩm của một công nhân để biết số người lúc đầu.\n\nChú ý: không chia $875$ hoặc $770$ cho $3$ ngay; phải lấy phần **chênh lệch** $105$ mới ứng với $3$ người.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nThêm $3$ công nhân: mỗi ngày thêm $875-770$ sản phẩm\n\n$770$ sản phẩm mỗi ngày: … công nhân?\n\nBài giải\n\nKhi thêm $3$ công nhân, mỗi ngày tổ sản xuất thêm số sản phẩm là: $875-770=105$ (sản phẩm)\n\nMỗi công nhân mỗi ngày làm được số sản phẩm là: $105:3=35$ (sản phẩm)\n\nLúc đầu, tổ công nhân đó có số người là: $770:35=22$ (người)\n\nĐáp số: $22$ người",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.17",
+  "gop_y": false,
+  "dap_an": "$60$ thùng sơn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bán $5$ thùng thì số sơn giảm từ $1080$ lít xuống $990$ lít, nên $5$ thùng đã bán chứa $1080-990$ lít. Các thùng như nhau nên rút về **một thùng**: một thùng chứa $90:5$ lít. Rồi lấy $1080$ lít chia cho số lít một thùng để tìm số thùng lúc đầu.\n\nCác bước: số lít sơn của $5$ thùng (trừ), số lít một thùng (chia), số thùng lúc đầu (chia).\n\nChú ý: tìm số thùng lúc **đầu** nên chia $1080$ lít, không chia $990$ lít.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nBán $5$ thùng: $1080-990$ lít sơn\n\n$1080$ lít sơn: … thùng?\n\nBài giải\n\nSố lít sơn của $5$ thùng đã bán là: $1080-990=90$ (lít)\n\nMột thùng sơn chứa số lít sơn là: $90:5=18$ (lít)\n\nLúc đầu, cửa hàng có số thùng sơn là: $1080:18=60$ (thùng)\n\nĐáp số: $60$ thùng sơn",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.18",
+  "gop_y": false,
+  "dap_an": "$38$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: vắng $12$ học sinh mà mỗi xe ít đi $2$ học sinh, tức là $12$ học sinh vắng được chia đều trên các xe, mỗi xe vắng $2$ em. Vậy số xe là $12:2$ (hiểu số xe không đổi). Có số xe rồi, lấy $228$ học sinh thực tế đi chia cho số xe.\n\nCác bước: số xe (chia), số học sinh mỗi xe lúc thực tế đi (chia).\n\nChú ý: $228$ học sinh là số học sinh **thực tế đã đi**, nên chia $228$ cho số xe để được số học sinh mỗi xe lúc đi. Thử lại: dự định $228+12=240$ học sinh, mỗi xe $240:6=40$ em, thực tế $38$ em, ít hơn $2$ em đúng như đề.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nVắng $12$ học sinh: mỗi xe ít hơn $2$ học sinh\n\nThực tế $228$ học sinh đi: mỗi xe … học sinh?\n\nBài giải\n\nSố ô tô là: $12:2=6$ (xe)\n\nThực tế, mỗi xe chở số học sinh là: $228:6=38$ (học sinh)\n\nĐáp số: $38$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Hiểu số ô tô không đổi giữa dự định và thực tế (đề không nói đổi xe). Thử ngược: dự định 240 em / 6 xe = 40 em/xe, thực tế 228 / 6 = 38 em/xe, ít hơn 2 em, vắng đúng 12 em: khớp."
+ },
+ {
+  "ma_nguon": "LT 14.19",
+  "gop_y": false,
+  "dap_an": "$24$ sticker",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi túi lấy ra $5$ sticker, tất cả các túi đã lấy ra $120-95$ sticker. Vậy số túi bằng số sticker đã lấy ra chia cho số sticker lấy ở mỗi túi. Có số túi rồi, chia đều $120$ sticker cho số túi để biết lúc đầu mỗi túi có bao nhiêu.\n\nCác bước: số sticker đã lấy ra (trừ), số túi (chia), số sticker lúc đầu mỗi túi (chia).\n\nChú ý: câu hỏi là số sticker lúc **đầu** mỗi túi, nên chia $120$, không chia $95$.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nMỗi túi lấy $5$ sticker: lấy tất cả $120-95$ sticker\n\nChia đều $120$ sticker vào các túi: mỗi túi … sticker?\n\nBài giải\n\nSố sticker đã lấy ra để trang trí là: $120-95=25$ (sticker)\n\nSố túi giấy là: $25:5=5$ (túi)\n\nLúc đầu, mỗi túi có số sticker là: $120:5=24$ (sticker)\n\nĐáp số: $24$ sticker",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 14.20",
+  "gop_y": false,
+  "dap_an": "$15$ chiếc bút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: từ $10$ hộp, mỗi hộp rút $3$ chiếc bút nên tất cả rút ra $3\\times 10$ chiếc. Bút còn lại bằng bút của $8$ hộp nguyên, nghĩa là $10$ hộp đã mất đi $10-8=2$ hộp bút. Vậy số bút đã rút ra chính là số bút của $2$ hộp, rút về **một hộp**: $30:2$ chiếc.\n\nCác bước: số bút đã rút ra (nhân), số hộp tương ứng ($10-8$), số bút một hộp (chia). Thử lại: $10$ hộp có $150$ chiếc, rút $30$ chiếc còn $120$ chiếc, bằng $8$ hộp ($8\\times 15=120$).\n\nChú ý: $3$ chiếc là số bút rút ở **mỗi hộp**, chưa phải số bút của một hộp.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nRút ra $3\\times 10$ chiếc bút = bút của $10-8$ hộp\n\nMỗi hộp lúc đầu … chiếc bút?\n\nBài giải\n\nSố chiếc bút màu Andy đã rút ra là: $3\\times 10=30$ (chiếc)\n\nSố chiếc bút đó bằng số bút của số hộp là: $10-8=2$ (hộp)\n\nLúc đầu, mỗi hộp bút màu có số chiếc bút là: $30:2=15$ (chiếc)\n\nĐáp số: $15$ chiếc bút",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 15.1a",
+  "gop_y": false,
+  "dap_an": "$8$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số trong dãy số liệu là cân nặng của **một bạn**, nên số bạn bằng số các số trong dãy.\n\nĐếm lần lượt từng số, không bỏ sót và không đếm hai lần: $40$; $43$; $45$; $48$; $44$; $45$; $39$; $40$.\n\nChú ý: các số trùng nhau (hai số $40$, hai số $45$) vẫn là các bạn khác nhau nên đều phải đếm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số liệu có $8$ số nên tổ I của lớp 4A có $8$ bạn.\n\nĐáp số: $8$ bạn",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 15.1b",
+  "gop_y": false,
+  "dap_an": "$43$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng của nhiều số bằng **tổng các số chia cho số các số**. Mỗi số là cân nặng của một bạn nên số các số chính là số bạn trong tổ.\n\nCác bước: đếm số bạn, cộng cân nặng của tất cả các bạn, rồi chia tổng cho số bạn.\n\nChú ý: chia cho số bạn ($8$), không chia cho số khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số liệu có $8$ số nên tổ I của lớp 4A có $8$ bạn.\n\nTổng cân nặng của $8$ bạn là:\n\n$40+43+45+48+44+45+39+40=344$ (kg)\n\nTrung bình cộng cân nặng của các bạn tổ I là: $344:8=43$ (kg)\n\nĐáp số: $43$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 15.1c",
+  "gop_y": false,
+  "dap_an": "$46$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: muốn tìm trung bình cộng của **ba bạn nặng nhất** thì trước hết phải tìm ra ba bạn đó. Sắp xếp các số từ bé đến lớn: $39$; $40$; $40$; $43$; $44$; $45$; $45$; $48$. Ba số lớn nhất là $48$; $45$; $45$.\n\nRồi lấy tổng ba số đó chia cho $3$.\n\nChú ý: số $45$ xuất hiện hai lần (hai bạn khác nhau) nên cả hai đều phải lấy; và chia cho $3$ bạn, không chia cho $8$ bạn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBa bạn nặng nhất có cân nặng là: $48$ kg, $45$ kg, $45$ kg.\n\nTrung bình cộng cân nặng của ba bạn nặng nhất là:\n\n$\\left(48+45+45\\right):3=46$ (kg)\n\nĐáp số: $46$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 15.3",
+  "gop_y": false,
+  "dap_an": "$6$ sự kiện: bút mực – bút chì; bút mực – bút bi; bút mực – bút xóa; bút chì – bút bi; bút chì – bút xóa; bút bi – bút xóa",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lấy ngẫu nhiên **cùng lúc** hai chiếc bút trong $4$ chiếc khác nhau, nên thứ tự không quan trọng: lấy (bút mực, bút chì) cũng là lấy (bút chì, bút mực), chỉ tính một lần.\n\nĐể liệt kê đủ và không trùng, làm có hệ thống: cho bút mực ghép lần lượt với ba bút còn lại ($3$ sự kiện); rồi bút chì ghép với hai bút còn lại là bút bi và bút xóa (không ghép lại với bút mực nữa) ($2$ sự kiện); cuối cùng bút bi ghép với bút xóa ($1$ sự kiện).\n\nĐếm lại: $3+2+1=6$ sự kiện.\n\n**Phần 2. Trình bày**\n\nCác sự kiện có thể xảy ra là:\n\n+ $1$ bút mực, $1$ bút chì\n\n+ $1$ bút mực, $1$ bút bi\n\n+ $1$ bút mực, $1$ bút xóa\n\n+ $1$ bút chì, $1$ bút bi\n\n+ $1$ bút chì, $1$ bút xóa\n\n+ $1$ bút bi, $1$ bút xóa\n\nCó tất cả $6$ sự kiện có thể xảy ra.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.1a",
+  "gop_y": false,
+  "dap_an": "$10$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số trong dãy là điểm của **một học sinh**, nên số học sinh bằng số các số trong dãy.\n\nĐếm lần lượt, không bỏ sót: $8$; $10$; $8$; $9$; $9$; $10$; $9$; $9$; $8$; $10$ có $10$ số.\n\nChú ý: các điểm trùng nhau vẫn là các học sinh khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số liệu có $10$ số nên tổ I lớp 4A có $10$ học sinh.\n\nĐáp số: $10$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.1b",
+  "gop_y": false,
+  "dap_an": "$9$ điểm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng bằng **tổng các số chia cho số các số**. Cộng điểm của tất cả học sinh trong tổ rồi chia cho số học sinh.\n\nCác bước: đếm số học sinh, tính tổng điểm, chia tổng điểm cho số học sinh.\n\nChú ý: chia cho số học sinh ($10$), không chia cho số mức điểm khác nhau ($3$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số liệu có $10$ số nên tổ I lớp 4A có $10$ học sinh.\n\nTổng số điểm của $10$ học sinh là:\n\n$8+10+8+9+9+10+9+9+8+10=90$ (điểm)\n\nTrung bình cộng điểm thi môn Toán học kì I của các bạn tổ I là: $90:10=9$ (điểm)\n\nĐáp số: $9$ điểm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.2a",
+  "gop_y": false,
+  "dap_an": "Chủ nhật",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm **số lớn nhất** trong dãy số liệu, rồi xem số đó ứng với ngày nào. Dãy được liệt kê theo thứ tự từ thứ Hai đến Chủ nhật, nên số thứ nhất là thứ Hai, số thứ hai là thứ Ba, …, số thứ bảy là Chủ nhật.\n\nCác bước: so sánh các số, chọn số lớn nhất ($801$), đếm vị trí của nó trong dãy: số thứ $7$.\n\nChú ý: câu hỏi là **ngày** nào, không phải số khách là bao nhiêu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác ngày từ thứ Hai đến Chủ nhật có số khách tham quan lần lượt là: $432$ ; $567$ ; $689$ ; $512$ ; $568$ ; $799$ ; $801$.\n\nSố lớn nhất là $801$, đứng thứ $7$ trong dãy, ứng với Chủ nhật.\n\nVậy số khách tham quan nhiều nhất vào Chủ nhật.\n\nĐáp số: Chủ nhật",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.2b",
+  "gop_y": false,
+  "dap_an": "$624$ khách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"trung bình mỗi ngày\" là **trung bình cộng** của số khách các ngày trong tuần. Từ thứ Hai đến Chủ nhật có $7$ ngày, tức dãy có $7$ số.\n\nCác bước: cộng số khách của $7$ ngày, rồi chia cho $7$.\n\nChú ý: chia cho $7$ ngày, không chia cho $6$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số khách tham quan trong cả tuần là:\n\n$432+567+689+512+568+799+801=4368$ (khách)\n\nTrung bình mỗi ngày có số khách tham quan là: $4368:7=624$ (khách)\n\nĐáp số: $624$ khách",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.3a",
+  "gop_y": false,
+  "dap_an": "$8$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số trong dãy là chiều cao của **một học sinh**, nên số học sinh bằng số các số trong dãy.\n\nĐếm lần lượt: $132$; $137$; $134$; $132$; $135$; $140$; $138$; $140$ có $8$ số.\n\nChú ý: các số trùng nhau ($132$, $140$) vẫn là các học sinh khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số liệu có $8$ số nên tổ I lớp 4A có $8$ học sinh.\n\nĐáp số: $8$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.3b",
+  "gop_y": false,
+  "dap_an": "$136$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng bằng **tổng các số chia cho số các số**. Cộng chiều cao của tất cả các bạn rồi chia cho số bạn.\n\nCác bước: đếm số bạn, tính tổng chiều cao, chia tổng cho số bạn.\n\nChú ý: chia cho số bạn ($8$), không chia cho số khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số liệu có $8$ số nên tổ I lớp 4A có $8$ học sinh.\n\nTổng chiều cao của $8$ học sinh là:\n\n$132+137+134+132+135+140+138+140=1088$ (cm)\n\nTrung bình cộng chiều cao các bạn tổ I của lớp 4A là: $1088:8=136$ (cm)\n\nĐáp số: $136$ cm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.7a",
+  "gop_y": false,
+  "dap_an": "$28$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bảng cho biết có bao nhiêu học sinh đạt **mỗi mức điểm**. Mỗi học sinh chỉ có một điểm nên số học sinh cả lớp bằng tổng các số ở hàng \"Số học sinh\".\n\nCộng $7+14+7$.\n\nChú ý: không cộng các điểm ($8+9+10$); đề hỏi số học sinh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLớp 4C có số học sinh là: $7+14+7=28$ (học sinh)\n\nĐáp số: $28$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.7b",
+  "gop_y": false,
+  "dap_an": "$9$ điểm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bảng cho biết điểm $8$ có $7$ học sinh, điểm $9$ có $14$ học sinh, điểm $10$ có $7$ học sinh. Muốn có tổng điểm thì lấy **điểm nhân với số học sinh** của mức điểm đó rồi cộng lại; sau đó chia cho tổng số học sinh.\n\nCác bước: số học sinh cả lớp, tổng số điểm, trung bình cộng.\n\nChú ý: không lấy $\\left(8+9+10\\right):3$, vì số học sinh ở mỗi mức điểm khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLớp 4C có số học sinh là: $7+14+7=28$ (học sinh)\n\nTổng số điểm của cả lớp là:\n\n$8\\times 7+9\\times 14+10\\times 7=252$ (điểm)\n\nTrung bình cộng điểm môn Toán của lớp 4C cuối học kì I là: $252:28=9$ (điểm)\n\nĐáp số: $9$ điểm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.11",
+  "gop_y": false,
+  "dap_an": "$6$ sự kiện: Toán – Tiếng Việt; Toán – Tiếng Anh; Toán – Đạo đức; Tiếng Việt – Tiếng Anh; Tiếng Việt – Đạo đức; Tiếng Anh – Đạo đức",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: An lấy **cùng lúc** $2$ quyển trong $4$ quyển khác nhau, nên thứ tự không quan trọng: (Toán, Tiếng Việt) cũng là (Tiếng Việt, Toán), chỉ tính một lần.\n\nLiệt kê có hệ thống: quyển Toán ghép với ba quyển còn lại ($3$ sự kiện); quyển Tiếng Việt ghép với hai quyển còn lại là Tiếng Anh và Đạo đức, không ghép lại với Toán ($2$ sự kiện); cuối cùng Tiếng Anh ghép với Đạo đức ($1$ sự kiện).\n\nĐếm lại: $3+2+1=6$ sự kiện.\n\n**Phần 2. Trình bày**\n\nCác sự kiện có thể xảy ra là:\n\n+ Toán, Tiếng Việt\n\n+ Toán, Tiếng Anh\n\n+ Toán, Đạo đức\n\n+ Tiếng Việt, Tiếng Anh\n\n+ Tiếng Việt, Đạo đức\n\n+ Tiếng Anh, Đạo đức\n\nCó tất cả $6$ sự kiện có thể xảy ra.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.12a",
+  "gop_y": false,
+  "dap_an": "Bi màu đỏ; bi màu vàng; bi màu xanh ($3$ khả năng)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lấy ngẫu nhiên một viên bi thì có thể ra bất kì màu nào **có trong hộp**. Trong hộp có bi đỏ, bi vàng và bi xanh, mỗi màu đều có ít nhất một viên.\n\nVậy chỉ cần viết ra từng màu có trong hộp.\n\nChú ý: ở đây chỉ liệt kê các **khả năng về màu**, không đếm số viên.\n\n**Phần 2. Trình bày**\n\nCác khả năng màu bi được lấy ra là:\n\n+ Bi màu đỏ\n\n+ Bi màu vàng\n\n+ Bi màu xanh\n\nCó tất cả $3$ khả năng.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.12b",
+  "gop_y": false,
+  "dap_an": "Bi màu xanh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các viên bi có kích thước giống nhau, lấy ngẫu nhiên nên màu nào có **nhiều viên hơn** thì dễ được lấy ra hơn.\n\nSo sánh số viên mỗi màu: bi đỏ $2$ viên, bi vàng $3$ viên, bi xanh $5$ viên. Số viên lớn nhất là bi xanh.\n\nChú ý: so sánh số viên của từng màu, không so sánh số $2$; $3$; $5$ với số bi cả hộp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố viên bi mỗi màu là: bi đỏ $2$ viên, bi vàng $3$ viên, bi xanh $5$ viên.\n\nVì $5>3>2$ nên bi màu xanh có khả năng được lấy nhiều hơn các bi còn lại.\n\nĐáp số: Bi màu xanh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.13a",
+  "gop_y": false,
+  "dap_an": "$36$ khả năng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi con xúc xắc có $6$ mặt nên ra $6$ khả năng. Mỗi khả năng của con thứ nhất kết hợp được với **mỗi** khả năng của con thứ hai, nên nhân hai số khả năng với nhau.\n\nCó thể liệt kê thành bảng $6$ hàng, $6$ cột: hàng là số chấm con thứ nhất, cột là số chấm con thứ hai, mỗi ô là một khả năng.\n\nChú ý: không cộng $6+6$; hai con được gieo cùng lúc nên các khả năng kết hợp với nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCon xúc xắc thứ nhất có $6$ khả năng (từ $1$ đến $6$ chấm).\n\nVới mỗi khả năng của con thứ nhất, con xúc xắc thứ hai có $6$ khả năng.\n\nSố khả năng có thể xảy ra là: $6\\times 6=36$ (khả năng)\n\nĐáp số: $36$ khả năng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Hiểu hai con xúc xắc phân biệt được (vd khác màu): (1;2) và (2;1) là hai khả năng khác nhau, nên 36 khả năng, 6 cùng số chấm, 30 khác số chấm. Nếu sách coi hai con giống hệt không phân biệt thì đáp số là 21 / 6 / 15."
+ },
+ {
+  "ma_nguon": "LT 15.13b",
+  "gop_y": false,
+  "dap_an": "$6$ khả năng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai mặt có **cùng số chấm** nghĩa là con thứ hai phải ra đúng số chấm của con thứ nhất. Vậy mỗi số chấm từ $1$ đến $6$ cho đúng **một** khả năng.\n\nLiệt kê lần lượt từ $1$ đến $6$ chấm rồi đếm: có $6$ khả năng.\n\nChú ý: không viết (1; 2) hay (2; 1); các khả năng này có hai số chấm khác nhau.\n\n**Phần 2. Trình bày**\n\nCác khả năng hai mặt có cùng số chấm là:\n\n+ Cùng $1$ chấm\n\n+ Cùng $2$ chấm\n\n+ Cùng $3$ chấm\n\n+ Cùng $4$ chấm\n\n+ Cùng $5$ chấm\n\n+ Cùng $6$ chấm\n\nCó tất cả $6$ khả năng.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 15.13c",
+  "gop_y": false,
+  "dap_an": "$30$ khả năng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: con xúc xắc thứ nhất có $6$ khả năng. Với mỗi khả năng đó, con thứ hai phải ra số chấm **khác** con thứ nhất, nên bớt đi $1$ khả năng, còn $5$ khả năng. Nhân hai số khả năng lại.\n\nThử lại: tổng số khả năng là $36$, trong đó có $6$ khả năng cùng số chấm, nên khả năng khác số chấm là $36-6=30$: khớp.\n\nChú ý: nhân $6\\times 5$, không nhân $6\\times 6$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCon xúc xắc thứ nhất có $6$ khả năng.\n\nVới mỗi khả năng của con thứ nhất, con xúc xắc thứ hai phải ra số chấm khác nên có $5$ khả năng.\n\nSố khả năng hai mặt có số chấm khác nhau là: $6\\times 5=30$ (khả năng)\n\nĐáp số: $30$ khả năng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Hiểu hai con xúc xắc phân biệt được (vd khác màu): (1;2) và (2;1) là hai khả năng khác nhau, nên 36 khả năng, 6 cùng số chấm, 30 khác số chấm. Nếu sách coi hai con giống hệt không phân biệt thì đáp số là 21 / 6 / 15."
+ },
+ {
+  "ma_nguon": "LT 15.15",
+  "gop_y": false,
+  "dap_an": "$15$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"lấy ra $10$ viên bất kì thì luôn có ít nhất $1$ bi đỏ\" nghĩa là **không thể** có $10$ viên mà toàn là bi không đỏ (vàng hoặc xanh). Vậy số bi **không phải đỏ** (vàng và xanh) nhiều nhất là $10-1=9$ viên. Tương tự, số bi không phải xanh (đỏ và vàng) nhiều nhất là $11-1=10$ viên, số bi không phải vàng (đỏ và xanh) nhiều nhất là $12-1=11$ viên.\n\nCộng ba số trên lại thì mỗi màu bi được tính **hai lần** (ví dụ bi đỏ nằm trong \"không xanh\" và \"không vàng\"). Vậy hai lần số bi cả túi nhiều nhất là $9+10+11$, từ đó tìm được số bi nhiều nhất.\n\nCòn phải kiểm tra có thật đạt được số đó không: tìm số bi từng màu rồi thử lại ba điều kiện của đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu có $10$ viên bi không phải màu đỏ thì lấy $10$ viên đó ra sẽ không có bi đỏ, trái với đề. Nên số bi vàng và xanh nhiều nhất là $10-1=9$ (viên).\n\nTương tự, số bi đỏ và vàng nhiều nhất là $11-1=10$ (viên), số bi đỏ và xanh nhiều nhất là $12-1=11$ (viên).\n\nCộng ba số trên, mỗi màu bi được tính hai lần, nên hai lần số bi trong túi nhiều nhất là: $9+10+11=30$ (viên)\n\nSố bi trong túi nhiều nhất là: $30:2=15$ (viên)\n\nKhi đó số bi đỏ là: $15-9=6$ (viên)\n\nSố bi xanh là: $15-10=5$ (viên)\n\nSố bi vàng là: $15-11=4$ (viên)\n\nThử lại: bi vàng và xanh có $4+5=9$ viên, bi đỏ và vàng có $6+4=10$ viên, bi đỏ và xanh có $6+5=11$ viên, đúng như đề.\n\nĐáp số: $15$ viên bi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 4.1",
+  "gop_y": false,
+  "dap_an": "$142$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình mỗi ngày là **trung bình cộng** số sản phẩm của tất cả các ngày: tổng số sản phẩm chia cho tổng số ngày. Hai ngày đầu làm số sản phẩm mỗi ngày như nhau, ba ngày sau cũng vậy, nên tính tổng sản phẩm bằng phép nhân.\n\nCác bước: số sản phẩm hai ngày đầu, số sản phẩm ba ngày sau, số ngày cả hai đợt, rồi chia.\n\nChú ý: không lấy $\\left(130+150\\right):2$, vì số ngày của hai đợt khác nhau ($2$ ngày và $3$ ngày); phải chia cho tổng số ngày là $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai ngày đầu tổ đó làm được số sản phẩm là: $130\\times 2=260$ (sản phẩm)\n\nBa ngày tiếp theo tổ đó làm được số sản phẩm là: $150\\times 3=450$ (sản phẩm)\n\nSố ngày tổ đó làm việc là: $2+3=5$ (ngày)\n\nTrung bình mỗi ngày tổ đó làm được số sản phẩm là: $\\left(260+450\\right):5=142$ (sản phẩm)\n\nĐáp số: $142$ sản phẩm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 4.2",
+  "gop_y": false,
+  "dap_an": "$35$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lớp 4D **nhiều hơn** trung bình cộng $2$ học sinh. Vẽ sơ đồ: trung bình cộng là $1$ đoạn, lớp 4D là $1$ đoạn thêm $2$ học sinh. Tổng bốn lớp bằng $4$ đoạn trung bình cộng, nên ba lớp còn lại (4A, 4B, 4C) phải bù lại phần dư của 4D, tức là bằng $3$ đoạn trung bình cộng **bớt đi $2$**.\n\nVậy **ba lần trung bình cộng** $=30+33+34+2$. Tìm trung bình cộng rồi cộng thêm $2$ ra số học sinh lớp 4D.\n\nChú ý: \"nhiều hơn\" thì phần chênh phải **cộng** ở bước tìm ba lần trung bình cộng; nếu là \"ít hơn\" thì trừ. Thử lại: $\\left(30+33+34+35\\right):4=33$ và $35$ hơn $33$ đúng $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; lớp 4D: 1 đoạn và thêm 2 học sinh; ba lớp 4A, 4B, 4C: 3 đoạn còn thiếu 2 học sinh)\n\nBa lần trung bình cộng số học sinh của bốn lớp là: $30+33+34+2=99$ (học sinh)\n\nTrung bình cộng số học sinh của bốn lớp là: $99:3=33$ (học sinh)\n\nSố học sinh của lớp 4D là: $33+2=35$ (học sinh)\n\nĐáp số: $35$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 33,
+   "hang": [
+    {
+     "nhan": "Trung bình cộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Lớp 4D",
+     "phan": 1,
+     "them": "2 học sinh"
+    },
+    {
+     "nhan": "Lớp 4A, 4B, 4C",
+     "phan": 3,
+     "bot": "2 học sinh"
+    }
+   ],
+   "dau_hoi": [
+    "Lớp 4D"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 4.3",
+  "gop_y": false,
+  "dap_an": "$5$ quyển truyện tranh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết $64000$ đồng mua được $8$ quyển, ta rút về **một quyển**: giá một quyển là $64000:8$. Tiền của Dũng là $64000-24000$, rồi lấy tiền của Dũng chia cho giá một quyển để biết mua được bao nhiêu quyển (chia rồi chia).\n\nCác bước: giá một quyển, số tiền của Dũng, số quyển Dũng mua được.\n\nChú ý: Dũng có **ít hơn** Hùng nên trừ $24000$ đồng, không cộng.\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\n$64000$ đồng: $8$ quyển\n\n$64000-24000$ đồng: … quyển?\n\nBài giải\n\nGiá tiền một quyển truyện tranh là: $64000:8=8000$ (đồng)\n\nSố tiền của bạn Dũng là: $64000-24000=40000$ (đồng)\n\nBạn Dũng mua được số quyển truyện tranh là: $40000:8000=5$ (quyển)\n\nĐáp số: $5$ quyển truyện tranh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 4.4",
+  "gop_y": false,
+  "dap_an": "$40$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"cứ $5$ em trồng $25$ cây\" cho biết **dự định mỗi học sinh trồng** $25:5$ cây. Thực tế mỗi học sinh trồng nhiều hơn dự định $2$ cây nên trồng $5+2$ cây. Lấy $280$ cây chia cho số cây mỗi học sinh trồng thực tế để tìm số học sinh.\n\nCác bước: số cây dự định của một học sinh (chia), số cây thực tế của một học sinh (cộng), số học sinh (chia).\n\nChú ý: chia $280$ cho số cây **thực tế** ($7$ cây), không chia cho số cây dự định ($5$ cây).\n\n**Phần 2. Trình bày**\n\nTóm tắt:\n\nDự định $5$ em: $25$ cây\n\nThực tế mỗi em nhiều hơn dự định $2$ cây: $280$ cây, … học sinh?\n\nBài giải\n\nTheo dự định, mỗi học sinh trồng số cây là: $25:5=5$ (cây)\n\nThực tế, mỗi học sinh trồng số cây là: $5+2=7$ (cây)\n\nLớp đó có số học sinh là: $280:7=40$ (học sinh)\n\nĐáp số: $40$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "PTL 4.5",
+  "gop_y": true,
+  "dap_an": "a) $10$ học sinh; b) $9$ điểm; c) $3$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi số trong dãy là điểm của **một học sinh**. Ý a: đếm số các số trong dãy. Ý b: trung bình cộng bằng tổng các số chia cho số các số. Ý c dùng ngay **trung bình cộng vừa tìm ở ý b** làm mốc: đếm xem có bao nhiêu điểm **nhỏ hơn** mốc đó.\n\nCác bước: ý a đếm ($10$ số); ý b cộng tất cả điểm rồi chia cho $10$; ý c so từng điểm với trung bình cộng.\n\nChú ý: ở ý c, điểm bằng trung bình cộng ($9$ điểm) không được tính vì đề hỏi điểm **nhỏ hơn**; và chỉ cần đếm số bạn có điểm $8$ (mỗi điểm $8$ là một bạn).\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Dãy số liệu có $10$ số nên tổ I lớp 4A có $10$ học sinh.\n\nb) Tổng số điểm của $10$ học sinh là:\n\n$8+8+9+9+10+10+10+8+9+9=90$ (điểm)\n\nTrung bình cộng điểm thi môn Toán học kì I của các bạn tổ I là: $90:10=9$ (điểm)\n\nc) Các bạn có số điểm nhỏ hơn $9$ điểm là các bạn được $8$ điểm: có $3$ bạn.\n\nVậy có $3$ bạn tổ I có số điểm nhỏ hơn trung bình cộng điểm thi.\n\nĐáp số: a) $10$ học sinh; b) $9$ điểm; c) $3$ bạn",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

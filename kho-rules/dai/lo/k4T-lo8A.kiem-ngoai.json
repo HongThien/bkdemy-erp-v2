@@ -1,0 +1,9 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-lo8A-20261008",
+ "cau": {
+  "LT 14.6": { "hinh_dung": true, "hinh_ghi": "Opus xem ảnh: đoàn 1 = 9 phần, đoàn 2 = 6 phần cùng độ dài phần, hiệu 3 phần ghi 222 bao, dấu ? ở cả hai hàng" },
+  "LT 14.7": { "hinh_dung": true, "hinh_ghi": "Opus xem ảnh: Hồng 4 phần, Huệ 5 phần bằng nhau, ngoặc tổng 72 viên, dấu ? ở cả hai hàng" },
+  "PTL 4.2": { "hinh_dung": true, "hinh_ghi": "Opus xem ảnh: TBC 1 phần; 4D = 1 phần + 2 HS; 4A+4B+4C = 3 phần thiếu 2 HS (nét đứt cuối), đúng tỉ lệ (2/33 phần)" }
+ }
+}

@@ -101,7 +101,86 @@ const lap3 = (cs) => tim(100, 999, (n) => khacNhau(n) && chuSo(n).every((c) => c
 const ds7B = { 'LT 10.1': [3745, 8698, 3946, 2970, 3565, 4870], 'LT 10.2': [1725, 3648, 5790, 5687, 3240], 'LT 10.3': [123, 1890, 2010, 3945, 5768, 12846] }
 const loc = (k, f) => ds7B[k].filter(f).map(String)
 
+/**
+ * TÍNH BIỂU THỨC PHÂN SỐ viết bằng LaTeX của sách (\frac, \times, :, \left( \right), số tự nhiên) — phân số chính xác.
+ * Biến (vd y) thay bằng giá trị bien. Dùng để kiểm CĐ18–19 mà không tính tay.
+ */
+export function tinh(latex, bien = {}) {
+  let s = String(latex).replace(/\$/g, '').replace(/\\left|\\right/g, '').replace(/\\times/g, '*').replace(/\\cdot/g, '*').replace(/\s+/g, '').replace(/\\,|\\ /g, '')
+  // \frac{X}{Y} (lồng được) ⇒ ((X)/(Y))
+  const doc = (str, i) => { let d = 0, j = i; do { if (str[j] === '{') d++; else if (str[j] === '}') d--; j++ } while (d > 0 && j < str.length); return [str.slice(i + 1, j - 1), j] }
+  const boFrac = (str) => { let out = '', i = 0; while (i < str.length) { const m = str.slice(i).match(/^\\d?frac/); if (m) { const [a, j] = doc(str, i + m[0].length); const [b, k] = doc(str, j); out += `((${boFrac(a)})/(${boFrac(b)}))`; i = k } else { out += str[i]; i++ } } return out }
+  s = boFrac(s).replace(/:/g, '/').replace(/[{}]/g, '')
+  for (const [k, v] of Object.entries(bien)) s = s.replace(new RegExp(k, 'g'), `(${v[0]}/${v[1]})`)
+  if (/[^0-9+\-*/().]/.test(s)) throw new Error(`biểu thức lạ: ${s}`)
+  let p = 0
+  const so = () => { if (s[p] === '(') { p++; const v = cong_(); p++; return v } let j = p; while (/\d/.test(s[j])) j++; const v = P(Number(s.slice(p, j))); p = j; return v }
+  const nhan_ = () => { let v = so(); while (s[p] === '*' || s[p] === '/') { const o = s[p++]; const w = so(); v = o === '*' ? nhan(v, w) : chia(v, w) } return v }
+  const cong_ = () => { let v = nhan_(); while (s[p] === '+' || s[p] === '-') { const o = s[p++]; const w = nhan_(); v = o === '+' ? cong(v, w) : tru(v, w) } return v }
+  const v = cong_(); if (p !== s.length) throw new Error(`đọc dở: ${s.slice(p)}`); return v
+}
+/** giải "vế trái chứa y (bậc nhất) = vế phải" bằng thay y = 0 và y = 1 */
+export function giaiY(trai, phai, ten = 'y') {
+  const f0 = tinh(trai, { [ten]: [0, 1] }), f1 = tinh(trai, { [ten]: [1, 1] }), r = tinh(phai)
+  const y = chia(tru(r, f0), tru(f1, f0))
+  if (ps(tinh(trai, { [ten]: y })) !== ps(r)) throw new Error('giải y: thử ngược sai (không bậc nhất?)')
+  return y
+}
+
 export const KIEM = {
+  // ── lô 8A: CĐ 14 (rút về đơn vị), CĐ 15 (dãy số liệu, khả năng), PTL 4 — máy tính từ số liệu đề ──
+  'VD 14.1': () => [String(448 / 8 * 6)], 'VD 14.2': () => [String(2100 / (15 / 5))],
+  'LT 14.1': () => [String(981 / 9 * 3)], 'LT 14.2': () => [String(96 / 8 * (8 - 2))], 'LT 14.3': () => [String(594 / 11 * (11 + 3))],
+  'LT 14.5': () => [String(240 / 6 * 4 / 5)],
+  'LT 14.6': () => { const x = motNghiem(tim(1, 1000, (x) => 9 * x - 6 * x === 222), '14.6'); return [String(9 * x), String(6 * x)] },
+  'LT 14.7': () => { const lan = motNghiem(tim(1, 100, (n) => n * (4 + 5) === 72), '14.7'); return [String(4 * lan), String(5 * lan)] },
+  'LT 14.8': () => [String(48 / (7 - 1) * (4 - 1))], // số lần cưa = số đoạn − 1
+  'LT 14.9': () => [String(294 / (42 / 3))], 'LT 14.10': () => [String(720 / (240 / (4 * 3)))],
+  'LT 14.11': () => [String((850 - 694) / (10 / 5))], 'LT 14.12': () => [String((65000 + 26000) / (65000 / 5))],
+  'LT 14.14': () => [String(217 / (25 / 5 + 2))], 'LT 14.15': () => [String(40 * 6 / (150 / 5))],
+  'LT 14.16': () => [String(motNghiem(tim(1, 1000, (n) => 770 % n === 0 && 770 / n * (n + 3) === 875), '14.16'))],
+  'LT 14.17': () => [String(1080 / ((1080 - 990) / 5))],
+  'LT 14.18': () => [String(motNghiem(tim(1, 300, (k) => 228 % k === 0 && (228 + 12) % k === 0 && (228 + 12) / k - 228 / k === 2).map((k) => 228 / k), '14.18'))], // số xe không đổi
+  'LT 14.19': () => [String(120 / ((120 - 95) / 5))],
+  'LT 14.20': () => [String(motNghiem(tim(4, 200, (b) => 10 * (b - 3) === 8 * b), '14.20'))],
+  'VD 15.1a': () => [String([40, 43, 45, 48, 44, 45, 39, 40].length)], 'VD 15.1b': () => [String(tbc(40, 43, 45, 48, 44, 45, 39, 40))],
+  'VD 15.1c': () => [String(tbc(...[40, 43, 45, 48, 44, 45, 39, 40].sort((a, b) => b - a).slice(0, 3)))],
+  'VD 15.3': () => [String(4 * 3 / 2)],
+  'LT 15.1a': () => [String([8, 10, 8, 9, 9, 10, 9, 9, 8, 10].length)], 'LT 15.1b': () => [String(tbc(8, 10, 8, 9, 9, 10, 9, 9, 8, 10))],
+  'LT 15.2a': () => { const d = [432, 567, 689, 512, 568, 799, 801]; return [['thứ Hai', 'thứ Ba', 'thứ Tư', 'thứ Năm', 'thứ Sáu', 'thứ Bảy', 'Chủ nhật'][d.indexOf(Math.max(...d))]] },
+  'LT 15.2b': () => [String(tbc(432, 567, 689, 512, 568, 799, 801))],
+  'LT 15.3a': () => [String([132, 137, 134, 132, 135, 140, 138, 140].length)], 'LT 15.3b': () => [String(tbc(132, 137, 134, 132, 135, 140, 138, 140))],
+  'LT 15.7a': () => [String(7 + 14 + 7)], 'LT 15.7b': () => [String((8 * 7 + 9 * 14 + 10 * 7) / (7 + 14 + 7))],
+  'LT 15.11': () => [String(4 * 3 / 2)],
+  'LT 15.12a': () => ['đỏ', 'vàng', 'xanh'], 'LT 15.12b': () => ['xanh'],
+  // 2 con xúc xắc PHÂN BIỆT (con thứ nhất ra a, con thứ hai ra b) — cách hiểu đã ghi cho CEO
+  'LT 15.13a': () => [String(6 * 6)], 'LT 15.13b': () => [String(6)], 'LT 15.13c': () => [String(6 * 6 - 6)],
+  'LT 15.15': () => { let best = 0; for (let r = 0; r <= 30; r++) for (let v = 0; v <= 30; v++) for (let x = 0; x <= 30; x++) if (v + x <= 9 && r + v <= 10 && r + x <= 11) best = Math.max(best, r + v + x); return [String(best)] },
+  'PTL 4.1': () => [String(tbc(130, 130, 150, 150, 150))],
+  'PTL 4.2': () => [String(motNghiem(tim(0, 200, (d) => d === tbc(30, 33, 34, d) + 2), 'PTL 4.2'))],
+  'PTL 4.3': () => [String((64000 - 24000) / (64000 / 8))], 'PTL 4.4': () => [String(280 / (25 / 5 + 2))],
+  'PTL 4.5': () => { const d = [8, 8, 9, 9, 10, 10, 10, 8, 9, 9], t = tbc(...d); return [String(d.length), String(t), String(d.filter((x) => x < t).length)] },
+  // ── lô 8C: CĐ 18 — máy tính biểu thức trên chính đề ──
+  'VD 18.1a': () => [ps(tinh('\\frac{2}{3}+\\frac{3}{4}'))], 'VD 18.1b': () => [ps(tinh('\\frac{3}{4}-\\frac{2}{3}'))],
+  'VD 18.2a': () => [ps(tinh('\\frac{3}{4}+\\frac{7}{5}-\\frac{3}{10}'))], 'VD 18.2b': () => [ps(tinh('\\frac{14}{3}-(\\frac{10}{3}-\\frac{7}{3})+4'))],
+  'LT 18.1': () => ['\\frac{2}{3}+\\frac{11}{12}', '\\frac{9}{4}+\\frac{17}{20}', '\\frac{23}{6}+\\frac{19}{54}', '\\frac{25}{72}+\\frac{5}{8}', '\\frac{43}{6}+\\frac{45}{8}', '\\frac{5}{9}+\\frac{7}{15}', '1+\\frac{2}{3}', '\\frac{3}{5}+1'].map((e) => ps(tinh(e))),
+  'LT 18.2': () => ['\\frac{11}{6}-\\frac{5}{12}', '\\frac{39}{100}-\\frac{8}{25}', '\\frac{13}{12}-\\frac{15}{16}', '\\frac{3}{8}-\\frac{5}{18}', '\\frac{7}{6}-\\frac{4}{9}', '\\frac{8}{15}-\\frac{2}{9}', '\\frac{9}{8}-1', '3-\\frac{16}{11}'].map((e) => ps(tinh(e))),
+  'LT 18.3a': () => [ps(tinh('\\frac{1}{2}+\\frac{1}{3}+\\frac{1}{6}'))], 'LT 18.3b': () => [ps(tinh('\\frac{4}{7}+\\frac{3}{4}+\\frac{2}{7}'))], 'LT 18.3c': () => [ps(tinh('\\frac{1}{6}+\\frac{5}{24}+\\frac{2}{3}'))], 'LT 18.3d': () => [ps(tinh('\\frac{1}{2}+\\frac{5}{16}-\\frac{1}{4}'))],
+  'LT 18.4a': () => [ps(tinh('1-(\\frac{1}{5}+\\frac{1}{2})'))], 'LT 18.4b': () => [ps(tinh('\\frac{2}{3}+\\frac{1}{2}-\\frac{5}{6}'))], 'LT 18.4c': () => [ps(tinh('\\frac{5}{12}+\\frac{5}{6}-\\frac{3}{4}'))], 'LT 18.4d': () => [ps(tinh('\\frac{7}{5}-\\frac{4}{15}-\\frac{2}{3}'))],
+  'LT 18.5a': () => [ps(tinh('\\frac{11}{6}+\\frac{5}{8}-\\frac{7}{12}'))], 'LT 18.5b': () => [ps(tinh('\\frac{5}{2}-\\frac{11}{12}+\\frac{9}{14}'))], 'LT 18.5c': () => [ps(tinh('\\frac{7}{6}+\\frac{5}{12}-\\frac{1}{18}-1'))], 'LT 18.5d': () => [ps(tinh('3+\\frac{11}{4}-\\frac{1}{12}-\\frac{3}{16}'))],
+  'LT 18.6a': () => [ps(tinh('\\frac{13}{6}+\\frac{5}{8}-(\\frac{7}{6}-\\frac{3}{8})'))], 'LT 18.6b': () => [ps(tinh('(\\frac{3}{5}+\\frac{1}{4})-(\\frac{3}{2}-\\frac{7}{5})'))], 'LT 18.6c': () => [ps(tinh('\\frac{5}{4}-(\\frac{1}{2}+\\frac{3}{8})'))], 'LT 18.6d': () => [ps(tinh('(3-\\frac{5}{3})-(2-\\frac{7}{5})'))],
+  'LT 18.7a': () => [ps(giaiY('\\frac{11}{7}-\\frac{5}{7}+y', '\\frac{5}{4}'))], 'LT 18.7b': () => [ps(giaiY('\\frac{19}{20}-y', '\\frac{8}{5}-\\frac{3}{4}'))],
+  'LT 18.7c': () => [ps(giaiY('\\frac{9}{5}-y-\\frac{11}{25}', '\\frac{1}{15}'))], 'LT 18.7d': () => [ps(giaiY('\\frac{16}{27}-\\frac{2}{9}+y', '1'))],
+  'LT 18.8a': () => [ps(tinh('\\frac{3}{4}+\\frac{2}{5}+\\frac{1}{4}+\\frac{3}{5}'))], 'LT 18.8b': () => [ps(tinh('\\frac{10}{7}+\\frac{4}{9}+\\frac{4}{7}+\\frac{5}{9}'))], 'LT 18.8c': () => [ps(tinh('\\frac{1}{15}+\\frac{5}{18}+\\frac{4}{15}+\\frac{7}{18}'))],
+  'LT 18.8d': () => [ps(tinh('\\frac{5}{8}+\\frac{5}{12}-\\frac{1}{8}+\\frac{1}{12}'))], 'LT 18.8e': () => [ps(tinh('\\frac{6}{5}+\\frac{8}{22}+\\frac{4}{5}+\\frac{7}{11}+\\frac{5}{21}+\\frac{32}{42}'))], 'LT 18.8f': () => [ps(tinh('\\frac{75}{100}+\\frac{18}{21}+\\frac{19}{32}+\\frac{1}{4}+\\frac{3}{21}+\\frac{13}{32}'))],
+  'LT 18.9a': () => [ps(tinh('\\frac{1515}{1818}+2+\\frac{1212}{3636}+\\frac{2}{3}'))], 'LT 18.9b': () => [ps(tinh('\\frac{124124}{186186}+\\frac{4}{5}+\\frac{1313}{6565}-\\frac{2}{3}'))],
+  'LT 18.10a': () => [ps(tinh('\\frac{3}{2}+\\frac{4}{7}-(\\frac{5}{6}+\\frac{4}{7})-\\frac{1}{6}'))], 'LT 18.10b': () => [ps(tinh('\\frac{14}{9}+\\frac{1}{4}+\\frac{12}{16}-\\frac{14}{18}'))],
+  'LT 18.10c': () => [ps(tinh('\\frac{25}{100}+\\frac{18}{23}+\\frac{24}{32}-\\frac{3}{4}+\\frac{5}{23}-\\frac{2}{8}'))], 'LT 18.10d': () => [ps(tinh('\\frac{8}{20}+\\frac{6}{9}+\\frac{3}{4}+\\frac{3}{5}+\\frac{1}{3}+\\frac{5}{20}'))],
+  'LT 18.11': () => [ps(tinh('\\frac{1}{5}+\\frac{1}{6}'))],
+  'LT 18.13': () => [ps(giaiY('y+\\frac{1}{8}+\\frac{1}{6}', '\\frac{1}{2}'))],
+  'LT 18.14': () => { let A = P(0), C = P(0); for (let k = 2; k <= 9; k++) A = cong(A, P(1, k * (k + 1))); for (let k = 1; k <= 16; k += 3) C = cong(C, P(3, k * (k + 3))); return [`A=${ps(A)}`, `C=${ps(C)}`] },
+  'LT 18.15': () => { let M = P(0); for (let k = 1; k <= 7; k++) M = cong(M, P(1, k * (k + 1))); return [M[0] < M[1] ? 'M<1' : 'M>1', ps(M)] },
+
   // ── lô 7B: CĐ 10, 11 — viết từ đề ──
   'VD 10.3': () => dien('43ab', (n) => n % 90 === 0).map(String),
   'LT 10.1a': () => loc('LT 10.1', (n) => n % 2 === 0), 'LT 10.1b': () => loc('LT 10.1', (n) => n % 5 === 0), 'LT 10.1c': () => loc('LT 10.1', (n) => n % 10 === 0),
