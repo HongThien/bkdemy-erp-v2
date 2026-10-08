@@ -36130,3 +36130,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (1) "Bài nào nhiều cách thì nói ra bàn, chốt một cách chính" ⇒ k5T.md §2b bảng 6 dạng nhiều cách (A hỗn số · B tỉ lệ đơn · C tỉ lệ kép · D tính ngược phân số · E xếp lập phương · F dãy mẫu gấp đôi) + đề xuất, chờ chốt. Câu 1, 14, 25 của lô có thể phải làm lại theo cách được chốt.
 - (2) "Có sơ đồ vẫn là tốt nhất" ⇒ sơ đồ hai hiệu số (VD 7.1) vẽ được bằng máy hiện có: 3 hàng — tổng thật, cách thừa = đoạn thiếu nét đứt (`bot`), cách thiếu = đoạn thêm (`them`). Thêm vào câu 19–20. Sơ đồ tính ngược của sách (VD 9.2) là kiểu LỒNG NHAU căn phải — máy chưa vẽ được, cần chế độ mới nếu CEO chốt D①.
 - (3) "Cách chuẩn hai tỉ số không dùng sơ đồ" ⇒ ghi luật, ngoại lệ có chủ đích.
+
+## 08/10 (tiếp) — Bản đồ mới: XOÁ TRỌN GÓI (Thùy: vỏ không tái sử dụng được mà không cho xoá)
+- Gốc lỗi (tái hiện trong ROLLBACK trên K8): luật t đặt từ đầu = FK restrict ⇒ xoá nhóm phải xoá từng dạng bài trước, gỡ chuyên đề phải xoá từng nhóm, xoá chủ đề phải gỡ từng chuyên đề. Với vỏ chép 681 nhóm/329 dạng bài là không làm nổi. Nhóm 0 dạng bài thì vẫn xoá được.
+- Mig 202610081659: fn_bdm_xoa_nhom / fn_bdm_xoa_o / fn_bdm_xoa_chu_de (+ _bdm_xoa_cac_nhom) — xoá mục kèm mọi thứ bên dưới trong 1 transaction; chuyên đề không còn ở chủ đề nào ⇒ xoá khỏi danh mục; CHẶN DUY NHẤT khi bên dưới có câu đã gán (dai_bdm_gan_cau). Log trigger vẫn ghi từng dòng. Thử khô ROLLBACK K8: nhóm 5 dạng bài ✓ · chuyên đề còn nhóm ✓ · chủ đề Toán Chuyên (10 nhóm, 4 chuyên đề) ✓ · có câu gán ⇒ chặn ✓.
+- UI: 3 nút xoá đổi sang trọn gói, hộp xác nhận ghi rõ số chuyên đề/nhóm/dạng bài sẽ mất + 'Không hoàn tác được'. Không bấm xoá thật trên UI (toàn bộ vỏ là dữ liệu Thùy đang soạn) — kiểm ở DB trong ROLLBACK.

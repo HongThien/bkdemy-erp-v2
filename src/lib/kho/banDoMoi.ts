@@ -44,6 +44,24 @@ export async function getCay(khoi: string): Promise<BdmCay> {
   return data as BdmCay
 }
 
+// ── Xoá TRỌN GÓI (CEO 08/10): xoá 1 mục = xoá mọi thứ bên dưới; DB chỉ chặn khi bên dưới có câu đã gán ──
+export type KqXoa = { nhom: number; dang_bai: number; chuyen_de?: number; xoa_khoi_danh_muc?: boolean }
+export async function xoaNhomTronGoi(id: string): Promise<KqXoa> {
+  const { data, error } = await supabase.rpc('fn_bdm_xoa_nhom', { p_id: id })
+  if (error) loi(error)
+  return data as KqXoa
+}
+export async function xoaChuyenDeKhoiChuDe(chuDeId: string, chuyenDeId: string): Promise<KqXoa> {
+  const { data, error } = await supabase.rpc('fn_bdm_xoa_o', { p_chu_de: chuDeId, p_chuyen_de: chuyenDeId })
+  if (error) loi(error)
+  return data as KqXoa
+}
+export async function xoaChuDeTronGoi(id: string): Promise<KqXoa> {
+  const { data, error } = await supabase.rpc('fn_bdm_xoa_chu_de', { p_id: id })
+  if (error) loi(error)
+  return data as KqXoa
+}
+
 // ── Chủ đề ──
 export async function themChuDe(khoi: string, ten: string): Promise<void> {
   const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() })

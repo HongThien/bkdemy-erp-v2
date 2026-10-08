@@ -11,8 +11,8 @@
 // Kéo thả HTML5 thuần. Sau mỗi lần ghi: tải lại cây NỀN, không xoá màn (CLAUDE §2 React).
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
 import {
-  getCay, themChuDe, suaChuDe, xoaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, goO, xoaChuyenDe,
-  themNhom, suaNhom, xoaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
+  getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
+  themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, themTienDe, goTienDe, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
   getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
@@ -678,8 +678,14 @@ function ChiTiet(p: {
       <TruongTen key={cd.id} gt={cd.ten} onLuu={(t) => lam(() => suaChuDe(cd.id, t))} />
       <div className="text-[12px] text-slate-500">Khối <b>{p.khoi}</b> · {cd.o.length} chuyên đề · mã nháp <code>{cd.id}</code></div>
       <ThuTuChuDe cay={cay} cd={cd} lam={lam} />
-      <NutXoa nhan="Xoá chủ đề" moTa="Chỉ xoá được khi chủ đề không còn chuyên đề nào."
-        onXoa={() => { if (window.confirm(`Xoá chủ đề «${cd.ten}»?`)) void lam(() => xoaChuDe(cd.id), 'Đã xoá').then(p.onDaXoa) }} />
+      {(() => {
+        const soNhom = cd.o.reduce((t, x) => t + x.nhom.length, 0) // đếm thứ đang hiển thị — chỉ để hỏi xác nhận
+        const soDb = cd.o.reduce((t, x) => t + x.nhom.reduce((u, n) => u + n.dang_bai.length, 0), 0)
+        return (
+          <NutXoa nhan="Xoá chủ đề (kèm mọi thứ bên trong)" moTa={`Xoá luôn ${cd.o.length} chuyên đề · ${soNhom} nhóm · ${soDb} dạng bài bên trong (lý thuyết, ví dụ, mô tả, mũi tên mất theo). Chuyên đề nào đang dùng chung ở chủ đề khác thì vẫn giữ ở đó.`}
+            onXoa={() => { if (window.confirm(`Xoá chủ đề «${cd.ten}» cùng ${cd.o.length} chuyên đề, ${soNhom} nhóm, ${soDb} dạng bài bên trong?\n\nKhông hoàn tác được.`)) void lam(() => xoaChuDeTronGoi(cd.id), `Đã xoá chủ đề «${cd.ten}»`).then(p.onDaXoa) }} />
+        )
+      })()}
     </>)
   }
 
@@ -698,12 +704,15 @@ function ChiTiet(p: {
       <ChonDich nhan="⧉ Gộp vào chuyên đề khác (dùng chung)" moTa="Chuyên đề này biến mất; mọi chủ đề đang dùng nó chuyển sang chuyên đề đích (chủ đề đã có đích thì dồn nhóm vào). Nhóm, mũi tên, dạng cũ gắn vào đi theo."
         lua={cay.chuyen_de.filter((x) => x.id !== o.chuyen_de_id).map((x) => ({ id: x.id, nhan: `${x.ten}${x.so_chu_de ? ` · ở ${x.so_chu_de} chủ đề · K${x.khoi.join(',')}` : ''}` }))}
         onChon={(id) => { const ten = cay.chuyen_de.find((x) => x.id === id)?.ten ?? id; if (window.confirm(`Gộp «${o.ten}» vào «${ten}»? «${o.ten}» sẽ biến mất.`)) void lam(() => gopChuyenDe(o.chuyen_de_id, id), `Đã gộp vào «${ten}»`).then(p.onDaXoa) }} />
-      <NutXoa nhan="Gỡ khỏi chủ đề này" moTa="Chỉ gỡ được khi chuyên đề không còn nhóm bài nào trong chủ đề này. Chuyên đề vẫn còn ở các chủ đề khác."
-        onXoa={() => void lam(() => goO(cd.id, o.chuyen_de_id), 'Đã gỡ').then(p.onDaXoa)} />
-      {o.so_chu_de <= 1 && (
-        <NutXoa nhan="Gỡ và xoá hẳn chuyên đề" moTa="Chuyên đề chỉ có ở chủ đề này — gỡ rồi xoá luôn khỏi danh mục."
-          onXoa={() => { if (window.confirm(`Xoá chuyên đề «${o.ten}»?`)) void lam(async () => { await goO(cd.id, o.chuyen_de_id); await xoaChuyenDe(o.chuyen_de_id) }, 'Đã xoá').then(p.onDaXoa) }} />
-      )}
+      {(() => {
+        const soDb = o.nhom.reduce((t, n) => t + n.dang_bai.length, 0) // đếm thứ đang hiển thị — chỉ để hỏi xác nhận
+        const conNoiKhac = o.so_chu_de > 1
+        return (
+          <NutXoa nhan={conNoiKhac ? 'Gỡ khỏi chủ đề này (kèm nhóm bên trong)' : 'Xoá chuyên đề (kèm nhóm bên trong)'}
+            moTa={`Xoá luôn ${o.nhom.length} nhóm · ${soDb} dạng bài của chuyên đề này trong chủ đề «${cd.ten}».${conNoiKhac ? ` Chuyên đề vẫn còn ở ${o.so_chu_de - 1} chủ đề khác.` : ''}`}
+            onXoa={() => { if (window.confirm(`${conNoiKhac ? 'Gỡ' : 'Xoá'} chuyên đề «${o.ten}» khỏi chủ đề «${cd.ten}» cùng ${o.nhom.length} nhóm, ${soDb} dạng bài bên trong?\n\nKhông hoàn tác được.`)) void lam(() => xoaChuyenDeKhoiChuDe(cd.id, o.chuyen_de_id), conNoiKhac ? 'Đã gỡ khỏi chủ đề' : 'Đã xoá chuyên đề').then(p.onDaXoa) }} />
+        )
+      })()}
     </>)
   }
 
@@ -744,8 +753,8 @@ function ChiTiet(p: {
         lua={moiO.filter((x) => !(x.cd.id === cd.id && x.o.chuyen_de_id === o.chuyen_de_id)).map((x) => ({ id: oKey(x.cd.id, x.o.chuyen_de_id), nhan: `${x.cd.ten} › ${x.o.ten}` }))}
         onChon={(k) => { const [c, ch] = k.split('|'); void lam(() => chuyenNhom(n.id, c, ch, null), 'Đã chuyển nhóm bài').then(p.onDaXoa) }} />
       <HaNhom cay={cay} n={n} onHa={(dich) => void lam(() => haNhom(n.id, dich), 'Đã hạ thành dạng bài').then(p.onDaXoa)} />
-      <NutXoa nhan="Xoá nhóm bài" moTa="Chỉ xoá được khi không còn dạng bài bên trong. Lý thuyết, mô tả, mũi tên mất theo."
-        onXoa={() => { if (window.confirm(`Xoá nhóm bài «${n.ten}»?`)) void lam(() => xoaNhom(n.id), 'Đã xoá').then(p.onDaXoa) }} />
+      <NutXoa nhan="Xoá nhóm bài (kèm dạng bài bên trong)" moTa={`Xoá luôn ${n.dang_bai.length} dạng bài bên trong. Lý thuyết, ví dụ, mô tả, mũi tên mất theo.`}
+        onXoa={() => { if (window.confirm(`Xoá nhóm bài «${n.ten}»${n.dang_bai.length ? ` cùng ${n.dang_bai.length} dạng bài bên trong` : ''}?\n\nKhông hoàn tác được.`)) void lam(() => xoaNhomTronGoi(n.id), 'Đã xoá nhóm bài').then(p.onDaXoa) }} />
     </>)
   }
 

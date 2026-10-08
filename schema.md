@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-356 bảng · 20 view · 0 enum · 153 trigger · 890 function
+356 bảng · 20 view · 0 enum · 153 trigger · 894 function
 
 ## _app_secrets
 
@@ -6807,6 +6807,7 @@ WITH luot AS (
 - `_bdm_tien_de_cung_o()` → trigger
 - `_bdm_tien_de_kiem()` → trigger
 - `_bdm_touch()` → trigger
+- `_bdm_xoa_cac_nhom(p_nhom text[])` → jsonb
 - `_bt_cau_trang_thai_json(p_bt uuid, p_cau uuid[])` → jsonb
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
 - `_btvn_hs_xem_anh(p_name text)` → boolean
@@ -7076,6 +7077,9 @@ WITH luot AS (
 - `fn_bdm_ha_nhom(p_id text, p_nhom_dich text)` → text
 - `fn_bdm_nang_dang_bai(p_id text, p_chu_de_id text, p_chuyen_de_id text)` → text
 - `fn_bdm_sap_xep(p_loai text, p_ids text[])` → void
+- `fn_bdm_xoa_chu_de(p_id text)` → jsonb
+- `fn_bdm_xoa_nhom(p_id text)` → jsonb
+- `fn_bdm_xoa_o(p_chu_de text, p_chuyen_de text)` → jsonb
 - `fn_bo_dau(p text)` → text
 - `fn_bo_tro_trong_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_bo_tro_tu_kiem(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
@@ -7338,8 +7342,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_mo_app()` → void
