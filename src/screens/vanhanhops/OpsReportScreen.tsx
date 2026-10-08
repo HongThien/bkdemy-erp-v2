@@ -161,6 +161,13 @@ function TaskRow({ t, now, open, onToggle, onDone }: { t: OpsTask; now: number; 
                 {isMobile ? '📸 Chụp ảnh' : '📎 Chọn ảnh'}
                 <input type="file" accept="image/*" capture="environment" className="hidden" onChange={chonFile} />
               </label>
+              {/* Thùy 08/10: mobile thêm đường chọn ảnh có sẵn từ THƯ VIỆN (vd ảnh chụp màn hình tin Zalo đã gửi). */}
+              {isMobile && (
+                <label className="flex-1 cursor-pointer rounded-lg border border-slate-300 px-3 py-3 text-center text-[14px] font-medium text-slate-700 active:bg-slate-100">
+                  🖼️ Thư viện
+                  <input type="file" accept="image/*" className="hidden" onChange={chonFile} />
+                </label>
+              )}
               {anhUrl && <ImgZoom src={anhUrl} className={isMobile ? 'h-12 w-12 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-9 w-9 rounded object-cover ring-1 ring-slate-200'} />}
             </div>
             <button onClick={dong} disabled={busy || !anhUrl} className={isMobile ? 'rounded-lg bg-indigo-600 px-3 py-3 text-[14px] font-semibold text-white disabled:opacity-40' : 'ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40'}>Đóng task</button>

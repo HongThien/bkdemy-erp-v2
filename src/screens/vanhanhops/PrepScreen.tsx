@@ -200,6 +200,13 @@ function LuotCard({ l, onChanged, canChamVaChot }: { l: PrepLuot; onChanged: () 
               {isMobile ? '📸 Chụp ảnh' : '📎 Chọn ảnh'}
               <input type="file" accept="image/*" capture="environment" className="hidden" onChange={chonFile} />
             </label>
+            {/* Thùy 08/10: mobile thêm đường chọn ảnh có sẵn từ THƯ VIỆN (không capture ⇒ mở trình chọn ảnh). */}
+            {isMobile && (
+              <label className="flex-1 cursor-pointer rounded-lg border border-slate-300 px-3 py-2.5 text-center text-[13px] font-medium text-slate-700 active:bg-slate-100">
+                🖼️ Thư viện
+                <input type="file" accept="image/*" className="hidden" onChange={chonFile} />
+              </label>
+            )}
             {row?.anhUrl && <ImgZoom src={row.anhUrl} className={isMobile ? 'h-11 w-11 shrink-0 rounded object-cover ring-1 ring-slate-200' : 'h-7 w-7 rounded object-cover ring-1 ring-slate-200'} />}
           </div>
           <button onClick={dong} disabled={busy || !row?.donPhong || !row?.chuanBiKit || !row?.anhUrl} className={isMobile ? 'rounded-lg bg-indigo-600 px-3 py-2.5 text-[13px] font-semibold text-white disabled:opacity-40' : 'ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40'}>Đóng</button>

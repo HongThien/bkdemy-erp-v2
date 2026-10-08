@@ -13,6 +13,7 @@ import {
 import { dongBoXu } from '../../lib/xu'
 import SearchSelect, { norm, type Opt } from '../../components/SearchSelect'
 import { OpsHero } from '../../components/ops/OpsUI'
+import { anhNho } from '../../lib/anhNho'
 
 type Muc = 'doi' | 'don' | 'kho' | 'ls'
 
@@ -54,14 +55,15 @@ const OD_TT: Record<QuaOrder['trang_thai'], [string, string]> = {
   huy: ['đã hủy', 'bg-slate-100 text-slate-500'],
 }
 
+// Ảnh luôn qua anhNho (bản thu nhỏ) — ảnh gốc 0,2–1,2MB/ảnh làm màn lag, ảnh quà không lên (Thùy 08/10).
 function AvaHS({ ten, img, size = 'h-9 w-9 text-[12px]' }: { ten: string; img: string | null | undefined; size?: string }) {
-  if (img) return <img src={img} alt="" loading="lazy" decoding="async" className={`${size} shrink-0 rounded-full object-cover ring-1 ring-slate-200`} />
+  if (img) return <img src={anhNho(img, 96)!} alt="" loading="lazy" decoding="async" className={`${size} shrink-0 rounded-full object-cover ring-1 ring-slate-200`} />
   const ini = ten.trim().split(/\s+/).slice(-2).map((w) => w.charAt(0).toUpperCase()).join('')
   return <span className={`flex ${size} shrink-0 items-center justify-center rounded-full bg-rose-100 font-bold text-rose-700`}>{ini}</span>
 }
 function AnhQua({ url, cls }: { url: string | null; cls: string }) {
   return url
-    ? <img src={url} alt="" loading="lazy" decoding="async" className={`${cls} rounded-xl object-cover`} />
+    ? <img src={anhNho(url, 320)!} alt="" loading="lazy" decoding="async" className={`${cls} rounded-xl object-cover`} />
     : <span className={`${cls} flex items-center justify-center rounded-xl bg-rose-50 text-[26px]`}>🎁</span>
 }
 
@@ -118,8 +120,10 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
-  async function reload(force = false) {
-    setLoading(true)
+  // `nen` = làm mới NỀN sau mutation: giữ nguyên list + ảnh đang hiện, không bật "Đang tải…" (bản cũ xoá trắng
+  // cả tab, ảnh quà tải lại từ đầu sau MỖI lượt đổi — Thùy 08/10 "thao tác đổi quà rất lag"; CLAUDE §2).
+  async function reload(force = false, nen = false) {
+    if (!nen) setLoading(true)
     try {
       const [h, t] = await Promise.all([getSoDuList(force), getTonList(force)])
       setHsList(h); setTonList(t)
@@ -147,7 +151,7 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
   }, [hsId])
 
   const hs = hsList.find((h) => h.hoc_sinh_id === hsId) ?? null
-  const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu${h.khoi ? ` · K${h.khoi}` : ''}`, img: h.anh_url }))
+  const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu${h.khoi ? ` · K${h.khoi}` : ''}`, img: anhNho(h.anh_url, 48) }))
   const banHet = tonList.filter((q) => q.dang_ban)
   const kw = norm(timQua.trim())
   const catalog = kw ? banHet.filter((q) => norm(q.ten).includes(kw)) : banHet
@@ -157,9 +161,9 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
     if (lyDo == null || !lyDo.trim()) return
     try {
       const du = await huyDoiQua(d.id, lyDo.trim()); setSoDu(du)
-      invalidateSoDu(); invalidateTon()  // số dư HS + tồn kho đổi → cache stale
-      await reloadHS(d.hoc_sinh_id); reload(true)
       bao(`✓ Đã hủy, hoàn ${d.xu_tru} xu`)
+      invalidateSoDu(); invalidateTon()  // số dư HS + tồn kho đổi → cache stale
+      reloadHS(d.hoc_sinh_id); reload(true, true)
     } catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function giao(d: DoiQua) {
@@ -251,9 +255,9 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
         <DoiModal hs={hs} soDu={soDu ?? hs.so_du} qua={chonQua} onClose={() => setChonQua(null)}
           onDone={async (duMoi, giaoNgay) => {
             setChonQua(null); setSoDu(duMoi)
-            invalidateSoDu(); invalidateTon()  // đổi → số dư + tồn quà đều lệch
-            await reloadHS(hs.hoc_sinh_id); reload(true)
             bao(giaoNgay ? `✓ Đã đổi & giao — số dư mới ${duMoi} xu` : `✓ Đã đổi (chờ giao) — số dư mới ${duMoi} xu`)
+            invalidateSoDu(); invalidateTon()  // đổi → số dư + tồn quà đều lệch
+            reloadHS(hs.hoc_sinh_id); reload(true, true)
           }} />
       )}
     </div>
@@ -321,8 +325,8 @@ function DonTab({ bao }: { bao: (m: string) => void }) {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
-  async function reload() {
-    setLoading(true)
+  async function reload(nen = false) { // nen = sau mutation: làm mới nền, không xoá trắng list
+    if (!nen) setLoading(true)
     try {
       const [s, g, c] = await Promise.all([listOrderDangSong(), listOrderGanDay(), listDoiQuaChoGiao()])
       setDangSong(s); setGanDay(g); setChoGiao(c)
@@ -331,7 +335,7 @@ function DonTab({ bao }: { bao: (m: string) => void }) {
   useEffect(() => { reload() }, [])
 
   const lam = (fn: () => Promise<any>, ok: string) => async () => {
-    try { await fn(); await reload(); bao(ok) } catch (e: any) { alert(e.message ?? String(e)) }
+    try { await fn(); await reload(true); bao(ok) } catch (e: any) { alert(e.message ?? String(e)) }
   }
   function duyet(o: QuaOrder) {
     const s = prompt(`Duyệt đơn "${o.mo_ta}" của ${o.hoc_sinh?.ho_ten}.\nNhập GIÁ XU (trừ ngay khi duyệt):`)
@@ -424,7 +428,7 @@ function DonTab({ bao }: { bao: (m: string) => void }) {
         </details>
       )}
 
-      {form && <OrderModal onClose={() => setForm(false)} onDone={async () => { setForm(false); await reload(); bao('✓ Đã tạo đơn đặt quà') }} />}
+      {form && <OrderModal onClose={() => setForm(false)} onDone={async () => { setForm(false); await reload(true); bao('✓ Đã tạo đơn đặt quà') }} />}
     </div>
   )
 }
@@ -468,7 +472,7 @@ function OrderModal({ onClose, onDone }: { onClose: () => void; onDone: () => vo
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   useEffect(() => { getSoDuList().then(setHsList).catch(() => {}) }, [])
-  const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu`, img: h.anh_url }))
+  const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu`, img: anhNho(h.anh_url, 48) }))
 
   async function save() {
     if (!hsId) { setErr('Chọn học sinh'); return }
@@ -506,15 +510,15 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
-  async function reload() {
-    setLoading(true)
+  async function reload(nen = false) { // nen = sau mutation: làm mới nền, không xoá trắng list
+    if (!nen) setLoading(true)
     try { const [t, p] = await Promise.all([getTonList(true), listNhapChoXacNhan()]); setTonList(t); setPhieuCho(p) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
 
   async function toggleBan(q: TonQua) {
-    try { await setQuaDangBan(q.qua_id, !q.dang_ban); await reload(); bao(q.dang_ban ? 'Đã ngừng bán' : '✓ Đã mở bán lại') }
+    try { await setQuaDangBan(q.qua_id, !q.dang_ban); await reload(true); bao(q.dang_ban ? 'Đã ngừng bán' : '✓ Đã mở bán lại') }
     catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function xacNhan(p: QuaNhap) {
@@ -522,13 +526,13 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
     if (s == null) return
     const thuc = s.trim() === '' ? null : Number(s)
     if (thuc !== null && (!Number.isInteger(thuc) || thuc <= 0)) { alert('Số lượng thực phải là số nguyên dương'); return }
-    try { const ton = await xacNhanNhap(p.id, thuc); await reload(); bao(`✓ Đã vào kho — tồn mới ${ton}`) }
+    try { const ton = await xacNhanNhap(p.id, thuc); await reload(true); bao(`✓ Đã vào kho — tồn mới ${ton}`) }
     catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function huyPhieu(p: QuaNhap) {
     const lyDo = prompt('Hủy phiếu nhập? Lý do (không bắt buộc):')
     if (lyDo == null) return
-    try { await huyNhap(p.id, lyDo.trim() || null); await reload(); bao('✓ Đã hủy phiếu') }
+    try { await huyNhap(p.id, lyDo.trim() || null); await reload(true); bao('✓ Đã hủy phiếu') }
     catch (e: any) { alert(e.message ?? String(e)) }
   }
 
@@ -587,9 +591,9 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
       })()}
 
       {formQua && <QuaModal qua={formQua === 'moi' ? null : formQua} onClose={() => setFormQua(null)}
-        onDone={async (m) => { setFormQua(null); await reload(); bao(m) }} />}
+        onDone={async (m) => { setFormQua(null); await reload(true); bao(m) }} />}
       {formNhap && <NhapModal qua={formNhap} onClose={() => setFormNhap(null)}
-        onDone={async (m) => { setFormNhap(null); await reload(); bao(m) }} />}
+        onDone={async (m) => { setFormNhap(null); await reload(true); bao(m) }} />}
     </div>
   )
 }
@@ -784,8 +788,8 @@ function LichSuTab({ bao }: { bao: (m: string) => void }) {
     } catch (e: any) { alert(e.message ?? String(e)) }
   }
 
-  const hsOpts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: h.ma_hs ?? '', img: h.anh_url }))
-  const quaOpts: Opt[] = tonList.map((q) => ({ id: q.qua_id, label: q.ten, sub: `${q.gia_xu} xu`, img: q.anh_url }))
+  const hsOpts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: h.ma_hs ?? '', img: anhNho(h.anh_url, 48) }))
+  const quaOpts: Opt[] = tonList.map((q) => ({ id: q.qua_id, label: q.ten, sub: `${q.gia_xu} xu`, img: anhNho(q.anh_url, 48) }))
   // Tổng xu đã trừ trong danh sách đang xem — chỉ đếm bản ghi ĐANG hiển thị (không phải "tổng nghiệp vụ"),
   // đúng ngoại lệ §2.0 "đếm items đang render (badge)".
   const tongTru = rows.filter((r) => r.trang_thai !== 'huy').reduce((s, r) => s + r.xu_tru, 0)

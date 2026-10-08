@@ -167,7 +167,7 @@ export type OpsTask = {
   done: boolean; doneAt: string | null; anhUrl: string | null; deadline: number
 }
 const REPORT_GIO_CO_DINH = '20:00' // Thùy chốt 07-06: mốc CỐ ĐỊNH tối hôm trước, KHÔNG trừ ngược N-giờ-trước-ca.
-const TAN_BIEN_PHUT = 15
+const TAN_BIEN_PHUT = 45 // Thùy 08/10: 15 → 45 phút (lớp có thể tan muộn vì sự cố). DB cùng số: fn_viec_ops_thuong (mig 202610081741).
 function vnInstantLocal(ngay: string, gio: string): number {
   const [y, m, d] = ngay.split('-').map(Number); const [hh, mm] = gio.split(':').map(Number)
   return Date.UTC(y, m - 1, d, hh, mm) - 7 * 3600000
