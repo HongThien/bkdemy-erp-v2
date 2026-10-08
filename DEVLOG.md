@@ -35966,3 +35966,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - LỌC TRÙNG: insertCauBatch chỉ bắt nguyên văn ⇒ "5 và 9" ↔ "$5$ và $9$", "17a8\ b" ↔ "17a8b" lọt. ghi-lo + dau-vao-soan thêm khoá chuanDe (bỏ $, ngoặc, \ , khoảng trắng) ⇒ 7B bỏ 7 câu gần trùng. LT 10.12 (lô 2) đã lỡ ghi trùng T14T100102020 — chưa xoá, chờ CEO.
 - tach-bai: tách hình của đề với hình trong "Bài làm" (9 VD mở lại). Vá bằng node -e mất dấu \ 3 lần nữa (regex \d, \s) — bắt nhờ kết quả lạ; chuyển hẳn sang Edit cho mọi regex.
 - Kho: 361 câu từ sách (T14T000000…), kiem_may khop trừ LT 11.1 (khong_kiem_duoc).
+
+## 08/10 (tiếp) — Xoá dữ liệu thử bản đồ mới (Thùy duyệt 'Xóa dữ liệu thử')
+- 1 transaction, xoá theo đúng id đã liệt kê, đối số dòng trước khi commit: gan_cau 2 · doi_ung 3 · nhom_tien_de 3 · dang_bai 2 · nhom 5 · o 4 (gồm 2 dòng nối của 'qqqq' vào chủ đề [TEST]) · chuyen_de 1 ([TEST] Tìm x) · chu_de 2. Bản nháp còn 0 chủ đề/nhóm/dạng bài.
+- GIỮ: danh mục chuyên đề 'qqqq' (NCH00002 — không phải t tạo, Thùy chưa trả lời có xoá không; giờ 0 chủ đề) · toàn bộ dai_bdm_log (lịch sử, có cả dòng ghi các lần xoá này).
