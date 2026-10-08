@@ -6,7 +6,7 @@
 // Không làm (spec §3): chuỗi một-một giữa 2 bạn · báo công khai ai đứt chuỗi · nhắc giữ chuỗi sau 22:00.
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { HEAD, MAU, NutHS } from './skin/KhungHS'
+import { HEAD, MAU, NutHS, THE } from './skin/KhungHS'
 import type { Chuoi, NgayChuoi } from '../../lib/chuoi'
 
 const MOC = [3, 7, 14, 30, 50, 100, 200, 365]
@@ -57,6 +57,38 @@ function ONgay({ n, homNay }: { n: NgayChuoi; homNay: boolean }) {
           color: n.trang_thai === 'dut' ? MAU.sai : MAU.ink }}>{k.icon}</span>
       <span className="text-[10.5px]" style={{ color: MAU.muted }}>{ddmm(n.ngay)}</span>
     </div>
+  )
+}
+
+/** BANNER CHUỖI ở màn chính (Thùy 08/10: "chuỗi làm bài phải highlight trên màn hình chính"): ngọn lửa to + số ngày + 7 ngày gần nhất.
+ *  Hôm nay CHƯA giữ chuỗi ⇒ viền sáng + nút "Luyện ngay" (nhắc nhẹ); đã giữ ⇒ báo xong. Bấm ⇒ tấm chi tiết (TamChuoi). Chỉ VẼ từ dữ liệu fn_chuoi_cua_toi. */
+export function BannerChuoi({ c, onLuyen }: { c: Chuoi | null | undefined; onLuyen?: () => void }) {
+  const [mo, setMo] = useState(false)
+  if (!c) return null
+  const sang = c.hom_nay_da_tinh
+  const ngayCuoi = c.bay_ngay.length - 1
+  const tieuDe = c.so_ngay > 0 ? `${c.so_ngay} ngày liên tiếp` : 'Bắt đầu chuỗi mới'
+  const dong = sang ? `Hôm nay đã giữ chuỗi ✓ (${c.luot_hom_nay} lượt được tính)`
+    : c.so_ngay > 0 ? 'Hôm nay chưa giữ chuỗi — luyện 1 lượt để không bị đứt' : 'Luyện 1 lượt hôm nay để bắt đầu chuỗi'
+  return (
+    <>
+      <style>{CSS}</style>
+      <div className="flex flex-col gap-2.5 p-3.5 md:p-5" style={{ ...THE, clipPath: 'none', border: `2px solid ${MAU.acc}`, boxShadow: sang ? undefined : '0 0 18px var(--sk-acc)' }}>
+        <button onClick={() => setMo(true)} className="flex w-full items-center gap-3 text-left active:scale-[0.99]" aria-label={`Chuỗi làm bài ${c.so_ngay} ngày. Xem chi tiết`}>
+          <span className={`text-[44px] leading-none md:text-[60px] ${sang ? 'chuoi-lua' : ''}`} style={{ filter: sang ? undefined : 'grayscale(1) opacity(.65)' }} aria-hidden>🔥</span>
+          <span className="min-w-0 flex-1 leading-tight">
+            <span className="block text-[12px] font-bold uppercase tracking-[0.06em] md:text-[13px]" style={{ color: MAU.muted }}>Chuỗi làm bài</span>
+            <span className="block text-[24px] font-bold md:text-[34px]" style={{ ...HEAD, color: sang ? MAU.acc : MAU.ink }}>{tieuDe}</span>
+            <span className="mt-0.5 block text-[13px] leading-snug md:text-[15px]" style={{ color: sang ? MAU.dung : MAU.muted }}>{dong}</span>
+          </span>
+          <span className="shrink-0 text-[22px]" style={{ color: MAU.muted }} aria-hidden>›</span>
+        </button>
+        <div className="flex gap-1">{c.bay_ngay.map((n, i) => <ONgay key={n.ngay} n={n} homNay={i === ngayCuoi} />)}</div>
+        {c.ngay_cho_sua.length > 0 && <p className="text-[13px] font-bold md:text-[14.5px]" style={{ color: MAU.canhBao }}>Em lỡ {c.ngay_cho_sua.map(ddmm).join(', ')} — vẫn sửa được, bấm để xem cách bù.</p>}
+        {onLuyen && !sang && <NutHS onClick={onLuyen}>Luyện ngay để giữ chuỗi</NutHS>}
+      </div>
+      {mo && <TamChuoi c={c} onDong={() => setMo(false)} onLuyen={onLuyen && (() => { setMo(false); onLuyen() })} />}
+    </>
   )
 }
 

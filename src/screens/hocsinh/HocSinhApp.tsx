@@ -33,7 +33,7 @@ import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { BaoLuotHS } from './BaoLuot'
 import GopYHS from './GopYHS'
-import { MungMocChuoi } from './ChuoiHS'
+import { MungMocChuoi, BannerChuoi } from './ChuoiHS'
 import { chuoiCuaToi, type Chuoi } from '../../lib/chuoi'
 import { tinhNangMoCuaToi, MA_TINH_NANG_O, type TinhNangMo } from '../../lib/tinhnang'
 import { soGopYChuaDoc } from '../../lib/gopy_hs'
@@ -752,6 +752,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>
+      {moTN('chuoi') && chuoi && <div className="mt-5"><BannerChuoi c={chuoi} onLuyen={() => setDirect('tu_luyen_chon')} /></div>}
       <ThanhChonMon mons={lopMons} mon={monChon} onChon={doiMon} className="mt-5" dem={demMon} luonHien
         nut={(chon) => chon
           ? { background: 'linear-gradient(135deg, #6549ea, #8368f7)', color: '#fff', boxShadow: '0 6px 16px rgba(101,73,234,.28)', fontSize: 15, padding: '9px 20px' }

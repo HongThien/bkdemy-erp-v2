@@ -93,6 +93,13 @@ const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', g
 // &skin=<id>[&nen=<id>] ⇒ xem mọi màn bằng style khác (vd skin=khoi) — không cần đăng nhập, không lưu DB.
 const Q_XEM = typeof location !== 'undefined' ? new URLSearchParams(location.search) : new URLSearchParams()
 const GD_XEM: GiaoDien = { skin: laySkin(Q_XEM.get('skin')).id, che_do: 'he_thong', hinh_nen: Q_XEM.get('nen') ?? '' }
+// Chuỗi làm bài giả (hình dạng fn_chuoi_cua_toi): tt1 = đã giữ hôm nay · tt2 = CHƯA giữ + lỡ 1 ngày · tt3 = chưa có chuỗi
+const NGAY_CHUOI = (kieu: ('hoc' | 'trong' | 'cho_sua')[]) => kieu.map((trang_thai, i) => ({ ngay: `2026-10-0${2 + i}`, trang_thai }))
+const CHUOI_MAU = (tt: number) => tt === 2
+  ? { so_ngay: 12, bat_dau: '2026-09-26', hom_nay_da_tinh: false, luot_hom_nay: 0, ky_luc: 21, the_dong_bang: 2, ngay_cho_sua: ['2026-10-07'], luot_can_bu: 2, sua_duoc_den: '2026-10-09T23:59:00+07:00', moc_tiep: 14, bay_ngay: NGAY_CHUOI(['hoc', 'hoc', 'hoc', 'hoc', 'hoc', 'cho_sua', 'trong']) }
+  : tt === 3
+    ? { so_ngay: 0, bat_dau: null, hom_nay_da_tinh: false, luot_hom_nay: 0, ky_luc: 0, the_dong_bang: 2, ngay_cho_sua: [], luot_can_bu: 0, sua_duoc_den: null, moc_tiep: 3, bay_ngay: NGAY_CHUOI(['trong', 'trong', 'trong', 'trong', 'trong', 'trong', 'trong']) }
+    : { so_ngay: 12, bat_dau: '2026-09-26', hom_nay_da_tinh: true, luot_hom_nay: 2, ky_luc: 21, the_dong_bang: 2, ngay_cho_sua: [], luot_can_bu: 0, sua_duoc_den: null, moc_tiep: 14, bay_ngay: NGAY_CHUOI(['hoc', 'hoc', 'hoc', 'hoc', 'hoc', 'hoc', 'hoc']) }
 function MauHome({ tt }: { tt: number }) {
   return (
     <HomeHS912 giaoDien={GD_XEM} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
@@ -100,6 +107,7 @@ function MauHome({ tt }: { tt: number }) {
       mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
       onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'}
       rank={tt === 2 ? { bac: 9, ten: 'God of War', sao: 0 } : { bac: 3, ten: 'Captain', sao: 2 }} onRank={noop}
+      chuoi={CHUOI_MAU(tt) as never} onLuyenChuoi={noop}
       onTheGioi={noop} theGioi={tt === 3 ? { tuong_tac: { so: 0, so_nguoi: 0, nguoi: null }, loi_moi: 0, tin: TG.KENH_TG.tin.slice(0, 2) }
         : { tuong_tac: { so: 5, so_nguoi: 3, nguoi: { an: false, ten: 'Nguyễn Thu Hà', lop: '9A1' } }, loi_moi: 2, tin: TG.KENH_TG.tin.slice(0, 1), cho_khoe: TG.CHO_KHOE }} />
   )

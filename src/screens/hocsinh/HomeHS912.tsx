@@ -22,7 +22,7 @@ import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
 import { THE, HEAD, MAU, NhomHS, useHeThongToi, useManDoc, useMedia } from './skin/KhungHS'
 import { TamDoHoa } from './phieuluu/DoHoa'
-import { NutChuoi, TamChuoi } from './ChuoiHS'
+import { BannerChuoi, NutChuoi, TamChuoi } from './ChuoiHS'
 import type { Chuoi } from '../../lib/chuoi'
 import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
@@ -108,6 +108,9 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         </div>
       )}
 
+      {/* CHUỖI LÀM BÀI — nổi bật ngay đầu màn chính (Thùy 08/10); không có dữ liệu chuỗi (tắt tính năng / lỗi) ⇒ không vẽ */}
+      {'chuoi' in p && <BannerChuoi c={p.chuoi} onLuyen={p.onLuyenChuoi} />}
+
       {/* THẾ GIỚI BK cao nhất màn chính (Thùy 03/10) */}
       <TheTheGioi p={p} skin={skin} />
 
@@ -183,7 +186,8 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
   const [moChuoi, setMoChuoi] = useState(false)
   return (
     <>
-        {'chuoi' in p && <NutChuoi c={p.chuoi} onClick={() => p.chuoi && setMoChuoi(true)} style={NUT_TRON} />}
+        {/* điện thoại: banner Chuỗi ở thân trang đã đủ nổi — bỏ nút lửa trên đầu cho cụm nút không tràn ngang */}
+        {'chuoi' in p && <span className="hidden md:contents"><NutChuoi c={p.chuoi} onClick={() => p.chuoi && setMoChuoi(true)} style={NUT_TRON} /></span>}
         {moChuoi && p.chuoi && <TamChuoi c={p.chuoi} onDong={() => setMoChuoi(false)} onLuyen={p.onLuyenChuoi && (() => { setMoChuoi(false); p.onLuyenChuoi!() })} />}
         <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[13px] font-bold active:scale-95"
           style={NUT_TRON} aria-label="Đổi giao diện và hình nền">
@@ -383,6 +387,9 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
               ))}
             </div>
           )}
+
+          {/* CHUỖI LÀM BÀI — nổi bật ngay đầu màn chính (Thùy 08/10) */}
+          {'chuoi' in p && <BannerChuoi c={p.chuoi} onLuyen={p.onLuyenChuoi} />}
 
           {/* THẾ GIỚI BK cao nhất (Thùy 03/10) */}
           {p.onTheGioi && <div className="flex min-w-0"><TheTheGioi p={p} skin={skin} to /></div>}
