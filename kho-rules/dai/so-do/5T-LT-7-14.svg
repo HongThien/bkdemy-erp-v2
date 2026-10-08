@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 544 156" width="544" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="544" height="156" fill="#fff"/>
+<text x="200" y="37" text-anchor="end" fill="#0f172a">Số học sinh:</text>
+<line x1="210" y1="32" x2="467.1" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="210" y1="25" x2="210" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="467.1" y1="25" x2="467.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="338.6" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="200" y="81" text-anchor="end" fill="#0f172a">Số chỗ nếu mỗi bàn 3 bạn:</text>
+<line x1="210" y1="76" x2="435" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="210" y1="69" x2="210" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="467.1" y1="69" x2="467.1" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="435" y1="76" x2="467.1" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="435" y1="69" x2="435" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="451.1" y="66" text-anchor="middle" font-size="12" fill="#b45309">6 bạn</text>
+<text x="200" y="125" text-anchor="end" fill="#0f172a">Số chỗ nếu mỗi bàn 4 bạn:</text>
+<line x1="210" y1="120" x2="467.1" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="210" y1="113" x2="210" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="467.1" y1="113" x2="467.1" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="467.1" y1="120" x2="510" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="510" y1="113" x2="510" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="488.6" y="110" text-anchor="middle" font-size="12" fill="#b45309">8 bạn</text>
+</svg>

@@ -793,6 +793,10 @@ Số em $=$ hiệu thứ hai : hiệu thứ nhất. Rồi tính số táo theo m
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: Số táo 1 đoạn; Nếu mỗi em 4 quả: 1 đoạn còn thiếu 7 quả (thừa 7 quả); Nếu mỗi em 6 quả: 1 đoạn và thêm 5 quả (thiếu 5 quả)](so-do/5T-LT-7-5.svg)
+
 Chênh lệch số táo của một em giữa hai cách chia là: $6-4=2$ (quả)
 
 Chênh lệch tổng số táo giữa hai cách chia là: $7+5=12$ (quả)
@@ -818,6 +822,10 @@ Lúc này: cách $1$ thừa $6$ bạn, cách $2$ (ngồi kín mọi bàn) thiế
 **Phần 2. Trình bày**
 
 Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số học sinh 1 đoạn; Số chỗ nếu mỗi bàn 3 bạn: còn thiếu 6 bạn; Số chỗ nếu mỗi bàn 4 bạn: thêm 8 bạn](so-do/5T-LT-7-14.svg)
 
 Nếu xếp mỗi bàn $4$ bạn cho kín cả $2$ bàn thừa thì còn thiếu: $4\times 2=8$ (bạn)
 
@@ -1033,8 +1041,8 @@ Số quả bóng của Chương lúc đầu là: $12-4+6=14$ (quả)
 | 16 | LT 6.8 | CĐ6 tổng – hiệu | Bình $31$, Minh $15$ | sơ đồ lúc sau |
 | 17 | LT 6.15 | CĐ6 hiệu – tỉ (tuổi) | $2$ năm | sơ đồ |
 | 18 | LT 6.17 | CĐ6 tổng – tỉ | Mai $25$, Hà $30$ | sơ đồ |
-| 19 | LT 7.5 | CĐ7 hai hiệu số (thừa – thiếu) | $6$ em, $31$ quả | **không có sơ đồ** (xem câu hỏi 2) |
-| 20 | LT 7.14 | CĐ7 hai hiệu số (thừa bàn) | $48$ HS, $14$ bàn | |
+| 19 | LT 7.5 | CĐ7 hai hiệu số (thừa – thiếu) | $6$ em, $31$ quả | sơ đồ 3 hàng như VD 7.1 (CEO: có sơ đồ là tốt nhất) |
+| 20 | LT 7.14 | CĐ7 hai hiệu số (thừa bàn) | $48$ HS, $14$ bàn | sơ đồ |
 | 21 | LT 8.3 | CĐ8 một đại lượng không đổi | $18$ và $54$ | phân số của đại lượng không đổi, như VD 8.1 |
 | 22 | LT 8.9 | CĐ8 tổng không đổi | Mai $24$, Lam $36$ | như VD 8.2 |
 | 23 | LT 8.16 | CĐ8 hiệu không đổi | Con $8$, mẹ $32$ | như VD 8.3 |

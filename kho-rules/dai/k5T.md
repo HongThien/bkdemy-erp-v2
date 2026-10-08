@@ -38,8 +38,9 @@ phải hiểu được. Nếu một bước chỉ giải được bằng cách "
   "(Chung đường cao hạ từ A đến BC)" (VD 19.2–19.3). Hình tròn: $r\times r=28,26:3,14$ (không $r^2$); $\pi$ viết $3,14$.
 - **Tỉ số phần trăm (CĐ14–17):** $80\times 25\%$ · $24:12\%$ · $200\times 6:100$ (VD 15.x, 16.x) — cả hai cách viết.
 - **Chuyển động (CĐ25–29):** dòng "Đổi: 2,5 giờ = 2 giờ 30 phút" riêng; cộng/nhân số đo thời gian viết liền một dòng (VD 25.3).
-- **Nhiều cách:** sách hay cho 2–3 cách (tỉ lệ: rút về đơn vị / lập tỉ số / tam suất; tính ngược: sơ đồ / phân số). Phần 2 trình bày
-  **một** cách, cách khác nhắc ở Phần 1 (luật 4T) — cách mặc định đang hỏi CEO (lô sách 1, câu hỏi 1).
+- **Nhiều cách (CEO 08/10):** sách hay cho 2–3 cách. Claude **không tự chọn** — nêu các cách để CEO chốt **một cách chính** cho cả dạng (bảng §2b);
+  Phần 2 chỉ trình bày cách chính.
+- **Sơ đồ (CEO 08/10):** dạng nào sách có sơ đồ thì kho có sơ đồ (*"có sơ đồ vẫn là tốt nhất"*). Ngoại lệ: **hai tỉ số (CĐ8) không sơ đồ** — cách chuẩn là phân số của đại lượng không đổi.
 
 ## 1.5 ⭐ Mỗi lời giải CHIA 2 PHẦN (CEO 04/10)
 
@@ -90,6 +91,21 @@ HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái �
 | **020204 Tìm $y$** | Viết **theo cột, mỗi dòng một bước** như vở. Mỗi bước nêu quy tắc thành phần chưa biết ("Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết"). Có $y$ lặp lại ⇒ đưa về "$y$ nhân với một tổng" |
 | **020205 Lời văn** | Khuôn **Bài giải**: mỗi bước = 1 câu lời giải + 1 phép tính + đơn vị trong ngoặc. Có tỉ số ⇒ `Ta có sơ đồ:` + hình (§1.5). Kết thúc `Đáp số: …` |
 | **020206 Nâng cao cấu tạo STP** | Dịch dấu phẩy = gấp/giảm 10, 100 lần ⇒ quy về **số phần** (số nhỏ 1 phần, số lớn 10 phần). Bài chữ số: lập luận theo hàng + chữ số tận cùng |
+
+## 2b. Dạng có NHIỀU CÁCH giải — CEO chốt MỘT cách chính (CEO 08/10: "nói ra bàn với t, chốt một cách chính thôi")
+
+> Claude không tự chọn. Cột "Chốt" để trống = chưa được giải hàng loạt dạng đó. Phần 2 chỉ trình bày cách chính; cách khác
+> nhắc một câu ở Phần 1 nếu đáng dạy. Gặp dạng nhiều cách mới ⇒ thêm dòng, hỏi CEO.
+
+| # | Dạng (nguồn sách) | Các cách sách đưa | Claude đề xuất | Chốt |
+|---|---|---|---|---|
+| A | Cộng/trừ hỗn số (VD 1.3) | ① đổi hỗn số ra phân số rồi tính · ② tính riêng phần nguyên và phần phân số | ① làm chính (luôn làm được, không phải mượn); ② chỉ khi đề ghi "tính thuận tiện". *Lô 1 câu 1 đang dùng ② — đổi nếu chốt ①* | |
+| B | Tỉ lệ thuận / nghịch (VD 5.1, 5.2) | ① rút về đơn vị · ② lập tỉ số ("gấp mấy lần") · ③ quy tắc tam suất | ① — làm được cả khi số lần không tròn; ③ là công thức thuộc lòng, ít tư duy | |
+| C | Tỉ lệ kép (VD 5.3) | ① "phương pháp ba dòng" (đổi từng đại lượng một) · ② tam suất kép · (③ rút về "1 người trong 1 ngày") | ③ — cùng một ý với B①; *lô 1 câu 14 đang dùng ③* | |
+| D | Tính ngược có phân số (VD 9.2) | ① sơ đồ lồng nhau + tính theo phần ($6	imes 4=24$; $24:3	imes 5=40$) · ② phân số "… ứng với … (số cam ban đầu)" rồi chia | ① — CEO: có sơ đồ là tốt nhất. **Cần thêm chế độ "sơ đồ lồng, căn phải" vào máy vẽ** (chưa có). *Lô 1 câu 25 đang dùng ② — làm lại nếu chốt ①* | |
+| E | Xếp hình lập phương nhỏ (VD 23.2, 23.3) | ① thể tích lớn : thể tích nhỏ · ② cạnh lớn gấp cạnh nhỏ mấy lần rồi nhân 3 chiều | ② — dùng được cả khi xếp còn thừa (VD 23.3b) | |
+| F | Dãy phân số mẫu gấp đôi (lô 1 câu 11; sách 5T không có VD) | ① "$2	imes B-B$" · ② viết mỗi số hạng thành hiệu hai phân số | ① | |
+| — | Hai tỉ số (CĐ8) | phân số của đại lượng không đổi | — | ✅ CEO 08/10: không sơ đồ |
 
 ## 3. Định dạng (giữ quy ước kho Đại)
 
@@ -225,3 +241,6 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 08/10 | Quy trình | *"Bản đồ t sẽ làm."* Chốt 3 bước cho mọi khối: rút luật giải (CEO duyệt) → giải toàn bộ tài liệu lên DB chờ sẵn → CEO xong bản đồ thì Claude xếp bài vào, CEO duyệt | README §0; §7 viết lại; bỏ các câu hỏi về cách chia bản đồ (việc của CEO) |
 | 08/10 | Bước 1 + 271 câu STP | *"Giải là duyệt luôn. Bản chất là m đi giải 1 lượt các dạng bài để học cách giải để giải toàn bộ bài đấy."* | README §0: lô thử = một vòng phủ MỌI dạng bài của sách; v1 khi đủ dạng + lô cuối không sửa. 271 câu STP duyệt luôn, không chờ bản đồ (§7) |
 | 08/10 | B1–B4 lô sách 1 | *(chưa phải CEO sửa — ghi việc làm)* Đọc sách bằng MTEF trong WMF (1.031/1.031), tách 750 bài, rút khuôn từ 82 VD (khử được đặt chữ, $S_{ABC}$, $r	imes r$, %…), lô sách 1 = 26 câu CĐ1–9 gửi CEO kèm 3 câu hỏi | §1 cho phép, §5, §7 |
+| 08/10 | Lô sách 1 — câu hỏi 1 (bài nhiều cách) | *"Bài nào nhiều cách thì m nói ra bàn với t. Chốt một cách chính thôi."* | Gặp bài sách cho nhiều cách ⇒ KHÔNG tự chọn: liệt kê các cách + đề xuất, CEO chốt **một cách chính** cho cả dạng, ghi vào §2b. Phần 2 chỉ trình bày cách chính. |
+| 08/10 | Lô sách 1 — câu hỏi 2 (sơ đồ hai hiệu số) | *"Nếu có sơ đồ vẫn là tốt nhất."* | Dạng nào sách có sơ đồ ⇒ kho phải có sơ đồ (máy vẽ). Hai hiệu số: 3 hàng — tổng thật, cách thừa (đoạn thiếu nét đứt), cách thiếu (đoạn thêm) — vẽ được bằng `bot`/`them`, đã thêm vào câu 19–20. |
+| 08/10 | Lô sách 1 — câu hỏi 3 (hai tỉ số) | *"OK. Cách chuẩn của hai tỉ số là không dùng sơ đồ."* | CĐ8 hai tỉ số: phân số của đại lượng không đổi, KHÔNG sơ đồ (ngoại lệ có chủ đích của luật "có tỉ số ⇒ có sơ đồ"). |

@@ -36125,3 +36125,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Thùy hỏi việc giữ dạng cũ khi chuyển/nâng/hạ có ý nghĩa cho gán dạng sau không ⇒ t trả lời: không bắt buộc (câu vẫn giữ dạng/cụm cũ trong kho, t đọc lại được; nhãn 📦 chỉ là đường tắt). Thùy chốt: bỏ phần tham chiếu.
 - BanDoMoi.tsx: công tắc HIEN_KHOP_CU=false tắt ngăn 📦 / nhãn dạng cũ / ⚠ chưa gán / dòng Khớp bản đồ cũ / bảng gán câu / mục dạng cũ trong popup. DB (doi_ung, doi_ung_cum, gan_cau, _bdm_cau_giai…) giữ nguyên để dùng ở bước xếp bài. KHÔNG xoá dữ liệu: đo log thấy Thùy đã sửa vỏ ~200 lần chiều nay (thêm/xoá/hạ nhóm, tiền đề, gộp chuyên đề).
 - Kiểm app local K8: màn mở, 2 box, không còn chữ/nhãn nào của bản đồ cũ. Spec: ghi chú đầu file (luồng xếp bài = kho-rules/README bước 3).
+
+## 08/10 (tối, tiếp) — CEO trả lời 3 câu hỏi lô sách 1 (5T)
+- (1) "Bài nào nhiều cách thì nói ra bàn, chốt một cách chính" ⇒ k5T.md §2b bảng 6 dạng nhiều cách (A hỗn số · B tỉ lệ đơn · C tỉ lệ kép · D tính ngược phân số · E xếp lập phương · F dãy mẫu gấp đôi) + đề xuất, chờ chốt. Câu 1, 14, 25 của lô có thể phải làm lại theo cách được chốt.
+- (2) "Có sơ đồ vẫn là tốt nhất" ⇒ sơ đồ hai hiệu số (VD 7.1) vẽ được bằng máy hiện có: 3 hàng — tổng thật, cách thừa = đoạn thiếu nét đứt (`bot`), cách thiếu = đoạn thêm (`them`). Thêm vào câu 19–20. Sơ đồ tính ngược của sách (VD 9.2) là kiểu LỒNG NHAU căn phải — máy chưa vẽ được, cần chế độ mới nếu CEO chốt D①.
+- (3) "Cách chuẩn hai tỉ số không dùng sơ đồ" ⇒ ghi luật, ngoại lệ có chủ đích.
