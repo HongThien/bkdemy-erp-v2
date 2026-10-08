@@ -240,6 +240,15 @@
       "port": 5272
     },
     {
+      "name": "lunar-cherry",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/LunarCherry/serve.mjs",
+        "5295"
+      ],
+      "port": 5295
+    },
+    {
       "name": "bat-thu",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
