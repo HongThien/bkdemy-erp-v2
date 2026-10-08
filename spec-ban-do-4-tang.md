@@ -288,6 +288,8 @@ create table dai_chuyen_de_tien_de (            -- MỚI
   - **`ingame` 4.746:** pha này không ghi câu, **và `fn_mastery_cells` không tính `ingame`** ⇒ không ảnh hưởng mastery.
   - **ET/BTVN/MT tháng 6–7, trước mig `0106`:** ô chấm chưa có cột câu. Backfill khi đó chỉ map khi số ô bằng số câu.
   - **ET buổi bù trước 29/09: 1.392 ô.** `ensureBuoiBuETProblems` (`src/lib/botro.ts`) chép ô ET của buổi mẹ sang từng em nhưng **không ghi `ma_cau`**. Sửa ở `d7ebbd6a` (29/09); từ 30/09 ô nào cũng có câu. Có thể **gắn lại câu** bằng 2 nhân chứng (thứ tự ô của em ↔ ô buổi mẹ đã có `ma_cau`, **và** dãy `ma_dang` khớp 100%, **và** đề buổi mẹ không sửa sau ngày chép). Lệch dù 1 ô thì bỏ cả em đó. Việc riêng, chỉ ghi khi CEO gật.
+    - ⚠ Nhân chứng "dãy `ma_dang`" phải so **qua log gộp** (`kho_doi_dang_log` `dang_cu → dang_moi`), không so thẳng với `dang_chinh` hiện tại. Lý do: một số ô mang mã đã chết do gộp, so thẳng thì sẽ báo lệch giả.
+    - Việc này cũng xử lý luôn **26 ô** mồ côi không câu (`T107010102`, `T107010202`, `T1110101xx`, `T1120103xx`; 30/06–14/09) mà phiên lỗi B chuyển sang. Phiên đó còn giữ 29 ô của buổi thường (BTVN 17 + ingame 12, tháng 7) để trống.
   - Ô Hình mang `hinh_baitoan_id`, không có `ma_dang` ⇒ không vào mastery Đại (đo riêng ở `fn_mastery_cells_hinh`).
 - **Gộp** A vào B ⇒ `A.gop_vao = B` (A vào rác), nên đo không có câu của A tính về B.
 - **Tách** A thành A + A′ ⇒ đo không có câu ở lại nhóm **giữ mã A** (không chia được thì không đoán, §1.5).
