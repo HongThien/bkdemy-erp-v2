@@ -1,0 +1,29 @@
+{
+ "LT 16.2c": {
+  "bo": "đề sách in \"5xy-3\" (ký hiệu nhân thành chữ x?) — đề hiện ra kho sẽ sai, cần người sửa đề trước"
+ },
+ "LT 17.5c": {
+  "bo": "đề sách in \"-7/15\" (phân số âm, ngoài lớp 4) — lời giải coi là 7/15 ⇒ đề và lời giải lệch nhau, cần người xác nhận"
+ },
+ "LT 17.9b": {
+  "bo": "đề sách in \"215/213 : 213/211\" (dấu chia thay dấu ;) — đề hiện ra kho sẽ sai, cần người sửa đề trước"
+ },
+ "LT 16.7": {
+  "bo": "bản gộp A–H — 8 biểu thức độc lập có tên, tách thành LT 16.7A…H (lô 8F)"
+ },
+ "LT 16.4b": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phân số **tối giản** là phân số không rút gọn được nữa, tức là tử số và mẫu số **không cùng chia hết cho số nào lớn hơn $1$**. Muốn kiểm tra, xét mẫu số: phân tích mẫu số thành tích các thừa số rồi xem tử số có chia hết cho thừa số nào của mẫu không; nếu tử số không chia hết cho thừa số nào thì phân số đã tối giản.\n\nChú ý: phân số lớn hơn $1$ (tử số lớn hơn mẫu số) như $\\dfrac{19}{15}$ vẫn có thể là phân số tối giản; \"tối giản\" chỉ nói về việc rút gọn được hay không.\n\n**Phần 2. Trình bày**\n\nPhân số tối giản là phân số mà tử số và mẫu số không cùng chia hết cho số nào lớn hơn $1$.\n\n$\\dfrac{12}{15}$: tử số và mẫu số cùng chia hết cho $3$ nên chưa tối giản.\n\n$\\dfrac{8}{20}$: tử số và mẫu số cùng chia hết cho $4$ nên chưa tối giản.\n\n$\\dfrac{9}{14}$: mẫu số $14=2\\times 7$, mà tử số $9$ không chia hết cho $2$ ; $7$ nên tối giản.\n\n$\\dfrac{25}{70}$: tử số và mẫu số cùng chia hết cho $5$ nên chưa tối giản.\n\n$\\dfrac{14}{18}$: tử số và mẫu số cùng chia hết cho $2$ nên chưa tối giản.\n\n$\\dfrac{19}{15}$: mẫu số $15=3\\times 5$, mà tử số $19$ không chia hết cho $3$ ; $5$ nên tối giản.\n\nVậy các phân số tối giản là: $\\dfrac{9}{14}$ ; $\\dfrac{19}{15}$."
+ },
+ "LT 16.4c": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phân số **tối giản** là phân số không rút gọn được nữa, tức là tử số và mẫu số **không cùng chia hết cho số nào lớn hơn $1$**. Muốn kiểm tra, xét mẫu số: phân tích mẫu số thành tích các thừa số rồi xem tử số có chia hết cho thừa số nào của mẫu không; nếu tử số không chia hết cho thừa số nào thì phân số đã tối giản.\n\n**Phần 2. Trình bày**\n\nPhân số tối giản là phân số mà tử số và mẫu số không cùng chia hết cho số nào lớn hơn $1$.\n\n$\\dfrac{31}{47}$: mẫu số $47$ chỉ chia hết cho $1$ và $47$, mà tử số $31$ không chia hết cho $47$ nên tối giản.\n\n$\\dfrac{62}{95}$: mẫu số $95=5\\times 19$, mà tử số $62$ không chia hết cho $5$ ; $19$ nên tối giản.\n\n$\\dfrac{90}{2078}$: tử số và mẫu số cùng chia hết cho $2$ nên chưa tối giản.\n\n$\\dfrac{93}{140}$: mẫu số $140=2\\times 2\\times 5\\times 7$, mà tử số $93$ không chia hết cho $2$ ; $5$ ; $7$ nên tối giản.\n\n$\\dfrac{23}{46}$: tử số và mẫu số cùng chia hết cho $23$ nên chưa tối giản.\n\nVậy các phân số tối giản là: $\\dfrac{31}{47}$ ; $\\dfrac{62}{95}$ ; $\\dfrac{93}{140}$."
+ },
+ "LT 16.4d": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phân số **tối giản** là phân số không rút gọn được nữa, tức là tử số và mẫu số **không cùng chia hết cho số nào lớn hơn $1$**. Muốn kiểm tra, xét mẫu số: phân tích mẫu số thành tích các thừa số rồi xem tử số có chia hết cho thừa số nào của mẫu không; nếu tử số không chia hết cho thừa số nào thì phân số đã tối giản.\n\n**Phần 2. Trình bày**\n\nPhân số tối giản là phân số mà tử số và mẫu số không cùng chia hết cho số nào lớn hơn $1$.\n\n$\\dfrac{7}{48}$: mẫu số $48=2\\times 2\\times 2\\times 2\\times 3$, mà tử số $7$ không chia hết cho $2$ ; $3$ nên tối giản.\n\n$\\dfrac{17}{120}$: mẫu số $120=2\\times 2\\times 2\\times 3\\times 5$, mà tử số $17$ không chia hết cho $2$ ; $3$ ; $5$ nên tối giản.\n\n$\\dfrac{24}{168}$: tử số và mẫu số cùng chia hết cho $24$ nên chưa tối giản.\n\n$\\dfrac{56}{8008}$: tử số và mẫu số cùng chia hết cho $56$ nên chưa tối giản.\n\n$\\dfrac{11}{72}$: mẫu số $72=2\\times 2\\times 2\\times 3\\times 3$, mà tử số $11$ không chia hết cho $2$ ; $3$ nên tối giản.\n\nVậy các phân số tối giản là: $\\dfrac{7}{48}$ ; $\\dfrac{17}{120}$ ; $\\dfrac{11}{72}$."
+ },
+ "LT 17.1b": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: so sánh tử số với mẫu số. Phân số có tử số **lớn hơn** mẫu số thì lớn hơn $1$. (Ngược lại: tử số bé hơn mẫu số thì phân số bé hơn $1$; tử số bằng mẫu số thì phân số bằng $1$.)\n\nXét lần lượt từng phân số trong sáu phân số rồi chọn các phân số thoả điều kiện.\n\nChú ý: $\\dfrac{8}{12}$ có tử số bé hơn mẫu số nên bé hơn $1$ (dù chưa rút gọn).\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{6}$: tử số $5$ bé hơn mẫu số $6$ nên $\\dfrac{5}{6}<1$.\n\n$\\dfrac{7}{17}$: tử số $7$ bé hơn mẫu số $17$ nên $\\dfrac{7}{17}<1$.\n\n$\\dfrac{9}{4}$: tử số $9$ lớn hơn mẫu số $4$ nên $\\dfrac{9}{4}>1$.\n\n$\\dfrac{8}{12}$: tử số $8$ bé hơn mẫu số $12$ nên $\\dfrac{8}{12}<1$.\n\n$\\dfrac{34}{21}$: tử số $34$ lớn hơn mẫu số $21$ nên $\\dfrac{34}{21}>1$.\n\n$\\dfrac{35}{35}$: tử số $35$ bằng mẫu số $35$ nên $\\dfrac{35}{35}=1$.\n\nVậy các phân số lớn hơn $1$ là: $\\dfrac{9}{4}$ ; $\\dfrac{34}{21}$."
+ },
+ "LT 17.1c": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: so sánh tử số với mẫu số. Phân số có tử số **bằng** mẫu số thì bằng $1$. (Còn tử số bé hơn mẫu số thì phân số bé hơn $1$; tử số lớn hơn mẫu số thì phân số lớn hơn $1$.)\n\nXét lần lượt từng phân số trong sáu phân số rồi chọn các phân số thoả điều kiện.\n\nChú ý: $\\dfrac{8}{12}$ có tử số bé hơn mẫu số nên bé hơn $1$ (dù chưa rút gọn).\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{6}$: tử số $5$ bé hơn mẫu số $6$ nên $\\dfrac{5}{6}<1$.\n\n$\\dfrac{7}{17}$: tử số $7$ bé hơn mẫu số $17$ nên $\\dfrac{7}{17}<1$.\n\n$\\dfrac{9}{4}$: tử số $9$ lớn hơn mẫu số $4$ nên $\\dfrac{9}{4}>1$.\n\n$\\dfrac{8}{12}$: tử số $8$ bé hơn mẫu số $12$ nên $\\dfrac{8}{12}<1$.\n\n$\\dfrac{34}{21}$: tử số $34$ lớn hơn mẫu số $21$ nên $\\dfrac{34}{21}>1$.\n\n$\\dfrac{35}{35}$: tử số $35$ bằng mẫu số $35$ nên $\\dfrac{35}{35}=1$.\n\nVậy các phân số bằng $1$ là: $\\dfrac{35}{35}$."
+ }
+}

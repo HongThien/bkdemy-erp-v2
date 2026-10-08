@@ -36045,3 +36045,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — CEO chốt QUY TRÌNH 3 BƯỚC cho mọi khối kho ("Bản đồ t sẽ làm")
 - **Thùy:** (1) m đọc sách – giải thử – t duyệt – rút rule giải ghi md · (2) rule đủ tốt thì giải toàn bộ tài liệu, đưa lên DB chờ sẵn · (3) t xong bản đồ kiến thức thì m xếp bài vào bản đồ, t duyệt. "Khối nào cũng sẽ làm thế này."
 - Ghi: `kho-rules/README.md` §0 (bảng 3 bước; §2 = bước 1, §2b = bước 2; §5 thêm cột "đang ở bước"); CLAUDE.md thêm mục đọc bắt buộc `kho-rules/README.md`; `spec-luong-kho.md` thêm cảnh báo thứ tự cũ "bản đồ → gán → giải" không còn đúng; `k5T.md` §7 viết lại theo 3 bước (5T ở bước 1; giải cả phần Ôn tập), bỏ 3 câu hỏi về cách chia bản đồ (việc của CEO), còn mở 1 câu (271 câu STP duyệt khi nào); `k4T.md` đầu file: 4T ở bước 2; HANDOFF.
+
+### 08/10 — Kho 4T lô 8B ghi DB (CĐ16–17)
+- 91 câu soạn → ghi 87 (khop 82 · 5 đề mở LT 17.15a–c, 17.16a–b "viết một bộ ví dụ" Opus soát tay: đều nằm đúng khoảng). Hàm kiểm mới: `quyDong` (mẫu chung NHỎ NHẤT), `ss` (so sánh theo thứ tự đề), `xep`, `nhomBang`; LT 16.15 vét cạn chữ số.
+- **Giữ lại 3 câu ĐỀ SÁCH IN LỖI** (đề hiện ra kho sẽ sai — §1.5 thà để trống): LT 16.2c "5xy−3" · LT 17.5c "−7/15" (phân số âm; lời giải coi 7/15 ⇒ đề–lời giải lệch) · LT 17.9b "215/213 : 213/211". Cần người sửa đề rồi mới ghi.
+- LT 16.7 (A–H, 8 biểu thức có tên) bỏ bản gộp ⇒ tách (lô 8F, Sonnet đang soạn).
+- Người soát sửa 5 câu chữ: Phần 1 LT 16.4b/c/d chép "Chú ý … như 7/5" của ý a (7/5 không có trong đề ý đó) · LT 17.1b/c câu "Ngược lại…" lặp lại đúng điều vừa nói. Sửa bằng `sua-thay` (thay chuỗi, đúng 1 lần) — vết sửa ở `k4T-lo8B.sua.json`.
+- Đề sách còn lỗi chính tả nhỏ đi nguyên văn vào kho: LT 17.15a "Iớn" (I hoa), LT 17.3 "từ số". Kho từ sách: 601 câu.
