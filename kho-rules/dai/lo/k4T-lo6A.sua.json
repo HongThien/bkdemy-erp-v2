@@ -4,6 +4,8 @@
   "_ly_do": "\"ước\" là kiến thức lớp 6 — đổi sang \"12 chia hết cho chữ số đó\" (k4T §0)"
  },
  "LT 3.3b": {
-  "bo": "\"tính đến nay\" — đáp số đổi theo năm (2023 ⇒ 1013; 2026 ⇒ 1016); chờ CEO chốt năm mốc"
+  "dap_an": "thế kỉ XI ; $1013$ năm (tính đến năm $2023$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai ý. Về thế kỉ: bỏ hai chữ số cuối của năm $1010$ còn $10$, cộng $1$ được $11$, đó là thế kỉ XI (từ năm $1001$ đến năm $1100$). Về số năm đã qua: lấy năm tính đến trừ năm $1010$.\n\nChú ý: \"đến nay\" phụ thuộc năm đang tính; ở đây tính đến năm $2023$ (năm của quyển sách).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ năm $1001$ đến năm $1100$ là thế kỉ XI nên năm $1010$ thuộc thế kỉ XI.\n\nTính đến năm $2023$, Lý Thái Tổ dời đô về Thăng Long đã được: $2023-1010=1013$ (năm)\n\nĐáp số: thế kỉ XI ; $1013$ năm (tính đến năm $2023$)",
+  "_ly_do": "CEO 08/10 \"ghi cụ thể năm ra\": tính đến năm 2023 (năm sách in), ghi rõ năm trong đáp số"
  }
 }

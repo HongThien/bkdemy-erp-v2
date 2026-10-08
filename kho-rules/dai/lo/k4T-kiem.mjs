@@ -234,7 +234,7 @@ export const KIEM = {
   'VD 3.3': () => [String(2000 - 600 * 2 - 600)],
   'LT 3.2': () => { const t = { An: 13 * 60, Bình: 60 * 60 / 5, Cường: 700, Dũng: 12 * 60 + 45 }; return [Object.entries(t).sort((a, b) => a[1] - b[1])[0][0]] },
   'LT 3.3a': () => [String(1990 - 100), 'XIX'],
-  'LT 3.3b': () => ['XI'], // "tính đến nay" phụ thuộc năm đang đứng — không kiểm số năm
+  'LT 3.3b': () => ['XI', String(2023 - 1010), '2023'], // CEO 08/10: tính đến năm 2023 (năm sách in), ghi rõ năm
   'LT 3.5': () => { const r = moiThang([28, 29], (L, thu) => tim(1, L, (d) => thu(d) === 3).length === 5 ? `${TEN_THU[thu(1)]}|${Math.max(...tim(1, L, (d) => thu(d) === 6))}` : null); if (r.length !== 1) throw new Error('3.5'); const [t, cn] = r[0].split('|'); return [t, cn] },
   'LT 3.7': () => { const r = moiThang([28, 29], (L, thu) => tim(1, L, (d) => thu(d) === 4 && d % 2 === 1).length === 3 ? TEN_THU[thu(24)] : null); if (r.length !== 1) throw new Error('3.7'); return r },
   'LT 3.8': () => ['29', '2'],

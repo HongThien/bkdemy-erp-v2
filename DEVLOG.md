@@ -36009,3 +36009,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - NhanSuHome: desktop mặc định cây tự ẩn — dải 14px mép trái, rê chuột (trễ 120ms) ⇒ cây trượt ra đè nội dung, rời (trễ 250ms) ⇒ ẩn; chọn mục ⇒ ẩn. 📌 Ghim/Bỏ ghim = sở thích từng máy (localStorage nav.ghim), ghim thì về bố cục 240px cũ. Áp cho MỌI nhân sự (Thùy yêu cầu cho ERP).
 - Lá mới 'bdm' (Học thuật · 'Bản đồ mới (soạn 4 tầng)') — admin thấy ngay; nhân sự khác cần CEO cấp ở màn Phân quyền. Gỡ tab Bản đồ mới khỏi màn Kho. BanDoMoiScreen: chọn khối đầu màn (nhớ bdm.khoi), dropdown chủ đề + ⚙ (đổi tên, ▲▼ thứ tự, xoá), cột chuyên đề dọc (kéo sắp, thả nhóm vào để chuyển, ⚠ còn câu chưa gán, phím ↑↓).
 - Kiểm app local (chỉ xem, không sửa dữ liệu Thùy): cây ẩn/hiện khi rê chuột, lá mới mở đúng, đổi chủ đề, ↓ chuyển chuyên đề, K6 hiện sơ đồ thật.
+
+## 08/10 (tiếp) — CEO chốt 3 việc treo: LT 3.3b ghi năm · xoá câu trùng · xoá ảnh cũ
+- LT 3.3b (CEO "ghi cụ thể năm ra"): tính đến năm 2023 (năm sách in), ghi rõ năm trong đáp số; bộ kiểm thêm 1013 + 2023 ⇒ ghi (sua.json lô 6A).
+- Xoá mềm T14T000000022 (LT 10.12, trùng T14T100102020 nguồn ChuyenDe10_DauHieuChiaHet_4T đã duyệt) — quét 42 bảng text không chỗ nào trỏ; update đúng 1 dòng.
+- Xoá 21 SVG cũ (bản nhãn tổng bị cắt) trong kho-anh/sach/2026-10: đối chiếu mọi cột text — 40 đang dùng ở dai_cau_hoi.anh_dap_an, 21 chỉ còn trong kho_sua_log.cu/moi (lịch sử, giờ là link chết). Còn 1 file mồ côi khác (…_LT-3-15.svg) do ghi-lo upload sơ đồ TRƯỚC khi lọc câu đã có ⇒ sửa ghi-lo lọc danh tính trước khi vẽ/upload; file mồ côi CHƯA xoá (ngoài danh sách CEO gật).

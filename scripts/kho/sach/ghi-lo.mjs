@@ -87,8 +87,16 @@ async function soDo(c) {
 const LAN_LAM = lay('--lan-lam') ?? 'giai:lo-giai-thu-4T (Claude Code, lời giải CEO duyệt trong chat 07–08/10)'
 const LAN_KIEM_CODE = `kiem-code:${new Date().toISOString().slice(0, 16)}`
 const giu = [], tuChoi = [], boQua = []
+// LỌC TRƯỚC KHI UPLOAD: câu đã có (theo danh tính) / gần trùng kho ⇒ không vẽ-không upload (08/10: chạy lại lô 6A để thêm 1 câu đã upload
+// thừa 1 SVG cho câu cũ — file mồ côi trong bucket). Lọc lại lần nữa trong transaction bên dưới (nguồn sự thật lúc ghi).
+const db = new pg.Client({ connectionString: env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
+await db.connect()
+const { rows: coTruoc } = await db.query(`select ten_de_goc from dai_cau_hoi where xoa_at is null and ten_de_goc like $1`, [`${SACH} · %`])
+const daCoTruoc = new Set(coTruoc.map((r) => r.ten_de_goc))
+const boTruoc = []
 for (const c of lo) {
   if (c.anh_sach?.length) { boQua.push({ c, ly_do: `bài có hình trong sách (${c.anh_sach.join(', ')}) — chưa đổi EMF, chưa cắt ảnh đề` }); continue }
+  if (daCoTruoc.has(`${SACH} · ${c.ma_nguon}`)) { boTruoc.push(c.ma_nguon); continue }
   const { url, kiemA, loi } = await soDo(c)
   if (loi) { tuChoi.push({ c, ly_do: [`sơ đồ: ${loi}`] }); continue }
   const cau = {
@@ -115,9 +123,7 @@ for (const c of lo) {
 }
 
 // ── chèn ─────────────────────────────────────────────────────────────────────
-const db = new pg.Client({ connectionString: env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
-await db.connect()
-const theoKiem = {}, daCo = [], trungKho = []
+const theoKiem = {}, daCo = [...boTruoc], trungKho = []
 try {
   await db.query('begin')
   const { rows: co } = await db.query(`select ten_de_goc, ma_cau from dai_cau_hoi where xoa_at is null and ten_de_goc like $1`, [`${SACH} · %`])

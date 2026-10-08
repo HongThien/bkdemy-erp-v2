@@ -117,6 +117,19 @@
   "anh_sach": []
  },
  {
+  "ma_nguon": "LT 3.3b",
+  "lo": 6,
+  "khoi": "4T",
+  "dang_chinh": "T14T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Lý Thái Tổ dời đô về Thăng Long năm 1010. Hỏi năm đó thuộc thế kỉ nào? Tính đến nay đã được bao nhiêu năm?",
+  "noi_dung_sach": "Lý Thái Tổ dời đô về Thăng Long năm 1010. Hỏi năm đó thuộc thế kỉ nào? Tính đến nay đã được bao nhiêu năm?",
+  "dap_an": "thế kỉ XI ; $1013$ năm (tính đến năm $2023$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai ý. Về thế kỉ: bỏ hai chữ số cuối của năm $1010$ còn $10$, cộng $1$ được $11$, đó là thế kỉ XI (từ năm $1001$ đến năm $1100$). Về số năm đã qua: lấy năm tính đến trừ năm $1010$.\n\nChú ý: \"đến nay\" phụ thuộc năm đang tính; ở đây tính đến năm $2023$ (năm của quyển sách).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ năm $1001$ đến năm $1100$ là thế kỉ XI nên năm $1010$ thuộc thế kỉ XI.\n\nTính đến năm $2023$, Lý Thái Tổ dời đô về Thăng Long đã được: $2023-1010=1013$ (năm)\n\nĐáp số: thế kỉ XI ; $1013$ năm (tính đến năm $2023$)",
+  "so_do": null,
+  "anh_sach": []
+ },
+ {
   "ma_nguon": "LT 3.5",
   "lo": 6,
   "khoi": "4T",
