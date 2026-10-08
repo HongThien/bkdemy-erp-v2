@@ -36,6 +36,8 @@ export type BuoiHocHS = { id: string; buoi_hoc_id: string; hoc_sinh_id: string; 
 export type Problem = {
   id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; ma_cau?: string | null; hoc_sinh_id?: string | null
   hinh_baitoan_id?: string | null; hinh_bien_the_id?: string | null; hinh_y_id?: string | null; hinh_nhan?: string | null
+  // MT (08/10, fn_mt_khung_buoi): điểm tối đa ô (NULL = người chấm tự cho) · thuộc phần Nâng cao · ô không còn trong đề
+  diem_toi_da?: number | null; nang_cao?: boolean; ngoai_de?: boolean
 }
 export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null; nhan_xet?: string | null; diem_dat?: number | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
@@ -555,6 +557,8 @@ export async function chuanBiLuoiMT(buoiId: string, daDong: boolean): Promise<{ 
   if (dapAn.length) await syncHinhProblems(buoiId, 'mt', dapAn, daDong)
   // ⭐ 02/09: số ô = thứ tự trong đề (Hình xen giữa Đại thì số xen theo) — khớp số trên phiếu in.
   await danhSoLaiTheoDe(buoiId, 'mt', thuTuMTTheoDe(await listProblems(buoiId, 'mt'), phans), daDong)
+  // ⭐ 08/10: chép điểm tối đa + phần Nâng cao từ đề vào từng ô, điền điểm Đ/S cũ còn trống, khung CB/NC của kỳ (DB).
+  if (mtId) { const { error } = await supabase.rpc('fn_mt_khung_buoi', { p_buoi: buoiId }); if (error) throw error }
   return { mtId, phans, coHinh: dapAn.length > 0 }
 }
 export const syncBTVNProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'btvn', caus, daDong)
@@ -676,12 +680,12 @@ export async function gradeET(p: { buoiId: string; problemId: string; hocSinhId:
 // ⭐ 30/09 (Thùy) — CHẤM MT CHI TIẾT per-HS-per-câu (Kết quả học tập › Điểm thi › Chấm chi tiết).
 // Kết hợp DCS + điểm HS đạt được + nhận xét trong 1 upsert; Elo `points` vẫn tính theo Đ/C/S (chuẩn ET)
 // để nhất quán với mastery/EXP. `diem_dat` = điểm HS được cho (0.25 → điểm tối đa câu; auto suggest theo
-// DCS ở UI: Đ=full, C=½, S=0, user chỉnh). `nhan_xet` = lời văn per câu (loi chỉ mã, không diễn giải).
+// DCS ở UI — 08/10: luật ở DB, Đ=full, S=0, C=người chấm chọn). `nhan_xet` = lời văn per câu (loi chỉ mã, không diễn giải).
 // Field optional — không truyền = giữ nguyên giá trị cũ (undefined không lọt vào row).
 export async function gradeMTChiTiet(p: {
   buoiId: string; problemId: string; hocSinhId: string
   result?: ETResult | null; diemDat?: number | null; nhanXet?: string | null; loi?: string[]
-}): Promise<void> {
+}): Promise<Grade> {
   const { data: { user } } = await supabase.auth.getUser()
   const row: Record<string, any> = { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, presentation: 'clean', speed: 'normal', graded_by: user?.id ?? null }
   if (p.result !== undefined) {
@@ -696,13 +700,16 @@ export async function gradeMTChiTiet(p: {
     // (thiếu result/points) TRƯỚC khi xét ON CONFLICT ⇒ từ chối, kể cả khi dòng đã tồn tại — điểm/nhận xét chưa
     // từng lưu được từ 30/09. Không có Đ/C/S thì chỉ được SỬA dòng sẵn có (§1.5: dòng chấm ra đời là đã có kết quả).
     const { problem_id, hoc_sinh_id, buoi_hoc_id: _b, presentation: _p, speed: _s, ...patch } = row
-    const { data, error } = await supabase.from('gami_grades').update(patch).match({ problem_id, hoc_sinh_id }).select('id')
+    const { data, error } = await supabase.from('gami_grades').update(patch).match({ problem_id, hoc_sinh_id }).select()
     if (error) throw error
     if (!data?.length) throw new Error('Câu này chưa có Đ/C/S — chọn Đ/C/S trước rồi mới ghi điểm/nhận xét.')
-    return
+    return data[0] as Grade
   }
-  const { error } = await supabase.from('gami_grades').upsert(row, { onConflict: 'problem_id,hoc_sinh_id' })
+  // ⭐ 08/10: điểm theo Đ/C/S (Đ = full · S = 0 · C = người chấm chọn) do trigger DB tg_gami_grades_mt_diem đặt —
+  // client KHÔNG tự tính; đọc lại dòng sau ghi để hiện đúng số DB.
+  const { data, error } = await supabase.from('gami_grades').upsert(row, { onConflict: 'problem_id,hoc_sinh_id' }).select().single()
   if (error) throw error
+  return data as Grade
 }
 
 // Tích hàng loạt: 1 HS × TOÀN BỘ câu = cùng 1 verdict, MỘT lần upsert (thay vì N lần gọi gradeET).

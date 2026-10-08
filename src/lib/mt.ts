@@ -13,7 +13,7 @@ import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, updateTaiLieu, deleteT
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
 import { ganHinhMTVaoBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
-import { laMaHinh, type HinhRowInfo } from './tailieu'
+import { laMaHinh, laTenPhanNangCao, type HinhRowInfo } from './tailieu'
 import type { PickItem } from '../store/useStore'
 
 // HinhRowInfo (cau_hinh.hinhByMa) → PickItem (khuôn ET/BuoiPickEditor), key = chính mã hàng `HINH:<uuid>`.
@@ -100,7 +100,7 @@ export async function listPhanMT(taiLieuId: string): Promise<TaiLieuPhan[]> {
 export async function addPhanMT(taiLieuId: string, tieuDe: string): Promise<TaiLieuPhan> {
   const phans = await listPhan(taiLieuId)
   const tt = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
-  return addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'custom', ref_ma: null, tieu_de: tieuDe, noi_dung: null })
+  return addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'custom', ref_ma: null, tieu_de: tieuDe, noi_dung: null, nang_cao: laTenPhanNangCao(tieuDe) })
 }
 
 // Câu ĐANG DÙNG xuyên MỌI PHẦN của 1 MT (khác ET: ET chỉ 1 "phần" nên rows tự gói gọn; MT có nhiều
@@ -245,7 +245,7 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
     })
     soCauLoai += p.caus.length - giu.filter((ma) => !laMaHinh(ma)).length
     if (!giu.length) continue // toàn câu nâng cao lớp này không học được → bỏ hẳn phần
-    const np = await addPhan({ tai_lieu_id: docCon.id, thu_tu: t++, loai_phan: 'custom', ref_ma: null, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu })
+    const np = await addPhan({ tai_lieu_id: docCon.id, thu_tu: t++, loai_phan: 'custom', ref_ma: null, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu, nang_cao: !!p.nang_cao })
     await setCauOfPhan(np.id, giu)
     maHinhGiu.push(...giu.filter(laMaHinh))
   }

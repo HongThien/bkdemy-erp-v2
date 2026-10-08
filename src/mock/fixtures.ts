@@ -121,6 +121,7 @@ export const adminLeaves: AdminLeaf[] = [
 
   // ── QUẢN LÝ CHẤT LƯỢNG: đo lường kết quả học tập (sẽ break ra nhiều nhánh ở đây) ──
   { id: 'ketqua',      nhom: 'Quản lý chất lượng', ten: 'Kết quả học tập',    founderOnly: false }, // mastery (HS × dạng) suy động
+  { id: 'cham_mt',     nhom: 'Quản lý chất lượng', ten: 'Chấm MT',            founderOnly: false }, // Thùy 08/10: chấm từng câu MT 1 màn, điểm MT tự cộng (ChamMTScreen)
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
   { id: 'duyetloigiai', nhom: 'Quản lý chất lượng', ten: 'Duyệt kho',         founderOnly: false }, // 27/08: gộp theo khối — Đại/KHTN/HGT/Hình có loi_giai do AI viết, chưa duyệt. Đổi tên 22/09: không chỉ duyệt lời giải AI, còn duyệt câu mới nhập kho (mọi nhánh, gồm Hình học)
   { id: 'db_hoctap',   nhom: 'Quản lý chất lượng', ten: 'Dashboard học tập',  founderOnly: false }, // phát hiện → đề xuất → NGƯỜI duyệt (spec-danhgia-hoctap)

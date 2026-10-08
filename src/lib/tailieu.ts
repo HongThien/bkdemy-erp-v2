@@ -209,7 +209,9 @@ export const kieuCols = (k?: string): number => BLOCK_KIEU.find((x) => x.v === k
 // hien_lt = BẬT/TẮT lý thuyết RIÊNG cho phan này (chỉ có ý nghĩa với loai_phan='dang') — khác
 // cau_hinh.inLyThuyet (toàn doc): 1 buổi vừa học dạng mới (hien_lt=true) vừa ôn dạng cũ (hien_lt=false).
 // Default true = giữ nguyên hành vi cũ (mọi phan trước đây coi như luôn hiện LT nếu kho có nội dung).
-export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean }
+export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean; nang_cao?: boolean }
+// MT (08/10): phần có chữ "nâng cao" trong tên ⇒ mặc định là phần Nâng cao (người soạn bật/tắt được — tai_lieu_phan.nang_cao).
+export const laTenPhanNangCao = (t: string | null | undefined): boolean => /n[âa]ng\s*cao/i.test(t ?? '')
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
 type DangRow = { ma_dang: string; ten_dang: string; muc_do: number | null; bac_toi_thieu: string; ma_chuyen_de: string; ten_chuyen_de: string }
 export type PhanResolved = TaiLieuPhan & {
@@ -314,7 +316,7 @@ export async function addPhan(p: Omit<TaiLieuPhan, 'id'>): Promise<TaiLieuPhan> 
   if (error) throw error
   return data as TaiLieuPhan
 }
-export async function updatePhan(id: string, patch: Partial<Pick<TaiLieuPhan, 'tieu_de' | 'noi_dung' | 'thu_tu'>>): Promise<void> {
+export async function updatePhan(id: string, patch: Partial<Pick<TaiLieuPhan, 'tieu_de' | 'noi_dung' | 'thu_tu' | 'nang_cao'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu_phan').update(patch).eq('id', id)
   if (error) throw error
 }

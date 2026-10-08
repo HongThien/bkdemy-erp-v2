@@ -12,7 +12,7 @@ import {
 } from '../../lib/mt'
 import { homNayVN } from '../../lib/tuan'
 import {
-  getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
+  getTaiLieuFull, deletePhan, updatePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
   ET_FORMS, etFormOf, coFormTn, MT_DIEM_OPTS, DEFAULT_DIEM_MT, maYHinh, diemBaiHinh, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
 } from '../../lib/tailieu'
 import { supabase } from '../../lib/supabase'
@@ -418,6 +418,12 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     setRowsByPhan((rb) => ({ ...rb, [p.id]: Array.from({ length: DEFAULT_ROWS_PER_PHAN }, () => ({ maDang: null, maCau: null, nhanh: nhanhMacDinh })) }))
     await reload(); markSaved()
   }
+  // ⭐ 08/10 (Thùy) — phần tính vào điểm NÂNG CAO hay Cơ bản (điểm MT tổng tự cộng theo phần). Bản đã gán lớp
+  // chép cờ lúc gán ⇒ đổi ở đây phải gán lại mới sang lớp.
+  async function setPhanNangCao(p: PhanResolved, v: boolean) {
+    await updatePhan(p.id, { nang_cao: v })
+    setPhans((ps) => ps.map((x) => (x.id === p.id ? { ...x, nang_cao: v } : x))); markSaved()
+  }
   async function xoaPhan(p: PhanResolved) {
     if (!confirm(`Xoá phần "${p.tieu_de}"? (câu vẫn còn trong kho, chỉ bỏ khỏi MT này)`)) return
     await deletePhan(p.id); await reload(); markSaved()
@@ -612,6 +618,10 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       <option value="">Tự động</option>
                       {[...lopBacs].sort((a, b) => a.thu_tu - b.thu_tu).map((b) => <option key={b.ma} value={b.ma}>Ép: từ {b.ma} trở lên</option>)}
                     </select>
+                    <button onClick={() => setPhanNangCao(p, !p.nang_cao)} title="Điểm các câu trong phần này cộng vào điểm Cơ bản hay Nâng cao của HS — bấm để đổi"
+                      className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${p.nang_cao ? 'bg-rose-50 text-rose-700 ring-1 ring-rose-200' : 'bg-sky-50 text-sky-700 ring-1 ring-sky-200'}`}>
+                      {p.nang_cao ? 'Nâng cao' : 'Cơ bản'}
+                    </button>
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
                   <div className="space-y-2">
