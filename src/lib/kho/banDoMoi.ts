@@ -5,9 +5,10 @@ import { supabase } from '../supabase'
 import type { LyThuyet } from './api'
 import type { LyThuyetApi } from '../../screens/kho/branches'
 
-export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; co_vi_du: boolean }
-export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; co_ly_thuyet: boolean; dang_bai: BdmDangBai[] }
-export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so_chu_de: number; nhom: BdmNhom[] }
+// so = số thứ tự hệ tự đánh (tính ở DB): chuyên đề trái→phải · nhóm theo tiền đề (chiều sâu, trái trước) · dạng bài trên→dưới
+export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_vi_du: boolean }
+export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_bai: BdmDangBai[] }
+export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; nhom: BdmNhom[] }
 export type BdmChuDe = { id: string; ten: string; thu_tu: number; o: BdmO[] }
 export type BdmChuyenDe = { id: string; ten: string; so_chu_de: number; khoi: string[] }
 export type BdmCay = { chu_de: BdmChuDe[]; chuyen_de: BdmChuyenDe[]; so_chu_de_theo_khoi: Record<string, number> }
@@ -88,6 +89,16 @@ export async function suaDangBai(id: string, patch: { ten?: string; mo_ta?: stri
 }
 export async function xoaDangBai(id: string): Promise<void> {
   const { error } = await supabase.from('dai_bdm_dang_bai').delete().eq('id', id)
+  if (error) loi(error)
+}
+
+// ── Tiền đề nhóm bài (đợt này: trong cùng chuyên đề — DB chặn chéo + vòng tròn) ──
+export async function themTienDe(nhomHocSau: string, nhomHocTruoc: string): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_nhom_tien_de').insert({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
+  if (error) loi(error)
+}
+export async function goTienDe(nhomHocSau: string, nhomHocTruoc: string): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_nhom_tien_de').delete().match({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
   if (error) loi(error)
 }
 

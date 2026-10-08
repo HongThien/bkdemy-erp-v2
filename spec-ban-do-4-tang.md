@@ -284,13 +284,23 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 - RPC: `fn_bdm_cay(khoi)` (cây jsonb + danh mục chuyên đề dùng chung) · `fn_bdm_sap_xep` · `fn_bdm_chuyen_nhom` ·
   `fn_bdm_chuyen_dang_bai` · `fn_bdm_chuyen_o` (chuyển cả chuyên đề sang chủ đề khác; trùng thì dồn) ·
   `fn_bdm_nang_dang_bai` (ví dụ → lý thuyết) · `fn_bdm_ha_nhom` (chỉ khi nhóm không còn dạng bài; lý thuyết → ví dụ).
-- Màn: cột = chủ đề; trong cột = thẻ chuyên đề (nhãn "ở N chủ đề" nếu dùng chung) › thẻ nhóm › chip dạng bài.
-  Kéo thả HTML5 thuần (không thêm thư viện): sắp cột · chuyển/sắp chuyên đề · nhóm · dạng bài. Bấm thẻ ⇒ khung chi tiết
-  (tên · mô tả nhận biết · 📖 lý thuyết / 📝 ví dụ dùng nguyên `LyThuyetModal` · nâng/hạ · gỡ/xoá). Chấm tiến độ trên từng
-  thẻ (mô tả · lý thuyết/ví dụ) + bộ đếm tiến độ khối. Thêm chuyên đề: chọn từ danh mục dùng chung hoặc tạo mới.
+- **Màn — bố cục v2 (CEO 08/10 chiều):** mỗi màn **1 chủ đề** (thanh chủ đề trên cùng, kéo để sắp) · **thanh chuyên đề**
+  trái→phải = thứ tự học, ◀ ▶ / phím ←→, kéo để sắp, nhãn ⇆N nếu dùng chung · vùng chính = **sơ đồ 1 chuyên đề**: box chuyên đề
+  ở trên ("cũng có ở: …"), **nhóm bài rẽ nhánh** xuống: hàng = tầng tiền đề (DB tính), cột = nhánh, **mũi tên** = tiền đề ·
+  **dạng bài là card** trong box nhóm, trên→dưới · **số thứ tự cả 3 tầng hiện trên box** (DB đánh, xem mig 202610081238).
+  Kéo: nhóm thả lên nhóm = đặt sang trái · nhóm thả vào dải «học SAU nhóm này» = nối mũi tên · nhóm thả lên nút chuyên đề =
+  chuyển (chặn nếu còn mũi tên) · chuyên đề thả lên nút chủ đề = chuyển cả chuyên đề · dạng bài thả lên card/box = sắp/chuyển.
+  Khung chi tiết: tên · mô tả nhận biết · 📖 lý thuyết / 📝 ví dụ (`LyThuyetModal`) · tiền đề (gỡ / thêm) · chuyển sang… ·
+  nâng/hạ · gỡ/xoá. Vị trí trên màn KHÔNG phải dữ liệu: tầng suy từ mũi tên, cột suy từ số thứ tự.
+- **Tiền đề + số thứ tự (mig 202610081238):** `dai_bdm_nhom_tien_de` — đợt này CHỈ trong cùng chuyên đề (trigger chặn chéo
+  + vòng tròn; constraint trigger deferred chặn nhóm đổi ô khi còn mũi tên). `_bdm_so_nhom`: sắp topo, đi theo chiều sâu
+  (con của nhóm xếp gần nhất còn con sẵn sàng; hết cây mới sang nhóm khác theo `thu_tu`) ⇒ hết nhánh trái rồi sang phải.
+  Chuyên đề và dạng bài: số = vị trí (`thu_tu`).
 - Kiểm 08/10 trên app local (khối 3, dữ liệu `[TEST]`): thêm 4 tầng · chuyên đề dùng chung 2 chủ đề · kéo nhóm sang chủ đề
   khác · sắp dạng bài · chuyển dạng bài sang nhóm khác · sắp cột · mô tả lưu khi rời ô · mở lý thuyết · nâng rồi hạ
   (DB khớp, log đủ actor). Chưa thử trên UI: chuyển cả chuyên đề (đã thử SQL trong ROLLBACK) · lưu lý thuyết.
+- Kiểm bố cục v2 (08/10 chiều, khối 3 `[TEST]`): rẽ nhánh N1→N2→N4 + N3→N4 (ca nhập) đúng hàng/cột, 5 mũi tên ·
+  nối bằng kéo vào dải + bằng ô chọn · vòng tròn bị chặn kèm câu báo · ◀ ▶ / ← → · chuyển nhóm còn mũi tên bị chặn.
 
 ### 9.1 Màn kéo thả trên bản đồ THẬT (sau B5 — chỉnh lẻ)
 

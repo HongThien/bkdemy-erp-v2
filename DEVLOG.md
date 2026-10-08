@@ -35938,3 +35938,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Sonnet soạn 48 câu (VD 1.1–1.3, LT 1.1–1.15) theo k4T v1 + 75 mẫu. Đáp số 48/48 khớp bộ kiểm. Opus đọc soát 48/48: 0 sửa nội dung. Lỗi định dạng có quy luật (\\" thừa · Phần 2 nhiều câu một dòng) ⇒ lo-tu-soan.mjs chuẩn hoá bằng máy (36 câu), đếm riêng.
 - Ghi --chua-gan-dang --model-lam claude-sonnet-5-5: T14T000000075…122, kiem_may khop 48. ai_model đúng model soạn (ghi-lo thêm --model-lam/--lan-lam).
 - Câu mơ hồ đề (Sonnet nêu): LT 1.5c "hiệu các chữ số là 4" ⇒ 15 (hiểu lớn trừ bé; nếu chục trừ đơn vị ⇒ 40) · LT 1.5d "thương là 2" ⇒ 12 (nếu chục chia đơn vị ⇒ 21). Sách không có đáp án để đối chiếu.
+
+## 08/10 (tiếp) — Bản đồ mới: bố cục v2 theo CEO (1 chủ đề / màn, sơ đồ nhánh + mũi tên, số thứ tự 3 tầng)
+- **Thùy:** mỗi màn 1 chủ đề; chuyên đề là box; nhóm bài rẽ nhánh, học trước trên / học sau dưới, mũi tên; nhóm độc lập khác nhánh; dạng bài là card trong box nhóm; thanh/◀▶ cho nhiều chuyên đề. Tiền đề nhóm CHỈ trong cùng chuyên đề đợt này (chéo để sau). Cả 3 tầng có số thứ tự, hệ tự đánh: chuyên đề trái→phải, nhóm trái→phải, dạng bài trên→dưới.
+- **Ý t (đã nói, Thùy không bác):** bố cục do máy xếp từ mũi tên (vị trí ≠ dữ liệu); ca rẽ/nhập phải vẽ được; số thứ tự nhóm = topo đi theo chiều sâu, trái trước.
+- **Mig 202610081238** (--only): dai_bdm_nhom_tien_de + trigger chặn chéo/vòng + constraint trigger deferred + _bdm_so_nhom + fn_bdm_cay thêm so/tang/tien_de/cung_co_o + chặn chuyển/hạ nhóm còn mũi tên. Sai giữa chừng: bản đầu chỉ ưu tiên con của nhóm VỪA xếp ⇒ nhảy sang gốc khác trước khi quay lại nhánh anh em; sửa thành DFS quay lui (thử khô ROLLBACK cả 2 lần).
+- **Màn viết lại** BanDoMoi.tsx; kiểm app local khối 3 [TEST] (spec §9.0). Thấy chuyên đề 'qqqq' (2 chủ đề [TEST]) do tài khoản admin tạo 12:14 — không phải t, nhiều khả năng Thùy thử trên production — KHÔNG đụng.
+- **Dữ liệu thử thêm (chờ Thùy cho xoá cùng lượt trước):** nhóm [TEST] N2 sau N1, [TEST] N3 độc lập, [TEST] N4 cần N2 và N3 + 3 mũi tên, trong chủ đề [TEST] Chủ đề A.
