@@ -257,14 +257,18 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 
 ---
 
-## 10. Mastery "đi theo câu" (Q10) — có cổng kiểm
+## 10. Mastery "đi theo câu" (Q10 — CEO 08/10: "câu đang thuộc dạng nào thì tính về dạng đó")
 
 - **Hiện nay:** `fn_mastery_cells` lấy `ma_dang` từ **bản chép lưu trên dòng đo** (`gami_session_problems`, `bai_test_cau`, `bt_grades`).
-- **Đổi thành:** dòng đo có `ma_cau` ⇒ lấy nhóm **hiện tại** của câu. Không có `ma_cau` ⇒ giữ bản chép.
-- **Cổng kiểm trước khi bật:** hôm nay đã có **366** dòng `gami_session_problems` và **1.129** dòng `bai_test_cau` mà bản chép khác nhóm hiện tại của câu. Bật lên là mastery các ô đó đổi ngay.
-  - Phải xuất báo cáo trước/sau theo (HS × nhóm), phân loại nguyên nhân lệch (câu bị đổi dạng sau khi đo, hay đề soạn gán dạng khác kho).
-  - CEO xem rồi mới bật.
-  - Bước này cũng chữa phần lớn lỗi B (§3.2) đối với các dòng có `ma_cau`.
+- **Luật:** dòng đo có `ma_cau` ⇒ tính về nhóm **hiện tại** của câu (`dang_chinh`). Câu đã xoá mềm (`xoa_at`) vẫn còn `dang_chinh` nên vẫn tính được. Đo 08/10: **0** câu bị xoá cứng.
+- **Phủ:** 94% `gami_grades` (128.305/136.055) và 96% `bai_test_cau` có câu ⇒ tự đi theo, không cần làm gì thêm.
+- **Phần còn lại (~5%, dòng đo gắn thẳng nhóm, không có câu):** giữ bản chép, cộng thêm **biển chỉ đường** `dai_ban_do_chuyen_huong (ma_cu → ma_moi)`:
+  - **Gộp** A vào B ⇒ ghi A → B, nên đo của A tính về B.
+  - **Tách** A thành A + A′ ⇒ dòng không có câu ở lại nhóm **giữ mã A** (không chia được thì không đoán, §1.5).
+- **Bật ở P1**, trước khi CEO xếp lại, vì các thao tác gộp và tách chỉ an toàn khi đã có luật này.
+  - Hôm nay có **366** dòng `gami_session_problems` và **1.129** dòng `bai_test_cau` mà bản chép khác nhóm hiện tại của câu ⇒ mastery các ô đó đổi ngay khi bật.
+  - Kèm báo cáo trước/sau theo (HS × nhóm) để CEO xem. Không phải cổng chờ duyệt.
+  - Cũng chữa được phần lớn lỗi B (§3.2) đối với các dòng có `ma_cau`.
 
 ---
 
