@@ -1,0 +1,405 @@
+[
+ {
+  "ma_nguon": "VD 20.1",
+  "gop_y": false,
+  "dap_an": "$35$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm \"$\\dfrac{1}{4}$ của $140$ m\" nghĩa là lấy $140$ **nhân với** $\\dfrac{1}{4}$ (cũng là chia $140$ thành $4$ phần bằng nhau rồi lấy $1$ phần). Muốn tìm giá trị phân số của một số, ta lấy số đó nhân với phân số.\n\nChú ý: đừng lấy $140$ **chia** cho $\\dfrac{1}{4}$ — phép chia dùng cho bài ngược \"biết $\\dfrac{1}{4}$ của một số là $140$, tìm số đó\".\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{4}$ của $140$ m là: $140\\times\\dfrac{1}{4}=\\dfrac{140}{4}=35$ (m)",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề trong file in sẵn cả kết quả ('… là: 140×1/4=35 (m)') như một ví dụ minh hoạ. Tôi hiểu câu hỏi là 'Tìm 1/4 của 140 m'; đáp án 35 m trùng kết quả in sẵn."
+ },
+ {
+  "ma_nguon": "VD 20.2",
+  "gop_y": false,
+  "dap_an": "$300$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm giá trị phân số của một số thì lấy số đó **nhân với** phân số: $\\dfrac{2}{5}$ của $750$ lít là $750\\times\\dfrac{2}{5}$.\n\nCách tính gọn: chia $750$ cho mẫu số $5$ được $1$ phần, rồi nhân với tử số $2$.\n\nChú ý: kết quả phải nhỏ hơn $750$ lít vì $\\dfrac{2}{5}$ bé hơn $1$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{5}$ của $750$ lít là: $750\\times\\dfrac{2}{5}=\\dfrac{750\\times 2}{5}=\\dfrac{1500}{5}=300$ (lít)",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề in sẵn cả kết quả ('… là: 750×2/5=300 (lít)') như ví dụ minh hoạ. Tôi hiểu câu hỏi là 'Tìm 2/5 của 750 lít'; đáp án 300 lít trùng kết quả in sẵn."
+ },
+ {
+  "ma_nguon": "VD 20.3",
+  "gop_y": false,
+  "dap_an": "$60$ kg thanh long",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho phân số của táo và của cam so với **cả thùng**, phần \"còn lại\" là thanh long. Tìm số ki-lô-gam táo và cam bằng cách nhân $144$ với phân số, rồi lấy cả thùng trừ đi.\n\nCó hai cách. Cách 1 (trình bày dưới đây): tính số kg táo, số kg cam rồi lấy $144$ trừ cả hai. Cách 2: tìm thanh long chiếm bao nhiêu phần cả thùng là $1-\\left(\\dfrac{1}{4}+\\dfrac{1}{3}\\right)=\\dfrac{5}{12}$, rồi lấy $144\\times\\dfrac{5}{12}=60$ (kg).\n\nChú ý: số $1$ trong cách 2 chỉ **cả thùng quả**; phải trừ cả táo lẫn cam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ki-lô-gam táo trong thùng là: $144\\times\\dfrac{1}{4}=36$ (kg)\n\nSố ki-lô-gam cam trong thùng là: $144\\times\\dfrac{1}{3}=48$ (kg)\n\nSố ki-lô-gam thanh long trong thùng là: $144-36-48=60$ (kg)\n\nĐáp số: $60$ kg thanh long",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.1",
+  "gop_y": false,
+  "dap_an": "$56$ ; $369$ ; $122$ ; $136$ ; $\\dfrac{5}{12}$ ; $\\dfrac{6}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: muốn tìm $\\dfrac{a}{b}$ của một số ta lấy số đó **nhân với** $\\dfrac{a}{b}$. Khi số đó là số tự nhiên chia hết cho mẫu số, ta chia cho mẫu số trước rồi nhân với tử số cho gọn.\n\nHai phép cuối là \"phân số của một phân số\": nhân hai phân số với nhau, gạch bớt thừa số giống nhau ở tử và mẫu trước khi nhân.\n\nChú ý: $\\dfrac{9}{2}$ lớn hơn $1$ nên $\\dfrac{9}{2}$ của $82$ lớn hơn $82$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{8}{13}$ của $91$ là: $91\\times\\dfrac{8}{13}=(91:13)\\times 8=7\\times 8=56$\n\n$\\dfrac{9}{2}$ của $82$ là: $82\\times\\dfrac{9}{2}=(82:2)\\times 9=41\\times 9=369$\n\n$\\dfrac{1}{4}$ của $488$ là: $488\\times\\dfrac{1}{4}=488:4=122$\n\n$\\dfrac{2}{3}$ của $204$ là: $204\\times\\dfrac{2}{3}=(204:3)\\times 2=68\\times 2=136$\n\n$\\dfrac{5}{4}$ của $\\dfrac{1}{3}$ là: $\\dfrac{1}{3}\\times\\dfrac{5}{4}=\\dfrac{5}{12}$\n\n$\\dfrac{6}{5}$ của $\\dfrac{5}{7}$ là: $\\dfrac{5}{7}\\times\\dfrac{6}{5}=\\dfrac{\\cancel{5}\\times 6}{7\\times\\cancel{5}}=\\dfrac{6}{7}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề gồm 6 phép tính độc lập xếp lưới 2 hàng x 3 cột, KHÔNG có nhãn a) b) c) hay A, B, C nên tôi giữ 1 câu (theo luật) và trình bày 6 dòng theo thứ tự đọc từng hàng (8/13 của 91 ; 9/2 của 82 ; 1/4 của 488 ; 2/3 của 204 ; 5/4 của 1/3 ; 6/5 của 5/7). Nếu muốn tách 6 câu riêng thì cần đặt mã tách (vd LT 20.1-1..6)."
+ },
+ {
+  "ma_nguon": "LT 20.2",
+  "gop_y": false,
+  "dap_an": "$25$ học sinh nữ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"$\\dfrac{5}{8}$ số học sinh là nữ\" nghĩa là số học sinh nữ bằng $\\dfrac{5}{8}$ **của** $40$ học sinh, nên ta lấy $40$ nhân với $\\dfrac{5}{8}$.\n\nCách tính gọn: chia $40$ cho $8$ được $5$ học sinh ở mỗi phần, rồi nhân với $5$ phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ của lớp 4A là: $40\\times\\dfrac{5}{8}=(40:8)\\times 5=25$ (học sinh)\n\nĐáp số: $25$ học sinh nữ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.4",
+  "gop_y": false,
+  "dap_an": "$10$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{3}{5}$ là phần cuộn dây **đã cắt ra**, còn đề hỏi phần **còn lại**. Vậy tìm số mét cắt ra trước (nhân $25$ với $\\dfrac{3}{5}$), rồi lấy cả cuộn trừ đi.\n\nCách khác: phần còn lại là $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ cuộn dây, nên còn $25\\times\\dfrac{2}{5}=10$ (m).\n\nChú ý: $15$ m là đoạn dây đã cắt, không phải đáp số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố mét ruy băng đã cắt ra là: $25\\times\\dfrac{3}{5}=15$ (m)\n\nSố mét ruy băng còn lại là: $25-15=10$ (m)\n\nĐáp số: $10$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.5",
+  "gop_y": false,
+  "dap_an": "$500$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho số gạo bằng **tạ** nhưng hỏi bằng **ki-lô-gam**, nên đổi cùng đơn vị trước: $15$ tạ $=1500$ kg (vì $1$ tạ $=100$ kg).\n\nSau đó tìm số gạo đã bán ($\\dfrac{2}{3}$ của số gạo), rồi lấy số gạo ban đầu trừ đi số đã bán.\n\nChú ý: đề hỏi số gạo **còn lại**, không phải số gạo đã bán.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $15$ tạ $=1500$ kg\n\nSố ki-lô-gam gạo đã bán là: $1500\\times\\dfrac{2}{3}=1000$ (kg)\n\nSố ki-lô-gam gạo còn lại là: $1500-1000=500$ (kg)\n\nĐáp số: $500$ kg gạo",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.6",
+  "gop_y": false,
+  "dap_an": "Chu vi: $\\dfrac{21}{10}$ m ; diện tích: $\\dfrac{27}{100}$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chiều rộng bằng $\\dfrac{3}{4}$ chiều dài, tức là chiều rộng $=$ chiều dài $\\times\\dfrac{3}{4}$. Có đủ hai cạnh thì chu vi $=$ (dài $+$ rộng) $\\times\\,2$ và diện tích $=$ dài $\\times$ rộng.\n\nCộng hai phân số khác mẫu thì quy đồng mẫu số trước.\n\nChú ý: đơn vị diện tích là $m^2$ (mét vuông), khác đơn vị chu vi là m.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng của hình chữ nhật là: $\\dfrac{3}{5}\\times\\dfrac{3}{4}=\\dfrac{9}{20}$ (m)\n\nChu vi của hình chữ nhật là: $\\left(\\dfrac{3}{5}+\\dfrac{9}{20}\\right)\\times 2=\\left(\\dfrac{12}{20}+\\dfrac{9}{20}\\right)\\times 2=\\dfrac{21}{20}\\times 2=\\dfrac{21}{10}$ (m)\n\nDiện tích của hình chữ nhật là: $\\dfrac{3}{5}\\times\\dfrac{9}{20}=\\dfrac{27}{100}$ ($m^2$)\n\nĐáp số: Chu vi $\\dfrac{21}{10}$ m; diện tích $\\dfrac{27}{100}$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.7",
+  "gop_y": false,
+  "dap_an": "Chu vi: $\\dfrac{9}{4}$ m ; diện tích: $\\dfrac{7}{32}$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chiều dài bằng $\\dfrac{7}{2}$ chiều rộng, tức là chiều dài $=$ chiều rộng $\\times\\dfrac{7}{2}$. Có đủ hai cạnh thì chu vi $=$ (dài $+$ rộng) $\\times\\,2$ và diện tích $=$ dài $\\times$ rộng.\n\nChú ý: chiều dài bằng $\\dfrac{7}{2}$ chiều rộng nên chiều dài **lớn hơn** chiều rộng; nếu tính ra chiều dài bé hơn chiều rộng là đã nhầm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài của hình chữ nhật là: $\\dfrac{1}{4}\\times\\dfrac{7}{2}=\\dfrac{7}{8}$ (m)\n\nChu vi của hình chữ nhật là: $\\left(\\dfrac{1}{4}+\\dfrac{7}{8}\\right)\\times 2=\\left(\\dfrac{2}{8}+\\dfrac{7}{8}\\right)\\times 2=\\dfrac{9}{8}\\times 2=\\dfrac{9}{4}$ (m)\n\nDiện tích của hình chữ nhật là: $\\dfrac{1}{4}\\times\\dfrac{7}{8}=\\dfrac{7}{32}$ ($m^2$)\n\nĐáp số: Chu vi $\\dfrac{9}{4}$ m; diện tích $\\dfrac{7}{32}$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.8",
+  "gop_y": false,
+  "dap_an": "$270$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{2}{5}$ là phần của **diện tích** mảnh đất, nên phải tính diện tích cả mảnh đất trước ($25\\times 18$). Sau đó tìm diện tích đào ao ($\\dfrac{2}{5}$ của diện tích), rồi lấy cả mảnh đất trừ đi để được phần vườn.\n\nChú ý: $\\dfrac{2}{5}$ không phải là phân số của chiều dài hay chiều rộng; và đơn vị diện tích là $m^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $25\\times 18=450$ ($m^2$)\n\nDiện tích phần đất đào ao là: $450\\times\\dfrac{2}{5}=180$ ($m^2$)\n\nDiện tích phần đất làm vườn là: $450-180=270$ ($m^2$)\n\nĐáp số: $270$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.9",
+  "gop_y": false,
+  "dap_an": "$81000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"số tiền còn lại bằng $\\dfrac{4}{5}$ số tiền **mua sách**\" nên số tiền còn lại $=$ $\\dfrac{4}{5}$ của $45000$ đồng (nhân). Tiền ban đầu $=$ tiền đã mua sách $+$ tiền còn lại.\n\nChú ý: $\\dfrac{4}{5}$ so với số tiền mua sách, không phải so với số tiền ban đầu. Đáp số phải lớn hơn $45000$ đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền còn lại của Hùng là: $45000\\times\\dfrac{4}{5}=36000$ (đồng)\n\nSố tiền ban đầu của Hùng là: $45000+36000=81000$ (đồng)\n\nĐáp số: $81000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.10",
+  "gop_y": false,
+  "dap_an": "$11$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi học sinh chỉ chọn **một** môn, nên số học sinh chọn bóng rổ $=$ cả lớp $-$ số học sinh chọn bóng đá $-$ số học sinh chọn cầu lông. Hai số kia tìm bằng cách nhân $35$ với phân số tương ứng.\n\nCách khác: bóng rổ chiếm $1-\\left(\\dfrac{2}{7}+\\dfrac{2}{5}\\right)=\\dfrac{11}{35}$ cả lớp, nên có $35\\times\\dfrac{11}{35}=11$ (học sinh).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh chọn bóng đá là: $35\\times\\dfrac{2}{7}=10$ (học sinh)\n\nSố học sinh chọn cầu lông là: $35\\times\\dfrac{2}{5}=14$ (học sinh)\n\nSố học sinh chọn bóng rổ là: $35-10-14=11$ (học sinh)\n\nĐáp số: $11$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.11",
+  "gop_y": false,
+  "dap_an": "$7$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi học sinh chỉ học **một** môn, nên số học sinh học khiêu vũ thể thao $=$ cả lớp $-$ số học sinh học vẽ $-$ số học sinh học piano. Hai số kia tìm bằng cách nhân $36$ với phân số tương ứng.\n\nCách khác: khiêu vũ chiếm $1-\\left(\\dfrac{7}{12}+\\dfrac{2}{9}\\right)=\\dfrac{7}{36}$ cả lớp, nên có $36\\times\\dfrac{7}{36}=7$ (học sinh).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh học môn vẽ là: $36\\times\\dfrac{7}{12}=21$ (học sinh)\n\nSố học sinh học piano là: $36\\times\\dfrac{2}{9}=8$ (học sinh)\n\nSố học sinh học khiêu vũ thể thao là: $36-21-8=7$ (học sinh)\n\nĐáp số: $7$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.12",
+  "gop_y": false,
+  "dap_an": "$5$ túi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: làm theo ba bước. Bước 1: số bột mì đã bán ($\\dfrac{3}{4}$ của $16$ kg). Bước 2: số bột mì còn lại ($16$ trừ số đã bán). Bước 3: chia số bột mì còn lại cho số bột mì ở mỗi túi ($\\dfrac{4}{5}$ kg) để biết số túi.\n\nChia cho một phân số là nhân với phân số đảo ngược: $4:\\dfrac{4}{5}=4\\times\\dfrac{5}{4}$.\n\nChú ý: hỏi **số túi** (tìm số phần) nên bước cuối là phép chia, không phải phép nhân.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ki-lô-gam bột mì đã bán là: $16\\times\\dfrac{3}{4}=12$ (kg)\n\nSố ki-lô-gam bột mì còn lại là: $16-12=4$ (kg)\n\nSố túi bột mì chia được là: $4:\\dfrac{4}{5}=4\\times\\dfrac{5}{4}=5$ (túi)\n\nĐáp số: $5$ túi",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.14",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{8}{35}$ số quả dưa nhập về",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: coi cả số dưa nhập về là $1$. Ngày thứ nhất bán $\\dfrac{3}{5}$ số dưa nhập về; còn $\\dfrac{2}{7}$ thì lại là phân số **của số quả bán ngày thứ nhất**, nên số quả bán ngày thứ hai phải tính bằng $\\dfrac{3}{5}\\times\\dfrac{2}{7}$. Số dưa còn lại $=1-$ (ngày thứ nhất $+$ ngày thứ hai).\n\nChú ý: không được cộng thẳng $\\dfrac{3}{5}+\\dfrac{2}{7}$, vì hai phân số này so với hai \"cả\" khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố quả dưa bán ngày thứ hai chiếm số phần số quả dưa nhập về là: $\\dfrac{3}{5}\\times\\dfrac{2}{7}=\\dfrac{6}{35}$ (số quả dưa nhập về)\n\nCả hai ngày bán được số phần số quả dưa nhập về là: $\\dfrac{3}{5}+\\dfrac{6}{35}=\\dfrac{21}{35}+\\dfrac{6}{35}=\\dfrac{27}{35}$ (số quả dưa nhập về)\n\nSố quả dưa còn lại chiếm số phần số quả dưa nhập về là: $1-\\dfrac{27}{35}=\\dfrac{35}{35}-\\dfrac{27}{35}=\\dfrac{8}{35}$ (số quả dưa nhập về)\n\nĐáp số: $\\dfrac{8}{35}$ số quả dưa nhập về",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.15",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{32}{35}$ số vải ban đầu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau khi may áo, số vải còn lại là $1-\\dfrac{4}{7}=\\dfrac{3}{7}$ tấm vải. Số vải làm túi là $\\dfrac{4}{5}$ **của số vải còn lại này**, nên bằng $\\dfrac{3}{7}\\times\\dfrac{4}{5}$ tấm vải. Số vải đã dùng $=$ vải may áo $+$ vải làm túi.\n\nChú ý: $\\dfrac{4}{5}$ không phải phân số của cả tấm vải; không được cộng thẳng $\\dfrac{4}{7}+\\dfrac{4}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố vải còn lại sau khi may áo chiếm số phần tấm vải là: $1-\\dfrac{4}{7}=\\dfrac{3}{7}$ (tấm vải)\n\nSố vải làm túi chiếm số phần tấm vải là: $\\dfrac{3}{7}\\times\\dfrac{4}{5}=\\dfrac{12}{35}$ (tấm vải)\n\nSố vải bác Hà đã dùng chiếm số phần số vải ban đầu là: $\\dfrac{4}{7}+\\dfrac{12}{35}=\\dfrac{20}{35}+\\dfrac{12}{35}=\\dfrac{32}{35}$ (tấm vải)\n\nĐáp số: $\\dfrac{32}{35}$ số vải ban đầu",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.16",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{15}$ số trứng ban đầu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau lần thứ nhất còn $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ số trứng. Lần thứ hai bán $\\dfrac{5}{6}$ **của số trứng còn lại** đó, tức là $\\dfrac{2}{5}\\times\\dfrac{5}{6}$ số trứng ban đầu. Số trứng còn lại sau hai lần $=$ số còn lại sau lần thứ nhất $-$ số bán lần thứ hai.\n\nChú ý: $\\dfrac{5}{6}$ không phải phân số của số trứng ban đầu nên không được trừ thẳng $1-\\dfrac{3}{5}-\\dfrac{5}{6}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố trứng còn lại sau lần bán thứ nhất chiếm số phần số trứng ban đầu là: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (số trứng)\n\nSố trứng bán lần thứ hai chiếm số phần số trứng ban đầu là: $\\dfrac{2}{5}\\times\\dfrac{5}{6}=\\dfrac{10}{30}=\\dfrac{1}{3}$ (số trứng)\n\nSố trứng còn lại sau hai lần bán chiếm số phần số trứng ban đầu là: $\\dfrac{2}{5}-\\dfrac{1}{3}=\\dfrac{6}{15}-\\dfrac{5}{15}=\\dfrac{1}{15}$ (số trứng)\n\nĐáp số: $\\dfrac{1}{15}$ số trứng ban đầu",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 20.17",
+  "gop_y": false,
+  "dap_an": "$250000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"An góp bằng $\\dfrac{1}{2}$ tổng số tiền hai bạn còn lại\" nghĩa là nếu An góp $1$ phần thì hai bạn còn lại góp $2$ phần, nên cả ba bạn là $1+2=3$ phần: An góp $\\dfrac{1}{3}$ **số tiền cả ba bạn**. Tương tự, Bình góp $1$ phần thì hai bạn còn lại góp $3$ phần, cả ba là $1+3=4$ phần: Bình góp $\\dfrac{1}{4}$ số tiền cả ba bạn.\n\nBiết An và Bình góp mấy phần của cả ba bạn thì phần còn lại là của Cường: $1-\\dfrac{1}{3}-\\dfrac{1}{4}$.\n\nChú ý: $\\dfrac{1}{2}$ và $\\dfrac{1}{3}$ trong đề so với tổng của **hai** bạn còn lại, không phải so với số tiền cả ba bạn, nên không được trừ thẳng $1-\\dfrac{1}{2}-\\dfrac{1}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền An góp bằng một phần ba số tiền cả ba bạn: $\\dfrac{1}{1+2}=\\dfrac{1}{3}$ (số tiền cả ba bạn)\n\nSố tiền Bình góp bằng một phần tư số tiền cả ba bạn: $\\dfrac{1}{1+3}=\\dfrac{1}{4}$ (số tiền cả ba bạn)\n\nSố tiền Cường góp chiếm số phần số tiền cả ba bạn là: $1-\\dfrac{1}{3}-\\dfrac{1}{4}=\\dfrac{12}{12}-\\dfrac{4}{12}-\\dfrac{3}{12}=\\dfrac{5}{12}$ (số tiền cả ba bạn)\n\nTa có sơ đồ:\n\nSố tiền Cường góp là: $600000\\times\\dfrac{5}{12}=250000$ (đồng)\n\nĐáp số: $250000$ đồng",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 50000,
+   "hang": [
+    {
+     "nhan": "An",
+     "phan": 4
+    },
+    {
+     "nhan": "Bình",
+     "phan": 3
+    },
+    {
+     "nhan": "Cường",
+     "phan": 5
+    }
+   ],
+   "tong": "600000 đồng",
+   "dau_hoi": [
+    "Cường"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 21.1",
+  "gop_y": false,
+  "dap_an": "$64$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nHiểu theo phần: $\\dfrac{3}{8}$ của $A$ là $24$ tức $3$ phần bằng nhau là $24$, nên $1$ phần là $24:3=8$ và cả $8$ phần là $8\\times 8=64$.\n\nChú ý: đây là bài **tìm số**, không nhân $24$ với $\\dfrac{3}{8}$ (nhân là bài tìm phân số của một số).\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{8}\\times A=24$\n\n$\\begin{array}{l} A=24:\\dfrac{3}{8} \\\\ A=24\\times\\dfrac{8}{3} \\\\ A=64 \\end{array}$\n\nVậy $A=64$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 21.2",
+  "gop_y": false,
+  "dap_an": "$35$ huy hiệu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $18$ huy hiệu là số **còn lại** sau khi cho Lan và Bình. Cả $\\dfrac{1}{5}$ và $\\dfrac{2}{7}$ đều là phân số của số huy hiệu **lúc đầu**, nên cộng được với nhau. Số còn lại chiếm $1-\\left(\\dfrac{1}{5}+\\dfrac{2}{7}\\right)$ số huy hiệu lúc đầu. Biết $18$ huy hiệu ứng với phân số nào thì lấy $18$ chia cho phân số đó để tìm số lúc đầu.\n\nChú ý: khi cộng hai phân số khác mẫu phải quy đồng mẫu số ($35$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố huy hiệu Minh cho Lan và Bình chiếm số phần số huy hiệu lúc đầu là: $\\dfrac{1}{5}+\\dfrac{2}{7}=\\dfrac{7}{35}+\\dfrac{10}{35}=\\dfrac{17}{35}$ (số huy hiệu)\n\n$18$ huy hiệu còn lại chiếm số phần số huy hiệu lúc đầu là: $1-\\dfrac{17}{35}=\\dfrac{35}{35}-\\dfrac{17}{35}=\\dfrac{18}{35}$ (số huy hiệu)\n\nSố huy hiệu lúc đầu của Minh là: $18:\\dfrac{18}{35}=18\\times\\dfrac{35}{18}=35$ (huy hiệu)\n\nĐáp số: $35$ huy hiệu",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 21.3",
+  "gop_y": false,
+  "dap_an": "$176$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{6}{11}$ là phân số của quãng đường **còn lại sau giờ thứ nhất**, không phải của cả quãng đường. Phải đổi ra phân số của **cả quãng đường**: $\\dfrac{3}{4}\\times\\dfrac{6}{11}$. Rồi mới tìm $60$ km còn lại chiếm bao nhiêu phần cả quãng đường: $1-\\dfrac{1}{4}-\\dfrac{9}{22}$ và lấy $60$ chia cho phân số đó.\n\nChú ý: không được cộng thẳng $\\dfrac{1}{4}+\\dfrac{6}{11}$, vì hai phân số này so với hai \"cả\" khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường còn lại sau giờ thứ nhất chiếm số phần tổng quãng đường là: $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ (quãng đường)\n\nQuãng đường đi được trong giờ thứ hai chiếm số phần tổng quãng đường là: $\\dfrac{3}{4}\\times\\dfrac{6}{11}=\\dfrac{9}{22}$ (quãng đường)\n\n$60$ ki-lô-mét còn lại chiếm số phần tổng quãng đường là: $1-\\dfrac{1}{4}-\\dfrac{9}{22}=\\dfrac{44}{44}-\\dfrac{11}{44}-\\dfrac{18}{44}=\\dfrac{15}{44}$ (quãng đường)\n\nĐộ dài quãng đường đó là: $60:\\dfrac{15}{44}=60\\times\\dfrac{44}{15}=176$ (km)\n\nĐáp số: $176$ km",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "VD 21.4",
+  "gop_y": false,
+  "dap_an": "$90$ kg cam",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề không cho tổng mà cho **hiệu** (buổi sáng ít hơn buổi chiều $39$ kg). Cả hai phân số cùng so với số cam của cửa hàng, nên hiệu của chúng, $\\dfrac{7}{10}-\\dfrac{4}{15}$, ứng đúng với $39$ kg. Biết $39$ kg ứng với phân số nào thì lấy $39$ chia cho phân số đó để tìm số cam cả cửa hàng.\n\nChú ý: trừ hai phân số khác mẫu phải quy đồng mẫu số trước ($30$). Đề hỏi \"tất cả\" nên bước cuối là chia, không phải cộng $39$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cam bán buổi sáng chiếm số phần số cam của cửa hàng là: $\\dfrac{4}{15}=\\dfrac{8}{30}$ (số cam)\n\nSố cam bán buổi chiều chiếm số phần số cam của cửa hàng là: $\\dfrac{7}{10}=\\dfrac{21}{30}$ (số cam)\n\nTa có sơ đồ:\n\n$39$ kg cam chiếm số phần số cam của cửa hàng là: $\\dfrac{21}{30}-\\dfrac{8}{30}=\\dfrac{13}{30}$ (số cam)\n\nCửa hàng có tất cả số ki-lô-gam cam là: $39:\\dfrac{13}{30}=39\\times\\dfrac{30}{13}=90$ (kg)\n\nĐáp số: $90$ kg cam",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 3,
+   "hang": [
+    {
+     "nhan": "Buổi sáng",
+     "phan": 8
+    },
+    {
+     "nhan": "Buổi chiều",
+     "phan": 21
+    }
+   ],
+   "hieu": "39 kg"
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.1a",
+  "gop_y": false,
+  "dap_an": "$45$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nChú ý: $\\dfrac{5}{5}=1$ là **cả** số $A$, nên $A$ chính bằng $45$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{5}\\times A=45$\n\n$\\begin{array}{l} A=45:\\dfrac{5}{5} \\\\ A=45:1 \\\\ A=45 \\end{array}$\n\nVậy $A=45$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.1b",
+  "gop_y": false,
+  "dap_an": "$108$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nChú ý: chia cho phân số là nhân với phân số đảo ngược ($\\dfrac{3}{2}$), không nhân $72$ với $\\dfrac{2}{3}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{3}\\times A=72$\n\n$\\begin{array}{l} A=72:\\dfrac{2}{3} \\\\ A=72\\times\\dfrac{3}{2} \\\\ A=108 \\end{array}$\n\nVậy $A=108$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.1c",
+  "gop_y": false,
+  "dap_an": "$325$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nChú ý: số $A$ phải lớn hơn $195$ vì $195$ chỉ là $\\dfrac{3}{5}$ của $A$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{5}\\times A=195$\n\n$\\begin{array}{l} A=195:\\dfrac{3}{5} \\\\ A=195\\times\\dfrac{5}{3} \\\\ A=325 \\end{array}$\n\nVậy $A=325$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.1d",
+  "gop_y": false,
+  "dap_an": "$144$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nChú ý: số $A$ phải lớn hơn $54$ vì $54$ chỉ là $\\dfrac{3}{8}$ của $A$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{8}\\times A=54$\n\n$\\begin{array}{l} A=54:\\dfrac{3}{8} \\\\ A=54\\times\\dfrac{8}{3} \\\\ A=144 \\end{array}$\n\nVậy $A=144$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.1e",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{9}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nChú ý: gạch thừa số $7$ giống nhau ở tử và mẫu trước khi nhân.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{7}\\times A=\\dfrac{9}{7}$\n\n$\\begin{array}{l} A=\\dfrac{9}{7}:\\dfrac{2}{7} \\\\ A=\\dfrac{9}{7}\\times\\dfrac{7}{2} \\\\ A=\\dfrac{9\\times\\cancel{7}}{\\cancel{7}\\times 2} \\\\ A=\\dfrac{9}{2} \\end{array}$\n\nVậy $A=\\dfrac{9}{2}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.1f",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{7}{9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết giá trị của một phân số của số $A$ thì muốn tìm $A$ ta lấy giá trị đó **chia** cho phân số: nếu $\\dfrac{a}{b}$ của $A$ là $m$ thì $A=m:\\dfrac{a}{b}$.\n\nChú ý: gạch thừa số $4$ giống nhau ở tử và mẫu trước khi nhân.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4}{7}\\times A=\\dfrac{4}{9}$\n\n$\\begin{array}{l} A=\\dfrac{4}{9}:\\dfrac{4}{7} \\\\ A=\\dfrac{4}{9}\\times\\dfrac{7}{4} \\\\ A=\\dfrac{\\cancel{4}\\times 7}{9\\times\\cancel{4}} \\\\ A=\\dfrac{7}{9} \\end{array}$\n\nVậy $A=\\dfrac{7}{9}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.2",
+  "gop_y": false,
+  "dap_an": "$16$ bạn nữ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $24$ bạn nam chiếm $\\dfrac{3}{5}$ số học sinh cả lớp, nên số học sinh cả lớp $=24:\\dfrac{3}{5}$. Số bạn nữ $=$ cả lớp $-$ số bạn nam.\n\nChú ý: đề hỏi số bạn **nữ**, không phải số học sinh cả lớp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh của cả lớp là: $24:\\dfrac{3}{5}=24\\times\\dfrac{5}{3}=40$ (học sinh)\n\nSố bạn nữ của lớp là: $40-24=16$ (bạn)\n\nĐáp số: $16$ bạn nữ",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.3",
+  "gop_y": false,
+  "dap_an": "$540$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chiều rộng $18$ cm bằng $\\dfrac{3}{5}$ chiều dài, nên chiều dài $=18:\\dfrac{3}{5}$ (tìm số khi biết giá trị phân số của nó). Có hai cạnh thì diện tích $=$ dài $\\times$ rộng.\n\nChú ý: chiều dài phải lớn hơn chiều rộng; đơn vị diện tích là $cm^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài của hình chữ nhật là: $18:\\dfrac{3}{5}=18\\times\\dfrac{5}{3}=30$ (cm)\n\nDiện tích của hình chữ nhật là: $30\\times 18=540$ ($cm^2$)\n\nĐáp số: $540$ $cm^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.4",
+  "gop_y": false,
+  "dap_an": "Khá: $120$ học sinh ; trung bình: $40$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết số học sinh giỏi ($160$ em) chiếm $\\dfrac{1}{2}$ cả khối, nên số học sinh cả khối $=160:\\dfrac{1}{2}$. Từ đó tìm số học sinh khá ($\\dfrac{3}{8}$ của cả khối), còn học sinh trung bình là phần còn lại.\n\nChú ý: \"còn lại là trung bình\" nên lấy cả khối trừ giỏi và khá.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh của cả khối Bốn là: $160:\\dfrac{1}{2}=160\\times 2=320$ (học sinh)\n\nSố học sinh đạt điểm khá là: $320\\times\\dfrac{3}{8}=120$ (học sinh)\n\nSố học sinh đạt điểm trung bình là: $320-160-120=40$ (học sinh)\n\nĐáp số: Khá $120$ học sinh; trung bình $40$ học sinh",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.6",
+  "gop_y": false,
+  "dap_an": "$240$ sticker",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: sau khi cho em còn $\\dfrac{3}{5}$ số sticker, nên số sticker **đã cho** là $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ số sticker ban đầu. Vậy $96$ sticker ứng với $\\dfrac{2}{5}$; lấy $96$ chia cho $\\dfrac{2}{5}$ để được số sticker ban đầu.\n\nChú ý: $96$ là số sticker **cho đi**, ứng với $\\dfrac{2}{5}$, chứ không ứng với $\\dfrac{3}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$96$ sticker Bình cho em chiếm số phần số sticker ban đầu là: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (số sticker)\n\nSố sticker ban đầu của Bình là: $96:\\dfrac{2}{5}=96\\times\\dfrac{5}{2}=240$ (sticker)\n\nĐáp số: $240$ sticker",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.7",
+  "gop_y": false,
+  "dap_an": "$180$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{2}{3}$ và $\\dfrac{4}{15}$ đều là phân số của diện tích **cả mảnh đất**, nên cộng được rồi lấy $1$ trừ đi để biết phần còn lại chiếm bao nhiêu phần. Phần còn lại là $12$ $m^2$ ứng với phân số đó, nên diện tích cả mảnh đất $=12:$ (phân số của phần còn lại).\n\nChú ý: quy đồng mẫu số $15$ khi cộng $\\dfrac{2}{3}+\\dfrac{4}{15}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích trồng cây ăn quả và trồng rau chiếm số phần diện tích mảnh đất là: $\\dfrac{2}{3}+\\dfrac{4}{15}=\\dfrac{10}{15}+\\dfrac{4}{15}=\\dfrac{14}{15}$ (diện tích mảnh đất)\n\n$12$ $m^2$ phần đất còn lại chiếm số phần diện tích mảnh đất là: $1-\\dfrac{14}{15}=\\dfrac{15}{15}-\\dfrac{14}{15}=\\dfrac{1}{15}$ (diện tích mảnh đất)\n\nDiện tích mảnh đất của bác An là: $12:\\dfrac{1}{15}=12\\times 15=180$ ($m^2$)\n\nĐáp số: $180$ $m^2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.8",
+  "gop_y": false,
+  "dap_an": "Cả ba đội: $180$ cây ; đội Một: $60$ cây ; đội Hai: $80$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đội Một và đội Hai trồng $\\dfrac{1}{3}$ và $\\dfrac{4}{9}$ **tổng số cây**, nên đội Ba trồng phần còn lại là $1-\\left(\\dfrac{1}{3}+\\dfrac{4}{9}\\right)$ tổng số cây. Biết $40$ cây ứng với phân số đó thì tổng số cây $=40:$ phân số đó. Có tổng rồi, nhân với $\\dfrac{1}{3}$ và $\\dfrac{4}{9}$ sẽ ra số cây của đội Một và đội Hai.\n\nChú ý: quy đồng mẫu số $9$ khi cộng $\\dfrac{1}{3}+\\dfrac{4}{9}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐội Một và đội Hai trồng được số phần tổng số cây là: $\\dfrac{1}{3}+\\dfrac{4}{9}=\\dfrac{3}{9}+\\dfrac{4}{9}=\\dfrac{7}{9}$ (tổng số cây)\n\n$40$ cây đội Ba trồng chiếm số phần tổng số cây là: $1-\\dfrac{7}{9}=\\dfrac{9}{9}-\\dfrac{7}{9}=\\dfrac{2}{9}$ (tổng số cây)\n\nCả ba đội trồng tất cả số cây là: $40:\\dfrac{2}{9}=40\\times\\dfrac{9}{2}=180$ (cây)\n\nĐội Một trồng được số cây là: $180\\times\\dfrac{1}{3}=60$ (cây)\n\nĐội Hai trồng được số cây là: $180\\times\\dfrac{4}{9}=80$ (cây)\n\nĐáp số: Cả ba đội $180$ cây; đội Một $60$ cây; đội Hai $80$ cây",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.9",
+  "gop_y": false,
+  "dap_an": "Cả ba bạn: $320000$ đồng ; Nam góp nhiều hơn Hà: $40000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Hà và Nam góp $\\dfrac{1}{4}$ và $\\dfrac{3}{8}$ **số tiền cả ba bạn**, nên Bình góp phần còn lại là $1-\\left(\\dfrac{1}{4}+\\dfrac{3}{8}\\right)$ số tiền. Biết $120000$ đồng ứng với phân số đó thì số tiền cả ba bạn $=120000:$ phân số đó. Sau đó tính tiền của Hà, Nam để tìm hiệu.\n\nChú ý: quy đồng mẫu số $8$ khi cộng $\\dfrac{1}{4}+\\dfrac{3}{8}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHà và Nam góp được số phần số tiền cả ba bạn là: $\\dfrac{1}{4}+\\dfrac{3}{8}=\\dfrac{2}{8}+\\dfrac{3}{8}=\\dfrac{5}{8}$ (số tiền)\n\n$120000$ đồng Bình góp chiếm số phần số tiền cả ba bạn là: $1-\\dfrac{5}{8}=\\dfrac{8}{8}-\\dfrac{5}{8}=\\dfrac{3}{8}$ (số tiền)\n\nCả ba bạn góp được số tiền là: $120000:\\dfrac{3}{8}=120000\\times\\dfrac{8}{3}=320000$ (đồng)\n\nSố tiền Hà góp là: $320000\\times\\dfrac{1}{4}=80000$ (đồng)\n\nSố tiền Nam góp là: $320000\\times\\dfrac{3}{8}=120000$ (đồng)\n\nNam góp nhiều hơn Hà số tiền là: $120000-80000=40000$ (đồng)\n\nĐáp số: Cả ba bạn $320000$ đồng; Nam nhiều hơn Hà $40000$ đồng",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.10",
+  "gop_y": false,
+  "dap_an": "Lần thứ nhất: $30$ con ; lần thứ hai: $32$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lần thứ nhất bán $\\dfrac{3}{8}$ và lần thứ hai bán $\\dfrac{2}{5}$ **tổng số gà** (cùng so với tổng số gà, nên cộng được). $18$ con còn lại chiếm $1-\\left(\\dfrac{3}{8}+\\dfrac{2}{5}\\right)$ tổng số gà. Biết $18$ con ứng với phân số đó thì tổng số gà $=18:$ phân số đó, rồi nhân với $\\dfrac{3}{8}$ và $\\dfrac{2}{5}$ để biết mỗi lần bán bao nhiêu con.\n\nChú ý: quy đồng mẫu số $40$ khi cộng $\\dfrac{3}{8}+\\dfrac{2}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai lần bán được số phần tổng số gà là: $\\dfrac{3}{8}+\\dfrac{2}{5}=\\dfrac{15}{40}+\\dfrac{16}{40}=\\dfrac{31}{40}$ (tổng số gà)\n\n$18$ con gà còn lại chiếm số phần tổng số gà là: $1-\\dfrac{31}{40}=\\dfrac{40}{40}-\\dfrac{31}{40}=\\dfrac{9}{40}$ (tổng số gà)\n\nTổng số gà người đó mang ra chợ là: $18:\\dfrac{9}{40}=18\\times\\dfrac{40}{9}=80$ (con)\n\nLần thứ nhất người đó bán được số con gà là: $80\\times\\dfrac{3}{8}=30$ (con)\n\nLần thứ hai người đó bán được số con gà là: $80\\times\\dfrac{2}{5}=32$ (con)\n\nĐáp số: Lần thứ nhất $30$ con; lần thứ hai $32$ con",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.11",
+  "gop_y": false,
+  "dap_an": "$294$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{3}{7}$ của đợt thứ hai là phân số của số cây **còn lại sau đợt thứ nhất**, không phải của tổng số cây. Phải đổi ra phân số của **tổng số cây**: $\\dfrac{2}{3}\\times\\dfrac{3}{7}$. Rồi tìm $112$ cây đợt ba chiếm bao nhiêu phần tổng số cây và lấy $112$ chia cho phân số đó.\n\nChú ý: không được cộng thẳng $\\dfrac{1}{3}+\\dfrac{3}{7}$, vì hai phân số này so với hai \"cả\" khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây còn lại sau đợt thứ nhất chiếm số phần tổng số cây là: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (tổng số cây)\n\nSố cây đợt thứ hai trồng chiếm số phần tổng số cây là: $\\dfrac{2}{3}\\times\\dfrac{3}{7}=\\dfrac{2}{7}$ (tổng số cây)\n\nHai đợt đầu trồng được số phần tổng số cây là: $\\dfrac{1}{3}+\\dfrac{2}{7}=\\dfrac{7}{21}+\\dfrac{6}{21}=\\dfrac{13}{21}$ (tổng số cây)\n\n$112$ cây đợt thứ ba chiếm số phần tổng số cây là: $1-\\dfrac{13}{21}=\\dfrac{21}{21}-\\dfrac{13}{21}=\\dfrac{8}{21}$ (tổng số cây)\n\nTổng số cây tổ công nhân phải trồng là: $112:\\dfrac{8}{21}=112\\times\\dfrac{21}{8}=294$ (cây)\n\nĐáp số: $294$ cây",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.12",
+  "gop_y": false,
+  "dap_an": "$147$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{2}{3}$ của ngày thứ hai là phân số của số trang **còn lại sau ngày thứ nhất**, không phải của cả cuốn sách. Phải đổi ra phân số của **cả cuốn sách**: $\\dfrac{5}{7}\\times\\dfrac{2}{3}$. Rồi tìm $35$ trang ngày thứ ba chiếm bao nhiêu phần cuốn sách và lấy $35$ chia cho phân số đó.\n\nChú ý: không được cộng thẳng $\\dfrac{2}{7}+\\dfrac{2}{3}$, vì hai phân số này so với hai \"cả\" khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố trang còn lại sau ngày thứ nhất chiếm số phần cuốn sách là: $1-\\dfrac{2}{7}=\\dfrac{5}{7}$ (cuốn sách)\n\nSố trang ngày thứ hai Mai đọc chiếm số phần cuốn sách là: $\\dfrac{5}{7}\\times\\dfrac{2}{3}=\\dfrac{10}{21}$ (cuốn sách)\n\nHai ngày đầu Mai đọc được số phần cuốn sách là: $\\dfrac{2}{7}+\\dfrac{10}{21}=\\dfrac{6}{21}+\\dfrac{10}{21}=\\dfrac{16}{21}$ (cuốn sách)\n\n$35$ trang ngày thứ ba chiếm số phần cuốn sách là: $1-\\dfrac{16}{21}=\\dfrac{21}{21}-\\dfrac{16}{21}=\\dfrac{5}{21}$ (cuốn sách)\n\nCuốn sách đó dày số trang là: $35:\\dfrac{5}{21}=35\\times\\dfrac{21}{5}=147$ (trang)\n\nĐáp số: $147$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.13",
+  "gop_y": false,
+  "dap_an": "Ngày thứ nhất: $1120$ m ; ngày thứ hai: $840$ m ; ngày thứ ba: $1120$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{3}{7}$ của ngày thứ hai là phân số của đoạn đường **còn lại sau ngày thứ nhất**, không phải của cả đoạn đường. Phải đổi ra phân số của **cả đoạn đường**: $\\dfrac{7}{11}\\times\\dfrac{3}{7}$. Rồi tìm $1120$ m ngày thứ ba chiếm bao nhiêu phần cả đoạn đường, lấy $1120$ chia cho phân số đó để biết độ dài cả đoạn, sau đó tìm mỗi ngày.\n\nChú ý: ngày thứ ba đề đã cho sẵn $1120$ m, nên đừng tính lại; khi nhân $\\dfrac{7}{11}\\times\\dfrac{3}{7}$ có thể gạch thừa số $7$ giống nhau ở tử và mẫu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố mét đường còn lại sau ngày thứ nhất chiếm số phần đoạn đường là: $1-\\dfrac{4}{11}=\\dfrac{7}{11}$ (đoạn đường)\n\nNgày thứ hai đội sửa được số phần đoạn đường là: $\\dfrac{7}{11}\\times\\dfrac{3}{7}=\\dfrac{3}{11}$ (đoạn đường)\n\n$1120$ m ngày thứ ba chiếm số phần đoạn đường là: $1-\\dfrac{4}{11}-\\dfrac{3}{11}=\\dfrac{4}{11}$ (đoạn đường)\n\nĐộ dài đoạn đường là: $1120:\\dfrac{4}{11}=1120\\times\\dfrac{11}{4}=3080$ (m)\n\nNgày thứ nhất đội sửa được số mét đường là: $3080\\times\\dfrac{4}{11}=1120$ (m)\n\nNgày thứ hai đội sửa được số mét đường là: $3080\\times\\dfrac{3}{11}=840$ (m)\n\nĐáp số: Ngày thứ nhất $1120$ m; ngày thứ hai $840$ m; ngày thứ ba $1120$ m",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.14",
+  "gop_y": false,
+  "dap_an": "$99$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{5}{6}$ của ngày thứ hai là phân số của số sản phẩm **làm được trong ngày thứ nhất**, không phải của tổng số. Phải đổi ra phân số của **tổng số sản phẩm**: $\\dfrac{2}{11}\\times\\dfrac{5}{6}$. Rồi tìm $66$ sản phẩm ngày thứ ba chiếm bao nhiêu phần tổng số và lấy $66$ chia cho phân số đó.\n\nChú ý: ở bài này ngày thứ hai lấy phân số của ngày thứ **nhất**, khác với các bài \"số còn lại\".\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sản phẩm làm được trong ngày thứ hai chiếm số phần tổng số sản phẩm là: $\\dfrac{2}{11}\\times\\dfrac{5}{6}=\\dfrac{5}{33}$ (tổng số sản phẩm)\n\nHai ngày đầu làm được số phần tổng số sản phẩm là: $\\dfrac{2}{11}+\\dfrac{5}{33}=\\dfrac{6}{33}+\\dfrac{5}{33}=\\dfrac{11}{33}=\\dfrac{1}{3}$ (tổng số sản phẩm)\n\n$66$ sản phẩm ngày thứ ba chiếm số phần tổng số sản phẩm là: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (tổng số sản phẩm)\n\nTổng số sản phẩm tổ đó làm được trong ba ngày là: $66:\\dfrac{2}{3}=66\\times\\dfrac{3}{2}=99$ (sản phẩm)\n\nĐáp số: $99$ sản phẩm",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.15",
+  "gop_y": false,
+  "dap_an": "Buổi sáng: $30$ kg ; buổi chiều: $18$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{3}{5}$ của buổi chiều là phân số của số táo **bán buổi sáng**, nên đổi ra phân số của **số táo ban đầu**: $\\dfrac{5}{21}\\times\\dfrac{3}{5}$. Cả hai buổi bán được tổng các phân số đó; $78$ kg còn lại chiếm phần còn lại, nên số táo ban đầu $=78:$ (phân số đó). Có tổng rồi tìm số táo từng buổi.\n\nChú ý: đề hỏi số kg bán **từng buổi**, không phải số táo ban đầu hay số táo còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố táo bán buổi chiều chiếm số phần số táo ban đầu là: $\\dfrac{3}{5}\\times\\dfrac{5}{21}=\\dfrac{15}{105}=\\dfrac{3}{21}$ (số táo)\n\nCả hai buổi bán được số phần số táo ban đầu là: $\\dfrac{5}{21}+\\dfrac{3}{21}=\\dfrac{8}{21}$ (số táo)\n\n$78$ kg táo còn lại chiếm số phần số táo ban đầu là: $1-\\dfrac{8}{21}=\\dfrac{21}{21}-\\dfrac{8}{21}=\\dfrac{13}{21}$ (số táo)\n\nSố ki-lô-gam táo của cửa hàng lúc đầu là: $78:\\dfrac{13}{21}=78\\times\\dfrac{21}{13}=126$ (kg)\n\nBuổi sáng cửa hàng bán được số ki-lô-gam táo là: $126\\times\\dfrac{5}{21}=30$ (kg)\n\nBuổi chiều cửa hàng bán được số ki-lô-gam táo là: $30\\times\\dfrac{3}{5}=18$ (kg)\n\nĐáp số: Buổi sáng $30$ kg; buổi chiều $18$ kg",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.17",
+  "gop_y": false,
+  "dap_an": "$165$ tấn hàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho **hiệu** (đội II ít hơn đội III $11$ tấn), nên tìm hiệu hai phân số của tổng số hàng. Đội III vận chuyển phần còn lại $1-\\dfrac{4}{15}-\\dfrac{1}{3}$, đội II là $\\dfrac{1}{3}$; hiệu của hai phân số này ứng với $11$ tấn. Biết $11$ tấn ứng với phân số nào thì lấy $11$ chia cho phân số đó để được tổng số hàng.\n\nChú ý: quy đồng mẫu số $15$ (vì $\\dfrac{1}{3}=\\dfrac{5}{15}$). Đề hỏi tổng số hàng của **cả ba đội**.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐội thứ III vận chuyển được số phần số hàng là: $1-\\dfrac{4}{15}-\\dfrac{1}{3}=\\dfrac{15}{15}-\\dfrac{4}{15}-\\dfrac{5}{15}=\\dfrac{6}{15}$ (số hàng)\n\nTa có sơ đồ:\n\n$11$ tấn hàng chiếm số phần số hàng là: $\\dfrac{6}{15}-\\dfrac{1}{3}=\\dfrac{6}{15}-\\dfrac{5}{15}=\\dfrac{1}{15}$ (số hàng)\n\nCả ba đội đã vận chuyển được số tấn hàng là: $11:\\dfrac{1}{15}=11\\times 15=165$ (tấn)\n\nĐáp số: $165$ tấn hàng",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 11,
+   "hang": [
+    {
+     "nhan": "Đội III",
+     "phan": 6
+    },
+    {
+     "nhan": "Đội II",
+     "phan": 5
+    }
+   ],
+   "hieu": "11 tấn"
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "LT 21.18",
+  "gop_y": false,
+  "dap_an": "Nhập về: $900$ kg ; ngày thứ nhất: $400$ kg ; ngày thứ hai: $300$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{3}{5}$ của ngày thứ hai là phân số của số táo **còn lại sau ngày thứ nhất**, nên đổi ra phân số của **số táo nhập về**: $\\dfrac{5}{9}\\times\\dfrac{3}{5}$. Đề cho **hiệu** (ngày thứ nhất nhiều hơn ngày thứ hai $100$ kg), nên hiệu hai phân số ứng với $100$ kg. Biết $100$ kg ứng với phân số nào thì lấy $100$ chia cho phân số đó để được số táo nhập về, rồi tìm mỗi ngày.\n\nChú ý: không được trừ thẳng $\\dfrac{4}{9}-\\dfrac{3}{5}$, vì hai phân số này so với hai \"cả\" khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố táo còn lại sau ngày thứ nhất chiếm số phần số táo nhập về là: $1-\\dfrac{4}{9}=\\dfrac{5}{9}$ (số táo)\n\nSố táo bán ngày thứ hai chiếm số phần số táo nhập về là: $\\dfrac{5}{9}\\times\\dfrac{3}{5}=\\dfrac{3}{9}$ (số táo)\n\nTa có sơ đồ:\n\n$100$ kg táo chiếm số phần số táo nhập về là: $\\dfrac{4}{9}-\\dfrac{3}{9}=\\dfrac{1}{9}$ (số táo)\n\nSố ki-lô-gam táo cửa hàng đã nhập về là: $100:\\dfrac{1}{9}=100\\times 9=900$ (kg)\n\nNgày thứ nhất cửa hàng bán được số ki-lô-gam táo là: $900\\times\\dfrac{4}{9}=400$ (kg)\n\nNgày thứ hai cửa hàng bán được số ki-lô-gam táo là: $400-100=300$ (kg)\n\nĐáp số: Nhập về $900$ kg; ngày thứ nhất $400$ kg; ngày thứ hai $300$ kg",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 100,
+   "hang": [
+    {
+     "nhan": "Ngày thứ nhất",
+     "phan": 4
+    },
+    {
+     "nhan": "Ngày thứ hai",
+     "phan": 3
+    }
+   ],
+   "hieu": "100 kg"
+  },
+  "ghi_chu_nghi": "Đề in 'Hỏi đửa hàng đã nhập về…' — hiểu là lỗi chính tả của 'cửa hàng'. Câu hỏi có 3 phần (số nhập về; ngày 1; ngày 2), đáp án gộp cả ba."
+ }
+]
