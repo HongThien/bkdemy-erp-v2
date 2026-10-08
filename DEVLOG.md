@@ -36056,3 +36056,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 08/10 (tiếp) — CEO: "Giải là duyệt luôn. Bản chất là m đi giải 1 lượt các dạng bài để học cách giải để giải toàn bộ bài đấy"
 - Bước 1 làm rõ: lô thử = một vòng phủ MỌI dạng bài của sách (mỗi dạng ≥1 câu), không phải mẫu ngẫu nhiên; v1 = đủ dạng + lô cuối không sửa; bước 2 gặp dạng mới ⇒ quay lại giải thử cho CEO duyệt. Ghi README §0 + §2 B4/B7, k5T §7 + §9, HANDOFF.
 - 271 câu STP 5T: duyệt luôn ở màn Duyệt lời giải (đã có dạng T15T0202 nên bấm được), không chờ bước 3. Câu đã giải có dạng ⇒ duyệt ngay, ghi thành luật chung README §0. Claude không tự ký duyệt — người duyệt bấm ở màn.
+
+## 08/10 (tiếp) — Bản đồ mới: popup giữa màn cho nhóm/dạng bài + nút 📖 lý thuyết trên box nhóm
+- Thùy: bấm nhóm/dạng bài ⇒ popup GIỮA màn (không ở góc); gán lý thuyết nhóm cần nút ngay trên card. Chủ đề/chuyên đề giữ khung phải. Esc đóng popup; phím ↑↓ không chạy khi popup mở. Nút 📖 (chưa có LT thì '📖 +LT') mở thẳng LyThuyetModal, không bật popup.
+- Kiểm app local K6 (chỉ mở/đóng, không lưu): popup tâm đúng giữa, Esc đóng, 📖 mở lý thuyết.

@@ -114,7 +114,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   // Phím ← → chuyển chuyên đề (trừ khi đang gõ)
   useEffect(() => {
     const f = (e: KeyboardEvent) => {
-      if (dangGo(e.target) || lt) return
+      if (e.key === 'Escape' && !lt && !ganMo && chon) { setChon(null); return }
+      if (dangGo(e.target) || lt || ganMo || chon?.loai === 'nhom' || chon?.loai === 'dang_bai') return
       if (e.key === 'ArrowUp') { e.preventDefault(); buocChuyenDe(-1) }
       if (e.key === 'ArrowDown') { e.preventDefault(); buocChuyenDe(1) }
     }
@@ -288,7 +289,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         ) : (
           <SoDoChuyenDe key={`${chuDe.id}|${o.chuyen_de_id}`} cd={chuDe} o={o} chon={chon} hover={hover} dangKeo={dangKeo} sang={sang}
             batDauKeo={batDauKeo} ketThucKeo={ketThucKeo} vung={vung} onChon={setChon} onChonChuDe={chonChuDe} lam={lam}
-            ganVao={ganVao} moGan={moGan} />
+            ganVao={ganVao} moGan={moGan} moLyThuyet={moLyThuyet} />
         )}
 
         {chon && chuDe && (chon.loai === 'chu_de' || o) && (
@@ -324,6 +325,7 @@ function SoDoChuyenDe(p: {
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
   ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
   moGan: (o: BdmO, n: BdmNhom | null) => void
+  moLyThuyet: (loai: 'nhom' | 'dang_bai', id: string, ten: string) => void
 }) {
   const { cd, o, chon, sang, vung, lam } = p
   const khung = useRef<HTMLDivElement>(null)
@@ -416,7 +418,7 @@ function SoDoChuyenDe(p: {
                   dangKeo={p.dangKeo} sang={sang} soCuaNhom={soCuaNhom}
                   refHop={(el) => { if (el) hop.current.set(n.id, el); else hop.current.delete(n.id) }}
                   batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam}
-                  ganVao={p.ganVao} moGan={() => p.moGan(o, n)} />
+                  ganVao={p.ganVao} moGan={() => p.moGan(o, n)} moLyThuyet={() => p.moLyThuyet('nhom', n.id, n.ten)} />
               </div>
             ))}
           </div>
@@ -438,6 +440,7 @@ function BoxNhom(p: {
   lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void>
   ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
   moGan: () => void
+  moLyThuyet: () => void
 }) {
   const { n, cd, o, sang, vung, lam } = p
   const cungO = (k: Keo) => k.loai === 'nhom' && k.chuDeId === cd.id && k.chuyenDeId === o.chuyen_de_id && k.id !== n.id
@@ -453,6 +456,11 @@ function BoxNhom(p: {
       <div className="flex items-start gap-2 bg-slate-700 px-3 py-2 text-white">
         <span className="mt-px rounded bg-white/20 px-1.5 text-[11px] font-bold">{n.so}</span>
         <span className="flex-1 text-[13px] font-semibold leading-snug"><MathText>{n.ten}</MathText></span>
+        <button onClick={(e) => { e.stopPropagation(); p.moLyThuyet() }} draggable={false}
+          title={n.co_ly_thuyet ? 'Xem / sửa lý thuyết' : 'Gán lý thuyết cho nhóm này'}
+          className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ${n.co_ly_thuyet ? 'bg-sky-400/30 text-white hover:bg-sky-400/50' : 'bg-white/15 text-white/80 hover:bg-white/30'}`}>
+          📖{n.co_ly_thuyet ? '' : ' +LT'}
+        </button>
         <DauTienDo moTa={!!n.mo_ta.trim()} noiDung={n.co_ly_thuyet} nhanNoiDung="lý thuyết" />
       </div>
       <div className="flex flex-col gap-1.5 p-2.5">
@@ -588,7 +596,20 @@ function ChiTiet(p: {
 }) {
   const { chon, cay, cd, o, lam } = p
   const goCu = (dich: BdmDich) => (ma: string, ten: string) => void lam(() => goDoiUngTheoDich(ma, dich), `Đã gỡ gắn «${ten}»`)
-  const khung = (tieuDe: string, mau: string, noiDung: ReactNode) => (
+  // Nhóm bài / dạng bài: POPUP GIỮA MÀN (CEO 08/10). Chủ đề / chuyên đề: khung phải như cũ.
+  const giuaMan = chon.loai === 'nhom' || chon.loai === 'dang_bai'
+  const khung = (tieuDe: string, mau: string, noiDung: ReactNode) => giuaMan ? (
+    <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/40 p-6" onClick={p.onDong}>
+      <div className="flex max-h-full w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className={`flex items-center gap-2 px-5 py-3 text-white ${mau}`}>
+          <span className="flex-1 text-[14px] font-semibold">{tieuDe}</span>
+          <span className="text-[11px] text-white/60">Esc để đóng</span>
+          <button onClick={p.onDong} className="text-white/70 hover:text-white">✕</button>
+        </div>
+        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-5">{noiDung}</div>
+      </div>
+    </div>
+  ) : (
     <div className="flex w-[380px] shrink-0 flex-col border-l border-slate-200 bg-white">
       <div className={`flex items-center gap-2 px-4 py-2.5 text-white ${mau}`}>
         <span className="flex-1 text-[13px] font-semibold">{tieuDe}</span>
