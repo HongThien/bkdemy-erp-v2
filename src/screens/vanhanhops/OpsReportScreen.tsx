@@ -115,7 +115,7 @@ function TaskRow({ t, now, open, onToggle, onDone }: { t: OpsTask; now: number; 
   const [err, setErr] = useState<string | null>(null)
   const isMobile = useIsMobile()
   const muc = mucDeadline(t.deadline, now)
-  const msg = t.tab === 'report' ? buildReportMessage(t.lopTen, t.thu, t.ngay, t.gioBatDau, t.gioKetThuc) : TAN_MESSAGE
+  const msg = t.tab === 'report' ? buildReportMessage(t.thu, t.ngay, t.gioBatDau, t.gioKetThuc) : TAN_MESSAGE
 
   // 1 task = 1 slot ảnh (trùng đúng khoá unique tkb_id+ngay+tab của vh_ops_task) → dán lại thì ĐÈ.
   // Màn này rò rỉ nặng hơn Prep: ảnh upload lúc DÁN nhưng dòng chỉ ghi lúc bấm ĐÓNG, nên dán xong bỏ

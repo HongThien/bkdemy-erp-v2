@@ -172,11 +172,16 @@ function vnInstantLocal(ngay: string, gio: string): number {
   const [y, m, d] = ngay.split('-').map(Number); const [hh, mm] = gio.split(':').map(Number)
   return Date.UTC(y, m - 1, d, hh, mm) - 7 * 3600000
 }
+// Giờ 24h kiểu "19h30" / "21h" (Thùy 08/10: không dùng 12h, không dùng dấu ":").
+const gioH = (t: string) => { const [h, m] = t.split(':').map(Number); return m ? `${h}h${String(m).padStart(2, '0')}` : `${h}h` }
 // Render tin nhắn ĐỘNG lúc gọi (đọc TKB hiện tại, KHÔNG lưu văn bản chết).
-export function buildReportMessage(lopTen: string, thu: number, ngay: string, gioBatDau: string, gioKetThuc: string): string {
-  const [, m, d] = ngay.split('-')
-  const thuLabel = thu === 8 ? 'Chủ nhật' : `Thứ ${thu}`
-  return `Ngày mai ${thuLabel}, ${d}/${m} các con lớp ${lopTen} có lịch học ${hhmm(gioBatDau)}–${hhmm(gioKetThuc)}, bố mẹ nhắc con đi học đúng giờ, mang đủ đồ dùng.`
+// ⚠ `ngayReport` = ngày GỬI report (tối hôm trước, = OpsTask.ngay của tab report) — ngày HỌC là ngày
+// hôm sau. Bản cũ in thẳng `ngay` ⇒ tin "ngày mai" lại ghi ngày hôm nay (Thùy báo 08/10).
+// Mẫu chữ CỐ ĐỊNH theo Thùy chốt 08/10.
+export function buildReportMessage(thu: number, ngayReport: string, gioBatDau: string, gioKetThuc: string): string {
+  const [y, m, d] = congNgay(ngayReport, 1).split('-').map(Number)
+  const thuLabel = thu === 8 ? 'chủ nhật' : `thứ ${thu}`
+  return `Các phụ huynh lưu ý, ngày mai, ${thuLabel} ngày ${d}/${m}/${y}, các con sẽ có lịch học từ ${gioH(gioBatDau)} - ${gioH(gioKetThuc)}. Các phụ huynh nhắc nhở các con đi học đúng giờ và mang đầy đủ dụng cụ học tập ạ`
 }
 export const TAN_MESSAGE = 'Lớp đã tan ạ.'
 
@@ -266,7 +271,8 @@ export async function listOpsChoDuyet(tu: string, den: string): Promise<OpsChoDu
   if (error) throw error
   return ((rows ?? []) as any[]).map((r): OpsChoDuyet => {
     const s = r.tkb
-    const deadline = r.tab === 'report' ? vnInstantLocal(congNgay(r.ngay, -1), REPORT_GIO_CO_DINH) : vnInstantLocal(r.ngay, hhmm(s.gio_ket_thuc)) + TAN_BIEN_PHUT * 60000
+    // `ngay` của dòng report ĐÃ là ngày gửi report (tối hôm trước) — không lùi thêm 1 ngày nữa (08/10).
+    const deadline = r.tab === 'report' ? vnInstantLocal(r.ngay, REPORT_GIO_CO_DINH) : vnInstantLocal(r.ngay, hhmm(s.gio_ket_thuc)) + TAN_BIEN_PHUT * 60000
     return {
       tkbId: r.tkb_id, ngay: r.ngay, tab: r.tab, lopTen: s?.lop?.ten_lop ?? '?', thu: s?.thu ?? 0,
       gioBatDau: s?.gio_bat_dau ?? '', gioKetThuc: s?.gio_ket_thuc ?? '', phong: s?.phong ?? null,
