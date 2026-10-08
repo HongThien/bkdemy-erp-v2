@@ -2,7 +2,7 @@
 
 > Thay màn Chất lượng vận hành cũ (CL − (100 − TĐ), leader chấm chất lượng tay, toán ở JS — đã outdate).
 > Làm **Trợ giảng** trước; GV / OPS dùng lại khung này sau.
-> Code: mig `202610081343_hieu_suat_ta.sql` · `src/lib/hieusuat_ta.ts` · `src/screens/dashboard/HieuSuatTAScreen.tsx` (lá `db_chatluong`).
+> Code: mig `202610081343_hieu_suat_ta.sql` + `202610081414_hieu_suat_ta_theo_gay.sql` · `src/lib/hieusuat_ta.ts` · `src/screens/dashboard/HieuSuatTAScreen.tsx` (lá `db_chatluong`).
 
 ## 1. Công thức
 
@@ -12,20 +12,25 @@
 | Chấm ET | 15% | 1 task / buổi (bỏ buổi ET online) |
 | Bổ trợ (bù · yếu · đuổi) | 35% | chỉ tiêu **8 giờ / tháng** — quản lý chấm tay (xem §3) |
 
-- **Điểm 1 task = 100 − trừ tiến độ − 15 × số gậy chất lượng** (trừ thẳng điểm, sàn 0).
-- **Tiến độ** tính theo **lần đóng ĐẦU TIÊN**: trễ ≤ 6h −10 · 6–12h −20 · 12–24h −30 · > 24h −40.
-  Quá hạn mà chưa đóng ⇒ tính trễ tới hiện tại. Chưa tới hạn mà chưa đóng ⇒ chưa phải việc để đo.
-- **Gậy chất lượng** = gậy đã vào sổ (đã xác nhận), chưa thu hồi, gắn vào đúng task, **KHÔNG phải loại "Chậm deadline"**
-  (trễ đã phạt ở tiến độ — CEO 08/10: không trừ 2 lần).
+- **Điểm 1 task CHỈ dựa vào HỆ GẬY** (CEO 08/10, sửa lần 2 — không tự đo lại): **không có gậy = 100**.
+  - Gậy **"Chậm deadline"** đã vào sổ ⇒ trừ **tiến độ** theo số phút trễ mà gậy đã ghi (`gay_de_xuat.tre_phut`):
+    ≤ 6h −10 · 6–12h −20 · 12–24h −30 · > 24h −40 (1 task chỉ trừ tiến độ 1 lần; gậy không ghi phút ⇒ −10 + cờ).
+  - Gậy **loại khác** đã vào sổ ⇒ trừ **chất lượng** −15 mỗi gậy. Sàn 0.
+  - Gậy còn **chờ chốt** hoặc **đã thu hồi** ⇒ không trừ (task hiện cờ "có đề xuất gậy chờ chốt").
+  - Giờ trễ tự đo từ giờ đóng vẫn HIỆN để tham khảo, KHÔNG vào điểm.
+- **Gậy ↔ task** khớp bằng khoá `vh:<buổi>|<btvn|et>|<nhân sự>` (= `ref_key` của `fn_viec_buoi_thuong`). Màn chi tiết có khối
+  **"Gậy của tháng"** liệt kê MỌI gậy của TA (vào sổ / thu hồi / chờ chốt), gắn task nào, có vào điểm không và vì sao
+  (không phải lớp TA chính · không thuộc BTVN/ET · gậy bổ trợ · ngoài task) — đối chiếu 1-1 với màn Gậy, không gậy nào rơi mất.
 - **Hiệu suất đầu việc** = trung bình các task được tính. **Tổng** = trung bình có trọng số các đầu việc đang có số
   (mỗi đầu việc lấy số ĐÃ CHỐT nếu có, không thì số hệ thống; bổ trợ chỉ có khi đã chốt) — thiếu đầu việc thì ghi "tạm".
 
 ## 2. Task nào được tính
 
-- Task chỉ tồn tại khi **buổi có câu của phase đó trên hệ thống** (BTVN / ET). Đo 09/2026: 215/216 task BTVN đã đóng có câu,
-  33/36 task "ảo" không có câu nào. Buổi không có câu ⇒ vẫn **hiện từng dòng cho từng TA** nhưng "không tính".
-- Không tính: TA vắng buổi đó (`ta_vang`) · chưa xác định được hạn.
-- Không xếp hạng người có cờ `an_xep_hang` (vd CEO).
+- **Chỉ lớp được phân công TRỰC TIẾP = TA chính** (`phan_cong_lop.la_chinh`) — khớp cách hệ Gậy chọn người chịu.
+- Task chỉ tồn tại khi **buổi có câu của phase đó trên hệ thống** (BTVN / ET) — đo 09/2026: 215/216 task BTVN đã đóng có câu,
+  33/36 task "ảo" không có câu. Buổi không có câu ⇒ vẫn hiện từng dòng cho từng TA nhưng "không tính";
+  **NGOẠI LỆ: đã có gậy vào sổ ⇒ task có thật (người đã xác nhận) ⇒ vẫn tính.**
+- Không tính: TA vắng buổi đó (`ta_vang`) · chưa xác định được hạn. Không xếp hạng người có cờ `an_xep_hang` (vd CEO).
 
 ## 3. Bổ trợ
 
@@ -53,6 +58,7 @@
 
 ## 6. Giới hạn đã biết
 
-- Trước 23/09 không có lịch sử đóng/mở ⇒ "lần đóng đầu" = lần đóng cuối ⇒ một số task tháng 9 hiện trễ hàng trăm giờ do bị mở lại.
-- Phân công lớp (`phan_cong_lop`) không có lịch sử ⇒ TA đổi lớp giữa chừng thì task cũ của lớp tính cho TA hiện tại.
+- Gậy tự động đo trễ theo giờ đóng HIỆN TẠI (lần đóng cuối) ⇒ task bị mở lại rồi đóng lại có thể nhận gậy trễ dù lần đầu đúng hạn
+  (vd Nguyễn Hà Giang 7S1 20/09: lần đầu đúng hạn, gậy ghi trễ 47h) — người chốt gậy xem cờ "Đã mở lại" để quyết.
+- Phân công lớp (`phan_cong_lop`) không có lịch sử ⇒ TA đổi lớp giữa chừng thì task cũ của lớp tính cho TA chính hiện tại.
 - Tham số (tỉ trọng, thang trễ, 15/gậy, 8h) nằm ở 4 hàm `_hsta_*` — đổi số = 1 migration sửa đúng hàm đó.

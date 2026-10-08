@@ -2,7 +2,8 @@
 // Bản cũ (ChatLuongVanHanhScreen: CL − (100 − TĐ), leader chấm CL tay, toán ở JS) đã outdate — file còn
 // đó để đối chiếu, không còn gắn vào menu.
 // Hiện làm TRỢ GIẢNG trước: Chấm BTVN 50% · Chấm ET 15% · Bổ trợ 35%.
-//   · Task BTVN/ET = 100 − trừ tiến độ (lần đóng đầu) − 15 × gậy chất lượng. Mọi số tính ở fn_hsta_*.
+//   · Task BTVN/ET: CHỈ dựa vào GẬY đã xác nhận (CEO 08/10) — không gậy = 100; gậy Chậm deadline trừ tiến độ theo
+//     số phút gậy ghi (−10/−20/−30/−40), gậy khác −15. Chỉ lớp TA chính. Mọi số tính ở fn_hsta_*.
 //   · Bổ trợ: hệ thống CHƯA đo giờ chính xác ⇒ chỉ hiện đủ số liệu từng ca, quản lý nhập điểm tay.
 //   · Mỗi ô: hệ thống ĐỀ XUẤT + quản lý CHỐT; "Ghi thêm" cho việc ngoài hệ thống.
 // Sau mutation KHÔNG reload cả bảng (CLAUDE.md §2): vá đúng dòng TA đó, refetch nền 1 dòng.
@@ -10,9 +11,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
-  layBangThang, layDongThang, layTask, layCaBoTro, chot, layGhiThem, themGhiThem, xoaGhiThem,
+  layBangThang, layDongThang, layTask, layCaBoTro, layGay, chot, layGhiThem, themGhiThem, xoaGhiThem,
   TEN_DAU_VIEC, TEN_LOAI_CA, TEN_CO,
-  type HstaThang, type HstaTask, type HstaCa, type GhiThem, type DauViec, type DauViecGhiThem, type ChotO,
+  type HstaThang, type HstaTask, type HstaCa, type HstaGay, type GhiThem, type DauViec, type DauViecGhiThem, type ChotO,
 } from '../../lib/hieusuat_ta'
 import { homNayVN } from '../../lib/tuan'
 
@@ -35,7 +36,7 @@ const NHO: {
   bang: Map<string, HstaThang[]>
   nsId: string | null
   scrollTop: number
-  chiTiet: Map<string, { task: HstaTask[]; ca: HstaCa[]; ghi: GhiThem[] }>   // key = ky|ns
+  chiTiet: Map<string, { task: HstaTask[]; ca: HstaCa[]; gay: HstaGay[]; ghi: GhiThem[] }>   // key = ky|ns
 } = { ky: '', bang: new Map(), nsId: null, scrollTop: 0, chiTiet: new Map() }
 
 export default function HieuSuatTAScreen() {
@@ -78,7 +79,7 @@ export default function HieuSuatTAScreen() {
         <span className="min-w-[110px] text-center text-[13px] font-semibold text-slate-700">{kyNhan(ky)}</span>
         <button disabled={kyNext > kyNay()} onClick={() => setKy(kyNext)} className="rounded-lg border border-slate-300 px-2 py-1 text-slate-500 hover:border-indigo-400 disabled:opacity-30">›</button>
         <button onClick={() => quet(ky, true)} title="Quét lại" className="ml-1 rounded-lg border border-slate-300 px-2 py-1 text-[13px] text-slate-500 hover:border-indigo-400">↻</button>
-        <span className="ml-auto text-[11.5px] text-slate-400">BTVN 50% · ET 15% · Bổ trợ 35% — task = 100 − trễ (lần đóng đầu) − 15/gậy chất lượng</span>
+        <span className="ml-auto text-[11.5px] text-slate-400">BTVN 50% · ET 15% · Bổ trợ 35% — điểm task chỉ từ gậy đã xác nhận: không gậy = 100 · gậy trễ −10…−40 theo số phút · gậy khác −15</span>
       </div>
       <div ref={scrollRef} onScroll={(e) => { NHO.scrollTop = e.currentTarget.scrollTop }} className="min-h-0 flex-1 overflow-auto p-6">
         {err && <div className="mx-auto mb-3 max-w-[1200px] rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
@@ -163,6 +164,7 @@ function ChiTietTA({ ky, row, onDong, onVaDong }: { ky: string; row: HstaThang; 
   const [task, setTask] = useState<HstaTask[]>(cached?.task ?? [])
   const [ca, setCa] = useState<HstaCa[]>(cached?.ca ?? [])
   const [ghi, setGhi] = useState<GhiThem[]>(cached?.ghi ?? [])
+  const [gay, setGay] = useState<HstaGay[]>(cached?.gay ?? [])
   const [loading, setLoading] = useState(!cached)
   const [err, setErr] = useState<string | null>(null)
   const [flash, setFlash] = useState<string | null>(null)
@@ -171,8 +173,8 @@ function ChiTietTA({ ky, row, onDong, onVaDong }: { ky: string; row: HstaThang; 
   useEffect(() => {
     if (cached) return
     const { tu, den } = kyTuDen(ky)
-    Promise.all([layTask(tu, den, row.nhan_su_id), layCaBoTro(tu, den, row.nhan_su_id), layGhiThem(row.nhan_su_id, kyDate)])
-      .then(([t, c, g]) => { setTask(t); setCa(c); setGhi(g); NHO.chiTiet.set(k, { task: t, ca: c, ghi: g }) })
+    Promise.all([layTask(tu, den, row.nhan_su_id), layCaBoTro(tu, den, row.nhan_su_id), layGay(tu, den, row.nhan_su_id), layGhiThem(row.nhan_su_id, kyDate)])
+      .then(([t, c, gy, g]) => { setTask(t); setCa(c); setGay(gy); setGhi(g); NHO.chiTiet.set(k, { task: t, ca: c, gay: gy, ghi: g }) })
       .catch((e) => setErr(e?.message ?? String(e))).finally(() => setLoading(false))
   }, [k])
   useEffect(() => { if (!flash) return; const t = setTimeout(() => setFlash(null), 2200); return () => clearTimeout(t) }, [flash])
@@ -224,6 +226,7 @@ function ChiTietTA({ ky, row, onDong, onVaDong }: { ky: string; row: HstaThang; 
             <>
               <KhoiTask tieuDe="Chấm BTVN" ds={btvn} loai="btvn" deXuat={row.btvn_de_xuat} />
               <KhoiTask tieuDe="Chấm ET" ds={et} loai="et" deXuat={row.et_de_xuat} />
+              <KhoiGay ds={gay} />
               <KhoiBoTro ds={ca} row={row} />
               <KhoiGhiThem ds={ghi} onThem={onThem} onXoa={onXoa} />
             </>
@@ -297,7 +300,7 @@ function KhoiTask({ tieuDe, ds, loai, deXuat }: { tieuDe: string; ds: HstaTask[]
         <table className="w-full text-[12px]">
           <thead><tr>
             <th className={th}>Ngày</th><th className={th}>Lớp</th><th className={th}>Hạn</th><th className={th}>Đóng lần đầu</th>
-            <th className={th}>Trễ</th><th className={th}>−Tiến độ</th><th className={th}>Gậy CL</th><th className={th}>Điểm</th>
+            <th className={th}>Trễ theo giờ đóng (tham khảo)</th><th className={th}>Gậy tiến độ</th><th className={th}>Gậy chất lượng</th><th className={th}>Điểm</th>
             <th className={th}>{loai === 'btvn' ? 'Dữ liệu: nộp đúng hạn / muộn / không làm / phép' : 'Dữ liệu: ô đã chấm / ô cần'}</th><th className={th}>Cần xem</th>
           </tr></thead>
           <tbody>
@@ -308,8 +311,8 @@ function KhoiTask({ tieuDe, ds, loai, deXuat }: { tieuDe: string; ds: HstaTask[]
                 <td className={td}>{fmtTs(t.han)}</td>
                 <td className={td}>{fmtTs(t.dong_dau)}{t.so_mo_lai > 0 && <div className="text-[10.5px] text-slate-400">mở lại {t.so_mo_lai} lần · cuối {fmtTs(t.dong_cuoi)}</div>}</td>
                 <td className={td}>{t.tre_gio > 0 ? `${fmtSo(t.tre_gio)}h` : 'đúng hạn'}</td>
-                <td className={td}>{t.tru_tien_do ? `−${t.tru_tien_do}` : '0'}</td>
-                <td className={td}>{t.gay_chat_luong ? `${t.gay_chat_luong} (−${t.tru_chat_luong})` : '0'}{t.gay_tre > 0 && <div className="text-[10.5px] text-slate-400">+{t.gay_tre} gậy trễ (không trừ)</div>}</td>
+                <td className={td}>{t.gay_tre ? <b className="text-rose-600">{t.gay_tre} gậy · −{t.tru_tien_do}</b> : <span className="text-slate-300">—</span>}</td>
+                <td className={td}>{t.gay_chat_luong ? <b className="text-rose-600">{t.gay_chat_luong} gậy · −{t.tru_chat_luong}</b> : <span className="text-slate-300">—</span>}</td>
                 <td className={`${td} font-bold tabular-nums ${mauDiem(t.diem)}`}>{t.tinh ? fmtSo(t.diem) : <span className="text-[11px] font-normal text-slate-400">không tính</span>}</td>
                 <td className={td}>
                   {loai === 'btvn' ? (
@@ -328,6 +331,47 @@ function KhoiTask({ tieuDe, ds, loai, deXuat }: { tieuDe: string; ds: HstaTask[]
               </tr>
             ))}
             {!ds.length && <tr><td colSpan={10} className="px-4 py-6 text-center text-slate-400">Không có task.</td></tr>}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+// ── Gậy của tháng: mọi gậy (đã vào sổ / thu hồi / chờ chốt) ↔ task nó gắn — đối chiếu 1-1 với màn Gậy ──
+const TEN_TT_GAY: Record<HstaGay['trang_thai'], { ten: string; cls: string }> = {
+  da_vao_so: { ten: 'Đã vào sổ', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
+  da_thu_hoi: { ten: 'Đã thu hồi', cls: 'bg-slate-50 text-slate-500 ring-slate-200' },
+  cho_chot: { ten: 'Chờ chốt', cls: 'bg-amber-50 text-amber-700 ring-amber-200' },
+}
+const tenGanVoi = (g: string) => g === 'btvn' ? 'Chấm BTVN' : g === 'et' ? 'Chấm ET' : g === 'bo_tro' ? 'Bổ trợ' : g === 'ngoai_task' ? 'Ngoài task' : g.startsWith('khac_') ? `Việc khác (${g.slice(5)})` : g
+function KhoiGay({ ds }: { ds: HstaGay[] }) {
+  const th = 'border-b border-slate-100 px-2 py-1.5 text-left text-[10.5px] font-medium text-slate-400'
+  const td = 'px-2 py-1.5 align-top'
+  return (
+    <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+      <div className="bg-slate-700 px-4 py-2 text-[13px] font-semibold text-white">Gậy của tháng <span className="font-normal text-slate-300">· {ds.length} dòng — chỉ gậy ĐÃ VÀO SỔ của Chấm BTVN / Chấm ET ở lớp TA chính mới trừ điểm</span></div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[12px]">
+          <thead><tr>
+            <th className={th}>Ngày task</th><th className={th}>Lớp</th><th className={th}>Việc</th><th className={th}>Lỗi</th><th className={th}>Số gậy</th>
+            <th className={th}>Trễ (gậy ghi)</th><th className={th}>Trạng thái</th><th className={th}>Vào điểm</th><th className={th}>Nội dung</th>
+          </tr></thead>
+          <tbody>
+            {ds.map((g) => (
+              <tr key={g.nguon + g.id} className={`border-b border-slate-50 last:border-0 ${g.tinh_vao ? '' : 'text-slate-500'}`}>
+                <td className={td}>{g.ngay_task ? fmtNgay(g.ngay_task) : '—'}</td>
+                <td className={td}>{g.ten_lop ?? ''}</td>
+                <td className={td}>{tenGanVoi(g.gan_voi)}</td>
+                <td className={td}>{g.ten_loi ?? '—'}</td>
+                <td className={td}>{g.so_gay}</td>
+                <td className={td}>{g.tre_phut != null ? `${fmtSo(g.tre_phut / 60)}h` : '—'}</td>
+                <td className={td}><span className={`rounded-full px-1.5 py-0.5 text-[10.5px] font-medium ring-1 ${TEN_TT_GAY[g.trang_thai].cls}`}>{TEN_TT_GAY[g.trang_thai].ten}</span></td>
+                <td className={td}>{g.tinh_vao === 'tien_do' ? <b className="text-rose-600">Tiến độ</b> : g.tinh_vao === 'chat_luong' ? <b className="text-rose-600">Chất lượng</b> : <span className="text-[11px]">Không — {g.ly_do_khong_tinh}</span>}</td>
+                <td className={td}>{g.ly_do ?? ''}{g.nguoi && <div className="text-[10.5px] text-slate-400">{g.nguoi} · {fmtTs(g.tao_at)}</div>}</td>
+              </tr>
+            ))}
+            {!ds.length && <tr><td colSpan={9} className="px-4 py-6 text-center text-slate-400">Không có gậy nào — mọi task chấm đều 100.</td></tr>}
           </tbody>
         </table>
       </div>

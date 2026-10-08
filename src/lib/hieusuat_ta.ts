@@ -1,7 +1,7 @@
 // ============================================================================
 // hieusuat_ta.ts — DATA-LAYER "Hiệu suất trợ giảng" (màn Chất lượng vận hành, CEO chốt 08/10).
 // MỌI con số tính ở Postgres (mig 202610081343, spec-hieu-suat-ta.md): fn_hsta_thang (1 dòng/TA) ·
-// fn_hsta_task (từng task BTVN/ET) · fn_hsta_bo_tro (từng ca bổ trợ — chỉ số liệu, không chấm).
+// fn_hsta_task (từng task BTVN/ET — điểm CHỈ từ gậy đã xác nhận) · fn_hsta_gay (gậy ↔ task) · fn_hsta_bo_tro (từng ca bổ trợ — chỉ số liệu, không chấm).
 // Ghi: fn_hsta_chot (quản lý chốt TA × tháng × đầu việc) · fn_hsta_ghi_them / _xoa (việc ngoài hệ thống).
 // File này chỉ gọi hàm + định nghĩa kiểu, KHÔNG tính.
 // ============================================================================
@@ -36,6 +36,15 @@ export type HstaCa = {
   gio_bat_dau: string | null; gio_ket_thuc: string | null; so_phut: number | null; khung: string
   hoc_sinh: string[]; so_co_mat: number; so_vang: number; lop_goc: string | null
   danh_gia_xong_at: string | null; bai_dau_at: string | null; so_gay: number; co: string[]
+}
+
+// 1 gậy của TA (đã vào sổ / đã thu hồi / đề xuất còn chờ) ↔ task nó gắn — đối chiếu 1-1 với màn Gậy
+export type HstaGay = {
+  nguon: 'so' | 'de_xuat'; id: string; trang_thai: 'da_vao_so' | 'da_thu_hoi' | 'cho_chot'
+  ma_loi: string | null; ten_loi: string | null; so_gay: number; tre_phut: number | null
+  ly_do: string | null; ref_key: string | null; nguoi: string | null; tao_at: string; thu_hoi_at: string | null
+  gan_voi: string; buoi_id: string | null; ngay_task: string | null; ten_lop: string | null
+  tinh_vao: 'tien_do' | 'chat_luong' | null; ly_do_khong_tinh: string | null
 }
 
 export type GhiThem = { id: string; dau_viec: DauViecGhiThem; noi_dung: string; so_gio: number | null; nguoi_ghi: string | null; created_at: string }
@@ -78,6 +87,12 @@ export async function layCaBoTro(tu: string, den: string, nsId: string): Promise
   return (data ?? []).map((r: any) => ({ ...r, hoc_sinh: r.hoc_sinh ?? [], co: r.co ?? [] }))
 }
 
+export async function layGay(tu: string, den: string, nsId: string): Promise<HstaGay[]> {
+  const { data, error } = await supabase.rpc('fn_hsta_gay', { p_tu: tu, p_den: den, p_ns: nsId }).limit(500)
+  if (error) throw error
+  return (data ?? []) as HstaGay[]
+}
+
 // diem = null ⇒ bỏ chốt. Trả ô vừa ghi (null nếu bỏ chốt).
 export async function chot(nsId: string, ky: string, dauViec: DauViec, diem: number | null, ghiChu: string): Promise<ChotO | null> {
   const { data, error } = await supabase.rpc('fn_hsta_chot', { p_ns: nsId, p_ky: ky, p_dau_viec: dauViec, p_diem: diem, p_ghi_chu: ghiChu })
@@ -105,6 +120,9 @@ export const TEN_DAU_VIEC: Record<DauViec | 'khac', string> = { btvn: 'Chấm BT
 export const TEN_LOAI_CA: Record<HstaCa['loai'], string> = { bu: 'Bù', bo_tro_yeu: 'Yếu', bo_tro_duoi: 'Đuổi' }
 export const TEN_CO: Record<string, string> = {
   chua_dong: 'Chưa đóng',
+  gay_cho_chot: 'Có đề xuất gậy chờ chốt',
+  gay_khong_ro_phut: 'Gậy trễ không ghi số phút — trừ mức thấp nhất',
+  khong_cau_co_gay: 'Không có câu nhưng đã có gậy — vẫn tính',
   mo_lai: 'Đã mở lại',
   nop_muon_cao: '≥40% muộn / không làm',
   lech_lop_khac: 'Lệch xa so với các em ở lớp khác',
