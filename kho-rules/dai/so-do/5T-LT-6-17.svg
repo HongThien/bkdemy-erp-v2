@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 577 112" width="577" height="112" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="577" height="112" fill="#fff"/>
+<text x="117" y="37" text-anchor="end" fill="#0f172a">Số vở của Mai:</text>
+<line x1="127" y1="32" x2="407" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="25" x2="127" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="183" y1="25" x2="183" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="239" y1="25" x2="239" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="295" y1="25" x2="295" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="351" y1="25" x2="351" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="407" y1="25" x2="407" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="267" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="117" y="81" text-anchor="end" fill="#0f172a">Số vở của Hà:</text>
+<line x1="127" y1="76" x2="463" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="69" x2="127" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="183" y1="69" x2="183" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="239" y1="69" x2="239" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="295" y1="69" x2="295" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="351" y1="69" x2="351" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="407" y1="69" x2="407" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="463" y1="69" x2="463" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="295" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M477,24 q8,0 8,8 L485,46 q0,8 8,8 q-8,0 -8,8 L485,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="499" y="59" fill="#0f172a">55 quyển</text>
+</svg>

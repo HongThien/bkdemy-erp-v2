@@ -6,9 +6,9 @@
 > **5T đang ở BƯỚC 1.** Đi theo 7 bước nhỏ ở `kho-rules/README.md` §2, khuôn đã chạy trọn ở 4T (`k4T.md` v1 — đọc §1.5, §7 của nó để biết CEO đã
 > sửa những gì; các luật đó áp luôn cho 5T trừ chỗ ghi khác ở đây).
 >
-> **Đang ở đâu (08/10):** v0 mới rút từ 1 chuyên đề (Số thập phân, 12 câu mẫu `k5T-mau-thu.md`). Nguồn chuẩn **đổi sang sách**
-> "Tài liệu tham khảo Toán 5" (31 chuyên đề — §5). Chưa làm B1–B2 trên sách. Bản đồ 5T mới phủ ~9/31 chuyên đề (§6).
-> **Việc kế tiếp: §7.** Bản đồ kiến thức 5T là việc của CEO.
+> **Đang ở đâu (08/10 tối):** B1 đọc sách ✅ (công thức WMF ra LaTeX 1.031/1.031 — §5) · B2 tách bài ✅ (750 bài) · B3 rút khuôn từ
+> 82 VÍ DỤ ✅ (§1 cho phép, §2b) · **B4 lô sách 1 (CĐ1–9, 26 câu) gửi CEO duyệt** — cuối `k5T-mau-thu.md`. Lô kế: CĐ10–17, 18–24, 25–31 + Ôn tập.
+> Bản đồ 5T mới phủ ~9/31 chuyên đề (§6) — bản đồ là việc của CEO. **Việc kế tiếp: §7.**
 
 ## 0. Nguyên tắc gốc
 
@@ -29,8 +29,17 @@ phải hiểu được. Nếu một bước chỉ giải được bằng cách "
 | Công thức tổ hợp, "chỉnh hợp" | đếm theo từng hàng: "Chữ số hàng trăm có … cách chọn" |
 
 Đề có sẵn chữ $y$/$x$ (tìm $y$, tìm chữ số) thì dùng chữ đó bình thường — chỉ cấm TỰ đặt ẩn mới.
-*(Khi đọc sách 5T ở B3: rút thêm CHO PHÉP từ "Bài làm" của sách — 4T có ngoại lệ "Bớt cả hai vế đi A" ở cấu tạo số; 5T có hay
-không phải xem sách, không suy từ 4T.)*
+
+**CHO PHÉP vì sách 5T làm vậy (rút từ "Bài làm" trong VÍ DỤ, 08/10 — chờ CEO xác nhận ở lô có các CĐ này):**
+- **Phương pháp khử (CĐ31):** được "Gọi giá 1 bút xanh là $X$ (nghìn đồng), giá 1 bút đỏ là $D$" rồi viết hai dòng
+  $3\times X+7\times D=134\ (1)$ · $3\times X+4\times D=92\ (2)$, nhân một dòng cho cùng hệ số, **lấy dòng này trừ dòng kia** để khử
+  (VD 31.1–31.3). Viết $3\times X$, không viết $3X$. KHÔNG "chuyển vế".
+- **Hình học (CĐ18–21):** ký hiệu $S_{ABC}$, tỉ số diện tích $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}$ kèm lý do trong ngoặc
+  "(Chung đường cao hạ từ A đến BC)" (VD 19.2–19.3). Hình tròn: $r\times r=28,26:3,14$ (không $r^2$); $\pi$ viết $3,14$.
+- **Tỉ số phần trăm (CĐ14–17):** $80\times 25\%$ · $24:12\%$ · $200\times 6:100$ (VD 15.x, 16.x) — cả hai cách viết.
+- **Chuyển động (CĐ25–29):** dòng "Đổi: 2,5 giờ = 2 giờ 30 phút" riêng; cộng/nhân số đo thời gian viết liền một dòng (VD 25.3).
+- **Nhiều cách:** sách hay cho 2–3 cách (tỉ lệ: rút về đơn vị / lập tỉ số / tam suất; tính ngược: sơ đồ / phân số). Phần 2 trình bày
+  **một** cách, cách khác nhắc ở Phần 1 (luật 4T) — cách mặc định đang hỏi CEO (lô sách 1, câu hỏi 1).
 
 ## 1.5 ⭐ Mỗi lời giải CHIA 2 PHẦN (CEO 04/10)
 
@@ -102,42 +111,71 @@ HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái �
 - Hình học (CĐ18–24) và chuyển động (CĐ25–29): máy vẽ hiện chỉ có sơ đồ đoạn thẳng. Câu cần hình phẳng / hình khối / sơ đồ
   chuyển động ⇒ chưa có máy vẽ ⇒ để riêng, không ghi câu thiếu hình (như 4T: câu có ảnh EMF không ghi).
 
-## 5. Hồ sơ nguồn (B1–B2 — mới đo sơ bộ 08/10, CHƯA làm hồ sơ đầy đủ)
+## 5. Hồ sơ nguồn (B1–B2 xong 08/10)
 
 **Sách:** `E:\BK ACADEMY\Tài liệu tham khảo\5T\Tài liệu tham khảo Toán 5.docx` (bản sao ở `E:\BK ACADEMY\Tài liệu Claude nhập kho\L5T\`).
-2.247 đoạn. Cấu trúc mỗi chuyên đề giống sách 4T: **Kiến thức, kĩ năng cần có → Tóm tắt lí thuyết → VÍ DỤ (có `Bài làm:`) →
-LUYỆN TẬP (không lời giải)**; cuối sách **Phần ôn tập kiến thức trọng tâm** (I. Tính toán … XI. Tỉ số phần trăm). Không có phiếu cuối tuần.
+2.247 đoạn. Cấu trúc mỗi chuyên đề giống sách 4T: **Kiến thức, kĩ năng cần có → Tóm tắt lí thuyết → VÍ DỤ → LUYỆN TẬP (không lời giải)**;
+cuối sách **Phần ôn tập kiến thức trọng tâm** (13 mục I. Tính toán … XIII. Một số bài toán tư duy, đánh số bài 1, 2, 3… liên tục).
+Không có phiếu cuối tuần / phiếu tự luyện.
 
-**⚠️ Khác 4T ở B1 — đọc không được bằng đường của 4T:** `doc-docx.mjs` báo **0 công thức chữ, 1.154 ảnh** — toàn bộ công thức là
-**ảnh WMF** (vd `1.1. ⟦image1033.wmf⟧ ?. Ta có: ⟦image1031.wmf⟧ (dư 3)`). Đọc chữ là mù phần toán. Đường đọc phải là:
-`scripts/anh/docx_trich.mjs` (WMF → PNG phóng 4×, đánh dấu vị trí ảnh — đường của kho kiểu 1 Hình, `docs/luong-kho-kieu-1-hinh-hoc.md` B1)
-rồi model đọc ảnh chép lại công thức, **hoặc** xuất PDF từ Word rồi đọc PDF (memory `nhap-cau-hgt-tu-pdf`: PDF > DOCX khi WMF).
-Bẫy đã biết của WMF: mất dấu / mất ký tự ⇒ đề chép lại phải có **nhân chứng thứ hai** (đáp số trong `Bài làm`, bộ kiểm tính lại khớp),
-lệch là để trống hỏi người — không đoán đề (CLAUDE.md §1.5). `tach-bai.mjs` của 4T cần mở rộng cho khuôn này (chưa có PCT/PTL, có khu Ôn tập).
+**B1 — đọc (công thức là ảnh WMF, KHÔNG phải OLE như 4T):** `doc-docx.mjs` ra 0 công thức chữ, 1.154 ảnh. Nhưng WMF do MathType sinh
+có **nhúng nguyên dữ liệu MTEF** (bản ghi comment "AppsMFCC" + "Design Science, Inc.") ⇒ bóc ra, đưa qua đúng bộ chuyển MTEF→LaTeX
+của 4T. **1.031/1.031 WMF ra LaTeX, KaTeX 0 hỏng**; soát ảnh gốc: khớp nguyên văn (kể cả chỗ sách in sai). 120 ảnh còn lại là hình vẽ thật.
+Không cần model đọc ảnh, không cần PDF. Lệnh (dựng lại vài giây):
 
-**31 chuyên đề + đếm thô số bài** (đếm nhãn `x.y` in đậm, chưa tách ý, chưa soát — B2 đếm lại bằng tach-bai):
+```
+node scripts/kho/mathtype-thu/doc-docx.mjs "<docx>" --ra <thư mục>                      # → <tên>.txt có [[img:imageN.wmf]]
+node scripts/kho/mathtype-thu/wmf-mtef.mjs "<docx>" "<thư mục>/<tên>.txt" --ra goc-tex.txt   # → thay token WMF bằng $latex$
+node scripts/kho/sach/tach-bai.mjs goc-tex.txt --sach "Toán 5 TLTK" --ra bai.json
+```
 
-| CĐ | Tên | VD | LT | | CĐ | Tên | VD | LT |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Ôn tập phân số, hỗn số | 5 | 12 | | 17 | Bài toán khác về tỉ số % | — | 20 |
-| 2 | Ba bài toán về phân số | 3 | 26 | | 18 | Hình tam giác | 2 | 16 |
-| 3 | Bài toán công việc chung | ~17* | | | 19 | Hình tam giác (tiếp) | 3 | 30 |
-| 4 | Ôn tập dãy phân số, hỗn số | ~11* | | | 20 | Hình thang | 2 | 15 |
-| 5 | Tỉ lệ thuận – tỉ lệ nghịch | 3 | 21 | | 21 | Hình tròn | 3 | 10 |
-| 6 | Ôn tập toán có lời văn | 3 | 24 | | 22 | Hình khối hộp | 2 | 30 |
-| 7 | Hai hiệu số | 1 | 20 | | 23 | Cách xếp các hình đơn vị | 3 | 15 |
-| 8 | Hai tỉ số | 3 | 20 | | 24 | Bài toán sơn mặt | 1 | 10 |
-| 9 | Tính ngược | 3 | 19 | | 25 | Vận tốc, quãng đường, thời gian | 4 | 14 |
-| 10 | Số thập phân | 3 | 13 | | 26 | Chuyển động cùng chiều, ngược chiều | 2 | 21 |
-| 11 | Đơn vị đo | 3 | 13 | | 27 | Chuyển động dòng nước | 2 | 7 |
-| 12 | Các phép tính với số thập phân | 7 | 13 | | 28 | Chuyển động cùng v, s, t | 2 | 9 |
-| 13 | Các bài toán về số thập phân | 2 | 43 | | 29 | Chuyển động khác | 3 | 13 |
-| 14 | Tỉ số phần trăm | ~19* | | | 30 | Giả thiết tạm | 2 | 14 |
-| 15 | Ba bài toán về tỉ số % | 3 | 20 | | 31 | Phương pháp khử | 3 | 10 |
-| 16 | Dung dịch, quặng, hạt tươi | 3 | 15 | | Ôn | Ôn tập kiến thức trọng tâm | — | ~123 |
+**B2 — tách bài (`tach-bai.mjs`, đã mở rộng 08/10, sách 4T tách ra Y HỆT trước):** **750 bài** (VD 82 · LT 543 · Ôn tập 125) + 310 bản
+ghi ý; 75 bài có hình trong đề; 54 VD có "Bài làm". Sách in thiếu/sai được script bắt:
+- CĐ3, CĐ4 **thiếu tiêu đề "LUYỆN TẬP"** ⇒ script chuyển sang LT khi số bài quay lại (báo ra, không im lặng); CĐ14 gõ "LUYỆN TÂP".
+- VD CĐ4 (và một số VD khác) **không có "Bài làm:"** — lời giải viết liền sau đề ⇒ nằm trong `noi_dung` của VD.
+- **Cần người:** LT 21.1 sách in nhãn trùng (bảng điền ô lặp 3 lần) · VD 25.1 nhãn ý lặp.
 
-\* CĐ3, 4, 14 không bắt được dòng "LUYỆN TẬP" ⇒ số gộp VD + LT. **Tổng thô ≈ 120 VD + 490 LT + 120 ôn tập ≈ 730 bài** (4T: 910 bài trước tách ý).
-Hình: 1.154 ảnh gồm cả công thức lẫn hình vẽ thật (CĐ18–24 nhiều hình) — B2 phải tách hai loại.
+**Lỗi in của sách đã thấy (đừng chép VD làm mẫu mà không kiểm):** VD 1.5a $3\dfrac{3}{4}=\dfrac{5}{4}$ (đúng $\dfrac{15}{4}$) ·
+VD 5.3 "75000 : 5×15" (đúng 750000) · VD 26.1 "38,6 km" thiếu "/giờ".
+
+**Dạng bài của sách** (mục trong "Tóm tắt lí thuyết" + VÍ DỤ — khung để giải một lượt qua các dạng; CĐ không ghi mục thì 1 dạng):
+
+| CĐ | Tên | Dạng trong sách | VD | LT |
+|---|---|---|---|---|
+| 1 | Ôn tập phân số, hỗn số | hỗn số ↔ phân số · phép tính hỗn số · so sánh · tìm $y$ · lời văn | 5 | 12 |
+| 2 | Ba bài toán về phân số | phân số của một số · tìm số biết phân số · tỉ số (cả tỉ lệ bản đồ) | 3 | 26 |
+| 3 | Công việc chung | (vòi chảy, cùng làm, làm riêng rồi chung) | 2 | 15 |
+| 4 | Dãy phân số, hỗn số | dãy có quy luật (hiệu-tích, mẫu gấp đôi, tích) | 2 | 10 |
+| 5 | Tỉ lệ thuận – nghịch | tỉ lệ thuận · tỉ lệ nghịch · tỉ lệ kép | 3 | 21 |
+| 6 | Ôn tập toán có lời văn | TBC · tổng–hiệu · tỉ số · tổng–tỉ · hiệu–tỉ | 3 | 24 |
+| 7 | Hai hiệu số | (thừa–thiếu, thừa đơn vị chứa) | 1 | 20 |
+| 8 | Hai tỉ số | một đại lượng không đổi · tổng không đổi · hiệu không đổi | 3 | 20 |
+| 9 | Tính ngược | lưu đồ · sơ đồ đoạn thẳng · lập bảng | 3 | 19 |
+| 10 | Số thập phân | STP · phân số thập phân ↔ STP · so sánh | 3 | 13 |
+| 11 | Đơn vị đo | độ dài · diện tích · khối lượng dưới dạng STP | 3 | 13 |
+| 12 | Phép tính với STP | cộng trừ · nhân chia (tính chất, thuận tiện) | 7 | 13 |
+| 13 | Bài toán về STP | dãy STP cách đều · dịch dấu phẩy | 2 | 43 |
+| 14 | Tỉ số phần trăm | đổi STP/phân số ↔ % · phép tính với % | 2 | 17 |
+| 15 | Ba bài toán về % | tìm % của hai số · tìm a% của M · tìm số biết b% | 3 | 20 |
+| 16 | Dung dịch, quặng, hạt tươi | 1 yếu tố không đổi · trộn dung dịch | 3 | 15 |
+| 17 | Bài toán khác về % | (lãi, giảm giá…) | — | 20 |
+| 18 | Hình tam giác | diện tích · chiều cao/đáy từ diện tích | 2 | 16 |
+| 19 | Tam giác (tiếp) | diện tích gián tiếp · tỉ lệ cạnh · tỉ lệ đường cao | 3 | 30 |
+| 20 | Hình thang | diện tích · thay đổi đáy | 2 | 18 |
+| 21 | Hình tròn | chu vi, diện tích · hình vuông nội/ngoại tiếp | 3 | 15 |
+| 22 | Hình khối hộp | hộp chữ nhật · lập phương | 2 | 30 |
+| 23 | Xếp hình đơn vị | (xếp khối, đếm khối) | 3 | 15 |
+| 24 | Sơn mặt | (sơn 3/2/1/0 mặt) | 1 | 10 |
+| 25 | Vận tốc, quãng đường, thời gian | công thức · đổi đơn vị · số đo thời gian | 4 | 14 |
+| 26 | Cùng chiều, ngược chiều | gặp nhau · đuổi kịp | 2 | 21 |
+| 27 | Dòng nước | xuôi – ngược dòng | 2 | 7 |
+| 28 | Cùng v, s, t | tỉ lệ thuận/nghịch giữa v, s, t | 2 | 9 |
+| 29 | Chuyển động khác | vận tốc trung bình · vật có chiều dài (tàu) | 3 | 13 |
+| 30 | Giả thiết tạm | (giả sử tất cả là một loại) | 2 | 14 |
+| 31 | Phương pháp khử | cùng hệ số · khác hệ số (đưa về cùng) | 3 | 10 |
+| Ôn | Ôn tập kiến thức trọng tâm | 13 mục, tổng hợp | — | 125 |
+
+*(VD/LT là số bài của `tach-bai`, chưa tách ý.)*
 
 ## 6. Bản đồ 5T hiện có ↔ sách (đo DB live 08/10, phiên read-only)
 
@@ -163,7 +201,7 @@ chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, kh
 
 | Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
-| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách (công thức WMF ⇒ WMF → PNG / PDF trước, §5) → B2 hồ sơ + `tach-bai` → B3 nâng luật v0 theo "Bài làm" của sách (bảng khuôn theo 31 CĐ thay §2) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — chưa làm B1 |
+| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — lô sách 1 (CĐ1–9, 26 câu) chờ CEO duyệt; lô 2 = CĐ10–17, lô 3 = CĐ18–24, lô 4 = CĐ25–31 + Ôn tập |
 | **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu cần hình (CĐ18–24) chờ đường vẽ hình (README §4 việc #7) | Sau v1 |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 
@@ -186,3 +224,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 08/10 | (từ 4T) | Sơ đồ là HÌNH đúng tỉ lệ (máy vẽ) · mọi câu đủ 2 phần · mỗi câu lời giải một dòng · giải ≠ gán dạng | §1.5, §3, §7 — cập nhật bản v0 theo luật đã chốt ở `k4T.md` §7 |
 | 08/10 | Quy trình | *"Bản đồ t sẽ làm."* Chốt 3 bước cho mọi khối: rút luật giải (CEO duyệt) → giải toàn bộ tài liệu lên DB chờ sẵn → CEO xong bản đồ thì Claude xếp bài vào, CEO duyệt | README §0; §7 viết lại; bỏ các câu hỏi về cách chia bản đồ (việc của CEO) |
 | 08/10 | Bước 1 + 271 câu STP | *"Giải là duyệt luôn. Bản chất là m đi giải 1 lượt các dạng bài để học cách giải để giải toàn bộ bài đấy."* | README §0: lô thử = một vòng phủ MỌI dạng bài của sách; v1 khi đủ dạng + lô cuối không sửa. 271 câu STP duyệt luôn, không chờ bản đồ (§7) |
+| 08/10 | B1–B4 lô sách 1 | *(chưa phải CEO sửa — ghi việc làm)* Đọc sách bằng MTEF trong WMF (1.031/1.031), tách 750 bài, rút khuôn từ 82 VD (khử được đặt chữ, $S_{ABC}$, $r	imes r$, %…), lô sách 1 = 26 câu CĐ1–9 gửi CEO kèm 3 câu hỏi | §1 cho phép, §5, §7 |

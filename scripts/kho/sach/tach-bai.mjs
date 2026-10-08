@@ -37,8 +37,8 @@ export function tachY(dong) {
 
 export function tachBai(txt, tenSach) {
   const dong = txt.split(/\r?\n/).map((l) => l.replace(/^\[\d+\]\s?/, ''))
-  const bai = [], boQua = []
-  let khu = null, cd = null, cur = null, cheDo = 'ngoai' // ngoai | ly_thuyet | de | giai
+  const bai = [], boQua = [], chuyenLT = []
+  let khu = null, cd = null, muc = null, cur = null, cheDo = 'ngoai' // ngoai | ly_thuyet | de | giai
   const dong_bai = () => {
     if (!cur) return
     bai.push(cur); cur = null
@@ -51,7 +51,11 @@ export function tachBai(txt, tenSach) {
     let m
     if ((m = t.match(/^CHUYÊN ĐỀ\s*(\d+)/))) { dong_bai(); cd = Number(m[1]); khu = null; cheDo = 'ly_thuyet'; continue }
     if (/^VÍ DỤ$/.test(t)) { dong_bai(); khu = `VD ${cd}`; cheDo = 'ngoai'; continue }
-    if (/^LUYỆN TẬP$/.test(t)) { dong_bai(); khu = `LT ${cd}`; cheDo = 'ngoai'; continue }
+    // "LUYỆN TÂP" — sách 5T gõ sai dấu ở CĐ14
+    if (/^LUYỆN T[ẬÂA]P$/.test(t)) { dong_bai(); khu = `LT ${cd}`; cheDo = 'ngoai'; continue }
+    // sách 5T: phần ôn tập cuối sách, đánh số "1." liên tục xuyên các mục I. … XIII. ⇒ khu "ON", mục giữ ở `muc`
+    if (/^PHẦN ÔN TẬP/.test(t)) { dong_bai(); khu = 'ON'; cd = null; muc = null; cheDo = 'ngoai'; continue }
+    if (khu === 'ON' && (m = t.match(/^([IVX]+)\.\s+(\S.*)$/))) { dong_bai(); muc = `${m[1]}. ${m[2]}`; cheDo = 'ngoai'; continue }
     if ((m = t.match(/^PHIẾU TỰ LUYỆN\s*(\d+)/))) { dong_bai(); khu = `PTL ${m[1]}`; cd = null; cheDo = 'ngoai'; continue }
     if ((m = t.match(/^PHIẾU CUỐI TUẦN\s*(\d+)/))) { dong_bai(); khu = `PCT ${Number(m[1])}`; cd = null; cheDo = 'ngoai'; continue }
     if (khu?.startsWith('PCT') && (m = t.match(/^PHẦN\s*(II|I)\b/))) { dong_bai(); khu = khu.replace(/ (I|II)$/, '') + ' ' + m[1]; cheDo = 'ngoai'; continue }
@@ -67,11 +71,17 @@ export function tachBai(txt, tenSach) {
       let so = null
       if ((khu.startsWith('VD') || khu.startsWith('LT')) && (m = n.match(/^(\d+)\.\s*(\d+)\.?$/)) && Number(m[1]) === cd) so = `${m[1]}.${m[2]}`
       else if (khu.startsWith('PTL') && (m = n.match(/^(\d+)\.$/))) so = `${khu.split(' ')[1]}.${m[1]}`
+      else if (khu === 'ON' && (m = n.match(/^(\d+)\.$/))) so = m[1]
+      // sách THIẾU tiêu đề "LUYỆN TẬP" (5T CĐ3, CĐ4): đang ở VÍ DỤ mà số bài quay lại (≤ số bài trước) ⇒ đã sang luyện tập.
+      // (VD có thể không có "Bài làm" — 5T CĐ4 viết lời giải liền sau đề.) Báo ra: đây là suy luận từ đánh số, không phải tiêu đề sách.
+      if (so && khu.startsWith('VD') && cur?.khu === khu && Number(so.split('.')[1]) <= Number(cur.so.split('.')[1])) {
+        khu = `LT ${cd}`; chuyenLT.push({ dong: i + 1, cd })
+      }
       else if (khu.startsWith('PCT') && (m = n.match(/^Bài\s*(\d+)\.$/))) so = `${m[1]}`
       if (so) {
         dong_bai()
         const sao = /\(\*/.test(nhan[1] + nhan[2]) ? true : false
-        cur = { khu, so, sao, _de: [], _giai: null, anh: [], _dong: i + 1 }
+        cur = { khu, so, sao, _de: [], _giai: null, anh: [], _dong: i + 1, ...(khu === 'ON' && muc ? { muc } : {}) }
         cheDo = 'de'
         const sau = nhan[2].replace(/^\(\*+\)\s*/, '')
         if (sachDe(sau)) cur._de.push(sachDe(sau))
@@ -102,20 +112,20 @@ export function tachBai(txt, tenSach) {
     // nhãn ý lặp trong một bài (vd LT 11.3 có hai lượt a b c — sách in thiếu nhãn "11.4.") ⇒ KHÔNG đoán ý nào thuộc bài nào:
     // giữ bản ghi cả bài + cảnh báo, không đẻ bản ghi ý (mã "LT 11.3a" sẽ trùng hai câu khác nhau)
     const lap = y.length !== new Set(y.map((x) => x.nhan)).size
-    ra.push({ sach: tenSach, ma, khu: b.khu, so: b.so, y: null, sao: b.sao, so_y: y.length, noi_dung: caBai, anh: b.anh, anh_giai: b.anh_giai ?? [], loi_giai_sach: loi, dong_goc: b._dong,
+    ra.push({ sach: tenSach, ma, khu: b.khu, so: b.so, y: null, sao: b.sao, so_y: y.length, noi_dung: caBai, anh: b.anh, anh_giai: b.anh_giai ?? [], loi_giai_sach: loi, dong_goc: b._dong, ...(b.muc ? { muc: b.muc } : {}),
       ...(lap ? { canh_bao: 'nhãn ý lặp lại trong bài — sách có thể in thiếu nhãn bài kế tiếp; người tách tay' } : {}) })
     if (lap) continue
     for (const x of y) ra.push({ sach: tenSach, ma: `${ma}${x.nhan}`, khu: b.khu, so: b.so, y: x.nhan, sao: b.sao, de_chung: dan || null,
       noi_dung: [dan, x.noi_dung].filter(Boolean).join('\n'), anh: b.anh, loi_giai_sach: null, dong_goc: b._dong })
   }
-  return { bai: ra, bo_qua: boQua }
+  return { bai: ra, bo_qua: boQua, chuyen_lt: chuyenLT }
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const a = process.argv.slice(2)
   const tep = a[0], iS = a.indexOf('--sach'), iR = a.indexOf('--ra')
   if (!tep || iS < 0) { console.error('Dùng: node scripts/kho/sach/tach-bai.mjs <goc.txt> --sach "<tên sách>" [--ra bai.json]'); process.exit(2) }
-  const { bai, bo_qua } = tachBai(readFileSync(tep, 'utf8'), a[iS + 1])
+  const { bai, bo_qua, chuyen_lt } = tachBai(readFileSync(tep, 'utf8'), a[iS + 1])
   const ca = bai.filter((b) => b.y === null)
   const dem = {}
   for (const b of ca) { const k = b.khu.replace(/ \d+( I+)?$/, (s) => (b.khu.startsWith('PCT') ? ' ' + s.trim().split(' ').slice(-1)[0] : '')); dem[k] = (dem[k] || 0) + 1 }
@@ -124,6 +134,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const trungMa = Object.entries(bai.reduce((o, b) => ((o[b.ma] = (o[b.ma] || 0) + 1), o), {})).filter(([, n]) => n > 1)
   console.log(`Mã trùng (${trungMa.length}):`, trungMa.map(([k, n]) => `${k}×${n}`).join(', '))
   const cb = ca.filter((b) => b.canh_bao); console.log(`Bài cần người xem (${cb.length}):`); for (const b of cb) console.log(`  ${b.ma}: ${b.canh_bao}`)
+  if (chuyen_lt.length) console.log(`Sách thiếu tiêu đề LUYỆN TẬP — tự chuyển sang LT theo đánh số quay lại (${chuyen_lt.length}):`, chuyen_lt.map((x) => `CĐ${x.cd} dòng ${x.dong}`).join(', '))
   console.log(`Dòng không xếp vào bài nào (${bo_qua.length}):`); for (const x of bo_qua.slice(0, 40)) console.log(`  [${x.dong}] ${x.text}`)
   if (iR > 0) { writeFileSync(a[iR + 1], JSON.stringify(bai, null, 1)); console.log('→', a[iR + 1]) }
 }

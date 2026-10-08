@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 453 150" width="453" height="150" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="453" height="150" fill="#fff"/>
+<text x="109" y="37" text-anchor="end" fill="#0f172a">Giỏ thứ nhất:</text>
+<line x1="119" y1="32" x2="344" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="119" y1="25" x2="119" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="194" y1="25" x2="194" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="269" y1="25" x2="269" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="344" y1="25" x2="344" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="231.5" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="109" y="81" text-anchor="end" fill="#0f172a">Giỏ thứ hai:</text>
+<line x1="119" y1="76" x2="419" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="119" y1="69" x2="119" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="194" y1="69" x2="194" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="269" y1="69" x2="269" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="344" y1="69" x2="344" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="419" y1="69" x2="419" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="269" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="344" y1="110" x2="419" y2="110" stroke="#0f172a" stroke-width="1"/>
+<line x1="344" y1="106" x2="344" y2="114" stroke="#0f172a" stroke-width="1"/>
+<line x1="419" y1="106" x2="419" y2="114" stroke="#0f172a" stroke-width="1"/>
+<text x="381.5" y="126" text-anchor="middle" font-size="12" fill="#0f172a">12 kg</text>
+</svg>

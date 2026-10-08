@@ -110,7 +110,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 3 | ✅ 08/10 `scripts/kho/sach/lo-tu-md.mjs` (md đã duyệt → lô JSON, đề lấy nguyên văn sách) + `ghi-lo.mjs` (cổng ghi: kiem-doc/kiem-dap-so/kiem-hinh-a bằng code, kiem-dang/kiem-hinh-b bằng model khác gán mù; mặc định chạy thử ROLLBACK). Bộ kiểm đáp số theo khối: `kho-rules/dai/lo/k4T-kiem.mjs` | Hiện lô thử chỉ nằm trong md |
 | 4 | Báo cáo thước đo theo khối: % câu người sửa theo khâu (`kho_sua_log`), % dạng người đổi (`kho_doi_dang_log`) | Để biết v1 của một khối có "đứng" không |
 | 5 | Đưa **brief giao Sonnet soạn** vào repo (`kho-rules/mau-brief-soan.md`, khuôn như `docs/mau-brief-soan-hinh-hoc.md`) | Lô 5–7 4T brief chỉ nằm trong phiên làm; 5T phải dùng lại, không viết lại từ trí nhớ |
-| 6 | **Đọc sách có công thức là ảnh WMF** (5T: 0 công thức chữ, 1.154 ảnh) — WMF → PNG (`scripts/anh/docx_trich.mjs`) rồi model đọc ảnh, hoặc xuất PDF; `tach-bai.mjs` nhận đầu vào đó | 4T là MathType đọc thẳng nên B1 của 4T không dùng được cho 5T |
+| 6 | ✅ 08/10 **Đọc sách có công thức là ảnh WMF**: WMF của MathType nhúng sẵn MTEF ⇒ `scripts/kho/mathtype-thu/wmf-mtef.mjs` (5T: 1.031/1.031, KaTeX 0 hỏng, không cần OCR/PDF). `tach-bai.mjs` thêm: "LUYỆN TÂP", sách thiếu tiêu đề LUYỆN TẬP (số bài quay lại), khu Ôn tập `ON` — sách 4T tách ra y hệt trước | Word cũ đã "chuyển công thức thành ảnh" vẫn đọc được chính xác |
 | 7 | **Câu có hình trong đề** (4T ~41 câu EMF; 5T CĐ18–24 hình học) — đổi ảnh hoặc vẽ lại bằng code, ghi kèm hình | Hiện cổng không ghi câu thiếu hình (đúng), nên các câu này đứng ngoài kho |
 
 ## 5. Trạng thái từng khối
