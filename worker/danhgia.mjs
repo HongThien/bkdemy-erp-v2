@@ -24,7 +24,7 @@ import { fileURLToPath } from 'node:url'
 import { createClient } from '@supabase/supabase-js'
 import Anthropic from '@anthropic-ai/sdk'
 import { SYSTEM, SCHEMA } from './danhgia_prompt.mjs'
-import { GIA, CO_ADAPTIVE, USD_VND } from './gia_model.mjs'
+import { GIA, giaCho, CO_ADAPTIVE, USD_VND } from './gia_model.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const POLL_MS = 5000
@@ -42,8 +42,10 @@ if (!ANTHROPIC_KEY) { console.error('Thiếu ANTHROPIC_API_KEY trong .env.local 
 //   claude-opus-4-8  — mạnh nhất, đắt nhất (~2.900 đ/lượt)
 //   claude-sonnet-5  — ~40% giá Opus; nhiều khả năng ĐỦ cho việc này (phần khó
 //                      đã do code làm; model chỉ đọc bảng sạch + áp luật + viết ngắn)
-//   claude-haiku-4-5 — rẻ nhất; nghi ngờ hụt ở khoản HIỆU CHỈNH ĐỘ TIN (biết khi nào
-//                      bằng chứng mỏng mà nói thẳng) — phải thử mới biết, đừng đoán
+//   claude-haiku-5-5 — rẻ nhất (~1/20 giá Sonnet 5, có adaptive thinking); nghi ngờ hụt ở
+//                      khoản HIỆU CHỈNH ĐỘ TIN (biết khi nào bằng chứng mỏng mà nói thẳng)
+//                      — phải thử mới biết, đừng đoán
+//   (claude-haiku-4-5 KHÔNG chạy được ở đây: API 400 vì nó không nhận output_config.effort)
 // effort: high → nghĩ nhiều → token suy nghĩ (tính giá output) là khoản tốn nhất.
 //   Hạ xuống 'medium' là cách giảm tiền mạnh nhất mà không đổi model.
 const MODEL = env('DANHGIA_MODEL') ?? process.env.DANHGIA_MODEL ?? 'claude-opus-4-8'
@@ -72,8 +74,7 @@ async function phan(job) {
   // Model do NGƯỜI chọn trên màn hình (cột `model_chon`) — để Thùy tự so Sonnet vs Opus
   // trên cùng dữ liệu. Không chọn thì rơi về mặc định của worker.
   const model = job.model_chon ?? MODEL
-  const gia = GIA[model]
-  if (!gia) throw Object.assign(new Error(`Model "${model}" không có trong bảng giá — từ chối gọi để khỏi tiêu tiền mù.`), { khongThuLai: true })
+  if (!GIA[model]) throw Object.assign(new Error(`Model "${model}" không có trong bảng giá — từ chối gọi để khỏi tiêu tiền mù.`), { khongThuLai: true })
 
   const soHS = job.stat_sheet?.hoc_sinh?.length ?? 0
   const vaoUoc = Math.round(JSON.stringify(job.stat_sheet).length / CH_MOI_TOK) + 1600 // +system+schema
@@ -81,6 +82,7 @@ async function phan(job) {
   // max_tokens theo CỠ LỚP, không để cố định 64.000: trần cố định nghĩa là một lượt
   // chạy loạn có thể sinh 64k token = ~41.600 đ trên Opus.
   const maxTokens = Math.min(TRAN_TOKEN_RA, Math.max(8000, Math.round(raUoc * HE_SO_AN_TOAN)))
+  const gia = giaCho(model, vaoUoc)
   const tienUoc = Math.round(((vaoUoc * gia.vao + raUoc * gia.ra) / 1e6) * USD_VND)
   const tienToiDa = Math.round(((vaoUoc * gia.vao + maxTokens * gia.ra) / 1e6) * USD_VND)
 
@@ -108,7 +110,7 @@ async function phan(job) {
     max_tokens: maxTokens,
     // Adaptive thinking: Claude tự quyết nghĩ sâu tới đâu. effort high vì đây là
     // việc phán đoán về học sinh thật — sai thì ảnh hưởng người, không phải chỉ tốn token.
-    // Model không hỗ trợ (Haiku) thì BỎ HẲN trường này, gửi kèm là 400.
+    // Model không hỗ trợ (Haiku 4.5) thì BỎ HẲN trường này, gửi kèm là 400.
     ...(CO_ADAPTIVE.has(model) ? { thinking: { type: 'adaptive' } } : {}),
     output_config: { effort: EFFORT, format: { type: 'json_schema', schema: SCHEMA } },
     // ⚠ cache_control ở đây HIỆN CHƯA CÓ TÁC DỤNG và đó là chuyện bình thường:
@@ -141,7 +143,8 @@ ${JSON.stringify(job.stat_sheet, null, 1)}`,
   }
   const text = res.content.find((b) => b.type === 'text')?.text
   if (!text) throw new Error('Không có khối text nào trong phản hồi')
-  const tienThat = Math.round(((res.usage.input_tokens * gia.vao + res.usage.output_tokens * gia.ra) / 1e6) * USD_VND)
+  const giaThat = giaCho(model, res.usage.input_tokens)
+  const tienThat = Math.round(((res.usage.input_tokens * giaThat.vao + res.usage.output_tokens * giaThat.ra) / 1e6) * USD_VND)
   // In cả ƯỚC lẫn THẬT: lệch nhiều nghĩa là hằng số TOK_MOI_EM sai, phải chỉnh —
   // không để ước lượng trôi khỏi thực tế rồi hàng rào chi phí thành vô nghĩa.
   return { ketQua: JSON.parse(text), usage: res.usage, model: res.model, tienThat, tienUoc, soHS }

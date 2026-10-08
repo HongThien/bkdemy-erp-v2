@@ -1040,6 +1040,7 @@ function recordUsage(u: GeminiUsage, model: string) {
 export const AI_GIA: Record<string, { in: number; out: number }> = {
   'deepseek-chat': { in: 0.27, out: 1.10 },
   'deepseek-reasoner': { in: 0.55, out: 2.19 },
+  'claude-haiku-5-5': { in: 0.1, out: 0.5 },   // giá prompt ≤100K token (clone luôn dưới); >100K là $0.5/$2.5
   'claude-haiku-4-5': { in: 1.0, out: 5.0 },
   'claude-sonnet-5': { in: 3.0, out: 15.0 },   // có giá giới thiệu $2/$10 tới 31/08/2026 — để giá CHÍNH THỨC cho đồng hồ không báo thiếu
   'claude-opus-5': { in: 5.0, out: 25.0 },     // ⚠ Opus 4.7 GIÁ Y HỆT Opus 5 → hạ đời không rẻ hơn, muốn rẻ phải sang Sonnet/Haiku
@@ -1068,9 +1069,9 @@ function recordUsageKhac(u: { in: number; out: number }, model: string) {
 //   không phải Opus→Sonnet. (Và Opus 4.7 giá y hệt Opus 5 — hạ đời không tiết kiệm gì.)
 export type AiNha = 'deepseek' | 'claude'
 export const AI_MODELS: { nha: AiNha; value: string; label: string; sub: string }[] = [
-  { nha: 'deepseek', value: 'deepseek-chat', label: 'DeepSeek', sub: 'rẻ nhất · mặc định' },
+  { nha: 'deepseek', value: 'deepseek-chat', label: 'DeepSeek', sub: 'mặc định' },
   { nha: 'deepseek', value: 'deepseek-reasoner', label: 'DeepSeek R1', sub: 'suy luận sâu, chậm hơn' },
-  { nha: 'claude', value: 'claude-haiku-4-5', label: 'Claude Haiku', sub: '~5× DeepSeek · nhanh' },
+  { nha: 'claude', value: 'claude-haiku-5-5', label: 'Claude Haiku 5.5', sub: 'giá niêm yết ≈ 1/2 DeepSeek · chưa đo thật' },
   { nha: 'claude', value: 'claude-sonnet-5', label: 'Claude Sonnet 5', sub: '~22× DeepSeek · khi DeepSeek sai' },
   { nha: 'claude', value: 'claude-opus-5', label: 'Claude Opus 5', sub: '⚠ ~29× DeepSeek · chỉ toán khó nhất' },
 ]
@@ -1108,10 +1109,10 @@ async function callClaudeJson(prompt: string, model: string): Promise<string> {
   if (!key) throw new Error('Chưa có VITE_ANTHROPIC_API_KEY trong .env.local → chọn nhà khác hoặc thêm key.')
   const { default: Anthropic } = await import('@anthropic-ai/sdk')
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true })
-  // Haiku KHÔNG nhận adaptive thinking (API trả 400) — chỉ bật suy luận cho Opus/Sonnet.
+  // Haiku 4.5 KHÔNG nhận adaptive thinking (API trả 400); Haiku 5.5 thì nhận — chỉ chặn đúng 4.5.
   const res = await client.messages.create({
     model, max_tokens: 16000,
-    ...(model.includes('haiku') ? {} : { thinking: { type: 'adaptive' as const } }),
+    ...(model.startsWith('claude-haiku-4') ? {} : { thinking: { type: 'adaptive' as const } }),
     messages: [{ role: 'user', content: prompt }],
   })
   const u = res.usage

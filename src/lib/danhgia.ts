@@ -816,6 +816,8 @@ export type AiJob = {
 export const MODEL_CHON = [
   { id: 'claude-sonnet-5', ten: 'Sonnet 5', mo_ta: 'nhanh & rẻ hơn ~60%', vao: 2, ra: 10 },
   { id: 'claude-opus-4-8', ten: 'Opus 4.8', mo_ta: 'mạnh nhất, đắt nhất', vao: 5, ra: 25 },
+  // Haiku 5.5 (07/10): giá prompt ≤100K token — stat sheet 1 lớp chỉ vài chục nghìn. Chưa đo chất lượng.
+  { id: 'claude-haiku-5-5', ten: 'Haiku 5.5', mo_ta: 'rẻ nhất (~1/20 Sonnet), chưa thử', vao: 0.1, ra: 0.5 },
 ] as const
 export const MODEL_MAC_DINH = 'claude-sonnet-5'
 

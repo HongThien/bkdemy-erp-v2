@@ -39,6 +39,8 @@ const DEEPSEEK_BASE = process.env.DEEPSEEK_BASE_URL ?? 'https://api.deepseek.com
 // Giá USD / 1 triệu token — ⚠ TỰ KIỂM lại ở trang giá từng nhà trước khi tin (đổi liên tục).
 const GIA = {
   'claude-sonnet-5': { vao: 2, ra: 10 },
+  // Haiku 5.5: prompt >100K token vào thì cả lượt tính giá `tren` (xem worker/gia_model.mjs).
+  'claude-haiku-5-5': { vao: 0.1, ra: 0.5, tren: { nguong: 100_000, vao: 0.5, ra: 2.5 } },
   'claude-haiku-4-5': { vao: 1, ra: 5 },
   'claude-opus-4-8': { vao: 5, ra: 25 },
   'deepseek-chat': { vao: 0.27, ra: 1.10 },
@@ -97,8 +99,9 @@ async function goiModel({ system, messages, maxTokens }) {
 }
 
 function tien(usage) {
-  const g = GIA[MODEL]
-  if (!g || usage?.input_tokens == null) return null
+  const g0 = GIA[MODEL]
+  if (!g0 || usage?.input_tokens == null) return null
+  const g = g0.tren && usage.input_tokens > g0.tren.nguong ? g0.tren : g0
   return Math.round(((usage.input_tokens * g.vao + usage.output_tokens * g.ra) / 1e6) * USD_VND)
 }
 
