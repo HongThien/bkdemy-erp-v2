@@ -259,6 +259,14 @@
       "port": 5295
     },
     {
+      "name": "lunar-cherry-proto",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/WBPC/Desktop/BKERP/bkdemy-erp-v2/design/bk-ui-src/AppHS/lunar-cherry/serve.cjs"
+      ],
+      "port": 8765
+    },
+    {
       "name": "bat-thu",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
