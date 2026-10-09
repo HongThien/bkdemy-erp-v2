@@ -36258,3 +36258,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Bảng "điền ô" sách bị đọc lộn khi tách (cột/hàng trộn) ⇒ không giao/không ghi, treo cần người: LT 18.2, 18.3, 20.1, 21.1 (×2), 27.1, 27.2. Sonnet có "dựng lại" 18.2/18.3 nghe hợp lý nhưng là đoán ⇒ bỏ (§1.5).
 - Sửa lỗi in đề bằng sua.noi_dung ⇒ cờ nghi kiem-doc (9 câu) — cố ý để người duyệt thấy đề đã khác sách.
 - Đã giao lô 8 (CĐ19–25) cho 3 Sonnet; lô 6A, 7A còn đang soạn.
+
+## 09/10 (tối) — Hình 9 HH00105–110: "Các bước" gom lại 3–6 bước/bài (Thùy)
+- **Thùy:** "các bước ko nên nhỏ quá — 1 bài nên có từ 3–6 bước thôi" (sau khi Phần 1 hiện thành card, mỗi bước 1 card ⇒ bước vụn "$MO$", "đối chiếu" lộ ra rất xấu).
+- Đo: 247/363 câu có dòng Các bước < 3 bước, > 6 bước hoặc có bước cụt. Xuất 10 lô (309 dòng), 10 Sonnet viết lại theo brief (3–6 bước, mỗi bước 1 câu ngắn động từ + việc + công cụ, bám đúng Phần 2, không đổi cách giải); chỉ thay phần sau `**Các bước:**`, mọi thứ khác giữ nguyên.
+- Máy kiểm trước khi ghi: số dòng khớp, 3–6 bước, bước ≥ 3 từ (ngoài công thức), `$` chẵn, KaTeX render được. Lần đầu 5 lỗi (bước kiểu "Tính $S_{\triangle OAB}=…$" chỉ 2 chữ) ⇒ sửa tay thành "Tính diện tích tam giác $OAB$ theo đáy … và đường cao …". Ghi 247 câu, 1 transaction.
+- Sau ghi: phân bố bước/card {3: 230, 4: 103, 5: 25, 6: 4}; bộ đo còn nêu 11 câu nhưng đọc lại đều là báo nhầm (bước như "Kẻ $IH\perp b$ tại $H$" phần lớn là công thức) ⇒ giữ.
+- Luật ghi vào README §3 + brief k9. **Sai của t:** lần chèn luật vào brief đầu tiên làm hỏng file — chuỗi `` $` `` trong `String.replace` của JS nghĩa là "chèn đoạn đứng trước", nên cả đầu file bị chèn lặp 3 lần, `\t` của `\triangle` thành tab. Dựng lại = bản HEAD + 1 dòng. **Bài học:** chuỗi thay thế chứa `$` ⇒ luôn dùng hàm `replace(x, () => moi)`, và chuỗi LaTeX viết bằng `String.raw`.

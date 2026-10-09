@@ -46,6 +46,7 @@ cạnh (không có "góc nội tiếp chắn nửa đường tròn"). Bài toán
 - `loi_giai`: `**Phần 1. Hướng dẫn**` rồi xuống dòng nội dung; `**Phần 2. Trình bày**` rồi nội dung. Xuống dòng ĐƠN; dòng trống CHỈ trước
   `**Phần 2. Trình bày**` và trước ý b), c)… (công cụ nhập tự chuẩn hoá, nhưng viết đúng ngay).
   - Ý **Tính**: Phần 1 = các dòng `**Mấu chốt:** …` · `**Các bước:** … → …` · (`**Chú ý:** …` nếu có bẫy). Phần 2 = các dòng tính, mỗi dòng kèm lý do.
+  - ⭐ **`Các bước` = 3–6 bước, mỗi bước một ý trọn vẹn** (Thùy 09/10: *"các bước ko nên nhỏ quá — 1 bài nên có từ 3–6 bước thôi"*). App hiện MỖI bước thành một card đánh số ⇒ mỗi bước là một câu ngắn có động từ + việc làm + công cụ/lý do, vd `Tính $MO$ bằng định lí Pythagore trong $\triangle OAM$` — KHÔNG viết bước cụt chỉ còn ký hiệu (`$MO$`, `$\widehat{AMO}$`, "đối chiếu"). Bài nhiều ý: mỗi ý một dòng, cũng 3–6 bước.
   - Ý **Chứng minh**: Phần 1 = sơ đồ: dòng trên cùng là điều phải chứng minh, mỗi dòng dưới là điều cần có, giữa hai dòng là một dòng
     `$\Uparrow$ (lý do)`, dòng cuối là giả thiết/điều đã có kèm ✓. Không câu văn. Phần 2 = đi ngược sơ đồ, mỗi mũi tên đúng một bước.
   - Bài nhiều ý: trong mỗi phần, mở từng ý bằng `a)`, `b)`… ; không tách ý thành câu riêng (Hình 100% không tách).

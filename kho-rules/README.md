@@ -90,6 +90,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 - **Hai phần** `**Phần 1. Hướng dẫn**` (mấu chốt · vì sao nghĩ ra · các bước theo mạch nghĩ · chú ý bẫy) và `**Phần 2. Trình bày**`
   (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất. **Mọi câu** đủ 2 phần, kể cả câu
   trắc nghiệm mà sách chỉ đòi ghi đáp số (CEO 08/10).
+- ⭐ **`Các bước` 3–6 bước/bài, mỗi bước một ý trọn vẹn** (Thùy 09/10: *"các bước ko nên nhỏ quá — 1 bài nên có từ 3–6 bước thôi"*). App hiện Phần 1 thành card, mỗi bước một card đánh số ⇒ bước là câu ngắn có động từ ("Tính $MO$ bằng định lí Pythagore"), không phải mảnh ký hiệu. Bài nhiều ý: mỗi ý một dòng Các bước, cũng 3–6 bước.
 - **⭐ Phần 1 nhiều bước ⇒ MỖI BƯỚC MỘT CARD, mũi tên sang card kế tiếp (CEO 09/10 — áp MỌI khối, mọi nhánh):**
   *"Chỗ hướng dẫn, nếu có nhiều bước, thì nên làm định dạng mỗi bước là 1 card và có mũi tên sang card tiếp theo."*
   Cú pháp trong `loi_giai` (máy đọc ra card; giấy / app chưa hỗ trợ thì vẫn đọc được như chữ thường):
