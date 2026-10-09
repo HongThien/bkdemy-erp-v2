@@ -119,4 +119,5 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 |---|---|---|---|---|---|
 | 4T | `dai/k4T.md` | **Bước 2** đang chạy · bước 3 chờ CEO xong bản đồ 4T | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–8: số câu đã ghi + phần còn lại ở `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
 | 5T | `dai/k5T.md` | **Bước 1** — chưa đọc sách (B1 vướng công thức WMF) | v0 (04/10, rút từ kho cũ) | lô 1: 12 câu (Số thập phân) · 271 câu STP giải lại, chờ học thuật ký | Sách "Tài liệu tham khảo Toán 5" (31 CĐ) — `k5T.md` §5, §7 |
-| 6–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
+| 8 | `dai/k8.md` | **Bước 1** — B1–B3 xong (đọc 17 file Word, 4.879 công thức 0 hỏng; luật nháp), chưa lô thử | v0 (09/10) — lõi là **luật kiến thức theo thứ tự bài** (§1) | — | Bộ Word theo bài KNTT (C1 Đa thức · C3 Tứ giác · C4 Thalès; thiếu C2) — `E:\BK ACADEMY\Tài liệu tham khảo\K8` |
+| 6, 7, 9–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
