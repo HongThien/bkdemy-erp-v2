@@ -37,10 +37,10 @@ export default function AvatarHS({ anhUrl, initials, size, fill, badge, onChange
       style={{ width: size, height: size, background: fill, fontSize: size * 0.38, opacity: uploading ? 0.6 : 1 }}>
       {anh ? <img src={anh} alt="" className="block h-full w-full rounded-full object-cover" /> : initials}
       {uploading
-        ? <span className="absolute inset-0 flex items-center justify-center text-[13px]">…</span>
-        : <span className="absolute -bottom-0.5 -right-0.5 flex items-center justify-center rounded-full text-[11px] shadow-sm ring-2 ring-white" style={{ width: badgeSize, height: badgeSize, background: badge }}>📷</span>}
+        ? <span className="absolute inset-0 flex items-center justify-center text-[14.5px]">…</span>
+        : <span className="absolute -bottom-0.5 -right-0.5 flex items-center justify-center rounded-full text-[12px] shadow-sm ring-2 ring-white" style={{ width: badgeSize, height: badgeSize, background: badge }}>📷</span>}
       <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={onChon} />
-      {err && <span className="absolute left-1/2 top-full z-10 mt-1 w-max max-w-[170px] -translate-x-1/2 rounded-lg bg-[#FFE1E7] px-2 py-1 text-[10px] font-semibold leading-snug text-[#9F2244]">{err}</span>}
+      {err && <span className="absolute left-1/2 top-full z-10 mt-1 w-max max-w-[170px] -translate-x-1/2 rounded-lg bg-[#FFE1E7] px-2 py-1 text-[11px] font-semibold leading-snug text-[#9F2244]">{err}</span>}
     </button>
   )
 }

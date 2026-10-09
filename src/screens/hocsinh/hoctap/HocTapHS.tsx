@@ -26,12 +26,12 @@ function LuoiO({ ds }: { ds: OHocTap[] }) {
           <TheHS key={o.id} onClick={o.sapRa ? undefined : o.onClick} className="relative flex min-h-[150px] flex-col items-start gap-2 p-3.5 md:min-h-[190px] md:p-4" style={o.sapRa ? { opacity: 0.55, filter: 'saturate(0.5)' } : undefined}>
             <span className="flex h-14 w-14 items-center justify-center md:h-[72px] md:w-[72px]" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius)', background: 'var(--sk-surface2)' }}>
               {anh ? <img src={anh} alt="" className="h-11 w-11 object-contain md:h-14 md:w-14" />
-                : <span className="text-[26px] leading-none" style={{ color: 'var(--sk-acc)' }} aria-hidden>{skin.dauThayIcon ?? '✦'}</span>}
+                : <span className="text-[28.5px] leading-none" style={{ color: 'var(--sk-acc)' }} aria-hidden>{skin.dauThayIcon ?? '✦'}</span>}
             </span>
-            <span className="text-[16px] font-bold leading-tight md:text-[19px]" style={HEAD}>{o.ten}</span>
-            <span className="line-clamp-2 pr-5 text-[12px] leading-snug md:text-[13.5px]" style={{ color: MAU.muted }}>{o.sapRa ? 'Sắp ra mắt' : o.sub}</span>
+            <span className="text-[17.5px] font-bold leading-tight md:text-[21px]" style={HEAD}>{o.ten}</span>
+            <span className="line-clamp-2 pr-5 text-[13px] leading-snug md:text-[15px]" style={{ color: MAU.muted }}>{o.sapRa ? 'Sắp ra mắt' : o.sub}</span>
             {(o.nhan || o.sapRa) && <span className="absolute right-2.5 top-2.5"><NhanHS>{o.sapRa ? 'Sắp ra mắt' : o.nhan}</NhanHS></span>}
-            {!o.sapRa && <span className="absolute bottom-2.5 right-3 text-[18px]" style={{ color: MAU.muted }} aria-hidden>›</span>}
+            {!o.sapRa && <span className="absolute bottom-2.5 right-3 text-[20px]" style={{ color: MAU.muted }} aria-hidden>›</span>}
           </TheHS>
         )
       })}
@@ -130,8 +130,8 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
           {dat.map((d) => (
             <button key={'n' + d.o.id} onClick={() => bam(d)} tabIndex={-1} className="absolute flex -translate-x-1/2 flex-col items-center"
               style={{ left: d.cx, top: d.day - san.h * 0.012, maxWidth: Math.max(160, san.w * 0.24) }}>
-              <span className={`block text-center font-bold leading-tight ${d === giua ? 'text-[19px] md:text-[26px]' : 'text-[15px] md:text-[20px]'}`} style={{ ...HEAD, ...CHU_NOI, color: 'var(--sk-ink)' }}>{d.o.ten}</span>
-              <span className="mt-0.5 block text-center text-[11px] leading-snug md:text-[13.5px]" style={{ ...CHU_NOI, color: d.o.sapRa ? 'var(--sk-muted)' : 'var(--sk-acc)' }}>{d.o.sapRa ? '🔒 Sắp ra mắt' : d.o.sub}</span>
+              <span className={`block text-center font-bold leading-tight ${d === giua ? 'text-[21px] md:text-[28.5px]' : 'text-[16.5px] md:text-[22px]'}`} style={{ ...HEAD, ...CHU_NOI, color: 'var(--sk-ink)' }}>{d.o.ten}</span>
+              <span className="mt-0.5 block text-center text-[12px] leading-snug md:text-[15px]" style={{ ...CHU_NOI, color: d.o.sapRa ? 'var(--sk-muted)' : 'var(--sk-acc)' }}>{d.o.sapRa ? '🔒 Sắp ra mắt' : d.o.sub}</span>
             </button>
           ))}
         </>
@@ -152,7 +152,7 @@ export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPh
 }) {
   useEffect(() => { if (!onNap) return; const id = window.setTimeout(onNap, 300); return () => window.clearTimeout(id) }, []) // eslint-disable-line react-hooks/exhaustive-deps
   const nutNv = onDoiNhanVat && (
-    <button onClick={onDoiNhanVat} className="flex items-center gap-1.5 py-1 pl-1 pr-3 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }} aria-label="Đổi nhân vật">
+    <button onClick={onDoiNhanVat} className="flex items-center gap-1.5 py-1 pl-1 pr-3 text-[14.5px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }} aria-label="Đổi nhân vật">
       {nhanVat ? <span className="relative block h-8 w-8 overflow-hidden rounded-full" style={{ background: 'var(--sk-surface2)' }}><img src={anhDauNv(nhanVat, 'dung_1')} alt="" className="absolute left-1/2 top-0 w-[150%] max-w-none -translate-x-1/2" /></span> : null}
       {nhanVat ? tenNv(nhanVat) : 'Chọn nhân vật'}
     </button>
@@ -172,8 +172,8 @@ export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPh
       <div className="pointer-events-none absolute left-0 right-0 top-0 px-4 pt-[calc(12px+env(safe-area-inset-top))]"><div className="pointer-events-auto"><DauTrangHS tieuDe="Học tập" phu="Cùng BK chinh phục thế giới" onBack={onBack} theoMon phai={nutNv} /></div></div>
       {(onNhiemVu || onRank) && (
         <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-3 pb-[calc(12px+env(safe-area-inset-bottom))]">
-          {onNhiemVu && <button onClick={onNhiemVu} className="px-4 py-1.5 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Nhiệm vụ</button>}
-          {onRank && <button onClick={onRank} className="px-4 py-1.5 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Rank của em</button>}
+          {onNhiemVu && <button onClick={onNhiemVu} className="px-4 py-1.5 text-[14.5px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Nhiệm vụ</button>}
+          {onRank && <button onClick={onRank} className="px-4 py-1.5 text-[14.5px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Rank của em</button>}
         </div>
       )}
     </div>
@@ -184,8 +184,8 @@ export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPh
       <LuoiO ds={ds} />
       {(onNhiemVu || onRank) && (
         <div className="mt-1 flex justify-center gap-5">
-          {onNhiemVu && <button onClick={onNhiemVu} className="text-[13px] font-bold" style={{ color: MAU.acc }}>Nhiệm vụ</button>}
-          {onRank && <button onClick={onRank} className="text-[13px] font-bold" style={{ color: MAU.acc }}>Rank của em</button>}
+          {onNhiemVu && <button onClick={onNhiemVu} className="text-[14.5px] font-bold" style={{ color: MAU.acc }}>Nhiệm vụ</button>}
+          {onRank && <button onClick={onRank} className="text-[14.5px] font-bold" style={{ color: MAU.acc }}>Rank của em</button>}
         </div>
       )}
     </ManHS>
@@ -237,23 +237,23 @@ export function GiaiVoDichHS({ onBack, onDauMay }: { onBack: () => void; onDauMa
       <DauTrangHS tieuDe="Giải Vô địch BK" phu="Con đường của nhà vô địch" onBack={onBack} theoMon />
       <div className="grid gap-3 md:grid-cols-2">
         <TheHS className="flex flex-col gap-3 p-4">
-          <div className="flex items-center gap-2"><span className="text-[18px] font-bold" style={HEAD}>Giải trực tiếp</span><NhanHS>Mỗi tuần</NhanHS></div>
+          <div className="flex items-center gap-2"><span className="text-[20px] font-bold" style={HEAD}>Giải trực tiếp</span><NhanHS>Mỗi tuần</NhanHS></div>
           <Dong nhan="Đăng ký">{LICH.dangKy}</Dong>
           <Dong nhan="Thi đấu">{LICH.thiDau}</Dong>
           <Dong nhan="Điểm danh">{LICH.diemDanh} — không vào là xử thua</Dong>
           <Dong nhan="Bảng">{mon ?? 'Môn'} · theo khối của em</Dong>
-          <ul className="list-disc pl-5 text-[12.5px] leading-relaxed" style={{ color: MAU.muted }}>
+          <ul className="list-disc pl-5 text-[14px] leading-relaxed" style={{ color: MAU.muted }}>
             <li>Loại trực tiếp. Mỗi trận 4 phút, hai em cùng một câu.</li>
             <li>Ai bấm trước thì câu đó kết thúc: đúng thì em thắng lượt, sai thì bạn thắng lượt (ít điểm hơn).</li>
             <li>Đối thủ vắng mặt ⇒ em tự vào vòng trong. Có thưởng xu theo vòng đạt được.</li>
           </ul>
           <NutHS onClick={() => setDangKy((v) => !v)} phu={dangKy}>{dangKy ? 'Đã đăng ký ✓ (bấm để huỷ)' : 'Đăng ký giải tuần này'}</NutHS>
-          <p className="text-[11px]" style={{ color: MAU.muted }}>Bản demo: đăng ký chưa lưu, lịch và nhánh là dữ liệu mẫu.</p>
+          <p className="text-[12px]" style={{ color: MAU.muted }}>Bản demo: đăng ký chưa lưu, lịch và nhánh là dữ liệu mẫu.</p>
         </TheHS>
         <TheHS onClick={onDauMay} className="flex flex-col gap-2 p-4">
-          <div className="flex items-center gap-2"><span className="text-[18px] font-bold" style={HEAD}>Đấu với máy</span>{rankBat() && <NhanHS>Cộng Điểm Rank</NhanHS>}</div>
-          <p className="text-[13px] leading-snug" style={{ color: MAU.muted }}>3 trận liên tiếp với Boss, càng vào sâu càng khó (đúng 60% · 80% · 100%). Thua trận nào là dừng. 2 lượt mỗi ngày.</p>
-          <span className="mt-auto self-end text-[14px] font-bold" style={{ color: MAU.acc }}>Vào đấu ›</span>
+          <div className="flex items-center gap-2"><span className="text-[20px] font-bold" style={HEAD}>Đấu với máy</span>{rankBat() && <NhanHS>Cộng Điểm Rank</NhanHS>}</div>
+          <p className="text-[14.5px] leading-snug" style={{ color: MAU.muted }}>3 trận liên tiếp với Boss, càng vào sâu càng khó (đúng 60% · 80% · 100%). Thua trận nào là dừng. 2 lượt mỗi ngày.</p>
+          <span className="mt-auto self-end text-[15.5px] font-bold" style={{ color: MAU.acc }}>Vào đấu ›</span>
         </TheHS>
       </div>
       <NhomHS>Nhánh đấu tuần này (mẫu)</NhomHS>
@@ -263,7 +263,7 @@ export function GiaiVoDichHS({ onBack, onDauMay }: { onBack: () => void; onDauMa
 }
 
 function Dong({ nhan, children }: { nhan: string; children: ReactNode }) {
-  return <p className="flex gap-2 text-[13.5px]"><span className="w-[84px] shrink-0" style={{ color: MAU.muted }}>{nhan}</span><span className="font-semibold">{children}</span></p>
+  return <p className="flex gap-2 text-[15px]"><span className="w-[84px] shrink-0" style={{ color: MAU.muted }}>{nhan}</span><span className="font-semibold">{children}</span></p>
 }
 
 /** Nhánh loại trực tiếp 8 → 4 → 2 → 1 (chỉ vẽ dữ liệu mẫu). */
@@ -275,9 +275,9 @@ function NhanhMau({ ten }: { ten: string[] }) {
       <div className="flex min-w-[560px] gap-3">
         {vong.map((v, i) => (
           <div key={i} className="flex flex-1 flex-col justify-around gap-2">
-            <p className="text-center text-[11px] font-bold uppercase" style={{ color: MAU.muted }}>{nhanVong[i]}</p>
+            <p className="text-center text-[12px] font-bold uppercase" style={{ color: MAU.muted }}>{nhanVong[i]}</p>
             {v.map((t, j) => (
-              <span key={j} className="px-2 py-1.5 text-center text-[12.5px] font-semibold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius)', background: t === 'Em' ? 'var(--sk-surface2)' : undefined, color: t === '?' ? MAU.muted : MAU.ink }}>{t}</span>
+              <span key={j} className="px-2 py-1.5 text-center text-[14px] font-semibold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius)', background: t === 'Em' ? 'var(--sk-surface2)' : undefined, color: t === '?' ? MAU.muted : MAU.ink }}>{t}</span>
             ))}
           </div>
         ))}

@@ -37,31 +37,31 @@ export default function XemThuThach() {
       <div className="grid gap-3 md:grid-cols-[1fr_1fr]">
         <TheHS className="flex flex-col items-center justify-end p-3" style={{ minHeight: 260 }}>
           <BossAnhHS ma="boss_thuy" tt="dung" cao={240} />
-          <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Boss đang chờ em ở đấu trường…</p>
+          <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Boss đang chờ em ở đấu trường…</p>
         </TheHS>
         <div className="flex flex-col gap-3">
           <TheHS className="flex flex-col gap-2.5 p-4">
             {NGUONG.map((n, i) => (
               <div key={i} className="flex items-center gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[14px] font-extrabold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{i + 1}</span>
-                <p className="flex-1 text-[15px]" style={{ color: MAU.ink }}>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[15.5px] font-extrabold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{i + 1}</span>
+                <p className="flex-1 text-[16.5px]" style={{ color: MAU.ink }}>
                   <b style={HEAD}>Trận {i + 1}</b> · {SO_CAU_TRAN} câu · thắng khi đúng <b>≥ {n}/{SO_CAU_TRAN}</b> ({Math.round(n / SO_CAU_TRAN * 100)}%)
                 </p>
               </div>
             ))}
-            <ul className="mt-1 list-disc pl-5 text-[13px] leading-relaxed" style={{ color: MAU.muted }}>
+            <ul className="mt-1 list-disc pl-5 text-[14.5px] leading-relaxed" style={{ color: MAU.muted }}>
               <li>Thắng cả {SO_TRAN} trận mới vượt Thử thách. Thua trận nào là dừng luôn.</li>
               <li>Câu lấy từ các dạng em đã học, dễ · vừa · khó theo tỉ lệ 2-2-1.</li>
               <li>Có nút Bỏ cuộc (tính là thua, vẫn mất 1 lượt).</li>
             </ul>
           </TheHS>
           <TheHS className="flex items-center gap-3 p-3.5">
-            <span className="text-[13px]" style={{ color: MAU.muted }}>Hôm nay còn</span>
-            <b className="text-[22px] tabular-nums" style={{ ...HEAD, color: luotCon > 0 ? MAU.acc : MAU.sai }}>{luotCon}/{LUOT_MOI_NGAY}</b>
-            <span className="text-[13px]" style={{ color: MAU.muted }}>lượt</span>
+            <span className="text-[14.5px]" style={{ color: MAU.muted }}>Hôm nay còn</span>
+            <b className="text-[24px] tabular-nums" style={{ ...HEAD, color: luotCon > 0 ? MAU.acc : MAU.sai }}>{luotCon}/{LUOT_MOI_NGAY}</b>
+            <span className="text-[14.5px]" style={{ color: MAU.muted }}>lượt</span>
           </TheHS>
-          {khoa && <p className="text-[13.5px]" style={{ color: MAU.canhBao, textShadow: '0 1px 8px var(--sk-bg)' }}>{khoa}</p>}
-          <NutHS onClick={vao} tat={!!khoa} className="!h-12 !text-[17px]">Vào đấu trường</NutHS>
+          {khoa && <p className="text-[15px]" style={{ color: MAU.canhBao, textShadow: '0 1px 8px var(--sk-bg)' }}>{khoa}</p>}
+          <NutHS onClick={vao} tat={!!khoa} className="!h-12 !text-[18.5px]">Vào đấu trường</NutHS>
         </div>
       </div>
     </ManHS>

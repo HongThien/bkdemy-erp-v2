@@ -41,6 +41,8 @@ registerSW({
 // `hs.html`/`main-hs.tsx` deploy thật. Ghi đè thẳng `--app-z=1` ở ĐÂY (ưu tiên hơn `:root` nhờ inline
 // style) — bundle HS không cần "mật độ desktop" của staff, luôn net 1.0.
 document.documentElement.style.setProperty('--app-z', '1')
+// Chữ mặc định +10% (Thùy 09/10: "chữ to ra 10% ở toàn bộ giao diện"): chữ KHÔNG đặt cỡ riêng (nội dung bài, công thức…) kế thừa từ body; các cỡ đặt riêng đã tăng 10% ở từng màn.
+document.body.style.fontSize = '17.6px'
 
 // Skin mặc định (Anime RPG) gắn trước khi vẽ — HocSinhApp gắn lại theo lựa chọn của em (spec-giao-dien-hs.md).
 ganSkinMacDinh()

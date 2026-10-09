@@ -60,61 +60,61 @@ function TheHuyHieu({ h, al, mo, onMo }: { h: AlbumHuyHieu; al: Album; mo: boole
     }}>
       {nhan.length > 0 && (
         <span className="absolute right-2 top-2 z-[1] flex gap-1">
-          {nhan.map((t) => <span key={t} className="rounded-md px-1.5 py-0.5 text-[11px] font-extrabold leading-none" style={{ background: t === 'Hiếm' ? MAU_GAMI.hiem : MAU_GAMI.thanhNen, border: `1px solid ${MAU_GAMI.vienO}` }}>{t}</span>)}
+          {nhan.map((t) => <span key={t} className="rounded-md px-1.5 py-0.5 text-[12px] font-extrabold leading-none" style={{ background: t === 'Hiếm' ? MAU_GAMI.hiem : MAU_GAMI.thanhNen, border: `1px solid ${MAU_GAMI.vienO}` }}>{t}</span>)}
         </span>
       )}
       <button onClick={onMo} aria-expanded={mo} className="flex w-full items-center gap-2.5 px-2.5 py-2.5 text-left">
         <HinhHuyHieu hhKey={h.key} sao={h.sao} size={72} title={h.ten} />
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-[18px] font-bold leading-tight" style={HEAD}>{h.ten}</span>
-          <span className="mt-0.5 block text-[12px] leading-snug" style={{ color: MAU_GAMI.chuPhu }}>{h.ghi_nhan}</span>
+          <span className="block truncate text-[20px] font-bold leading-tight" style={HEAD}>{h.ten}</span>
+          <span className="mt-0.5 block text-[13px] leading-snug" style={{ color: MAU_GAMI.chuPhu }}>{h.ghi_nhan}</span>
           <span className="mt-1 block"><HangSao n={h.sao} /></span>
         </span>
-        <span className={`w-[42%] max-w-[240px] shrink-0 text-[11.5px] leading-snug ${nhan.length ? 'pt-4' : ''}`}>
+        <span className={`w-[42%] max-w-[240px] shrink-0 text-[12.5px] leading-snug ${nhan.length ? 'pt-4' : ''}`}>
           {k ? <>Tới <b>★{k.ke.sao}</b>: {k.co}/{k.ke.so_thang} tháng {k.ke.loai === 'chuan' ? 'đạt chuẩn' : 'hoàn hảo'}</> : <b>Đủ 5 sao mùa này 🎉</b>}
           {k?.ke.ban_cung && <span className="ml-1 font-bold" style={{ color: MAU_GAMI.vanhSang }}>· bản cứng</span>}
           <span className="flex items-center gap-1.5">
             <span className="min-w-0 flex-1"><Thanh pct={pct} mau={coSao ? mauHH(h.key).mau : MAU_GAMI.vienKhoa} /></span>
-            {mo && <span className="mt-1 shrink-0 text-[11px] font-bold">{pct}%</span>}
+            {mo && <span className="mt-1 shrink-0 text-[12px] font-bold">{pct}%</span>}
           </span>
           {cao
             ? <span className="mt-1 block" style={{ color: MAU_GAMI.chuPhu }}>{cao.so_ban_khoi}/{al.si_so_khoi} bạn trong khối có ★{cao.sao}</span>
-            : <span className="mt-1.5 inline-block rounded-md px-2 py-0.5 text-[11px] font-bold" style={{ background: MAU_GAMI.nenO, border: `1px solid ${MAU_GAMI.vienKhoa}` }}>Chưa mở khoá</span>}
+            : <span className="mt-1.5 inline-block rounded-md px-2 py-0.5 text-[12px] font-bold" style={{ background: MAU_GAMI.nenO, border: `1px solid ${MAU_GAMI.vienKhoa}` }}>Chưa mở khoá</span>}
           {cao && cao.sao >= 4 && <span className="block font-bold" style={{ color: MAU_GAMI.vanhSang }}>{cao.da_trao ? 'Đã nhận bản cứng' : 'Chờ thầy cô trao bản cứng'}</span>}
         </span>
       </button>
       {mo && (
         <div className="px-3 pb-3">
-          {h.cau_chuyen && <p className="mb-2.5 text-[13px] leading-snug">{h.cau_chuyen}</p>}
+          {h.cau_chuyen && <p className="mb-2.5 text-[14.5px] leading-snug">{h.cau_chuyen}</p>}
           <div className="grid gap-2">
             <div className="px-3 py-2" style={O_NHO}>
-              <p className="mb-1 text-[12px] font-extrabold uppercase tracking-wide" style={{ ...HEAD, textTransform: 'uppercase', color: MAU_GAMI.vanhSang }}>Tháng này</p>
+              <p className="mb-1 text-[13px] font-extrabold uppercase tracking-wide" style={{ ...HEAD, textTransform: 'uppercase', color: MAU_GAMI.vanhSang }}>Tháng này</p>
               {h.thang_nay.map((x) => {
                 const kq = x.ket_qua ?? 'khong_dat'
                 return (
-                  <div key={x.key} className="flex items-center gap-2 py-0.5 text-[12.5px]">
+                  <div key={x.key} className="flex items-center gap-2 py-0.5 text-[14px]">
                     {kq === 'khong_ap_dung'
                       ? <span className="w-[18px] text-center font-bold" style={{ color: MAU_GAMI.chuPhu }}>–</span>
-                      : <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded text-[12px] font-black" style={kq === 'dat' ? { background: MAU.dung } : { border: `1.5px solid ${MAU_GAMI.chuPhu}` }}>{kq === 'dat' ? '✓' : ''}</span>}
+                      : <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded text-[13px] font-black" style={kq === 'dat' ? { background: MAU.dung } : { border: `1.5px solid ${MAU_GAMI.chuPhu}` }}>{kq === 'dat' ? '✓' : ''}</span>}
                     <span className="min-w-0 flex-1" style={{ opacity: kq === 'khong_ap_dung' ? 0.7 : 1 }}>{x.ten}</span>
-                    <span className="shrink-0 text-[10.5px]" style={{ color: MAU_GAMI.chuPhu }}>{x.vai === 'chuan' ? 'chuẩn' : '★4–5'}</span>
+                    <span className="shrink-0 text-[11.5px]" style={{ color: MAU_GAMI.chuPhu }}>{x.vai === 'chuan' ? 'chuẩn' : '★4–5'}</span>
                   </div>
                 )
               })}
             </div>
             <div className="px-3 py-2" style={O_NHO}>
-              <p className="mb-1.5 text-[12px] font-extrabold uppercase tracking-wide" style={{ ...HEAD, textTransform: 'uppercase', color: MAU_GAMI.vanhSang }}>Các tháng</p>
+              <p className="mb-1.5 text-[13px] font-extrabold uppercase tracking-wide" style={{ ...HEAD, textTransform: 'uppercase', color: MAU_GAMI.vanhSang }}>Các tháng</p>
               <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${Math.max(5, h.lich_su.length)}, minmax(0,1fr))` }}>
                 {h.lich_su.map((m) => (
-                  <span key={m.thang} className="flex flex-col items-center rounded-md py-1 text-[11px] font-bold leading-tight" style={{ border: `1px solid ${MAU_GAMI.vienO}` }}>
+                  <span key={m.thang} className="flex flex-col items-center rounded-md py-1 text-[12px] font-bold leading-tight" style={{ border: `1px solid ${MAU_GAMI.vienO}` }}>
                     <span style={{ color: MAU_GAMI.chuPhu }}>{thangNgan(m.thang)}</span>
-                    <span className="mt-0.5 text-[13px]" style={{ color: m.hoan_hao ? MAU_GAMI.vanhSang : m.chuan ? MAU.dung : MAU_GAMI.chuPhu }}>
+                    <span className="mt-0.5 text-[14.5px]" style={{ color: m.hoan_hao ? MAU_GAMI.vanhSang : m.chuan ? MAU.dung : MAU_GAMI.chuPhu }}>
                       {m.hoan_hao ? '★' : m.chuan ? '✓' : m.chuan === null ? '–' : '·'}{m.da_chot ? '' : '*'}
                     </span>
                   </span>
                 ))}
               </div>
-              <p className="mt-1.5 text-[10.5px]" style={{ color: MAU_GAMI.chuPhu }}>✓ đạt chuẩn · ★ hoàn hảo · – chưa áp dụng · * đang tạm tính</p>
+              <p className="mt-1.5 text-[11.5px]" style={{ color: MAU_GAMI.chuPhu }}>✓ đạt chuẩn · ★ hoàn hảo · – chưa áp dụng · * đang tạm tính</p>
             </div>
           </div>
         </div>
@@ -140,13 +140,13 @@ export function AlbumView({ al, mo, onMo, chucMung, onDongChucMung }: {
         <div className="mt-4 overflow-hidden" style={{ borderRadius: 'var(--sk-radius)', background: MAU_GAMI.nenSapDat, border: `1.5px solid ${MAU_GAMI.vanh}`, boxShadow: `0 0 16px ${VANG_NEN}`, color: MAU_GAMI.chu }}>
           {sapDat.map(({ h, k }, i) => (
             <button key={h.key} onClick={() => toi(h.key)} className="flex w-full items-center gap-2.5 px-3 py-2 text-left" style={i ? { borderTop: `1px solid ${MAU_GAMI.vienO}` } : undefined}>
-              <span className="shrink-0 rounded-md px-2 py-1 text-[11px] font-extrabold uppercase leading-none" style={{ background: MAU_GAMI.nhanVang, color: MAU_GAMI.nhanVangChu, visibility: i ? 'hidden' : 'visible' }}>Sắp đạt</span>
+              <span className="shrink-0 rounded-md px-2 py-1 text-[12px] font-extrabold uppercase leading-none" style={{ background: MAU_GAMI.nhanVang, color: MAU_GAMI.nhanVangChu, visibility: i ? 'hidden' : 'visible' }}>Sắp đạt</span>
               <HinhHuyHieu hhKey={h.key} sao={h.sao} size={46} />
               <span className="min-w-0 flex-1 leading-tight">
-                <span className="block text-[16px] font-bold" style={HEAD}>{h.ten} <span style={{ color: MAU_GAMI.vanhSang }}>★{k!.ke.sao}</span></span>
-                <span className="block text-[12.5px]" style={{ color: MAU_GAMI.chuPhu }}>còn {k!.con} tháng {k!.ke.loai === 'chuan' ? 'đạt chuẩn' : 'hoàn hảo'}</span>
+                <span className="block text-[17.5px] font-bold" style={HEAD}>{h.ten} <span style={{ color: MAU_GAMI.vanhSang }}>★{k!.ke.sao}</span></span>
+                <span className="block text-[14px]" style={{ color: MAU_GAMI.chuPhu }}>còn {k!.con} tháng {k!.ke.loai === 'chuan' ? 'đạt chuẩn' : 'hoàn hảo'}</span>
               </span>
-              <span aria-hidden className="shrink-0 text-[22px] leading-none" style={{ color: MAU_GAMI.vanhSang }}>›</span>
+              <span aria-hidden className="shrink-0 text-[24px] leading-none" style={{ color: MAU_GAMI.vanhSang }}>›</span>
             </button>
           ))}
         </div>
@@ -180,12 +180,12 @@ export default function AlbumHS({ gioiTinh, onBack }: { gioiTinh: 'nam' | 'nu' |
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Huy hiệu {al?.mon ?? ''}</h1>
-      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDeAlbum(al)}</p>
+      <h1 className="text-[24px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Huy hiệu {al?.mon ?? ''}</h1>
+      <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDeAlbum(al)}</p>
 
-      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
-      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
-      {state === 'trong' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Huy hiệu chưa mở cho môn của em.</p>}
+      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
+      {state === 'trong' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Huy hiệu chưa mở cho môn của em.</p>}
 
       {state === 'san_sang' && al && (
         <AlbumView al={al} mo={mo} onMo={(k) => setMo((x) => (x === k ? null : k))}

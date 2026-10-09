@@ -52,16 +52,16 @@ export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; ba
     onXong()
   }
 
-  const inp = 'w-full rounded-xl px-3.5 py-3 text-[15px] outline-none transition focus:ring-2 focus:ring-[var(--sk-acc,#4f46e5)]'
+  const inp = 'w-full rounded-xl px-3.5 py-3 text-[16.5px] outline-none transition focus:ring-2 focus:ring-[var(--sk-acc,#4f46e5)]'
   const inpStyle: React.CSSProperties = { background: V.surface2, color: V.ink, border: `1px solid ${V.line}` }
-  const nhan = 'mb-1.5 block text-[12px] font-semibold uppercase tracking-wide'
+  const nhan = 'mb-1.5 block text-[13px] font-semibold uppercase tracking-wide'
   return (
     <div className="min-h-[100dvh]" style={{ background: V.page, backgroundAttachment: 'fixed', color: V.ink, fontFamily: V.font }}>
     <div className="mx-auto max-w-md px-4 pb-10 md:max-w-xl">
       <div className="py-6">
-        <p className="text-lg font-semibold" style={{ color: V.ink, fontFamily: V.head, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>{batBuoc ? 'Đặt mật khẩu riêng' : 'Đổi mật khẩu'}</p>
+        <p className="text-[20px] font-semibold" style={{ color: V.ink, fontFamily: V.head, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>{batBuoc ? 'Đặt mật khẩu riêng' : 'Đổi mật khẩu'}</p>
         {batBuoc && (
-          <p className="mt-1.5 text-[13.5px] leading-relaxed" style={{ color: V.muted, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>
+          <p className="mt-1.5 text-[15px] leading-relaxed" style={{ color: V.muted, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>
             Mật khẩu hiện tại của em đang trùng mã học sinh nên bạn khác đoán được.
             Đặt một mật khẩu riêng để không ai làm bài thay em.
           </p>
@@ -72,25 +72,25 @@ export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; ba
         <label className={nhan} style={{ color: V.muted }}>Mật khẩu mới</label>
         <input type="password" value={mk1} onChange={(e) => setMk1(e.target.value)} autoFocus
           autoComplete="new-password" placeholder={`Ít nhất ${TOI_THIEU} ký tự`} className={`${inp} mb-1`} style={inpStyle} />
-        {quaNgan && <p className="mb-2 text-[12.5px]" style={{ color: CANH_BAO }}>Cần ít nhất {TOI_THIEU} ký tự.</p>}
-        {trungMaHS && <p className="mb-2 text-[12.5px]" style={{ color: SAI }}>Không đặt trùng mã học sinh — đó chính là mật khẩu ai cũng đoán được.</p>}
+        {quaNgan && <p className="mb-2 text-[14px]" style={{ color: CANH_BAO }}>Cần ít nhất {TOI_THIEU} ký tự.</p>}
+        {trungMaHS && <p className="mb-2 text-[14px]" style={{ color: SAI }}>Không đặt trùng mã học sinh — đó chính là mật khẩu ai cũng đoán được.</p>}
 
         <label className={`${nhan} mt-3.5`} style={{ color: V.muted }}>Nhập lại</label>
         <input type="password" value={mk2} onChange={(e) => setMk2(e.target.value)}
           autoComplete="new-password" className={`${inp} mb-1`} style={inpStyle} />
-        {lechNhau && <p className="mb-2 text-[12.5px]" style={{ color: CANH_BAO }}>Hai ô chưa giống nhau.</p>}
+        {lechNhau && <p className="mb-2 text-[14px]" style={{ color: CANH_BAO }}>Hai ô chưa giống nhau.</p>}
 
-        {err && <p className="mt-2 text-[12.5px]" style={{ color: SAI }}>{err}</p>}
+        {err && <p className="mt-2 text-[14px]" style={{ color: SAI }}>{err}</p>}
 
         <button type="submit" disabled={busy || !hopLe}
-          className="mt-4 w-full py-3 text-[15px] font-bold transition disabled:opacity-40"
+          className="mt-4 w-full py-3 text-[16.5px] font-bold transition disabled:opacity-40"
           style={{ background: V.acc, color: V.accInk, borderRadius: V.radius, fontFamily: V.head }}>
           {busy ? 'Đang lưu…' : 'Lưu mật khẩu'}
         </button>
 
         {!batBuoc && (
           <button type="button" onClick={onXong} disabled={busy}
-            className="mt-2 w-full rounded-xl py-2.5 text-[14px] transition" style={{ color: V.muted }}>
+            className="mt-2 w-full rounded-xl py-2.5 text-[15.5px] transition" style={{ color: V.muted }}>
             Quay lại
           </button>
         )}
@@ -98,7 +98,7 @@ export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; ba
 
       {batBuoc && (
         <button type="button" onClick={() => supabase.auth.signOut()}
-          className="mt-5 w-full text-center text-[13px]" style={{ color: V.muted, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>
+          className="mt-5 w-full text-center text-[14.5px]" style={{ color: V.muted, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>
           Thoát
         </button>
       )}

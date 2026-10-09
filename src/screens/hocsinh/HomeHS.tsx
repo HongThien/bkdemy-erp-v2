@@ -128,8 +128,8 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
         {/* TOP — chào (Itim) trái · chuông / khoá / Thoát phải */}
         <div className="flex items-start justify-between gap-2">
           <div className="font-hand min-w-0 pt-1 leading-[1.05]" style={{ color: t.greet }}>
-            <div className="text-[17px]">Chào bạn,</div>
-            <div className="relative inline-block whitespace-nowrap text-[18px] font-bold">
+            <div className="text-[18.5px]">Chào bạn,</div>
+            <div className="relative inline-block whitespace-nowrap text-[20px] font-bold">
               Cùng cố gắng hôm nay nhé!
               <span className="absolute -bottom-1 left-[38%] h-[3px] w-[30%] rounded-full opacity-70" style={{ background: t.primary }} />
             </div>
@@ -138,11 +138,11 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
             <NutTron onClick={onHopThu} title="Hòm thư">
               <span style={{ color: t.primary }}><Bell className="h-[22px] w-[22px]" /></span>
               {chuaDoc > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-extrabold text-white" style={{ background: '#FF315E', boxShadow: '0 4px 10px rgba(255,49,94,.35)' }}>{chuaDoc}</span>
+                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[12px] font-extrabold text-white" style={{ background: '#FF315E', boxShadow: '0 4px 10px rgba(255,49,94,.35)' }}>{chuaDoc}</span>
               )}
             </NutTron>
             <NutTron onClick={onDoiMK} title="Đổi mật khẩu"><img src={`${A}/key.svg`} alt="" className="h-[22px] w-[22px]" /></NutTron>
-            <button onClick={onThoat} className="flex h-10 items-center justify-center rounded-[13px] bg-white px-3 text-[14px] font-bold active:scale-95" style={{ boxShadow: SHADOW, color: NAVY }}>Thoát</button>
+            <button onClick={onThoat} className="flex h-10 items-center justify-center rounded-[13px] bg-white px-3 text-[15.5px] font-bold active:scale-95" style={{ boxShadow: SHADOW, color: NAVY }}>Thoát</button>
           </div>
         </div>
 
@@ -161,13 +161,13 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
           </div>
           {/* Cỡ chữ theo bề ngang (clamp vw) để màn 390 vẫn giữ tỉ lệ như mockup 430, không cắt tên */}
           <div className="absolute left-[23.5%] right-[33%] top-1/2 -translate-y-1/2 text-white">
-            <p className="truncate font-extrabold leading-tight" style={{ fontSize: 'clamp(16px, 4.4vw, 19px)' }}>{tenNgan}</p>
-            <p className="mt-0.5 truncate opacity-90" style={{ fontSize: 'clamp(11px, 2.9vw, 12.5px)' }}>{maHS.toUpperCase()}{lopMon ? ` - ${lopMon}` : ''}</p>
-            <span className="mt-2 inline-block whitespace-nowrap rounded-full bg-white/20 px-2.5 py-1" style={{ fontSize: 'clamp(9.5px, 2.6vw, 11px)' }}>Học tốt hơn mỗi ngày! 🚀</span>
+            <p className="truncate font-extrabold leading-tight" style={{ fontSize: 'clamp(17.5px, 4.8vw, 21px)' }}>{tenNgan}</p>
+            <p className="mt-0.5 truncate opacity-90" style={{ fontSize: 'clamp(12px, 3.2vw, 14px)' }}>{maHS.toUpperCase()}{lopMon ? ` - ${lopMon}` : ''}</p>
+            <span className="mt-2 inline-block whitespace-nowrap rounded-full bg-white/20 px-2.5 py-1" style={{ fontSize: 'clamp(10.5px, 2.9vw, 12px)' }}>Học tốt hơn mỗi ngày! 🚀</span>
           </div>
           <img src={t.char} alt="" className="pointer-events-none absolute -top-2 right-[8.5%] h-[calc(100%+8px)] w-auto object-contain object-bottom drop-shadow-[0_6px_12px_rgba(20,40,120,.25)]" />
-          <div className="font-hand pointer-events-none absolute right-2 top-2.5 rotate-[8deg] text-right text-[10.5px] leading-[1.05] text-white/90">Dream<br />Learn<br />Grow<br />Repeat</div>
-          <div className="font-hand pointer-events-none absolute bottom-1.5 left-2.5 -rotate-[8deg] text-[9px] leading-[1.05] text-white/80">Better Student<br />Brighter You!</div>
+          <div className="font-hand pointer-events-none absolute right-2 top-2.5 rotate-[8deg] text-right text-[11.5px] leading-[1.05] text-white/90">Dream<br />Learn<br />Grow<br />Repeat</div>
+          <div className="font-hand pointer-events-none absolute bottom-1.5 left-2.5 -rotate-[8deg] text-[10px] leading-[1.05] text-white/80">Better Student<br />Brighter You!</div>
         </div>
 
         {/* CHỌN MÔN — đổi môn là cả góc học tập (bài trên lớp, tự luyện, sổ tay, bổ trợ…) chạy theo môn đó */}
@@ -199,17 +199,17 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
                 style={{ background: tone.bg, boxShadow: c.disabled ? 'none' : SHADOW, aspectRatio: '417 / 280' }}>
                 <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px] lg:w-[26%]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
                   {c.emoji
-                    ? <span className="text-[34px] leading-none lg:text-[44px]" aria-hidden>{c.emoji}</span>
+                    ? <span className="text-[37.5px] leading-none lg:text-[48.5px]" aria-hidden>{c.emoji}</span>
                     : <img src={`${A}/ill_${c.ill}.png`} alt="" className="h-[76%] w-[76%] object-contain" />}
                 </span>
-                <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[10.5px] leading-[1.1] lg:text-[13px] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
+                <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[11.5px] leading-[1.1] lg:text-[14.5px] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
                 <span className="mt-3 pr-8 lg:mt-5">
-                  <span className="block text-[13px] font-extrabold leading-tight md:text-[15px] lg:text-[20px]" style={{ color: c.disabled ? '#59698f' : NAVY }}>{c.ten}</span>
-                  <span className="mt-0.5 block text-[10.5px] leading-snug md:text-[11.5px] lg:text-[14px]" style={{ color: subColor, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
+                  <span className="block text-[14.5px] font-extrabold leading-tight md:text-[16.5px] lg:text-[22px]" style={{ color: c.disabled ? '#59698f' : NAVY }}>{c.ten}</span>
+                  <span className="mt-0.5 block text-[11.5px] leading-snug md:text-[12.5px] lg:text-[15.5px]" style={{ color: subColor, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
                 </span>
                 <span className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full" style={{ background: `${tone.c}29` }}><Chevron color={tone.c} /></span>
                 {!!c.badge && c.badge > 0 && (
-                  <span className="absolute right-2.5 top-2.5 flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-[12px] font-extrabold text-white" style={{ background: '#FF315E', boxShadow: '0 6px 14px rgba(255,49,94,.3)' }}>{c.badge}</span>
+                  <span className="absolute right-2.5 top-2.5 flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-[13px] font-extrabold text-white" style={{ background: '#FF315E', boxShadow: '0 6px 14px rgba(255,49,94,.3)' }}>{c.badge}</span>
                 )}
               </button>
             )
@@ -219,12 +219,12 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
         {/* FOOTER — quote (TEXT Itim) + decor sách/cốc (DECOR) */}
         <div className="mt-2.5 flex shrink-0 items-end justify-between gap-2">
           <div className="pl-1">
-            <div className="font-hand relative -rotate-[3deg] whitespace-pre-line pb-2.5 text-[18px] leading-[1.2]" style={{ color: t.greet }}>
+            <div className="font-hand relative -rotate-[3deg] whitespace-pre-line pb-2.5 text-[20px] leading-[1.2]" style={{ color: t.greet }}>
               {t.quote}
               <span className="absolute bottom-0 left-8 h-[3px] w-24 rounded-full opacity-60" style={{ background: t.primary }} />
             </div>
             {/* Thùy 08/09: "BK ACADEMY" trên đầu chật → đưa xuống chân trang */}
-            <div className="mt-2 text-[9.5px] font-semibold tracking-[0.22em]" style={{ color: SEC }}>— BK ACADEMY</div>
+            <div className="mt-2 text-[10.5px] font-semibold tracking-[0.22em]" style={{ color: SEC }}>— BK ACADEMY</div>
           </div>
           <img src={t.decor} alt="" className="pointer-events-none -mr-2 -mb-1 w-[32%] shrink-0" />
         </div>
@@ -238,12 +238,12 @@ function BoxNho({ onClick, title, sub, mau, nen, vien, icon, badge, disabled }: 
   return (
     <button onClick={onClick} disabled={disabled} className={`relative flex items-center gap-2 rounded-[18px] py-2 pl-2.5 pr-2 text-left ${disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
       style={{ background: nen, border: `1.5px solid ${vien}`, boxShadow: disabled ? 'none' : SHADOW }}>
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-white text-[18px]" style={{ boxShadow: '0 2px 6px rgba(67,92,160,.08)' }}>{icon}</span>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-white text-[20px]" style={{ boxShadow: '0 2px 6px rgba(67,92,160,.08)' }}>{icon}</span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[13.5px] font-extrabold leading-tight" style={{ color: NAVY }}>{title}</span>
-        <span className="mt-0.5 block truncate text-[10.5px] font-semibold leading-snug" style={{ color: mau }}>{sub}</span>
+        <span className="block truncate text-[15px] font-extrabold leading-tight" style={{ color: NAVY }}>{title}</span>
+        <span className="mt-0.5 block truncate text-[11.5px] font-semibold leading-snug" style={{ color: mau }}>{sub}</span>
       </span>
-      {!!badge && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-extrabold text-white" style={{ background: '#FF315E' }}>{badge}</span>}
+      {!!badge && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[12px] font-extrabold text-white" style={{ background: '#FF315E' }}>{badge}</span>}
     </button>
   )
 }
@@ -255,12 +255,12 @@ function Banner({ onClick, title, sub, doodle, badge }: { onClick: () => void; t
       style={{ background: 'linear-gradient(135deg,#fffbe6,#fff3c4)', border: '1.5px solid #ffe28a', boxShadow: SHADOW }}>
       <img src={`${A}/ill_mascot_botro.png`} alt="" className="h-[56px] w-[56px] shrink-0 object-contain" />
       <span className="min-w-0 flex-1">
-        <span className="block text-[15px] font-extrabold leading-tight" style={{ color: NAVY }}>{title}</span>
-        <span className="mt-0.5 block text-[11.5px] leading-snug" style={{ color: SEC }}>{sub}</span>
+        <span className="block text-[16.5px] font-extrabold leading-tight" style={{ color: NAVY }}>{title}</span>
+        <span className="mt-0.5 block text-[12.5px] leading-snug" style={{ color: SEC }}>{sub}</span>
       </span>
       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full" style={{ background: '#ffe28a' }}><Chevron color="#d8921c" /></span>
-      <span className="font-hand pointer-events-none absolute right-11 top-1 rotate-[6deg] text-[9px] leading-none" style={{ color: '#d8921c' }}>{doodle}</span>
-      {!!badge && <span className="absolute -right-1.5 -top-1.5 flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-[12px] font-extrabold text-white" style={{ background: '#FF315E' }}>{badge}</span>}
+      <span className="font-hand pointer-events-none absolute right-11 top-1 rotate-[6deg] text-[10px] leading-none" style={{ color: '#d8921c' }}>{doodle}</span>
+      {!!badge && <span className="absolute -right-1.5 -top-1.5 flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-[13px] font-extrabold text-white" style={{ background: '#FF315E' }}>{badge}</span>}
     </button>
   )
 }

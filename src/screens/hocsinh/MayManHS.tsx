@@ -54,13 +54,13 @@ function Wheel({ goc, size, O_LIST }: { goc: number; size: number; O_LIST: O[] }
             return (
               <div key={i} className="absolute left-1/2 top-1/2 flex flex-col items-center text-center"
                 style={{ width: size * 0.3, transform: `translate(-50%,-50%) rotate(${a}deg) translateY(-${r}px) rotate(${-a}deg)` }}>
-                <span className="mb-0.5 text-[26px] leading-none">{o.icon}</span>
+                <span className="mb-0.5 text-[28.5px] leading-none">{o.icon}</span>
                 <span className="whitespace-nowrap font-extrabold leading-none" style={{ fontSize: size * 0.045, color: CHU_O }}>{o.nhan}</span>
               </div>
             )
           })}
           <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md ring-[3px] ring-[#FFE59A]" style={{ width: size * 0.22, height: size * 0.22 }}>
-            <span className="text-[28px]">🍀</span>
+            <span className="text-[31px]">🍀</span>
           </span>
         </div>
       </div>
@@ -109,22 +109,22 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
 
       {/* Trạng thái điều kiện — pill mềm (màu ngữ nghĩa: đủ = xanh, chưa = cam) */}
       <div className="px-3.5 py-2.5" style={{ ...THE_TRON, background: du ? 'rgba(34,160,107,0.16)' : 'rgba(224,144,30,0.16)', border: `1.5px solid ${du ? MAU.dung : MAU.canhBao}` }}>
-        {!d ? <p className="text-[12px] font-semibold" style={{ color: MAU.muted }}>Đang tải…</p>
+        {!d ? <p className="text-[13px] font-semibold" style={{ color: MAU.muted }}>Đang tải…</p>
           : d.che_do === 'nhiem_vu' ? (
             <div className="flex items-center gap-2">
-              <p className="min-w-0 flex-1 text-[12.5px] font-extrabold" style={{ color: du ? MAU.dung : MAU.canhBao }}>
+              <p className="min-w-0 flex-1 text-[14px] font-extrabold" style={{ color: du ? MAU.dung : MAU.canhBao }}>
                 {du ? `✓ Hôm nay em đã có ${d.du_dieu_kien.so_nv} lượt Luyện dạng yếu đạt${daQuay ? ' · đã quay hôm nay' : ' · quay ngay!'}`
                     : '🎯 Làm 1 lượt Luyện dạng yếu đạt (đúng từ 7/10 câu) để mở khoá quay.'}
               </p>
-              {onNhiemVu && <button onClick={onNhiemVu} className="shrink-0 rounded-full px-3 py-1 text-[12px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Nhiệm vụ →</button>}
+              {onNhiemVu && <button onClick={onNhiemVu} className="shrink-0 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Nhiệm vụ →</button>}
             </div>
           ) : du ? (
-            <p className="text-[12.5px] font-extrabold" style={{ color: MAU.dung }}>
+            <p className="text-[14px] font-extrabold" style={{ color: MAU.dung }}>
               ✓ Đủ điều kiện — {d.du_dieu_kien.so_dung}/{d.du_dieu_kien.so_cau} câu đúng ({d.du_dieu_kien.mon})
               {daQuay ? ' · đã quay hôm nay' : ' · quay ngay!'}
             </p>
           ) : (
-            <p className="text-[12.5px] font-extrabold" style={{ color: MAU.canhBao }}>
+            <p className="text-[14px] font-extrabold" style={{ color: MAU.canhBao }}>
               🎯 Chưa đủ — làm 1 lượt tự luyện 10 câu đúng ≥{d.du_dieu_kien.nguong_pct ?? 70}% để mở khoá quay.
             </p>
           )}
@@ -135,10 +135,10 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
         <div className="relative flex items-center justify-center pt-2">
           <Wheel goc={goc} size={280} O_LIST={O_LIST} />
         </div>
-        <NutHS tat={!conLuot || dangQuay} onClick={quay} className="mt-4 block w-full !h-12 !text-[16px]">
+        <NutHS tat={!conLuot || dangQuay} onClick={quay} className="mt-4 block w-full !h-12 !text-[17.5px]">
           {dangQuay ? 'Đang quay…' : daQuay ? 'Mai quay tiếp ♡' : conLuot ? 'Quay ngay ▶' : du ? 'Vòng quay tạm đóng' : 'Chưa đủ điều kiện'}
         </NutHS>
-        {err && <p className="mt-2 rounded-2xl px-3 py-1.5 text-center text-[11.5px] font-semibold" style={{ background: 'rgba(229,72,77,0.16)', color: MAU.sai }}>⚠ {err}</p>}
+        {err && <p className="mt-2 rounded-2xl px-3 py-1.5 text-center text-[12.5px] font-semibold" style={{ background: 'rgba(229,72,77,0.16)', color: MAU.sai }}>⚠ {err}</p>}
       </div>
 
       {/* Bảng tỉ lệ — pill nhỏ theo màu ô vòng quay (màu game) */}
@@ -150,9 +150,9 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
               const pct = d.ti_le[`ti_le_${o.exp}`] ?? 0
               return (
                 <div key={o.exp} className="rounded-[14px] p-2 text-center" style={{ background: o.mau }}>
-                  <span className="text-[20px]">{o.icon}</span>
-                  <p className="mt-0.5 text-[11.5px] font-extrabold leading-none" style={{ color: CHU_O }}>{o.exp} EXP</p>
-                  <p className="mt-1 text-[10.5px] font-bold leading-none" style={{ color: CHU_O, opacity: .7 }}>{pct}%</p>
+                  <span className="text-[22px]">{o.icon}</span>
+                  <p className="mt-0.5 text-[12.5px] font-extrabold leading-none" style={{ color: CHU_O }}>{o.exp} EXP</p>
+                  <p className="mt-1 text-[11.5px] font-bold leading-none" style={{ color: CHU_O, opacity: .7 }}>{pct}%</p>
                 </div>
               )
             })}
@@ -163,8 +163,8 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
       {/* Tổng tháng — dải màu nhấn của skin */}
       {d && (
         <div className="flex items-center justify-between px-4 py-3" style={{ ...THE, background: MAU.acc, color: MAU.accInk }}>
-          <p className="text-[12.5px] font-bold" style={{ opacity: .85 }}>Tháng này em đã trúng</p>
-          <p className="text-[24px] font-black" style={HEAD}>{d.exp_thang} EXP</p>
+          <p className="text-[14px] font-bold" style={{ opacity: .85 }}>Tháng này em đã trúng</p>
+          <p className="text-[26.5px] font-black" style={HEAD}>{d.exp_thang} EXP</p>
         </div>
       )}
 
@@ -173,14 +173,14 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
         <div className="p-3" style={THE}>
           <NhomHS>Lịch sử quay gần đây</NhomHS>
           {!d.lich_su.length ? (
-            <p className="py-2 text-center text-[11.5px] font-semibold" style={{ color: MAU.muted }}>🍀 Chưa có lượt quay nào — mở hàng nhé!</p>
+            <p className="py-2 text-center text-[12.5px] font-semibold" style={{ color: MAU.muted }}>🍀 Chưa có lượt quay nào — mở hàng nhé!</p>
           ) : (
             <div className="mt-1.5 flex flex-col gap-1.5">
               {d.lich_su.map((l) => (
                 <div key={l.created_at} className="flex items-center justify-between gap-2 rounded-[12px] px-2.5 py-1.5" style={{ background: MAU.surface2 }}>
-                  <span className="text-[11.5px] font-extrabold" style={{ color: MAU.ink }}>{l.ngay}</span>
-                  <span className="text-[11px] font-medium" style={{ color: MAU.muted }}>{luc(l.created_at)}</span>
-                  <span className="rounded-full px-2 py-0.5 text-[11px] font-extrabold" style={{ background: MAU.badge, color: MAU.badgeInk }}>+{l.exp} EXP</span>
+                  <span className="text-[12.5px] font-extrabold" style={{ color: MAU.ink }}>{l.ngay}</span>
+                  <span className="text-[12px] font-medium" style={{ color: MAU.muted }}>{luc(l.created_at)}</span>
+                  <span className="rounded-full px-2 py-0.5 text-[12px] font-extrabold" style={{ background: MAU.badge, color: MAU.badgeInk }}>+{l.exp} EXP</span>
                 </div>
               ))}
             </div>
@@ -192,12 +192,12 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
       {kq && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-6" onClick={() => setKq(null)}>
           <div className="w-full max-w-[430px] p-6 text-center" onClick={(e) => e.stopPropagation()} style={{ ...THE_TRON, background: MAU.bg }}>
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full text-[42px]" style={{ background: MAU.surface2 }}>
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full text-[46px]" style={{ background: MAU.surface2 }}>
               {kq.exp >= 200 ? '💎' : kq.exp >= 150 ? '🎉' : kq.exp >= 100 ? '🎁' : '⭐'}
             </div>
-            <p className="mt-3 text-[22px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chúc mừng!</p>
-            <p className="text-[18px] font-black" style={{ color: MAU.acc }}>+{kq.exp} EXP May Mắn</p>
-            <p className="mt-2 text-[12.5px]" style={{ color: MAU.muted }}>{d?.che_do === 'nhiem_vu' ? 'EXP này đã được đổi ra xu trong Ví (tối đa 10 xu mỗi tháng từ vòng quay). Mai luyện tiếp để quay nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
+            <p className="mt-3 text-[24px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chúc mừng!</p>
+            <p className="text-[20px] font-black" style={{ color: MAU.acc }}>+{kq.exp} EXP May Mắn</p>
+            <p className="mt-2 text-[14px]" style={{ color: MAU.muted }}>{d?.che_do === 'nhiem_vu' ? 'EXP này đã được đổi ra xu trong Ví (tối đa 10 xu mỗi tháng từ vòng quay). Mai luyện tiếp để quay nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
             <NutHS onClick={() => setKq(null)} className="mt-4 w-full">Tuyệt! ♡</NutHS>
           </div>
         </div>

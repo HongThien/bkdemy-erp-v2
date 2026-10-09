@@ -38,28 +38,28 @@ export default function GioiThieuYeu({ mon, nv, khungGame, onBatDau, onBack }: {
             </span>
           )}
           <div className="min-w-0 flex-1">
-            <p className="text-[20px] font-extrabold leading-tight" style={HEAD}>{y.hoi}</p>
-            <p className="mt-1.5 text-[14px] leading-snug" style={{ color: MAU.muted }}>{y.dongLuat(TU_LUYEN_SO_CAU_MOI_LUOT)}</p>
+            <p className="text-[22px] font-extrabold leading-tight" style={HEAD}>{y.hoi}</p>
+            <p className="mt-1.5 text-[15.5px] leading-snug" style={{ color: MAU.muted }}>{y.dongLuat(TU_LUYEN_SO_CAU_MOI_LUOT)}</p>
           </div>
         </div>
 
         {yeuNhat.length > 0 && (
           <div className="flex flex-col gap-1.5">
-            <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.muted }}>{y.dangYeu}</p>
+            <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.muted }}>{y.dangYeu}</p>
             {yeuNhat.map((d) => (
               <div key={d.ma_dang} className="flex items-center gap-3 px-3 py-2" style={{ background: 'var(--sk-surface2)', borderRadius: 'var(--sk-radius)' }}>
-                <span className="min-w-0 flex-1 truncate text-[14px] font-semibold">{d.ten_dang}</span>
-                <b className="text-[14px]" style={{ color: d.muc === 'yeu' ? MAU.sai : MAU.canhBao }}>{Math.round(d.pct ?? 0)}%</b>
+                <span className="min-w-0 flex-1 truncate text-[15.5px] font-semibold">{d.ten_dang}</span>
+                <b className="text-[15.5px]" style={{ color: d.muc === 'yeu' ? MAU.sai : MAU.canhBao }}>{Math.round(d.pct ?? 0)}%</b>
               </div>
             ))}
           </div>
         )}
 
-        <p className="text-[13px] leading-snug" style={{ color: MAU.muted }}>{y.dongDau}</p>
+        <p className="text-[14.5px] leading-snug" style={{ color: MAU.muted }}>{y.dongDau}</p>
 
         <div className="flex flex-col gap-2 sm:flex-row-reverse">
-          <NutHS onClick={onBatDau} className="w-full px-6 py-3.5 text-[16px] font-bold sm:flex-1">{y.nut}</NutHS>
-          <NutHS phu onClick={onBack} className="w-full px-6 py-3.5 text-[15px] sm:w-auto">Quay lại</NutHS>
+          <NutHS onClick={onBatDau} className="w-full px-6 py-3.5 text-[17.5px] font-bold sm:flex-1">{y.nut}</NutHS>
+          <NutHS phu onClick={onBack} className="w-full px-6 py-3.5 text-[16.5px] sm:w-auto">Quay lại</NutHS>
         </div>
       </TheHS>
     </ManHS>

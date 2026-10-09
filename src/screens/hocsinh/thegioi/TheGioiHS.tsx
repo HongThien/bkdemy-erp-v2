@@ -24,7 +24,7 @@ function Hinh({ src, emoji, size }: { src: string | null; emoji: string; size: n
     ? <img src={src} alt="" style={{ width: size, height: size, objectFit: 'contain' }} />
     : <span aria-hidden style={{ fontSize: Math.round(size * 0.78), lineHeight: 1 }}>{emoji}</span>
 }
-const NHAN_LOP: CSSProperties = { display: 'inline-block', marginLeft: 5, padding: '0 6px', borderRadius: 5, background: MAU.surface2, color: MAU.acc, fontSize: 11, fontWeight: 700, verticalAlign: 1 }
+const NHAN_LOP: CSSProperties = { display: 'inline-block', marginLeft: 5, padding: '0 6px', borderRadius: 5, background: MAU.surface2, color: MAU.acc, fontSize: 12, fontWeight: 700, verticalAlign: 1 }
 const ngan = (ten: string) => ten.trim().split(/\s+/).slice(-2).join(' ')
 
 // Tên LUÔN kèm lớp (Thùy 29/09). Chế độ Mã HS ⇒ chỉ mã, không tên, không lớp.
@@ -76,7 +76,7 @@ const TIEU_DE_GOP: Record<string, (so: number) => ReactNode> = {
 function DauTang({ tang }: { tang: TinTG['tang'] }) {
   const src = anhTG(tang === 'S' ? 'tang_s' : tang === 'A' ? 'tang_a' : 'tang_b')
   return src ? <img src={src} alt={`Tầng ${tang}`} style={{ width: 18, height: 18 }} />
-    : <span title={`Tầng ${tang}`} style={{ width: 18, height: 18, borderRadius: 4, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 800,
+    : <span title={`Tầng ${tang}`} style={{ width: 18, height: 18, borderRadius: 4, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800,
         background: tang === 'S' ? MAU.acc : MAU.surface2, color: tang === 'S' ? MAU.accInk : MAU.acc, border: `1px solid ${MAU.line}` }}>{tang}</span>
 }
 
@@ -109,12 +109,12 @@ function DongTuongTac({ k, onMoTha, onMoBl }: { k: KhenTG; onMoTha: () => void; 
   return (
     <div className="flex flex-col gap-1.5">
       {k.thay_co.length > 0 && (
-        <div className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-bold" style={{ background: MAU.surface2, border: `1px solid ${MAU.acc}`, color: MAU.acc }}>
+        <div className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[14.5px] font-bold" style={{ background: MAU.surface2, border: `1px solid ${MAU.acc}`, color: MAU.acc }}>
           <Hinh src={anhTG('thay_co_khen')} emoji={ICON_TG.thay_co_khen} size={20} /> Thầy cô khen · {k.thay_co.join(', ')}
         </div>
       )}
       {(k.tong > 0 || k.so_bl > 0) && (
-        <div className="flex items-center gap-2 text-[12.5px]" style={{ color: MAU.muted }}>
+        <div className="flex items-center gap-2 text-[14px]" style={{ color: MAU.muted }}>
           {k.tong > 0 && <button onClick={onMoTha} className="flex min-w-0 flex-1 items-center gap-1.5 text-left"><IconChong k={k} /><span className="truncate"><TenNguoiTha k={k} /></span></button>}
           {k.tong === 0 && <span className="flex-1" />}
           {k.so_bl > 0 && <button onClick={onMoBl} className="flex-none">{k.so_bl} bình luận</button>}
@@ -137,7 +137,7 @@ export function DaiCamXuc({ icons, chon, onChon, onThem, canh = 'trai' }: {
           style={{ animation: `tgPop .22s ${i * 0.03}s ease-out both`, background: chon === d.ma ? MAU.surface2 : 'transparent' }}>
           <Hinh src={anhTuongTac(d.ma)} emoji={d.noi_dung} size={30} />
         </button>))}
-      <button onClick={onThem} aria-label="Thêm cảm xúc" className="flex h-9 w-9 items-center justify-center rounded-full text-[18px] font-bold"
+      <button onClick={onThem} aria-label="Thêm cảm xúc" className="flex h-9 w-9 items-center justify-center rounded-full text-[20px] font-bold"
         style={{ animation: `tgPop .22s ${SO_TREN_DAI * 0.03}s ease-out both`, background: MAU.surface2, color: MAU.muted }}>＋</button>
     </div>
   )
@@ -156,7 +156,7 @@ function NutThich({ t, p, nho, canh }: { t: TinTG; p: TuongTacProps; nho?: boole
   return (
     <div className={nho ? "relative flex-none" : "relative"}>
       <button onClick={() => p.onThanh(p.thanhKhoa === t.khoa ? null : t.khoa)} aria-expanded={p.thanhKhoa === t.khoa}
-        className={`flex items-center justify-center gap-1.5 rounded-lg font-bold select-none active:scale-95 ${nho ? 'h-8 px-2 text-[12.5px] whitespace-nowrap' : 'h-9 w-full text-[13.5px]'}`}
+        className={`flex items-center justify-center gap-1.5 rounded-lg font-bold select-none active:scale-95 ${nho ? 'h-8 px-2 text-[14px] whitespace-nowrap' : 'h-9 w-full text-[15px]'}`}
         style={{ color: k ? MAU.acc : MAU.muted, WebkitTouchCallout: 'none', touchAction: 'manipulation' }} aria-pressed={!!k}>
         {k ? <Hinh src={anhTuongTac(k.icon_ma)} emoji={k.icon} size={nho ? 16 : 19} /> : <Hinh src={anhTuongTac('thich')} emoji="👍" size={nho ? 15 : 18} />}
         {k ? k.nhan : 'Thích'}
@@ -168,7 +168,7 @@ function NutThich({ t, p, nho, canh }: { t: TinTG; p: TuongTacProps; nho?: boole
 }
 function NutBinhLuan({ t, p, nho }: { t: TinTG; p: TuongTacProps; nho?: boolean }) {
   return (
-    <button onClick={() => p.onMoBl(t, 'bl')} className={`flex items-center justify-center gap-1.5 rounded-lg font-bold active:scale-95 ${nho ? 'h-8 flex-none px-2 text-[12.5px] whitespace-nowrap' : 'h-9 w-full text-[13.5px]'}`}
+    <button onClick={() => p.onMoBl(t, 'bl')} className={`flex items-center justify-center gap-1.5 rounded-lg font-bold active:scale-95 ${nho ? 'h-8 flex-none px-2 text-[14px] whitespace-nowrap' : 'h-9 w-full text-[15px]'}`}
       style={{ color: MAU.muted }}>
       <span aria-hidden style={{ fontSize: nho ? 14 : 16 }}>💬</span>{nho ? (t.khen.so_bl > 0 ? t.khen.so_bl : '') : 'Bình luận'}
     </button>
@@ -192,14 +192,14 @@ function BongBL({ b, nho, duoi }: { b: BinhLuanTG; nho?: boolean; duoi?: ReactNo
       <div className="min-w-0 flex-1">
         {b.loai === 'cau'
           ? <div className="inline-block max-w-full rounded-[18px] px-3 py-1.5" style={{ background: MAU.surface2 }}>
-              <p className="text-[12.5px] font-bold leading-tight">{b.la_em ? 'Em' : <TenLop n={b.nguoi} rutGon />}</p>
-              <p className="text-[13.5px] leading-snug">{b.noi_dung}</p>
+              <p className="text-[14px] font-bold leading-tight">{b.la_em ? 'Em' : <TenLop n={b.nguoi} rutGon />}</p>
+              <p className="text-[15px] leading-snug">{b.noi_dung}</p>
             </div>
           : <div>
-              <p className="px-1 text-[12.5px] font-bold leading-tight">{b.la_em ? 'Em' : <TenLop n={b.nguoi} rutGon />}</p>
+              <p className="px-1 text-[14px] font-bold leading-tight">{b.la_em ? 'Em' : <TenLop n={b.nguoi} rutGon />}</p>
               <span className="mt-0.5 inline-block"><Hinh src={anhSticker(b.ma)} emoji={b.noi_dung} size={nho ? 52 : 72} /></span>
             </div>}
-        {duoi && <div className="mt-0.5 flex gap-3 px-3 text-[11.5px] font-semibold" style={{ color: MAU.muted }}>{duoi}</div>}
+        {duoi && <div className="mt-0.5 flex gap-3 px-3 text-[12.5px] font-semibold" style={{ color: MAU.muted }}>{duoi}</div>}
       </div>
     </div>
   )
@@ -210,7 +210,7 @@ function BlXemTruoc({ t, p }: { t: TinTG; p: TuongTacProps }) {
   if (!b) return null
   return (
     <button onClick={() => p.onMoBl(t, 'bl')} className="flex flex-col gap-1.5 text-left">
-      {t.khen.so_bl > 1 && <span className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Đọc {t.khen.so_bl} bình luận</span>}
+      {t.khen.so_bl > 1 && <span className="text-[14px] font-semibold" style={{ color: MAU.muted }}>Đọc {t.khen.so_bl} bình luận</span>}
       <BongBL b={b} nho duoi={<span>{luc(b.at)}</span>} />
     </button>
   )
@@ -222,15 +222,15 @@ function TheTin({ t, p, onAnTin, menuMo, onMenu, anNhanBan }: {
   anNhanBan?: boolean // tab Bạn bè: tin nào cũng của bạn ⇒ không cần nhãn
 }) {
   const ten = t.nguoi ? <TenLop n={t.nguoi} /> : <span>Đội {String(t.chi_tiet.doi ?? '')}{t.lop && <span style={NHAN_LOP}>{t.lop}</span>}</span>
-  const nhanBan = t.la_ban && !t.cua_toi && !anNhanBan ? <span className="ml-1.5 rounded-full px-1.5 text-[10.5px] font-bold" style={{ border: `1px solid ${MAU.line}`, color: MAU.muted }}>bạn</span> : null
+  const nhanBan = t.la_ban && !t.cua_toi && !anNhanBan ? <span className="ml-1.5 rounded-full px-1.5 text-[11.5px] font-bold" style={{ border: `1px solid ${MAU.line}`, color: MAU.muted }}>bạn</span> : null
   const menu = t.cua_toi && onAnTin && onMenu && (
     <div className="relative">
-      <button onClick={() => onMenu(menuMo ? null : t.khoa)} aria-label="Tuỳ chọn tin của em" className="px-1.5 text-[20px] leading-none" style={{ color: MAU.muted }}>⋯</button>
+      <button onClick={() => onMenu(menuMo ? null : t.khoa)} aria-label="Tuỳ chọn tin của em" className="px-1.5 text-[22px] leading-none" style={{ color: MAU.muted }}>⋯</button>
       {menuMo && (
         <div className="absolute right-0 top-7 z-10 min-w-[170px] overflow-hidden rounded-xl shadow-xl" style={{ background: MAU.bg, border: `1px solid ${MAU.line}` }}>
           {t.khoe?.la_em && p.onGoKhoe
-            ? <button className="block w-full px-4 py-2.5 text-left text-[13px] font-semibold" onClick={() => { onMenu(null); p.onGoKhoe!(t) }}>Gỡ bài khoe</button>
-            : <button className="block w-full px-4 py-2.5 text-left text-[13px] font-semibold" onClick={() => { onMenu(null); onAnTin(t, !t.da_an) }}>{t.da_an ? 'Hiện lại tin này' : 'Ẩn tin này'}</button>}
+            ? <button className="block w-full px-4 py-2.5 text-left text-[14.5px] font-semibold" onClick={() => { onMenu(null); p.onGoKhoe!(t) }}>Gỡ bài khoe</button>
+            : <button className="block w-full px-4 py-2.5 text-left text-[14.5px] font-semibold" onClick={() => { onMenu(null); onAnTin(t, !t.da_an) }}>{t.da_an ? 'Hiện lại tin này' : 'Ẩn tin này'}</button>}
         </div>
       )}
     </div>
@@ -238,10 +238,10 @@ function TheTin({ t, p, onAnTin, menuMo, onMenu, anNhanBan }: {
 
   if (t.tang === 'B' && !t.khoe) {
     return (
-      <div className="flex items-center gap-2.5 px-3 py-2 text-[13px]" style={{ ...THE, opacity: t.da_an ? 0.55 : 1 }}>
+      <div className="flex items-center gap-2.5 px-3 py-2 text-[14.5px]" style={{ ...THE, opacity: t.da_an ? 0.55 : 1 }}>
         <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg" style={{ background: MAU.surface2 }}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={22} /></span>
         <span className="min-w-0 flex-1"><b>{t.nguoi ? <TenLop n={t.nguoi} rutGon /> : null}</b>{nhanBan} {moTaTin(t)}
-          <span className="flex items-center gap-1.5 text-[11.5px]" style={{ color: MAU.muted }}>{luc(t.at)}
+          <span className="flex items-center gap-1.5 text-[12.5px]" style={{ color: MAU.muted }}>{luc(t.at)}
             {t.khen.tong > 0 && <button onClick={() => p.onMoBl(t, 'tha')} className="inline-flex items-center gap-1">· <IconChong k={t.khen} size={13} /> {t.khen.tong}</button>}
             {t.da_an ? ' · em đã ẩn' : ''}</span></span>
         {menu}
@@ -256,23 +256,23 @@ function TheTin({ t, p, onAnTin, menuMo, onMenu, anNhanBan }: {
     <article className="relative flex flex-col gap-2.5 p-3 pb-1.5" style={{ ...THE, ...(laS ? { border: `2px solid ${MAU.acc}`, paddingTop: 28 } : {}), opacity: t.da_an ? 0.55 : 1 }}>
       {laS && (anhTG('ruy_bang_s')
         ? <img src={anhTG('ruy_bang_s') as string} alt="" className="pointer-events-none absolute left-1/2 top-0 h-6 -translate-x-1/2" />
-        : <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-lg px-4 py-0.5 text-[11.5px] font-bold tracking-[0.06em]" style={{ ...HEAD, background: MAU.acc, color: MAU.accInk }}>CỰC PHẨM</span>)}
+        : <span className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-lg px-4 py-0.5 text-[12.5px] font-bold tracking-[0.06em]" style={{ ...HEAD, background: MAU.acc, color: MAU.accInk }}>CỰC PHẨM</span>)}
       {laS && anhPhaoGiay() && <img src={anhPhaoGiay() as string} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80" />}
       <div className="flex items-center gap-2.5">
         <Avatar n={t.nguoi} />
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="truncate text-[14px] font-bold">{ten}{nhanBan}</p>
-          <p className="text-[11.5px]" style={{ color: MAU.muted }}>{t.khoe ? <>🌏 đã khoe lên Thế giới · {luc(t.khoe.dang_at)}</> : <>{luc(t.at)}{t.ghim ? ' · ghim 24h' : ''}</>}{t.da_an ? ' · em đã ẩn' : ''}</p>
+          <p className="truncate text-[15.5px] font-bold">{ten}{nhanBan}</p>
+          <p className="text-[12.5px]" style={{ color: MAU.muted }}>{t.khoe ? <>🌏 đã khoe lên Thế giới · {luc(t.khoe.dang_at)}</> : <>{luc(t.at)}{t.ghim ? ' · ghim 24h' : ''}</>}{t.da_an ? ' · em đã ẩn' : ''}</p>
         </div>
         {!t.khoe && <DauTang tang={t.tang} />}
         {menu}
       </div>
-      {t.khoe?.cau && <p className="text-[16px] font-semibold leading-snug">{t.khoe.cau}</p>}
+      {t.khoe?.cau && <p className="text-[17.5px] font-semibold leading-snug">{t.khoe.cau}</p>}
       {to
-        ? <div className={`flex flex-col items-center gap-1 text-center ${t.khoe ? 'rounded-xl px-3 py-4' : 'py-1'}`} style={t.khoe ? { background: MAU.surface2, border: `1px solid ${MAU.line}` } : undefined}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={64} /><p className="text-[15px] leading-snug">{moTaTin(t)}</p></div>
-        : <div className="flex items-center gap-2.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg" style={{ background: MAU.surface2 }}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={26} /></span><p className="text-[14.5px] leading-snug">{moTaTin(t)}</p></div>}
+        ? <div className={`flex flex-col items-center gap-1 text-center ${t.khoe ? 'rounded-xl px-3 py-4' : 'py-1'}`} style={t.khoe ? { background: MAU.surface2, border: `1px solid ${MAU.line}` } : undefined}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={64} /><p className="text-[16.5px] leading-snug">{moTaTin(t)}</p></div>
+        : <div className="flex items-center gap-2.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg" style={{ background: MAU.surface2 }}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={26} /></span><p className="text-[16px] leading-snug">{moTaTin(t)}</p></div>}
       {t.doi?.thanh_vien && t.doi.thanh_vien.length > 0 && (
-        <p className="text-[12px]" style={{ color: MAU.muted }}>{t.doi.thanh_vien.map((m, i) => <span key={i}>{i > 0 && ' · '}<TenLop n={m} rutGon /></span>)}{t.doi.so > t.doi.thanh_vien.length ? ` · +${t.doi.so - t.doi.thanh_vien.length}` : ''}</p>
+        <p className="text-[13px]" style={{ color: MAU.muted }}>{t.doi.thanh_vien.map((m, i) => <span key={i}>{i > 0 && ' · '}<TenLop n={m} rutGon /></span>)}{t.doi.so > t.doi.thanh_vien.length ? ` · +${t.doi.so - t.doi.thanh_vien.length}` : ''}</p>
       )}
       <DongTuongTac k={t.khen} onMoTha={() => p.onMoBl(t, 'tha')} onMoBl={() => p.onMoBl(t, 'bl')} />
       <ThanhHanhDong t={t} p={p} />
@@ -286,25 +286,25 @@ function TheGop({ g, mo, onMo, p }: { g: GopTG; mo: boolean; onMo: () => void; p
     <article className="flex flex-col gap-2 p-3" style={THE}>
       <div className="flex items-center gap-2.5">
         <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg" style={{ background: MAU.surface2 }}><Hinh src={anhTin(g.kieu)} emoji={ICON_TIN[g.kieu] ?? '✨'} size={26} /></span>
-        <p className="min-w-0 flex-1 text-[14.5px] leading-snug">{(TIEU_DE_GOP[g.kieu] ?? ((so: number) => <>{so} tin</>))(g.so)}</p>
+        <p className="min-w-0 flex-1 text-[16px] leading-snug">{(TIEU_DE_GOP[g.kieu] ?? ((so: number) => <>{so} tin</>))(g.so)}</p>
         <DauTang tang="A" />
       </div>
       {mo
         ? <div className="flex flex-col">{g.ds.map((t) => (
             <div key={t.khoa} className="flex items-center gap-2 py-2" style={{ borderTop: `1px solid ${MAU.line}` }}>
               <Avatar n={t.nguoi} size={32} />
-              <span className="min-w-0 flex-1 text-[13px] leading-tight"><b>{t.nguoi ? <TenLop n={t.nguoi} /> : <>Đội {String(t.chi_tiet.doi ?? '')}{t.lop && <span style={NHAN_LOP}>{t.lop}</span>}</>}</b>
-                {t.la_ban && !t.cua_toi && <span className="ml-1.5 text-[10.5px]" style={{ color: MAU.muted }}>bạn</span>}
-                <span className="block text-[11.5px]" style={{ color: MAU.muted }}>{moTaTin(t)}
+              <span className="min-w-0 flex-1 text-[14.5px] leading-tight"><b>{t.nguoi ? <TenLop n={t.nguoi} /> : <>Đội {String(t.chi_tiet.doi ?? '')}{t.lop && <span style={NHAN_LOP}>{t.lop}</span>}</>}</b>
+                {t.la_ban && !t.cua_toi && <span className="ml-1.5 text-[11.5px]" style={{ color: MAU.muted }}>bạn</span>}
+                <span className="block text-[12.5px]" style={{ color: MAU.muted }}>{moTaTin(t)}
                   {t.khen.tong > 0 && <button onClick={() => p.onMoBl(t, 'tha')} className="ml-1 inline-flex items-center gap-1 align-middle">· <IconChong k={t.khen} size={12} /> {t.khen.tong}</button>}</span></span>
               {!t.cua_toi && <NutThich t={t} p={p} nho canh="phai" />}
               <NutBinhLuan t={t} p={p} nho />
             </div>))}
-            {g.so > g.ds.length && <p className="text-[12px]" style={{ color: MAU.muted }}>+{g.so - g.ds.length} bạn khác</p>}
+            {g.so > g.ds.length && <p className="text-[13px]" style={{ color: MAU.muted }}>+{g.so - g.ds.length} bạn khác</p>}
           </div>
-        : <p className="text-[12.5px]" style={{ color: MAU.muted }}>{g.ds.slice(0, 3).map((t, i) => <span key={t.khoa}>{i > 0 && ' · '}{t.nguoi ? <TenLop n={t.nguoi} rutGon /> : <>Đội {String(t.chi_tiet.doi ?? '')}{t.lop && <span style={NHAN_LOP}>{t.lop}</span>}</>}</span>)}{g.so > 3 ? ` · +${g.so - 3}` : ''}</p>}
+        : <p className="text-[14px]" style={{ color: MAU.muted }}>{g.ds.slice(0, 3).map((t, i) => <span key={t.khoa}>{i > 0 && ' · '}{t.nguoi ? <TenLop n={t.nguoi} rutGon /> : <>Đội {String(t.chi_tiet.doi ?? '')}{t.lop && <span style={NHAN_LOP}>{t.lop}</span>}</>}</span>)}{g.so > 3 ? ` · +${g.so - 3}` : ''}</p>}
       <div className="flex justify-end">
-        <button onClick={onMo} className="h-9 rounded-lg px-3.5 text-[13px] font-extrabold" style={{ color: MAU.acc, border: `1.5px solid ${MAU.acc}` }}>{mo ? 'Thu gọn' : (g.so_bl ?? 0) > 0 ? `Đọc bình luận (${g.so_bl})` : 'Xem tất cả'}</button>
+        <button onClick={onMo} className="h-9 rounded-lg px-3.5 text-[14.5px] font-extrabold" style={{ color: MAU.acc, border: `1.5px solid ${MAU.acc}` }}>{mo ? 'Thu gọn' : (g.so_bl ?? 0) > 0 ? `Đọc bình luận (${g.so_bl})` : 'Xem tất cả'}</button>
       </div>
     </article>
   )
@@ -338,16 +338,16 @@ export function TheGioiView(p: TheGioiViewProps) {
       <style>{KEYFRAMES}</style>
       {p.thanhKhoa && <div className="fixed inset-0 z-20" onClick={() => p.onThanh(null)} onContextMenu={(e) => e.preventDefault()} />}
       <DauTrangHS tieuDe="Thế giới BK" onBack={p.onBack} phai={
-        <div className="flex flex-none overflow-hidden rounded-full text-[11px] font-bold" style={{ border: `1px solid ${MAU.line}` }} role="group" aria-label="Em hiện bằng">
+        <div className="flex flex-none overflow-hidden rounded-full text-[12px] font-bold" style={{ border: `1px solid ${MAU.line}` }} role="group" aria-label="Em hiện bằng">
           {(['ten', 'ma'] as const).map((h) => <button key={h} onClick={() => p.onHien(h)} aria-pressed={p.hien === h} className="px-2.5 py-1.5"
             style={p.hien === h ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>{h === 'ten' ? 'Tên' : 'Mã HS'}</button>)}
         </div>} />
       <div className="grid grid-cols-3 gap-1 rounded-full p-1" style={THE_TRON} role="tablist">
         {TABS.map((t) => (
-          <button key={t.id} role="tab" aria-selected={p.tab === t.id} onClick={() => p.onTab(t.id)} className="flex items-center justify-center gap-1.5 rounded-full py-2 text-[13px] font-bold"
+          <button key={t.id} role="tab" aria-selected={p.tab === t.id} onClick={() => p.onTab(t.id)} className="flex items-center justify-center gap-1.5 rounded-full py-2 text-[14.5px] font-bold"
             style={p.tab === t.id ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>
             <Hinh src={anhTG(t.icon)} emoji={ICON_TG[t.icon]} size={16} />{t.ten}
-            {t.id === 'ban' && (k?.toi.loi_moi ?? 0) > 0 && <span className="rounded-full px-1.5 text-[10.5px]" style={{ background: MAU.badge, color: MAU.badgeInk }}>{k?.toi.loi_moi}</span>}
+            {t.id === 'ban' && (k?.toi.loi_moi ?? 0) > 0 && <span className="rounded-full px-1.5 text-[11.5px]" style={{ background: MAU.badge, color: MAU.badgeInk }}>{k?.toi.loi_moi}</span>}
           </button>
         ))}
       </div>
@@ -365,9 +365,9 @@ export function TheGioiView(p: TheGioiViewProps) {
 
       {k && p.tab === 'ban' && <>
         <div className="flex items-center gap-3 px-3 py-2.5" style={THE}>
-          <span className="min-w-0 flex-1 leading-tight"><b className="text-[15px]" style={HEAD}>Bạn bè của em</b>
-            <span className="block text-[12px]" style={{ color: MAU.muted }}>{p.banBe?.ban.length ?? k.toi.so_ban} bạn · bạn đồng ý mới thành bạn bè</span></span>
-          <button onClick={p.onMoKetBan} className="flex h-9 flex-none items-center gap-1 rounded-lg px-3 text-[13px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>
+          <span className="min-w-0 flex-1 leading-tight"><b className="text-[16.5px]" style={HEAD}>Bạn bè của em</b>
+            <span className="block text-[13px]" style={{ color: MAU.muted }}>{p.banBe?.ban.length ?? k.toi.so_ban} bạn · bạn đồng ý mới thành bạn bè</span></span>
+          <button onClick={p.onMoKetBan} className="flex h-9 flex-none items-center gap-1 rounded-lg px-3 text-[14.5px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>
             <Hinh src={anhTG('ket_ban')} emoji={ICON_TG.ket_ban} size={14} /> Kết bạn</button>
         </div>
         {p.banBe && p.banBe.loi_moi.length > 0 && <>
@@ -375,9 +375,9 @@ export function TheGioiView(p: TheGioiViewProps) {
           {p.banBe.loi_moi.map((m) => (
             <div key={m.id} className="flex items-center gap-2.5 px-3 py-2.5" style={THE}>
               <Avatar n={m.nguoi} size={36} />
-              <span className="min-w-0 flex-1 text-[13.5px] leading-tight"><b><TenLop n={m.nguoi} /></b><span className="block text-[11.5px]" style={{ color: MAU.muted }}>{m.ban_chung > 0 ? `${m.ban_chung} bạn chung` : 'Học sinh BK'}</span></span>
-              <button onClick={() => p.onDongY(m.id)} className="h-8 rounded-lg px-3 text-[12.5px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Đồng ý</button>
-              <button onClick={() => p.onDeSau(m.id)} className="h-8 rounded-lg px-2.5 text-[12.5px] font-bold" style={{ color: MAU.muted, border: `1px solid ${MAU.line}` }}>Để sau</button>
+              <span className="min-w-0 flex-1 text-[15px] leading-tight"><b><TenLop n={m.nguoi} /></b><span className="block text-[12.5px]" style={{ color: MAU.muted }}>{m.ban_chung > 0 ? `${m.ban_chung} bạn chung` : 'Học sinh BK'}</span></span>
+              <button onClick={() => p.onDongY(m.id)} className="h-8 rounded-lg px-3 text-[14px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Đồng ý</button>
+              <button onClick={() => p.onDeSau(m.id)} className="h-8 rounded-lg px-2.5 text-[14px] font-bold" style={{ color: MAU.muted, border: `1px solid ${MAU.line}` }}>Để sau</button>
             </div>))}
         </>}
         {tinS.length > 0 && <NhomHS>Bạn bè khoe</NhomHS>}
@@ -394,7 +394,7 @@ export function TheGioiView(p: TheGioiViewProps) {
         {tinB.map(theTin)}
         {k.tin.length === 0 && <TrongHS>7 ngày qua lớp em chưa có tin mới.</TrongHS>}
       </>}
-      {p.bao && <div className="fixed inset-x-4 bottom-6 z-[60] mx-auto max-w-[520px] rounded-xl px-4 py-3 text-center text-[13.5px] font-semibold shadow-2xl"
+      {p.bao && <div className="fixed inset-x-4 bottom-6 z-[60] mx-auto max-w-[520px] rounded-xl px-4 py-3 text-center text-[15px] font-semibold shadow-2xl"
         style={{ background: MAU.bg, color: MAU.ink, border: `1px solid ${MAU.line}` }} role="status">{p.bao}</div>}
       {p.children}
     </ManHS>
@@ -409,18 +409,18 @@ export function MucChoKhoe({ ck, onKhoe }: { ck: ChoKhoe | null; onKhoe: (t: Tha
   return (
     <section className="flex flex-col gap-2 p-3" style={{ ...THE, border: `1.5px solid ${MAU.acc}` }}>
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-[16px] font-bold" style={HEAD}>🎉 Thành tích chờ em khoe</p>
-        <span className="shrink-0 text-[12px] font-semibold" style={{ color: con > 0 ? MAU.acc : MAU.muted }}>{con > 0 ? `còn ${con}/${ck.gioi_han} lượt hôm nay` : 'hết lượt hôm nay'}</span>
+        <p className="text-[17.5px] font-bold" style={HEAD}>🎉 Thành tích chờ em khoe</p>
+        <span className="shrink-0 text-[13px] font-semibold" style={{ color: con > 0 ? MAU.acc : MAU.muted }}>{con > 0 ? `còn ${con}/${ck.gioi_han} lượt hôm nay` : 'hết lượt hôm nay'}</span>
       </div>
       {ck.tin.slice(0, 3).map((t) => (
         <div key={t.khoa} className="flex items-center gap-2.5 rounded-lg px-2.5 py-2" style={{ background: MAU.surface2 }}>
           <Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={28} />
-          <span className="min-w-0 flex-1 text-[13px] leading-snug">Em {moTaTin(t as TinTG)}</span>
-          <button onClick={() => onKhoe(t)} disabled={con === 0} className="h-8 flex-none rounded-lg px-3 text-[12.5px] font-extrabold active:scale-95 disabled:opacity-40"
+          <span className="min-w-0 flex-1 text-[14.5px] leading-snug">Em {moTaTin(t as TinTG)}</span>
+          <button onClick={() => onKhoe(t)} disabled={con === 0} className="h-8 flex-none rounded-lg px-3 text-[14px] font-extrabold active:scale-95 disabled:opacity-40"
             style={{ background: MAU.acc, color: MAU.accInk }}>Khoe</button>
         </div>
       ))}
-      {ck.tin.length > 3 && <p className="text-[11.5px]" style={{ color: MAU.muted }}>+{ck.tin.length - 3} thành tích nữa · khoe trong 3 ngày kể từ lúc đạt</p>}
+      {ck.tin.length > 3 && <p className="text-[12.5px]" style={{ color: MAU.muted }}>+{ck.tin.length - 3} thành tích nữa · khoe trong 3 ngày kể từ lúc đạt</p>}
     </section>
   )
 }
@@ -433,19 +433,19 @@ export function TamKhoe({ tt, danhMuc, cau, onCau, onDang, dangDang, loi, onDong
   const caus = danhMuc.filter((d) => d.loai === 'cau').sort((x, y) => Number(!x.nhom.includes('khoe')) - Number(!y.nhom.includes('khoe')) || x.thu_tu - y.thu_tu)
   return (
     <TamTruot tieuDe="Đăng bài khoe" phu="Bài khoe lên kênh Thế giới BK — cả trung tâm cùng thấy" onDong={onDong} chan={<>
-      {loi && <p className="text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
-      <button onClick={onDang} disabled={dangDang} className="h-12 rounded-xl text-[15.5px] font-extrabold active:scale-[0.99] disabled:opacity-60" style={{ background: MAU.acc, color: MAU.accInk }}>
+      {loi && <p className="text-[14.5px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+      <button onClick={onDang} disabled={dangDang} className="h-12 rounded-xl text-[17px] font-extrabold active:scale-[0.99] disabled:opacity-60" style={{ background: MAU.acc, color: MAU.accInk }}>
         {dangDang ? 'Đang đăng…' : '🚀 Đăng lên Thế giới BK'}</button>
     </>}>
       <div className="flex flex-col items-center gap-1.5 rounded-xl px-3 py-4 text-center" style={{ background: MAU.surface2, border: `1px solid ${MAU.line}` }}>
-        {cau && <p className="text-[16px] font-bold" style={HEAD}>{caus.find((d) => d.ma === cau)?.noi_dung}</p>}
+        {cau && <p className="text-[17.5px] font-bold" style={HEAD}>{caus.find((d) => d.ma === cau)?.noi_dung}</p>}
         <Hinh src={anhTin(tt.kieu)} emoji={ICON_TIN[tt.kieu] ?? '✨'} size={56} />
-        <p className="text-[15px] leading-snug">Em {moTaTin(tt as TinTG)}</p>
+        <p className="text-[16.5px] leading-snug">Em {moTaTin(tt as TinTG)}</p>
       </div>
       <NhomHS>Thêm 1 câu (không bắt buộc) · {caus.length} câu</NhomHS>
       <div className="flex flex-wrap gap-1.5">
         {caus.map((d) => (
-          <button key={d.ma} onClick={() => onCau(cau === d.ma ? null : d.ma)} aria-pressed={cau === d.ma} className="rounded-full px-3 py-1.5 text-[13.5px] font-semibold active:scale-95"
+          <button key={d.ma} onClick={() => onCau(cau === d.ma ? null : d.ma)} aria-pressed={cau === d.ma} className="rounded-full px-3 py-1.5 text-[15px] font-semibold active:scale-95"
             style={{ background: cau === d.ma ? MAU.acc : MAU.surface2, color: cau === d.ma ? MAU.accInk : MAU.ink, border: `1px solid ${cau === d.ma ? MAU.acc : MAU.line}` }}>{d.noi_dung}</button>
         ))}
       </div>
@@ -460,10 +460,10 @@ export function LenSong({ tt, onXem }: { tt: ThanhTichKhoe; onXem: () => void })
       <style>{'@keyframes tgLen{0%{transform:scale(.3) rotate(-12deg);opacity:0}60%{transform:scale(1.15) rotate(4deg);opacity:1}100%{transform:none}}'}</style>
       {anhPhaoGiay() && <img src={anhPhaoGiay() as string} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80" />}
       <span style={{ animation: 'tgLen .7s ease-out both' }}><Hinh src={anhTG('tab_the_gioi')} emoji="🌏" size={120} /></span>
-      <p className="text-[30px] font-bold leading-tight" style={{ ...HEAD, color: MAU.acc, animation: 'tgLen .7s .15s ease-out both' }}>LÊN SÓNG<br />THẾ GIỚI BK!</p>
-      <p className="max-w-[320px] text-[15px] leading-snug">Cả trung tâm đang thấy: em {moTaTin(tt as TinTG)}</p>
-      <p className="text-[13px]" style={{ color: MAU.muted }}>Bạn bè thả tim, bình luận sẽ báo ngay ở ô Thế giới BK ngoài màn chính.</p>
-      <button onClick={onXem} className="mt-2 h-12 w-full max-w-[320px] rounded-xl text-[15.5px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Xem bài của em</button>
+      <p className="text-[33px] font-bold leading-tight" style={{ ...HEAD, color: MAU.acc, animation: 'tgLen .7s .15s ease-out both' }}>LÊN SÓNG<br />THẾ GIỚI BK!</p>
+      <p className="max-w-[320px] text-[16.5px] leading-snug">Cả trung tâm đang thấy: em {moTaTin(tt as TinTG)}</p>
+      <p className="text-[14.5px]" style={{ color: MAU.muted }}>Bạn bè thả tim, bình luận sẽ báo ngay ở ô Thế giới BK ngoài màn chính.</p>
+      <button onClick={onXem} className="mt-2 h-12 w-full max-w-[320px] rounded-xl text-[17px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Xem bài của em</button>
     </div>
   )
 }
@@ -477,9 +477,9 @@ function TamTruot({ tieuDe, phu, onDong, onLui, children, chan }: { tieuDe: stri
         style={{ background: MAU.bg, color: MAU.ink, fontFamily: 'var(--sk-font)', borderTop: `1px solid ${MAU.line}` }} role="dialog" aria-label={tieuDe}>
         <div className="mx-auto mt-2 h-1 w-10 rounded-full" style={{ background: MAU.line }} />
         <div className="flex items-start justify-between gap-3 px-4 pb-2 pt-2">
-          {onLui && <button onClick={onLui} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[18px]" style={{ background: MAU.surface2 }} aria-label="Quay lại">‹</button>}
-          <div className="min-w-0 flex-1"><p className="text-[15px] font-bold" style={HEAD}>{tieuDe}</p>{phu && <div className="text-[13px]" style={{ color: MAU.muted }}>{phu}</div>}</div>
-          <button onClick={onDong} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[16px]" style={{ background: MAU.surface2 }} aria-label="Đóng">✕</button>
+          {onLui && <button onClick={onLui} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[20px]" style={{ background: MAU.surface2 }} aria-label="Quay lại">‹</button>}
+          <div className="min-w-0 flex-1"><p className="text-[16.5px] font-bold" style={HEAD}>{tieuDe}</p>{phu && <div className="text-[14.5px]" style={{ color: MAU.muted }}>{phu}</div>}</div>
+          <button onClick={onDong} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[17.5px]" style={{ background: MAU.surface2 }} aria-label="Đóng">✕</button>
         </div>
         <div className="flex flex-col gap-3 overflow-y-auto px-4 pb-3">{children}</div>
         {chan && <div className="flex flex-col gap-2 px-4 pb-[calc(12px+env(safe-area-inset-bottom))] pt-2" style={{ borderTop: `1px solid ${MAU.line}` }}>{chan}</div>}
@@ -514,35 +514,35 @@ export function TamBinhLuan({ tin, ct, xem, onXem, loc, onLoc, banPhim, onBanPhi
     return (
       <TamTruot tieuDe="Người đã bày tỏ cảm xúc" onDong={onDong} onLui={() => onXem('bl')}>
         <div className="-mx-4 flex gap-1 overflow-x-auto px-4" style={{ borderBottom: `1px solid ${MAU.line}` }}>
-          <button onClick={() => onLoc(null)} className="flex-none px-2.5 py-2 text-[13.5px] font-bold" style={chip(!loc)}>Tất cả {k.tong}</button>
-          {k.dem.map((d) => <button key={d.ma} onClick={() => onLoc(d.ma)} className="flex flex-none items-center gap-1 px-2.5 py-2 text-[13.5px] font-bold" style={chip(loc === d.ma)}>
+          <button onClick={() => onLoc(null)} className="flex-none px-2.5 py-2 text-[15px] font-bold" style={chip(!loc)}>Tất cả {k.tong}</button>
+          {k.dem.map((d) => <button key={d.ma} onClick={() => onLoc(d.ma)} className="flex flex-none items-center gap-1 px-2.5 py-2 text-[15px] font-bold" style={chip(loc === d.ma)}>
             <Hinh src={anhTuongTac(d.ma)} emoji={d.icon} size={17} /> {d.so}</button>)}
         </div>
-        {!ct && <p className="text-[13px]" style={{ color: MAU.muted }}>Đang tải…</p>}
+        {!ct && <p className="text-[14.5px]" style={{ color: MAU.muted }}>Đang tải…</p>}
         {ds.map((x, i) => (
           <div key={i} className="flex items-center gap-3">
             <span className="relative"><Avatar n={x.nguoi} size={40} />
               <span className="absolute -bottom-1 -right-1 flex h-[22px] w-[22px] items-center justify-center rounded-full" style={{ background: MAU.bg }}><Hinh src={anhTuongTac(x.icon_ma)} emoji={x.icon} size={16} /></span></span>
-            <span className="min-w-0 flex-1 text-[14px] font-bold leading-tight">{x.la_em ? 'Em' : <TenLop n={x.nguoi} />}
-              {x.la_ban && !x.la_em && <span className="block text-[11.5px] font-normal" style={{ color: MAU.muted }}>Bạn bè</span>}</span>
+            <span className="min-w-0 flex-1 text-[15.5px] font-bold leading-tight">{x.la_em ? 'Em' : <TenLop n={x.nguoi} />}
+              {x.la_ban && !x.la_em && <span className="block text-[12.5px] font-normal" style={{ color: MAU.muted }}>Bạn bè</span>}</span>
           </div>))}
       </TamTruot>
     )
   }
   const caus = cauHop(danhMuc, tin.nhom, chuTin)
   const stickers = danhMuc.filter((d) => d.loai === 'sticker')
-  const tabPhim = (b: BanPhim, nhan: string) => <button onClick={() => onBanPhim(b)} className="flex-1 rounded-full py-1.5 text-[13px] font-bold"
+  const tabPhim = (b: BanPhim, nhan: string) => <button onClick={() => onBanPhim(b)} className="flex-1 rounded-full py-1.5 text-[14.5px] font-bold"
     style={banPhim === b ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>{nhan}</button>
   return (
     <TamTruot tieuDe="Bình luận" onDong={onDong}
       phu={k.tong > 0 ? <button onClick={() => onXem('tha')} className="flex items-center gap-1.5 pt-0.5"><IconChong k={k} /> <TenNguoiTha k={k} /> ›</button> : <>{tin.nguoi ? <TenLop n={tin.nguoi} rutGon /> : null} {moTaTin(tin)}</>}
       chan={<>
-        {loi && <p className="text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+        {loi && <p className="text-[14.5px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
         <div className="flex items-center gap-2">
-          <button onClick={() => onBanPhim(banPhim === 'cau' ? 'dong' : 'cau')} className="h-10 min-w-0 flex-1 truncate rounded-full px-4 text-left text-[14px]"
+          <button onClick={() => onBanPhim(banPhim === 'cau' ? 'dong' : 'cau')} className="h-10 min-w-0 flex-1 truncate rounded-full px-4 text-left text-[15.5px]"
             style={{ background: MAU.surface2, color: MAU.muted, border: `1px solid ${banPhim !== 'dong' ? MAU.acc : 'transparent'}` }}>
             {dangGui ? 'Đang gửi…' : chuTin ? 'Trả lời mọi người…' : 'Viết bình luận…'}</button>
-          <button onClick={() => onBanPhim(banPhim === 'sticker' ? 'dong' : 'sticker')} aria-label="Sticker" className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-[21px]"
+          <button onClick={() => onBanPhim(banPhim === 'sticker' ? 'dong' : 'sticker')} aria-label="Sticker" className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-[23px]"
             style={{ background: banPhim === 'sticker' ? MAU.surface2 : 'transparent' }}>🙂</button>
         </div>
         {banPhim !== 'dong' && <>
@@ -550,15 +550,15 @@ export function TamBinhLuan({ tin, ct, xem, onXem, loc, onLoc, banPhim, onBanPhi
           <div className="max-h-[34dvh] overflow-y-auto">
             {banPhim === 'cau'
               ? <div className="flex flex-wrap gap-1.5">{caus.map((d) => <button key={d.ma} disabled={dangGui} onClick={() => onGui(d.ma)}
-                  className="rounded-full px-3 py-1.5 text-left text-[13.5px] font-semibold active:scale-95 disabled:opacity-50" style={{ background: MAU.surface2, border: `1px solid ${MAU.line}` }}>{d.noi_dung}</button>)}</div>
+                  className="rounded-full px-3 py-1.5 text-left text-[15px] font-semibold active:scale-95 disabled:opacity-50" style={{ background: MAU.surface2, border: `1px solid ${MAU.line}` }}>{d.noi_dung}</button>)}</div>
               : <div className="grid grid-cols-4 gap-1.5">{stickers.map((d) => <button key={d.ma} disabled={dangGui} onClick={() => onGui(d.ma)} aria-label={d.ma}
                   className="flex aspect-square items-center justify-center rounded-xl active:scale-90 disabled:opacity-50"><Hinh src={anhSticker(d.ma)} emoji={d.noi_dung} size={52} /></button>)}</div>}
           </div>
-          <p className="text-center text-[11.5px]" style={{ color: MAU.muted }}>Chạm là gửi luôn</p>
+          <p className="text-center text-[12.5px]" style={{ color: MAU.muted }}>Chạm là gửi luôn</p>
         </>}
       </>}>
-      {!ct && <p className="text-[13px]" style={{ color: MAU.muted }}>Đang tải bình luận…</p>}
-      {ct && ct.bl.length === 0 && <p className="py-6 text-center text-[13.5px]" style={{ color: MAU.muted }}>Chưa có bình luận nào. Hãy là người đầu tiên!</p>}
+      {!ct && <p className="text-[14.5px]" style={{ color: MAU.muted }}>Đang tải bình luận…</p>}
+      {ct && ct.bl.length === 0 && <p className="py-6 text-center text-[15px]" style={{ color: MAU.muted }}>Chưa có bình luận nào. Hãy là người đầu tiên!</p>}
       {ct?.bl.map((b) => (
         <BongBL key={b.id} b={b} duoi={<>
           <span>{luc(b.at)}</span>
@@ -579,7 +579,7 @@ export function TamCamXuc({ tin, danhMuc, onChon, onDong }: { tin: TinTG; danhMu
         {danhMuc.filter((d) => d.loai === 'icon').map((d) => (
           <button key={d.ma} onClick={() => onChon(chon === d.ma ? null : d.ma)} aria-pressed={chon === d.ma} className="flex flex-col items-center gap-1 rounded-xl py-2 active:scale-95"
             style={{ border: `1.5px solid ${chon === d.ma ? MAU.acc : 'transparent'}`, background: chon === d.ma ? MAU.surface2 : 'transparent' }}>
-            <Hinh src={anhTuongTac(d.ma)} emoji={d.noi_dung} size={34} /><span className="text-[11.5px] font-semibold" style={{ color: MAU.muted }}>{d.nhan}</span>
+            <Hinh src={anhTuongTac(d.ma)} emoji={d.noi_dung} size={34} /><span className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>{d.nhan}</span>
           </button>))}
       </div>
     </TamTruot>
@@ -590,17 +590,17 @@ export function TamKetBan({ tim, onTim, ds, onGui, onDong }: { tim: string; onTi
   return (
     <TamTruot tieuDe="Kết bạn" phu="Chỉ học sinh BK · bạn đồng ý mới thành bạn bè" onDong={onDong}>
       <input id="tg-tim-ban" value={tim} onChange={(e) => onTim(e.target.value)} placeholder="Tìm tên, mã HS hoặc lớp" autoComplete="off"
-        className="w-full rounded-xl px-3 py-2.5 text-[14px] outline-none" style={{ ...THE_TRON, background: MAU.surface }} />
+        className="w-full rounded-xl px-3 py-2.5 text-[15.5px] outline-none" style={{ ...THE_TRON, background: MAU.surface }} />
       <NhomHS>{tim.trim() ? 'Kết quả' : 'Gợi ý cho em'}</NhomHS>
-      {ds === null && <p className="text-[13px]" style={{ color: MAU.muted }}>Đang tìm…</p>}
-      {ds && ds.length === 0 && <p className="text-[13px]" style={{ color: MAU.muted }}>Không thấy bạn nào. Thử gõ tên, mã HS (vd HS0233) hoặc lớp (vd 9A1).</p>}
+      {ds === null && <p className="text-[14.5px]" style={{ color: MAU.muted }}>Đang tìm…</p>}
+      {ds && ds.length === 0 && <p className="text-[14.5px]" style={{ color: MAU.muted }}>Không thấy bạn nào. Thử gõ tên, mã HS (vd HS0233) hoặc lớp (vd 9A1).</p>}
       {ds?.map((g) => (
         <div key={g.id} className="flex items-center gap-2.5 px-3 py-2.5" style={THE}>
           <Avatar n={g.nguoi} size={36} />
-          <span className="min-w-0 flex-1 text-[13.5px] leading-tight"><b><TenLop n={g.nguoi} /></b><span className="block text-[11.5px]" style={{ color: MAU.muted }}>{g.ly_do ?? 'Học sinh BK'}</span></span>
+          <span className="min-w-0 flex-1 text-[15px] leading-tight"><b><TenLop n={g.nguoi} /></b><span className="block text-[12.5px]" style={{ color: MAU.muted }}>{g.ly_do ?? 'Học sinh BK'}</span></span>
           {g.trang_thai === 'da_gui'
-            ? <span className="h-8 rounded-lg px-3 text-[12.5px] font-bold leading-8" style={{ color: MAU.acc, border: `1px solid ${MAU.acc}` }}>Đã gửi</span>
-            : <button onClick={() => onGui(g.id)} className="h-8 rounded-lg px-3 text-[12.5px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>{g.trang_thai === 'cho_em' ? 'Đồng ý' : 'Kết bạn'}</button>}
+            ? <span className="h-8 rounded-lg px-3 text-[14px] font-bold leading-8" style={{ color: MAU.acc, border: `1px solid ${MAU.acc}` }}>Đã gửi</span>
+            : <button onClick={() => onGui(g.id)} className="h-8 rounded-lg px-3 text-[14px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>{g.trang_thai === 'cho_em' ? 'Đồng ý' : 'Kết bạn'}</button>}
         </div>))}
     </TamTruot>
   )

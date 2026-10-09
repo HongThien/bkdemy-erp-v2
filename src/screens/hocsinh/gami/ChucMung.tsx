@@ -52,7 +52,7 @@ function Vo({ children, onDong }: { children: React.ReactNode; onDong: () => voi
       <style>{KEYFRAMES}</style>
       <div className="relative flex w-full max-w-[380px] flex-col items-center text-center" style={{ color: MAU_GAMI.chu }} onClick={(e) => e.stopPropagation()}>
         {children}
-        <button onClick={onDong} className="relative mt-6 h-[52px] w-[78%] rounded-2xl text-[22px] font-bold active:scale-[0.98]"
+        <button onClick={onDong} className="relative mt-6 h-[52px] w-[78%] rounded-2xl text-[24px] font-bold active:scale-[0.98]"
           style={{ ...CHU_HEAD, background: MAU_GAMI.nutVang, color: MAU_GAMI.nutVangChu, border: `1.5px solid ${MAU_GAMI.vanhSang}`, boxShadow: `0 0 18px ${VANG}88, inset 0 1px 0 rgba(255,255,255,.6)` }}>Tuyệt!</button>
       </div>
     </div>
@@ -73,17 +73,17 @@ function HinhSang({ fx, nen, size, hieuUng, children }: { fx: string | null; nen
 export function ChucMungSao({ s, onDong }: { s: SaoMoi; onDong: () => void }) {
   return (
     <Vo onDong={onDong}>
-      <p className="relative z-[2] mb-5 text-[38px] font-bold leading-tight" style={{ ...CHU_HEAD, color: MAU_GAMI.vanhSang, textShadow: '0 2px 0 rgba(0,0,0,.55), 0 0 14px rgba(0,0,0,.85)' }}>Huy hiệu mới</p>
+      <p className="relative z-[2] mb-5 text-[42px] font-bold leading-tight" style={{ ...CHU_HEAD, color: MAU_GAMI.vanhSang, textShadow: '0 2px 0 rgba(0,0,0,.55), 0 0 14px rgba(0,0,0,.85)' }}>Huy hiệu mới</p>
       <HinhSang fx={anhFxSaoMoi()} nen={mauHH(s.key).dam} size={230} hieuUng="gamiBung .6s cubic-bezier(.2,.9,.3,1.3) both">
         <HinhHuyHieu hhKey={s.key} sao={s.sao} size={230} title={s.ten} />
       </HinhSang>
-      <p className="relative z-[2] mt-3 text-[40px] font-bold leading-tight" style={{ ...CHU_HEAD, textShadow: '0 2px 12px rgba(0,0,0,.6)' }}>{s.ten} <span style={{ color: MAU_GAMI.vanhSang }}>★{s.sao}</span></p>
+      <p className="relative z-[2] mt-3 text-[44px] font-bold leading-tight" style={{ ...CHU_HEAD, textShadow: '0 2px 12px rgba(0,0,0,.6)' }}>{s.ten} <span style={{ color: MAU_GAMI.vanhSang }}>★{s.sao}</span></p>
       {s.exp > 0 && (
-        <p className="relative mt-1 flex items-center gap-2.5 text-[26px] font-extrabold" style={{ color: MAU_GAMI.exp }}>
+        <p className="relative mt-1 flex items-center gap-2.5 text-[28.5px] font-extrabold" style={{ color: MAU_GAMI.exp }}>
           <span aria-hidden className="h-px w-10" style={{ background: MAU_GAMI.exp }} />+{s.exp} EXP<span aria-hidden className="h-px w-10" style={{ background: MAU_GAMI.exp }} />
         </p>
       )}
-      {s.ban_cung && <p className="relative mt-2 text-[14px] opacity-90">🎖 Thầy cô sẽ trao em bản cứng tận tay</p>}
+      {s.ban_cung && <p className="relative mt-2 text-[15.5px] opacity-90">🎖 Thầy cô sẽ trao em bản cứng tận tay</p>}
     </Vo>
   )
 }
@@ -94,8 +94,8 @@ export function ChucMungBac({ bac, ten, onDong }: { bac: number; ten: string; on
       <HinhSang fx={anhRankChung('len_bac')} nen={chuongCua(bac).dam} size={190} hieuUng="gamiBung .7s cubic-bezier(.2,.9,.3,1.3) both">
         <BieuTuongBac bac={bac} size={190} />
       </HinhSang>
-      <p className="relative mt-5 text-[13px] font-bold uppercase tracking-[0.14em] opacity-80">{laThan(bac) ? 'Thành thần' : `Chương ${chuongCua(bac).ten}`}</p>
-      <p className="relative z-[2] mt-1 text-[36px] font-bold leading-tight" style={{ ...CHU_HEAD, textShadow: '0 2px 12px rgba(0,0,0,.6)' }}>Lên {ten}!</p>
+      <p className="relative mt-5 text-[14.5px] font-bold uppercase tracking-[0.14em] opacity-80">{laThan(bac) ? 'Thành thần' : `Chương ${chuongCua(bac).ten}`}</p>
+      <p className="relative z-[2] mt-1 text-[39.5px] font-bold leading-tight" style={{ ...CHU_HEAD, textShadow: '0 2px 12px rgba(0,0,0,.6)' }}>Lên {ten}!</p>
     </Vo>
   )
 }

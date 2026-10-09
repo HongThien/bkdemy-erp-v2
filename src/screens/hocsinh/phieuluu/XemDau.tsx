@@ -45,25 +45,25 @@ function Cau({ api, tong, onXong }: { api: ApiDau; tong: number; onXong: () => v
     <div className="mx-auto flex max-w-3xl flex-col gap-3 p-3 md:p-4" style={{ fontFamily: FONT_TRAN }}>
       <TheTran className="p-5">
         <DaiTran trai={`Câu ${i + 1}/${tong} · chọn đúng để tung phép`} />
-        <p className="text-[19px] font-semibold" style={{ color: MAU.ink }}>Cặp số (x; y) nào là nghiệm của hệ phương trình sau?</p>
-        <div className="my-2 flex items-center gap-3 text-[26px] font-semibold" style={{ color: MAU.ink }}><span className="text-[70px] font-light leading-[0.8]" style={{ color: MAU.acc }}>{'{'}</span><div className="flex flex-col gap-1"><span>{c.l1}  (1)</span><span>{c.l2}  (2)</span></div></div>
+        <p className="text-[21px] font-semibold" style={{ color: MAU.ink }}>Cặp số (x; y) nào là nghiệm của hệ phương trình sau?</p>
+        <div className="my-2 flex items-center gap-3 text-[28.5px] font-semibold" style={{ color: MAU.ink }}><span className="text-[77px] font-light leading-[0.8]" style={{ color: MAU.acc }}>{'{'}</span><div className="flex flex-col gap-1"><span>{c.l1}  (1)</span><span>{c.l2}  (2)</span></div></div>
         <div className="grid grid-cols-2 gap-3">
           {c.lc.map((t, k) => {
             const tt: TtTran = ra && k === c.dung ? 'dung' : ra && k === chon ? 'sai' : 'thuong'
-            return <button key={k} disabled={ra} onClick={() => bam(k)} className={`flex items-center gap-3 px-3 py-3 text-left text-[22px] ${CLS_PHIEN(tt)}`} style={PHIEN(tt)}><NgocChu t={tt} chu={'ABCD'[k]} />{t}</button>
+            return <button key={k} disabled={ra} onClick={() => bam(k)} className={`flex items-center gap-3 px-3 py-3 text-left text-[24px] ${CLS_PHIEN(tt)}`} style={PHIEN(tt)}><NgocChu t={tt} chu={'ABCD'[k]} />{t}</button>
           })}
         </div>
         {ra && (
           <div className="mt-4 p-3" style={HOP_LOI_GIAI(chon === c.dung)} ref={(el) => el?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-            <p className="text-[19px] font-semibold" style={{ color: chon === c.dung ? MAU.dung : MAU.sai }}>{chon === c.dung ? '✦ Trúng đòn! Em làm đúng rồi' : `💥 Trượt đòn — đáp án đúng là ${c.dapAn}`}</p>
-            <div className="mt-2 pt-2 text-[18px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
-              <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: MAU.acc }}>📜 Lời giải chi tiết</p>
+            <p className="text-[21px] font-semibold" style={{ color: chon === c.dung ? MAU.dung : MAU.sai }}>{chon === c.dung ? '✦ Trúng đòn! Em làm đúng rồi' : `💥 Trượt đòn — đáp án đúng là ${c.dapAn}`}</p>
+            <div className="mt-2 pt-2 text-[20px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
+              <p className="mb-1 text-[16.5px] font-semibold uppercase" style={{ color: MAU.acc }}>📜 Lời giải chi tiết</p>
               {c.giai.map((d, k) => <p key={k}>{d}</p>)}
             </div>
           </div>
         )}
       </TheTran>
-      {ra && <button disabled={api.ban} onClick={() => { if (i + 1 >= tong) onXong(); else { setI(i + 1); setChon(null) } }} className="tran-phien py-3 text-[19px]" style={NUT_TRAN}>{i + 1 >= tong ? 'Xong lượt' : 'Đòn kế tiếp ➜'}</button>}
+      {ra && <button disabled={api.ban} onClick={() => { if (i + 1 >= tong) onXong(); else { setI(i + 1); setChon(null) } }} className="tran-phien py-3 text-[21px]" style={NUT_TRAN}>{i + 1 >= tong ? 'Xong lượt' : 'Đòn kế tiếp ➜'}</button>}
     </div>
   )
 }

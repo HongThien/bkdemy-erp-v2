@@ -54,19 +54,19 @@ export function ChonNhanVatHS({ dangCo, onXong, onBack, luu }: {
               className="relative flex flex-col items-center gap-1 px-2 pb-3 pt-2 transition active:scale-[0.98]"
               style={{ ...THE_TRON, borderRadius: 'var(--sk-radius)', background: dang ? 'color-mix(in srgb, var(--sk-acc) 22%, var(--sk-surface))' : 'var(--sk-surface)', outline: dang ? '2.5px solid var(--sk-acc)' : 'none', boxShadow: dang ? '0 0 26px color-mix(in srgb, var(--sk-acc) 55%, transparent)' : undefined }}>
               <NhanVatThoi id={id} cao={cao} mung={dang} />
-              <span className="text-[17px] font-bold leading-tight md:text-[19px]" style={{ ...HEAD, ...CHU_NOI }}>{tenNv(id)}</span>
-              <span className="text-center text-[12px] leading-snug md:text-[13px]" style={{ color: MAU.muted }}>{moTaNv(id)}</span>
-              {dangCo === id && <span className="absolute right-2 top-2 rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Đang dùng</span>}
+              <span className="text-[18.5px] font-bold leading-tight md:text-[21px]" style={{ ...HEAD, ...CHU_NOI }}>{tenNv(id)}</span>
+              <span className="text-center text-[13px] leading-snug md:text-[14.5px]" style={{ color: MAU.muted }}>{moTaNv(id)}</span>
+              {dangCo === id && <span className="absolute right-2 top-2 rounded-full px-2 py-0.5 text-[12px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Đang dùng</span>}
             </button>
           )
         })}
       </div>
       <div className="flex flex-col items-center gap-2 px-4 pb-[calc(16px+env(safe-area-inset-bottom))]">
-        {loi && <p className="text-[13px]" style={{ color: MAU.sai }}>Chưa lưu được: {loi}</p>}
-        <NutHS onClick={xacNhan} tat={!chon || dangLuu} className="min-w-[240px] !h-12 !text-[17px]">
+        {loi && <p className="text-[14.5px]" style={{ color: MAU.sai }}>Chưa lưu được: {loi}</p>}
+        <NutHS onClick={xacNhan} tat={!chon || dangLuu} className="min-w-[240px] !h-12 !text-[18.5px]">
           {dangLuu ? 'Đang lưu…' : chon ? `Chọn ${tenNv(chon)}` : 'Chạm vào một nhân vật'}
         </NutHS>
-        <p className="text-[12px]" style={{ ...CHU_NOI, color: MAU.muted }}>Đổi lại được bất cứ lúc nào trong khu Học tập.</p>
+        <p className="text-[13px]" style={{ ...CHU_NOI, color: MAU.muted }}>Đổi lại được bất cứ lúc nào trong khu Học tập.</p>
       </div>
     </div>
   )

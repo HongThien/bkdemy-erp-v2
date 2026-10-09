@@ -29,7 +29,7 @@ export function NutChuoi({ c, onClick, style }: { c: Chuoi | null | undefined; o
   if (c === null) return null
   const sang = !!c?.hom_nay_da_tinh
   return (
-    <button onClick={onClick} className="relative flex h-10 shrink-0 items-center gap-1 px-3 text-[15px] font-extrabold active:scale-95" style={style}
+    <button onClick={onClick} className="relative flex h-10 shrink-0 items-center gap-1 px-3 text-[16.5px] font-extrabold active:scale-95" style={style}
       aria-label={c ? `Chuỗi làm bài ${c.so_ngay} ngày${sang ? '' : ', hôm nay chưa có lượt được tính'}` : 'Chuỗi làm bài'}>
       <style>{CSS}</style>
       <span className={sang ? 'chuoi-lua' : ''} style={{ filter: sang ? undefined : 'grayscale(1) opacity(.6)' }} aria-hidden>🔥</span>
@@ -51,11 +51,11 @@ function ONgay({ n, homNay }: { n: NgayChuoi; homNay: boolean }) {
   const k = kieu[n.trang_thai]
   return (
     <div className="flex flex-1 flex-col items-center gap-1" title={`${ddmm(n.ngay)}: ${k.chu}`}>
-      <span className="text-[11px] font-bold" style={{ color: homNay ? MAU.acc : MAU.muted }}>{homNay ? 'Nay' : thuCua(n.ngay)}</span>
-      <span className="flex h-9 w-9 items-center justify-center rounded-full text-[16px]"
+      <span className="text-[12px] font-bold" style={{ color: homNay ? MAU.acc : MAU.muted }}>{homNay ? 'Nay' : thuCua(n.ngay)}</span>
+      <span className="flex h-9 w-9 items-center justify-center rounded-full text-[17.5px]"
         style={{ background: n.trang_thai === 'hoc' ? k.nen : MAU.surface2, border: `2px solid ${n.trang_thai === 'cho_sua' ? MAU.canhBao : homNay ? MAU.acc : 'transparent'}`,
           color: n.trang_thai === 'dut' ? MAU.sai : MAU.ink }}>{k.icon}</span>
-      <span className="text-[10.5px]" style={{ color: MAU.muted }}>{ddmm(n.ngay)}</span>
+      <span className="text-[11.5px]" style={{ color: MAU.muted }}>{ddmm(n.ngay)}</span>
     </div>
   )
 }
@@ -75,16 +75,16 @@ export function BannerChuoi({ c, onLuyen }: { c: Chuoi | null | undefined; onLuy
       <style>{CSS}</style>
       <div className="flex flex-col gap-2.5 p-3.5 md:p-5" style={{ ...THE, clipPath: 'none', border: `2px solid ${MAU.acc}`, boxShadow: sang ? undefined : '0 0 18px var(--sk-acc)' }}>
         <button onClick={() => setMo(true)} className="flex w-full items-center gap-3 text-left active:scale-[0.99]" aria-label={`Chuỗi làm bài ${c.so_ngay} ngày. Xem chi tiết`}>
-          <span className={`text-[44px] leading-none md:text-[60px] ${sang ? 'chuoi-lua' : ''}`} style={{ filter: sang ? undefined : 'grayscale(1) opacity(.65)' }} aria-hidden>🔥</span>
+          <span className={`text-[48.5px] leading-none md:text-[66px] ${sang ? 'chuoi-lua' : ''}`} style={{ filter: sang ? undefined : 'grayscale(1) opacity(.65)' }} aria-hidden>🔥</span>
           <span className="min-w-0 flex-1 leading-tight">
-            <span className="block text-[12px] font-bold uppercase tracking-[0.06em] md:text-[13px]" style={{ color: MAU.muted }}>Chuỗi làm bài</span>
-            <span className="block text-[24px] font-bold md:text-[34px]" style={{ ...HEAD, color: sang ? MAU.acc : MAU.ink }}>{tieuDe}</span>
-            <span className="mt-0.5 block text-[13px] leading-snug md:text-[15px]" style={{ color: sang ? MAU.dung : MAU.muted }}>{dong}</span>
+            <span className="block text-[13px] font-bold uppercase tracking-[0.06em] md:text-[14.5px]" style={{ color: MAU.muted }}>Chuỗi làm bài</span>
+            <span className="block text-[26.5px] font-bold md:text-[37.5px]" style={{ ...HEAD, color: sang ? MAU.acc : MAU.ink }}>{tieuDe}</span>
+            <span className="mt-0.5 block text-[14.5px] leading-snug md:text-[16.5px]" style={{ color: sang ? MAU.dung : MAU.muted }}>{dong}</span>
           </span>
-          <span className="shrink-0 text-[22px]" style={{ color: MAU.muted }} aria-hidden>›</span>
+          <span className="shrink-0 text-[24px]" style={{ color: MAU.muted }} aria-hidden>›</span>
         </button>
         <div className="flex gap-1">{c.bay_ngay.map((n, i) => <ONgay key={n.ngay} n={n} homNay={i === ngayCuoi} />)}</div>
-        {c.ngay_cho_sua.length > 0 && <p className="text-[13px] font-bold md:text-[14.5px]" style={{ color: MAU.canhBao }}>Em lỡ {c.ngay_cho_sua.map(ddmm).join(', ')} — vẫn sửa được, bấm để xem cách bù.</p>}
+        {c.ngay_cho_sua.length > 0 && <p className="text-[14.5px] font-bold md:text-[16px]" style={{ color: MAU.canhBao }}>Em lỡ {c.ngay_cho_sua.map(ddmm).join(', ')} — vẫn sửa được, bấm để xem cách bù.</p>}
         {onLuyen && !sang && <NutHS onClick={onLuyen}>Luyện ngay để giữ chuỗi</NutHS>}
       </div>
       {mo && <TamChuoi c={c} onDong={() => setMo(false)} onLuyen={onLuyen && (() => { setMo(false); onLuyen() })} />}
@@ -103,15 +103,15 @@ export function TamChuoi({ c, onDong, onLuyen }: { c: Chuoi; onDong: () => void;
         style={{ background: MAU.bg, color: MAU.ink, fontFamily: 'var(--sk-font)', borderTop: `1px solid ${MAU.line}` }} role="dialog" aria-label="Chuỗi làm bài">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span className={`text-[40px] leading-none ${c.hom_nay_da_tinh ? 'chuoi-lua' : ''}`} style={{ filter: c.hom_nay_da_tinh ? undefined : 'grayscale(1) opacity(.6)' }} aria-hidden>🔥</span>
+            <span className={`text-[44px] leading-none ${c.hom_nay_da_tinh ? 'chuoi-lua' : ''}`} style={{ filter: c.hom_nay_da_tinh ? undefined : 'grayscale(1) opacity(.6)' }} aria-hidden>🔥</span>
             <div>
-              <p className="text-[22px] font-bold leading-tight" style={HEAD}>{c.so_ngay} ngày liên tiếp</p>
-              <p className="text-[13px]" style={{ color: MAU.muted }}>
+              <p className="text-[24px] font-bold leading-tight" style={HEAD}>{c.so_ngay} ngày liên tiếp</p>
+              <p className="text-[14.5px]" style={{ color: MAU.muted }}>
                 {c.hom_nay_da_tinh ? `Hôm nay đã giữ chuỗi (${c.luot_hom_nay} lượt được tính).` : 'Hôm nay em chưa có lượt nào được tính.'}
               </p>
             </div>
           </div>
-          <button onClick={onDong} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[16px]" style={{ background: MAU.surface2 }} aria-label="Đóng">✕</button>
+          <button onClick={onDong} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[17.5px]" style={{ background: MAU.surface2 }} aria-label="Đóng">✕</button>
         </div>
 
         <div className="flex gap-1 rounded-2xl p-3" style={{ background: MAU.surface }}>
@@ -119,7 +119,7 @@ export function TamChuoi({ c, onDong, onLuyen }: { c: Chuoi; onDong: () => void;
         </div>
 
         {c.ngay_cho_sua.length > 0 && (
-          <div className="rounded-2xl p-3 text-[13.5px] leading-snug" style={{ border: `1.5px solid ${MAU.canhBao}` }}>
+          <div className="rounded-2xl p-3 text-[15px] leading-snug" style={{ border: `1.5px solid ${MAU.canhBao}` }}>
             <p className="font-bold" style={{ color: MAU.canhBao }}>Em lỡ {c.ngay_cho_sua.map(ddmm).join(', ')} — vẫn sửa được!</p>
             <p className="mt-1" style={{ color: MAU.ink }}>
               Làm thêm {c.luot_can_bu} lượt được tính (ngoài lượt giữ chuỗi hôm nay){c.sua_duoc_den ? ` trước ${gioHan(c.sua_duoc_den)}` : ''} để nối lại chuỗi.
@@ -128,12 +128,12 @@ export function TamChuoi({ c, onDong, onLuyen }: { c: Chuoi; onDong: () => void;
         )}
 
         <div className="grid grid-cols-3 gap-2 text-center">
-          <div className="rounded-2xl p-2.5" style={{ background: MAU.surface }}><p className="text-[18px] font-bold" style={HEAD}>{c.ky_luc}</p><p className="text-[11.5px]" style={{ color: MAU.muted }}>Kỷ lục</p></div>
-          <div className="rounded-2xl p-2.5" style={{ background: MAU.surface }}><p className="text-[18px] font-bold" style={HEAD}>🧊 {c.the_dong_bang}</p><p className="text-[11.5px]" style={{ color: MAU.muted }}>Thẻ đóng băng tháng này</p></div>
-          <div className="rounded-2xl p-2.5" style={{ background: MAU.surface }}><p className="text-[18px] font-bold" style={HEAD}>{c.moc_tiep ?? '—'}</p><p className="text-[11.5px]" style={{ color: MAU.muted }}>{c.moc_tiep ? `Mốc kế (còn ${Math.max(0, c.moc_tiep - c.so_ngay)} ngày)` : 'Đã qua mọi mốc'}</p></div>
+          <div className="rounded-2xl p-2.5" style={{ background: MAU.surface }}><p className="text-[20px] font-bold" style={HEAD}>{c.ky_luc}</p><p className="text-[12.5px]" style={{ color: MAU.muted }}>Kỷ lục</p></div>
+          <div className="rounded-2xl p-2.5" style={{ background: MAU.surface }}><p className="text-[20px] font-bold" style={HEAD}>🧊 {c.the_dong_bang}</p><p className="text-[12.5px]" style={{ color: MAU.muted }}>Thẻ đóng băng tháng này</p></div>
+          <div className="rounded-2xl p-2.5" style={{ background: MAU.surface }}><p className="text-[20px] font-bold" style={HEAD}>{c.moc_tiep ?? '—'}</p><p className="text-[12.5px]" style={{ color: MAU.muted }}>{c.moc_tiep ? `Mốc kế (còn ${Math.max(0, c.moc_tiep - c.so_ngay)} ngày)` : 'Đã qua mọi mốc'}</p></div>
         </div>
 
-        <ul className="list-disc pl-5 text-[12.5px] leading-relaxed" style={{ color: MAU.muted }}>
+        <ul className="list-disc pl-5 text-[14px] leading-relaxed" style={{ color: MAU.muted }}>
           <li>Mỗi ngày có ít nhất 1 lượt luyện thêm được tính (Tự luyện, luyện theo chủ đề, Thử thách) là giữ chuỗi. ET và BTVN không tính.</li>
           <li>Lỡ 1 ngày: làm bù trong 48 giờ để sửa. Hết hạn thì tự dùng thẻ đóng băng (2 thẻ mỗi tháng).</li>
           <li>Ngày nghỉ của trung tâm và tuần thi không làm đứt chuỗi.</li>
@@ -162,9 +162,9 @@ export function MungMocChuoi({ c, hsId }: { c: Chuoi | null | undefined; hsId: s
       <div className="chuoi-mung relative flex flex-col items-center gap-2 text-center">
         <span className="chuoi-tia pointer-events-none absolute left-1/2 top-[70px] -z-10 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{ background: `repeating-conic-gradient(from 0deg, color-mix(in srgb, ${MAU.acc} 45%, transparent) 0 10deg, transparent 10deg 30deg)`, maskImage: 'radial-gradient(closest-side, black, transparent)' }} />
-        <span className="chuoi-lua text-[110px] leading-none" aria-hidden>🔥</span>
-        <p className="text-[38px] font-bold leading-none" style={{ ...HEAD, color: MAU.acc }}>{moc} ngày!</p>
-        <p className="max-w-xs text-[15px]" style={{ color: MAU.ink }}>Em đã giữ chuỗi làm bài {moc} ngày liên tiếp. Tiếp tục nhé!</p>
+        <span className="chuoi-lua text-[121px] leading-none" aria-hidden>🔥</span>
+        <p className="text-[42px] font-bold leading-none" style={{ ...HEAD, color: MAU.acc }}>{moc} ngày!</p>
+        <p className="max-w-xs text-[16.5px]" style={{ color: MAU.ink }}>Em đã giữ chuỗi làm bài {moc} ngày liên tiếp. Tiếp tục nhé!</p>
         <NutHS onClick={() => setMoc(null)} className="mt-2">Tuyệt!</NutHS>
       </div>
     </div>,

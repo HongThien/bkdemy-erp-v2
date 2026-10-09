@@ -50,8 +50,8 @@ function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
   return (
     <>
       <NutBack onBack={noop} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
-      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{phu}</p>
+      <h1 className="text-[24px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
+      <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{phu}</p>
     </>
   )
 }
@@ -213,7 +213,7 @@ function Man({ man, tt }: { man: string; tt: number }) {
 }
 
 function O({ nhan, children }: { nhan: string; children: ReactNode }) {
-  return <div className="flex flex-col items-center gap-1.5 text-center"><div className="flex min-h-[70px] items-center">{children}</div><span className="text-[11px]" style={{ color: MAU.muted }}>{nhan}</span></div>
+  return <div className="flex flex-col items-center gap-1.5 text-center"><div className="flex min-h-[70px] items-center">{children}</div><span className="text-[12px]" style={{ color: MAU.muted }}>{nhan}</span></div>
 }
 
 // Mọi hình trong 1 trang — soát kit sau khi chép PNG (thiếu file ⇒ ảnh vỡ ngay ở đây).
@@ -222,7 +222,7 @@ function BoHinh() {
     <ManHS>
       <DauTrangHS tieuDe="Bộ hình gamification" phu={`Kit: huy hiệu ${KIT.huy_hieu ? 'PNG' : 'hình tạm'} · biểu tượng bậc ${KIT.rank_bieu_tuong ? 'PNG' : 'hình tạm'} · khung avatar ${KIT.rank_khung ? 'PNG' : 'hình tạm'} · chung ${KIT.rank_chung ? 'PNG' : 'hình tạm'} · nhiệm vụ ${KIT.nhiem_vu ? 'PNG' : 'emoji'}`} />
       <div className="p-4" style={THE}>
-        <p className="mb-3 text-[13px] font-extrabold" style={HEAD}>Huy hiệu — khoá · ★1…★5 · bản nhỏ (≤ 64px)</p>
+        <p className="mb-3 text-[14.5px] font-extrabold" style={HEAD}>Huy hiệu — khoá · ★1…★5 · bản nhỏ (≤ 64px)</p>
         <div className="flex flex-col gap-4">
           {Object.keys(MAU_HH).map((k) => (
             <div key={k} className="flex flex-wrap items-end gap-x-3 gap-y-2">
@@ -234,7 +234,7 @@ function BoHinh() {
         </div>
       </div>
       <div className="p-4" style={THE}>
-        <p className="mb-3 text-[13px] font-extrabold" style={HEAD}>Rank — biểu tượng · 64 · khung avatar · khung 96 · sao</p>
+        <p className="mb-3 text-[14.5px] font-extrabold" style={HEAD}>Rank — biểu tượng · 64 · khung avatar · khung 96 · sao</p>
         <div className="flex flex-col gap-5">
           {BAC.map((b) => (
             <div key={b.bac} className="flex flex-wrap items-end gap-x-4 gap-y-2">
@@ -248,7 +248,7 @@ function BoHinh() {
         </div>
       </div>
       <div className="p-4" style={THE}>
-        <p className="mb-3 text-[13px] font-extrabold" style={HEAD}>Icon nhiệm vụ</p>
+        <p className="mb-3 text-[14.5px] font-extrabold" style={HEAD}>Icon nhiệm vụ</p>
         <div className="grid grid-cols-6 gap-2">
           {Object.keys(ICON_NV).map((m) => <O key={m} nhan={m}><IconNV ma={m} size={26} /></O>)}
         </div>
@@ -272,7 +272,7 @@ export default function XemMauGami() {
   return (
     <>
       {!an && (
-        <div className="sticky top-0 z-30 flex flex-col gap-1.5 px-3 py-2 text-[12px] font-bold" style={{ background: MAU.bg, borderBottom: `1px solid ${MAU.line}`, color: MAU.ink }}>
+        <div className="sticky top-0 z-30 flex flex-col gap-1.5 px-3 py-2 text-[13px] font-bold" style={{ background: MAU.bg, borderBottom: `1px solid ${MAU.line}`, color: MAU.ink }}>
           <div className="flex gap-1.5 overflow-x-auto">
             <span className="shrink-0 self-center pr-1" style={{ color: MAU.muted }}>XEM MẪU</span>
             {MAN.map((m) => <button key={m.id} onClick={() => doi(m.id, 1)} className="shrink-0 rounded-full px-3 py-1" style={chip(m.id === cur.id)}>{m.ten}</button>)}

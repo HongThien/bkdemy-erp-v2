@@ -13,11 +13,11 @@ export function NguLieuHS({ nl, mon, gon }: { nl: NguLieuSnap; mon: string | nul
   const cao = gon ? 'max-h-[30vh]' : 'max-h-[42vh]'
   return (
     <div className="mb-4 p-3" style={{ background: MAU.surface2, border: `1px solid ${MAU.line}`, borderRadius: 'calc(var(--sk-radius) * 0.6)' }}>
-      <p className="mb-1.5 text-[14px] font-semibold uppercase tracking-wide" style={{ color: MAU.muted }}>{TEN_LOAI[nl.loai] ?? 'Ngữ liệu'}</p>
-      {nl.tieu_de && <p className="mb-1.5 text-[18px] font-semibold" style={{ color: MAU.ink }}><ChuMon mon={mon}>{nl.tieu_de}</ChuMon></p>}
+      <p className="mb-1.5 text-[15.5px] font-semibold uppercase tracking-wide" style={{ color: MAU.muted }}>{TEN_LOAI[nl.loai] ?? 'Ngữ liệu'}</p>
+      {nl.tieu_de && <p className="mb-1.5 text-[20px] font-semibold" style={{ color: MAU.ink }}><ChuMon mon={mon}>{nl.tieu_de}</ChuMon></p>}
       {nl.anh && <img src={nl.anh} alt={TEN_LOAI[nl.loai] ?? 'ngữ liệu'} className="mb-2 max-h-56 w-auto rounded-lg" style={{ border: `1px solid ${MAU.line}` }} />}
       {nl.noi_dung && (
-        <div className={`${cao} overflow-y-auto pr-1 text-[17px] leading-relaxed`} style={{ color: MAU.ink }}>
+        <div className={`${cao} overflow-y-auto pr-1 text-[18.5px] leading-relaxed`} style={{ color: MAU.ink }}>
           <ChuMon mon={mon}>{nl.noi_dung}</ChuMon>
         </div>
       )}

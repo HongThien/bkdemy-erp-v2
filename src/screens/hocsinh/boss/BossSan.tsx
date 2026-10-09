@@ -127,9 +127,9 @@ export function HoiThoaiBoss({ ma, tinhHuong, so, onTuThe, onXong }: {
     <button onClick={tiep} className="flex w-full items-start gap-3 p-3 text-left active:scale-[0.995]" style={{ ...THE, animation: 'bs-hien .25s ease-out' }}>
       <img src={a.chandung} alt="" className="h-[72px] w-[72px] shrink-0 rounded-full object-cover" style={{ border: '2px solid var(--sk-acc)', background: 'var(--sk-surface2)' }} />
       <div className="min-w-0 flex-1">
-        <p className="text-[13px] font-bold" style={{ ...HEAD, color: MAU.acc }}>{nd.ten} <span className="font-normal" style={{ color: MAU.muted }}>· {nd.vai}</span></p>
-        <p className="mt-1 min-h-[44px] text-[15px] leading-snug" style={{ color: MAU.ink }}>{chay.hien}</p>
-        <p className="mt-1 text-right text-[12px]" style={{ color: MAU.muted, animation: chay.xong ? 'bs-nhay 1.2s ease-in-out infinite' : undefined }}>
+        <p className="text-[14.5px] font-bold" style={{ ...HEAD, color: MAU.acc }}>{nd.ten} <span className="font-normal" style={{ color: MAU.muted }}>· {nd.vai}</span></p>
+        <p className="mt-1 min-h-[44px] text-[16.5px] leading-snug" style={{ color: MAU.ink }}>{chay.hien}</p>
+        <p className="mt-1 text-right text-[13px]" style={{ color: MAU.muted, animation: chay.xong ? 'bs-nhay 1.2s ease-in-out infinite' : undefined }}>
           {chay.xong ? (i + 1 < cau.length ? 'Chạm để nghe tiếp ▾' : 'Chạm để tiếp tục ▾') : ''}
         </p>
       </div>

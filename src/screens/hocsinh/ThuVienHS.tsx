@@ -23,13 +23,13 @@ export default function ThuVienHS({ the, onBack }: { the: TheThuVien[]; onBack: 
             <span className="flex items-center gap-3">
               {t.anh
                 ? <img src={t.anh} alt="" className="h-14 w-14 shrink-0 object-contain" />
-                : <span className="flex h-14 w-14 shrink-0 items-center justify-center text-[30px]" aria-hidden>{t.icon}</span>}
-              <span className="min-w-0 flex-1 text-[18px] font-bold leading-tight" style={HEAD}>{t.ten}</span>
-              <span className="shrink-0 text-[22px] leading-none" style={{ color: MAU.muted }} aria-hidden>›</span>
+                : <span className="flex h-14 w-14 shrink-0 items-center justify-center text-[33px]" aria-hidden>{t.icon}</span>}
+              <span className="min-w-0 flex-1 text-[20px] font-bold leading-tight" style={HEAD}>{t.ten}</span>
+              <span className="shrink-0 text-[24px] leading-none" style={{ color: MAU.muted }} aria-hidden>›</span>
             </span>
-            <span className="text-[13px] leading-snug" style={{ color: MAU.muted }}>{t.moTa}</span>
+            <span className="text-[14.5px] leading-snug" style={{ color: MAU.muted }}>{t.moTa}</span>
             {t.trangThai !== null && (
-              <span className="mt-auto text-[13.5px] font-bold" style={{ color: MAU.ink }}>{t.trangThai === undefined ? '…' : t.trangThai}</span>
+              <span className="mt-auto text-[15px] font-bold" style={{ color: MAU.ink }}>{t.trangThai === undefined ? '…' : t.trangThai}</span>
             )}
           </TheHS>
         ))}

@@ -54,14 +54,14 @@ export default function DanhSachHS({ tieuDe, ill, tab, nChua, nXong, rows, dangT
       <div className="mt-1 grid grid-cols-2 p-1" style={{ ...THE_TRON, borderRadius: '999px' }}>
         {([['chua', 'Chưa làm', nChua], ['xong', 'Hoàn thành', nXong]] as const).map(([k, label, n]) => (
           <button key={k} onClick={() => onTab(k)}
-            className="rounded-full py-2.5 text-[14px] font-bold transition"
+            className="rounded-full py-2.5 text-[15.5px] font-bold transition"
             style={tab === k ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>
             {label} {n > 0 && <span className="font-medium" style={{ opacity: .85 }}>({n})</span>}
           </button>
         ))}
       </div>
 
-      {dangTai && <p className="py-10 text-center text-sm" style={{ color: MAU.muted }}>Đang tải…</p>}
+      {dangTai && <p className="py-10 text-center text-[15.5px]" style={{ color: MAU.muted }}>Đang tải…</p>}
       {!dangTai && rows.length === 0 && <div className="mt-1">{empty}</div>}
 
       {/* CARD bài — icon minh hoạ + tên/buổi + pill trạng thái + chevron + CTA */}
@@ -78,20 +78,20 @@ export default function DanhSachHS({ tieuDe, ill, tab, nChua, nXong, rows, dangT
                   <img src={`${A}/ill_${ill}.png`} alt="" className="h-[52px] w-[52px] object-contain" />
                 </span>
                 <span className="min-w-0 flex-1 pr-12 pt-1">
-                  <span className="block truncate text-[17px] font-extrabold leading-tight" style={{ ...HEAD, color: MAU.ink }}>
-                    {r.laThi && <span className="mr-1.5 rounded-md px-1.5 py-0.5 align-middle text-[10.5px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>THI</span>}
-                    {r.nopMuon && <span className="mr-1.5 rounded-md px-1.5 py-0.5 align-middle text-[10.5px] font-bold" style={{ background: NEN.canhBao, color: MAU.canhBao }}>⏰ Muộn</span>}
+                  <span className="block truncate text-[18.5px] font-extrabold leading-tight" style={{ ...HEAD, color: MAU.ink }}>
+                    {r.laThi && <span className="mr-1.5 rounded-md px-1.5 py-0.5 align-middle text-[11.5px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>THI</span>}
+                    {r.nopMuon && <span className="mr-1.5 rounded-md px-1.5 py-0.5 align-middle text-[11.5px] font-bold" style={{ background: NEN.canhBao, color: MAU.canhBao }}>⏰ Muộn</span>}
                     {r.ten}
                   </span>
-                  <span className="mt-1 block text-[13px]" style={{ color: MAU.muted }}>{r.sub}</span>
+                  <span className="mt-1 block text-[14.5px]" style={{ color: MAU.muted }}>{r.sub}</span>
                   {r.han && r.trangThai !== 'xong' && (
-                    <span className="mt-1 block text-[12.5px] font-semibold" style={{ color: HAN_MAU[r.han.muc] }}>⏳ {r.han.text}</span>
+                    <span className="mt-1 block text-[14px] font-semibold" style={{ color: HAN_MAU[r.han.muc] }}>⏳ {r.han.text}</span>
                   )}
                 </span>
               </div>
-              <span className="absolute right-4 top-4 rounded-full px-2.5 py-1 text-[11.5px] font-bold" style={{ background: pill.bg, color: pill.c }}>{pill.nhan}</span>
+              <span className="absolute right-4 top-4 rounded-full px-2.5 py-1 text-[12.5px] font-bold" style={{ background: pill.bg, color: pill.c }}>{pill.nhan}</span>
               <span className="absolute right-4 top-[52px]"><Chevron color={MAU.muted} /></span>
-              <span className="mt-3 block text-[17px] font-extrabold" style={{ ...HEAD, color: r.khoa ? MAU.muted : MAU.acc }}>{cta}{!r.khoa && ' →'}</span>
+              <span className="mt-3 block text-[18.5px] font-extrabold" style={{ ...HEAD, color: r.khoa ? MAU.muted : MAU.acc }}>{cta}{!r.khoa && ' →'}</span>
             </button>
           )
         })}

@@ -37,7 +37,7 @@ function Kung({ title, sub, onBack, children }: { t?: Theme; title: string; sub?
   return (
     <ManHS>
       <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} theoMon />
-      {sub && <p className="-mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
+      {sub && <p className="-mt-1 text-[14px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
       <div>{children}</div>
     </ManHS>
   )
@@ -73,12 +73,12 @@ export default function ThongTinHocTap({ hocSinhId, gioiTinh, onXong }: { hocSin
           <button key={b.key} onClick={() => setSub(b.key)}
             className="group relative flex items-center gap-3.5 p-4 text-left transition active:scale-[0.98]"
             style={THE}>
-            <span className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[18px] text-[30px]" style={{ background: MAU.surface2 }}>
+            <span className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[18px] text-[33px]" style={{ background: MAU.surface2 }}>
               {b.icon}
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block text-[16px] font-extrabold leading-tight" style={{ ...HEAD, color: NAVY }}>{b.ten}</span>
-              <span className="mt-1 block text-[12.5px] leading-snug" style={{ color: MAU.muted }}>{b.mo_ta}</span>
+              <span className="block text-[17.5px] font-extrabold leading-tight" style={{ ...HEAD, color: NAVY }}>{b.ten}</span>
+              <span className="mt-1 block text-[14px] leading-snug" style={{ color: MAU.muted }}>{b.mo_ta}</span>
             </span>
             <ChevronTron />
           </button>
@@ -116,7 +116,7 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
   const tong = tongDaDo + (data?.chuaDanhGia ?? 0)
   return (
     <Kung t={t} title="Dạng yếu" sub="Tập trung luyện các dạng này để tiến bộ nhanh" onBack={onBack}>
-      {data === null && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+      {data === null && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {data && tong === 0 && (
         <EmptyBox t={t} icon="🌱" title="Chưa có dữ liệu học tập" mo_ta="Học vài buổi trên lớp hoặc làm Tự luyện rồi quay lại nhé." />
       )}
@@ -124,24 +124,24 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
         <>
           {/* Hero % thành thạo + 4 tab Đạt/Cần luyện/Yếu/Chưa đánh giá — bấm để lọc list bên dưới */}
           <div className="mt-2 p-4" style={THE}>
-            <p className="text-[13px] font-bold" style={{ color: NAVY }}>Tỉ lệ thành thạo kiến thức</p>
+            <p className="text-[14.5px] font-bold" style={{ color: NAVY }}>Tỉ lệ thành thạo kiến thức</p>
             <div className="mt-1 flex items-baseline gap-1">
-              <span className="text-[42px] font-extrabold leading-none tracking-tight" style={{ ...HEAD, color: MAU.acc }}>{tiLe}</span>
-              <span className="text-[18px] font-bold" style={{ color: MAU.muted }}>%</span>
+              <span className="text-[46px] font-extrabold leading-none tracking-tight" style={{ ...HEAD, color: MAU.acc }}>{tiLe}</span>
+              <span className="text-[20px] font-bold" style={{ color: MAU.muted }}>%</span>
             </div>
-            <p className="mt-0.5 text-[10.5px]" style={{ color: MAU.muted }}>Tính trên {tongDaDo} dạng có đo trong 2 kỳ gần nhất — chưa tính {soCua.chua_danh_gia} dạng chưa đánh giá được</p>
+            <p className="mt-0.5 text-[11.5px]" style={{ color: MAU.muted }}>Tính trên {tongDaDo} dạng có đo trong 2 kỳ gần nhất — chưa tính {soCua.chua_danh_gia} dạng chưa đánh giá được</p>
             <div className="mt-3 grid grid-cols-4 gap-1.5">
               {NHOM_DEF.map((x) => (
                 <button key={x.key} onClick={() => setTab(x.key)}
                   className="rounded-[14px] p-2 text-center transition"
                   style={{ background: x.nen, boxShadow: tab === x.key ? `0 0 0 2px ${x.mau}` : 'none' }}>
-                  <b className="block text-[17px] font-extrabold" style={{ color: x.mau }}>{soCua[x.key]}</b>
-                  <span className="text-[8px] font-black uppercase tracking-wide" style={{ color: MAU.muted }}>{x.ten}</span>
+                  <b className="block text-[18.5px] font-extrabold" style={{ color: x.mau }}>{soCua[x.key]}</b>
+                  <span className="text-[9px] font-black uppercase tracking-wide" style={{ color: MAU.muted }}>{x.ten}</span>
                 </button>
               ))}
             </div>
           </div>
-          <p className="ml-1 mb-2 mt-5 text-[10.5px] font-extrabold uppercase tracking-[0.2em]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>
+          <p className="ml-1 mb-2 mt-5 text-[11.5px] font-extrabold uppercase tracking-[0.2em]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>
             Dạng {NHOM_DEF.find((x) => x.key === tab)?.ten.toLowerCase()}
           </p>
           {dsTab.length === 0
@@ -157,13 +157,13 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
                     <div className="flex items-center gap-2.5">
                       <span className="h-[10px] w-[10px] shrink-0 rounded-full" style={{ background: def.mau }} />
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-[13.5px] font-extrabold" style={{ color: NAVY }}>{d.ten_dang}</p>
-                        {d.ten_chuyen_de && <p className="truncate text-[11px]" style={{ color: MAU.muted }}>{d.ten_chuyen_de}</p>}
+                        <p className="truncate text-[15px] font-extrabold" style={{ color: NAVY }}>{d.ten_dang}</p>
+                        {d.ten_chuyen_de && <p className="truncate text-[12px]" style={{ color: MAU.muted }}>{d.ten_chuyen_de}</p>}
                       </div>
-                      <span className="shrink-0 rounded-full px-2 py-1 text-[10px] font-black" style={{ background: def.nen, color: def.mau }}>{def.ten}</span>
+                      <span className="shrink-0 rounded-full px-2 py-1 text-[11px] font-black" style={{ background: def.nen, color: def.mau }}>{def.ten}</span>
                     </div>
                     <div className="mt-2.5 flex gap-1 pt-2.5" style={{ borderTop: `1px solid ${MAU.line}` }}>
-                      {d.recent.length === 0 && <span className="text-[10.5px]" style={{ color: MAU.muted }}>Chưa có lần đo nào</span>}
+                      {d.recent.length === 0 && <span className="text-[11.5px]" style={{ color: MAU.muted }}>Chưa có lần đo nào</span>}
                       {d.recent.map((e, i) => <LanDo key={i} e={e} t={t} />)}
                     </div>
                   </div>
@@ -186,17 +186,17 @@ function LichSuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
   }, [])
   return (
     <Kung t={t} title="Lịch sử làm bài" sub="30 ngày gần nhất — thời gian in-app đo từ câu đầu tiên đến câu cuối trong ngày" onBack={onBack}>
-      {rows === null && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+      {rows === null && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {rows && rows.length === 0 && (
         <EmptyBox t={t} icon="📓" title="Chưa có lịch sử làm bài" mo_ta="Vào Tự luyện làm 10 câu đầu tiên để thấy lịch sử ở đây." />
       )}
       {rows && rows.length > 0 && (
         <div className="mt-2 overflow-hidden" style={THE}>
-          <div className="grid grid-cols-[minmax(80px,1.2fr)_.8fr_1fr_1.1fr] px-3 py-2 text-[10px] font-black uppercase tracking-wide" style={{ color: MAU.muted, background: MAU.surface2, borderBottom: `1px solid ${MAU.line}` }}>
+          <div className="grid grid-cols-[minmax(80px,1.2fr)_.8fr_1fr_1.1fr] px-3 py-2 text-[11px] font-black uppercase tracking-wide" style={{ color: MAU.muted, background: MAU.surface2, borderBottom: `1px solid ${MAU.line}` }}>
             <span>Ngày</span><span className="text-center">Câu</span><span className="text-center">Đ / S</span><span className="text-right">In-app</span>
           </div>
           {rows.map((r, i) => (
-            <div key={r.ngay} className="grid grid-cols-[minmax(80px,1.2fr)_.8fr_1fr_1.1fr] items-center px-3 py-2 text-[13px]" style={{ color: NAVY, borderTop: i > 0 ? `1px solid ${MAU.line}` : 'none' }}>
+            <div key={r.ngay} className="grid grid-cols-[minmax(80px,1.2fr)_.8fr_1fr_1.1fr] items-center px-3 py-2 text-[14.5px]" style={{ color: NAVY, borderTop: i > 0 ? `1px solid ${MAU.line}` : 'none' }}>
               <span className="font-semibold">{fmtNgayVN(r.ngay)}</span>
               <span className="text-center font-semibold">{r.so_cau}</span>
               <span className="text-center">
@@ -238,13 +238,13 @@ function XepHangScreen({ t, hocSinhId, onBack }: { t: Theme; hocSinhId: string; 
       <div className="mt-2 grid grid-cols-3 gap-1 p-1" style={{ ...THE_TRON, borderRadius: '999px' }}>
         {(['ti_le', 'mt', 'tu_luyen'] as const).map((k) => (
           <button key={k} onClick={() => setKind(k)}
-            className="rounded-full py-2 text-[12px] font-bold transition"
+            className="rounded-full py-2 text-[13px] font-bold transition"
             style={kind === k ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>
             {k === 'ti_le' ? 'Tỉ lệ đạt' : k === 'mt' ? 'Điểm MT' : 'Tự luyện'}
           </button>
         ))}
       </div>
-      {dangTai && <p className="mt-6 text-center text-[13px]" style={{ color: MAU.muted }}>Đang tải…</p>}
+      {dangTai && <p className="mt-6 text-center text-[14.5px]" style={{ color: MAU.muted }}>Đang tải…</p>}
       {!dangTai && (
         <div className="mt-3">
           {kind === 'ti_le' && <BXHList t={t} rows={tiLe!.map((r) => ({
@@ -275,10 +275,10 @@ function EmptyBox({ icon, title, mo_ta }: { t?: Theme; icon: string; title: stri
   return (
     <div className="mt-4 p-7 text-center" style={THE}>
       <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-[20px]" style={{ background: MAU.surface2 }}>
-        <span className="text-[34px]">{icon}</span>
+        <span className="text-[37.5px]">{icon}</span>
       </div>
-      <p className="text-[15px] font-extrabold" style={{ ...HEAD, color: NAVY }}>{title}</p>
-      <p className="mx-auto mt-1.5 max-w-[280px] text-[12.5px] leading-relaxed" style={{ color: MAU.muted }}>{mo_ta}</p>
+      <p className="text-[16.5px] font-extrabold" style={{ ...HEAD, color: NAVY }}>{title}</p>
+      <p className="mx-auto mt-1.5 max-w-[280px] text-[14px] leading-relaxed" style={{ color: MAU.muted }}>{mo_ta}</p>
     </div>
   )
 }
@@ -290,9 +290,9 @@ function LanDo({ e }: { e: RecentEval; t?: Theme }) {
   const mau = e.value >= 1 ? { bg: NEN.dung, fg: MAU.dung } : e.value > 0 ? { bg: NEN.canhBao, fg: MAU.canhBao } : { bg: NEN.sai, fg: MAU.sai }
   return (
     <div className="flex flex-1 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtNgayVN(e.t)}`}>
-      <span className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: mau.bg, color: mau.fg }}>{icon}</span>
-      <span className="whitespace-nowrap text-[9px] font-extrabold leading-none" style={{ color: NAVY }}>{fmtNgayVN(e.t)}</span>
-      <span className="text-[7.5px] font-bold leading-none" style={{ color: MAU.muted }}>{SRC_LABEL[e.src]}</span>
+      <span className="flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold" style={{ background: mau.bg, color: mau.fg }}>{icon}</span>
+      <span className="whitespace-nowrap text-[10px] font-extrabold leading-none" style={{ color: NAVY }}>{fmtNgayVN(e.t)}</span>
+      <span className="text-[8.5px] font-bold leading-none" style={{ color: MAU.muted }}>{SRC_LABEL[e.src]}</span>
     </div>
   )
 }
@@ -330,10 +330,10 @@ function BXHPodium({ top }: { top: BXHRow[] }) {
             </span>
             <div className="absolute flex flex-col justify-center overflow-hidden rounded-md text-center"
               style={{ left: `${v.the.l}%`, top: `${v.the.t}%`, width: `${v.the.w}%`, height: `${v.the.h}%`, background: v.mau }}>
-              <p className="truncate font-extrabold leading-tight text-[#16224D]" style={{ fontSize: '2.9cqw' }}>
-                {p.ho_ten.split(' ').slice(-2).join(' ')}{p.la_toi && <span className="ml-1" style={{ fontSize: '2.4cqw' }}>· Bạn</span>}
+              <p className="truncate font-extrabold leading-tight text-[#16224D]" style={{ fontSize: '3.2cqw' }}>
+                {p.ho_ten.split(' ').slice(-2).join(' ')}{p.la_toi && <span className="ml-1" style={{ fontSize: '2.6cqw' }}>· Bạn</span>}
               </p>
-              <p className="truncate font-semibold leading-tight text-[#63709A]" style={{ fontSize: '2.5cqw' }}>👑 {p.nhan}</p>
+              <p className="truncate font-semibold leading-tight text-[#63709A]" style={{ fontSize: '2.8cqw' }}>👑 {p.nhan}</p>
             </div>
           </div>
         )
@@ -348,24 +348,24 @@ const DONG_VIEN = ['Đang tiến bộ rất nhanh! ✨', 'Cố gắng thêm mộ
 function DongHS({ hang, row, dongVien, ban }: { t?: Theme; hang: number | string; row: BXHRow; dongVien: string; ban?: boolean }) {
   return (
     <div className="flex items-center gap-2 px-2.5 py-1.5" style={{ ...THE_TRON, ...(ban ? { boxShadow: `inset 0 0 0 2px ${MAU.acc}` } : {}) }}>
-      <span className="w-6 text-center text-[14px] font-extrabold" style={{ color: ban ? MAU.acc : MAU.muted }}>{hang}</span>
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full text-[16px]" style={{ background: MAU.surface2, boxShadow: `0 0 0 2px ${MAU.line}` }}>
+      <span className="w-6 text-center text-[15.5px] font-extrabold" style={{ color: ban ? MAU.acc : MAU.muted }}>{hang}</span>
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full text-[17.5px]" style={{ background: MAU.surface2, boxShadow: `0 0 0 2px ${MAU.line}` }}>
         {av(row.ho_ten)}
       </span>
       <div className="min-w-0 flex-1 leading-tight">
-        <p className="truncate text-[12px] font-extrabold" style={{ color: NAVY }}>
-          {row.ho_ten}{ban && <span className="ml-1 rounded-full px-1.5 py-px text-[8.5px]" style={{ background: MAU.acc, color: MAU.accInk }}>Bạn</span>}
+        <p className="truncate text-[13px] font-extrabold" style={{ color: NAVY }}>
+          {row.ho_ten}{ban && <span className="ml-1 rounded-full px-1.5 py-px text-[9.5px]" style={{ background: MAU.acc, color: MAU.accInk }}>Bạn</span>}
         </p>
-        <p className="truncate text-[10px]" style={{ color: MAU.muted }}>{row.nhan}{row.phu ? ` · ${row.phu}` : ''}</p>
+        <p className="truncate text-[11px]" style={{ color: MAU.muted }}>{row.nhan}{row.phu ? ` · ${row.phu}` : ''}</p>
       </div>
-      <span className="shrink-0 rounded-xl px-2 py-1 text-right text-[10px] italic leading-tight" style={{ background: MAU.surface2, color: MAU.acc }}>{dongVien}</span>
+      <span className="shrink-0 rounded-xl px-2 py-1 text-right text-[11px] italic leading-tight" style={{ background: MAU.surface2, color: MAU.acc }}>{dongVien}</span>
     </div>
   )
 }
 
 // `t` giữ trong chữ ký cho người gọi cũ (AppHS demo) — màu giờ lấy từ skin, không đọc `t` nữa.
 export function BXHList({ rows, emptyText }: { t?: Theme; rows: BXHRow[]; emptyText: string }) {
-  if (rows.length === 0) return <p className="py-4 text-center text-[12.5px]" style={{ color: MAU.muted }}>{emptyText}</p>
+  if (rows.length === 0) return <p className="py-4 text-center text-[14px]" style={{ color: MAU.muted }}>{emptyText}</p>
   const top10 = rows.slice(0, 10)
   const top3 = top10.slice(0, 3)
   const rest = top10.slice(3, 10)

@@ -133,25 +133,25 @@ export function DauView2D({ luc: _luc, chang, b, gioi = 'nam', tong, daLam = 0, 
     <div className="absolute inset-0 flex flex-col" style={{ background: 'var(--sk-bg)' }}>
       {/* HUD gọn */}
       <div ref={hudRef} className="relative z-40 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1.5 px-3 py-2" style={{ ...THE, borderRadius: 0, borderLeft: 'none', borderRight: 'none', borderTop: 'none' }}>
-        <button onClick={onRut} aria-label="Rút lui về chặng đường" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[18px]" style={{ border: '1.5px solid var(--sk-line)', color: MAU.ink }}>‹</button>
+        <button onClick={onRut} aria-label="Rút lui về chặng đường" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[20px]" style={{ border: '1.5px solid var(--sk-line)', color: MAU.ink }}>‹</button>
         <span className="h-11 w-11 shrink-0"><QuaiTam b={b} loai={q.loai} boss={q.boss && doi.length > 1} co={44} /></span>
         <div className="min-w-[160px] flex-1">
           <div className="flex items-baseline gap-2">
-            <b className="truncate text-[15px]" style={{ ...HEAD, color: MAU.ink }}>{tenQuai2D(q.loai)}</b>
+            <b className="truncate text-[16.5px]" style={{ ...HEAD, color: MAU.ink }}>{tenQuai2D(q.loai)}</b>
             {q.boss ? <NhanHS mau="var(--sk-acc)" dac>{loi.nhanBoss}</NhanHS> : <NhanHS>{loi.nhanThuong(eiHien + 1, Math.max(1, doi.length - 1))}</NhanHS>}
-            <span className="ml-auto whitespace-nowrap text-[12px]" style={{ color: MAU.muted }}>{hp[eiHien] === 0 ? loi.daXong : loi.con(hp[eiHien])}</span>
+            <span className="ml-auto whitespace-nowrap text-[13px]" style={{ color: MAU.muted }}>{hp[eiHien] === 0 ? loi.daXong : loi.con(hp[eiHien])}</span>
           </div>
           <div className="mt-1 flex gap-0.5">{Array.from({ length: hpMax }, (_, i) => <i key={i} className="h-2.5 flex-1 rounded-sm" style={{ background: i < hp[eiHien] ? MAU.sai : 'var(--sk-surface2)', border: i >= hp0[eiHien] && i >= hp[eiHien] ? '1px dashed var(--sk-line)' : 'none' }} />)}</div>
         </div>
         <div className="flex items-center gap-1" aria-label={loi.doiHinh}>
-          {doi.map((d, i) => <span key={i} className="flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold" title={tenQuai2D(d.loai)}
+          {doi.map((d, i) => <span key={i} className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold" title={tenQuai2D(d.loai)}
             style={{ background: hp[i] === 0 ? 'var(--sk-surface2)' : i === eiHien ? 'var(--sk-acc)' : 'transparent', color: i === eiHien && hp[i] > 0 ? 'var(--sk-acc-ink)' : 'var(--sk-muted)', border: '1.5px solid var(--sk-line)', textDecoration: hp[i] === 0 ? 'line-through' : 'none' }}>{d.boss ? '♛' : i + 1}</span>)}
         </div>
         <div className="flex items-center gap-1.5" aria-label={`Combo ${combo.length}/${CO_COMBO}`}>
-          <span className="text-[12px] font-bold" style={{ ...HEAD, color: MAU.muted }}>{loi.nhanCombo}</span>
+          <span className="text-[13px] font-bold" style={{ ...HEAD, color: MAU.muted }}>{loi.nhanCombo}</span>
           {o.map((v, i) => <span key={i} className="inline-block h-4 w-4 rotate-45 rounded-[3px]" style={{ background: v === true ? MAU.dung : v === false ? MAU.sai : 'transparent', border: `1.5px solid ${v === undefined ? 'var(--sk-acc)' : v ? MAU.dung : MAU.sai}`, boxShadow: v === true ? `0 0 8px ${MAU.dung}` : undefined }} />)}
         </div>
-        <span className="whitespace-nowrap text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Câu {Math.min(tong, daLam + tienDo.length + 1)}/{tong}</span>
+        <span className="whitespace-nowrap text-[14px] font-semibold" style={{ color: MAU.muted }}>Câu {Math.min(tong, daLam + tienDo.length + 1)}/{tong}</span>
       </div>
 
       {/* câu hỏi: gần trọn màn */}
@@ -167,7 +167,7 @@ export function DauView2D({ luc: _luc, chang, b, gioi = 'nam', tong, daLam = 0, 
         {chu && (
           <div key={chu.id} className="pointer-events-none absolute inset-x-0 top-[16%] z-40 text-center" style={{ animation: 'dau-chu .5s ease-out both' }}>
             <p className="text-[clamp(26px,5vw,44px)] font-extrabold leading-tight" style={{ ...HEAD, color: chu.mau, textShadow: '0 3px 14px var(--sk-bg), 0 0 2px var(--sk-bg), 0 0 18px var(--sk-bg)' }}>{chu.to}</p>
-            {chu.nho && <p className="mt-1 text-[16px] font-semibold" style={{ color: MAU.ink, textShadow: '0 2px 8px var(--sk-bg), 0 0 10px var(--sk-bg)' }}>{chu.nho}</p>}
+            {chu.nho && <p className="mt-1 text-[17.5px] font-semibold" style={{ color: MAU.ink, textShadow: '0 2px 8px var(--sk-bg), 0 0 10px var(--sk-bg)' }}>{chu.nho}</p>}
           </div>
         )}
       </div>

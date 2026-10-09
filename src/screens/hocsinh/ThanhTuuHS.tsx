@@ -51,15 +51,15 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
       <NhomHS>Giải thưởng cuối tháng</NhomHS>
 
       {items === null && !tt && <TrongHS>Đang tải…</TrongHS>}
-      {err && <p className="rounded-2xl px-3 py-2 text-center text-[12px] font-semibold" style={{ ...THE, color: MAU.sai }}>⚠ {err}</p>}
+      {err && <p className="rounded-2xl px-3 py-2 text-center text-[13px] font-semibold" style={{ ...THE, color: MAU.sai }}>⚠ {err}</p>}
 
       {items && !coData && (
         <div className="p-8 text-center" style={THE}>
           <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-[20px]" style={{ background: MAU.surface2 }}>
-            <span className="text-[36px]">🏅</span>
+            <span className="text-[39.5px]">🏅</span>
           </div>
-          <p className="text-[16px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chưa có giải thưởng nào</p>
-          <p className="mx-auto mt-1.5 max-w-[280px] text-[12.5px] leading-relaxed" style={{ color: MAU.muted }}>
+          <p className="text-[17.5px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chưa có giải thưởng nào</p>
+          <p className="mx-auto mt-1.5 max-w-[280px] text-[14px] leading-relaxed" style={{ color: MAU.muted }}>
             Cố lên nhé! Cuối tháng thầy cô sẽ trao giải cho các bạn <b style={{ color: MAU.acc }}>xuất sắc / tiến bộ / chăm chỉ</b>.
           </p>
         </div>
@@ -77,12 +77,12 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
                   return (
                     <div key={it.id} className="relative flex items-center gap-3 p-4" style={THE}>
                       <span className="relative flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-[18px]" style={{ background: mau.nen, border: `1.5px solid ${mau.vien}` }}>
-                        <span className="text-[32px]">{THANH_TUU_ICON[it.loai_giai]}</span>
+                        <span className="text-[35px]">{THANH_TUU_ICON[it.loai_giai]}</span>
                       </span>
                       <div className="min-w-0 flex-1 pr-1">
-                        <span className="inline-block rounded-full px-2.5 py-0.5 text-[15px] font-extrabold leading-tight" style={{ background: mau.nen, color: mau.chu, border: `1px solid ${mau.vien}` }}>Giải {LOAI_GIAI_TEN[it.loai_giai]}</span>
-                        <p className="mt-1 text-[12.5px] font-semibold" style={{ color: MAU.ink, opacity: .85 }}>{it.mon}{it.ten_lop ? ` · ${it.ten_lop}` : ''}</p>
-                        <p className="mt-0.5 text-[11px]" style={{ color: MAU.muted }}>Công bố {new Date(it.cong_bo_at).toLocaleDateString('vi-VN')}</p>
+                        <span className="inline-block rounded-full px-2.5 py-0.5 text-[16.5px] font-extrabold leading-tight" style={{ background: mau.nen, color: mau.chu, border: `1px solid ${mau.vien}` }}>Giải {LOAI_GIAI_TEN[it.loai_giai]}</span>
+                        <p className="mt-1 text-[14px] font-semibold" style={{ color: MAU.ink, opacity: .85 }}>{it.mon}{it.ten_lop ? ` · ${it.ten_lop}` : ''}</p>
+                        <p className="mt-0.5 text-[12px]" style={{ color: MAU.muted }}>Công bố {new Date(it.cong_bo_at).toLocaleDateString('vi-VN')}</p>
                       </div>
                     </div>
                   )
@@ -95,9 +95,9 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
           <section>
             <NhomHS>Huy hiệu</NhomHS>
             <button onClick={onAlbum} disabled={!onAlbum} className="mt-2 w-full p-6 text-center transition active:scale-[0.98]" style={THE}>
-              <p className="text-3xl">🎖️</p>
-              <p className="mt-1.5 text-[14px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Album huy hiệu</p>
-              <p className="mt-0.5 text-[11.5px]" style={{ color: MAU.muted }}>Helios · Athena · Zeus… — mỗi tháng học tốt là thêm sao</p>
+              <p className="text-[33px]">🎖️</p>
+              <p className="mt-1.5 text-[15.5px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Album huy hiệu</p>
+              <p className="mt-0.5 text-[12.5px]" style={{ color: MAU.muted }}>Helios · Athena · Zeus… — mỗi tháng học tốt là thêm sao</p>
             </button>
           </section>
         </div>

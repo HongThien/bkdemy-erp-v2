@@ -34,7 +34,7 @@ const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 
 // Thẻ/tiêu đề/màu/hook màn hình lấy từ skin/KhungHS — 1 nguồn style cho Home và mọi màn (Thùy 29/09).
 
 function Badge({ n }: { n: number }) {
-  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[11px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
+  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[12px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
 }
 
 // ── Việc tiếp theo: ca bổ trợ gần nhất → ô đang có việc → Tự luyện ──────────
@@ -94,16 +94,16 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       </div>
 
       <div className="leading-tight">
-        <h1 className="text-[34px] font-bold leading-[1.05] md:text-[50px]" style={{ ...HEAD, textShadow: bong }}>Chào<br />{tenNgan}!</h1>
-        <p className="mt-1 text-[13px] md:text-[15px]" style={{ color: 'var(--sk-muted)', textShadow: bong }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</p>
+        <h1 className="text-[37.5px] font-bold leading-[1.05] md:text-[55px]" style={{ ...HEAD, textShadow: bong }}>Chào<br />{tenNgan}!</h1>
+        <p className="mt-1 text-[14.5px] md:text-[16.5px]" style={{ color: 'var(--sk-muted)', textShadow: bong }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</p>
       </div>
       {widgets.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
           {widgets.map((w) => (
             <span key={w.nhan} className="flex items-baseline gap-1.5 rounded-full px-3.5 py-1.5" style={{ ...THE, borderRadius: 'var(--sk-radius-pill)', clipPath: 'none' }}>
-              <span className="text-[12px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
-              <b className="text-[16px] tabular-nums" style={HEAD}>{w.so}</b>
-              <span className="text-[11.5px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
+              <span className="text-[13px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
+              <b className="text-[17.5px] tabular-nums" style={HEAD}>{w.so}</b>
+              <span className="text-[12.5px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
             </span>
           ))}
         </div>
@@ -119,7 +119,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         <div className="relative -mt-1 h-[230px] md:h-[380px]">
           <img src={nv} alt="" className="pointer-events-none absolute bottom-0 left-0 h-full max-w-none select-none object-contain md:left-[6%]"
             style={{ filter: 'drop-shadow(0 10px 22px var(--sk-bg))', WebkitMaskImage: 'linear-gradient(180deg, black 78%, transparent)', maskImage: 'linear-gradient(180deg, black 78%, transparent)' }} />
-          <div className="absolute right-0 top-[14%] max-w-[52%] rounded-[20px] px-3.5 py-2.5 text-[13.5px] font-semibold leading-snug shadow-2xl md:right-[6%] md:max-w-[300px] md:px-5 md:py-3.5 md:text-[16px]"
+          <div className="absolute right-0 top-[14%] max-w-[52%] rounded-[20px] px-3.5 py-2.5 text-[15px] font-semibold leading-snug shadow-2xl md:right-[6%] md:max-w-[300px] md:px-5 md:py-3.5 md:text-[17.5px]"
             style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)' }}>
             {loiNhanVat(viec)}
             <span className="absolute -left-1.5 top-6 h-4 w-4 rotate-45" style={{ background: 'var(--sk-ink)' }} />
@@ -160,9 +160,9 @@ function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
             className={`${c.lon ? 'col-span-2' : ''} relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
             {anh
               ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-11 w-11 md:h-[76px] md:w-[76px]" />
-              : <span className="text-[24px] leading-none md:text-[36px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
-            <span className="text-[12px] font-bold leading-tight md:text-[16px]" style={HEAD}>{c.ten}</span>
-            <span className="line-clamp-2 text-[10px] leading-snug md:text-[12.5px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
+              : <span className="text-[26.5px] leading-none md:text-[39.5px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
+            <span className="text-[13px] font-bold leading-tight md:text-[17.5px]" style={HEAD}>{c.ten}</span>
+            <span className="line-clamp-2 text-[11px] leading-snug md:text-[14px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
             {!!c.badge && c.badge > 0 && <span className="absolute right-1 top-1 md:right-2 md:top-2"><Badge n={c.badge} /></span>}
           </button>
         )
@@ -190,7 +190,7 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
         {/* điện thoại: banner Chuỗi ở thân trang đã đủ nổi — bỏ nút lửa trên đầu cho cụm nút không tràn ngang */}
         {'chuoi' in p && <span className="hidden md:contents"><NutChuoi c={p.chuoi} onClick={() => p.chuoi && setMoChuoi(true)} style={NUT_TRON} /></span>}
         {moChuoi && p.chuoi && <TamChuoi c={p.chuoi} onDong={() => setMoChuoi(false)} onLuyen={p.onLuyenChuoi && (() => { setMoChuoi(false); p.onLuyenChuoi!() })} />}
-        <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[13px] font-bold active:scale-95"
+        <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[14.5px] font-bold active:scale-95"
           style={NUT_TRON} aria-label="Đổi giao diện và hình nền">
           <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.3 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z" />
@@ -205,10 +205,10 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
           {p.chuaDoc > 0 && <span className="absolute -right-1 -top-1"><Badge n={p.chuaDoc} /></span>}
         </button>
         <div className="relative shrink-0">
-          <button onClick={() => setMenu((m) => !m)} className="flex h-10 w-10 items-center justify-center text-[20px] font-bold leading-none active:scale-95" style={NUT_TRON} aria-label="Thêm">⋯</button>
+          <button onClick={() => setMenu((m) => !m)} className="flex h-10 w-10 items-center justify-center text-[22px] font-bold leading-none active:scale-95" style={NUT_TRON} aria-label="Thêm">⋯</button>
           {!!p.gopYMoi && <span className="pointer-events-none absolute -right-1 -top-1"><Badge n={p.gopYMoi} /></span>}
           {menu && (
-            <div className="absolute right-0 top-12 z-20 flex w-44 flex-col overflow-hidden rounded-2xl text-[14px] shadow-xl" style={{ background: 'var(--sk-bg)', border: '1px solid var(--sk-line)' }}>
+            <div className="absolute right-0 top-12 z-20 flex w-44 flex-col overflow-hidden rounded-2xl text-[15.5px] shadow-xl" style={{ background: 'var(--sk-bg)', border: '1px solid var(--sk-line)' }}>
               <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); setDoHoa(true) }}>Đồ hoạ</button>
               {p.onGopY && <button className="flex items-center justify-between px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onGopY!() }}>
                 Góp ý & báo lỗi {!!p.gopYMoi && <Badge n={p.gopYMoi} />}</button>}
@@ -248,7 +248,7 @@ function HuyHieuBac({ p, trongTam }: { p: HomeProps; trongTam?: boolean }) {
       style={trongTam ? { borderColor: 'var(--sk-line)' } : NUT_TRON}>
       <BieuTuongBac bac={r.bac} size={trongTam ? 44 : 38} nho />
       <span className="leading-tight">
-        <span className="block whitespace-nowrap text-[13.5px] font-bold" style={HEAD}>{r.ten}</span>
+        <span className="block whitespace-nowrap text-[15px] font-bold" style={HEAD}>{r.ten}</span>
         {r.bac < 9 && <SaoBac n={r.sao} size={12} />}
       </span>
     </button>
@@ -277,9 +277,9 @@ function NutViec({ viec, skin, to }: { viec: Viec; skin: Skin; to?: boolean }) {
         <img src={skin.trangTri.goc} alt="" className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-70" />
       </>}
       {coAnh && <img src={skin.anhBanner!.lich} alt="" className="pointer-events-none absolute right-3 top-1/2 h-14 w-14 -translate-y-1/2 object-contain" />}
-      <span className={`text-[11px] font-bold uppercase tracking-[0.08em] opacity-80 ${coAnh ? 'pr-16' : ''}`}>{viec.nhan}</span>
-      <span className={`${to ? 'text-[21px]' : 'text-[19px]'} font-bold leading-snug ${coAnh ? 'pr-16' : ''}`} style={HEAD}>{viec.tieuDe}</span>
-      <span className={`text-[13px] opacity-85 ${coAnh ? 'pr-16' : ''}`}>{viec.phu}{viec.gap ? ' →' : ''}</span>
+      <span className={`text-[12px] font-bold uppercase tracking-[0.08em] opacity-80 ${coAnh ? 'pr-16' : ''}`}>{viec.nhan}</span>
+      <span className={`${to ? 'text-[23px]' : 'text-[21px]'} font-bold leading-snug ${coAnh ? 'pr-16' : ''}`} style={HEAD}>{viec.tieuDe}</span>
+      <span className={`text-[14.5px] opacity-85 ${coAnh ? 'pr-16' : ''}`}>{viec.phu}{viec.gap ? ' →' : ''}</span>
     </button>
   )
 }
@@ -289,8 +289,8 @@ function NutRetest({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean }) 
     <button onClick={p.onRetest} className={`flex items-center justify-between gap-3 text-left active:scale-[0.99] ${to ? 'min-h-[92px] px-5 py-4' : 'px-4 py-3'}`} style={THE}>
       {skin.anhBanner?.kiemTraLai && <img src={skin.anhBanner.kiemTraLai} alt="" className={`${to ? 'h-14 w-14' : 'h-11 w-11'} shrink-0 object-contain`} />}
       <span className="min-w-0 flex-1">
-        <span className={`block ${to ? 'text-[19px]' : 'text-[15px]'} font-bold`} style={HEAD}>Bài kiểm tra lại</span>
-        <span className="block text-[12.5px]" style={{ color: 'var(--sk-muted)' }}>{p.soRetest} bài chờ làm sau ET · nộp 1 lần</span>
+        <span className={`block ${to ? 'text-[21px]' : 'text-[16.5px]'} font-bold`} style={HEAD}>Bài kiểm tra lại</span>
+        <span className="block text-[14px]" style={{ color: 'var(--sk-muted)' }}>{p.soRetest} bài chờ làm sau ET · nộp 1 lần</span>
       </span>
       <Badge n={p.soRetest} />
     </button>
@@ -313,14 +313,14 @@ function TheTheGioi({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean })
   const so = (tt?.so ?? 0) + (g?.loi_moi ?? 0) + choKhoe
   return (
     <button onClick={p.onTheGioi} className={`relative flex w-full items-center gap-3 text-left active:scale-[0.99] ${to ? 'min-h-[92px] px-5 py-3.5' : 'px-3.5 py-3'}`} style={THE}>
-      {anh ? <IconO src={anh} mask={!!skin.anhOMask} className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
+      {anh ? <IconO src={anh} mask={!!skin.anhOMask} className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0`} /> : <span className="text-[33px] leading-none" aria-hidden>🌏</span>}
       <span className="min-w-0 flex-1">
-        <span className={`block font-bold ${to ? 'text-[19px]' : 'text-[16px]'}`} style={HEAD}>Thế giới BK</span>
-        <span className="block truncate text-[12px] italic leading-snug" style={{ color: 'var(--sk-acc)' }}>Xem học sinh BK đang khoe gì nào!</span>
-        {dong.slice(0, to ? 3 : 2).map((d, i) => <span key={i} className="block truncate text-[12.5px] leading-snug" style={{ color: i === 0 && so > 0 ? 'var(--sk-ink)' : 'var(--sk-muted)' }}>{d}</span>)}
+        <span className={`block font-bold ${to ? 'text-[21px]' : 'text-[17.5px]'}`} style={HEAD}>Thế giới BK</span>
+        <span className="block truncate text-[13px] italic leading-snug" style={{ color: 'var(--sk-acc)' }}>Xem học sinh BK đang khoe gì nào!</span>
+        {dong.slice(0, to ? 3 : 2).map((d, i) => <span key={i} className="block truncate text-[14px] leading-snug" style={{ color: i === 0 && so > 0 ? 'var(--sk-ink)' : 'var(--sk-muted)' }}>{d}</span>)}
       </span>
       {so > 0 && <Badge n={so} />}
-      <span className="shrink-0 text-[20px] leading-none" style={{ color: 'var(--sk-muted)' }} aria-hidden>›</span>
+      <span className="shrink-0 text-[22px] leading-none" style={{ color: 'var(--sk-muted)' }} aria-hidden>›</span>
     </button>
   )
 }
@@ -354,8 +354,8 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         <div className="flex min-w-0 items-center gap-3 py-1 pl-1 pr-5" style={{ background: 'var(--sk-name-plate)', borderRadius: 'var(--sk-radius-pill)' }}>
           <AnhDaiDien p={p} size={52} />
           <span className="min-w-0 leading-tight">
-            <span className="block truncate text-[17px] font-bold" style={HEAD}>{p.hoTen}</span>
-            <span className="block truncate text-[12.5px]" style={{ color: 'var(--sk-muted)' }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</span>
+            <span className="block truncate text-[18.5px] font-bold" style={HEAD}>{p.hoTen}</span>
+            <span className="block truncate text-[14px]" style={{ color: 'var(--sk-muted)' }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</span>
           </span>
           <HuyHieuBac p={p} trongTam />
         </div>
@@ -368,7 +368,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           <div className="relative min-h-[520px]">
             <img src={nv} alt="" className="pointer-events-none absolute bottom-0 left-1/2 h-[min(80vh,780px)] max-w-none -translate-x-1/2 select-none object-contain"
               style={{ filter: 'drop-shadow(0 12px 28px var(--sk-bg))' }} />
-            <div className="absolute left-0 max-w-[220px] rounded-[22px] px-4 py-3 text-[14.5px] font-semibold leading-snug shadow-2xl"
+            <div className="absolute left-0 max-w-[220px] rounded-[22px] px-4 py-3 text-[16px] font-semibold leading-snug shadow-2xl"
               style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)', bottom: 'calc(min(80vh, 780px) * 0.8)' }}>
               {loiNhanVat(viec)}
               <span className="absolute -bottom-2 right-8 h-4 w-4 rotate-45" style={{ background: 'var(--sk-ink)' }} />
@@ -377,14 +377,14 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         )}
 
         <div className="flex min-w-0 flex-col gap-4 pb-2 pt-4">
-          <h1 className="text-[46px] font-bold leading-[1.05] xl:text-[54px]" style={{ ...HEAD, textShadow: bong }}>Chào<br />{tenNgan}!</h1>
+          <h1 className="text-[50.5px] font-bold leading-[1.05] xl:text-[59.5px]" style={{ ...HEAD, textShadow: bong }}>Chào<br />{tenNgan}!</h1>
           {widgets.length > 0 && (
             <div className="flex flex-wrap items-center gap-2.5">
               {widgets.map((w) => (
                 <span key={w.nhan} className="flex items-baseline gap-2 rounded-full px-4 py-2" style={{ ...THE, borderRadius: 'var(--sk-radius-pill)', clipPath: 'none' }}>
-                  <span className="text-[12.5px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
-                  <b className="text-[18px] tabular-nums" style={HEAD}>{w.so}</b>
-                  <span className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
+                  <span className="text-[14px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
+                  <b className="text-[20px] tabular-nums" style={HEAD}>{w.so}</b>
+                  <span className="text-[13px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
                 </span>
               ))}
             </div>
@@ -430,9 +430,9 @@ function LuoiNgang({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
             className={`${c.lon ? 'col-span-2' : ''} relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
             {anh
               ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-16 w-16 xl:h-[84px] xl:w-[84px]" />
-              : <span className="text-[40px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
-            <span className="text-[15px] font-bold leading-tight xl:text-[17px]" style={HEAD}>{c.ten}</span>
-            <span className="text-[12px] leading-snug xl:text-[13px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
+              : <span className="text-[44px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
+            <span className="text-[16.5px] font-bold leading-tight xl:text-[18.5px]" style={HEAD}>{c.ten}</span>
+            <span className="text-[13px] leading-snug xl:text-[14.5px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
             {!!c.badge && c.badge > 0 && <span className="absolute right-2.5 top-2.5"><Badge n={c.badge} /></span>}
           </button>
         )
@@ -457,12 +457,12 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
     <div className="fixed inset-x-0 bottom-0 z-40 mx-auto flex max-h-[74dvh] max-w-[560px] flex-col rounded-t-[24px] shadow-[0_-12px_40px_rgba(0,0,0,0.35)]"
       style={{ background: 'var(--sk-bg)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)', borderTop: '1px solid var(--sk-line)' }} role="dialog" aria-label="Chọn giao diện">
       <div className="flex items-center justify-between px-5 pb-2 pt-4">
-        <p className="text-[18px] font-bold" style={HEAD}>Giao diện</p>
-        {onDong && <button onClick={onDong} className="flex h-9 w-9 items-center justify-center rounded-full text-[18px]" style={{ background: 'var(--sk-surface2)' }} aria-label="Đóng, không lưu">✕</button>}
+        <p className="text-[20px] font-bold" style={HEAD}>Giao diện</p>
+        {onDong && <button onClick={onDong} className="flex h-9 w-9 items-center justify-center rounded-full text-[20px]" style={{ background: 'var(--sk-surface2)' }} aria-label="Đóng, không lưu">✕</button>}
       </div>
       <div className="flex flex-col gap-5 overflow-y-auto px-5 pb-4">
         <section className="flex flex-col gap-2">
-          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Phong cách</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Phong cách</p>
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
             {SKINS.map((s) => {
               const v = bienCss(s, cheDoThat(s, gd.che_do, heThongToi), s.hinhNen[0].id) as CSSProperties
@@ -477,8 +477,8 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
                     </span>
                   </span>
                   <span className="px-1 leading-tight">
-                    <span className="block text-[13.5px] font-bold">{s.ten}</span>
-                    <span className="block text-[11px]" style={{ color: 'var(--sk-muted)' }}>{s.giongGi}</span>
+                    <span className="block text-[15px] font-bold">{s.ten}</span>
+                    <span className="block text-[12px]" style={{ color: 'var(--sk-muted)' }}>{s.giongGi}</span>
                   </span>
                 </button>
               )
@@ -487,41 +487,41 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
         </section>
 
         <section className="flex flex-col gap-2">
-          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Chế độ</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Chế độ</p>
           {khoaCheDo
-            ? <p className="text-[13px]" style={{ color: 'var(--sk-muted)' }}>Skin {skin.ten} chỉ có nền {skin.cheDo[0] === 'toi' ? 'tối' : 'sáng'}.</p>
+            ? <p className="text-[14.5px]" style={{ color: 'var(--sk-muted)' }}>Skin {skin.ten} chỉ có nền {skin.cheDo[0] === 'toi' ? 'tối' : 'sáng'}.</p>
             : <div className="flex gap-2">
                 {CHE_DO.map((c) => (
-                  <button key={c.id} onClick={() => setGd({ ...gd, che_do: c.id })} className="flex-1 rounded-xl px-2 py-2 text-[13.5px] font-semibold" style={nut(gd.che_do === c.id)} aria-pressed={gd.che_do === c.id}>{c.ten}</button>
+                  <button key={c.id} onClick={() => setGd({ ...gd, che_do: c.id })} className="flex-1 rounded-xl px-2 py-2 text-[15px] font-semibold" style={nut(gd.che_do === c.id)} aria-pressed={gd.che_do === c.id}>{c.ten}</button>
                 ))}
               </div>}
         </section>
 
         <section className="flex flex-col gap-2">
-          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Hiệu ứng game</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Hiệu ứng game</p>
           <div className="flex gap-2">
             {([[true, 'Bật', 'Bản đồ phiêu lưu, đánh quái'], [false, 'Tắt', 'Làm bài dạng thường, gọn']] as const).map(([b, ten, mo]) => {
               const chon = (gd.hieu_ung_game ?? true) === b
               return (
                 <button key={ten} onClick={() => setGd({ ...gd, hieu_ung_game: b })} className="flex-1 rounded-xl px-3 py-2 text-left" style={nut(chon)} aria-pressed={chon}>
-                  <span className="block text-[13.5px] font-semibold">{ten}</span>
-                  <span className="block text-[11.5px] leading-tight" style={{ color: 'var(--sk-muted)' }}>{mo}</span>
+                  <span className="block text-[15px] font-semibold">{ten}</span>
+                  <span className="block text-[12.5px] leading-tight" style={{ color: 'var(--sk-muted)' }}>{mo}</span>
                 </button>
               )
             })}
           </div>
-          {!skin.the3d && <p className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>Phong cách {skin.ten} không có bản đồ phiêu lưu — Tự luyện luôn là bài dạng thường.</p>}
+          {!skin.the3d && <p className="text-[13px]" style={{ color: 'var(--sk-muted)' }}>Phong cách {skin.ten} không có bản đồ phiêu lưu — Tự luyện luôn là bài dạng thường.</p>}
         </section>
 
         <section className="flex flex-col gap-2">
-          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Hình nền</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Hình nền</p>
           <div className="grid grid-cols-4 gap-2">
             {skin.hinhNen.map((h) => {
               const chon = layHinhNen(skin, gd.hinh_nen).id === h.id
               return (
                 <button key={h.id} onClick={() => setGd({ ...gd, hinh_nen: h.id })} className="flex flex-col items-center gap-1 rounded-xl p-1" style={nut(chon)} aria-pressed={chon}>
                   <span className="block aspect-[3/4] w-full rounded-lg" style={{ background: nenCua(h, cd, true), border: '1px solid var(--sk-line)' }} />
-                  <span className="text-[11px] font-semibold leading-tight">{h.ten}</span>
+                  <span className="text-[12px] font-semibold leading-tight">{h.ten}</span>
                 </button>
               )
             })}
@@ -529,8 +529,8 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
         </section>
       </div>
       <div className="flex flex-col gap-2 px-5 pb-[calc(16px+env(safe-area-inset-bottom))] pt-2" style={{ borderTop: '1px solid var(--sk-line)' }}>
-        {loi && <p className="text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
-        <button onClick={onNutChinh} disabled={dangLuu} className="h-12 w-full text-[15px] font-bold active:scale-[0.99]"
+        {loi && <p className="text-[14.5px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+        <button onClick={onNutChinh} disabled={dangLuu} className="h-12 w-full text-[16.5px] font-bold active:scale-[0.99]"
           style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', borderRadius: 'var(--sk-radius)', clipPath: 'var(--sk-card-clip)', fontFamily: 'var(--sk-font-head)', opacity: dangLuu ? 0.7 : 1 }}>
           {dangLuu ? 'Đang lưu…' : nutChinh}
         </button>
@@ -561,10 +561,10 @@ function ChiNut({ nutRef, onXong, dangLuu, loi }: { nutRef: RefObject<HTMLButton
       <div className="pointer-events-none absolute rounded-full" style={{ left: r.left - pad, top: r.top - pad, width: r.width + pad * 2, height: r.height + pad * 2, boxShadow: '0 0 0 9999px rgba(0,0,0,0.62), 0 0 0 3px #fff' }} />
       <div className="absolute w-[300px] rounded-2xl p-4 shadow-2xl" style={{ left: trai, top: r.bottom + 16, background: MAU.bg, color: MAU.ink, border: '1px solid var(--sk-line)' }}>
         <span className="absolute -top-2 h-4 w-4 rotate-45" style={{ background: MAU.bg, borderLeft: '1px solid var(--sk-line)', borderTop: '1px solid var(--sk-line)', left: Math.min(Math.max(r.left + r.width / 2 - trai - 8, 16), 268) }} />
-        <p className="text-[16px] font-bold">Đổi giao diện ở đây</p>
-        <p className="mt-1 text-[14px] leading-snug" style={{ color: MAU.muted }}>Bấm nút <b>Hình nền</b> bất cứ lúc nào để đổi phong cách và hình nền.</p>
-        {loi && <p className="mt-2 text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
-        <button onClick={onXong} disabled={dangLuu} className="mt-3 h-11 w-full rounded-xl text-[15px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>{dangLuu ? 'Đang lưu…' : loi ? 'Thử lại' : 'Đã hiểu'}</button>
+        <p className="text-[17.5px] font-bold">Đổi giao diện ở đây</p>
+        <p className="mt-1 text-[15.5px] leading-snug" style={{ color: MAU.muted }}>Bấm nút <b>Hình nền</b> bất cứ lúc nào để đổi phong cách và hình nền.</p>
+        {loi && <p className="mt-2 text-[14.5px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+        <button onClick={onXong} disabled={dangLuu} className="mt-3 h-11 w-full rounded-xl text-[16.5px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>{dangLuu ? 'Đang lưu…' : loi ? 'Thử lại' : 'Đã hiểu'}</button>
       </div>
     </div>
   )
@@ -606,17 +606,17 @@ export default function HomeHS912({ giaoDien, onDaLuu, macDinh, ...p }: HomeProp
           onNutChinh={() => luu(() => { setMo(false); setDaLuuXong(true); setTimeout(() => setDaLuuXong(false), 2000) })} />
       )}
       {daLuuXong && (
-        <div className="fixed inset-x-0 bottom-6 z-40 mx-auto w-fit rounded-full px-4 py-2 text-[14px] font-bold shadow-lg" style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)' }}>Đã lưu giao diện</div>
+        <div className="fixed inset-x-0 bottom-6 z-40 mx-auto w-fit rounded-full px-4 py-2 text-[15.5px] font-bold shadow-lg" style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)' }}>Đã lưu giao diện</div>
       )}
 
       {buoc === 'chao' && (
         <Lop>
           <div className="w-full max-w-[360px] rounded-3xl p-6 shadow-2xl" style={{ background: MAU.bg, color: MAU.ink, border: '1px solid var(--sk-line)', fontFamily: 'var(--sk-font)' }}>
-            <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc }}>Mới</p>
-            <p className="mt-1 text-[22px] font-extrabold leading-tight">App có giao diện mới, {p.hoTen.trim().split(/\s+/).slice(-2).join(' ')} tự chọn nhé</p>
-            <p className="mt-2 text-[14.5px] leading-snug" style={{ color: MAU.muted }}>Chọn phong cách và hình nền em thích. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
-            <button onClick={() => setBuoc('chon')} className="mt-5 h-12 w-full rounded-xl text-[15px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Chọn giao diện</button>
-            <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[14px] font-semibold" style={{ color: MAU.muted }}>Để sau, dùng {laySkin((macDinh ?? MAC_DINH).skin).ten}</button>
+            <p className="text-[14.5px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc }}>Mới</p>
+            <p className="mt-1 text-[24px] font-extrabold leading-tight">App có giao diện mới, {p.hoTen.trim().split(/\s+/).slice(-2).join(' ')} tự chọn nhé</p>
+            <p className="mt-2 text-[16px] leading-snug" style={{ color: MAU.muted }}>Chọn phong cách và hình nền em thích. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
+            <button onClick={() => setBuoc('chon')} className="mt-5 h-12 w-full rounded-xl text-[16.5px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Chọn giao diện</button>
+            <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[15.5px] font-semibold" style={{ color: MAU.muted }}>Để sau, dùng {laySkin((macDinh ?? MAC_DINH).skin).ten}</button>
           </div>
         </Lop>
       )}

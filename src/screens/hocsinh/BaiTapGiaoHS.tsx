@@ -13,10 +13,10 @@ export default function BaiTapGiaoHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null
 
       <div className="mt-2 p-8 text-center" style={THE}>
         <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-[24px]" style={{ background: MAU.surface2 }}>
-          <span className="text-[42px]">🚧</span>
+          <span className="text-[46px]">🚧</span>
         </div>
-        <p className="text-[17px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Sắp ra mắt</p>
-        <p className="mx-auto mt-2 max-w-[300px] text-[13px] leading-relaxed" style={{ color: MAU.muted }}>
+        <p className="text-[18.5px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Sắp ra mắt</p>
+        <p className="mx-auto mt-2 max-w-[300px] text-[14.5px] leading-relaxed" style={{ color: MAU.muted }}>
           Thầy cô sẽ giao thêm bài tập riêng cho em ở đây khi cần bổ trợ điểm yếu.
           Hiện tại em cứ chăm chỉ <b style={{ color: MAU.acc }}>Tự luyện</b> để nâng cao mastery nhé!
         </p>

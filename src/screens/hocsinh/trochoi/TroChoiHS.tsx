@@ -9,7 +9,7 @@ import { DS_GAME, type GameHS } from './dsGame'
 function Anh({ g }: { g: GameHS }) {
   return g.anh
     ? <img src={g.anh} alt="" draggable={false} className="h-20 w-20 shrink-0 rounded-[18px] object-cover md:h-24 md:w-24" style={{ border: '1.5px solid var(--sk-line)' }} />
-    : <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-[18px] text-[34px] font-extrabold md:h-24 md:w-24" aria-hidden
+    : <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-[18px] text-[37.5px] font-extrabold md:h-24 md:w-24" aria-hidden
         style={{ ...HEAD, background: 'var(--sk-surface2)', color: MAU.muted, border: '1.5px dashed var(--sk-line)' }}>?</span>
 }
 
@@ -25,12 +25,12 @@ export default function TroChoiHS({ onBack, onChoi }: { onBack: () => void; onCh
               <Anh g={g} />
               <span className="flex min-w-0 flex-1 flex-col gap-1.5">
                 <span className="flex flex-wrap items-center gap-2">
-                  <span className="text-[18px] font-bold leading-tight" style={HEAD}>{g.ten}</span>
+                  <span className="text-[20px] font-bold leading-tight" style={HEAD}>{g.ten}</span>
                   {!san && <NhanHS mau="var(--sk-muted)">Sắp ra mắt</NhanHS>}
                 </span>
-                <span className="text-[13.5px] leading-snug" style={{ color: MAU.ink }}>{g.moTa}</span>
-                {g.ghiChu && san && <span className="text-[12px] leading-snug" style={{ color: MAU.muted }}>{g.ghiChu}</span>}
-                {san && <span className="mt-auto pt-1 text-[13.5px] font-bold" style={{ color: MAU.acc }}>Chơi ngay ›</span>}
+                <span className="text-[15px] leading-snug" style={{ color: MAU.ink }}>{g.moTa}</span>
+                {g.ghiChu && san && <span className="text-[13px] leading-snug" style={{ color: MAU.muted }}>{g.ghiChu}</span>}
+                {san && <span className="mt-auto pt-1 text-[15px] font-bold" style={{ color: MAU.acc }}>Chơi ngay ›</span>}
               </span>
             </TheHS>
           )
@@ -46,7 +46,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
     <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }}>
       <iframe title="Nông trại BK" src="/games/nong-trai/index.html?nhung=1" className="h-full w-full border-0" allow="autoplay" />
       <button onClick={onBack} aria-label="Về danh sách trò chơi"
-        className="absolute bottom-[calc(10px+env(safe-area-inset-bottom))] right-2.5 z-50 flex h-10 w-10 items-center justify-center rounded-full text-[22px] leading-none active:scale-95"
+        className="absolute bottom-[calc(10px+env(safe-area-inset-bottom))] right-2.5 z-50 flex h-10 w-10 items-center justify-center rounded-full text-[24px] leading-none active:scale-95"
         style={{ background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: '1.5px solid var(--sk-line)', opacity: 0.92 }}>‹</button>
     </div>
   )

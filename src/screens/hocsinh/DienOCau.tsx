@@ -62,7 +62,7 @@ export function DienOCau({ cau, baiLamId, daLam, onKq }: {
           const dung = o && daChon && CHU[chon[o.id]] === key[oIdx]
           const mo = o && (dangMo || daChon)
           return (
-            <div key={b.k} className="rounded-xl px-3 py-2 text-[15px] leading-relaxed"
+            <div key={b.k} className="rounded-xl px-3 py-2 text-[16.5px] leading-relaxed"
               style={{ color: MAU.ink, ...(o ? (daChon ? { background: dung ? BG_DUNG : BG_SAI } : dangMo ? { background: BG_CB, boxShadow: `inset 0 0 0 1px ${VIEN_CB}` } : { background: MAU.surface2 }) : {}) }}>
               <MathText>{b.text}</MathText>
               {o && mo && (
@@ -71,10 +71,10 @@ export function DienOCau({ cau, baiLamId, daLam, onKq }: {
                     const laChon = chon[o.id] === i, laDung = daChon && CHU[i] === key[oIdx]
                     return (
                       <button key={i} disabled={!!daChon} onClick={() => setChon((c) => ({ ...c, [o.id]: i }))}
-                        className="flex items-start gap-2 rounded-lg border px-2.5 py-1.5 text-left text-[14px] transition"
+                        className="flex items-start gap-2 rounded-lg border px-2.5 py-1.5 text-left text-[15.5px] transition"
                         style={laDung ? { borderColor: VIEN_DUNG, background: BG_DUNG, color: MAU.ink } : laChon ? { borderColor: VIEN_SAI, background: BG_SAI, color: MAU.ink } : { borderColor: MAU.line, background: MAU.surface, color: MAU.ink }}>
                         {/* chữ trắng chỉ trên nền đúng/sai đặc (màu ngữ nghĩa cố định) */}
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-semibold"
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold"
                           style={laDung ? { background: MAU.dung, color: '#fff' } : laChon ? { background: MAU.sai, color: '#fff' } : { background: MAU.surface2, color: MAU.muted }}>{CHU[i]}</span>
                         <span className="flex-1 pt-0.5"><MathText>{p}</MathText></span>
                       </button>
@@ -82,18 +82,18 @@ export function DienOCau({ cau, baiLamId, daLam, onKq }: {
                   })}
                 </div>
               )}
-              {o && !mo && <div className="mt-1 text-[12px]" style={{ color: MAU.muted }}>Chọn ô phía trên trước</div>}
+              {o && !mo && <div className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Chọn ô phía trên trước</div>}
             </div>
           )
         })}
       </div>
       {kq && (
-        <div className="mt-3 rounded-xl p-3 text-[14px] font-medium"
+        <div className="mt-3 rounded-xl p-3 text-[15.5px] font-medium"
           style={kq.verdict === 'correct' ? { background: BG_DUNG, color: MAU.dung } : kq.verdict === 'partial' ? { background: BG_CB, color: MAU.canhBao } : { background: BG_SAI, color: MAU.sai }}>
           {kq.verdict === 'correct' ? '🎉 Đúng hết các ô!' : kq.verdict === 'partial' ? `👍 Đúng một phần${kq.ti_le >= 0 ? ` (${Math.round(kq.ti_le * 100)}%)` : ''}` : '💪 Sai nhiều ô — đọc lại lời giải đầy đủ ở trên nhé.'}
         </div>
       )}
-      {busy && <p className="mt-2 text-[12px]" style={{ color: MAU.muted }}>Đang chấm…</p>}
+      {busy && <p className="mt-2 text-[13px]" style={{ color: MAU.muted }}>Đang chấm…</p>}
     </div>
   )
 }
@@ -128,12 +128,12 @@ export function LamDienO({ hocSinhId, onXong, desktop }: { hocSinhId: string; on
   useEffect(() => { if (xongHet && baiLamId) nopBai(baiLamId).catch(() => {}) }, [xongHet, baiLamId])
 
   const khung = desktop ? 'mx-auto max-w-3xl px-6 py-6 lg:max-w-4xl' : 'mx-auto max-w-md px-4 py-4 md:max-w-3xl lg:max-w-4xl'
-  if (state === 'tai') return <div className="flex min-h-screen items-center justify-center text-sm" style={{ ...NEN_TRANG, color: MAU.muted }}>Đang chọn bài chứng minh…</div>
+  if (state === 'tai') return <div className="flex min-h-screen items-center justify-center text-[15.5px]" style={{ ...NEN_TRANG, color: MAU.muted }}>Đang chọn bài chứng minh…</div>
   if (state === 'trong' || !baiTestId || !baiLamId) return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center" style={NEN_TRANG}>
-      <p className="text-3xl">📐</p>
-      <p className="mt-3 text-[15px] font-medium" style={{ color: MAU.ink }}>{err ?? 'Chưa có bài chứng minh để luyện.'}</p>
-      <NutHS phu onClick={onXong} className="mt-6 px-6 !text-sm !font-medium">Về trang chính</NutHS>
+      <p className="text-[33px]">📐</p>
+      <p className="mt-3 text-[16.5px] font-medium" style={{ color: MAU.ink }}>{err ?? 'Chưa có bài chứng minh để luyện.'}</p>
+      <NutHS phu onClick={onXong} className="mt-6 px-6 !text-[15.5px] !font-medium">Về trang chính</NutHS>
     </div>
   )
   const cau = caus[idx]
@@ -141,29 +141,29 @@ export function LamDienO({ hocSinhId, onXong, desktop }: { hocSinhId: string; on
     <div className="min-h-screen" style={NEN_TRANG}>
       <div className={khung}>
         <div className="mb-3 flex items-center justify-between">
-          <button onClick={onXong} className="text-[13px]" style={{ color: MAU.muted }}>‹ Thoát</button>
-          <p className="text-[13px] font-semibold" style={{ color: MAU.muted }}>Luyện chứng minh · bài {Math.min(idx + 1, caus.length)}/{caus.length}</p>
+          <button onClick={onXong} className="text-[14.5px]" style={{ color: MAU.muted }}>‹ Thoát</button>
+          <p className="text-[14.5px] font-semibold" style={{ color: MAU.muted }}>Luyện chứng minh · bài {Math.min(idx + 1, caus.length)}/{caus.length}</p>
         </div>
         {cau ? (
           <div className={desktop ? 'p-8' : 'p-4'} style={THE}>
-            <div className="mb-3 text-[15px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung ?? ''}</MathText></div>
+            <div className="mb-3 text-[16.5px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung ?? ''}</MathText></div>
             {/* nền trắng giữ cố định: hình vẽ PNG nét đen nền trong, trên skin tối sẽ mất nét */}
             {cau.anh_de && <img src={cau.anh_de} alt="hình" className="mb-3 max-h-72 rounded-lg border bg-white" style={{ borderColor: MAU.line }} />}
-            <p className="mb-2 text-[12px] font-semibold uppercase tracking-wide" style={{ color: MAU.muted }}>Điền vào chỗ trống trong lời giải</p>
+            <p className="mb-2 text-[13px] font-semibold uppercase tracking-wide" style={{ color: MAU.muted }}>Điền vào chỗ trống trong lời giải</p>
             <DienOCau key={cau.id} cau={cau} baiLamId={baiLamId} daLam={daLam[cau.id] ?? null} onKq={(k) => setKqs((s) => ({ ...s, [cau.id]: k.verdict }))} />
             {(kqs[cau.id] || daLam[cau.id]) && (
-              <NutHS onClick={() => setIdx((i) => i + 1)} className="mt-4 w-full px-6 !text-sm">
+              <NutHS onClick={() => setIdx((i) => i + 1)} className="mt-4 w-full px-6 !text-[15.5px]">
                 {idx + 1 < caus.length ? 'Bài tiếp theo →' : 'Xem kết quả'}
               </NutHS>
             )}
           </div>
         ) : (
           <div className="flex flex-col items-center py-10 text-center" style={desktop ? THE : undefined}>
-            <p className="text-4xl">🏆</p>
-            <p className="mt-3 text-2xl font-bold" style={{ ...HEAD, color: MAU.ink }}>{caus.filter((c) => (kqs[c.id] ?? daLam[c.id]?.verdict) === 'correct').length} / {caus.length} bài đúng hết</p>
-            <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Đúng một phần vẫn được tính điểm. Đọc lại lời giải để nhớ lý do nhé.</p>
-            <NutHS onClick={sinh} className="mt-6 px-6 !text-sm">Luyện lượt mới</NutHS>
-            <NutHS phu onClick={onXong} className="mt-2 px-6 !text-sm !font-medium">Về trang chính</NutHS>
+            <p className="text-[39.5px]">🏆</p>
+            <p className="mt-3 text-[26.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{caus.filter((c) => (kqs[c.id] ?? daLam[c.id]?.verdict) === 'correct').length} / {caus.length} bài đúng hết</p>
+            <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Đúng một phần vẫn được tính điểm. Đọc lại lời giải để nhớ lý do nhé.</p>
+            <NutHS onClick={sinh} className="mt-6 px-6 !text-[15.5px]">Luyện lượt mới</NutHS>
+            <NutHS phu onClick={onXong} className="mt-2 px-6 !text-[15.5px] !font-medium">Về trang chính</NutHS>
           </div>
         )}
       </div>

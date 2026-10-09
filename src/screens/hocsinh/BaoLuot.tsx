@@ -27,7 +27,7 @@ export function BaoLuotHS({ baiLamId, className = '' }: { baiLamId: string | nul
   if (r === null || r?.ly_do === 'khong_phai_luot_luyen') return null
   const khong = r ? loiLuotKhongTinh(r) : null
   return (
-    <TheHS className={`w-full px-4 py-3 text-center text-[14px] ${className}`}>
+    <TheHS className={`w-full px-4 py-3 text-center text-[15.5px] ${className}`}>
       {r === undefined ? <span style={{ color: MAU.muted }}>Đang kiểm tra lượt…</span>
         : r.tinh ? <span style={{ color: MAU.dung, fontWeight: 600 }}>{loi.ketQua.duocTinh}</span>
         : <span style={{ color: MAU.canhBao }}>{khong ?? 'Lượt này chưa được tính.'}</span>}

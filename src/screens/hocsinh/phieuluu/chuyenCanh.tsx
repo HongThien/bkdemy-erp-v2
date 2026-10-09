@@ -58,7 +58,7 @@ export function ManCho({ chu = 'Đang mở bản đồ…' }: { chu?: string }) 
     <div className="fixed inset-0 z-10 flex flex-col items-center justify-center gap-3" style={{ background: 'var(--sk-page)', color: 'var(--sk-muted)', fontFamily: 'var(--sk-font)' }}>
       <style>{CSS}</style>
       <span className="cc-xoay block h-7 w-7 rounded-full" style={{ border: '3px solid var(--sk-line)', borderTopColor: 'var(--sk-acc)', animation: 'cc-cho 1s ease-out both, cc-xoay .9s linear infinite' }} aria-hidden />
-      <span className="text-[14px]" style={{ animation: 'cc-cho 1s ease-out both' }}>{chu}</span>
+      <span className="text-[15.5px]" style={{ animation: 'cc-cho 1s ease-out both' }}>{chu}</span>
     </div>
   )
 }

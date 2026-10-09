@@ -56,16 +56,16 @@ export default function GopYHS({ onBack, tu }: { onBack: () => void; tu?: string
       <TheHS className="flex flex-col gap-3 p-4">
         <div className="flex gap-2" role="tablist">
           {LOAI.map((x) => (
-            <button key={x.id} role="tab" aria-selected={loai === x.id} onClick={() => setLoai(x.id)} className="flex-1 py-2 text-[14px] font-bold"
+            <button key={x.id} role="tab" aria-selected={loai === x.id} onClick={() => setLoai(x.id)} className="flex-1 py-2 text-[15.5px] font-bold"
               style={loai === x.id ? { background: MAU.acc, color: MAU.accInk, borderRadius: 'var(--sk-radius-pill)', fontFamily: 'var(--sk-font-head)' }
                 : { ...THE_TRON, borderRadius: 'var(--sk-radius-pill)', fontFamily: 'var(--sk-font-head)' }}>{x.ten}</button>
           ))}
         </div>
         <textarea value={moTa} onChange={(e) => setMoTa(e.target.value.slice(0, TOI_DA))} rows={5} placeholder={l.goiY}
           onPaste={(e) => { const f = [...e.clipboardData.items].find((i) => i.type.startsWith('image/'))?.getAsFile(); if (f) { e.preventDefault(); datAnh(f) } }}
-          className="w-full resize-y p-3 text-[14.5px] leading-relaxed outline-none"
+          className="w-full resize-y p-3 text-[16px] leading-relaxed outline-none"
           style={{ background: MAU.surface2, color: MAU.ink, border: `1px solid ${MAU.line}`, borderRadius: 'var(--sk-radius)' }} />
-        <div className="flex items-center justify-between gap-2 text-[12px]" style={{ color: dai > 0 && dai < TOI_THIEU ? MAU.canhBao : MAU.muted }}>
+        <div className="flex items-center justify-between gap-2 text-[13px]" style={{ color: dai > 0 && dai < TOI_THIEU ? MAU.canhBao : MAU.muted }}>
           <span>{dai > 0 && dai < TOI_THIEU ? `Viết thêm ${TOI_THIEU - dai} chữ nữa nhé` : `Tối đa ${GOP_Y_TOI_DA_MOI_NGAY} lần mỗi ngày`}</span>
           <span>{dai}/{TOI_DA}</span>
         </div>
@@ -74,13 +74,13 @@ export default function GopYHS({ onBack, tu }: { onBack: () => void; tu?: string
           {xemAnh
             ? <span className="flex items-center gap-2">
                 <img src={xemAnh} alt="Ảnh đính kèm" className="h-16 w-16 object-cover" style={{ borderRadius: 'var(--sk-radius)', border: `1px solid ${MAU.line}` }} />
-                <button onClick={() => datAnh(null)} className="text-[13px] font-bold" style={{ color: MAU.muted }}>Bỏ ảnh</button>
+                <button onClick={() => datAnh(null)} className="text-[14.5px] font-bold" style={{ color: MAU.muted }}>Bỏ ảnh</button>
               </span>
-            : <NutHS phu onClick={() => tep.current?.click()} className="!h-9 !px-3 !text-[13px]">📎 Đính kèm ảnh chụp</NutHS>}
-          <span className="text-[12px]" style={{ color: MAU.muted }}>(không bắt buộc · dán ảnh vào ô chữ cũng được)</span>
+            : <NutHS phu onClick={() => tep.current?.click()} className="!h-9 !px-3 !text-[14.5px]">📎 Đính kèm ảnh chụp</NutHS>}
+          <span className="text-[13px]" style={{ color: MAU.muted }}>(không bắt buộc · dán ảnh vào ô chữ cũng được)</span>
         </div>
-        {loi && <p className="text-[13px]" style={{ color: MAU.sai }}>{loi}</p>}
-        {vuaGui && <p className="text-[13px] font-bold" style={{ color: MAU.dung }}>{vuaGui}</p>}
+        {loi && <p className="text-[14.5px]" style={{ color: MAU.sai }}>{loi}</p>}
+        {vuaGui && <p className="text-[14.5px] font-bold" style={{ color: MAU.dung }}>{vuaGui}</p>}
         <NutHS onClick={gui} tat={dang || dai < TOI_THIEU}>{dang ? 'Đang gửi…' : `Gửi ${l.ten.toLowerCase()}`}</NutHS>
       </TheHS>
 
@@ -91,16 +91,16 @@ export default function GopYHS({ onBack, tu }: { onBack: () => void; tu?: string
         : ds.map((g) => (
           <TheHS key={g.id} className="flex flex-col gap-2 p-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[14px] font-bold" style={HEAD}>{g.loai === 'bug' ? 'Báo lỗi' : 'Góp ý tưởng'}</span>
+              <span className="text-[15.5px] font-bold" style={HEAD}>{g.loai === 'bug' ? 'Báo lỗi' : 'Góp ý tưởng'}</span>
               <NhanHS mau={MAU_TT[g.trang_thai]}>{TEN_TRANG_THAI_GOP_Y[g.trang_thai]}</NhanHS>
               {g.tra_loi_moi && <NhanHS dac>Mới</NhanHS>}
-              <span className="ml-auto text-[12px]" style={{ color: MAU.muted }}>{ngayGio(g.at)}</span>
+              <span className="ml-auto text-[13px]" style={{ color: MAU.muted }}>{ngayGio(g.at)}</span>
             </div>
-            <p className="whitespace-pre-wrap text-[14px] leading-relaxed" style={{ color: MAU.ink }}>{g.mo_ta}</p>
+            <p className="whitespace-pre-wrap text-[15.5px] leading-relaxed" style={{ color: MAU.ink }}>{g.mo_ta}</p>
             {g.anh_url && <a href={g.anh_url} target="_blank" rel="noreferrer"><img src={g.anh_url} alt="Ảnh em gửi" className="max-h-40 object-contain" style={{ borderRadius: 'var(--sk-radius)' }} /></a>}
             {g.tra_loi && (
-              <div className="p-3 text-[14px] leading-relaxed" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius)', borderLeft: `3px solid ${MAU.acc}` }}>
-                <p className="mb-1 text-[12px] font-bold" style={{ color: MAU.acc }}>Thầy cô trả lời{g.tra_loi_at ? ` · ${ngayGio(g.tra_loi_at)}` : ''}</p>
+              <div className="p-3 text-[15.5px] leading-relaxed" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius)', borderLeft: `3px solid ${MAU.acc}` }}>
+                <p className="mb-1 text-[13px] font-bold" style={{ color: MAU.acc }}>Thầy cô trả lời{g.tra_loi_at ? ` · ${ngayGio(g.tra_loi_at)}` : ''}</p>
                 <p className="whitespace-pre-wrap" style={{ color: MAU.ink }}>{g.tra_loi}</p>
               </div>
             )}

@@ -70,9 +70,9 @@ export default function BaiTraHS({ buoiHocId, onXong, onDaXem }: { buoiHocId: st
       {bai && (
         <>
           <TheHS className="p-4">
-            <p className="text-[16px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Kết quả</p>
+            <p className="text-[17.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Kết quả</p>
             {bai.so_cau > 0 ? (
-              <p className="mt-1.5 text-[15px] font-semibold">
+              <p className="mt-1.5 text-[16.5px] font-semibold">
                 <span style={{ color: MAU.dung }}>Đúng {bai.so_dung}</span>
                 <span style={{ color: MAU.muted }}> · </span>
                 <span style={{ color: MAU.canhBao }}>Chưa trọn {bai.so_chua_tron}</span>
@@ -81,7 +81,7 @@ export default function BaiTraHS({ buoiHocId, onXong, onDaXem }: { buoiHocId: st
                 <span style={{ color: MAU.muted }}> / {bai.so_cau} câu</span>
               </p>
             ) : (
-              <p className="mt-1.5 text-[14px]" style={{ color: MAU.muted }}>Bài này thầy cô chấm trên ảnh, không có điểm từng câu.</p>
+              <p className="mt-1.5 text-[15.5px]" style={{ color: MAU.muted }}>Bài này thầy cô chấm trên ảnh, không có điểm từng câu.</p>
             )}
             {(nop || bai.thai_do) && (
               <div className="mt-2 flex flex-wrap gap-1.5">
@@ -97,13 +97,13 @@ export default function BaiTraHS({ buoiHocId, onXong, onDaXem }: { buoiHocId: st
               <TheHS className="flex flex-col gap-3 p-4">
                 {theoDang(bai.cau).map((g, i) => (
                   <div key={i}>
-                    {g.ten && <p className="mb-1.5 text-[13px] font-semibold" style={{ color: MAU.muted }}>{g.ten}</p>}
+                    {g.ten && <p className="mb-1.5 text-[14.5px] font-semibold" style={{ color: MAU.muted }}>{g.ten}</p>}
                     <div className="flex flex-wrap gap-1.5">
                       {g.cau.map((c) => <NhanHS key={c.problem_no} mau={KQ[c.result].mau}>Câu {c.problem_no} · {KQ[c.result].t}</NhanHS>)}
                     </div>
                   </div>
                 ))}
-                <p className="text-[12px]" style={{ color: MAU.muted }}>Đ = đúng · C = chưa trọn · S = sai</p>
+                <p className="text-[13px]" style={{ color: MAU.muted }}>Đ = đúng · C = chưa trọn · S = sai</p>
               </TheHS>
             </>
           )}
@@ -112,7 +112,7 @@ export default function BaiTraHS({ buoiHocId, onXong, onDaXem }: { buoiHocId: st
             <>
               <NhomHS>Nhận xét của thầy cô</NhomHS>
               <TheHS className="p-4">
-                {bai.nhan_xet.map((nx, i) => <p key={i} className="text-[14px] leading-snug" style={{ color: MAU.ink }}>• {nx}</p>)}
+                {bai.nhan_xet.map((nx, i) => <p key={i} className="text-[15.5px] leading-snug" style={{ color: MAU.ink }}>• {nx}</p>)}
               </TheHS>
             </>
           )}

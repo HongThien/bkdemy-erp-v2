@@ -241,7 +241,7 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
       <DauTrangHS tieuDe="Đấu trường" phu={`Trận ${t + 1}/${SO_TRAN} · cần đúng ${need}/${SO_CAU_TRAN}`}
         phai={<div className="flex items-center gap-2">
           <Pips thang={thang} t={t} pha={pha} />
-          {(pha === 'dang_danh' || pha === 'sau_tran') && <NutHS phu className="!h-9 !px-3 !text-[13px]" onClick={() => setHoiBo(true)}>Bỏ cuộc</NutHS>}
+          {(pha === 'dang_danh' || pha === 'sau_tran') && <NutHS phu className="!h-9 !px-3 !text-[14.5px]" onClick={() => setHoiBo(true)}>Bỏ cuộc</NutHS>}
         </div>} />
 
       {/* ── SÂN ĐẤU: nhân vật chính trái · boss phải + thanh máu · canvas hiệu ứng phủ lên ── */}
@@ -278,10 +278,10 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
             <NhanHS dac>Câu {c + 1}/{SO_CAU_TRAN}</NhanHS>
             <NhanHS mau={cau.doKho === 'cao' ? MAU.sai : cau.doKho === 'vua' ? MAU.canhBao : MAU.dung}>{NHAN_DO_KHO[cau.doKho]}</NhanHS>
             <span className="flex-1" />
-            <span className="text-[12.5px]" style={{ color: MAU.muted }}>Cần đúng {need}/{SO_CAU_TRAN}</span>
+            <span className="text-[14px]" style={{ color: MAU.muted }}>Cần đúng {need}/{SO_CAU_TRAN}</span>
           </div>
           {c === 0 && <NguoiDan loi={loiDan} />}
-          <p className="text-[18px] font-semibold leading-snug md:text-[20px]" style={{ color: MAU.ink }}>{cau.de}</p>
+          <p className="text-[20px] font-semibold leading-snug md:text-[22px]" style={{ color: MAU.ink }}>{cau.de}</p>
           <div className="grid gap-2 sm:grid-cols-2">
             {cau.dapAn.map((d, i) => {
               const xong = chon !== null
@@ -292,9 +292,9 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
                   : i === chon ? { border: `2px solid ${MAU.sai}`, background: `color-mix(in srgb, ${MAU.sai} 22%, transparent)` }
                     : { border: '1.5px solid var(--sk-line)', background: 'var(--sk-surface2)', opacity: 0.55 }
               return (
-                <button key={i} onClick={() => chonDapAn(i)} disabled={xong} className="flex min-h-[52px] items-center gap-3 rounded-[12px] px-3 py-2 text-left text-[16px] font-medium transition active:scale-[0.99]"
+                <button key={i} onClick={() => chonDapAn(i)} disabled={xong} className="flex min-h-[52px] items-center gap-3 rounded-[12px] px-3 py-2 text-left text-[17.5px] font-medium transition active:scale-[0.99]"
                   style={{ ...trang, color: MAU.ink }}>
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-extrabold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{CHU[i]}</span>
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[14.5px] font-extrabold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{CHU[i]}</span>
                   <span className="min-w-0 flex-1">{d}</span>
                   {xong && laDung && <span style={{ color: MAU.dung }}>✓</span>}
                   {xong && i === chon && !laDung && <span style={{ color: MAU.sai }}>✗</span>}
@@ -304,7 +304,7 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
           </div>
           {chon !== null && (
             <div className="flex items-center gap-3">
-              <p className="flex-1 text-[14px] font-bold" style={{ color: chon === cau.dung ? MAU.dung : MAU.sai }}>
+              <p className="flex-1 text-[15.5px] font-bold" style={{ color: chon === cau.dung ? MAU.dung : MAU.sai }}>
                 {chon === cau.dung ? 'Đúng rồi!' : `Chưa đúng — đáp án ${CHU[cau.dung]}.`}
               </p>
               <NutHS onClick={tiep}>{c + 1 < SO_CAU_TRAN ? 'Câu tiếp ›' : 'Kết thúc trận'}</NutHS>
@@ -315,17 +315,17 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
 
       {pha === 'dien' && (
         <TheHS className="dt-hien flex flex-col items-center gap-1.5 p-5 text-center">
-          <p className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: MAU.muted }}>
+          <p className="text-[14.5px] font-bold uppercase tracking-[0.12em]" style={{ color: MAU.muted }}>
             {donCuoi && thang[thang.length - 1] ? `Đúng ${donCuoi.muc}% — tung đòn` : 'Chưa đủ số câu đúng…'}
           </p>
-          <p className="text-[26px] font-extrabold" style={{ ...HEAD, color: MAU.acc }}>{don ? TEN_DON[don] : ''}</p>
+          <p className="text-[28.5px] font-extrabold" style={{ ...HEAD, color: MAU.acc }}>{don ? TEN_DON[don] : ''}</p>
         </TheHS>
       )}
 
       {pha === 'sau_tran' && (
         <TheHS className="dt-hien flex flex-col items-center gap-2 p-5 text-center">
-          <p className="text-[26px] font-extrabold" style={{ ...HEAD, color: MAU.acc }}>Thắng trận {t + 1}!</p>
-          <p className="text-[15px]" style={{ color: MAU.ink }}>
+          <p className="text-[28.5px] font-extrabold" style={{ ...HEAD, color: MAU.acc }}>Thắng trận {t + 1}!</p>
+          <p className="text-[16.5px]" style={{ color: MAU.ink }}>
             Đúng {dungTran}/{SO_CAU_TRAN} ({donCuoi?.muc}%) · đòn: {donCuoi ? TEN_DON[donCuoi.don] : ''}. Trận kế cần đúng {NGUONG[t + 1]}/{SO_CAU_TRAN}.
           </p>
           <NguoiDan loi={loiDan} />
@@ -335,12 +335,12 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
 
       {pha === 'cuoi' && (
         <TheHS className="dt-hien flex flex-col items-center gap-2.5 p-5 text-center" style={{ animationDelay: '.5s', animationFillMode: 'backwards' }}>
-          <p className="text-[28px] font-extrabold" style={{ ...HEAD, color: vuot ? MAU.acc : MAU.ink }}>
+          <p className="text-[31px] font-extrabold" style={{ ...HEAD, color: vuot ? MAU.acc : MAU.ink }}>
             {vuot ? 'Vượt Thử thách!' : lyDo === 'bo_cuoc' ? 'Em đã bỏ cuộc' : `Thua ở trận ${thang.length}`}
           </p>
           <Pips thang={thang} t={thang.length} pha="cuoi" lon />
           <NguoiDan loi={loiDan} />
-          <p className="text-[14px]" style={{ color: MAU.muted }}>
+          <p className="text-[15.5px]" style={{ color: MAU.muted }}>
             Thắng {soThang}/{SO_TRAN} trận{diem ? ` · +${diem(kqCuoi)} Điểm Rank` : ''} · hôm nay còn {luotConSau}/2 lượt{lyDo === 'bo_cuoc' ? ' · bỏ cuộc vẫn bị trừ lượt' : ''}
           </p>
           <div className="mt-1 flex flex-wrap justify-center gap-2.5">
@@ -353,8 +353,8 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
       {hoiBo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-6" style={{ background: 'color-mix(in srgb, var(--sk-bg) 72%, transparent)' }}>
           <TheHS className="dt-hien flex w-full max-w-[380px] flex-col gap-3 p-5 text-center" style={{ background: 'var(--sk-bg)' }}>
-            <p className="text-[20px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Bỏ cuộc?</p>
-            <p className="text-[14px]" style={{ color: MAU.muted }}>Bỏ cuộc tính là thua và vẫn mất 1 lượt hôm nay.</p>
+            <p className="text-[22px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Bỏ cuộc?</p>
+            <p className="text-[15.5px]" style={{ color: MAU.muted }}>Bỏ cuộc tính là thua và vẫn mất 1 lượt hôm nay.</p>
             <div className="flex justify-center gap-2.5">
               <NutHS phu onClick={() => setHoiBo(false)}>Đánh tiếp</NutHS>
               <NutHS onClick={boCuoc}>Bỏ cuộc</NutHS>
@@ -375,7 +375,7 @@ function NguoiDan({ loi }: { loi: string }) {
       <span className="relative block shrink-0 overflow-hidden rounded-full" style={{ width: S, height: S, border: '2px solid var(--sk-acc)', background: 'var(--sk-surface2)' }}>
         {a && <img src={a} alt="" draggable={false} className="absolute max-w-none select-none" style={{ width: S * 3, left: -S * 1.36, top: -S * 0.28 }} />}
       </span>
-      <p className="rounded-[12px] px-3 py-1.5 text-[13.5px] font-semibold leading-snug" style={{ background: 'var(--sk-surface2)', border: '1px solid var(--sk-line)', color: MAU.ink }}>{loi}</p>
+      <p className="rounded-[12px] px-3 py-1.5 text-[15px] font-semibold leading-snug" style={{ background: 'var(--sk-surface2)', border: '1px solid var(--sk-line)', color: MAU.ink }}>{loi}</p>
     </div>
   )
 }

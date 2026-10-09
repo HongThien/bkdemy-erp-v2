@@ -43,7 +43,7 @@ export function KeoThaCau({ noiDung, nganHang, value, onChange, key_, daCham }: 
   }
   return (
     <div>
-      <div className="mb-3 space-y-2 text-[19px] leading-relaxed" style={{ color: MAU.ink }}>
+      <div className="mb-3 space-y-2 text-[21px] leading-relaxed" style={{ color: MAU.ink }}>
         {doan.map((p, pi) => {
           if (!/_{4,}/.test(p)) return <div key={pi}><MathText>{p}</MathText></div>
           const manh = p.split(/_{4,}/)
@@ -61,7 +61,7 @@ export function KeoThaCau({ noiDung, nganHang, value, onChange, key_, daCham }: 
                         onClick={() => chamO(oi)}
                         onDragOver={(e) => { if (!daCham) e.preventDefault() }}
                         onDrop={(e) => { e.preventDefault(); const k = Number(e.dataTransfer.getData('text/plain')); if (!Number.isNaN(k) && nganHang[k] != null) dat(oi, nganHang[k]) }}>
-                        {value[oi] ? <MathText>{value[oi]!}</MathText> : <span style={{ color: MAU.muted, fontSize: 15 }}>ô {oi + 1}</span>}
+                        {value[oi] ? <MathText>{value[oi]!}</MathText> : <span style={{ color: MAU.muted, fontSize: 16.5 }}>ô {oi + 1}</span>}
                       </span>
                     )}
                   </span>
@@ -73,13 +73,13 @@ export function KeoThaCau({ noiDung, nganHang, value, onChange, key_, daCham }: 
       </div>
       {!daCham && (
         <div>
-          <p className="mb-1.5 text-[14px]" style={{ color: MAU.muted }}>Kéo thẻ vào ô trống (hoặc chạm thẻ rồi chạm ô):</p>
+          <p className="mb-1.5 text-[15.5px]" style={{ color: MAU.muted }}>Kéo thẻ vào ô trống (hoặc chạm thẻ rồi chạm ô):</p>
           <div className="flex flex-wrap gap-2">
             {nganHang.map((the, k) => (
               <span key={k} role="button" tabIndex={0} draggable
                 onDragStart={(e) => { e.dataTransfer.setData('text/plain', String(k)); e.dataTransfer.effectAllowed = 'copy' }}
                 onClick={() => setChonThe((c) => (c === k ? null : k))}
-                className="inline-flex cursor-grab select-none items-center px-3 py-1.5 text-[18px] active:cursor-grabbing"
+                className="inline-flex cursor-grab select-none items-center px-3 py-1.5 text-[20px] active:cursor-grabbing"
                 style={{ borderRadius: R, color: MAU.ink, border: chonThe === k ? `2px solid ${MAU.acc}` : `1.5px solid ${MAU.line}`, background: chonThe === k ? NEN_ACC : MAU.surface }}>
                 <MathText>{the}</MathText>
               </span>
@@ -88,7 +88,7 @@ export function KeoThaCau({ noiDung, nganHang, value, onChange, key_, daCham }: 
         </div>
       )}
       {daCham && key_ && value.some((v, i) => v !== key_[i]) && (
-        <div className="mt-2 text-[17px]" style={{ color: MAU.muted }}>
+        <div className="mt-2 text-[18.5px]" style={{ color: MAU.muted }}>
           Đáp án đúng:{' '}
           {key_.map((k, i) => (
             <span key={i} className="mr-3 inline-flex items-center gap-1" style={{ color: MAU.dung }}><b>Ô {i + 1}:</b> <MathText>{k}</MathText></span>
