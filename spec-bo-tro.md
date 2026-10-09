@@ -293,3 +293,12 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
      TA/HS chưa có tài khoản · TA thiếu quyền "Buổi học" · app TA/HS không hiện ca · lỗi khi tải. Hiện ở ERP › Bổ trợ › **Lịch phòng** (hôm nay → 7
      ngày; xanh = ổn, đỏ = liệt kê để OPS sửa trước giờ ca). Thử phá có chủ đích (rollback): bắt đủ 6 ca đuổi bị ẩn + 1 TA không tài khoản.
   **Không kiểm được bằng DB:** cache app cũ trên máy, ô vẽ sai — lớp 2 lo.
+
+## 16. Cập nhật 09/10 — trần 70 · suất theo bậc lớp
+
+- **Trần bổ trợ yếu 50 → 70** em đang bổ trợ cùng lúc (thêm iPad); trần ưu tiên Cao giữ 20. Hằng số 1 chỗ: `_btyeu_tran_dang()`.
+- **Chỗ người của ca = 3 SUẤT/TA**, mỗi em chiếm suất theo **bậc lớp**: S = 0,5 · A = 0,75 · B/C (và lớp chưa gán bậc) = 1 ⇒ toàn lớp S
+  thì 1 TA nhận 6 em. Lớp tính suất = lớp gốc của lượt (bù = lớp buổi nghỉ · đuổi = lớp đợt đuổi · yếu = lớp case, không có thì lớp đang học
+  môn của ca). Em có 2 lượt trong cùng ca chỉ tính 1 lần. **Đơn vị (30'×TA) giữ nguyên** — ca vẫn đầy khi hết suất HOẶC hết đơn vị.
+  DB: `_bt_trong_so_lop` · `_ca_bo_tro_trong_so_bhh` · `_ca_bo_tro_suc_nguoi`; sửa `fn_ca_bo_tro_ngay/ung_vien/xep/xac_nhan` (mig 202610091449).
+  Lịch phòng hiện "N em · x/3 suất", hàng chờ báo "hết suất (còn x, em cần y)".

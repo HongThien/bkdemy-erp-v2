@@ -36193,3 +36193,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Soát 7 hình đề định dùng: 3 hình (LT 18.12, 19.1, 21.10) toàn khối ĐEN — đọc PNG thật (pngjs): RGBA chỉ có 2 giá trị (0,0,0,255) đen đặc và (0,0,0,0) trong suốt ⇒ mọi vùng tô của hình gốc thành đen che nét (21.10 mất hẳn hình tròn); không có hiệu ứng màu trong XML Word ⇒ lỗi trong chính file sách. Quét cả 120 PNG (scratchpad/dem-anh-den.mjs, ngưỡng >15% đen đặc): 16 ảnh hỏng, 13 bài đề dính (LT 18.12, 19.1, 19.2, 20.9, 21.4, 21.10, 23.1, VD 20.2, Ôn 91, 92, 95, 99, 100). LT 19.18 hình ghi E, đề ghi M. ⇒ thay bằng câu có hình tốt; hỏi CEO cách xử lý (đề xuất vẽ lại bằng code).
 - Hình đề dùng đường 4T lô 11 (kho-rules/dai/hinh-de/dung-hinh-de.ps1 + manifest, anh_de) — 7 PNG chép vào hinh-de/5T-*.png theo quy ước tên của nó.
 - Đáp số 23/23: tỉ số diện tích tính bằng toạ độ thật (độc lập "chung đường cao"), sơn mặt / xếp hình đếm từng khối nhỏ. 4 sơ đồ. KaTeX 356 công thức 0 hỏng, quét mất-\ 0.
+
+## 2026-10-09 (15h) — Trần 70 · suất ca theo bậc lớp (Thùy)
+
+- Thùy: thêm iPad ⇒ capacity 50 → 70; trọng số HS S 0,5 · A 0,75 · B/C 1 ("trước 1 ca tối đa 3 HS, giờ toàn S thì 6").
+- Mig 202610091449 (dựng 4 hàm từ bản đang chạy): `_btyeu_tran_dang()` = 70; suất người của ca = Σ trọng số (mỗi em 1 lần, lấy max nếu 2
+  lượt) ≤ 3×số TA, thay "3 em/TA". Chạy thử (rollback): sức chứa {dang 50, tran 70, cao 13/20} — đang chạm đúng trần cũ; trọng số S/A/B/C/null
+  = 0,5/0,75/1/1/1; ca hôm nay 1 em lớp 5A2… ra 0,5–1 suất đúng bậc. Lịch phòng local: "1 em · 0,5/3 suất · còn 2,5 suất".
+- Không đổi: đơn vị ca, trần Cao 20, cách đếm 70 (đếm ĐẦU em, không trọng số — Thùy chỉ nói trọng số cho ca).
