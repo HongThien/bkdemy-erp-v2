@@ -36265,3 +36265,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Máy kiểm trước khi ghi: số dòng khớp, 3–6 bước, bước ≥ 3 từ (ngoài công thức), `$` chẵn, KaTeX render được. Lần đầu 5 lỗi (bước kiểu "Tính $S_{\triangle OAB}=…$" chỉ 2 chữ) ⇒ sửa tay thành "Tính diện tích tam giác $OAB$ theo đáy … và đường cao …". Ghi 247 câu, 1 transaction.
 - Sau ghi: phân bố bước/card {3: 230, 4: 103, 5: 25, 6: 4}; bộ đo còn nêu 11 câu nhưng đọc lại đều là báo nhầm (bước như "Kẻ $IH\perp b$ tại $H$" phần lớn là công thức) ⇒ giữ.
 - Luật ghi vào README §3 + brief k9. **Sai của t:** lần chèn luật vào brief đầu tiên làm hỏng file — chuỗi `` $` `` trong `String.replace` của JS nghĩa là "chèn đoạn đứng trước", nên cả đầu file bị chèn lặp 3 lần, `\t` của `\triangle` thành tab. Dựng lại = bản HEAD + 1 dòng. **Bài học:** chuỗi thay thế chứa `$` ⇒ luôn dùng hàm `replace(x, () => moi)`, và chuỗi LaTeX viết bằng `String.raw`.
+
+## 09/10 (tiếp) — 5T lô 6A + 7A ghi thật 99 câu (T15T000000400–498); tổng từ sách 485
+- 6A (CĐ7–9): 58 câu, đáp số khớp sau khi hàm kiểm nhận "Số em: 10" lẫn "10 em"; sửa diễn đạt LT 7.15 ("cách một thiếu 30 chỗ" ⇒ "thừa 30 người, … một thừa một thiếu nên cộng"). Bảng tính ngược (VD 9.3, LT 9.11, 9.14, 9.16, 9.17) có tên HS trong \text{} của array — để nguyên (bảng của sách).
+- 7A (CĐ13–14): tach-bai dính ý LT 14.5i–l vào ý h (2 cột cùng dòng) ⇒ vá bai.json ở scratchpad (lưu bản trước: bai.truoc-va-14.5.json), Sonnet đã soạn 4 câu i–l riêng ⇒ nhập vào. Sửa chính tả đề ⇒ 8 câu trùng câu kho cũ nên không chèn; bài dãy gộp ý (VD 13.1, LT 13.1–13.3) cũng trùng kho cũ. 41 câu mới.
+- Lô 8 (CĐ19–25): 8B, 8C đã nộp; 8A đang soạn. Bộ kiểm lô 10 (Ôn tập) đang viết.

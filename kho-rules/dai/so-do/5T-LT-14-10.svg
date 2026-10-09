@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 112" width="672" height="112" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="672" height="112" fill="#fff"/>
+<text x="102" y="37" text-anchor="end" fill="#0f172a">Số thứ nhất:</text>
+<line x1="112" y1="32" x2="592" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="25" x2="112" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="125.7" y1="25" x2="125.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="139.4" y1="25" x2="139.4" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="153.1" y1="25" x2="153.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="166.9" y1="25" x2="166.9" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="180.6" y1="25" x2="180.6" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="194.3" y1="25" x2="194.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="208" y1="25" x2="208" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="221.7" y1="25" x2="221.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="235.4" y1="25" x2="235.4" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="249.1" y1="25" x2="249.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="262.9" y1="25" x2="262.9" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="276.6" y1="25" x2="276.6" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="290.3" y1="25" x2="290.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="304" y1="25" x2="304" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="317.7" y1="25" x2="317.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="331.4" y1="25" x2="331.4" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="345.1" y1="25" x2="345.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="358.9" y1="25" x2="358.9" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="372.6" y1="25" x2="372.6" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="386.3" y1="25" x2="386.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="400" y1="25" x2="400" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="413.7" y1="25" x2="413.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="427.4" y1="25" x2="427.4" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="441.1" y1="25" x2="441.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="454.9" y1="25" x2="454.9" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="468.6" y1="25" x2="468.6" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="482.3" y1="25" x2="482.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="496" y1="25" x2="496" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="509.7" y1="25" x2="509.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="523.4" y1="25" x2="523.4" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="537.1" y1="25" x2="537.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="550.9" y1="25" x2="550.9" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="564.6" y1="25" x2="564.6" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="578.3" y1="25" x2="578.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="592" y1="25" x2="592" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="352" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="102" y="81" text-anchor="end" fill="#0f172a">Số thứ hai:</text>
+<line x1="112" y1="76" x2="249.1" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="69" x2="112" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="125.7" y1="69" x2="125.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="139.4" y1="69" x2="139.4" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="153.1" y1="69" x2="153.1" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="166.9" y1="69" x2="166.9" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="180.6" y1="69" x2="180.6" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="194.3" y1="69" x2="194.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="208" y1="69" x2="208" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="221.7" y1="69" x2="221.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="235.4" y1="69" x2="235.4" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="249.1" y1="69" x2="249.1" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="180.6" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M606,24 q8,0 8,8 L614,46 q0,8 8,8 q-8,0 -8,8 L614,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="628" y="59" fill="#0f172a">11,7</text>
+</svg>

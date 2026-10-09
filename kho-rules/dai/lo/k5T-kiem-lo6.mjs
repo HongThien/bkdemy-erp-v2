@@ -24,10 +24,10 @@ const chiaGapDoi = (bd) => { const x = [...bd]; for (let i = 0; i < x.length; i+
 
 export const LO6 = {
   // ── CĐ7 hai hiệu số ──
-  'VD 7.1': () => { const e = tim(1, 200, (e) => 2 * e + 5 === 3 * e - 5); return [`${e}em`, `${2 * e + 5}`] },
-  'LT 7.1': () => { const t = tim(1, 200, (t) => 8 * t + 16 === 10 * t); return [`${10 * t}`, `${t}túi`] },
+  'VD 7.1': () => { const e = tim(1, 200, (e) => 2 * e + 5 === 3 * e - 5); return [[`${e}em`, `em:${e}`], `${2 * e + 5}`] },
+  'LT 7.1': () => { const t = tim(1, 200, (t) => 8 * t + 16 === 10 * t); return [`${10 * t}`, [`${t}túi`, `túi:${t}`]] },
   'LT 7.2': () => { const h = tim(1, 200, (h) => 3 * h + 54 === 5 * h); return [`${h}`, `${5 * h}`] },
-  'LT 7.3': () => { const x = tim(1, 200, (x) => 25 * x === 27 * x - 16); return [`${x}xe`, `${25 * x}`] },
+  'LT 7.3': () => { const x = tim(1, 200, (x) => 25 * x === 27 * x - 16); return [[`${x}xe`, `xe:${x}`], `${25 * x}`] },
   'LT 7.4': () => { const n = tim(1, 200, (n) => 3000 * n + 30000 === 5000 * n); return [`${n}`, [`${3000 * n}`, `${3000 * n / 1000}nghìn`]] },
   'LT 7.6': () => { const h = tim(1, 200, (h) => 8 * h + 8 === 10 * h - 16); return [`${h}`, `${8 * h + 8}`] },
   'LT 7.7': () => [`${tim(1, 100000, (d) => d * 4 - 3 * 120 === d * 3 + 2 * 120)}`],                 // d/30 − 3 = d/40 + 2 (nhân 120)

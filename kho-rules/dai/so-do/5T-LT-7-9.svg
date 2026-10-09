@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 484 156" width="484" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="484" height="156" fill="#fff"/>
+<text x="140" y="37" text-anchor="end" fill="#0f172a">Quãng đường:</text>
+<line x1="150" y1="32" x2="350" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="150" y1="25" x2="150" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="25" x2="350" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="250" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="140" y="81" text-anchor="end" fill="#0f172a">Đi 50 m mỗi phút:</text>
+<line x1="150" y1="76" x2="350" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="150" y1="69" x2="150" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="69" x2="350" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="76" x2="400" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="400" y1="69" x2="400" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="375" y="66" text-anchor="middle" font-size="12" fill="#b45309">150 m</text>
+<text x="140" y="125" text-anchor="end" fill="#0f172a">Đi 60 m mỗi phút:</text>
+<line x1="150" y1="120" x2="350" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="150" y1="113" x2="150" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="113" x2="350" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="120" x2="450" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="450" y1="113" x2="450" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="400" y="110" text-anchor="middle" font-size="12" fill="#b45309">300 m</text>
+</svg>

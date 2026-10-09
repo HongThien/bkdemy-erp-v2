@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 734 112" width="734" height="112" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="734" height="112" fill="#fff"/>
+<text x="155" y="37" text-anchor="end" fill="#0f172a">Số bé sau khi dịch:</text>
+<line x1="165" y1="32" x2="645" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="165" y1="25" x2="165" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="213" y1="25" x2="213" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="261" y1="25" x2="261" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="309" y1="25" x2="309" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="357" y1="25" x2="357" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="405" y1="25" x2="405" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="453" y1="25" x2="453" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="501" y1="25" x2="501" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="549" y1="25" x2="549" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="597" y1="25" x2="597" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="645" y1="25" x2="645" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="155" y="81" text-anchor="end" fill="#0f172a">Số bé:</text>
+<line x1="165" y1="76" x2="213" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="165" y1="69" x2="165" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="213" y1="69" x2="213" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="189" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M659,24 q8,0 8,8 L667,46 q0,8 8,8 q-8,0 -8,8 L667,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="681" y="59" fill="#0f172a">271,7</text>
+</svg>
