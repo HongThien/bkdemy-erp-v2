@@ -1,0 +1,10 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-5T-lo9C-20261009",
+ "cau": {
+  "LT 30.14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách, mốc giờ (và sơ đồ tỉ số đi kèm nếu có) khớp đề"
+  }
+ }
+}

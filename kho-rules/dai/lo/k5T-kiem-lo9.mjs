@@ -3,7 +3,7 @@
 // Bài hệ hai/ba đại lượng: dò nghiệm nguyên/thập phân rồi mới so — không giải bằng công thức để khỏi "đúng vì cùng sai".
 const r8 = (v) => Math.round(v * 1e8) / 1e8
 const vn = (v) => String(r8(v)).replace('.', ',')
-const tg = (h, m) => [`${h}giờ${m}phút`, `${h}giờ${String(m).padStart(2, '0')}phút`]
+const tg = (h, m) => (m ? [`${h}giờ${m}phút`, `${h}giờ${String(m).padStart(2, '0')}phút`] : [`${h}giờ`])
 const gio = (t) => { const p = Math.round(t * 60); return [Math.floor(p / 60), p % 60] }                       // giờ thập phân → [giờ, phút]
 const luc = (h0, m0, t) => { const p = h0 * 60 + m0 + Math.round(t * 60); return tg(Math.floor(p / 60), p % 60) }  // thời điểm = mốc + t giờ
 const do2 = (f, max = 400) => { for (let a = 0; a <= max; a++) for (let b = 0; b <= max; b++) if (f(a, b)) return [a, b]; throw new Error('không có nghiệm') }

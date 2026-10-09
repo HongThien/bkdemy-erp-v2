@@ -1,0 +1,14 @@
+{
+ "VD 26.1": {
+  "noi_dung": "Hai thành phố cách nhau 208,5 km, một xe máy đi từ thành phố A đến thành phố B với vận tốc là 38,6 km/giờ. Một ô tô khởi hành cùng một lúc với xe máy đi từ thành phố B đến thành phố A với vận tốc 44,8 km/ giờ. Hỏi:\na) Xe máy và ô tô gặp nhau lúc mấy giờ biết hai xe khởi hành lúc 8 giờ 30 phút?\nb) Chỗ gặp nhau cách thành phố A bao nhiêu ki-lô-mét?"
+ },
+ "LT 26.7": {
+  "noi_dung": "Một xe máy xuất phát tại A và đuổi theo một xe đạp xuất phát tại B đi cùng chiều xe máy. Biết vận tốc xe máy bằng 36 km/giờ, vận tốc xe đạp bằng 16 km/giờ. Quãng đường AB dài 8 km. Hỏi sau bao lâu thì xe máy đuổi kịp xe đạp?"
+ },
+ "LT 26.9": {
+  "noi_dung": "Hai ô tô ở A và B cách nhau 75 km cùng khởi hành một lúc và đi cùng chiều. Sau 2,5 giờ thì ô tô đi từ A đuổi kịp ô tô đi từ B. Tính vận tốc của mỗi ô tô, biết rằng tổng hai vận tốc là 114 km/giờ."
+ },
+ "LT 26.15": {
+  "noi_dung": "Lúc 7 giờ một xe khách khởi hành đi từ A để đi đến B với vận tốc 60 km/ giờ. Đến 7 giờ 48 phút một xe khách khác khởi hành từ B đi về A với vận tốc 55 km/giờ. Hai xe gặp nhau lúc 9 giờ. Tính quãng đường AB."
+ }
+}

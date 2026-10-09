@@ -149,7 +149,8 @@ import { LO6 } from './k5T-kiem-lo6.mjs'
 import { LO7 } from './k5T-kiem-lo7.mjs'
 import { LO8 } from './k5T-kiem-lo8.mjs'
 import { LO9 } from './k5T-kiem-lo9.mjs'
-for (const lo of [LO5, LO6, LO7, LO8, LO9]) for (const [k, f] of Object.entries(lo)) { if (KIEM[k]) throw new Error(`hàm kiểm trùng mã ${k}`); KIEM[k] = f }
+import { LO10 } from './k5T-kiem-lo10.mjs'
+for (const lo of [LO5, LO6, LO7, LO8, LO9, LO10]) for (const [k, f] of Object.entries(lo)) { if (KIEM[k]) throw new Error(`hàm kiểm trùng mã ${k}`); KIEM[k] = f }
 
 /** Chuẩn hoá để so giá trị máy tính với chuỗi đáp án: bỏ $, khoảng trắng, \dfrac{a}{b} → a/b, \  ; về dạng thường. */
 export const chuanDapAn = (s) => String(s).replace(/\\text\{([^}]*)\}/g, '$1').replace(/\\d?frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\$|\\ |\\,|\s+/g, '').replace(/\\left|\\right/g, '').toLowerCase()

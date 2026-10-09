@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="680" height="340" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="680" height="340" fill="#fff"/>
+<g transform="translate(0,0)">
+<rect width="680" height="164" fill="#fff"/>
+<defs><marker id="mt" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#b45309"/></marker></defs>
+<text x="40" y="20" font-style="italic" fill="#334155">Qua cầu AB: 35 giây</text>
+<line x1="40" y1="94" x2="640" y2="94" stroke="#0f172a" stroke-width="2"/>
+<rect x="40" y="87" width="236.3" height="7" fill="#2563eb" opacity="0.85"/>
+<text x="158.2" y="82" text-anchor="middle" font-size="12" fill="#2563eb">Con tàu</text>
+<rect x="276.3" y="87" width="363.7" height="7" fill="#64748b" opacity="0.85"/>
+<text x="458.2" y="82" text-anchor="middle" font-size="12" fill="#64748b">Cầu AB 297 m</text>
+<line x1="276.3" y1="88" x2="276.3" y2="100" stroke="#0f172a" stroke-width="2"/>
+<circle cx="276.3" cy="94" r="3" fill="#0f172a"/>
+<text x="276.3" y="116" text-anchor="middle" font-weight="bold" fill="#0f172a">Đầu cầu</text>
+<line x1="640" y1="88" x2="640" y2="100" stroke="#0f172a" stroke-width="2"/>
+<circle cx="640" cy="94" r="3" fill="#0f172a"/>
+<text x="640" y="116" text-anchor="middle" font-weight="bold" fill="#0f172a">Cuối cầu</text>
+<line x1="40" y1="60" x2="640" y2="60" stroke="#b45309" stroke-width="2" marker-end="url(#mt)"/>
+<line x1="40" y1="56" x2="40" y2="64" stroke="#b45309" stroke-width="2"/>
+<text x="340" y="54" text-anchor="middle" font-size="12" fill="#b45309">Đuôi tàu đi</text>
+<line x1="40" y1="130" x2="276.3" y2="130" stroke="#0f172a" stroke-width="1"/>
+<line x1="40" y1="126" x2="40" y2="134" stroke="#0f172a" stroke-width="1"/>
+<line x1="276.3" y1="126" x2="276.3" y2="134" stroke="#0f172a" stroke-width="1"/>
+<text x="158.2" y="145" text-anchor="middle" font-size="12" fill="#dc2626">? m</text>
+<line x1="276.3" y1="130" x2="640" y2="130" stroke="#0f172a" stroke-width="1"/>
+<line x1="276.3" y1="126" x2="276.3" y2="134" stroke="#0f172a" stroke-width="1"/>
+<line x1="640" y1="126" x2="640" y2="134" stroke="#0f172a" stroke-width="1"/>
+<text x="458.2" y="145" text-anchor="middle" font-size="12" fill="#0f172a">297 m</text>
+
+</g>
+<g transform="translate(0,176)">
+<rect width="680" height="164" fill="#fff"/>
+<defs><marker id="mt" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#b45309"/></marker></defs>
+<text x="40" y="20" font-style="italic" fill="#334155">Qua cầu CD: 17 giây</text>
+<line x1="40" y1="94" x2="640" y2="94" stroke="#0f172a" stroke-width="2"/>
+<rect x="40" y="87" width="486.6" height="7" fill="#2563eb" opacity="0.85"/>
+<text x="283.3" y="82" text-anchor="middle" font-size="12" fill="#2563eb">Con tàu</text>
+<rect x="526.6" y="87" width="113.4" height="7" fill="#64748b" opacity="0.85"/>
+<text x="583.3" y="82" text-anchor="middle" font-size="12" fill="#64748b">Cầu CD 45 m</text>
+<line x1="526.6" y1="88" x2="526.6" y2="100" stroke="#0f172a" stroke-width="2"/>
+<circle cx="526.6" cy="94" r="3" fill="#0f172a"/>
+<text x="526.6" y="116" text-anchor="middle" font-weight="bold" fill="#0f172a">Đầu cầu</text>
+<line x1="640" y1="88" x2="640" y2="100" stroke="#0f172a" stroke-width="2"/>
+<circle cx="640" cy="94" r="3" fill="#0f172a"/>
+<text x="640" y="116" text-anchor="middle" font-weight="bold" fill="#0f172a">Cuối cầu</text>
+<line x1="40" y1="60" x2="640" y2="60" stroke="#b45309" stroke-width="2" marker-end="url(#mt)"/>
+<line x1="40" y1="56" x2="40" y2="64" stroke="#b45309" stroke-width="2"/>
+<text x="340" y="54" text-anchor="middle" font-size="12" fill="#b45309">Đuôi tàu đi</text>
+<line x1="40" y1="130" x2="526.6" y2="130" stroke="#0f172a" stroke-width="1"/>
+<line x1="40" y1="126" x2="40" y2="134" stroke="#0f172a" stroke-width="1"/>
+<line x1="526.6" y1="126" x2="526.6" y2="134" stroke="#0f172a" stroke-width="1"/>
+<text x="283.3" y="145" text-anchor="middle" font-size="12" fill="#dc2626">? m</text>
+<line x1="526.6" y1="130" x2="640" y2="130" stroke="#0f172a" stroke-width="1"/>
+<line x1="526.6" y1="126" x2="526.6" y2="134" stroke="#0f172a" stroke-width="1"/>
+<line x1="640" y1="126" x2="640" y2="134" stroke="#0f172a" stroke-width="1"/>
+<text x="583.3" y="145" text-anchor="middle" font-size="12" fill="#0f172a">45 m</text>
+
+</g>
+</svg>
