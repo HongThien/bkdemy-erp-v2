@@ -34,7 +34,7 @@ import { saveOnTapConfig, rebuildOnTapInDoc, btvnDaDong, type OnTapConfig } from
 
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
-// Đề thi KHÔNG sửa / nhân bản / xoá ở đây nữa (CEO 01/10): chỗ lưu + sửa đề là Kho đề thi (Nhập kho › Đề thi); Kho tài liệu chỉ để IN đề.
+// Đề thi KHÔNG sửa / nhân bản / xoá ở đây nữa (CEO 01/10): chỗ lưu + sửa đề là lá Kho đề thi (Học thuật, dưới Kho tài liệu — tách khỏi Nhập kho 09/10); Kho tài liệu chỉ để IN đề.
 const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'mt'])
 const CHI_IN = new Set(['de_thi'])
 

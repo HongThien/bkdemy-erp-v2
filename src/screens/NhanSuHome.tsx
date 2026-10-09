@@ -22,6 +22,7 @@ import ETScreen from './tailieu/ETScreen'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
 import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
+import KhoDeThiScreen from './tailieu/KhoDeThi'
 import NhanSuScreen from './nhansu/NhanSuScreen'
 import OrgChartScreen from './nhansu/OrgChartScreen'
 import TKBScreen from './nhansu/TKBScreen'
@@ -690,6 +691,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
+      : staffLeaf === 'khodethi' ? <KhoDeThiScreen />
       : staffLeaf === 'lamtailieu:bo_tro' ? <BTScreen />
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
       : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
