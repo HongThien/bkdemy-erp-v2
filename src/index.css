@@ -66,6 +66,28 @@ html { touch-action: manipulation; -webkit-text-size-adjust: 100%; text-size-adj
 .lg-mui-ky { font-size: 1.25em; color: #2563eb; font-weight: 700; line-height: 1; }
 .lg-mui-ly { opacity: .8; font-style: italic; }
 .lg-nhanh { font-size: .8em; font-weight: 700; color: #7c3aed; margin-top: .8em !important; }
+/* Chuỗi "**Bước k.**" (README §3, CEO 09/10; bộ tách lib/loiGiaiBuoc.ts): mỗi bước 1 card + mũi tên. Mặc định DỌC (↓) — màn hẹp,
+   trình duyệt cũ không có container query. Khung đủ rộng để mỗi card ≥ ~240px ⇒ NGANG (↓ xoay thành →), theo số bước data-n. */
+.lg-chuoi-khung { container-type: inline-size; }
+.lg-chuoi { display: flex; flex-direction: column; }
+.lg-cb { border: 1px solid rgba(37,99,235,.28); border-radius: 12px; overflow: hidden; background: rgba(255,255,255,.75); min-width: 0; }
+.lg-cb-nhan { font-size: .78em; font-weight: 700; padding: .3em .75em; background: rgba(37,99,235,.13); color: #1d4ed8; }
+.lg-cb-than { padding: .5em .75em; overflow-x: auto; }
+.lg-chuoi-mui { display: flex; align-items: center; justify-content: center; color: #2563eb; font-weight: 700; font-size: 1.3em; line-height: 1; padding: .2em 0; }
+.lg-chuoi-mui > span { display: inline-block; }
+@container (min-width: 520px) { .lg-chuoi[data-n="2"] { flex-direction: row; } .lg-chuoi[data-n="2"] > .lg-cb { flex: 1 1 0; } .lg-chuoi[data-n="2"] > .lg-chuoi-mui { padding: 0 .35em; } .lg-chuoi[data-n="2"] > .lg-chuoi-mui > span { transform: rotate(-90deg); } }
+@container (min-width: 780px) { .lg-chuoi[data-n="3"] { flex-direction: row; } .lg-chuoi[data-n="3"] > .lg-cb { flex: 1 1 0; } .lg-chuoi[data-n="3"] > .lg-chuoi-mui { padding: 0 .35em; } .lg-chuoi[data-n="3"] > .lg-chuoi-mui > span { transform: rotate(-90deg); } }
+@container (min-width: 1040px) { .lg-chuoi[data-n="4"] { flex-direction: row; } .lg-chuoi[data-n="4"] > .lg-cb { flex: 1 1 0; } .lg-chuoi[data-n="4"] > .lg-chuoi-mui { padding: 0 .35em; } .lg-chuoi[data-n="4"] > .lg-chuoi-mui > span { transform: rotate(-90deg); } }
+@container (min-width: 1300px) { .lg-chuoi[data-n="5"] { flex-direction: row; } .lg-chuoi[data-n="5"] > .lg-cb { flex: 1 1 0; } .lg-chuoi[data-n="5"] > .lg-chuoi-mui { padding: 0 .35em; } .lg-chuoi[data-n="5"] > .lg-chuoi-mui > span { transform: rotate(-90deg); } }
+/* App HS: style gắn biến --sk-* lên <html> (KhungHS ganBien) ⇒ card lời giải ăn màu style — skin tối không còn chữ sáng trên card sáng.
+   ERP không có biến ⇒ khớp 0 rule dưới, giữ nguyên màu ở trên. */
+:root[style*="--sk-surface"] :is(.lg-the, .lg-cb, .lg-node, .lg-buoc-the) { background: var(--sk-surface); border-color: var(--sk-line); color: var(--sk-ink); }
+:root[style*="--sk-surface"] :is(.lg-the-nhan, .lg-cb-nhan, .lg-ynhan) { color: var(--sk-ink); }
+:root[style*="--sk-surface"] .lg-node.lg-dinh { background: linear-gradient(rgba(37,99,235,.2), rgba(37,99,235,.2)), var(--sk-surface); }
+:root[style*="--sk-surface"] .lg-node.lg-gt { background: linear-gradient(rgba(22,163,74,.2), rgba(22,163,74,.2)), var(--sk-surface); }
+:root[style*="--sk-surface"] .lg-node.lg-dan { background: transparent; }
+:root[style*="--sk-surface"] :is(.lg-chuoi-mui, .lg-mui-ky, .lg-buoc-noi) { color: var(--sk-acc); }
+:root[style*="--sk-surface"] .lg-so { background: var(--sk-acc); color: var(--sk-acc-ink); }
 
 /* Phóng to mật độ staff desktop, VỪA-KHÍT theo bề rộng màn. JS (main.tsx fitZoom) hạ --app-z
    xuống nếu màn HẸP (MacBook…) để layout KHÔNG tràn mép phải (bug Mac 08-01); tối đa 1.15 trên

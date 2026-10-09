@@ -5,6 +5,7 @@ import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
 import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, splitLoiGiaiLabel, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
 import { MON_CHU_THUONG } from '../../lib/mon'
+import { tachChuoiBuoc, type LoiGiaiBuoc } from '../../lib/loiGiaiBuoc'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -189,17 +190,27 @@ function tachBuoc(t: string): string[] {
   out.push(cur)
   return out.map((s) => s.trim()).filter(Boolean)
 }
+// Chuỗi "**Bước k.**" (README §3, CEO 09/10) ⇒ mỗi bước 1 card, mũi tên sang card kế. Mặc định xếp DỌC (mũi tên ↓);
+// khung đủ rộng cho mỗi card ≥ ~240px thì xếp NGANG (mũi tên →) — container query theo data-n ở index.css (.lg-chuoi).
+const htmlChuoiBuoc = (buoc: LoiGiaiBuoc[]) =>
+  `<div class="lg-chuoi-khung"><div class="lg-chuoi" data-n="${buoc.length}">${buoc.map((b, i) =>
+    `${i ? '<div class="lg-chuoi-mui" aria-hidden="true"><span>↓</span></div>' : ''}<div class="lg-cb"><div class="lg-cb-nhan">Bước ${b.so}</div><div class="lg-cb-than">${htmlDoan(b.noiDung)}</div></div>`).join('')}</div></div>`
 function htmlPhan1(body: string): string {
-  const khoi: { y: string | null; dong: string[] }[] = [{ y: null, dong: [] }]
-  for (const l0 of body.split(/\r?\n/)) {
-    const l = l0.trim(); if (!l) continue
-    const m = l.match(Y_RE)
-    if (m) { khoi.push({ y: m[1], dong: [] }); const r = l.slice(m[0].length).trim(); if (r) khoi[khoi.length - 1].dong.push(r) } else khoi[khoi.length - 1].dong.push(l)
+  // Chuỗi bước tách theo ĐOẠN trước (dòng trống = ranh giới card), phần còn lại xử lý theo dòng như cũ.
+  const khoi: { y: string | null; dong: (string | LoiGiaiBuoc[])[] }[] = [{ y: null, dong: [] }]
+  for (const kh of tachChuoiBuoc(body)) {
+    if (kh.loai === 'chuoi_buoc') { khoi[khoi.length - 1].dong.push(kh.buoc); continue }
+    for (const l0 of kh.noiDung.split('\n')) {
+      const l = l0.trim(); if (!l) continue
+      const m = l.match(Y_RE)
+      if (m) { khoi.push({ y: m[1], dong: [] }); const r = l.slice(m[0].length).trim(); if (r) khoi[khoi.length - 1].dong.push(r) } else khoi[khoi.length - 1].dong.push(l)
+    }
   }
   return khoi.filter((k) => k.dong.length).map((k) => {
-    const soDo = k.dong.some((d) => MUI_RE.test(d))
+    const soDo = k.dong.some((d) => typeof d === 'string' && MUI_RE.test(d))
     let daCoDinh = false // card "điều phải chứng minh" = mệnh đề đầu tiên đứng ngay trên mũi tên ⇑ đầu tiên; câu dẫn trước nó để nền thường
     const items = k.dong.map((d, j) => {
+      if (typeof d !== 'string') return htmlChuoiBuoc(d)
       if (MUI_RE.test(d)) { const ly = d.replace(MUI_RE, '').trim(); return `<div class="lg-mui"><span class="lg-mui-ky">⇑</span>${ly ? `<span class="lg-mui-ly">${htmlDoan(ly)}</span>` : ''}</div>` }
       const nh = d.match(NHANH_RE)
       if (nh) { daCoDinh = true; const r = d.slice(nh[0].length).trim(); return `<div class="lg-nhanh">${esc(nh[1])}</div>` + (r ? `<div class="lg-node${/✓/.test(r) ? ' lg-gt' : ''}">${htmlDoan(r)}</div>` : '') }
@@ -214,7 +225,7 @@ function htmlPhan1(body: string): string {
       }
       if (soDo) {
         let cls = /✓/.test(d) ? ' lg-gt' : ''
-        if (!daCoDinh) { if (MUI_RE.test(k.dong[j + 1] ?? '')) { cls = ' lg-dinh'; daCoDinh = true } else cls = ' lg-dan' }
+        if (!daCoDinh) { const ke = k.dong[j + 1]; if (typeof ke === 'string' && MUI_RE.test(ke)) { cls = ' lg-dinh'; daCoDinh = true } else cls = ' lg-dan' }
         return `<div class="lg-node${cls}">${htmlDoan(d)}</div>`
       }
       return `<div class="lg-the"><div class="lg-the-than">${htmlDoan(d)}</div></div>`

@@ -111,7 +111,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
   - `**Mấu chốt:**` đứng **trước** chuỗi card, `**Chú ý:**` / `Thử lại:` đứng **sau** — không phải bước.
   - Chỉ **≥ 2 bước** mới dùng card. Bài một bước (vd đọc số La Mã, câu TN nhận biết) ⇒ Mấu chốt + Chú ý, không đánh "Bước 1".
   - Bước là **bước nghĩ** (làm gì, vì sao), không chép lại từng dòng tính của Phần 2.
-  - Hiển thị card + mũi tên trên app / màn duyệt / bản in: **chưa build** (việc treo §4 #8).
+  - Hiển thị card + mũi tên trên app / màn duyệt / bản in: ✅ 09/10 (§4 #8) — chỉ nhận chuỗi `**Bước k.**` **bên trong Phần 1**.
 - **Tách ý (CEO 09/10 — áp mọi khối):** chỉ tách các bài **"Tính / thực hiện phép tính"** và **"Tìm $x$"** có nhiều ý a) b) c) — mỗi ý một câu.
   **Bài toán lời văn** (kể cả các ý độc lập nhau, vd vườn hình chữ nhật: a) tính dây rào, b) tính rau) **giữ chung một câu**, Phần 2 ghi a) b).
   Hình học: không tách (CEO 21/09).
@@ -142,7 +142,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 5 | Đưa **brief giao Sonnet soạn** vào repo (`kho-rules/mau-brief-soan.md`, khuôn như `docs/mau-brief-soan-hinh-hoc.md`) | Lô 5–7 4T brief chỉ nằm trong phiên làm; 5T phải dùng lại, không viết lại từ trí nhớ |
 | 6 | ✅ 08/10 **Đọc sách có công thức là ảnh WMF**: WMF của MathType nhúng sẵn MTEF ⇒ `scripts/kho/mathtype-thu/wmf-mtef.mjs` (5T: 1.031/1.031, KaTeX 0 hỏng, không cần OCR/PDF). `tach-bai.mjs` thêm: "LUYỆN TÂP", sách thiếu tiêu đề LUYỆN TẬP (số bài quay lại), khu Ôn tập `ON` — sách 4T tách ra y hệt trước | Word cũ đã "chuyển công thức thành ảnh" vẫn đọc được chính xác |
 | 7 | ✅ 08/10 (4T lô 11, 32 bài) **Câu có hình trong đề** — hình GỐC của sách: `scripts/kho/sach/trich-media.mjs` → manifest `kho-rules/dai/hinh-de/<khối>.json` (PNG nào dựng từ ảnh sách nào) → `dung-hinh-de.ps1` (EMF → PNG; bảng Word chữ + biểu tượng ⇒ ghép ảnh bảng từ ảnh gốc) → `lo-tu-soan --hinh-de` → `ghi-lo --hinh-de` upload `anh_de` TRƯỚC khi băm biên bản + trạm `kiem-hinh-de` (code: đúng ảnh của đúng bài). Còn: 5T CĐ18–24 (công thức cũng là WMF — xem #6) | `anh_de` nằm trong băm nội dung ⇒ gắn hình sau khi ghi (kiểu `gan_hinh.mjs`) làm biên bản mất hiệu lực |
-| 8 | **Hiển thị Phần 1 dạng CARD + mũi tên** (CEO 09/10, §3): tách đoạn `**Bước k.**` liên tiếp thành chuỗi card nối mũi tên — ở MỌI chỗ hiện lời giải (app HS · màn Duyệt kho / Kho đề thi · bản in). Một bộ tách dùng chung (như `lythuyetBlocks.ts`), không viết riêng từng màn | Luật viết đã có từ 09/10; chưa build thì card hiện thành các đoạn chữ thường (vẫn đọc được) |
+| 8 | ✅ 09/10 **Hiển thị Phần 1 dạng CARD + mũi tên** (CEO 09/10, §3): bộ tách `src/lib/loiGiaiBuoc.ts` (đoạn `**Bước k.**` liên tiếp, ≥ 2 bước ⇒ chuỗi card) gắn vào `MathText` › `htmlPhan1` (`src/screens/kho/ui.tsx`) ⇒ áp MỌI chỗ hiện lời giải (app HS qua `ChuMon` · Duyệt kho / Sửa câu / Kho đề thi · bản in). Khung hẹp xếp dọc ↓, khung đủ rộng (mỗi card ≥ ~240px, tối đa 5 bước) xếp ngang → — container query `.lg-chuoi` ở `index.css`; app HS card ăn màu style (`--sk-*`). Lời giải cũ không có `**Bước k.**`: HTML giống hệt từng ký tự (so 4.237 lời giải thật) | Luật viết đã có từ 09/10 |
 
 ## 5. Trạng thái từng khối
 
