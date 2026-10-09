@@ -24,7 +24,7 @@ export default function MucUuTienCase({ caseId, hoTen, level, uuTien, dong, onDo
     if (lv === level) return
     let ly: string | null = null
     if (lv === 0) {
-      ly = prompt(`Hạ ${hoTen} về L0 — HẾT YẾU, DỪNG BỔ TRỢ?\nCase sẽ đóng, buổi đã xếp chưa học bị huỷ${RETEST_BAT ? ', retest chưa làm bị đóng' : ''} — trả 1 chỗ trong trần 50.\n\nLý do:`, 'Tự luyện thêm, hết yếu')
+      ly = prompt(`Hạ ${hoTen} về L0 — HẾT YẾU, DỪNG BỔ TRỢ?\nCase sẽ đóng, buổi đã xếp chưa học bị huỷ${RETEST_BAT ? ', retest chưa làm bị đóng' : ''} — trả 1 chỗ trong trần bổ trợ.\n\nLý do:`, 'Tự luyện thêm, hết yếu')
       if (ly === null) return
     }
     setBusy(true); setLoi(null)

@@ -252,7 +252,7 @@ export async function datUuTienCase(boTroYeuId: string, uuTien: UuTienCase): Pro
   if (error) throw error
 }
 
-// ── SỨC CHỨA (Thùy 29/09): ≤ 50 em đang bổ trợ yếu cùng lúc, trong đó ≤ 20 ưu tiên Cao — chặn cứng bằng trigger
+// ── SỨC CHỨA (Thùy 29/09; 09/10 nâng 50 → 70 vì thêm iPad): ≤ 70 em đang bổ trợ yếu cùng lúc, trong đó ≤ 20 ưu tiên Cao — chặn cứng bằng trigger
 // trg_btyeu_suc_chua (mig 202609291556). Muốn thêm em: hạ L0 / huỷ em cũ, hoặc hạ ưu tiên 1 em Cao.
 export type SucChua = { dang: number; cao: number; tran: number; tran_cao: number }
 export async function laySucChua(): Promise<SucChua> {

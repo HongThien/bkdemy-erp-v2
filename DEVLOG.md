@@ -36238,3 +36238,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - lo-tu-soan.mjs: bản sửa nhận thêm `noi_dung` (sửa lỗi in của đề; noi_dung_sach giữ gốc) ⇒ kiem-doc báo LỆCH SÁCH, câu mang cờ `nghi` — cố ý, người duyệt thấy chỗ đã sửa đề.
 - Sơ đồ: 30 ảnh xuất PNG (script nháp xuat-so-do-lo.mjs), số liệu đúng cả 30; 3 sửa trình bày (nhãn hiệu lặp lại 6.9/6.13, tiêu đề dài bị cắt 6.24). Thử đảo hàng 6.22 cho đẹp ⇒ máy từ chối (hiệu luôn tính giữa HAI HÀNG ĐẦU) ⇒ giữ nguyên. Opus ký kiem-hinh-b (người soạn là Sonnet).
 - Brief k5T-brief-soan.md thêm mục "Bài học từ lô 5". Đã giao lô 6 (CĐ7–12) cho 3 Sonnet.
+
+## 2026-10-09 (15h) — Trần 70 · suất ca theo bậc lớp (Thùy)
+
+- Thùy: thêm iPad ⇒ capacity 50 → 70; trọng số HS S 0,5 · A 0,75 · B/C 1 ("trước 1 ca tối đa 3 HS, giờ toàn S thì 6").
+- Mig 202610091449 (dựng 4 hàm từ bản đang chạy): `_btyeu_tran_dang()` = 70; suất người của ca = Σ trọng số (mỗi em 1 lần, lấy max nếu 2
+  lượt) ≤ 3×số TA, thay "3 em/TA". Chạy thử (rollback): sức chứa {dang 50, tran 70, cao 13/20} — đang chạm đúng trần cũ; trọng số S/A/B/C/null
+  = 0,5/0,75/1/1/1; ca hôm nay 1 em lớp 5A2… ra 0,5–1 suất đúng bậc. Lịch phòng local: "1 em · 0,5/3 suất · còn 2,5 suất".
+- Không đổi: đơn vị ca, trần Cao 20, cách đếm 70 (đếm ĐẦU em, không trọng số — Thùy chỉ nói trọng số cho ca).
