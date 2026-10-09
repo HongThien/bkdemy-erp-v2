@@ -36297,3 +36297,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Opus mở lại hình các câu có số đọc từ hình (LT 21.5, 21.13, 21.14, 23.3): khớp cách đọc của người soạn. Sửa nhỏ: ON 99 bước cộng diện tích, ON 102 câu giải thích, LT 20.16 thiếu dòng "Bài giải", ON 91 chính tả đề.
 - Sai của t: dòng 10A ở k5T §8b ghi qua sed/heredoc làm "\times" thành ký tự tab + "imes" (3 chỗ) ⇒ sửa lại; bài học cũ vẫn đúng: chuỗi có dấu gạch ngược thì ghi bằng Edit/Write, không qua sed.
 - Còn: 11A (CĐ18–19 có hình) đang soạn.
+
+## 09/10 (tiếp) — 5T lô 11A ghi thật 24 câu (T15T000000820–843) — BƯỚC 2 XONG: 830 câu từ sách
+- 11A (CĐ18–19 có hình): Sonnet soạn 30, đáp số 30/30 khớp. Sửa đề VD 18.2 (sách in AB, hình + bài làm mẫu là BC; phần "Bài làm" của sách dính vào đề ⇒ cắt). Chính tả đề 6 câu.
+- Treo 6: LT 19.7, 19.15 (đề chỉ là ô trống theo 4 hình ghép, điểm không chấm chia phải đoán bằng mắt — §1.5 thà để trống); LT 19.27–19.30 (bản soạn dùng "tổng tử / tổng mẫu" của dãy tỉ số bằng nhau = lớp 7; luật "bài nhiều cách thì nêu ra" ⇒ chờ CEO chốt cách lớp 5 chung đáy ⇒ đường cao bằng nhau).
+- Đối soát toàn sách (dau-vao-soan --khu tất cả + đọc DB): mọi bài hoặc đã ghi, hoặc trùng kho cũ, hoặc nằm trong danh sách treo k5T §8b. Không sót.
+- Còn nợ: lô 5 (CĐ1–6) Phần 1 chưa theo card. Luật README §3 có 2 dòng cùng ngày: "Các bước 3–6 bước/bài" (dòng Các bước →) và "≥ 2 bước mới dùng card" — nhiều câu 5T là card 2 bước, cần CEO chốt.
