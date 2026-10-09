@@ -39,7 +39,7 @@ for (const ten of readdirSync(dir).sort()) {
   const ma = ten.replace(/\.[^.]+$/, '').split('_')[0].split('+')
   const sai = ma.filter((m) => !/^[A-Z]+\d+$/.test(m) || !BANG[m.replace(/\d+$/, '')])
   if (sai.length) { console.error(`❌ ${ten}: mã không hợp lệ hoặc tiền tố chưa khai trong BANG: ${sai.join(', ')}`); process.exit(2) }
-  viec.push({ ten, kieu, ma })
+  viec.push({ ten, kieu, ma, chiLG: /_lg\.[^.]+$/i.test(ten) }) // …_lg.png = hình là ĐÁP ÁN (câu "vẽ hình", "nêu cách dựng") ⇒ chỉ gắn anh_dap_an
 }
 if (!viec.length) { console.error('Không có file ảnh trong thư mục.'); process.exit(2) }
 
@@ -61,7 +61,7 @@ for (const v of viec) {
 }
 if (loi) { console.error(`\n${loi} lỗi — không làm gì cả.`); await c.end(); process.exit(1) }
 console.log(`Kiểm xong ${viec.length} file → ${viec.reduce((s, v) => s + v.dong.length, 0)} câu. ${GHI ? 'GHI THẬT' : 'CHẠY THỬ (thêm --ghi để ghi)'}`)
-for (const v of viec) console.log(`  ${v.ten}  →  ${v.ma.join(', ')}`)
+for (const v of viec) console.log(`  ${v.ten}  →  ${v.ma.join(', ')}${v.chiLG ? '  (chỉ lời giải)' : ''}`)
 if (!GHI) { await c.end(); process.exit(0) }
 
 // 3) Upload + UPDATE (1 transaction DB; upload xong mới UPDATE)
@@ -79,7 +79,9 @@ for (const v of viec) {
 await c.query('begin')
 try {
   for (const { v, link } of daUp) for (const d of v.dong) {
-    const r = await c.query(`update ${d.bang} set anh_de = $1, anh_dap_an = $1 where ma_cau = $2 and xoa_at is null`, [link, d.ma])
+    const r = await c.query(v.chiLG
+      ? `update ${d.bang} set anh_dap_an = $1 where ma_cau = $2 and xoa_at is null`
+      : `update ${d.bang} set anh_de = $1, anh_dap_an = $1 where ma_cau = $2 and xoa_at is null`, [link, d.ma])
     if (r.rowCount !== 1) throw new Error(`UPDATE ${d.ma} rowCount=${r.rowCount}`)
   }
   await c.query('commit')
