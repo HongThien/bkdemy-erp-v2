@@ -37,7 +37,10 @@ kho-rules/
     lo/                     ← LÔ đã ghi / sắp ghi của từng khối (sự thật về câu đã ghi vẫn là DB):
                                k<khối>-<lô>.json (lô qua cổng) · .soan.json (bản model soạn) · .sua.json (bản sửa của người soát —
                                đo tỉ lệ phải sửa) · .kiem-ngoai.json (biên bản model khác) · k<khối>-kiem.mjs (bộ kiểm đáp số của khối)
-  hgt/ · khtn/ · anh/ …     ← nhánh khác, cùng khuôn
+  hgt/                      ← nhánh HÌNH, kho câu `hgt_cau_hoi`
+    k9.md                   ← SPEC khối 9 phần đường tròn: ranh giới CT 2018 + SỔ TAY 22 DẠNG (cách giải · khuôn trình bày) (09/10)
+    k9-mau-thu.md · lo/k9-lo1.mjs · hinh/  ← lô thử, sinh bằng máy từ .mjs (toạ độ dựng theo đề ⇒ máy kiểm + vẽ hình)
+  khtn/ · anh/ …            ← nhánh khác, cùng khuôn
 ```
 
 **Một khối = một file `k<khối>.md`**, không gộp nhiều khối vào một file: luật tiểu học (cấm ẩn, sơ đồ đoạn thẳng) và luật THPT
@@ -120,4 +123,5 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 4T | `dai/k4T.md` | **Bước 2** đang chạy · bước 3 chờ CEO xong bản đồ 4T | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–8: số câu đã ghi + phần còn lại ở `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
 | 5T | `dai/k5T.md` | **Bước 1** — chưa đọc sách (B1 vướng công thức WMF) | v0 (04/10, rút từ kho cũ) | lô 1: 12 câu (Số thập phân) · 271 câu STP giải lại, chờ học thuật ký | Sách "Tài liệu tham khảo Toán 5" (31 CĐ) — `k5T.md` §5, §7 |
 | 8 | `dai/k8.md` | **Bước 1, chỉ HÌNH** (Đại tạm dừng, CEO 09/10) — B1–B3 xong, kế tiếp lô H1 | v0 (09/10) — lõi là **luật kiến thức theo thứ tự bài** (§1) | — | Bộ Word theo bài KNTT (C1 Đa thức · C3 Tứ giác · C4 Thalès; thiếu C2) — `E:\BK ACADEMY\Tài liệu tham khảo\K8` |
-| 6, 7, 9–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
+| 9 · Hình (đường tròn) | `hgt/k9.md` | **Bước 1** — sổ tay 22 dạng + lô thử 1 (22 câu, một câu mỗi dạng) chờ CEO | v0 (09/10) | lô 1: 22 câu, máy kiểm toạ độ 22/22, chưa ghi DB · đích DB đề xuất `hgt_cau_hoi` dạng chờ `T309000000` (❓ `k9.md` §8 câu 0) | 4 tài liệu `K9\Đường tròn` (Ngô Đức Tài · Nguyễn Trãi · Thầy Cường · Phạm Hoàng Long) — `k9.md` §5 |
+| 6, 7, 9 (Đại, Hình khác), 10–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
