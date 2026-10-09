@@ -622,7 +622,10 @@ triStation(5,{name:'Luyện tập 3: Gắn tên đỉnh',practice:true,marks:tru
 let zoneA=START.clone(),zoneB=T[0].clone(),zoneR=72,zoneMesh=null;
 const zoneMat=new THREE.MeshBasicMaterial({color:COL.scan,wireframe:true,transparent:true,opacity:0,depthWrite:false});
 function setZone(){
-  zoneA=cur===0?START.clone():T[cur-1].clone();zoneB=T[cur].clone();zoneR=stations[cur].zoneR;
+  /* chặng mới bắt đầu TRƯỚC mặt tấm bảng vừa xong (tàu đang đứng đó lúc trả lời) — bắt đầu từ tâm bảng thì tàu
+     nằm ngoài vùng ⇒ bị giật đi + hiện "Chưa mở đường" ngay sau khi vừa trả lời đúng */
+  const pv=stations[cur-1];zoneA=cur===0?START.clone():T[cur-1].clone().add(V3(0,0,pv.h&&pv.h.board?pv.filmDist+10:0));
+  zoneB=T[cur].clone();zoneR=stations[cur].zoneR;
   if(zoneMesh){scene.remove(zoneMesh);zoneMesh.children.forEach(c=>c.geometry.dispose());}
   zoneMesh=new THREE.Group();const ab=zoneB.clone().sub(zoneA);const L=ab.length();
   const cyl=new THREE.Mesh(new THREE.CylinderGeometry(zoneR,zoneR,L,40,Math.max(2,Math.round(L/40)),true),zoneMat);
@@ -682,7 +685,7 @@ function steer(dt){
 }
 /* tàu không xuyên qua tấm bảng: đẩy ra khỏi mặt bảng về phía đang đứng */
 function collide(){
-  for(const st of [stations[cur-1],stations[cur]]){if(!st||!st.h||!st.h.board)continue;
+  for(const st of [stations[cur-1],stations[cur]]){if(!st||!st.h||!st.h.board||st.opened)continue;
     const l=ship.pos.clone().sub(st.g.position);const W=BOARD.w/2+1,H=BOARD.h/2+1;
     if(Math.abs(l.x)<W&&Math.abs(l.y)<H&&Math.abs(l.z)<2.6){const s=l.z>=0?1:-1;ship.pos.z=st.g.position.z+s*2.6;if(ship.vel.z*s<0)ship.vel.z*=-.3;}}
 }
@@ -868,6 +871,13 @@ function complete(st){
   st.points.forEach(p=>{p.grp.visible=false;});
   if(st.i===stations.length-1){renderHeader();renderTasks();setTimeout(showEnd,600);return;}
   cur=st.i+1;const nx=stations[cur];unlock(nx);setZone();addPath(T[st.i],T[cur]);renderHeader();renderTasks();
+  openBoard(st);
+}
+/* đường sang trạm sau đi xuyên qua chỗ tấm bảng đang đứng ⇒ trạm xong thì tấm bảng bay lên, mở đường.
+   (Bản đầu để tấm bảng đứng yên + chặn tàu: HS trả lời xong vẫn kẹt sát mặt bảng, không biết phải vòng qua mép.) */
+function openBoard(st){
+  if(!st.h||!st.h.board||st.opened)return;st.opened=true;const y0=st.g.position.y;
+  tween(2.6,k=>{st.g.position.y=y0+170*k;});
 }
 /* đường đi dừng trước tấm bảng, không vẽ đè lên hình */
 const paths=[];
