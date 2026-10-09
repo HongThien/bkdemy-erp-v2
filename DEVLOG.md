@@ -36201,3 +36201,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   lượt) ≤ 3×số TA, thay "3 em/TA". Chạy thử (rollback): sức chứa {dang 50, tran 70, cao 13/20} — đang chạm đúng trần cũ; trọng số S/A/B/C/null
   = 0,5/0,75/1/1/1; ca hôm nay 1 em lớp 5A2… ra 0,5–1 suất đúng bậc. Lịch phòng local: "1 em · 0,5/3 suất · còn 2,5 suất".
 - Không đổi: đơn vị ca, trần Cao 20, cách đếm 70 (đếm ĐẦU em, không trọng số — Thùy chỉ nói trọng số cho ca).
+
+## 2026-10-09 (22h40) — Buổi bổ trợ sửa ngày/giờ/TA tự gắn lại ca trực (Tuấn Kiệt / Quỳnh Trang)
+
+- **Lộc báo:** xếp Ngô Trí Tuấn Kiệt vào ca trực 10/10 17:00 của TA Hoàng Thị Quỳnh Trang, hệ không đưa vào ca trực mà ra Lịch riêng.
+- **Gốc (đo):** buổi 19ea46c6 (tạo 18:38 bởi Lộc) ngày 10/10 nhưng `ca_bo_tro_id` = ca 12/10 17:00 cùng TA ⇒ xếp vào ca 12/10 rồi sửa ngày sang
+  10/10; sửa ngày/giờ/TA không gắn lại ca. Lộc huỷ buổi đó 20:15, xếp lại 20:18 với TA Trần Thị Vân Anh (ca 10/10 đúng ngày). Toàn hệ còn 2 buổi
+  bù cùng bệnh: Bảo Nhi 11/10 ↔ ca 18/10 · Bùi Ngọc Diệp 28/09 ↔ ca 04/10.
+- **Sửa (mig 202610092237):** `_ca_bo_tro_khop(ngày, giờ, TA)` + trigger `trg_buoi_bo_tro_gan_ca` (before update ngày/giờ/TA của buổi bổ trợ):
+  còn khớp ca cũ thì giữ, không thì gắn ca khớp ngày + TA + giờ, không có thì để trống (= lịch riêng). Vá: Bảo Nhi → ca 11/10 10:00; Ngọc Diệp
+  (28/09, không có ca) → lịch riêng. Chạy thử (rollback): buổi ca 12/10 sửa ngày → 10/10 nhảy đúng ca 10/10 17:00 Quỳnh Trang; sửa giờ ra ngoài → trống.
