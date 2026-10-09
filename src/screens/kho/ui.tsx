@@ -165,8 +165,81 @@ function buildLines(rawIn0: unknown, editable = false): string[] {
   if (last < raw.length) pushText(raw.slice(last))
   return lines
 }
+// ── LỜI GIẢI 2 PHẦN (kho-rules/README.md §3): "**Phần 1. Hướng dẫn**" … "**Phần 2. Trình bày**" …
+// Thùy 09/10: "Chỗ hướng dẫn có đóng khung các bước, mỗi cái vào 1 card cho dễ nhìn" ⇒ Phần 1 hiện thành CARD, dữ liệu KHÔNG đổi:
+//  · nhãn **Mấu chốt:** / **Vì sao nghĩ ra:** / **Chú ý:** … ⇒ mỗi nhãn 1 card; **Các bước:** A → B → C ⇒ mỗi bước 1 card đánh số;
+//  · sơ đồ phân tích đi lên (k8.md §1.6: dòng "$\Uparrow$ (lý do)" nối các mệnh đề) ⇒ mỗi mệnh đề 1 card, mũi tên ⇑ + lý do giữa hai card,
+//    card có ✓ (giả thiết/điều đã có) tô xanh, card đầu mỗi sơ đồ (điều phải chứng minh) tô đậm; **Nhánh ①:** ⇒ nhãn nhánh.
+//  · ý a) b) … (đầu dòng) tách khối riêng. Phần 2 giữ nguyên từng dòng như cũ.
+const P1_RE = /\*\*Phần 1\. Hướng dẫn\*\*/, P2_RE = /\*\*Phần 2\. Trình bày\*\*/
+const Y_RE = /^\*{0,2}([a-h])\)\*{0,2}\s*/
+const MUI_RE = /^\$\s*\\Uparrow\s*\$\s*/
+const NHANH_RE = /^\*\*(Nhánh[^*]*?):?\*\*\s*/
+const NHAN_RE = /^\*\*([^*]{1,40}?):\*\*\s*|^(Mấu chốt|Vì sao nghĩ ra|Các bước|Chú ý|Lưu ý)\s*:\s*/ // "**Nhãn:**" hoặc nhãn quen KHÔNG in đậm (bản 4T/5T)
+const LOAI_NHAN: Record<string, string> = { 'Mấu chốt': 'mc', 'Vì sao nghĩ ra': 'vs', 'Các bước': 'cb', 'Chú ý': 'cy', 'Lưu ý': 'cy' }
+const htmlDoan = (t: string) => buildLines(t).join('<br>')
+// tách "A → B → C" theo mũi tên NẰM NGOÀI công thức $…$
+function tachBuoc(t: string): string[] {
+  const out: string[] = []; let cur = '', trong = false
+  for (let i = 0; i < t.length; i++) {
+    if (t[i] === '$' && t[i - 1] !== '\\') trong = !trong
+    if (!trong && t[i] === '→') { out.push(cur); cur = ''; continue }
+    cur += t[i]
+  }
+  out.push(cur)
+  return out.map((s) => s.trim()).filter(Boolean)
+}
+function htmlPhan1(body: string): string {
+  const khoi: { y: string | null; dong: string[] }[] = [{ y: null, dong: [] }]
+  for (const l0 of body.split(/\r?\n/)) {
+    const l = l0.trim(); if (!l) continue
+    const m = l.match(Y_RE)
+    if (m) { khoi.push({ y: m[1], dong: [] }); const r = l.slice(m[0].length).trim(); if (r) khoi[khoi.length - 1].dong.push(r) } else khoi[khoi.length - 1].dong.push(l)
+  }
+  return khoi.filter((k) => k.dong.length).map((k) => {
+    const soDo = k.dong.some((d) => MUI_RE.test(d))
+    let daCoDinh = false // card "điều phải chứng minh" = mệnh đề đầu tiên đứng ngay trên mũi tên ⇑ đầu tiên; câu dẫn trước nó để nền thường
+    const items = k.dong.map((d, j) => {
+      if (MUI_RE.test(d)) { const ly = d.replace(MUI_RE, '').trim(); return `<div class="lg-mui"><span class="lg-mui-ky">⇑</span>${ly ? `<span class="lg-mui-ly">${htmlDoan(ly)}</span>` : ''}</div>` }
+      const nh = d.match(NHANH_RE)
+      if (nh) { daCoDinh = true; const r = d.slice(nh[0].length).trim(); return `<div class="lg-nhanh">${esc(nh[1])}</div>` + (r ? `<div class="lg-node${/✓/.test(r) ? ' lg-gt' : ''}">${htmlDoan(r)}</div>` : '') }
+      const n = soDo ? null : d.match(NHAN_RE)
+      if (n) {
+        const ten = (n[1] ?? n[2]).trim(), loai = LOAI_NHAN[ten] ?? 'kh', r = d.slice(n[0].length).trim()
+        const buoc = loai === 'cb' ? tachBuoc(r) : []
+        const than = buoc.length > 1
+          ? `<div class="lg-buoc">${buoc.map((b, i) => `${i ? '<div class="lg-buoc-noi">↓</div>' : ''}<div class="lg-buoc-the"><span class="lg-so">${i + 1}</span><div>${htmlDoan(b)}</div></div>`).join('')}</div>`
+          : `<div class="lg-the-than">${htmlDoan(r)}</div>`
+        return `<div class="lg-the lg-k-${loai}"><div class="lg-the-nhan">${esc(ten)}</div>${than}</div>`
+      }
+      if (soDo) {
+        let cls = /✓/.test(d) ? ' lg-gt' : ''
+        if (!daCoDinh) { if (MUI_RE.test(k.dong[j + 1] ?? '')) { cls = ' lg-dinh'; daCoDinh = true } else cls = ' lg-dan' }
+        return `<div class="lg-node${cls}">${htmlDoan(d)}</div>`
+      }
+      return `<div class="lg-the"><div class="lg-the-than">${htmlDoan(d)}</div></div>`
+    }).join('')
+    return `<div class="lg-y">${k.y ? `<div class="lg-ynhan">${k.y})</div>` : ''}<div class="lg-ds${soDo ? ' lg-sodo' : ''}">${items}</div></div>`
+  }).join('')
+}
+/** Trả HTML khi chuỗi là lời giải 2 phần, ngược lại null (để MathText render như cũ). */
+function html2Phan(raw: string): string | null {
+  const i1 = raw.search(P1_RE), i2 = raw.search(P2_RE)
+  if (i1 < 0 || i2 < i1) return null
+  const truoc = raw.slice(0, i1).trim()
+  const p1 = raw.slice(i1, i2).replace(P1_RE, ''), p2 = raw.slice(i2).replace(P2_RE, '').replace(/^\s*\n/, '')
+  const dong2 = buildLines(p2)
+  return (truoc ? buildLines(truoc).map((l) => `<div class="mline">${l || '&nbsp;'}</div>`).join('') : '')
+    + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${htmlPhan1(p1)}</div>`
+    + `<div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>` + dong2.map((l) => `<div class="mline">${l || '&nbsp;'}</div>`).join('')
+}
+
 // `prefix` = HTML nhét vào ĐẦU dòng 1 (vd nhãn "Câu N.") → luôn cùng dòng với đề, kể cả đề nhiều dòng.
 export function MathText({ children, className, prefix, editable }: { children: string | null | undefined; className?: string; prefix?: string; editable?: boolean }) {
+  if (!editable && !prefix) {
+    const h = html2Phan(epChuoi(children))
+    if (h) return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: h }} />
+  }
   const lines = buildLines(children ?? '', editable)
   const head = prefix ?? ''
   // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè), nhãn ghép vào dòng đầu.
