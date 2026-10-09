@@ -110,7 +110,12 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
   - Mỗi bước = **một đoạn riêng** mở bằng `**Bước k.**` (k đánh liên tục từ 1). Nội dung bước gói trong đoạn đó (nhiều dòng thì
     xuống dòng đơn, không dòng trống giữa — dòng trống là ranh giới card). Các đoạn `**Bước k.**` liên tiếp = một chuỗi card nối mũi tên.
   - `**Mấu chốt:**` đứng **trước** chuỗi card, `**Chú ý:**` / `Thử lại:` đứng **sau** — không phải bước.
-  - Chỉ **≥ 2 bước** mới dùng card. Bài một bước (vd đọc số La Mã, câu TN nhận biết) ⇒ Mấu chốt + Chú ý, không đánh "Bước 1".
+  - ⭐ **MỌI bài 3–6 bước** (CEO 09/10 tối, chốt khi hỏi "card 2 bước có sửa không": *"Sửa luôn cũng được"* — thay dòng cũ
+    "chỉ ≥ 2 bước mới dùng card"). Bài ngắn (một phép, đọc/viết số) ⇒ tách đúng **thao tác thật** thành 3 bước (vd đổi → làm phép →
+    viết kết quả đúng cách), không bịa bước "Đọc kĩ đề". Bài dài ⇒ gộp các việc cùng mục đích. Mỗi bước ≥ 5 chữ ngoài công thức,
+    không bước là công thức trần ("$S_2=S-S_1$."), không bước cụt ("Nhân hai kết quả."). Không ghi đáp số cuối trong các bước.
+    Bộ kiểm hình thức: `scripts/kho/sach/kiem-p1-card.mjs` (5T đã áp toàn bộ 836 câu — `kho-rules/dai/k5T.md` §8b).
+  - Không ghi "(như VD 8.1 của sách)" trong lời giải — HS không có cuốn sách.
   - Bước là **bước nghĩ** (làm gì, vì sao), không chép lại từng dòng tính của Phần 2.
   - Hiển thị card + mũi tên trên app / màn duyệt / bản in: ✅ 09/10 (§4 #8) — chỉ nhận chuỗi `**Bước k.**` **bên trong Phần 1**.
 - **Tách ý (CEO 09/10 — áp mọi khối):** chỉ tách các bài **"Tính / thực hiện phép tính"** và **"Tìm $x$"** có nhiều ý a) b) c) — mỗi ý một câu.

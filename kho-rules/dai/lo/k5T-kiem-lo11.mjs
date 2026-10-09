@@ -6,9 +6,8 @@
 // BỎ KHỎI LO11 (không có giá trị đặc trưng để so):
 //   LT 20.16  câu hỏi so sánh (S_ACD = S_BCD ; S_AOD = S_BOC), không có đáp số số.
 //   ON 97     đáp = tỉ số 1 (S_BEF = S_CDE, chứng minh được); chữ '1' khớp bừa mọi chuỗi nên không đưa vào.
-// GIỮ MỘT PHẦN (hình KHÔNG đánh dấu điểm ⇒ chỉ đưa các ý xác định được từ dấu chấm chia đoạn/đề):
-//   LT 19.7   chỉ ý c) và d). Ý a), b): M không có dấu chia trên hình ⇒ không suy ra được tỉ số (đo pixel chỉ gợi ý a: trung điểm).
-//   LT 19.15  chỉ ý c). Ý a), b), d): điểm M (a, d) / M trên AC (b) không đánh dấu ⇒ bỏ.
+// LT 19.7, LT 19.15: hình sách không đánh dấu vài điểm ⇒ CEO 09/10 tối chốt VIẾT LẠI ĐỀ nêu rõ dữ kiện từng ý ⇒ kiểm đủ các ý.
+// GIỮ MỘT PHẦN:
 //   ON 94     chỉ ý a) = 30. Ý b) BC : CF = 1 (Menelaus) — '1' khớp bừa nên không đưa.
 // LƯU Ý ĐỀ/HÌNH LỆCH NHẸ (vẫn giữ vì đáp số duy nhất):
 //   VD 18.2   đề ghi "AB = 36, M trên AB, CM = 9" nhưng hình: M nằm trên BC, AH ⟂ BC ⇒ thực chất BC = 36, CM = 9
@@ -127,8 +126,9 @@ export const LO11 = {
   'LT 19.6': () => { // S2 = S - S1 = 5/6 S ; S2 - S1 = 4/6 S = 60
     return [V(F(60).div(F(5, 6).sub(F(1, 6))))]; // 90
   },
-  // ý c) BMC=3/5, ABM=2/5 (AC 5 phần, AM=2) ; ý d) S1=ACN=1/3 (BC 3 phần, CN=1), S_ANB = 4/3. Ý a), b) KHÔNG đưa (hình không đánh dấu).
-  'LT 19.7': () => [R(3, 5), R(2, 5), R(1, 3), R(4, 3)],
+  // ĐỀ VIẾT LẠI (CEO 09/10 tối) nêu rõ dữ kiện từng ý ⇒ kiểm đủ: a) BM = MC ⇒ 1/2, 1/2 ; b) AM = 2MB ⇒ 2/3, 1/3 ;
+  // c) AM = 2/5 AC: S1 = BMC = 3/5, S2 = ABM = 2/5 ; d) CN = 1/3 BC (N ngoài BC): S1 = ACN = 1/3, S_ANB = 4/3.
+  'LT 19.7': () => [R(1, 2), R(2, 3), R(1, 3), R(3, 5), R(2, 5), R(4, 3)],
   'LT 19.9': () => [V(F(24).mul(4).div(3))], // 32
   'LT 19.10': () => { // M trung điểm BC ⇒ S = 2·15 = 30 ; AN = 2/5 AC
     const S = F(15).mul(2);
@@ -139,8 +139,9 @@ export const LO11 = {
     return [V(F(9).div(F(1, 3).mul(F(1, 2)).mul(F(1, 2))))]; // 108
   },
   'LT 19.14': () => [V(F(108).mul(F(1, 4)).mul(F(1, 3)))], // 9
-  // ý c) S1/S = 1/2 · 3/5 = 3/10 ; S2/S = 7/10. Ý a), b), d): điểm không đánh dấu ⇒ bỏ.
-  'LT 19.15': () => [R(3, 10), R(7, 10)],
+  // ĐỀ VIẾT LẠI (CEO 09/10 tối): a) AM = 1/2 AB, AN = 2/3 AC ⇒ 1/3, 2/3 ; b) CM = 1/3 CA, CN = 3/5 CB ⇒ 1/5, 4/5 ;
+  // c) BM = 1/2 BA, BN = 3/5 BC ⇒ 3/10, 7/10 ; d) AM = 1/2 AB, AN = 4/3 AC ⇒ S_AMN/S = 2/3.
+  'LT 19.15': () => [R(1, 3), R(2, 3), R(1, 5), R(4, 5), R(3, 10), R(7, 10)],
   'LT 19.18': () => [V(F(7).div(F(1, 2).mul(F(1, 3))))], // 42
   'LT 19.19': () => { // S_NMPB = S_ABP − S_AMN = 2/3 S − 1/6 S = 1/2 S
     return [V(F(21).div(F(2, 3).sub(F(1, 2).mul(F(1, 3)))))]; // 42
