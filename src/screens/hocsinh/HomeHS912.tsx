@@ -571,11 +571,11 @@ function ChiNut({ nutRef, onXong, dangLuu, loi }: { nutRef: RefObject<HTMLButton
 }
 
 // ── VỎ: giữ lựa chọn đã lưu + bản đang xem thử, lo lưu ──────────────────────
-export default function HomeHS912({ giaoDien, onDaLuu, ...p }: HomeProps & { giaoDien: GiaoDien | null; onDaLuu: (g: GiaoDien) => void }) {
+export default function HomeHS912({ giaoDien, onDaLuu, macDinh, ...p }: HomeProps & { giaoDien: GiaoDien | null; onDaLuu: (g: GiaoDien) => void; macDinh?: GiaoDien }) {
   const heThongToi = useHeThongToi()
   const manDoc = useManDoc()
   const ngang = useMedia('(min-width: 1024px) and (orientation: landscape)') // PC / iPad ngang ⇒ bố cục theo ảnh gốc
-  const daLuu = giaoDien ?? MAC_DINH
+  const daLuu = giaoDien ?? macDinh ?? MAC_DINH
   const [xem, setXem] = useState<GiaoDien>(daLuu)           // bản đang vẽ (xem thử khi tấm chọn mở)
   const [buoc, setBuoc] = useState<'chao' | 'chon' | 'chi_nut' | null>(giaoDien ? null : 'chao')
   const [mo, setMo] = useState(false)                       // tấm chọn mở từ nút (không phải hướng dẫn)
@@ -616,7 +616,7 @@ export default function HomeHS912({ giaoDien, onDaLuu, ...p }: HomeProps & { gia
             <p className="mt-1 text-[22px] font-extrabold leading-tight">App có giao diện mới, {p.hoTen.trim().split(/\s+/).slice(-2).join(' ')} tự chọn nhé</p>
             <p className="mt-2 text-[14.5px] leading-snug" style={{ color: MAU.muted }}>Chọn phong cách và hình nền em thích. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
             <button onClick={() => setBuoc('chon')} className="mt-5 h-12 w-full rounded-xl text-[15px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Chọn giao diện</button>
-            <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[14px] font-semibold" style={{ color: MAU.muted }}>Để sau, dùng {laySkin(SKIN_MAC_DINH).ten}</button>
+            <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[14px] font-semibold" style={{ color: MAU.muted }}>Để sau, dùng {laySkin((macDinh ?? MAC_DINH).skin).ten}</button>
           </div>
         </Lop>
       )}

@@ -37,7 +37,7 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
 
 // ── Card theo NHÓM nguồn (Thùy 27/09: "để hs theo dõi nguồn nào ít-nhiều") — bấm 1 card mới hiện
 // lịch sử chi tiết của nhóm đó (HoatDongRow), thay vì 1 danh sách phẳng lẫn lộn mọi nguồn.
-type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
+export type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
 const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu' }> = {
   et: { icon: '📋', ten: 'ET', donVi: 'exp' },
   btvn: { icon: '🏠', ten: 'BTVN', donVi: 'exp' },
@@ -54,7 +54,7 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
   khac: { icon: '✨', ten: 'Khác', donVi: 'exp' },
 }
 // Thứ tự hiện card — khớp ví dụ Thùy đưa (ET, BTVN, thầy cô tặng, may mắn, hoạt động lớp...).
-const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
+export const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
 const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   exp_et: 'et', exp_btvn: 'btvn', exp_btvn_thang: 'btvn',
   exp_nhiem_vu: 'nhiem_vu', exp_thanh_tuu: 'thanh_tuu', exp_huy_hieu: 'huy_hieu',
@@ -64,7 +64,7 @@ const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   // không đủ căn cứ gán đúng ET hay BTVN ⇒ để "Khác", KHÔNG đoán bừa (§1.5 thà bỏ trống hơn đánh sai).
   exp_thang: 'khac', rank_et: 'khac', rank_ingame: 'khac', btvn: 'khac',
 }
-type NhomTong = { tong: number; soLuong: number; items: HoatDongViXu[] }
+export type NhomTong = { tong: number; soLuong: number; items: HoatDongViXu[] }
 function gomNhom(items: HoatDongViXu[]): Partial<Record<NhomKey, NhomTong>> {
   const g: Partial<Record<NhomKey, NhomTong>> = {}
   for (const h of items) {
@@ -113,27 +113,28 @@ function HoatDongRow({ h }: { h: HoatDongViXu }) {
   )
 }
 
-function NguonCard({ nhom, tong, onClick }: { nhom: NhomKey; tong: NhomTong | undefined; onClick: () => void }) {
+export function NguonCard({ nhom, tong, onClick }: { nhom: NhomKey; tong: NhomTong | undefined; onClick: () => void }) {
   const meta = NHOM_META[nhom]
   const soLuong = tong?.soLuong ?? 0
   const so = tong?.tong ?? 0
   const duong = so >= 0
   const xuHien = soLuong === 0 ? '0' : meta.donVi === 'xu' ? Math.abs(so).toLocaleString('vi-VN') : fmtXuTuongDuong(so)
+  // THẺ NỬA CHIỀU NGANG (Thùy 09/10): 2 thẻ / hàng, khối gần vuông thay cho dải ngang hẹp — icon + chevron trên, tên + số lần giữa, số xu to ở đáy.
   return (
-    <button onClick={onClick} disabled={soLuong === 0} className="flex items-center gap-3 p-3 text-left transition active:scale-[0.98] disabled:opacity-60"
+    <button onClick={onClick} disabled={soLuong === 0} className="flex min-h-[148px] min-w-0 flex-col items-start gap-1 p-3.5 text-left transition active:scale-[0.98] disabled:opacity-60"
       style={THE}>
-      <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[14px] text-[20px]" style={O_ICON}>{meta.icon}</span>
-      <span className="min-w-0 flex-1">
-        <span className="block truncate text-[13.5px] font-bold" style={{ color: MAU.ink }}>{meta.ten}</span>
-        <span className="mt-0.5 block text-[11px]" style={{ color: MAU.muted }}>{soLuong > 0 ? `${soLuong} lần` : nhom === 'hoat_dong_lop' ? 'Sắp ra mắt' : 'Chưa có'}</span>
+      <span className="flex w-full items-start justify-between">
+        <span className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[14px] text-[22px]" style={O_ICON}>{meta.icon}</span>
+        {soLuong > 0 && <span className="text-[18px] leading-none" style={{ color: MAU.muted }} aria-hidden>›</span>}
       </span>
-      <span className="shrink-0 text-right">
-        <span className="block text-[15px] font-extrabold" style={{ color: soLuong === 0 ? MAU.muted : duong ? MAU.dung : MAU.sai }}>
+      <span className="mt-1.5 block text-[14.5px] font-bold leading-tight" style={{ color: MAU.ink }}>{meta.ten}</span>
+      <span className="block text-[11.5px]" style={{ color: MAU.muted }}>{soLuong > 0 ? `${soLuong} lần` : nhom === 'hoat_dong_lop' ? 'Sắp ra mắt' : 'Chưa có'}</span>
+      <span className="mt-auto block pt-1.5">
+        <span className="block text-[18px] font-extrabold leading-tight" style={{ color: soLuong === 0 ? MAU.muted : duong ? MAU.dung : MAU.sai }}>
           {soLuong > 0 && (duong ? '+' : '−')}{xuHien} xu
         </span>
-        {meta.donVi === 'exp' && soLuong > 0 && <span className="mt-0.5 block text-[10px]" style={{ color: MAU.muted }}>{so} EXP</span>}
+        {meta.donVi === 'exp' && soLuong > 0 && <span className="block text-[11px]" style={{ color: MAU.muted }}>{so} EXP</span>}
       </span>
-      {soLuong > 0 && <span className="shrink-0 text-[16px]" style={{ color: MAU.muted }}>›</span>}
     </button>
   )
 }
@@ -216,7 +217,7 @@ export default function ViXuHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null; onXo
           </div>
 
           {nhomMo === null ? (
-            <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-2 gap-2.5 md:gap-3">
               {cacNhom.map((k) => <NguonCard key={k} nhom={k} tong={nhomTong[k]} onClick={() => setNhomMo(k)} />)}
             </div>
           ) : (

@@ -9,6 +9,7 @@ import { Khung, NutBack } from '../TuLuyenChuDe'
 import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc, useSkinHT } from '../skin/KhungHS'
 import { laySkin, type GiaoDien } from '../skin/registry'
 import { NhiemVuView } from '../NhiemVuHS'
+import { NguonCard, THU_TU_NHOM, type NhomKey, type NhomTong } from '../ViXuHS'
 import { DauNhiemVuArt } from '../NhiemVuArt'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
 import { RankView } from '../RankHS'
@@ -29,6 +30,7 @@ import type { LichBoTro } from '../../../lib/botro_yeu_ca'
 const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'nhiem_vu', ten: 'Nhiệm vụ', tt: ['Giữa tháng', 'Đầu tháng', 'Chưa mở'] },
+  { id: 'vi_xu', ten: 'Ví xu · nguồn xu', tt: ['Có hoạt động'] },
   { id: 'bxh', ten: 'Bảng xếp hạng', tt: ['Em hạng 6 (khối)', 'Chưa có hạng', 'Bảng sắp có'] },
   { id: 'thanh_tuu', ten: 'Thành tựu mùa', tt: ['Giữa mùa (2 thẻ chờ nhận)', 'Mới vào', 'Vừa nhận quà'] },
   { id: 'album', ten: 'Album', tt: ['Giữa năm (1 thẻ mở)', 'Mới vào (0 sao)', 'Lớp phủ sao mới'] },
@@ -164,6 +166,11 @@ function Man({ man, tt }: { man: string; tt: number }) {
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
     return <Khung nenAnh="nhiem_vu"><DauNv /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
+  }
+  if (man === 'vi_xu') {
+    const T: Partial<Record<NhomKey, NhomTong>> = { et: { tong: 420, soLuong: 6, items: [] }, btvn: { tong: 260, soLuong: 4, items: [] }, nhiem_vu: { tong: 640, soLuong: 12, items: [] }, thanh_tuu: { tong: 800, soLuong: 3, items: [] } }
+    return <Khung nenAnh="nhiem_vu"><Dau tieuDe="Ví xu của em" phu="Xu để đổi quà — kiếm bằng cách học chăm chỉ mỗi ngày" />
+      <div className="mt-4 grid grid-cols-2 gap-2.5 md:gap-3">{THU_TU_NHOM.map((k) => <NguonCard key={k} nhom={k} tong={T[k]} onClick={noop} />)}</div></Khung>
   }
   if (man === 'bxh') return <MauBxh tt={tt} />
   if (man === 'thanh_tuu') {

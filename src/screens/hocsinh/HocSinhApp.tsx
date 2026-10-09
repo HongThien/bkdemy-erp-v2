@@ -55,7 +55,7 @@ import { listBaiTraCuaToi, demBaiTraChuaXem, type BaiTraHS as BaiTraRow } from '
 import BaiTraHS, { ngayNgan } from './BaiTraHS'
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
-import { KHOI_CHON_SKIN, laySkin, type GiaoDien } from './skin/registry'
+import { KHOI_CHON_SKIN, laySkin, skinMacDinhTheoKhoi, type GiaoDien } from './skin/registry'
 import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
@@ -498,11 +498,14 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     else if (d === 'luyen_yeu') { setChuDeDang(null); setDirect('tu_luyen') }
     else setDirect(d)
   }
-  useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_CHON_SKIN.has(k))).catch(() => setNhom912(false)) }, [])
+  // Style mặc định THEO KHỐI (Thùy 09/10): lớp 4–7 Minecraft (Khối vuông), lớp 8–12 Anime. Em đã chọn (có dòng hs_giao_dien) thì theo em chọn.
+  const [khoiHS, setKhoiHS] = useState<string | null>(null)
+  const gdMacDinh: GiaoDien = { ...GD_MAC_DINH, skin: skinMacDinhTheoKhoi(khoiHS) }
+  useEffect(() => { khoiCuaHS().then((k) => { setKhoiHS(k); setNhom912(!!k && KHOI_CHON_SKIN.has(k)) }).catch(() => setNhom912(false)) }, [])
   useEffect(() => {
     if (!nhom912) return
     // Lỗi mạng ⇒ coi như đã có lựa chọn mặc định (không bật hướng dẫn chỉ vì 1 lần gọi hỏng).
-    giaoDienCuaToi().then(setGiaoDien).catch(() => setGiaoDien(GD_MAC_DINH))
+    giaoDienCuaToi().then(setGiaoDien).catch(() => setGiaoDien(gdMacDinh))
   }, [nhom912])
   useEffect(() => { if (nhom912 && !direct && !khu) home912().then(setDuLieu912).catch(() => {}) }, [nhom912, direct, khu])
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
@@ -537,10 +540,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }, [nhom912, direct, khu, monChon])
   // Style (skin) của em áp cho TOÀN app, không chỉ Home (Thùy 29/09): biến --sk-* gắn lên <html>, mọi màn đọc qua skin/KhungHS.
   // Cấp 1 chưa có skin riêng ⇒ tạm Soft Hàn sáng.
-  useApSkinGoc(nhom912 ? (giaoDien ?? GD_MAC_DINH) : GD_CAP1)
+  useApSkinGoc(nhom912 ? (giaoDien ?? gdMacDinh) : { ...GD_CAP1, skin: skinMacDinhTheoKhoi(khoiHS) })
   // Tự luyện mở BẢN ĐỒ PHIÊU LƯU chỉ khi: cờ bật · em BẬT hiệu ứng game (hs_giao_dien.hieu_ung_game, Thùy 02/10) · style có bản đồ (Tối giản không có).
   // Còn lại ⇒ bài dạng thường. Hàm (không phải hằng) vì monChon khai sau; chỉ gọi trong xử lý bấm.
-  const banDoBat = () => { const g = giaoDien ?? GD_MAC_DINH; return phieuLuuBat() && g.hieu_ung_game !== false && !!laySkin(g.skin).the3d }
+  const banDoBat = () => { const g = giaoDien ?? gdMacDinh; return phieuLuuBat() && g.hieu_ung_game !== false && !!laySkin(g.skin).the3d }
   // Thùy 24/09: TRƯỚC chỉ kiểm 1 lần lúc mở app ⇒ học thuật chốt dạng đuổi SAU lúc em mở app (vụ Mạnh Duy 24/09 18:17) thì card
   // 'Học từ đầu' không hiện tới khi mở lại app. Giờ kiểm lại MỖI LẦN về màn chính (direct/khu = null) + khi app quay lại từ nền.
   // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
@@ -599,9 +602,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if ((direct === 'tu_luyen_chon' && nhanVat === null) || direct === 'doi_nhan_vat') return <ChonNhanVatHS dangCo={nhanVat ?? null} luu={chonNhanVat}
     onXong={(id) => { setNhanVat(id); setDirect('tu_luyen_chon') }} onBack={() => setDirect(direct === 'doi_nhan_vat' ? 'tu_luyen_chon' : null)} />
   if (direct === 'tu_luyen_chon') return <HocTapHS nhanVat={nhanVat ?? null} onDoiNhanVat={() => setDirect('doi_nhan_vat')}
-    onNap={monChon && laySkin((giaoDien ?? GD_MAC_DINH).skin).the3d ? () => napPhieuLuu(monChon) : undefined}
+    onNap={monChon && laySkin((giaoDien ?? gdMacDinh).skin).the3d ? () => napPhieuLuu(monChon) : undefined}
     // trong khu Học tập, đảo 'Học theo chủ đề' LUÔN là bản đồ (không cần cờ phieuluu riêng); chỉ lùi về danh sách dạng khi chưa có môn / style không có bản đồ
-    onChuDe={() => { const g = giaoDien ?? GD_MAC_DINH; setDirect(monChon && laySkin(g.skin).the3d ? 'phieu_luu' : 'tu_luyen_chu_de_ds') }}
+    onChuDe={() => { const g = giaoDien ?? gdMacDinh; setDirect(monChon && laySkin(g.skin).the3d ? 'phieu_luu' : 'tu_luyen_chu_de_ds') }}
     onYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }}
     onDauTruong={() => setDirect('dau_truong_bk')}
     onChinhPhuc={() => setDirect('chinh_phuc_bk')}
@@ -613,7 +616,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'chinh_phuc_bk') return <ChinhPhucHS onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'giai_vo_dich') return <GiaiVoDichHS onBack={() => setDirect('tu_luyen_chon')} onDauMay={() => setDirect('thu_thach')} />
-  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={<ManChoChuyen />}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
+  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={<ManChoChuyen />}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? gdMacDinh).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onLuyenYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
@@ -628,7 +631,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       onClick: () => setDirect('huong_dan'),
     }, {
       id: 'rank', ten: 'Rank', icon: '🛡️', moTa: 'Cấp bậc chiến binh của em theo từng môn — làm Thử thách để leo bậc.',
-      anh: (r ? anhBac(r.bac, 'bieu_tuong') : null) ?? laySkin((giaoDien ?? GD_MAC_DINH).skin).anhO?.rank ?? null,
+      anh: (r ? anhBac(r.bac, 'bieu_tuong') : null) ?? laySkin((giaoDien ?? gdMacDinh).skin).anhO?.rank ?? null,
       trangThai: rankHome === undefined ? undefined : r ? `${monChon ?? ''} · ${r.ten_bac}${r.sao ? ` ${'★'.repeat(r.sao)}` : ''} · hạng ${r.hang_khoi}/${r.so_em_khoi}` : 'Chưa có điểm mùa này',
       onClick: () => { setTuThuVien(true); setTuHoSo(false); setTuHome(false); setDirect('rank') },
     }].filter((t) => t.id !== 'rank' || rankMo())} />
@@ -658,7 +661,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect(layMonTam() ? null : 'tu_luyen_chon')} />
   if (direct === 'tu_luyen') {
-    const g = giaoDien ?? GD_MAC_DINH, b3d = laySkin(g.skin).the3d
+    const g = giaoDien ?? gdMacDinh, b3d = laySkin(g.skin).the3d
     // Luyện dạng yếu (tổng hợp, không chọn dạng): MÀN GIỚI THIỆU trước → rồi vào khung đấu chung nếu "Hiệu ứng game" BẬT và style có hỗ trợ; tắt ⇒ làm bài dạng thường.
     if (!chuDeDang && !yeuVao) return <GioiThieuYeu mon={monChon} nv={nhanVat ?? gioiTinh ?? 'nam'} khungGame={g.hieu_ung_game !== false && !!b3d}
       onBatDau={() => setYeuVao(true)} onBack={() => setDirect('tu_luyen_chon')} />
@@ -854,7 +857,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           } satisfies HomeCard
         }), ...theCardHTD])
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
-    if (nhom912 && giaoDien !== undefined) return <>{moiQuay}<MungMocChuoi c={moTN('chuoi') ? chuoi : null} hsId={hocSinhId} /><HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
+    if (nhom912 && giaoDien !== undefined) return <>{moiQuay}<MungMocChuoi c={moTN('chuoi') ? chuoi : null} hsId={hocSinhId} /><HomeHS912 giaoDien={giaoDien} macDinh={gdMacDinh} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon} demMon={demMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
