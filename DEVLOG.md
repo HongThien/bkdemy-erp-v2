@@ -36319,3 +36319,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Ghi đè: script cap-nhat-p1 ghép Phần 1 mới + Phần 2 cũ nguyên ký tự, 1 transaction, `where loi_giai = bản đo` (lệch 1 câu ⇒ rollback cả lượt). Ghi 532. Đo lại: 836/836 đạt, {3: 595, 4: 226, 5: 14, 6: 1}.
 - README §3 thay dòng "chỉ ≥ 2 bước mới dùng card" bằng "MỌI bài 3–6 bước"; brief 5T cập nhật. Phần 1 trong các tệp lo/k5T-lo*.json giờ cũ hơn DB — bản hiện hành lưu ở lo/k5T-card-3-6.json.
 - Ghi nhận: vài đoạn "Thử lại" cũ (đã duyệt) còn nêu đáp số (LT 1.5a–d, ON 22, LT 15.14…, 241/242) — giữ theo brief.
+
+## 09/10 (chiều) — Mở lại Thế giới BK
+- **Thùy:** "Mở lại kênh thế giới đi. main chưa có rồi. Sao main lại thiếu so với ngày trước?" ⇒ mig `202610091857_tinh_nang_mo_the_gioi` (ĐÃ ÁP): `the_gioi` mo_tu = 2020-01-01. Trạng thái công tắc: MỞ = hoc_tap · nhiem_vu · chuoi · thanh_tuu · vi_xu · xep_hang · the_gioi · tro_choi; ĐÓNG = thong_tin · so_tay · rank · thu_vien · de_thi_thu; "sắp ra mắt" = chinh_phuc · giai_vo_dich.
+- **Vì sao main "thiếu":** KHÔNG thiếu code (main ⊇ thu-nghiem, 0 commit lệch). Phần HS thấy ít hơn do 3 lớp ẨN chủ ý: (1) cờ build `coBat.ts` (phieuluu/hoctap) — tắt ở Production tới 09/10; (2) công tắc `tinh_nang` đợt 1 (07/10) ẩn the_gioi/thong_tin/so_tay/thu_vien/rank/de_thi_thu; (3) `rankBat()` tắt Rank ở mọi bản (06/10).
