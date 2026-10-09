@@ -92,3 +92,7 @@ export const LO8 = {
   'LT 25.13': () => ['18,75'],
   'LT 25.14': () => [tg(13, 20)],
 }
+// ý bị tach-bai dính vào ý trước (sách xếp 2 cột) — vá bai.json rồi soạn riêng (09/10)
+LO8['LT 25.3i'] = () => ['6,7']
+LO8['LT 25.3j'] = () => ['10,44']
+LO8['LT 25.4i'] = () => ['0,5']

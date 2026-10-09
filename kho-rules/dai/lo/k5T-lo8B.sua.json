@@ -1,0 +1,14 @@
+{
+ "LT 23.11": {
+  "noi_dung": "Một cái thùng hình hộp chữ nhật có chiều dài 15 cm, chiều rộng 9 cm, chiều cao 6 cm. Người ta xếp vào đó các khối hộp hình lập phương bằng nhau, sao cho đầy khít thùng. Tính số khối lập phương ít nhất có thể xếp được như vậy."
+ },
+ "LT 23.12": {
+  "noi_dung": "Một cái thùng dạng hình hộp chữ nhật có chiều dài 50 dm, chiều rộng 30 dm và chiều cao 40 dm. Người ta xếp đầy thùng bằng các hộp hình lập phương có độ dài cạnh theo đơn vị đề-xi-mét là số tự nhiên. Hỏi xếp được nhiều nhất là bao nhiêu hộp? Ít nhất là bao nhiêu hộp?"
+ },
+ "VD 23.1": {
+  "bo": "đề nói xếp 6 viên gạch \"như hình vẽ\" mà đề không có hình — làm ở lô bài có hình (vẽ lại bằng code)"
+ },
+ "LT 23.14": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khối nhỏ ở **chính giữa mặt trên** chỉ có **$1$ mặt** lộ ra ngoài (mặt trên), còn $4$ mặt bên và mặt dưới dính vào các khối khác. Lấy nó đi thì mất $1$ mặt ngoài nhưng **lộ ra $5$ mặt mới** (bốn mặt xung quanh và mặt đáy của chỗ trống), nên diện tích toàn phần **tăng** chứ không giảm.\n\n**Bước 1.** Tìm cạnh hình lập phương lớn từ thể tích, rồi tính diện tích toàn phần ban đầu ($6$ mặt).\n\n**Bước 2.** Tính diện tích một mặt của khối nhỏ và xem diện tích tăng thêm mấy mặt nhỏ: lộ ra $5$ mặt, mất $1$ mặt.\n\n**Bước 3.** Cộng phần tăng thêm vào diện tích toàn phần ban đầu.\n\n**Chú ý:** khác với khối ở đỉnh (mất $3$ mặt, lộ $3$ mặt, diện tích không đổi), khối ở giữa mặt thì lộ ra nhiều mặt hơn số mặt mất đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $216=6\\times 6\\times 6$ nên cạnh hình lập phương lớn là $6$ cm.\n\nDiện tích một mặt của hình lập phương lớn là: $6\\times 6=36$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình lập phương lớn là: $36\\times 6=216$ ($\\text{cm}^2$)\n\nDiện tích một mặt của hình lập phương nhỏ là: $2\\times 2=4$ ($\\text{cm}^2$)\n\nLấy đi khối nhỏ chính giữa mặt trên thì mất $1$ mặt ngoài và lộ ra $5$ mặt mới, nên số mặt nhỏ tăng thêm là: $5-1=4$ (mặt)\n\nDiện tích tăng thêm là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình còn lại là: $216+16=232$ ($\\text{cm}^2$)\n\nĐáp số: $232\\ \\text{cm}^2$"
+ }
+}

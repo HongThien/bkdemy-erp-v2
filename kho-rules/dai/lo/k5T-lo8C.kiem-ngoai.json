@@ -1,0 +1,34 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-5T-lo8C-20261009",
+ "cau": {
+  "LT 25.6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  },
+  "LT 25.8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  },
+  "LT 25.9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  },
+  "LT 25.10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  },
+  "LT 25.11": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  },
+  "LT 25.13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  },
+  "LT 25.14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: điểm, mũi tên vận tốc, khoảng cách và mốc giờ khớp đề"
+  }
+ }
+}

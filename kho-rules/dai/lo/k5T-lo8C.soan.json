@@ -1,0 +1,507 @@
+[
+ {
+  "ma_nguon": "VD 25.2a",
+  "dap_an": "$159$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề hỏi kết quả bằng **phút**, mà số hạng thứ nhất có cả giờ lẫn phút. Số đo thời gian cộng theo từng đơn vị: phút cộng phút, giờ giữ nguyên; sau đó đổi hết ra phút bằng $1$ giờ $=60$ phút.\n\n**Bước 1.** Cộng phần phút với phút: $47+52=99$ phút, phần giờ giữ nguyên nên được $1$ giờ $99$ phút.\n\n**Bước 2.** Đề hỏi bằng phút nên đổi $1$ giờ thành $60$ phút rồi cộng với $99$ phút: $60+99=159$ phút.\n\n**Chú ý:** Không dừng ở $1$ giờ $99$ phút: đề đã chọn đơn vị trả lời là phút thì phải đổi hết ra phút.\n\n**Phần 2. Trình bày**\n\n$1$ giờ $47$ phút $+52$ phút $=1$ giờ $99$ phút $=159$ phút"
+ },
+ {
+  "ma_nguon": "VD 25.2b",
+  "dap_an": "$10$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng giờ với giờ, phút với phút. Hai số phút $11$ và $49$ cộng lại đúng bằng $60$ phút, tức là tròn $1$ giờ — dấu hiệu đề muốn kết quả là một số **giờ tròn**.\n\n**Bước 1.** Cộng giờ: $2+7=9$ giờ. Cộng phút: $11+49=60$ phút. Được $9$ giờ $60$ phút.\n\n**Bước 2.** Vì $60$ phút $=1$ giờ nên $9$ giờ $60$ phút $=9$ giờ $+1$ giờ $=10$ giờ.\n\n**Phần 2. Trình bày**\n\n$2$ giờ $11$ phút $+7$ giờ $49$ phút $=9$ giờ $60$ phút $=10$ giờ"
+ },
+ {
+  "ma_nguon": "VD 25.2c",
+  "dap_an": "$40$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng phút với phút, giây với giây. Hai số giây $15$ và $45$ cộng lại đúng $60$ giây, tức là tròn $1$ phút, nên kết quả đổi được ra một số **phút tròn**.\n\n**Bước 1.** Cộng phút: $37+2=39$ phút. Cộng giây: $15+45=60$ giây. Được $39$ phút $60$ giây.\n\n**Bước 2.** Vì $60$ giây $=1$ phút nên $39$ phút $60$ giây $=39$ phút $+1$ phút $=40$ phút.\n\n**Phần 2. Trình bày**\n\n$37$ phút $15$ giây $+2$ phút $45$ giây $=39$ phút $60$ giây $=40$ phút"
+ },
+ {
+  "ma_nguon": "VD 25.3a",
+  "dap_an": "$3$ giờ $30$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân một số đo thời gian có hai đơn vị với một số thì **nhân từng đơn vị**: giờ nhân với số đó, phút nhân với số đó.\n\n**Bước 1.** Nhân phần giờ: $1\\times 3=3$ giờ. Nhân phần phút: $10\\times 3=30$ phút.\n\n**Bước 2.** Ghép lại được $3$ giờ $30$ phút. Số phút $30$ nhỏ hơn $60$ nên không phải đổi thêm.\n\n**Phần 2. Trình bày**\n\n$1$ giờ $10$ phút $\\times 3=3$ giờ $30$ phút"
+ },
+ {
+  "ma_nguon": "VD 25.3b",
+  "dap_an": "$13,6$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đo $3,4$ phút chỉ có **một** đơn vị (phút) và viết dưới dạng số thập phân, nên nhân như nhân số thập phân bình thường.\n\n**Chú ý:** Kết quả $13,6$ phút không phải $13$ phút $6$ giây: phần $0,6$ phút là $0,6\\times 60=36$ giây.\n\n**Phần 2. Trình bày**\n\n$3,4$ phút $\\times 4=13,6$ phút"
+ },
+ {
+  "ma_nguon": "VD 25.3c",
+  "dap_an": "$24$ giờ $57$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có ngoặc nên **làm trong ngoặc trước**: cộng hai số đo thời gian, rồi mới nhân với $3$.\n\n**Bước 1.** Trong ngoặc: $4+3=7$ giờ, $27+52=79$ phút. Vì $79$ phút $=60$ phút $+19$ phút $=1$ giờ $19$ phút nên $7$ giờ $79$ phút $=8$ giờ $19$ phút.\n\n**Bước 2.** Nhân với $3$ từng đơn vị: $8\\times 3=24$ giờ, $19\\times 3=57$ phút. Số phút $57$ nhỏ hơn $60$ nên giữ nguyên, được $24$ giờ $57$ phút.\n\n**Phần 2. Trình bày**\n\n($4$ giờ $27$ phút $+3$ giờ $52$ phút) $\\times 3=(7$ giờ $79$ phút$)\\times 3=8$ giờ $19$ phút $\\times 3=24$ giờ $57$ phút"
+ },
+ {
+  "ma_nguon": "VD 25.4a",
+  "dap_an": "$12,5$ m/giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi vận tốc là đổi **cả hai đơn vị**: quãng đường (km ra m) và thời gian (giờ ra giây).\n\n**Bước 1.** $45$ km/giờ nghĩa là $1$ giờ đi được $45$ km $=45000$ m.\n\n**Bước 2.** Mà $1$ giờ $=3600$ giây, nên $1$ giây đi được $45000:3600=12,5$ m.\n\n**Phần 2. Trình bày**\n\n$45$ km/giờ $=45000:3600$ m/giây $=12,5$ m/giây"
+ },
+ {
+  "ma_nguon": "VD 25.4b",
+  "dap_an": "$5$ m/giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi vận tốc là đổi **cả hai đơn vị**: quãng đường (km ra m) và thời gian (giờ ra giây).\n\n**Bước 1.** $18$ km/giờ nghĩa là $1$ giờ đi được $18$ km $=18000$ m.\n\n**Bước 2.** Mà $1$ giờ $=3600$ giây, nên $1$ giây đi được $18000:3600=5$ m.\n\n**Phần 2. Trình bày**\n\n$18$ km/giờ $=18000:3600$ m/giây $=5$ m/giây"
+ },
+ {
+  "ma_nguon": "VD 25.4c",
+  "dap_an": "$25,2$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi vận tốc là đổi **cả hai đơn vị**. Lần này đổi ngược: từ m/giây ra km/giờ.\n\n**Bước 1.** $7$ m/giây nghĩa là $1$ giây đi được $7$ m, nên $1$ giờ $=3600$ giây đi được $7\\times 3600=25200$ m.\n\n**Bước 2.** Đổi mét ra ki-lô-mét: $25200$ m $=25200:1000=25,2$ km. Vậy $1$ giờ đi được $25,2$ km.\n\n**Phần 2. Trình bày**\n\n$7$ m/giây $=7\\times 3600:1000$ km/giờ $=25,2$ km/giờ"
+ },
+ {
+  "ma_nguon": "VD 25.4d",
+  "dap_an": "$9$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi vận tốc là đổi **cả hai đơn vị**. Lần này đổi ngược: từ m/giây ra km/giờ, số đo ban đầu là số thập phân.\n\n**Bước 1.** $2,5$ m/giây nghĩa là $1$ giây đi được $2,5$ m, nên $1$ giờ $=3600$ giây đi được $2,5\\times 3600=9000$ m.\n\n**Bước 2.** Đổi mét ra ki-lô-mét: $9000$ m $=9000:1000=9$ km. Vậy $1$ giờ đi được $9$ km.\n\n**Phần 2. Trình bày**\n\n$2,5$ m/giây $=2,5\\times 3600:1000$ km/giờ $=9$ km/giờ"
+ },
+ {
+  "ma_nguon": "LT 25.1a",
+  "dap_an": "$27$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từ đơn vị **lớn** sang đơn vị **bé** thì **nhân** với số đơn vị bé chứa trong một đơn vị lớn. Ở đây $1$ giờ $=60$ phút nên nhân $0,45$ với $60$.\n\n**Chú ý:** $0,45$ giờ là số thập phân của giờ, không phải $0$ giờ $45$ phút.\n\n**Phần 2. Trình bày**\n\n$0,45$ giờ $=0,45\\times 60$ phút $=27$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.1b",
+  "dap_an": "$36$ giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từ đơn vị **lớn** sang đơn vị **bé** thì **nhân** với số đơn vị bé chứa trong một đơn vị lớn. Ở đây $1$ phút $=60$ giây nên nhân $0,6$ với $60$.\n\n**Phần 2. Trình bày**\n\n$0,6$ phút $=0,6\\times 60$ giây $=36$ giây"
+ },
+ {
+  "ma_nguon": "LT 25.1c",
+  "dap_an": "$60$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từ đơn vị **lớn** sang đơn vị **bé** thì **nhân** với số đơn vị bé chứa trong một đơn vị lớn. Ở đây $1$ ngày $=24$ giờ nên nhân $2,5$ với $24$.\n\n**Phần 2. Trình bày**\n\n$2,5$ ngày $=2,5\\times 24$ giờ $=60$ giờ"
+ },
+ {
+  "ma_nguon": "LT 25.1d",
+  "dap_an": "$162$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đo có hai đơn vị (giờ, phút) mà đề hỏi bằng phút: đổi phần giờ ra phút rồi cộng với phần phút đã có.\n\n**Bước 1.** Đổi phần giờ: $2$ giờ $=2\\times 60=120$ phút.\n\n**Bước 2.** Cộng với phần phút: $120+42=162$ phút.\n\n**Phần 2. Trình bày**\n\n$2$ giờ $42$ phút $=2\\times 60+42$ phút $=162$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.1e",
+  "dap_an": "$75$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đo có hai đơn vị (giờ, phút) mà đề hỏi bằng phút: đổi phần giờ ra phút rồi cộng với phần phút đã có.\n\n**Bước 1.** Đổi phần giờ: $1$ giờ $=60$ phút.\n\n**Bước 2.** Cộng với phần phút: $60+15=75$ phút.\n\n**Phần 2. Trình bày**\n\n$1$ giờ $15$ phút $=1\\times 60+15$ phút $=75$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.1f",
+  "dap_an": "$48$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từ đơn vị **lớn** sang đơn vị **bé** thì **nhân** với số đơn vị bé chứa trong một đơn vị lớn. Ở đây $1$ giờ $=60$ phút nên $\\dfrac{4}{5}$ giờ là $\\dfrac{4}{5}$ của $60$ phút: lấy $60$ nhân với $\\dfrac{4}{5}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4}{5}$ giờ $=\\dfrac{4}{5}\\times 60$ phút $=48$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.2a",
+  "dap_an": "$0,6$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từ đơn vị **bé** sang đơn vị **lớn** thì **chia** cho số đơn vị bé chứa trong một đơn vị lớn. Ở đây $1$ giờ $=60$ phút nên chia $36$ cho $60$.\n\n**Phần 2. Trình bày**\n\n$36$ phút $=36:60$ giờ $=0,6$ giờ"
+ },
+ {
+  "ma_nguon": "LT 25.2b",
+  "dap_an": "$3,25$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từ đơn vị **bé** sang đơn vị **lớn** thì **chia** cho số đơn vị bé chứa trong một đơn vị lớn. Ở đây $1$ phút $=60$ giây nên chia $195$ cho $60$.\n\n**Chú ý:** $3,25$ phút không phải $3$ phút $25$ giây: phần $0,25$ phút là $0,25\\times 60=15$ giây.\n\n**Phần 2. Trình bày**\n\n$195$ giây $=195:60$ phút $=3,25$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.2c",
+  "dap_an": "$2,25$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề hỏi kết quả chỉ bằng **giờ** (một đơn vị), nên giữ phần giờ và đổi phần phút ra giờ rồi cộng lại.\n\n**Bước 1.** Đổi phần phút ra giờ: $15$ phút $=15:60=0,25$ giờ.\n\n**Bước 2.** Cộng với phần giờ đã có: $2+0,25=2,25$ giờ.\n\n**Phần 2. Trình bày**\n\n$2$ giờ $15$ phút $=2+15:60$ giờ $=2,25$ giờ"
+ },
+ {
+  "ma_nguon": "LT 25.2d",
+  "dap_an": "$3,8$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề hỏi kết quả chỉ bằng **phút** (một đơn vị), nên giữ phần phút và đổi phần giây ra phút rồi cộng lại.\n\n**Bước 1.** Đổi phần giây ra phút: $48$ giây $=48:60=0,8$ phút.\n\n**Bước 2.** Cộng với phần phút đã có: $3+0,8=3,8$ phút.\n\n**Phần 2. Trình bày**\n\n$3$ phút $48$ giây $=3+48:60$ phút $=3,8$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.2e",
+  "dap_an": "$2$ giờ $5$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách $125$ phút thành các **giờ tròn** và số phút còn lẻ: mỗi giờ có $60$ phút nên lấy $125$ chia cho $60$.\n\n**Bước 1.** $125:60=2$ (dư $5$): có $2$ giờ tròn, tức là $2\\times 60=120$ phút.\n\n**Bước 2.** Số phút còn lại: $125-120=5$ phút. Vậy $125$ phút $=2$ giờ $5$ phút.\n\n**Phần 2. Trình bày**\n\n$125$ phút $=120$ phút $+5$ phút $=2$ giờ $5$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.2f",
+  "dap_an": "$1$ phút $36$ giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách $96$ giây thành các **phút tròn** và số giây còn lẻ: mỗi phút có $60$ giây nên lấy $96$ chia cho $60$.\n\n**Bước 1.** $96:60=1$ (dư $36$): có $1$ phút tròn, tức là $60$ giây.\n\n**Bước 2.** Số giây còn lại: $96-60=36$ giây. Vậy $96$ giây $=1$ phút $36$ giây.\n\n**Phần 2. Trình bày**\n\n$96$ giây $=60$ giây $+36$ giây $=1$ phút $36$ giây"
+ },
+ {
+  "ma_nguon": "LT 25.3a",
+  "dap_an": "$19$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng giờ với giờ, phút với phút. Hai số phút $8$ và $52$ cộng lại đúng $60$ phút, tức là tròn $1$ giờ, nên kết quả là số **giờ tròn**.\n\n**Bước 1.** Cộng giờ: $7+11=18$ giờ. Cộng phút: $8+52=60$ phút. Được $18$ giờ $60$ phút.\n\n**Bước 2.** Vì $60$ phút $=1$ giờ nên $18$ giờ $60$ phút $=19$ giờ.\n\n**Phần 2. Trình bày**\n\n$7$ giờ $8$ phút $+11$ giờ $52$ phút $=18$ giờ $60$ phút $=19$ giờ"
+ },
+ {
+  "ma_nguon": "LT 25.3b",
+  "dap_an": "$0,65$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng phút với phút, giây với giây; xong rồi mới đổi sang **giờ** như đề yêu cầu (đổi từ đơn vị bé sang đơn vị lớn thì chia).\n\n**Bước 1.** Cộng phút: $31+7=38$ phút. Cộng giây: $25+35=60$ giây $=1$ phút. Được $38$ phút $+1$ phút $=39$ phút.\n\n**Bước 2.** Đổi $39$ phút ra giờ: chia cho $60$, được $39:60=0,65$ giờ.\n\n**Phần 2. Trình bày**\n\n$31$ phút $25$ giây $+7$ phút $35$ giây $=38$ phút $60$ giây $=39$ phút\n\nĐổi: $39$ phút $=39:60$ giờ $=0,65$ giờ"
+ },
+ {
+  "ma_nguon": "LT 25.3c",
+  "dap_an": "$140$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề hỏi bằng **phút**: cộng phút với phút, giữ phần giờ, rồi đổi hết ra phút.\n\n**Bước 1.** Cộng phút: $37+43=80$ phút, phần giờ giữ nguyên nên được $1$ giờ $80$ phút.\n\n**Bước 2.** Đổi $1$ giờ thành $60$ phút: $60+80=140$ phút.\n\n**Phần 2. Trình bày**\n\n$1$ giờ $37$ phút $+43$ phút $=1$ giờ $80$ phút $=140$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.3d",
+  "dap_an": "$12$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng ngày với ngày, giờ với giờ. Hai số giờ $19$ và $5$ cộng lại được $24$ giờ, mà $1$ ngày $=24$ giờ, nên kết quả là số **ngày tròn**.\n\n**Bước 1.** Cộng ngày: $5+6=11$ ngày. Cộng giờ: $19+5=24$ giờ. Được $11$ ngày $24$ giờ.\n\n**Bước 2.** Vì $24$ giờ $=1$ ngày nên $11$ ngày $24$ giờ $=12$ ngày.\n\n**Phần 2. Trình bày**\n\n$5$ ngày $19$ giờ $+6$ ngày $5$ giờ $=11$ ngày $24$ giờ $=12$ ngày"
+ },
+ {
+  "ma_nguon": "LT 25.3e",
+  "dap_an": "$3$ giờ $14$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trừ giờ cho giờ, phút cho phút. Số phút ở số bị trừ ($32$) lớn hơn số phút ở số trừ ($18$) nên trừ được ngay, không phải mượn.\n\n**Bước 1.** Trừ giờ: $4-1=3$ giờ.\n\n**Bước 2.** Trừ phút: $32-18=14$ phút. Vậy kết quả là $3$ giờ $14$ phút.\n\n**Phần 2. Trình bày**\n\n$4$ giờ $32$ phút $-1$ giờ $18$ phút $=3$ giờ $14$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.3f",
+  "dap_an": "$66$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề hỏi bằng **phút**: trừ giờ cho giờ, phút cho phút, rồi đổi phần giờ còn lại ra phút.\n\n**Bước 1.** Trừ giờ: $6-5=1$ giờ. Trừ phút: $24-18=6$ phút. Được $1$ giờ $6$ phút.\n\n**Bước 2.** Đổi $1$ giờ thành $60$ phút: $60+6=66$ phút.\n\n**Phần 2. Trình bày**\n\n$6$ giờ $24$ phút $-5$ giờ $18$ phút $=1$ giờ $6$ phút $=66$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.3g",
+  "dap_an": "$1$ giờ $51$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số phút ở số bị trừ ($16$) **bé hơn** số phút ở số trừ ($25$) nên không trừ ngay được: phải **mượn** $1$ giờ $=60$ phút từ phần giờ.\n\n**Bước 1.** Mượn $1$ giờ: $5$ giờ $16$ phút $=4$ giờ $+(60+16)$ phút $=4$ giờ $76$ phút.\n\n**Bước 2.** Trừ giờ cho giờ: $4-3=1$ giờ. Trừ phút cho phút: $76-25=51$ phút. Vậy kết quả là $1$ giờ $51$ phút.\n\n**Chú ý:** Sau khi mượn, phần giờ của số bị trừ giảm đi $1$ ($5$ giờ thành $4$ giờ).\n\n**Phần 2. Trình bày**\n\n$5$ giờ $16$ phút $-3$ giờ $25$ phút $=4$ giờ $76$ phút $-3$ giờ $25$ phút $=1$ giờ $51$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.3h",
+  "dap_an": "$27$ phút $48$ giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số giây ở số bị trừ ($20$) **bé hơn** số giây ở số trừ ($32$) nên phải **mượn** $1$ phút $=60$ giây từ phần phút.\n\n**Bước 1.** Mượn $1$ phút: $40$ phút $20$ giây $=39$ phút $+(60+20)$ giây $=39$ phút $80$ giây.\n\n**Bước 2.** Trừ phút cho phút: $39-12=27$ phút. Trừ giây cho giây: $80-32=48$ giây. Vậy kết quả là $27$ phút $48$ giây.\n\n**Phần 2. Trình bày**\n\n$40$ phút $20$ giây $-12$ phút $32$ giây $=39$ phút $80$ giây $-12$ phút $32$ giây $=27$ phút $48$ giây",
+  "ghi_chu_nghi": "Sách in ý h), i), j) của bài LT 25.3 chung một ô nên bản tách ý (cac_y) gom i, j vào đề của h. Đã soạn thành 3 câu riêng h, i, j (ma_nguon LT 25.3h, LT 25.3i, LT 25.3j); đề của h cần cắt bỏ phần i), j), còn i, j cần đề riêng."
+ },
+ {
+  "ma_nguon": "LT 25.3i",
+  "dap_an": "$6,7$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $12,15$ giờ và $5,45$ giờ là các số **thập phân** của giờ (một đơn vị duy nhất), nên trừ như trừ hai số thập phân.\n\n**Chú ý:** $12,15$ giờ không phải $12$ giờ $15$ phút. Đừng trừ kiểu giờ – phút và đừng mượn $60$.\n\n**Phần 2. Trình bày**\n\n$12,15$ giờ $-5,45$ giờ $=6,7$ giờ",
+  "ghi_chu_nghi": "Sách in ý h), i), j) của bài LT 25.3 chung một ô nên bản tách ý (cac_y) gom i, j vào đề của h. Đã soạn thành 3 câu riêng h, i, j (ma_nguon LT 25.3h, LT 25.3i, LT 25.3j); đề của h cần cắt bỏ phần i), j), còn i, j cần đề riêng."
+ },
+ {
+  "ma_nguon": "LT 25.3j",
+  "dap_an": "$10,44$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $15,7$ phút và $5,26$ phút là các số **thập phân** của phút (một đơn vị duy nhất), nên trừ như trừ hai số thập phân.\n\n**Chú ý:** Viết $15,7$ thành $15,70$ để hai số có cùng số chữ số ở phần thập phân rồi trừ: $15,70-5,26=10,44$.\n\n**Phần 2. Trình bày**\n\n$15,7$ phút $-5,26$ phút $=10,44$ phút",
+  "ghi_chu_nghi": "Sách in ý h), i), j) của bài LT 25.3 chung một ô nên bản tách ý (cac_y) gom i, j vào đề của h. Đã soạn thành 3 câu riêng h, i, j (ma_nguon LT 25.3h, LT 25.3i, LT 25.3j); đề của h cần cắt bỏ phần i), j), còn i, j cần đề riêng."
+ },
+ {
+  "ma_nguon": "LT 25.4a",
+  "dap_an": "$3$ giờ $36$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân một số đo thời gian có hai đơn vị với một số thì **nhân từng đơn vị**; nếu số phút vượt $60$ thì đổi ra giờ.\n\n**Bước 1.** Nhân phần giờ: $1\\times 3=3$ giờ. Nhân phần phút: $12\\times 3=36$ phút.\n\n**Bước 2.** Số phút $36$ nhỏ hơn $60$ nên không phải đổi. Kết quả $3$ giờ $36$ phút.\n\n**Phần 2. Trình bày**\n\n$1$ giờ $12$ phút $\\times 3=3$ giờ $36$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.4b",
+  "dap_an": "$11$ phút $15$ giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân một số đo thời gian có hai đơn vị với một số thì **nhân từng đơn vị**; nếu số giây vượt $60$ thì đổi ra phút.\n\n**Bước 1.** Nhân phần phút: $2\\times 5=10$ phút. Nhân phần giây: $15\\times 5=75$ giây.\n\n**Bước 2.** Vì $75$ giây $=60$ giây $+15$ giây $=1$ phút $15$ giây nên $10$ phút $75$ giây $=11$ phút $15$ giây.\n\n**Phần 2. Trình bày**\n\n$2$ phút $15$ giây $\\times 5=10$ phút $75$ giây $=11$ phút $15$ giây"
+ },
+ {
+  "ma_nguon": "LT 25.4c",
+  "dap_an": "$18,4$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đo $4,6$ phút chỉ có **một** đơn vị (phút) dưới dạng số thập phân, nên nhân như nhân số thập phân bình thường.\n\n**Phần 2. Trình bày**\n\n$4,6$ phút $\\times 4=18,4$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.4d",
+  "dap_an": "$25,5$ giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đo $8,5$ giây chỉ có **một** đơn vị (giây) dưới dạng số thập phân, nên nhân như nhân số thập phân bình thường.\n\n**Phần 2. Trình bày**\n\n$8,5$ giây $\\times 3=25,5$ giây"
+ },
+ {
+  "ma_nguon": "LT 25.4g",
+  "dap_an": "$1$ giờ $4$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia một số đo thời gian có hai đơn vị cho một số thì **chia từng đơn vị**: ở đây cả hai phần đều chia hết cho $5$ nên không phải đổi gì thêm.\n\n**Bước 1.** Chia phần giờ: $5:5=1$ giờ.\n\n**Bước 2.** Chia phần phút: $20:5=4$ phút. Vậy kết quả là $1$ giờ $4$ phút.\n\n**Phần 2. Trình bày**\n\n$5$ giờ $20$ phút $:5=1$ giờ $4$ phút"
+ },
+ {
+  "ma_nguon": "LT 25.4h",
+  "dap_an": "$1$ giờ $36$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $6$ giờ không chia hết cho $4$ (được $1$ giờ, dư $2$ giờ), nên **đổi hết ra phút** rồi mới chia cho $4$, sau đó đổi kết quả về giờ và phút.\n\n**Bước 1.** Đổi $6$ giờ $24$ phút ra phút: $6\\times 60+24=384$ phút.\n\n**Bước 2.** Chia cho $4$: $384:4=96$ phút.\n\n**Bước 3.** Đổi $96$ phút: $96$ phút $=60$ phút $+36$ phút $=1$ giờ $36$ phút.\n\n**Phần 2. Trình bày**\n\n$6$ giờ $24$ phút $:4=(6\\times 60+24)$ phút $:4=384$ phút $:4=96$ phút $=1$ giờ $36$ phút",
+  "ghi_chu_nghi": "Sách in ý h), i) của bài LT 25.4 chung một ô nên bản tách ý (cac_y) gom i vào đề của h. Đã soạn thành 2 câu riêng h, i (ma_nguon LT 25.4h, LT 25.4i); đề của h cần cắt bỏ phần i), còn i cần đề riêng. Ngoài ra cac_y không có ý e), f) của bài (bản tách có a, b, c, d, g, h, i) — chưa soạn vì không có đề."
+ },
+ {
+  "ma_nguon": "LT 25.4i",
+  "dap_an": "$0,5$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đo $4,5$ giờ chỉ có **một** đơn vị (giờ) dưới dạng số thập phân, nên chia như chia số thập phân bình thường.\n\n**Chú ý:** $0,5$ giờ $=0,5\\times 60=30$ phút; đề không đòi đổi nên trả lời bằng giờ.\n\n**Phần 2. Trình bày**\n\n$4,5$ giờ $:9=0,5$ giờ",
+  "ghi_chu_nghi": "Sách in ý h), i) của bài LT 25.4 chung một ô nên bản tách ý (cac_y) gom i vào đề của h. Đã soạn thành 2 câu riêng h, i (ma_nguon LT 25.4h, LT 25.4i); đề của h cần cắt bỏ phần i), còn i cần đề riêng. Ngoài ra cac_y không có ý e), f) của bài (bản tách có a, b, c, d, g, h, i) — chưa soạn vì không có đề."
+ },
+ {
+  "ma_nguon": "LT 25.6",
+  "dap_an": "$1$ giờ $48$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đi \"với vận tốc như vậy\" nghĩa là **vận tốc không đổi**, nên phải tìm vận tốc từ quãng đường đầu trước; có vận tốc rồi thì thời gian đi $81$ km bằng $81$ chia cho vận tốc.\n\n**Bước 1.** Tìm vận tốc: vận tốc bằng quãng đường chia cho thời gian, $67,5$ km đi hết $1,5$ giờ.\n\n**Bước 2.** Tìm thời gian đi $81$ km: thời gian bằng quãng đường chia cho vận tốc vừa tìm.\n\n**Chú ý:** Kết quả $1,8$ giờ không phải $1$ giờ $8$ phút: phần $0,8$ giờ là $0,8\\times 60=48$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Đi 67,5 km hết 1,5 giờ; đi 81 km hết ? giờ; cùng vận tốc 45 km/giờ)\n\nVận tốc của người đó là: $67,5:1,5=45$ (km/giờ)\n\nThời gian người đó đi quãng đường $81$ km là: $81:45=1,8$ (giờ)\n\nĐổi: $1,8$ giờ $=1$ giờ $48$ phút\n\nĐáp số: $1$ giờ $48$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Cùng vận tốc 45 km/giờ",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 67.5,
+     "ghi": "đi 1,5 giờ"
+    },
+    {
+     "ten": "B",
+     "x": 81,
+     "ghi": "đi ? giờ"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 81,
+     "nhan": "45 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 67.5,
+     "nhan": "67,5 km"
+    },
+    {
+     "tu": 0,
+     "den": 81,
+     "nhan": "81 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 25.8",
+  "dap_an": "$58,5$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường AB gồm **hai đoạn** đi bằng hai phương tiện khác nhau (xe đạp rồi ô tô), nên tính riêng từng đoạn bằng \"quãng đường $=$ vận tốc $\\times$ thời gian\" rồi cộng lại. Thời gian nghỉ $15$ phút người đó đứng yên nên không có quãng đường.\n\n**Bước 1.** Đoạn xe đạp: đi từ $6$ giờ đến $7$ giờ $30$ phút. Tính thời gian, đổi ra giờ rồi nhân với $15$ km/giờ.\n\n**Bước 2.** Đoạn ô tô: nghỉ $15$ phút từ $7$ giờ $30$ phút nên lên ô tô lúc $7$ giờ $45$ phút; ô tô đi đến $8$ giờ $30$ phút. Tính thời gian, đổi ra giờ rồi nhân với $48$ km/giờ.\n\n**Bước 3.** Cộng hai đoạn lại được quãng đường AB.\n\n**Chú ý:** Thời gian đi ô tô phải tính từ lúc nghỉ xong ($7$ giờ $45$ phút), không phải từ $7$ giờ $30$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Đoạn xe đạp 1,5 giờ, 15 km/giờ; nghỉ 15 phút; đoạn ô tô 45 phút, 48 km/giờ; cả quãng đường AB ? km)\n\nThời gian đi bằng xe đạp là: $7$ giờ $30$ phút $-6$ giờ $=1$ giờ $30$ phút\n\nĐổi: $1$ giờ $30$ phút $=1,5$ giờ\n\nQuãng đường đi bằng xe đạp là: $15\\times 1,5=22,5$ (km)\n\nLúc người đó lên ô tô là: $7$ giờ $30$ phút $+15$ phút $=7$ giờ $45$ phút\n\nThời gian đi bằng ô tô là: $8$ giờ $30$ phút $-7$ giờ $45$ phút $=45$ phút\n\nĐổi: $45$ phút $=0,75$ giờ\n\nQuãng đường đi bằng ô tô là: $48\\times 0,75=36$ (km)\n\nQuãng đường AB dài là: $22,5+36=58,5$ (km)\n\nĐáp số: $58,5$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Khởi hành lúc 6 giờ từ A",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 22.5,
+     "ghi": "7 giờ 30 phút, nghỉ 15 phút"
+    },
+    {
+     "ten": "B",
+     "x": 58.5,
+     "ghi": "8 giờ 30 phút"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 22.5,
+     "nhan": "Xe đạp 15 km/giờ"
+    },
+    {
+     "tu": 22.5,
+     "den": 58.5,
+     "nhan": "Ô tô 48 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 22.5,
+     "nhan": "22,5 km"
+    },
+    {
+     "tu": 22.5,
+     "den": 58.5,
+     "nhan": "36 km"
+    },
+    {
+     "tu": 0,
+     "den": 58.5,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề in sai chữ: \"rổi lên ô tô\" phải là \"rồi lên ô tô\". Không ảnh hưởng số liệu."
+ },
+ {
+  "ma_nguon": "LT 25.9",
+  "dap_an": "$14$ giờ $50$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hành trình có **ba khoảng thời gian** nối nhau: đi đến Lâm Đồng, làm việc, rồi về. Quãng đường đi và về đều $100$ km nhưng vận tốc khác nhau nên thời gian đi và về khác nhau.\n\n**Bước 1.** Tìm thời gian đi ($100$ km chia cho $30$ km/giờ) rồi cộng vào $7$ giờ $40$ phút để biết lúc đến Lâm Đồng.\n\n**Bước 2.** Cộng thêm $1$ giờ $20$ phút làm việc để biết lúc rời Lâm Đồng.\n\n**Bước 3.** Tìm thời gian về ($100$ km chia cho $40$ km/giờ) rồi cộng vào lúc rời Lâm Đồng, được lúc về đến thành phố.\n\n**Chú ý:** $100:30$ không chia hết nên viết phân số $\\dfrac{10}{3}$ giờ rồi đổi: $\\dfrac{10}{3}=3\\dfrac{1}{3}$ nên là $3$ giờ và $\\dfrac{1}{3}$ giờ $=20$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(TPHCM — Lâm Đồng 100 km; đi 30 km/giờ từ 7 giờ 40 phút; làm việc 1 giờ 20 phút; về 40 km/giờ)\n\nThời gian đi từ TPHCM đến Lâm Đồng là: $100:30=\\dfrac{10}{3}$ (giờ)\n\nĐổi: $\\dfrac{10}{3}$ giờ $=3$ giờ $20$ phút\n\nNgười đó đến Lâm Đồng lúc: $7$ giờ $40$ phút $+3$ giờ $20$ phút $=11$ giờ\n\nNgười đó rời Lâm Đồng lúc: $11$ giờ $+1$ giờ $20$ phút $=12$ giờ $20$ phút\n\nThời gian đi ô tô về TPHCM là: $100:40=2,5$ (giờ)\n\nĐổi: $2,5$ giờ $=2$ giờ $30$ phút\n\nNgười đó về đến thành phố lúc: $12$ giờ $20$ phút $+2$ giờ $30$ phút $=14$ giờ $50$ phút\n\nĐáp số: $14$ giờ $50$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Khởi hành lúc 7 giờ 40 phút",
+   "diem": [
+    {
+     "ten": "TPHCM",
+     "x": 0
+    },
+    {
+     "ten": "Lâm Đồng",
+     "x": 100,
+     "ghi": "làm việc 1 giờ 20 phút"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 100,
+     "nhan": "Xe khách 30 km/giờ"
+    },
+    {
+     "tu": 100,
+     "den": 0,
+     "nhan": "Ô tô 40 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 100,
+     "nhan": "100 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề in sai chữ: \"vể TPHCM\" phải là \"về TPHCM\". Không ảnh hưởng số liệu."
+ },
+ {
+  "ma_nguon": "LT 25.10",
+  "dap_an": "$1$ giờ $40$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Xe máy và ô tô cùng đi quãng đường AB, nên phải tìm độ dài AB từ xe máy trước; rồi tìm vận tốc ô tô (\"gấp rưỡi\" là gấp $1,5$ lần), và cuối cùng thời gian của ô tô bằng AB chia cho vận tốc ô tô.\n\n**Bước 1.** Đổi $2$ giờ $30$ phút ra giờ rồi tìm quãng đường AB (vận tốc xe máy nhân với thời gian).\n\n**Bước 2.** Tìm vận tốc ô tô: lấy vận tốc xe máy nhân với $1,5$.\n\n**Bước 3.** Tìm thời gian ô tô đi hết AB: lấy AB chia cho vận tốc ô tô.\n\n**Chú ý:** $110:66$ không chia hết (được $1,666\\ldots$) nên viết phân số $\\dfrac{5}{3}$ giờ, rồi đổi: $\\dfrac{5}{3}=1\\dfrac{2}{3}$ nên là $1$ giờ và $\\dfrac{2}{3}$ giờ $=40$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Xe máy 44 km/giờ đi 2 giờ 30 phút; ô tô 66 km/giờ đi ? giờ; cùng quãng đường AB)\n\nĐổi: $2$ giờ $30$ phút $=2,5$ giờ\n\nQuãng đường AB dài là: $44\\times 2,5=110$ (km)\n\nVận tốc của ô tô là: $44\\times 1,5=66$ (km/giờ)\n\nThời gian ô tô đi từ A đến B là: $110:66=\\dfrac{5}{3}$ (giờ)\n\nĐổi: $\\dfrac{5}{3}$ giờ $=1$ giờ $40$ phút\n\nĐáp số: $1$ giờ $40$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Cùng đi từ A đến B",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 110
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 110,
+     "nhan": "Xe máy 44 km/giờ, 2 giờ 30 phút"
+    },
+    {
+     "tu": 0,
+     "den": 110,
+     "nhan": "Ô tô 66 km/giờ, ? giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 110,
+     "nhan": "110 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 25.11",
+  "dap_an": "$120$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ lúc khởi hành đến lúc đến nơi có cả **$1$ giờ $10$ phút nghỉ** — lúc nghỉ xe đứng yên nên không đi thêm km nào. Quãng đường bằng vận tốc nhân với thời gian xe **thật sự chạy**.\n\n**Bước 1.** Tìm thời gian từ lúc khởi hành ($11$ giờ $15$ phút) đến lúc đến nơi ($15$ giờ $45$ phút).\n\n**Bước 2.** Trừ đi thời gian nghỉ để được thời gian anh Hải thật sự chạy xe.\n\n**Bước 3.** Đổi thời gian chạy xe ra giờ, rồi nhân với vận tốc $36$ km/giờ.\n\n**Chú ý:** Nếu quên trừ thời gian nghỉ thì tính ra $36\\times 4,5=162$ km là sai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Khởi hành 11 giờ 15 phút, đến 15 giờ 45 phút, nghỉ 1 giờ 10 phút; vận tốc 36 km/giờ; nhà — Ninh Bình ? km)\n\nThời gian từ lúc khởi hành đến lúc đến nơi là: $15$ giờ $45$ phút $-11$ giờ $15$ phút $=4$ giờ $30$ phút\n\nThời gian anh Hải thật sự chạy xe là: $4$ giờ $30$ phút $-1$ giờ $10$ phút $=3$ giờ $20$ phút\n\nĐổi: $3$ giờ $20$ phút $=\\dfrac{10}{3}$ giờ\n\nQuãng đường từ nhà anh Hải đến Ninh Bình dài là: $36\\times\\dfrac{10}{3}=120$ (km)\n\nĐáp số: $120$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Nghỉ giữa đường 1 giờ 10 phút",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0,
+     "ghi": "11 giờ 15 phút"
+    },
+    {
+     "ten": "Ninh Bình",
+     "x": 120,
+     "ghi": "15 giờ 45 phút"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 120,
+     "nhan": "36 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 120,
+     "nhan": "? km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 25.13",
+  "dap_an": "$18,75$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường từ nhà đến trường **không đổi** cả lượt đi lẫn lượt về, nên tìm quãng đường từ lượt đi trước. Lượt về mất ít hơn lượt đi $3$ phút, tức là $15-3=12$ phút; rồi vận tốc bằng quãng đường chia cho thời gian.\n\n**Bước 1.** Đổi $15$ phút ra giờ, rồi tìm quãng đường nhà – trường (vận tốc nhân với thời gian).\n\n**Bước 2.** Tìm thời gian lượt về: $15$ phút bớt $3$ phút, rồi đổi ra giờ.\n\n**Bước 3.** Tìm vận tốc lượt về: quãng đường chia cho thời gian lượt về.\n\n**Chú ý:** Vận tốc tính theo km/giờ nên thời gian phải đổi từ phút ra giờ: $15$ phút $=0,25$ giờ; $12$ phút $=0,2$ giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Nhà — trường: đi 15 km/giờ hết 15 phút; về hết 12 phút, vận tốc ? km/giờ)\n\nĐổi: $15$ phút $=0,25$ giờ\n\nQuãng đường từ nhà đến trường dài là: $15\\times 0,25=3,75$ (km)\n\nThời gian Hà đi về là: $15-3=12$ (phút)\n\nĐổi: $12$ phút $=0,2$ giờ\n\nVận tốc của Hà khi đi về là: $3,75:0,2=18,75$ (km/giờ)\n\nĐáp số: $18,75$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Đi và về cùng một quãng đường",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0
+    },
+    {
+     "ten": "Trường",
+     "x": 3.75
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 3.75,
+     "nhan": "Đi: 15 km/giờ, 15 phút"
+    },
+    {
+     "tu": 3.75,
+     "den": 0,
+     "nhan": "Về: ? km/giờ, 12 phút"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 3.75,
+     "nhan": "3,75 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề in sai chữ: \"vể sớm hơn\" phải là \"về sớm hơn\". Hiểu \"về sớm hơn thời gian đi 3 phút\" là thời gian về ít hơn thời gian đi 3 phút (15 - 3 = 12 phút). Không ảnh hưởng số liệu."
+ },
+ {
+  "ma_nguon": "LT 25.14",
+  "dap_an": "$13$ giờ $20$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hành trình chia thành **hai chặng** với vận tốc khác nhau: $2$ giờ đầu đi $36$ km/giờ, đoạn còn lại đi nhanh hơn \"$9$ km mỗi giờ\" tức là vận tốc mới là $36+9$.\n\n**Bước 1.** Tìm quãng đường chặng đầu ($36$ km/giờ trong $2$ giờ), rồi quãng đường còn lại bằng $177$ trừ đi quãng đường chặng đầu.\n\n**Bước 2.** Tìm vận tốc chặng sau ($36+9$), rồi thời gian chặng sau bằng quãng đường còn lại chia cho vận tốc đó.\n\n**Bước 3.** Cộng thời gian hai chặng rồi cộng vào lúc xuất phát $9$ giờ để biết lúc đến B.\n\n**Chú ý:** \"Tăng thêm $9$ km mỗi giờ\" nghĩa là vận tốc mới $=36+9=45$ km/giờ, không phải $9$ km/giờ. $105:45$ không chia hết nên viết phân số $\\dfrac{7}{3}$ giờ rồi đổi: $\\dfrac{1}{3}$ giờ $=20$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(AB 177 km; 2 giờ đầu 36 km/giờ; đoạn còn lại 45 km/giờ; khởi hành 9 giờ, đến B lúc ? giờ)\n\nQuãng đường Cường đi trong $2$ giờ đầu là: $36\\times 2=72$ (km)\n\nQuãng đường còn lại là: $177-72=105$ (km)\n\nVận tốc của Cường trên đoạn đường còn lại là: $36+9=45$ (km/giờ)\n\nThời gian Cường đi đoạn đường còn lại là: $105:45=\\dfrac{7}{3}$ (giờ)\n\nĐổi: $\\dfrac{7}{3}$ giờ $=2$ giờ $20$ phút\n\nThời gian Cường đi từ A đến B là: $2$ giờ $+2$ giờ $20$ phút $=4$ giờ $20$ phút\n\nCường đến B lúc: $9$ giờ $+4$ giờ $20$ phút $=13$ giờ $20$ phút\n\nĐáp số: $13$ giờ $20$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Khởi hành lúc 9 giờ",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 72,
+     "ghi": "11 giờ"
+    },
+    {
+     "ten": "B",
+     "x": 177
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 72,
+     "nhan": "36 km/giờ"
+    },
+    {
+     "tu": 72,
+     "den": 177,
+     "nhan": "45 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 72,
+     "nhan": "72 km"
+    },
+    {
+     "tu": 72,
+     "den": 177,
+     "nhan": "105 km"
+    },
+    {
+     "tu": 0,
+     "den": 177,
+     "nhan": "177 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề in sai chữ: \"từ A đến B.2 giờ đầu\" thiếu dấu cách sau \"B.\" (đọc đúng: \"từ A đến B. 2 giờ đầu\"). Không ảnh hưởng số liệu."
+ }
+]

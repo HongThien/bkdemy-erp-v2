@@ -1,0 +1,20 @@
+{
+ "LT 20.2": {
+  "noi_dung": "Một hình thang có tổng độ dài hai đáy là 23 dm, chiều cao là 12 dm. Tính diện tích hình thang đó."
+ },
+ "LT 20.3": {
+  "noi_dung": "Một thửa ruộng hình thang có đáy lớn dài 32 m, đáy nhỏ dài 26 m, chiều cao bằng trung bình cộng độ dài hai đáy. Tính diện tích thửa ruộng đó."
+ },
+ "LT 20.14": {
+  "noi_dung": "Một hình thang có diện tích là $60\\ \\text{cm}^{2}$, hiệu hai đáy là 4 cm. Tính độ dài của mỗi đáy, biết nếu đáy lớn tăng thêm 2 cm thì diện tích hình thang sẽ tăng thêm $6\\ \\text{cm}^{2}$."
+ },
+ "LT 20.15": {
+  "noi_dung": "Một thửa ruộng hình thang có độ dài đáy lớn là 18 m, chiều cao là 10 m. Độ dài đáy bé bằng trung bình cộng của chiều cao và độ dài đáy lớn. Nếu kéo dài mỗi cạnh đáy về cùng một phía thêm 4 m thì diện tích thửa ruộng sẽ tăng lên bao nhiêu phần trăm?"
+ },
+ "LT 22.7": {
+  "noi_dung": "Người ta quét vôi các bức tường xung quanh của một căn phòng hình hộp chữ nhật có chiều dài 10 m, chiều rộng 4,5 m và chiều cao 3,25 m. Tính diện tích cần quét vôi, biết tổng diện tích của các cửa là $6\\ \\text{m}^{2}$."
+ },
+ "LT 21.3a": {
+  "bo": "chu vi 5,908 m không ra bán kính tròn (5,908 : 3,14 = 1,8815…) — nghi sách in sai, chỉ ra được đáp số xấp xỉ; treo cần người đối chiếu"
+ }
+}

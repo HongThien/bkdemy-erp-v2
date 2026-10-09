@@ -36270,3 +36270,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - 6A (CĐ7–9): 58 câu, đáp số khớp sau khi hàm kiểm nhận "Số em: 10" lẫn "10 em"; sửa diễn đạt LT 7.15 ("cách một thiếu 30 chỗ" ⇒ "thừa 30 người, … một thừa một thiếu nên cộng"). Bảng tính ngược (VD 9.3, LT 9.11, 9.14, 9.16, 9.17) có tên HS trong \text{} của array — để nguyên (bảng của sách).
 - 7A (CĐ13–14): tach-bai dính ý LT 14.5i–l vào ý h (2 cột cùng dòng) ⇒ vá bai.json ở scratchpad (lưu bản trước: bai.truoc-va-14.5.json), Sonnet đã soạn 4 câu i–l riêng ⇒ nhập vào. Sửa chính tả đề ⇒ 8 câu trùng câu kho cũ nên không chèn; bài dãy gộp ý (VD 13.1, LT 13.1–13.3) cũng trùng kho cũ. 41 câu mới.
 - Lô 8 (CĐ19–25): 8B, 8C đã nộp; 8A đang soạn. Bộ kiểm lô 10 (Ôn tập) đang viết.
+
+## 09/10 (tiếp) — 5T lô 8 (CĐ19–25) ghi thật 107 câu (T15T000000499–605); tổng từ sách 592
+- Quét bai.json: chỉ còn LT 25.3h, 25.4h dính ý sau (sách 2 cột) ⇒ script va-y-dinh.mjs tách thành 25.3i–j, 25.4i; bộ kiểm thêm 3 hàm.
+- Bỏ: LT 21.3a (số liệu nghi in sai, chỉ có đáp số xấp xỉ), VD 23.1 (cần hình). Sửa LT 23.14 cách viết diện tích toàn phần. Sửa chính tả đề 11 câu (cờ nghi).
+- Script soát dùng lại: sua-chinh-ta.mjs (bảng lỗi ⇒ sua.noi_dung, kèm bo), sua-loigiai.mjs (thay chuỗi trong lời giải qua tệp JSON — tránh escape \ trong node -e).
+- Đang chạy: lô 9 (CĐ26–31) 3 Sonnet. Viết tiếp bộ kiểm lô 10 (Ôn tập).

@@ -1,0 +1,1 @@
+{"loai":"chuyen_dong","tieu_de":"Khởi hành lúc 9 giờ","diem":[{"ten":"A","x":0},{"ten":"D","x":72,"ghi":"11 giờ"},{"ten":"B","x":177}],"di":[{"tu":0,"den":72,"nhan":"36 km/giờ"},{"tu":72,"den":177,"nhan":"45 km/giờ"}],"khoang":[{"tu":0,"den":72,"nhan":"72 km"},{"tu":72,"den":177,"nhan":"105 km"},{"tu":0,"den":177,"nhan":"177 km"}]}
