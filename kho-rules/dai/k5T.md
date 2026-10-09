@@ -7,7 +7,7 @@
 > sửa những gì; các luật đó áp luôn cho 5T trừ chỗ ghi khác ở đây).
 >
 > **Đang ở đâu (08/10 tối):** B1 đọc sách ✅ (công thức WMF ra LaTeX 1.031/1.031 — §5) · B2 tách bài ✅ (750 bài) · B3 rút khuôn từ
-> 82 VÍ DỤ ✅ (§1 cho phép, §2b) · **B4 lô sách 1 (CĐ1–9, 26 câu) gửi CEO duyệt** — cuối `k5T-mau-thu.md`. Lô kế: CĐ10–17, 18–24, 25–31 + Ôn tập.
+> 82 VÍ DỤ ✅ (§1 cho phép, §2b) · B4: lô sách 1 (CĐ1–9) + **lô sách 2 (CĐ10–17) gửi CEO** — cuối `k5T-mau-thu.md`. Lô kế: CĐ18–24, 25–31 + Ôn tập.
 > Bản đồ 5T mới phủ ~9/31 chuyên đề (§6) — bản đồ là việc của CEO. **Việc kế tiếp: §7.**
 
 ## 0. Nguyên tắc gốc
@@ -105,6 +105,7 @@ HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái �
 | D | Tính ngược có phân số (VD 9.2) | ① sơ đồ lồng nhau + tính theo phần ($6	imes 4=24$; $24:3	imes 5=40$) · ② phân số "… ứng với … (số cam ban đầu)" rồi chia | ① (sơ đồ) | ✅ **②** phân số. ① chỉ để làm quen, dùng khi GV giảng bài — KHÔNG đưa vào lời giải kho (⇒ không cần sơ đồ lồng) |
 | E | Xếp hình lập phương nhỏ (VD 23.2, 23.3) | ① thể tích lớn : thể tích nhỏ · ② cạnh lớn gấp cạnh nhỏ mấy lần rồi nhân 3 chiều | ② — dùng được cả khi xếp còn thừa (VD 23.3b) | ✅ **②** |
 | F | Dãy phân số mẫu gấp đôi (lô 1 câu 11; sách 5T không có VD) | ① "$2	imes B-B$" · ② viết mỗi số hạng thành hiệu hai phân số | ① | ✅ **①** |
+| G | Tìm $a%$ của một số (CĐ14–17) | ① $200	imes 25%$ (Tóm tắt CĐ15, VD 15.2) · ② $200	imes 25:100$ (VD 16.1–16.3) | ① — đồng bộ cả CĐ14–17; chiều ngược $M:b%$. *Lô sách 2 đang dùng ①* | |
 | — | Hai tỉ số (CĐ8) | phân số của đại lượng không đổi | — | ✅ CEO 08/10: không sơ đồ |
 
 ## 3. Định dạng (giữ quy ước kho Đại)
@@ -217,7 +218,7 @@ chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, kh
 
 | Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
-| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — lô sách 1 (CĐ1–9, 26 câu) chờ CEO duyệt; lô 2 = CĐ10–17, lô 3 = CĐ18–24, lô 4 = CĐ25–31 + Ôn tập |
+| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — lô sách 1 (CĐ1–9) CEO đã trả lời câu hỏi, chưa nói duyệt nội dung · **lô sách 2 (CĐ10–17, 26 câu) chờ CEO duyệt** · lô 3 = CĐ18–24 (hình học — cần hình đề), lô 4 = CĐ25–31 + Ôn tập |
 | **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu cần hình (CĐ18–24) chờ đường vẽ hình (README §4 việc #7) | Sau v1 |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 

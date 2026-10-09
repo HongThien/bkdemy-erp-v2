@@ -36179,3 +36179,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 09/10 — CEO chốt bảng nhiều cách 5T (A② ưu tiên, số bé mới ① · B① · C③ · D② · E② · F①)
 - Ghi k5T.md §2b + §9. Lô sách 1 đã khớp sẵn cả 6 lựa chọn ⇒ không làm lại câu nào. D② ⇒ không cần thêm chế độ sơ đồ lồng cho máy vẽ (D① chỉ để GV giảng).
+
+## 09/10 — 5T lô sách 2 (CĐ10–17, 26 câu) gửi CEO + máy vẽ sơ đồ đọc số thập phân
+- Chọn 26 câu phủ dạng CĐ10–17 (STP, đơn vị đo, %, dung dịch, % khác). Đáp số máy tính lại từ đề (đơn vị nguyên để tránh sai số thực) 26/26; máy bắt 1 chỗ T nhẩm sai GIÁ TRỊ KÌ VỌNG (LT 11.7 nghĩ 4,8 tấn, đúng 2,4) — bài học: viết bộ kiểm trước khi nhẩm đáp số, đừng điền đáp số kì vọng bằng trí nhớ.
+- so-do-doan-thang.mjs: soDau đọc "18,54" (trước ra 18 ⇒ từ chối vẽ đúng sơ đồ đúng) + so tổng/hiệu với dung sai 1e-9. Vẽ lại 135 sơ đồ cũ (4T + 5T) so từng byte: 0 khác. Lại dính mất `\` khi vá qua heredoc node ⇒ dùng Edit.
+- Lô 2 hỏi CEO: dòng G §2b (×a% hay ×a:100) · nhân hai tỉ số phần trăm viết thẳng hay đổi STP.

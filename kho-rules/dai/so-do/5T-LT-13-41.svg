@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 694 150" width="694" height="150" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="694" height="150" fill="#fff"/>
+<text x="170" y="37" text-anchor="end" fill="#0f172a">Số thập phân:</text>
+<line x1="180" y1="32" x2="228" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="180" y1="25" x2="180" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="228" y1="25" x2="228" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="204" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="170" y="81" text-anchor="end" fill="#0f172a">Số khi quên dấu phẩy:</text>
+<line x1="180" y1="76" x2="660" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="180" y1="69" x2="180" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="228" y1="69" x2="228" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="276" y1="69" x2="276" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="324" y1="69" x2="324" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="372" y1="69" x2="372" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="420" y1="69" x2="420" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="468" y1="69" x2="468" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="516" y1="69" x2="516" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="564" y1="69" x2="564" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="612" y1="69" x2="612" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="660" y1="69" x2="660" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="228" y1="110" x2="660" y2="110" stroke="#0f172a" stroke-width="1"/>
+<line x1="228" y1="106" x2="228" y2="114" stroke="#0f172a" stroke-width="1"/>
+<line x1="660" y1="106" x2="660" y2="114" stroke="#0f172a" stroke-width="1"/>
+<text x="444" y="126" text-anchor="middle" font-size="12" fill="#0f172a">115,2</text>
+</svg>

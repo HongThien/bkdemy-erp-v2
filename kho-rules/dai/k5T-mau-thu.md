@@ -1,6 +1,6 @@
 # 5T · Số thập phân — 12 câu GIẢI THỬ theo luật `k5T.md` (v2, 04/10, chưa ghi DB)
 
-> **⭐ 08/10: LÔ SÁCH 1 (CĐ1–9, 26 câu, nguồn "Tài liệu tham khảo Toán 5") ở CUỐI FILE — chờ CEO duyệt.** 12 câu dưới đây là lô 04/10 từ kho cũ.
+> **⭐ LÔ SÁCH 1 (CĐ1–9, 26 câu — CEO đã trả lời 3 câu hỏi 08–09/10) và LÔ SÁCH 2 (CĐ10–17, 26 câu — chờ CEO duyệt 09/10) ở CUỐI FILE**, nguồn "Tài liệu tham khảo Toán 5". 12 câu dưới đây là lô 04/10 từ kho cũ.
 >
 > v2: mỗi câu chia **Phần 1. Hướng dẫn** (giải thích) / **Phần 2. Trình bày** (chỉ cái viết vào bài thi) — CEO 04/10.
 > 2 câu/dạng. Đáp số cả 12 câu đã được code tính lại, khớp `dap_an` hiện có.
@@ -1055,3 +1055,693 @@ Số quả bóng của Chương lúc đầu là: $12-4+6=14$ (quả)
 1. **Bài sách cho nhiều cách** (tỉ lệ: rút về đơn vị / tỉ số / tam suất; tính ngược: sơ đồ / phân số): em trình bày **một cách** ở Phần 2, cách khác nhắc ở Phần 1 (luật 4T). Mặc định chọn **rút về đơn vị** cho tỉ lệ, **phân số** cho tính ngược — đúng ý chị không?
 2. **Hai hiệu số (CĐ7)**: VD 7.1 sách có "Ta có sơ đồ:" kèm hình (sơ đồ đặc biệt — hai hàng chia kẹo). Máy vẽ hiện chỉ có sơ đồ đoạn thẳng tổng–hiệu–tỉ, chưa vẽ được kiểu này ⇒ câu 19–20 em **bỏ sơ đồ**. Chị có cần sơ đồ cho dạng này không?
 3. **Hai tỉ số (CĐ8)**: sách giải bằng **phân số của đại lượng không đổi**, không vẽ sơ đồ ⇒ câu 21–23 em theo sách, không vẽ. Đúng không?
+
+---
+
+# LÔ SÁCH 2 — CĐ10–17 (số thập phân · đơn vị đo · tỉ số phần trăm) · 26 câu · chờ CEO duyệt (09/10)
+
+> Theo luật đã chốt ở lô 1 (§2b bảng nhiều cách: tỉ lệ = rút về đơn vị, tìm số biết phân số/phần trăm = phép chia…). Bài nhiều ý
+> độc lập chỉ lấy 1 ý (đánh chữ sau mã, vd LT 12.3c); bài nhiều mục không đánh nhãn (LT 11.3, 14.1) giữ cả bài một câu.
+> **Đáp số 26/26 máy tính lại từ đề, khớp** (máy bắt 1 chỗ em nhẩm sai giá trị kì vọng ở LT 11.7 — đáp số đúng 2,4 tấn).
+> 4 sơ đồ máy vẽ đúng tỉ lệ (máy vẽ vừa được dạy đọc số thập phân dấu phẩy — 135 sơ đồ 4T vẽ lại y hệt).
+
+## Câu 1 — LT 10.5 · Tìm tất cả các số thập phân $x$ có ba chữ số ở phần thập phân thỏa mãn: $0,00565<x<\dfrac{1}{100}$
+
+**Dạng sách:** CĐ10 · So sánh số thập phân
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đổi $\dfrac{1}{100}$ ra số thập phân $0,01$ để hai bên cùng là số thập phân. Số cần tìm có **đúng ba chữ số ở phần thập phân** nên có dạng $0,00\square$ hoặc $0,0\square\square$; so sánh từng hàng từ trái sang phải.
+
+Chú ý hai đầu: $0,005=0,00500<0,00565$ nên **không lấy**; $0,010=0,01$ không bé hơn $0,01$ nên **không lấy**.
+
+**Phần 2. Trình bày**
+
+$\dfrac{1}{100}=0,01$ nên $0,00565<x<0,01$
+
+Vậy $x=0,006;\ 0,007;\ 0,008;\ 0,009$.
+
+---
+
+## Câu 2 — LT 10.7b · Tìm chữ số $y$ thỏa mãn: $\overline{5,726}<\overline{5,7y7}<\overline{5,755}$
+
+**Dạng sách:** CĐ10 · So sánh số thập phân (tìm chữ số)
+
+**Phần 1. Hướng dẫn**
+
+Ba số cùng phần nguyên $5$, cùng chữ số hàng phần mười $7$ ⇒ so sánh bắt đầu từ **hàng phần trăm**, nơi có $y$. Xét riêng từng vế, chú ý chữ số hàng phần nghìn quyết định ở hai trường hợp sát biên: $y=2$ cho $5,727>5,726$ (lấy được); $y=5$ cho $5,757>5,755$ (không lấy được).
+
+**Phần 2. Trình bày**
+
+Ba số có cùng phần nguyên là $5$ và cùng chữ số hàng phần mười là $7$.
+
+Vì $\overline{5,7y7}>5,726$ mà $5,727>5,726$ nên $y$ là một trong các chữ số $2;3;4;5;6;7;8;9$.
+
+Vì $\overline{5,7y7}<5,755$ mà $5,757>5,755$ nên $y$ là một trong các chữ số $0;1;2;3;4$.
+
+Vậy $y=2;\ 3;\ 4$.
+
+---
+
+## Câu 3 — LT 10.12 · Từ bốn chữ số 1 ; 2 ; 3 ; 4, viết được tất cả bao nhiêu số thập phân có bốn chữ số khác nhau mà phần thập phân có một chữ số?
+
+**Dạng sách:** CĐ10 · Số thập phân (đếm số viết được)
+
+**Phần 1. Hướng dẫn**
+
+Số thập phân bốn chữ số, phần thập phân một chữ số ⇒ có dạng $\overline{abc,d}$. Đếm như đếm số tự nhiên (khuôn 4T): chọn lần lượt từng hàng, các chữ số **khác nhau** nên hàng sau ít hơn hàng trước một cách. Không có chữ số $0$ nên hàng trăm không phải bớt.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số thập phân cần viết có dạng $\overline{abc,d}$ ($a,b,c,d$ khác nhau, lấy từ $1;2;3;4$).
+
+Chữ số $a$ có $4$ cách chọn, chữ số $b$ có $3$ cách chọn, chữ số $c$ có $2$ cách chọn, chữ số $d$ có $1$ cách chọn.
+
+Số số thập phân viết được là: $4\times 3\times 2\times 1=24$ (số)
+
+Đáp số: $24$ số
+
+---
+
+## Câu 4 — LT 11.3 · Đổi đơn vị đo diện tích: $23694\ \text{cm}^2=…\ \text{m}^2$ · $2304\ \text{hm}^2=…\ \text{km}^2$ · $2\ \text{km}^2\,45\ \text{dam}^2=…\ \text{km}^2$ · $5\ \text{hm}^2\,437\ \text{m}^2=…\ \text{hm}^2$ · $4,12\ \text{m}^2=…\ \text{m}^2\ …\ \text{dm}^2$ · $21,32\ \text{km}^2=…\ \text{km}^2\ …\ \text{dam}^2$
+
+**Dạng sách:** CĐ11 · Viết số đo diện tích dưới dạng số thập phân
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hai đơn vị diện tích liền nhau gấp, kém nhau **$100$ lần** (không phải $10$ như độ dài) ⇒ mỗi đơn vị ứng với **hai chữ số**. $1\ \text{m}^2=10000\ \text{cm}^2$ (cách $2$ bậc), $1\ \text{km}^2=10000\ \text{dam}^2$.
+
+Viết qua hỗn số có phân số thập phân như VD 11.2 của sách rồi mới ra số thập phân. Chú ý $2\ \text{km}^2\,45\ \text{dam}^2$: $45\ \text{dam}^2=\dfrac{45}{10000}\ \text{km}^2$ nên phải có hai chữ số $0$ chen vào: $2,0045$.
+
+**Phần 2. Trình bày**
+
+$23694\ \text{cm}^2=\dfrac{23694}{10000}\ \text{m}^2=2,3694\ \text{m}^2$
+
+$2304\ \text{hm}^2=\dfrac{2304}{100}\ \text{km}^2=23,04\ \text{km}^2$
+
+$2\ \text{km}^2\,45\ \text{dam}^2=2\dfrac{45}{10000}\ \text{km}^2=2,0045\ \text{km}^2$
+
+$5\ \text{hm}^2\,437\ \text{m}^2=5\dfrac{437}{10000}\ \text{hm}^2=5,0437\ \text{hm}^2$
+
+$4,12\ \text{m}^2=4\ \text{m}^2\,12\ \text{dm}^2$
+
+$21,32\ \text{km}^2=21\ \text{km}^2\,3200\ \text{dam}^2$
+
+---
+
+## Câu 5 — LT 11.7 · Một thửa ruộng hình chữ nhật có nửa chu vi là $160$ m, chiều rộng bằng $\dfrac{3}{5}$ chiều dài. Trung bình cứ $500\ \text{m}^2$ thu được $200$ kg lúa. Hỏi người ta thu được bao nhiêu tấn lúa trên thửa ruộng đó?
+
+**Dạng sách:** CĐ11 · Đơn vị đo (lời văn: tổng – tỉ + tỉ lệ thuận + đổi đơn vị)
+
+**Phần 1. Hướng dẫn**
+
+Ba bước: (1) **nửa chu vi** chính là tổng chiều dài và chiều rộng ⇒ bài tổng – tỉ (rộng $3$ phần, dài $5$ phần); (2) tính diện tích; (3) số lúa tỉ lệ thuận với diện tích ⇒ **rút về đơn vị**: $1\ \text{m}^2$ thu được bao nhiêu ki-lô-gam.
+
+Chú ý: đề hỏi **tấn** ⇒ đổi ở dòng cuối.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: Chiều rộng 3 phần; Chiều dài 5 phần; tổng 160 m](so-do/5T-LT-11-7.svg)
+
+Tổng số phần bằng nhau là: $3+5=8$ (phần)
+
+Chiều dài thửa ruộng là: $160:8\times 5=100$ (m)
+
+Chiều rộng thửa ruộng là: $160-100=60$ (m)
+
+Diện tích thửa ruộng là: $100\times 60=6000$ ($\text{m}^2$)
+
+$1\ \text{m}^2$ thu được số lúa là: $200:500=0,4$ (kg)
+
+Số lúa thu được trên thửa ruộng là: $0,4\times 6000=2400$ (kg)
+
+Đổi: $2400$ kg $=2,4$ tấn
+
+Đáp số: $2,4$ tấn lúa
+
+---
+
+## Câu 6 — LT 11.13 · Nếu cắt đi $\dfrac{1}{4}$ chiều dài của một miếng bìa hình chữ nhật thì diện tích miếng bìa giảm đi $120\ \text{cm}^2$. Hỏi diện tích ban đầu của miếng bìa là bao nhiêu đề-xi-mét vuông?
+
+**Dạng sách:** CĐ11 · Đơn vị đo diện tích (lời văn)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: phần bị cắt là một hình chữ nhật **cùng chiều rộng** với miếng bìa, chiều dài bằng $\dfrac{1}{4}$ chiều dài miếng bìa ⇒ diện tích phần cắt bằng **$\dfrac{1}{4}$ diện tích** miếng bìa. Biết $\dfrac{1}{4}$ diện tích là $120\ \text{cm}^2$ ⇒ tìm cả diện tích bằng phép chia.
+
+Chú ý: đề hỏi $\text{dm}^2$: $100\ \text{cm}^2=1\ \text{dm}^2$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Phần bìa bị cắt là hình chữ nhật có chiều rộng bằng chiều rộng miếng bìa, chiều dài bằng $\dfrac{1}{4}$ chiều dài miếng bìa nên diện tích phần bị cắt bằng $\dfrac{1}{4}$ diện tích miếng bìa.
+
+Diện tích ban đầu của miếng bìa là: $120:\dfrac{1}{4}=480$ ($\text{cm}^2$)
+
+Đổi: $480\ \text{cm}^2=4,8\ \text{dm}^2$
+
+Đáp số: $4,8\ \text{dm}^2$
+
+---
+
+## Câu 7 — LT 12.3c · Tính thuận tiện: $C=37,25+48,42+54,73-\left(7,25+8,42+4,73\right)$
+
+**Dạng sách:** CĐ12 · Phép cộng, phép trừ số thập phân (tính thuận tiện)
+
+**Phần 1. Hướng dẫn**
+
+Dấu hiệu: mỗi số trong ngoặc có **cùng phần thập phân** với một số ở ngoài ($37,25$ – $7,25$; $48,42$ – $8,42$; $54,73$ – $4,73$). Dùng quy tắc **trừ một tổng** (trừ lần lượt từng số hạng) rồi ghép từng cặp, mỗi cặp ra số tròn chục.
+
+**Phần 2. Trình bày**
+
+$C=37,25+48,42+54,73-\left(7,25+8,42+4,73\right)$
+
+$C=\left(37,25-7,25\right)+\left(48,42-8,42\right)+\left(54,73-4,73\right)$
+
+$C=30+40+50$
+
+$C=120$
+
+---
+
+## Câu 8 — LT 12.5c · Tính thuận tiện: $0,6\times 31,17\times 6+3\times 18,83\times 1,2$
+
+**Dạng sách:** CĐ12 · Phép nhân số thập phân (nhân một số với một tổng)
+
+**Phần 1. Hướng dẫn**
+
+Hai tích chưa có thừa số chung. Mấu chốt: gom $0,6\times 6=3,6$ và $3\times 1,2=3,6$ ⇒ cả hai tích cùng có thừa số $3,6$. Khi đó dùng **nhân một số với một tổng**: $3,6\times\left(31,17+18,83\right)$, và $31,17+18,83=50$ tròn.
+
+**Phần 2. Trình bày**
+
+$0,6\times 31,17\times 6+3\times 18,83\times 1,2$
+
+$=\left(0,6\times 6\right)\times 31,17+\left(3\times 1,2\right)\times 18,83$
+
+$=3,6\times 31,17+3,6\times 18,83$
+
+$=3,6\times\left(31,17+18,83\right)$
+
+$=3,6\times 50$
+
+$=180$
+
+---
+
+## Câu 9 — LT 12.9d · Tìm $y$, biết: $y:0,4-y:0,5=1,2$
+
+**Dạng sách:** CĐ12 · Tìm $y$ với số thập phân
+
+**Phần 1. Hướng dẫn**
+
+$y$ có mặt ở hai số hạng nhưng là phép **chia**, chưa gom được. Mấu chốt: **chia cho $0,4$ chính là nhân với $2,5$** (vì $1:0,4=2,5$), chia cho $0,5$ chính là nhân với $2$. Đổi xong thì đưa về "$y$ nhân với một hiệu", rồi tìm thừa số chưa biết.
+
+**Phần 2. Trình bày**
+
+$\begin{array}{l} y:0,4-y:0,5=1,2 \\ y\times 2,5-y\times 2=1,2 \\ y\times\left(2,5-2\right)=1,2 \\ y\times 0,5=1,2 \\ y=1,2:0,5 \\ y=2,4 \end{array}$
+
+---
+
+## Câu 10 — LT 12.10a · Thay các chữ cái bằng các chữ số thích hợp: $\overline{a3,2}+\overline{c,7}+\overline{10,b}=24,5$
+
+**Dạng sách:** CĐ12 · Phép cộng số thập phân (tìm chữ số)
+
+**Phần 1. Hướng dẫn**
+
+Đặt tính thẳng cột theo dấu phẩy, xét **từ hàng thấp nhất lên**, nhớ sang hàng trên:
+
+- hàng phần mười: $2+7+b$ có tận cùng $5$ ⇒ $9+b=15$ ⇒ $b=6$, nhớ $1$;
+- hàng đơn vị: $3+c+0+1$ có tận cùng $4$; $c$ là chữ số nên $4+c$ không thể là $14$ ⇒ $c=0$;
+- hàng chục: $a+1=2$ ⇒ $a=1$.
+
+Thử lại bằng phép cộng thật.
+
+**Phần 2. Trình bày**
+
+Xét hàng phần mười: $2+7+b$ có chữ số tận cùng là $5$ nên $9+b=15$, suy ra $b=6$ (nhớ $1$ sang hàng đơn vị).
+
+Xét hàng đơn vị: $3+c+0+1$ có chữ số tận cùng là $4$ mà $c$ là chữ số nên $4+c=4$, suy ra $c=0$.
+
+Xét hàng chục: $a+1=2$, suy ra $a=1$.
+
+Thử lại: $13,2+0,7+10,6=24,5$ (đúng).
+
+Vậy $a=1;\ b=6;\ c=0$.
+
+---
+
+## Câu 11 — LT 13.4 · Cho dãy số 2,4 ; 2,7 ; 3 ; …. ; 11,7 ; 12. a) Dãy số trên có bao nhiêu số hạng? b) Tính tổng các số hạng của dãy trên.
+
+**Dạng sách:** CĐ13 · Dãy số thập phân cách đều
+
+**Phần 1. Hướng dẫn**
+
+Hai số liền nhau cách nhau $0,3$ ($2,7-2,4$) ⇒ dãy cách đều, dùng đúng hai công thức của dãy số tự nhiên (sách 4T CĐ6, VD 13.1 sách 5T): số số hạng $=$ (số cuối $-$ số đầu) : khoảng cách $+1$; tổng $=$ (số đầu $+$ số cuối) $\times$ số số hạng $:2$. Ý b dùng kết quả ý a nên giữ một câu.
+**Phần 2. Trình bày**
+
+a) Số số hạng của dãy là: $\left(12-2,4\right):0,3+1=33$ (số hạng)
+
+b) Tổng các số hạng của dãy là: $\left(2,4+12\right)\times 33:2=237,6$
+
+Đáp số: a) $33$ số hạng; b) $237,6$
+
+---
+
+## Câu 12 — LT 13.10 · Khối 5 ở một trường có $256$ học sinh, biết tỉ số giữa số học sinh nữ và số học sinh nam là $0,6$. Hỏi khối 5 của trường đó có bao nhiêu học sinh nam, bao nhiêu học sinh nữ?
+
+**Dạng sách:** CĐ13 · Bài toán về số thập phân (tổng – tỉ, tỉ số là số thập phân)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tỉ số viết dạng số thập phân thì **đổi ra phân số tối giản** để đọc số phần: $0,6=\dfrac{6}{10}=\dfrac{3}{5}$ ⇒ nữ $3$ phần, nam $5$ phần. Đề cho **tổng** $256$ ⇒ bài tổng – tỉ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có: $0,6=\dfrac{3}{5}$ nên số học sinh nữ bằng $\dfrac{3}{5}$ số học sinh nam.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số học sinh nữ 3 phần; Số học sinh nam 5 phần; tổng 256 học sinh](so-do/5T-LT-13-10.svg)
+
+Tổng số phần bằng nhau là: $3+5=8$ (phần)
+
+Số học sinh nữ là: $256:8\times 3=96$ (học sinh)
+
+Số học sinh nam là: $256-96=160$ (học sinh)
+
+Đáp số: Nam: $160$ học sinh; nữ: $96$ học sinh
+
+---
+
+## Câu 13 — LT 13.24 · Khi dịch dấu phẩy của một số thập phân sang bên trái một hàng thì số đó giảm đi $18,54$ đơn vị. Tìm số thập phân đó.
+
+**Dạng sách:** CĐ13 · Dịch chuyển dấu phẩy (hiệu)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: dịch dấu phẩy sang **trái một hàng** = số đó **giảm đi $10$ lần** ⇒ số mới $1$ phần, số cần tìm $10$ phần. "Giảm đi $18,54$ đơn vị" là **hiệu** hai số ⇒ bài hiệu – tỉ (như VD 13.2 của sách).
+
+Thử lại: $20,6$ dịch trái thành $2,06$; $20,6-2,06=18,54$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khi dịch dấu phẩy của một số thập phân sang bên trái một hàng thì số đó giảm đi $10$ lần.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số mới 1 phần; Số cần tìm 10 phần; hiệu 18,54](so-do/5T-LT-13-24.svg)
+
+Hiệu số phần bằng nhau là: $10-1=9$ (phần)
+
+Giá trị một phần là: $18,54:9=2,06$
+
+Số thập phân đó là: $2,06\times 10=20,6$
+
+Đáp số: $20,6$
+
+---
+
+## Câu 14 — LT 13.41 · Tổng của một số tự nhiên và một số thập phân có một chữ số ở phần thập phân là $259,8$. Khi cộng hai số này, một bạn đã quên viết dấu phẩy của số thập phân và đặt tính cộng như hai số tự nhiên nên được kết quả là $375$. Tìm số tự nhiên và số thập phân đã cho.
+
+**Dạng sách:** CĐ13 · Dịch chuyển dấu phẩy (quên dấu phẩy)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: số thập phân có **một** chữ số ở phần thập phân, bỏ quên dấu phẩy thì nó **gấp lên $10$ lần**; số tự nhiên giữ nguyên. Nên kết quả sai hơn kết quả đúng đúng bằng **phần tăng thêm của số thập phân** $=375-259,8=115,2$, ứng với $10-1=9$ phần (số thập phân là $1$ phần). Ra số thập phân rồi lấy tổng trừ đi để ra số tự nhiên.
+
+Thử lại: $247+12,8=259,8$; $247+128=375$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Quên dấu phẩy của số thập phân có một chữ số ở phần thập phân thì số đó gấp lên $10$ lần, số tự nhiên không đổi.
+
+Kết quả sai hơn kết quả đúng là: $375-259,8=115,2$
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số thập phân 1 phần; Số khi quên dấu phẩy 10 phần; hiệu 115,2](so-do/5T-LT-13-41.svg)
+
+Hiệu số phần bằng nhau là: $10-1=9$ (phần)
+
+Số thập phân đã cho là: $115,2:9=12,8$
+
+Số tự nhiên đã cho là: $259,8-12,8=247$
+
+Đáp số: Số tự nhiên: $247$; số thập phân: $12,8$
+
+---
+
+## Câu 15 — LT 14.1 · Viết các số sau thành tỉ số phần trăm: $0,39;\ 1,28;\ 0,308;\ \dfrac{16}{50};\ \dfrac{5}{8};\ 1\dfrac{3}{125};\ \dfrac{27}{12}$.
+
+**Dạng sách:** CĐ14 · Đổi số thập phân, phân số sang tỉ số phần trăm
+
+**Phần 1. Hướng dẫn**
+
+Tỉ số phần trăm là phân số có **mẫu số $100$** viết gọn bằng kí hiệu $\%$. Nên: số thập phân ⇒ viết thành phân số mẫu $100$; phân số mẫu đổi được về $100$ ($\dfrac{16}{50}$) ⇒ nhân cả tử và mẫu; phân số mẫu không đổi gọn về $100$ ($\dfrac{5}{8}$, $\dfrac{27}{12}$, hỗn số) ⇒ **chia tử cho mẫu** ra số thập phân trước.
+
+Chú ý: số lớn hơn $1$ thì tỉ số phần trăm lớn hơn $100\%$ ($1,28=128\%$).
+
+**Phần 2. Trình bày**
+
+$0,39=\dfrac{39}{100}=39\%$
+
+$1,28=\dfrac{128}{100}=128\%$
+
+$0,308=\dfrac{30,8}{100}=30,8\%$
+
+$\dfrac{16}{50}=\dfrac{32}{100}=32\%$
+
+$\dfrac{5}{8}=5:8=0,625=62,5\%$
+
+$1\dfrac{3}{125}=\dfrac{128}{125}=128:125=1,024=102,4\%$
+
+$\dfrac{27}{12}=27:12=2,25=225\%$
+
+---
+
+## Câu 16 — LT 14.6b · Tính: $5\dfrac{1}{2}-20\%+1,2\times 25\%$
+
+**Dạng sách:** CĐ14 · Các phép toán với tỉ số phần trăm
+
+**Phần 1. Hướng dẫn**
+
+Biểu thức trộn hỗn số, phần trăm, số thập phân ⇒ **đổi hết về số thập phân** cho cùng một kiểu: $5\dfrac{1}{2}=5,5$; $20\%=0,2$; $25\%=0,25$. Rồi theo thứ tự: nhân trước, cộng trừ sau (từ trái sang phải).
+
+**Phần 2. Trình bày**
+
+$5\dfrac{1}{2}-20\%+1,2\times 25\%$
+
+$=5,5-0,2+1,2\times 0,25$
+
+$=5,5-0,2+0,3$
+
+$=5,6$
+
+---
+
+## Câu 17 — LT 14.11 · Hai tổ công nhân có $48$ người. Nếu chuyển $25\%$ số công nhân của tổ một sang tổ hai thì hai tổ có số công nhân bằng nhau. Hỏi mỗi tổ có bao nhiêu công nhân?
+
+**Dạng sách:** CĐ14 · Tỉ số phần trăm (lời văn)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: chuyển qua lại thì **tổng vẫn là $48$**; sau khi chuyển hai tổ bằng nhau ⇒ mỗi tổ $24$ người. Tổ một sau khi chuyển đi $25\%$ thì **còn $75\%$** số người của chính nó ⇒ $24$ người là $75\%$ tổ một ⇒ tìm tổ một bằng phép chia cho $75\%$.
+
+Thử lại: $25\%$ của $32$ là $8$; $32-8=24$, $16+8=24$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Sau khi chuyển, mỗi tổ có số công nhân là: $48:2=24$ (người)
+
+Sau khi chuyển, số công nhân còn lại của tổ một chiếm: $100\%-25\%=75\%$ (số công nhân tổ một)
+
+Số công nhân tổ một là: $24:75\%=32$ (người)
+
+Số công nhân tổ hai là: $48-32=16$ (người)
+
+Đáp số: Tổ một: $32$ người; tổ hai: $16$ người
+
+---
+
+## Câu 18 — LT 15.3 · Một cửa hàng xe máy đặt mục tiêu tháng này bán được $80$ chiếc xe, nhưng thực tế cửa hàng bán được $100$ chiếc xe. Hỏi: a) Cửa hàng đã thực hiện được bao nhiêu phần trăm kế hoạch? b) Cửa hàng đã vượt mức kế hoạch bao nhiêu phần trăm so với kế hoạch?
+
+**Dạng sách:** CĐ15 · Tìm tỉ số phần trăm của hai số
+
+**Phần 1. Hướng dẫn**
+
+"Thực hiện được bao nhiêu phần trăm kế hoạch" = tỉ số phần trăm của **thực tế so với kế hoạch** ⇒ $100:80$ (kế hoạch đứng sau, làm "số so sánh"). "Vượt bao nhiêu phần trăm" = phần **hơn $100\%$**. Ý b dùng ý a nên giữ một câu.
+
+Chú ý bẫy: lấy $80:100=80\%$ là đảo ngược hai số.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+a) Tỉ số phần trăm số xe bán được so với kế hoạch là: $100:80=1,25=125\%$
+
+b) Cửa hàng đã vượt mức kế hoạch là: $125\%-100\%=25\%$
+
+Đáp số: a) $125\%$; b) $25\%$
+
+---
+
+## Câu 19 — LT 15.13 · Một ô tô đi một quãng đường dài $200$ km trong $3$ giờ. Giờ thứ nhất ô tô đi được $25\%$ quãng đường. Giờ thứ hai, ô tô đi được $60\%$ quãng đường còn lại. Tính quãng đường ô tô đi trong giờ thứ ba.
+
+**Dạng sách:** CĐ15 · Tìm $a\%$ của một số (nhiều bước, "phần còn lại")
+
+**Phần 1. Hướng dẫn**
+
+Giống bài phân số "phần còn lại" (lô 1 câu 4): $60\%$ là của **quãng đường còn lại** sau giờ thứ nhất, không phải của $200$ km. Đi lần lượt: giờ thứ nhất → còn lại → giờ thứ hai → giờ thứ ba là phần còn lại cuối.
+
+Tìm $a\%$ của $M$: lấy $M$ nhân với $a\%$ (quy tắc trong Tóm tắt lí thuyết CĐ15).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Quãng đường ô tô đi trong giờ thứ nhất là: $200\times 25\%=50$ (km)
+
+Quãng đường còn lại sau giờ thứ nhất là: $200-50=150$ (km)
+
+Quãng đường ô tô đi trong giờ thứ hai là: $150\times 60\%=90$ (km)
+
+Quãng đường ô tô đi trong giờ thứ ba là: $150-90=60$ (km)
+
+Đáp số: $60$ km
+
+---
+
+## Câu 20 — LT 15.18 · Đậu phộng đem ép thì được $35\%$ dầu ăn. Hỏi để có $70$ kg dầu ăn thì phải đem ép bao nhiêu tạ đậu phộng?
+
+**Dạng sách:** CĐ15 · Tìm một số khi biết $b\%$ của số đó
+
+**Phần 1. Hướng dẫn**
+
+$70$ kg dầu là $35\%$ của số đậu phộng cần ép ⇒ biết $b\%$ của một số là $M$ thì tìm số đó bằng $M:b\%$ (quy tắc CĐ15). Đề hỏi **tạ** ⇒ đổi ở cuối: $100$ kg $=1$ tạ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số đậu phộng cần đem ép là: $70:35\%=200$ (kg)
+
+Đổi: $200$ kg $=2$ tạ
+
+Đáp số: $2$ tạ đậu phộng
+
+---
+
+## Câu 21 — LT 16.2 · Bình A chứa $500$ g dung dịch nước đường có $2,4\%$ đường. Người ta đun sôi bình A thì thấy giảm đi $100$ g. Hỏi dung dịch nước đường mới có bao nhiêu phần trăm đường?
+
+**Dạng sách:** CĐ16 · Bài toán phần trăm có một yếu tố không đổi
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đun sôi thì **nước bay hơi, đường không mất** ⇒ khối lượng đường không đổi. Tính lượng đường, tính khối lượng dung dịch mới ($500-100$), rồi tìm tỉ số phần trăm đường so với dung dịch mới.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khối lượng đường không đổi.
+
+Khối lượng đường trong $500$ g dung dịch là: $500\times 2,4\%=12$ (g)
+
+Khối lượng dung dịch sau khi đun là: $500-100=400$ (g)
+
+Tỉ số phần trăm đường trong dung dịch mới là: $12:400=0,03=3\%$
+
+Đáp số: $3\%$
+
+---
+
+## Câu 22 — LT 16.7 · Để tạo ra $700$ g dung dịch nước đường $12\%$, cần trộn $300$ g dung dịch nước đường $8\%$ với dung dịch nước đường bao nhiêu phần trăm đường?
+
+**Dạng sách:** CĐ16 · Bài toán về trộn dung dịch
+
+**Phần 1. Hướng dẫn**
+
+Khi trộn: **khối lượng dung dịch cộng lại, khối lượng đường cộng lại**. Biết dung dịch sau trộn ($700$ g, $12\%$) và một phần đem trộn ($300$ g, $8\%$) ⇒ phần còn lại là dung dịch cần tìm: khối lượng $700-300$, lượng đường $=$ đường lúc sau $-$ đường của phần $300$ g.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khối lượng đường trong $700$ g dung dịch $12\%$ là: $700\times 12\%=84$ (g)
+
+Khối lượng đường trong $300$ g dung dịch $8\%$ là: $300\times 8\%=24$ (g)
+
+Khối lượng dung dịch cần trộn thêm là: $700-300=400$ (g)
+
+Khối lượng đường trong dung dịch cần trộn thêm là: $84-24=60$ (g)
+
+Tỉ số phần trăm đường của dung dịch cần trộn thêm là: $60:400=0,15=15\%$
+
+Đáp số: $15\%$
+
+---
+
+## Câu 23 — LT 16.14 · Hạt tươi có tỉ lệ nước là $80\%$, hạt khô có tỉ lệ nước là $20\%$. Hỏi nếu phơi khô $60$ kg hạt tươi thì thu được bao nhiêu ki-lô-gam hạt khô?
+
+**Dạng sách:** CĐ16 · Bài toán hạt tươi – hạt khô (một yếu tố không đổi)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: phơi khô chỉ mất nước, **khối lượng thuần hạt (phần không phải nước) không đổi** (như VD 16.2). Thuần hạt chiếm $20\%$ hạt tươi và chiếm $80\%$ hạt khô ⇒ tính thuần hạt từ hạt tươi, rồi tìm hạt khô biết $80\%$ của nó.
+
+Chú ý bẫy: lấy $60\times 20\%$ rồi dừng là ra thuần hạt chứ chưa phải hạt khô (hạt khô vẫn còn $20\%$ nước).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khối lượng thuần hạt không đổi.
+
+Thuần hạt chiếm: $100\%-80\%=20\%$ (hạt tươi)
+
+Khối lượng thuần hạt trong $60$ kg hạt tươi là: $60\times 20\%=12$ (kg)
+
+Thuần hạt chiếm: $100\%-20\%=80\%$ (hạt khô)
+
+Khối lượng hạt khô thu được là: $12:80\%=15$ (kg)
+
+Đáp số: $15$ kg
+
+---
+
+## Câu 24 — LT 17.6 · Nếu tăng chiều dài của hình chữ nhật thêm $25\%$ và bớt chiều rộng của hình chữ nhật đi $25\%$ thì diện tích của hình chữ nhật sẽ tăng hay giảm bao nhiêu phần trăm?
+
+**Dạng sách:** CĐ17 · Bài toán khác về tỉ số phần trăm (thay đổi kích thước)
+
+**Phần 1. Hướng dẫn**
+
+Coi chiều dài, chiều rộng, diện tích ban đầu đều là $100\%$. Chiều dài mới $125\%$, chiều rộng mới $75\%$; diện tích $=$ dài $\times$ rộng nên diện tích mới $=125\%\times 75\%$ diện tích cũ.
+
+Chú ý bẫy: "tăng $25\%$ rồi giảm $25\%$ thì diện tích không đổi" là **sai** — phần trăm nhân với nhau, không bù trừ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Chiều dài mới bằng: $100\%+25\%=125\%$ (chiều dài cũ)
+
+Chiều rộng mới bằng: $100\%-25\%=75\%$ (chiều rộng cũ)
+
+Diện tích mới bằng: $125\%\times 75\%=93,75\%$ (diện tích cũ)
+
+Diện tích hình chữ nhật giảm đi: $100\%-93,75\%=6,25\%$
+
+Đáp số: Giảm $6,25\%$
+
+---
+
+## Câu 25 — LT 17.12 · Một nhà máy cải tiến dây chuyền sản xuất khẩu trang nên năng suất lao động của công nhân tăng thêm $60\%$ so với trước khi cải tiến. Hỏi thời gian hoàn thiện một chiếc khẩu trang giảm đi bao nhiêu phần trăm so với trước khi cải tiến?
+
+**Dạng sách:** CĐ17 · Bài toán khác về tỉ số phần trăm (tỉ lệ nghịch)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: cùng làm một chiếc khẩu trang thì **năng suất và thời gian tỉ lệ nghịch** (năng suất gấp lên bao nhiêu lần thì thời gian giảm đi bấy nhiêu lần — như VD 28.1 của sách với vận tốc và thời gian). Năng suất mới $=160\%=\dfrac{8}{5}$ năng suất cũ ⇒ thời gian mới $=\dfrac{5}{8}$ thời gian cũ.
+
+Chú ý bẫy: thời gian **không** giảm $60\%$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Năng suất mới bằng: $100\%+60\%=160\%$ (năng suất cũ)
+
+Ta có: $160\%=\dfrac{160}{100}=\dfrac{8}{5}$
+
+Năng suất và thời gian hoàn thiện một chiếc khẩu trang là hai đại lượng tỉ lệ nghịch nên thời gian mới bằng $\dfrac{5}{8}$ thời gian cũ.
+
+$\dfrac{5}{8}=5:8=0,625=62,5\%$
+
+Thời gian hoàn thiện một chiếc khẩu trang giảm đi: $100\%-62,5\%=37,5\%$
+
+Đáp số: $37,5\%$
+
+---
+
+## Câu 26 — LT 17.20 · Một cửa hàng bán $\dfrac{3}{8}$ số hàng và được lãi $40\%$ so với giá nhập về. Số còn lại bán lỗ $10\%$ so với giá nhập về. Hỏi khi bán hết số hàng thì cửa hàng lỗ hay lãi bao nhiêu phần trăm so với giá nhập về?
+
+**Dạng sách:** CĐ17 · Bài toán khác về tỉ số phần trăm (lãi – lỗ)
+
+**Phần 1. Hướng dẫn**
+
+Coi **tiền vốn của toàn bộ số hàng là $100\%$** (mọi hàng nhập cùng giá nên $\dfrac{3}{8}$ số hàng có vốn bằng $\dfrac{3}{8}$ tổng vốn). Phần lãi $40\%$ bán được $140\%$ vốn của nó; phần lỗ $10\%$ bán được $90\%$ vốn của nó. Cộng tiền bán hai phần rồi so với $100\%$.
+
+Chú ý bẫy: lấy $40\%-10\%=30\%$ là sai, vì hai phần hàng không bằng nhau.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Coi tiền vốn của toàn bộ số hàng là $100\%$.
+
+Tiền vốn của $\dfrac{3}{8}$ số hàng là: $100\%\times\dfrac{3}{8}=37,5\%$
+
+Tiền vốn của số hàng còn lại là: $100\%-37,5\%=62,5\%$
+
+Tiền bán $\dfrac{3}{8}$ số hàng là: $37,5\%\times\left(100\%+40\%\right)=52,5\%$
+
+Tiền bán số hàng còn lại là: $62,5\%\times\left(100\%-10\%\right)=56,25\%$
+
+Tổng số tiền bán hàng là: $52,5\%+56,25\%=108,75\%$
+
+Cửa hàng lãi: $108,75\%-100\%=8,75\%$
+
+Đáp số: Lãi $8,75\%$
+
+---
+
+## Bảng tóm tắt lô sách 2
+
+| # | Nguồn | Dạng sách | Đáp số | Ghi chú |
+|---|---|---|---|---|
+| 1 | LT 10.5 | CĐ10 so sánh STP | $0,006;0,007;0,008;0,009$ | khuôn VD 10.3 |
+| 2 | LT 10.7b | CĐ10 tìm chữ số | $y=2;3;4$ | lập luận "Vì … mà … nên" |
+| 3 | LT 10.12 | CĐ10 đếm STP | $24$ số | khuôn đếm 4T |
+| 4 | LT 11.3 | CĐ11 đổi diện tích | 6 mục | qua hỗn số như VD 11.2 |
+| 5 | LT 11.7 | CĐ11 lời văn | $2,4$ tấn | sơ đồ tổng–tỉ; tỉ lệ = rút về đơn vị (§2b B) |
+| 6 | LT 11.13 | CĐ11 lời văn diện tích | $4,8\ \text{dm}^2$ | |
+| 7 | LT 12.3c | CĐ12 thuận tiện cộng trừ | $120$ | |
+| 8 | LT 12.5c | CĐ12 thuận tiện nhân | $180$ | |
+| 9 | LT 12.9d | CĐ12 tìm $y$ | $2,4$ | theo cột |
+| 10 | LT 12.10a | CĐ12 tìm chữ số | $a=1;b=6;c=0$ | |
+| 11 | LT 13.4 | CĐ13 dãy STP | $33$; $237,6$ | |
+| 12 | LT 13.10 | CĐ13 tổng–tỉ (tỉ số STP) | nam $160$, nữ $96$ | sơ đồ |
+| 13 | LT 13.24 | CĐ13 dịch dấu phẩy | $20,6$ | sơ đồ như VD 13.2 |
+| 14 | LT 13.41 | CĐ13 quên dấu phẩy | $247$ và $12,8$ | sơ đồ |
+| 15 | LT 14.1 | CĐ14 đổi ra % | 7 mục | |
+| 16 | LT 14.6b | CĐ14 tính với % | $5,6$ | |
+| 17 | LT 14.11 | CĐ14 lời văn | $32$ và $16$ | |
+| 18 | LT 15.3 | CĐ15 tìm tỉ số % | $125\%$; $25\%$ | |
+| 19 | LT 15.13 | CĐ15 tìm $a\%$ của số | $60$ km | |
+| 20 | LT 15.18 | CĐ15 tìm số biết $b\%$ | $2$ tạ | |
+| 21 | LT 16.2 | CĐ16 một yếu tố không đổi | $3\%$ | |
+| 22 | LT 16.7 | CĐ16 trộn dung dịch | $15\%$ | |
+| 23 | LT 16.14 | CĐ16 hạt tươi – hạt khô | $15$ kg | |
+| 24 | LT 17.6 | CĐ17 thay đổi kích thước | giảm $6,25\%$ | |
+| 25 | LT 17.12 | CĐ17 tỉ lệ nghịch với % | $37,5\%$ | |
+| 26 | LT 17.20 | CĐ17 lãi – lỗ | lãi $8,75\%$ | |
+
+**Câu hỏi cho CEO trong lô này:**
+
+1. **Cách viết "tìm $a\%$ của một số" — sách viết 2 kiểu** (thêm vào bảng nhiều cách §2b, dòng G): ① $200\times 25\%=50$ (Tóm tắt lí thuyết CĐ15 + VD 15.2) · ② $200\times 25:100=50$ (VD 16.1–16.3). Lô này em dùng **①** cho đồng bộ cả CĐ14–17 (và chiều ngược "tìm số biết $b\%$" là $M:b\%$). Chị chốt ① hay ②?
+2. **Nhân hai tỉ số phần trăm** (câu 24, 26): em viết thẳng $125\%\times 75\%=93,75\%$. Có cần đổi ra số thập phân ($1,25\times 0,75=0,9375=93,75\%$) cho HS dễ hiểu hơn không?

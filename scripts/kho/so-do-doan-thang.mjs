@@ -22,7 +22,10 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-const soDau = (s) => { const k = String(s ?? '').replace(/\s/g, '').match(/^\d+/); return k ? Number(k[0]) : null }
+// số đầu nhãn — nhận dấu phẩy thập phân kiểu Việt ("18,54" ⇒ 18.54; sách 5T có số thập phân). Khoảng trắng ngăn hàng nghìn bỏ.
+const soDau = (s) => { const k = String(s ?? '').replace(/\s/g, '').match(/^\d+(,\d+)?/); return k ? Number(k[0].replace(',', '.')) : null }
+// so số liệu có phần thập phân: cộng số thực sinh sai số (18.540000000000003) ⇒ so với dung sai rất nhỏ
+const bang = (a, b) => Math.abs(a - b) < 1e-9
 const r1 = (x) => Math.round(x * 10) / 10
 
 export function veSoDo(m) {
@@ -60,12 +63,12 @@ export function veSoDo(m) {
   const tongDe = soDau(m.tong)
   if (tongDe != null) {
     const s = gt.reduce((a, g) => a + g.tong, 0)
-    if (s !== tongDe) throw new Error(`Sơ đồ SAI SỐ LIỆU: tổng các hàng = ${s} nhưng nhãn tổng ghi ${tongDe}`)
+    if (!bang(s, tongDe)) throw new Error(`Sơ đồ SAI SỐ LIỆU: tổng các hàng = ${s} nhưng nhãn tổng ghi ${tongDe}`)
   }
   const hieuDe = soDau(m.hieu)
   if (hieuDe != null && hang.length >= 2) {
     const d = Math.abs(gt[0].tong - gt[1].tong)
-    if (d !== hieuDe) throw new Error(`Sơ đồ SAI SỐ LIỆU: chênh lệch hai hàng = ${d} nhưng nhãn hiệu ghi ${hieuDe}`)
+    if (!bang(d, hieuDe)) throw new Error(`Sơ đồ SAI SỐ LIỆU: chênh lệch hai hàng = ${d} nhưng nhãn hiệu ghi ${hieuDe}`)
   }
   // tỉ lệ: hàng dài nhất rộng MAXW px; 1 đơn vị = MAXW / giá trị lớn nhất
   const maxPhan = Math.max(...gt.map((g) => g.n))
