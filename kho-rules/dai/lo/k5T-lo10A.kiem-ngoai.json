@@ -1,0 +1,42 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-5T-lo10A-20261009",
+ "cau": {
+  "ON 23": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 24": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề; đã đổi nhãn hiệu 300 ⇒ số tròn trăm (chưa biết lúc vẽ)"
+  },
+  "ON 25": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 27": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 28a": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 30": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 34": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 35": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  },
+  "ON 36": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng, số phần / đoạn thêm-bớt, nhãn khớp đề"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "ON 8": {
+  "noi_dung": "Tính tổng của:\na) 110 số tự nhiên liên tiếp bắt đầu từ 85.\nb) 60 số hạng đầu tiên của dãy số 1; 7; 13; 19; ………"
+ },
+ "ON 23": {
+  "noi_dung": "Tìm một số tự nhiên có hai chữ số, biết rằng khi viết thêm chữ số 5 vào bên trái số đó thì số đó tăng lên 26 lần."
+ },
+ "ON 12a": {
+  "dap_an": "$a=2$ hoặc $a=5$ hoặc $a=8$; $b=0$"
+ },
+ "ON 20": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bán buổi sáng gấp đôi buổi chiều nên **cả hai buổi là $3$ phần bằng nhau** (chiều $1$ phần, sáng $2$ phần). Vậy khối lượng $5$ thùng đã bán **chia hết cho $3$**. Từ đó suy ra thùng còn lại phải có số dư thích hợp khi chia cho $3$.\n\n**Bước 1.** Tính tổng khối lượng cả $6$ thùng: $15+16+18+19+20+31=119$ (kg).\n\n**Bước 2.** Khối lượng đã bán chia hết cho $3$, còn $119$ chia $3$ dư $2$ ($119=3\\times 39+2$). Vậy thùng còn lại phải chia $3$ dư $2$ (để bớt đi thì phần còn lại chia hết cho $3$).\n\n**Bước 3.** Xét số dư của từng thùng khi chia cho $3$ rồi chọn thùng chia $3$ dư $2$.\n\nThử lại: Còn thùng $20$ kg thì đã bán $119-20=99$ kg: buổi chiều $99:3=33$ kg ($15+18$), buổi sáng $33\\times 2=66$ kg ($16+19+31$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng khối lượng $6$ thùng là: $15+16+18+19+20+31=119$ (kg)\n\nKhối lượng đã bán gồm $3$ phần bằng nhau nên chia hết cho $3$. Vì $119$ chia $3$ dư $2$ nên thùng còn lại chia $3$ dư $2$.\n\nSố dư khi chia cho $3$: $15$ dư $0$; $16$ dư $1$; $18$ dư $0$; $19$ dư $1$; $20$ dư $2$; $31$ dư $1$.\n\nChỉ có thùng $20$ kg chia $3$ dư $2$.\n\nĐáp số: Thùng $20$ kg",
+  "so_do_mo_ta": null
+ },
+ "ON 21": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong số trứng đã bán, vịt gấp $3$ lần gà nên **cả hai loại là $4$ phần bằng nhau** (gà $1$ phần, vịt $3$ phần). Vậy số trứng đã bán **chia hết cho $4$**, từ đó tìm được rổ trứng gà còn lại.\n\n**Bước 1.** Tổng số trứng của $7$ rổ: $45+56+60+66+75+85+92=479$ (quả).\n\n**Bước 2.** Số trứng đã bán = tổng trừ rổ còn lại, phải chia hết cho $4$. Mà $479$ chia $4$ dư $3$ nên rổ còn lại chia $4$ dư $3$. Xét số dư của $7$ rổ khi chia cho $4$, chỉ có rổ $75$ phù hợp.\n\n**Bước 3.** Số trứng đã bán là $479-75=404$ quả, gồm gà $1$ phần và vịt $3$ phần: gà đã bán $404:4=101$ quả, vịt $101\\times 3=303$ quả.\n\n**Bước 4.** Tìm các rổ gà đã bán có tổng $101$: một rổ không có rổ nào $101$; hai rổ chỉ có $45+56=101$; ba rổ trở lên đã nhiều hơn $45+56+60=161$. Vậy các rổ vịt là $60$; $66$; $85$; $92$.\n\nThử lại: Vịt: $60+66+85+92=303$ quả, gấp $3$ lần gà đã bán $101$ quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số trứng của $7$ rổ là: $45+56+60+66+75+85+92=479$ (quả)\n\nSố trứng đã bán chia hết cho $4$, mà $479$ chia $4$ dư $3$ nên rổ còn lại chia $4$ dư $3$.\n\nSố dư khi chia cho $4$: $45$ dư $1$; $56$ dư $0$; $60$ dư $0$; $66$ dư $2$; $75$ dư $3$; $85$ dư $1$; $92$ dư $0$.\n\nRổ còn lại là rổ $75$ quả trứng gà.\n\nSố trứng đã bán là: $479-75=404$ (quả)\n\nSố trứng gà đã bán là: $404:4=101$ (quả)\n\nCác rổ trứng gà đã bán có tổng $101$ quả nên chỉ có thể là hai rổ $45$ và $56$ ($45+56=101$).\n\nSố trứng gà lúc đầu là: $101+75=176$ (quả)\n\nSố trứng vịt lúc đầu là: $101\\times 3=303$ (quả)\n\nĐáp số: Trứng gà $176$ quả; trứng vịt $303$ quả",
+  "so_do_mo_ta": null
+ },
+ "ON 24": {
+  "so_do_mo_ta": {
+   "gia_tri_phan": 50,
+   "hang": [
+    {
+     "nhan": "Số cũ",
+     "phan": 1
+    },
+    {
+     "nhan": "Số mới",
+     "phan": 7
+    }
+   ],
+   "hieu": "số tròn trăm",
+   "dau_hoi": [
+    "Số cũ"
+   ]
+  }
+ }
+}

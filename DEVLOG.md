@@ -36287,3 +36287,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 09/10 (tiếp) — 5T lô 9 (CĐ26–31) ghi thật 67 câu (T15T000000606–672); tổng từ sách 659
 - Chuyển động: 45 sơ đồ đường đi (xe lửa/cầu dùng vat), soát ảnh cả 46 đúng số liệu. Hàm kiểm lô 9: giờ tròn (11 giờ) nhận cả "11 giờ" lẫn "11 giờ 0 phút".
 - VD 31.3 đổi chữ đặt Q/C ⇒ T/O. Đã giao lô 10 (Ôn tập) cho 3 Sonnet; bộ kiểm lô 10 120 hàm (tổng 801).
+
+## 09/10 (tiếp) — 5T lô 10 (Ôn tập) ghi thật 112 câu (T15T000000673–784); tổng từ sách 771
+- 10B 27 (ON 64 ≡ LT 7.17), 10C 42, 10A 43. Soát: bỏ sơ đồ ON 20/21 (lộ đáp số), sửa nhãn ON 24; ON 12a dap_an viết lại dạng a=…; hàm ON 3 nhận D = 13/40 lẫn 0,325.
+- Lô 11 (bài có hình) đang dựng: dau-vao-soan thêm cờ --co-hinh (chỉ lấy bài có hình, kèm tên ảnh); dung-hinh-de.ps1 thêm cách ghep (bài nhiều ảnh, lưới 2 cột + nhãn a) b)…) và ve_lai (ảnh hỏng vẽ lại bằng code). Phát hiện tach-bai gắn nhầm ảnh của ON 94 (hình có F) vào ON 93 ⇒ vá bai.json, ON 94 vào lô 11 (bộ kiểm thêm 94a/94b). 13 ảnh hỏng + LT 19.18: 11 vẽ lại (Sonnet), treo LT 21.10, 23.1 (khối đen che mất hình), VD 20.2 (đề lẫn lời giải); LT 18.1 bỏ (bài yêu cầu vẽ).

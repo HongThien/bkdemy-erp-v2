@@ -17,7 +17,7 @@ export const LO10 = {
   // ── I. Tính toán ──
   'ON 1': () => [gan('A', '54,73'), gan('B', '15'), gan('C', '86,8'), gan('D', '105,25'), gan('E', '2'), gan('F', '60'), gan('G', '350'), gan('H', '412000'), gan('I', '2023')],
   'ON 2': () => [gan('A', '3'), gan('B', '0'), gan('C', '0'), gan('D', '0')],
-  'ON 3': () => [gan('A', '1'), gan('B', '3'), gan('C', PS(37, 6)), gan('D', '0,325')],
+  'ON 3': () => [gan('A', '1'), gan('B', '3'), gan('C', PS(37, 6)), gan('D', ['0,325', ...PS(13, 40)])],
   'ON 4a': () => ['y=0,4'], 'ON 4b': () => ['y=92069'], 'ON 4c': () => [gan('y', PS(17, 20))], 'ON 4d': () => ['y=27'], 'ON 4e': () => ['y=105'], 'ON 4f': () => ['y=100'],
   // ── II. Dãy số ──
   'ON 5a': () => ['17', '20', '23'], 'ON 5b': () => ['632'], 'ON 5c': () => ['2024', '675'], 'ON 5d': () => ['15050'],
@@ -128,3 +128,6 @@ export const LO10 = {
   'ON 123': () => [['luật sư'], ['Mỹ']],
   'ON 125': () => [['Cường']],
 }
+// ON 94 (09/10): hình có F thật ra bị tach-bai gắn nhầm sang ON 93 ⇒ vá ảnh, đưa vào lô bài có hình. F = giao DE với tia BC; Menelaus ⇒ BF = 2 CF ⇒ BC = CF
+LO10['ON 94a'] = () => ['30']
+LO10['ON 94b'] = () => [['bc/cf=1', 'bc=cf', 'bc:cf=1', 'cf=bc']]

@@ -1,0 +1,11 @@
+{
+ "ON 69": {
+  "noi_dung": "Một đơn vị bộ đội dự trừ một số lượng gạo đủ để cho 360 người ăn trong 40 ngày. Sau khi ăn được 10 ngày thì đơn vị có thêm 180 người. Hỏi số gạo còn lại đủ cho đơn vị ăn trong bao nhiêu ngày nữa? Biết rằng khẩu phần ăn của mỗi người là như nhau."
+ },
+ "ON 82": {
+  "noi_dung": "Lớp 5A có 36% số học sinh xếp loại giỏi, 48% số học sinh xếp loại khá, số còn lại xếp loại trung bình. Biết tổng số học sinh giỏi và trung bình là 13 em. Tính số học sinh mỗi loại."
+ },
+ "ON 111": {
+  "noi_dung": "Có 64 hình lập phương, mỗi hình có thể tích là $27\\ \\text{cm}^{3}$. Xếp 64 hình đó thành một hình lập phương lớn. Sau đó người ta lấy ra các hình lập phương nhỏ được sơn 3 mặt trên hình lập phương lớn. Tính diện tích toàn phần của khối còn lại."
+ }
+}

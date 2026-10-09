@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 156" width="560" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="560" height="156" fill="#fff"/>
+<text x="216" y="37" text-anchor="end" fill="#0f172a">Số học sinh:</text>
+<line x1="226" y1="32" x2="471.5" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="226" y1="25" x2="226" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="471.5" y1="25" x2="471.5" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="348.7" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="216" y="81" text-anchor="end" fill="#0f172a">Số chỗ nếu mỗi phòng 16 em:</text>
+<line x1="226" y1="76" x2="466" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="226" y1="69" x2="226" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="471.5" y1="69" x2="471.5" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="466" y1="76" x2="471.5" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="466" y1="69" x2="466" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="468.7" y="66" text-anchor="middle" font-size="12" fill="#b45309">4 em</text>
+<text x="216" y="125" text-anchor="end" fill="#0f172a">Số chỗ nếu mỗi phòng 20 em:</text>
+<line x1="226" y1="120" x2="471.5" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="226" y1="113" x2="226" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="471.5" y1="113" x2="471.5" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="471.5" y1="120" x2="526" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="526" y1="113" x2="526" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="498.7" y="110" text-anchor="middle" font-size="12" fill="#b45309">40 em</text>
+</svg>
