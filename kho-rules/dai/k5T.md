@@ -245,7 +245,11 @@ Danh tính câu: `ten_de_goc = "Toán 5 TLTK · <mã bài>"` (mã của `tach-ba
 
 | Lô | Khu sách | Câu ghi | Ghi chú |
 |---|---|---|---|
-| S1–S4 (lô thử) | 101 câu rải CĐ1–31 + Ôn | — | chưa ghi — việc đầu tiên của bước 2 |
+| S1–S4 (lô thử, 09/10) | 101 câu rải CĐ1–31 + Ôn | **98** (`T15T000000014`–`111`) | Opus soạn, CEO duyệt; 3 trùng câu kho cũ không chèn (LT 10.12 ≈ T15T020206041 · LT 13.41 ≈ T15T020206066 · LT 1.2d ≡ T105030203013); 98 `khop`; 28 sơ đồ (Sonnet ký `kiem-hinh-b` 29/29) · 7 hình đề |
+
+**Lệnh một lô (khuôn 5T):** lô thử: `soan-tu-mau-thu.mjs` (md → bản soạn, đáp án tay `lo/k5T-dap-an-tay.json`) · lô hàng loạt: `dau-vao-soan` → Sonnet soạn
+⇒ rồi chung: `lo-tu-soan.mjs <soan> <bai.json> --khoi 5T --lo N --so-do-dir kho-rules/dai/so-do --hinh-de kho-rules/dai/hinh-de/5T.json` →
+bộ kiểm thêm hàm vào `lo/k5T-kiem.mjs` → Sonnet xem ảnh sơ đồ ký `kiem-hinh-b` → `ghi-lo.mjs … --sach "Toán 5 TLTK" --chua-gan-dang` chạy thử → `--ghi`.
 
 **Còn lại:** toàn bộ 750 bài (VD 82 · LT 543 · Ôn 125, trước tách ý) trừ các câu đã ghi. **Treo:** 13 bài hình hỏng + LT 19.18 (vẽ lại bằng code) ·
 LT 21.1 (sách in nhãn trùng) · VD 25.1 (nhãn ý lặp) · 3 lỗi in trong VD (§5).

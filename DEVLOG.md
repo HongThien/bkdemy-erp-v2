@@ -36222,3 +36222,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 09/10 (tiếp) — 5T LÊN v1 (CEO: "OK rồi. Lên V1 thôi")
 - k5T.md đầu file + §7 + §8b (tiến độ bước 2) + §9; README §5 dòng 5T: Bước 2, v1.
+
+## 09/10 (tiếp) — 5T bước 2: GHI THẬT 98 câu lô thử S1–S4 vào kho (dạng chờ)
+- scripts/kho/sach/soan-tu-mau-thu.mjs (mới): md lô thử → bản soạn (khuôn lo-tu-soan) — để câu lô thử đi CÙNG đường câu hàng loạt (KaTeX, hình đề, dạng chờ). Không sửa lo-tu-md.mjs của 4T: bảng DAP_AN_TAY của nó tra theo MÃ BÀI không theo khối — mã "LT 3.1" có ở cả 2 sách ⇒ câu 5T sẽ nhận nhầm đáp án 4T. 5T dùng lo/k5T-dap-an-tay.json (17 câu không có dòng Đáp số).
+- kho-rules/dai/lo/k5T-kiem.mjs: 101 hàm tính lại từ đề (chuyển từ 4 bộ kiểm lô thử; hình học bằng toạ độ, sơn mặt đếm khối) — 101/101 đạt; làm sai đáp án ⇒ bắt 100/101 (1 "lọt" là phép làm sai đổi chữ nhãn, không đổi số).
+- hinh-de/5T.json manifest 7 hình. kiem-hinh-b: Sonnet xem 29 ảnh sơ đồ (PNG xuất bằng Edge) ⇒ 29/29 đúng; ghi chú LT 6.4 đoạn 6 kg ~3px (đúng tỉ lệ nhưng khó thấy).
+- ghi-lo.mjs: dòng báo cáo đếm cứng T14T% ⇒ lô 5T báo "từ sách này: 0"; sửa đếm theo khối của lô (chỉ là báo cáo, dữ liệu ghi không ảnh hưởng).
+- Ghi: 98 câu T15T000000014–111, ten_de_goc "Toán 5 TLTK · <mã>", kiem_may khop 98, 28 SVG + 7 PNG hình đề lên kho-anh (tải lại HTTP 200). 3 trùng không chèn. Kiểm DB read-only sau ghi: khớp.

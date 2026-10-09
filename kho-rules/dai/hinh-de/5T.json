@@ -1,0 +1,9 @@
+{
+ "LT 18.16": { "tep": "5T-LT-18-16.png", "nguon": ["image83.png"], "cach": "png" },
+ "LT 19.8": { "tep": "5T-LT-19-8.png", "nguon": ["image1084.png"], "cach": "png" },
+ "LT 19.12": { "tep": "5T-LT-19-12.png", "nguon": ["image1071.png"], "cach": "png" },
+ "LT 19.16": { "tep": "5T-LT-19-16.png", "nguon": ["image1081.png"], "cach": "png" },
+ "LT 19.25": { "tep": "5T-LT-19-25.png", "nguon": ["image1109.png"], "cach": "png" },
+ "LT 20.10": { "tep": "5T-LT-20-10.png", "nguon": ["image1145.png"], "cach": "png" },
+ "LT 21.7": { "tep": "5T-LT-21-7.png", "nguon": ["image219.png"], "cach": "png" }
+}
