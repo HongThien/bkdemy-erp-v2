@@ -36322,7 +36322,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   = 0,5/0,75/1/1/1; ca hôm nay 1 em lớp 5A2… ra 0,5–1 suất đúng bậc. Lịch phòng local: "1 em · 0,5/3 suất · còn 2,5 suất".
 - Không đổi: đơn vị ca, trần Cao 20, cách đếm 70 (đếm ĐẦU em, không trọng số — Thùy chỉ nói trọng số cho ca).
 
-<<<<<<< HEAD
 ## 2026-10-09 (22h40) — Buổi bổ trợ sửa ngày/giờ/TA tự gắn lại ca trực (Tuấn Kiệt / Quỳnh Trang)
 
 - **Lộc báo:** xếp Ngô Trí Tuấn Kiệt vào ca trực 10/10 17:00 của TA Hoàng Thị Quỳnh Trang, hệ không đưa vào ca trực mà ra Lịch riêng.
