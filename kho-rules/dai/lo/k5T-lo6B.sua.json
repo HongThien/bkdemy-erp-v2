@@ -1,0 +1,26 @@
+{
+ "LT 10.4a": {
+  "noi_dung": "Viết số thập phân gồm:\n9 đơn vị, 2 phần mười, 2 phần trăm và 9 phần nghìn"
+ },
+ "LT 10.4b": {
+  "noi_dung": "Viết số thập phân gồm:\n51 đơn vị, 4 phần mười và 7 phần nghìn"
+ },
+ "LT 10.4c": {
+  "noi_dung": "Viết số thập phân gồm:\n2 đơn vị, 3 phần nghìn"
+ },
+ "LT 10.4d": {
+  "noi_dung": "Viết số thập phân gồm:\n24 đơn vị và 18 phần trăm"
+ },
+ "LT 10.4e": {
+  "noi_dung": "Viết số thập phân gồm:\n0 đơn vị và 1 phần trăm"
+ },
+ "LT 10.4f": {
+  "noi_dung": "Viết số thập phân gồm:\n2 trăm, 8 đơn vị và 2 phần trăm"
+ },
+ "LT 11.2": {
+  "noi_dung": "Đổi đơn vị đo khối lượng:\n12 kg 102 g = … kg\t8 tấn 4 tạ 3 kg = … tấn\n12,56 tấn = … tấn … yến\n9,925 tấn = … tạ … yến … kg\n437 yến 3 kg = … tấn\n2 yến 5 kg 5 g =…yến\n77,8 yến =…yến …\n32,706 kg =… kg … dag … g"
+ },
+ "LT 10.6d": {
+  "bo": "đề trùng nguyên văn VD 10.3 (cùng sách) — câu VD đã có"
+ }
+}

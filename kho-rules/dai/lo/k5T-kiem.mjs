@@ -147,14 +147,18 @@ export const KIEM = {
 import { LO5 } from './k5T-kiem-lo5.mjs'
 import { LO6 } from './k5T-kiem-lo6.mjs'
 import { LO7 } from './k5T-kiem-lo7.mjs'
-for (const lo of [LO5, LO6, LO7]) for (const [k, f] of Object.entries(lo)) { if (KIEM[k]) throw new Error(`hàm kiểm trùng mã ${k}`); KIEM[k] = f }
+import { LO8 } from './k5T-kiem-lo8.mjs'
+import { LO9 } from './k5T-kiem-lo9.mjs'
+for (const lo of [LO5, LO6, LO7, LO8, LO9]) for (const [k, f] of Object.entries(lo)) { if (KIEM[k]) throw new Error(`hàm kiểm trùng mã ${k}`); KIEM[k] = f }
 
 /** Chuẩn hoá để so giá trị máy tính với chuỗi đáp án: bỏ $, khoảng trắng, \dfrac{a}{b} → a/b, \  ; về dạng thường. */
-export const chuanDapAn = (s) => String(s).replace(/\\d?frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\$|\\ |\\,|\s+/g, '').replace(/\\left|\\right/g, '').toLowerCase()
+export const chuanDapAn = (s) => String(s).replace(/\\text\{([^}]*)\}/g, '$1').replace(/\\d?frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\$|\\ |\\,|\s+/g, '').replace(/\\left|\\right/g, '').toLowerCase()
 
 /** Chạy kiểm một câu: trả { ket_qua: 'dat'|'khong_dat'|'khong_kiem_duoc', ghi_chu }. */
 export function kiemDapSo(maNguon, dapAn) {
-  const f = KIEM[maNguon]
+  // bài lời văn giữ chung một câu (README §3, CEO 09/10) mà hàm kiểm viết theo từng ý ⇒ gộp các hàm "<mã>a", "<mã>b"…
+  const yCon = KIEM[maNguon] ? [] : Object.keys(KIEM).filter((k) => k.length === maNguon.length + 1 && k.startsWith(maNguon) && /[a-z]$/.test(k)).sort()
+  const f = KIEM[maNguon] ?? (yCon.length ? () => yCon.flatMap((k) => KIEM[k]()) : null)
   if (!f) return { ket_qua: 'khong_kiem_duoc', ghi_chu: 'chưa có hàm kiểm cho câu này' }
   let can
   try { can = f() } catch (e) { return { ket_qua: 'khong_dat', ghi_chu: `hàm kiểm lỗi: ${e.message}` } }

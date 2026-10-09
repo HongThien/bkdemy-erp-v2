@@ -36251,3 +36251,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** "vào main tao có thấy mấy cái bản đồ adventure đâu".
 - **Nguyên nhân:** `phieuluu/coBat.ts` — hai cờ `phieuluu` (bản đồ phiêu lưu) và `hoctap` (khu Học tập 5 đảo) có `MAC_DINH = false`, chỉ BẬT ở bản build Preview/domain thử nghiệm; bản Production (hs.bkacademy.edu.vn) luôn tắt ⇒ HS thấy ô Tự luyện cũ, không có đảo, không có bản đồ. Công tắc tính năng (tinh_nang) KHÔNG liên quan — đó là lớp cờ khác, có từ trước.
 - **Sửa:** `MAC_DINH = { phieuluu: true, hoctap: true }` (đúng như ghi chú trong file "khi duyệt xong muốn bật cho mọi HS: đổi 1 dòng"). Rank vẫn tắt (`rankBat`). **Bài học:** muốn một tính năng game hiện ở Production phải kiểm CẢ 2 lớp: cờ `coBat.ts` (build) VÀ công tắc `tinh_nang` (DB).
+
+## 09/10 (tiếp) — 5T bước 2: lô 6B, 6C, 7B, 7C ghi thật 145 câu (T15T000000255–399) · luật CARD mới áp từ lô 6
+- Phát hiện giữa chừng: phiên khác ghi luật CEO 09/10 17:01 vào README §3 (Phần 1 nhiều bước = card **Bước k.**; chỉ tách ý bài Tính / Tìm x, bài lời văn giữ chung). Lô 5 soạn 16:58 nên chưa theo (đã ghi DB). Sửa brief k5T + nhắn 5 Sonnet đang chạy; 6B/6C/7B/7C đều đã theo card (máy kiểm đánh số Bước 1..n).
+- k5T-kiem.mjs: (1) câu lời văn giữ chung mà hàm viết theo ý ⇒ kiemDapSo tự gộp KIEM["<mã>a"], ["<mã>b"]…; (2) chuanDapAn bỏ \text{…} (đáp "543\ \text{cm}" trước bị chấm lệch). Bộ kiểm thêm lô 8 (108 hàm CĐ19–25) + lô 9 (68 hàm CĐ26–31), tổng 678.
+- Bảng "điền ô" sách bị đọc lộn khi tách (cột/hàng trộn) ⇒ không giao/không ghi, treo cần người: LT 18.2, 18.3, 20.1, 21.1 (×2), 27.1, 27.2. Sonnet có "dựng lại" 18.2/18.3 nghe hợp lý nhưng là đoán ⇒ bỏ (§1.5).
+- Sửa lỗi in đề bằng sua.noi_dung ⇒ cờ nghi kiem-doc (9 câu) — cố ý để người duyệt thấy đề đã khác sách.
+- Đã giao lô 8 (CĐ19–25) cho 3 Sonnet; lô 6A, 7A còn đang soạn.

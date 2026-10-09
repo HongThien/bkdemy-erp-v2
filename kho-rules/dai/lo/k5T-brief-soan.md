@@ -14,7 +14,23 @@ KHÔNG sửa tệp nào khác trong repo.
 
 **Đầu vào:** `<IN>` — mỗi phần tử một bài: `ma_bai`, `de_ca_bai` (đề nguyên văn sách), `cac_y` (các ý a) b)… nếu có), `y_da_lam` (ý đã có trong kho — BỎ QUA), `loi_giai_sach` (lời giải mẫu của sách nếu là VÍ DỤ — dùng làm chuẩn, nhưng sách có in sai: kiểm lại phép tính).
 
-**Tách ý (luật Đại):** các ý **độc lập** (mỗi ý tự giải được, vd "Tính: a) … b) …", "Tìm y: a) … b) …") ⇒ **mỗi ý một câu**, `ma_nguon` = mã bài + chữ ý (vd `LT 1.1a`), đề câu đó là câu dẫn + đúng ý đó, lời giải đủ 2 phần, không nhắc "ý a". Ý sau **dùng kết quả** ý trước ⇒ giữ MỘT câu, `ma_nguon` = mã bài, Phần 2 ghi a) b) c). Bài không có ý ⇒ `ma_nguon` = mã bài.
+**Tách ý (CEO 09/10, `kho-rules/README.md` §3):** CHỈ bài **"Tính / thực hiện phép tính"** và **"Tìm $y$"** có nhiều ý ⇒ **mỗi ý một câu**, `ma_nguon` = mã bài + chữ ý (vd `LT 1.1a`), đề câu đó là câu dẫn + đúng ý đó, lời giải đủ 2 phần, không nhắc "ý a". **Bài toán lời văn** có ý a) b) (kể cả các ý độc lập nhau) ⇒ **giữ MỘT câu**, `ma_nguon` = mã bài (dù `<IN>` đã tách sẵn trong `cac_y`), Phần 2 ghi a) b) c); bỏ qua ý nằm trong `y_da_lam`. Bài không có ý ⇒ `ma_nguon` = mã bài.
+
+**Phần 1 nhiều bước = CARD (CEO 09/10, README §3 — bắt buộc):**
+```
+**Phần 1. Hướng dẫn**
+
+**Mấu chốt:** <một câu — điều phải nhận ra thì mới giải được>
+
+**Bước 1.** <việc làm ở bước này + vì sao>
+
+**Bước 2.** <…>
+
+**Chú ý:** <bẫy, nếu có>
+
+**Phần 2. Trình bày**
+```
+Mỗi bước một đoạn riêng mở bằng `**Bước k.**` (k liên tục từ 1; nhiều dòng thì xuống dòng đơn, KHÔNG dòng trống trong một bước). `**Mấu chốt:**` trước chuỗi bước, `**Chú ý:**` / `Thử lại:` sau. Chỉ ≥ 2 bước mới đánh "Bước"; bài một bước ⇒ Mấu chốt + Chú ý. Bước là **bước nghĩ** (làm gì, vì sao), không chép lại dòng tính của Phần 2.
 
 **Luật trọng yếu (đã có trong k5T.md — nhắc lại vì hay vấp):**
 - Kiến thức tiểu học: không tự đặt ẩn rồi chuyển vế; không `⇒ ⇔ ∈ ≤ ≥` trong lời giải; không "ước/bội". Ngoại lệ sách cho: **phương pháp khử** được "Gọi giá … là $X$" và trừ hai dòng (k5T §1); **cấu tạo số "đề cho sẵn"** (vd $\overline{abcd}+\overline{abc}+…$) phân tích theo hàng có dấu nhân.
