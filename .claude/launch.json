@@ -213,6 +213,16 @@
       "port": 5260
     },
     {
+      "name": "toan",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/serve-games.mjs",
+        "5281",
+        "toan-site"
+      ],
+      "port": 5281
+    },
+    {
       "name": "nong-trai",
       "runtimeExecutable": "node",
       "runtimeArgs": [
