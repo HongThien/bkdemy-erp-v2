@@ -7,8 +7,9 @@
 > sửa những gì; các luật đó áp luôn cho 5T trừ chỗ ghi khác ở đây).
 >
 > **Đang ở đâu (09/10):** B1 đọc sách ✅ (công thức WMF ra LaTeX 1.031/1.031 — §5) · B2 tách bài ✅ (750 bài) · B3 rút khuôn từ
-> 82 VÍ DỤ ✅ (§1 cho phép, §2b) · B4: lô sách 1 (CĐ1–9) · lô 2 (CĐ10–17) · **lô 3 (CĐ18–24 hình học) gửi CEO** — cuối `k5T-mau-thu.md`.
-> Lô kế: CĐ25–31 + Ôn tập. **Hình đề:** 13 bài sách có hình hỏng (vùng tô thành khối đen) — chờ CEO chọn cách (lô 3 câu hỏi 1).
+> 82 VÍ DỤ ✅ (§1 cho phép, §2b) · B4 **đã đi xong MỘT LƯỢT qua các dạng: 4 lô, 101 câu** (lô 1 CĐ1–9 · lô 2 CĐ10–17 · lô 3 CĐ18–24
+> hình học · lô 4 CĐ25–31 + Ôn tập mục II–V, XIII) — cuối `k5T-mau-thu.md`. **Chờ CEO:** duyệt nội dung lô 1–4 + 4 câu hỏi mở (lô 3: hình hỏng,
+> khuôn tỉ số diện tích · lô 4: sơ đồ CĐ28, cách giải cấu tạo số). Lô cuối không bị sửa ⇒ **v1** ⇒ bước 2. **Hình đề:** 13 bài hình hỏng chờ chọn cách.
 > Bản đồ 5T mới phủ ~9/31 chuyên đề (§6) — bản đồ là việc của CEO. **Việc kế tiếp: §7.**
 
 ## 0. Nguyên tắc gốc
@@ -221,7 +222,7 @@ chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, kh
 
 | Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
-| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — lô 1 (CĐ1–9), lô 2 (CĐ10–17): CEO đã trả lời câu hỏi · **lô 3 (CĐ18–24, 23 câu) chờ CEO duyệt** · lô 4 = CĐ25–31 + Ôn tập |
+| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — lô 1 (CĐ1–9), lô 2 (CĐ10–17): CEO đã trả lời câu hỏi · lô 3 (CĐ18–24, 23 câu) · lô 4 (CĐ25–31 + Ôn tập, 26 câu) — **đã đi xong một lượt các dạng (101 câu), chờ CEO duyệt nội dung ⇒ v1** |
 | **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu có hình đề: dùng đường hình đề của 4T (`kho-rules/dai/hinh-de/dung-hinh-de.ps1` + manifest `5T.json`, cột `anh_de` ở cổng ghi) — khoảng 60 bài hình sách dùng được; 13 bài hình hỏng chờ CEO chọn cách | Sau v1 |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 

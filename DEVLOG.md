@@ -36201,3 +36201,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Công cụ mới: `scripts/kho/hinh-toado.mjs` (toạ độ TOÁN, dựng giao điểm/tiếp điểm/chân vuông góc ⇒ cùng bộ toạ độ vừa kiểm vừa vẽ; phần tử `phu` chỉ ở hình lời giải, nét đứt) + `scripts/kho/hinh-lo.mjs` (chạy lô .mjs: kiểm mọi cấu hình, vẽ -de/-lg PNG, ra .json sẵn ghi DB + bản xem md). Lô 1: 22/22 câu khớp, điểm "bất kì" thử 2–3 vị trí; câu 22b ($\widehat{ABD}=\widehat{DCB}$, vốn là góc tiếp tuyến–dây) đi vòng qua △ABD∽△AEB, máy xác nhận.
 - Soát hình bằng bảng ảnh: 3 hình phải đổi cấu hình (câu 1 D/F/M dính chùm, câu 14 E sát A, câu 17 ET qua sát tâm) — cấu hình vẫn đúng giả thiết.
 - Đích DB đề xuất `hgt_cau_hoi` dạng chờ `T309000000` (đã có trigger chặn duyệt dạng chờ) — vênh với khối 8 (phiên khác chọn `hinh_hoc_*` kho kiểu 1) ⇒ hỏi CEO (k9 §8 câu 0). Chưa ghi DB. `ghi-lo.mjs` còn cứng `dai_cau_hoi` (việc kỹ thuật k9 §7).
+
+## 09/10 (tiếp) — 5T lô sách 4 (CĐ25–31 + Ôn tập, 26 câu) ⇒ xong MỘT LƯỢT qua các dạng (4 lô, 101 câu)
+- CĐ25 vận tốc/thời điểm · CĐ26 ngược chiều/đuổi kịp/khác giờ · CĐ27 dòng nước, lá trôi · CĐ28 tỉ lệ nghịch v–t · CĐ29 v trung bình, xe lửa · CĐ30 giả thiết tạm · CĐ31 khử; Ôn tập lấy các mục 31 CĐ không có: II dãy số (đếm chữ số), III chia hết/chia có dư, IV cấu tạo số (giải bằng sơ đồ hiệu–tỉ, không đặt ẩn), V TBC bù trừ, XIII trường hợp xấu nhất + suy luận logic.
+- Đáp số 26/26 máy tính lại (chuyển động mô phỏng theo phút nguyên; "chắc chắn có đôi tất" vét mọi cách lấy; logic thử 7 ngày). 4 sơ đồ (26.12, 28.6, 28.9, ON 22). KaTeX 612 công thức 0 hỏng.
+- Hỏi CEO: sơ đồ cho CĐ28 (sách không vẽ) · cấu tạo số 5T: sơ đồ hay đặt chữ như 4T. Còn treo từ lô 3: 13 hình hỏng, khuôn tỉ số diện tích.

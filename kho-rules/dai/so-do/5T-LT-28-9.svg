@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 712 150" width="712" height="150" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="712" height="150" fill="#fff"/>
+<text x="276" y="37" text-anchor="end" fill="#0f172a">Thời gian đi với vận tốc 70 km/giờ:</text>
+<line x1="286" y1="32" x2="622" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="286" y1="25" x2="286" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="342" y1="25" x2="342" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="398" y1="25" x2="398" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="454" y1="25" x2="454" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="510" y1="25" x2="510" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="566" y1="25" x2="566" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="622" y1="25" x2="622" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="276" y="81" text-anchor="end" fill="#0f172a">Thời gian đi với vận tốc 60 km/giờ:</text>
+<line x1="286" y1="76" x2="678" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="286" y1="69" x2="286" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="342" y1="69" x2="342" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="398" y1="69" x2="398" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="454" y1="69" x2="454" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="510" y1="69" x2="510" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="566" y1="69" x2="566" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="622" y1="69" x2="622" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="678" y1="69" x2="678" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="482" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="622" y1="110" x2="678" y2="110" stroke="#0f172a" stroke-width="1"/>
+<line x1="622" y1="106" x2="622" y2="114" stroke="#0f172a" stroke-width="1"/>
+<line x1="678" y1="106" x2="678" y2="114" stroke="#0f172a" stroke-width="1"/>
+<text x="650" y="126" text-anchor="middle" font-size="12" fill="#0f172a">30 phút</text>
+</svg>
