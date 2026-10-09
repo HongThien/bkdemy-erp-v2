@@ -9,6 +9,12 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+- **⭐ DẠY HÌNH 3D — mô hình HTML cho bài tập thể tích K12 (Thùy mở 09/10 tối). ĐANG BÀN, CHƯA CODE. ĐỌC `spec-day-hinh-3d.md` trước khi làm.**
+  - **Đích:** bài tập ứng dụng tích phân tính thể tích vẽ trên bảng rất khó ⇒ mỗi bài 1 file HTML hình không gian, xoay được, thao tác được.
+  - **Đã làm:** trích NBV `12-18 … F. BAI TAP NANG CAO.docx` (công thức MathType ⇒ phải dùng `scripts/kho/mathtype-thu/doc-docx.mjs`, `docx-doc.mjs` đọc ra rỗng); Dạng 2 có 10 bài 3D thật (43–50, 52, 53), đã giải + kiểm 10/10 (`node docs/hinh-3d/kiem-dap-so.mjs`). Nguồn + hình chép vào `docs/hinh-3d/` (máy nhà không cần ổ E:). Bắt 2 lỗi nguồn: câu 52 M = 144 262 (nguồn 144 270), câu 53 Cách 1 sai ⇒ (4π/3 + √3/2)R².
+  - **Đề xuất mẫu:** Câu 43 cốc nghiêng (nước thành cái nêm, 240 cm³; hai hướng cắt = Cavalieri). Mẫu tròn xoay thứ hai: Câu 48 (áp bừa vành khăn ra đúng 0).
+  - **VIỆC TIẾP THEO (ở nhà):** ① Thùy trả lời spec Phần B: B1 ai dùng (TV/iPad) · B2 kèm lời giải theo thanh trượt? · B3 làm tay mẫu trước rồi mới rút khuôn · B4 đặt ở `toan-site/the-tich/`? · B5 duyệt Câu 43 · B6 đo/DB (đề xuất: chưa). ② Rồi mới dựng bản thử Câu 43 theo spec §D (three r128 như `toan-site/`), soi TV 1920×1080 + iPad.
+
 - **⭐⭐⭐ ĐỢT 1 MỞ APP HS + CÔNG TẮC TÍNH NĂNG — chốt 07/10 tối (Thùy: "mở từ từ từng phần, HS đỡ ngợp"). ĐỌC TRƯỚC khi thêm/ẩn bất kỳ ô nào trên app HS.**
   - **Công tắc = DB (mig `202610072101` + `…2102` + `…2118`, ĐÃ ÁP):** `tinh_nang` (`mo_tu` date: NULL=đóng, ngày ≤ hôm nay VN = mở mọi lớp) · `tinh_nang_lop` (ngoại lệ: mở thử 1 lớp / đóng riêng 1 lớp) · `tinh_nang_log` (trigger tự ghi). HS: `fn_hs_tinh_nang_mo()` → text[] (HS nhiều lớp thấy nếu BẤT KỲ lớp nào mở). Admin: màn **Admin → Gamification → "Mở tính năng app HS"** (`screens/gami/TinhNangScreen.tsx`, lá `tinh_nang`, founderOnly) hoặc `fn_tinh_nang_dat` / `fn_tinh_nang_lop_dat`. Đổi KHÔNG cần deploy; có hiệu lực khi HS về lại màn chính. Lỗi RPC ⇒ app mở hết.
   - **Client:** `lib/tinhnang.ts` (`MA_TINH_NANG_O` ô→mã) · `HocSinhApp.tsx` (`moTN`/`oMo`/`rankMo`, `anO` ẩn ô; HomeCap1 có prop `chiHien`) · ô đóng = **ẨN HẲN** (không ô khoá). KHÔNG gate: bài trên lớp/ET/BTVN/bổ trợ/kiểm tra lại/Học từ đầu (việc thầy cô giao).

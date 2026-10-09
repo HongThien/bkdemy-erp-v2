@@ -311,6 +311,9 @@
 - **`spec-toan-du-hanh.md` — ĐỌC trước khi sửa/làm bài Toán dạng du hành** (thư mục `toan-site/`, Thùy chốt 09/10): 3D chỉ ở đoạn bay, hình phẳng
   nằm trên tấm bảng, máy quay VUÔNG GÓC tấm bảng lúc HS so hình · tam giác lệch hẳn (cấm cân/gần cân) · ký hiệu 3 mức GV đổi được · học = cả lớp
   nhìn TV, iPad chỉ cho mini game đội · chưa đo, site riêng toan.bkacademy.edu.vn. Bài đã có: Tam giác bằng nhau (bản thử 1 — phần 1).
+- **`spec-day-hinh-3d.md` — ĐỌC trước khi dựng mô hình 3D cho BÀI TẬP Toán** (khối tròn xoay / cắt lát S(x) / thiết diện; Thùy mở 09/10):
+  mỗi bài = 1 file HTML xoay + thao tác được · KHÁC khuôn du hành (không trạm/bay) · đang BÀN, chưa code — câu mở B1–B6 · kho 10 bài thể tích K12
+  (NBV 12-18 F) đã giải + kiểm, nguồn chép ở `docs/hinh-3d/` · bài mẫu đề xuất: Câu 43 cốc nghiêng.
 - **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):
