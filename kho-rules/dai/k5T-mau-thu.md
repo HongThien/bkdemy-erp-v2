@@ -1630,7 +1630,7 @@ Khối lượng hạt khô thu được là: $12:80\%=15$ (kg)
 
 **Phần 1. Hướng dẫn**
 
-Coi chiều dài, chiều rộng, diện tích ban đầu đều là $100\%$. Chiều dài mới $125\%$, chiều rộng mới $75\%$; diện tích $=$ dài $\times$ rộng nên diện tích mới $=125\%\times 75\%$ diện tích cũ.
+Coi chiều dài, chiều rộng, diện tích ban đầu đều là $100\%$. Chiều dài mới $125\%$, chiều rộng mới $75\%$; diện tích $=$ dài $\times$ rộng nên diện tích mới $=125\%\times 75\%$ diện tích cũ. Nhân hai tỉ số phần trăm thì đổi ra số thập phân rồi nhân: $1,25\times 0,75$.
 
 Chú ý bẫy: "tăng $25\%$ rồi giảm $25\%$ thì diện tích không đổi" là **sai** — phần trăm nhân với nhau, không bù trừ.
 
@@ -1642,7 +1642,7 @@ Chiều dài mới bằng: $100\%+25\%=125\%$ (chiều dài cũ)
 
 Chiều rộng mới bằng: $100\%-25\%=75\%$ (chiều rộng cũ)
 
-Diện tích mới bằng: $125\%\times 75\%=93,75\%$ (diện tích cũ)
+Diện tích mới bằng: $125\%\times 75\%=1,25\times 0,75=0,9375=93,75\%$ (diện tích cũ)
 
 Diện tích hình chữ nhật giảm đi: $100\%-93,75\%=6,25\%$
 
@@ -1698,9 +1698,9 @@ Tiền vốn của $\dfrac{3}{8}$ số hàng là: $100\%\times\dfrac{3}{8}=37,5\
 
 Tiền vốn của số hàng còn lại là: $100\%-37,5\%=62,5\%$
 
-Tiền bán $\dfrac{3}{8}$ số hàng là: $37,5\%\times\left(100\%+40\%\right)=52,5\%$
+Tiền bán $\dfrac{3}{8}$ số hàng là: $37,5\%\times\left(100\%+40\%\right)=0,375\times 1,4=0,525=52,5\%$
 
-Tiền bán số hàng còn lại là: $62,5\%\times\left(100\%-10\%\right)=56,25\%$
+Tiền bán số hàng còn lại là: $62,5\%\times\left(100\%-10\%\right)=0,625\times 0,9=0,5625=56,25\%$
 
 Tổng số tiền bán hàng là: $52,5\%+56,25\%=108,75\%$
 

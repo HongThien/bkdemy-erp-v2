@@ -36184,3 +36184,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Chọn 26 câu phủ dạng CĐ10–17 (STP, đơn vị đo, %, dung dịch, % khác). Đáp số máy tính lại từ đề (đơn vị nguyên để tránh sai số thực) 26/26; máy bắt 1 chỗ T nhẩm sai GIÁ TRỊ KÌ VỌNG (LT 11.7 nghĩ 4,8 tấn, đúng 2,4) — bài học: viết bộ kiểm trước khi nhẩm đáp số, đừng điền đáp số kì vọng bằng trí nhớ.
 - so-do-doan-thang.mjs: soDau đọc "18,54" (trước ra 18 ⇒ từ chối vẽ đúng sơ đồ đúng) + so tổng/hiệu với dung sai 1e-9. Vẽ lại 135 sơ đồ cũ (4T + 5T) so từng byte: 0 khác. Lại dính mất `\` khi vá qua heredoc node ⇒ dùng Edit.
 - Lô 2 hỏi CEO: dòng G §2b (×a% hay ×a:100) · nhân hai tỉ số phần trăm viết thẳng hay đổi STP.
+
+## 09/10 (tiếp) — CEO chốt lô sách 2: "×a%" (kiểu 1) + nhân hai % phải viết thêm bước đổi số thập phân
+- Ghi k5T §1 + §2b dòng G + §9; sửa lô 2 câu 24, 26 (1,25×0,75 · 0,375×1,4 · 0,625×0,9).
+- **Tự phát hiện:** các dòng chèn bằng `node - <<EOF` hôm 08/10 bị mất dấu `\` — k5T §2b dòng D, F, G có TAB thay cho `\t` của `\times`, dòng G có `%` trần (KaTeX coi là comment ⇒ công thức vỡ). Viết scratchpad/quet-hong.mjs quét ký tự điều khiển + lệnh LaTeX trần + `%` trần; vá 6 chỗ (k5T) + 4 chỗ `$dfrac` trần có sẵn từ trước ở k4T §5. Từ giờ: KHÔNG chèn nội dung có `\` qua heredoc — dùng Edit/Write.

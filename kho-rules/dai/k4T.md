@@ -177,7 +177,7 @@ Luật gán:
 | `T14T13` TBC (chỉ "của một nhóm") | hơn/kém TBC · bằng TBC · TBC dãy cách đều · thêm số thứ n đổi TBC | LT 13.2–13.20 |
 | `T14T14` Rút về đơn vị (chỉ "một đại lượng" — gồm cả dạng 1 và dạng 2 "tìm số phần", CEO 07/10) | hai đại lượng ("dép và giày") · năng suất thay đổi (14.14–14.20) | LT 14.4–14.20 |
 | `T14T15` Thống kê (chỉ "đại lượng cơ bản") | xác suất / liệt kê sự kiện · "bốc ít nhất bao nhiêu để chắc chắn" | LT 15.11–15.15 |
-| `T14T17` So sánh | **phần hơn** (sách tách phần hơn và phần bù). Tra kho 07/10: `170203`/`170204` cùng TÊN "phần bù" nhưng câu thật khác nhau — `170203` = phần bù cùng tử 1 ($dfrac{33}{34}$ và $dfrac{34}{35}$), `170204` = phần bù khác tử, phải so tiếp ($dfrac{4}{5}$ và $dfrac{7}{9}$) ⇒ nên đổi tên `170204`, và phần hơn vẫn thiếu · viết phân số nằm giữa hai phân số | LT 17.9–17.10, 17.15–17.16 |
+| `T14T17` So sánh | **phần hơn** (sách tách phần hơn và phần bù). Tra kho 07/10: `170203`/`170204` cùng TÊN "phần bù" nhưng câu thật khác nhau — `170203` = phần bù cùng tử 1 ($\dfrac{33}{34}$ và $\dfrac{34}{35}$), `170204` = phần bù khác tử, phải so tiếp ($\dfrac{4}{5}$ và $\dfrac{7}{9}$) ⇒ nên đổi tên `170204`, và phần hơn vẫn thiếu · viết phân số nằm giữa hai phân số | LT 17.9–17.10, 17.15–17.16 |
 | `T14T16` Phân số | tìm $y$ từ hai phân số bằng nhau · phân số bằng nhau / tối giản (nhận biết) · lập phân số theo điều kiện | LT 16.1–16.4, 16.11–16.15 |
 | CĐ 23 "Bài toán cơ bản về phân số" | không có chủ đề riêng; câu rơi về `T14T20`/`T14T21`/`T14T22` theo phương pháp | LT 23.1–23.15 |
 | `T14T23` Tính ngược (chỉ "chuỗi phép tính") | chuyển qua lại giữa 2–3 người · bảng (VD 24.3). *(Tính ngược có phân số **thuộc** `230101` — tiền lệ lô 1 câu 13 LT 24.12 CEO đã duyệt)* | LT 24.4–24.17 |
