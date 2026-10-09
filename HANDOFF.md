@@ -947,9 +947,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   #28–#34 trong `DON-HANG-SKIN-HS.md` (Thùy dán vào đúng context đang vẽ). Code theo §9: ① `styles/town.ts` (SÁNG, Baloo 2) với hình đã có, ô thiếu
   dùng tạm có ghi chú ② migration nới CHECK skin thêm `town` ③ nhân vật/linh vật lên Home (cột mới `hs_giao_dien.nhan_vat`, chung mọi style)
   ④ lời chào + Cấp/XP/xu + bong bóng thoại — chặn bởi công thức cấp ở client `src/gami/level.js` phải xuống Postgres trước.
-- **Việc khác còn treo:** Đơn 3 v3 Lo-fi (chưa gửi) · cấp 1 có chuyển HomeHS912 không · tầng 2 (màu nhấn, widget). Khối vuông: ĐÃ DỰNG 03/10
-  (`design/DON-HANG-STYLE-KHOI.md`, `spec-giao-dien-hs.md` §10) — tổng kết phiên 01–03/10 (kit gami · ô Nhiệm vụ/Rank · Khối vuông · bẫy đã gặp):
-  `docs/phien-2026-10-01-03-app-hs-gami-khoi-vuong.md`.
+- **Việc khác còn treo:** Đơn 3 v3 Lo-fi / Đơn 2 Khối vuông (chưa gửi) · cấp 1 có chuyển HomeHS912 không · tầng 2 (màu nhấn, widget).
 - **Nguồn hình RPG:** `design/bk-ui-src/Nền app HS cấp 3_*.png` (ảnh 37 = nền dọc Lâu đài) · ảnh chuẩn `design/handoff/hs-skin-rpg-v1/reference/`.
 - **Verify không có tài khoản HS:** `hs.html?xem=gami` (đã commit, dữ liệu giả): `man=home&tt=1..3` (Home — mở ở 375 / 820×1180 / 1180×820 / 1440) ·
   `man=the_gioi&tt=1..13` · `man=nhiem_vu` · `album` · `rank` · `ho_so`. Xem từ worktree: launch.json có `dev-hs-thegioi` (npm --prefix worktree, cổng 5191).
