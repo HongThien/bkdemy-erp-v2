@@ -1,0 +1,75 @@
+{
+ "VD 5.1": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi học sinh trồng được số cây như nhau, nên số cây trồng được **tỉ lệ thuận** với số học sinh (nhiều học sinh hơn thì trồng được nhiều cây hơn).\n\nĐề cho \"cứ $5$ học sinh thì trồng được $20$ cây\" rồi hỏi số học sinh khác. Cách chắc chắn nhất là **rút về đơn vị**: tìm xem $1$ học sinh trồng được bao nhiêu cây, rồi nhân với số học sinh cần hỏi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ học sinh trồng được số cây là: $20:5=4$ (cây)\n\n$45$ học sinh trồng được số cây là: $4\\times 45=180$ (cây)\n\nĐáp số: $180$ cây"
+ },
+ "LT 6.9": {
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi thêm 8 vào số thứ nhất và bớt 5 ở số thứ hai",
+   "gia_tri_phan": 36,
+   "hang": [
+    {
+     "nhan": "Số thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 1,
+     "them": "48 đơn vị"
+    }
+   ],
+   "tong": "120",
+   "dau_hoi": [
+    "Số thứ hai",
+    "Số thứ nhất"
+   ]
+  }
+ },
+ "LT 6.13": {
+  "so_do_mo_ta": {
+   "gia_tri_phan": 78,
+   "hang": [
+    {
+     "nhan": "Thùng thứ nhất",
+     "phan": 1
+    },
+    {
+     "nhan": "Thùng thứ hai",
+     "phan": 1,
+     "bot": "16 lít"
+    },
+    {
+     "nhan": "Thùng thứ ba",
+     "phan": 1,
+     "them": "22 lít"
+    }
+   ],
+   "tong": "240 lít",
+   "dau_hoi": [
+    "Thùng thứ nhất",
+    "Thùng thứ hai",
+    "Thùng thứ ba"
+   ]
+  }
+ },
+ "LT 6.24": {
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi chuyển 15 kg sang kho thứ nhất",
+   "gia_tri_phan": 35,
+   "hang": [
+    {
+     "nhan": "Kho thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "Kho thứ nhất",
+     "phan": 3
+    }
+   ],
+   "hieu": "70 kg",
+   "dau_hoi": [
+    "Kho thứ hai",
+    "Kho thứ nhất"
+   ]
+  }
+ }
+}

@@ -36229,3 +36229,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - hinh-de/5T.json manifest 7 hình. kiem-hinh-b: Sonnet xem 29 ảnh sơ đồ (PNG xuất bằng Edge) ⇒ 29/29 đúng; ghi chú LT 6.4 đoạn 6 kg ~3px (đúng tỉ lệ nhưng khó thấy).
 - ghi-lo.mjs: dòng báo cáo đếm cứng T14T% ⇒ lô 5T báo "từ sách này: 0"; sửa đếm theo khối của lô (chỉ là báo cáo, dữ liệu ghi không ảnh hưởng).
 - Ghi: 98 câu T15T000000014–111, ten_de_goc "Toán 5 TLTK · <mã>", kiem_may khop 98, 28 SVG + 7 PNG hình đề lên kho-anh (tải lại HTTP 200). 3 trùng không chèn. Kiểm DB read-only sau ghi: khớp.
+
+## 09/10 (tiếp) — 5T bước 2: LÔ 5 (CĐ1–6) ghi thật 143 câu, T15T000000112–254
+- dau-vao-soan toàn sách: 562 bài → bỏ 25 VD không có "Bài làm" (lời giải lẫn trong đề) ⇒ 537 bài ≈ 705 câu, chia lô theo cụm chuyên đề (5: CĐ1–6 … 10: Ôn tập, 11: bài có hình).
+- Bộ kiểm viết TỪ ĐỀ trước khi mở bản soạn, mỗi lô một tệp gộp vào k5T-kiem.mjs: lo5 (144 hàm, CĐ1–6), lo6 (137, CĐ7–12), lo7 (120, CĐ13–18; LT 18.2/18.3 không có hàm vì bảng sách đọc lộn) — tổng 502.
+- 3 Sonnet soạn song song (A CĐ1–2 63 câu · B CĐ3–4 36 · C CĐ5–6 44). Đáp số 143/143 khớp; lệch duy nhất là cách viết: 19 câu dãy phân số thiếu "A=" (quy ước lô thử) ⇒ sửa trong .sua.json; LT 1.5e/f hàm kiểm nhận thêm dạng "y=7;y=8;y=9".
+- Opus đọc hết 143 lời giải: chất lượng đều, đúng §2b. Sửa 4: LT 4.10b `\text{thừa số cuối}` trong công thức ⇒ nói bằng lời · VD 5.1 câu ngoài lề nhắc cách khác · LT 1.2a "(cách ưu tiên của sách)" sai nguồn · LT 1.5d sách in `5xy+1`.
+- lo-tu-soan.mjs: bản sửa nhận thêm `noi_dung` (sửa lỗi in của đề; noi_dung_sach giữ gốc) ⇒ kiem-doc báo LỆCH SÁCH, câu mang cờ `nghi` — cố ý, người duyệt thấy chỗ đã sửa đề.
+- Sơ đồ: 30 ảnh xuất PNG (script nháp xuat-so-do-lo.mjs), số liệu đúng cả 30; 3 sửa trình bày (nhãn hiệu lặp lại 6.9/6.13, tiêu đề dài bị cắt 6.24). Thử đảo hàng 6.22 cho đẹp ⇒ máy từ chối (hiệu luôn tính giữa HAI HÀNG ĐẦU) ⇒ giữ nguyên. Opus ký kiem-hinh-b (người soạn là Sonnet).
+- Brief k5T-brief-soan.md thêm mục "Bài học từ lô 5". Đã giao lô 6 (CĐ7–12) cho 3 Sonnet.

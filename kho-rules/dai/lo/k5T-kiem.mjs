@@ -143,6 +143,12 @@ export const KIEM = {
   },
 }
 
+// các lô giải hàng loạt: mỗi lô một tệp hàm kiểm (viết TỪ ĐỀ trước khi mở bản soạn), gộp vào KIEM
+import { LO5 } from './k5T-kiem-lo5.mjs'
+import { LO6 } from './k5T-kiem-lo6.mjs'
+import { LO7 } from './k5T-kiem-lo7.mjs'
+for (const lo of [LO5, LO6, LO7]) for (const [k, f] of Object.entries(lo)) { if (KIEM[k]) throw new Error(`hàm kiểm trùng mã ${k}`); KIEM[k] = f }
+
 /** Chuẩn hoá để so giá trị máy tính với chuỗi đáp án: bỏ $, khoảng trắng, \dfrac{a}{b} → a/b, \  ; về dạng thường. */
 export const chuanDapAn = (s) => String(s).replace(/\\d?frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\$|\\ |\\,|\s+/g, '').replace(/\\left|\\right/g, '').toLowerCase()
 
@@ -153,8 +159,11 @@ export function kiemDapSo(maNguon, dapAn) {
   let can
   try { can = f() } catch (e) { return { ket_qua: 'khong_dat', ghi_chu: `hàm kiểm lỗi: ${e.message}` } }
   const da = chuanDapAn(dapAn)
-  const thieu = can.filter((v) => !da.includes(chuanDapAn(v)))
+  // một giá trị có thể là MẢNG các cách viết tương đương (hỗn số | phân số | số thập phân; "a<b" | "b>a") — có một cách khớp là đạt
+  const co = (v) => (Array.isArray(v) ? v.some((x) => da.includes(chuanDapAn(x))) : da.includes(chuanDapAn(v)))
+  const hien = (v) => (Array.isArray(v) ? v.join(' | ') : v)
+  const thieu = can.filter((v) => !co(v))
   return thieu.length
-    ? { ket_qua: 'khong_dat', ghi_chu: `máy tính ra ${can.join(' ; ')} — đáp án thiếu/khác: ${thieu.join(' ; ')}` }
-    : { ket_qua: 'dat', ghi_chu: `máy tự tính lại từ đề: ${can.join(' ; ')}` }
+    ? { ket_qua: 'khong_dat', ghi_chu: `máy tính ra ${can.map(hien).join(' ; ')} — đáp án thiếu/khác: ${thieu.map(hien).join(' ; ')}` }
+    : { ket_qua: 'dat', ghi_chu: `máy tự tính lại từ đề: ${can.map(hien).join(' ; ')}` }
 }

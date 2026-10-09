@@ -1,0 +1,8 @@
+{
+ "LT 1.2a": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: bài có hỗn số, ta **tách phần nguyên và phần phân số** để tính riêng (cách đã chốt cho cộng, trừ hỗn số). Phần nguyên chỉ có $1$. Phần phân số là $\\dfrac{3}{5}-\\dfrac{1}{3}+\\dfrac{11}{15}$, cần quy đồng về mẫu chung $15$.\n\nĐổi $\\dfrac{3}{5}=\\dfrac{9}{15}$ (nhân với $3$) và $\\dfrac{1}{3}=\\dfrac{5}{15}$ (nhân với $5$). Khi đó $9-5+11=15$ nên phần phân số được $\\dfrac{15}{15}=1$, cộng với phần nguyên $1$ ra $2$.\n\n**Phần 2. Trình bày**\n\n$1\\dfrac{3}{5}-\\dfrac{1}{3}+\\dfrac{11}{15}$\n\n$=1\\dfrac{9}{15}-\\dfrac{5}{15}+\\dfrac{11}{15}$\n\n$=1+\\dfrac{9-5+11}{15}$\n\n$=1+\\dfrac{15}{15}$\n\n$=1+1$\n\n$=2$"
+ },
+ "LT 1.5d": {
+  "noi_dung": "Tìm số tự nhiên $y$, biết:\n$\\dfrac{5\\times y+1}{42}=\\dfrac{12}{14}$"
+ }
+}

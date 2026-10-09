@@ -248,6 +248,7 @@ Danh tính câu: `ten_de_goc = "Toán 5 TLTK · <mã bài>"` (mã của `tach-ba
 | Lô | Khu sách | Câu ghi | Ghi chú |
 |---|---|---|---|
 | S1–S4 (lô thử, 09/10) | 101 câu rải CĐ1–31 + Ôn | **98** (`T15T000000014`–`111`) | Opus soạn, CEO duyệt; 3 trùng câu kho cũ không chèn (LT 10.12 ≈ T15T020206041 · LT 13.41 ≈ T15T020206066 · LT 1.2d ≡ T105030203013); 98 `khop`; 28 sơ đồ (Sonnet ký `kiem-hinh-b` 29/29) · 7 hình đề |
+| 5 (09/10) | CĐ1–6 (A: 1–2 · B: 3–4 · C: 5–6) | **143** (`T15T000000112`–`254`) | Sonnet soạn 3 nhóm, Opus soát. Đáp số 143/143 khớp bộ kiểm `lo/k5T-kiem-lo5.mjs` (19 câu dãy CĐ4 chỉ thiếu "A=" trong `dap_an` ⇒ sửa). Sửa: LT 4.10b bỏ chữ trong công thức · VD 5.1 bỏ câu ngoài lề · 3 sơ đồ trình bày (6.9, 6.13 nhãn hiệu lặp; 6.24 tiêu đề bị cắt). **LT 1.5d mang cờ `nghi`**: sách in `5xy+1`, đề ghi kho đã sửa thành `5\times y+1` (sua `noi_dung`, mới thêm vào `lo-tu-soan`) ⇒ `kiem-doc` báo lệch sách — đúng ý, chờ người xem. 30 sơ đồ, Opus ký `kiem-hinh-b`. Không soạn LT 1.2b/c/d, 1.3e/h, 4.8a (trùng câu kho, `dau-vao-soan` lọc) |
 
 **Lệnh một lô (khuôn 5T):** lô thử: `soan-tu-mau-thu.mjs` (md → bản soạn, đáp án tay `lo/k5T-dap-an-tay.json`) · lô hàng loạt: `dau-vao-soan` → Sonnet soạn
 ⇒ rồi chung: `lo-tu-soan.mjs <soan> <bai.json> --khoi 5T --lo N --so-do-dir kho-rules/dai/so-do --hinh-de kho-rules/dai/hinh-de/5T.json` →

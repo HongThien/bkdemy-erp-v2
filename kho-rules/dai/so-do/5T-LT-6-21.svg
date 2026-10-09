@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 624 194" width="624" height="194" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="624" height="194" fill="#fff"/>
+<text x="100" y="37" text-anchor="end" fill="#0f172a">Tuổi con:</text>
+<line x1="110" y1="32" x2="178.6" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="25" x2="110" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="144.3" y1="25" x2="144.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="178.6" y1="25" x2="178.6" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="144.3" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="100" y="81" text-anchor="end" fill="#0f172a">Tuổi bố:</text>
+<line x1="110" y1="76" x2="384.3" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="69" x2="110" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="144.3" y1="69" x2="144.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="178.6" y1="69" x2="178.6" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="212.9" y1="69" x2="212.9" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="247.1" y1="69" x2="247.1" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="281.4" y1="69" x2="281.4" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="315.7" y1="69" x2="315.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="69" x2="350" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="384.3" y1="69" x2="384.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="247.1" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<text x="100" y="125" text-anchor="end" fill="#0f172a">Tuổi ông:</text>
+<line x1="110" y1="120" x2="590" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="113" x2="110" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="144.3" y1="113" x2="144.3" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="178.6" y1="113" x2="178.6" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="212.9" y1="113" x2="212.9" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="247.1" y1="113" x2="247.1" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="281.4" y1="113" x2="281.4" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="315.7" y1="113" x2="315.7" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="350" y1="113" x2="350" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="384.3" y1="113" x2="384.3" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="418.6" y1="113" x2="418.6" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="452.9" y1="113" x2="452.9" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="487.1" y1="113" x2="487.1" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="521.4" y1="113" x2="521.4" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="555.7" y1="113" x2="555.7" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="590" y1="113" x2="590" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="350" y="140" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="178.6" y1="154" x2="384.3" y2="154" stroke="#0f172a" stroke-width="1"/>
+<line x1="178.6" y1="150" x2="178.6" y2="158" stroke="#0f172a" stroke-width="1"/>
+<line x1="384.3" y1="150" x2="384.3" y2="158" stroke="#0f172a" stroke-width="1"/>
+<text x="281.5" y="170" text-anchor="middle" font-size="12" fill="#0f172a">30 tuổi</text>
+</svg>

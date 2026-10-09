@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 484 156" width="484" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="484" height="156" fill="#fff"/>
+<text x="140" y="37" text-anchor="end" fill="#0f172a">Trung bình cộng:</text>
+<line x1="150" y1="32" x2="283.9" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="150" y1="25" x2="150" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="283.9" y1="25" x2="283.9" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="217" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="140" y="81" text-anchor="end" fill="#0f172a">Lớp 5C:</text>
+<line x1="150" y1="76" x2="251.8" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="150" y1="69" x2="150" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="283.9" y1="69" x2="283.9" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="251.8" y1="76" x2="283.9" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="251.8" y1="69" x2="251.8" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="267.9" y="66" text-anchor="middle" font-size="12" fill="#b45309">6 cây</text>
+<text x="140" y="125" text-anchor="end" fill="#0f172a">Hai lớp 5A và 5B:</text>
+<line x1="150" y1="120" x2="417.9" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="150" y1="113" x2="150" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="283.9" y1="113" x2="283.9" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="417.9" y1="113" x2="417.9" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="417.9" y1="120" x2="450" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="450" y1="113" x2="450" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="433.9" y="110" text-anchor="middle" font-size="12" fill="#b45309">6 cây</text>
+</svg>

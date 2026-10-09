@@ -1,0 +1,46 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "kiem-hinh-opus-5T-lo5A-20261009",
+ "cau": {
+  "VD 2.3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.16": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.17": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.18": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.19": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.21": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.22": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.23": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.24": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  },
+  "LT 2.26": {
+   "hinh_dung": true,
+   "hinh_ghi": "Opus (người soát, khác model soạn Sonnet) xem ảnh: đúng đại lượng từng hàng, đúng số phần, đúng nhãn tổng/hiệu/thêm-bớt theo đề"
+  }
+ }
+}

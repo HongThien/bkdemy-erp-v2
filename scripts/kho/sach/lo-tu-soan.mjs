@@ -5,7 +5,7 @@
 //
 // soan.json = [{ ma_nguon, gop_y, dap_an, loi_giai, so_do_mo_ta?: { …mô tả JSON của so-do-doan-thang.mjs… }, ghi_chu_nghi? }]
 //   so_do_mo_ta ⇒ ghi ra <--so-do-dir>/<khoi>-<mã>.json (máy vẽ + tự kiểm lúc ghi-lo); lời giải phải có dòng "Ta có sơ đồ:".
-// --sua = bản SỬA của người soát: { "<ma_nguon>": { dap_an?, loi_giai?, so_do?, bo?: "lý do không ghi" } } — đè lên bản soạn,
+// --sua = bản SỬA của người soát: { "<ma_nguon>": { dap_an?, loi_giai?, so_do?, noi_dung? (sửa lỗi in của đề; noi_dung_sach giữ bản gốc), bo?: "lý do không ghi" } } — đè lên bản soạn,
 //         để vết sửa nằm riêng (đo được tỉ lệ người soát phải sửa — thước đo của trạm soạn).
 // ĐỀ luôn lấy nguyên văn sách theo mã (không lấy từ bản soạn). Câu trong lô mà sách không có mã đó ⇒ dừng, báo.
 // --hinh-de <kho-rules/dai/hinh-de/<khối>.json> = manifest HÌNH ĐỀ (dung-hinh-de.ps1): bài có hình trong sách ⇒ câu mang anh_de_tep + hinh_de_ma
@@ -93,7 +93,7 @@ export function dungLoSoan(soan, bai, khoi, lo, sua = {}, soDoDir = null, hinhDe
     }
     const nhieu = /;|\bvà\b|,/.test(String(s.dap_an).replace(/\$[^$]*\$/g, 'x')) && !/^\$[^$]*\$$/.test(s.dap_an)
     cau.push({ ma_nguon: s.ma_nguon, lo, khoi, dang_chinh: maDangCho('dai', khoi), loai_cau: nhieu ? 'tu_luan' : 'tra_loi_ngan',
-      noi_dung: chuanDinhDang(goc.noi_dung), noi_dung_sach: goc.noi_dung, dap_an: String(s.dap_an).trim(), loi_giai: s.loi_giai, so_do: s.so_do ?? null, anh_sach: goc.anh, ...hinh })
+      noi_dung: chuanDinhDang(s.noi_dung ?? goc.noi_dung), noi_dung_sach: goc.noi_dung, dap_an: String(s.dap_an).trim(), loi_giai: s.loi_giai, so_do: s.so_do ?? null, anh_sach: goc.anh, ...hinh })
   }
   // mọi công thức phải RENDER được bằng KaTeX (app dùng KaTeX) — lỗi ⇒ dừng lô, không để chữ đỏ ra kho (đã dính \timesh ở LT 4.2d)
   for (const c of cau) for (const k of ['noi_dung', 'loi_giai', 'dap_an']) {
