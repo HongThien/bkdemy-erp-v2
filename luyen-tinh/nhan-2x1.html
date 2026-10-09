@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Luyện nhân 2×1</title>
+<style>
+  :root{
+    --bg:#f3f6fb; --card:#fff; --ink:#1d2433; --muted:#6b7385; --line:#e2e7f0;
+    --pri:#3b6cf6; --pri-ink:#fff; --ok:#1f9d55; --ok-bg:#e7f7ee; --bad:#d93a2f; --bad-bg:#fdecea;
+    --key:#eef2f8; --key-ink:#1d2433;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12151c; --card:#1b2029; --ink:#e8ecf3; --muted:#9aa3b5; --line:#2c3340;
+      --pri:#5b86ff; --ok:#3ccf7e; --ok-bg:#16301f; --bad:#ff6b5f; --bad-bg:#3a1b19;
+      --key:#262d39; --key-ink:#e8ecf3;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg); color:var(--ink); min-height:100vh;
+    display:flex; justify-content:center; padding:16px;
+    -webkit-tap-highlight-color:transparent; user-select:none;
+  }
+  .app{width:100%; max-width:520px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; box-shadow:0 6px 24px rgba(20,30,60,.06)}
+  h1{font-size:22px; margin:0 0 4px}
+  .sub{color:var(--muted); margin:0 0 18px; font-size:14px}
+  .row{display:flex; align-items:center; gap:8px; margin:12px 0; flex-wrap:wrap}
+  .row label{min-width:150px; font-weight:600}
+  input[type=number]{
+    width:72px; padding:8px 10px; font-size:16px; border:1px solid var(--line); border-radius:10px;
+    background:var(--bg); color:var(--ink); text-align:center;
+  }
+  .chips{display:flex; gap:8px; flex-wrap:wrap}
+  .chip{
+    padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--bg);
+    color:var(--ink); font-size:15px; cursor:pointer;
+  }
+  .chip.on{background:var(--pri); color:var(--pri-ink); border-color:var(--pri)}
+  .btn{
+    border:0; border-radius:12px; padding:14px 18px; font-size:17px; font-weight:700; cursor:pointer;
+    background:var(--pri); color:var(--pri-ink); width:100%;
+  }
+  .btn.ghost{background:transparent; color:var(--pri); border:1px solid var(--line)}
+  .btn:active{transform:scale(.98)}
+  .err{color:var(--bad); font-size:14px; min-height:20px; margin:6px 0}
+  .hidden{display:none !important}
+
+  /* Màn làm bài */
+  .top{display:flex; justify-content:space-between; align-items:center; font-size:15px; color:var(--muted); gap:8px}
+  .top b{color:var(--ink)}
+  .stats{display:flex; gap:14px}
+  .bar{height:8px; background:var(--key); border-radius:99px; overflow:hidden; margin:10px 0 18px}
+  .bar > i{display:block; height:100%; width:0; background:var(--pri); transition:width .25s}
+  .q{
+    display:flex; justify-content:center; align-items:center; gap:12px;
+    font-size:clamp(40px,12vw,64px); font-weight:800; margin:10px 0 6px; font-variant-numeric:tabular-nums;
+  }
+  .ans{
+    min-width:2.6em; padding:2px 12px; border-radius:14px; border:3px dashed var(--line);
+    text-align:center; color:var(--pri);
+  }
+  .ans.empty{color:var(--muted)}
+  .ans.ok{border-style:solid; border-color:var(--ok); color:var(--ok); background:var(--ok-bg)}
+  .ans.bad{border-style:solid; border-color:var(--bad); color:var(--bad); background:var(--bad-bg)}
+  .fb{min-height:74px; text-align:center; font-size:16px; padding:6px 4px}
+  .fb .t{font-weight:800; font-size:19px}
+  .fb.ok .t{color:var(--ok)}
+  .fb.bad .t{color:var(--bad)}
+  .fb .hint{color:var(--muted); margin-top:4px; font-size:15px}
+  .pad{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px}
+  .pad button{
+    border:0; border-radius:14px; background:var(--key); color:var(--key-ink);
+    font-size:26px; font-weight:700; padding:14px 0; cursor:pointer;
+  }
+  .pad button:active{filter:brightness(.92)}
+  .pad .go{background:var(--pri); color:var(--pri-ink)}
+  .foot{display:flex; gap:10px; margin-top:14px}
+  .foot .btn{padding:10px; font-size:15px}
+
+  /* Màn kết quả */
+  .big{font-size:56px; font-weight:800; text-align:center; margin:8px 0 0}
+  .center{text-align:center}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0}
+  .tile{background:var(--bg); border-radius:12px; padding:10px; text-align:center}
+  .tile .v{font-size:20px; font-weight:800}
+  .tile .k{font-size:12px; color:var(--muted)}
+  .wl{list-style:none; padding:0; margin:8px 0 16px}
+  .wl li{padding:8px 10px; border-radius:10px; background:var(--bad-bg); margin:6px 0; font-size:15px}
+  .wl li s{color:var(--bad)}
+  .stack{display:grid; gap:10px}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== CÀI ĐẶT ===== -->
+  <section id="setup" class="card">
+    <h1>Luyện nhân 2 chữ số × 1 chữ số</h1>
+    <p class="sub">Phép tính đổi ngẫu nhiên mỗi lượt. Gõ đáp số rồi bấm ✓ (hoặc Enter).</p>
+
+    <div class="row">
+      <label>Số thứ nhất (a)</label>
+      từ <input id="aMin" type="number" min="10" max="99"> đến <input id="aMax" type="number" min="10" max="99">
+    </div>
+    <div class="row">
+      <label>Số thứ hai (b)</label>
+      từ <input id="bMin" type="number" min="1" max="9"> đến <input id="bMax" type="number" min="1" max="9">
+    </div>
+    <div class="row">
+      <label>Số câu mỗi lượt</label>
+      <div class="chips" id="nChips">
+        <button class="chip" data-n="10">10</button>
+        <button class="chip" data-n="20">20</button>
+        <button class="chip" data-n="30">30</button>
+        <button class="chip" data-n="50">50</button>
+      </div>
+    </div>
+    <div class="err" id="setupErr"></div>
+    <button class="btn" id="startBtn">Bắt đầu</button>
+  </section>
+
+  <!-- ===== LÀM BÀI ===== -->
+  <section id="play" class="card hidden">
+    <div class="top">
+      <span>Câu <b id="qNo">1</b>/<b id="qTotal">20</b></span>
+      <span class="stats"><span>✔ <b id="sRight">0</b></span><span>🔥 <b id="sStreak">0</b></span><span>⏱ <b id="sTime">0:00</b></span></span>
+    </div>
+    <div class="bar"><i id="bar"></i></div>
+
+    <div class="q"><span id="qText">14 × 7</span><span>=</span><span class="ans empty" id="ans">?</span></div>
+    <div class="fb" id="fb"></div>
+
+    <div class="pad" id="pad">
+      <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+      <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+      <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+      <button data-k="back">⌫</button><button data-k="0">0</button><button data-k="enter" class="go" id="goKey">✓</button>
+    </div>
+    <div class="foot">
+      <button class="btn ghost" id="stopBtn">Dừng &amp; xem kết quả</button>
+    </div>
+  </section>
+
+  <!-- ===== KẾT QUẢ ===== -->
+  <section id="result" class="card hidden">
+    <h1 class="center">Kết quả</h1>
+    <div class="big" id="rScore">0/0</div>
+    <p class="sub center" id="rMsg"></p>
+    <div class="grid3">
+      <div class="tile"><div class="v" id="rPct">0%</div><div class="k">Tỉ lệ đúng</div></div>
+      <div class="tile"><div class="v" id="rTime">0:00</div><div class="k">Thời gian</div></div>
+      <div class="tile"><div class="v" id="rBest">0</div><div class="k">Chuỗi đúng dài nhất</div></div>
+    </div>
+    <div id="rWrongBox">
+      <b>Các câu chưa đúng</b>
+      <ul class="wl" id="rWrong"></ul>
+    </div>
+    <div class="stack">
+      <button class="btn" id="retryWrongBtn">Làm lại các câu sai</button>
+      <button class="btn" id="againBtn">Lượt mới (phép tính khác)</button>
+      <button class="btn ghost" id="settingsBtn">Đổi cài đặt</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const DEFAULT = {aMin:10, aMax:20, bMin:4, bMax:9, n:20};
+  let cfg = Object.assign({}, DEFAULT);
+  try { Object.assign(cfg, JSON.parse(localStorage.getItem('luyenNhan2x1') || '{}')); } catch(e){}
+
+  // ---- trạng thái lượt ----
+  let qs = [], idx = 0, typed = '', locked = false;
+  let right = 0, streak = 0, best = 0, wrong = [];
+  let tStart = 0, tickTimer = null, nextTimer = null;
+
+  // ---- tiện ích ----
+  function shuffle(a){ for(let k=a.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [a[k],a[j]]=[a[j],a[k]]; } return a; }
+  const same = (x,y) => x && y && x.a===y.a && x.b===y.b;
+  function fmtTime(ms){ const s=Math.floor(ms/1000); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+  function show(id){ ['setup','play','result'].forEach(s => $(s).classList.toggle('hidden', s!==id)); }
+
+  // Bốc n câu: trộn toàn bộ cặp (a,b) rồi lấy lần lượt -> không lặp cho tới khi dùng hết kho;
+  // hết kho thì trộn lại, và tránh 2 câu giống nhau đứng liền nhau.
+  function makeQuestions(n){
+    const pool = [];
+    for(let a=cfg.aMin;a<=cfg.aMax;a++) for(let b=cfg.bMin;b<=cfg.bMax;b++) pool.push({a,b});
+    const out = [];
+    while(out.length < n){
+      const s = shuffle(pool.slice());
+      if(s.length > 1 && same(s[0], out[out.length-1])) [s[0],s[1]] = [s[1],s[0]];
+      out.push(...s);
+    }
+    return out.slice(0, n);
+  }
+
+  // Gợi ý tách số khi sai: 14 × 7 = 10 × 7 + 4 × 7
+  function hint(a,b){
+    const tens = Math.floor(a/10)*10, units = a%10;
+    if(units === 0) return `${tens/10} × ${b} = ${tens/10*b}, thêm 0 ⇒ ${a*b}`;
+    return `Tách ${a} = ${tens} + ${units}: ${tens} × ${b} = ${tens*b}; ${units} × ${b} = ${units*b}; ${tens*b} + ${units*b} = ${a*b}`;
+  }
+
+  // ---- màn cài đặt ----
+  function fillSetup(){
+    ['aMin','aMax','bMin','bMax'].forEach(k => $(k).value = cfg[k]);
+    document.querySelectorAll('#nChips .chip').forEach(c => c.classList.toggle('on', +c.dataset.n === cfg.n));
+    $('setupErr').textContent = '';
+  }
+  document.querySelectorAll('#nChips .chip').forEach(c => c.addEventListener('click', () => {
+    cfg.n = +c.dataset.n; fillSetup();
+  }));
+  function readSetup(){
+    const v = {};
+    for(const k of ['aMin','aMax','bMin','bMax']){
+      v[k] = parseInt($(k).value, 10);
+      if(Number.isNaN(v[k])) return 'Hãy điền đủ các ô.';
+    }
+    if(v.aMin < 10 || v.aMax > 99) return 'Số thứ nhất phải có 2 chữ số (10–99).';
+    if(v.bMin < 1 || v.bMax > 9) return 'Số thứ hai phải có 1 chữ số (1–9).';
+    if(v.aMin > v.aMax || v.bMin > v.bMax) return 'Ô "từ" phải nhỏ hơn hoặc bằng ô "đến".';
+    Object.assign(cfg, v);
+    try { localStorage.setItem('luyenNhan2x1', JSON.stringify(cfg)); } catch(e){}
+    return '';
+  }
+  $('startBtn').addEventListener('click', () => {
+    const e = readSetup();
+    if(e){ $('setupErr').textContent = e; return; }
+    startRound(makeQuestions(cfg.n));
+  });
+
+  // ---- làm bài ----
+  function startRound(list){
+    qs = list; idx = 0; right = 0; streak = 0; best = 0; wrong = [];
+    $('qTotal').textContent = qs.length;
+    tStart = Date.now();
+    clearInterval(tickTimer);
+    tickTimer = setInterval(() => $('sTime').textContent = fmtTime(Date.now()-tStart), 500);
+    $('sTime').textContent = '0:00';
+    show('play');
+    renderQ();
+  }
+
+  function renderQ(){
+    const q = qs[idx];
+    typed = ''; locked = false;
+    $('qNo').textContent = idx+1;
+    $('qText').textContent = `${q.a} × ${q.b}`;
+    $('sRight').textContent = right;
+    $('sStreak').textContent = streak;
+    $('bar').style.width = (idx/qs.length*100)+'%';
+    $('fb').className = 'fb'; $('fb').innerHTML = '';
+    $('goKey').textContent = '✓';
+    drawAns();
+  }
+
+  function drawAns(cls){
+    const el = $('ans');
+    el.className = 'ans' + (typed ? '' : ' empty') + (cls ? ' '+cls : '');
+    el.textContent = typed || '?';
+  }
+
+  function press(k){
+    if(locked){ if(k === 'enter') next(); return; }
+    if(k === 'back'){ typed = typed.slice(0,-1); drawAns(); return; }
+    if(k === 'enter'){ submit(); return; }
+    if(/^\d$/.test(k) && typed.length < 4){
+      typed = (typed === '0') ? k : typed + k;
+      drawAns();
+    }
+  }
+
+  function submit(){
+    if(!typed) return;
+    const q = qs[idx], val = parseInt(typed,10), ok = val === q.a*q.b;
+    locked = true;
+    const fb = $('fb');
+    if(ok){
+      right++; streak++; best = Math.max(best, streak);
+      drawAns('ok');
+      fb.className = 'fb ok';
+      fb.innerHTML = `<div class="t">${streak >= 5 && streak % 5 === 0 ? 'Xuất sắc! Chuỗi ' + streak + ' câu đúng 🔥' : 'Đúng rồi! 🎉'}</div>`;
+      $('sRight').textContent = right; $('sStreak').textContent = streak;
+      nextTimer = setTimeout(next, 700);
+    } else {
+      streak = 0;
+      wrong.push({a:q.a, b:q.b, given:val});
+      drawAns('bad');
+      fb.className = 'fb bad';
+      fb.innerHTML = `<div class="t">Chưa đúng — ${q.a} × ${q.b} = ${q.a*q.b}</div><div class="hint">${hint(q.a,q.b)}</div>`;
+      $('sStreak').textContent = 0;
+      $('goKey').textContent = '→';
+    }
+  }
+
+  function next(){
+    clearTimeout(nextTimer);
+    idx++;
+    if(idx >= qs.length) finish();
+    else renderQ();
+  }
+
+  function finish(){
+    clearInterval(tickTimer); clearTimeout(nextTimer);
+    const done = Math.min(idx, qs.length);
+    const elapsed = Date.now() - tStart;
+    $('bar').style.width = '100%';
+    $('rScore').textContent = `${right}/${done}`;
+    const pct = done ? Math.round(right/done*100) : 0;
+    $('rPct').textContent = pct + '%';
+    $('rTime').textContent = fmtTime(elapsed);
+    $('rBest').textContent = best;
+    const avg = done ? (elapsed/done/1000).toFixed(1) : 0;
+    $('rMsg').textContent = (pct === 100 ? 'Hoàn hảo! ' : pct >= 80 ? 'Rất tốt! ' : pct >= 50 ? 'Khá đấy, cố thêm chút nữa! ' : 'Luyện thêm nhé! ')
+      + `Trung bình ${avg} giây/câu.`;
+    $('rWrongBox').classList.toggle('hidden', wrong.length === 0);
+    $('retryWrongBtn').classList.toggle('hidden', wrong.length === 0);
+    $('rWrong').innerHTML = wrong.map(w =>
+      `<li>${w.a} × ${w.b} = <b>${w.a*w.b}</b> &nbsp;(em ghi <s>${w.given}</s>)</li>`).join('');
+    show('result');
+  }
+
+  $('pad').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(b) press(b.dataset.k);
+  });
+  document.addEventListener('keydown', e => {
+    if($('play').classList.contains('hidden')){
+      if(e.key === 'Enter' && !$('setup').classList.contains('hidden')) $('startBtn').click();
+      return;
+    }
+    if(/^\d$/.test(e.key)) press(e.key);
+    else if(e.key === 'Backspace'){ e.preventDefault(); press('back'); }
+    else if(e.key === 'Enter'){ e.preventDefault(); press('enter'); }
+  });
+  $('stopBtn').addEventListener('click', () => {
+    // câu đang làm dở (chưa nộp) không tính
+    if(locked) idx++;
+    finish();
+  });
+  $('retryWrongBtn').addEventListener('click', () => {
+    const seen = new Set(), list = [];
+    wrong.forEach(w => { const k = w.a+'x'+w.b; if(!seen.has(k)){ seen.add(k); list.push({a:w.a,b:w.b}); } });
+    startRound(shuffle(list));
+  });
+  $('againBtn').addEventListener('click', () => startRound(makeQuestions(cfg.n)));
+  $('settingsBtn').addEventListener('click', () => { fillSetup(); show('setup'); });
+
+  fillSetup();
+})();
+</script>
+</body>
+</html>
