@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Luyện nhân 2×1</title>
+<title>Luyện phép nhân</title>
 <style>
   :root{
     --bg:#f3f6fb; --card:#fff; --ink:#1d2433; --muted:#6b7385; --line:#e2e7f0;
@@ -100,16 +100,16 @@
 
   <!-- ===== CÀI ĐẶT ===== -->
   <section id="setup" class="card">
-    <h1>Luyện nhân 2 chữ số × 1 chữ số</h1>
+    <h1>Luyện phép nhân a × b</h1>
     <p class="sub">Phép tính đổi ngẫu nhiên mỗi lượt. Gõ đáp số rồi bấm ✓ (hoặc Enter).</p>
 
     <div class="row">
       <label>Số thứ nhất (a)</label>
-      từ <input id="aMin" type="number" min="10" max="99"> đến <input id="aMax" type="number" min="10" max="99">
+      từ <input id="aMin" type="number" min="1" max="99"> đến <input id="aMax" type="number" min="1" max="99">
     </div>
     <div class="row">
       <label>Số thứ hai (b)</label>
-      từ <input id="bMin" type="number" min="1" max="9"> đến <input id="bMax" type="number" min="1" max="9">
+      từ <input id="bMin" type="number" min="1" max="20"> đến <input id="bMax" type="number" min="1" max="20">
     </div>
     <div class="row">
       <label>Số câu mỗi lượt</label>
@@ -172,9 +172,9 @@
 <script>
 (function(){
   const $ = id => document.getElementById(id);
-  const DEFAULT = {aMin:10, aMax:20, bMin:4, bMax:9, n:20};
+  const DEFAULT = {aMin:4, aMax:20, bMin:4, bMax:20, n:20};
   let cfg = Object.assign({}, DEFAULT);
-  try { Object.assign(cfg, JSON.parse(localStorage.getItem('luyenNhan2x1') || '{}')); } catch(e){}
+  try { Object.assign(cfg, JSON.parse(localStorage.getItem('luyenNhan_v2') || '{}')); } catch(e){}
 
   // ---- trạng thái lượt ----
   let qs = [], idx = 0, typed = '', locked = false;
@@ -202,10 +202,15 @@
   }
 
   // Gợi ý tách số khi sai: 14 × 7 = 10 × 7 + 4 × 7
+  // Tách thừa số có 2 chữ số (lớn hơn nếu cả hai đều 2 chữ số); cả hai 1 chữ số thì là bảng cửu chương.
   function hint(a,b){
-    const tens = Math.floor(a/10)*10, units = a%10;
-    if(units === 0) return `${tens/10} × ${b} = ${tens/10*b}, thêm 0 ⇒ ${a*b}`;
-    return `Tách ${a} = ${tens} + ${units}: ${tens} × ${b} = ${tens*b}; ${units} × ${b} = ${units*b}; ${tens*b} + ${units*b} = ${a*b}`;
+    if(a < 10 && b < 10) return `Bảng nhân ${b}: ${a} × ${b} = ${a*b}`;
+    // ưu tiên số tròn chục (10, 20) để dùng mẹo "thêm 0"
+    const tron = n => n >= 10 && n % 10 === 0;
+    const x = tron(a) ? a : tron(b) ? b : Math.max(a,b), y = (x === a) ? b : a;
+    const tens = Math.floor(x/10)*10, units = x%10;
+    if(units === 0) return `${tens/10} × ${y} = ${tens/10*y}, thêm 0 ⇒ ${a*b}`;
+    return `Tách ${x} = ${tens} + ${units}: ${tens} × ${y} = ${tens*y}; ${units} × ${y} = ${units*y}; ${tens*y} + ${units*y} = ${a*b}`;
   }
 
   // ---- màn cài đặt ----
@@ -223,11 +228,11 @@
       v[k] = parseInt($(k).value, 10);
       if(Number.isNaN(v[k])) return 'Hãy điền đủ các ô.';
     }
-    if(v.aMin < 10 || v.aMax > 99) return 'Số thứ nhất phải có 2 chữ số (10–99).';
-    if(v.bMin < 1 || v.bMax > 9) return 'Số thứ hai phải có 1 chữ số (1–9).';
+    if(v.aMin < 1 || v.aMax > 99) return 'Số thứ nhất phải trong khoảng 1–99.';
+    if(v.bMin < 1 || v.bMax > 20) return 'Số thứ hai phải trong khoảng 1–20.';
     if(v.aMin > v.aMax || v.bMin > v.bMax) return 'Ô "từ" phải nhỏ hơn hoặc bằng ô "đến".';
     Object.assign(cfg, v);
-    try { localStorage.setItem('luyenNhan2x1', JSON.stringify(cfg)); } catch(e){}
+    try { localStorage.setItem('luyenNhan_v2', JSON.stringify(cfg)); } catch(e){}
     return '';
   }
   $('startBtn').addEventListener('click', () => {
