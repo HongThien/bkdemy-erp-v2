@@ -99,12 +99,12 @@ HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái �
 
 | # | Dạng (nguồn sách) | Các cách sách đưa | Claude đề xuất | Chốt |
 |---|---|---|---|---|
-| A | Cộng/trừ hỗn số (VD 1.3) | ① đổi hỗn số ra phân số rồi tính · ② tính riêng phần nguyên và phần phân số | ① làm chính (luôn làm được, không phải mượn); ② chỉ khi đề ghi "tính thuận tiện". *Lô 1 câu 1 đang dùng ② — đổi nếu chốt ①* | |
-| B | Tỉ lệ thuận / nghịch (VD 5.1, 5.2) | ① rút về đơn vị · ② lập tỉ số ("gấp mấy lần") · ③ quy tắc tam suất | ① — làm được cả khi số lần không tròn; ③ là công thức thuộc lòng, ít tư duy | |
-| C | Tỉ lệ kép (VD 5.3) | ① "phương pháp ba dòng" (đổi từng đại lượng một) · ② tam suất kép · (③ rút về "1 người trong 1 ngày") | ③ — cùng một ý với B①; *lô 1 câu 14 đang dùng ③* | |
-| D | Tính ngược có phân số (VD 9.2) | ① sơ đồ lồng nhau + tính theo phần ($6	imes 4=24$; $24:3	imes 5=40$) · ② phân số "… ứng với … (số cam ban đầu)" rồi chia | ① — CEO: có sơ đồ là tốt nhất. **Cần thêm chế độ "sơ đồ lồng, căn phải" vào máy vẽ** (chưa có). *Lô 1 câu 25 đang dùng ② — làm lại nếu chốt ①* | |
-| E | Xếp hình lập phương nhỏ (VD 23.2, 23.3) | ① thể tích lớn : thể tích nhỏ · ② cạnh lớn gấp cạnh nhỏ mấy lần rồi nhân 3 chiều | ② — dùng được cả khi xếp còn thừa (VD 23.3b) | |
-| F | Dãy phân số mẫu gấp đôi (lô 1 câu 11; sách 5T không có VD) | ① "$2	imes B-B$" · ② viết mỗi số hạng thành hiệu hai phân số | ① | |
+| A | Cộng/trừ hỗn số (VD 1.3) | ① đổi hỗn số ra phân số rồi tính · ② tính riêng phần nguyên và phần phân số | ① làm chính; ② khi "tính thuận tiện" | ✅ **② ưu tiên.** Số to (đổi ra phân số thì tử số lớn) ⇒ bắt buộc ②; số bé mới dùng ① |
+| B | Tỉ lệ thuận / nghịch (VD 5.1, 5.2) | ① rút về đơn vị · ② lập tỉ số ("gấp mấy lần") · ③ quy tắc tam suất | ① — làm được cả khi số lần không tròn | ✅ **①** rút về đơn vị |
+| C | Tỉ lệ kép (VD 5.3) | ① "phương pháp ba dòng" (đổi từng đại lượng một) · ② tam suất kép · (③ rút về "1 người trong 1 ngày") | ③ — cùng một ý với B① | ✅ **③** rút về "1 người trong 1 ngày" |
+| D | Tính ngược có phân số (VD 9.2) | ① sơ đồ lồng nhau + tính theo phần ($6	imes 4=24$; $24:3	imes 5=40$) · ② phân số "… ứng với … (số cam ban đầu)" rồi chia | ① (sơ đồ) | ✅ **②** phân số. ① chỉ để làm quen, dùng khi GV giảng bài — KHÔNG đưa vào lời giải kho (⇒ không cần sơ đồ lồng) |
+| E | Xếp hình lập phương nhỏ (VD 23.2, 23.3) | ① thể tích lớn : thể tích nhỏ · ② cạnh lớn gấp cạnh nhỏ mấy lần rồi nhân 3 chiều | ② — dùng được cả khi xếp còn thừa (VD 23.3b) | ✅ **②** |
+| F | Dãy phân số mẫu gấp đôi (lô 1 câu 11; sách 5T không có VD) | ① "$2	imes B-B$" · ② viết mỗi số hạng thành hiệu hai phân số | ① | ✅ **①** |
 | — | Hai tỉ số (CĐ8) | phân số của đại lượng không đổi | — | ✅ CEO 08/10: không sơ đồ |
 
 ## 3. Định dạng (giữ quy ước kho Đại)
@@ -244,3 +244,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 08/10 | Lô sách 1 — câu hỏi 1 (bài nhiều cách) | *"Bài nào nhiều cách thì m nói ra bàn với t. Chốt một cách chính thôi."* | Gặp bài sách cho nhiều cách ⇒ KHÔNG tự chọn: liệt kê các cách + đề xuất, CEO chốt **một cách chính** cho cả dạng, ghi vào §2b. Phần 2 chỉ trình bày cách chính. |
 | 08/10 | Lô sách 1 — câu hỏi 2 (sơ đồ hai hiệu số) | *"Nếu có sơ đồ vẫn là tốt nhất."* | Dạng nào sách có sơ đồ ⇒ kho phải có sơ đồ (máy vẽ). Hai hiệu số: 3 hàng — tổng thật, cách thừa (đoạn thiếu nét đứt), cách thiếu (đoạn thêm) — vẽ được bằng `bot`/`them`, đã thêm vào câu 19–20. |
 | 08/10 | Lô sách 1 — câu hỏi 3 (hai tỉ số) | *"OK. Cách chuẩn của hai tỉ số là không dùng sơ đồ."* | CĐ8 hai tỉ số: phân số của đại lượng không đổi, KHÔNG sơ đồ (ngoại lệ có chủ đích của luật "có tỉ số ⇒ có sơ đồ"). |
+| 09/10 | Bảng nhiều cách §2b | Chốt: *"A: số to thì phải dùng cách 2, số bé mới dùng cách 1, ưu tiên cách 2 · B: 1 · C: 3 · D: cách 2, cách 1 để làm quen thôi, dùng khi giảng bài · E: 2 · F: 1."* | §2b cột Chốt. Lô sách 1 đã khớp cả 6 (câu 1, 11, 12, 14, 25) — không câu nào làm lại. Bài học: **lời giải kho ≠ bài giảng** — cách "để làm quen" (D①) thuộc giáo án GV, không vào kho. |

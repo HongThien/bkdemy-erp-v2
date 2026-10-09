@@ -36148,3 +36148,34 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Bẫy dính: `.rpc().limit(5000)` vẫn chỉ nhận 1000 dòng (trần PostgREST) ⇒ rụng im lặng 20 ngày tồn cũ; phát hiện nhờ so số ngày trên app (49) với DB (69). Sửa bằng đọc theo trang `.range()`.
   - UI `DuyetOpsNgay.tsx` trên đầu Việc của tôi › Vận hành (tự ẩn nếu không có quyền): 7 ngày gần nhất + "Tồn cũ" gấp lại; mỗi ngày đếm theo loại, số trễ, nút "Duyệt cả ngày (N)"; mở ra từng dòng: người làm, đúng hạn/trễ (DB tính), ảnh thu nhỏ bấm phóng, chọn chất lượng 100/80/50/0. Duyệt xong bỏ ngày đó tại chỗ. Trợ lý (troly.ts) thêm nguồn ⑨ duyet_ops (luật CEO: nguồn việc mới phải nối vào Trợ lý). Kiểm trên app bằng admin: 69 ngày/1359 việc khớp DB, mở ngày + đánh dấu ngoại lệ chạy; KHÔNG bấm duyệt thật.
   - Màn cũ (Report › Leader duyệt theo tuần, Prep › Leader chốt) GIỮ NGUYÊN.
+
+## 08/10 (tối) — Game gia đình "Lunar Cherry học toán" (Thùy: game cho 2 con gái, bé 6 tuổi chuẩn bị lớp 1)
+- Project RIÊNG, không dính ERP: `C:\Users\WBPC\Desktop\BKERP\BKGame\LunarCherry` (repo git local, chưa có remote). Web tĩnh, không build; launch `lunar-cherry` (5295).
+- Luật: câu đúng = 1 chiêu bắn boss; boss hết tim (= số chiêu cài đặt, mặc định 5) là qua màn. Sao: 0 câu sai = 3, sai 1–2 = 2, hơn = 1. "Sai" tính theo CÂU (sai rồi chọn lại, hoặc boss chạm nhân vật) — 1 câu chỉ trừ 1 lần. Bé vẫn được làm lại tới khi đúng; boss chạm thì hiện gợi ý đáp án.
+- Nội dung: 8 nhân vật (Lunar, Cherry + 6 con vật/robot), 12 boss chibi, 11 bối cảnh, 16 chiêu (canvas), tất cả vẽ bằng code. Cài đặt: độ khó = thời gian boss đi tới nơi (preset 20/13/8/5 giây + thanh kéo 3–40), cộng/trừ/cả hai, phạm vi 5/10/20/50/100 (50, 100 chỉ phép không nhớ), số chiêu, chọn đáp án/bấm số, hình đếm, câu tìm số còn thiếu, âm thanh/nhạc/đọc tiếng Việt.
+- Ảnh 2 bé: tải trong game (cắt vòng tròn, lưu localStorage của máy đó) hoặc đặt `img/lunar.jpg` khi chạy local. Ảnh KHÔNG nhúng vào bản đăng Artifact.
+- Đăng Artifact (riêng tư): https://claude.ai/artifact/6wCveZShVDpBp5dJYFs8Ui — đóng gói 1 file bằng `node tools/dong-goi.mjs`.
+- Kiểm: sinh 1.800 câu đủ tổ hợp cài đặt, 0 lỗi; chơi trọn 1 màn sai 1 câu → 2 sao, lưu đúng. Bẫy: Browser pane ẩn ⇒ requestAnimationFrame đứng ⇒ boss không đi; kiểm bằng `LC.game._step(dt)` tự tua. Bẫy CSS: `.hint` trùng tên giữa chữ gợi ý cài đặt và nút gợi ý đáp án ⇒ thanh trả lời phình — đã đổi tên `goi-y`.
+
+## 08/10 (tối, tiếp) — Lunar Cherry học toán: thay nhân vật bằng hình thật + nền lục địa (Thùy)
+- Thùy: "thay nhân vật thôi" · "2 bé gắn liền mọi ô" · "dùng hình nền trong các folder địa hình". ⇒ Lunar + Cherry (SVG) gộp thành 1 nhân vật đôi `duo` vẽ từ atlas `design/bk-ui-src/AppHS/lunar-cherry/assets/dual-poses.png`; đổi tư thế theo trận (chạy vào sân → chờ → tụ phép → ném/bắn → triệu hồi khi tuyệt chiêu → ăn mừng). Sao cũ của lunar/cherry dồn sang duo (lấy max).
+- Atlas gốc có 2 lỗi đã xử bằng code (tools/xu-ly-anh.html): ô Triệu hồi dính 2.468 điểm sáng tràn từ ô Bắn (bỏ vùng dính mép không nối thân chính); đáy chân lệch 401–432px giữa các ô (căn lại theo chân, khung 535×431).
+- Nền: 9 ảnh lục địa (đồng gió, rừng, anh đào, biển đảo, đầm lầy, trời sao, thành cổ, sa mạc, núi lửa) PNG ~2,5MB → WebP 125–381KB. Đây là bản đồ nhìn chéo từ trên cao, dùng phủ kín sân đấu. Không có nền tuyết ⇒ Người Tuyết ở Thành cổ.
+- Bỏ tính năng "tải ảnh của bé" (đã có hình thật). Bản Artifact đóng gói nhúng ảnh 4,3MB, cùng link (version 2). Commit repo game d6ab5b8.
+
+## 08/10 (tối, tiếp 2) — Lunar Cherry học toán: màn Trang phục + nền trận nhìn ngang + ảnh bìa (Thùy)
+- Thùy: nền trận phải là "battle của dạng bài trên app" chứ không phải bản đồ con đường ⇒ dùng `public/bk-ui/hs/skin/rpg/phieuluu2d/nen_dang_*.jpg` (7 biome, đường đá ≈74% chiều cao) + `dau_truong/nen_san_dau.jpg` cho Rồng. Code đặt ảnh (cover) sao cho chân nhân vật/boss trùng đường đá. Có nền băng ⇒ Người Tuyết về đúng chỗ.
+- Ảnh bìa `output/imagegen/lunar-cherry-hoc-toan-ipad.png` (có sẵn chữ) làm màn bìa: ảnh trọn khung, hai bên là chính ảnh làm mờ, nút ở dải đáy để không che 2 bé.
+- Thùy gật xoá 9 nền bản đồ cũ (assets/nen/) — đã xoá.
+- Màn Trang phục: 3 bộ của Lunar & Cherry — Tiên Trăng Anh Đào (dual-poses) · Tiên Nước (water-poses + water-projectiles: phao, dép; ô 7 = ném dép) · Tiên Ánh Nắng (sunshine-poses). Mỗi bộ 1 bộ chiêu; thẻ xem thử tự đổi tư thế. Sao chung cho 2 bé.
+- Bẫy: căn atlas theo CHÂN lệch ở bộ Tiên Nước (ánh nước che chân bé phải ⇒ tâm chân lệch ~80px) ⇒ đổi sang căn ngang theo tâm dải 2 cái đầu, dọc vẫn theo chân. Bẫy 2: chèn code bằng `String.replace` ⇒ `$$` trong chuỗi thay bị hiểu thành `$` (đã dính, `$$(...)` thành `$(...)`).
+- Artifact version 3 (4,7MB), commit repo game 469cbc1.
+
+## 08/10 (tối, tiếp 3) — Lunar Cherry học toán: trang phục Thỏ Phép Thuật + mặc định cộng phạm vi 20 (Thùy)
+- Thêm bộ `bunny-poses.png` (ô dọc 384×512, khác 3 bộ trước) thành "Thỏ Phép Thuật", đứng đầu màn Trang phục, mặc định cho máy mới. Chiêu: thỏ con nhảy 3 nhịp tới boss (vẽ canvas), 3 sao hồng tím từ gậy. README prototype nói atlas "có nền màu" — đo thật: nền alpha 0, chỉ là RGB ẩn dưới vùng trong suốt (trình xem ảnh hiện ra xám); nhân vật alpha tối đa 253 (không có 255).
+- Mặc định cài đặt: cộng trong phạm vi 20; cài đặt đã lưu ở bản cũ được đưa về mặc định mới 1 lần (lc_set.v = 2).
+- `lunar-cherry-blossom-fantasy.png` mới là tranh minh hoạ, chưa có atlas tư thế ⇒ chưa đưa vào game.
+- Deploy Artifact version 4 (5,8MB).
+
+## 09/10 — CEO chốt bảng nhiều cách 5T (A② ưu tiên, số bé mới ① · B① · C③ · D② · E② · F①)
+- Ghi k5T.md §2b + §9. Lô sách 1 đã khớp sẵn cả 6 lựa chọn ⇒ không làm lại câu nào. D② ⇒ không cần thêm chế độ sơ đồ lồng cho máy vẽ (D① chỉ để GV giảng).
