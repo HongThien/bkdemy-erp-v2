@@ -9,6 +9,7 @@
 //           in bảng nhãn → mã câu; nếu có --hinh/--ra: chép file hình của từng câu sang <ra>/<ma_cau>_<nhan>.png (sẵn cho gan_hinh.mjs).
 // Thứ tự câu trong bài = thứ tự file truyền vào, rồi thứ tự khối trong file → truyền file theo ĐÚNG thứ tự câu trong tài liệu gốc.
 // Chuẩn hoá (log-giai-hinh-hoc-bai.md R1/R2): đề KHÔNG dòng trống; lời giải xuống dòng đơn, chỉ cách 1 dòng trống TRƯỚC ý b) c) d)…
+//   và trước "**Phần 2. Trình bày**" (lời giải 2 phần).
 // --cam: regex các từ NGOÀI whitelist của bài (vd bài tam giác vuông: "cân|đều|trung trực|Pytago|đồng dạng|hình bình hành") — chỉ CẢNH BÁO,
 //        có cảnh báo thì --ghi từ chối trừ khi thêm --bo-qua-canh-bao (người đã xem từng chỗ).
 import pg from 'pg'
@@ -28,7 +29,8 @@ if (!maBai || !/^HH\d{5}$/.test(maBai) || !files.length) {
 }
 
 const dongDe = (s) => s.replace(/\r\n/g, '\n').replace(/\n{2,}/g, '\n').trim()
-const dongLG = (s) => dongDe(s).replace(/\n([b-z]\) )/g, '\n\n$1')
+// Lời giải 2 phần (Hình 8 trở đi, kho-rules/dai/k8.md §1.6): thêm đúng 1 dòng trống trước "**Phần 2. Trình bày**".
+const dongLG = (s) => dongDe(s).replace(/\n([b-z]\) )/g, '\n\n$1').replace(/\n(\*\*Phần 2\b)/g, '\n\n$1')
 
 const cau = []
 for (const f of files) {
@@ -54,6 +56,7 @@ for (const c of cau) {
   if (c.lg.length < 40) vd.push('lời giải quá ngắn')
   if (/\n\n/.test(c.nd)) vd.push('đề còn dòng trống')
   if (!c.lg.includes('\\')) vd.push('lời giải không có LaTeX (lạ)')
+  if (/\*\*Phần 1/.test(c.lg) !== /\*\*Phần 2/.test(c.lg)) vd.push('lời giải 2 phần thiếu một phần')
   if (/\bcung\b/i.test(c.nd + c.lg) && !/cung tròn/i.test(c.nd)) vd.push('có chữ "cung" ngoài "cung tròn"')
   if (CAM) { const k = (c.lg + '\n' + c.nd).match(new RegExp('.{0,30}(' + CAM.source + ').{0,30}', 'gi')); if (k) vd.push('TỪ CẤM: ' + [...new Set(k.map((x) => x.replace(/\n/g, ' ')))].slice(0, 3).join(' | ')) }
   if (vd.length) { canhBao += vd.length; console.log(`⚠ ${c.nhan}: ${vd.join(' ; ')}`) }
