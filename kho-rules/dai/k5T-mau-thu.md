@@ -1,6 +1,6 @@
 # 5T · Số thập phân — 12 câu GIẢI THỬ theo luật `k5T.md` (v2, 04/10, chưa ghi DB)
 
-> **⭐ LÔ SÁCH 1 (CĐ1–9, 26 câu — CEO đã trả lời 3 câu hỏi 08–09/10) và LÔ SÁCH 2 (CĐ10–17, 26 câu — chờ CEO duyệt 09/10) ở CUỐI FILE**, nguồn "Tài liệu tham khảo Toán 5". 12 câu dưới đây là lô 04/10 từ kho cũ.
+> **⭐ LÔ SÁCH 1 (CĐ1–9, 26 câu — CEO đã trả lời 3 câu hỏi 08–09/10) · LÔ SÁCH 2 (CĐ10–17, 26 câu — CEO đã trả lời 2 câu hỏi 09/10) · LÔ SÁCH 3 (CĐ18–24 hình học, 23 câu — chờ CEO duyệt 09/10) ở CUỐI FILE**, nguồn "Tài liệu tham khảo Toán 5". 12 câu dưới đây là lô 04/10 từ kho cũ.
 >
 > v2: mỗi câu chia **Phần 1. Hướng dẫn** (giải thích) / **Phần 2. Trình bày** (chỉ cái viết vào bài thi) — CEO 04/10.
 > 2 câu/dạng. Đáp số cả 12 câu đã được code tính lại, khớp `dap_an` hiện có.
@@ -1745,3 +1745,634 @@ Cửa hàng lãi: $108,75\%-100\%=8,75\%$
 
 1. **Cách viết "tìm $a\%$ của một số" — sách viết 2 kiểu** (thêm vào bảng nhiều cách §2b, dòng G): ① $200\times 25\%=50$ (Tóm tắt lí thuyết CĐ15 + VD 15.2) · ② $200\times 25:100=50$ (VD 16.1–16.3). Lô này em dùng **①** cho đồng bộ cả CĐ14–17 (và chiều ngược "tìm số biết $b\%$" là $M:b\%$). Chị chốt ① hay ②?
 2. **Nhân hai tỉ số phần trăm** (câu 24, 26): em viết thẳng $125\%\times 75\%=93,75\%$. Có cần đổi ra số thập phân ($1,25\times 0,75=0,9375=93,75\%$) cho HS dễ hiểu hơn không?
+
+---
+
+# LÔ SÁCH 3 — CĐ18–24 (hình học: tam giác · hình thang · hình tròn · hình hộp · xếp hình · sơn mặt) · 23 câu · chờ CEO duyệt (09/10)
+
+> 7 câu có hình trong đề — hình gốc của sách, đã soát từng hình khớp đề (`hinh-de/5T-*.png`, cùng đường hình đề của 4T lô 11).
+> **13 bài của sách có hình HỎNG** (vùng tô màu thành khối đen đặc che mất nét — lỗi ngay trong file Word, không phải lỗi đọc) nên lô
+> này không chọn: LT 18.12, 19.1, 19.2, 20.9, 21.4, 21.10, 23.1, VD 20.2, Ôn 91, 92, 95, 99, 100 — xem câu hỏi 1. LT 19.18 hình ghi
+> nhãn **E** trong khi đề gọi **M** — cũng không chọn. **Đáp số 23/23 máy tính lại** (tỉ số diện tích tính bằng TOẠ ĐỘ thật; sơn mặt /
+> xếp hình đếm từng khối nhỏ). 4 sơ đồ máy vẽ đúng tỉ lệ.
+
+## Câu 1 — LT 18.4 · Tính chiều cao của một hình tam giác, biết diện tích hình tam giác đó là $105,6\ \text{cm}^2$ và độ dài cạnh đáy là $16$ cm.
+
+**Dạng sách:** CĐ18 · Chiều cao từ diện tích
+
+**Phần 1. Hướng dẫn**
+
+Diện tích tam giác $=$ đáy $\times$ chiều cao $:2$ ⇒ đi ngược: **chiều cao $=$ diện tích $\times 2:$ đáy** (Tóm tắt lí thuyết CĐ18: $h=\dfrac{S\times 2}{a}$). Chú ý nhân $2$ trước rồi mới chia — quên nhân $2$ là ra một nửa chiều cao.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Chiều cao của hình tam giác là: $105,6\times 2:16=13,2$ (cm)
+
+Đáp số: $13,2$ cm
+
+---
+
+## Câu 2 — LT 18.8 · Một tấm bảng quảng cáo hình tam giác có tổng cạnh đáy và chiều cao tương ứng là $32$ m, cạnh đáy hơn chiều cao $8$ m. Tính diện tích tấm bảng quảng cáo đó.
+
+**Dạng sách:** CĐ18 · Diện tích tam giác (tổng – hiệu)
+
+**Phần 1. Hướng dẫn**
+
+Biết **tổng** ($32$ m) và **hiệu** ($8$ m) của cạnh đáy và chiều cao ⇒ bài tổng – hiệu tìm hai số trước, rồi mới tính diện tích. Số bé là chiều cao $=($tổng $-$ hiệu$):2$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: Chiều cao 1 đoạn; Cạnh đáy 1 đoạn và 8 m; tổng 32 m](so-do/5T-LT-18-8.svg)
+
+Chiều cao của tấm bảng là: $\left(32-8\right):2=12$ (m)
+
+Cạnh đáy của tấm bảng là: $12+8=20$ (m)
+
+Diện tích tấm bảng quảng cáo là: $20\times 12:2=120$ ($\text{m}^2$)
+
+Đáp số: $120\ \text{m}^2$
+
+---
+
+## Câu 3 — LT 18.13 · Một hình tam giác có cạnh đáy bằng $\dfrac{7}{4}$ chiều cao. Nếu kéo dài cạnh đáy thêm $5$ cm thì diện tích của hình tam giác tăng thêm $30\ \text{cm}^2$. Tính diện tích hình tam giác đó.
+
+**Dạng sách:** CĐ18 · Diện tích tam giác (kéo dài cạnh đáy)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: kéo dài cạnh đáy thêm $5$ cm thì phần **tăng thêm là một tam giác** có đáy $5$ cm và **cùng chiều cao** với tam giác ban đầu. Từ diện tích phần tăng ($30\ \text{cm}^2$) tìm được chiều cao, rồi tìm cạnh đáy ($\dfrac{7}{4}$ chiều cao), rồi diện tích.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Phần tăng thêm là hình tam giác có cạnh đáy $5$ cm và chiều cao bằng chiều cao của tam giác ban đầu.
+
+Chiều cao của tam giác ban đầu là: $30\times 2:5=12$ (cm)
+
+Cạnh đáy của tam giác ban đầu là: $12\times\dfrac{7}{4}=21$ (cm)
+
+Diện tích hình tam giác ban đầu là: $21\times 12:2=126$ ($\text{cm}^2$)
+
+Đáp số: $126\ \text{cm}^2$
+
+---
+
+## Câu 4 — LT 18.16 · Cho tam giác ABC, đường cao AH (hình vẽ), biết BH $=9$ cm và $\text{HB}=\dfrac{3}{2}\text{HC}$. Tính diện tích tam giác AHC, biết tam giác AHB có diện tích $54\ \text{cm}^2$.
+
+![Hình đề LT 18.16](hinh-de/5T-LT-18-16.png)
+
+**Dạng sách:** CĐ18 · Diện tích tam giác (chung đường cao)
+
+**Phần 1. Hướng dẫn**
+
+Hai tam giác AHB và AHC đều vuông tại H và **chung chiều cao AH**. Từ tam giác AHB biết diện tích và đáy BH ⇒ tìm AH. Từ $HB=\dfrac{3}{2}HC$ ⇒ $HC=9:3\times 2$. Có đáy HC và chiều cao AH thì tính diện tích AHC.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Độ dài đoạn thẳng HC là: $9:3\times 2=6$ (cm)
+
+Độ dài đường cao AH là: $54\times 2:9=12$ (cm)
+
+Diện tích tam giác AHC là: $12\times 6:2=36$ ($\text{cm}^2$)
+
+Đáp số: $36\ \text{cm}^2$
+
+---
+
+## Câu 5 — LT 19.8 · Cho tam giác ABC có diện tích là $96\ \text{cm}^2$. Lấy điểm M trên cạnh BC sao cho $BM=\dfrac{1}{3}BC$. Tính diện tích tam giác AMC.
+
+![Hình đề LT 19.8](hinh-de/5T-LT-19-8.png)
+
+**Dạng sách:** CĐ19 · Tính diện tích tam giác sử dụng tỉ lệ cạnh
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tam giác AMC và tam giác ABC **chung đường cao hạ từ A xuống BC**, nên tỉ số diện tích bằng tỉ số hai cạnh đáy: $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}$. Vì $BM=\dfrac{1}{3}BC$ nên $MC=\dfrac{2}{3}BC$. Theo sách: tam giác cần tính để ở **tử số**, tam giác đã biết diện tích ở mẫu số.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Vì $BM=\dfrac{1}{3}BC$ nên $MC=\dfrac{2}{3}BC$.
+
+$\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$ (chung đường cao hạ từ A đến BC)
+
+$S_{AMC}=\dfrac{2}{3}\times S_{ABC}=\dfrac{2}{3}\times 96=64\ (\text{cm}^2)$
+
+Đáp số: $64\ \text{cm}^2$
+
+---
+
+## Câu 6 — LT 19.12 · Cho hình vẽ bên. Trên cạnh BC lấy điểm M sao cho BM $=$ MC, trên AC lấy điểm N sao cho $\text{CN}=\dfrac{1}{3}\text{AC}$. Biết $S_{CMN}=5\ \text{cm}^2$, tính $S_{ABC}$.
+
+![Hình đề LT 19.12](hinh-de/5T-LT-19-12.png)
+
+**Dạng sách:** CĐ19 · Tỉ lệ cạnh (hai bước, đi qua tam giác trung gian)
+
+**Phần 1. Hướng dẫn**
+
+Tam giác CMN và tam giác ABC không có chung đường cao ⇒ đi qua **tam giác trung gian CMA** (đã có sẵn đoạn AM trên hình):
+
+- CMN và CMA chung đường cao hạ từ M xuống AC ⇒ $\dfrac{S_{CMN}}{S_{CMA}}=\dfrac{CN}{CA}=\dfrac{1}{3}$ ⇒ $S_{CMA}=5\times 3$;
+- CMA và CBA chung đường cao hạ từ A xuống BC ⇒ $\dfrac{S_{CMA}}{S_{CBA}}=\dfrac{CM}{CB}=\dfrac{1}{2}$ ⇒ $S_{ABC}=S_{CMA}\times 2$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+$\dfrac{S_{CMN}}{S_{CMA}}=\dfrac{CN}{CA}=\dfrac{1}{3}$ (chung đường cao hạ từ M đến AC)
+
+$S_{CMA}=5\times 3=15\ (\text{cm}^2)$
+
+$\dfrac{S_{CMA}}{S_{CBA}}=\dfrac{CM}{CB}=\dfrac{1}{2}$ (chung đường cao hạ từ A đến BC)
+
+$S_{ABC}=15\times 2=30\ (\text{cm}^2)$
+
+Đáp số: $30\ \text{cm}^2$
+
+---
+
+## Câu 7 — LT 19.16 · Cho tam giác ABC có diện tích là $150\ \text{cm}^2$, D là điểm chính giữa cạnh AB. Trên cạnh AC lấy điểm E sao cho AE gấp đôi EC. Tính diện tích tam giác AED.
+
+![Hình đề LT 19.16](hinh-de/5T-LT-19-16.png)
+
+**Dạng sách:** CĐ19 · Tỉ lệ cạnh (nối thêm đoạn phụ)
+
+**Phần 1. Hướng dẫn**
+
+Tam giác AED và ABC chung góc A nhưng không chung đường cao ⇒ **nối B với E** (như VD 19.3 của sách "Nối B với N") để có tam giác trung gian ABE:
+
+- AED và ABE chung đường cao hạ từ E xuống AB ⇒ $\dfrac{S_{AED}}{S_{ABE}}=\dfrac{AD}{AB}=\dfrac{1}{2}$;
+- ABE và ABC chung đường cao hạ từ B xuống AC ⇒ $\dfrac{S_{ABE}}{S_{ABC}}=\dfrac{AE}{AC}=\dfrac{2}{3}$ (AE gấp đôi EC ⇒ AE là $2$ phần, AC là $3$ phần).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Nối B với E.
+
+Vì AE gấp đôi EC nên $AE=\dfrac{2}{3}AC$.
+
+$\dfrac{S_{ABE}}{S_{ABC}}=\dfrac{AE}{AC}=\dfrac{2}{3}$ (chung đường cao hạ từ B đến AC)
+
+$S_{ABE}=\dfrac{2}{3}\times 150=100\ (\text{cm}^2)$
+
+$\dfrac{S_{AED}}{S_{ABE}}=\dfrac{AD}{AB}=\dfrac{1}{2}$ (chung đường cao hạ từ E đến AB)
+
+$S_{AED}=\dfrac{1}{2}\times 100=50\ (\text{cm}^2)$
+
+Đáp số: $50\ \text{cm}^2$
+
+---
+
+## Câu 8 — LT 19.25 · Cho tam giác ABC, M là điểm nằm trên cạnh BC. Trên cạnh AM lấy điểm N là trung điểm của AM. Biết $S_{ABC}=48\ \text{cm}^2$. Tính $S_{NBC}$.
+
+![Hình đề LT 19.25](hinh-de/5T-LT-19-25.png)
+
+**Dạng sách:** CĐ19 · Tỉ lệ cạnh (cộng hai phần)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đoạn AM chia tam giác ABC thành hai tam giác ABM và ACM; đoạn NM chia tam giác NBC thành NBM và NCM. Mỗi cặp **chung đường cao** (từ B, từ C xuống AM) và có đáy $NM=\dfrac{1}{2}AM$ ⇒ mỗi tam giác nhỏ bằng một nửa tam giác lớn tương ứng ⇒ $S_{NBC}$ bằng một nửa $S_{ABC}$, **dù M nằm ở đâu trên BC**.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+$\dfrac{S_{NBM}}{S_{ABM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$ (chung đường cao hạ từ B đến AM)
+
+$\dfrac{S_{NCM}}{S_{ACM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$ (chung đường cao hạ từ C đến AM)
+
+$S_{NBC}=S_{NBM}+S_{NCM}=\dfrac{1}{2}\times\left(S_{ABM}+S_{ACM}\right)=\dfrac{1}{2}\times S_{ABC}$
+
+$S_{NBC}=\dfrac{1}{2}\times 48=24\ (\text{cm}^2)$
+
+Đáp số: $24\ \text{cm}^2$
+
+---
+
+## Câu 9 — LT 20.6 · Một hình thang có diện tích $135\ \text{cm}^2$. Biết chiều cao bằng $12$ cm và đáy lớn gấp rưỡi đáy bé. Tính độ dài hai đáy của hình thang đó.
+
+**Dạng sách:** CĐ20 · Diện tích hình thang (đi ngược + tổng – tỉ)
+
+**Phần 1. Hướng dẫn**
+
+Hai bước: (1) từ diện tích và chiều cao tìm **tổng hai đáy** $=S\times 2:h$; (2) "đáy lớn **gấp rưỡi** đáy bé" nghĩa là gấp $1,5=\dfrac{3}{2}$ lần ⇒ đáy bé $2$ phần, đáy lớn $3$ phần ⇒ bài tổng – tỉ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Tổng độ dài hai đáy của hình thang là: $135\times 2:12=22,5$ (cm)
+
+Đáy lớn gấp rưỡi đáy bé nên đáy lớn bằng $\dfrac{3}{2}$ đáy bé.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Đáy bé 2 phần; Đáy lớn 3 phần; tổng 22,5 cm](so-do/5T-LT-20-6.svg)
+
+Tổng số phần bằng nhau là: $2+3=5$ (phần)
+
+Độ dài đáy bé là: $22,5:5\times 2=9$ (cm)
+
+Độ dài đáy lớn là: $22,5-9=13,5$ (cm)
+
+Đáp số: Đáy bé: $9$ cm; đáy lớn: $13,5$ cm
+
+---
+
+## Câu 10 — LT 20.10 · Hình thang ABCD có đáy bé AB $=9$ cm, đáy lớn DC $=16$ cm. Biết DM $=7$ cm, $S_{BMC}=37,8\ \text{cm}^2$. Tính diện tích hình thang ABCD.
+
+![Hình đề LT 20.10](hinh-de/5T-LT-20-10.png)
+
+**Dạng sách:** CĐ20 · Diện tích hình thang (chiều cao từ tam giác)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: chiều cao của tam giác BMC hạ từ B xuống MC **chính là chiều cao của hình thang** (khoảng cách giữa hai đáy). Có $MC=16-7$ và diện tích BMC ⇒ tìm chiều cao, rồi tính diện tích hình thang.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Độ dài đoạn thẳng MC là: $16-7=9$ (cm)
+
+Chiều cao của tam giác BMC, cũng là chiều cao của hình thang ABCD, là: $37,8\times 2:9=8,4$ (cm)
+
+Diện tích hình thang ABCD là: $\left(9+16\right)\times 8,4:2=105$ ($\text{cm}^2$)
+
+Đáp số: $105\ \text{cm}^2$
+
+---
+
+## Câu 11 — LT 20.12 · Một mảnh đất hình thang có tổng độ dài hai đáy là $49$ m. Nếu kéo dài đáy bé thêm $4,5$ m và đáy lớn thêm $12,5$ m về cùng một phía thì diện tích mảnh đất sẽ tăng thêm $144,5\ \text{m}^2$. Tính diện tích mảnh đất hình thang lúc đầu.
+
+**Dạng sách:** CĐ20 · Diện tích hình thang (kéo dài hai đáy — như VD 20.2)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt (VD 20.2 của sách): phần tăng thêm là **một hình thang** có hai đáy $4,5$ m và $12,5$ m và **cùng chiều cao** với hình thang ban đầu. Từ diện tích phần tăng tìm chiều cao, rồi tính diện tích ban đầu với tổng hai đáy $49$ m.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Phần tăng thêm là hình thang có hai đáy $4,5$ m, $12,5$ m và chiều cao bằng chiều cao mảnh đất ban đầu.
+
+Chiều cao của mảnh đất hình thang là: $144,5\times 2:\left(4,5+12,5\right)=17$ (m)
+
+Diện tích mảnh đất hình thang lúc đầu là: $49\times 17:2=416,5$ ($\text{m}^2$)
+
+Đáp số: $416,5\ \text{m}^2$
+
+---
+
+## Câu 12 — LT 21.3b · Tính diện tích hình tròn có chu vi là $C=25,12$ dm.
+
+**Dạng sách:** CĐ21 · Chu vi, diện tích hình tròn (đi ngược từ chu vi)
+
+**Phần 1. Hướng dẫn**
+
+Chu vi $=$ đường kính $\times 3,14$ ⇒ đường kính $=$ chu vi $:3,14$; bán kính $=$ đường kính $:2$; diện tích $=$ bán kính $\times$ bán kính $\times 3,14$. Chú ý: diện tích dùng **bán kính**, không dùng đường kính.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Đường kính của hình tròn là: $25,12:3,14=8$ (dm)
+
+Bán kính của hình tròn là: $8:2=4$ (dm)
+
+Diện tích của hình tròn là: $4\times 4\times 3,14=50,24$ ($\text{dm}^2$)
+
+Đáp số: $50,24\ \text{dm}^2$
+
+---
+
+## Câu 13 — LT 21.7 · Tính diện tích hình tròn đường kính AB, biết tam giác MAB có diện tích là $6\ \text{cm}^2$ và MH $=2$ cm.
+
+![Hình đề LT 21.7](hinh-de/5T-LT-21-7.png)
+
+**Dạng sách:** CĐ21 · Diện tích hình tròn (kết hợp tam giác)
+
+**Phần 1. Hướng dẫn**
+
+Trên hình, MH vuông góc với AB nên MH là **chiều cao** của tam giác MAB ứng với **đáy AB** — mà AB lại là đường kính hình tròn. Tìm AB từ diện tích tam giác, rồi bán kính, rồi diện tích hình tròn.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Độ dài đường kính AB là: $6\times 2:2=6$ (cm)
+
+Bán kính của hình tròn là: $6:2=3$ (cm)
+
+Diện tích của hình tròn là: $3\times 3\times 3,14=28,26$ ($\text{cm}^2$)
+
+Đáp số: $28,26\ \text{cm}^2$
+
+---
+
+## Câu 14 — LT 21.9 · Hai hình tròn có tổng hai bán kính là $3,9$ dm và có hiệu hai chu vi là $6,908$ dm. Tính diện tích mỗi hình tròn.
+
+**Dạng sách:** CĐ21 · Hình tròn (tổng – hiệu)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: chu vi $=$ bán kính $\times 2\times 3,14$ ⇒ **hiệu hai chu vi $=$ hiệu hai bán kính $\times 2\times 3,14$**. Từ hiệu chu vi tìm được hiệu hai bán kính; cùng với tổng hai bán kính ⇒ bài tổng – hiệu.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Hiệu hai bán kính là: $6,908:3,14:2=1,1$ (dm)
+
+Ta có sơ đồ:
+
+![Sơ đồ: Bán kính bé 1 đoạn; Bán kính lớn 1 đoạn và 1,1 dm; tổng 3,9 dm](so-do/5T-LT-21-9.svg)
+
+Bán kính hình tròn bé là: $\left(3,9-1,1\right):2=1,4$ (dm)
+
+Bán kính hình tròn lớn là: $1,4+1,1=2,5$ (dm)
+
+Diện tích hình tròn lớn là: $2,5\times 2,5\times 3,14=19,625$ ($\text{dm}^2$)
+
+Diện tích hình tròn bé là: $1,4\times 1,4\times 3,14=6,1544$ ($\text{dm}^2$)
+
+Đáp số: $19,625\ \text{dm}^2$ và $6,1544\ \text{dm}^2$
+
+---
+
+## Câu 15 — LT 22.5 · Một cái thùng sắt hình hộp chữ nhật có chiều rộng bằng $\dfrac{3}{4}$ chiều dài và kém chiều dài $2$ m; chiều cao bằng $2$ m. a) Tính diện tích toàn phần của cái thùng. b) Người ta sơn kín mặt ngoài của cái thùng, cứ $4\ \text{m}^2$ tốn $3$ kg sơn. Hỏi cần bao nhiêu ki-lô-gam sơn?
+
+**Dạng sách:** CĐ22 · Hình hộp chữ nhật (diện tích toàn phần)
+
+**Phần 1. Hướng dẫn**
+
+Ba bước: (1) chiều rộng $=\dfrac{3}{4}$ chiều dài, kém $2$ m ⇒ bài hiệu – tỉ (rộng $3$ phần, dài $4$ phần); (2) $S_{tp}=S_{xq}+2$ đáy, $S_{xq}=$ chu vi đáy $\times$ chiều cao; (3) lượng sơn tỉ lệ thuận với diện tích ⇒ **rút về đơn vị**: $1\ \text{m}^2$ tốn bao nhiêu ki-lô-gam (§2b B). Ý b dùng ý a nên giữ một câu.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: Chiều rộng 3 phần; Chiều dài 4 phần; hiệu 2 m](so-do/5T-LT-22-5.svg)
+
+Hiệu số phần bằng nhau là: $4-3=1$ (phần)
+
+Chiều dài cái thùng là: $2:1\times 4=8$ (m)
+
+Chiều rộng cái thùng là: $8-2=6$ (m)
+
+a) Diện tích xung quanh cái thùng là: $\left(8+6\right)\times 2\times 2=56$ ($\text{m}^2$)
+
+Diện tích một mặt đáy là: $8\times 6=48$ ($\text{m}^2$)
+
+Diện tích toàn phần cái thùng là: $56+48\times 2=152$ ($\text{m}^2$)
+
+b) $1\ \text{m}^2$ tốn số sơn là: $3:4=0,75$ (kg)
+
+Số sơn cần dùng là: $0,75\times 152=114$ (kg)
+
+Đáp số: a) $152\ \text{m}^2$; b) $114$ kg sơn
+
+---
+
+## Câu 16 — LT 22.25 · Cho một hình lập phương có diện tích toàn phần lớn hơn diện tích xung quanh là $98\ \text{cm}^2$. Tính thể tích hình lập phương đó.
+
+**Dạng sách:** CĐ22 · Hình lập phương
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: diện tích toàn phần hơn diện tích xung quanh đúng **hai mặt đáy** ⇒ $98\ \text{cm}^2$ là diện tích $2$ mặt ⇒ một mặt $49\ \text{cm}^2$. Một mặt là hình vuông: tìm số nhân với chính nó được $49$ ⇒ cạnh $7$ cm (như VD 22.2 của sách).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Diện tích một mặt của hình lập phương là: $98:2=49$ ($\text{cm}^2$)
+
+Vì $49=7\times 7$ nên cạnh của hình lập phương là $7$ cm.
+
+Thể tích hình lập phương là: $7\times 7\times 7=343$ ($\text{cm}^3$)
+
+Đáp số: $343\ \text{cm}^3$
+
+---
+
+## Câu 17 — LT 22.28 · Một bể kính nuôi cá hình hộp chữ nhật có chiều dài $50$ cm, chiều rộng $20$ cm, chiều cao $30$ cm. Lúc đầu mực nước trong bể bằng $\dfrac{4}{5}$ chiều cao của bể. Lúc sau người ta bỏ vào trong bể một hòn đá ngập hoàn toàn trong nước thì mực nước trong bể dâng lên bằng $\dfrac{5}{6}$ chiều cao của bể. Tính thể tích của hòn đá.
+
+**Dạng sách:** CĐ22 · Thể tích hình hộp (vật chìm trong nước)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hòn đá ngập hoàn toàn thì **thể tích hòn đá bằng thể tích phần nước dâng lên** — là một hình hộp có đáy bằng đáy bể và chiều cao bằng **mực nước dâng thêm**. Tính hai mực nước (trước và sau) để ra phần dâng.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Mực nước lúc đầu là: $30\times\dfrac{4}{5}=24$ (cm)
+
+Mực nước lúc sau là: $30\times\dfrac{5}{6}=25$ (cm)
+
+Mực nước dâng thêm là: $25-24=1$ (cm)
+
+Thể tích hòn đá bằng thể tích phần nước dâng thêm, là: $50\times 20\times 1=1000$ ($\text{cm}^3$)
+
+Đáp số: $1000\ \text{cm}^3$
+
+---
+
+## Câu 18 — LT 23.6 · Xếp các hình lập phương nhỏ cạnh $2$ cm thành một hình lập phương lớn có diện tích xung quanh là $256\ \text{cm}^2$. Hỏi cần tất cả bao nhiêu hình lập phương nhỏ?
+
+**Dạng sách:** CĐ23 · Xếp hình đơn vị
+
+**Phần 1. Hướng dẫn**
+
+Diện tích xung quanh hình lập phương là $4$ mặt ⇒ một mặt $256:4=64$, cạnh $8$ cm. Theo cách chốt §2b E: **cạnh lớn gấp cạnh nhỏ mấy lần** ($8:2=4$) thì mỗi chiều xếp được $4$ hình nhỏ ⇒ số hình nhỏ $=4\times 4\times 4$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Diện tích một mặt của hình lập phương lớn là: $256:4=64$ ($\text{cm}^2$)
+
+Vì $64=8\times 8$ nên cạnh hình lập phương lớn là $8$ cm.
+
+Cạnh hình lập phương lớn gấp cạnh hình lập phương nhỏ số lần là: $8:2=4$ (lần)
+
+Số hình lập phương nhỏ cần dùng là: $4\times 4\times 4=64$ (hình)
+
+Đáp số: $64$ hình
+
+---
+
+## Câu 19 — LT 23.10b · Cho một cái hộp hình hộp chữ nhật dài $8$ dm; rộng $4$ dm; cao $3$ dm. Nếu người ta xếp các hộp bánh hình lập phương cạnh $4$ cm vào hộp đó thì xếp được nhiều nhất bao nhiêu hộp bánh?
+
+**Dạng sách:** CĐ23 · Xếp hình đơn vị (có phần thừa)
+
+**Phần 1. Hướng dẫn**
+
+Đổi về cùng đơn vị cm trước. Mỗi chiều xếp được bao nhiêu hộp bánh $=$ chiều đó chia cho $4$; chiều nào **chia có dư** thì phần dư bỏ trống, chỉ lấy **phần nguyên** (như VD 23.3b của sách). Chiều cao $30:4=7$ dư $2$ ⇒ chỉ xếp được $7$ lớp.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Đổi: $8$ dm $=80$ cm; $4$ dm $=40$ cm; $3$ dm $=30$ cm
+
+Chiều dài cái hộp gấp cạnh hộp bánh số lần là: $80:4=20$ (lần)
+
+Chiều rộng cái hộp gấp cạnh hộp bánh số lần là: $40:4=10$ (lần)
+
+Vì $30:4=7$ (dư $2$) nên chiều cao cái hộp xếp được $7$ lớp hộp bánh và thừa $2$ cm.
+
+Số hộp bánh xếp được nhiều nhất là: $20\times 10\times 7=1400$ (hộp)
+
+Đáp số: $1400$ hộp bánh
+
+---
+
+## Câu 20 — LT 23.13 · Người ta xếp các khối lập phương nhỏ có cạnh là $1$ cm thành một khối lập phương lớn có diện tích toàn phần là $294\ \text{cm}^2$. Sau đó từ mỗi đỉnh của khối lập phương lớn lấy ra một khối lập phương nhỏ. Tính diện tích toàn phần của khối còn lại.
+
+**Dạng sách:** CĐ23 · Xếp hình đơn vị (lấy bớt khối)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: khối nhỏ ở đỉnh có **$3$ mặt lộ ra ngoài**. Lấy khối đó ra thì mất $3$ mặt ngoài ($3\ \text{cm}^2$), nhưng **lộ ra $3$ mặt mới** của các khối bên cạnh, cũng $3\ \text{cm}^2$ ⇒ diện tích toàn phần **không đổi**. Không cần biết cạnh khối lớn.
+
+Chú ý bẫy: trừ đi $8\times 3=24\ \text{cm}^2$ là sai vì quên phần mặt mới lộ ra.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Mỗi khối nhỏ ở đỉnh có $3$ mặt nằm ở mặt ngoài khối lớn.
+
+Lấy ra một khối nhỏ ở đỉnh thì mất đi $3$ mặt ngoài nhưng lộ ra $3$ mặt mới bằng nhau, nên diện tích toàn phần không thay đổi.
+
+Diện tích toàn phần của khối còn lại là: $294\ \text{cm}^2$
+
+Đáp số: $294\ \text{cm}^2$
+
+---
+
+## Câu 21 — LT 24.1 · Một khối lập phương lớn được xếp bởi $216$ khối lập phương nhỏ giống nhau. Sau đó người ta sơn toàn bộ mặt ngoài của khối lập phương lớn. Hỏi có bao nhiêu khối lập phương nhỏ được sơn đúng $2$ mặt? Bao nhiêu khối lập phương nhỏ được sơn đúng $1$ mặt?
+
+**Dạng sách:** CĐ24 · Bài toán sơn mặt
+
+**Phần 1. Hướng dẫn**
+
+Tìm mỗi cạnh có mấy khối: $216=6\times 6\times 6$ ⇒ $6$ khối. Theo VD 24.1 của sách: khối sơn **đúng $2$ mặt** nằm trên **cạnh, trừ $2$ đỉnh** ⇒ $12\times(6-2)$; khối sơn **đúng $1$ mặt** nằm trên **mặt, trừ phần sát cạnh** ⇒ $6\times(6-2)\times(6-2)$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Vì $216=6\times 6\times 6$ nên mỗi cạnh khối lập phương lớn có $6$ khối nhỏ.
+
+Mỗi cạnh có số khối được sơn đúng $2$ mặt là: $6-2=4$ (khối)
+
+Số khối được sơn đúng $2$ mặt là: $12\times 4=48$ (khối)
+
+Mỗi mặt có số khối được sơn đúng $1$ mặt là: $4\times 4=16$ (khối)
+
+Số khối được sơn đúng $1$ mặt là: $6\times 16=96$ (khối)
+
+Đáp số: $48$ khối sơn đúng $2$ mặt; $96$ khối sơn đúng $1$ mặt
+
+---
+
+## Câu 22 — LT 24.6 · Một hình lập phương lớn được xếp đầy bằng các hình lập phương nhỏ cạnh $1$ cm, sau đó sơn toàn bộ mặt ngoài của hình lập phương lớn. Biết có $180$ hình lập phương nhỏ được sơn đúng $2$ mặt. Tính diện tích toàn phần của hình lập phương lớn.
+
+**Dạng sách:** CĐ24 · Bài toán sơn mặt (đi ngược)
+
+**Phần 1. Hướng dẫn**
+
+Đi ngược công thức của sách: số khối sơn đúng $2$ mặt $=12\times$(số khối mỗi cạnh $-2$) ⇒ mỗi cạnh (không kể $2$ đỉnh) có $180:12=15$ khối ⇒ mỗi cạnh có $15+2=17$ khối, tức cạnh $17$ cm (khối nhỏ cạnh $1$ cm).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số khối được sơn đúng $2$ mặt trên mỗi cạnh là: $180:12=15$ (khối)
+
+Số khối nhỏ trên mỗi cạnh của hình lập phương lớn là: $15+2=17$ (khối)
+
+Cạnh hình lập phương lớn là: $17\times 1=17$ (cm)
+
+Diện tích toàn phần của hình lập phương lớn là: $17\times 17\times 6=1734$ ($\text{cm}^2$)
+
+Đáp số: $1734\ \text{cm}^2$
+
+---
+
+## Câu 23 — LT 24.9 · Người ta sơn toàn bộ bề mặt của một khối gỗ hình hộp chữ nhật có chiều dài $5$ dm; chiều rộng $3$ dm và chiều cao $2$ dm, sau đó người ta xẻ thành các khối lập phương cạnh $2$ cm. Hỏi có bao nhiêu khối gỗ lập phương không được sơn mặt nào?
+
+**Dạng sách:** CĐ24 · Bài toán sơn mặt (hình hộp chữ nhật)
+
+**Phần 1. Hướng dẫn**
+
+Đổi ra cm rồi tìm mỗi chiều có mấy khối: $50:2=25$, $30:2=15$, $20:2=10$. Khối **không được sơn** nằm ở lõi bên trong — bỏ một lớp ở **cả hai đầu** mỗi chiều ⇒ lõi là hình hộp $(25-2)\times(15-2)\times(10-2)$ khối (như VD 24.1, áp cho hình hộp).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Đổi: $5$ dm $=50$ cm; $3$ dm $=30$ cm; $2$ dm $=20$ cm
+
+Chiều dài khối gỗ có số khối nhỏ là: $50:2=25$ (khối)
+
+Chiều rộng khối gỗ có số khối nhỏ là: $30:2=15$ (khối)
+
+Chiều cao khối gỗ có số khối nhỏ là: $20:2=10$ (khối)
+
+Số khối không được sơn mặt nào là: $\left(25-2\right)\times\left(15-2\right)\times\left(10-2\right)=2392$ (khối)
+
+Đáp số: $2392$ khối
+
+---
+
+## Bảng tóm tắt lô sách 3
+
+| # | Nguồn | Dạng sách | Đáp số | Ghi chú |
+|---|---|---|---|---|
+| 1 | LT 18.4 | CĐ18 chiều cao từ diện tích | $13,2$ cm | |
+| 2 | LT 18.8 | CĐ18 tổng – hiệu | $120\ \text{m}^2$ | sơ đồ |
+| 3 | LT 18.13 | CĐ18 kéo dài đáy | $126\ \text{cm}^2$ | |
+| 4 | LT 18.16 | CĐ18 chung đường cao | $36\ \text{cm}^2$ | hình đề |
+| 5 | LT 19.8 | CĐ19 tỉ lệ cạnh | $64\ \text{cm}^2$ | hình đề |
+| 6 | LT 19.12 | CĐ19 tỉ lệ cạnh 2 bước | $30\ \text{cm}^2$ | hình đề |
+| 7 | LT 19.16 | CĐ19 nối thêm đoạn phụ | $50\ \text{cm}^2$ | hình đề; "Nối B với E" như VD 19.3 |
+| 8 | LT 19.25 | CĐ19 cộng hai phần | $24\ \text{cm}^2$ | hình đề |
+| 9 | LT 20.6 | CĐ20 tổng – tỉ | $9$ cm; $13,5$ cm | sơ đồ |
+| 10 | LT 20.10 | CĐ20 chiều cao từ tam giác | $105\ \text{cm}^2$ | hình đề |
+| 11 | LT 20.12 | CĐ20 kéo dài hai đáy | $416,5\ \text{m}^2$ | khuôn VD 20.2 |
+| 12 | LT 21.3b | CĐ21 từ chu vi | $50,24\ \text{dm}^2$ | |
+| 13 | LT 21.7 | CĐ21 kết hợp tam giác | $28,26\ \text{cm}^2$ | hình đề |
+| 14 | LT 21.9 | CĐ21 tổng – hiệu bán kính | $19,625$; $6,1544\ \text{dm}^2$ | sơ đồ |
+| 15 | LT 22.5 | CĐ22 diện tích toàn phần | $152\ \text{m}^2$; $114$ kg | sơ đồ; rút về đơn vị |
+| 16 | LT 22.25 | CĐ22 lập phương | $343\ \text{cm}^3$ | |
+| 17 | LT 22.28 | CĐ22 vật chìm | $1000\ \text{cm}^3$ | |
+| 18 | LT 23.6 | CĐ23 xếp hình | $64$ hình | §2b E② |
+| 19 | LT 23.10b | CĐ23 xếp có dư | $1400$ hộp | |
+| 20 | LT 23.13 | CĐ23 lấy bớt khối | $294\ \text{cm}^2$ | |
+| 21 | LT 24.1 | CĐ24 sơn mặt | $48$; $96$ | |
+| 22 | LT 24.6 | CĐ24 đi ngược | $1734\ \text{cm}^2$ | |
+| 23 | LT 24.9 | CĐ24 hình hộp | $2392$ khối | |
+
+**Câu hỏi cho CEO trong lô này:**
+
+1. **13 bài có hình hỏng trong file sách** (vùng tô thành khối đen; LT 18.12, 19.1, 19.2, 20.9, 21.4, 21.10, 23.1, VD 20.2, Ôn 91, 92, 95, 99, 100) và LT 19.18 (hình ghi E, đề ghi M): ① **vẽ lại bằng code** theo đúng số liệu đề (như hình đề kho Hình — máy vẽ, máy kiểm) · ② chị gửi bản sách khác / bản PDF có hình đúng · ③ tạm bỏ các bài này. Em đề xuất **①**.
+2. **Tỉ số diện tích (CĐ19):** em viết theo VD 19.2–19.3 của sách: dòng tỉ số $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$ kèm lý do "(chung đường cao hạ từ … đến …)", rồi dòng $S_{AMC}=\dfrac{2}{3}\times 96$. Có cần câu lời giải kiểu "Diện tích tam giác AMC là: …" như bài lời văn không, hay giữ khuôn ký hiệu của sách?

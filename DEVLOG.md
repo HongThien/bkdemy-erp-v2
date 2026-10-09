@@ -36188,3 +36188,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 09/10 (tiếp) — CEO chốt lô sách 2: "×a%" (kiểu 1) + nhân hai % phải viết thêm bước đổi số thập phân
 - Ghi k5T §1 + §2b dòng G + §9; sửa lô 2 câu 24, 26 (1,25×0,75 · 0,375×1,4 · 0,625×0,9).
 - **Tự phát hiện:** các dòng chèn bằng `node - <<EOF` hôm 08/10 bị mất dấu `\` — k5T §2b dòng D, F, G có TAB thay cho `\t` của `\times`, dòng G có `%` trần (KaTeX coi là comment ⇒ công thức vỡ). Viết scratchpad/quet-hong.mjs quét ký tự điều khiển + lệnh LaTeX trần + `%` trần; vá 6 chỗ (k5T) + 4 chỗ `$dfrac` trần có sẵn từ trước ở k4T §5. Từ giờ: KHÔNG chèn nội dung có `\` qua heredoc — dùng Edit/Write.
+
+## 09/10 (tiếp) — 5T lô sách 3 (CĐ18–24 hình học, 23 câu) gửi CEO + phát hiện hình sách hỏng
+- Soát 7 hình đề định dùng: 3 hình (LT 18.12, 19.1, 21.10) toàn khối ĐEN — đọc PNG thật (pngjs): RGBA chỉ có 2 giá trị (0,0,0,255) đen đặc và (0,0,0,0) trong suốt ⇒ mọi vùng tô của hình gốc thành đen che nét (21.10 mất hẳn hình tròn); không có hiệu ứng màu trong XML Word ⇒ lỗi trong chính file sách. Quét cả 120 PNG (scratchpad/dem-anh-den.mjs, ngưỡng >15% đen đặc): 16 ảnh hỏng, 13 bài đề dính (LT 18.12, 19.1, 19.2, 20.9, 21.4, 21.10, 23.1, VD 20.2, Ôn 91, 92, 95, 99, 100). LT 19.18 hình ghi E, đề ghi M. ⇒ thay bằng câu có hình tốt; hỏi CEO cách xử lý (đề xuất vẽ lại bằng code).
+- Hình đề dùng đường 4T lô 11 (kho-rules/dai/hinh-de/dung-hinh-de.ps1 + manifest, anh_de) — 7 PNG chép vào hinh-de/5T-*.png theo quy ước tên của nó.
+- Đáp số 23/23: tỉ số diện tích tính bằng toạ độ thật (độc lập "chung đường cao"), sơn mặt / xếp hình đếm từng khối nhỏ. 4 sơ đồ. KaTeX 356 công thức 0 hỏng, quét mất-\ 0.
