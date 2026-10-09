@@ -80,6 +80,9 @@ Truyền file theo ĐÚNG thứ tự câu trong sách. Tool chuẩn hoá R1/R2, 
 - Hình minh hoạ cho **lý thuyết** (định lí/trường hợp bằng nhau) — hiện lý thuyết chỉ có chữ.
 - Công thức gom "chấm điểm bản nháp" thành tool (hiện làm bằng agent Sonnet đọc lại nguồn).
 - Dọn ảnh mồ côi trong bucket (hình 1A cũ của HH00101) — chờ Thùy gật theo luật xoá.
+- **Lời giải 2 phần cho Hình 7 (treo có chủ đích — Thùy 09/10):** từ Hình 8, lời giải Hình có 2 phần (bài tính ⇒ Hướng dẫn bằng lời;
+  bài chứng minh ⇒ Hướng dẫn = sơ đồ phân tích đi lên, Trình bày theo sơ đồ — `kho-rules/dai/k8.md` §1.6). Các bài Hình 7 đã nhập
+  (HH00099–HH00104, §6) **để nguyên**, *"sau này khi nào hoàn thiện thì sửa một thể"*. Đừng sửa lẻ từng bài trước lượt đó.
 
 ## 6. Bài đã nhập bằng luồng này
 
