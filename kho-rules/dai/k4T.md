@@ -45,6 +45,8 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 
 ## 1.5 ⭐ Mỗi lời giải CHIA 2 PHẦN (giữ nguyên quyết định CEO 04/10 cho tiểu học)
 
+> **⭐ Phần 1 nhiều bước ⇒ mỗi bước một CARD, mũi tên sang card kế (CEO 09/10, `kho-rules/README.md` §3):** mỗi bước là một đoạn riêng mở bằng `**Bước k.**`; `**Mấu chốt:**` đứng trước chuỗi bước, `**Chú ý:**` đứng sau; chỉ dùng khi ≥ 2 bước. **Tách ý** chỉ cho bài *Tính* và *Tìm $x$*; bài lời văn giữ chung một câu.
+
 | Phần | Viết gì | Không viết gì |
 |---|---|---|
 | `**Phần 1. Hướng dẫn**` | **Mấu chốt** là gì · **vì sao nghĩ ra** (dấu hiệu trong đề) · các bước theo mạch nghĩ · "Chú ý" nếu có bẫy | — |

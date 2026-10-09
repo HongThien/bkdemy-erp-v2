@@ -1,6 +1,7 @@
 # kho-rules/dai/k6-mau-thu.md — Lô giải thử khối 6 (theo `k6.md`)
 
 > Mỗi lô: giải theo luật `k6.md` hiện hành → CEO duyệt trong chat → chỗ sửa ghi `k6.md` §9 rồi nâng luật.
+> Phần 1 viết theo cú pháp CARD (README §3, CEO 09/10): mỗi đoạn `**Bước k.**` = 1 card, nối mũi tên.
 > Đáp số các câu dưới đã kiểm lại bằng tính ngược / thay vào đề. Chưa ghi DB.
 
 ---
@@ -29,7 +30,7 @@ Câu hình (Câu 7, 8, Bài 4) thuộc Ch IV, **chưa có lý thuyết trên b�
 | Bài 2a | dai | TLN | 12 |
 | Bài 2b | dai | tự luận | $x\in\{34;51;68;85\}$ |
 | Bài 3 (giữ 1 câu, b dùng kết quả a) | dai | tự luận | a) 600000 đồng; b) 30000 đồng |
-| Bài 4 (Hình, không tách ý) | hgt | tự luận | a) 280 m; b) 500 kg |
+| Bài 4 (bài lời văn — giữ chung, CEO 09/10) | hgt | tự luận | a) 280 m; b) 500 kg |
 | Bài 5 | dai | tự luận (chứng minh) | — |
 | Bài 6 | dai | tự luận | $A=\{\text{Đ};\text{Ô};N;G;B;A;O\}$ |
 | Bài 7 | dai | TLN | $x=2$; $y=0$ |
@@ -41,9 +42,9 @@ Câu hình (Câu 7, 8, Bài 4) thuộc Ch IV, **chưa có lý thuyết trên b�
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: tách số La Mã thành từng cụm quen thuộc rồi cộng giá trị: $XX$ là 20, $VII$ là 7.
+**Mấu chốt:** tách số La Mã thành từng cụm quen thuộc rồi cộng giá trị: $XX$ là 20, $VII$ là 7.
 
-Chú ý: số từ 21 đến 30 viết bằng cách thêm $XX$ vào bên trái các số từ $I$ đến $X$.
+**Chú ý:** số từ 21 đến 30 viết bằng cách thêm $XX$ vào bên trái các số từ $I$ đến $X$.
 
 **Phần 2. Trình bày**
 
@@ -57,11 +58,13 @@ A. $A=\{0;1;2;3;4\}$ · B. $A=\{x\in\mathbb{N}^*\mid x<5\}$ · C. $A=\{x\in\math
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: đề hỏi cách **liệt kê**, nên loại ngay hai phương án viết bằng tính chất đặc trưng (B và C).
+**Mấu chốt:** đề hỏi cách **liệt kê**, và số tự nhiên bắt đầu từ 0.
 
-Còn lại A và D: số tự nhiên bắt đầu từ 0, nên tập hợp phải có phần tử 0. D thiếu số 0.
+**Bước 1.** Loại hai phương án viết bằng tính chất đặc trưng (B và C) — đó không phải cách liệt kê.
 
-Chú ý: $\mathbb{N}$ có số 0, $\mathbb{N}^*$ không có số 0.
+**Bước 2.** Còn A và D: tập các số tự nhiên nhỏ hơn 5 phải có phần tử 0. D thiếu số 0 ⇒ chọn A.
+
+**Chú ý:** $\mathbb{N}$ có số 0, $\mathbb{N}^*$ không có số 0.
 
 **Phần 2. Trình bày**
 
@@ -76,11 +79,13 @@ Chọn A.
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: các luỹ thừa cùng cơ số 2 ⇒ nhân thì **cộng** số mũ, chia thì **trừ** số mũ, không cần tính từng luỹ thừa.
+**Mấu chốt:** các luỹ thừa cùng cơ số 2 ⇒ không cần tính từng luỹ thừa, chỉ cần cộng / trừ số mũ.
 
-$2^5.2^3=2^{5+3}=2^8$, rồi $2^8:2^8=2^0=1$.
+**Bước 1.** Nhân hai luỹ thừa cùng cơ số thì **cộng** số mũ: $2^5.2^3=2^8$.
 
-Chú ý: $a^0=1$ chứ không phải 0 — phương án A là bẫy.
+**Bước 2.** Chia hai luỹ thừa cùng cơ số thì **trừ** số mũ: $2^8:2^8=2^0=1$.
+
+**Chú ý:** $a^0=1$ chứ không phải 0 — phương án A là bẫy.
 
 **Phần 2. Trình bày**
 
@@ -99,11 +104,13 @@ Chọn B.
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: coi cả cụm $(x-2)$ là một **thừa số chưa biết**. Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết: $x-2=0:8=0$.
+**Mấu chốt:** coi cả cụm $(x-2)$ là một **thừa số chưa biết**.
 
-Sau đó $x$ là số bị trừ: lấy hiệu cộng với số trừ.
+**Bước 1.** Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết: $x-2=0:8=0$.
 
-Chú ý: tích bằng 0 mà thừa số kia là 8 thì cụm $(x-2)$ phải bằng 0 — phương án A (8) là bẫy chép nhầm số.
+**Bước 2.** Lúc này $x$ là số bị trừ: lấy hiệu cộng với số trừ, $x=0+2=2$.
+
+**Chú ý:** tích bằng 0 mà thừa số kia là 8 thì cụm $(x-2)$ phải bằng 0 — phương án A (8) là bẫy chép nhầm số.
 
 **Phần 2. Trình bày**
 
@@ -125,11 +132,15 @@ A. 21 000 000 đồng · B. 21 500 000 đồng · C. 22 500 000 đồng · D. 20
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: tính lần lượt từng doanh nghiệp theo đúng thứ tự đề cho, vì số tiền của C phụ thuộc B, B phụ thuộc A.
+**Mấu chốt:** số tiền của C phụ thuộc B, B phụ thuộc A ⇒ tính lần lượt theo đúng thứ tự đề cho.
 
-"Nhiều hơn 500 000" ⇒ phép cộng; "gấp hai lần" ⇒ nhân 2.
+**Bước 1.** "Nhiều hơn A 500 000 đồng" ⇒ tiền B = tiền A cộng 500 000.
 
-Chú ý: C gấp đôi **B** chứ không phải gấp đôi A.
+**Bước 2.** "Gấp hai lần số tiền của B" ⇒ tiền C = tiền B nhân 2.
+
+**Bước 3.** Cộng tiền ba doanh nghiệp.
+
+**Chú ý:** C gấp đôi **B** chứ không phải gấp đôi A.
 
 **Phần 2. Trình bày**
 
@@ -153,9 +164,11 @@ A. $60=20.3$ · B. $60=6.10$ · C. $60=2.30$ · D. $60=2^2.5.3$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: phân tích ra thừa số nguyên tố thì **mọi thừa số phải là số nguyên tố**. Cả bốn phương án đều đúng phép nhân, nên phải soát từng thừa số.
+**Mấu chốt:** phân tích ra thừa số nguyên tố thì **mọi thừa số phải là số nguyên tố** — cả bốn phương án đều đúng phép nhân nên phải soát từng thừa số.
 
-20, 6, 10, 30 là hợp số ⇒ loại A, B, C.
+**Bước 1.** 20, 6, 10, 30 là hợp số ⇒ loại A, B, C.
+
+**Bước 2.** Phân tích 60 bằng cách chia lần lượt cho các số nguyên tố để thấy $60=2^2.3.5$, trùng phương án D (chỉ đổi thứ tự thừa số).
 
 **Phần 2. Trình bày**
 
@@ -177,9 +190,9 @@ A. $24\ dm^2$ · B. $48\ dm^2$ · C. $96\ dm^2$ · D. $12\ dm^2$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: diện tích hình thoi bằng **nửa tích** độ dài hai đường chéo.
+**Mấu chốt:** diện tích hình thoi bằng **nửa tích** độ dài hai đường chéo.
 
-Chú ý: quên chia 2 sẽ ra 96 (phương án C) — đó là bẫy.
+**Chú ý:** quên chia 2 sẽ ra 96 (phương án C) — đó là bẫy.
 
 **Phần 2. Trình bày**
 
@@ -195,11 +208,9 @@ A. $BC=2\ cm$ · B. $AD=2\ cm$ · C. $AC=2\ cm$ · D. $DC=2\ cm$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: trong hình bình hành, **các cạnh đối bằng nhau**.
+**Mấu chốt:** trong hình bình hành, **các cạnh đối bằng nhau**; cạnh đối của $AB$ là $DC$.
 
-Trong hình bình hành $ABCD$, cạnh đối của $AB$ là $DC$.
-
-Chú ý: $BC$, $AD$ là cạnh **kề** với $AB$, chưa chắc bằng $AB$ (bằng nhau chỉ khi là hình thoi). $AC$ là đường chéo.
+**Chú ý:** $BC$, $AD$ là cạnh **kề** với $AB$, chưa chắc bằng $AB$ (bằng nhau chỉ khi là hình thoi). $AC$ là đường chéo.
 
 **Phần 2. Trình bày**
 
@@ -214,9 +225,11 @@ Chọn D.
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: hai tích có **chung thừa số 15** ⇒ đặt thừa số chung ra ngoài (tính chất phân phối).
+**Mấu chốt:** hai tích có **chung thừa số 15** ⇒ đặt thừa số chung (tính chất phân phối).
 
-Vì sao nghĩ ra: $141+59=200$ là số tròn trăm, tính nhẩm được ngay.
+**Bước 1.** Nhận ra 15 có mặt ở cả hai tích, rút 15 ra ngoài ngoặc: $15.(141+59)$.
+
+**Bước 2.** Trong ngoặc $141+59=200$ là số tròn trăm, nhân nhẩm $15.200$.
 
 **Phần 2. Trình bày**
 
@@ -233,11 +246,15 @@ $=3000$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: làm theo thứ tự ngoặc tròn → ngoặc vuông; trong ngoặc làm luỹ thừa trước rồi mới trừ.
+**Mấu chốt:** thứ tự ngoặc tròn → ngoặc vuông; trong ngoặc làm luỹ thừa trước rồi mới trừ.
 
-$(6-1)^2=5^2=25$, rồi $45-25=20$.
+**Bước 1.** Ngoặc tròn: $(6-1)^2=5^2=25$.
 
-Chú ý: $2025^0=1$.
+**Bước 2.** Ngoặc vuông: $45-25=20$.
+
+**Bước 3.** Thay $2025^0=1$, rồi tính từ trái sang phải: $2024-20+1$.
+
+**Chú ý:** $2025^0=1$, không phải 0 cũng không phải 2025.
 
 **Phần 2. Trình bày**
 
@@ -256,9 +273,11 @@ $=2005$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: coi $5x$ là **số trừ** chưa biết. Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu: $5x=87-27$.
+**Mấu chốt:** coi $5x$ là **số trừ** chưa biết.
 
-Sau đó $x$ là thừa số chưa biết: lấy tích chia cho thừa số đã biết.
+**Bước 1.** Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu: $5x=87-27=60$.
+
+**Bước 2.** Lúc này $x$ là thừa số chưa biết: lấy tích chia cho thừa số đã biết, $x=60:5=12$.
 
 Thử lại: $87-5.12=87-60=27$ (đúng).
 
@@ -279,9 +298,13 @@ $x=12$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: tìm các bội của 17 bằng cách nhân 17 lần lượt với $0,1,2,3,\dots$, rồi chọn các số nằm trong khoảng từ 31 đến 100.
+**Mấu chốt:** tìm bội của 17 rồi lọc theo khoảng.
 
-Chú ý: $17$ nhỏ hơn 31 nên không chọn; $102$ lớn hơn 100 nên dừng.
+**Bước 1.** Liệt kê bội của 17 bằng cách nhân 17 lần lượt với $0,1,2,3,\dots$
+
+**Bước 2.** Chọn các bội nằm trong khoảng từ 31 đến 100.
+
+**Chú ý:** $17$ nhỏ hơn 31 nên không chọn; $102$ lớn hơn 100 nên dừng.
 
 **Phần 2. Trình bày**
 
@@ -296,11 +319,15 @@ b) Tính giá tiền 1 bó lá dong? Biết tổng số tiền mà bà Lan phả
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt ý a: tiền mỗi loại = giá 1 kg × số ki-lô-gam, rồi cộng ba loại lại.
+**Mấu chốt:** tổng 750 000 đồng = tiền ba loại ở ý a **cộng** tiền 5 bó lá dong.
 
-Mấu chốt ý b: tổng 750 000 đồng gồm tiền ba loại ở ý a **cộng** tiền 5 bó lá dong ⇒ lấy tổng trừ tiền ý a ra tiền 5 bó, rồi chia 5 ra giá 1 bó.
+**Bước 1.** Ý a: tiền mỗi loại = giá 1 kg × số ki-lô-gam, rồi cộng ba loại.
 
-Chú ý: ý b dùng kết quả ý a nên không tách thành hai câu.
+**Bước 2.** Ý b: lấy tổng 750 000 đồng trừ tiền ý a, ra tiền 5 bó lá dong.
+
+**Bước 3.** Chia cho 5, ra giá 1 bó.
+
+**Chú ý:** ý b dùng kết quả ý a.
 
 **Phần 2. Trình bày**
 
@@ -323,11 +350,19 @@ b) Hỏi người nông dân thu hoạch được bao nhiêu ki-lô-gam rau trê
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt ý a: rào **xung quanh** ⇒ một vòng dây dài bằng **chu vi** hình chữ nhật; rào 4 đường dây ⇒ nhân chu vi với 4.
+**Mấu chốt:** rào **xung quanh** ⇒ dùng **chu vi**; trồng rau trên phần đất **còn lại** ⇒ dùng **diện tích trừ lối đi**.
 
-Mấu chốt ý b: rau chỉ trồng trên phần đất còn lại ⇒ diện tích trồng rau = diện tích vườn − diện tích lối đi; rồi nhân với 2 kg mỗi mét vuông.
+**Bước 1.** Ý a: tính chu vi hình chữ nhật = (chiều dài + chiều rộng) nhân 2.
 
-Chú ý: chu vi hình chữ nhật bằng (chiều dài + chiều rộng) nhân 2; diện tích bằng chiều dài nhân chiều rộng. Quên trừ lối đi sẽ ra 600 kg.
+**Bước 2.** Rào 4 đường dây ⇒ nhân chu vi với 4.
+
+**Bước 3.** Ý b: tính diện tích khu vườn = chiều dài nhân chiều rộng.
+
+**Bước 4.** Trừ diện tích lối đi, ra diện tích trồng rau.
+
+**Bước 5.** Mỗi mét vuông 2 kg ⇒ nhân diện tích trồng rau với 2.
+
+**Chú ý:** quên trừ lối đi sẽ ra 600 kg.
 
 **Phần 2. Trình bày**
 
@@ -356,11 +391,13 @@ $250.2=500$ (kg)
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: $1+4+4^2=1+4+16=21$ ⇒ nhóm **3 số hạng liên tiếp** thành một nhóm, mỗi nhóm đặt thừa số chung sẽ lộ ra $(1+4+4^2)=21$.
+**Mấu chốt:** $1+4+4^2=1+4+16=21$ ⇒ nhóm **3 số hạng liên tiếp**, mỗi nhóm đặt thừa số chung sẽ lộ ra $(1+4+4^2)=21$.
 
-Đếm số số hạng để chắc nhóm vừa đủ: số mũ từ 0 đến 59 ⇒ $59-0+1=60$ số hạng, $60:3=20$ nhóm, không thừa số hạng nào.
+**Bước 1.** Đếm số số hạng để chắc nhóm vừa đủ: số mũ từ 0 đến 59 ⇒ $59-0+1=60$ số hạng, $60:3=20$ nhóm, không thừa số hạng nào.
 
-Cuối cùng $D$ viết được thành $21$ nhân một số tự nhiên ⇒ chia hết cho 21.
+**Bước 2.** Mỗi nhóm đặt luỹ thừa đầu nhóm ra ngoài: $4^3+4^4+4^5=4^3.(1+4+4^2)$.
+
+**Bước 3.** Đặt thừa số chung 21 cho cả tổng ⇒ $D$ bằng 21 nhân một số tự nhiên ⇒ chia hết cho 21.
 
 **Phần 2. Trình bày**
 
@@ -381,9 +418,11 @@ Suy ra $D$ chia hết cho 21.
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: tách từng chữ cái của "ĐỒNG BÀO": Đ, Ồ, N, G, B, À, O. Mỗi phần tử chỉ viết **một lần**.
+**Mấu chốt:** mỗi chữ cái là một phần tử, chỉ viết **một lần**; dấu thanh không làm thành chữ cái mới.
 
-Chữ cái không tính dấu thanh: "Ồ" là chữ **Ô**, "À" là chữ **A**. Ô, A, O là ba chữ cái khác nhau nên đều giữ.
+**Bước 1.** Tách từng chữ cái của "ĐỒNG BÀO": Đ, Ồ, N, G, B, À, O.
+
+**Bước 2.** Bỏ dấu thanh: "Ồ" là chữ **Ô**, "À" là chữ **A**. Ô, A, O là ba chữ cái khác nhau nên đều giữ.
 
 **Phần 2. Trình bày**
 
@@ -394,11 +433,11 @@ $A=\{\text{Đ};\text{Ô};N;G;B;A;O\}$
 
 **Phần 1. Hướng dẫn**
 
-Mấu chốt: xét chia hết cho 2 và 5 **trước** vì nó chốt ngay chữ số tận cùng: chia hết cho cả 2 và 5 ⇒ tận cùng là 0 ⇒ $y=0$.
+**Mấu chốt:** xét chia hết cho 2 và 5 **trước** vì nó chốt ngay chữ số tận cùng.
 
-Sau đó xét chia hết cho 9 bằng tổng các chữ số: $4+x+1+2+0=7+x$ phải chia hết cho 9.
+**Bước 1.** Chia hết cho cả 2 và 5 ⇒ chữ số tận cùng là 0 ⇒ $y=0$.
 
-$x$ là chữ số nên $7\le 7+x\le 16$, chỉ có 9 chia hết cho 9 ⇒ $x=2$.
+**Bước 2.** Chia hết cho 9 ⇒ tổng các chữ số $4+x+1+2+0=7+x$ chia hết cho 9. Vì $x$ là chữ số nên $7\le 7+x\le 16$, chỉ có 9 chia hết cho 9 ⇒ $x=2$.
 
 Thử lại: $42120:9=4680$ (đúng).
 

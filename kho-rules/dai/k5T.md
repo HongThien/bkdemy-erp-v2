@@ -58,6 +58,8 @@ phải hiểu được. Nếu một bước chỉ giải được bằng cách "
 
 ## 1.5 ⭐ Mỗi lời giải CHIA 2 PHẦN (CEO 04/10)
 
+> **⭐ Phần 1 nhiều bước ⇒ mỗi bước một CARD, mũi tên sang card kế (CEO 09/10, `kho-rules/README.md` §3):** mỗi bước là một đoạn riêng mở bằng `**Bước k.**`; `**Mấu chốt:**` đứng trước chuỗi bước, `**Chú ý:**` đứng sau; chỉ dùng khi ≥ 2 bước. **Tách ý** chỉ cho bài *Tính* và *Tìm $x$*; bài lời văn giữ chung một câu.
+
 HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái được viết vào bài thi* ⇒ tách hẳn:
 
 | Phần | Viết gì | Không viết gì |

@@ -90,13 +90,38 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 - **Hai phần** `**Phần 1. Hướng dẫn**` (mấu chốt · vì sao nghĩ ra · các bước theo mạch nghĩ · chú ý bẫy) và `**Phần 2. Trình bày**`
   (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất. **Mọi câu** đủ 2 phần, kể cả câu
   trắc nghiệm mà sách chỉ đòi ghi đáp số (CEO 08/10).
+- **⭐ Phần 1 nhiều bước ⇒ MỖI BƯỚC MỘT CARD, mũi tên sang card kế tiếp (CEO 09/10 — áp MỌI khối, mọi nhánh):**
+  *"Chỗ hướng dẫn, nếu có nhiều bước, thì nên làm định dạng mỗi bước là 1 card và có mũi tên sang card tiếp theo."*
+  Cú pháp trong `loi_giai` (máy đọc ra card; giấy / app chưa hỗ trợ thì vẫn đọc được như chữ thường):
+  ```
+  **Phần 1. Hướng dẫn**
+
+  **Mấu chốt:** <một câu — điều phải nhận ra thì mới giải được>
+
+  **Bước 1.** <việc làm ở bước này + vì sao>
+
+  **Bước 2.** <…>
+
+  **Chú ý:** <bẫy, nếu có>
+
+  **Phần 2. Trình bày**
+  ```
+  - Mỗi bước = **một đoạn riêng** mở bằng `**Bước k.**` (k đánh liên tục từ 1). Nội dung bước gói trong đoạn đó (nhiều dòng thì
+    xuống dòng đơn, không dòng trống giữa — dòng trống là ranh giới card). Các đoạn `**Bước k.**` liên tiếp = một chuỗi card nối mũi tên.
+  - `**Mấu chốt:**` đứng **trước** chuỗi card, `**Chú ý:**` / `Thử lại:` đứng **sau** — không phải bước.
+  - Chỉ **≥ 2 bước** mới dùng card. Bài một bước (vd đọc số La Mã, câu TN nhận biết) ⇒ Mấu chốt + Chú ý, không đánh "Bước 1".
+  - Bước là **bước nghĩ** (làm gì, vì sao), không chép lại từng dòng tính của Phần 2.
+  - Hiển thị card + mũi tên trên app / màn duyệt / bản in: **chưa build** (việc treo §4 #8).
+- **Tách ý (CEO 09/10 — áp mọi khối):** chỉ tách các bài **"Tính / thực hiện phép tính"** và **"Tìm $x$"** có nhiều ý a) b) c) — mỗi ý một câu.
+  **Bài toán lời văn** (kể cả các ý độc lập nhau, vd vườn hình chữ nhật: a) tính dây rào, b) tính rau) **giữ chung một câu**, Phần 2 ghi a) b).
+  Hình học: không tách (CEO 21/09).
 - **Mỗi câu lời giải / mỗi phép tính một dòng**, cách nhau dòng trống (CEO 07/10). Phần 2 bài tính mở bằng dòng chép lại đề.
 - **⭐ GIẢI và GÁN DẠNG là 2 việc ĐỘC LẬP (CEO 08/10):** *"giải trước rồi up lên DB ở trạng thái chưa gán dạng; sau này hoàn thiện
   bản đồ thì có 1 lần chạy gán các bài đó vào bản đồ."* Lượt giải ghi câu vào **dạng chờ** `…000000` (`ghi-lo.mjs --chua-gan-dang`),
   khuôn trình bày theo CHUYÊN ĐỀ của sách (không cần dạng). Lượt gán dạng chạy riêng theo §5 file khối, kiểm bằng model khác gán mù.
   Hệ quả DB: câu dạng chờ chưa bấm duyệt được (`_kho_la_dang_cho`) ⇒ duyệt lời giải sau khi gán dạng.
-  *(Lô thử 1–4 của 4T có gán dạng — dạng đề xuất lưu ở `kho-rules/dai/lo/k4T-lo1-4.json`, KHÔNG ghi DB.)* Không khớp dạng ⇒ dạng chờ, không ép. Bài nhiều ý độc lập ⇒ tách câu,
-  mỗi câu đủ 2 phần (CEO 07/10).
+  *(Lô thử 1–4 của 4T có gán dạng — dạng đề xuất lưu ở `kho-rules/dai/lo/k4T-lo1-4.json`, KHÔNG ghi DB.)* Không khớp dạng ⇒ dạng chờ, không ép. Bài nhiều ý tách được
+  (theo luật **Tách ý** ở trên) ⇒ tách câu, mỗi câu đủ 2 phần (CEO 07/10).
 - **Giải theo lời giải mẫu của khối**, không theo thói quen của Claude. Khối chưa có file luật ⇒ **không giải hàng loạt**, làm B1–B7 trước.
 - Định dạng: `\dfrac`, `\times`, chia `:`, số không chèn dấu cách hàng nghìn, `$…$` mỗi công thức, `\overline{abc}` không `\text`.
 - **Kiểm trước khi ghi**: đáp số thử ngược vào đề; lệch đáp án gốc ⇒ không ghi, báo người. Không chắc ⇒ để trống (CLAUDE.md §1.5).
@@ -117,6 +142,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 5 | Đưa **brief giao Sonnet soạn** vào repo (`kho-rules/mau-brief-soan.md`, khuôn như `docs/mau-brief-soan-hinh-hoc.md`) | Lô 5–7 4T brief chỉ nằm trong phiên làm; 5T phải dùng lại, không viết lại từ trí nhớ |
 | 6 | ✅ 08/10 **Đọc sách có công thức là ảnh WMF**: WMF của MathType nhúng sẵn MTEF ⇒ `scripts/kho/mathtype-thu/wmf-mtef.mjs` (5T: 1.031/1.031, KaTeX 0 hỏng, không cần OCR/PDF). `tach-bai.mjs` thêm: "LUYỆN TÂP", sách thiếu tiêu đề LUYỆN TẬP (số bài quay lại), khu Ôn tập `ON` — sách 4T tách ra y hệt trước | Word cũ đã "chuyển công thức thành ảnh" vẫn đọc được chính xác |
 | 7 | ✅ 08/10 (4T lô 11, 32 bài) **Câu có hình trong đề** — hình GỐC của sách: `scripts/kho/sach/trich-media.mjs` → manifest `kho-rules/dai/hinh-de/<khối>.json` (PNG nào dựng từ ảnh sách nào) → `dung-hinh-de.ps1` (EMF → PNG; bảng Word chữ + biểu tượng ⇒ ghép ảnh bảng từ ảnh gốc) → `lo-tu-soan --hinh-de` → `ghi-lo --hinh-de` upload `anh_de` TRƯỚC khi băm biên bản + trạm `kiem-hinh-de` (code: đúng ảnh của đúng bài). Còn: 5T CĐ18–24 (công thức cũng là WMF — xem #6) | `anh_de` nằm trong băm nội dung ⇒ gắn hình sau khi ghi (kiểu `gan_hinh.mjs`) làm biên bản mất hiệu lực |
+| 8 | **Hiển thị Phần 1 dạng CARD + mũi tên** (CEO 09/10, §3): tách đoạn `**Bước k.**` liên tiếp thành chuỗi card nối mũi tên — ở MỌI chỗ hiện lời giải (app HS · màn Duyệt kho / Kho đề thi · bản in). Một bộ tách dùng chung (như `lythuyetBlocks.ts`), không viết riêng từng màn | Luật viết đã có từ 09/10; chưa build thì card hiện thành các đoạn chữ thường (vẫn đọc được) |
 
 ## 5. Trạng thái từng khối
 
