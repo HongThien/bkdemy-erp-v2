@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-357 bảng · 20 view · 0 enum · 153 trigger · 905 function
+357 bảng · 20 view · 0 enum · 155 trigger · 908 function
 
 ## _app_secrets
 
@@ -1768,6 +1768,7 @@ END |  |  |
 | note | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mon | text | Y |  |  |  |
+| bu_tru_buoi_huy | boolean |  | false |  |  |
 
 ## gami_grades
 
@@ -6676,6 +6677,7 @@ WITH luot AS (
 | btvn_nop_anh | tg_btvn_nop_anh_touch | AFTER | INSERT/DELETE/UPDATE | fn_btvn_nop_touch |
 | buoi_hoc | trg_buoi_bo_tro_khoa_ngay | BEFORE | UPDATE | _trg_buoi_bo_tro_khoa_ngay |
 | buoi_hoc | trg_buoi_giai_log | AFTER | UPDATE | _buoi_giai_log |
+| buoi_hoc | trg_buoi_hoc_huy_exp | AFTER | UPDATE | _trg_buoi_hoc_huy_exp |
 | buoi_hoc | trg_buoi_hoc_online_log | AFTER | UPDATE | _trg_buoi_hoc_online_log |
 | buoi_hoc | trg_buoi_hoc_phase_log | AFTER | UPDATE | _trg_buoi_hoc_phase_log |
 | buoi_hoc | trg_ta_buoi_hoc_push_badge | AFTER | INSERT/UPDATE | _trg_ta_buoi_hoc_push |
@@ -6724,6 +6726,7 @@ WITH luot AS (
 | dai_cau_menh_de | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | dai_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
 | diem_thi | tg_diem_thi_tinh | BEFORE | INSERT/UPDATE | fn_diem_thi_tinh |
+| gami_exp_ledger | trg_gami_exp_ledger_buoi_huy | AFTER | INSERT | _trg_gami_exp_ledger_buoi_huy |
 | gami_grades | tg_gami_grades_mt_diem | BEFORE | INSERT/UPDATE | _tg_gami_grades_mt_diem |
 | gami_grades | tg_gami_grades_mt_tong | AFTER | INSERT/DELETE/UPDATE | _tg_gami_grades_mt_tong |
 | gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
@@ -6868,6 +6871,7 @@ WITH luot AS (
 - `_game_bxh_ten(p text)` → text
 - `_game_lop_rut_exp(p_game text, p_giai smallint)` → integer
 - `_game_lop_rut_qua(p_luot uuid, p_buoi uuid, p_hs uuid, p_giai smallint)` → text
+- `_gami_exp_buoi_huy_dong_bo(p_buoi uuid)` → integer
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
 - `_hs_cau_lan_gap(p_hs uuid)` → TABLE(ma_cau text, lan_cuoi timestamp with time zone)
@@ -6971,12 +6975,14 @@ WITH luot AS (
 - `_trg_btyeu_retest_lam()` → trigger
 - `_trg_btyeu_suc_chua()` → trigger
 - `_trg_buoi_bo_tro_khoa_ngay()` → trigger
+- `_trg_buoi_hoc_huy_exp()` → trigger
 - `_trg_buoi_hoc_online_log()` → trigger
 - `_trg_buoi_hoc_phase_log()` → trigger
 - `_trg_ca_bo_tro_phong()` → trigger
 - `_trg_chan_duyet_dang_cho()` → trigger
 - `_trg_chuoi_moc()` → trigger
 - `_trg_de_thi_dien_dang()` → trigger
+- `_trg_gami_exp_ledger_buoi_huy()` → trigger
 - `_trg_log_doi_dang()` → trigger
 - `_trg_log_kho_sua()` → trigger
 - `_trg_pt_viec_cap_nhat_push()` → trigger
@@ -7709,8 +7715,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
