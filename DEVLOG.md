@@ -36323,3 +36323,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 09/10 (chiều) — Mở lại Thế giới BK
 - **Thùy:** "Mở lại kênh thế giới đi. main chưa có rồi. Sao main lại thiếu so với ngày trước?" ⇒ mig `202610091857_tinh_nang_mo_the_gioi` (ĐÃ ÁP): `the_gioi` mo_tu = 2020-01-01. Trạng thái công tắc: MỞ = hoc_tap · nhiem_vu · chuoi · thanh_tuu · vi_xu · xep_hang · the_gioi · tro_choi; ĐÓNG = thong_tin · so_tay · rank · thu_vien · de_thi_thu; "sắp ra mắt" = chinh_phuc · giai_vo_dich.
 - **Vì sao main "thiếu":** KHÔNG thiếu code (main ⊇ thu-nghiem, 0 commit lệch). Phần HS thấy ít hơn do 3 lớp ẨN chủ ý: (1) cờ build `coBat.ts` (phieuluu/hoctap) — tắt ở Production tới 09/10; (2) công tắc `tinh_nang` đợt 1 (07/10) ẩn the_gioi/thong_tin/so_tay/thu_vien/rank/de_thi_thu; (3) `rankBat()` tắt Rank ở mọi bản (06/10).
+
+## 09/10 (tối) — Huỷ buổi thu hồi EXP
+- **Lỗ (Thùy soát top xu):** huỷ buổi SAU khi đóng phase không thu hồi EXP — `huyBuoi` chỉ đổi trang_thai, recompute bỏ qua buổi huỷ ⇒ dòng EXP cũ sống mãi, vẫn quy ra xu.
+- **Sửa:** mig `202610091934_exp_thu_hoi_khi_huy_buoi` (ĐÃ ÁP, `--only` vì còn 14 file treo của phiên khác). Cột `gami_exp_ledger.bu_tru_buoi_huy` + `_gami_exp_buoi_huy_dong_bo(buoi)`: đích − hiện, buổi huy ⇒ tổng EXP buổi = 0, không huỷ ⇒ = tổng dòng gốc; ghi DÒNG BÙ TRỪ cùng source/mon/note/tháng (không xoá gốc). Trigger `trg_buoi_hoc_huy_exp` (sang/khỏi huy; buổi thường chạy lại recompute lớp×tháng) + `trg_gami_exp_ledger_buoi_huy` (EXP mới ghi vào buổi đang huỷ). Bỏ qua `exp_btvn_thang` (recompute quản) và tháng < 2026-09 (đóng băng).
+- **Vì sao không lọc trong hàm đọc:** ≥6 chỗ cộng ledger, và `fn_gami_exp_xu_thang` thuộc owner `postgres` ⇒ migrate không thay được. Dòng bù trừ làm mọi chỗ cộng tự đúng.
+- **Lỗi phụ tìm thấy:** recompute không xoá điều chỉnh tháng `exp_btvn_thang` neo vào buổi đã huỷ ⇒ cộng đôi (HS0407 T9: +15 neo 8B2.T2.14092026[huy] cạnh −90). Đã vá recompute; dữ liệu T9 đó CHƯA sửa (chỉ đổi khi recompute 8B2/2026-09 chạy lại).
+- **Kiểm (ROLLBACK, trước và sau khi áp):** buổi bù test HS0407 T10: 300 → đóng 550 → huỷ 300 → mở lại 550 → huỷ 300 → ghi EXP mới khi đang huỷ vẫn 300 → fn_mo_lai_phase sạch. _xu_dong_bo: +3 rồi −3 xu.
+- **Chưa làm:** Elo (`gami_elo`/`gami_elo_history`) của buổi huỷ cũng không đảo; huỷ/mở lại buổi chưa có log trạng thái riêng (§4).
