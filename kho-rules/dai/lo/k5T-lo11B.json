@@ -1,0 +1,326 @@
+[
+ {
+  "ma_nguon": "VD 20.1",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính diện tích mỗi hình thang đã cho dưới đây với số đo trên hình vẽ:",
+  "noi_dung_sach": "Tính diện tích mỗi hình thang đã cho dưới đây với số đo trên hình vẽ:",
+  "dap_an": "a) $269,7\\ \\text{cm}^2$; b) $128,75\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích hình thang $=$ (đáy lớn $+$ đáy bé) $\\times$ chiều cao $:2$. Mỗi hình trên hình vẽ đã cho đủ ba số: hai đáy và chiều cao.\n\n**Bước 1.** Tìm trên hình: hai đáy là hai cạnh song song nằm ngang (hình a: $18,5$ cm và $25$ cm; hình b: $10,25$ cm và $15,5$ cm); chiều cao là đoạn có kí hiệu góc vuông, nối hai đáy ($12,4$ cm ở hình a, $10$ cm ở hình b).\n\n**Bước 2.** Thay số vào công thức cho từng hình, nhớ chia $2$ ở cuối.\n\n**Chú ý:** ở hình a) cạnh bên bên trái là cạnh xiên, không phải chiều cao; chiều cao là đoạn có kí hiệu góc vuông.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hình thang a) có hai đáy $18,5$ cm và $25$ cm, chiều cao $12,4$ cm; hình thang b) có hai đáy $10,25$ cm và $15,5$ cm, chiều cao $10$ cm.\n\na) Diện tích hình thang a) là: $(18,5+25)\\times 12,4:2=269,7$ ($\\text{cm}^2$)\n\nb) Diện tích hình thang b) là: $(10,25+15,5)\\times 10:2=128,75$ ($\\text{cm}^2$)\n\nĐáp số: a) $269,7\\ \\text{cm}^2$; b) $128,75\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1151.png",
+   "image1142.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-20-1.png",
+  "hinh_de_ma": "VD 20.1"
+ },
+ {
+  "ma_nguon": "LT 20.9",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hình thang ABCD có kích thước như hình vẽ bên. Biết diện tích hình thang AMCD là $24\\ \\text{cm}^{2}$. Tính diện tích hình thang ABCD.",
+  "noi_dung_sach": "Hình thang ABCD có kích thước như hình vẽ bên. Biết diện tích hình thang AMCD là $24\\ \\text{cm}^{2}$. Tính diện tích hình thang ABCD.",
+  "dap_an": "$30\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình thang AMCD và hình thang ABCD **cùng chiều cao** (khoảng cách giữa hai đáy AB và DC). Biết diện tích AMCD thì tìm được chiều cao, rồi tính được diện tích ABCD.\n\n**Bước 1.** Theo hình vẽ, AB $=5$ cm, MB $=3$ cm, DC $=10$ cm. Đáy bé của hình thang AMCD là AM, tìm bằng AM $=$ AB $-$ MB.\n\n**Bước 2.** Hình thang AMCD có hai đáy AM, DC và diện tích đã biết, đi ngược công thức diện tích: chiều cao $=$ diện tích $\\times 2:$ tổng hai đáy.\n\n**Bước 3.** Hình thang ABCD có hai đáy AB, DC và cùng chiều cao đó, tính diện tích.\n\n**Chú ý:** đáy bé của hình thang AMCD là AM, không phải AB; dùng nhầm AB thì chiều cao sai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $AB=5$ cm, $MB=3$ cm, $DC=10$ cm.\n\nĐộ dài đoạn thẳng AM là: $5-3=2$ (cm)\n\nChiều cao của hình thang AMCD, cũng là chiều cao của hình thang ABCD, là: $24\\times 2:(2+10)=4$ (cm)\n\nDiện tích hình thang ABCD là: $(5+10)\\times 4:2=30$ ($\\text{cm}^2$)\n\nĐáp số: $30\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1143.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-20-9.png",
+  "hinh_de_ma": "LT 20.9"
+ },
+ {
+  "ma_nguon": "LT 20.16",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình thang ABCD (như hình vẽ). Hãy so sánh diện tích tam giác ACD với diện tích tam giác BCD, diện tích tam giác AOD với diện tích tam giác BOC.",
+  "noi_dung_sach": "Cho hình thang ABCD (như hình vẽ). Hãy so sánh diện tích tam giác ACD với diện tích tam giác BCD, diện tích tam giác AOD với diện tích tam giác BOC.",
+  "dap_an": "$S_{ACD}=S_{BCD}$; $S_{AOD}=S_{BOC}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình thang có hai đáy AB và CD song song, nên khoảng cách từ A và từ B xuống đáy CD **bằng nhau** (đều bằng chiều cao hình thang). Hai tam giác có chung đáy và có hai đường cao bằng nhau thì có diện tích bằng nhau.\n\n**Bước 1.** So sánh tam giác ACD với tam giác BCD: hai tam giác chung đáy CD, đường cao hạ từ A và từ B xuống CD bằng nhau.\n\n**Bước 2.** So sánh tam giác AOD với tam giác BOC: tam giác ACD gồm AOD và DOC; tam giác BCD gồm BOC và DOC. Hai tam giác lớn có diện tích bằng nhau, cùng bớt đi phần chung DOC thì hai phần còn lại bằng nhau.\n\n**Chú ý:** chỉ kết luận **diện tích bằng nhau**; hai tam giác không nhất thiết có hình dạng giống nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác ACD và tam giác BCD có chung đáy CD, hai đường cao hạ từ A và từ B xuống CD bằng nhau (vì AB song song với CD), nên $S_{ACD}=S_{BCD}$\n\nVì O nằm trên AC nên $S_{ACD}=S_{AOD}+S_{DOC}$\n\nVì O nằm trên BD nên $S_{BCD}=S_{BOC}+S_{DOC}$\n\nCùng bớt $S_{DOC}$ thì $S_{AOD}=S_{BOC}$\n\nVậy $S_{ACD}=S_{BCD}$ và $S_{AOD}=S_{BOC}$",
+  "so_do": null,
+  "anh_sach": [
+   "image1137.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-20-16.png",
+  "hinh_de_ma": "LT 20.16"
+ },
+ {
+  "ma_nguon": "LT 20.17",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình thang ABCD (như hình vẽ). Biết AO = 4 cm, OC = 16 cm và diện tích hình tam giác AOD là $10\\ \\text{cm}^{2}$. Tính diện tích hình thang ABCD.",
+  "noi_dung_sach": "Cho hình thang ABCD (như hình vẽ). Biết AO = 4 cm, OC = 16 cm và diện tích hình tam giác AOD là $10\\ \\text{cm}^{2}$. Tính diện tích hình thang ABCD.",
+  "dap_an": "$62,5\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai đường chéo chia hình thang ABCD thành **bốn tam giác** AOD, COD, BOC, AOB. Biết $S_{AOD}$ và tỉ số $\\dfrac{AO}{OC}$ thì tìm lần lượt được cả bốn tam giác, rồi cộng lại.\n\n**Bước 1.** Tam giác AOD và tam giác COD chung đường cao hạ từ D xuống AC nên tỉ số diện tích bằng tỉ số hai đáy AO : OC $=4:16=\\dfrac{1}{4}$. Từ đó tìm $S_{COD}$.\n\n**Bước 2.** Hai tam giác ACD và BCD chung đáy CD, đường cao bằng nhau (AB song song với CD) nên diện tích bằng nhau; cùng bớt $S_{COD}$ thì $S_{BOC}=S_{AOD}$.\n\n**Bước 3.** Tam giác AOB và tam giác BOC chung đường cao hạ từ B xuống AC nên $\\dfrac{S_{AOB}}{S_{BOC}}=\\dfrac{AO}{OC}=\\dfrac{1}{4}$. Từ đó tìm $S_{AOB}$.\n\n**Bước 4.** Cộng diện tích bốn tam giác được diện tích hình thang.\n\n**Chú ý:** hai tam giác AOD và BOC ở hai bên hình thang luôn có diện tích bằng nhau (vì hai tam giác lớn ACD và BCD bằng nhau về diện tích), nên $S_{BOC}$ không cần tính riêng bằng tỉ số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác AOD và tam giác COD có chung đường cao hạ từ D xuống AC, suy ra $\\dfrac{S_{AOD}}{S_{COD}}=\\dfrac{AO}{OC}=\\dfrac{4}{16}=\\dfrac{1}{4}$\n\n$S_{COD}=10\\times 4=40\\ (\\text{cm}^2)$\n\nTam giác ACD và tam giác BCD có chung đáy CD, hai đường cao hạ từ A và từ B xuống CD bằng nhau, nên $S_{ACD}=S_{BCD}$.\n\nCùng bớt $S_{COD}$ thì $S_{BOC}=S_{AOD}=10\\ (\\text{cm}^2)$\n\nTam giác AOB và tam giác BOC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{AOB}}{S_{BOC}}=\\dfrac{AO}{OC}=\\dfrac{1}{4}$\n\n$S_{AOB}=10:4=2,5\\ (\\text{cm}^2)$\n\nDiện tích hình thang ABCD là: $10+40+10+2,5=62,5$ ($\\text{cm}^2$)\n\nĐáp số: $62,5\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1152.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-20-17.png",
+  "hinh_de_ma": "LT 20.17"
+ },
+ {
+  "ma_nguon": "LT 20.18",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình thang ABCD (như hình vẽ). Biết diện tích các hình tam giác AED là $2\\ \\text{cm}^{2}$ và BFC là $3\\ \\text{cm}^{2}$. Tính diện tích tứ giác MENF.",
+  "noi_dung_sach": "Cho hình thang ABCD (như hình vẽ). Biết diện tích các hình tam giác AED là $2\\ \\text{cm}^{2}$ và BFC là $3\\ \\text{cm}^{2}$. Tính diện tích tứ giác MENF.",
+  "dap_an": "$5\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trong hình thang, hai tam giác **chung một đáy nằm trên đáy này** mà **hai đỉnh còn lại nằm trên đáy kia** thì có diện tích bằng nhau (hai đường cao bằng nhau, đều bằng chiều cao hình thang). Dùng hai lần, mỗi lần \"cùng bớt phần chung\" để ra tam giác cần tìm.\n\n**Bước 1.** Tam giác ADN và tam giác MDN chung đáy DN, đỉnh A và M cùng nằm trên AB nên diện tích bằng nhau. Cùng bớt tam giác EDN thì $S_{MEN}=S_{AED}$.\n\n**Bước 2.** Tam giác MNC và tam giác BNC chung đáy NC, đỉnh M và B cùng nằm trên AB nên diện tích bằng nhau. Cùng bớt tam giác FNC thì $S_{MFN}=S_{BFC}$.\n\n**Bước 3.** Đường chéo MN chia tứ giác MENF thành hai tam giác MEN và MFN; cộng hai diện tích đã tìm.\n\n**Chú ý:** diện tích tứ giác MENF không cần biết độ dài các cạnh; chỉ cần hai diện tích đề cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác ADN và tam giác MDN có chung đáy DN, hai đường cao hạ từ A và từ M xuống DC bằng nhau (vì AB song song với DC), nên $S_{ADN}=S_{MDN}$\n\nVì E nằm trên AN và trên DM nên $S_{ADN}=S_{AED}+S_{EDN}$ và $S_{MDN}=S_{MEN}+S_{EDN}$\n\nCùng bớt $S_{EDN}$ thì $S_{MEN}=S_{AED}=2\\ (\\text{cm}^2)$\n\nTam giác MNC và tam giác BNC có chung đáy NC, hai đường cao hạ từ M và từ B xuống DC bằng nhau, nên $S_{MNC}=S_{BNC}$\n\nVì F nằm trên MC và trên BN nên $S_{MNC}=S_{MFN}+S_{FNC}$ và $S_{BNC}=S_{BFC}+S_{FNC}$\n\nCùng bớt $S_{FNC}$ thì $S_{MFN}=S_{BFC}=3\\ (\\text{cm}^2)$\n\nTứ giác MENF gồm tam giác MEN và tam giác MFN nên diện tích tứ giác MENF là: $2+3=5$ ($\\text{cm}^2$)\n\nĐáp số: $5\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1150.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-20-18.png",
+  "hinh_de_ma": "LT 20.18"
+ },
+ {
+  "ma_nguon": "VD 21.2",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết diện tích hình tròn là $28,26\\ \\text{cm}^{2}$. Tính diện tích hình vuông.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết diện tích hình tròn là $28,26\\ \\text{cm}^{2}$. Tính diện tích hình vuông.",
+  "dap_an": "$36\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình tròn nằm trong hình vuông và chạm bốn cạnh nên **đường kính hình tròn bằng cạnh hình vuông**; hình vuông gồm **$4$ hình vuông nhỏ** cạnh $r$, mỗi hình có diện tích $r\\times r$. Đề cho diện tích hình tròn $=r\\times r\\times 3,14$ nên chỉ cần tìm $r\\times r$, không cần tìm $r$.\n\n**Bước 1.** Từ diện tích hình tròn chia cho $3,14$ để được $r\\times r$.\n\n**Bước 2.** Cạnh hình vuông là $r\\times 2$, nên hình vuông gồm $4$ hình vuông nhỏ cạnh $r$: lấy $r\\times r$ nhân $4$.\n\n**Chú ý:** diện tích hình vuông gấp **$4$ lần** $r\\times r$ (không phải gấp $2$ lần, dù cạnh hình vuông chỉ gấp $2$ lần $r$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình tròn bằng $r\\times r\\times 3,14$ nên $r\\times r=28,26:3,14=9$ ($\\text{cm}^2$)\n\nHình vuông gồm $4$ hình vuông nhỏ có cạnh $r$ nên diện tích hình vuông là: $9\\times 4=36$ ($\\text{cm}^2$)\n\nĐáp số: $36\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image339.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-21-2.png",
+  "hinh_de_ma": "VD 21.2"
+ },
+ {
+  "ma_nguon": "VD 21.3",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết hình vuông có cạnh là 4 cm. Tính diện tích hình tròn.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết hình vuông có cạnh là 4 cm. Tính diện tích hình tròn.",
+  "dap_an": "$25,12\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình vuông nằm trong hình tròn, bốn đỉnh nằm trên đường tròn; hai đường chéo cắt nhau tại tâm và mỗi nửa đường chéo bằng bán kính $r$. Hai đường chéo chia hình vuông thành **$4$ tam giác vuông có hai cạnh góc vuông đều bằng $r$**, nên diện tích hình vuông bằng $r\\times r\\times 2$. Biết diện tích hình vuông thì tìm được $r\\times r$.\n\n**Bước 1.** Tính diện tích hình vuông từ cạnh $4$ cm.\n\n**Bước 2.** Mỗi tam giác có diện tích $r\\times r:2$, bốn tam giác có diện tích $r\\times r\\times 2$. Vậy $r\\times r$ bằng diện tích hình vuông chia $2$.\n\n**Bước 3.** Diện tích hình tròn $=r\\times r\\times 3,14$.\n\n**Chú ý:** không cần tìm $r$; chỉ cần $r\\times r$ là đủ tính diện tích hình tròn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình vuông là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nHình vuông gồm $4$ tam giác vuông có hai cạnh góc vuông đều bằng $r$ nên diện tích hình vuông là $r\\times r:2\\times 4=r\\times r\\times 2$.\n\n$r\\times r=16:2=8$ ($\\text{cm}^2$)\n\nDiện tích hình tròn là: $8\\times 3,14=25,12$ ($\\text{cm}^2$)\n\nĐáp số: $25,12\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image384.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-21-3.png",
+  "hinh_de_ma": "VD 21.3"
+ },
+ {
+  "ma_nguon": "LT 21.4",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ, biết OF = 10 cm, EF = 4,5 cm. Tính diện tích phần tô đậm.",
+  "noi_dung_sach": "Cho hình vẽ, biết OF = 10 cm, EF = 4,5 cm. Tính diện tích phần tô đậm.",
+  "dap_an": "$219,015\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phần tô đậm là **hình tròn lớn (bán kính OF) bỏ đi hình tròn bé (bán kính OE)**. Đề cho OF và EF, mà EF chỉ là bề rộng của phần tô đậm, nên bán kính hình tròn bé phải tìm: OE $=$ OF $-$ EF.\n\n**Bước 1.** Theo hình vẽ, O là tâm của cả hai hình tròn, F nằm trên hình tròn lớn, E nằm trên hình tròn bé. Tìm OE.\n\n**Bước 2.** Tính diện tích hai hình tròn bằng $r\\times r\\times 3,14$.\n\n**Bước 3.** Lấy diện tích hình tròn lớn trừ diện tích hình tròn bé.\n\n**Chú ý:** EF $=4,5$ cm không phải bán kính hình tròn bé; bán kính hình tròn bé là $10-4,5=5,5$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBán kính hình tròn bé là: $10-4,5=5,5$ (cm)\n\nDiện tích hình tròn lớn là: $10\\times 10\\times 3,14=314$ ($\\text{cm}^2$)\n\nDiện tích hình tròn bé là: $5,5\\times 5,5\\times 3,14=94,985$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $314-94,985=219,015$ ($\\text{cm}^2$)\n\nĐáp số: $219,015\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image231.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-4.png",
+  "hinh_de_ma": "LT 21.4"
+ },
+ {
+  "ma_nguon": "LT 21.5",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình vẽ:\na) Tính diện tích hình tròn tâm O.\nb) Tính diện tích hình tròn tâm $O'$\nc) Tính diện tích hình vuông ABCD.",
+  "noi_dung_sach": "Cho hình vẽ:\na) Tính diện tích hình tròn tâm O.\nb) Tính diện tích hình tròn tâm $O'$\nc) Tính diện tích hình vuông ABCD.",
+  "dap_an": "a) $50,24\\ \\text{cm}^2$; b) $12,56\\ \\text{cm}^2$; c) $144\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề không cho số đo, các số nằm trên hình: **$8$ cm** là cạnh hình vuông EIHD (hình tròn tâm O nằm trong hình vuông này, chạm bốn cạnh nên đường kính $8$ cm); **$4$ cm** là cạnh hình vuông FBGI (hình tròn tâm $O'$ nằm trong hình vuông này nên đường kính $4$ cm).\n\n**Bước 1.** Ý a) và b): lấy đường kính chia $2$ được bán kính, rồi tính diện tích hình tròn $=r\\times r\\times 3,14$.\n\n**Bước 2.** Ý c): cạnh AB của hình vuông ABCD gồm hai đoạn AF và FB. AF bằng cạnh EI của hình vuông EIHD (AFIE là hình chữ nhật), FB $=4$ cm.\n\n**Chú ý:** diện tích hình tròn dùng **bán kính**, không dùng đường kính ($8$ cm và $4$ cm là đường kính).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hình tròn tâm O có đường kính $8$ cm, hình tròn tâm $O'$ có đường kính $4$ cm, $EI=8$ cm, $FB=4$ cm.\n\na) Bán kính hình tròn tâm O là: $8:2=4$ (cm)\n\nDiện tích hình tròn tâm O là: $4\\times 4\\times 3,14=50,24$ ($\\text{cm}^2$)\n\nb) Bán kính hình tròn tâm $O'$ là: $4:2=2$ (cm)\n\nDiện tích hình tròn tâm $O'$ là: $2\\times 2\\times 3,14=12,56$ ($\\text{cm}^2$)\n\nc) Cạnh hình vuông ABCD là: $AB=AF+FB=8+4=12$ (cm)\n\nDiện tích hình vuông ABCD là: $12\\times 12=144$ ($\\text{cm}^2$)\n\nĐáp số: a) $50,24\\ \\text{cm}^2$; b) $12,56\\ \\text{cm}^2$; c) $144\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image564.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-5.png",
+  "hinh_de_ma": "LT 21.5"
+ },
+ {
+  "ma_nguon": "LT 21.6",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình tròn tâm O, đường kính AB = 8 cm (như hình vẽ).\na) Tính chu vi hình tròn tâm O, đường kính AB; hình tròn tâm M, đường kính OA và hình tròn tâm N, đường kính OB.\nb) So sánh tổng chu vi của hình tròn tâm M và hình tròn tâm N với chu vi hình tròn tâm O.",
+  "noi_dung_sach": "Cho hình tròn tâm O, đường kính AB = 8 cm (như hình vẽ).\na) Tính chu vi hình tròn tâm O, đường kính AB; hình tròn tâm M, đường kính OA và hình tròn tâm N, đường kính OB.\nb) So sánh tổng chu vi của hình tròn tâm M và hình tròn tâm N với chu vi hình tròn tâm O.",
+  "dap_an": "a) Tâm O: $25,12$ cm; tâm M: $12,56$ cm; tâm N: $12,56$ cm; b) bằng nhau",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chu vi hình tròn $=$ đường kính $\\times 3,14$. Hai hình tròn nhỏ có đường kính OA và OB, mà O nằm giữa A và B nên OA $+$ OB $=$ AB: **tổng hai đường kính nhỏ bằng đường kính hình tròn lớn**.\n\n**Bước 1.** Hình tròn tâm O có đường kính AB $=8$ cm. O là tâm nên O là trung điểm của AB, do đó OA $=$ OB $=8:2=4$ cm; đó là đường kính của hình tròn tâm M và hình tròn tâm N.\n\n**Bước 2.** Tính chu vi từng hình tròn bằng đường kính $\\times 3,14$.\n\n**Bước 3.** Cộng chu vi hai hình tròn nhỏ rồi so với chu vi hình tròn lớn.\n\n**Chú ý:** ở ý b) kết quả bằng nhau không phải ngẫu nhiên: (OA $+$ OB) $\\times 3,14=$ AB $\\times 3,14$, đúng với mọi độ dài AB.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Chu vi hình tròn tâm O là: $8\\times 3,14=25,12$ (cm)\n\nVì O là tâm của hình tròn đường kính AB nên OA $=$ OB $=8:2=4$ (cm)\n\nChu vi hình tròn tâm M, đường kính OA, là: $4\\times 3,14=12,56$ (cm)\n\nChu vi hình tròn tâm N, đường kính OB, là: $4\\times 3,14=12,56$ (cm)\n\nb) Tổng chu vi hình tròn tâm M và hình tròn tâm N là: $12,56+12,56=25,12$ (cm)\n\nTổng chu vi hình tròn tâm M và hình tròn tâm N bằng chu vi hình tròn tâm O (cùng $25,12$ cm).\n\nĐáp số: a) $25,12$ cm; $12,56$ cm; $12,56$ cm; b) bằng nhau",
+  "so_do": null,
+  "anh_sach": [
+   "image267.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-6.png",
+  "hinh_de_ma": "LT 21.6"
+ },
+ {
+  "ma_nguon": "LT 21.11",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ dưới đây. Tính diện tích hình tròn biết đường chéo hình vuông có độ dài là 16 cm.",
+  "noi_dung_sach": "Cho hình vẽ dưới đây. Tính diện tích hình tròn biết đường chéo hình vuông có độ dài là 16 cm.",
+  "dap_an": "$100,48\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho **đường chéo hình vuông** nhưng hỏi diện tích **hình tròn**, nên phải đi qua diện tích hình vuông: hình vuông tính được từ đường chéo, còn hình tròn nằm trong hình vuông và chạm bốn cạnh nên đường kính hình tròn bằng cạnh hình vuông.\n\n**Bước 1.** Hình vuông có hai đường chéo bằng nhau, vuông góc và cắt nhau tại trung điểm của mỗi đường, nên chia hình vuông thành $4$ tam giác vuông bằng nhau, hai cạnh góc vuông của mỗi tam giác đều bằng nửa đường chéo. Tính diện tích bốn tam giác để ra diện tích hình vuông.\n\n**Bước 2.** Gọi $r$ là bán kính hình tròn. Cạnh hình vuông bằng đường kính $=r\\times 2$ nên hình vuông gồm $4$ hình vuông nhỏ cạnh $r$, mỗi hình có diện tích $r\\times r$. Chia diện tích hình vuông cho $4$ được $r\\times r$.\n\n**Bước 3.** Diện tích hình tròn $=r\\times r\\times 3,14$.\n\n**Chú ý:** không cần tìm $r$; $16$ cm là cả đường chéo, nửa đường chéo mới là $8$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa đường chéo hình vuông là: $16:2=8$ (cm)\n\nHình vuông gồm $4$ tam giác vuông có hai cạnh góc vuông đều bằng $8$ cm nên diện tích hình vuông là: $8\\times 8:2\\times 4=128$ ($\\text{cm}^2$)\n\nGọi $r$ là bán kính hình tròn.\n\nCạnh hình vuông bằng đường kính hình tròn nên hình vuông gồm $4$ hình vuông nhỏ cạnh $r$.\n\n$r\\times r=128:4=32$ ($\\text{cm}^2$)\n\nDiện tích hình tròn là: $32\\times 3,14=100,48$ ($\\text{cm}^2$)\n\nĐáp số: $100,48\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image283.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-11.png",
+  "hinh_de_ma": "LT 21.11"
+ },
+ {
+  "ma_nguon": "LT 21.12",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết hình vuông có cạnh dài 6 cm (xem hình vẽ). Tính diện tích hình tròn.",
+  "noi_dung_sach": "Biết hình vuông có cạnh dài 6 cm (xem hình vẽ). Tính diện tích hình tròn.",
+  "dap_an": "$56,52\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình vuông nằm trong hình tròn, bốn đỉnh nằm trên đường tròn nên hai đường chéo đi qua tâm và **mỗi nửa đường chéo bằng bán kính $r$**. Hai đường chéo chia hình vuông thành $4$ tam giác vuông có hai cạnh góc vuông đều bằng $r$, nên diện tích hình vuông bằng $r\\times r\\times 2$ (như VD 21.3 của sách).\n\n**Bước 1.** Tính diện tích hình vuông từ cạnh $6$ cm.\n\n**Bước 2.** Diện tích hình vuông bằng $r\\times r\\times 2$ nên $r\\times r$ bằng diện tích hình vuông chia $2$.\n\n**Bước 3.** Diện tích hình tròn $=r\\times r\\times 3,14$.\n\n**Chú ý:** cạnh hình vuông $6$ cm không phải bán kính; bán kính là nửa đường chéo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình vuông là: $6\\times 6=36$ ($\\text{cm}^2$)\n\nGọi $r$ là bán kính hình tròn.\n\nHình vuông gồm $4$ tam giác vuông có hai cạnh góc vuông đều bằng $r$ nên diện tích hình vuông là $r\\times r:2\\times 4=r\\times r\\times 2$.\n\n$r\\times r=36:2=18$ ($\\text{cm}^2$)\n\nDiện tích hình tròn là: $18\\times 3,14=56,52$ ($\\text{cm}^2$)\n\nĐáp số: $56,52\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image302.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-12.png",
+  "hinh_de_ma": "LT 21.12"
+ },
+ {
+  "ma_nguon": "LT 21.13",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính diện tích hai hình tròn trong hình vẽ dưới đây.",
+  "noi_dung_sach": "Tính diện tích hai hình tròn trong hình vẽ dưới đây.",
+  "dap_an": "Hình tròn nhỏ: $28,26\\ \\text{cm}^2$; hình tròn lớn: $56,52\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình vẽ có **hai hình tròn và một hình vuông ở giữa**: hình tròn nhỏ nằm trong hình vuông (chạm bốn cạnh), hình tròn lớn ngoài hình vuông (đi qua bốn đỉnh). Hình vuông là cầu nối: từ hình tròn nhỏ tìm cạnh hình vuông, từ hình vuông tìm $R\\times R$ của hình tròn lớn.\n\n**Bước 1.** Theo hình vẽ, $3$ cm là bán kính hình tròn nhỏ (đoạn từ tâm đến cạnh hình vuông). Tính diện tích hình tròn nhỏ.\n\n**Bước 2.** Cạnh hình vuông bằng đường kính hình tròn nhỏ, tính diện tích hình vuông.\n\n**Bước 3.** Gọi $R$ là bán kính hình tròn lớn; mỗi nửa đường chéo hình vuông bằng $R$, hình vuông gồm $4$ tam giác vuông có hai cạnh góc vuông đều bằng $R$ nên diện tích hình vuông bằng $R\\times R\\times 2$. Từ đó tìm $R\\times R$ rồi diện tích hình tròn lớn.\n\n**Chú ý:** $3$ cm là **bán kính**, không phải đường kính; cạnh hình vuông là $3\\times 2=6$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, bán kính hình tròn nhỏ là $3$ cm.\n\nDiện tích hình tròn nhỏ là: $3\\times 3\\times 3,14=28,26$ ($\\text{cm}^2$)\n\nCạnh hình vuông bằng đường kính hình tròn nhỏ, là: $3\\times 2=6$ (cm)\n\nDiện tích hình vuông là: $6\\times 6=36$ ($\\text{cm}^2$)\n\nGọi $R$ là bán kính hình tròn lớn.\n\nHình vuông gồm $4$ tam giác vuông có hai cạnh góc vuông đều bằng $R$ nên diện tích hình vuông là $R\\times R:2\\times 4=R\\times R\\times 2$.\n\n$R\\times R=36:2=18$ ($\\text{cm}^2$)\n\nDiện tích hình tròn lớn là: $18\\times 3,14=56,52$ ($\\text{cm}^2$)\n\nĐáp số: Hình tròn nhỏ: $28,26\\ \\text{cm}^2$; hình tròn lớn: $56,52\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image431.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-13.png",
+  "hinh_de_ma": "LT 21.13"
+ },
+ {
+  "ma_nguon": "LT 21.14",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vuông và đường tròn tâm O có đường kính bằng cạnh hình vuông và bằng 4 cm (như hình vẽ). Hãy tính diện tích phần gạch chéo.",
+  "noi_dung_sach": "Cho hình vuông và đường tròn tâm O có đường kính bằng cạnh hình vuông và bằng 4 cm (như hình vẽ). Hãy tính diện tích phần gạch chéo.",
+  "dap_an": "$9,12\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phần gạch chéo là **hình tròn bỏ đi phần trắng ở giữa** (hình \"ngôi sao\" bốn cánh). Phần trắng ấy là **hình vuông bỏ đi bốn góc**, mà theo hình vẽ bốn góc là bốn phần tư hình tròn bán kính $2$ cm có tâm ở bốn đỉnh hình vuông; ghép bốn phần tư lại được **đúng một hình tròn** bán kính $2$ cm, có diện tích bằng hình tròn đã cho.\n\n**Bước 1.** Tính diện tích hình tròn (đường kính $4$ cm nên bán kính $2$ cm) và diện tích hình vuông (cạnh $4$ cm).\n\n**Bước 2.** Bốn góc hình vuông ghép lại thành một hình tròn bán kính $2$ cm, nên phần trắng $=$ hình vuông $-$ diện tích hình tròn.\n\n**Bước 3.** Phần gạch chéo $=$ hình tròn $-$ phần trắng.\n\n**Chú ý:** thử lại bằng cách khác: phần gạch chéo $=$ $2$ hình tròn $-$ hình vuông $=12,56\\times 2-16=9,12$, cùng kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBán kính hình tròn là: $4:2=2$ (cm)\n\nDiện tích hình tròn là: $2\\times 2\\times 3,14=12,56$ ($\\text{cm}^2$)\n\nDiện tích hình vuông là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nTheo hình vẽ, bốn góc của hình vuông là bốn phần tư hình tròn bán kính $2$ cm; ghép lại thành một hình tròn bán kính $2$ cm có diện tích $12,56\\ \\text{cm}^2$.\n\nDiện tích phần trắng ở giữa là: $16-12,56=3,44$ ($\\text{cm}^2$)\n\nDiện tích phần gạch chéo là: $12,56-3,44=9,12$ ($\\text{cm}^2$)\n\nĐáp số: $9,12\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image537.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-14.png",
+  "hinh_de_ma": "LT 21.14"
+ },
+ {
+  "ma_nguon": "LT 21.15",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vuông ABCD. Các nửa hình tròn có đường kính là cạnh hình vuông cắt nhau tạo thành bông hoa bốn cánh. Biết bán kính các nửa đường tròn đều là 5 cm. Tính diện tích bông hoa.",
+  "noi_dung_sach": "Cho hình vuông ABCD. Các nửa hình tròn có đường kính là cạnh hình vuông cắt nhau tạo thành bông hoa bốn cánh. Biết bán kính các nửa đường tròn đều là 5 cm. Tính diện tích bông hoa.",
+  "dap_an": "$57\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng diện tích bốn nửa hình tròn thì **hình vuông được phủ kín, còn các cánh hoa (chỗ hai nửa hình tròn chồng lên nhau) bị tính hai lần**. Vậy diện tích bông hoa $=$ tổng diện tích bốn nửa hình tròn $-$ diện tích hình vuông.\n\n**Bước 1.** Bốn nửa hình tròn bán kính $5$ cm ghép lại được **hai** hình tròn bán kính $5$ cm. Tính tổng diện tích.\n\n**Bước 2.** Mỗi nửa hình tròn có đường kính là một cạnh hình vuông nên cạnh hình vuông là $5\\times 2$. Tính diện tích hình vuông.\n\n**Bước 3.** Lấy tổng diện tích bốn nửa hình tròn trừ diện tích hình vuông.\n\n**Chú ý:** bốn nửa hình tròn là hai hình tròn, không phải bốn hình tròn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích bốn nửa hình tròn, bằng diện tích hai hình tròn bán kính $5$ cm, là: $5\\times 5\\times 3,14\\times 2=157$ ($\\text{cm}^2$)\n\nCạnh hình vuông ABCD là: $5\\times 2=10$ (cm)\n\nDiện tích hình vuông ABCD là: $10\\times 10=100$ ($\\text{cm}^2$)\n\nBốn nửa hình tròn phủ kín hình vuông, còn bốn cánh hoa được phủ hai lần, nên diện tích bông hoa là: $157-100=57$ ($\\text{cm}^2$)\n\nĐáp số: $57\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image218.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-21-15.png",
+  "hinh_de_ma": "LT 21.15"
+ },
+ {
+  "ma_nguon": "LT 22.1",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình hộp chữ nhật như hình vẽ bên. Biết độ dài các cạnh QD = 3 cm; QP = 6 cm; QM = 4 cm.\na) Hãy cho biết độ dài các cạnh CP, MN, PN.\nb) Tính diện tích mặt đáy MNPQ và các mặt bên ABNM, ADQM.",
+  "noi_dung_sach": "Cho hình hộp chữ nhật như hình vẽ bên. Biết độ dài các cạnh QD = 3 cm; QP = 6 cm; QM = 4 cm.\na) Hãy cho biết độ dài các cạnh CP, MN, PN.\nb) Tính diện tích mặt đáy MNPQ và các mặt bên ABNM, ADQM.",
+  "dap_an": "a) $CP=3$ cm; $MN=6$ cm; $PN=4$ cm; b) $S_{MNPQ}=24\\ \\text{cm}^2$; $S_{ABNM}=18\\ \\text{cm}^2$; $S_{ADQM}=12\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình hộp chữ nhật có $12$ cạnh chia thành **ba nhóm, mỗi nhóm $4$ cạnh song song và bằng nhau**: bốn cạnh chiều dài, bốn cạnh chiều rộng, bốn cạnh chiều cao. Biết ba cạnh QP, QM, QD xuất phát từ đỉnh Q là biết hết các cạnh.\n\n**Bước 1.** Theo hình vẽ, QP $=6$ cm là chiều dài, QM $=4$ cm là chiều rộng, QD $=3$ cm là chiều cao. Mỗi cạnh còn lại song song với cạnh nào thì bằng cạnh đó: CP là cạnh đứng nên bằng QD; MN song song với QP; PN song song với QM.\n\n**Bước 2.** Mỗi mặt là hình chữ nhật: diện tích $=$ hai cạnh kề nhau nhân với nhau. Mặt đáy MNPQ có hai cạnh QP và QM. Mặt bên ABNM có hai cạnh MN và AM (AM là cạnh đứng nên bằng QD). Mặt bên ADQM có hai cạnh QM và AM.\n\n**Chú ý:** ý b dùng các cạnh tìm được ở ý a nên giữ chung một bài.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $QP=6$ cm, $QM=4$ cm, $QD=3$ cm.\n\na) $CP=QD=3$ (cm); $MN=QP=6$ (cm); $PN=QM=4$ (cm)\n\nb) Diện tích mặt đáy MNPQ là: $6\\times 4=24$ ($\\text{cm}^2$)\n\nCạnh đứng $AM=QD=3$ cm.\n\nDiện tích mặt bên ABNM là: $6\\times 3=18$ ($\\text{cm}^2$)\n\nDiện tích mặt bên ADQM là: $4\\times 3=12$ ($\\text{cm}^2$)\n\nĐáp số: a) $CP=3$ cm; $MN=6$ cm; $PN=4$ cm; b) $24\\ \\text{cm}^2$; $18\\ \\text{cm}^2$; $12\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image432.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-22-1.png",
+  "hinh_de_ma": "LT 22.1"
+ },
+ {
+  "ma_nguon": "LT 23.3",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một khối gỗ dạng hình hộp chữ nhật có các kích thước như hình vẽ. Người ta cắt đi một phần khối gỗ có dạng hình lập phương cạnh 4 cm. Tính thể tích khối gỗ còn lại.",
+  "noi_dung_sach": "Một khối gỗ dạng hình hộp chữ nhật có các kích thước như hình vẽ. Người ta cắt đi một phần khối gỗ có dạng hình lập phương cạnh 4 cm. Tính thể tích khối gỗ còn lại.",
+  "dap_an": "$206\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thể tích khối còn lại $=$ thể tích cả khối hình hộp chữ nhật ban đầu $-$ thể tích phần bị cắt đi. Phần bị cắt là hình lập phương cạnh $4$ cm nên không cần quan tâm nó nằm ở chỗ nào.\n\n**Bước 1.** Theo hình vẽ, khối gỗ nguyên có chiều dài $9$ cm, chiều rộng $6$ cm, chiều cao $5$ cm. Tính thể tích bằng dài $\\times$ rộng $\\times$ cao.\n\n**Bước 2.** Tính thể tích hình lập phương cạnh $4$ cm bị cắt đi.\n\n**Bước 3.** Lấy thể tích cả khối trừ phần cắt đi.\n\n**Chú ý:** phần khuyết vẫn tính thể tích của **cả khối ban đầu** (như chưa cắt) rồi mới trừ, không tính riêng từng mảnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, khối gỗ ban đầu có chiều dài $9$ cm, chiều rộng $6$ cm, chiều cao $5$ cm.\n\nThể tích khối gỗ ban đầu là: $9\\times 6\\times 5=270$ ($\\text{cm}^3$)\n\nThể tích phần bị cắt đi là: $4\\times 4\\times 4=64$ ($\\text{cm}^3$)\n\nThể tích khối gỗ còn lại là: $270-64=206$ ($\\text{cm}^3$)\n\nĐáp số: $206\\ \\text{cm}^3$",
+  "so_do": null,
+  "anh_sach": [
+   "image1119.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-23-3.png",
+  "hinh_de_ma": "LT 23.3"
+ },
+ {
+  "ma_nguon": "LT 23.4",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trên một khối gỗ hình lập phương cạnh 20 cm, người ta đục một lỗ hình vuông cạnh 3cm ở chính giữa, xuyên qua khối gỗ. Tính thể tích phần còn lại của khối gỗ.",
+  "noi_dung_sach": "Trên một khối gỗ hình lập phương cạnh 20 cm, người ta đục một lỗ hình vuông cạnh 3cm ở chính giữa, xuyên qua khối gỗ. Tính thể tích phần còn lại của khối gỗ.",
+  "dap_an": "$7820\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thể tích phần còn lại $=$ thể tích khối gỗ nguyên $-$ thể tích phần bị đục. Lỗ đục **xuyên qua khối gỗ** nên là một hình hộp chữ nhật có đáy vuông cạnh $3$ cm và chiều dài đúng bằng cạnh khối gỗ ($20$ cm).\n\n**Bước 1.** Tính thể tích khối gỗ hình lập phương cạnh $20$ cm.\n\n**Bước 2.** Tính thể tích phần bị đục: đáy $3\\times 3$, cao $20$ cm.\n\n**Bước 3.** Lấy thể tích khối gỗ trừ thể tích phần bị đục.\n\n**Chú ý:** chiều dài của lỗ là $20$ cm (đục xuyên qua), không phải $3$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích khối gỗ hình lập phương là: $20\\times 20\\times 20=8000$ ($\\text{cm}^3$)\n\nThể tích phần bị đục là: $3\\times 3\\times 20=180$ ($\\text{cm}^3$)\n\nThể tích phần còn lại của khối gỗ là: $8000-180=7820$ ($\\text{cm}^3$)\n\nĐáp số: $7820\\ \\text{cm}^3$",
+  "so_do": null,
+  "anh_sach": [
+   "image1130.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-23-4.png",
+  "hinh_de_ma": "LT 23.4"
+ },
+ {
+  "ma_nguon": "VD 24.1",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Người ta dùng các khối lập phương nhỏ cạnh 1 cm để xếp thành hình lập phương lớn cạnh 4 cm. Sau đó sơn cả 6 mặt hình lập phương lớn đó.\na) Cần bao nhiêu khối lập phương nhỏ để xếp?\nb) Có bao nhiêu khối lập phương nhỏ được sơn 3 mặt?\nc) Có bao nhiêu khối lập phương nhỏ được sơn 2 mặt?\nd) Có bao nhiêu khối lập phương nhỏ được sơn 1 mặt?\ne) Có bao nhiêu khối lập phương nhỏ không được sơn?",
+  "noi_dung_sach": "Người ta dùng các khối lập phương nhỏ cạnh 1 cm để xếp thành hình lập phương lớn cạnh 4 cm. Sau đó sơn cả 6 mặt hình lập phương lớn đó.\na) Cần bao nhiêu khối lập phương nhỏ để xếp?\nb) Có bao nhiêu khối lập phương nhỏ được sơn 3 mặt?\nc) Có bao nhiêu khối lập phương nhỏ được sơn 2 mặt?\nd) Có bao nhiêu khối lập phương nhỏ được sơn 1 mặt?\ne) Có bao nhiêu khối lập phương nhỏ không được sơn?",
+  "dap_an": "a) $64$ khối; b) $8$ khối; c) $24$ khối; d) $24$ khối; e) $8$ khối",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân loại các khối nhỏ **theo vị trí** trong hình lập phương lớn: khối ở **đỉnh** thì có $3$ mặt lộ ra ngoài (sơn $3$ mặt); khối nằm **trên cạnh, không kể đỉnh** sơn $2$ mặt; khối nằm **trên mặt, không kể phần sát cạnh** sơn $1$ mặt; khối **ở trong lõi** không được sơn. Mỗi loại đếm theo quy tắc riêng.\n\n**Bước 1.** Ý a) Hình lập phương cạnh $4$ cm xếp bằng khối cạnh $1$ cm, mỗi chiều có $4$ khối nên số khối là $4\\times 4\\times 4$.\n\n**Bước 2.** Ý b) Khối sơn $3$ mặt nằm ở các đỉnh; hình lập phương có $8$ đỉnh.\n\n**Bước 3.** Ý c) Khối sơn $2$ mặt nằm trên cạnh, trừ $2$ khối ở hai đầu: mỗi cạnh có $4-2$ khối; hình lập phương có $12$ cạnh.\n\n**Bước 4.** Ý d) Khối sơn $1$ mặt nằm trên mặt, bỏ đi một hàng sát mỗi cạnh: mỗi mặt còn hình vuông $(4-2)\\times(4-2)$ khối; có $6$ mặt.\n\n**Bước 5.** Ý e) Khối không được sơn nằm ở lõi, là hình lập phương nhỏ hơn có mỗi chiều $4-2$ khối.\n\n**Chú ý:** thử lại: $8+24+24+8=64$, đúng bằng số khối ở ý a).\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số khối lập phương nhỏ cần để xếp là: $4\\times 4\\times 4=64$ (khối)\n\nb) Các khối được sơn $3$ mặt nằm ở các đỉnh.\n\nHình lập phương có $8$ đỉnh nên có $8$ khối được sơn $3$ mặt.\n\nc) Các khối được sơn đúng $2$ mặt nằm trên cạnh, không kể hai khối ở đỉnh.\n\nMỗi cạnh có số khối được sơn đúng $2$ mặt là: $4-2=2$ (khối)\n\nHình lập phương có $12$ cạnh nên số khối được sơn đúng $2$ mặt là: $12\\times 2=24$ (khối)\n\nd) Các khối được sơn đúng $1$ mặt nằm trên mặt, không nằm trên cạnh.\n\nMỗi mặt có số khối được sơn đúng $1$ mặt là: $(4-2)\\times(4-2)=4$ (khối)\n\nHình lập phương có $6$ mặt nên số khối được sơn đúng $1$ mặt là: $6\\times 4=24$ (khối)\n\ne) Các khối không được sơn nằm bên trong, là một hình lập phương có mỗi cạnh gồm $4-2=2$ khối.\n\nSố khối không được sơn là: $2\\times 2\\times 2=8$ (khối)\n\nĐáp số: a) $64$ khối; b) $8$ khối; c) $24$ khối; d) $24$ khối; e) $8$ khối",
+  "so_do": null,
+  "anh_sach": [
+   "image1121.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-24-1.png",
+  "hinh_de_ma": "VD 24.1"
+ }
+]

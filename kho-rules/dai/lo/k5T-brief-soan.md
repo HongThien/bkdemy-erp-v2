@@ -83,3 +83,13 @@ Bài tính (không có dòng "Đáp số") vẫn PHẢI có `dap_an`.
 - Đề có lỗi in rõ ràng (vd `5xy+1` thay cho `5\times y+1`): soạn theo đề đúng và ghi `ghi_chu_nghi` nêu chỗ in sai.
 
 **Tự kiểm trước khi xong:** tính lại từng đáp số bằng code (viết script node vào thư mục scratchpad của bạn bằng Write tool, KHÔNG dùng heredoc) và thay ngược vào đề; kiểm sơ đồ khớp số liệu. Báo cáo cuối: số câu đã soạn, câu nào có `ghi_chu_nghi` / `bo`.
+
+---
+
+### Khối "Bài có hình" (lô 11 trở đi — chỉ dùng khi `<IN>` có trường `hinh`)
+
+- Mỗi bài có trường `hinh` = đường dẫn PNG **hình đề** sẽ hiện cùng đề cho HS (ảnh sách, ảnh ghép nhiều hình có nhãn a) b)…, hoặc hình vẽ lại vì ảnh sách hỏng). **Mở bằng Read và xem kỹ** trước khi giải: tên điểm, điểm nằm trên cạnh nào, các chấm chia đoạn, số đo ghi trên hình, vùng tô đậm (màu xám/đậm). Đề chữ có thể nói "như hình vẽ" — dữ kiện nằm trên hình.
+- Hình lệch chữ (tên điểm, số đo) ⇒ theo ĐỀ CHỮ và ghi `ghi_chu_nghi`. Dữ kiện chỉ có trên hình (số đo, điểm chia) ⇒ được dùng, Phần 2 nêu rõ "Theo hình vẽ, …".
+- **Không tách ý** bài có hình nhiều ý trừ bài "Tính/Tìm x" thuần — các bài "xác định tỉ số" hay "tính diện tích mỗi hình" nhiều hình con giữ MỘT câu, `ma_nguon` = mã bài, Phần 2 ghi a) b) theo đúng nhãn trên hình ghép.
+- Tỉ số diện tích: viết đủ câu "Tam giác … và tam giác … có chung đường cao hạ từ … xuống …, suy ra …" (k5T §1). Phần tô đậm = hình lớn trừ phần không tô, hoặc cộng các phần — nói rõ cách chia.
+- Lời giải KHÔNG có sơ đồ đoạn thẳng trừ khi bài có thêm phần tổng–hiệu/tỉ rõ ràng; hình đề đã là hình minh hoạ.

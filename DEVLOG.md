@@ -36291,3 +36291,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 09/10 (tiếp) — 5T lô 10 (Ôn tập) ghi thật 112 câu (T15T000000673–784); tổng từ sách 771
 - 10B 27 (ON 64 ≡ LT 7.17), 10C 42, 10A 43. Soát: bỏ sơ đồ ON 20/21 (lộ đáp số), sửa nhãn ON 24; ON 12a dap_an viết lại dạng a=…; hàm ON 3 nhận D = 13/40 lẫn 0,325.
 - Lô 11 (bài có hình) đang dựng: dau-vao-soan thêm cờ --co-hinh (chỉ lấy bài có hình, kèm tên ảnh); dung-hinh-de.ps1 thêm cách ghep (bài nhiều ảnh, lưới 2 cột + nhãn a) b)…) và ve_lai (ảnh hỏng vẽ lại bằng code). Phát hiện tach-bai gắn nhầm ảnh của ON 94 (hình có F) vào ON 93 ⇒ vá bai.json, ON 94 vào lô 11 (bộ kiểm thêm 94a/94b). 13 ảnh hỏng + LT 19.18: 11 vẽ lại (Sonnet), treo LT 21.10, 23.1 (khối đen che mất hình), VD 20.2 (đề lẫn lời giải); LT 18.1 bỏ (bài yêu cầu vẽ).
+
+## 09/10 (tiếp) — 5T lô 11C + 11B (bài có hình) ghi thật 35 câu (T15T000000785–819); tổng từ sách 806
+- 11C (Ôn tập có hình) 16 câu, 11B (CĐ20–24 có hình) 19 câu. Đáp số khớp bộ kiểm lô 11 (Sonnet viết độc lập từ đề + hình); ON 97, LT 20.16 không hàm (kiểm tay).
+- Opus mở lại hình các câu có số đọc từ hình (LT 21.5, 21.13, 21.14, 23.3): khớp cách đọc của người soạn. Sửa nhỏ: ON 99 bước cộng diện tích, ON 102 câu giải thích, LT 20.16 thiếu dòng "Bài giải", ON 91 chính tả đề.
+- Sai của t: dòng 10A ở k5T §8b ghi qua sed/heredoc làm "\times" thành ký tự tab + "imes" (3 chỗ) ⇒ sửa lại; bài học cũ vẫn đúng: chuỗi có dấu gạch ngược thì ghi bằng Edit/Write, không qua sed.
+- Còn: 11A (CĐ18–19 có hình) đang soạn.

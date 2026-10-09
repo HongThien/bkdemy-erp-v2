@@ -6,6 +6,7 @@
 # Manifest (JSON): { "<mã bài>": { "tep": "4T-LT-5-15.png", "nguon": ["image109.emf"], "cach": "emf" | "png" | "bang", "bang"?: {...} } }
 #   emf  : EMF/WMF → PNG bằng System.Drawing (chỉ Windows đọc được EMF), thu cho vừa khung 900×600, nền trắng — KHÔNG vẽ lại, KHÔNG sửa nội dung
 #   png  : ảnh PNG/JPG gốc của sách chép nguyên
+#   ve_lai: ảnh sách hỏng ⇒ PNG vẽ lại bằng code (dựng sẵn ở <Out>/<tep>, "nguon" vẫn ghi ảnh gốc để cổng đối chiếu đúng bài, "ly_do" nói vì sao)
 #   bang : sách là BẢNG Word (chữ ở ô trái, ảnh biểu tượng ở ô phải) mà tách-bài chỉ giữ được chữ ⇒ ghép lại thành 1 ảnh bảng:
 #          chữ lấy từ đề sách, mỗi hàng là ĐÚNG ảnh gốc của hàng đó (thu về cùng chiều cao) — không đếm lại, không vẽ biểu tượng mới.
 # Lấy ảnh gốc: node scripts/kho/sach/trich-media.mjs <docx> <thư mục> <tên ảnh…>  (hoặc giải nén word/media của .docx)
@@ -73,6 +74,26 @@ foreach ($p in $man.PSObject.Properties) {
     }
     $bmp.Save($ra, [System.Drawing.Imaging.ImageFormat]::Png)
     $g.Dispose(); $bmp.Dispose(); $gt.Dispose(); $tmp.Dispose(); foreach ($r in $hang) { $r.img.Dispose() }
+  } elseif ($m.cach -eq 'ghep') {
+    # bài có NHIỀU ảnh (mỗi ý một hình): ghép nguyên các ảnh gốc theo thứ tự "nguon" thành lưới 2 cột, nhãn "nhan" (a) b) …) trên mỗi ảnh — không sửa ảnh
+    $imgs = @($m.nguon | ForEach-Object { [System.Drawing.Image]::FromFile((Join-Path $Media $_)) })
+    $o = 380; $pad = 16; $hNhan = if ($m.nhan) { 34 } else { 0 }
+    $cot = [Math]::Min(2, $imgs.Count); $hangN = [Math]::Ceiling($imgs.Count / $cot)
+    $vua = @($imgs | ForEach-Object { $k = [Math]::Min(1.0, [Math]::Min($o / $_.Width, $o / $_.Height)); [pscustomobject]@{ w = [int]($_.Width * $k); h = [int]($_.Height * $k) } })
+    $hO = ($vua | Measure-Object -Property h -Maximum).Maximum
+    $W = $cot * ($o + 2 * $pad); $H = $hangN * ($hO + $hNhan + 2 * $pad)
+    $bmp = New-Object System.Drawing.Bitmap $W, $H; $g = [System.Drawing.Graphics]::FromImage($bmp)
+    $g.InterpolationMode = 'HighQualityBicubic'; $g.SmoothingMode = 'HighQuality'; $g.TextRenderingHint = 'AntiAliasGridFit'; $g.Clear([System.Drawing.Color]::White)
+    $font = New-Object System.Drawing.Font('Times New Roman', 20, [System.Drawing.FontStyle]::Bold)
+    for ($i = 0; $i -lt $imgs.Count; $i++) {
+      $x0 = ($i % $cot) * ($o + 2 * $pad) + $pad; $y0 = [Math]::Floor($i / $cot) * ($hO + $hNhan + 2 * $pad) + $pad
+      if ($m.nhan) { $g.DrawString($m.nhan[$i], $font, [System.Drawing.Brushes]::Black, $x0, $y0) }
+      $g.DrawImage($imgs[$i], $x0 + [int](($o - $vua[$i].w) / 2), $y0 + $hNhan, $vua[$i].w, $vua[$i].h)
+    }
+    $bmp.Save($ra, [System.Drawing.Imaging.ImageFormat]::Png); $g.Dispose(); $bmp.Dispose(); $imgs | ForEach-Object { $_.Dispose() }
+  } elseif ($m.cach -eq 've_lai') {
+    # ảnh sách HỎNG (vùng tô thành khối đen) ⇒ hình VẼ LẠI bằng code theo đúng ảnh gốc + đề (CEO 09/10, k5T §1) — tệp đã dựng sẵn, ở đây chỉ kiểm có tệp
+    if (-not (Test-Path $ra)) { throw "ve_lai: $ma chưa có tệp $ra (vẽ lại bằng code trước)" }
   } else { throw "cach '$($m.cach)' của $ma không biết" }
   $kt = [System.Drawing.Image]::FromFile($ra); Write-Output ("{0,-12} {1,-22} {2}x{3}  <- {4}" -f $ma, $m.tep, $kt.Width, $kt.Height, ($m.nguon -join ',')); $kt.Dispose()
 }

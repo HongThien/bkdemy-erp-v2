@@ -1,0 +1,5 @@
+{
+ "LT 20.16": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình thang có hai đáy AB và CD song song, nên khoảng cách từ A và từ B xuống đáy CD **bằng nhau** (đều bằng chiều cao hình thang). Hai tam giác có chung đáy và có hai đường cao bằng nhau thì có diện tích bằng nhau.\n\n**Bước 1.** So sánh tam giác ACD với tam giác BCD: hai tam giác chung đáy CD, đường cao hạ từ A và từ B xuống CD bằng nhau.\n\n**Bước 2.** So sánh tam giác AOD với tam giác BOC: tam giác ACD gồm AOD và DOC; tam giác BCD gồm BOC và DOC. Hai tam giác lớn có diện tích bằng nhau, cùng bớt đi phần chung DOC thì hai phần còn lại bằng nhau.\n\n**Chú ý:** chỉ kết luận **diện tích bằng nhau**; hai tam giác không nhất thiết có hình dạng giống nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác ACD và tam giác BCD có chung đáy CD, hai đường cao hạ từ A và từ B xuống CD bằng nhau (vì AB song song với CD), nên $S_{ACD}=S_{BCD}$\n\nVì O nằm trên AC nên $S_{ACD}=S_{AOD}+S_{DOC}$\n\nVì O nằm trên BD nên $S_{BCD}=S_{BOC}+S_{DOC}$\n\nCùng bớt $S_{DOC}$ thì $S_{AOD}=S_{BOC}$\n\nVậy $S_{ACD}=S_{BCD}$ và $S_{AOD}=S_{BOC}$"
+ }
+}

@@ -1,9 +1,541 @@
 {
- "LT 18.16": { "tep": "5T-LT-18-16.png", "nguon": ["image83.png"], "cach": "png" },
- "LT 19.8": { "tep": "5T-LT-19-8.png", "nguon": ["image1084.png"], "cach": "png" },
- "LT 19.12": { "tep": "5T-LT-19-12.png", "nguon": ["image1071.png"], "cach": "png" },
- "LT 19.16": { "tep": "5T-LT-19-16.png", "nguon": ["image1081.png"], "cach": "png" },
- "LT 19.25": { "tep": "5T-LT-19-25.png", "nguon": ["image1109.png"], "cach": "png" },
- "LT 20.10": { "tep": "5T-LT-20-10.png", "nguon": ["image1145.png"], "cach": "png" },
- "LT 21.7": { "tep": "5T-LT-21-7.png", "nguon": ["image219.png"], "cach": "png" }
+ "LT 18.16": {
+  "tep": "5T-LT-18-16.png",
+  "nguon": [
+   "image83.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.8": {
+  "tep": "5T-LT-19-8.png",
+  "nguon": [
+   "image1084.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.12": {
+  "tep": "5T-LT-19-12.png",
+  "nguon": [
+   "image1071.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.16": {
+  "tep": "5T-LT-19-16.png",
+  "nguon": [
+   "image1081.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.25": {
+  "tep": "5T-LT-19-25.png",
+  "nguon": [
+   "image1109.png"
+  ],
+  "cach": "png"
+ },
+ "LT 20.10": {
+  "tep": "5T-LT-20-10.png",
+  "nguon": [
+   "image1145.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.7": {
+  "tep": "5T-LT-21-7.png",
+  "nguon": [
+   "image219.png"
+  ],
+  "cach": "png"
+ },
+ "VD 18.2": {
+  "tep": "5T-VD-18-2.png",
+  "nguon": [
+   "image430.png"
+  ],
+  "cach": "png"
+ },
+ "LT 18.5": {
+  "tep": "5T-LT-18-5.png",
+  "nguon": [
+   "image1149.png"
+  ],
+  "cach": "png"
+ },
+ "VD 19.2": {
+  "tep": "5T-VD-19-2.png",
+  "nguon": [
+   "image200.png"
+  ],
+  "cach": "png"
+ },
+ "VD 19.3": {
+  "tep": "5T-VD-19-3.png",
+  "nguon": [
+   "image1094.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.3": {
+  "tep": "5T-LT-19-3.png",
+  "nguon": [
+   "image1099.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.4": {
+  "tep": "5T-LT-19-4.png",
+  "nguon": [
+   "image1098.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.5": {
+  "tep": "5T-LT-19-5.png",
+  "nguon": [
+   "image1083.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.6": {
+  "tep": "5T-LT-19-6.png",
+  "nguon": [
+   "image1085.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.9": {
+  "tep": "5T-LT-19-9.png",
+  "nguon": [
+   "image1091.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.10": {
+  "tep": "5T-LT-19-10.png",
+  "nguon": [
+   "image959.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.11": {
+  "tep": "5T-LT-19-11.png",
+  "nguon": [
+   "image839.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.13": {
+  "tep": "5T-LT-19-13.png",
+  "nguon": [
+   "image1105.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.14": {
+  "tep": "5T-LT-19-14.png",
+  "nguon": [
+   "image1089.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.19": {
+  "tep": "5T-LT-19-19.png",
+  "nguon": [
+   "image1135.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.20": {
+  "tep": "5T-LT-19-20.png",
+  "nguon": [
+   "image1123.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.21": {
+  "tep": "5T-LT-19-21.png",
+  "nguon": [
+   "image1114.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.22": {
+  "tep": "5T-LT-19-22.png",
+  "nguon": [
+   "image1101.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.23": {
+  "tep": "5T-LT-19-23.png",
+  "nguon": [
+   "image1111.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.24": {
+  "tep": "5T-LT-19-24.png",
+  "nguon": [
+   "image1112.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.26": {
+  "tep": "5T-LT-19-26.png",
+  "nguon": [
+   "image1095.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.27": {
+  "tep": "5T-LT-19-27.png",
+  "nguon": [
+   "image1100.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.28": {
+  "tep": "5T-LT-19-28.png",
+  "nguon": [
+   "image1108.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.29": {
+  "tep": "5T-LT-19-29.png",
+  "nguon": [
+   "image1102.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.30": {
+  "tep": "5T-LT-19-30.png",
+  "nguon": [
+   "image1122.png"
+  ],
+  "cach": "png"
+ },
+ "LT 20.16": {
+  "tep": "5T-LT-20-16.png",
+  "nguon": [
+   "image1137.png"
+  ],
+  "cach": "png"
+ },
+ "LT 20.17": {
+  "tep": "5T-LT-20-17.png",
+  "nguon": [
+   "image1152.png"
+  ],
+  "cach": "png"
+ },
+ "LT 20.18": {
+  "tep": "5T-LT-20-18.png",
+  "nguon": [
+   "image1150.png"
+  ],
+  "cach": "png"
+ },
+ "VD 21.2": {
+  "tep": "5T-VD-21-2.png",
+  "nguon": [
+   "image339.png"
+  ],
+  "cach": "png"
+ },
+ "VD 21.3": {
+  "tep": "5T-VD-21-3.png",
+  "nguon": [
+   "image384.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.5": {
+  "tep": "5T-LT-21-5.png",
+  "nguon": [
+   "image564.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.6": {
+  "tep": "5T-LT-21-6.png",
+  "nguon": [
+   "image267.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.11": {
+  "tep": "5T-LT-21-11.png",
+  "nguon": [
+   "image283.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.12": {
+  "tep": "5T-LT-21-12.png",
+  "nguon": [
+   "image302.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.13": {
+  "tep": "5T-LT-21-13.png",
+  "nguon": [
+   "image431.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.14": {
+  "tep": "5T-LT-21-14.png",
+  "nguon": [
+   "image537.png"
+  ],
+  "cach": "png"
+ },
+ "LT 21.15": {
+  "tep": "5T-LT-21-15.png",
+  "nguon": [
+   "image218.png"
+  ],
+  "cach": "png"
+ },
+ "LT 22.1": {
+  "tep": "5T-LT-22-1.png",
+  "nguon": [
+   "image432.png"
+  ],
+  "cach": "png"
+ },
+ "LT 23.3": {
+  "tep": "5T-LT-23-3.png",
+  "nguon": [
+   "image1119.png"
+  ],
+  "cach": "png"
+ },
+ "LT 23.4": {
+  "tep": "5T-LT-23-4.png",
+  "nguon": [
+   "image1130.png"
+  ],
+  "cach": "png"
+ },
+ "VD 24.1": {
+  "tep": "5T-VD-24-1.png",
+  "nguon": [
+   "image1121.png"
+  ],
+  "cach": "png"
+ },
+ "ON 90": {
+  "tep": "5T-ON-90.png",
+  "nguon": [
+   "image1087.png"
+  ],
+  "cach": "png"
+ },
+ "ON 96": {
+  "tep": "5T-ON-96.png",
+  "nguon": [
+   "image1079.png"
+  ],
+  "cach": "png"
+ },
+ "ON 97": {
+  "tep": "5T-ON-97.png",
+  "nguon": [
+   "image1080.png"
+  ],
+  "cach": "png"
+ },
+ "ON 98": {
+  "tep": "5T-ON-98.png",
+  "nguon": [
+   "image1097.png"
+  ],
+  "cach": "png"
+ },
+ "ON 101": {
+  "tep": "5T-ON-101.png",
+  "nguon": [
+   "image725.png"
+  ],
+  "cach": "png"
+ },
+ "ON 102": {
+  "tep": "5T-ON-102.png",
+  "nguon": [
+   "image1076.png"
+  ],
+  "cach": "png"
+ },
+ "ON 119": {
+  "tep": "5T-ON-119.png",
+  "nguon": [
+   "image869.png"
+  ],
+  "cach": "png"
+ },
+ "ON 120": {
+  "tep": "5T-ON-120.png",
+  "nguon": [
+   "image889.png"
+  ],
+  "cach": "png"
+ },
+ "ON 121": {
+  "tep": "5T-ON-121.png",
+  "nguon": [
+   "image633.png"
+  ],
+  "cach": "png"
+ },
+ "LT 19.7": {
+  "tep": "5T-LT-19-7.png",
+  "nguon": [
+   "image1096.png",
+   "image1090.png",
+   "image1077.png",
+   "image1092.png"
+  ],
+  "cach": "ghep",
+  "nhan": [
+   "a)",
+   "b)",
+   "c)",
+   "d)"
+  ]
+ },
+ "LT 19.15": {
+  "tep": "5T-LT-19-15.png",
+  "nguon": [
+   "image1078.png",
+   "image1082.png",
+   "image1032.png",
+   "image909.png"
+  ],
+  "cach": "ghep",
+  "nhan": [
+   "a)",
+   "b)",
+   "c)",
+   "d)"
+  ]
+ },
+ "VD 20.1": {
+  "tep": "5T-VD-20-1.png",
+  "nguon": [
+   "image1151.png",
+   "image1142.png"
+  ],
+  "cach": "ghep",
+  "nhan": [
+   "a)",
+   "b)"
+  ]
+ },
+ "ON 93": {
+  "tep": "5T-ON-93.png",
+  "nguon": [
+   "image591.png"
+  ],
+  "cach": "png"
+ },
+ "ON 94": {
+  "tep": "5T-ON-94.png",
+  "nguon": [
+   "image502.png"
+  ],
+  "cach": "png",
+  "ly_do": "tach-bai gắn ảnh này vào ON 93 (ảnh đứng trước nhãn ON 94); hình có F trên tia BC đúng của ON 94"
+ },
+ "LT 18.12": {
+  "tep": "5T-LT-18-12.png",
+  "nguon": [
+   "image65.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "LT 19.1": {
+  "tep": "5T-LT-19-1.png",
+  "nguon": [
+   "image1104.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "LT 19.2": {
+  "tep": "5T-LT-19-2.png",
+  "nguon": [
+   "image1093.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "LT 19.18": {
+  "tep": "5T-LT-19-18.png",
+  "nguon": [
+   "image1115.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách ghi điểm E, đề ghi M ⇒ vẽ lại với nhãn M"
+ },
+ "LT 20.9": {
+  "tep": "5T-LT-20-9.png",
+  "nguon": [
+   "image1143.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "LT 21.4": {
+  "tep": "5T-LT-21-4.png",
+  "nguon": [
+   "image231.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "ON 91": {
+  "tep": "5T-ON-91.png",
+  "nguon": [
+   "image1088.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "ON 92": {
+  "tep": "5T-ON-92.png",
+  "nguon": [
+   "image882.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề (Q đặt theo đề AQ = 3/5 AB; ảnh gốc vẽ lệch)"
+ },
+ "ON 95": {
+  "tep": "5T-ON-95.png",
+  "nguon": [
+   "image769.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "ON 99": {
+  "tep": "5T-ON-99.png",
+  "nguon": [
+   "image1086.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ },
+ "ON 100": {
+  "tep": "5T-ON-100.png",
+  "nguon": [
+   "image944.png"
+  ],
+  "cach": "ve_lai",
+  "ly_do": "ảnh sách hỏng: vùng tô thành khối đen che nét ⇒ vẽ lại bằng code theo ảnh gốc + đề"
+ }
 }
