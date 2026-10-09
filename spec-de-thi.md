@@ -350,6 +350,10 @@ Thứ tự lát sau khi chốt: **A** nhập `DE SO 3` → **B** màn Kho đề 
 
 ### 10.6 Chốt 01/10 (vòng 3) — Kho đề thi nằm ở "Nhập kho › Đề thi", THAY đường cũ · ĐÃ BUILD lát B
 
+> **⭐ 09/10 (Thùy): "Đề thi cần có riêng 1 lá, tên là Kho đề thi, ở dưới Kho tài liệu."** ⇒ lá `khodethi` (Học thuật, ngay dưới Kho tài liệu)
+> mở thẳng `KhoDeThi.tsx`; tab 📝 Đề thi trong Nhập kho đã gỡ. Quyền: lá riêng ở Phân quyền; mig `202610091655` cấp `khodethi` cho mọi vai trò
+> đang có `nhapkho` (cùng mức chỉ-xem) để không ai mất màn đang dùng.
+
 CEO: *"Tính năng này giống 'Nhập kho từ tài liệu — Chuyên đề và Đề thi'. Đọc 2 cái giống khác nhau thế nào để tối ưu rồi thay thế. Kết quả t muốn đề
 lưu ở đây và sửa ở đây là chính. Ra Kho tài liệu chỉ để in thôi."* · *"Xoá luôn [nút Nhập đề thi từ PDF]. T định bỏ luồng nhập thẳng PDF ở đấy mà đưa
 vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR nhưng Claude có kiểm tra lại, thay vì ở ERP lỗi là lỗi luôn."*

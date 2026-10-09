@@ -1,0 +1,1 @@
+{"loai":"chuyen_dong","tieu_de":"Hai xe gặp nhau lúc 9 giờ","diem":[{"ten":"A","x":0},{"ten":"C","x":120,"ghi":"gặp nhau"},{"ten":"B","x":186}],"di":[{"tu":0,"den":120,"nhan":"Từ 7 giờ: 60 km/giờ"},{"tu":186,"den":120,"nhan":"Từ 7 giờ 48 phút: 55 km/giờ"}],"khoang":[{"tu":0,"den":120,"nhan":"120 km"},{"tu":120,"den":186,"nhan":"66 km"},{"tu":0,"den":186,"nhan":"? km"}]}

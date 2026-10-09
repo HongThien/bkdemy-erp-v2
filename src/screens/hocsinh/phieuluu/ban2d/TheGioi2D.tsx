@@ -140,7 +140,7 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh }: Props) {
           </div>
         </div>
         <span className="pointer-events-none absolute bottom-3 left-3 select-none" aria-hidden style={{ width: 56, height: 56 }}>
-          {anhVat('la_ban') ? <img src={anhVat('la_ban')!} alt="" className="h-full w-full object-contain" /> : <span className="text-[40px] leading-none opacity-80">🧭</span>}
+          {anhVat('la_ban') ? <img src={anhVat('la_ban')!} alt="" className="h-full w-full object-contain" /> : <span className="text-[44px] leading-none opacity-80">🧭</span>}
         </span>
       </NenBien>
       {thanh && <div className="absolute bottom-3 left-20 right-20 z-10 flex flex-wrap justify-center gap-2">{thanh}</div>}

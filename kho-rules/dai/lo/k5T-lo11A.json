@@ -1,0 +1,410 @@
+[
+ {
+  "ma_nguon": "VD 18.2",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC có BC = 36 cm. Trên BC lấy điểm M sao cho CM = 9 cm. Tính diện tích tam giác ABC biết diện tích tam giác AMC là $108\\ \\text{cm}^{2}$.",
+  "noi_dung_sach": "Cho tam giác ABC có AB = 36 cm. Trên AB lấy điểm M sao cho CM = 9 cm. Tính diện tích tam giác ABC biết diện tích tam giác AMC là $108\\ \\text{cm}^{2}$.\nBài làm:\nChiều cao AH là : $108\\times 2:9=24$ (cm)\nDiện tích hình tam giác ABC là: $\\frac{36\\times 24}{2}=432\\left( \\ \\text{cm}^{2} \\right)$\nĐáp số: $432\\ \\text{cm}^{2}$",
+  "dap_an": "$432\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác AMC và tam giác ABC có **cùng đường cao AH** hạ xuống đường thẳng BC. Tam giác AMC biết diện tích và đáy MC nên tìm được AH; có AH rồi thì tính diện tích tam giác ABC với đáy BC.\n\n**Bước 1.** Tìm chiều cao AH từ tam giác AMC: chiều cao bằng diện tích nhân $2$ rồi chia cho đáy MC.\n\n**Bước 2.** Tính diện tích tam giác ABC: đáy BC nhân chiều cao AH rồi chia $2$.\n\n**Chú ý:** đáy của tam giác AMC là MC $=9$ cm, không phải BC; đáy của tam giác ABC mới là BC $=36$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, AH là đường cao hạ từ A xuống BC.\n\nĐộ dài đường cao AH là: $108\\times 2:9=24$ (cm)\n\nDiện tích tam giác ABC là: $36\\times 24:2=432$ ($\\text{cm}^2$)\n\nĐáp số: $432\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image430.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-18-2.png",
+  "hinh_de_ma": "VD 18.2"
+ },
+ {
+  "ma_nguon": "LT 18.5",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hình tam giác MNP có chiều cao MH = 25 cm và có diện tích là $150\\ \\text{cm}^{2}$. Tính độ dài đáy NP của hình tam giác đó.",
+  "noi_dung_sach": "Hình tam giác MNP có chiêu cao MH = 25 cm và có diện tích là $150\\ \\text{cm}^{2}$. Tính độ dài đáy NP của hình tam giác đó.",
+  "dap_an": "$12$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích tam giác bằng đáy nhân chiều cao rồi chia $2$, nên đáy bằng diện tích nhân $2$ rồi chia cho chiều cao tương ứng. Tam giác MNP có đáy NP thì chiều cao tương ứng là MH (MH vuông góc với đường thẳng chứa NP).\n\n**Chú ý:** H không nằm trên đoạn NP, nhưng MH vẫn là chiều cao ứng với đáy NP vì MH vuông góc với đường thẳng HP chứa NP.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đáy NP của hình tam giác MNP là: $150\\times 2:25=12$ (cm)\n\nĐáp số: $12$ cm",
+  "so_do": null,
+  "anh_sach": [
+   "image1149.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-18-5.png",
+  "hinh_de_ma": "LT 18.5"
+ },
+ {
+  "ma_nguon": "LT 18.12",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính diện tích phần tô đậm biết:\nBM = 9 cm; MC = 4 cm và diện tích hình tam giác ABM là $27\\ \\text{cm}^{2}$.",
+  "noi_dung_sach": "Tính diện tích phần tô đậm biết:\nBM = 9 cm; MC = 4 cm và diện tích hình tam giác ABM là $27\\ \\text{cm}^{2}$.",
+  "dap_an": "$12\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm là tam giác AMC. Hai tam giác ABM và AMC có **chung chiều cao** hạ từ A xuống BC. Biết diện tích và đáy BM của tam giác ABM thì tìm được chiều cao, rồi tính diện tích tam giác AMC với đáy MC.\n\n**Bước 1.** Tìm chiều cao hạ từ A xuống BC: lấy diện tích tam giác ABM nhân $2$ rồi chia cho BM.\n\n**Bước 2.** Tính diện tích tam giác AMC: đáy MC nhân chiều cao rồi chia $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều cao hạ từ A xuống BC là: $27\\times 2:9=6$ (cm)\n\nDiện tích phần tô đậm (tam giác AMC) là: $4\\times 6:2=12$ ($\\text{cm}^2$)\n\nĐáp số: $12\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image65.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-18-12.png",
+  "hinh_de_ma": "LT 18.12"
+ },
+ {
+  "ma_nguon": "VD 19.2",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết BC = 3MC và $S_{ABC}=18\\ \\text{cm}^{2}$. Tính $S_{AMC}$.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết BC = 3MC và $S_{ABC}=18\\ \\text{cm}^{2}$. Tính $S_{AMC}$.",
+  "dap_an": "$6\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác AMC và ABC **chung đường cao hạ từ A xuống BC**, nên tỉ số diện tích hai tam giác bằng tỉ số hai đáy MC và BC. Vì $BC=3\\times MC$ (trên hình, BC chia thành $3$ phần bằng nhau) nên $MC=\\dfrac{1}{3}BC$.\n\n**Chú ý:** Tam giác cần tính diện tích (AMC) đặt ở **tử số**, tam giác đã biết diện tích (ABC) đặt ở mẫu số — như vậy bước sau chỉ là lấy phân số nhân với số đo đã biết.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $BC=3\\times MC$ nên $MC=\\dfrac{1}{3}BC$.\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{MC}{BC}=\\dfrac{1}{3}$\n\n$S_{AMC}=\\dfrac{1}{3}\\times S_{ABC}=\\dfrac{1}{3}\\times 18=6\\ (\\text{cm}^2)$\n\nĐáp số: $6\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image200.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-19-2.png",
+  "hinh_de_ma": "VD 19.2"
+ },
+ {
+  "ma_nguon": "VD 19.3",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết $AM=MB$ và $AN=\\dfrac{1}{3}AC$. Tính $\\dfrac{S_{AMN}}{S_{ABC}}\\text{.}$",
+  "noi_dung_sach": "Cho hình vẽ bên, biết $AM=MB$ và $AN=\\frac{1}{3}AC$. Tính $\\frac{S_{AMN}}{S_{ABC}}\\text{.}$",
+  "dap_an": "$\\dfrac{S_{AMN}}{S_{ABC}}=\\dfrac{1}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác AMN và ABC chỉ có chung góc A, **không chung đường cao**. Phải nối thêm một đoạn để có tam giác trung gian chung đường cao với cả hai: nối B với N được tam giác ABN.\n\n**Bước 1.** Nối B với N. Tam giác AMN và tam giác ABN chung đường cao hạ từ N xuống AB, nên tỉ số diện tích bằng $\\dfrac{AM}{AB}$.\n\n**Bước 2.** Tam giác ABN và tam giác ABC chung đường cao hạ từ B xuống AC, nên tỉ số diện tích bằng $\\dfrac{AN}{AC}$.\n\n**Bước 3.** Nhân hai tỉ số: $S_{ABN}$ vừa ở mẫu số của tỉ số thứ nhất vừa ở tử số của tỉ số thứ hai nên rút gọn mất, còn lại $\\dfrac{S_{AMN}}{S_{ABC}}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối B với N.\n\nVì $AM=MB$ nên $AM=\\dfrac{1}{2}AB$.\n\nTam giác AMN và tam giác ABN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{AMN}}{S_{ABN}}=\\dfrac{AM}{AB}=\\dfrac{1}{2}$\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{3}$\n\n$\\dfrac{S_{AMN}}{S_{ABC}}=\\dfrac{S_{AMN}}{S_{ABN}}\\times\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{1}{2}\\times\\dfrac{1}{3}=\\dfrac{1}{6}$\n\nĐáp số: $\\dfrac{1}{6}$",
+  "so_do": null,
+  "anh_sach": [
+   "image1094.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-VD-19-3.png",
+  "hinh_de_ma": "VD 19.3"
+ },
+ {
+  "ma_nguon": "LT 19.1",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính diện tích hình tam giác DEB.\nBiết hình chữ nhật ABCD có DC = 25 cm; AD = 10 cm và AE = 15 cm.",
+  "noi_dung_sach": "Tính diện tích hình tam giác DEB.\nBiết hình chữ nhật ABCD có DC = 25 cm; AD = 10 cm và AE = 15 cm.",
+  "dap_an": "$50\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác DEB có đáy EB nằm trên cạnh AB, còn AD vuông góc với AB nên AD chính là chiều cao hạ từ D xuống AB. Chỉ cần tìm đáy EB.\n\n**Bước 1.** Hình chữ nhật có hai cạnh đối bằng nhau nên $AB=DC=25$ cm; đáy EB bằng AB trừ AE.\n\n**Bước 2.** Tính diện tích tam giác DEB: đáy EB nhân chiều cao AD rồi chia $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì ABCD là hình chữ nhật nên $AB=DC=25$ cm.\n\nĐộ dài đoạn thẳng EB là: $25-15=10$ (cm)\n\nDiện tích tam giác DEB là: $10\\times 10:2=50$ ($\\text{cm}^2$)\n\nĐáp số: $50\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1104.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-1.png",
+  "hinh_de_ma": "LT 19.1"
+ },
+ {
+  "ma_nguon": "LT 19.2",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính diện tích hình tứ giác AECG. Biết diện tích hình chữ nhật ABCD có $AD=20\\ \\text{cm};AB=14\\ \\text{cm};BE=8\\text{cm}$ và $DG=9cm$.",
+  "noi_dung_sach": "Tính diện tích hình tứ giác AECG. Biết diện tích hình chữ nhật ABCD có $AD=20\\ \\text{cm};AB=14\\ \\text{cm};BE=8\\text{cm}$ và $DG=9cm$.",
+  "dap_an": "$134\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tứ giác AECG không có cạnh đáy và chiều cao nào cho sẵn nên không tính thẳng được. Nhưng nó là hình chữ nhật ABCD **bỏ đi hai tam giác vuông ở hai góc**: ABE (ở góc B) và ADG (ở góc D). Hai tam giác vuông này đều tính được vì biết hai cạnh góc vuông.\n\n**Bước 1.** Tính diện tích hình chữ nhật ABCD.\n\n**Bước 2.** Tính diện tích tam giác vuông ABE (hai cạnh AB và BE) và tam giác vuông ADG (hai cạnh AD và DG).\n\n**Bước 3.** Lấy diện tích hình chữ nhật trừ đi tổng diện tích hai tam giác vuông.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình chữ nhật ABCD là: $14\\times 20=280$ ($\\text{cm}^2$)\n\nDiện tích tam giác ABE là: $14\\times 8:2=56$ ($\\text{cm}^2$)\n\nDiện tích tam giác ADG là: $20\\times 9:2=90$ ($\\text{cm}^2$)\n\nDiện tích hình tứ giác AECG là: $280-\\left(56+90\\right)=134$ ($\\text{cm}^2$)\n\nĐáp số: $134\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1093.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-2.png",
+  "hinh_de_ma": "LT 19.2"
+ },
+ {
+  "ma_nguon": "LT 19.3",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình chữ nhật ABCD có AB = 50 cm; BC = 28 cm. Điểm E là trung điểm của cạnh CD. Tính:\na) Diện tích tam giác AEC.\nb) Diện tích hình tứ giác ABCE.",
+  "noi_dung_sach": "Cho hình chữ nhật ABCD có AB = 50 cm; BC = 28 cm. Điểm E là trung điểm của cạnh CD. Tính:\na) Diện tích tam giác AEC.\nb) Diện tích hình tứ giác ABCE.",
+  "dap_an": "a) $350\\ \\text{cm}^2$; b) $1050\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** E là trung điểm của CD nên $EC=\\dfrac{1}{2}CD$. Tam giác AEC có đáy EC nằm trên CD, còn AD vuông góc với CD nên AD là chiều cao hạ từ A xuống CD. Ý b: đường chéo AC chia tứ giác ABCE thành tam giác ABC và tam giác AEC, nên dùng luôn kết quả ý a — vì vậy giữ một câu.\n\n**Bước 1.** Trong hình chữ nhật ABCD có $CD=AB=50$ cm và $AD=BC=28$ cm; tìm EC bằng một nửa CD.\n\n**Bước 2.** Ý a: diện tích tam giác AEC bằng đáy EC nhân chiều cao AD rồi chia $2$.\n\n**Bước 3.** Ý b: tính diện tích tam giác ABC (đáy AB, chiều cao BC) rồi cộng với diện tích tam giác AEC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì ABCD là hình chữ nhật nên $CD=AB=50$ cm và $AD=BC=28$ cm.\n\nĐộ dài đoạn thẳng EC là: $50:2=25$ (cm)\n\na) Diện tích tam giác AEC là: $25\\times 28:2=350$ ($\\text{cm}^2$)\n\nDiện tích tam giác ABC là: $50\\times 28:2=700$ ($\\text{cm}^2$)\n\nb) Diện tích hình tứ giác ABCE là: $700+350=1050$ ($\\text{cm}^2$)\n\nĐáp số: a) $350\\ \\text{cm}^2$; b) $1050\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1099.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-3.png",
+  "hinh_de_ma": "LT 19.3"
+ },
+ {
+  "ma_nguon": "LT 19.4",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết $S_{ABC}=90\\ \\text{cm}^{2};S_{ABM}=35\\ \\text{cm}^{2};$ $S_{AMN}=\\dfrac{2}{5}\\ S_{ABM}.$ Tính $S_{ANC}$.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết $S_{ABC}=90\\ \\text{cm}^{2};S_{ABM}=35\\ \\text{cm}^{2};$ $\\text{S}_{AMN}=\\frac{2}{5}\\ \\text{S}_{ABM}.$ Tính $S_{ANC}$.",
+  "dap_an": "$41\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai điểm M, N nằm trên BC chia tam giác ABC thành ba tam giác nhỏ có chung đỉnh A: ABM, AMN và ANC. Vậy $S_{ANC}$ bằng diện tích cả tam giác ABC trừ đi diện tích hai tam giác còn lại.\n\n**Bước 1.** Tìm $S_{AMN}$: đề cho bằng $\\dfrac{2}{5}$ của $S_{ABM}$.\n\n**Bước 2.** Lấy $S_{ABC}$ trừ $S_{ABM}$ và $S_{AMN}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích tam giác AMN là: $35\\times\\dfrac{2}{5}=14$ ($\\text{cm}^2$)\n\nDiện tích tam giác ANC là: $90-35-14=41$ ($\\text{cm}^2$)\n\nĐáp số: $41\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1098.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-4.png",
+  "hinh_de_ma": "LT 19.4"
+ },
+ {
+  "ma_nguon": "LT 19.5",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC (hình vẽ bên), biết $S_{1}=\\dfrac{1}{9}S_{ABC}$, $S_{3}=\\dfrac{5}{9}S_{ABC}$ và $S_{2}=20\\ \\text{cm}^{2}$. Tính diện tích tam giác ABC.",
+  "noi_dung_sach": "Cho tam giác ABC (hình vẽ bên), biết $S_{1}=\\frac{1}{9}S_{ABC}$, $S_{3}=\\frac{5}{9}S_{ABC}$ và $S_{2}=20\\ \\text{cm}^{2}$. Tính diện tích tam giác ABC.",
+  "dap_an": "$60\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba phần $S_{1}$, $S_{2}$, $S_{3}$ ghép lại là cả tam giác ABC (bằng $\\dfrac{9}{9}$ diện tích tam giác ABC). Biết $S_{1}$ và $S_{3}$ chiếm bao nhiêu phần thì tìm được $S_{2}$ chiếm bao nhiêu phần; mà $S_{2}$ lại cho sẵn số đo $20\\ \\text{cm}^2$ — đó là con đường tìm cả tam giác.\n\n**Bước 1.** Tìm phân số chỉ $S_{2}$ so với $S_{ABC}$: lấy $1$ trừ hai phân số đã biết.\n\n**Bước 2.** $20\\ \\text{cm}^2$ ứng với phân số vừa tìm của $S_{ABC}$, nên chia $20$ cho phân số đó để được $S_{ABC}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$S_{2}$ tương ứng với: $1-\\dfrac{1}{9}-\\dfrac{5}{9}=\\dfrac{3}{9}=\\dfrac{1}{3}$ (diện tích tam giác ABC)\n\nDiện tích tam giác ABC là: $20:\\dfrac{1}{3}=60$ ($\\text{cm}^2$)\n\nĐáp số: $60\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1083.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-5.png",
+  "hinh_de_ma": "LT 19.5"
+ },
+ {
+  "ma_nguon": "LT 19.6",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính diện tích tam giác ABC, biết: $S_{1}=\\dfrac{1}{6}S_{ABC}$ và $S_{2}-S_{1}=60\\ \\text{cm}^{2}$.",
+  "noi_dung_sach": "Tính diện tích tamm giác ABC, biết: $S_{1}=\\frac{1}{6}S_{ABC}$ và $S_{2}-S_{1}=60\\ \\text{cm}^{2}$.",
+  "dap_an": "$90\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $S_{1}$ và $S_{2}$ ghép lại là cả tam giác ABC, nên $S_{2}$ bằng $S_{ABC}$ trừ $S_{1}$. Hiệu $S_{2}-S_{1}$ vì thế cũng là một phân số của $S_{ABC}$, và hiệu đó cho sẵn là $60\\ \\text{cm}^2$.\n\n**Bước 1.** Tìm phân số chỉ $S_{2}$ so với $S_{ABC}$: $1-\\dfrac{1}{6}$.\n\n**Bước 2.** Tìm phân số chỉ hiệu $S_{2}-S_{1}$ so với $S_{ABC}$.\n\n**Bước 3.** $60\\ \\text{cm}^2$ ứng với phân số đó, nên chia $60$ cho phân số để được $S_{ABC}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$S_{2}$ tương ứng với: $1-\\dfrac{1}{6}=\\dfrac{5}{6}$ (diện tích tam giác ABC)\n\n$S_{2}-S_{1}$ tương ứng với: $\\dfrac{5}{6}-\\dfrac{1}{6}=\\dfrac{4}{6}=\\dfrac{2}{3}$ (diện tích tam giác ABC)\n\nDiện tích tam giác ABC là: $60:\\dfrac{2}{3}=90$ ($\\text{cm}^2$)\n\nĐáp số: $90\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1085.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-6.png",
+  "hinh_de_ma": "LT 19.6"
+ },
+ {
+  "ma_nguon": "LT 19.9",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho điểm M trên AC sao cho AM = 3MC. Tính diện tích tam giác ABC, biết diện tích tam giác ABM là $24\\ \\text{cm}^{2}$.",
+  "noi_dung_sach": "Cho điểm M trên AC sao AM = 3MC. Tính diện tích diện tích tam giác ABC, biết diện tích tam giác ABM là $24\\ \\text{cm}^{2}$.",
+  "dap_an": "$32\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác ABM và ABC **chung đường cao hạ từ B xuống AC**, nên tỉ số diện tích bằng tỉ số hai đáy AM và AC. Đề cho $AM=3\\times MC$: trên hình AC chia thành $4$ phần bằng nhau, AM chiếm $3$ phần.\n\n**Chú ý:** Tam giác cần tính (ABC) đặt ở **tử số**: $\\dfrac{S_{ABC}}{S_{ABM}}=\\dfrac{AC}{AM}=\\dfrac{4}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM=3\\times MC$ nên $AM=\\dfrac{3}{4}AC$.\n\nTam giác ABC và tam giác ABM có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABC}}{S_{ABM}}=\\dfrac{AC}{AM}=\\dfrac{4}{3}$\n\n$S_{ABC}=\\dfrac{4}{3}\\times S_{ABM}=\\dfrac{4}{3}\\times 24=32\\ (\\text{cm}^2)$\n\nĐáp số: $32\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1091.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-9.png",
+  "hinh_de_ma": "LT 19.9"
+ },
+ {
+  "ma_nguon": "LT 19.10",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác ABC, M là điểm chính giữa cạnh BC, N là điểm nằm trên cạnh AC sao cho $\\text{AN}=\\dfrac{2}{3}\\text{NC}$. Biết diện tích tam giác ABM bằng $15\\ \\text{cm}^{2}$.\na) Diện tích tam giác ABC.\nb) Diện tích tam giác ABN.",
+  "noi_dung_sach": "Cho tam giác ABC, M là điểm chính giữa cạnh BC, N là điểm nằm trên cạnh AC sao cho $\\text{AN}=\\frac{2}{3}\\text{NC}$. Biết diện tích tam ABM bằng $15\\ \\text{cm}^{2}$.\na) Diện tích tam giác ABC.\nb) Diện tich tam giác ABN.",
+  "dap_an": "a) $30\\ \\text{cm}^2$; b) $12\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai ý đều dùng \"chung đường cao\": ý a so tam giác ABM với tam giác ABC (chung đường cao hạ từ A xuống BC); ý b so tam giác ABN với tam giác ABC (chung đường cao hạ từ B xuống AC). Ý b dùng kết quả ý a nên giữ một câu.\n\n**Bước 1.** Ý a: M là điểm chính giữa BC nên BC gấp đôi BM, suy ra $S_{ABC}$ gấp đôi $S_{ABM}$.\n\n**Bước 2.** Ý b: $AN=\\dfrac{2}{3}NC$ nên AN chiếm $2$ phần, NC chiếm $3$ phần (như các chấm trên hình), cả AC có $5$ phần và $AN=\\dfrac{2}{5}AC$.\n\n**Bước 3.** Lấy $\\dfrac{2}{5}$ của $S_{ABC}$ vừa tìm được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì M là điểm chính giữa BC nên $BC=2\\times BM$.\n\nTam giác ABC và tam giác ABM có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{ABC}}{S_{ABM}}=\\dfrac{BC}{BM}=2$\n\na) $S_{ABC}=2\\times S_{ABM}=2\\times 15=30\\ (\\text{cm}^2)$\n\nVì $AN=\\dfrac{2}{3}NC$ nên $AN=\\dfrac{2}{5}AC$.\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{2}{5}$\n\nb) $S_{ABN}=\\dfrac{2}{5}\\times S_{ABC}=\\dfrac{2}{5}\\times 30=12\\ (\\text{cm}^2)$\n\nĐáp số: a) $30\\ \\text{cm}^2$; b) $12\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image959.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-10.png",
+  "hinh_de_ma": "LT 19.10"
+ },
+ {
+  "ma_nguon": "LT 19.11",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết $S_{ABC}=72\\ \\text{cm}^{2},BM=\\dfrac{1}{2}MC$. $AN=NM$. Tính $S_{ACN}$.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết $S_{ABC}=72\\ \\text{cm}^{2},BM=\\frac{1}{2}MC$. $AN=NM$. Tính $S_{ACN}$.",
+  "dap_an": "$24\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đi từ tam giác đã biết diện tích xuống tam giác cần tính qua tam giác trung gian: ABC sang AMC (chung đường cao hạ từ A xuống BC), rồi AMC sang ACN (chung đường cao hạ từ C xuống AM).\n\n**Bước 1.** $BM=\\dfrac{1}{2}MC$ nên BM chiếm $1$ phần, MC chiếm $2$ phần, BC có $3$ phần và $MC=\\dfrac{2}{3}BC$. Từ đó tìm $S_{AMC}$.\n\n**Bước 2.** $AN=NM$ nên $AN=\\dfrac{1}{2}AM$. Từ $S_{AMC}$ tìm $S_{ACN}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $BM=\\dfrac{1}{2}MC$ nên $MC=\\dfrac{2}{3}BC$.\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{MC}{BC}=\\dfrac{2}{3}$\n\n$S_{AMC}=\\dfrac{2}{3}\\times S_{ABC}=\\dfrac{2}{3}\\times 72=48\\ (\\text{cm}^2)$\n\nVì $AN=NM$ nên $AN=\\dfrac{1}{2}AM$.\n\nTam giác ACN và tam giác ACM có chung đường cao hạ từ C xuống AM, suy ra $\\dfrac{S_{ACN}}{S_{ACM}}=\\dfrac{AN}{AM}=\\dfrac{1}{2}$\n\n$S_{ACN}=\\dfrac{1}{2}\\times S_{ACM}=\\dfrac{1}{2}\\times 48=24\\ (\\text{cm}^2)$\n\nĐáp số: $24\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image839.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-11.png",
+  "hinh_de_ma": "LT 19.11"
+ },
+ {
+  "ma_nguon": "LT 19.13",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC có $AM=MC,BN=MN,BP=\\dfrac{1}{3}BC,S_{BNP}=9\\ \\text{cm}^{2}$. Tính $S_{ABC}$.",
+  "noi_dung_sach": "Cho tam giác ABC có $AM=MC,BN=MN,BP=\\frac{1}{3}BC,S_{BNP}=9\\ \\text{cm}^{2}$. Tính $S_{ABC}$.",
+  "dap_an": "$108\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho diện tích tam giác nhỏ nhất BNP và hỏi tam giác lớn nhất ABC, nên đi **từng bước từ nhỏ lên lớn**: BNP lên BNC (chung đường cao hạ từ N xuống BC), BNC lên BMC (chung đường cao hạ từ C xuống BM), BMC lên ABC (chung đường cao hạ từ B xuống AC). Mỗi bước hai tam giác chung đường cao và tam giác lớn đặt ở tử số.\n\n**Bước 1.** $BP=\\dfrac{1}{3}BC$ nên $BC$ gấp $3$ lần $BP$, suy ra $S_{BNC}$ gấp $3$ lần $S_{BNP}$.\n\n**Bước 2.** $BN=MN$ nên $BM$ gấp đôi $BN$, suy ra $S_{BMC}$ gấp đôi $S_{BNC}$.\n\n**Bước 3.** $AM=MC$ nên $AC$ gấp đôi $MC$, suy ra $S_{ABC}$ gấp đôi $S_{BMC}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $BP=\\dfrac{1}{3}BC$ nên $BC=3\\times BP$.\n\nTam giác BNC và tam giác BNP có chung đường cao hạ từ N xuống BC, suy ra $\\dfrac{S_{BNC}}{S_{BNP}}=\\dfrac{BC}{BP}=3$\n\n$S_{BNC}=3\\times 9=27\\ (\\text{cm}^2)$\n\nVì $BN=MN$ nên $BM=2\\times BN$.\n\nTam giác BMC và tam giác BNC có chung đường cao hạ từ C xuống BM, suy ra $\\dfrac{S_{BMC}}{S_{BNC}}=\\dfrac{BM}{BN}=2$\n\n$S_{BMC}=2\\times 27=54\\ (\\text{cm}^2)$\n\nVì $AM=MC$ nên $AC=2\\times MC$.\n\nTam giác ABC và tam giác BMC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABC}}{S_{BMC}}=\\dfrac{AC}{MC}=2$\n\n$S_{ABC}=2\\times 54=108\\ (\\text{cm}^2)$\n\nĐáp số: $108\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1105.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-13.png",
+  "hinh_de_ma": "LT 19.13"
+ },
+ {
+  "ma_nguon": "LT 19.14",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên dưới, biết $AB=4BM,BC=3BN$ và $S_{ABC}=108\\ \\text{cm}^{2}$. Tính $S_{BMN}$.",
+  "noi_dung_sach": "Cho hình vẽ bên dưới, biết $AB=4BM,BC=3BN$ và $S_{ABC}=108\\ \\text{cm}^{2}$. Tính $S_{BMN}$.",
+  "dap_an": "$9\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, M nằm trên phần kéo dài của AB (về phía B) và N nằm trên phần kéo dài của CB (về phía B), nên tam giác BMN nằm ngoài tam giác ABC, chỉ chung đỉnh B. Hai tam giác BMN và ABC không chung đường cao, nên nối thêm A với N để có tam giác trung gian ABN.\n\n**Bước 1.** Nối A với N. Tam giác ABN và tam giác ABC có đáy BN, BC cùng nằm trên đường thẳng CN và chung đường cao hạ từ A: tìm $S_{ABN}$ từ $S_{ABC}$.\n\n**Bước 2.** Tam giác BMN và tam giác ABN có đáy BM, AB cùng nằm trên đường thẳng AM và chung đường cao hạ từ N: tìm $S_{BMN}$ từ $S_{ABN}$.\n\n**Chú ý:** Đường cao hạ xuống \"đường thẳng chứa đáy\" nên vẫn dùng được dù điểm M, N nằm ngoài tam giác ABC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, B nằm giữa A và M, B nằm giữa C và N.\n\nNối A với N.\n\nVì $BC=3\\times BN$ nên $BN=\\dfrac{1}{3}BC$.\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ A xuống CN, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{BN}{BC}=\\dfrac{1}{3}$\n\n$S_{ABN}=\\dfrac{1}{3}\\times S_{ABC}=\\dfrac{1}{3}\\times 108=36\\ (\\text{cm}^2)$\n\nVì $AB=4\\times BM$ nên $BM=\\dfrac{1}{4}AB$.\n\nTam giác BMN và tam giác ABN có chung đường cao hạ từ N xuống AM, suy ra $\\dfrac{S_{BMN}}{S_{ABN}}=\\dfrac{BM}{AB}=\\dfrac{1}{4}$\n\n$S_{BMN}=\\dfrac{1}{4}\\times S_{ABN}=\\dfrac{1}{4}\\times 36=9\\ (\\text{cm}^2)$\n\nĐáp số: $9\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1089.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-14.png",
+  "hinh_de_ma": "LT 19.14"
+ },
+ {
+  "ma_nguon": "LT 19.18",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC, điểm M nằm trên cạnh AB sao cho $\\text{AM}=\\text{BM}$, điểm N nằm trên cạnh AC sao cho $\\text{AN}=\\dfrac{1}{3}\\text{AC}$. Biết $S_{AMN}=7\\ \\text{cm}^{2}$, tính $S_{ABC}$.",
+  "noi_dung_sach": "Cho tam giác ABC, điểm M nằm trên cạnh AB sao cho $\\text{AM}=\\text{BM}$, điểm N nằm trên cạnh AC sao cho $\\text{AN}=\\frac{1}{3}\\text{AC}$. Biết $S_{AMN}=7\\ \\text{cm}^{2}$, tính $S_{ABC}$.",
+  "dap_an": "$42\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác AMN và ABC cùng góc A nhưng **không chung đường cao**, nên phải đi qua tam giác trung gian ABN (nối B với N): AMN lên ABN rồi ABN lên ABC. Mỗi bước hai tam giác chung đường cao và tam giác lớn đặt ở tử số.\n\n**Bước 1.** $AM=BM$ nên $AB=2\\times AM$; $AN=\\dfrac{1}{3}AC$ nên $AC=3\\times AN$.\n\n**Bước 2.** Tam giác ABN và tam giác AMN chung đường cao hạ từ N xuống AB: $S_{ABN}$ gấp $2$ lần $S_{AMN}$.\n\n**Bước 3.** Tam giác ABC và tam giác ABN chung đường cao hạ từ B xuống AC: $S_{ABC}$ gấp $3$ lần $S_{ABN}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối B với N.\n\nVì $AM=BM$ nên $AB=2\\times AM$.\n\nTam giác ABN và tam giác AMN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{ABN}}{S_{AMN}}=\\dfrac{AB}{AM}=2$\n\n$S_{ABN}=2\\times 7=14\\ (\\text{cm}^2)$\n\nVì $AN=\\dfrac{1}{3}AC$ nên $AC=3\\times AN$.\n\nTam giác ABC và tam giác ABN có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABC}}{S_{ABN}}=\\dfrac{AC}{AN}=3$\n\n$S_{ABC}=3\\times 14=42\\ (\\text{cm}^2)$\n\nĐáp số: $42\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1115.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-18.png",
+  "hinh_de_ma": "LT 19.18"
+ },
+ {
+  "ma_nguon": "LT 19.19",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC, trên cạnh AB lấy điểm M sao cho AM = MB, trên cạnh AC lấy hai điểm N và P sao cho AN = NP = PC. Tính $S_{\\text{ABC}}$, biết $S_{\\text{NMPB}}=21\\ \\text{cm}^{2}$.",
+  "noi_dung_sach": "Cho tam giác ABC, trên cạnh AB lấy điểm M sao cho AM = MB, trên cạnh AC lấy hai điểm N và P sao cho AN = NP = PC. Tính $\\text{S}_{\\text{ABC}}$, biết $S_{\\text{NMPB}}=21\\ \\text{cm}^{2}$.",
+  "dap_an": "$42\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tứ giác NMPB (các đỉnh N, M, B, P) chính là tam giác ABC **bỏ đi hai tam giác ở hai góc**: tam giác AMN (ở góc A) và tam giác BPC (ở góc C). Hai tam giác này đều tính được theo phân số của $S_{ABC}$; phần còn lại ứng với $21\\ \\text{cm}^2$.\n\n**Bước 1.** Tam giác BPC và tam giác ABC chung đường cao hạ từ B xuống AC, $PC=\\dfrac{1}{3}AC$ nên $S_{BPC}=\\dfrac{1}{3}S_{ABC}$.\n\n**Bước 2.** Nối B với N để có tam giác trung gian ABN: $S_{ABN}=\\dfrac{1}{3}S_{ABC}$, rồi $S_{AMN}=\\dfrac{1}{2}S_{ABN}=\\dfrac{1}{6}S_{ABC}$.\n\n**Bước 3.** Tìm phân số chỉ tứ giác NMPB: $1-\\dfrac{1}{6}-\\dfrac{1}{3}$; rồi chia $21$ cho phân số đó để được $S_{ABC}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AN=NP=PC$ nên AC chia thành $3$ phần bằng nhau, $AN=\\dfrac{1}{3}AC$ và $PC=\\dfrac{1}{3}AC$.\n\nVì $AM=MB$ nên $AM=\\dfrac{1}{2}AB$.\n\nNối B với N.\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{3}$\n\nTam giác AMN và tam giác ABN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{AMN}}{S_{ABN}}=\\dfrac{AM}{AB}=\\dfrac{1}{2}$\n\n$S_{AMN}=\\dfrac{1}{2}\\times S_{ABN}=\\dfrac{1}{2}\\times\\dfrac{1}{3}\\times S_{ABC}=\\dfrac{1}{6}\\times S_{ABC}$\n\nTam giác BPC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{BPC}}{S_{ABC}}=\\dfrac{PC}{AC}=\\dfrac{1}{3}$\n\nTứ giác NMPB là tam giác ABC bỏ đi tam giác AMN và tam giác BPC, nên $S_{NMPB}$ tương ứng với: $1-\\dfrac{1}{6}-\\dfrac{1}{3}=\\dfrac{1}{2}$ (diện tích tam giác ABC)\n\nDiện tích tam giác ABC là: $21:\\dfrac{1}{2}=42$ ($\\text{cm}^2$)\n\nĐáp số: $42\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1135.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-19.png",
+  "hinh_de_ma": "LT 19.19"
+ },
+ {
+  "ma_nguon": "LT 19.20",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC (như hình vẽ) có AM = MN = NB, AP = PQ = QC. Biết $S_{2}-S_{1}=14\\ \\text{cm}^{2}$. Tính diện tích tam giác ABC.",
+  "noi_dung_sach": "Cho tam giác ABC (như hình vẽ) có AM = MN = NB, AP = PQ = QC. Biết $S_{2}-S_{1}=14\\ \\text{cm}^{2}$. Tính diện tích tam giác ABC.",
+  "dap_an": "$63\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề chỉ cho hiệu $S_{2}-S_{1}$ nên phải đổi cả $S_{1}$ và $S_{2}$ ra phân số của $S_{ABC}$. Tam giác trên cùng AMP là một góc của ABC; tam giác ANQ gồm cả phần $1$ và phần $2$. Cả hai đều không chung đường cao với ABC nên cần nối thêm M với C và N với C.\n\n**Bước 1.** AB chia $3$ phần bằng nhau ($AM=\\dfrac{1}{3}AB$, $AN=\\dfrac{2}{3}AB$), AC cũng vậy ($AP=\\dfrac{1}{3}AC$, $AQ=\\dfrac{2}{3}AC$).\n\n**Bước 2.** Nối M với C: AMC lấy $\\dfrac{1}{3}$ của ABC, rồi AMP lấy $\\dfrac{1}{3}$ của AMC, nên $S_{1}=\\dfrac{1}{9}S_{ABC}$.\n\n**Bước 3.** Nối N với C: ANC lấy $\\dfrac{2}{3}$ của ABC, rồi ANQ lấy $\\dfrac{2}{3}$ của ANC, nên $S_{ANQ}=\\dfrac{4}{9}S_{ABC}$; $S_{2}$ là $S_{ANQ}$ bỏ đi $S_{1}$.\n\n**Bước 4.** Hiệu $S_{2}-S_{1}$ ứng với một phân số của $S_{ABC}$ và bằng $14\\ \\text{cm}^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM=MN=NB$ nên $AM=\\dfrac{1}{3}AB$ và $AN=\\dfrac{2}{3}AB$.\n\nVì $AP=PQ=QC$ nên $AP=\\dfrac{1}{3}AC$ và $AQ=\\dfrac{2}{3}AC$.\n\nNối M với C.\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{AM}{AB}=\\dfrac{1}{3}$\n\nTam giác AMP và tam giác AMC có chung đường cao hạ từ M xuống AC, suy ra $\\dfrac{S_{AMP}}{S_{AMC}}=\\dfrac{AP}{AC}=\\dfrac{1}{3}$\n\n$S_{1}=S_{AMP}=\\dfrac{1}{3}\\times\\dfrac{1}{3}\\times S_{ABC}=\\dfrac{1}{9}\\times S_{ABC}$\n\nNối N với C.\n\nTam giác ANC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{ANC}}{S_{ABC}}=\\dfrac{AN}{AB}=\\dfrac{2}{3}$\n\nTam giác ANQ và tam giác ANC có chung đường cao hạ từ N xuống AC, suy ra $\\dfrac{S_{ANQ}}{S_{ANC}}=\\dfrac{AQ}{AC}=\\dfrac{2}{3}$\n\n$S_{ANQ}=\\dfrac{2}{3}\\times\\dfrac{2}{3}\\times S_{ABC}=\\dfrac{4}{9}\\times S_{ABC}$\n\n$S_{2}=S_{ANQ}-S_{1}$ tương ứng với: $\\dfrac{4}{9}-\\dfrac{1}{9}=\\dfrac{3}{9}$ (diện tích tam giác ABC)\n\n$S_{2}-S_{1}$ tương ứng với: $\\dfrac{3}{9}-\\dfrac{1}{9}=\\dfrac{2}{9}$ (diện tích tam giác ABC)\n\nDiện tích tam giác ABC là: $14:\\dfrac{2}{9}=63$ ($\\text{cm}^2$)\n\nĐáp số: $63\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1123.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-20.png",
+  "hinh_de_ma": "LT 19.20"
+ },
+ {
+  "ma_nguon": "LT 19.21",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình vẽ bên, biết $S_{ABC}=320\\ \\text{cm}^{2},BM=3MA$, $AP=PC,BN=\\dfrac{2}{3}NC$. Tính $S_{1},S_{2}$ và $S_{3}$.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết $S_{ABC}=320\\ \\text{cm}^{2},BM=3MA$, $AP=PC,BN=\\frac{2}{3}NC$. Tính $S_{1},S_{2}$ và $S_{3}$.",
+  "dap_an": "$S_{1}=40\\ \\text{cm}^2$; $S_{2}=184\\ \\text{cm}^2$; $S_{3}=96\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $S_{1}$ (tam giác AMP) và $S_{3}$ (tam giác PNC) đều nằm ở một góc của tam giác ABC nên không chung đường cao với ABC; mỗi tam giác tìm qua một tam giác trung gian. $S_{2}$ là phần còn lại nên chỉ cần lấy $S_{ABC}$ trừ $S_{1}$ và $S_{3}$.\n\n**Bước 1.** Đổi các điều kiện về so với cả cạnh: $BM=3\\times MA$ nên $AM=\\dfrac{1}{4}AB$; $AP=PC$ nên $AP=\\dfrac{1}{2}AC$; $BN=\\dfrac{2}{3}NC$ nên BC có $5$ phần và $NC=\\dfrac{3}{5}BC$.\n\n**Bước 2.** $S_{1}$: nối C với M. AMC lấy $\\dfrac{1}{4}$ của ABC, rồi AMP lấy $\\dfrac{1}{2}$ của AMC.\n\n**Bước 3.** $S_{3}$: nối B với P. PBC lấy $\\dfrac{1}{2}$ của ABC, rồi PNC lấy $\\dfrac{3}{5}$ của PBC.\n\n**Bước 4.** $S_{2}=S_{ABC}-S_{1}-S_{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $BM=3\\times MA$ nên $AM=\\dfrac{1}{4}AB$.\n\nVì $AP=PC$ nên $AP=\\dfrac{1}{2}AC$.\n\nVì $BN=\\dfrac{2}{3}NC$ nên $NC=\\dfrac{3}{5}BC$.\n\nTính $S_{1}$.\n\nNối C với M.\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{AM}{AB}=\\dfrac{1}{4}$\n\n$S_{AMC}=\\dfrac{1}{4}\\times 320=80\\ (\\text{cm}^2)$\n\nTam giác AMP và tam giác AMC có chung đường cao hạ từ M xuống AC, suy ra $\\dfrac{S_{AMP}}{S_{AMC}}=\\dfrac{AP}{AC}=\\dfrac{1}{2}$\n\n$S_{1}=S_{AMP}=\\dfrac{1}{2}\\times 80=40\\ (\\text{cm}^2)$\n\nTính $S_{3}$.\n\nNối B với P.\n\nTam giác PBC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{PBC}}{S_{ABC}}=\\dfrac{PC}{AC}=\\dfrac{1}{2}$\n\n$S_{PBC}=\\dfrac{1}{2}\\times 320=160\\ (\\text{cm}^2)$\n\nTam giác PNC và tam giác PBC có chung đường cao hạ từ P xuống BC, suy ra $\\dfrac{S_{PNC}}{S_{PBC}}=\\dfrac{NC}{BC}=\\dfrac{3}{5}$\n\n$S_{3}=S_{PNC}=\\dfrac{3}{5}\\times 160=96\\ (\\text{cm}^2)$\n\nDiện tích $S_{2}$ là: $320-40-96=184$ ($\\text{cm}^2$)\n\nĐáp số: $S_{1}=40\\ \\text{cm}^2$; $S_{2}=184\\ \\text{cm}^2$; $S_{3}=96\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1114.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-21.png",
+  "hinh_de_ma": "LT 19.21"
+ },
+ {
+  "ma_nguon": "LT 19.22",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình vẽ bên, biết $S_{ABC}=180\\ \\text{cm}^{2},AM=3MB$, $AP=PC,BN=2NC$. Tính $S_{1},S_{2}$ và $S_{3}$.",
+  "noi_dung_sach": "Cho hình vē bên, biết $S_{ABC}=180\\ \\text{cm}^{2},AM=3MB$, $AP=PC,BN=2NC$. Tính $S_{1},S_{2}$ và $S_{3}$.",
+  "dap_an": "$S_{1}=30\\ \\text{cm}^2$; $S_{2}=120\\ \\text{cm}^2$; $S_{3}=30\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $S_{1}$ (tam giác BMN) và $S_{3}$ (tam giác PNC) đều nằm ở một góc của tam giác ABC nên mỗi tam giác tìm qua một tam giác trung gian chung đường cao với ABC. $S_{2}$ (tứ giác AMNP) là phần còn lại.\n\n**Bước 1.** Đổi điều kiện về so với cả cạnh: $AM=3\\times MB$ nên $MB=\\dfrac{1}{4}AB$; $AP=PC$ nên $PC=\\dfrac{1}{2}AC$; $BN=2\\times NC$ nên $BN=\\dfrac{2}{3}BC$ và $NC=\\dfrac{1}{3}BC$.\n\n**Bước 2.** $S_{1}$: nối M với C. BMC lấy $\\dfrac{1}{4}$ của ABC, rồi BMN lấy $\\dfrac{2}{3}$ của BMC.\n\n**Bước 3.** $S_{3}$: nối B với P. PBC lấy $\\dfrac{1}{2}$ của ABC, rồi PNC lấy $\\dfrac{1}{3}$ của PBC.\n\n**Bước 4.** $S_{2}=S_{ABC}-S_{1}-S_{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM=3\\times MB$ nên $MB=\\dfrac{1}{4}AB$.\n\nVì $AP=PC$ nên $PC=\\dfrac{1}{2}AC$.\n\nVì $BN=2\\times NC$ nên $BN=\\dfrac{2}{3}BC$ và $NC=\\dfrac{1}{3}BC$.\n\nTính $S_{1}$.\n\nNối M với C.\n\nTam giác BMC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{BMC}}{S_{ABC}}=\\dfrac{MB}{AB}=\\dfrac{1}{4}$\n\n$S_{BMC}=\\dfrac{1}{4}\\times 180=45\\ (\\text{cm}^2)$\n\nTam giác BMN và tam giác BMC có chung đường cao hạ từ M xuống BC, suy ra $\\dfrac{S_{BMN}}{S_{BMC}}=\\dfrac{BN}{BC}=\\dfrac{2}{3}$\n\n$S_{1}=S_{BMN}=\\dfrac{2}{3}\\times 45=30\\ (\\text{cm}^2)$\n\nTính $S_{3}$.\n\nNối B với P.\n\nTam giác PBC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{PBC}}{S_{ABC}}=\\dfrac{PC}{AC}=\\dfrac{1}{2}$\n\n$S_{PBC}=\\dfrac{1}{2}\\times 180=90\\ (\\text{cm}^2)$\n\nTam giác PNC và tam giác PBC có chung đường cao hạ từ P xuống BC, suy ra $\\dfrac{S_{PNC}}{S_{PBC}}=\\dfrac{NC}{BC}=\\dfrac{1}{3}$\n\n$S_{3}=S_{PNC}=\\dfrac{1}{3}\\times 90=30\\ (\\text{cm}^2)$\n\nDiện tích $S_{2}$ là: $180-30-30=120$ ($\\text{cm}^2$)\n\nĐáp số: $S_{1}=30\\ \\text{cm}^2$; $S_{2}=120\\ \\text{cm}^2$; $S_{3}=30\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1101.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-22.png",
+  "hinh_de_ma": "LT 19.22"
+ },
+ {
+  "ma_nguon": "LT 19.23",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết $S_{1}=36\\ \\text{cm}^{2};AP=3PB$; $AM=\\dfrac{2}{3}MC;BN=2NC$. Tính $S_{4}$.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết $S_{1}=36\\ \\text{cm}^{2};AP=3PB$; $AM=\\frac{2}{3}MC;BN=2NC$. Tính $S_{4}$.",
+  "dap_an": "$40\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác ABC được chia thành bốn tam giác $S_{1}$ (APM), $S_{2}$ (PBN), $S_{3}$ (MNC) và $S_{4}$ (PMN), nên $S_{4}$ bằng $S_{ABC}$ trừ ba tam giác còn lại. Đề chỉ cho $S_{1}$, nên đi từ $S_{1}$ lên $S_{ABC}$ trước, rồi tìm $S_{2}$ và $S_{3}$ qua $S_{ABC}$.\n\n**Bước 1.** Đổi điều kiện về so với cả cạnh: $AP=3\\times PB$ nên $AP=\\dfrac{3}{4}AB$, $PB=\\dfrac{1}{4}AB$; $AM=\\dfrac{2}{3}MC$ nên AC có $5$ phần, $AM=\\dfrac{2}{5}AC$, $MC=\\dfrac{3}{5}AC$; $BN=2\\times NC$ nên $BN=\\dfrac{2}{3}BC$, $NC=\\dfrac{1}{3}BC$.\n\n**Bước 2.** Nối P với C: từ $S_{APM}$ lên $S_{APC}$ (chung đường cao hạ từ P xuống AC), rồi lên $S_{ABC}$ (chung đường cao hạ từ C xuống AB).\n\n**Bước 3.** $S_{2}$: dùng PBC (chung đường cao hạ từ C xuống AB với ABC), rồi PBN (chung đường cao hạ từ P xuống BC với PBC). $S_{3}$: nối B với M, dùng MBC rồi MNC.\n\n**Bước 4.** $S_{4}=S_{ABC}-S_{1}-S_{2}-S_{3}$.\n\n**Chú ý:** Hình vẽ đặt M gần chính giữa AC, nhưng đề chữ cho $AM=\\dfrac{2}{3}MC$ — làm theo đề chữ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AP=3\\times PB$ nên $AP=\\dfrac{3}{4}AB$ và $PB=\\dfrac{1}{4}AB$.\n\nVì $AM=\\dfrac{2}{3}MC$ nên $AM=\\dfrac{2}{5}AC$ và $MC=\\dfrac{3}{5}AC$.\n\nVì $BN=2\\times NC$ nên $BN=\\dfrac{2}{3}BC$ và $NC=\\dfrac{1}{3}BC$.\n\nNối P với C.\n\nTam giác APC và tam giác APM có chung đường cao hạ từ P xuống AC, suy ra $\\dfrac{S_{APC}}{S_{APM}}=\\dfrac{AC}{AM}=\\dfrac{5}{2}$\n\n$S_{APC}=\\dfrac{5}{2}\\times 36=90\\ (\\text{cm}^2)$\n\nTam giác ABC và tam giác APC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{ABC}}{S_{APC}}=\\dfrac{AB}{AP}=\\dfrac{4}{3}$\n\n$S_{ABC}=\\dfrac{4}{3}\\times 90=120\\ (\\text{cm}^2)$\n\nTam giác PBC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{PBC}}{S_{ABC}}=\\dfrac{PB}{AB}=\\dfrac{1}{4}$\n\n$S_{PBC}=\\dfrac{1}{4}\\times 120=30\\ (\\text{cm}^2)$\n\nTam giác PBN và tam giác PBC có chung đường cao hạ từ P xuống BC, suy ra $\\dfrac{S_{PBN}}{S_{PBC}}=\\dfrac{BN}{BC}=\\dfrac{2}{3}$\n\n$S_{2}=S_{PBN}=\\dfrac{2}{3}\\times 30=20\\ (\\text{cm}^2)$\n\nNối B với M.\n\nTam giác MBC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{MBC}}{S_{ABC}}=\\dfrac{MC}{AC}=\\dfrac{3}{5}$\n\n$S_{MBC}=\\dfrac{3}{5}\\times 120=72\\ (\\text{cm}^2)$\n\nTam giác MNC và tam giác MBC có chung đường cao hạ từ M xuống BC, suy ra $\\dfrac{S_{MNC}}{S_{MBC}}=\\dfrac{NC}{BC}=\\dfrac{1}{3}$\n\n$S_{3}=S_{MNC}=\\dfrac{1}{3}\\times 72=24\\ (\\text{cm}^2)$\n\nDiện tích $S_{4}$ là: $120-36-20-24=40$ ($\\text{cm}^2$)\n\nĐáp số: $40\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1111.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-23.png",
+  "hinh_de_ma": "LT 19.23"
+ },
+ {
+  "ma_nguon": "LT 19.24",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên, biết $CD=2DB$, điểm $I$ thuộc đoạn thẳng $AD$. Tính $\\dfrac{S_{ABI}}{S_{ACI}}$.",
+  "noi_dung_sach": "Cho hình vẽ bên, biết $CD=2DB$, điểm $I$ thuộc đoạn thẳng $AD$. Tính $\\frac{S_{ABI}}{S_{ACI}}$.",
+  "dap_an": "$\\dfrac{S_{ABI}}{S_{ACI}}=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề không cho vị trí của I trên AD, nên đáp số phải **không phụ thuộc vị trí I**. Hai tam giác ABD và ACD, và hai tam giác IBD và ICD, đều có đáy BD và CD (đáy CD gấp đôi đáy BD) trên cùng đường thẳng BC và chung đường cao, nên mỗi cặp có diện tích gấp đôi nhau. Bỏ phần IBD ra khỏi ABD và phần ICD ra khỏi ACD thì phần còn lại cũng gấp đôi nhau.\n\n**Bước 1.** Hai tam giác ACD và ABD chung đường cao hạ từ A xuống BC nên $S_{ACD}$ gấp $2$ lần $S_{ABD}$.\n\n**Bước 2.** Hai tam giác ICD và IBD chung đường cao hạ từ I xuống BC nên $S_{ICD}$ gấp $2$ lần $S_{IBD}$.\n\n**Bước 3.** $S_{ABI}=S_{ABD}-S_{IBD}$ và $S_{ACI}=S_{ACD}-S_{ICD}$, nên $S_{ACI}$ gấp $2$ lần $S_{ABI}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $CD=2\\times DB$ nên $\\dfrac{CD}{DB}=2$.\n\nTam giác ACD và tam giác ABD có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{ACD}}{S_{ABD}}=\\dfrac{CD}{BD}=2$\n\nTam giác ICD và tam giác IBD có chung đường cao hạ từ I xuống BC, suy ra $\\dfrac{S_{ICD}}{S_{IBD}}=\\dfrac{CD}{BD}=2$\n\nVậy $S_{ACD}=2\\times S_{ABD}$ và $S_{ICD}=2\\times S_{IBD}$.\n\n$S_{ACI}=S_{ACD}-S_{ICD}=2\\times S_{ABD}-2\\times S_{IBD}=2\\times\\left(S_{ABD}-S_{IBD}\\right)=2\\times S_{ABI}$\n\n$\\dfrac{S_{ABI}}{S_{ACI}}=\\dfrac{1}{2}$\n\nĐáp số: $\\dfrac{1}{2}$",
+  "so_do": null,
+  "anh_sach": [
+   "image1112.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-24.png",
+  "hinh_de_ma": "LT 19.24"
+ },
+ {
+  "ma_nguon": "LT 19.26",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC có diện tích là $168\\ \\text{cm}^{2}$. E là điểm chính giữa cạnh BC, I là điểm chính giữa đoạn thẳng AE. Nối BI kéo dài cắt AC ở D. Tính $S_{AID}$.",
+  "noi_dung_sach": "Cho tam giác ABC có diện tich là $168\\ \\text{cm}^{2}$. E là đđiểm chính giữa cạnh BC, I là điểm chính giữa đoạn thẳng AE. Nối BI kéo dài cắt AC ở D. Tính $S_{AID}$.",
+  "dap_an": "$14\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề không cho D chia AC theo tỉ số nào, nên không dùng được \"chung đường cao hạ xuống AC\" ngay. Ta dùng điều kiện E, I là điểm chính giữa để có các cặp tam giác **bằng nhau**: nối D với E rồi viết tam giác AEC (đã tìm được diện tích) thành tổng ba tam giác AID, DIE, DEC — cả ba đều tính được theo $S_{AID}$.\n\n**Bước 1.** Tìm $S_{AEC}$ và $S_{BIE}$: E là điểm chính giữa BC, I là điểm chính giữa AE.\n\n**Bước 2.** Nối D với E. $AI=IE$ nên $S_{DIE}=S_{AID}$. $BE=EC$ nên $S_{DEC}=S_{DBE}$, mà $S_{DBE}=S_{BIE}+S_{DIE}$.\n\n**Bước 3.** Ghép ba tam giác lại: $S_{AEC}=3\\times S_{AID}+S_{BIE}$, từ đó tìm $S_{AID}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì E là điểm chính giữa BC nên $BE=EC=\\dfrac{1}{2}BC$.\n\nVì I là điểm chính giữa AE nên $AI=IE=\\dfrac{1}{2}AE$.\n\nTam giác AEC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{AEC}}{S_{ABC}}=\\dfrac{EC}{BC}=\\dfrac{1}{2}$\n\n$S_{AEC}=\\dfrac{1}{2}\\times 168=84\\ (\\text{cm}^2)$\n\nTam giác ABE và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{ABE}}{S_{ABC}}=\\dfrac{BE}{BC}=\\dfrac{1}{2}$\n\n$S_{ABE}=\\dfrac{1}{2}\\times 168=84\\ (\\text{cm}^2)$\n\nTam giác BIE và tam giác ABE có chung đường cao hạ từ B xuống AE, suy ra $\\dfrac{S_{BIE}}{S_{ABE}}=\\dfrac{IE}{AE}=\\dfrac{1}{2}$\n\n$S_{BIE}=\\dfrac{1}{2}\\times 84=42\\ (\\text{cm}^2)$\n\nNối D với E.\n\nTam giác AID và tam giác DIE có chung đường cao hạ từ D xuống AE và $AI=IE$ nên $S_{DIE}=S_{AID}$.\n\nTam giác DEC và tam giác DBE có chung đường cao hạ từ D xuống BC và $EC=BE$ nên $S_{DEC}=S_{DBE}$.\n\nTam giác DBE gồm tam giác BIE và tam giác DIE (I nằm trên BD) nên $S_{DBE}=S_{BIE}+S_{DIE}=42+S_{AID}$.\n\nTam giác AEC gồm ba tam giác AID, DIE, DEC nên $S_{AEC}=S_{AID}+S_{AID}+\\left(42+S_{AID}\\right)=3\\times S_{AID}+42$.\n\n$3\\times S_{AID}$ bằng: $84-42=42$ ($\\text{cm}^2$)\n\nDiện tích tam giác AID là: $42:3=14$ ($\\text{cm}^2$)\n\nĐáp số: $14\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1095.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-26.png",
+  "hinh_de_ma": "LT 19.26"
+ }
+]

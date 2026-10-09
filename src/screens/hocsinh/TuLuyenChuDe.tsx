@@ -34,7 +34,7 @@ export function NutBack({ onBack }: { onBack: () => void }) {
   const mon = useMonHS()
   return (
     <div className="mb-3 flex items-center gap-2">
-      <button onClick={onBack} className="flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
+      <button onClick={onBack} className="flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[14.5px] font-semibold active:scale-95" style={THE_TRON}>
         <span aria-hidden>‹</span> Quay lại
       </button>
       <span className="flex-1" />
@@ -48,27 +48,27 @@ export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onNhie
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Tự luyện</h1>
-      <p className="mt-1 text-[13px]" style={{ color: t.sec }}>Chọn cách em muốn luyện hôm nay.</p>
+      <h1 className="text-[24px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Tự luyện</h1>
+      <p className="mt-1 text-[14.5px]" style={{ color: t.sec }}>Chọn cách em muốn luyện hôm nay.</p>
       <div className="mt-5 flex flex-col gap-3">
         <button onClick={onTongHop} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
-          <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>🎯 Tổng hợp</span>
-          <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Hệ tự chọn câu — ưu tiên dạng em đang yếu, xen ngẫu nhiên dạng đã học.</span>
+          <span className="block text-[16.5px] font-extrabold" style={{ color: NAVY }}>🎯 Tổng hợp</span>
+          <span className="mt-1 block text-[14px]" style={{ color: t.sec }}>Hệ tự chọn câu — ưu tiên dạng em đang yếu, xen ngẫu nhiên dạng đã học.</span>
         </button>
         <button onClick={onChuDe} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
-          <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>📚 Theo chủ đề</span>
-          <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Em tự chọn 1 dạng cụ thể để luyện riêng, xem mình đang yếu dạng nào nhất.</span>
+          <span className="block text-[16.5px] font-extrabold" style={{ color: NAVY }}>📚 Theo chủ đề</span>
+          <span className="mt-1 block text-[14px]" style={{ color: t.sec }}>Em tự chọn 1 dạng cụ thể để luyện riêng, xem mình đang yếu dạng nào nhất.</span>
         </button>
         {onThuThach && (
           <button onClick={onThuThach} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
-            <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>⚔️ Thử thách</span>
-            <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>{rankBat() ? 'Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.' : 'Như Tổng hợp, nhưng đúng từ 80% trở lên là vượt Thử thách.'}</span>
+            <span className="block text-[16.5px] font-extrabold" style={{ color: NAVY }}>⚔️ Thử thách</span>
+            <span className="mt-1 block text-[14px]" style={{ color: t.sec }}>{rankBat() ? 'Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.' : 'Như Tổng hợp, nhưng đúng từ 80% trở lên là vượt Thử thách.'}</span>
           </button>
         )}
         {(onRank || onNhiemVu) && (
           <div className="mt-1 flex justify-center gap-5">
-            {onNhiemVu && <button onClick={onNhiemVu} className="text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>📜 Nhiệm vụ</button>}
-            {onRank && <button onClick={onRank} className="text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>🏆 Rank của em</button>}
+            {onNhiemVu && <button onClick={onNhiemVu} className="text-[14.5px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>📜 Nhiệm vụ</button>}
+            {onRank && <button onClick={onRank} className="text-[14.5px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>🏆 Rank của em</button>}
           </div>
         )}
       </div>
@@ -103,8 +103,8 @@ export function ChonDangChuDe({ onPick, onBack, gioiTinh }: { onPick: (d: { ma_d
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Chọn dạng để luyện</h1>
-      <p className="mt-1 text-[13px]" style={{ color: t.sec }}>% là mức em đang làm dạng đó — dạng yếu nhất lên đầu để luyện trước.</p>
+      <h1 className="text-[24px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Chọn dạng để luyện</h1>
+      <p className="mt-1 text-[14.5px]" style={{ color: t.sec }}>% là mức em đang làm dạng đó — dạng yếu nhất lên đầu để luyện trước.</p>
 
       {/* Toggle "Chỉ câu mới" */}
       <button onClick={() => setChiCauMoi((v) => !v)}
@@ -114,15 +114,15 @@ export function ChonDangChuDe({ onPick, onBack, gioiTinh }: { onPick: (d: { ma_d
           <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition ${chiCauMoi ? 'left-[22px]' : 'left-0.5'}`} />
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block text-[13px] font-bold" style={{ color: NAVY }}>Chỉ câu mới</span>
-          <span className="mt-0.5 block text-[11px]" style={{ color: t.sec }}>Không lặp câu em đã luyện trong 2 kỳ gần nhất (~1 tháng)</span>
+          <span className="block text-[14.5px] font-bold" style={{ color: NAVY }}>Chỉ câu mới</span>
+          <span className="mt-0.5 block text-[12px]" style={{ color: t.sec }}>Không lặp câu em đã luyện trong 2 kỳ gần nhất (~1 tháng)</span>
         </span>
       </button>
 
-      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Đang tải…</p>}
-      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
+      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: t.sec }}>Đang tải…</p>}
+      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
       {state === 'san_sang' && dangs.length === 0 && (
-        <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Chưa có dạng nào trong kho cho khối của em.</p>
+        <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: t.sec }}>Chưa có dạng nào trong kho cho khối của em.</p>
       )}
 
       {state === 'san_sang' && dangs.length > 0 && (
@@ -133,11 +133,11 @@ export function ChonDangChuDe({ onPick, onBack, gioiTinh }: { onPick: (d: { ma_d
               <button key={d.ma_dang} onClick={() => onPick({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, chiCauMoi })}
                 className="flex items-center gap-3 p-3.5 text-left transition active:scale-[0.98]" style={THE}>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[14px] font-bold" style={{ color: NAVY }}>{d.ten_dang}</span>
-                  <span className="mt-0.5 block truncate text-[11px]" style={{ color: t.sec }}>{d.ten_chuyen_de}</span>
-                  <span className="mt-0.5 block text-[11.5px]" style={{ color: t.sec }}>Đã luyện {d.da_luyen}/{d.tong_cau} câu trong kho</span>
+                  <span className="block truncate text-[15.5px] font-bold" style={{ color: NAVY }}>{d.ten_dang}</span>
+                  <span className="mt-0.5 block truncate text-[12px]" style={{ color: t.sec }}>{d.ten_chuyen_de}</span>
+                  <span className="mt-0.5 block text-[12.5px]" style={{ color: t.sec }}>Đã luyện {d.da_luyen}/{d.tong_cau} câu trong kho</span>
                 </span>
-                <span className="shrink-0 rounded-full px-2.5 py-1 text-[12px] font-extrabold" style={{ background: mau.bg, color: mau.chu }}>
+                <span className="shrink-0 rounded-full px-2.5 py-1 text-[13px] font-extrabold" style={{ background: mau.bg, color: mau.chu }}>
                   {d.pct == null ? 'Chưa đánh giá' : `${d.pct}%`}
                 </span>
               </button>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 715 112" width="715" height="112" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="715" height="112" fill="#fff"/>
+<text x="109" y="37" text-anchor="end" fill="#0f172a">Học sinh nam:</text>
+<line x1="119" y1="32" x2="399" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="119" y1="25" x2="119" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="175" y1="25" x2="175" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="231" y1="25" x2="231" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="287" y1="25" x2="287" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="343" y1="25" x2="343" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="399" y1="25" x2="399" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="259" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="109" y="81" text-anchor="end" fill="#0f172a">Học sinh nữ:</text>
+<line x1="119" y1="76" x2="567" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="119" y1="69" x2="119" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="175" y1="69" x2="175" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="231" y1="69" x2="231" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="287" y1="69" x2="287" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="343" y1="69" x2="343" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="399" y1="69" x2="399" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="455" y1="69" x2="455" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="511" y1="69" x2="511" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="567" y1="69" x2="567" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="343" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M581,24 q8,0 8,8 L589,46 q0,8 8,8 q-8,0 -8,8 L589,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="603" y="59" fill="#0f172a">234 học sinh</text>
+</svg>

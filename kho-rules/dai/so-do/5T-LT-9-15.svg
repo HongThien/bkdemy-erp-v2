@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 541 176" width="541" height="176" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="541" height="176" fill="#fff"/>
+<text x="127" y="20" font-style="italic" fill="#334155">Lúc sau (sau hai lượt chuyển)</text>
+<text x="117" y="57" text-anchor="end" fill="#0f172a">Ngăn thứ nhất:</text>
+<line x1="127" y1="52" x2="202" y2="52" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="45" x2="127" y2="59" stroke="#0f172a" stroke-width="2"/>
+<line x1="202" y1="45" x2="202" y2="59" stroke="#0f172a" stroke-width="2"/>
+<text x="164.5" y="72" text-anchor="middle" fill="#dc2626">?</text>
+<text x="117" y="101" text-anchor="end" fill="#0f172a">Ngăn thứ hai:</text>
+<line x1="127" y1="96" x2="277" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="89" x2="127" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="202" y1="89" x2="202" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="277" y1="89" x2="277" y2="103" stroke="#0f172a" stroke-width="2"/>
+<text x="202" y="116" text-anchor="middle" fill="#dc2626">?</text>
+<text x="117" y="145" text-anchor="end" fill="#0f172a">Ngăn thứ ba:</text>
+<line x1="127" y1="140" x2="427" y2="140" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="133" x2="127" y2="147" stroke="#0f172a" stroke-width="2"/>
+<line x1="202" y1="133" x2="202" y2="147" stroke="#0f172a" stroke-width="2"/>
+<line x1="277" y1="133" x2="277" y2="147" stroke="#0f172a" stroke-width="2"/>
+<line x1="352" y1="133" x2="352" y2="147" stroke="#0f172a" stroke-width="2"/>
+<line x1="427" y1="133" x2="427" y2="147" stroke="#0f172a" stroke-width="2"/>
+<text x="277" y="160" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M441,44 q8,0 8,8 L449,88 q0,8 8,8 q-8,0 -8,8 L449,140 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="463" y="101" fill="#0f172a">210 cuốn</text>
+</svg>

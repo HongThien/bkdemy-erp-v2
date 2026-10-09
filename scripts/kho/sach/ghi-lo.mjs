@@ -184,9 +184,11 @@ try {
       c._ma_cau = maCauList[i]
     }
   }
-  const { rows: [dem] } = await db.query(`select count(*) filter (where ten_de_goc like $1) n_sach, count(*) n_4T from dai_cau_hoi where xoa_at is null and dang_chinh like 'T14T%'`, [`${SACH} · %`])
+  // đếm theo KHỐI của lô (mã Đại T1 + khối: 4T ⇒ T14T, 5T ⇒ T15T) — trước đây cứng 'T14T%' trong WHERE nên lô 5T luôn báo "từ sách này: 0"
+  const khoiLo = lo[0]?.khoi ?? '4T'
+  const { rows: [dem] } = await db.query(`select count(*) filter (where ten_de_goc like $1) n_sach, count(*) filter (where dang_chinh like $2) n_khoi from dai_cau_hoi where xoa_at is null`, [`${SACH} · %`, `T1${khoiLo}%`])
   console.log(GHI ? '■ GHI THẬT' : '□ CHẠY THỬ (sẽ ROLLBACK)', CHUA_GAN ? '· CHƯA GÁN DẠNG (mọi câu vào dạng chờ)' : '', `· qua cổng ${giu.length} · chèn mới ${Object.values(theoKiem).reduce((x, y) => x + y, 0)} · kiem_may ${JSON.stringify(theoKiem)}`)
-  console.log(`  kho 4T sau lượt này: ${dem.n_4t} câu (từ sách này: ${dem.n_sach})`)
+  console.log(`  kho ${khoiLo} sau lượt này: ${dem.n_khoi} câu (từ sách này: ${dem.n_sach})`)
   if (daCo.length) console.log(`  Đã có từ lượt trước, bỏ qua (${daCo.length}): ${daCo.join(', ')}`)
   if (trungKho.length) console.log(`  Trùng nội dung câu sẵn có trong kho, không chèn (${trungKho.length}): ${trungKho.join(', ')}`)
   await db.query(GHI ? 'commit' : 'rollback')

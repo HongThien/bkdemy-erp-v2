@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444 132" width="444" height="132" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="444" height="132" fill="#fff"/>
+<text x="110" y="20" font-style="italic" fill="#334155">1 phần là trung bình cộng 3 bạn</text>
+<text x="100" y="57" text-anchor="end" fill="#0f172a">Hà và Hoà:</text>
+<line x1="110" y1="52" x2="410" y2="52" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="45" x2="110" y2="59" stroke="#0f172a" stroke-width="2"/>
+<line x1="266.7" y1="45" x2="266.7" y2="59" stroke="#0f172a" stroke-width="2"/>
+<line x1="423.3" y1="45" x2="423.3" y2="59" stroke="#0f172a" stroke-width="1"/>
+<line x1="410" y1="52" x2="423.3" y2="52" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="410" y1="45" x2="410" y2="59" stroke="#0f172a" stroke-width="2"/>
+<text x="416.7" y="42" text-anchor="middle" font-size="12" fill="#b45309">1,2 kg</text>
+<text x="100" y="101" text-anchor="end" fill="#0f172a">Hân:</text>
+<line x1="110" y1="96" x2="266.7" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="89" x2="110" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="266.7" y1="89" x2="266.7" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="266.7" y1="96" x2="280" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="280" y1="89" x2="280" y2="103" stroke="#0f172a" stroke-width="2"/>
+<text x="273.3" y="86" text-anchor="middle" font-size="12" fill="#b45309">1,2 kg</text>
+<text x="195" y="116" text-anchor="middle" fill="#dc2626">?</text>
+</svg>

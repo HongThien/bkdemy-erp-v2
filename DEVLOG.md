@@ -14556,7 +14556,82 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
   Đạt(17, đúng list)/Chưa đánh giá(0, đúng empty state "mọi dạng đều có đo gần đây"). tsc sạch (trừ lỗi
   sẵn có `pdfRender.ts` + 1 lỗi KHÔNG LIÊN QUAN ở `DiemDanhTestScreen.tsx` do phiên khác đang sửa song song).
 - **Sự cố ngoài lề phát hiện lúc commit (không phải do tôi gây ra):** `DEVLOG.md` có conflict marker
-  `<<<<<<< Updated upstream / ======= / >>>>>>> Stashed changes` chưa giải quyết (phiên khác `git stash`
+  `## 09/10 — Bản đồ adventure + khu Học tập không hiện trên main (bản Production)
+- **Thùy:** "vào main tao có thấy mấy cái bản đồ adventure đâu".
+- **Nguyên nhân:** `phieuluu/coBat.ts` — hai cờ `phieuluu` (bản đồ phiêu lưu) và `hoctap` (khu Học tập 5 đảo) có `MAC_DINH = false`, chỉ BẬT ở bản build Preview/domain thử nghiệm; bản Production (hs.bkacademy.edu.vn) luôn tắt ⇒ HS thấy ô Tự luyện cũ, không có đảo, không có bản đồ. Công tắc tính năng (tinh_nang) KHÔNG liên quan — đó là lớp cờ khác, có từ trước.
+- **Sửa:** `MAC_DINH = { phieuluu: true, hoctap: true }` (đúng như ghi chú trong file "khi duyệt xong muốn bật cho mọi HS: đổi 1 dòng"). Rank vẫn tắt (`rankBat`). **Bài học:** muốn một tính năng game hiện ở Production phải kiểm CẢ 2 lớp: cờ `coBat.ts` (build) VÀ công tắc `tinh_nang` (DB).
+
+## 09/10 (tiếp) — 5T bước 2: lô 6B, 6C, 7B, 7C ghi thật 145 câu (T15T000000255–399) · luật CARD mới áp từ lô 6
+- Phát hiện giữa chừng: phiên khác ghi luật CEO 09/10 17:01 vào README §3 (Phần 1 nhiều bước = card **Bước k.**; chỉ tách ý bài Tính / Tìm x, bài lời văn giữ chung). Lô 5 soạn 16:58 nên chưa theo (đã ghi DB). Sửa brief k5T + nhắn 5 Sonnet đang chạy; 6B/6C/7B/7C đều đã theo card (máy kiểm đánh số Bước 1..n).
+- k5T-kiem.mjs: (1) câu lời văn giữ chung mà hàm viết theo ý ⇒ kiemDapSo tự gộp KIEM["<mã>a"], ["<mã>b"]…; (2) chuanDapAn bỏ \text{…} (đáp "543\ \text{cm}" trước bị chấm lệch). Bộ kiểm thêm lô 8 (108 hàm CĐ19–25) + lô 9 (68 hàm CĐ26–31), tổng 678.
+- Bảng "điền ô" sách bị đọc lộn khi tách (cột/hàng trộn) ⇒ không giao/không ghi, treo cần người: LT 18.2, 18.3, 20.1, 21.1 (×2), 27.1, 27.2. Sonnet có "dựng lại" 18.2/18.3 nghe hợp lý nhưng là đoán ⇒ bỏ (§1.5).
+- Sửa lỗi in đề bằng sua.noi_dung ⇒ cờ nghi kiem-doc (9 câu) — cố ý để người duyệt thấy đề đã khác sách.
+- Đã giao lô 8 (CĐ19–25) cho 3 Sonnet; lô 6A, 7A còn đang soạn.
+
+## 09/10 (tối) — Hình 9 HH00105–110: "Các bước" gom lại 3–6 bước/bài (Thùy)
+- **Thùy:** "các bước ko nên nhỏ quá — 1 bài nên có từ 3–6 bước thôi" (sau khi Phần 1 hiện thành card, mỗi bước 1 card ⇒ bước vụn "$MO$", "đối chiếu" lộ ra rất xấu).
+- Đo: 247/363 câu có dòng Các bước < 3 bước, > 6 bước hoặc có bước cụt. Xuất 10 lô (309 dòng), 10 Sonnet viết lại theo brief (3–6 bước, mỗi bước 1 câu ngắn động từ + việc + công cụ, bám đúng Phần 2, không đổi cách giải); chỉ thay phần sau `**Các bước:**`, mọi thứ khác giữ nguyên.
+- Máy kiểm trước khi ghi: số dòng khớp, 3–6 bước, bước ≥ 3 từ (ngoài công thức), `$` chẵn, KaTeX render được. Lần đầu 5 lỗi (bước kiểu "Tính $S_{\triangle OAB}=…$" chỉ 2 chữ) ⇒ sửa tay thành "Tính diện tích tam giác $OAB$ theo đáy … và đường cao …". Ghi 247 câu, 1 transaction.
+- Sau ghi: phân bố bước/card {3: 230, 4: 103, 5: 25, 6: 4}; bộ đo còn nêu 11 câu nhưng đọc lại đều là báo nhầm (bước như "Kẻ $IH\perp b$ tại $H$" phần lớn là công thức) ⇒ giữ.
+- Luật ghi vào README §3 + brief k9. **Sai của t:** lần chèn luật vào brief đầu tiên làm hỏng file — chuỗi `` $` `` trong `String.replace` của JS nghĩa là "chèn đoạn đứng trước", nên cả đầu file bị chèn lặp 3 lần, `\t` của `\triangle` thành tab. Dựng lại = bản HEAD + 1 dòng. **Bài học:** chuỗi thay thế chứa `$` ⇒ luôn dùng hàm `replace(x, () => moi)`, và chuỗi LaTeX viết bằng `String.raw`.
+
+## 09/10 (tiếp) — 5T lô 6A + 7A ghi thật 99 câu (T15T000000400–498); tổng từ sách 485
+- 6A (CĐ7–9): 58 câu, đáp số khớp sau khi hàm kiểm nhận "Số em: 10" lẫn "10 em"; sửa diễn đạt LT 7.15 ("cách một thiếu 30 chỗ" ⇒ "thừa 30 người, … một thừa một thiếu nên cộng"). Bảng tính ngược (VD 9.3, LT 9.11, 9.14, 9.16, 9.17) có tên HS trong \text{} của array — để nguyên (bảng của sách).
+- 7A (CĐ13–14): tach-bai dính ý LT 14.5i–l vào ý h (2 cột cùng dòng) ⇒ vá bai.json ở scratchpad (lưu bản trước: bai.truoc-va-14.5.json), Sonnet đã soạn 4 câu i–l riêng ⇒ nhập vào. Sửa chính tả đề ⇒ 8 câu trùng câu kho cũ nên không chèn; bài dãy gộp ý (VD 13.1, LT 13.1–13.3) cũng trùng kho cũ. 41 câu mới.
+- Lô 8 (CĐ19–25): 8B, 8C đã nộp; 8A đang soạn. Bộ kiểm lô 10 (Ôn tập) đang viết.
+
+## 09/10 (tiếp) — 5T lô 8 (CĐ19–25) ghi thật 107 câu (T15T000000499–605); tổng từ sách 592
+- Quét bai.json: chỉ còn LT 25.3h, 25.4h dính ý sau (sách 2 cột) ⇒ script va-y-dinh.mjs tách thành 25.3i–j, 25.4i; bộ kiểm thêm 3 hàm.
+- Bỏ: LT 21.3a (số liệu nghi in sai, chỉ có đáp số xấp xỉ), VD 23.1 (cần hình). Sửa LT 23.14 cách viết diện tích toàn phần. Sửa chính tả đề 11 câu (cờ nghi).
+- Script soát dùng lại: sua-chinh-ta.mjs (bảng lỗi ⇒ sua.noi_dung, kèm bo), sua-loigiai.mjs (thay chuỗi trong lời giải qua tệp JSON — tránh escape \ trong node -e).
+- Đang chạy: lô 9 (CĐ26–31) 3 Sonnet. Viết tiếp bộ kiểm lô 10 (Ôn tập).
+
+## 09/10 — Ví xu thẻ nửa chiều ngang · style mặc định theo khối · chữ +10% toàn app HS
+- **Thùy:** (1) "Ví xu: danh sách hoạt động kiếm xu đang là thẻ ngang dài hẹp khó nhìn — chuyển thành thẻ chữ nhật kích thước 1 nửa, 1 hàng 2 cái" (2) "chữ nên to ra 10% ở toàn bộ giao diện" (3) "Lớp 4567 ảnh nền mặc định là Minecraft · Lớp 8 đến 12 là Anime".
+- **(1) Ví xu:** `NguonCard` (ViXuHS) đổi từ dải ngang sang thẻ gần vuông (icon + › trên, tên + số lần giữa, số xu to ở đáy), lưới `grid-cols-2`. Chỉ đổi lưới NGUỒN XU; danh sách lịch sử chi tiết/mua hàng vẫn dạng dòng. Xem thử mới: `?xem=gami&man=vi_xu`.
+- **(3) Mặc định theo khối:** `registry.skinMacDinhTheoKhoi(khoi)`: 4–7 ⇒ `khoi` (Khối vuông = Minecraft), còn lại (8–12…) ⇒ `rpg` (Anime). HocSinhApp: `khoiHS` + `gdMacDinh` thay `GD_MAC_DINH` ở mọi chỗ `giaoDien ?? …`; HomeHS912 nhận `macDinh` (chọn giao diện lần đầu mở sẵn đúng style); khối 3–5 (HomeCap1, không tự chọn skin) cũng theo khối. Em ĐÃ có dòng hs_giao_dien ⇒ giữ lựa chọn của em. Khối 1–3 không nói ⇒ giữ Anime. Skin Khối vuông chưa có `nguoiDan` (Lộc), `anhNv/anhTt` (kit Nhiệm vụ/Thành tựu) ⇒ rơi về bản code/nhân vật tĩnh — đã kiểm banner Chuỗi ở skin này OK.
+- **(2) Chữ +10%:** codemod 1 lần (script đã xoá): 1203 `text-[Npx]` + 58 `text-xs…5xl` (đổi sang px tương ứng) + 5 `fontSize` số + 6 `fontSize` chuỗi (px/cqw/vw), làm tròn 0,5px, chỉ trong `src/screens/hocsinh/**`; `main-hs.tsx` đặt `body{font-size:17.6px}` cho chữ không đặt cỡ riêng (nội dung bài/công thức). KHÔNG đụng app staff, `src/components` dùng chung, game `src/dautu` (iframe, CSS riêng), SVG, canvas. Muốn hoàn tác ⇒ `git revert` commit codemod (1 commit riêng). Kiểm preview 375: Home, Nhiệm vụ, Ví xu đọc to hơn, không tràn.
+- **Chưa kiểm:** các màn chật cứng khác sau khi chữ to (Thành tựu/BXH/Học tập/bài làm), game `dautu` (chưa +10%), HS thật.
+
+## 09/10 (tiếp) — 5T lô 9 (CĐ26–31) ghi thật 67 câu (T15T000000606–672); tổng từ sách 659
+- Chuyển động: 45 sơ đồ đường đi (xe lửa/cầu dùng vat), soát ảnh cả 46 đúng số liệu. Hàm kiểm lô 9: giờ tròn (11 giờ) nhận cả "11 giờ" lẫn "11 giờ 0 phút".
+- VD 31.3 đổi chữ đặt Q/C ⇒ T/O. Đã giao lô 10 (Ôn tập) cho 3 Sonnet; bộ kiểm lô 10 120 hàm (tổng 801).
+
+## 09/10 (tiếp) — 5T lô 10 (Ôn tập) ghi thật 112 câu (T15T000000673–784); tổng từ sách 771
+- 10B 27 (ON 64 ≡ LT 7.17), 10C 42, 10A 43. Soát: bỏ sơ đồ ON 20/21 (lộ đáp số), sửa nhãn ON 24; ON 12a dap_an viết lại dạng a=…; hàm ON 3 nhận D = 13/40 lẫn 0,325.
+- Lô 11 (bài có hình) đang dựng: dau-vao-soan thêm cờ --co-hinh (chỉ lấy bài có hình, kèm tên ảnh); dung-hinh-de.ps1 thêm cách ghep (bài nhiều ảnh, lưới 2 cột + nhãn a) b)…) và ve_lai (ảnh hỏng vẽ lại bằng code). Phát hiện tach-bai gắn nhầm ảnh của ON 94 (hình có F) vào ON 93 ⇒ vá bai.json, ON 94 vào lô 11 (bộ kiểm thêm 94a/94b). 13 ảnh hỏng + LT 19.18: 11 vẽ lại (Sonnet), treo LT 21.10, 23.1 (khối đen che mất hình), VD 20.2 (đề lẫn lời giải); LT 18.1 bỏ (bài yêu cầu vẽ).
+
+## 09/10 (tiếp) — 5T lô 11C + 11B (bài có hình) ghi thật 35 câu (T15T000000785–819); tổng từ sách 806
+- 11C (Ôn tập có hình) 16 câu, 11B (CĐ20–24 có hình) 19 câu. Đáp số khớp bộ kiểm lô 11 (Sonnet viết độc lập từ đề + hình); ON 97, LT 20.16 không hàm (kiểm tay).
+- Opus mở lại hình các câu có số đọc từ hình (LT 21.5, 21.13, 21.14, 23.3): khớp cách đọc của người soạn. Sửa nhỏ: ON 99 bước cộng diện tích, ON 102 câu giải thích, LT 20.16 thiếu dòng "Bài giải", ON 91 chính tả đề.
+- Sai của t: dòng 10A ở k5T §8b ghi qua sed/heredoc làm "\times" thành ký tự tab + "imes" (3 chỗ) ⇒ sửa lại; bài học cũ vẫn đúng: chuỗi có dấu gạch ngược thì ghi bằng Edit/Write, không qua sed.
+- Còn: 11A (CĐ18–19 có hình) đang soạn.
+
+## 09/10 (tiếp) — 5T lô 11A ghi thật 24 câu (T15T000000820–843) — BƯỚC 2 XONG: 830 câu từ sách
+- 11A (CĐ18–19 có hình): Sonnet soạn 30, đáp số 30/30 khớp. Sửa đề VD 18.2 (sách in AB, hình + bài làm mẫu là BC; phần "Bài làm" của sách dính vào đề ⇒ cắt). Chính tả đề 6 câu.
+- Treo 6: LT 19.7, 19.15 (đề chỉ là ô trống theo 4 hình ghép, điểm không chấm chia phải đoán bằng mắt — §1.5 thà để trống); LT 19.27–19.30 (bản soạn dùng "tổng tử / tổng mẫu" của dãy tỉ số bằng nhau = lớp 7; luật "bài nhiều cách thì nêu ra" ⇒ chờ CEO chốt cách lớp 5 chung đáy ⇒ đường cao bằng nhau).
+- Đối soát toàn sách (dau-vao-soan --khu tất cả + đọc DB): mọi bài hoặc đã ghi, hoặc trùng kho cũ, hoặc nằm trong danh sách treo k5T §8b. Không sót.
+- Còn nợ: lô 5 (CĐ1–6) Phần 1 chưa theo card. Luật README §3 có 2 dòng cùng ngày: "Các bước 3–6 bước/bài" (dòng Các bước →) và "≥ 2 bước mới dùng card" — nhiều câu 5T là card 2 bước, cần CEO chốt.
+
+## 09/10 (chiều) — Trần câu/ngày cho DẠNG DỄ (chống spam)
+- **Thùy:** "Cần 1 chế độ ngăn học sinh spam 1 dạng dễ — các dạng dễ học sinh chỉ được làm tối đa 20 câu/1 ngày."
+- **Thiết kế (mig `202610091818_luyen_gioi_han_dang_de`, ĐÃ ÁP):** bảng 1 dòng `luyen_gioi_han` (bat · `muc_do_de_toi_da`=2 · `tran_cau_ngay`=20). "Dạng dễ" = `_kho_muc_do_dang` (muc_do 1–5 của dạng) ≤ 2 — **GIẢ ĐỊNH của t (Thùy chưa nói mức nào là dễ): phân bố 197/299/419/135/31 cho mức 1..5 ⇒ ≤2 là 46% dạng, ≤3 là 85%. Đổi bằng `fn_luyen_gioi_han_dat(null, 3::smallint, null)`**. Dạng chưa có muc_do ⇒ không giới hạn.
+- **Đếm:** câu đã SINH vào bài `bai_test.loai='tu_luyen'` (Học theo chủ đề · Luyện dạng yếu · Thử thách) theo `tu_luyen_dang_lan`, mỗi HS×môn×dạng, ngày giờ VN. Mở bài rồi bỏ dở VẪN tính. Không áp: Học từ đầu · bổ trợ · ET · BTVN.
+- **Hàm:** `_luyen_con_cho_dang` (nguồn duy nhất) · `fn_hs_luyen_con_lai(mon, dang)` (cho app hiện "còn N câu", chưa dùng) · vá từ BẢN ĐANG CHẠY (dump pg_get_functiondef + vá chuỗi có assert) 5 hàm: `tu_luyen_chu_de_sinh` ×3 (còn 1–9 câu ⇒ lượt ngắn lại; hết ⇒ lỗi thân thiện) · `tu_luyen_sinh` (bỏ dạng đủ trần; cả lượt đủ trần ⇒ lỗi) · `_tu_luyen_chon_dang` (Luyện dạng yếu loại dạng đủ trần khỏi danh sách chọn).
+- **Test (rollback, HS thật, dạng T110010202 mức ≤2):** lượt 1 → 10 câu (còn 10) · lượt 2 → 10 (còn 0) · lượt 3 → "Dạng này em đã luyện đủ 20 câu hôm nay rồi. Mai quay lại nhé, hoặc luyện dạng khác!" · dạng mức 4 → không giới hạn · tắt `bat` → không giới hạn · tu_luyen_sinh dạng đủ trần → chặn · Luyện dạng yếu vẫn sinh bài.
+- **Chưa làm:** app chưa hiện "còn N câu hôm nay" (có hàm sẵn) · màn admin đổi cấu hình (hiện chỉ qua RPC/SQL) · bản đồ phiêu lưu chưa làm mờ dạng dễ đã đủ trần (em bấm mới thấy thông báo).
+
+## 09/10 (tối) — 5T: 6 câu treo ghi (11D, T15T000000844–849) + Phần 1 card 3–6 bước cho TOÀN BỘ 836 câu
+- **Thùy** trả lời 4 câu: (1) LT 19.27–19.30 dùng cách lớp 5 · (2) LT 19.7, 19.15 viết lại đề · (3) card 2 bước "sửa luôn cũng được" · (4) các cách hiểu đề: ok.
+- 11D (Opus viết): 19.27 chung đáy BN, diện tích bằng nhau ⇒ đường cao bằng nhau ⇒ S_MON = S_AON; 19.28 tỉ số đường cao 1/4 chuyển sang MBO/CBO; 19.29 thành tổng – tỉ (S_NIC : S_AIC = 3 : 4, tổng = S_ANC); 19.30 thành hiệu – tỉ qua S_EBM = S_ECM. 19.7/19.15 đề nêu rõ dữ kiện từng ý; bộ kiểm lô 11 nâng lên đủ ý.
+- Card: đo DB thấy 532/830 câu lệch khuôn (314 không bước, 180 card 2 bước, 1 card 8 bước, 37 bước vụn). Viết bộ kiểm hình thức (giờ ở scripts/kho/sach/kiem-p1-card.mjs), chạy thử trên 335 câu "đạt" để chỉnh ngưỡng (≥ 5 chữ ngoài công thức) — chính bộ đo bắt thêm 37 câu bước vụn. 8 Sonnet viết lại CHỈ Phần 1 (~67 câu/lô, ~4 phút/lô), đầu ra .md có dòng "=== ma_cau" (tránh JSON + gạch ngược). Opus đọc 14 mẫu: đạt. Bỏ 29 chú thích "(như VD … của sách)".
+- Ghi đè: script cap-nhat-p1 ghép Phần 1 mới + Phần 2 cũ nguyên ký tự, 1 transaction, `where loi_giai = bản đo` (lệch 1 câu ⇒ rollback cả lượt). Ghi 532. Đo lại: 836/836 đạt, {3: 595, 4: 226, 5: 14, 6: 1}.
+- README §3 thay dòng "chỉ ≥ 2 bước mới dùng card" bằng "MỌI bài 3–6 bước"; brief 5T cập nhật. Phần 1 trong các tệp lo/k5T-lo*.json giờ cũ hơn DB — bản hiện hành lưu ở lo/k5T-card-3-6.json.
+- Ghi nhận: vài đoạn "Thử lại" cũ (đã duyệt) còn nêu đáp số (LT 1.5a–d, ON 22, LT 15.14…, 241/242) — giữ theo brief.
+
+## 09/10 (chiều) — Mở lại Thế giới BK
+- **Thùy:** "Mở lại kênh thế giới đi. main chưa có rồi. Sao main lại thiếu so với ngày trước?" ⇒ mig `202610091857_tinh_nang_mo_the_gioi` (ĐÃ ÁP): `the_gioi` mo_tu = 2020-01-01. Trạng thái công tắc: MỞ = hoc_tap · nhiem_vu · chuoi · thanh_tuu · vi_xu · xep_hang · the_gioi · tro_choi; ĐÓNG = thong_tin · so_tay · rank · thu_vien · de_thi_thu; "sắp ra mắt" = chinh_phuc · giai_vo_dich.
+- **Vì sao main "thiếu":** KHÔNG thiếu code (main ⊇ thu-nghiem, 0 commit lệch). Phần HS thấy ít hơn do 3 lớp ẨN chủ ý: (1) cờ build `coBat.ts` (phieuluu/hoctap) — tắt ở Production tới 09/10; (2) công tắc `tinh_nang` đợt 1 (07/10) ẩn the_gioi/thong_tin/so_tay/thu_vien/rank/de_thi_thu; (3) `rankBat()` tắt Rank ở mọi bản (06/10).
   đụng độ) — đã dọn sạch theo đúng quy ước "nối cả 2 bên theo thứ tự", giữ nguyên toàn bộ nội dung cả
   2 phía (không xoá dòng nào), chỉ bỏ 3 dòng marker.
 
@@ -36194,6 +36269,51 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Hình đề dùng đường 4T lô 11 (kho-rules/dai/hinh-de/dung-hinh-de.ps1 + manifest, anh_de) — 7 PNG chép vào hinh-de/5T-*.png theo quy ước tên của nó.
 - Đáp số 23/23: tỉ số diện tích tính bằng toạ độ thật (độc lập "chung đường cao"), sơn mặt / xếp hình đếm từng khối nhỏ. 4 sơ đồ. KaTeX 356 công thức 0 hỏng, quét mất-\ 0.
 
+## 09/10 (tiếp) — Kho khối 9 · Hình · Đường tròn: bước 1 (sổ tay 22 dạng + lô thử 1, 22 câu) gửi CEO
+- Nguồn `E:\BK ACADEMY\Tài liệu tham khảo\K9\Đường tròn`: Ngô Đức Tài ch.V (258 bài, KHÔNG có lời giải, TN không đáp án) · Nguyễn Trãi CĐ7–10 (DT2.pdf mất biến MathType — phải đọc .doc) · Thầy Cường HK2 (góc nội tiếp + tứ giác nội tiếp, có vài "Giải" — nguồn khuôn chứng minh 4 điểm) · Phạm Hoàng Long (79 câu, trùng NĐT). ~520 thô ⇒ ~450 khác nhau. Hình không gian của Thầy Cường để ngoài (bản đồ mới đặt ở Đại K9).
+- CEO giữa phiên: *"output quan trọng nhất: (1) nắm cách giải + trình bày chính quy từng dạng, (2) rồi mới giải chi tiết, (3) xong mới DB + phân dạng"* ⇒ `kho-rules/hgt/k9.md` §2 = sổ tay 22 dạng (nhận biết · cách giải · khuôn Phần 2 · bẫy), lô thử = ví dụ mẫu mỗi dạng.
+- Ranh giới CT 2018 (cả 4 tài liệu đều không có): cấm góc tạo bởi tiếp tuyến–dây, góc đỉnh trong/ngoài, DẤU HIỆU tứ giác nội tiếp (chỉ chứng minh 4 điểm cách đều trung điểm cạnh huyền chung — Thầy Cường), phương tích/hệ thức lượng dùng thẳng (qua đồng dạng), công thức khoảng cách toạ độ. Áp luôn luật "kiến thức theo thứ tự bài" CEO chốt ở khối 8.
+- Công cụ mới: `scripts/kho/hinh-toado.mjs` (toạ độ TOÁN, dựng giao điểm/tiếp điểm/chân vuông góc ⇒ cùng bộ toạ độ vừa kiểm vừa vẽ; phần tử `phu` chỉ ở hình lời giải, nét đứt) + `scripts/kho/hinh-lo.mjs` (chạy lô .mjs: kiểm mọi cấu hình, vẽ -de/-lg PNG, ra .json sẵn ghi DB + bản xem md). Lô 1: 22/22 câu khớp, điểm "bất kì" thử 2–3 vị trí; câu 22b ($\widehat{ABD}=\widehat{DCB}$, vốn là góc tiếp tuyến–dây) đi vòng qua △ABD∽△AEB, máy xác nhận.
+- Soát hình bằng bảng ảnh: 3 hình phải đổi cấu hình (câu 1 D/F/M dính chùm, câu 14 E sát A, câu 17 ET qua sát tâm) — cấu hình vẫn đúng giả thiết.
+- Đích DB đề xuất `hgt_cau_hoi` dạng chờ `T309000000` (đã có trigger chặn duyệt dạng chờ) — vênh với khối 8 (phiên khác chọn `hinh_hoc_*` kho kiểu 1) ⇒ hỏi CEO (k9 §8 câu 0). Chưa ghi DB. `ghi-lo.mjs` còn cứng `dai_cau_hoi` (việc kỹ thuật k9 §7).
+
+## 09/10 (tiếp) — 5T lô sách 4 (CĐ25–31 + Ôn tập, 26 câu) ⇒ xong MỘT LƯỢT qua các dạng (4 lô, 101 câu)
+- CĐ25 vận tốc/thời điểm · CĐ26 ngược chiều/đuổi kịp/khác giờ · CĐ27 dòng nước, lá trôi · CĐ28 tỉ lệ nghịch v–t · CĐ29 v trung bình, xe lửa · CĐ30 giả thiết tạm · CĐ31 khử; Ôn tập lấy các mục 31 CĐ không có: II dãy số (đếm chữ số), III chia hết/chia có dư, IV cấu tạo số (giải bằng sơ đồ hiệu–tỉ, không đặt ẩn), V TBC bù trừ, XIII trường hợp xấu nhất + suy luận logic.
+- Đáp số 26/26 máy tính lại (chuyển động mô phỏng theo phút nguyên; "chắc chắn có đôi tất" vét mọi cách lấy; logic thử 7 ngày). 4 sơ đồ (26.12, 28.6, 28.9, ON 22). KaTeX 612 công thức 0 hỏng.
+- Hỏi CEO: sơ đồ cho CĐ28 (sách không vẽ) · cấu tạo số 5T: sơ đồ hay đặt chữ như 4T. Còn treo từ lô 3: 13 hình hỏng, khuôn tỉ số diện tích.
+
+## 09/10 (tiếp) — CEO trả lời 4 câu lô 3–4 ⇒ máy vẽ SƠ ĐỒ CHUYỂN ĐỘNG + sửa lô 3, lô 4
+- scripts/kho/so-do-chuyen-dong.mjs (mới): đường đi, điểm đúng tỉ lệ, mũi tên xe xếp tầng, khoảng cách có nhãn (nhãn bắt đầu bằng số ⇒ máy kiểm khớp vị trí, lệch từ chối vẽ), cầu/tàu là đoạn đậm. Gọi qua so-do-doan-thang.mjs khi "loai":"chuyen_dong" ⇒ ghi-lo/lo-tu-soan/ve-lai-so-do dùng được ngay, mảng trộn 2 loại được (26.12). 135 sơ đồ cũ vẽ lại y hệt. Soát ảnh lần 1: đầu mũi tên quá to (marker theo stroke-width ⇒ markerUnits=userSpaceOnUse), chú thích điểm mép phải bị cắt (đưa xuống dòng dưới tên, neo theo mép).
+- Lô 4: chèn sơ đồ chuyển động 11 câu (25.7, 25.12, 26.4, 26.8, 26.12, 26.14, 27.5, 27.7, 29.2, 29.7, 29.10); 26.12 gộp 2 sơ đồ đường đi + sơ đồ tổng–hiệu thành một ảnh. Lô 3: 7 dòng tỉ số diện tích thành câu "Tam giác X và tam giác Y có chung đường cao hạ từ P xuống QR, suy ra …".
+- README chỉ commit đúng đoạn của phiên này (dựng blob từ HEAD + đoạn mới, update-index) — bản làm việc README đang có thay đổi chưa commit của phiên khác (hgt → hinh), không cuốn theo.
+
+## 09/10 (tiếp) — Hình 9 phần HỌC: 6 bài đường tròn HH00105–HH00110, 363 câu ghi DB chờ duyệt
+- CEO sửa hướng: *"Lượng giác mới là hgt, còn đường tròn là hình học rồi. Hình học phần học"* ⇒ bỏ đề xuất `hgt_cau_hoi`, chuyển spec sang `kho-rules/hinh/k9.md`; tạo 6 bài theo tên CEO + lý thuyết (= whitelist theo thứ tự bài).
+- Không tài liệu nào có lời giải chi tiết cho 6 chủ đề ⇒ giải mới 363/363. Phân bài toán vào bài học sớm nhất đủ kiến thức; bỏ trùng (NĐT nội bộ, PHL↔NĐT 5-gram ≥0,7, NT↔NĐT).
+- Dây chuyền: 51 nhóm Sonnet (2 nhóm thử trước, chỉnh brief: câu "nêu cách", hình chỉ-lời-giải, đề được thêm điều kiện), trần 20 agent song song. Khuôn 2 phần Hình theo k8 §1.6 (CEO 09/10 Q5).
+- Công cụ: `nhap_hh_tu_draft.mjs` thêm `loai_cau/lua_chon/dap_an`, `--cho-cung`, `**hinh_lg:**`, `--noi` (nối câu vào bài đã nhập); `gan_hinh.mjs` file `…_lg.png` chỉ ghi `anh_dap_an`. (Cùng file, phiên k8 thêm chuẩn hoá dòng trống trước Phần 2 — không đụng nhau.)
+- Bắt được khi soát: lệnh LaTeX thiếu `\` (`OMperp`) KaTeX vẫn render thành chữ ⇒ máy soát thêm luật; 2 nhóm cùng làm một câu (nhóm làm lấn sang chỉ số kế bên) ⇒ ghép giữ bản nhóm được giao; 2 hình HH00110 lộ đáp án ⇒ chuyển hình lời giải.
+- Kết quả DB: HH00105 116 · HH00106 36 · HH00107 81 · HH00108 53 · HH00109 33 · HH00110 44; 383 ảnh HEAD 200. Chỗ cần CEO quyết: `kho-rules/hinh/k9-nghi-van.md` §A (6 phương án TN sách in sai đã sửa, 1 đề sách sai, 6 cách hiểu, 8 đề viết lại từ hình).
+
+## 09/10 (tiếp) — 5T LÊN v1 (CEO: "OK rồi. Lên V1 thôi")
+- k5T.md đầu file + §7 + §8b (tiến độ bước 2) + §9; README §5 dòng 5T: Bước 2, v1.
+
+## 09/10 (tiếp) — 5T bước 2: GHI THẬT 98 câu lô thử S1–S4 vào kho (dạng chờ)
+- scripts/kho/sach/soan-tu-mau-thu.mjs (mới): md lô thử → bản soạn (khuôn lo-tu-soan) — để câu lô thử đi CÙNG đường câu hàng loạt (KaTeX, hình đề, dạng chờ). Không sửa lo-tu-md.mjs của 4T: bảng DAP_AN_TAY của nó tra theo MÃ BÀI không theo khối — mã "LT 3.1" có ở cả 2 sách ⇒ câu 5T sẽ nhận nhầm đáp án 4T. 5T dùng lo/k5T-dap-an-tay.json (17 câu không có dòng Đáp số).
+- kho-rules/dai/lo/k5T-kiem.mjs: 101 hàm tính lại từ đề (chuyển từ 4 bộ kiểm lô thử; hình học bằng toạ độ, sơn mặt đếm khối) — 101/101 đạt; làm sai đáp án ⇒ bắt 100/101 (1 "lọt" là phép làm sai đổi chữ nhãn, không đổi số).
+- hinh-de/5T.json manifest 7 hình. kiem-hinh-b: Sonnet xem 29 ảnh sơ đồ (PNG xuất bằng Edge) ⇒ 29/29 đúng; ghi chú LT 6.4 đoạn 6 kg ~3px (đúng tỉ lệ nhưng khó thấy).
+- ghi-lo.mjs: dòng báo cáo đếm cứng T14T% ⇒ lô 5T báo "từ sách này: 0"; sửa đếm theo khối của lô (chỉ là báo cáo, dữ liệu ghi không ảnh hưởng).
+- Ghi: 98 câu T15T000000014–111, ten_de_goc "Toán 5 TLTK · <mã>", kiem_may khop 98, 28 SVG + 7 PNG hình đề lên kho-anh (tải lại HTTP 200). 3 trùng không chèn. Kiểm DB read-only sau ghi: khớp.
+
+## 09/10 (tiếp) — 5T bước 2: LÔ 5 (CĐ1–6) ghi thật 143 câu, T15T000000112–254
+- dau-vao-soan toàn sách: 562 bài → bỏ 25 VD không có "Bài làm" (lời giải lẫn trong đề) ⇒ 537 bài ≈ 705 câu, chia lô theo cụm chuyên đề (5: CĐ1–6 … 10: Ôn tập, 11: bài có hình).
+- Bộ kiểm viết TỪ ĐỀ trước khi mở bản soạn, mỗi lô một tệp gộp vào k5T-kiem.mjs: lo5 (144 hàm, CĐ1–6), lo6 (137, CĐ7–12), lo7 (120, CĐ13–18; LT 18.2/18.3 không có hàm vì bảng sách đọc lộn) — tổng 502.
+- 3 Sonnet soạn song song (A CĐ1–2 63 câu · B CĐ3–4 36 · C CĐ5–6 44). Đáp số 143/143 khớp; lệch duy nhất là cách viết: 19 câu dãy phân số thiếu "A=" (quy ước lô thử) ⇒ sửa trong .sua.json; LT 1.5e/f hàm kiểm nhận thêm dạng "y=7;y=8;y=9".
+- Opus đọc hết 143 lời giải: chất lượng đều, đúng §2b. Sửa 4: LT 4.10b `\text{thừa số cuối}` trong công thức ⇒ nói bằng lời · VD 5.1 câu ngoài lề nhắc cách khác · LT 1.2a "(cách ưu tiên của sách)" sai nguồn · LT 1.5d sách in `5xy+1`.
+- lo-tu-soan.mjs: bản sửa nhận thêm `noi_dung` (sửa lỗi in của đề; noi_dung_sach giữ gốc) ⇒ kiem-doc báo LỆCH SÁCH, câu mang cờ `nghi` — cố ý, người duyệt thấy chỗ đã sửa đề.
+- Sơ đồ: 30 ảnh xuất PNG (script nháp xuat-so-do-lo.mjs), số liệu đúng cả 30; 3 sửa trình bày (nhãn hiệu lặp lại 6.9/6.13, tiêu đề dài bị cắt 6.24). Thử đảo hàng 6.22 cho đẹp ⇒ máy từ chối (hiệu luôn tính giữa HAI HÀNG ĐẦU) ⇒ giữ nguyên. Opus ký kiem-hinh-b (người soạn là Sonnet).
+- Brief k5T-brief-soan.md thêm mục "Bài học từ lô 5". Đã giao lô 6 (CĐ7–12) cho 3 Sonnet.
+
 ## 2026-10-09 (15h) — Trần 70 · suất ca theo bậc lớp (Thùy)
 
 - Thùy: thêm iPad ⇒ capacity 50 → 70; trọng số HS S 0,5 · A 0,75 · B/C 1 ("trước 1 ca tối đa 3 HS, giờ toàn S thì 6").
@@ -36202,6 +36322,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   = 0,5/0,75/1/1/1; ca hôm nay 1 em lớp 5A2… ra 0,5–1 suất đúng bậc. Lịch phòng local: "1 em · 0,5/3 suất · còn 2,5 suất".
 - Không đổi: đơn vị ca, trần Cao 20, cách đếm 70 (đếm ĐẦU em, không trọng số — Thùy chỉ nói trọng số cho ca).
 
+<<<<<<< HEAD
 ## 2026-10-09 (22h40) — Buổi bổ trợ sửa ngày/giờ/TA tự gắn lại ca trực (Tuấn Kiệt / Quỳnh Trang)
 
 - **Lộc báo:** xếp Ngô Trí Tuấn Kiệt vào ca trực 10/10 17:00 của TA Hoàng Thị Quỳnh Trang, hệ không đưa vào ca trực mà ra Lịch riêng.

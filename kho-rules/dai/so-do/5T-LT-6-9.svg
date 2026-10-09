@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 484 132" width="484" height="132" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="484" height="132" fill="#fff"/>
+<text x="112" y="20" font-style="italic" fill="#334155">Sau khi thêm 8 vào số thứ nhất và bớt 5 ở số thứ hai</text>
+<text x="102" y="57" text-anchor="end" fill="#0f172a">Số thứ hai:</text>
+<line x1="112" y1="52" x2="240.6" y2="52" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="45" x2="112" y2="59" stroke="#0f172a" stroke-width="2"/>
+<line x1="240.6" y1="45" x2="240.6" y2="59" stroke="#0f172a" stroke-width="2"/>
+<text x="176.3" y="72" text-anchor="middle" fill="#dc2626">?</text>
+<text x="102" y="101" text-anchor="end" fill="#0f172a">Số thứ nhất:</text>
+<line x1="112" y1="96" x2="240.6" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="89" x2="112" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="240.6" y1="89" x2="240.6" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="240.6" y1="96" x2="412" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="412" y1="89" x2="412" y2="103" stroke="#0f172a" stroke-width="2"/>
+<text x="326.3" y="86" text-anchor="middle" font-size="12" fill="#b45309">48 đơn vị</text>
+<text x="262" y="116" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M426,44 q8,0 8,8 L434,66 q0,8 8,8 q-8,0 -8,8 L434,96 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="448" y="79" fill="#0f172a">120</text>
+</svg>

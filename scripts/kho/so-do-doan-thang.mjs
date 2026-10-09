@@ -20,6 +20,7 @@
 // số trong nhãn "hieu" phải bằng chênh lệch hai hàng đầu — lệch thì TỪ CHỐI VẼ (sơ đồ sai số liệu không được ra khỏi máy).
 // Quy ước vẽ theo sách tiểu học: hàng thẳng cột từ cùng một mốc trái, nhãn bên trái, dấu "?" dưới đoạn cần tìm, ngoặc tổng bên phải.
 import { readFileSync, writeFileSync } from 'node:fs'
+import { veChuyenDong } from './so-do-chuyen-dong.mjs'
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 // số đầu nhãn — nhận dấu phẩy thập phân kiểu Việt ("18,54" ⇒ 18.54; sách 5T có số thập phân). Khoảng trắng ngăn hàng nghìn bỏ.
@@ -45,6 +46,8 @@ export function veSoDo(m) {
     return [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="Arial, Helvetica, sans-serif" font-size="14">`,
       `<rect width="${W}" height="${H}" fill="#fff"/>`, ...khoi, '</svg>'].join('\n')
   }
+  // sơ đồ CHUYỂN ĐỘNG (đường đi, mũi tên xe, khoảng cách) — máy riêng, cùng lối vào (CEO 09/10)
+  if (m.loai === 'chuyen_dong') return veChuyenDong(m)
   const H = 44, TOP = m.tieu_de ? 34 : 14, TICK = 7
   const hang = (m.hang || []).map((h) => ({ ...h }))   // bản sao: hàm vẽ ghi _end/_y vào hàng — KHÔNG được làm bẩn mô tả của người gọi
   if (!hang.length) throw new Error('hang rỗng')

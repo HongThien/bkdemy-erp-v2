@@ -1,0 +1,26 @@
+{
+ "LT 13.21": {
+  "noi_dung": "Trong dịp lễ trồng cây đầu năm, khối 4 trồng được số cây bằng $\\frac{5}{7}$ số cây khối 5 . Nếu mỗi khối trồng thêm 30 cây nữa thì tỉ số cây khối 4 và khối 5 trồng được khi đó là 0,75. Hỏi mỗi khối trồng được bao nhiêu cây?"
+ },
+ "LT 13.25": {
+  "noi_dung": "Khi dịch dấu phẩy của một số thập phân sang bên phải một hàng thì số đó tăng thêm 74,07 đơn vị. Tìm số thập phân đó."
+ },
+ "LT 13.28": {
+  "noi_dung": "Hiệu của hai số thập phân là 124,344. Nếu dịch dấu phẩy của số thứ nhất sang bên phải hai chữ số ta sẽ được số thứ hai. Tìm hai số đó."
+ },
+ "LT 13.29": {
+  "noi_dung": "Tìm ba số thập phân có tổng là 142,857. Biết rằng nếu dịch dấu phẩy của số thứ nhất sang bên trái một chữ số ta được số thứ hai, dịch dấu phẩy của số thứ hai sang bên trái một chữ số ta được số thứ ba."
+ },
+ "LT 13.33": {
+  "noi_dung": "Tổng của hai số thập phân là 17,08. Nếu dịch dấu phẩy của số thứ nhất sang trái một chữ số rồi cộng với số thứ hai thì được kết quả là 5,83. Tìm hai số."
+ },
+ "LT 13.34": {
+  "noi_dung": "Tổng của hai số thập phân là 45,67. Nếu dịch dấu phẩy của số thứ nhất sang trái hai chữ số rồi cộng với số thứ hai thì được kết quả là 3,595. Tìm hai số."
+ },
+ "LT 13.37": {
+  "noi_dung": "Hai số thập phân có tổng là 60,9. Nếu dịch dấu phẩy của số bé sang bên phải một hàng, rồi trừ đi số lớn thì được 210,8 . Tìm hai số đó."
+ },
+ "LT 13.38": {
+  "noi_dung": "Hiệu của hai số thập phân là 4,1 . Nếu dịch dấu phẩy của số bé sang trái một chữ số thì hiệu mới là 9,23. Tìm hai số."
+ }
+}

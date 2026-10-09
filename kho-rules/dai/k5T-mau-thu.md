@@ -1,6 +1,6 @@
 # 5T · Số thập phân — 12 câu GIẢI THỬ theo luật `k5T.md` (v2, 04/10, chưa ghi DB)
 
-> **⭐ LÔ SÁCH 1 (CĐ1–9, 26 câu — CEO đã trả lời 3 câu hỏi 08–09/10) · LÔ SÁCH 2 (CĐ10–17, 26 câu — CEO đã trả lời 2 câu hỏi 09/10) · LÔ SÁCH 3 (CĐ18–24 hình học, 23 câu — chờ CEO duyệt 09/10) ở CUỐI FILE**, nguồn "Tài liệu tham khảo Toán 5". 12 câu dưới đây là lô 04/10 từ kho cũ.
+> **⭐ LÔ SÁCH 1 (CĐ1–9, 26 câu — CEO đã trả lời 3 câu hỏi 08–09/10) · LÔ SÁCH 2 (CĐ10–17, 26 câu — CEO đã trả lời 2 câu hỏi 09/10) · LÔ SÁCH 3 (CĐ18–24 hình học, 23 câu) · LÔ SÁCH 4 (CĐ25–31 + Ôn tập, 26 câu) — chờ CEO duyệt 09/10, ở CUỐI FILE**, nguồn "Tài liệu tham khảo Toán 5". 12 câu dưới đây là lô 04/10 từ kho cũ.
 >
 > v2: mỗi câu chia **Phần 1. Hướng dẫn** (giải thích) / **Phần 2. Trình bày** (chỉ cái viết vào bài thi) — CEO 04/10.
 > 2 câu/dạng. Đáp số cả 12 câu đã được code tính lại, khớp `dap_an` hiện có.
@@ -1864,7 +1864,7 @@ Bài giải
 
 Vì $BM=\dfrac{1}{3}BC$ nên $MC=\dfrac{2}{3}BC$.
 
-$\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$ (chung đường cao hạ từ A đến BC)
+Tam giác AMC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$
 
 $S_{AMC}=\dfrac{2}{3}\times S_{ABC}=\dfrac{2}{3}\times 96=64\ (\text{cm}^2)$
 
@@ -1889,11 +1889,11 @@ Tam giác CMN và tam giác ABC không có chung đường cao ⇒ đi qua **tam
 
 Bài giải
 
-$\dfrac{S_{CMN}}{S_{CMA}}=\dfrac{CN}{CA}=\dfrac{1}{3}$ (chung đường cao hạ từ M đến AC)
+Tam giác CMN và tam giác CMA có chung đường cao hạ từ M xuống AC, suy ra $\dfrac{S_{CMN}}{S_{CMA}}=\dfrac{CN}{CA}=\dfrac{1}{3}$
 
 $S_{CMA}=5\times 3=15\ (\text{cm}^2)$
 
-$\dfrac{S_{CMA}}{S_{CBA}}=\dfrac{CM}{CB}=\dfrac{1}{2}$ (chung đường cao hạ từ A đến BC)
+Tam giác CMA và tam giác CBA có chung đường cao hạ từ A xuống BC, suy ra $\dfrac{S_{CMA}}{S_{CBA}}=\dfrac{CM}{CB}=\dfrac{1}{2}$
 
 $S_{ABC}=15\times 2=30\ (\text{cm}^2)$
 
@@ -1922,11 +1922,11 @@ Nối B với E.
 
 Vì AE gấp đôi EC nên $AE=\dfrac{2}{3}AC$.
 
-$\dfrac{S_{ABE}}{S_{ABC}}=\dfrac{AE}{AC}=\dfrac{2}{3}$ (chung đường cao hạ từ B đến AC)
+Tam giác ABE và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\dfrac{S_{ABE}}{S_{ABC}}=\dfrac{AE}{AC}=\dfrac{2}{3}$
 
 $S_{ABE}=\dfrac{2}{3}\times 150=100\ (\text{cm}^2)$
 
-$\dfrac{S_{AED}}{S_{ABE}}=\dfrac{AD}{AB}=\dfrac{1}{2}$ (chung đường cao hạ từ E đến AB)
+Tam giác AED và tam giác ABE có chung đường cao hạ từ E xuống AB, suy ra $\dfrac{S_{AED}}{S_{ABE}}=\dfrac{AD}{AB}=\dfrac{1}{2}$
 
 $S_{AED}=\dfrac{1}{2}\times 100=50\ (\text{cm}^2)$
 
@@ -1948,9 +1948,9 @@ Mấu chốt: đoạn AM chia tam giác ABC thành hai tam giác ABM và ACM; đ
 
 Bài giải
 
-$\dfrac{S_{NBM}}{S_{ABM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$ (chung đường cao hạ từ B đến AM)
+Tam giác NBM và tam giác ABM có chung đường cao hạ từ B xuống AM, suy ra $\dfrac{S_{NBM}}{S_{ABM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$
 
-$\dfrac{S_{NCM}}{S_{ACM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$ (chung đường cao hạ từ C đến AM)
+Tam giác NCM và tam giác ACM có chung đường cao hạ từ C xuống AM, suy ra $\dfrac{S_{NCM}}{S_{ACM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$
 
 $S_{NBC}=S_{NBM}+S_{NCM}=\dfrac{1}{2}\times\left(S_{ABM}+S_{ACM}\right)=\dfrac{1}{2}\times S_{ABC}$
 
@@ -2376,3 +2376,749 @@ Số khối không được sơn mặt nào là: $\left(25-2\right)\times\left(1
 
 1. **13 bài có hình hỏng trong file sách** (vùng tô thành khối đen; LT 18.12, 19.1, 19.2, 20.9, 21.4, 21.10, 23.1, VD 20.2, Ôn 91, 92, 95, 99, 100) và LT 19.18 (hình ghi E, đề ghi M): ① **vẽ lại bằng code** theo đúng số liệu đề (như hình đề kho Hình — máy vẽ, máy kiểm) · ② chị gửi bản sách khác / bản PDF có hình đúng · ③ tạm bỏ các bài này. Em đề xuất **①**.
 2. **Tỉ số diện tích (CĐ19):** em viết theo VD 19.2–19.3 của sách: dòng tỉ số $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$ kèm lý do "(chung đường cao hạ từ … đến …)", rồi dòng $S_{AMC}=\dfrac{2}{3}\times 96$. Có cần câu lời giải kiểu "Diện tích tam giác AMC là: …" như bài lời văn không, hay giữ khuôn ký hiệu của sách?
+
+---
+
+# LÔ SÁCH 4 — CĐ25–31 (chuyển động · giả thiết tạm · khử) + ÔN TẬP · 26 câu · chờ CEO duyệt (09/10)
+
+> Lô cuối của vòng "giải một lượt qua các dạng" (README §0 bước 1). Phần Ôn tập có 4 mục KHÔNG có trong 31 chuyên đề (dãy số
+> theo quy luật · chia hết – chia có dư · cấu tạo số · bài toán tư duy) nên lấy thêm 8 câu Ôn tập. **Đáp số 26/26 máy tính lại**
+> (chuyển động mô phỏng theo từng phút; bài "chắc chắn" vét mọi cách lấy; bài logic thử đủ 7 ngày). 4 sơ đồ.
+
+## Câu 1 — LT 25.5 · Đổi: a) $36$ km/giờ $=…$ m/giây · b) $5$ m/giây $=…$ km/giờ · c) $54$ km/giờ $=…$ m/giây · d) $21$ m/giây $=…$ km/giờ · e) $42$ km/giờ $=…$ m/phút · f) $200$ m/phút $=…$ km/giờ
+
+**Dạng sách:** CĐ25 · Đổi đơn vị vận tốc
+
+**Phần 1. Hướng dẫn**
+
+Đổi vận tốc là đổi **cả hai đơn vị**: quãng đường và thời gian. $1$ km $=1000$ m; $1$ giờ $=60$ phút $=3600$ giây. Ví dụ $36$ km/giờ nghĩa là $1$ giờ đi $36000$ m ⇒ $1$ giây đi $36000:3600$ m. Chiều ngược lại: $5$ m/giây ⇒ $1$ giờ đi $5\times 3600=18000$ m $=18$ km.
+
+**Phần 2. Trình bày**
+
+a) $36$ km/giờ $=36000:3600$ m/giây $=10$ m/giây
+
+b) $5$ m/giây $=5\times 3600:1000$ km/giờ $=18$ km/giờ
+
+c) $54$ km/giờ $=54000:3600$ m/giây $=15$ m/giây
+
+d) $21$ m/giây $=21\times 3600:1000$ km/giờ $=75,6$ km/giờ
+
+e) $42$ km/giờ $=42000:60$ m/phút $=700$ m/phút
+
+f) $200$ m/phút $=200\times 60:1000$ km/giờ $=12$ km/giờ
+
+---
+
+## Câu 2 — LT 25.7 · Một ô tô khởi hành từ Hà Nội lúc $6$ giờ, đến Thái Bình lúc $8$ giờ $35$ phút. Giữa đường xe nghỉ $15$ phút. Tính vận tốc của ô tô, biết quãng đường từ Hà Nội đến Thái Bình dài $154$ km.
+
+**Dạng sách:** CĐ25 · Vận tốc, quãng đường, thời gian (trừ thời gian nghỉ)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: vận tốc $=$ quãng đường : **thời gian xe thật sự chạy** — phải trừ $15$ phút nghỉ. Thời gian $2$ giờ $20$ phút không chia thẳng được ⇒ đổi ra giờ bằng phân số: $20$ phút $=\dfrac{1}{3}$ giờ nên $2$ giờ $20$ phút $=\dfrac{7}{3}$ giờ (không đổi ra số thập phân vì $\dfrac{1}{3}$ giờ là số thập phân vô hạn).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: Hà Nội — Thái Bình 154 km; ô tô đi từ Hà Nội, vận tốc ? km/giờ](so-do/5T-LT-25-7.svg)
+
+Thời gian ô tô đi từ Hà Nội đến Thái Bình (kể cả nghỉ) là: $8$ giờ $35$ phút $-6$ giờ $=2$ giờ $35$ phút
+
+Thời gian ô tô thật sự chạy là: $2$ giờ $35$ phút $-15$ phút $=2$ giờ $20$ phút
+
+Đổi: $2$ giờ $20$ phút $=\dfrac{7}{3}$ giờ
+
+Vận tốc của ô tô là: $154:\dfrac{7}{3}=66$ (km/giờ)
+
+Đáp số: $66$ km/giờ
+
+---
+
+## Câu 3 — LT 25.12 · Quãng đường AB dài $103$ km. Lúc $7$ giờ $45$ phút một ô tô đi từ A đến B với vận tốc $50$ km/giờ. Sau khi đi được $40$ km, xe hỏng và sửa mất $45$ phút. Quãng đường còn lại, xe chỉ chạy với vận tốc $45$ km/giờ. Hỏi xe đến B lúc mấy giờ?
+
+**Dạng sách:** CĐ25 · Thời điểm đến (nhiều chặng)
+
+**Phần 1. Hướng dẫn**
+
+Chia hành trình thành **ba khoảng thời gian**: chặng $40$ km với $50$ km/giờ · $45$ phút sửa xe · chặng còn lại $103-40=63$ km với $45$ km/giờ. Tính từng khoảng, đổi ra giờ phút, cộng hết rồi cộng vào thời điểm xuất phát.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: A — D 40 km (xe hỏng, sửa 45 phút) — B; AB 103 km; 50 km/giờ rồi 45 km/giờ](so-do/5T-LT-25-12.svg)
+
+Thời gian đi $40$ km đầu là: $40:50=0,8$ (giờ) $=48$ phút
+
+Quãng đường còn lại là: $103-40=63$ (km)
+
+Thời gian đi quãng đường còn lại là: $63:45=1,4$ (giờ) $=1$ giờ $24$ phút
+
+Tổng thời gian từ A đến B là: $48$ phút $+45$ phút $+1$ giờ $24$ phút $=2$ giờ $57$ phút
+
+Xe đến B lúc: $7$ giờ $45$ phút $+2$ giờ $57$ phút $=10$ giờ $42$ phút
+
+Đáp số: $10$ giờ $42$ phút
+
+---
+
+## Câu 4 — LT 26.4 · Lúc $7$ giờ hai xe máy khởi hành tại hai tỉnh A và B cách nhau $240$ km, đi về phía nhau. Vận tốc xe đi từ A là $45$ km/giờ, vận tốc xe đi từ B là $55$ km/giờ. Hỏi hai xe gặp nhau lúc mấy giờ? Chỗ hai xe gặp nhau cách A bao nhiêu ki-lô-mét?
+
+**Dạng sách:** CĐ26 · Chuyển động ngược chiều (gặp nhau)
+
+**Phần 1. Hướng dẫn**
+
+Hai xe đi **ngược chiều, cùng lúc** ⇒ mỗi giờ khoảng cách giữa hai xe giảm đi **tổng hai vận tốc**. Thời gian gặp nhau $=$ quãng đường : tổng vận tốc (khuôn VD 26.1). Chỗ gặp cách A $=$ quãng đường xe đi từ A đã đi.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: xe từ A 45 km/giờ và xe từ B 55 km/giờ đi ngược chiều, gặp nhau tại C; AB 240 km](so-do/5T-LT-26-4.svg)
+
+Tổng vận tốc của hai xe là: $45+55=100$ (km/giờ)
+
+Thời gian hai xe đi đến chỗ gặp nhau là: $240:100=2,4$ (giờ)
+
+Đổi: $2,4$ giờ $=2$ giờ $24$ phút
+
+Hai xe gặp nhau lúc: $7$ giờ $+2$ giờ $24$ phút $=9$ giờ $24$ phút
+
+Chỗ gặp nhau cách A là: $45\times 2,4=108$ (km)
+
+Đáp số: $9$ giờ $24$ phút; $108$ km
+
+---
+
+## Câu 5 — LT 26.8 · Một người đi xe máy và một người đi xe đạp cùng đi từ A đến B. Người đi xe đạp khởi hành trước và đã đi được $40$ km thì người xe máy khởi hành. Hỏi sau bao lâu thì người đi xe máy đuổi kịp người đi xe đạp, biết vận tốc người đi xe máy là $50$ km/giờ và vận tốc người đi xe đạp là $20$ km/giờ.
+
+**Dạng sách:** CĐ26 · Chuyển động cùng chiều (đuổi kịp)
+
+**Phần 1. Hướng dẫn**
+
+Lúc xe máy xuất phát, hai người cách nhau $40$ km. Đi **cùng chiều** ⇒ mỗi giờ xe máy rút ngắn khoảng cách đúng bằng **hiệu hai vận tốc**. Thời gian đuổi kịp $=$ khoảng cách : hiệu vận tốc (khuôn VD 26.2). Kết quả $\dfrac{4}{3}$ giờ đổi ra giờ phút.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: lúc xe máy khởi hành ở A thì xe đạp ở D cách A 40 km; hai xe cùng chiều, xe máy đuổi kịp tại C](so-do/5T-LT-26-8.svg)
+
+Hiệu vận tốc của hai người là: $50-20=30$ (km/giờ)
+
+Thời gian để xe máy đuổi kịp xe đạp là: $40:30=\dfrac{4}{3}$ (giờ)
+
+Đổi: $\dfrac{4}{3}$ giờ $=1$ giờ $20$ phút
+
+Đáp số: $1$ giờ $20$ phút
+
+---
+
+## Câu 6 — LT 26.12 · Quãng đường AB dài $80$ km. Một người đi xe máy từ A và một người đi xe đạp từ B khởi hành cùng lúc. Nếu người đi xe máy đi về phía B và người đi xe đạp đi về phía A thì sau $2$ giờ họ gặp nhau. Nếu hai người đi cùng chiều, người đi xe máy đuổi kịp người đi xe đạp sau $8$ giờ. Tính vận tốc của mỗi xe.
+
+**Dạng sách:** CĐ26 · Ngược chiều và cùng chiều (tìm vận tốc — tổng – hiệu)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đi **ngược chiều** gặp nhau sau $2$ giờ ⇒ **tổng vận tốc** $=80:2$; đi **cùng chiều** đuổi kịp sau $8$ giờ ⇒ **hiệu vận tốc** $=80:8$. Có tổng và hiệu ⇒ bài tổng – hiệu.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: ngược chiều sau 2 giờ gặp nhau; cùng chiều sau 8 giờ đuổi kịp; AB 80 km; sơ đồ tổng 40 km/giờ – hiệu 10 km/giờ](so-do/5T-LT-26-12.svg)
+
+Tổng vận tốc của hai xe là: $80:2=40$ (km/giờ)
+
+Hiệu vận tốc của hai xe là: $80:8=10$ (km/giờ)
+
+Vận tốc xe đạp là: $\left(40-10\right):2=15$ (km/giờ)
+
+Vận tốc xe máy là: $15+10=25$ (km/giờ)
+
+Đáp số: Xe máy: $25$ km/giờ; xe đạp: $15$ km/giờ
+
+---
+
+## Câu 7 — LT 26.14 · Hai thành phố A và B cách nhau $186$ km. Lúc $7$ giờ sáng một người đi xe máy từ A với vận tốc $30$ km/giờ về B. Lúc $8$ giờ một người khác đi xe máy từ B về A với vận tốc $35$ km/giờ. Hỏi lúc mấy giờ thì hai người gặp nhau và chỗ gặp nhau cách thành phố A bao nhiêu ki-lô-mét?
+
+**Dạng sách:** CĐ26 · Ngược chiều, khởi hành khác giờ
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hai người **không đi cùng lúc** ⇒ phải đưa về lúc **cùng đi**. Từ $7$ giờ đến $8$ giờ chỉ người từ A đi, được $30$ km; lúc $8$ giờ hai người còn cách nhau $186-30=156$ km và từ đó đi ngược chiều cùng lúc. Chỗ gặp cách A $=30$ km đã đi trước $+$ quãng người A đi thêm.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: AB 186 km; xe từ A đi lúc 7 giờ (30 km/giờ), đến 8 giờ đi được 30 km; xe từ B đi lúc 8 giờ (35 km/giờ); gặp nhau tại C](so-do/5T-LT-26-14.svg)
+
+Từ $7$ giờ đến $8$ giờ, người đi từ A đi được: $30\times 1=30$ (km)
+
+Lúc $8$ giờ, hai người còn cách nhau: $186-30=156$ (km)
+
+Tổng vận tốc của hai người là: $30+35=65$ (km/giờ)
+
+Thời gian từ lúc $8$ giờ đến lúc gặp nhau là: $156:65=2,4$ (giờ) $=2$ giờ $24$ phút
+
+Hai người gặp nhau lúc: $8$ giờ $+2$ giờ $24$ phút $=10$ giờ $24$ phút
+
+Chỗ gặp nhau cách A là: $30+30\times 2,4=102$ (km)
+
+Đáp số: $10$ giờ $24$ phút; $102$ km
+
+---
+
+## Câu 8 — LT 27.5 · Một chiếc ca nô đi xuôi dòng từ A đến B dài $30$ km hết $1$ giờ $30$ phút và đi ngược dòng từ B về A hết $2$ giờ. Tính vận tốc của ca nô khi nước lặng.
+
+**Dạng sách:** CĐ27 · Chuyển động dòng nước
+
+**Phần 1. Hướng dẫn**
+
+Vận tốc xuôi $=$ vận tốc ca nô $+$ vận tốc dòng nước; vận tốc ngược $=$ vận tốc ca nô $-$ vận tốc dòng nước ⇒ **vận tốc ca nô khi nước lặng $=$ (xuôi $+$ ngược) $:2$** (VD 27.1). Tính vận tốc xuôi, ngược từ quãng đường và thời gian ($1$ giờ $30$ phút $=1,5$ giờ).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: AB 30 km; xuôi dòng A → B 1 giờ 30 phút; ngược dòng B → A 2 giờ](so-do/5T-LT-27-5.svg)
+
+Đổi: $1$ giờ $30$ phút $=1,5$ giờ
+
+Vận tốc ca nô khi xuôi dòng là: $30:1,5=20$ (km/giờ)
+
+Vận tốc ca nô khi ngược dòng là: $30:2=15$ (km/giờ)
+
+Vận tốc của ca nô khi nước lặng là: $\left(20+15\right):2=17,5$ (km/giờ)
+
+Đáp số: $17,5$ km/giờ
+
+---
+
+## Câu 9 — LT 27.7 · Một chiếc ca nô đi xuôi dòng từ A đến B hết $10$ giờ và đi ngược dòng từ B về A hết $15$ giờ. Hỏi một chiếc lá cây thả trôi theo dòng nước từ A thì sau bao lâu đến B?
+
+**Dạng sách:** CĐ27 · Dòng nước (lá trôi — không biết quãng đường)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: lá cây trôi **bằng vận tốc dòng nước**. Đề không cho quãng đường ⇒ coi **quãng sông AB là $1$** (như bài công việc chung): mỗi giờ xuôi được $\dfrac{1}{10}$ quãng sông, ngược được $\dfrac{1}{15}$ quãng sông ⇒ dòng nước mỗi giờ trôi $\left(\dfrac{1}{10}-\dfrac{1}{15}\right):2$ quãng sông.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: quãng sông AB; xuôi dòng 10 giờ; ngược dòng 15 giờ; lá trôi ? giờ](so-do/5T-LT-27-7.svg)
+
+Mỗi giờ ca nô xuôi dòng đi được: $1:10=\dfrac{1}{10}$ (quãng sông AB)
+
+Mỗi giờ ca nô ngược dòng đi được: $1:15=\dfrac{1}{15}$ (quãng sông AB)
+
+Mỗi giờ dòng nước chảy được: $\left(\dfrac{1}{10}-\dfrac{1}{15}\right):2=\dfrac{1}{60}$ (quãng sông AB)
+
+Thời gian lá cây trôi từ A đến B là: $1:\dfrac{1}{60}=60$ (giờ)
+
+Đáp số: $60$ giờ
+
+---
+
+## Câu 10 — LT 28.6 · Một xe máy dự định đi quãng đường AB hết $3$ giờ, nhưng thực tế xe chỉ đi hết $2,5$ giờ vì vận tốc của xe tăng thêm $7$ km/giờ. Tính vận tốc thực tế của xe máy.
+
+**Dạng sách:** CĐ28 · Cùng quãng đường — vận tốc và thời gian tỉ lệ nghịch
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt (VD 28.2 của sách): trên **cùng một quãng đường**, vận tốc và thời gian **tỉ lệ nghịch**. Tỉ số thời gian dự định so với thực tế là $3:2,5=\dfrac{6}{5}$ ⇒ tỉ số vận tốc thực tế so với dự định là $\dfrac{6}{5}$: vận tốc dự định $5$ phần, thực tế $6$ phần, hơn nhau $7$ km/giờ ⇒ bài hiệu – tỉ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Tỉ số thời gian dự định so với thời gian thực tế là: $3:2,5=\dfrac{6}{5}$
+
+Trên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch nên tỉ số vận tốc thực tế so với vận tốc dự định là $\dfrac{6}{5}$.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Vận tốc dự định 5 phần; Vận tốc thực tế 6 phần; hiệu 7 km/giờ](so-do/5T-LT-28-6.svg)
+
+Vận tốc thực tế của xe máy là: $7:\left(6-5\right)\times 6=42$ (km/giờ)
+
+Đáp số: $42$ km/giờ
+
+---
+
+## Câu 11 — LT 28.9 · Một người lái xe tính rằng nếu đi với vận tốc $60$ km/giờ thì sẽ đến lúc $9$ giờ $15$ phút còn nếu đi với vận tốc $70$ km/giờ thì sẽ đến lúc $8$ giờ $45$ phút. Tính độ dài quãng đường xe đã đi.
+
+**Dạng sách:** CĐ28 · Cùng quãng đường (tìm quãng đường từ chênh lệch thời gian)
+
+**Phần 1. Hướng dẫn**
+
+Cùng một lúc xuất phát, đi nhanh hơn thì đến sớm hơn $9$ giờ $15$ phút $-8$ giờ $45$ phút $=30$ phút ⇒ hai thời gian chênh nhau $30$ phút. Cùng quãng đường nên thời gian tỉ lệ nghịch với vận tốc: $60:70=\dfrac{6}{7}$ ⇒ thời gian đi với $60$ km/giờ là $7$ phần, với $70$ km/giờ là $6$ phần ⇒ hiệu – tỉ (như VD 28.1).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Thời gian đi với vận tốc $60$ km/giờ nhiều hơn đi với vận tốc $70$ km/giờ là: $9$ giờ $15$ phút $-8$ giờ $45$ phút $=30$ phút
+
+Tỉ số vận tốc $60$ km/giờ so với $70$ km/giờ là: $60:70=\dfrac{6}{7}$
+
+Trên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch nên tỉ số thời gian đi với vận tốc $60$ km/giờ so với thời gian đi với vận tốc $70$ km/giờ là $\dfrac{7}{6}$.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Thời gian đi với vận tốc 70 km/giờ 6 phần; Thời gian đi với vận tốc 60 km/giờ 7 phần; hiệu 30 phút](so-do/5T-LT-28-9.svg)
+
+Thời gian đi với vận tốc $60$ km/giờ là: $30:\left(7-6\right)\times 7=210$ (phút) $=3,5$ giờ
+
+Quãng đường xe đã đi là: $60\times 3,5=210$ (km)
+
+Đáp số: $210$ km
+
+---
+
+## Câu 12 — LT 29.2 · Một ô tô đi trên quãng đường AB dài $160$ km. Nửa quãng đường đầu ô tô đi với vận tốc $60$ km/giờ. Nửa quãng đường sau ô tô đi với vận tốc $90$ km/giờ. Tính vận tốc trung bình khi ô tô đi trên quãng đường đó.
+
+**Dạng sách:** CĐ29 · Vận tốc trung bình
+
+**Phần 1. Hướng dẫn**
+
+Chú ý bẫy: vận tốc trung bình **không phải** $(60+90):2=75$. Vận tốc trung bình $=$ **tổng quãng đường : tổng thời gian**. Mỗi nửa quãng đường dài $80$ km ⇒ tính thời gian từng nửa rồi cộng.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: AB 160 km, M chính giữa; nửa đầu 60 km/giờ, nửa sau 90 km/giờ](so-do/5T-LT-29-2.svg)
+
+Mỗi nửa quãng đường dài là: $160:2=80$ (km)
+
+Thời gian đi nửa quãng đường đầu là: $80:60=\dfrac{4}{3}$ (giờ)
+
+Thời gian đi nửa quãng đường sau là: $80:90=\dfrac{8}{9}$ (giờ)
+
+Tổng thời gian đi cả quãng đường là: $\dfrac{4}{3}+\dfrac{8}{9}=\dfrac{20}{9}$ (giờ)
+
+Vận tốc trung bình của ô tô là: $160:\dfrac{20}{9}=72$ (km/giờ)
+
+Đáp số: $72$ km/giờ
+
+---
+
+## Câu 13 — LT 29.7 · Một xe lửa vượt qua một cái cầu dài $0,8$ km trong $50$ giây. Tính chiều dài của xe lửa. Biết vận tốc của xe lửa là $72$ km/giờ.
+
+**Dạng sách:** CĐ29 · Vật có chiều dài đáng kể (qua cầu)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt (VD 29.2 của sách): xe lửa **qua hết** một cây cầu thì đi được quãng đường bằng **chiều dài cầu $+$ chiều dài xe lửa**. Đổi vận tốc ra m/giây cho cùng đơn vị với $50$ giây: $72$ km/giờ $=20$ m/giây.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: xe lửa ? m nối với cầu 800 m; đuôi xe lửa đi hết chiều dài xe lửa và cầu trong 50 giây](so-do/5T-LT-29-7.svg)
+
+Đổi: $72$ km/giờ $=20$ m/giây; $0,8$ km $=800$ m
+
+Quãng đường xe lửa đi trong $50$ giây là: $20\times 50=1000$ (m)
+
+Chiều dài của xe lửa là: $1000-800=200$ (m)
+
+Đáp số: $200$ m
+
+---
+
+## Câu 14 — LT 29.10 · Một xe lửa đi qua một cột điện trong $20$ giây và vượt qua một cái cầu dài $480$ m trong $50$ giây. Tính vận tốc và chiều dài của xe lửa.
+
+**Dạng sách:** CĐ29 · Vật có chiều dài đáng kể (cột điện và cầu)
+
+**Phần 1. Hướng dẫn**
+
+Qua cột điện: xe lửa đi quãng đường bằng **chiều dài của chính nó** (mất $20$ giây). Qua cầu: đi chiều dài xe lửa $+480$ m (mất $50$ giây). So hai lần ⇒ $480$ m cầu ứng với $50-20=30$ giây ⇒ vận tốc; rồi chiều dài xe lửa $=$ vận tốc $\times 20$ giây.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: qua cột điện đuôi xe lửa đi hết chiều dài xe lửa (20 giây); qua cầu 480 m đi hết chiều dài xe lửa và cầu (50 giây)](so-do/5T-LT-29-10.svg)
+
+Thời gian xe lửa đi hết chiều dài cây cầu là: $50-20=30$ (giây)
+
+Vận tốc của xe lửa là: $480:30=16$ (m/giây)
+
+Đổi: $16$ m/giây $=57,6$ km/giờ
+
+Chiều dài của xe lửa là: $16\times 20=320$ (m)
+
+Đáp số: $57,6$ km/giờ ($16$ m/giây); $320$ m
+
+---
+
+## Câu 15 — LT 30.2 · Có $14$ xe chở gạo gồm hai loại xe: loại $4$ tạ và loại $6$ tạ. Tính số xe mỗi loại, biết rằng tổng số gạo chở được trong một lượt của $14$ xe đó là $6,8$ tấn.
+
+**Dạng sách:** CĐ30 · Giả thiết tạm
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt (VD 30.1–30.2): **giả sử cả $14$ xe đều là loại $4$ tạ** ⇒ chở được ít hơn thực tế. Mỗi lần thay một xe $4$ tạ bằng một xe $6$ tạ thì chở thêm $2$ tạ ⇒ số xe $6$ tạ $=$ phần thiếu : $2$. Đổi $6,8$ tấn $=68$ tạ trước.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Đổi: $6,8$ tấn $=68$ tạ
+
+Giả sử cả $14$ xe đều là loại $4$ tạ thì chở được: $4\times 14=56$ (tạ)
+
+Số gạo bị thiếu so với thực tế là: $68-56=12$ (tạ)
+
+Thay một xe $4$ tạ bằng một xe $6$ tạ thì chở thêm được: $6-4=2$ (tạ)
+
+Số xe loại $6$ tạ là: $12:2=6$ (xe)
+
+Số xe loại $4$ tạ là: $14-6=8$ (xe)
+
+Đáp số: Loại $4$ tạ: $8$ xe; loại $6$ tạ: $6$ xe
+
+---
+
+## Câu 16 — LT 30.6 · Một bài kiểm tra có $30$ câu hỏi trắc nghiệm. Mỗi câu trả lời đúng được $3$ điểm, mỗi câu trả lời sai hoặc không trả lời bị trừ $3$ điểm. Một bạn được $66$ điểm. Hỏi bạn đó trả lời đúng bao nhiêu câu?
+
+**Dạng sách:** CĐ30 · Giả thiết tạm (có trừ điểm)
+
+**Phần 1. Hướng dẫn**
+
+Giả sử **đúng cả $30$ câu** ⇒ $90$ điểm, thừa so với thực tế. Mấu chốt: thay một câu đúng bằng một câu sai thì **mất $3$ điểm được cộng và bị trừ thêm $3$ điểm** ⇒ giảm $3+3=6$ điểm (không phải $3$).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Giả sử bạn đó trả lời đúng cả $30$ câu thì được: $3\times 30=90$ (điểm)
+
+Số điểm thừa ra so với thực tế là: $90-66=24$ (điểm)
+
+Thay một câu đúng bằng một câu sai thì số điểm giảm đi: $3+3=6$ (điểm)
+
+Số câu trả lời sai (hoặc không trả lời) là: $24:6=4$ (câu)
+
+Số câu trả lời đúng là: $30-4=26$ (câu)
+
+Đáp số: $26$ câu
+
+---
+
+## Câu 17 — LT 30.11 · Trong bãi gửi xe, số xe máy nhiều hơn số ô tô là $12$ xe; tổng số bánh xe máy và số bánh xe ô tô là $192$ bánh xe. Tính số xe mỗi loại, biết rằng mỗi xe máy có hai bánh xe, mỗi ô tô có bốn bánh xe.
+
+**Dạng sách:** CĐ30 · Giả thiết tạm (biết hiệu số xe)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: **giả sử bớt đi $12$ xe máy** thì số xe máy bằng số ô tô, tổng số bánh giảm $12\times 2=24$. Khi đó cứ một xe máy đi cùng một ô tô thành **một cặp có $2+4=6$ bánh** ⇒ số cặp $=$ số ô tô.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Nếu bớt đi $12$ xe máy thì số bánh xe còn lại là: $192-12\times 2=168$ (bánh)
+
+Khi đó số xe máy bằng số ô tô; mỗi xe máy và một ô tô có số bánh là: $2+4=6$ (bánh)
+
+Số ô tô là: $168:6=28$ (xe)
+
+Số xe máy là: $28+12=40$ (xe)
+
+Đáp số: Ô tô: $28$ xe; xe máy: $40$ xe
+
+---
+
+## Câu 18 — LT 31.2 · Mua $5$ chiếc bút máy và $7$ chiếc bút chì hết tất cả $224000$ đồng. Còn nếu mua $4$ chiếc bút máy và $9$ chiếc bút chì cùng loại hết tất cả $220000$ đồng. Tính giá tiền mỗi chiếc bút từng loại.
+
+**Dạng sách:** CĐ31 · Phương pháp khử (khác hệ số)
+
+**Phần 1. Hướng dẫn**
+
+Hai lần mua có số bút máy khác nhau ($5$ và $4$) ⇒ đưa về **cùng số bút máy** (cùng hệ số): nhân lần thứ nhất với $4$, lần thứ hai với $5$ ⇒ cùng $20$ bút máy. Trừ hai dòng ⇒ bút máy bị **khử**, còn lại số bút chì chênh nhau và số tiền chênh nhau (khuôn VD 31.2, sách cho đặt chữ $M$, $C$).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Gọi giá $1$ chiếc bút máy là $M$ (nghìn đồng), giá $1$ chiếc bút chì là $C$ (nghìn đồng).
+
+$\begin{array}{l} 5\times M+7\times C=224\ (1) \\ 4\times M+9\times C=220\ (2) \end{array}$
+
+Từ (1): $20\times M+28\times C=224\times 4=896$
+
+Từ (2): $20\times M+45\times C=220\times 5=1100$
+
+$\left(20\times M+45\times C\right)-\left(20\times M+28\times C\right)=1100-896$
+
+$17\times C=204$ nên $C=12$
+
+$\begin{array}{l} 5\times M+7\times 12=224 \\ M=28 \end{array}$
+
+Đáp số: Bút máy: $28000$ đồng; bút chì: $12000$ đồng
+
+---
+
+## Câu 19 — LT 31.5 · Biết $5$ con chó và $7$ con mèo nặng $181$ kg; $1$ con chó nặng hơn $1$ con mèo $29$ kg. Hỏi mỗi con mèo nặng bao nhiêu ki-lô-gam?
+
+**Dạng sách:** CĐ31 · Phương pháp khử (thay thế)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: mỗi con chó $=$ một con mèo $+29$ kg ⇒ **thay $5$ con chó bằng $5$ con mèo** thì khối lượng giảm $5\times 29$ kg. Khi đó chỉ còn $5+7=12$ con mèo ⇒ khử được con chó.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Nếu thay $5$ con chó bằng $5$ con mèo thì khối lượng giảm đi: $29\times 5=145$ (kg)
+
+Khi đó $5+7=12$ con mèo nặng: $181-145=36$ (kg)
+
+Mỗi con mèo nặng là: $36:12=3$ (kg)
+
+Đáp số: $3$ kg
+
+---
+
+## Câu 20 — ON 7 · Viết liên tiếp các số tự nhiên từ $1$ đến $330$, ta được số $A=1234...329330$. Hỏi A có tất cả bao nhiêu chữ số?
+
+**Dạng sách:** Ôn tập II · Dãy số viết theo quy luật (đếm chữ số)
+
+**Phần 1. Hướng dẫn**
+
+Chia các số theo **số chữ số**: số có $1$ chữ số ($1$ → $9$), $2$ chữ số ($10$ → $99$), $3$ chữ số ($100$ → $330$). Đếm số lượng mỗi nhóm bằng công thức số số hạng (khoảng cách $1$), nhân với số chữ số của nhóm, rồi cộng.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Từ $1$ đến $9$ có $9$ số có $1$ chữ số, dùng: $9\times 1=9$ (chữ số)
+
+Từ $10$ đến $99$ có số số có $2$ chữ số là: $\left(99-10\right):1+1=90$ (số), dùng: $90\times 2=180$ (chữ số)
+
+Từ $100$ đến $330$ có số số có $3$ chữ số là: $\left(330-100\right):1+1=231$ (số), dùng: $231\times 3=693$ (chữ số)
+
+Số A có tất cả số chữ số là: $9+180+693=882$ (chữ số)
+
+Đáp số: $882$ chữ số
+
+---
+
+## Câu 21 — ON 13 · Nếu viết thêm vào bên phải số $695$ một chữ số thì được một số tự nhiên lẻ chia $9$ dư $2$. Tìm chữ số viết thêm đó.
+
+**Dạng sách:** Ôn tập III · Chia hết, chia có dư
+
+**Phần 1. Hướng dẫn**
+
+Gọi chữ số viết thêm là $x$, số mới $\overline{695x}$. Hai điều kiện: **lẻ** ⇒ $x$ là $1;3;5;7;9$; **chia $9$ dư $2$** ⇒ tổng các chữ số $6+9+5+x=20+x$ chia $9$ dư $2$ (một số chia $9$ dư bao nhiêu thì tổng chữ số chia $9$ dư bấy nhiêu). $20+x$ nằm từ $20$ đến $29$, chia $9$ dư $2$ thì là $20$ hoặc $29$ ⇒ $x=0$ hoặc $9$; kết hợp lẻ ⇒ $x=9$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Gọi chữ số viết thêm là $x$, ta được số $\overline{695x}$.
+
+Vì $\overline{695x}$ là số lẻ nên $x$ là một trong các chữ số $1;3;5;7;9$.
+
+Vì $\overline{695x}$ chia $9$ dư $2$ nên tổng các chữ số $6+9+5+x=20+x$ chia $9$ dư $2$, suy ra $20+x=20$ hoặc $20+x=29$, tức là $x=0$ hoặc $x=9$.
+
+Kết hợp hai điều kiện, ta có $x=9$.
+
+Thử lại: $6959:9=773$ (dư $2$).
+
+Vậy chữ số viết thêm là $9$.
+
+---
+
+## Câu 22 — ON 19 · Tìm số tự nhiên bé nhất chia cho $3$ dư $2$, cho $4$ dư $3$, cho $5$ dư $4$ và cho $7$ dư $6$.
+
+**Dạng sách:** Ôn tập III · Chia có dư (thêm vào cho chia hết)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: ở cả bốn phép chia, **số dư đều kém số chia đúng $1$** ⇒ nếu **thêm $1$** vào số cần tìm thì được số chia hết cho cả $3;4;5;7$. Số bé nhất chia hết cho cả $3;4;5;7$: $3\times 4\times 5\times 7=420$ (các số này đôi một không có thừa số chung khác $1$). Số cần tìm $=420-1$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số cần tìm chia cho $3;4;5;7$ đều có số dư kém số chia $1$ đơn vị, nên nếu thêm $1$ vào số đó thì được số chia hết cho cả $3;4;5$ và $7$.
+
+Số bé nhất chia hết cho cả $3;4;5$ và $7$ là: $3\times 4\times 5\times 7=420$
+
+Số cần tìm là: $420-1=419$
+
+Đáp số: $419$
+
+---
+
+## Câu 23 — ON 22 · Tìm một số tự nhiên có hai chữ số, biết nếu viết thêm chữ số $8$ vào bên phải số đó thì ta được số mới lớn hơn số phải tìm $521$ đơn vị.
+
+**Dạng sách:** Ôn tập IV · Cấu tạo số (viết thêm chữ số bên phải)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: viết thêm chữ số $8$ vào bên phải thì số mới **gấp $10$ lần số cũ rồi thêm $8$** ⇒ số cũ $1$ phần, số mới $10$ phần và $8$ đơn vị. Số mới hơn số cũ $521$ ⇒ $9$ phần và $8$ đơn vị là $521$ ⇒ bài hiệu – tỉ (không cần đặt ẩn).
+
+Thử lại: $578-57=521$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Khi viết thêm chữ số $8$ vào bên phải một số thì số đó gấp lên $10$ lần và thêm $8$ đơn vị.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số phải tìm 1 phần; Số mới 10 phần và 8 đơn vị; hiệu 521](so-do/5T-ON-22.svg)
+
+$9$ lần số phải tìm là: $521-8=513$
+
+Số phải tìm là: $513:9=57$
+
+Đáp số: $57$
+
+---
+
+## Câu 24 — ON 37 · Tuổi trung bình của một nhóm giáo viên là $30$. Tuổi trung bình của các cô giáo trong nhóm là $27$. Tuổi trung bình của các thầy giáo trong nhóm là $35$. Biết cô giáo nhiều hơn thầy giáo là $10$ người. Hỏi có bao nhiêu cô giáo trong nhóm đó?
+
+**Dạng sách:** Ôn tập V · Trung bình cộng (bù trừ quanh trung bình chung)
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: so với tuổi trung bình chung $30$, **mỗi cô "thiếu" $3$ tuổi**, **mỗi thầy "thừa" $5$ tuổi**, và **tổng phần thiếu bằng tổng phần thừa** (vì $30$ là trung bình của cả nhóm). Ghép mỗi thầy với một cô: mỗi cặp thừa $5-3=2$ tuổi. Còn $10$ cô lẻ ra, thiếu $3\times 10=30$ tuổi ⇒ phần thừa của các cặp phải bù đúng $30$ tuổi ⇒ số cặp $=30:2$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+So với tuổi trung bình của cả nhóm, mỗi cô giáo kém: $30-27=3$ (tuổi); mỗi thầy giáo hơn: $35-30=5$ (tuổi).
+
+Tổng số tuổi các cô kém bằng tổng số tuổi các thầy hơn.
+
+Ghép mỗi thầy với một cô thì mỗi cặp hơn: $5-3=2$ (tuổi)
+
+$10$ cô giáo còn lại kém tất cả: $3\times 10=30$ (tuổi)
+
+Số thầy giáo là: $30:2=15$ (người)
+
+Số cô giáo là: $15+10=25$ (người)
+
+Đáp số: $25$ cô giáo
+
+---
+
+## Câu 25 — ON 116 · Có $3$ đôi tất xám, $3$ đôi tất xanh và $3$ đôi tất vàng trong hộp. Không nhìn vào hộp, hỏi phải lấy ra ít nhất bao nhiêu chiếc tất để có được một đôi tất cùng màu (phân biệt tất bên phải và tất bên trái)?
+
+**Dạng sách:** Ôn tập XIII · Bài toán tư duy (trường hợp xấu nhất)
+
+**Phần 1. Hướng dẫn**
+
+"Ít nhất bao nhiêu để **chắc chắn**" ⇒ xét **trường hợp xấu nhất** (không may nhất). Có phân biệt trái – phải ⇒ một đôi cần $1$ chiếc trái và $1$ chiếc phải **cùng màu**. Xấu nhất: lấy toàn chiếc **cùng một bên** — cả $9$ chiếc bên trái ($3$ màu $\times 3$ chiếc) vẫn chưa có đôi nào. Chiếc thứ $10$ chắc chắn là chiếc bên phải, ghép được với chiếc trái cùng màu.
+
+Chú ý bẫy: không phân biệt trái – phải thì chỉ cần $4$ chiếc; đề này phân biệt nên khác.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Trong hộp có tất cả số chiếc tất bên trái là: $3\times 3=9$ (chiếc)
+
+Trường hợp xấu nhất: lấy được cả $9$ chiếc tất bên trái thì chưa có đôi nào.
+
+Khi lấy thêm $1$ chiếc nữa thì chiếc đó là tất bên phải, cùng màu với một chiếc bên trái đã lấy nên có một đôi.
+
+Số chiếc tất ít nhất phải lấy là: $9+1=10$ (chiếc)
+
+Đáp số: $10$ chiếc
+
+---
+
+## Câu 26 — ON 124 · Trong 4 bạn dưới đây, chỉ có một bạn nói đúng. Hỏi bạn nào nói đúng? Phong: Hôm nay không phải thứ Tư. · Chi: Hôm qua là Chủ nhật. · Hân: Ngày mai là thứ Sáu. · Mai: Cả Chi và Hân đều sai.
+
+**Dạng sách:** Ôn tập XIII · Bài toán tư duy (suy luận logic)
+
+**Phần 1. Hướng dẫn**
+
+Chỉ một bạn đúng ⇒ **giả sử lần lượt từng bạn đúng** rồi tìm mâu thuẫn. Nhận xét nhanh: Chi đúng ⇒ hôm nay thứ Hai, thì Phong ("không phải thứ Tư") cũng đúng ⇒ hai bạn đúng, loại. Hân đúng ⇒ hôm nay thứ Năm, Phong cũng đúng ⇒ loại. Vậy Chi và Hân đều sai ⇒ **Mai đúng** ⇒ Phong phải sai ⇒ hôm nay thứ Tư (kiểm lại: thứ Tư thì Chi, Hân đều sai — khớp).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Nếu Chi nói đúng thì hôm nay là thứ Hai, khi đó Phong cũng nói đúng — trái với đề bài (chỉ một bạn nói đúng). Vậy Chi nói sai.
+
+Nếu Hân nói đúng thì hôm nay là thứ Năm, khi đó Phong cũng nói đúng — trái với đề bài. Vậy Hân nói sai.
+
+Vì Chi và Hân đều nói sai nên Mai nói đúng.
+
+Do chỉ có một bạn nói đúng nên Phong nói sai, tức là hôm nay là thứ Tư. Khi đó Chi và Hân đều sai (đúng như trên).
+
+Vậy bạn Mai nói đúng.
+
+---
+
+## Bảng tóm tắt lô sách 4
+
+| # | Nguồn | Dạng sách | Đáp số | Ghi chú |
+|---|---|---|---|---|
+| 1 | LT 25.5 | CĐ25 đổi vận tốc | 6 mục | |
+| 2 | LT 25.7 | CĐ25 trừ thời gian nghỉ | $66$ km/giờ | $2$ giờ $20$ phút $=\dfrac{7}{3}$ giờ |
+| 3 | LT 25.12 | CĐ25 nhiều chặng | $10$ giờ $42$ phút | |
+| 4 | LT 26.4 | CĐ26 ngược chiều | $9$ giờ $24$ phút; $108$ km | khuôn VD 26.1 |
+| 5 | LT 26.8 | CĐ26 đuổi kịp | $1$ giờ $20$ phút | khuôn VD 26.2 |
+| 6 | LT 26.12 | CĐ26 tổng – hiệu vận tốc | $25$ và $15$ km/giờ | sơ đồ |
+| 7 | LT 26.14 | CĐ26 khởi hành khác giờ | $10$ giờ $24$ phút; $102$ km | |
+| 8 | LT 27.5 | CĐ27 dòng nước | $17,5$ km/giờ | |
+| 9 | LT 27.7 | CĐ27 lá trôi | $60$ giờ | coi quãng sông là $1$ |
+| 10 | LT 28.6 | CĐ28 tỉ lệ nghịch v – t | $42$ km/giờ | khuôn VD 28.2 + sơ đồ |
+| 11 | LT 28.9 | CĐ28 chênh thời gian | $210$ km | khuôn VD 28.1 + sơ đồ |
+| 12 | LT 29.2 | CĐ29 vận tốc trung bình | $72$ km/giờ | |
+| 13 | LT 29.7 | CĐ29 xe lửa qua cầu | $200$ m | |
+| 14 | LT 29.10 | CĐ29 cột điện và cầu | $16$ m/giây; $320$ m | |
+| 15 | LT 30.2 | CĐ30 giả thiết tạm | $8$ và $6$ xe | |
+| 16 | LT 30.6 | CĐ30 có trừ điểm | $26$ câu | |
+| 17 | LT 30.11 | CĐ30 biết hiệu số xe | $28$ ô tô, $40$ xe máy | |
+| 18 | LT 31.2 | CĐ31 khử khác hệ số | $28000$; $12000$ đồng | đặt chữ như VD 31.2 |
+| 19 | LT 31.5 | CĐ31 thay thế | $3$ kg | |
+| 20 | ON 7 | Ôn II đếm chữ số | $882$ | |
+| 21 | ON 13 | Ôn III chia có dư | $x=9$ | |
+| 22 | ON 19 | Ôn III thêm 1 cho chia hết | $419$ | |
+| 23 | ON 22 | Ôn IV cấu tạo số | $57$ | sơ đồ thay cho đặt ẩn |
+| 24 | ON 37 | Ôn V TBC bù trừ | $25$ cô | |
+| 25 | ON 116 | Ôn XIII trường hợp xấu nhất | $10$ chiếc | |
+| 26 | ON 124 | Ôn XIII suy luận | Mai | |
+
+**Câu hỏi cho CEO trong lô này:**
+
+1. **Chuyển động có tỉ số (CĐ28):** VD 28.1–28.2 của sách giải bằng câu "vận tốc và thời gian tỉ lệ nghịch… $40:(9-7)\times 9$", **không vẽ sơ đồ**. Theo ý chị "có sơ đồ vẫn là tốt nhất", em **thêm sơ đồ** (câu 10, 11) nhưng giữ đúng các dòng phép tính của sách. Giữ sơ đồ, hay theo sách bỏ sơ đồ như hai tỉ số (CĐ8)?
+2. **Cấu tạo số (Ôn IV):** sách 5T không có chuyên đề này nên không có lời giải mẫu. Sách 4T cho "Gọi số cần tìm là A … (Bớt cả hai vế đi A)". Em giải câu 23 bằng **sơ đồ hiệu – tỉ** (số cũ $1$ phần, số mới $10$ phần và $8$), không đặt chữ. Chốt cách nào cho cấu tạo số của 5T: sơ đồ (như câu 23) hay đặt chữ như 4T?

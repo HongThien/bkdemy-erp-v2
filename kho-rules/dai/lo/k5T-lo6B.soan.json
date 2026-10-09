@@ -1,0 +1,175 @@
+[
+ {
+  "ma_nguon": "VD 10.3",
+  "dap_an": "$x=2;\\ 3;\\ 4;\\ 5;\\ 6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một đầu là số thập phân, một đầu là phân số nên đổi $\\dfrac{61}{10}$ ra số thập phân $6,1$ để hai đầu cùng một kiểu, rồi tìm các số **tự nhiên** nằm giữa.\n\n**Bước 1.** Phân số thập phân mẫu $10$ đọc thẳng thành số thập phân: $\\dfrac{61}{10}=6,1$ (một chữ số ở phần thập phân vì mẫu có một chữ số $0$).\n\n**Bước 2.** Số tự nhiên bé nhất lớn hơn $1,308$ là $2$ (vì $1<1,308<2$); số tự nhiên lớn nhất bé hơn $6,1$ là $6$ (vì $6<6,1<7$). Vậy $x$ đi từ $2$ đến $6$.\n\n**Chú ý:** $6<6,1$ nên $6$ được lấy; $1$ không lớn hơn $1,308$ nên không lấy.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{61}{10}=6,1$ nên $1,308<x<6,1$\n\nVậy $x=2;\\ 3;\\ 4;\\ 5;\\ 6$."
+ },
+ {
+  "ma_nguon": "LT 10.1",
+  "dap_an": "$0,2$; $0,078$; $0,0003$; $4,78$; $2,025$; $2,34$; $1,3$; $31,045$; $0,6$; $2,25$; $18,875$; $7,24$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số thập phân (mẫu là $10$, $100$, $1000$, …) viết thành số thập phân **đúng số chữ số $0$ ở mẫu**: mẫu có bao nhiêu chữ số $0$ thì phần thập phân có bấy nhiêu chữ số. Thiếu chữ số thì thêm chữ số $0$ vào bên trái phần thập phân ($\\dfrac{78}{1000}=0,078$).\n\n**Bước 1.** Phân số thập phân thì đọc thẳng như trên; hỗn số có phân số thập phân thì giữ nguyên phần nguyên, chỉ viết phần phân số thành số thập phân ($2\\dfrac{34}{100}=2,34$).\n\n**Bước 2.** Phân số mẫu chưa phải $10$, $100$, $1000$ thì nhân cả tử và mẫu cho cùng một số để mẫu thành $10$, $100$ hoặc $1000$ ($\\dfrac{3}{5}=\\dfrac{6}{10}$; $\\dfrac{9}{4}=\\dfrac{225}{100}$; $\\dfrac{7}{8}=\\dfrac{875}{1000}$; $\\dfrac{6}{25}=\\dfrac{24}{100}$), rồi viết thành số thập phân như bước 1.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{10}=0,2$\n\n$\\dfrac{78}{1000}=0,078$\n\n$\\dfrac{3}{10000}=0,0003$\n\n$\\dfrac{478}{100}=4,78$\n\n$\\dfrac{2025}{1000}=2,025$\n\n$2\\dfrac{34}{100}=2,34$\n\n$1\\dfrac{3}{10}=1,3$\n\n$31\\dfrac{45}{1000}=31,045$\n\n$\\dfrac{3}{5}=\\dfrac{6}{10}=0,6$\n\n$\\dfrac{9}{4}=\\dfrac{225}{100}=2,25$\n\n$18\\dfrac{7}{8}=18\\dfrac{875}{1000}=18,875$\n\n$7\\dfrac{6}{25}=7\\dfrac{24}{100}=7,24$"
+ },
+ {
+  "ma_nguon": "LT 10.2",
+  "dap_an": "$1\\dfrac{4}{10}$; $10\\dfrac{8}{100}$; $125\\dfrac{2}{10000}$; $3003\\dfrac{621}{1000}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số thập phân có phần nguyên và phần thập phân thì viết được thành hỗn số: phần nguyên **giữ nguyên**, phần thập phân thành **phân số thập phân** (mẫu là $1$ kèm bấy nhiêu chữ số $0$ bằng số chữ số sau dấu phẩy, tử là các chữ số ấy).\n\n**Bước 1.** Phần đứng trước dấu phẩy là phần nguyên của hỗn số.\n\n**Bước 2.** Đếm số chữ số sau dấu phẩy để chọn mẫu ($1$ chữ số: mẫu $10$; $2$ chữ số: $100$; $3$ chữ số: $1000$; $4$ chữ số: $10000$), tử số là chính các chữ số ấy.\n\n**Chú ý:** chữ số $0$ đứng đầu phần thập phân vẫn được tính vào số chữ số: $10,08$ có hai chữ số sau dấu phẩy nên mẫu $100$, tử là $8$. Đề yêu cầu phân số thập phân nên không rút gọn.\n\n**Phần 2. Trình bày**\n\n$1,4=1\\dfrac{4}{10}$\n\n$10,08=10\\dfrac{8}{100}$\n\n$125,0002=125\\dfrac{2}{10000}$\n\n$3003,621=3003\\dfrac{621}{1000}$"
+ },
+ {
+  "ma_nguon": "LT 10.3",
+  "dap_an": "$\\dfrac{15}{100}$; $\\dfrac{56}{1000}$; $\\dfrac{2502}{1000}$; $\\dfrac{300441}{10000}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số thập phân có $n$ chữ số ở phần thập phân thì viết thành phân số thập phân có mẫu là $1$ kèm $n$ chữ số $0$, tử số là số đó **bỏ dấu phẩy**.\n\n**Bước 1.** Đếm số chữ số sau dấu phẩy để biết mẫu số ($2$ chữ số: $100$; $3$ chữ số: $1000$; $4$ chữ số: $10000$).\n\n**Bước 2.** Bỏ dấu phẩy, đọc số còn lại như số tự nhiên làm tử số (bỏ các chữ số $0$ đứng đầu: $0,056$ có tử là $56$).\n\n**Chú ý:** số có phần nguyên khác $0$ thì tử số gồm cả phần nguyên ($2,502=\\dfrac{2502}{1000}$). Đề hỏi phân số nên không viết hỗn số.\n\n**Phần 2. Trình bày**\n\n$0,15=\\dfrac{15}{100}$\n\n$0,056=\\dfrac{56}{1000}$\n\n$2,502=\\dfrac{2502}{1000}$\n\n$30,0441=\\dfrac{300441}{10000}$"
+ },
+ {
+  "ma_nguon": "LT 10.4a",
+  "dap_an": "$9,229$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi hàng của số thập phân chỉ ghi **một chữ số**: trước dấu phẩy là hàng đơn vị; sau dấu phẩy lần lượt là hàng phần mười, phần trăm, phần nghìn. Đề cho đủ các hàng liên tiếp nên viết thẳng từng chữ số vào đúng hàng.\n\n**Phần 2. Trình bày**\n\n$9$ đơn vị, $2$ phần mười, $2$ phần trăm và $9$ phần nghìn nên số đó là $9,229$.",
+  "ghi_chu_nghi": "Đề in \"thạ̀p\" (lỗi dấu) trong câu dẫn \"Viết số thập phân gồm\"; nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.4b",
+  "dap_an": "$51,407$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hàng nào đề **không nhắc tới** thì chữ số ở hàng đó là $0$. Ở đây đề có phần mười ($4$) và phần nghìn ($7$) mà không có phần trăm nên hàng phần trăm là $0$.\n\n**Chú ý:** nếu bỏ sót chữ số $0$ và viết $51,47$ thì số $7$ sẽ rơi vào hàng phần trăm, sai.\n\n**Phần 2. Trình bày**\n\n$51$ đơn vị, $4$ phần mười, $0$ phần trăm và $7$ phần nghìn nên số đó là $51,407$.",
+  "ghi_chu_nghi": "Đề in \"thạ̀p\" (lỗi dấu) trong câu dẫn \"Viết số thập phân gồm\"; nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.4c",
+  "dap_an": "$2,003$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề không nhắc phần mười và phần trăm nên hai hàng đó là $0$; $3$ phần nghìn đứng ở hàng thứ ba sau dấu phẩy.\n\n**Chú ý:** phải có đủ hai chữ số $0$ chen giữa: $2,003$ chứ không phải $2,3$ hay $2,03$.\n\n**Phần 2. Trình bày**\n\n$2$ đơn vị, $0$ phần mười, $0$ phần trăm và $3$ phần nghìn nên số đó là $2,003$.",
+  "ghi_chu_nghi": "Đề in \"thạ̀p\" (lỗi dấu) trong câu dẫn \"Viết số thập phân gồm\"; nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.4d",
+  "dap_an": "$24,18$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $18$ phần trăm là $\\dfrac{18}{100}$, mà $\\dfrac{18}{100}$ viết thành số thập phân có hai chữ số sau dấu phẩy là $0,18$. Vậy phần thập phân là $18$, phần nguyên là $24$.\n\n**Phần 2. Trình bày**\n\n$24$ đơn vị và $18$ phần trăm nên số đó là $24+\\dfrac{18}{100}=24,18$.",
+  "ghi_chu_nghi": "Đề in \"thạ̀p\" (lỗi dấu) trong câu dẫn \"Viết số thập phân gồm\"; nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.4e",
+  "dap_an": "$0,01$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $0$ đơn vị thì phần nguyên là $0$; $1$ phần trăm là $\\dfrac{1}{100}$ nên hàng phần mười là $0$ và hàng phần trăm là $1$.\n\n**Chú ý:** viết $0,1$ là sai, vì $0,1$ là $1$ phần mười.\n\n**Phần 2. Trình bày**\n\n$0$ đơn vị và $1$ phần trăm nên số đó là $0,01$.",
+  "ghi_chu_nghi": "Đề in \"thạ̀p\" (lỗi dấu) trong câu dẫn \"Viết số thập phân gồm\"; nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.4f",
+  "dap_an": "$208,02$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $2$ trăm là chữ số $2$ ở hàng trăm; đề không nhắc hàng chục nên hàng chục là $0$; $8$ đơn vị; không nhắc phần mười nên hàng phần mười là $0$; $2$ phần trăm.\n\n**Chú ý:** hai chữ số $0$ (hàng chục và hàng phần mười) đều phải viết.\n\n**Phần 2. Trình bày**\n\n$2$ trăm, $0$ chục, $8$ đơn vị, $0$ phần mười và $2$ phần trăm nên số đó là $208,02$.",
+  "ghi_chu_nghi": "Đề in \"thạ̀p\" (lỗi dấu) trong câu dẫn \"Viết số thập phân gồm\"; nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.6a",
+  "dap_an": "$x=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là số **tự nhiên** nằm giữa hai số thập phân nên chỉ cần tìm số tự nhiên đầu tiên lớn hơn số bé và số tự nhiên cuối cùng bé hơn số lớn.\n\n**Bước 1.** $0,6$ nằm giữa $0$ và $1$ nên số tự nhiên đầu tiên lớn hơn $0,6$ là $1$.\n\n**Bước 2.** $1,5$ nằm giữa $1$ và $2$ nên số tự nhiên cuối cùng bé hơn $1,5$ là $1$.\n\n**Phần 2. Trình bày**\n\nVì $0<0,6<1$ nên $x$ phải từ $1$ trở lên.\n\nVì $1<1,5<2$ nên $x$ không lớn hơn $1$.\n\nVậy $x=1$."
+ },
+ {
+  "ma_nguon": "LT 10.6b",
+  "dap_an": "$x=79;\\ 80$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là số **tự nhiên** nằm giữa hai số thập phân nên chỉ cần tìm số tự nhiên đầu tiên lớn hơn số bé và số tự nhiên cuối cùng bé hơn số lớn.\n\n**Bước 1.** $78,32$ nằm giữa $78$ và $79$ nên số tự nhiên đầu tiên lớn hơn $78,32$ là $79$.\n\n**Bước 2.** $80,1$ nằm giữa $80$ và $81$ nên số tự nhiên cuối cùng bé hơn $80,1$ là $80$.\n\n**Phần 2. Trình bày**\n\nVì $78<78,32<79$ nên $x$ phải từ $79$ trở lên.\n\nVì $80<80,1<81$ nên $x$ không lớn hơn $80$.\n\nVậy $x=79;\\ 80$."
+ },
+ {
+  "ma_nguon": "LT 10.6c",
+  "dap_an": "$x=6;\\ 7;\\ 8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là số **tự nhiên** nằm giữa hai số thập phân nên chỉ cần tìm số tự nhiên đầu tiên lớn hơn số bé và số tự nhiên cuối cùng bé hơn số lớn.\n\n**Bước 1.** $5,6$ nằm giữa $5$ và $6$ nên số tự nhiên đầu tiên lớn hơn $5,6$ là $6$.\n\n**Bước 2.** $8,1$ nằm giữa $8$ và $9$ nên số tự nhiên cuối cùng bé hơn $8,1$ là $8$.\n\n**Phần 2. Trình bày**\n\nVì $5<5,6<6$ nên $x$ phải từ $6$ trở lên.\n\nVì $8<8,1<9$ nên $x$ không lớn hơn $8$.\n\nVậy $x=6;\\ 7;\\ 8$.",
+  "ghi_chu_nghi": "Đề in \"5,6<x<8,1\" không nằm trong $…$ (thiếu định dạng công thức); nội dung không đổi."
+ },
+ {
+  "ma_nguon": "LT 10.6d",
+  "dap_an": "$x=2;\\ 3;\\ 4;\\ 5;\\ 6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một đầu là phân số nên đổi $\\dfrac{61}{10}$ ra số thập phân $6,1$ để cùng một kiểu, rồi tìm các số **tự nhiên** nằm giữa.\n\n**Bước 1.** $\\dfrac{61}{10}=6,1$ (mẫu $10$ nên có một chữ số sau dấu phẩy). $1,308$ nằm giữa $1$ và $2$ nên số tự nhiên đầu tiên lớn hơn nó là $2$.\n\n**Bước 2.** $6,1$ nằm giữa $6$ và $7$ nên số tự nhiên cuối cùng bé hơn nó là $6$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{61}{10}=6,1$ nên $1,308<x<6,1$\n\nVì $1<1,308<2$ nên $x$ phải từ $2$ trở lên.\n\nVì $6<6,1<7$ nên $x$ không lớn hơn $6$.\n\nVậy $x=2;\\ 3;\\ 4;\\ 5;\\ 6$.",
+  "ghi_chu_nghi": "Đề trùng nguyên văn với VD 10.3 (cùng $1,308<x<\\frac{61}{10}$); lời giải giống nhau."
+ },
+ {
+  "ma_nguon": "LT 10.7a",
+  "dap_an": "$y=0;\\ 1;\\ 2;\\ 3;\\ 4;\\ 5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi $\\dfrac{456254}{10000}$ ra số thập phân để cùng một kiểu, rồi so sánh **từng hàng từ trái sang phải**. Hai số giống nhau đến hàng phần trăm nên $y$ (hàng phần nghìn) quyết định, nhưng khi $y$ bằng chữ số tương ứng thì phải so tiếp hàng sau.\n\n**Bước 1.** $\\dfrac{456254}{10000}=45,6254$ (mẫu $10000$ nên có bốn chữ số sau dấu phẩy). $\\overline{45,62y2}$ và $45,6254$ đều có phần nguyên $45$, phần mười $6$, phần trăm $2$.\n\n**Bước 2.** Hàng phần nghìn: số cần tìm có chữ số $y$, số kia có chữ số $5$. Nếu $y<5$ thì số cần tìm bé hơn ngay; nếu $y>5$ thì lớn hơn.\n\n**Bước 3.** Nếu $y=5$ thì hai số cùng có chữ số $5$ ở hàng phần nghìn, phải so tiếp hàng phần chục nghìn: $2<4$ nên số cần tìm vẫn bé hơn.\n\n**Chú ý:** trường hợp $y=5$ rất dễ bị bỏ sót.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{456254}{10000}=45,6254$ nên $\\overline{45,62y2}<45,6254$\n\nHai số có cùng phần nguyên $45$, cùng chữ số hàng phần mười $6$, cùng chữ số hàng phần trăm $2$.\n\nNếu $y<5$ thì $\\overline{45,62y2}<45,6254$.\n\nNếu $y=5$ thì hai số cùng có chữ số hàng phần nghìn là $5$; hàng phần chục nghìn có $2<4$ nên $45,6252<45,6254$.\n\nNếu $y>5$ thì $\\overline{45,62y2}>45,6254$.\n\nVậy $y=0;\\ 1;\\ 2;\\ 3;\\ 4;\\ 5$."
+ },
+ {
+  "ma_nguon": "LT 10.8a",
+  "dap_an": "$m=24;\\ n=25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số tự nhiên liên tiếp mà số thập phân nằm giữa thì số bé là **phần nguyên** của số thập phân đó, số lớn là phần nguyên cộng $1$.\n\n**Chú ý:** hai số tự nhiên liên tiếp hơn kém nhau $1$ đơn vị nên chỉ có đúng một cặp.\n\n**Phần 2. Trình bày**\n\nVì $24<24,306<25$ mà $m$ và $n$ là hai số tự nhiên liên tiếp nên $m=24$; $n=25$."
+ },
+ {
+  "ma_nguon": "LT 10.8b",
+  "dap_an": "$m=10;\\ n=11$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số tự nhiên liên tiếp mà số thập phân nằm giữa thì số bé là **phần nguyên** của số thập phân đó, số lớn là phần nguyên cộng $1$.\n\n**Chú ý:** phần nguyên của $10,299$ là $10$ chứ không phải $11$ hay $9$.\n\n**Phần 2. Trình bày**\n\nVì $10<10,299<11$ mà $m$ và $n$ là hai số tự nhiên liên tiếp nên $m=10$; $n=11$."
+ },
+ {
+  "ma_nguon": "LT 10.8c",
+  "dap_an": "$m=31;\\ n=32$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho $n$ nằm giữa hai số thập phân nên tìm $n$ trước, rồi $m$ là số tự nhiên liền trước $n$.\n\n**Bước 1.** $31<31,3<32$ và $32<32,1<33$ nên số tự nhiên $n$ thoả $31,3<n<32,1$ chỉ có thể là $32$.\n\n**Bước 2.** $m$ và $n$ liên tiếp, $m$ bé hơn $n$ nên $m=32-1=31$. Kiểm tra: $31<31,3$ đúng với điều kiện $m<31,3$.\n\n**Phần 2. Trình bày**\n\nVì $31<31,3<32$ và $32<32,1<33$ nên số tự nhiên $n$ thoả $31,3<n<32,1$ là $n=32$.\n\n$m$ và $n$ là hai số tự nhiên liên tiếp, $m<n$ nên $m=32-1=31$ (đúng vì $31<31,3$).\n\nVậy $m=31;\\ n=32$.",
+  "ghi_chu_nghi": "Đề in \"m $<31,3<n<32,1$\" với chữ m nằm ngoài $…$ (lệch định dạng công thức); hiểu là m < 31,3 < n < 32,1."
+ },
+ {
+  "ma_nguon": "LT 10.8d",
+  "dap_an": "$m=75;\\ n=76$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho $m$ nằm giữa hai số thập phân nên tìm $m$ trước, rồi $n$ là số tự nhiên liền sau $m$.\n\n**Bước 1.** $74<74,99<75$ và $75<75,08<76$ nên số tự nhiên $m$ thoả $74,99<m<75,08$ chỉ có thể là $75$.\n\n**Bước 2.** $m$ và $n$ liên tiếp, $n$ lớn hơn $m$ nên $n=75+1=76$. Kiểm tra: $75,08<76$ đúng với điều kiện $75,08<n$.\n\n**Phần 2. Trình bày**\n\nVì $74<74,99<75$ và $75<75,08<76$ nên số tự nhiên $m$ thoả $74,99<m<75,08$ là $m=75$.\n\n$m$ và $n$ là hai số tự nhiên liên tiếp, $n>m$ nên $n=75+1=76$ (đúng vì $75,08<76$).\n\nVậy $m=75;\\ n=76$."
+ },
+ {
+  "ma_nguon": "LT 11.1",
+  "dap_an": "$8,6$ km; $2,2$ dm; $144,3$ m; $57,6$ dm; $13$ km $140$ m; $6$ km $60$ m; $2$ dm $2$ cm $2$ mm; $10375$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai đơn vị độ dài liền nhau hơn kém nhau **$10$ lần** (km, hm, dam, m, dm, cm, mm), nên mỗi đơn vị ứng với **một chữ số** sau dấu phẩy. Đổi từ đơn vị bé sang đơn vị lớn thì viết phân số thập phân rồi thành số thập phân; đổi ngược lại thì lấy phần thập phân đổi sang các đơn vị bé hơn.\n\n**Bước 1.** Đổi số đo nhiều đơn vị ra một đơn vị: đổi từng phần sang đơn vị cần đổi rồi cộng ($14\\ \\text{dam}=140\\ \\text{m}$; $3\\ \\text{dm}=0,3\\ \\text{m}$).\n\n**Bước 2.** Đổi số thập phân thành số đo nhiều đơn vị: giữ phần nguyên, phần thập phân nhân với số đơn vị bé hơn ($0,14\\ \\text{km}=140\\ \\text{m}$ vì $1\\ \\text{km}=1000\\ \\text{m}$).\n\n**Chú ý:** $0,222\\ \\text{m}=222\\ \\text{mm}$, mà $222\\ \\text{mm}=200\\ \\text{mm}+20\\ \\text{mm}+2\\ \\text{mm}=2\\ \\text{dm}\\ 2\\ \\text{cm}\\ 2\\ \\text{mm}$.\n\n**Phần 2. Trình bày**\n\n$8\\ \\text{km}\\ 6\\ \\text{hm}=8\\dfrac{6}{10}\\ \\text{km}=8,6\\ \\text{km}$\n\n$2\\ \\text{dm}\\ 2\\ \\text{cm}=2\\dfrac{2}{10}\\ \\text{dm}=2,2\\ \\text{dm}$\n\n$14\\ \\text{dam}\\ 4\\ \\text{m}\\ 3\\ \\text{dm}=140\\ \\text{m}+4\\ \\text{m}+0,3\\ \\text{m}=144,3\\ \\text{m}$\n\n$5\\ \\text{m}\\ 7\\ \\text{dm}\\ 6\\ \\text{cm}=50\\ \\text{dm}+7\\ \\text{dm}+0,6\\ \\text{dm}=57,6\\ \\text{dm}$\n\n$13,14\\ \\text{km}=13\\ \\text{km}+0,14\\ \\text{km}=13\\ \\text{km}\\ 140\\ \\text{m}$\n\n$6,06\\ \\text{km}=6\\ \\text{km}+0,06\\ \\text{km}=6\\ \\text{km}\\ 60\\ \\text{m}$\n\n$0,222\\ \\text{m}=222\\ \\text{mm}=2\\ \\text{dm}\\ 2\\ \\text{cm}\\ 2\\ \\text{mm}$\n\n$10,375\\ \\text{km}=10,375\\times 1000\\ \\text{m}=10375\\ \\text{m}$"
+ },
+ {
+  "ma_nguon": "LT 11.2",
+  "dap_an": "$12,102$ kg; $8,403$ tấn; $12$ tấn $56$ yến; $99$ tạ $2$ yến $5$ kg; $4,373$ tấn; $2,5005$ yến; $77$ yến $8$ kg; $32$ kg $70$ dag $6$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bảng đơn vị khối lượng: tấn, tạ, yến, kg, hg, dag, g; hai đơn vị liền nhau hơn kém nhau **$10$ lần**. Nhớ $1$ tấn $=10$ tạ $=100$ yến $=1000$ kg; $1$ yến $=10$ kg; $1$ kg $=10$ hg $=100$ dag $=1000$ g.\n\n**Bước 1.** Đổi số đo nhiều đơn vị ra một đơn vị: đổi từng phần sang đơn vị cần đổi rồi cộng (ví dụ $5\\ \\text{kg}=0,5$ yến, $5\\ \\text{g}=0,0005$ yến vì $1$ yến $=10000$ g).\n\n**Bước 2.** Đổi số thập phân thành số đo nhiều đơn vị: giữ phần nguyên, phần thập phân đổi sang các đơn vị bé hơn (ví dụ $0,56$ tấn $=56$ yến vì $1$ tấn $=100$ yến).\n\n**Chú ý:** $9,925$ tấn đổi ra tạ – yến – kg: $9$ tấn $=90$ tạ, $925\\ \\text{kg}=9$ tạ $2$ yến $5$ kg, cộng lại là $99$ tạ $2$ yến $5$ kg.\n\n**Phần 2. Trình bày**\n\n$12\\ \\text{kg}\\ 102\\ \\text{g}=12\\ \\text{kg}+0,102\\ \\text{kg}=12,102\\ \\text{kg}$\n\n$8$ tấn $4$ tạ $3\\ \\text{kg}=8$ tấn $+\\ 0,4$ tấn $+\\ 0,003$ tấn $=8,403$ tấn\n\n$12,56$ tấn $=12$ tấn $+\\ 0,56$ tấn $=12$ tấn $56$ yến\n\n$9,925$ tấn $=9$ tấn $925\\ \\text{kg}=90$ tạ $+\\ 9$ tạ $2$ yến $5\\ \\text{kg}=99$ tạ $2$ yến $5\\ \\text{kg}$\n\n$437$ yến $3\\ \\text{kg}=4370\\ \\text{kg}+3\\ \\text{kg}=4373\\ \\text{kg}=4,373$ tấn\n\n$2$ yến $5\\ \\text{kg}\\ 5\\ \\text{g}=2$ yến $+\\ 0,5$ yến $+\\ 0,0005$ yến $=2,5005$ yến\n\n$77,8$ yến $=77$ yến $+\\ 0,8$ yến $=77$ yến $8\\ \\text{kg}$\n\n$32,706\\ \\text{kg}=32\\ \\text{kg}+0,706\\ \\text{kg}=32\\ \\text{kg}\\ 706\\ \\text{g}=32\\ \\text{kg}\\ 70\\ \\text{dag}\\ 6\\ \\text{g}$",
+  "ghi_chu_nghi": "Đề in \"…tán\" (tấn) ở dòng 437 yến 3 kg; dòng \"77,8 yến = …yến …\" thiếu đơn vị sau chỗ trống thứ hai — hiểu là kg (0,8 yến = 8 kg)."
+ },
+ {
+  "ma_nguon": "LT 11.4",
+  "dap_an": "$2,25$ giờ; $1,75$ giờ; $1$ phút $9$ giây; $4,9$ giờ; $3,6$ giờ; $2$ giờ $33$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $1$ giờ $=60$ phút, $1$ phút $=60$ giây. Đổi phút ra giờ thì chia cho $60$; đổi phần thập phân của giờ ra phút thì nhân với $60$ (phần thập phân của phút ra giây cũng nhân với $60$).\n\n**Bước 1.** Số đo giờ – phút đổi ra giờ: giữ số giờ, số phút chia cho $60$ rồi cộng vào ($15:60=0,25$).\n\n**Bước 2.** Số thập phân đổi ra nhiều đơn vị: giữ phần nguyên, phần thập phân nhân với $60$ để ra đơn vị nhỏ hơn.\n\n**Chú ý:** $1,15$ phút không phải $1$ phút $15$ giây; $0,15$ phút là $0,15\\times 60=9$ giây.\n\n**Phần 2. Trình bày**\n\n$2$ giờ $15$ phút $=2$ giờ $+\\ 15:60$ giờ $=2,25$ giờ\n\n$1$ giờ $45$ phút $=1$ giờ $+\\ 45:60$ giờ $=1,75$ giờ\n\n$1,15$ phút $=1$ phút $+\\ 0,15\\times 60$ giây $=1$ phút $9$ giây\n\n$4$ giờ $54$ phút $=4$ giờ $+\\ 54:60$ giờ $=4,9$ giờ\n\n$3$ giờ $36$ phút $=3$ giờ $+\\ 36:60$ giờ $=3,6$ giờ\n\n$2,55$ giờ $=2$ giờ $+\\ 0,55\\times 60$ phút $=2$ giờ $33$ phút"
+ },
+ {
+  "ma_nguon": "LT 11.5",
+  "dap_an": "$12,45\\ \\text{ha}>12450\\ \\text{m}^2$; $\\dfrac{4}{5}\\ \\text{m}^2<75000\\ \\text{cm}^2$; $3\\ \\text{m}\\ 6\\ \\text{dm}<\\dfrac{7}{2}\\ \\text{dam}$; $108$ yến $>\\dfrac{1}{5}$ tấn; $\\dfrac{3}{2}$ phút $<95$ giây; $5\\ \\text{hm}\\ 80\\ \\text{m}>\\dfrac{1}{2}\\ \\text{km}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn so sánh hai số đo thì đưa cả hai về **cùng một đơn vị** (và cùng một kiểu số) rồi so sánh.\n\n**Bước 1.** Phân số thì đổi ra số thập phân cho dễ đổi đơn vị ($\\dfrac{4}{5}=0,8$; $\\dfrac{7}{2}=3,5$; $\\dfrac{3}{2}=1,5$; $\\dfrac{1}{5}=0,2$; $\\dfrac{1}{2}=0,5$).\n\n**Bước 2.** Chọn đơn vị bé hơn trong hai vế để đổi ra số nguyên: $1\\ \\text{ha}=10000\\ \\text{m}^2$, $1\\ \\text{m}^2=10000\\ \\text{cm}^2$, $1$ dam $=10$ m, $1$ tấn $=1000$ kg, $1$ yến $=10$ kg, $1$ phút $=60$ giây, $1$ hm $=100$ m, $1$ km $=1000$ m.\n\n**Chú ý:** đơn vị diện tích hai bậc liền nhau hơn kém nhau $100$ lần (không phải $10$ lần như độ dài).\n\n**Phần 2. Trình bày**\n\n$12,45\\ \\text{ha}=124500\\ \\text{m}^2>12450\\ \\text{m}^2$\n\n$\\dfrac{4}{5}\\ \\text{m}^2=0,8\\ \\text{m}^2=8000\\ \\text{cm}^2<75000\\ \\text{cm}^2$\n\n$3\\ \\text{m}\\ 6\\ \\text{dm}=3,6\\ \\text{m}<35\\ \\text{m}=3,5\\ \\text{dam}=\\dfrac{7}{2}\\ \\text{dam}$\n\n$108$ yến $=1080\\ \\text{kg}>200\\ \\text{kg}=0,2$ tấn $=\\dfrac{1}{5}$ tấn\n\n$\\dfrac{3}{2}$ phút $=1,5$ phút $=90$ giây $<95$ giây\n\n$5\\ \\text{hm}\\ 80\\ \\text{m}=580\\ \\text{m}>500\\ \\text{m}=\\dfrac{1}{2}\\ \\text{km}$",
+  "ghi_chu_nghi": "Vế \"5 hm 80\" ở dòng cuối thiếu đơn vị sau số 80 — hiểu là 80 m (5 hm 80 m = 580 m). Thứ tự 6 ý theo hàng ngang của đề, đề không đánh nhãn ý."
+ },
+ {
+  "ma_nguon": "LT 11.6a",
+  "dap_an": "$543\\ \\text{cm}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng, trừ các số đo có nhiều đơn vị thì **đổi tất cả về cùng một đơn vị** (ở đây là cm) rồi tính như số tự nhiên, sau cùng ghi đơn vị.\n\n**Bước 1.** Đổi: $2\\ \\text{m}\\ 13\\ \\text{cm}=213\\ \\text{cm}$ và $4\\ \\text{m}\\ 5\\ \\text{dm}=450\\ \\text{cm}$.\n\n**Bước 2.** Thực hiện từ trái sang phải: cộng trước, trừ sau.\n\n**Phần 2. Trình bày**\n\n$2\\ \\text{m}\\ 13\\ \\text{cm}+4\\ \\text{m}\\ 5\\ \\text{dm}-120\\ \\text{cm}$\n\n$=213\\ \\text{cm}+450\\ \\text{cm}-120\\ \\text{cm}$\n\n$=663\\ \\text{cm}-120\\ \\text{cm}$\n\n$=543\\ \\text{cm}$ ($=5\\ \\text{m}\\ 43\\ \\text{cm}$)"
+ },
+ {
+  "ma_nguon": "LT 11.6b",
+  "dap_an": "$21\\ \\text{hg}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phép nhân làm trước, phép trừ làm sau; hai số đo ở hai phép tính khác đơn vị thì **đổi cùng về hg** ($1\\ \\text{kg}=10\\ \\text{hg}$) rồi tính.\n\n**Bước 1.** $23\\ \\text{hg}\\times 2=46\\ \\text{hg}$ (nhân số đo với một số thì chỉ nhân phần số).\n\n**Bước 2.** Đổi $2\\ \\text{kg}\\ 5\\ \\text{hg}=20\\ \\text{hg}+5\\ \\text{hg}=25\\ \\text{hg}$ rồi trừ.\n\n**Phần 2. Trình bày**\n\n$23\\ \\text{hg}\\times 2-2\\ \\text{kg}\\ 5\\ \\text{hg}$\n\n$=46\\ \\text{hg}-25\\ \\text{hg}$\n\n$=21\\ \\text{hg}$ ($=2\\ \\text{kg}\\ 1\\ \\text{hg}$)"
+ },
+ {
+  "ma_nguon": "LT 11.6c",
+  "dap_an": "$472\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đơn vị diện tích hai bậc liền nhau hơn kém nhau **$100$ lần**, nên $1\\ \\text{dm}^2=100\\ \\text{cm}^2$. Đổi $17\\ \\text{dm}^2$ ra $\\text{cm}^2$ rồi mới chia và cộng.\n\n**Bước 1.** Đổi $17\\ \\text{dm}^2=1700\\ \\text{cm}^2$.\n\n**Bước 2.** Chia trước, cộng sau: $1700:4=425$, rồi $425+47=472$.\n\n**Chú ý:** viết $1\\ \\text{dm}^2=10\\ \\text{cm}^2$ là sai (đó là độ dài).\n\n**Phần 2. Trình bày**\n\n$17\\ \\text{dm}^2:4+47\\ \\text{cm}^2$\n\n$=1700\\ \\text{cm}^2:4+47\\ \\text{cm}^2$\n\n$=425\\ \\text{cm}^2+47\\ \\text{cm}^2$\n\n$=472\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 11.6d",
+  "dap_an": "$10$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biểu thức chỉ có chia và nhân nên làm **từ trái sang phải**: chia trước rồi mới nhân. Số đo thời gian chia hay nhân với một số thì chỉ chia, nhân phần số.\n\n**Bước 1.** $15$ phút $:6=2,5$ phút.\n\n**Bước 2.** $2,5$ phút $\\times 4=10$ phút.\n\n**Chú ý:** nếu nhân $6\\times 4$ trước rồi lấy $15$ chia cho $24$ thì sai kết quả.\n\n**Phần 2. Trình bày**\n\n$15$ phút $:6\\times 4$\n\n$=2,5$ phút $\\times 4$\n\n$=10$ phút"
+ },
+ {
+  "ma_nguon": "LT 11.8",
+  "dap_an": "a) $180$ viên gạch; b) $6840000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lát gạch hình vuông kín nền nhà hình chữ nhật thì chỉ cần xem **cạnh viên gạch xếp được mấy lần theo chiều dài và mấy lần theo chiều rộng** rồi nhân hai số ấy. Muốn vậy phải đưa các số đo về cùng đơn vị (cm).\n\n**Bước 1.** Đổi $9\\ \\text{m}=900\\ \\text{cm}$ và $5\\ \\text{m}=500\\ \\text{cm}$ để cùng đơn vị với cạnh viên gạch ($50\\ \\text{cm}$).\n\n**Bước 2.** Chiều dài nền nhà gấp cạnh viên gạch bao nhiêu lần thì xếp được bấy nhiêu viên theo chiều dài; chiều rộng cũng vậy. Số viên gạch là tích hai số lần đó.\n\n**Bước 3.** Ý b dùng kết quả ý a: số tiền bằng giá một viên nhân với số viên gạch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $9\\ \\text{m}=900\\ \\text{cm}$\n\nĐổi: $5\\ \\text{m}=500\\ \\text{cm}$\n\na) Chiều dài nền nhà gấp cạnh viên gạch số lần là: $900:50=18$ (lần)\n\nChiều rộng nền nhà gấp cạnh viên gạch số lần là: $500:50=10$ (lần)\n\nSố viên gạch cần để lát kín nền căn phòng là: $18\\times 10=180$ (viên)\n\nb) Số tiền mua gạch là: $38000\\times 180=6840000$ (đồng)\n\nĐáp số: a) $180$ viên gạch; b) $6840000$ đồng",
+  "ghi_chu_nghi": "Đầu vào có tách LT 11.8a / 11.8b, nhưng đây là bài lời văn và ý b dùng kết quả ý a (số viên gạch) nên theo brief + README §3 soạn MỘT câu (ma_nguon = LT 11.8, Phần 2 ghi a) b)). Nếu muốn tách thì b phải ghi lại số viên."
+ },
+ {
+  "ma_nguon": "LT 11.9",
+  "dap_an": "$40$ héc-ta",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề hỏi **héc-ta** mà $1$ héc-ta $=1\\ \\text{hm}^2$ nên đổi hai cạnh sang **héc-tô-mét** ($1\\ \\text{km}=10\\ \\text{hm}$) thì diện tích ra thẳng $\\text{hm}^2$, tức là héc-ta.\n\n**Bước 1.** Đổi chiều dài $0,8\\ \\text{km}=8\\ \\text{hm}$, rồi tìm chiều rộng bằng $\\dfrac{5}{8}$ chiều dài.\n\n**Bước 2.** Tính diện tích hình chữ nhật (dài nhân rộng) được số $\\text{hm}^2$, đổi ra héc-ta.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $0,8\\ \\text{km}=8\\ \\text{hm}$\n\nChiều rộng khu rừng là: $8\\times\\dfrac{5}{8}=5$ (hm)\n\nDiện tích khu rừng là: $8\\times 5=40$ ($\\text{hm}^2$)\n\nĐổi: $40\\ \\text{hm}^2=40$ ha\n\nĐáp số: $40$ ha"
+ },
+ {
+  "ma_nguon": "LT 11.10",
+  "dap_an": "$0,75$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề trộn hai đơn vị (tấn và kg) nên **đổi cùng về kg** trước: $3$ tấn $=3000$ kg. Ngày thứ ba xuất = tổng trừ đi hai ngày đầu.\n\n**Bước 1.** Ngày thứ hai xuất bằng $\\dfrac{3}{2}$ ngày thứ nhất: lấy $900$ nhân $\\dfrac{3}{2}$.\n\n**Bước 2.** Lấy $3000$ trừ lần lượt số gạo xuất ngày thứ nhất và ngày thứ hai.\n\n**Bước 3.** Đề hỏi tấn nên đổi kết quả từ kg ra tấn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $3$ tấn $=3000$ kg\n\nNgày thứ hai kho xuất được: $900\\times\\dfrac{3}{2}=1350$ (kg)\n\nNgày thứ ba kho xuất được: $3000-900-1350=750$ (kg)\n\nĐổi: $750$ kg $=0,75$ tấn\n\nĐáp số: $0,75$ tấn gạo"
+ },
+ {
+  "ma_nguon": "LT 11.11",
+  "dap_an": "$4140000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rào xung quanh khu đất là rào theo **chu vi**, nhưng chỗ lối đi rộng $2$ m thì **không phải rào** nên độ dài lưới bằng chu vi trừ $2$ m.\n\n**Bước 1.** Tính chu vi hình chữ nhật: (dài + rộng) nhân $2$.\n\n**Bước 2.** Trừ chiều rộng lối đi $2$ m để ra độ dài lưới cần mua.\n\n**Bước 3.** Nhân độ dài lưới với giá $1$ m lưới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi khu đất là: $\\left(46+24\\right)\\times 2=140$ (m)\n\nĐộ dài lưới cần mua là: $140-2=138$ (m)\n\nSố tiền ông Hải phải trả là: $138\\times 30000=4140000$ (đồng)\n\nĐáp số: $4140000$ đồng",
+  "ghi_chu_nghi": "Hiểu \"lối đi rộng 2 m\" là đoạn hàng rào bị bỏ (không rào) dài 2 m, trừ vào chu vi."
+ },
+ {
+  "ma_nguon": "LT 11.12",
+  "dap_an": "$2,7$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chu vi hình vuông chia $4$ ra cạnh; số rau thu hoạch **tỉ lệ thuận** với diện tích trồng nên ta **rút về đơn vị**: tìm số rau thu được trên $1\\ \\text{m}^2$ rồi nhân với diện tích trồng. Đề hỏi tạ nên đổi ở bước cuối.\n\n**Bước 1.** Tìm cạnh rồi diện tích mảnh vườn; một nửa diện tích đó dùng trồng rau.\n\n**Bước 2.** $4\\ \\text{m}^2$ thu $15$ kg nên $1\\ \\text{m}^2$ thu $15:4$ kg; nhân với diện tích trồng rau.\n\n**Bước 3.** Đổi từ kg ra tạ ($1$ tạ $=100$ kg).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh mảnh vườn là: $48:4=12$ (m)\n\nDiện tích mảnh vườn là: $12\\times 12=144$ ($\\text{m}^2$)\n\nDiện tích trồng rau là: $144:2=72$ ($\\text{m}^2$)\n\nMỗi $1\\ \\text{m}^2$ trồng rau thu hoạch được: $15:4=3,75$ (kg)\n\nSố rau thu hoạch được là: $3,75\\times 72=270$ (kg)\n\nĐổi: $270$ kg $=2,7$ tạ\n\nĐáp số: $2,7$ tạ rau"
+ }
+]

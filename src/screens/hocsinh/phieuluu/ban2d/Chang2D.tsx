@@ -161,7 +161,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
                     {i === toi && <span className="pointer-events-none absolute -translate-x-1/2" style={{ left: px, top: top - Math.max(30, h * 0.3) - 6 }}><MuiTen co={Math.max(30, Math.min(52, h * 0.3))} /></span>}
                     <span className="pointer-events-none absolute flex -translate-x-1/2 flex-col items-center text-center"
                       style={{ ...CHU_VIEN, left: px, top: Hs * 0.775, width: 'max-content', maxWidth: Math.max(130, Math.min(280, Math.min(i > 0 ? px - xsT[i - 1] : 1e9, i < n - 1 ? xsT[i + 1] - px : 1e9) - 12)), transform: chon || hov === x.ma ? 'scale(1.06)' : undefined /* đã có -translate-x-1/2 (thuộc tính translate) — không lặp translateX */ }}>
-                      <span className="block max-w-full text-[19px] font-extrabold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
+                      <span className="block max-w-full text-[21px] font-extrabold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
                       <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={28} />
                     </span>
                   </Fragment>
@@ -171,7 +171,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
                 {xong && <span className="ban2d-sang absolute left-1/2 rounded-full" style={{ bottom: -bc.coBe * 0.2, width: bc.coBe * 2, height: bc.coBe * 0.8, transform: 'translateX(-50%)', background: `radial-gradient(closest-side, ${b.vang}cc, transparent)` }} />}
                 <span className="relative" style={{ filter: xong ? undefined : 'saturate(.55) brightness(.85)' }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={Math.max(60, Hs * 0.17)} /></span>
               </div>
-              <span className="pointer-events-none absolute -translate-x-1/2 whitespace-nowrap text-[14px] font-extrabold" style={{ ...CHU_VIEN, ...HEAD, left: xCoT, top: Hs * 0.775, color: xong ? 'var(--sk-acc)' : 'var(--sk-ink)' }}>{xong ? 'Đã chinh phục!' : 'Đích'}</span>
+              <span className="pointer-events-none absolute -translate-x-1/2 whitespace-nowrap text-[15.5px] font-extrabold" style={{ ...CHU_VIEN, ...HEAD, left: xCoT, top: Hs * 0.775, color: xong ? 'var(--sk-acc)' : 'var(--sk-ink)' }}>{xong ? 'Đã chinh phục!' : 'Đích'}</span>
             </>
           )}
           {!nenDang && kt.w > 0 && vung.chang.map((x, i) => {
@@ -194,7 +194,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
                 {i === toi && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: '100%', marginBottom: 2 }}><MuiTen co={Math.max(28, coBe * 0.4)} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
                   style={{ ...CHU_VIEN, top: '100%', marginTop: 4, width: 'max-content', maxWidth: Math.max(160, bc.gap * 0.9), transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }}>
-                  <span className="block max-w-full text-[19px] font-extrabold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
+                  <span className="block max-w-full text-[21px] font-extrabold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
                   <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={28} />
                 </span>
               </div>
@@ -205,7 +205,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
             <div className="pointer-events-none absolute flex flex-col items-center" style={{ left: bc.xCo, top: yTai(bc, bc.xCo), transform: 'translate(-50%,-100%)' }}>
               {xong && <span className="ban2d-sang absolute left-1/2 rounded-full" style={{ bottom: -coBe * 0.2, width: coBe * 2, height: coBe * 0.8, transform: 'translateX(-50%)', background: `radial-gradient(closest-side, ${b.vang}cc, transparent)` }} />}
               <span className="relative" style={{ marginBottom: -coBe * 0.04, filter: xong ? undefined : 'saturate(.55) brightness(.85)' }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={coBe * 1.25} /></span>
-              <span className="absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap text-[14px] font-extrabold" style={{ ...CHU_VIEN, ...HEAD, color: xong ? 'var(--sk-acc)' : 'var(--sk-ink)' }}>
+              <span className="absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap text-[15.5px] font-extrabold" style={{ ...CHU_VIEN, ...HEAD, color: xong ? 'var(--sk-acc)' : 'var(--sk-ink)' }}>
                 {xong ? 'Đã chinh phục!' : 'Đích'}
               </span>
             </div>
@@ -223,7 +223,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
 function NutTruot({ ben, onClick, style }: { ben: 'trai' | 'phai'; onClick: () => void; style?: React.CSSProperties }) {
   return (
     <button onClick={onClick} aria-label={ben === 'trai' ? 'Xem các dạng trước' : 'Xem các dạng sau'}
-      className="absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[22px] font-extrabold"
+      className="absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-[24px] font-extrabold"
       style={{ ...THE_TRON, [ben === 'trai' ? 'left' : 'right']: 12, color: 'var(--sk-ink)', ...style }}>
       {ben === 'trai' ? '‹' : '›'}
     </button>

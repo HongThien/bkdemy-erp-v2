@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 461 156" width="461" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="461" height="156" fill="#fff"/>
+<text x="117" y="37" text-anchor="end" fill="#0f172a">Số bao gạo:</text>
+<line x1="127" y1="32" x2="384.1" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="25" x2="127" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="384.1" y1="25" x2="384.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="255.6" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="117" y="81" text-anchor="end" fill="#0f172a">Mỗi xe 15 bao:</text>
+<line x1="127" y1="76" x2="352" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="69" x2="127" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="384.1" y1="69" x2="384.1" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="352" y1="76" x2="384.1" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="352" y1="69" x2="352" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="368.1" y="66" text-anchor="middle" font-size="12" fill="#b45309">15 bao</text>
+<text x="117" y="125" text-anchor="end" fill="#0f172a">Mỗi xe 20 bao:</text>
+<line x1="127" y1="120" x2="384.1" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="127" y1="113" x2="127" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="384.1" y1="113" x2="384.1" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="384.1" y1="120" x2="427" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="427" y1="113" x2="427" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="405.6" y="110" text-anchor="middle" font-size="12" fill="#b45309">20 bao</text>
+</svg>

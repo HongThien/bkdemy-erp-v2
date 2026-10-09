@@ -130,11 +130,11 @@ export function DauTrangHS({ tieuDe, phu, onBack, phai, theoMon }: { tieuDe: Rea
   return (
     <div className="flex items-center gap-3">
       {onBack && (
-        <button onClick={onBack} aria-label="Quay lại" className="flex h-10 w-10 shrink-0 items-center justify-center text-[20px] active:scale-95" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>‹</button>
+        <button onClick={onBack} aria-label="Quay lại" className="flex h-10 w-10 shrink-0 items-center justify-center text-[22px] active:scale-95" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>‹</button>
       )}
       <div className="min-w-0 flex-1 leading-tight">
-        <h1 className="truncate text-[21px] font-bold" style={{ ...HEAD, color: 'var(--sk-ink)', textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
-        {phu && <p className="mt-0.5 truncate text-[12.5px]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg)' }}>{phu}</p>}
+        <h1 className="truncate text-[23px] font-bold" style={{ ...HEAD, color: 'var(--sk-ink)', textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
+        {phu && <p className="mt-0.5 truncate text-[14px]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg)' }}>{phu}</p>}
       </div>
       {theoMon && mon && <NhanHS dac>{mon}</NhanHS>}
       {phai}
@@ -155,29 +155,29 @@ export function NutHS({ children, onClick, tat, phu, className = '', type = 'but
   const s: CSSProperties = phu
     ? { border: '1.5px solid var(--sk-line)', color: 'var(--sk-ink)', background: 'var(--sk-surface)', borderRadius: 'var(--sk-radius)', fontFamily: 'var(--sk-font-head)' }
     : { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', borderRadius: 'var(--sk-radius)', clipPath: 'var(--sk-card-clip)', fontFamily: 'var(--sk-font-head)' }
-  return <button type={type} onClick={onClick} disabled={tat} className={`h-11 px-4 text-[15px] font-bold transition active:scale-[0.99] disabled:opacity-50 ${className}`} style={s}>{children}</button>
+  return <button type={type} onClick={onClick} disabled={tat} className={`h-11 px-4 text-[16.5px] font-bold transition active:scale-[0.99] disabled:opacity-50 ${className}`} style={s}>{children}</button>
 }
 
 // Nhãn nhỏ (pill). mau: màu chữ/viền (mặc định màu nhấn); dac = tô đặc.
 export function NhanHS({ children, mau = 'var(--sk-acc)', dac }: { children: ReactNode; mau?: string; dac?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1 whitespace-nowrap px-2 py-0.5 text-[11.5px] font-bold"
+    <span className="inline-flex items-center gap-1 whitespace-nowrap px-2 py-0.5 text-[12.5px] font-bold"
       style={{ borderRadius: 'var(--sk-radius-pill)', ...(dac ? { background: mau, color: 'var(--sk-acc-ink)' } : { border: `1px solid ${mau}`, color: mau }) }}>{children}</span>
   )
 }
 
 export function BadgeHS({ n }: { n: number }) {
-  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[11px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
+  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[12px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
 }
 
 // Tiêu đề nhóm trong trang (chữ hoa nhỏ, màu mờ).
 export function NhomHS({ children }: { children: ReactNode }) {
-  return <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg)' }}>{children}</p>
+  return <p className="mt-1 text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg)' }}>{children}</p>
 }
 
 // Trạng thái rỗng / đang tải / lỗi — 1 kiểu cho mọi màn.
 export function TrongHS({ children }: { children: ReactNode }) {
-  return <TheHS className="px-4 py-6 text-center text-[14px]"><span style={{ color: 'var(--sk-muted)' }}>{children}</span></TheHS>
+  return <TheHS className="px-4 py-6 text-center text-[15.5px]"><span style={{ color: 'var(--sk-muted)' }}>{children}</span></TheHS>
 }
 
 // ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -196,9 +196,9 @@ export function ManDocHS({ onBack, duong, mau, children }: { onBack: () => void;
       <div className="sticky top-0 z-10" style={{ background: 'var(--sk-doc-nen)', boxShadow: '0 1px 0 var(--sk-doc-line)' }}>
         <div className="mx-auto flex max-w-[760px] items-center gap-3 px-4 pb-2.5 pt-[calc(10px+env(safe-area-inset-top))]">
           <button onClick={onBack} aria-label="Quay lại"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[22px] leading-none active:scale-95"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[24px] leading-none active:scale-95"
             style={{ background: 'var(--sk-doc-giay)', color: 'var(--sk-doc-ink)', boxShadow: '0 0 0 1px var(--sk-doc-line)' }}>‹</button>
-          {duong && <p className="min-w-0 flex-1 truncate text-[12.5px] font-semibold" style={{ color: 'var(--sk-doc-muted)' }}>{duong}</p>}
+          {duong && <p className="min-w-0 flex-1 truncate text-[14px] font-semibold" style={{ color: 'var(--sk-doc-muted)' }}>{duong}</p>}
         </div>
       </div>
       <div className="mx-auto flex max-w-[760px] flex-col gap-3 px-4 pb-[calc(28px+env(safe-area-inset-bottom))] pt-3">{children}</div>
@@ -212,8 +212,8 @@ export function TheDocHS({ chip, tieuDe, tomTat, children }: { chip?: ReactNode;
     <article className="flex flex-col gap-3.5 rounded-[18px] px-5 pb-5 pt-4"
       style={{ background: 'var(--sk-doc-giay)', boxShadow: 'var(--sk-doc-bong)', borderTop: '4px solid var(--doc-acc)' }}>
       {chip && <div className="flex flex-wrap items-center gap-1.5">{chip}</div>}
-      <h1 className="text-[22px] font-extrabold leading-tight" style={{ color: 'var(--sk-doc-ink)' }}>{tieuDe}</h1>
-      {tomTat && <div className="-mt-1 text-[15px] leading-[1.7]" style={{ color: 'var(--sk-doc-ink)' }}>{tomTat}</div>}
+      <h1 className="text-[24px] font-extrabold leading-tight" style={{ color: 'var(--sk-doc-ink)' }}>{tieuDe}</h1>
+      {tomTat && <div className="-mt-1 text-[16.5px] leading-[1.7]" style={{ color: 'var(--sk-doc-ink)' }}>{tomTat}</div>}
       {children}
     </article>
   )
@@ -222,7 +222,7 @@ export function TheDocHS({ chip, tieuDe, tomTat, children }: { chip?: ReactNode;
 // Chip trong màn đọc: dac = tô màu nhấn (loại kiến thức), thường = nền nhạt (lớp, chủ đề).
 export function ChipDocHS({ children, dac }: { children: ReactNode; dac?: boolean }) {
   return (
-    <span className="inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5 text-[12px] font-bold"
+    <span className="inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5 text-[13px] font-bold"
       style={dac ? { background: 'var(--doc-acc)', color: 'var(--sk-doc-giay)' } : { background: 'var(--doc-nhat)', color: 'var(--doc-acc)' }}>{children}</span>
   )
 }
@@ -242,8 +242,8 @@ export function KhoiDocHS({ nhan, kieu = 'thuong', children }: { nhan?: ReactNod
   const mauNhan = kieu === 'nham' ? 'var(--sk-doc-nham-chu)' : kieu === 'luu_y' ? 'var(--sk-doc-luuy-chu)' : kieu === 'thuong' ? 'var(--sk-doc-muted)' : 'var(--doc-acc)'
   return (
     <section className={kieu === 'thuong' ? '' : kieu === 'hinh' ? 'flex justify-center p-3' : 'px-4 py-3'} style={nen[kieu]}>
-      {nhan && <p className="mb-1.5 text-[11.5px] font-extrabold uppercase tracking-[0.08em]" style={{ color: mauNhan }}>{nhan}</p>}
-      <div className="text-[14.5px] leading-[1.75]" style={{ color: 'var(--sk-doc-ink)' }}>{children}</div>
+      {nhan && <p className="mb-1.5 text-[12.5px] font-extrabold uppercase tracking-[0.08em]" style={{ color: mauNhan }}>{nhan}</p>}
+      <div className="text-[16px] leading-[1.75]" style={{ color: 'var(--sk-doc-ink)' }}>{children}</div>
     </section>
   )
 }
@@ -252,9 +252,9 @@ export function KhoiDocHS({ nhan, kieu = 'thuong', children }: { nhan?: ReactNod
 export function TrongDocHS({ icon, tieuDe, moTa }: { icon: string; tieuDe: string; moTa?: string }) {
   return (
     <div className="rounded-[18px] px-5 py-8 text-center" style={{ background: 'var(--sk-doc-giay)', boxShadow: 'var(--sk-doc-bong)' }}>
-      <div className="text-[34px]">{icon}</div>
-      <p className="mt-2 text-[16px] font-extrabold" style={{ color: 'var(--sk-doc-ink)' }}>{tieuDe}</p>
-      {moTa && <p className="mt-1 text-[13.5px] leading-snug" style={{ color: 'var(--sk-doc-muted)' }}>{moTa}</p>}
+      <div className="text-[37.5px]">{icon}</div>
+      <p className="mt-2 text-[17.5px] font-extrabold" style={{ color: 'var(--sk-doc-ink)' }}>{tieuDe}</p>
+      {moTa && <p className="mt-1 text-[15px] leading-snug" style={{ color: 'var(--sk-doc-muted)' }}>{moTa}</p>}
     </div>
   )
 }

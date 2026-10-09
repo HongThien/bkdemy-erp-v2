@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 236" width="540" height="236" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="540" height="236" fill="#fff"/>
+<g transform="translate(0,0)">
+<rect width="540" height="112" fill="#fff"/>
+<text x="124" y="37" text-anchor="end" fill="#0f172a">Tổ một:</text>
+<line x1="134" y1="32" x2="316.1" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="134" y1="25" x2="134" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="316.1" y1="25" x2="316.1" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="225.1" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="124" y="81" text-anchor="end" fill="#0f172a">Hai tổ còn lại:</text>
+<line x1="134" y1="76" x2="316.1" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="134" y1="69" x2="134" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="316.1" y1="69" x2="316.1" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="316.1" y1="76" x2="434" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="434" y1="69" x2="434" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="375.1" y="66" text-anchor="middle" font-size="12" fill="#b45309">110 cây</text>
+<text x="284" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M448,24 q8,0 8,8 L456,46 q0,8 8,8 q-8,0 -8,8 L456,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="470" y="59" fill="#0f172a">450 cây</text>
+
+</g>
+<g transform="translate(0,124)">
+<rect width="516" height="112" fill="#fff"/>
+<text x="100" y="37" text-anchor="end" fill="#0f172a">Tổ hai:</text>
+<line x1="110" y1="32" x2="335" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="25" x2="110" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="185" y1="25" x2="185" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="260" y1="25" x2="260" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="335" y1="25" x2="335" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="222.5" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="100" y="81" text-anchor="end" fill="#0f172a">Tổ ba:</text>
+<line x1="110" y1="76" x2="410" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="110" y1="69" x2="110" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="185" y1="69" x2="185" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="260" y1="69" x2="260" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="335" y1="69" x2="335" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="410" y1="69" x2="410" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="260" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M424,24 q8,0 8,8 L432,46 q0,8 8,8 q-8,0 -8,8 L432,76 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="446" y="59" fill="#0f172a">280 cây</text>
+
+</g>
+</svg>

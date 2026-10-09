@@ -1,0 +1,215 @@
+[
+ {
+  "ma_nguon": "LT 15.1",
+  "dap_an": "Nam: $56\\%$; nữ: $44\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm tỉ số phần trăm của số $a$ so với số $b$ là lấy $a:b$ rồi viết kết quả thành phần trăm. Đề hỏi \"với tổng số học sinh của cả lớp\" nên số đứng sau ($b$) là **tổng số học sinh**, phải tính trước.\n\n**Bước 1.** Tính tổng số học sinh cả lớp ($22+28$): đây là số dùng để so sánh ở cả hai tỉ số.\n\n**Bước 2.** Lấy số học sinh nam chia cho tổng, rồi số học sinh nữ chia cho tổng; kết quả là số thập phân, đổi sang phần trăm.\n\n**Chú ý:** nam và nữ cộng lại là cả lớp nên hai tỉ số phần trăm phải cộng lại đủ $100\\%$ ($56\\%+44\\%=100\\%$) — dùng để thử lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh của lớp 5A là: $22+28=50$ (học sinh)\n\nTỉ số phần trăm của số học sinh nam so với cả lớp là: $28:50=0,56=56\\%$\n\nTỉ số phần trăm của số học sinh nữ so với cả lớp là: $22:50=0,44=44\\%$\n\nĐáp số: Nam: $56\\%$; nữ: $44\\%$"
+ },
+ {
+  "ma_nguon": "LT 15.2",
+  "dap_an": "$60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"số kẹo vani **so với** số kẹo sô-cô-la\" nên số đứng sau, dùng để so sánh, là số kẹo **sô-cô-la**. Đề không cho số này mà cho tổng $40$ chiếc, nên phải tìm trước.\n\n**Bước 1.** Tìm số kẹo sô-cô-la: lấy cả túi trừ đi số kẹo vani.\n\n**Bước 2.** Tìm tỉ số phần trăm của số kẹo vani so với số kẹo sô-cô-la: $15:25$.\n\n**Chú ý:** lấy $15:40$ là sai, vì đó là tỉ số phần trăm của kẹo vani so với **cả túi**, không phải so với kẹo sô-cô-la.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố kẹo sô-cô-la là: $40-15=25$ (chiếc)\n\nTỉ số phần trăm của số kẹo vani so với số kẹo sô-cô-la là: $15:25=0,6=60\\%$\n\nĐáp số: $60\\%$"
+ },
+ {
+  "ma_nguon": "LT 15.4",
+  "dap_an": "$10\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số tiền đóng bảo hiểm là phần lương **bị trừ đi**: lấy tiền lương trừ số tiền nhận về. Hỏi \"chiếm bao nhiêu phần trăm tiền lương\" nên so với tiền lương $15$ triệu đồng.\n\n**Bước 1.** Tính số tiền đóng bảo hiểm mỗi tháng: $15-13,5$.\n\n**Bước 2.** Lấy số tiền bảo hiểm chia cho tiền lương rồi đổi ra phần trăm.\n\n**Chú ý:** so với tiền lương ($15$ triệu đồng), không so với số tiền nhận về ($13,5$ triệu đồng).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền đóng bảo hiểm mỗi tháng là: $15-13,5=1,5$ (triệu đồng)\n\nSố tiền đóng bảo hiểm chiếm số phần trăm tiền lương là: $1,5:15=0,1=10\\%$\n\nĐáp số: $10\\%$"
+ },
+ {
+  "ma_nguon": "LT 15.5",
+  "dap_an": "$20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số phần trăm được giảm là tỉ số phần trăm của **số tiền được giảm** so với **giá niêm yết** (giá ban đầu).\n\n**Bước 1.** Tính số tiền được giảm: giá niêm yết trừ giá chú Minh đã mua.\n\n**Bước 2.** Lấy số tiền được giảm chia cho giá niêm yết rồi đổi ra phần trăm.\n\n**Chú ý:** chia cho giá niêm yết ($1500000$ đồng), không chia cho giá sau khi giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền được giảm là: $1500000-1200000=300000$ (đồng)\n\nTỉ số phần trăm số tiền được giảm so với giá niêm yết là: $300000:1500000=0,2=20\\%$\n\nĐáp số: $20\\%$"
+ },
+ {
+  "ma_nguon": "LT 15.6",
+  "dap_an": "$1105000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"lãi $30\\%$ so với giá vốn\" nghĩa là tiền lãi bằng $30\\%$ của giá vốn $850000$ đồng (bài tìm $a\\%$ của một số). Giá bán bằng giá vốn cộng tiền lãi.\n\n**Bước 1.** Tìm tiền lãi: lấy giá vốn nhân với $30\\%$.\n\n**Bước 2.** Tìm giá bán: giá vốn cộng tiền lãi.\n\n**Chú ý:** $850000\\times 30\\%$ mới chỉ là **tiền lãi**, chưa phải giá bán.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền lãi của chiếc túi là: $850000\\times 30\\%=255000$ (đồng)\n\nGiá bán chiếc túi là: $850000+255000=1105000$ (đồng)\n\nĐáp số: $1105000$ đồng"
+ },
+ {
+  "ma_nguon": "LT 15.7a",
+  "dap_an": "$2,3$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề nói \"$10\\%$ của $23$\" là bài **tìm $a\\%$ của một số**: lấy số đó nhân với $a\\%$. Vì $a\\%=\\dfrac{a}{100}$ nên đổi $a\\%$ ra số thập phân (dịch dấu phẩy sang trái hai chữ số) rồi nhân cho dễ.\n\n**Chú ý:** $10\\%$ đổi ra số thập phân là $0,1$ (không phải $0,01$).\n\n**Phần 2. Trình bày**\n\n$10\\%$ của $23$ kg\n\n$=23\\times 10\\%$\n\n$=23\\times 0,1$\n\n$=2,3$ (kg)"
+ },
+ {
+  "ma_nguon": "LT 15.7b",
+  "dap_an": "$51,75$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề nói \"$15\\%$ của $345$\" là bài **tìm $a\\%$ của một số**: lấy số đó nhân với $a\\%$. Vì $a\\%=\\dfrac{a}{100}$ nên đổi $a\\%$ ra số thập phân (dịch dấu phẩy sang trái hai chữ số) rồi nhân cho dễ.\n\n**Chú ý:** $15\\%$ đổi ra số thập phân là $0,15$.\n\n**Phần 2. Trình bày**\n\n$15\\%$ của $345$ km\n\n$=345\\times 15\\%$\n\n$=345\\times 0,15$\n\n$=51,75$ (km)"
+ },
+ {
+  "ma_nguon": "LT 15.7c",
+  "dap_an": "$1,224$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề nói \"$20\\%$ của $6,12$\" là bài **tìm $a\\%$ của một số**: lấy số đó nhân với $a\\%$. Vì $a\\%=\\dfrac{a}{100}$ nên đổi $a\\%$ ra số thập phân (dịch dấu phẩy sang trái hai chữ số) rồi nhân cho dễ.\n\n**Chú ý:** $20\\%$ đổi ra số thập phân là $0,2$.\n\n**Phần 2. Trình bày**\n\n$20\\%$ của $6,12$ tạ\n\n$=6,12\\times 20\\%$\n\n$=6,12\\times 0,2$\n\n$=1,224$ (tạ)"
+ },
+ {
+  "ma_nguon": "LT 15.7d",
+  "dap_an": "$118\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề nói \"$50\\%$ của $236$\" là bài **tìm $a\\%$ của một số**: lấy số đó nhân với $a\\%$. Vì $a\\%=\\dfrac{a}{100}$ nên đổi $a\\%$ ra số thập phân (dịch dấu phẩy sang trái hai chữ số) rồi nhân cho dễ.\n\n**Chú ý:** $50\\%$ đổi ra số thập phân là $0,5$; đơn vị của kết quả cùng đơn vị diện tích của đề.\n\n**Phần 2. Trình bày**\n\n$50\\%$ của $236\\ \\text{m}^2$\n\n$=236\\times 50\\%$\n\n$=236\\times 0,5$\n\n$=118$ ($\\text{m}^2$)"
+ },
+ {
+  "ma_nguon": "LT 15.7e",
+  "dap_an": "$0,3404$ ha",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề nói \"$2\\%$ của $17,02$\" là bài **tìm $a\\%$ của một số**: lấy số đó nhân với $a\\%$. Vì $a\\%=\\dfrac{a}{100}$ nên đổi $a\\%$ ra số thập phân (dịch dấu phẩy sang trái hai chữ số) rồi nhân cho dễ.\n\n**Chú ý:** $2\\%$ đổi ra số thập phân là $0,02$ (không phải $0,2$).\n\n**Phần 2. Trình bày**\n\n$2\\%$ của $17,02$ ha\n\n$=17,02\\times 2\\%$\n\n$=17,02\\times 0,02$\n\n$=0,3404$ (ha)"
+ },
+ {
+  "ma_nguon": "LT 15.7f",
+  "dap_an": "$8\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề nói \"$12,5\\%$ của $64$\" là bài **tìm $a\\%$ của một số**: lấy số đó nhân với $a\\%$. Vì $a\\%=\\dfrac{a}{100}$ nên đổi $a\\%$ ra số thập phân (dịch dấu phẩy sang trái hai chữ số) rồi nhân cho dễ.\n\n**Chú ý:** $12,5\\%$ đổi ra số thập phân là $0,125$; đơn vị của kết quả cùng đơn vị diện tích của đề.\n\n**Phần 2. Trình bày**\n\n$12,5\\%$ của $64\\ \\text{cm}^2$\n\n$=64\\times 12,5\\%$\n\n$=64\\times 0,125$\n\n$=8$ ($\\text{cm}^2$)"
+ },
+ {
+  "ma_nguon": "LT 15.8",
+  "dap_an": "$73000000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lệ phí trước bạ là $10\\%$ của giá xe: bài **tìm $a\\%$ của một số**, lấy giá xe nhân với $10\\%$.\n\n**Chú ý:** đề chỉ hỏi lệ phí cần trả, không cộng thêm vào giá xe.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLệ phí trước bạ cần trả cho chiếc xe là: $730000000\\times 10\\%=73000000$ (đồng)\n\nĐáp số: $73000000$ đồng"
+ },
+ {
+  "ma_nguon": "LT 15.9",
+  "dap_an": "$192000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn lãi $20\\%$ thì tiền lãi bằng $20\\%$ của giá nhập ($160000$ đồng), giá bán bằng giá nhập cộng tiền lãi.\n\n**Bước 1.** Tìm tiền lãi: giá nhập nhân với $20\\%$.\n\n**Bước 2.** Tìm giá bán: giá nhập cộng tiền lãi.\n\n**Chú ý:** $160000\\times 20\\%$ mới là tiền lãi, chưa phải giá bán.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền lãi khi bán chiếc áo là: $160000\\times 20\\%=32000$ (đồng)\n\nGiá bán chiếc áo là: $160000+32000=192000$ (đồng)\n\nĐáp số: $192000$ đồng"
+ },
+ {
+  "ma_nguon": "LT 15.10",
+  "dap_an": "$48,3$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"tăng $5\\%$ so với năm ngoái\" nghĩa là số kilôgam tăng thêm bằng $5\\%$ của $46$ kg. Cân nặng năm nay bằng cân nặng năm ngoái cộng phần tăng thêm.\n\n**Bước 1.** Tìm số kilôgam Nam tăng thêm: $46$ nhân với $5\\%$.\n\n**Bước 2.** Cộng với cân nặng năm ngoái ra cân nặng năm nay.\n\n**Chú ý:** $46\\times 5\\%$ chỉ là phần **tăng thêm**, chưa phải cân nặng năm nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ki-lô-gam Nam tăng thêm là: $46\\times 5\\%=2,3$ (kg)\n\nCân nặng của Nam năm nay là: $46+2,3=48,3$ (kg)\n\nĐáp số: $48,3$ kg"
+ },
+ {
+  "ma_nguon": "LT 15.11",
+  "dap_an": "$24$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số học sinh nữ là $25\\%$ của $32$ học sinh (bài tìm $a\\%$ của một số). Đề hỏi số học sinh **nam**, nên lấy cả lớp trừ đi số nữ.\n\n**Bước 1.** Tìm số học sinh nữ: $32$ nhân với $25\\%$.\n\n**Bước 2.** Tìm số học sinh nam: cả lớp trừ số học sinh nữ.\n\n**Chú ý:** $25\\%$ là của số học sinh **nữ**, đừng dừng lại ở bước một.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ của lớp là: $32\\times 25\\%=8$ (học sinh)\n\nSố học sinh nam của lớp là: $32-8=24$ (học sinh)\n\nĐáp số: $24$ học sinh"
+ },
+ {
+  "ma_nguon": "LT 15.12",
+  "dap_an": "$240\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích trồng mít là phần còn lại của khu đất, nên chiếm $100\\%$ trừ đi phần trồng ổi và phần trồng cam. Muốn biết diện tích mít là bao nhiêu thì phải biết diện tích cả khu đất.\n\n**Bước 1.** Tìm chiều rộng khu đất: chiều dài nhân với $75\\%$.\n\n**Bước 2.** Tìm diện tích khu đất: chiều dài nhân chiều rộng.\n\n**Bước 3.** Tìm phần trăm diện tích trồng mít: $100\\%$ trừ $50\\%$ và $30\\%$.\n\n**Bước 4.** Tìm diện tích trồng mít: diện tích khu đất nhân với số phần trăm vừa tìm.\n\n**Chú ý:** hai số $50\\%$ và $30\\%$ cùng là phần trăm của **diện tích khu đất**, nên trừ thẳng được từ $100\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng khu đất là: $40\\times 75\\%=30$ (m)\n\nDiện tích khu đất là: $40\\times 30=1200$ ($\\text{m}^2$)\n\nDiện tích trồng mít chiếm: $100\\%-50\\%-30\\%=20\\%$ (diện tích khu đất)\n\nDiện tích trồng mít là: $1200\\times 20\\%=240$ ($\\text{m}^2$)\n\nĐáp số: $240\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LT 15.14a",
+  "dap_an": "$A=64$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$50\\%$ của $A$ là $32$\" nghĩa là $A\\times 50\\%=32$. Đây là bài **tìm một số khi biết $b\\%$ của nó**: $A$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết, tức $A=32:50\\%$.\n\n**Chú ý:** phải **chia** cho $50\\%$, không nhân. Nhân $32\\times 50\\%$ là tìm $50\\%$ của $32$, ngược với đề.\n\nThử lại: $64\\times 50\\%=32$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A\\times 50\\%=32 \\\\ A=32:50\\% \\\\ A=64 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 15.14b",
+  "dap_an": "$A=48$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$35\\%$ của $A$ là $16,8$\" nghĩa là $A\\times 35\\%=16,8$. Đây là bài **tìm một số khi biết $b\\%$ của nó**: $A$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết, tức $A=16,8:35\\%$.\n\n**Chú ý:** phải **chia** cho $35\\%$, không nhân. Nhân $16,8\\times 35\\%$ là tìm $35\\%$ của $16,8$, ngược với đề.\n\nThử lại: $48\\times 35\\%=16,8$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A\\times 35\\%=16,8 \\\\ A=16,8:35\\% \\\\ A=48 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 15.14c",
+  "dap_an": "$A=37,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$40\\%$ của $A$ là $15$\" nghĩa là $A\\times 40\\%=15$. Đây là bài **tìm một số khi biết $b\\%$ của nó**: $A$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết, tức $A=15:40\\%$.\n\n**Chú ý:** phải **chia** cho $40\\%$, không nhân. Nhân $15\\times 40\\%$ là tìm $40\\%$ của $15$, ngược với đề.\n\nThử lại: $37,5\\times 40\\%=15$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A\\times 40\\%=15 \\\\ A=15:40\\% \\\\ A=37,5 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 15.14d",
+  "dap_an": "$A=2,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$80\\%$ của $A$ là $2,08$\" nghĩa là $A\\times 80\\%=2,08$. Đây là bài **tìm một số khi biết $b\\%$ của nó**: $A$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết, tức $A=2,08:80\\%$.\n\n**Chú ý:** phải **chia** cho $80\\%$, không nhân. Nhân $2,08\\times 80\\%$ là tìm $80\\%$ của $2,08$, ngược với đề.\n\nThử lại: $2,6\\times 80\\%=2,08$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A\\times 80\\%=2,08 \\\\ A=2,08:80\\% \\\\ A=2,6 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 15.14e",
+  "dap_an": "$A=6,25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$20\\%$ của $A$ là $1,25$\" nghĩa là $A\\times 20\\%=1,25$. Đây là bài **tìm một số khi biết $b\\%$ của nó**: $A$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết, tức $A=1,25:20\\%$.\n\n**Chú ý:** phải **chia** cho $20\\%$, không nhân. Nhân $1,25\\times 20\\%$ là tìm $20\\%$ của $1,25$, ngược với đề.\n\nThử lại: $6,25\\times 20\\%=1,25$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A\\times 20\\%=1,25 \\\\ A=1,25:20\\% \\\\ A=6,25 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 15.14f",
+  "dap_an": "$A=9,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$12,5\\%$ của $A$ là $1,2$\" nghĩa là $A\\times 12,5\\%=1,2$. Đây là bài **tìm một số khi biết $b\\%$ của nó**: $A$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết, tức $A=1,2:12,5\\%$.\n\n**Chú ý:** phải **chia** cho $12,5\\%$, không nhân. Nhân $1,2\\times 12,5\\%$ là tìm $12,5\\%$ của $1,2$, ngược với đề.\n\nThử lại: $9,6\\times 12,5\\%=1,2$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A\\times 12,5\\%=1,2 \\\\ A=1,2:12,5\\% \\\\ A=9,6 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 15.15",
+  "dap_an": "$48$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $12$ con gà trống **chiếm $25\\%$ tổng số gà**, nghĩa là $12$ là $25\\%$ của cả đàn. Biết $b\\%$ của một số là $M$ thì số đó bằng $M:b\\%$.\n\n**Chú ý:** phải chia cho $25\\%$. Lấy $12\\times 25\\%=3$ là sai, vì $12$ không phải cả đàn.\n\nThử lại: $48\\times 25\\%=12$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số gà của đàn gà là: $12:25\\%=48$ (con)\n\nĐáp số: $48$ con"
+ },
+ {
+  "ma_nguon": "LT 15.16",
+  "dap_an": "$200$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ba loại cây cộng lại là cả vườn, chiếm $100\\%$ tổng số cây. Biết phần trăm của quýt và cam thì tìm được số cây bưởi chiếm bao nhiêu phần trăm; có số cây bưởi ($78$ cây) rồi thì tìm tổng bằng phép chia cho phần trăm đó.\n\n**Bước 1.** Tìm số cây bưởi chiếm bao nhiêu phần trăm: $100\\%$ trừ phần quýt và phần cam.\n\n**Bước 2.** $78$ cây là số cây bưởi, ứng với phần trăm vừa tìm của tổng số cây, nên tổng số cây bằng $78$ chia cho phần trăm đó.\n\nThử lại: $200\\times 24\\%=48$; $200\\times 37\\%=74$; $48+74+78=200$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây bưởi chiếm: $100\\%-24\\%-37\\%=39\\%$ (tổng số cây)\n\nTổng số cây trong vườn là: $78:39\\%=200$ (cây)\n\nĐáp số: $200$ cây"
+ },
+ {
+  "ma_nguon": "LT 15.17",
+  "dap_an": "Xanh: $20$ viên; đỏ: $6$ viên; vàng: $24$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$20\\%$ số bi còn lại\" là $20\\%$ của số bi **còn lại sau khi bỏ bi xanh**, không phải $20\\%$ của tổng. Số bi còn lại (đỏ và vàng) chiếm $60\\%$ tổng; trong số đó vàng chiếm phần còn lại sau bi đỏ.\n\n**Bước 1.** Tìm số bi còn lại sau khi bỏ bi xanh chiếm bao nhiêu phần trăm tổng số bi: $100\\%-40\\%$.\n\n**Bước 2.** Trong số bi còn lại, bi đỏ chiếm $20\\%$ nên bi vàng chiếm $100\\%-20\\%=80\\%$ số bi còn lại. Biết $24$ viên bi vàng thì tìm được số bi còn lại.\n\n**Bước 3.** Số bi còn lại chiếm $60\\%$ tổng số bi nên tìm được tổng số bi, từ đó tìm số bi xanh và số bi đỏ.\n\nThử lại: $20+6+24=50$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bi còn lại (đỏ và vàng) chiếm: $100\\%-40\\%=60\\%$ (tổng số bi)\n\nSố bi vàng chiếm: $100\\%-20\\%=80\\%$ (số bi còn lại)\n\nSố bi còn lại (đỏ và vàng) là: $24:80\\%=30$ (viên)\n\nTổng số bi là: $30:60\\%=50$ (viên)\n\nSố bi xanh là: $50\\times 40\\%=20$ (viên)\n\nSố bi đỏ là: $30\\times 20\\%=6$ (viên)\n\nĐáp số: Xanh: $20$ viên; đỏ: $6$ viên; vàng: $24$ viên"
+ },
+ {
+  "ma_nguon": "LT 15.19",
+  "dap_an": "Giỏi: $27$ em; khá: $6$ em; trung bình: $3$ em",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** học sinh giỏi chiếm $75\\%$ cả lớp nên khá và trung bình **cùng chiếm phần còn lại**, tức $25\\%$ cả lớp. Đề cho tổng số học sinh khá và trung bình là $9$ em, nên $9$ em ứng với $25\\%$ của cả lớp.\n\n**Bước 1.** Tìm khá và trung bình chiếm bao nhiêu phần trăm cả lớp: $100\\%-75\\%$.\n\n**Bước 2.** $9$ em ứng với $25\\%$ của cả lớp nên cả lớp bằng $9$ chia cho $25\\%$.\n\n**Bước 3.** Tìm số học sinh giỏi ($75\\%$ cả lớp), số học sinh khá ($\\dfrac{1}{6}$ cả lớp), rồi số học sinh trung bình bằng $9$ trừ số học sinh khá.\n\n**Chú ý:** đề cho khá bằng phân số $\\dfrac{1}{6}$ còn giỏi bằng phần trăm; mỗi loại tính riêng, không cộng lẫn hai kiểu số với nhau.\n\nThử lại: $27+6+3=36$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh khá và trung bình chiếm: $100\\%-75\\%=25\\%$ (số học sinh cả lớp)\n\nSố học sinh cả lớp là: $9:25\\%=36$ (em)\n\nSố học sinh giỏi là: $36\\times 75\\%=27$ (em)\n\nSố học sinh khá là: $36\\times\\dfrac{1}{6}=6$ (em)\n\nSố học sinh trung bình là: $9-6=3$ (em)\n\nĐáp số: Giỏi: $27$ em; khá: $6$ em; trung bình: $3$ em"
+ },
+ {
+  "ma_nguon": "LT 15.20",
+  "dap_an": "$120000000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lãi suất $5,6\\%$ một năm nghĩa là sau $1$ năm tiền lãi bằng $5,6\\%$ **tiền gốc**. Vậy số tiền cả gốc lẫn lãi bằng $100\\%+5,6\\%=105,6\\%$ tiền gốc, và $126720000$ đồng ứng với $105,6\\%$ đó.\n\n**Bước 1.** Tìm số tiền cả gốc lẫn lãi bằng bao nhiêu phần trăm tiền gốc.\n\n**Bước 2.** Biết $105,6\\%$ của tiền gốc là $126720000$ đồng thì tiền gốc bằng $126720000$ chia cho $105,6\\%$.\n\n**Chú ý:** phần trăm lãi tính trên tiền **gốc**, nên không lấy $126720000\\times 5,6\\%$.\n\nThử lại: $120000000\\times 5,6\\%=6720000$; $120000000+6720000=126720000$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền cả gốc lẫn lãi bằng: $100\\%+5,6\\%=105,6\\%$ (tiền gốc)\n\nLúc đầu bác Hân gửi vào ngân hàng số tiền là: $126720000:105,6\\%=120000000$ (đồng)\n\nĐáp số: $120000000$ đồng"
+ },
+ {
+  "ma_nguon": "VD 16.1",
+  "dap_an": "$100$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổ thêm **nước cất** chỉ làm nước muối loãng đi, còn **lượng muối không đổi**. Biết lượng muối thì tìm được khối lượng nước muối $4\\%$ (muối chiếm $4\\%$), rồi so với $200$ g lúc đầu.\n\n**Bước 1.** Tính khối lượng muối trong $200$ g nước muối $6\\%$.\n\n**Bước 2.** Lượng muối đó bằng $4\\%$ khối lượng nước muối lúc sau, nên khối lượng nước muối lúc sau bằng lượng muối chia cho $4\\%$.\n\n**Bước 3.** Khối lượng nước cất đổ thêm bằng khối lượng lúc sau trừ khối lượng lúc đầu.\n\n**Chú ý:** $4\\%$ là của khối lượng nước muối **lúc sau**, không phải của $200$ g.\n\nThử lại: $300\\times 4\\%=12$ (g), đúng bằng lượng muối ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối không đổi.\n\nKhối lượng muối trong $200$ g nước muối $6\\%$ là: $200\\times 6\\%=12$ (g)\n\nKhối lượng nước muối lúc sau là: $12:4\\%=300$ (g)\n\nKhối lượng nước cất cần đổ thêm là: $300-200=100$ (g)\n\nĐáp số: $100$ g"
+ },
+ {
+  "ma_nguon": "VD 16.2",
+  "dap_an": "$16$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phơi khô chỉ làm mất nước, nên **khối lượng thuần hạt (phần không phải nước) không đổi**. Thuần hạt chiếm $30\\%$ hạt tươi và chiếm $90\\%$ hạt khô.\n\n**Bước 1.** Tính thuần hạt chiếm bao nhiêu phần trăm hạt tươi, rồi khối lượng thuần hạt trong $48$ kg hạt tươi.\n\n**Bước 2.** Tính thuần hạt chiếm bao nhiêu phần trăm hạt khô; khối lượng thuần hạt đó bằng $90\\%$ khối lượng hạt khô nên chia cho $90\\%$.\n\n**Chú ý:** hạt khô vẫn còn $10\\%$ nước, nên khối lượng thuần hạt chưa phải khối lượng hạt khô.\n\nThử lại: $16\\times 90\\%=14,4$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng thuần hạt không đổi.\n\nThuần hạt chiếm: $100\\%-70\\%=30\\%$ (hạt tươi)\n\nKhối lượng thuần hạt trong $48$ kg hạt tươi là: $48\\times 30\\%=14,4$ (kg)\n\nThuần hạt chiếm: $100\\%-10\\%=90\\%$ (hạt khô)\n\nKhối lượng hạt khô thu được là: $14,4:90\\%=16$ (kg)\n\nĐáp số: $16$ kg"
+ },
+ {
+  "ma_nguon": "VD 16.3",
+  "dap_an": "$4,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khi pha hai dung dịch với nhau thì **khối lượng muối cộng lại** và **khối lượng dung dịch cộng lại**. Có hai số đó rồi thì tìm tỉ số phần trăm của muối so với dung dịch.\n\n**Bước 1.** Tính khối lượng muối trong mỗi dung dịch rồi cộng lại.\n\n**Bước 2.** Cộng khối lượng hai dung dịch.\n\n**Bước 3.** Lấy khối lượng muối chia cho khối lượng dung dịch lúc sau, đổi ra phần trăm.\n\n**Chú ý:** không lấy trung bình cộng $(3\\%+5\\%):2=4\\%$, vì hai dung dịch nặng khác nhau ($100$ g và $300$ g).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối trong $100$ g nước muối $3\\%$ là: $100\\times 3\\%=3$ (g)\n\nKhối lượng muối trong $300$ g nước muối $5\\%$ là: $300\\times 5\\%=15$ (g)\n\nKhối lượng muối trong dung dịch lúc sau là: $3+15=18$ (g)\n\nKhối lượng dung dịch lúc sau là: $100+300=400$ (g)\n\nTỉ số phần trăm muối trong dung dịch lúc sau là: $18:400=0,045=4,5\\%$\n\nĐáp số: $4,5\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.1",
+  "dap_an": "$2\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổ thêm **nước cất** thì dung dịch nặng thêm nhưng **lượng muối không đổi**. Tìm lượng muối, khối lượng dung dịch mới, rồi lấy muối chia cho dung dịch mới.\n\n**Bước 1.** Tính khối lượng muối trong $200$ g dung dịch $3\\%$.\n\n**Bước 2.** Tính khối lượng dung dịch mới: $200$ g cộng $100$ g nước cất.\n\n**Bước 3.** Lấy khối lượng muối chia cho khối lượng dung dịch mới, đổi ra phần trăm.\n\n**Chú ý:** thêm nước thì dung dịch loãng đi, tỉ số phần trăm muối phải **nhỏ hơn** $3\\%$ — dùng để kiểm kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối không đổi.\n\nKhối lượng muối trong $200$ g dung dịch là: $200\\times 3\\%=6$ (g)\n\nKhối lượng dung dịch mới là: $200+100=300$ (g)\n\nTỉ số phần trăm muối trong dung dịch mới là: $6:300=0,02=2\\%$\n\nĐáp số: $2\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.3",
+  "dap_an": "$8,8\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lần này đổ thêm **muối**, nên lượng muối **tăng thêm $50$ g** và khối lượng dung dịch cũng **tăng thêm $50$ g** (muối tan vào dung dịch). Phải tính cả hai thay đổi.\n\n**Bước 1.** Tính khối lượng muối trong $950$ g dung dịch $4\\%$, rồi cộng thêm $50$ g muối.\n\n**Bước 2.** Tính khối lượng dung dịch mới: $950$ g cộng $50$ g.\n\n**Bước 3.** Lấy khối lượng muối lúc sau chia cho khối lượng dung dịch lúc sau, đổi ra phần trăm.\n\n**Chú ý:** đừng giữ nguyên khối lượng dung dịch là $950$ g: muối thêm vào cũng làm dung dịch nặng thêm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối trong $950$ g dung dịch $4\\%$ là: $950\\times 4\\%=38$ (g)\n\nKhối lượng muối lúc sau là: $38+50=88$ (g)\n\nKhối lượng dung dịch lúc sau là: $950+50=1000$ (g)\n\nTỉ số phần trăm muối trong dung dịch mới là: $88:1000=0,088=8,8\\%$\n\nĐáp số: $8,8\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.4",
+  "dap_an": "$52\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khi nung quặng A với sắt thì **sắt của hai phần cộng lại** và **khối lượng hai phần cộng lại**. Quặng B có tất cả bao nhiêu kilôgam, trong đó bao nhiêu kilôgam sắt, thì chia ra được phần trăm.\n\n**Bước 1.** Tính khối lượng sắt trong $80$ kg quặng A, rồi cộng thêm $20$ kg sắt.\n\n**Bước 2.** Tính khối lượng quặng B: $80$ kg quặng A cộng $20$ kg sắt.\n\n**Bước 3.** Lấy khối lượng sắt chia cho khối lượng quặng B, đổi ra phần trăm.\n\n**Chú ý:** $20$ kg sắt thêm vào cũng là một phần của quặng B nên phải cộng vào cả hai: lượng sắt và khối lượng quặng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng sắt trong $80$ kg quặng A là: $80\\times 40\\%=32$ (kg)\n\nKhối lượng sắt trong quặng B là: $32+20=52$ (kg)\n\nKhối lượng quặng B là: $80+20=100$ (kg)\n\nTỉ số phần trăm sắt trong quặng B là: $52:100=0,52=52\\%$\n\nĐáp số: $52\\%$",
+  "ghi_chu_nghi": "Đề sách in \"40%$ sắt\" (thừa ký hiệu $); soạn theo 40%."
+ },
+ {
+  "ma_nguon": "LT 16.5",
+  "dap_an": "$1,06875\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khi pha hai dung dịch với nhau thì **khối lượng muối cộng lại** và **khối lượng dung dịch cộng lại**; rồi lấy muối chia cho dung dịch lúc sau.\n\n**Bước 1.** Tính khối lượng muối trong mỗi dung dịch rồi cộng lại.\n\n**Bước 2.** Cộng khối lượng hai dung dịch.\n\n**Bước 3.** Lấy khối lượng muối chia cho khối lượng dung dịch lúc sau, đổi ra phần trăm.\n\n**Chú ý:** kết quả nằm giữa $0,9\\%$ và $1,2\\%$ (và gần $1,2\\%$ hơn vì dung dịch $1,2\\%$ nặng hơn) — dùng để kiểm kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối trong $350$ g nước muối $0,9\\%$ là: $350\\times 0,9\\%=3,15$ (g)\n\nKhối lượng muối trong $450$ g nước muối $1,2\\%$ là: $450\\times 1,2\\%=5,4$ (g)\n\nKhối lượng muối trong dung dịch lúc sau là: $3,15+5,4=8,55$ (g)\n\nKhối lượng dung dịch lúc sau là: $350+450=800$ (g)\n\nTỉ số phần trăm muối trong dung dịch lúc sau là: $8,55:800=0,0106875=1,06875\\%$\n\nĐáp số: $1,06875\\%$",
+  "ghi_chu_nghi": "Kết quả đúng theo số liệu đề là 1,06875% (không tròn, xấp xỉ 1,07%); người xem xét số liệu đề (0,9% / 1,2%) có in đúng không, hoặc sách có làm tròn đáp số."
+ },
+ {
+  "ma_nguon": "LT 16.6",
+  "dap_an": "$67,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khi trộn hai loại quặng thì **khối lượng sắt cộng lại** và **khối lượng quặng cộng lại**; lấy tổng sắt chia cho tổng quặng.\n\n**Bước 1.** Tính khối lượng sắt trong mỗi loại quặng rồi cộng lại.\n\n**Bước 2.** Cộng khối lượng hai loại quặng.\n\n**Bước 3.** Lấy khối lượng sắt chia cho khối lượng hỗn hợp, đổi ra phần trăm.\n\n**Chú ý:** không lấy trung bình cộng $(72\\%+60\\%):2=66\\%$, vì hai loại quặng nặng khác nhau ($50$ tấn và $30$ tấn).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng sắt trong $50$ tấn quặng $72\\%$ sắt là: $50\\times 72\\%=36$ (tấn)\n\nKhối lượng sắt trong $30$ tấn quặng $60\\%$ sắt là: $30\\times 60\\%=18$ (tấn)\n\nKhối lượng sắt trong hỗn hợp là: $36+18=54$ (tấn)\n\nKhối lượng hỗn hợp quặng là: $50+30=80$ (tấn)\n\nTỉ số phần trăm sắt trong hỗn hợp là: $54:80=0,675=67,5\\%$\n\nĐáp số: $67,5\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.8",
+  "dap_an": "$300$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổ thêm **nước cất** thì **lượng muối không đổi**. Biết lượng muối trong $300$ g nước muối $4\\%$, và lượng muối đó chiếm $2\\%$ nước muối lúc sau, thì tìm được khối lượng nước muối lúc sau.\n\n**Bước 1.** Tính khối lượng muối trong $300$ g nước muối $4\\%$.\n\n**Bước 2.** Lượng muối đó bằng $2\\%$ khối lượng nước muối lúc sau nên khối lượng lúc sau bằng lượng muối chia cho $2\\%$.\n\n**Bước 3.** Khối lượng nước cất đổ thêm bằng khối lượng lúc sau trừ khối lượng lúc đầu.\n\n**Chú ý:** $2\\%$ là của khối lượng nước muối **lúc sau**, không phải của $300$ g.\n\nThử lại: $600\\times 2\\%=12$ (g), đúng bằng lượng muối ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối không đổi.\n\nKhối lượng muối trong $300$ g nước muối $4\\%$ là: $300\\times 4\\%=12$ (g)\n\nKhối lượng nước muối lúc sau là: $12:2\\%=600$ (g)\n\nKhối lượng nước cất cần đổ thêm là: $600-300=300$ (g)\n\nĐáp số: $300$ g"
+ },
+ {
+  "ma_nguon": "LT 16.9",
+  "dap_an": "$20$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổ thêm **muối tinh khiết** thì muối tăng, còn **lượng nước trong bình không đổi**. Nước chiếm $90\\%$ dung dịch lúc sau ($100\\%-10\\%$), nên biết khối lượng nước là tìm được khối lượng dung dịch lúc sau.\n\n**Bước 1.** Tính khối lượng muối trong $300$ g dung dịch $4\\%$, suy ra khối lượng nước trong bình.\n\n**Bước 2.** Lúc sau muối chiếm $10\\%$ nên nước chiếm $90\\%$ dung dịch; khối lượng nước không đổi nên dung dịch lúc sau bằng khối lượng nước chia cho $90\\%$.\n\n**Bước 3.** Khối lượng muối cần đổ thêm bằng khối lượng dung dịch lúc sau trừ khối lượng lúc đầu.\n\n**Chú ý:** lần này đại lượng không đổi là **nước**, không phải muối (vì muối được thêm vào).\n\nThử lại: Muối lúc sau: $12+20=32$ (g); $32:320=0,1=10\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối trong $300$ g dung dịch $4\\%$ là: $300\\times 4\\%=12$ (g)\n\nKhối lượng nước trong bình không đổi và bằng: $300-12=288$ (g)\n\nLúc sau nước chiếm: $100\\%-10\\%=90\\%$ (dung dịch)\n\nKhối lượng dung dịch lúc sau là: $288:90\\%=320$ (g)\n\nKhối lượng muối cần đổ thêm là: $320-300=20$ (g)\n\nĐáp số: $20$ g"
+ },
+ {
+  "ma_nguon": "LT 16.10",
+  "dap_an": "$10$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nung quặng A với sắt thì chỉ thêm sắt, nên **phần không phải sắt không đổi**. Phần không phải sắt chiếm $65\\%$ quặng A và chiếm $60\\%$ quặng B.\n\n**Bước 1.** Tính phần trăm không phải sắt của quặng A, rồi khối lượng phần không phải sắt trong $120$ kg quặng A.\n\n**Bước 2.** Quặng B có $40\\%$ sắt nên phần không phải sắt chiếm $60\\%$ quặng B; khối lượng quặng B bằng phần không phải sắt chia cho $60\\%$.\n\n**Bước 3.** Khối lượng sắt cần thêm bằng khối lượng quặng B trừ khối lượng quặng A.\n\nThử lại: Sắt trong quặng B: $120\\times 35\\%+10=52$ (kg); $52:130=0,4=40\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng phần không phải sắt không đổi.\n\nPhần không phải sắt chiếm: $100\\%-35\\%=65\\%$ (quặng A)\n\nKhối lượng phần không phải sắt trong $120$ kg quặng A là: $120\\times 65\\%=78$ (kg)\n\nPhần không phải sắt chiếm: $100\\%-40\\%=60\\%$ (quặng B)\n\nKhối lượng quặng B là: $78:60\\%=130$ (kg)\n\nKhối lượng sắt cần nung thêm là: $130-120=10$ (kg)\n\nĐáp số: $10$ kg"
+ },
+ {
+  "ma_nguon": "LT 16.11",
+  "dap_an": "$10\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phơi khô chỉ làm mất nước, nên **khối lượng thuần hạt không đổi**. \"Nhẹ đi $80$ kg\" là khối lượng nước đã bay hơi, nên hạt khô nặng $120-80$. Từ thuần hạt và khối lượng hạt khô tìm được lượng nước còn lại.\n\n**Bước 1.** Tính khối lượng hạt khô: $120$ kg trừ $80$ kg.\n\n**Bước 2.** Tính khối lượng thuần hạt trong $120$ kg hạt tươi (thuần hạt chiếm $100\\%-70\\%$).\n\n**Bước 3.** Khối lượng nước còn trong hạt khô bằng khối lượng hạt khô trừ khối lượng thuần hạt; lấy chia cho khối lượng hạt khô.\n\n**Chú ý:** $80$ kg là lượng nước **đã mất**, không phải lượng nước còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng thuần hạt không đổi.\n\nKhối lượng hạt khô là: $120-80=40$ (kg)\n\nThuần hạt chiếm: $100\\%-70\\%=30\\%$ (hạt tươi)\n\nKhối lượng thuần hạt là: $120\\times 30\\%=36$ (kg)\n\nKhối lượng nước trong hạt khô là: $40-36=4$ (kg)\n\nTỉ số phần trăm nước trong hạt khô là: $4:40=0,1=10\\%$\n\nĐáp số: $10\\%$",
+  "ghi_chu_nghi": "Đề sách in \"Lương nước\" (đúng là \"Lượng nước\"); soạn theo nghĩa \"lượng nước\"."
+ },
+ {
+  "ma_nguon": "LT 16.12",
+  "dap_an": "$20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phơi khô chỉ làm mất nước, nên **khối lượng thuần hạt không đổi**. Biết thuần hạt trong hạt tươi và khối lượng hạt khô thì tìm được lượng nước còn trong hạt khô.\n\n**Bước 1.** Tính khối lượng thuần hạt trong $80$ kg hạt tươi (thuần hạt chiếm $100\\%-90\\%$).\n\n**Bước 2.** Khối lượng nước trong $10$ kg hạt khô bằng $10$ kg trừ khối lượng thuần hạt.\n\n**Bước 3.** Lấy khối lượng nước chia cho khối lượng hạt khô, đổi ra phần trăm.\n\n**Chú ý:** hạt tươi có tới $90\\%$ nước nên thuần hạt chỉ chiếm $10\\%$, đừng lẫn hai số này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng thuần hạt không đổi.\n\nThuần hạt chiếm: $100\\%-90\\%=10\\%$ (hạt tươi)\n\nKhối lượng thuần hạt là: $80\\times 10\\%=8$ (kg)\n\nKhối lượng nước trong hạt khô là: $10-8=2$ (kg)\n\nTỉ số phần trăm nước trong hạt khô là: $2:10=0,2=20\\%$\n\nĐáp số: $20\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.13",
+  "dap_an": "$25$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phơi khô chỉ làm mất nước, nên **khối lượng thuần cỏ (phần không phải nước) không đổi**. Thuần cỏ chiếm $45\\%$ cỏ tươi và chiếm $90\\%$ cỏ khô.\n\n**Bước 1.** Tính thuần cỏ chiếm bao nhiêu phần trăm cỏ tươi, rồi khối lượng thuần cỏ trong $50$ kg cỏ tươi.\n\n**Bước 2.** Tính thuần cỏ chiếm bao nhiêu phần trăm cỏ khô; khối lượng thuần cỏ bằng $90\\%$ khối lượng cỏ khô nên chia cho $90\\%$.\n\n**Chú ý:** cỏ khô vẫn còn $10\\%$ nước, nên khối lượng thuần cỏ chưa phải khối lượng cỏ khô.\n\nThử lại: $25\\times 90\\%=22,5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng thuần cỏ không đổi.\n\nThuần cỏ chiếm: $100\\%-55\\%=45\\%$ (cỏ tươi)\n\nKhối lượng thuần cỏ trong $50$ kg cỏ tươi là: $50\\times 45\\%=22,5$ (kg)\n\nThuần cỏ chiếm: $100\\%-10\\%=90\\%$ (cỏ khô)\n\nKhối lượng cỏ khô thu được là: $22,5:90\\%=25$ (kg)\n\nĐáp số: $25$ kg"
+ },
+ {
+  "ma_nguon": "LT 16.15",
+  "dap_an": "$40$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phơi khô chỉ làm mất nước, nên **khối lượng thuần ngô (phần không phải nước) không đổi**. Bài cho hạt khô nên đi ngược: tìm thuần ngô trong hạt khô trước, rồi tìm hạt tươi có chừng đó thuần ngô.\n\n**Bước 1.** Tính thuần ngô chiếm bao nhiêu phần trăm hạt khô, rồi khối lượng thuần ngô trong $24$ kg hạt khô.\n\n**Bước 2.** Tính thuần ngô chiếm bao nhiêu phần trăm hạt tươi; khối lượng thuần ngô bằng phần trăm đó của hạt tươi nên hạt tươi bằng khối lượng thuần ngô chia cho phần trăm ấy.\n\n**Chú ý:** hạt tươi nhiều nước hơn nên phải nặng hơn hạt khô — kết quả phải lớn hơn $24$ kg.\n\nThử lại: $40\\times 54\\%=21,6$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng thuần ngô không đổi.\n\nThuần ngô chiếm: $100\\%-10\\%=90\\%$ (hạt khô)\n\nKhối lượng thuần ngô trong $24$ kg hạt khô là: $24\\times 90\\%=21,6$ (kg)\n\nThuần ngô chiếm: $100\\%-46\\%=54\\%$ (hạt tươi)\n\nKhối lượng hạt ngô tươi cần đem phơi là: $21,6:54\\%=40$ (kg)\n\nĐáp số: $40$ kg"
+ }
+]

@@ -22,6 +22,11 @@ export const SKINS: Skin[] = [RPG, KHOI, TOI_GIAN]
 
 export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 
+/** STYLE + ẢNH NỀN MẶC ĐỊNH THEO KHỐI (Thùy 09/10): lớp 4–7 = Khối vuông (Minecraft) · lớp 8–12 (và khối khác) = Anime RPG.
+ *  Chỉ là mặc định khi em CHƯA tự chọn (chưa có dòng hs_giao_dien); em đã chọn thì lựa chọn của em thắng. */
+export function skinMacDinhTheoKhoi(khoi: string | null | undefined): SkinId {
+  return khoi === '4' || khoi === '5' || khoi === '6' || khoi === '7' ? 'khoi' : SKIN_MAC_DINH
+}
 // id = null/undefined ⇒ style ĐANG ÁP (KhungHS.ganBien gắn khi app HS chạy; chưa gắn — vd trang game mở riêng — ⇒ mặc định).
 // 07/10: trước đây null rơi THẲNG về mặc định ⇒ mọi màn gọi laySkin(null) (khu Học tập, Chinh phục, quái/boss 2D…) luôn vẽ hình RPG
 // dù em chọn style khác. id sai/không có ⇒ mặc định.

@@ -68,14 +68,14 @@ function LucDiaCu({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon
                         style={{ transform: `translate(-50%,-50%)${hov === v.ma ? ' scale(1.05)' : ''}`, filter: t.trangThai === 'fog' ? 'saturate(.5) brightness(.8)' : undefined, background: anh ? undefined : `radial-gradient(circle at 50% 70%, ${m.dat2}, ${b.da} 70%)`, boxShadow: anh ? undefined : `0 4px 0 ${b.duongVien}` }}>
                         {anh ? <img src={anh} alt="" className="h-full w-full object-contain object-bottom" draggable={false} /> : <span style={{ fontSize: coMoc * 0.52, lineHeight: 1 }}>{EMOJI_MOC[i % EMOJI_MOC.length]}</span>}
                       </button>
-                      <span className="pointer-events-none absolute -left-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-extrabold" style={{ ...HEAD, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{i + 1}</span>
+                      <span className="pointer-events-none absolute -left-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-[13px] font-extrabold" style={{ ...HEAD, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{i + 1}</span>
                       {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '-10%', top: '5%', width: '120%', height: '80%' }} />}
                       {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ right: -coMoc * 0.12, top: -coMoc * 0.3 }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={coMoc * 0.55} /></span>}
                       {t.trangThai === 'yeu' && t.loai && <span className="pointer-events-none absolute" style={{ right: -coMoc * 0.2, bottom: coMoc * 0.05, width: coMoc * 0.42, height: coMoc * 0.42 }}><QuaiTam b={b} loai={t.loai} co={coMoc * 0.42} /></span>}
                       {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: '100%', marginBottom: 2 }}><MuiTen co={Math.max(30, coMoc * 0.5)} /></span>}
                       <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center px-2 py-0.5 text-center"
                         style={{ ...CHU_VIEN, top: '100%', marginTop: 2, width: 'max-content', maxWidth: lon ? 290 : 170, transform: hov === v.ma ? 'scale(1.06)' : undefined }}>
-                        <span className={`block max-w-full font-bold leading-[1.15] ${lon ? 'text-[17.5px]' : 'text-[13.5px]'}`} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
+                        <span className={`block max-w-full font-bold leading-[1.15] ${lon ? 'text-[19.5px]' : 'text-[15px]'}`} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
                         <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={lon ? 21 : 15} />
                       </span>
                     </div>
@@ -86,11 +86,11 @@ function LucDiaCu({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon
           </NenBien>
         </div>
         <aside className="hidden min-h-0 flex-col gap-2 overflow-y-auto p-3 2xl:flex" style={THE}>
-          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Các vùng</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Các vùng</p>
           {vungs.map((x, i) => (
             <button key={x.v.ma} onClick={() => onChon(x.v.ma)} onPointerEnter={() => setHov(x.v.ma)} onPointerLeave={() => setHov(null)}
               className="flex items-center justify-between gap-2 px-3 py-2 text-left" style={{ ...THE_TRON, background: hov === x.v.ma ? 'var(--sk-surface2)' : 'var(--sk-surface)' }}>
-              <span className="min-w-0 text-[13.5px] font-semibold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{i + 1}. {x.v.ten}</span>
+              <span className="min-w-0 text-[15px] font-semibold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{i + 1}. {x.v.ten}</span>
               <Sao5 ti={x.t.tong ? x.t.dat / x.t.tong : 0} />
             </button>
           ))}

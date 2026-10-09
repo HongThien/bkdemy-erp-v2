@@ -10,7 +10,7 @@ argument-hint: <10|11|12>
 > v1 của lệnh này ghi vào `toan_de_thi` (đường B, ĐÃ NGỪNG — đề nhập kiểu đó không hiện trên ERP). `scripts/nhap_de_thi.mjs` là của v1, **không dùng nữa**.
 
 Kết quả của lệnh: câu nằm trong kho (`dai_cau_hoi` / `hgt_cau_hoi`, `da_duyet=false`, `nguon='de_thi'`) **và** đề nằm ở
-`tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau` ⇒ hiện ngay ở Nhập kho › 📝 Đề thi › tab Chờ duyệt (mở đề = sửa + duyệt một màn).
+`tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau` ⇒ hiện ngay ở Học thuật › Kho đề thi › tab Chờ duyệt (mở đề = sửa + duyệt một màn).
 
 ## Nguyên tắc bất di
 
@@ -103,7 +103,7 @@ node scripts/kho/de-thi/ghi.mjs "<work>" --ghi
 
 ### Bước 6 — Kiểm trên ERP rồi báo cáo
 
-Mở Nhập kho › 📝 Đề thi › tab Chờ duyệt › tìm tên đề › mở: đủ câu, công thức render, hình hiện (KHÔNG tự bấm ✅ Duyệt đề — việc của người duyệt). Báo CEO: tên đề · số câu theo kho ·
+Mở Học thuật › Kho đề thi › tab Chờ duyệt › tìm tên đề › mở: đủ câu, công thức render, hình hiện (KHÔNG tự bấm ✅ Duyệt đề — việc của người duyệt). Báo CEO: tên đề · số câu theo kho ·
 số câu / mệnh đề còn dạng chờ · các cảnh báo cần người duyệt xem · `tai_lieu.id`.
 
 ## Khuôn `de.json` (để tự dựng khi nguồn không phải Word)
@@ -118,5 +118,5 @@ số câu / mệnh đề còn dạng chờ · các cảnh báo cần người du
 
 ## Chưa có (spec §10.4)
 
-Đã có: lát B (Kho đề thi ở Nhập kho › Đề thi) · lát C (gán đề vào buổi thành Giáo trình / BTVN, kiểm tra, ô trả lời ngắn 4 ô) · lát D (`boc-pdf.mjs`).
+Đã có: lát B (Kho đề thi — lá riêng Học thuật › Kho đề thi từ 09/10) · lát C (gán đề vào buổi thành Giáo trình / BTVN, kiểm tra, ô trả lời ngắn 4 ô) · lát D (`boc-pdf.mjs`).
 Chưa có: đề tự luận / đề không theo khuôn 3 phần · hình trong lời giải của đề PDF · nhận trùng câu giữa nguồn Word và nguồn PDF.

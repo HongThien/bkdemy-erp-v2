@@ -15,22 +15,13 @@ import {
   saveCauToDang, createCauDungSai, uploadKhoImage, logKhoTag, khoTagPrecision,
   type KhoMon, type ChuDeOption, type DangCandidate, type LoaiCau, type MenhDe,
 } from '../../lib/kho/api'
-import DeThiScreen from '../tailieu/DeThiScreen'
-
-// Nhập kho = 2 LUỒNG cùng chiều (đổ nội dung VÀO kho), khác cấu trúc nguồn:
-//  · Nhập chuyên đề — 1 file cùng chủ đề (AI gợi ý dạng, verify low-conf).
-//  · Đề thi         — KHO ĐỀ THI: nơi lưu + sửa + duyệt + giao đề (KhoDeThi.tsx). Đề vào bằng Claude (/nhap-de-thi), không còn bóc PDF trong trình duyệt (CEO 01/10).
-// (Đề thi KHÔNG ở "Làm tài liệu" — đó là chỗ soạn TỪ kho có sẵn, ngược chiều với ingest.)
+// Nhập kho = nhập CHUYÊN ĐỀ — 1 file cùng chủ đề (AI gợi ý dạng, verify low-conf).
+// Đề thi KHÔNG còn ở đây: Thùy 09/10 tách thành lá riêng "Kho đề thi" (Học thuật, dưới Kho tài liệu → KhoDeThi.tsx).
+// Đề vào bằng Claude (/nhap-de-thi), không bóc PDF trong trình duyệt (CEO 01/10).
 export default function NhapKhoScreen() {
-  const [mode, setMode] = useState<'chuyen_de' | 'de_thi'>('chuyen_de')
-  const tab = (on: boolean) => `rounded-lg px-3 py-1.5 text-[13px] font-medium transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden">
-      <div className="flex flex-none items-center gap-1.5 border-b border-slate-200 bg-white px-6 py-2">
-        <button onClick={() => setMode('chuyen_de')} className={tab(mode === 'chuyen_de')}>📚 Nhập chuyên đề</button>
-        <button onClick={() => setMode('de_thi')} className={tab(mode === 'de_thi')}>📝 Đề thi</button>
-      </div>
-      <div className="min-h-0 flex-1">{mode === 'chuyen_de' ? <NhapChuyenDe /> : <DeThiScreen />}</div>
+      <div className="min-h-0 flex-1"><NhapChuyenDe /></div>
     </div>
   )
 }

@@ -1,0 +1,274 @@
+[
+ {
+  "ma_nguon": "ON 90",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình chữ nhật ABCD có AB = 8 cm; AD = 6 cm; MC = MD; BN = $\\dfrac{2}{3}$BC (như hình vẽ bên). Tính diện tích hình tam giác AMN.",
+  "noi_dung_sach": "Cho hình chữ nhật ABCD có AB = 8 cm; AD = 6 cm; MC = MD; BN = $\\frac{2}{3}$BC (như hình vẽ bên). Tính diện tích hình tam giác AMN.",
+  "dap_an": "$16\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác AMN nằm trong hình chữ nhật và ba góc còn lại của hình chữ nhật (tại D, B, C) mỗi góc là một tam giác vuông tính được ngay. Vậy diện tích AMN bằng diện tích hình chữ nhật **trừ** diện tích ba tam giác vuông đó.\n\n**Bước 1.** Tìm các độ dài còn thiếu: M ở chính giữa DC nên DM và MC đều bằng nửa DC; BN bằng $\\dfrac{2}{3}$ BC thì NC là phần còn lại của BC.\n\n**Bước 2.** Tính diện tích ba tam giác vuông ADM, ABN, MCN: mỗi tam giác lấy hai cạnh góc vuông nhân với nhau rồi chia $2$.\n\n**Bước 3.** Lấy diện tích hình chữ nhật trừ lần lượt ba diện tích đó.\n\n**Chú ý:** Tam giác MCN vuông tại C nên hai cạnh MC và NC chính là đáy và chiều cao, không cần tìm thêm gì.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình chữ nhật ABCD là: $8\\times 6=48$ ($\\text{cm}^2$)\n\nĐộ dài đoạn thẳng DM và MC là: $8:2=4$ (cm)\n\nĐộ dài đoạn thẳng BN là: $6\\times\\dfrac{2}{3}=4$ (cm)\n\nĐộ dài đoạn thẳng NC là: $6-4=2$ (cm)\n\nDiện tích tam giác ADM là: $6\\times 4:2=12$ ($\\text{cm}^2$)\n\nDiện tích tam giác ABN là: $8\\times 4:2=16$ ($\\text{cm}^2$)\n\nDiện tích tam giác MCN là: $4\\times 2:2=4$ ($\\text{cm}^2$)\n\nDiện tích tam giác AMN là: $48-12-16-4=16$ ($\\text{cm}^2$)\n\nĐáp số: $16\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1087.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-90.png",
+  "hinh_de_ma": "ON 90"
+ },
+ {
+  "ma_nguon": "ON 91",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình tam giác MNK có diện tích là $120\\ \\text{cm}^{2}$. Trên cạnh NK ta lấy điểm E sao cho $\\text{NE}=\\dfrac{2}{3}\\text{EK}$, nối ME. Trên đoạn thẳng ME lấy hai điểm C và D sao cho $\\text{MC}=\\dfrac{1}{2}\\text{CD}=\\dfrac{1}{3}\\text{DE}$. Nối K với C và D. Tính diện tích hình tam giác MEK và diện tích hình tam giác CDK.",
+  "noi_dung_sach": "Cho hình tam giác MNK có diện tích là $120\\ \\text{cm}^{2}$. Trên cạnh NK ta lấy điểm E sao cho $\\text{NE}=\\frac{2}{3}\\text{EK}$, nối ME. Trên đoạn thảng ME lấy hai điểm C và D sao cho $\\text{MC}=\\frac{1}{2}\\text{CD}=\\frac{1}{3}\\text{DE}$. Nối K với C và D. Tính diện tích hình tam giác MEK và diện tích hình tam giác CDK.",
+  "dap_an": "Tam giác MEK: $72\\ \\text{cm}^2$; tam giác CDK: $24\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có **chung đường cao** thì tỉ số diện tích bằng tỉ số hai cạnh đáy. Bài cho nhiều tỉ số của các đoạn thẳng nên đi từ tam giác đã biết diện tích (MNK) xuống từng tam giác nhỏ dần: MNK $\\rightarrow$ MEK $\\rightarrow$ CDK.\n\n**Bước 1.** Tam giác MEK và tam giác MNK có chung đường cao hạ từ M xuống NK. Từ $NE=\\dfrac{2}{3}EK$: NE là $2$ phần thì EK là $3$ phần, cả NK là $5$ phần ⇒ tìm $EK$ bằng mấy phần NK, từ đó tìm $S_{MEK}$.\n\n**Bước 2.** Tam giác CDK và tam giác MEK có chung đường cao hạ từ K xuống ME. Từ $MC=\\dfrac{1}{2}CD=\\dfrac{1}{3}DE$: MC là $1$ phần thì CD là $2$ phần, DE là $3$ phần, cả ME là $6$ phần ⇒ tìm $CD$ bằng mấy phần ME, từ đó tìm $S_{CDK}$.\n\n**Chú ý:** \"NE bằng $\\dfrac{2}{3}$ EK\" nghĩa là NE so với **EK** chứ không phải so với NK — phải đổi sang so với cả NK ($\\dfrac{3}{5}$) rồi mới dùng được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $NE=\\dfrac{2}{3}EK$ nên nếu NE là $2$ phần thì EK là $3$ phần và NK là $2+3=5$ phần, suy ra $EK=\\dfrac{3}{5}NK$.\n\nTam giác MEK và tam giác MNK có chung đường cao hạ từ M xuống NK, suy ra $\\dfrac{S_{MEK}}{S_{MNK}}=\\dfrac{EK}{NK}=\\dfrac{3}{5}$\n\n$S_{MEK}=\\dfrac{3}{5}\\times 120=72\\ (\\text{cm}^2)$\n\nVì $MC=\\dfrac{1}{2}CD=\\dfrac{1}{3}DE$ nên nếu MC là $1$ phần thì CD là $2$ phần, DE là $3$ phần và ME là $1+2+3=6$ phần, suy ra $CD=\\dfrac{2}{6}ME=\\dfrac{1}{3}ME$.\n\nTam giác CDK và tam giác MEK có chung đường cao hạ từ K xuống ME, suy ra $\\dfrac{S_{CDK}}{S_{MEK}}=\\dfrac{CD}{ME}=\\dfrac{1}{3}$\n\n$S_{CDK}=\\dfrac{1}{3}\\times 72=24\\ (\\text{cm}^2)$\n\nĐáp số: $S_{MEK}=72\\ \\text{cm}^2$; $S_{CDK}=24\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1088.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-91.png",
+  "hinh_de_ma": "ON 91"
+ },
+ {
+  "ma_nguon": "ON 92",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình tam giác ABC có diện tích là $45\\ \\text{cm}^{2}$. Q và K lần lượt là hai điểm nằm trên cạnh AB và AC sao cho $\\text{AQ}=\\dfrac{3}{5}\\text{AB, KC}=\\dfrac{1}{2}\\text{KA}$, nối QK. Tính diện tích hình tứ giác QBCK.",
+  "noi_dung_sach": "Cho hình tam giác ABC có diện tích là $45\\ \\text{cm}^{2}$. Q và K lần lượt là hai điểm nằm trên cạnh AB và AC sao cho $\\text{AQ}=\\frac{3}{5}\\text{AB, KC}=\\frac{1}{2}\\text{KA}$, nối QK. Tính diện tích hình tứ giác QBCK.",
+  "dap_an": "$27\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tứ giác QBCK là tam giác ABC **bỏ đi** tam giác AQK ở góc A. Tam giác AQK và tam giác ABC không chung đường cao, nên phải đi qua một tam giác trung gian — **nối B với K** để có tam giác ABK.\n\n**Bước 1.** Từ $KC=\\dfrac{1}{2}KA$: KA là $2$ phần thì KC là $1$ phần, cả AC là $3$ phần ⇒ $AK=\\dfrac{2}{3}AC$.\n\n**Bước 2.** Tam giác ABK và tam giác ABC có chung đường cao hạ từ B xuống AC ⇒ tìm $S_{ABK}$.\n\n**Bước 3.** Tam giác AQK và tam giác ABK có chung đường cao hạ từ K xuống AB, mà $AQ=\\dfrac{3}{5}AB$ ⇒ tìm $S_{AQK}$.\n\n**Bước 4.** Lấy diện tích tam giác ABC trừ diện tích tam giác AQK.\n\n**Chú ý:** Phải tìm phần **bỏ đi** (tam giác AQK) rồi trừ, không tính thẳng tứ giác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối B với K.\n\nVì $KC=\\dfrac{1}{2}KA$ nên KA là $2$ phần thì KC là $1$ phần và AC là $2+1=3$ phần, suy ra $AK=\\dfrac{2}{3}AC$.\n\nTam giác ABK và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABK}}{S_{ABC}}=\\dfrac{AK}{AC}=\\dfrac{2}{3}$\n\n$S_{ABK}=\\dfrac{2}{3}\\times 45=30\\ (\\text{cm}^2)$\n\nTam giác AQK và tam giác ABK có chung đường cao hạ từ K xuống AB, suy ra $\\dfrac{S_{AQK}}{S_{ABK}}=\\dfrac{AQ}{AB}=\\dfrac{3}{5}$\n\n$S_{AQK}=\\dfrac{3}{5}\\times 30=18\\ (\\text{cm}^2)$\n\nDiện tích tứ giác QBCK là: $45-18=27$ ($\\text{cm}^2$)\n\nĐáp số: $27\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image882.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-92.png",
+  "hinh_de_ma": "ON 92"
+ },
+ {
+  "ma_nguon": "ON 93",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình tam giác ABC, lấy D, E, F, G sao cho: $\\text{AG}=\\text{GB},\\text{AD}=\\text{DE}=\\text{EC},\\text{BF}=\\text{CF}$ (hình vẽ bên dưới). Biết diện tích hình tứ giác DEFG là $45\\ \\text{cm}^{2}$. Tính diện tích hình tam giác ABC.",
+  "noi_dung_sach": "Cho hình tam giác ABC, lấy D, E, F, G sao cho: $\\text{AG}=\\text{GB},\\text{AD}=\\text{DE}=\\text{EC},\\text{BF}=\\text{CF}$ (hình vẽ bên dưới). Biết diện tích hình tứ giác DEFG là $45\\ \\text{cm}^{2}$. Tính diện tích hình tam giác ABC.",
+  "dap_an": "$108\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chưa biết diện tích tam giác ABC, nhưng biết tứ giác DEFG chiếm mấy phần của nó. Tứ giác DEFG = tam giác ABC **bỏ đi** ba tam giác ở ba góc (AGD, BGF, CEF). Mỗi tam giác đó tìm được bằng mấy phần $S_{ABC}$; có \"$45$ cm² ứng với … phần\" thì chia ra $S_{ABC}$.\n\n**Bước 1.** Nối G với C và nối A với F để mỗi tam giác ở góc đi qua một tam giác trung gian chung đường cao với tam giác ABC.\n\n**Bước 2.** Tìm $S_{AGD}$, $S_{BGF}$, $S_{CEF}$ theo $S_{ABC}$ (mỗi cái hai lần \"chung đường cao\").\n\n**Bước 3.** Cộng ba phân số rồi lấy $1$ trừ đi ⇒ DEFG chiếm bao nhiêu phần $S_{ABC}$.\n\n**Bước 4.** $45$ cm² ứng với phân số đó của $S_{ABC}$ ⇒ lấy $45$ chia cho phân số ấy.\n\n**Chú ý:** Với tam giác BGF, BG chỉ bằng $\\dfrac{1}{2}$ BA nên chỉ nhân thêm $\\dfrac{1}{2}$ sau khi đã có $S_{ABF}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối G với C và nối A với F.\n\nVì AG = GB nên $AG=\\dfrac{1}{2}AB$.\n\nTam giác AGC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{AGC}}{S_{ABC}}=\\dfrac{AG}{AB}=\\dfrac{1}{2}$\n\nVì AD = DE = EC nên $AD=\\dfrac{1}{3}AC$.\n\nTam giác AGD và tam giác AGC có chung đường cao hạ từ G xuống AC, suy ra $\\dfrac{S_{AGD}}{S_{AGC}}=\\dfrac{AD}{AC}=\\dfrac{1}{3}$\n\n$S_{AGD}=\\dfrac{1}{3}\\times\\dfrac{1}{2}\\times S_{ABC}=\\dfrac{1}{6}\\times S_{ABC}$\n\nVì BF = CF nên $BF=\\dfrac{1}{2}BC$.\n\nTam giác ABF và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{ABF}}{S_{ABC}}=\\dfrac{BF}{BC}=\\dfrac{1}{2}$\n\nTam giác BGF và tam giác BAF có chung đường cao hạ từ F xuống AB, suy ra $\\dfrac{S_{BGF}}{S_{BAF}}=\\dfrac{BG}{BA}=\\dfrac{1}{2}$\n\n$S_{BGF}=\\dfrac{1}{2}\\times\\dfrac{1}{2}\\times S_{ABC}=\\dfrac{1}{4}\\times S_{ABC}$\n\nTam giác AFC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{AFC}}{S_{ABC}}=\\dfrac{FC}{BC}=\\dfrac{1}{2}$\n\nTam giác CEF và tam giác CAF có chung đường cao hạ từ F xuống AC, suy ra $\\dfrac{S_{CEF}}{S_{CAF}}=\\dfrac{CE}{CA}=\\dfrac{1}{3}$\n\n$S_{CEF}=\\dfrac{1}{3}\\times\\dfrac{1}{2}\\times S_{ABC}=\\dfrac{1}{6}\\times S_{ABC}$\n\nBa tam giác ở ba góc bằng: $\\dfrac{1}{6}+\\dfrac{1}{4}+\\dfrac{1}{6}=\\dfrac{7}{12}$ diện tích tam giác ABC.\n\nTứ giác DEFG bằng: $1-\\dfrac{7}{12}=\\dfrac{5}{12}$ diện tích tam giác ABC.\n\nDiện tích hình tam giác ABC là: $45:\\dfrac{5}{12}=108$ ($\\text{cm}^2$)\n\nĐáp số: $108\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image591.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-93.png",
+  "hinh_de_ma": "ON 93"
+ },
+ {
+  "ma_nguon": "ON 94",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hình tam giác ABC có diện tích là $90\\ \\text{cm}^{2}$.\nLấy D, E thỏa mãn: AD = BD, AE = $2\\times$ EC.\na) Tính diện tích hình tam giác ADE.\nb) Tìm tỉ số cạnh BC và CF.",
+  "noi_dung_sach": "Cho hình tam giác ABC có diện tích là $90\\ \\text{cm}^{2}$.\nLấy D, E thỏa mãn: AD = BD, AE = $2\\times$ EC.\na) Tính diện tích hình tam giác ADE.\nb) Tìm tỉ số cạnh BC và CF.",
+  "dap_an": "a) $30\\ \\text{cm}^2$; b) $BC=CF$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a): tam giác ADE và tam giác ABC không chung đường cao ⇒ **nối B với E** để có tam giác trung gian ABE. Ý b): muốn so BC với CF thì so diện tích hai tam giác BEC và CEF (chung đường cao hạ từ E xuống BF); tam giác BEC đã tính được, còn tam giác CEF phải tìm qua mối liên hệ giữa các tam giác có chung đỉnh F.\n\n**Bước 1.** (ý a) Tam giác ABE và ABC chung đường cao hạ từ B xuống AC, với $AE=\\dfrac{2}{3}AC$ ⇒ tìm $S_{ABE}$. Rồi tam giác ADE và ABE chung đường cao hạ từ E xuống AB, với D là trung điểm AB ⇒ tìm $S_{ADE}$.\n\n**Bước 2.** (ý b) Tìm $S_{BDE}$ và $S_{BEC}$ (đều bằng $30$ cm²).\n\n**Bước 3.** (ý b) D là trung điểm AB nên hai tam giác ADF và BDF chung đường cao từ F có diện tích bằng nhau. Hai diện tích đó đều ghép từ các tam giác nhỏ ⇒ so sánh để biết tam giác AEF hơn tam giác CEF bao nhiêu.\n\n**Bước 4.** (ý b) Tam giác AEF và CEF chung đường cao hạ từ F xuống AC, mà $AE=2\\times EC$ ⇒ AEF gấp $2$ lần CEF. Có \"gấp $2$ lần\" và \"hơn $30$\" ⇒ tìm $S_{CEF}$ rồi so với $S_{BEC}$.\n\n**Chú ý:** Đề chữ không nói F là điểm nào — theo hình vẽ, F là giao điểm của DE kéo dài với BC kéo dài.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Nối B với E.\n\nVì $AE=2\\times EC$ nên $AE=\\dfrac{2}{3}AC$.\n\nTam giác ABE và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABE}}{S_{ABC}}=\\dfrac{AE}{AC}=\\dfrac{2}{3}$\n\n$S_{ABE}=\\dfrac{2}{3}\\times 90=60\\ (\\text{cm}^2)$\n\nTam giác ADE và tam giác ABE có chung đường cao hạ từ E xuống AB, suy ra $\\dfrac{S_{ADE}}{S_{ABE}}=\\dfrac{AD}{AB}=\\dfrac{1}{2}$\n\n$S_{ADE}=\\dfrac{1}{2}\\times 60=30\\ (\\text{cm}^2)$\n\nb) Theo hình vẽ, F là giao điểm của DE và BC kéo dài.\n\nTam giác BDE và tam giác ADE có chung đường cao hạ từ E xuống AB và BD = AD, suy ra $S_{BDE}=S_{ADE}=30\\ (\\text{cm}^2)$\n\nDiện tích tam giác BEC là: $90-60=30$ ($\\text{cm}^2$)\n\nTam giác ADF và tam giác BDF có chung đường cao hạ từ F xuống AB và AD = BD, suy ra $S_{ADF}=S_{BDF}$\n\nMà $S_{ADF}=S_{ADE}+S_{AEF}$ và $S_{BDF}=S_{BDE}+S_{BEC}+S_{CEF}$, trong đó $S_{ADE}=S_{BDE}$ nên $S_{AEF}=S_{BEC}+S_{CEF}=30+S_{CEF}$\n\nVậy tam giác AEF có diện tích hơn tam giác CEF là $30\\ \\text{cm}^2$.\n\nTam giác AEF và tam giác CEF có chung đường cao hạ từ F xuống AC, suy ra $\\dfrac{S_{AEF}}{S_{CEF}}=\\dfrac{AE}{CE}=2$, tức là $S_{AEF}$ gấp $2$ lần $S_{CEF}$.\n\nDiện tích tam giác CEF là: $30:(2-1)=30$ ($\\text{cm}^2$)\n\nTam giác BEC và tam giác CEF có chung đường cao hạ từ E xuống BF và $S_{BEC}=S_{CEF}=30\\ \\text{cm}^2$, suy ra $BC=CF$.\n\nĐáp số: a) $30\\ \\text{cm}^2$; b) $BC=CF$",
+  "so_do": null,
+  "anh_sach": [
+   "image502.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-94.png",
+  "hinh_de_ma": "ON 94"
+ },
+ {
+  "ma_nguon": "ON 95",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình tứ giác ABCD có diện tích bằng $84\\ \\text{cm}^{2}$. Nối A với C. Trên AC lấy điểm E và Q sao cho $\\text{AE}=\\dfrac{1}{4}\\text{EQ}=\\dfrac{1}{2}\\text{QC}$. Nối E và Q với B và D. Tính diện tích hình tứ giác EDQB.",
+  "noi_dung_sach": "Cho hình tứ giác ABCD có diện tích bằng $84\\ \\text{cm}^{2}$. Nối A với C. Trên AC lấy điểm E và Q sao cho $\\text{AE}=\\frac{1}{4}\\text{EQ}=\\frac{1}{2}\\text{QC}$. Nối E và Q với B và D. Tính diện tích hình tứ giác EDQB.",
+  "dap_an": "$48\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tứ giác EDQB ghép từ hai tam giác EBQ và EDQ có chung đáy EQ nằm trên đường chéo AC. Mỗi tam giác ấy **chung đường cao** với một tam giác lớn (ABC hoặc ADC) và đáy EQ chiếm cùng một phần của AC ⇒ cả hai đều bằng cùng một phân số của tam giác lớn tương ứng, nên tổng bằng phân số đó của cả tứ giác ABCD.\n\n**Bước 1.** Từ $AE=\\dfrac{1}{4}EQ=\\dfrac{1}{2}QC$: AE là $1$ phần thì EQ là $4$ phần, QC là $2$ phần ⇒ cả AC là $7$ phần, $EQ=\\dfrac{4}{7}AC$.\n\n**Bước 2.** Tam giác EBQ và ABC chung đường cao hạ từ B xuống AC; tam giác EDQ và ADC chung đường cao hạ từ D xuống AC ⇒ mỗi tam giác bằng $\\dfrac{4}{7}$ tam giác lớn.\n\n**Bước 3.** Cộng lại: $S_{ABC}+S_{ADC}$ chính là cả tứ giác ABCD.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AE=\\dfrac{1}{4}EQ=\\dfrac{1}{2}QC$ nên nếu AE là $1$ phần thì EQ là $4$ phần, QC là $2$ phần và AC là $1+4+2=7$ phần, suy ra $EQ=\\dfrac{4}{7}AC$.\n\nTam giác EBQ và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{EBQ}}{S_{ABC}}=\\dfrac{EQ}{AC}=\\dfrac{4}{7}$\n\nTam giác EDQ và tam giác ADC có chung đường cao hạ từ D xuống AC, suy ra $\\dfrac{S_{EDQ}}{S_{ADC}}=\\dfrac{EQ}{AC}=\\dfrac{4}{7}$\n\n$S_{EDQB}=S_{EBQ}+S_{EDQ}=\\dfrac{4}{7}\\times\\left(S_{ABC}+S_{ADC}\\right)=\\dfrac{4}{7}\\times S_{ABCD}$\n\nDiện tích hình tứ giác EDQB là: $\\dfrac{4}{7}\\times 84=48$ ($\\text{cm}^2$)\n\nĐáp số: $48\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image769.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-95.png",
+  "hinh_de_ma": "ON 95"
+ },
+ {
+  "ma_nguon": "ON 96",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình thang ABCD, trên cạnh BC lấy điểm E sao cho $\\text{BE}=\\text{CE}$. Biết diện tích tam giác ABD gấp rưỡi diện tích tam giác CDE. Tìm tỉ số hai đáy AB và CD.",
+  "noi_dung_sach": "Cho hình thang ABCD, trên cạnh BC lấy điểm E sao cho $\\text{BE}=\\text{CE}$. Biết diện tích tam giác ABD gấp rưỡi diện tích tam giác CDE. Tìm tỉ số hai đáy AB và CD.",
+  "dap_an": "$\\dfrac{AB}{CD}=\\dfrac{3}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác ABD và BCD có đáy là hai đáy của hình thang (AB và CD) và **chiều cao bằng nhau** (bằng chiều cao hình thang) ⇒ tỉ số diện tích của chúng chính là tỉ số hai đáy $\\dfrac{AB}{CD}$. Vậy chỉ cần tìm $S_{ABD}$ bằng mấy phần $S_{BCD}$.\n\n**Bước 1.** E là trung điểm BC nên tam giác CDE bằng $\\dfrac{1}{2}$ tam giác BCD (chung đường cao hạ từ D xuống BC).\n\n**Bước 2.** Tam giác ABD gấp rưỡi ($\\dfrac{3}{2}$) tam giác CDE ⇒ tìm $S_{ABD}$ bằng mấy phần $S_{BCD}$.\n\n**Bước 3.** Suy ra tỉ số hai đáy AB và CD.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì BE = CE nên $CE=\\dfrac{1}{2}BC$.\n\nTam giác CDE và tam giác BCD có chung đường cao hạ từ D xuống BC, suy ra $\\dfrac{S_{CDE}}{S_{BCD}}=\\dfrac{CE}{BC}=\\dfrac{1}{2}$\n\n$S_{ABD}=\\dfrac{3}{2}\\times S_{CDE}=\\dfrac{3}{2}\\times\\dfrac{1}{2}\\times S_{BCD}=\\dfrac{3}{4}\\times S_{BCD}$\n\nTam giác ABD có đáy AB, tam giác BCD có đáy CD, hai đường cao hạ từ D xuống AB và từ B xuống CD đều bằng chiều cao hình thang, suy ra $\\dfrac{S_{ABD}}{S_{BCD}}=\\dfrac{AB}{CD}$\n\nVậy $\\dfrac{AB}{CD}=\\dfrac{3}{4}$\n\nĐáp số: $\\dfrac{AB}{CD}=\\dfrac{3}{4}$",
+  "so_do": null,
+  "anh_sach": [
+   "image1079.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-96.png",
+  "hinh_de_ma": "ON 96"
+ },
+ {
+  "ma_nguon": "ON 97",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình chữ nhật ABCD, E là điểm bất kì trên cạnh BC (hình bên). Tìm tỉ số diện tích tam giác BEF và diện tích tam giác CDE.",
+  "noi_dung_sach": "Cho hình chữ nhật ABCD, E là điểm bất kì trên cạnh BC (hình bên). Tìm tỉ số diện tích tam giác BEF và diện tích tam giác CDE.",
+  "dap_an": "$\\dfrac{S_{BEF}}{S_{CDE}}=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác BEF và CDE nằm ở hai chỗ khác nhau nên không so trực tiếp được. Cách làm: đưa cả hai về **cùng một nửa diện tích hình chữ nhật** — tam giác ABF (dùng AB // DF) và hai tam giác ABE, CDE (ghép với tam giác ADE) — rồi bớt phần chung ABE.\n\n**Bước 1.** Tam giác ADE có đáy AD và đường cao bằng AB nên bằng $\\dfrac{1}{2}$ hình chữ nhật. Phần còn lại của hình chữ nhật là hai tam giác ABE và CDE ⇒ $S_{ABE}+S_{CDE}$ cũng bằng $\\dfrac{1}{2}$ hình chữ nhật.\n\n**Bước 2.** AB // DF nên hai tam giác ABF và ABD có chung đáy AB và đường cao bằng nhau ⇒ $S_{ABF}=S_{ABD}=\\dfrac{1}{2}$ hình chữ nhật.\n\n**Bước 3.** Tam giác ABF ghép từ ABE và BEF (E nằm trên AF). Hai cách ghép cùng bằng $\\dfrac{1}{2}$ hình chữ nhật ⇒ bớt ABE ở cả hai vế, còn BEF = CDE.\n\n**Chú ý:** Đề chữ không nói F là điểm nào — theo hình vẽ, F là giao của AE kéo dài với DC kéo dài. E là điểm bất kì trên BC nên kết quả không phụ thuộc vị trí E.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, F là giao điểm của AE kéo dài với DC kéo dài.\n\nTam giác ADE có đáy AD và đường cao bằng AB nên $S_{ADE}=AD\\times AB:2=\\dfrac{1}{2}\\times S_{ABCD}$\n\nHình chữ nhật ABCD gồm ba tam giác ABE, ADE, CDE nên $S_{ABE}+S_{CDE}=S_{ABCD}-S_{ADE}=\\dfrac{1}{2}\\times S_{ABCD}$\n\nTam giác ABF và tam giác ABD có chung đáy AB, đường cao bằng nhau (khoảng cách giữa hai đường thẳng song song AB và DF), suy ra $S_{ABF}=S_{ABD}=\\dfrac{1}{2}\\times S_{ABCD}$\n\nVì E nằm trên AF nên $S_{ABF}=S_{ABE}+S_{BEF}$\n\nVậy $S_{ABE}+S_{BEF}=S_{ABE}+S_{CDE}$, bớt $S_{ABE}$ ở hai vế được $S_{BEF}=S_{CDE}$\n\nTỉ số diện tích tam giác BEF và tam giác CDE là: $\\dfrac{S_{BEF}}{S_{CDE}}=1$\n\nĐáp số: $1$ (hai tam giác có diện tích bằng nhau)",
+  "so_do": null,
+  "anh_sach": [
+   "image1080.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-97.png",
+  "hinh_de_ma": "ON 97"
+ },
+ {
+  "ma_nguon": "ON 98",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình chữ nhật ABCD, lấy điểm E trên cạnh AB sao cho $\\text{AE}=2\\times\\text{EB, AC}$ cắt DE tại I. Biết diện tích tam giác AIE là $12\\ \\text{cm}^{2}$. Tính diện tích ABCD.",
+  "noi_dung_sach": "Cho hình chữ nhật ABCD, lấy điểm E trên cạnh AB sao cho $\\text{AE}=2\\times\\text{EB, AC}$ cắt DE tại I. Biết diện tích tam giác AIE là $12\\ \\text{cm}^{2}$. Tính diện tích ABCD.",
+  "dap_an": "$90\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biết diện tích tam giác AIE ($12$ cm²) thì phải biết tam giác ấy chiếm **mấy phần** hình chữ nhật. Đường đi: tìm tỉ số $\\dfrac{CI}{AI}$ (nhờ so sánh hai tam giác ADE, CDE cùng đáy DE), rồi tìm tam giác AEC, rồi hình chữ nhật.\n\n**Bước 1.** Tính $S_{ADE}$ và $S_{CDE}$ theo $S_{ABCD}$: cả hai có đường cao bằng AD, còn đáy là $AE=\\dfrac{2}{3}AB$ và $CD=AB$.\n\n**Bước 2.** I nằm trên cả DE lẫn AC. Tam giác DIC và DIA chung đường cao hạ từ D xuống AC; tam giác EIC và EIA chung đường cao hạ từ E xuống AC; cả hai đều có tỉ số diện tích là $\\dfrac{CI}{AI}$ ⇒ tỉ số $\\dfrac{S_{CDE}}{S_{ADE}}$ cũng bằng $\\dfrac{CI}{AI}$.\n\n**Bước 3.** Biết $CI=\\dfrac{3}{2}AI$ thì AI là $2$ phần, AC là $5$ phần ⇒ từ $S_{AIE}$ tìm $S_{AEC}$.\n\n**Bước 4.** Tam giác AEC bằng $\\dfrac{1}{3}$ hình chữ nhật ⇒ tìm $S_{ABCD}$.\n\n**Chú ý:** Đừng cho rằng AI bằng nửa AC hay bằng $\\dfrac{2}{3}$ AC — phải tính ra tỉ số CI : AI như trên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AE=2\\times EB$ nên $AE=\\dfrac{2}{3}AB$; mà $CD=AB$.\n\nTam giác ADE có đáy AE và đường cao AD nên $S_{ADE}=\\dfrac{2}{3}\\times AB\\times AD:2=\\dfrac{1}{3}\\times S_{ABCD}$\n\nTam giác CDE có đáy CD và đường cao AD (vì AB // CD) nên $S_{CDE}=AB\\times AD:2=\\dfrac{1}{2}\\times S_{ABCD}$\n\nSuy ra $\\dfrac{S_{CDE}}{S_{ADE}}=\\dfrac{1}{2}:\\dfrac{1}{3}=\\dfrac{3}{2}$\n\nTam giác DIC và tam giác DIA có chung đường cao hạ từ D xuống AC, suy ra $\\dfrac{S_{DIC}}{S_{DIA}}=\\dfrac{CI}{AI}$\n\nTam giác EIC và tam giác EIA có chung đường cao hạ từ E xuống AC, suy ra $\\dfrac{S_{EIC}}{S_{EIA}}=\\dfrac{CI}{AI}$\n\nDo đó $S_{CDE}=S_{DIC}+S_{EIC}=\\dfrac{CI}{AI}\\times\\left(S_{DIA}+S_{EIA}\\right)=\\dfrac{CI}{AI}\\times S_{ADE}$, suy ra $\\dfrac{CI}{AI}=\\dfrac{3}{2}$\n\nVậy AI là $2$ phần thì CI là $3$ phần và AC là $2+3=5$ phần, suy ra $AI=\\dfrac{2}{5}AC$.\n\nTam giác AIE và tam giác AEC có chung đường cao hạ từ E xuống AC, suy ra $\\dfrac{S_{AIE}}{S_{AEC}}=\\dfrac{AI}{AC}=\\dfrac{2}{5}$\n\nDiện tích tam giác AEC là: $12:\\dfrac{2}{5}=30$ ($\\text{cm}^2$)\n\nTam giác AEC có đáy AE và đường cao CB (bằng AD) nên $S_{AEC}=\\dfrac{2}{3}\\times AB\\times AD:2=\\dfrac{1}{3}\\times S_{ABCD}$\n\nDiện tích hình chữ nhật ABCD là: $30\\times 3=90$ ($\\text{cm}^2$)\n\nĐáp số: $90\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1097.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-98.png",
+  "hinh_de_ma": "ON 98"
+ },
+ {
+  "ma_nguon": "ON 99",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình thang ABCD có diện tích bằng $240\\text{cm}^{2}$. Trên cạnh bên AD lấy hai điểm M, N sao cho: $\\text{AM}=\\text{ND}=\\dfrac{1}{2}\\text{MN}$. Trên cạnh bên BC lấy lần lượt hai điểm P, Q sao cho: $\\text{BP}=\\text{QC}=\\dfrac{1}{2}\\text{PQ}$. Tính diện tích hình thang MPQN.",
+  "noi_dung_sach": "Cho hình thang ABCD có diện tích bằng $240\\text{cm}^{2}$. Trên cạnh bên AD lấy hai điểm M, N sao cho: $\\text{AM}=\\text{ND}=\\frac{1}{2}\\text{MN}$. Trên cạnh bên BC lấy lần lượt hai điểm P, Q sao cho: $\\text{BP}=\\text{QC}=\\frac{1}{2}\\text{PQ}$. Tính diện tích hình thang MPQN.",
+  "dap_an": "$120\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình thang MPQN chia bởi đường nối M với Q thành hai tam giác MNQ và MPQ. Mỗi tam giác chiếm đúng một nửa tam giác \"lớn\" tương ứng (MNQ là một nửa ADQ vì $MN=\\dfrac{1}{2}AD$; MPQ là một nửa MBC vì $PQ=\\dfrac{1}{2}BC$). Hai tam giác lớn ADQ và MBC cộng lại **vừa bằng cả hình thang ABCD** (phần thừa ở hai bên bù cho nhau) ⇒ MPQN bằng một nửa hình thang.\n\n**Bước 1.** Từ $AM=ND=\\dfrac{1}{2}MN$: AM, MN, ND là $1$, $2$, $1$ phần nên AD là $4$ phần: $AM=\\dfrac{1}{4}AD$, $MD=\\dfrac{3}{4}AD$, $MN=\\dfrac{1}{2}AD$. Tương tự trên BC: $BQ=\\dfrac{3}{4}BC$, $QC=\\dfrac{1}{4}BC$, $PQ=\\dfrac{1}{2}BC$.\n\n**Bước 2.** Nối Q với A và D, nối M với B và C. Khi đó $S_{ADQ}=S_{ABCD}-S_{ABQ}-S_{DQC}$ và $S_{MBC}=S_{ABCD}-S_{ABM}-S_{MDC}$.\n\n**Bước 3.** Tính bốn tam giác ABQ, ABM, DQC, MDC theo hai tam giác ABC và DBC (hai tam giác này cộng lại bằng cả hình thang).\n\n**Bước 4.** Cộng lại được $S_{ADQ}+S_{MBC}=S_{ABCD}$, rồi lấy một nửa.\n\n**Chú ý:** Đừng cho MP bằng nửa tổng hai đáy hay \"hình thang giữa bằng nửa hình thang\" ngay từ đầu — phải chứng minh bằng diện tích như trên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM=ND=\\dfrac{1}{2}MN$ nên AM, MN, ND là $1$, $2$, $1$ phần và AD là $4$ phần, suy ra $AM=\\dfrac{1}{4}AD$, $MD=\\dfrac{3}{4}AD$, $MN=\\dfrac{1}{2}AD$.\n\nTương tự $BQ=\\dfrac{3}{4}BC$, $QC=\\dfrac{1}{4}BC$, $PQ=\\dfrac{1}{2}BC$.\n\nNối M với Q, nối Q với A và D, nối M với B và C.\n\nTam giác MNQ và tam giác ADQ có chung đường cao hạ từ Q xuống AD, suy ra $\\dfrac{S_{MNQ}}{S_{ADQ}}=\\dfrac{MN}{AD}=\\dfrac{1}{2}$\n\nTam giác MPQ và tam giác MBC có chung đường cao hạ từ M xuống BC, suy ra $\\dfrac{S_{MPQ}}{S_{MBC}}=\\dfrac{PQ}{BC}=\\dfrac{1}{2}$\n\n$S_{MPQN}=S_{MNQ}+S_{MPQ}=\\dfrac{1}{2}\\times\\left(S_{ADQ}+S_{MBC}\\right)$\n\nTam giác ABQ và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $S_{ABQ}=\\dfrac{BQ}{BC}\\times S_{ABC}=\\dfrac{3}{4}\\times S_{ABC}$\n\nTam giác ABM và tam giác ABD có chung đường cao hạ từ B xuống AD, suy ra $S_{ABM}=\\dfrac{AM}{AD}\\times S_{ABD}=\\dfrac{1}{4}\\times S_{ABD}$\n\nTam giác ABD và tam giác ABC có chung đáy AB và đường cao bằng nhau (bằng chiều cao hình thang) nên $S_{ABD}=S_{ABC}$, suy ra $S_{ABQ}+S_{ABM}=\\left(\\dfrac{3}{4}+\\dfrac{1}{4}\\right)\\times S_{ABC}=S_{ABC}$\n\nTam giác DQC và tam giác DBC có chung đường cao hạ từ D xuống BC, suy ra $S_{DQC}=\\dfrac{QC}{BC}\\times S_{DBC}=\\dfrac{1}{4}\\times S_{DBC}$\n\nTam giác MDC và tam giác ADC có chung đường cao hạ từ C xuống AD, suy ra $S_{MDC}=\\dfrac{MD}{AD}\\times S_{ADC}=\\dfrac{3}{4}\\times S_{ADC}$\n\nTam giác ADC và tam giác DBC có chung đáy DC và đường cao bằng nhau nên $S_{ADC}=S_{DBC}$, suy ra $S_{DQC}+S_{MDC}=\\left(\\dfrac{1}{4}+\\dfrac{3}{4}\\right)\\times S_{DBC}=S_{DBC}$\n\nVậy $S_{ADQ}+S_{MBC}=2\\times S_{ABCD}-\\left(S_{ABQ}+S_{ABM}\\right)-\\left(S_{DQC}+S_{MDC}\\right)=2\\times S_{ABCD}-S_{ABC}-S_{ADC}=2\\times S_{ABCD}-S_{ABCD}=S_{ABCD}$\n\nDiện tích hình thang MPQN là: $\\dfrac{1}{2}\\times 240=120$ ($\\text{cm}^2$)\n\nĐáp số: $120\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1086.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-99.png",
+  "hinh_de_ma": "ON 99"
+ },
+ {
+  "ma_nguon": "ON 100",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hình vuông ABCD có cạnh 4 cm, AC cắt BD tại O. Vẽ đường tròn tâm O bán kính OA như hình vẽ. Tính diện tích phần tô đậm.",
+  "noi_dung_sach": "Hình vuông ABCD có cạnh 4 cm, AC cắt BD tại O. Vẽ đường tròn tâm O bán kính OA như hình vẽ. Tính diện tích phần tô đậm.",
+  "dap_an": "$9,12\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm là hình tròn **bỏ đi** hình vuông. Hình tròn tâm O có bán kính OA nhưng đề không cho OA — chỉ cho cạnh hình vuông. Điều phải nhận ra: hình vuông gồm $4$ tam giác vuông cân có hai cạnh góc vuông đều bằng bán kính, nên từ diện tích hình vuông tìm được \"$r\\times r$\", đúng thứ cần để tính diện tích hình tròn ($r\\times r\\times 3,14$).\n\n**Bước 1.** Tính diện tích hình vuông ABCD.\n\n**Bước 2.** Hình vuông gồm $4$ tam giác vuông cân OAB, OBC, OCD, ODA, mỗi tam giác có diện tích $r\\times r:2$ ⇒ diện tích hình vuông bằng $2\\times r\\times r$ ⇒ tìm $r\\times r$.\n\n**Bước 3.** Tính diện tích hình tròn rồi trừ diện tích hình vuông.\n\n**Chú ý:** Không cần biết bán kính bằng bao nhiêu — chỉ cần $r\\times r$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình vuông ABCD là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nHình vuông ABCD gồm $4$ tam giác vuông cân bằng nhau OAB, OBC, OCD, ODA, mỗi tam giác có hai cạnh góc vuông bằng bán kính $r$ nên diện tích hình vuông bằng $4\\times(r\\times r:2)=2\\times r\\times r$.\n\nGiá trị của $r\\times r$ là: $16:2=8$\n\nDiện tích hình tròn tâm O là: $8\\times 3,14=25,12$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $25,12-16=9,12$ ($\\text{cm}^2$)\n\nĐáp số: $9,12\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image944.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-100.png",
+  "hinh_de_ma": "ON 100"
+ },
+ {
+  "ma_nguon": "ON 101",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho độ dài đoạn thẳng AB là 16 cm, tính chu vi và diện tích hình bên.",
+  "noi_dung_sach": "Cho độ dài đoạn thẳng AB là 16 cm, tính chu vi và diện tích hình bên.",
+  "dap_an": "Chu vi: $50,24$ cm; diện tích: $150,72\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình bên ghép từ **ba nửa hình tròn**: một nửa lớn có đường kính AB, hai nửa nhỏ (theo hình vẽ, điểm gặp nhau của hai nửa nhỏ là trung điểm AB) có đường kính bằng nhau và bằng $\\dfrac{1}{2}$ AB. Hai nửa nhỏ ghép lại thành **một hình tròn** — nên chu vi và diện tích của chúng tính như một hình tròn đường kính $8$ cm.\n\n**Bước 1.** Chu vi hình bên chỉ gồm các đường cong (đoạn AB nằm bên trong hình, không tính): nửa đường tròn lớn cộng hai nửa đường tròn nhỏ (= một đường tròn đường kính $8$ cm).\n\n**Bước 2.** Diện tích hình bên là nửa hình tròn lớn cộng hai nửa hình tròn nhỏ (= một hình tròn bán kính $4$ cm).\n\n**Chú ý:** Nửa hình tròn thì **chia $2$** cả ở chu vi (nửa đường tròn) lẫn diện tích; nhưng hai nửa nhỏ ghép lại thành tròn thì không chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hai nửa hình tròn nhỏ có đường kính bằng nhau và ghép lại thành một hình tròn có đường kính là: $16:2=8$ (cm)\n\nTổng độ dài hai nửa đường tròn nhỏ là: $8\\times 3,14=25,12$ (cm)\n\nĐộ dài nửa đường tròn lớn là: $16\\times 3,14:2=25,12$ (cm)\n\nChu vi hình bên là: $25,12+25,12=50,24$ (cm)\n\nBán kính hình tròn nhỏ là: $8:2=4$ (cm)\n\nTổng diện tích hai nửa hình tròn nhỏ là: $4\\times 4\\times 3,14=50,24$ ($\\text{cm}^2$)\n\nBán kính nửa hình tròn lớn là: $16:2=8$ (cm)\n\nDiện tích nửa hình tròn lớn là: $8\\times 8\\times 3,14:2=100,48$ ($\\text{cm}^2$)\n\nDiện tích hình bên là: $50,24+100,48=150,72$ ($\\text{cm}^2$)\n\nĐáp số: chu vi $50,24$ cm; diện tích $150,72\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image725.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-101.png",
+  "hinh_de_ma": "ON 101"
+ },
+ {
+  "ma_nguon": "ON 102",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hình chữ nhật ABCD có cạnh AD = 6 cm (hình vẽ bên). Tính độ dài cạnh CD, biết diện tích hình 1 bằng diện tích hình 2.",
+  "noi_dung_sach": "Hình chữ nhật ABCD có cạnh AD = 6 cm (hình vẽ bên). Tính độ dài cạnh CD, biết diện tích hình 1 bằng diện tích hình 2.",
+  "dap_an": "$9,42$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng diện tích hai phần tư hình tròn (tâm D và tâm C) thì hình 2 bị tính **hai lần**, còn hình 1 **không được tính**. Đề cho hình 1 = hình 2 nên lần \"tính thừa\" và lần \"bỏ sót\" bù nhau đúng ⇒ diện tích hình chữ nhật ABCD bằng **tổng hai phần tư hình tròn**. Từ đó tìm CD.\n\n**Bước 1.** Theo hình vẽ, hai hình tròn tâm D và tâm C đều có bán kính bằng $AD=6$ cm; trong hình chữ nhật mỗi hình tròn chiếm một phần tư. Tính diện tích hai phần tư hình tròn.\n\n**Bước 2.** Diện tích hình chữ nhật bằng tổng đó; lấy diện tích chia cho chiều rộng AD được CD.\n\n**Chú ý:** Hình 1 là phần hình chữ nhật **không** nằm trong hình tròn nào; hình 2 là phần **chung** của hai hình tròn nằm trong hình chữ nhật (phần nằm dưới CD không thuộc hình chữ nhật nên không tính).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai phần tư hình tròn bán kính $6$ cm chồng lên nhau tạo thành hình 2; phần hình chữ nhật không bị hai phần tư hình tròn phủ là hình 1.\n\nVì diện tích hình 1 bằng diện tích hình 2 nên diện tích hình chữ nhật ABCD bằng tổng diện tích hai phần tư hình tròn.\n\nDiện tích một phần tư hình tròn là: $6\\times 6\\times 3,14:4=28,26$ ($\\text{cm}^2$)\n\nDiện tích hình chữ nhật ABCD là: $28,26\\times 2=56,52$ ($\\text{cm}^2$)\n\nĐộ dài cạnh CD là: $56,52:6=9,42$ (cm)\n\nĐáp số: $9,42$ cm",
+  "so_do": null,
+  "anh_sach": [
+   "image1076.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-102.png",
+  "hinh_de_ma": "ON 102"
+ },
+ {
+  "ma_nguon": "ON 119",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Có bao nhiêu cách để một con kiến có thể đi về nhà theo hướng các mũi tên?",
+  "noi_dung_sach": "Có bao nhiêu cách để một con kiến có thể đi về nhà theo hướng các mũi tên?",
+  "dap_an": "$9$ cách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đường về nhà đi qua điểm C ở giữa nên chia thành **hai chặng** độc lập: kiến → C và C → nhà. Mỗi cách đi chặng đầu **kết hợp với mỗi** cách đi chặng sau ⇒ số cách cả hành trình là **tích** hai số cách.\n\n**Bước 1.** Đếm các cách đi từ chỗ kiến đến C (qua hình vuông phía dưới): đi cạnh trên, đi cạnh dưới hoặc đi theo đường chéo.\n\n**Bước 2.** Đếm các cách đi từ C về nhà (qua hình vuông phía trên) cũng như vậy.\n\n**Bước 3.** Nhân hai kết quả.\n\n**Chú ý:** Nhân chứ không cộng — mỗi cách ở chặng đầu đều ghép được với từng cách ở chặng sau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ chỗ kiến đến C có $3$ cách đi: đi lên rồi sang phải, sang phải rồi đi lên, hoặc đi theo đường chéo.\n\nTừ C về nhà cũng có $3$ cách đi: đi lên rồi sang phải, sang phải rồi đi lên, hoặc đi theo đường chéo.\n\nSố cách con kiến đi về nhà là: $3\\times 3=9$ (cách)\n\nĐáp số: $9$ cách",
+  "so_do": null,
+  "anh_sach": [
+   "image869.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-119.png",
+  "hinh_de_ma": "ON 119"
+ },
+ {
+  "ma_nguon": "ON 120",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một người muốn đi từ địa điểm A đến địa điểm B theo lộ trình như hình dưới đây. Nếu địa điểm C không nằm trong hành trình thì người công nhân có bao nhiêu cách đi đến địa điểm B. Biết rằng chỉ được đi theo hướng từ trên xuống dưới và từ trái qua phải.",
+  "noi_dung_sach": "Một người muốn đi từ địa điểm A đến địa điểm B theo lộ trình như hình dưới đây. Nếu địa điểm C không nằm trong hành trình thì người công nhân có bao nhiêu cách đi đến địa điểm B. Biết rằng chỉ được đi theo hướng từ trên xuống dưới và từ trái qua phải.",
+  "dap_an": "$6$ cách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chỉ được đi xuống hoặc sang phải nên đến mỗi nút (chỗ các đoạn đường gặp nhau) chỉ từ **các nút ngay trước nó**. Vì vậy **số cách đi tới một nút = tổng số cách đi tới các nút ngay trước nút đó**. Địa điểm C không được đi qua ⇒ ghi số cách ở C là $0$.\n\n**Bước 1.** Ghi số $1$ ở A, rồi lần lượt ghi số cách đi tới từng nút theo từng đường ngang từ trên xuống, từ trái sang phải.\n\n**Bước 2.** Tại C ghi $0$ (không được đi qua).\n\n**Bước 3.** Số ghi ở B là kết quả.\n\n**Chú ý:** Nút nằm trên cạnh trái hoặc cạnh trên chỉ có một nút đứng trước nên số cách bằng đúng nút đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGhi số cách đi từ A tới từng nút (nút C ghi $0$), theo từng đường ngang từ trên xuống, mỗi hàng từ trái sang phải:\n\nĐường ngang thứ nhất: $1;\\ 1;\\ 1$\n\nĐường ngang thứ hai: $1;\\ 1;\\ 2;\\ 2;\\ 3$\n\nĐường ngang thứ ba: $1;\\ 2;\\ 2;\\ 0\\ (\\text{C});\\ 3$\n\nĐường ngang thứ tư: $1;\\ 3;\\ 6\\ (\\text{B})$\n\nSố ghi ở B là $6$ ($3$ cách từ nút ngay trước ở bên trái cộng $3$ cách từ nút ngay trước ở phía trên).\n\nVậy có $6$ cách đi từ A đến B mà không qua C.\n\nĐáp số: $6$ cách",
+  "so_do": null,
+  "anh_sach": [
+   "image889.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-120.png",
+  "hinh_de_ma": "ON 120"
+ },
+ {
+  "ma_nguon": "ON 121",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Có bao nhiêu cách khác nhau để di chuyển từ A đến B phải đi qua C ? Biết rằng chỉ được đi theo hướng từ dưới lên trên và từ phải qua trái.",
+  "noi_dung_sach": "Có bao nhiêu cách khác nhau để di chuyển từ A đến B phải đi qua C ? Biết rằng chỉ được đi theo hướng từ dưới lên trên và từ phải qua trái.",
+  "dap_an": "$60$ cách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bắt buộc đi qua C nên hành trình chia thành **hai chặng**: A → C và C → B. Mỗi cách đi chặng đầu ghép được với từng cách đi chặng sau ⇒ nhân hai số cách. Mỗi chặng đếm bằng cách ghi số cách đi tới từng nút: số cách tới một nút = tổng số cách tới hai nút ngay trước nó (hoặc bằng đúng nút trước nếu chỉ có một).\n\n**Bước 1.** Chặng A → C: đi sang trái $3$ cạnh ô vuông và lên $2$ cạnh. Ghi số cách tới từng nút, bắt đầu $1$ ở A.\n\n**Bước 2.** Chặng C → B: sang trái $2$ cạnh và lên $2$ cạnh. Ghi số tương tự, bắt đầu $1$ ở C.\n\n**Bước 3.** Nhân hai số cách.\n\n**Chú ý:** Nhân chứ không cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChặng từ A đến C.\n\nSố cách đi tới từng nút (đường ngang đi qua A, rồi hai đường ngang phía trên; mỗi hàng từ phải sang trái, A ghi $1$):\n\nĐường ngang đi qua A: $1;\\ 1;\\ 1;\\ 1$\n\nĐường ngang kế trên: $1;\\ 2;\\ 3;\\ 4$\n\nĐường ngang đi qua C: $1;\\ 3;\\ 6;\\ 10$\n\nSố cách đi từ A đến C là $10$ cách.\n\nChặng từ C đến B.\n\nSố cách đi tới từng nút (từ đường ngang đi qua C lên đường ngang trên cùng; mỗi hàng từ phải sang trái, C ghi $1$):\n\nĐường ngang đi qua C: $1;\\ 1;\\ 1$\n\nĐường ngang kế trên: $1;\\ 2;\\ 3$\n\nĐường ngang trên cùng: $1;\\ 3;\\ 6$\n\nSố cách đi từ C đến B là $6$ cách.\n\nSố cách đi từ A đến B phải qua C là: $10\\times 6=60$ (cách)\n\nĐáp số: $60$ cách",
+  "so_do": null,
+  "anh_sach": [
+   "image633.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-ON-121.png",
+  "hinh_de_ma": "ON 121"
+ }
+]

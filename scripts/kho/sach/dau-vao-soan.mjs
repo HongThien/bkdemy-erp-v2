@@ -4,7 +4,7 @@
 //   node scripts/kho/sach/dau-vao-soan.mjs <bai.json> --sach "Toán arc 4 Q1" --khu "VD 3,LT 3,PTL 1" --ra <input.json>
 //
 // - "Đã có" đọc từ DB (dai_cau_hoi.ten_de_goc = "<sách> · <mã>", chưa xoá) — DB là sự thật, không đọc file lô trong repo.
-// - Bài có HÌNH trong sách ⇒ để riêng (`co_hinh`), không đưa cho trạm soạn (hình EMF chưa đổi được — xem ghi-lo.mjs).
+// - Bài có HÌNH trong sách ⇒ để riêng (`co_hinh`), không đưa cho trạm soạn — trừ khi chạy `--co-hinh`: khi đó CHỈ đưa bài có hình, kèm `anh`.
 // - Đề TRÙNG câu đã có trong kho (so như insertCauBatch: lower + bỏ khoảng trắng, sau chuẩn hoá định dạng) ⇒ không đưa —
 //   hàm ghi cũng sẽ lọc, nhưng lọc sớm để trạm soạn không làm thừa.
 // - Bài sách thiếu nhãn (canh_bao của tach-bai) ⇒ để riêng (`can_nguoi`).
@@ -18,6 +18,7 @@ import { chuanDinhDang } from './lo-tu-md.mjs'
 
 const GOC_REPO = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..')
 const a = process.argv.slice(2), lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
+const CO_HINH = a.includes('--co-hinh')   // CHỈ lấy bài có hình (kèm tên ảnh) — lô bài có hình, hình đề dựng sẵn ở hinh-de/<khối>.json
 const baiTep = a[0], SACH = lay('--sach'), KHU = (lay('--khu') ?? '').split(',').map((s) => s.trim()).filter(Boolean), RA = lay('--ra')
 if (!baiTep || !SACH || !KHU.length || !RA) { console.error('Dùng: node scripts/kho/sach/dau-vao-soan.mjs <bai.json> --sach "<tên>" --khu "VD 3,LT 3" --ra <input.json>'); process.exit(2) }
 
@@ -46,9 +47,10 @@ for (const x of ca) {
   const conLai = y.filter((z) => !da.has(z.ma) && !(trungKho.has(khoa(z.noi_dung)) && trung.push(z.ma)))
   if (!y.length && trungKho.has(khoa(x.noi_dung))) { trung.push(x.ma); continue }
   if (da.has(x.ma) || (y.length && !conLai.length)) continue
-  if (x.anh.length) { coHinh.push(`${x.ma} (${x.anh.join(', ')})`); continue }
+  if (x.anh.length && !CO_HINH) { coHinh.push(`${x.ma} (${x.anh.join(', ')})`); continue }
+  if (CO_HINH && !x.anh.length) continue
   ra.push({ ma_bai: x.ma, de_ca_bai: x.noi_dung, sao: x.sao, cac_y: conLai.map((z) => ({ ma: z.ma, de: z.noi_dung })),
-    y_da_lam: y.filter((z) => da.has(z.ma)).map((z) => z.ma), loi_giai_sach: x.loi_giai_sach })
+    y_da_lam: y.filter((z) => da.has(z.ma)).map((z) => z.ma), loi_giai_sach: x.loi_giai_sach, ...(CO_HINH ? { anh: x.anh } : {}) })
 }
 writeFileSync(RA, JSON.stringify(ra, null, 1))
 const soCau = ra.reduce((s, x) => s + (x.cac_y.length || 1), 0)

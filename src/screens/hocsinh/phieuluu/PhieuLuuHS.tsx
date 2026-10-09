@@ -147,11 +147,11 @@ function KetQuaTrongDau({ chang, kq, heT, veKhu, onTiep, onVe }: { chang: ChangV
   const loi = useLoi()
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center gap-2 p-5 text-center">
-      <p className="text-[13px]" style={{ color: MAU.muted }}>{chang.ten}</p>
-      <p className="text-[34px] font-bold leading-none" style={{ ...HEAD, color: MAU.ink }}>{heT ? loi.hetDoiHinh : `${kq.dung}/${kq.tong} đúng`}</p>
-      {heT && <p className="text-[15px]" style={{ color: MAU.ink }}>{kq.dung}/{kq.tong} câu đúng</p>}
+      <p className="text-[14.5px]" style={{ color: MAU.muted }}>{chang.ten}</p>
+      <p className="text-[37.5px] font-bold leading-none" style={{ ...HEAD, color: MAU.ink }}>{heT ? loi.hetDoiHinh : `${kq.dung}/${kq.tong} đúng`}</p>
+      {heT && <p className="text-[16.5px]" style={{ color: MAU.ink }}>{kq.dung}/{kq.tong} câu đúng</p>}
       <BaoLuotHS baiLamId={kq.baiLamId} />
-      <p className="text-[12.5px]" style={{ color: MAU.muted }}>{loi.ketQua.ghiNhan}</p>
+      <p className="text-[14px]" style={{ color: MAU.muted }}>{loi.ketQua.ghiNhan}</p>
       <div className="mt-1 flex flex-wrap justify-center gap-2"><NutHS onClick={onTiep}>{loi.ketQua.luyenTiep}</NutHS><NutHS phu onClick={onVe}>{veKhu ? loi.ketQua.veKhu : loi.ketQua.veChang}</NutHS></div>
     </div>
   )

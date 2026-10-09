@@ -1,0 +1,26 @@
+{
+ "VD 27.1": {
+  "noi_dung": "Một ca nô đi từ bến A đến bến B với vận tốc xuôi dòng là 40 km/giờ, từ B về A ca nô đi với vận tốc ngược dòng là 30 km/giờ. Tính vận tốc của dòng nước và vận tốc của ca nô khi dòng nước đứng yên."
+ },
+ "LT 27.4": {
+  "noi_dung": "Lúc 7 giờ 20 phút, một chiếc thuyền đi xuôi dòng từ A đến B và đến B lúc 8 giờ 10 phút. Biết vận tốc của thuyền khi nước lặng là 20 km/giờ và vận tốc dòng nước là 4 km/giờ. Tính độ dài quãng đường AB."
+ },
+ "LT 28.1": {
+  "noi_dung": "Một người đi xe đạp trên quãng đường dài 19,5 km hết 1,5 giờ. Hỏi cứ đi với vận tốc như vậy thì người đó đi quãng đường 39 km hết bao lâu?"
+ },
+ "LT 28.3": {
+  "noi_dung": "Một ô tô đi quãng đường từ Hà Nội đến thành phố Ninh Bình dài 96 km với vận tốc 48 km/giờ. Cũng trong thời gian đó, một xe máy xuất phát từ Hà Nội và đi với vận tốc bằng $\\frac{2}{3}$ vận tốc của ô tô. Hỏi khi ô tô đến Ninh Bình thì xe máy cách Hà Nội bao nhiêu ki-lô-mét?"
+ },
+ "LT 28.7": {
+  "noi_dung": "Một ô tô đi từ A đến B rồi quay về A hết 3 giờ 30 phút. Tính quãng đường AB, biết vận tốc lúc đi là 50 km/giờ, lúc về là 75 km/giờ."
+ },
+ "LT 29.1": {
+  "noi_dung": "Một người đi xe máy trên một quãng đường, trong 1,5 giờ đầu người đó đi với vận tốc 40 km/giờ, trong 0,5 giờ sau người đó đi với vận tốc 52 km/giờ. Tính vận tốc trung bình của người đó trên suốt quãng đường đã đi."
+ },
+ "LT 29.6": {
+  "noi_dung": "Một xe lửa vượt qua một cây cột điện hết 10 giây. Tính chiều dài của xe lửa. Biết vận tốc của xe lửa là 90 km/giờ."
+ },
+ "LT 29.13": {
+  "noi_dung": "Nam và Bình chạy bộ vòng quanh công viên hình tròn có bán kính 200 m. Hai bạn xuất phát cùng một điểm, cùng một lúc và cùng chiều với nhau. Nam chạy với vận tốc 6 m/giây, Bình chạy với vận tốc 8 m/giây. Hỏi sau bao lâu thì hai bạn gặp nhau lần thứ nhất?"
+ }
+}

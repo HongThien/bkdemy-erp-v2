@@ -13,5 +13,5 @@ export default function ThongBaoLuot({ baiLamId }: { baiLamId: string }) {
     return () => { bo = true }
   }, [baiLamId])
   if (!loi) return null
-  return <p className="mt-3 max-w-sm px-4 text-center text-[13.5px] leading-snug" style={{ color: MAU.canhBao }}>{loi}</p>
+  return <p className="mt-3 max-w-sm px-4 text-center text-[15px] leading-snug" style={{ color: MAU.canhBao }}>{loi}</p>
 }

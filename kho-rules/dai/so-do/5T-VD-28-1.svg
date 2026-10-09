@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 338" width="680" height="338" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="680" height="338" fill="#fff"/>
+<g transform="translate(0,0)">
+<rect width="680" height="176" fill="#fff"/>
+<defs><marker id="mt" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#b45309"/></marker></defs>
+<text x="40" y="20" font-style="italic" fill="#334155">Ô tô đi từ A đến B</text>
+<line x1="40" y1="106" x2="640" y2="106" stroke="#0f172a" stroke-width="2"/>
+<line x1="40" y1="100" x2="40" y2="112" stroke="#0f172a" stroke-width="2"/>
+<circle cx="40" cy="106" r="3" fill="#0f172a"/>
+<text x="40" y="128" text-anchor="middle" font-weight="bold" fill="#0f172a">A</text>
+<line x1="640" y1="100" x2="640" y2="112" stroke="#0f172a" stroke-width="2"/>
+<circle cx="640" cy="106" r="3" fill="#0f172a"/>
+<text x="640" y="128" text-anchor="middle" font-weight="bold" fill="#0f172a">B</text>
+<line x1="40" y1="90" x2="640" y2="90" stroke="#b45309" stroke-width="2" marker-end="url(#mt)"/>
+<line x1="40" y1="86" x2="40" y2="94" stroke="#b45309" stroke-width="2"/>
+<text x="340" y="84" text-anchor="middle" font-size="12" fill="#b45309">Dự kiến: 45 km/giờ</text>
+<line x1="40" y1="60" x2="640" y2="60" stroke="#b45309" stroke-width="2" marker-end="url(#mt)"/>
+<line x1="40" y1="56" x2="40" y2="64" stroke="#b45309" stroke-width="2"/>
+<text x="340" y="54" text-anchor="middle" font-size="12" fill="#b45309">Thực tế: 35 km/giờ</text>
+<line x1="40" y1="142" x2="640" y2="142" stroke="#0f172a" stroke-width="1"/>
+<line x1="40" y1="138" x2="40" y2="146" stroke="#0f172a" stroke-width="1"/>
+<line x1="640" y1="138" x2="640" y2="146" stroke="#0f172a" stroke-width="1"/>
+<text x="340" y="157" text-anchor="middle" font-size="12" fill="#dc2626">? km</text>
+
+</g>
+<g transform="translate(0,188)">
+<rect width="671" height="150" fill="#fff"/>
+<text x="147" y="37" text-anchor="end" fill="#0f172a">Thời gian dự kiến:</text>
+<line x1="157" y1="32" x2="530.3" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="157" y1="25" x2="157" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="210.3" y1="25" x2="210.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="263.7" y1="25" x2="263.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="317" y1="25" x2="317" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="370.3" y1="25" x2="370.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="423.7" y1="25" x2="423.7" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="477" y1="25" x2="477" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="530.3" y1="25" x2="530.3" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="147" y="81" text-anchor="end" fill="#0f172a">Thời gian thực tế:</text>
+<line x1="157" y1="76" x2="637" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="157" y1="69" x2="157" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="210.3" y1="69" x2="210.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="263.7" y1="69" x2="263.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="317" y1="69" x2="317" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="370.3" y1="69" x2="370.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="423.7" y1="69" x2="423.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="477" y1="69" x2="477" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="530.3" y1="69" x2="530.3" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="583.7" y1="69" x2="583.7" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="637" y1="69" x2="637" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="397" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="530.3" y1="110" x2="637" y2="110" stroke="#0f172a" stroke-width="1"/>
+<line x1="530.3" y1="106" x2="530.3" y2="114" stroke="#0f172a" stroke-width="1"/>
+<line x1="637" y1="106" x2="637" y2="114" stroke="#0f172a" stroke-width="1"/>
+<text x="583.7" y="126" text-anchor="middle" font-size="12" fill="#0f172a">40 phút</text>
+
+</g>
+</svg>

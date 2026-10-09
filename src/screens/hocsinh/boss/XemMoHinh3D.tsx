@@ -41,8 +41,8 @@ export default function XemMoHinh3D() {
     return () => { cancelAnimationFrame(raf); ro.disconnect(); b.phaHuy(); r.dispose(); el.removeChild(r.domElement) }
   }, [ma, a])
   useEffect(() => { boss.current?.datTuThe(tt === 'dung' ? null : tt) }, [tt])
-  if (!a) return <div className="p-6 text-sm">Boss “{ma}” không tồn tại.</div>
-  const nut = (t: string, f: () => void, on = false) => <button key={t} onClick={f} className="rounded-full px-3 py-1 text-[12.5px] font-bold" style={{ border: '1.5px solid var(--sk-line)', background: on ? 'var(--sk-acc)' : 'var(--sk-surface2)', color: on ? 'var(--sk-acc-ink)' : 'var(--sk-ink)' }}>{t}</button>
+  if (!a) return <div className="p-6 text-[15.5px]">Boss “{ma}” không tồn tại.</div>
+  const nut = (t: string, f: () => void, on = false) => <button key={t} onClick={f} className="rounded-full px-3 py-1 text-[14px] font-bold" style={{ border: '1.5px solid var(--sk-line)', background: on ? 'var(--sk-acc)' : 'var(--sk-surface2)', color: on ? 'var(--sk-acc-ink)' : 'var(--sk-ink)' }}>{t}</button>
   return (
     <div className="fixed inset-0 flex flex-col" style={{ background: 'var(--sk-bg)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
       <div ref={ref} className="min-h-0 flex-1" />

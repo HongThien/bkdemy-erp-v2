@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 529 156" width="529" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="529" height="156" fill="#fff"/>
+<text x="185" y="37" text-anchor="end" fill="#0f172a">Số áo:</text>
+<line x1="195" y1="32" x2="438.8" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="195" y1="25" x2="195" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="438.8" y1="25" x2="438.8" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="316.9" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="185" y="81" text-anchor="end" fill="#0f172a">Nếu mỗi thùng 25 chiếc:</text>
+<line x1="195" y1="76" x2="438.8" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="195" y1="69" x2="195" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="438.8" y1="69" x2="438.8" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="438.8" y1="76" x2="445" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="445" y1="69" x2="445" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="441.9" y="66" text-anchor="middle" font-size="12" fill="#b45309">5 chiếc</text>
+<text x="185" y="125" text-anchor="end" fill="#0f172a">Nếu mỗi thùng 30 chiếc:</text>
+<line x1="195" y1="120" x2="438.8" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="195" y1="113" x2="195" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="438.8" y1="113" x2="438.8" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="438.8" y1="120" x2="495" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="495" y1="113" x2="495" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="466.9" y="110" text-anchor="middle" font-size="12" fill="#b45309">45 chiếc</text>
+</svg>

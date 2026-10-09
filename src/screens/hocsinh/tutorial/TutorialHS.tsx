@@ -36,7 +36,7 @@ function anhChuong(c: ChuongTutorial): string | undefined {
 function IconChuong({ c, className }: { c: ChuongTutorial; className: string }) {
   const a = anhChuong(c)
   if (a) return <img src={a} alt="" className={`${className} object-contain`} />
-  return <span className="flex items-center justify-center text-[28px] leading-none" style={{ color: MAU.acc }} aria-hidden>{c.icon.emoji ?? '✦'}</span>
+  return <span className="flex items-center justify-center text-[31px] leading-none" style={{ color: MAU.acc }} aria-hidden>{c.icon.emoji ?? '✦'}</span>
 }
 
 // ── Hộp thoại chữ chạy (chạm: đang chạy ⇒ hiện hết câu; đã hết ⇒ sang câu sau) ──
@@ -79,10 +79,10 @@ function HopThoai({ ten, loi, soThu, tong, onTiep, onNoi }: { ten: string; loi: 
       aria-label="Chạm để nghe tiếp">
       <div className="relative min-h-[112px] px-4 pb-4 pt-6 md:px-6"
         style={{ ...THE, clipPath: 'none', border: `1.5px solid ${MAU.acc}`, boxShadow: `0 -6px 30px ${MAU.bg}`, animation: 'tut-noi .25s ease-out' }}>
-        <span className="absolute -top-3.5 left-4 rounded-full px-3 py-1 text-[13px] font-bold" style={{ ...HEAD, background: MAU.acc, color: MAU.accInk }}>{ten}</span>
-        {tong && <span className="absolute -top-3 right-4 rounded-full px-2.5 py-0.5 text-[11.5px] font-bold" style={{ background: MAU.surface2, color: MAU.muted, border: `1px solid ${MAU.line}` }}>{soThu}/{tong}</span>}
-        <p className="text-[16px] leading-relaxed md:text-[17px]" style={{ color: MAU.ink }}>{hien}<span className="opacity-0">{loi.slice(hien.length)}</span></p>
-        {xong && <span className="absolute bottom-2 right-4 text-[14px]" style={{ color: MAU.acc, animation: 'tut-nhay 1s ease-in-out infinite' }}>▼</span>}
+        <span className="absolute -top-3.5 left-4 rounded-full px-3 py-1 text-[14.5px] font-bold" style={{ ...HEAD, background: MAU.acc, color: MAU.accInk }}>{ten}</span>
+        {tong && <span className="absolute -top-3 right-4 rounded-full px-2.5 py-0.5 text-[12.5px] font-bold" style={{ background: MAU.surface2, color: MAU.muted, border: `1px solid ${MAU.line}` }}>{soThu}/{tong}</span>}
+        <p className="text-[17.5px] leading-relaxed md:text-[18.5px]" style={{ color: MAU.ink }}>{hien}<span className="opacity-0">{loi.slice(hien.length)}</span></p>
+        {xong && <span className="absolute bottom-2 right-4 text-[15.5px]" style={{ color: MAU.acc, animation: 'tut-nhay 1s ease-in-out infinite' }}>▼</span>}
       </div>
     </button>
   )
@@ -94,10 +94,10 @@ function BanDo({ ds, xong, onChon, onBoQua }: { ds: ChuongTutorial[]; xong: numb
     <div className="mx-auto flex w-full max-w-[520px] flex-col gap-3 px-4 pb-10 pt-[calc(16px+env(safe-area-inset-top))]">
       <div className="flex items-center gap-3">
         <div className="flex-1">
-          <h1 className="text-[24px] font-bold" style={{ ...HEAD, color: MAU.ink, textShadow: `0 1px 10px ${MAU.bg}` }}>Hành trình tân thủ</h1>
-          <p className="text-[13px]" style={{ color: MAU.muted, textShadow: `0 1px 8px ${MAU.bg}` }}>Đã qua {xong}/{ds.length} chặng</p>
+          <h1 className="text-[26.5px] font-bold" style={{ ...HEAD, color: MAU.ink, textShadow: `0 1px 10px ${MAU.bg}` }}>Hành trình tân thủ</h1>
+          <p className="text-[14.5px]" style={{ color: MAU.muted, textShadow: `0 1px 8px ${MAU.bg}` }}>Đã qua {xong}/{ds.length} chặng</p>
         </div>
-        <button onClick={onBoQua} className="rounded-full px-3 py-1.5 text-[13px] font-bold" style={{ ...THE, clipPath: 'none', color: MAU.muted, borderRadius: '999px' }}>Bỏ qua ›</button>
+        <button onClick={onBoQua} className="rounded-full px-3 py-1.5 text-[14.5px] font-bold" style={{ ...THE, clipPath: 'none', color: MAU.muted, borderRadius: '999px' }}>Bỏ qua ›</button>
       </div>
       <div className="h-2 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}>
         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${(xong / Math.max(1, ds.length)) * 100}%`, background: MAU.acc }} />
@@ -112,16 +112,16 @@ function BanDo({ ds, xong, onChon, onBoQua }: { ds: ChuongTutorial[]; xong: numb
               style={{ ...THE, opacity: khoa ? 0.5 : 1, border: dangMo ? `1.5px solid ${MAU.acc}` : THE.border,
                 boxShadow: dangMo ? `0 0 22px ${MAU.acc}` : THE.boxShadow, animation: dangMo ? 'tut-noi .4s ease-out' : undefined }}>
               <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full" style={{ background: MAU.surface2, border: `1px solid ${MAU.line}` }}>
-                {khoa ? <span className="text-[20px]">🔒</span> : <IconChuong c={c} className="h-10 w-10" />}
-                {daXong && <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: MAU.dung, color: MAU.accInk }}>✓</span>}
+                {khoa ? <span className="text-[22px]">🔒</span> : <IconChuong c={c} className="h-10 w-10" />}
+                {daXong && <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-[12px] font-bold" style={{ background: MAU.dung, color: MAU.accInk }}>✓</span>}
               </span>
               <span className="min-w-0 flex-1 leading-tight">
-                <span className="block text-[11.5px] font-bold uppercase tracking-[0.08em]" style={{ color: dangMo ? MAU.acc : MAU.muted }}>Chặng {i + 1}</span>
-                <span className="block text-[16px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{c.ten}</span>
-                <span className="block text-[12.5px]" style={{ color: MAU.muted }}>{c.phu}</span>
+                <span className="block text-[12.5px] font-bold uppercase tracking-[0.08em]" style={{ color: dangMo ? MAU.acc : MAU.muted }}>Chặng {i + 1}</span>
+                <span className="block text-[17.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{c.ten}</span>
+                <span className="block text-[14px]" style={{ color: MAU.muted }}>{c.phu}</span>
               </span>
-              {dangMo && <span className="rounded-lg px-3 py-2 text-[13px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Bắt đầu</span>}
-              {daXong && <span className="text-[12px]" style={{ color: MAU.muted }}>Xem lại</span>}
+              {dangMo && <span className="rounded-lg px-3 py-2 text-[14.5px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Bắt đầu</span>}
+              {daXong && <span className="text-[13px]" style={{ color: MAU.muted }}>Xem lại</span>}
             </button>
           )
         })}
@@ -135,17 +135,17 @@ function ManMung({ tren, icon, lo, tieuDe, dong, nut, onNut, thu, onThu }: { tre
   return (
     <div className="fixed inset-0 z-30 flex items-center justify-center px-5" style={{ background: 'rgba(0,0,0,0.55)' }}>
       <div className="flex w-full max-w-[400px] flex-col items-center gap-3 px-5 pb-6 pt-8 text-center" style={{ ...THE, border: `1.5px solid ${MAU.acc}`, animation: 'tut-bung .45s ease-out' }}>
-        <p className="text-[12px] font-bold uppercase tracking-[0.12em]" style={{ color: MAU.acc }}>{tren}</p>
+        <p className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: MAU.acc }}>{tren}</p>
         {lo ?? (
           <div className="relative flex h-32 w-32 items-center justify-center">
             <img src={`${GOC}/fx/sao_moi_sang.png`} alt="" className="absolute inset-0 h-full w-full object-contain opacity-90" style={{ animation: 'tut-xoay 12s linear infinite' }} />
             <div className="relative" style={{ animation: 'tut-bung .6s ease-out' }}>{icon}</div>
           </div>
         )}
-        <h2 className="text-[22px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink }}>{tieuDe}</h2>
-        <p className="text-[14.5px] leading-snug" style={{ color: MAU.muted }}>{dong}</p>
+        <h2 className="text-[24px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink }}>{tieuDe}</h2>
+        <p className="text-[16px] leading-snug" style={{ color: MAU.muted }}>{dong}</p>
         {thu && onThu && <NutHS onClick={onThu} className="mt-2 w-full">{thu}</NutHS>}
-        <button onClick={onNut} className={thu ? 'text-[14px] font-bold' : 'mt-2 w-full rounded-lg px-4 py-3 text-[15px] font-bold'}
+        <button onClick={onNut} className={thu ? 'text-[15.5px] font-bold' : 'mt-2 w-full rounded-lg px-4 py-3 text-[16.5px] font-bold'}
           style={thu ? { color: MAU.muted } : { background: MAU.acc, color: MAU.accInk }}>{nut}</button>
       </div>
     </div>
@@ -230,10 +230,10 @@ export default function TutorialHS({ onXong, chuong, mo, danhSach, onXongChuong,
           <div className="flex items-center gap-3">
             <IconChuong c={c} className="h-11 w-11" />
             <div className="min-w-0 flex-1 leading-tight">
-              <p className="text-[11.5px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc, textShadow: `0 1px 8px ${MAU.bg}` }}>{don ? 'Hướng dẫn tương tác' : `Chặng ${ci + 1}/${ds.length}`}</p>
-              <h1 className="truncate text-[20px] font-bold" style={{ ...HEAD, color: MAU.ink, textShadow: `0 1px 10px ${MAU.bg}` }}>{c.ten}</h1>
+              <p className="text-[12.5px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc, textShadow: `0 1px 8px ${MAU.bg}` }}>{don ? 'Hướng dẫn tương tác' : `Chặng ${ci + 1}/${ds.length}`}</p>
+              <h1 className="truncate text-[22px] font-bold" style={{ ...HEAD, color: MAU.ink, textShadow: `0 1px 10px ${MAU.bg}` }}>{c.ten}</h1>
             </div>
-            <button onClick={() => (don ? onXong?.() : setPha('ban_do'))} className="rounded-full px-3 py-1.5 text-[13px] font-bold" style={{ ...THE, clipPath: 'none', color: MAU.muted, borderRadius: '999px' }}>{don ? 'Đóng' : 'Bản đồ'}</button>
+            <button onClick={() => (don ? onXong?.() : setPha('ban_do'))} className="rounded-full px-3 py-1.5 text-[14.5px] font-bold" style={{ ...THE, clipPath: 'none', color: MAU.muted, borderRadius: '999px' }}>{don ? 'Đóng' : 'Bản đồ'}</button>
           </div>
           <div key={c.id} style={{ animation: 'tut-noi .35s ease-out' }}>
             <MoPhongTutorial chuong={c.id} soi={soi} />

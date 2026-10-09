@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499 156" width="499" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="499" height="156" fill="#fff"/>
+<text x="155" y="37" text-anchor="end" fill="#0f172a">Đoạn đường:</text>
+<line x1="165" y1="32" x2="465" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="165" y1="25" x2="165" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="465" y1="25" x2="465" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="315" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="155" y="81" text-anchor="end" fill="#0f172a">Lát 120 m mỗi ngày:</text>
+<line x1="165" y1="76" x2="352.5" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="165" y1="69" x2="165" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="465" y1="69" x2="465" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="352.5" y1="76" x2="465" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="352.5" y1="69" x2="352.5" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="408.8" y="66" text-anchor="middle" font-size="12" fill="#b45309">720 m</text>
+<text x="155" y="125" text-anchor="end" fill="#0f172a">Lát 160 m mỗi ngày:</text>
+<line x1="165" y1="120" x2="415" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="165" y1="113" x2="165" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="465" y1="113" x2="465" y2="127" stroke="#0f172a" stroke-width="1"/>
+<line x1="415" y1="120" x2="465" y2="120" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="415" y1="113" x2="415" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="440" y="110" text-anchor="middle" font-size="12" fill="#b45309">320 m</text>
+</svg>

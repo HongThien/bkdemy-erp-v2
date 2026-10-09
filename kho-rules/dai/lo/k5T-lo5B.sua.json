@@ -1,0 +1,62 @@
+{
+ "LT 4.1a": {
+  "dap_an": "$A=\\dfrac{15}{34}$"
+ },
+ "LT 4.1c": {
+  "dap_an": "$C=\\dfrac{35}{108}$"
+ },
+ "LT 4.2a": {
+  "dap_an": "$A=\\dfrac{20}{21}$"
+ },
+ "LT 4.2b": {
+  "dap_an": "$B=\\dfrac{8}{17}$"
+ },
+ "LT 4.2c": {
+  "dap_an": "$C=\\dfrac{9}{20}$"
+ },
+ "LT 4.3a": {
+  "dap_an": "$A=\\dfrac{3}{7}$"
+ },
+ "LT 4.3b": {
+  "dap_an": "$B=\\dfrac{14}{15}$"
+ },
+ "LT 4.4a": {
+  "dap_an": "$A=\\dfrac{3}{31}$"
+ },
+ "LT 4.4b": {
+  "dap_an": "$B=\\dfrac{2}{55}$"
+ },
+ "LT 4.4c": {
+  "dap_an": "$C=\\dfrac{7}{45}$"
+ },
+ "LT 4.5a": {
+  "dap_an": "$A=\\dfrac{1}{10}$"
+ },
+ "LT 4.5b": {
+  "dap_an": "$B=\\dfrac{20}{203}$"
+ },
+ "LT 4.6a": {
+  "dap_an": "$A=\\dfrac{23}{50}$"
+ },
+ "LT 4.6b": {
+  "dap_an": "$B=13\\dfrac{13}{27}$"
+ },
+ "LT 4.7a": {
+  "dap_an": "$A=\\dfrac{4}{13}$"
+ },
+ "LT 4.7b": {
+  "dap_an": "$B=\\dfrac{9}{10}$"
+ },
+ "LT 4.8c": {
+  "dap_an": "$C=\\dfrac{4095}{2048}$"
+ },
+ "LT 4.9a": {
+  "dap_an": "$A=\\dfrac{2023}{4}$"
+ },
+ "LT 4.9b": {
+  "dap_an": "$B=\\dfrac{16}{9}$"
+ },
+ "LT 4.10b": {
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi các mẫu $4$, $28$, $70$, $130$ thành tích: $4=1\\times 4$, $28=4\\times 7$, $70=7\\times 10$, $130=10\\times 13$ — hai thừa số hơn kém nhau $3$, đúng bằng tử số $3$. Nên mỗi số hạng tách được thành hiệu hai phân số ($\\dfrac{3}{1\\times 4}=\\dfrac{1}{1}-\\dfrac{1}{4}$, $\\dfrac{3}{4\\times 7}=\\dfrac{1}{4}-\\dfrac{1}{7}$, …) và tổng chỉ còn $1$ trừ một phân số có tử số $1$, mẫu số là thừa số lớn hơn trong hai thừa số của $y$.\n\nBiết tổng là $\\dfrac{33}{34}$ thì tìm được thừa số cuối ở mẫu số hạng cuối; thừa số đứng trước nó nhỏ hơn $3$ đơn vị; $y$ chính là tích của hai thừa số đó.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{4}+\\dfrac{3}{28}+\\dfrac{3}{70}+\\dfrac{3}{130}+\\ldots+\\dfrac{3}{y}=\\dfrac{33}{34}$\n\n$\\dfrac{3}{1\\times 4}+\\dfrac{3}{4\\times 7}+\\dfrac{3}{7\\times 10}+\\dfrac{3}{10\\times 13}+\\ldots+\\dfrac{3}{y}=\\dfrac{33}{34}$\n\nMẫu số $y$ cũng là tích của hai số hơn kém nhau $3$. Tách mỗi số hạng thành hiệu hai phân số thì các phân số ở giữa triệt tiêu, tổng chỉ còn $1$ trừ phân số có tử số $1$ và mẫu số là thừa số lớn hơn của $y$.\n\nPhân số đó bằng: $1-\\dfrac{33}{34}=\\dfrac{1}{34}$\n\nThừa số lớn hơn của $y$ là $34$, thừa số còn lại là: $34-3=31$\n\nVậy $y=31\\times 34=1054$"
+ }
+}

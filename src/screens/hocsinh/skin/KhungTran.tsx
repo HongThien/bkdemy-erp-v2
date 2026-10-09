@@ -26,7 +26,7 @@ export function TheTran({ children, className = '' }: { children: ReactNode; cla
 export function DaiTran({ trai, phai }: { trai: ReactNode; phai?: ReactNode }) {
   return (
     <div className="mb-3 flex items-center justify-between gap-2">
-      <span className="flex items-center gap-2 text-[15px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc, letterSpacing: '0.02em' }}>
+      <span className="flex items-center gap-2 text-[16.5px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc, letterSpacing: '0.02em' }}>
         <span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={{ background: MAU.acc }} />{trai}
       </span>
       {phai}
@@ -51,7 +51,7 @@ export function NgocChu({ t, chu }: { t: TtTran; chu: string }) {
   return (
     <span className="relative flex h-9 w-9 shrink-0 items-center justify-center">
       <span aria-hidden className="absolute inset-1 rotate-45 rounded-[4px]" style={{ background: nen, border: `1.5px solid ${t === 'thuong' ? MAU.acc : nen}` }} />
-      <span className="relative text-[16px] font-extrabold" style={{ color: chuMau, fontFamily: 'var(--sk-font-head)' }}>{chu}</span>
+      <span className="relative text-[17.5px] font-extrabold" style={{ color: chuMau, fontFamily: 'var(--sk-font-head)' }}>{chu}</span>
     </span>
   )
 }

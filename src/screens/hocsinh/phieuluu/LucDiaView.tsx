@@ -37,19 +37,19 @@ export function LucDiaView({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3
                 onPointerEnter={() => { setHov(v.ma); canh?.hover(v.ma) }} onPointerLeave={() => { setHov(null); canh?.hover(null) }}
                 className="pointer-events-auto absolute left-0 top-0 flex max-w-[170px] flex-col items-center gap-0.5 px-2 py-1 text-center"
                 style={{ ...THE_TRON, visibility: 'hidden', borderRadius: 12, background: hov === v.ma ? 'var(--sk-surface2)' : 'var(--sk-surface)', borderColor: hov === v.ma ? 'var(--sk-acc)' : undefined }}>
-                <span className="line-clamp-2 text-[12px] font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
+                <span className="line-clamp-2 text-[13px] font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
                 <NhanHS mau={v.trangThai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{trang(v)}</NhanHS>
               </button>
             ))}
           </div>
-          {loi && <div className="absolute inset-0 flex items-center justify-center p-4 text-center text-[14px]" style={{ color: 'var(--sk-muted)' }}>Máy này chưa vẽ được bản đồ 3D — chọn vùng ở danh sách.</div>}
+          {loi && <div className="absolute inset-0 flex items-center justify-center p-4 text-center text-[15.5px]" style={{ color: 'var(--sk-muted)' }}>Máy này chưa vẽ được bản đồ 3D — chọn vùng ở danh sách.</div>}
         </div>
         <aside className="flex min-h-0 flex-col gap-2 overflow-y-auto p-3" style={THE}>
-          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Các vùng</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Các vùng</p>
           {vungs.map((v) => (
             <button key={v.ma} onClick={() => onChon(v.ma)} onPointerEnter={() => { setHov(v.ma); canh?.hover(v.ma) }} onPointerLeave={() => { setHov(null); canh?.hover(null) }}
               className="flex items-center justify-between gap-2 px-3 py-2 text-left" style={{ ...THE_TRON, background: hov === v.ma ? 'var(--sk-surface2)' : 'var(--sk-surface)' }}>
-              <span className="min-w-0 text-[13.5px] font-semibold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
+              <span className="min-w-0 text-[15px] font-semibold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
               <NhanHS mau={v.trangThai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{trang(v)}</NhanHS>
             </button>
           ))}

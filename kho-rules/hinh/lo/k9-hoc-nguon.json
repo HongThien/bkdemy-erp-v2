@@ -1,0 +1,1474 @@
+{
+ "HH00105": [
+  {
+   "ma_cau": "HHC002177",
+   "nguon": "NDT B1 D1 VD1"
+  },
+  {
+   "ma_cau": "HHC002178",
+   "nguon": "NDT B1 D1 VD2"
+  },
+  {
+   "ma_cau": "HHC002179",
+   "nguon": "NDT B1 D2 VD1"
+  },
+  {
+   "ma_cau": "HHC002180",
+   "nguon": "NDT B1 D2 VD2"
+  },
+  {
+   "ma_cau": "HHC002181",
+   "nguon": "NDT B1 D3 VD1"
+  },
+  {
+   "ma_cau": "HHC002182",
+   "nguon": "NDT B1 D3 VD2"
+  },
+  {
+   "ma_cau": "HHC002183",
+   "nguon": "NDT B1 TL1"
+  },
+  {
+   "ma_cau": "HHC002184",
+   "nguon": "NDT B1 TL2"
+  },
+  {
+   "ma_cau": "HHC002185",
+   "nguon": "NDT B1 TL3"
+  },
+  {
+   "ma_cau": "HHC002186",
+   "nguon": "NDT B1 TL4"
+  },
+  {
+   "ma_cau": "HHC002187",
+   "nguon": "NDT B1 TL5"
+  },
+  {
+   "ma_cau": "HHC002188",
+   "nguon": "NDT B1 TL6"
+  },
+  {
+   "ma_cau": "HHC002189",
+   "nguon": "NDT B1 TL7"
+  },
+  {
+   "ma_cau": "HHC002190",
+   "nguon": "NDT B1 TL8"
+  },
+  {
+   "ma_cau": "HHC002191",
+   "nguon": "NDT B1 TL10"
+  },
+  {
+   "ma_cau": "HHC002192",
+   "nguon": "NDT B1 TL11"
+  },
+  {
+   "ma_cau": "HHC002193",
+   "nguon": "NDT B1 TL12"
+  },
+  {
+   "ma_cau": "HHC002194",
+   "nguon": "NDT B1 TL13"
+  },
+  {
+   "ma_cau": "HHC002195",
+   "nguon": "NDT B1 TL14"
+  },
+  {
+   "ma_cau": "HHC002196",
+   "nguon": "NDT B1 TL15"
+  },
+  {
+   "ma_cau": "HHC002197",
+   "nguon": "NDT B1 TL16"
+  },
+  {
+   "ma_cau": "HHC002198",
+   "nguon": "NDT B1 TL17"
+  },
+  {
+   "ma_cau": "HHC002199",
+   "nguon": "NDT B1 TL18"
+  },
+  {
+   "ma_cau": "HHC002200",
+   "nguon": "NDT B1 TL19"
+  },
+  {
+   "ma_cau": "HHC002201",
+   "nguon": "NDT B1 TL20"
+  },
+  {
+   "ma_cau": "HHC002202",
+   "nguon": "NDT B1 TL22"
+  },
+  {
+   "ma_cau": "HHC002203",
+   "nguon": "NDT B1 TN1"
+  },
+  {
+   "ma_cau": "HHC002204",
+   "nguon": "NDT B1 TN2"
+  },
+  {
+   "ma_cau": "HHC002205",
+   "nguon": "NDT B1 TN3"
+  },
+  {
+   "ma_cau": "HHC002206",
+   "nguon": "NDT B1 TN4"
+  },
+  {
+   "ma_cau": "HHC002207",
+   "nguon": "NDT B1 TN5"
+  },
+  {
+   "ma_cau": "HHC002208",
+   "nguon": "NDT B1 TN6"
+  },
+  {
+   "ma_cau": "HHC002209",
+   "nguon": "NDT B1 TN7"
+  },
+  {
+   "ma_cau": "HHC002210",
+   "nguon": "NDT B1 TN8"
+  },
+  {
+   "ma_cau": "HHC002211",
+   "nguon": "NDT B1 TN9"
+  },
+  {
+   "ma_cau": "HHC002212",
+   "nguon": "NDT B1 TN10"
+  },
+  {
+   "ma_cau": "HHC002213",
+   "nguon": "NDT B1 TN11"
+  },
+  {
+   "ma_cau": "HHC002214",
+   "nguon": "NDT B1 TN12"
+  },
+  {
+   "ma_cau": "HHC002215",
+   "nguon": "NDT B1 TN13"
+  },
+  {
+   "ma_cau": "HHC002216",
+   "nguon": "NDT B1 TN14"
+  },
+  {
+   "ma_cau": "HHC002217",
+   "nguon": "NDT B1 TN15"
+  },
+  {
+   "ma_cau": "HHC002218",
+   "nguon": "NDT B1 TN16"
+  },
+  {
+   "ma_cau": "HHC002219",
+   "nguon": "NDT B1 TN17"
+  },
+  {
+   "ma_cau": "HHC002220",
+   "nguon": "NDT B1 TN18"
+  },
+  {
+   "ma_cau": "HHC002221",
+   "nguon": "NDT B2 D1 VD1"
+  },
+  {
+   "ma_cau": "HHC002222",
+   "nguon": "NDT B2 D1 VD2"
+  },
+  {
+   "ma_cau": "HHC002223",
+   "nguon": "NDT B2 D2 VD1"
+  },
+  {
+   "ma_cau": "HHC002224",
+   "nguon": "NDT B2 D2 VD2"
+  },
+  {
+   "ma_cau": "HHC002225",
+   "nguon": "NDT B2 D3 VD1"
+  },
+  {
+   "ma_cau": "HHC002226",
+   "nguon": "NDT B2 D3 VD2"
+  },
+  {
+   "ma_cau": "HHC002227",
+   "nguon": "NDT B2 D3 VD3"
+  },
+  {
+   "ma_cau": "HHC002228",
+   "nguon": "NDT B2 D3 VD4"
+  },
+  {
+   "ma_cau": "HHC002229",
+   "nguon": "NDT B2 D3 VD5"
+  },
+  {
+   "ma_cau": "HHC002230",
+   "nguon": "NDT B2 D3 VD6"
+  },
+  {
+   "ma_cau": "HHC002231",
+   "nguon": "NDT B2 D4 VD1"
+  },
+  {
+   "ma_cau": "HHC002232",
+   "nguon": "NDT B2 D4 VD2"
+  },
+  {
+   "ma_cau": "HHC002233",
+   "nguon": "NDT B2 TL1"
+  },
+  {
+   "ma_cau": "HHC002234",
+   "nguon": "NDT B2 TL2"
+  },
+  {
+   "ma_cau": "HHC002235",
+   "nguon": "NDT B2 TL3"
+  },
+  {
+   "ma_cau": "HHC002236",
+   "nguon": "NDT B2 TL4"
+  },
+  {
+   "ma_cau": "HHC002237",
+   "nguon": "NDT B2 TL5"
+  },
+  {
+   "ma_cau": "HHC002238",
+   "nguon": "NDT B2 TL6"
+  },
+  {
+   "ma_cau": "HHC002239",
+   "nguon": "NDT B2 TL8"
+  },
+  {
+   "ma_cau": "HHC002240",
+   "nguon": "NDT B2 TL9"
+  },
+  {
+   "ma_cau": "HHC002241",
+   "nguon": "NDT B2 TL10"
+  },
+  {
+   "ma_cau": "HHC002242",
+   "nguon": "NDT B2 TL11"
+  },
+  {
+   "ma_cau": "HHC002243",
+   "nguon": "NDT B2 TL13"
+  },
+  {
+   "ma_cau": "HHC002244",
+   "nguon": "NDT B2 TL14"
+  },
+  {
+   "ma_cau": "HHC002245",
+   "nguon": "NDT B2 TL15"
+  },
+  {
+   "ma_cau": "HHC002246",
+   "nguon": "NDT B2 TL16"
+  },
+  {
+   "ma_cau": "HHC002247",
+   "nguon": "NDT B2 TL17"
+  },
+  {
+   "ma_cau": "HHC002248",
+   "nguon": "NDT B2 TL18"
+  },
+  {
+   "ma_cau": "HHC002249",
+   "nguon": "NDT B2 TL19"
+  },
+  {
+   "ma_cau": "HHC002250",
+   "nguon": "NDT B2 TL20"
+  },
+  {
+   "ma_cau": "HHC002251",
+   "nguon": "NDT B2 TL21"
+  },
+  {
+   "ma_cau": "HHC002252",
+   "nguon": "NDT B2 TL22"
+  },
+  {
+   "ma_cau": "HHC002253",
+   "nguon": "NDT B2 TL23"
+  },
+  {
+   "ma_cau": "HHC002254",
+   "nguon": "NDT B2 TN1"
+  },
+  {
+   "ma_cau": "HHC002255",
+   "nguon": "NDT B2 TN2"
+  },
+  {
+   "ma_cau": "HHC002256",
+   "nguon": "NDT B2 TN3"
+  },
+  {
+   "ma_cau": "HHC002257",
+   "nguon": "NDT B2 TN4"
+  },
+  {
+   "ma_cau": "HHC002258",
+   "nguon": "NDT B2 TN5"
+  },
+  {
+   "ma_cau": "HHC002259",
+   "nguon": "NDT B2 TN6"
+  },
+  {
+   "ma_cau": "HHC002260",
+   "nguon": "NDT B2 TN7"
+  },
+  {
+   "ma_cau": "HHC002261",
+   "nguon": "NDT B2 TN8"
+  },
+  {
+   "ma_cau": "HHC002262",
+   "nguon": "NDT B2 TN9"
+  },
+  {
+   "ma_cau": "HHC002263",
+   "nguon": "NDT B2 TN10"
+  },
+  {
+   "ma_cau": "HHC002264",
+   "nguon": "NDT B2 TN11"
+  },
+  {
+   "ma_cau": "HHC002265",
+   "nguon": "NDT B2 TN12"
+  },
+  {
+   "ma_cau": "HHC002266",
+   "nguon": "NDT B2 TN13"
+  },
+  {
+   "ma_cau": "HHC002267",
+   "nguon": "NDT B6 TL6"
+  },
+  {
+   "ma_cau": "HHC002268",
+   "nguon": "NDT B6 TN1"
+  },
+  {
+   "ma_cau": "HHC002269",
+   "nguon": "NDT B6 TN2"
+  },
+  {
+   "ma_cau": "HHC002270",
+   "nguon": "NDT B6 TN12"
+  },
+  {
+   "ma_cau": "HHC002271",
+   "nguon": "NDT B6 TN16"
+  },
+  {
+   "ma_cau": "HHC002272",
+   "nguon": "NDT B6 TN17"
+  },
+  {
+   "ma_cau": "HHC002273",
+   "nguon": "NT CĐ7 TN1"
+  },
+  {
+   "ma_cau": "HHC002274",
+   "nguon": "NT CĐ7 TN2"
+  },
+  {
+   "ma_cau": "HHC002275",
+   "nguon": "NT CĐ7 TN3"
+  },
+  {
+   "ma_cau": "HHC002276",
+   "nguon": "NT CĐ7 TN7"
+  },
+  {
+   "ma_cau": "HHC002277",
+   "nguon": "NT CĐ7 TL1"
+  },
+  {
+   "ma_cau": "HHC002278",
+   "nguon": "NT CĐ7 TL2"
+  },
+  {
+   "ma_cau": "HHC002279",
+   "nguon": "NT CĐ7 TL3"
+  },
+  {
+   "ma_cau": "HHC002280",
+   "nguon": "NT CĐ7 TL4"
+  },
+  {
+   "ma_cau": "HHC002281",
+   "nguon": "NT CĐ7 TL5"
+  },
+  {
+   "ma_cau": "HHC002282",
+   "nguon": "NT CĐ7 TL6"
+  },
+  {
+   "ma_cau": "HHC002283",
+   "nguon": "NT CĐ8 TN1"
+  },
+  {
+   "ma_cau": "HHC002284",
+   "nguon": "NT CĐ8 TN2"
+  },
+  {
+   "ma_cau": "HHC002285",
+   "nguon": "NT CĐ8 TN3"
+  },
+  {
+   "ma_cau": "HHC002286",
+   "nguon": "NT CĐ8 TN8"
+  },
+  {
+   "ma_cau": "HHC002287",
+   "nguon": "NT CĐ8 TN9"
+  },
+  {
+   "ma_cau": "HHC002288",
+   "nguon": "NT CĐ8 TL2"
+  },
+  {
+   "ma_cau": "HHC002289",
+   "nguon": "PHL 219"
+  },
+  {
+   "ma_cau": "HHC002290",
+   "nguon": "PHL 220"
+  },
+  {
+   "ma_cau": "HHC002291",
+   "nguon": "PHL 221"
+  },
+  {
+   "ma_cau": "HHC002292",
+   "nguon": "PHL 227"
+  }
+ ],
+ "HH00106": [
+  {
+   "ma_cau": "HHC002033",
+   "nguon": "NDT B3 D1 VD1"
+  },
+  {
+   "ma_cau": "HHC002034",
+   "nguon": "NDT B3 D1 VD2"
+  },
+  {
+   "ma_cau": "HHC002035",
+   "nguon": "NDT B3 D1 VD3"
+  },
+  {
+   "ma_cau": "HHC002036",
+   "nguon": "NDT B3 D1 VD4"
+  },
+  {
+   "ma_cau": "HHC002037",
+   "nguon": "NDT B3 TL1"
+  },
+  {
+   "ma_cau": "HHC002038",
+   "nguon": "NDT B3 TL5"
+  },
+  {
+   "ma_cau": "HHC002039",
+   "nguon": "NDT B3 TL11"
+  },
+  {
+   "ma_cau": "HHC002040",
+   "nguon": "NDT B3 TL18"
+  },
+  {
+   "ma_cau": "HHC002041",
+   "nguon": "NDT B3 TN1"
+  },
+  {
+   "ma_cau": "HHC002042",
+   "nguon": "NDT B3 TN2"
+  },
+  {
+   "ma_cau": "HHC002043",
+   "nguon": "NDT B3 TN6"
+  },
+  {
+   "ma_cau": "HHC002044",
+   "nguon": "NDT B3 TN7"
+  },
+  {
+   "ma_cau": "HHC002045",
+   "nguon": "NDT B3 TN8"
+  },
+  {
+   "ma_cau": "HHC002046",
+   "nguon": "NDT B3 TN9"
+  },
+  {
+   "ma_cau": "HHC002047",
+   "nguon": "NDT B3 TN15"
+  },
+  {
+   "ma_cau": "HHC002048",
+   "nguon": "NDT B3 TN16"
+  },
+  {
+   "ma_cau": "HHC002049",
+   "nguon": "NDT B3 TN17"
+  },
+  {
+   "ma_cau": "HHC002050",
+   "nguon": "NDT B6 TL7"
+  },
+  {
+   "ma_cau": "HHC002051",
+   "nguon": "NDT B6 TN6"
+  },
+  {
+   "ma_cau": "HHC002052",
+   "nguon": "NDT B6 TN14"
+  },
+  {
+   "ma_cau": "HHC002053",
+   "nguon": "NDT B6 TN19"
+  },
+  {
+   "ma_cau": "HHC002054",
+   "nguon": "NDT B6 TN20"
+  },
+  {
+   "ma_cau": "HHC002055",
+   "nguon": "NDT B6 TN22"
+  },
+  {
+   "ma_cau": "HHC002056",
+   "nguon": "NT CĐ9 TN1"
+  },
+  {
+   "ma_cau": "HHC002057",
+   "nguon": "NT CĐ9 TN2"
+  },
+  {
+   "ma_cau": "HHC002058",
+   "nguon": "NT CĐ9 TN4"
+  },
+  {
+   "ma_cau": "HHC002059",
+   "nguon": "NT CĐ9 TL5"
+  },
+  {
+   "ma_cau": "HHC002060",
+   "nguon": "NT CĐ9 TT1"
+  },
+  {
+   "ma_cau": "HHC002061",
+   "nguon": "NT CĐ9 TT4"
+  },
+  {
+   "ma_cau": "HHC002062",
+   "nguon": "NT CĐ9 TT9"
+  },
+  {
+   "ma_cau": "HHC002063",
+   "nguon": "PHL 231"
+  },
+  {
+   "ma_cau": "HHC002064",
+   "nguon": "PHL 232"
+  },
+  {
+   "ma_cau": "HHC002065",
+   "nguon": "PHL 233"
+  },
+  {
+   "ma_cau": "HHC002066",
+   "nguon": "PHL 234"
+  },
+  {
+   "ma_cau": "HHC002174",
+   "nguon": "PHL 239",
+   "chuyen_tu": "HH00105 c119"
+  },
+  {
+   "ma_cau": "HHC002175",
+   "nguon": "PHL 240",
+   "chuyen_tu": "HH00105 c120"
+  }
+ ],
+ "HH00107": [
+  {
+   "ma_cau": "HHC002293",
+   "nguon": "NDT B3 D2 VD1"
+  },
+  {
+   "ma_cau": "HHC002294",
+   "nguon": "NDT B3 D2 VD2"
+  },
+  {
+   "ma_cau": "HHC002295",
+   "nguon": "NDT B3 D2 VD3"
+  },
+  {
+   "ma_cau": "HHC002296",
+   "nguon": "NDT B3 D3 VD1"
+  },
+  {
+   "ma_cau": "HHC002297",
+   "nguon": "NDT B3 D3 VD2"
+  },
+  {
+   "ma_cau": "HHC002298",
+   "nguon": "NDT B3 D3 VD3"
+  },
+  {
+   "ma_cau": "HHC002299",
+   "nguon": "NDT B3 TL2"
+  },
+  {
+   "ma_cau": "HHC002300",
+   "nguon": "NDT B3 TL3"
+  },
+  {
+   "ma_cau": "HHC002301",
+   "nguon": "NDT B3 TL4"
+  },
+  {
+   "ma_cau": "HHC002302",
+   "nguon": "NDT B3 TL6"
+  },
+  {
+   "ma_cau": "HHC002303",
+   "nguon": "NDT B3 TL7"
+  },
+  {
+   "ma_cau": "HHC002304",
+   "nguon": "NDT B3 TL8"
+  },
+  {
+   "ma_cau": "HHC002305",
+   "nguon": "NDT B3 TL9"
+  },
+  {
+   "ma_cau": "HHC002306",
+   "nguon": "NDT B3 TL10"
+  },
+  {
+   "ma_cau": "HHC002307",
+   "nguon": "NDT B3 TL12"
+  },
+  {
+   "ma_cau": "HHC002308",
+   "nguon": "NDT B3 TL13"
+  },
+  {
+   "ma_cau": "HHC002309",
+   "nguon": "NDT B3 TL14"
+  },
+  {
+   "ma_cau": "HHC002310",
+   "nguon": "NDT B3 TL15"
+  },
+  {
+   "ma_cau": "HHC002311",
+   "nguon": "NDT B3 TL16"
+  },
+  {
+   "ma_cau": "HHC002312",
+   "nguon": "NDT B3 TL17"
+  },
+  {
+   "ma_cau": "HHC002313",
+   "nguon": "NDT B3 TL19"
+  },
+  {
+   "ma_cau": "HHC002314",
+   "nguon": "NDT B3 TL20"
+  },
+  {
+   "ma_cau": "HHC002315",
+   "nguon": "NDT B3 TN3"
+  },
+  {
+   "ma_cau": "HHC002316",
+   "nguon": "NDT B3 TN4"
+  },
+  {
+   "ma_cau": "HHC002317",
+   "nguon": "NDT B3 TN5"
+  },
+  {
+   "ma_cau": "HHC002318",
+   "nguon": "NDT B3 TN10"
+  },
+  {
+   "ma_cau": "HHC002319",
+   "nguon": "NDT B3 TN11"
+  },
+  {
+   "ma_cau": "HHC002320",
+   "nguon": "NDT B3 TN12"
+  },
+  {
+   "ma_cau": "HHC002321",
+   "nguon": "NDT B3 TN13"
+  },
+  {
+   "ma_cau": "HHC002322",
+   "nguon": "NDT B3 TN14"
+  },
+  {
+   "ma_cau": "HHC002323",
+   "nguon": "NDT B6 TL1"
+  },
+  {
+   "ma_cau": "HHC002324",
+   "nguon": "NDT B6 TL2"
+  },
+  {
+   "ma_cau": "HHC002325",
+   "nguon": "NDT B6 TL8"
+  },
+  {
+   "ma_cau": "HHC002326",
+   "nguon": "NDT B6 TL9"
+  },
+  {
+   "ma_cau": "HHC002327",
+   "nguon": "NDT B6 TL10"
+  },
+  {
+   "ma_cau": "HHC002328",
+   "nguon": "NDT B6 TN4"
+  },
+  {
+   "ma_cau": "HHC002329",
+   "nguon": "NDT B6 TN5"
+  },
+  {
+   "ma_cau": "HHC002330",
+   "nguon": "NDT B6 TN7"
+  },
+  {
+   "ma_cau": "HHC002331",
+   "nguon": "NDT B6 TN15"
+  },
+  {
+   "ma_cau": "HHC002332",
+   "nguon": "NT CĐ9 TN3"
+  },
+  {
+   "ma_cau": "HHC002333",
+   "nguon": "NT CĐ9 TN5"
+  },
+  {
+   "ma_cau": "HHC002334",
+   "nguon": "NT CĐ9 TN6"
+  },
+  {
+   "ma_cau": "HHC002335",
+   "nguon": "NT CĐ9 TN7"
+  },
+  {
+   "ma_cau": "HHC002336",
+   "nguon": "NT CĐ9 TN9"
+  },
+  {
+   "ma_cau": "HHC002337",
+   "nguon": "NT CĐ9 TL1"
+  },
+  {
+   "ma_cau": "HHC002338",
+   "nguon": "NT CĐ9 TL2"
+  },
+  {
+   "ma_cau": "HHC002339",
+   "nguon": "NT CĐ9 TL3"
+  },
+  {
+   "ma_cau": "HHC002340",
+   "nguon": "NT CĐ9 TL4"
+  },
+  {
+   "ma_cau": "HHC002341",
+   "nguon": "NT CĐ9 TT2"
+  },
+  {
+   "ma_cau": "HHC002342",
+   "nguon": "NT CĐ9 TT3"
+  },
+  {
+   "ma_cau": "HHC002343",
+   "nguon": "NT CĐ9 TT5"
+  },
+  {
+   "ma_cau": "HHC002344",
+   "nguon": "NT CĐ9 TT6"
+  },
+  {
+   "ma_cau": "HHC002345",
+   "nguon": "NT CĐ9 TT7"
+  },
+  {
+   "ma_cau": "HHC002346",
+   "nguon": "NT CĐ9 TT8"
+  },
+  {
+   "ma_cau": "HHC002347",
+   "nguon": "NT CĐ9 TT10"
+  },
+  {
+   "ma_cau": "HHC002348",
+   "nguon": "NT CĐ9 TT11"
+  },
+  {
+   "ma_cau": "HHC002349",
+   "nguon": "PHL 237"
+  },
+  {
+   "ma_cau": "HHC002350",
+   "nguon": "PHL 243"
+  },
+  {
+   "ma_cau": "HHC002351",
+   "nguon": "PHL 244"
+  },
+  {
+   "ma_cau": "HHC002352",
+   "nguon": "PHL 246"
+  },
+  {
+   "ma_cau": "HHC002353",
+   "nguon": "PHL 247"
+  },
+  {
+   "ma_cau": "HHC002354",
+   "nguon": "PHL 248"
+  },
+  {
+   "ma_cau": "HHC002355",
+   "nguon": "PHL 249"
+  },
+  {
+   "ma_cau": "HHC002356",
+   "nguon": "PHL 251"
+  },
+  {
+   "ma_cau": "HHC002357",
+   "nguon": "PHL 252"
+  },
+  {
+   "ma_cau": "HHC002358",
+   "nguon": "PHL 253"
+  },
+  {
+   "ma_cau": "HHC002359",
+   "nguon": "PHL 254"
+  },
+  {
+   "ma_cau": "HHC002360",
+   "nguon": "PHL 255"
+  },
+  {
+   "ma_cau": "HHC002361",
+   "nguon": "PHL 256"
+  },
+  {
+   "ma_cau": "HHC002362",
+   "nguon": "PHL 260"
+  },
+  {
+   "ma_cau": "HHC002363",
+   "nguon": "PHL 261"
+  },
+  {
+   "ma_cau": "HHC002364",
+   "nguon": "PHL 262"
+  },
+  {
+   "ma_cau": "HHC002365",
+   "nguon": "PHL 263"
+  },
+  {
+   "ma_cau": "HHC002366",
+   "nguon": "PHL 265"
+  },
+  {
+   "ma_cau": "HHC002367",
+   "nguon": "PHL 268"
+  },
+  {
+   "ma_cau": "HHC002368",
+   "nguon": "PHL 269"
+  },
+  {
+   "ma_cau": "HHC002369",
+   "nguon": "PHL 270"
+  },
+  {
+   "ma_cau": "HHC002370",
+   "nguon": "PHL 272"
+  },
+  {
+   "ma_cau": "HHC002371",
+   "nguon": "PHL 236",
+   "chuyen_tu": "HH00105 c118"
+  },
+  {
+   "ma_cau": "HHC002372",
+   "nguon": "PHL 241",
+   "chuyen_tu": "HH00106 c036"
+  },
+  {
+   "ma_cau": "HHC002373",
+   "nguon": "PHL 242",
+   "chuyen_tu": "HH00106 c037"
+  }
+ ],
+ "HH00108": [
+  {
+   "ma_cau": "HHC002090",
+   "nguon": "NDT B1 TL21"
+  },
+  {
+   "ma_cau": "HHC002091",
+   "nguon": "NDT B4 D1 VD1"
+  },
+  {
+   "ma_cau": "HHC002092",
+   "nguon": "NDT B4 D1 VD2"
+  },
+  {
+   "ma_cau": "HHC002093",
+   "nguon": "NDT B4 D2 VD1"
+  },
+  {
+   "ma_cau": "HHC002094",
+   "nguon": "NDT B4 D2 VD2"
+  },
+  {
+   "ma_cau": "HHC002095",
+   "nguon": "NDT B4 D3 VD1"
+  },
+  {
+   "ma_cau": "HHC002096",
+   "nguon": "NDT B4 D3 VD2"
+  },
+  {
+   "ma_cau": "HHC002097",
+   "nguon": "NDT B4 TL1"
+  },
+  {
+   "ma_cau": "HHC002098",
+   "nguon": "NDT B4 TL2"
+  },
+  {
+   "ma_cau": "HHC002099",
+   "nguon": "NDT B4 TL5"
+  },
+  {
+   "ma_cau": "HHC002100",
+   "nguon": "NDT B4 TL6"
+  },
+  {
+   "ma_cau": "HHC002101",
+   "nguon": "NDT B4 TL7"
+  },
+  {
+   "ma_cau": "HHC002102",
+   "nguon": "NDT B4 TL8"
+  },
+  {
+   "ma_cau": "HHC002103",
+   "nguon": "NDT B4 TL13"
+  },
+  {
+   "ma_cau": "HHC002104",
+   "nguon": "NDT B4 TL14"
+  },
+  {
+   "ma_cau": "HHC002105",
+   "nguon": "NDT B4 TL15"
+  },
+  {
+   "ma_cau": "HHC002106",
+   "nguon": "NDT B4 TL16"
+  },
+  {
+   "ma_cau": "HHC002107",
+   "nguon": "NDT B4 TL18"
+  },
+  {
+   "ma_cau": "HHC002108",
+   "nguon": "NDT B4 TL19"
+  },
+  {
+   "ma_cau": "HHC002109",
+   "nguon": "NDT B4 TL21"
+  },
+  {
+   "ma_cau": "HHC002110",
+   "nguon": "NDT B4 TL22"
+  },
+  {
+   "ma_cau": "HHC002111",
+   "nguon": "NDT B4 TN1"
+  },
+  {
+   "ma_cau": "HHC002112",
+   "nguon": "NDT B4 TN2"
+  },
+  {
+   "ma_cau": "HHC002113",
+   "nguon": "NDT B4 TN3"
+  },
+  {
+   "ma_cau": "HHC002114",
+   "nguon": "NDT B4 TN4"
+  },
+  {
+   "ma_cau": "HHC002115",
+   "nguon": "NDT B4 TN5"
+  },
+  {
+   "ma_cau": "HHC002116",
+   "nguon": "NDT B4 TN6"
+  },
+  {
+   "ma_cau": "HHC002117",
+   "nguon": "NDT B4 TN7"
+  },
+  {
+   "ma_cau": "HHC002118",
+   "nguon": "NDT B4 TN8"
+  },
+  {
+   "ma_cau": "HHC002119",
+   "nguon": "NDT B4 TN9"
+  },
+  {
+   "ma_cau": "HHC002120",
+   "nguon": "NDT B4 TN10"
+  },
+  {
+   "ma_cau": "HHC002121",
+   "nguon": "NDT B4 TN11"
+  },
+  {
+   "ma_cau": "HHC002122",
+   "nguon": "NDT B4 TN13"
+  },
+  {
+   "ma_cau": "HHC002123",
+   "nguon": "NDT B4 TN14"
+  },
+  {
+   "ma_cau": "HHC002124",
+   "nguon": "NDT B4 TN15"
+  },
+  {
+   "ma_cau": "HHC002125",
+   "nguon": "NDT B4 TN16"
+  },
+  {
+   "ma_cau": "HHC002126",
+   "nguon": "NDT B6 TN9"
+  },
+  {
+   "ma_cau": "HHC002127",
+   "nguon": "NDT B6 TN11"
+  },
+  {
+   "ma_cau": "HHC002128",
+   "nguon": "NT CĐ7 TN8"
+  },
+  {
+   "ma_cau": "HHC002129",
+   "nguon": "NT CĐ7 TL8"
+  },
+  {
+   "ma_cau": "HHC002130",
+   "nguon": "NT CĐ7 TL9"
+  },
+  {
+   "ma_cau": "HHC002131",
+   "nguon": "NT CĐ7 TL10"
+  },
+  {
+   "ma_cau": "HHC002132",
+   "nguon": "NT CĐ7 TL11"
+  },
+  {
+   "ma_cau": "HHC002133",
+   "nguon": "NT CĐ7 TL13"
+  },
+  {
+   "ma_cau": "HHC002134",
+   "nguon": "PHL 258"
+  },
+  {
+   "ma_cau": "HHC002135",
+   "nguon": "PHL 273"
+  },
+  {
+   "ma_cau": "HHC002136",
+   "nguon": "PHL 279"
+  },
+  {
+   "ma_cau": "HHC002137",
+   "nguon": "PHL 286"
+  },
+  {
+   "ma_cau": "HHC002138",
+   "nguon": "PHL 288"
+  },
+  {
+   "ma_cau": "HHC002139",
+   "nguon": "PHL 290"
+  },
+  {
+   "ma_cau": "HHC002176",
+   "nguon": "PHL 287",
+   "chuyen_tu": "HH00105 c121"
+  },
+  {
+   "ma_cau": "HHC002140",
+   "nguon": "NDT B6 TN23",
+   "chuyen_tu": "HH00106 c024"
+  },
+  {
+   "ma_cau": "HHC002374",
+   "nguon": "PHL 267",
+   "chuyen_tu": "HH00107 c076"
+  }
+ ],
+ "HH00109": [
+  {
+   "ma_cau": "HHC002141",
+   "nguon": "NDT B3 TN18"
+  },
+  {
+   "ma_cau": "HHC002142",
+   "nguon": "NDT B4 D4 VD1"
+  },
+  {
+   "ma_cau": "HHC002143",
+   "nguon": "NDT B4 D4 VD2"
+  },
+  {
+   "ma_cau": "HHC002144",
+   "nguon": "NDT B4 TL3"
+  },
+  {
+   "ma_cau": "HHC002145",
+   "nguon": "NDT B4 TL4"
+  },
+  {
+   "ma_cau": "HHC002146",
+   "nguon": "NDT B4 TL9"
+  },
+  {
+   "ma_cau": "HHC002147",
+   "nguon": "NDT B4 TL10"
+  },
+  {
+   "ma_cau": "HHC002148",
+   "nguon": "NDT B4 TL11"
+  },
+  {
+   "ma_cau": "HHC002149",
+   "nguon": "NDT B4 TL12"
+  },
+  {
+   "ma_cau": "HHC002150",
+   "nguon": "NDT B4 TL17"
+  },
+  {
+   "ma_cau": "HHC002151",
+   "nguon": "NDT B4 TL20"
+  },
+  {
+   "ma_cau": "HHC002152",
+   "nguon": "NDT B4 TL23"
+  },
+  {
+   "ma_cau": "HHC002153",
+   "nguon": "NDT B4 TL24"
+  },
+  {
+   "ma_cau": "HHC002154",
+   "nguon": "NDT B4 TN12"
+  },
+  {
+   "ma_cau": "HHC002155",
+   "nguon": "NDT B6 TL4"
+  },
+  {
+   "ma_cau": "HHC002156",
+   "nguon": "NDT B6 TL14"
+  },
+  {
+   "ma_cau": "HHC002157",
+   "nguon": "NDT B6 TL17"
+  },
+  {
+   "ma_cau": "HHC002158",
+   "nguon": "NDT B6 TL20"
+  },
+  {
+   "ma_cau": "HHC002159",
+   "nguon": "NDT B6 TN13"
+  },
+  {
+   "ma_cau": "HHC002160",
+   "nguon": "NDT B6 TN18"
+  },
+  {
+   "ma_cau": "HHC002161",
+   "nguon": "NT CĐ7 TN9"
+  },
+  {
+   "ma_cau": "HHC002162",
+   "nguon": "NT CĐ7 TL12"
+  },
+  {
+   "ma_cau": "HHC002163",
+   "nguon": "NT CĐ7 TL14"
+  },
+  {
+   "ma_cau": "HHC002164",
+   "nguon": "NT CĐ7 TL15"
+  },
+  {
+   "ma_cau": "HHC002165",
+   "nguon": "NT CĐ7 TL16"
+  },
+  {
+   "ma_cau": "HHC002166",
+   "nguon": "NT CĐ7 TL17"
+  },
+  {
+   "ma_cau": "HHC002167",
+   "nguon": "NT CĐ8 TL1"
+  },
+  {
+   "ma_cau": "HHC002168",
+   "nguon": "PHL 277"
+  },
+  {
+   "ma_cau": "HHC002169",
+   "nguon": "PHL 280"
+  },
+  {
+   "ma_cau": "HHC002170",
+   "nguon": "PHL 281"
+  },
+  {
+   "ma_cau": "HHC002171",
+   "nguon": "PHL 282"
+  },
+  {
+   "ma_cau": "HHC002172",
+   "nguon": "PHL 283"
+  },
+  {
+   "ma_cau": "HHC002173",
+   "nguon": "PHL 284"
+  }
+ ],
+ "HH00110": [
+  {
+   "ma_cau": "HHC001989",
+   "nguon": "NDT B5 D1 VD1"
+  },
+  {
+   "ma_cau": "HHC001990",
+   "nguon": "NDT B5 D1 VD2"
+  },
+  {
+   "ma_cau": "HHC001991",
+   "nguon": "NDT B5 D1 VD3"
+  },
+  {
+   "ma_cau": "HHC001992",
+   "nguon": "NDT B5 D1 VD4"
+  },
+  {
+   "ma_cau": "HHC001993",
+   "nguon": "NDT B5 D1 VD5"
+  },
+  {
+   "ma_cau": "HHC001994",
+   "nguon": "NDT B5 D1 VD6"
+  },
+  {
+   "ma_cau": "HHC001995",
+   "nguon": "NDT B5 D2 VD1"
+  },
+  {
+   "ma_cau": "HHC001996",
+   "nguon": "NDT B5 D2 VD2"
+  },
+  {
+   "ma_cau": "HHC001997",
+   "nguon": "NDT B5 D2 VD3"
+  },
+  {
+   "ma_cau": "HHC001998",
+   "nguon": "NDT B5 D2 VD4"
+  },
+  {
+   "ma_cau": "HHC001999",
+   "nguon": "NDT B5 TL1"
+  },
+  {
+   "ma_cau": "HHC002000",
+   "nguon": "NDT B5 TL2"
+  },
+  {
+   "ma_cau": "HHC002001",
+   "nguon": "NDT B5 TL3"
+  },
+  {
+   "ma_cau": "HHC002002",
+   "nguon": "NDT B5 TL4"
+  },
+  {
+   "ma_cau": "HHC002003",
+   "nguon": "NDT B5 TL5"
+  },
+  {
+   "ma_cau": "HHC002004",
+   "nguon": "NDT B5 TL7"
+  },
+  {
+   "ma_cau": "HHC002005",
+   "nguon": "NDT B5 TL8"
+  },
+  {
+   "ma_cau": "HHC002006",
+   "nguon": "NDT B5 TL9"
+  },
+  {
+   "ma_cau": "HHC002007",
+   "nguon": "NDT B5 TL10"
+  },
+  {
+   "ma_cau": "HHC002008",
+   "nguon": "NDT B5 TL11"
+  },
+  {
+   "ma_cau": "HHC002009",
+   "nguon": "NDT B5 TL12"
+  },
+  {
+   "ma_cau": "HHC002010",
+   "nguon": "NDT B5 TL13"
+  },
+  {
+   "ma_cau": "HHC002011",
+   "nguon": "NDT B6 TL3"
+  },
+  {
+   "ma_cau": "HHC002012",
+   "nguon": "NDT B6 TL5"
+  },
+  {
+   "ma_cau": "HHC002013",
+   "nguon": "NDT B6 TL15"
+  },
+  {
+   "ma_cau": "HHC002014",
+   "nguon": "NDT B6 TL16"
+  },
+  {
+   "ma_cau": "HHC002015",
+   "nguon": "NDT B6 TL18"
+  },
+  {
+   "ma_cau": "HHC002016",
+   "nguon": "NDT B6 TL19"
+  },
+  {
+   "ma_cau": "HHC002017",
+   "nguon": "NDT B6 TL21"
+  },
+  {
+   "ma_cau": "HHC002018",
+   "nguon": "NDT B6 TL22"
+  },
+  {
+   "ma_cau": "HHC002019",
+   "nguon": "NDT B6 TN8"
+  },
+  {
+   "ma_cau": "HHC002020",
+   "nguon": "NDT B6 TN10"
+  },
+  {
+   "ma_cau": "HHC002021",
+   "nguon": "NDT B6 TN21"
+  },
+  {
+   "ma_cau": "HHC002022",
+   "nguon": "NT CĐ7 TN4"
+  },
+  {
+   "ma_cau": "HHC002023",
+   "nguon": "NT CĐ7 TN5"
+  },
+  {
+   "ma_cau": "HHC002024",
+   "nguon": "NT CĐ7 TN6"
+  },
+  {
+   "ma_cau": "HHC002025",
+   "nguon": "PHL 235"
+  },
+  {
+   "ma_cau": "HHC002026",
+   "nguon": "PHL 257"
+  },
+  {
+   "ma_cau": "HHC002027",
+   "nguon": "PHL 259"
+  },
+  {
+   "ma_cau": "HHC002028",
+   "nguon": "PHL 266"
+  },
+  {
+   "ma_cau": "HHC002029",
+   "nguon": "PHL 289"
+  },
+  {
+   "ma_cau": "HHC002030",
+   "nguon": "PHL 294"
+  },
+  {
+   "ma_cau": "HHC002031",
+   "nguon": "PHL 295"
+  },
+  {
+   "ma_cau": "HHC002032",
+   "nguon": "PHL 296"
+  }
+ ]
+}

@@ -33,12 +33,12 @@ export default function ThanhChonMon({ mons, mon, onChon, nut, khung, dem, to, l
         const n = chon ? 0 : dem?.[m.mon] ?? 0
         return (
           <button key={m.mon} role="tab" aria-selected={chon} onClick={() => onChon(m.mon)}
-            className={`relative shrink-0 whitespace-nowrap rounded-full font-bold transition active:scale-95 ${to ? 'flex min-w-0 flex-col items-center justify-center px-2 py-2 leading-tight' : 'px-3.5 py-1.5 text-[13px]'}`}
+            className={`relative shrink-0 whitespace-nowrap rounded-full font-bold transition active:scale-95 ${to ? 'flex min-w-0 flex-col items-center justify-center px-2 py-2 leading-tight' : 'px-3.5 py-1.5 text-[14.5px]'}`}
             style={nut(chon)}>
-            <span className={to ? 'max-w-full truncate text-[15px] md:text-[17px]' : undefined}>{m.mon}</span>
-            {to && m.ten_lop && <span className="max-w-full truncate text-[11px] font-semibold opacity-75 md:text-[12px]">{m.ten_lop}</span>}
+            <span className={to ? 'max-w-full truncate text-[16.5px] md:text-[18.5px]' : undefined}>{m.mon}</span>
+            {to && m.ten_lop && <span className="max-w-full truncate text-[12px] font-semibold opacity-75 md:text-[13px]">{m.ten_lop}</span>}
             {n > 0 && (
-              <span className="absolute -right-0.5 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold"
+              <span className="absolute -right-0.5 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[12px] font-extrabold"
                 style={{ background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }} aria-label={`${n} việc đang chờ`}>{n}</span>
             )}
           </button>

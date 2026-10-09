@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 156" width="540" height="156" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="540" height="156" fill="#fff"/>
+<text x="124" y="37" text-anchor="end" fill="#0f172a">Thùng thứ nhất:</text>
+<line x1="134" y1="32" x2="368" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="134" y1="25" x2="134" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="368" y1="25" x2="368" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="251" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="124" y="81" text-anchor="end" fill="#0f172a">Thùng thứ hai:</text>
+<line x1="134" y1="76" x2="320" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="134" y1="69" x2="134" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="368" y1="69" x2="368" y2="83" stroke="#0f172a" stroke-width="1"/>
+<line x1="320" y1="76" x2="368" y2="76" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="320" y1="69" x2="320" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="344" y="66" text-anchor="middle" font-size="12" fill="#b45309">16 lít</text>
+<text x="227" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<text x="124" y="125" text-anchor="end" fill="#0f172a">Thùng thứ ba:</text>
+<line x1="134" y1="120" x2="368" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="134" y1="113" x2="134" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="368" y1="113" x2="368" y2="127" stroke="#0f172a" stroke-width="2"/>
+<line x1="368" y1="120" x2="434" y2="120" stroke="#0f172a" stroke-width="2"/>
+<line x1="434" y1="113" x2="434" y2="127" stroke="#0f172a" stroke-width="2"/>
+<text x="401" y="110" text-anchor="middle" font-size="12" fill="#b45309">22 lít</text>
+<text x="284" y="140" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M448,24 q8,0 8,8 L456,68 q0,8 8,8 q-8,0 -8,8 L456,120 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="470" y="81" fill="#0f172a">240 lít</text>
+</svg>

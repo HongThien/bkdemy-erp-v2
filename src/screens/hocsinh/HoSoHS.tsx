@@ -26,7 +26,7 @@ function Nhom({ tieuDe, phai, children }: { tieuDe: string; phai?: ReactNode; ch
   return (
     <div className="p-4" style={THE}>
       <div className="mb-2.5 flex items-center justify-between gap-2">
-        <p className="text-[12px] font-extrabold uppercase tracking-[0.08em]" style={{ color: MAU.muted }}>{tieuDe}</p>
+        <p className="text-[13px] font-extrabold uppercase tracking-[0.08em]" style={{ color: MAU.muted }}>{tieuDe}</p>
         {phai}
       </div>
       {children}
@@ -57,9 +57,9 @@ export function HoSoView(p: HoSoViewProps) {
       {/* ① ĐẦU HỒ SƠ */}
       <div className="flex flex-col items-center gap-1 pt-2 text-center">
         <AvatarKhung bac={bac} size={132} anhUrl={p.anhUrl} initials={vietTat(p.hoTen)} avatar={p.avatar} />
-        <p className="mt-1 text-[22px] font-extrabold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{p.hoTen}</p>
-        {toi && <p className="text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{toi.ten_lop} · khối {p.rank!.khoi}</p>}
-        {p.danhHieu && <span className="mt-1 rounded-full px-3 py-1 text-[12.5px] font-bold" style={{ ...THE_TRON, borderRadius: 999, color: MAU.acc }}>🎗 {p.danhHieu}</span>}
+        <p className="mt-1 text-[24px] font-extrabold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{p.hoTen}</p>
+        {toi && <p className="text-[14.5px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{toi.ten_lop} · khối {p.rank!.khoi}</p>}
+        {p.danhHieu && <span className="mt-1 rounded-full px-3 py-1 text-[14px] font-bold" style={{ ...THE_TRON, borderRadius: 999, color: MAU.acc }}>🎗 {p.danhHieu}</span>}
       </div>
 
       {/* ② CHỌN MÔN */}
@@ -69,39 +69,39 @@ export function HoSoView(p: HoSoViewProps) {
       {/* ③ RANK — tạm khoá 06/10 (rankBat) */}
       {rankBat() && <button onClick={p.onRank} disabled={!p.onRank} className="overflow-hidden text-left active:scale-[0.99]" style={THE}>
         <div className="flex items-center justify-between px-4 py-2" style={{ background: c.mau, color: MAU_GAMI.chu }}>
-          <span className="text-[13px] font-extrabold" style={HEAD}>{than ? 'Thần' : `Chương ${c.ten}`}</span>
-          {p.onRank && <span className="text-[12px] font-bold opacity-90">Xem Rank ›</span>}
+          <span className="text-[14.5px] font-extrabold" style={HEAD}>{than ? 'Thần' : `Chương ${c.ten}`}</span>
+          {p.onRank && <span className="text-[13px] font-bold opacity-90">Xem Rank ›</span>}
         </div>
         <div className="flex items-center gap-4 px-4 py-3.5" style={{ color: MAU.ink }}>
           {toi ? (
             <>
               <BieuTuongBac bac={bac} size={76} />
               <div className="min-w-0 flex-1">
-                <p className="text-[24px] font-extrabold leading-none" style={HEAD}>{toi.ghe ?? toi.ten_bac}</p>
+                <p className="text-[26.5px] font-extrabold leading-none" style={HEAD}>{toi.ghe ?? toi.ten_bac}</p>
                 {!than && <div className="mt-1"><SaoBac n={toi.sao} size={17} /></div>}
-                <p className="mt-1.5 text-[13px]"><b>{so(toi.diem_mua)}</b> Điểm Rank · hạng <b>{toi.hang_khoi}</b>/{toi.so_em_khoi} khối</p>
+                <p className="mt-1.5 text-[14.5px]"><b>{so(toi.diem_mua)}</b> Điểm Rank · hạng <b>{toi.hang_khoi}</b>/{toi.so_em_khoi} khối</p>
                 {bacSau && toi.nguong_sau != null && (
                   <>
                     <div className="mt-2 h-2 w-full overflow-hidden rounded-full" style={{ background: MAU.surface2 }}>
                       <div className="h-full rounded-full" style={{ width: `${Math.round(tienDo * 100)}%`, background: c.mau }} />
                     </div>
-                    <p className="mt-1 text-[11.5px]" style={{ color: MAU.muted }}>Còn {so(toi.nguong_sau - toi.diem_mua)} điểm lên {bacSau.ten}</p>
+                    <p className="mt-1 text-[12.5px]" style={{ color: MAU.muted }}>Còn {so(toi.nguong_sau - toi.diem_mua)} điểm lên {bacSau.ten}</p>
                   </>
                 )}
               </div>
             </>
-          ) : <p className="text-[13px]" style={{ color: MAU.muted }}>{p.rank === null ? 'Rank chưa mở cho môn này.' : 'Em chưa có điểm Rank mùa này.'}</p>}
+          ) : <p className="text-[14.5px]" style={{ color: MAU.muted }}>{p.rank === null ? 'Rank chưa mở cho môn này.' : 'Em chưa có điểm Rank mùa này.'}</p>}
         </div>
       </button>}
 
       {/* ④ 3 HUY HIỆU KHOE */}
-      <Nhom tieuDe="Huy hiệu khoe" phai={p.onDoiKhoe && <button onClick={p.onDoiKhoe} className="rounded-full px-3 py-1 text-[12.5px] font-bold" style={{ background: MAU.surface2, color: MAU.acc }}>Đổi</button>}>
+      <Nhom tieuDe="Huy hiệu khoe" phai={p.onDoiKhoe && <button onClick={p.onDoiKhoe} className="rounded-full px-3 py-1 text-[14px] font-bold" style={{ background: MAU.surface2, color: MAU.acc }}>Đổi</button>}>
         <div className="grid grid-cols-3 gap-2">
           {khoe.map((k, i) => (
             <button key={i} onClick={p.onDoiKhoe} disabled={!p.onDoiKhoe} className="flex flex-col items-center gap-1.5 rounded-2xl py-2.5" style={{ background: MAU.surface2 }}>
               {k ? <HinhHuyHieu hhKey={k.key} sao={k.sao} size={64} title={k.ten} />
-                : <span className="flex h-16 w-16 items-center justify-center rounded-full text-[26px] font-bold" style={{ border: `2px dashed ${MAU.line}`, color: MAU.muted }}>+</span>}
-              <span className="text-[12.5px] font-bold" style={{ color: k ? MAU.ink : MAU.muted }}>{k ? k.ten : 'Trống'}</span>
+                : <span className="flex h-16 w-16 items-center justify-center rounded-full text-[28.5px] font-bold" style={{ border: `2px dashed ${MAU.line}`, color: MAU.muted }}>+</span>}
+              <span className="text-[14px] font-bold" style={{ color: k ? MAU.ink : MAU.muted }}>{k ? k.ten : 'Trống'}</span>
             </button>
           ))}
         </div>
@@ -111,14 +111,14 @@ export function HoSoView(p: HoSoViewProps) {
       {p.hs && (
         <button onClick={p.onAlbum} disabled={!p.onAlbum} className="p-4 text-left active:scale-[0.99]" style={THE}>
           <div className="mb-2.5 flex items-center justify-between">
-            <p className="text-[12px] font-extrabold uppercase tracking-[0.08em]" style={{ color: MAU.muted }}>Album huy hiệu</p>
-            <span className="text-[13px] font-extrabold" style={{ color: MAU.acc }}>{p.hs.tong_sao}/{p.hs.tong_sao_toi_da} sao ›</span>
+            <p className="text-[13px] font-extrabold uppercase tracking-[0.08em]" style={{ color: MAU.muted }}>Album huy hiệu</p>
+            <span className="text-[14.5px] font-extrabold" style={{ color: MAU.acc }}>{p.hs.tong_sao}/{p.hs.tong_sao_toi_da} sao ›</span>
           </div>
           <div className="grid grid-cols-8 gap-1">
             {p.hs.huy_hieu.map((h) => (
               <span key={h.key} className="flex flex-col items-center gap-0.5">
                 <HinhHuyHieu hhKey={h.key} sao={h.sao} size={36} kieu="nho" title={h.ten} />
-                <span className="text-[10.5px] font-bold leading-none" style={{ color: h.sao ? (h.sao >= 4 ? VANG : mauHH(h.key).dam) : MAU.muted }}>{h.sao ? `★${h.sao}` : '–'}</span>
+                <span className="text-[11.5px] font-bold leading-none" style={{ color: h.sao ? (h.sao >= 4 ? VANG : mauHH(h.key).dam) : MAU.muted }}>{h.sao ? `★${h.sao}` : '–'}</span>
               </span>
             ))}
           </div>
@@ -134,8 +134,8 @@ export function HoSoView(p: HoSoViewProps) {
             ['Bản cứng', p.hs ? String(p.hs.ban_cung_da_nhan) : '–', ''],
           ] as const).map(([nhan, so1, phu]) => (
             <div key={nhan} className="rounded-2xl py-2.5" style={{ background: MAU.surface2 }}>
-              <div className="text-[18px] font-extrabold leading-tight" style={{ color: MAU.ink }}>{so1}<span className="text-[12px] font-bold" style={{ color: MAU.muted }}>{phu}</span></div>
-              <div className="text-[11.5px]" style={{ color: MAU.muted }}>{nhan}</div>
+              <div className="text-[20px] font-extrabold leading-tight" style={{ color: MAU.ink }}>{so1}<span className="text-[13px] font-bold" style={{ color: MAU.muted }}>{phu}</span></div>
+              <div className="text-[12.5px]" style={{ color: MAU.muted }}>{nhan}</div>
             </div>
           ))}
         </div>
@@ -143,7 +143,7 @@ export function HoSoView(p: HoSoViewProps) {
 
       {/* ⑦ KỶ NIỆM CÁC MÙA */}
       <Nhom tieuDe="Kỷ niệm các mùa">
-        <p className="rounded-2xl px-3 py-4 text-center text-[13px]" style={{ border: `1.5px dashed ${MAU.line}`, color: MAU.muted }}>
+        <p className="rounded-2xl px-3 py-4 text-center text-[14.5px]" style={{ border: `1.5px dashed ${MAU.line}`, color: MAU.muted }}>
           Hết mùa {p.hs?.mua ?? 'này'}, bậc cao nhất em đạt được sẽ lưu ở đây — giữ mãi.
         </p>
       </Nhom>
@@ -160,8 +160,8 @@ export function ChonKhoe({ hs, onHuy, onLuu }: { hs: HoSoGami; onHuy: () => void
   return (
     <div role="dialog" aria-modal className="fixed inset-0 z-40 flex items-end justify-center md:items-center" style={{ background: 'rgba(8,10,24,.6)' }} onClick={onHuy}>
       <div className="w-full max-w-[520px] p-4 pb-[calc(16px+env(safe-area-inset-bottom))]" style={{ ...THE, borderRadius: '24px 24px 0 0', clipPath: 'none' }} onClick={(e) => e.stopPropagation()}>
-        <p className="text-[18px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chọn 3 huy hiệu khoe</p>
-        <p className="mt-0.5 text-[12.5px]" style={{ color: MAU.muted }}>Bấm theo thứ tự muốn xếp · đã chọn {chon.length}/3</p>
+        <p className="text-[20px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chọn 3 huy hiệu khoe</p>
+        <p className="mt-0.5 text-[14px]" style={{ color: MAU.muted }}>Bấm theo thứ tự muốn xếp · đã chọn {chon.length}/3</p>
         <div className="mt-3 grid grid-cols-4 gap-2">
           {hs.huy_hieu.map((h) => {
             const khoa = h.sao_cao_nhat <= 0, thu = chon.indexOf(h.key)
@@ -169,13 +169,13 @@ export function ChonKhoe({ hs, onHuy, onLuu }: { hs: HoSoGami; onHuy: () => void
               <button key={h.key} disabled={khoa} onClick={() => bam(h.key)} className="relative flex flex-col items-center gap-1 rounded-2xl py-2"
                 style={{ background: MAU.surface2, boxShadow: thu >= 0 ? `inset 0 0 0 2px ${MAU.acc}` : undefined, opacity: khoa ? 0.55 : 1 }}>
                 <HinhHuyHieu hhKey={h.key} sao={h.sao_cao_nhat} size={52} title={h.ten} />
-                <span className="text-[11.5px] font-bold" style={{ color: MAU.ink }}>{h.ten}</span>
-                {thu >= 0 && <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>{thu + 1}</span>}
+                <span className="text-[12.5px] font-bold" style={{ color: MAU.ink }}>{h.ten}</span>
+                {thu >= 0 && <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full text-[12px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>{thu + 1}</span>}
               </button>
             )
           })}
         </div>
-        {loi && <p className="mt-2 text-[12.5px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+        {loi && <p className="mt-2 text-[14px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
         <div className="mt-3 flex gap-2">
           <NutHS phu onClick={onHuy} className="flex-1">Huỷ</NutHS>
           <NutHS tat={dang} className="flex-1" onClick={async () => {
@@ -193,7 +193,7 @@ export function TheTVHS({ hoTen, anhUrl, bac, khoe }: { hoTen: string; anhUrl: s
   return (
     <div className="flex items-center gap-2.5 px-3 py-2" style={THE}>
       <AvatarKhung bac={bac} size={52} anhUrl={anhUrl} initials={vietTat(hoTen)} />
-      <span className="min-w-0 flex-1 truncate text-[15px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>{tenNgan(hoTen)}</span>
+      <span className="min-w-0 flex-1 truncate text-[16.5px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>{tenNgan(hoTen)}</span>
       <BieuTuongBac bac={bac} size={34} nho />
       <span className="flex gap-1">{khoe.slice(0, 3).map((k) => <HinhHuyHieu key={k.key} hhKey={k.key} sao={k.sao} size={30} kieu="nho" title={k.ten} />)}</span>
     </div>
@@ -227,9 +227,9 @@ export default function HoSoHS({ hoTen, anhUrl, avatar, mons, mon, onChonMon, on
   return (
     <ManHS>
       <DauTrangHS tieuDe="Hồ sơ" phu={mon ?? undefined} onBack={onBack} phai={<NutDoHoa />} />
-      {loi && <p className="px-4 py-3 text-[13px]" style={{ ...THE, color: MAU.sai }}>{loi}</p>}
+      {loi && <p className="px-4 py-3 text-[14.5px]" style={{ ...THE, color: MAU.sai }}>{loi}</p>}
       {rank === undefined && !loi
-        ? <p className="px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>
+        ? <p className="px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>
         : <HoSoView hoTen={hoTen} anhUrl={anhUrl} avatar={avatar} mons={mons} mon={mon} onChonMon={onChonMon}
             rank={rank ?? null} nv={nv} hs={hs} onRank={onRank} onAlbum={onAlbum} onDoiKhoe={hs ? () => setChonKhoe(true) : undefined} />}
       {onGopY && <NutHS phu onClick={onGopY} className="self-center">💬 Góp ý & báo lỗi</NutHS>}

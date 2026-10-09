@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 565 132" width="565" height="132" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="565" height="132" fill="#fff"/>
+<text x="142" y="20" font-style="italic" fill="#334155">Sau khi Hải xếp thêm 12 quyển</text>
+<text x="132" y="57" text-anchor="end" fill="#0f172a">Số sách của Nam:</text>
+<line x1="142" y1="52" x2="409.6" y2="52" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="45" x2="142" y2="59" stroke="#0f172a" stroke-width="2"/>
+<line x1="409.6" y1="45" x2="409.6" y2="59" stroke="#0f172a" stroke-width="2"/>
+<text x="275.8" y="72" text-anchor="middle" fill="#dc2626">?</text>
+<text x="132" y="101" text-anchor="end" fill="#0f172a">Số sách của Hải:</text>
+<line x1="142" y1="96" x2="409.6" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="142" y1="89" x2="142" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="409.6" y1="89" x2="409.6" y2="103" stroke="#0f172a" stroke-width="2"/>
+<line x1="409.6" y1="96" x2="442" y2="96" stroke="#0f172a" stroke-width="2"/>
+<line x1="442" y1="89" x2="442" y2="103" stroke="#0f172a" stroke-width="2"/>
+<text x="425.8" y="86" text-anchor="middle" font-size="12" fill="#b45309">8 quyển</text>
+<text x="292" y="116" text-anchor="middle" fill="#dc2626">?</text>
+<path d="M456,44 q8,0 8,8 L464,66 q0,8 8,8 q-8,0 -8,8 L464,96 q0,8 -8,8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+<text x="478" y="79" fill="#0f172a">140 quyển</text>
+</svg>

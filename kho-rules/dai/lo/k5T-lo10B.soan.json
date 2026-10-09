@@ -1,0 +1,483 @@
+[
+ {
+  "ma_nguon": "ON 38",
+  "dap_an": "Số bé: $84,7$; số lớn: $100,3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số nhân với $2$ chính là **tổng** của hai số. Đã biết tổng và hiệu thì đây là bài tổng – hiệu.\n\n**Bước 1.** Đề cho trung bình cộng nên đổi ra tổng trước: tổng hai số bằng trung bình cộng nhân với số số hạng, ở đây là $2$.\n\n**Bước 2.** Vẽ sơ đồ: số bé là một đoạn, số lớn là một đoạn cộng thêm đúng bằng hiệu. Lấy tổng bớt đi hiệu thì còn hai đoạn bằng nhau, mỗi đoạn là số bé.\n\n**Bước 3.** Có số bé rồi cộng với hiệu để được số lớn.\n\nThử lại: $\\left(84,7+100,3\\right):2=92,5$ và $100,3-84,7=15,6$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $92,5\\times 2=185$\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; Số lớn 1 đoạn và 15,6; tổng 185)\n\nSố bé là: $\\left(185-15,6\\right):2=84,7$\n\nSố lớn là: $84,7+15,6=100,3$\n\nĐáp số: Số bé: $84,7$; số lớn: $100,3$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 84.7,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "15,6"
+    }
+   ],
+   "tong": "185",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 39",
+  "dap_an": "Hải: $62$ quyển sách; Nam: $66$ quyển sách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hải xếp thêm $12$ quyển nên **tổng số sách tăng** thành $128+12=140$ quyển, và hiệu \"Hải nhiều hơn Nam $8$ quyển\" là hiệu **lúc sau**. Giải bài tổng – hiệu cho lúc sau trước, rồi mới trở về lúc đầu.\n\n**Bước 1.** Tính tổng số sách của hai bạn sau khi Hải xếp thêm.\n\n**Bước 2.** Giải tổng – hiệu cho lúc sau: tìm số sách của Nam (Nam không xếp thêm nên số này cũng là lúc đầu), rồi số sách của Hải lúc sau.\n\n**Bước 3.** Hải lúc đầu ít hơn lúc sau $12$ quyển nên trừ đi $12$ để được số sách Hải xếp lúc đầu.\n\n**Chú ý:** Dùng hiệu $8$ cho lúc đầu là sai, vì hiệu $8$ chỉ đúng sau khi Hải xếp thêm.\n\nThử lại: $62+66=128$; $62+12=74$ và $74-66=8$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi Hải xếp thêm $12$ quyển, hai bạn xếp được tất cả: $128+12=140$ (quyển)\n\nTa có sơ đồ:\n\n(Sau khi Hải xếp thêm 12 quyển: Nam 1 đoạn; Hải 1 đoạn và 8 quyển; tổng 140 quyển)\n\nSố sách của Nam là: $\\left(140-8\\right):2=66$ (quyển)\n\nSố sách của Hải lúc sau là: $66+8=74$ (quyển)\n\nSố sách của Hải lúc đầu là: $74-12=62$ (quyển)\n\nĐáp số: Hải: $62$ quyển; Nam: $66$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi Hải xếp thêm 12 quyển",
+   "gia_tri_phan": 66,
+   "hang": [
+    {
+     "nhan": "Số sách của Nam",
+     "phan": 1
+    },
+    {
+     "nhan": "Số sách của Hải",
+     "phan": 1,
+     "them": "8 quyển"
+    }
+   ],
+   "tong": "140 quyển",
+   "dau_hoi": [
+    "Số sách của Nam",
+    "Số sách của Hải"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 40",
+  "dap_an": "$4$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** **Hiệu số tuổi** của hai mẹ con không đổi theo thời gian. Vẽ sơ đồ ở thời điểm có tỉ số (mẹ gấp $4$ lần Lan): Lan $1$ phần, mẹ $4$ phần.\n\n**Bước 1.** Tính hiệu số tuổi của mẹ và Lan hiện nay: hiệu này giữ nguyên mãi.\n\n**Bước 2.** Khi mẹ gấp $4$ lần Lan thì hiệu là $4-1=3$ phần. Hiệu ấy bằng hiệu số tuổi vừa tìm nên tìm được một phần, cũng là tuổi Lan lúc đó.\n\n**Bước 3.** Đề hỏi bao nhiêu năm nữa nên lấy tuổi Lan lúc đó trừ tuổi Lan hiện nay.\n\nThử lại: sau $4$ năm Lan $10$ tuổi, mẹ $40$ tuổi và $40=4\\times 10$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMẹ hơn Lan số tuổi là: $36-6=30$ (tuổi)\n\nHiệu số tuổi của hai mẹ con không đổi theo thời gian.\n\nTa có sơ đồ:\n\n(Khi tuổi mẹ gấp 4 lần tuổi Lan: Tuổi Lan 1 phần; Tuổi mẹ 4 phần; hiệu 30 tuổi)\n\nHiệu số phần bằng nhau là: $4-1=3$ (phần)\n\nTuổi Lan khi tuổi mẹ gấp $4$ lần tuổi Lan là: $30:3=10$ (tuổi)\n\nSố năm nữa để tuổi mẹ gấp $4$ lần tuổi Lan là: $10-6=4$ (năm)\n\nĐáp số: $4$ năm",
+  "so_do_mo_ta": {
+   "tieu_de": "Khi tuổi mẹ gấp 4 lần tuổi Lan",
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Tuổi Lan",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 4
+    }
+   ],
+   "hieu": "30 tuổi",
+   "dau_hoi": [
+    "Tuổi Lan"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 41",
+  "dap_an": "Số bé: $114$; số lớn: $126$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số chẵn liên tiếp hơn kém nhau $2$ đơn vị. Giữa hai số có $5$ số chẵn nên đi từ số bé đến số lớn phải qua $5+1=6$ khoảng, mỗi khoảng $2$ đơn vị. Vậy biết được **hiệu** của hai số; đề lại cho **tổng**, nên đây là bài tổng – hiệu.\n\n**Bước 1.** Đếm khoảng cách: giữa số bé và số lớn có $5$ số chẵn thì có $6$ khoảng, mỗi khoảng $2$ đơn vị, từ đó tìm hiệu của hai số.\n\n**Bước 2.** Vẽ sơ đồ: số bé một đoạn, số lớn một đoạn cộng thêm bằng hiệu; lấy tổng bớt hiệu rồi chia đôi để được số bé.\n\nThử lại: giữa $114$ và $126$ có các số chẵn $116$, $118$, $120$, $122$, $124$, đúng $5$ số; $114+126=240$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố khoảng từ số bé đến số lớn (mỗi khoảng $2$ đơn vị) là: $5+1=6$ (khoảng)\n\nHiệu của hai số là: $2\\times 6=12$\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; Số lớn 1 đoạn và 12; tổng 240)\n\nSố bé là: $\\left(240-12\\right):2=114$\n\nSố lớn là: $114+12=126$\n\nĐáp số: Số bé: $114$; số lớn: $126$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 114,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "12"
+    }
+   ],
+   "tong": "240",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 42",
+  "dap_an": "Bi xanh: $25$ viên; bi đỏ: $112$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm $3$ viên bi xanh thì **tổng số bi tăng** thành $137+3=140$ viên, và lúc đó bi xanh bằng $\\dfrac{1}{4}$ bi đỏ (bi đỏ không đổi). Giải bài tổng – tỉ cho **lúc sau**, rồi bớt $3$ viên để trở về lúc đầu.\n\n**Bước 1.** Tính tổng số bi sau khi thêm $3$ viên bi xanh.\n\n**Bước 2.** Bi xanh bằng $\\dfrac{1}{4}$ bi đỏ nên bi xanh $1$ phần, bi đỏ $4$ phần; tìm giá trị một phần rồi số bi mỗi loại lúc sau.\n\n**Bước 3.** Bi đỏ không đổi; bi xanh lúc đầu ít hơn lúc sau $3$ viên.\n\nThử lại: $25+112=137$; $25+3=28$ và $112:4=28$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi thêm $3$ viên bi xanh, tổng số bi là: $137+3=140$ (viên)\n\nTa có sơ đồ:\n\n(Sau khi thêm 3 viên bi xanh: Bi xanh 1 phần; Bi đỏ 4 phần; tổng 140 viên)\n\nTổng số phần bằng nhau là: $1+4=5$ (phần)\n\nSố bi xanh lúc sau là: $140:5=28$ (viên)\n\nSố bi đỏ là: $140-28=112$ (viên)\n\nSố bi xanh lúc đầu là: $28-3=25$ (viên)\n\nĐáp số: Bi xanh: $25$ viên; bi đỏ: $112$ viên",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi thêm 3 viên bi xanh",
+   "gia_tri_phan": 28,
+   "hang": [
+    {
+     "nhan": "Bi xanh",
+     "phan": 1
+    },
+    {
+     "nhan": "Bi đỏ",
+     "phan": 4
+    }
+   ],
+   "tong": "140 viên",
+   "dau_hoi": [
+    "Bi xanh",
+    "Bi đỏ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 43",
+  "dap_an": "$130,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dịch dấu phẩy sang **trái một hàng** thì số đó **giảm đi $10$ lần**. Vậy số mới là $1$ phần thì số ban đầu là $10$ phần, và \"kém $117,45$\" chính là **hiệu** của hai số: bài hiệu – tỉ.\n\n**Bước 1.** Vẽ sơ đồ: số mới $1$ phần, số ban đầu $10$ phần.\n\n**Bước 2.** Hiệu hai số ứng với hiệu số phần ($10-1=9$ phần); chia ra giá trị một phần, đó là số mới.\n\n**Bước 3.** Đề hỏi số ban đầu nên lấy số mới nhân với $10$.\n\nThử lại: $130,5$ dịch dấu phẩy sang trái một hàng được $13,05$ và $130,5-13,05=117,45$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDịch dấu phẩy của một số thập phân sang bên trái một hàng thì số đó giảm đi $10$ lần.\n\nTa có sơ đồ:\n\n(Số mới 1 phần; Số ban đầu 10 phần; hiệu 117,45)\n\nHiệu số phần bằng nhau là: $10-1=9$ (phần)\n\nSố mới (ứng với $1$ phần) là: $117,45:9=13,05$\n\nSố thập phân ban đầu là: $13,05\\times 10=130,5$\n\nĐáp số: $130,5$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 13.05,
+   "hang": [
+    {
+     "nhan": "Số mới",
+     "phan": 1
+    },
+    {
+     "nhan": "Số ban đầu",
+     "phan": 10
+    }
+   ],
+   "hieu": "117,45",
+   "dau_hoi": [
+    "Số ban đầu"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 44",
+  "dap_an": "Nam: $90$ học sinh; nữ: $144$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi \"$\\dfrac{1}{4}$ số nữ bằng $\\dfrac{2}{5}$ số nam\" thành **số phần bằng nhau** bằng cách **quy đồng tử số**: $\\dfrac{1}{4}=\\dfrac{2}{8}$. Lúc đó $2$ phần (khi chia số nữ thành $8$ phần) bằng $2$ phần (khi chia số nam thành $5$ phần) nên các phần ấy bằng nhau: nữ $8$ phần, nam $5$ phần.\n\n**Bước 1.** Quy đồng tử số để hai phân số có cùng tử $2$, từ đó biết số nam và số nữ chia thành mấy phần bằng nhau.\n\n**Bước 2.** Đề cho **tổng** $234$ học sinh nên giải bài tổng – tỉ: tìm giá trị một phần rồi tìm số nam, số nữ.\n\nThử lại: $144:4=36$ và $90\\times\\dfrac{2}{5}=36$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $\\dfrac{1}{4}=\\dfrac{2}{8}$ nên $\\dfrac{2}{8}$ số học sinh nữ bằng $\\dfrac{2}{5}$ số học sinh nam.\n\nHay số học sinh nam bằng $\\dfrac{5}{8}$ số học sinh nữ.\n\nTa có sơ đồ:\n\n(Học sinh nam 5 phần; Học sinh nữ 8 phần; tổng 234 học sinh)\n\nTổng số phần bằng nhau là: $5+8=13$ (phần)\n\nSố học sinh nam là: $234:13\\times 5=90$ (học sinh)\n\nSố học sinh nữ là: $234-90=144$ (học sinh)\n\nĐáp số: Nam: $90$ học sinh; nữ: $144$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 18,
+   "hang": [
+    {
+     "nhan": "Học sinh nam",
+     "phan": 5
+    },
+    {
+     "nhan": "Học sinh nữ",
+     "phan": 8
+    }
+   ],
+   "tong": "234 học sinh",
+   "dau_hoi": [
+    "Học sinh nam",
+    "Học sinh nữ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 45",
+  "dap_an": "Ngăn thứ nhất: $48$ quyển; ngăn thứ hai: $40$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển $4$ quyển từ ngăn thứ nhất sang ngăn thứ hai thì ngăn thứ nhất **giảm $4$**, ngăn thứ hai **tăng $4$**, nên **hiệu giảm $4+4=8$ quyển**. Hiệu lúc sau cùng tỉ số $\\dfrac{6}{5}$ là bài hiệu – tỉ cho **lúc sau**; đề hỏi số sách lúc sau nên không cần trở về lúc đầu.\n\n**Bước 1.** Tìm hiệu số sách của hai ngăn lúc sau: hiệu lúc đầu $16$ quyển, trừ đi $4$ rồi trừ thêm $4$.\n\n**Bước 2.** Ngăn thứ nhất bằng $\\dfrac{6}{5}$ ngăn thứ hai nên ngăn thứ nhất $6$ phần, ngăn thứ hai $5$ phần; hiệu $1$ phần ứng với hiệu vừa tìm.\n\n**Bước 3.** Tìm số sách của ngăn thứ hai, rồi ngăn thứ nhất.\n\n**Chú ý:** Dùng hiệu $16$ cho lúc sau là sai.\n\nThử lại: lúc đầu hai ngăn có $52$ và $36$ quyển (hơn $16$); chuyển $4$ quyển được $48$ và $40$, và $48:40=\\dfrac{6}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChuyển $4$ quyển từ ngăn thứ nhất sang ngăn thứ hai thì ngăn thứ nhất bớt $4$ quyển, ngăn thứ hai thêm $4$ quyển.\n\nHiệu số sách của hai ngăn lúc sau là: $16-4-4=8$ (quyển)\n\nTa có sơ đồ:\n\n(Lúc sau: Ngăn thứ hai 5 phần; Ngăn thứ nhất 6 phần; hiệu 8 quyển)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nSố sách ở ngăn thứ hai lúc sau là: $8:1\\times 5=40$ (quyển)\n\nSố sách ở ngăn thứ nhất lúc sau là: $40+8=48$ (quyển)\n\nĐáp số: Ngăn thứ nhất: $48$ quyển; ngăn thứ hai: $40$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc sau khi chuyển 4 quyển",
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Ngăn thứ hai",
+     "phan": 5
+    },
+    {
+     "nhan": "Ngăn thứ nhất",
+     "phan": 6
+    }
+   ],
+   "hieu": "8 quyển",
+   "dau_hoi": [
+    "Ngăn thứ hai",
+    "Ngăn thứ nhất"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 46",
+  "dap_an": "Số bé: $36$; số lớn: $332$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Số lớn chia cho số bé được thương $9$ và dư $8$\" nghĩa là **số lớn bằng $9$ lần số bé rồi thêm $8$**. Vẽ số bé $1$ phần, số lớn $9$ phần và thêm đoạn $8$: bài tổng – tỉ có thêm đoạn dư.\n\n**Bước 1.** Vẽ sơ đồ: số bé $1$ phần, số lớn $9$ phần cộng thêm $8$.\n\n**Bước 2.** Bớt đoạn dư $8$ ra khỏi tổng thì hai số chỉ còn $1+9=10$ phần bằng nhau; tìm một phần, đó là số bé.\n\n**Bước 3.** Lấy tổng trừ số bé để được số lớn.\n\nThử lại: $332:36=9$ dư $8$ (vì $9\\times 36=324$ và $332-324=8$); $36+332=368$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lớn chia cho số bé được thương bằng $9$ và dư $8$ nên số lớn bằng $9$ lần số bé rồi thêm $8$.\n\nTa có sơ đồ:\n\n(Số bé 1 phần; Số lớn 9 phần và 8; tổng 368)\n\nTổng số phần bằng nhau là: $9+1=10$ (phần)\n\nNếu bớt $8$ ở số lớn thì tổng hai số là: $368-8=360$\n\nSố bé là: $360:10=36$\n\nSố lớn là: $368-36=332$\n\nĐáp số: Số bé: $36$; số lớn: $332$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 36,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 9,
+     "them": "8"
+    }
+   ],
+   "tong": "368",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 47",
+  "dap_an": "Số thứ nhất: $270$; số thứ hai: $405$; số thứ ba: $1215$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thứ hai xuất hiện trong **cả hai** tỉ số nên dùng nó làm \"cầu nối\". Số thứ nhất bằng $\\dfrac{2}{3}$ số thứ hai: số thứ hai $3$ phần thì số thứ nhất $2$ phần. Số thứ hai bằng $\\dfrac{1}{3}$ số thứ ba nên số thứ ba gấp $3$ lần số thứ hai.\n\n**Bước 1.** Chọn số thứ hai là $3$ phần: số thứ nhất là $2$ phần, số thứ ba là $3\\times 3=9$ phần.\n\n**Bước 2.** Tổng ba số là $2+3+9=14$ phần; tìm giá trị một phần rồi tìm từng số.\n\nThử lại: $270+405+1215=1890$; $270:405=\\dfrac{2}{3}$ và $405:1215=\\dfrac{1}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thứ nhất bằng $\\dfrac{2}{3}$ số thứ hai nên số thứ hai $3$ phần thì số thứ nhất $2$ phần.\n\nSố thứ hai bằng $\\dfrac{1}{3}$ số thứ ba nên số thứ ba gấp $3$ lần số thứ hai, tức là $3\\times 3=9$ phần.\n\nTa có sơ đồ:\n\n(Số thứ nhất 2 phần; Số thứ hai 3 phần; Số thứ ba 9 phần; tổng 1890)\n\nTổng số phần bằng nhau là: $2+3+9=14$ (phần)\n\nGiá trị một phần là: $1890:14=135$\n\nSố thứ nhất là: $135\\times 2=270$\n\nSố thứ hai là: $135\\times 3=405$\n\nSố thứ ba là: $135\\times 9=1215$\n\nĐáp số: Số thứ nhất: $270$; số thứ hai: $405$; số thứ ba: $1215$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 135,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 2
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 3
+    },
+    {
+     "nhan": "Số thứ ba",
+     "phan": 9
+    }
+   ],
+   "tong": "1890",
+   "dau_hoi": [
+    "Số thứ nhất",
+    "Số thứ hai",
+    "Số thứ ba"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 48",
+  "dap_an": "Thùng thứ nhất: $30$ lít; thùng thứ hai: $18$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần chuyển $6$ lít, một thùng giảm $6$ còn thùng kia tăng $6$, nên **hiệu giữa hai thùng thay đổi $12$ lít**. Lần chuyển thứ nhất làm hai thùng bằng nhau, cho biết hiệu lúc đầu; lần chuyển thứ hai cho tỉ số $\\dfrac{1}{3}$, nên giải bài hiệu – tỉ ở thời điểm đó.\n\n**Bước 1.** Chuyển $6$ lít từ thùng thứ nhất sang thùng thứ hai thì hai thùng bằng nhau, nên lúc đầu thùng thứ nhất hơn thùng thứ hai $6+6=12$ lít.\n\n**Bước 2.** Nếu chuyển $6$ lít từ thùng thứ hai sang thùng thứ nhất thì thùng thứ nhất thêm $6$, thùng thứ hai bớt $6$: hiệu tăng thành $12+6+6=24$ lít.\n\n**Bước 3.** Lúc đó thùng thứ hai bằng $\\dfrac{1}{3}$ thùng thứ nhất: thùng thứ hai $1$ phần, thùng thứ nhất $3$ phần, hiệu $2$ phần ứng với $24$ lít. Tìm số dầu hai thùng ở thời điểm đó rồi trở về lúc đầu.\n\nThử lại: đổ $6$ lít từ thùng thứ nhất sang thùng thứ hai: $24$ và $24$ lít (bằng nhau); đổ $6$ lít từ thùng thứ hai sang thùng thứ nhất: $36$ và $12$ lít, và $12=\\dfrac{1}{3}\\times 36$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChuyển $6$ lít từ thùng thứ nhất sang thùng thứ hai thì hai thùng bằng nhau, nên lúc đầu thùng thứ nhất hơn thùng thứ hai là: $6+6=12$ (lít)\n\nChuyển $6$ lít từ thùng thứ hai sang thùng thứ nhất thì thùng thứ nhất hơn thùng thứ hai là: $12+6+6=24$ (lít)\n\nTa có sơ đồ:\n\n(Khi thùng II chuyển 6 lít sang thùng I: Thùng thứ hai 1 phần; Thùng thứ nhất 3 phần; hiệu 24 lít)\n\nHiệu số phần bằng nhau là: $3-1=2$ (phần)\n\nSố dầu ở thùng thứ hai lúc đó là: $24:2\\times 1=12$ (lít)\n\nSố dầu ở thùng thứ nhất lúc đó là: $12+24=36$ (lít)\n\nSố dầu ở thùng thứ nhất lúc đầu là: $36-6=30$ (lít)\n\nSố dầu ở thùng thứ hai lúc đầu là: $12+6=18$ (lít)\n\nĐáp số: Thùng thứ nhất: $30$ lít; thùng thứ hai: $18$ lít",
+  "so_do_mo_ta": {
+   "tieu_de": "Khi thùng II chuyển 6 lít sang thùng I",
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Thùng thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "Thùng thứ nhất",
+     "phan": 3
+    }
+   ],
+   "hieu": "24 lít",
+   "dau_hoi": [
+    "Thùng thứ hai",
+    "Thùng thứ nhất"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 49",
+  "dap_an": "$188$ que kem",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân số là phân số của **một số khác nhau**: $\\dfrac{3}{5}$ là của số que kem buổi sáng, $\\dfrac{5}{4}$ là của số que kem buổi chiều (không phải của $80$). Tính lần lượt từng buổi rồi cộng lại.\n\n**Bước 1.** Buổi chiều bán được $\\dfrac{3}{5}$ của số que kem buổi sáng.\n\n**Bước 2.** Buổi tối bán được $\\dfrac{5}{4}$ của số que kem **buổi chiều** vừa tìm.\n\n**Bước 3.** Cộng số que kem của ba buổi.\n\n**Chú ý:** Đề hỏi tổng cả ngày, đừng dừng lại ở buổi tối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố que kem buổi chiều bán được là: $80\\times\\dfrac{3}{5}=48$ (que)\n\nSố que kem buổi tối bán được là: $48\\times\\dfrac{5}{4}=60$ (que)\n\nSố que kem cả ngày bán được là: $80+48+60=188$ (que)\n\nĐáp số: $188$ que kem"
+ },
+ {
+  "ma_nguon": "ON 50",
+  "dap_an": "$84$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $\\dfrac{3}{7}$ là phân số của **tổng số vở** ($392$ quyển), còn $\\dfrac{5}{6}$ là phân số của **số vở lớp 5A** (không phải của tổng). Tìm lớp 5A, rồi lớp 5B, cuối cùng lấy tổng trừ đi hai lớp đó.\n\n**Bước 1.** Lớp 5A quyên góp $\\dfrac{3}{7}$ của $392$ quyển.\n\n**Bước 2.** Lớp 5B quyên góp $\\dfrac{5}{6}$ của số vở lớp 5A vừa tìm.\n\n**Bước 3.** Lớp 5C quyên góp phần còn lại: lấy tổng trừ số vở của 5A và 5B.\n\nThử lại: $168+140+84=392$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố vở lớp 5A quyên góp là: $392\\times\\dfrac{3}{7}=168$ (quyển)\n\nSố vở lớp 5B quyên góp là: $168\\times\\dfrac{5}{6}=140$ (quyển)\n\nSố vở lớp 5C quyên góp là: $392-168-140=84$ (quyển)\n\nĐáp số: $84$ quyển vở"
+ },
+ {
+  "ma_nguon": "ON 51",
+  "dap_an": "$120$ kg gạo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho kho có $3$ tạ nhưng hỏi **ki-lô-gam**, nên đổi $3$ tạ $=300$ kg trước. Phân số $\\dfrac{1}{3}$ của ngày thứ hai là của **số gạo còn lại sau ngày thứ nhất**, không phải của cả kho. Ngày thứ ba bán hết phần còn lại.\n\n**Bước 1.** Đổi $3$ tạ ra ki-lô-gam để cùng đơn vị với câu hỏi.\n\n**Bước 2.** Ngày thứ nhất bán $\\dfrac{2}{5}$ của cả kho; lấy cả kho trừ đi để biết số gạo còn lại.\n\n**Bước 3.** Ngày thứ hai bán $\\dfrac{1}{3}$ của số gạo còn lại sau ngày thứ nhất.\n\n**Bước 4.** Ngày thứ ba bán nốt số gạo còn lại sau ngày thứ hai.\n\nThử lại: $120+60+120=300$ (kg).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $3$ tạ $=300$ kg\n\nNgày thứ nhất cửa hàng bán số ki-lô-gam gạo là: $300\\times\\dfrac{2}{5}=120$ (kg)\n\nSố gạo còn lại sau ngày thứ nhất là: $300-120=180$ (kg)\n\nNgày thứ hai cửa hàng bán số ki-lô-gam gạo là: $180\\times\\dfrac{1}{3}=60$ (kg)\n\nNgày thứ ba cửa hàng bán số ki-lô-gam gạo là: $180-60=120$ (kg)\n\nĐáp số: $120$ kg gạo",
+  "ghi_chu_nghi": "Đề in \"cửa háng\" (đúng: cửa hàng). Câu \"bán hết gạo 3 tạ gạo trong kho trong ba ngày\" hiểu là trong kho có 3 tạ gạo và cửa hàng bán hết trong ba ngày; đáp số theo cách hiểu đó."
+ },
+ {
+  "ma_nguon": "ON 52",
+  "dap_an": "$117$ gian hàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tầng I tính từ cả $300$ gian, tầng II tính từ tầng I; còn tầng III và tầng IV chưa biết riêng nhưng biết **tổng** (lấy $300$ trừ tầng I và II) cùng **tỉ số** $\\dfrac{2}{3}$: đó là bài tổng – tỉ.\n\n**Bước 1.** Tầng I chiếm $\\dfrac{1}{5}$ của $300$ gian.\n\n**Bước 2.** Tầng II bằng $\\dfrac{3}{4}$ của số gian hàng **tầng I** vừa tìm.\n\n**Bước 3.** Tổng số gian hàng tầng III và tầng IV bằng $300$ trừ đi tầng I và tầng II.\n\n**Bước 4.** Tầng III bằng $\\dfrac{2}{3}$ tầng IV nên tầng III $2$ phần, tầng IV $3$ phần; giải bài tổng – tỉ để tìm tầng IV.\n\nThử lại: $60+45+78+117=300$ và $78:117=\\dfrac{2}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố gian hàng tầng I là: $300\\times\\dfrac{1}{5}=60$ (gian)\n\nSố gian hàng tầng II là: $60\\times\\dfrac{3}{4}=45$ (gian)\n\nTổng số gian hàng tầng III và tầng IV là: $300-60-45=195$ (gian)\n\nTa có sơ đồ:\n\n(Tầng III 2 phần; Tầng IV 3 phần; tổng 195 gian hàng)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nSố gian hàng tầng IV là: $195:5\\times 3=117$ (gian)\n\nĐáp số: $117$ gian hàng",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 39,
+   "hang": [
+    {
+     "nhan": "Tầng III",
+     "phan": 2
+    },
+    {
+     "nhan": "Tầng IV",
+     "phan": 3
+    }
+   ],
+   "tong": "195 gian hàng",
+   "dau_hoi": [
+    "Tầng IV"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 53",
+  "dap_an": "$40$ kg táo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai phân số $\\dfrac{1}{4}$ và $\\dfrac{3}{10}$ đều là phân số của **cả số táo lúc đầu**, nên cộng được để biết đã bán bao nhiêu phần. Phần còn lại là $1$ trừ đi phần đã bán, và phần còn lại ấy ứng với $18$ kg.\n\n**Bước 1.** Cộng hai phân số để biết cả ngày bán được bao nhiêu phần số táo.\n\n**Bước 2.** Lấy $1$ trừ đi để biết $18$ kg ứng với mấy phần số táo lúc đầu.\n\n**Bước 3.** Biết giá trị một phân số của số táo thì tìm số táo bằng phép **chia** cho phân số đó.\n\nThử lại: $40\\times\\dfrac{11}{20}=22$ và $40-22=18$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCả ngày cửa hàng bán được: $\\dfrac{1}{4}+\\dfrac{3}{10}=\\dfrac{5}{20}+\\dfrac{6}{20}=\\dfrac{11}{20}$ (số táo lúc đầu)\n\nSố táo còn lại ứng với: $1-\\dfrac{11}{20}=\\dfrac{9}{20}$ (số táo lúc đầu)\n\nSố táo lúc đầu của cửa hàng là: $18:\\dfrac{9}{20}=40$ (kg)\n\nĐáp số: $40$ kg táo"
+ },
+ {
+  "ma_nguon": "ON 54",
+  "dap_an": "$180$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số $\\dfrac{3}{4}$ của ngày thứ hai là phân số của **số trang còn lại sau ngày thứ nhất**, không phải của cả quyển. Ngày thứ ba đọc nốt nên $27$ trang chính là $\\dfrac{1}{4}$ số trang còn lại sau ngày thứ nhất. Đi **ngược từ ngày thứ ba** lên.\n\n**Bước 1.** Sau ngày thứ hai đọc $\\dfrac{3}{4}$ số trang còn lại thì còn $1-\\dfrac{3}{4}=\\dfrac{1}{4}$, ứng với $27$ trang; từ đó tìm số trang còn lại sau ngày thứ nhất.\n\n**Bước 2.** Số trang còn lại sau ngày thứ nhất ứng với $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ cả quyển; từ đó tìm số trang của cả quyển.\n\nThử lại: $180\\times\\dfrac{2}{5}=72$; còn $108$ trang; ngày hai đọc $108\\times\\dfrac{3}{4}=81$; còn $27$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$27$ trang ứng với: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (số trang còn lại sau ngày thứ nhất)\n\nSố trang còn lại sau ngày thứ nhất là: $27:\\dfrac{1}{4}=108$ (trang)\n\n$108$ trang ứng với: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số trang của quyển sách)\n\nSố trang của quyển sách là: $108:\\dfrac{3}{5}=180$ (trang)\n\nĐáp số: $180$ trang"
+ },
+ {
+  "ma_nguon": "ON 55",
+  "dap_an": "$1125$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba khối đều là các phần của **tổng số học sinh**, nên đổi mọi số về phân số của tổng. Khối $7$ là $\\dfrac{4}{5}$ của **khối 6** (không phải của tổng) nên phải nhân với $\\dfrac{1}{3}$. Chênh lệch \"khối $8$ hơn khối $6$ là $75$ bạn\" ứng với một phân số của tổng, từ đó tìm được tổng.\n\n**Bước 1.** Khối $7$ bằng $\\dfrac{4}{5}$ của khối $6$, mà khối $6$ là $\\dfrac{1}{3}$ tổng nên khối $7$ là $\\dfrac{4}{5}\\times\\dfrac{1}{3}$ tổng.\n\n**Bước 2.** Khối $8$ là phần còn lại: lấy $1$ trừ đi phần của khối $6$ và khối $7$.\n\n**Bước 3.** Khối $8$ hơn khối $6$ một phần bằng hiệu hai phân số; phần đó ứng với $75$ bạn nên tìm được tổng.\n\nThử lại: khối $6$ có $375$, khối $7$ có $300$, khối $8$ có $450$ bạn; $450-375=75$ và $375+300+450=1125$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh khối 7 bằng: $\\dfrac{1}{3}\\times\\dfrac{4}{5}=\\dfrac{4}{15}$ (tổng số học sinh)\n\nSố học sinh khối 8 bằng: $1-\\dfrac{1}{3}-\\dfrac{4}{15}=\\dfrac{15}{15}-\\dfrac{5}{15}-\\dfrac{4}{15}=\\dfrac{6}{15}$ (tổng số học sinh)\n\nSố học sinh khối 8 nhiều hơn khối 6 là: $\\dfrac{6}{15}-\\dfrac{1}{3}=\\dfrac{6}{15}-\\dfrac{5}{15}=\\dfrac{1}{15}$ (tổng số học sinh)\n\nTổng số học sinh đi tham quan là: $75:\\dfrac{1}{15}=1125$ (học sinh)\n\nĐáp số: $1125$ học sinh",
+  "ghi_chu_nghi": "Đề in \"thăm quan\" (đúng: tham quan); chỉ là lỗi chính tả, không ảnh hưởng cách giải."
+ },
+ {
+  "ma_nguon": "ON 56",
+  "dap_an": "$102$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lớp nhận \"một phân số và một số quyển\", mà phân số lại tính trên số vở **còn lại** ở lượt đó. Biết số vở cuối cùng (lớp 5C), nên đi **ngược từ lớp 5C** lên: bỏ phần số quyển cố định rồi chia cho phân số còn lại.\n\n**Bước 1.** Nếu lớp 5B không nhận thêm $24$ quyển thì số vở dành cho lớp 5C nhiều hơn $24$ quyển; số đó ứng với $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ số vở còn lại sau khi lớp 5A nhận; từ đó tìm số vở còn lại sau lớp 5A.\n\n**Bước 2.** Nếu lớp 5A không nhận thêm $8$ quyển thì số vở còn lại nhiều hơn $8$ quyển; số đó ứng với $\\dfrac{2}{3}$ tổng số vở; từ đó tìm tổng số vở.\n\n**Bước 3.** Lớp 5A nhận $\\dfrac{1}{3}$ tổng số vở và thêm $8$ quyển.\n\nThử lại: lớp 5A nhận $102$ quyển, còn $180$; lớp 5B nhận $60+24=84$ quyển, còn $96$ quyển cho lớp 5C.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu lớp 5B không nhận thêm $24$ quyển thì số vở còn lại cho lớp 5C là: $96+24=120$ (quyển)\n\n$120$ quyển ứng với: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số vở còn lại sau khi lớp 5A nhận)\n\nSố vở còn lại sau khi lớp 5A nhận là: $120:\\dfrac{2}{3}=180$ (quyển)\n\nNếu lớp 5A không nhận thêm $8$ quyển thì số vở còn lại là: $180+8=188$ (quyển)\n\n$188$ quyển ứng với: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (tổng số vở)\n\nTổng số vở là: $188:\\dfrac{2}{3}=282$ (quyển)\n\nSố vở lớp 5A nhận được là: $282\\times\\dfrac{1}{3}+8=102$ (quyển)\n\nĐáp số: $102$ quyển vở",
+  "ghi_chu_nghi": "Đề in \"lớp 5 A\" (có dấu cách thừa), chỉ là lỗi trình bày; không ảnh hưởng cách giải."
+ },
+ {
+  "ma_nguon": "ON 57",
+  "dap_an": "$196$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chỉ thêm bi đỏ nên **số bi xanh không đổi**: lấy số bi xanh làm \"đơn vị\" cho cả hai tỉ số. Lúc đầu bi đỏ bằng $\\dfrac{2}{5}$ bi xanh, lúc sau bằng $\\dfrac{4}{7}$ bi xanh, nên $24$ viên thêm vào ứng với $\\dfrac{4}{7}-\\dfrac{2}{5}$ số bi xanh.\n\n**Bước 1.** Tìm $24$ viên bi đỏ ứng với mấy phần số bi xanh (hiệu hai phân số, quy đồng mẫu số).\n\n**Bước 2.** Chia $24$ cho phân số đó để được số bi xanh.\n\n**Bước 3.** Tìm số bi đỏ lúc đầu rồi cộng với bi xanh để được tổng số bi.\n\nThử lại: $140\\times\\dfrac{4}{7}=80=56+24$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bi xanh không đổi.\n\n$24$ viên bi đỏ ứng với: $\\dfrac{4}{7}-\\dfrac{2}{5}=\\dfrac{20}{35}-\\dfrac{14}{35}=\\dfrac{6}{35}$ (số bi xanh)\n\nSố bi xanh là: $24:\\dfrac{6}{35}=140$ (viên)\n\nSố bi đỏ lúc đầu là: $140\\times\\dfrac{2}{5}=56$ (viên)\n\nTổng số bi trong hộp lúc đầu là: $140+56=196$ (viên)\n\nĐáp số: $196$ viên bi"
+ },
+ {
+  "ma_nguon": "ON 58",
+  "dap_an": "Số thứ nhất: $16$; số thứ hai: $40$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm vào số thứ nhất bao nhiêu thì bớt ở số thứ hai bấy nhiêu, nên **tổng hai số không đổi**. Đổi cả hai tỉ số thành \"số thứ nhất bằng mấy phần **tổng**\"; khi đó $16$ chính là phần số thứ nhất tăng lên.\n\n**Bước 1.** Lúc đầu số thứ nhất $2$ phần, số thứ hai $5$ phần nên số thứ nhất bằng $\\dfrac{2}{7}$ tổng; lúc sau $4$ phần và $3$ phần nên bằng $\\dfrac{4}{7}$ tổng.\n\n**Bước 2.** Số thứ nhất tăng $16$ nên $16$ ứng với hiệu hai phân số trên; chia ra tổng hai số.\n\n**Bước 3.** Tìm từng số lúc đầu.\n\nThử lại: lúc sau $32$ và $24$, và $32:24=\\dfrac{4}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng hai số không đổi.\n\nLúc đầu, số thứ nhất bằng: $\\dfrac{2}{2+5}=\\dfrac{2}{7}$ (tổng hai số)\n\nLúc sau, số thứ nhất bằng: $\\dfrac{4}{4+3}=\\dfrac{4}{7}$ (tổng hai số)\n\n$16$ ứng với: $\\dfrac{4}{7}-\\dfrac{2}{7}=\\dfrac{2}{7}$ (tổng hai số)\n\nTổng hai số là: $16:\\dfrac{2}{7}=56$\n\nSố thứ nhất là: $56\\times\\dfrac{2}{7}=16$\n\nSố thứ hai là: $56-16=40$\n\nĐáp số: Số thứ nhất: $16$; số thứ hai: $40$"
+ },
+ {
+  "ma_nguon": "ON 59",
+  "dap_an": "$\\dfrac{21}{45}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng thêm một số vào tử số và mẫu số thì **hiệu của mẫu số và tử số không đổi**. Lấy hiệu ấy làm \"đơn vị\" cho cả hai phân số: viết tử số bằng mấy phần của hiệu, lúc đầu và lúc sau.\n\n**Bước 1.** Lúc đầu $\\dfrac{7}{15}$: tử số $7$ phần, mẫu số $15$ phần, hiệu $15-7=8$ phần nên tử số bằng $\\dfrac{7}{8}$ hiệu.\n\n**Bước 2.** Lúc sau $\\dfrac{2}{3}$: tử số $2$ phần, mẫu số $3$ phần, hiệu $1$ phần nên tử số bằng $2$ lần hiệu.\n\n**Bước 3.** Tử số tăng $27$ nên $27$ ứng với hiệu hai kết quả trên; chia ra hiệu, rồi tìm tử số và mẫu số lúc đầu.\n\n**Chú ý:** Đề hỏi phân số **ban đầu**, mà $\\dfrac{7}{15}$ là giá trị đề đã cho; giữ phân số tìm được là $\\dfrac{21}{45}$, không rút gọn.\n\nThử lại: $\\dfrac{21+27}{45+27}=\\dfrac{48}{72}=\\dfrac{2}{3}$ và $\\dfrac{21}{45}=\\dfrac{7}{15}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của mẫu số và tử số không đổi.\n\nLúc đầu, tử số bằng: $\\dfrac{7}{15-7}=\\dfrac{7}{8}$ (hiệu của mẫu số và tử số)\n\nLúc sau, tử số bằng: $\\dfrac{2}{3-2}=2$ (hiệu của mẫu số và tử số)\n\n$27$ ứng với: $2-\\dfrac{7}{8}=\\dfrac{16}{8}-\\dfrac{7}{8}=\\dfrac{9}{8}$ (hiệu của mẫu số và tử số)\n\nHiệu của mẫu số và tử số là: $27:\\dfrac{9}{8}=24$\n\nTử số lúc đầu là: $24\\times\\dfrac{7}{8}=21$\n\nMẫu số lúc đầu là: $21+24=45$\n\nĐáp số: $\\dfrac{21}{45}$"
+ },
+ {
+  "ma_nguon": "ON 60",
+  "dap_an": "$18$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** **Hiệu số tuổi** của bố và con không đổi. Hiện nay và $25$ năm trước đề cho hai tỉ số, nên viết tuổi con bằng mấy phần **hiệu** ở hai thời điểm; tuổi con tăng $25$ nên $25$ ứng với hiệu hai phân số, từ đó tìm hiệu.\n\n**Bước 1.** Bố gấp $2,2$ lần con thì hiệu bằng $2,2-1=1,2$ lần tuổi con, nên tuổi con bằng $1:1,2=\\dfrac{5}{6}$ hiệu. Tương tự $25$ năm trước: $\\dfrac{5}{36}$ hiệu.\n\n**Bước 2.** Tuổi con tăng đúng $25$ tuổi trong $25$ năm; $25$ tuổi ứng với hiệu hai phân số trên nên tìm được hiệu số tuổi.\n\n**Bước 3.** Khi bố gấp $3$ lần con thì tuổi con bằng $\\dfrac{1}{3-1}=\\dfrac{1}{2}$ hiệu; nhân với hiệu vừa tìm.\n\nThử lại: hiện nay con $30$ tuổi, bố $66$ tuổi, $66:30=2,2$; $25$ năm trước $5$ và $41$ tuổi, $41:5=8,2$; khi con $18$ tuổi bố $54$ tuổi, $54=3\\times 18$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của bố và con không đổi theo thời gian.\n\nHiện nay, tuổi con bằng: $\\dfrac{1}{2,2-1}=\\dfrac{1}{1,2}=\\dfrac{10}{12}=\\dfrac{5}{6}$ (hiệu số tuổi)\n\n$25$ năm trước, tuổi con bằng: $\\dfrac{1}{8,2-1}=\\dfrac{1}{7,2}=\\dfrac{10}{72}=\\dfrac{5}{36}$ (hiệu số tuổi)\n\n$25$ tuổi ứng với: $\\dfrac{5}{6}-\\dfrac{5}{36}=\\dfrac{30}{36}-\\dfrac{5}{36}=\\dfrac{25}{36}$ (hiệu số tuổi)\n\nHiệu số tuổi của bố và con là: $25:\\dfrac{25}{36}=36$ (tuổi)\n\nKhi tuổi bố gấp $3$ lần tuổi con, tuổi con bằng: $\\dfrac{1}{3-1}=\\dfrac{1}{2}$ (hiệu số tuổi)\n\nTuổi con khi đó là: $36\\times\\dfrac{1}{2}=18$ (tuổi)\n\nĐáp số: $18$ tuổi",
+  "ghi_chu_nghi": "Đề in \"lẩn\" (đúng: lần). Đáp số $18$ tuổi là thời điểm đã qua (hiện nay con $30$ tuổi, bố $66$ tuổi; bố gấp $3$ lần con cách đây $12$ năm); đề không nói rõ quá khứ hay tương lai nhưng chỉ có thời điểm này thoả đề."
+ },
+ {
+  "ma_nguon": "ON 61",
+  "dap_an": "$17$ chiếc kẹo; $3$ em",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai cách chia cho **cùng số em** và **cùng số kẹo**. Một cách thừa, một cách thiếu nên khoảng chênh lệch của tổng số kẹo giữa hai cách là $2+4=6$ chiếc (một thừa một thiếu thì **cộng**).\n\n**Bước 1.** Mỗi em ở cách hai nhận nhiều hơn cách một $7-5=2$ chiếc (**hiệu thứ nhất**).\n\n**Bước 2.** Tổng số kẹo cần dùng chênh nhau từ chỗ thừa $2$ chiếc đến chỗ thiếu $4$ chiếc, là $2+4=6$ chiếc (**hiệu thứ hai**).\n\n**Bước 3.** Số em bằng hiệu thứ hai chia cho hiệu thứ nhất; rồi tính số kẹo theo một cách chia bất kì.\n\nThử lại: $5\\times 3+2=17$ và $7\\times 3-4=17$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số kẹo: 1 đoạn; Nếu mỗi em 5 chiếc: 1 đoạn, ngắn hơn số kẹo 2 chiếc (thừa 2 chiếc); Nếu mỗi em 7 chiếc: 1 đoạn và thêm 4 chiếc (thiếu 4 chiếc))\n\nChênh lệch số kẹo của một em giữa hai cách chia là: $7-5=2$ (chiếc)\n\nChênh lệch tổng số kẹo giữa hai cách chia là: $2+4=6$ (chiếc)\n\nSố em được chia kẹo là: $6:2=3$ (em)\n\nSố chiếc kẹo là: $5\\times 3+2=17$ (chiếc)\n\nĐáp số: $17$ chiếc kẹo; $3$ em",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 17,
+   "hang": [
+    {
+     "nhan": "Số kẹo",
+     "phan": 1
+    },
+    {
+     "nhan": "Nếu mỗi em 5 chiếc",
+     "phan": 1,
+     "bot": "2 chiếc"
+    },
+    {
+     "nhan": "Nếu mỗi em 7 chiếc",
+     "phan": 1,
+     "them": "4 chiếc"
+    }
+   ],
+   "dau_hoi": [
+    "Số kẹo"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 62",
+  "dap_an": "$205$ quyển vở; $29$ em",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai cách chia cho **cùng số em** và **cùng số vở**. Cả hai cách đều **thừa**, nên chênh lệch tổng số vở giữa hai cách là hiệu hai số thừa: $60-2=58$ quyển (cùng thừa thì **trừ**).\n\n**Bước 1.** Mỗi em ở cách hai nhận nhiều hơn cách một $7-5=2$ quyển (**hiệu thứ nhất**).\n\n**Bước 2.** Cách hai chia nhiều hơn nên thừa ít hơn; số vở thừa giảm đi $60-2=58$ quyển, đó là phần chia thêm cho tất cả các em (**hiệu thứ hai**).\n\n**Bước 3.** Số em bằng hiệu thứ hai chia cho hiệu thứ nhất; rồi tính số vở theo một cách chia bất kì.\n\nThử lại: $5\\times 29+60=205$ và $7\\times 29+2=205$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số vở: 1 đoạn; Nếu mỗi em 5 quyển: 1 đoạn, ngắn hơn số vở 60 quyển (thừa 60 quyển); Nếu mỗi em 7 quyển: 1 đoạn, ngắn hơn số vở 2 quyển (thừa 2 quyển))\n\nChênh lệch số vở của một em giữa hai cách chia là: $7-5=2$ (quyển)\n\nChênh lệch tổng số vở giữa hai cách chia là: $60-2=58$ (quyển)\n\nSố em được chia vở là: $58:2=29$ (em)\n\nSố quyển vở cô giáo có là: $5\\times 29+60=205$ (quyển)\n\nĐáp số: $205$ quyển vở; $29$ em",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 205,
+   "hang": [
+    {
+     "nhan": "Số vở",
+     "phan": 1
+    },
+    {
+     "nhan": "Nếu mỗi em 5 quyển",
+     "phan": 1,
+     "bot": "60 quyển"
+    },
+    {
+     "nhan": "Nếu mỗi em 7 quyển",
+     "phan": 1,
+     "bot": "2 quyển"
+    }
+   ],
+   "dau_hoi": [
+    "Số vở"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 63",
+  "dap_an": "$405$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai người được giao **cùng số sản phẩm** và làm **cùng số ngày**. Mỗi người còn thiếu một số sản phẩm phải làm thêm; cả hai đều **thiếu** nên chênh lệch tổng số sản phẩm đã làm giữa hai người là hiệu hai số thiếu: $69-13=56$ (cùng thiếu thì **trừ**).\n\n**Bước 1.** Mỗi ngày người thứ hai làm nhiều hơn người thứ nhất $56-48=8$ sản phẩm (**hiệu thứ nhất**).\n\n**Bước 2.** Sau cùng số ngày, người thứ nhất còn thiếu $69$ sản phẩm, người thứ hai còn thiếu $13$ sản phẩm, nên số sản phẩm đã làm của hai người chênh nhau $69-13=56$ (**hiệu thứ hai**).\n\n**Bước 3.** Số ngày bằng hiệu thứ hai chia cho hiệu thứ nhất; rồi tính số sản phẩm được giao theo người thứ nhất.\n\nThử lại: $48\\times 7+69=405$ và $56\\times 7+13=405$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số sản phẩm được giao: 1 đoạn; Người thứ nhất đã làm: ngắn hơn 69 sản phẩm (còn thiếu 69 sản phẩm); Người thứ hai đã làm: ngắn hơn 13 sản phẩm (còn thiếu 13 sản phẩm))\n\nChênh lệch số sản phẩm làm được trong một ngày giữa hai người là: $56-48=8$ (sản phẩm)\n\nChênh lệch số sản phẩm còn thiếu giữa hai người là: $69-13=56$ (sản phẩm)\n\nSố ngày hai người đã làm là: $56:8=7$ (ngày)\n\nSố sản phẩm mỗi công nhân được giao là: $48\\times 7+69=405$ (sản phẩm)\n\nĐáp số: $405$ sản phẩm",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 405,
+   "hang": [
+    {
+     "nhan": "Số sản phẩm được giao",
+     "phan": 1
+    },
+    {
+     "nhan": "Người thứ nhất đã làm",
+     "phan": 1,
+     "bot": "69 sản phẩm"
+    },
+    {
+     "nhan": "Người thứ hai đã làm",
+     "phan": 1,
+     "bot": "13 sản phẩm"
+    }
+   ],
+   "dau_hoi": [
+    "Số sản phẩm được giao"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 64",
+  "dap_an": "$32$ học sinh; $9$ bàn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Còn trống một bàn\" là thừa **bàn**, không cùng loại với \"$5$ em không có chỗ\". Phải đổi ra số **em**: nếu xếp đủ $4$ em vào cái bàn còn trống thì còn **thiếu $4$ em**.\n\n**Bước 1.** Đổi \"thừa $1$ bàn\" thành thiếu $4\\times 1=4$ em khi xếp kín mọi bàn (mỗi bàn $4$ em).\n\n**Bước 2.** Lúc này cách một **thừa** $5$ em, cách hai **thiếu** $4$ em nên tổng số em chênh nhau $5+4=9$; mỗi bàn chênh nhau $4-3=1$ em.\n\n**Bước 3.** Số bàn bằng $9:1$; rồi tính số học sinh theo cách xếp $3$ em một bàn.\n\nThử lại: $9$ bàn xếp $3$ em một bàn được $27$ em, thừa $5$ em nên có $32$ em; xếp $4$ em một bàn thì $8$ bàn đủ $32$ em, còn trống $1$ bàn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số học sinh: 1 đoạn; Số chỗ nếu mỗi bàn 3 em: ngắn hơn số học sinh 5 em; Số chỗ nếu mỗi bàn 4 em: thêm 4 em)\n\nNếu xếp mỗi bàn $4$ em cho kín cả bàn còn trống thì còn thiếu: $4\\times 1=4$ (em)\n\nChênh lệch số em ngồi ở một bàn giữa hai cách xếp là: $4-3=1$ (em)\n\nChênh lệch tổng số em giữa hai cách xếp là: $5+4=9$ (em)\n\nSố bàn của lớp là: $9:1=9$ (bàn)\n\nSố học sinh của lớp là: $3\\times 9+5=32$ (học sinh)\n\nĐáp số: $32$ học sinh; $9$ bàn",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 32,
+   "hang": [
+    {
+     "nhan": "Số học sinh",
+     "phan": 1
+    },
+    {
+     "nhan": "Số chỗ nếu mỗi bàn 3 em",
+     "phan": 1,
+     "bot": "5 em"
+    },
+    {
+     "nhan": "Số chỗ nếu mỗi bàn 4 em",
+     "phan": 1,
+     "them": "4 em"
+    }
+   ],
+   "dau_hoi": [
+    "Số học sinh"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 65",
+  "dap_an": "$180$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Thừa $2$ phòng\" là thừa **phòng**, không cùng loại với \"thừa $4$ học sinh\". Phải đổi ra số **học sinh**: nếu xếp đủ $20$ học sinh vào $2$ phòng thừa thì còn **thiếu $20\\times 2=40$ học sinh**.\n\n**Bước 1.** Đổi \"thừa $2$ phòng\" thành thiếu $20\\times 2=40$ học sinh khi xếp kín mọi phòng (mỗi phòng $20$ học sinh).\n\n**Bước 2.** Lúc này cách một **thừa** $4$ học sinh, cách hai **thiếu** $40$ học sinh nên tổng số học sinh chênh nhau $4+40=44$; mỗi phòng chênh nhau $20-16=4$ học sinh.\n\n**Bước 3.** Số phòng bằng $44:4$; rồi tính số học sinh theo cách xếp $16$ học sinh một phòng.\n\nThử lại: $16\\times 11+4=180$; xếp $20$ học sinh một phòng thì $9$ phòng đủ $180$ học sinh, còn thừa $2$ phòng trong $11$ phòng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số học sinh: 1 đoạn; Số chỗ nếu mỗi phòng 16 em: ngắn hơn số học sinh 4 em; Số chỗ nếu mỗi phòng 20 em: thêm 40 em)\n\nNếu xếp mỗi phòng $20$ học sinh cho kín cả $2$ phòng thừa thì còn thiếu: $20\\times 2=40$ (học sinh)\n\nChênh lệch số học sinh ở một phòng giữa hai cách xếp là: $20-16=4$ (học sinh)\n\nChênh lệch tổng số học sinh giữa hai cách xếp là: $4+40=44$ (học sinh)\n\nSố phòng là: $44:4=11$ (phòng)\n\nSố học sinh dự thi là: $16\\times 11+4=180$ (học sinh)\n\nĐáp số: $180$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 180,
+   "hang": [
+    {
+     "nhan": "Số học sinh",
+     "phan": 1
+    },
+    {
+     "nhan": "Số chỗ nếu mỗi phòng 16 em",
+     "phan": 1,
+     "bot": "4 em"
+    },
+    {
+     "nhan": "Số chỗ nếu mỗi phòng 20 em",
+     "phan": 1,
+     "them": "40 em"
+    }
+   ],
+   "dau_hoi": [
+    "Số học sinh"
+   ]
+  }
+ }
+]

@@ -1,0 +1,1 @@
+{"loai":"chuyen_dong","tieu_de":"Dòng nước chảy từ A về B","diem":[{"ten":"A","x":0},{"ten":"B","x":60}],"di":[{"tu":0,"den":60,"nhan":"Xuôi dòng: 10 giờ"},{"tu":60,"den":0,"nhan":"Ngược dòng: 15 giờ"},{"tu":0,"den":60,"nhan":"Lá trôi: ? giờ"}],"khoang":[{"tu":0,"den":60,"nhan":"Quãng sông AB"}]}

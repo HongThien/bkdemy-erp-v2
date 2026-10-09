@@ -35,7 +35,7 @@ export default function XemBoss() {
   const [lan, setLan] = useState(0) // đổi key để phát lại hoạt ảnh cùng tư thế
   const [th, setTh] = useState<TinhHuong>('gap_lan_dau')
   const [tran, setTran] = useState(q.get('tran') === '1')
-  if (!nd || !skin.boss?.[ma]) return <div className="p-6 text-sm">Không có boss “{ma}”.</div>
+  if (!nd || !skin.boss?.[ma]) return <div className="p-6 text-[15.5px]">Không có boss “{ma}”.</div>
   if (tran) {
     const { luc, chang } = duLieuTran(ma)
     return <div className="fixed inset-0" style={{ background: 'var(--sk-page)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
@@ -51,7 +51,7 @@ export default function XemBoss() {
             <BossAnhHS key={`${tt}-${lan}`} ma={ma} tt={tt} cao={380} />
             <div className="flex flex-wrap justify-center gap-1.5">
               {(Object.keys(NHAN_TU_THE) as TuTheBoss[]).map((k) => (
-                <button key={k} onClick={() => { setTt(k); setLan((n) => n + 1) }} className="rounded-full px-3 py-1 text-[12.5px] font-bold"
+                <button key={k} onClick={() => { setTt(k); setLan((n) => n + 1) }} className="rounded-full px-3 py-1 text-[14px] font-bold"
                   style={{ border: '1.5px solid var(--sk-line)', background: k === tt ? 'var(--sk-acc)' : 'var(--sk-surface2)', color: k === tt ? 'var(--sk-acc-ink)' : 'var(--sk-ink)' }}>{NHAN_TU_THE[k]}</button>
               ))}
             </div>
@@ -60,7 +60,7 @@ export default function XemBoss() {
             <NhomHS>Hội thoại (chạm khung để đi tiếp)</NhomHS>
             <div className="flex flex-wrap gap-1.5">
               {TINH_HUONG.map((t) => (
-                <button key={t.k} onClick={() => setTh(t.k)} className="rounded-full px-3 py-1 text-[12.5px]"
+                <button key={t.k} onClick={() => setTh(t.k)} className="rounded-full px-3 py-1 text-[14px]"
                   style={{ border: '1.5px solid var(--sk-line)', background: t.k === th ? 'var(--sk-acc)' : 'var(--sk-surface2)', color: t.k === th ? 'var(--sk-acc-ink)' : 'var(--sk-ink)' }}>{t.ten}</button>
               ))}
             </div>
@@ -68,8 +68,8 @@ export default function XemBoss() {
             <NhomHS>3 chiêu</NhomHS>
             {nd.chieu.map((c) => (
               <TheHS key={c.ma} className="p-3">
-                <p className="text-[14px] font-bold" style={{ ...HEAD, color: MAU.acc }}>{c.ten} <span className="font-normal" style={{ color: MAU.muted }}>· pha {c.phase}</span></p>
-                <p className="mt-0.5 text-[13px]" style={{ color: MAU.ink }}>{c.thu}</p>
+                <p className="text-[15.5px] font-bold" style={{ ...HEAD, color: MAU.acc }}>{c.ten} <span className="font-normal" style={{ color: MAU.muted }}>· pha {c.phase}</span></p>
+                <p className="mt-0.5 text-[14.5px]" style={{ color: MAU.ink }}>{c.thu}</p>
               </TheHS>
             ))}
             <NutHS onClick={() => setTran(true)}>Vào trận 3D thử</NutHS>

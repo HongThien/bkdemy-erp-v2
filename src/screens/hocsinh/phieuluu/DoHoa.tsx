@@ -21,8 +21,8 @@ export function BaoDoHoa() {
   if (t.hoi) {
     return (
       <div className="pointer-events-auto absolute bottom-16 left-1/2 z-40 w-[min(92vw,380px)] -translate-x-1/2 px-4 py-3 text-center" style={{ ...THE, color: MAU.ink }} role="dialog" aria-label="Hỏi về độ mượt">
-        <p className="text-[15px] font-bold" style={HEAD}>Em thấy hình có mượt không?</p>
-        <p className="mt-0.5 text-[12.5px]" style={{ color: MAU.muted }}>Đồ hoạ đang để mức {TEN_MUC[t.muc]}</p>
+        <p className="text-[16.5px] font-bold" style={HEAD}>Em thấy hình có mượt không?</p>
+        <p className="mt-0.5 text-[14px]" style={{ color: MAU.muted }}>Đồ hoạ đang để mức {TEN_MUC[t.muc]}</p>
         <div className="mt-2.5 flex justify-center gap-2">
           <NutHS onClick={() => traLoiMuot(true)}>Mượt, giữ mức này</NutHS>
           <NutHS phu onClick={() => traLoiMuot(false)}>Hơi giật, giảm bớt</NutHS>
@@ -32,7 +32,7 @@ export function BaoDoHoa() {
   }
   if (!t.thongBao) return null
   return (
-    <div className="pointer-events-none absolute bottom-16 left-1/2 z-40 -translate-x-1/2 rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold"
+    <div className="pointer-events-none absolute bottom-16 left-1/2 z-40 -translate-x-1/2 rounded-full px-3.5 py-1.5 text-[14px] font-semibold"
       style={{ background: 'var(--sk-surface)', border: 'var(--sk-card-border)', color: MAU.ink, backdropFilter: 'var(--sk-blur)' }} role="status">
       {t.thongBao}
     </div>
@@ -58,10 +58,10 @@ export function TamDoHoa({ onDong }: { onDong: () => void }) {
         style={{ background: MAU.bg, color: MAU.ink, fontFamily: 'var(--sk-font)', borderTop: `1px solid ${MAU.line}` }} role="dialog" aria-label="Đồ hoạ">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[17px] font-bold" style={HEAD}>Đồ hoạ</p>
-            <p className="text-[12.5px]" style={{ color: MAU.muted }}>{moTaTrangThai(t)}</p>
+            <p className="text-[18.5px] font-bold" style={HEAD}>Đồ hoạ</p>
+            <p className="text-[14px]" style={{ color: MAU.muted }}>{moTaTrangThai(t)}</p>
           </div>
-          <button onClick={onDong} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[16px]" style={{ background: MAU.surface2 }} aria-label="Đóng">✕</button>
+          <button onClick={onDong} className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-[17.5px]" style={{ background: MAU.surface2 }} aria-label="Đóng">✕</button>
         </div>
         {LUA_CHON.map((l) => {
           const chon = t.cheDo === l.id
@@ -72,14 +72,14 @@ export function TamDoHoa({ onDong }: { onDong: () => void }) {
                 {chon && <span className="h-2.5 w-2.5 rounded-full" style={{ background: MAU.acc }} />}
               </span>
               <span className="min-w-0 flex-1 leading-tight">
-                <span className="block text-[14.5px] font-bold">{l.ten}</span>
-                <span className="block text-[12px]" style={{ color: MAU.muted }}>{l.mo}</span>
+                <span className="block text-[16px] font-bold">{l.ten}</span>
+                <span className="block text-[13px]" style={{ color: MAU.muted }}>{l.mo}</span>
               </span>
             </button>
           )
         })}
-        <button onClick={() => { doLai(); setDaDo(true) }} className="mt-1 h-10 rounded-xl text-[13.5px] font-bold" style={{ color: MAU.acc, border: `1.5px solid ${MAU.acc}` }}>Đo lại máy này</button>
-        {daDo && <p className="text-center text-[12px]" style={{ color: MAU.muted }}>Mở bản đồ phiêu lưu là app tự đo lại trong khoảng 2 giây.</p>}
+        <button onClick={() => { doLai(); setDaDo(true) }} className="mt-1 h-10 rounded-xl text-[15px] font-bold" style={{ color: MAU.acc, border: `1.5px solid ${MAU.acc}` }}>Đo lại máy này</button>
+        {daDo && <p className="text-center text-[13px]" style={{ color: MAU.muted }}>Mở bản đồ phiêu lưu là app tự đo lại trong khoảng 2 giây.</p>}
       </div>
     </>,
     document.body,
@@ -92,7 +92,7 @@ export function NutDoHoa() {
   const t = useDoHoa()
   return (
     <>
-      <button onClick={() => setMo(true)} className="pointer-events-auto flex h-9 items-center gap-1.5 rounded-full px-3 text-[12px] font-bold"
+      <button onClick={() => setMo(true)} className="pointer-events-auto flex h-9 items-center gap-1.5 rounded-full px-3 text-[13px] font-bold"
         style={{ background: 'var(--sk-surface)', border: 'var(--sk-card-border)', color: MAU.ink, backdropFilter: 'var(--sk-blur)' }} aria-label="Chỉnh đồ hoạ">
         ⚙ Đồ hoạ: {TEN_MUC[t.muc]}
       </button>

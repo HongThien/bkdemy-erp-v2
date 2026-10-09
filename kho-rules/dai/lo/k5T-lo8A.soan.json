@@ -1,0 +1,356 @@
+[
+ {
+  "ma_nguon": "VD 19.1",
+  "dap_an": "$672\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tam giác MNC không có cạnh đáy và chiều cao nào đề cho sẵn, nên không tính thẳng được. Hình chữ nhật ABCD được chia thành **bốn tam giác**: ba tam giác vuông ở các góc A, B, D (đều tính được vì biết hai cạnh góc vuông) và tam giác MNC. Vậy $S_{MNC}$ bằng diện tích hình chữ nhật **trừ** diện tích ba tam giác vuông.\n\n**Bước 1.** Tìm các đoạn còn thiếu để tính ba tam giác vuông: BM $=$ AB $-$ AM và AN $=$ AD $-$ ND.\n\n**Bước 2.** Tính diện tích hình chữ nhật ABCD và ba tam giác vuông AMN, BMC, DNC (mỗi tam giác vuông: hai cạnh góc vuông nhân với nhau rồi chia $2$; BC $=$ AD, DC $=$ AB).\n\n**Bước 3.** Lấy diện tích hình chữ nhật trừ đi tổng diện tích ba tam giác vuông.\n\n**Chú ý:** đề không có hình; theo các độ dài đề cho (AM, ND) thì M nằm trên cạnh AB và N nằm trên cạnh AD.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đoạn thẳng BM là: $48-16=32$ (cm)\n\nĐộ dài đoạn thẳng AN là: $36-12=24$ (cm)\n\nDiện tích hình chữ nhật ABCD là: $48\\times 36=1728$ ($\\text{cm}^2$)\n\nDiện tích tam giác AMN là: $16\\times 24:2=192$ ($\\text{cm}^2$)\n\nDiện tích tam giác BMC là: $32\\times 36:2=576$ ($\\text{cm}^2$)\n\nDiện tích tam giác DNC là: $12\\times 48:2=288$ ($\\text{cm}^2$)\n\nDiện tích tam giác MNC là: $1728-\\left(192+576+288\\right)=672$ ($\\text{cm}^2$)\n\nĐáp số: $672\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình: soạn theo lời giải mẫu của sách, coi M nằm trên AB và N nằm trên AD (BM = AB - AM, AN = AD - ND)."
+ },
+ {
+  "ma_nguon": "LT 19.17",
+  "dap_an": "a) $60\\ \\text{cm}^2$; b) $210\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai tam giác AEN và ABC cùng có góc A nhưng **không chung đường cao**, nên phải đi qua một tam giác trung gian. Nối B với N thì có tam giác ABN: nó chung đường cao với ABC (hạ từ B xuống AC) và chung đường cao với AEN (hạ từ N xuống AB). Ý b dùng kết quả ý a: tứ giác BENC là tam giác ABC bỏ đi tam giác AEN, nên giữ một câu.\n\n**Bước 1.** Đổi điều kiện của E về so với cả cạnh AB: AE $=\\dfrac{1}{2}$ EB nghĩa là AE chiếm $1$ phần, EB chiếm $2$ phần, vậy AB có $3$ phần và AE $=\\dfrac{1}{3}$ AB.\n\n**Bước 2.** Nối B với N. Tìm $S_{ABN}$ từ $S_{ABC}$ (tỉ số $\\dfrac{AN}{AC}=\\dfrac{2}{3}$), rồi tìm $S_{AEN}$ từ $S_{ABN}$ (tỉ số $\\dfrac{AE}{AB}=\\dfrac{1}{3}$).\n\n**Bước 3.** Ý b: lấy $S_{ABC}$ trừ $S_{AEN}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối B với N.\n\nVì $AE=\\dfrac{1}{2}EB$ nên $AE=\\dfrac{1}{3}AB$.\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{2}{3}$\n\n$S_{ABN}=\\dfrac{2}{3}\\times 270=180\\ (\\text{cm}^2)$\n\nTam giác AEN và tam giác ABN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{AEN}}{S_{ABN}}=\\dfrac{AE}{AB}=\\dfrac{1}{3}$\n\na) $S_{AEN}=\\dfrac{1}{3}\\times 180=60\\ (\\text{cm}^2)$\n\nb) Diện tích tứ giác BENC là: $270-60=210$ ($\\text{cm}^2$)\n\nĐáp số: a) $60\\ \\text{cm}^2$; b) $210\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 20.2",
+  "dap_an": "$138\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích hình thang $=$ (đáy lớn $+$ đáy bé) $\\times$ chiều cao $:\\ 2$. Đề cho sẵn **tổng hai đáy** nên không cần tìm từng đáy, thay thẳng vào công thức.\n\n**Chú ý:** đừng quên chia $2$ ở cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình thang là: $23\\times 12:2=138$ ($\\text{dm}^2$)\n\nĐáp số: $138\\ \\text{dm}^2$",
+  "ghi_chu_nghi": "Đề in sai chính tả \"tởng\" (= tổng); không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "LT 20.3",
+  "dap_an": "$841\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề không cho chiều cao trực tiếp mà cho \"bằng trung bình cộng hai đáy\", nên phải tìm chiều cao trước rồi mới tính diện tích hình thang.\n\n**Bước 1.** Chiều cao $=$ trung bình cộng hai đáy $=($đáy lớn $+$ đáy bé$):2$.\n\n**Bước 2.** Diện tích hình thang $=$ (đáy lớn $+$ đáy bé) $\\times$ chiều cao $:\\ 2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều cao của thửa ruộng là: $\\left(32+26\\right):2=29$ (m)\n\nDiện tích thửa ruộng là: $\\left(32+26\\right)\\times 29:2=841$ ($\\text{m}^2$)\n\nĐáp số: $841\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Đề in sai chính tả \"dái\" (= dài); không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "LT 20.4",
+  "dap_an": "$224,72\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn tính diện tích hình thang cần **đáy bé** và **chiều cao**, mà đề chỉ cho trực tiếp đáy lớn. Đáy bé tìm từ \"đáy lớn hơn đáy bé $8,8$ m\"; chiều cao tìm từ \"bằng $\\dfrac{1}{4}$ tổng hai đáy\".\n\n**Bước 1.** Đáy bé $=$ đáy lớn $-$ $8,8$ m; tổng hai đáy $=$ đáy lớn $+$ đáy bé.\n\n**Bước 2.** Chiều cao $=$ tổng hai đáy $\\times\\dfrac{1}{4}$.\n\n**Bước 3.** Diện tích $=$ tổng hai đáy $\\times$ chiều cao $:\\ 2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đáy bé là: $25,6-8,8=16,8$ (m)\n\nTổng độ dài hai đáy là: $25,6+16,8=42,4$ (m)\n\nChiều cao của mảnh đất là: $42,4\\times\\dfrac{1}{4}=10,6$ (m)\n\nDiện tích mảnh đất là: $42,4\\times 10,6:2=224,72$ ($\\text{m}^2$)\n\nĐáp số: $224,72\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LT 20.5",
+  "dap_an": "$5,6$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho **trung bình cộng** hai đáy, mà công thức diện tích lại dùng **tổng** hai đáy. Tổng hai đáy gấp đôi trung bình cộng của chúng. Biết diện tích và tổng hai đáy thì đi ngược công thức $S=$ tổng hai đáy $\\times$ chiều cao $:\\ 2$.\n\n**Bước 1.** Tổng hai đáy $=$ trung bình cộng $\\times 2$.\n\n**Bước 2.** Chiều cao $=$ diện tích $\\times 2:$ tổng hai đáy. Chia cho một phân số thì nhân với phân số đảo ngược.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng độ dài hai đáy là: $\\dfrac{9}{8}\\times 2=\\dfrac{9}{4}$ (cm)\n\nChiều cao của hình thang là: $6,3\\times 2:\\dfrac{9}{4}=12,6\\times\\dfrac{4}{9}=5,6$ (cm)\n\nĐáp số: $5,6$ cm"
+ },
+ {
+  "ma_nguon": "LT 20.7",
+  "dap_an": "$45$ tạ thóc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bài có hai tầng: trước hết tính **diện tích thửa ruộng**, sau đó mới tính **số thóc** theo mức \"cứ $100\\ \\text{m}^2$ thu $2,5$ tạ\" (tỉ lệ thuận: diện tích tăng bao nhiêu lần thì thóc tăng bấy nhiêu lần).\n\n**Bước 1.** Chiều cao thửa ruộng bằng cạnh hình vuông $=$ chu vi $:4$. Tổng hai đáy $=$ trung bình cộng $\\times 2$.\n\n**Bước 2.** Diện tích thửa ruộng $=$ tổng hai đáy $\\times$ chiều cao $:\\ 2$.\n\n**Bước 3.** Rút về đơn vị: $1\\ \\text{m}^2$ thu được bao nhiêu tạ thóc, rồi nhân với diện tích cả thửa ruộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh hình vuông, cũng là chiều cao thửa ruộng, là: $120:4=30$ (m)\n\nTổng độ dài hai đáy là: $60\\times 2=120$ (m)\n\nDiện tích thửa ruộng là: $120\\times 30:2=1800$ ($\\text{m}^2$)\n\n$1\\ \\text{m}^2$ thu hoạch được số tạ thóc là: $2,5:100=0,025$ (tạ)\n\nCả thửa ruộng thu hoạch được số tạ thóc là: $0,025\\times 1800=45$ (tạ)\n\nĐáp số: $45$ tạ thóc"
+ },
+ {
+  "ma_nguon": "LT 20.8",
+  "dap_an": "$594\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn biết phần đất trồng cây, cần diện tích **cả mảnh đất**, rồi lấy phần trăm còn lại. Phần đất còn lại chiếm $100\\%$ trừ đi các phần đã dùng.\n\n**Bước 1.** Đáy lớn $=\\dfrac{5}{4}$ đáy bé; chiều cao bằng đáy bé. Tính diện tích mảnh đất hình thang.\n\n**Bước 2.** Phần xây nhà và đào ao chiếm $25\\%+42\\%$ diện tích; phần trồng cây chiếm $100\\%$ trừ đi số đó.\n\n**Bước 3.** Diện tích trồng cây $=$ diện tích mảnh đất $\\times$ tỉ số phần trăm của phần trồng cây.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đáy lớn là: $40\\times\\dfrac{5}{4}=50$ (m)\n\nChiều cao bằng độ dài đáy bé nên chiều cao là $40$ m.\n\nDiện tích mảnh đất là: $\\left(50+40\\right)\\times 40:2=1800$ ($\\text{m}^2$)\n\nPhần đất xây nhà và đào ao chiếm số phần trăm diện tích là: $25\\%+42\\%=67\\%$\n\nPhần đất trồng cây chiếm số phần trăm diện tích là: $100\\%-67\\%=33\\%$\n\nDiện tích phần đất trồng cây là: $1800\\times 33\\%=594$ ($\\text{m}^2$)\n\nĐáp số: $594\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LT 20.11",
+  "dap_an": "$252\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mở rộng đáy bé thêm $5$ cm thì phần diện tích **tăng thêm là một hình tam giác** có đáy $5$ cm và **cùng chiều cao** với hình thang. Từ diện tích phần tăng ($30\\ \\text{cm}^2$) tìm được chiều cao, rồi tính diện tích hình thang với tổng hai đáy $42$ cm.\n\n**Bước 1.** Chiều cao $=$ diện tích tam giác phần tăng $\\times 2:$ đáy $5$ cm.\n\n**Bước 2.** Diện tích hình thang $=$ tổng hai đáy $\\times$ chiều cao $:\\ 2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần tăng thêm là hình tam giác có đáy $5$ cm và chiều cao bằng chiều cao hình thang.\n\nChiều cao của hình thang là: $30\\times 2:5=12$ (cm)\n\nDiện tích hình thang đã cho là: $42\\times 12:2=252$ ($\\text{cm}^2$)\n\nĐáp số: $252\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 20.13",
+  "dap_an": "$2700\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình thang vuông trở thành hình chữ nhật khi đáy bé được kéo dài **bằng đáy lớn**. Vậy $30$ m chính là **hiệu hai đáy**, và phần diện tích tăng thêm ($675\\ \\text{m}^2$) là một **tam giác vuông** có đáy $30$ m, chiều cao bằng chiều cao mảnh vườn.\n\n**Bước 1.** Từ diện tích tam giác phần tăng, tìm chiều cao: chiều cao $=$ diện tích $\\times 2:$ đáy $30$ m.\n\n**Bước 2.** Đáy bé bằng $\\dfrac{3}{5}$ đáy lớn và kém đáy lớn $30$ m: đáy bé $3$ phần, đáy lớn $5$ phần, hiệu $30$ m. Đây là bài hiệu – tỉ, vẽ sơ đồ để tìm hai đáy.\n\n**Bước 3.** Diện tích hình thang $=$ (đáy lớn $+$ đáy bé) $\\times$ chiều cao $:\\ 2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần tăng thêm là hình tam giác vuông có đáy $30$ m và chiều cao bằng chiều cao mảnh vườn.\n\nChiều cao của mảnh vườn là: $675\\times 2:30=45$ (m)\n\nTa có sơ đồ:\n\n(Đáy bé 3 phần; Đáy lớn 5 phần; hiệu 30 m)\n\nHiệu số phần bằng nhau là: $5-3=2$ (phần)\n\nĐộ dài đáy lớn là: $30:2\\times 5=75$ (m)\n\nĐộ dài đáy bé là: $75-30=45$ (m)\n\nDiện tích mảnh vườn hình thang lúc đầu là: $\\left(75+45\\right)\\times 45:2=2700$ ($\\text{m}^2$)\n\nĐáp số: $2700\\ \\text{m}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 15,
+   "hang": [
+    {
+     "nhan": "Đáy bé",
+     "phan": 3
+    },
+    {
+     "nhan": "Đáy lớn",
+     "phan": 5
+    }
+   ],
+   "hieu": "30 m",
+   "dau_hoi": [
+    "Đáy bé",
+    "Đáy lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 20.14",
+  "dap_an": "Đáy bé: $8$ cm; đáy lớn: $12$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đáy lớn tăng thêm $2$ cm thì phần diện tích tăng thêm ($6\\ \\text{cm}^2$) là **một hình tam giác** có đáy $2$ cm và **cùng chiều cao** với hình thang. Tìm được chiều cao thì tìm được **tổng hai đáy**; cùng với hiệu hai đáy ($4$ cm) ta có bài tổng – hiệu.\n\n**Bước 1.** Chiều cao $=$ diện tích tam giác phần tăng $\\times 2:$ đáy $2$ cm.\n\n**Bước 2.** Tổng hai đáy $=$ diện tích hình thang $\\times 2:$ chiều cao.\n\n**Bước 3.** Biết tổng $20$ cm và hiệu $4$ cm, vẽ sơ đồ để tìm đáy bé, đáy lớn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần tăng thêm là hình tam giác có đáy $2$ cm và chiều cao bằng chiều cao hình thang.\n\nChiều cao của hình thang là: $6\\times 2:2=6$ (cm)\n\nTổng độ dài hai đáy là: $60\\times 2:6=20$ (cm)\n\nTa có sơ đồ:\n\n(Đáy bé 1 phần; Đáy lớn 1 phần và 4 cm; tổng 20 cm)\n\nĐộ dài đáy bé là: $\\left(20-4\\right):2=8$ (cm)\n\nĐộ dài đáy lớn là: $8+4=12$ (cm)\n\nĐáp số: Đáy bé $8$ cm; đáy lớn $12$ cm",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Đáy bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Đáy lớn",
+     "phan": 1,
+     "them": "4 cm"
+    }
+   ],
+   "tong": "20 cm",
+   "dau_hoi": [
+    "Đáy bé",
+    "Đáy lớn"
+   ]
+  },
+  "ghi_chu_nghi": "Đề in sai chính tả \"diện tich\" (= diện tích); không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "LT 20.15",
+  "dap_an": "$25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"tăng lên bao nhiêu phần trăm\" là so **phần diện tích tăng thêm** với **diện tích lúc đầu**. Kéo dài mỗi đáy thêm $4$ m về cùng một phía thì phần tăng thêm là **một hình thang** có hai đáy $4$ m, $4$ m và cùng chiều cao $10$ m.\n\n**Bước 1.** Tìm đáy bé (trung bình cộng của chiều cao và đáy lớn), rồi diện tích thửa ruộng lúc đầu.\n\n**Bước 2.** Tính diện tích hình thang phần tăng thêm.\n\n**Bước 3.** Tìm tỉ số phần trăm: lấy diện tích tăng thêm chia cho diện tích lúc đầu rồi đổi ra phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đáy bé là: $\\left(10+18\\right):2=14$ (m)\n\nDiện tích thửa ruộng lúc đầu là: $\\left(18+14\\right)\\times 10:2=160$ ($\\text{m}^2$)\n\nDiện tích phần tăng thêm (hình thang có hai đáy $4$ m, $4$ m, chiều cao $10$ m) là: $\\left(4+4\\right)\\times 10:2=40$ ($\\text{m}^2$)\n\nDiện tích tăng thêm so với diện tích lúc đầu là: $40:160=0,25=25\\%$\n\nĐáp số: $25\\%$",
+  "ghi_chu_nghi": "Đề in sai chính tả \"chiếu cao\" (= chiều cao). Câu \"kéo dài mỗi cạnh đáy về cùng một phía thêm 4 m\" hiểu là phần tăng thêm là hình thang hai đáy 4 m và 4 m, chiều cao 10 m (diện tích mới 200 m2, tăng 40 m2)."
+ },
+ {
+  "ma_nguon": "VD 21.1",
+  "dap_an": "Chu vi: $12,56$ cm; diện tích: $12,56\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho **đường kính**. Chu vi hình tròn tính thẳng từ đường kính ($C=$ đường kính $\\times 3,14$), còn diện tích phải dùng **bán kính** ($S=$ bán kính $\\times$ bán kính $\\times 3,14$). Vì vậy tìm bán kính trước.\n\n**Bước 1.** Bán kính $=$ đường kính $:2$.\n\n**Bước 2.** Tính chu vi và diện tích theo hai công thức trên.\n\n**Chú ý:** hai kết quả có cùng số $12,56$ chỉ vì đường kính $4$ cm; chu vi đo bằng cm còn diện tích đo bằng $\\text{cm}^2$, hai đại lượng khác loại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBán kính của hình tròn là: $4:2=2$ (cm)\n\nChu vi của hình tròn là: $4\\times 3,14=12,56$ (cm)\n\nDiện tích của hình tròn là: $2\\times 2\\times 3,14=12,56$ ($\\text{cm}^2$)\n\nĐáp số: Chu vi $12,56$ cm; diện tích $12,56\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 21.3a",
+  "dap_an": "khoảng $2,77\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho chu vi, muốn tính diện tích phải tìm **bán kính**. Chu vi $=$ đường kính $\\times 3,14$ nên đi ngược: đường kính $=$ chu vi $:3,14$, bán kính $=$ đường kính $:2$.\n\n**Bước 1.** Tìm đường kính, rồi bán kính. Phép chia $5,908:3,14$ không chia hết nên làm tròn đến hàng phần trăm.\n\n**Bước 2.** Diện tích $=$ bán kính $\\times$ bán kính $\\times 3,14$; kết quả làm tròn đến hàng phần trăm.\n\n**Chú ý:** diện tích dùng **bán kính**, không dùng đường kính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐường kính của hình tròn là: $5,908:3,14\\approx 1,88$ (m)\n\nBán kính của hình tròn là: $1,88:2=0,94$ (m)\n\nDiện tích của hình tròn là: $0,94\\times 0,94\\times 3,14=2,774504\\approx 2,77$ ($\\text{m}^2$)\n\nĐáp số: khoảng $2,77\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Số liệu nghi in sai: C = 5,908 m chia 3,14 không ra số tròn (1,8815...). Có vẻ đề gốc là C = 5,9032 m (bán kính 0,94 m, đúng 0,94 x 2 x 3,14 = 5,9032) hoặc số khác. Soạn theo đề, làm tròn đường kính 1,88 m nên S = 2,774504 = khoảng 2,77 m2 (tính chính xác không làm tròn trung gian được 2,779 = khoảng 2,78 m2). Cần người xác nhận số liệu đề."
+ },
+ {
+  "ma_nguon": "LT 21.8",
+  "dap_an": "Chu vi: $50,24$ cm; diện tích: $200,96\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho chu vi hình tròn thứ nhất, nhưng cái liên hệ giữa hai hình lại là **bán kính** (gấp đôi). Vậy tìm bán kính hình thứ nhất trước, nhân đôi được bán kính hình thứ hai, rồi mới tính chu vi và diện tích.\n\n**Bước 1.** Đường kính hình thứ nhất $=$ chu vi $:3,14$; bán kính $=$ đường kính $:2$.\n\n**Bước 2.** Bán kính hình thứ hai $=$ bán kính hình thứ nhất $\\times 2$.\n\n**Bước 3.** Chu vi $=$ bán kính $\\times 2\\times 3,14$; diện tích $=$ bán kính $\\times$ bán kính $\\times 3,14$.\n\n**Chú ý:** bán kính gấp $2$ lần thì chu vi gấp $2$ lần nhưng diện tích gấp $2\\times 2=4$ lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐường kính hình tròn thứ nhất là: $25,12:3,14=8$ (cm)\n\nBán kính hình tròn thứ nhất là: $8:2=4$ (cm)\n\nBán kính hình tròn thứ hai là: $4\\times 2=8$ (cm)\n\nChu vi hình tròn thứ hai là: $8\\times 2\\times 3,14=50,24$ (cm)\n\nDiện tích hình tròn thứ hai là: $8\\times 8\\times 3,14=200,96$ ($\\text{cm}^2$)\n\nĐáp số: Chu vi $50,24$ cm; diện tích $200,96\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "VD 22.1",
+  "dap_an": "Diện tích xung quanh: $120\\ \\text{cm}^2$; diện tích toàn phần: $232\\ \\text{cm}^2$; thể tích: $224\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho diện tích đáy chứ chưa cho từng kích thước. \"Chiều dài hơn chiều cao $4$ cm\" và \"chiều cao bằng $\\dfrac{1}{2}$ chiều dài\" là bài **hiệu – tỉ**: tìm chiều cao và chiều dài trước; sau đó chiều rộng $=$ diện tích đáy $:$ chiều dài.\n\n**Bước 1.** Chiều cao $1$ phần, chiều dài $2$ phần, hiệu $4$ cm: vẽ sơ đồ để tìm chiều cao và chiều dài.\n\n**Bước 2.** Chiều rộng $=$ diện tích đáy $:$ chiều dài.\n\n**Bước 3.** $S_{xq}=$ chu vi đáy $\\times$ chiều cao; $S_{tp}=S_{xq}+$ diện tích hai đáy; $V=$ chiều dài $\\times$ chiều rộng $\\times$ chiều cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Chiều cao 1 phần; Chiều dài 2 phần; hiệu 4 cm)\n\nHiệu số phần bằng nhau là: $2-1=1$ (phần)\n\nChiều cao hình hộp chữ nhật là: $4:1\\times 1=4$ (cm)\n\nChiều dài hình hộp chữ nhật là: $4:1\\times 2=8$ (cm)\n\nChiều rộng hình hộp chữ nhật là: $56:8=7$ (cm)\n\nDiện tích xung quanh hình hộp chữ nhật là: $\\left(8+7\\right)\\times 2\\times 4=120$ ($\\text{cm}^2$)\n\nDiện tích toàn phần hình hộp chữ nhật là: $120+56\\times 2=232$ ($\\text{cm}^2$)\n\nThể tích hình hộp chữ nhật là: $8\\times 7\\times 4=224$ ($\\text{cm}^3$)\n\nĐáp số: Diện tích xung quanh $120\\ \\text{cm}^2$; diện tích toàn phần $232\\ \\text{cm}^2$; thể tích $224\\ \\text{cm}^3$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Chiều cao",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 2
+    }
+   ],
+   "hieu": "4 cm",
+   "dau_hoi": [
+    "Chiều cao",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "VD 22.2",
+  "dap_an": "Diện tích xung quanh: $324\\ \\text{cm}^2$; thể tích: $729\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình lập phương có **$6$ mặt là $6$ hình vuông bằng nhau**. Biết diện tích toàn phần thì tìm được diện tích một mặt, và mặt là hình vuông nên tìm được cạnh (số nhân với chính nó ra diện tích mặt).\n\n**Bước 1.** Diện tích một mặt $=$ diện tích toàn phần $:6$; tìm cạnh.\n\n**Bước 2.** Diện tích xung quanh $=$ diện tích một mặt $\\times 4$ (hoặc $9\\times 9\\times 4$); thể tích $=$ cạnh $\\times$ cạnh $\\times$ cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $486:6=81$ ($\\text{cm}^2$)\n\nVì $81=9\\times 9$ nên cạnh của hình lập phương là $9$ cm.\n\nDiện tích xung quanh của hình lập phương là: $9\\times 9\\times 4=324$ ($\\text{cm}^2$)\n\nThể tích của hình lập phương là: $9\\times 9\\times 9=729$ ($\\text{cm}^3$)\n\nĐáp số: Diện tích xung quanh $324\\ \\text{cm}^2$; thể tích $729\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LT 22.2",
+  "dap_an": "a) $60$ cm; b) $900\\ \\text{cm}^2$; c) $1332\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ba ý nối tiếp nhau, ý sau dùng kết quả ý trước nên giữ một câu: chu vi đáy $\\to$ diện tích xung quanh $\\to$ diện tích toàn phần.\n\n**Bước 1.** Chu vi mặt đáy $=$ (chiều dài $+$ chiều rộng) $\\times 2$.\n\n**Bước 2.** Diện tích xung quanh $=$ chu vi đáy $\\times$ chiều cao.\n\n**Bước 3.** Diện tích toàn phần $=$ diện tích xung quanh $+$ diện tích hai mặt đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Chu vi mặt đáy của hình hộp chữ nhật là: $\\left(18+12\\right)\\times 2=60$ (cm)\n\nb) Diện tích xung quanh của hình hộp chữ nhật là: $60\\times 15=900$ ($\\text{cm}^2$)\n\nc) Diện tích một mặt đáy là: $18\\times 12=216$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình hộp chữ nhật là: $900+216\\times 2=1332$ ($\\text{cm}^2$)\n\nĐáp số: a) $60$ cm; b) $900\\ \\text{cm}^2$; c) $1332\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.3",
+  "dap_an": "Giấy màu đỏ lớn hơn, lớn hơn $300\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** giấy đỏ dán các mặt xung quanh nên là **diện tích xung quanh**; giấy vàng dán hai mặt đáy nên là **diện tích hai mặt đáy**. Tính cả hai rồi so sánh bằng phép trừ.\n\n**Bước 1.** Diện tích giấy đỏ $=$ chu vi đáy $\\times$ chiều cao.\n\n**Bước 2.** Diện tích giấy vàng $=$ diện tích một đáy $\\times 2$.\n\n**Bước 3.** Số lớn trừ số bé để biết hơn bao nhiêu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích giấy màu đỏ là: $\\left(30+20\\right)\\times 2\\times 15=1500$ ($\\text{cm}^2$)\n\nDiện tích giấy màu vàng là: $30\\times 20\\times 2=1200$ ($\\text{cm}^2$)\n\nVì $1500>1200$ nên giấy màu đỏ có diện tích lớn hơn.\n\nGiấy màu đỏ lớn hơn giấy màu vàng là: $1500-1200=300$ ($\\text{cm}^2$)\n\nĐáp số: Giấy màu đỏ lớn hơn, lớn hơn $300\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.4",
+  "dap_an": "$1025\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dán kín mặt ngoài cái hộp là dán **cả $6$ mặt**, tức là diện tích toàn phần. Giấy tối thiểu thì không tính mép dán, đúng bằng diện tích toàn phần.\n\n**Bước 1.** Đổi các kích thước về cùng một đơn vị ($1$ dm $=10$ cm).\n\n**Bước 2.** Diện tích toàn phần $=$ diện tích xung quanh $+$ diện tích hai mặt đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $1$ dm $=10$ cm\n\nDiện tích xung quanh cái hộp là: $\\left(25+10\\right)\\times 2\\times 7,5=525$ ($\\text{cm}^2$)\n\nDiện tích hai mặt đáy cái hộp là: $25\\times 10\\times 2=500$ ($\\text{cm}^2$)\n\nDiện tích tờ giấy màu tối thiểu là: $525+500=1025$ ($\\text{cm}^2$)\n\nĐáp số: $1025\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.6",
+  "dap_an": "$4700\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cái hộp **không có nắp** nên chỉ có $5$ mặt: bốn mặt xung quanh và **một** mặt đáy. Diện tích tôn $=$ diện tích xung quanh $+$ diện tích **một** đáy (không phải hai).\n\n**Bước 1.** Diện tích xung quanh $=$ chu vi đáy $\\times$ chiều cao.\n\n**Bước 2.** Cộng với diện tích một mặt đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích xung quanh cái hộp là: $\\left(40+30\\right)\\times 2\\times 25=3500$ ($\\text{cm}^2$)\n\nDiện tích mặt đáy cái hộp là: $40\\times 30=1200$ ($\\text{cm}^2$)\n\nDiện tích tôn dùng để làm cái hộp là: $3500+1200=4700$ ($\\text{cm}^2$)\n\nĐáp số: $4700\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.7",
+  "dap_an": "$88,25\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** quét vôi **các bức tường xung quanh** nên là diện tích xung quanh của căn phòng (không tính trần và sàn), sau đó **trừ diện tích các cửa** vì cửa không quét vôi.\n\n**Bước 1.** Diện tích xung quanh $=$ chu vi đáy $\\times$ chiều cao.\n\n**Bước 2.** Diện tích cần quét vôi $=$ diện tích xung quanh $-$ diện tích các cửa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích xung quanh căn phòng là: $\\left(10+4,5\\right)\\times 2\\times 3,25=94,25$ ($\\text{m}^2$)\n\nDiện tích cần quét vôi là: $94,25-6=88,25$ ($\\text{m}^2$)\n\nĐáp số: $88,25\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Đề in sai chính tả \"chiéu\" (= chiều); không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "LT 22.8",
+  "dap_an": "$640$ viên gạch",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lát kín **đáy và xung quanh** bể (bể không có nắp) nên diện tích cần lát $=$ diện tích xung quanh $+$ diện tích **một** đáy. Số viên gạch $=$ diện tích cần lát $:$ diện tích một viên gạch, hai diện tích phải cùng đơn vị.\n\n**Bước 1.** Tính diện tích đáy và diện tích xung quanh của bể, cộng lại.\n\n**Bước 2.** Đổi kích thước viên gạch ra mét, tính diện tích một viên.\n\n**Bước 3.** Số viên gạch $=$ diện tích cần lát $:$ diện tích một viên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích đáy bể bơi là: $12\\times 5=60$ ($\\text{m}^2$)\n\nDiện tích xung quanh bể bơi là: $\\left(12+5\\right)\\times 2\\times 2=68$ ($\\text{m}^2$)\n\nDiện tích cần lát gạch là: $60+68=128$ ($\\text{m}^2$)\n\nĐổi: $40$ cm $=0,4$ m; $50$ cm $=0,5$ m\n\nDiện tích một viên gạch là: $0,4\\times 0,5=0,2$ ($\\text{m}^2$)\n\nSố viên gạch cần dùng là: $128:0,2=640$ (viên)\n\nĐáp số: $640$ viên gạch"
+ },
+ {
+  "ma_nguon": "LT 22.9",
+  "dap_an": "Diện tích lát gạch: $221,5\\ \\text{m}^2$; số viên gạch: $22150$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lát kín đáy và xung quanh bể nên diện tích lát $=$ diện tích xung quanh $+$ diện tích **một** đáy. Mỗi viên gạch vuông cạnh $1$ dm $=0,1$ m, nên diện tích một viên là $0,1\\times 0,1$ ($\\text{m}^2$); số viên $=$ diện tích lát $:$ diện tích một viên.\n\n**Bước 1.** Tính diện tích đáy và diện tích xung quanh, cộng lại để được diện tích lát gạch.\n\n**Bước 2.** Đổi cạnh viên gạch ra mét, tính diện tích một viên rồi chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích đáy bể bơi là: $15\\times 8,5=127,5$ ($\\text{m}^2$)\n\nDiện tích xung quanh bể bơi là: $\\left(15+8,5\\right)\\times 2\\times 2=94$ ($\\text{m}^2$)\n\nDiện tích lát gạch là: $127,5+94=221,5$ ($\\text{m}^2$)\n\nĐổi: $1$ dm $=0,1$ m\n\nDiện tích một viên gạch là: $0,1\\times 0,1=0,01$ ($\\text{m}^2$)\n\nSố viên gạch cần dùng là: $221,5:0,01=22150$ (viên)\n\nĐáp số: Diện tích lát gạch $221,5\\ \\text{m}^2$; $22150$ viên gạch",
+  "ghi_chu_nghi": "Đề không nói tính mép vữa, soạn coi như mạch vữa không đáng kể (giống LT 22.8)."
+ },
+ {
+  "ma_nguon": "LT 22.10",
+  "dap_an": "$63\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chu vi đáy $21$ cm là $2$ lần (chiều dài $+$ chiều rộng), nên **nửa chu vi** là **tổng** chiều dài và chiều rộng. Cộng với \"dài hơn rộng $1,5$ cm\" ta có bài **tổng – hiệu**; chiều cao tìm từ chiều dài.\n\n**Bước 1.** Nửa chu vi $=$ chu vi $:2$; vẽ sơ đồ tổng – hiệu để tìm chiều dài.\n\n**Bước 2.** Chiều cao bằng $\\dfrac{1}{2}$ chiều dài.\n\n**Bước 3.** Diện tích xung quanh $=$ chu vi đáy $\\times$ chiều cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng chiều dài và chiều rộng (nửa chu vi đáy) là: $21:2=10,5$ (cm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; Chiều dài 1 phần và 1,5 cm; tổng 10,5 cm)\n\nChiều dài hình hộp là: $\\left(10,5+1,5\\right):2=6$ (cm)\n\nChiều cao hình hộp là: $6\\times\\dfrac{1}{2}=3$ (cm)\n\nDiện tích xung quanh hình hộp chữ nhật là: $21\\times 3=63$ ($\\text{cm}^2$)\n\nĐáp số: $63\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4.5,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "1,5 cm"
+    }
+   ],
+   "tong": "10,5 cm",
+   "dau_hoi": [
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 22.11",
+  "dap_an": "Chiều dài: $2,4$ m; chiều rộng: $1,6$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích xung quanh $=$ chu vi đáy $\\times$ chiều cao, nên đi ngược: **chu vi đáy $=$ diện tích xung quanh $:$ chiều cao**. Nửa chu vi là **tổng** chiều dài và chiều rộng; cùng với hiệu $0,8$ m ta có bài tổng – hiệu.\n\n**Bước 1.** Chu vi đáy $=$ diện tích xung quanh $:$ chiều cao; nửa chu vi $=$ chu vi $:2$.\n\n**Bước 2.** Vẽ sơ đồ tổng – hiệu, tìm chiều rộng (số bé) rồi chiều dài.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi đáy của bể là: $8:1=8$ (m)\n\nTổng chiều dài và chiều rộng của bể là: $8:2=4$ (m)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; Chiều dài 1 phần và 0,8 m; tổng 4 m)\n\nChiều rộng của bể là: $\\left(4-0,8\\right):2=1,6$ (m)\n\nChiều dài của bể là: $1,6+0,8=2,4$ (m)\n\nĐáp số: Chiều dài $2,4$ m; chiều rộng $1,6$ m",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1.6,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "0,8 m"
+    }
+   ],
+   "tong": "4 m",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 22.12",
+  "dap_an": "Diện tích xung quanh: $144\\ \\text{cm}^2$; diện tích toàn phần: $304\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"chiều dài hơn chiều cao $6$ cm\" và \"chiều cao bằng $\\dfrac{2}{5}$ chiều dài\" là bài **hiệu – tỉ**: chiều cao $2$ phần, chiều dài $5$ phần, hiệu $6$ cm. Có chiều dài thì chiều rộng $=$ diện tích đáy $:$ chiều dài.\n\n**Bước 1.** Vẽ sơ đồ hiệu – tỉ để tìm chiều cao và chiều dài.\n\n**Bước 2.** Chiều rộng $=$ diện tích đáy $:$ chiều dài.\n\n**Bước 3.** $S_{xq}=$ chu vi đáy $\\times$ chiều cao; $S_{tp}=S_{xq}+$ diện tích hai đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Chiều cao 2 phần; Chiều dài 5 phần; hiệu 6 cm)\n\nHiệu số phần bằng nhau là: $5-2=3$ (phần)\n\nChiều cao hình hộp chữ nhật là: $6:3\\times 2=4$ (cm)\n\nChiều dài hình hộp chữ nhật là: $6:3\\times 5=10$ (cm)\n\nChiều rộng hình hộp chữ nhật là: $80:10=8$ (cm)\n\nDiện tích xung quanh hình hộp chữ nhật là: $\\left(10+8\\right)\\times 2\\times 4=144$ ($\\text{cm}^2$)\n\nDiện tích toàn phần hình hộp chữ nhật là: $144+80\\times 2=304$ ($\\text{cm}^2$)\n\nĐáp số: Diện tích xung quanh $144\\ \\text{cm}^2$; diện tích toàn phần $304\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Chiều cao",
+     "phan": 2
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 5
+    }
+   ],
+   "hieu": "6 cm",
+   "dau_hoi": [
+    "Chiều cao",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 22.13",
+  "dap_an": "$51,2\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cái hộp hình lập phương **không có nắp** nên chỉ có $5$ mặt (bốn mặt xung quanh và một đáy). Mép dán không đáng kể nên diện tích miếng bìa $=$ diện tích $5$ mặt.\n\n**Bước 1.** Diện tích một mặt $=$ cạnh $\\times$ cạnh.\n\n**Bước 2.** Diện tích miếng bìa $=$ diện tích một mặt $\\times 5$.\n\n**Chú ý:** không nhân $6$ vì không có nắp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $3,2\\times 3,2=10,24$ ($\\text{dm}^2$)\n\nDiện tích miếng bìa là: $10,24\\times 5=51,2$ ($\\text{dm}^2$)\n\nĐáp số: $51,2\\ \\text{dm}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.14",
+  "dap_an": "$19,6$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thùng **không nắp** có $5$ mặt; sơn **cả mặt trong và mặt ngoài** nên diện tích cần sơn gấp đôi diện tích $5$ mặt. Lượng sơn tỉ lệ thuận với diện tích: rút về đơn vị, $1\\ \\text{m}^2$ tốn bao nhiêu ki-lô-gam sơn.\n\n**Bước 1.** Cạnh thùng $=$ chu vi đáy $:4$; diện tích một mặt $=$ cạnh $\\times$ cạnh.\n\n**Bước 2.** Diện tích mặt ngoài $=$ diện tích một mặt $\\times 5$; diện tích cần sơn $=$ diện tích mặt ngoài $\\times 2$ (trong và ngoài).\n\n**Bước 3.** Rút về đơn vị: $1\\ \\text{m}^2$ tốn $1:4$ kg sơn, rồi nhân với diện tích cần sơn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh của thùng là: $11,2:4=2,8$ (m)\n\nDiện tích một mặt của thùng là: $2,8\\times 2,8=7,84$ ($\\text{m}^2$)\n\nDiện tích mặt ngoài của thùng không nắp là: $7,84\\times 5=39,2$ ($\\text{m}^2$)\n\nDiện tích cần sơn (mặt trong và mặt ngoài) là: $39,2\\times 2=78,4$ ($\\text{m}^2$)\n\n$1\\ \\text{m}^2$ tốn số ki-lô-gam sơn là: $1:4=0,25$ (kg)\n\nSố ki-lô-gam sơn cần dùng là: $0,25\\times 78,4=19,6$ (kg)\n\nĐáp số: $19,6$ kg"
+ },
+ {
+  "ma_nguon": "LT 22.15",
+  "dap_an": "Được, vì tờ giấy cắt được đúng $6$ hình vuông cạnh $5$ cm, là $6$ mặt của hình lập phương",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hình lập phương có $6$ mặt là $6$ hình vuông cạnh $5$ cm. Để làm được từ tờ giấy phải kiểm hai điều: **đủ diện tích** ($S_{tp}$ không lớn hơn diện tích tờ giấy) và **cắt được thành $6$ hình vuông** như thế.\n\n**Bước 1.** So diện tích tờ giấy với diện tích toàn phần của hình lập phương.\n\n**Bước 2.** Xem mỗi chiều của tờ giấy chứa được mấy cạnh $5$ cm ($15:5$ và $10:5$), nhân lại được số hình vuông cắt được.\n\n**Phần 2. Trình bày**\n\nDiện tích tờ giấy là: $15\\times 10=150$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình lập phương cạnh $5$ cm là: $5\\times 5\\times 6=150$ ($\\text{cm}^2$)\n\nVì $15=5\\times 3$ và $10=5\\times 2$ nên có thể cắt tờ giấy thành $3\\times 2=6$ hình vuông cạnh $5$ cm.\n\nVậy có thể cắt dán tờ giấy thành hình lập phương cạnh $5$ cm (sáu hình vuông là sáu mặt).",
+  "ghi_chu_nghi": "Đề không nói có tính phần mép dán không. Soạn theo hướng \"được\": diện tích tờ giấy 150 cm2 bằng đúng diện tích toàn phần 150 cm2, cắt vừa đủ 6 hình vuông 5 cm, không còn giấy dư làm mép dán. Cần người xác nhận ý đề."
+ },
+ {
+  "ma_nguon": "LT 22.16",
+  "dap_an": "$0,96\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích xung quanh gồm $4$ mặt, diện tích toàn phần gồm $6$ mặt, các mặt của hình lập phương bằng nhau. Tìm diện tích **một mặt** từ diện tích xung quanh rồi nhân $6$, không cần tìm cạnh.\n\n**Bước 1.** Diện tích một mặt $=$ diện tích xung quanh $:4$.\n\n**Bước 2.** Diện tích toàn phần $=$ diện tích một mặt $\\times 6$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $0,64:4=0,16$ ($\\text{m}^2$)\n\nDiện tích toàn phần của hình lập phương là: $0,16\\times 6=0,96$ ($\\text{m}^2$)\n\nĐáp số: $0,96\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.17",
+  "dap_an": "$256\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích toàn phần gồm $6$ mặt bằng nhau, diện tích xung quanh gồm $4$ mặt. Tìm diện tích **một mặt** rồi nhân $4$, không cần tìm cạnh.\n\n**Bước 1.** Diện tích một mặt $=$ diện tích toàn phần $:6$.\n\n**Bước 2.** Diện tích xung quanh $=$ diện tích một mặt $\\times 4$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $384:6=64$ ($\\text{cm}^2$)\n\nDiện tích xung quanh của hình lập phương là: $64\\times 4=256$ ($\\text{cm}^2$)\n\nĐáp số: $256\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 22.18",
+  "dap_an": "Diện tích xung quanh và diện tích toàn phần đều gấp lên $16$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi mặt của hình lập phương là hình vuông, diện tích bằng cạnh $\\times$ cạnh. Cạnh gấp lên $4$ lần thì mỗi mặt gấp lên $4\\times 4=16$ lần (không phải $4$ lần).\n\n**Bước 1.** Tìm xem diện tích **một mặt** thay đổi thế nào khi cạnh gấp $4$ lần.\n\n**Bước 2.** Diện tích xung quanh gồm $4$ mặt, diện tích toàn phần gồm $6$ mặt, mỗi mặt đều gấp lên như nhau nên cả hai gấp lên cùng số lần.\n\n**Phần 2. Trình bày**\n\nDiện tích một mặt của hình lập phương bằng cạnh nhân cạnh.\n\nCạnh gấp lên $4$ lần thì diện tích một mặt gấp lên: $4\\times 4=16$ (lần)\n\nDiện tích xung quanh gồm $4$ mặt, diện tích toàn phần gồm $6$ mặt, mỗi mặt đều gấp lên $16$ lần.\n\nVậy diện tích xung quanh và diện tích toàn phần đều gấp lên $16$ lần."
+ },
+ {
+  "ma_nguon": "LT 22.19",
+  "dap_an": "1) $2,56\\ \\text{dm}^3$; 2) $80\\ \\text{dm}^3$; 3) $400\\ \\text{dm}^3$; 4) $0,423\\ \\text{dm}^3$; 5) $0,125\\ \\text{m}^3$; 6) $21,026\\ \\text{m}^3$; 7) $9,494\\ \\text{dm}^3$; 8) $10\\ \\text{m}^3\\ 419\\ \\text{dm}^3$; 9) $7\\ \\text{dm}^3\\ 800\\ \\text{cm}^3$; 10) $1285\\ \\text{dm}^3$; 11) $4200\\ \\text{cm}^3$; 12) $1125\\ \\text{cm}^3$; 13) $0,009145\\ \\text{m}^3$; 14) $0,0022\\ \\text{m}^3$; 15) $7,00724\\ \\text{m}^3$; 16) $63,007\\ \\text{dm}^3$; 17) $1\\ \\text{m}^3\\ 240\\ \\text{dm}^3$; 18) $3\\ \\text{m}^3\\ 244500\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai đơn vị thể tích **liền nhau** hơn kém nhau **$1000$ lần** (độ dài hơn kém $10$ lần, diện tích $100$ lần): $1\\ \\text{m}^3=1000\\ \\text{dm}^3$, $1\\ \\text{dm}^3=1000\\ \\text{cm}^3$, $1\\ \\text{m}^3=1000000\\ \\text{cm}^3$; và $1$ lít $=1\\ \\text{dm}^3$.\n\n**Bước 1.** Đổi sang đơn vị **bé hơn** thì **nhân** (mỗi bậc nhân $1000$, tức dời dấu phẩy sang phải $3$ chữ số); đổi sang đơn vị **lớn hơn** thì **chia** (dời dấu phẩy sang trái $3$ chữ số mỗi bậc). Phân số thì đổi ra số thập phân (hoặc nhân với $1000$ trước) rồi đổi.\n\n**Bước 2.** Số đo có **hai đơn vị** (như $21\\ \\text{m}^3\\ 26\\ \\text{dm}^3$): đổi phần đơn vị bé ra đơn vị lớn rồi cộng. Ngược lại, số thập phân đổi ra hai đơn vị thì phần nguyên giữ nguyên, phần thập phân đổi ra đơn vị bé.\n\n**Chú ý:** $4,2$ lít phải đổi ra $\\text{dm}^3$ trước ($4,2$ lít $=4,2\\ \\text{dm}^3$) rồi mới đổi ra $\\text{cm}^3$.\n\n**Phần 2. Trình bày**\n\n1) $0,00256\\ \\text{m}^3=0,00256\\times 1000\\ \\text{dm}^3=2,56\\ \\text{dm}^3$\n\n2) $0,08\\ \\text{m}^3=0,08\\times 1000\\ \\text{dm}^3=80\\ \\text{dm}^3$\n\n3) $\\dfrac{2}{5}\\ \\text{m}^3=0,4\\ \\text{m}^3=0,4\\times 1000\\ \\text{dm}^3=400\\ \\text{dm}^3$\n\n4) $423\\ \\text{cm}^3=423:1000\\ \\text{dm}^3=0,423\\ \\text{dm}^3$\n\n5) $125000\\ \\text{cm}^3=125000:1000000\\ \\text{m}^3=0,125\\ \\text{m}^3$\n\n6) $21\\ \\text{m}^3\\ 26\\ \\text{dm}^3=21\\ \\text{m}^3+0,026\\ \\text{m}^3=21,026\\ \\text{m}^3$\n\n7) $9\\ \\text{dm}^3\\ 494\\ \\text{cm}^3=9\\ \\text{dm}^3+0,494\\ \\text{dm}^3=9,494\\ \\text{dm}^3$\n\n8) $10,419\\ \\text{m}^3=10\\ \\text{m}^3+0,419\\ \\text{m}^3=10\\ \\text{m}^3\\ 419\\ \\text{dm}^3$\n\n9) $7,8\\ \\text{dm}^3=7\\ \\text{dm}^3+0,8\\ \\text{dm}^3=7\\ \\text{dm}^3\\ 800\\ \\text{cm}^3$\n\n10) $1,285\\ \\text{m}^3=1,285\\times 1000\\ \\text{dm}^3=1285\\ \\text{dm}^3$\n\n11) $4,2$ lít $=4,2\\ \\text{dm}^3=4,2\\times 1000\\ \\text{cm}^3=4200\\ \\text{cm}^3$\n\n12) $1\\dfrac{1}{8}\\ \\text{dm}^3=1,125\\ \\text{dm}^3=1,125\\times 1000\\ \\text{cm}^3=1125\\ \\text{cm}^3$\n\n13) $9,145\\ \\text{dm}^3=9,145:1000\\ \\text{m}^3=0,009145\\ \\text{m}^3$\n\n14) $2\\dfrac{1}{5}\\ \\text{dm}^3=2,2\\ \\text{dm}^3=2,2:1000\\ \\text{m}^3=0,0022\\ \\text{m}^3$\n\n15) $7\\ \\text{m}^3\\ 7240\\ \\text{cm}^3=7\\ \\text{m}^3+0,00724\\ \\text{m}^3=7,00724\\ \\text{m}^3$\n\n16) $63\\ \\text{dm}^3\\ 7\\ \\text{cm}^3=63\\ \\text{dm}^3+0,007\\ \\text{dm}^3=63,007\\ \\text{dm}^3$\n\n17) $1,24\\ \\text{m}^3=1\\ \\text{m}^3+0,24\\ \\text{m}^3=1\\ \\text{m}^3\\ 240\\ \\text{dm}^3$\n\n18) $3,2445\\ \\text{m}^3=3\\ \\text{m}^3+0,2445\\ \\text{m}^3=3\\ \\text{m}^3\\ 244500\\ \\text{cm}^3$",
+  "ghi_chu_nghi": "Đề có 18 ô đổi đơn vị không đánh nhãn ý; số thứ tự 1)-18) do soạn tự đánh theo thứ tự trong đề. Ô 8 và 17 hiểu là đổi sang \"m3 và dm3\"; ô 9 là \"dm3 và cm3\"; ô 18 là \"m3 và cm3\"."
+ },
+ {
+  "ma_nguon": "LT 22.20",
+  "dap_an": "a) $405\\ \\text{cm}^3$; b) $421,875\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai ý nối nhau: ý b cần cạnh hình lập phương, mà cạnh này lấy từ ba kích thước của hình hộp ở đề (cũng là các số của ý a), nên giữ một câu. Cạnh hình lập phương $=$ trung bình cộng ba kích thước $=$ tổng ba kích thước $:3$.\n\n**Bước 1.** Thể tích hình hộp chữ nhật $=$ dài $\\times$ rộng $\\times$ cao.\n\n**Bước 2.** Tìm cạnh hình lập phương (trung bình cộng ba số), rồi thể tích $=$ cạnh $\\times$ cạnh $\\times$ cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Thể tích hình hộp chữ nhật là: $9\\times 7,5\\times 6=405$ ($\\text{cm}^3$)\n\nCạnh của hình lập phương là: $\\left(9+7,5+6\\right):3=7,5$ (cm)\n\nb) Thể tích hình lập phương là: $7,5\\times 7,5\\times 7,5=421,875$ ($\\text{cm}^3$)\n\nĐáp số: a) $405\\ \\text{cm}^3$; b) $421,875\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LT 22.21",
+  "dap_an": "$396,8$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho khối lượng của $1\\ \\text{cm}^3$ nên phải tìm thể tích khối kim loại **theo $\\text{cm}^3$**; cạnh đang tính bằng mét nên đổi ra xăng-ti-mét trước. Cuối cùng đổi gam ra ki-lô-gam.\n\n**Bước 1.** Đổi cạnh $\\dfrac{2}{5}$ m ra cm; thể tích $=$ cạnh $\\times$ cạnh $\\times$ cạnh.\n\n**Bước 2.** Khối lượng $=$ thể tích $\\times$ khối lượng của $1\\ \\text{cm}^3$; đổi gam ra ki-lô-gam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $\\dfrac{2}{5}$ m $=0,4$ m $=40$ cm\n\nThể tích khối kim loại là: $40\\times 40\\times 40=64000$ ($\\text{cm}^3$)\n\nKhối kim loại cân nặng là: $64000\\times 6,2=396800$ (g)\n\nĐổi: $396800$ g $=396,8$ kg\n\nĐáp số: $396,8$ kg"
+ },
+ {
+  "ma_nguon": "LT 22.22",
+  "dap_an": "$27$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thể tích hình lập phương $=$ cạnh $\\times$ cạnh $\\times$ cạnh, có **ba** thừa số bằng cạnh. Cạnh gấp $3$ lần thì **cả ba** thừa số đều gấp $3$ lần.\n\n**Chú ý:** không phải gấp $3$ lần (đó chỉ là cạnh), cũng không phải gấp $3\\times 3=9$ lần (đó là diện tích một mặt).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích hình lập phương B gấp thể tích hình lập phương A số lần là: $3\\times 3\\times 3=27$ (lần)\n\nĐáp số: $27$ lần"
+ },
+ {
+  "ma_nguon": "LT 22.23",
+  "dap_an": "$1800\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích xung quanh $=$ chu vi đáy $\\times$ chiều cao, nên đi ngược: **chu vi đáy $=$ diện tích xung quanh $:$ chiều cao**. Nửa chu vi là **tổng** chiều dài và chiều rộng; cùng với hiệu $5$ cm ta có bài tổng – hiệu để tìm cả hai kích thước.\n\n**Bước 1.** Chu vi đáy $=600:12$; nửa chu vi là tổng chiều dài và chiều rộng.\n\n**Bước 2.** Vẽ sơ đồ tổng – hiệu, tìm chiều rộng (số bé) rồi chiều dài.\n\n**Bước 3.** Thể tích $=$ dài $\\times$ rộng $\\times$ cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi mặt đáy là: $600:12=50$ (cm)\n\nTổng chiều dài và chiều rộng là: $50:2=25$ (cm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; Chiều dài 1 phần và 5 cm; tổng 25 cm)\n\nChiều rộng của hình hộp là: $\\left(25-5\\right):2=10$ (cm)\n\nChiều dài của hình hộp là: $10+5=15$ (cm)\n\nThể tích hình hộp chữ nhật là: $15\\times 10\\times 12=1800$ ($\\text{cm}^3$)\n\nĐáp số: $1800\\ \\text{cm}^3$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "5 cm"
+    }
+   ],
+   "tong": "25 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 22.24",
+  "dap_an": "$125\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** diện tích toàn phần gồm $6$ mặt hình vuông bằng nhau. Tìm diện tích một mặt, rồi tìm cạnh (số nhân với chính nó được diện tích mặt), cuối cùng tính thể tích.\n\n**Bước 1.** Diện tích một mặt $=$ diện tích toàn phần $:6$; tìm cạnh.\n\n**Bước 2.** Thể tích $=$ cạnh $\\times$ cạnh $\\times$ cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $150:6=25$ ($\\text{cm}^2$)\n\nVì $25=5\\times 5$ nên cạnh của hình lập phương là $5$ cm.\n\nThể tích của hình lập phương là: $5\\times 5\\times 5=125$ ($\\text{cm}^3$)\n\nĐáp số: $125\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LT 22.26",
+  "dap_an": "$2340$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nước từ $40\\%$ lên $90\\%$ thể tích bể, nên lượng nước cần đổ thêm chiếm **$90\\%-40\\%$ thể tích bể**. Không cần tính lượng nước lúc đầu và lúc sau riêng.\n\n**Bước 1.** Thể tích bể $=$ dài $\\times$ rộng $\\times$ cao ($\\text{m}^3$).\n\n**Bước 2.** Phần nước cần đổ thêm chiếm $90\\%-40\\%$ thể tích bể; lấy thể tích bể nhân với số phần trăm đó.\n\n**Bước 3.** Đổi ra lít: $1\\ \\text{m}^3=1000\\ \\text{dm}^3=1000$ lít.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích của bể nước là: $2,6\\times 1,2\\times 1,5=4,68$ ($\\text{m}^3$)\n\nLượng nước cần đổ thêm chiếm số phần trăm thể tích bể là: $90\\%-40\\%=50\\%$\n\nThể tích nước cần đổ thêm là: $4,68\\times 50\\%=2,34$ ($\\text{m}^3$)\n\nĐổi: $2,34\\ \\text{m}^3=2340\\ \\text{dm}^3=2340$ lít\n\nĐáp số: $2340$ lít"
+ },
+ {
+  "ma_nguon": "LT 22.27",
+  "dap_an": "$100\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cây san hô chìm hoàn toàn nên **thể tích cây san hô bằng thể tích phần nước dâng lên**. Phần nước dâng lên là một hình hộp có đáy bằng đáy bể và chiều cao bằng mực nước dâng thêm.\n\n**Bước 1.** Mực nước dâng thêm $=$ mực nước sau $-$ mực nước trước.\n\n**Bước 2.** Thể tích san hô $=$ diện tích đáy bể $\\times$ mực nước dâng thêm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMực nước trong bể dâng thêm là: $8-7=1$ (dm)\n\nThể tích cây san hô bằng thể tích phần nước dâng thêm, là: $10\\times 10\\times 1=100$ ($\\text{dm}^3$)\n\nĐáp số: $100\\ \\text{dm}^3$"
+ },
+ {
+  "ma_nguon": "LT 22.29",
+  "dap_an": "$3$ dm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bể **đầy nước** nên vật thả vào chiếm chỗ bao nhiêu thì nước tràn ra đúng bấy nhiêu: **thể tích nước tràn ra $=$ thể tích hai khối sắt**. Biết thể tích một khối lập phương thì tìm cạnh bằng cách tìm số nhân với chính nó ba lần.\n\n**Bước 1.** Đổi $54$ lít ra $\\text{dm}^3$ ($1$ lít $=1\\ \\text{dm}^3$); thể tích một khối sắt $=$ thể tích hai khối $:2$.\n\n**Bước 2.** Tìm cạnh: số nhân $3$ lần với chính nó được thể tích đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $54$ lít $=54\\ \\text{dm}^3$\n\nThể tích một khối sắt là: $54:2=27$ ($\\text{dm}^3$)\n\nVì $27=3\\times 3\\times 3$ nên cạnh một khối sắt là $3$ dm.\n\nĐáp số: $3$ dm"
+ },
+ {
+  "ma_nguon": "LT 22.30",
+  "dap_an": "$303$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nước phải cao hơn hòn non bộ $15$ cm, nên mực nước là $35+15$ cm. Phần thể tích bể tính tới mực nước đó gồm cả **nước và hòn non bộ**; hòn non bộ chiếm chỗ $57\\ \\text{dm}^3$, nên lượng nước cần đổ $=$ thể tích tới mực nước $-$ thể tích hòn non bộ.\n\n**Bước 1.** Tìm mực nước cần đạt, đổi các kích thước ra dm.\n\n**Bước 2.** Thể tích bể tính tới mực nước $=$ dài $\\times$ rộng $\\times$ mực nước; trừ thể tích hòn non bộ.\n\n**Bước 3.** Đổi $\\text{dm}^3$ ra lít ($1\\ \\text{dm}^3=1$ lít).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMực nước cần đạt là: $35+15=50$ (cm)\n\nĐổi: $120$ cm $=12$ dm; $60$ cm $=6$ dm; $50$ cm $=5$ dm\n\nThể tích bể tính tới mực nước $50$ cm là: $12\\times 6\\times 5=360$ ($\\text{dm}^3$)\n\nThể tích nước cần đổ vào bể là: $360-57=303$ ($\\text{dm}^3$)\n\nĐổi: $303\\ \\text{dm}^3=303$ lít\n\nĐáp số: $303$ lít"
+ }
+]

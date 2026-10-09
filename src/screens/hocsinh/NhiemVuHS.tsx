@@ -39,7 +39,7 @@ function Thanh({ hien, can }: { hien: number; can: number }) {
       <span className="h-2 min-w-0 flex-1 overflow-hidden rounded-full" style={{ background: MAU.surface, border: `1px solid ${MAU.line}` }}>
         <span className="block h-full rounded-full" style={{ width: `${pct}%`, background: MAU.acc }} />
       </span>
-      <span className="shrink-0 text-[11.5px] font-bold tabular-nums" style={{ color: MAU.muted }}>{Math.min(hien, can)}/{can}</span>
+      <span className="shrink-0 text-[12.5px] font-bold tabular-nums" style={{ color: MAU.muted }}>{Math.min(hien, can)}/{can}</span>
     </span>
   )
 }
@@ -48,8 +48,8 @@ function Khoi({ icon, tieuDe, phai, children }: { icon: ReactNode; tieuDe: strin
     <section className="px-3 pb-3 pt-2.5" style={THE}>
       <div className="flex items-center gap-2.5 pb-2.5">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full" style={{ border: `2px solid ${MAU.acc}`, background: MAU.surface2, boxShadow: '0 0 10px var(--sk-acc)' }}>{icon}</span>
-        <h2 className="min-w-0 flex-1 truncate text-[19px] font-bold uppercase leading-tight tracking-[0.03em]" style={{ ...HEAD, textTransform: 'uppercase', color: MAU.acc }}>{tieuDe}</h2>
-        {phai && <span className="shrink-0 text-right text-[12.5px] font-semibold leading-tight" style={{ color: MAU.muted }}>{phai}</span>}
+        <h2 className="min-w-0 flex-1 truncate text-[21px] font-bold uppercase leading-tight tracking-[0.03em]" style={{ ...HEAD, textTransform: 'uppercase', color: MAU.acc }}>{tieuDe}</h2>
+        {phai && <span className="shrink-0 text-right text-[14px] font-semibold leading-tight" style={{ color: MAU.muted }}>{phai}</span>}
       </div>
       <div style={{ color: MAU.ink }}>{children}</div>
     </section>
@@ -59,8 +59,8 @@ function Dong({ ten, mota, xong, hien, can, exp, dht }: { ten: string; mota: str
   return (
     <div className="mt-2 flex items-center gap-2.5 px-3 py-2.5 first:mt-0" style={O_CON}>
       <span className="min-w-0 flex-1">
-        <span className="block text-[14.5px] font-bold leading-tight">{ten}</span>
-        <span className="mt-0.5 block text-[12px] leading-snug" style={{ color: MAU.muted }}>{mota}</span>
+        <span className="block text-[16px] font-bold leading-tight">{ten}</span>
+        <span className="mt-0.5 block text-[13px] leading-snug" style={{ color: MAU.muted }}>{mota}</span>
         <Thanh hien={xong ? can : hien} can={can} />
       </span>
       <Thuong exp={exp} dht={dht} />
@@ -80,28 +80,28 @@ export function NhiemVuView({ d, onLuyenYeu, onVongQuay }: { d: NhiemVuCuaToi; o
       <div className="mx-auto mt-10 flex w-full max-w-[420px] flex-col items-center px-5 py-6 text-center" style={{ ...THE, boxShadow: '0 0 22px var(--sk-acc)' }}>
         <span className="relative flex h-[120px] w-[120px] items-center justify-center">
           <IconNV ma="tuan" size={88} />
-          <span aria-hidden className="absolute bottom-1 right-1 text-[30px]">🔒</span>
+          <span aria-hidden className="absolute bottom-1 right-1 text-[33px]">🔒</span>
         </span>
-        <p className="mt-3 text-[22px] font-bold leading-snug" style={{ ...HEAD, color: MAU.acc }}>
+        <p className="mt-3 text-[24px] font-bold leading-snug" style={{ ...HEAD, color: MAU.acc }}>
           Nhiệm vụ mở từ ngày {d.bat_dau.split('-').reverse().slice(0, 2).join('/')} — hẹn em nhé!
         </p>
       </div>
     )
   }
   const c = d.cau_hinh
-  const nut = 'flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-[14px] font-bold active:scale-[0.98]'
+  const nut = 'flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-[15.5px] font-bold active:scale-[0.98]'
   const nayDay = d.ngay.luot_hom_nay >= c.lan_ngay
   const dht = d.dht
 
   const vi = (
     <section className="flex items-center gap-3 px-4 py-3" style={{ ...THE, boxShadow: '0 0 14px var(--sk-acc)' }}>
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-[22px] font-black" style={{ background: MAU.acc, color: MAU.accInk }} aria-hidden>Đ</span>
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-[24px] font-black" style={{ background: MAU.acc, color: MAU.accInk }} aria-hidden>Đ</span>
       <span className="min-w-0 flex-1">
-        <span className="block text-[12px] font-bold uppercase tracking-[0.06em]" style={{ color: MAU.muted }}>Điểm học tập (ĐHT)</span>
-        <span className="block text-[28px] font-black leading-none tabular-nums" style={{ ...HEAD, color: MAU.ink }}>{sl(dht.so_du)}<span className="text-[14px] font-bold" style={{ color: MAU.muted }}> / {sl(dht.tran)}</span></span>
-        <span className="mt-1 block text-[11.5px] leading-snug" style={{ color: MAU.muted }}>Dùng để chơi game · tháng này +{sl(dht.kiem_thang)}{dht.mat_do_vuot_tran > 0 ? ` · đã đầy kho, ${sl(dht.mat_do_vuot_tran)} điểm không cộng thêm được` : ''}</span>
+        <span className="block text-[13px] font-bold uppercase tracking-[0.06em]" style={{ color: MAU.muted }}>Điểm học tập (ĐHT)</span>
+        <span className="block text-[31px] font-black leading-none tabular-nums" style={{ ...HEAD, color: MAU.ink }}>{sl(dht.so_du)}<span className="text-[15.5px] font-bold" style={{ color: MAU.muted }}> / {sl(dht.tran)}</span></span>
+        <span className="mt-1 block text-[12.5px] leading-snug" style={{ color: MAU.muted }}>Dùng để chơi game · tháng này +{sl(dht.kiem_thang)}{dht.mat_do_vuot_tran > 0 ? ` · đã đầy kho, ${sl(dht.mat_do_vuot_tran)} điểm không cộng thêm được` : ''}</span>
       </span>
-      <span className="shrink-0 text-right text-[11.5px] leading-snug" style={{ color: MAU.muted }}>EXP nhiệm vụ tháng<br /><b className="text-[18px]" style={{ ...HEAD, color: MAU.acc }}>{sl(d.exp_thang)}</b><span>/{sl(c.tran_exp)}</span></span>
+      <span className="shrink-0 text-right text-[12.5px] leading-snug" style={{ color: MAU.muted }}>EXP nhiệm vụ tháng<br /><b className="text-[20px]" style={{ ...HEAD, color: MAU.acc }}>{sl(d.exp_thang)}</b><span>/{sl(c.tran_exp)}</span></span>
     </section>
   )
 
@@ -110,8 +110,8 @@ export function NhiemVuView({ d, onLuyenYeu, onVongQuay }: { d: NhiemVuCuaToi; o
       <div className="px-3 py-2.5" style={O_CON}>
         <div className="flex items-start gap-2.5">
           <span className="min-w-0 flex-1">
-            <span className="block text-[14.5px] font-bold leading-tight">Luyện dạng yếu</span>
-            <span className="mt-0.5 block text-[12px] leading-snug" style={{ color: MAU.muted }}>
+            <span className="block text-[16px] font-bold leading-tight">Luyện dạng yếu</span>
+            <span className="mt-0.5 block text-[13px] leading-snug" style={{ color: MAU.muted }}>
               Mỗi lượt đúng từ {Math.round(c.dat_ti_le * 10)}/10 câu trở lên được thưởng · tối đa {c.lan_ngay} lượt mỗi ngày
             </span>
           </span>
@@ -121,14 +121,14 @@ export function NhiemVuView({ d, onLuyenYeu, onVongQuay }: { d: NhiemVuCuaToi; o
           {Array.from({ length: c.lan_ngay }, (_, i) => {
             const xong = i < d.ngay.luot_hom_nay
             return (
-              <span key={i} className="flex h-9 items-center justify-center rounded-lg text-[13px] font-extrabold"
+              <span key={i} className="flex h-9 items-center justify-center rounded-lg text-[14.5px] font-extrabold"
                 style={xong ? { background: MAU.acc, color: MAU.accInk, boxShadow: '0 0 8px var(--sk-acc)' } : { background: MAU.surface, border: `1px dashed ${MAU.line}`, color: MAU.muted }}>
                 {xong ? '✓' : i + 1}
               </span>
             )
           })}
         </div>
-        <p className="mt-1.5 text-[12px] font-semibold" style={{ color: nayDay ? MAU.dung : MAU.muted }}>
+        <p className="mt-1.5 text-[13px] font-semibold" style={{ color: nayDay ? MAU.dung : MAU.muted }}>
           {nayDay ? 'Đã đủ thưởng hôm nay — luyện thêm vẫn tốt cho em nhé!' : `Hôm nay đã đạt ${d.ngay.luot_hom_nay}/${c.lan_ngay} lượt`}
         </p>
       </div>
@@ -139,17 +139,17 @@ export function NhiemVuView({ d, onLuyenYeu, onVongQuay }: { d: NhiemVuCuaToi; o
         <button onClick={onVongQuay} disabled={!onVongQuay || !d.vong_quay.du || d.vong_quay.da_quay} className={nut}
           style={d.vong_quay.du && !d.vong_quay.da_quay ? { background: MAU.acc, color: MAU.accInk, boxShadow: '0 0 12px var(--sk-acc)' } : { background: MAU.surface2, color: MAU.muted, border: `1px dashed ${MAU.line}` }}>
           <span className="shrink-0" style={{ opacity: d.vong_quay.du && !d.vong_quay.da_quay ? 1 : 0.5 }}><IconNV ma="vong_quay" size={22} /></span>
-          <span className="text-[12.5px] leading-tight">{d.vong_quay.da_quay ? 'Hôm nay đã quay' : d.vong_quay.du ? 'Quay may mắn ›' : 'Có 1 lượt đạt để quay may mắn'}</span>
+          <span className="text-[14px] leading-tight">{d.vong_quay.da_quay ? 'Hôm nay đã quay' : d.vong_quay.du ? 'Quay may mắn ›' : 'Có 1 lượt đạt để quay may mắn'}</span>
         </button>
       </div>
     </Khoi>
   )
 
   const tuan = (
-    <Khoi icon={<IconNV ma="tuan" size={22} />} tieuDe="Nhiệm vụ tuần" phai={<b className="text-[16px]" style={{ ...HEAD, color: MAU.ink }}>Tuần {d.tuan_so}</b>}>
+    <Khoi icon={<IconNV ma="tuan" size={22} />} tieuDe="Nhiệm vụ tuần" phai={<b className="text-[17.5px]" style={{ ...HEAD, color: MAU.ink }}>Tuần {d.tuan_so}</b>}>
       <Dong ten="Chăm đều" mota={`Có lượt đạt ở ${c.w1_ngay} ngày khác nhau trong tuần`} xong={d.tuan.w1_xong} hien={d.tuan.ngay_co_luot} can={c.w1_ngay} exp={c.w1_exp} dht={c.w1_dht} />
       <Dong ten="Luyện nhiều" mota={`Tổng ${c.w2_luot} lượt đạt trong tuần`} xong={d.tuan.w2_xong} hien={d.tuan.luot} can={c.w2_luot} exp={c.w2_exp} dht={c.w2_dht} />
-      <p className="mt-2 text-[11.5px] leading-snug" style={{ color: MAU.muted }}>Tuần tính theo 4 khối ngày của tháng: 1–7 · 8–14 · 15–21 · 22 đến hết tháng.</p>
+      <p className="mt-2 text-[12.5px] leading-snug" style={{ color: MAU.muted }}>Tuần tính theo 4 khối ngày của tháng: 1–7 · 8–14 · 15–21 · 22 đến hết tháng.</p>
     </Khoi>
   )
 
@@ -188,13 +188,13 @@ export default function NhiemVuHS({ gioiTinh, onBack, onLuyenYeu, onVongQuay }: 
     <Khung gioiTinh={gioiTinh} nenAnh="nhiem_vu">
       {anh ? <DauNhiemVuArt a={anh} mon={d?.mon ?? ''} onBack={onBack} /> : <>
         <NutBack onBack={onBack} />
-        <h1 className="text-[28px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Nhiệm vụ {d?.mon ?? ''}</h1>
-        <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game).</p>
+        <h1 className="text-[31px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Nhiệm vụ {d?.mon ?? ''}</h1>
+        <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game).</p>
       </>}
 
-      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
-      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
-      {state === 'trong' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Nhiệm vụ chưa mở cho môn của em.</p>}
+      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
+      {state === 'trong' && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Nhiệm vụ chưa mở cho môn của em.</p>}
       {state === 'san_sang' && d && <NhiemVuView d={d} onLuyenYeu={onLuyenYeu} onVongQuay={onVongQuay} />}
     </Khung>
   )

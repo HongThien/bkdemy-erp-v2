@@ -16,9 +16,9 @@ export default function MoiQuayMayMan({ coLuot, onQuay }: { coLuot: boolean; onQ
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-6 sm:items-center" onClick={deSau}>
       <div className="w-full max-w-[400px] p-6 text-center" onClick={(e) => e.stopPropagation()} style={{ ...THE_TRON, background: MAU.bg }}>
-        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full text-[42px]" style={{ background: MAU.surface2 }} aria-hidden>🎰</div>
-        <p className="mt-3 text-[22px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Em có 1 lượt quay may mắn!</p>
-        <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Vừa xong một lượt Luyện dạng yếu đạt — quay ngay để nhận thêm EXP.</p>
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full text-[46px]" style={{ background: MAU.surface2 }} aria-hidden>🎰</div>
+        <p className="mt-3 text-[24px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Em có 1 lượt quay may mắn!</p>
+        <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Vừa xong một lượt Luyện dạng yếu đạt — quay ngay để nhận thêm EXP.</p>
         <div className="mt-4 flex flex-col gap-2">
           <NutHS onClick={() => { deSau(); onQuay() }} className="w-full">Quay ngay ▶</NutHS>
           <NutHS phu onClick={deSau} className="w-full">Để sau</NutHS>

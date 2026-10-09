@@ -1,0 +1,1 @@
+{"loai":"chuyen_dong","tieu_de":"Sau 2 giờ hai xe còn cách nhau","diem":[{"ten":"A","x":0},{"ten":"M","x":80,"ghi":"xe thứ nhất"},{"ten":"N","x":100,"ghi":"xe thứ hai"},{"ten":"B","x":200}],"di":[{"tu":0,"den":80,"nhan":"Xe thứ nhất"},{"tu":200,"den":100,"nhan":"Xe thứ hai"}],"khoang":[{"tu":80,"den":100,"nhan":"20 km"},{"tu":0,"den":200,"nhan":"? km"}]}

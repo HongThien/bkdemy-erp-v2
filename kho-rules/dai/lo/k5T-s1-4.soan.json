@@ -1,0 +1,1401 @@
+[
+ {
+  "ma_nguon": "LT 1.2d",
+  "dap_an": "$2\\dfrac{3}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $7\\dfrac{3}{7}$ và $3\\dfrac{3}{7}$ có **cùng phần phân số** $\\dfrac{3}{7}$, trừ cho nhau ra ngay số tự nhiên $4$. Muốn đưa hai số đó lại gần nhau thì dùng quy tắc **trừ một tổng**: lấy số bị trừ trừ lần lượt từng số hạng.\n\nCòn lại $4-1\\dfrac{1}{4}$: phần phân số của $4$ là $0$, không trừ được $\\dfrac{1}{4}$ ⇒ mượn $1$ đơn vị: $4=3\\dfrac{4}{4}$.\n\n**Phần 2. Trình bày**\n\n$7\\dfrac{3}{7}-\\left(1\\dfrac{1}{4}+3\\dfrac{3}{7}\\right)$\n\n$=7\\dfrac{3}{7}-3\\dfrac{3}{7}-1\\dfrac{1}{4}$\n\n$=4-1\\dfrac{1}{4}$\n\n$=3\\dfrac{4}{4}-1\\dfrac{1}{4}$\n\n$=2\\dfrac{3}{4}$"
+ },
+ {
+  "ma_nguon": "LT 1.4e",
+  "dap_an": "$y=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $y$ có mặt ở cả ba tích ⇒ dùng tính chất **nhân một số với một tổng (hiệu)** để gom về \"$y$ nhân với một số\". Đổi hỗn số $1\\dfrac{5}{9}=\\dfrac{14}{9}$ cho cùng mẫu với hai phân số kia rồi tính trong ngoặc.\n\nKhi đã còn $y\\times\\dfrac{4}{3}=4$: muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y\\times 1\\dfrac{5}{9}-y\\times\\dfrac{7}{9}+y\\times\\dfrac{5}{9}=4 \\\\ y\\times\\left(\\dfrac{14}{9}-\\dfrac{7}{9}+\\dfrac{5}{9}\\right)=4 \\\\ y\\times\\dfrac{4}{3}=4 \\\\ y=4:\\dfrac{4}{3} \\\\ y=3 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 1.6e",
+  "dap_an": "$\\dfrac{2022}{2023}<\\dfrac{2023}{2024}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nQuy đồng thì mẫu số rất lớn. Dấu hiệu: cả hai phân số đều **kém $1$ đúng một phân số có tử $1$** (tử kém mẫu $1$ đơn vị) ⇒ so sánh **phần bù đến $1$**. Phân số nào có phần bù **lớn hơn** thì phân số đó **bé hơn** (vì \"thiếu\" nhiều hơn mới đủ $1$).\n\nHai phần bù $\\dfrac{1}{2023}$ và $\\dfrac{1}{2024}$ cùng tử số $1$: mẫu số nào lớn hơn thì phân số đó bé hơn.\n\n**Phần 2. Trình bày**\n\nBước 1: Tìm phần bù đến $1$ của mỗi phân số:\n\n$1-\\dfrac{2022}{2023}=\\dfrac{1}{2023}$\n\n$1-\\dfrac{2023}{2024}=\\dfrac{1}{2024}$\n\nBước 2: So sánh phần bù: $\\dfrac{1}{2023}>\\dfrac{1}{2024}$\n\nVậy $\\dfrac{2022}{2023}<\\dfrac{2023}{2024}$."
+ },
+ {
+  "ma_nguon": "LT 2.3",
+  "dap_an": "$6$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $\\dfrac{5}{8}$ là phân số của **quãng đường còn lại** sau giờ thứ nhất, **không phải** của cả $24$ km. Nên phải đi lần lượt: giờ thứ nhất → phần còn lại → giờ thứ hai → giờ thứ ba chính là phần còn lại sau giờ thứ hai.\n\nChú ý: lấy $24\\times\\dfrac{5}{8}$ là sai ngay chỗ này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường người đó đi trong giờ thứ nhất là: $24\\times\\dfrac{1}{3}=8$ (km)\n\nQuãng đường còn lại sau giờ thứ nhất là: $24-8=16$ (km)\n\nQuãng đường người đó đi trong giờ thứ hai là: $16\\times\\dfrac{5}{8}=10$ (km)\n\nQuãng đường người đó đi trong giờ thứ ba là: $16-10=6$ (km)\n\nĐáp số: $6$ km"
+ },
+ {
+  "ma_nguon": "LT 2.10",
+  "dap_an": "$65$ hộp bánh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: $3$ hộp bán thêm **không phải** một phân số, nên gộp nó với $36$ hộp còn lại: nếu chỉ bán $\\dfrac{2}{5}$ số hộp thì còn $36+3=39$ hộp. $39$ hộp này ứng với phần còn lại $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ số hộp lúc đầu.\n\nBiết giá trị của một phân số thì tìm số đó bằng phép **chia** cho phân số (như VD 2.2 của sách).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu chỉ bán $\\dfrac{2}{5}$ số hộp bánh thì cửa hàng còn lại: $36+3=39$ (hộp)\n\n$39$ hộp bánh tương ứng với: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số hộp bánh lúc đầu)\n\nSố hộp bánh lúc đầu cửa hàng có là: $39:\\dfrac{3}{5}=65$ (hộp)\n\nĐáp số: $65$ hộp bánh"
+ },
+ {
+  "ma_nguon": "LT 2.20",
+  "dap_an": "$84$ kg táo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi câu \"$\\dfrac{2}{3}$ giỏ thứ nhất bằng $\\dfrac{1}{2}$ giỏ thứ hai\" thành **số phần bằng nhau** bằng cách **quy đồng tử số**: $\\dfrac{1}{2}=\\dfrac{2}{4}$. Lúc đó $2$ phần (khi chia giỏ thứ nhất thành $3$ phần) bằng $2$ phần (khi chia giỏ thứ hai thành $4$ phần) ⇒ các phần này bằng nhau: giỏ thứ nhất $3$ phần, giỏ thứ hai $4$ phần.\n\nĐề cho **hiệu** $12$ kg ⇒ bài toán hiệu – tỉ. Chú ý: câu hỏi là **cả hai giỏ**, tìm xong từng giỏ phải cộng lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $\\dfrac{1}{2}=\\dfrac{2}{4}$ nên $\\dfrac{2}{3}$ số táo giỏ thứ nhất bằng $\\dfrac{2}{4}$ số táo giỏ thứ hai.\n\nHay số táo giỏ thứ nhất bằng $\\dfrac{3}{4}$ số táo giỏ thứ hai.\n\nTa có sơ đồ:\n\n(Giỏ thứ nhất 3 phần; Giỏ thứ hai 4 phần; hiệu 12 kg)\n\nHiệu số phần bằng nhau là: $4-3=1$ (phần)\n\nSố táo trong giỏ thứ nhất là: $12:1\\times 3=36$ (kg)\n\nSố táo trong giỏ thứ hai là: $36+12=48$ (kg)\n\nCả hai giỏ có số táo là: $36+48=84$ (kg)\n\nĐáp số: $84$ kg táo",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Giỏ thứ nhất",
+     "phan": 3
+    },
+    {
+     "nhan": "Giỏ thứ hai",
+     "phan": 4
+    }
+   ],
+   "hieu": "12 kg",
+   "dau_hoi": [
+    "Giỏ thứ nhất",
+    "Giỏ thứ hai"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 2.25",
+  "dap_an": "$1000\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTỉ lệ $1:500$ nghĩa là $1$ cm trên bản đồ ứng với $500$ cm trên thực tế. Mấu chốt: đổi **từng cạnh** ra độ dài thật rồi mới tính diện tích.\n\nChú ý bẫy: lấy diện tích trên bản đồ $8\\times 5=40$ cm² rồi nhân $500$ là **sai** — diện tích thật gấp $500\\times 500$ lần chứ không phải $500$ lần. Đề hỏi mét vuông ⇒ đổi cm ra m **trước** khi nhân cho số gọn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mảnh đất trên thực tế là: $8\\times 500=4000$ (cm)\n\nĐổi: $4000$ cm $=40$ m\n\nChiều rộng mảnh đất trên thực tế là: $5\\times 500=2500$ (cm)\n\nĐổi: $2500$ cm $=25$ m\n\nDiện tích mảnh đất trên thực tế là: $40\\times 25=1000$ ($\\text{m}^2$)\n\nĐáp số: $1000\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LT 3.4",
+  "dap_an": "$30$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nNhư mọi bài công việc chung: coi cả bể là $1$, tính **mỗi giờ mỗi vòi làm được mấy phần bể**. Khác ở chỗ vòi B **tháo ra**, nên mở cả hai vòi thì mỗi giờ bể chỉ có thêm phần **hiệu** $\\dfrac{1}{5}-\\dfrac{1}{6}$, không phải tổng.\n\nCó phần bể đầy thêm sau $1$ giờ thì thời gian đầy bể $=1$ chia cho phần đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, vòi A chảy vào được: $1:5=\\dfrac{1}{5}$ (bể)\n\nTrong $1$ giờ, vòi B tháo ra được: $1:6=\\dfrac{1}{6}$ (bể)\n\nTrong $1$ giờ, mở cả hai vòi thì lượng nước trong bể tăng thêm: $\\dfrac{1}{5}-\\dfrac{1}{6}=\\dfrac{1}{30}$ (bể)\n\nThời gian để bể đầy là: $1:\\dfrac{1}{30}=30$ (giờ)\n\nĐáp số: $30$ giờ"
+ },
+ {
+  "ma_nguon": "LT 3.10",
+  "dap_an": "$15$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: công việc chia **hai đoạn**. Đoạn đầu chỉ anh làm $5$ phút ⇒ được $\\dfrac{1}{10}\\times 5=\\dfrac{1}{2}$ công việc. Nửa còn lại do **hai anh em** làm trong $3$ phút ⇒ mỗi phút hai người làm được $\\dfrac{1}{2}:3$.\n\nLấy phần cả hai làm trong $1$ phút trừ phần của anh ⇒ phần của em trong $1$ phút ⇒ thời gian em làm một mình.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ phút, anh làm được: $1:10=\\dfrac{1}{10}$ (công việc)\n\nTrong $5$ phút, anh làm được: $\\dfrac{1}{10}\\times 5=\\dfrac{1}{2}$ (công việc)\n\nPhần việc hai anh em cùng làm là: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$ (công việc)\n\nTrong $1$ phút, hai anh em cùng làm được: $\\dfrac{1}{2}:3=\\dfrac{1}{6}$ (công việc)\n\nTrong $1$ phút, em làm được: $\\dfrac{1}{6}-\\dfrac{1}{10}=\\dfrac{1}{15}$ (công việc)\n\nNếu em làm một mình thì xong việc dọn nhà sau: $1:\\dfrac{1}{15}=15$ (phút)\n\nĐáp số: $15$ phút"
+ },
+ {
+  "ma_nguon": "LT 4.1b",
+  "dap_an": "$B=\\dfrac{36}{37}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nDấu hiệu: ở mỗi số hạng, **tử số bằng hiệu hai thừa số ở mẫu** ($3-1=2$, $5-3=2$, …). Khi đó mỗi số hạng tách được thành hiệu hai phân số: $\\dfrac{2}{1\\times 3}=\\dfrac{1}{1}-\\dfrac{1}{3}$ (thử lại: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$).\n\nViết hết ra thì các phân số ở giữa **triệt tiêu từng cặp** ($-\\dfrac{1}{3}+\\dfrac{1}{3}$, …), chỉ còn số đầu trừ số cuối — đúng cách VD 4.1 của sách.\n\n**Phần 2. Trình bày**\n\n$B=\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\dfrac{2}{5\\times 7}+\\dfrac{2}{7\\times 9}+\\ldots+\\dfrac{2}{35\\times 37}$\n\n$B=\\dfrac{1}{1}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{9}+\\ldots+\\dfrac{1}{35}-\\dfrac{1}{37}$\n\n$B=1-\\dfrac{1}{37}$\n\n$B=\\dfrac{36}{37}$"
+ },
+ {
+  "ma_nguon": "LT 4.8b",
+  "dap_an": "$B=\\dfrac{511}{1280}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nDấu hiệu: **mẫu số sau gấp đôi mẫu số trước** ($5$, $10$, $20$, …, $1280$) — số hạng sau bằng một nửa số hạng trước. Nhân cả $B$ với $2$ thì mỗi số hạng thành số hạng đứng trước nó: dãy $2\\times B$ có gần như đủ các số hạng của $B$, chỉ thêm $\\dfrac{2}{5}$ ở đầu và thiếu $\\dfrac{1}{1280}$ ở cuối.\n\nLấy $2\\times B-B$: các số hạng giống nhau triệt tiêu hết, còn $\\dfrac{2}{5}-\\dfrac{1}{1280}$, và $2\\times B-B$ chính là $B$.\n\n**Phần 2. Trình bày**\n\n$B=\\dfrac{1}{5}+\\dfrac{1}{10}+\\dfrac{1}{20}+\\dfrac{1}{40}+\\ldots+\\dfrac{1}{1280}$\n\n$2\\times B=\\dfrac{2}{5}+\\dfrac{1}{5}+\\dfrac{1}{10}+\\dfrac{1}{20}+\\ldots+\\dfrac{1}{640}$\n\n$2\\times B-B=\\dfrac{2}{5}-\\dfrac{1}{1280}$\n\n$B=\\dfrac{512}{1280}-\\dfrac{1}{1280}$\n\n$B=\\dfrac{511}{1280}$"
+ },
+ {
+  "ma_nguon": "LT 5.1",
+  "dap_an": "$16$ xe",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTrọng tải mỗi xe như nhau ⇒ số tấn hàng và số xe là hai đại lượng **tỉ lệ thuận**. Cách rút về đơn vị: tìm $1$ xe chở được mấy tấn, rồi tìm số xe cần cho $480$ tấn. *(Cách khác: $480$ tấn gấp $240$ tấn $2$ lần nên số xe cũng gấp $2$ lần.)*\n\nChú ý: đề hỏi **huy động thêm** bao nhiêu xe ⇒ phải trừ đi $16$ xe đã có.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi xe chở được số tấn hàng là: $240:16=15$ (tấn)\n\nSố xe cần để chở $480$ tấn hàng là: $480:15=32$ (xe)\n\nSố xe phải huy động thêm là: $32-16=16$ (xe)\n\nĐáp số: $16$ xe"
+ },
+ {
+  "ma_nguon": "LT 5.6",
+  "dap_an": "$24$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nSố tiền **không đổi** ⇒ giá một quyển và số quyển mua được là hai đại lượng **tỉ lệ nghịch** (giá tăng thì mua được ít đi). Cách gọn nhất: tính ra **đại lượng không đổi** (số tiền) trước, rồi chia cho giá mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền người đó có là: $12000\\times 30=360000$ (đồng)\n\nVới giá $15000$ đồng một quyển, người đó mua được số quyển vở là: $360000:15000=24$ (quyển)\n\nĐáp số: $24$ quyển vở"
+ },
+ {
+  "ma_nguon": "LT 5.14",
+  "dap_an": "$288$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai đại lượng cùng đổi một lúc (số người **và** số ngày) ⇒ bài **tỉ lệ kép**. Rút về đơn vị hai lần: tìm **$1$ người làm trong $1$ ngày** được mấy sản phẩm, rồi nhân với số người và số ngày mới. *(Sách còn cách \"phương pháp ba dòng\" và \"tam suất kép\" — VD 5.3.)*\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ người làm trong $6$ ngày được số sản phẩm là: $180:15=12$ (sản phẩm)\n\n$1$ người làm trong $1$ ngày được số sản phẩm là: $12:6=2$ (sản phẩm)\n\n$18$ người làm trong $8$ ngày được số sản phẩm là: $2\\times 18\\times 8=288$ (sản phẩm)\n\nĐáp số: $288$ sản phẩm"
+ },
+ {
+  "ma_nguon": "LT 6.4",
+  "dap_an": "$291$ kg thóc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai mấu chốt:\n\n(1) Xe thứ ba **bằng** trung bình cộng của cả ba xe ⇒ thêm xe thứ ba vào không làm trung bình cộng thay đổi ⇒ xe thứ ba bằng trung bình cộng của **hai xe đầu**.\n\n(2) Xe thứ tư **hơn** trung bình cộng của bốn xe $6$ kg ⇒ ba xe đầu phải \"bù\" lại: ba xe đầu bằng $3$ lần trung bình cộng **bớt** $6$ kg. Vậy **$3$ lần trung bình cộng $=$ tổng ba xe đầu $+6$** (cách VD 13.5 sách 4T).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nXe thứ hai chở số thóc là: $267+32=299$ (kg)\n\nXe thứ ba chở số thóc bằng trung bình cộng của hai xe đầu, là: $\\left(267+299\\right):2=283$ (kg)\n\nTa có sơ đồ:\n\n(Trung bình cộng 1 đoạn; Xe thứ tư 1 đoạn và 6 kg; Ba xe đầu 3 đoạn còn thiếu 6 kg)\n\nBa lần trung bình cộng số thóc của bốn xe là: $267+299+283+6=855$ (kg)\n\nTrung bình cộng số thóc của bốn xe là: $855:3=285$ (kg)\n\nXe thứ tư chở số thóc là: $285+6=291$ (kg)\n\nĐáp số: $291$ kg thóc",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 285,
+   "hang": [
+    {
+     "nhan": "Trung bình cộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Xe thứ tư",
+     "phan": 1,
+     "them": "6 kg"
+    },
+    {
+     "nhan": "Ba xe đầu",
+     "phan": 3,
+     "bot": "6 kg"
+    }
+   ],
+   "dau_hoi": [
+    "Xe thứ tư"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 6.8",
+  "dap_an": "Bình: $31$ viên bi; Minh: $15$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cho nhau thì **tổng không đổi** ($46$). Hiệu \"Minh hơn Bình $4$ viên\" là hiệu **lúc sau**, nên giải tổng – hiệu cho **lúc sau** trước, rồi mới đi ngược về lúc đầu (Bình lúc đầu nhiều hơn lúc sau $10$ viên).\n\nChú ý bẫy: dùng hiệu $4$ cho lúc đầu là sai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số bi của hai bạn không đổi.\n\nTa có sơ đồ:\n\n((sau khi Bình cho Minh 10 viên bi): Số bi của Bình 1 đoạn; Số bi của Minh 1 đoạn và 4 viên; tổng 46 viên)\n\nSố bi của Bình sau khi cho Minh là: $\\left(46-4\\right):2=21$ (viên)\n\nSố bi của Bình lúc đầu là: $21+10=31$ (viên)\n\nSố bi của Minh lúc đầu là: $46-31=15$ (viên)\n\nĐáp số: Bình: $31$ viên bi; Minh: $15$ viên bi",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi Bình cho Minh 10 viên bi",
+   "gia_tri_phan": 21,
+   "hang": [
+    {
+     "nhan": "Số bi của Bình",
+     "phan": 1
+    },
+    {
+     "nhan": "Số bi của Minh",
+     "phan": 1,
+     "them": "4 viên"
+    }
+   ],
+   "tong": "46 viên",
+   "dau_hoi": [
+    "Số bi của Bình",
+    "Số bi của Minh"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 6.15",
+  "dap_an": "$2$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **hiệu số tuổi không đổi** theo thời gian, luôn là $34-7=27$ tuổi. Vẽ sơ đồ ở **thời điểm có tỉ số** (khi mẹ gấp $4$ lần con): con $1$ phần, mẹ $4$ phần, hiệu $3$ phần ứng với $27$ tuổi ⇒ tuổi con lúc đó.\n\nĐề hỏi **bao nhiêu năm nữa** ⇒ lấy tuổi con lúc đó trừ tuổi con hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMẹ hơn con số tuổi là: $34-7=27$ (tuổi)\n\nHiệu số tuổi của hai mẹ con không đổi theo thời gian.\n\nTa có sơ đồ:\n\n((khi tuổi mẹ gấp 4 lần tuổi con): Tuổi con 1 phần; Tuổi mẹ 4 phần; hiệu 27 tuổi)\n\nHiệu số phần bằng nhau là: $4-1=3$ (phần)\n\nTuổi con khi tuổi mẹ gấp $4$ lần tuổi con là: $27:3=9$ (tuổi)\n\nSố năm nữa để tuổi mẹ gấp $4$ lần tuổi con là: $9-7=2$ (năm)\n\nĐáp số: $2$ năm",
+  "so_do_mo_ta": {
+   "tieu_de": "Khi tuổi mẹ gấp 4 lần tuổi con",
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 4
+    }
+   ],
+   "hieu": "27 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 6.17",
+  "dap_an": "Mai: $25$ quyển vở; Hà: $30$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi \"$\\dfrac{3}{5}$ số vở của Mai bằng $\\dfrac{1}{2}$ số vở của Hà\" thành số phần bằng nhau bằng **quy đồng tử số**: $\\dfrac{1}{2}=\\dfrac{3}{6}$ ⇒ Mai $5$ phần, Hà $6$ phần. Đề cho **tổng** $55$ ⇒ bài tổng – tỉ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $\\dfrac{1}{2}=\\dfrac{3}{6}$ nên $\\dfrac{3}{5}$ số vở của Mai bằng $\\dfrac{3}{6}$ số vở của Hà.\n\nHay số vở của Mai bằng $\\dfrac{5}{6}$ số vở của Hà.\n\nTa có sơ đồ:\n\n(Số vở của Mai 5 phần; Số vở của Hà 6 phần; tổng 55 quyển)\n\nTổng số phần bằng nhau là: $5+6=11$ (phần)\n\nSố vở của Mai là: $55:11\\times 5=25$ (quyển)\n\nSố vở của Hà là: $55-25=30$ (quyển)\n\nĐáp số: Mai: $25$ quyển vở; Hà: $30$ quyển vở",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Số vở của Mai",
+     "phan": 5
+    },
+    {
+     "nhan": "Số vở của Hà",
+     "phan": 6
+    }
+   ],
+   "tong": "55 quyển",
+   "dau_hoi": [
+    "Số vở của Mai",
+    "Số vở của Hà"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 7.5",
+  "dap_an": "$6$ em; $31$ quả táo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai cách chia cho **cùng số em**. So sánh hai cách:\n\n- mỗi em chênh nhau $6-4=2$ quả (**hiệu thứ nhất**);\n- tổng số táo cần để chia chênh nhau: từ chỗ **thừa** $7$ quả đến chỗ **thiếu** $5$ quả là $7+5=12$ quả (**hiệu thứ hai** — một thừa một thiếu thì **cộng**; cả hai cùng thừa hoặc cùng thiếu thì **trừ**).\n\nSố em $=$ hiệu thứ hai : hiệu thứ nhất. Rồi tính số táo theo một cách chia bất kì.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số táo 1 đoạn; Nếu mỗi em 4 quả: 1 đoạn còn thiếu 7 quả (thừa 7 quả); Nếu mỗi em 6 quả: 1 đoạn và thêm 5 quả (thiếu 5 quả))\n\nChênh lệch số táo của một em giữa hai cách chia là: $6-4=2$ (quả)\n\nChênh lệch tổng số táo giữa hai cách chia là: $7+5=12$ (quả)\n\nSố em được chia táo là: $12:2=6$ (em)\n\nSố táo là: $4\\times 6+7=31$ (quả)\n\nĐáp số: $6$ em; $31$ quả táo",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 31,
+   "hang": [
+    {
+     "nhan": "Số táo",
+     "phan": 1
+    },
+    {
+     "nhan": "Nếu mỗi em 4 quả",
+     "phan": 1,
+     "bot": "7 quả"
+    },
+    {
+     "nhan": "Nếu mỗi em 6 quả",
+     "phan": 1,
+     "them": "5 quả"
+    }
+   ],
+   "dau_hoi": [
+    "Số táo"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 7.14",
+  "dap_an": "$48$ học sinh; $14$ bàn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: \"thừa $2$ bàn\" là thừa **bàn**, không cùng loại với \"$6$ bạn không có chỗ\". Đổi ra số **chỗ ngồi**: nếu xếp đủ $4$ bạn vào cả $2$ bàn thừa thì còn thiếu $4\\times 2=8$ bạn.\n\nLúc này: cách $1$ thừa $6$ bạn, cách $2$ (ngồi kín mọi bàn) thiếu $8$ bạn ⇒ chênh lệch tổng $6+8=14$; mỗi bàn chênh $4-3=1$ bạn ⇒ số bàn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số học sinh 1 đoạn; Số chỗ nếu mỗi bàn 3 bạn: còn thiếu 6 bạn; Số chỗ nếu mỗi bàn 4 bạn: thêm 8 bạn)\n\nNếu xếp mỗi bàn $4$ bạn cho kín cả $2$ bàn thừa thì còn thiếu: $4\\times 2=8$ (bạn)\n\nChênh lệch số bạn ngồi ở một bàn giữa hai cách xếp là: $4-3=1$ (bạn)\n\nChênh lệch tổng số bạn giữa hai cách xếp là: $6+8=14$ (bạn)\n\nSố bàn của lớp là: $14:1=14$ (bàn)\n\nSố học sinh của lớp là: $3\\times 14+6=48$ (học sinh)\n\nĐáp số: $48$ học sinh; $14$ bàn",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Số học sinh",
+     "phan": 1
+    },
+    {
+     "nhan": "Số chỗ nếu mỗi bàn 3 bạn",
+     "phan": 1,
+     "bot": "6 bạn"
+    },
+    {
+     "nhan": "Số chỗ nếu mỗi bàn 4 bạn",
+     "phan": 1,
+     "them": "8 bạn"
+    }
+   ],
+   "dau_hoi": [
+    "Số học sinh"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 8.3",
+  "dap_an": "Ngăn trên: $18$ quyển; ngăn dưới: $54$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chỉ ngăn trên được thêm sách, **ngăn dưới giữ nguyên** ⇒ lấy số sách ngăn dưới làm \"đơn vị\" cho cả hai tỉ số. Lúc đầu ngăn trên $=\\dfrac{1}{3}$ ngăn dưới, lúc sau $=\\dfrac{7}{9}$ ngăn dưới ⇒ $24$ quyển thêm vào ứng với $\\dfrac{7}{9}-\\dfrac{1}{3}$ số sách ngăn dưới (như VD 8.1 của sách).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sách ở ngăn dưới không đổi.\n\n$24$ quyển sách ứng với: $\\dfrac{7}{9}-\\dfrac{1}{3}=\\dfrac{4}{9}$ (số sách ngăn dưới)\n\nSố sách ở ngăn dưới là: $24:\\dfrac{4}{9}=54$ (quyển)\n\nSố sách ở ngăn trên lúc đầu là: $54\\times\\dfrac{1}{3}=18$ (quyển)\n\nĐáp số: Ngăn trên: $18$ quyển; ngăn dưới: $54$ quyển"
+ },
+ {
+  "ma_nguon": "LT 8.9",
+  "dap_an": "Mai: $24$ cái kẹo; Lam: $36$ cái kẹo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Mai cho Lam ⇒ **tổng số kẹo của hai bạn không đổi** ⇒ đổi cả hai tỉ số thành \"số kẹo của Mai bằng mấy phần **tổng**\". Lúc đầu Mai $2$ phần, Lam $3$ phần ⇒ Mai $=\\dfrac{2}{5}$ tổng; lúc sau Mai $3$ phần, Lam $7$ phần ⇒ Mai $=\\dfrac{3}{10}$ tổng. Mai bớt đi $6$ cái ⇒ $6$ cái ứng với $\\dfrac{2}{5}-\\dfrac{3}{10}$ tổng (như VD 8.2).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số kẹo của hai bạn không đổi.\n\nLúc đầu, số kẹo của Mai bằng: $\\dfrac{2}{2+3}=\\dfrac{2}{5}$ (tổng số kẹo)\n\nLúc sau, số kẹo của Mai bằng: $\\dfrac{3}{3+7}=\\dfrac{3}{10}$ (tổng số kẹo)\n\n$6$ cái kẹo ứng với: $\\dfrac{2}{5}-\\dfrac{3}{10}=\\dfrac{1}{10}$ (tổng số kẹo)\n\nTổng số kẹo của hai bạn là: $6:\\dfrac{1}{10}=60$ (cái)\n\nSố kẹo của Mai lúc đầu là: $60\\times\\dfrac{2}{5}=24$ (cái)\n\nSố kẹo của Lam lúc đầu là: $60-24=36$ (cái)\n\nĐáp số: Mai: $24$ cái kẹo; Lam: $36$ cái kẹo"
+ },
+ {
+  "ma_nguon": "LT 8.16",
+  "dap_an": "Con: $8$ tuổi; Mẹ: $32$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **hiệu số tuổi không đổi** ⇒ đổi cả hai tỉ số thành \"tuổi con bằng mấy phần **hiệu**\". Hiện nay mẹ gấp $4$ lần con ⇒ hiệu bằng $3$ lần tuổi con ⇒ con $=\\dfrac{1}{3}$ hiệu. Bốn năm trước mẹ gấp $7$ lần ⇒ con $=\\dfrac{1}{6}$ hiệu. Tuổi con kém đi $4$ ⇒ $4$ tuổi ứng với $\\dfrac{1}{3}-\\dfrac{1}{6}$ hiệu (như VD 8.3).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của hai mẹ con không đổi.\n\nHiện nay, tuổi con bằng: $\\dfrac{1}{4-1}=\\dfrac{1}{3}$ (hiệu số tuổi)\n\nBốn năm trước, tuổi con bằng: $\\dfrac{1}{7-1}=\\dfrac{1}{6}$ (hiệu số tuổi)\n\n$4$ tuổi ứng với: $\\dfrac{1}{3}-\\dfrac{1}{6}=\\dfrac{1}{6}$ (hiệu số tuổi)\n\nHiệu số tuổi của hai mẹ con là: $4:\\dfrac{1}{6}=24$ (tuổi)\n\nTuổi con hiện nay là: $24\\times\\dfrac{1}{3}=8$ (tuổi)\n\nTuổi mẹ hiện nay là: $8\\times 4=32$ (tuổi)\n\nĐáp số: Con: $8$ tuổi; Mẹ: $32$ tuổi"
+ },
+ {
+  "ma_nguon": "LT 9.2",
+  "dap_an": "$707$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nBiết kết quả cuối của một chuỗi phép tính ⇒ **tính ngược từ cuối lên**, mỗi phép đổi thành phép ngược: nhân $25$ ⇒ chia $25$; cộng $26$ ⇒ trừ $26$; chia $11$ ⇒ nhân $11$; trừ $102$ ⇒ cộng $102$.\n\nThử lại: $\\left(707-102\\right):11=55$; $55+26=81$; $81\\times 25=2025$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố nhân với $25$ được $2025$ là: $2025:25=81$\n\nSố cộng với $26$ được $81$ là: $81-26=55$\n\nSố chia cho $11$ được $55$ là: $55\\times 11=605$\n\nSố cần tìm là: $605+102=707$\n\nĐáp số: $707$"
+ },
+ {
+  "ma_nguon": "LT 9.10",
+  "dap_an": "$270$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTính ngược **từ ngày thứ ba**. Mấu chốt: mỗi phân số tính trên một \"tổng\" **khác nhau** — $\\dfrac{3}{4}$ là của số trang còn lại sau ngày hai, $\\dfrac{3}{10}$ là của số trang còn lại sau ngày một, $\\dfrac{1}{5}$ là của cả quyển.\n\n- Ngày ba: đọc $\\dfrac{3}{4}$ rồi $30$ trang là hết ⇒ $30$ trang là $\\dfrac{1}{4}$ số trang còn lại sau ngày hai.\n- Ngày hai: nếu không đọc thêm $20$ trang thì còn (số trang sau ngày hai) $+20$, ứng với $1-\\dfrac{3}{10}=\\dfrac{7}{10}$ số trang còn lại sau ngày một.\n- Ngày một: tương tự, (số trang còn lại sau ngày một) $+16$ ứng với $\\dfrac{4}{5}$ cả quyển.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$30$ trang ứng với: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (số trang còn lại sau ngày thứ hai)\n\nSố trang còn lại sau ngày thứ hai là: $30:\\dfrac{1}{4}=120$ (trang)\n\nNếu ngày thứ hai không đọc thêm $20$ trang thì số trang còn lại là: $120+20=140$ (trang)\n\n$140$ trang ứng với: $1-\\dfrac{3}{10}=\\dfrac{7}{10}$ (số trang còn lại sau ngày thứ nhất)\n\nSố trang còn lại sau ngày thứ nhất là: $140:\\dfrac{7}{10}=200$ (trang)\n\nNếu ngày thứ nhất không đọc thêm $16$ trang thì số trang còn lại là: $200+16=216$ (trang)\n\n$216$ trang ứng với: $1-\\dfrac{1}{5}=\\dfrac{4}{5}$ (số trang của quyển truyện)\n\nSố trang của quyển truyện là: $216:\\dfrac{4}{5}=270$ (trang)\n\nĐáp số: $270$ trang"
+ },
+ {
+  "ma_nguon": "LT 9.12",
+  "dap_an": "Thái: $12$ quả; Thiện: $10$ quả; Chương: $14$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nChuyển qua lại giữa **ba người** ⇒ **lập bảng**, đi ngược từ dòng cuối (mỗi bạn $36:3=12$ quả) lên dòng đầu. Ở mỗi lượt cho, đi ngược thì **người cho được cộng lại**, **người nhận bị trừ đi** đúng số quả đó; người không liên quan giữ nguyên.\n\nThứ tự ngược: Thiện cho Chương $4$ ⇒ Thái cho Thiện $6$ ⇒ Chương cho Thái $6$. Thử lại: tổng mỗi dòng luôn bằng $36$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có bảng sau:\n\n$\\begin{array}{|l|c|c|c|} \\hline & \\text{Thái} & \\text{Thiện} & \\text{Chương} \\\\ \\hline \\text{Cuối cùng} & 12 & 12 & 12 \\\\ \\hline \\text{Trước khi Thiện cho Chương} & 12 & 12+4=16 & 12-4=8 \\\\ \\hline \\text{Trước khi Thái cho Thiện} & 12+6=18 & 16-6=10 & 8 \\\\ \\hline \\text{Trước khi Chương cho Thái (lúc đầu)} & 18-6=12 & 10 & 8+6=14 \\\\ \\hline \\end{array}$\n\nGiải thích bảng:\n\nLúc cuối mỗi bạn có số quả bóng là: $36:3=12$ (quả)\n\nSố quả bóng của Thái lúc đầu là: $12+6-6=12$ (quả)\n\nSố quả bóng của Thiện lúc đầu là: $12+4-6=10$ (quả)\n\nSố quả bóng của Chương lúc đầu là: $12-4+6=14$ (quả)\n\nĐáp số: Thái: $12$ quả; Thiện: $10$ quả; Chương: $14$ quả"
+ },
+ {
+  "ma_nguon": "LT 10.5",
+  "dap_an": "$x=0,006;\\ 0,007;\\ 0,008;\\ 0,009$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đổi $\\dfrac{1}{100}$ ra số thập phân $0,01$ để hai bên cùng là số thập phân. Số cần tìm có **đúng ba chữ số ở phần thập phân** nên có dạng $0,00\\square$ hoặc $0,0\\square\\square$; so sánh từng hàng từ trái sang phải.\n\nChú ý hai đầu: $0,005=0,00500<0,00565$ nên **không lấy**; $0,010=0,01$ không bé hơn $0,01$ nên **không lấy**.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{100}=0,01$ nên $0,00565<x<0,01$\n\nVậy $x=0,006;\\ 0,007;\\ 0,008;\\ 0,009$."
+ },
+ {
+  "ma_nguon": "LT 10.7b",
+  "dap_an": "$y=2;\\ 3;\\ 4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nBa số cùng phần nguyên $5$, cùng chữ số hàng phần mười $7$ ⇒ so sánh bắt đầu từ **hàng phần trăm**, nơi có $y$. Xét riêng từng vế, chú ý chữ số hàng phần nghìn quyết định ở hai trường hợp sát biên: $y=2$ cho $5,727>5,726$ (lấy được); $y=5$ cho $5,757>5,755$ (không lấy được).\n\n**Phần 2. Trình bày**\n\nBa số có cùng phần nguyên là $5$ và cùng chữ số hàng phần mười là $7$.\n\nVì $\\overline{5,7y7}>5,726$ mà $5,727>5,726$ nên $y$ là một trong các chữ số $2;3;4;5;6;7;8;9$.\n\nVì $\\overline{5,7y7}<5,755$ mà $5,757>5,755$ nên $y$ là một trong các chữ số $0;1;2;3;4$.\n\nVậy $y=2;\\ 3;\\ 4$."
+ },
+ {
+  "ma_nguon": "LT 10.12",
+  "dap_an": "$24$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nSố thập phân bốn chữ số, phần thập phân một chữ số ⇒ có dạng $\\overline{abc,d}$. Đếm như đếm số tự nhiên (khuôn 4T): chọn lần lượt từng hàng, các chữ số **khác nhau** nên hàng sau ít hơn hàng trước một cách. Không có chữ số $0$ nên hàng trăm không phải bớt.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thập phân cần viết có dạng $\\overline{abc,d}$ ($a,b,c,d$ khác nhau, lấy từ $1;2;3;4$).\n\nChữ số $a$ có $4$ cách chọn, chữ số $b$ có $3$ cách chọn, chữ số $c$ có $2$ cách chọn, chữ số $d$ có $1$ cách chọn.\n\nSố số thập phân viết được là: $4\\times 3\\times 2\\times 1=24$ (số)\n\nĐáp số: $24$ số"
+ },
+ {
+  "ma_nguon": "LT 11.3",
+  "dap_an": "$2,3694\\ \\text{m}^2$ ; $23,04\\ \\text{km}^2$ ; $2,0045\\ \\text{km}^2$ ; $5,0437\\ \\text{hm}^2$ ; $4\\ \\text{m}^2\\,12\\ \\text{dm}^2$ ; $21\\ \\text{km}^2\\,3200\\ \\text{dam}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai đơn vị diện tích liền nhau gấp, kém nhau **$100$ lần** (không phải $10$ như độ dài) ⇒ mỗi đơn vị ứng với **hai chữ số**. $1\\ \\text{m}^2=10000\\ \\text{cm}^2$ (cách $2$ bậc), $1\\ \\text{km}^2=10000\\ \\text{dam}^2$.\n\nViết qua hỗn số có phân số thập phân như VD 11.2 của sách rồi mới ra số thập phân. Chú ý $2\\ \\text{km}^2\\,45\\ \\text{dam}^2$: $45\\ \\text{dam}^2=\\dfrac{45}{10000}\\ \\text{km}^2$ nên phải có hai chữ số $0$ chen vào: $2,0045$.\n\n**Phần 2. Trình bày**\n\n$23694\\ \\text{cm}^2=\\dfrac{23694}{10000}\\ \\text{m}^2=2,3694\\ \\text{m}^2$\n\n$2304\\ \\text{hm}^2=\\dfrac{2304}{100}\\ \\text{km}^2=23,04\\ \\text{km}^2$\n\n$2\\ \\text{km}^2\\,45\\ \\text{dam}^2=2\\dfrac{45}{10000}\\ \\text{km}^2=2,0045\\ \\text{km}^2$\n\n$5\\ \\text{hm}^2\\,437\\ \\text{m}^2=5\\dfrac{437}{10000}\\ \\text{hm}^2=5,0437\\ \\text{hm}^2$\n\n$4,12\\ \\text{m}^2=4\\ \\text{m}^2\\,12\\ \\text{dm}^2$\n\n$21,32\\ \\text{km}^2=21\\ \\text{km}^2\\,3200\\ \\text{dam}^2$"
+ },
+ {
+  "ma_nguon": "LT 11.7",
+  "dap_an": "$2,4$ tấn lúa",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nBa bước: (1) **nửa chu vi** chính là tổng chiều dài và chiều rộng ⇒ bài tổng – tỉ (rộng $3$ phần, dài $5$ phần); (2) tính diện tích; (3) số lúa tỉ lệ thuận với diện tích ⇒ **rút về đơn vị**: $1\\ \\text{m}^2$ thu được bao nhiêu ki-lô-gam.\n\nChú ý: đề hỏi **tấn** ⇒ đổi ở dòng cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Chiều rộng 3 phần; Chiều dài 5 phần; tổng 160 m)\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nChiều dài thửa ruộng là: $160:8\\times 5=100$ (m)\n\nChiều rộng thửa ruộng là: $160-100=60$ (m)\n\nDiện tích thửa ruộng là: $100\\times 60=6000$ ($\\text{m}^2$)\n\n$1\\ \\text{m}^2$ thu được số lúa là: $200:500=0,4$ (kg)\n\nSố lúa thu được trên thửa ruộng là: $0,4\\times 6000=2400$ (kg)\n\nĐổi: $2400$ kg $=2,4$ tấn\n\nĐáp số: $2,4$ tấn lúa",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 20,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 3
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 5
+    }
+   ],
+   "tong": "160 m",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 11.13",
+  "dap_an": "$4,8\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phần bị cắt là một hình chữ nhật **cùng chiều rộng** với miếng bìa, chiều dài bằng $\\dfrac{1}{4}$ chiều dài miếng bìa ⇒ diện tích phần cắt bằng **$\\dfrac{1}{4}$ diện tích** miếng bìa. Biết $\\dfrac{1}{4}$ diện tích là $120\\ \\text{cm}^2$ ⇒ tìm cả diện tích bằng phép chia.\n\nChú ý: đề hỏi $\\text{dm}^2$: $100\\ \\text{cm}^2=1\\ \\text{dm}^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần bìa bị cắt là hình chữ nhật có chiều rộng bằng chiều rộng miếng bìa, chiều dài bằng $\\dfrac{1}{4}$ chiều dài miếng bìa nên diện tích phần bị cắt bằng $\\dfrac{1}{4}$ diện tích miếng bìa.\n\nDiện tích ban đầu của miếng bìa là: $120:\\dfrac{1}{4}=480$ ($\\text{cm}^2$)\n\nĐổi: $480\\ \\text{cm}^2=4,8\\ \\text{dm}^2$\n\nĐáp số: $4,8\\ \\text{dm}^2$"
+ },
+ {
+  "ma_nguon": "LT 12.3c",
+  "dap_an": "$C=120$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nDấu hiệu: mỗi số trong ngoặc có **cùng phần thập phân** với một số ở ngoài ($37,25$ – $7,25$; $48,42$ – $8,42$; $54,73$ – $4,73$). Dùng quy tắc **trừ một tổng** (trừ lần lượt từng số hạng) rồi ghép từng cặp, mỗi cặp ra số tròn chục.\n\n**Phần 2. Trình bày**\n\n$C=37,25+48,42+54,73-\\left(7,25+8,42+4,73\\right)$\n\n$C=\\left(37,25-7,25\\right)+\\left(48,42-8,42\\right)+\\left(54,73-4,73\\right)$\n\n$C=30+40+50$\n\n$C=120$"
+ },
+ {
+  "ma_nguon": "LT 12.5c",
+  "dap_an": "$180$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai tích chưa có thừa số chung. Mấu chốt: gom $0,6\\times 6=3,6$ và $3\\times 1,2=3,6$ ⇒ cả hai tích cùng có thừa số $3,6$. Khi đó dùng **nhân một số với một tổng**: $3,6\\times\\left(31,17+18,83\\right)$, và $31,17+18,83=50$ tròn.\n\n**Phần 2. Trình bày**\n\n$0,6\\times 31,17\\times 6+3\\times 18,83\\times 1,2$\n\n$=\\left(0,6\\times 6\\right)\\times 31,17+\\left(3\\times 1,2\\right)\\times 18,83$\n\n$=3,6\\times 31,17+3,6\\times 18,83$\n\n$=3,6\\times\\left(31,17+18,83\\right)$\n\n$=3,6\\times 50$\n\n$=180$"
+ },
+ {
+  "ma_nguon": "LT 12.9d",
+  "dap_an": "$y=2,4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n$y$ có mặt ở hai số hạng nhưng là phép **chia**, chưa gom được. Mấu chốt: **chia cho $0,4$ chính là nhân với $2,5$** (vì $1:0,4=2,5$), chia cho $0,5$ chính là nhân với $2$. Đổi xong thì đưa về \"$y$ nhân với một hiệu\", rồi tìm thừa số chưa biết.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} y:0,4-y:0,5=1,2 \\\\ y\\times 2,5-y\\times 2=1,2 \\\\ y\\times\\left(2,5-2\\right)=1,2 \\\\ y\\times 0,5=1,2 \\\\ y=1,2:0,5 \\\\ y=2,4 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LT 12.10a",
+  "dap_an": "$a=1;\\ b=6;\\ c=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nĐặt tính thẳng cột theo dấu phẩy, xét **từ hàng thấp nhất lên**, nhớ sang hàng trên:\n\n- hàng phần mười: $2+7+b$ có tận cùng $5$ ⇒ $9+b=15$ ⇒ $b=6$, nhớ $1$;\n- hàng đơn vị: $3+c+0+1$ có tận cùng $4$; $c$ là chữ số nên $4+c$ không thể là $14$ ⇒ $c=0$;\n- hàng chục: $a+1=2$ ⇒ $a=1$.\n\nThử lại bằng phép cộng thật.\n\n**Phần 2. Trình bày**\n\nXét hàng phần mười: $2+7+b$ có chữ số tận cùng là $5$ nên $9+b=15$, suy ra $b=6$ (nhớ $1$ sang hàng đơn vị).\n\nXét hàng đơn vị: $3+c+0+1$ có chữ số tận cùng là $4$ mà $c$ là chữ số nên $4+c=4$, suy ra $c=0$.\n\nXét hàng chục: $a+1=2$, suy ra $a=1$.\n\nThử lại: $13,2+0,7+10,6=24,5$ (đúng).\n\nVậy $a=1;\\ b=6;\\ c=0$."
+ },
+ {
+  "ma_nguon": "LT 13.4",
+  "dap_an": "a) $33$ số hạng; b) $237,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai số liền nhau cách nhau $0,3$ ($2,7-2,4$) ⇒ dãy cách đều, dùng đúng hai công thức của dãy số tự nhiên (sách 4T CĐ6, VD 13.1 sách 5T): số số hạng $=$ (số cuối $-$ số đầu) : khoảng cách $+1$; tổng $=$ (số đầu $+$ số cuối) $\\times$ số số hạng $:2$. Ý b dùng kết quả ý a nên giữ một câu.\n\n**Phần 2. Trình bày**\n\na) Số số hạng của dãy là: $\\left(12-2,4\\right):0,3+1=33$ (số hạng)\n\nb) Tổng các số hạng của dãy là: $\\left(2,4+12\\right)\\times 33:2=237,6$\n\nĐáp số: a) $33$ số hạng; b) $237,6$"
+ },
+ {
+  "ma_nguon": "LT 13.10",
+  "dap_an": "Nam: $160$ học sinh; nữ: $96$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tỉ số viết dạng số thập phân thì **đổi ra phân số tối giản** để đọc số phần: $0,6=\\dfrac{6}{10}=\\dfrac{3}{5}$ ⇒ nữ $3$ phần, nam $5$ phần. Đề cho **tổng** $256$ ⇒ bài tổng – tỉ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có: $0,6=\\dfrac{3}{5}$ nên số học sinh nữ bằng $\\dfrac{3}{5}$ số học sinh nam.\n\nTa có sơ đồ:\n\n(Số học sinh nữ 3 phần; Số học sinh nam 5 phần; tổng 256 học sinh)\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nSố học sinh nữ là: $256:8\\times 3=96$ (học sinh)\n\nSố học sinh nam là: $256-96=160$ (học sinh)\n\nĐáp số: Nam: $160$ học sinh; nữ: $96$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 32,
+   "hang": [
+    {
+     "nhan": "Số học sinh nữ",
+     "phan": 3
+    },
+    {
+     "nhan": "Số học sinh nam",
+     "phan": 5
+    }
+   ],
+   "tong": "256 học sinh",
+   "dau_hoi": [
+    "Số học sinh nữ",
+    "Số học sinh nam"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 13.24",
+  "dap_an": "$20,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dịch dấu phẩy sang **trái một hàng** = số đó **giảm đi $10$ lần** ⇒ số mới $1$ phần, số cần tìm $10$ phần. \"Giảm đi $18,54$ đơn vị\" là **hiệu** hai số ⇒ bài hiệu – tỉ (như VD 13.2 của sách).\n\nThử lại: $20,6$ dịch trái thành $2,06$; $20,6-2,06=18,54$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi dịch dấu phẩy của một số thập phân sang bên trái một hàng thì số đó giảm đi $10$ lần.\n\nTa có sơ đồ:\n\n(Số mới 1 phần; Số cần tìm 10 phần; hiệu 18,54)\n\nHiệu số phần bằng nhau là: $10-1=9$ (phần)\n\nGiá trị một phần là: $18,54:9=2,06$\n\nSố thập phân đó là: $2,06\\times 10=20,6$\n\nĐáp số: $20,6$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2.06,
+   "hang": [
+    {
+     "nhan": "Số mới",
+     "phan": 1
+    },
+    {
+     "nhan": "Số cần tìm",
+     "phan": 10
+    }
+   ],
+   "hieu": "18,54",
+   "dau_hoi": [
+    "Số cần tìm"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 13.41",
+  "dap_an": "Số tự nhiên: $247$; số thập phân: $12,8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số thập phân có **một** chữ số ở phần thập phân, bỏ quên dấu phẩy thì nó **gấp lên $10$ lần**; số tự nhiên giữ nguyên. Nên kết quả sai hơn kết quả đúng đúng bằng **phần tăng thêm của số thập phân** $=375-259,8=115,2$, ứng với $10-1=9$ phần (số thập phân là $1$ phần). Ra số thập phân rồi lấy tổng trừ đi để ra số tự nhiên.\n\nThử lại: $247+12,8=259,8$; $247+128=375$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuên dấu phẩy của số thập phân có một chữ số ở phần thập phân thì số đó gấp lên $10$ lần, số tự nhiên không đổi.\n\nKết quả sai hơn kết quả đúng là: $375-259,8=115,2$\n\nTa có sơ đồ:\n\n(Số thập phân 1 phần; Số khi quên dấu phẩy 10 phần; hiệu 115,2)\n\nHiệu số phần bằng nhau là: $10-1=9$ (phần)\n\nSố thập phân đã cho là: $115,2:9=12,8$\n\nSố tự nhiên đã cho là: $259,8-12,8=247$\n\nĐáp số: Số tự nhiên: $247$; số thập phân: $12,8$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12.8,
+   "hang": [
+    {
+     "nhan": "Số thập phân",
+     "phan": 1
+    },
+    {
+     "nhan": "Số khi quên dấu phẩy",
+     "phan": 10
+    }
+   ],
+   "hieu": "115,2",
+   "dau_hoi": [
+    "Số thập phân"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 14.1",
+  "dap_an": "$39\\%$ ; $128\\%$ ; $30,8\\%$ ; $32\\%$ ; $62,5\\%$ ; $102,4\\%$ ; $225\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTỉ số phần trăm là phân số có **mẫu số $100$** viết gọn bằng kí hiệu $\\%$. Nên: số thập phân ⇒ viết thành phân số mẫu $100$; phân số mẫu đổi được về $100$ ($\\dfrac{16}{50}$) ⇒ nhân cả tử và mẫu; phân số mẫu không đổi gọn về $100$ ($\\dfrac{5}{8}$, $\\dfrac{27}{12}$, hỗn số) ⇒ **chia tử cho mẫu** ra số thập phân trước.\n\nChú ý: số lớn hơn $1$ thì tỉ số phần trăm lớn hơn $100\\%$ ($1,28=128\\%$).\n\n**Phần 2. Trình bày**\n\n$0,39=\\dfrac{39}{100}=39\\%$\n\n$1,28=\\dfrac{128}{100}=128\\%$\n\n$0,308=\\dfrac{30,8}{100}=30,8\\%$\n\n$\\dfrac{16}{50}=\\dfrac{32}{100}=32\\%$\n\n$\\dfrac{5}{8}=5:8=0,625=62,5\\%$\n\n$1\\dfrac{3}{125}=\\dfrac{128}{125}=128:125=1,024=102,4\\%$\n\n$\\dfrac{27}{12}=27:12=2,25=225\\%$"
+ },
+ {
+  "ma_nguon": "LT 14.6b",
+  "dap_an": "$5,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nBiểu thức trộn hỗn số, phần trăm, số thập phân ⇒ **đổi hết về số thập phân** cho cùng một kiểu: $5\\dfrac{1}{2}=5,5$; $20\\%=0,2$; $25\\%=0,25$. Rồi theo thứ tự: nhân trước, cộng trừ sau (từ trái sang phải).\n\n**Phần 2. Trình bày**\n\n$5\\dfrac{1}{2}-20\\%+1,2\\times 25\\%$\n\n$=5,5-0,2+1,2\\times 0,25$\n\n$=5,5-0,2+0,3$\n\n$=5,6$"
+ },
+ {
+  "ma_nguon": "LT 14.11",
+  "dap_an": "Tổ một: $32$ người; tổ hai: $16$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chuyển qua lại thì **tổng vẫn là $48$**; sau khi chuyển hai tổ bằng nhau ⇒ mỗi tổ $24$ người. Tổ một sau khi chuyển đi $25\\%$ thì **còn $75\\%$** số người của chính nó ⇒ $24$ người là $75\\%$ tổ một ⇒ tìm tổ một bằng phép chia cho $75\\%$.\n\nThử lại: $25\\%$ của $32$ là $8$; $32-8=24$, $16+8=24$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi chuyển, mỗi tổ có số công nhân là: $48:2=24$ (người)\n\nSau khi chuyển, số công nhân còn lại của tổ một chiếm: $100\\%-25\\%=75\\%$ (số công nhân tổ một)\n\nSố công nhân tổ một là: $24:75\\%=32$ (người)\n\nSố công nhân tổ hai là: $48-32=16$ (người)\n\nĐáp số: Tổ một: $32$ người; tổ hai: $16$ người"
+ },
+ {
+  "ma_nguon": "LT 15.3",
+  "dap_an": "a) $125\\%$; b) $25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n\"Thực hiện được bao nhiêu phần trăm kế hoạch\" = tỉ số phần trăm của **thực tế so với kế hoạch** ⇒ $100:80$ (kế hoạch đứng sau, làm \"số so sánh\"). \"Vượt bao nhiêu phần trăm\" = phần **hơn $100\\%$**. Ý b dùng ý a nên giữ một câu.\n\nChú ý bẫy: lấy $80:100=80\\%$ là đảo ngược hai số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Tỉ số phần trăm số xe bán được so với kế hoạch là: $100:80=1,25=125\\%$\n\nb) Cửa hàng đã vượt mức kế hoạch là: $125\\%-100\\%=25\\%$\n\nĐáp số: a) $125\\%$; b) $25\\%$"
+ },
+ {
+  "ma_nguon": "LT 15.13",
+  "dap_an": "$60$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nGiống bài phân số \"phần còn lại\" (lô 1 câu 4): $60\\%$ là của **quãng đường còn lại** sau giờ thứ nhất, không phải của $200$ km. Đi lần lượt: giờ thứ nhất → còn lại → giờ thứ hai → giờ thứ ba là phần còn lại cuối.\n\nTìm $a\\%$ của $M$: lấy $M$ nhân với $a\\%$ (quy tắc trong Tóm tắt lí thuyết CĐ15).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường ô tô đi trong giờ thứ nhất là: $200\\times 25\\%=50$ (km)\n\nQuãng đường còn lại sau giờ thứ nhất là: $200-50=150$ (km)\n\nQuãng đường ô tô đi trong giờ thứ hai là: $150\\times 60\\%=90$ (km)\n\nQuãng đường ô tô đi trong giờ thứ ba là: $150-90=60$ (km)\n\nĐáp số: $60$ km"
+ },
+ {
+  "ma_nguon": "LT 15.18",
+  "dap_an": "$2$ tạ đậu phộng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n$70$ kg dầu là $35\\%$ của số đậu phộng cần ép ⇒ biết $b\\%$ của một số là $M$ thì tìm số đó bằng $M:b\\%$ (quy tắc CĐ15). Đề hỏi **tạ** ⇒ đổi ở cuối: $100$ kg $=1$ tạ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đậu phộng cần đem ép là: $70:35\\%=200$ (kg)\n\nĐổi: $200$ kg $=2$ tạ\n\nĐáp số: $2$ tạ đậu phộng"
+ },
+ {
+  "ma_nguon": "LT 16.2",
+  "dap_an": "$3\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đun sôi thì **nước bay hơi, đường không mất** ⇒ khối lượng đường không đổi. Tính lượng đường, tính khối lượng dung dịch mới ($500-100$), rồi tìm tỉ số phần trăm đường so với dung dịch mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng đường không đổi.\n\nKhối lượng đường trong $500$ g dung dịch là: $500\\times 2,4\\%=12$ (g)\n\nKhối lượng dung dịch sau khi đun là: $500-100=400$ (g)\n\nTỉ số phần trăm đường trong dung dịch mới là: $12:400=0,03=3\\%$\n\nĐáp số: $3\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.7",
+  "dap_an": "$15\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nKhi trộn: **khối lượng dung dịch cộng lại, khối lượng đường cộng lại**. Biết dung dịch sau trộn ($700$ g, $12\\%$) và một phần đem trộn ($300$ g, $8\\%$) ⇒ phần còn lại là dung dịch cần tìm: khối lượng $700-300$, lượng đường $=$ đường lúc sau $-$ đường của phần $300$ g.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng đường trong $700$ g dung dịch $12\\%$ là: $700\\times 12\\%=84$ (g)\n\nKhối lượng đường trong $300$ g dung dịch $8\\%$ là: $300\\times 8\\%=24$ (g)\n\nKhối lượng dung dịch cần trộn thêm là: $700-300=400$ (g)\n\nKhối lượng đường trong dung dịch cần trộn thêm là: $84-24=60$ (g)\n\nTỉ số phần trăm đường của dung dịch cần trộn thêm là: $60:400=0,15=15\\%$\n\nĐáp số: $15\\%$"
+ },
+ {
+  "ma_nguon": "LT 16.14",
+  "dap_an": "$15$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: phơi khô chỉ mất nước, **khối lượng thuần hạt (phần không phải nước) không đổi** (như VD 16.2). Thuần hạt chiếm $20\\%$ hạt tươi và chiếm $80\\%$ hạt khô ⇒ tính thuần hạt từ hạt tươi, rồi tìm hạt khô biết $80\\%$ của nó.\n\nChú ý bẫy: lấy $60\\times 20\\%$ rồi dừng là ra thuần hạt chứ chưa phải hạt khô (hạt khô vẫn còn $20\\%$ nước).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng thuần hạt không đổi.\n\nThuần hạt chiếm: $100\\%-80\\%=20\\%$ (hạt tươi)\n\nKhối lượng thuần hạt trong $60$ kg hạt tươi là: $60\\times 20\\%=12$ (kg)\n\nThuần hạt chiếm: $100\\%-20\\%=80\\%$ (hạt khô)\n\nKhối lượng hạt khô thu được là: $12:80\\%=15$ (kg)\n\nĐáp số: $15$ kg"
+ },
+ {
+  "ma_nguon": "LT 17.6",
+  "dap_an": "Giảm $6,25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nCoi chiều dài, chiều rộng, diện tích ban đầu đều là $100\\%$. Chiều dài mới $125\\%$, chiều rộng mới $75\\%$; diện tích $=$ dài $\\times$ rộng nên diện tích mới $=125\\%\\times 75\\%$ diện tích cũ. Nhân hai tỉ số phần trăm thì đổi ra số thập phân rồi nhân: $1,25\\times 0,75$.\n\nChú ý bẫy: \"tăng $25\\%$ rồi giảm $25\\%$ thì diện tích không đổi\" là **sai** — phần trăm nhân với nhau, không bù trừ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+25\\%=125\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-25\\%=75\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $125\\%\\times 75\\%=1,25\\times 0,75=0,9375=93,75\\%$ (diện tích cũ)\n\nDiện tích hình chữ nhật giảm đi: $100\\%-93,75\\%=6,25\\%$\n\nĐáp số: Giảm $6,25\\%$"
+ },
+ {
+  "ma_nguon": "LT 17.12",
+  "dap_an": "$37,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: cùng làm một chiếc khẩu trang thì **năng suất và thời gian tỉ lệ nghịch** (năng suất gấp lên bao nhiêu lần thì thời gian giảm đi bấy nhiêu lần — như VD 28.1 của sách với vận tốc và thời gian). Năng suất mới $=160\\%=\\dfrac{8}{5}$ năng suất cũ ⇒ thời gian mới $=\\dfrac{5}{8}$ thời gian cũ.\n\nChú ý bẫy: thời gian **không** giảm $60\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+60\\%=160\\%$ (năng suất cũ)\n\nTa có: $160\\%=\\dfrac{160}{100}=\\dfrac{8}{5}$\n\nNăng suất và thời gian hoàn thiện một chiếc khẩu trang là hai đại lượng tỉ lệ nghịch nên thời gian mới bằng $\\dfrac{5}{8}$ thời gian cũ.\n\n$\\dfrac{5}{8}=5:8=0,625=62,5\\%$\n\nThời gian hoàn thiện một chiếc khẩu trang giảm đi: $100\\%-62,5\\%=37,5\\%$\n\nĐáp số: $37,5\\%$"
+ },
+ {
+  "ma_nguon": "LT 17.20",
+  "dap_an": "Lãi $8,75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nCoi **tiền vốn của toàn bộ số hàng là $100\\%$** (mọi hàng nhập cùng giá nên $\\dfrac{3}{8}$ số hàng có vốn bằng $\\dfrac{3}{8}$ tổng vốn). Phần lãi $40\\%$ bán được $140\\%$ vốn của nó; phần lỗ $10\\%$ bán được $90\\%$ vốn của nó. Cộng tiền bán hai phần rồi so với $100\\%$.\n\nChú ý bẫy: lấy $40\\%-10\\%=30\\%$ là sai, vì hai phần hàng không bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi tiền vốn của toàn bộ số hàng là $100\\%$.\n\nTiền vốn của $\\dfrac{3}{8}$ số hàng là: $100\\%\\times\\dfrac{3}{8}=37,5\\%$\n\nTiền vốn của số hàng còn lại là: $100\\%-37,5\\%=62,5\\%$\n\nTiền bán $\\dfrac{3}{8}$ số hàng là: $37,5\\%\\times\\left(100\\%+40\\%\\right)=0,375\\times 1,4=0,525=52,5\\%$\n\nTiền bán số hàng còn lại là: $62,5\\%\\times\\left(100\\%-10\\%\\right)=0,625\\times 0,9=0,5625=56,25\\%$\n\nTổng số tiền bán hàng là: $52,5\\%+56,25\\%=108,75\\%$\n\nCửa hàng lãi: $108,75\\%-100\\%=8,75\\%$\n\nĐáp số: Lãi $8,75\\%$"
+ },
+ {
+  "ma_nguon": "LT 18.4",
+  "dap_an": "$13,2$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nDiện tích tam giác $=$ đáy $\\times$ chiều cao $:2$ ⇒ đi ngược: **chiều cao $=$ diện tích $\\times 2:$ đáy** (Tóm tắt lí thuyết CĐ18: $h=\\dfrac{S\\times 2}{a}$). Chú ý nhân $2$ trước rồi mới chia — quên nhân $2$ là ra một nửa chiều cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều cao của hình tam giác là: $105,6\\times 2:16=13,2$ (cm)\n\nĐáp số: $13,2$ cm"
+ },
+ {
+  "ma_nguon": "LT 18.8",
+  "dap_an": "$120\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nBiết **tổng** ($32$ m) và **hiệu** ($8$ m) của cạnh đáy và chiều cao ⇒ bài tổng – hiệu tìm hai số trước, rồi mới tính diện tích. Số bé là chiều cao $=($tổng $-$ hiệu$):2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Chiều cao 1 đoạn; Cạnh đáy 1 đoạn và 8 m; tổng 32 m)\n\nChiều cao của tấm bảng là: $\\left(32-8\\right):2=12$ (m)\n\nCạnh đáy của tấm bảng là: $12+8=20$ (m)\n\nDiện tích tấm bảng quảng cáo là: $20\\times 12:2=120$ ($\\text{m}^2$)\n\nĐáp số: $120\\ \\text{m}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Chiều cao",
+     "phan": 1
+    },
+    {
+     "nhan": "Cạnh đáy",
+     "phan": 1,
+     "them": "8 m"
+    }
+   ],
+   "tong": "32 m",
+   "dau_hoi": [
+    "Chiều cao",
+    "Cạnh đáy"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 18.13",
+  "dap_an": "$126\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: kéo dài cạnh đáy thêm $5$ cm thì phần **tăng thêm là một tam giác** có đáy $5$ cm và **cùng chiều cao** với tam giác ban đầu. Từ diện tích phần tăng ($30\\ \\text{cm}^2$) tìm được chiều cao, rồi tìm cạnh đáy ($\\dfrac{7}{4}$ chiều cao), rồi diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần tăng thêm là hình tam giác có cạnh đáy $5$ cm và chiều cao bằng chiều cao của tam giác ban đầu.\n\nChiều cao của tam giác ban đầu là: $30\\times 2:5=12$ (cm)\n\nCạnh đáy của tam giác ban đầu là: $12\\times\\dfrac{7}{4}=21$ (cm)\n\nDiện tích hình tam giác ban đầu là: $21\\times 12:2=126$ ($\\text{cm}^2$)\n\nĐáp số: $126\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 18.16",
+  "dap_an": "$36\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai tam giác AHB và AHC đều vuông tại H và **chung chiều cao AH**. Từ tam giác AHB biết diện tích và đáy BH ⇒ tìm AH. Từ $HB=\\dfrac{3}{2}HC$ ⇒ $HC=9:3\\times 2$. Có đáy HC và chiều cao AH thì tính diện tích AHC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đoạn thẳng HC là: $9:3\\times 2=6$ (cm)\n\nĐộ dài đường cao AH là: $54\\times 2:9=12$ (cm)\n\nDiện tích tam giác AHC là: $12\\times 6:2=36$ ($\\text{cm}^2$)\n\nĐáp số: $36\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 19.8",
+  "dap_an": "$64\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tam giác AMC và tam giác ABC **chung đường cao hạ từ A xuống BC**, nên tỉ số diện tích bằng tỉ số hai cạnh đáy: $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{MC}{BC}$. Vì $BM=\\dfrac{1}{3}BC$ nên $MC=\\dfrac{2}{3}BC$. Theo sách: tam giác cần tính để ở **tử số**, tam giác đã biết diện tích ở mẫu số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $BM=\\dfrac{1}{3}BC$ nên $MC=\\dfrac{2}{3}BC$.\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{MC}{BC}=\\dfrac{2}{3}$\n\n$S_{AMC}=\\dfrac{2}{3}\\times S_{ABC}=\\dfrac{2}{3}\\times 96=64\\ (\\text{cm}^2)$\n\nĐáp số: $64\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 19.12",
+  "dap_an": "$30\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTam giác CMN và tam giác ABC không có chung đường cao ⇒ đi qua **tam giác trung gian CMA** (đã có sẵn đoạn AM trên hình):\n\n- CMN và CMA chung đường cao hạ từ M xuống AC ⇒ $\\dfrac{S_{CMN}}{S_{CMA}}=\\dfrac{CN}{CA}=\\dfrac{1}{3}$ ⇒ $S_{CMA}=5\\times 3$;\n- CMA và CBA chung đường cao hạ từ A xuống BC ⇒ $\\dfrac{S_{CMA}}{S_{CBA}}=\\dfrac{CM}{CB}=\\dfrac{1}{2}$ ⇒ $S_{ABC}=S_{CMA}\\times 2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác CMN và tam giác CMA có chung đường cao hạ từ M xuống AC, suy ra $\\dfrac{S_{CMN}}{S_{CMA}}=\\dfrac{CN}{CA}=\\dfrac{1}{3}$\n\n$S_{CMA}=5\\times 3=15\\ (\\text{cm}^2)$\n\nTam giác CMA và tam giác CBA có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{CMA}}{S_{CBA}}=\\dfrac{CM}{CB}=\\dfrac{1}{2}$\n\n$S_{ABC}=15\\times 2=30\\ (\\text{cm}^2)$\n\nĐáp số: $30\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 19.16",
+  "dap_an": "$50\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTam giác AED và ABC chung góc A nhưng không chung đường cao ⇒ **nối B với E** (như VD 19.3 của sách \"Nối B với N\") để có tam giác trung gian ABE:\n\n- AED và ABE chung đường cao hạ từ E xuống AB ⇒ $\\dfrac{S_{AED}}{S_{ABE}}=\\dfrac{AD}{AB}=\\dfrac{1}{2}$;\n- ABE và ABC chung đường cao hạ từ B xuống AC ⇒ $\\dfrac{S_{ABE}}{S_{ABC}}=\\dfrac{AE}{AC}=\\dfrac{2}{3}$ (AE gấp đôi EC ⇒ AE là $2$ phần, AC là $3$ phần).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối B với E.\n\nVì AE gấp đôi EC nên $AE=\\dfrac{2}{3}AC$.\n\nTam giác ABE và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABE}}{S_{ABC}}=\\dfrac{AE}{AC}=\\dfrac{2}{3}$\n\n$S_{ABE}=\\dfrac{2}{3}\\times 150=100\\ (\\text{cm}^2)$\n\nTam giác AED và tam giác ABE có chung đường cao hạ từ E xuống AB, suy ra $\\dfrac{S_{AED}}{S_{ABE}}=\\dfrac{AD}{AB}=\\dfrac{1}{2}$\n\n$S_{AED}=\\dfrac{1}{2}\\times 100=50\\ (\\text{cm}^2)$\n\nĐáp số: $50\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 19.25",
+  "dap_an": "$24\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đoạn AM chia tam giác ABC thành hai tam giác ABM và ACM; đoạn NM chia tam giác NBC thành NBM và NCM. Mỗi cặp **chung đường cao** (từ B, từ C xuống AM) và có đáy $NM=\\dfrac{1}{2}AM$ ⇒ mỗi tam giác nhỏ bằng một nửa tam giác lớn tương ứng ⇒ $S_{NBC}$ bằng một nửa $S_{ABC}$, **dù M nằm ở đâu trên BC**.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác NBM và tam giác ABM có chung đường cao hạ từ B xuống AM, suy ra $\\dfrac{S_{NBM}}{S_{ABM}}=\\dfrac{NM}{AM}=\\dfrac{1}{2}$\n\nTam giác NCM và tam giác ACM có chung đường cao hạ từ C xuống AM, suy ra $\\dfrac{S_{NCM}}{S_{ACM}}=\\dfrac{NM}{AM}=\\dfrac{1}{2}$\n\n$S_{NBC}=S_{NBM}+S_{NCM}=\\dfrac{1}{2}\\times\\left(S_{ABM}+S_{ACM}\\right)=\\dfrac{1}{2}\\times S_{ABC}$\n\n$S_{NBC}=\\dfrac{1}{2}\\times 48=24\\ (\\text{cm}^2)$\n\nĐáp số: $24\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 20.6",
+  "dap_an": "Đáy bé: $9$ cm; đáy lớn: $13,5$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai bước: (1) từ diện tích và chiều cao tìm **tổng hai đáy** $=S\\times 2:h$; (2) \"đáy lớn **gấp rưỡi** đáy bé\" nghĩa là gấp $1,5=\\dfrac{3}{2}$ lần ⇒ đáy bé $2$ phần, đáy lớn $3$ phần ⇒ bài tổng – tỉ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng độ dài hai đáy của hình thang là: $135\\times 2:12=22,5$ (cm)\n\nĐáy lớn gấp rưỡi đáy bé nên đáy lớn bằng $\\dfrac{3}{2}$ đáy bé.\n\nTa có sơ đồ:\n\n(Đáy bé 2 phần; Đáy lớn 3 phần; tổng 22,5 cm)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nĐộ dài đáy bé là: $22,5:5\\times 2=9$ (cm)\n\nĐộ dài đáy lớn là: $22,5-9=13,5$ (cm)\n\nĐáp số: Đáy bé: $9$ cm; đáy lớn: $13,5$ cm",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4.5,
+   "hang": [
+    {
+     "nhan": "Đáy bé",
+     "phan": 2
+    },
+    {
+     "nhan": "Đáy lớn",
+     "phan": 3
+    }
+   ],
+   "tong": "22,5 cm",
+   "dau_hoi": [
+    "Đáy bé",
+    "Đáy lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 20.10",
+  "dap_an": "$105\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chiều cao của tam giác BMC hạ từ B xuống MC **chính là chiều cao của hình thang** (khoảng cách giữa hai đáy). Có $MC=16-7$ và diện tích BMC ⇒ tìm chiều cao, rồi tính diện tích hình thang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đoạn thẳng MC là: $16-7=9$ (cm)\n\nChiều cao của tam giác BMC, cũng là chiều cao của hình thang ABCD, là: $37,8\\times 2:9=8,4$ (cm)\n\nDiện tích hình thang ABCD là: $\\left(9+16\\right)\\times 8,4:2=105$ ($\\text{cm}^2$)\n\nĐáp số: $105\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 20.12",
+  "dap_an": "$416,5\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt (VD 20.2 của sách): phần tăng thêm là **một hình thang** có hai đáy $4,5$ m và $12,5$ m và **cùng chiều cao** với hình thang ban đầu. Từ diện tích phần tăng tìm chiều cao, rồi tính diện tích ban đầu với tổng hai đáy $49$ m.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần tăng thêm là hình thang có hai đáy $4,5$ m, $12,5$ m và chiều cao bằng chiều cao mảnh đất ban đầu.\n\nChiều cao của mảnh đất hình thang là: $144,5\\times 2:\\left(4,5+12,5\\right)=17$ (m)\n\nDiện tích mảnh đất hình thang lúc đầu là: $49\\times 17:2=416,5$ ($\\text{m}^2$)\n\nĐáp số: $416,5\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LT 21.3b",
+  "dap_an": "$50,24\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nChu vi $=$ đường kính $\\times 3,14$ ⇒ đường kính $=$ chu vi $:3,14$; bán kính $=$ đường kính $:2$; diện tích $=$ bán kính $\\times$ bán kính $\\times 3,14$. Chú ý: diện tích dùng **bán kính**, không dùng đường kính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐường kính của hình tròn là: $25,12:3,14=8$ (dm)\n\nBán kính của hình tròn là: $8:2=4$ (dm)\n\nDiện tích của hình tròn là: $4\\times 4\\times 3,14=50,24$ ($\\text{dm}^2$)\n\nĐáp số: $50,24\\ \\text{dm}^2$"
+ },
+ {
+  "ma_nguon": "LT 21.7",
+  "dap_an": "$28,26\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTrên hình, MH vuông góc với AB nên MH là **chiều cao** của tam giác MAB ứng với **đáy AB** — mà AB lại là đường kính hình tròn. Tìm AB từ diện tích tam giác, rồi bán kính, rồi diện tích hình tròn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đường kính AB là: $6\\times 2:2=6$ (cm)\n\nBán kính của hình tròn là: $6:2=3$ (cm)\n\nDiện tích của hình tròn là: $3\\times 3\\times 3,14=28,26$ ($\\text{cm}^2$)\n\nĐáp số: $28,26\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 21.9",
+  "dap_an": "$19,625\\ \\text{dm}^2$ và $6,1544\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: chu vi $=$ bán kính $\\times 2\\times 3,14$ ⇒ **hiệu hai chu vi $=$ hiệu hai bán kính $\\times 2\\times 3,14$**. Từ hiệu chu vi tìm được hiệu hai bán kính; cùng với tổng hai bán kính ⇒ bài tổng – hiệu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu hai bán kính là: $6,908:3,14:2=1,1$ (dm)\n\nTa có sơ đồ:\n\n(Bán kính bé 1 đoạn; Bán kính lớn 1 đoạn và 1,1 dm; tổng 3,9 dm)\n\nBán kính hình tròn bé là: $\\left(3,9-1,1\\right):2=1,4$ (dm)\n\nBán kính hình tròn lớn là: $1,4+1,1=2,5$ (dm)\n\nDiện tích hình tròn lớn là: $2,5\\times 2,5\\times 3,14=19,625$ ($\\text{dm}^2$)\n\nDiện tích hình tròn bé là: $1,4\\times 1,4\\times 3,14=6,1544$ ($\\text{dm}^2$)\n\nĐáp số: $19,625\\ \\text{dm}^2$ và $6,1544\\ \\text{dm}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1.4,
+   "hang": [
+    {
+     "nhan": "Bán kính bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Bán kính lớn",
+     "phan": 1,
+     "them": "1,1 dm"
+    }
+   ],
+   "tong": "3,9 dm",
+   "dau_hoi": [
+    "Bán kính bé",
+    "Bán kính lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 22.5",
+  "dap_an": "a) $152\\ \\text{m}^2$; b) $114$ kg sơn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nBa bước: (1) chiều rộng $=\\dfrac{3}{4}$ chiều dài, kém $2$ m ⇒ bài hiệu – tỉ (rộng $3$ phần, dài $4$ phần); (2) $S_{tp}=S_{xq}+2$ đáy, $S_{xq}=$ chu vi đáy $\\times$ chiều cao; (3) lượng sơn tỉ lệ thuận với diện tích ⇒ **rút về đơn vị**: $1\\ \\text{m}^2$ tốn bao nhiêu ki-lô-gam (§2b B). Ý b dùng ý a nên giữ một câu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Chiều rộng 3 phần; Chiều dài 4 phần; hiệu 2 m)\n\nHiệu số phần bằng nhau là: $4-3=1$ (phần)\n\nChiều dài cái thùng là: $2:1\\times 4=8$ (m)\n\nChiều rộng cái thùng là: $8-2=6$ (m)\n\na) Diện tích xung quanh cái thùng là: $\\left(8+6\\right)\\times 2\\times 2=56$ ($\\text{m}^2$)\n\nDiện tích một mặt đáy là: $8\\times 6=48$ ($\\text{m}^2$)\n\nDiện tích toàn phần cái thùng là: $56+48\\times 2=152$ ($\\text{m}^2$)\n\nb) $1\\ \\text{m}^2$ tốn số sơn là: $3:4=0,75$ (kg)\n\nSố sơn cần dùng là: $0,75\\times 152=114$ (kg)\n\nĐáp số: a) $152\\ \\text{m}^2$; b) $114$ kg sơn",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 3
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 4
+    }
+   ],
+   "hieu": "2 m",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 22.25",
+  "dap_an": "$343\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: diện tích toàn phần hơn diện tích xung quanh đúng **hai mặt đáy** ⇒ $98\\ \\text{cm}^2$ là diện tích $2$ mặt ⇒ một mặt $49\\ \\text{cm}^2$. Một mặt là hình vuông: tìm số nhân với chính nó được $49$ ⇒ cạnh $7$ cm (như VD 22.2 của sách).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $98:2=49$ ($\\text{cm}^2$)\n\nVì $49=7\\times 7$ nên cạnh của hình lập phương là $7$ cm.\n\nThể tích hình lập phương là: $7\\times 7\\times 7=343$ ($\\text{cm}^3$)\n\nĐáp số: $343\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LT 22.28",
+  "dap_an": "$1000\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hòn đá ngập hoàn toàn thì **thể tích hòn đá bằng thể tích phần nước dâng lên** — là một hình hộp có đáy bằng đáy bể và chiều cao bằng **mực nước dâng thêm**. Tính hai mực nước (trước và sau) để ra phần dâng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMực nước lúc đầu là: $30\\times\\dfrac{4}{5}=24$ (cm)\n\nMực nước lúc sau là: $30\\times\\dfrac{5}{6}=25$ (cm)\n\nMực nước dâng thêm là: $25-24=1$ (cm)\n\nThể tích hòn đá bằng thể tích phần nước dâng thêm, là: $50\\times 20\\times 1=1000$ ($\\text{cm}^3$)\n\nĐáp số: $1000\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LT 23.6",
+  "dap_an": "$64$ hình",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nDiện tích xung quanh hình lập phương là $4$ mặt ⇒ một mặt $256:4=64$, cạnh $8$ cm. Theo cách chốt §2b E: **cạnh lớn gấp cạnh nhỏ mấy lần** ($8:2=4$) thì mỗi chiều xếp được $4$ hình nhỏ ⇒ số hình nhỏ $=4\\times 4\\times 4$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương lớn là: $256:4=64$ ($\\text{cm}^2$)\n\nVì $64=8\\times 8$ nên cạnh hình lập phương lớn là $8$ cm.\n\nCạnh hình lập phương lớn gấp cạnh hình lập phương nhỏ số lần là: $8:2=4$ (lần)\n\nSố hình lập phương nhỏ cần dùng là: $4\\times 4\\times 4=64$ (hình)\n\nĐáp số: $64$ hình"
+ },
+ {
+  "ma_nguon": "LT 23.10b",
+  "dap_an": "$1400$ hộp bánh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nĐổi về cùng đơn vị cm trước. Mỗi chiều xếp được bao nhiêu hộp bánh $=$ chiều đó chia cho $4$; chiều nào **chia có dư** thì phần dư bỏ trống, chỉ lấy **phần nguyên** (như VD 23.3b của sách). Chiều cao $30:4=7$ dư $2$ ⇒ chỉ xếp được $7$ lớp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $8$ dm $=80$ cm; $4$ dm $=40$ cm; $3$ dm $=30$ cm\n\nChiều dài cái hộp gấp cạnh hộp bánh số lần là: $80:4=20$ (lần)\n\nChiều rộng cái hộp gấp cạnh hộp bánh số lần là: $40:4=10$ (lần)\n\nVì $30:4=7$ (dư $2$) nên chiều cao cái hộp xếp được $7$ lớp hộp bánh và thừa $2$ cm.\n\nSố hộp bánh xếp được nhiều nhất là: $20\\times 10\\times 7=1400$ (hộp)\n\nĐáp số: $1400$ hộp bánh"
+ },
+ {
+  "ma_nguon": "LT 23.13",
+  "dap_an": "$294\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: khối nhỏ ở đỉnh có **$3$ mặt lộ ra ngoài**. Lấy khối đó ra thì mất $3$ mặt ngoài ($3\\ \\text{cm}^2$), nhưng **lộ ra $3$ mặt mới** của các khối bên cạnh, cũng $3\\ \\text{cm}^2$ ⇒ diện tích toàn phần **không đổi**. Không cần biết cạnh khối lớn.\n\nChú ý bẫy: trừ đi $8\\times 3=24\\ \\text{cm}^2$ là sai vì quên phần mặt mới lộ ra.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi khối nhỏ ở đỉnh có $3$ mặt nằm ở mặt ngoài khối lớn.\n\nLấy ra một khối nhỏ ở đỉnh thì mất đi $3$ mặt ngoài nhưng lộ ra $3$ mặt mới bằng nhau, nên diện tích toàn phần không thay đổi.\n\nDiện tích toàn phần của khối còn lại là: $294\\ \\text{cm}^2$\n\nĐáp số: $294\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 24.1",
+  "dap_an": "$48$ khối sơn đúng $2$ mặt; $96$ khối sơn đúng $1$ mặt",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nTìm mỗi cạnh có mấy khối: $216=6\\times 6\\times 6$ ⇒ $6$ khối. Theo VD 24.1 của sách: khối sơn **đúng $2$ mặt** nằm trên **cạnh, trừ $2$ đỉnh** ⇒ $12\\times(6-2)$; khối sơn **đúng $1$ mặt** nằm trên **mặt, trừ phần sát cạnh** ⇒ $6\\times(6-2)\\times(6-2)$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $216=6\\times 6\\times 6$ nên mỗi cạnh khối lập phương lớn có $6$ khối nhỏ.\n\nMỗi cạnh có số khối được sơn đúng $2$ mặt là: $6-2=4$ (khối)\n\nSố khối được sơn đúng $2$ mặt là: $12\\times 4=48$ (khối)\n\nMỗi mặt có số khối được sơn đúng $1$ mặt là: $4\\times 4=16$ (khối)\n\nSố khối được sơn đúng $1$ mặt là: $6\\times 16=96$ (khối)\n\nĐáp số: $48$ khối sơn đúng $2$ mặt; $96$ khối sơn đúng $1$ mặt"
+ },
+ {
+  "ma_nguon": "LT 24.6",
+  "dap_an": "$1734\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nĐi ngược công thức của sách: số khối sơn đúng $2$ mặt $=12\\times$(số khối mỗi cạnh $-2$) ⇒ mỗi cạnh (không kể $2$ đỉnh) có $180:12=15$ khối ⇒ mỗi cạnh có $15+2=17$ khối, tức cạnh $17$ cm (khối nhỏ cạnh $1$ cm).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố khối được sơn đúng $2$ mặt trên mỗi cạnh là: $180:12=15$ (khối)\n\nSố khối nhỏ trên mỗi cạnh của hình lập phương lớn là: $15+2=17$ (khối)\n\nCạnh hình lập phương lớn là: $17\\times 1=17$ (cm)\n\nDiện tích toàn phần của hình lập phương lớn là: $17\\times 17\\times 6=1734$ ($\\text{cm}^2$)\n\nĐáp số: $1734\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LT 24.9",
+  "dap_an": "$2392$ khối",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nĐổi ra cm rồi tìm mỗi chiều có mấy khối: $50:2=25$, $30:2=15$, $20:2=10$. Khối **không được sơn** nằm ở lõi bên trong — bỏ một lớp ở **cả hai đầu** mỗi chiều ⇒ lõi là hình hộp $(25-2)\\times(15-2)\\times(10-2)$ khối (như VD 24.1, áp cho hình hộp).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $5$ dm $=50$ cm; $3$ dm $=30$ cm; $2$ dm $=20$ cm\n\nChiều dài khối gỗ có số khối nhỏ là: $50:2=25$ (khối)\n\nChiều rộng khối gỗ có số khối nhỏ là: $30:2=15$ (khối)\n\nChiều cao khối gỗ có số khối nhỏ là: $20:2=10$ (khối)\n\nSố khối không được sơn mặt nào là: $\\left(25-2\\right)\\times\\left(15-2\\right)\\times\\left(10-2\\right)=2392$ (khối)\n\nĐáp số: $2392$ khối"
+ },
+ {
+  "ma_nguon": "LT 25.5",
+  "dap_an": "$10$ m/giây ; $18$ km/giờ ; $15$ m/giây ; $75,6$ km/giờ ; $700$ m/phút ; $12$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nĐổi vận tốc là đổi **cả hai đơn vị**: quãng đường và thời gian. $1$ km $=1000$ m; $1$ giờ $=60$ phút $=3600$ giây. Ví dụ $36$ km/giờ nghĩa là $1$ giờ đi $36000$ m ⇒ $1$ giây đi $36000:3600$ m. Chiều ngược lại: $5$ m/giây ⇒ $1$ giờ đi $5\\times 3600=18000$ m $=18$ km.\n\n**Phần 2. Trình bày**\n\na) $36$ km/giờ $=36000:3600$ m/giây $=10$ m/giây\n\nb) $5$ m/giây $=5\\times 3600:1000$ km/giờ $=18$ km/giờ\n\nc) $54$ km/giờ $=54000:3600$ m/giây $=15$ m/giây\n\nd) $21$ m/giây $=21\\times 3600:1000$ km/giờ $=75,6$ km/giờ\n\ne) $42$ km/giờ $=42000:60$ m/phút $=700$ m/phút\n\nf) $200$ m/phút $=200\\times 60:1000$ km/giờ $=12$ km/giờ"
+ },
+ {
+  "ma_nguon": "LT 25.7",
+  "dap_an": "$66$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: vận tốc $=$ quãng đường : **thời gian xe thật sự chạy** — phải trừ $15$ phút nghỉ. Thời gian $2$ giờ $20$ phút không chia thẳng được ⇒ đổi ra giờ bằng phân số: $20$ phút $=\\dfrac{1}{3}$ giờ nên $2$ giờ $20$ phút $=\\dfrac{7}{3}$ giờ (không đổi ra số thập phân vì $\\dfrac{1}{3}$ giờ là số thập phân vô hạn).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Hà Nội — Thái Bình 154 km; ô tô đi từ Hà Nội, vận tốc ? km/giờ)\n\nThời gian ô tô đi từ Hà Nội đến Thái Bình (kể cả nghỉ) là: $8$ giờ $35$ phút $-6$ giờ $=2$ giờ $35$ phút\n\nThời gian ô tô thật sự chạy là: $2$ giờ $35$ phút $-15$ phút $=2$ giờ $20$ phút\n\nĐổi: $2$ giờ $20$ phút $=\\dfrac{7}{3}$ giờ\n\nVận tốc của ô tô là: $154:\\dfrac{7}{3}=66$ (km/giờ)\n\nĐáp số: $66$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Khởi hành 6 giờ, đến 8 giờ 35 phút, nghỉ 15 phút",
+   "diem": [
+    {
+     "ten": "Hà Nội",
+     "x": 0
+    },
+    {
+     "ten": "Thái Bình",
+     "x": 154
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 154,
+     "nhan": "? km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 154,
+     "nhan": "154 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 25.12",
+  "dap_an": "$10$ giờ $42$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nChia hành trình thành **ba khoảng thời gian**: chặng $40$ km với $50$ km/giờ · $45$ phút sửa xe · chặng còn lại $103-40=63$ km với $45$ km/giờ. Tính từng khoảng, đổi ra giờ phút, cộng hết rồi cộng vào thời điểm xuất phát.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(A — D 40 km (xe hỏng, sửa 45 phút) — B; AB 103 km; 50 km/giờ rồi 45 km/giờ)\n\nThời gian đi $40$ km đầu là: $40:50=0,8$ (giờ) $=48$ phút\n\nQuãng đường còn lại là: $103-40=63$ (km)\n\nThời gian đi quãng đường còn lại là: $63:45=1,4$ (giờ) $=1$ giờ $24$ phút\n\nTổng thời gian từ A đến B là: $48$ phút $+45$ phút $+1$ giờ $24$ phút $=2$ giờ $57$ phút\n\nXe đến B lúc: $7$ giờ $45$ phút $+2$ giờ $57$ phút $=10$ giờ $42$ phút\n\nĐáp số: $10$ giờ $42$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc 7 giờ 45 phút",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 40,
+     "ghi": "xe hỏng, sửa 45 phút"
+    },
+    {
+     "ten": "B",
+     "x": 103
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 40,
+     "nhan": "50 km/giờ"
+    },
+    {
+     "tu": 40,
+     "den": 103,
+     "nhan": "45 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 40,
+     "nhan": "40 km"
+    },
+    {
+     "tu": 40,
+     "den": 103,
+     "nhan": "? km"
+    },
+    {
+     "tu": 0,
+     "den": 103,
+     "nhan": "103 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 26.4",
+  "dap_an": "$9$ giờ $24$ phút; $108$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai xe đi **ngược chiều, cùng lúc** ⇒ mỗi giờ khoảng cách giữa hai xe giảm đi **tổng hai vận tốc**. Thời gian gặp nhau $=$ quãng đường : tổng vận tốc (khuôn VD 26.1). Chỗ gặp cách A $=$ quãng đường xe đi từ A đã đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(xe từ A 45 km/giờ và xe từ B 55 km/giờ đi ngược chiều, gặp nhau tại C; AB 240 km)\n\nTổng vận tốc của hai xe là: $45+55=100$ (km/giờ)\n\nThời gian hai xe đi đến chỗ gặp nhau là: $240:100=2,4$ (giờ)\n\nĐổi: $2,4$ giờ $=2$ giờ $24$ phút\n\nHai xe gặp nhau lúc: $7$ giờ $+2$ giờ $24$ phút $=9$ giờ $24$ phút\n\nChỗ gặp nhau cách A là: $45\\times 2,4=108$ (km)\n\nĐáp số: $9$ giờ $24$ phút; $108$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc 7 giờ",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 108,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 240
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 108,
+     "nhan": "45 km/giờ"
+    },
+    {
+     "tu": 240,
+     "den": 108,
+     "nhan": "55 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 108,
+     "nhan": "? km"
+    },
+    {
+     "tu": 0,
+     "den": 240,
+     "nhan": "240 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 26.8",
+  "dap_an": "$1$ giờ $20$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nLúc xe máy xuất phát, hai người cách nhau $40$ km. Đi **cùng chiều** ⇒ mỗi giờ xe máy rút ngắn khoảng cách đúng bằng **hiệu hai vận tốc**. Thời gian đuổi kịp $=$ khoảng cách : hiệu vận tốc (khuôn VD 26.2). Kết quả $\\dfrac{4}{3}$ giờ đổi ra giờ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(lúc xe máy khởi hành ở A thì xe đạp ở D cách A 40 km; hai xe cùng chiều, xe máy đuổi kịp tại C)\n\nHiệu vận tốc của hai người là: $50-20=30$ (km/giờ)\n\nThời gian để xe máy đuổi kịp xe đạp là: $40:30=\\dfrac{4}{3}$ (giờ)\n\nĐổi: $\\dfrac{4}{3}$ giờ $=1$ giờ $20$ phút\n\nĐáp số: $1$ giờ $20$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc xe máy khởi hành",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 40,
+     "ghi": "xe đạp"
+    },
+    {
+     "ten": "C",
+     "x": 66.66666666666667,
+     "ghi": "đuổi kịp"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 66.66666666666667,
+     "nhan": "Xe máy 50 km/giờ"
+    },
+    {
+     "tu": 40,
+     "den": 66.66666666666667,
+     "nhan": "Xe đạp 20 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 40,
+     "nhan": "40 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 26.12",
+  "dap_an": "Xe máy: $25$ km/giờ; xe đạp: $15$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đi **ngược chiều** gặp nhau sau $2$ giờ ⇒ **tổng vận tốc** $=80:2$; đi **cùng chiều** đuổi kịp sau $8$ giờ ⇒ **hiệu vận tốc** $=80:8$. Có tổng và hiệu ⇒ bài tổng – hiệu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(ngược chiều sau 2 giờ gặp nhau; cùng chiều sau 8 giờ đuổi kịp; AB 80 km; sơ đồ tổng 40 km/giờ – hiệu 10 km/giờ)\n\nTổng vận tốc của hai xe là: $80:2=40$ (km/giờ)\n\nHiệu vận tốc của hai xe là: $80:8=10$ (km/giờ)\n\nVận tốc xe đạp là: $\\left(40-10\\right):2=15$ (km/giờ)\n\nVận tốc xe máy là: $15+10=25$ (km/giờ)\n\nĐáp số: Xe máy: $25$ km/giờ; xe đạp: $15$ km/giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Đi ngược chiều: sau 2 giờ gặp nhau",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 50,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 80
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 50,
+      "nhan": "Xe máy"
+     },
+     {
+      "tu": 80,
+      "den": 50,
+      "nhan": "Xe đạp"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 80,
+      "nhan": "80 km"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Đi cùng chiều: sau 8 giờ xe máy đuổi kịp",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 80
+     },
+     {
+      "ten": "D",
+      "x": 200,
+      "ghi": "đuổi kịp"
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 200,
+      "nhan": "Xe máy"
+     },
+     {
+      "tu": 80,
+      "den": 200,
+      "nhan": "Xe đạp"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 80,
+      "nhan": "80 km"
+     }
+    ]
+   },
+   {
+    "gia_tri_phan": 15,
+    "hang": [
+     {
+      "nhan": "Vận tốc xe đạp",
+      "phan": 1
+     },
+     {
+      "nhan": "Vận tốc xe máy",
+      "phan": 1,
+      "them": "10 km/giờ"
+     }
+    ],
+    "tong": "40 km/giờ",
+    "dau_hoi": [
+     "Vận tốc xe đạp",
+     "Vận tốc xe máy"
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "LT 26.14",
+  "dap_an": "$10$ giờ $24$ phút; $102$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: hai người **không đi cùng lúc** ⇒ phải đưa về lúc **cùng đi**. Từ $7$ giờ đến $8$ giờ chỉ người từ A đi, được $30$ km; lúc $8$ giờ hai người còn cách nhau $186-30=156$ km và từ đó đi ngược chiều cùng lúc. Chỗ gặp cách A $=30$ km đã đi trước $+$ quãng người A đi thêm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(AB 186 km; xe từ A đi lúc 7 giờ (30 km/giờ), đến 8 giờ đi được 30 km; xe từ B đi lúc 8 giờ (35 km/giờ); gặp nhau tại C)\n\nTừ $7$ giờ đến $8$ giờ, người đi từ A đi được: $30\\times 1=30$ (km)\n\nLúc $8$ giờ, hai người còn cách nhau: $186-30=156$ (km)\n\nTổng vận tốc của hai người là: $30+35=65$ (km/giờ)\n\nThời gian từ lúc $8$ giờ đến lúc gặp nhau là: $156:65=2,4$ (giờ) $=2$ giờ $24$ phút\n\nHai người gặp nhau lúc: $8$ giờ $+2$ giờ $24$ phút $=10$ giờ $24$ phút\n\nChỗ gặp nhau cách A là: $30+30\\times 2,4=102$ (km)\n\nĐáp số: $10$ giờ $24$ phút; $102$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 30,
+     "ghi": "8 giờ"
+    },
+    {
+     "ten": "C",
+     "x": 102,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 186
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 102,
+     "nhan": "Từ 7 giờ: 30 km/giờ"
+    },
+    {
+     "tu": 186,
+     "den": 102,
+     "nhan": "Từ 8 giờ: 35 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 30,
+     "nhan": "30 km"
+    },
+    {
+     "tu": 0,
+     "den": 102,
+     "nhan": "? km"
+    },
+    {
+     "tu": 0,
+     "den": 186,
+     "nhan": "186 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 27.5",
+  "dap_an": "$17,5$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nVận tốc xuôi $=$ vận tốc ca nô $+$ vận tốc dòng nước; vận tốc ngược $=$ vận tốc ca nô $-$ vận tốc dòng nước ⇒ **vận tốc ca nô khi nước lặng $=$ (xuôi $+$ ngược) $:2$** (VD 27.1). Tính vận tốc xuôi, ngược từ quãng đường và thời gian ($1$ giờ $30$ phút $=1,5$ giờ).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(AB 30 km; xuôi dòng A → B 1 giờ 30 phút; ngược dòng B → A 2 giờ)\n\nĐổi: $1$ giờ $30$ phút $=1,5$ giờ\n\nVận tốc ca nô khi xuôi dòng là: $30:1,5=20$ (km/giờ)\n\nVận tốc ca nô khi ngược dòng là: $30:2=15$ (km/giờ)\n\nVận tốc của ca nô khi nước lặng là: $\\left(20+15\\right):2=17,5$ (km/giờ)\n\nĐáp số: $17,5$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Dòng nước chảy từ A về B",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 30
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 30,
+     "nhan": "Xuôi dòng: 1 giờ 30 phút"
+    },
+    {
+     "tu": 30,
+     "den": 0,
+     "nhan": "Ngược dòng: 2 giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 30,
+     "nhan": "30 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 27.7",
+  "dap_an": "$60$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: lá cây trôi **bằng vận tốc dòng nước**. Đề không cho quãng đường ⇒ coi **quãng sông AB là $1$** (như bài công việc chung): mỗi giờ xuôi được $\\dfrac{1}{10}$ quãng sông, ngược được $\\dfrac{1}{15}$ quãng sông ⇒ dòng nước mỗi giờ trôi $\\left(\\dfrac{1}{10}-\\dfrac{1}{15}\\right):2$ quãng sông.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(quãng sông AB; xuôi dòng 10 giờ; ngược dòng 15 giờ; lá trôi ? giờ)\n\nMỗi giờ ca nô xuôi dòng đi được: $1:10=\\dfrac{1}{10}$ (quãng sông AB)\n\nMỗi giờ ca nô ngược dòng đi được: $1:15=\\dfrac{1}{15}$ (quãng sông AB)\n\nMỗi giờ dòng nước chảy được: $\\left(\\dfrac{1}{10}-\\dfrac{1}{15}\\right):2=\\dfrac{1}{60}$ (quãng sông AB)\n\nThời gian lá cây trôi từ A đến B là: $1:\\dfrac{1}{60}=60$ (giờ)\n\nĐáp số: $60$ giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Dòng nước chảy từ A về B",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 60
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 60,
+     "nhan": "Xuôi dòng: 10 giờ"
+    },
+    {
+     "tu": 60,
+     "den": 0,
+     "nhan": "Ngược dòng: 15 giờ"
+    },
+    {
+     "tu": 0,
+     "den": 60,
+     "nhan": "Lá trôi: ? giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 60,
+     "nhan": "Quãng sông AB"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 28.6",
+  "dap_an": "$42$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt (VD 28.2 của sách): trên **cùng một quãng đường**, vận tốc và thời gian **tỉ lệ nghịch**. Tỉ số thời gian dự định so với thực tế là $3:2,5=\\dfrac{6}{5}$ ⇒ tỉ số vận tốc thực tế so với dự định là $\\dfrac{6}{5}$: vận tốc dự định $5$ phần, thực tế $6$ phần, hơn nhau $7$ km/giờ ⇒ bài hiệu – tỉ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số thời gian dự định so với thời gian thực tế là: $3:2,5=\\dfrac{6}{5}$\n\nTrên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch nên tỉ số vận tốc thực tế so với vận tốc dự định là $\\dfrac{6}{5}$.\n\nTa có sơ đồ:\n\n(Vận tốc dự định 5 phần; Vận tốc thực tế 6 phần; hiệu 7 km/giờ)\n\nVận tốc thực tế của xe máy là: $7:\\left(6-5\\right)\\times 6=42$ (km/giờ)\n\nĐáp số: $42$ km/giờ",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Vận tốc dự định",
+     "phan": 5
+    },
+    {
+     "nhan": "Vận tốc thực tế",
+     "phan": 6
+    }
+   ],
+   "hieu": "7 km/giờ",
+   "dau_hoi": [
+    "Vận tốc thực tế"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 28.9",
+  "dap_an": "$210$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nCùng một lúc xuất phát, đi nhanh hơn thì đến sớm hơn $9$ giờ $15$ phút $-8$ giờ $45$ phút $=30$ phút ⇒ hai thời gian chênh nhau $30$ phút. Cùng quãng đường nên thời gian tỉ lệ nghịch với vận tốc: $60:70=\\dfrac{6}{7}$ ⇒ thời gian đi với $60$ km/giờ là $7$ phần, với $70$ km/giờ là $6$ phần ⇒ hiệu – tỉ (như VD 28.1).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThời gian đi với vận tốc $60$ km/giờ nhiều hơn đi với vận tốc $70$ km/giờ là: $9$ giờ $15$ phút $-8$ giờ $45$ phút $=30$ phút\n\nTỉ số vận tốc $60$ km/giờ so với $70$ km/giờ là: $60:70=\\dfrac{6}{7}$\n\nTrên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch nên tỉ số thời gian đi với vận tốc $60$ km/giờ so với thời gian đi với vận tốc $70$ km/giờ là $\\dfrac{7}{6}$.\n\nTa có sơ đồ:\n\n(Thời gian đi với vận tốc 70 km/giờ 6 phần; Thời gian đi với vận tốc 60 km/giờ 7 phần; hiệu 30 phút)\n\nThời gian đi với vận tốc $60$ km/giờ là: $30:\\left(7-6\\right)\\times 7=210$ (phút) $=3,5$ giờ\n\nQuãng đường xe đã đi là: $60\\times 3,5=210$ (km)\n\nĐáp số: $210$ km",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 30,
+   "hang": [
+    {
+     "nhan": "Thời gian đi với vận tốc 70 km/giờ",
+     "phan": 6
+    },
+    {
+     "nhan": "Thời gian đi với vận tốc 60 km/giờ",
+     "phan": 7
+    }
+   ],
+   "hieu": "30 phút",
+   "dau_hoi": [
+    "Thời gian đi với vận tốc 60 km/giờ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 29.2",
+  "dap_an": "$72$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nChú ý bẫy: vận tốc trung bình **không phải** $(60+90):2=75$. Vận tốc trung bình $=$ **tổng quãng đường : tổng thời gian**. Mỗi nửa quãng đường dài $80$ km ⇒ tính thời gian từng nửa rồi cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(AB 160 km, M chính giữa; nửa đầu 60 km/giờ, nửa sau 90 km/giờ)\n\nMỗi nửa quãng đường dài là: $160:2=80$ (km)\n\nThời gian đi nửa quãng đường đầu là: $80:60=\\dfrac{4}{3}$ (giờ)\n\nThời gian đi nửa quãng đường sau là: $80:90=\\dfrac{8}{9}$ (giờ)\n\nTổng thời gian đi cả quãng đường là: $\\dfrac{4}{3}+\\dfrac{8}{9}=\\dfrac{20}{9}$ (giờ)\n\nVận tốc trung bình của ô tô là: $160:\\dfrac{20}{9}=72$ (km/giờ)\n\nĐáp số: $72$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "M",
+     "x": 80,
+     "ghi": "chính giữa"
+    },
+    {
+     "ten": "B",
+     "x": 160
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 80,
+     "nhan": "60 km/giờ"
+    },
+    {
+     "tu": 80,
+     "den": 160,
+     "nhan": "90 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 80,
+     "nhan": "80 km"
+    },
+    {
+     "tu": 80,
+     "den": 160,
+     "nhan": "80 km"
+    },
+    {
+     "tu": 0,
+     "den": 160,
+     "nhan": "160 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 29.7",
+  "dap_an": "$200$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt (VD 29.2 của sách): xe lửa **qua hết** một cây cầu thì đi được quãng đường bằng **chiều dài cầu $+$ chiều dài xe lửa**. Đổi vận tốc ra m/giây cho cùng đơn vị với $50$ giây: $72$ km/giờ $=20$ m/giây.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(xe lửa ? m nối với cầu 800 m; đuôi xe lửa đi hết chiều dài xe lửa và cầu trong 50 giây)\n\nĐổi: $72$ km/giờ $=20$ m/giây; $0,8$ km $=800$ m\n\nQuãng đường xe lửa đi trong $50$ giây là: $20\\times 50=1000$ (m)\n\nChiều dài của xe lửa là: $1000-800=200$ (m)\n\nĐáp số: $200$ m",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Xe lửa bắt đầu lên cầu → đuôi xe lửa vừa qua hết cầu (50 giây)",
+   "diem": [
+    {
+     "ten": "Đầu cầu",
+     "x": 0
+    },
+    {
+     "ten": "Cuối cầu",
+     "x": 800
+    }
+   ],
+   "vat": [
+    {
+     "tu": -200,
+     "den": 0,
+     "nhan": "Xe lửa",
+     "kieu": "tau"
+    },
+    {
+     "tu": 0,
+     "den": 800,
+     "nhan": "Cầu 800 m",
+     "kieu": "cau"
+    }
+   ],
+   "di": [
+    {
+     "tu": -200,
+     "den": 800,
+     "nhan": "Đuôi xe lửa đi: 72 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": -200,
+     "den": 0,
+     "nhan": "? m"
+    },
+    {
+     "tu": 0,
+     "den": 800,
+     "nhan": "800 m"
+    },
+    {
+     "tu": -200,
+     "den": 800,
+     "nhan": "Quãng đường đi trong 50 giây"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LT 29.10",
+  "dap_an": "$57,6$ km/giờ ($16$ m/giây); $320$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nQua cột điện: xe lửa đi quãng đường bằng **chiều dài của chính nó** (mất $20$ giây). Qua cầu: đi chiều dài xe lửa $+480$ m (mất $50$ giây). So hai lần ⇒ $480$ m cầu ứng với $50-20=30$ giây ⇒ vận tốc; rồi chiều dài xe lửa $=$ vận tốc $\\times 20$ giây.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(qua cột điện đuôi xe lửa đi hết chiều dài xe lửa (20 giây); qua cầu 480 m đi hết chiều dài xe lửa và cầu (50 giây))\n\nThời gian xe lửa đi hết chiều dài cây cầu là: $50-20=30$ (giây)\n\nVận tốc của xe lửa là: $480:30=16$ (m/giây)\n\nĐổi: $16$ m/giây $=57,6$ km/giờ\n\nChiều dài của xe lửa là: $16\\times 20=320$ (m)\n\nĐáp số: $57,6$ km/giờ ($16$ m/giây); $320$ m",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Qua cột điện: 20 giây",
+    "diem": [
+     {
+      "ten": "Cột điện",
+      "x": 0
+     }
+    ],
+    "vat": [
+     {
+      "tu": -320,
+      "den": 0,
+      "nhan": "Xe lửa",
+      "kieu": "tau"
+     }
+    ],
+    "di": [
+     {
+      "tu": -320,
+      "den": 0,
+      "nhan": "Đuôi xe lửa đi"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": -320,
+      "den": 0,
+      "nhan": "? m (chiều dài xe lửa)"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Qua cầu: 50 giây",
+    "diem": [
+     {
+      "ten": "Đầu cầu",
+      "x": 0
+     },
+     {
+      "ten": "Cuối cầu",
+      "x": 480
+     }
+    ],
+    "vat": [
+     {
+      "tu": -320,
+      "den": 0,
+      "nhan": "Xe lửa",
+      "kieu": "tau"
+     },
+     {
+      "tu": 0,
+      "den": 480,
+      "nhan": "Cầu 480 m",
+      "kieu": "cau"
+     }
+    ],
+    "di": [
+     {
+      "tu": -320,
+      "den": 480,
+      "nhan": "Đuôi xe lửa đi"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": -320,
+      "den": 0,
+      "nhan": "? m"
+     },
+     {
+      "tu": 0,
+      "den": 480,
+      "nhan": "480 m"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "LT 30.2",
+  "dap_an": "Loại $4$ tạ: $8$ xe; loại $6$ tạ: $6$ xe",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt (VD 30.1–30.2): **giả sử cả $14$ xe đều là loại $4$ tạ** ⇒ chở được ít hơn thực tế. Mỗi lần thay một xe $4$ tạ bằng một xe $6$ tạ thì chở thêm $2$ tạ ⇒ số xe $6$ tạ $=$ phần thiếu : $2$. Đổi $6,8$ tấn $=68$ tạ trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $6,8$ tấn $=68$ tạ\n\nGiả sử cả $14$ xe đều là loại $4$ tạ thì chở được: $4\\times 14=56$ (tạ)\n\nSố gạo bị thiếu so với thực tế là: $68-56=12$ (tạ)\n\nThay một xe $4$ tạ bằng một xe $6$ tạ thì chở thêm được: $6-4=2$ (tạ)\n\nSố xe loại $6$ tạ là: $12:2=6$ (xe)\n\nSố xe loại $4$ tạ là: $14-6=8$ (xe)\n\nĐáp số: Loại $4$ tạ: $8$ xe; loại $6$ tạ: $6$ xe"
+ },
+ {
+  "ma_nguon": "LT 30.6",
+  "dap_an": "$26$ câu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nGiả sử **đúng cả $30$ câu** ⇒ $90$ điểm, thừa so với thực tế. Mấu chốt: thay một câu đúng bằng một câu sai thì **mất $3$ điểm được cộng và bị trừ thêm $3$ điểm** ⇒ giảm $3+3=6$ điểm (không phải $3$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiả sử bạn đó trả lời đúng cả $30$ câu thì được: $3\\times 30=90$ (điểm)\n\nSố điểm thừa ra so với thực tế là: $90-66=24$ (điểm)\n\nThay một câu đúng bằng một câu sai thì số điểm giảm đi: $3+3=6$ (điểm)\n\nSố câu trả lời sai (hoặc không trả lời) là: $24:6=4$ (câu)\n\nSố câu trả lời đúng là: $30-4=26$ (câu)\n\nĐáp số: $26$ câu"
+ },
+ {
+  "ma_nguon": "LT 30.11",
+  "dap_an": "Ô tô: $28$ xe; xe máy: $40$ xe",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: **giả sử bớt đi $12$ xe máy** thì số xe máy bằng số ô tô, tổng số bánh giảm $12\\times 2=24$. Khi đó cứ một xe máy đi cùng một ô tô thành **một cặp có $2+4=6$ bánh** ⇒ số cặp $=$ số ô tô.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu bớt đi $12$ xe máy thì số bánh xe còn lại là: $192-12\\times 2=168$ (bánh)\n\nKhi đó số xe máy bằng số ô tô; mỗi xe máy và một ô tô có số bánh là: $2+4=6$ (bánh)\n\nSố ô tô là: $168:6=28$ (xe)\n\nSố xe máy là: $28+12=40$ (xe)\n\nĐáp số: Ô tô: $28$ xe; xe máy: $40$ xe"
+ },
+ {
+  "ma_nguon": "LT 31.2",
+  "dap_an": "Bút máy: $28000$ đồng; bút chì: $12000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nHai lần mua có số bút máy khác nhau ($5$ và $4$) ⇒ đưa về **cùng số bút máy** (cùng hệ số): nhân lần thứ nhất với $4$, lần thứ hai với $5$ ⇒ cùng $20$ bút máy. Trừ hai dòng ⇒ bút máy bị **khử**, còn lại số bút chì chênh nhau và số tiền chênh nhau (khuôn VD 31.2, sách cho đặt chữ $M$, $C$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGọi giá $1$ chiếc bút máy là $M$ (nghìn đồng), giá $1$ chiếc bút chì là $C$ (nghìn đồng).\n\n$\\begin{array}{l} 5\\times M+7\\times C=224\\ (1) \\\\ 4\\times M+9\\times C=220\\ (2) \\end{array}$\n\nTừ (1): $20\\times M+28\\times C=224\\times 4=896$\n\nTừ (2): $20\\times M+45\\times C=220\\times 5=1100$\n\n$\\left(20\\times M+45\\times C\\right)-\\left(20\\times M+28\\times C\\right)=1100-896$\n\n$17\\times C=204$ nên $C=12$\n\n$\\begin{array}{l} 5\\times M+7\\times 12=224 \\\\ M=28 \\end{array}$\n\nĐáp số: Bút máy: $28000$ đồng; bút chì: $12000$ đồng"
+ },
+ {
+  "ma_nguon": "LT 31.5",
+  "dap_an": "$3$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: mỗi con chó $=$ một con mèo $+29$ kg ⇒ **thay $5$ con chó bằng $5$ con mèo** thì khối lượng giảm $5\\times 29$ kg. Khi đó chỉ còn $5+7=12$ con mèo ⇒ khử được con chó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu thay $5$ con chó bằng $5$ con mèo thì khối lượng giảm đi: $29\\times 5=145$ (kg)\n\nKhi đó $5+7=12$ con mèo nặng: $181-145=36$ (kg)\n\nMỗi con mèo nặng là: $36:12=3$ (kg)\n\nĐáp số: $3$ kg"
+ },
+ {
+  "ma_nguon": "ON 7",
+  "dap_an": "$882$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nChia các số theo **số chữ số**: số có $1$ chữ số ($1$ → $9$), $2$ chữ số ($10$ → $99$), $3$ chữ số ($100$ → $330$). Đếm số lượng mỗi nhóm bằng công thức số số hạng (khoảng cách $1$), nhân với số chữ số của nhóm, rồi cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $1$ đến $9$ có $9$ số có $1$ chữ số, dùng: $9\\times 1=9$ (chữ số)\n\nTừ $10$ đến $99$ có số số có $2$ chữ số là: $\\left(99-10\\right):1+1=90$ (số), dùng: $90\\times 2=180$ (chữ số)\n\nTừ $100$ đến $330$ có số số có $3$ chữ số là: $\\left(330-100\\right):1+1=231$ (số), dùng: $231\\times 3=693$ (chữ số)\n\nSố A có tất cả số chữ số là: $9+180+693=882$ (chữ số)\n\nĐáp số: $882$ chữ số"
+ },
+ {
+  "ma_nguon": "ON 13",
+  "dap_an": "$9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nGọi chữ số viết thêm là $x$, số mới $\\overline{695x}$. Hai điều kiện: **lẻ** ⇒ $x$ là $1;3;5;7;9$; **chia $9$ dư $2$** ⇒ tổng các chữ số $6+9+5+x=20+x$ chia $9$ dư $2$ (một số chia $9$ dư bao nhiêu thì tổng chữ số chia $9$ dư bấy nhiêu). $20+x$ nằm từ $20$ đến $29$, chia $9$ dư $2$ thì là $20$ hoặc $29$ ⇒ $x=0$ hoặc $9$; kết hợp lẻ ⇒ $x=9$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGọi chữ số viết thêm là $x$, ta được số $\\overline{695x}$.\n\nVì $\\overline{695x}$ là số lẻ nên $x$ là một trong các chữ số $1;3;5;7;9$.\n\nVì $\\overline{695x}$ chia $9$ dư $2$ nên tổng các chữ số $6+9+5+x=20+x$ chia $9$ dư $2$, suy ra $20+x=20$ hoặc $20+x=29$, tức là $x=0$ hoặc $x=9$.\n\nKết hợp hai điều kiện, ta có $x=9$.\n\nThử lại: $6959:9=773$ (dư $2$).\n\nVậy chữ số viết thêm là $9$."
+ },
+ {
+  "ma_nguon": "ON 19",
+  "dap_an": "$419$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ở cả bốn phép chia, **số dư đều kém số chia đúng $1$** ⇒ nếu **thêm $1$** vào số cần tìm thì được số chia hết cho cả $3;4;5;7$. Số bé nhất chia hết cho cả $3;4;5;7$: $3\\times 4\\times 5\\times 7=420$ (các số này đôi một không có thừa số chung khác $1$). Số cần tìm $=420-1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cần tìm chia cho $3;4;5;7$ đều có số dư kém số chia $1$ đơn vị, nên nếu thêm $1$ vào số đó thì được số chia hết cho cả $3;4;5$ và $7$.\n\nSố bé nhất chia hết cho cả $3;4;5$ và $7$ là: $3\\times 4\\times 5\\times 7=420$\n\nSố cần tìm là: $420-1=419$\n\nĐáp số: $419$"
+ },
+ {
+  "ma_nguon": "ON 22",
+  "dap_an": "$57$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: viết thêm chữ số $8$ vào bên phải thì số mới **gấp $10$ lần số cũ rồi thêm $8$** ⇒ số cũ $1$ phần, số mới $10$ phần và $8$ đơn vị. Số mới hơn số cũ $521$ ⇒ $9$ phần và $8$ đơn vị là $521$ ⇒ bài hiệu – tỉ (không cần đặt ẩn).\n\nThử lại: $578-57=521$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi viết thêm chữ số $8$ vào bên phải một số thì số đó gấp lên $10$ lần và thêm $8$ đơn vị.\n\nTa có sơ đồ:\n\n(Số phải tìm 1 phần; Số mới 10 phần và 8 đơn vị; hiệu 521)\n\n$9$ lần số phải tìm là: $521-8=513$\n\nSố phải tìm là: $513:9=57$\n\nĐáp số: $57$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 57,
+   "hang": [
+    {
+     "nhan": "Số phải tìm",
+     "phan": 1
+    },
+    {
+     "nhan": "Số mới",
+     "phan": 10,
+     "them": "8"
+    }
+   ],
+   "hieu": "521",
+   "dau_hoi": [
+    "Số phải tìm"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 37",
+  "dap_an": "$25$ cô giáo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: so với tuổi trung bình chung $30$, **mỗi cô \"thiếu\" $3$ tuổi**, **mỗi thầy \"thừa\" $5$ tuổi**, và **tổng phần thiếu bằng tổng phần thừa** (vì $30$ là trung bình của cả nhóm). Ghép mỗi thầy với một cô: mỗi cặp thừa $5-3=2$ tuổi. Còn $10$ cô lẻ ra, thiếu $3\\times 10=30$ tuổi ⇒ phần thừa của các cặp phải bù đúng $30$ tuổi ⇒ số cặp $=30:2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSo với tuổi trung bình của cả nhóm, mỗi cô giáo kém: $30-27=3$ (tuổi); mỗi thầy giáo hơn: $35-30=5$ (tuổi).\n\nTổng số tuổi các cô kém bằng tổng số tuổi các thầy hơn.\n\nGhép mỗi thầy với một cô thì mỗi cặp hơn: $5-3=2$ (tuổi)\n\n$10$ cô giáo còn lại kém tất cả: $3\\times 10=30$ (tuổi)\n\nSố thầy giáo là: $30:2=15$ (người)\n\nSố cô giáo là: $15+10=25$ (người)\n\nĐáp số: $25$ cô giáo"
+ },
+ {
+  "ma_nguon": "ON 116",
+  "dap_an": "$10$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n\"Ít nhất bao nhiêu để **chắc chắn**\" ⇒ xét **trường hợp xấu nhất** (không may nhất). Có phân biệt trái – phải ⇒ một đôi cần $1$ chiếc trái và $1$ chiếc phải **cùng màu**. Xấu nhất: lấy toàn chiếc **cùng một bên** — cả $9$ chiếc bên trái ($3$ màu $\\times 3$ chiếc) vẫn chưa có đôi nào. Chiếc thứ $10$ chắc chắn là chiếc bên phải, ghép được với chiếc trái cùng màu.\n\nChú ý bẫy: không phân biệt trái – phải thì chỉ cần $4$ chiếc; đề này phân biệt nên khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong hộp có tất cả số chiếc tất bên trái là: $3\\times 3=9$ (chiếc)\n\nTrường hợp xấu nhất: lấy được cả $9$ chiếc tất bên trái thì chưa có đôi nào.\n\nKhi lấy thêm $1$ chiếc nữa thì chiếc đó là tất bên phải, cùng màu với một chiếc bên trái đã lấy nên có một đôi.\n\nSố chiếc tất ít nhất phải lấy là: $9+1=10$ (chiếc)\n\nĐáp số: $10$ chiếc"
+ },
+ {
+  "ma_nguon": "ON 124",
+  "dap_an": "Bạn Mai nói đúng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nChỉ một bạn đúng ⇒ **giả sử lần lượt từng bạn đúng** rồi tìm mâu thuẫn. Nhận xét nhanh: Chi đúng ⇒ hôm nay thứ Hai, thì Phong (\"không phải thứ Tư\") cũng đúng ⇒ hai bạn đúng, loại. Hân đúng ⇒ hôm nay thứ Năm, Phong cũng đúng ⇒ loại. Vậy Chi và Hân đều sai ⇒ **Mai đúng** ⇒ Phong phải sai ⇒ hôm nay thứ Tư (kiểm lại: thứ Tư thì Chi, Hân đều sai — khớp).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu Chi nói đúng thì hôm nay là thứ Hai, khi đó Phong cũng nói đúng — trái với đề bài (chỉ một bạn nói đúng). Vậy Chi nói sai.\n\nNếu Hân nói đúng thì hôm nay là thứ Năm, khi đó Phong cũng nói đúng — trái với đề bài. Vậy Hân nói sai.\n\nVì Chi và Hân đều nói sai nên Mai nói đúng.\n\nDo chỉ có một bạn nói đúng nên Phong nói sai, tức là hôm nay là thứ Tư. Khi đó Chi và Hân đều sai (đúng như trên).\n\nVậy bạn Mai nói đúng."
+ }
+]

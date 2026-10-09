@@ -1,0 +1,8 @@
+{
+ "LT 19.7": {
+  "noi_dung": "Cho tam giác ABC có diện tích là $S$. Tính các tỉ số sau trong mỗi trường hợp (hình vẽ bên):\na) M nằm trên cạnh BC sao cho $BM=MC$; $S_{1}$ là diện tích tam giác ABM, $S_{2}$ là diện tích tam giác AMC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nb) M nằm trên cạnh AB sao cho $AM=2\\times MB$; $S_{1}$ là diện tích tam giác AMC, $S_{2}$ là diện tích tam giác MBC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nc) M nằm trên cạnh AC sao cho $AM=\\dfrac{2}{5}AC$; $S_{1}$ là diện tích tam giác BMC, $S_{2}$ là diện tích tam giác ABM. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nd) N nằm trên phần kéo dài của BC về phía C sao cho $CN=\\dfrac{1}{3}BC$; $S_{1}$ là diện tích tam giác ACN. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{ANB}}{S}$."
+ },
+ "LT 19.15": {
+  "noi_dung": "Cho tam giác ABC có diện tích là $S$. Tính các tỉ số sau trong mỗi trường hợp (hình vẽ bên):\na) M nằm trên cạnh AB sao cho $AM=MB$, N nằm trên cạnh AC sao cho $AN=\\dfrac{2}{3}AC$; $S_{1}$ là diện tích tam giác AMN, $S_{2}$ là diện tích tứ giác BMNC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nb) M nằm trên cạnh AC sao cho $CM=\\dfrac{1}{3}CA$, N nằm trên cạnh BC sao cho $BN=\\dfrac{2}{5}BC$; $S_{1}$ là diện tích tam giác CMN, $S_{2}$ là diện tích tứ giác ABNM. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nc) M nằm trên cạnh AB sao cho $BM=MA$, N nằm trên cạnh BC sao cho $BN=\\dfrac{3}{5}BC$; $S_{1}$ là diện tích tam giác BMN, $S_{2}$ là diện tích tứ giác AMNC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nd) M nằm trên cạnh AB sao cho $AM=MB$, N nằm trên phần kéo dài của AC về phía C sao cho $CN=\\dfrac{1}{3}AC$. Tính $\\dfrac{S_{AMN}}{S}$."
+ }
+}

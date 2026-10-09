@@ -1,0 +1,275 @@
+[
+ {
+  "ma_nguon": "ON 66",
+  "dap_an": "$200000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mua nhiều quyển thì hết nhiều tiền, giá mỗi quyển vở như nhau nên số quyển và số tiền là hai đại lượng **tỉ lệ thuận**. Cách làm: rút về đơn vị — tìm giá tiền của $1$ quyển, rồi nhân với $25$.\n\n**Chú ý:** Giá $1$ quyển là lấy số tiền chia cho số quyển ($40000:5$), không phải lấy số quyển chia cho số tiền.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá tiền $1$ quyển vở là: $40000:5=8000$ (đồng)\n\nSố tiền mua $25$ quyển vở là: $8000\\times 25=200000$ (đồng)\n\nĐáp số: $200000$ đồng"
+ },
+ {
+  "ma_nguon": "ON 67",
+  "dap_an": "$30$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Làm cùng một cái bể bơi, số người càng nhiều thì số ngày càng ít nên số người và số ngày là hai đại lượng **tỉ lệ nghịch**. Cách làm: rút về đơn vị — đo cả công việc bằng số ngày mà $1$ người làm xong.\n\n**Bước 1.** Tìm xem $1$ người làm một mình thì xong cái bể bơi sau bao nhiêu ngày (lấy số người nhân số ngày).\n\n**Bước 2.** Muốn xong trong $16$ ngày thì lấy số ngày của $1$ người chia cho $16$ để ra số người cần có.\n\n**Bước 3.** Đề hỏi cần **thêm** bao nhiêu người nên phải trừ đi $40$ người đã có.\n\n**Chú ý:** Kết quả bước $2$ là số người cần có tất cả, chưa phải số người cần thêm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ người làm xong cái bể bơi trong số ngày là: $40\\times 28=1120$ (ngày)\n\nĐể làm xong trong $16$ ngày thì cần số người là: $1120:16=70$ (người)\n\nSố người cần thêm là: $70-40=30$ (người)\n\nĐáp số: $30$ người"
+ },
+ {
+  "ma_nguon": "ON 68",
+  "dap_an": "$53$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, số người càng ít thì làm càng lâu (**tỉ lệ nghịch**). Ta đo công việc bằng **giờ công** ($1$ giờ công là $1$ người làm trong $1$ giờ). Công việc chia hai đoạn: $5$ giờ đầu còn đủ $24$ người, sau đó chỉ còn $21$ người.\n\n**Bước 1.** Tính cả công việc có bao nhiêu giờ công (số người nhân số giờ dự định).\n\n**Bước 2.** Tính $5$ giờ đầu $24$ người làm được bao nhiêu giờ công, rồi tìm số giờ công còn lại.\n\n**Bước 3.** Sau khi $3$ người chuyển đi chỉ còn $24-3$ người; lấy số giờ công còn lại chia cho số người đó để biết thời gian làm nốt.\n\n**Bước 4.** Thời gian thực tế là $5$ giờ đã làm cộng với thời gian làm nốt.\n\n**Chú ý:** Đề hỏi thời gian thực tế của **toàn bộ** công việc nên đừng quên cộng $5$ giờ đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCả công việc cần số giờ công là: $24\\times 47=1128$ (giờ công)\n\n$5$ giờ đầu, $24$ người làm được số giờ công là: $24\\times 5=120$ (giờ công)\n\nSố giờ công còn lại là: $1128-120=1008$ (giờ công)\n\nSố người còn lại sau khi $3$ người chuyển đi là: $24-3=21$ (người)\n\nThời gian $21$ người làm nốt công việc là: $1008:21=48$ (giờ)\n\nThời gian thực tế hoàn thành toàn bộ công việc là: $5+48=53$ (giờ)\n\nĐáp số: $53$ giờ"
+ },
+ {
+  "ma_nguon": "ON 69",
+  "dap_an": "$20$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số gạo không đổi, mỗi người ăn như nhau; số người ăn càng nhiều thì số ngày ăn càng ít (**tỉ lệ nghịch**). Ta đo gạo bằng **suất ăn** ($1$ suất là số gạo $1$ người ăn trong $1$ ngày). Việc ăn chia hai đoạn: $10$ ngày đầu có $360$ người, từ đó về sau có thêm $180$ người.\n\n**Bước 1.** Tính số gạo cả kho đủ cho bao nhiêu suất ăn (số người nhân số ngày dự trữ).\n\n**Bước 2.** Tính $10$ ngày đầu đã ăn hết bao nhiêu suất, rồi tìm số suất còn lại.\n\n**Bước 3.** Sau đó đơn vị có $360+180$ người; lấy số suất còn lại chia cho số người đó để biết ăn được bao nhiêu ngày nữa.\n\n**Chú ý:** Đề hỏi ăn trong bao nhiêu ngày **nữa**, tức là tính từ lúc có thêm người, không cộng $10$ ngày đã ăn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố gạo cả kho đủ cho số suất ăn là: $360\\times 40=14400$ (suất)\n\nSố suất ăn trong $10$ ngày đầu là: $360\\times 10=3600$ (suất)\n\nSố suất ăn còn lại là: $14400-3600=10800$ (suất)\n\nSố người của đơn vị sau khi có thêm là: $360+180=540$ (người)\n\nSố gạo còn lại đủ cho đơn vị ăn thêm số ngày là: $10800:540=20$ (ngày)\n\nĐáp số: $20$ ngày",
+  "ghi_chu_nghi": "Đề in \"khẩu phẩn\" (= khẩu phần); không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "ON 70",
+  "dap_an": "$3$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số công nhân, số ngày và số mét đường cùng đổi một lúc nên đây là bài **tỉ lệ kép**. Ta rút về đơn vị hai lần: tìm xem **$1$ công nhân đào trong $1$ ngày** được mấy mét.\n\n**Bước 1.** Từ $5$ công nhân đào $4$ ngày được $20$ m, tìm $1$ công nhân đào $4$ ngày được mấy mét, rồi $1$ công nhân đào $1$ ngày được mấy mét.\n\n**Bước 2.** Tính $20$ công nhân đào trong $1$ ngày được mấy mét.\n\n**Bước 3.** Lấy $60$ m chia cho số mét đào được mỗi ngày thì ra số ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ công nhân đào trong $4$ ngày được số mét đường là: $20:5=4$ (m)\n\n$1$ công nhân đào trong $1$ ngày được số mét đường là: $4:4=1$ (m)\n\n$20$ công nhân đào trong $1$ ngày được số mét đường là: $1\\times 20=20$ (m)\n\nThời gian $20$ công nhân đào $60$ m đường là: $60:20=3$ (ngày)\n\nĐáp số: $3$ ngày"
+ },
+ {
+  "ma_nguon": "ON 71",
+  "dap_an": "$136$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số người và số ngày cùng đổi; số gạo ăn hết tỉ lệ thuận với cả số người lẫn số ngày nên đây là bài **tỉ lệ kép**. Ta rút về đơn vị hai lần: tìm số gạo **$1$ người ăn trong $1$ ngày**.\n\n**Bước 1.** Từ $5$ người ăn $9$ ngày hết $36$ kg, tìm $1$ người ăn $9$ ngày hết mấy ki-lô-gam, rồi $1$ người ăn $1$ ngày hết mấy ki-lô-gam.\n\n**Bước 2.** Nhân số gạo của $1$ người trong $1$ ngày với số người mới và số ngày mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ người ăn trong $9$ ngày hết số ki-lô-gam gạo là: $36:5=7,2$ (kg)\n\n$1$ người ăn trong $1$ ngày hết số ki-lô-gam gạo là: $7,2:9=0,8$ (kg)\n\n$17$ người ăn trong $10$ ngày hết số ki-lô-gam gạo là: $0,8\\times 17\\times 10=136$ (kg)\n\nĐáp số: $136$ kg"
+ },
+ {
+  "ma_nguon": "ON 72",
+  "dap_an": "$2$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài công việc chung: coi cả bể là $1$. Tính **mỗi giờ mỗi vòi chảy được mấy phần bể**, cộng lại được phần bể cả hai vòi chảy trong $1$ giờ. Thời gian đầy bể bằng $1$ chia cho phần đó.\n\n**Chú ý:** Hai vòi cùng chảy vào bể nên phần bể mỗi giờ là **tổng** hai phần, không phải hiệu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, vòi thứ nhất chảy được: $1:3=\\dfrac{1}{3}$ (bể)\n\nTrong $1$ giờ, vòi thứ hai chảy được: $1:6=\\dfrac{1}{6}$ (bể)\n\nTrong $1$ giờ, cả hai vòi cùng chảy được: $\\dfrac{1}{3}+\\dfrac{1}{6}=\\dfrac{2}{6}+\\dfrac{1}{6}=\\dfrac{3}{6}=\\dfrac{1}{2}$ (bể)\n\nThời gian để hai vòi cùng chảy đầy bể là: $1:\\dfrac{1}{2}=2$ (giờ)\n\nĐáp số: $2$ giờ"
+ },
+ {
+  "ma_nguon": "ON 73",
+  "dap_an": "$1$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài công việc chung với ba người: coi cả công việc là $1$, tính **mỗi giờ mỗi người làm được mấy phần công việc**, cộng ba phần lại được phần việc cả ba người làm trong $1$ giờ. Thời gian xong việc bằng $1$ chia cho phần đó.\n\n**Chú ý:** Ba phân số có mẫu số $2$, $3$, $6$ nên quy đồng về mẫu số $6$ rồi mới cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, người thứ nhất làm được: $1:2=\\dfrac{1}{2}$ (công việc)\n\nTrong $1$ giờ, người thứ hai làm được: $1:3=\\dfrac{1}{3}$ (công việc)\n\nTrong $1$ giờ, người thứ ba làm được: $1:6=\\dfrac{1}{6}$ (công việc)\n\nTrong $1$ giờ, cả ba người cùng làm được: $\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{6}=\\dfrac{3}{6}+\\dfrac{2}{6}+\\dfrac{1}{6}=\\dfrac{6}{6}=1$ (công việc)\n\nThời gian để cả ba người cùng làm xong công việc là: $1:1=1$ (giờ)\n\nĐáp số: $1$ giờ"
+ },
+ {
+  "ma_nguon": "ON 74",
+  "dap_an": "$6$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài công việc chung, tìm người thứ hai: coi cả công việc là $1$. Đề cho tốc độ của **hai người cùng làm** và tốc độ của **người thứ nhất**, nên lấy phần việc của hai người trong $1$ giờ **trừ** phần việc của người thứ nhất thì được phần việc của người thứ hai.\n\n**Chú ý:** Phải tìm phần việc người thứ hai làm trong $1$ giờ trước, rồi mới lấy $1$ chia cho nó để ra thời gian.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, hai người cùng làm được: $1:4=\\dfrac{1}{4}$ (công việc)\n\nTrong $1$ giờ, người thứ nhất làm được: $1:12=\\dfrac{1}{12}$ (công việc)\n\nTrong $1$ giờ, người thứ hai làm được: $\\dfrac{1}{4}-\\dfrac{1}{12}=\\dfrac{3}{12}-\\dfrac{1}{12}=\\dfrac{2}{12}=\\dfrac{1}{6}$ (công việc)\n\nNgười thứ hai làm một mình thì xong công việc sau: $1:\\dfrac{1}{6}=6$ (giờ)\n\nĐáp số: $6$ giờ"
+ },
+ {
+  "ma_nguon": "ON 75",
+  "dap_an": "$15$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc chia hai đoạn: đoạn đầu **cả hai thợ cùng làm** trong $3$ giờ, đoạn sau **thợ phụ làm một mình** trong $6$ giờ. Đề cho hai người làm chung xong sau $5$ giờ nên tính được phần việc cả hai làm trong $3$ giờ đầu; phần còn lại chính là phần của thợ phụ làm trong $6$ giờ.\n\n**Bước 1.** Coi cả công việc là $1$; tìm phần việc hai thợ làm chung trong $1$ giờ, rồi trong $3$ giờ.\n\n**Bước 2.** Phần việc còn lại do thợ phụ làm trong $6$ giờ; chia cho $6$ được phần việc thợ phụ làm trong $1$ giờ.\n\n**Bước 3.** Thợ phụ làm một mình thì thời gian bằng $1$ chia cho phần việc làm trong $1$ giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, hai thợ cùng làm được: $1:5=\\dfrac{1}{5}$ (công việc)\n\nTrong $3$ giờ, hai thợ cùng làm được: $\\dfrac{1}{5}\\times 3=\\dfrac{3}{5}$ (công việc)\n\nPhần việc thợ phụ làm nốt là: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (công việc)\n\nTrong $1$ giờ, thợ phụ làm được: $\\dfrac{2}{5}:6=\\dfrac{2}{30}=\\dfrac{1}{15}$ (công việc)\n\nThợ phụ làm một mình thì xong việc sau: $1:\\dfrac{1}{15}=15$ (giờ)\n\nĐáp số: $15$ giờ"
+ },
+ {
+  "ma_nguon": "ON 76",
+  "dap_an": "$60$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài công việc chung có một vòi chảy vào và một vòi tháo ra: coi cả bể là $1$, tính phần bể mỗi vòi chảy vào hoặc tháo ra trong $1$ phút. Vòi B **tháo nước ra** nên mở cả hai vòi thì mỗi phút nước trong bể chỉ tăng thêm phần **hiệu** $\\dfrac{1}{10}-\\dfrac{1}{12}$.\n\n**Chú ý:** Không lấy tổng hai phần như bài hai vòi cùng chảy vào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ phút, vòi A chảy vào được: $1:10=\\dfrac{1}{10}$ (bể)\n\nTrong $1$ phút, vòi B tháo ra được: $1:12=\\dfrac{1}{12}$ (bể)\n\nTrong $1$ phút, mở cả hai vòi thì lượng nước trong bể tăng thêm: $\\dfrac{1}{10}-\\dfrac{1}{12}=\\dfrac{6}{60}-\\dfrac{5}{60}=\\dfrac{1}{60}$ (bể)\n\nThời gian để bể đầy nước là: $1:\\dfrac{1}{60}=60$ (phút)\n\nĐáp số: $60$ phút"
+ },
+ {
+  "ma_nguon": "ON 77",
+  "dap_an": "$6$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho thời gian của **từng cặp hai vòi**. Nếu cộng phần bể của ba cặp thì **mỗi vòi bị tính hai lần**, nên chia tổng cho $2$ được phần bể cả ba vòi cùng chảy trong $1$ giờ. Lấy phần của ba vòi trừ phần của vòi một và vòi hai thì còn lại phần của vòi ba.\n\n**Bước 1.** Coi cả bể là $1$; tính phần bể mỗi cặp vòi chảy được trong $1$ giờ (lấy $1$ chia cho thời gian đầy bể của cặp đó).\n\n**Bước 2.** Cộng ba kết quả rồi chia $2$ để được phần bể cả ba vòi cùng chảy trong $1$ giờ.\n\n**Bước 3.** Lấy phần của ba vòi trừ phần của vòi một và vòi hai được phần của vòi ba trong $1$ giờ; thời gian vòi ba chảy riêng bằng $1$ chia cho phần đó.\n\n**Chú ý:** Quy đồng mẫu số $6$ khi cộng ba phân số $\\dfrac{5}{6}$, $\\dfrac{1}{2}$, $\\dfrac{2}{3}$.\n\nThử lại: nếu vòi ba chảy $\\dfrac{1}{6}$ bể mỗi giờ, vòi một $\\dfrac{1}{2}$, vòi hai $\\dfrac{1}{3}$ thì vòi một và vòi hai chảy $\\dfrac{1}{2}+\\dfrac{1}{3}=\\dfrac{5}{6}$ (bể), khớp với đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, vòi một và vòi hai cùng chảy được: $1:1,2=\\dfrac{10}{12}=\\dfrac{5}{6}$ (bể)\n\nTrong $1$ giờ, vòi hai và vòi ba cùng chảy được: $1:2=\\dfrac{1}{2}$ (bể)\n\nTrong $1$ giờ, vòi ba và vòi một cùng chảy được: $1:1,5=\\dfrac{10}{15}=\\dfrac{2}{3}$ (bể)\n\nTrong $1$ giờ, hai lần số phần bể mà ba vòi cùng chảy được là: $\\dfrac{5}{6}+\\dfrac{1}{2}+\\dfrac{2}{3}=\\dfrac{5}{6}+\\dfrac{3}{6}+\\dfrac{4}{6}=\\dfrac{12}{6}=2$ (bể)\n\nTrong $1$ giờ, cả ba vòi cùng chảy được: $2:2=1$ (bể)\n\nTrong $1$ giờ, vòi ba chảy được: $1-\\dfrac{5}{6}=\\dfrac{1}{6}$ (bể)\n\nVòi thứ ba chảy riêng thì đầy bể sau: $1:\\dfrac{1}{6}=6$ (giờ)\n\nĐáp số: $6$ giờ"
+ },
+ {
+  "ma_nguon": "ON 78",
+  "dap_an": "$12$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả cánh đồng là $1$. Hai máy cùng gặt xong sau $4$ giờ nên biết phần gặt của hai máy trong $1$ giờ. Máy thứ hai gặt thêm $1$ giờ thì còn $\\dfrac{1}{3}$ cánh đồng nên tính được phần máy thứ hai gặt trong $1$ giờ; lấy phần của hai máy trừ phần của máy thứ hai thì được phần của máy thứ nhất.\n\n**Bước 1.** Tìm phần cánh đồng hai máy gặt chung trong $1$ giờ, rồi trong $2$ giờ; từ đó biết còn lại bao nhiêu.\n\n**Bước 2.** Máy thứ hai gặt thêm $1$ giờ thì còn $\\dfrac{1}{3}$ cánh đồng chưa gặt, nên phần máy thứ hai gặt trong $1$ giờ bằng phần còn lại sau $2$ giờ trừ $\\dfrac{1}{3}$.\n\n**Bước 3.** Lấy phần việc của hai máy trong $1$ giờ trừ phần của máy thứ hai được phần của máy thứ nhất; thời gian bằng $1$ chia cho phần đó.\n\n**Chú ý:** $\\dfrac{1}{3}$ là phần cánh đồng **chưa gặt** sau giờ thứ ba, không phải phần máy thứ hai gặt được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ, hai máy cùng gặt được: $1:4=\\dfrac{1}{4}$ (cánh đồng)\n\nTrong $2$ giờ, hai máy cùng gặt được: $\\dfrac{1}{4}\\times 2=\\dfrac{1}{2}$ (cánh đồng)\n\nPhần cánh đồng còn lại sau $2$ giờ là: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$ (cánh đồng)\n\nTrong $1$ giờ, máy thứ hai gặt được: $\\dfrac{1}{2}-\\dfrac{1}{3}=\\dfrac{3}{6}-\\dfrac{2}{6}=\\dfrac{1}{6}$ (cánh đồng)\n\nTrong $1$ giờ, máy thứ nhất gặt được: $\\dfrac{1}{4}-\\dfrac{1}{6}=\\dfrac{3}{12}-\\dfrac{2}{12}=\\dfrac{1}{12}$ (cánh đồng)\n\nMáy thứ nhất gặt riêng thì xong cánh đồng sau: $1:\\dfrac{1}{12}=12$ (giờ)\n\nĐáp số: $12$ giờ"
+ },
+ {
+  "ma_nguon": "ON 79",
+  "dap_an": "$125\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số phần trăm của số học sinh nam và số học sinh nữ là **số nam chia cho số nữ** rồi viết dưới dạng phần trăm. Đề mới cho số nam và cả lớp nên phải tìm số nữ trước.\n\n**Bước 1.** Số học sinh nữ bằng số học sinh cả lớp trừ số học sinh nam.\n\n**Bước 2.** Lấy số học sinh nam chia cho số học sinh nữ, đổi kết quả sang số thập phân rồi viết thành phần trăm.\n\n**Chú ý:** Số nam nhiều hơn số nữ nên tỉ số phần trăm lớn hơn $100\\%$; không lấy số nữ chia số nam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ của lớp là: $27-15=12$ (học sinh)\n\nTỉ số phần trăm số học sinh nam và số học sinh nữ là: $15:12=1,25=125\\%$\n\nĐáp số: $125\\%$",
+  "ghi_chu_nghi": "Hiểu \"tỉ số phần trăm số học sinh nam và số học sinh nữ\" là nam so với nữ: 15 : 12 = 125%. Cách hiểu khác: tỉ số phần trăm của mỗi loại so với cả lớp (nam 15 : 27 = 55,55...%; nữ 12 : 27 = 44,44...% — không tròn nên ít khả năng)."
+ },
+ {
+  "ma_nguon": "ON 80",
+  "dap_an": "$20000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi $25\\%$ **giá nhập** nghĩa là tiền lãi của mỗi ki-lô-gam bằng $25\\%$ của giá nhập; giá bán bằng giá nhập cộng tiền lãi. Tìm $25\\%$ của $16000$ thì lấy $16000\\times 25\\%$.\n\n**Chú ý:** Đề hỏi **giá bán**, nên sau khi tìm tiền lãi phải cộng thêm với giá nhập.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTiền lãi của mỗi ki-lô-gam đường là: $16000\\times 25\\%=4000$ (đồng)\n\nGiá bán mỗi ki-lô-gam đường là: $16000+4000=20000$ (đồng)\n\nĐáp số: $20000$ đồng"
+ },
+ {
+  "ma_nguon": "ON 81",
+  "dap_an": "Quýt: $21$ cây; cam: $36$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng số cây là $100\\%$, quýt và cam đã chiếm $28\\%$ và $48\\%$ nên bưởi chiếm phần còn lại. Biết $18$ cây bưởi ứng với phần trăm đó thì tìm được tổng số cây (biết $b\\%$ của một số là $M$ thì số đó là $M:b\\%$).\n\n**Bước 1.** Tìm số cây bưởi chiếm bao nhiêu phần trăm tổng số cây.\n\n**Bước 2.** Lấy $18$ cây chia cho phần trăm đó được tổng số cây của vườn.\n\n**Bước 3.** Tìm số cây quýt và số cây cam bằng cách lấy tổng số cây nhân với $28\\%$ và $48\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây bưởi chiếm: $100\\%-28\\%-48\\%=24\\%$ (tổng số cây)\n\nVườn cây có tất cả số cây là: $18:24\\%=75$ (cây)\n\nSố cây quýt là: $75\\times 28\\%=21$ (cây)\n\nSố cây cam là: $75\\times 48\\%=36$ (cây)\n\nĐáp số: Quýt: $21$ cây; cam: $36$ cây"
+ },
+ {
+  "ma_nguon": "ON 82",
+  "dap_an": "Giỏi: $9$ em; khá: $12$ em; trung bình: $4$ em",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Học sinh giỏi, khá, trung bình chiếm tất cả $100\\%$ số học sinh cả lớp. Tìm phần trăm học sinh trung bình, rồi phần trăm của (giỏi và trung bình); biết $13$ em ứng với phần trăm đó thì tìm được số học sinh cả lớp.\n\n**Bước 1.** Số học sinh trung bình chiếm $100\\%$ trừ đi phần trăm giỏi và khá.\n\n**Bước 2.** Cộng phần trăm giỏi và trung bình, lấy $13$ em chia cho phần trăm đó được số học sinh cả lớp.\n\n**Bước 3.** Tìm số học sinh giỏi, khá bằng cách nhân số học sinh cả lớp với $36\\%$ và $48\\%$; số học sinh trung bình là phần còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh trung bình chiếm: $100\\%-36\\%-48\\%=16\\%$ (số học sinh cả lớp)\n\nSố học sinh giỏi và trung bình chiếm: $36\\%+16\\%=52\\%$ (số học sinh cả lớp)\n\nLớp 5A có tất cả số học sinh là: $13:52\\%=25$ (học sinh)\n\nSố học sinh giỏi là: $25\\times 36\\%=9$ (học sinh)\n\nSố học sinh khá là: $25\\times 48\\%=12$ (học sinh)\n\nSố học sinh trung bình là: $25-9-12=4$ (học sinh)\n\nĐáp số: Giỏi: $9$ em; khá: $12$ em; trung bình: $4$ em",
+  "ghi_chu_nghi": "Đề in \"36 %\" có dấu cách trước dấu phần trăm; hiểu là 36%. Không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "ON 83",
+  "dap_an": "Giảm $13,6\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi chiều dài, chiều rộng, chiều cao và thể tích lúc đầu đều là $100\\%$. Thể tích bằng dài $\\times$ rộng $\\times$ cao nên thể tích mới bằng **tích** ba tỉ số phần trăm mới. Nhân các tỉ số phần trăm thì đổi ra số thập phân rồi nhân.\n\n**Bước 1.** Tính chiều dài, chiều rộng, chiều cao mới bằng bao nhiêu phần trăm lúc đầu (giảm thì lấy $100\\%$ trừ, tăng thì lấy $100\\%$ cộng).\n\n**Bước 2.** Nhân ba tỉ số phần trăm (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** Không được cộng trừ thẳng các phần trăm với nhau (giảm $20\\%$, giảm $10\\%$, tăng $20\\%$ không phải là giảm $10\\%$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-10\\%=90\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%+20\\%=120\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $80\\%\\times 90\\%\\times 120\\%=0,8\\times 0,9\\times 1,2=0,864=86,4\\%$ (thể tích cũ)\n\nThể tích hình hộp chữ nhật giảm đi: $100\\%-86,4\\%=13,6\\%$\n\nĐáp số: Giảm $13,6\\%$"
+ },
+ {
+  "ma_nguon": "ON 84",
+  "dap_an": "$30\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề hỏi lãi bao nhiêu phần trăm so với **vốn** nên lấy vốn làm $100\\%$. Lúc giảm giá, giá bán bằng vốn cộng lãi, tức $117\\%$ vốn. Giá đó đã giảm $10\\%$ nên bằng $90\\%$ giá bán lúc chưa giảm; biết $90\\%$ của một số là $117\\%$ vốn thì số đó là $117\\%:90\\%$.\n\n**Bước 1.** Lấy vốn là $100\\%$; giá bán sau khi giảm bằng vốn cộng lãi $17\\%$.\n\n**Bước 2.** Giá sau khi giảm bằng $90\\%$ giá chưa giảm; chia để tìm giá chưa giảm (tính theo vốn).\n\n**Bước 3.** Lãi khi không hạ giá bằng giá chưa giảm trừ vốn.\n\n**Chú ý:** Giảm $10\\%$ là tính trên **giá bán**, còn lãi $17\\%$ là tính trên **vốn** — hai phần trăm lấy trên hai đại lượng khác nhau nên không được trừ thẳng $17\\%$ với $10\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi giá vốn là $100\\%$.\n\nGiá bán sau khi giảm bằng: $100\\%+17\\%=117\\%$ (giá vốn)\n\nGiá bán sau khi giảm bằng: $100\\%-10\\%=90\\%$ (giá bán chưa giảm)\n\nGiá bán chưa giảm bằng: $117\\%:90\\%=1,17:0,9=1,3=130\\%$ (giá vốn)\n\nNếu không hạ giá thì cửa hàng lãi: $130\\%-100\\%=30\\%$ (giá vốn)\n\nĐáp số: $30\\%$"
+ },
+ {
+  "ma_nguon": "ON 85",
+  "dap_an": "$10100250$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi của tháng trước nhập vào vốn của tháng sau, nên tiền lãi tháng thứ hai tính trên **số tiền cuối tháng thứ nhất** (vốn cộng lãi), không phải trên $10$ triệu. Tiền lãi một tháng của số tiền $M$ là $M\\times 0,5\\%$.\n\n**Bước 1.** Tính tiền lãi tháng thứ nhất ($10$ triệu nhân $0,5\\%$), cộng vào vốn được số tiền cuối tháng thứ nhất.\n\n**Bước 2.** Tính tiền lãi tháng thứ hai trên số tiền cuối tháng thứ nhất, cộng vào để được số tiền cả vốn lẫn lãi sau $2$ tháng.\n\n**Chú ý:** Tính cả hai tháng cùng trên $10$ triệu (lãi $1\\%$) sẽ ra $10100000$ đồng, thiếu mất lãi của phần lãi tháng thứ nhất.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTiền lãi sau tháng thứ nhất là: $10000000\\times 0,5\\%=50000$ (đồng)\n\nSố tiền cả vốn lẫn lãi sau tháng thứ nhất là: $10000000+50000=10050000$ (đồng)\n\nTiền lãi tháng thứ hai là: $10050000\\times 0,5\\%=50250$ (đồng)\n\nSố tiền cả vốn lẫn lãi sau $2$ tháng là: $10050000+50250=10100250$ (đồng)\n\nĐáp số: $10100250$ đồng"
+ },
+ {
+  "ma_nguon": "ON 86",
+  "dap_an": "$180000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá áo sau khi giảm bằng $90\\%$ giá áo cũ, giá mũ sau khi tăng bằng $120\\%$ giá mũ cũ, và hai giá mới bằng nhau nên $90\\%$ giá áo bằng $120\\%$ giá mũ. Từ đó tìm được **tỉ số** giá áo và giá mũ cũ; đề lại cho **tổng** giá hai món nên đây là bài tổng – tỉ.\n\n**Bước 1.** Từ $90\\%$ giá áo bằng $120\\%$ giá mũ, suy ra giá áo bằng giá mũ nhân $120\\%$ rồi chia $90\\%$, từ đó ra số phần của áo và của mũ.\n\n**Bước 2.** Vẽ sơ đồ theo số phần, tìm giá một phần rồi tìm giá áo.\n\n**Chú ý:** Đề hỏi giá cái áo **trước khi giảm**, không phải giá sau khi giảm.\n\nThử lại: nếu giá mũ $135000$ đồng, giá áo $180000$ đồng thì $180000\\times 90\\%=162000$ và $135000\\times 120\\%=162000$, bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $90\\%$ giá áo bằng $120\\%$ giá mũ nên tỉ số giá áo và giá mũ là: $120\\%:90\\%=\\dfrac{120}{90}=\\dfrac{4}{3}$\n\nTa có sơ đồ:\n\n(Giá áo 4 phần; Giá mũ 3 phần; tổng 315000 đồng)\n\nTổng số phần bằng nhau là: $4+3=7$ (phần)\n\nGiá một phần là: $315000:7=45000$ (đồng)\n\nGiá cái áo trước khi giảm là: $45000\\times 4=180000$ (đồng)\n\nĐáp số: $180000$ đồng",
+  "so_do_mo_ta": {
+   "tieu_de": "Giá lúc đầu",
+   "gia_tri_phan": 45000,
+   "hang": [
+    {
+     "nhan": "Giá áo",
+     "phan": 4
+    },
+    {
+     "nhan": "Giá mũ",
+     "phan": 3
+    }
+   ],
+   "tong": "315000 đồng",
+   "dau_hoi": [
+    "Giá áo"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 87",
+  "dap_an": "$3,92\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi trộn dung dịch thì **khối lượng dung dịch cộng lại** và **khối lượng muối cộng lại**. Tính lượng muối của từng dung dịch, rồi tìm tỉ số phần trăm của muối trong dung dịch mới.\n\n**Bước 1.** Tính khối lượng muối trong từng dung dịch ($a\\%$ của khối lượng dung dịch), cộng lại.\n\n**Bước 2.** Tính khối lượng dung dịch mới.\n\n**Bước 3.** Lấy khối lượng muối chia cho khối lượng dung dịch mới, viết thành phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối trong $320$ g dung dịch $5\\%$ muối là: $320\\times 5\\%=16$ (g)\n\nKhối lượng muối trong $180$ g dung dịch $2\\%$ muối là: $180\\times 2\\%=3,6$ (g)\n\nKhối lượng muối trong dung dịch mới là: $16+3,6=19,6$ (g)\n\nKhối lượng dung dịch mới là: $320+180=500$ (g)\n\nTỉ số phần trăm muối trong dung dịch mới là: $19,6:500=0,0392=3,92\\%$\n\nĐáp số: $3,92\\%$"
+ },
+ {
+  "ma_nguon": "ON 88",
+  "dap_an": "$50$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm **nước cất** thì khối lượng đường **không đổi**, chỉ có khối lượng dung dịch tăng lên. Dung dịch mới chứa $2,5\\%$ đường, biết khối lượng đường thì tìm được khối lượng dung dịch mới ($M:b\\%$); trừ khối lượng dung dịch cũ được khối lượng nước cất thêm vào.\n\n**Bước 1.** Tính khối lượng đường trong dung dịch ban đầu.\n\n**Bước 2.** Lượng đường đó chiếm $2,5\\%$ dung dịch mới nên tìm khối lượng dung dịch mới.\n\n**Bước 3.** Khối lượng nước cất thêm vào bằng khối lượng dung dịch mới trừ khối lượng dung dịch cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng đường không đổi.\n\nKhối lượng đường trong $250$ g dung dịch $3\\%$ đường là: $250\\times 3\\%=7,5$ (g)\n\nKhối lượng dung dịch mới là: $7,5:2,5\\%=300$ (g)\n\nKhối lượng nước cất cần thêm vào là: $300-250=50$ (g)\n\nĐáp số: $50$ g"
+ },
+ {
+  "ma_nguon": "ON 89",
+  "dap_an": "$20$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm **muối** vào thì khối lượng **nước không đổi**, chỉ có muối và dung dịch tăng. Dung dịch mới chứa $25\\%$ muối nên nước chiếm $100\\%-25\\%=75\\%$ dung dịch mới; biết khối lượng nước thì tìm được khối lượng dung dịch mới.\n\n**Bước 1.** Tính khối lượng nước trong dung dịch ban đầu (nước chiếm $100\\%$ trừ phần trăm muối).\n\n**Bước 2.** Nước đó chiếm $75\\%$ dung dịch mới nên tìm khối lượng dung dịch mới.\n\n**Bước 3.** Khối lượng muối thêm vào bằng khối lượng dung dịch mới trừ khối lượng dung dịch cũ.\n\n**Chú ý:** Bài này giữ nguyên **nước** (không phải muối) vì muối là thứ được thêm vào.\n\nThử lại: nếu dung dịch mới là $100$ g thì có $75$ g nước và $25$ g muối; $25:100=25\\%$, đúng đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng nước không đổi.\n\nNước chiếm trong dung dịch ban đầu: $100\\%-6,25\\%=93,75\\%$ (dung dịch)\n\nKhối lượng nước trong $80$ g dung dịch là: $80\\times 93,75\\%=75$ (g)\n\nNước chiếm trong dung dịch mới: $100\\%-25\\%=75\\%$ (dung dịch)\n\nKhối lượng dung dịch mới là: $75:75\\%=100$ (g)\n\nKhối lượng muối cần trộn thêm vào là: $100-80=20$ (g)\n\nĐáp số: $20$ g"
+ },
+ {
+  "ma_nguon": "ON 103",
+  "dap_an": "Diện tích xung quanh: $26\\ \\text{dm}^2$; diện tích toàn phần: $46\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích xung quanh bằng **chu vi đáy nhân chiều cao**; diện tích toàn phần bằng diện tích xung quanh cộng **diện tích hai mặt đáy**. Chu vi đáy là (chiều dài cộng chiều rộng) nhân $2$.\n\n**Chú ý:** Mặt đáy là mặt có hai kích thước chiều dài $4$ dm và chiều rộng $2,5$ dm (không phải mặt có chiều cao $2$ dm).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích xung quanh của hình hộp chữ nhật là: $\\left(4+2,5\\right)\\times 2\\times 2=26$ ($\\text{dm}^2$)\n\nDiện tích một mặt đáy là: $4\\times 2,5=10$ ($\\text{dm}^2$)\n\nDiện tích toàn phần của hình hộp chữ nhật là: $26+10\\times 2=46$ ($\\text{dm}^2$)\n\nĐáp số: Diện tích xung quanh $26\\ \\text{dm}^2$; diện tích toàn phần $46\\ \\text{dm}^2$"
+ },
+ {
+  "ma_nguon": "ON 104",
+  "dap_an": "Diện tích toàn phần: $1272\\ \\text{cm}^2$; thể tích: $3024\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tính diện tích toàn phần và thể tích cần biết cả chiều dài lẫn chiều rộng. Biết diện tích xung quanh và chiều cao thì tìm được **chu vi đáy**; nửa chu vi đáy là **tổng** chiều dài và chiều rộng. Đề lại cho **hiệu** (dài hơn rộng $6$ cm) nên đây là bài tổng – hiệu.\n\n**Bước 1.** Chu vi đáy bằng diện tích xung quanh chia cho chiều cao; nửa chu vi là tổng chiều dài và chiều rộng.\n\n**Bước 2.** Vẽ sơ đồ tổng – hiệu để tìm chiều rộng, rồi chiều dài.\n\n**Bước 3.** Diện tích toàn phần bằng diện tích xung quanh cộng hai mặt đáy; thể tích bằng dài $\\times$ rộng $\\times$ cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi mặt đáy là: $840:14=60$ (cm)\n\nTổng chiều dài và chiều rộng là: $60:2=30$ (cm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; Chiều dài 1 phần và 6 cm; tổng 30 cm)\n\nChiều rộng của hình hộp là: $\\left(30-6\\right):2=12$ (cm)\n\nChiều dài của hình hộp là: $12+6=18$ (cm)\n\nDiện tích một mặt đáy là: $18\\times 12=216$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình hộp là: $840+216\\times 2=1272$ ($\\text{cm}^2$)\n\nThể tích của hình hộp là: $18\\times 12\\times 14=3024$ ($\\text{cm}^3$)\n\nĐáp số: Diện tích toàn phần $1272\\ \\text{cm}^2$; thể tích $3024\\ \\text{cm}^3$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "6 cm"
+    }
+   ],
+   "tong": "30 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 105",
+  "dap_an": "$1440\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích toàn phần hơn diện tích xung quanh đúng bằng **diện tích hai mặt đáy**, từ đó tìm được diện tích một đáy. Biết chiều dài thì tìm được chiều rộng; có chu vi đáy thì tìm được chiều cao (diện tích xung quanh chia chu vi đáy).\n\n**Bước 1.** Lấy diện tích toàn phần trừ diện tích xung quanh được diện tích hai đáy; chia $2$ được diện tích một đáy.\n\n**Bước 2.** Diện tích đáy chia cho chiều dài $15$ cm được chiều rộng.\n\n**Bước 3.** Tính chu vi đáy, lấy diện tích xung quanh chia chu vi đáy được chiều cao; cuối cùng tính thể tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hai mặt đáy là: $792-432=360$ ($\\text{cm}^2$)\n\nDiện tích một mặt đáy là: $360:2=180$ ($\\text{cm}^2$)\n\nChiều rộng của hình hộp là: $180:15=12$ (cm)\n\nChu vi mặt đáy là: $\\left(15+12\\right)\\times 2=54$ (cm)\n\nChiều cao của hình hộp là: $432:54=8$ (cm)\n\nThể tích của hình hộp là: $15\\times 12\\times 8=1440$ ($\\text{cm}^3$)\n\nĐáp số: $1440\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "ON 106",
+  "dap_an": "$458$ viên gạch",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bể bơi **không có nắp**, người ta lát xung quanh và đáy nên diện tích cần lát bằng **diện tích xung quanh cộng diện tích một mặt đáy** (không phải diện tích toàn phần). Số viên gạch bằng diện tích cần lát chia cho diện tích một viên gạch.\n\n**Bước 1.** Đổi các số đo về cùng đơn vị mét.\n\n**Bước 2.** Tính diện tích xung quanh và diện tích đáy rồi cộng lại được diện tích cần lát.\n\n**Bước 3.** Tính diện tích một viên gạch, rồi chia để tìm số viên gạch.\n\n**Chú ý:** Không tính mặt trên (miệng bể) vì bể không lát phần đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $10$ m $5$ dm $=10,5$ m; $2$ m $5$ dm $=2,5$ m; $50$ cm $=0,5$ m\n\nDiện tích xung quanh bể bơi là: $\\left(10,5+4\\right)\\times 2\\times 2,5=72,5$ ($\\text{m}^2$)\n\nDiện tích đáy bể bơi là: $10,5\\times 4=42$ ($\\text{m}^2$)\n\nDiện tích cần lát gạch là: $72,5+42=114,5$ ($\\text{m}^2$)\n\nDiện tích một viên gạch là: $0,5\\times 0,5=0,25$ ($\\text{m}^2$)\n\nSố viên gạch cần dùng là: $114,5:0,25=458$ (viên)\n\nĐáp số: $458$ viên gạch"
+ },
+ {
+  "ma_nguon": "ON 107",
+  "dap_an": "$1,24$ dm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bể đầy gồm **nước đã đổ vào** và **hai khối kim loại** (khối kim loại chiếm chỗ trong bể). Vậy thể tích bể bằng thể tích nước cộng thể tích hai khối. Chiều cao bể bằng thể tích bể chia cho diện tích đáy.\n\n**Bước 1.** Tính số lít nước đã đổ thêm ($12$ can, mỗi can $5$ lít) rồi đổi ra đề-xi-mét khối ($1$ lít $=1\\ \\text{dm}^3$).\n\n**Bước 2.** Cộng thể tích nước với thể tích hai khối kim loại được thể tích bể.\n\n**Bước 3.** Lấy thể tích bể chia cho diện tích đáy để tìm chiều cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lít nước đã đổ thêm là: $5\\times 12=60$ (lít)\n\nĐổi: $60$ lít $=60\\ \\text{dm}^3$\n\nThể tích một khối kim loại là: $1\\times 1\\times 1=1$ ($\\text{dm}^3$)\n\nThể tích của bể là: $60+1\\times 2=62$ ($\\text{dm}^3$)\n\nDiện tích đáy của bể là: $10\\times 5=50$ ($\\text{dm}^2$)\n\nChiều cao của bể là: $62:50=1,24$ (dm)\n\nĐáp số: $1,24$ dm",
+  "ghi_chu_nghi": "Hiểu: ban đầu bể chưa có nước, chỉ có 2 khối kim loại; đổ 12 can (60 dm3) thì đầy bể, nên thể tích bể = 60 + 2 = 62 dm3. Đáp số 1,24 dm (không tròn) — nếu đề muốn \"mực nước ban đầu\" khác thì phải hỏi lại."
+ },
+ {
+  "ma_nguon": "ON 108",
+  "dap_an": "$729$ hình",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích toàn phần của hình lập phương là $6$ mặt bằng nhau, từ đó tìm cạnh. Theo cách đã chốt: xem **cạnh hình lớn gấp cạnh hình nhỏ mấy lần** thì mỗi chiều xếp được bấy nhiêu hình nhỏ, rồi nhân cho ba chiều.\n\n**Bước 1.** Lấy diện tích toàn phần chia $6$ được diện tích một mặt, từ đó tìm cạnh hình lập phương lớn.\n\n**Bước 2.** Cạnh hình lớn gấp cạnh hình nhỏ mấy lần thì mỗi cạnh xếp được bấy nhiêu hình nhỏ; nhân ba lần (dài, rộng, cao).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $486:6=81$ ($\\text{cm}^2$)\n\nVì $81=9\\times 9$ nên cạnh hình lập phương là $9$ cm.\n\nCạnh hình lập phương lớn gấp cạnh hình lập phương nhỏ số lần là: $9:1=9$ (lần)\n\nSố hình lập phương nhỏ cần dùng là: $9\\times 9\\times 9=729$ (hình)\n\nĐáp số: $729$ hình"
+ },
+ {
+  "ma_nguon": "ON 109",
+  "dap_an": "$90$ hộp",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để biết thùng đựng được bao nhiêu hộp phải biết **ba kích thước** của thùng. Chiều cao đã cho; chiều dài, chiều rộng tìm được từ diện tích xung quanh (diện tích xung quanh chia chiều cao được chu vi đáy) và hiệu $6$ dm nên là bài tổng – hiệu. Sau đó mỗi chiều xếp được bao nhiêu hộp thì lấy chiều đó chia cho cạnh hộp ($2$ dm).\n\n**Bước 1.** Chu vi đáy bằng diện tích xung quanh chia chiều cao; nửa chu vi là tổng chiều dài và chiều rộng.\n\n**Bước 2.** Vẽ sơ đồ tổng – hiệu để tìm chiều rộng, chiều dài.\n\n**Bước 3.** Mỗi chiều của thùng gấp cạnh hộp mấy lần thì xếp được bấy nhiêu hộp; nhân ba chiều.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi mặt đáy của thùng là: $360:10=36$ (dm)\n\nTổng chiều dài và chiều rộng là: $36:2=18$ (dm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; Chiều dài 1 phần và 6 dm; tổng 18 dm)\n\nChiều rộng của thùng là: $\\left(18-6\\right):2=6$ (dm)\n\nChiều dài của thùng là: $6+6=12$ (dm)\n\nChiều dài của thùng gấp cạnh hộp số lần là: $12:2=6$ (lần)\n\nChiều rộng của thùng gấp cạnh hộp số lần là: $6:2=3$ (lần)\n\nChiều cao của thùng gấp cạnh hộp số lần là: $10:2=5$ (lần)\n\nSố hộp lập phương thùng đựng được nhiều nhất là: $6\\times 3\\times 5=90$ (hộp)\n\nĐáp số: $90$ hộp",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "6 dm"
+    }
+   ],
+   "tong": "18 dm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ON 110",
+  "dap_an": "$3$ mặt: $8$ hình; $2$ mặt: $36$ hình; $1$ mặt: $54$ hình; không mặt nào: $27$ hình",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân loại các hình lập phương nhỏ **theo vị trí** trong hình lớn: ở **đỉnh** (sơn $3$ mặt), ở **cạnh** trừ hai đỉnh (sơn $2$ mặt), ở **giữa mặt** trừ phần sát cạnh (sơn $1$ mặt), ở **bên trong** (không được sơn). Cần biết mỗi cạnh có mấy hình nhỏ.\n\n**Bước 1.** Từ diện tích toàn phần tìm cạnh hình lập phương lớn; hình nhỏ cạnh $1$ cm nên số hình trên mỗi cạnh bằng số đo cạnh.\n\n**Bước 2.** Hình lập phương có $8$ đỉnh nên có $8$ hình sơn $3$ mặt. Mỗi cạnh trừ hai đỉnh còn bao nhiêu hình thì nhân với $12$ cạnh được số hình sơn $2$ mặt.\n\n**Bước 3.** Mỗi mặt bỏ đi hai hàng sát cạnh (một hàng mỗi phía) thì còn hình vuông có mỗi cạnh ít hơn $2$ hình; nhân với $6$ mặt được số hình sơn $1$ mặt. Phần bên trong là hình lập phương nhỏ hơn, mỗi cạnh ít hơn hình lớn $2$ hình.\n\n**Chú ý:** Mỗi cạnh trừ **hai đỉnh** là trừ $2$, và mỗi mặt trừ hàng sát cạnh ở **cả hai phía** nên cũng trừ $2$ — không phải trừ $1$.\n\nThử lại: $8+36+54+27=125$ và $5\\times 5\\times 5=125$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương lớn là: $150:6=25$ ($\\text{cm}^2$)\n\nVì $25=5\\times 5$ nên cạnh hình lập phương lớn là $5$ cm, mỗi cạnh có $5$ hình lập phương nhỏ.\n\nHình lập phương có $8$ đỉnh nên số hình được sơn $3$ mặt là $8$ hình.\n\nMỗi cạnh có số hình được sơn $2$ mặt là: $5-2=3$ (hình)\n\nSố hình được sơn $2$ mặt là: $12\\times 3=36$ (hình)\n\nMỗi mặt có số hình được sơn $1$ mặt là: $3\\times 3=9$ (hình)\n\nSố hình được sơn $1$ mặt là: $6\\times 9=54$ (hình)\n\nSố hình không được sơn mặt nào là: $3\\times 3\\times 3=27$ (hình)\n\nĐáp số: Sơn $3$ mặt: $8$ hình; sơn $2$ mặt: $36$ hình; sơn $1$ mặt: $54$ hình; không sơn mặt nào: $27$ hình"
+ },
+ {
+  "ma_nguon": "ON 111",
+  "dap_an": "$864\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các hình sơn $3$ mặt nằm ở **$8$ đỉnh**. Lấy một hình ở đỉnh ra thì mất $3$ mặt ngoài nhưng lộ ra $3$ mặt mới bằng nhau, nên diện tích toàn phần của khối **không đổi** và bằng diện tích toàn phần của hình lập phương lớn. Chỉ cần tìm cạnh hình lớn.\n\n**Bước 1.** Thể tích mỗi hình nhỏ là $27\\ \\text{cm}^3$, tìm cạnh hình nhỏ (số nhân với chính nó ba lần ra $27$).\n\n**Bước 2.** $64$ hình xếp thành hình lập phương nên mỗi cạnh có bao nhiêu hình nhỏ thì cạnh hình lớn bằng số đó nhân cạnh hình nhỏ.\n\n**Bước 3.** Diện tích toàn phần khối còn lại bằng diện tích toàn phần hình lập phương lớn.\n\n**Chú ý:** Trừ đi $8\\times 3$ mặt là sai vì quên các mặt mới lộ ra.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $27=3\\times 3\\times 3$ nên cạnh mỗi hình lập phương nhỏ là $3$ cm.\n\nVì $64=4\\times 4\\times 4$ nên mỗi cạnh hình lập phương lớn có $4$ hình lập phương nhỏ.\n\nCạnh hình lập phương lớn là: $3\\times 4=12$ (cm)\n\nHình lập phương nhỏ được sơn $3$ mặt nằm ở $8$ đỉnh. Lấy một hình ở đỉnh ra thì mất $3$ mặt ngoài nhưng lộ ra $3$ mặt mới bằng nhau, nên diện tích toàn phần không thay đổi.\n\nDiện tích toàn phần của khối còn lại bằng diện tích toàn phần của hình lập phương lớn, là: $12\\times 12\\times 6=864$ ($\\text{cm}^2$)\n\nĐáp số: $864\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề in \"mỡi hình\" (= mỗi hình); không ảnh hưởng đáp số."
+ },
+ {
+  "ma_nguon": "ON 112",
+  "dap_an": "$25$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Ít nhất bao nhiêu quả để **chắc chắn**\" thì xét **trường hợp xấu nhất** (không may nhất). Muốn chắc chắn có quả đỏ thì phải tính cả trường hợp lấy toàn quả không đỏ cho đến khi hết, rồi lấy thêm $1$ quả nữa.\n\n**Chú ý:** Đáp số không dùng đến số quả đỏ ($7$ quả); chỉ cần số quả **không phải đỏ**.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố quả bóng không phải màu đỏ là: $15+9=24$ (quả)\n\nTrường hợp xấu nhất: lấy được cả $24$ quả bóng không phải màu đỏ (hết bóng xanh và bóng cam) mà chưa có quả đỏ nào.\n\nLấy thêm $1$ quả nữa thì chắc chắn là quả bóng màu đỏ.\n\nSố quả bóng ít nhất phải lấy là: $24+1=25$ (quả)\n\nĐáp số: $25$ quả"
+ },
+ {
+  "ma_nguon": "ON 113",
+  "dap_an": "$7$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Ít nhất bao nhiêu quả để **chắc chắn** có $3$ quả cùng màu\" thì xét **trường hợp xấu nhất**: lấy mỗi màu đúng $2$ quả, chưa màu nào có $3$ quả. Quả lấy thêm sau đó chắc chắn thuộc một màu đã có $2$ quả.\n\n**Chú ý:** Mỗi màu đều có nhiều hơn $2$ quả nên trường hợp xấu nhất lấy được đủ $2$ quả mỗi màu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrường hợp xấu nhất: lấy mỗi màu $2$ quả thì chưa có $3$ quả cùng màu.\n\nSố quả bóng lấy trong trường hợp xấu nhất là: $2\\times 3=6$ (quả)\n\nLấy thêm $1$ quả nữa thì quả đó thuộc một trong ba màu, màu ấy đã có $2$ quả nên sẽ có $3$ quả cùng màu.\n\nSố quả bóng ít nhất phải lấy là: $6+1=7$ (quả)\n\nĐáp số: $7$ quả"
+ },
+ {
+  "ma_nguon": "ON 114",
+  "dap_an": "$32$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn chắc chắn có đủ $5$ màu thì xét **trường hợp xấu nhất**: lấy hết các quả của $4$ màu mà vẫn **thiếu một màu**. Để lấy được **nhiều quả nhất** mà vẫn thiếu màu thì phải để sót màu có **ít quả nhất** (màu xanh dương, $2$ quả). Lấy thêm $1$ quả nữa thì chắc chắn là quả xanh dương.\n\n**Chú ý:** Nếu để sót màu khác (ví dụ màu đỏ có $11$ quả) thì chỉ lấy được ít quả hơn, không phải trường hợp xấu nhất.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMàu có ít quả nhất là màu xanh dương ($2$ quả).\n\nTrường hợp xấu nhất: lấy hết các quả đỏ, trắng, vàng, tím mà chưa có quả xanh dương nào.\n\nSố quả bóng lấy trong trường hợp xấu nhất là: $11+9+7+4=31$ (quả)\n\nLấy thêm $1$ quả nữa thì chắc chắn là quả màu xanh dương nên có đủ $5$ màu.\n\nSố quả bóng tối thiểu phải lấy là: $31+1=32$ (quả)\n\nĐáp số: $32$ quả"
+ },
+ {
+  "ma_nguon": "ON 115",
+  "dap_an": "$7$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Chắc chắn có hai học sinh lấy giống nhau\" thì xét **trường hợp xấu nhất**: các học sinh lần lượt lấy các cặp màu **khác hẳn nhau** cho đến khi hết mọi cặp có thể. Vậy phải đếm xem có **bao nhiêu cặp hai màu khác nhau**; học sinh kế tiếp chắc chắn trùng một cặp đã có.\n\n**Bước 1.** Liệt kê các cặp màu khác nhau theo thứ tự để không sót, không lặp: trước hết các cặp có màu đỏ, rồi các cặp không có đỏ mà có trắng, cuối cùng các cặp còn lại.\n\n**Bước 2.** Số học sinh ít nhất bằng số cặp cộng $1$.\n\n**Chú ý:** Cặp đỏ–trắng và cặp trắng–đỏ là một cặp (không phân biệt thứ tự), nên không đếm hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác cặp có màu đỏ: đỏ–trắng, đỏ–cam, đỏ–vàng, có $3$ cặp.\n\nCác cặp không có màu đỏ nhưng có màu trắng: trắng–cam, trắng–vàng, có $2$ cặp.\n\nCặp còn lại: cam–vàng, có $1$ cặp.\n\nSố cặp màu khác nhau là: $3+2+1=6$ (cặp)\n\nTrường hợp xấu nhất: $6$ học sinh lấy $6$ cặp màu khác hẳn nhau. Học sinh thứ $7$ chắc chắn lấy giống một bạn đã lấy.\n\nSố học sinh ít nhất là: $6+1=7$ (học sinh)\n\nĐáp số: $7$ học sinh",
+  "ghi_chu_nghi": "Hiểu \"lấy giống như nhau\" là lấy cùng một cặp hai màu (không phân biệt thứ tự), và mỗi màu trong túi có đủ viên cho nhiều học sinh cùng lấy."
+ },
+ {
+  "ma_nguon": "ON 117",
+  "dap_an": "$18$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một đôi tất hoa cần **$1$ chiếc bên trái và $1$ chiếc bên phải**, cả hai đều là tất hoa. Xét **trường hợp xấu nhất**: lấy hết tất không phải hoa và chỉ lấy tất hoa **một bên** (bên trái) thì vẫn chưa có đôi hoa. Chiếc lấy thêm chắc chắn là tất hoa bên phải.\n\n**Chú ý:** Mỗi đôi tất có $2$ chiếc nên số chiếc tất kẻ và chấm bi là số đôi nhân $2$; còn tất hoa bên trái chỉ có $5$ chiếc (mỗi đôi $1$ chiếc).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố chiếc tất kẻ và tất chấm bi là: $\\left(2+4\\right)\\times 2=12$ (chiếc)\n\nSố chiếc tất hoa bên trái là $5$ chiếc (mỗi đôi có $1$ chiếc bên trái).\n\nTrường hợp xấu nhất: lấy hết $12$ chiếc tất kẻ và chấm bi cùng $5$ chiếc tất hoa bên trái thì chưa có đôi tất hoa nào: $12+5=17$ (chiếc)\n\nLấy thêm $1$ chiếc nữa thì đó là tất hoa bên phải, ghép với một chiếc tất hoa bên trái đã có thành một đôi.\n\nSố chiếc tất ít nhất phải lấy là: $17+1=18$ (chiếc)\n\nĐáp số: $18$ chiếc"
+ },
+ {
+  "ma_nguon": "ON 118",
+  "dap_an": "$25$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn có một đôi **đỏ hoặc vàng** thì xét **trường hợp xấu nhất**: lấy hết găng hồng (không cần đôi hồng), còn găng đỏ và găng vàng chỉ lấy **một bên** (bên trái) để chưa thành đôi. Sau đó, chiếc nào lấy thêm cũng là găng đỏ hoặc vàng bên phải, ghép được đôi.\n\n**Chú ý:** Mỗi đôi găng có $2$ chiếc nên găng hồng có $7\\times 2$ chiếc; găng đỏ một bên chỉ có $6$ chiếc, găng vàng một bên chỉ có $4$ chiếc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố chiếc găng tay hồng là: $7\\times 2=14$ (chiếc)\n\nTrường hợp xấu nhất: lấy hết $14$ chiếc găng hồng, cả $6$ chiếc găng đỏ bên trái và cả $4$ chiếc găng vàng bên trái thì chưa có đôi đỏ hay đôi vàng nào: $14+6+4=24$ (chiếc)\n\nLấy thêm $1$ chiếc nữa thì đó là găng đỏ hoặc găng vàng bên phải, ghép với găng cùng màu bên trái đã có thành một đôi.\n\nSố chiếc găng tay ít nhất phải lấy là: $24+1=25$ (chiếc)\n\nĐáp số: $25$ chiếc"
+ },
+ {
+  "ma_nguon": "ON 122",
+  "dap_an": "Thầy tên Văn dạy môn Anh; thầy tên Toán dạy môn Văn; thầy tên Anh dạy môn Toán",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba thầy có tên là Văn, Toán, Anh. Hai điều đề cho: (1) không ai dạy môn trùng với tên mình; (2) thầy tên Toán hưởng ứng lời của thầy dạy Anh nên **thầy tên Toán không phải là thầy dạy Anh**. Hai điều này giúp loại dần các môn cho từng thầy, bắt đầu từ thầy có nhiều điều kiện nhất là thầy tên Toán.\n\n**Bước 1.** Thầy tên Toán không dạy Toán (điều 1) và không dạy Anh (điều 2) nên chỉ còn môn Văn.\n\n**Bước 2.** Thầy tên Anh không dạy Anh (điều 1), môn Văn đã có thầy tên Toán dạy, nên thầy tên Anh dạy môn Toán.\n\n**Bước 3.** Thầy tên Văn dạy môn còn lại là môn Anh; kiểm lại thầy này không dạy môn trùng với tên mình.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThầy tên Toán không dạy môn Toán, vì không ai dạy môn trùng với tên mình. Thầy tên Toán cũng không phải thầy dạy Anh, vì thầy tên Toán hưởng ứng lời của thầy dạy Anh, nên đó là hai người khác nhau. Vậy thầy tên Toán dạy môn Văn.\n\nThầy tên Anh không dạy môn Anh, môn Văn đã có thầy tên Toán dạy, nên thầy tên Anh dạy môn Toán.\n\nThầy tên Văn dạy môn còn lại là môn Anh (không trùng với tên của thầy).\n\nVậy thầy tên Văn dạy môn Anh, thầy tên Toán dạy môn Văn, thầy tên Anh dạy môn Toán.",
+  "ghi_chu_nghi": "Hiểu \"Thầy Toán\" là thầy có TÊN Toán và \"Anh nói đúng\" là lời xưng hô với thầy dạy Anh (nên hai người khác nhau). Nếu hiểu \"Thầy Toán\" là thầy dạy môn Toán thì đề không đủ điều kiện để ra đáp án duy nhất (có hai cách xếp)."
+ },
+ {
+  "ma_nguon": "ON 123",
+  "dap_an": "Bin là luật sư, đến từ nước Mỹ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi người một nghề, một nước. Các dữ kiện về người kế toán, luật sư và nơi sinh cho phép **ghép nghề với nước** trước, rồi mới ghép với tên người bằng các dữ kiện về Bin và Jack.\n\n**Bước 1.** Luật sư sinh ở Mỹ. Kế toán không sinh ở Bỉ, cũng không sinh ở Mỹ (Mỹ là của luật sư) nên sinh ở Úc. Vậy bác sĩ sinh ở Bỉ.\n\n**Bước 2.** Jack không sinh ở Úc nên không phải kế toán, lại không phải luật sư, vậy Jack là bác sĩ.\n\n**Bước 3.** Bin không phải kế toán, cũng không phải bác sĩ (đã là Jack), vậy Bin là luật sư và sinh ở Mỹ.\n\n**Chú ý:** Đề chỉ hỏi Bin, nhưng cần suy ra Jack trước thì mới loại được nghề bác sĩ của Bin.\n\nThử lại: Helen là kế toán sinh ở Úc, không vi phạm điều kiện nào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNgười luật sư sinh ở Mỹ. Người kế toán không sinh ở Bỉ và cũng không sinh ở Mỹ (nước của luật sư) nên người kế toán sinh ở Úc. Vậy người bác sĩ sinh ở Bỉ.\n\nJack không sinh ở Úc nên Jack không phải kế toán. Jack cũng không phải luật sư. Vậy Jack là bác sĩ, sinh ở Bỉ.\n\nBin không phải kế toán, cũng không phải bác sĩ (vì Jack là bác sĩ). Vậy Bin là luật sư, sinh ở Mỹ.\n\nVậy Bin là luật sư và anh ấy đến từ nước Mỹ."
+ },
+ {
+  "ma_nguon": "ON 125",
+  "dap_an": "Cường",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lời Bình (\"Cường làm vỡ\") và lời Cường (\"Em không làm vỡ\") **trái ngược nhau**, nên một lời đúng và một lời sai. Mà cả nhóm chỉ có **một người nói thật**, nên người nói thật nằm trong hai bạn Bình và Cường, còn An và Duy nói dối. Từ lời của Duy suy ra Bình nói thật, từ đó tìm thủ phạm.\n\n**Bước 1.** Chỉ ra hai lời trái ngược nhau (Bình và Cường) rồi kết luận An và Duy nói dối.\n\n**Bước 2.** Duy nói dối nên lời Duy (\"Bình nói dối\") sai, tức Bình nói thật; từ lời Bình tìm được thủ phạm.\n\n**Bước 3.** Kiểm tra lại cả bốn lời xem chỉ có đúng một lời đúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBình nói \"Cường đã làm vỡ kính\" còn Cường nói \"Em không làm vỡ kính\". Hai lời này trái ngược nhau nên có đúng một lời đúng.\n\nCả nhóm chỉ có một người nói thật, nên An và Duy đều nói dối.\n\nDuy nói dối nên lời Duy \"Bình nói dối\" là sai, tức là Bình nói thật.\n\nBình nói thật nên Cường đã làm vỡ kính. Kiểm tra: lời An sai, lời Cường sai, lời Duy sai, chỉ có lời Bình đúng — khớp với đề.\n\nVậy Cường là thủ phạm."
+ }
+]

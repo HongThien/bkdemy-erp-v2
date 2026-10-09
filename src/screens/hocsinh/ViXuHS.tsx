@@ -37,7 +37,7 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
 
 // ── Card theo NHÓM nguồn (Thùy 27/09: "để hs theo dõi nguồn nào ít-nhiều") — bấm 1 card mới hiện
 // lịch sử chi tiết của nhóm đó (HoatDongRow), thay vì 1 danh sách phẳng lẫn lộn mọi nguồn.
-type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
+export type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
 const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu' }> = {
   et: { icon: '📋', ten: 'ET', donVi: 'exp' },
   btvn: { icon: '🏠', ten: 'BTVN', donVi: 'exp' },
@@ -54,7 +54,7 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
   khac: { icon: '✨', ten: 'Khác', donVi: 'exp' },
 }
 // Thứ tự hiện card — khớp ví dụ Thùy đưa (ET, BTVN, thầy cô tặng, may mắn, hoạt động lớp...).
-const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
+export const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
 const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   exp_et: 'et', exp_btvn: 'btvn', exp_btvn_thang: 'btvn',
   exp_nhiem_vu: 'nhiem_vu', exp_thanh_tuu: 'thanh_tuu', exp_huy_hieu: 'huy_hieu',
@@ -64,7 +64,7 @@ const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   // không đủ căn cứ gán đúng ET hay BTVN ⇒ để "Khác", KHÔNG đoán bừa (§1.5 thà bỏ trống hơn đánh sai).
   exp_thang: 'khac', rank_et: 'khac', rank_ingame: 'khac', btvn: 'khac',
 }
-type NhomTong = { tong: number; soLuong: number; items: HoatDongViXu[] }
+export type NhomTong = { tong: number; soLuong: number; items: HoatDongViXu[] }
 function gomNhom(items: HoatDongViXu[]): Partial<Record<NhomKey, NhomTong>> {
   const g: Partial<Record<NhomKey, NhomTong>> = {}
   for (const h of items) {
@@ -100,40 +100,41 @@ function HoatDongRow({ h }: { h: HoatDongViXu }) {
     : (h.ngay ? ddmm(h.ngay) : ddmm(h.created_at))
   return (
     <div className="flex items-center gap-3 p-3" style={THE}>
-      <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[14px] text-[20px]" style={O_ICON}>{nhan.icon}</span>
+      <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[14px] text-[22px]" style={O_ICON}>{nhan.icon}</span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[13.5px] font-bold" style={{ color: MAU.ink }}>{nhan.ten}</span>
-        <span className="mt-0.5 block text-[11.5px]" style={{ color: MAU.muted }}>{phu}{h.mon ? ` · ${h.mon}` : ''}{h.lop ? ` · ${h.lop}` : ''}</span>
+        <span className="block truncate text-[15px] font-bold" style={{ color: MAU.ink }}>{nhan.ten}</span>
+        <span className="mt-0.5 block text-[12.5px]" style={{ color: MAU.muted }}>{phu}{h.mon ? ` · ${h.mon}` : ''}{h.lop ? ` · ${h.lop}` : ''}</span>
       </span>
       <span className="shrink-0 text-right">
-        <span className="block text-[15px] font-extrabold" style={{ color: duong ? MAU.dung : MAU.sai }}>{duong ? '+' : ''}{h.so} {donVi}</span>
-        {laExp && <span className="mt-0.5 block text-[10.5px]" style={{ color: MAU.muted }}>≈ {fmtXuTuongDuong(h.so)} xu</span>}
+        <span className="block text-[16.5px] font-extrabold" style={{ color: duong ? MAU.dung : MAU.sai }}>{duong ? '+' : ''}{h.so} {donVi}</span>
+        {laExp && <span className="mt-0.5 block text-[11.5px]" style={{ color: MAU.muted }}>≈ {fmtXuTuongDuong(h.so)} xu</span>}
       </span>
     </div>
   )
 }
 
-function NguonCard({ nhom, tong, onClick }: { nhom: NhomKey; tong: NhomTong | undefined; onClick: () => void }) {
+export function NguonCard({ nhom, tong, onClick }: { nhom: NhomKey; tong: NhomTong | undefined; onClick: () => void }) {
   const meta = NHOM_META[nhom]
   const soLuong = tong?.soLuong ?? 0
   const so = tong?.tong ?? 0
   const duong = so >= 0
   const xuHien = soLuong === 0 ? '0' : meta.donVi === 'xu' ? Math.abs(so).toLocaleString('vi-VN') : fmtXuTuongDuong(so)
+  // THẺ NỬA CHIỀU NGANG (Thùy 09/10): 2 thẻ / hàng, khối gần vuông thay cho dải ngang hẹp — icon + chevron trên, tên + số lần giữa, số xu to ở đáy.
   return (
-    <button onClick={onClick} disabled={soLuong === 0} className="flex items-center gap-3 p-3 text-left transition active:scale-[0.98] disabled:opacity-60"
+    <button onClick={onClick} disabled={soLuong === 0} className="flex min-h-[148px] min-w-0 flex-col items-start gap-1 p-3.5 text-left transition active:scale-[0.98] disabled:opacity-60"
       style={THE}>
-      <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[14px] text-[20px]" style={O_ICON}>{meta.icon}</span>
-      <span className="min-w-0 flex-1">
-        <span className="block truncate text-[13.5px] font-bold" style={{ color: MAU.ink }}>{meta.ten}</span>
-        <span className="mt-0.5 block text-[11px]" style={{ color: MAU.muted }}>{soLuong > 0 ? `${soLuong} lần` : nhom === 'hoat_dong_lop' ? 'Sắp ra mắt' : 'Chưa có'}</span>
+      <span className="flex w-full items-start justify-between">
+        <span className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[14px] text-[24px]" style={O_ICON}>{meta.icon}</span>
+        {soLuong > 0 && <span className="text-[20px] leading-none" style={{ color: MAU.muted }} aria-hidden>›</span>}
       </span>
-      <span className="shrink-0 text-right">
-        <span className="block text-[15px] font-extrabold" style={{ color: soLuong === 0 ? MAU.muted : duong ? MAU.dung : MAU.sai }}>
+      <span className="mt-1.5 block text-[16px] font-bold leading-tight" style={{ color: MAU.ink }}>{meta.ten}</span>
+      <span className="block text-[12.5px]" style={{ color: MAU.muted }}>{soLuong > 0 ? `${soLuong} lần` : nhom === 'hoat_dong_lop' ? 'Sắp ra mắt' : 'Chưa có'}</span>
+      <span className="mt-auto block pt-1.5">
+        <span className="block text-[20px] font-extrabold leading-tight" style={{ color: soLuong === 0 ? MAU.muted : duong ? MAU.dung : MAU.sai }}>
           {soLuong > 0 && (duong ? '+' : '−')}{xuHien} xu
         </span>
-        {meta.donVi === 'exp' && soLuong > 0 && <span className="mt-0.5 block text-[10px]" style={{ color: MAU.muted }}>{so} EXP</span>}
+        {meta.donVi === 'exp' && soLuong > 0 && <span className="block text-[12px]" style={{ color: MAU.muted }}>{so} EXP</span>}
       </span>
-      {soLuong > 0 && <span className="shrink-0 text-[16px]" style={{ color: MAU.muted }}>›</span>}
     </button>
   )
 }
@@ -144,15 +145,15 @@ function MuaRow({ m }: { m: LichSuMua }) {
     <div className="flex items-center gap-3 p-3" style={THE}>
       {m.anh_url
         ? <img src={m.anh_url} alt="" className="h-[44px] w-[44px] shrink-0 rounded-[14px] object-cover" />
-        : <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[14px] text-[20px]" style={O_ICON}>🎁</span>}
+        : <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[14px] text-[22px]" style={O_ICON}>🎁</span>}
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[13.5px] font-bold" style={{ color: MAU.ink }}>{m.ten_qua}{m.so_luong > 1 ? ` ×${m.so_luong}` : ''}</span>
-        <span className="mt-0.5 flex items-center gap-1.5 text-[11.5px]" style={{ color: MAU.muted }}>
+        <span className="block truncate text-[15px] font-bold" style={{ color: MAU.ink }}>{m.ten_qua}{m.so_luong > 1 ? ` ×${m.so_luong}` : ''}</span>
+        <span className="mt-0.5 flex items-center gap-1.5 text-[12.5px]" style={{ color: MAU.muted }}>
           {ddmm(m.created_at)}
-          <span className="rounded-full px-1.5 py-0.5 text-[10.5px] font-bold" style={{ background: tt.bg, color: tt.chu }}>{tt.ten}</span>
+          <span className="rounded-full px-1.5 py-0.5 text-[11.5px] font-bold" style={{ background: tt.bg, color: tt.chu }}>{tt.ten}</span>
         </span>
       </span>
-      <span className="shrink-0 text-[15px] font-extrabold" style={{ color: MAU.sai }}>−{m.xu_tru} xu</span>
+      <span className="shrink-0 text-[16.5px] font-extrabold" style={{ color: MAU.sai }}>−{m.xu_tru} xu</span>
     </div>
   )
 }
@@ -189,18 +190,18 @@ export default function ViXuHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null; onXo
 
       {/* Số dư — dải màu nhấn của skin */}
       <div className="p-5 text-center" style={{ ...THE, background: MAU.acc, color: MAU.accInk }}>
-        <p className="text-[12px] font-semibold uppercase tracking-wide" style={{ opacity: .8 }}>Số dư hiện tại</p>
-        <p className="mt-1 text-[36px] font-black" style={HEAD}>🪙 {data ? data.so_du : '···'}</p>
-        <p className="mt-1 text-[11.5px]" style={{ opacity: .8 }}>Có EXP là đổi ra xu ngay — cứ 100 EXP được 1 xu</p>
+        <p className="text-[13px] font-semibold uppercase tracking-wide" style={{ opacity: .8 }}>Số dư hiện tại</p>
+        <p className="mt-1 text-[39.5px] font-black" style={HEAD}>🪙 {data ? data.so_du : '···'}</p>
+        <p className="mt-1 text-[12.5px]" style={{ opacity: .8 }}>Có EXP là đổi ra xu ngay — cứ 100 EXP được 1 xu</p>
       </div>
 
-      {err && <p className="rounded-2xl px-3 py-2 text-center text-[12px] font-semibold" style={{ ...THE, color: MAU.sai }}>⚠ {err}</p>}
+      {err && <p className="rounded-2xl px-3 py-2 text-center text-[13px] font-semibold" style={{ ...THE, color: MAU.sai }}>⚠ {err}</p>}
 
       {/* Tab pill */}
       <div className="flex gap-2 p-1" style={{ ...THE_TRON, borderRadius: '999px' }}>
         {([['hoat_dong', 'Hoạt động'], ['mua', 'Mua hàng']] as const).map(([id, ten]) => (
           <button key={id} onClick={() => setTab(id)}
-            className="flex-1 rounded-full py-2 text-[13px] font-bold transition"
+            className="flex-1 rounded-full py-2 text-[14.5px] font-bold transition"
             style={tab === id ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>{ten}</button>
         ))}
       </div>
@@ -210,24 +211,24 @@ export default function ViXuHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null; onXo
       {data && tab === 'hoat_dong' && (
         <div>
           <div className="mb-3 flex items-center justify-center gap-4">
-            <button onClick={() => setYm((y) => congThang(y, -1))} className="flex h-8 w-8 items-center justify-center rounded-full text-[14px]" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>‹</button>
-            <span className="text-[13.5px] font-bold" style={{ color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{labelThang(ym)}</span>
-            <button onClick={() => setYm((y) => congThang(y, 1))} disabled={ym >= ymHomNay()} className="flex h-8 w-8 items-center justify-center rounded-full text-[14px] disabled:opacity-30" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>›</button>
+            <button onClick={() => setYm((y) => congThang(y, -1))} className="flex h-8 w-8 items-center justify-center rounded-full text-[15.5px]" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>‹</button>
+            <span className="text-[15px] font-bold" style={{ color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{labelThang(ym)}</span>
+            <button onClick={() => setYm((y) => congThang(y, 1))} disabled={ym >= ymHomNay()} className="flex h-8 w-8 items-center justify-center rounded-full text-[15.5px] disabled:opacity-30" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>›</button>
           </div>
 
           {nhomMo === null ? (
-            <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-2 gap-2.5 md:gap-3">
               {cacNhom.map((k) => <NguonCard key={k} nhom={k} tong={nhomTong[k]} onClick={() => setNhomMo(k)} />)}
             </div>
           ) : (
             <div>
-              <button onClick={() => setNhomMo(null)} className="mb-2 flex items-center gap-1 rounded-full px-3 py-1 text-[12.5px] font-semibold" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.acc }}>‹ Tất cả nguồn</button>
-              <p className="mb-2 px-1 text-[13px] font-bold" style={{ color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{NHOM_META[nhomMo].icon} {NHOM_META[nhomMo].ten}</p>
+              <button onClick={() => setNhomMo(null)} className="mb-2 flex items-center gap-1 rounded-full px-3 py-1 text-[14px] font-semibold" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.acc }}>‹ Tất cả nguồn</button>
+              <p className="mb-2 px-1 text-[14.5px] font-bold" style={{ color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{NHOM_META[nhomMo].icon} {NHOM_META[nhomMo].ten}</p>
               {nhomMo === 'hoat_dong_lop' || !nhomTong[nhomMo]?.items.length ? (
                 <div className="p-8 text-center" style={THE}>
-                  <p className="text-3xl">🌱</p>
-                  <p className="mt-2 text-[14px] font-bold" style={{ color: MAU.ink }}>Chưa có hoạt động nào</p>
-                  <p className="mt-1 text-[12px]" style={{ color: MAU.muted }}>
+                  <p className="text-[33px]">🌱</p>
+                  <p className="mt-2 text-[15.5px] font-bold" style={{ color: MAU.ink }}>Chưa có hoạt động nào</p>
+                  <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>
                     {nhomMo === 'hoat_dong_lop' ? 'Hoạt động này sắp ra mắt — theo dõi xu kiếm được ở đây nhé!' : 'Đổi tháng khác để xem thêm.'}
                   </p>
                 </div>
@@ -243,9 +244,9 @@ export default function ViXuHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null; onXo
         <div>
           {data.lich_su_mua.length === 0 ? (
             <div className="p-8 text-center" style={THE}>
-              <p className="text-3xl">🎁</p>
-              <p className="mt-2 text-[14px] font-bold" style={{ color: MAU.ink }}>Em chưa đổi quà nào</p>
-              <p className="mt-1 text-[12px]" style={{ color: MAU.muted }}>Dành đủ xu rồi ra tủ quà đổi nhé!</p>
+              <p className="text-[33px]">🎁</p>
+              <p className="mt-2 text-[15.5px] font-bold" style={{ color: MAU.ink }}>Em chưa đổi quà nào</p>
+              <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Dành đủ xu rồi ra tủ quà đổi nhé!</p>
             </div>
           ) : (
             <div className="flex flex-col gap-2">{data.lich_su_mua.map((m) => <MuaRow key={m.id} m={m} />)}</div>

@@ -21,7 +21,7 @@ export function ChanDoan() {
     return () => { console.error = ce; window.removeEventListener('error', onErr); window.removeEventListener('unhandledrejection', onRej) }
   }, [])
   return (
-    <div className="pointer-events-auto absolute bottom-2 left-2 z-50 max-w-[min(92vw,560px)] text-[10.5px] leading-snug" style={{ background: 'var(--sk-surface)', border: 'var(--sk-card-border)', borderRadius: 8, color: 'var(--sk-ink)' }}>
+    <div className="pointer-events-auto absolute bottom-2 left-2 z-50 max-w-[min(92vw,560px)] text-[11.5px] leading-snug" style={{ background: 'var(--sk-surface)', border: 'var(--sk-card-border)', borderRadius: 8, color: 'var(--sk-ink)' }}>
       <button onClick={() => setMo((v) => !v)} className="w-full px-2 py-1 text-left font-bold" style={{ color: 'var(--sk-acc)' }}>Chẩn đoán {mo ? '▾' : '▸'}</button>
       {mo && <div className="px-2 pb-1.5 font-mono">{dong.map((d, i) => <p key={i} className="break-words">{d}</p>)}</div>}
     </div>

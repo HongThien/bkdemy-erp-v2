@@ -37,7 +37,10 @@ kho-rules/
     lo/                     ← LÔ đã ghi / sắp ghi của từng khối (sự thật về câu đã ghi vẫn là DB):
                                k<khối>-<lô>.json (lô qua cổng) · .soan.json (bản model soạn) · .sua.json (bản sửa của người soát —
                                đo tỉ lệ phải sửa) · .kiem-ngoai.json (biên bản model khác) · k<khối>-kiem.mjs (bộ kiểm đáp số của khối)
-  hgt/ · khtn/ · anh/ …     ← nhánh khác, cùng khuôn
+  hinh/                     ← nhánh HÌNH học phần HỌC (`hinh_hoc_*`, luồng kho kiểu 1)
+    k9.md                   ← SPEC khối 9 phần đường tròn: ranh giới CT 2018 + SỔ TAY 22 DẠNG (cách giải · khuôn trình bày) (09/10)
+    k9-mau-thu.md · lo/k9-lo1.mjs · hinh/  ← lô thử, sinh bằng máy từ .mjs (toạ độ dựng theo đề ⇒ máy kiểm + vẽ hình)
+  khtn/ · anh/ …            ← nhánh khác, cùng khuôn
 ```
 
 **Một khối = một file `k<khối>.md`**, không gộp nhiều khối vào một file: luật tiểu học (cấm ẩn, sơ đồ đoạn thẳng) và luật THPT
@@ -87,19 +90,52 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 - **Hai phần** `**Phần 1. Hướng dẫn**` (mấu chốt · vì sao nghĩ ra · các bước theo mạch nghĩ · chú ý bẫy) và `**Phần 2. Trình bày**`
   (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất. **Mọi câu** đủ 2 phần, kể cả câu
   trắc nghiệm mà sách chỉ đòi ghi đáp số (CEO 08/10).
+- ⭐ **`Các bước` 3–6 bước/bài, mỗi bước một ý trọn vẹn** (Thùy 09/10: *"các bước ko nên nhỏ quá — 1 bài nên có từ 3–6 bước thôi"*). App hiện Phần 1 thành card, mỗi bước một card đánh số ⇒ bước là câu ngắn có động từ ("Tính $MO$ bằng định lí Pythagore"), không phải mảnh ký hiệu. Bài nhiều ý: mỗi ý một dòng Các bước, cũng 3–6 bước.
+- **⭐ Phần 1 nhiều bước ⇒ MỖI BƯỚC MỘT CARD, mũi tên sang card kế tiếp (CEO 09/10 — áp MỌI khối, mọi nhánh):**
+  *"Chỗ hướng dẫn, nếu có nhiều bước, thì nên làm định dạng mỗi bước là 1 card và có mũi tên sang card tiếp theo."*
+  Cú pháp trong `loi_giai` (máy đọc ra card; giấy / app chưa hỗ trợ thì vẫn đọc được như chữ thường):
+  ```
+  **Phần 1. Hướng dẫn**
+
+  **Mấu chốt:** <một câu — điều phải nhận ra thì mới giải được>
+
+  **Bước 1.** <việc làm ở bước này + vì sao>
+
+  **Bước 2.** <…>
+
+  **Chú ý:** <bẫy, nếu có>
+
+  **Phần 2. Trình bày**
+  ```
+  - Mỗi bước = **một đoạn riêng** mở bằng `**Bước k.**` (k đánh liên tục từ 1). Nội dung bước gói trong đoạn đó (nhiều dòng thì
+    xuống dòng đơn, không dòng trống giữa — dòng trống là ranh giới card). Các đoạn `**Bước k.**` liên tiếp = một chuỗi card nối mũi tên.
+  - `**Mấu chốt:**` đứng **trước** chuỗi card, `**Chú ý:**` / `Thử lại:` đứng **sau** — không phải bước.
+  - ⭐ **MỌI bài 3–6 bước** (CEO 09/10 tối, chốt khi hỏi "card 2 bước có sửa không": *"Sửa luôn cũng được"* — thay dòng cũ
+    "chỉ ≥ 2 bước mới dùng card"). Bài ngắn (một phép, đọc/viết số) ⇒ tách đúng **thao tác thật** thành 3 bước (vd đổi → làm phép →
+    viết kết quả đúng cách), không bịa bước "Đọc kĩ đề". Bài dài ⇒ gộp các việc cùng mục đích. Mỗi bước ≥ 5 chữ ngoài công thức,
+    không bước là công thức trần ("$S_2=S-S_1$."), không bước cụt ("Nhân hai kết quả."). Không ghi đáp số cuối trong các bước.
+    Bộ kiểm hình thức: `scripts/kho/sach/kiem-p1-card.mjs` (5T đã áp toàn bộ 836 câu — `kho-rules/dai/k5T.md` §8b).
+  - Không ghi "(như VD 8.1 của sách)" trong lời giải — HS không có cuốn sách.
+  - Bước là **bước nghĩ** (làm gì, vì sao), không chép lại từng dòng tính của Phần 2.
+  - Hiển thị card + mũi tên trên app / màn duyệt / bản in: ✅ 09/10 (§4 #8) — chỉ nhận chuỗi `**Bước k.**` **bên trong Phần 1**.
+- **Tách ý (CEO 09/10 — áp mọi khối):** chỉ tách các bài **"Tính / thực hiện phép tính"** và **"Tìm $x$"** có nhiều ý a) b) c) — mỗi ý một câu.
+  **Bài toán lời văn** (kể cả các ý độc lập nhau, vd vườn hình chữ nhật: a) tính dây rào, b) tính rau) **giữ chung một câu**, Phần 2 ghi a) b).
+  Hình học: không tách (CEO 21/09).
 - **Mỗi câu lời giải / mỗi phép tính một dòng**, cách nhau dòng trống (CEO 07/10). Phần 2 bài tính mở bằng dòng chép lại đề.
 - **⭐ GIẢI và GÁN DẠNG là 2 việc ĐỘC LẬP (CEO 08/10):** *"giải trước rồi up lên DB ở trạng thái chưa gán dạng; sau này hoàn thiện
   bản đồ thì có 1 lần chạy gán các bài đó vào bản đồ."* Lượt giải ghi câu vào **dạng chờ** `…000000` (`ghi-lo.mjs --chua-gan-dang`),
   khuôn trình bày theo CHUYÊN ĐỀ của sách (không cần dạng). Lượt gán dạng chạy riêng theo §5 file khối, kiểm bằng model khác gán mù.
   Hệ quả DB: câu dạng chờ chưa bấm duyệt được (`_kho_la_dang_cho`) ⇒ duyệt lời giải sau khi gán dạng.
-  *(Lô thử 1–4 của 4T có gán dạng — dạng đề xuất lưu ở `kho-rules/dai/lo/k4T-lo1-4.json`, KHÔNG ghi DB.)* Không khớp dạng ⇒ dạng chờ, không ép. Bài nhiều ý độc lập ⇒ tách câu,
-  mỗi câu đủ 2 phần (CEO 07/10).
+  *(Lô thử 1–4 của 4T có gán dạng — dạng đề xuất lưu ở `kho-rules/dai/lo/k4T-lo1-4.json`, KHÔNG ghi DB.)* Không khớp dạng ⇒ dạng chờ, không ép. Bài nhiều ý tách được
+  (theo luật **Tách ý** ở trên) ⇒ tách câu, mỗi câu đủ 2 phần (CEO 07/10).
 - **Giải theo lời giải mẫu của khối**, không theo thói quen của Claude. Khối chưa có file luật ⇒ **không giải hàng loạt**, làm B1–B7 trước.
 - Định dạng: `\dfrac`, `\times`, chia `:`, số không chèn dấu cách hàng nghìn, `$…$` mỗi công thức, `\overline{abc}` không `\text`.
 - **Kiểm trước khi ghi**: đáp số thử ngược vào đề; lệch đáp án gốc ⇒ không ghi, báo người. Không chắc ⇒ để trống (CLAUDE.md §1.5).
 - **Sơ đồ / hình**: AI viết mô tả có cấu trúc, máy render (không để AI vẽ điểm ảnh). Hiện có: sơ đồ đoạn thẳng
   (`scripts/kho/so-do-doan-thang.mjs`) — **vẽ đúng tỉ lệ số liệu** (bắt buộc `gia_tri_phan`), máy tự kiểm tổng/hiệu khớp đề
-  rồi mới vẽ (CEO 08/10). Hình nào máy vẽ sau này cũng theo luật này: số liệu ⇒ kích thước thật, máy kiểm. Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
+  rồi mới vẽ (CEO 08/10). **Sơ đồ chuyển động** (09/10, `scripts/kho/so-do-chuyen-dong.mjs`, gọi qua cùng lối vào — mô tả `"loai": "chuyen_dong"`):
+  đường đi với các điểm đúng tỉ lệ, mũi tên xe kèm vận tốc, khoảng cách có nhãn (nhãn bắt đầu bằng số thì máy kiểm khớp vị trí), cầu/tàu là đoạn đậm;
+  CEO: bài chuyển động rất cần sơ đồ minh hoạ. Hình nào máy vẽ sau này cũng theo luật này: số liệu ⇒ kích thước thật, máy kiểm. Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
 
 ## 4. Việc kỹ thuật còn treo để đường đi chạy trơn
 
@@ -112,11 +148,15 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 5 | Đưa **brief giao Sonnet soạn** vào repo (`kho-rules/mau-brief-soan.md`, khuôn như `docs/mau-brief-soan-hinh-hoc.md`) | Lô 5–7 4T brief chỉ nằm trong phiên làm; 5T phải dùng lại, không viết lại từ trí nhớ |
 | 6 | ✅ 08/10 **Đọc sách có công thức là ảnh WMF**: WMF của MathType nhúng sẵn MTEF ⇒ `scripts/kho/mathtype-thu/wmf-mtef.mjs` (5T: 1.031/1.031, KaTeX 0 hỏng, không cần OCR/PDF). `tach-bai.mjs` thêm: "LUYỆN TÂP", sách thiếu tiêu đề LUYỆN TẬP (số bài quay lại), khu Ôn tập `ON` — sách 4T tách ra y hệt trước | Word cũ đã "chuyển công thức thành ảnh" vẫn đọc được chính xác |
 | 7 | ✅ 08/10 (4T lô 11, 32 bài) **Câu có hình trong đề** — hình GỐC của sách: `scripts/kho/sach/trich-media.mjs` → manifest `kho-rules/dai/hinh-de/<khối>.json` (PNG nào dựng từ ảnh sách nào) → `dung-hinh-de.ps1` (EMF → PNG; bảng Word chữ + biểu tượng ⇒ ghép ảnh bảng từ ảnh gốc) → `lo-tu-soan --hinh-de` → `ghi-lo --hinh-de` upload `anh_de` TRƯỚC khi băm biên bản + trạm `kiem-hinh-de` (code: đúng ảnh của đúng bài). Còn: 5T CĐ18–24 (công thức cũng là WMF — xem #6) | `anh_de` nằm trong băm nội dung ⇒ gắn hình sau khi ghi (kiểu `gan_hinh.mjs`) làm biên bản mất hiệu lực |
+| 8 | ✅ 09/10 **Hiển thị Phần 1 dạng CARD + mũi tên** (CEO 09/10, §3): bộ tách `src/lib/loiGiaiBuoc.ts` (đoạn `**Bước k.**` liên tiếp, ≥ 2 bước ⇒ chuỗi card) gắn vào `MathText` › `htmlPhan1` (`src/screens/kho/ui.tsx`) ⇒ áp MỌI chỗ hiện lời giải (app HS qua `ChuMon` · Duyệt kho / Sửa câu / Kho đề thi · bản in). Khung hẹp xếp dọc ↓, khung đủ rộng (mỗi card ≥ ~240px, tối đa 5 bước) xếp ngang → — container query `.lg-chuoi` ở `index.css`; app HS card ăn màu style (`--sk-*`). Lời giải cũ không có `**Bước k.**`: HTML giống hệt từng ký tự (so 4.237 lời giải thật) | Luật viết đã có từ 09/10 |
 
 ## 5. Trạng thái từng khối
 
 | Khối | File | Đang ở bước (§0) | Phiên bản luật | Lô đã duyệt / đã giải | Nguồn |
 |---|---|---|---|---|---|
 | 4T | `dai/k4T.md` | **Bước 2** đang chạy · bước 3 chờ CEO xong bản đồ 4T | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–8: số câu đã ghi + phần còn lại ở `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
-| 5T | `dai/k5T.md` | **Bước 1** — chưa đọc sách (B1 vướng công thức WMF) | v0 (04/10, rút từ kho cũ) | lô 1: 12 câu (Số thập phân) · 271 câu STP giải lại, chờ học thuật ký | Sách "Tài liệu tham khảo Toán 5" (31 CĐ) — `k5T.md` §5, §7 |
-| 6–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
+| 5T | `dai/k5T.md` | **Bước 2** (giải toàn bộ sách) · bước 3 chờ CEO làm bản đồ 5T | **v1 (09/10)** | 4 lô sách 101 câu = một lượt qua mọi dạng (CĐ1–31 + Ôn tập), CEO duyệt ⇒ v1 · công thức WMF đọc qua MTEF nhúng · sơ đồ chuyển động (máy mới) · tiến độ bước 2: `k5T.md` §8b | Sách "Tài liệu tham khảo Toán 5" (31 CĐ + Ôn tập, 750 bài) — `k5T.md` §5 |
+| 8 | `dai/k8.md` | **Bước 1, chỉ HÌNH** (Đại tạm dừng, CEO 09/10) — B1–B3 xong, kế tiếp lô H1 | v0 (09/10) — lõi là **luật kiến thức theo thứ tự bài** (§1) | — | Bộ Word theo bài KNTT (C1 Đa thức · C3 Tứ giác · C4 Thalès; thiếu C2) — `E:\BK ACADEMY\Tài liệu tham khảo\K8` |
+| 9 · Hình học (đường tròn) | `hinh/k9.md` | **6 bài phần Học HH00105–HH00110 (CEO 09/10)** — giải toàn bộ tài liệu lên `hinh_hoc_cau_hoi` chờ duyệt; sổ tay 22 dạng §2 | v0 (09/10) | khuôn 2 phần Hình (k8 §1.6) · ~360 câu · brief `hinh/mau-brief-soan-k9.md` · tiến độ `k9.md` §10 | 4 tài liệu `K9/Đường tròn` — `k9.md` §5 |
+| 6 | `dai/k6.md` | **Bước 1** — B1 đang bóc 56 đề (Gemini gõ, Claude soát) · B3 luật nháp từ kho K6 cũ (đề không có lời giải) | v0 (09/10) | — | 56 đề GKI + CKI Hà Nội 2024–26 (PDF, không đáp án) — `k6.md` §5. **Hai output** câu + đề (`spec-de-thi.md`); Hình Ch IV–V ⇒ HGT |
+| 7, 9 (Đại, Hình khác), 10–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |

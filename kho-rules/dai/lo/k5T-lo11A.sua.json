@@ -1,0 +1,42 @@
+{
+ "VD 18.2": {
+  "noi_dung": "Cho tam giác ABC có BC = 36 cm. Trên BC lấy điểm M sao cho CM = 9 cm. Tính diện tích tam giác ABC biết diện tích tam giác AMC là $108\\ \\text{cm}^{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác AMC và tam giác ABC có **cùng đường cao AH** hạ xuống đường thẳng BC. Tam giác AMC biết diện tích và đáy MC nên tìm được AH; có AH rồi thì tính diện tích tam giác ABC với đáy BC.\n\n**Bước 1.** Tìm chiều cao AH từ tam giác AMC: chiều cao bằng diện tích nhân $2$ rồi chia cho đáy MC.\n\n**Bước 2.** Tính diện tích tam giác ABC: đáy BC nhân chiều cao AH rồi chia $2$.\n\n**Chú ý:** đáy của tam giác AMC là MC $=9$ cm, không phải BC; đáy của tam giác ABC mới là BC $=36$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, AH là đường cao hạ từ A xuống BC.\n\nĐộ dài đường cao AH là: $108\\times 2:9=24$ (cm)\n\nDiện tích tam giác ABC là: $36\\times 24:2=432$ ($\\text{cm}^2$)\n\nĐáp số: $432\\ \\text{cm}^2$"
+ },
+ "LT 19.7": {
+  "bo": "treo: đề chỉ là các ô trống …/… theo 4 hình ghép; hình a, b không có chấm chia (vị trí M phải đoán bằng mắt) — chờ CEO: viết lại đề nêu rõ dữ kiện hay bỏ"
+ },
+ "LT 19.15": {
+  "bo": "treo: như LT 19.7 — ý a, b, d có điểm không chấm chia, phải đo trên hình"
+ },
+ "LT 19.27": {
+  "bo": "treo: tìm vị trí giao điểm bằng \"hai tỉ số bằng nhau ⇒ tổng tử / tổng mẫu cùng tỉ số\" (kiến thức lớp 7) — chờ CEO chốt cách lớp 5 (chung đáy ⇒ đường cao bằng nhau)"
+ },
+ "LT 19.28": {
+  "bo": "treo: như LT 19.27"
+ },
+ "LT 19.29": {
+  "bo": "treo: như LT 19.27"
+ },
+ "LT 19.30": {
+  "bo": "treo: như LT 19.27 (bản hiệu tử / hiệu mẫu)"
+ },
+ "LT 18.5": {
+  "noi_dung": "Hình tam giác MNP có chiều cao MH = 25 cm và có diện tích là $150\\ \\text{cm}^{2}$. Tính độ dài đáy NP của hình tam giác đó."
+ },
+ "LT 19.6": {
+  "noi_dung": "Tính diện tích tam giác ABC, biết: $S_{1}=\\frac{1}{6}S_{ABC}$ và $S_{2}-S_{1}=60\\ \\text{cm}^{2}$."
+ },
+ "LT 19.9": {
+  "noi_dung": "Cho điểm M trên AC sao cho AM = 3MC. Tính diện tích tam giác ABC, biết diện tích tam giác ABM là $24\\ \\text{cm}^{2}$."
+ },
+ "LT 19.10": {
+  "noi_dung": "Cho tam giác ABC, M là điểm chính giữa cạnh BC, N là điểm nằm trên cạnh AC sao cho $\\text{AN}=\\frac{2}{3}\\text{NC}$. Biết diện tích tam giác ABM bằng $15\\ \\text{cm}^{2}$.\na) Diện tích tam giác ABC.\nb) Diện tích tam giác ABN."
+ },
+ "LT 19.22": {
+  "noi_dung": "Cho hình vẽ bên, biết $S_{ABC}=180\\ \\text{cm}^{2},AM=3MB$, $AP=PC,BN=2NC$. Tính $S_{1},S_{2}$ và $S_{3}$."
+ },
+ "LT 19.26": {
+  "noi_dung": "Cho tam giác ABC có diện tích là $168\\ \\text{cm}^{2}$. E là điểm chính giữa cạnh BC, I là điểm chính giữa đoạn thẳng AE. Nối BI kéo dài cắt AC ở D. Tính $S_{AID}$."
+ }
+}

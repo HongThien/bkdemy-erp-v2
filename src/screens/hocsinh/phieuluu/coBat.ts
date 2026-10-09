@@ -1,10 +1,12 @@
-// CỜ BẬT tính năng game HS — MẶC ĐỊNH TẮT trên bản THẬT. Code đã nằm trong bản deploy nhưng học sinh không thấy cho tới khi Thùy chủ động bật cho tất cả.
+// CỜ BẬT tính năng game HS — từ 09/10 (đợt 1) MẶC ĐỊNH BẬT trên bản THẬT; trước đó tắt, chỉ bản Preview thấy.
 // · Bản đồ phiêu lưu (`?phieuluu=1|0`) · Khu HỌC TẬP 5 đảo (`?hoctap=1|0`, spec-che-do-game.md §7).
 // Thử trên 1 máy: mở app HS với đuôi `?phieuluu=1` / `?hoctap=1` một lần (máy nhớ), tắt lại bằng `=0`.
 // BẢN THỬ NGHIỆM (Thùy 03/10: "thử nghiệm trước rồi mới release, trên cả điện thoại và iPad"): bản build Preview của Vercel
 // (+ mọi domain khác hs.bkacademy.edu.vn khi không phải build Production) ⇒ mặc định BẬT, mở là thấy — bản Production / domain thật KHÔNG bị ảnh hưởng.
 // Khi duyệt xong và muốn bật cho mọi học sinh: đổi MAC_DINH của cờ đó thành true (1 dòng) rồi deploy.
-const MAC_DINH = { phieuluu: false, hoctap: false }
+// ĐỢT 1 (Thùy 09/10: "vào main tao có thấy mấy cái bản đồ adventure đâu"): BẬT cho mọi học sinh — đợt 1 mở khu Học tập (5 đảo) + bản đồ phiêu lưu của "Học theo chủ đề".
+// Tắt lại bằng cách đổi về false (hoặc thử riêng 1 máy bằng ?phieuluu=0 / ?hoctap=0).
+const MAC_DINH = { phieuluu: true, hoctap: true }
 
 // Môi trường build Vercel (vite.config.hs.ts define): 'production' | 'preview' | 'development' | '' (build ngoài Vercel / bundle khác không define).
 const VERCEL_ENV = typeof __VERCEL_ENV__ !== 'undefined' ? __VERCEL_ENV__ : ''

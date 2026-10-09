@@ -133,9 +133,9 @@ export function ChinhPhucHS({ onBack, mon: monEp, khoi: khoiEp }: { onBack: () =
             {dsVe.map((d) => (
               <button key={'n' + d.key} tabIndex={-1} onClick={() => setSel(d.key)} className="absolute flex -translate-x-1/2 flex-col items-center rounded-2xl px-2.5 py-0.5"
                 style={{ background: 'color-mix(in srgb, var(--sk-bg) 72%, transparent)', backdropFilter: 'blur(2px)', left: d.t.f.x, top: d.t.f.y + san.h * 0.01, maxWidth: d.lon ? san.w * 0.2 : Math.max(100, san.w * 0.11) }}>
-                <span className={`line-clamp-2 text-center font-bold leading-tight ${d.lon ? 'text-[16px] md:text-[21px]' : 'text-[12px] md:text-[15px]'}`}
+                <span className={`line-clamp-2 text-center font-bold leading-tight ${d.lon ? 'text-[17.5px] md:text-[23px]' : 'text-[13px] md:text-[16.5px]'}`}
                   style={{ ...HEAD, ...CHU_NOI, color: sel === d.key ? 'var(--sk-acc)' : 'var(--sk-ink)' }}>{d.ten}</span>
-                <span className="block text-center text-[10.5px] leading-snug md:text-[12.5px]" style={{ ...CHU_NOI, color: 'var(--sk-muted)' }}>{d.phu}</span>
+                <span className="block text-center text-[11.5px] leading-snug md:text-[14px]" style={{ ...CHU_NOI, color: 'var(--sk-muted)' }}>{d.phu}</span>
               </button>
             ))}
           </>
@@ -147,14 +147,14 @@ export function ChinhPhucHS({ onBack, mon: monEp, khoi: khoiEp }: { onBack: () =
       <div className="pointer-events-none absolute left-0 right-0 top-0 px-4 pt-[calc(12px+env(safe-area-inset-top))]">
         <div className="pointer-events-auto">
           <DauTrangHS tieuDe="Chinh phục BK" phu="Nơi một huyền thoại sinh ra" onBack={onBack} theoMon
-            phai={<button onClick={() => vao(null)} className="px-4 py-2 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>🏆 Bảng xếp hạng</button>} />
+            phai={<button onClick={() => vao(null)} className="px-4 py-2 text-[14.5px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>🏆 Bảng xếp hạng</button>} />
         </div>
       </div>
-      {khoi === null && <p className="absolute left-0 right-0 top-1/2 text-center text-[14px] font-bold" style={CHU_NOI}>Chưa xác định được khối của em.</p>}
+      {khoi === null && <p className="absolute left-0 right-0 top-1/2 text-center text-[15.5px] font-bold" style={CHU_NOI}>Chưa xác định được khối của em.</p>}
 
       {/* chế độ: Sinh tồn / Vô tận (Normal | Hard) — áp cho tháp đang chọn */}
       <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-1.5 px-3 pb-[calc(10px+env(safe-area-inset-bottom))]">
-        <span className="rounded-full px-3 py-0.5 text-[12.5px] font-bold md:text-[14px]" style={{ ...HEAD, ...CHU_NOI, background: 'color-mix(in srgb, var(--sk-bg) 72%, transparent)' }}>Đang chọn: <span style={{ color: 'var(--sk-acc)' }}>{chon?.ten ?? '…'}</span></span>
+        <span className="rounded-full px-3 py-0.5 text-[14px] font-bold md:text-[15.5px]" style={{ ...HEAD, ...CHU_NOI, background: 'color-mix(in srgb, var(--sk-bg) 72%, transparent)' }}>Đang chọn: <span style={{ color: 'var(--sk-acc)' }}>{chon?.ten ?? '…'}</span></span>
         <div className="flex flex-wrap items-center justify-center gap-2">
           <NutCheDo onClick={() => vao('song_con')} chinh>⏱️ Sinh tồn 5 phút</NutCheDo>
           <NutCheDo onClick={() => vao('vo_tan')} chinh>♾️ Vô tận · Normal</NutCheDo>
@@ -167,7 +167,7 @@ export function ChinhPhucHS({ onBack, mon: monEp, khoi: khoiEp }: { onBack: () =
 
 function NutCheDo({ children, onClick, chinh, tat }: { children: ReactNode; onClick?: () => void; chinh?: boolean; tat?: boolean }) {
   return (
-    <button onClick={onClick} disabled={tat} className="h-11 px-4 text-[14px] font-bold transition active:scale-[0.98] disabled:opacity-55 md:h-12 md:px-6 md:text-[16px]"
+    <button onClick={onClick} disabled={tat} className="h-11 px-4 text-[15.5px] font-bold transition active:scale-[0.98] disabled:opacity-55 md:h-12 md:px-6 md:text-[17.5px]"
       style={chinh ? { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', borderRadius: 'var(--sk-radius-pill)', fontFamily: 'var(--sk-font-head)', boxShadow: '0 0 0 2px var(--sk-surface), 0 6px 18px rgba(0,0,0,.35)' }
         : { ...THE_TRON, borderRadius: 'var(--sk-radius-pill)', fontFamily: 'var(--sk-font-head)' }}>
       {children}

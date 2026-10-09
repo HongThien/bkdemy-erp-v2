@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 594 150" width="594" height="150" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<rect width="594" height="150" fill="#fff"/>
+<text x="102" y="37" text-anchor="end" fill="#0f172a">Số thứ nhất:</text>
+<line x1="112" y1="32" x2="280" y2="32" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="25" x2="112" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="168" y1="25" x2="168" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="224" y1="25" x2="224" y2="39" stroke="#0f172a" stroke-width="2"/>
+<line x1="280" y1="25" x2="280" y2="39" stroke="#0f172a" stroke-width="2"/>
+<text x="196" y="52" text-anchor="middle" fill="#dc2626">?</text>
+<text x="102" y="81" text-anchor="end" fill="#0f172a">Số thứ hai:</text>
+<line x1="112" y1="76" x2="560" y2="76" stroke="#0f172a" stroke-width="2"/>
+<line x1="112" y1="69" x2="112" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="168" y1="69" x2="168" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="224" y1="69" x2="224" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="280" y1="69" x2="280" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="336" y1="69" x2="336" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="392" y1="69" x2="392" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="448" y1="69" x2="448" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="504" y1="69" x2="504" y2="83" stroke="#0f172a" stroke-width="2"/>
+<line x1="560" y1="69" x2="560" y2="83" stroke="#0f172a" stroke-width="2"/>
+<text x="336" y="96" text-anchor="middle" fill="#dc2626">?</text>
+<line x1="280" y1="110" x2="560" y2="110" stroke="#0f172a" stroke-width="1"/>
+<line x1="280" y1="106" x2="280" y2="114" stroke="#0f172a" stroke-width="1"/>
+<line x1="560" y1="106" x2="560" y2="114" stroke="#0f172a" stroke-width="1"/>
+<text x="420" y="126" text-anchor="middle" font-size="12" fill="#0f172a">1,5</text>
+</svg>

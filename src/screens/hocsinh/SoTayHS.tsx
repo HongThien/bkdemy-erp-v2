@@ -52,7 +52,7 @@ function Kung({ title, sub, onBack, children }: {
   return (
     <ManHS>
       <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} theoMon />
-      {sub && <p className="-mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
+      {sub && <p className="-mt-1 text-[14px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
       <div>{children}</div>
     </ManHS>
   )
@@ -61,7 +61,7 @@ function Kung({ title, sub, onBack, children }: {
 function Chip({ chon, ten, onClick }: { chon: boolean; ten: string; onClick: () => void; t?: Theme }) {
   return (
     <button onClick={onClick}
-      className="px-3 py-1.5 text-[12.5px] font-bold transition active:scale-95"
+      className="px-3 py-1.5 text-[14px] font-bold transition active:scale-95"
       style={chon
         ? { background: MAU.acc, color: MAU.accInk, borderRadius: '999px', border: `1px solid ${MAU.acc}` }
         : { ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>
@@ -73,20 +73,20 @@ function Chip({ chon, ten, onClick }: { chon: boolean; ten: string; onClick: () 
 function NhomChip({ nhom }: { nhom: SoTayNhom | null }) {
   if (!nhom) return null
   const m = NHOM_MAU_SKIN[nhom]
-  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black" style={{ background: m.nen, color: m.chu }}>{NHOM_TEN[nhom]}</span>
+  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-black" style={{ background: m.nen, color: m.chu }}>{NHOM_TEN[nhom]}</span>
 }
 
 // Nhãn loại kết quả tìm (CEO 03/10): mục sổ tay (xếp TRƯỚC) mang tên LOẠI của nó — "Công thức", "Khái niệm"… (03/10, sổ tay KHTN);
 // dạng bài ⇒ "Lý thuyết".
 function NhanLoai({ loai }: { loai: MucLoai | 'ly_thuyet' }) {
   const muc = loai !== 'ly_thuyet'
-  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black"
+  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-black"
     style={muc ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface2, color: MAU.muted }}>{muc ? MUC_LOAI[loai].ten : 'Lý thuyết'}</span>
 }
 
 // Nhãn LỚP của kết quả tìm (Thùy 03/10: tìm ra mọi lớp ≤ lớp em ⇒ phải ghi rõ lớp mấy).
 function NhanLop({ khoi }: { khoi: string }) {
-  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black" style={{ background: MAU.surface2, color: NAVY }}>Lớp {khoi}</span>
+  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-black" style={{ background: MAU.surface2, color: NAVY }}>Lớp {khoi}</span>
 }
 
 // Dòng danh sách dùng chung cho cả 3 tầng + kết quả tìm.
@@ -96,10 +96,10 @@ function Dong({ ten, phu, duoi, onClick }: { t?: Theme; ten: string; phu?: React
       style={THE}>
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
-          <span className="min-w-0 text-[14.5px] font-extrabold leading-snug" style={{ color: NAVY }}>{ten}</span>
+          <span className="min-w-0 text-[16px] font-extrabold leading-snug" style={{ color: NAVY }}>{ten}</span>
           {phu}
         </span>
-        {duoi && <span className="mt-1 block truncate text-[11.5px]" style={{ color: MAU.muted }}>{duoi}</span>}
+        {duoi && <span className="mt-1 block truncate text-[12.5px]" style={{ color: MAU.muted }}>{duoi}</span>}
       </span>
       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ background: MAU.surface2 }}>
         <svg viewBox="0 0 48 48" className="h-3.5 w-3.5" fill="none" aria-hidden><path d="M18 12l12 12-12 12" stroke={MAU.acc} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -111,9 +111,9 @@ function Dong({ ten, phu, duoi, onClick }: { t?: Theme; ten: string; phu?: React
 function Trong({ icon, title, mo_ta }: { t?: Theme; icon: string; title: string; mo_ta: string }) {
   return (
     <div className="mt-4 p-6 text-center" style={THE}>
-      <div className="text-[34px]">{icon}</div>
-      <p className="mt-2 text-[15px] font-extrabold" style={{ ...HEAD, color: NAVY }}>{title}</p>
-      <p className="mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted }}>{mo_ta}</p>
+      <div className="text-[37.5px]">{icon}</div>
+      <p className="mt-2 text-[16.5px] font-extrabold" style={{ ...HEAD, color: NAVY }}>{title}</p>
+      <p className="mt-1 text-[14px] leading-snug" style={{ color: MAU.muted }}>{mo_ta}</p>
     </div>
   )
 }
@@ -280,13 +280,13 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
     <Kung t={t} title={title} sub={sub} onBack={back}>
       {/* Ô tìm — luôn hiện ở mọi tầng: em đang lần mò mà chợt nhớ ra tên thì gõ được ngay. */}
       <div className="relative mt-2">
-        <span className="pointer-events-none absolute left-3.5 top-1/2 z-[1] -translate-y-1/2 text-[15px]">🔍</span>
+        <span className="pointer-events-none absolute left-3.5 top-1/2 z-[1] -translate-y-1/2 text-[16.5px]">🔍</span>
         <input value={q} onChange={(e) => setQ(e.target.value)} inputMode="search"
           placeholder={coMuc ? 'Tìm khái niệm, công thức, dạng bài…' : 'Tìm công thức, dạng bài…'}
-          className="w-full py-3 pl-10 pr-10 text-[14px] outline-none"
+          className="w-full py-3 pl-10 pr-10 text-[15.5px] outline-none"
           style={{ ...THE_TRON, color: NAVY }} />
         {q && (
-          <button onClick={() => setQ('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[15px]" style={{ color: MAU.muted }}>✕</button>
+          <button onClick={() => setQ('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[16.5px]" style={{ color: MAU.muted }}>✕</button>
         )}
       </div>
 
@@ -294,7 +294,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
       {!dangSearch && coMuc && (
         <div className="mt-3 grid grid-cols-2 gap-1 p-1" style={{ ...THE_TRON, borderRadius: '999px' }}>
           {([['muc', 'Sổ tay'], ['dang', 'Dạng bài']] as const).map(([k, ten]) => (
-            <button key={k} onClick={() => setChe(k)} className="rounded-full py-2 text-[13px] font-bold transition"
+            <button key={k} onClick={() => setChe(k)} className="rounded-full py-2 text-[14.5px] font-bold transition"
               style={che === k ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>{ten}</button>
           ))}
         </div>
@@ -317,7 +317,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
             ))}
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2">
-            <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Độ khó</span>
+            <span className="text-[12.5px] font-bold" style={{ color: MAU.muted }}>Độ khó</span>
             <Chip t={t} ten="Tất cả" chon={nhomLoc === null} onClick={() => setNhomLoc(null)} />
             {(['co_ban', 'trung_binh', 'nang_cao'] as SoTayNhom[]).map((n) => (
               <Chip key={n} t={t} ten={NHOM_TEN[n]} chon={nhomLoc === n} onClick={() => setNhomLoc(n)} />
@@ -328,7 +328,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
 
       {laMuc && loiMuc && <Trong t={t} icon="⚠️" title="Không tải được sổ tay" mo_ta={loiMuc} />}
       {!laMuc && loi && <Trong t={t} icon="⚠️" title="Không tải được sổ tay" mo_ta={loi} />}
-      {!laMuc && !loi && cay === null && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+      {!laMuc && !loi && cay === null && <p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
 
       <div className="mt-4 flex flex-col gap-2.5">
         {/* ── Kết quả tìm ─────────────────────────────────────────────── */}
@@ -437,7 +437,7 @@ function DocDang({ maDang, mon, nhanh, api, onBack }: { maDang: string; mon: str
           </>}
           tomTat={d.mo_ta_ngan ? <span style={{ color: 'var(--sk-doc-muted)' }}>{d.mo_ta_ngan}</span> : undefined}>
           {/* MathText = đúng trình render lý thuyết của màn Kho/trang in: LaTeX $…$ + ảnh ![](url) — HS thấy y hệt bản thầy cô soạn. */}
-          <div className="text-[15px] leading-[1.8]"><Chu>{d.noi_dung}</Chu></div>
+          <div className="text-[16.5px] leading-[1.8]"><Chu>{d.noi_dung}</Chu></div>
         </TheDocHS>
       )}
     </ManDocHS>
@@ -450,11 +450,11 @@ function BangDoc({ hang, dauLaTieuDe = true, tieuDe }: { hang: string[][]; dauLa
   const than = tieuDe || !dauLaTieuDe ? hang : hang.slice(1)
   return (
     <div className="-mx-1 overflow-x-auto">
-      <table className="w-full border-collapse text-[13.5px] leading-snug">
+      <table className="w-full border-collapse text-[15px] leading-snug">
         {dau && (
           <thead>
             <tr>{dau.map((o, j) => (
-              <th key={j} className="px-2 py-1.5 text-left text-[11px] font-extrabold uppercase tracking-[0.06em]"
+              <th key={j} className="px-2 py-1.5 text-left text-[12px] font-extrabold uppercase tracking-[0.06em]"
                 style={{ color: 'var(--sk-doc-muted)', borderBottom: '1px solid var(--sk-doc-line)' }}><Chu>{o}</Chu></th>
             ))}</tr>
           </thead>
@@ -498,7 +498,7 @@ function DocMuc({ r, monMo, api, onMo, onBack }: { r: MucSoTay; monMo: string | 
         tomTat={tomTat ? <Chu>{tomTat}</Chu> : undefined}>
         {congThuc && (
           <KhoiDocHS kieu="cong_thuc">
-            <div className="text-[18px] font-bold leading-[1.9]"><Chu>{congThuc}</Chu></div>
+            <div className="text-[20px] font-bold leading-[1.9]"><Chu>{congThuc}</Chu></div>
             {r.bien?.length ? <div className="mt-2"><BangDoc hang={r.bien} dauLaTieuDe={false} tieuDe={dauBien} /></div> : null}
           </KhoiDocHS>
         )}
@@ -507,7 +507,7 @@ function DocMuc({ r, monMo, api, onMo, onBack }: { r: MucSoTay; monMo: string | 
         {r.hinh_url ? <KhoiDocHS kieu="hinh"><img src={r.hinh_url} alt="" className="max-h-72 w-auto max-w-full rounded-lg" /></KhoiDocHS>
           : r.hinh_ve ? <HinhBangMa ma={r.hinh_ve} /> : null}
         {r.y?.length ? (
-          <ul className="flex flex-col gap-2 text-[15px] leading-[1.7]">
+          <ul className="flex flex-col gap-2 text-[16.5px] leading-[1.7]">
             {r.y.map((x, i) => (
               <li key={i} className="flex gap-2.5">
                 <span className="mt-[0.62em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: 'var(--doc-acc)' }} aria-hidden />
@@ -539,12 +539,12 @@ function DocMuc({ r, monMo, api, onMo, onBack }: { r: MucSoTay; monMo: string | 
         {r.cau_nho && <KhoiDocHS kieu="vi_du" nhan="Mẹo nhớ"><Chu>{r.cau_nho}</Chu></KhoiDocHS>}
         {r.lq?.length ? (
           <KhoiDocHS nhan="Xem thêm">
-            {loi && <p className="mb-2 text-[13px]" style={{ color: 'var(--sk-doc-nham-chu)' }}>{loi}</p>}
+            {loi && <p className="mb-2 text-[14.5px]" style={{ color: 'var(--sk-doc-nham-chu)' }}>{loi}</p>}
             <div className="flex flex-wrap gap-2">
               {r.lq.map((x) => (
-                <button key={x.ma} onClick={() => moLq(x.ma)} className="rounded-full px-3 py-1 text-[13px] font-semibold transition active:scale-95"
+                <button key={x.ma} onClick={() => moLq(x.ma)} className="rounded-full px-3 py-1 text-[14.5px] font-semibold transition active:scale-95"
                   style={{ background: 'var(--sk-doc-giay)', color: 'var(--sk-doc-ink)', boxShadow: '0 0 0 1px var(--sk-doc-line)' }}>
-                  {x.ten} <span className="text-[11px] font-bold" style={{ color: 'var(--doc-acc)' }}>{MUC_LOAI[x.loai].ten}</span>
+                  {x.ten} <span className="text-[12px] font-bold" style={{ color: 'var(--doc-acc)' }}>{MUC_LOAI[x.loai].ten}</span>
                 </button>
               ))}
             </div>
