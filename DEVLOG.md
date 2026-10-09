@@ -36246,3 +36246,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   lượt) ≤ 3×số TA, thay "3 em/TA". Chạy thử (rollback): sức chứa {dang 50, tran 70, cao 13/20} — đang chạm đúng trần cũ; trọng số S/A/B/C/null
   = 0,5/0,75/1/1/1; ca hôm nay 1 em lớp 5A2… ra 0,5–1 suất đúng bậc. Lịch phòng local: "1 em · 0,5/3 suất · còn 2,5 suất".
 - Không đổi: đơn vị ca, trần Cao 20, cách đếm 70 (đếm ĐẦU em, không trọng số — Thùy chỉ nói trọng số cho ca).
+
+## 09/10 — Bản đồ adventure + khu Học tập không hiện trên main (bản Production)
+- **Thùy:** "vào main tao có thấy mấy cái bản đồ adventure đâu".
+- **Nguyên nhân:** `phieuluu/coBat.ts` — hai cờ `phieuluu` (bản đồ phiêu lưu) và `hoctap` (khu Học tập 5 đảo) có `MAC_DINH = false`, chỉ BẬT ở bản build Preview/domain thử nghiệm; bản Production (hs.bkacademy.edu.vn) luôn tắt ⇒ HS thấy ô Tự luyện cũ, không có đảo, không có bản đồ. Công tắc tính năng (tinh_nang) KHÔNG liên quan — đó là lớp cờ khác, có từ trước.
+- **Sửa:** `MAC_DINH = { phieuluu: true, hoctap: true }` (đúng như ghi chú trong file "khi duyệt xong muốn bật cho mọi HS: đổi 1 dòng"). Rank vẫn tắt (`rankBat`). **Bài học:** muốn một tính năng game hiện ở Production phải kiểm CẢ 2 lớp: cờ `coBat.ts` (build) VÀ công tắc `tinh_nang` (DB).
