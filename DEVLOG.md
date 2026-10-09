@@ -36219,3 +36219,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Công cụ: `nhap_hh_tu_draft.mjs` thêm `loai_cau/lua_chon/dap_an`, `--cho-cung`, `**hinh_lg:**`, `--noi` (nối câu vào bài đã nhập); `gan_hinh.mjs` file `…_lg.png` chỉ ghi `anh_dap_an`. (Cùng file, phiên k8 thêm chuẩn hoá dòng trống trước Phần 2 — không đụng nhau.)
 - Bắt được khi soát: lệnh LaTeX thiếu `\` (`OMperp`) KaTeX vẫn render thành chữ ⇒ máy soát thêm luật; 2 nhóm cùng làm một câu (nhóm làm lấn sang chỉ số kế bên) ⇒ ghép giữ bản nhóm được giao; 2 hình HH00110 lộ đáp án ⇒ chuyển hình lời giải.
 - Kết quả DB: HH00105 116 · HH00106 36 · HH00107 81 · HH00108 53 · HH00109 33 · HH00110 44; 383 ảnh HEAD 200. Chỗ cần CEO quyết: `kho-rules/hinh/k9-nghi-van.md` §A (6 phương án TN sách in sai đã sửa, 1 đề sách sai, 6 cách hiểu, 8 đề viết lại từ hình).
+
+## 09/10 (tiếp) — 5T LÊN v1 (CEO: "OK rồi. Lên V1 thôi")
+- k5T.md đầu file + §7 + §8b (tiến độ bước 2) + §9; README §5 dòng 5T: Bước 2, v1.

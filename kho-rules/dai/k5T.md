@@ -1,16 +1,15 @@
 # kho-rules/dai/k5T.md — Luật GIẢI + TRÌNH BÀY (+ GÁN DẠNG) khối 5T (Toán 5 nâng cao)
 
-> **Trạng thái: NHÁP v0 (04/10) · cập nhật 08/10 theo bài học 4T.** Theo `spec-luong-kho.md` C10: mọi lần giải / gán dạng câu 5T
-> PHẢI đọc file này trước. Mỗi lần CEO sửa ⇒ ghi §9 (nhật ký) rồi nâng luật ở §1–§4.
+> **Trạng thái: ⭐ v1 (09/10) — CEO duyệt 4 lô sách (101 câu, một lượt qua mọi dạng của sách): *"OK rồi. Lên V1 thôi."***
+> *(lịch sử: NHÁP v0 04/10 từ kho cũ → bước 1 trên sách 08–09/10 → v1 09/10)*. Theo `spec-luong-kho.md` C10: mọi lần giải / gán dạng câu 5T
+> PHẢI đọc file này trước. Luật vẫn sống: CEO sửa ở đâu ⇒ ghi §9 (nhật ký) rồi nâng luật ở §1–§4.
 > **Quy trình 3 bước mọi khối: `kho-rules/README.md` §0** (1 rút luật giải → 2 giải toàn bộ tài liệu, lên DB dạng chờ → 3 CEO xong bản đồ thì xếp bài vào, CEO duyệt).
-> **5T đang ở BƯỚC 1.** Đi theo 7 bước nhỏ ở `kho-rules/README.md` §2, khuôn đã chạy trọn ở 4T (`k4T.md` v1 — đọc §1.5, §7 của nó để biết CEO đã
-> sửa những gì; các luật đó áp luôn cho 5T trừ chỗ ghi khác ở đây).
+> **5T đang ở BƯỚC 2** — giải toàn bộ sách (~750 bài) theo dây chuyền `kho-rules/README.md` §2b, ghi `--chua-gan-dang` vào `T15T000000`.
+> Khuôn đã chạy trọn ở 4T (`k4T.md` v1 — §1.5, §7); luật 4T áp cho 5T trừ chỗ ghi khác ở đây.
 >
-> **Đang ở đâu (09/10):** B1 đọc sách ✅ (công thức WMF ra LaTeX 1.031/1.031 — §5) · B2 tách bài ✅ (750 bài) · B3 rút khuôn từ
-> 82 VÍ DỤ ✅ (§1 cho phép, §2b) · B4 **đã đi xong MỘT LƯỢT qua các dạng: 4 lô, 101 câu** (lô 1 CĐ1–9 · lô 2 CĐ10–17 · lô 3 CĐ18–24
-> hình học · lô 4 CĐ25–31 + Ôn tập mục II–V, XIII) — cuối `k5T-mau-thu.md`. **Chờ CEO:** duyệt nội dung lô 1–4 + 4 câu hỏi mở (lô 3: hình hỏng,
-> khuôn tỉ số diện tích · lô 4: sơ đồ CĐ28, cách giải cấu tạo số). Lô cuối không bị sửa ⇒ **v1** ⇒ bước 2. **Hình đề:** 13 bài hình hỏng chờ chọn cách.
-> Bản đồ 5T mới phủ ~9/31 chuyên đề (§6) — bản đồ là việc của CEO. **Việc kế tiếp: §7.**
+> **Bước 1 đã làm:** B1 đọc sách (công thức WMF ra LaTeX 1.031/1.031 — §5) · B2 tách bài (750 bài) · B3 rút khuôn từ 82 VÍ DỤ (§1 cho phép, §2b)
+> · B4 một lượt qua các dạng: 4 lô, 101 câu (cuối `k5T-mau-thu.md`). **Bước 2:** tiến độ ở §8b. Hình đề hỏng (13 bài) vẽ lại bằng code (§1).
+> Bản đồ 5T mới phủ ~9/31 chuyên đề (§6) — bản đồ là việc của CEO.
 
 ## 0. Nguyên tắc gốc
 
@@ -233,11 +232,23 @@ chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, kh
 
 | Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
-| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | **Đang ở đây** — lô 1 (CĐ1–9), lô 2 (CĐ10–17): CEO đã trả lời câu hỏi · lô 3 (CĐ18–24, 23 câu) · lô 4 (CĐ25–31 + Ôn tập, 26 câu) — **đã đi xong một lượt các dạng (101 câu), chờ CEO duyệt nội dung ⇒ v1** |
-| **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu có hình đề: dùng đường hình đề của 4T (`kho-rules/dai/hinh-de/dung-hinh-de.ps1` + manifest `5T.json`, cột `anh_de` ở cổng ghi) — khoảng 60 bài hình sách dùng được; 13 bài hình hỏng chờ CEO chọn cách | Sau v1 |
+| **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | ✅ **v1 (09/10)** — 4 lô, 101 câu, một lượt qua mọi dạng; CEO duyệt |
+| **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu có hình đề: dùng đường hình đề của 4T (`kho-rules/dai/hinh-de/dung-hinh-de.ps1` + manifest `5T.json`, cột `anh_de` ở cổng ghi) — khoảng 60 bài hình sách dùng được; 13 bài hình hỏng vẽ lại bằng code (CEO 09/10) | **Đang ở đây** — tiến độ §8b |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 
 **271 câu Số thập phân giải lại 04/10:** CEO 08/10 *"giải là duyệt luôn"* ⇒ duyệt ngay ở màn Duyệt lời giải AI › Lời giải mới từ Claude (câu đã có dạng T15T0202 nên bấm duyệt được), **không chờ bước 3**. 2 câu cờ `nghi` (T15T020205020 đề nghi sai số liệu · T15T020206068 đề mơ hồ) cần người xem kỹ. Bước 3 vẫn xếp lại chúng vào bản đồ mới như mọi câu.
+
+## 8b. BƯỚC 2 — TIẾN ĐỘ GIẢI TOÀN BỘ SÁCH (bắt đầu 09/10)
+
+Danh tính câu: `ten_de_goc = "Toán 5 TLTK · <mã bài>"` (mã của `tach-bai`: `LT 6.8`, `VD 13.2`, `ON 22`, ý `LT 12.3c`). Dạng chờ `T15T000000`.
+Đầu vào dựng lại: §5 (doc-docx → wmf-mtef → tach-bai). Bộ kiểm đáp số: `kho-rules/dai/lo/k5T-kiem.mjs` (viết TỪ ĐỀ trước khi mở bản soạn).
+
+| Lô | Khu sách | Câu ghi | Ghi chú |
+|---|---|---|---|
+| S1–S4 (lô thử) | 101 câu rải CĐ1–31 + Ôn | — | chưa ghi — việc đầu tiên của bước 2 |
+
+**Còn lại:** toàn bộ 750 bài (VD 82 · LT 543 · Ôn 125, trước tách ý) trừ các câu đã ghi. **Treo:** 13 bài hình hỏng + LT 19.18 (vẽ lại bằng code) ·
+LT 21.1 (sách in nhãn trùng) · VD 25.1 (nhãn ý lặp) · 3 lỗi in trong VD (§5).
 
 ## 8. GÁN DẠNG — chưa viết
 
@@ -263,3 +274,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 09/10 | Bảng nhiều cách §2b | Chốt: *"A: số to thì phải dùng cách 2, số bé mới dùng cách 1, ưu tiên cách 2 · B: 1 · C: 3 · D: cách 2, cách 1 để làm quen thôi, dùng khi giảng bài · E: 2 · F: 1."* | §2b cột Chốt. Lô sách 1 đã khớp cả 6 (câu 1, 11, 12, 14, 25) — không câu nào làm lại. Bài học: **lời giải kho ≠ bài giảng** — cách "để làm quen" (D①) thuộc giáo án GV, không vào kho. |
 | 09/10 | Lô sách 2 — 2 câu hỏi | *"1. Kiểu 1. 2. Có, viết thêm cho dễ hiểu."* | §2b dòng G chốt ①; §1: nhân hai tỉ số phần trăm viết thêm bước đổi số thập phân — đã sửa lô 2 câu 24, 26. |
 | 09/10 | Lô 3 + lô 4 — 4 câu hỏi | *"1. OK · 2. Câu đấy nên viết đầy đủ là Tam giác AMC và ABC có chung đường cao hạ từ … suy ra … · 3. Vẽ được sơ đồ minh hoạ là chuẩn. Bài chuyển động rất cần · 4. Bài thêm bớt chữ số bên trái bên phải là bài toán tỉ số, giải kiểu sơ đồ được. Còn bài đề cho cấu tạo số thì giải như cấu tạo số."* | §1: hình hỏng vẽ lại bằng code; tỉ số diện tích viết đầy đủ câu (sửa lô 3, 7 dòng); chuyển động bắt buộc sơ đồ minh hoạ — máy vẽ mới `so-do-chuyen-dong.mjs`, chèn 11 câu lô 4; cấu tạo số tách 2 loại. |
+| 09/10 | Cả 4 lô sách (101 câu) | *"OK rồi. Lên V1 thôi."* | **v1.** Sang bước 2: giải toàn bộ sách theo dây chuyền README §2b, ghi dạng chờ. |
