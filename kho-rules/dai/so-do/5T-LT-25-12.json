@@ -1,0 +1,1 @@
+{"loai":"chuyen_dong","tieu_de":"Lúc 7 giờ 45 phút","diem":[{"ten":"A","x":0},{"ten":"D","x":40,"ghi":"xe hỏng, sửa 45 phút"},{"ten":"B","x":103}],"di":[{"tu":0,"den":40,"nhan":"50 km/giờ"},{"tu":40,"den":103,"nhan":"45 km/giờ"}],"khoang":[{"tu":0,"den":40,"nhan":"40 km"},{"tu":40,"den":103,"nhan":"? km"},{"tu":0,"den":103,"nhan":"103 km"}]}

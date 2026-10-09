@@ -102,7 +102,9 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 - **Kiểm trước khi ghi**: đáp số thử ngược vào đề; lệch đáp án gốc ⇒ không ghi, báo người. Không chắc ⇒ để trống (CLAUDE.md §1.5).
 - **Sơ đồ / hình**: AI viết mô tả có cấu trúc, máy render (không để AI vẽ điểm ảnh). Hiện có: sơ đồ đoạn thẳng
   (`scripts/kho/so-do-doan-thang.mjs`) — **vẽ đúng tỉ lệ số liệu** (bắt buộc `gia_tri_phan`), máy tự kiểm tổng/hiệu khớp đề
-  rồi mới vẽ (CEO 08/10). Hình nào máy vẽ sau này cũng theo luật này: số liệu ⇒ kích thước thật, máy kiểm. Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
+  rồi mới vẽ (CEO 08/10). **Sơ đồ chuyển động** (09/10, `scripts/kho/so-do-chuyen-dong.mjs`, gọi qua cùng lối vào — mô tả `"loai": "chuyen_dong"`):
+  đường đi với các điểm đúng tỉ lệ, mũi tên xe kèm vận tốc, khoảng cách có nhãn (nhãn bắt đầu bằng số thì máy kiểm khớp vị trí), cầu/tàu là đoạn đậm;
+  CEO: bài chuyển động rất cần sơ đồ minh hoạ. Hình nào máy vẽ sau này cũng theo luật này: số liệu ⇒ kích thước thật, máy kiểm. Chưa có: đồ thị, hình phẳng, bảng biến thiên (skill 5, làm khi tới K12).
 
 ## 4. Việc kỹ thuật còn treo để đường đi chạy trơn
 

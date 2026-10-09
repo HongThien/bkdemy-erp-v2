@@ -36,12 +36,23 @@ phải hiểu được. Nếu một bước chỉ giải được bằng cách "
 - **Phương pháp khử (CĐ31):** được "Gọi giá 1 bút xanh là $X$ (nghìn đồng), giá 1 bút đỏ là $D$" rồi viết hai dòng
   $3\times X+7\times D=134\ (1)$ · $3\times X+4\times D=92\ (2)$, nhân một dòng cho cùng hệ số, **lấy dòng này trừ dòng kia** để khử
   (VD 31.1–31.3). Viết $3\times X$, không viết $3X$. KHÔNG "chuyển vế".
-- **Hình học (CĐ18–21):** ký hiệu $S_{ABC}$, tỉ số diện tích $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}$ kèm lý do trong ngoặc
-  "(Chung đường cao hạ từ A đến BC)" (VD 19.2–19.3). Hình tròn: $r\times r=28,26:3,14$ (không $r^2$); $\pi$ viết $3,14$.
+- **Hình học (CĐ18–21):** ký hiệu $S_{ABC}$. **Tỉ số diện tích viết ĐẦY ĐỦ CÂU (CEO 09/10):** "Tam giác AMC và tam giác ABC có chung
+  đường cao hạ từ A xuống BC, suy ra $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$" — không để lý do trong ngoặc sau công thức như VD 19.2.
+  Hình tròn: $r\times r=28,26:3,14$ (không $r^2$); $\pi$ viết $3,14$.
+- **Hình đề hỏng (CEO 09/10 OK):** 13 bài sách có hình hỏng (vùng tô thành khối đen) + LT 19.18 (hình ghi E, đề ghi M) ⇒ **vẽ lại hình bằng code**
+  theo đúng số liệu đề (máy vẽ, máy kiểm — như hình đề kho Hình), không dùng ảnh sách.
 - **Tỉ số phần trăm (CĐ14–17) — CEO 09/10:** tìm $a\%$ của $M$ viết $M\times a\%$ ($80\times 25\%=20$); tìm số biết $b\%$ của nó là $M$
   viết $M:b\%$ ($24:12\%=200$). KHÔNG dùng kiểu $200\times 6:100$ của VD 16. **Nhân hai tỉ số phần trăm phải viết thêm bước đổi ra số
   thập phân** cho HS dễ hiểu: $125\%\times 75\%=1,25\times 0,75=0,9375=93,75\%$.
 - **Chuyển động (CĐ25–29):** dòng "Đổi: 2,5 giờ = 2 giờ 30 phút" riêng; cộng/nhân số đo thời gian viết liền một dòng (VD 25.3).
+  **⭐ Bài chuyển động có quãng đường PHẢI có sơ đồ minh hoạ** (CEO 09/10: *"vẽ được sơ đồ minh hoạ là chuẩn, bài chuyển động rất cần"*) —
+  sách không vẽ nhưng kho vẽ: `Ta có sơ đồ:` ngay sau `Bài giải`, máy vẽ `scripts/kho/so-do-chuyen-dong.mjs` (mô tả `"loai": "chuyen_dong"`:
+  điểm đúng tỉ lệ km/m · mũi tên xe kèm vận tốc · khoảng cách có nhãn, máy kiểm nhãn số khớp vị trí · cầu/đoàn tàu là đoạn đậm). Bài
+  chuyển động có tỉ số (CĐ28) vẽ THÊM sơ đồ đoạn thẳng tỉ số (CEO: vẽ được sơ đồ minh hoạ là chuẩn) — khác hai tỉ số CĐ8.
+- **Cấu tạo số (Ôn IV) — CEO 09/10:** bài **thêm / bớt chữ số bên trái, bên phải** là **bài toán tỉ số** ⇒ giải bằng **sơ đồ** (số cũ $1$ phần,
+  số mới $10$ phần và $c$…). Bài **đề cho sẵn cấu tạo số** (vd $\overline{abcd}+\overline{abc}+\overline{ab}+a=3132$, $7\times\overline{ab}=\overline{3ab}$)
+  ⇒ **giải như cấu tạo số**: phân tích số theo hàng, viết rõ dấu nhân ($\overline{3ab}=300+\overline{ab}$; $\overline{abcd}=a\times 1000+b\times 100+c\times 10+d$),
+  "bớt cả hai vế" như 4T CĐ12 — cấm viết tắt $100a$, cấm "chuyển vế".
 - **Nhiều cách (CEO 08/10):** sách hay cho 2–3 cách. Claude **không tự chọn** — nêu các cách để CEO chốt **một cách chính** cho cả dạng (bảng §2b);
   Phần 2 chỉ trình bày cách chính.
 - **Sơ đồ (CEO 08/10):** dạng nào sách có sơ đồ thì kho có sơ đồ (*"có sơ đồ vẫn là tốt nhất"*). Ngoại lệ: **hai tỉ số (CĐ8) không sơ đồ** — cách chuẩn là phân số của đại lượng không đổi.
@@ -251,3 +262,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 08/10 | Lô sách 1 — câu hỏi 3 (hai tỉ số) | *"OK. Cách chuẩn của hai tỉ số là không dùng sơ đồ."* | CĐ8 hai tỉ số: phân số của đại lượng không đổi, KHÔNG sơ đồ (ngoại lệ có chủ đích của luật "có tỉ số ⇒ có sơ đồ"). |
 | 09/10 | Bảng nhiều cách §2b | Chốt: *"A: số to thì phải dùng cách 2, số bé mới dùng cách 1, ưu tiên cách 2 · B: 1 · C: 3 · D: cách 2, cách 1 để làm quen thôi, dùng khi giảng bài · E: 2 · F: 1."* | §2b cột Chốt. Lô sách 1 đã khớp cả 6 (câu 1, 11, 12, 14, 25) — không câu nào làm lại. Bài học: **lời giải kho ≠ bài giảng** — cách "để làm quen" (D①) thuộc giáo án GV, không vào kho. |
 | 09/10 | Lô sách 2 — 2 câu hỏi | *"1. Kiểu 1. 2. Có, viết thêm cho dễ hiểu."* | §2b dòng G chốt ①; §1: nhân hai tỉ số phần trăm viết thêm bước đổi số thập phân — đã sửa lô 2 câu 24, 26. |
+| 09/10 | Lô 3 + lô 4 — 4 câu hỏi | *"1. OK · 2. Câu đấy nên viết đầy đủ là Tam giác AMC và ABC có chung đường cao hạ từ … suy ra … · 3. Vẽ được sơ đồ minh hoạ là chuẩn. Bài chuyển động rất cần · 4. Bài thêm bớt chữ số bên trái bên phải là bài toán tỉ số, giải kiểu sơ đồ được. Còn bài đề cho cấu tạo số thì giải như cấu tạo số."* | §1: hình hỏng vẽ lại bằng code; tỉ số diện tích viết đầy đủ câu (sửa lô 3, 7 dòng); chuyển động bắt buộc sơ đồ minh hoạ — máy vẽ mới `so-do-chuyen-dong.mjs`, chèn 11 câu lô 4; cấu tạo số tách 2 loại. |

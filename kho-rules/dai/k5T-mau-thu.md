@@ -1864,7 +1864,7 @@ Bài giải
 
 Vì $BM=\dfrac{1}{3}BC$ nên $MC=\dfrac{2}{3}BC$.
 
-$\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$ (chung đường cao hạ từ A đến BC)
+Tam giác AMC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\dfrac{S_{AMC}}{S_{ABC}}=\dfrac{MC}{BC}=\dfrac{2}{3}$
 
 $S_{AMC}=\dfrac{2}{3}\times S_{ABC}=\dfrac{2}{3}\times 96=64\ (\text{cm}^2)$
 
@@ -1889,11 +1889,11 @@ Tam giác CMN và tam giác ABC không có chung đường cao ⇒ đi qua **tam
 
 Bài giải
 
-$\dfrac{S_{CMN}}{S_{CMA}}=\dfrac{CN}{CA}=\dfrac{1}{3}$ (chung đường cao hạ từ M đến AC)
+Tam giác CMN và tam giác CMA có chung đường cao hạ từ M xuống AC, suy ra $\dfrac{S_{CMN}}{S_{CMA}}=\dfrac{CN}{CA}=\dfrac{1}{3}$
 
 $S_{CMA}=5\times 3=15\ (\text{cm}^2)$
 
-$\dfrac{S_{CMA}}{S_{CBA}}=\dfrac{CM}{CB}=\dfrac{1}{2}$ (chung đường cao hạ từ A đến BC)
+Tam giác CMA và tam giác CBA có chung đường cao hạ từ A xuống BC, suy ra $\dfrac{S_{CMA}}{S_{CBA}}=\dfrac{CM}{CB}=\dfrac{1}{2}$
 
 $S_{ABC}=15\times 2=30\ (\text{cm}^2)$
 
@@ -1922,11 +1922,11 @@ Nối B với E.
 
 Vì AE gấp đôi EC nên $AE=\dfrac{2}{3}AC$.
 
-$\dfrac{S_{ABE}}{S_{ABC}}=\dfrac{AE}{AC}=\dfrac{2}{3}$ (chung đường cao hạ từ B đến AC)
+Tam giác ABE và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\dfrac{S_{ABE}}{S_{ABC}}=\dfrac{AE}{AC}=\dfrac{2}{3}$
 
 $S_{ABE}=\dfrac{2}{3}\times 150=100\ (\text{cm}^2)$
 
-$\dfrac{S_{AED}}{S_{ABE}}=\dfrac{AD}{AB}=\dfrac{1}{2}$ (chung đường cao hạ từ E đến AB)
+Tam giác AED và tam giác ABE có chung đường cao hạ từ E xuống AB, suy ra $\dfrac{S_{AED}}{S_{ABE}}=\dfrac{AD}{AB}=\dfrac{1}{2}$
 
 $S_{AED}=\dfrac{1}{2}\times 100=50\ (\text{cm}^2)$
 
@@ -1948,9 +1948,9 @@ Mấu chốt: đoạn AM chia tam giác ABC thành hai tam giác ABM và ACM; đ
 
 Bài giải
 
-$\dfrac{S_{NBM}}{S_{ABM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$ (chung đường cao hạ từ B đến AM)
+Tam giác NBM và tam giác ABM có chung đường cao hạ từ B xuống AM, suy ra $\dfrac{S_{NBM}}{S_{ABM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$
 
-$\dfrac{S_{NCM}}{S_{ACM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$ (chung đường cao hạ từ C đến AM)
+Tam giác NCM và tam giác ACM có chung đường cao hạ từ C xuống AM, suy ra $\dfrac{S_{NCM}}{S_{ACM}}=\dfrac{NM}{AM}=\dfrac{1}{2}$
 
 $S_{NBC}=S_{NBM}+S_{NCM}=\dfrac{1}{2}\times\left(S_{ABM}+S_{ACM}\right)=\dfrac{1}{2}\times S_{ABC}$
 
@@ -2421,6 +2421,10 @@ Mấu chốt: vận tốc $=$ quãng đường : **thời gian xe thật sự ch
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: Hà Nội — Thái Bình 154 km; ô tô đi từ Hà Nội, vận tốc ? km/giờ](so-do/5T-LT-25-7.svg)
+
 Thời gian ô tô đi từ Hà Nội đến Thái Bình (kể cả nghỉ) là: $8$ giờ $35$ phút $-6$ giờ $=2$ giờ $35$ phút
 
 Thời gian ô tô thật sự chạy là: $2$ giờ $35$ phút $-15$ phút $=2$ giờ $20$ phút
@@ -2444,6 +2448,10 @@ Chia hành trình thành **ba khoảng thời gian**: chặng $40$ km với $50$
 **Phần 2. Trình bày**
 
 Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: A — D 40 km (xe hỏng, sửa 45 phút) — B; AB 103 km; 50 km/giờ rồi 45 km/giờ](so-do/5T-LT-25-12.svg)
 
 Thời gian đi $40$ km đầu là: $40:50=0,8$ (giờ) $=48$ phút
 
@@ -2471,6 +2479,10 @@ Hai xe đi **ngược chiều, cùng lúc** ⇒ mỗi giờ khoảng cách giữ
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: xe từ A 45 km/giờ và xe từ B 55 km/giờ đi ngược chiều, gặp nhau tại C; AB 240 km](so-do/5T-LT-26-4.svg)
+
 Tổng vận tốc của hai xe là: $45+55=100$ (km/giờ)
 
 Thời gian hai xe đi đến chỗ gặp nhau là: $240:100=2,4$ (giờ)
@@ -2497,6 +2509,10 @@ Lúc xe máy xuất phát, hai người cách nhau $40$ km. Đi **cùng chiều*
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: lúc xe máy khởi hành ở A thì xe đạp ở D cách A 40 km; hai xe cùng chiều, xe máy đuổi kịp tại C](so-do/5T-LT-26-8.svg)
+
 Hiệu vận tốc của hai người là: $50-20=30$ (km/giờ)
 
 Thời gian để xe máy đuổi kịp xe đạp là: $40:30=\dfrac{4}{3}$ (giờ)
@@ -2519,13 +2535,13 @@ Mấu chốt: đi **ngược chiều** gặp nhau sau $2$ giờ ⇒ **tổng v�
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: ngược chiều sau 2 giờ gặp nhau; cùng chiều sau 8 giờ đuổi kịp; AB 80 km; sơ đồ tổng 40 km/giờ – hiệu 10 km/giờ](so-do/5T-LT-26-12.svg)
+
 Tổng vận tốc của hai xe là: $80:2=40$ (km/giờ)
 
 Hiệu vận tốc của hai xe là: $80:8=10$ (km/giờ)
-
-Ta có sơ đồ:
-
-![Sơ đồ: Vận tốc xe đạp 1 đoạn; Vận tốc xe máy 1 đoạn và 10 km/giờ; tổng 40 km/giờ](so-do/5T-LT-26-12.svg)
 
 Vận tốc xe đạp là: $\left(40-10\right):2=15$ (km/giờ)
 
@@ -2546,6 +2562,10 @@ Mấu chốt: hai người **không đi cùng lúc** ⇒ phải đưa về lúc 
 **Phần 2. Trình bày**
 
 Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: AB 186 km; xe từ A đi lúc 7 giờ (30 km/giờ), đến 8 giờ đi được 30 km; xe từ B đi lúc 8 giờ (35 km/giờ); gặp nhau tại C](so-do/5T-LT-26-14.svg)
 
 Từ $7$ giờ đến $8$ giờ, người đi từ A đi được: $30\times 1=30$ (km)
 
@@ -2575,6 +2595,10 @@ Vận tốc xuôi $=$ vận tốc ca nô $+$ vận tốc dòng nước; vận t�
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: AB 30 km; xuôi dòng A → B 1 giờ 30 phút; ngược dòng B → A 2 giờ](so-do/5T-LT-27-5.svg)
+
 Đổi: $1$ giờ $30$ phút $=1,5$ giờ
 
 Vận tốc ca nô khi xuôi dòng là: $30:1,5=20$ (km/giờ)
@@ -2598,6 +2622,10 @@ Mấu chốt: lá cây trôi **bằng vận tốc dòng nước**. Đề không 
 **Phần 2. Trình bày**
 
 Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: quãng sông AB; xuôi dòng 10 giờ; ngược dòng 15 giờ; lá trôi ? giờ](so-do/5T-LT-27-7.svg)
 
 Mỗi giờ ca nô xuôi dòng đi được: $1:10=\dfrac{1}{10}$ (quãng sông AB)
 
@@ -2679,6 +2707,10 @@ Chú ý bẫy: vận tốc trung bình **không phải** $(60+90):2=75$. Vận t
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: AB 160 km, M chính giữa; nửa đầu 60 km/giờ, nửa sau 90 km/giờ](so-do/5T-LT-29-2.svg)
+
 Mỗi nửa quãng đường dài là: $160:2=80$ (km)
 
 Thời gian đi nửa quãng đường đầu là: $80:60=\dfrac{4}{3}$ (giờ)
@@ -2705,6 +2737,10 @@ Mấu chốt (VD 29.2 của sách): xe lửa **qua hết** một cây cầu thì
 
 Bài giải
 
+Ta có sơ đồ:
+
+![Sơ đồ: xe lửa ? m nối với cầu 800 m; đuôi xe lửa đi hết chiều dài xe lửa và cầu trong 50 giây](so-do/5T-LT-29-7.svg)
+
 Đổi: $72$ km/giờ $=20$ m/giây; $0,8$ km $=800$ m
 
 Quãng đường xe lửa đi trong $50$ giây là: $20\times 50=1000$ (m)
@@ -2726,6 +2762,10 @@ Qua cột điện: xe lửa đi quãng đường bằng **chiều dài của ch�
 **Phần 2. Trình bày**
 
 Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: qua cột điện đuôi xe lửa đi hết chiều dài xe lửa (20 giây); qua cầu 480 m đi hết chiều dài xe lửa và cầu (50 giây)](so-do/5T-LT-29-10.svg)
 
 Thời gian xe lửa đi hết chiều dài cây cầu là: $50-20=30$ (giây)
 
