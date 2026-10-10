@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cốc nước nghiêng · Thể tích bằng tích phân</title>
+<meta name="description" content="Mô hình 3D xoay được: nghiêng cốc nước hình trụ, khối nước thành cái nêm, cắt lát theo ba hướng rồi cộng lại để ra thể tích 240 cm³.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+/* MÔ HÌNH 3D CHO BÀI TẬP (spec-day-hinh-3d.md) — bài mẫu: Câu 43, cốc nước nghiêng.
+   Cùng thế giới tối với toan-site (nền không gian, xanh quét + hổ phách) nhưng KHÔNG theo nhịp du hành:
+   một sân khấu 3D bên trái, một bảng lời giải bên phải, thanh bước ở đáy (GV bấm từng bước trên TV). */
+:root{
+  --void:#040914; --ink:#e8f1ff; --ink-2:#c3d2ec; --muted:#8fa3c4;
+  --card:#0b1630; --card-2:#101f42; --line:rgba(125,170,255,.24);
+  --scan:#5ce1ff; --amber:#ffb547; --ok:#6ee7a8;
+  --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-data:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{font-size:clamp(15px,.6vw + 9.5px,22px)}
+html,body{margin:0;height:100%;background:var(--void);color:var(--ink);font-family:var(--f-ui);overflow:hidden}
+button{font:inherit;color:inherit}
+.app{height:100vh;height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) clamp(20rem,32vw,29rem);grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"stage panel" "steps steps"}
+
+/* ── Sân khấu 3D ── */
+.stage{grid-area:stage;position:relative;min-width:0;min-height:0;overflow:hidden;touch-action:none;cursor:grab;
+  background:radial-gradient(900px 520px at 70% -10%,rgba(92,225,255,.10),transparent 60%),radial-gradient(700px 420px at 0% 110%,rgba(255,181,71,.06),transparent 60%),var(--void)}
+.stage.drag{cursor:grabbing}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.lb{position:absolute;left:0;top:0;white-space:nowrap;font:italic 700 1.2rem/1 "Times New Roman",Times,serif;color:#fff;
+  text-shadow:0 0 4px var(--void),0 0 9px var(--void),0 1px 2px var(--void);will-change:transform}
+.lb.hot{color:var(--amber)}
+.lb.dim{font:600 .8rem/1 var(--f-data);color:var(--ink);background:rgba(4,9,20,.78);border:1px solid var(--line);border-radius:999px;padding:.3em .65em;text-shadow:none}
+.head{position:absolute;left:1rem;top:.85rem;pointer-events:none;max-width:60%}
+.head .eyebrow{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.head h1{margin:.25rem 0 0;font:800 1.45rem/1.1 var(--f-ui);letter-spacing:-.01em}
+.views{position:absolute;right:.8rem;top:.8rem;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.4rem;max-width:55%}
+.views button{cursor:pointer;background:rgba(11,22,48,.82);border:1px solid var(--line);border-radius:999px;padding:.5em .95em;font:600 .78rem/1 var(--f-ui);color:var(--ink-2);min-height:2.4em}
+.views button:hover{border-color:rgba(92,225,255,.7);color:var(--ink)}
+.views button[aria-pressed="false"]{color:var(--muted)}
+.hint{position:absolute;left:1rem;bottom:.8rem;font:500 .72rem/1.3 var(--f-data);color:var(--muted);transition:opacity .4s}
+.hint.off{opacity:0}
+
+/* ── Bảng lời giải ── */
+.panel{grid-area:panel;min-width:0;min-height:0;overflow:auto;background:var(--card);border-left:1px solid var(--line);padding:1.15rem 1.2rem 1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.panel>*{margin:0;flex-shrink:0}
+.kicker{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--scan)}
+.panel h2{font:800 1.5rem/1.15 var(--f-ui);letter-spacing:-.01em;text-wrap:balance}
+.panel p{font:400 .98rem/1.55 var(--f-ui);color:var(--ink-2)}
+.panel p b{color:var(--ink);font-weight:700}
+.panel p i{font-family:"Times New Roman",Times,serif;font-size:1.1em;color:var(--ink)}
+.note{font-size:.88rem!important;color:var(--muted)!important;border-left:2px solid var(--line);padding-left:.75rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chips span{font:600 .85rem/1 var(--f-data);background:var(--card-2);border:1px solid var(--line);border-radius:999px;padding:.55em .9em}
+.chips .q{color:var(--amber);border-color:rgba(255,181,71,.5)}
+.btn{cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.5em;background:var(--amber);color:#1a1000;border:0;border-radius:.8rem;padding:.8em 1.2em;font:700 1rem/1 var(--f-ui);min-height:2.9em}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn svg{width:1em;height:1em;fill:currentColor}
+:is(button,input,a):focus-visible{outline:2px solid var(--scan);outline-offset:3px}
+.row{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.ro{display:flex;flex-direction:column;gap:.15rem}
+.ro small{font:600 .64rem/1.2 var(--f-data);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ro b{font:600 1.5rem/1 var(--f-data);color:var(--ink)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2.2rem;background:transparent;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:.5rem;border-radius:999px;background:linear-gradient(90deg,var(--scan),var(--amber))}
+input[type=range]::-moz-range-track{height:.5rem;border-radius:999px;background:linear-gradient(90deg,var(--scan),var(--amber))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:1.7rem;height:1.7rem;margin-top:-.6rem;border-radius:50%;background:#fff;border:.28rem solid var(--amber);box-shadow:0 2px 8px rgba(0,0,0,.5)}
+input[type=range]::-moz-range-thumb{width:1.2rem;height:1.2rem;border-radius:50%;background:#fff;border:.28rem solid var(--amber)}
+.sl{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.7rem}
+.sl .nm{font:italic 700 1.3rem/1 "Times New Roman",Times,serif}
+.sl output{font:600 1.05rem/1 var(--f-data);min-width:4.6ch;text-align:right}
+.cond{list-style:none;padding:0;display:grid;gap:.5rem}
+.cond li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.6rem;background:var(--card-2);border:1px solid var(--line);border-radius:.8rem;padding:.65rem .8rem;font:500 .92rem/1.3 var(--f-ui)}
+.cond li>i{width:1.25rem;height:1.25rem;border-radius:50%;border:2px solid var(--muted);position:relative}
+.cond li em{font:600 .78rem/1 var(--f-data);font-style:normal;color:var(--muted);text-align:right}
+.cond li.ok{border-color:rgba(110,231,168,.6)}
+.cond li.ok>i{background:var(--ok);border-color:var(--ok)}
+.cond li.ok>i::after{content:"";position:absolute;left:28%;top:10%;width:32%;height:58%;border:solid #04210f;border-width:0 .16rem .16rem 0;transform:rotate(42deg)}
+.cond li.ok em{color:var(--ok)}
+.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+.tabs button{cursor:pointer;background:var(--card-2);border:1px solid var(--line);border-radius:.7rem;padding:.55rem .4rem;display:flex;flex-direction:column;align-items:center;gap:.2rem;font:700 .8rem/1.15 var(--f-ui);color:var(--ink-2);text-align:center}
+.tabs button small{font:500 .68rem/1.2 var(--f-ui);color:var(--muted)}
+.tabs button[aria-selected="true"]{background:rgba(255,181,71,.14);border-color:var(--amber);color:var(--ink)}
+.tabs button[aria-selected="true"] small{color:var(--amber)}
+.fx{background:rgba(92,225,255,.05);border:1px solid var(--line);border-radius:.8rem;padding:.75rem .85rem;display:grid;gap:.6rem;overflow-x:auto}
+.fx .katex{font-size:1.06em}
+.fx .res{border-top:1px dashed var(--line);padding-top:.6rem;color:var(--amber)}
+.cap{font-size:.8rem!important;color:var(--muted)!important;margin-top:-.35rem!important}
+.seg{display:flex;gap:.35rem}
+.seg button{cursor:pointer;flex:1;background:var(--card-2);border:1px solid var(--line);border-radius:.6rem;padding:.6em 0;font:600 .95rem/1 var(--f-data);color:var(--ink-2);min-height:2.5em}
+.seg button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#1a1000}
+.sum{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.sum .lbl{font:500 .9rem/1.2 var(--f-ui);color:var(--ink-2)}
+.sum .big{font:600 2.3rem/1 var(--f-data);color:var(--amber);font-variant-numeric:tabular-nums}
+.sum .unit{font:600 .9rem/1 var(--f-data);color:var(--muted)}
+.sum .off{font:600 .8rem/1 var(--f-data);color:var(--muted);margin-left:auto}
+
+/* ── Thanh bước ── */
+.steps{grid-area:steps;display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem calc(.5rem + env(safe-area-inset-bottom,0px));background:#070f22;border-top:1px solid var(--line)}
+.steps ol{list-style:none;margin:0;padding:0;display:flex;gap:.35rem;flex:1;justify-content:center;min-width:0}
+.steps li{min-width:0}
+.chip{cursor:pointer;display:flex;align-items:center;gap:.5em;background:transparent;border:1px solid transparent;border-radius:999px;padding:.4em .85em .4em .4em;font:600 .82rem/1 var(--f-ui);color:var(--muted);white-space:nowrap;min-height:2.6em}
+.chip .no{display:grid;place-items:center;width:1.9em;height:1.9em;border-radius:50%;background:var(--card-2);border:1px solid var(--line);font:600 .9em/1 var(--f-data);color:var(--ink-2)}
+.chip:hover{color:var(--ink)}
+.chip[aria-current="step"]{background:rgba(92,225,255,.1);border-color:rgba(92,225,255,.55);color:var(--ink)}
+.chip[aria-current="step"] .no{background:var(--scan);border-color:var(--scan);color:#00222b}
+.chip.done .no{border-color:rgba(110,231,168,.6);color:var(--ok)}
+.nav{cursor:pointer;background:var(--card-2);border:1px solid var(--line);border-radius:.7rem;padding:.7em 1.1em;font:700 .9rem/1 var(--f-ui);min-height:2.8em;white-space:nowrap}
+.nav.next{background:var(--scan);border-color:var(--scan);color:#00222b}
+.nav:disabled{opacity:.35;cursor:default}
+.err{position:fixed;inset:auto 0 0 0;padding:1rem;background:#5a1020;color:#fff;font:600 1rem var(--f-ui);z-index:9}
+
+@media (max-width:1100px){.chip .tx{display:none}.chip{padding:.3em}}
+@media (max-aspect-ratio:1/1),(max-width:720px){
+  .app{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,46fr) minmax(0,54fr) auto;grid-template-areas:"stage" "panel" "steps"}
+  .panel{border-left:0;border-top:1px solid var(--line)}
+  .head h1{font-size:1.15rem}
+  .head .eyebrow{display:none}
+  .views button{padding:.45em .8em;font-size:.72rem}
+  .views{max-width:48%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="stage" id="stage">
+    <canvas id="cv" aria-label="Mô hình 3D cốc nước, kéo để xoay"></canvas>
+    <div class="labels" id="labels" aria-hidden="true"></div>
+    <div class="head">
+      <div class="eyebrow">Toán 12 · Ứng dụng tích phân · Thể tích</div>
+      <h1>Cốc nước nghiêng</h1>
+    </div>
+    <div class="views">
+      <button type="button" data-view="mac_dinh" id="vDef">Góc ban đầu</button>
+      <button type="button" data-view="ngang">Nhìn ngang</button>
+      <button type="button" data-view="tren">Nhìn từ trên</button>
+      <button type="button" id="vCup" aria-pressed="true" hidden>Hiện cốc</button>
+    </div>
+    <div class="hint" id="hint">Kéo để xoay · cuộn hoặc chụm hai ngón để phóng to</div>
+  </div>
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+  <nav class="steps" aria-label="Các bước">
+    <button type="button" class="nav" id="prev">‹ Trước</button>
+    <ol id="chips"></ol>
+    <button type="button" class="nav next" id="next">Tiếp ›</button>
+  </nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineMaterial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script>
+(function () {
+'use strict'
+if (!window.THREE) { document.body.insertAdjacentHTML('beforeend', '<p class="err">Không tải được thư viện 3D — cần có mạng.</p>'); return }
+
+// ═══ 1. SỐ LIỆU CỦA BÀI (đổi bài = đổi khối này + mục 5) ═══
+const R = 6, H = 10                      // bán kính lòng đáy, chiều cao lòng cốc (cm)
+const TAN = H / R, ALPHA = Math.atan(TAN) // mặt nước lúc cuối nghiêng góc α với đáy, tan α = h/R
+const V0 = 2 * R * R * H / 3              // = 240 — thể tích nước (đáp số)
+const H0 = V0 / (Math.PI * R * R)         // mực nước khi cốc đứng ≈ 2,122
+
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches
+const $ = (s, r) => (r || document).querySelector(s)
+const $$ = (s, r) => [...(r || document).querySelectorAll(s)]
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v))
+const z0 = v => (Math.abs(v) < 5e-7 ? 0 : v)
+const fmt = (v, d = 2) => z0(v).toFixed(d).replace('.', ',').replace('-', '−')   // số hiển thị kiểu Việt: 2,12
+const tn = (v, d = 2) => z0(v).toFixed(d).replace('.', '{,}')                    // số trong công thức TeX
+function tex(el, s) {
+  if (!el) return
+  if (window.katex) { try { katex.render(s, el, { throwOnError: false }); return } catch (e) { /* rơi xuống chữ thường */ } }
+  el.textContent = s.replace(/\\[a-zA-Z]+|[{}]/g, ' ')
+}
+
+// ═══ 2. SÂN KHẤU: renderer, máy quay kéo-xoay, nét dày ═══
+const stage = $('#stage'), cv = $('#cv'), labelsEl = $('#labels')
+const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true })
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+const scene = new THREE.Scene()
+const camera = new THREE.PerspectiveCamera(32, 1, 0.5, 600)
+scene.add(camera)
+scene.add(new THREE.AmbientLight(0xffffff, 0.72))
+const headlight = new THREE.DirectionalLight(0xffffff, 0.62); headlight.position.set(-3, 6, 2); camera.add(headlight)
+
+// Nét dày (Line2) — TV cần nét ≥ 2px; WebGL thường chỉ vẽ được 1px. Thiếu thư viện thì lùi về nét 1px.
+const FAT = !!(THREE.Line2 && THREE.LineMaterial && THREE.LineGeometry)
+const lineMats = []
+function mkLine(P, o) {
+  o = o || {}
+  const color = o.color === undefined ? 0xffffff : o.color, width = o.width || 2, dashed = !!o.dashed, opacity = o.opacity === undefined ? 1 : o.opacity
+  let l
+  if (FAT) {
+    const g = new THREE.LineGeometry(); g.setPositions(P)
+    const m = new THREE.LineMaterial({ color, linewidth: width, transparent: true, opacity, depthWrite: false, depthTest: o.depthTest !== false, dashed, dashSize: 0.5, gapSize: 0.36 })
+    if (dashed) m.defines.USE_DASH = ''
+    if (o.depthFunc !== undefined) m.depthFunc = o.depthFunc
+    m.resolution.set(1, 1); lineMats.push(m)
+    l = new THREE.Line2(g, m)
+  } else {
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3))
+    const M = dashed ? THREE.LineDashedMaterial : THREE.LineBasicMaterial
+    const m = new M({ color, transparent: true, opacity, depthWrite: false, depthTest: o.depthTest !== false, dashSize: 0.5, gapSize: 0.36 })
+    if (o.depthFunc !== undefined) m.depthFunc = o.depthFunc
+    l = new THREE.Line(g, m)
+  }
+  l.userData.dashed = dashed
+  if (dashed) l.computeLineDistances()
+  l.renderOrder = o.order === undefined ? 5 : o.order
+  l.frustumCulled = false
+  return l
+}
+function setLine(l, P) {   // cập nhật toạ độ; cùng số điểm thì ghi đè tại chỗ (gọi mỗi khung hình)
+  if (!FAT) { l.geometry.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)) }
+  else {
+    const a = l.geometry.attributes.instanceStart, n = P.length / 3 - 1
+    if (a && a.data.array.length === n * 6) { const arr = a.data.array; for (let i = 0; i < n; i++) for (let k = 0; k < 6; k++) arr[i * 6 + k] = P[i * 3 + k]; a.data.needsUpdate = true }
+    else l.geometry.setPositions(P)
+  }
+  if (l.userData.dashed) l.computeLineDistances()
+}
+
+// Máy quay: góc phương vị az, góc từ đỉnh pol, khoảng cách dist quanh điểm ngắm (tx,ty,tz); view đuổi theo goal.
+const view = { az: -1.9, pol: 1.3, dist: 50, tx: 0, ty: 6, tz: 4 }, goal = Object.assign({}, view)
+let baseDist = 50
+const ANG = {   // máy quay đứng phía −x: trục z chạy sang phải màn hình, đường kính AB (trục x) chạy theo chiều sâu
+  nghieng: { az: -Math.PI / 2 - 0.34, pol: 1.3 },
+  sach: { az: -Math.PI / 2 + 0.16, pol: 0.9 },
+  ngang: { az: -Math.PI / 2, pol: 1.52 },
+  tren: { az: -Math.PI / 2, pol: 0.14 },
+  cat_x: { az: -Math.PI / 2 + 0.16, pol: 0.9 },    // lát ⟂ AB: nhìn dọc AB thấy tam giác gần chính diện
+  cat_y: { az: -Math.PI / 2 + 0.16, pol: 0.6 },    // lát song song đáy: nhìn chếch từ trên xuống
+  cat_z: { az: -Math.PI / 2 - 1.05, pol: 1.02 },   // lát song song AB: vòng sang phía mặt nước để thấy hình chữ nhật
+}
+const CTX = { nghieng: { tx: 0, ty: 6.3, tz: 4.3, r: 13.4 }, sach: { tx: 0, ty: 4.5, tz: 1.8, r: 9.6 } }
+function fitDist(r) {
+  const half = THREE.MathUtils.degToRad(camera.fov / 2), hh = Math.atan(Math.tan(half) * camera.aspect)
+  return Math.max(r / Math.sin(half), r / Math.sin(hh)) * 1.03
+}
+function setView(name, instant) {
+  const c = CTX[ctxName()], a = ANG[name === 'mac_dinh' ? ctxName() : name]
+  let az = a.az; while (az - view.az > Math.PI) az -= 2 * Math.PI; while (az - view.az < -Math.PI) az += 2 * Math.PI
+  baseDist = fitDist(c.r)
+  Object.assign(goal, { az, pol: a.pol, tx: c.tx, ty: c.ty, tz: c.tz, dist: baseDist })
+  if (instant) Object.assign(view, goal)
+}
+function placeCamera() {
+  const sp = Math.sin(view.pol)
+  camera.position.set(view.tx + view.dist * sp * Math.sin(view.az), view.ty + view.dist * Math.cos(view.pol), view.tz + view.dist * sp * Math.cos(view.az))
+  camera.lookAt(view.tx, view.ty, view.tz)
+}
+const ptr = new Map(); let pinchD = 0
+stage.addEventListener('pointerdown', e => {
+  if (e.target.closest('button,a')) return
+  ptr.set(e.pointerId, [e.clientX, e.clientY]); try { stage.setPointerCapture(e.pointerId) } catch (_) { }
+  stage.classList.add('drag'); $('#hint').classList.add('off')
+  if (ptr.size === 2) { const p = [...ptr.values()]; pinchD = Math.hypot(p[0][0] - p[1][0], p[0][1] - p[1][1]) }
+})
+stage.addEventListener('pointermove', e => {
+  const p = ptr.get(e.pointerId); if (!p) return
+  const dx = e.clientX - p[0], dy = e.clientY - p[1]; p[0] = e.clientX; p[1] = e.clientY
+  if (ptr.size === 1) { goal.az -= dx * 0.0065; goal.pol = clamp(goal.pol - dy * 0.0065, 0.12, 2.7); view.az = goal.az; view.pol = goal.pol }
+  else if (ptr.size === 2) {
+    const q = [...ptr.values()], d = Math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1])
+    if (pinchD > 0 && d > 0) goal.dist = clamp(goal.dist * pinchD / d, baseDist * 0.4, baseDist * 2.4)
+    pinchD = d
+  }
+})
+const ptrUp = e => { ptr.delete(e.pointerId); pinchD = 0; if (!ptr.size) stage.classList.remove('drag') }
+stage.addEventListener('pointerup', ptrUp); stage.addEventListener('pointercancel', ptrUp)
+stage.addEventListener('wheel', e => { e.preventDefault(); goal.dist = clamp(goal.dist * Math.exp(e.deltaY * 0.0012), baseDist * 0.4, baseDist * 2.4); $('#hint').classList.add('off') }, { passive: false })
+
+// ═══ 3. TRẠNG THÁI ═══
+const S = {
+  step: 1,
+  theta: 0,          // góc nghiêng của cốc (0 → α)
+  frozen: false,     // true = nước "đông cứng" thành cái nêm, gắn theo cốc; false = nước lỏng, mặt nước luôn nằm ngang
+  melted: false,     // bước 6: đã dựng cốc đứng cho nước chảy lại
+  playing: false,
+  axis: 'x', t: { x: 2.4, y: 4, z: 3.6 },   // hướng cắt + vị trí lát
+  n: 8, reveal: 8,   // số lát khi cộng + số lát đã hiện (hoạt cảnh)
+  showCup: true,
+}
+let token = 0, dirty = true, skew = 0
+const clock = () => performance.now() + skew   // đồng hồ của mọi hoạt cảnh; skew chỉ khác 0 khi máy soát tua nhanh (__dbg.run)
+const anims = []
+const ctxName = () => (S.step <= 2 ? 'nghieng' : 'sach')
+
+// ═══ 4. VẬT THỂ ═══
+// Hệ toạ độ CỦA CỐC: đáy nằm trong mặt y = 0, tâm đáy O ở gốc, trục cốc = trục y.
+// Đường kính AB nằm trên trục x. Khối nước cuối cùng: 0 ≤ y ≤ z·tanα, z ≥ 0 (điểm chạm miệng I(0; h; R)).
+// Cốc nghiêng quanh mép đáy K(0;0;R) đặt trên mặt bàn: pivot ở K, quay quanh trục x góc theta.
+const pivot = new THREE.Group(); pivot.position.set(0, 0, R); scene.add(pivot)
+const cup = new THREE.Group(); cup.position.set(0, 0, -R); pivot.add(cup)
+
+// Mặt bàn (mốc nằm ngang để thấy mặt nước luôn song song với bàn)
+const table = new THREE.Mesh(new THREE.CircleGeometry(24, 96), new THREE.MeshBasicMaterial({ color: 0x7daaff, transparent: true, opacity: 0.05, depthWrite: false, side: THREE.DoubleSide }))
+table.rotation.x = -Math.PI / 2; table.position.set(0, -0.02, 4); table.renderOrder = 0; scene.add(table)
+const circle = (r, y, n) => { const P = []; for (let i = 0; i <= n; i++) { const a = i / n * Math.PI * 2; P.push(r * Math.cos(a), y, r * Math.sin(a)) } return P }
+{ const ring = mkLine(circle(24, 0, 128), { color: 0x7daaff, width: 1.5, opacity: 0.3, order: 0 }); ring.position.set(0, -0.02, 4); scene.add(ring) }
+
+// Cốc thủy tinh
+const glass = new THREE.Group(); cup.add(glass)
+const glassMat = new THREE.MeshBasicMaterial({ color: 0xbfd6ff, transparent: true, opacity: 0.07, side: THREE.DoubleSide, depthWrite: false })
+{ const wall = new THREE.Mesh(new THREE.CylinderGeometry(R, R, H, 80, 1, true), glassMat); wall.position.y = H / 2; wall.renderOrder = 1; glass.add(wall)
+  const bot = new THREE.Mesh(new THREE.CircleGeometry(R, 80), glassMat); bot.rotation.x = -Math.PI / 2; bot.renderOrder = 1; glass.add(bot) }
+const glassLines = [mkLine(circle(R, H, 120), { color: 0xe6efff, width: 2.6, order: 4 }), mkLine(circle(R, 0, 120), { color: 0xe6efff, width: 2, order: 4 }),
+  mkLine([0, 0, 0, 0, H, 0], { color: 0xe6efff, width: 2.6, order: 4 }), mkLine([0, 0, 0, 0, H, 0], { color: 0xe6efff, width: 2.6, order: 4 })]
+glassLines.forEach(l => glass.add(l))
+
+// Khối nước: lưới tự dựng "mọi điểm trong đáy, cao từ 0 tới mặt phẳng y = z·t + c" (t = tan góc nghiêng, c = độ cao tại trục)
+const NZ = 60, NX = 22, nTop = (NZ + 1) * (NX + 1), oW = nTop * 2, nVert = oW + (NZ + 1) * 4
+const wPos = new Float32Array(nVert * 3), wNor = new Float32Array(nVert * 3)
+const waterGeo = new THREE.BufferGeometry()
+{ const idx = []
+  for (let i = 0; i < NZ; i++) for (let j = 0; j < NX; j++) { const a = i * (NX + 1) + j, b = a + 1, c = a + NX + 1, d = c + 1; idx.push(a, c, b, b, c, d, nTop + a, nTop + b, nTop + c, nTop + b, nTop + d, nTop + c) }
+  for (let i = 0; i < NZ; i++) { const a = oW + i * 4, b = a + 4; idx.push(a, a + 1, b, a + 1, b + 1, b, a + 2, b + 2, a + 3, a + 3, b + 2, b + 3) }
+  waterGeo.setAttribute('position', new THREE.BufferAttribute(wPos, 3)); waterGeo.setAttribute('normal', new THREE.BufferAttribute(wNor, 3)); waterGeo.setIndex(idx) }
+const waterMat = new THREE.MeshPhongMaterial({ color: 0x2fb9e8, transparent: true, opacity: 0.52, side: THREE.DoubleSide, depthWrite: false, shininess: 70, specular: 0x335566, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+const water = new THREE.Mesh(waterGeo, waterMat); water.renderOrder = 3; water.frustumCulled = false; cup.add(water)
+// Lượt vẽ "chỉ ghi độ sâu" của khối nêm — nhờ nó các cạnh bị che vẽ được bằng NÉT ĐỨT như hình trong sách.
+const prepass = new THREE.Mesh(waterGeo, new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 }))
+prepass.renderOrder = -10; prepass.frustumCulled = false; cup.add(prepass)
+
+const W = { t: 0, c: H0, zmin: -R, gap: H - H0, wedge: false }
+const rowZ = new Float32Array(NZ + 1), rowW = new Float32Array(NZ + 1), rowY = new Float32Array(NZ + 1)
+const edgeP = new Array((2 * (NZ + 1) + 1) * 3).fill(0)
+const waterEdge = mkLine(edgeP, { color: 0xa9f1ff, width: 2.6, order: 5 }); cup.add(waterEdge)          // viền mặt nước
+const chord = mkLine([0, 0, 0, 1, 0, 0], { color: 0xffb547, width: 4.5, order: 7, depthTest: false }); cup.add(chord)   // mép nước trên đáy
+function buildWater(t, c) {
+  const zmin = t > 1e-9 ? clamp(-c / t, -R, R) : -R
+  const nl = Math.hypot(1, t), ny = 1 / nl, nz = -t / nl
+  const put = (k, x, y, z, a, b, d) => { wPos[k] = x; wPos[k + 1] = y; wPos[k + 2] = z; wNor[k] = a; wNor[k + 1] = b; wNor[k + 2] = d }
+  for (let i = 0; i <= NZ; i++) {
+    const z = zmin + (R - zmin) * (1 - Math.cos(Math.PI * i / NZ)) / 2, w = Math.sqrt(Math.max(0, R * R - z * z)), y = clamp(z * t + c, 0, H)
+    rowZ[i] = z; rowW[i] = w; rowY[i] = y
+    for (let j = 0; j <= NX; j++) { const x = (-1 + 2 * j / NX) * w, k = (i * (NX + 1) + j) * 3; put(k, x, y, z, 0, ny, nz); put(k + nTop * 3, x, 0, z, 0, -1, 0) }
+    const q = (oW + i * 4) * 3, a = w / R, d = z / R
+    put(q, -w, 0, z, -a, 0, d); put(q + 3, -w, y, z, -a, 0, d); put(q + 6, w, 0, z, a, 0, d); put(q + 9, w, y, z, a, 0, d)
+  }
+  waterGeo.attributes.position.needsUpdate = true; waterGeo.attributes.normal.needsUpdate = true
+  let k = 0
+  for (let i = 0; i <= NZ; i++) { edgeP[k++] = -rowW[i]; edgeP[k++] = rowY[i]; edgeP[k++] = rowZ[i] }
+  for (let i = NZ; i >= 0; i--) { edgeP[k++] = rowW[i]; edgeP[k++] = rowY[i]; edgeP[k++] = rowZ[i] }
+  edgeP[k++] = -rowW[0]; edgeP[k++] = rowY[0]; edgeP[k++] = rowZ[0]
+  setLine(waterEdge, edgeP)
+  setLine(chord, [-rowW[0], 0, zmin, rowW[0], 0, zmin])
+  W.t = t; W.c = c; W.zmin = zmin; W.gap = H - Math.min(H, R * t + c)
+}
+// Mực nước khi cốc nghiêng: tìm c để thể tích phần nước = V0 (chia đôi). Thể tích = ∫ 2√(R²−z²)·kẹp(z·t+c; 0; h) dz.
+const QN = 360, qz = new Float32Array(QN), qw = new Float32Array(QN)
+for (let i = 0; i < QN; i++) { const z = -R + (i + 0.5) * 2 * R / QN; qz[i] = z; qw[i] = 2 * Math.sqrt(R * R - z * z) * 2 * R / QN }
+function vol(t, c) { let s = 0; for (let i = 0; i < QN; i++) { const y = qz[i] * t + c; s += qw[i] * (y <= 0 ? 0 : y >= H ? H : y) } return s }
+function level(t) { let lo = -R * t, hi = H; for (let k = 0; k < 44; k++) { const m = (lo + hi) / 2; if (vol(t, m) < V0) lo = m; else hi = m } return (lo + hi) / 2 }
+function updateWater() {
+  if (S.frozen) { if (!W.wedge) { buildWater(TAN, 0); W.wedge = true } return }
+  W.wedge = false
+  const end = S.theta >= ALPHA - 1e-6, t = end ? TAN : Math.tan(S.theta)
+  buildWater(t, end ? 0 : level(t))
+}
+
+// Cạnh của cái nêm: mỗi cạnh vẽ 2 lần — nét liền (chỗ nhìn thấy) + nét đứt (chỗ bị khối che)
+const bookSolid = new THREE.Group(), bookDash = new THREE.Group(), consSolid = new THREE.Group(), consDash = new THREE.Group()
+cup.add(bookSolid, bookDash, consSolid, consDash)
+function pair(P, o, gs, gd) {
+  gs.add(mkLine(P, Object.assign({}, o, { depthFunc: THREE.LessEqualDepth })))
+  gd.add(mkLine(P, Object.assign({}, o, { width: (o.width || 2) * 0.8, opacity: (o.opacity || 1) * 0.75, dashed: true, depthFunc: THREE.GreaterDepth })))
+}
+{ const arcB = [], arcT = [], al = [], N = 72
+  for (let i = 0; i <= N; i++) { const a = i / N * Math.PI; arcB.push(R * Math.cos(a), 0, R * Math.sin(a)); arcT.push(R * Math.cos(a), H * Math.sin(a), R * Math.sin(a)) }
+  pair([-R, 0, 0, R, 0, 0], { color: 0xffb547, width: 3.4 }, bookSolid, bookDash)   // đường kính AB
+  pair(arcB, { color: 0xbff3ff, width: 3 }, bookSolid, bookDash)                    // nửa đường tròn đáy
+  pair(arcT, { color: 0xbff3ff, width: 3 }, bookSolid, bookDash)                    // nửa elip trên thành cốc
+  pair([0, 0, 0, 0, 0, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // OK
+  pair([0, 0, R, 0, H, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // KI
+  pair([0, 0, 0, 0, H, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // OI
+  for (let i = 0; i <= 16; i++) { const a = i / 16 * ALPHA; al.push(0, 1.7 * Math.sin(a), 1.7 * Math.cos(a)) }
+  pair(al, { color: 0xffb547, width: 2.2 }, consSolid, consDash)                                // cung góc α
+  pair([0, 0, R - 0.8, 0, 0.8, R - 0.8, 0, 0.8, R], { color: 0xffffff, width: 1.6, opacity: 0.8 }, consSolid, consDash)   // góc vuông tại K
+}
+const wSil = [mkLine([0, 0, 0, 0, 1, 0], { color: 0xbff3ff, width: 3 }), mkLine([0, 0, 0, 0, 1, 0], { color: 0xbff3ff, width: 3 })]   // đường sinh biên của nêm
+wSil.forEach(l => cup.add(l))
+
+// ═══ 5. LÁT CẮT ═══
+// Ba hướng cắt. poly(axis, t) = đa giác lát cắt (lồi) tại vị trí t; area = diện tích đúng của lát.
+const AX = { x: 0, y: 1, z: 2 }, RANGE = { x: [-R, R], y: [0, H], z: [0, R] }
+function poly(ax, t) {
+  if (ax === 'x') { const w = Math.sqrt(Math.max(0, R * R - t * t)); return [[t, 0, 0], [t, 0, w], [t, w * TAN, w]] }          // tam giác vuông MNP
+  if (ax === 'z') { const w = Math.sqrt(Math.max(0, R * R - t * t)); return [[-w, 0, t], [w, 0, t], [w, t * TAN, t], [-w, t * TAN, t]] }   // hình chữ nhật
+  const d = t / TAN, f0 = Math.asin(clamp(d / R, 0, 1)), P = [], K = 30                                                  // hình viên phân: phần z ≥ d của hình tròn
+  for (let i = 0; i <= K; i++) { const a = f0 + (Math.PI - 2 * f0) * i / K; P.push([R * Math.cos(a), t, R * Math.sin(a)]) }
+  return P
+}
+function area(ax, t) {
+  if (ax === 'x') return 0.5 * (R * R - t * t) * TAN
+  if (ax === 'z') return 2 * Math.sqrt(Math.max(0, R * R - t * t)) * t * TAN
+  const b = Math.acos(clamp(t / TAN / R, 0, 1)); return R * R * (b - Math.sin(b) * Math.cos(b))
+}
+const flat = (P, close) => { const o = []; for (const p of P) o.push(p[0], p[1], p[2]); if (close) o.push(P[0][0], P[0][1], P[0][2]); return o }
+
+const sliceGroup = new THREE.Group(); cup.add(sliceGroup)
+const sliceMesh = new THREE.Mesh(new THREE.BufferGeometry(), new THREE.MeshBasicMaterial({ color: 0xffb547, transparent: true, opacity: 0.8, side: THREE.DoubleSide, depthTest: false, depthWrite: false }))
+sliceMesh.renderOrder = 2; sliceMesh.frustumCulled = false; sliceGroup.add(sliceMesh)
+const sliceEdge = mkLine([0, 0, 0, 1, 0, 0], { color: 0xfff1d6, width: 3, depthTest: false, order: 8 }); sliceGroup.add(sliceEdge)
+const auxCircle = mkLine(circle(R, 0, 96), { color: 0xffb547, width: 1.6, opacity: 0.45, order: 6 }); sliceGroup.add(auxCircle)       // hướng y: cả hình tròn ở độ cao y
+const auxRad = mkLine([0, 0, 0, 1, 0, 0, 2, 0, 0], { color: 0xffe2ad, width: 2, depthTest: false, order: 8 }); sliceGroup.add(auxRad)   // hướng y: E–H–F
+function updateSlice() {
+  const ax = S.axis, t = S.t[ax], P = poly(ax, t), g = new THREE.BufferGeometry(), idx = []
+  g.setAttribute('position', new THREE.Float32BufferAttribute(flat(P), 3))
+  for (let i = 1; i < P.length - 1; i++) idx.push(0, i, i + 1)
+  g.setIndex(idx); sliceMesh.geometry.dispose(); sliceMesh.geometry = g
+  setLine(sliceEdge, flat(P, true))
+  const y = ax === 'y'; auxCircle.visible = auxRad.visible = y
+  if (y) { auxCircle.position.y = t; const e = P[0]; setLine(auxRad, [e[0], t, e[2], 0, t, 0, 0, t, t / TAN]) }
+}
+
+// Chồng n lát: mỗi lát = lăng trụ có đáy là lát cắt ở GIỮA khoảng, dày Δ (quy tắc điểm giữa)
+const slabGroup = new THREE.Group(); cup.add(slabGroup)
+const slabMats = [new THREE.MeshLambertMaterial({ color: 0xffb547, side: THREE.DoubleSide }), new THREE.MeshLambertMaterial({ color: 0xe08a22, side: THREE.DoubleSide })]
+const slabEdgeMat = new THREE.LineBasicMaterial({ color: 0x3a2300, transparent: true, opacity: 0.6 })
+let slab = null, slabRun = 0
+function buildSlabs() {
+  while (slabGroup.children.length) { const c = slabGroup.children.pop(); c.geometry.dispose() }
+  const ax = S.axis, ai = AX[ax], lo = RANGE[ax][0], hi = RANGE[ax][1], n = S.n, dt = (hi - lo) / n
+  const pos = [[], []], edge = [], sums = []; let acc = 0, vps = 0, eps = 0
+  const at = (p, v) => { const q = p.slice(); q[ai] = v; return q }
+  for (let i = 0; i < n; i++) {
+    const a = lo + i * dt, b = a + dt, m = (a + b) / 2, P = poly(ax, m), A = pos[i % 2], k0 = A.length, e0 = edge.length, np = P.length
+    for (let j = 1; j < np - 1; j++) A.push(...at(P[0], a), ...at(P[j], a), ...at(P[j + 1], a), ...at(P[0], b), ...at(P[j + 1], b), ...at(P[j], b))
+    for (let j = 0; j < np; j++) { const p = P[j], q = P[(j + 1) % np]; A.push(...at(p, a), ...at(q, a), ...at(q, b), ...at(p, a), ...at(q, b), ...at(p, b)) }
+    if (n <= 16) {
+      for (let j = 0; j < np; j++) { const p = P[j], q = P[(j + 1) % np]; edge.push(...at(p, a), ...at(q, a), ...at(p, b), ...at(q, b)) }
+      for (const j of (ax === 'y' ? [0, np - 1] : P.map((_, j) => j))) edge.push(...at(P[j], a), ...at(P[j], b))
+    }
+    vps = (A.length - k0) / 3; eps = (edge.length - e0) / 3
+    acc += area(ax, m) * dt; sums.push(acc)
+  }
+  for (let k = 0; k < 2; k++) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos[k], 3)); g.computeVertexNormals(); const mesh = new THREE.Mesh(g, slabMats[k]); mesh.userData.k = k; mesh.frustumCulled = false; slabGroup.add(mesh) }
+  if (edge.length) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(edge, 3)); const ls = new THREE.LineSegments(g, slabEdgeMat); ls.userData.edge = true; ls.frustumCulled = false; slabGroup.add(ls) }
+  slab = { n, vps, eps, sums, dt }
+}
+function showSlabs(r) {   // hiện r lát đầu
+  if (!slab) return
+  for (const c of slabGroup.children) {
+    if (c.userData.edge) c.geometry.setDrawRange(0, r * slab.eps)
+    else c.geometry.setDrawRange(0, (c.userData.k ? Math.floor(r / 2) : Math.ceil(r / 2)) * slab.vps)
+  }
+}
+function playSlabs() {
+  buildSlabs(); S.reveal = 0; showSlabs(0); syncSum()
+  const run = ++slabRun, n = S.n, t0 = clock(), dur = RM ? 1 : 500 + 14 * n
+  anims.push(now => {
+    if (run !== slabRun || S.step !== 5) return true
+    const k = Math.min(1, (now - t0) / dur), r = Math.round(k * n)
+    if (r !== S.reveal) { S.reveal = r; showSlabs(r); syncSum() }
+    return k >= 1
+  })
+}
+
+// ═══ 6. NHÃN + CHẤM ĐIỂM (toạ độ trong hệ của cốc) ═══
+const REM = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
+const atEnd = () => S.frozen || (S.step === 2 && S.theta >= ALPHA - 1e-3)
+const cons = () => S.frozen && (S.step === 3 || S.step === 6)
+const cutX = () => S.frozen && S.step === 4 && S.axis === 'x', cutY = () => S.frozen && S.step === 4 && S.axis === 'y'
+const Mx = () => S.t.x, wX = () => Math.sqrt(Math.max(0, R * R - S.t.x * S.t.x))
+const L = [], D = []
+function label(html, get, when, dx, dy, cls) { const el = document.createElement('div'); el.className = 'lb ' + (cls || ''); el.innerHTML = html; el.style.display = 'none'; labelsEl.appendChild(el); L.push({ el, get, when, dx: dx || 0, dy: dy || 0, on: false }) }
+function dot(get, when, color, r) { const m = new THREE.Mesh(new THREE.SphereGeometry(r || 0.16, 16, 12), new THREE.MeshBasicMaterial({ color: color || 0xffffff, transparent: true, depthTest: false })); m.renderOrder = 9; cup.add(m); D.push({ m, get, when }) }
+label('A', () => [-R, 0, 0], atEnd, -1, 0.5, 'hot'); label('B', () => [R, 0, 0], atEnd, 1, -0.4, 'hot'); label('I', () => [0, H, R], atEnd, 0.9, -0.7)
+label('O', () => [0, 0, 0], cons, -0.9, 0.3); label('K', () => [0, 0, R], cons, 0.9, 0.6)
+label('R = 6', () => [0, 0, R / 2], cons, 0, 1.2, 'dim'); label('h = 10', () => [0, H / 2, R], cons, 2.7, 0, 'dim'); label('α', () => [0, 1.25, 2.5], cons, 0, 0, 'hot')
+label('M', () => [Mx(), 0, 0], cutX, -0.9, 0.4); label('N', () => [Mx(), 0, wX()], cutX, 0.7, 0.8); label('P', () => [Mx(), wX() * TAN, wX()], cutX, 0.8, -0.7)
+label('H', () => [0, S.t.y, 0], cutY, -0.9, -0.3); label('F', () => [0, S.t.y, S.t.y / TAN], cutY, 0.2, 1)
+label('E', () => { const d = S.t.y / TAN, a = Math.asin(clamp(d / R, 0, 1)); return [R * Math.cos(a), S.t.y, R * Math.sin(a)] }, cutY, 0.9, -0.5)
+label('h₀ ≈ 2,12 cm', () => [-R, H0 / 2, 0], () => S.step === 6 && S.melted && !S.frozen && S.theta < 0.02, -3.6, 0, 'dim')
+dot(() => [-R, 0, 0], atEnd, 0xffb547); dot(() => [R, 0, 0], atEnd, 0xffb547); dot(() => [0, H, R], atEnd, 0xffb547, 0.2)
+dot(() => [0, 0, 0], cons); dot(() => [0, 0, R], cons)
+dot(() => [Mx(), 0, 0], cutX, 0xfff1d6); dot(() => [Mx(), 0, wX()], cutX, 0xfff1d6); dot(() => [Mx(), wX() * TAN, wX()], cutX, 0xfff1d6)
+dot(() => [0, S.t.y, 0], cutY, 0xfff1d6); dot(() => [0, S.t.y, S.t.y / TAN], cutY, 0xfff1d6)
+const v3 = new THREE.Vector3()
+function placeLabels() {
+  const w = stage.clientWidth, h = stage.clientHeight, rem = REM()
+  for (const it of L) {
+    let on = it.when()
+    if (on) { const p = it.get(); v3.set(p[0], p[1], p[2]); cup.localToWorld(v3); v3.project(camera); on = v3.z < 1
+      if (on) it.el.style.transform = 'translate(' + ((v3.x * 0.5 + 0.5) * w + it.dx * rem).toFixed(1) + 'px,' + ((-v3.y * 0.5 + 0.5) * h + it.dy * rem).toFixed(1) + 'px) translate(-50%,-50%)' }
+    if (on !== it.on) { it.el.style.display = on ? '' : 'none'; it.on = on }
+  }
+}
+
+// ═══ 7. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
+const camL = new THREE.Vector3()
+function syncScene() {
+  const st = S.step, liquid = !S.frozen, book = S.frozen && (st === 3 || st === 4 || st === 6), up = S.theta < 0.02
+  prepass.visible = book
+  waterMat.opacity = liquid ? 0.52 : st === 5 ? 0.13 : 0.36
+  waterEdge.visible = liquid
+  chord.visible = liquid && W.zmin > -R + 0.02
+  bookSolid.visible = !liquid; bookDash.visible = book
+  consSolid.visible = cons(); consDash.visible = cons() && book
+  const g = liquid ? 1 : S.showCup ? 0.3 : 0
+  glass.visible = g > 0; glassMat.opacity = liquid ? 0.07 : 0.025
+  for (const l of glassLines) l.material.opacity = g
+  sliceGroup.visible = S.frozen && st === 4 && up
+  slabGroup.visible = S.frozen && st === 5 && up
+  for (const d of D) { const on = d.when() && (S.step !== 4 || up); d.m.visible = on; if (on) { const p = d.get(); d.m.position.set(p[0], p[1], p[2]) } }
+  // Đường sinh biên (đổi theo góc nhìn): tiếp tuyến kẻ từ hình chiếu của máy quay tới đường tròn đáy
+  camL.copy(camera.position); cup.worldToLocal(camL)
+  const rho = Math.hypot(camL.x, camL.z), ok = rho > R * 1.02
+  const psi = Math.atan2(camL.z, camL.x), dl = ok ? Math.acos(R / rho) : 0
+  for (let i = 0; i < 2; i++) {
+    const a = psi + (i ? -dl : dl), x = R * Math.cos(a), z = R * Math.sin(a), s = Math.sin(a)
+    glassLines[2 + i].visible = ok; if (ok) setLine(glassLines[2 + i], [x, 0, z, x, H, z])
+    wSil[i].visible = ok && !liquid && s > 0.03; if (wSil[i].visible) setLine(wSil[i], [x, 0, z, x, H * s, z])
+  }
+}
+
+// ═══ 8. BẢNG LỜI GIẢI THEO BƯỚC ═══
+const panel = $('#panel')
+const STEPS = ['Đề bài', 'Nghiêng cốc', 'Khối nước', 'Cắt một lát', 'Cộng các lát', 'Kết quả']
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
+const AXES = {
+  x: { name: 'x', tab: ['Vuông góc AB', 'lát tam giác'], desc: 'Cắt khối nước bằng mặt phẳng vuông góc với <i>AB</i> tại điểm <i>M</i>, với <i>OM</i> = |<i>x</i>|. Lát cắt là <b>tam giác vuông <i>MNP</i></b>.' },
+  y: { name: 'y', tab: ['Song song đáy', 'lát viên phân'], desc: 'Cắt bằng mặt phẳng song song với đáy ở độ cao <i>y</i>. Lát cắt là <b>hình viên phân</b>: phần hình tròn tâm <i>H</i> nằm ngoài dây cung đi qua <i>F</i>.' },
+  z: { name: 'z', tab: ['Song song AB', 'lát chữ nhật'], desc: 'Cắt bằng mặt phẳng song song với <i>AB</i> và vuông góc với đáy, cách <i>AB</i> một đoạn <i>z</i>. Lát cắt là <b>hình chữ nhật</b> rộng <i>a</i>, cao <i>b</i>.' },
+}
+const tabsHTML = () => '<div class="tabs" role="tablist">' + ['x', 'y', 'z'].map(a => '<button type="button" role="tab" data-ax="' + a + '" aria-selected="' + (S.axis === a) + '">' + AXES[a].tab[0] + '<small>' + AXES[a].tab[1] + '</small></button>').join('') + '</div>'
+const PANELS = {
+  1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Trong cốc có bao nhiêu nước?</h2>
+    <p>Một cốc thủy tinh hình trụ có bán kính lòng đáy <b>6 cm</b>, chiều cao lòng cốc <b>10 cm</b>, đang chứa nước.</p>
+    <p>Nghiêng cốc cho tới khi nước <b>vừa chạm miệng cốc</b> thì mép nước ở đáy <b>trùng với một đường kính của đáy</b>.</p>
+    <p>Tính thể tích nước trong cốc.</p>
+    <div class="chips"><span>R = 6 cm</span><span>h = 10 cm</span><span class="q">V = ?</span></div>
+    <button type="button" class="btn" id="b1">Nghiêng cốc ›</button>`,
+  2: () => String.raw`<p class="kicker">Bước 2 · Nghiêng cốc</p><h2>Nghiêng cốc từ từ</h2>
+    <p>Mặt nước luôn nằm ngang. Lượng nước không đổi, chỉ hình dạng khối nước thay đổi.</p>
+    <div class="row"><button type="button" class="btn" id="b2"></button><span class="ro"><small>Góc nghiêng</small><b id="r2ang">0°</b></span></div>
+    <input type="range" id="s2" min="0" max="1000" value="0" aria-label="Góc nghiêng của cốc">
+    <ul class="cond">
+      <li id="c2a"><i></i><span>Nước chạm miệng cốc</span><em id="r2gap"></em></li>
+      <li id="c2b"><i></i><span>Mép nước trùng đường kính đáy</span><em id="r2edge"></em></li>
+    </ul>
+    <p class="note" id="n2" hidden>Hai điều xảy ra cùng lúc. Khi đó mặt nước là mặt phẳng đi qua đường kính <i>AB</i> của đáy và điểm <i>I</i> trên miệng cốc.</p>`,
+  3: () => String.raw`<p class="kicker">Bước 3 · Khối nước</p><h2>Khối nước có hình gì?</h2>
+    <p>Coi như nước đông cứng lại rồi dựng cốc đứng lên. Khối nước là phần khối trụ nằm dưới mặt phẳng đi qua đường kính <i>AB</i> và điểm <i>I</i> trên miệng cốc: một <b>cái nêm</b>.</p>
+    <div class="fx"><div data-tex="OK=R=6,\qquad KI=h=10"></div><div data-tex="\tan\alpha=\dfrac{KI}{OK}=\dfrac{10}{6}=\dfrac{5}{3}\quad(\alpha\approx 59^\circ)"></div></div>
+    <p>Khối này không phải trụ, nón hay cầu nên không có sẵn công thức. Cách làm: <b>cắt nó thành nhiều lát mỏng</b>, tính diện tích từng lát rồi cộng lại.</p>
+    <p class="note">Nét liền là cạnh nhìn thấy, nét đứt là cạnh bị khối che, giống hình vẽ trong sách. Xoay khối để xem nét đổi theo góc nhìn.</p>`,
+  4: () => String.raw`<p class="kicker">Bước 4 · Cắt một lát</p><h2>Lát cắt có hình gì?</h2>` + tabsHTML() + String.raw`
+    <p id="d4"></p>
+    <label class="sl"><span class="nm" id="nm4"></span><input type="range" id="s4" min="0" max="1000" aria-label="Vị trí lát cắt"><output id="o4"></output></label>
+    <div class="fx"><div id="f41"></div><div id="f42"></div><div class="res" id="f43"></div></div>
+    <p class="cap" id="cap4"></p>`,
+  5: () => String.raw`<p class="kicker">Bước 5 · Cộng các lát</p><h2>Chồng các lát lại</h2>` + tabsHTML() + String.raw`
+    <p>Chia khối thành <b>n</b> lát dày bằng nhau. Coi mỗi lát là một lăng trụ mỏng: thể tích ≈ diện tích lát × bề dày.</p>
+    <div class="seg" id="seg5">${[4, 8, 16, 32, 64].map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (S.n === n) + '">' + n + '</button>').join('')}</div>
+    <div class="sum"><span class="lbl">Tổng <b id="n5"></b> lát ≈</span><span class="big" id="sum5"></span><span class="unit">cm³</span><span class="off" id="off5"></span></div>
+    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này chính là tích phân:</p>
+    <div class="fx"><div class="res" id="f5" style="border:0;padding:0"></div><div id="f5b"></div></div>
+    <p class="note">Ba hướng cắt cho ba hình lát khác hẳn nhau nhưng cùng một thể tích.</p>`,
+  6: () => String.raw`<p class="kicker">Bước 6 · Kết quả</p><h2>Thể tích nước: 240 cm³</h2>
+    <div class="fx"><div data-tex="V=\int_{-R}^{R}\frac{h}{2R}\left(R^2-x^2\right)\mathrm{d}x=\frac{2}{3}R^2h"></div><div class="res" data-tex="V=\frac{2}{3}\cdot 6^2\cdot 10=240\ \text{cm}^3"></div></div>
+    <p>Cả cốc chứa được π<i>R</i>²<i>h</i> = 360π ≈ 1131 cm³, nên lượng nước chỉ bằng khoảng <b>21%</b> cốc.</p>
+    <button type="button" class="btn ghost" id="b6"></button>
+    <div class="fx" id="fx6" hidden><div data-tex="\pi R^2h_0=240\ \Rightarrow\ h_0=\dfrac{240}{36\pi}\approx 2{,}12\ \text{cm}"></div></div>
+    <p class="note">Cắt theo hướng nào cũng ra 240: thể tích không phụ thuộc cách cắt (nguyên lý Cavalieri). Khối nêm này có tên riêng là “móng guốc Archimedes”.</p>`,
+}
+function renderPanel() {
+  panel.innerHTML = PANELS[S.step](); panel.scrollTop = 0
+  $$('[data-tex]', panel).forEach(el => tex(el, el.dataset.tex))
+  $$('.tabs button', panel).forEach(b => b.addEventListener('click', () => { S.axis = b.dataset.ax; renderPanel(); setView('cat_' + S.axis); if (S.step === 5) playSlabs() }))
+  if (S.step === 1) $('#b1').addEventListener('click', () => goStep(2, { play: true }))
+  if (S.step === 2) {
+    $('#b2').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
+    $('#s2').addEventListener('input', e => { stopPlay(); S.theta = e.target.value / 1000 * ALPHA; dirty = true })
+    sync2()
+  }
+  if (S.step === 4) {
+    const ax = S.axis, lo = RANGE[ax][0], hi = RANGE[ax][1], s = $('#s4')
+    $('#d4').innerHTML = AXES[ax].desc; $('#nm4').textContent = AXES[ax].name
+    s.value = Math.round((S.t[ax] - lo) / (hi - lo) * 1000)
+    s.addEventListener('input', () => { S.t[ax] = lo + (hi - lo) * s.value / 1000; sync4() })
+    sync4()
+  }
+  if (S.step === 5) {
+    $$('#seg5 button').forEach(b => b.addEventListener('click', () => { S.n = +b.dataset.n; $$('#seg5 button').forEach(x => x.setAttribute('aria-pressed', x === b)); playSlabs() }))
+    tex($('#f5'), { x: String.raw`V=\int_{-6}^{6}\tfrac{5}{6}\left(36-x^2\right)\mathrm{d}x=240\ \text{cm}^3`, y: String.raw`V=\int_{0}^{10}36\left(\beta-\sin\beta\cos\beta\right)\mathrm{d}y=240\ \text{cm}^3`, z: String.raw`V=\int_{0}^{6}\tfrac{10}{3}\,z\sqrt{36-z^2}\,\mathrm{d}z=240\ \text{cm}^3` }[S.axis])
+    if (S.axis === 'y') tex($('#f5b'), String.raw`\beta=\arccos\dfrac{y}{10}`); else $('#f5b').remove()
+    syncSum()
+  }
+  if (S.step === 6) { $('#b6').addEventListener('click', () => { S.melted = !S.melted; goStep(6) }); sync6() }
+}
+function sync2() {
+  const s = $('#s2'); if (!s) return
+  const end = S.theta >= ALPHA - 1e-3, cov = W.zmin <= -R + 0.02
+  if (document.activeElement !== s || S.playing) s.value = Math.round(S.theta / ALPHA * 1000)
+  $('#r2ang').textContent = Math.round(S.theta * 180 / Math.PI) + '°'
+  $('#r2gap').textContent = end ? 'chạm' : 'còn ' + fmt(Math.max(0, W.gap), 1) + ' cm'
+  $('#r2edge').textContent = end ? 'trùng' : cov ? 'nước còn phủ kín đáy' : 'cách tâm ' + fmt(-W.zmin, 1) + ' cm'
+  $('#c2a').classList.toggle('ok', end); $('#c2b').classList.toggle('ok', end); $('#n2').hidden = !end
+  const lab = (S.playing ? ICON_PAUSE + 'Dừng' : ICON_PLAY + (end ? 'Nghiêng lại' : 'Nghiêng')), b = $('#b2')
+  if (b.dataset.lab !== lab) { b.innerHTML = lab; b.dataset.lab = lab }
+}
+function sync4() {
+  const ax = S.axis, t = S.t[ax], a = area(ax, t)
+  $('#o4').textContent = fmt(t, 1)
+  if (ax === 'x') { const w = Math.sqrt(Math.max(0, R * R - t * t))
+    tex($('#f41'), String.raw`MN=\sqrt{R^2-x^2}=\sqrt{36-x^2}=${tn(w)}`)
+    tex($('#f42'), String.raw`NP=MN\cdot\tan\alpha=\tfrac{5}{3}\,MN=${tn(w * TAN)}`)
+    tex($('#f43'), String.raw`S(x)=\tfrac{1}{2}\,MN\cdot NP=\tfrac{5}{6}\left(36-x^2\right)=${tn(a)}\ \text{cm}^2`)
+    $('#cap4').textContent = 'Tam giác MNP vuông tại N, góc tại M bằng α.' }
+  else if (ax === 'y') { const d = t / TAN, b = Math.acos(clamp(d / R, 0, 1))
+    tex($('#f41'), String.raw`HF=\dfrac{y}{\tan\alpha}=0{,}6\,y=${tn(d)}`)
+    tex($('#f42'), String.raw`\cos\beta=\dfrac{HF}{R}=\dfrac{y}{10}\ \Rightarrow\ \beta=${tn(b, 3)}\ \text{rad}`)
+    tex($('#f43'), String.raw`S(y)=R^2\beta-R^2\sin\beta\cos\beta=${tn(a)}\ \text{cm}^2`)
+    $('#cap4').textContent = 'β là góc EHF. Diện tích viên phân = hình quạt (góc 2β) trừ tam giác cân đỉnh H.' }
+  else { const w = Math.sqrt(Math.max(0, R * R - t * t))
+    tex($('#f41'), String.raw`a=2\sqrt{36-z^2}=${tn(2 * w)}`)
+    tex($('#f42'), String.raw`b=z\cdot\tan\alpha=\tfrac{5}{3}\,z=${tn(t * TAN)}`)
+    tex($('#f43'), String.raw`S(z)=a\cdot b=\tfrac{10}{3}\,z\sqrt{36-z^2}=${tn(a)}\ \text{cm}^2`)
+    $('#cap4').textContent = 'a là dây cung của đáy cách AB một đoạn z; b là độ cao của mặt nước tại đó.' }
+  updateSlice()
+}
+function syncSum() {
+  if (!$('#sum5') || !slab) return
+  const r = S.reveal, v = r ? slab.sums[r - 1] : 0, full = r === slab.n
+  $('#n5').textContent = full ? slab.n : r + '/' + slab.n
+  $('#sum5').textContent = fmt(v, 2)
+  $('#off5').textContent = full ? 'lệch ' + (v - V0 >= 0 ? '+' : '−') + fmt(Math.abs(v - V0), 2) + ' so với 240' : ''
+}
+function sync6() {
+  const b = $('#b6'); if (!b) return
+  b.textContent = S.melted ? 'Đông cứng lại thành cái nêm' : 'Dựng cốc đứng, cho nước chảy lại'
+  $('#fx6').hidden = !S.melted
+}
+
+// ═══ 9. CHUYỂN BƯỚC ═══
+function tiltTo(target, ms, my) {
+  return new Promise(res => {
+    const a = S.theta, d = target - a
+    if (Math.abs(d) < 1e-5) { S.theta = target; dirty = true; return res() }
+    const dur = RM ? 1 : Math.max(280, ms * Math.abs(d) / ALPHA), t0 = clock()
+    anims.push(now => {
+      if (my !== token) { res(); return true }
+      const k = Math.min(1, (now - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
+      S.theta = a + d * e; dirty = true
+      if (k >= 1) { res(); return true }
+      return false
+    })
+  })
+}
+function startPlay() {
+  if (S.step !== 2) return
+  if (S.theta >= ALPHA - 1e-3) S.theta = 0
+  S.playing = true; dirty = true
+  const my = token, a = S.theta, t0 = clock(), dur = RM ? 1 : 7500 * (ALPHA - a) / ALPHA
+  anims.push(now => {
+    if (!S.playing || my !== token) return true
+    const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 1.6)   // chậm dần về cuối để kịp nhìn hai điều kiện cùng xảy ra
+    S.theta = a + (ALPHA - a) * e; dirty = true
+    if (k >= 1) { S.theta = ALPHA; S.playing = false; return true }
+    return false
+  })
+}
+function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
+async function goStep(n, o) {
+  n = clamp(n | 0, 1, 6); o = o || {}
+  const my = ++token, prev = S.step
+  S.playing = false; S.step = n; if (n !== 6) S.melted = false
+  renderPanel(); syncChips()
+  $('#vDef').textContent = n <= 2 ? 'Góc ban đầu' : 'Góc nhìn sách'; $('#vCup').hidden = n <= 2
+  if ((prev <= 2) !== (n <= 2) || o.first) setView('mac_dinh', o.first)
+  // Nước lỏng ↔ nêm đông cứng chỉ đổi cho nhau ở đúng góc α (lúc đó hai hình trùng khít), nên luôn đi qua α.
+  const wantFrozen = n >= 3 && !S.melted
+  if (o.first) { S.frozen = wantFrozen; S.theta = 0; dirty = true; if (n === 5) playSlabs(); return }
+  if (wantFrozen) { if (!S.frozen) { await tiltTo(ALPHA, 800, my); if (my !== token) return; S.frozen = true; dirty = true } await tiltTo(0, 1100, my); if (n === 5 && my === token) playSlabs() }
+  else {
+    if (S.frozen) { await tiltTo(ALPHA, 800, my); if (my !== token) return; S.frozen = false; dirty = true }
+    if (n !== 2) await tiltTo(0, 1100, my)
+    else if (o.play) startPlay()
+  }
+}
+function syncChips() {
+  $$('#chips .chip').forEach((c, i) => { c.classList.toggle('done', i + 1 < S.step); if (i + 1 === S.step) c.setAttribute('aria-current', 'step'); else c.removeAttribute('aria-current') })
+  $('#prev').disabled = S.step === 1; $('#next').disabled = S.step === 6
+}
+$('#chips').innerHTML = STEPS.map((s, i) => '<li><button type="button" class="chip" data-step="' + (i + 1) + '"><span class="no">' + (i + 1) + '</span><span class="tx">' + s + '</span></button></li>').join('')
+$$('#chips .chip').forEach(c => c.addEventListener('click', () => goStep(+c.dataset.step)))
+$('#prev').addEventListener('click', () => goStep(S.step - 1))
+$('#next').addEventListener('click', () => goStep(S.step + 1, { play: S.step === 1 }))
+$$('.views button[data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)))
+$('#vCup').addEventListener('click', e => { S.showCup = !S.showCup; e.currentTarget.setAttribute('aria-pressed', S.showCup); e.currentTarget.textContent = S.showCup ? 'Hiện cốc' : 'Ẩn cốc' })
+addEventListener('keydown', e => {   // bút trình chiếu gửi PageUp/PageDown
+  if (e.target.matches && e.target.matches('input')) return
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goStep(S.step + 1, { play: S.step === 1 }) }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goStep(S.step - 1) }
+  else if (e.key === ' ' && S.step === 2) { e.preventDefault(); S.playing ? stopPlay() : startPlay() }
+})
+
+// ═══ 10. VÒNG LẶP ═══
+function resize() {
+  const w = stage.clientWidth || 1, h = stage.clientHeight || 1, zoom = goal.dist / baseDist
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix()
+  for (const m of lineMats) m.resolution.set(w, h)
+  baseDist = fitDist(CTX[ctxName()].r); goal.dist = baseDist * zoom
+}
+new ResizeObserver(resize).observe(stage)
+let last = clock()
+function tick(now) {
+  const dt = clamp((now - last) / 1000, 0, 0.05); last = now
+  for (let i = anims.length - 1; i >= 0; i--) if (anims[i](now)) anims.splice(i, 1)
+  const k = RM ? 1 : 1 - Math.exp(-dt * 8)
+  for (const key in view) view[key] += (goal[key] - view[key]) * k
+  placeCamera()
+  if (dirty) { dirty = false; pivot.rotation.x = S.theta; updateWater(); sync2() }
+  scene.updateMatrixWorld(); syncScene()
+  renderer.render(scene, camera)
+  placeLabels()
+}
+function loop(now) { requestAnimationFrame(loop); tick(now + skew) }
+
+// Mở thẳng một bước để soát: ?buoc=4&huong=y&n=16
+{ const q = new URLSearchParams(location.search), ax = q.get('huong'), n = +q.get('n')
+  if (AX[ax] !== undefined) S.axis = ax
+  if ([4, 8, 16, 32, 64].includes(n)) S.n = n
+  resize()
+  goStep(+q.get('buoc') || 1, { first: true })
+  requestAnimationFrame(loop) }
+
+// Soát bằng máy: chụp canvas gửi về server dev (scripts/serve-games.mjs nhận POST /_snap)
+window.__dbg = { S, W, goStep, setView, view, goal, area, level, fat: FAT,
+  run(ms) { const b = clock(); for (let t = 16; t <= ms; t += 16) tick(b + t); skew += ms },   // tua nhanh ms mili-giây (pane ẩn thì rAF không chạy)
+  snap(name) { tick(clock()); return fetch('/_snap?name=' + (name || 'the-tich'), { method: 'POST', body: cv.toDataURL('image/jpeg', 0.9) }).then(r => r.text()) } }
+})()
+</script>
+</body>
+</html>
