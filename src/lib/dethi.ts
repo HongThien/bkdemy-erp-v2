@@ -71,6 +71,19 @@ export async function updateDeThiMeta(id: string, patch: Partial<DeThiMeta>): Pr
 }
 export async function attachPdfGoc(id: string, url: string): Promise<void> { await updateDeThiMeta(id, { pdfGocUrl: url }) }
 
+// Số dòng kẻ để HS viết của câu TỰ LUẬN trên bản in — `cau_hinh.btvnLinesByCau` (key = ma_cau), CÙNG khoá với ET/MT/BTVN nên
+// DeThiPrintView đọc sẵn và bản chép cho lớp (fn gán đề chép nguyên cau_hinh) theo luôn. Chưa đặt ⇒ DONG_TU_LUAN_MAC_DINH.
+export const DONG_TU_LUAN_MAC_DINH = 4
+export function soDongDeThi(d: Pick<DeThi, 'cau_hinh'>): Record<string, number> { return (d.cau_hinh?.btvnLinesByCau ?? {}) as Record<string, number> }
+export async function setSoDongDeThi(id: string, patch: Record<string, number>): Promise<void> {
+  const { data: cur, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
+  if (e0) throw e0
+  const ch = ((cur as { cau_hinh?: Record<string, unknown> }).cau_hinh ?? {}) as Record<string, unknown>
+  const cauHinh = { ...ch, btvnLinesByCau: { ...((ch.btvnLinesByCau as Record<string, number>) ?? {}), ...patch } }
+  const { error } = await supabase.from('tai_lieu').update({ cau_hinh: cauHinh, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+
 // ── PHẦN (Phần I/II…) = tai_lieu_phan loai_phan='custom', mỗi phần giữ CÂU THEO THỨ TỰ GỐC ──
 export async function listPhanDeThi(taiLieuId: string): Promise<TaiLieuPhan[]> {
   return (await listPhan(taiLieuId)).filter((p) => p.loai_phan === 'custom')

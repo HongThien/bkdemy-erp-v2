@@ -13,7 +13,7 @@ import { useMonScope } from '../../hooks/useMonScope'
 import {
   getDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc, addPhanDeThi, listPhanDeThi,
   deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap,
-  demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI,
+  demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI, soDongDeThi, setSoDongDeThi, DONG_TU_LUAN_MAC_DINH,
   type DeThi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
 import { setCauOfPhan, deletePhan, type TaiLieuPhan } from '../../lib/tailieu'
@@ -350,6 +350,11 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   async function luuMeta(patch: Partial<DeThiMeta>) { setMeta((m) => (m ? { ...m, ...patch } : m)); try { await updateDeThiMeta(id, patch); flash(true, 'Đã lưu') } catch (e: any) { flash(false, e.message ?? String(e)) } }
   async function luuTen() { if (d && ten.trim() && ten.trim() !== d.ten) { try { await renameDeThi(id, ten.trim()); setD({ ...d, ten: ten.trim() }); flash(true, 'Đã lưu') } catch (e: any) { flash(false, e.message ?? String(e)) } } }
   async function dinhKemGoc(f: File) { try { const { url } = await uploadKhoFile(f); await attachPdfGoc(id, url); setMeta((m) => (m ? { ...m, pdfGocUrl: url } : m)); setXemGoc(true) } catch (e: any) { flash(false, e.message ?? String(e)) } }
+  // Số dòng kẻ câu TỰ LUẬN trên bản in: vá `d.cau_hinh` tại chỗ rồi ghi (không tải lại đề). patch = 1 câu hoặc cả phần.
+  async function datSoDong(patch: Record<string, number>) {
+    setD((x) => (x ? { ...x, cau_hinh: { ...x.cau_hinh, btvnLinesByCau: { ...soDongDeThi(x), ...patch } } } : x))
+    try { await setSoDongDeThi(id, patch); flash(true, 'Đã lưu số dòng') } catch (e: any) { flash(false, e.message ?? String(e)) }
+  }
   function dong() { useStore.getState().enqueueLinkGen(id, 'de_thi'); onClose() }
 
   if (!d || !meta) return <div className="p-8 text-sm text-slate-400">{msg && !msg.ok ? <span className="text-rose-600">Lỗi: {msg.t}</span> : 'Đang tải đề…'}</div>
@@ -357,6 +362,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   const soChuaDang = thieu?.so_chua_dang ?? 0
   const soGhiChu = Object.keys(ghiChu).length
   const canXem = (c: DeThiCau) => (loiCua.get(c.ma_cau)?.length ?? 0) > 0 || (ghiChu[c.ma_cau]?.length ?? 0) > 0
+  const soDong = soDongDeThi(d)
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -410,6 +416,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                   <div className="mb-2 flex items-center gap-2">
                     <p className="text-[14px] font-bold uppercase tracking-wide text-slate-700">{p.tieu_de}</p>
                     <span className="text-[12px] text-slate-400">{cs.length} câu</span>
+                    {cs.some((c) => c.loai_cau === 'tu_luan') && <DongCaPhan onDat={(n) => datSoDong(Object.fromEntries(cs.filter((c) => c.loai_cau === 'tu_luan').map((c) => [c.ma_cau, n])))} />}
                     <button onClick={() => setThemVao(themVao === p.id ? null : p.id)} className="ml-auto rounded-md border border-slate-200 bg-white px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">+ Thêm câu có sẵn trong kho</button>
                     <button onClick={() => xoaPhan(p)} className="text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
@@ -424,6 +431,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                           {moiNl && <NguLieuBlock nl={nl[maNl!]} />}
                           <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []}
                             dau={i === 0} cuoi={i === cs.length - 1}
+                            soDong={soDong[c.ma_cau] ?? DONG_TU_LUAN_MAC_DINH} onSoDong={(n) => datSoDong({ [c.ma_cau]: n })}
                             onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
                             onBo={() => boCau(c)} onDoiCho={(h) => doiCho(c, h)} />
                         </div>
@@ -495,8 +503,23 @@ function ThemCauCoSan({ mon, onPick }: { mon: string; onPick: (maCau: string, kh
   )
 }
 
-function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua, onBo, onDoiCho }: {
+// Ô số dòng kẻ (0–50) — ghi khi rời ô / Enter, không ghi từng phím. `key` theo giá trị để "đặt cả phần" đổi được ô từng câu.
+const kepDong = (v: string) => Math.max(0, Math.min(50, Math.round(+v || 0)))
+function ODong({ value, onDat, title }: { value: number | ''; onDat: (n: number) => void; title: string }) {
+  return <input key={value} type="number" min={0} max={50} defaultValue={value} title={title} placeholder="—"
+    onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }}
+    onBlur={(e) => { if (e.target.value === '') return; const n = kepDong(e.target.value); if (n !== value) onDat(n) }}
+    className="w-12 rounded border border-slate-200 px-1 py-0.5 text-center text-[12px] text-slate-700 focus:border-indigo-400 focus:outline-none" />
+}
+// Đặt nhanh số dòng cho MỌI câu tự luận của 1 phần (vd "Phần III. Tự luận").
+function DongCaPhan({ onDat }: { onDat: (n: number) => void }) {
+  return <label className="flex items-center gap-1 text-[11px] text-slate-400">Dòng kẻ tự luận · cả phần
+    <ODong value="" onDat={onDat} title="Gõ số rồi Enter: đặt số dòng kẻ cho MỌI câu tự luận của phần này (bản in)" /></label>
+}
+
+function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho }: {
   c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; dau: boolean; cuoi: boolean
+  soDong: number; onSoDong: (n: number) => void
   onChonDang: (md: number | null) => void
   onSua: (patch: SuaCauPatch, localNd?: Partial<NoiDungCau>) => Promise<boolean>
   onBo: () => void; onDoiCho: (huong: -1 | 1) => void
@@ -515,6 +538,8 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, o
         {c.da_duyet && <span className="text-[11px] text-emerald-600">✓ kho chuẩn</span>}
         {loi.map((x) => <span key={x} className={`rounded px-1.5 py-0.5 text-[11px] ${CHI_CANH_BAO.has(x) ? 'bg-amber-50 text-amber-800' : 'bg-rose-50 text-rose-700'}`}>{LOI_TEN[x]}</span>)}
         <span className="ml-auto flex items-center gap-1">
+          {c.loai_cau === 'tu_luan' && !c.xoa && <label className="mr-1 flex items-center gap-1 text-[11px] text-slate-400">dòng
+            <ODong value={soDong} onDat={onSoDong} title="Số dòng kẻ để HS viết câu này (bản in)" /></label>}
           <button disabled={dau} onClick={() => onDoiCho(-1)} title="Đưa lên" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-500 hover:border-indigo-300 disabled:opacity-30">↑</button>
           <button disabled={cuoi} onClick={() => onDoiCho(1)} title="Đưa xuống" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-500 hover:border-indigo-300 disabled:opacity-30">↓</button>
           {!c.xoa && <button onClick={() => setSoan((v) => !v)} className={`rounded border px-2 py-0.5 text-[12px] font-medium ${soan ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{soan ? 'Đóng sửa' : '✎ Sửa nội dung'}</button>}

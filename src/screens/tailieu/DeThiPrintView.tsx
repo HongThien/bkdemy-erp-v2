@@ -5,10 +5,10 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, type TaiLieuFull } from '../../lib/tailieu'
-import { deThiMeta as getMeta } from '../../lib/dethi'
+import { deThiMeta as getMeta, DONG_TU_LUAN_MAC_DINH } from '../../lib/dethi'
 import { CauItem, CauList, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
-const DEFAULT_TL_LINES = 4
+const DEFAULT_TL_LINES = DONG_TU_LUAN_MAC_DINH
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
 
 export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {

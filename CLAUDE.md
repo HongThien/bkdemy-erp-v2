@@ -311,7 +311,8 @@
   KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
 - **`spec-toan-du-hanh.md` — ĐỌC trước khi sửa/làm bài Toán dạng du hành** (thư mục `toan-site/`, Thùy chốt 09/10): 3D chỉ ở đoạn bay, hình phẳng
   nằm trên tấm bảng, máy quay VUÔNG GÓC tấm bảng lúc HS so hình · tam giác lệch hẳn (cấm cân/gần cân) · ký hiệu 3 mức GV đổi được · học = cả lớp
-  nhìn TV, iPad chỉ cho mini game đội · chưa đo, site riêng toan.bkacademy.edu.vn. Bài đã có: Tam giác bằng nhau (bản thử 1 — phần 1).
+  nhìn TV, iPad chỉ cho mini game đội · trạm luyện = chuỗi câu trên cùng tấm bảng, có nút Đáp án (GV) · chưa đo, site riêng toan.bkacademy.edu.vn.
+  Đã có: bài Tam giác bằng nhau 10 trạm (định nghĩa · c.c.c · trình bày 5 dòng) + mini game đội TV–iPad `thi-doi.html` (5 phiên × 10 câu).
 - **`spec-day-hinh-3d.md` — ĐỌC trước khi dựng mô hình 3D cho BÀI TẬP Toán** (khối tròn xoay / cắt lát S(x) / thiết diện; Thùy mở 09/10):
   mỗi bài = 1 file HTML xoay + thao tác được · KHÁC khuôn du hành (không trạm/bay) · đang BÀN, chưa code — câu mở B1–B6 · kho 10 bài thể tích K12
   (NBV 12-18 F) đã giải + kiểm, nguồn chép ở `docs/hinh-3d/` · bài mẫu đề xuất: Câu 43 cốc nghiêng.
