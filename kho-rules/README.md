@@ -33,6 +33,8 @@ kho-rules/
     k4T-mau-thu.md          ← lô giải thử đang/đã duyệt của 4T (lô 1: 13 câu)
     k5T.md · k5T-mau-thu.md ← khối 5T (v0 04/10; 08/10 thêm hồ sơ sách 31 CĐ + bản đồ hiện có + kế hoạch §7)
     k6.md … k12.md          ← mỗi khối một file khi tới lượt (chưa có)
+    k8T.md                  ← SPEC khối 8T (10/10): nguồn 7 quyển sách HSG **scan** — luật 3 tầng kiến thức, trạm chép đề từ ảnh, khung chuyên đề cho bản đồ
+    lo/k8T/ho-so/<MÃ>.md    ← hồ sơ từng quyển sách của 8T (mục lục theo trang PDF · dạng · đếm · bẫy đọc)
     so-do/                  ← mô tả JSON + SVG sơ đồ đoạn thẳng của các câu mẫu
     lo/                     ← LÔ đã ghi / sắp ghi của từng khối (sự thật về câu đã ghi vẫn là DB):
                                k<khối>-<lô>.json (lô qua cổng) · .soan.json (bản model soạn) · .sua.json (bản sửa của người soát —
@@ -159,4 +161,5 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 | 8 | `dai/k8.md` | **Bước 1, chỉ HÌNH** (Đại tạm dừng, CEO 09/10) — Chương III Tứ giác đủ bài, thêm HH00111 Ôn tập chương. **Bộ đề giữa kì 1: 39 đề · 697 câu đã lên Kho đề thi 10/10** (chưa bấm Duyệt đề; câu ở dạng chờ `T108000000` + `HH08000000`; 22 câu chưa chắc ở `dai/k8-chua-chac.md`) | v0 (09/10) — lõi là **luật kiến thức theo thứ tự bài** (§1); luật riêng cho đề ở §10 | — | Bộ Word theo bài KNTT (C1 Đa thức · C3 Tứ giác · C4 Thalès; thiếu C2) — `E:\BK ACADEMY\Tài liệu tham khảo\K8` |
 | 9 · Hình học (đường tròn) | `hinh/k9.md` | **6 bài phần Học HH00105–HH00110 (CEO 09/10)** — giải toàn bộ tài liệu lên `hinh_hoc_cau_hoi` chờ duyệt; sổ tay 22 dạng §2 | v0 (09/10) | khuôn 2 phần Hình (k8 §1.6) · ~360 câu · brief `hinh/mau-brief-soan-k9.md` · tiến độ `k9.md` §10 | 4 tài liệu `K9/Đường tròn` — `k9.md` §5 |
 | 6 | `dai/k6.md` | **Bước 2 XONG cho bộ đề (10/10)** — 45 đề · 828 câu trên Kho đề thi, chờ CEO duyệt; bước 3 chờ bản đồ K6 | v0.1 (luật theo lý thuyết bản đồ; Ch III–V chưa có lý thuyết ⇒ theo SGK) | lô thử = đề GKI-01 (CEO duyệt 09/10) · 44 đề còn lại: Sonnet soạn + Opus soát mù · câu chưa chắc `dai/k6-chua-chac.md` | 56 đề GKI + CKI Hà Nội 2024–26 (PDF, không đáp án). **Hai output** câu + đề (`spec-de-thi.md`); Hình Ch IV–V ⇒ HGT. Dây chuyền + brief: `k6.md` §8 |
+| 8T | `dai/k8T.md` | **Bước 1** — B1 đọc ✅ · B2 hồ sơ 7 quyển ✅ · B3 luật nháp ✅ · chờ CEO trả lời 8 câu hỏi (`k8T.md` §9) rồi chạy lô thử Đ1 | v0 (10/10) — lõi là **3 tầng kiến thức** (SGK · công cụ bồi dưỡng · cấm lớp 9+) + khai công cụ theo câu | — | 7 quyển sách HSG Toán 8, PDF scan 1.761 trang, ≈ 880 ví dụ + ≈ 2.700 bài có lời giải + 1 quyển ngân hàng đề không lời giải — `E:\BK ACADEMY\Tài liệu tham khảo\8T\HSG`; hồ sơ `dai/lo/k8T/ho-so/` |
 | 7, 9 (Đại, Hình khác), 10–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |
