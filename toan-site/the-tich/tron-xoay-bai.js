@@ -21,7 +21,7 @@
                  dải phia 'duoi' là phần nằm DƯỚI trục — trang tự làm hoạt cảnh gấp lên
    - vach, vachR : vạch số trên trục quay / trục kia (vachR nhận cả [r, 'R'] ⇒ hiện "R = 10")     giong: [[t, r]…] nét gióng từ điểm xuống hai trục     diem: [[t, r]…] chấm điểm
    - vet       : [[t, r, 'tren'|'duoi']…] điểm để lại vết tròn khi quay
-   - moc       : mốc chia miền trên trục quay  { chu, t, dy?, an? }   (an: chỉ hiện từ bước Chia miền)
+   - moc       : mốc chia miền trên trục quay  { chu, t, gt?, dx?, dy?, an? }   (an: chỉ hiện từ bước Chia miền · gt: chữ hiện thay cho số, vd '1 + √2')
    - mien      : từng miền  { t: [từ, tới], ngoai: hàm, trong: hàm|null, tex: công thức CHỮ, chu: chú thích ngắn, so: dòng THAY SỐ, nhan: [t, r] chỗ đặt số miền }
                  an: true ⇒ miền đối xứng với miền đã kể: không liệt kê, không đánh số, chỉ để trang tự kiểm thể tích
    - chia      : { tieuDe, html, mocTen, mocDong: [tex…], mocKq: tex, luu }      (bỏ nếu bài chỉ có 1 miền; mocDong bỏ được nếu mốc đã rõ từ trước)
@@ -233,6 +233,59 @@ window.BAI_TRON_XOAY = (function () {
         nguyenHamTen: 'Tích phân đã dùng',
         nguyenHam: [String.raw`u=\frac{y}{h_2}\ \Rightarrow\ \mathrm{d}y=h_2\,\mathrm{d}u`, String.raw`\int_0^{h_2}x^2\,\mathrm{d}y=R^2h_2\int_0^1\left(1-\sqrt{u}\right)^2\mathrm{d}u`, String.raw`\int_0^1\left(1-2\sqrt{u}+u\right)\mathrm{d}u=1-\frac43+\frac12=\frac16`],
         luu: String.raw`Thân mũ chỉ bằng <b>1/6</b> khối trụ có cùng đáy và cùng chiều cao (π<i>R</i>²<i>h</i>₂), vì cung parabol lõm sâu vào phía trục.` },
+    }) }
+
+  // ───────── Câu 46 (NBV 12-18 F) — hình hình học phẳng; quay quanh AC (đặt làm Oy); khối có lỗ ở hai đầu ─────────
+  { const a = 2, c0 = a / 2, ro2 = a * a / 2, yK = c0 + Math.sqrt(ro2)   // a = OA (nửa đường chéo) · đường tròn đường kính AB: tâm (a/2; a/2), bán kính a/√2
+    const can = y => Math.sqrt(Math.max(0, ro2 - (y - c0) * (y - c0)))
+    const xp = y => c0 + can(y), xm = y => c0 - can(y), xpD = y => xp(-y), xmD = y => xm(-y), am = fn => y => -fn(y)
+    DS.push({
+      id: '46', maCau: null, ten: 'Bông hoa bốn cánh', nguon: 'NBV 12-18 F · câu 46',
+      moTa: 'Hình vuông với bốn nửa đường tròn dựng ra ngoài bốn cạnh, quay quanh đường chéo. Phải tự đặt trục; phía trên đỉnh A hình rời khỏi trục nên khối có lỗ.',
+      truc: 'y', dapSo: 32 * PI / 3 + 4 * PI * PI, doiXung: true, mauDau: true,
+      ve: { t: [-3.5, 3.75], r: [-3.7, 3.95], ngam: { tx: 0.12, ty: 0.12, tz: 0, r: 4.15 } },
+      de: { tieuDe: 'Quay hình quanh đường chéo AC',
+        html: String.raw`<p>Cho hình vuông <i>ABCD</i> cạnh 2√2. Phía ngoài hình vuông vẽ bốn nửa đường tròn nhận bốn cạnh làm đường kính.</p>
+          <p>Quay cả hình (phần tô màu) quanh đường thẳng <i>AC</i>. Tính thể tích khối tròn xoay tạo thành.</p>`,
+        chips: ['hình vuông cạnh 2√2', 'bốn nửa đường tròn trên bốn cạnh', 'quay quanh AC'] },
+      thucTe: { dePhang: true, tieuDe: 'Đặt hệ trục: AC là trục Oy',
+        html: String.raw`<p>Gọi <i>O</i> là tâm hình vuông. Đặt <i>Oy</i> trùng <i>AC</i>, <i>Ox</i> trùng <i>BD</i>. Hình đối xứng qua <i>AC</i> nên chỉ cần quay <b>nửa bên phải</b>.</p>
+          <p>Gọi <i>a</i> = <i>OA</i> = <i>OB</i>. Đường tròn đường kính <i>AB</i> có tâm (<i>a</i>/2; <i>a</i>/2), bán kính <i>a</i>/√2. Quay quanh <i>Oy</i> nên viết <b><i>x</i> theo <i>y</i></b>: mỗi <i>y</i> cho <b>hai nhánh</b>, nhánh ngoài <i>x</i><sub>+</sub> và nhánh trong <i>x</i><sub>−</sub>.</p>`,
+        tex: [String.raw`\left(x-\frac a2\right)^2+\left(y-\frac a2\right)^2=\frac{a^2}{2}`, String.raw`x_{\pm}=\frac a2\pm\sqrt{\frac{a^2}{2}-\left(y-\frac a2\right)^2}`],
+        soTen: 'cạnh 2√2 ⇒ đường chéo 4 ⇒ a = 2',
+        so: [String.raw`(x-1)^2+(y-1)^2=2`, String.raw`x_{\pm}=1\pm\sqrt{2-(y-1)^2}`] },
+      quayLoi: 'Quay nửa bên phải của hình quanh trục <i>Oy</i> (đường thẳng <i>AC</i>). Để ý hai chỗ <b>lõm</b> ở đỉnh và ở đáy khối, quanh hai điểm <i>A</i> và <i>C</i>.',
+      duong: [{ fn: xp, t: [0, yK], nhan: 'x<sub>+</sub>', o: [1, 0.85, 0] }, { fn: xm, t: [a, yK], nhan: 'x<sub>−</sub>', o: [2.4, 0.1, -1.05] }, { fn: xpD, t: [-yK, 0] }, { fn: xmD, t: [-yK, -a] },
+        { fn: am(xp), t: [0, yK] }, { fn: am(xm), t: [a, yK] }, { fn: am(xpD), t: [-yK, 0] }, { fn: am(xmD), t: [-yK, -a] }],
+      doan: [[a, 0, 0, a], [0, a, -a, 0], [-a, 0, 0, -a], [0, -a, a, 0]],
+      to: [{ t: [0, a], tren: xp, duoi: null, phia: 'tren' }, { t: [a, yK], tren: xp, duoi: xm, phia: 'tren' },
+        { t: [-a, 0], tren: xpD, duoi: null, phia: 'tren' }, { t: [-yK, -a], tren: xpD, duoi: xmD, phia: 'tren' }],
+      toMo: [{ t: [0, a], tren: null, duoi: am(xp), phia: 'tren' }, { t: [a, yK], tren: am(xm), duoi: am(xp), phia: 'tren' },
+        { t: [-a, 0], tren: null, duoi: am(xpD), phia: 'tren' }, { t: [-yK, -a], tren: am(xmD), duoi: am(xpD), phia: 'tren' }],
+      vach: [2], vachR: [2], giong: [],
+      diem: [[a, 0], [0, a], [-a, 0], [0, -a]],
+      nhanDiem: [[a, 0, 'A', 0.75, -0.8], [0, a, 'B', 0.8, -0.8], [-a, 0, 'C', 0.75, 0.95], [0, -a, 'D', -0.8, -0.8]],
+      vet: [[0, a, 'tren'], [yK, c0, 'tren']],
+      moc: [{ chu: 'a', t: a }, { chu: 'c', t: yK, gt: '1 + √2', an: true, dy: -1.1 }],
+      mien: [
+        { t: [0, a], ngoai: xp, trong: null, chu: 'đặc tới trục', nhan: [1, 1.75],
+          tex: String.raw`V_1=\pi\int_0^a x_+^2\,\mathrm{d}y`, so: String.raw`V_1=\pi\int_0^2 x_+^2\,\mathrm{d}y=\frac{22\pi}{3}+\pi^2` },
+        { t: [a, yK], ngoai: xp, trong: xm, chu: 'có lỗ ở giữa', nhan: [2.2, 1],
+          tex: String.raw`V_2=\pi\int_a^c\left(x_+^2-x_-^2\right)\mathrm{d}y`, so: String.raw`V_2=\pi\int_2^{1+\sqrt2}\left(x_+^2-x_-^2\right)\mathrm{d}y=\pi^2-2\pi` },
+        { t: [-a, 0], ngoai: xpD, trong: null, an: true }, { t: [-yK, -a], ngoai: xpD, trong: xmD, an: true },
+      ],
+      chia: { tieuDe: 'Nhờ đối xứng, chỉ tính nửa trên',
+        html: String.raw`<p>Hình đối xứng qua <i>BD</i> (trục <i>Ox</i>) nên nửa trên và nửa dưới quay ra hai khối bằng nhau: tính nửa trên rồi <b>nhân 2</b>.</p>
+          <p>Kẻ đường thẳng <i>y</i> = <i>a</i> qua <i>A</i>. <b>Miền 1</b> (0 ≤ <i>y</i> ≤ <i>a</i>): hình chạm trục quay nên khối <b>đặc</b> tới trục, bán kính <i>x</i><sub>+</sub>. <b>Miền 2</b> (<i>a</i> ≤ <i>y</i> ≤ <i>c</i>): hình <b>rời khỏi trục</b>, nằm giữa hai nhánh <i>x</i><sub>−</sub> và <i>x</i><sub>+</sub>, nên khối có <b>lỗ</b>.</p>`,
+        mocTen: 'c: điểm cao nhất của cung tròn',
+        mocDong: [String.raw`c=\frac a2+\frac{a}{\sqrt2}`], mocKq: String.raw`a=2,\quad c=1+\sqrt2` },
+      tong: { tieuDe: 'Cộng hai miền, nhân đôi',
+        tex: String.raw`\begin{aligned}V&=2\left(V_1+V_2\right)\\[0.5em]V_1&=\pi\int_0^a x_+^2\,\mathrm{d}y\\[0.5em]V_2&=\pi\int_a^c\left(x_+^2-x_-^2\right)\mathrm{d}y\\[0.5em]V&=a^3\left(\frac{4\pi}{3}+\frac{\pi^2}{2}\right)\end{aligned}`,
+        soTen: 'a = 2, c = 1 + √2',
+        kq: String.raw`\begin{aligned}V&=2\left(\frac{22\pi}{3}+\pi^2+\pi^2-2\pi\right)\\[0.4em]&=\frac{32\pi}{3}+4\pi^2\approx 72{,}99\end{aligned}`,
+        nguyenHamTen: 'Biến đổi đã dùng (a = 2, đặt u = y − 1)',
+        nguyenHam: [String.raw`x_+^2=3-u^2+2\sqrt{2-u^2}`, String.raw`x_+^2-x_-^2=4\sqrt{2-u^2}`, String.raw`\int\sqrt{2-u^2}\,\mathrm{d}u=\frac u2\sqrt{2-u^2}+\arcsin\frac{u}{\sqrt2}`],
+        luu: String.raw`Miền 2 nhỏ nhưng dễ sai nhất: phía trên điểm <i>A</i> hình không còn chạm trục quay, khối có lỗ, phải trừ <i>x</i><sub>−</sub>². Quên trừ là tính thừa cả phần lõm quanh trục.` },
     }) }
 
   return DS

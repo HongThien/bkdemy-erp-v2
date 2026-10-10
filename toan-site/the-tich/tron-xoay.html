@@ -194,7 +194,7 @@ if (bai.bay) { const lam = c => new THREE.MeshLambertMaterial({ color: c, side: 
 const dyT = TX === 'x' ? 1.3 : 0, dxT = TX === 'x' ? 0 : -1.6
 const mocHien = () => buocTu(bai.thucTe ? 'truc' : coChia ? 'chia' : 'quay')   // từ bước nào thì mốc hiện kèm tên chữ
 for (const t of bai.vach || []) label(so(t), () => P(t, 0), () => !(mocHien() && (bai.moc || []).some(m => m.t === t)), TX === 'x' ? -0.05 : -0.8, TX === 'x' ? 1.05 : 0)
-for (const m of bai.moc || []) label(m.chu + ' = ' + so(m.t), () => P(m.t, 0), mocHien, (m.dx || 0) + dxT, m.dy || dyT, 'dim')
+for (const m of bai.moc || []) label(m.chu + ' = ' + (m.gt || so(m.t)), () => P(m.t, 0), m.an ? () => buocTu('chia') : mocHien, (m.dx || 0) + dxT, m.dy || dyT, 'dim')
 MIEN.forEach((m, i) => { if (coChia && m.nhan) label(String(i + 1), () => P(m.nhan[0], m.nhan[1]), phangGap, 0, 0, 'so') })
 for (const d of bai.diem || []) M.dot(() => P(d[0], d[1]), coHinh, 0xffffff, DV * 0.52)
 for (const d of bai.nhanDiem || []) M.label(d[2], () => P(d[0], d[1]), coHinh, d[3] || 0, d[4] || 0)   // tên điểm: [t, r, chữ, dx, dy]
@@ -342,7 +342,7 @@ function hinhNho(b) {
   const lay = (fn, t0, t1, n) => { const o = []; for (let i = 0; i <= n; i++) { const u = i / n, t = t0 + (t1 - t0) * (b.mauDau ? (1 - Math.cos(Math.PI * u)) / 2 : u); o.push(diem(t, fn ? fn(t) : 0)) } return o }
   let s = '<svg class="hinh" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true">'
   for (const d of b.to) s += '<polygon points="' + lay(d.tren, d.t[0], d.t[1], 40).concat(lay(d.duoi, d.t[0], d.t[1], 40).reverse()).join(' ') + '" fill="' + (d.phia === 'duoi' ? 'rgba(255,122,184,.42)' : 'rgba(92,225,255,.38)') + '"/>'
-  for (const d of b.toMo || []) s += '<polygon points="' + lay(d.tren, d.t[0], d.t[1], 40).concat(lay(d.duoi, d.t[0], d.t[1], 40).reverse()).join(' ') + '" fill="rgba(92,225,255,.15)"/>'
+  for (const d of b.toMo || []) s += '<polygon points="' + lay(d.tren, d.t[0], d.t[1], 40).concat(lay(d.duoi, d.t[0], d.t[1], 40).reverse()).join(' ') + '" fill="rgba(92,225,255,.38)"/>'   // thẻ chọn bài vẽ đúng hình của ĐỀ: hai nửa như nhau
   const truc = '#9fb3d6'
   s += '<path d="M' + X(RX[0]) + ' ' + Y(0) + ' H' + X(RX[1]) + ' M' + X(0) + ' ' + Y(RY[0]) + ' V' + Y(RY[1]) + '" stroke="' + truc + '" stroke-width="1.5" fill="none"/>'
   s += '<path d="M' + X(RX[1]) + ' ' + Y(0) + ' l-7 -3.5 v7 z M' + X(0) + ' ' + Y(RY[1]) + ' l-3.5 7 h7 z" fill="' + truc + '"/>'
