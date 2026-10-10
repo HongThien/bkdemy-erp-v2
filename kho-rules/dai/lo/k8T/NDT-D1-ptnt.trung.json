@@ -1,0 +1,30 @@
+{
+ "bo": [
+  {
+   "ma": "D1.50a@p18",
+   "kieu": "toan",
+   "voi": "D1.50b@p18",
+   "noi": "trong lô",
+   "de": "Phân tích đa thức thành nhân tử: $x^2+3x+2x+6$."
+  },
+  {
+   "ma": "D1.53a@p19",
+   "kieu": "toan",
+   "voi": "D1.53b@p19",
+   "noi": "trong lô",
+   "de": "Phân tích đa thức thành nhân tử: $x^4+4+4x^2-4x^2$."
+  }
+ ],
+ "nghi": [
+  {
+   "ma": "D1.38c@p15",
+   "voi": "T18T010301006",
+   "de": "(Đề thi tuyển sinh vào lớp 10 chuyên Toán, THPT chuyên Tp. Hồ Chí Minh, năm học 2010 – 2011) Cho hai số dương $a,b$ thoả $a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$. Tính $P=a^{2010}+b^{2010}$."
+  },
+  {
+   "ma": "D1.48@p18",
+   "voi": "T18T010301006",
+   "de": "(Đề thi vào lớp 10 chuyên Trường Đại học Quốc gia Hà Nội, năm học 2004 – 2005) Cho các số thực dương $a$ và $b$ thoả mãn $a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$. Hãy tính giá trị của biểu thức $P=a^{2004}+b^{2004}$."
+  }
+ ]
+}

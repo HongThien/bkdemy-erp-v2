@@ -26,7 +26,7 @@ import { kiemP1 } from './kiem-p1-card.mjs'
 import { maDangCho } from '../../_kho_insert.mjs'
 
 const a = process.argv.slice(2)
-const CO_GIA_TRI = ['--khoi', '--lo', '--ten', '--kiem', '--sua', '--mu', '--thu-muc']
+const CO_GIA_TRI = ['--khoi', '--lo', '--ten', '--kiem', '--sua', '--mu', '--thu-muc', '--sach', '--co-ban']
 const lay = (k, md = null) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : md }
 const tep = a.filter((x, i) => !x.startsWith('--') && !CO_GIA_TRI.includes(a[i - 1]))
 const KHOI = lay('--khoi'), LO = Number(lay('--lo')), TEN = lay('--ten'), DIR = lay('--thu-muc', 'kho-rules/dai/lo/k8T')
@@ -35,6 +35,14 @@ const { soVoiDe, docKiem } = await import(pathToFileURL(resolve(lay('--kiem', 'k
 const sua = lay('--sua') ? JSON.parse(readFileSync(lay('--sua'), 'utf8')) : {}
 const mu = lay('--mu') ? JSON.parse(readFileSync(lay('--mu'), 'utf8')) : null
 const CHO = maDangCho('dai', KHOI)
+// --sach "<tên sách ghi vào ten_de_goc>" (bắt buộc khi --db): để nhận ra chính câu này nếu nó đã nằm trong kho
+// --db: LỌC TRÙNG với kho của khối (loc-trung.mjs) — câu trùng chữ / trùng toán với câu đã có, hoặc trùng nhau trong lô ⇒ không vào lô
+// --co-ban <json>: [{ khu, tu, den, nhom }] — câu tầng "Bài tập cơ bản" của sách (tang: co_ban) vào nhóm "Kiến thức cơ bản" của BÀI HỌC
+//   chứa nó (CEO 10/10), theo số bài; luật máy ⇒ không cần lượt gán nhóm mù cho các câu này
+const SACH = lay('--sach'), DUNG_DB = a.includes('--db')
+const coBan = lay('--co-ban') ? JSON.parse(readFileSync(lay('--co-ban'), 'utf8')) : null
+if (DUNG_DB && !SACH) { console.error('--db cần --sach "<tên sách>"'); process.exit(2) }
+const nhomCoBan = (ma, bai) => { const khu = ma.split('.')[0], so = parseInt(bai, 10); return coBan?.find((x) => x.khu === khu && so >= x.tu && so <= x.den)?.nhom ?? null }
 
 // ── tách .cs.md ──────────────────────────────────────────────────────────────
 function tach(txt, tenTep) {
@@ -70,7 +78,7 @@ for (const t of tho) {
   if (sua[t.ma]) daSua.push(t.ma)
   const m = t.meta
   const b = {
-    ma: t.ma, bai: m.bai ?? null, y: trong(m.y) ? null : m.y, trang_pdf: Number(m.trang) || null, tang: m.tang ?? null,
+    sach: SACH ?? null, ma: t.ma, bai: m.bai ?? null, y: trong(m.y) ? null : m.y, trang_pdf: Number(m.trang) || null, tang: m.tang ?? null,
     nguon_de: trong(m.nguon_de) ? null : m.nguon_de, muc_loi_giai_sach: m.muc_loi_giai_sach ?? null,
     kiem: s.kiem ?? (trong(m.kiem) ? 'khong' : m.kiem), ket_qua_sach: s.ket_qua_sach ?? (trong(m.ket_qua_sach) ? null : m.ket_qua_sach),
     noi_dung: chuanThapPhan((s.noi_dung ?? t.de).trim()), noi_dung_chep: t.de.trim(), loi_giai_sach: t.sach, khong_doc_duoc: trong(m.khong_doc_duoc) ? null : m.khong_doc_duoc,
@@ -96,7 +104,10 @@ for (const t of tho) {
   if (!/^T1\w{2}0\d0\d0\d$|000000$/.test(nhom)) { loi.push(`${t.ma}: mã nhóm "${nhom}" sai dạng`); continue }
   const nhomSoan = nhom
   const nMu = mu?.cau?.[t.ma]?.dang
-  if (mu && !/000000$/.test(nhom)) {
+  const nCB = b.tang === 'co_ban' ? nhomCoBan(t.ma, b.bai) : null
+  if (b.tang === 'co_ban' && coBan && !nCB) { loi.push(`${t.ma}: câu tầng cơ bản mà bảng --co-ban không có bài ${b.bai}`); continue }
+  if (nCB) nhom = nCB
+  else if (mu && !/000000$/.test(nhom)) {
     if (!nMu) { loi.push(`${t.ma}: bản gán mù không có câu này`); continue }
     if (nMu !== nhom) { canhBao.push(`${t.ma}: trạm soạn xếp ${nhom}, model khác gán mù ra ${nMu} ⇒ vào dạng chờ`); nhom = CHO }
   }
@@ -118,7 +129,8 @@ for (const t of tho) {
     kiem_doc: chep.ket_qua === 'dat'
       ? { ket_qua: 'dat', ghi_chu: `nguồn là ẢNH scan (trang PDF ${b.trang_pdf}): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số` }
       : { ket_qua: 'khong_kiem_duoc', ghi_chu: `nguồn là ẢNH scan (trang PDF ${b.trang_pdf}): máy không đối chiếu được đề với kết quả sách (${chep.ghi_chu.slice(0, 70)}) — người soát đối chiếu ảnh` },
-    _kiem_dap_so: ds.ket_qua,
+    ...(nCB ? { kiem_dang: { ket_qua: 'dat', ghi_chu: `luật máy (CEO 10/10): câu tầng "Bài tập cơ bản" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài ${b.bai})` } } : {}),
+    _kiem_dap_so: ds.ket_qua, _kiem: b.kiem,
   })
 }
 for (const [k, n] of Object.entries(demMa)) if (n > 1) loi.push(`mã "${k}" xuất hiện ${n} lần`)
@@ -135,15 +147,49 @@ for (const c of cau) for (const k of ['noi_dung', 'loi_giai', 'dap_an']) {
   }
 }
 
-// ── ghi ra ───────────────────────────────────────────────────────────────────
+// bài + đề ghi ra TRƯỚC khi lọc trùng: loc-trung.mjs đọc *.bai.json để lấy dòng kiem của câu đã nằm trong kho
 writeFileSync(join(DIR, `${TEN}.bai.json`), JSON.stringify(bai, null, 1) + '\n')
 writeFileSync(join(DIR, `${TEN}.de.json`), JSON.stringify(bai.filter((b) => b.muc_loi_giai_sach !== 'khong').map((b) => ({ ma: b.ma, noi_dung: b.noi_dung })), null, 1) + '\n')
-const dem = (f) => cau.reduce((o, c) => { const k = f(c); o[k] = (o[k] || 0) + 1; return o }, {})
+
+// ── lọc trùng (--db): trong lô + với kho của khối ───────────────────────────
+const trung = [], nghiTrung = []
+let cauRa = cau
+if (DUNG_DB && !loi.length) {
+  const { cauTrongKho, taoChiMuc, timTrung, trungTrongDanhSach, baiTuMa } = await import('./loc-trung.mjs')
+  const { default: pg } = await import('pg')
+  const GOC = join(resolve(DIR), '..', '..', '..', '..')
+  const envTxt = readFileSync(join(GOC, '.env'), 'utf8')
+  const env = Object.fromEntries(envTxt.split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
+  const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
+  await db.connect(); await db.query('begin read only')
+  const kho = await cauTrongKho(db, KHOI, DIR); await db.end()
+  const cuaLo = new Set(cau.map((c) => `${SACH} · ${c.ma_nguon}`))
+  const khoKhac = kho.filter((k) => !cuaLo.has(k.ten_de_goc))            // câu của chính lô này đã ghi từ lượt trước thì không tính là "trùng"
+  const dsLo = cau.map((c) => ({ id: c.ma_nguon, noi_dung: c.noi_dung, dap_an: c.dap_an, kiem: c._kiem, bai_khoa: baiTuMa(c.ma_nguon) ? `${SACH}·${baiTuMa(c.ma_nguon)}` : null }))
+  const boTrongLo = trungTrongDanhSach(dsLo), cmKho = taoChiMuc(khoKhac)
+  cauRa = []
+  for (let i = 0; i < cau.length; i++) {
+    const c = cau[i]
+    const t = boTrongLo.get(c.ma_nguon)
+    if (t) { trung.push({ ma: c.ma_nguon, kieu: t.kieu, voi: t.voi, noi: 'trong lô', de: c.noi_dung }); continue }
+    const k = timTrung(dsLo[i], cmKho)
+    if (k?.kieu) { trung.push({ ma: c.ma_nguon, kieu: k.kieu, voi: k.voi, noi: 'kho', de: c.noi_dung }); continue }
+    if (k?.nghi) nghiTrung.push({ ma: c.ma_nguon, voi: k.nghi, de: c.noi_dung })
+    cauRa.push(c)
+  }
+  writeFileSync(join(DIR, `${TEN}.trung.json`), JSON.stringify({ bo: trung, nghi: nghiTrung }, null, 1) + '\n')
+  console.log(`  lọc trùng: kho ${KHOI} có ${kho.length} câu (${khoKhac.length} không thuộc lô này) · BỎ ${trung.length} câu trùng · nghi trùng khuôn ${nghiTrung.length} (giữ, người xem) → ${TEN}.trung.json`)
+  for (const x of trung) console.log(`     ✂ ${x.ma} trùng ${x.kieu === 'chu' ? 'CHỮ' : 'TOÁN'} với ${x.voi} (${x.noi})`)
+  for (const x of nghiTrung) console.log(`     ? ${x.ma} NGHI trùng với ${x.voi} (cùng khuôn + cùng đáp án, hoặc cùng giá trị mà viết khác) — giữ, người xem`)
+}
+
+// ── ghi ra ───────────────────────────────────────────────────────────────────
+const dem = (f) => cauRa.reduce((o, c) => { const k = f(c); o[k] = (o[k] || 0) + 1; return o }, {})
 console.log(`${tho.length} khối trong ${tep.length} tệp · bỏ ${bo.length}${bo.length ? ' (' + bo.join(' | ') + ')' : ''}`)
 console.log(`  → ${join(DIR, TEN + '.bai.json')} (${bai.length} bài) · ${TEN}.de.json (đề cho lượt gán nhóm mù)`)
 if (canhBao.length) { console.log(`  ⚠ ${canhBao.length} cảnh báo:`); for (const x of canhBao) console.log('    ', x) }
 if (loi.length) { console.error(`✘ ${loi.length} lỗi — KHÔNG ra lô:`); for (const l of loi) console.error('   ', l); process.exit(1) }
-writeFileSync(join(DIR, `${TEN}.json`), JSON.stringify(cau, null, 1) + '\n')
-console.log(`✔ ${cau.length} câu → ${join(DIR, TEN + '.json')} · máy chuẩn hoá định dạng ${suaMay.length} · người soát sửa ${daSua.length}`)
+writeFileSync(join(DIR, `${TEN}.json`), JSON.stringify(cauRa.map(({ _kiem, ...c }) => c), null, 1) + '\n')
+console.log(`✔ ${cauRa.length} câu → ${join(DIR, TEN + '.json')} · máy chuẩn hoá định dạng ${suaMay.length} · người soát sửa ${daSua.length}`)
 console.log('  theo nhóm:', JSON.stringify(dem((c) => c.dang_chinh)))
 console.log('  kiểm chép:', JSON.stringify(dem((c) => c.kiem_doc.ket_qua)), '· kiểm đáp số:', JSON.stringify(dem((c) => c._kiem_dap_so)))

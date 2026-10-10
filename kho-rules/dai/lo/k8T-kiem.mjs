@@ -112,7 +112,7 @@ export function giaTri(latex, bien = {}) {
   if (p !== k.length) throw new Error(`thừa kí hiệu từ vị trí ${p}: ${String(latex).slice(0, 60)}`)
   return v
 }
-const cacBien = (s) => [...new Set(tachKiHieu(s).filter((t) => t.k === 'bien').map((t) => t.v))]
+export const cacBien = (s) => [...new Set(tachKiHieu(s).filter((t) => t.k === 'bien').map((t) => t.v))]
 
 // bộ số thử cố định: phân số nhỏ, khác 0, khác nhau giữa các biến ⇒ chạy lại ra đúng kết quả cũ
 function* boSoThu(bien, soBo = 8) {

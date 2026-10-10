@@ -25,7 +25,7 @@ Ghi tệp **sau mỗi 4–6 bài** (ngữ cảnh có thể bị nén — cái g�
 
 ## 2. Định dạng công thức (áp cho cả đề lẫn lời giải)
 
-- Mỗi công thức một cặp `$…$`. Phân số `\dfrac{a}{b}`. Không dùng `\left` `\right` trừ khi ngoặc bao phân số.
+- Mỗi công thức một cặp `$…$`. Phân số `\dfrac{a}{b}` — luôn đủ hai cặp ngoặc nhọn (không viết tắt `\dfrac52`). Không dùng `\left` `\right` trừ khi ngoặc bao phân số.
 - **Dấu nhân:** sách in dấu chấm ($7^{19}.57$, $AB.AC$) ⇒ đổi: giữa **hai số** dùng `\cdot` ($7^{19}\cdot 57$); số–chữ, chữ–chữ, ngoặc–ngoặc **viết liền** ($5x(3x+2y)$, $(x+1)(x-3)$). Không dùng `\times`, không dùng dấu chấm làm dấu nhân.
 - Chia hết `\vdots` · không chia hết `\not\vdots` · đồng dư `a\equiv b \pmod{m}` · giá trị tuyệt đối `\lvert x\rvert` · suy ra `\Rightarrow` · tương đương `\Leftrightarrow`.
 - Tập nghiệm `$S=\{1;-2\}$` (ngăn bằng `;`). Số thập phân dùng dấu phẩy. Luỹ thừa của số âm có ngoặc: `(-2)^4`.
@@ -97,6 +97,10 @@ $=(x+1)(x+2)(x-3)$
 
 Xếp theo **MỤC TIÊU của đề** trước: đề bảo giải phương trình / tìm $x$ ⇒ nhóm phương trình; bảo chứng minh chia hết ⇒ nhóm chia hết; tìm GTLN / GTNN ⇒ nhóm cực trị — **dù** công cụ là phân tích nhân tử.
 Đề thuần "phân tích thành nhân tử" ⇒ xếp theo **phương pháp khó nhất phải dùng**. Không chắc ⇒ `T18T000000` (dạng chờ), **không ép**.
+
+**Câu thuộc tầng "Bài tập cơ bản" của sách (`tang: co_ban`)** — CEO 10/10: *"Bài tập cơ bản cho vào 1 chuyên đề — gọi là kiến thức cơ bản"*. MÁY tự xếp các câu này vào nhóm
+"Kiến thức cơ bản" của bài học chứa nó (bảng `kho-rules/dai/lo/k8T/<sách>.co-ban.json`), **bất kể mục tiêu của đề**. Bạn vẫn ghi `nhom` theo luật trên (máy ghi đè) — điều quan trọng
+là ghi **đúng `tang`** theo tiêu đề tầng in trong sách ("Bài tập cơ bản" / "Bài tập nâng cao" / "Bài thi chọn học sinh giỏi").
 
 Ranh giới đã chốt qua các lô (lô 1, 10/10 — hai lượt gán lệch nhau ở đây):
 - **Phương trình bậc ≥ 3** (kể cả khi chỉ cần nhóm hạng tử đưa về tích) ⇒ `T18T020102` *bậc cao*. `T18T020101` chỉ cho phương trình bậc 1–2 và phương trình chứa ẩn ở mẫu.

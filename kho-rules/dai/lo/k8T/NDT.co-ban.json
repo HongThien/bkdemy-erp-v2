@@ -1,0 +1,7 @@
+[
+  { "khu": "D1", "tu": 1,  "den": 13, "nhom": "T18T010601", "bai_hoc": "§1 Nhân đơn thức, đa thức" },
+  { "khu": "D1", "tu": 14, "den": 26, "nhom": "T18T010602", "bai_hoc": "§2 Hằng đẳng thức đáng nhớ" },
+  { "khu": "D1", "tu": 27, "den": 60, "nhom": "T18T010603", "bai_hoc": "§3–§5 Phân tích đa thức thành nhân tử" },
+  { "khu": "D1", "tu": 61, "den": 81, "nhom": "T18T010601", "bai_hoc": "§6–§7 Chia đơn thức, đa thức" },
+  { "khu": "D2", "tu": 1,  "den": 52, "nhom": "T18T010604", "bai_hoc": "Chương II Phân thức đại số" }
+]

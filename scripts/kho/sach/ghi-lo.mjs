@@ -142,7 +142,9 @@ for (const c of lo) {
   if (kiemA) bb('kiem-hinh-a', 'code', kiemA, LAN_KIEM_CODE)
   if (kiemDe) bb('kiem-hinh-de', 'code', kiemDe, LAN_KIEM_CODE)
   const n = ngoai?.cau?.[c.ma_nguon]
-  if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
+  // nhóm do LUẬT MÁY quyết (lo-tu-chep --co-ban: câu tầng cơ bản ⇒ nhóm Kiến thức cơ bản của bài học) — lô mang sẵn biên bản, không cần gán mù
+  if (c.kiem_dang && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'code', c.kiem_dang, LAN_KIEM_CODE)
+  else if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
     ? { ket_qua: 'dat', ghi_chu: `model khác gán mù ra cùng dạng (${n.dang})` }
     : { ket_qua: 'khong_dat', ghi_chu: `model khác gán mù ra ${n.dang}: ${String(n.ly_do ?? '').slice(0, 160)}` }, ngoai.lan_chay, ngoai.model)
   if (n && c.so_do && n.hinh_dung != null) bb('kiem-hinh-b', 'model_khac', n.hinh_dung
