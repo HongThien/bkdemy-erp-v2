@@ -55,7 +55,29 @@ Tên 16 chuyên đề gần trùng các chuyên đề sách 5T (hai hiệu số,
 Chưa có câu nào của bộ này trong `dai_cau_hoi`. Khối 5T đang có 836 câu "Toán 5 TLTK" ở dạng chờ `T15T000000` + 685 câu cũ.
 Có sẵn bảng đề thi `toan_de_thi` / `toan_de_thi_cau` (luồng `spec-de-thi.md`: một đề vào → cấu trúc đề + câu vào kho).
 
-## 6. Việc chưa quyết (hỏi CEO 10/10)
+## 6. Quyết định CEO (10/10)
 
-1. Phạm vi + thứ tự: 58 đề trước rồi mới tới bài đề cũ trong chuyên đề, hay tất cả.
-2. Câu vào khối nào / dạng chờ nào (`T15T000000` của 5T hay khối riêng cho ôn thi CLC).
+- **Chỉ giải 58 đề.** Chuyên đề "cũng là từ đề ra", không nhập — sau này gán dạng thì các câu tự thành chuyên đề.
+  Bài đề cũ 2005–2014, bài trung tâm tự soạn, bài bổ trợ từng HS: ngoài phạm vi.
+- Khối: tạm theo 5T (dạng chờ `T15T000000`) — CEO chưa trả lời câu này; phải chốt trước khi ghi DB.
+
+## 7. Dây chuyền (dựng 10/10)
+
+| Bước | Công cụ | Kết quả |
+|---|---|---|
+| Đọc Word (MathType → LaTeX) | `scripts/kho/mathtype-thu/doc-docx.mjs` | 883/883 công thức đổi được, KaTeX đạt hết |
+| Tách đề / câu | `scripts/kho/de-thi/tach-clc6.mjs` | **58 đề · 805 câu** (điền 568 · trắc nghiệm 139 · tự luận 98) · 83 câu có hình (84 hình) |
+| Đầu vào soạn từng đề | `scripts/kho/de-thi/dau-vao-clc6.mjs` | `ma_nguon = "<mã đề> · <số>"` hoặc `"<mã đề> · P<phần>.<số>"` (bám nhãn in trong đề) |
+| Soạn | Sonnet, brief `lo/clc6-brief-soan.md` (luật 5T v1 + phần riêng đề thi) | mỗi câu đề = một câu kho, không tách ý |
+| Kiểm độc lập | Sonnet khác, brief `lo/clc6-brief-kiem.md` | đối chiếu đề Word ↔ PDF lẻ · đáp số sách · tự tính bằng code |
+| Phân xử + soát | Opus | lệch giữa 3 nguồn (soạn / tự tính / sách) ⇒ xem lại |
+
+Mã đề: `LTV 2018`, `CG 2022`, `ARC 2020-CB`, `ARC 2020-NC`, `ARC 2024-MAU`, `NN 2024-TT1`, `NTT-MH1`, `NS-HB1`… (trường + năm bắt đầu năm học).
+
+**Ghi nhận khi tách:**
+- Bản Word có lỗi chép so với PDF lẻ (vd LL 2024 câu 2: PDF "$1,001; \frac{7}{8}; \frac{2021}{2020}$ và $\frac{8}{9}$", Word mất phân số $\frac{2021}{2020}$;
+  NS 2025 Word 512 ↔ PDF 152) ⇒ bước kiểm độc lập BẮT BUỘC đối chiếu đề từng câu. So tập số liệu cả đề: 28/55 đề khớp tuyệt đối.
+- Đề nguồn thiếu câu: LL 2024 (thiếu 14, 15, 18) · TX 2025 (thiếu 11–14, không có phương án A–D dù ghi trắc nghiệm).
+- LTV 2022: nhãn câu 8 in nhầm "1" (đã sửa theo vị trí, có cờ). LTV 2023: số thứ tự không in đậm.
+- Không có PDF lẻ để đối chiếu: TX 2025, NTL 2025, CG 2025, NTT 2025 (`NTT 2025.pdf` là đề MINH HOẠ = `NTT-MH1`).
+- Bộ ghi lô của sách (`ghi-lo.mjs`) chưa nhận câu trắc nghiệm (`lua_chon`) — phải mở rộng trước khi ghi 139 câu TN.
