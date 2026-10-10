@@ -36784,3 +36784,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ### 10/10 (tiếp 4) — Lunar Cherry: cho ăn không giới hạn
 - **Thùy:** "để thú ăn được nhiều hơn, con rất thích cho ăn". Bỏ luật từ chối khi no (Talking Tom từ chối, nhưng với bé 6 tuổi cho ăn là trò chính): mỗi món +10 (trước 25), cá +20, đói tụt 20/giờ (trước 12), no ≥ 95 vẫn ăn chỉ ợ "Burp!" + ngáp; 🚽 hiện sau 3 món (trước 2). Thử: 7 món liên tiếp đều ăn, 3 món sau ợ. Commit LunarCherry + spec §3.7.
+
+### 10/10 (tiếp 5) — Lunar Cherry: Đi dạo = cảnh cuộn ngang 44 hoạt động
+- **Thùy:** "dắt đi dạo làm thành cảnh có con nó bước đi trên con đường, chạy, nhảy tránh chướng ngại vật, ngã lăn quay, vấp đá, đâm tường u đầu — 30–40 loại hoạt động vui nhộn, giờ chả có gì".
+- **Làm:** `js/anh/dao-da.js` (mới) — thú nhìn nghiêng chạy tại chỗ, đường + cảnh vật trôi (CSS). 10 sự kiện/chuyến, xáo ngẫu nhiên không lặp: 30 vật cản (19 nhảy · 5 cúi · 6 né; bé chạm đúng lúc, cửa sổ 0–0,8 s trước va chạm) + 14 gag tự diễn. Trượt ⇒ 12 kiểu hậu quả (vấp lộn nhào, trượt chuối, đâm tường u đầu, bẹp dí, hất bay, giật mình, trúng đầu, ướt sũng, cháy đen, rơi hố, vật bám đầu, ong đuổi). Vật đọc tên tiếng Anh. Thưởng: 1 + điểm/3 + cá nhặt được. `thu-cung.js` thêm `rong(k)` nới khung (1,9) để thú nhảy không bị cắt. Đã thử 2 chuyến (không chạm; có chạm), 0 lỗi console.
+- **Chưa làm/chưa chắc:** chưa chụp từng gag (đầu thú u, lộn nhào) để chỉnh vị trí cục u `.u-dau` (left 56% top 19% đoán); chưa thử đủ 44 gag từng cái; chưa thử iPad thật; chưa ghi spec §3.7 phần Đi dạo mới; chuyến dài ~58 s, có thể rút; lỗi chạm trúng nút ✖ chưa kiểm.
