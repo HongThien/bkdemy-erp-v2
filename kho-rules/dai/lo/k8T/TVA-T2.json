@@ -1,0 +1,2411 @@
+[
+ {
+  "ma_nguon": "T2V1.1a@p18",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Đưa các nhân tử chung ra ngoài dấu ngoặc: $a^{m+2}-a^m$.",
+  "noi_dung_sach": "Đưa các nhân tử chung ra ngoài dấu ngoặc: $a^{m+2}-a^m$.",
+  "dap_an": "$a^m(a-1)(a+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hạng tử cùng cơ số $a$ nên nhân tử chung là luỹ thừa của $a$ có số mũ nhỏ hơn; tách $a^{m+2}$ thành tích hai luỹ thừa để nhân tử chung lộ ra.\n\n**Bước 1.** Nhận ra $a^m$ là luỹ thừa của $a$ có số mũ nhỏ nhất trong hai hạng tử nên đặt nó làm nhân tử chung.\n\n**Bước 2.** Viết $a^{m+2}$ thành $a^m\\cdot a^2$ (nhân hai luỹ thừa cùng cơ số thì cộng số mũ) rồi đặt $a^m$ ra ngoài dấu ngoặc.\n\n**Bước 3.** Xét biểu thức còn lại trong ngoặc, thấy nó là hiệu hai bình phương nên phân tích tiếp bằng hằng đẳng thức.\n\n**Chú ý:** Không dừng ở dạng $a^m(a^2-1)$ vì nhân tử $a^2-1$ còn phân tích được.\n\n**Phần 2. Trình bày**\n\n$a^{m+2}-a^m=a^m\\cdot a^2-a^m$\n\n$=a^m(a^2-1)$\n\n$=a^m(a-1)(a+1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 18): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V1.1b@p18",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Đưa các nhân tử chung ra ngoài dấu ngoặc: $-5x^my+15x^ny$.",
+  "noi_dung_sach": "Đưa các nhân tử chung ra ngoài dấu ngoặc: $-5x^my+15x^ny$.",
+  "dap_an": "$-5x^ny(x^{m-n}-3)$ nếu $m\\ge n$; $-5x^my(1-3x^{n-m})$ nếu $m<n$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Luỹ thừa chung của $x$ là luỹ thừa có số mũ nhỏ hơn, mà đề không cho biết $m$ và $n$ số nào lớn hơn nên phải chia hai trường hợp.\n\n**Bước 1.** Tìm nhân tử chung của phần hệ số: $-5$ và $15$ cùng chia hết cho $5$, đặt $-5$ để hạng tử đầu không còn dấu trừ, và cả hai hạng tử đều chứa $y$.\n\n**Bước 2.** Chia hai trường hợp $m\\ge n$ và $m<n$ để biết luỹ thừa nào của $x$ có số mũ nhỏ hơn, đó chính là nhân tử chung của phần biến.\n\n**Bước 3.** Trong mỗi trường hợp, tách luỹ thừa có số mũ lớn hơn thành tích hai luỹ thừa cùng cơ số rồi đặt nhân tử chung ra ngoài dấu ngoặc.\n\n**Chú ý:** Phải chia trường hợp chỉ vì đề không cho biết thứ tự của $m$ và $n$; nếu đề cho sẵn $m\\ge n$ thì chỉ cần trường hợp đầu, vì khi đó mới đặt được $x^n$ mà số mũ $m-n$ không âm.\n\n**Phần 2. Trình bày**\n\nTrường hợp $m\\ge n$:\n\n$-5x^my+15x^ny=-5x^n\\cdot x^{m-n}y+15x^ny$\n\n$=-5x^ny(x^{m-n}-3)$.\n\nTrường hợp $m<n$:\n\n$-5x^my+15x^ny=-5x^my+15x^m\\cdot x^{n-m}y$\n\n$=-5x^my(1-3x^{n-m})$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 18): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 18, §2 Dạng 1 ví dụ 1b: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V2.1a@p18",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3z+x^2yz-x^2z^2-xyz^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3z+x^2yz-x^2z^2-xyz^2$.",
+  "dap_an": "$xz(x-z)(x+y)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn hạng tử đều chứa $xz$; ghép từng cặp sao cho mỗi cặp đặt nhân tử chung xong thì cùng để lại một nhị thức giống nhau, rồi đặt nhị thức đó ra ngoài.\n\n**Bước 1.** Chia bốn hạng tử thành hai cặp: cặp có $x^3z$ và $x^2z^2$, cặp có $x^2yz$ và $xyz^2$, vì mỗi cặp cho cùng nhân tử $x-z$.\n\n**Bước 2.** Đặt nhân tử chung trong từng cặp để cả hai cặp cùng xuất hiện nhị thức $x-z$.\n\n**Bước 3.** Đặt $x-z$ làm nhân tử chung của cả biểu thức, rồi đặt tiếp nhân tử chung của nhân tử còn lại.\n\n**Chú ý:** Có thể ghép cặp khác, chẳng hạn $x^3z$ với $x^2yz$ và $x^2z^2$ với $xyz^2$, được cùng kết quả; hoặc đặt $xz$ ra ngoài ngay từ đầu.\n\n**Phần 2. Trình bày**\n\n$x^3z+x^2yz-x^2z^2-xyz^2=(x^3z-x^2z^2)+(x^2yz-xyz^2)$\n\n$=x^2z(x-z)+xyz(x-z)$\n\n$=(x-z)(x^2z+xyz)$\n\n$=xz(x-z)(x+y)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 18): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V2.1b@p18",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $p^{m+2}q-p^{m+1}q^3-p^2q^{n+1}+pq^{n+3}$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $p^{m+2}q-p^{m+1}q^3-p^2q^{n+1}+pq^{n+3}$.",
+  "dap_an": "$pq(p-q^2)(p^m-q^n)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hạng tử nào cũng chứa $p$ và $q$ với số mũ chứa chữ; ghép hai hạng tử đầu rồi hai hạng tử sau, mỗi cặp đặt nhân tử chung thì cùng để lại $p-q^2$.\n\n**Bước 1.** Nhóm hạng tử thứ nhất với thứ hai, hạng tử thứ ba với thứ tư, vì $p^{m+2}q$ và $p^{m+1}q^3$ hơn kém nhau đúng một thừa số $p$ và $q^2$.\n\n**Bước 2.** Đặt nhân tử chung $p^{m+1}q$ ở nhóm đầu và $-pq^{n+1}$ ở nhóm sau để cả hai nhóm cùng chứa nhị thức $p-q^2$.\n\n**Bước 3.** Đặt $p-q^2$ ra ngoài, rồi đặt tiếp nhân tử chung $pq$ của thừa số còn lại để được hiệu hai luỹ thừa.\n\n**Chú ý:** Cách ghép hạng tử đầu với hạng tử thứ tư, hạng tử thứ hai với hạng tử thứ ba cũng đến cùng kết quả nhưng dài hơn.\n\n**Phần 2. Trình bày**\n\n$p^{m+2}q-p^{m+1}q^3-p^2q^{n+1}+pq^{n+3}=p^{m+1}q(p-q^2)-pq^{n+1}(p-q^2)$\n\n$=(p-q^2)(p^{m+1}q-pq^{n+1})$\n\n$=pq(p-q^2)(p^m-q^n)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 18): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V2.2a@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-(a+b)xy+aby^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2-(a+b)xy+aby^2$.",
+  "dap_an": "$(x-ay)(x-by)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hạng tử $(a+b)xy$ gồm hai phần $axy$ và $bxy$, mở nó ra thì bốn hạng tử ghép hai cặp cùng đặt được nhân tử chung.\n\n**Bước 1.** Khai triển $(a+b)xy$ thành $axy+bxy$ để đa thức có bốn hạng tử rời nhau.\n\n**Bước 2.** Ghép $x^2$ với $-axy$ và ghép $-bxy$ với $aby^2$, vì mỗi cặp đặt được nhân tử chung và cho cùng nhị thức $x-ay$.\n\n**Bước 3.** Đặt nhị thức $x-ay$ làm nhân tử chung của hai nhóm.\n\n**Chú ý:** Ghép $x^2$ với $-bxy$ và $-axy$ với $aby^2$ (nhân tử chung $x-by$) cũng được, cho cùng kết quả.\n\n**Phần 2. Trình bày**\n\n$x^2-(a+b)xy+aby^2=x^2-axy-bxy+aby^2$\n\n$=(x^2-axy)-(bxy-aby^2)$\n\n$=x(x-ay)-by(x-ay)$\n\n$=(x-ay)(x-by)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V2.2b@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $ab(x^2+y^2)+xy(a^2+b^2)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $ab(x^2+y^2)+xy(a^2+b^2)$.",
+  "dap_an": "$(bx+ay)(ax+by)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phá hai dấu ngoặc ra được bốn hạng tử; ghép sao cho mỗi cặp đặt nhân tử chung xong đều để lại cùng nhị thức $bx+ay$.\n\n**Bước 1.** Phá ngoặc để có bốn hạng tử $abx^2$, $aby^2$, $xya^2$, $xyb^2$.\n\n**Bước 2.** Ghép $abx^2$ với $xya^2$ và $aby^2$ với $xyb^2$, vì mỗi cặp đặt được nhân tử chung chứa $bx+ay$.\n\n**Bước 3.** Đặt nhân tử chung trong từng cặp, rồi đặt nhị thức $bx+ay$ ra ngoài.\n\n**Chú ý:** Ghép $abx^2$ với $aby^2$ chỉ đưa về đúng dạng ban đầu của đề, không đi tiếp được; vì vậy phải ghép chéo như trên để hai nhóm cùng nhân tử.\n\n**Phần 2. Trình bày**\n\n$ab(x^2+y^2)+xy(a^2+b^2)=(abx^2+a^2xy)+(aby^2+b^2xy)$\n\n$=ax(bx+ay)+by(ay+bx)$\n\n$=(bx+ay)(ax+by)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V2.2c@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(xy+ab)^2+(ay-bx)^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(xy+ab)^2+(ay-bx)^2$.",
+  "dap_an": "$(x^2+a^2)(y^2+b^2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề là tổng hai bình phương nên không dùng hiệu hai bình phương được; khai triển ra thì hai tích $2abxy$ triệt tiêu và còn bốn hạng tử đều là tích hai bình phương, nhóm được.\n\n**Bước 1.** Khai triển hai bình phương; hai hạng tử $2abxy$ và $-2abxy$ đối nhau nên triệt tiêu.\n\n**Bước 2.** Ghép các hạng tử chứa $x^2y^2$ và $a^2y^2$ thành một nhóm, các hạng tử chứa $a^2b^2$ và $b^2x^2$ thành nhóm kia, để hai nhóm cùng chứa $x^2+a^2$.\n\n**Bước 3.** Đặt $y^2$ và $b^2$ ra ngoài từng nhóm rồi đặt nhị thức $x^2+a^2$ làm nhân tử chung.\n\n**Chú ý:** Kết quả là tích của hai tổng bình phương, không phân tích tiếp thành nhân tử bậc nhất được.\n\n**Phần 2. Trình bày**\n\n$(xy+ab)^2+(ay-bx)^2=x^2y^2+2abxy+a^2b^2+a^2y^2-2abxy+b^2x^2$\n\n$=x^2y^2+a^2b^2+a^2y^2+b^2x^2$\n\n$=(x^2y^2+a^2y^2)+(a^2b^2+b^2x^2)$\n\n$=y^2(x^2+a^2)+b^2(x^2+a^2)$\n\n$=(x^2+a^2)(y^2+b^2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.1a@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $25x^4-10x^2y+y^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $25x^4-10x^2y+y^2$.",
+  "dap_an": "$(5x^2-y)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba hạng tử có hai số hạng là bình phương ($25x^4$ và $y^2$) và số hạng giữa là hai lần tích của hai căn nên đây là bình phương của một hiệu.\n\n**Bước 1.** Viết $25x^4$ thành bình phương của $5x^2$ và $y^2$ là bình phương của $y$.\n\n**Bước 2.** Kiểm tra số hạng giữa $10x^2y$ có đúng là hai lần tích $5x^2\\cdot y$ hay không.\n\n**Bước 3.** Áp dụng hằng đẳng thức bình phương của một hiệu, chú ý dấu trừ của số hạng giữa.\n\n**Chú ý:** Số hạng giữa mang dấu trừ nên kết quả là $(A-B)^2$, không phải $(A+B)^2$.\n\n**Phần 2. Trình bày**\n\n$25x^4-10x^2y+y^2=(5x^2)^2-2\\cdot5x^2\\cdot y+y^2$\n\n$=(5x^2-y)^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.1b@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $-16a^4b^6-24a^5b^5-9a^6b^4$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $-16a^4b^6-24a^5b^5-9a^6b^4$.",
+  "dap_an": "$-a^4b^4(4b+3a)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba hạng tử đều có dấu trừ và chứa $a^4b^4$; đặt $-a^4b^4$ ra ngoài thì còn một tam thức là bình phương của một tổng.\n\n**Bước 1.** Tìm nhân tử chung của ba hạng tử gồm phần hệ số $-1$ và phần biến $a^4b^4$ (số mũ nhỏ nhất của mỗi chữ).\n\n**Bước 2.** Đặt $-a^4b^4$ ra ngoài dấu ngoặc, mỗi hạng tử trong ngoặc đổi dấu và giảm số mũ tương ứng.\n\n**Bước 3.** Nhận ra tam thức trong ngoặc có dạng $A^2+2AB+B^2$ với $A=4b$, $B=3a$ rồi viết thành bình phương của một tổng.\n\n**Chú ý:** Đừng quên dấu trừ đặt ngoài ngoặc; bỏ sót thì kết quả ngược dấu.\n\n**Phần 2. Trình bày**\n\n$-16a^4b^6-24a^5b^5-9a^6b^4=-a^4b^4(16b^2+24ab+9a^2)$\n\n$=-a^4b^4\\left[(4b)^2+2\\cdot4b\\cdot3a+(3a)^2\\right]$\n\n$=-a^4b^4(4b+3a)^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.1c@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $8m^3+36m^2n+54mn^2+27n^3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $8m^3+36m^2n+54mn^2+27n^3$.",
+  "dap_an": "$(2m+3n)^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hạng tử đầu và cuối là lập phương ($8m^3=(2m)^3$, $27n^3=(3n)^3$), hai hạng tử giữa có hệ số $36=3\\cdot4\\cdot3$ và $54=3\\cdot2\\cdot9$ nên đúng là khai triển lập phương của một tổng.\n\n**Bước 1.** Viết $8m^3$ thành $(2m)^3$ và $27n^3$ thành $(3n)^3$ để xác định hai số hạng $A=2m$, $B=3n$.\n\n**Bước 2.** Kiểm tra hai hạng tử giữa có đúng bằng $3A^2B$ và $3AB^2$ hay không bằng cách thay $A$, $B$ vào.\n\n**Bước 3.** Khi cả bốn hạng tử khớp thì viết đa thức thành lập phương của tổng $A+B$.\n\n**Chú ý:** Lập phương của tổng có bậc ba nên kết quả phải có số mũ $3$, không phải $2$.\n\n**Phần 2. Trình bày**\n\n$8m^3+36m^2n+54mn^2+27n^3=(2m)^3+3\\cdot(2m)^2\\cdot3n+3\\cdot2m\\cdot(3n)^2+(3n)^3$\n\n$=(2m+3n)^3$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức lập phương của một tổng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 19, §2 Dạng 3 ví dụ 1c: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.2a@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4b^2c^2-(b^2+c^2-a^2)^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $4b^2c^2-(b^2+c^2-a^2)^2$.",
+  "dap_an": "$(a+b+c)(b+c-a)(a+b-c)(a-b+c)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề có dạng hiệu hai bình phương $(2bc)^2-(b^2+c^2-a^2)^2$ nên áp dụng ngay hằng đẳng thức, rồi mỗi nhân tử lại là hiệu hai bình phương nữa.\n\n**Bước 1.** Viết $4b^2c^2$ thành $(2bc)^2$ để thấy đề là hiệu hai bình phương, rồi tách thành tổng nhân hiệu.\n\n**Bước 2.** Gom các hạng tử trong mỗi ngoặc để mỗi ngoặc là hiệu hai bình phương: một ngoặc chứa $(b+c)^2$, ngoặc kia chứa $(b-c)^2$.\n\n**Bước 3.** Áp dụng hằng đẳng thức hiệu hai bình phương thêm lần nữa cho từng ngoặc để được tích bốn nhị thức bậc nhất.\n\n**Chú ý:** Bốn nhân tử cuối đều là nhị thức bậc nhất nên không phân tích tiếp được; khi bỏ ngoặc phải cẩn thận về dấu ở $a^2-(b-c)^2$.\n\n**Phần 2. Trình bày**\n\n$4b^2c^2-(b^2+c^2-a^2)^2=(2bc+b^2+c^2-a^2)(2bc-b^2-c^2+a^2)$\n\n$=\\left[(b+c)^2-a^2\\right]\\left[a^2-(b-c)^2\\right]$\n\n$=(b+c+a)(b+c-a)(a+b-c)(a-b+c)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.2b@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(ax+by)^2-(ay+bx)^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(ax+by)^2-(ay+bx)^2$.",
+  "dap_an": "$(a+b)(x+y)(a-b)(x-y)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề là hiệu hai bình phương $A^2-B^2$ với $A=ax+by$, $B=ay+bx$; mỗi nhân tử $A+B$, $A-B$ lại nhóm được thành tích hai nhị thức.\n\n**Bước 1.** Áp dụng hằng đẳng thức hiệu hai bình phương để viết đề thành tích $(A+B)(A-B)$.\n\n**Bước 2.** Nhóm các hạng tử của $A+B$ theo $a$ và $b$ để đặt được nhân tử chung $x+y$.\n\n**Bước 3.** Làm tương tự với $A-B$, chú ý dấu, để đặt được nhân tử chung $x-y$.\n\n**Chú ý:** Ở thừa số thứ hai, khi bỏ ngoặc phải đổi dấu cả $ay$ và $bx$.\n\n**Phần 2. Trình bày**\n\n$(ax+by)^2-(ay+bx)^2=(ax+by+ay+bx)(ax+by-ay-bx)$\n\n$=\\left[a(x+y)+b(x+y)\\right]\\left[a(x-y)-b(x-y)\\right]$\n\n$=(a+b)(x+y)(a-b)(x-y)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.2c@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a^2+b^2-5)^2-4(ab+2)^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(a^2+b^2-5)^2-4(ab+2)^2$.",
+  "dap_an": "$(a+b+1)(a+b-1)(a-b+3)(a-b-3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $4(ab+2)^2$ thành $\\left[2(ab+2)\\right]^2$ thì đề là hiệu hai bình phương; ghép $a^2+b^2$ với $\\pm2ab$ được các bình phương $(a\\pm b)^2$.\n\n**Bước 1.** Viết $4(ab+2)^2=(2ab+4)^2$ rồi áp dụng hằng đẳng thức hiệu hai bình phương cho đề.\n\n**Bước 2.** Bỏ ngoặc trong từng thừa số rồi gom $a^2+b^2+2ab$ ở thừa số đầu và $a^2+b^2-2ab$ ở thừa số sau.\n\n**Bước 3.** Mỗi thừa số lúc này là hiệu hai bình phương (với $1^2$ và $3^2$) nên phân tích thêm một lần nữa.\n\n**Chú ý:** Phải phân tích tiếp đến khi hết là hiệu hai bình phương; dừng ở hai thừa số bậc hai là chưa xong.\n\n**Phần 2. Trình bày**\n\n$(a^2+b^2-5)^2-4(ab+2)^2=(a^2+b^2-5+2ab+4)(a^2+b^2-5-2ab-4)$\n\n$=\\left[(a+b)^2-1\\right]\\left[(a-b)^2-9\\right]$\n\n$=(a+b+1)(a+b-1)(a-b+3)(a-b-3)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.2d@p19",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(4x^2-3x-18)^2-(4x^2+3x)^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(4x^2-3x-18)^2-(4x^2+3x)^2$.",
+  "dap_an": "$-12(2x+3)(2x-3)(x+3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề có dạng hiệu hai bình phương $A^2-B^2$ với $A=4x^2-3x-18$, $B=4x^2+3x$, áp dụng ngay hằng đẳng thức, rồi đặt nhân tử chung và phân tích tiếp hiệu hai bình phương nếu còn.\n\n**Bước 1.** Áp dụng $A^2-B^2=(A+B)(A-B)$ với hai biểu thức trong bình phương.\n\n**Bước 2.** Thu gọn từng thừa số: ở $A+B$ hai hạng tử bậc nhất $-3x$ và $3x$ triệt tiêu, ở $A-B$ hai hạng tử bậc hai triệt tiêu.\n\n**Bước 3.** Đặt nhân tử chung của hệ số trong mỗi thừa số rồi phân tích tiếp $4x^2-9$ bằng hiệu hai bình phương.\n\n**Chú ý:** Đừng bỏ sót nhân tử hằng $-12$ khi nhân hai hệ số đặt ra ngoài.\n\n**Phần 2. Trình bày**\n\n$(4x^2-3x-18)^2-(4x^2+3x)^2=(4x^2-3x-18+4x^2+3x)(4x^2-3x-18-4x^2-3x)$\n\n$=(8x^2-18)(-6x-18)$\n\n$=2(4x^2-9)\\cdot\\left[-6(x+3)\\right]$\n\n$=-12(2x+3)(2x-3)(x+3)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 20, §2 Dạng 3 ví dụ 2d: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V3.3@p20",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch toán vòng II, Belarussia, 1958) Phân tích đa thức thành nhân tử: $\\left[4abcd+(a^2+b^2)(c^2+d^2)\\right]^2-4\\left[cd(a^2+b^2)+ab(c^2+d^2)\\right]^2$.",
+  "noi_dung_sach": "(Đề thi vô địch toán vòng II, Belarussia, 1958) Phân tích đa thức thành nhân tử: $\\left[4abcd+(a^2+b^2)(c^2+d^2)\\right]^2-4\\left[cd(a^2+b^2)+ab(c^2+d^2)\\right]^2$.",
+  "dap_an": "$(a+b)^2(a-b)^2(c+d)^2(c-d)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề là hiệu hai bình phương của hai biểu thức rất dài, nên đặt hai biểu thức đó là $A$ và $B$ để thấy ngay $A^2-B^2=(A+B)(A-B)$; không khai triển ra.\n\n**Bước 1.** Đặt $A=4abcd+(a^2+b^2)(c^2+d^2)$ và $B=2cd(a^2+b^2)+2ab(c^2+d^2)$, vì $4\\left[\\dots\\right]^2=B^2$, rồi viết đề thành $(A+B)(A-B)$.\n\n**Bước 2.** Tính $A+B$: gom các hạng tử chứa $a^2+b^2$ và các hạng tử chứa $2ab$ để cùng xuất hiện $c^2+2cd+d^2$, từ đó nhóm thành $(c+d)^2(a+b)^2$.\n\n**Bước 3.** Tính $A-B$ theo cách tương tự (chỉ đổi dấu các hạng tử chứa $cd$) để được $(c-d)^2(a-b)^2$ rồi nhân hai kết quả.\n\n**Chú ý:** Ở $A-B$ nhớ đổi dấu cả hai hạng tử của $B$; đổi dấu sót một hạng tử thì nhóm không ra bình phương.\n\n**Phần 2. Trình bày**\n\nĐặt $A=4abcd+(a^2+b^2)(c^2+d^2)$, $B=2cd(a^2+b^2)+2ab(c^2+d^2)$.\n\nKhi đó biểu thức đã cho là $A^2-B^2=(A+B)(A-B)$.\n\n$A+B=(a^2+b^2)(c^2+d^2)+2cd(a^2+b^2)+4abcd+2ab(c^2+d^2)$\n\n$=(a^2+b^2)(c^2+d^2+2cd)+2ab(c^2+d^2+2cd)$\n\n$=(c+d)^2(a^2+b^2+2ab)=(c+d)^2(a+b)^2$.\n\n$A-B=(a^2+b^2)(c^2+d^2)-2cd(a^2+b^2)+4abcd-2ab(c^2+d^2)$\n\n$=(a^2+b^2)(c^2+d^2-2cd)-2ab(c^2+d^2-2cd)$\n\n$=(c-d)^2(a^2+b^2-2ab)=(c-d)^2(a-b)^2$.\n\nVậy $A^2-B^2=(a+b)^2(a-b)^2(c+d)^2(c-d)^2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 20): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.1@p20",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-6x+8$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2-6x+8$.",
+  "dap_an": "$(x-2)(x-4)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam thức bậc hai $x^2-6x+8$ không nhóm trực tiếp được; tách hạng tử $-6x$ thành hai hạng tử sao cho nhóm xong xuất hiện nhân tử chung, chọn hai số có tổng $-6$ và tích bằng $8$.\n\n**Bước 1.** Tìm hai số có tích bằng hệ số tự do $8$ và tổng bằng hệ số của $x$ là $-6$, đó là $-2$ và $-4$.\n\n**Bước 2.** Tách $-6x$ thành $-2x-4x$ để đa thức có bốn hạng tử.\n\n**Bước 3.** Nhóm hai hạng tử đầu và hai hạng tử sau, đặt nhân tử chung trong từng nhóm để cùng xuất hiện nhị thức $x-2$.\n\n**Bước 4.** Đặt $x-2$ ra ngoài dấu ngoặc để được tích hai nhị thức bậc nhất.\n\n**Chú ý:** Có nhiều cách khác, chẳng hạn viết $x^2-6x+9-1=(x-3)^2-1$ rồi dùng hiệu hai bình phương; kết quả luôn như nhau.\n\n**Phần 2. Trình bày**\n\n$x^2-6x+8=x^2-2x-4x+8$\n\n$=x(x-2)-4(x-2)$\n\n$=(x-2)(x-4)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 20): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.2a@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-7xy+10y^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2-7xy+10y^2$.",
+  "dap_an": "$(x-2y)(x-5y)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là tam thức bậc hai theo $x$ với hệ số $y$; tách $-7xy$ thành hai hạng tử mà hệ số có tích bằng hệ số của $y^2$ là $10$ và tổng bằng $-7$.\n\n**Bước 1.** Tìm hai số có tích $10$ và tổng $-7$, đó là $-2$ và $-5$.\n\n**Bước 2.** Tách $-7xy$ thành $-2xy-5xy$ để đa thức có bốn hạng tử.\n\n**Bước 3.** Nhóm từng cặp và đặt nhân tử chung để cùng xuất hiện nhị thức $x-2y$, rồi đặt nhị thức đó ra ngoài.\n\n**Chú ý:** Có thể tách theo thứ tự khác ($-5xy-2xy$), kết quả như nhau.\n\n**Phần 2. Trình bày**\n\n$x^2-7xy+10y^2=x^2-2xy-5xy+10y^2$\n\n$=x(x-2y)-5y(x-2y)$\n\n$=(x-2y)(x-5y)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.2b@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^2-5a-14$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a^2-5a-14$.",
+  "dap_an": "$(a+2)(a-7)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam thức bậc hai có hệ số tự do âm nên hai số cần tìm trái dấu: tích bằng $-14$ và tổng bằng hệ số của $a$ là $-5$.\n\n**Bước 1.** Liệt kê các cặp số có tích $-14$ rồi chọn cặp có tổng $-5$, đó là $2$ và $-7$.\n\n**Bước 2.** Tách $-5a$ thành $2a-7a$ để đa thức có bốn hạng tử.\n\n**Bước 3.** Nhóm hai cặp, đặt nhân tử chung để cùng xuất hiện nhị thức $a+2$ rồi đặt nó ra ngoài.\n\n**Chú ý:** Kiểm tra lại bằng cách nhân hai nhân tử: hệ số của $a$ phải bằng tổng hai số đã tách.\n\n**Phần 2. Trình bày**\n\n$a^2-5a-14=a^2+2a-7a-14$\n\n$=a(a+2)-7(a+2)$\n\n$=(a+2)(a-7)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.3a@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2m^2+10m+8$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $2m^2+10m+8$.",
+  "dap_an": "$2(m+1)(m+4)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các hệ số $2,10,8$ cùng chia hết cho $2$; đặt $2$ ra ngoài trước, rồi tách tam thức $m^2+5m+4$ cho nhân tử $m+1$ xuất hiện.\n\n**Bước 1.** Đặt nhân tử chung $2$ của ba hệ số để đưa về tam thức có hệ số cao nhất bằng $1$.\n\n**Bước 2.** Tách $m^2+5m+4$ thành $(m^2+2m+1)+(3m+3)$ để nhóm đầu là bình phương của $m+1$ và nhóm sau cũng chứa $m+1$.\n\n**Bước 3.** Đặt $m+1$ làm nhân tử chung của hai nhóm rồi thu gọn nhân tử còn lại.\n\n**Chú ý:** Đừng quên nhân tử $2$ đặt ngoài cùng khi viết kết quả.\n\n**Phần 2. Trình bày**\n\n$2m^2+10m+8=2(m^2+5m+4)$\n\n$=2\\left[(m^2+2m+1)+(3m+3)\\right]$\n\n$=2\\left[(m+1)^2+3(m+1)\\right]$\n\n$=2(m+1)(m+4)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.3b@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4p^2-36p+56$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $4p^2-36p+56$.",
+  "dap_an": "$4(p-2)(p-7)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba hệ số $4,-36{,}56$ cùng chia hết cho $4$; đặt $4$ ra ngoài rồi tách tam thức $p^2-9p+14$ theo hai số có tích $14$ và tổng $-9$.\n\n**Bước 1.** Đặt nhân tử chung $4$ để được tam thức có hệ số cao nhất bằng $1$.\n\n**Bước 2.** Tách $-9p$ thành $-4p-5p$ rồi viết thành $(p^2-4p+4)-(5p-10)$ để mỗi nhóm đều chứa $p-2$.\n\n**Bước 3.** Đặt $p-2$ ra ngoài dấu ngoặc và thu gọn nhân tử còn lại.\n\n**Chú ý:** Hai số tách là $-2$ và $-7$ (tích $14$, tổng $-9$); nên chọn cách tách sao cho nhóm hạng tử đầu là một bình phương.\n\n**Phần 2. Trình bày**\n\n$4p^2-36p+56=4(p^2-9p+14)$\n\n$=4\\left[(p^2-4p+4)-(5p-10)\\right]$\n\n$=4\\left[(p-2)^2-5(p-2)\\right]$\n\n$=4(p-2)(p-7)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.3c@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-5x^2-14x$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3-5x^2-14x$.",
+  "dap_an": "$x(x+2)(x-7)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba hạng tử đều chứa $x$, nên đặt $x$ ra ngoài trước để còn tam thức bậc hai $x^2-5x-14$ rồi tách hạng tử.\n\n**Bước 1.** Đặt nhân tử chung $x$ của ba hạng tử ra ngoài dấu ngoặc.\n\n**Bước 2.** Tách $-5x$ thành $4x-9x$ và $-14$ thành $4-18$ để viết tam thức thành $(x^2+4x+4)-(9x+18)$, mỗi nhóm đều chứa $x+2$.\n\n**Bước 3.** Đặt $x+2$ làm nhân tử chung của hai nhóm rồi thu gọn nhân tử còn lại.\n\n**Chú ý:** Cách đơn giản hơn là tách $-5x=2x-7x$: $x^2+2x-7x-14=x(x+2)-7(x+2)$.\n\n**Phần 2. Trình bày**\n\n$x^3-5x^2-14x=x(x^2-5x-14)$\n\n$=x\\left[(x^2+4x+4)-(9x+18)\\right]$\n\n$=x\\left[(x+2)^2-9(x+2)\\right]$\n\n$=x(x+2)(x-7)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.3d@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2yz+5xyz-14yz$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2yz+5xyz-14yz$.",
+  "dap_an": "$yz(x-2)(x+7)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba hạng tử đều chứa $yz$, nên đặt $yz$ ra ngoài trước để còn tam thức bậc hai theo $x$ rồi tách hạng tử.\n\n**Bước 1.** Đặt nhân tử chung $yz$ ra ngoài dấu ngoặc.\n\n**Bước 2.** Tách $5x$ thành $-4x+9x$ và $-14$ thành $4-18$ để viết tam thức thành $(x^2-4x+4)+(9x-18)$, mỗi nhóm đều chứa $x-2$.\n\n**Bước 3.** Đặt $x-2$ làm nhân tử chung của hai nhóm rồi thu gọn nhân tử còn lại.\n\n**Chú ý:** Cũng có thể tách $5x=-2x+7x$ rồi nhóm trực tiếp: $x^2-2x+7x-14=x(x-2)+7(x-2)$.\n\n**Phần 2. Trình bày**\n\n$x^2yz+5xyz-14yz=yz(x^2+5x-14)$\n\n$=yz\\left[(x^2-4x+4)+(9x-18)\\right]$\n\n$=yz\\left[(x-2)^2+9(x-2)\\right]$\n\n$=yz(x-2)(x+7)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.4@p21",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3+3x^2-4$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3+3x^2-4$.",
+  "dap_an": "$(x-1)(x+2)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba không có nhân tử chung và không là hằng đẳng thức nên phải nhẩm nghiệm nguyên (là ước của hệ số tự do $-4$) để biết trước một nhân tử, rồi tách hạng tử cho nhân tử đó xuất hiện.\n\n**Bước 1.** Thử các ước của $-4$ là $\\pm1,\\pm2,\\pm4$; thay $x=1$ được $1+3-4=0$, vậy đa thức có nhân tử $x-1$.\n\n**Bước 2.** Tách $3x^2$ thành $-x^2+4x^2$ để hai hạng tử đầu đặt được nhân tử $x-1$ và hai hạng tử sau $4x^2-4$ cũng chứa $x-1$.\n\n**Bước 3.** Đặt $x-1$ làm nhân tử chung, nhân tử còn lại là tam thức bậc hai rồi nhận ra nó là bình phương của một tổng.\n\n**Chú ý:** Có thể tách khác: $x^3-1+3x^2-3$ rồi dùng hiệu hai lập phương cho $x^3-1$; cho cùng kết quả. Nhận xét nhanh: tổng các hệ số bằng $0$ thì chắc chắn có nhân tử $x-1$.\n\n**Phần 2. Trình bày**\n\nThay $x=1$ vào đa thức: $1+3-4=0$, nên đa thức chứa nhân tử $x-1$.\n\n$x^3+3x^2-4=x^3-x^2+4x^2-4$\n\n$=x^2(x-1)+4(x-1)(x+1)$\n\n$=(x-1)(x^2+4x+4)$\n\n$=(x-1)(x+2)^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm nguyên",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 21): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4a.5@p22",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x^3-5x^2+8x-3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $2x^3-5x^2+8x-3$.",
+  "dap_an": "$(2x-1)(x^2-2x+3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba có hệ số cao nhất khác $1$ và không có nghiệm nguyên, nên phải nhẩm nghiệm hữu tỉ $\\dfrac{p}{q}$ với $p$ là ước của $-3$ và $q$ là ước dương của $2$ để biết trước nhân tử.\n\n**Bước 1.** Thử các số $\\pm1,\\pm3$ thấy không là nghiệm, rồi thử các số hữu tỉ còn lại $\\pm\\dfrac12,\\pm\\dfrac32$ thì thấy $x=\\dfrac12$ là nghiệm, vậy đa thức có nhân tử $2x-1$.\n\n**Bước 2.** Tách $-5x^2$ thành $-x^2-4x^2$ và $8x$ thành $2x+6x$ để ba nhóm $2x^3-x^2$, $-4x^2+2x$, $6x-3$ đều đặt được nhân tử chung $2x-1$.\n\n**Bước 3.** Đặt $2x-1$ ra ngoài dấu ngoặc để được tích của nhị thức bậc nhất và một tam thức bậc hai.\n\n**Bước 4.** Xét xem tam thức bậc hai còn lại có phân tích tiếp được không bằng cách viết nó dưới dạng bình phương cộng một số dương.\n\n**Chú ý:** Cũng có thể dùng hệ số bất định: viết đa thức bằng $(ax+b)(cx^2+dx+m)$ rồi đồng nhất hệ số, nhưng thường dài hơn khi đã nhẩm được nghiệm.\n\n**Phần 2. Trình bày**\n\nThử $x=\\dfrac12$: $2\\cdot\\dfrac18-5\\cdot\\dfrac14+8\\cdot\\dfrac12-3=\\dfrac14-\\dfrac54+4-3=0$, nên đa thức chứa nhân tử $2x-1$.\n\n$2x^3-5x^2+8x-3=2x^3-x^2-4x^2+2x+6x-3$\n\n$=x^2(2x-1)-2x(2x-1)+3(2x-1)$\n\n$=(2x-1)(x^2-2x+3)$\n\nVì $x^2-2x+3=(x-1)^2+2>0$ với mọi $x$ nên không phân tích tiếp được.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm hữu tỉ",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 22): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4b.1b@p23",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^4+4b^4$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a^4+4b^4$.",
+  "dap_an": "$(a^2+2b^2+2ab)(a^2+2b^2-2ab)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $a^4+4b^4=(a^2)^2+(2b^2)^2$ là tổng hai bình phương; thêm và bớt tích gấp đôi $2\\cdot a^2\\cdot 2b^2$ để đưa về hiệu hai bình phương.\n\n**Bước 1.** Viết $a^4=(a^2)^2$ và $4b^4=(2b^2)^2$ rồi tính tích gấp đôi hai số hạng đó là $2\\cdot a^2\\cdot 2b^2=4a^2b^2$.\n\n**Bước 2.** Thêm và bớt $4a^2b^2$ để ba hạng tử đầu hợp thành bình phương của tổng $a^2+2b^2$.\n\n**Bước 3.** Nhận ra phần bớt đi $4a^2b^2$ chính là $(2ab)^2$ rồi phân tích hiệu hai bình phương thành hai nhân tử.\n\n**Chú ý:** Không được viết $a^4+4b^4=(a^2+2b^2)^2$ vì còn thiếu số hạng giữa $4a^2b^2$; hai nhân tử tìm được là tam thức không tách tiếp.\n\n**Phần 2. Trình bày**\n\n$a^4+4b^4=(a^2)^2+4a^2b^2+(2b^2)^2-4a^2b^2$\n\n$=(a^2+2b^2)^2-(2ab)^2$\n\n$=(a^2+2b^2+2ab)(a^2+2b^2-2ab)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 23, §2 Dạng 4b ví dụ 1b:) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4b.3a@p24",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích biểu thức sau thành nhân tử: $m^3-6m^2+11m-6$.",
+  "noi_dung_sach": "Phân tích biểu thức sau thành nhân tử: $m^3-6m^2+11m-6$.",
+  "dap_an": "$(m-1)(m-2)(m-3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba có hệ số nguyên thì nghiệm nguyên (nếu có) là ước của hệ số tự do $-6$; nhẩm được một nghiệm là biết trước một nhân tử, rồi tách hạng tử cho nhân tử đó xuất hiện.\n\n**Bước 1.** Thử các ước của $-6$ thấy $m=3$ cho giá trị $27-54+33-6=0$, vậy đa thức có nhân tử $m-3$.\n\n**Bước 2.** Tách $-6m^2=-3m^2-3m^2$ và $11m=9m+2m$ để ba nhóm hạng tử đều chứa nhân tử $m-3$.\n\n**Bước 3.** Đặt $m-3$ làm nhân tử chung rồi phân tích tiếp tam thức bậc hai còn lại bằng cách tách hạng tử bậc nhất.\n\n**Chú ý:** Chưa được dừng ở tích $(m-3)(m^2-3m+2)$ vì tam thức còn lại vẫn phân tích được.\n\n**Phần 2. Trình bày**\n\n$m^3-6m^2+11m-6=m^3-3m^2-3m^2+9m+2m-6$\n\n$=m^2(m-3)-3m(m-3)+2(m-3)$\n\n$=(m-3)(m^2-3m+2)$\n\n$=(m-3)(m-1)(m-2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 24): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4b.3c@p24",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích biểu thức sau thành nhân tử: $n^8+n^4+1$.",
+  "noi_dung_sach": "Phân tích biểu thức sau thành nhân tử: $n^8+n^4+1$.",
+  "dap_an": "$(n^2-n+1)(n^2+n+1)(n^4-n^2+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $n^8+n^4+1$ có $n^8=(n^4)^2$ và hạng tử $n^4$ chưa phải tích gấp đôi; thêm và bớt $n^4$ để có $n^8+2n^4+1=(n^4+1)^2$ trừ đi một bình phương.\n\n**Bước 1.** Thêm và bớt $n^4$ để ba hạng tử $n^8+2n^4+1$ hợp thành bình phương của $n^4+1$, phần bớt đi là $n^4=(n^2)^2$.\n\n**Bước 2.** Dùng hiệu hai bình phương để tách đa thức thành tích hai nhân tử bậc bốn.\n\n**Bước 3.** Nhận thấy nhân tử $n^4+n^2+1$ còn có dạng cũ nên lặp lại cách thêm bớt $n^2$ để tách tiếp thành hai tam thức bậc hai.\n\n**Chú ý:** Nhân tử $n^4-n^2+1=(n^2+1)^2-3n^2$ không tách tiếp được vì $3$ không phải bình phương của một số nguyên, nên dừng tại đây.\n\n**Phần 2. Trình bày**\n\n$n^8+n^4+1=(n^8+2n^4+1)-n^4$\n\n$=(n^4+1)^2-(n^2)^2$\n\n$=(n^4-n^2+1)(n^4+n^2+1)$\n\n$=(n^4-n^2+1)[(n^4+2n^2+1)-n^2]$\n\n$=(n^4-n^2+1)[(n^2+1)^2-n^2]$\n\n$=(n^4-n^2+1)(n^2-n+1)(n^2+n+1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 24): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4c.1@p24",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(x^2+x)^2+4x^2+4x-12$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(x^2+x)^2+4x^2+4x-12$.",
+  "dap_an": "$(x^2+x+6)(x-1)(x+2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hạng tử $4x^2+4x$ chính là $4(x^2+x)$, nên cả biểu thức chỉ phụ thuộc vào nhóm $x^2+x$; đặt nhóm đó làm biến phụ thì bài toán bậc bốn trở thành tam thức bậc hai.\n\n**Bước 1.** Gộp $4x^2+4x=4(x^2+x)$ để thấy biểu thức chỉ chứa nhóm $x^2+x$ ở cả hai chỗ.\n\n**Bước 2.** Đặt $y=x^2+x$ để được tam thức $y^2+4y-12$ rồi phân tích nó bằng cách tách hạng tử bậc nhất.\n\n**Bước 3.** Thay $y=x^2+x$ trở lại và phân tích tiếp nhân tử $x^2+x-2$ thành tích hai nhị thức bậc nhất.\n\n**Chú ý:** Sau khi thay biến cũ vào phải kiểm tra từng nhân tử xem còn tách được không: $x^2+x-2$ còn tách, còn $x^2+x+6=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{23}{4}>0$ thì không.\n\n**Phần 2. Trình bày**\n\n$(x^2+x)^2+4x^2+4x-12=(x^2+x)^2+4(x^2+x)-12$\n\nĐặt $y=x^2+x$, biểu thức trở thành $y^2+4y-12$.\n\n$y^2+4y-12=y^2-2y+6y-12$\n\n$=y(y-2)+6(y-2)$\n\n$=(y-2)(y+6)$\n\nThay $y=x^2+x$:\n\n$=(x^2+x-2)(x^2+x+6)$\n\n$=(x-1)(x+2)(x^2+x+6)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt biến phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 24): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4c.2@p24",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x(x+4)(x+6)(x+10)+128$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x(x+4)(x+6)(x+10)+128$.",
+  "dap_an": "$(x+2)(x+8)(x^2+10x+8)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn nhân tử $x$, $x+4$, $x+6$, $x+10$ có thể ghép thành hai cặp cùng tổng ($0+10=4+6$), nhân từng cặp ra thì cùng chứa $x^2+10x$; đặt biến phụ là số đứng giữa hai tích đó để đưa về hiệu hai bình phương.\n\n**Bước 1.** Ghép $x$ với $x+10$ và $x+4$ với $x+6$, nhân từng cặp để được hai nhân tử $x^2+10x$ và $x^2+10x+24$ cùng chứa $x^2+10x$.\n\n**Bước 2.** Đặt $y=x^2+10x+12$ là số đứng giữa hai nhân tử trên, khi đó chúng có dạng $y-12$ và $y+12$ và tích của chúng là một hiệu hai bình phương.\n\n**Bước 3.** Cộng với $128$, thu gọn thành $y^2-16$ rồi phân tích bằng hiệu hai bình phương.\n\n**Bước 4.** Thay $y$ trở lại theo $x$ và phân tích tiếp nhân tử nào còn tách được thành tích hai nhị thức bậc nhất.\n\n**Chú ý:** Dạng tích bốn nhân tử bậc nhất $x(x+4)(x+6)(x+10)$ có tổng hai số ở hai đầu bằng tổng hai số ở giữa nên mới ghép cặp được; nhân tử $x^2+10x+8$ không tách tiếp được với hệ số nguyên.\n\n**Phần 2. Trình bày**\n\n$x(x+4)(x+6)(x+10)+128=(x^2+10x)(x^2+10x+24)+128$\n\nĐặt $y=x^2+10x+12$, biểu thức trở thành $(y-12)(y+12)+128$.\n\n$(y-12)(y+12)+128=y^2-16$\n\n$=(y+4)(y-4)$\n\nThay $y=x^2+10x+12$:\n\n$=(x^2+10x+16)(x^2+10x+8)$\n\n$=(x+2)(x+8)(x^2+10x+8)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt biến phụ",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 24): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4c.3@p24",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $A=x^4+6x^3+7x^2-6x+1$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $A=x^4+6x^3+7x^2-6x+1$.",
+  "dap_an": "$(x^2+3x-1)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ số đầu và cuối đều bằng $1$, còn hệ số của $x^3$ và $x$ là $6$ và $-6$ (đối nhau); đưa $x^2$ ra ngoài thì xuất hiện $x^2+\\dfrac{1}{x^2}$ và $x-\\dfrac{1}{x}$, mà $x^2+\\dfrac{1}{x^2}=\\left(x-\\dfrac{1}{x}\\right)^2+2$ cho phép đặt biến phụ $y=x-\\dfrac{1}{x}$.\n\n**Bước 1.** Với $x\\ne0$, đưa $x^2$ ra ngoài để các hạng tử thành $x^2+\\dfrac{1}{x^2}$ và $6\\left(x-\\dfrac{1}{x}\\right)$ trong ngoặc.\n\n**Bước 2.** Đặt $y=x-\\dfrac{1}{x}$ rồi biểu diễn $x^2+\\dfrac{1}{x^2}=y^2+2$ để đưa biểu thức trong ngoặc về tam thức bậc hai theo $y$.\n\n**Bước 3.** Nhận ra tam thức đó là bình phương của một nhị thức, rồi thay $y$ trở lại và nhân $x^2$ vào để khử mẫu.\n\n**Bước 4.** Kiểm tra riêng trường hợp $x=0$ vì ở trên ta đã chia cho $x$.\n\n**Chú ý:** Có thể làm không cần chia: tách $7x^2=-2x^2+9x^2$ để được $x^4+2x^2(3x-1)+(3x-1)^2$, là bình phương của $x^2+3x-1$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$:\n\n$x^4+6x^3+7x^2-6x+1=x^2\\left(x^2+6x+7-\\dfrac{6}{x}+\\dfrac{1}{x^2}\\right)$\n\n$=x^2\\left[\\left(x^2+\\dfrac{1}{x^2}\\right)+6\\left(x-\\dfrac{1}{x}\\right)+7\\right]$\n\nĐặt $y=x-\\dfrac{1}{x}$ thì $x^2+\\dfrac{1}{x^2}=y^2+2$, nên biểu thức bằng:\n\n$x^2(y^2+2+6y+7)=x^2(y+3)^2$\n\n$=\\left[x\\left(x-\\dfrac{1}{x}\\right)+3x\\right]^2$\n\n$=(x^2-1+3x)^2=(x^2+3x-1)^2$\n\nVới $x=0$: vế trái bằng $1$ và vế phải bằng $(-1)^2=1$, đẳng thức vẫn đúng.\n\nVậy $x^4+6x^3+7x^2-6x+1=(x^2+3x-1)^2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt biến phụ",
+   "đa thức đối xứng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 24): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V4c.4@p25",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-2xy+y^2+3x-3y-10$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2-2xy+y^2+3x-3y-10$.",
+  "dap_an": "$(x-y+5)(x-y-2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x^2-2xy+y^2=(x-y)^2$ và $3x-3y=3(x-y)$, nên cả biểu thức chỉ phụ thuộc vào hiệu $x-y$; đặt $u=x-y$ để đưa về tam thức bậc hai một biến.\n\n**Bước 1.** Gộp ba hạng tử đầu thành $(x-y)^2$ và hai hạng tử $3x-3y$ thành $3(x-y)$ để biểu thức chỉ còn chứa $x-y$.\n\n**Bước 2.** Đặt $u=x-y$ rồi phân tích tam thức $u^2+3u-10$ bằng cách tách hạng tử bậc nhất sao cho hai nhóm cùng có một nhân tử.\n\n**Bước 3.** Thay $u=x-y$ vào tích vừa tìm để được các nhân tử theo $x$ và $y$.\n\n**Chú ý:** Tách $3u=-2u+5u$ vì $(-2)\\cdot 5=-10$ bằng hạng tử tự do và $-2+5=3$ bằng hệ số của $u$.\n\n**Phần 2. Trình bày**\n\n$x^2-2xy+y^2+3x-3y-10=(x-y)^2+3(x-y)-10$\n\nĐặt $u=x-y$:\n\n$u^2+3u-10=u^2-2u+5u-10$\n\n$=u(u-2)+5(u-2)$\n\n$=(u-2)(u+5)$\n\nThay $u=x-y$:\n\n$=(x-y-2)(x-y+5)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt biến phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 25): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.1a@p25",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^6-a^4+2a^3+2a^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a^6-a^4+2a^3+2a^2$.",
+  "dap_an": "$a^2(a+1)^2(a^2-2a+2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn hạng tử đều chứa $a^2$ nên đặt chung trước; đa thức bậc bốn còn lại nhóm được theo $a+1$, và phải thử xem nhân tử bậc ba thu được còn nghiệm $a=-1$ hay không để phân tích đến cùng.\n\n**Bước 1.** Đặt nhân tử chung $a^2$ cho cả bốn hạng tử để còn đa thức bậc bốn $a^4-a^2+2a+2$.\n\n**Bước 2.** Nhóm $a^4-a^2$ và $2a+2$ vì cả hai nhóm cùng chứa $a+1$, rồi đặt $a+1$ làm nhân tử chung.\n\n**Bước 3.** Thay $a=-1$ vào nhân tử bậc ba còn lại thấy giá trị bằng $0$, nên tách hạng tử để lại xuất hiện nhân tử $a+1$.\n\n**Bước 4.** Đặt $a+1$ làm nhân tử chung lần nữa và dừng khi nhân tử còn lại là tam thức không tách được.\n\n**Chú ý:** Dừng ở tích $a^2(a+1)(a^3-a^2+2)$ là chưa phân tích đến cùng; tam thức cuối $a^2-2a+2=(a-1)^2+1>0$ nên không tách tiếp được.\n\n**Phần 2. Trình bày**\n\n$a^6-a^4+2a^3+2a^2=a^2(a^4-a^2+2a+2)$\n\n$=a^2[a^2(a-1)(a+1)+2(a+1)]$\n\n$=a^2(a+1)(a^3-a^2+2)$\n\n$=a^2(a+1)(a^3+a^2-2a^2+2)$\n\n$=a^2(a+1)[a^2(a+1)-2(a-1)(a+1)]$\n\n$=a^2(a+1)^2(a^2-2a+2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt nhân tử chung",
+   "nhóm hạng tử",
+   "nhẩm nghiệm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 25): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 25, §2 Dạng 5 ví dụ 1a: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.1b@p25",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a+b)^3-(a-b)^3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(a+b)^3-(a-b)^3$.",
+  "dap_an": "$2b(3a^2+b^2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề là hiệu hai lập phương của $a+b$ và $a-b$; áp dụng ngay $A^3-B^3=(A-B)(A^2+AB+B^2)$ vì hiệu $(a+b)-(a-b)$ rút gọn rất gọn.\n\n**Bước 1.** Coi $A=a+b$ và $B=a-b$ để áp dụng hằng đẳng thức hiệu hai lập phương cho $A^3-B^3$.\n\n**Bước 2.** Tính nhân tử thứ nhất $A-B$ rồi khai triển từng hạng tử của nhân tử thứ hai $A^2+AB+B^2$.\n\n**Bước 3.** Cộng các hạng tử đồng dạng trong nhân tử thứ hai để còn tam thức hai bình phương và đặt hệ số chung ra ngoài.\n\n**Chú ý:** Có thể khai triển cả hai lập phương rồi trừ, được $6a^2b+2b^3$, sau đó đặt $2b$ ra ngoài; kết quả như nhau.\n\n**Phần 2. Trình bày**\n\n$(a+b)^3-(a-b)^3=[(a+b)-(a-b)][(a+b)^2+(a+b)(a-b)+(a-b)^2]$\n\n$=2b(a^2+2ab+b^2+a^2-b^2+a^2-2ab+b^2)$\n\n$=2b(3a^2+b^2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai lập phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 25): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.1c@p25",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-3x^2+3x-1-y^3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3-3x^2+3x-1-y^3$.",
+  "dap_an": "$(x-y-1)(x^2+xy+y^2-2x-y+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn hạng tử đầu có hệ số $1;-3;3;-1$ nên là khai triển của $(x-1)^3$; khi đó đề là hiệu hai lập phương $(x-1)^3-y^3$.\n\n**Bước 1.** Nhận ra các hệ số $1;-3;3;-1$ của bốn hạng tử đầu rồi gom chúng thành $(x-1)^3$.\n\n**Bước 2.** Viết đa thức thành hiệu hai lập phương $(x-1)^3-y^3$ với hai cơ số $x-1$ và $y$.\n\n**Bước 3.** Áp dụng hằng đẳng thức $A^3-B^3$ rồi khai triển và thu gọn nhân tử thứ hai.\n\n**Chú ý:** Nhân tử thứ hai $(x-1)^2+(x-1)y+y^2$ vẫn là biểu thức bậc hai cần khai triển, đừng để nguyên rồi coi như xong.\n\n**Phần 2. Trình bày**\n\n$x^3-3x^2+3x-1-y^3=(x-1)^3-y^3$\n\n$=(x-1-y)[(x-1)^2+(x-1)y+y^2]$\n\n$=(x-y-1)(x^2-2x+1+xy-y+y^2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức lập phương của một hiệu",
+   "hiệu hai lập phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 25): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.2a@p25",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x^2(a+b+c)-4xy(a+b+c)+2y^2(a+b+c)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $2x^2(a+b+c)-4xy(a+b+c)+2y^2(a+b+c)$.",
+  "dap_an": "$2(a+b+c)(x-y)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba hạng tử cùng chứa nhóm $a+b+c$ và hệ số chẵn, nên đặt $2(a+b+c)$ ra ngoài rồi nhận ra tam thức còn lại là hằng đẳng thức.\n\n**Bước 1.** Nhận thấy nhóm $a+b+c$ và hệ số $2$ xuất hiện ở cả ba hạng tử nên là nhân tử chung.\n\n**Bước 2.** Đặt $2(a+b+c)$ ra ngoài mà không khai triển ngoặc, để còn lại tam thức $x^2-2xy+y^2$.\n\n**Bước 3.** Nhận ra tam thức đó là hằng đẳng thức bình phương của một hiệu và viết gọn.\n\n**Chú ý:** Đừng khai triển $a+b+c$ ra từng hạng tử rồi mới nhóm, vì như vậy mất hẳn nhân tử chung.\n\n**Phần 2. Trình bày**\n\n$2x^2(a+b+c)-4xy(a+b+c)+2y^2(a+b+c)=2(a+b+c)(x^2-2xy+y^2)$\n\n$=2(a+b+c)(x-y)^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt nhân tử chung",
+   "hằng đẳng thức bình phương của một hiệu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 25): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.2b@p25",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^{m+4}+x^{m+3}-x-1$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^{m+4}+x^{m+3}-x-1$.",
+  "dap_an": "$(x+1)(x-1)(x^{m+2}+x^{m+1}+\\dots+x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ghép hạng tử đầu với hạng tử thứ ba và hạng tử thứ hai với hạng tử thứ tư: nhóm $x^{m+4}-x$ khi đặt $x$ ra ngoài cũng còn $x^{m+3}-1$, giống nhóm $x^{m+3}-1$ kia nên có nhân tử chung.\n\n**Bước 1.** Nhóm $(x^{m+4}-x)+(x^{m+3}-1)$ vì hai nhóm này sau khi đặt nhân tử chung đều chứa $x^{m+3}-1$.\n\n**Bước 2.** Đặt $x$ ra khỏi nhóm đầu, rồi đặt $x^{m+3}-1$ làm nhân tử chung của cả hai nhóm.\n\n**Bước 3.** Phân tích tiếp $x^{m+3}-1$ bằng hằng đẳng thức $x^n-1=(x-1)(x^{n-1}+x^{n-2}+\\dots+x+1)$ với $n=m+3$.\n\n**Chú ý:** Với $m$ cụ thể nhân tử cuối có thể còn tách được (vd $m=1$: $x^3+x^2+x+1=(x+1)(x^2+1)$), nhưng với $m$ bất kì thì dừng ở đây.\n\n**Phần 2. Trình bày**\n\n$x^{m+4}+x^{m+3}-x-1=(x^{m+4}-x)+(x^{m+3}-1)$\n\n$=x(x^{m+3}-1)+(x^{m+3}-1)$\n\n$=(x+1)(x^{m+3}-1)$\n\n$=(x+1)(x-1)(x^{m+2}+x^{m+1}+\\dots+x+1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "hằng đẳng thức hiệu luỹ thừa với 1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 25): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V5.3@p26",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch toán lớp 8, vòng 1, Belarussia, 1952) Phân tích đa thức thành nhân tử: $(x+y+z)^3-x^3-y^3-z^3$.",
+  "noi_dung_sach": "(Đề thi vô địch toán lớp 8, vòng 1, Belarussia, 1952) Phân tích đa thức thành nhân tử: $(x+y+z)^3-x^3-y^3-z^3$.",
+  "dap_an": "$3(x+y)(y+z)(z+x)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $(x+y+z)^3-x^3$ là hiệu hai lập phương có hiệu hai cơ số bằng $y+z$, còn $y^3+z^3$ là tổng hai lập phương cũng có nhân tử $y+z$; tách đề thành hai nhóm đó rồi đặt $y+z$ chung.\n\n**Bước 1.** Nhóm đề thành $[(x+y+z)^3-x^3]-(y^3+z^3)$ để dùng được hằng đẳng thức hiệu và tổng hai lập phương.\n\n**Bước 2.** Phân tích từng nhóm và nhận thấy hiệu hai cơ số $(x+y+z)-x$ bằng $y+z$, chính là nhân tử của $y^3+z^3$.\n\n**Bước 3.** Đặt $y+z$ làm nhân tử chung của cả hai nhóm rồi khai triển và thu gọn thừa số còn lại.\n\n**Bước 4.** Nhóm các hạng tử của thừa số còn lại thành $x(x+y)+z(x+y)$ để thu được thêm hai nhân tử.\n\n**Chú ý:** Cách khác: tách $x^3+y^3=(x+y)^3-3xy(x+y)$ rồi dùng $(u+z)^3-u^3-z^3=3uz(u+z)$ với $u=x+y$; ra thẳng $3(x+y)z(x+y+z)+3xy(x+y)$.\n\n**Phần 2. Trình bày**\n\n$(x+y+z)^3-x^3-y^3-z^3=[(x+y+z)^3-x^3]-(y^3+z^3)$\n\n$=(y+z)[(x+y+z)^2+(x+y+z)x+x^2]-(y+z)(y^2-yz+z^2)$\n\n$=(y+z)(x^2+y^2+z^2+2xy+2yz+2zx+x^2+xy+xz+x^2-y^2+yz-z^2)$\n\n$=(y+z)(3x^2+3xy+3yz+3zx)$\n\n$=3(y+z)[x(x+y)+z(x+y)]$\n\n$=3(x+y)(y+z)(z+x)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai lập phương",
+   "tổng hai lập phương",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 26): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.4@p26",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vào lớp 10 CT Lê Hồng Phong, Tp HCM, 1988) Phân tích đa thức thành nhân tử: $x^3+y^3+z^3-3xyz$.",
+  "noi_dung_sach": "(Đề thi vào lớp 10 CT Lê Hồng Phong, Tp HCM, 1988) Phân tích đa thức thành nhân tử: $x^3+y^3+z^3-3xyz$.",
+  "dap_an": "$(x+y+z)(x^2+y^2+z^2-xy-yz-zx)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách $x^3+y^3=(x+y)^3-3xy(x+y)$ để $x^3+y^3+z^3$ có dạng tổng hai lập phương $(x+y)^3+z^3$, khi đó nhân tử $x+y+z$ xuất hiện và các hạng tử còn lại cũng đặt chung được $x+y+z$.\n\n**Bước 1.** Dùng $x^3+y^3=(x+y)^3-3xy(x+y)$ để biến đổi, vì khi đó đa thức chứa tổng hai lập phương $(x+y)^3+z^3$.\n\n**Bước 2.** Phân tích $(x+y)^3+z^3$ bằng hằng đẳng thức tổng hai lập phương, được nhân tử $x+y+z$.\n\n**Bước 3.** Gộp hai hạng tử còn lại $-3xyz-3xy(x+y)$ thành $-3xy(x+y+z)$ để hai nhóm cùng có nhân tử $x+y+z$.\n\n**Bước 4.** Đặt $x+y+z$ làm nhân tử chung rồi khai triển và thu gọn thừa số còn lại.\n\n**Chú ý:** Kết quả là một hằng đẳng thức hay dùng nên cần thuộc; từ đó suy ra nếu $x+y+z=0$ thì $x^3+y^3+z^3=3xyz$.\n\n**Phần 2. Trình bày**\n\n$x^3+y^3+z^3-3xyz=(x+y)^3-3xy(x+y)+z^3-3xyz$\n\n$=[(x+y)^3+z^3]-3xy(x+y+z)$\n\n$=(x+y+z)[(x+y)^2-(x+y)z+z^2]-3xy(x+y+z)$\n\n$=(x+y+z)(x^2+2xy+y^2-xz-yz+z^2-3xy)$\n\n$=(x+y+z)(x^2+y^2+z^2-xy-yz-zx)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng hai lập phương",
+   "lập phương của một tổng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 26): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.5@p27",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(x+y)^5-x^5-y^5$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(x+y)^5-x^5-y^5$.",
+  "dap_an": "$5xy(x+y)(x^2+xy+y^2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khai triển $(x+y)^5$ bằng nhị thức Newton (hệ số $1;5;10;10;5;1$) thì $x^5$ và $y^5$ triệt tiêu với hai số bị trừ, các hạng tử còn lại đều chứa $5xy$.\n\n**Bước 1.** Khai triển $(x+y)^5$ theo nhị thức Newton rồi trừ đi $x^5+y^5$ để còn bốn hạng tử chứa cả $x$ lẫn $y$.\n\n**Bước 2.** Đặt $5xy$ làm nhân tử chung của bốn hạng tử đó để còn đa thức bậc ba $x^3+2x^2y+2xy^2+y^3$.\n\n**Bước 3.** Nhóm $x^3+y^3$ và $2x^2y+2xy^2$ vì cả hai cùng chứa $x+y$, rồi đặt $x+y$ làm nhân tử chung.\n\n**Chú ý:** Nhân tử cuối là $x^2+xy+y^2$ (dấu cộng ở giữa), không phải $x^2-xy+y^2$ của tổng hai lập phương, vì sau khi cộng $2xy$ dấu đổi.\n\n**Phần 2. Trình bày**\n\n$(x+y)^5-x^5-y^5=5x^4y+10x^3y^2+10x^2y^3+5xy^4$\n\n$=5xy(x^3+2x^2y+2xy^2+y^3)$\n\n$=5xy[(x+y)(x^2-xy+y^2)+2xy(x+y)]$\n\n$=5xy(x+y)(x^2+xy+y^2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhị thức Newton",
+   "tổng hai lập phương",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 27): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.6@p27",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch toán lớp 8, vòng I, Belarussia, 1957) Phân tích đa thức thành nhân tử: $A=(x^2+y^2)^3+(z^2-x^2)^3-(y^2+z^2)^3$.",
+  "noi_dung_sach": "(Đề thi vô địch toán lớp 8, vòng I, Belarussia, 1957) Phân tích đa thức thành nhân tử: $A=(x^2+y^2)^3+(z^2-x^2)^3-(y^2+z^2)^3$.",
+  "dap_an": "$3(x^2+y^2)(y^2+z^2)(x-z)(x+z)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai cơ số đầu cộng lại đúng bằng cơ số thứ ba: $(x^2+y^2)+(z^2-x^2)=y^2+z^2$; đặt $u=x^2+y^2$, $v=z^2-x^2$ thì đề là $u^3+v^3-(u+v)^3$, khai triển $(u+v)^3$ là các lập phương triệt tiêu ngay.\n\n**Bước 1.** Đặt $u=x^2+y^2$ và $v=z^2-x^2$, nhận ra $u+v=y^2+z^2$ nên đề trở thành $u^3+v^3-(u+v)^3$.\n\n**Bước 2.** Khai triển $(u+v)^3$ theo lập phương của một tổng để $u^3$ và $v^3$ triệt tiêu, chỉ còn các hạng tử chứa $u^2v$ và $uv^2$.\n\n**Bước 3.** Đặt $-3uv$ làm nhân tử chung rồi thay $u$, $v$ và $u+v$ trở lại bằng các biểu thức theo $x,y,z$.\n\n**Bước 4.** Đổi dấu để có $x^2-z^2$ rồi phân tích tiếp thành $(x-z)(x+z)$ để phân tích đến cùng.\n\n**Chú ý:** Cách khác: dùng tổng hai lập phương cho $u^3+v^3$ rồi đặt $y^2+z^2$ làm nhân tử chung — dài hơn nhiều và dễ sai dấu.\n\n**Phần 2. Trình bày**\n\nĐặt $u=x^2+y^2$ và $v=z^2-x^2$, khi đó $u+v=y^2+z^2$.\n\n$A=u^3+v^3-(u+v)^3$\n\n$=u^3+v^3-u^3-3u^2v-3uv^2-v^3$\n\n$=-3uv(u+v)$\n\n$=-3(x^2+y^2)(z^2-x^2)(y^2+z^2)$\n\n$=3(x^2+y^2)(y^2+z^2)(x^2-z^2)$\n\n$=3(x^2+y^2)(y^2+z^2)(x-z)(x+z)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng hai lập phương",
+   "lập phương của một tổng",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 27): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 27, §2 Dạng 5 ví dụ 6: s) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.7@p27",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $A=3abc+a^2(a-b-c)+b^2(b-a-c)+c^2(c-a-b)-c(b-c)(a-c)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $A=3abc+a^2(a-b-c)+b^2(b-a-c)+c^2(c-a-b)-c(b-c)(a-c)$.",
+  "dap_an": "$(a-b)^2(a+b-c)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hạng tử cuối $-c(b-c)(a-c)$ sẽ triệt tiêu với một nhóm xuất hiện khi biến đổi phần còn lại $B$; nên chỉ cần khai triển $B$ rồi nhóm theo $a-b$ để lộ $(a-b)^2$.\n\n**Bước 1.** Tách $A=B-c(b-c)(a-c)$ với $B$ là phần đối xứng $3abc+a^2(a-b-c)+b^2(b-a-c)+c^2(c-a-b)$ rồi khai triển $B$ thành đa thức bậc ba.\n\n**Bước 2.** Nhóm các hạng tử của $B$ thành $a^2(a-b)+b^2(b-a)$, $c(2ab-a^2-b^2)$ và $c(c^2-bc-ac+ab)$ để mỗi nhóm phân tích được.\n\n**Bước 3.** Phân tích từng nhóm bằng các phép biến đổi $a^2-b^2=(a-b)(a+b)$, $2ab-a^2-b^2=-(a-b)^2$ và $c^2-bc-ac+ab=(c-a)(c-b)$.\n\n**Bước 4.** Gộp hai nhóm đầu thành $(a-b)^2(a+b-c)$, nhận ra nhóm cuối bằng $c(b-c)(a-c)$ nên triệt tiêu với phần bị trừ.\n\n**Chú ý:** Dễ sai dấu khi đổi $c(c-a)(c-b)=c(a-c)(b-c)$; hai thừa số cùng đổi dấu thì tích không đổi.\n\n**Phần 2. Trình bày**\n\nĐặt $B=3abc+a^2(a-b-c)+b^2(b-a-c)+c^2(c-a-b)$, khi đó $A=B-c(b-c)(a-c)$.\n\n$B=3abc+a^3+b^3+c^3-a^2b-ab^2-a^2c-b^2c-ac^2-bc^2$\n\n$=a^2(a-b)+b^2(b-a)+c(2ab-a^2-b^2)+c(c^2-bc-ac+ab)$\n\n$=(a-b)(a^2-b^2)-c(a-b)^2+c(c-a)(c-b)$\n\n$=(a-b)^2(a+b-c)+c(a-c)(b-c)$\n\nVậy $A=B-c(b-c)(a-c)=(a-b)^2(a+b-c)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "hoán vị các biến"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 27): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.8@p28",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi học sinh giỏi cấp II miền Bắc, 1967) Phân tích đa thức sau thành nhân tử: $a^{16}+a^8b^8+b^{16}$.",
+  "noi_dung_sach": "(Đề thi học sinh giỏi cấp II miền Bắc, 1967) Phân tích đa thức sau thành nhân tử: $a^{16}+a^8b^8+b^{16}$.",
+  "dap_an": "$(a^8+b^8-a^4b^4)(a^4+b^4-a^2b^2)(a^2+b^2-ab)(a^2+b^2+ab)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề có dạng $u^2+uv+v^2$ với $u=a^8$, $v=b^8$; thêm và bớt $a^8b^8$ để thành hiệu hai bình phương, và nhân tử $a^8+a^4b^4+b^8$ có cùng dạng với số mũ giảm một nửa nên lặp lại cách làm đó.\n\n**Bước 1.** Thêm và bớt $a^8b^8$ để ba hạng tử $a^{16}+2a^8b^8+b^{16}$ hợp thành bình phương của $a^8+b^8$, phần bớt đi là $(a^4b^4)^2$.\n\n**Bước 2.** Dùng hiệu hai bình phương để tách đề thành hai nhân tử $a^8+a^4b^4+b^8$ và $a^8-a^4b^4+b^8$.\n\n**Bước 3.** Lặp lại cách thêm bớt $a^4b^4$ cho $a^8+a^4b^4+b^8$ rồi thêm bớt $a^2b^2$ cho $a^4+a^2b^2+b^4$ để tách tiếp.\n\n**Bước 4.** Dừng ở các nhân tử $a^8-a^4b^4+b^8$ và $a^4-a^2b^2+b^4$ vì chúng không còn tách được bằng cách thêm bớt này, rồi ghép các nhân tử lại.\n\n**Chú ý:** Mỗi lần thêm bớt, số mũ của nhân tử mới giảm một nửa; ghi đủ cả hai dấu $+$ và $-$ trong từng cặp nhân tử.\n\n**Phần 2. Trình bày**\n\n$a^{16}+a^8b^8+b^{16}=(a^8)^2+2a^8b^8+(b^8)^2-a^8b^8$\n\n$=(a^8+b^8)^2-(a^4b^4)^2$\n\n$=(a^8+b^8+a^4b^4)(a^8+b^8-a^4b^4)$\n\nPhân tích tiếp $a^8+a^4b^4+b^8=(a^4+b^4)^2-(a^2b^2)^2=(a^4+b^4+a^2b^2)(a^4+b^4-a^2b^2)$.\n\nPhân tích tiếp $a^4+a^2b^2+b^4=(a^2+b^2)^2-(ab)^2=(a^2+b^2+ab)(a^2+b^2-ab)$.\n\nVậy $a^{16}+a^8b^8+b^{16}=(a^8+b^8-a^4b^4)(a^4+b^4-a^2b^2)(a^2+b^2-ab)(a^2+b^2+ab)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 28): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V5.9@p28",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $P=ab(a-b)+bc(b-c)+ca(c-a)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $P=ab(a-b)+bc(b-c)+ca(c-a)$.",
+  "dap_an": "$(a-b)(b-c)(a-c)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức bậc ba hoán vị vòng quanh $a\\to b\\to c\\to a$; khai triển hai hạng tử cuối để nhóm theo $a-b$, sau đó nhân tử $b-c$ và $a-c$ lộ ra khi nhóm tam thức còn lại.\n\n**Bước 1.** Khai triển hai hạng tử cuối $bc(b-c)+ca(c-a)$ thành $b^2c-bc^2+c^2a-ca^2$ để các hạng tử có thể nhóm với $ab(a-b)$.\n\n**Bước 2.** Nhóm $c^2a-bc^2=c^2(a-b)$ và $b^2c-ca^2=-c(a+b)(a-b)$ rồi đặt $a-b$ làm nhân tử chung của cả ba nhóm.\n\n**Bước 3.** Phân tích tam thức trong ngoặc $ab+c^2-ac-bc$ bằng cách nhóm theo $b-c$ để được hai nhân tử.\n\n**Chú ý:** Cách khác: tách $b-c=-[(a-b)+(c-a)]$ rồi đặt $a-b$ và $c-a$ làm nhân tử chung; nhớ $(a-c)=-(c-a)$ nên kết quả có thể viết $-(a-b)(b-c)(c-a)$.\n\n**Phần 2. Trình bày**\n\n$ab(a-b)+bc(b-c)+ca(c-a)=ab(a-b)+b^2c-bc^2+c^2a-ca^2$\n\n$=ab(a-b)+c^2(a-b)-c(a+b)(a-b)$\n\n$=(a-b)(ab+c^2-ac-bc)$\n\n$=(a-b)[a(b-c)-c(b-c)]$\n\n$=(a-b)(b-c)(a-c)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "hoán vị vòng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 28): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V6.1@p28",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $2x^3+7x^2+7x+2=0$.",
+  "noi_dung_sach": "Giải phương trình: $2x^3+7x^2+7x+2=0$.",
+  "dap_an": "$S=\\{-1;-2;-\\dfrac{1}{2}\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là đa thức bậc ba, muốn giải phải đưa về tích các nhân tử bậc nhất; tổng các hệ số của lũy thừa bậc chẵn ($2+7$) bằng tổng các hệ số của lũy thừa bậc lẻ ($7+2$) gợi ra ngay nghiệm $x=-1$.\n\n**Bước 1.** Thay $x=-1$ vào vế trái để thấy nó bằng $0$, từ đó biết đa thức có nhân tử $x+1$.\n\n**Bước 2.** Tách các hạng tử thành từng cặp sao cho cặp nào cũng chứa $x+1$, rồi đặt $x+1$ làm nhân tử chung.\n\n**Bước 3.** Phân tích tiếp tam thức bậc hai còn lại bằng cách tách hạng tử bậc nhất để đưa phương trình về dạng tích.\n\n**Bước 4.** Cho từng nhân tử bằng $0$ rồi giải ba phương trình bậc nhất để lấy các nghiệm.\n\n**Chú ý:** Phải phân tích đến khi các nhân tử đều là nhị thức bậc nhất thì mới đọc được hết nghiệm, không được dừng ở tích của một nhị thức với tam thức bậc hai.\n\n**Phần 2. Trình bày**\n\n$2x^3+7x^2+7x+2=0$\n\n$\\Leftrightarrow 2x^3+2x^2+5x^2+5x+2x+2=0$\n\n$\\Leftrightarrow 2x^2(x+1)+5x(x+1)+2(x+1)=0$\n\n$\\Leftrightarrow (x+1)(2x^2+5x+2)=0$\n\n$\\Leftrightarrow (x+1)(2x^2+4x+x+2)=0$\n\n$\\Leftrightarrow (x+1)(x+2)(2x+1)=0$\n\n$\\Leftrightarrow x+1=0$ hoặc $x+2=0$ hoặc $2x+1=0$.\n\nVậy $S=\\{-1;-2;-\\dfrac{1}{2}\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm",
+   "tách hạng tử",
+   "đưa phương trình về dạng tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 28): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V7.1@p28",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vào chuyên toán miền Bắc, 1979) Phân tích thành thừa số: $A=2a^2b^2+2b^2c^2+2a^2c^2-a^4-b^4-c^4$.\n\nChứng minh rằng nếu $a,b,c$ là ba cạnh của tam giác thì $A>0$.",
+  "noi_dung_sach": "(Đề thi vào chuyên toán miền Bắc, 1979) Phân tích thành thừa số: $A=2a^2b^2+2b^2c^2+2a^2c^2-a^4-b^4-c^4$.\n\nChứng minh rằng nếu $a,b,c$ là ba cạnh của tam giác thì $A>0$.",
+  "dap_an": "$A=(a+b+c)(a+b-c)(c-a+b)(c+a-b)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức chỉ có số mũ chẵn và ba hạng tử $-a^4$, $-b^4$, $-c^4$ gợi ra bình phương của tam thức $a^2+b^2-c^2$ mang dấu trừ; bù thêm $4a^2b^2$ thì được hiệu hai bình phương.\n\n**Bước 1.** Tách $2a^2b^2$ thành $4a^2b^2-2a^2b^2$ rồi gom các hạng tử còn lại thành một bình phương của tam thức $a^2+b^2-c^2$, để biểu thức có dạng $(2ab)^2-(a^2+b^2-c^2)^2$.\n\n**Bước 2.** Áp dụng hằng đẳng thức hiệu hai bình phương, rồi nhận ra mỗi thừa số mới lại là hiệu của hai bình phương nên phân tích tiếp được.\n\n**Bước 3.** Với $a,b,c$ là ba cạnh của một tam giác, dùng bất đẳng thức tam giác để chứng tỏ cả bốn nhân tử đều dương, từ đó suy ra dấu của $A$.\n\n**Chú ý:** Nhân tử $a+b-c$, $c-a+b$, $c+a-b$ dương chính là ba bất đẳng thức tam giác; thiếu điều kiện \"ba cạnh của tam giác\" thì không kết luận được dấu của $A$.\n\n**Phần 2. Trình bày**\n\n$A=2a^2b^2+2b^2c^2+2a^2c^2-a^4-b^4-c^4$\n\n$=4a^2b^2-(a^4+b^4+c^4+2a^2b^2-2a^2c^2-2b^2c^2)$\n\n$=(2ab)^2-(a^2+b^2-c^2)^2$\n\n$=(2ab+a^2+b^2-c^2)(2ab-a^2-b^2+c^2)$\n\n$=[(a+b)^2-c^2][c^2-(a-b)^2]$\n\n$=(a+b+c)(a+b-c)(c-a+b)(c+a-b)$.\n\nNếu $a,b,c$ là ba cạnh của một tam giác thì $a+b+c>0$ và theo bất đẳng thức tam giác $a+b-c>0$, $c-a+b>0$, $c+a-b>0$.\n\nVậy $A>0$ (tích của bốn số dương).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hằng đẳng thức hiệu hai bình phương",
+   "bất đẳng thức tam giác"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 28): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.2@p29",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch toán Úc, 1971) Chứng minh rằng với mọi số dương $a,b,c$ ta có: $a^2(b+c-a)+b^2(a+c-b)+c^2(a+b-c)\\leq 3abc$.",
+  "noi_dung_sach": "(Đề thi vô địch toán Úc, 1971) Chứng minh rằng với mọi số dương $a,b,c$ ta có: $a^2(b+c-a)+b^2(a+c-b)+c^2(a+b-c)\\leq 3abc$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bất đẳng thức đối xứng theo ba biến, nên xét hiệu $3abc$ trừ vế trái rồi sắp thứ tự $a\\geq b\\geq c$; khi đó hiệu viết được thành tổng các tích của những nhân tử không âm.\n\n**Bước 1.** Chuyển vế để xét hiệu $B$ giữa $3abc$ và vế trái, khai triển các tích thành đa thức rồi chỉ cần chứng minh $B\\geq 0$.\n\n**Bước 2.** Vì biểu thức không đổi khi hoán đổi các biến nên giả sử $a\\geq b\\geq c>0$ mà không mất tổng quát.\n\n**Bước 3.** Nhóm các hạng tử của $B$ theo từng cặp để lần lượt xuất hiện các nhân tử $a-b$, $b-c$, $a-c$, đưa $B$ về dạng tổng hai tích.\n\n**Bước 4.** Xét dấu từng nhân tử dưới giả thiết thứ tự rồi kết luận $B\\geq 0$.\n\n**Chú ý:** Muốn dùng giả thiết $a\\geq b\\geq c$ thì phải nói rõ vì sao được giả sử như vậy (vai trò ba biến như nhau); dấu bằng xảy ra khi $a=b=c$.\n\n**Phần 2. Trình bày**\n\nVì vai trò của $a,b,c$ như nhau nên không mất tổng quát, giả sử $a\\geq b\\geq c>0$.\n\nXét $B=3abc-[a^2(b+c-a)+b^2(a+c-b)+c^2(a+b-c)]$\n\n$=3abc+a^3+b^3+c^3-a^2b-ab^2-a^2c-b^2c-ac^2-bc^2$\n\n$=a^2(a-b)+b^2(b-a)+c(2ab-a^2-b^2)+c(c^2-ac-bc+ab)$\n\n$=(a-b)(a^2-b^2)-c(a-b)^2+c(c-a)(c-b)$\n\n$=(a-b)^2(a+b-c)+c(a-c)(b-c)$.\n\nDo $a\\geq b\\geq c>0$ nên $(a-b)^2\\geq 0$, $a+b-c>0$, $c>0$, $a-c\\geq 0$, $b-c\\geq 0$; suy ra $B\\geq 0$.\n\nVậy $a^2(b+c-a)+b^2(a+c-b)+c^2(a+b-c)\\leq 3abc$, dấu bằng xảy ra khi $a=b=c$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét hiệu",
+   "giả sử thứ tự các biến",
+   "nhóm hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 29): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.3@p29",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vào lớp chuyên toán miền Bắc, 1975) a) Phân tích ra thừa số: $A=a^4-6a^3+27a^2-54a+32$.\n\nb) Từ kết quả câu trên suy ra rằng biểu thức $n^4-6n^3+27n^2-54n+32$ luôn luôn là số chẵn với mọi số nguyên $n$.",
+  "noi_dung_sach": "(Đề thi vào lớp chuyên toán miền Bắc, 1975) a) Phân tích ra thừa số: $A=a^4-6a^3+27a^2-54a+32$.\n\nb) Từ kết quả câu trên suy ra rằng biểu thức $n^4-6n^3+27n^2-54n+32$ luôn luôn là số chẵn với mọi số nguyên $n$.",
+  "dap_an": "$A=(a-1)(a-2)(a^2-3a+16)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc bốn không có nhân tử chung và không là hằng đẳng thức, nhưng có nghiệm nguyên nhỏ nên nhẩm nghiệm để biết trước nhân tử; ý b) chẵn lẻ nhờ tích có hai số nguyên liên tiếp.\n\n**Bước 1.** Thay $a=1$ và $a=2$ vào $A$ để thấy cả hai đều là nghiệm, nên $A$ chia hết cho $a-1$ và $a-2$ (hệ quả định lí Bê-du), do đó chia hết cho tích $a^2-3a+2$.\n\n**Bước 2.** Tách các hạng tử của $A$ thành ba nhóm, mỗi nhóm là bội của $a^2-3a+2$, rồi đặt nhân tử chung để tìm nhân tử còn lại.\n\n**Bước 3.** Thay $a$ bằng số nguyên $n$ vào kết quả ý a), chỉ ra hai nhân tử đầu là hai số nguyên liên tiếp nên tích của chúng chia hết cho $2$.\n\n**Bước 4.** Nhân tử thứ ba là số nguyên, nên cả tích vẫn chia hết cho $2$.\n\n**Chú ý:** Thừa số $a^2-3a+16=\\left(a-\\dfrac{3}{2}\\right)^2+\\dfrac{55}{4}>0$ không còn phân tích tiếp được; ý a) cũng làm được bằng cách nhóm số hạng và dùng hằng đẳng thức.\n\n**Phần 2. Trình bày**\n\na) Với $a=1$: $A=1-6+27-54+32=0$; với $a=2$: $A=16-48+108-108+32=0$.\n\nDo đó $A$ chia hết cho $a-1$ và $a-2$, suy ra $A$ chia hết cho $(a-1)(a-2)=a^2-3a+2$.\n\n$A=a^4-3a^3+2a^2-3a^3+9a^2-6a+16a^2-48a+32$\n\n$=a^2(a^2-3a+2)-3a(a^2-3a+2)+16(a^2-3a+2)$\n\n$=(a^2-3a+2)(a^2-3a+16)$\n\n$=(a-1)(a-2)(a^2-3a+16)$.\n\nb) Theo ý a) với $a=n$:\n\n$n^4-6n^3+27n^2-54n+32=(n-2)(n-1)(n^2-3n+16)$.\n\nVì $n-2$ và $n-1$ là hai số nguyên liên tiếp nên có một số chia hết cho $2$; mà $n^2-3n+16$ là số nguyên nên tích trên chia hết cho $2$.\n\nVậy biểu thức luôn luôn là số chẵn với mọi số nguyên $n$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du",
+   "nhẩm nghiệm",
+   "tách hạng tử",
+   "tích hai số nguyên liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 29): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 29, §2 Dạng 7 ví dụ 3a: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.4@p30",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho biết $a+b+c=0$, chứng minh rằng: $(a^2+b^2+c^2)^2=2(a^4+b^4+c^4)$.",
+  "noi_dung_sach": "Cho biết $a+b+c=0$, chứng minh rằng: $(a^2+b^2+c^2)^2=2(a^4+b^4+c^4)$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $a+b+c=0$ cho phép rút một biến theo hai biến còn lại; bình phương lên thì $a^2-b^2-c^2$ chỉ còn $2bc$, và bình phương tiếp sẽ ra hệ thức giữa các hạng tử bậc bốn.\n\n**Bước 1.** Rút $a=-(b+c)$ rồi bình phương hai vế để được một hệ thức bậc hai gọn giữa $a^2$, $b^2$, $c^2$ và $bc$.\n\n**Bước 2.** Bình phương hai vế của hệ thức đó để xuất hiện $a^4+b^4+c^4$ cùng các tích $a^2b^2$, $a^2c^2$, $b^2c^2$.\n\n**Bước 3.** Rút gọn để biểu diễn $a^4+b^4+c^4$ qua các tích $a^2b^2$, $a^2c^2$, $b^2c^2$, rồi cộng thêm $a^4+b^4+c^4$ vào hai vế để so với đề.\n\n**Chú ý:** Vế trái của đề khai triển ra $a^4+b^4+c^4+2(a^2b^2+a^2c^2+b^2c^2)$, nên biểu thức cần cộng vào hai vế chính là $a^4+b^4+c^4$.\n\n**Phần 2. Trình bày**\n\nTừ $a+b+c=0$ ta có $a=-(b+c)$, suy ra $a^2=b^2+2bc+c^2$, tức là $a^2-b^2-c^2=2bc$.\n\nBình phương hai vế: $a^4+b^4+c^4-2a^2b^2-2a^2c^2+2b^2c^2=4b^2c^2$\n\n$\\Rightarrow a^4+b^4+c^4=2(a^2b^2+a^2c^2+b^2c^2)$.\n\nCộng $a^4+b^4+c^4$ vào hai vế:\n\n$2(a^4+b^4+c^4)=a^4+b^4+c^4+2(a^2b^2+a^2c^2+b^2c^2)=(a^2+b^2+c^2)^2$.\n\nVậy $(a^2+b^2+c^2)^2=2(a^4+b^4+c^4)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thế biến từ điều kiện",
+   "bình phương hai vế"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 30): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.5@p30",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $a+b+c=0$ (1) thì $a^3+b^3+c^3=3abc$ (2).\n\nĐảo lại, nếu có (2) thì có (1) không?",
+  "noi_dung_sach": "Chứng minh rằng nếu $a+b+c=0$ (1) thì $a^3+b^3+c^3=3abc$ (2).\n\nĐảo lại, nếu có (2) thì có (1) không?",
+  "dap_an": "Chứng minh; đảo lại: không nhất thiết — từ (2) chỉ suy ra $a+b+c=0$ hoặc $a=b=c$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hằng đẳng thức $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$ biến cả hai chiều của bài toán thành việc xét một tích bằng $0$.\n\n**Bước 1.** Nêu hằng đẳng thức mở rộng nói trên làm công cụ chung cho cả hai chiều.\n\n**Bước 2.** Chiều thuận: thay điều kiện $a+b+c=0$ vào thì vế phải của hằng đẳng thức bằng $0$, từ đó suy ra (2).\n\n**Bước 3.** Chiều đảo: từ (2) suy ra tích bằng $0$, nên một trong hai nhân tử bằng $0$; xét nhân tử thứ hai bằng $0$ bằng cách nhân đôi rồi gom thành tổng các bình phương.\n\n**Bước 4.** Kết luận chỉ suy ra được $a+b+c=0$ hoặc $a=b=c$, và nêu một ví dụ cụ thể cho thấy (2) không kéo theo (1).\n\n**Chú ý:** Hằng đẳng thức trên kiểm tra được bằng cách khai triển vế phải; bài đảo trả lời là \"không nhất thiết\", vì $a=b=c\\neq 0$ vẫn thỏa (2).\n\n**Phần 2. Trình bày**\n\nTa có hằng đẳng thức: $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$ (*).\n\nNếu $a+b+c=0$ thì vế phải của (*) bằng $0$, nên $a^3+b^3+c^3-3abc=0$, tức là $a^3+b^3+c^3=3abc$.\n\nĐảo lại, nếu $a^3+b^3+c^3=3abc$ thì theo (*): $(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=0$, do đó $a+b+c=0$ hoặc $a^2+b^2+c^2-ab-bc-ca=0$.\n\nVới $a^2+b^2+c^2-ab-bc-ca=0$, nhân hai vế với $2$ ta được $(a-b)^2+(b-c)^2+(c-a)^2=0$, suy ra $a-b=b-c=c-a=0$, tức là $a=b=c$.\n\nVậy nếu có (2) thì $a+b+c=0$ hoặc $a=b=c$; không phải lúc nào cũng có (1), chẳng hạn $a=b=c=1$ thì $a^3+b^3+c^3=3=3abc$ nhưng $a+b+c=3\\neq 0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức $a^3+b^3+c^3-3abc$",
+   "tích bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 30): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.6a@p30",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng từ đẳng thức: $(x-y)^2+(y-z)^2+(z-x)^2=(x+y-2z)^2+(y+z-2x)^2+(z+x-2y)^2$ ta suy ra $x=y=z$.",
+  "noi_dung_sach": "Chứng minh rằng từ đẳng thức: $(x-y)^2+(y-z)^2+(z-x)^2=(x+y-2z)^2+(y+z-2x)^2+(z+x-2y)^2$ ta suy ra $x=y=z$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải khai triển ra đúng $3$ lần vế trái nên đẳng thức chỉ còn tổng các bình phương bằng $0$, mà tổng bình phương chỉ bằng $0$ khi từng bình phương bằng $0$.\n\n**Bước 1.** Khai triển ba bình phương ở vế phải rồi cộng theo từng loại hạng tử ($x^2$, $y^2$, $z^2$, $xy$, $yz$, $zx$) để đưa về một biểu thức gọn.\n\n**Bước 2.** Nhận ra biểu thức đó gấp $3$ lần vế trái, rồi đặt vế trái là $S$ để đẳng thức trở thành một phương trình đơn giản theo $S$.\n\n**Bước 3.** Suy ra $S=0$, mỗi bình phương không âm nên cả ba bình phương phải bằng $0$, từ đó có $x=y=z$.\n\n**Chú ý:** Có thể gọn hơn bằng cách đặt $p=x-y$, $q=y-z$, $r=z-x$ với $p+q+r=0$; nhưng khai triển trực tiếp như trên là cách ít phải nhớ nhất.\n\n**Phần 2. Trình bày**\n\nCộng ba bình phương ở vế phải: hệ số của $x^2$ là $1+4+1=6$, hệ số của $xy$ là $2-4-4=-6$, và tương tự với $y^2$, $z^2$, $yz$, $zx$.\n\nDo đó\n\n$(x+y-2z)^2+(y+z-2x)^2+(z+x-2y)^2=6(x^2+y^2+z^2-xy-yz-zx)$\n\n$=3[(x-y)^2+(y-z)^2+(z-x)^2]$.\n\nĐặt $S=(x-y)^2+(y-z)^2+(z-x)^2$ thì đẳng thức đã cho trở thành $S=3S$, suy ra $S=0$.\n\nVì $(x-y)^2\\geq 0$, $(y-z)^2\\geq 0$, $(z-x)^2\\geq 0$ nên $x-y=y-z=z-x=0$.\n\nVậy $x=y=z$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "bình phương một tổng ba số",
+   "tổng các bình phương bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 30): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.6b@p30",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $a^2+b^2+c^2=ab+bc+ac$ thì $a=b=c$.",
+  "noi_dung_sach": "Chứng minh rằng nếu $a^2+b^2+c^2=ab+bc+ac$ thì $a=b=c$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển vế rồi nhân đôi thì vế trái là tổng của ba bình phương $(a-b)^2$, $(b-c)^2$, $(c-a)^2$, mà tổng này bằng $0$ chỉ khi cả ba bằng $0$.\n\n**Bước 1.** Chuyển tất cả hạng tử sang một vế và nhân hai vế với $2$ để mọi hệ số của các tích $ab$, $bc$, $ca$ thành $-2$.\n\n**Bước 2.** Tách $2a^2$, $2b^2$, $2c^2$ mỗi cái thành hai phần để gom thành ba hằng đẳng thức bình phương của một hiệu.\n\n**Bước 3.** Dùng tính chất bình phương không âm để kết luận từng hiệu bằng $0$, từ đó có $a=b=c$.\n\n**Chú ý:** Không được suy $a-b=0$ chỉ từ một đẳng thức tổng; phải nói rõ tổng ba số không âm bằng $0$ thì từng số bằng $0$.\n\n**Phần 2. Trình bày**\n\n$a^2+b^2+c^2=ab+bc+ca$\n\n$\\Rightarrow 2a^2+2b^2+2c^2-2ab-2bc-2ca=0$\n\n$\\Rightarrow (a^2-2ab+b^2)+(b^2-2bc+c^2)+(c^2-2ca+a^2)=0$\n\n$\\Rightarrow (a-b)^2+(b-c)^2+(c-a)^2=0$.\n\nVì mỗi bình phương đều không âm nên $a-b=b-c=c-a=0$.\n\nVậy $a=b=c$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng các bình phương bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 30): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.7a@p31",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "$x,y,z$ liên hệ với nhau bởi các đẳng thức: $x^2-y=a$; $y^2-z=b$; $z^2-x=c$. Tính giá trị của biểu thức: $P=x^3(z-y^2)+y^3(x-z^2)+z^3(y-x^2)+xyz(xyz-1)$.",
+  "noi_dung_sach": "$x,y,z$ liên hệ với nhau bởi các đẳng thức: $x^2-y=a$; $y^2-z=b$; $z^2-x=c$. Tính giá trị của biểu thức: $P=x^3(z-y^2)+y^3(x-z^2)+z^3(y-x^2)+xyz(xyz-1)$.",
+  "dap_an": "$P=abc$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba đại lượng $x^2-y$, $y^2-z$, $z^2-x$ chính là $a$, $b$, $c$, nên phải phân tích $P$ thành tích của đúng ba nhân tử đó thì mới tính được giá trị theo $a,b,c$.\n\n**Bước 1.** Khai triển $xyz(xyz-1)=x^2y^2z^2-xyz$ để $P$ thành tổng tám hạng tử, rồi tìm cách ghép chúng để mỗi nhóm đều chia hết cho $x^2-y$.\n\n**Bước 2.** Ghép các hạng tử thành bốn nhóm, mỗi nhóm là bội của $x^2-y$, rồi đặt $x^2-y$ làm nhân tử chung.\n\n**Bước 3.** Nhóm các hạng tử còn lại trong ngoặc theo nhân tử $z^2-x$ để xuất hiện nhân tử thứ hai và thứ ba.\n\n**Bước 4.** Thay $x^2-y=a$, $y^2-z=b$, $z^2-x=c$ vào tích đã phân tích để được giá trị của $P$.\n\n**Chú ý:** Trong ngoặc cuối, $y^2z^2-xy^2=y^2(z^2-x)$ và $-z^3+xz=-z(z^2-x)$; dễ nhầm dấu khi đặt nhân tử chung ở nhóm sau.\n\n**Phần 2. Trình bày**\n\n$P=x^3z-x^3y^2+y^3x-y^3z^2+z^3y-z^3x^2+x^2y^2z^2-xyz$\n\n$=y^2z^2(x^2-y)-z^3(x^2-y)-xy^2(x^2-y)+xz(x^2-y)$\n\n$=(x^2-y)(y^2z^2-z^3-xy^2+xz)$\n\n$=(x^2-y)[y^2(z^2-x)-z(z^2-x)]$\n\n$=(x^2-y)(z^2-x)(y^2-z)$\n\n$=a\\cdot c\\cdot b=abc$.\n\nVậy $P=abc$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "đặt nhân tử chung",
+   "thay giá trị từ điều kiện"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.7b@p31",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x+y=a$, $x^2+y^2=b$, $x^3+y^3=c$. Chứng minh rằng $a^3-3ab+2c=0$.",
+  "noi_dung_sach": "Cho $x+y=a$, $x^2+y^2=b$, $x^3+y^3=c$. Chứng minh rằng $a^3-3ab+2c=0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba đại lượng $a,b,c$ đều cho theo $x,y$, nên thay vào là mọi thứ chỉ còn hai biến và chỉ việc chứng tỏ biểu thức triệt tiêu.\n\n**Bước 1.** Thay $a=x+y$, $b=x^2+y^2$, $c=x^3+y^3$ vào vế trái cần chứng minh để được một biểu thức chỉ chứa $x$ và $y$.\n\n**Bước 2.** Phân tích $x^3+y^3$ theo hằng đẳng thức tổng hai lập phương để mọi hạng tử đều có nhân tử chung $x+y$, rồi đặt nhân tử chung đó.\n\n**Bước 3.** Khai triển các bình phương trong ngoặc và cộng các hạng tử đồng dạng để thấy ngoặc bằng $0$.\n\n**Chú ý:** Cũng có thể khai triển $(x+y)^3$ rồi gom đồng dạng, kết quả như nhau; nhưng đặt nhân tử chung $x+y$ ít bước hơn.\n\n**Phần 2. Trình bày**\n\n$a^3-3ab+2c=(x+y)^3-3(x+y)(x^2+y^2)+2(x^3+y^3)$\n\n$=(x+y)^3-3(x+y)(x^2+y^2)+2(x+y)(x^2-xy+y^2)$\n\n$=(x+y)[(x+y)^2-3(x^2+y^2)+2(x^2-xy+y^2)]$\n\n$=(x+y)(x^2+2xy+y^2-3x^2-3y^2+2x^2-2xy+2y^2)$\n\n$=(x+y)\\cdot 0=0$.\n\nVậy $a^3-3ab+2c=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thế biến",
+   "hằng đẳng thức đáng nhớ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.8@p31",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $a,b,c$ là ba số thỏa mãn hệ thức: $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{1}{a+b+c}$ thì hai trong ba số đó phải là hai số đối nhau.",
+  "noi_dung_sach": "Chứng minh rằng nếu $a,b,c$ là ba số thỏa mãn hệ thức: $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{1}{a+b+c}$ thì hai trong ba số đó phải là hai số đối nhau.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng và khử mẫu thì điều kiện trở thành $(ab+bc+ca)(a+b+c)-abc=0$, và vế trái phân tích được thành tích ba tổng hai số; tích bằng $0$ cho ra ngay hai số đối nhau.\n\n**Bước 1.** Nêu điều kiện các mẫu khác $0$ rồi quy đồng vế trái, sau đó nhân chéo để bỏ mẫu.\n\n**Bước 2.** Khai triển $(ab+bc+ca)(a+b+c)$ và chuyển $abc$ sang vế trái, được đa thức gồm sáu hạng tử dạng $a^2b$ cộng với $2abc$.\n\n**Bước 3.** Nhận ra đa thức đó chính là khai triển của $(a+b)(b+c)(c+a)$ và viết thành tích.\n\n**Bước 4.** Cho từng nhân tử của tích bằng $0$ để kết luận có hai số đối nhau.\n\n**Chú ý:** Phải ghi điều kiện $a,b,c,a+b+c$ đều khác $0$ ở đầu bài, vì nếu thiếu thì các phân số trong đề không có nghĩa.\n\n**Phần 2. Trình bày**\n\nVì các mẫu khác $0$ nên:\n\n$\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{1}{a+b+c}$\n\n$\\Rightarrow\\dfrac{bc+ca+ab}{abc}=\\dfrac{1}{a+b+c}$\n\n$\\Rightarrow(ab+bc+ca)(a+b+c)=abc$\n\n$\\Rightarrow a^2b+ab^2+b^2c+bc^2+c^2a+ca^2+3abc-abc=0$\n\n$\\Rightarrow a^2b+ab^2+b^2c+bc^2+c^2a+ca^2+2abc=0$\n\n$\\Rightarrow(a+b)(b+c)(c+a)=0$.\n\nSuy ra $a+b=0$ hoặc $b+c=0$ hoặc $c+a=0$.\n\nVậy trong ba số $a,b,c$ có hai số đối nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "quy đồng",
+   "phân tích nhân tử đa thức nhiều biến"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.9a@p31",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các giá trị của $a,b$ và $c$ để đa thức $P(x)=x^4+ax^2+bx+c$ chia hết cho $(x-3)^3$.",
+  "noi_dung_sach": "Xác định các giá trị của $a,b$ và $c$ để đa thức $P(x)=x^4+ax^2+bx+c$ chia hết cho $(x-3)^3$.",
+  "dap_an": "$(a;b;c)=(-54;216;-243)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $(x-3)^3$ bậc ba, số bị chia bậc bốn nên thương là nhị thức bậc nhất có hệ số cao nhất bằng $1$; muốn chia hết thì đa thức dư (bậc không quá hai) phải đồng nhất bằng $0$.\n\n**Bước 1.** Khai triển $(x-3)^3$, rồi xác định thương dạng $x+k$ sao cho hệ số của $x^3$ trong tích triệt tiêu, vì $P(x)$ không có hạng tử $x^3$.\n\n**Bước 2.** Nhân số chia với thương vừa tìm, rồi trừ đi từ $P(x)$ để lập đa thức dư theo $a,b,c$.\n\n**Bước 3.** Cho cả ba hệ số của đa thức dư bằng $0$ và giải từng phương trình bậc nhất để tìm $a,b,c$.\n\n**Chú ý:** Đa thức dư có bậc nhỏ hơn bậc số chia ($3$), nên chỉ có tối đa ba hệ số $x^2$, $x$ và hệ số tự do cần bằng $0$.\n\n**Phần 2. Trình bày**\n\nTa có $(x-3)^3=x^3-9x^2+27x-27$.\n\nKhi chia $P(x)$ cho $(x-3)^3$, thương có bậc $1$ và hệ số cao nhất bằng $1$ nên là $x+k$, còn dư $R(x)$ có bậc không quá $2$:\n\n$P(x)=(x-3)^3(x+k)+R(x)$\n\n$(x-3)^3(x+k)=x^4+(k-9)x^3+(27-9k)x^2+(27k-27)x-27k$.\n\nVì $P(x)$ không có hạng tử $x^3$ và $R(x)$ có bậc không quá $2$ nên $k-9=0$, suy ra $k=9$ và $(x-3)^3(x+9)=x^4-54x^2+216x-243$.\n\nDo đó $R(x)=P(x)-(x-3)^3(x+9)=(a+54)x^2+(b-216)x+(c+243)$.\n\n$P(x)$ chia hết cho $(x-3)^3$ khi và chỉ khi $R(x)\\equiv 0$, tức là $a+54=0$, $b-216=0$, $c+243=0$.\n\nVậy $a=-54$, $b=216$, $c=-243$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phép chia đa thức",
+   "đồng nhất đa thức (dư bằng $0$)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.9b@p31",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các giá trị $a,b$ sao cho đa thức $Q(x)=6x^4-7x^3+ax^2+3x+2$ chia hết cho đa thức $M(x)=x^2-x+b$.",
+  "noi_dung_sach": "Xác định các giá trị $a,b$ sao cho đa thức $Q(x)=6x^4-7x^3+ax^2+3x+2$ chia hết cho đa thức $M(x)=x^2-x+b$.",
+  "dap_an": "$(a;b)\\in\\{(-7;-1);(-12;-2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bị chia bậc bốn, số chia bậc hai nên đặt tính chia được thương bậc hai và dư bậc nhất; chia hết khi cả hai hệ số của dư bằng $0$, cho ra hệ hai phương trình theo $a,b$.\n\n**Bước 1.** Thực hiện phép chia $Q(x)$ cho $M(x)$ từng bước, mỗi bước lấy hạng tử bậc cao nhất của phần còn lại chia cho $x^2$ để tìm hạng tử của thương.\n\n**Bước 2.** Viết đa thức dư dưới dạng $mx+n$ với $m,n$ là biểu thức của $a,b$, rồi cho cả hai hệ số bằng $0$ để lập hệ phương trình.\n\n**Bước 3.** Rút $a$ từ phương trình bậc nhất, thế vào phương trình còn lại để được phương trình bậc hai theo $b$ rồi phân tích thành tích để giải.\n\n**Bước 4.** Từ mỗi giá trị của $b$ tính ngược lại $a$ và kết luận hai cặp $(a;b)$.\n\n**Chú ý:** Hai cặp nghiệm đều thỏa vì đa thức dư đồng nhất bằng $0$ khi cả hai hệ số bằng $0$, không cần thử lại.\n\n**Phần 2. Trình bày**\n\nChia $Q(x)$ cho $M(x)=x^2-x+b$:\n\n$Q(x)-6x^2M(x)=-x^3+(a-6b)x^2+3x+2$\n\n$-x^3+(a-6b)x^2+3x+2+xM(x)=(a-6b-1)x^2+(b+3)x+2$\n\n$(a-6b-1)x^2+(b+3)x+2-(a-6b-1)M(x)=(a-5b+2)x+(-ab+6b^2+b+2)$.\n\nVậy thương là $6x^2-x+(a-6b-1)$ và dư là $(a-5b+2)x+(-ab+6b^2+b+2)$.\n\n$Q(x)$ chia hết cho $M(x)$ khi và chỉ khi dư bằng $0$ với mọi $x$, tức là:\n\n$a-5b+2=0$ (1) và $-ab+6b^2+b+2=0$ (2).\n\nTừ (1): $a=5b-2$.\n\nThay vào (2): $-(5b-2)b+6b^2+b+2=0$, tức là $b^2+3b+2=0$\n\n$\\Leftrightarrow(b+1)(b+2)=0$.\n\nVới $b=-1$ thì $a=5\\cdot(-1)-2=-7$; với $b=-2$ thì $a=5\\cdot(-2)-2=-12$.\n\nVậy $(a;b)=(-7;-1)$ hoặc $(a;b)=(-12;-2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phép chia đa thức",
+   "đồng nhất đa thức (dư bằng $0$)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 32, §2 Dạng 7 ví dụ 9b: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.10@p32",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy xác định các số $a,b,c$ để có đẳng thức: $x^3-ax^2+bx-c=(x-a)(x-b)(x-c)$.",
+  "noi_dung_sach": "Hãy xác định các số $a,b,c$ để có đẳng thức: $x^3-ax^2+bx-c=(x-a)(x-b)(x-c)$.",
+  "dap_an": "$(a;b;c)=(a;0;0)$ với $a$ tùy ý, hoặc $(a;b;c)=(-1;-1;1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai đa thức bằng nhau với mọi $x$ khi và chỉ khi các hệ số cùng bậc bằng nhau, nên khai triển vế phải thành $x^3-(a+b+c)x^2+\\dots$ rồi lập hệ ba phương trình theo $a,b,c$.\n\n**Bước 1.** Khai triển $(x-a)(x-b)(x-c)$ theo các hệ số $a+b+c$, $ab+bc+ca$ và $abc$.\n\n**Bước 2.** Đồng nhất ba hệ số của $x^2$, $x$ và hệ số tự do với vế trái để có ba phương trình.\n\n**Bước 3.** Dùng phương trình đơn giản nhất để biểu diễn $b$ theo $c$, rồi phân tích phương trình còn lại thành tích để chia hai trường hợp.\n\n**Bước 4.** Giải từng trường hợp, chú ý loại các giá trị mâu thuẫn với điều kiện của trường hợp đó.\n\n**Chú ý:** Ở trường hợp $c=0$ thì $a$ không bị ràng buộc, nên đáp số có vô số bộ nghiệm dạng $(a;0;0)$ chứ không chỉ là một bộ.\n\n**Phần 2. Trình bày**\n\n$(x-a)(x-b)(x-c)=x^3-(a+b+c)x^2+(ab+bc+ca)x-abc$.\n\nĐồng nhất hệ số với $x^3-ax^2+bx-c$:\n\n$a+b+c=a$ (1); $ab+bc+ca=b$ (2); $abc=c$ (3).\n\nTừ (1): $b+c=0$, suy ra $b=-c$.\n\nTừ (3): $c(ab-1)=0$, suy ra $c=0$ hoặc $ab=1$.\n\nTrường hợp 1: $c=0$.\n\nKhi đó $b=-c=0$ và (2) thành $0=0$ nên $a$ lấy tùy ý.\n\nTrường hợp 2: $ab=1$ (nên $b\\neq 0$).\n\nThay $c=-b$ vào (2): $ab-b^2-ab=b$, tức là $-b^2=b$, hay $b(b+1)=0$.\n\nVì $b\\neq 0$ nên $b=-1$, suy ra $c=1$ và $a=\\dfrac{1}{b}=-1$.\n\nVậy $b=c=0$ với $a$ tùy ý, hoặc $(a;b;c)=(-1;-1;1)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đồng nhất hệ số",
+   "xét trường hợp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 32, §2 Dạng 7 ví dụ 10: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.11@p32",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Ta biết rằng: (1) $a^3+b^3=(a+b)^3-3ab(a+b)$.\n\nChứng minh rằng (1) $\\Rightarrow$ (2) $\\Rightarrow$ (3) $\\Rightarrow$ (4), với:\n\n(2) $a^3+b^3+c^3=(a+b+c)^3-3(a+b)(b+c)(c+a)$;\n\n(3) Nếu $a+b+c=0$ thì $a^3+b^3+c^3=3abc$;\n\n(4) Nếu $a+b+c+d=0$ thì $a^3+b^3+c^3+d^3=3(ab-cd)(c+d)$.",
+  "noi_dung_sach": "Ta biết rằng: (1) $a^3+b^3=(a+b)^3-3ab(a+b)$.\n\nChứng minh rằng (1) $\\Rightarrow$ (2) $\\Rightarrow$ (3) $\\Rightarrow$ (4), với:\n\n(2) $a^3+b^3+c^3=(a+b+c)^3-3(a+b)(b+c)(c+a)$;\n\n(3) Nếu $a+b+c=0$ thì $a^3+b^3+c^3=3abc$;\n\n(4) Nếu $a+b+c+d=0$ thì $a^3+b^3+c^3+d^3=3(ab-cd)(c+d)$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi hệ thức sau suy ra từ hệ thức trước bằng một phép thế biến vào chính hằng đẳng thức (1): thay $b$ bởi $b+c$, thay điều kiện tổng bằng $0$, rồi gộp $c$ và $d$ thành một số $c+d$.\n\n**Bước 1.** Chứng minh (1)$\\Rightarrow$(2): thay $b$ bởi $b+c$ trong (1), rồi áp dụng lại (1) cho cặp $b,c$ để thay $(b+c)^3$ và đưa về $a^3+b^3+c^3$.\n\n**Bước 2.** Đặt nhân tử chung $b+c$ và phân tích biểu thức trong ngoặc vuông thành tích hai nhị thức để ra dạng của (2).\n\n**Bước 3.** Chứng minh (2)$\\Rightarrow$(3): dùng điều kiện $a+b+c=0$ để thay từng tổng hai số bằng số đối của số còn lại ở vế phải của (2).\n\n**Bước 4.** Chứng minh (3)$\\Rightarrow$(4): coi $c+d$ là một số rồi áp dụng (3) cho ba số $a$, $b$, $c+d$ có tổng bằng $0$, sau đó khai triển $(c+d)^3$ bằng (1).\n\n**Chú ý:** Chứng minh (3)$\\Rightarrow$(4) cần $a+b+(c+d)=0$, đây là chỗ dùng điều kiện $a+b+c+d=0$.\n\n**Phần 2. Trình bày**\n\n(1)$\\Rightarrow$(2): Thay $b$ bởi $b+c$ trong (1):\n\n$a^3+(b+c)^3=(a+b+c)^3-3a(b+c)(a+b+c)$.\n\nÁp dụng (1) cho $b,c$: $(b+c)^3=b^3+c^3+3bc(b+c)$, thay vào:\n\n$a^3+b^3+c^3+3bc(b+c)=(a+b+c)^3-3a(b+c)(a+b+c)$\n\n$\\Rightarrow a^3+b^3+c^3=(a+b+c)^3-3(b+c)[bc+a(a+b+c)]$\n\n$=(a+b+c)^3-3(b+c)(a^2+ab+ac+bc)$\n\n$=(a+b+c)^3-3(b+c)(a+b)(a+c)$.\n\nĐó là (2).\n\n(2)$\\Rightarrow$(3): Nếu $a+b+c=0$ thì $a+b=-c$, $b+c=-a$, $c+a=-b$.\n\nThay vào vế phải của (2):\n\n$a^3+b^3+c^3=0^3-3(-c)(-a)(-b)=3abc$.\n\n(3)$\\Rightarrow$(4): Nếu $a+b+c+d=0$ thì ba số $a$, $b$, $c+d$ có tổng bằng $0$.\n\nÁp dụng (3):\n\n$a^3+b^3+(c+d)^3=3ab(c+d)$.\n\nTheo (1): $(c+d)^3=c^3+d^3+3cd(c+d)$, nên\n\n$a^3+b^3+c^3+d^3=3ab(c+d)-3cd(c+d)=3(ab-cd)(c+d)$.\n\nVậy (1)$\\Rightarrow$(2)$\\Rightarrow$(3)$\\Rightarrow$(4).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức $a^3+b^3$",
+   "thế biến vào hằng đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V7.12@p33",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ là ba số phân biệt; chứng minh rằng: $a^4(b-c)+b^4(c-a)+c^4(a-b)\\neq 0$.",
+  "noi_dung_sach": "Cho $a,b,c$ là ba số phân biệt; chứng minh rằng: $a^4(b-c)+b^4(c-a)+c^4(a-b)\\neq 0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức triệt tiêu khi hai biến bằng nhau (chẳng hạn $a=b$), nên chắc chắn chứa các nhân tử $a-b$, $b-c$, $c-a$; phân tích ra tích rồi chỉ cần chứng tỏ mọi nhân tử đều khác $0$.\n\n**Bước 1.** Viết $c-a=-(a-b)-(b-c)$ rồi nhóm các hạng tử để mọi số hạng đều chứa $a-b$ hoặc $b-c$, từ đó đặt hai nhân tử này ra ngoài.\n\n**Bước 2.** Dùng hiệu hai lũy thừa bậc bốn và bậc ba để phân tích thừa số còn lại, được thêm nhân tử $a-c$ và một biểu thức đối xứng bậc hai.\n\n**Bước 3.** Viết biểu thức đối xứng bậc hai đó thành nửa tổng các bình phương để xét được dấu.\n\n**Bước 4.** Dùng giả thiết ba số phân biệt để chứng tỏ cả bốn nhân tử đều khác $0$, từ đó kết luận tích khác $0$.\n\n**Chú ý:** \"$a,b,c$ phân biệt\" chỉ cho ba nhân tử $a-b$, $b-c$, $a-c$ khác $0$; nhân tử cuối khác $0$ phải chứng minh riêng.\n\n**Phần 2. Trình bày**\n\nĐặt $S=a^4(b-c)+b^4(c-a)+c^4(a-b)$.\n\nVì $c-a=-(a-b)-(b-c)$ nên\n\n$S=a^4(b-c)-b^4(a-b)-b^4(b-c)+c^4(a-b)$\n\n$=(b-c)(a^4-b^4)-(a-b)(b^4-c^4)$\n\n$=(a-b)(b-c)(a+b)(a^2+b^2)-(a-b)(b-c)(b+c)(b^2+c^2)$\n\n$=(a-b)(b-c)[(a+b)(a^2+b^2)-(b+c)(b^2+c^2)]$\n\n$=(a-b)(b-c)[a^3+a^2b+ab^2-b^2c-bc^2-c^3]$\n\n$=(a-b)(b-c)[(a^3-c^3)+b(a^2-c^2)+b^2(a-c)]$\n\n$=(a-b)(b-c)(a-c)(a^2+ac+c^2+ab+bc+b^2)$\n\n$=\\dfrac{1}{2}(a-b)(b-c)(a-c)[(a+b)^2+(b+c)^2+(c+a)^2]$.\n\nVì $a,b,c$ phân biệt nên $a-b\\neq 0$, $b-c\\neq 0$, $a-c\\neq 0$.\n\nNếu $(a+b)^2+(b+c)^2+(c+a)^2=0$ thì $a+b=b+c=c+a=0$, suy ra $a=c$, trái với giả thiết; do đó $(a+b)^2+(b+c)^2+(c+a)^2>0$.\n\nVậy $S\\neq 0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích nhân tử đa thức hoán vị vòng quanh",
+   "hằng đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 33): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2V8.2@p34",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích thành nhân tử: $f(x)=x^3+4x^2+4x+3$.",
+  "noi_dung_sach": "Phân tích thành nhân tử: $f(x)=x^3+4x^2+4x+3$.",
+  "dap_an": "$(x+3)(x^2+x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hệ số nguyên có hệ số cao nhất bằng $1$ và hệ số tự do $3$ nên nghiệm nguyên chỉ có thể là $\\pm1$ hoặc $\\pm3$; chỉ cần thử bốn số này.\n\n**Bước 1.** Liệt kê các ước của hệ số tự do $3$ rồi thay lần lượt vào $f(x)$ để tìm giá trị làm $f$ bằng $0$.\n\n**Bước 2.** Từ nghiệm tìm được suy ra một nhân tử bậc nhất theo hệ quả định lí Bê-du.\n\n**Bước 3.** Tách các hạng tử của $f(x)$ thành từng nhóm chứa nhân tử đó rồi đặt nhân tử chung để ra thương bậc hai.\n\n**Bước 4.** Kiểm tra thương bậc hai có nghiệm hay không, nếu không có nghiệm thì dừng ở đây.\n\n**Chú ý:** Thương $x^2+x+1=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ với mọi $x$, nên không phân tích tiếp được.\n\n**Phần 2. Trình bày**\n\nCác ước của $3$ là $\\pm1$, $\\pm3$.\n\nTa có $f(1)=12$, $f(-1)=2$, $f(3)=78$, $f(-3)=-27+36-12+3=0$.\n\nVậy $f(x)$ chia hết cho $x+3$.\n\n$f(x)=x^3+3x^2+x^2+3x+x+3$\n\n$=x^2(x+3)+x(x+3)+(x+3)$\n\n$=(x+3)(x^2+x+1)$.\n\nVì $x^2+x+1=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ nên không phân tích tiếp được.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du",
+   "nhẩm nghiệm",
+   "ước của hệ số tự do"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 34): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2V8.3b@p34",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích thành nhân tử: $x^3-19x-30$.",
+  "noi_dung_sach": "Phân tích thành nhân tử: $x^3-19x-30$.",
+  "dap_an": "$(x+2)(x+3)(x-5)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba thiếu hạng tử $x^2$ và hệ số tự do $-30$ có nhiều ước; nhẩm nghiệm trong các ước đó để biết trước một nhân tử bậc nhất rồi tách hạng tử.\n\n**Bước 1.** Thử các ước của $-30$ vào đa thức: thay $x=-2$ được $-8+38-30=0$, nên đa thức có nhân tử $x+2$.\n\n**Bước 2.** Tách các hạng tử thành từng cặp sao cho cặp nào cũng chứa $x+2$, rồi đặt $x+2$ làm nhân tử chung.\n\n**Bước 3.** Phân tích tiếp tam thức bậc hai còn lại bằng cách tách hạng tử bậc nhất.\n\n**Chú ý:** Cũng có thể nhóm $(x^3-9x)-(10x+30)$ để đặt ngay nhân tử chung $x+3$ rồi phân tích tam thức còn lại; cho cùng kết quả.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=x^3-19x-30$.\n\nTa có $f(-2)=-8+38-30=0$ nên $f(x)$ chia hết cho $x+2$ (hệ quả định lí Bê-du).\n\n$x^3-19x-30=x^3+2x^2-2x^2-4x-15x-30$\n\n$=x^2(x+2)-2x(x+2)-15(x+2)$\n\n$=(x+2)(x^2-2x-15)$\n\n$=(x+2)(x^2+3x-5x-15)$\n\n$=(x+2)(x+3)(x-5)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du",
+   "nhẩm nghiệm",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 34): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 34, §2 Dạng 8 ví dụ 3b: ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.2@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010101",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng: $(S-2b)(S-2c)+(S-2c)(S-2a)+(S-2a)(S-2b)$ trong đó $S=a+b+c$.",
+  "noi_dung_sach": "Tính tổng: $(S-2b)(S-2c)+(S-2c)(S-2a)+(S-2a)(S-2b)$ trong đó $S=a+b+c$.",
+  "dap_an": "$-a^2-b^2-c^2+2ab+2bc+2ca$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $S=a+b+c$ thì mỗi nhân tử $S-2b$ chỉ còn ba hạng tử, và mỗi tích có dạng $(A+B)(A-B)$ nên tính nhanh bằng hằng đẳng thức hiệu hai bình phương; hai tích kia suy ra bằng hoán vị vòng.\n\n**Bước 1.** Thay $S=a+b+c$ để viết $S-2b$ và $S-2c$ thành các tổng đại số của $a$, $b$, $c$.\n\n**Bước 2.** Nhận ra tích thứ nhất có dạng $(A+B)(A-B)$ với $A=a$ rồi khai triển bằng hằng đẳng thức hiệu hai bình phương.\n\n**Bước 3.** Hoán vị vòng $b\\to c\\to a\\to b$ để viết ngay hai tích còn lại, không phải tính lại từ đầu.\n\n**Bước 4.** Cộng ba kết quả và gộp các hạng tử đồng dạng.\n\n**Phần 2. Trình bày**\n\n$S-2b=a-b+c$ và $S-2c=a+b-c$ nên\n\n$(S-2b)(S-2c)=(a-b+c)(a+b-c)=a^2-(b-c)^2=a^2-b^2-c^2+2bc$\n\nHoán vị vòng $b\\to c\\to a\\to b$:\n\n$(S-2c)(S-2a)=b^2-c^2-a^2+2ca$\n\n$(S-2a)(S-2b)=c^2-a^2-b^2+2ab$\n\nCộng ba đẳng thức:\n\n$(S-2b)(S-2c)+(S-2c)(S-2a)+(S-2a)(S-2b)=-a^2-b^2-c^2+2ab+2bc+2ca$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai bình phương",
+   "hoán vị vòng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.3@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(xy+1)^2-(x+y)^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(xy+1)^2-(x+y)^2$.",
+  "dap_an": "$(x+1)(y+1)(x-1)(y-1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức là hiệu của hai bình phương $(xy+1)^2$ và $(x+y)^2$ nên dùng hằng đẳng thức hiệu hai bình phương, sau đó nhóm hạng tử trong từng nhân tử.\n\n**Bước 1.** Nhận ra hiệu hai bình phương $A^2-B^2$ với $A=xy+1$ và $B=x+y$ rồi viết thành tích $(A-B)(A+B)$.\n\n**Bước 2.** Nhóm các hạng tử của nhân tử thứ nhất theo $x$ và theo $y$ để đặt được nhân tử chung.\n\n**Bước 3.** Làm tương tự với nhân tử thứ hai để đa thức thành tích của bốn nhị thức.\n\n**Phần 2. Trình bày**\n\n$(xy+1)^2-(x+y)^2$\n\n$=(xy+1+x+y)(xy+1-x-y)$\n\n$=[x(y+1)+(y+1)][x(y-1)-(y-1)]$\n\n$=(x+1)(y+1)(x-1)(y-1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.4@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a+b+c)^2+(a+b-c)^2-4c^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(a+b+c)^2+(a+b-c)^2-4c^2$.",
+  "dap_an": "$2(a+b+c)(a+b-c)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bình phương $(a+b\\pm c)^2$ khai triển theo $a+b$ và $c$ thì các hạng tử $\\pm2c(a+b)$ triệt tiêu nhau, phần còn lại là hiệu hai bình phương.\n\n**Bước 1.** Khai triển hai bình phương đầu theo hai đại lượng $a+b$ và $c$ bằng hằng đẳng thức bình phương của tổng và của hiệu.\n\n**Bước 2.** Gộp các hạng tử đồng dạng, trong đó hai hạng tử chứa $c(a+b)$ đối nhau nên bị triệt tiêu.\n\n**Bước 3.** Đặt nhân tử chung $2$ rồi dùng hằng đẳng thức hiệu hai bình phương cho biểu thức trong ngoặc.\n\n**Chú ý:** Có thể tách $4c^2=2c^2+2c^2$ hoặc coi $4c^2=(2c)^2$ rồi phân tích hiệu hai bình phương cho $(a+b-c)^2-(2c)^2$, kết quả như nhau.\n\n**Phần 2. Trình bày**\n\n$(a+b+c)^2+(a+b-c)^2-4c^2$\n\n$=(a+b)^2+2c(a+b)+c^2+(a+b)^2-2c(a+b)+c^2-4c^2$\n\n$=2(a+b)^2-2c^2$\n\n$=2[(a+b)^2-c^2]$\n\n$=2(a+b+c)(a+b-c)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.5@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a(b^2-c^2)-b(a^2-c^2)+c(a^2-b^2)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a(b^2-c^2)-b(a^2-c^2)+c(a^2-b^2)$.",
+  "dap_an": "$(b-c)(a-b)(c-a)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoán vị vòng $a\\to b\\to c\\to a$ bị triệt tiêu khi hai biến bằng nhau, nên có các nhân tử dạng $(b-c)$; tách $a^2-c^2$ theo hai hiệu còn lại để mọi hạng tử cùng chứa $(b-c)$ hoặc $(a-b)$.\n\n**Bước 1.** Viết $a^2-c^2=(b^2-c^2)+(a^2-b^2)$ để chỉ còn hai hiệu bình phương $b^2-c^2$ và $a^2-b^2$ trong biểu thức.\n\n**Bước 2.** Nhóm các hạng tử chứa $b^2-c^2$ và các hạng tử chứa $a^2-b^2$ rồi đặt nhân tử chung ở mỗi nhóm.\n\n**Bước 3.** Phân tích $b^2-c^2$ và $a^2-b^2$ bằng hằng đẳng thức để lộ nhân tử chung $(b-c)(a-b)$.\n\n**Bước 4.** Đặt nhân tử chung $(b-c)(a-b)$ ra ngoài và rút gọn biểu thức trong ngoặc vuông.\n\n**Phần 2. Trình bày**\n\n$a(b^2-c^2)-b(a^2-c^2)+c(a^2-b^2)$\n\n$=a(b^2-c^2)-b[(b^2-c^2)+(a^2-b^2)]+c(a^2-b^2)$\n\n$=(a-b)(b^2-c^2)-(b-c)(a^2-b^2)$\n\n$=(a-b)(b-c)(b+c)-(b-c)(a-b)(a+b)$\n\n$=(a-b)(b-c)[(b+c)-(a+b)]$\n\n$=(a-b)(b-c)(c-a)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hoán vị vòng",
+   "nhóm hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.7@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $ab(a+b)+bc(b+c)+ac(a+c)+2abc$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $ab(a+b)+bc(b+c)+ac(a+c)+2abc$.",
+  "dap_an": "$(a+b)(b+c)(c+a)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi khai triển, các hạng tử chia được thành nhóm chứa $ab$, nhóm chứa $c^2$ và nhóm chứa $c$ với $a^2+b^2+2ab=(a+b)^2$, nên cả ba nhóm đều có nhân tử $a+b$.\n\n**Bước 1.** Khai triển các tích $bc(b+c)$ và $ac(a+c)$ để thấy rõ từng hạng tử theo lũy thừa của $c$.\n\n**Bước 2.** Nhóm các hạng tử theo lũy thừa của $c$ và nhận ra tổng $a^2+b^2+2ab$ là bình phương của một tổng.\n\n**Bước 3.** Đặt nhân tử chung $a+b$ ra ngoài rồi nhóm các hạng tử trong ngoặc để phân tích tiếp.\n\n**Phần 2. Trình bày**\n\n$ab(a+b)+bc(b+c)+ac(a+c)+2abc$\n\n$=ab(a+b)+b^2c+bc^2+a^2c+ac^2+2abc$\n\n$=ab(a+b)+c^2(a+b)+c(a^2+b^2+2ab)$\n\n$=ab(a+b)+c^2(a+b)+c(a+b)^2$\n\n$=(a+b)(ab+c^2+ca+cb)$\n\n$=(a+b)[a(b+c)+c(b+c)]$\n\n$=(a+b)(b+c)(c+a)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.8@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a(b^3-c^3)+b(c^3-a^3)+c(a^3-b^3)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a(b^3-c^3)+b(c^3-a^3)+c(a^3-b^3)$.",
+  "dap_an": "$(a-b)(b-c)(c-a)(a+b+c)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoán vị vòng và $c^3-a^3=-[(b^3-c^3)+(a^3-b^3)]$, nên đưa về hai hiệu lập phương $b^3-c^3$ và $a^3-b^3$ rồi đặt nhân tử chung theo từng hiệu.\n\n**Bước 1.** Thay $c^3-a^3$ bằng tổng đối của hai hiệu $b^3-c^3$ và $a^3-b^3$ để chỉ còn hai hiệu lập phương trong biểu thức.\n\n**Bước 2.** Nhóm các hạng tử chứa cùng một hiệu lập phương rồi đặt nhân tử chung, được hiệu của hai tích.\n\n**Bước 3.** Phân tích $b^3-c^3$ và $a^3-b^3$ bằng hằng đẳng thức hiệu hai lập phương để lộ nhân tử chung $(a-b)(b-c)$.\n\n**Bước 4.** Đặt $(a-b)(b-c)$ ra ngoài rồi phân tích tiếp biểu thức còn lại bằng cách nhóm hạng tử.\n\n**Phần 2. Trình bày**\n\n$a(b^3-c^3)+b(c^3-a^3)+c(a^3-b^3)$\n\n$=a(b^3-c^3)-b[(b^3-c^3)+(a^3-b^3)]+c(a^3-b^3)$\n\n$=(a-b)(b^3-c^3)-(b-c)(a^3-b^3)$\n\n$=(a-b)(b-c)(b^2+bc+c^2)-(b-c)(a-b)(a^2+ab+b^2)$\n\n$=(a-b)(b-c)(bc+c^2-a^2-ab)$\n\n$=(a-b)(b-c)[(c-a)(c+a)+b(c-a)]$\n\n$=(a-b)(b-c)(c-a)(a+b+c)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hoán vị vòng",
+   "hiệu hai lập phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.9@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^3(b^2-c^2)+b^3(c^2-a^2)+c^3(a^2-b^2)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a^3(b^2-c^2)+b^3(c^2-a^2)+c^3(a^2-b^2)$.",
+  "dap_an": "$(a-b)(b-c)(a-c)(ab+bc+ca)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoán vị vòng giống bài trước, chỉ đổi vai trò mũ; tách $c^2-a^2=-[(b^2-c^2)+(a^2-b^2)]$ để chỉ còn hai hiệu bình phương rồi đặt nhân tử chung theo từng hiệu.\n\n**Bước 1.** Thay $c^2-a^2$ bằng tổng đối của hai hiệu $b^2-c^2$ và $a^2-b^2$ để nhóm được các hạng tử.\n\n**Bước 2.** Đặt nhân tử chung theo từng hiệu để được hiệu của hai tích, mỗi tích gồm một hiệu lập phương và một hiệu bình phương.\n\n**Bước 3.** Phân tích từng hiệu lập phương và hiệu bình phương rồi đặt nhân tử chung $(a-b)(b-c)$ ra ngoài.\n\n**Bước 4.** Khai triển hai tích trong ngoặc vuông, rút gọn rồi phân tích tiếp phần còn lại bằng cách nhóm hạng tử.\n\n**Phần 2. Trình bày**\n\n$a^3(b^2-c^2)+b^3(c^2-a^2)+c^3(a^2-b^2)$\n\n$=a^3(b^2-c^2)-b^3[(b^2-c^2)+(a^2-b^2)]+c^3(a^2-b^2)$\n\n$=(a^3-b^3)(b^2-c^2)-(b^3-c^3)(a^2-b^2)$\n\n$=(a-b)(a^2+ab+b^2)(b-c)(b+c)-(b-c)(b^2+bc+c^2)(a-b)(a+b)$\n\n$=(a-b)(b-c)[(a^2+ab+b^2)(b+c)-(b^2+bc+c^2)(a+b)]$\n\n$=(a-b)(b-c)(a^2b+a^2c-ac^2-bc^2)$\n\n$=(a-b)(b-c)[b(a^2-c^2)+ac(a-c)]$\n\n$=(a-b)(b-c)(a-c)[b(a+c)+ac]$\n\n$=(a-b)(b-c)(a-c)(ab+bc+ca)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hoán vị vòng",
+   "hiệu hai lập phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.11@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a+b+c)^3-a^3-b^3-c^3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(a+b+c)^3-a^3-b^3-c^3$.",
+  "dap_an": "$3(a+b)(b+c)(c+a)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi $(a+b+c)^3$ là lập phương của tổng hai số $a+b$ và $c$, khai triển bằng $(x+y)^3=x^3+y^3+3xy(x+y)$, rồi khai triển tiếp $(a+b)^3$ theo cùng hằng đẳng thức để các lập phương triệt tiêu.\n\n**Bước 1.** Khai triển $(a+b+c)^3$ bằng hằng đẳng thức lập phương của tổng với hai số $a+b$ và $c$.\n\n**Bước 2.** Khai triển $(a+b)^3$ theo cùng hằng đẳng thức để các hạng tử $a^3$, $b^3$, $c^3$ đối nhau và triệt tiêu.\n\n**Bước 3.** Đặt nhân tử chung $3(a+b)$ cho hai hạng tử còn lại rồi nhóm hạng tử trong ngoặc để phân tích tiếp.\n\n**Phần 2. Trình bày**\n\n$(a+b+c)^3-a^3-b^3-c^3$\n\n$=(a+b)^3+c^3+3c(a+b)(a+b+c)-a^3-b^3-c^3$\n\n$=a^3+b^3+3ab(a+b)+c^3+3c(a+b)(a+b+c)-a^3-b^3-c^3$\n\n$=3ab(a+b)+3c(a+b)(a+b+c)$\n\n$=3(a+b)(ab+ac+bc+c^2)$\n\n$=3(a+b)[a(b+c)+c(b+c)]$\n\n$=3(a+b)(b+c)(c+a)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức lập phương của tổng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.12@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-2x-35$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2-2x-35$.",
+  "dap_an": "$(x+5)(x-7)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam thức bậc hai không có nhân tử chung và không là hằng đẳng thức, nên tách hạng tử bậc nhất thành hai hạng tử có tích bằng tích của hệ số bậc hai và hệ số tự do rồi nhóm.\n\n**Bước 1.** Tính tích của hệ số bậc hai và hệ số tự do rồi tìm hai số nguyên có tích đó và có tổng bằng hệ số của $x$.\n\n**Bước 2.** Tách hạng tử bậc nhất thành hai hạng tử theo hai số vừa tìm.\n\n**Bước 3.** Nhóm hai cặp hạng tử và đặt nhân tử chung ở từng cặp để xuất hiện một nhân tử chung mới.\n\n**Chú ý:** Cũng có thể thêm bớt $1$ để đưa về hiệu hai bình phương $(x-1)^2-6^2$; hai cách cho cùng kết quả.\n\n**Phần 2. Trình bày**\n\n$x^2-2x-35$\n\n$=x^2+5x-7x-35$\n\n$=x(x+5)-7(x+5)$\n\n$=(x+5)(x-7)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.13@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $9x^2+6x-8$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $9x^2+6x-8$.",
+  "dap_an": "$(3x-2)(3x+4)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam thức bậc hai $ax^2+bx+c$ có thể phân tích khi tách $bx$ thành hai hạng tử mà hệ số có tích bằng $ac$; ở đây $a=9$ là bình phương nên cũng có thể đưa về hiệu hai bình phương.\n\n**Bước 1.** Tính tích $ac$ của hệ số bậc hai và hệ số tự do, rồi tìm hai số nguyên có tích bằng $ac$ và có tổng bằng hệ số của $x$.\n\n**Bước 2.** Tách hạng tử bậc nhất $6x$ thành hai hạng tử theo hai số vừa tìm.\n\n**Bước 3.** Nhóm hai cặp hạng tử, đặt nhân tử chung ở từng cặp để lộ nhân tử chung mới rồi đặt ra ngoài.\n\n**Chú ý:** Vì $a=9=3^2$ nên cũng làm được bằng cách viết $9x^2+6x+1-9=(3x+1)^2-3^2$.\n\n**Phần 2. Trình bày**\n\n$9x^2+6x-8$\n\n$=9x^2-6x+12x-8$\n\n$=3x(3x-2)+4(3x-2)$\n\n$=(3x-2)(3x+4)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.14@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4x^2-3x-1$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $4x^2-3x-1$.",
+  "dap_an": "$(x-1)(4x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng các hệ số $4-3-1$ bằng $0$ nên $x=1$ là nghiệm, tức đa thức chứa nhân tử $x-1$; chỉ cần tách hạng tử để nhân tử đó xuất hiện.\n\n**Bước 1.** Cộng các hệ số của đa thức để nhận ra đa thức có nghiệm $x=1$, nghĩa là có nhân tử $x-1$.\n\n**Bước 2.** Tách hạng tử bậc nhất $-3x$ thành hai hạng tử sao cho mỗi cặp hạng tử đều chia hết cho $x-1$.\n\n**Bước 3.** Đặt nhân tử chung $x-1$ ra ngoài để được tích của hai nhị thức.\n\n**Phần 2. Trình bày**\n\n$4x^2-3x-1$\n\n$=4x^2-4x+x-1$\n\n$=4x(x-1)+(x-1)$\n\n$=(x-1)(4x+1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.15@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $6x^4-11x^2+3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $6x^4-11x^2+3$.",
+  "dap_an": "$(3x^2-1)(2x^2-3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức chỉ chứa $x^4$ và $x^2$ nên đặt $t=x^2$ đưa về tam thức bậc hai theo $t$, rồi tách hạng tử như với tam thức bậc hai.\n\n**Bước 1.** Đặt $t=x^2$ để đa thức trở thành tam thức bậc hai theo $t$ với các hệ số $6$, $-11$, $3$.\n\n**Bước 2.** Tìm hai số có tích bằng $6\\cdot3=18$ và tổng bằng $-11$ rồi tách hạng tử bậc nhất theo $t$.\n\n**Bước 3.** Nhóm hai cặp hạng tử và đặt nhân tử chung, rồi thay $t=x^2$ trở lại để được hai nhân tử theo $x$.\n\n**Chú ý:** Cuối bài nên kiểm tra mỗi nhân tử $3x^2-1$ và $2x^2-3$ không còn phân tích tiếp được trong tập số hữu tỉ.\n\n**Phần 2. Trình bày**\n\n$6x^4-11x^2+3$\n\n$=6x^4-9x^2-2x^2+3$\n\n$=3x^2(2x^2-3)-(2x^2-3)$\n\n$=(3x^2-1)(2x^2-3)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đổi biến",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.16@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-7xy+12y^2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^2-7xy+12y^2$.",
+  "dap_an": "$(x-3y)(x-4y)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là tam thức bậc hai đồng bậc theo $x$ và $y$, nên làm như với tam thức một biến: tách hạng tử $-7xy$ thành hai hạng tử mà hệ số có tích bằng tích hai hệ số còn lại.\n\n**Bước 1.** Tính tích $1\\cdot12$ của hệ số của $x^2$ và $y^2$ rồi tìm hai số có tích đó và có tổng bằng $-7$.\n\n**Bước 2.** Tách hạng tử $-7xy$ thành hai hạng tử theo hai số vừa tìm.\n\n**Bước 3.** Nhóm hai cặp hạng tử rồi đặt nhân tử chung để được tích hai nhị thức.\n\n**Phần 2. Trình bày**\n\n$x^2-7xy+12y^2$\n\n$=x^2-3xy-4xy+12y^2$\n\n$=x(x-3y)-4y(x-3y)$\n\n$=(x-3y)(x-4y)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.18@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x^3-12x^2+17x-2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $2x^3-12x^2+17x-2$.",
+  "dap_an": "$(x-2)(2x^2-8x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba có hệ số nguyên không có nhân tử chung, không là hằng đẳng thức; nghiệm nguyên nếu có phải là ước của hệ số tự do $-2$, nên nhẩm nghiệm để biết trước một nhân tử rồi tách hạng tử cho nhân tử đó xuất hiện.\n\n**Bước 1.** Thử các ước của hệ số tự do $-2$, thay $x=2$ vào thì đa thức bằng $0$, vậy đa thức có nhân tử $x-2$.\n\n**Bước 2.** Tách các hạng tử thành từng cặp sao cho cặp nào cũng chia hết cho $x-2$.\n\n**Bước 3.** Đặt nhân tử chung $x-2$ ra ngoài rồi kiểm tra xem tam thức bậc hai còn lại có phân tích tiếp được không.\n\n**Chú ý:** Tam thức $2x^2-8x+1$ không phân tích tiếp được trong tập số hữu tỉ, nên kết quả dừng ở tích hai nhân tử.\n\n**Phần 2. Trình bày**\n\n$2x^3-12x^2+17x-2$\n\n$=2x^3-4x^2-8x^2+16x+x-2$\n\n$=2x^2(x-2)-8x(x-2)+(x-2)$\n\n$=(x-2)(2x^2-8x+1)$\n\nVì $2x^2-8x+1=2\\left[(x-2)^2-\\dfrac{7}{2}\\right]$ và $\\dfrac{7}{2}$ không là bình phương của một số hữu tỉ nên tam thức này không phân tích tiếp được.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.19@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-3x+2$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3-3x+2$.",
+  "dap_an": "$(x-1)^2(x+2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng các hệ số $1-3+2$ bằng $0$ nên $x=1$ là nghiệm, đa thức chứa nhân tử $x-1$; thêm bớt hằng số để xuất hiện $x^3-1$ và đặt nhân tử chung.\n\n**Bước 1.** Cộng các hệ số để nhận ra $x=1$ là nghiệm, suy ra đa thức có nhân tử $x-1$.\n\n**Bước 2.** Tách $2=-1+3$ để nhóm thành $x^3-1$ và $-3x+3$, mỗi nhóm đều chứa nhân tử $x-1$.\n\n**Bước 3.** Đặt nhân tử chung $x-1$ ra ngoài rồi phân tích tiếp tam thức bậc hai còn lại thành tích hai nhị thức.\n\n**Chú ý:** Đa thức còn có nghiệm $x=-2$, nên cũng có thể tách theo nhân tử $x+2$; hai cách cho cùng một kết quả.\n\n**Phần 2. Trình bày**\n\n$x^3-3x+2$\n\n$=x^3-1-3x+3$\n\n$=(x-1)(x^2+x+1)-3(x-1)$\n\n$=(x-1)(x^2+x-2)$\n\n$=(x-1)^2(x+2)$ (vì $x^2+x-2=(x-1)(x+2)$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.20@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3+3x^2+6x+4$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3+3x^2+6x+4$.",
+  "dap_an": "$(x+1)(x^2+2x+4)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng các hệ số của lũy thừa bậc lẻ bằng tổng các hệ số của lũy thừa bậc chẵn nên $x=-1$ là nghiệm, đa thức chứa nhân tử $x+1$; tách hằng số để xuất hiện $x^3+1$ và $3(x+1)^2$.\n\n**Bước 1.** So sánh tổng hệ số bậc lẻ $1+6$ với tổng hệ số bậc chẵn $3+4$ để nhận ra $x=-1$ là nghiệm.\n\n**Bước 2.** Tách hệ số tự do $4=1+3$ để nhóm thành $x^3+1$ và $3x^2+6x+3$, mỗi nhóm đều chứa nhân tử $x+1$.\n\n**Bước 3.** Phân tích $x^3+1$ bằng hằng đẳng thức tổng hai lập phương và $3x^2+6x+3$ bằng bình phương của một tổng.\n\n**Bước 4.** Đặt nhân tử chung $x+1$ ra ngoài rồi rút gọn biểu thức trong ngoặc.\n\n**Phần 2. Trình bày**\n\n$x^3+3x^2+6x+4$\n\n$=x^3+1+3x^2+6x+3$\n\n$=(x+1)(x^2-x+1)+3(x+1)^2$\n\n$=(x+1)(x^2-x+1+3x+3)$\n\n$=(x+1)(x^2+2x+4)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.21@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3+9x^2+26x+24$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^3+9x^2+26x+24$.",
+  "dap_an": "$(x+2)(x+3)(x+4)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba hạng tử đầu $x^3+9x^2+27x$ gợi lập phương của $x+3$; tách $26x=27x-x$ và $24=27-3$ thì đa thức thành $(x+3)^3-(x+3)$, chỉ phụ thuộc vào $x+3$.\n\n**Bước 1.** Nhận ra các hệ số $9$ và $27$ giống khai triển $(x+3)^3$ nên tách $26x$ và $24$ để ghép đủ bốn hạng tử của lập phương.\n\n**Bước 2.** Viết đa thức dưới dạng $(x+3)^3-(x+3)$, tức là hiệu của một lũy thừa và chính cơ số của nó.\n\n**Bước 3.** Đặt nhân tử chung $x+3$ rồi phân tích biểu thức còn lại bằng hằng đẳng thức hiệu hai bình phương.\n\n**Phần 2. Trình bày**\n\n$x^3+9x^2+26x+24=x^3+9x^2+27x+27-x-3$\n\n$=(x+3)^3-(x+3)$\n\n$=(x+3)[(x+3)^2-1]$\n\n$=(x+3)(x+2)(x+4)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đổi biến",
+   "hằng đẳng thức lập phương của tổng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.23@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $3x^3-14x^2+4x+3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $3x^3-14x^2+4x+3$.",
+  "dap_an": "$(3x+1)(x^2-5x+3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hệ số nguyên bậc ba không có nghiệm nguyên nên tìm nghiệm hữu tỉ $\\dfrac{p}{q}$ với $p$ là ước của $3$ và $q$ là ước dương của $3$; có nghiệm thì biết trước một nhân tử để tách hạng tử.\n\n**Bước 1.** Liệt kê các nghiệm hữu tỉ có thể có $\\pm1$, $\\pm3$, $\\pm\\dfrac{1}{3}$ rồi thử, thấy $x=-\\dfrac{1}{3}$ làm đa thức bằng $0$.\n\n**Bước 2.** Suy ra đa thức có nhân tử $3x+1$, rồi tách các hạng tử thành từng cặp cùng chia hết cho $3x+1$.\n\n**Bước 3.** Đặt nhân tử chung $3x+1$ ra ngoài và kiểm tra tam thức bậc hai còn lại.\n\n**Phần 2. Trình bày**\n\n$3x^3-14x^2+4x+3$\n\n$=3x^3+x^2-15x^2-5x+9x+3$\n\n$=x^2(3x+1)-5x(3x+1)+3(3x+1)$\n\n$=(3x+1)(x^2-5x+3)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm hữu tỉ",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.26@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(1+x^2)^2-4x(1-x^2)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $(1+x^2)^2-4x(1-x^2)$.",
+  "dap_an": "$(x^2+2x-1)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $(1+x^2)^2=(1-x^2)^2+4x^2$ nên ba hạng tử $(1-x^2)^2$, $4x^2=(2x)^2$ và $-4x(1-x^2)$ lập thành khai triển bình phương của một hiệu hai biểu thức $1-x^2$ và $2x$.\n\n**Bước 1.** Chứng tỏ $(1+x^2)^2-(1-x^2)^2=4x^2$ để viết lại hạng tử đầu thành tổng của $(1-x^2)^2$ và $4x^2$.\n\n**Bước 2.** Nhận ra $-4x(1-x^2)$ là hạng tử gấp đôi tích của $1-x^2$ và $2x$ với dấu trừ.\n\n**Bước 3.** Viết ba hạng tử thành bình phương của một hiệu rồi rút gọn biểu thức trong ngoặc vuông.\n\n**Phần 2. Trình bày**\n\n$(1+x^2)^2-4x(1-x^2)$\n\n$=(1-x^2)^2+4x^2-4x(1-x^2)$\n\n$=(1-x^2)^2-2\\cdot2x(1-x^2)+(2x)^2$\n\n$=[(1-x^2)-2x]^2$\n\n$=(x^2+2x-1)^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hằng đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.27@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4+6x^3+11x^2+6x+1$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^4+6x^3+11x^2+6x+1$.",
+  "dap_an": "$(x^2+3x+1)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hạng tử đầu $x^4=(x^2)^2$ và ba hạng tử cuối gợi $(3x+1)^2=9x^2+6x+1$; tách $11x^2=2x^2+9x^2$ thì $6x^3+2x^2=2x^2(3x+1)$ chính là hai lần tích của $x^2$ và $3x+1$.\n\n**Bước 1.** Nhận thấy $x^4$ là bình phương của $x^2$ và $9x^2+6x+1$ là bình phương của $3x+1$ nên đa thức có thể là bình phương của một tổng.\n\n**Bước 2.** Tách $11x^2=2x^2+9x^2$ để ghép $6x^3+2x^2$ thành $2x^2(3x+1)$ và $9x^2+6x+1$ thành $(3x+1)^2$.\n\n**Bước 3.** Viết đa thức dưới dạng $A^2+2AB+B^2$ với $A=x^2$ và $B=3x+1$ rồi thu về bình phương của một tổng.\n\n**Chú ý:** Có thể kiểm tra bằng cách khai triển lại $(x^2+3x+1)^2$ để chắc kết quả.\n\n**Phần 2. Trình bày**\n\n$x^4+6x^3+11x^2+6x+1$\n\n$=x^4+(6x^3+2x^2)+(9x^2+6x+1)$\n\n$=x^4+2x^2(3x+1)+(3x+1)^2$\n\n$=(x^2+3x+1)^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử",
+   "bình phương của tổng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.28@p35",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm số nguyên $a$ sao cho đa thức $(x+a)(x-5)+2$ phân tích được thành $(x+b)(x+c)$ với $b$, $c$ là các số nguyên.",
+  "noi_dung_sach": "Tìm số nguyên $a$ sao cho đa thức $(x+a)(x-5)+2$ phân tích được thành $(x+b)(x+c)$ với $b$, $c$ là các số nguyên.",
+  "dap_an": "$a=-2$ hoặc $a=-8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đẳng thức $(x+a)(x-5)+2=(x+b)(x+c)$ đúng với mọi $x$, nên thay $x=5$ làm mất $a$ và cho ngay tích hai số nguyên $(5+b)(5+c)=2$; số $2$ chỉ có hai cách viết thành tích hai số nguyên.\n\n**Bước 1.** Thay $x=5$ vào hai vế để được tích $(5+b)(5+c)$ bằng một số nguyên cụ thể, nhờ đó chỉ còn hữu hạn khả năng cho $b$ và $c$.\n\n**Bước 2.** Liệt kê các cặp ước nguyên của $2$ (vai trò của $b$ và $c$ như nhau nên mỗi cặp chỉ cần xét một lần) để tìm $b$ và $c$.\n\n**Bước 3.** Với mỗi cặp $b,c$, thay $x=-b$ (làm vế phải bằng $0$) vào đẳng thức ban đầu để tìm $a$.\n\n**Bước 4.** Thử lại bằng cách khai triển, vì các bước trên mới chỉ cho điều kiện cần.\n\n**Chú ý:** Phải xét cả cặp ước âm $(-1)\\cdot(-2)$; bỏ sót cặp này là mất một giá trị của $a$.\n\n**Phần 2. Trình bày**\n\nVới mọi $x$: $(x+a)(x-5)+2=(x+b)(x+c)$ (1), trong đó $b$, $c$ là các số nguyên.\n\nCho $x=5$: $2=(5+b)(5+c)$.\n\nSố $2$ là tích của hai số nguyên chỉ khi $\\{5+b;5+c\\}=\\{1;2\\}$ hoặc $\\{5+b;5+c\\}=\\{-1;-2\\}$.\n\nTrường hợp 1: $5+b=1$, $5+c=2$, suy ra $b=-4$, $c=-3$.\n\nKhi đó (1) trở thành $(x+a)(x-5)+2=(x-4)(x-3)$.\n\nCho $x=4$: $-(4+a)+2=0\\Rightarrow a=-2$.\n\nThử lại: $(x-2)(x-5)+2=x^2-7x+12=(x-3)(x-4)$.\n\nTrường hợp 2: $5+b=-1$, $5+c=-2$, suy ra $b=-6$, $c=-7$.\n\nKhi đó (1) trở thành $(x+a)(x-5)+2=(x-6)(x-7)$.\n\nCho $x=6$: $(6+a)+2=0\\Rightarrow a=-8$.\n\nThử lại: $(x-8)(x-5)+2=x^2-13x+42=(x-6)(x-7)$.\n\nVậy $a=-2$ hoặc $a=-8$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ số bất định",
+   "giá trị riêng",
+   "tích hai số nguyên bằng 2"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 35): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.29@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm số nguyên $m$ sao cho $(x+m)(x+5)+3$ phân tích được thành $(x+a)(x+b)$ với $a$, $b$ là các số nguyên.",
+  "noi_dung_sach": "Tìm số nguyên $m$ sao cho $(x+m)(x+5)+3$ phân tích được thành $(x+a)(x+b)$ với $a$, $b$ là các số nguyên.",
+  "dap_an": "$m=9$ hoặc $m=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đẳng thức $(x+m)(x+5)+3=(x+a)(x+b)$ đúng với mọi $x$, nên thay $x=-5$ làm mất $m$ và cho tích hai số nguyên $(a-5)(b-5)=3$; số $3$ chỉ có hai cách viết thành tích hai số nguyên.\n\n**Bước 1.** Thay $x=-5$ vào hai vế để được tích $(a-5)(b-5)$ bằng một số nguyên cụ thể.\n\n**Bước 2.** Liệt kê các cặp ước nguyên của $3$ (vai trò của $a$ và $b$ như nhau) để tìm $a$ và $b$.\n\n**Bước 3.** Với mỗi cặp $a,b$, thay $x=-a$ (làm vế phải bằng $0$) vào đẳng thức ban đầu để tìm $m$.\n\n**Bước 4.** Thử lại bằng cách khai triển hai vế với giá trị $m$ vừa tìm.\n\n**Chú ý:** Phải xét cả hai cặp ước dương và âm của $3$ thì mới đủ các giá trị của $m$.\n\n**Phần 2. Trình bày**\n\nVới mọi $x$: $(x+m)(x+5)+3=(x+a)(x+b)$ (1), trong đó $a$, $b$ là các số nguyên.\n\nCho $x=-5$: $3=(a-5)(b-5)$.\n\nSố $3$ là tích của hai số nguyên chỉ khi $\\{a-5;b-5\\}=\\{1;3\\}$ hoặc $\\{a-5;b-5\\}=\\{-1;-3\\}$.\n\nTrường hợp 1: $a-5=1$, $b-5=3$, suy ra $a=6$, $b=8$.\n\nKhi đó (1) trở thành $(x+m)(x+5)+3=(x+6)(x+8)$.\n\nCho $x=-6$: $-(m-6)+3=0\\Rightarrow m=9$.\n\nThử lại: $(x+9)(x+5)+3=x^2+14x+48=(x+6)(x+8)$.\n\nTrường hợp 2: $a-5=-1$, $b-5=-3$, suy ra $a=4$, $b=2$.\n\nKhi đó (1) trở thành $(x+m)(x+5)+3=(x+4)(x+2)$.\n\nCho $x=-4$: $(m-4)+3=0\\Rightarrow m=1$.\n\nThử lại: $(x+1)(x+5)+3=x^2+6x+8=(x+2)(x+4)$.\n\nVậy $m=9$ hoặc $m=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ số bất định",
+   "giá trị riêng",
+   "tích hai số nguyên bằng 3"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.30@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $3x^2-8x+4$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $3x^2-8x+4$.",
+  "dap_an": "$(3x-2)(x-2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam thức $3x^2-8x+4$ không có nhân tử chung, không là hằng đẳng thức, nên phải tách hạng tử bậc nhất thành hai hạng tử sao cho nhóm lại có nhân tử chung.\n\n**Bước 1.** Tính tích $a\\cdot c$ của hệ số bậc hai và hệ số tự do để biết hai số cần tìm có tích bằng bao nhiêu.\n\n**Bước 2.** Tìm hai số có tích đó và có tổng bằng hệ số bậc nhất $-8$, rồi tách hạng tử $-8x$ thành hai hạng tử tương ứng.\n\n**Bước 3.** Nhóm hai hạng tử đầu và hai hạng tử sau để đặt nhân tử chung $x-2$ ra ngoài.\n\n**Chú ý:** Phải kiểm tra đúng cả tích lẫn tổng của hai số; tích dương mà tổng âm nên hai số cùng âm.\n\n**Phần 2. Trình bày**\n\n$3x^2-8x+4$\n\n$=3x^2-6x-2x+4$\n\n$=3x(x-2)-2(x-2)$\n\n$=(3x-2)(x-2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.31@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $3x^3-7x^2+17x-5$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $3x^3-7x^2+17x-5$.",
+  "dap_an": "$(3x-1)(x^2-2x+5)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba không nhóm được và không có nghiệm nguyên; nghiệm hữu tỉ nếu có phải có dạng $\\dfrac{p}{q}$ với $p$ là ước của hệ số tự do $-5$ và $q$ là ước dương của hệ số cao nhất $3$, nên chỉ cần thử một số ít giá trị để tìm nhân tử bậc nhất.\n\n**Bước 1.** Liệt kê các nghiệm hữu tỉ có thể có là $\\pm1$, $\\pm5$, $\\pm\\dfrac{1}{3}$, $\\pm\\dfrac{5}{3}$ rồi thử lần lượt vào đa thức.\n\n**Bước 2.** Tìm được một giá trị làm đa thức bằng $0$, từ đó suy ra đa thức có một nhân tử bậc nhất tương ứng.\n\n**Bước 3.** Tách các hạng tử thành từng nhóm sao cho mỗi nhóm đều chứa nhân tử đó, rồi đặt nó làm nhân tử chung.\n\n**Chú ý:** Hệ số cao nhất khác $1$ thì nghiệm có thể là phân số; chỉ thử $\\pm1$, $\\pm5$ rồi kết luận đa thức không phân tích được là sai.\n\n**Phần 2. Trình bày**\n\nNghiệm hữu tỉ của đa thức (nếu có) thuộc $\\left\\{\\pm1;\\pm5;\\pm\\dfrac{1}{3};\\pm\\dfrac{5}{3}\\right\\}$.\n\nThử $x=\\dfrac{1}{3}$: $3\\cdot\\dfrac{1}{27}-7\\cdot\\dfrac{1}{9}+\\dfrac{17}{3}-5=0$, nên đa thức chứa nhân tử $3x-1$.\n\n$3x^3-7x^2+17x-5=3x^3-x^2-6x^2+2x+15x-5$\n\n$=x^2(3x-1)-2x(3x-1)+5(3x-1)$\n\n$=(3x-1)(x^2-2x+5)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nghiệm hữu tỉ $\\dfrac{p}{q}$",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.32@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4x^4+81$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $4x^4+81$.",
+  "dap_an": "$(2x^2+6x+9)(2x^2-6x+9)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $4x^4+81=(2x^2)^2+9^2$ là tổng của hai bình phương nên chưa phân tích được ngay; thêm và bớt gấp đôi tích hai cơ số để biến nó thành hiệu hai bình phương.\n\n**Bước 1.** Nhận ra đa thức là tổng của $(2x^2)^2$ và $9^2$, rồi tính gấp đôi tích hai cơ số $2x^2$ và $9$.\n\n**Bước 2.** Thêm và bớt hạng tử vừa tính để ba hạng tử đầu tạo thành bình phương của một tổng.\n\n**Bước 3.** Dùng hằng đẳng thức hiệu hai bình phương để phân tích thành tích hai tam thức bậc hai.\n\n**Chú ý:** Tổng hai bình phương nói chung không phân tích được; ở đây làm được vì thêm bớt tạo ra một hiệu hai bình phương.\n\n**Phần 2. Trình bày**\n\n$4x^4+81=4x^4+36x^2+81-36x^2$\n\n$=(2x^2+9)^2-(6x)^2$\n\n$=(2x^2+9+6x)(2x^2+9-6x)$\n\n$=(2x^2+6x+9)(2x^2-6x+9)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.33@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $64x^4+y^4$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $64x^4+y^4$.",
+  "dap_an": "$(8x^2+y^2+4xy)(8x^2+y^2-4xy)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $64x^4+y^4=(8x^2)^2+(y^2)^2$ là tổng hai bình phương; thêm và bớt gấp đôi tích hai cơ số để tạo ra hiệu hai bình phương.\n\n**Bước 1.** Nhận ra đa thức là tổng của $(8x^2)^2$ và $(y^2)^2$, rồi tính gấp đôi tích hai cơ số $8x^2$ và $y^2$.\n\n**Bước 2.** Thêm và bớt hạng tử vừa tính để ba hạng tử đầu tạo thành bình phương của $8x^2+y^2$.\n\n**Bước 3.** Dùng hằng đẳng thức hiệu hai bình phương để viết đa thức thành tích hai nhân tử.\n\n**Phần 2. Trình bày**\n\n$64x^4+y^4=64x^4+16x^2y^2+y^4-16x^2y^2$\n\n$=(8x^2+y^2)^2-(4xy)^2$\n\n$=(8x^2+y^2+4xy)(8x^2+y^2-4xy)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.34@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^5+x-1$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^5+x-1$.",
+  "dap_an": "$(x^2-x+1)(x^3+x^2-1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức $x^5+x-1$ không có nghiệm $\\pm1$ và không nhóm được; thêm và bớt $x^2$ để $x^5+x^2=x^2(x^3+1)$ và $-x^2+x-1=-(x^2-x+1)$ cùng chứa nhân tử $x^2-x+1$.\n\n**Bước 1.** Kiểm tra $x=\\pm1$ không là nghiệm và không có cách nhóm trực tiếp, nên cần thêm bớt hạng tử để nối $x^5$ với $x$.\n\n**Bước 2.** Thêm và bớt $x^2$ rồi nhóm thành $x^2(x^3+1)$ và $-(x^2-x+1)$.\n\n**Bước 3.** Phân tích $x^3+1$ bằng hằng đẳng thức tổng hai lập phương để lộ nhân tử $x^2-x+1$, rồi đặt nó làm nhân tử chung.\n\n**Phần 2. Trình bày**\n\n$x^5+x-1=x^5+x^2-x^2+x-1$\n\n$=x^2(x^3+1)-(x^2-x+1)$\n\n$=x^2(x+1)(x^2-x+1)-(x^2-x+1)$\n\n$=(x^2-x+1)[x^2(x+1)-1]$\n\n$=(x^2-x+1)(x^3+x^2-1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "tổng hai lập phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.36@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010203",
+  "nhom_soan": "T18T010203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4-6x^3+12x^2-14x+3$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $x^4-6x^3+12x^2-14x+3$.",
+  "dap_an": "$(x^2-2x+3)(x^2-4x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc bốn với hệ số tự do $3$ không có nghiệm hữu tỉ nên không có nhân tử bậc nhất; nếu phân tích được thì chỉ có thể là tích hai tam thức bậc hai hệ số nguyên, và các hệ số tìm bằng cách đồng nhất.\n\n**Bước 1.** Thử các ước của hệ số tự do là $\\pm1$ và $\\pm3$ để thấy không số nào là nghiệm, từ đó loại khả năng có nhân tử bậc nhất.\n\n**Bước 2.** Viết đa thức dưới dạng $(x^2+ax+b)(x^2+cx+d)$, khai triển rồi đồng nhất hệ số để lập hệ phương trình theo $a,b,c,d$.\n\n**Bước 3.** Xét các cặp số nguyên có tích $bd=3$ và giải hệ ứng với từng cặp để tìm đủ bốn hệ số.\n\n**Bước 4.** Từ các hệ số tìm được, tách các hạng tử thành từng nhóm cùng chứa một tam thức bậc hai chung rồi đặt nó làm nhân tử chung.\n\n**Chú ý:** Có thể thử lại bằng cách nhân hai tam thức tìm được để so với đa thức đã cho.\n\n**Phần 2. Trình bày**\n\n$x^4-6x^3+12x^2-14x+3$\n\n$=x^4-4x^3+x^2-2x^3+8x^2-2x+3x^2-12x+3$\n\n$=x^2(x^2-4x+1)-2x(x^2-4x+1)+3(x^2-4x+1)$\n\n$=(x^2-2x+3)(x^2-4x+1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ số bất định",
+   "nghiệm hữu tỉ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.37@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $a+b+c=0$. Rút gọn biểu thức: $M=a^3+b^3+c(a^2+b^2)-abc$.",
+  "noi_dung_sach": "Cho $a+b+c=0$. Rút gọn biểu thức: $M=a^3+b^3+c(a^2+b^2)-abc$.",
+  "dap_an": "$0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $a+b+c=0$ cho $a+c=-b$ và $b+c=-a$, nên ta nhóm các hạng tử của $M$ để xuất hiện $a+c$ và $b+c$ rồi thay vào.\n\n**Bước 1.** Khai triển $c(a^2+b^2)$ rồi nhóm $a^3+a^2c$ và $b^3+b^2c$ để đặt nhân tử chung.\n\n**Bước 2.** Dùng giả thiết $a+b+c=0$ để thay $a+c$ và $b+c$ bằng các biểu thức đơn giản hơn.\n\n**Bước 3.** Đặt nhân tử chung $-ab$ để lộ lại thừa số $a+b+c$ và kết luận giá trị của $M$.\n\n**Phần 2. Trình bày**\n\n$M=a^3+b^3+a^2c+b^2c-abc$\n\n$=a^2(a+c)+b^2(b+c)-abc$\n\nVì $a+b+c=0$ nên $a+c=-b$ và $b+c=-a$, do đó\n\n$M=-a^2b-ab^2-abc=-ab(a+b+c)=0$\n\nVậy $M=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thay điều kiện $a+b+c=0$",
+   "nhóm hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.38@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $(x-y)^3+(y-z)^3+(z-x)^3$.",
+  "noi_dung_sach": "Phân tích đa thức sau thành nhân tử: $(x-y)^3+(y-z)^3+(z-x)^3$.",
+  "dap_an": "$3(x-y)(y-z)(z-x)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba hiệu $x-y$, $y-z$, $z-x$ có tổng bằng $0$, và với ba số có tổng bằng $0$ thì $a^3+b^3+c^3=3abc$, theo đẳng thức $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.\n\n**Bước 1.** Đặt ba hiệu thành ba biến mới $a$, $b$, $c$ và kiểm tra rằng tổng của chúng bằng $0$.\n\n**Bước 2.** Dùng đẳng thức mở rộng nói trên để suy ra tổng ba lập phương bằng $3abc$ khi $a+b+c=0$.\n\n**Bước 3.** Thay ba biến mới trở lại bằng các hiệu để viết đa thức thành tích ba nhân tử.\n\n**Phần 2. Trình bày**\n\nĐặt $a=x-y$, $b=y-z$, $c=z-x$ thì $a+b+c=0$.\n\nTa có $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=0$, nên $a^3+b^3+c^3=3abc$.\n\nVậy $(x-y)^3+(y-z)^3+(z-x)^3=3(x-y)(y-z)(z-x)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đẳng thức $a^3+b^3+c^3-3abc$",
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.39@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $8(x+y+z)^3-(x+y)^3-(y+z)^3-(z+x)^3$.",
+  "noi_dung_sach": "Phân tích đa thức sau thành nhân tử: $8(x+y+z)^3-(x+y)^3-(y+z)^3-(z+x)^3$.",
+  "dap_an": "$3(x+2y+z)(x+y+2z)(2x+y+z)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu đặt $a=x+y$, $b=y+z$, $c=z+x$ thì $a+b+c=2(x+y+z)$, nên đa thức chính là $(a+b+c)^3-a^3-b^3-c^3$, một dạng đặc biệt đã có đẳng thức phân tích sẵn.\n\n**Bước 1.** Đặt ba tổng đôi một thành $a$, $b$, $c$ rồi tính $a+b+c$ để nhận ra $8(x+y+z)^3=(a+b+c)^3$.\n\n**Bước 2.** Dùng đẳng thức $(a+b+c)^3-a^3-b^3-c^3=3(a+b)(b+c)(c+a)$ (vế trái triệt tiêu khi $a=-b$, $b=-c$ hoặc $c=-a$, và hệ số của $a^2b$ là $3$).\n\n**Bước 3.** Tính $a+b$, $b+c$, $c+a$ theo $x,y,z$ rồi thay vào kết quả.\n\n**Phần 2. Trình bày**\n\nĐặt $a=x+y$, $b=y+z$, $c=z+x$ thì $a+b+c=2(x+y+z)$, nên\n\n$8(x+y+z)^3-(x+y)^3-(y+z)^3-(z+x)^3=(a+b+c)^3-a^3-b^3-c^3$\n\n$=3(a+b)(b+c)(c+a)$\n\nVới $a+b=x+2y+z$, $b+c=x+y+2z$, $c+a=2x+y+z$, ta được\n\n$=3(x+2y+z)(x+y+2z)(2x+y+z)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đẳng thức $(a+b+c)^3-a^3-b^3-c^3$",
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.41a@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $ab(a+b)-bc(b+c)+ac(a-c)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $ab(a+b)-bc(b+c)+ac(a-c)$.",
+  "dap_an": "$(a+b)(b+c)(a-c)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức có ba biến nhưng chỉ bậc hai theo $a$; xếp theo luỹ thừa của $a$ thì cả ba hệ số đều có nhân tử $b+c$, nên đặt nhân tử chung này ra ngoài.\n\n**Bước 1.** Khai triển các tích rồi xếp các hạng tử theo luỹ thừa giảm dần của $a$.\n\n**Bước 2.** Nhóm các hệ số của $a^2$, $a$ và hạng tử không chứa $a$ để đặt nhân tử chung $b+c$.\n\n**Bước 3.** Phân tích tam thức bậc hai theo $a$ còn lại bằng cách tách hạng tử bậc nhất.\n\n**Phần 2. Trình bày**\n\n$ab(a+b)-bc(b+c)+ac(a-c)$\n\n$=a^2b+ab^2-b^2c-bc^2+a^2c-ac^2$\n\n$=a^2(b+c)+a(b^2-c^2)-bc(b+c)$\n\n$=(b+c)[a^2+a(b-c)-bc]$\n\n$=(b+c)(a+b)(a-c)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử theo luỹ thừa của một biến"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.41b@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a(b^2+c^2)+b(c^2+a^2)+c(a^2+b^2)+2abc$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a(b^2+c^2)+b(c^2+a^2)+c(a^2+b^2)+2abc$.",
+  "dap_an": "$(a+b)(b+c)(c+a)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi khai triển, các hạng tử có thể nhóm sao cho mỗi nhóm đều chứa $a+b$, nên đặt $a+b$ làm nhân tử chung rồi phân tích tiếp phần còn lại.\n\n**Bước 1.** Khai triển rồi tách hạng tử $2abc$ để nhóm các hạng tử thành ba nhóm có nhân tử chung $a+b$.\n\n**Bước 2.** Đặt $a+b$ ra ngoài, được một biểu thức bốn hạng tử trong ngoặc.\n\n**Bước 3.** Nhóm bốn hạng tử đó thành hai cặp để phân tích tiếp thành tích hai nhị thức.\n\n**Phần 2. Trình bày**\n\n$a(b^2+c^2)+b(c^2+a^2)+c(a^2+b^2)+2abc$\n\n$=ab^2+a^2b+ac^2+bc^2+a^2c+b^2c+2abc$\n\n$=ab(a+b)+c^2(a+b)+c(a+b)^2$\n\n$=(a+b)(ab+c^2+ac+bc)$\n\n$=(a+b)[a(b+c)+c(b+c)]$\n\n$=(a+b)(b+c)(c+a)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.41e@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010204",
+  "nhom_soan": "T18T010204",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^3(c-b^2)+b^3(a-c^2)+c^3(b-a^2)+abc(abc-1)$.",
+  "noi_dung_sach": "Phân tích đa thức thành nhân tử: $a^3(c-b^2)+b^3(a-c^2)+c^3(b-a^2)+abc(abc-1)$.",
+  "dap_an": "$(a^2-b)(b^2-c)(c^2-a)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba theo $a$ mà các hệ số của các luỹ thừa của $a$ đều chứa nhân tử $b^2-c$; xếp theo luỹ thừa của $a$, đặt $b^2-c$ chung thì phần còn lại lại nhóm được.\n\n**Bước 1.** Khai triển tất cả các tích để có tám hạng tử rồi xếp theo luỹ thừa của $a$.\n\n**Bước 2.** Nhận ra mỗi cặp hạng tử cùng luỹ thừa của $a$ đều có nhân tử $b^2-c$ rồi đặt nhân tử chung này ra ngoài.\n\n**Bước 3.** Nhóm phần còn lại trong ngoặc theo $a^2-b$ để đặt nhân tử chung lần nữa.\n\n**Chú ý:** Có thể thử nhanh: thay $b=a^2$ thì đa thức bằng $0$, vậy kết quả phải chứa nhân tử $a^2-b$.\n\n**Phần 2. Trình bày**\n\n$a^3(c-b^2)+b^3(a-c^2)+c^3(b-a^2)+abc(abc-1)$\n\n$=a^3c-a^3b^2+ab^3-b^3c^2+bc^3-a^2c^3+a^2b^2c^2-abc$\n\n$=-a^3(b^2-c)+a^2c^2(b^2-c)+ab(b^2-c)-bc^2(b^2-c)$\n\n$=(b^2-c)(-a^3+a^2c^2+ab-bc^2)$\n\n$=(b^2-c)[-a(a^2-b)+c^2(a^2-b)]$\n\n$=(b^2-c)(a^2-b)(c^2-a)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử theo luỹ thừa của một biến"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.42@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $a^3+b^3+c^3=3abc$ và $a$, $b$, $c$ là các số dương thì $a=b=c$.",
+  "noi_dung_sach": "Chứng minh rằng nếu $a^3+b^3+c^3=3abc$ và $a$, $b$, $c$ là các số dương thì $a=b=c$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu $a^3+b^3+c^3-3abc$ có đẳng thức phân tích thành $(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$; ba số dương nên thừa số thứ nhất khác $0$, còn thừa số thứ hai viết được thành tổng các bình phương.\n\n**Bước 1.** Chuyển $3abc$ sang vế trái và dùng đẳng thức mở rộng để viết vế trái thành tích hai thừa số.\n\n**Bước 2.** Dùng điều kiện $a$, $b$, $c$ dương để loại thừa số $a+b+c$, chỉ còn thừa số thứ hai bằng $0$.\n\n**Bước 3.** Nhân hai vế với $2$ rồi viết thừa số đó thành tổng ba bình phương để suy ra ba số bằng nhau.\n\n**Phần 2. Trình bày**\n\nTừ $a^3+b^3+c^3=3abc$ ta có $a^3+b^3+c^3-3abc=0$, tức\n\n$(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=0$\n\nVì $a$, $b$, $c$ dương nên $a+b+c>0$, suy ra\n\n$a^2+b^2+c^2-ab-bc-ca=0$\n\n$\\Rightarrow(a-b)^2+(b-c)^2+(c-a)^2=0$\n\n$\\Rightarrow a-b=b-c=c-a=0$\n\nVậy $a=b=c$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đẳng thức $a^3+b^3+c^3-3abc$",
+   "tổng các bình phương bằng 0"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.44@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $m=a+b+c$ thì $(am+bc)(bm+ac)(cm+ab)=(a+b)^2(b+c)^2(c+a)^2$.",
+  "noi_dung_sach": "Chứng minh rằng nếu $m=a+b+c$ thì $(am+bc)(bm+ac)(cm+ab)=(a+b)^2(b+c)^2(c+a)^2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $m=a+b+c$ vào từng thừa số ở vế trái thì mỗi thừa số đều phân tích được thành tích hai nhị thức, và các nhị thức xuất hiện đúng hai lần mỗi loại nên tích là một tích các bình phương.\n\n**Bước 1.** Thay $m=a+b+c$ vào $am+bc$ rồi nhóm hạng tử để phân tích thành tích hai nhị thức.\n\n**Bước 2.** Làm tương tự với $bm+ca$ và $cm+ab$ nhờ tính đối xứng của ba thừa số.\n\n**Bước 3.** Nhân ba kết quả và gộp các nhị thức giống nhau thành bình phương để so với vế phải.\n\n**Phần 2. Trình bày**\n\nVì $m=a+b+c$ nên\n\n$am+bc=a(a+b+c)+bc=a(a+b)+(ac+bc)=a(a+b)+c(a+b)=(a+b)(a+c)$\n\n$bm+ca=b(a+b+c)+ca=b(a+b)+c(a+b)=(a+b)(b+c)$\n\n$cm+ab=c(a+b+c)+ab=c(a+c)+b(a+c)=(a+c)(b+c)$\n\nNhân ba đẳng thức theo vế:\n\n$(am+bc)(bm+ac)(cm+ab)=(a+b)(a+c)\\cdot(a+b)(b+c)\\cdot(a+c)(b+c)$\n\n$=(a+b)^2(b+c)^2(c+a)^2$\n\nVậy $(am+bc)(bm+ac)(cm+ab)=(a+b)^2(b+c)^2(c+a)^2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 36, đề bài tập 44 §2: vế) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.45@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a^2+b^2=1$, $c^2+d^2=1$, $ac+bd=0$. Chứng minh rằng $ab+cd=0$.",
+  "noi_dung_sach": "Cho $a^2+b^2=1$, $c^2+d^2=1$, $ac+bd=0$. Chứng minh rằng $ab+cd=0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân $ab$ và $cd$ với $1$ rồi thay $1$ bằng các tổng bình phương đã cho; biểu thức nhận được phân tích thành tích có thừa số $ac+bd$, chính là điều kiện bằng $0$.\n\n**Bước 1.** Viết $ab+cd=ab\\cdot1+cd\\cdot1$ rồi thay $1$ lần lượt bằng $c^2+d^2$ và $a^2+b^2$.\n\n**Bước 2.** Khai triển rồi nhóm các hạng tử để phân tích thành nhân tử, chú ý tìm thừa số $ac+bd$.\n\n**Bước 3.** Dùng giả thiết $ac+bd=0$ để kết luận giá trị của biểu thức.\n\n**Phần 2. Trình bày**\n\nVì $a^2+b^2=1$ và $c^2+d^2=1$ nên\n\n$ab+cd=ab(c^2+d^2)+cd(a^2+b^2)$\n\n$=abc^2+abd^2+a^2cd+b^2cd$\n\n$=ac(bc+ad)+bd(ad+bc)$\n\n$=(bc+ad)(ac+bd)$\n\nVì $ac+bd=0$ nên $ab+cd=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhân với $1$ thay bằng tổng bình phương",
+   "phân tích nhân tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.46@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân số $\\dfrac{19\\ldots9}{99\\ldots95}$ với $n$ chữ số $9$ ở tử và $n$ chữ số $9$ ở mẫu ($n$ là số tự nhiên).",
+  "noi_dung_sach": "Rút gọn phân số $\\dfrac{19\\ldots9}{99\\ldots95}$ với $n$ chữ số $9$ ở tử và $n$ chữ số $9$ ở mẫu ($n$ là số tự nhiên).",
+  "dap_an": "$\\dfrac{1}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều là các số gồm toàn chữ số $9$ ở cuối, nên viết được bằng hiệu của một luỹ thừa của $10$ với một số nhỏ; sau đó mẫu đặt được nhân tử chung để lộ biểu thức giống hệt tử.\n\n**Bước 1.** Viết tử bằng cách lấy $2\\cdot10^n$ (số $2$ theo sau $n$ chữ số $0$) trừ đi $1$.\n\n**Bước 2.** Viết mẫu bằng cách lấy $10^{n+1}$ (số $1$ theo sau $n+1$ chữ số $0$) trừ đi $5$.\n\n**Bước 3.** Đặt nhân tử chung ở mẫu để xuất hiện biểu thức đúng bằng tử rồi rút gọn.\n\n**Chú ý:** Kiểm tra nhanh với $n=1$: $\\dfrac{19}{95}=\\dfrac{1}{5}$.\n\n**Phần 2. Trình bày**\n\nTa có $19\\ldots9=2\\cdot10^n-1$ ($n$ chữ số $9$ sau chữ số $1$) và $99\\ldots95=10^{n+1}-5$ ($n$ chữ số $9$ trước chữ số $5$).\n\n$\\dfrac{19\\ldots9}{99\\ldots95}=\\dfrac{2\\cdot10^n-1}{10^{n+1}-5}$\n\n$=\\dfrac{2\\cdot10^n-1}{5(2\\cdot10^n-1)}$\n\n$=\\dfrac{1}{5}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "biểu diễn qua luỹ thừa của $10$",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.47@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính số trị của phân thức sau bằng cách nhanh nhất: $\\dfrac{a^3-4a^2-a+4}{a^3-7a^2+14a-8}$ với $a=102$.",
+  "noi_dung_sach": "Tính số trị của phân thức sau bằng cách nhanh nhất: $\\dfrac{a^3-4a^2-a+4}{a^3-7a^2+14a-8}$ với $a=102$.",
+  "dap_an": "$\\dfrac{103}{100}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay thẳng $a=102$ vào phân thức thì phải tính các luỹ thừa rất lớn; phân tích cả tử và mẫu thành nhân tử rồi rút gọn trước, sau đó mới thay số.\n\n**Bước 1.** Phân tích tử thành nhân tử bằng cách nhóm $a^3-a$ với $-4a^2+4$ để đặt nhân tử chung $a^2-1$.\n\n**Bước 2.** Phân tích mẫu (bậc ba) bằng cách nhẩm nghiệm $a=2$, rồi tách các hạng tử để có nhân tử chung $a-2$.\n\n**Bước 3.** Rút gọn các nhân tử chung của tử và mẫu, nhớ điều kiện để mẫu khác $0$.\n\n**Bước 4.** Thay $a=102$ vào phân thức đã rút gọn và tính giá trị.\n\n**Chú ý:** Phải kiểm tra $a=102$ không làm mẫu ban đầu bằng $0$ thì mới được thay vào phân thức sau khi rút gọn.\n\n**Phần 2. Trình bày**\n\n$a^3-4a^2-a+4=a(a^2-1)-4(a^2-1)=(a^2-1)(a-4)=(a+1)(a-1)(a-4)$\n\n$a^3-7a^2+14a-8=(a^3-8)-7a(a-2)$\n\n$=(a-2)(a^2+2a+4)-7a(a-2)$\n\n$=(a-2)(a^2-5a+4)=(a-2)(a-1)(a-4)$\n\nVới $a=102$ mẫu khác $0$ (vì $a\\neq1$, $a\\neq2$, $a\\neq4$), nên\n\n$\\dfrac{a^3-4a^2-a+4}{a^3-7a^2+14a-8}=\\dfrac{(a+1)(a-1)(a-4)}{(a-2)(a-1)(a-4)}=\\dfrac{a+1}{a-2}$\n\n$=\\dfrac{102+1}{102-2}=\\dfrac{103}{100}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm",
+   "nhóm hạng tử",
+   "rút gọn phân thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.48@p36",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Số nào lớn hơn: $\\dfrac{1981-1980}{1981+1980}$ hay $\\dfrac{1981^2-1980^2}{1981^2+1980^2}$?",
+  "noi_dung_sach": "Số nào lớn hơn: $\\dfrac{1981-1980}{1981+1980}$ hay $\\dfrac{1981^2-1980^2}{1981^2+1980^2}$?",
+  "dap_an": "Phân số $\\dfrac{1981^2-1980^2}{1981^2+1980^2}$ lớn hơn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân cả tử và mẫu của phân số thứ nhất với $1981+1980$ thì tử thành $1981^2-1980^2$, đúng bằng tử của phân số thứ hai; hai phân số cùng tử dương thì chỉ cần so sánh hai mẫu.\n\n**Bước 1.** Nhân cả tử và mẫu của phân số thứ nhất với $1981+1980$ để tử có dạng hiệu hai bình phương.\n\n**Bước 2.** Khai triển mẫu $(1981+1980)^2$ thành tổng hai bình phương cộng thêm một hạng tử dương.\n\n**Bước 3.** So sánh hai phân số cùng tử dương: mẫu nào nhỏ hơn thì phân số đó lớn hơn.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1981-1980}{1981+1980}=\\dfrac{(1981-1980)(1981+1980)}{(1981+1980)^2}$\n\n$=\\dfrac{1981^2-1980^2}{1981^2+2\\cdot1981\\cdot1980+1980^2}$\n\nHai phân số này có cùng tử $1981^2-1980^2>0$, mà mẫu $1981^2+2\\cdot1981\\cdot1980+1980^2$ lớn hơn mẫu $1981^2+1980^2$ (vì $2\\cdot1981\\cdot1980>0$), nên\n\n$\\dfrac{1981-1980}{1981+1980}<\\dfrac{1981^2-1980^2}{1981^2+1980^2}$\n\nVậy phân số $\\dfrac{1981^2-1980^2}{1981^2+1980^2}$ lớn hơn.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chất cơ bản của phân thức",
+   "hiệu hai bình phương",
+   "so sánh hai phân số cùng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.49@p37",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Số nào lớn hơn: $\\dfrac{10^{1979}+1}{10^{1980}+1}$ hay $\\dfrac{10^{1980}+1}{10^{1981}+1}$?",
+  "noi_dung_sach": "Số nào lớn hơn: $\\dfrac{10^{1979}+1}{10^{1980}+1}$ hay $\\dfrac{10^{1980}+1}{10^{1981}+1}$?",
+  "dap_an": "Phân số $\\dfrac{10^{1979}+1}{10^{1980}+1}$ lớn hơn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai phân số đều có dạng $\\dfrac{10^k+1}{10^{k+1}+1}$ và gần bằng $\\dfrac{1}{10}$; tách mỗi phân số thành $\\dfrac{1}{10}$ cộng một phần dư, hai phần dư có cùng tử nên chỉ cần so hai mẫu.\n\n**Bước 1.** Với phân số thứ nhất, lấy nó trừ đi $\\dfrac{1}{10}$ rồi quy đồng để tìm phần dư dưới dạng một phân số có tử là số nguyên.\n\n**Bước 2.** Làm tương tự với phân số thứ hai để được phần dư có cùng tử với phần dư thứ nhất.\n\n**Bước 3.** So sánh hai phần dư cùng tử dương bằng cách so hai mẫu, rồi suy ra phân số nào lớn hơn.\n\n**Phần 2. Trình bày**\n\nĐặt $A=\\dfrac{10^{1979}+1}{10^{1980}+1}$ và $B=\\dfrac{10^{1980}+1}{10^{1981}+1}$.\n\n$A-\\dfrac{1}{10}=\\dfrac{10(10^{1979}+1)-(10^{1980}+1)}{10(10^{1980}+1)}=\\dfrac{9}{10(10^{1980}+1)}$\n\n$B-\\dfrac{1}{10}=\\dfrac{10(10^{1980}+1)-(10^{1981}+1)}{10(10^{1981}+1)}=\\dfrac{9}{10(10^{1981}+1)}$\n\nHai phân số này có cùng tử $9$ mà $10(10^{1980}+1)<10(10^{1981}+1)$, nên\n\n$A-\\dfrac{1}{10}>B-\\dfrac{1}{10}$, suy ra $A>B$.\n\nVậy phân số $\\dfrac{10^{1979}+1}{10^{1980}+1}$ lớn hơn.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần $\\dfrac{1}{10}$",
+   "so sánh hai phân số cùng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.50@p37",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giá trị của $\\dfrac{a+b}{a-b}$ nếu $2a^2+2b^2=5ab$ và $b>a>0$.",
+  "noi_dung_sach": "Tìm giá trị của $\\dfrac{a+b}{a-b}$ nếu $2a^2+2b^2=5ab$ và $b>a>0$.",
+  "dap_an": "$-3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $2a^2+2b^2=5ab$ chuyển vế được thành một tam thức thuần nhất bậc hai theo $a,b$, phân tích thành tích hai nhị thức; điều kiện $b>a>0$ loại một thừa số, còn lại một hệ thức giữa $a$ và $b$.\n\n**Bước 1.** Chuyển vế rồi tách $-5ab$ thành hai hạng tử để phân tích vế trái thành tích hai nhị thức.\n\n**Bước 2.** Dùng điều kiện $b>a>0$ chứng tỏ một thừa số khác $0$, từ đó suy ra thừa số kia bằng $0$ và có hệ thức giữa $a$ và $b$.\n\n**Bước 3.** Thay hệ thức vừa tìm vào biểu thức cần tính và rút gọn cho $a\\neq0$.\n\n**Phần 2. Trình bày**\n\nTừ $2a^2+2b^2=5ab$ ta có $2a^2-5ab+2b^2=0$, tức $(2a-b)(a-2b)=0$.\n\nVì $b>a>0$ nên $2b>2a>a$, do đó $a-2b\\neq0$.\n\nSuy ra $2a-b=0$, tức $b=2a$.\n\nKhi đó $\\dfrac{a+b}{a-b}=\\dfrac{a+2a}{a-2a}=\\dfrac{3a}{-a}=-3$.\n\nVậy $\\dfrac{a+b}{a-b}=-3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích vế trái thành tích",
+   "điều kiện loại nghiệm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.51@p37",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $c^2+2(ab-ac-bc)=0$; $b\\neq c$; $a+b\\neq c$ thì $\\dfrac{a^2+(a-c)^2}{b^2+(b-c)^2}=\\dfrac{a-c}{b-c}$.",
+  "noi_dung_sach": "Chứng minh rằng nếu $c^2+2(ab-ac-bc)=0$; $b\\neq c$; $a+b\\neq c$ thì $\\dfrac{a^2+(a-c)^2}{b^2+(b-c)^2}=\\dfrac{a-c}{b-c}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng thêm $a^2$ (rồi $b^2$) vào hai vế của điều kiện thì $a^2$ (rồi $b^2$) biểu diễn được qua $(a-c)$ (rồi $(b-c)$); thay vào vế trái thì tử và mẫu đều đặt được nhân tử chung và giản ước được.\n\n**Bước 1.** Cộng $a^2$ vào hai vế của điều kiện rồi nhóm các hạng tử để viết $a^2=(a-c)^2+2b(a-c)$.\n\n**Bước 2.** Cộng $b^2$ vào hai vế của điều kiện rồi làm tương tự để viết $b^2$ qua $b-c$ và $a$.\n\n**Bước 3.** Thay hai kết quả vào vế trái, đặt nhân tử chung ở tử và ở mẫu rồi giản ước bằng các điều kiện đã cho.\n\n**Chú ý:** Việc giản ước chỉ hợp lệ khi $b-c\\neq0$ và $a+b-c\\neq0$ — đây chính là hai điều kiện ghi trong đề.\n\n**Phần 2. Trình bày**\n\nVì $c^2+2(ab-ac-bc)=0$ nên\n\n$a^2=a^2+c^2+2ab-2ac-2bc=(a-c)^2+2b(a-c)$\n\n$b^2=b^2+c^2+2ab-2ac-2bc=(b-c)^2+2a(b-c)$\n\nDo đó\n\n$\\dfrac{a^2+(a-c)^2}{b^2+(b-c)^2}=\\dfrac{2(a-c)^2+2b(a-c)}{2(b-c)^2+2a(b-c)}$\n\n$=\\dfrac{2(a-c)(a-c+b)}{2(b-c)(b-c+a)}$\n\nVì $b-c\\neq0$ và $a+b-c\\neq0$ nên giản ước $2(a+b-c)$ được:\n\n$=\\dfrac{a-c}{b-c}$\n\nVậy đẳng thức được chứng minh.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng thêm bình phương vào điều kiện",
+   "nhóm hạng tử",
+   "rút gọn phân thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.52@p37",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}$. Chứng minh rằng phân thức trên không phụ thuộc vào $x$, có nghĩa với mọi $x$ và $a$.",
+  "noi_dung_sach": "Rút gọn phân thức sau: $\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}$. Chứng minh rằng phân thức trên không phụ thuộc vào $x$, có nghĩa với mọi $x$ và $a$.",
+  "dap_an": "$\\dfrac{a^2+a+1}{a^2-a+1}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khai triển tử và mẫu rồi nhóm theo luỹ thừa của $x$: cả hai đều có dạng (hệ số)$\\cdot(x^2+1)$, nên nhân tử $x^2+1$ giản ước được và phần còn lại chỉ phụ thuộc $a$.\n\n**Bước 1.** Khai triển các tích ở tử và ở mẫu rồi nhóm các hạng tử chứa $x^2$ với các hạng tử không chứa $x$.\n\n**Bước 2.** Đặt nhân tử chung ở tử và ở mẫu để cả hai cùng chứa thừa số $x^2+1$, rồi giản ước thừa số này.\n\n**Bước 3.** Chứng tỏ mẫu khác $0$ với mọi $x$ và $a$ bằng cách viết $a^2-a+1$ thành tổng một bình phương và một số dương.\n\n**Phần 2. Trình bày**\n\nTử số: $(x^2+a)(1+a)+a^2x^2+1=x^2+x^2a+a+a^2+a^2x^2+1=(a^2+a+1)(x^2+1)$.\n\nMẫu số: $(x^2-a)(1-a)+a^2x^2+1=x^2-x^2a-a+a^2+a^2x^2+1=(a^2-a+1)(x^2+1)$.\n\nVì $a^2-a+1=\\left(a-\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ và $x^2+1>0$ nên mẫu số khác $0$ với mọi $x$ và $a$, tức phân thức có nghĩa với mọi $x$ và $a$.\n\nKhi đó\n\n$\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}=\\dfrac{(a^2+a+1)(x^2+1)}{(a^2-a+1)(x^2+1)}=\\dfrac{a^2+a+1}{a^2-a+1}$\n\nKết quả không chứa $x$, nên phân thức không phụ thuộc vào $x$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "đặt nhân tử chung",
+   "tam thức luôn dương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 48, hướng dẫn bài tập 52) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T2B.53@p37",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng nếu $x=by+cz$ (1); $y=ax+cz$ (2); $z=ax+by$ (3) và $x+y+z\\neq0$ thì $\\dfrac{1}{1+a}+\\dfrac{1}{1+b}+\\dfrac{1}{1+c}=2$.",
+  "noi_dung_sach": "Chứng minh rằng nếu $x=by+cz$ (1); $y=ax+cz$ (2); $z=ax+by$ (3) và $x+y+z\\neq0$ thì $\\dfrac{1}{1+a}+\\dfrac{1}{1+b}+\\dfrac{1}{1+c}=2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng ba đẳng thức cho tổng $x+y+z$ theo $ax+by+cz$; thay từng đẳng thức vào vế phải thì mỗi phân số $\\dfrac{1}{1+a}$, $\\dfrac{1}{1+b}$, $\\dfrac{1}{1+c}$ nhận được dưới dạng một phân số có mẫu chung $x+y+z$.\n\n**Bước 1.** Cộng ba đẳng thức theo vế để được một đẳng thức giữa $x+y+z$ và $ax+by+cz$.\n\n**Bước 2.** Dùng từng đẳng thức đã cho để thay $by+cz$, $ax+cz$, $ax+by$ và đặt nhân tử chung, nhờ đó biểu diễn $x+y+z$ qua $1+a$, $1+b$, $1+c$.\n\n**Bước 3.** Từ $x+y+z\\neq0$ suy ra mỗi phân số cần tính, rồi cộng ba kết quả có cùng mẫu.\n\n**Chú ý:** Vì $x+y+z\\neq0$ nên các tích như $2z(1+c)$ khác $0$, do đó $1+c\\neq0$ và phân số $\\dfrac{1}{1+c}$ có nghĩa.\n\n**Phần 2. Trình bày**\n\nCộng các vế tương ứng của (1), (2), (3):\n\n$x+y+z=by+cz+ax+cz+ax+by=2(ax+by+cz)$ (4)\n\nTừ (1) có $by+cz=x$ nên $ax+by+cz=x(1+a)$; từ (2) có $ax+cz=y$ nên $ax+by+cz=y(1+b)$; từ (3) có $ax+by=z$ nên $ax+by+cz=z(1+c)$.\n\nThay vào (4):\n\n$x+y+z=2x(1+a)=2y(1+b)=2z(1+c)$\n\nVì $x+y+z\\neq0$ nên các số $1+a$, $1+b$, $1+c$ đều khác $0$ và\n\n$\\dfrac{1}{1+a}=\\dfrac{2x}{x+y+z}$; $\\dfrac{1}{1+b}=\\dfrac{2y}{x+y+z}$; $\\dfrac{1}{1+c}=\\dfrac{2z}{x+y+z}$\n\nCộng ba đẳng thức theo vế:\n\n$\\dfrac{1}{1+a}+\\dfrac{1}{1+b}+\\dfrac{1}{1+c}=\\dfrac{2(x+y+z)}{x+y+z}=2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng các đẳng thức theo vế",
+   "thay thế"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T2B.54@p37",
+  "lo": 9,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thực hiện phép tính: $\\dfrac{1}{(b-c)(a^2+ac-b^2-bc)}+\\dfrac{1}{(c-a)(b^2+ab-c^2-ac)}+\\dfrac{1}{(a-b)(c^2+bc-a^2-ab)}$.",
+  "noi_dung_sach": "Thực hiện phép tính: $\\dfrac{1}{(b-c)(a^2+ac-b^2-bc)}+\\dfrac{1}{(c-a)(b^2+ab-c^2-ac)}+\\dfrac{1}{(a-b)(c^2+bc-a^2-ab)}$.",
+  "dap_an": "$0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi tam thức ở mẫu đều phân tích được thành (hiệu hai biến)$\\cdot(a+b+c)$ bằng cách nhóm các bình phương và các tích chéo; khi đó ba mẫu chung nhân tử $a+b+c$ và quy đồng chỉ còn tử là tổng của ba hiệu hoán vị vòng.\n\n**Bước 1.** Phân tích ba biểu thức bậc hai trong các mẫu bằng cách nhóm hai bình phương với hai tích chéo để đặt nhân tử chung $a+b+c$.\n\n**Bước 2.** Nêu điều kiện để mọi mẫu khác $0$ rồi quy đồng mẫu thức ba phân thức.\n\n**Bước 3.** Cộng các tử và nhận ra tổng ba hiệu hoán vị vòng bằng $0$.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $a+b+c\\neq0$, $a\\neq b$, $b\\neq c$, $c\\neq a$.\n\n$a^2+ac-b^2-bc=(a-b)(a+b)+c(a-b)=(a-b)(a+b+c)$\n\n$b^2+ab-c^2-ac=(b-c)(b+c)+a(b-c)=(b-c)(a+b+c)$\n\n$c^2+bc-a^2-ab=(c-a)(c+a)+b(c-a)=(c-a)(a+b+c)$\n\nDo đó biểu thức đã cho bằng\n\n$\\dfrac{1}{(b-c)(a-b)(a+b+c)}+\\dfrac{1}{(c-a)(b-c)(a+b+c)}+\\dfrac{1}{(a-b)(c-a)(a+b+c)}$\n\n$=\\dfrac{(c-a)+(a-b)+(b-c)}{(a-b)(b-c)(c-a)(a+b+c)}$\n\n$=\\dfrac{0}{(a-b)(b-c)(c-a)(a+b+c)}=0$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích nhân tử",
+   "quy đồng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ }
+]
