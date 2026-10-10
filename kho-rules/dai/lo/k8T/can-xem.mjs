@@ -34,9 +34,9 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
@@ -58,7 +58,7 @@ const anh = (trang, y, cao, chu) => `<figure><img alt="${esc(chu)}" src="${cat(t
 
 // ── các thẻ ──────────────────────────────────────────────────────────────────
 let so = 0
-const the = (tieuDe, than, quyet, xong = false) => `<section class="the"><h3><span class="so">${++so}</span>${esc(tieuDe)}</h3>${than}<p class="quyet"><span class="${xong ? 'dang xong' : 'dang'}">${xong ? 'Đã xử lý' : 'Cần chị quyết'}</span> ${dong(quyet)}</p></section>`
+const the = (tieuDe, than, quyet, xong = false) => `<section class="the"><h3><span class="so">${++so}</span>${esc(tieuDe)}</h3>${than}<p class="quyet"><span class="${xong ? 'dang xong' : 'dang'}">${xong === 'bao' ? 'Đã làm — chị xem' : xong ? 'Đã xử lý' : 'Cần chị quyết'}</span> ${dong(quyet)}</p></section>`
 const muc = (nhan, html) => `<div class="muc"><div class="nhan">${esc(nhan)}</div><div class="nd">${html}</div></div>`
 
 const A = [
@@ -111,6 +111,40 @@ const D = CHO.map((ma) => {
     `Chị chốt 10/10: ${ten(theoNguon[ma]?.dang_chinh)}. Đã xếp vào nhóm này.`, true)
 })
 
+// ── LÔ 3 (NĐT Đại I §1, §6 + chương II) — thẻ còn chờ chị + thẻ "đã làm, chị xem" ─────────────────
+const tenN = (x) => (!x || /000000$/.test(x) ? 'không nhóm nào khớp (dạng chờ)' : tenNhom[x] ?? x)
+const lech = (ma, hinh, nghieng) => the(`Bài ${bai[ma]?.bai}${bai[ma]?.y ? ' ' + bai[ma].y : ''} — hai lượt gán nhóm lệch nhau`, hinh + muc('Trong kho', trongKho(ma))
+  + muc('Lượt soạn chọn', `<p>${esc(tenN(lo[ma]?.nhom_soan))}</p>`) + muc('Lượt gán độc lập chọn', `<p>${esc(tenN(mu[ma]?.dang))}${mu[ma]?.ly_do ? ` <span class="mo">— ${esc(mu[ma].ly_do)}</span>` : ''}</p>`), nghieng)
+const dsDe = (ds) => `<ul class="ds">${ds.map((ma) => `<li><span class="mo">bài ${esc(bai[ma]?.bai ?? ma)}${bai[ma]?.y ? ' ' + esc(bai[ma].y) : ''}</span> ${dong((lo[ma]?.noi_dung ?? '').split('\n\n')[0])}</li>`).join('')}</ul>`
+const NC_CO_BAN = ['D1.7a@p5', 'D1.7b@p5', 'D1.8@p5', 'D1.10@p6', 'D1.66a@p23', 'D1.66b@p23', 'D1.67a@p23', 'D1.67b@p23', 'D1.68a@p23', 'D1.68b@p23', 'D1.69@p23']
+const E = [
+  lech('D1.11b@p6', anh(6, 655, 520, 'Chương I bài 11, đề và lời giải của sách'),
+    'Chọn nhóm nào? Lời giải của sách xét số dư khi chia cho $5$, nên tôi nghiêng về **Nghiệm nguyên › Dùng bất đẳng thức, xét số dư**.'),
+  lech('D1.13a@p7', anh(7, 350, 125, 'Chương I bài 13 a, đề') + anh(7, 600, 150, 'Bài 13 a, lời giải của sách'),
+    'Chọn nhóm nào? Bài nằm ở §1 (nhân đa thức), cách giải là nhân $(4-1)$ vào tổng các luỹ thừa của $4$. Tôi nghiêng về **Kiến thức cơ bản › Nhân, chia đa thức**.'),
+  lech('D2.34@p43', anh(43, 265, 990, 'Chương II bài 34, đề và lời giải của sách'),
+    'Chọn nhóm nào? Ý a) tính $S$, ý b) là bất đẳng thức dùng kết quả ý a) nên không tách được. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương** vì ý b) mới là đích của bài.'),
+  the('Bài 89 ý b (chương I) — chưa có nhóm', muc('Trong kho', trongKho('D1.89b@p30', { loiGiai: false })),
+    'Xếp vào nhóm nào? Tôi nghiêng về **Đa thức và phép chia › Tìm dư: định lí Bê-du, sơ đồ Hoóc-ne** — lời giải viết $P(x)$ dưới dạng tích rồi thay $x=\\dfrac{1}{2}$ và $x=-1$.'),
+]
+const F = [
+  the('Bài "nâng cao" của §1 và §6 — bản đồ không có nhóm riêng', muc('Vấn đề', doan('Bản đồ 8T không có nhóm chuyên đề nào cho nhân đa thức và chia đơn thức ở mức nâng cao (tính $x^{n+19}:x^{14}$, tìm đơn thức $A$, tính giá trị bằng cách thay $2223=x+1$, đồng nhất hệ số sau khi nhân…). Chuyên đề "Kiến thức cơ bản" chị đặt ra là cho tầng **Bài tập cơ bản** của sách; 11 câu này sách xếp ở tầng **Bài tập nâng cao**.'))
+    + muc('11 câu', dsDe(NC_CO_BAN)),
+    'Tôi xếp cả 11 câu vào **Kiến thức cơ bản › Nhân, chia đa thức** (lượt gán độc lập cũng chọn vậy) và đã tự duyệt. Chị thấy không hợp thì bảo, tôi chuyển nhóm — mã câu không đổi.', 'bao'),
+  the('Bài 69 (chương I) — đề sách in thiếu chặt điều kiện', anh(23, 1200, 110, 'Bài 69, đề') + anh(24, 95, 125, 'Bài 69, lời giải của sách')
+    + muc('Vấn đề', doan('Sách in điều kiện $x\\ne0$, $y\\ge0$. Tại $y=0$ số chia $-2x^2y^3$ bằng $0$ nên biểu thức không xác định. Sách cũng dừng ở $4{,}5x^2+3y^3+1$, không viết bước kết luận.'))
+    + muc('Trong kho', trongKho('D1.69@p23')), 'Kho ghi $y>0$ (cùng kiểu với lần chị cho thêm "số dương" ở bài 35 b) và viết đủ bước kết luận.', 'bao'),
+  the('Bài 32 ý b (chương II) — sách nêu kết luận, không lập luận', anh(42, 200, 175, 'Bài 32, đề') + anh(42, 650, 440, 'Bài 32 b, lời giải của sách')
+    + muc('Vấn đề', doan('Sách đi đến $\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}=0$ (in nhầm mẫu thứ ba thành $(c-b)^2$) rồi viết luôn "Vậy trong ba số phải có một số âm và một số dương".'))
+    + muc('Trong kho', trongKho('D2.32b@p42')), 'Kho bổ sung bước còn thiếu bằng phản chứng: ba số cùng không âm (hoặc cùng không dương) thì cả ba số hạng bằng $0$, trái với "đôi một khác nhau".', 'bao'),
+  the('Bài 40 ý b (chương II) — sách chỉ rút gọn, không tìm $x$', anh(46, 220, 95, 'Bài 40 b, đề') + anh(46, 500, 150, 'Bài 40 b, lời giải của sách')
+    + muc('Trong kho', trongKho('D2.40b@p46')), 'Kho soạn tiếp đến hết: $x-1$ là ước của $6$, loại $x=0$ và $x=-1$ theo điều kiện xác định, còn $x\\in\\{-5;-2;2;3;4;7\\}$.', 'bao'),
+  the('Bài 41 (chương II) — sách không giải ý c)', anh(46, 690, 600, 'Bài 41, đề và lời giải của sách (ý a, b)') + anh(47, 95, 110, 'Bài 41, phần còn lại của lời giải')
+    + muc('Trong kho', trongKho('D2.41@p46')), 'Ý c) do kho soạn: $M=\\dfrac{(x^2+3)(x^2-1)}{x+4}$ với $x\\ne2$, $x\\ne-4$.', 'bao'),
+  the('Bài 51 ý a (chương II) — sách chỉ ghi một dòng hướng dẫn', anh(50, 845, 90, 'Bài 51 a, đề') + anh(50, 1195, 95, 'Bài 51 a, hướng dẫn của sách')
+    + muc('Trong kho', trongKho('D2.51a@p50')), 'Kho viết đủ: lập ba hệ thức, nhân theo vế, rồi tách hai trường hợp (tích ba hiệu khác $0$ và bằng $0$).', 'bao'),
+]
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -135,13 +169,23 @@ code{font:13px ui-monospace,Consolas,monospace}
 details{margin-top:8px}summary{cursor:pointer;color:var(--mo)}.lg{margin-top:8px;padding-top:8px;border-top:1px solid var(--vien)}
 .quyet{margin:2px 0 0;padding-top:10px;border-top:1px solid var(--vien)}
 .dang{background:var(--nen-nhan);color:var(--nhan);border-radius:6px;padding:2px 8px;display:inline-block;margin-right:6px;font-size:13.5px}.dang.xong{background:var(--nen-xanh);color:var(--xanh)}
+ul.ds{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}ul.ds li{overflow-x:auto}
 math{font-size:1.08em}.katex{white-space:nowrap}
 @media (max-width:600px){.muc{grid-template-columns:1fr}.nhan{margin-top:4px;font-size:13.5px}}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau hai lô đầu (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn, chương I). Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Chưa chốt nhóm (${D.length})</a></nav>
+<p class="dan">Kho Đại 8T sau ba lô (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn, chương I và chương II): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<h2 id="e">Cần chị quyết — ${E.length} câu chưa có nhóm bài</h2>
+<p class="dan">Bốn câu này đang ở "Chưa phân dạng" nên chưa được duyệt. Ba câu đầu là của lô 3: hai lượt gán nhóm độc lập chọn khác nhau. Chị chọn nhóm, tôi xếp và duyệt.</p>
+${E.join('\n')}
+<h2 id="f">Lô 3 — đã làm, chị xem</h2>
+<p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu). Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
+${F.join('\n')}
+<p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
+<p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
+<p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>
 <h2 id="a">A. Hai cặp máy báo trùng — đề sách in đúng như vậy</h2>
 <p class="dan">Chị hỏi "cái kia là biến đổi chứ, hay đề bài thế?". Cả hai đều là đề của sách: sách cho ý a) ở dạng đã tách sẵn để dẫn sang ý b). Chị đã chốt bỏ ý a) ở cả hai bài.</p>
 ${A.join('\n')}
@@ -150,7 +194,7 @@ ${A.join('\n')}
 ${B.join('\n')}
 <h2 id="c">C. Máy nghi trùng nhưng không tự bỏ</h2>
 ${C.join('\n')}
-<h2 id="d">D. Bảy câu chưa chốt nhóm bài</h2>
+<h2 id="d">D. Bảy câu của lô 1–2 đã chốt nhóm bài</h2>
 <p class="dan">Hai lượt gán nhóm độc lập chọn khác nhau; chị đã chọn nhóm cho cả bảy câu, kho đã xếp theo.</p>
 ${D.join('\n')}
 <h2>Lỗi in nhỏ của sách, không ảnh hưởng đề và đáp số</h2>

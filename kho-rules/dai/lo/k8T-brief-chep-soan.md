@@ -111,6 +111,22 @@ Ranh giới đã chốt qua các lô (lô 1, 10/10 — hai lượt gán lệch n
   - Từ điều kiện suy ra một đẳng thức / một hệ thức giữa các chữ (kể cả "lập hệ thức giữa $a,b,c$", "là tổng của ba số chính phương") ⇒ `T18T010302`.
 - **Phương trình bậc ≥ 3** (kể cả khi chỉ cần nhóm hạng tử đưa về tích) ⇒ `T18T020102` *bậc cao*. `T18T020101` chỉ cho phương trình bậc 1–2 và phương trình chứa ẩn ở mẫu.
   (Sách Trần Thị Vân Anh cũng xếp "đưa về dạng tích" là cách thứ nhất của dạng *Phương trình bậc cao*.)
+- **Chương phân thức (lô 3 — Claude đặt theo tên nhóm CEO đã duyệt, "…và các câu hỏi kèm theo"):** bài cho một phân thức / biểu thức hữu tỉ rồi hỏi về chính nó — rút gọn, điều kiện
+  xác định, tìm $x$ để nó bằng $0$ / nguyên / âm dương, giá trị nhỏ nhất của kết quả rút gọn, chứng minh không phụ thuộc biến — ⇒ `T18T010501`, **không** tách sang nhóm phương trình /
+  chia hết / cực trị. Chỉ rời `010501` khi đề **không** còn là "làm việc với một phân thức cho trước" (vd cho điều kiện giữa $a,b,c$ rồi tính / chứng minh ⇒ `010301` / `010302`).
+- **Bài "nâng cao" của một bài học cơ bản mà bản đồ không có nhóm chuyên biệt** (lô 3 — Claude đề xuất, CHỜ CEO xác nhận): nhân đơn thức – đa thức, chia đơn thức / đa thức cho đơn thức
+  ở tầng nâng cao (tính $x^{n+19}:x^{14}$, tìm đơn thức $A$ biết $A\cdot(\dots)=\dots$, tính giá trị bằng cách thay hằng số theo biến, đồng nhất hệ số sau khi nhân…) ⇒ nhóm
+  "Kiến thức cơ bản" của bài học đó (bảng dưới), thay vì ép vào một nhóm chuyên đề khác hoặc để dạng chờ.
+
+| Mã | Kiến thức cơ bản › Nhóm theo bài học (câu `tang: co_ban` do MÁY xếp; câu tầng khác chỉ vào đây theo luật ngay trên) |
+|---|---|
+| `T18T010601` | Nhân, chia đa thức |
+| `T18T010602` | Hằng đẳng thức đáng nhớ |
+| `T18T010603` | Phân tích đa thức thành nhân tử |
+| `T18T010604` | Phân thức đại số |
+| `T18T020401` | Phương trình bậc nhất một ẩn |
+| `T18T020402` | Giải bài toán bằng cách lập phương trình |
+| `T18T020403` | Bất phương trình bậc nhất một ẩn |
 
 | Mã | Chuyên đề › Nhóm bài |
 |---|---|

@@ -36691,3 +36691,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** "bài của 8T, m auto duyệt đưa vào kho luôn nhé".
 - **Làm:** `scripts/kho/sach/tu-duyet.mjs` (chỉ khối trong `DUOC_TU_DUYET` = 8T; `da_duyet=true`, `duyet_nguon='ai'`; bỏ qua câu dạng chờ / cờ nghi / `cho_quyet`). Chạy thử ROLLBACK rồi `--ghi` cho lô 1–2: 141 câu (84 `khop`, 57 `khong_kiem_duoc`), 1 câu để lại (89b, dạng chờ). DB: kho Đại 8T 191 đã duyệt (50 người + 141 ai) · 1 chưa.
 - **Ghi chú:** khác luật lên cấp C9 của `spec-luong-kho.md` (đo tỉ lệ lọt trước khi tự duyệt) — là quyết định riêng của CEO cho 8T, ghi ở `k8T.md` §7 + §10. Lô 3 (7 agent: NĐT Đại I §1, §6 + chương II) đang chạy.
+
+## 10/10 (khuya 5) — 8T lô 3: NĐT Đại I §1, §6 + chương II phân thức
+- **Làm:** 7 agent Sonnet chép–soạn (p4–7, p22–24, p31–51) ⇒ 7 tệp `.cs.md`, 105 câu. Opus soát đối chiếu từng trang ảnh. Dựng lô `NDT-D1s16-D2` (`--db --co-ban`), agent Opus riêng gán nhóm mù cho 54 câu không thuộc tầng cơ bản (51 khớp, 3 lệch ⇒ dạng chờ), `ghi-lo --ghi` 105 câu, `tu-duyet --ghi` 102 câu. DB: kho Đại 8T 297 câu · 293 đã duyệt (243 `ai` + 50 `nguoi`) · 4 chưa (dạng chờ).
+- **Sai của trạm chép, soát bắt được:** (1) bài 5 chương I — sách hỏi "biểu thức nào không phụ thuộc biến?" cho 3 biểu thức, trạm tách 3 câu và TỰ ĐẶT lại lời đề ⇒ gộp về một câu như sách. (2) bài 11b — lời giải viết "theo câu a)" trong khi 11a đã tách thành câu riêng ⇒ viết lại tự đủ. (3) bài 7b — sách ghi "Tương tự a)" bị ghi `muc_loi_giai_sach: khong` ⇒ cổng định bỏ câu; sửa thành `tat`. (4) `	ext{tổng}` trong công thức ⇒ KaTeX từ chối chữ có dấu, cổng chặn.
+- **Bài học:** tách ý xong phải đọc lại lời giải của từng ý xem còn dẫn chiếu sang ý khác không — máy không bắt được loại này, chỉ người soát thấy. Đưa vào lời giao việc cho agent ở lô sau.
+- **Tự quyết, đã báo CEO trên trang xem:** đề bài 69 chương I ghi $y>0$ thay cho $yge0$ của sách (số chia bằng 0 tại y = 0); 11 câu tầng "nâng cao" của §1, §6 xếp vào nhóm Kiến thức cơ bản › Nhân, chia đa thức (bản đồ không có nhóm chuyên biệt) — chờ CEO xác nhận.
+- **Trang xem:** `can-xem.mjs` thêm lô 3 (28 thẻ, 32 ảnh), publish lại Artifact (Version 4).
