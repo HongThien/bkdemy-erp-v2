@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Miền vắt qua trục quay · Thể tích bằng tích phân</title>
-<meta name="description" content="Mô hình 3D xoay được: quay hình phẳng giới hạn bởi parabol và đường thẳng quanh trục Ox khi hình phẳng nằm ở cả hai phía của trục; gấp phần dưới lên, cắt lát đĩa và vành khăn, cái bẫy công thức ra 0, tính thể tích 836π/15.">
+<title>Miền vắt qua trục quay · Thể tích khối tròn xoay</title>
+<meta name="description" content="Mô hình 3D xoay được: quay hình phẳng giới hạn bởi parabol và đường thẳng quanh trục Ox khi hình phẳng nằm ở cả hai phía của trục; gấp phần dưới lên, chia ba miền, lắp công thức tròn xoay, cái bẫy công thức ra 0, thể tích 836π/15.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
@@ -15,7 +15,7 @@
 .panel b.tren{color:#5ce1ff}
 .panel b.duoi{color:#ff7ab8}
 .panel b.am{color:#ff7373}
-.tabs.khoang button{cursor:pointer}
+.lb.so{font:700 .9rem/1 var(--f-data);width:1.75em;height:1.75em;display:grid;place-items:center;border-radius:50%;background:var(--amber);color:#1a1000;text-shadow:none}
 </style>
 </head>
 <body>
@@ -31,7 +31,7 @@
 <script src="khung.js"></script>
 <script>
 // BÀI: Câu 48 (NBV 12-18 F) — hình phẳng VẮT QUA trục quay. Phần dùng chung nằm ở khung.js / khung.css; file này chỉ có vật thể + bảng lời giải.
-// Ý chính: tại mỗi x, lát cắt là vành khăn [r; R] với R = điểm của (H) xa trục nhất, r = gần trục nhất (0 nếu (H) chứa trục).
+// Bài TRÒN XOAY có hàm tường minh ⇒ KHÔNG cắt lát / chồng lát (spec A4): gấp phần dưới trục lên, CHIA MIỀN, lắp thẳng công thức tròn xoay.
 // Cái bẫy: π∫(g² − f²)dx trên cả đoạn cho ra ĐÚNG 0.
 (function () {
 'use strict'
@@ -40,49 +40,40 @@
 const f = x => x * x - 8 * x + 12        // parabol
 const g = x => 6 - x                     // đường thẳng
 const A = 1, P = 2, Q = 3, B = 6          // a, b: f = g · p: f = 0 (parabol cắt Ox) · q: g = −f (đường thẳng cắt đường gấp)
-const Rng = x => (x < P ? g(x) : Math.max(g(x), -f(x)))   // bán kính NGOÀI của lát
-const Rtr = x => (x < P ? f(x) : 0)                        // bán kính TRONG (0 khi lát chạm trục)
-const TAU = Math.PI * 2, V0 = 836 * Math.PI / 15           // đáp số 836π/15 ≈ 175,09
-const C_TREN = 0x5ce1ff, C_DUOI = 0xff7ab8, C_LAT = 0xffb547, C_AM = 0xff5b5b, C_TRUC = 0xdfe9ff
+const TAU = Math.PI * 2                   // đáp số: 836π/15 ≈ 175,09
+const C_TREN = 0x5ce1ff, C_DUOI = 0xff7ab8, C_NHAN = 0xffb547, C_AM = 0xff5b5b, C_TRUC = 0xdfe9ff
 
 // ═══ 2. KHUNG CHUNG ═══
 const gocCua = n => (n === 1 ? 'phang' : n === 3 ? 'gap' : 'ba_chieu')
 const M = MoHinh({
   nhan: 'Toán 12 · Ứng dụng tích phân · Thể tích', tieuDe: 'Miền vắt qua trục quay',
-  buoc: ['Đề bài', 'Quay quanh Ox', 'Gấp lên', 'Cắt một lát', 'Cộng các lát', 'Cái bẫy', 'Tính thể tích'],
+  buoc: ['Đề bài', 'Quay quanh Ox', 'Chia miền', 'Cái bẫy', 'Tính thể tích'],
   nutGoc: [['mac_dinh', 'Góc ban đầu'], ['phang', 'Nhìn thẳng'], ['doc_truc', 'Nhìn dọc trục']],
   goc: {   // máy quay đứng phía +z: trục x chạy sang phải, y lên trên — đúng như hình vẽ trên giấy
     phang: { az: 0, pol: Math.PI / 2 },                 // nhìn thẳng vào mặt phẳng Oxy
     ba_chieu: { az: 0.55, pol: 1.16 },
     gap: { az: 0.34, pol: 1.22 },                       // hơi chếch để thấy phần dưới lật qua không gian
-    doc_truc: { az: Math.PI / 2 - 0.02, pol: Math.PI / 2 - 0.02 },   // nhìn dọc Ox: lát cắt hiện đúng hình tròn
+    doc_truc: { az: Math.PI / 2 - 0.02, pol: Math.PI / 2 - 0.02 },
   },
   khung: { chinh: { tx: 2.4, ty: 0.95, tz: 0, r: 6.9 } },   // ngắm hơi cao để hình không chạm tên bài ở góc trái trên
   khungNao: () => 'chinh', gocMacDinh: () => gocCua(M.step),
   bang: n => PANELS[n](), sauBang: bindPanel, truocBang, khiDoiBuoc,
   moiKhung: () => { if (dirty) { dirty = false; sync2(); sync3() } },
   dongBo,
-  tiep: () => { if ((M.step === 6 && !S.thayBay) || (M.step === 7 && !S.thay)) { thaySo(); return true } return false },   // nút Tiếp / phím → cũng là "Thay số"
-  nutTiep: () => (M.step === 6 && !S.thayBay ? { chu: 'Thay số ›' } : M.step === 7 ? { chu: S.thay ? 'Tiếp ›' : 'Thay số ›', tat: S.thay } : null),
+  tiep: () => { if ((M.step === 4 && !S.thayBay) || (M.step === 5 && !S.thay)) { thaySo(); return true } return false },   // nút Tiếp / phím → cũng là "Thay số"
+  nutTiep: () => (M.step === 4 && !S.thayBay ? { chu: 'Thay số ›' } : M.step === 5 ? { chu: S.thay ? 'Tiếp ›' : 'Thay số ›', tat: S.thay } : null),
   phimCach: () => { if (M.step !== 2) return false; S.playing ? stopPlay() : startPlay(); return true },
-  thamSo: q => {   // ?n=20 · ?x=4.5 · ?thay=1 (bước 6, 7 đã thay số)
-    const n = +q.get('n'), x = parseFloat(q.get('x'))
-    if ([5, 10, 20, 40, 80].includes(n)) S.n = n
-    if (x >= A && x <= B) S.x = x
-    return { sub: q.get('thay') === '1' }
-  },
+  thamSo: q => ({ sub: q.get('thay') === '1' }),   // ?thay=1: bước 3 mở sẵn hình đã gấp; bước 4, 5 mở sẵn phần thay số
 })
 if (!M) return
-const { RM, $, $$, clamp, fmt, tn, tex, scene, mkLine, setLine, setView, clock, anims, label, dot } = M
+const { RM, $, scene, mkLine, setLine, setView, clock, anims, label, dot } = M
 
 // ═══ 3. TRẠNG THÁI ═══
 const S = {
   phi: 0,            // góc đã quay (0 → 2π)
   playing: false,
   fold: 0,           // bước 3: phần dưới đã lật lên bao nhiêu (0 → 1)
-  x: 2.4,            // vị trí lát cắt
-  n: 10, reveal: 10, // số lát khi cộng + số lát đã hiện
-  thayBay: false, thay: false,   // bước 6, 7: đã bấm "Thay số"
+  thayBay: false, thay: false,   // bước 4, 5: đã bấm "Thay số"
 }
 Object.defineProperty(S, 'step', { get: () => M.step })
 let dirty = true
@@ -90,6 +81,7 @@ let dirty = true
 // ═══ 4. VẬT THỂ (toạ độ cảnh = toạ độ toán: hình phẳng nằm trong mặt z = 0, trục quay là trục x) ═══
 const pts = (fn, x0, x1, n) => { const o = []; for (let i = 0; i <= n; i++) { const x = x0 + (x1 - x0) * i / n; o.push(x, fn(x), 0) } return o }
 const circ = (x, r, n) => { const o = []; n = n || 72; for (let i = 0; i <= n; i++) { const t = TAU * i / n; o.push(x, r * Math.cos(t), r * Math.sin(t)) } return o }
+const net = { color: C_TRUC, width: 1.4, opacity: 0.6, dashed: true, dash: 0.22, gap: 0.16, order: 4 }
 
 // Hệ trục
 scene.add(mkLine([-1.2, 0, 0, 7.7, 0, 0], { color: C_TRUC, width: 2.2, order: 4 }), mkLine([0, -5.3, 0, 0, 6.4, 0], { color: C_TRUC, width: 2.2, order: 4 }))
@@ -98,7 +90,7 @@ scene.add(mkLine([-1.2, 0, 0, 7.7, 0, 0], { color: C_TRUC, width: 2.2, order: 4 
   const cy = new THREE.Mesh(geo, mat); cy.position.set(0, 6.4, 0); scene.add(cx, cy)
   for (const x of [A, P, B]) scene.add(mkLine([x, -0.13, 0, x, 0.13, 0], { color: C_TRUC, width: 2, order: 4 }))
   scene.add(mkLine([-0.13, 5, 0, 0.13, 5, 0], { color: C_TRUC, width: 2, order: 4 }))
-  scene.add(mkLine([1, 0, 0, 1, 5, 0, 0, 5, 0], { color: C_TRUC, width: 1.4, opacity: 0.55, dashed: true, dash: 0.22, gap: 0.16, order: 4 })) }
+  scene.add(mkLine([1, 0, 0, 1, 5, 0, 0, 5, 0], net)) }
 
 // Hai đường + hình phẳng (H): phần trên trục (xanh), phần dưới trục (hồng)
 scene.add(mkLine(pts(f, 0.75, 6.75, 120), { color: 0xe6efff, width: 2.6 }), mkLine(pts(g, -0.4, 7.2, 2), { color: 0xe6efff, width: 2.6 }))
@@ -117,95 +109,49 @@ scene.add(mesh2(geoTren, matTren, 2), mesh2(geoDuoi, matDuoi, 2))
 const faceG = new THREE.Group(); scene.add(faceG)
 faceG.add(mesh2(geoTren, matTren, 2), mesh2(geoDuoi, matDuoi, 2), mkLine(pts(g, A, B, 2), { color: 0xe6efff, width: 2 }), mkLine(pts(f, A, B, 90), { color: 0xe6efff, width: 2 }))
 
-// Mặt tròn xoay sinh ra khi quay tới góc phi: điểm (x; y; 0) đi tới (x; y·cos φ; y·sin φ)
+// Mặt tròn xoay: lưới (x, góc); điểm (x; y; 0) quay góc t tới (x; y·cos t; y·sin t)
 const NT = 72
-function mkSweep(fn, x0, x1, color, nx) {
+function mkLuoi(nx, mat, order) {
   const pos = new Float32Array((nx + 1) * (NT + 1) * 3), idx = [], geo = new THREE.BufferGeometry()
   for (let i = 0; i < nx; i++) for (let j = 0; j < NT; j++) { const a = i * (NT + 1) + j, b = a + 1, c = a + NT + 1, d = c + 1; idx.push(a, c, b, b, c, d) }
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setIndex(idx)
-  const mat = new THREE.MeshPhongMaterial({ color, transparent: true, opacity: 0.4, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x334455 })
-  const mesh = mesh2(geo, mat, 3); scene.add(mesh)
-  return { mesh, mat, set(phi) {
+  const mesh = mesh2(geo, mat, order)
+  return { mesh, mat, set(fn, x0, x1, phi) {
     let k = 0
     for (let i = 0; i <= nx; i++) { const x = x0 + (x1 - x0) * i / nx, y = fn(x); for (let j = 0; j <= NT; j++) { const t = phi * j / NT; pos[k++] = x; pos[k++] = y * Math.cos(t); pos[k++] = y * Math.sin(t) } }
     geo.attributes.position.needsUpdate = true; geo.computeVertexNormals()
   } }
 }
-const sweeps = [mkSweep(g, A, B, C_TREN, 50), mkSweep(f, A, P, C_TREN, 14), mkSweep(f, P, B, C_DUOI, 56)]
-// Vết của hai điểm: giao điểm (1; 5) và đỉnh parabol (4; −4)
+// Khối sinh ra khi quay tới góc phi: mặt do g vạch (xanh), mặt do f vạch trên [a; p] (xanh, phía trong), mặt do f vạch trên [p; b] (hồng)
+const phong = c => new THREE.MeshPhongMaterial({ color: c, transparent: true, opacity: 0.4, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x334455 })
+const sweeps = [[mkLuoi(50, phong(C_TREN), 3), g, A, B], [mkLuoi(14, phong(C_TREN), 3), f, A, P], [mkLuoi(56, phong(C_DUOI), 3), f, P, B]]
+for (const s of sweeps) scene.add(s[0].mesh)
+// Vết của hai điểm: giao điểm (1; 5) và đỉnh parabol (4; −4); hai đường tròn ngăn ba miền trên khối
 const arcOf = (x, y, phi) => { const o = []; for (let j = 0; j <= NT; j++) { const t = phi * j / NT; o.push(x, y * Math.cos(t), y * Math.sin(t)) } return o }
 const arcA = mkLine(arcOf(1, 5, 0), { color: C_TREN, width: 2.4, order: 6 }), arcV = mkLine(arcOf(4, -4, 0), { color: C_DUOI, width: 2.4, order: 6 })
-const ringQ = mkLine(circ(Q, g(Q)), { color: 0xffffff, width: 1.6, opacity: 0.6, order: 6 })   // nơi bán kính ngoài đổi từ g sang |f|
-scene.add(arcA, arcV, ringQ)
+const ringP = mkLine(circ(P, g(P)), { color: 0xffffff, width: 1.6, opacity: 0.6, order: 6 }), ringQ = mkLine(circ(Q, g(Q)), { color: 0xffffff, width: 1.6, opacity: 0.6, order: 6 })
+scene.add(arcA, arcV, ringP, ringQ)
 
-// Bước 3: phần dưới lật quanh Ox (đi qua không gian) lên phía trên; đường gấp y = −f(x); đường bao ngoài R(x), trong r(x)
+// Bước 3: phần dưới lật quanh Ox (đi qua không gian) lên phía trên; đường gấp y = −f(x); đường bao ngoài + trong của hình sau khi gấp
 const foldG = new THREE.Group(); scene.add(foldG)
 foldG.add(mesh2(geoDuoi, mkMat(C_DUOI, 0.55), 2), mkLine(pts(f, P, B, 80), { color: C_DUOI, width: 3 }))
 const gapLine = mkLine(pts(x => -f(x), P, B, 80), { color: C_DUOI, width: 2.4, dashed: true, dash: 0.3, gap: 0.2 })
-const envOut = mkLine(pts(g, A, Q, 2).concat(pts(x => -f(x), Q, B, 60)), { color: C_LAT, width: 5, order: 6 })
+const envOut = mkLine(pts(g, A, Q, 2).concat(pts(x => -f(x), Q, B, 60)), { color: C_NHAN, width: 5, order: 6 })
 const envIn = mkLine(pts(f, A, P, 24), { color: 0xffe2ad, width: 5, order: 6 })
 const vachQ = mkLine([Q, -0.13, 0, Q, 0.13, 0], { color: C_TRUC, width: 2, order: 4 })   // vạch x = q chỉ hiện từ bước 3
-const moc = mkLine([P, 0, 0, P, g(P), 0], { color: C_TRUC, width: 1.4, opacity: 0.6, dashed: true, dash: 0.22, gap: 0.16, order: 4 })
-const moc2 = mkLine([Q, 0, 0, Q, g(Q), 0], { color: C_TRUC, width: 1.4, opacity: 0.6, dashed: true, dash: 0.22, gap: 0.16, order: 4 })
+const moc = mkLine([P, 0, 0, P, g(P), 0], net), moc2 = mkLine([Q, 0, 0, Q, g(Q), 0], net)
 scene.add(gapLine, envOut, envIn, moc, moc2, vachQ)
 
-// Bước 4: lát cắt vuông góc Ox tại x — hai đường tròn do G (trên đường thẳng) và F (trên parabol) vạch ra
-const sliceG = new THREE.Group(); scene.add(sliceG)
-const sliceMesh = mesh2(new THREE.BufferGeometry(), new THREE.MeshBasicMaterial({ color: C_LAT, transparent: true, opacity: 0.8, side: THREE.DoubleSide, depthWrite: false }), 4)
-sliceMesh.rotation.y = Math.PI / 2
-const circG = mkLine(circ(0, 1), { color: C_TREN, width: 2.4, order: 7 }), circF = mkLine(circ(0, 1), { color: C_DUOI, width: 2.4, order: 7 })
-const segG = mkLine([0, 0, 0, 0, 1, 0], { color: C_TREN, width: 3.4, order: 8, depthTest: false }), segF = mkLine([0, 0, 0, 0, 1, 0], { color: C_DUOI, width: 3.4, order: 8, depthTest: false })
-sliceG.add(sliceMesh, circG, circF, segG, segF)
-function updateSlice() {
-  const x = S.x, r = Math.max(Rtr(x), 0), R = Math.max(Rng(x), 1e-4)
-  sliceMesh.geometry.dispose(); sliceMesh.geometry = new THREE.RingGeometry(r, R, 72, 1); sliceMesh.position.x = x
-  setLine(circG, circ(x, g(x))); setLine(circF, circ(x, Math.abs(f(x))))
-  setLine(segG, [x, 0, 0, x, g(x), 0]); setLine(segF, [x, 0, 0, x, f(x), 0])
-}
-
-// Bước 5, 6: chồng n lát (đĩa / vành khăn dày Δx, lấy bán kính ở GIỮA khoảng)
-const slabG = new THREE.Group(); scene.add(slabG)
-const lam = c => new THREE.MeshLambertMaterial({ color: c, side: THREE.DoubleSide })
-const matLat = [lam(0xffb547), lam(0xe08a22)], matBay = [lam(0x39c6ee), lam(C_AM)]
-let slab = null, slabRun = 0
-function washerInto(arr, x0, x1, r, R, seg) {
-  const q = (a, b, c, d) => arr.push(a[0], a[1], a[2], b[0], b[1], b[2], c[0], c[1], c[2], a[0], a[1], a[2], c[0], c[1], c[2], d[0], d[1], d[2])
-  for (let j = 0; j < seg; j++) {
-    const t0 = TAU * j / seg, t1 = TAU * (j + 1) / seg, c0 = Math.cos(t0), s0 = Math.sin(t0), c1 = Math.cos(t1), s1 = Math.sin(t1)
-    q([x0, R * c0, R * s0], [x1, R * c0, R * s0], [x1, R * c1, R * s1], [x0, R * c1, R * s1])
-    if (r > 1e-3) q([x0, r * c0, r * s0], [x1, r * c0, r * s0], [x1, r * c1, r * s1], [x0, r * c1, r * s1])
-    q([x0, r * c0, r * s0], [x0, R * c0, R * s0], [x0, R * c1, R * s1], [x0, r * c1, r * s1])
-    q([x1, r * c0, r * s0], [x1, R * c0, R * s0], [x1, R * c1, R * s1], [x1, r * c1, r * s1])
-  }
-}
-function buildSlabs(bay) {   // bay = true: vẽ theo công thức SAI π(g² − f²): mọi lát là vành khăn giữa g và |f|, xanh = được cộng, đỏ = bị trừ
-  while (slabG.children.length) { const c = slabG.children.pop(); c.geometry.dispose() }
-  const n = bay ? 40 : S.n, dx = (B - A) / n, seg = n > 40 ? 36 : 48, pos = [[], []], cum = [[0], [0]], sums = []; let acc = 0
-  for (let i = 0; i < n; i++) {
-    const x0 = A + i * dx, m = x0 + dx / 2; let r, R, k
-    if (bay) { const a = g(m), b = Math.abs(f(m)); r = Math.min(a, b); R = Math.max(a, b); k = a >= b ? 0 : 1; acc += Math.PI * (a * a - b * b) * dx }
-    else { r = Rtr(m); R = Rng(m); k = i % 2; acc += Math.PI * (R * R - r * r) * dx }
-    washerInto(pos[k], x0, x0 + dx, r, R, seg)
-    cum[0].push(pos[0].length / 3); cum[1].push(pos[1].length / 3); sums.push(acc)
-  }
-  for (let k = 0; k < 2; k++) { const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos[k], 3)); geo.computeVertexNormals(); const m = mesh2(geo, (bay ? matBay : matLat)[k], 0); m.userData.k = k; slabG.add(m) }
-  slab = { n, cum, sums, bay }
-}
-function showSlabs(r) { if (slab) for (const c of slabG.children) c.geometry.setDrawRange(0, slab.cum[c.userData.k][r]) }
-function playSlabs() {
-  const bay = S.step === 6
-  buildSlabs(bay); S.reveal = 0; showSlabs(0); syncSum()
-  const run = ++slabRun, n = slab.n, st = S.step, t0 = clock(), dur = RM ? 1 : 500 + 14 * n
-  anims.push(now => {
-    if (run !== slabRun || S.step !== st) return true
-    const k = Math.min(1, (now - t0) / dur), r = Math.round(k * n)
-    if (r !== S.reveal) { S.reveal = r; showSlabs(r); syncSum() }
-    return k >= 1
-  })
-}
+// Bước 4 (cái bẫy): công thức π∫(g² − f²) tính phần khối nằm GIỮA hai mặt bán kính g và |f| — xanh nơi g ở ngoài (được cộng), đỏ nơi |f| ở ngoài (bị trừ)
+const bayG = new THREE.Group(); scene.add(bayG)
+{ const lam = c => new THREE.MeshLambertMaterial({ color: c, side: THREE.DoubleSide })
+  const them = (fn, x0, x1, nx, mat) => { const l = mkLuoi(nx, mat, 0); l.set(fn, x0, x1, TAU); bayG.add(l.mesh) }
+  const xanh = lam(0x39c6ee), dout = lam(C_AM)
+  them(g, A, Q, 30, xanh); them(x => Math.abs(f(x)), A, Q, 40, xanh)   // [a; q]: ngoài g, trong |f|
+  them(x => -f(x), Q, B, 50, dout); them(g, Q, B, 30, dout) }          // [q; b]: ngoài |f|, trong g
 
 // ═══ 5. NHÃN + CHẤM ĐIỂM ═══
-const luon = () => true, daGap = () => S.step > 3 || (S.step === 3 && S.fold > 0.98), cat = () => S.step === 4 && S.phi >= TAU - 1e-3
+const luon = () => true, daGap = () => S.step > 3 || (S.step === 3 && S.fold > 0.98), phangGap = () => S.step === 3 && daGap()
 label('x', () => [7.75, 0, 0], luon, 0.3, 1); label('y', () => [0, 6.45, 0], luon, -0.9, 0); label('O', () => [0, 0, 0], luon, -0.8, 0.95)
 label('5', () => [0, 5, 0], () => S.step <= 3, -0.8, 0)
 label('y = f(x)', () => [6.75, f(6.75), 0], luon, 2.5, -0.2); label('y = g(x)', () => [7.2, g(7.2), 0], luon, 0.9, 1.05)
@@ -213,36 +159,25 @@ for (const [x, chu, dy] of [[A, 'a', 1.3], [P, 'p', 2.7], [Q, 'q', 1.3], [B, 'b'
   if (x !== Q) label(String(x), () => [x, 0, 0], () => S.step <= 2, x === B ? 0.55 : -0.05, 1.05)
   label(chu + ' = ' + x, () => [x, 0, 0], () => S.step >= 3, x === B ? 0.9 : 0, dy, 'dim')
 }
-label('R', () => [2.15, g(2.15), 0], () => S.step === 3 && daGap(), 0.6, -0.75, 'hot'); label('r', () => [1.5, f(1.5), 0], () => S.step === 3 && daGap(), -0.75, 0.5, 'hot')
-label('M', () => [S.x, 0, 0], cat, -0.75, 0.95); label('G', () => [S.x, g(S.x), 0], cat, 0.85, -0.5); label('F', () => [S.x, f(S.x), 0], cat, 0.85, 0.6)
-dot(() => [1, 5, 0], luon, 0xffffff, 0.12); dot(() => [6, 0, 0], luon, 0xffffff, 0.12); dot(() => [Q, g(Q), 0], daGap, C_LAT, 0.15)
-dot(() => [S.x, 0, 0], cat, 0xfff1d6, 0.13); dot(() => [S.x, g(S.x), 0], cat, C_TREN, 0.15); dot(() => [S.x, f(S.x), 0], cat, C_DUOI, 0.15)
+label('1', () => [1.62, 3.2, 0], phangGap, 0, 0, 'so'); label('2', () => [2.5, 1.5, 0], phangGap, 0, 0, 'so'); label('3', () => [4.4, 1.7, 0], phangGap, 0, 0, 'so')   // số thứ tự ba miền
+dot(() => [1, 5, 0], luon, 0xffffff, 0.12); dot(() => [6, 0, 0], luon, 0xffffff, 0.12); dot(() => [Q, g(Q), 0], daGap, C_NHAN, 0.15)
 
 // ═══ 6. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
 let phiVe = -1
 function dongBo() {
-  const st = S.step, phi = S.phi, du = phi >= TAU - 1e-3, co = phi > 0.002
-  if (phi !== phiVe) { phiVe = phi; for (const s of sweeps) s.set(phi); setLine(arcA, arcOf(1, 5, phi)); setLine(arcV, arcOf(4, -4, phi)); faceG.rotation.x = phi }
-  const op = st === 4 ? 0.16 : st === 5 ? 0.1 : st === 6 ? 0.06 : 0.4, mo = st === 5 || st === 6
-  for (const s of sweeps) { s.mesh.visible = co; s.mat.opacity = op }
-  faceG.visible = co && !du; arcA.visible = arcV.visible = co && !mo; ringQ.visible = du && st !== 2 && !mo
-  matTren.opacity = matDuoi.opacity = mo ? 0.2 : 0.42
+  const st = S.step, phi = S.phi, du = phi >= TAU - 1e-3, co = phi > 0.002, bay = st === 4 && du
+  if (phi !== phiVe) { phiVe = phi; for (const s of sweeps) s[0].set(s[1], s[2], s[3], phi); setLine(arcA, arcOf(1, 5, phi)); setLine(arcV, arcOf(4, -4, phi)); faceG.rotation.x = phi }
+  for (const s of sweeps) s[0].mesh.visible = co && !bay
+  faceG.visible = co && !du; arcA.visible = arcV.visible = co && !bay; ringP.visible = ringQ.visible = du && st === 5
+  matTren.opacity = matDuoi.opacity = bay ? 0.2 : 0.42
   foldG.visible = st === 3 && S.fold > 0.001; foldG.rotation.x = Math.PI * S.fold
-  gapLine.visible = st >= 3 && daGap(); envOut.visible = envIn.visible = st === 3 && daGap()
+  gapLine.visible = st >= 3 && daGap(); envOut.visible = envIn.visible = phangGap()
   moc.visible = moc2.visible = vachQ.visible = st >= 3
-  sliceG.visible = cat(); slabG.visible = mo && du
+  bayG.visible = bay
 }
 
 // ═══ 7. BẢNG LỜI GIẢI THEO BƯỚC (luật A3: công thức bằng chữ trước, thay số sau) ═══
-const panel = M.panel
 const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
-const KHOANG = [   // ba đoạn: (H) ở vị trí nào so với trục ⇒ lát là gì
-  { ten: '[a; p]', lat: 'vành khăn', R: 'g(x)', r: 'f(x)', S: String.raw`x\in[a;\,p]:\quad S(x)=\pi\left[g(x)^2-f(x)^2\right]`, giua: 1.5 },
-  { ten: '[p; q]', lat: 'đĩa bán kính g', R: 'g(x)', r: '0', S: String.raw`x\in[p;\,q]:\quad S(x)=\pi\,g(x)^2`, giua: 2.5 },
-  { ten: '[q; b]', lat: 'đĩa bán kính |f|', R: '-f(x)', r: '0', S: String.raw`x\in[q;\,b]:\quad S(x)=\pi\,f(x)^2`, giua: 4.5 },
-]
-const khoangCua = x => (x < P ? 0 : x < Q ? 1 : 2)
-const V_TONG = String.raw`\begin{aligned}V&=\int_a^b S(x)\,\mathrm{d}x\\[0.5em]&=\pi\int_a^p\left(g^2-f^2\right)\mathrm{d}x\\[0.5em]&\quad+\pi\int_p^q g^2\,\mathrm{d}x+\pi\int_q^b f^2\,\mathrm{d}x\end{aligned}`
 const PANELS = {
   1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Quay hình phẳng quanh trục Ox</h2>
     <p>Hình phẳng <i>(H)</i> giới hạn bởi parabol <i>y</i> = <i>f</i>(<i>x</i>) = <i>x</i>² − 8<i>x</i> + 12 và đường thẳng <i>y</i> = <i>g</i>(<i>x</i>) = −<i>x</i> + 6 (phần tô màu).</p>
@@ -259,14 +194,14 @@ const PANELS = {
       <li id="c2b"><i></i><span>Đủ một vòng: khối tròn xoay hoàn chỉnh</span><em>360°</em></li>
     </ul>
     <p class="note" id="n2" hidden>Trong khối này có chỗ phần xanh và phần hồng <b>chồng lên nhau</b>. Thể tích chỗ chồng chỉ được tính một lần.</p>`,
-  3: () => String.raw`<p class="kicker">Bước 3 · Gấp lên</p><h2>Gấp phần dưới trục lên trên</h2>
+  3: () => String.raw`<p class="kicker">Bước 3 · Chia miền</p><h2>Gấp phần dưới lên, chia ba miền</h2>
     <p>Quay phần hồng quanh <i>Ox</i> cho ra đúng khối mà <b>ảnh đối xứng của nó qua <i>Ox</i></b> tạo ra. Vậy cứ gấp phần hồng lên trên trục: <i>y</i> = <i>f</i>(<i>x</i>) thành <i>y</i> = −<i>f</i>(<i>x</i>).</p>
     <button type="button" class="btn" id="b3"></button>
-    <p class="lbl2">Tại mỗi x: R = chỗ xa trục nhất · r = chỗ gần trục nhất</p>
+    <p class="lbl2">Công thức tròn xoay cho từng miền</p>
     <div class="fx">
-      <div class="r2"><span data-tex="[a;\,p]:\quad R=g(x),\quad r=f(x)"></span><small>vành khăn</small></div>
-      <div class="r2"><span data-tex="[p;\,q]:\quad R=g(x),\quad r=0"></span><small>đĩa (g ≥ −f)</small></div>
-      <div class="r2"><span data-tex="[q;\,b]:\quad R=-f(x),\quad r=0"></span><small>đĩa (−f ≥ g)</small></div>
+      <div class="r2"><span data-d data-tex="V_1=\pi\int_a^p\left(g^2-f^2\right)\mathrm{d}x"></span><small>miền 1<br>giữa hai đường</small></div>
+      <div class="r2"><span data-d data-tex="V_2=\pi\int_p^q g^2\,\mathrm{d}x"></span><small>miền 2<br>từ trục tới g</small></div>
+      <div class="r2"><span data-d data-tex="V_3=\pi\int_q^b f^2\,\mathrm{d}x"></span><small>miền 3<br>từ trục tới −f</small></div>
     </div>
     <p class="lbl2">Thay số — a, b: f = g · p: f = 0 · q: g = −f</p>
     <div class="fx num">
@@ -275,25 +210,10 @@ const PANELS = {
       <div data-tex="g=-f\iff x^2-9x+18=0\iff x=3,\ x=6"></div>
       <div class="res" data-tex="a=1,\quad p=2,\quad q=3,\quad b=6"></div>
     </div>`,
-  4: () => String.raw`<p class="kicker">Bước 4 · Cắt một lát</p><h2>Lát cắt là đĩa hay vành khăn?</h2>
-    <p>Cắt khối bằng mặt phẳng vuông góc với <i>Ox</i> tại <i>M</i>(<i>x</i>; 0). Điểm <i>G</i> trên đường thẳng và <i>F</i> trên parabol mỗi điểm vạch một đường tròn tâm <i>M</i>.</p>
-    <label class="sl"><span class="nm">x</span><input type="range" id="s4" min="0" max="1000" aria-label="Vị trí lát cắt"><output id="o4"></output></label>
-    <div class="tabs khoang" id="kh4">${KHOANG.map((k, i) => '<button type="button" data-k="' + i + '">' + k.ten + '<small>' + k.lat + '</small></button>').join('')}</div>
-    <p class="lbl2">Công thức tổng quát</p>
-    <div class="fx"><div data-tex="S(x)=\pi R^2-\pi r^2"></div><div class="res" id="g4"></div></div>
-    <p class="lbl2" id="l4"></p>
-    <div class="fx num"><div id="f41"></div><div id="f42"></div><div class="res" id="f43"></div></div>`,
-  5: () => String.raw`<p class="kicker">Bước 5 · Cộng các lát</p><h2>Chồng các lát lại</h2>
-    <p>Chia đoạn [<i>a</i>; <i>b</i>] thành <b>n</b> phần bằng nhau. Mỗi lát là một đĩa hoặc vành khăn dày Δ<i>x</i>: thể tích ≈ <i>S</i>(<i>x</i>) · Δ<i>x</i>.</p>
-    <div class="seg" id="seg5">${[5, 10, 20, 40, 80].map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (S.n === n) + '">' + n + '</button>').join('')}</div>
-    <div class="sum"><span class="lbl">Tổng <b id="n5"></b> lát ≈</span><span class="big" id="sum5"></span><span class="off" id="off5"></span></div>
-    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này là <b>tích phân của diện tích lát cắt</b>, tách theo ba đoạn:</p>
-    <div class="fx"><div id="f5"></div></div>
-    <p class="note">Bước 7 tính tích phân này. Trước đó, bước 6 cho xem một lối tắt rất hay bị dùng nhầm.</p>`,
-  6: () => String.raw`<p class="kicker">Bước 6 · Cái bẫy</p><h2>Áp thẳng một công thức thì sao?</h2>
-    <p>Nhiều bạn áp luôn công thức “hình phẳng giữa hai đường” cho cả đoạn [<i>a</i>; <i>b</i>]:</p>
+  4: () => String.raw`<p class="kicker">Bước 4 · Cái bẫy</p><h2>Áp một công thức cho cả đoạn thì sao?</h2>
+    <p>Nhiều bạn không chia miền mà áp luôn công thức “hình phẳng giữa hai đường” cho cả đoạn [<i>a</i>; <i>b</i>]:</p>
     <div class="fx"><div data-d data-tex="V_{?}=\pi\int_a^b\left(g^2-f^2\right)\mathrm{d}x"></div></div>
-    <p>Công thức này coi lát nào cũng là vành khăn giữa hai đường tròn bán kính <i>g</i> và |<i>f</i>|. Trên [<i>a</i>; <i>q</i>] thì <i>g</i> ≥ |<i>f</i>| nên phần đó được <b class="tren">cộng</b>; trên [<i>q</i>; <i>b</i>] thì |<i>f</i>| &gt; <i>g</i> nên phần đó bị <b class="am">trừ</b>.</p>
+    <p>Công thức này tính phần khối nằm <b>giữa</b> hai mặt bán kính <i>g</i> và |<i>f</i>|. Trên [<i>a</i>; <i>q</i>] thì <i>g</i> ≥ |<i>f</i>| nên phần đó được <b class="tren">cộng</b>; trên [<i>q</i>; <i>b</i>] thì |<i>f</i>| &gt; <i>g</i> nên phần đó bị <b class="am">trừ</b>.</p>
     <button type="button" class="btn" id="bSub"${S.thayBay ? ' hidden' : ''}>Thay số ›</button>
     <div class="subs" id="subs"${S.thayBay ? '' : ' hidden'}>
       <p class="lbl2">Thay số: a = 1, q = 3, b = 6</p>
@@ -303,21 +223,20 @@ const PANELS = {
         <div class="res" data-d data-tex="V_{?}=\frac{108\pi}{5}-\frac{108\pi}{5}=0"></div>
       </div>
       <p><b>Thể tích bằng 0</b>: vô lý, vì khối có thật. Sai ở hai chỗ:</p>
-      <p>Trên [<i>p</i>; <i>q</i>] lát là đĩa đặc, công thức lại khoét đi một cái lỗ bán kính |<i>f</i>| không hề có.</p>
-      <p>Trên [<i>q</i>; <i>b</i>] bán kính ngoài là |<i>f</i>| chứ không phải <i>g</i>, nên kết quả mang dấu âm.</p>
-      <p class="note">Công thức π∫(<i>g</i>² − <i>f</i>²)d<i>x</i> chỉ đúng khi hình phẳng nằm hẳn một phía của trục quay.</p>
+      <p>Miền 2: khối đặc tới tận trục, công thức lại khoét đi phần bán kính |<i>f</i>| ở giữa.</p>
+      <p>Miền 3: mặt ngoài là |<i>f</i>| chứ không phải <i>g</i>, nên kết quả mang dấu âm.</p>
+      <p class="note">Công thức π∫(<i>g</i>² − <i>f</i>²)d<i>x</i> chỉ đúng khi hình phẳng nằm hẳn một phía của trục quay (như miền 1).</p>
     </div>`,
-  7: () => String.raw`<p class="kicker">Bước 7 · Tính thể tích</p><h2>Tính tích phân</h2>
+  5: () => String.raw`<p class="kicker">Bước 5 · Tính thể tích</p><h2>Cộng ba miền</h2>
     <p class="lbl2">Công thức tổng quát (chưa thay số)</p>
-    <div class="fx"><div id="k7"></div></div>
-    <p class="cap">Mỗi đoạn một kiểu lát: vành khăn · đĩa bán kính <i>g</i> · đĩa bán kính |<i>f</i>|.</p>
+    <div class="fx"><div data-d data-tex="\begin{aligned}V&=V_1+V_2+V_3\\[0.5em]&=\pi\int_a^p\left(g^2-f^2\right)\mathrm{d}x\\[0.5em]&\quad+\pi\int_p^q g^2\,\mathrm{d}x+\pi\int_q^b f^2\,\mathrm{d}x\end{aligned}"></div></div>
     <button type="button" class="btn" id="bSub"${S.thay ? ' hidden' : ''}>Thay số ›</button>
     <div class="subs" id="subs"${S.thay ? '' : ' hidden'}>
       <p class="lbl2">Thay số: a = 1, p = 2, q = 3, b = 6</p>
       <div class="fx num">
-        <div data-d data-tex="\pi\int_1^2\left(g^2-f^2\right)\mathrm{d}x=\frac{64\pi}{5}"></div>
-        <div data-d data-tex="\pi\int_2^3 g^2\,\mathrm{d}x=\frac{37\pi}{3}"></div>
-        <div data-d data-tex="\pi\int_3^6 f^2\,\mathrm{d}x=\frac{153\pi}{5}"></div>
+        <div data-d data-tex="V_1=\pi\int_1^2\left(g^2-f^2\right)\mathrm{d}x=\frac{64\pi}{5}"></div>
+        <div data-d data-tex="V_2=\pi\int_2^3 g^2\,\mathrm{d}x=\frac{37\pi}{3}"></div>
+        <div data-d data-tex="V_3=\pi\int_3^6 f^2\,\mathrm{d}x=\frac{153\pi}{5}"></div>
         <div class="res" data-d data-tex="V=\frac{64\pi}{5}+\frac{37\pi}{3}+\frac{153\pi}{5}=\frac{836\pi}{15}\approx 175{,}09"></div>
       </div>
       <p class="lbl2">Nguyên hàm đã dùng</p>
@@ -325,7 +244,7 @@ const PANELS = {
         <div data-d data-tex="\int g^2\,\mathrm{d}x=-\frac{(6-x)^3}{3}"></div>
         <div data-d data-tex="\begin{aligned}\int f^2\,\mathrm{d}x&=\frac{x^5}{5}-4x^4+\frac{88x^3}{3}\\[0.4em]&\quad-96x^2+144x\end{aligned}"></div>
       </div>
-      <p class="note">Cùng hai hàm <i>f</i>, <i>g</i> như ở bước 6, nhưng phải tách đoạn theo vị trí của <i>(H)</i> so với trục quay.</p>
+      <p class="note">Cùng hai hàm <i>f</i>, <i>g</i> như ở bước 4, nhưng chia miền theo vị trí của <i>(H)</i> so với trục quay rồi mới lắp công thức.</p>
     </div>`,
 }
 function bindPanel() {   // khung vừa vẽ PANELS[bước]; ở đây gắn sự kiện + điền số
@@ -337,19 +256,7 @@ function bindPanel() {   // khung vừa vẽ PANELS[bước]; ở đây gắn s�
     sync2()
   }
   if (st === 3) { $('#b3').addEventListener('click', () => foldTo(S.fold > 0.5 ? 0 : 1)); sync3() }
-  if (st === 4) {
-    const s = $('#s4')
-    s.value = Math.round((S.x - A) / (B - A) * 1000)
-    s.addEventListener('input', () => { S.x = Math.round((A + (B - A) * s.value / 1000) * 100) / 100; sync4() })   // làm tròn 0,01 để số thay vào khớp kết quả
-    $$('#kh4 button').forEach(b => b.addEventListener('click', () => { S.x = KHOANG[+b.dataset.k].giua; s.value = Math.round((S.x - A) / (B - A) * 1000); sync4() }))
-    sync4()
-  }
-  if (st === 5) {
-    $$('#seg5 button').forEach(b => b.addEventListener('click', () => { S.n = +b.dataset.n; $$('#seg5 button').forEach(x => x.setAttribute('aria-pressed', x === b)); playSlabs() }))
-    tex($('#f5'), V_TONG, true); syncSum()
-  }
-  if (st === 7) tex($('#k7'), V_TONG.replace(String.raw`V&=\int_a^b S(x)\,\mathrm{d}x\\[0.5em]&=`, 'V&='), true)
-  if (st === 6 || st === 7) $('#bSub').addEventListener('click', thaySo)
+  if (st === 4 || st === 5) $('#bSub').addEventListener('click', thaySo)
 }
 function sync2() {
   const s = $('#s2'); if (!s) return
@@ -361,28 +268,8 @@ function sync2() {
   if (b.dataset.lab !== lab) { b.innerHTML = lab; b.dataset.lab = lab }
 }
 function sync3() { const b = $('#b3'); if (b) b.textContent = S.fold > 0.5 ? 'Trả phần hồng về chỗ cũ' : 'Gấp phần hồng lên' }
-function sync4() {
-  const x = S.x, xs = tn(x), k = khoangCua(x), gx = g(x), fx = f(x), R = Rng(x), r = Rtr(x), dt = Math.PI * (R * R - r * r)
-  $('#o4').textContent = fmt(x, 2)
-  $$('#kh4 button').forEach((b, i) => b.setAttribute('aria-selected', i === k))
-  tex($('#g4'), KHOANG[k].S)
-  $('#l4').textContent = 'Thay số: x = ' + fmt(x, 2)
-  tex($('#f41'), String.raw`g(${xs})=6-${xs}=${tn(gx)}`)
-  tex($('#f42'), String.raw`f(${xs})=${xs}^2-8\cdot ${xs}+12=${tn(fx)}`)
-  tex($('#f43'), k === 0 ? String.raw`S(${xs})=\pi\left(${tn(gx)}^2-${tn(fx)}^2\right)\approx ${tn(dt)}`
-    : k === 1 ? String.raw`S(${xs})=\pi\cdot ${tn(gx)}^2\approx ${tn(dt)}`
-      : String.raw`S(${xs})=\pi\cdot\left(${tn(fx)}\right)^2\approx ${tn(dt)}`)
-  updateSlice()
-}
-function syncSum() {
-  if (!$('#sum5') || !slab || slab.bay) return
-  const r = S.reveal, v = r ? slab.sums[r - 1] : 0, full = r === slab.n
-  $('#n5').textContent = full ? slab.n : r + '/' + slab.n
-  $('#sum5').textContent = fmt(v, 2)
-  $('#off5').textContent = full ? 'lệch ' + (v - V0 >= 0 ? '+' : '−') + fmt(Math.abs(v - V0), 2) + ' so với 175,09' : ''
-}
-function thaySo() {   // bước 6, 7: công thức bằng chữ xong mới thay số
-  if (S.step === 6) S.thayBay = true; else if (S.step === 7) S.thay = true; else return
+function thaySo() {   // bước 4, 5: công thức bằng chữ xong mới thay số
+  if (S.step === 4) S.thayBay = true; else if (S.step === 5) S.thay = true; else return
   M.renderPanel(true); M.syncChips()
   const el = $('#subs'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
 }
@@ -420,23 +307,21 @@ function startPlay() {
 function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
 function truocBang(n, prev, o) {
   S.playing = false
-  if (prev !== n || o.first) { if (n === 6) S.thayBay = !!o.sub; if (n === 7) S.thay = !!o.sub }   // mỗi lần vào lại bắt đầu từ công thức chưa thay số
+  if (prev !== n || o.first) { if (n === 4) S.thayBay = !!o.sub; if (n === 5) S.thay = !!o.sub }   // mỗi lần vào lại bắt đầu từ công thức chưa thay số
 }
 async function khiDoiBuoc(n, prev, o, my) {
   if (o.first || gocCua(n) !== gocCua(prev)) setView('mac_dinh', o.first)
-  // Góc quay đích của từng bước: 1, 3 = hình phẳng chưa quay · 2 = do người dùng điều khiển · 4–7 = khối đã quay đủ vòng
+  // Góc quay đích của từng bước: 1, 3 = hình phẳng chưa quay · 2 = do người dùng điều khiển · 4, 5 = khối đã quay đủ vòng
   const dich = n === 1 || n === 3 ? 0 : n === 2 ? (prev > 2 ? TAU : S.phi) : TAU
   if (n !== 3) S.fold = 0
-  if (o.first) { S.phi = dich; dirty = true; if (n === 5 || n === 6) playSlabs(); return }
+  if (o.first) { S.phi = dich; if (n === 3 && o.sub) S.fold = 1; dirty = true; return }
   await phiTo(dich, 1300, my); if (!M.alive(my)) return
   if (n === 2 && (o.play || o.next)) startPlay()
-  if (n === 5 || n === 6) playSlabs()
 }
 
 // ═══ 9. CHẠY ═══
-updateSlice()
 M.start()
-Object.assign(window.__dbg, { S, f, g, Rng, Rtr, V0, slabNow: () => slab })
+Object.assign(window.__dbg, { S, f, g })
 })()
 </script>
 </body>
