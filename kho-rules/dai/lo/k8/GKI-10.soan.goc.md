@@ -259,25 +259,23 @@ A. bốn góc bằng nhau
 B. bốn cạnh bằng nhau
 C. hai đường chéo bằng nhau
 D. hai góc kề một cạnh bằng nhau
-**Ghi chú:** phương án D của đề in "hai góc kề một cạnh bằng nhau" (thiếu chữ "đáy"), giữ nguyên như đề: phát biểu này không đúng với hai góc kề một cạnh bên nên không chọn. Mã đề B của cùng trường có câu này trùng nguyên văn và bảng đáp án in ở mã đề B cũng chọn C.
+**Chưa chắc:** phương án D in "hai góc kề một cạnh bằng nhau" (thiếu chữ "đáy"); đọc đúng từng chữ thì D sai vì hai góc kề một cạnh bên của hình thang bù nhau chứ không bằng nhau, nên chọn C. Nếu đề muốn ghi "kề một đáy" thì D cũng đúng.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** chỉ chọn phát biểu đúng với **mọi** hình thang cân và đúng **từng chữ**; phát biểu chỉ đúng với hình đặc biệt hoặc nói thiếu điều kiện thì loại.
+**Mấu chốt:** nhớ các tính chất của hình thang cân: hai cạnh bên bằng nhau và hai đường chéo bằng nhau.
 
-**Bước 1.** Nhắc lại định nghĩa và tính chất của hình thang cân: hai góc kề một đáy bằng nhau, hai cạnh bên bằng nhau, hai đường chéo bằng nhau.
+**Bước 1.** Nhắc lại tính chất của hình thang cân: hai cạnh bên bằng nhau, hai đường chéo bằng nhau.
 
-**Bước 2.** Xét hai phương án nói về bốn góc bằng nhau và bốn cạnh bằng nhau: bốn góc bằng nhau là của hình chữ nhật, bốn cạnh bằng nhau là của hình thoi, không đúng với hình thang cân bất kì.
+**Bước 2.** Loại các phương án nói về bốn góc bằng nhau hoặc bốn cạnh bằng nhau, vì đó là tính chất của hình vuông chứ không phải hình thang cân.
 
-**Bước 3.** Với phương án nói về hai góc, để ý chữ "một cạnh": hình thang cân chỉ có hai góc kề **một đáy** bằng nhau, còn hai góc kề một cạnh bên thì bù nhau.
+**Bước 3.** Đọc kĩ phương án D: hai góc kề một cạnh bên không bằng nhau nên D không đúng, còn lại phương án C.
 
 **Phần 2. Trình bày**
 
 Hình thang cân có hai đường chéo bằng nhau (tính chất).
 
-Hình thang cân nói chung không có bốn góc bằng nhau, không có bốn cạnh bằng nhau.
-
-Hai góc kề một cạnh bên của hình thang cân bù nhau, nói chung không bằng nhau, nên phát biểu "hai góc kề một cạnh bằng nhau" không đúng.
+Hình thang cân không có bốn góc bằng nhau, không có bốn cạnh bằng nhau; hai góc kề một cạnh bên của nó bù nhau chứ không bằng nhau.
 
 Chọn C.
 
@@ -292,11 +290,11 @@ D. Hình chữ nhật
 
 **Mấu chốt:** phải là hình có **mọi cặp cạnh kề đều bằng nhau**, tức là hình có bốn cạnh bằng nhau.
 
-**Bước 1.** Hiểu câu hỏi: tìm hình mà hai cạnh kề **luôn** bằng nhau, chứ không phải hình "có thể" có hai cạnh kề bằng nhau trong trường hợp riêng.
+**Bước 1.** Nhắc lại: hình thoi là tứ giác có bốn cạnh bằng nhau, nên hai cạnh kề bất kì đều bằng nhau.
 
-**Bước 2.** Nhắc lại định nghĩa của bốn hình trong các phương án, xem hình nào được định nghĩa bằng điều kiện về độ dài cả bốn cạnh.
+**Bước 2.** Với các hình còn lại, tìm một ví dụ có hai cạnh kề không bằng nhau để loại.
 
-**Bước 3.** Với mỗi hình còn lại, tìm một ví dụ có hai cạnh kề không bằng nhau để loại.
+**Bước 3.** Chọn hình duy nhất luôn có hai cạnh kề bằng nhau.
 
 **Phần 2. Trình bày**
 
@@ -335,6 +333,7 @@ A. hình vuông
 B. hình chữ nhật
 C. hình bình hành
 D. hình thang cân
+**Chưa chắc:** về lôgic, hình thoi có hai đường chéo bằng nhau vừa là hình vuông, vừa là hình chữ nhật, vừa là hình bình hành; chọn A vì đó là dấu hiệu nhận biết hình vuông trong sách giáo khoa (đặc biệt nhất).
 
 **Phần 1. Hướng dẫn**
 
@@ -345,8 +344,6 @@ D. hình thang cân
 **Bước 2.** Đối chiếu điều kiện "hình thoi có hai đường chéo bằng nhau" với các dấu hiệu đó.
 
 **Bước 3.** Chọn tên hình đặc biệt nhất mà dấu hiệu cho phép kết luận.
-
-**Chú ý:** hình vuông cũng là hình chữ nhật và hình bình hành, nhưng câu hỏi dạng "… là hình gì" luôn trả lời bằng tên hình đặc biệt nhất, đúng như dấu hiệu nhận biết.
 
 **Phần 2. Trình bày**
 
@@ -375,7 +372,7 @@ D. Các góc đối bằng nhau
 
 Nếu tứ giác có ba góc vuông thì góc thứ tư bằng $360^\circ-3 \cdot 90^\circ=90^\circ$, do đó tứ giác có bốn góc vuông nên là hình chữ nhật.
 
-Ba phương án còn lại chưa đủ: hình thang vuông có hai góc vuông nhưng không phải là hình chữ nhật; hình thang cân có hai đường chéo bằng nhau nhưng nói chung không có góc vuông; hình bình hành nào cũng có các góc đối bằng nhau nhưng nói chung không có góc vuông.
+Ba phương án còn lại chưa đủ: hình thang có hai góc vuông chưa chắc là hình chữ nhật; hình thang cân có hai đường chéo bằng nhau nhưng không có góc vuông; hình bình hành bất kì có các góc đối bằng nhau nhưng không có góc vuông.
 
 Chọn A.
 
@@ -395,7 +392,7 @@ D. hình thang cân
 
 **Bước 2.** Đối chiếu điều kiện "hình bình hành có một góc vuông" với dấu hiệu đó.
 
-**Bước 3.** Phân biệt với hình vuông: muốn là hình vuông còn phải thêm điều kiện hai cạnh kề bằng nhau, nên chỉ một góc vuông thì chưa đủ.
+**Bước 3.** Chọn hình chữ nhật, vì hình vuông cần thêm điều kiện hai cạnh kề bằng nhau.
 
 **Phần 2. Trình bày**
 
@@ -520,50 +517,35 @@ $=(x^2-x^2)+(-4xy+xy)+(4y^2+6y^2)$
 
 $=-3xy+10y^2$
 
-### Bài 3a | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Một mảnh vườn hình vuông có cạnh $10$ m được mở rộng cả hai bên thêm $x$ (m) như hình bên. Viết biểu thức (dạng đa thức thu gọn) biểu thị diện tích của mảnh vườn sau khi mở rộng.
+### Bài 3 | kho=dai | loai=tu_luan | dap_an=—
+**Đề:** a) Một mảnh vườn hình vuông có cạnh $10$ m được mở rộng cả hai bên thêm $x$ (m) như hình bên. Viết biểu thức (dạng đa thức thu gọn) biểu thị diện tích của mảnh vườn sau khi mở rộng.
+b) Cho hai số $a$, $b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a+b$.
 **Hình:** p2c2_1.png
+**Chưa chắc:** ý a, hình chỉ tô màu phần mở rộng; hiểu "mảnh vườn sau khi mở rộng" là cả hình vuông cạnh $10+x$ (diện tích $x^2+20x+100$), không phải chỉ phần tô màu (diện tích $x^2+20x$).
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** mỗi cạnh của mảnh vườn đều dài thêm $x$ (m) nên mảnh vườn mới vẫn là **hình vuông**; diện tích của nó là bình phương của một tổng.
+**Mấu chốt:** ý a là bình phương của một tổng; ý b nên đi từ $(a+b)^2$ vì đề cho sẵn $a^2+b^2$ và $ab$.
 
-**Bước 1.** Đọc hình: cạnh dọc gồm đoạn $10$ và đoạn $x$, cạnh ngang cũng gồm đoạn $10$ và đoạn $x$, nên mảnh vườn sau khi mở rộng là hình vuông; viết độ dài cạnh mới theo $x$.
+**Bước 1.** Ý a: mảnh vườn sau khi mở rộng vẫn là hình vuông, có cạnh bằng cạnh cũ cộng phần mở rộng $x$.
 
-**Bước 2.** Diện tích hình vuông bằng cạnh nhân cạnh, nên viết diện tích thành bình phương của cạnh mới.
+**Bước 2.** Ý a: diện tích hình vuông bằng cạnh nhân cạnh; viết thành bình phương rồi khai triển bằng hằng đẳng thức và sắp xếp theo luỹ thừa giảm của $x$.
 
-**Bước 3.** Khai triển bằng hằng đẳng thức bình phương của một tổng rồi sắp xếp theo luỹ thừa giảm của $x$ để được đa thức thu gọn.
+**Bước 3.** Ý b: thấy $a^2+b^2$ và $ab$ đều xuất hiện khi khai triển $(a+b)^2$, nên tính $(a+b)^2$ trước.
 
-**Chú ý:** đề hỏi diện tích của **cả** mảnh vườn sau khi mở rộng, không phải riêng phần tô màu trên hình (phần tô màu chỉ là phần đất thêm vào).
+**Bước 4.** Ý b: từ giá trị của $(a+b)^2$ tìm $a+b$, nhớ rằng $a$, $b$ đều dương nên $a+b$ dương.
 
 **Phần 2. Trình bày**
 
-Sau khi mở rộng, mảnh vườn là hình vuông có cạnh $10+x$ (m).
+a) Sau khi mở rộng, mảnh vườn là hình vuông có cạnh $10+x$ (m).
 
 Diện tích mảnh vườn sau khi mở rộng là:
 
-$(10+x)^2=10^2+2 \cdot 10 \cdot x+x^2$
+$(10+x)^2=100+20x+x^2$
 
 $=x^2+20x+100$ ($m^2$)
 
-### Bài 3b | kho=dai | loai=tra_loi_ngan | dap_an=5
-**Đề:** Cho hai số $a$, $b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a+b$.
-
-**Phần 1. Hướng dẫn**
-
-**Mấu chốt:** không cần tìm riêng $a$ và $b$: $a^2+b^2$ và $ab$ đúng là các hạng tử xuất hiện khi khai triển $(a+b)^2$.
-
-**Bước 1.** Nhận ra đề cho tổng hai bình phương và tích của hai số, mà cả hai đều có mặt trong hằng đẳng thức bình phương của một tổng, nên tính $(a+b)^2$ trước.
-
-**Bước 2.** Viết $(a+b)^2=a^2+2ab+b^2$, nhóm lại thành $(a^2+b^2)+2ab$ rồi thay hai giá trị đề cho vào.
-
-**Bước 3.** Từ giá trị của $(a+b)^2$ tìm $a+b$: có hai số đối nhau cùng có bình phương bằng giá trị đó, dùng điều kiện $a>0$, $b>0$ để chọn số dương.
-
-**Chú ý:** bỏ quên điều kiện $a$, $b>0$ thì sẽ thừa một giá trị âm của $a+b$.
-
-**Phần 2. Trình bày**
-
-Ta có $(a+b)^2=a^2+2ab+b^2$
+b) Ta có $(a+b)^2=a^2+2ab+b^2$
 
 $=(a^2+b^2)+2ab$
 
@@ -572,8 +554,6 @@ $=13+2 \cdot 6$
 $=25$
 
 Vì $a>0$, $b>0$ nên $a+b>0$. Mà $(a+b)^2=25=5^2$ nên $a+b=5$.
-
-Vậy $a+b=5$.
 
 ### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho tam giác $ABC$ cân tại $A$, đường cao $AH$. Gọi $I$ là trung điểm của $AC$, lấy điểm $M$ sao cho $I$ là trung điểm của $HM$.
@@ -642,8 +622,8 @@ Vậy ba điểm $B$, $E$, $M$ thẳng hàng.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: KNTT (đoán theo nội dung đề). Đề chạm tới: Chương I (đơn thức, đa thức, nhân đa thức, chia đa thức cho đơn thức), hằng đẳng thức (Câu 7, 8, Bài 2b, Bài 3a, 3b) và Chương III (tứ giác, hình thang cân, hình bình hành, hình chữ nhật, thoi, hình vuông). Đề KHÔNG có phân tích nhân tử, Pythagore nên lời giải không dùng; Bài 4 không dùng đường trung bình (ý b qua tam giác cân và hai đường cùng vuông góc với $BC$; ý c qua hình bình hành $AMHB$).
-- Đề có 16 câu trắc nghiệm + 4 bài tự luận. Bài 1 và Bài 2 mỗi bài có hai ý độc lập nên tách thành Bài 1a, 1b, 2a, 2b. Bài 3 gom hai bài toán khác hẳn nhau (a: mảnh vườn, có hình; b: tính $a+b$) nên cũng tách thành Bài 3a và Bài 3b; Bài 3b đáp số là số nguyên $5$ nên nhập trả lời ngắn. Bài 4 (hình) giữ chung một câu.
-- **Đề mã A KHÔNG có bảng đáp án in sẵn:** bảng ở trang 2 nằm dưới tiêu đề "BÀI LÀM", hàng "Đáp án" để trống cho học sinh điền (máy cắt nhầm nó thành tệp `p2c4_1.png`, không dùng). Bảng có in sẵn đáp án là của **mã đề B** (GKI-11); bảy câu trùng nguyên văn giữa hai mã (Câu 4, 7, 9, 10, 12, 13, 15) có đáp án ở bảng mã B trùng với đáp án ở đây.
-- Bài 4 đề không cho hình nên đã vẽ hình giải bằng code (`giai_bai4.png`, chỉ hiện ở lời giải; không vẽ $BM$ vì ba điểm thẳng hàng là điều phải chứng minh). Tệp `p2c2_1.png` đúng là hình mảnh vườn của Bài 3a.
-- Câu 15: phương án A và C của đề in trùng nhau ("hình vuông") — giữ nguyên như đề, xem `Ghi chú` ở câu đó. Câu 10: phương án D in thiếu chữ "đáy" — xem `Ghi chú` ở câu đó.
+- Bộ sách: KNTT (đoán theo nội dung đề). Đề chạm tới: Chương I (đơn thức, đa thức, nhân đa thức, chia đa thức cho đơn thức), hằng đẳng thức (Câu 7, 8, Bài 2b, Bài 3) và Chương III (tứ giác, hình thang cân, hình bình hành, hình chữ nhật, thoi, hình vuông). Đề KHÔNG có phân tích nhân tử, Pythagore nên lời giải không dùng; Bài 4 không dùng đường trung bình (ý b qua tam giác cân và hai đường cùng vuông góc với $BC$; ý c qua hình bình hành $AMHB$).
+- Đề có 16 câu trắc nghiệm + 4 bài tự luận. Bài 1 và Bài 2 mỗi bài có hai ý độc lập nên tách thành Bài 1a, 1b, 2a, 2b. Bài 3 (a là bài lời văn, b là tính giá trị) và Bài 4 (hình) giữ chung một câu.
+- Máy cắt nhầm hình của Bài 4 (tệp `p2c4_1.png` là bảng đáp án trắc nghiệm, không phải hình); Bài 4 đề không cho hình nên đã vẽ hình giải bằng code (`giai_bai4.png`, chỉ hiện ở lời giải, không vẽ $KI$ và $BM$ vì là điều phải chứng minh). Tệp `p2c2_1.png` đúng là hình mảnh vườn của Bài 3 nên dùng làm hình đề của Bài 3.
+- Câu hỏi nhiều phương án đúng về lôgic: Câu 13 (chọn hình vuông). Câu 10 phương án D in thiếu chữ "đáy" (xem `Chưa chắc` ở câu đó).
+- Bài 3a: xem `Chưa chắc` về cách hiểu "diện tích mảnh vườn sau khi mở rộng".

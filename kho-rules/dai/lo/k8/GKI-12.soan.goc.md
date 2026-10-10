@@ -273,13 +273,13 @@ D. $220^\circ$
 
 **Phần 2. Trình bày**
 
-Theo hình vẽ, hình thang cân $ABCD$ có hai đáy là $AB$ và $CD$ nên $AB\parallel CD$.
+Vì $ABCD$ là hình thang cân nên $AB\parallel CD$.
 
 Do đó $\widehat{DAB}+\widehat{ADC}=180^\circ$ (hai góc trong cùng phía).
 
 $\widehat{DAB}=180^\circ-120^\circ=60^\circ$.
 
-Vì $ABCD$ là hình thang cân nên $\widehat{ABC}=\widehat{DAB}=60^\circ$ (hai góc kề đáy $AB$).
+Vì $ABCD$ là hình thang cân nên $\widehat{ABC}=\widehat{DAB}=60^\circ$.
 
 Chọn C.
 
@@ -384,7 +384,7 @@ $=x^2+3x-x^2+x+2$
 
 $=4x+2$ ($m^2$).
 
-Biểu thức $4x+2$ khác biểu thức $x^2+2x$ (chẳng hạn khi $x=10$ thì $4x+2=42$ còn $x^2+2x=120$) nên mệnh đề d) sai.
+Vì $4x+2 \neq x^2+2x$ nên mệnh đề d) sai.
 
 ### Câu 14 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho tứ giác $MNPQ$ có $MN\parallel PQ$, $MQ=NP$ và $\widehat{M}=80^\circ$.
@@ -407,7 +407,7 @@ d) Nếu $\widehat{M}=90^\circ$ thì tứ giác $MNPQ$ là hình chữ nhật.
 
 **Bước 4.** Ý d: suy ra $\widehat{Q}=90^\circ$, rồi kẻ đường cao $NH$ xuống $PQ$ để chứng minh $H$ trùng $P$, từ đó $MNPQ$ là hình bình hành có một góc vuông.
 
-**Chú ý:** ý b và ý d không mâu thuẫn nhau: hai cạnh bên bằng nhau chưa đủ để là hình thang cân, nhưng khi có thêm góc vuông thì quan hệ giữa đường vuông góc và đường xiên (lớp 7) buộc $NP$ cũng vuông góc với $PQ$.
+**Chú ý:** chưa học đường trung bình hay tính chất của hình thang vuông, nên ý d phải tự chứng minh $H$ trùng $P$ bằng quan hệ giữa đường vuông góc và đường xiên (lớp 7).
 
 **Phần 2. Trình bày**
 
@@ -419,7 +419,7 @@ b) Xét hình bình hành $MNPQ$ có $\widehat{M}=80^\circ$.
 
 Hình bình hành này có $MN\parallel PQ$ và $MQ=NP$ (hai cạnh đối bằng nhau).
 
-Nhưng $\widehat{N}=180^\circ-\widehat{M}=100^\circ$ (hai góc trong cùng phía, $MQ\parallel NP$) nên $\widehat{N}\neq\widehat{M}$, hai góc kề đáy $MN$ không bằng nhau, do đó $MNPQ$ không phải hình thang cân.
+Nhưng $\widehat{N}=180^\circ-\widehat{M}=100^\circ$ nên $\widehat{N}\neq\widehat{M}$, hai góc kề đáy $MN$ không bằng nhau, do đó $MNPQ$ không phải hình thang cân.
 
 Vậy từ $MN\parallel PQ$ và $MQ=NP$ chưa thể kết luận $MNPQ$ là hình thang cân, mệnh đề b) sai.
 
@@ -506,7 +506,7 @@ Vì hình thoi có hai góc đối bằng nhau nên $\widehat{D}=\widehat{B}=45^
 
 **Bước 1.** Nhận ra biểu thức có dạng $A^2-B^2$ với $A=104$ và $B=96$.
 
-**Bước 2.** Viết thành tích $(A-B)(A+B)$ rồi tính tổng và hiệu của hai số; cả hai phép tính này đều nhẩm được.
+**Bước 2.** Viết thành tích $(A-B)(A+B)$ rồi tính tổng và hiệu của hai số, đây là hai phép tính rất nhẩm được.
 
 **Bước 3.** Nhân hai kết quả vừa tính để ra giá trị cần tìm.
 
@@ -520,7 +520,7 @@ $=1600$
 
 ### Câu 18 | kho=hinh_hoc | loai=tra_loi_ngan | dap_an=10
 **Đề:** Trong hình bình hành $EFGH$ có đường chéo $EG$ và $FH$ cắt nhau tại $O$. Biết $EF=8$ cm, $FG=6$ cm và $EG=10$ cm. Tính độ dài $EO+FO$.
-**Chưa chắc:** với số liệu đề in, đáp số $10$ là chắc chắn (hai người giải độc lập + máy), nhưng chỉ ra được bằng định lí Pythagore đảo (bộ ba 6 – 8 – 10) — không có cách nào tính $FH$ chỉ bằng kiến thức hình bình hành. Cả đề không có câu nào khác về Pythagore, không có hình chóp, phân thức ⇒ nội dung khớp KNTT (Pythagore ở học kì 2), tức câu này vượt phạm vi giữa kì 1. Đề 2 cùng trường (GKI-13, Câu 18) hỏi y hệt với ba số 7, 5, 10 không ra số đẹp ⇒ nghi người ra đề định hỏi khác (in nhầm dữ kiện). Người duyệt quyết: giữ câu với lời giải Pythagore, hay bỏ câu.
+**Chưa chắc:** lời giải dùng định lí Pythagore đảo (bộ ba 6 – 8 – 10). Đề này không có câu nào khác về Pythagore, nhưng câu này không giải được nếu không có nó (không tính được $FH$ chỉ bằng kiến thức hình bình hành); vì vậy ghi `bo_sach: Cánh Diều` (bộ sách học Pythagore trong học kì 1).
 
 **Phần 1. Hướng dẫn**
 
@@ -534,7 +534,7 @@ $=1600$
 
 **Bước 4.** Tính $EO$ và $FO$ bằng một nửa đường chéo tương ứng rồi cộng lại.
 
-**Chú ý:** nếu chỉ biết $EFGH$ là hình bình hành thì chưa có $FH=EG$; phải chứng minh được hình chữ nhật rồi mới dùng hai đường chéo bằng nhau.
+**Chú ý:** không nên kết luận $EO+FO=EG$; phải tính từng đoạn riêng.
 
 **Phần 2. Trình bày**
 
@@ -625,7 +625,7 @@ b) $DM$ kéo dài cắt $AB$ tại $K$. Chứng minh $AM$, $DB$, $KN$ đồng qu
 
 **Bước 1.** Ý a: muốn $MCDN$ là hình thoi, cần nó là hình bình hành có hai cạnh kề bằng nhau (dấu hiệu nhận biết hình thoi).
 
-**Bước 2.** Ý a: $MCDN$ là hình bình hành vì $ND\parallel MC$ và $ND=MC$ (cùng bằng một nửa của hai cạnh bằng nhau $AD=BC$); hai cạnh kề $MC$ và $CD$ bằng nhau vì $MC=ND=\dfrac{1}{2}AD=AB$ (do $AD=2AB$) và $CD=AB$.
+**Bước 2.** Ý a: $MCDN$ là hình bình hành vì $ND\parallel MC$ và $ND=MC$ (cùng bằng một nửa của hai cạnh bằng nhau $AD=BC$); hai cạnh kề $MC$ và $CD$ bằng nhau vì cùng bằng $AB$ (do $AD=2AB$).
 
 **Bước 3.** Ý b: muốn ba đường $AM$, $DB$, $KN$ đồng quy, xem chúng là ba trung tuyến của tam giác $AKD$; cần $B$ là trung điểm $AK$, $M$ là trung điểm $DK$, còn $N$ là trung điểm $AD$ đã cho.
 
@@ -722,7 +722,7 @@ Vậy các cặp số nguyên $(x;y)$ cần tìm là $(-1;12)$, $(9;2)$, $(-3;-1
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: KNTT (đoán theo nội dung đề: không có hình chóp, phân thức; phần hình đi đúng thứ tự Chương III của KNTT tới hình thoi, hình vuông; đề 2 cùng trường — GKI-13 — cũng là KNTT). Riêng Câu 18 phải dùng định lí Pythagore đảo, vượt phạm vi giữa kì 1 của KNTT — xem `Chưa chắc` ở câu đó. Phạm vi đề chạm tới: đơn thức, đa thức, nhân đa thức, hằng đẳng thức (bình phương tổng/hiệu, lập phương hiệu, hiệu hai bình phương), phân tích đa thức thành nhân tử bằng nhóm hạng tử (Bài 3), tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông, định lí Pythagore đảo (chỉ Câu 18). Không dùng đường trung bình, Thalès, đồng dạng.
+- Bộ sách: Cánh Diều (đoán theo nội dung đề: Câu 18 phải dùng định lí Pythagore đảo, bộ sách này dạy Pythagore trong học kì 1). Phạm vi đề chạm tới: đơn thức, đa thức, nhân đa thức, hằng đẳng thức (bình phương tổng/hiệu, lập phương hiệu, hiệu hai bình phương), phân tích đa thức thành nhân tử bằng nhóm hạng tử (Bài 3), tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông, định lí Pythagore đảo (chỉ Câu 18). Không dùng đường trung bình, Thalès, đồng dạng.
 - Đề không ghi mã đề / đề số. Đề có 18 câu trắc nghiệm các loại + 3 bài tự luận; Bài 1 tách thành Bài 1a, Bài 1b (hai ý độc lập: thu gọn, tìm $x$); Bài 2 là bài hình, giữ chung một câu.
 - Câu 9: đề gốc in hai phương án A và D cùng bằng $240^\circ$ — giữ nguyên như đề, chọn A.
 - Câu 13, 14: Đúng/Sai nhập dạng tự luận (đáp án: Câu 13 a) đúng, b) đúng, c) sai, d) sai; Câu 14 a) đúng, b) sai, c) sai, d) đúng). Câu 14 d) chứng minh bằng quan hệ đường vuông góc – đường xiên (lớp 7), không dùng tính chất hình thang vuông.

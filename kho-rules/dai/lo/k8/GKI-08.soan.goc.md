@@ -133,7 +133,7 @@ D. $\dfrac{x^2}{4}-2xy+4y^2$
 
 **Bước 3.** Ghép các số hạng theo đúng dấu của hằng đẳng thức (hai số hạng đầu và cuối cùng dấu, số hạng giữa mang dấu trừ).
 
-**Chú ý:** trong hằng đẳng thức, số hạng cuối $B^2$ luôn mang dấu cộng, nên phương án có $-4y^2$ là sai.
+**Chú ý:** số hạng cuối $B^2$ luôn dương, nên phương án có $-4y^2$ là sai.
 
 **Phần 2. Trình bày**
 
@@ -201,6 +201,7 @@ A. Hình bình hành
 B. Hình vuông
 C. Hình thang cân
 D. Hình chữ nhật
+**Chưa chắc:** đề viết "hai cạnh đối song song" (một cặp) nên hiểu là hình thang có hai đường chéo bằng nhau ⇒ hình thang cân (C). Hình chữ nhật (D) cũng có hai đường chéo bằng nhau nhưng cần đủ hai cặp cạnh đối song song; nếu đề muốn nói hai cặp thì đáp án là D. Chọn C vì khớp dấu hiệu nhận biết hình thang cân.
 
 **Phần 1. Hướng dẫn**
 
@@ -281,7 +282,7 @@ d) $\widehat{CDE}=60^\circ$.
 
 **Bước 4.** Ý d: $DE$ là đường chéo của hình vuông $AEFD$ nên chia đôi góc $\widehat{ADF}$; dùng việc $F$ nằm trên cạnh $DC$ để suy ra số đo $\widehat{CDE}$.
 
-**Chú ý:** hình vuông phải có bốn góc vuông, nên ở ý b chỉ cần tính được một góc của tứ giác $AECF$ rồi so với $90^\circ$ là kết luận được, không cần xét thêm các cạnh.
+**Chú ý:** ở ý b, hình bình hành $AECF$ có hai cạnh kề $AE$, $EC$ không bằng nhau và góc $A$ không vuông nên không thể là hình vuông; chỉ cần một góc khác $90^\circ$ là đủ để loại.
 
 **Phần 2. Trình bày**
 
@@ -370,7 +371,7 @@ $=-33x^2+11$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** khai triển cả hai tích ở vế trái; hai hạng tử chứa $x^2$ trái dấu nhau nên triệt tiêu, chỉ còn một đẳng thức bậc nhất theo $x$.
+**Mấu chốt:** khai triển cả hai vế trái; hai hạng tử chứa $x^2$ trái dấu nhau nên triệt tiêu, chỉ còn một đẳng thức bậc nhất theo $x$.
 
 **Bước 1.** Khai triển $(4x+1)^2$ bằng hằng đẳng thức bình phương của một tổng, và nhân hai đa thức $(4x+1)(x-2)$ từng hạng tử với từng hạng tử.
 
@@ -402,7 +403,8 @@ Vậy $x=\dfrac{1}{4}$.
 
 ### Bài 2b | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Bạn Đăng định mua $x$ quyển vở với giá $y$ đồng. Nhưng khi đến cửa hàng, bạn Đăng thấy giá vở giảm $1500$ đồng mỗi quyển, nên bạn quyết định mua thêm $4$ quyển vở nữa. Tìm đa thức biểu thị số tiền bạn Đăng phải trả cho tổng số vở đã mua.
-**Ghi chú:** đề in "đa thức biểu thì" — sửa thành "biểu thị". Đề viết "với giá $y$ đồng" không nói rõ là giá mỗi quyển; lời giải hiểu $y$ là giá mỗi quyển (đề nói tiếp "giảm 1500 đồng mỗi quyển", và chỉ cách hiểu này mới cho kết quả là một đa thức).
+**Ghi chú:** đề in "đa thức biểu thì" — sửa thành "biểu thị".
+**Chưa chắc:** đề viết "với giá $y$ đồng" không nói rõ là giá mỗi quyển; hiểu là giá mỗi quyển (vì sau đó nói "giảm 1500 đồng mỗi quyển").
 
 **Phần 1. Hướng dẫn**
 
@@ -473,7 +475,7 @@ Vì $AHIC$ là hình bình hành nên $HI\parallel AC$.
 
 Vì $HM\perp AB$ và $AC\perp AB$ nên $HM\parallel AC$.
 
-Qua điểm $H$ có hai đường thẳng $HM$ và $HI$ cùng song song với $AC$ nên hai đường thẳng này trùng nhau (tiên đề Euclid).
+Qua điểm $H$ có hai đường thẳng $HM$ và $HI$ cùng song song với $AC$ nên hai đường thẳng này trùng nhau.
 
 Vậy $M$, $H$, $I$ thẳng hàng.
 
@@ -485,7 +487,7 @@ Xét tam giác $AHC$ có $AE$ là đường trung tuyến (vì $E$ là trung đi
 
 Hai đường trung tuyến $AE$ và $CF$ cắt nhau tại $G$ nên $G$ là trọng tâm của tam giác $AHC$.
 
-Do đó $AG=\dfrac{2}{3}AE$ (tính chất trọng tâm của tam giác).
+Do đó $AG=\dfrac{2}{3}AE$.
 
 Mà $E$ là trung điểm của $AI$ nên $AE=\dfrac{1}{2}AI$.
 
@@ -498,11 +500,11 @@ Suy ra $AG=\dfrac{2}{3} \cdot \dfrac{1}{2}AI=\dfrac{1}{3}AI$.
 
 **Mấu chốt:** viết $P$ thành **tổng của các bình phương cộng một hằng số**; vì bình phương luôn $\ge 0$ nên $P$ không nhỏ hơn hằng số đó.
 
-**Bước 1.** Nhóm các hạng tử có chứa $x$: $x^2+4xy+6x=x^2+2x(2y+3)$ có dạng $A^2+2AB$ với $A=x$, $B=2y+3$, nên thêm rồi bớt $B^2=(2y+3)^2$ để có bình phương của một tổng.
+**Bước 1.** Nhóm các hạng tử có chứa $x$: $x^2+4xy+6x$ gợi ý bình phương của một tổng dạng $(x+2y+3)^2$.
 
-**Bước 2.** Khai triển $(2y+3)^2$ vừa bớt đi rồi thu gọn với các hạng tử còn lại; phần này chỉ còn chứa $y$.
+**Bước 2.** Khai triển $(x+2y+3)^2$ rồi lấy $P$ trừ đi để xem phần còn lại chỉ chứa $y$ là gì.
 
-**Bước 3.** Phần còn lại là biểu thức bậc hai theo $y$, tách hằng số để viết nó thành bình phương của một tổng cộng một số.
+**Bước 3.** Phần còn lại là tam thức bậc hai theo $y$, viết thành bình phương của một tổng cộng một hằng số.
 
 **Bước 4.** Từ $P$ là tổng hai bình phương cộng hằng số, đánh giá giá trị nhỏ nhất và tìm $x$, $y$ để dấu bằng xảy ra.
 
@@ -512,13 +514,7 @@ Suy ra $AG=\dfrac{2}{3} \cdot \dfrac{1}{2}AI=\dfrac{1}{3}AI$.
 
 $P=x^2+5y^2+4xy+6x+16y+32$
 
-$=[x^2+2x(2y+3)+(2y+3)^2]-(2y+3)^2+5y^2+16y+32$
-
-$=(x+2y+3)^2-(4y^2+12y+9)+5y^2+16y+32$
-
-$=(x+2y+3)^2+y^2+4y+23$
-
-$=(x+2y+3)^2+(y^2+4y+4)+19$
+$=(x^2+4y^2+9+4xy+6x+12y)+(y^2+4y+4)+19$
 
 $=(x+2y+3)^2+(y+2)^2+19$
 
@@ -531,6 +527,7 @@ Vậy giá trị nhỏ nhất của $P$ là $19$, đạt được khi $x=1$, $y=
 ### Bài 4b | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Chứng minh rằng nếu $m, n\in\mathbb{Z}$ thoả mãn $3m^2+m=4n^2+n$ và $m\ge n$ thì $m-n$ và $4m+4n+1$ đều là số chính phương.
 **Ghi chú:** đề in "$m.n\in\mathbb{Z}$" — sửa thành "$m, n\in\mathbb{Z}$".
+**Chưa chắc:** đây là bài nâng cao (loại học sinh giỏi); lời giải dùng thêm kiến thức số học lớp 6 (ước nguyên tố, hai số nguyên tố cùng nhau, số chính phương) ngoài các chương Đại số 8 của đề. Đã tự kiểm bằng máy với mọi cặp $(m,n)$ trong khoảng $[-3000;3000]$ (chỉ có 4 cặp thoả đề) và hệ thức $(m-n)(4m+4n+1)=m^2$ đúng trong cả 4 trường hợp.
 
 **Phần 1. Hướng dẫn**
 
@@ -583,8 +580,8 @@ Do đó $m-n$ và $4m+4n+1$ đều là số chính phương.
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Bộ sách: KNTT (đoán theo nội dung đề). Đề chạm tới Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (Câu 4, 5, 6, Bài 1b, 2a, 4a) và Chương III (hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông). Không có Pythagore, phân thức, phân tích nhân tử. Bài 3 ý c dùng tính chất ba đường trung tuyến đồng quy tại trọng tâm (kiến thức Toán 7, nằm trong nền cho phép).
-- Đề có 14 mục lớn (8 trắc nghiệm, 2 Đúng/Sai, 4 bài tự luận), nhập thành 17 câu. Tách ý: Bài 1 thành Bài 1a, Bài 1b (hai bài tính độc lập); Bài 2 và Bài 4 mỗi bài là cái vỏ gom hai bài toán khác hẳn nhau, không chung dữ kiện (2a tìm $x$ · 2b bài lời văn; 4a giá trị nhỏ nhất · 4b số chính phương) nên mỗi bài toán một câu, giữ nhãn gốc a, b của đề. Bài 3 giữ một câu (bài hình, ba ý dùng chung hình và dữ kiện).
+- Đề có 10 mục lớn (8 trắc nghiệm, 2 Đúng/Sai, 4 bài tự luận). Tách ý: Bài 1 thành Bài 1a, Bài 1b (hai bài tính độc lập); Bài 2 thành Bài 2a (tìm $x$) và Bài 2b (bài lời văn, không chung dữ kiện với 2a); Bài 4 thành Bài 4a, Bài 4b (hai bài độc lập, không chung dữ kiện). Bài 3 giữ một câu (bài hình, ba ý dùng chung hình và dữ kiện).
 - Câu 9 và Câu 10 (Đúng/Sai) nhập dạng tự luận, lời giải xét từng mệnh đề.
-- Bài 2b "giá $y$ đồng" hiểu là giá mỗi quyển (xem dòng Ghi chú của câu). Bài 4b là câu nâng cao: ngoài nhân đa thức còn dùng số học lớp 6 (ước nguyên tố, hai số nguyên tố cùng nhau, số chính phương).
+- Câu 8 đề có thể hiểu hai cách (xem dòng Chưa chắc); Bài 2b "giá $y$ đồng" hiểu là giá mỗi quyển; Bài 4b ngoài chương trình Đại số 8 (xem dòng Chưa chắc).
 - Bài 3 đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải (không vẽ riêng đường thẳng $M, H, I$ thẳng hàng, không đánh dấu $AG=\dfrac{1}{3}AI$ vì là điều phải chứng minh). Kết quả đã kiểm bằng toạ độ số với 3 bộ $(AB, AC)$ khác nhau.
 - Bài 4a đáp số $19$ là số nguyên nên nhập trả lời ngắn.

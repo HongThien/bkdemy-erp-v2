@@ -95,7 +95,6 @@ A. $x^3y^2z^2$
 B. $x^3y^2z$
 C. $x^2y^2z^2$
 D. $x^3yz^2$
-**Ghi chú:** Bản đề gốc tô đỏ cả hai chữ A và D ở câu này. Chỉ A đúng; phương án D ($x^3yz^2$) thiếu một thừa số $y$.
 
 **Phần 1. Hướng dẫn**
 
@@ -267,15 +266,15 @@ D. Hình thang cân có hai góc kề một cạnh đáy bằng nhau.
 
 **Bước 1.** Nhắc lại định nghĩa hình thang cân để có thước đo cho cả bốn khẳng định.
 
-**Bước 2.** Khẳng định nào không trùng với định nghĩa thì thử bằng một hình cụ thể: tìm một hình thoả điều kiện nêu ra mà kết luận lại không đúng.
+**Bước 2.** Khẳng định nào chỉ nói tới "tứ giác" hoặc đổi tính chất của hai đáy thì kiểm tra bằng một hình ví dụ không phải hình thang cân.
 
 **Bước 3.** Chọn khẳng định trùng với định nghĩa và loại các khẳng định còn lại.
 
 **Phần 2. Trình bày**
 
-Khẳng định A sai: hình bình hành có một góc bằng $60^\circ$ có hai cạnh đối bằng nhau, nhưng hai góc kề một đáy của nó là $60^\circ$ và $120^\circ$, không bằng nhau, nên nó không phải là hình thang cân.
+Khẳng định A sai: hình bình hành có hai cạnh đối bằng nhau nhưng không phải là hình thang cân.
 
-Khẳng định B sai: hình thang cân có thể có một đáy dài hơn đáy kia, nên hai đáy không nhất thiết bằng nhau.
+Khẳng định B sai: hai đáy của hình thang cân không bằng nhau (hình thang có hai đáy bằng nhau là hình bình hành).
 
 Khẳng định C sai: hai góc kề một đáy của hình thang cân bằng nhau, chúng chỉ bù nhau khi cùng bằng $90^\circ$.
 
@@ -511,7 +510,7 @@ Vậy $2bc+b^2+c^2-a^2=4p(p-a)$.
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Bộ sách: KNTT (đoán theo nội dung đề). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, cộng, nhân, chia đa thức cho đơn thức) và Chương III (tứ giác, hình thang, hình thang cân, hình bình hành, hình vuông, hình chữ nhật). Đề có Bài 4 dạng hằng đẳng thức nhưng không có câu hằng đẳng thức nào khác, nên lời giải Bài 4 chỉ dùng quy tắc nhân đa thức (cách giải bằng $(b+c)^2-a^2$ không dùng).
-- Đề gốc có sẵn đáp án tô đỏ trên ảnh trang; đáp án trong tệp do tự giải và thử bằng máy, trùng với phần tô đỏ ở 11 câu; riêng Câu 4 bản đề tô đỏ cả A và D, chỉ A đúng (đã ghi chú trong câu).
+- Đề gốc có sẵn đáp án tô đỏ trên ảnh trang; đáp án trong tệp do tự giải và thử bằng máy, trùng với phần tô đỏ ở cả 12 câu trắc nghiệm.
 - Đề có 12 câu trắc nghiệm + 4 bài tự luận. Bài 1 có hai ý độc lập (nhóm đơn thức đồng dạng; phép chia đa thức cho đơn thức) nên tách thành Bài 1a, Bài 1b dù ý a không phải bài "Tính" thuần tuý; Bài 2 giữ một câu vì ý b dùng kết quả ý a.
 - Câu 8 phương án D in "$AB \equiv CD$" (ký hiệu đồng nhất) trong đề gốc, giữ nguyên.
 - Bài 3 đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải (đánh dấu $E$, $F$ là trung điểm, không đánh dấu $AF=EC$).

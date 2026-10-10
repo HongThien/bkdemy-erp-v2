@@ -547,41 +547,60 @@ $=(4x^2-4x^2)+(-4xy+xy-12xy)+(y^2+3y^2)$
 
 $=-15xy+4y^2$
 
-### Bài 3 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** a) Một mảnh vườn hình vuông có cạnh $8m$ được mở rộng cả hai bên thêm $y(m)$ như hình bên. Viết biểu thức (dạng đa thức thu gọn) biểu thị diện tích của mảnh vườn sau khi mở rộng.
-b) Cho hai số $a>b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a-b$.
+### Bài 3a | kho=dai | loai=tu_luan | dap_an=—
+**Đề:** Một mảnh vườn hình vuông có cạnh $8$ m được mở rộng cả hai bên thêm $y$ (m) như hình bên. Viết biểu thức (dạng đa thức thu gọn) biểu thị diện tích của mảnh vườn sau khi mở rộng.
 **Hình:** p2c3_1.png
-**Chưa chắc:** ý a, "diện tích của mảnh vườn sau khi mở rộng" hiểu là cả mảnh vườn hình vuông cạnh $8+y$ (gồm vườn cũ và phần mở rộng) nên đáp án $y^2+16y+64$; nếu chỉ tính phần tô màu thì là $y^2+16y$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** ý a là bình phương của một tổng $(8+y)^2$; ý b dùng hằng đẳng thức $(a-b)^2=a^2-2ab+b^2$ để đi từ $a^2+b^2$ và $ab$ sang $a-b$.
+**Mấu chốt:** sau khi mở rộng, mảnh vườn vẫn là một **hình vuông**, chỉ có cạnh dài thêm; diện tích của nó là bình phương của một tổng.
 
-**Bước 1.** Ý a: đọc hình để biết cạnh mảnh vườn sau khi mở rộng bằng cạnh cũ cộng phần thêm, từ đó viết diện tích hình vuông.
+**Bước 1.** Đọc hình: mỗi cạnh của mảnh vườn mới gồm đoạn $8$ m của vườn cũ nối với đoạn $y$ (m) thêm vào, từ đó viết độ dài cạnh mới theo $y$.
 
-**Bước 2.** Ý a: khai triển bình phương của tổng bằng hằng đẳng thức rồi sắp xếp thành đa thức thu gọn.
+**Bước 2.** Mảnh vườn mới là hình vuông nên diện tích bằng cạnh nhân cạnh, tức là bình phương của một tổng hai số hạng.
 
-**Bước 3.** Ý b: đề cho $a^2+b^2$ và $ab$ mà hỏi $a-b$, nên nghĩ tới bình phương của hiệu vì khai triển của nó chỉ chứa đúng hai đại lượng đó.
+**Bước 3.** Khai triển bằng hằng đẳng thức $(A+B)^2=A^2+2AB+B^2$, rồi sắp xếp các hạng tử theo luỹ thừa giảm dần của $y$ để được đa thức thu gọn.
 
-**Bước 4.** Ý b: thay số để tính $(a-b)^2$, rồi suy ra $a-b$ và dùng điều kiện $a>b$ để chọn giá trị đúng.
-
-**Chú ý:** từ $(a-b)^2=1$ có hai khả năng $a-b=1$ hoặc $a-b=-1$; điều kiện $a>b$ giúp loại một khả năng.
+**Chú ý:** đề hỏi diện tích của **cả mảnh vườn** sau khi mở rộng (gồm cả phần vườn cũ để trắng trong hình), không phải chỉ phần tô màu; và đề yêu cầu dạng đa thức thu gọn nên không dừng ở dạng bình phương.
 
 **Phần 2. Trình bày**
 
-a) Cạnh của mảnh vườn sau khi mở rộng là $8+y$ ($m$).
+Cạnh của mảnh vườn sau khi mở rộng là $8+y$ (m).
 
-Diện tích mảnh vườn sau khi mở rộng là:
+Diện tích của mảnh vườn sau khi mở rộng là:
 
-$(8+y)^2=8^2+2 \cdot 8y+y^2$
+$(8+y)^2=8^2+2 \cdot 8 \cdot y+y^2$
 
 $=y^2+16y+64$ ($m^2$)
 
-b) Ta có $(a-b)^2=a^2-2ab+b^2$
+Vậy biểu thức biểu thị diện tích của mảnh vườn sau khi mở rộng là $y^2+16y+64$ ($m^2$).
+
+### Bài 3b | kho=dai | loai=tra_loi_ngan | dap_an=1
+**Đề:** Cho hai số $a>b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a-b$.
+
+**Phần 1. Hướng dẫn**
+
+**Mấu chốt:** đề cho $a^2+b^2$ và $ab$ mà hỏi $a-b$; ba đại lượng này được nối với nhau bởi hằng đẳng thức **bình phương của một hiệu**.
+
+**Bước 1.** Nhận ra không cần tìm riêng $a$ và $b$: khai triển của $(a-b)^2$ chỉ chứa đúng hai đại lượng mà đề đã cho là $a^2+b^2$ và $ab$.
+
+**Bước 2.** Viết $(a-b)^2=a^2-2ab+b^2$, nhóm $a^2+b^2$ lại rồi thay các giá trị của đề để tính $(a-b)^2$.
+
+**Bước 3.** Từ giá trị của $(a-b)^2$ suy ra $a-b$: hai số đối nhau có cùng bình phương nên có hai khả năng.
+
+**Bước 4.** Dùng điều kiện $a>b$ để biết $a-b$ là số dương, từ đó chỉ giữ lại một khả năng.
+
+**Chú ý:** bỏ quên điều kiện $a>b$ thì sẽ kết luận thừa một giá trị âm.
+
+**Phần 2. Trình bày**
+
+Ta có $(a-b)^2=a^2-2ab+b^2$
 
 $=(a^2+b^2)-2ab$
 
-$=13-2 \cdot 6=1$
+$=13-2 \cdot 6$
+
+$=1$
 
 Vì $(a-b)^2=1$ nên $a-b=1$ hoặc $a-b=-1$.
 
@@ -654,7 +673,9 @@ Vậy $C$, $E$, $M$ thẳng hàng.
 
 - Bộ sách: KNTT (theo nội dung đề). Đề chạm tới: Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (Câu 7, 8, Bài 2b, Bài 3) và Chương III tới hình chữ nhật, hình thoi, hình vuông (Câu 11–16, Bài 4). Đề KHÔNG có phân tích nhân tử, Pythagore, đường trung bình nên lời giải không dùng. Bài 4 ý b, c tự chứng minh qua hình chữ nhật và hình bình hành; tính chất "tam giác cân: đường cao ứng với đáy cũng là trung tuyến" và "hai đường thẳng cùng vuông góc với một đường thì song song" là kiến thức lớp 7.
 - Đề này (mã đề B) có sẵn bảng đáp án trắc nghiệm in ở trang 2; đã giải độc lập rồi đối chiếu, khớp 16/16 câu.
-- Tách ý: Bài 1 → Bài 1a, 1b; Bài 2 → Bài 2a, 2b. Bài 3 có hai ý độc lập nhưng thuộc dạng bài lời văn / hỏi giá trị nên giữ chung một câu; Bài 4 là bài hình, không tách ý. Các câu tự luận đều đáp số là biểu thức nên đều `tu_luan`.
-- Hình: hình mảnh vườn của Bài 3 do máy cắt cụt và gắn nhầm vào Bài 2; đã cắt lại từ PDF thành `p2c3_1.png` và gắn đúng Bài 3 (tệp `p2c2_1.png` cũ không dùng nữa). Bài 4 đề không cho hình: vẽ bằng code `giai_bai4.png` (chỉ hiện ở lời giải, không vẽ $KI$ và $CM$ vì đó là điều phải chứng minh).
-- Lỗi in của đề: Câu 15 hai phương án A và C trùng nhau (giữ nguyên); Câu 16 "song snog" (đã sửa).
+- Tách ý: Bài 1 → Bài 1a, 1b; Bài 2 → Bài 2a, 2b. Bài 3 của đề chỉ là cái vỏ gom hai bài toán khác hẳn nhau (ý a: mảnh vườn, có hình; ý b: tính $a-b$), mỗi bài một bộ dữ kiện riêng nên tách thành Bài 3a, Bài 3b. Bài 4 là bài hình, không tách ý. Bài 3b đáp số là một số nguyên ($1$) nên nhập `tra_loi_ngan`; các câu tự luận còn lại đáp số là biểu thức hoặc là bài chứng minh nên `tu_luan`.
+- Bài 3a: đề hỏi "diện tích của mảnh vườn sau khi mở rộng" nên lấy cả hình vuông cạnh $8+y$ (đáp số $y^2+16y+64$), dù hình chỉ tô màu phần mở rộng.
+- Hình: hình mảnh vườn của Bài 3 do máy cắt cụt và gắn nhầm vào Bài 2; đã cắt lại từ PDF thành `p2c3_1.png` và gắn đúng Bài 3a (tệp `p2c2_1.png` cũ không dùng nữa). Bài 4 đề không cho hình: vẽ bằng code `giai_bai4.png` (chỉ hiện ở lời giải, không vẽ $KI$ và $CM$ vì đó là điều phải chứng minh).
+- Lỗi in của đề: Câu 15 hai phương án A và C trùng nhau (giữ nguyên); Câu 16 "song snog" (đã sửa); Câu 10 phương án D diễn đạt lỏng ("hai góc kề một cạnh") — xem dòng Chưa chắc của câu.
+- Mã đề A của cùng trường là GKI-10: cùng khuôn đề, trùng nguyên văn 7 câu trắc nghiệm (Câu 4, 7, 9, 10, 12, 13, 15); 9 câu trắc nghiệm còn lại và cả 4 bài tự luận đổi số / đổi điểm (dưới ngưỡng trùng 70%).
 - Không bỏ câu nào.
