@@ -10,18 +10,24 @@
    - de        : { tieuDe, html, chips: [...], chuY }     (đề viết lại bằng lời của mình)
    - thucTe    : (bài thực tế — thùng, mũ…) { tieuDe, html, tex: [phương trình CHỮ…], soTen, so: [dòng thay số…, dòng cuối là kết quả] }
                  ⇒ thêm bước "Đặt hệ trục"; ở bước Đề bài chỉ hiện vật thật (khối đã quay), chưa có trục / đường / nhãn
+                 thucTe.dePhang: true ⇒ đề cho sẵn HÌNH PHẲNG (mặt cắt qua trục, hình hình học): bước Đề bài hiện hình phẳng + tên điểm, chưa có trục
+                 thucTe.deCoO: true ⇒ điểm O đã có tên ngay trong đề
    - quayLoi   : (tuỳ chọn) câu dẫn riêng cho bước Quay
+   - doiXung   : true ⇒ đề vẽ hình ở CẢ HAI BÊN trục quay (hình thu nhỏ lấy khung đối xứng)     toMo: dải tô của nửa bên kia trục (cùng dạng với `to`, không quay)
+   - mauDau    : true ⇒ dồn điểm mẫu về hai đầu mỗi đoạn — dùng khi đường có tiếp tuyến vuông góc trục quay ở đầu mút (đỉnh parabol, cung tròn)
+   - doan      : [[t1, r1, t2, r2, 'dut'?]…] đoạn thẳng lẻ của hình ('dut' = nét đứt)     nhanDiem: [[t, r, 'A', dx, dy]…] tên điểm
    - duong     : các đường vẽ  { fn, t: [từ, tới], nhan, o: [t đặt nhãn, dx, dy] }          dung: [t…] các đường thẳng vuông góc trục quay đề cho
    - to        : các dải tô của (H)  { t: [từ, tới], tren: hàm|null, duoi: hàm|null, phia: 'tren'|'duoi' }   (null = trục quay)
                  dải phia 'duoi' là phần nằm DƯỚI trục — trang tự làm hoạt cảnh gấp lên
-   - vach, vachR : vạch số trên trục quay / trục kia     giong: [[t, r]…] nét gióng từ điểm xuống hai trục     diem: [[t, r]…] chấm điểm
+   - vach, vachR : vạch số trên trục quay / trục kia (vachR nhận cả [r, 'R'] ⇒ hiện "R = 10")     giong: [[t, r]…] nét gióng từ điểm xuống hai trục     diem: [[t, r]…] chấm điểm
    - vet       : [[t, r, 'tren'|'duoi']…] điểm để lại vết tròn khi quay
    - moc       : mốc chia miền trên trục quay  { chu, t, dy?, an? }   (an: chỉ hiện từ bước Chia miền)
    - mien      : từng miền  { t: [từ, tới], ngoai: hàm, trong: hàm|null, tex: công thức CHỮ, chu: chú thích ngắn, so: dòng THAY SỐ, nhan: [t, r] chỗ đặt số miền }
-   - chia      : { tieuDe, html, mocTen, mocDong: [tex…], mocKq: tex }      (bỏ nếu bài chỉ có 1 miền)
+                 an: true ⇒ miền đối xứng với miền đã kể: không liệt kê, không đánh số, chỉ để trang tự kiểm thể tích
+   - chia      : { tieuDe, html, mocTen, mocDong: [tex…], mocKq: tex, luu }      (bỏ nếu bài chỉ có 1 miền; mocDong bỏ được nếu mốc đã rõ từ trước)
    - bay       : cái bẫy (bỏ nếu không có)  { tieuDe, html, tex, giai, soTen, so: [tex…], kq: tex, ketLuan, sai: [html…], luu,
                    doan: [{ t, ngoai, trong, dau: 1|-1 }] }   — phần khối mà công thức sai cộng (xanh) / trừ (đỏ)
-   - tong      : { tieuDe, tex: công thức CHỮ, soTen, kq: tex, nguyenHam: [tex…], luu }
+   - tong      : { tieuDe, tex: công thức CHỮ, soTen, kq: tex, nguyenHam: [tex…], nguyenHamTen, luu }
    Trong tex: KHÔNG đưa chữ có dấu vào \text{}; số thập phân viết 2{,}40. */
 window.BAI_TRON_XOAY = (function () {
   const DS = [], PI = Math.PI
@@ -69,7 +75,7 @@ window.BAI_TRON_XOAY = (function () {
       tong: { tieuDe: 'Cộng ba miền',
         tex: String.raw`\begin{aligned}V&=V_1+V_2+V_3\\[0.5em]&=\pi\int_a^p\left(g^2-f^2\right)\mathrm{d}x\\[0.5em]&\quad+\pi\int_p^q g^2\,\mathrm{d}x+\pi\int_q^b f^2\,\mathrm{d}x\end{aligned}`,
         soTen: 'a = 1, p = 2, q = 3, b = 6',
-        kq: String.raw`\begin{aligned}V&=\frac{64\pi}{5}+\frac{37\pi}{3}+\frac{153\pi}{5}\[0.4em]&=\frac{836\pi}{15}\approx 175{,}09\end{aligned}`,
+        kq: String.raw`\begin{aligned}V&=\frac{64\pi}{5}+\frac{37\pi}{3}+\frac{153\pi}{5}\\[0.4em]&=\frac{836\pi}{15}\approx 175{,}09\end{aligned}`,
         nguyenHam: [String.raw`\int g^2\,\mathrm{d}x=-\frac{(6-x)^3}{3}`, String.raw`\begin{aligned}\int f^2\,\mathrm{d}x&=\frac{x^5}{5}-4x^4+\frac{88x^3}{3}\\[0.4em]&\quad-96x^2+144x\end{aligned}`],
         luu: String.raw`Cùng hai hàm <i>f</i>, <i>g</i> như ở bước “Cái bẫy”, nhưng chia miền theo vị trí của <i>(H)</i> so với trục quay rồi mới lắp công thức.` },
     }) }
@@ -181,6 +187,52 @@ window.BAI_TRON_XOAY = (function () {
         soTen: 'R = 5, r = 4, l = 10 (dm) · tiền = 7 thùng × 30 nghìn × V',
         kq: String.raw`\begin{aligned}V&=\frac{10\pi}{15}\left(200+80+48\right)=\frac{656\pi}{3}\\[0.4em]&\approx 686{,}96\ \text{dm}^3\\[0.6em]210\,V&=45\,920\,\pi\approx 144\,261{,}9\\[0.4em]M&=144\,262\end{aligned}`,
         luu: String.raw`<b>Đừng làm tròn giữa chừng.</b> Nếu lấy mỗi thùng 687 lít rồi mới nhân thì ra 144 270, lệch 8 nghìn đồng so với kết quả đúng.` },
+    }) }
+
+  // ───────── Câu 45 (NBV 12-18 F) — đề cho mặt cắt qua trục; quay quanh Oy ─────────
+  { const R = 10, h1 = 5, h2 = 20, f = y => R * (1 - Math.sqrt(Math.max(0, y) / h2)), tru = () => R
+    DS.push({
+      id: '45', maCau: null, ten: 'Mũ ông già Noel', nguon: 'NBV 12-18 F · câu 45',
+      moTa: 'Đề cho mặt cắt qua trục của cái mũ: vành mũ là hình chữ nhật, thân mũ là cung parabol. Quay quanh Oy nên phải viết x theo y. Hai miền.',
+      truc: 'y', dapSo: 2500 * PI / 3, doiXung: true, mauDau: true,
+      ve: { t: [-9.5, 24.5], r: [-14.5, 15.5], ngam: { tx: 0.5, ty: 7, tz: 0, r: 19.5 } },
+      de: { tieuDe: 'Thể tích chiếc mũ là bao nhiêu?',
+        html: String.raw`<p>Bạn An làm một cái mũ “cách điệu” cho ông già Noel. Cái mũ có dạng một <b>khối tròn xoay</b>; hình bên là <b>mặt cắt qua trục</b> của nó.</p>
+          <p>Biết <i>OO′</i> = 5 cm, <i>OA</i> = 10 cm, <i>OB</i> = 20 cm; đường cong <i>AB</i> là một phần của parabol có <b>đỉnh là điểm <i>A</i></b>. Tính thể tích của chiếc mũ.</p>`,
+        chips: ['OO′ = 5 cm', 'OA = 10 cm', 'OB = 20 cm', 'cung AB: parabol đỉnh A'] },
+      thucTe: { dePhang: true, deCoO: true, tieuDe: 'Đặt hệ trục trên mặt cắt',
+        html: String.raw`<p>Đặt gốc tại <i>O</i>, trục <i>Oy</i> trùng với trục của mũ, trục <i>Ox</i> đi qua <i>A</i>. Mặt cắt đối xứng qua <i>Oy</i> nên chỉ cần quay <b>nửa bên phải</b>.</p>
+          <p>Gọi <i>R</i> = <i>OA</i>, <i>h</i>₁ = <i>OO′</i>, <i>h</i>₂ = <i>OB</i>. Cung <i>AB</i> là parabol đỉnh <i>A</i>(<i>R</i>; 0), đi qua <i>B</i>(0; <i>h</i>₂). Quay quanh <i>Oy</i> thì bán kính là <i>x</i>, nên phải viết <b><i>x</i> theo <i>y</i></b>.</p>`,
+        tex: [String.raw`y=k\left(x-R\right)^2,\quad y(0)=h_2\ \Rightarrow\ k=\frac{h_2}{R^2}`, String.raw`x=R\left(1-\sqrt{\frac{y}{h_2}}\right)\quad (0\le x\le R)`],
+        soTen: 'R = 10 · h₁ = 5 · h₂ = 20 (cm)',
+        so: [String.raw`k=\frac{20}{10^2}=\frac15\ \Rightarrow\ y=\frac{(x-10)^2}{5}`, String.raw`x=10-\sqrt{5y}`] },
+      quayLoi: 'Quay nửa bên phải của mặt cắt quanh trục <i>Oy</i>. Hình chữ nhật vạch ra vành mũ, phần nằm dưới cung parabol vạch ra thân mũ.',
+      duong: [{ fn: f, t: [0, h2], nhan: 'x = R(1 − √(y/h₂))', o: [12, 5.4, 0] }, { fn: y => -f(y), t: [0, h2] }, { fn: tru, t: [-h1, 0] }, { fn: () => -R, t: [-h1, 0] }],
+      doan: [[-h1, -R, -h1, R], [0, -R, 0, R, 'dut'], [-h1, 0, h2, 0, 'dut']],
+      to: [{ t: [-h1, 0], tren: tru, duoi: null, phia: 'tren' }, { t: [0, h2], tren: f, duoi: null, phia: 'tren' }],
+      toMo: [{ t: [-h1, 0], tren: null, duoi: () => -R, phia: 'tren' }, { t: [0, h2], tren: null, duoi: y => -f(y), phia: 'tren' }],
+      vach: [-5, 20], vachR: [[10, 'R']], giong: [],
+      diem: [[0, 10], [h2, 0], [-h1, 0]],
+      nhanDiem: [[0, 10, 'A', 0.75, -0.85], [h2, 0, 'B', 0.75, -0.3], [-h1, 0, 'O′', 1.25, 0.95]],
+      vet: [[0, 10, 'tren'], [-h1, 10, 'tren']],
+      moc: [{ chu: '−h₁', t: -5, dy: 1.15, dx: -1.3 }, { chu: 'h₂', t: 20, dx: -0.6 }],
+      mien: [
+        { t: [-h1, 0], ngoai: tru, trong: null, chu: 'vành mũ: khối trụ', nhan: [-2.5, 5],
+          tex: String.raw`V_1=\pi\int_{-h_1}^{0}R^2\,\mathrm{d}y=\pi R^2h_1`, so: String.raw`V_1=\pi\cdot 10^2\cdot 5=500\pi` },
+        { t: [0, h2], ngoai: f, trong: null, chu: 'thân mũ: tới parabol', nhan: [4.2, 2.6],
+          tex: String.raw`V_2=\pi\int_{0}^{h_2}x^2\,\mathrm{d}y`, so: String.raw`V_2=\pi\int_0^{20}\left(10-\sqrt{5y}\right)^2\mathrm{d}y=\frac{1000\pi}{3}` },
+      ],
+      chia: { tieuDe: 'Chia hai miền theo chiều cao',
+        html: String.raw`<p>Đi dọc trục quay <i>Oy</i>, bán kính của khối đổi theo hai quy luật khác nhau, nên chia làm hai miền tại <i>y</i> = 0.</p>
+          <p><b>Miền 1</b> (vành mũ): bán kính luôn bằng <i>R</i>, quay ra một <b>khối trụ</b>. <b>Miền 2</b> (thân mũ): bán kính là hoành độ <i>x</i> của điểm trên cung parabol, giảm từ <i>R</i> về 0.</p>`,
+        luu: String.raw`Quay quanh <i>Oy</i>: công thức là π∫<i>x</i>²d<i>y</i>, cận lấy theo <i>y</i>.` },
+      tong: { tieuDe: 'Cộng hai miền',
+        tex: String.raw`\begin{aligned}V&=V_1+V_2\\[0.5em]&=\pi R^2h_1+\pi\int_0^{h_2}R^2\left(1-\sqrt{\frac{y}{h_2}}\right)^2\mathrm{d}y\\[0.5em]&=\pi R^2h_1+\frac{\pi R^2h_2}{6}=\pi R^2\left(h_1+\frac{h_2}{6}\right)\end{aligned}`,
+        soTen: 'R = 10, h₁ = 5, h₂ = 20 (cm)',
+        kq: String.raw`\begin{aligned}V&=500\pi+\frac{1000\pi}{3}=\frac{2500\pi}{3}\\[0.4em]&\approx 2618\ \text{cm}^3\end{aligned}`,
+        nguyenHamTen: 'Tích phân đã dùng',
+        nguyenHam: [String.raw`u=\frac{y}{h_2}\ \Rightarrow\ \mathrm{d}y=h_2\,\mathrm{d}u`, String.raw`\int_0^{h_2}x^2\,\mathrm{d}y=R^2h_2\int_0^1\left(1-\sqrt{u}\right)^2\mathrm{d}u`, String.raw`\int_0^1\left(1-2\sqrt{u}+u\right)\mathrm{d}u=1-\frac43+\frac12=\frac16`],
+        luu: String.raw`Thân mũ chỉ bằng <b>1/6</b> khối trụ có cùng đáy và cùng chiều cao (π<i>R</i>²<i>h</i>₂), vì cung parabol lõm sâu vào phía trục.` },
     }) }
 
   return DS
