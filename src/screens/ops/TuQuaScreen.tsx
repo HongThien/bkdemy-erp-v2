@@ -83,8 +83,8 @@ export default function TuQuaScreen() {
       <OpsHero tone="orange" bgImage="/bk-ui/bg_ops_tuqua.jpg" bgAspect={700 / 1448} bgFill />
 
       {/* Thanh tab đặt HẲN dưới header (nền trắng đục) — CEO 07/09: đặt đè lên ảnh header bị trùng, khó nhìn */}
-      <div className="mx-auto max-w-[760px] px-3 pt-3">
-        <div className="relative mx-auto flex rounded-2xl bg-white p-1 shadow-sm">
+      <div className="mx-auto max-w-[760px] px-3 pt-3 lg:max-w-[1100px] lg:px-6 lg:pt-4">
+        <div className="relative mx-auto flex rounded-2xl bg-white p-1 shadow-sm lg:max-w-[560px]">
           {([['doi', '🎁 Đổi'], ['don', '📦 Đơn'], ['kho', '🗃️ Kho'], ['ls', '🕘 Lịch sử']] as [Muc, string][]).map(([k, lbl]) => (
             <button key={k} onClick={() => setMuc(k)}
               className={`min-h-[40px] flex-1 rounded-xl text-[13.5px] font-bold transition ${muc === k ? 'bg-[#FFE9D2] text-[#9A3E10]' : 'text-[#9AA5C4] active:bg-[#F7F9FF]'}`}>
@@ -94,7 +94,7 @@ export default function TuQuaScreen() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
+      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3 lg:max-w-[1100px] lg:px-6 lg:pb-8">
         {muc === 'doi' && <DoiTab bao={bao} />}
         {muc === 'don' && <DonTab bao={bao} />}
         {muc === 'kho' && <KhoTab bao={bao} />}
@@ -209,7 +209,7 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
         ) : catalog.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 py-10 text-center text-[13px] text-slate-400">Không thấy quà khớp “{timQua}”.</div>
         ) : (
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
             {catalog.map((q) => {
               const het = q.ton <= 0
               const duXu = (soDu ?? hs?.so_du ?? 0) >= q.gia_xu

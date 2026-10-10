@@ -94,16 +94,18 @@ export default function DiemDanhBuoi() {
     <div>
       {/* hero lục: icon lịch-check · tiêu đề · điều hướng ngày (pill trắng nổi) */}
       <OpsHero tone="green" title="Điểm danh buổi học" right={<img src={OA('attendance/header_calendar_badge.svg')} alt="" className="h-9 w-9" draggable={false} />}>
-        <div className="relative mx-auto mt-2.5 flex max-w-[760px] items-center gap-2 rounded-2xl bg-white px-2 py-2 shadow-sm">
+        <div className="relative mx-auto mt-2.5 max-w-[760px] lg:max-w-[1100px]">
+        <div className="flex items-center gap-2 rounded-2xl bg-white px-2 py-2 shadow-sm lg:max-w-[420px]">
           <button onClick={() => setNgay((n) => congNgay(n, -1))} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E0FBE9] text-[15px] font-bold text-[#0E6B37] active:bg-[#c9f5d9]">‹</button>
           <button onClick={() => setNgay(homNay)} className="flex flex-1 items-center justify-center gap-1.5 text-[13.5px] font-extrabold text-[#16224D]">
             <IcoCalendar cls="h-4 w-4 text-[#16A34A]" />{thuCuaNgay(ngay)} · {ddmmVN(ngay)}{ngay === homNay ? ' (hôm nay)' : ''}
           </button>
           <button onClick={() => setNgay((n) => congNgay(n, 1))} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E0FBE9] text-[15px] font-bold text-[#0E6B37] active:bg-[#c9f5d9]">›</button>
         </div>
+        </div>
       </OpsHero>
 
-      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
+      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3 lg:max-w-[1100px] lg:px-6 lg:pb-8 lg:pt-5">
         {err && <p className="mb-2 rounded-2xl bg-[#FFE1E7] px-3 py-2 text-[13px] text-[#9F2244]">{err}</p>}
         {loading ? <p className="py-10 text-center text-sm text-[#9AA5C4]">Đang tải…</p> : list.length === 0 ? (
           <OpsEmptyState icon={<span className="text-[40px]">🌤️</span>} title="Ngày này không có buổi học nào" />
@@ -117,7 +119,7 @@ export default function DiemDanhBuoi() {
               {hienMo && nhom.mo.length > 0 && (
                 <section>
                   <p className="mb-1.5 pl-1 text-[11px] font-bold uppercase tracking-wide text-[#9AA5C4]">Đã mở · {nhom.mo.length}</p>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:gap-2.5">
                     {nhom.mo.map((ba) => {
                       const td = tienDo[ba.buoi!.id]
                       const du = td && td.tong > 0 && td.daDanh >= td.tong
@@ -144,7 +146,7 @@ export default function DiemDanhBuoi() {
               {hienChua && nhom.chua.length > 0 && (
                 <section>
                   <p className="mb-1.5 pl-1 text-[11px] font-bold uppercase tracking-wide text-[#9AA5C4]">Chưa mở · {nhom.chua.length}</p>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:gap-2.5">
                     {nhom.chua.map((ba) => (
                       <div key={ba.lop.id} className="flex min-h-[64px] items-center gap-3 rounded-2xl bg-white px-3.5 py-3 shadow-sm">
                         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F1F3FA] text-[12.5px] font-bold text-[#6B7AAE]">{hhmm(ba.slot.gio_bat_dau)}</span>
@@ -162,7 +164,7 @@ export default function DiemDanhBuoi() {
               {hienHuy && nhom.huy.length > 0 && (
                 <section>
                   <p className="mb-1.5 pl-1 text-[11px] font-bold uppercase tracking-wide text-[#9AA5C4]">Đã hủy · {nhom.huy.length}</p>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:gap-2.5">
                     {nhom.huy.map((ba) => (
                       <div key={ba.lop.id} className="flex items-center gap-3 rounded-2xl bg-white px-3.5 py-3 shadow-sm">
                         <div className="min-w-0 flex-1 opacity-60">
@@ -246,21 +248,21 @@ function BuoiDetailOps({ buoiId, onBack }: { buoiId: string; onBack: () => void 
       <OpsHero tone="green" onBack={onBack} title="" right={
         <button onClick={huyBuoiNay} className="shrink-0 rounded-full bg-white/15 px-2.5 py-1.5 text-[12px] font-semibold text-white active:bg-white/25">Hủy buổi</button>
       }>
-        <div className="relative mx-auto -mt-1 flex max-w-[760px] items-center gap-3">
+        <div className="relative mx-auto -mt-1 flex max-w-[760px] items-center gap-3 lg:max-w-[1100px]">
           <div className="min-w-0 flex-1">
             <p className="truncate text-[19px] font-extrabold text-white">{buoi.lop?.ten_lop ?? '?'} <span className="text-[13px] font-normal text-white/70">· {buoi.lop?.mon ?? ''}</span></p>
             <p className="text-[12px] text-white/75">{ddmmVN(buoi.ngay)} · {hhmm(buoi.gio_bat_dau)}–{hhmm(buoi.gio_ket_thuc)} · {buoi.phong ?? '—'}{gvTen ? ` · GV ${gvTen.trim().split(/\s+/).slice(-2).join(' ')}` : ''}</p>
           </div>
           <span className="rounded-full bg-white/20 px-3 py-1.5 text-[13.5px] font-bold text-white">{daDanh}/{roster.length}</span>
         </div>
-        <div className="relative mx-auto mt-2.5 h-1.5 max-w-[760px] rounded-full bg-black/15">
+        <div className="relative mx-auto mt-2.5 h-1.5 max-w-[760px] rounded-full bg-black/15 lg:max-w-[1100px]">
           <div className="h-1.5 rounded-full bg-white transition-all" style={{ width: roster.length ? `${(daDanh / roster.length) * 100}%` : '0%' }} />
         </div>
       </OpsHero>
 
-      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
+      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3 lg:max-w-[1100px] lg:px-6 lg:pb-8 lg:pt-5">
         {err && <p className="mb-2 rounded-2xl bg-[#FFE1E7] px-3 py-2 text-[13px] text-[#9F2244]">{err}</p>}
-        <div className="mb-3 flex items-center gap-2">
+        <div className="mb-3 flex items-center gap-2 lg:max-w-[520px]">
           <button onClick={() => setBaoDen(true)}
             className="min-h-[44px] flex-1 rounded-2xl bg-white px-4 text-[14px] font-bold text-[#0E6B37] shadow-sm active:bg-[#F7F9FF]">
             💬 Báo đến PH{chuaBao ? ` (${chuaBao})` : ''}
@@ -273,7 +275,7 @@ function BuoiDetailOps({ buoiId, onBack }: { buoiId: string; onBack: () => void 
         </div>
         {baoDen && <BaoDenModalOps roster={roster} onClose={() => setBaoDen(false)} onDone={reload} />}
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:gap-2.5">
           {roster.map((r, i) => (
             <div key={r.id} className="flex items-center gap-2.5 rounded-2xl bg-white py-2 pl-3 pr-1.5 shadow-sm">
               <Ava ten={tenHT[i] ?? '?'} img={r.hoc_sinh?.anh_url} />
@@ -289,7 +291,7 @@ function BuoiDetailOps({ buoiId, onBack }: { buoiId: string; onBack: () => void 
               <button onClick={() => xoa(r)} title="Gỡ HS khỏi buổi (xếp nhầm lớp)" className="min-h-[44px] rounded-xl px-1.5 text-[13px] text-[#C7D0E8] active:bg-[#FFE1E7] active:text-[#9F2244]">✕</button>
             </div>
           ))}
-          {roster.length === 0 && <p className="py-8 text-center text-sm text-[#9AA5C4]">Buổi chưa có HS nào (lớp chưa ghi danh?).</p>}
+          {roster.length === 0 && <p className="py-8 text-center text-sm text-[#9AA5C4] lg:col-span-2">Buổi chưa có HS nào (lớp chưa ghi danh?).</p>}
         </div>
         {roster.length > 0 && (
           <p className="mt-3 text-center text-[12.5px] text-[#6B7AAE]">{chuaDD > 0 ? `Còn ${chuaDD} bạn chưa điểm danh` : '✓ Đã điểm danh đủ cả lớp'}</p>
