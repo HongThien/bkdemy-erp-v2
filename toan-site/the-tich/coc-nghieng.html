@@ -62,7 +62,7 @@ const M = MoHinh({
   },
 })
 if (!M) return
-const { RM, $, $$, clamp, fmt, tn, tex, scene, camera, mkLine, setLine, setView, clock, anims, label, dot } = M
+const { RM, $, $$, clamp, fmt, tn, tex, scene, camera, mkLine, setLine, setView, clock, anims, label, dot, flat, capNet } = M
 
 // ═══ 3. TRẠNG THÁI ═══
 const S = {
@@ -152,24 +152,20 @@ function updateWater() {
   buildWater(t, end ? 0 : level(t))
 }
 
-// Cạnh của cái nêm: mỗi cạnh vẽ 2 lần — nét liền (chỗ nhìn thấy) + nét đứt (chỗ bị khối che)
+// Cạnh của cái nêm: mỗi cạnh vẽ 2 lần — nét liền (chỗ nhìn thấy) + nét đứt (chỗ bị khối che); M.capNet của khung lo
 const bookSolid = new THREE.Group(), bookDash = new THREE.Group(), consSolid = new THREE.Group(), consDash = new THREE.Group()
 cup.add(bookSolid, bookDash, consSolid, consDash)
-function pair(P, o, gs, gd) {
-  gs.add(mkLine(P, Object.assign({}, o, { depthFunc: THREE.LessEqualDepth })))
-  gd.add(mkLine(P, Object.assign({}, o, { width: (o.width || 2) * 0.8, opacity: (o.opacity || 1) * 0.75, dashed: true, depthFunc: THREE.GreaterDepth })))
-}
 { const arcB = [], arcT = [], al = [], N = 72
   for (let i = 0; i <= N; i++) { const a = i / N * Math.PI; arcB.push(R * Math.cos(a), 0, R * Math.sin(a)); arcT.push(R * Math.cos(a), H * Math.sin(a), R * Math.sin(a)) }
-  pair([-R, 0, 0, R, 0, 0], { color: 0xffb547, width: 3.4 }, bookSolid, bookDash)   // đường kính AB
-  pair(arcB, { color: 0xbff3ff, width: 3 }, bookSolid, bookDash)                    // nửa đường tròn đáy
-  pair(arcT, { color: 0xbff3ff, width: 3 }, bookSolid, bookDash)                    // nửa elip trên thành cốc
-  pair([0, 0, 0, 0, 0, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // OK
-  pair([0, 0, R, 0, H, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // KI
-  pair([0, 0, 0, 0, H, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // OI
+  capNet([-R, 0, 0, R, 0, 0], { color: 0xffb547, width: 3.4 }, bookSolid, bookDash)   // đường kính AB
+  capNet(arcB, { color: 0xbff3ff, width: 3 }, bookSolid, bookDash)                    // nửa đường tròn đáy
+  capNet(arcT, { color: 0xbff3ff, width: 3 }, bookSolid, bookDash)                    // nửa elip trên thành cốc
+  capNet([0, 0, 0, 0, 0, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // OK
+  capNet([0, 0, R, 0, H, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // KI
+  capNet([0, 0, 0, 0, H, R], { color: 0xffffff, width: 2, opacity: 0.9 }, consSolid, consDash)   // OI
   for (let i = 0; i <= 16; i++) { const a = i / 16 * ALPHA; al.push(0, 1.7 * Math.sin(a), 1.7 * Math.cos(a)) }
-  pair(al, { color: 0xffb547, width: 2.2 }, consSolid, consDash)                                // cung góc α
-  pair([0, 0, R - 0.8, 0, 0.8, R - 0.8, 0, 0.8, R], { color: 0xffffff, width: 1.6, opacity: 0.8 }, consSolid, consDash)   // góc vuông tại K
+  capNet(al, { color: 0xffb547, width: 2.2 }, consSolid, consDash)                                // cung góc α
+  capNet([0, 0, R - 0.8, 0, 0.8, R - 0.8, 0, 0.8, R], { color: 0xffffff, width: 1.6, opacity: 0.8 }, consSolid, consDash)   // góc vuông tại K
 }
 const wSil = [mkLine([0, 0, 0, 0, 1, 0], { color: 0xbff3ff, width: 3 }), mkLine([0, 0, 0, 0, 1, 0], { color: 0xbff3ff, width: 3 })]   // đường sinh biên của nêm
 wSil.forEach(l => cup.add(l))
@@ -189,7 +185,6 @@ function area(ax, t) {
   if (ax === 'z') return 2 * Math.sqrt(Math.max(0, R * R - t * t)) * t * TAN
   const b = Math.acos(clamp(t / TAN / R, 0, 1)); return R * R * (b - Math.sin(b) * Math.cos(b))
 }
-const flat = (P, close) => { const o = []; for (const p of P) o.push(p[0], p[1], p[2]); if (close) o.push(P[0][0], P[0][1], P[0][2]); return o }
 
 const sliceGroup = new THREE.Group(); cup.add(sliceGroup)
 const sliceMesh = new THREE.Mesh(new THREE.BufferGeometry(), new THREE.MeshBasicMaterial({ color: 0xffb547, transparent: true, opacity: 0.8, side: THREE.DoubleSide, depthTest: false, depthWrite: false }))
@@ -207,47 +202,12 @@ function updateSlice() {
   if (y) { auxCircle.position.y = t; const e = P[0]; setLine(auxRad, [e[0], t, e[2], 0, t, 0, 0, t, t / TAN]) }
 }
 
-// Chồng n lát: mỗi lát = lăng trụ có đáy là lát cắt ở GIỮA khoảng, dày Δ (quy tắc điểm giữa)
-const slabGroup = new THREE.Group(); cup.add(slabGroup)
-const slabMats = [new THREE.MeshLambertMaterial({ color: 0xffb547, side: THREE.DoubleSide }), new THREE.MeshLambertMaterial({ color: 0xe08a22, side: THREE.DoubleSide })]
-const slabEdgeMat = new THREE.LineBasicMaterial({ color: 0x3a2300, transparent: true, opacity: 0.6 })
-let slab = null, slabRun = 0
-function buildSlabs() {
-  while (slabGroup.children.length) { const c = slabGroup.children.pop(); c.geometry.dispose() }
-  const ax = S.axis, ai = AX[ax], lo = RANGE[ax][0], hi = RANGE[ax][1], n = S.n, dt = (hi - lo) / n
-  const pos = [[], []], edge = [], sums = []; let acc = 0, vps = 0, eps = 0
-  const at = (p, v) => { const q = p.slice(); q[ai] = v; return q }
-  for (let i = 0; i < n; i++) {
-    const a = lo + i * dt, b = a + dt, m = (a + b) / 2, P = poly(ax, m), A = pos[i % 2], k0 = A.length, e0 = edge.length, np = P.length
-    for (let j = 1; j < np - 1; j++) A.push(...at(P[0], a), ...at(P[j], a), ...at(P[j + 1], a), ...at(P[0], b), ...at(P[j + 1], b), ...at(P[j], b))
-    for (let j = 0; j < np; j++) { const p = P[j], q = P[(j + 1) % np]; A.push(...at(p, a), ...at(q, a), ...at(q, b), ...at(p, a), ...at(q, b), ...at(p, b)) }
-    if (n <= 16) {
-      for (let j = 0; j < np; j++) { const p = P[j], q = P[(j + 1) % np]; edge.push(...at(p, a), ...at(q, a), ...at(p, b), ...at(q, b)) }
-      for (const j of (ax === 'y' ? [0, np - 1] : P.map((_, j) => j))) edge.push(...at(P[j], a), ...at(P[j], b))
-    }
-    vps = (A.length - k0) / 3; eps = (edge.length - e0) / 3
-    acc += area(ax, m) * dt; sums.push(acc)
-  }
-  for (let k = 0; k < 2; k++) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos[k], 3)); g.computeVertexNormals(); const mesh = new THREE.Mesh(g, slabMats[k]); mesh.userData.k = k; mesh.frustumCulled = false; slabGroup.add(mesh) }
-  if (edge.length) { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(edge, 3)); const ls = new THREE.LineSegments(g, slabEdgeMat); ls.userData.edge = true; ls.frustumCulled = false; slabGroup.add(ls) }
-  slab = { n, vps, eps, sums, dt }
-}
-function showSlabs(r) {   // hiện r lát đầu
-  if (!slab) return
-  for (const c of slabGroup.children) {
-    if (c.userData.edge) c.geometry.setDrawRange(0, r * slab.eps)
-    else c.geometry.setDrawRange(0, (c.userData.k ? Math.floor(r / 2) : Math.ceil(r / 2)) * slab.vps)
-  }
-}
+// Chồng n lát (M.chongLat của khung): mỗi lát = lăng trụ có đáy là lát cắt ở GIỮA khoảng, dày Δ (quy tắc điểm giữa)
+const CL = M.chongLat(cup)
 function playSlabs() {
-  buildSlabs(); S.reveal = 0; showSlabs(0); syncSum()
-  const run = ++slabRun, n = S.n, t0 = clock(), dur = RM ? 1 : 500 + 14 * n
-  anims.push(now => {
-    if (run !== slabRun || S.step !== 5) return true
-    const k = Math.min(1, (now - t0) / dur), r = Math.round(k * n)
-    if (r !== S.reveal) { S.reveal = r; showSlabs(r); syncSum() }
-    return k >= 1
-  })
+  const ax = S.axis
+  CL.chay({ poly: t => poly(ax, t), truc: AX[ax], lo: RANGE[ax][0], hi: RANGE[ax][1], n: S.n, dienTich: t => area(ax, t), canhBen: ax === 'y' ? np => [0, np - 1] : null },
+    { con: () => S.step === 5, khi: r => { S.reveal = r; syncSum() } })
 }
 
 // ═══ 6. NHÃN + CHẤM ĐIỂM (toạ độ trong hệ của cốc) ═══
@@ -282,7 +242,7 @@ function syncScene() {
   glass.visible = g > 0; glassMat.opacity = liquid ? 0.07 : 0.025
   for (const l of glassLines) l.material.opacity = g
   sliceGroup.visible = S.frozen && st === 4 && up
-  slabGroup.visible = S.frozen && st === 5 && up
+  CL.nhom.visible = S.frozen && st === 5 && up
   // Đường sinh biên (đổi theo góc nhìn): tiếp tuyến kẻ từ hình chiếu của máy quay tới đường tròn đáy
   camL.copy(camera.position); cup.worldToLocal(camL)
   const rho = Math.hypot(camL.x, camL.z), ok = rho > R * 1.02
@@ -435,7 +395,7 @@ function sync4() {
   updateSlice()
 }
 function syncSum() {
-  if (!$('#sum5') || !slab) return
+  const slab = CL.lat; if (!$('#sum5') || !slab) return
   const r = S.reveal, v = r ? slab.sums[r - 1] : 0, full = r === slab.n
   $('#n5').textContent = full ? slab.n : r + '/' + slab.n
   $('#sum5').textContent = fmt(v, 2)

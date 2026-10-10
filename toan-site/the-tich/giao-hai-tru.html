@@ -73,7 +73,7 @@ const M = MoHinh({
   },
 })
 if (!M) return
-const { RM, $, $$, fmt, tn, tex, scene, mkLine, setLine, setView, clock, anims, label, dot } = M
+const { RM, $, $$, fmt, tn, tex, scene, mkLine, setLine, setView, label, dot, flat, capNet, luoi, matGhiSau } = M
 
 // ═══ 3. TRẠNG THÁI ═══
 const S = {
@@ -85,71 +85,53 @@ const S = {
 }
 
 // ═══ 4. VẬT THỂ ═══
-const flat = (P, close) => { const o = []; for (const p of P) o.push(p[0], p[1], p[2]); if (close) o.push(P[0][0], P[0][1], P[0][2]); return o }
-function GB() {   // gom nhiều mảnh mặt (lưới tham số) vào một BufferGeometry
-  const pos = [], idx = []
-  return {
-    them(f, ns, nt) {
-      const b = pos.length / 3
-      for (let i = 0; i <= ns; i++) for (let j = 0; j <= nt; j++) pos.push(...f(i / ns, j / nt))
-      for (let i = 0; i < ns; i++) for (let j = 0; j < nt; j++) { const a = b + i * (nt + 1) + j, c = a + nt + 1; idx.push(a, c, a + 1, a + 1, c, c + 1) }
-      return this
-    },
-    geo() { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals(); return g },
-  }
-}
 const phong = (color, opacity) => new THREE.MeshPhongMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x335566, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
-const ghiSau = () => new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
 const mesh = (geo, mat, order) => { const m = new THREE.Mesh(geo, mat); m.renderOrder = order; m.frustumCulled = false; scene.add(m); return m }
-// Nét khuất kiểu sách: lượt vẽ "chỉ ghi độ sâu" của khối (renderOrder âm) + mỗi cạnh vẽ 2 lần — nét liền chỗ nhìn thấy, nét đứt chỗ bị khối che
-function pair(P, o, gs, gd) {
-  gs.add(mkLine(P, Object.assign({}, o, { depthFunc: THREE.LessEqualDepth })))
-  gd.add(mkLine(P, Object.assign({}, o, { width: (o.width || 2) * 0.8, opacity: (o.opacity || 1) * 0.75, dashed: true, depthFunc: THREE.GreaterDepth })))
-}
+// Nét khuất kiểu sách (M.matGhiSau + M.capNet của khung): lượt vẽ "chỉ ghi độ sâu" của khối + mỗi cạnh vẽ 2 lần — nét liền chỗ nhìn thấy, nét đứt chỗ bị che
 const nhom = () => { const g = new THREE.Group(); scene.add(g); return g }
 const cung = (f, n) => { const o = []; for (let i = 0; i <= (n || 48); i++) o.push(...f(i / (n || 48) * HQ)); return o }
 
 // Hai khối 1/4 trụ. Viết cho khối 1 (trục Oy) trong toạ độ toán rồi đổi qua Pm; khối 2 dùng K2.
 function taoKhoi(Pm, mau) {
-  const geo = GB()
+  const geo = luoi()
     .them((s, t) => Pm(A * Math.cos(s * HQ), t * L, A * Math.sin(s * HQ)), 40, 1)                 // mặt cong
     .them((s, t) => Pm(s * A, t * L, 0), 1, 1)                                                     // mặt đứng phía sau
     .them((s, t) => Pm(0, t * L, s * A), 1, 1)                                                     // mặt đáy
     .them((s, t) => Pm(t * A * Math.cos(s * HQ), 0, t * A * Math.sin(s * HQ)), 40, 1)              // hai đầu: 1/4 hình tròn
     .them((s, t) => Pm(t * A * Math.cos(s * HQ), L, t * A * Math.sin(s * HQ)), 40, 1).geo()
-  const mat = phong(mau, 0.3), k = { mau, mat, mesh: mesh(geo, mat, 3), sau: mesh(geo, ghiSau(), -10), lien: nhom(), dut: nhom() }
+  const mat = phong(mau, 0.3), k = { mau, mat, mesh: mesh(geo, mat, 3), sau: mesh(geo, matGhiSau(), -10), lien: nhom(), dut: nhom() }
   const o = { color: MAU.net, width: 2.6 }
-  pair([...Pm(A, 0, 0), ...Pm(A, L, 0)], o, k.lien, k.dut)   // cạnh trên của mặt đứng
-  pair([...Pm(0, 0, 0), ...Pm(0, L, 0)], o, k.lien, k.dut)   // trục của khối
-  pair([...Pm(0, 0, A), ...Pm(0, L, A)], o, k.lien, k.dut)   // mép trước trên sàn
-  for (const y of [0, L]) { pair([...Pm(A, y, 0), ...Pm(0, y, 0), ...Pm(0, y, A)], o, k.lien, k.dut); pair(cung(u => Pm(A * Math.cos(u), y, A * Math.sin(u))), o, k.lien, k.dut) }
+  capNet([...Pm(A, 0, 0), ...Pm(A, L, 0)], o, k.lien, k.dut)   // cạnh trên của mặt đứng
+  capNet([...Pm(0, 0, 0), ...Pm(0, L, 0)], o, k.lien, k.dut)   // trục của khối
+  capNet([...Pm(0, 0, A), ...Pm(0, L, A)], o, k.lien, k.dut)   // mép trước trên sàn
+  for (const y of [0, L]) { capNet([...Pm(A, y, 0), ...Pm(0, y, 0), ...Pm(0, y, A)], o, k.lien, k.dut); capNet(cung(u => Pm(A * Math.cos(u), y, A * Math.sin(u))), o, k.lien, k.dut) }
   return k
 }
 const khoi = [taoKhoi(K1, MAU.k1), taoKhoi(K2, MAU.k2)]
 const giaoPts = cung(u => T(A * Math.cos(u), A * Math.sin(u), A * Math.sin(u)))   // đường giao của hai mặt cong: y = z
-const giaoLien = nhom(), giaoDut = nhom(); pair(giaoPts, { color: MAU.net, width: 2.6 }, giaoLien, giaoDut)
+const giaoLien = nhom(), giaoDut = nhom(); capNet(giaoPts, { color: MAU.net, width: 2.6 }, giaoLien, giaoDut)
 
 // Phần chung (H): hai mảnh mặt cong (mỗi mảnh thuộc một khối trụ), đáy vuông, hai mặt đứng là 1/4 hình tròn
-const hGeo = GB()
+const hGeo = luoi()
   .them((s, t) => { const z = A * Math.sin(s * HQ); return T(A * Math.cos(s * HQ), t * z, z) }, 48, 1)   // mảnh của khối 1 (phía z ≥ y)
   .them((s, t) => { const y = A * Math.sin(s * HQ); return T(A * Math.cos(s * HQ), y, t * y) }, 48, 1)   // mảnh của khối 2 (phía y ≥ z)
   .them((s, t) => T(0, s * A, t * A), 1, 1)
   .them((s, t) => T(t * A * Math.cos(s * HQ), 0, t * A * Math.sin(s * HQ)), 40, 1)
   .them((s, t) => T(t * A * Math.cos(s * HQ), t * A * Math.sin(s * HQ), 0), 40, 1).geo()
-const hMat = phong(MAU.k1, 0.42), hMesh = mesh(hGeo, hMat, 2), hSau = mesh(hGeo, ghiSau(), -10)
+const hMat = phong(MAU.k1, 0.42), hMesh = mesh(hGeo, hMat, 2), hSau = mesh(hGeo, matGhiSau(), -10)
 const hLien = nhom(), hDut = nhom()
 { const o = { color: MAU.netH, width: 3 }
-  pair(cung(u => T(A * Math.cos(u), A * Math.sin(u), 0)), o, hLien, hDut)    // cung trên mặt z = 0
-  pair(cung(u => T(A * Math.cos(u), 0, A * Math.sin(u))), o, hLien, hDut)    // cung trên mặt y = 0
-  pair(giaoPts, o, hLien, hDut)
-  pair(flat([T(0, 0, 0), T(0, A, 0), T(0, A, A), T(0, 0, A)], true), o, hLien, hDut)   // đáy vuông
-  pair(flat([T(0, 0, 0), T(A, 0, 0)]), o, hLien, hDut) }                               // cạnh đứng
+  capNet(cung(u => T(A * Math.cos(u), A * Math.sin(u), 0)), o, hLien, hDut)    // cung trên mặt z = 0
+  capNet(cung(u => T(A * Math.cos(u), 0, A * Math.sin(u))), o, hLien, hDut)    // cung trên mặt y = 0
+  capNet(giaoPts, o, hLien, hDut)
+  capNet(flat([T(0, 0, 0), T(0, A, 0), T(0, A, A), T(0, 0, A)], true), o, hLien, hDut)   // đáy vuông
+  capNet(flat([T(0, 0, 0), T(A, 0, 0)]), o, hLien, hDut) }                               // cạnh đứng
 
 // Hệ trục Oxyz (từ bước 3)
 const trucLien = nhom(), trucDut = nhom(), trucMui = nhom(), DT = 1.5 * A
 { const o = { color: 0xffffff, width: 2, opacity: 0.9 }, mat = new THREE.MeshBasicMaterial({ color: 0xffffff }), geo = new THREE.ConeGeometry(0.13, 0.46, 16)
   for (const [p, rx, rz] of [[T(DT, 0, 0), 0, 0], [T(0, DT, 0), Math.PI / 2, 0], [T(0, 0, DT), 0, -Math.PI / 2]]) {
-    pair(flat([T(0, 0, 0), p]), o, trucLien, trucDut)
+    capNet(flat([T(0, 0, 0), p]), o, trucLien, trucDut)
     const c = new THREE.Mesh(geo, mat); c.position.set(p[0], p[1], p[2]); c.rotation.set(rx, 0, rz); trucMui.add(c) } }
 
 // Lát cắt ở độ cao x: hình vuông MNQP (+ 1/4 hình tròn tâm M ở bước 7)
@@ -174,33 +156,10 @@ function updateSlice() {
   quatGeo.attributes.position.needsUpdate = true; setLine(quatVien, v)
 }
 
-// Chồng n lát: mỗi lát là một hộp đáy vuông, cạnh lấy ở GIỮA khoảng (quy tắc điểm giữa)
-const slabG = nhom()
-const slabMats = [new THREE.MeshLambertMaterial({ color: 0xffb547 }), new THREE.MeshLambertMaterial({ color: 0xe08a22 })]
-const slabEdgeMat = new THREE.LineBasicMaterial({ color: 0x3a2300, transparent: true, opacity: 0.6 })
-let slab = null, slabRun = 0
-function buildSlabs() {
-  while (slabG.children.length) { const c = slabG.children.pop(); c.geometry.dispose() }
-  const n = S.n, dx = A / n, sums = []; let acc = 0
-  for (let i = 0; i < n; i++) {
-    const m = (i + 0.5) * dx, s = canh(m), g = new THREE.BoxGeometry(s, dx, s), b = new THREE.Mesh(g, slabMats[i % 2])
-    b.position.set(s / 2, m, s / 2); b.userData.i = i; slabG.add(b)
-    if (n <= 16) { const e = new THREE.LineSegments(new THREE.EdgesGeometry(g), slabEdgeMat); e.position.copy(b.position); e.userData.i = i; slabG.add(e) }
-    acc += s * s * dx; sums.push(acc / (A * A * A))
-  }
-  slab = { n, sums }
-}
-function showSlabs(r) { for (const c of slabG.children) c.visible = c.userData.i < r }
-function playSlabs() {
-  buildSlabs(); S.reveal = 0; showSlabs(0); syncSum()
-  const run = ++slabRun, n = S.n, t0 = clock(), dur = RM ? 1 : 500 + 14 * n
-  anims.push(now => {
-    if (run !== slabRun || M.step !== 5) return true
-    const k = Math.min(1, (now - t0) / dur), r = Math.round(k * n)
-    if (r !== S.reveal) { S.reveal = r; showSlabs(r); syncSum() }
-    return k >= 1
-  })
-}
+// Chồng n lát dọc Ox (M.chongLat của khung). Lát ở độ cao x là hình vuông; trong cảnh Ox là trục đứng (toạ độ thứ 1).
+const CL = M.chongLat()
+const vuongTai = x => { const c = canh(x); return [T(x, 0, 0), T(x, c, 0), T(x, c, c), T(x, 0, c)] }
+const playSlabs = () => CL.chay({ poly: vuongTai, truc: 1, lo: 0, hi: A, n: S.n, dienTich: x => canh(x) ** 2 }, { con: () => M.step === 5, khi: r => { S.reveal = r; syncSum() } })
 
 // Khối lập phương cạnh a (bước 6) + 1/8 khối cầu bán kính a (bước 7)
 const hopG = nhom()
@@ -209,7 +168,7 @@ const hopG = nhom()
   for (const [y, z] of [[1, 0], [1, 1], [0, 1]]) hopG.add(mkLine(flat([c(0, y, z), c(1, y, z)]), o)) }
 // Khối cầu nằm TRONG (H) nên không được thử độ sâu: lượt ghi độ sâu của (H) (để vẽ nét khuất) sẽ che mất nó
 const cauMat = phong(MAU.k2, 0.46); cauMat.depthTest = false
-const cau = mesh(GB().them((s, t) => T(A * Math.cos(s * HQ), A * Math.sin(s * HQ) * Math.cos(t * HQ), A * Math.sin(s * HQ) * Math.sin(t * HQ)), 36, 36).geo(), cauMat, 3)
+const cau = mesh(luoi().them((s, t) => T(A * Math.cos(s * HQ), A * Math.sin(s * HQ) * Math.cos(t * HQ), A * Math.sin(s * HQ) * Math.sin(t * HQ)), 36, 36).geo(), cauMat, 3)
 const cauVien = mkLine(cung(u => T(0, A * Math.cos(u), A * Math.sin(u))), { color: 0xffd3e6, width: 2.4, order: 6, depthTest: false }); scene.add(cauVien)   // 1/4 đường tròn trên sàn
 
 // ═══ 5. NHÃN + CHẤM ĐIỂM ═══
@@ -240,7 +199,7 @@ function dongBo() {
   hMat.depthTest = !noi; hMesh.renderOrder = noi ? 4 : 2
   trucLien.visible = trucDut.visible = trucMui.visible = st >= 3
   sliceG.visible = lat(); quat.visible = quatVien.visible = st === 7; banKinh[0].visible = banKinh[1].visible = st === 4
-  slabG.visible = st === 5
+  CL.nhom.visible = st === 5
   hopG.visible = st === 6 && S.cube
   cau.visible = cauVien.visible = st === 7
 }
@@ -316,8 +275,8 @@ function syncLat() {
   updateSlice()
 }
 function syncSum() {
-  if (!$('#sum5') || !slab) return
-  const r = S.reveal, v = r ? slab.sums[r - 1] : 0, full = r === slab.n, d = v - 2 / 3
+  const slab = CL.lat; if (!$('#sum5') || !slab) return
+  const r = S.reveal, v = r ? slab.sums[r - 1] / (A * A * A) : 0, full = r === slab.n, d = v - 2 / 3
   $('#n5').textContent = full ? slab.n : r + '/' + slab.n
   $('#sum5').textContent = fmt(v, 4)
   $('#off5').textContent = full ? 'lệch ' + (d >= 0 ? '+' : '−') + fmt(Math.abs(d), 4) + ' so với 2/3 ≈ 0,6667' : ''

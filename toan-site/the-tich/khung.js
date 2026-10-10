@@ -239,8 +239,83 @@ window.MoHinh = function (cfg) {
     run(ms) { const b = clock(); for (let t = 16; t <= ms; t += 16) tick(b + t); skew += ms },
     snap(name) { tick(clock()); return fetch('/_snap?name=' + (name || 'the-tich'), { method: 'POST', body: cv.toDataURL('image/jpeg', 0.9) }).then(r => r.text()) } }
 
+  // ── đồ nghề cho bài THIẾT DIỆN (rút từ ba bài 43, 47, 44 — spec S.4) ──
+  const flat = (P, close) => { const o = []; for (const p of P) o.push(p[0], p[1], p[2]); if (close) o.push(P[0][0], P[0][1], P[0][2]); return o }
+  // Nét khuất kiểu sách: khối cần một lượt vẽ "chỉ ghi độ sâu" (mesh dùng matGhiSau(), renderOrder âm); mỗi cạnh vẽ 2 lần bằng capNet —
+  // nét liền chỗ nhìn thấy (vào nhóm gs), nét đứt chỗ bị khối che (vào nhóm gd).
+  // BẪY: vật nằm TRONG khối đó (lát cắt, khối lồng bên trong) phải depthTest:false, không thì bị chính lượt ghi độ sâu che mất.
+  const matGhiSau = () => new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+  function capNet(P, o, gs, gd) {
+    gs.add(mkLine(P, Object.assign({}, o, { depthFunc: THREE.LessEqualDepth })))
+    gd.add(mkLine(P, Object.assign({}, o, { width: (o.width || 2) * 0.8, opacity: (o.opacity || 1) * 0.75, dashed: true, depthFunc: THREE.GreaterDepth })))
+  }
+  // Gom nhiều mảnh mặt tham số vào một BufferGeometry: luoi().them((s, t) => [x, y, z], ns, nt).them(…).geo()   (s, t chạy 0 → 1; tam giác xếp theo dải s)
+  function luoi() {
+    const pos = [], idx = []
+    return {
+      them(f, ns, nt) {
+        const b = pos.length / 3
+        for (let i = 0; i <= ns; i++) for (let j = 0; j <= nt; j++) { const p = f(i / ns, j / nt); pos.push(p[0], p[1], p[2]) }
+        for (let i = 0; i < ns; i++) for (let j = 0; j < nt; j++) { const a = b + i * (nt + 1) + j, c = a + nt + 1; idx.push(a, c, a + 1, a + 1, c, c + 1) }
+        return this
+      },
+      geo() { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals(); return g },
+    }
+  }
+  // Chồng n lát: mỗi lát = lăng trụ có đáy là lát cắt ở GIỮA khoảng, dày Δ (quy tắc điểm giữa).
+  //   const CL = chongLat(cha)                       // cha: Object3D chứa các lát (mặc định scene)
+  //   CL.chay(c, { con: () => còn ở bước chồng lát, khi: r => đã hiện r lát })   hoặc CL.dung(c); CL.hien(r)
+  //   c = { poly: t => [[x, y, z]…]   đa giác LỒI của lát tại t — MỌI t phải trả cùng số đỉnh
+  //         truc: 0|1|2               toạ độ chạy dọc hướng chồng (t, lo, hi tính theo toạ độ ấy)
+  //         lo, hi, n, dienTich: t => S(t),   canhBen: np => [chỉ số đỉnh có vẽ cạnh bên] (mặc định mọi đỉnh; lát có cung tròn thì chỉ lấy hai đầu dây) }
+  //   CL.lat = { n, dt, sums }        sums[i] = tổng thể tích i + 1 lát đầu
+  function chongLat(cha) {
+    const g = new THREE.Group(); (cha || scene).add(g)
+    const mats = [new THREE.MeshLambertMaterial({ color: 0xffb547, side: THREE.DoubleSide }), new THREE.MeshLambertMaterial({ color: 0xe08a22, side: THREE.DoubleSide })]
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x3a2300, transparent: true, opacity: 0.6 })
+    let lat = null, luot = 0
+    function dung(c) {
+      while (g.children.length) { const x = g.children.pop(); x.geometry.dispose() }
+      const ai = c.truc, n = c.n, dt = (c.hi - c.lo) / n, pos = [[], []], edge = [], sums = []; let acc = 0, vps = 0, eps = 0
+      const at = (p, v) => { const q = p.slice(); q[ai] = v; return q }
+      for (let i = 0; i < n; i++) {
+        const a = c.lo + i * dt, b = a + dt, m = (a + b) / 2, P = c.poly(m), A = pos[i % 2], k0 = A.length, e0 = edge.length, np = P.length
+        for (let j = 1; j < np - 1; j++) A.push(...at(P[0], a), ...at(P[j], a), ...at(P[j + 1], a), ...at(P[0], b), ...at(P[j + 1], b), ...at(P[j], b))
+        for (let j = 0; j < np; j++) { const p = P[j], q = P[(j + 1) % np]; A.push(...at(p, a), ...at(q, a), ...at(q, b), ...at(p, a), ...at(q, b), ...at(p, b)) }
+        if (n <= 16) {
+          for (let j = 0; j < np; j++) { const p = P[j], q = P[(j + 1) % np]; edge.push(...at(p, a), ...at(q, a), ...at(p, b), ...at(q, b)) }
+          for (const j of (c.canhBen ? c.canhBen(np) : P.map((_, j) => j))) edge.push(...at(P[j], a), ...at(P[j], b))
+        }
+        vps = (A.length - k0) / 3; eps = (edge.length - e0) / 3
+        acc += c.dienTich(m) * dt; sums.push(acc)
+      }
+      for (let k = 0; k < 2; k++) { const ge = new THREE.BufferGeometry(); ge.setAttribute('position', new THREE.Float32BufferAttribute(pos[k], 3)); ge.computeVertexNormals(); const me = new THREE.Mesh(ge, mats[k]); me.userData.k = k; me.frustumCulled = false; g.add(me) }
+      if (edge.length) { const ge = new THREE.BufferGeometry(); ge.setAttribute('position', new THREE.Float32BufferAttribute(edge, 3)); const ls = new THREE.LineSegments(ge, edgeMat); ls.userData.edge = true; ls.frustumCulled = false; g.add(ls) }
+      lat = { n, dt, sums, vps, eps }
+      return lat
+    }
+    function hien(r) {   // hiện r lát đầu
+      if (!lat) return
+      for (const x of g.children) {
+        if (x.userData.edge) x.geometry.setDrawRange(0, r * lat.eps)
+        else x.geometry.setDrawRange(0, (x.userData.k ? Math.floor(r / 2) : Math.ceil(r / 2)) * lat.vps)
+      }
+    }
+    function chay(c, o) {   // dựng rồi cho các lát hiện dần
+      dung(c); hien(0); o.khi(0)
+      const my = ++luot, t0 = clock(), dur = RM ? 1 : 500 + 14 * c.n; let da = 0
+      anims.push(now => {
+        if (my !== luot || !o.con()) return true
+        const k = Math.min(1, (now - t0) / dur), r = Math.round(k * c.n)
+        if (r !== da) { da = r; hien(r); o.khi(r) }
+        return k >= 1
+      })
+    }
+    return { nhom: g, dung, hien, chay, get lat() { return lat } }
+  }
+
   Object.assign(M, { RM, $, $$, clamp, fmt, tn, tex, stage, panel, views: $('#views'), scene, camera, renderer, mkLine, setLine, view, goal, setView,
-    clock, anims, label, dot, renderPanel, syncChips, goStep, start,
+    clock, anims, label, dot, renderPanel, syncChips, goStep, start, flat, matGhiSau, capNet, luoi, chongLat,
     token: () => token, alive: my => my === token })   // token = số lượt chuyển bước; hoạt cảnh cũ tự dừng khi !alive(my)
   Object.defineProperty(M, 'step', { get: () => step })   // khai riêng vì Object.assign chép GIÁ TRỊ của getter
   return M
