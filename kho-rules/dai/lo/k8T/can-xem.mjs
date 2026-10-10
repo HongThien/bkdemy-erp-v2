@@ -64,12 +64,12 @@ const muc = (nhan, html) => `<div class="muc"><div class="nhan">${esc(nhan)}</di
 const A = [
   the('Bài 50 — sách in hai ý cùng một đa thức', anh(18, 1115, 200, 'Bài 50, đề và lời giải của sách')
     + muc('Trả lời câu hỏi của chị', doan('Đây là **đề bài của sách**, không phải bước biến đổi do tôi thêm: ý a) sách in sẵn dạng đã tách $x^2+3x+2x+6$, ý b) mới là dạng thường $x^2+5x+6$. Lời giải ý b) của sách đi qua đúng biểu thức của ý a).'))
-    + muc('Ý a) — bản định xoá', trongKho('D1.50a@p18', { loiGiai: false })) + muc('Ý b) — bản giữ', trongKho('D1.50b@p18', { loiGiai: false })),
-    'Xoá mềm ý a) (câu T18T010201025) vì cùng một đa thức, cùng đáp án với ý b)? Hay giữ cả hai như sách (ý a là bài tập làm quen cách nhóm)?'),
+    + muc('Ý a)', '<p>Đã xoá mềm (câu T18T010201025).</p>') + muc('Ý b) — giữ', trongKho('D1.50b@p18', { loiGiai: false })),
+    'Chị chốt 10/10: bỏ ý a). Đã xoá mềm, giữ ý b).', true),
   the('Bài 53 — ý a) là ý b) đã thêm bớt sẵn', anh(19, 725, 190, 'Bài 53, đề và kết quả của sách')
     + muc('Trả lời câu hỏi của chị', doan('Cũng là **đề của sách**: ý a) in $x^4+4+4x^2-4x^2$ (đã thêm bớt $4x^2$ sẵn), ý b) là $x^4+4$. Hai ý cùng kết quả.'))
-    + muc('Ý a) — bản định xoá', trongKho('D1.53a@p19', { loiGiai: false })) + muc('Ý b) — bản giữ', trongKho('D1.53b@p19', { loiGiai: false })),
-    'Xoá mềm ý a) (câu T18T000000002)? Hay giữ cả hai?'),
+    + muc('Ý a)', '<p>Đã xoá mềm (câu T18T000000002).</p>') + muc('Ý b) — giữ', trongKho('D1.53b@p19', { loiGiai: false })),
+    'Chị chốt 10/10: bỏ ý a). Đã xoá mềm, giữ ý b).', true),
 ]
 const B = [
   the('Bài 35 ý b — đề sách thiếu điều kiện', anh(13, 1205, 90, 'Bài 35, đề') + anh(14, 95, 360, 'Bài 35, lời giải của sách (ý b dừng giữa chừng)')
@@ -96,19 +96,19 @@ const C = [
   the('Ba câu cùng họ "$a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$"', anh(15, 595, 135, 'NĐT bài 38 c') + anh(18, 95, 170, 'NĐT bài 48')
     + muc('Câu đã duyệt từ trước', khoMa('T18T010301006')) + muc('Bài 38 c (mới)', trongKho('D1.38c@p15', { loiGiai: false })) + muc('Bài 48 (mới)', trongKho('D1.48@p18', { loiGiai: false }))
     + muc('Vì sao máy nghi', doan('Ba câu chỉ khác nguồn đề và số mũ cần tính ($2015$, $2010$, $2004$); đáp số đều bằng $2$, cách giải như nhau. Máy không tự bỏ loại này.')),
-    'Giữ cả ba (ba đề thi khác nhau), hay chỉ giữ một?'),
+    'Chị chốt 10/10: giữ cả ba — đề riêng cứ để riêng, coi như biến thể.', true),
   the('Bài 84 b và bài 57 b — hai đề khác nhau, cùng một đa thức', anh(20, 935, 85, 'NĐT bài 57, đề') + anh(28, 1195, 105, 'NĐT bài 84, đề')
     + muc('Bài 57 b', trongKho('D1.57b@p20', { loiGiai: false })) + muc('Bài 84 b', trongKho('D1.84b@p28', { loiGiai: false }))
     + muc('Vì sao máy nghi', doan('Khai triển đề bài 84 b ra thì được đúng đa thức của bài 57 b, nên kết quả giống nhau. Nhưng đề viết khác hẳn và bước đầu (khai triển, ước lược) là việc riêng của 84 b.')),
-    'Tôi nghĩ nên giữ cả hai. Chị gật hay bỏ một?'),
+    'Chị chốt 10/10: giữ cả hai — giống hệt nhau mới bỏ, form đề khác nhau thì giữ.', true),
 ]
 const CHO = ['D1.36@p14', 'D1.55a@p19', 'D1.26b@p10', 'D1.26d@p11', 'D1.80a@p27', 'D1.80b@p27', 'D1.86@p29']
 const D = CHO.map((ma) => {
   const c = lo[ma], a = c?.nhom_soan, b = mu[ma]?.dang
   const ten = (x) => (!x || /000000$/.test(x) ? 'không nhóm nào khớp (dạng chờ)' : tenNhom[x] ?? x)
-  return the(`Bài ${bai[ma]?.bai}${bai[ma]?.y ? ' ' + bai[ma].y : ''} — hai lượt gán nhóm lệch nhau`, muc('Trong kho', trongKho(ma))
+  return the(`Bài ${bai[ma]?.bai}${bai[ma]?.y ? ' ' + bai[ma].y : ''} — hai lượt gán nhóm lệch nhau, chị đã chốt`, muc('Trong kho', trongKho(ma))
     + muc('Lượt soạn chọn', `<p>${esc(ten(a))}</p>`) + muc('Lượt gán độc lập chọn', `<p>${esc(ten(b))}${mu[ma]?.ly_do ? ` <span class="mo">— ${esc(mu[ma].ly_do)}</span>` : ''}</p>`),
-    'Chị chọn nhóm ở màn Duyệt › Chưa phân dạng.')
+    `Chị chốt 10/10: ${ten(theoNguon[ma]?.dang_chinh)}. Đã xếp vào nhóm này.`, true)
 })
 
 const html = `<title>8T — câu cần chị xem</title>
@@ -143,15 +143,15 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 <p class="dan">Kho Đại 8T sau hai lô đầu (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn, chương I). Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
 <nav><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Chưa chốt nhóm (${D.length})</a></nav>
 <h2 id="a">A. Hai cặp máy báo trùng — đề sách in đúng như vậy</h2>
-<p class="dan">Chị hỏi "cái kia là biến đổi chứ, hay đề bài thế?". Cả hai đều là đề của sách: sách cho ý a) ở dạng đã tách sẵn để dẫn sang ý b).</p>
+<p class="dan">Chị hỏi "cái kia là biến đổi chứ, hay đề bài thế?". Cả hai đều là đề của sách: sách cho ý a) ở dạng đã tách sẵn để dẫn sang ý b). Chị đã chốt bỏ ý a) ở cả hai bài.</p>
 ${A.join('\n')}
 <h2 id="b">B. Sách in sai hoặc đề thiếu</h2>
-<p class="dan">Sáu câu đầu đã xử lý trong kho — chị xem lại cách xử lý. Câu cuối chưa nhập, chờ chị quyết.</p>
+<p class="dan">Sáu câu đầu đã xử lý trong kho và chị đã xem. Câu cuối (bài 89 b) chưa nhập, còn chờ chị quyết.</p>
 ${B.join('\n')}
 <h2 id="c">C. Máy nghi trùng nhưng không tự bỏ</h2>
 ${C.join('\n')}
 <h2 id="d">D. Bảy câu chưa chốt nhóm bài</h2>
-<p class="dan">Hai lượt gán nhóm độc lập chọn khác nhau nên câu đang ở "Chưa phân dạng". Lời giải thì đã có.</p>
+<p class="dan">Hai lượt gán nhóm độc lập chọn khác nhau; chị đã chọn nhóm cho cả bảy câu, kho đã xếp theo.</p>
 ${D.join('\n')}
 <h2>Lỗi in nhỏ của sách, không ảnh hưởng đề và đáp số</h2>
 <p class="dan">Bài 20 b: dòng đầu lời giải in ${toan('4x^4')} thay cho ${toan('4x^2')}. Bài 26 a: dòng kết luận in "a =" thay cho "A =". Bài 38 b: dòng khai triển in ${toan('3xy')} thiếu mũ. Bài 75 a: in ${toan('(2-2)Q(-2)')} thay cho ${toan('(-2+2)Q(-2)')}. Bài 79 b: in ${toan('(m^3+3)')} thay cho ${toan('(m^2+3)')}. Bài 85: hai chỗ gõ nhầm trong các bước giữa. Lời giải trong kho viết theo biểu thức đúng.</p>

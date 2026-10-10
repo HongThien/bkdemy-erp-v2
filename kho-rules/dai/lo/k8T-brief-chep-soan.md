@@ -103,6 +103,12 @@ Xếp theo **MỤC TIÊU của đề** trước: đề bảo giải phương tr�
 là ghi **đúng `tang`** theo tiêu đề tầng in trong sách ("Bài tập cơ bản" / "Bài tập nâng cao" / "Bài thi chọn học sinh giỏi").
 
 Ranh giới đã chốt qua các lô (lô 1, 10/10 — hai lượt gán lệch nhau ở đây):
+- ⭐ **CEO 10/10 (chốt 7 câu hai lượt gán lệch nhau):** *"Ưu tiên các dạng ở đây là dùng biến đổi và phân tích thành nhân tử, chưa có công cụ lớn đâu."* ⇒ bài của các chương
+  đa thức – hằng đẳng thức – nhân tử mà phân vân giữa một nhóm "biến đổi" và một nhóm "công cụ / kỹ thuật riêng" thì chọn nhóm **biến đổi**:
+  - Bất đẳng thức chứng minh bằng phân tích thành nhân tử / hằng đẳng thức (kể cả bất đẳng thức ba cạnh tam giác) ⇒ `T18T030101` *Xét hiệu, biến đổi tương đương*, không phải `030103`.
+  - *"Bậc 3 hầu như là nhẩm nghiệm"* ⇒ phân tích đa thức **bậc ba** ⇒ `T18T010203`, kể cả khi tách hạng tử cũng ra.
+  - Xác định đa thức khi biết các số dư ⇒ `T18T010401` (Bê-du). · Chứng minh một số không là lập phương / luỹ thừa bằng kẹp hoặc số dư ⇒ `T18T040102`.
+  - Từ điều kiện suy ra một đẳng thức / một hệ thức giữa các chữ (kể cả "lập hệ thức giữa $a,b,c$", "là tổng của ba số chính phương") ⇒ `T18T010302`.
 - **Phương trình bậc ≥ 3** (kể cả khi chỉ cần nhóm hạng tử đưa về tích) ⇒ `T18T020102` *bậc cao*. `T18T020101` chỉ cho phương trình bậc 1–2 và phương trình chứa ẩn ở mẫu.
   (Sách Trần Thị Vân Anh cũng xếp "đưa về dạng tích" là cách thứ nhất của dạng *Phương trình bậc cao*.)
 

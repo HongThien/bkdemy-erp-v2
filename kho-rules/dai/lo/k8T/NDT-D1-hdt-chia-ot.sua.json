@@ -1,4 +1,9 @@
 {
+  "D1.26b@p10": { "nhom_chot": "T18T010302" },
+  "D1.26d@p11": { "nhom_chot": "T18T040102" },
+  "D1.80a@p27": { "nhom_chot": "T18T010401" },
+  "D1.80b@p27": { "nhom_chot": "T18T010401" },
+  "D1.86@p29": { "nhom_chot": "T18T010302" },
   "D1.82c@p28": {
     "sach_in_sai": "trang PDF 28, bài 82 c) sách in 3x^2(x+5y)(x-5xy); nhân tử cuối phải là (x-5y). Đã mở ảnh p-028 xác nhận sách in x-5xy."
   },

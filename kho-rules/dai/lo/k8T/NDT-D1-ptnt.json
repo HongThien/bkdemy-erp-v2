@@ -417,7 +417,7 @@
   "ma_nguon": "D1.36@p14",
   "lo": 1,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T030101",
   "nhom_soan": "T18T030103",
   "loai_cau": "tu_luan",
   "noi_dung": "Cho $a,b,c$ là độ dài các cạnh của một tam giác. Chứng minh rằng:\n\na) $(-a+b+c)a^2-(-a+b+c)(b-c)^2\\ge0$\n\nb) $(a+b-c)(a-b+c)(-a+b+c)\\le abc$.",
@@ -433,6 +433,10 @@
   "kiem_doc": {
    "ket_qua": "khong_kiem_duoc",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 14): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-ptnt.sua.json) — hai lượt gán máy lệch nhau"
   },
   "_kiem_dap_so": "khong_kiem_duoc"
  },
@@ -1236,7 +1240,7 @@
   "ma_nguon": "D1.55a@p19",
   "lo": 1,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T010203",
   "nhom_soan": "T18T010203",
   "loai_cau": "tu_luan",
   "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-7x-6$.",
@@ -1251,6 +1255,10 @@
   "kiem_doc": {
    "ket_qua": "dat",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 19): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-ptnt.sua.json) — hai lượt gán máy lệch nhau"
   },
   "_kiem_dap_so": "dat"
  },

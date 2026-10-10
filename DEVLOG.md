@@ -36675,3 +36675,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Số đo (DB live):** kho Đại 8T 193 câu = 50 cũ đã duyệt + 143 mới chưa duyệt (67 ở nhóm cơ bản, 7 ở dạng chờ). Lô 2: máy xác nhận 40/71 đáp án, 38/71 kết quả sách khớp đề chép; sửa khi soát 3 (2 chỗ sách in sai 82c, 84b + bỏ 89b); lọc trùng bỏ 1 (17d ≡ 17b).
 - **Sai / sửa:** (1) lọc trùng bản đầu: mọi cặp biểu thức bằng nhau về giá trị = trùng ⇒ bỏ nhầm 84b (đề khác 57b, cùng đa thức) — thấy khi đọc báo cáo, trước lúc ghi ⇒ hạ xuống mức nghi. (2) bộ tính không nhận "3/7" (chia là ":") — sửa bộ số thử. (3) lại vấp heredoc nuốt `\` khi vá script bằng node ⇒ dùng công cụ Edit.
 - **Treo:** 2 bản trùng đã ghi ở lô 1 (50a, 53a) chờ Thùy gật xoá mềm · 2 nhóm nghi trùng · 7 câu dạng chờ · bài 89b chưa nhập · nhánh Hình chưa chạy.
+
+## 10/10 (khuya 3) — 8T: trang "câu cần chị xem" + áp 18 quyết định của Thùy
+- **Thùy:** "Mấy câu sai cần review thì m phải cho t view cụ thể chứ" ⇒ dựng `kho-rules/dai/k8T-can-xem.html` (bộ dựng `lo/k8T/can-xem.mjs`: 18 thẻ, 18 ảnh cắt từ PDF sách bằng pdftoppm, công thức MathML dựng sẵn), đăng Artifact. Thùy trả lời từng thẻ.
+- **Áp (`lo/k8T/ap-chot-2026-10-10.mjs`, chạy thử ROLLBACK rồi `--ghi`):** xoá mềm `T18T010201025` (50a) + `T18T000000002` (53a); xếp nhóm 7 câu dạng chờ. DB sau đó: kho Đại 8T 191 câu, dạng chờ 0, xoá mềm 2. `lo-tu-chep.mjs` thêm `nhom_chot` trong `.sua.json` (nhóm CEO chốt thắng mọi lượt gán); dựng lại 2 tệp lô cho khớp DB.
+- **Luật rút ra:** trùng — giống hệt mới bỏ, khác form / đề thi khác số là biến thể (giữ); xếp nhóm — chương đa thức ưu tiên nhóm biến đổi, bậc ba là nhẩm nghiệm (brief §4).
+- **Sai của tôi:** lượt báo trước chỉ liệt kê câu treo bằng chữ, mô tả hai câu trùng mà không cho thấy đề sách ⇒ Thùy phải hỏi lại. Từ nay trang xem đi kèm báo cáo lô.
+- **Treo:** bài 89b (câu trả lời ở thẻ 9 chưa rõ — đã hỏi lại) · mức độ / bậc của 41 nhóm mới.

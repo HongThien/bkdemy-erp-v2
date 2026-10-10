@@ -293,7 +293,7 @@ Một chuyên đề **dùng chung**, đứng đầu chủ đề 1 và chủ đ�
 |---|---|---|
 | **Trùng CHỮ** | đề giống nhau sau khi bỏ dòng nguồn đề "(Đề thi HSG …)", dấu cách, `$`, `\left`, dấu câu | **bỏ** câu mới, ghi vào `<tên>.trung.json` |
 | **Trùng TOÁN** | cùng loại lệnh và biểu thức **bằng nhau khi máy thay số**, VÀ (cùng tập hạng tử — chỉ đổi thứ tự — HOẶC cùng một bài của cùng một sách: sách in sẵn dạng đã tách, vd $x^2+3x+2x+6$ ↔ $x^2+5x+6$) | **bỏ** — trong cùng lô giữ câu có đề ngắn nhất |
-| **Nghi trùng** | cùng khuôn chữ / cùng bộ công thức sau khi thay số bằng `#` và cùng đáp án (vd $a^{100}+b^{100}=\dots$, tính $a^{2004}+b^{2004}$ ↔ $a^{2010}+b^{2010}$) · hoặc bằng nhau về giá trị nhưng viết khác hẳn ở hai bài khác nhau | **giữ**, liệt kê để người quyết |
+| **Nghi trùng** | cùng khuôn chữ / cùng bộ công thức sau khi thay số bằng `#` và cùng đáp án (vd $a^{100}+b^{100}=\dots$, tính $a^{2004}+b^{2004}$ ↔ $a^{2010}+b^{2010}$) · hoặc bằng nhau về giá trị nhưng viết khác hẳn ở hai bài khác nhau | **giữ**, chỉ liệt kê — CEO 10/10: *"Của đề riêng cứ để riêng thôi. Coi như là biến thể"*, *"giống hệt nhau mới bỏ, chứ còn form đề khác nhau cứ giữ"* ⇒ không cần hỏi lại từng nhóm |
 
 - So với **toàn bộ câu đang có trong kho Đại 8T** (đọc DB) + các câu trong cùng lô. Không so với khối 8 thường (CEO 10/10: kho 8T *"không chung với khối 8 thường"*).
 - Quét cả kho bất kì lúc nào: `node scripts/kho/sach/loc-trung.mjs --khoi 8T --ra kho-rules/dai/lo/k8T/loc-trung-kho.md`.
@@ -311,22 +311,21 @@ Một chuyên đề **dùng chung**, đứng đầu chủ đề 1 và chủ đ�
 |---|---|---:|---:|---:|---:|---|---|
 | 1 (10/10) | NDT Đại I §3–5 — phân tích nhân tử, bài 27–60 | **72** | 34 | 55/72 | 4 | 67/72 | `NDT-D1-s3/s4/s5.cs.md` · `NDT-D1-ptnt.*` |
 | 2 (10/10) | NDT Đại I §2 hằng đẳng thức (14–26) · §7 chia đa thức (71–81) · ôn tập chương I (82–89) · ý b bài 35 | **71** | 33 | 40/71 | 3 | 34/38 câu không thuộc tầng cơ bản | `NDT-D1-s2/s7/ot/bs.cs.md` · `NDT-D1-hdt-chia-ot.*` |
-| **Tổng** | | **143** | 67 | | | | kho Đại 8T: **193 câu** (50 cũ đã duyệt + 143 mới chưa duyệt) |
+| **Tổng** | | **143** | 67 | | | | kho Đại 8T: **191 câu** (50 cũ đã duyệt + 141 mới chưa duyệt; 2 câu trùng của lô 1 đã xoá mềm) |
 
 Lọc trùng lô 2: bỏ 1 câu trước khi ghi (bài 17d = 17b đổi thứ tự hạng tử). Sách in sai máy bắt được: 55d, 82c, 84b (đều đã mở ảnh xác nhận; lời giải kho ghi kết quả đúng).
 
 **Còn lại của NDT (≈ 510 bài):** Đại I §1 (bài 1–13), §6 (61–70) · Đại II phân thức (52) · Đại III phương trình (73) · Đại IV bất đẳng thức – bất phương trình (52) · ôn tập cuối năm Đại (20) · phụ lục A (45) + C (60) · **Hình I–III + phụ lục B (≈ 220 bài, nhánh Hình)**. Hình IV (không gian, 30 bài): không nhập.
 Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 
-**Câu treo — cần CEO / người:**
+**Câu treo — cần CEO / người** (trang xem cụ thể, có ảnh sách gốc: `kho-rules/dai/k8T-can-xem.html`, dựng lại bằng `node kho-rules/dai/lo/k8T/can-xem.mjs` — **mỗi lần báo lô phải kèm trang này**, Thùy 10/10: *"Mấy câu sai cần review thì m phải cho t view cụ thể chứ"*):
 
 | Câu | Vì sao | Cần gì |
 |---|---|---|
-| **2 bản trùng đã lỡ ghi ở lô 1** (trước khi có lọc trùng): `T18T010201025` (bài 50a: $x^2+3x+2x+6$ ≡ 50b $x^2+5x+6$) · `T18T000000002` (bài 53a: $x^4+4+4x^2-4x^2$ ≡ 53b $x^4+4$) | Trùng toán trong cùng bài | **CEO gật thì xoá mềm** (Luật xoá — chưa xoá) |
-| **Nghi trùng, máy giữ:** họ "$a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$, tính $a^n+b^n$" có 3 câu (`T18T010301006` đã duyệt, + bài 38c, bài 48 của NDT — khác nguồn đề, khác $n$) · bài 84b ↔ 57b (hai đề khác nhau, cùng một đa thức) | Có thể là bài luyện khác số, có thể là chép lại | Người quyết giữ hay bỏ bớt |
-| 7 câu ở dạng chờ `T18T000000`: lô 1 — bài 36, 55a · lô 2 — bài 26b, 26d, 80a, 80b, 86 | Hai lượt gán nhóm lệch nhau (26d: không nhóm nào khớp "không là lập phương") | Học thuật chọn nhóm ở màn Duyệt › Chưa phân dạng (CEO 10/10: *"tý t duyệt"*) |
-| NDT ôn tập chương I bài 89b (tích $Q(x_1)\dots Q(x_5)$ theo các nghiệm của đa thức bậc năm) | Đề giả thiết đa thức có 5 nghiệm (thực ra chỉ 1 nghiệm thực); kết quả sách sai gấp 9 | CEO: nhập (với kết quả đúng 14376190) hay bỏ. Hiện **chưa nhập** |
+| NDT ôn tập chương I bài 89b (tích $Q(x_1)\dots Q(x_5)$ theo các nghiệm của đa thức bậc năm) | Đề giả thiết đa thức có 5 nghiệm (thực ra chỉ 1 nghiệm thực); kết quả sách sai gấp 9 | CEO: nhập (với kết quả đúng 14376190) hay bỏ — câu trả lời 10/10 của Thùy ở thẻ này chưa rõ, đã hỏi lại. Hiện **chưa nhập** |
 | 41 nhóm mới: mức độ + bậc tối thiểu đang tạm (nâng cao 4 / A · cơ bản 2 / A) | Hai cột bắt buộc, chưa có giá trị thật | CEO chỉnh ở màn Bản đồ |
+
+**Đã chốt 10/10 (Thùy xem trang, trả lời từng thẻ — áp bằng `kho-rules/dai/lo/k8T/ap-chot-2026-10-10.mjs`):** xoá mềm 2 câu trùng (50a, 53a: *"Bỏ câu a"*) · 6 chỗ sách in sai / đề thiếu: đồng ý cách đã sửa · ba câu họ $a^{100}+b^{100}=\dots$ và cặp 84b – 57b: **giữ cả** · 7 câu dạng chờ đã có nhóm (36 → 3.1 ① · 55a → 1.2 ③ · 26b → 1.5 ② · 26d → 4.1 ② · 80a, 80b → 1.3 ① · 86 → 1.5 ②). Dạng chờ `T18T000000` hiện 0 câu.
 
 **Việc kỹ thuật còn lại (Claude tự làm):** nhánh Hình: brief chép–soạn Hình + vẽ hình bằng code + `nhap_hh_tu_draft.mjs` vào bài của bản đồ Hình · lý thuyết cho 18 bài Hình 8T · `k8T-kiem.mjs`: thêm vét cạn cho bài nghiệm nguyên / tìm $n$ để chia hết, `\sqrt` cho đáp án có căn · bảng `--co-ban` cho Đại III–IV và các quyển sau.
 
@@ -353,3 +352,5 @@ Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 | 10/10 | Lô 1 (72 câu NDT Đại I §3–5) | *(ghi việc làm — CEO chưa xem)* Chép–soạn bằng 3 agent Sonnet, tôi soát đối chiếu ảnh 11 trang, agent khác gán nhóm mù, ghi kho qua cổng | §7 viết lại theo dây chuyền đã chạy: "kiểm chép" bằng máy (kết quả sách ↔ đề) thay cho chép hai lượt; phiên chính không tự gán mù; luật ranh giới "phương trình bậc ≥ 3 ⇒ bậc cao". **Sai của tôi:** chạy `npm run migrate` khi sổ còn 15 file treo của phiên khác — file đầu lỗi quyền nên chưa áp gì, nhưng suýt áp hộ; từ nay luôn `--status` đọc HẾT rồi `--only <file>` |
 | 10/10 | Sau lô 1 | (1) bài 35b: *"ok thêm số dương vào"* · (2) *"Có. chỉ là ko chung với khối 8 thường. Bài tập cơ bản cho vào 1 chuyên đề — gọi là kiến thức cơ bản đi"* · (3) 3 câu dạng chờ: *"OK tý t duyệt"* · (4) 12 câu chứng minh cũ: *"Đổi đi"* · *"T nghĩ phải làm lọc trùng đấy."* | (1) nhập ý b với đề đã sửa (khối riêng `NDT-D1-bs.cs.md`, ghi rõ đề khác sách). (2) mig `202610101427`: chuyên đề dùng chung "Kiến thức cơ bản" 7 nhóm; câu tầng cơ bản xếp theo bài học bằng luật máy (`--co-ban`); chuyển 34 câu lô 1. (4) chuyển 12 câu sang nhóm Chứng minh (mã câu giữ nguyên, `kho_doi_dang_log` ghi vết). Lọc trùng: `loc-trung.mjs` 3 mức (§7), gắn vào trạm dựng lô; quét kho ra 2 bản trùng đã lỡ ghi (chờ gật xoá) + 2 nhóm nghi |
 | 10/10 | Lô 2 (71 câu) | *(ghi việc làm — CEO chưa xem)* | Bộ lọc trùng bản đầu coi "bằng nhau về giá trị" là trùng ⇒ bỏ nhầm bài 84b (hai đề khác nhau, cùng đa thức với 57b) — bắt được khi đọc báo cáo trước lúc ghi ⇒ hạ xuống mức NGHI; mức bỏ chỉ còn: cùng tập hạng tử, hoặc cùng bài của cùng sách |
+| 10/10 | Trang "câu cần chị xem" | *"Cái kia là biến đổi chứ. hay đề bài thế ?"* · *"Mấy câu sai cần review thì m phải cho t view cụ thể chứ"* | Báo câu treo bằng danh sách chữ là **không đủ**: mỗi lần báo lô kèm trang `k8T-can-xem.html` (ảnh cắt từ sách gốc + đề / đáp án / lời giải trong kho + việc cần quyết), dựng bằng `lo/k8T/can-xem.mjs` |
+| 10/10 | 18 thẻ của trang xem | 1–2: *"Bỏ câu a"* · 3: *"Cho thêm điều kiện"* · 4–6: *"Sửa nhé"* · 7–8: OK · 9–11: *"Của đề riêng cứ để riêng thôi. Coi như là biến thể. Giữ nhé"*, *"Form ban đầu khác nhau mà"*, *"Giữ cả. giống hệt nhau mới bỏ. chứ còn form đề khác nhau cứ giữ"* · 12: *"cái sau. Ưu tiên các dạng ở đây là dùng biến đổi và phân tích thành nhân tử, chưa có công cụ lớn đâu"* · 13: *"Nhẩm nghiệm. bậc 3 hầu như là nhẩm nghiệm"* · 14–17: lượt gán thứ hai · 18: lượt thứ nhất | Xoá mềm 2 câu, xếp nhóm 7 câu (`ap-chot-2026-10-10.mjs`). **Luật trùng:** giống hệt (hoặc sách in sẵn dạng đã tách của cùng bài) mới bỏ; đề khác form, đề thi khác nhau khác số = biến thể, giữ. **Luật xếp nhóm** (ghi vào brief §4): chương đa thức – nhân tử ưu tiên nhóm "biến đổi", chưa dùng nhóm "công cụ lớn"; đa thức bậc ba ⇒ nhóm nhẩm nghiệm. Thẻ 9 (bài 89b) tôi không chắc câu trả lời nào là của nó ⇒ hỏi lại, chưa nhập |

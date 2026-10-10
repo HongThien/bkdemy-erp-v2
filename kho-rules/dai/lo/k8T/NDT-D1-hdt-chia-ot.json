@@ -715,7 +715,7 @@
   "ma_nguon": "D1.26b@p10",
   "lo": 2,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T010302",
   "nhom_soan": "T18T010102",
   "loai_cau": "tu_luan",
   "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – Tp. Hồ Chí Minh, năm học 2007 – 2008) Cho $a,b,c,d\\in\\mathbb{Z}$ thoả mãn $a+b=c+d$. Chứng minh rằng $a^2+b^2+c^2+d^2$ luôn là tổng của ba số chính phương.",
@@ -728,6 +728,10 @@
   "kiem_doc": {
    "ket_qua": "khong_kiem_duoc",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 10): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-hdt-chia-ot.sua.json) — hai lượt gán máy lệch nhau"
   },
   "_kiem_dap_so": "khong_kiem_duoc"
  },
@@ -757,7 +761,7 @@
   "ma_nguon": "D1.26d@p11",
   "lo": 2,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T040102",
   "nhom_soan": "T18T000000",
   "loai_cau": "tu_luan",
   "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường chuyên Văn – Toán huyện Đức Phổ, tỉnh Quảng Ngãi, năm học 1990 – 1991) Chứng minh rằng biểu thức sau không thể là lập phương của một số tự nhiên: $1991^{3333}+1990^{2222}+1989^{1111}$.",
@@ -772,6 +776,10 @@
   "kiem_doc": {
    "ket_qua": "khong_kiem_duoc",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 11): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-hdt-chia-ot.sua.json) — hai lượt gán máy lệch nhau"
   },
   "_kiem_dap_so": "khong_kiem_duoc"
  },
@@ -1232,7 +1240,7 @@
   "ma_nguon": "D1.80a@p27",
   "lo": 2,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T010401",
   "nhom_soan": "T18T010402",
   "loai_cau": "tu_luan",
   "noi_dung": "(Đề thi học bổng trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 1994 – 1995) Xác định đa thức bậc ba sao cho khi chia đa thức ấy lần lượt cho các nhị thức $x-1$, $x-2$, $x-3$ đều có số dư là $6$ và tại $x=-1$ thì đa thức nhận giá trị tương ứng là $-18$.",
@@ -1249,13 +1257,17 @@
    "ket_qua": "khong_kiem_duoc",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 27): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
   },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-hdt-chia-ot.sua.json) — hai lượt gán máy lệch nhau"
+  },
   "_kiem_dap_so": "khong_kiem_duoc"
  },
  {
   "ma_nguon": "D1.80b@p27",
   "lo": 2,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T010401",
   "nhom_soan": "T18T010402",
   "loai_cau": "tu_luan",
   "noi_dung": "(Đề thi giải Lê Quý Đôn lớp 8 trên báo Khăn Quàng Đỏ lần 12, năm học 2010 – 2011) Xác định đa thức $f(x)$ thoả mãn các điều kiện:\n– Khi chia cho $x-1$ thì dư $4$;\n– Khi chia cho $x+2$ thì dư $1$;\n– Khi chia cho $(x-1)(x+2)$ thì được thương là $5x^2$ và còn dư.",
@@ -1271,6 +1283,10 @@
   "kiem_doc": {
    "ket_qua": "khong_kiem_duoc",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 27): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-hdt-chia-ot.sua.json) — hai lượt gán máy lệch nhau"
   },
   "_kiem_dap_so": "khong_kiem_duoc"
  },
@@ -1514,7 +1530,7 @@
   "ma_nguon": "D1.86@p29",
   "lo": 2,
   "khoi": "8T",
-  "dang_chinh": "T18T000000",
+  "dang_chinh": "T18T010302",
   "nhom_soan": "T18T010302",
   "loai_cau": "tu_luan",
   "noi_dung": "Cho $x^{1000}+y^{1000}=a$; $x^{2000}+y^{2000}=\\dfrac{2b}{3}$; $x^{5000}+y^{5000}=\\dfrac{c}{36}$. Tính hệ thức giữa $a$, $b$, $c$ sao cho hệ thức đó không phụ thuộc vào $x$, $y$.",
@@ -1530,6 +1546,10 @@
   "kiem_doc": {
    "ket_qua": "khong_kiem_duoc",
    "ghi_chu": "nguồn là ẢNH scan (trang PDF 29): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "nhóm do CEO chốt (ghi trong NDT-D1-hdt-chia-ot.sua.json) — hai lượt gán máy lệch nhau"
   },
   "_kiem_dap_so": "khong_kiem_duoc"
  },
