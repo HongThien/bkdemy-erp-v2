@@ -8,6 +8,9 @@
    - dapSo     : đáp số bằng số — trang TỰ TÍNH lại thể tích từ `mien` và báo lỗi đỏ nếu lệch (đừng bỏ)
    - ve        : { t: [min, max] trục quay · r: [min, max] trục kia · ngam: { tx, ty, tz, r } điểm ngắm + bán kính cần thấy }
    - de        : { tieuDe, html, chips: [...], chuY }     (đề viết lại bằng lời của mình)
+   - thucTe    : (bài thực tế — thùng, mũ…) { tieuDe, html, tex: [phương trình CHỮ…], soTen, so: [dòng thay số…, dòng cuối là kết quả] }
+                 ⇒ thêm bước "Đặt hệ trục"; ở bước Đề bài chỉ hiện vật thật (khối đã quay), chưa có trục / đường / nhãn
+   - quayLoi   : (tuỳ chọn) câu dẫn riêng cho bước Quay
    - duong     : các đường vẽ  { fn, t: [từ, tới], nhan, o: [t đặt nhãn, dx, dy] }          dung: [t…] các đường thẳng vuông góc trục quay đề cho
    - to        : các dải tô của (H)  { t: [từ, tới], tren: hàm|null, duoi: hàm|null, phia: 'tren'|'duoi' }   (null = trục quay)
                  dải phia 'duoi' là phần nằm DƯỚI trục — trang tự làm hoạt cảnh gấp lên
@@ -116,6 +119,68 @@ window.BAI_TRON_XOAY = (function () {
         kq: String.raw`V=\frac{28\pi}{15}+\frac{7\pi}{3}=\frac{21\pi}{5}\approx 13{,}19`,
         nguyenHam: [String.raw`\int\left(x^2+1\right)^2\mathrm{d}x=\frac{x^5}{5}+\frac{2x^3}{3}+x`, String.raw`\int\left(x+1\right)^2\mathrm{d}x=\frac{(x+1)^3}{3}`],
         luu: String.raw`Mỗi miền chỉ lấy <b>một</b> đường: đường nằm ngoài cùng sau khi gấp.` },
+    }) }
+
+  // ───────── Câu 50 (NBV 12-18 F) — bài thực tế ─────────
+  { const a = 5, b = 3, d = 4, f = x => b * Math.sqrt(Math.max(0, 1 - x * x / (a * a)))
+    DS.push({
+      id: '50', maCau: null, ten: 'Thùng rượu đường sinh elip', nguon: 'NBV 12-18 F · câu 50',
+      moTa: 'Thùng gỗ tròn xoay, mặt bên là một phần elip, hai đáy phẳng. Phải tự đặt hệ trục; một miền, lắp thẳng công thức.',
+      truc: 'x', dapSo: 1416 * PI / 25,
+      ve: { t: [-6.4, 6.6], r: [-4.3, 4.6], ngam: { tx: 0, ty: 0.15, tz: 0, r: 6.2 } },
+      de: { tieuDe: 'Thùng chứa được bao nhiêu lít?',
+        html: String.raw`<p>Một thùng rượu bằng gỗ là khối tròn xoay, hai đáy là hai hình tròn bằng nhau, cách nhau <b>8 dm</b>.</p>
+          <p>Đường cong của mặt bên là một phần của đường elip có trục lớn <b>10 dm</b>, trục bé <b>6 dm</b>. Hỏi thùng chứa được bao nhiêu lít rượu?</p>`,
+        chips: ['hai đáy cách nhau 8 dm', 'trục lớn 10 dm', 'trục bé 6 dm'] },
+      thucTe: { tieuDe: 'Cắt dọc thùng, đặt hệ trục',
+        html: String.raw`<p>Cắt thùng bằng một mặt phẳng chứa trục của thùng. Đặt gốc <i>O</i> ở tâm thùng, trục <i>Ox</i> dọc theo trục thùng.</p>
+          <p>Mặt bên hiện ra là một phần của elip <i>(E)</i>; hai đáy là hai đường thẳng <i>x</i> = −<i>d</i> và <i>x</i> = <i>d</i>. Thùng là phần <b>ở giữa</b> của elip, hai chỏm ngoài bị cắt đi.</p>`,
+        tex: [String.raw`(E):\ \frac{x^2}{a^2}+\frac{y^2}{b^2}=1`, String.raw`y^2=b^2\left(1-\frac{x^2}{a^2}\right)`],
+        soTen: 'trục lớn 2a = 10 · trục bé 2b = 6 · hai đáy cách nhau 2d = 8',
+        so: [String.raw`a=5,\quad b=3,\quad d=4`, String.raw`y^2=9\left(1-\frac{x^2}{25}\right)`] },
+      quayLoi: 'Quay phần hình phẳng nằm giữa elip và trục <i>Ox</i>, từ <i>x</i> = −<i>d</i> tới <i>x</i> = <i>d</i>, quanh trục <i>Ox</i>: ra đúng cái thùng.',
+      duong: [{ fn: f, t: [-a, a], nhan: '(E)', o: [-2.6, -0.9, -0.9] }, { fn: x => -f(x), t: [-a, a] }],
+      dung: [-d, d],
+      to: [{ t: [-d, d], tren: f, duoi: null, phia: 'tren' }],
+      vach: [-5, -4, 4, 5], vachR: [3], giong: [], diem: [[-4, f(4)], [4, f(4)], [0, 3]], vet: [[0, 3, 'tren'], [4, f(4), 'tren']],
+      moc: [{ chu: '−d', t: -4 }, { chu: 'd', t: 4 }],
+      mien: [{ t: [-d, d], ngoai: f, trong: null }],
+      tong: { tieuDe: 'Lắp công thức tròn xoay',
+        tex: String.raw`\begin{aligned}V&=\pi\int_{-d}^{d}y^2\,\mathrm{d}x=\pi\int_{-d}^{d}b^2\left(1-\frac{x^2}{a^2}\right)\mathrm{d}x\\[0.5em]&=\pi b^2\left[x-\frac{x^3}{3a^2}\right]_{-d}^{d}=2\pi b^2\left(d-\frac{d^3}{3a^2}\right)\end{aligned}`,
+        soTen: 'a = 5, b = 3, d = 4',
+        kq: String.raw`\begin{aligned}V&=2\pi\cdot 9\left(4-\frac{64}{75}\right)=\frac{1416\pi}{25}\\[0.4em]&\approx 177{,}9\ \text{dm}^3\end{aligned}`,
+        luu: String.raw`1 dm³ = 1 lít, nên thùng chứa được khoảng <b>177,9 lít</b>.` },
+    }) }
+
+  // ───────── Câu 52 (NBV 12-18 F) — bài thực tế, tính bằng dm để 1 dm³ = 1 lít ─────────
+  { const R = 5, r = 4, l = 10, k = 4 * (R - r) / (l * l), f = x => R - k * x * x
+    DS.push({
+      id: '52', maCau: null, ten: 'Thùng rượu đường sinh parabol', nguon: 'NBV 12-18 F · câu 52',
+      moTa: 'Bảy thùng rượu, đường sinh là cung parabol. Đặt hệ trục, lắp công thức, rồi tính tiền. Có chỗ dễ sai vì làm tròn sớm.',
+      truc: 'x', dapSo: 656 * PI / 3,
+      ve: { t: [-7.4, 7.6], r: [-6.3, 6.7], ngam: { tx: 0, ty: 0.2, tz: 0, r: 7.6 } },
+      de: { tieuDe: 'Phải trả bao nhiêu tiền rượu?',
+        html: String.raw`<p>Một cơ sở đặt mua <b>7 thùng rượu</b> giống nhau. Mỗi thùng là khối tròn xoay có đường sinh là một cung parabol: bán kính hai mặt đáy <b>40 cm</b>, bán kính ở giữa thùng <b>50 cm</b>, thùng dài <b>100 cm</b>.</p>
+          <p>Các thùng chứa đầy rượu, mỗi lít giá <b>30 nghìn đồng</b>. Số tiền phải trả gần nhất với <i>M</i> nghìn đồng (<i>M</i> nguyên). Tìm <i>M</i>.</p>`,
+        chips: ['đáy: 40 cm', 'giữa: 50 cm', 'dài 100 cm', '7 thùng', '30 nghìn / lít'] },
+      thucTe: { tieuDe: 'Cắt dọc thùng, đặt hệ trục',
+        html: String.raw`<p>Cắt thùng bằng một mặt phẳng chứa trục của thùng. Đặt gốc <i>O</i> ở tâm thùng, <i>Ox</i> dọc trục thùng. Gọi <i>R</i> là bán kính ở giữa, <i>r</i> là bán kính đáy, <i>l</i> là chiều dài thùng.</p>
+          <p>Đường sinh là parabol có đỉnh (0; <i>R</i>) và đi qua (<i>l</i>/2; <i>r</i>). Đổi sang <b>đề-xi-mét</b> để thể tích ra thẳng lít.</p>`,
+        tex: [String.raw`y=R-kx^2`, String.raw`y\!\left(\tfrac{l}{2}\right)=r\ \Rightarrow\ k=\frac{4(R-r)}{l^2}`],
+        soTen: 'đổi sang dm: R = 5, r = 4, l = 10',
+        so: [String.raw`k=\frac{4(5-4)}{10^2}=0{,}04`, String.raw`y=5-0{,}04\,x^2`] },
+      quayLoi: 'Quay phần hình phẳng nằm giữa parabol và trục <i>Ox</i>, từ <i>x</i> = −<i>l</i>/2 tới <i>x</i> = <i>l</i>/2, quanh trục <i>Ox</i>: ra đúng một thùng rượu.',
+      duong: [{ fn: f, t: [-6.6, 6.6], nhan: 'y = R − kx²', o: [6.6, 2.6, 0.3] }],
+      dung: [-5, 5],
+      to: [{ t: [-5, 5], tren: f, duoi: null, phia: 'tren' }],
+      vach: [-5, 5], vachR: [4, 5], giong: [[5, 4]], diem: [[-5, 4], [5, 4], [0, 5]], vet: [[0, 5, 'tren'], [5, 4, 'tren']],
+      moc: [{ chu: '−l/2', t: -5, dx: -0.4 }, { chu: 'l/2', t: 5, dx: 0.4 }],
+      mien: [{ t: [-5, 5], ngoai: f, trong: null }],
+      tong: { tieuDe: 'Lắp công thức, rồi tính tiền',
+        tex: String.raw`\begin{aligned}V&=\pi\int_{-l/2}^{l/2}\left(R-kx^2\right)^2\mathrm{d}x\\[0.5em]&=\frac{\pi l}{15}\left(8R^2+4Rr+3r^2\right)\end{aligned}`,
+        soTen: 'R = 5, r = 4, l = 10 (dm) · tiền = 7 thùng × 30 nghìn × V',
+        kq: String.raw`\begin{aligned}V&=\frac{10\pi}{15}\left(200+80+48\right)=\frac{656\pi}{3}\[0.4em]&\approx 686{,}96\ \text{dm}^3\[0.6em]210\,V&=45\,920\,\pi\approx 144\,261{,}9\[0.4em]M&=144\,262\end{aligned}`,
+        luu: String.raw`<b>Đừng làm tròn giữa chừng.</b> Nếu lấy mỗi thùng 687 lít rồi mới nhân thì ra 144 270, lệch 8 nghìn đồng so với kết quả đúng.` },
     }) }
 
   return DS
