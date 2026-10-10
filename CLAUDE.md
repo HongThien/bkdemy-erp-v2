@@ -294,9 +294,10 @@
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
   **CEO chốt 19/09: MỌI luồng bài làm trên app của BỔ TRỢ (yếu · bù · đuổi) chỉ dùng MCQ** — điều kiện chọn câu DUY NHẤT =
   `_kho_dk_mcq_sql(cautbl)` (kho_chuan + trắc nghiệm gốc | form_tn đã duyệt; `_kho_snapshot_cau` tự hiện form thành 4 đáp án).
-  Bổ trợ yếu đã áp (`_btyeu_chon_cau`) — **TUYỆT ĐỐI, KHÔNG nhánh lùi** (NGOẠI LỆ DUY NHẤT CEO 28/09: dạng mức độ 4–5 mà cả dạng 0 MCQ ⇒ trả lời ngắn — xem spec-bo-tro.md §4) (20/09: t từng để "dạng 0 MCQ thì tạm ra TLN", CEO bác:
-  luật là luật — dạng chưa có MCQ thì app báo rõ, em học dạng đó trên giấy, việc là SINH MCQ chứ không nới luật). Bù/đuổi chưa có
-  bài trên app — khi build PHẢI dùng hàm này, không viết điều kiện riêng.
+  **CEO chốt lại 10/10 (thay 20/09 "tuyệt đối" và 28/09 "chỉ mức 4–5"): MCQ TRƯỚC; cả dạng 0 MCQ ⇒ câu TRẢ LỜI NGẮN có đáp án (kho chuẩn),
+  mọi mức độ** — áp ở `_btyeu_chon_cau` (yếu: luyện · test · retest · phiếu giấy, TA chấm Đúng/Sai câu trả lời ngắn trên giấy) và
+  `tu_luyen_chu_de_sinh` loai `bu_luyen`/`bu_test` (bù). Dạng không có cả MCQ lẫn trả lời ngắn thì app báo rõ, em học trên giấy.
+  Luồng bổ trợ mới PHẢI đi qua 2 hàm này, không viết điều kiện chọn câu riêng (xem spec-bo-tro.md §4).
 - **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
   không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
   RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`

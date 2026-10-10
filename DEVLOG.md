@@ -36789,3 +36789,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** "dắt đi dạo làm thành cảnh có con nó bước đi trên con đường, chạy, nhảy tránh chướng ngại vật, ngã lăn quay, vấp đá, đâm tường u đầu — 30–40 loại hoạt động vui nhộn, giờ chả có gì".
 - **Làm:** `js/anh/dao-da.js` (mới) — thú nhìn nghiêng chạy tại chỗ, đường + cảnh vật trôi (CSS). 10 sự kiện/chuyến, xáo ngẫu nhiên không lặp: 30 vật cản (19 nhảy · 5 cúi · 6 né; bé chạm đúng lúc, cửa sổ 0–0,8 s trước va chạm) + 14 gag tự diễn. Trượt ⇒ 12 kiểu hậu quả (vấp lộn nhào, trượt chuối, đâm tường u đầu, bẹp dí, hất bay, giật mình, trúng đầu, ướt sũng, cháy đen, rơi hố, vật bám đầu, ong đuổi). Vật đọc tên tiếng Anh. Thưởng: 1 + điểm/3 + cá nhặt được. `thu-cung.js` thêm `rong(k)` nới khung (1,9) để thú nhảy không bị cắt. Đã thử 2 chuyến (không chạm; có chạm), 0 lỗi console.
 - **Chưa làm/chưa chắc:** chưa chụp từng gag (đầu thú u, lộn nhào) để chỉnh vị trí cục u `.u-dau` (left 56% top 19% đoán); chưa thử đủ 44 gag từng cái; chưa thử iPad thật; chưa ghi spec §3.7 phần Đi dạo mới; chuyến dài ~58 s, có thể rút; lỗi chạm trúng nút ✖ chưa kiểm.
+
+## 2026-10-10 (19h) — Dạng không có MCQ ⇒ trả lời ngắn (Thùy)
+
+- Thùy: dạng không có MCQ thì ưu tiên hiện trả lời ngắn, đừng báo "không có". Thay luật 20/09 (tuyệt đối) · 28/09 (chỉ mức 4–5) · 03/10 (bù 100% MCQ).
+- Mig 202610101851 (dựng từ bản đang chạy): `_btyeu_chon_cau` bỏ điều kiện mức ≥4; `tu_luyen_chu_de_sinh` bu_* lùi TLN khi 0 MCQ;
+  `fn_btyeu_giay_nhap` nhận câu tra_loi_ngan (1 đúng / 0 sai); `fn_hs_bu_dang.co_mcq` = MCQ hoặc TLN. Chạy thử (rollback): 152 dạng case mở có câu
+  138 → 149; T309010102 (mức 3, 0 MCQ) ra TLN; dạng có MCQ vẫn ra MCQ; bù T309010102 ra 10 câu TLN. Sau áp: chọn 5/10 câu đủ số.
+- Client: PhieuGiayYeuTA in dòng "Đáp số", nhập kết quả có nút Đúng/Sai + hiện đáp án cho câu TLN; app HS đổi câu báo dạng không có câu.
+  CLAUDE.md + spec-bo-tro.md §17 ghi luật mới. Chưa bấm thử in/nhập phiếu TLN trên app thật.

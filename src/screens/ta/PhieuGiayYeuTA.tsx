@@ -46,6 +46,8 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
                 <div className="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 pl-4">
                   {(k.lua_chon ?? []).map((lc, i) => <div key={i}><b>{CHU[i]}.</b> <MathText>{lc}</MathText></div>)}
                 </div>
+                {/* Thùy 10/10: dạng không có trắc nghiệm ⇒ câu trả lời ngắn — em ghi đáp số */}
+                {!(k.lua_chon ?? []).length && <div className="mt-2 pl-4">Đáp số: ...............................................</div>}
               </div>
             ))}
           </div>
@@ -89,7 +91,7 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
         <div className="mb-3 flex items-start justify-between gap-2">
           <div>
             <h3 className="text-[15px] font-bold text-slate-800">{laTest ? 'Nhập kết quả BÀI KIỂM TRA giấy' : 'Nhập kết quả phiếu luyện'} — {bai.hs.ho_ten}{daNop ? ' · ĐÃ NỘP' : ''}</h3>
-            <p className="text-[12px] text-slate-500">Bấm đúng đáp án EM ĐÃ KHOANH (không phải đáp án đúng) — máy tự chấm. Đã nhập {daNhap}/{caus.length} · đúng {dung}.</p>
+            <p className="text-[12px] text-slate-500">Trắc nghiệm: bấm đáp án EM ĐÃ KHOANH (không phải đáp án đúng), máy tự chấm · Trả lời ngắn: so đáp số của em với đáp án rồi bấm Đúng / Sai. Đã nhập {daNhap}/{caus.length} · đúng {dung}.</p>
           </div>
           <button onClick={onDong} className="text-slate-400 hover:text-slate-600">✕</button>
         </div>
@@ -99,12 +101,19 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
             <div key={k.id} className={`rounded-xl px-3 py-2 ring-1 ${k.verdict === 'correct' ? 'bg-emerald-50/50 ring-emerald-200' : k.verdict ? 'bg-rose-50/50 ring-rose-200' : 'ring-slate-200'}`}>
               <div className="text-[12.5px] text-slate-700"><b>Câu {k.thu_tu}.</b> <span className="text-slate-500"><MathText>{(k.noi_dung ?? '').slice(0, 140)}</MathText></span></div>
               <div className="mt-1.5 flex items-center gap-1.5">
+                {/* Thùy 10/10: câu TRẢ LỜI NGẮN (không có lựa chọn) — TA chấm Đúng (1) / Sai (0) theo đáp án hiện bên cạnh */}
+                {!(k.lua_chon ?? []).length && ([[1, 'Đúng', 'bg-emerald-600'], [0, 'Sai', 'bg-rose-600']] as const).map(([v, ten, mau]) => {
+                  const dangChon = k.verdict === (v === 1 ? 'correct' : 'wrong')
+                  return <button key={v} disabled={busy === k.id || daNop} onClick={() => chon(k.id, dangChon ? null : v)}
+                    className={`h-8 rounded-lg px-3 text-[13px] font-bold ${dangChon ? `${mau} text-white` : 'border border-slate-300 bg-white text-slate-600 hover:border-indigo-300'}`}>{ten}</button>
+                })}
+                {!(k.lua_chon ?? []).length && <span className="text-[12px] text-slate-600">Đáp án: <b><MathText>{String(k.dap_an_key ?? '—')}</MathText></b></span>}
                 {(k.lua_chon ?? []).map((_, i) => {
                   const dangChon = k.chon === i
                   return <button key={i} disabled={busy === k.id || daNop} onClick={() => chon(k.id, dangChon ? null : i)}
                     className={`h-8 w-11 rounded-lg text-[13px] font-bold ${dangChon ? (k.verdict === 'correct' ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white') : 'border border-slate-300 bg-white text-slate-600 hover:border-indigo-300'}`}>{CHU[i]}</button>
                 })}
-                <span className="ml-2 text-[12px] text-slate-400">{k.verdict ? (k.verdict === 'correct' ? '✓ đúng' : `✗ sai (đáp án ${String(k.dap_an_key)})`) : 'chưa nhập / em bỏ trống'}</span>
+                <span className="ml-2 text-[12px] text-slate-400">{k.verdict ? (k.verdict === 'correct' ? '✓ đúng' : (k.lua_chon ?? []).length ? `✗ sai (đáp án ${String(k.dap_an_key)})` : '✗ sai') : 'chưa nhập / em bỏ trống'}</span>
               </div>
             </div>
           ))}
