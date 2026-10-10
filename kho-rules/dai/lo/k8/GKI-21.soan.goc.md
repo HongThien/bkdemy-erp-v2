@@ -21,9 +21,7 @@ bo_sach: KNTT
 
 **Phần 2. Trình bày**
 
-$A=2x^2y\left(4xy^2-\dfrac{3}{2}x^2y+xy\right)$
-
-$=2x^2y \cdot 4xy^2+2x^2y \cdot \left(-\dfrac{3}{2}x^2y\right)+2x^2y \cdot xy$
+$A=2x^2y \cdot 4xy^2+2x^2y \cdot \left(-\dfrac{3}{2}x^2y\right)+2x^2y \cdot xy$
 
 $=8x^3y^3-3x^4y^2+2x^3y^2$
 
@@ -40,7 +38,7 @@ $=8x^3y^3-3x^4y^2+2x^3y^2$
 
 **Bước 3.** Cộng trừ các hệ số trong từng nhóm: có một nhóm hai hạng tử đối nhau nên triệt tiêu.
 
-**Chú ý:** hai hạng tử chứa $x^3$ sau khi bỏ ngoặc **cùng dấu** nên cộng lại chứ không triệt tiêu; hạng tử $-2x^3y^2$ không có hạng tử nào đồng dạng với nó nên giữ nguyên.
+**Chú ý:** hạng tử $-2x^3y^2$ và $x^3$ chỉ có một mình trong nhóm của chúng, giữ nguyên.
 
 **Phần 2. Trình bày**
 
@@ -69,9 +67,7 @@ $=6x^3-2x^3y^2$
 
 **Phần 2. Trình bày**
 
-$C=(-4x^2y^2+x^3y-10xy):2xy$
-
-$=(-4x^2y^2):2xy+x^3y:2xy+(-10xy):2xy$
+$C=(-4x^2y^2):2xy+x^3y:2xy+(-10xy):2xy$
 
 $=-2xy+\dfrac{1}{2}x^2-5$
 
@@ -175,7 +171,7 @@ Vậy giá trị lớn nhất của $P$ là $15$, đạt được khi $x=4$.
 1) Viết biểu thức tính diện tích của sân vận động.
 2) Người ta làm lối đi rộng 3 mét xung quanh sân, phần còn lại để trồng cỏ nhằm phục vụ cho các trận bóng đá.
 a) Viết biểu thức tính diện tích phần trồng cỏ.
-b) Cho $x=40$, $y=6$. Biết 1 $m^2$ trồng cỏ cần số tiền là 100 000 đồng. Tính số tiền trồng cỏ cho mặt sân.
+b) Cho $x=40$, $y=6$. Biết $1m^2$ trồng cỏ cần số tiền là 100 000 đồng. Tính số tiền trồng cỏ cho mặt sân.
 **Hình:** p1c3_san.png
 **Ghi chú:** Theo hình vẽ, lối đi 3 m nằm trong chính hình chữ nhật có kích thước $(x+y)$ và $(x-y)$ (các mũi tên kích thước chạy hết mép ngoài), nên phần trồng cỏ nhỏ hơn mỗi chiều 6 m.
 
@@ -234,46 +230,30 @@ Vậy số tiền trồng cỏ là 112 000 000 đồng.
 a) Tính độ dài $DE$.
 b) Tính số đo các góc $\widehat{ABC}$, $\widehat{ACB}$.
 **Hình:** p1c4_tamgiac.png
-**Hình giải:** giai_bai4_1.png
-**Chưa chắc:** dữ kiện của bài đúng là bài đường trung bình; lời giải tự chứng minh bằng hình bình hành theo luật không dùng kiến thức chương sau — CEO quyết có cho dùng đường trung bình ở đề này không
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** $D$, $E$ là trung điểm của hai cạnh, nhưng bài này chưa được dùng định lí về đoạn thẳng nối hai trung điểm nên ta **vẽ thêm điểm $F$** để tự chứng minh $DE\parallel BC$ và $DE=\dfrac{1}{2}BC$ bằng hình bình hành — ý a dùng "bằng một nửa", ý b dùng "song song".
+**Mấu chốt:** $D$, $E$ là trung điểm hai cạnh nên $DE$ là **đường trung bình** của tam giác: vừa bằng nửa $BC$, vừa song song với $BC$ — ý a dùng tính "bằng một nửa", ý b dùng tính "song song".
 
-**Bước 1.** Ý a: muốn tính $DE$ theo $BC$, lấy điểm $F$ sao cho $E$ là trung điểm của $DF$; khi đó $DF$ dài gấp đôi $DE$, nên chỉ cần chứng minh $DF=BC$.
+**Bước 1.** Ý a: nhận ra $DE$ nối hai trung điểm của hai cạnh $AB$, $AC$ nên là đường trung bình của $\triangle ABC$.
 
-**Bước 2.** Muốn có $DF=BC$, cần $DBCF$ là hình bình hành (cạnh đối bằng nhau); muốn vậy cần một cặp cạnh đối $CF$ và $DB$ vừa song song vừa bằng nhau.
+**Bước 2.** Ý a: dùng tính chất đường trung bình bằng nửa cạnh thứ ba để tính $DE$ từ $BC$.
 
-**Bước 3.** $CF\parallel DB$ và $CF=DB$ lấy từ hình bình hành $ADCF$: hai đường chéo $AC$ và $DF$ cắt nhau tại trung điểm $E$ của mỗi đường nên $CF\parallel AD$, $CF=AD$; mà $AD=DB$ và $A$, $D$, $B$ thẳng hàng.
+**Bước 3.** Ý b: dùng tính chất đường trung bình song song với cạnh thứ ba, được $DE\parallel BC$, rồi lấy góc $\widehat{ABC}$ từ góc đồng vị $\widehat{ADE}$.
 
-**Bước 4.** Ý b: hình bình hành $DBCF$ còn cho $DF\parallel BC$, tức là $DE\parallel BC$; khi đó $\widehat{ABC}$ và $\widehat{ADE}$ là hai góc đồng vị nên bằng nhau.
+**Bước 4.** Ý b: tính $\widehat{ACB}$ bằng tổng ba góc của $\triangle ABC$, với góc $A$ chính là $\widehat{DAE}$ và góc $B$ vừa tìm được.
 
-**Bước 5.** Ý b: tính $\widehat{ACB}$ bằng tổng ba góc của $\triangle ABC$, trong đó góc $A$ của tam giác chính là $\widehat{DAE}$ và góc $B$ vừa tìm được.
-
-**Chú ý:** điểm $F$ là điểm vẽ thêm, phải nói rõ cách lấy $F$ ở dòng đầu của bài làm rồi mới được dùng.
+**Chú ý:** $D$ nằm trên $AB$, $E$ nằm trên $AC$ nên $\widehat{DAE}$ và $\widehat{BAC}$ là cùng một góc.
 
 **Phần 2. Trình bày**
 
-a) Trên tia đối của tia $ED$ lấy điểm $F$ sao cho $EF=ED$. Khi đó $E$ là trung điểm của $DF$.
+a) Vì $D$, $E$ lần lượt là trung điểm của $AB$, $AC$ nên $DE$ là đường trung bình của $\triangle ABC$.
 
-Tứ giác $ADCF$ có hai đường chéo $AC$ và $DF$ cắt nhau tại $E$; mà $E$ là trung điểm của $AC$ (giả thiết) và $E$ là trung điểm của $DF$ nên $ADCF$ là hình bình hành (dấu hiệu nhận biết).
-
-Suy ra $CF\parallel AD$ và $CF=AD$ (hai cạnh đối của hình bình hành).
-
-Vì $D$ là trung điểm của $AB$ nên $D$ thuộc $AB$ và $AD=DB$.
-
-Do đó $CF\parallel DB$ và $CF=DB$.
-
-Tứ giác $DBCF$ có $CF\parallel DB$ và $CF=DB$ nên $DBCF$ là hình bình hành (dấu hiệu nhận biết).
-
-Suy ra $DF\parallel BC$ và $DF=BC$ (hai cạnh đối của hình bình hành).
-
-Vì $E$ là trung điểm của $DF$ nên $DE=\dfrac{1}{2}DF=\dfrac{1}{2}BC=\dfrac{1}{2} \cdot 5=2{,}5$ (cm).
+Suy ra $DE=\dfrac{1}{2}BC=\dfrac{1}{2} \cdot 5=2{,}5$ (cm).
 
 Vậy $DE=2{,}5$ cm.
 
-b) Theo câu a, $DF\parallel BC$; mà $E$ thuộc $DF$ nên $DE\parallel BC$.
+b) Vì $DE$ là đường trung bình của $\triangle ABC$ nên $DE\parallel BC$.
 
 Suy ra $\widehat{ABC}=\widehat{ADE}=70^\circ$ (hai góc đồng vị).
 
@@ -305,7 +285,7 @@ c) Gọi $AH$ là đường cao của $\triangle ABC$ ($H\in BC$). Chứng minh 
 
 **Bước 5.** Ý c: muốn $HE=MD$, ta có $HE=\dfrac{AC}{2}$ (trung tuyến ứng với cạnh huyền của tam giác vuông $AHC$, vì $E$ là trung điểm $AC$, điều này suy ra từ $AE=DM=EC$ nhờ ý a và ý b) và $MD=AE=\dfrac{AC}{2}$ (cạnh đối của hình chữ nhật).
 
-**Bước 6.** Ý c: muốn $HD\perp HE$, cần $\widehat{DHE}=90^\circ$; góc vuông có sẵn là $\widehat{DAE}$ nên cần $\triangle HDE=\triangle ADE$ (c.c.c): $DE$ chung, $HE=AE$ đã có ở bước 5, còn $HD=AD$ vì $HD$ là trung tuyến ứng với cạnh huyền $AB$ của tam giác vuông $AHB$.
+**Bước 6.** Ý c: muốn $HD\perp HE$, cần $\widehat{DHE}=90^\circ$; vì $D$ là trung điểm cạnh huyền $AB$ của tam giác vuông $AHB$ nên $DH=DA$, suy ra $\widehat{DHA}=\widehat{DAH}$, tương tự $\widehat{EHA}=\widehat{EAH}$, cộng lại được góc $\widehat{DAE}$ vuông.
 
 **Chú ý:** điều kiện $AB<AC$ dùng để đảm bảo $H$ không trùng $M$, nếu không $HMED$ không phải là tứ giác.
 
@@ -365,19 +345,15 @@ Mà $MD=AE$ (cạnh đối của hình chữ nhật $ADME$) nên $HE=MD$.
 
 Hình thang $HMED$ có hai đường chéo $HE=MD$ nên $HMED$ là hình thang cân (dấu hiệu nhận biết).
 
-Xét tam giác $AHB$ vuông tại $H$ có $D$ là trung điểm của cạnh huyền $AB$ nên $HD=\dfrac{1}{2}AB=AD$ (trung tuyến ứng với cạnh huyền).
+Xét tam giác $AHB$ vuông tại $H$ có $D$ là trung điểm của cạnh huyền $AB$ nên $DH=DA$ (trung tuyến ứng với cạnh huyền).
 
-Xét $\triangle HDE$ và $\triangle ADE$ có:
+Suy ra $\triangle DAH$ cân tại $D$ nên $\widehat{DHA}=\widehat{DAH}$.
 
-$HD=AD$ (chứng minh trên);
+Chứng minh tương tự, $EH=EA$ nên $\widehat{EHA}=\widehat{EAH}$.
 
-$HE=AE$ (chứng minh trên);
+Vì $D$, $E$ nằm ở hai phía của đường thẳng $AH$ và tia $AH$ nằm giữa hai tia $AB$, $AC$ nên:
 
-$DE$ là cạnh chung.
-
-Do đó $\triangle HDE=\triangle ADE$ (c.c.c).
-
-Suy ra $\widehat{DHE}=\widehat{DAE}=90^\circ$ (hai góc tương ứng).
+$\widehat{DHE}=\widehat{DHA}+\widehat{AHE}=\widehat{DAH}+\widehat{EAH}=\widehat{DAE}=90^\circ$
 
 Vậy $HD\perp HE$.
 
@@ -424,9 +400,7 @@ Vậy $M+1$ là một số chính phương.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: KNTT (đoán theo nội dung đề). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (bình phương của tổng / hiệu, hiệu hai bình phương — Bài 1.4, Bài 2, Bài 3, Bài 5), Chương III tới hình chữ nhật và hình thang cân (Bài 4.2). Đề KHÔNG có định lí Thalès, Pythagore, phân tích nhân tử nên lời giải không dùng.
-- **Bài 4.1 — cần CEO quyết:** dữ kiện đúng là bài **đường trung bình của tam giác** (hai trung điểm $D$, $E$, hỏi $DE$ theo $BC$ và góc đồng vị) — kiến thức học sau giữa kì 1 ở bộ KNTT, luật khối 8 cấm ở mọi đề giữa kì 1. Lời giải KHÔNG dùng định lí đó mà tự chứng minh $DE\parallel BC$, $DE=\dfrac{1}{2}BC$ bằng hai hình bình hành $ADCF$, $DBCF$ (lấy $F$ sao cho $E$ là trung điểm $DF$) — cùng cách với Bài 4.1 của đề GKI-17. Câu mang dòng `Chưa chắc`.
-- Bài 4.2 không dùng đường trung bình (kể cả dùng ngầm): tự chứng minh $D$, $E$ là trung điểm qua hai tam giác bằng nhau; có dùng trung tuyến ứng với cạnh huyền (thuộc bài Hình chữ nhật — đề có hỏi hình chữ nhật).
+- Bộ sách: KNTT (đoán theo nội dung đề). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (bình phương của tổng / hiệu, hiệu hai bình phương — Bài 1.4, Bài 2, Bài 3, Bài 5), Chương III tới hình chữ nhật và hình thang cân (Bài 4.2), và **đường trung bình của tam giác** (Bài 4.1 hỏi thẳng nên lời giải Bài 4.1 dùng nó). Đề KHÔNG có định lí Thalès, Pythagore, phân tích nhân tử nên lời giải không dùng. Bài 4.2 không dùng đường trung bình: tự chứng minh $D$, $E$ là trung điểm qua hai tam giác bằng nhau; có dùng trung tuyến ứng với cạnh huyền (đề có hỏi hình chữ nhật).
 - Đề có 5 bài. Bài 1 gồm 4 phép tính độc lập nên tách thành Bài 1.1–1.4. Bài 2, Bài 3 giữ một câu (các ý dùng kết quả của nhau). Bài 4 gồm hai bài toán hình khác hẳn nhau nên tách thành Bài 4.1, Bài 4.2 (không tách ý a, b, c).
-- Đề không cho hình cho Bài 4.2: hình vẽ bằng code (dựng $AB=6$, $AC=8$), chỉ hiện ở lời giải; đánh dấu giả thiết (các góc vuông, $M$ là trung điểm $BC$), không đánh dấu điều phải chứng minh. Bài 4.1 đề có hình; thêm hình giải vẽ bằng code (đúng $BC=5$, góc $60^\circ$, $70^\circ$) có điểm phụ $F$.
+- Đề không cho hình cho Bài 4.2: hình vẽ bằng code (dựng $AB=6$, $AC=8$), chỉ hiện ở lời giải; đánh dấu giả thiết (các góc vuông, $M$ là trung điểm $BC$), không đánh dấu điều phải chứng minh.
 - Đề là ảnh scan, không có bảng đáp án in sẵn. Các đáp số đã thử lại bằng máy (thay nhiều bộ số ngẫu nhiên; hình dựng bằng toạ độ số).

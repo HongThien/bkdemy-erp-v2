@@ -263,7 +263,7 @@ Trong các phương án chỉ có $n=1$ thoả mãn $n \le 1$.
 Chọn C.
 
 ### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
-**Đề:** Hình bình hành $ABCD$ có 2 đường chéo $AC$ và $BD$ bằng nhau. Khi đó $ABCD$ là hình gì?
+**Đề:** Hình bình hành ABCD có 2 đường chéo AC và BD bằng nhau. Khi đó ABCD là hình gì?
 A. Hình chữ nhật
 B. Hình thang cân
 C. Hình thoi
@@ -273,7 +273,7 @@ D. Hình vuông
 
 **Mấu chốt:** nhớ các dấu hiệu nhận biết hình chữ nhật xuất phát từ hình bình hành: có một góc vuông, hoặc có hai đường chéo bằng nhau.
 
-**Bước 1.** Đọc dữ kiện: $ABCD$ đã là hình bình hành, thêm điều kiện về độ dài hai đường chéo.
+**Bước 1.** Đọc dữ kiện: ABCD đã là hình bình hành, thêm điều kiện về độ dài hai đường chéo.
 
 **Bước 2.** Đối chiếu điều kiện "hai đường chéo bằng nhau" với dấu hiệu nhận biết của từng loại hình ở các phương án.
 
@@ -283,7 +283,7 @@ D. Hình vuông
 
 Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật (dấu hiệu nhận biết).
 
-Do đó $ABCD$ là hình chữ nhật.
+Do đó ABCD là hình chữ nhật.
 
 Chọn A.
 
@@ -414,7 +414,7 @@ D. $\widehat{M}=\widehat{Q}$
 
 **Bước 3.** Loại các phương án còn lại bằng cách chỉ ra chúng không đủ để kết luận hình thang cân.
 
-**Chú ý:** hai cạnh bên bằng nhau chưa đủ, vì hình bình hành nào cũng có hai cạnh bên bằng nhau, mà hình bình hành không có góc vuông thì không phải là hình thang cân.
+**Chú ý:** hai cạnh bên bằng nhau chưa đủ, vì hình bình hành cũng có hai cạnh bên bằng nhau nhưng không phải hình thang cân.
 
 **Phần 2. Trình bày**
 
@@ -422,14 +422,12 @@ Hình thang $MNPQ$ có đáy $MN$, hai góc kề đáy $MN$ là $\widehat{M}$ v�
 
 Nếu $\widehat{M}=\widehat{N}$ thì $MNPQ$ là hình thang cân (định nghĩa).
 
-Hình bình hành $MNPQ$ có $\widehat{M}=60^\circ$ thì $\widehat{N}=120^\circ$ nên không phải là hình thang cân, nhưng vẫn có $MN=PQ$ và $MQ=PN$. Do đó các điều kiện ở A, B không đủ.
-
-$\widehat{M}$ và $\widehat{Q}$ là hai góc kề cạnh bên $MQ$ nên $\widehat{M}+\widehat{Q}=180^\circ$ (hai góc trong cùng phía, $MN \parallel PQ$). Nếu $\widehat{M}=\widehat{Q}$ thì $\widehat{M}=\widehat{Q}=90^\circ$, khi đó $MNPQ$ là hình thang vuông, chưa chắc là hình thang cân. Do đó điều kiện ở D không đủ.
+Các điều kiện $MN=PQ$ hoặc $MQ=PN$ không đủ để kết luận vì hình bình hành cũng thoả mãn; $\widehat{M}=\widehat{Q}$ là hai góc kề một cạnh bên, không phải điều kiện của hình thang cân.
 
 Chọn C.
 
 ### Câu 16 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
-**Đề:** Tứ giác $ABCD$ là hình thoi khi
+**Đề:** Tứ giác ABCD là hình thoi khi
 A. $AB=BC=CD=DA$
 B. $\widehat{A}=\widehat{B}=90^\circ$ và $AB \parallel CD$
 C. $\widehat{A}=\widehat{B}=\widehat{C}=90^\circ$
@@ -437,24 +435,24 @@ D. $\widehat{A}=\widehat{B}$; $AB=CD$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hình thoi là tứ giác có **bốn cạnh bằng nhau**; các phương án nói về góc vuông là điều kiện dẫn tới hình chữ nhật.
+**Mấu chốt:** hình thoi là tứ giác có **bốn cạnh bằng nhau**; các phương án nói về góc vuông là dấu hiệu của hình chữ nhật.
 
 **Bước 1.** Nhắc lại định nghĩa và dấu hiệu nhận biết hình thoi: bốn cạnh bằng nhau là điều kiện chính.
 
 **Bước 2.** Phân loại phương án: phương án nói về độ dài các cạnh khác với phương án nói về góc vuông.
 
-**Bước 3.** Với mỗi phương án còn lại, tìm một hình chữ nhật không phải hình vuông thoả mãn điều kiện đó: hình ấy không là hình thoi nên điều kiện không đủ.
+**Bước 3.** Điều kiện về góc vuông dẫn tới hình chữ nhật chứ không phải hình thoi, nên loại các phương án đó.
 
 **Phần 2. Trình bày**
 
 Tứ giác có bốn cạnh bằng nhau là hình thoi (định nghĩa), nên A đúng.
 
-Hình chữ nhật $ABCD$ có $AB=4$ cm, $BC=2$ cm thoả mãn cả ba điều kiện ở B, C, D (bốn góc vuông, $AB \parallel CD$, $AB=CD$) nhưng có $AB \ne BC$ nên không phải là hình thoi. Do đó B, C, D không đủ để kết luận $ABCD$ là hình thoi.
+B, C là điều kiện của hình chữ nhật; D không đủ để kết luận ABCD là hình thoi.
 
 Chọn A.
 
 ### Câu 17 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
-**Đề:** Cho hình thoi $ABCD$ như hình vẽ bên, biết $\widehat{ADC}=60^\circ$. Khi đó, giá trị của $x$ là
+**Đề:** Cho hình thoi ABCD như hình vẽ bên, biết $\widehat{ADC}=60^\circ$. Khi đó, giá trị của $x$ là
 A. $120^\circ$
 B. $150^\circ$
 C. $45^\circ$
@@ -484,7 +482,7 @@ Vậy $x=60^\circ$.
 Chọn D.
 
 ### Câu 18 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
-**Đề:** Cho hình vuông $ABCD$. Chọn câu SAI.
+**Đề:** Cho hình vuông ABCD. Chọn câu SAI.
 A. $AC=BD$
 B. $AC \perp BD$
 C. $\widehat{BAC}=90^\circ$
@@ -537,34 +535,38 @@ B đúng (dấu hiệu nhận biết hình bình hành).
 
 D đúng: hình thoi có bốn cạnh bằng nhau, hình chữ nhật có bốn góc vuông, nên hình vừa là hình thoi vừa là hình chữ nhật là hình vuông.
 
-C sai: hình thang cân trước hết phải là hình thang, mà hai đường chéo bằng nhau chưa đảm bảo tứ giác có hai cạnh đối song song. Chẳng hạn vẽ hai đoạn thẳng $AC=BD=4$ cm vuông góc với nhau tại $O$ sao cho $OB=OD=2$ cm, $OA=1$ cm, $OC=3$ cm: tứ giác $ABCD$ có hai đường chéo bằng nhau nhưng không có hai cạnh đối nào song song nên không phải là hình thang cân (dấu hiệu đúng là "hình thang có hai đường chéo bằng nhau").
+C sai: hai đường chéo bằng nhau mới chỉ là một điều kiện về độ dài, chưa đảm bảo tứ giác có cặp cạnh đối nào song song; mà hình thang cân trước hết phải là hình thang, nên khẳng định này không đúng với mọi tứ giác (dấu hiệu đúng là "hình thang có hai đường chéo bằng nhau").
 
 Chọn C.
 
 ### Câu 20 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
-**Đề:** Cho tam giác $ABC$ vuông tại $A$ có $M$ là trung điểm $BC$, biết $BC=10$ cm. Độ dài $AM$ là
-A. $10$ cm
-B. $5$ cm
-C. $\sqrt{10}$ cm
-D. $20$ cm
+**Đề:** Cho tam giác ABC vuông tại A có M là trung điểm BC, biết $BC=10cm$. Độ dài AM là
+A. $10cm$
+B. $5cm$
+C. $\sqrt{10}cm$
+D. $20cm$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** tam giác vuông và trung điểm của cạnh huyền là dấu hiệu để dùng tính chất: đường trung tuyến ứng với cạnh huyền bằng **nửa cạnh huyền**.
+**Mấu chốt:** trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền; ta chứng minh điều này qua hình chữ nhật.
 
-**Bước 1.** Xác định vai trò của $AM$: tam giác $ABC$ vuông tại $A$ nên $BC$ là cạnh huyền, $M$ là trung điểm của $BC$ nên $AM$ là đường trung tuyến ứng với cạnh huyền.
+**Bước 1.** Lấy điểm $D$ đối xứng với $A$ qua $M$ để $M$ là trung điểm của cả $AD$ và $BC$.
 
-**Bước 2.** Nhớ lại vì sao có tính chất này: tam giác vuông là "nửa hình chữ nhật", mà hai đường chéo của hình chữ nhật bằng nhau và cắt nhau tại trung điểm của mỗi đường, nên trung tuyến ứng với cạnh huyền bằng nửa đường chéo.
+**Bước 2.** Chứng minh $ABDC$ là hình bình hành rồi hình chữ nhật, từ đó hai đường chéo $AD$ và $BC$ bằng nhau.
 
-**Bước 3.** Viết $AM$ theo $BC$ rồi thay độ dài $BC$ đề cho để tính.
-
-**Chú ý:** hai phương án nhiễu hay bị chọn nhầm: lấy $AM$ bằng cả cạnh huyền, hoặc lấy căn bậc hai của cạnh huyền thay vì chia đôi.
+**Bước 3.** Từ $AD=BC$ và $AM=\dfrac{1}{2}AD$ suy ra $AM$ rồi thay độ dài $BC$.
 
 **Phần 2. Trình bày**
 
-Tam giác $ABC$ vuông tại $A$ có $AM$ là đường trung tuyến ứng với cạnh huyền $BC$ (vì $M$ là trung điểm của $BC$) nên $AM=\dfrac{1}{2}BC$.
+Lấy điểm $D$ sao cho $M$ là trung điểm của $AD$.
 
-Do đó $AM=\dfrac{1}{2} \cdot 10=5$ (cm).
+Tứ giác $ABDC$ có hai đường chéo $AD$ và $BC$ cắt nhau tại trung điểm $M$ của mỗi đường nên là hình bình hành.
+
+Hình bình hành $ABDC$ có $\widehat{BAC}=90^\circ$ nên là hình chữ nhật.
+
+Suy ra $AD=BC=10cm$ (hai đường chéo của hình chữ nhật bằng nhau).
+
+Vậy $AM=\dfrac{1}{2}AD=\dfrac{1}{2} \cdot 10=5cm$.
 
 Chọn B.
 
@@ -616,8 +618,8 @@ $=2x^3y^2-\dfrac{8}{3}x^2y^3+1$
 
 ### Câu 21.2 | kho=dai | loai=tra_loi_ngan | dap_an=1
 **Đề:** Tính nhanh: $2025^2+2026^2-4050 \cdot 2026$.
-**Ghi chú:** Đề gốc in $2025^2+2026^2-2050 \cdot 2026$; đã sửa $2050$ thành $4050$ ($=2 \cdot 2025$) để biểu thức đúng dạng $a^2+b^2-2ab$ của bài "tính nhanh".
-**Chưa chắc:** hai cách đọc đề, hai đáp số. (1) Đúng như đề in, $2050 \cdot 2026$ (ảnh phóng to và lớp chữ của tệp PDF đều là 2050, không mờ): kết quả là $4\,052\,001$, vì $2025^2+2026^2-2050 \cdot 2026=(2026-2025)^2+2000 \cdot 2026$. (2) Coi 2050 là gõ nhầm của 4050 (bản đang dùng): kết quả là $1$. Trạm soạn và trạm soát cùng cho là lỗi in vì chỉ với 4050 mới có cách tính nhanh, nhưng không có đáp án của trường để đối chiếu — cần người duyệt chốt.
+**Ghi chú:** Đề gốc in $2050 \cdot 2026$; đã sửa thành $4050 \cdot 2026$ ($=2 \cdot 2025 \cdot 2026$) cho đúng dạng hằng đẳng thức, nếu giữ $2050$ thì không có cách tính nhanh (giá trị là $4\,052\,001$).
+**Chưa chắc:** đề in $2050 \cdot 2026$, tôi cho đây là lỗi in của $4050 \cdot 2026$ (vì chỉ khi đó mới "tính nhanh" được và ra $1$); cần người duyệt xác nhận.
 
 **Phần 1. Hướng dẫn**
 
@@ -639,24 +641,27 @@ $=(2026-2025)^2$
 
 $=1^2=1$
 
-### Câu 22.1 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Tìm đa thức $M$, biết $M-5x^2+xyz=xy+2x^2-3xy+5$.
+### Câu 22 | kho=dai | loai=tu_luan | dap_an=—
+**Đề:** 1. Tìm đa thức $M$, biết $M-5x^2+xyz=xy+2x^2-3xy+5$.
+2. Chứng minh biểu thức sau không phụ thuộc vào biến: $P=(2x+3)^2+(2x-3)^2-2(2x+3)(2x-3)$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** $M$ đứng một mình ở vế trái cùng hai hạng tử khác; chuyển hai hạng tử đó sang vế phải (đổi dấu) thì còn lại $M$.
+**Mấu chốt:** ý 1 là tìm đa thức chưa biết bằng quy tắc chuyển vế sau khi thu gọn vế phải; ý 2 là khai triển bằng hằng đẳng thức rồi thu gọn thì biến triệt tiêu, chỉ còn một số.
 
-**Bước 1.** Thu gọn vế phải trước: hai hạng tử $xy$ và $-3xy$ đồng dạng nên cộng lại được.
+**Bước 1.** Ý 1: thu gọn vế phải bằng cách cộng các hạng tử đồng dạng $xy$ và $-3xy$.
 
-**Bước 2.** Áp dụng quy tắc chuyển vế: chuyển $-5x^2$ và $xyz$ từ vế trái sang vế phải, mỗi hạng tử đều phải đổi dấu.
+**Bước 2.** Ý 1: chuyển các hạng tử $-5x^2$ và $xyz$ sang vế phải, nhớ đổi dấu, rồi cộng các hạng tử đồng dạng để được $M$.
 
-**Bước 3.** Cộng các hạng tử đồng dạng chứa $x^2$ ở vế phải rồi viết đa thức $M$ ở dạng thu gọn.
+**Bước 3.** Ý 2: khai triển $(2x+3)^2$, $(2x-3)^2$ và $(2x+3)(2x-3)$ bằng ba hằng đẳng thức tương ứng.
 
-**Chú ý:** hạng tử $xyz$ không đồng dạng với $xy$ (phần biến khác nhau) nên không cộng được với nhau.
+**Bước 4.** Ý 2: thay vào $P$, bỏ ngoặc (chú ý dấu trừ nhân với cả hai hạng tử) rồi thu gọn đến khi không còn biến $x$.
+
+**Chú ý:** muốn "không phụ thuộc vào biến" thì kết quả cuối cùng phải là một hằng số.
 
 **Phần 2. Trình bày**
 
-$M-5x^2+xyz=xy+2x^2-3xy+5$
+1. $M-5x^2+xyz=xy+2x^2-3xy+5$
 
 $M-5x^2+xyz=2x^2-2xy+5$
 
@@ -664,28 +669,7 @@ $M=2x^2-2xy+5+5x^2-xyz$
 
 $M=7x^2-2xy-xyz+5$
 
-Vậy $M=7x^2-2xy-xyz+5$.
-
-### Câu 22.2 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Chứng minh biểu thức sau không phụ thuộc vào biến: $P=(2x+3)^2+(2x-3)^2-2(2x+3)(2x-3)$.
-
-**Phần 1. Hướng dẫn**
-
-**Mấu chốt:** "không phụ thuộc vào biến" nghĩa là sau khi thu gọn, $P$ chỉ còn là **một số**; vậy việc cần làm là khai triển rồi thu gọn cho tới khi mọi hạng tử chứa $x$ triệt tiêu.
-
-**Bước 1.** Khai triển $(2x+3)^2$ và $(2x-3)^2$ bằng hằng đẳng thức bình phương của một tổng, bình phương của một hiệu.
-
-**Bước 2.** Khai triển $(2x+3)(2x-3)$ bằng hằng đẳng thức hiệu hai bình phương, giữ nó trong ngoặc vì phía trước còn thừa số $-2$.
-
-**Bước 3.** Nhân $-2$ với cả hai hạng tử trong ngoặc rồi nhóm các hạng tử đồng dạng: nhóm chứa $x^2$, nhóm chứa $x$, nhóm các số.
-
-**Bước 4.** Thu gọn từng nhóm; hai nhóm chứa biến đều bằng 0 nên $P$ chỉ còn một số, từ đó kết luận.
-
-**Chú ý:** $-2 \cdot (-9)=+18$; quên đổi dấu ở đây thì các số không còn cộng lại đúng.
-
-**Phần 2. Trình bày**
-
-$P=(2x+3)^2+(2x-3)^2-2(2x+3)(2x-3)$
+2. $P=(2x+3)^2+(2x-3)^2-2(2x+3)(2x-3)$
 
 $=(4x^2+12x+9)+(4x^2-12x+9)-2(4x^2-9)$
 
@@ -698,9 +682,9 @@ $=36$
 Vậy giá trị của $P$ luôn bằng 36 nên $P$ không phụ thuộc vào biến.
 
 ### Câu 23 | kho=hinh_hoc | loai=tu_luan | dap_an=—
-**Đề:** Cho tam giác $ABC$ vuông tại $A$ có $AB<AC$ và đường trung tuyến $AM$. Từ $M$ kẻ $MN$ vuông góc với $AC$ tại $N$ và kẻ $MP$ vuông góc với $AB$ tại $P$.
-a) Tứ giác $APMN$ là hình gì? Vì sao?
-b) Trên tia đối của tia $NM$ lấy điểm $Q$ sao cho $N$ là trung điểm của $MQ$. Trên tia đối của tia $PM$ lấy điểm $K$ sao cho $P$ là trung điểm của $MK$. Chứng minh 3 điểm $Q$, $A$, $K$ thẳng hàng.
+**Đề:** Cho tam giác ABC vuông tại A có $AB<AC$ và đường trung tuyến AM. Từ M kẻ MN vuông góc với AC tại N và kẻ MP vuông góc với AB tại P.
+a) Tứ giác APMN là hình gì? Vì sao?
+b) Trên tia đối của tia NM lấy điểm Q sao cho N là trung điểm của MQ. Trên tia đối của tia PM lấy điểm K sao cho P là trung điểm của MK. Chứng minh 3 điểm Q, A, K thẳng hàng.
 **Hình giải:** giai_cau23.png
 
 **Phần 1. Hướng dẫn**
@@ -784,11 +768,10 @@ Vậy sau 3 giờ khoảng cách giữa hai phương tiện là 90 km.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: KNTT (đoán theo nội dung). Đề chạm tới Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (Câu 12, 13, 22.2, 21.2) và Chương III tới hình thoi, hình vuông (Câu 16–19). Đề KHÔNG có Pythagore, phân tích nhân tử, đường trung bình nên lời giải không dùng. Câu 20 dùng thẳng tính chất "trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền" (bài Hình chữ nhật) — được dùng vì đề hỏi tới hình chữ nhật, thoi, vuông và chính Câu 20 kiểm tra tính chất này.
-- Đề có 24 câu (20 trắc nghiệm + 4 tự luận), nhập thành 27 câu. Câu 21 mục 1 có hai ý "thực hiện phép tính" độc lập nên tách thành Câu 21.1a, 21.1b; mục 2 là Câu 21.2. Câu 22 gom hai bài toán khác hẳn nhau (tìm đa thức $M$ · chứng minh không phụ thuộc biến), mỗi bài một bộ dữ kiện riêng, nên tách thành Câu 22.1, Câu 22.2.
-- Câu 10: hình chữ nhật cũng là một hình thang cân, nhưng đề hỏi "là hình gì" thì câu trả lời đúng và đủ nhất là hình chữ nhật (A).
+- Bộ sách: KNTT (đoán theo nội dung). Đề chạm tới Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (Câu 12, 13, 22.2, 21.2) và Chương III tới hình thoi, hình vuông (Câu 16–19). Đề KHÔNG có Pythagore, phân tích nhân tử, đường trung bình nên lời giải không dùng; Câu 20 (trung tuyến ứng cạnh huyền) chứng minh qua hình chữ nhật.
+- Đề có 24 câu (20 trắc nghiệm + 4 tự luận). Câu 21 mục 1 có hai ý "thực hiện phép tính" độc lập nên tách thành Câu 21.1a, 21.1b; mục 2 là Câu 21.2. Câu 22 (tìm đa thức M + chứng minh không phụ thuộc biến) giữ chung một câu, ghi "1." "2." theo đề.
 - Câu 3: đề in phương án A và D giống nhau ($2xy$), đáp án đúng là C.
-- Câu 21.2: đề in $2050 \cdot 2026$, đã sửa thành $4050 \cdot 2026$; nếu giữ đúng như in thì kết quả là $4\,052\,001$ (xem `Chưa chắc` trong câu).
-- Câu 23: đề không cho hình, đã vẽ hình bằng code (chỉ hiện ở lời giải; có vẽ đường phụ $PN$ mà lời giải dùng, không vẽ $AQ$, $AK$, $QK$ vì ba điểm thẳng hàng là điều phải chứng minh). Điều kiện $AB<AC$ không dùng. Ý b không dùng đường trung bình: đi qua hai hình bình hành $APNQ$, $ANPK$ và tiên đề Euclid.
+- Câu 21.2: đề in $2050 \cdot 2026$, đã sửa thành $4050 \cdot 2026$ (xem `Chưa chắc` trong câu).
+- Câu 23: đề không cho hình, đã vẽ hình bằng code (chỉ hiện ở lời giải, không vẽ đoạn $QK$ vì là điều phải chứng minh). Điều kiện $AB<AC$ không dùng.
 - Câu 24: hiểu "xuôi dòng", "ngược dòng" từ cùng một bến là hai phương tiện đi ngược chiều nhau nên khoảng cách là tổng hai quãng đường.
 - Đề gốc không có bảng đáp án.

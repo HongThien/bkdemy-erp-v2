@@ -232,7 +232,7 @@ D. Tứ giác có hai cạnh đối bằng nhau là hình bình hành
 
 **Bước 3.** Với khẳng định nghi ngờ sai, tìm một hình cụ thể (hình bình hành, hình thang cân, hình chữ nhật) thoả điều kiện mà không thoả kết luận.
 
-**Chú ý:** hình thang cân có hai cạnh bên bằng nhau nhưng không là hình bình hành; hình bình hành (không phải hình chữ nhật) cũng là hình thang có hai cạnh bên bằng nhau nhưng không là hình thang cân.
+**Chú ý:** hình thang cân có hai cạnh bên bằng nhau nhưng không là hình bình hành; hình bình hành không phải hình chữ nhật có hai cạnh bên bằng nhau nhưng không là hình thang cân.
 
 **Phần 2. Trình bày**
 
@@ -404,7 +404,7 @@ b) Tính kích thước $x$ của khu vườn hình vuông.
 
 **Bước 4.** Ý b: cho biểu thức vừa thu gọn bằng $475$ theo đề, rồi chuyển vế và chia để tìm $x$.
 
-**Chú ý:** khi lấy diện tích khu vườn trừ diện tích mảnh trồng rau, trước ngoặc là dấu trừ nên khi bỏ ngoặc phải đổi dấu mọi hạng tử bên trong; chiều dài là cạnh lớn hơn trong hai cạnh.
+**Chú ý:** hiệu hai biểu thức đứng trước có dấu trừ trước ngoặc, khi bỏ ngoặc phải đổi dấu mọi hạng tử bên trong; chiều dài là cạnh lớn hơn trong hai cạnh.
 
 **Phần 2. Trình bày**
 
@@ -453,7 +453,7 @@ c) Gọi $D$ là giao điểm của $CO$ và $AK$. Chứng minh $AK=3AD$.
 
 **Bước 5.** Muốn $OM=OH$, cần $AMHN$ là hình chữ nhật: tứ giác này có ba góc vuông tại $A$, $M$, $N$ nên góc thứ tư cũng vuông (tổng bốn góc bằng $360^\circ$); khi đó hai đường chéo $MN$ và $AH$ bằng nhau, cắt nhau tại trung điểm $O$ của mỗi đường.
 
-**Bước 6.** Ý c: vì $AK=2AI$ nên muốn có $AK=3AD$, cần $AD=\dfrac{2}{3}AI$, tức là cần $D$ là trọng tâm của tam giác $AHC$; điều này có được vì $D$ là giao điểm của hai đường trung tuyến $AI$ ($I$ là trung điểm của $HC$, giả thiết) và $CO$ ($O$ là trung điểm của $AH$, đã có từ hình chữ nhật $AMHN$ ở ý b).
+**Bước 6.** Ý c: $O$ là trung điểm của $AH$ nên $CO$ là trung tuyến của tam giác $AHC$, còn $AI$ cũng là trung tuyến; hai trung tuyến cắt nhau tại $D$ nên $D$ là trọng tâm, suy ra $AD$ bằng $\dfrac{2}{3}$ của $AI$, mà $AI$ là nửa $AK$.
 
 **Chú ý:** "tứ giác có ba góc vuông là hình chữ nhật" không phải dấu hiệu đã học, nên phải suy ra góc thứ tư vuông từ tổng các góc của tứ giác rồi mới dùng định nghĩa.
 
@@ -508,7 +508,7 @@ Vậy $AK=3AD$.
 
 **Mấu chốt:** từ $x+y+z=3$ viết được $Q$ qua $S=xy+yz+zx$, và điều kiện $0\le x,y,z\le 2$ cho ba thừa số $2-x$, $2-y$, $2-z$ đều không âm, nhờ đó chặn được $S$.
 
-**Bước 1.** Khai triển $(x+y+z)^2$ để biểu diễn $Q$ theo $S=xy+yz+zx$: coi $x+y$ là một số hạng rồi dùng hằng đẳng thức bình phương của một tổng hai lần (bình phương của tổng ba số chưa có sẵn trong bài học nên phải tự khai triển).
+**Bước 1.** Bình phương hai vế của $x+y+z=3$ bằng hằng đẳng thức bình phương của một tổng ba số để biểu diễn $Q$ theo $S=xy+yz+zx$.
 
 **Bước 2.** Vì cần tìm giá trị lớn nhất của $Q$ nên phải chặn dưới được $S$; điều kiện $0\le x,y,z\le 2$ cho ba thừa số $2-x$, $2-y$, $2-z$ đều không âm nên tích của chúng không âm.
 
@@ -519,8 +519,6 @@ Vậy $AK=3AD$.
 **Chú ý:** chỉ chứng minh $Q$ không vượt quá một số là chưa đủ; phải chỉ ra bộ số làm dấu "=" xảy ra thì số đó mới là giá trị lớn nhất.
 
 **Phần 2. Trình bày**
-
-Ta có $(x+y+z)^2=\left[(x+y)+z\right]^2=(x+y)^2+2(x+y)z+z^2=x^2+y^2+z^2+2(xy+yz+zx)$.
 
 Vì $x+y+z=3$ nên $(x+y+z)^2=9$, tức là $x^2+y^2+z^2+2(xy+yz+zx)=9$.
 
@@ -540,7 +538,7 @@ Vì $x,y,z\ge 0$ nên $xyz\ge 0$, do đó $2(xy+yz+zx)\ge 4$ (2).
 
 Từ (1) và (2) suy ra $Q=9-2(xy+yz+zx)\le 9-4=5$.
 
-Dấu "=" xảy ra khi $xyz=0$ và $(2-x)(2-y)(2-z)=0$, chẳng hạn khi $x=2$; $y=1$; $z=0$ (thoả $0\le x,y,z\le 2$ và $x+y+z=3$), khi đó $Q=2^2+1^2+0^2=5$.
+Dấu "=" xảy ra khi $x=2$; $y=1$; $z=0$ (thoả $0\le x,y,z\le 2$ và $x+y+z=3$), khi đó $Q=2^2+1^2+0^2=5$.
 
 Vậy giá trị lớn nhất của $Q$ là $5$.
 
