@@ -1,0 +1,12 @@
+{
+  "D1.51a@p19": { "nhom": "T18T020102" },
+  "D1.51b@p19": { "nhom": "T18T020102" },
+  "D1.55d@p19": {
+    "sach_in_sai": "trang PDF 20, dòng d) sách in (x^2+x+1)(x^6-x^4+x^2-x+1); nhân ra không bằng x^8+x^7+1 — hạng tử thứ ba phải là x^3. Đã mở ảnh p-020 xác nhận sách in x^2."
+  },
+  "D1.35@p13": {
+    "noi_dung": "Cho biết $a^2+b^2+c^2=ab+bc+ca$. Chứng minh rằng $a=b=c$.",
+    "dap_an": "Chứng minh",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển hết về một vế bằng $0$ rồi ghép thành tổng các bình phương; tổng các bình phương bằng $0$ thì từng bình phương bằng $0$.\n\n**Bước 1.** Chuyển tất cả các hạng tử sang vế trái để vế phải bằng $0$.\n\n**Bước 2.** Nhân hai vế với $2$ để mỗi tích $ab$, $bc$, $ca$ đủ hệ số ghép thành bình phương của một hiệu.\n\n**Bước 3.** Vì tổng ba bình phương bằng $0$ nên mỗi bình phương bằng $0$, từ đó suy ra ba số bằng nhau.\n\n**Phần 2. Trình bày**\n\n$a^2+b^2+c^2=ab+bc+ca$\n\n$\\Leftrightarrow 2a^2+2b^2+2c^2-2ab-2bc-2ca=0$\n\n$\\Leftrightarrow (a-b)^2+(b-c)^2+(c-a)^2=0$\n\nVì $(a-b)^2\\ge 0$, $(b-c)^2\\ge 0$, $(c-a)^2\\ge 0$ nên đẳng thức chỉ xảy ra khi $(a-b)^2=(b-c)^2=(c-a)^2=0$.\n\nVậy $a=b=c$."
+  }
+}

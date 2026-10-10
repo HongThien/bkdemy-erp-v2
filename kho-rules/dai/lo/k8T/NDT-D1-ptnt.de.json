@@ -1,0 +1,290 @@
+[
+ {
+  "ma": "D1.27a@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $15x^2+10xy$."
+ },
+ {
+  "ma": "D1.27b@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $24x-18y+30$."
+ },
+ {
+  "ma": "D1.27c@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x(y-2009)+5y(y-2009)$."
+ },
+ {
+  "ma": "D1.27d@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $35x(y-8)-14y(8-y)$."
+ },
+ {
+  "ma": "D1.28a@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2+14x+49$."
+ },
+ {
+  "ma": "D1.28b@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $9x^2-4$."
+ },
+ {
+  "ma": "D1.28c@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $27x^3+y^3$."
+ },
+ {
+  "ma": "D1.28d@p12",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $8x^3-\\dfrac{1}{125}y^3$."
+ },
+ {
+  "ma": "D1.29@p12",
+  "noi_dung": "Tính giá trị của biểu thức $x(x-2009)-y(2009-x)$ tại $x=3009$ và $y=1991$."
+ },
+ {
+  "ma": "D1.30@p12",
+  "noi_dung": "Chứng minh rằng:\n\na) $7^{19}+7^{20}+7^{21}$ chia hết cho $57$\n\nb) $32^{567}-32^{566}$ chia hết cho $31$."
+ },
+ {
+  "ma": "D1.31@p13",
+  "noi_dung": "Tìm các số nguyên $x,y$ biết $x(y+4)-3(y+4)=19$."
+ },
+ {
+  "ma": "D1.32@p13",
+  "noi_dung": "Cho $n\\in\\mathbb Z$. Chứng minh rằng $n(n+1)(2n+5)-n(n+1)(n+3)$ chia hết cho $6$."
+ },
+ {
+  "ma": "D1.33a@p13",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $15x(x-3y)+20y(3y-x)$."
+ },
+ {
+  "ma": "D1.33b@p13",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $25x^2-2$."
+ },
+ {
+  "ma": "D1.33c@p13",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $-x^3+6x^2y-12xy^2+8y^3$."
+ },
+ {
+  "ma": "D1.34a@p13",
+  "noi_dung": "Tìm $x$, biết: $7x^2(x^2-7)+5x(7-x^2)=0$."
+ },
+ {
+  "ma": "D1.34b@p13",
+  "noi_dung": "Tìm $x$, biết: $(2x+5)^2-2(2x+5)(x-1)+(x-1)^2=49$."
+ },
+ {
+  "ma": "D1.35@p13",
+  "noi_dung": "Cho biết $a^2+b^2+c^2=ab+bc+ca$. Chứng minh rằng $a=b=c$."
+ },
+ {
+  "ma": "D1.36@p14",
+  "noi_dung": "Cho $a,b,c$ là độ dài các cạnh của một tam giác. Chứng minh rằng:\n\na) $(-a+b+c)a^2-(-a+b+c)(b-c)^2\\ge0$\n\nb) $(a+b-c)(a-b+c)(-a+b+c)\\le abc$."
+ },
+ {
+  "ma": "D1.37@p14",
+  "noi_dung": "Tìm $x,y\\in\\mathbb Z$ biết: $x^3+x^2+x+1=y^3$."
+ },
+ {
+  "ma": "D1.38a@p15",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 1 – Tp. Hồ Chí Minh, năm học 2005 – 2006) Cho ba số $a,b,c$ thoả mãn $a+b+c=0$. Chứng minh rằng $a^3+a^2c-abc+b^2c+b^3=0$."
+ },
+ {
+  "ma": "D1.38b@p15",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 12 – Tp. Hồ Chí Minh, năm học 2007 – 2008) Cho $A=x^3+y^3+z^3-3xyz$.\n\n1. Chứng minh rằng nếu $x+y+z=0$ thì $A=0$.\n\n2. Điều ngược lại có đúng không?"
+ },
+ {
+  "ma": "D1.38c@p15",
+  "noi_dung": "(Đề thi tuyển sinh vào lớp 10 chuyên Toán, THPT chuyên Tp. Hồ Chí Minh, năm học 2010 – 2011) Cho hai số dương $a,b$ thoả $a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$. Tính $P=a^{2010}+b^{2010}$."
+ },
+ {
+  "ma": "D1.39a@p16",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2+xy+5x+5y$."
+ },
+ {
+  "ma": "D1.39b@p16",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-y^2+3x-3y$."
+ },
+ {
+  "ma": "D1.39c@p16",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-8x+16-y^2$."
+ },
+ {
+  "ma": "D1.39d@p16",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4x^2-y^2+10y-25$."
+ },
+ {
+  "ma": "D1.40a@p16",
+  "noi_dung": "Tìm $x$, biết: $2x(x-7)+5x-35=0$."
+ },
+ {
+  "ma": "D1.40b@p16",
+  "noi_dung": "Tìm $x$, biết: $x(x-3)-7x+21=0$."
+ },
+ {
+  "ma": "D1.41@p16",
+  "noi_dung": "Tính giá trị của biểu thức $x^2-y^2-2x+2y$ tại $x=2345$, $y=2344$."
+ },
+ {
+  "ma": "D1.42@p16",
+  "noi_dung": "Tính giá trị của biểu thức $x^2-2009x-y^2+2009y$ tại $x=723$; $y=1286$."
+ },
+ {
+  "ma": "D1.43a@p16",
+  "noi_dung": "Tính nhanh: $16{,}87\\cdot 91-6{,}2\\cdot 188+16{,}87\\cdot 97-0{,}67\\cdot 188$."
+ },
+ {
+  "ma": "D1.43b@p16",
+  "noi_dung": "Tính nhanh: $56^2+31^2-13^2+56\\cdot 62$."
+ },
+ {
+  "ma": "D1.44a@p17",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $9x^2-y^2+10yz-25z^2$."
+ },
+ {
+  "ma": "D1.44b@p17",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^2-y^2+z^2-t^2-2xz+2yt$."
+ },
+ {
+  "ma": "D1.45a@p17",
+  "noi_dung": "Tìm $x$, biết: $x^4+5x^3-8x-40=0$."
+ },
+ {
+  "ma": "D1.45b@p17",
+  "noi_dung": "Tìm $x$, biết: $x^4+4x^3-16x-16=0$."
+ },
+ {
+  "ma": "D1.46@p17",
+  "noi_dung": "Tìm các số tự nhiên $n$ để giá trị của biểu thức sau là số nguyên tố: $5n^3-9n^2+15n-27$."
+ },
+ {
+  "ma": "D1.47@p17",
+  "noi_dung": "(Đề thi chọn học sinh giỏi giải thưởng Lê Quý Đôn, Trường THCS Lê Quý Đôn, Quận 3 – Tp. Hồ Chí Minh, năm học 2001 – 2002) Cho $a,b,c,d$ thoả mãn $a+b=c+d$, $a^2+b^2=c^2+d^2$. Chứng minh rằng $a^{2002}+b^{2002}=c^{2002}+d^{2002}$."
+ },
+ {
+  "ma": "D1.48@p18",
+  "noi_dung": "(Đề thi vào lớp 10 chuyên Trường Đại học Quốc gia Hà Nội, năm học 2004 – 2005) Cho các số thực dương $a$ và $b$ thoả mãn $a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$. Hãy tính giá trị của biểu thức $P=a^{2004}+b^{2004}$."
+ },
+ {
+  "ma": "D1.49a@p18",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $\\dfrac12x^3+4$."
+ },
+ {
+  "ma": "D1.49b@p18",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^5-x^4y+2x^4-2x^3y$."
+ },
+ {
+  "ma": "D1.50a@p18",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2+3x+2x+6$."
+ },
+ {
+  "ma": "D1.50b@p18",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2+5x+6$."
+ },
+ {
+  "ma": "D1.51a@p19",
+  "noi_dung": "Tìm $x$, biết: $x^3-x^2-25x+25=0$."
+ },
+ {
+  "ma": "D1.51b@p19",
+  "noi_dung": "Tìm $x$, biết: $4x^3-8x^2-9x+18=0$."
+ },
+ {
+  "ma": "D1.52a@p19",
+  "noi_dung": "Tính nhanh giá trị của biểu thức $2x^2+2x+\\dfrac12$ tại $x=199{,}5$."
+ },
+ {
+  "ma": "D1.52b@p19",
+  "noi_dung": "Tính nhanh giá trị của biểu thức $x^2-y^2-6y-9$ tại $x=2345$, $y=2341$."
+ },
+ {
+  "ma": "D1.53a@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4+4+4x^2-4x^2$."
+ },
+ {
+  "ma": "D1.53b@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4+4$."
+ },
+ {
+  "ma": "D1.53c@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4+64$."
+ },
+ {
+  "ma": "D1.53d@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4x^4+y^4$."
+ },
+ {
+  "ma": "D1.54a@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $12x^2-72x+60$."
+ },
+ {
+  "ma": "D1.54b@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $6x^2-12x-18$."
+ },
+ {
+  "ma": "D1.54c@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^6y+4x^2y$."
+ },
+ {
+  "ma": "D1.54d@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^7y+x^5y+x^3y$."
+ },
+ {
+  "ma": "D1.55a@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-7x-6$."
+ },
+ {
+  "ma": "D1.55b@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-x^2-14x+24$."
+ },
+ {
+  "ma": "D1.55c@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^5+x+1$."
+ },
+ {
+  "ma": "D1.55d@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^8+x^7+1$."
+ },
+ {
+  "ma": "D1.55e@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^5+x^4+1$."
+ },
+ {
+  "ma": "D1.55f@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^{10}+x^5+1$."
+ },
+ {
+  "ma": "D1.56@p20",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(x+2)(x+3)(x+4)(x+5)-24$."
+ },
+ {
+  "ma": "D1.57a@p20",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(x^2-2x+4)(x^2+3x+4)-14x^2$."
+ },
+ {
+  "ma": "D1.57b@p20",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^2(b-c)+b^2(c-a)+c^2(a-b)$."
+ },
+ {
+  "ma": "D1.57c@p20",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^3+b^3+c^3-3abc$."
+ },
+ {
+  "ma": "D1.58@p21",
+  "noi_dung": "Chứng minh rằng đa thức $x^4-x^2y^2-4x^2y^2+4y^4$ không thể có giá trị là $929$ với mọi $x,y$ là số nguyên."
+ },
+ {
+  "ma": "D1.59@p21",
+  "noi_dung": "a) Chứng minh rằng $n^5-n$ chia hết cho $30$ với mọi $n\\in\\mathbb{Z}$.\nb) Cho $a_1,a_2,\\ldots,a_n\\in\\mathbb{Z}$. Đặt $P=a_1^5+a_2^5+a_3^5+\\ldots+a_n^5$, $Q=(a_1+a_2+\\ldots+a_n)^5$. Chứng minh rằng $P\\vdots30\\Leftrightarrow Q\\vdots30$."
+ },
+ {
+  "ma": "D1.60a1@p21",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Tp. Pleiku – tỉnh Gia Lai, năm học 2002 – 2003) Phân tích đa thức thành nhân tử: $x^4-30x^2+31x-30$."
+ },
+ {
+  "ma": "D1.60a2@p21",
+  "noi_dung": "(Đề thi học sinh giỏi Toán 8, trường THCS Hoa Lư, Quận 9 – Tp. Hồ Chí Minh, năm học 2010 – 2011) Phân tích đa thức thành nhân tử: $x^8+x^6+x^4+x^2+1$."
+ },
+ {
+  "ma": "D1.60a3@p22",
+  "noi_dung": "(Đề thi học sinh giỏi Toán 8, trường THCS Nguyễn Gia Thiều, Quận Tân Bình, Tp. Hồ Chí Minh, năm học 2010 – 2011) Phân tích đa thức thành nhân tử: $6x^3+x^2y+23xy^2+12y^3$."
+ },
+ {
+  "ma": "D1.60b@p22",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – Tp. Hồ Chí Minh, năm học 2006 – 2007) Tìm $n\\in\\mathbb{N}$ để $(n^2-8)^2+36$ là số nguyên tố."
+ }
+]

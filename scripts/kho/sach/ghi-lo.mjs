@@ -136,7 +136,8 @@ for (const c of lo) {
   const bam = bamNoiDung(cau)
   const kiem = []
   const bb = (tram, cach, kq, lan, model) => kiem.push({ tram, lan_chay: lan, cach, ...(model ? { model } : {}), ket_qua: kq.ket_qua, ghi_chu: kq.ghi_chu, bam_noi_dung: bam })
-  bb('kiem-doc', 'code', kiemDoc(c), LAN_KIEM_CODE)
+  // sách SCAN (lo-tu-chep.mjs): không có bản tách bằng máy để so chữ ⇒ lô mang sẵn kết quả kiểm chép (kết quả sách ↔ đề, máy thay số)
+  bb('kiem-doc', 'code', c.kiem_doc ?? kiemDoc(c), LAN_KIEM_CODE)
   bb('kiem-dap-so', 'code', kiemDapSo(c.ma_nguon, c.dap_an), LAN_KIEM_CODE)
   if (kiemA) bb('kiem-hinh-a', 'code', kiemA, LAN_KIEM_CODE)
   if (kiemDe) bb('kiem-hinh-de', 'code', kiemDe, LAN_KIEM_CODE)
