@@ -36686,3 +36686,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **10/10 (khuya 3, tiếp):** Thùy chốt bài 89b: "Nhập kết quả đúng nhé" ⇒ gỡ `bo` trong `NDT-D1-hdt-chia-ot.sua.json`, ghi `sach_in_sai`, dựng lại lô 2 (72 câu) và ghi thêm đúng 1 câu (71 câu cũ cổng bỏ qua). Kho Đại 8T: 192 câu, dạng chờ 1 (89b).
 
 - **10/10 (tiếp 3):** Thùy: "đưa Nuôi thú ra màn hình chính" ⇒ nút 🐾 Nuôi thú ở màn bìa (hàng 3 nút Toán/Anh/Thú), `S.tuTho` nhớ màn trước để nút quay lại về đúng chỗ. Commit LunarCherry.
+
+## 10/10 (tối) — Hình 3D: Câu 47, giao của hai khối 1/4 trụ (`giao-hai-tru.html`)
+- **Thùy:** "Ok" sau khi t báo xong nhóm tròn xoay và sẽ làm Câu 47 trước.
+- Bài thiết diện thứ hai, file riêng trên `khung.js`. 7 bước: đề (hai khối xếp chữ L như hình sách) → phần chung → khối (H) → cắt một lát (hình vuông cạnh √(a² − x²)) → cộng các lát → V = 2a³/3 → mở rộng: 1/8 khối cầu nằm trong (H), lát nào cũng tỉ số π/4 ⇒ thể tích hình cầu.
+- Đáp số theo chữ a ⇒ không có nút Thay số (A3 chỉ đòi chữ trước; ở đây chữ là hết). Các số ví dụ in theo a.
+- **Sai rồi sửa trong lúc soát:** (1) bước 7 không thấy khối cầu, bước 2 không thấy phần chung — cả hai nằm TRONG khối đang có lượt ghi độ sâu (dùng để vẽ nét khuất) nên bị chính lượt đó che; cho `depthTest: false`. (2) công thức trong dòng có chú thích bên phải gãy ở dấu =; cho không gãy dòng. (3) bước 7 ở 1920×1080 dài quá 50px; cắt câu về khối Steinmetz (vẫn còn ở spec §E).
+- **Không làm theo sổ tay một chỗ:** S.4 ghi "dựng câu 47 thì chuyển hàm lát cắt lên khung.js". Không chuyển: lát vuông + hộp viết thẳng ngắn hơn bản tổng quát của bài 43, hai bài chưa đủ để biết nên rút gì. Đã sửa S.4: rút khi làm câu 44.
+- Soát: 1280×720 và 1920×1080, đủ 7 bước, 0 lỗi KaTeX, không tràn ngang, bảng không phải cuộn ở 1080; đi hết bằng nút Tiếp, phím ←, thanh kéo, 4 nút xem riêng, đổi số lát, nút khối lập phương, nút hiện hai khối; console sạch.
+- Chưa: màn dọc, TV / iPad thật, duyệt câu chữ. Còn Câu 44 (mái vòm), 53 (mặt cắt).

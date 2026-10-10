@@ -316,7 +316,7 @@
 - **`spec-day-hinh-3d.md` — ĐỌC trước khi dựng mô hình 3D cho BÀI TẬP Toán** (thư mục `toan-site/the-tich/`; Thùy mở 09/10, chốt 10/10): khác khuôn du hành (không trạm/bay) ·
   **công thức chữ trước, thay số sau** · **cắt lát chỉ cho bài thiết diện; bài tròn xoay chia miền rồi lắp thẳng công thức** · **bài tròn xoay = MỘT trang chuyên đề `tron-xoay.html`,
   thêm bài = thêm một mục dữ liệu vào `tron-xoay-bai.js`** (địa chỉ cố định `?bai=<id>`, `&nhung=1` để sau gắn vào bài giải trên app HS) · khung chung `khung.js` + `khung.css` ·
-  làm bài mới: đọc Phần A + Phần S (sổ tay, có phiếu cho các bài còn lại). Đã có: Câu 43 `coc-nghieng.html` (thiết diện) · Câu 48, 49 (tròn xoay).
+  làm bài mới: đọc Phần A + Phần S (sổ tay, có phiếu cho các bài còn lại). Đã có những bài nào: `docs/hinh-3d/so-theo-doi.md`.
 - **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):

@@ -327,7 +327,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 - **Không sửa `khung.js` cho riêng một bài.** Thiếu thì thêm tuỳ chọn vào `cfg` hoặc thêm hàm dùng chung, rồi soát lại CẢ các bài cũ.
 - **Bài TX không còn file riêng:** mọi hàm tròn xoay (`pts`, `circ`, `strip`, `mkLuoi`, `tween`, hệ trục…) nằm trong động cơ `tron-xoay.html`, bài chỉ là dữ liệu (S.4b).
-- **Hàm đang nằm trong bài 1, bài TD nào cũng cần:** `poly/area` theo hướng cắt, `updateSlice`, `buildSlabs/showSlabs/playSlabs`, `pair()` nét khuất. Khi dựng bài TD kế tiếp (câu 47) chuyển lên `khung.js` thành `M.td` theo cách tương tự.
+- **Hàm đang nằm trong bài 1, bài TD nào cũng cần:** `poly/area` theo hướng cắt, `updateSlice`, `buildSlabs/showSlabs/playSlabs`, `pair()` nét khuất. **Câu 47 đã dựng mà CHƯA chuyển:** lát của nó là hình vuông và các lát chồng là hộp, viết thẳng còn ngắn hơn dùng `poly/area` tổng quát; phần thật sự lặp lại giữa hai bài chỉ là `pair()` + lượt ghi độ sâu (~10 dòng, đang chép ở cả hai file). Bài TD thứ ba (câu 44) mới đủ ba mẫu để biết nên rút gì lên `khung.js` — rút lúc đó, rồi soát lại 43 và 47.
 - Bẫy JS đã dính: `Object.assign` chép GIÁ TRỊ của getter · tiến độ hoạt cảnh phải lấy từ `clock()` (không dùng mốc giờ rAF) · nối hai tập bằng chỉ số là sai khi một bên đổi độ dài (đếm đỉnh theo từng lát, đừng giả định bằng nhau).
 
 ### S.4b Bài tròn xoay: thêm bằng DỮ LIỆU (A5) — không viết HTML
@@ -369,7 +369,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 ### S.7 Phiếu dựng 8 bài còn lại (công thức chữ đã kiểm bằng số 10/10)
 
-Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhóm TX) → **47 → 44** (TD, file riêng) rồi **53** (MC).
+Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhóm TX) → ~~47~~ (xong) → **44** (TD, file riêng) rồi **53** (MC).
 
 **Câu 49 — TX, hai miền.** ✅ ĐÃ CÓ (10/10) — mục `id: '49'` trong `tron-xoay-bai.js`: V₁ = π∫ₐᶜ f², V₂ = π∫_c^b g², V = 21π/5; bẫy π∫(f² − g²) = 23π/15 − 7π/15 = 16π/15.
 
@@ -383,11 +383,14 @@ Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhó
 - Chữ: a = OA. x± = a/2 ± √(a²/2 − (y − a/2)²), c = a/2 + a/√2. V₁ = π∫₀ᵃ x₊² dy, V₂ = π∫ₐᶜ (x₊² − x₋²) dy, **V = 2(V₁ + V₂) = a³(4π/3 + π²/2)**. Thay a = 2: V₁ = 22π/3 + π², V₂ = π² − 2π, V = 32π/3 + 4π² ≈ 72,99.
 - KHÔNG làm bước "Cái bẫy" (coi miền 2 là đặc): số xấu, lệch ít (≈ 0,2), không đáng một bước — chỉ ghi ở dòng lưu ý cuối. Cung tròn không cần đường cong tham số: viết hai nhánh x₊, x₋ theo y là đủ.
 
-**Câu 47 — TD, lát hình vuông.** File `giao-hai-tru.html`.
-- Đề: (H) là phần chung của hai khối ¼ trụ bán kính a, hai trục vuông góc. Tính V(H). Đáp số theo a ⇒ **không có bước thay số** (A3 chỉ đòi chữ trước; ở đây chữ là hết).
-- Chữ: (H) = {x² + y² ≤ a², x² + z² ≤ a², x, y, z ≥ 0}. Lát ⟂ Ox tại x: hình vuông cạnh √(a² − x²) ⇒ S(x) = a² − x² ⇒ **V = ∫₀ᵃ (a² − x²) dx = 2a³/3**.
-- Bước: Đề bài (hai khối ¼ trụ rời nhau) → Dựng khối (đẩy hai khối vào nhau, tô phần chung, làm mờ phần thừa) → Khối có hình gì (nét liền/đứt) → Cắt một lát (hình vuông) → Cộng các lát → Tính thể tích.
-- Mở rộng (1 bước hoặc 1 đoạn cuối): đặt ⅛ hình cầu bán kính a vào trong — mỗi lát tròn (¼ đĩa) nằm trong lát vuông, tỉ số luôn π/4 ⇒ V(⅛ cầu) = (π/4)(2a³/3) = πa³/6 ⇒ V cầu = 4πa³/3 (Tổ Hằng).
+**Câu 47 — TD, lát hình vuông.** ✅ ĐÃ CÓ (10/10) — file `giao-hai-tru.html`, 7 bước:
+① Đề bài (hai khối xếp chữ L như hình trong sách, nét khuất tự tính) → ② Phần chung (tô từng khối xanh / hồng, phần chung vàng nổi qua hai khối; 4 nút xem riêng) → ③ Khối (H) (hệ trục Oxyz, 5 mặt) → ④ Cắt một lát (hình vuông MNQP, thanh kéo x) → ⑤ Cộng các lát (n = 4…64) → ⑥ Tính thể tích → ⑦ Hình cầu (mở rộng).
+- Chữ: (H) = {x² + z² ≤ a², x² + y² ≤ a², x, y, z ≥ 0}; S(x) = a² − x²; **V = 2a³/3**. Đáp số theo chữ ⇒ không có nút Thay số; các số in ra (0,40a; 0,84a²; tổng n lát) đều tính theo a.
+- Bước ⑦: 1/8 khối cầu nằm trong (H), lát nào cũng theo tỉ số π/4 ⇒ V₈ = πa³/6 ⇒ khối cầu 4πa³/3 (Tổ Hằng, §E). Bước ⑥ có nút so với khối lập phương cạnh a (chiếm đúng 2/3).
+- Toạ độ: toán (x đứng, y, z) → cảnh (z, x, y) để giữ tam diện thuận và giống hình lời giải. Bán kính vẽ A = 6 đơn vị cảnh, chỉ để vẽ.
+- Số kiểm: cộng 4000 lát ra 0,66666667 (lệch 5·10⁻⁹); 8 lát 0,6680 · 32 lát 0,6667; x = 0,90a ⇒ MN = 0,44a, S = 0,19a².
+- **Hai bẫy đã dính:** vật nằm TRONG khối đang có lượt ghi độ sâu (khối cầu ở bước ⑦, phần chung ở bước ②) phải `depthTest: false`, không thì bị chính lượt ấy che mất · công thức KaTeX trong dòng `.r2` tự gãy ở dấu = khi chú thích bên phải dài ⇒ `white-space: nowrap` cho công thức, chú thích xuống dòng bằng `<br>`.
+- Chưa: màn dọc; TV / iPad thật; câu chữ chưa ai duyệt; chưa có hoạt cảnh "đẩy hai khối vào nhau" như phiếu cũ ghi (thay bằng tô màu + xem riêng từng khối).
 
 **Câu 44 — TD, lát viên phân.** File `mai-vom.html`.
 - Đề: nền sân là elip trục lớn 150 m, trục bé 90 m; cắt bởi mặt phẳng ⟂ trục lớn tại M, N thì thiết diện là phần hình tròn tâm I giới hạn bởi dây MN, góc MIN = 90°. Tính thể tích dưới mái.
@@ -451,3 +454,5 @@ Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhó
 | 10/10 tối | Claude | Thêm Câu 50, 52 (thùng rượu) vào trang chuyên đề; động cơ thêm bước "Đặt hệ trục" cho bài thực tế + mặt đáy phẳng ở hai đầu khối. Soát lại 48, 49. Deploy |
 | 10/10 tối | Thùy | "Tiếp đi" |
 | 10/10 tối | Claude | Thêm Câu 45 (mũ Noel), 46 (bông hoa bốn cánh) — hai bài quay quanh Oy; hết nhóm tròn xoay. Động cơ: đề là hình phẳng chưa có trục, nửa hình bên kia trục, đoạn thẳng lẻ + tên điểm, dồn điểm mẫu về đầu mút, miền đối xứng ẩn. Sửa dòng kết quả Câu 48 rơi một gạch chéo. Soát lại 48, 49, 50, 52. Deploy |
+| 10/10 tối | Thùy | "Ok" (sau khi t báo làm Câu 47 trước) |
+| 10/10 tối | Claude | Dựng Câu 47 `giao-hai-tru.html` (thiết diện, 7 bước, có bước mở rộng ra thể tích hình cầu) + thẻ ở trang chính. Chưa rút hàm lát cắt lên khung (để tới bài 44). Deploy |
