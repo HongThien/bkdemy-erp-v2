@@ -25,15 +25,14 @@ Trang đang chạy: **https://toan.bkacademy.edu.vn/the-tich/** (deploy tay — 
 | 45 | NBV-12-18-F · câu 45 | Mũ ông già Noel | tròn xoay quanh Oy · đề cho mặt cắt | `tron-xoay.html?bai=45` | 2500π/3 ≈ 2618 cm³ | 10/10/2026 | chưa xem | |
 | 46 | NBV-12-18-F · câu 46 | Bông hoa bốn cánh (hình vuông + bốn nửa đường tròn) | tròn xoay quanh Oy · có lỗ | `tron-xoay.html?bai=46` | 32π/3 + 4π² ≈ 72,99 | 10/10/2026 | chưa xem | |
 | 47 | NBV-12-18-F · câu 47 | Giao của hai khối trụ | thiết diện (lát hình vuông) | `giao-hai-tru.html` | 2a³/3 | 10/10/2026 | chưa xem | |
+| 44 | NBV-12-18-F · câu 44 | Mái vòm sân vận động | thiết diện (lát viên phân) | `mai-vom.html` | 2(π − 2)/3 · ab² = (π − 2)·101 250 ≈ 115 586 m³ | 10/10/2026 | chưa xem | |
+| 53 | NBV-12-18-F · câu 53 | Trụ bị mặt phẳng nghiêng cắt | diện tích mặt cắt | `tru-cat-nghieng.html` | (4π/3 + √3/2)R² ≈ 5,05R² (nguồn: Cách 1 sai, đề in nhầm AB = a√3) | 10/10/2026 | chưa xem | |
 
 Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài giải (không có nút / bảng chọn bài).
 
-## Chưa dựng (đã giải + có phiếu ở spec S.7)
+## Chưa dựng
 
-| Nguồn · câu | Tên dự kiến | Loại | Đáp số | Ghi chú |
-|---|---|---|---|---|
-| NBV-12-18-F · câu 44 | Mái vòm sân vận động | thiết diện | (π − 2)·101 250 ≈ 115 586 m³ | file riêng |
-| NBV-12-18-F · câu 53 | Trụ bị mặt phẳng nghiêng cắt | diện tích mặt cắt | (4π/3 + √3/2)R² (nguồn Cách 1 sai) | file riêng |
+Không còn: cả 10 bài của tài liệu NBV 12-18 F (dạng 2) đã dựng xong ngày 10/10/2026. Tài liệu mới thì giải + lập phiếu ở spec S.7 trước, rồi thêm dòng vào bảng trên.
 
 ## Khi khớp với kho / app (chưa làm)
 

@@ -278,7 +278,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 |---|---|---|---|
 | **TX — tròn xoay** | "quay hình phẳng … quanh trục", vật tròn xoay có đường sinh là đồ thị hàm số | ① Đề bài → ② Đặt hệ trục *(chỉ khi đề là bài thực tế chưa có trục)* → ③ Quay quanh trục → ④ Chia miền *(chỉ khi có ≥ 2 miền / phải gấp / có lỗ)* → ⑤ Cái bẫy *(chỉ khi có lỗi kinh điển)* → ⑥ Tính thể tích: công thức chữ → bấm Thay số | **không chép file** — thêm một mục vào `tron-xoay-bai.js` (S.4b) |
 | **TD — thiết diện** | khối KHÔNG tròn xoay; đề cho hình dạng mặt cắt, hoặc khối bị cắt bởi mặt phẳng | ① Đề bài → ② Dựng khối *(nghiêng, ghép, quét)* → ③ Khối có hình gì *(nét liền / nét đứt, kích thước)* → ④ Cắt một lát: S theo chữ → thay số → ⑤ Cộng các lát → ⑥ Tính thể tích: tích phân bằng chữ → bấm Thay số | `coc-nghieng.html` |
-| **MC — diện tích mặt cắt** | hỏi DIỆN TÍCH thiết diện (không hỏi thể tích) | ① Đề bài → ② Dựng mặt phẳng cắt → ③ Thiết diện là hình gì → ④ Chiếu xuống đáy → ⑤ Tính: công thức chữ → bấm Thay số | chưa có (câu 53) |
+| **MC — diện tích mặt cắt** | hỏi DIỆN TÍCH thiết diện (không hỏi thể tích) | ① Đề bài → ② Dựng mặt phẳng cắt → ③ Thiết diện là hình gì → ④ Chiếu xuống đáy → ⑤ Tính: công thức chữ → bấm Thay số | `tru-cat-nghieng.html` |
 
 - **Bài TX tuyệt đối không có** bước "cắt một lát", "chồng n lát", tổng Riemann (A4). Bài TX một miền (thùng rượu) chỉ 3–4 bước — đừng độn thêm cho đủ.
 - Bước nào không có việc thật thì bỏ; tên bước ngắn (≤ 3 từ) vì thanh bước chỉ rộng chừng đó.
@@ -327,7 +327,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 - **Không sửa `khung.js` cho riêng một bài.** Thiếu thì thêm tuỳ chọn vào `cfg` hoặc thêm hàm dùng chung, rồi soát lại CẢ các bài cũ.
 - **Bài TX không còn file riêng:** mọi hàm tròn xoay (`pts`, `circ`, `strip`, `mkLuoi`, `tween`, hệ trục…) nằm trong động cơ `tron-xoay.html`, bài chỉ là dữ liệu (S.4b).
-- **Hàm đang nằm trong bài 1, bài TD nào cũng cần:** `poly/area` theo hướng cắt, `updateSlice`, `buildSlabs/showSlabs/playSlabs`, `pair()` nét khuất. **Câu 47 đã dựng mà CHƯA chuyển:** lát của nó là hình vuông và các lát chồng là hộp, viết thẳng còn ngắn hơn dùng `poly/area` tổng quát; phần thật sự lặp lại giữa hai bài chỉ là `pair()` + lượt ghi độ sâu (~10 dòng, đang chép ở cả hai file). Bài TD thứ ba (câu 44) mới đủ ba mẫu để biết nên rút gì lên `khung.js` — rút lúc đó, rồi soát lại 43 và 47.
+- **Đồ nghề thiết diện đã ở `khung.js`** (rút 10/10 khi dựng bài TD thứ ba, câu 44; bài 43 và 47 đã chuyển sang dùng chung): `M.flat(P, đóng)` · `M.matGhiSau()` + `M.capNet(P, o, nhómLiền, nhómĐứt)` = nét khuất kiểu sách · `M.luoi().them((s, t) => điểm, ns, nt).geo()` = gom mảnh mặt tham số · `M.chongLat(cha)` → `.chay(c, { con, khi })` = chồng n lát lăng trụ từ đa giác lồi `c.poly(t)` (cách khai ở đầu hàm trong `khung.js`). Còn riêng từng bài: hình của lát (`poly`, diện tích), lát đang chỉ + các đoạn dựng thêm, hoạt cảnh chính. Kiểm khi đụng `chongLat`: bài 43 phải ra đúng 241,88 / 239,59 / 243,09 (8 lát, ba hướng) và 240,12 / 239,97 / 240,37 (32 lát).
 - Bẫy JS đã dính: `Object.assign` chép GIÁ TRỊ của getter · tiến độ hoạt cảnh phải lấy từ `clock()` (không dùng mốc giờ rAF) · nối hai tập bằng chỉ số là sai khi một bên đổi độ dài (đếm đỉnh theo từng lát, đừng giả định bằng nhau).
 
 ### S.4b Bài tròn xoay: thêm bằng DỮ LIỆU (A5) — không viết HTML
@@ -369,7 +369,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 ### S.7 Phiếu dựng 8 bài còn lại (công thức chữ đã kiểm bằng số 10/10)
 
-Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhóm TX) → ~~47~~ (xong) → **44** (TD, file riêng) rồi **53** (MC).
+Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhóm TX) → ~~47 → 44 → 53~~ (xong). **Cả 10 bài của tài liệu đã dựng.**
 
 **Câu 49 — TX, hai miền.** ✅ ĐÃ CÓ (10/10) — mục `id: '49'` trong `tron-xoay-bai.js`: V₁ = π∫ₐᶜ f², V₂ = π∫_c^b g², V = 21π/5; bẫy π∫(f² − g²) = 23π/15 − 7π/15 = 16π/15.
 
@@ -392,19 +392,20 @@ Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhó
 - **Hai bẫy đã dính:** vật nằm TRONG khối đang có lượt ghi độ sâu (khối cầu ở bước ⑦, phần chung ở bước ②) phải `depthTest: false`, không thì bị chính lượt ấy che mất · công thức KaTeX trong dòng `.r2` tự gãy ở dấu = khi chú thích bên phải dài ⇒ `white-space: nowrap` cho công thức, chú thích xuống dòng bằng `<br>`.
 - Chưa: màn dọc; TV / iPad thật; câu chữ chưa ai duyệt; chưa có hoạt cảnh "đẩy hai khối vào nhau" như phiếu cũ ghi (thay bằng tô màu + xem riêng từng khối).
 
-**Câu 44 — TD, lát viên phân.** File `mai-vom.html`.
-- Đề: nền sân là elip trục lớn 150 m, trục bé 90 m; cắt bởi mặt phẳng ⟂ trục lớn tại M, N thì thiết diện là phần hình tròn tâm I giới hạn bởi dây MN, góc MIN = 90°. Tính thể tích dưới mái.
-- Chữ: bán trục a, b. MN = 2b√(1 − x²/a²); bán kính cung ρ = MN/√2; viên phân 90°: S = (π/4 − 1/2)ρ² ⇒ **S(x) = ((π − 2)/2)·b²(1 − x²/a²)**.
-  **V = ∫₋ₐᵃ S dx = (2(π − 2)/3)·a·b²**. Thay a = 75, b = 45: (π − 2)·101 250 ≈ **115 586 m³**.
-- Bước: Đề bài (ảnh thật `image1014`, nền elip) → Dựng mái (một cung viên phân chạy dọc trục lớn quét ra mái) → Cắt một lát → Cộng các lát → Tính thể tích.
-- Dựng mái: tại x, nửa dây m = b√(1 − x²/a²), tâm cung nằm dưới mặt sân một đoạn m, bán kính m√2; điểm cung (x; m√2·cos θ − m; m√2·sin θ), θ ∈ [−45°; 45°].
+**Câu 44 — TD, lát viên phân.** ✅ ĐÃ CÓ (10/10) — file `mai-vom.html`, 5 bước:
+① Đề bài (mái + một lát mẫu có M, N, I) → ② Dựng mái (lát viên phân chạy dọc trục lớn quét ra mái; nút chạy + thanh kéo) → ③ Cắt một lát (MN → R → S(x), chữ rồi số, thanh kéo x) → ④ Cộng các lát → ⑤ Tính thể tích (chữ → bấm Thay số).
+- Chữ: MN = 2b√(1 − x²/a²), R = MN/√2, S(x) = (π − 2)/2 · b²(1 − x²/a²), **V = 2(π − 2)/3 · ab²**. Thay a = 75, b = 45: (π − 2)·101 250 ≈ **115 586 m³**. Nói thêm: V tỉ lệ a·b²; chỗ cao nhất b√2 − b ≈ 18,6 m.
+- Số kiểm: cộng 4000 lát lệch 0,004 m³; 8 lát 116 489 (+903), 64 lát 115 600 (+14); x = 30 ⇒ MN = 82,49, R = 58,33, S = 970,9; x = −50 ⇒ 67,08 / 47,43 / 642,1.
+- **Bẫy đã dính:** dòng kết quả viết S = (π/4 − 1/2)·58,33² thì bấm máy ra 971,0 chứ không phải 970,9 (R đã làm tròn) ⇒ dòng kết quả thay thẳng a, b, x vào công thức gọn. Luật S.2 mục 3 nói "viết rõ phép thay"; thêm: **đừng thay bằng số trung gian đã làm tròn**.
+- Không dùng ảnh thật của sân trong tài liệu nguồn (ảnh của người khác); mô hình tự vẽ. Chưa: màn dọc, TV / iPad thật, duyệt câu chữ.
 
-**Câu 53 — MC, diện tích thiết diện.** File `tru-cat-nghieng.html`.
-- Đề: trụ đáy (O; R), cao 4R; dây AB = R√3 trên đáy (nguồn ghi nhầm a√3); mặt phẳng qua AB, cắt đoạn OO′, nghiêng 60° với đáy. Tính diện tích thiết diện.
-- Chữ: R, góc φ, d = khoảng cách từ O tới AB = √(R² − (AB/2)²). Hình chiếu của thiết diện xuống đáy = phần hình tròn phía xa AB:
-  S = R²(π − arccos(d/R)) + d√(R² − d²) · thiết diện **S′ = S / cos φ**. Thay AB = R√3 ⇒ d = R/2, φ = 60°: S = (2π/3 + √3/4)R², **S′ = (4π/3 + √3/2)R²**.
-- Phải kiểm trước khi dùng công thức: mặt phẳng ra khỏi trụ ở thành bên, độ cao lớn nhất (R + d)·tan φ = 3√3R/2 ≈ 2,6R < 4R — cho HS kéo góc φ để thấy khi nào mặt phẳng chạm đáy trên (lúc đó công thức đổi).
-- Bước: Đề bài → Dựng mặt phẳng (kéo góc) → Thiết diện là hình gì (một phần elip, bán trục R/cos φ và R) → Chiếu xuống đáy → Tính diện tích. Nguồn: Cách 1 sai, Cách 2 đúng (§C.11).
+**Câu 53 — MC, diện tích thiết diện.** ✅ ĐÃ CÓ (10/10) — file `tru-cat-nghieng.html`, 5 bước:
+① Đề bài → ② Dựng mặt phẳng (thanh kéo φ từ 20° tới 80°; hai ô điều kiện: đúng 60° của đề · (P) chưa chạm đáy trên) → ③ Thiết diện (elip tâm I nét đứt, bị dây AB cắt mất một chỏm thò xuống dưới đáy) → ④ Chiếu xuống đáy (hoạt cảnh ép thiết diện xuống; S′ = S / cos φ) → ⑤ Tính diện tích (chữ → bấm Thay số).
+- Chữ: d = OH; S_vp = R² arccos(d/R) − d√(R² − d²); S = πR² − S_vp; **S′ = S / cos φ**. Thay AB = R√3 ⇒ d = R/2, φ = 60°: S = (2π/3 + √3/4)R², **S′ = (4π/3 + √3/2)R² ≈ 5,05R²**. "Số" của bài này là AB = R√3 và 60°; đáp số vẫn theo R.
+- Điều kiện của công thức: (P) ra khỏi trụ ở thành bên, tức (R + d)·tan φ ≤ 4R (φ ≤ khoảng 69°). Kéo quá thì mô hình vẽ đúng thiết diện cụt hai đầu và bảng báo công thức không còn đúng.
+- Số kiểm: tích phân thẳng trên mặt nghiêng ra 5,054818R², công thức 5,054816R².
+- **Góc nhìn:** đứng ngang hông như hình trong sách thì máy quay phối cảnh thấy (P) gần như một nét (vì (P) chứa phương AB) ⇒ góc mặc định đứng phía dây AB nhìn lên theo con dốc; nút "Nhìn dọc AB" mới là góc của sách, dùng để thấy đúng góc φ.
+- Đề in nhầm AB = a√3 (đã ghi ở dòng nguồn của bước 1). Chưa: màn dọc, TV / iPad thật, duyệt câu chữ.
 
 ### S.8 Khi Thùy góp ý
 
@@ -456,3 +457,5 @@ Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhó
 | 10/10 tối | Claude | Thêm Câu 45 (mũ Noel), 46 (bông hoa bốn cánh) — hai bài quay quanh Oy; hết nhóm tròn xoay. Động cơ: đề là hình phẳng chưa có trục, nửa hình bên kia trục, đoạn thẳng lẻ + tên điểm, dồn điểm mẫu về đầu mút, miền đối xứng ẩn. Sửa dòng kết quả Câu 48 rơi một gạch chéo. Soát lại 48, 49, 50, 52. Deploy |
 | 10/10 tối | Thùy | "Ok" (sau khi t báo làm Câu 47 trước) |
 | 10/10 tối | Claude | Dựng Câu 47 `giao-hai-tru.html` (thiết diện, 7 bước, có bước mở rộng ra thể tích hình cầu) + thẻ ở trang chính. Chưa rút hàm lát cắt lên khung (để tới bài 44). Deploy |
+| 10/10 đêm | Thùy | "Tiếp đi. Khi nào hết thì thôi" |
+| 10/10 đêm | Claude | Dựng Câu 44 `mai-vom.html` và Câu 53 `tru-cat-nghieng.html` — hết 10 bài của tài liệu. Rút đồ nghề thiết diện lên `khung.js` (flat, capNet, matGhiSau, luoi, chongLat), chuyển bài 43 và 47 sang dùng chung, đối chiếu số với bản đang chạy. Deploy |
