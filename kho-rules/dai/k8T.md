@@ -1,12 +1,12 @@
 # kho-rules/dai/k8T.md — SPEC khối 8T (Toán 8 nâng cao / bồi dưỡng HSG — Đại · Số học · Tổ hợp · Hình): KHO + BẢN ĐỒ
 
-> **Trạng thái: NHÁP v0.1 (10/10/2026 tối) — CEO đã chốt 4 hướng lớn (§10), chưa qua lô thử nào.** Mọi lần giải / soát / ghi câu khối 8T PHẢI đọc file này trước.
-> Mỗi lần CEO sửa ⇒ ghi §10 (nhật ký) rồi nâng luật ở §1–§4. Đã đi qua đủ dạng **và** một lô qua CEO không sửa gì ⇒ **v1**.
-> **Quy trình 3 bước mọi khối: `kho-rules/README.md` §0.** Khối 8T đang ở **BƯỚC 1** (rút luật giải): B1 đọc ✅ (7 quyển, 1.761 trang scan,
-> đọc một lượt 10/10) · B2 hồ sơ sách ✅ (§5 + 7 tệp `lo/k8T/ho-so/`) · B3 luật nháp ✅ (file này) · **kế tiếp: CEO duyệt đề xuất chia tầng §6.2 → lô thử Đ1 (§8)**.
+> **Trạng thái: v0.2 (10/10/2026 khuya) — CEO đã chốt hướng + DUYỆT BẢN ĐỒ + bảo "add các bài vào kho đi" (§10).** Mọi lần giải / soát / ghi câu khối 8T PHẢI đọc file này trước.
+> Mỗi lần CEO sửa ⇒ ghi §10 (nhật ký) rồi nâng luật ở §1–§4 và brief `lo/k8T-brief-chep-soan.md`.
+> **Khối 8T KHÔNG đi vòng "lô thử → v1" như 4T/5T:** CEO cho nhập thẳng ⇒ đang ở **BƯỚC 2 + 3 gộp** (README §0): chép – soạn – soát – ghi kho, câu vào **thẳng nhóm bài**
+> của bản đồ đã duyệt (hai lượt gán nhóm độc lập phải khớp; lệch ⇒ dạng chờ), `da_duyet=false` — CEO / học thuật duyệt ở màn Duyệt lời giải, sửa gì thì thành luật.
+> **Tiến độ + câu treo: §8.** Lô 1 = 72 câu đã ghi (10/10). Dây chuyền đã chạy: §7.
 >
-> **Phạm vi của context này (Thùy 10/10): xây KHO và BẢN ĐỒ của khối 8T.** Kho = bước 1–2 (rút luật → giải toàn bộ tài liệu vào dạng chờ).
-> Bản đồ = §6.2: **đề xuất chia 3 tầng trên** (Chủ đề → Chuyên đề → Nhóm bài) do CEO yêu cầu 10/10, **chờ CEO duyệt / sửa**.
+> **Phạm vi của context này (Thùy 10/10): xây KHO và BẢN ĐỒ của khối 8T.** Bản đồ = §6.2 — **CEO duyệt 10/10, đã lên DB** (mig `202610101403`).
 >
 > **⭐ Bốn quyết định của CEO (10/10) — khung của cả file:**
 > 1. *"8T học nâng cao là chính — không cần quan tâm khối 8."* ⇒ 8T **không bám** chương trình lớp 8 hiện hành, **không áp** luật "thứ tự bài" của `k8.md`.
@@ -75,6 +75,10 @@ theo luật 1 **vẫn nhập, giải theo sách**, và ghi `cong_cu` có nhãn `
 > Giữ nguyên README §3: `**Phần 1. Hướng dẫn**` = `**Mấu chốt:**` → **3–6** đoạn `**Bước k.**` (mỗi bước một card, một ý trọn vẹn, không lộ đáp số) →
 > `**Chú ý:**`; `**Phần 2. Trình bày**` = đúng cái HS viết vào bài thi. **Mọi câu** đủ 2 phần. Máy kiểm hình thức: `scripts/kho/sach/kiem-p1-card.mjs`.
 
+- ⭐ **Nhịp viết (CEO 10/10):** *"Bài nào tắt quá thì cần giải chi tiết hơn. Đáp án cho học sinh nâng cao không cần trình bày quá chi li như thường, được sử dụng nhiều
+  công cụ hơn và nhịp độ làm bài nhanh hơn. Nhưng t vẫn muốn có giải hẳn hoi."* ⇒ sách chỉ ghi kết quả / "Tương tự" / "Dễ thấy" thì **viết đủ lời giải**; nhưng Phần 2 **không** viết
+  kiểu lớp thường: được gộp hai phép biến đổi hiển nhiên vào một dòng, không chép lại quy tắc cơ bản. Mốc: học sinh giỏi đọc từng dòng **không phải tự nháp thêm** mới hiểu
+  vì sao dòng dưới suy ra từ dòng trên. Mẫu nhịp viết: `lo/k8T-brief-chep-soan.md` §3.
 - **Phần 1 của bài HSG phải trả lời "vì sao nghĩ ra"**, không chỉ "làm gì". Nguyên liệu có sẵn trong sách: mục **"Phân tích" / "Hướng dẫn tìm lời
   giải"** (TCHH CĐ1 mục C, CĐ3: *"Khi có góc bằng $60^\circ$, ta nghĩ đến việc vận dụng nửa tam giác đều… Từ đó gợi ý cho ta hạ $DH\perp AC$"*),
   **"Nhận xét"** trước lời giải (TCDS CĐ1: *"$x=\pm1,\pm5$ không là nghiệm… nên nếu có nghiệm thì là nghiệm hữu tỉ"*), **"Chú ý"** (VHB).
@@ -135,8 +139,8 @@ theo luật 1 **vẫn nhập, giải theo sách**, và ghi `cong_cu` có nhãn `
 
 ## 4. Kiểm trước khi ghi
 
-- **Kiểm CHÉP (mới của 8T — nguồn là ảnh):** đề trong kho phải khớp ảnh trang. Hai lượt chép độc lập (hai model khác nhau) → máy so từng công thức
-  sau chuẩn hoá → lệch ⇒ model thứ ba / người mở ảnh quyết. Số mũ, chỉ số dưới, dấu $\vdots$ nhoè, "l" ↔ "1", dấu trừ mất là các chỗ scan hay sai
+- **Kiểm CHÉP (mới của 8T — nguồn là ảnh):** đề trong kho phải khớp ảnh trang. Cách đang chạy (§7 trạm 2a): trạm chép ghi riêng **đề** và **kết quả của sách**; máy thay số,
+  hai mẩu phải bằng nhau — lệch ⇒ người soát mở ảnh quyết. Câu không có kết quả sách (bài chứng minh, sách bỏ dở) ⇒ chỉ còn người soát so ảnh từng câu. Số mũ, chỉ số dưới, dấu $\vdots$ nhoè, "l" ↔ "1", dấu trừ mất là các chỗ scan hay sai
   (hồ sơ NDT §6, TCHH §6). **Chép sai đề thì mọi trạm sau đều đúng với một đề sai** — đáp số vẫn "khớp".
 - **Hai nhân chứng cho đáp số:** (a) lời giải / đáp số của sách (chép nguyên văn ở trạm chép) ·
   (b) **máy tính lại từ ĐỀ** — `kho-rules/dai/lo/k8T-kiem.mjs`, viết TRƯỚC khi mở bản soạn:
@@ -198,7 +202,7 @@ VHB1 phần đề Hình PDF 66–116 (chỉ kiểm lại 19 trang) · VHB2 PDF 9
 
 ## 6. Hiện trạng DB + ĐỀ XUẤT CHIA TẦNG bản đồ 8T
 
-### 6.1 Đang có trên DB (đo live 10/10, phiên chỉ đọc)
+### 6.1 Có trên DB TRƯỚC khi lên bản đồ mới (đo live 10/10 chiều — hiện trạng sau đó: §6.2 khung "Trên DB" + §8)
 
 - **Bản đồ cũ** `dai_ban_do` khối `8T`: 1 chủ đề "Biến đổi biểu thức" · 3 chuyên đề · **3 dạng**: `T18T010101` ứng dụng HĐT bình phương tổng hiệu (0 câu) ·
   `T18T010201` các phương pháp phân tích cơ bản (0 câu) · `T18T010301` biến đổi các biểu thức đặc biệt (**50 câu, 50 đã duyệt**, nguồn `de_thi`, lời giải người viết, **không có 2 phần**).
@@ -207,7 +211,13 @@ VHB1 phần đề Hình PDF 66–116 (chỉ kiểm lại 19 trang) · VHB2 PDF 9
 - **Hình** `hinh_hoc_bai` khối `8T`: 6 bài `HH00089`–`HH00094` (Hình thang 0 câu · Hình bình hành 11 · Hình chữ nhật 11 · Hình thoi 7 · Hình vuông 15 · Đối xứng tâm 4) —
   **48 câu, đều đã duyệt, 0 bài có lý thuyết**. Chưa có dạng chờ Hình 8T.
 
-### 6.2 ⭐ ĐỀ XUẤT chia 3 tầng trên (CEO yêu cầu 10/10 — CHỜ CEO DUYỆT / SỬA; chưa ghi gì vào DB)
+### 6.2 ⭐ Bản đồ 8T — 3 tầng trên (CEO DUYỆT 10/10: *"OK Chia như thế đi"*; đã lên DB bằng mig `202610101403_k8t_ban_do_3_tang`)
+
+> **Trên DB:** mỗi nhóm bài có mặt ở cả bản đồ đang chạy (`dai_ban_do`, mã `T18T0c0d0n` — bảng mã ↔ tên: `lo/k8T-brief-chep-soan.md` §4) lẫn bản nháp `dai_bdm_*`
+> (kèm đối ứng dạng cũ → nhóm). Dạng chờ: `T18T000000` (Đại), `HH8T000000` (Hình). 12 bài Hình mới = `HH00125`–`HH00136`.
+> 34 dạng mới tạm `muc_do = 4`, `bac_toi_thieu = 'A'` (hai cột bắt buộc, CEO chưa cho giá trị) — **CEO chỉnh ở màn Bản đồ**.
+> Đổi tên 4 dòng đã có (ghi trong migration). **Chưa làm:** 12 câu *chứng minh* trong 50 câu cũ vẫn nằm ở nhóm ① "Tính giá trị…" của 1.5 — chuyển sang ② là việc đổi dạng
+> của câu đã duyệt (đổi cả mã câu) ⇒ để CEO / học thuật bấm ở màn Duyệt, tôi không tự chuyển.
 
 **Nguyên tắc chia** (theo *"8T không cần phân chia quá kĩ như 8 thường"*):
 - **Chuyên đề = một chuyên đề bồi dưỡng HSG** đúng như sách chia (và như lớp T dạy). **Nhóm bài = một kiểu bài cùng mục tiêu + cùng họ phương pháp**, đủ lớn để đo
@@ -249,83 +259,61 @@ VHB1 phần đề Hình PDF 66–116 (chỉ kiểm lại 19 trang) · VHB2 PDF 9
 | H6. Cực trị và tập hợp điểm | Cực trị hình học · Tìm tập hợp điểm · Dựng hình | 120 |
 | **6 chuyên đề** | **18 bài** (6 đã có) | ≈ 925 |
 
-**Để ngoài bản đồ (đề nghị):** *Hình không gian* (hình hộp chữ nhật, lăng trụ đứng, hình chóp — VHB2 §20–22, NDT Hình IV, ≈ 80 bài): không phải nội dung bồi dưỡng HSG, bài chủ yếu là
+**Để ngoài bản đồ (CEO gật 10/10):** *Hình không gian* (hình hộp chữ nhật, lăng trụ đứng, hình chóp — VHB2 §20–22, NDT Hình IV, ≈ 80 bài): không phải nội dung bồi dưỡng HSG, bài chủ yếu là
 tính theo công thức ⇒ **không nhập**. · *Đề rèn luyện / ôn tập cuối năm* (NDT Phụ lục C 10 đề, Ôn tập cuối năm): từng bài xếp vào nhóm theo nội dung, không lập chuyên đề "tổng hợp".
-❓ §9 Q1 — CEO gật / đổi hai chỗ này.
 
-**Chỗ Claude chưa chắc trong đề xuất** (CEO xem kỹ): (1) 2.1④ phương trình chứa dấu giá trị tuyệt đối đặt ở Phương trình hay gom với 2.3 Bất phương trình;
-(2) 1.5 tách 2 nhóm "tính giá trị" / "chứng minh" — 50 câu đang có chưa đọc hết nên chưa biết có câu chứng minh không;
-(3) 2.2 chỉ 2 nhóm (sách TVA chia 8 dạng lời văn); (4) H6 gom ba kiểu bài rất khác nhau vì mỗi kiểu ít bài.
+**CEO trả lời 5 chỗ Claude hỏi (10/10):** (1) 2.1④ phương trình chứa dấu giá trị tuyệt đối để ở Phương trình — *OK* · (2) 1.5 tách "tính giá trị" / "chứng minh" — *"Cái đấy là
+biến đổi thôi, lúc đấy cũng chưa nghĩ kĩ lắm"* (nhóm cũ chỉ là rổ chung ⇒ giữ cách tách) · (3) 2.2 — *"2 nhóm thôi"* · (4) H6 gom ba kiểu bài — *OK* · (5) Hình không gian không nhập — *OK*.
 
-## 7. Dây chuyền cho sách SCAN (README §2b, đổi trạm 0–1; các trạm sau giữ nguyên)
+**Ranh giới giữa các nhóm đã chốt qua các lô** (ghi cả vào brief §4): phương trình **bậc ≥ 3** ⇒ 2.1② *bậc cao* dù chỉ nhóm hạng tử đưa về tích (lô 1).
 
-| # | Trạm | Ai | Làm gì | Bẫy riêng 8T |
+## 7. Dây chuyền cho sách SCAN — bản ĐÃ CHẠY ở lô 1 (10/10). Khác README §2b ở các trạm đầu vì nguồn là ảnh
+
+| # | Trạm | Ai | Làm gì | Bẫy / số đo lô 1 |
 |---|---|---|---|---|
-| 0 | Dựng ảnh | máy | `pdftoppm -r 150 -gray -png "<pdf>" <KHO_LAM_VIEC>/sach/8T/<MÃ>/trang/p`. Vân tay SHA-256 tệp gốc ghi cạnh | Bản đọc lướt 10/10 dựng ở 82–92 dpi trong thư mục tạm của phiên — đủ để lập hồ sơ, **không** đủ để chép số mũ |
-| 1a | **Chép đề + lời giải sách** | **Sonnet** đọc ảnh, mỗi lượt một mục sách | Ra `bai.json` **cùng khuôn `tach-bai.mjs`** (để trạm 1–7 của README §2b dùng lại nguyên): `ma_nguon` (§5.3) · `trang_pdf` · `noi_dung` (LaTeX, nguyên văn sách, chưa chuẩn hoá) · `y[]` · `nguon_de` (dòng in nghiêng dưới đề) · `co_hinh_trong_de` · `loi_giai_sach` (nguyên văn) · `muc_loi_giai` (đủ / tắt / đáp số / không) · `khong_doc_duoc[]` | Mục nào hồ sơ báo thiếu trang ⇒ ghi `thieu_de`, không dựng đề từ lời giải. `muc_loi_giai = không` ⇒ không nhập (§5.1) |
-| 1b | **Chép lần hai, độc lập** | model khác (Opus hoặc Haiku đọc ảnh — đo ở lô đầu) | Chỉ chép **đề** → máy so với 1a từng công thức sau chuẩn hoá → danh sách lệch | Hai lượt cùng sai giống nhau thì máy không thấy ⇒ trạm kiểm đáp số (máy tính từ đề, so đáp số sách) là lưới thứ hai |
-| 1c | Quyết chỗ lệch | Opus mở ảnh | Sửa `bai.json`, ghi vết vào `bai.sua.json` (đo tỉ lệ chép sai theo sách) | — |
-| 2 | Lọc trùng | máy | `dau-vao-soan.mjs` + mở rộng: so trong quyển, **giữa 6 quyển**, với câu 8T đang có. Trùng ⇒ giữ **một** bản (ưu tiên bản có lời giải đủ: NDT › TVA › TCDS / TCHH › VHB), bản kia ghi `trung_voi` | Trùng "gần" (đổi số, đổi tên điểm) **không** gộp — là hai câu |
-| 3 | Bộ kiểm đáp số | Opus | `k8T-kiem.mjs` viết **từ đề**, trước khi mở bản soạn (§4) | Hàm không kiểm được ⇒ `khong_kiem_duoc` thật, không trả "đạt" giả |
-| 4 | Soạn | Sonnet (3 song song) | Brief `kho-rules/dai/lo/k8T-brief-soan.md` (chưa viết — việc #4) chép nguyên §1–§3 file này + lô mẫu CEO đã duyệt. **Được đọc `loi_giai_sach`**, viết lại đủ bước + Phần 1. Ra `.soan.json` có thêm `cong_cu[]` | Lời giải sách sai / hổng ⇒ `ghi_chu_nghi`, không chép theo |
-| 5 | Soát | Opus (≠ soạn), **giải mù trước, đọc bản soạn sau** | Ba nguồn đáp số (soát · soạn · sách) lệch nhau ⇒ dừng câu đó. Sửa ghi `.sua.json` | Lỗi lập luận + công cụ dùng ngầm máy không bắt |
-| 6 | Dựng lô + cổng ghi | máy | Đại: `lo-tu-soan.mjs` → `ghi-lo.mjs … --chua-gan-dang` vào `T18T000000`, `da_duyet=false`, `nguon_giai='ai'`. Hình: `nhap_hh_tu_draft.mjs` → dạng chờ Hình 8T → `gan_hinh.mjs` (kho kiểu 1) | Không chạy 2 lượt `--ghi` song song (cấp mã câu va nhau) |
+| 0 | Dựng ảnh | máy | `pdftoppm -r 150 -gray -f <a> -l <b> -png "<pdf>" <KHO_LAM_VIEC>/sach/8T/<MÃ>/trang/p` (máy công ty: `C:\Users\WBPC\bk-kho-lam-viec`) | 150 dpi đọc rõ số mũ; bản 82–92 dpi của lượt đọc hồ sơ không đủ |
+| 1 | **Chép + soạn** | **Sonnet**, mỗi agent một § sách (≈ 4 trang, 10–12 bài) — 3 agent song song | Brief **`kho-rules/dai/lo/k8T-brief-chep-soan.md`** (đủ luật, bảng mã nhóm, khuôn tệp). Ra **một tệp `.cs.md`**: mỗi câu một khối `=== <mã>` + dòng meta (`nhom`, `cong_cu`, `kiem`, `ket_qua_sach`, `dap_an`, `ghi_chu_nghi`) + `## DE` (đề) + `## SACH` (nguyên văn lời giải sách) + `## GIAI` (lời giải kho 2 phần) | Dùng **markdown, không JSON** — LaTeX một dấu `\`, model không phải tự thoát kí tự. 4–6 phút / §. Lô 1: sách chỉ ghi đáp số 31 câu, bỏ dở / tắt 13 câu, đủ 28 câu; agent tự phát hiện 3 chỗ sách in sai và 1 đề thiếu điều kiện |
+| 2 | Dựng lô + cổng | máy | `node scripts/kho/sach/lo-tu-chep.mjs <…cs.md> --khoi 8T --lo <n> --ten <tên> [--sua x.sua.json] [--mu x.mu.json]` ⇒ `<tên>.bai.json` · `<tên>.de.json` (đề không kèm nhóm) · `<tên>.json` (lô). Cổng: khuôn 2 phần · Phần 1 card 3–6 bước · KaTeX · dấu nhân · **kiểm chép** · **kiểm đáp số** | Một lỗi ⇒ không ra lô. Lô 1: 72/72 qua sau 1 lần sửa |
+| 2a | **Kiểm chép** (trong trạm 2) | máy | `ket_qua_sach` (kết quả của sách, chép riêng) phải **bằng đề đã chép** khi máy thay số (`k8T-kiem.mjs`) — hai mẩu chép độc lập trên cùng trang; lệch ⇒ mở ảnh | **Thay cho "chép hai lượt bằng hai model" của bản nháp** — rẻ hơn và bắt được cả lỗi in của sách. Lô 1: 48/72 đối chiếu được, bắt đúng 1 chỗ lệch (bài 55d: **sách in sai**). 24 câu không đối chiếu được (bài chứng minh / sách không ghi kết quả) ⇒ chỉ còn người soát đối chiếu ảnh |
+| 2b | **Kiểm đáp số** (trong trạm 2 và ở cổng ghi) | máy | Dòng `kiem` viết từ đề: `bang \| <biểu thức>` · `gia_tri \| <biểu thức> \| x=…` · `nghiem \| <vế trái> = <vế phải> \| x` · `khong`. Máy tính biểu thức LaTeX bằng số hữu tỉ BigInt tại 12 bộ số; tự thử: `node kho-rules/dai/lo/k8T-kiem.thu.mjs` | Lô 1: 55/72 đáp án khớp đề; 17 không kiểm được (chứng minh, căn bậc hai, nghiệm nguyên). `nghiem` **không** bắt được thiếu nghiệm. Máy chưa đọc: `\sqrt`, số mũ là chữ |
+| 3 | **Soát** | **Opus** (phiên chính) | Mở ảnh từng trang, so đề từng câu; đọc từng lời giải. Sửa ghi vào `<tên>.sua.json` (`noi_dung` / `dap_an` / `loi_giai` / `nhom` / `sach_in_sai` / `bo`) — không sửa đè `.cs.md` | Lô 1: sửa 4/72 — 1 đề (bỏ ý sách thiếu điều kiện), 2 nhóm (luật bậc ≥ 3), 1 xác nhận sách in sai. **Không sửa lời giải nào** |
+| 4 | **Gán nhóm mù** | **model khác, agent riêng** chỉ được mở `<tên>.de.json` + bảng nhóm | Ra `<tên>.mu.json` `{model, lan_chay, cau: {mã: {dang, ly_do}}}`. Chạy lại trạm 2 với `--mu`: nhóm trạm soạn ≠ nhóm gán mù ⇒ câu vào **dạng chờ** | Phiên chính KHÔNG tự gán mù được (đã đọc báo cáo của trạm soạn). Lô 1: 67/72 khớp; 5 lệch ⇒ 2 gỡ bằng luật ranh giới, 3 vào dạng chờ |
+| 5 | Cổng ghi | máy | `node scripts/kho/sach/ghi-lo.mjs <tên>.json --sach "<tên sách>" --kiem kho-rules/dai/lo/k8T-kiem.mjs --so-do kho-rules/dai/so-do --kiem-ngoai <tên>.mu.json --model-lam claude-sonnet-5-5 --lan-lam "<mô tả>"` ⇒ chạy thử (ROLLBACK) ⇒ thêm `--ghi` | **Không** `--chua-gan-dang` (câu vào thẳng nhóm). `ghi-lo` nhận `kiem_doc` do lô mang theo (sách scan không có bản tách bằng máy để so chữ). Không chạy 2 lượt `--ghi` song song |
 
-**Thứ tự đi qua sách:** quyển có lời giải đủ đi trước để rút khuôn — **NDT → TVA → TCDS → VHB** cho Đại / Số học; **TCHH → NDT → VHB** cho Hình.
+**Tên sách ghi vào `ten_de_goc`** (khoá chống ghi trùng, đừng đổi): NDT = `CĐ BD HSG Toán 8 – Nguyễn Đức Tấn`. Mã câu: `<khu>.<bài><ý>@p<trang PDF>` — khu NDT: `D1`–`D4` Đại chương I–IV · `H1`–`H4` Hình · `OT` ôn tập cuối năm · `PA` `PB` `PC` phụ lục.
 
-## 8. Kế hoạch theo quy trình 3 bước
+**Chưa có:** lọc trùng **giữa các quyển** (ghi-lo chỉ chặn trùng nguyên văn sau chuẩn hoá với câu 8T đã có) — phải làm trước khi nhập quyển thứ hai · nhánh **Hình** (`nhap_hh_tu_draft.mjs` + vẽ hình bằng code) chưa chạy lô nào.
 
-| Bước | Việc của 8T | Trạng thái |
+**Thứ tự đi qua sách:** quyển có lời giải đủ đi trước — **NDT → TVA → TCDS → VHB** cho Đại / Số học; **TCHH → NDT → VHB** cho Hình.
+
+## 8. Kế hoạch + TIẾN ĐỘ (cập nhật sau mỗi lô — số đo DB live)
+
+| Lô | Khu sách | Câu ghi | Nhóm (số câu) | Máy xác nhận đáp án | Sửa khi soát | Tệp (`kho-rules/dai/lo/k8T/`) |
+|---|---|---:|---|---:|---:|---|
+| 1 (10/10) | NDT Đại I §3–5 — phân tích nhân tử, bài 27–60 (34 bài) | **72** | 1.2 ① 27 · ② 14 · ③ 4 · ④ 2 · 1.1 ② 1 · 1.5 ① 2 · ② 3 · 2.1 ① 3 · ② 5 · 4.1 ① 3 · 4.2 ① 2 · 4.3 ① 2 · ② 1 · dạng chờ 3 | 55/72 | 4 | `NDT-D1-s3/s4/s5.cs.md` · `NDT-D1-ptnt.{bai,de,mu,sua}.json` · `NDT-D1-ptnt.json` |
+| **Tổng** | | **72** | kho Đại 8T: 122 câu (50 cũ đã duyệt + 72 mới chưa duyệt) | | | |
+
+**Còn lại của NDT (≈ 580 bài):** Đại I §1–2 (bài 1–26), §6–7 + ôn tập (61–89) · Đại II phân thức (52) · Đại III phương trình (73) · Đại IV bất đẳng thức – bất phương trình (52) · ôn tập cuối năm Đại (20) · phụ lục A (45) + C (60, lọc trùng) · **Hình I–III + phụ lục B (≈ 220 bài, nhánh Hình)**. Hình IV (không gian, 30 bài): không nhập.
+Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
+
+**Câu treo — cần CEO / người:**
+
+| Câu | Vì sao | Cần gì |
 |---|---|---|
-| **1. Rút luật giải** | B1 đọc ✅ · B2 hồ sơ ✅ · B3 luật nháp ✅ → **B4 giải một lượt qua mọi nhóm bài**, mỗi lô 10–20 câu lấy từ ví dụ + bài tập có lời giải của sách (chép tay đúng các câu của lô, chưa cần trạm chép hàng loạt). Bảng lô dưới | **Kế tiếp: lô Đ1** (sau khi CEO xem §6.2 — không bắt buộc chờ duyệt xong) |
-| **2. Giải toàn bộ** | Sau v1: trạm chép hàng loạt (§7) từng quyển → dây chuyền README §2b → dạng chờ `T18T000000` / dạng chờ Hình 8T | Sau v1 |
-| **3. Xếp vào bản đồ** | CEO duyệt §6.2 ⇒ đưa lên ERP › Bản đồ mới ⇒ Claude xếp câu dạng chờ + 50 câu cũ + 48 câu Hình cũ vào nhóm bài (dùng `cong_cu` — phương pháp thắng chủ đề) ⇒ CEO duyệt | Chờ duyệt §6.2 |
+| NDT Đại I bài 35 ý b (*"$a^4+b^4+c^4+d^4=4abcd$ ⇒ $a=b=c=d$"*) | **Đề sách thiếu điều kiện**: $a=b=1$, $c=d=-1$ thoả giả thiết mà $a\ne c$. Chỉ ý a đã nhập | CEO: thêm "các số dương" rồi nhập, hay bỏ |
+| 3 câu ở dạng chờ `T18T000000`: bài 36 (bất đẳng thức ba cạnh tam giác — 3.1 ① hay ③) · 53a ($x^4+4+4x^2-4x^2$, đề đã thêm bớt sẵn — 1.2 ① hay ②) · 55a ($x^3-7x-6$ — 1.2 ② tách hạng tử hay ③ nhẩm nghiệm) | Hai lượt gán nhóm lệch nhau | Học thuật chọn nhóm ở màn Duyệt › Chưa phân dạng |
+| 34 nhóm mới: mức độ + bậc tối thiểu đang tạm 4 / A | Hai cột bắt buộc, chưa có giá trị thật | CEO chỉnh ở màn Bản đồ |
 
-**Bảng lô thử — mỗi lô một chuyên đề của §6.2, phủ đủ các nhóm bài (đánh dấu khi đã qua CEO).** Thứ tự mặc định theo bản đồ; CEO đổi nếu lớp cần mảng nào trước (§9 Q2).
+**Việc kỹ thuật còn lại (Claude tự làm):** lọc trùng xuyên sách (mở rộng `dau-vao-soan.mjs` / cổng ghi) · nhánh Hình: brief chép–soạn Hình + vẽ hình bằng code + `nhap_hh_tu_draft.mjs` vào bài của bản đồ Hình · lý thuyết cho 18 bài Hình 8T (`hinh_hoc_bai_ly_thuyet` trống) · `k8T-kiem.mjs`: thêm vét cạn cho bài nghiệm nguyên, `\sqrt` cho đáp án có căn.
 
-| Lô | Chuyên đề | Phải phủ (mỗi mục ≥ 1 câu) | Nguồn câu | Qua CEO |
-|---|---|---|---|---|
-| **Đ1** | 1.2 Phân tích nhân tử | 4 nhóm; trong đó tách · thêm bớt · đổi biến · hệ số bất định · nhẩm nghiệm nguyên / hữu tỉ · hoán vị vòng · $a^3+b^3+c^3-3abc$ mỗi thứ một câu | TVA §2 Dạng 1–8 · TCDS CĐ1 I–VII · VHB1 chuyên đề | |
-| Đ2 | 1.1 + 1.5 Hằng đẳng thức · biểu thức đặc biệt | 4 nhóm; thế · đối xứng · hoán vị vòng · $a+b+c=0$ · tỉ lệ thức · tổng bình phương | TCDS CĐ2 Dạng 3–4 · VHB1 §2 · NDT Đại I §2 | |
-| Đ3 | 1.3 Đa thức, phép chia | 2 nhóm; tìm hệ số (3 cách — §2b A) · tìm dư không chia · Hoóc-ne · chứng minh chia hết | TVA §1 · VHB1 chuyên đề | |
-| Đ4 | 1.4 Phân thức | 2 nhóm; rút gọn + câu hỏi phụ · tổng có quy luật · tách thành tổng phân thức | TVA §3 · TCDS CĐ2 Dạng 1–2 · NDT Đại II | |
-| Đ5 | 2.1 + 2.2 Phương trình · lập phương trình | 6 nhóm | TVA §4–5 · VHB2 §7–10 · NDT Đại III | |
-| Đ6 | 2.3 Bất phương trình (+ giá trị tuyệt đối) | 2 nhóm + nhóm 2.1④ | VHB2 §12–15 · TVA §6 · NDT Đại IV | |
-| Đ7 | 4.1 + 4.2 Chia hết · số nguyên tố · số chính phương | 6 nhóm | VHB1 chuyên đề · TCDS CĐ3, 7, 8 · TVA §7 | |
-| Đ8 | 4.3 Nghiệm nguyên | 3 nhóm, đủ 6 phương pháp của TCDS CĐ9 | TCDS CĐ9 · TVA §10 | |
-| Đ9 | 3.1 + 3.2 Bất đẳng thức · cực trị | 6 nhóm | VHB2 hai chuyên đề · TVA §8 · TCDS CĐ4–5 | |
-| Đ10 | 5.1 Đi-rích-lê | 2 nhóm + cực hạn | TCDS CĐ10 | |
-| **H1** | H1 Tứ giác | chứng minh là hình gì · dùng tính chất · thẳng hàng – đồng quy trong tứ giác · tìm điều kiện · bài hình vuông kinh điển (kẻ phụ trên tia đối) | NDT Hình I · TCHH CĐ2 · VHB1 | |
-| H2 | H2 Tam giác, tính góc | 5 dạng TCHH CĐ1 C (vuông cân · đều · cân biết một góc · liên hệ góc · nửa tam giác đều) + chứng minh tam giác cân / đều | TCHH CĐ1 | |
-| H3 | H3 Thalès · phân giác · đồng dạng | đoạn tỉ lệ · kẻ song song phụ · đẳng thức nghịch đảo · ba trường hợp đồng dạng · tỉ số diện tích | VHB2 §13–18 · NDT Hình III · TCHH CĐ5 | |
-| H4 | H4 Vuông góc – song song · thẳng hàng – đồng quy | 9 cách chứng minh vuông góc, 5 cách song song (TCHH CĐ3) · Mê-nê-la-uýt · Xê-va | TCHH CĐ3–4 | |
-| H5 | H5 Diện tích · tính toán | tỉ số diện tích · diện tích ⇒ quan hệ độ dài · đặt ẩn lập phương trình | VHB1 chuyên đề · NDT Hình II · TCHH CĐ6–7 | |
-| H6 | H6 Cực trị · tập hợp điểm · dựng hình | cực trị bằng đường vuông góc – đường xiên, bằng đối xứng, bằng bất đẳng thức đại số · tập hợp điểm · dựng hình 4 bước | VHB1 §3 + chuyên đề · VHB2 chuyên đề | |
+## 9. Câu hỏi CEO còn mở
 
-**Việc kỹ thuật (Claude tự làm, không cần hỏi):**
-
-| # | Việc | Vì sao |
+| # | Câu hỏi | Mặc định đang dùng |
 |---|---|---|
-| 1 | Migration tạo dạng chờ `T18T000000` (`dai`, khuôn các khối khác) + dạng chờ Hình 8T (khuôn mig `202610100831_hinh_hoc_dang_cho_khoi_8`) | Đường ghi của bước 2 (giải ≠ xếp) |
-| 2 | Trạm chép đề từ ảnh (§7 trạm 1a–1c): khuôn `bai.json` + máy so hai lượt chép | Nguồn 8T không có lớp chữ; chưa khối nào chép SÁCH từ scan (K6–K8 mới chép đề thi 2–4 trang) |
-| 3 | `kho-rules/dai/lo/k8T-kiem.mjs` (đa thức BigInt; vét cạn nghiệm nguyên; thử chia hết; lưới bất đẳng thức) | §4 |
-| 4 | `kho-rules/dai/lo/k8T-brief-soan.md`, `k8T-brief-soat.md` (khuôn `k8-brief-*.md`) — viết sau lô Đ1 được CEO duyệt | README §4 việc #5 |
-| 5 | Lọc trùng xuyên sách (mở rộng `dau-vao-soan.mjs`) | §5.3 |
-| 6 | Sau khi CEO duyệt §6.2: đưa 11 chuyên đề + 34 nhóm bài mới lên bảng nháp `dai_bdm_*`, 12 bài Hình mới vào `hinh_hoc_bai` — viết migration, CEO gật mới áp | Bước 3 |
-
-## 9. Câu hỏi CEO
-
-**Đã trả lời 10/10** (ghi ở §10): chương trình 8T (nâng cao là chính, không bám khối 8) · công cụ được dùng (trọn bộ theo sách) · phạm vi nhập (chỉ quyển có lời giải) · độ mịn bản đồ (thô hơn khối 8).
-
-**Còn mở:**
-
-| # | Câu hỏi | Mặc định nếu chưa trả lời |
-|---|---|---|
-| **Q1** | **Duyệt / sửa đề xuất chia tầng §6.2** — kể cả 4 chỗ chưa chắc ghi dưới bảng, và hai mục để ngoài (hình không gian không nhập; đề rèn luyện rải vào các nhóm) | Giải vẫn chạy (câu vào dạng chờ); chưa ghi gì lên bản đồ |
-| Q2 | Thứ tự chuyên đề làm trước: theo bảng lô §8 (Đ1 phân tích nhân tử → …), hay lớp đang cần mảng nào gấp? | Theo §8 |
-| Q3 | Thuật ngữ: phiên âm ("Đi-rích-lê", "Cô-si") hay tên gốc ("Dirichlet", "Cauchy")? `k8.md` đang viết "Thalès", "Pythagore" | §3: Thalès, Pythagore; còn lại phiên âm |
-| Q4 | Có **bản đủ trang** của VHB tập 1 (thiếu đề Đại 142–159, Hình 41–46, ví dụ 43–46) và TVA (thiếu trang sách 32–33) không? | Bỏ các bài mất đề |
-| Q5 | 50 câu Đại + 48 câu Hình 8T **đã duyệt** nhưng lời giải chưa có 2 phần: viết lại theo khuôn mới, hay để nguyên? | Để nguyên; sửa một lượt khi luật lên v1 |
+| Q1 | Thuật ngữ: phiên âm ("Đi-rích-lê", "Cô-si") hay tên gốc ("Dirichlet", "Cauchy")? | §3: Thalès, Pythagore; còn lại phiên âm (tên nhóm trên bản đồ đã ghi theo cách này) |
+| Q2 | Có **bản đủ trang** của VHB tập 1 (thiếu đề Đại 142–159, Hình 41–46, ví dụ 43–46) và TVA (thiếu trang sách 32–33) không? | Bỏ các bài mất đề |
+| Q3 | 50 câu Đại + 48 câu Hình 8T **đã duyệt** nhưng lời giải chưa có 2 phần: viết lại theo khuôn mới, hay để nguyên? | Để nguyên |
+| Q4 | Bài cơ bản của sách (vd NDT "Bài tập cơ bản": $15x^2+10xy$) có nên vào kho 8T không, hay chỉ lấy tầng nâng cao + đề thi HSG? Lô 1 đã nhập cả ba tầng (34/72 câu thuộc "Bài tập cơ bản", 29 nâng cao, 9 đề thi HSG) | Nhập cả ba tầng |
 
 ## 10. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
@@ -336,3 +324,6 @@ tính theo công thức ⇒ **không nhập**. · *Đề rèn luyện / ôn tậ
 | 10/10 | v0 §9 Q2 (công cụ) | *"8T được dùng full công cụ cao cấp — thể hiện rõ trong các cuốn sách rồi."* | §1 viết lại: chuẩn kiến thức = 6 quyển sách; sách dùng gì kho dùng nấy, gọi tên + đủ điều kiện; đi theo hướng giải của sách; chỉ cấm thứ sách không có. Bỏ "3 tầng". `cong_cu` giữ lại cho việc xếp nhóm |
 | 10/10 | v0 §9 Q3 (phạm vi) | *"Chỉ nhập các cuốn có lời giải chi tiết thôi."* | Bỏ quyển TUHOC. Ở mức bài: có lời giải / có đáp số ⇒ nhập; không có gì ⇒ không nhập (§5.1 — cách hiểu của Claude). Trạm soạn được đọc lời giải sách (§4) |
 | 10/10 | Bản đồ | *"8T không cần phân chia quá kĩ như 8 thường. M đề xuất phân chia 3 tầng trên đi xem nào."* | §6.2: đề xuất 5 chủ đề · 14 chuyên đề · 37 nhóm bài (Đại – Số học – Tổ hợp) + 6 chuyên đề · 18 bài (Hình); nguyên tắc mỗi chuyên đề 2–4 nhóm, phương pháp cụ thể không thành nhóm. **Chờ CEO duyệt** |
+| 10/10 | Bản đồ §6.2 | *"OK Chia như thế đi. Xong add các bài vào kho đi."* + trả lời 5 chỗ hỏi: (1) OK · (2) *"Cái đấy là biến đổi thôi, lúc đấy cũng chưa nghĩ kĩ lắm"* · (3) *"2 nhóm thôi"* · (4) OK · (5) OK | Bản đồ lên DB (mig `202610101403`): 34 nhóm bài mới + dạng chờ trên `dai_ban_do`, vỏ + đối ứng trên `dai_bdm_*`, 12 bài Hình mới. **Không đi vòng lô thử → v1**: nhập thẳng, câu vào thẳng nhóm bài, `da_duyet=false`, CEO duyệt trên màn Duyệt |
+| 10/10 | Nhịp viết lời giải | *"Bài nào tắt quá thì cần giải chi tiết hơn. Đáp án cho học sinh nâng cao ko cần trình bày quá chi li như thường, được sử dụng nhiều công cụ hơn và nhịp độ làm bài nhanh hơn. Nhưng t vẫn muốn có giải hẳn hoi."* | §2 + brief §3: sách tắt ⇒ viết đủ; Phần 2 nhịp nhanh (gộp bước hiển nhiên, không chép quy tắc cơ bản); mốc = học sinh giỏi không phải tự nháp thêm. Bài chỉ có đáp số vẫn nhập, lời giải kho viết đủ |
+| 10/10 | Lô 1 (72 câu NDT Đại I §3–5) | *(ghi việc làm — CEO chưa xem)* Chép–soạn bằng 3 agent Sonnet, tôi soát đối chiếu ảnh 11 trang, agent khác gán nhóm mù, ghi kho qua cổng | §7 viết lại theo dây chuyền đã chạy: "kiểm chép" bằng máy (kết quả sách ↔ đề) thay cho chép hai lượt; phiên chính không tự gán mù; luật ranh giới "phương trình bậc ≥ 3 ⇒ bậc cao". **Sai của tôi:** chạy `npm run migrate` khi sổ còn 15 file treo của phiên khác — file đầu lỗi quyền nên chưa áp gì, nhưng suýt áp hộ; từ nay luôn `--status` đọc HẾT rồi `--only <file>` |
