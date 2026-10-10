@@ -1,0 +1,130 @@
+[
+ {
+  "ma_nguon": "NN 2024-TT3 · P1.1",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích xung quanh của hình lập phương là diện tích của bốn mặt bên. Muốn tính phải biết độ dài cạnh, mà cạnh tìm được từ thể tích vì thể tích bằng cạnh nhân cạnh nhân cạnh.\n\n**Bước 1.** Tìm độ dài cạnh: thể tích $27\\ \\text{cm}^3$ bằng tích của ba số giống nhau, nên tìm số nhân với chính nó ba lần ra $27$.\n\n**Bước 2.** Hình lập phương có các mặt là hình vuông bằng nhau, nên tính diện tích một mặt bằng cạnh nhân cạnh.\n\n**Bước 3.** Nhân diện tích một mặt với số mặt bên rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Diện tích xung quanh chỉ gồm $4$ mặt bên, khác diện tích toàn phần gồm cả $6$ mặt; tính nhầm $6$ mặt sẽ chọn nhầm phương án $54\\ \\text{cm}^2$.\n\n**Phần 2. Trình bày**\n\nVì $3\\times 3\\times 3=27$ nên cạnh của hình lập phương là $3$ cm.\n\nDiện tích một mặt của hình lập phương là: $3\\times 3=9$ ($\\text{cm}^2$)\n\nDiện tích xung quanh của hình lập phương là: $9\\times 4=36$ ($\\text{cm}^2$)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NN 2024-TT3 · P1.2",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số có $3$ chữ số khác nhau nên mỗi chữ số chỉ được dùng một lần. Đếm lần lượt số cách chọn chữ số hàng trăm, hàng chục, hàng đơn vị rồi nhân các số cách lại với nhau, nhớ rằng chữ số hàng trăm không được là $0$.\n\n**Bước 1.** Chọn chữ số hàng trăm trước vì hàng này bị hạn chế nhất: chữ số $0$ không được đứng đầu một số có ba chữ số nên chỉ đếm các chữ số còn lại.\n\n**Bước 2.** Chọn chữ số hàng chục từ các chữ số còn lại; lúc này chữ số $0$ được phép dùng, nhưng không được trùng với chữ số hàng trăm.\n\n**Bước 3.** Chọn chữ số hàng đơn vị từ những chữ số chưa dùng, rồi nhân số cách chọn ở ba hàng với nhau để đối chiếu với các phương án.\n\n**Chú ý:** Nếu cho cả năm chữ số cùng được chọn ở hàng trăm thì sẽ đếm thừa những số bắt đầu bằng chữ số $0$.\n\n**Phần 2. Trình bày**\n\nChữ số hàng trăm khác $0$ nên có $4$ cách chọn ($1$; $3$; $5$; $7$).\n\nChữ số hàng chục khác chữ số hàng trăm nên có $5-1=4$ cách chọn.\n\nChữ số hàng đơn vị khác hai chữ số đã chọn nên có $5-2=3$ cách chọn.\n\nSố các số tự nhiên có $3$ chữ số khác nhau viết được là: $4\\times 4\\times 3=48$ (số)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NN 2024-TT3 · P1.3",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Diện tích không đổi mà chiều dài thay đổi thì chiều rộng phải thay đổi tương ứng; ta so sánh phần trăm của từng đại lượng với lúc đầu rồi chia, không cần chọn số cụ thể.\n\n**Bước 1.** Diện tích không đổi, nên diện tích sau so với lúc đầu vẫn bằng $100\\%$.\n\n**Bước 2.** Chiều dài giảm đi $20\\%$ nên chiều dài sau bằng $100\\%$ trừ $20\\%$ so với chiều dài lúc đầu.\n\n**Bước 3.** Vì chiều rộng bằng diện tích chia cho chiều dài, nên lấy phần trăm của diện tích chia cho phần trăm của chiều dài để biết chiều rộng sau bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 4.** Lấy phần trăm chiều rộng sau trừ $100\\%$ để biết chiều rộng cần tăng thêm bao nhiêu phần trăm, rồi chọn phương án.\n\n**Chú ý:** Chiều dài giảm $20\\%$ không có nghĩa là chiều rộng chỉ tăng $20\\%$, vì hai phần trăm này có mốc so sánh khác nhau.\n\n**Phần 2. Trình bày**\n\nDiện tích sau so với lúc đầu bằng: $100\\%$\n\nChiều dài sau so với lúc đầu bằng: $100\\%-20\\%=80\\%$\n\nChiều rộng sau so với lúc đầu bằng: $100\\%:80\\%=1:0,8=1,25=125\\%$\n\nChiều rộng cần tăng thêm so với lúc đầu là: $125\\%-100\\%=25\\%$\n\nChọn B.",
+  "ghi_chu_nghi": "Làm bằng tỉ số phần trăm từng đại lượng so với lúc đầu (không giả sử số cụ thể) theo k5T.md §2b dòng H."
+ },
+ {
+  "ma_nguon": "NN 2024-TT3 · P1.4",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của anh và em không bao giờ thay đổi. Lúc trước tuổi anh gấp đôi tuổi em nên hiệu số tuổi chính là $1$ phần, còn tuổi em hiện nay bằng tuổi anh lúc đó nên là $2$ phần.\n\n**Bước 1.** Lúc trước tuổi anh gấp đôi tuổi em, nên coi tuổi em là $1$ phần thì tuổi anh là $2$ phần và hiệu số tuổi là $1$ phần.\n\n**Bước 2.** Đề nói tuổi em hiện nay bằng tuổi anh lúc đó, nên tuổi em hiện nay là $2$ phần; hiệu số tuổi không đổi nên tìm được số phần tuổi của anh hiện nay.\n\n**Bước 3.** Biết số phần tuổi của hai anh em hiện nay và tổng là $35$ tuổi, làm bài toán tổng – tỉ để tìm giá trị của một phần.\n\n**Bước 4.** Tuổi em hiện nay gồm $2$ phần, nên lấy giá trị một phần nhân với $2$ rồi chọn phương án đúng.\n\n**Chú ý:** Tuổi em hiện nay là tuổi anh lúc trước chứ không phải tuổi em lúc trước; nhầm hai mốc này sẽ chọn sai phương án.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của anh và em không thay đổi theo thời gian.\n\nTa có sơ đồ:\n\n(Lúc trước: tuổi anh 2 phần; tuổi em 1 phần; hiệu 1 phần)\n\nHiệu số tuổi của hai anh em là: $2-1=1$ (phần)\n\nTuổi em hiện nay bằng tuổi anh lúc trước, tức là $2$ phần.\n\nTuổi anh hiện nay là: $2+1=3$ (phần)\n\nTa có sơ đồ:\n\n(Hiện nay: tuổi em 2 phần; tuổi anh 3 phần; tổng 35 tuổi)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nGiá trị của một phần là: $35:5=7$ (tuổi)\n\nTuổi em hiện nay là: $7\\times 2=14$ (tuổi)\n\nChọn C.",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Lúc trước",
+    "gia_tri_phan": 7,
+    "hang": [
+     {
+      "nhan": "Tuổi anh",
+      "phan": 2
+     },
+     {
+      "nhan": "Tuổi em",
+      "phan": 1
+     }
+    ],
+    "hieu": "7 tuổi"
+   },
+   {
+    "tieu_de": "Hiện nay",
+    "gia_tri_phan": 7,
+    "hang": [
+     {
+      "nhan": "Tuổi em",
+      "phan": 2
+     },
+     {
+      "nhan": "Tuổi anh",
+      "phan": 3
+     }
+    ],
+    "tong": "35 tuổi",
+    "dau_hoi": [
+     "Tuổi em"
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "NN 2024-TT3 · P1.5",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề không cho độ dài quãng đường nên coi cả quãng đường là một đơn vị. Mỗi xe mỗi giờ đi được một phần quãng đường, hai xe đi ngược chiều lại gần nhau nên mỗi giờ hai xe cùng đi được tổng hai phần đó.\n\n**Bước 1.** Ô tô đi hết cả quãng đường trong $5$ giờ nên mỗi giờ ô tô đi được một phần quãng đường tương ứng; làm tương tự cho xe máy đi hết trong $7$ giờ.\n\n**Bước 2.** Hai xe khởi hành cùng lúc và đi ngược chiều nên mỗi giờ khoảng cách giữa hai xe rút ngắn đúng bằng tổng phần quãng đường hai xe đi được; hãy cộng hai phân số khác mẫu.\n\n**Bước 3.** Thời gian hai xe gặp nhau bằng cả quãng đường chia cho phần quãng đường hai xe cùng đi được trong một giờ.\n\n**Bước 4.** Thời gian tìm được là một phân số của giờ; đổi ra giờ và phút rồi chọn phương án đúng.\n\n**Chú ý:** Không lấy trung bình cộng của $5$ giờ và $7$ giờ, vì hai xe cùng đi nên chúng gặp nhau sớm hơn thời gian của mỗi xe đi một mình.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi cả quãng đường là $1$ đơn vị.\n\nMỗi giờ ô tô đi được: $1:5=\\dfrac{1}{5}$ (quãng đường)\n\nMỗi giờ xe máy đi được: $1:7=\\dfrac{1}{7}$ (quãng đường)\n\nMỗi giờ hai xe cùng đi được: $\\dfrac{1}{5}+\\dfrac{1}{7}=\\dfrac{12}{35}$ (quãng đường)\n\nThời gian để hai xe gặp nhau là: $1:\\dfrac{12}{35}=\\dfrac{35}{12}=2\\dfrac{11}{12}$ (giờ)\n\nĐổi: $\\dfrac{11}{12}$ giờ $=\\dfrac{11}{12}\\times 60=55$ phút\n\nVậy hai xe gặp nhau sau $2$ giờ $55$ phút.\n\nChọn D.",
+  "ghi_chu_nghi": "nhiều cách: (1) coi cả quãng đường là 1 đơn vị, mỗi xe một giờ đi 1/5 và 1/7 quãng đường [đã chọn - bám quan hệ gốc]; (2) giả sử quãng đường 35 km (BCNN của 5 và 7) rồi tính vận tốc từng xe. Chưa có sơ đồ chuyển động vì đề không cho số đo quãng đường để vẽ đúng tỉ lệ."
+ },
+ {
+  "ma_nguon": "NN 2024-TT3 · P2.1",
+  "dap_an": "a) $440000$ đồng; b) Bác Minh: $250000$ đồng; bác Loan: $300000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) chỉ cần nhận ra tiêu hết $\\dfrac{1}{5}$ số tiền của mình thì mỗi bác còn $\\dfrac{4}{5}$, nên tổng số tiền còn lại cũng bằng $\\dfrac{4}{5}$ tổng số tiền ban đầu. Ý b) là bài tính ngược với phân số: số tiền còn lại bằng một phân số của số tiền ban đầu, nên số tiền ban đầu bằng số tiền còn lại chia cho phân số đó.\n\n**Bước 1.** Ý a): tìm phân số số tiền mỗi bác còn lại sau khi tiêu $\\dfrac{1}{5}$, rồi lấy tổng số tiền ban đầu nhân với phân số đó.\n\n**Bước 2.** Ý b): tìm phân số số tiền còn lại của từng bác so với số tiền mang đi, từ đó biết số tiền ban đầu của mỗi bác gấp bao nhiêu lần số tiền còn lại (chia cho phân số).\n\n**Bước 3.** Số tiền còn lại của bác Loan hơn bác Minh $100000$ đồng, nên số tiền ban đầu của bác Loan tính theo số tiền còn lại của bác Minh cộng thêm phần ứng với $100000$ đồng.\n\n**Bước 4.** Ghép lại: tổng số tiền ban đầu $550000$ đồng gồm số tiền của hai bác cùng tính theo số tiền còn lại của bác Minh; từ đó tìm được số tiền còn lại của bác Minh.\n\n**Bước 5.** Từ số tiền còn lại của bác Minh tìm số tiền ban đầu của bác Minh, rồi lấy tổng trừ đi để được số tiền của bác Loan.\n\n**Chú ý:** Số tiền còn lại của hai bác chỉ hơn kém nhau $100000$ đồng, không phải số tiền ban đầu của hai bác hơn kém nhau $100000$ đồng.\n\nThử lại: tính số tiền còn lại của mỗi bác sau khi tiêu, hiệu hai số đó phải bằng $100000$ đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Mỗi bác tiêu hết $\\dfrac{1}{5}$ số tiền của mình thì còn lại: $1-\\dfrac{1}{5}=\\dfrac{4}{5}$ (số tiền của mình)\n\nTổng số tiền còn lại của hai bác là: $550000\\times\\dfrac{4}{5}=440000$ (đồng)\n\nb) Bác Minh tiêu hết $\\dfrac{2}{5}$ nên còn lại: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số tiền mang đi)\n\nBác Loan tiêu hết $\\dfrac{1}{6}$ nên còn lại: $1-\\dfrac{1}{6}=\\dfrac{5}{6}$ (số tiền mang đi)\n\nSố tiền bác Minh mang đi bằng số tiền còn lại của bác Minh nhân với: $1:\\dfrac{3}{5}=\\dfrac{5}{3}$\n\nSố tiền bác Loan mang đi bằng số tiền còn lại của bác Loan nhân với: $1:\\dfrac{5}{6}=\\dfrac{6}{5}$\n\nSố tiền còn lại của bác Loan bằng số tiền còn lại của bác Minh cộng $100000$ đồng, nên số tiền bác Loan mang đi bằng số tiền còn lại của bác Minh nhân $\\dfrac{6}{5}$ cộng thêm: $100000\\times\\dfrac{6}{5}=120000$ (đồng)\n\nSố tiền của hai bác mang đi bằng số tiền còn lại của bác Minh nhân với $\\dfrac{5}{3}+\\dfrac{6}{5}=\\dfrac{43}{15}$, cộng thêm $120000$ đồng.\n\nSố tiền còn lại của bác Minh nhân $\\dfrac{43}{15}$ bằng: $550000-120000=430000$ (đồng)\n\nSố tiền còn lại của bác Minh là: $430000:\\dfrac{43}{15}=150000$ (đồng)\n\nSố tiền bác Minh mang đi là: $150000:\\dfrac{3}{5}=250000$ (đồng)\n\nSố tiền bác Loan mang đi là: $550000-250000=300000$ (đồng)\n\nĐáp số: a) $440000$ đồng; b) Bác Minh: $250000$ đồng; bác Loan: $300000$ đồng",
+  "ghi_chu_nghi": "nhiều cách ở ý b): (1) tính ngược phân số - viết số tiền mang đi của hai bác theo số tiền còn lại của bác Minh [đã chọn - bám quan hệ gốc]; (2) giả thiết tạm: giả sử cả 550000 đồng là của bác Loan rồi thay dần từng đồng sang bác Minh; (3) khử. Đề cần CEO chốt cách chuẩn cho dạng \"hai phân số tiêu, biết hiệu số tiền còn lại\"."
+ },
+ {
+  "ma_nguon": "NN 2024-TT3 · P2.2",
+  "dap_an": "a) $4$ giờ $57$ phút; b) $54$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng một khúc sông thì vận tốc và thời gian đi tỉ lệ nghịch với nhau, nên từ hai thời gian tìm được tỉ số hai vận tốc. Còn hiệu hai vận tốc (xuôi dòng hơn ngược dòng) bằng hai lần vận tốc dòng nước, cho ta bài toán hiệu – tỉ.\n\n**Bước 1.** Ý a): thời gian đi cả xuôi dòng rồi ngược dòng là tổng của hai thời gian, cộng giờ với giờ, phút với phút.\n\n**Bước 2.** Ý b): cùng một quãng đường, thời gian ngược dòng gấp mấy lần thời gian xuôi dòng thì vận tốc xuôi dòng gấp bấy nhiêu lần vận tốc ngược dòng; đổi hai thời gian ra phút để lập tỉ số.\n\n**Bước 3.** Xuôi dòng thì dòng nước đẩy thêm cho ca nô, ngược dòng thì dòng nước cản bớt, nên hiệu hai vận tốc bằng hai lần vận tốc dòng nước.\n\n**Bước 4.** Đã có tỉ số và hiệu của hai vận tốc, làm bài toán hiệu – tỉ để tìm từng vận tốc.\n\n**Bước 5.** Lấy vận tốc nhân với thời gian tương ứng (đổi thời gian ra giờ) để tìm độ dài khúc sông.\n\nThử lại: lấy vận tốc còn lại nhân với thời gian còn lại, kết quả phải bằng độ dài vừa tìm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Thời gian ca nô đi xuôi dòng rồi ngược dòng khúc sông đó là: $2$ giờ $15$ phút $+\\ 2$ giờ $42$ phút $=4$ giờ $57$ phút\n\nb) Ta có sơ đồ:\n\n(Khúc sông AB: xuôi dòng từ A đến B hết 2 giờ 15 phút; ngược dòng từ B về A hết 2 giờ 42 phút)\n\nĐổi: $2$ giờ $15$ phút $=135$ phút; $2$ giờ $42$ phút $=162$ phút\n\nTỉ số thời gian xuôi dòng và ngược dòng là: $135:162=\\dfrac{5}{6}$\n\nCùng một quãng đường, vận tốc và thời gian tỉ lệ nghịch nên vận tốc xuôi dòng bằng $\\dfrac{6}{5}$ vận tốc ngược dòng.\n\nVận tốc xuôi dòng hơn vận tốc ngược dòng là: $2\\times 2=4$ (km/giờ)\n\nTa có sơ đồ:\n\n(Vận tốc xuôi dòng 6 phần; vận tốc ngược dòng 5 phần; hiệu 4 km/giờ)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nVận tốc xuôi dòng là: $4:1\\times 6=24$ (km/giờ)\n\nVận tốc ngược dòng là: $4:1\\times 5=20$ (km/giờ)\n\nĐổi: $2$ giờ $15$ phút $=2,25$ giờ\n\nĐộ dài khúc sông là: $24\\times 2,25=54$ (km)\n\nĐáp số: a) $4$ giờ $57$ phút; b) $54$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Xuôi dòng rồi ngược dòng",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 54
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 54,
+      "nhan": "Xuôi dòng: 2 giờ 15 phút"
+     },
+     {
+      "tu": 54,
+      "den": 0,
+      "nhan": "Ngược dòng: 2 giờ 42 phút"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 54,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Vận tốc xuôi và ngược dòng",
+    "gia_tri_phan": 4,
+    "hang": [
+     {
+      "nhan": "Vận tốc xuôi dòng",
+      "phan": 6
+     },
+     {
+      "nhan": "Vận tốc ngược dòng",
+      "phan": 5
+     }
+    ],
+    "hieu": "4 km/giờ",
+    "dau_hoi": [
+     "Vận tốc xuôi dòng",
+     "Vận tốc ngược dòng"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "nhiều cách ở ý b): (1) tỉ lệ nghịch thời gian-vận tốc + hiệu hai vận tốc = 2 x vận tốc dòng nước (hiệu - tỉ) [đã chọn]; (2) gọi quãng đường là 1 đơn vị rồi tính vận tốc từng chiều theo phân số rồi so với 2 km/giờ. Đề cần CEO chốt cách chuẩn cho dạng \"xuôi - ngược dòng cho thời gian\"."
+ }
+]

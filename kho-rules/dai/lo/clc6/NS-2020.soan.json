@@ -1,0 +1,131 @@
+[
+ {
+  "ma_nguon": "NS 2020 · 1",
+  "dap_an": "$85\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số phần trăm \"vượt mức\" luôn được tính so với **kế hoạch** (coi kế hoạch là $100\\%$), không tính so với số thực tế làm được. Vì vậy phải tìm số mũ làm vượt rồi so với số mũ theo kế hoạch.\n\n**Bước 1.** Tìm số chiếc mũ hai lớp đã làm vượt kế hoạch bằng cách lấy số mũ thực tế làm được trừ đi số mũ theo kế hoạch.\n\n**Bước 2.** Tìm tỉ số của số mũ làm vượt so với số mũ theo kế hoạch bằng cách lấy số vượt chia cho số kế hoạch, ra một số thập phân.\n\n**Bước 3.** Đổi số thập phân vừa tìm được sang phần trăm bằng cách nhân với $100$ rồi viết thêm kí hiệu phần trăm.\n\n**Chú ý:** Phải chia cho số mũ theo kế hoạch chứ không chia cho số mũ thực tế, vì kế hoạch mới là số được chọn làm gốc để so sánh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố chiếc mũ hai lớp làm vượt kế hoạch là: $1850-1000=850$ (chiếc)\n\nHai lớp đã vượt mức kế hoạch số phần trăm là: $850:1000=0,85=85\\%$\n\nĐáp số: $85\\%$"
+ },
+ {
+  "ma_nguon": "NS 2020 · 2",
+  "dap_an": "$51$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quên dấu phẩy ở $3,4$ thì thừa số này thành $34$, gấp lên $10$ lần, còn thừa số kia giữ nguyên nên tích cũng gấp lên $10$ lần. Vậy tích đúng là $1$ phần, tích mới là $10$ phần và hiệu hai tích là $459$: đây là bài hiệu – tỉ.\n\n**Bước 1.** Tìm xem khi bỏ dấu phẩy thì $3,4$ gấp lên bao nhiêu lần, từ đó suy ra tích mới gấp bao nhiêu lần tích đúng.\n\n**Bước 2.** Vẽ sơ đồ: tích đúng là $1$ phần, tích mới là số phần tương ứng, và số $459$ đơn vị tăng thêm chính là hiệu của hai tích.\n\n**Bước 3.** Tính hiệu số phần bằng nhau, rồi lấy $459$ chia cho hiệu số phần để tìm giá trị của một phần.\n\n**Bước 4.** Chú ý một phần là tích đúng nên giá trị vừa tìm chính là đáp số của bài.\n\n**Chú ý:** Đề hỏi tích đúng chứ không hỏi tích mới, nên đáp số ứng với $1$ phần chứ không phải $10$ phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi bỏ dấu phẩy thì $3,4$ thành $34$, gấp $3,4$ số lần là: $34:3,4=10$ (lần)\n\nVì vậy tích mới gấp $10$ lần tích đúng.\n\nTa có sơ đồ:\n\n(Tích đúng 1 phần; tích mới 10 phần; hiệu 459)\n\nHiệu số phần bằng nhau là: $10-1=9$ (phần)\n\nTích đúng của phép nhân là: $459:9=51$\n\nĐáp số: $51$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 51,
+   "hang": [
+    {
+     "nhan": "Tích đúng",
+     "phan": 1
+    },
+    {
+     "nhan": "Tích mới",
+     "phan": 10
+    }
+   ],
+   "hieu": "459",
+   "dau_hoi": [
+    "Tích đúng"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NS 2020 · 3",
+  "dap_an": "$23$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $\\dfrac{7}{3}\\times\\dfrac{47}{4}$ và $\\dfrac{7}{3}\\times 2\\dfrac{3}{4}$ có chung thừa số $\\dfrac{7}{3}$ nên đưa $\\dfrac{7}{3}$ ra ngoài; trong ngoặc là hiệu hai phân số cùng mẫu số $4$ nên tính rất gọn.\n\n**Bước 1.** Nhìn biểu thức thấy hai tích đứng sau đều có thừa số $\\dfrac{7}{3}$, đó là dấu hiệu dùng tính chất nhân một số với một hiệu.\n\n**Bước 2.** Đổi hỗn số $2\\dfrac{3}{4}$ ra phân số cho cùng mẫu số $4$ với phân số kia; hỗn số này bé nên đổi ra phân số không làm tử số quá lớn.\n\n**Bước 3.** Đặt $\\dfrac{7}{3}$ ra ngoài và tính hiệu hai phân số trong ngoặc trước; hiệu này ra một số tự nhiên nên phép nhân sau đó rất dễ.\n\n**Bước 4.** Tính thương $18:9$ rồi cộng với kết quả vừa tìm, nhớ thực hiện phép nhân chia trước và phép cộng sau.\n\n**Chú ý:** Không cộng $18:9$ với $\\dfrac{7}{3}$ trước, vì phép nhân đứng trước phép cộng trong thứ tự thực hiện.\n\n**Phần 2. Trình bày**\n\n$18:9+\\dfrac{7}{3}\\times\\dfrac{47}{4}-\\dfrac{7}{3}\\times 2\\dfrac{3}{4}$\n\n$=18:9+\\dfrac{7}{3}\\times\\dfrac{47}{4}-\\dfrac{7}{3}\\times\\dfrac{11}{4}$\n\n$=18:9+\\dfrac{7}{3}\\times\\left(\\dfrac{47}{4}-\\dfrac{11}{4}\\right)$\n\n$=18:9+\\dfrac{7}{3}\\times\\dfrac{36}{4}$\n\n$=18:9+\\dfrac{7}{3}\\times 9$\n\n$=2+21$\n\n$=23$"
+ },
+ {
+  "ma_nguon": "NS 2020 · 4",
+  "dap_an": "$36\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Tam giác $AMN$ không so sánh thẳng được với tam giác $ABC$, nên đi qua tam giác trung gian $AMC$: từ $ABC$ sang $AMC$ (đáy trên $BC$), rồi từ $AMC$ sang $AMN$ (đáy trên $AC$).\n\n**Bước 1.** Vẽ hình theo đề rồi tính $MC$ bằng mấy phần $BC$, vì $M$ nằm trên $BC$ và đã biết $BM$ bằng $\\dfrac{1}{5}BC$.\n\n**Bước 2.** So sánh tam giác $AMC$ với tam giác $ABC$ (chung đường cao hạ từ $A$ xuống $BC$) để tìm diện tích tam giác $AMC$.\n\n**Bước 3.** So sánh tam giác $AMN$ với tam giác $AMC$ (chung đường cao hạ từ $M$ xuống $AC$, đáy $AN$ và $AC$) để tìm diện tích tam giác $AMN$.\n\n**Chú ý:** Đừng lấy ngay $60$ nhân $\\dfrac{1}{5}$ rồi nhân $\\dfrac{3}{4}$: hai tỉ số này thuộc hai cặp tam giác khác nhau và phải đi qua đúng thứ tự.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $BM=\\dfrac{1}{5}\\times BC$ nên $MC=BC-BM=\\dfrac{4}{5}\\times BC$.\n\nTam giác $AMC$ và tam giác $ABC$ có chung đường cao hạ từ $A$ xuống $BC$, suy ra $\\dfrac{S_{AMC}}{S_{ABC}}=\\dfrac{MC}{BC}=\\dfrac{4}{5}$\n\nDiện tích tam giác $AMC$ là: $60\\times\\dfrac{4}{5}=48$ ($\\text{cm}^2$)\n\nTam giác $AMN$ và tam giác $AMC$ có chung đường cao hạ từ $M$ xuống $AC$, suy ra $\\dfrac{S_{AMN}}{S_{AMC}}=\\dfrac{AN}{AC}=\\dfrac{3}{4}$\n\nDiện tích tam giác $AMN$ là: $48\\times\\dfrac{3}{4}=36$ ($\\text{cm}^2$)\n\nĐáp số: $36\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không kèm hình; hiểu M nằm trên cạnh BC, N nằm trên cạnh AC (M, N khác các đỉnh). Đủ dữ kiện để giải."
+ },
+ {
+  "ma_nguon": "NS 2020 · 5",
+  "dap_an": "$29$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Chắc chắn\" nghĩa là phải tính cả trường hợp **xui nhất**: lấy mãi mà vẫn chưa có màu nào đủ $8$ viên. Tính số viên lấy được trong trường hợp xui nhất đó rồi lấy thêm đúng $1$ viên nữa thì chắc chắn đạt yêu cầu.\n\n**Bước 1.** Hình dung trường hợp xui nhất: mỗi màu đều đã lấy ra số viên nhiều nhất có thể mà vẫn chưa đủ $8$ viên.\n\n**Bước 2.** Tìm số viên nhiều nhất của một màu khi chưa đủ $8$ viên, rồi nhân với số màu để biết tổng số viên lấy được trong trường hợp xui nhất.\n\n**Bước 3.** Lấy thêm $1$ viên nữa thì viên đó chắc chắn thuộc một trong các màu đã lấy, làm màu ấy đủ $8$ viên; từ đó tìm số viên ít nhất cần lấy.\n\n**Chú ý:** Mỗi màu có $15$ viên, nhiều hơn $8$ viên, nên trường hợp xui nhất ở bước đầu thật sự có thể xảy ra.\n\n**Phần 2. Trình bày**\n\nTrường hợp xui nhất là lấy được mỗi màu $7$ viên mà chưa có màu nào đủ $8$ viên.\n\nSố viên bi lấy được trong trường hợp đó là: $7\\times 4=28$ (viên)\n\nLấy thêm $1$ viên nữa thì viên đó thuộc một trong bốn màu, và màu đó có đủ $8$ viên.\n\nSố viên bi ít nhất phải lấy là: $28+1=29$ (viên)\n\nĐáp số: $29$ viên"
+ },
+ {
+  "ma_nguon": "NS 2020 · 6",
+  "dap_an": "$30$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả hồ là $1$ đơn vị. Mỗi giờ vòi thứ nhất làm nước **ra** một phần hồ còn vòi thứ hai làm nước **vào** một phần hồ; khi hồ đang cạn muốn thành đầy thì mỗi giờ nước trong hồ tăng thêm đúng hiệu hai phần đó.\n\n**Bước 1.** Tính trong $1$ giờ vòi thứ nhất tháo ra được mấy phần hồ, bằng cách lấy cả hồ chia cho số giờ tháo hết nước.\n\n**Bước 2.** Tính trong $1$ giờ vòi thứ hai chảy vào được mấy phần hồ, bằng cách lấy cả hồ chia cho số giờ chảy đầy hồ.\n\n**Bước 3.** Hai vòi cùng chảy thì nước vào nhiều hơn nước ra, nên mỗi giờ nước trong hồ tăng thêm hiệu của hai phần hồ vừa tìm.\n\n**Bước 4.** Lấy cả hồ chia cho phần hồ tăng thêm mỗi giờ để biết sau bao nhiêu giờ hồ từ cạn thành đầy.\n\n**Chú ý:** Vòi thứ nhất làm nước ra nên không cộng hai phần hồ lại mà phải trừ đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong $1$ giờ vòi thứ nhất tháo ra được: $1:30=\\dfrac{1}{30}$ (hồ)\n\nTrong $1$ giờ vòi thứ hai chảy vào được: $1:15=\\dfrac{1}{15}$ (hồ)\n\nTrong $1$ giờ khi hai vòi cùng chảy, nước trong hồ tăng thêm: $\\dfrac{1}{15}-\\dfrac{1}{30}=\\dfrac{1}{30}$ (hồ)\n\nThời gian để hồ từ cạn thành đầy là: $1:\\dfrac{1}{30}=30$ (giờ)\n\nĐáp số: $30$ giờ",
+  "ghi_chu_nghi": "Đề dạng thơ. Hiểu \"hồ vơi thành đầy\" = hồ lúc đầu CẠN (chưa có nước), mở cả hai vòi cùng lúc (vòi nhất tháo ra, vòi nhì chảy vào) cho tới khi đầy. Nếu hiểu hồ vơi là còn một phần nước thì đề thiếu dữ kiện."
+ },
+ {
+  "ma_nguon": "NS 2020 · 7",
+  "dap_an": "$1825,74\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhìn hình: $B$ và $C$ là hai đỉnh của hình vuông, mỗi nửa đường tròn có bán kính bằng cạnh hình vuông. Hai nửa hình tròn bằng nhau ghép lại thành **một hình tròn** nên cả hình gồm hình vuông và một hình tròn.\n\n**Bước 1.** Xem hình để biết bán kính mỗi nửa đường tròn: tâm ở đỉnh hình vuông và đường kính nằm trên đường thẳng chứa cạnh hình vuông, nên bán kính bằng cạnh hình vuông.\n\n**Bước 2.** Tính diện tích hình vuông bằng cạnh nhân cạnh.\n\n**Bước 3.** Ghép hai nửa hình tròn thành một hình tròn rồi tính diện tích hình tròn đó bằng bán kính nhân bán kính nhân $3,14$.\n\n**Bước 4.** Cộng diện tích hình vuông với diện tích hình tròn để được diện tích cả hình.\n\n**Chú ý:** Hình tròn ghép từ hai nửa có bán kính $21$ cm, không phải đường kính $21$ cm, nên phải nhân bán kính với bán kính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, mỗi nửa đường tròn có bán kính bằng cạnh hình vuông, là $21$ cm.\n\nDiện tích hình vuông là: $21\\times 21=441$ ($\\text{cm}^2$)\n\nHai nửa hình tròn ghép lại thành một hình tròn bán kính $21$ cm, diện tích là: $21\\times 21\\times 3,14=1384,74$ ($\\text{cm}^2$)\n\nDiện tích của hình đã cho là: $441+1384,74=1825,74$ ($\\text{cm}^2$)\n\nĐáp số: $1825,74\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Dữ kiện bán kính lấy từ HÌNH (đề chữ chỉ cho cạnh hình vuông 21 cm): B, C là hai đỉnh bên phải của hình vuông; đường kính mỗi nửa đường tròn nằm trên đường thẳng chứa cạnh trên / cạnh dưới của hình vuông, tâm B / C, hai đầu mút cách tâm bằng đúng một cạnh hình vuông (đo trên ảnh: đường kính ≈ 2 lần cạnh). Vậy r = 21 cm, π = 3,14."
+ },
+ {
+  "ma_nguon": "NS 2020 · 8",
+  "dap_an": "$M=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số là tổng các tích $1\\times 2020$, $2\\times 2019$, $3\\times 2018$, … Hãy đếm xem trong tử số, số $1$, số $2$, số $3$, … mỗi số được cộng bao nhiêu lần; nếu số lần khớp đúng với các tích ở mẫu thì tử số bằng mẫu số.\n\n**Bước 1.** Quan sát tử số gồm $2020$ nhóm cộng: nhóm đầu chỉ có $1$, nhóm thứ hai là $1+2$, …, nhóm cuối là $1+2+\\ldots+2020$; đếm xem số $1$ có mặt trong bao nhiêu nhóm.\n\n**Bước 2.** Đếm tương tự cho số $2$, số $3$, … đến số $2020$: số càng lớn thì xuất hiện ở càng ít nhóm, mỗi lần ít hơn một nhóm.\n\n**Bước 3.** Viết tử số thành tổng các tích \"số nhân với số lần xuất hiện của nó\" rồi đem so sánh với mẫu số.\n\n**Bước 4.** Tử số và mẫu số bằng nhau thì thương của chúng bằng $1$, từ đó tìm $M$ mà không phải tính các tổng rất dài.\n\n**Chú ý:** Không cần (và không nên) cộng từng nhóm ở tử số, vì các tổng quá dài; chỉ cần đếm số lần xuất hiện của mỗi số.\n\n**Phần 2. Trình bày**\n\nTrong tử số, số $1$ có mặt ở cả $2020$ nhóm nên được cộng $2020$ lần, được: $1\\times 2020$\n\nSố $2$ có mặt từ nhóm thứ hai trở đi, tức là ở $2019$ nhóm, nên được cộng $2019$ lần, được: $2\\times 2019$\n\nSố $3$ có mặt từ nhóm thứ ba trở đi, tức là ở $2018$ nhóm, nên được cộng $2018$ lần, được: $3\\times 2018$\n\nCứ như vậy, số $2020$ chỉ có mặt ở nhóm cuối cùng nên được cộng $1$ lần, được: $2020\\times 1$\n\nDo đó tử số $=1\\times 2020+2\\times 2019+3\\times 2018+\\ldots+2020\\times 1$, đúng bằng mẫu số.\n\nVậy $M=1$."
+ },
+ {
+  "ma_nguon": "NS 2020 · 9",
+  "dap_an": "$a=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử số trừ đi $a$ còn mẫu số cộng thêm $a$ nên **tổng của tử số và mẫu số không đổi**. Phân số mới bằng $\\dfrac{1}{4}$ cho biết tử số mới là $1$ phần, mẫu số mới là $4$ phần của tổng không đổi đó: đây là bài tổng – tỉ.\n\n**Bước 1.** Tính tổng của tử số và mẫu số của phân số ban đầu, rồi nhận ra tổng này không đổi khi ta bớt ở tử số và thêm đúng bấy nhiêu ở mẫu số.\n\n**Bước 2.** Từ phân số mới bằng $\\dfrac{1}{4}$ suy ra tử số mới là $1$ phần, mẫu số mới là $4$ phần, rồi vẽ sơ đồ và tính tổng số phần bằng nhau.\n\n**Bước 3.** Lấy tổng không đổi chia cho tổng số phần để tìm giá trị một phần, chính là tử số mới.\n\n**Bước 4.** Lấy tử số lúc đầu trừ tử số mới để tìm $a$, rồi thử lại bằng cách thay $a$ vào phân số.\n\n**Chú ý:** Tử số mới không phải là $a$: $a$ là số đã bớt đi ở tử số, nên phải trừ tử số cũ cho tử số mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của tử số và mẫu số lúc đầu là: $17+63=80$\n\nKhi tử số trừ đi $a$ và mẫu số cộng thêm $a$ thì tổng tử số và mẫu số vẫn là $80$.\n\nPhân số mới bằng $\\dfrac{1}{4}$ nên tử số mới là $1$ phần, mẫu số mới là $4$ phần như thế.\n\nTa có sơ đồ:\n\n(Tử số mới 1 phần; mẫu số mới 4 phần; tổng 80)\n\nTổng số phần bằng nhau là: $1+4=5$ (phần)\n\nTử số mới là: $80:5=16$\n\nSố $a$ cần tìm là: $17-16=1$\n\nThử lại: $\\dfrac{17-1}{63+1}=\\dfrac{16}{64}=\\dfrac{1}{4}$ (đúng)\n\nĐáp số: $a=1$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 16,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 1
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 4
+    }
+   ],
+   "tong": "80",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NS 2020 · 10",
+  "dap_an": "$24$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng lương thực dự trữ là một số cố định. Số người ăn càng nhiều thì số ngày ăn càng ít, nên cách làm là rút về đơn vị: tìm xem lượng lương thực này đủ cho **một** người ăn trong bao nhiêu ngày.\n\n**Bước 1.** Tính số người ăn thực tế sau khi có thêm bà ngoại ở quê lên ở cùng.\n\n**Bước 2.** Rút về đơn vị: lượng lương thực dự trữ đủ cho $1$ người ăn trong số ngày bằng số người dự định nhân với số ngày dự định.\n\n**Bước 3.** Lấy số ngày một người ăn được chia cho số người thực tế để biết số lương thực đó đủ cho cả nhà ăn trong bao nhiêu ngày.\n\n**Chú ý:** Bà ngoại cũng ăn như mỗi người khác, nên số người thực tế không còn là $4$ người.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người ăn khi có thêm bà ngoại là: $4+1=5$ (người)\n\nSố lương thực dự trữ đủ cho $1$ người ăn trong: $30\\times 4=120$ (ngày)\n\nSố lương thực đó đủ cho $5$ người ăn trong: $120:5=24$ (ngày)\n\nĐáp số: $24$ ngày"
+ },
+ {
+  "ma_nguon": "NS 2020 · 11",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân số $\\dfrac{a}{b}$ là phép chia $a:b$. Phân số viết được thành số thập phân khi phép chia này chia hết (dư $0$); chỉ cần một phân số trong dãy chia mãi không hết là cả dãy bị loại, vì đề yêu cầu **mỗi** phân số đều viết được.\n\n**Bước 1.** Nhớ lại cách đổi phân số ra số thập phân: lấy tử số chia cho mẫu số, nếu chia mãi không hết thì không viết được thành số thập phân.\n\n**Bước 2.** Xét từng dãy và tìm trong mỗi dãy một phân số mà phép chia chia mãi không hết; những phân số có mẫu số $7$, $3$ hoặc $9$ rất hay như vậy, nên dãy chứa chúng bị loại.\n\n**Bước 3.** Với dãy còn lại, thử chia từng phân số để chắc chắn cả ba phân số đều chia hết, rồi chọn dãy đó.\n\n**Chú ý:** Phải kiểm tra đủ cả ba phân số của dãy được chọn, không chọn dãy chỉ vì có hai phân số quen thuộc.\n\n**Phần 2. Trình bày**\n\nDãy A có $\\dfrac{10}{7}$: $10:7=1,428571\\ldots$ chia mãi không hết, nên loại A.\n\nDãy C có $\\dfrac{1}{3}$: $1:3=0,333\\ldots$ chia mãi không hết, nên loại C.\n\nDãy D có $\\dfrac{5}{9}$: $5:9=0,555\\ldots$ chia mãi không hết, nên loại D.\n\nDãy B có $\\dfrac{2}{5}=0,4$; $\\dfrac{1}{2}=0,5$; $\\dfrac{5}{8}=0,625$ đều viết được thành số thập phân.\n\nChọn B."
+ },
+ {
+  "ma_nguon": "NS 2020 · 12",
+  "dap_an": "$42$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi bán một giỏ xoài, số cam gấp $4$ lần số xoài, nên số cam là $4$ phần, số xoài là $1$ phần và **tổng số quả còn lại là $5$ phần**, tức phải chia hết cho $5$. Dùng điều đó để tìm giỏ đã bán.\n\n**Bước 1.** Tính tổng số quả ở cả $6$ giỏ, vì tổng số quả còn lại bằng tổng này trừ đi số quả của giỏ đã bán.\n\n**Bước 2.** Tổng số quả còn lại chia hết cho $5$ nên có chữ số tận cùng là $0$ hoặc $5$; từ chữ số tận cùng của tổng $6$ giỏ suy ra giỏ đã bán phải có chữ số tận cùng nào, rồi chọn giỏ đó.\n\n**Bước 3.** Tính số quả còn lại, vẽ sơ đồ tổng – tỉ ($1$ phần xoài, $4$ phần cam) để tìm số xoài còn lại và số cam còn lại.\n\n**Bước 4.** Thử lại bằng cách ghép các giỏ còn lại thành một giỏ xoài và các giỏ cam sao cho đúng hai số vừa tìm.\n\n**Chú ý:** Đề hỏi số xoài đã bán chứ không hỏi số xoài còn lại, nên đáp số là số quả của giỏ vừa bán.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số quả ở cả $6$ giỏ là: $36+39+40+41+42+44=242$ (quả)\n\nSau khi bán, số cam gấp $4$ lần số xoài nên tổng số quả còn lại là $5$ phần, do đó chia hết cho $5$ và có chữ số tận cùng là $0$ hoặc $5$.\n\nVì $242$ có chữ số tận cùng là $2$ nên giỏ đã bán phải có chữ số tận cùng là $2$; trong các giỏ chỉ có giỏ $42$ quả.\n\nSố quả còn lại sau khi bán là: $242-42=200$ (quả)\n\nTa có sơ đồ:\n\n(Số xoài còn lại 1 phần; số cam còn lại 4 phần; tổng 200 quả)\n\nTổng số phần bằng nhau là: $1+4=5$ (phần)\n\nSố xoài còn lại là: $200:5=40$ (quả)\n\nSố cam còn lại là: $200-40=160$ (quả)\n\nThử lại: giỏ $40$ quả là xoài còn lại, bốn giỏ $36$; $39$; $41$; $44$ quả là cam và $36+39+41+44=160$, thoả mãn.\n\nVậy người đó đã bán $42$ quả xoài.",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 40,
+   "hang": [
+    {
+     "nhan": "Số xoài còn lại",
+     "phan": 1
+    },
+    {
+     "nhan": "Số cam còn lại",
+     "phan": 4
+    }
+   ],
+   "tong": "200 quả",
+   "dau_hoi": [
+    "Số xoài còn lại"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NS 2020 · 13",
+  "dap_an": "$a=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số $\\overline{a,97}$ và $1,97$ có phần thập phân giống nhau là $,97$, nên so sánh chỉ cần so sánh phần nguyên: số thập phân nào có phần nguyên bé hơn thì bé hơn.\n\n**Bước 1.** Nhận ra hai số có cùng phần thập phân, chỉ khác nhau ở phần nguyên là $a$ và $1$.\n\n**Bước 2.** Để số đầu bé hơn số sau thì phần nguyên $a$ phải bé hơn phần nguyên của số kia.\n\n**Bước 3.** Vì $a$ là một chữ số nên tìm chữ số thoả mãn điều kiện vừa nêu, rồi thử lại bằng cách viết ra số thập phân.\n\n**Chú ý:** Đừng bỏ sót chữ số $0$: nó cũng là một chữ số và có thể đứng ở phần nguyên của số thập phân.\n\n**Phần 2. Trình bày**\n\nHai số $\\overline{a,97}$ và $1,97$ có phần thập phân giống nhau nên so sánh phần nguyên.\n\nĐể $\\overline{a,97}<1,97$ thì $a<1$.\n\nVì $a$ là chữ số nên $a=0$.\n\nThử lại: $0,97<1,97$ (đúng)\n\nVậy $a=0$."
+ },
+ {
+  "ma_nguon": "NS 2020 · 14",
+  "dap_an": "$x=78,4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong phép cộng $x:8+31,2=41$, thương $x:8$ là số hạng chưa biết; tìm nó trước, rồi coi $x$ là số bị chia chưa biết của phép chia để tìm $x$.\n\n**Bước 1.** Nhận ra $x:8$ là số hạng chưa biết của phép cộng, vì cộng với $31,2$ thì ra tổng là $41$.\n\n**Bước 2.** Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết, nên tính $41-31,2$.\n\n**Bước 3.** Bây giờ $x$ là số bị chia, muốn tìm số bị chia ta lấy thương nhân với số chia.\n\n**Chú ý:** Thử lại bằng cách thay $x$ vào biểu thức ban đầu, tính ra phải bằng $41$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} x:8+31,2=41 \\\\ x:8=41-31,2 \\\\ x:8=9,8 \\\\ x=9,8\\times 8 \\\\ x=78,4 \\end{array}$"
+ },
+ {
+  "ma_nguon": "NS 2020 · 15",
+  "dap_an": "$<$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số khác cả tử số lẫn mẫu số nên chưa so sánh ngay được; phải quy đồng mẫu số, khi cùng mẫu số thì phân số nào có tử số lớn hơn thì lớn hơn.\n\n**Bước 1.** Tìm mẫu số chung của $11$ và $9$; hai số này không chia hết cho nhau nên lấy tích của chúng làm mẫu số chung.\n\n**Bước 2.** Quy đồng: nhân cả tử số và mẫu số của mỗi phân số với mẫu số của phân số kia để hai phân số cùng mẫu số.\n\n**Bước 3.** So sánh hai tử số sau khi quy đồng rồi điền dấu thích hợp vào chỗ trống.\n\n**Chú ý:** Chỉ so sánh tử số khi hai phân số đã cùng mẫu số; không so sánh $3$ với $4$ rồi kết luận ngay.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{11}=\\dfrac{3\\times 9}{11\\times 9}=\\dfrac{27}{99}$\n\n$\\dfrac{4}{9}=\\dfrac{4\\times 11}{9\\times 11}=\\dfrac{44}{99}$\n\nVì $27<44$ nên $\\dfrac{27}{99}<\\dfrac{44}{99}$.\n\nVậy $\\dfrac{3}{11}<\\dfrac{4}{9}$."
+ }
+]

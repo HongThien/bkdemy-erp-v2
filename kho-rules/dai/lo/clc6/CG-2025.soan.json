@@ -1,0 +1,116 @@
+[
+ {
+  "ma_nguon": "CG 2025 · 1",
+  "dap_an": "$5$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Làm tròn đến số tự nhiên gần nhất là giữ lại phần nguyên, rồi nhìn chữ số hàng phần mười đứng ngay sau dấu phẩy để quyết định phần nguyên được giữ nguyên hay tăng thêm một đơn vị.\n\n**Bước 1.** Xác định phần nguyên của $4,65$ và chữ số hàng phần mười đứng ngay sau dấu phẩy.\n\n**Bước 2.** So chữ số hàng phần mười với $5$: nhỏ hơn $5$ thì giữ nguyên phần nguyên, từ $5$ trở lên thì tăng phần nguyên thêm $1$.\n\n**Bước 3.** Viết số đã làm tròn kèm đơn vị tấn như đề bài yêu cầu.\n\n**Chú ý:** Chỉ nhìn đúng một chữ số hàng phần mười để quyết định, không cần xét chữ số hàng phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần nguyên của $4,65$ là $4$, chữ số hàng phần mười là $6$ (lớn hơn $5$) nên làm tròn lên: $4+1=5$\n\nĐáp số: $5$ tấn"
+ },
+ {
+  "ma_nguon": "CG 2025 · 2",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thể tích đang ghi bằng hai đơn vị khác nhau (đề-xi-mét khối và xăng-ti-mét khối) nên phải đổi về cùng một đơn vị rồi mới cộng được.\n\n**Bước 1.** Nhận ra hai số đo khác đơn vị nên chưa thể cộng thẳng hai số $15$ và $11$ với nhau.\n\n**Bước 2.** Đổi $15\\ \\text{dm}^3$ sang xăng-ti-mét khối, nhớ rằng $1\\ \\text{dm}^3=1000\\ \\text{cm}^3$ nên phải nhân với $1000$.\n\n**Bước 3.** Cộng hai thể tích đã cùng đơn vị rồi đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** Cộng thẳng $15+11$ khi chưa đổi đơn vị là bẫy của phương án ghi $26\\ \\text{dm}^3$.\n\n**Phần 2. Trình bày**\n\nĐổi: $15\\ \\text{dm}^3=15000\\ \\text{cm}^3$\n\nTổng thể tích là: $15000+11=15011$ ($\\text{cm}^3$)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "CG 2025 · 3",
+  "dap_an": "$4$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bản đồ tỉ lệ $1:20000$ nghĩa là mọi độ dài thật đều được vẽ nhỏ đi $20000$ lần, nên độ dài trên bản đồ bằng độ dài thật chia cho $20000$ (hai độ dài phải cùng đơn vị).\n\n**Bước 1.** Đọc tỉ lệ bản đồ để biết độ dài thật gấp độ dài trên bản đồ bao nhiêu lần.\n\n**Bước 2.** Đổi quãng đường thật từ mét sang xăng-ti-mét (nhớ $1$ m bằng $100$ cm) để độ dài trên bản đồ có đơn vị quen thuộc, dễ đọc.\n\n**Bước 3.** Lấy độ dài thật chia cho số lần thu nhỏ để được độ dài trên bản đồ, nhớ ghi kèm đơn vị.\n\n**Chú ý:** Nếu chia $800$ cho $20000$ ngay mà chưa đổi đơn vị thì kết quả đang tính bằng mét, rất dễ ghi nhầm đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $800$ m $=80000$ cm\n\nQuãng đường từ nhà A đến nhà B trên bản đồ dài: $80000:20000=4$ (cm)\n\nĐáp số: $4$ cm"
+ },
+ {
+  "ma_nguon": "CG 2025 · 4",
+  "dap_an": "$864\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau, nên diện tích toàn phần bằng diện tích một mặt nhân với $6$.\n\n**Bước 1.** Nhớ lại hình lập phương có sáu mặt, mỗi mặt đều là hình vuông có cạnh bằng cạnh của hình lập phương.\n\n**Bước 2.** Tính diện tích một mặt hình vuông bằng cách lấy cạnh nhân cạnh.\n\n**Bước 3.** Lấy diện tích một mặt nhân với số mặt để được diện tích toàn phần.\n\n**Chú ý:** Diện tích tính bằng xăng-ti-mét vuông, không ghi xăng-ti-mét hay xăng-ti-mét khối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $12\\times 12=144$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình lập phương là: $144\\times 6=864$ ($\\text{cm}^2$)\n\nĐáp số: $864\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "CG 2025 · 5",
+  "dap_an": "$\\dfrac{2}{7}$",
+  "ghi_chu_nghi": "Đáp số viết đã rút gọn $\\dfrac{2}{7}$ (chưa rút gọn là $\\dfrac{10}{35}$, cũng là $10:35$).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số của hai số là số thứ nhất chia cho số thứ hai; ở đây số thứ nhất là số lần được hai mặt sấp, còn số thứ hai là TỔNG số lần tung của cả ba trường hợp.\n\n**Bước 1.** Cộng số lần của cả ba trường hợp đã ghi để biết Nam đã tung hai đồng xu tất cả bao nhiêu lần.\n\n**Bước 2.** Viết tỉ số: số lần được hai mặt sấp là số thứ nhất, tổng số lần tung là số thứ hai.\n\n**Bước 3.** Rút gọn phân số vừa viết bằng cách chia cả tử số và mẫu số cho cùng một số.\n\n**Chú ý:** Mẫu số phải là tổng số lần tung, không phải số lần của một trường hợp nào khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số lần tung hai đồng xu là: $10+8+17=35$ (lần)\n\nTỉ số số lần được hai mặt sấp so với tổng số lần tung là: $10:35=\\dfrac{10}{35}=\\dfrac{2}{7}$\n\nĐáp số: $\\dfrac{2}{7}$"
+ },
+ {
+  "ma_nguon": "CG 2025 · 6",
+  "dap_an": "$15$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Người đi từ A qua B đến C",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 45,
+     "ghi": "nghỉ"
+    },
+    {
+     "ten": "C",
+     "x": 58
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 45,
+     "nhan": "30 km/giờ"
+    },
+    {
+     "tu": 45,
+     "den": 58,
+     "nhan": "26 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 45,
+     "nhan": "45 km"
+    },
+    {
+     "tu": 45,
+     "den": 58,
+     "nhan": "13 km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thời gian thật sự đi trên đường của từng đoạn bằng quãng đường chia cho vận tốc đoạn đó; thời gian nghỉ là phần còn lại của khoảng thời gian từ lúc xuất phát đến lúc tới C.\n\n**Bước 1.** Tính thời gian đi đoạn AB bằng cách lấy quãng đường AB chia cho vận tốc trên đoạn đó.\n\n**Bước 2.** Tính thời gian đi đoạn BC cũng bằng quãng đường chia vận tốc, rồi cộng với đoạn AB để biết tổng thời gian đi (chưa kể nghỉ).\n\n**Bước 3.** Tính khoảng thời gian từ lúc xuất phát đến lúc tới C, là hiệu giữa giờ đến và giờ đi.\n\n**Bước 4.** Lấy khoảng thời gian từ lúc xuất phát đến lúc tới C trừ tổng thời gian đi thì ra thời gian nghỉ.\n\n**Chú ý:** Thời gian đi tính bằng giờ nhưng đề hỏi số phút, nên kết quả cuối cùng phải ghi bằng phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Đoạn AB dài 45 km, đi với vận tốc 30 km/giờ rồi nghỉ ở B; đoạn BC dài 13 km, đi với vận tốc 26 km/giờ)\n\nThời gian đi hết quãng đường AB là: $45:30=1,5$ (giờ)\n\nThời gian đi hết quãng đường BC là: $13:26=0,5$ (giờ)\n\nTổng thời gian đi, chưa kể thời gian nghỉ, là: $1,5+0,5=2$ (giờ)\n\nThời gian từ lúc xuất phát đến lúc tới C là: $9$ giờ $15$ phút $-\\ 7$ giờ $=2$ giờ $15$ phút\n\nThời gian người đó nghỉ là: $2$ giờ $15$ phút $-\\ 2$ giờ $=15$ phút\n\nĐáp số: $15$ phút"
+ },
+ {
+  "ma_nguon": "CG 2025 · 7",
+  "dap_an": "$20$ viên",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi Việt cho Nam thêm bi xanh",
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Bi xanh",
+     "phan": 3
+    },
+    {
+     "nhan": "Bi đỏ",
+     "phan": 5
+    }
+   ],
+   "hieu": "8 viên",
+   "dau_hoi": [
+    "Bi đỏ"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bi đỏ không đổi, nên khi Nam được thêm $4$ viên bi xanh thì hiệu giữa bi đỏ và bi xanh giảm đúng $4$ viên. Tỉ số $\\dfrac{3}{5}$ chỉ đúng SAU khi thêm bi, nên đây là bài hiệu – tỉ với hiệu mới.\n\n**Bước 1.** Tính hiệu số bi đỏ và bi xanh sau khi thêm bi, nhớ rằng bi đỏ giữ nguyên còn bi xanh tăng $4$ viên nên hiệu giảm đi $4$ viên.\n\n**Bước 2.** Từ tỉ số $\\dfrac{3}{5}$ suy ra bi xanh là $3$ phần thì bi đỏ là $5$ phần như thế, rồi tìm hiệu số phần bằng nhau.\n\n**Bước 3.** Lấy hiệu số bi chia cho hiệu số phần để tìm giá trị của một phần.\n\n**Bước 4.** Số bi đỏ ứng với $5$ phần nên lấy giá trị một phần nhân với $5$.\n\n**Chú ý:** Phải dùng hiệu mới (sau khi thêm bi), không dùng hiệu cũ ban đầu, vì tỉ số $\\dfrac{3}{5}$ chỉ đúng sau khi thêm bi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bi đỏ không đổi, số bi xanh tăng thêm $4$ viên nên hiệu số bi đỏ và bi xanh lúc sau là: $12-4=8$ (viên)\n\nSau khi thêm, số bi xanh bằng $\\dfrac{3}{5}$ số bi đỏ nên bi xanh là $3$ phần, bi đỏ là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Bi xanh 3 phần; bi đỏ 5 phần; hiệu 8 viên)\n\nHiệu số phần bằng nhau là: $5-3=2$ (phần)\n\nGiá trị một phần là: $8:2=4$ (viên)\n\nSố bi đỏ của Nam là: $4\\times 5=20$ (viên)\n\nĐáp số: $20$ viên"
+ },
+ {
+  "ma_nguon": "CG 2025 · 8",
+  "dap_an": "$30$ m",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: kéo dài đáy lớn thêm $5$ m về một phía thì phần diện tích thêm ra là một hình tam giác có đáy $5$ m và chiều cao bằng chiều cao hình thang (hình mới vẫn là hình thang cùng chiều cao). Nhiều cách: (1) tìm chiều cao qua diện tích tam giác (đã chọn, bám công thức gốc); (2) hai hình thang cùng chiều cao thì diện tích tỉ lệ với tổng hai đáy: $\\dfrac{6}{5}$ lần nên tổng đáy tăng $\\dfrac{1}{5}$ = 5 m, tổng đáy cũ 25 m.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Kéo dài đáy lớn thêm $5$ m thì phần diện tích tăng thêm là một hình tam giác có đáy $5$ m và chiều cao bằng chiều cao hình thang. Biết diện tích phần thêm thì tìm được chiều cao, rồi từ diện tích hình thang tìm được tổng hai đáy.\n\n**Bước 1.** Tính diện tích phần tăng thêm bằng phân số của diện tích hình thang mà đề đã cho.\n\n**Bước 2.** Nhận ra phần thêm là hình tam giác đáy $5$ m có chiều cao bằng chiều cao hình thang, rồi dùng công thức diện tích tam giác để tìm chiều cao.\n\n**Bước 3.** Dùng công thức diện tích hình thang để tìm tổng hai đáy lúc đầu: lấy diện tích nhân $2$ rồi chia cho chiều cao.\n\n**Bước 4.** Đáy lớn dài thêm $5$ m còn đáy bé giữ nguyên nên tổng hai đáy sau khi mở rộng bằng tổng cũ cộng thêm $5$ m.\n\n**Chú ý:** Đề hỏi tổng hai đáy SAU khi mở rộng, đừng dừng lại ở tổng hai đáy lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích tăng thêm là: $100\\times\\dfrac{1}{5}=20$ ($\\text{m}^2$)\n\nPhần tăng thêm là hình tam giác có đáy $5$ m và chiều cao bằng chiều cao hình thang.\n\nChiều cao hình thang là: $20\\times 2:5=8$ (m)\n\nTổng hai đáy hình thang lúc đầu là: $100\\times 2:8=25$ (m)\n\nTổng đáy lớn và đáy bé sau khi mở rộng là: $25+5=30$ (m)\n\nĐáp số: $30$ m"
+ },
+ {
+  "ma_nguon": "CG 2025 · 9",
+  "dap_an": "a) $90$ phần quà; b) $180$ món quà",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý b) là bài tính ngược từ khu D về khu C: ở mỗi khu, quà phát ra gồm một phân số của số quà còn lại cộng thêm vài món lẻ; phần quà còn lại sau khi phát ứng với phân số còn lại, chia ra sẽ được số quà trước khi phát. Số quà \"còn lại\" khi đến khu C là số quà sau khi đã phát ở khu A và khu B.\n\n**Bước 1.** Ý a): lấy $80\\%$ của $50$ phần quà để biết khu B, rồi cộng với khu A.\n\n**Bước 2.** Xét khu D: phát $\\dfrac{4}{5}$ số quà còn lại và thêm $7$ món thì hết, nên $7$ món lẻ ứng với $\\dfrac{1}{5}$ số quà lúc đến khu D; chia $7$ cho $\\dfrac{1}{5}$ để biết số quà lúc đến khu D.\n\n**Bước 3.** Xét khu C: số quà còn lại sau khu C chính là số quà lúc đến khu D, mà đó là $\\dfrac{4}{9}$ số quà lúc đến khu C bớt đi $5$ món; cộng thêm $5$ món lẻ rồi chia cho $\\dfrac{4}{9}$ để biết số quà lúc đến khu C.\n\n**Bước 4.** Số quà lúc đến khu C là số quà còn lại sau khi phát ở hai khu A, B, nên cộng với kết quả ý a) để được tổng số quà mang đi.\n\n**Chú ý:** Phải làm ngược từ khu cuối về khu đầu, và không lẫn số quà lúc đến khu C với tổng số quà ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số phần quà phát ở khu B là: $50\\times 80\\%=40$ (phần quà)\n\nSố phần quà phát ở cả hai khu A, B là: $50+40=90$ (phần quà)\n\nb) Khu D phát $\\dfrac{4}{5}$ số quà còn lại và $7$ phần quà thì hết, nên $7$ phần quà ứng với: $1-\\dfrac{4}{5}=\\dfrac{1}{5}$ (số quà lúc đến khu D)\n\nSố quà lúc đến khu D là: $7:\\dfrac{1}{5}=35$ (phần quà)\n\nKhu C phát $\\dfrac{5}{9}$ số quà còn lại và $5$ món quà, nên số quà còn lại sau khi phát $\\dfrac{5}{9}$ số quà là: $35+5=40$ (món quà)\n\nSố quà đó ứng với: $1-\\dfrac{5}{9}=\\dfrac{4}{9}$ (số quà lúc đến khu C)\n\nSố quà lúc đến khu C là: $40:\\dfrac{4}{9}=90$ (món quà)\n\nĐội thiện nguyện mang đi tất cả số món quà là: $90+90=180$ (món quà)\n\nĐáp số: a) $90$ phần quà; b) $180$ món quà"
+ },
+ {
+  "ma_nguon": "CG 2025 · 10",
+  "dap_an": "a) $120$ thẻ; b) $66$ thẻ",
+  "ghi_chu_nghi": "Ý b) đề hỏi lửng: \"Làm thế nào để lấy được 6 thẻ ghi số giống nhau?\". Đã hiểu là: lấy ra (không nhìn số) ít nhất bao nhiêu thẻ thì CHẮC CHẮN có 6 thẻ cùng số, tức bài trường hợp xấu nhất, đáp số 66. Nếu hiểu là \"nhìn số rồi chọn\" thì chỉ cần lấy 6 thẻ của một số bất kì từ số 7 đến số 16 (tầm thường) nên không chọn cách này. Cần CEO xác nhận cách hiểu.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thẻ ghi số $2$ có $1$ thẻ, ghi số $3$ có $2$ thẻ, cứ số tăng $1$ thì thêm $1$ thẻ, thẻ ghi số $16$ có $15$ thẻ; nên ý a) là cộng dãy $1+2+3+\\dots+15$. Ý b) hỏi chắc chắn có $6$ thẻ cùng số nên phải xét trường hợp xấu nhất: lấy được nhiều thẻ nhất mà vẫn chưa có $6$ thẻ nào giống nhau.\n\n**Bước 1.** Ý a): đếm số thẻ của từng loại rồi cộng cả dãy bằng cách ghép số đầu với số cuối thành các cặp có tổng bằng nhau.\n\n**Bước 2.** Ý b): hiểu là lấy thẻ mà không nhìn số, cần lấy ít nhất bao nhiêu thẻ thì chắc chắn có $6$ thẻ ghi số giống nhau.\n\n**Bước 3.** Xét trường hợp xấu nhất: loại nào có không quá $5$ thẻ thì lấy hết, loại nào có từ $6$ thẻ trở lên thì chỉ lấy $5$ thẻ; cộng số thẻ lại.\n\n**Bước 4.** Lấy thêm một thẻ nữa thì thẻ này chắc chắn làm một loại có đủ $6$ thẻ, nên số thẻ cần lấy bằng số thẻ ở trường hợp xấu nhất cộng thêm $1$.\n\n**Chú ý:** Chữ \"chắc chắn\" là mấu chốt của ý b): phải tính theo trường hợp xui nhất chứ không tính theo may mắn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số thẻ trong hộp là: $1+2+3+\\dots+15=(1+15)\\times 15:2=120$ (thẻ)\n\nb) Các loại thẻ có $1;\\ 2;\\ 3;\\ 4;\\ 5$ thẻ (không quá $5$ thẻ) lấy hết, được: $1+2+3+4+5=15$ (thẻ)\n\nCác loại thẻ có từ $6$ đến $15$ thẻ có tất cả $15-5=10$ (loại), mỗi loại lấy $5$ thẻ, được: $10\\times 5=50$ (thẻ)\n\nLấy nhiều nhất mà chưa có $6$ thẻ nào cùng số là: $15+50=65$ (thẻ)\n\nLấy thêm $1$ thẻ nữa thì chắc chắn có $6$ thẻ ghi số giống nhau: $65+1=66$ (thẻ)\n\nVậy phải lấy ít nhất $66$ thẻ.\n\nĐáp số: a) $120$ thẻ; b) $66$ thẻ"
+ }
+]

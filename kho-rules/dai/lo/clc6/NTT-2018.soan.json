@@ -1,0 +1,179 @@
+[
+ {
+  "ma_nguon": "NTT 2018 · 1",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi học sinh chỉ xếp đúng một trong ba loại nên tỉ lệ ba loại cộng lại là $100\\%$; bảng chỉ cho Giỏi và Khá, nên tỉ lệ Trung bình bằng $100\\%$ trừ đi hai tỉ lệ đó.\n\n**Bước 1.** Nhận ra bảng không có cột Trung bình, nên phải tự tìm tỉ lệ này từ hai cột Giỏi và Khá đã cho.\n\n**Bước 2.** Với mỗi năm học, lấy $100\\%$ trừ tỉ lệ học sinh Giỏi rồi trừ tỉ lệ học sinh Khá để được tỉ lệ học sinh Trung bình.\n\n**Bước 3.** So sánh bốn tỉ lệ Trung bình vừa tìm, chọn năm có tỉ lệ lớn nhất rồi đối chiếu với các phương án.\n\n**Chú ý:** Đề hỏi tỉ lệ Trung bình cao nhất, đừng chọn năm có tỉ lệ Giỏi hoặc Khá cao nhất.\n\n**Phần 2. Trình bày**\n\nTỉ lệ học sinh Trung bình bằng $100\\%$ trừ đi tỉ lệ học sinh Giỏi và tỉ lệ học sinh Khá.\n\nNăm học 2014-2015: $100\\%-69,8\\%-28,5\\%=1,7\\%$\n\nNăm học 2015-2016: $100\\%-79,6\\%-19,4\\%=1\\%$\n\nNăm học 2016-2017: $100\\%-83,4\\%-16,2\\%=0,4\\%$\n\nNăm học 2017-2018: $100\\%-85,7\\%-13,4\\%=0,9\\%$\n\nVì $1,7\\%>1\\%>0,9\\%>0,4\\%$ nên năm học 2014-2015 có tỉ lệ học sinh Trung bình cao nhất.\n\nChọn A.",
+  "ghi_chu_nghi": "Bảng trong đề chỉ có hai cột Giỏi và Khá (không có cột Trung bình); hiểu Trung bình = 100% - Giỏi - Khá vì đề nói học lực chỉ có ba loại."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 2",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần đất chưa dọn bằng cả mảnh đất trừ phần đã dọn, nhưng hai diện tích phải cùng đơn vị đo; mà $1$ ha bằng $10000\\ \\text{m}^2$ nên phải đổi trước khi trừ.\n\n**Bước 1.** Tính diện tích cả mảnh đất hình chữ nhật bằng cách lấy chiều dài nhân chiều rộng, kết quả ra mét vuông.\n\n**Bước 2.** Đổi diện tích đó sang héc-ta vì phần đã dọn cho bằng héc-ta, nhớ rằng $1$ ha bằng $10000\\ \\text{m}^2$.\n\n**Bước 3.** Lấy diện tích cả mảnh đất trừ diện tích đã dọn để tìm phần chưa dọn, rồi đối chiếu với các phương án.\n\n**Chú ý:** Phải chia cho $10000$ chứ không chia cho $1000$; nếu chia sai sẽ ra số $28,6$ ha giống một phương án để nhử.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $220\\times 130=28600$ ($\\text{m}^2$)\n\nĐổi: $28600\\ \\text{m}^2=2,86$ ha\n\nDiện tích phần đất chưa được dọn cỏ là: $2,86-1,2=1,66$ (ha)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 3",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trộn thịt xay với khoai tây nghiền theo tỉ lệ $3:2$ nghĩa là thịt xay chiếm $3$ phần, khoai tây chiếm $2$ phần bằng nhau; tổng khối lượng nhân bánh là $4$ kg nên đây là bài tổng – tỉ.\n\n**Bước 1.** Đọc tỉ lệ $3:2$ thành thịt xay có $3$ phần và khoai tây nghiền có $2$ phần bằng nhau.\n\n**Bước 2.** Cộng số phần của thịt xay và khoai tây để biết nhân bánh gồm tất cả bao nhiêu phần bằng nhau.\n\n**Bước 3.** Lấy $4$ kg nhân bánh chia cho tổng số phần để tìm khối lượng của một phần.\n\n**Bước 4.** Thịt xay có $3$ phần nên lấy khối lượng một phần nhân với $3$, rồi chọn phương án trùng kết quả.\n\n**Chú ý:** Đề hỏi khối lượng thịt xay, không phải khối lượng khoai tây nghiền.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Thịt xay $3$ phần; khoai tây nghiền $2$ phần; tổng $4$ kg)\n\nTổng số phần bằng nhau là: $3+2=5$ (phần)\n\nKhối lượng của một phần là: $4:5=0,8$ (kg)\n\nKhối lượng thịt xay đã dùng là: $0,8\\times 3=2,4$ (kg)\n\nChọn A.",
+  "so_do_mo_ta": {
+   "tieu_de": "Nhân bánh",
+   "gia_tri_phan": 0.8,
+   "hang": [
+    {
+     "nhan": "Thịt xay",
+     "phan": 3
+    },
+    {
+     "nhan": "Khoai tây",
+     "phan": 2
+    }
+   ],
+   "tong": "4 kg",
+   "dau_hoi": [
+    "Thịt xay"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2018 · 4",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần viết câu đều có cùng số chữ cái, và âm Ê chỉ nằm trong chữ NGUYỄN; âm Ê cuối cùng nằm ở lần viết thứ $20$, nên vị trí của nó bằng số chữ cái của các lần viết trước cộng với vị trí của Ê trong lần viết cuối.\n\n**Bước 1.** Đếm số chữ cái của một câu \"TRƯỜNG NGUYỄN TẤT THÀNH\"; đề nói viết liên tiếp nên không tính khoảng trống giữa các chữ.\n\n**Bước 2.** Tìm vị trí của chữ cái Ê trong một câu bằng cách đếm từ đầu câu: Ê nằm ở chữ NGUYỄN.\n\n**Bước 3.** Tính số chữ cái của các lần viết đầy đủ đứng trước lần viết thứ $20$ bằng cách lấy số chữ cái của một câu nhân với số lần viết.\n\n**Bước 4.** Cộng số chữ cái đó với vị trí của Ê trong câu cuối cùng để được vị trí cần tìm, rồi chọn phương án.\n\n**Chú ý:** Chữ Ễ có dấu ngã nhưng vẫn là âm Ê, và mỗi câu chỉ có một chữ Ê.\n\n**Phần 2. Trình bày**\n\nCâu \"TRƯỜNG NGUYỄN TẤT THÀNH\" có số chữ cái là: $6+6+3+5=20$ (chữ cái)\n\nÂm Ê là chữ cái thứ $5$ của chữ NGUYỄN, mà trước đó chữ TRƯỜNG có $6$ chữ cái, nên trong một câu âm Ê đứng ở vị trí thứ: $6+5=11$\n\nÂm Ê cuối cùng nằm trong lần viết thứ $20$; số chữ cái của $19$ lần viết đứng trước là: $20\\times 19=380$ (chữ cái)\n\nVị trí của âm Ê cuối cùng là: $380+11=391$\n\nChọn D.",
+  "ghi_chu_nghi": "Hiểu: đếm theo chữ cái, không tính khoảng trống (đề nói \"viết liên tiếp\"); chữ Ễ trong NGUYỄN là âm Ê. Kết quả 391 trùng phương án D."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 5",
+  "dap_an": "$45$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe đi ngược chiều từ hai đầu đường và gặp nhau nên quãng đường hai xe đi được cộng lại bằng cả quãng đường từ Hà Nội đến Hà Giang; chia quãng đường đó cho thời gian đi ra tổng vận tốc của hai xe.\n\n**Bước 1.** Tính thời gian mỗi xe đã đi cho đến lúc gặp nhau, từ lúc xuất phát đến lúc gặp.\n\n**Bước 2.** Hai xe đi ngược chiều nên mỗi giờ hai xe tiến lại gần nhau bằng tổng vận tốc; lấy quãng đường chia thời gian để tìm tổng vận tốc.\n\n**Bước 3.** Lấy tổng vận tốc trừ vận tốc xe ô tô đã biết để được vận tốc của xe tải.\n\n**Chú ý:** Chỉ khi hai xe xuất phát cùng một lúc thì thời gian đi của hai xe mới bằng nhau, đề đã cho đúng điều này.\n\nThử lại: lấy tổng vận tốc nhân với thời gian đi, kết quả phải bằng quãng đường từ Hà Nội đến Hà Giang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(A là Hà Nội, B là Hà Giang, AB dài $300$ km; ô tô đi từ A với vận tốc $55$ km/giờ, xe tải đi từ B, hai xe gặp nhau tại C)\n\nThời gian mỗi xe đi cho đến lúc gặp nhau là: $9-6=3$ (giờ)\n\nTổng vận tốc của hai xe là: $300:3=100$ (km/giờ)\n\nVận tốc của xe tải là: $100-55=45$ (km/giờ)\n\nĐáp số: $45$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc hai xe gặp nhau",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 165,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 300
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 165,
+     "nhan": "55 km/giờ"
+    },
+    {
+     "tu": 300,
+     "den": 165,
+     "nhan": "? km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 300,
+     "nhan": "300 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "nhiều cách: (1) tổng vận tốc $300:3=100$ rồi trừ $55$ (đã dùng, cách chuẩn bài gặp nhau); (2) tính quãng đường ô tô đi $55\\times 3=165$ km, quãng đường xe tải $300-165=135$ km rồi chia $3$ giờ. CEO chốt nếu muốn cách khác."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 6",
+  "dap_an": "$5$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi học sinh đăng kí $1$ hoặc $2$ câu lạc bộ; nếu cộng số học sinh của hai câu lạc bộ thì em nào đăng kí cả hai bị đếm hai lần, nên số lượt đếm thừa chính là số em đăng kí cả hai câu lạc bộ.\n\n**Bước 1.** Cộng số học sinh của câu lạc bộ Phóng viên với số học sinh của câu lạc bộ Khoa học để được tổng số lượt đăng kí.\n\n**Bước 2.** So sánh số lượt đăng kí với số học sinh thật sự: có $30$ em và mỗi em đăng kí ít nhất một câu lạc bộ nên số lượt dư ra là do các em đăng kí cả hai.\n\n**Bước 3.** Mỗi em đăng kí cả hai câu lạc bộ làm thừa đúng một lượt, nên số lượt dư bằng số em đăng kí cả hai câu lạc bộ.\n\n**Chú ý:** Với số liệu này chỉ có đúng một giá trị, không có nhiều khả năng khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số lượt đăng kí của hai câu lạc bộ là: $15+20=35$ (lượt)\n\nSố lượt đăng kí nhiều hơn số học sinh là: $35-30=5$ (lượt)\n\nMỗi học sinh đăng kí cả hai câu lạc bộ được đếm $2$ lần, tức là thừa $1$ lượt, nên số học sinh đăng kí cả hai câu lạc bộ là $5$ học sinh.\n\nĐáp số: $5$ học sinh",
+  "ghi_chu_nghi": "Đề hỏi \"ít nhất\" nhưng với 15 + 20 lượt và đúng 30 học sinh (mỗi em đăng kí ít nhất 1 CLB) thì số em đăng kí cả hai CLB bằng đúng 5, không có khoảng giá trị. Hiểu: 30 em là toàn bộ số em đăng kí ít nhất một trong hai CLB."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 7",
+  "dap_an": "$21$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thùng đầy nước nên nước và $3$ khối kim loại nằm chìm dưới đáy chiếm hết thể tích thùng; vậy thể tích thùng bằng thể tích nước cộng thể tích $3$ khối, rồi chia cho diện tích đáy để tìm chiều cao.\n\n**Bước 1.** Tính lượng nước đổ vào thùng bằng tốc độ chảy nhân thời gian, rồi đổi lít sang xăng-ti-mét khối, nhớ $1$ lít bằng $1000\\ \\text{cm}^3$.\n\n**Bước 2.** Tính thể tích của $3$ khối lập phương kim loại cạnh $10$ cm, mỗi khối có thể tích bằng cạnh nhân cạnh nhân cạnh.\n\n**Bước 3.** Thùng đầy nên cộng thể tích nước với thể tích $3$ khối để được thể tích cả thùng.\n\n**Bước 4.** Tính diện tích đáy thùng rồi lấy thể tích thùng chia cho diện tích đáy để tìm chiều cao.\n\n**Chú ý:** Theo hình, các khối nằm dưới đáy thùng và ngập hẳn trong nước, nên không được bỏ qua thể tích của chúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, ba khối lập phương nằm dưới đáy thùng và chìm trong nước.\n\nSố lít nước đã đổ vào thùng là: $4\\times 15=60$ (lít)\n\nĐổi: $60$ lít $=60000\\ \\text{cm}^3$\n\nThể tích của $3$ khối lập phương là: $10\\times 10\\times 10\\times 3=3000$ ($\\text{cm}^3$)\n\nThể tích của thùng là: $60000+3000=63000$ ($\\text{cm}^3$)\n\nDiện tích đáy thùng là: $60\\times 50=3000$ ($\\text{cm}^2$)\n\nChiều cao của thùng là: $63000:3000=21$ (cm)\n\nĐáp số: $21$ cm",
+  "ghi_chu_nghi": "Hiểu: thùng đầy nước đến miệng thùng, ba khối kim loại nằm dưới đáy và chìm hoàn toàn (cạnh 10 cm nhỏ hơn chiều cao thùng), nên thể tích thùng = nước + 3 khối. Hình trong đề khớp chữ (3 khối ở đáy thùng)."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 8",
+  "dap_an": "$8$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chim chỉ bay qua lại giữa hai cành nên tổng số chim luôn là $10$ con; sau khi bay, cành trên bằng $\\dfrac{2}{3}$ cành dưới nên tìm được số chim mỗi cành lúc sau, rồi tính ngược về lúc đầu.\n\n**Bước 1.** Vì chim chỉ đổi cành nên tổng số chim không đổi; cành trên bằng $\\dfrac{2}{3}$ cành dưới nên lúc sau cành trên có $2$ phần, cành dưới có $3$ phần.\n\n**Bước 2.** Chia $10$ con theo tổng số phần bằng nhau để tìm số chim của cành dưới lúc sau.\n\n**Bước 3.** Xét cành dưới: lúc đầu mất $3$ con bay lên và nhận thêm $1$ con bay xuống, nên tính xem lúc sau cành dưới ít hơn lúc đầu mấy con.\n\n**Bước 4.** Lấy số chim cành dưới lúc sau cộng với số con đã bớt đi để được số chim cành dưới lúc đầu.\n\n**Chú ý:** Đề hỏi số chim cành dưới lúc đầu, không phải lúc sau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Lúc sau: cành trên $2$ phần; cành dưới $3$ phần; tổng $10$ con)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nSố chim ở cành dưới lúc sau là: $10:5\\times 3=6$ (con)\n\nCành dưới có $3$ con bay lên và nhận $1$ con bay xuống nên lúc sau ít hơn lúc đầu: $3-1=2$ (con)\n\nSố chim ở cành dưới lúc đầu là: $6+2=8$ (con)\n\nĐáp số: $8$ con",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi chim đổi cành",
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Cành trên",
+     "phan": 2
+    },
+    {
+     "nhan": "Cành dưới",
+     "phan": 3
+    }
+   ],
+   "tong": "10 con",
+   "dau_hoi": [
+    "Cành dưới"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2018 · 9",
+  "dap_an": "$355740$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần trả giá \"cao hơn bao nhiêu phần trăm\" đều so với giá của người trả ngay trước đó, không so với giá dự kiến; vì vậy phải tính nối tiếp từng người, mỗi lần nhân với $100\\%$ cộng thêm số phần trăm tăng.\n\n**Bước 1.** Người thứ nhất trả cao hơn giá dự kiến $10\\%$ nên giá của người đó bằng $110\\%$ giá dự kiến, từ đó tính ra số tiền.\n\n**Bước 2.** Người thứ hai trả cao hơn giá của người thứ nhất $10\\%$, nên lấy giá của người thứ nhất nhân với $110\\%$.\n\n**Bước 3.** Người thứ ba trả cao hơn giá của người thứ hai $5\\%$, nên lấy giá của người thứ hai nhân với $105\\%$; đây cũng là giá bức tranh được bán.\n\n**Chú ý:** Không cộng $10\\%+10\\%+5\\%$ thành $25\\%$ rồi tính trên giá dự kiến, vì mỗi lần phần trăm tăng được tính trên giá của người trả trước đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá người thứ nhất trả là: $280000\\times 110\\%=308000$ (đồng)\n\nGiá người thứ hai trả là: $308000\\times 110\\%=338800$ (đồng)\n\nGiá người thứ ba trả, cũng là giá bán bức tranh, là: $338800\\times 105\\%=355740$ (đồng)\n\nĐáp số: $355740$ đồng"
+ },
+ {
+  "ma_nguon": "NTT 2018 · 10",
+  "dap_an": "$1985000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khuyến mại tính theo nhóm: mua $5$ hộp sữa được tặng $1$ hộp nên mỗi nhóm $6$ hộp chỉ trả tiền $5$ hộp; mua $10$ gói bánh được tặng $1$ gói nên mỗi nhóm $11$ gói chỉ trả tiền $10$ gói. Ban tổ chức cần có đủ $200$ hộp và $50$ gói (kể cả hàng tặng), nên phải tìm số hộp, số gói thật sự phải trả tiền.\n\n**Bước 1.** Với sữa, chia $200$ hộp thành các nhóm $6$ hộp (mua $5$ tặng $1$) và xem còn dư mấy hộp không đủ một nhóm.\n\n**Bước 2.** Tính số hộp sữa phải trả tiền: mỗi nhóm trả tiền $5$ hộp, các hộp dư lẻ không được tặng nên phải trả tiền hết; rồi tính tiền mua sữa.\n\n**Bước 3.** Làm tương tự với bánh: chia $50$ gói thành các nhóm $11$ gói (mua $10$ tặng $1$), tính số gói phải trả tiền rồi tiền mua bánh.\n\n**Bước 4.** Cộng tiền mua sữa với tiền mua bánh để được tổng số tiền phải trả.\n\n**Chú ý:** Số hộp hoặc số gói dư không đủ một nhóm thì không có quà tặng, phải trả tiền đủ số đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCứ $6$ hộp sữa (mua $5$ hộp, tặng $1$ hộp) chỉ trả tiền $5$ hộp. Ta có: $200:6=33$ (dư $2$)\n\nSố hộp sữa phải trả tiền là: $33\\times 5+2=167$ (hộp)\n\nSố tiền mua sữa là: $167\\times 5000=835000$ (đồng)\n\nCứ $11$ gói bánh (mua $10$ gói, tặng $1$ gói) chỉ trả tiền $10$ gói. Ta có: $50:11=4$ (dư $6$)\n\nSố gói bánh phải trả tiền là: $4\\times 10+6=46$ (gói)\n\nSố tiền mua bánh là: $46\\times 25000=1150000$ (đồng)\n\nTổng số tiền Ban tổ chức phải trả là: $835000+1150000=1985000$ (đồng)\n\nĐáp số: $1985000$ đồng",
+  "ghi_chu_nghi": "Hiểu đề: 200 hộp sữa và 50 gói bánh là số lượng cần CÓ (tính cả hàng tặng) nên phải tìm số hộp/gói thật sự trả tiền (167 hộp, 46 gói) ⇒ 1 985 000 đồng. Cách hiểu khác: mua đủ 200 hộp + 50 gói rồi mới được tặng thêm ⇒ khuyến mại không đổi số tiền, 200×5000 + 50×25000 = 2 250 000 đồng (ít hợp lí vì khuyến mại thành vô nghĩa). CEO chốt nếu cần."
+ },
+ {
+  "ma_nguon": "NTT 2018 · 11",
+  "dap_an": "$24$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lớp 9 chiếm $\\dfrac{2}{5}$ tổng số nên ba lớp $6,7,8$ chiếm phần còn lại; số học sinh ba lớp này là $126$ nên tìm được tổng số, rồi tìm lớp $8$, suy ra tổng lớp $6$ và lớp $7$, cuối cùng là bài tổng – tỉ.\n\n**Bước 1.** Tìm phân số chỉ số học sinh lớp $6,7,8$ so với tổng số bằng cách lấy cả số học sinh trừ phần lớp $9$ chiếm.\n\n**Bước 2.** Phân số vừa tìm ứng với $126$ học sinh, nên lấy $126$ chia cho phân số đó để được tổng số học sinh tham gia dự án.\n\n**Bước 3.** Tính số học sinh lớp $8$ bằng $\\dfrac{1}{3}$ tổng số, rồi lấy $126$ trừ đi để được tổng số học sinh lớp $6$ và lớp $7$.\n\n**Bước 4.** Lớp $6$ bằng $\\dfrac{3}{4}$ lớp $7$ nên lớp $6$ có $3$ phần, lớp $7$ có $4$ phần; chia tổng cho số phần rồi nhân với $3$.\n\n**Chú ý:** Số $126$ là tổng của ba lớp $6,7,8$, không phải tổng số học sinh của cả dự án.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh lớp $6,7,8$ chiếm số phần tổng số học sinh là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (tổng số học sinh)\n\nTổng số học sinh tham gia dự án là: $126:\\dfrac{3}{5}=210$ (học sinh)\n\nSố học sinh lớp $8$ là: $210\\times\\dfrac{1}{3}=70$ (học sinh)\n\nSố học sinh lớp $6$ và lớp $7$ là: $126-70=56$ (học sinh)\n\nLớp $6$ bằng $\\dfrac{3}{4}$ lớp $7$ nên lớp $6$ có $3$ phần, lớp $7$ có $4$ phần như thế.\n\nTa có sơ đồ:\n\n(Lớp $6$ có $3$ phần; lớp $7$ có $4$ phần; tổng $56$ học sinh)\n\nTổng số phần bằng nhau là: $3+4=7$ (phần)\n\nSố học sinh lớp $6$ là: $56:7\\times 3=24$ (học sinh)\n\nĐáp số: $24$ học sinh",
+  "so_do_mo_ta": {
+   "tieu_de": "Học sinh lớp 6 và lớp 7",
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Lớp 6",
+     "phan": 3
+    },
+    {
+     "nhan": "Lớp 7",
+     "phan": 4
+    }
+   ],
+   "tong": "56 học sinh",
+   "dau_hoi": [
+    "Lớp 6"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2018 · 12",
+  "dap_an": "$7$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chạy cùng chiều, anh nhanh hơn nên gặp nhau lần đầu khi anh hơn Nam đúng một vòng, tức mỗi giờ anh hơn Nam bằng hiệu vận tốc; chạy ngược chiều, gặp nhau khi hai người cộng lại đúng một vòng, tức mỗi giờ hai người lại gần nhau bằng tổng vận tốc. Tìm tổng và hiệu vận tốc rồi giải bài tổng – hiệu.\n\n**Bước 1.** Đổi $45$ phút và $10$ phút sang giờ vì vận tốc tính theo kilômét trên giờ.\n\n**Bước 2.** Trường hợp cùng chiều: lấy chiều dài một vòng chia cho thời gian gặp nhau để tìm hiệu vận tốc của hai anh em.\n\n**Bước 3.** Trường hợp ngược chiều: lấy chiều dài một vòng chia cho thời gian gặp nhau để tìm tổng vận tốc của hai anh em.\n\n**Bước 4.** Biết tổng và hiệu vận tốc, Nam chạy chậm hơn nên vận tốc của Nam là số bé; tìm số bé bằng cách lấy tổng trừ hiệu rồi chia $2$.\n\n**Chú ý:** Nam chạy chậm hơn anh nên Nam là số bé, đừng tính nhầm thành vận tốc của anh.\n\nThử lại: cộng và trừ vận tốc hai người thì được lại tổng và hiệu đã tìm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $45$ phút $=\\dfrac{3}{4}$ giờ; $10$ phút $=\\dfrac{1}{6}$ giờ\n\nChạy cùng chiều, anh hơn Nam đúng một vòng thì gặp nhau, nên hiệu vận tốc của hai anh em là: $3:\\dfrac{3}{4}=4$ (km/giờ)\n\nChạy ngược chiều, hai người chạy được tổng cộng một vòng thì gặp nhau, nên tổng vận tốc của hai anh em là: $3:\\dfrac{1}{6}=18$ (km/giờ)\n\nTa có sơ đồ:\n\n(Vận tốc của Nam $1$ phần; vận tốc của anh $1$ phần và thêm $4$ km/giờ; tổng $18$ km/giờ)\n\nVận tốc của Nam là: $(18-4):2=7$ (km/giờ)\n\nĐáp số: $7$ km/giờ",
+  "so_do_mo_ta": {
+   "tieu_de": "Vận tốc của hai anh em",
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Nam",
+     "phan": 1
+    },
+    {
+     "nhan": "Anh",
+     "phan": 1,
+     "them": "4 km/giờ"
+    }
+   ],
+   "tong": "18 km/giờ",
+   "dau_hoi": [
+    "Nam"
+   ]
+  }
+ }
+]

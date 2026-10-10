@@ -1,0 +1,163 @@
+[
+ {
+  "ma_nguon": "LL 2023 · 1",
+  "dap_an": "$0,005$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá trị của một chữ số phụ thuộc vào hàng mà chữ số đó đứng, nên phải xác định đúng hàng của chữ số $5$ rồi mới viết giá trị của nó.\n\n**Bước 1.** Đọc số $7,2056$: phần nguyên là $7$, phần thập phân gồm các chữ số $2$, $0$, $5$, $6$ kể từ trái sang phải.\n\n**Bước 2.** Gọi tên hàng của từng chữ số ở phần thập phân (phần mười, phần trăm, phần nghìn, phần chục nghìn) để biết chữ số $5$ đứng ở hàng nào.\n\n**Bước 3.** Chữ số đứng ở hàng phần nghìn có giá trị bằng chữ số đó chia cho $1000$; viết giá trị dưới dạng phân số thập phân hoặc số thập phân.\n\n**Chú ý:** Đề hỏi giá trị của chữ số chứ không hỏi tên hàng, nên không trả lời bằng chữ \"hàng phần nghìn\".\n\n**Phần 2. Trình bày**\n\nTrong số $7,2056$: chữ số $2$ ở hàng phần mười, chữ số $0$ ở hàng phần trăm, chữ số $5$ ở hàng phần nghìn, chữ số $6$ ở hàng phần chục nghìn.\n\nVậy giá trị của chữ số $5$ là $\\dfrac{5}{1000}=0,005$.",
+  "ghi_chu_nghi": "Đáp số viết $0,005$ (bằng $\\dfrac{5}{1000}$); nếu nguồn khác ghi dạng phân số thì cùng giá trị."
+ },
+ {
+  "ma_nguon": "LL 2023 · 2",
+  "dap_an": "$32,2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn so sánh các số thập phân thì so phần nguyên trước; nếu phần nguyên bằng nhau mới so từng hàng phần thập phân từ trái sang phải, và có thể viết thêm chữ số $0$ để các số có cùng số chữ số ở phần thập phân.\n\n**Bước 1.** So sánh phần nguyên của bốn số, giữ lại những số có phần nguyên lớn nhất và loại những số có phần nguyên bé hơn.\n\n**Bước 2.** Với các số còn lại, viết thêm chữ số $0$ vào bên phải phần thập phân để chúng có cùng số chữ số ở phần thập phân.\n\n**Bước 3.** So sánh hàng phần mười, nếu bằng nhau thì so tiếp hàng phần trăm, từ đó chọn ra số lớn nhất.\n\n**Chú ý:** Số $32,2$ có ít chữ số hơn các số khác nhưng không vì thế mà bé hơn; phải viết thêm chữ số $0$ rồi so từng hàng.\n\n**Phần 2. Trình bày**\n\nPhần nguyên của bốn số lần lượt là $32$; $32$; $32$; $31$. Vì $31<32$ nên loại số $31,999$.\n\nViết thêm chữ số $0$ cho cùng hai chữ số ở phần thập phân: $32,06$; $32,19$; $32,20$.\n\nỞ hàng phần mười: $0<1<2$ nên $32,06<32,19<32,20$.\n\nVậy số thập phân lớn nhất là $32,2$."
+ },
+ {
+  "ma_nguon": "LL 2023 · 3",
+  "dap_an": "$2,32$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có cả phép trừ và phép nhân, không có dấu ngoặc, nên phải thực hiện phép nhân trước rồi mới làm phép trừ.\n\n**Bước 1.** Nhớ thứ tự thực hiện phép tính: không có ngoặc thì nhân chia làm trước, cộng trừ làm sau.\n\n**Bước 2.** Tính tích $2,5\\times 2$ trước; kết quả là một số tự nhiên nên phép trừ sau đó rất dễ làm.\n\n**Bước 3.** Lấy $7,32$ trừ đi tích vừa tính, viết số tự nhiên đó thành số thập phân có hai chữ số ở phần thập phân để đặt dấu phẩy thẳng cột.\n\n**Chú ý:** Không được trừ $7,32-2,5$ trước rồi mới nhân với $2$, vì như vậy sai thứ tự thực hiện phép tính.\n\n**Phần 2. Trình bày**\n\n$7,32-2,5\\times 2$\n\n$=7,32-5$\n\n$=2,32$"
+ },
+ {
+  "ma_nguon": "LL 2023 · 4",
+  "dap_an": "$7,026$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết số đo gồm hai đơn vị thành một đơn vị tấn thì phải đổi phần kilôgam ra tấn; vì $1$ tấn bằng $1000$ kg nên $1$ kg bằng $\\dfrac{1}{1000}$ tấn.\n\n**Bước 1.** Nhận ra đơn vị cần điền là tấn, nên phần $1026$ kg phải đổi ra tấn.\n\n**Bước 2.** Đổi kilôgam ra tấn bằng cách chia cho $1000$, tức là dịch dấu phẩy sang trái ba chữ số.\n\n**Bước 3.** Cộng số tấn nguyên ban đầu với số tấn vừa đổi được để được số đo viết bằng một đơn vị.\n\n**Chú ý:** Số $1026$ kg lớn hơn $1000$ kg nên không được viết nối thành $6,1026$ tấn.\n\n**Phần 2. Trình bày**\n\nĐổi: $1026$ kg $=1,026$ tấn\n\n$6$ tấn $1026$ kg $=6+1,026=7,026$ (tấn)"
+ },
+ {
+  "ma_nguon": "LL 2023 · 5",
+  "dap_an": "$216\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau, nên từ diện tích toàn phần tìm được diện tích một mặt, rồi tìm cạnh, rồi mới tính thể tích.\n\n**Bước 1.** Tìm diện tích một mặt bằng cách lấy diện tích toàn phần chia cho $6$ mặt bằng nhau.\n\n**Bước 2.** Tìm độ dài cạnh: đó là số nhân với chính nó thì bằng diện tích một mặt vừa tìm.\n\n**Bước 3.** Tính thể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh.\n\n**Chú ý:** Diện tích tính bằng $\\text{cm}^2$ còn thể tích tính bằng $\\text{cm}^3$, nên không được lấy nhầm số của đề làm đáp số khi chưa tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $216:6=36$ ($\\text{cm}^2$)\n\nVì $6\\times 6=36$ nên cạnh của hình lập phương là $6$ cm.\n\nThể tích hình lập phương là: $6\\times 6\\times 6=216$ ($\\text{cm}^3$)\n\nĐáp số: $216\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LL 2023 · 6",
+  "dap_an": "$a=15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế đều có số hạng $\\dfrac{1}{5}$, nên phần còn lại là $\\dfrac{a}{5}$ phải bằng $3$; sau đó $\\dfrac{a}{5}$ chính là phép chia $a:5$ nên $a$ là số bị chia chưa biết.\n\n**Bước 1.** Nhận ra vế trái và vế phải cùng cộng với $\\dfrac{1}{5}$, nên $\\dfrac{a}{5}$ là số hạng chưa biết của phép cộng.\n\n**Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết, từ đó biết $\\dfrac{a}{5}$ bằng bao nhiêu.\n\n**Bước 3.** Hiểu $\\dfrac{a}{5}$ là $a$ chia cho $5$, rồi tìm số bị chia chưa biết bằng cách lấy thương nhân với số chia.\n\nThử lại: thay $a$ vừa tìm vào vế trái, tính xem có bằng vế phải $3+\\dfrac{1}{5}$ hay không.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}\\dfrac{a}{5}+\\dfrac{1}{5}=3+\\dfrac{1}{5}\\\\ \\dfrac{a}{5}=\\left(3+\\dfrac{1}{5}\\right)-\\dfrac{1}{5}\\\\ \\dfrac{a}{5}=3\\\\ a=3\\times 5\\\\ a=15\\end{array}$"
+ },
+ {
+  "ma_nguon": "LL 2023 · 7",
+  "dap_an": "$310000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá giảm $20\\%$ nghĩa là giá sau khi giảm bằng $100\\%-20\\%$ giá ban đầu; đề cho giá sau khi giảm, nên đây là bài tìm một số biết một số phần trăm của nó: lấy số đã biết chia cho số phần trăm.\n\n**Bước 1.** Coi giá ban đầu của chiếc cặp là $100\\%$; giảm $20\\%$ thì giá sau khi giảm bằng $100\\%$ trừ $20\\%$.\n\n**Bước 2.** Nhận ra $248000$ đồng chính là số phần trăm vừa tìm được của giá ban đầu.\n\n**Bước 3.** Tìm giá ban đầu bằng cách lấy $248000$ đồng chia cho số phần trăm đó.\n\n**Chú ý:** Không lấy $248000$ cộng thêm $20\\%$ của nó, vì $20\\%$ là của giá ban đầu chứ không phải của giá sau khi giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá chiếc cặp sau khi giảm so với giá ban đầu bằng: $100\\%-20\\%=80\\%$\n\nGiá chiếc cặp trước khi giảm là: $248000:80\\%=310000$ (đồng)\n\nĐáp số: $310000$ đồng"
+ },
+ {
+  "ma_nguon": "LL 2023 · 8",
+  "dap_an": "$4,003\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai đơn vị thể tích liền nhau hơn kém nhau $1000$ lần, nên $1\\ \\text{dm}^3=1000\\ \\text{cm}^3$ và $1\\ \\text{cm}^3$ bằng $\\dfrac{1}{1000}\\ \\text{dm}^3$.\n\n**Bước 1.** Xác định phần cần đổi sang đơn vị $\\text{dm}^3$: đó là phần số đo viết bằng $\\text{cm}^3$.\n\n**Bước 2.** Đổi từ $\\text{cm}^3$ sang $\\text{dm}^3$ bằng cách chia cho $1000$, tức là dịch dấu phẩy sang trái ba chữ số.\n\n**Bước 3.** Cộng số $\\text{dm}^3$ nguyên với số $\\text{dm}^3$ vừa đổi để được số đo viết bằng một đơn vị.\n\n**Chú ý:** Đổi giữa hai đơn vị thể tích liền nhau phải dịch dấu phẩy ba chữ số, không phải một hay hai chữ số như đơn vị độ dài hay diện tích.\n\n**Phần 2. Trình bày**\n\nĐổi: $3\\ \\text{cm}^3=0,003\\ \\text{dm}^3$\n\n$4\\ \\text{dm}^3\\ 3\\ \\text{cm}^3=4+0,003=4,003$ ($\\text{dm}^3$)"
+ },
+ {
+  "ma_nguon": "LL 2023 · 9",
+  "dap_an": "$x=90,65$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng có $20$ số hạng và số hạng nào cũng chứa $x$; gom $20$ số $x$ lại thành $x\\times 20$, còn các số $1;\\ 2;\\ \\ldots;\\ 20$ cộng lại thành một số cụ thể, rồi tìm thừa số chưa biết.\n\n**Bước 1.** Đếm số số hạng: các ngoặc đi từ $(x+1)$ đến $(x+20)$ nên có $20$ ngoặc, tức là có $20$ số $x$.\n\n**Bước 2.** Gom các số $x$ thành $x\\times 20$ và gom các số $1;\\ 2;\\ \\ldots;\\ 20$ thành một tổng riêng.\n\n**Bước 3.** Tính tổng riêng đó theo cách tính tổng dãy số cách đều: số đầu cộng số cuối, nhân số số hạng, rồi chia $2$.\n\n**Bước 4.** Bài trở thành tìm số hạng chưa biết rồi tìm thừa số chưa biết: lấy $2023$ trừ tổng riêng để được $x\\times 20$, rồi chia cho $20$.\n\n**Chú ý:** Phép chia cuối có thể không chia hết, khi đó $x$ là số thập phân; cần thay ngược vào đề để kiểm tra.\n\n**Phần 2. Trình bày**\n\n$(x+1)+(x+2)+(x+3)+\\ldots+(x+20)=2023$\n\nCó $20$ số hạng, mỗi số hạng chứa một số $x$ nên: $x\\times 20+(1+2+3+\\ldots+20)=2023$\n\nTổng $1+2+3+\\ldots+20$ là: $(20+1)\\times 20:2=210$\n\n$\\begin{array}{l}x\\times 20+210=2023\\\\ x\\times 20=2023-210\\\\ x\\times 20=1813\\\\ x=1813:20\\\\ x=90,65\\end{array}$",
+  "ghi_chu_nghi": "Đáp số $x=90,65$ không phải số tự nhiên ($2023-210=1813$ không chia hết cho $20$); giữ nguyên đề. Nếu nguồn khác ra số nguyên thì đề có thể in sai số $2023$."
+ },
+ {
+  "ma_nguon": "LL 2023 · 10",
+  "dap_an": "$0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia ở mỗi phép chia là dạng số thập phân của chính số bị chia ($0,5=\\dfrac{1}{2}$; $0,25=\\dfrac{1}{4}$; $0,125=\\dfrac{1}{8}$; $0,1=\\dfrac{1}{10}$), nên mỗi phép chia đều có số bị chia bằng số chia và thương giống nhau.\n\n**Bước 1.** Đổi các số thập phân ở vị trí số chia ra phân số: $0,5$; $0,25$; $0,125$; $0,1$.\n\n**Bước 2.** Nhận ra ở mỗi phép chia, số bị chia và số chia bằng nhau, nên các thương đều bằng một số giống nhau.\n\n**Bước 3.** Thay các thương vào biểu thức rồi thực hiện cộng trừ lần lượt từ trái sang phải.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{2}:0,5-\\dfrac{1}{4}:0,25+\\dfrac{1}{8}:0,125-\\dfrac{1}{10}:0,1$\n\n$=\\dfrac{1}{2}:\\dfrac{1}{2}-\\dfrac{1}{4}:\\dfrac{1}{4}+\\dfrac{1}{8}:\\dfrac{1}{8}-\\dfrac{1}{10}:\\dfrac{1}{10}$\n\n$=1-1+1-1$\n\n$=0$"
+ },
+ {
+  "ma_nguon": "LL 2023 · 11",
+  "dap_an": "$49$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thứ hai là $40\\%$ của số thứ nhất nên tìm bằng phép nhân $70\\times 40\\%$; sau đó trung bình cộng của hai số bằng tổng hai số chia cho $2$.\n\n**Bước 1.** Tìm số thứ hai: đó là $40\\%$ của số thứ nhất, nên lấy $70$ nhân với $40\\%$.\n\n**Bước 2.** Tính tổng của hai số bằng cách cộng số thứ nhất với số thứ hai vừa tìm.\n\n**Bước 3.** Tìm trung bình cộng bằng cách lấy tổng chia cho số các số hạng, ở đây là $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thứ hai là: $70\\times 40\\%=28$\n\nTrung bình cộng của hai số là: $(70+28):2=49$\n\nĐáp số: $49$"
+ },
+ {
+  "ma_nguon": "LL 2023 · 12",
+  "dap_an": "$9$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình tròn bằng bán kính nhân bán kính nhân $3,14$, có hai thừa số bán kính; khi bán kính gấp lên mấy lần thì mỗi thừa số đều gấp lên ngần ấy lần nên diện tích gấp lên lần đó nhân với chính nó.\n\n**Bước 1.** Nhận ra bán kính bằng một nửa đường kính, nên đường kính tăng lên $3$ lần thì bán kính cũng tăng lên $3$ lần.\n\n**Bước 2.** Viết công thức diện tích hình tròn và chỉ ra nó có hai thừa số bán kính.\n\n**Bước 3.** Thay bán kính mới (gấp $3$ lần bán kính cũ) vào công thức, rồi so sánh diện tích mới với diện tích cũ.\n\n**Chú ý:** Diện tích phụ thuộc vào bán kính ở hai thừa số, nên không chỉ tăng bằng số lần của bán kính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBán kính bằng một nửa đường kính nên đường kính tăng $3$ lần thì bán kính cũng tăng $3$ lần.\n\nGọi bán kính lúc đầu là $r$. Diện tích hình tròn lúc đầu là: $r\\times r\\times 3,14$\n\nBán kính lúc sau là $r\\times 3$, nên diện tích hình tròn lúc sau là: $(r\\times 3)\\times(r\\times 3)\\times 3,14=(r\\times r\\times 3,14)\\times(3\\times 3)$\n\nDiện tích hình tròn tăng lên số lần là: $3\\times 3=9$ (lần)\n\nĐáp số: $9$ lần"
+ },
+ {
+  "ma_nguon": "LL 2023 · 13",
+  "dap_an": "Số bé: $70$; số lớn: $282$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Số lớn chia số bé được thương $4$ dư $2$\" nghĩa là số lớn bằng $4$ lần số bé rồi thêm $2$; bớt $2$ ở số lớn thì số lớn đúng bằng $4$ lần số bé, và bài trở thành bài hiệu – tỉ.\n\n**Bước 1.** Hiểu phép chia có dư: số lớn gồm $4$ lần số bé và thêm $2$ đơn vị nữa, rồi vẽ sơ đồ hai số.\n\n**Bước 2.** Bớt $2$ ở số lớn thì hiệu hai số cũng bớt đi $2$; tính hiệu mới khi số lớn đúng bằng $4$ lần số bé.\n\n**Bước 3.** Hiệu mới ứng với số phần bằng nhau bằng số phần của số lớn trừ số phần của số bé; chia hiệu mới cho số phần đó để tìm số bé.\n\n**Bước 4.** Tìm số lớn bằng cách lấy số bé cộng với hiệu ban đầu của đề.\n\nThử lại: lấy số lớn chia cho số bé xem có được thương $4$ dư $2$ hay không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lớn chia số bé được thương $4$ dư $2$ nên số lớn bằng $4$ lần số bé và thêm $2$.\n\nTa có sơ đồ:\n\n(Số bé 1 phần; số lớn 4 phần và thêm 2; hiệu 212)\n\nNếu bớt $2$ ở số lớn thì hiệu hai số còn là: $212-2=210$\n\nKhi đó số lớn gấp $4$ lần số bé, hiệu số phần bằng nhau là: $4-1=3$ (phần)\n\nSố bé là: $210:3=70$\n\nSố lớn là: $70+212=282$\n\nĐáp số: Số bé: $70$; số lớn: $282$",
+  "so_do_mo_ta": {
+   "tieu_de": "Số lớn thêm 2 so với 4 lần số bé",
+   "gia_tri_phan": 70,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 4,
+     "them": "2"
+    }
+   ],
+   "hieu": "212",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LL 2023 · 14",
+  "dap_an": "$31,03\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết số tiền giảm đi bao nhiêu phần trăm so với lúc đầu thì lấy số tiền giảm chia cho số tiền lúc đầu (tiền điện tháng 4), rồi viết kết quả dưới dạng phần trăm.\n\n**Bước 1.** Tính số tiền điện tháng 5 giảm đi so với tháng 4 bằng cách lấy tiền tháng 4 trừ tiền tháng 5.\n\n**Bước 2.** Lấy số tiền giảm chia cho tiền điện tháng 4 để biết số tiền giảm bằng bao nhiêu phần số tiền tháng 4.\n\n**Bước 3.** Phép chia không chia hết nên lấy bốn chữ số ở phần thập phân của thương, rồi viết thương đó dưới dạng phần trăm.\n\n**Chú ý:** Số đem ra so sánh (số chia) là tiền điện tháng 4, tức là số lúc đầu, chứ không phải tiền tháng 5.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền điện tháng 5 giảm so với tháng 4 là: $725000-500000=225000$ (đồng)\n\nTháng 5 giảm so với tháng 4 số phần trăm là: $225000:725000\\approx 0,3103=31,03\\%$\n\nĐáp số: $31,03\\%$",
+  "ghi_chu_nghi": "Kết quả $\\dfrac{9}{29}$ không tròn nên làm tròn tỉ số đến bốn chữ số thập phân ($0,3103$), tức $31,03\\%$; nếu số liệu gốc là $625000$ đồng thì ra đúng $20\\%$ (nghi in sai nhưng giữ theo đề)."
+ },
+ {
+  "ma_nguon": "LL 2023 · 15",
+  "dap_an": "$235,75\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi cho biết nửa chu vi, tức tổng chiều dài và chiều rộng. Tăng chiều rộng và giảm chiều dài thì thành hình vuông, hai cạnh bằng nhau, nên tìm được hiệu chiều dài – chiều rộng; bài trở thành bài tổng – hiệu.\n\n**Bước 1.** Đổi $65$ cm ra đề-xi-mét cho cùng đơn vị, rồi tính nửa chu vi, chính là tổng chiều dài và chiều rộng.\n\n**Bước 2.** Sau khi đổi, hai cạnh bằng nhau nên chiều dài hơn chiều rộng một số bằng tổng của lượng tăng thêm ở chiều rộng và lượng bớt đi ở chiều dài.\n\n**Bước 3.** Dùng cách tìm hai số khi biết tổng và hiệu để tìm chiều dài và chiều rộng.\n\n**Bước 4.** Tính diện tích hình chữ nhật bằng chiều dài nhân chiều rộng.\n\n**Chú ý:** Chiều dài hơn chiều rộng bằng tổng hai lượng thay đổi chứ không phải hiệu của chúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $65$ cm $=6,5$ dm\n\nNửa chu vi hình chữ nhật (tổng chiều dài và chiều rộng) là: $64:2=32$ (dm)\n\nChiều rộng tăng thêm $2,5$ dm và chiều dài giảm $6,5$ dm thì hai cạnh bằng nhau, nên chiều dài hơn chiều rộng là: $2,5+6,5=9$ (dm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; chiều dài 1 phần và thêm 9 dm; tổng 32 dm)\n\nChiều dài hình chữ nhật là: $(32+9):2=20,5$ (dm)\n\nChiều rộng hình chữ nhật là: $20,5-9=11,5$ (dm)\n\nDiện tích hình chữ nhật là: $20,5\\times 11,5=235,75$ ($\\text{dm}^2$)\n\nĐáp số: $235,75\\ \\text{dm}^2$",
+  "so_do_mo_ta": {
+   "tieu_de": "Nửa chu vi hình chữ nhật",
+   "gia_tri_phan": 11.5,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "9 dm"
+    }
+   ],
+   "tong": "32 dm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LL 2023 · 16",
+  "dap_an": "$a=5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử số trừ đi $a$ và mẫu số cộng thêm $a$ thì tổng của tử số và mẫu số không đổi; phân số mới bằng $\\dfrac{1}{3}$ nên tử số mới là $1$ phần, mẫu số mới là $3$ phần, và bài trở thành bài tổng – tỉ.\n\n**Bước 1.** Tính tổng tử số và mẫu số của phân số ban đầu, rồi nhận ra tổng này không đổi vì tử số bớt đi $a$ còn mẫu số thêm $a$.\n\n**Bước 2.** Phân số mới bằng $\\dfrac{1}{3}$ nghĩa là tử số mới là $1$ phần và mẫu số mới là $3$ phần như thế; tính tổng số phần bằng nhau.\n\n**Bước 3.** Chia tổng cho tổng số phần để tìm giá trị một phần, từ đó tìm được tử số mới.\n\n**Bước 4.** Tử số đã bớt đi $a$ nên lấy tử số cũ trừ tử số mới để tìm số tự nhiên $a$.\n\nThử lại: thay $a$ vừa tìm vào phân số mới, rút gọn xem có bằng $\\dfrac{1}{3}$ hay không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTử số trừ đi $a$, mẫu số cộng thêm $a$ nên tổng của tử số và mẫu số không đổi, bằng: $17+31=48$\n\nPhân số mới có giá trị là $\\dfrac{1}{3}$ nên tử số mới là $1$ phần, mẫu số mới là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Tử số mới 1 phần; mẫu số mới 3 phần; tổng 48)\n\nTổng số phần bằng nhau là: $1+3=4$ (phần)\n\nTử số mới là: $48:4\\times 1=12$\n\nSố tự nhiên $a$ là: $17-12=5$\n\nThử lại: $\\dfrac{17-5}{31+5}=\\dfrac{12}{36}=\\dfrac{1}{3}$\n\nĐáp số: $a=5$",
+  "so_do_mo_ta": {
+   "tieu_de": "Phân số mới",
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 1
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 3
+    }
+   ],
+   "tong": "48",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LL 2023 · 17",
+  "dap_an": "$A=\\dfrac{1011}{2023}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng có dạng $\\dfrac{1}{n\\times(n+2)}$ với hai thừa số ở mẫu hơn kém nhau $2$; gấp $A$ lên $2$ lần thì mỗi số hạng có tử số $2$ và tách được thành hiệu của hai phân số, các phân số ở giữa triệt tiêu nhau.\n\n**Bước 1.** Nhận xét hai thừa số ở mẫu của mỗi số hạng hơn kém nhau $2$ đơn vị, đúng bằng tử số $2$ nếu gấp $A$ lên $2$ lần.\n\n**Bước 2.** Viết mỗi số hạng $\\dfrac{2}{n\\times(n+2)}$ thành hiệu hai phân số $\\dfrac{1}{n}-\\dfrac{1}{n+2}$.\n\n**Bước 3.** Cộng các hiệu lại: phân số đứng sau của hiệu trước bằng phân số đứng đầu của hiệu sau nên hai phân số đó bị triệt tiêu, chỉ còn lại số đầu và số cuối.\n\n**Bước 4.** Tính hiệu còn lại, rồi chia cho $2$ để tìm $A$ vì ban đầu đã gấp $A$ lên $2$ lần.\n\n**Chú ý:** Quên chia cho $2$ ở cuối là lỗi hay gặp nhất của dạng này.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{1\\times 3}+\\dfrac{1}{3\\times 5}+\\dfrac{1}{5\\times 7}+\\ldots+\\dfrac{1}{2021\\times 2023}$\n\n$A\\times 2=\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\dfrac{2}{5\\times 7}+\\ldots+\\dfrac{2}{2021\\times 2023}$\n\n$A\\times 2=\\left(1-\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}-\\dfrac{1}{5}\\right)+\\left(\\dfrac{1}{5}-\\dfrac{1}{7}\\right)+\\ldots+\\left(\\dfrac{1}{2021}-\\dfrac{1}{2023}\\right)$\n\n$A\\times 2=1-\\dfrac{1}{2023}$\n\n$A\\times 2=\\dfrac{2022}{2023}$\n\n$A=\\dfrac{2022}{2023}:2$\n\n$A=\\dfrac{1011}{2023}$"
+ },
+ {
+  "ma_nguon": "LL 2023 · 18",
+  "dap_an": "$55350$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số tự nhiên có ba chữ số chia hết cho $9$ cách nhau đúng $9$ đơn vị nên lập thành một dãy số cách đều; tìm số đầu, số cuối, đếm số số hạng rồi tính tổng của dãy cách đều.\n\n**Bước 1.** Tìm số bé nhất có ba chữ số chia hết cho $9$: xét từ $100$ trở đi, số nào có tổng các chữ số chia hết cho $9$ thì chia hết cho $9$.\n\n**Bước 2.** Tìm số lớn nhất có ba chữ số chia hết cho $9$ cũng bằng dấu hiệu chia hết cho $9$, bắt đầu xét từ số lớn nhất có ba chữ số.\n\n**Bước 3.** Đếm số số hạng của dãy cách đều: lấy hiệu hai số ở hai đầu chia cho khoảng cách giữa hai số liên tiếp rồi cộng thêm $1$.\n\n**Bước 4.** Tính tổng: lấy số đầu cộng số cuối, nhân với số số hạng, rồi chia cho $2$.\n\n**Chú ý:** Số $100$ không chia hết cho $9$ nên không thể lấy $100$ làm số đầu của dãy.\n\n**Phần 2. Trình bày**\n\nCác số $100;\\ 101;\\ \\ldots;\\ 107$ có tổng các chữ số từ $1$ đến $8$ nên không chia hết cho $9$; số $108$ có $1+0+8=9$ nên chia hết cho $9$. Vậy số bé nhất là $108$.\n\nSố $999$ có $9+9+9=27$ chia hết cho $9$ nên số lớn nhất là $999$.\n\nHai số liên tiếp chia hết cho $9$ hơn kém nhau $9$ đơn vị nên ta có dãy: $108;\\ 117;\\ 126;\\ \\ldots;\\ 999$.\n\nSố số hạng của dãy là: $(999-108):9+1=100$ (số)\n\nTổng các số đó là: $(108+999)\\times 100:2=55350$\n\nVậy tổng của tất cả các số tự nhiên có ba chữ số chia hết cho $9$ là $55350$."
+ },
+ {
+  "ma_nguon": "LL 2023 · 19",
+  "dap_an": "$70$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số gạo không đổi nên số người ăn và số ngày ăn là hai đại lượng tỉ lệ nghịch: nhiều người hơn thì ăn được ít ngày hơn. Rút về đơn vị: tìm xem số gạo đó đủ cho $1$ người ăn bao nhiêu ngày, rồi chia cho số ngày thực tế.\n\n**Bước 1.** Tính số gạo đó đủ cho $1$ người ăn trong bao nhiêu ngày, bằng cách lấy số người nhân số ngày dự trữ ban đầu.\n\n**Bước 2.** Chia số ngày vừa tìm cho $16$ ngày để biết thực tế có bao nhiêu người cùng ăn số gạo đó.\n\n**Bước 3.** Lấy số người thực tế trừ số người lúc đầu để tìm số người đến thêm.\n\n**Chú ý:** Đề hỏi số người đến thêm chứ không phải tổng số người ăn thực tế.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố gạo đó đủ cho $1$ người ăn trong: $80\\times 30=2400$ (ngày)\n\nSố người ăn thực tế khi số gạo đủ ăn trong $16$ ngày là: $2400:16=150$ (người)\n\nSố người đến thêm là: $150-80=70$ (người)\n\nĐáp số: $70$ người"
+ },
+ {
+  "ma_nguon": "LL 2023 · 20",
+  "dap_an": "$60\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chưa biết diện tích các tam giác ở giữa nên đi từ tam giác $NPC$ ngược lại tam giác $ABC$ qua một dãy tam giác $NPC\\to MNC\\to MBC\\to ABC$; mỗi bước hai tam giác chung đường cao nên tỉ số diện tích bằng tỉ số hai đáy nằm trên cùng một đường thẳng.\n\n**Bước 1.** Xét hai tam giác $NPC$ và $MNC$ có chung đỉnh $N$ và hai đáy $PC$, $MC$ nằm trên cùng đường thẳng $MC$; tìm $PC$ bằng mấy phần $MC$ rồi suy ra tỉ số diện tích.\n\n**Bước 2.** Xét hai tam giác $MNC$ và $MBC$ có chung đỉnh $M$ và hai đáy $NC$, $BC$ nằm trên đường thẳng $BC$; tìm $NC$ bằng mấy phần $BC$ từ $BN$ rồi suy ra tỉ số diện tích.\n\n**Bước 3.** Xét hai tam giác $MBC$ và $ABC$ có chung đỉnh $C$ và hai đáy $MB$, $AB$ nằm trên đường thẳng $AB$; tìm $MB$ bằng mấy phần $AB$ từ $AM$ rồi suy ra tỉ số diện tích.\n\n**Bước 4.** Nhân ba tỉ số lại để biết diện tích tam giác $NPC$ bằng mấy phần diện tích tam giác $ABC$, rồi lấy diện tích $NPC$ chia cho phân số đó.\n\n**Chú ý:** Đề cho $MP$, $BN$, $AM$ nên các đoạn $PC$, $NC$, $MB$ phải tính bằng cách lấy cả đoạn trừ đi phần đã cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $MP=\\dfrac{2}{3}\\times MC$ nên $PC=\\dfrac{1}{3}\\times MC$.\n\nTam giác $NPC$ và tam giác $MNC$ có chung đường cao hạ từ $N$ xuống $MC$, suy ra $\\dfrac{S_{NPC}}{S_{MNC}}=\\dfrac{PC}{MC}=\\dfrac{1}{3}$\n\nVì $BN=\\dfrac{2}{3}\\times BC$ nên $NC=\\dfrac{1}{3}\\times BC$.\n\nTam giác $MNC$ và tam giác $MBC$ có chung đường cao hạ từ $M$ xuống $BC$, suy ra $\\dfrac{S_{MNC}}{S_{MBC}}=\\dfrac{NC}{BC}=\\dfrac{1}{3}$\n\nVì $AM=\\dfrac{1}{4}\\times AB$ nên $MB=\\dfrac{3}{4}\\times AB$.\n\nTam giác $MBC$ và tam giác $ABC$ có chung đường cao hạ từ $C$ xuống $AB$, suy ra $\\dfrac{S_{MBC}}{S_{ABC}}=\\dfrac{MB}{AB}=\\dfrac{3}{4}$\n\nDo đó $\\dfrac{S_{NPC}}{S_{ABC}}=\\dfrac{1}{3}\\times\\dfrac{1}{3}\\times\\dfrac{3}{4}=\\dfrac{1}{12}$\n\nDiện tích tam giác $ABC$ là: $5\\times 12=60$ ($\\text{cm}^2$)\n\nĐáp số: $60\\ \\text{cm}^2$"
+ }
+]

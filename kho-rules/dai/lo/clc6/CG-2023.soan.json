@@ -1,0 +1,115 @@
+[
+ {
+  "ma_nguon": "CG 2023 · P1.1",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi hai phân số ở hai đầu ra số thập phân để so sánh với số $\\overline{x,2}$; chữ số $x$ là phần nguyên của số này nên chỉ cần tìm phần nguyên phù hợp.\n\n**Bước 1.** Đổi $\\dfrac{12}{5}$ và $\\dfrac{13}{4}$ ra số thập phân bằng cách chia tử số cho mẫu số, để cả ba số cùng dạng số thập phân và dễ so sánh.\n\n**Bước 2.** So sánh $\\overline{x,2}$ với số nhỏ nhất: xem phần nguyên $x$ phải lớn hơn bao nhiêu thì số $\\overline{x,2}$ mới lớn hơn số nhỏ đó.\n\n**Bước 3.** So sánh $\\overline{x,2}$ với số lớn nhất: xem phần nguyên $x$ không được lớn hơn bao nhiêu thì số $\\overline{x,2}$ mới bé hơn số lớn đó.\n\n**Bước 4.** Kết hợp hai điều kiện để tìm $x$, thử lại bằng cách viết số $\\overline{x,2}$ rồi đối chiếu với các phương án.\n\n**Chú ý:** Phần thập phân của số đã cố định là $0,2$, nên chỉ có phần nguyên $x$ làm số đó to lên hay nhỏ đi.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{12}{5}=12:5=2,4$ và $\\dfrac{13}{4}=13:4=3,25$\n\nCần tìm $x$ sao cho $2,4<\\overline{x,2}<3,25$.\n\nVì $\\overline{x,2}>2,4$ nên phần nguyên $x$ lớn hơn $2$ (nếu $x=2$ thì $2,2<2,4$).\n\nVì $\\overline{x,2}<3,25$ nên phần nguyên $x$ không lớn hơn $3$ (nếu $x=4$ thì $4,2>3,25$).\n\nVậy $x=3$. Thử lại: $2,4<3,2<3,25$.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "CG 2023 · P1.2",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giờ An đến trường bằng giờ An đi học cộng với thời gian chờ xe và thời gian xe chạy; hai thời gian này phải đổi về cùng đơn vị rồi mới cộng.\n\n**Bước 1.** Nhận ra thời gian chờ xe cho bằng giờ còn thời gian xe chạy cho bằng phút, nên chưa cộng ngay được mà phải đổi về cùng một đơn vị.\n\n**Bước 2.** Đổi thời gian chờ xe từ giờ sang phút, nhớ rằng $1$ giờ có $60$ phút nên lấy số giờ nhân $60$.\n\n**Bước 3.** Cộng thời gian chờ xe với thời gian xe chạy để biết An mất bao nhiêu phút từ lúc đi học đến lúc tới trường.\n\n**Bước 4.** Cộng số phút đó vào giờ An đi học, đổi phút thừa ra giờ rồi đối chiếu với các phương án.\n\n**Chú ý:** Khi cộng giờ với phút thì cứ đủ $60$ phút là sang $1$ giờ, không cộng như số thập phân.\n\n**Phần 2. Trình bày**\n\nĐổi: $0,5$ giờ $=30$ phút\n\nThời gian từ lúc An đi học đến lúc An tới trường là: $30+10=40$ (phút)\n\nAn đến trường lúc: $6$ giờ $45$ phút $+\\ 40$ phút $=7$ giờ $25$ phút\n\nChọn A."
+ },
+ {
+  "ma_nguon": "CG 2023 · P1.3",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi nên số công nhân gấp lên bao nhiêu lần thì thời gian làm xong giảm đi bấy nhiêu lần; cách làm chắc nhất là rút về đơn vị, tìm số ngày để $1$ công nhân làm xong công việc.\n\n**Bước 1.** Nhận ra càng nhiều công nhân thì làm xong càng nhanh vì công việc giữ nguyên, nên số công nhân và số ngày là hai đại lượng tỉ lệ nghịch.\n\n**Bước 2.** Rút về đơn vị: tìm số ngày để $1$ công nhân làm xong cả công việc bằng cách lấy số ngày nhân với số công nhân.\n\n**Bước 3.** Chia số ngày của $1$ công nhân cho số công nhân mới để tìm thời gian khi có $20$ công nhân, rồi chọn phương án.\n\n**Chú ý:** Số công nhân tăng thì số ngày phải ít đi, nên đáp số phải bé hơn $30$ ngày; nếu ra số lớn hơn thì đã làm ngược.\n\n**Phần 2. Trình bày**\n\n$1$ công nhân làm xong công việc trong: $30\\times 10=300$ (ngày)\n\n$20$ công nhân làm xong công việc trong: $300:20=15$ (ngày)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "CG 2023 · P1.4",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích cần sơn bằng diện tích trần cộng diện tích bốn bức tường rồi trừ diện tích các cửa; bốn bức tường chính là diện tích xung quanh của hình hộp chữ nhật, tính bằng chu vi mặt sàn nhân chiều cao.\n\n**Bước 1.** Tính diện tích trần nhà, là hình chữ nhật có chiều dài $7$ m và chiều rộng $4,5$ m.\n\n**Bước 2.** Tính diện tích bốn bức tường bằng cách lấy chu vi mặt sàn nhân với chiều cao của phòng.\n\n**Bước 3.** Cộng diện tích trần với diện tích bốn bức tường để biết phần cần sơn khi chưa trừ cửa.\n\n**Bước 4.** Trừ diện tích các cửa vì cửa không phải sơn, rồi đối chiếu kết quả với các phương án.\n\n**Chú ý:** Đề chỉ sơn trần và bốn bức tường, nên không cộng diện tích sàn nhà.\n\n**Phần 2. Trình bày**\n\nDiện tích trần nhà là: $7\\times 4,5=31,5$ ($\\text{m}^2$)\n\nDiện tích bốn bức tường là: $(7+4,5)\\times 2\\times 3=69$ ($\\text{m}^2$)\n\nDiện tích cần sơn là: $31,5+69-7,5=93$ ($\\text{m}^2$)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "CG 2023 · P2.5",
+  "dap_an": "$A=5274$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện chia hết cho $2$ và chia $5$ dư $4$ chỉ phụ thuộc chữ số hàng đơn vị $y$, còn điều kiện chia hết cho $9$ phụ thuộc tổng các chữ số; vì vậy tìm $y$ trước rồi mới tìm $x$.\n\n**Bước 1.** Số chia hết cho $2$ thì chữ số tận cùng là số chẵn, số chia $5$ dư $4$ thì chữ số tận cùng là $4$ hoặc $9$; từ hai điều kiện đó tìm được chữ số $y$.\n\n**Bước 2.** Số chia hết cho $9$ thì tổng các chữ số chia hết cho $9$; viết tổng bốn chữ số của $A$, trong đó chỉ còn $x$ chưa biết.\n\n**Bước 3.** Chữ số $x$ chỉ có thể từ $0$ đến $9$, nên tìm khoảng giá trị của tổng rồi chọn số chia hết cho $9$ trong khoảng đó.\n\n**Bước 4.** Lấy số vừa chọn trừ đi tổng các chữ số đã biết để tìm $x$, rồi viết số $A$.\n\nThử lại: số $A$ tìm được phải chia hết cho $2$ và $9$, đồng thời chia $5$ dư $4$.\n\n**Phần 2. Trình bày**\n\nVì $A$ chia hết cho $2$ nên chữ số $y$ là số chẵn.\n\nVì $A$ chia $5$ dư $4$ nên chữ số $y$ là $4$ hoặc $9$.\n\nVậy $y=4$.\n\nVì $A$ chia hết cho $9$ nên tổng các chữ số của $A$ chia hết cho $9$.\n\nTổng các chữ số của $A$ là: $5+2+x+4=11+x$\n\nChữ số $x$ từ $0$ đến $9$ nên $11+x$ từ $11$ đến $20$; trong khoảng này chỉ có $18$ chia hết cho $9$.\n\nChữ số $x$ là: $18-11=7$\n\nVậy $A=5274$."
+ },
+ {
+  "ma_nguon": "CG 2023 · P2.6",
+  "dap_an": "$30$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi hai tích bằng nhau ($15$ lần kho I bằng $8$ lần kho II) thì kho được nhân với số lớn hơn lại là kho bé hơn: kho I bằng $\\dfrac{8}{15}$ kho II. Đổi thành số phần bằng nhau (kho I $8$ phần, kho II $15$ phần) thì bài trở thành bài tổng – tỉ.\n\n**Bước 1.** Đổi quan hệ \"$15$ lần kho I bằng $8$ lần kho II\" thành tỉ số: chia hai kết quả bằng nhau đó cho $15$ để biết kho I bằng bao nhiêu phần kho II.\n\n**Bước 2.** Từ phân số vừa tìm, coi kho I là $8$ phần và kho II là $15$ phần bằng nhau, rồi cộng lại để biết tổng số phần.\n\n**Bước 3.** Tổng số gạo $46$ tấn ứng với tổng số phần, nên chia $46$ cho tổng số phần để tìm giá trị một phần.\n\n**Bước 4.** Đề hỏi kho II gồm $15$ phần, nên lấy giá trị một phần nhân với số phần của kho II.\n\nThử lại: tính số gạo kho I rồi so $15$ lần kho I với $8$ lần kho II xem có bằng nhau không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $15$ lần số gạo kho I bằng $8$ lần số gạo kho II nên số gạo kho I bằng $\\dfrac{8}{15}$ số gạo kho II.\n\nDo đó nếu số gạo kho I là $8$ phần thì số gạo kho II là $15$ phần như thế.\n\nTổng số phần bằng nhau là: $8+15=23$ (phần)\n\nGiá trị của một phần là: $46:23=2$ (tấn)\n\nSố gạo kho II là: $2\\times 15=30$ (tấn)\n\nĐáp số: $30$ tấn"
+ },
+ {
+  "ma_nguon": "CG 2023 · P2.7",
+  "dap_an": "$28\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số ghi trên đầu mỗi cột của biểu đồ là số học sinh thích loại quả đó. Muốn tìm tỉ số phần trăm của số $A$ so với số $B$ thì lấy $A$ chia cho $B$, rồi viết kết quả dưới dạng phần trăm.\n\n**Bước 1.** Đọc biểu đồ để biết số học sinh thích từng loại quả: cam, chuối, táo, nhãn và xoài.\n\n**Bước 2.** Cộng số học sinh thích cam với số học sinh thích chuối, rồi cộng số học sinh thích táo với số học sinh thích xoài.\n\n**Bước 3.** Lấy số học sinh thích cam và chuối chia cho số học sinh thích táo và xoài, đổi kết quả ra số thập phân rồi viết thành phần trăm.\n\n**Chú ý:** Đề hỏi \"so với\" số học sinh thích táo và xoài, nên số này là số chia; không được chia ngược lại, và không đưa nhãn vào phép tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo biểu đồ, số học sinh thích ăn cam và chuối là: $4+3=7$ (học sinh)\n\nSố học sinh thích ăn táo và xoài là: $15+10=25$ (học sinh)\n\nTỉ số phần trăm số học sinh thích ăn cam và chuối so với số học sinh thích ăn táo và xoài là: $7:25=0,28=28\\%$\n\nĐáp số: $28\\%$"
+ },
+ {
+  "ma_nguon": "CG 2023 · P2.8",
+  "dap_an": "$56,52\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ không nói tâm của cung 1/4 đường tròn; theo hình, cung nối B với D, tâm là A, bán kính AB (tiếp xúc BC tại B và DC tại D). Phần tô đậm theo hình = 1/4 hình tròn tâm A trừ nửa hình tròn đường kính AB (nửa hình tròn nằm trọn trong 1/4 hình tròn). Ảnh hình trong Word nhỏ, mờ nhưng đủ rõ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm không phải hình quen thuộc nên tính theo cách \"hình lớn bỏ hình bé\": theo hình vẽ, phần tô đậm là một phần tư hình tròn tâm $A$ bán kính $AB$ bỏ đi nửa hình tròn đường kính $AB$.\n\n**Bước 1.** Từ chu vi đường tròn đường kính $AB$ tìm độ dài đường kính $AB$, vì chu vi bằng đường kính nhân $3,14$; độ dài này cũng là cạnh hình vuông.\n\n**Bước 2.** Nhìn hình để xác định phần tô đậm: cung lớn đi từ $B$ đến $D$ có tâm $A$ và bán kính $AB$, còn nửa đường tròn nhỏ có đường kính $AB$ nằm bên trong cung đó.\n\n**Bước 3.** Tính diện tích một phần tư hình tròn có bán kính bằng $AB$.\n\n**Bước 4.** Tính diện tích nửa hình tròn đường kính $AB$, nhớ bán kính của nó chỉ bằng một nửa $AB$.\n\n**Bước 5.** Lấy diện tích một phần tư hình tròn trừ diện tích nửa hình tròn để được diện tích phần tô đậm.\n\n**Chú ý:** Hai hình tròn có hai bán kính khác nhau: một phần tư hình tròn dùng bán kính $AB$, còn nửa hình tròn dùng bán kính bằng một nửa $AB$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đường kính $AB$ là: $37,68:3,14=12$ (cm)\n\nTheo hình vẽ, $\\dfrac{1}{4}$ đường tròn có tâm $A$ và bán kính $AB=12$ cm.\n\nDiện tích $\\dfrac{1}{4}$ hình tròn bán kính $AB$ là: $12\\times 12\\times 3,14:4=113,04$ ($\\text{cm}^2$)\n\nBán kính nửa hình tròn đường kính $AB$ là: $12:2=6$ (cm)\n\nDiện tích nửa hình tròn đường kính $AB$ là: $6\\times 6\\times 3,14:2=56,52$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $113,04-56,52=56,52$ ($\\text{cm}^2$)\n\nĐáp số: $56,52\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "CG 2023 · P3.1",
+  "dap_an": "a) $0,8$ giờ ($48$ phút); b) $8,8$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Đi từ A đến D",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 2.4
+    },
+    {
+     "ten": "C",
+     "x": 4.8
+    },
+    {
+     "ten": "D",
+     "x": 8.8
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 2.4,
+     "nhan": "4 km/giờ"
+    },
+    {
+     "tu": 2.4,
+     "den": 4.8,
+     "nhan": "6 km/giờ"
+    },
+    {
+     "tu": 4.8,
+     "den": 8.8,
+     "nhan": "5 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 2.4,
+     "nhan": "? km"
+    },
+    {
+     "tu": 2.4,
+     "den": 4.8,
+     "nhan": "? km"
+    },
+    {
+     "tu": 4.8,
+     "den": 8.8,
+     "nhan": "4 km"
+    },
+    {
+     "tu": 0,
+     "den": 8.8,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thời gian bằng quãng đường chia cho vận tốc. Vì $AB=BC$ nên đi $1$ km đoạn lên dốc rồi $1$ km đoạn xuống dốc luôn mất một khoảng thời gian cố định; biết tổng thời gian đi hai đoạn dốc thì tìm được độ dài mỗi đoạn.\n\n**Bước 1.** Ý a): đoạn $CD$ dài $4$ km, đi với vận tốc $5$ km/giờ, nên lấy quãng đường chia vận tốc để được thời gian.\n\n**Bước 2.** Ý b): tính thời gian đi cả đoạn đường $AD$ từ lúc xuất phát đến lúc tới nơi, đổi ra giờ cho cùng đơn vị với vận tốc, rồi trừ thời gian đi $CD$ (dùng lại kết quả ý a) để được thời gian đi hai đoạn dốc.\n\n**Bước 3.** Tính thời gian đi $1$ km đoạn lên dốc và $1$ km đoạn xuống dốc, rồi cộng lại vì hai đoạn dốc dài bằng nhau.\n\n**Bước 4.** Xem tổng thời gian đi hai đoạn dốc gấp mấy lần thời gian đi $1$ km mỗi đoạn; số lần đó chính là độ dài mỗi đoạn dốc tính bằng km.\n\n**Bước 5.** Cộng độ dài ba đoạn $AB$, $BC$ và $CD$ để được độ dài đoạn đường $AD$.\n\n**Chú ý:** Vận tốc tính theo km/giờ nên thời gian phải đổi ra giờ ($48$ phút là $0,8$ giờ) rồi mới tính tiếp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Đường $AD$ gồm $AB$ lên dốc, $BC$ xuống dốc, $CD$ bằng phẳng dài $4$ km; $AB$ bằng $BC$)\n\na) Thời gian đi đoạn đường $CD$ là: $4:5=0,8$ (giờ)\n\nĐổi: $0,8$ giờ $=48$ phút\n\nb) Thời gian người đó đi từ $A$ đến $D$ là: $6$ giờ $48$ phút $-\\ 5$ giờ $=1$ giờ $48$ phút\n\nĐổi: $1$ giờ $48$ phút $=1,8$ giờ\n\nThời gian đi hai đoạn dốc $AB$ và $BC$ là: $1,8-0,8=1$ (giờ)\n\nĐi $1$ km đoạn lên dốc $AB$ mất: $1:4=\\dfrac{1}{4}$ (giờ)\n\nĐi $1$ km đoạn xuống dốc $BC$ mất: $1:6=\\dfrac{1}{6}$ (giờ)\n\nVì $AB=BC$ nên đi $1$ km đoạn $AB$ rồi $1$ km đoạn $BC$ mất: $\\dfrac{1}{4}+\\dfrac{1}{6}=\\dfrac{5}{12}$ (giờ)\n\nĐộ dài đoạn $AB$ (cũng là độ dài đoạn $BC$) là: $1:\\dfrac{5}{12}=\\dfrac{12}{5}=2,4$ (km)\n\nĐộ dài đoạn đường $AD$ là: $2,4+2,4+4=8,8$ (km)\n\nĐáp số: a) $0,8$ giờ; b) $8,8$ km"
+ },
+ {
+  "ma_nguon": "CG 2023 · P3.2",
+  "dap_an": "a) $3;\\ 1;\\ 4;\\ 6;\\ 7$ (xếp theo thứ tự quanh vòng tròn; có nhiều bộ đúng); b) Mỗi bộ thoả mãn đều có ít nhất $1$ số chia hết cho $3$",
+  "ghi_chu_nghi": "Ý a) có nhiều đáp án đúng — đáp án ghi là MỘT bộ ví dụ (kiểm bằng code), chấm theo điều kiện chứ không so chuỗi. Hiểu \"liên tiếp\" tính cả vòng (số cuối và số đầu là hai số kề nhau); tổng của một số đứng một mình không xét. Ý b) là chứng minh nên đáp án ghi là kết luận.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chỉ cần xét số dư khi chia cho $3$ của từng số: số chia hết cho $3$ (dư $0$), dư $1$ hoặc dư $2$. Hai số liền nhau bị cấm khi cả hai chia hết cho $3$ hoặc khi một số dư $1$, số kia dư $2$; ba số liền nhau bị cấm khi tổng ba số dư chia hết cho $3$.\n\n**Bước 1.** Ý a): liệt kê những cặp số liền nhau có tổng chia hết cho $3$ (xét theo số dư) để biết cặp nào không được đứng cạnh nhau.\n\n**Bước 2.** Chỉ dùng số chia hết cho $3$ và số dư $1$, sao cho hai số chia hết cho $3$ không đứng cạnh nhau và không có ba số dư $1$ đứng liền nhau; xếp thử số dư quanh vòng tròn theo thứ tự: chia hết, dư $1$, dư $1$, chia hết, dư $1$.\n\n**Bước 3.** Chọn năm số tự nhiên khác nhau có đúng các số dư đó, điền vào hình rồi kiểm tra lại tổng của từng cặp hai số và từng bộ ba số liền nhau, kể cả chỗ nối số cuối với số đầu.\n\n**Bước 4.** Ý b): giả sử không có số nào chia hết cho $3$, khi đó mỗi số chỉ dư $1$ hoặc dư $2$; xét hai số liền nhau để biết các số dư phải giống nhau như thế nào.\n\n**Bước 5.** Từ đó cả năm số cùng số dư, rồi xét tổng ba số liền nhau để thấy mâu thuẫn với đề, từ đó kết luận.\n\n**Chú ý:** Đề cho các số xếp trên vòng tròn nên số cuối và số đầu cũng là hai số liền nhau, đừng bỏ sót khi kiểm tra.\n\n**Phần 2. Trình bày**\n\na) Chọn năm số $3;\\ 1;\\ 4;\\ 6;\\ 7$ và điền lần lượt vào các ô quanh vòng tròn theo chiều kim đồng hồ, bắt đầu từ ô trên cùng.\n\nTổng hai số liền nhau (kể cả cặp cuối – đầu) là: $3+1=4$; $1+4=5$; $4+6=10$; $6+7=13$; $7+3=10$ — đều không chia hết cho $3$.\n\nTổng ba số liền nhau là: $3+1+4=8$; $1+4+6=11$; $4+6+7=17$; $6+7+3=16$; $7+3+1=11$ — đều không chia hết cho $3$.\n\nb) Giả sử trong bộ năm số không có số nào chia hết cho $3$. Khi đó mỗi số chia $3$ dư $1$ hoặc dư $2$.\n\nNếu hai số liền nhau, một số dư $1$ và một số dư $2$ thì tổng hai số dư là $1+2=3$ nên tổng hai số chia hết cho $3$, trái với đề bài. Vậy hai số liền nhau luôn có cùng số dư, nên đi hết vòng tròn thì cả năm số có cùng số dư.\n\nKhi đó ba số liền nhau cùng dư $1$ thì tổng số dư là $1+1+1=3$, cùng dư $2$ thì tổng số dư là $2+2+2=6$; cả hai trường hợp tổng ba số đều chia hết cho $3$, trái với đề bài.\n\nVậy giả sử sai, nên trong mỗi bộ năm số thoả mãn yêu cầu có ít nhất $1$ số chia hết cho $3$."
+ }
+]

@@ -1,0 +1,169 @@
+[
+ {
+  "ma_nguon": "NTL 2023 · P1.1",
+  "dap_an": "$45$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của nhiều số bằng tổng các số đó chia cho số các số hạng.\n\n**Bước 1.** Tính tổng của ba số đã cho bằng cách cộng lần lượt từng số.\n\n**Bước 2.** Đếm xem dãy có mấy số, vì đó chính là số chia của phép chia ở bước sau.\n\n**Bước 3.** Lấy tổng chia cho số các số để được trung bình cộng của dãy.\n\n**Chú ý:** Dãy $15;\\ 45;\\ 75$ có các số cách đều nhau, nên dùng được cách thử lại: trung bình cộng của dãy cách đều bằng số đứng ở giữa dãy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của ba số là: $15+45+75=135$\n\nTrung bình cộng của dãy số là: $135:3=45$\n\nĐáp số: $45$"
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.2",
+  "dap_an": "$a=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $9$ thì tổng các chữ số của nó chia hết cho $9$; ở đây chữ $a$ xuất hiện hai lần nên tổng các chữ số viết được theo $a$.\n\n**Bước 1.** Cộng bốn chữ số của số $\\overline{2a1a}$: các chữ số $2$ và $1$ cho tổng $3$, còn chữ số $a$ xuất hiện hai lần nên phải cộng hai lần $a$.\n\n**Bước 2.** Vì $a$ là một chữ số nên chỉ nhận giá trị từ $0$ đến $9$; từ đó tìm khoảng giá trị của tổng các chữ số, rồi liệt kê các số chia hết cho $9$ nằm trong khoảng đó.\n\n**Bước 3.** Với từng tổng chia hết cho $9$ vừa liệt kê, tìm hai lần $a$ rồi tìm $a$; loại trường hợp không tìm được chữ số $a$ nguyên.\n\n**Chú ý:** Hai lần $a$ là tổng của hai số bằng nhau nên luôn là số chẵn; số lẻ thì không thể là hai lần một chữ số.\n\n**Phần 2. Trình bày**\n\nTổng các chữ số của số $\\overline{2a1a}$ là: $2+a+1+a=3+a+a$\n\nVì $a$ là chữ số từ $0$ đến $9$ nên $a+a$ từ $0$ đến $18$, do đó tổng các chữ số từ $3$ đến $21$.\n\nSố chia hết cho $9$ cần tìm nằm trong khoảng này chỉ có thể là $9$ hoặc $18$.\n\nNếu $3+a+a=9$ thì $a+a=9-3=6$, suy ra $a=6:2=3$.\n\nNếu $3+a+a=18$ thì $a+a=18-3=15$; nhưng $a+a$ là số chẵn còn $15$ là số lẻ nên trường hợp này loại.\n\nVậy $a=3$.\n\nThử lại: $2313:9=257$."
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.3",
+  "dap_an": "$80000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá sau khi giảm bằng $90\\%$ giá gốc, nên $72000$ đồng chính là $90\\%$ của giá gốc; muốn tìm một số khi biết $90\\%$ của nó thì lấy số đã biết chia cho $90\\%$.\n\n**Bước 1.** Coi giá gốc là $100\\%$ rồi tính xem giá sau khi giảm $10\\%$ bằng bao nhiêu phần trăm giá gốc.\n\n**Bước 2.** Số tiền Hoa đã trả ứng với số phần trăm vừa tìm của giá gốc, nên đây là bài toán tìm một số khi biết số phần trăm của nó.\n\n**Bước 3.** Lấy số tiền đã trả chia cho số phần trăm vừa tìm để được giá gốc của quyển sách.\n\n**Chú ý:** Đừng cộng thêm $10\\%$ của $72000$ đồng để ra giá gốc, vì $10\\%$ ấy là $10\\%$ của giá gốc chứ không phải của giá đã giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá sau khi giảm bằng số phần trăm giá gốc là: $100\\%-10\\%=90\\%$\n\nGiá gốc của quyển sách là: $72000:90\\%=80000$ (đồng)\n\nĐáp số: $80000$ đồng"
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.4",
+  "dap_an": "$3$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của mẹ và con không đổi theo thời gian; đề cho tỉ số hai tuổi ở thời điểm hai năm nữa nên đây là bài hiệu – tỉ ở thời điểm đó.\n\n**Bước 1.** Nhận ra hiệu số tuổi mẹ và con luôn bằng $25$ tuổi, kể cả hai năm nữa.\n\n**Bước 2.** Đổi \"tuổi con bằng $\\dfrac{1}{6}$ tuổi mẹ\" thành số phần: tuổi con là $1$ phần, tuổi mẹ là $6$ phần, rồi tính hiệu số phần bằng nhau.\n\n**Bước 3.** Hiệu $25$ tuổi ứng với hiệu số phần, nên chia để tìm giá trị một phần, tức là tuổi con hai năm nữa.\n\n**Bước 4.** Đề hỏi tuổi con hiện nay, nên lùi lại hai năm so với tuổi vừa tìm.\n\n**Chú ý:** Tuổi tìm được ở bước 3 là tuổi con hai năm nữa, đừng ghi nhầm thành tuổi con hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của mẹ và con không đổi, luôn là $25$ tuổi.\n\nHai năm nữa tuổi con bằng $\\dfrac{1}{6}$ tuổi mẹ nên tuổi con là $1$ phần, tuổi mẹ là $6$ phần như thế.\n\nTa có sơ đồ:\n\n(Tuổi con 1 phần; tuổi mẹ 6 phần; hiệu 25 tuổi)\n\nHiệu số phần bằng nhau là: $6-1=5$ (phần)\n\nTuổi con hai năm nữa là: $25:5\\times 1=5$ (tuổi)\n\nTuổi con hiện nay là: $5-2=3$ (tuổi)\n\nĐáp số: $3$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau 2 năm nữa",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 6
+    }
+   ],
+   "hieu": "25 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.5",
+  "dap_an": "$1,4$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật bằng diện tích đáy nhân chiều cao; khối nước trong bể cũng là hình hộp chữ nhật có đáy chính là đáy bể, nên chiều cao mực nước bằng thể tích nước chia cho diện tích đáy.\n\n**Bước 1.** Nhận ra khối nước có đáy là đáy bể (dài $50$ m, rộng $30$ m) và chiều cao của nó chính là chiều cao mực nước.\n\n**Bước 2.** Tính diện tích đáy bể bằng cách lấy chiều dài nhân chiều rộng.\n\n**Bước 3.** Lấy thể tích nước chia cho diện tích đáy để tìm chiều cao mực nước.\n\n**Chú ý:** Mọi số đo đều đã tính bằng mét nên không cần đổi đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích đáy bể là: $50\\times 30=1500$ ($\\text{m}^2$)\n\nChiều cao mực nước trong bể là: $2100:1500=1,4$ (m)\n\nĐáp số: $1,4$ m"
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.6",
+  "dap_an": "$27$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển sách từ ngăn này sang ngăn kia thì tổng số sách hai ngăn không đổi; sau khi chuyển đề cho tỉ số sách hai ngăn, nên đây là bài tổng – tỉ ở thời điểm sau khi chuyển.\n\n**Bước 1.** Nhận ra tổng số sách của hai ngăn vẫn là $48$ quyển ở cả hai thời điểm, trước và sau khi chuyển.\n\n**Bước 2.** Đổi \"ngăn 1 bằng $\\dfrac{3}{5}$ ngăn 2\" thành số phần: ngăn 1 là $3$ phần, ngăn 2 là $5$ phần, rồi tính tổng số phần.\n\n**Bước 3.** Chia $48$ cho tổng số phần để tìm giá trị một phần, rồi tìm số sách của ngăn 2 sau khi chuyển.\n\n**Bước 4.** Ngăn 2 vừa nhận thêm $3$ quyển từ ngăn 1, nên số sách lúc đầu của ngăn 2 ít hơn số vừa tìm đúng $3$ quyển.\n\n**Chú ý:** Số tìm được ở bước 3 là số sách SAU khi chuyển, chưa phải số sách ngăn 2 lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi chuyển sách từ ngăn 1 sang ngăn 2 thì tổng số sách hai ngăn không đổi, vẫn là $48$ quyển.\n\nSau khi chuyển, số sách ngăn 1 bằng $\\dfrac{3}{5}$ số sách ngăn 2 nên ngăn 1 là $3$ phần, ngăn 2 là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Ngăn 1 sau khi chuyển 3 phần; ngăn 2 sau khi chuyển 5 phần; tổng 48 quyển)\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nSố sách ngăn 2 sau khi chuyển là: $48:8\\times 5=30$ (quyển)\n\nSố sách ngăn 2 lúc đầu là: $30-3=27$ (quyển)\n\nĐáp số: $27$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi chuyển 3 quyển",
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Ngăn 1",
+     "phan": 3
+    },
+    {
+     "nhan": "Ngăn 2",
+     "phan": 5
+    }
+   ],
+   "tong": "48 quyển",
+   "dau_hoi": [
+    "Ngăn 2"
+   ]
+  },
+  "ghi_chu_nghi": "Đề hỏi \"Tìm số sách ngăn 2\" mà không nói lúc đầu hay sau khi chuyển. Đã hiểu là LÚC ĐẦU (đề cho tổng 48 quyển ở trạng thái đầu rồi mới nêu việc chuyển) ⇒ 27 quyển. Nếu hiểu là số sách ngăn 2 SAU khi chuyển thì đáp số là 30 quyển (kết quả bước giữa của lời giải). Cần đối chiếu nguồn khác."
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.7",
+  "dap_an": "$32\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, hình tô đậm là hình chữ nhật nằm bên trong hình chữ nhật lớn và cách mỗi cạnh $2$ m, nên mỗi kích thước của hình tô đậm kém kích thước hình lớn đúng hai lần $2$ m.\n\n**Bước 1.** Đọc hình: hình lớn dài $12$ m, rộng $8$ m, còn phần viền bao quanh hình tô đậm rộng $2$ m ở cả bốn phía.\n\n**Bước 2.** Tính chiều dài hình tô đậm bằng cách lấy $12$ m trừ đi hai phần viền ở hai đầu; tính chiều rộng tương tự từ $8$ m.\n\n**Bước 3.** Diện tích hình tô đậm bằng chiều dài nhân chiều rộng của nó.\n\n**Chú ý:** Phải trừ phần viền hai lần (viền ở hai phía đối nhau), không chỉ trừ một lần $2$ m.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hình tô đậm là hình chữ nhật nằm trong hình chữ nhật dài $12$ m, rộng $8$ m và cách bốn cạnh đều $2$ m.\n\nChiều dài hình tô đậm là: $12-2-2=8$ (m)\n\nChiều rộng hình tô đậm là: $8-2-2=4$ (m)\n\nDiện tích hình tô đậm là: $8\\times 4=32$ ($\\text{m}^2$)\n\nĐáp số: $32\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Hình: hình chữ nhật 12 m x 8 m, hình tô đậm bên trong, bốn khoảng cách đều ghi 2 m (trên, dưới, trái, phải). Hình vẽ không đúng tỉ lệ nhưng theo số ghi trên hình thì viền đều 2 m bốn phía."
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.8",
+  "dap_an": "$3$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số có $3$ chữ số mà có đủ các chữ số $1$, $2$, $3$ thì mỗi chữ số $1$, $2$, $3$ xuất hiện đúng một lần; ta đếm theo chữ số hàng trăm và nhớ điều kiện số phải lớn hơn $222$.\n\n**Bước 1.** Nhận ra mỗi số An viết là một cách xếp ba chữ số $1$, $2$, $3$ vào ba hàng, nên chỉ cần đếm những cách xếp cho số lớn hơn $222$.\n\n**Bước 2.** Xét trường hợp chữ số hàng trăm là $3$: số nào cũng lớn hơn $222$, nên chỉ cần đếm các cách xếp hai chữ số còn lại vào hàng chục và hàng đơn vị.\n\n**Bước 3.** Xét trường hợp chữ số hàng trăm là $2$: hai chữ số còn lại là $1$ và $3$; so sánh với $222$ ở hàng chục để biết số nào được tính.\n\n**Bước 4.** Chữ số hàng trăm là $1$ thì số bé hơn $222$ nên loại; cộng các trường hợp lại để được số các số cần tìm.\n\n**Chú ý:** Số có chữ số hàng trăm là $2$ chưa chắc lớn hơn $222$, phải so sánh tiếp ở hàng chục.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi số An viết có đủ các chữ số $1$, $2$, $3$ nên mỗi chữ số xuất hiện đúng một lần.\n\nChữ số hàng trăm là $3$: ta có các số $312$ và $321$, cả hai đều lớn hơn $222$, được $2$ số.\n\nChữ số hàng trăm là $2$: ta có các số $213$ và $231$; số $231$ lớn hơn $222$ còn số $213$ bé hơn $222$, được $1$ số.\n\nChữ số hàng trăm là $1$: số bé hơn $222$, không có số nào.\n\nSố các số lớn hơn $222$ mà An viết được là: $2+1=3$ (số)\n\nĐáp số: $3$ số"
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.9",
+  "dap_an": "$225$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi xoá chữ số hàng trăm thì số cũ giảm đi đúng một số tròn trăm (chữ số hàng trăm nhân $100$); số mới bằng $\\dfrac{1}{9}$ số cũ nên số cũ gấp $9$ lần số mới, đó là bài toán hiệu – tỉ với hiệu là một số tròn trăm.\n\n**Bước 1.** Nhận ra số cũ hơn số mới đúng một số tròn trăm, đồng thời số cũ gấp $9$ lần số mới, rồi vẽ sơ đồ hiệu – tỉ.\n\n**Bước 2.** Tính hiệu số phần bằng nhau; hiệu số phần này ứng với số tròn trăm, nên số mới bằng số tròn trăm chia cho hiệu số phần.\n\n**Bước 3.** Thử lần lượt chữ số hàng trăm từ bé đến lớn, mỗi lần tính số mới và loại trường hợp số mới không phải số tự nhiên.\n\n**Bước 4.** Chữ số hàng trăm càng bé thì số cũ càng bé, nên trường hợp đầu tiên thoả mãn cho số bé nhất; tìm số cũ bằng cách lấy số mới nhân $9$.\n\n**Chú ý:** Số mới phải là số tự nhiên, nên kết quả của phép chia là số thập phân thì phải loại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi xoá chữ số hàng trăm thì số cũ giảm đi một số tròn trăm (chữ số hàng trăm nhân $100$).\n\nSố mới bằng $\\dfrac{1}{9}$ số cũ nên số cũ gấp $9$ lần số mới.\n\nTa có sơ đồ:\n\n(Số mới 1 phần; số cũ 9 phần; hiệu là một số tròn trăm)\n\nHiệu số phần bằng nhau là: $9-1=8$ (phần)\n\nVậy $8$ phần bằng một số tròn trăm, nên số mới bằng số tròn trăm đó chia cho $8$.\n\nChữ số hàng trăm là $1$: số mới là $100:8=12,5$, không phải số tự nhiên nên loại.\n\nChữ số hàng trăm là $2$: số mới là $200:8=25$, số cũ là $25\\times 9=225$, đúng có chữ số hàng trăm là $2$.\n\nChữ số hàng trăm càng bé thì số cũ càng bé nên số bé nhất cần tìm là $225$.\n\nĐáp số: $225$",
+  "so_do_mo_ta": {
+   "tieu_de": "Số cũ và số mới",
+   "gia_tri_phan": 25,
+   "hang": [
+    {
+     "nhan": "Số mới",
+     "phan": 1
+    },
+    {
+     "nhan": "Số cũ",
+     "phan": 9
+    }
+   ],
+   "hieu": "số tròn trăm",
+   "dau_hoi": [
+    "Số cũ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTL 2023 · P1.10",
+  "dap_an": "$30$ hình vuông",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm hình vuông theo từng kích thước cạnh: mỗi kích thước đếm riêng rồi cộng lại, như vậy không sót và không đếm trùng.\n\n**Bước 1.** Đọc hình: các ô vuông nhỏ xếp thành $4$ hàng và $4$ cột, nên một hình vuông bất kì trong hình có cạnh gồm $1$, $2$, $3$ hoặc $4$ ô.\n\n**Bước 2.** Hình vuông có cạnh $1$ ô chính là các ô nhỏ, đếm bằng số hàng nhân số cột.\n\n**Bước 3.** Với mỗi kích thước lớn hơn, góc trên bên trái của hình vuông chỉ đặt được ở một số hàng và một số cột nhất định; số hình vuông bằng số hàng nhân số cột đó.\n\n**Bước 4.** Cộng số hình vuông của mọi kích thước để được tổng số hình vuông có trong hình.\n\n**Chú ý:** Hình vuông lớn gồm nhiều ô nhỏ ghép lại cũng được tính, không chỉ đếm các ô nhỏ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hình gồm các ô vuông nhỏ xếp thành $4$ hàng, $4$ cột.\n\nHình vuông có cạnh $1$ ô: $4\\times 4=16$ (hình)\n\nHình vuông có cạnh $2$ ô: $3\\times 3=9$ (hình)\n\nHình vuông có cạnh $3$ ô: $2\\times 2=4$ (hình)\n\nHình vuông có cạnh $4$ ô: $1\\times 1=1$ (hình)\n\nSố hình vuông có trong hình là: $16+9+4+1=30$ (hình)\n\nĐáp số: $30$ hình vuông",
+  "ghi_chu_nghi": "Hình: lưới ô vuông 4 hàng x 4 cột (đếm trên ảnh, ảnh không ghi số ô). Lời giải đếm theo lưới 4 x 4."
+ },
+ {
+  "ma_nguon": "NTL 2023 · P2.1",
+  "dap_an": "a) $2400$; b) $x=\\dfrac{1}{2}$; c) An: $15$ km/giờ; Bình: $12$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba ý độc lập: ý a) đưa các tích về cùng thừa số $24$ để đặt thừa số chung; ý b) tìm lần lượt thành phần chưa biết từ ngoài vào trong; ý c) là bài gặp nhau, tìm tổng vận tốc rồi dùng điều kiện \"gặp nhau ở chính giữa quãng đường\" để tìm vận tốc từng người.\n\n**Bước 1.** Ý a): nhân $2,4$ với $10$ đồng thời chia $150$ cho $10$ thì tích không đổi, nên $2,4\\times 150=24\\times 15$; làm tương tự với $8,6\\times 240$; số $24$ ở cuối viết thành $24\\times 1$ rồi đặt thừa số chung $24$ ra ngoài.\n\n**Bước 2.** Ý b): rút gọn $\\dfrac{33}{11}$ thành số tự nhiên; khi đó cả ngoặc là thừa số chưa biết của một tích, nên lấy tích chia cho thừa số đã biết.\n\n**Bước 3.** Ý b): trong ngoặc, $\\dfrac{1}{4}\\times x$ là số trừ nên lấy số bị trừ trừ đi hiệu; sau đó $x$ là thừa số chưa biết nên lấy tích chia cho thừa số đã biết $\\dfrac{1}{4}$.\n\n**Bước 4.** Ý c): đổi hỗn số ra phân số để biết thời gian gặp nhau, rồi lấy quãng đường chia cho thời gian gặp nhau để được tổng vận tốc của hai người.\n\n**Bước 5.** Ý c): Bình tăng $3$ km/giờ thì tổng vận tốc tăng $3$ km/giờ; hai người gặp nhau ở chính giữa quãng đường nên cùng đi một quãng đường như nhau trong cùng một thời gian, vì thế vận tốc của An bằng vận tốc mới của Bình.\n\n**Bước 6.** Ý c): chia đôi tổng vận tốc mới để được vận tốc của An; lấy vận tốc mới của Bình trừ đi $3$ để được vận tốc ban đầu của Bình.\n\n**Chú ý:** Đề hỏi vận tốc của mỗi người nên vận tốc của Bình phải là vận tốc lúc đầu, chưa tăng thêm $3$ km/giờ.\n\n**Phần 2. Trình bày**\n\na)\n\n$2,4\\times 150+8,6\\times 240-24$\n\n$=24\\times 15+86\\times 24-24\\times 1$\n\n$=24\\times (15+86-1)$\n\n$=24\\times 100$\n\n$=2400$\n\nb)\n\n$\\begin{array}{l}\\left(\\dfrac{3}{4}-\\dfrac{1}{4}\\times x\\right)\\times\\dfrac{33}{11}=\\dfrac{15}{8}\\\\ \\left(\\dfrac{3}{4}-\\dfrac{1}{4}\\times x\\right)\\times 3=\\dfrac{15}{8}\\\\ \\dfrac{3}{4}-\\dfrac{1}{4}\\times x=\\dfrac{15}{8}:3\\\\ \\dfrac{3}{4}-\\dfrac{1}{4}\\times x=\\dfrac{5}{8}\\\\ \\dfrac{1}{4}\\times x=\\dfrac{3}{4}-\\dfrac{5}{8}\\\\ \\dfrac{1}{4}\\times x=\\dfrac{1}{8}\\\\ x=\\dfrac{1}{8}:\\dfrac{1}{4}\\\\ x=\\dfrac{1}{2}\\end{array}$\n\nc)\n\nĐổi: $2\\dfrac{7}{9}$ giờ $=\\dfrac{25}{9}$ giờ\n\nTổng vận tốc của hai người lúc đầu là: $75:\\dfrac{25}{9}=27$ (km/giờ)\n\nBình tăng vận tốc thêm $3$ km/giờ thì tổng vận tốc của hai người là: $27+3=30$ (km/giờ)\n\nTa có sơ đồ:\n\n(Quãng đường AB dài 75 km; hai người gặp nhau tại điểm O chính giữa AB, mỗi người đi 37,5 km)\n\nHai người gặp nhau ở chính giữa quãng đường nên cùng đi một quãng đường như nhau trong cùng một thời gian, do đó vận tốc của An bằng vận tốc mới của Bình.\n\nVận tốc của An là: $30:2=15$ (km/giờ)\n\nVận tốc của Bình lúc đầu là: $15-3=12$ (km/giờ)\n\nĐáp số: a) $2400$; b) $x=\\dfrac{1}{2}$; c) An: $15$ km/giờ; Bình: $12$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Khi Bình tăng vận tốc",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "O",
+     "x": 37.5,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 75
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 37.5,
+     "nhan": "An"
+    },
+    {
+     "tu": 75,
+     "den": 37.5,
+     "nhan": "Bình"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 37.5,
+     "nhan": "37,5 km"
+    },
+    {
+     "tu": 37.5,
+     "den": 75,
+     "nhan": "37,5 km"
+    },
+    {
+     "tu": 0,
+     "den": 75,
+     "nhan": "75 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Ý c): \"tăng vận tốc thêm 3 km mỗi giờ\" hiểu là thêm 3 km/giờ. Ý b): 33/11 = 3 theo đúng đề. Ý b) và c) độc lập nhưng giữ MỘT câu theo luật không tách ý của đề thi."
+ },
+ {
+  "ma_nguon": "NTL 2023 · P2.2",
+  "dap_an": "a) $30\\ \\text{cm}^2$; b) $\\dfrac{S_{ABI}}{S_{BIC}}=2$; c) $\\dfrac{BK}{KC}=\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; hai tam giác có chung đáy thì tỉ số diện tích bằng tỉ số hai đường cao. Từ $AM=2\\times MC$ và $I$ là trung điểm của $BM$, lần lượt tìm diện tích các tam giác nhỏ rồi chuyển tỉ số $BK:KC$ sang tỉ số diện tích hai tam giác có chung đáy $AI$.\n\n**Bước 1.** Ý a): tam giác $BMC$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$; từ $AM=2\\times MC$ tính xem $MC$ bằng mấy phần $AC$ rồi tìm diện tích tam giác $BMC$.\n\n**Bước 2.** Ý b): lấy diện tích tam giác $ABC$ trừ diện tích tam giác $BMC$ để biết diện tích tam giác $ABM$; vì $I$ là trung điểm của $BM$ nên tìm được diện tích tam giác $ABI$ từ tam giác $ABM$.\n\n**Bước 3.** Ý b): làm tương tự với tam giác $BMC$ để tìm diện tích tam giác $BIC$, rồi lập tỉ số diện tích hai tam giác $ABI$ và $BIC$.\n\n**Bước 4.** Ý c): ba tam giác $ABI$, $BIC$, $AIC$ ghép lại thành tam giác $ABC$, nên lấy diện tích $ABC$ trừ diện tích hai tam giác đã biết để tìm diện tích tam giác $AIC$.\n\n**Bước 5.** Ý c): hai tam giác $ABK$ và $AKC$ có chung đường cao hạ từ $A$ nên tỉ số diện tích bằng $BK:KC$; hai tam giác này lại có chung đáy $AK$ nên tỉ số đó bằng tỉ số hai đường cao hạ từ $B$ và $C$ xuống $AK$.\n\n**Bước 6.** Ý c): hai tam giác $ABI$ và $AIC$ có đáy $AI$ nằm trên $AK$ và cùng hai đường cao hạ từ $B$, $C$ xuống $AK$, nên có cùng tỉ số diện tích rồi thay số để so sánh.\n\n**Chú ý:** Tam giác chung đường cao thì so sánh đáy, tam giác chung đáy thì so sánh đường cao; đừng lẫn hai trường hợp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Tam giác $BMC$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{BMC}}{S_{ABC}}=\\dfrac{MC}{AC}$\n\nVì $AM=2\\times MC$ nên $AC=AM+MC=3\\times MC$, do đó $\\dfrac{MC}{AC}=\\dfrac{1}{3}$\n\nDiện tích tam giác $BMC$ là: $90:3=30$ ($\\text{cm}^2$)\n\nb) Diện tích tam giác $ABM$ là: $90-30=60$ ($\\text{cm}^2$)\n\nTam giác $ABI$ và tam giác $ABM$ có chung đường cao hạ từ $A$ xuống $BM$, suy ra $\\dfrac{S_{ABI}}{S_{ABM}}=\\dfrac{BI}{BM}=\\dfrac{1}{2}$ (vì $I$ là trung điểm của $BM$)\n\nDiện tích tam giác $ABI$ là: $60:2=30$ ($\\text{cm}^2$)\n\nTam giác $BIC$ và tam giác $BMC$ có chung đường cao hạ từ $C$ xuống $BM$, suy ra $\\dfrac{S_{BIC}}{S_{BMC}}=\\dfrac{BI}{BM}=\\dfrac{1}{2}$\n\nDiện tích tam giác $BIC$ là: $30:2=15$ ($\\text{cm}^2$)\n\nTỉ số diện tích hai tam giác $ABI$ và $BIC$ là: $\\dfrac{S_{ABI}}{S_{BIC}}=\\dfrac{30}{15}=2$\n\nc) Diện tích tam giác $AIC$ là: $90-30-15=45$ ($\\text{cm}^2$)\n\nTam giác $ABK$ và tam giác $AKC$ có chung đường cao hạ từ $A$ xuống $BC$, suy ra $\\dfrac{S_{ABK}}{S_{AKC}}=\\dfrac{BK}{KC}$\n\nTam giác $ABK$ và tam giác $AKC$ có chung đáy $AK$, suy ra $\\dfrac{S_{ABK}}{S_{AKC}}$ bằng tỉ số hai đường cao hạ từ $B$ và từ $C$ xuống $AK$.\n\nTam giác $ABI$ và tam giác $AIC$ có chung đáy $AI$ nằm trên $AK$, và có đúng hai đường cao hạ từ $B$ và từ $C$ xuống $AK$ như trên, suy ra $\\dfrac{S_{ABI}}{S_{AIC}}=\\dfrac{S_{ABK}}{S_{AKC}}=\\dfrac{BK}{KC}$\n\nVậy $\\dfrac{BK}{KC}=\\dfrac{30}{45}=\\dfrac{2}{3}$, tức là $BK$ bằng $\\dfrac{2}{3}$ của $KC$ (đoạn $BK$ ngắn hơn đoạn $KC$).\n\nĐáp số: a) $30\\ \\text{cm}^2$; b) $\\dfrac{S_{ABI}}{S_{BIC}}=2$; c) $\\dfrac{BK}{KC}=\\dfrac{2}{3}$",
+  "ghi_chu_nghi": "Ý c) trong đề chỉ ghi \"So sánh BK/KC\" — LỬNG, thiếu vế còn lại (có thể bản Word bị cắt chữ). Giữ nguyên đề, không bịa vế thiếu. Đã tính BK/KC = 2/3 (BK = 2/3 KC, BK < KC) và trình bày kết quả đó; cần đối chiếu PDF xem đề gốc so sánh BK/KC với gì. Đáp số a) 30 và b) 2 chắc chắn (kiểm bằng tọa độ)."
+ }
+]

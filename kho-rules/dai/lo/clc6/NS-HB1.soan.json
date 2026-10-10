@@ -1,0 +1,185 @@
+[
+ {
+  "ma_nguon": "NS-HB1 · P1.1",
+  "dap_an": "$a=4$; $b=5$",
+  "ghi_chu_nghi": "Nếu a = b = 0 thì hai vế cũng bằng nhau (số 0,0 = 0). Đã loại trường hợp này vì đó là số 0 chứ không phải số thập phân có chữ số a, b cần tìm — nhờ CEO xác nhận cách hiểu \"a, b khác 0\".",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thập phân $\\overline{a,b}$ có phần nguyên là $a$ và phần thập phân là $b$ phần mười; muốn bỏ dấu phẩy thì gấp cả hai vế lên $10$ lần, rồi phân tích số $\\overline{ab}$ theo hàng chục và hàng đơn vị để so sánh hai vế.\n\n**Bước 1.** Gấp cả hai vế lên $10$ lần để mất dấu phẩy: vế trái thành số có hai chữ số $\\overline{ab}$, vế phải thành $(a+b)\\times 5$.\n\n**Bước 2.** Phân tích $\\overline{ab}$ theo hàng chục và hàng đơn vị, nhân $(a+b)$ với $5$ ra từng phần, rồi cùng bớt những phần giống nhau ở hai vế để chỉ còn một vế chứa $a$ và một vế chứa $b$.\n\n**Bước 3.** Vì $a$ và $b$ là các chữ số nên dựa vào việc vế chứa $b$ phải chia hết cho $5$ để tìm $b$ trước, sau đó tìm $a$.\n\n**Chú ý:** Nếu $a$ và $b$ cùng bằng $0$ thì hai vế cũng bằng nhau, nhưng đó chỉ là số $0$ nên ta chỉ xét các chữ số khác $0$.\n\nThử lại: thay hai chữ số vừa tìm vào đề, hai vế phải bằng nhau.\n\n**Phần 2. Trình bày**\n\n$\\overline{a,b}=(a+b)\\times 0,5$\n\nGấp cả hai vế lên $10$ lần: $\\overline{ab}=(a+b)\\times 5$\n\n$a\\times 10+b=a\\times 5+b\\times 5$\n\nCùng bớt $a\\times 5$ và $b$ ở hai vế: $a\\times 5=b\\times 4$\n\nVì $4$ không chia hết cho $5$ mà $b\\times 4$ chia hết cho $5$ nên $b$ chia hết cho $5$; $b$ là chữ số khác $0$ nên $b=5$.\n\nKhi đó $a\\times 5=5\\times 4=20$, suy ra $a=20:5=4$.\n\nVậy $a=4$; $b=5$ (kiểm tra: $4,5=9\\times 0,5$)."
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.2",
+  "dap_an": "Sau $16\\dfrac{4}{11}$ phút (lúc $3$ giờ $16\\dfrac{4}{11}$ phút)",
+  "ghi_chu_nghi": "Đề hỏi \"thời gian gần nhất\": hiểu là khoảng thời gian từ 3 giờ đúng đến lần hai kim trùng nhau kế tiếp (tức lúc 3 giờ 16 4/11 phút). Bài chuyển động nhưng là kim đồng hồ nên không vẽ sơ đồ chuyển động.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai kim đồng hồ quay cùng chiều, kim phút đi nhanh hơn kim giờ nên kim phút đuổi kịp kim giờ; thời gian đuổi kịp bằng khoảng cách ban đầu chia cho phần kim phút đi nhanh hơn kim giờ trong mỗi phút.\n\n**Bước 1.** Đo bằng vạch phút: mặt đồng hồ có $60$ vạch; lúc $3$ giờ đúng kim giờ chỉ số $3$ còn kim phút chỉ số $12$ nên kim phút đang ở sau kim giờ một khoảng nhất định.\n\n**Bước 2.** Tính mỗi phút kim phút đi được bao nhiêu vạch và kim giờ đi được bao nhiêu vạch (kim giờ phải mất $1$ giờ mới đi từ số này sang số kế tiếp, tức là $5$ vạch).\n\n**Bước 3.** Mỗi phút kim phút đuổi gần kim giờ một khoảng bằng hiệu hai quãng vừa tìm; lấy khoảng cách ban đầu chia cho hiệu đó để biết sau mấy phút hai kim trùng nhau.\n\n**Chú ý:** Kết quả là một hỗn số vì hai kim không trùng nhau đúng vào lúc kim phút chỉ một vạch tròn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc $3$ giờ đúng, kim giờ chỉ số $3$ nên kim phút phải đuổi kim giờ một khoảng: $3\\times 5=15$ (vạch)\n\nMỗi phút kim phút đi được $1$ vạch.\n\nKim giờ đi $5$ vạch trong $60$ phút nên mỗi phút kim giờ đi được: $5:60=\\dfrac{1}{12}$ (vạch)\n\nMỗi phút kim phút đuổi gần kim giờ: $1-\\dfrac{1}{12}=\\dfrac{11}{12}$ (vạch)\n\nThời gian để kim phút đuổi kịp kim giờ là: $15:\\dfrac{11}{12}=15\\times\\dfrac{12}{11}=\\dfrac{180}{11}=16\\dfrac{4}{11}$ (phút)\n\nĐáp số: sau $16\\dfrac{4}{11}$ phút (lúc $3$ giờ $16\\dfrac{4}{11}$ phút)"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.3",
+  "dap_an": "$888+88+8+8+8=1000$ (dùng $8$ chữ số $8$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng chỉ viết bằng chữ số $8$ nên mỗi số hạng đều tận cùng bằng $8$; tổng $1000$ tận cùng bằng $0$ nên số các số hạng bị ép vào một cỡ nhất định, từ đó tìm được cách viết dùng ít chữ số $8$ nhất.\n\n**Bước 1.** Liệt kê các số hạng có thể dùng: chỉ có $8$, $88$, $888$ vì số gồm bốn chữ số $8$ đã lớn hơn $1000$.\n\n**Bước 2.** Xét chữ số hàng đơn vị: tổng các chữ số tận cùng của các số hạng phải tận cùng bằng $0$; thử lần lượt số các số hạng từ $1$ trở đi để tìm số các số hạng nhỏ nhất thoả mãn.\n\n**Bước 3.** Với số các số hạng nhỏ nhất đó, ước lượng xem có dùng được số $888$ hay không, rồi tìm xem mỗi loại $888$, $88$, $8$ dùng mấy lần để tổng đúng bằng $1000$.\n\n**Bước 4.** So sánh với trường hợp nhiều số hạng hơn để chắc chắn rằng cách vừa tìm dùng ít chữ số $8$ nhất.\n\n**Chú ý:** Đề yêu cầu ít chữ số $8$ nhất chứ không phải ít số hạng nhất, nên phải đếm tổng số chữ số $8$ của tất cả các số hạng.\n\n**Phần 2. Trình bày**\n\nCác số hạng chỉ có thể là $8$; $88$; $888$ (số $8888$ đã lớn hơn $1000$).\n\nMỗi số hạng tận cùng bằng $8$. Tổng $1000$ tận cùng bằng $0$ nên tổng các chữ số tận cùng của các số hạng phải tận cùng bằng $0$.\n\nVới $1$; $2$; $3$; $4$ số hạng thì tổng các chữ số tận cùng là $8$; $16$; $24$; $32$, đều không tận cùng bằng $0$. Với $5$ số hạng là $5\\times 8=40$, tận cùng bằng $0$ (được).\n\nXét $5$ số hạng: nếu không dùng $888$ thì tổng nhiều nhất là $5\\times 88=440$, bé hơn $1000$; nếu dùng hai số $888$ thì tổng đã lớn hơn $1000$. Vậy dùng đúng một số $888$.\n\nBốn số hạng còn lại có tổng là: $1000-888=112$\n\nBốn số hạng đó gồm $8$ và $88$: nếu dùng một số $88$ thì ba số còn lại là $8$, tổng là $88+8+8+8=112$ (đúng); nếu không dùng số $88$ thì tổng là $4\\times 8=32$ (sai); nếu dùng từ hai số $88$ trở lên thì tổng đã lớn hơn $112$ (sai).\n\nVậy với $5$ số hạng ta có: $888+88+8+8+8=1000$, dùng số chữ số $8$ là: $3+2+1+1+1=8$ (chữ số)\n\nNếu từ $10$ số hạng trở lên thì phải dùng ít nhất $10$ chữ số $8$, nhiều hơn $8$ chữ số.\n\nVậy cách viết dùng ít chữ số $8$ nhất là: $888+88+8+8+8=1000$."
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.4",
+  "dap_an": "$8$ phút $8$ giây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo thứ tự thực hiện phép tính thì chia trước, cộng sau; chia số đo thời gian cho một số thì chia từng đơn vị từ lớn đến bé, phần dư đổi sang đơn vị nhỏ hơn rồi cộng với số đo ở hàng tiếp theo.\n\n**Bước 1.** Chia số phút cho $5$: được một số phút nguyên và còn dư một số phút, rồi đổi số phút dư ra giây.\n\n**Bước 2.** Cộng số giây vừa đổi với $5$ giây của đề rồi chia cho $5$ để được số giây của thương.\n\n**Bước 3.** Cộng thương vừa tìm được với $3$ phút $31$ giây: cộng giây với giây, phút với phút rồi đổi $60$ giây thành $1$ phút nếu số giây từ $60$ trở lên.\n\n**Chú ý:** Không cộng $3$ phút $31$ giây vào trước khi chia, vì phép chia được thực hiện trước phép cộng.\n\n**Phần 2. Trình bày**\n\n$23$ phút $5$ giây $:5+3$ phút $31$ giây\n\n$23$ phút $:5=4$ phút (dư $3$ phút); $3$ phút $=180$ giây\n\n$(180+5)$ giây $:5=185:5=37$ giây\n\nDo đó $23$ phút $5$ giây $:5=4$ phút $37$ giây\n\n$4$ phút $37$ giây $+3$ phút $31$ giây $=7$ phút $68$ giây $=8$ phút $8$ giây"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.5",
+  "dap_an": "$y=24$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong biểu thức $y$ xuất hiện hai lần, một lần chia cho $8$ và một lần nhân với $8$; chia cho $8$ cũng là nhân với $\\dfrac{1}{8}$, nên gộp được thành \"$y$ nhân với một tổng\".\n\n**Bước 1.** Nhận ra $y:8+y\\times 8$ là số bị trừ của phép trừ có số trừ $125,888$ và hiệu $69,112$; tìm số bị trừ bằng cách lấy hiệu cộng số trừ.\n\n**Bước 2.** Viết $y:8$ thành $y\\times\\dfrac{1}{8}$ rồi đưa $y$ ra ngoài, dùng tính chất nhân một số với một tổng để được \"$y$ nhân với một tổng\".\n\n**Bước 3.** Tính tổng trong ngoặc bằng cách đổi số $8$ thành phân số có mẫu số $8$ rồi cộng hai phân số cùng mẫu.\n\n**Bước 4.** $y$ là thừa số chưa biết nên lấy tích chia cho thừa số đã biết, nhớ chia cho một phân số là nhân với phân số đảo ngược.\n\nThử lại: thay $y$ vừa tìm vào biểu thức ban đầu, tính ra phải bằng $69,112$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}y:8+y\\times 8-125,888=69,112\\\\ y:8+y\\times 8=69,112+125,888\\\\ y:8+y\\times 8=195\\\\ y\\times\\dfrac{1}{8}+y\\times 8=195\\\\ y\\times\\left(\\dfrac{1}{8}+8\\right)=195\\\\ y\\times\\dfrac{65}{8}=195\\\\ y=195:\\dfrac{65}{8}\\\\ y=195\\times\\dfrac{8}{65}\\\\ y=24\\end{array}$"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.6",
+  "dap_an": "$28$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mức ăn của mọi người như nhau nên coi lượng gạo một người ăn trong một ngày là một \"suất\"; số gạo còn lại đổi được ra số suất, rồi chia cho số người còn lại để biết ăn được bao nhiêu ngày (rút về một người trong một ngày).\n\n**Bước 1.** Tính số ngày còn lại theo kế hoạch ban đầu sau khi đã ăn $6$ ngày.\n\n**Bước 2.** Số gạo còn lại đủ cho $70$ người ăn trong số ngày còn lại đó; nhân hai số này để biết số gạo còn lại bằng bao nhiêu suất.\n\n**Bước 3.** Tính số người còn lại của đơn vị sau khi có $10$ người chuyển đi.\n\n**Bước 4.** Chia số suất gạo còn lại cho số người còn lại để tìm số ngày ăn tiếp.\n\n**Chú ý:** Số ngày ăn tiếp không phải số ngày còn lại theo kế hoạch cũ, vì số người ăn đã giảm đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi ăn $6$ ngày, theo kế hoạch cũ còn lại: $30-6=24$ (ngày)\n\nSố gạo còn lại đủ cho $1$ người ăn trong: $70\\times 24=1680$ (ngày)\n\nSố người của đơn vị sau khi chuyển đi $10$ người là: $70-10=60$ (người)\n\nSố gạo còn lại đủ cho $60$ người ăn trong: $1680:60=28$ (ngày)\n\nĐáp số: $28$ ngày"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.7",
+  "dap_an": "$31$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một phần mười và một phần tám số học sinh phải là số người nguyên, nên số học sinh chia hết cho cả $10$ và $8$; kết hợp với điều kiện \"chưa đến $50$ học sinh\" thì xác định được đúng số học sinh của lớp.\n\n**Bước 1.** Tìm các số chia hết cho cả $10$ và $8$ (số nhỏ nhất như vậy rồi gấp lên $2$, $3$ lần…).\n\n**Bước 2.** Chọn trong các số đó số thoả mãn lớp có chưa đến $50$ học sinh.\n\n**Bước 3.** Tính số học sinh xếp loại trung bình bằng cách chia cho $10$ và số học sinh xếp loại khá bằng cách chia cho $8$.\n\n**Bước 4.** Lấy số học sinh cả lớp trừ đi số học sinh trung bình và khá để được số học sinh giỏi.\n\n**Chú ý:** Lớp học phải có học sinh nên không chọn số $0$; chỉ có đúng một số thoả mãn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh chia hết cho cả $10$ và $8$ nên số học sinh là một trong các số $40$; $80$; $120$; …\n\nLớp chưa đến $50$ học sinh nên lớp có $40$ học sinh.\n\nSố học sinh xếp loại trung bình là: $40:10=4$ (học sinh)\n\nSố học sinh xếp loại khá là: $40:8=5$ (học sinh)\n\nSố học sinh xếp loại giỏi là: $40-4-5=31$ (học sinh)\n\nĐáp số: $31$ học sinh"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.8",
+  "dap_an": "$A=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số có tử và mẫu đều là tích, nên rút gọn được các thừa số giống nhau; muốn thế phải đổi các phép chia cho số thập phân thành phép nhân, rồi tìm mối liên hệ giữa các số ở tử và mẫu.\n\n**Bước 1.** Đổi các phép chia thành phép nhân: chia cho $0,2$ là nhân với $5$; chia cho $0,25$ là nhân với $4$; chia cho $0,5$ là nhân với $2$; chia cho $0,125$ là nhân với $8$.\n\n**Bước 2.** So sánh các số ở tử với các số ở mẫu: xem $19,8$ gấp $3,3$ mấy lần, $13,2$ gấp $6,6$ mấy lần, $88,88$ gấp $44,44$ mấy lần rồi viết lại để cùng một số xuất hiện ở cả tử và mẫu.\n\n**Bước 3.** Gạch bỏ các thừa số giống nhau ở tử và mẫu, chỉ còn lại các số nguyên bé.\n\n**Bước 4.** Tính phần còn lại của tử và của mẫu rồi chia để được giá trị của $A$.\n\n**Chú ý:** Chỉ được gạch bỏ thừa số khi cả tử số và mẫu số đều là một tích các thừa số.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{19,8:0,2\\times 44,44\\times 2\\times 13,2:0,25}{3,3\\times 88,88:0,5\\times 6,6:0,125\\times 5}$\n\n$A=\\dfrac{19,8\\times 5\\times 44,44\\times 2\\times 13,2\\times 4}{3,3\\times 88,88\\times 2\\times 6,6\\times 8\\times 5}$\n\n$A=\\dfrac{(3,3\\times 6)\\times 5\\times 44,44\\times 2\\times (6,6\\times 2)\\times 4}{3,3\\times (44,44\\times 2)\\times 2\\times 6,6\\times 8\\times 5}$\n\n$A=\\dfrac{6\\times 5\\times 2\\times 2\\times 4}{2\\times 2\\times 8\\times 5}$\n\n$A=\\dfrac{6\\times 4}{8}=\\dfrac{24}{8}$\n\n$A=3$"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.9",
+  "dap_an": "$31$ km",
+  "ghi_chu_nghi": "Hiểu: hai người đi với vận tốc không đổi; lần gặp thứ hai là gặp ngược chiều (An đã tới B và quay lại, Bình đã tới A và quay lại), chỗ gặp cách B 5 km về phía A.",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Lần gặp nhau thứ nhất",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 12,
+      "ghi": "gặp lần 1"
+     },
+     {
+      "ten": "B",
+      "x": 31
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 12,
+      "nhan": "An"
+     },
+     {
+      "tu": 31,
+      "den": 12,
+      "nhan": "Bình"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 31,
+      "nhan": "? km"
+     },
+     {
+      "tu": 0,
+      "den": 12,
+      "nhan": "12 km"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Từ lần gặp thứ nhất đến lần thứ hai",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 12,
+      "ghi": "gặp lần 1"
+     },
+     {
+      "ten": "D",
+      "x": 26,
+      "ghi": "gặp lần 2"
+     },
+     {
+      "ten": "B",
+      "x": 31
+     }
+    ],
+    "di": [
+     {
+      "tu": 12,
+      "den": 31,
+      "nhan": "An đến B"
+     },
+     {
+      "tu": 31,
+      "den": 26,
+      "nhan": "An quay lại"
+     },
+     {
+      "tu": 12,
+      "den": 0,
+      "nhan": "Bình đến A"
+     },
+     {
+      "tu": 0,
+      "den": 26,
+      "nhan": "Bình quay lại"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 26,
+      "den": 31,
+      "nhan": "5 km"
+     }
+    ]
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai người đi với vận tốc không đổi và đi ngược chiều nhau: cùng một khoảng thời gian thì tổng quãng đường hai người đi là một số lần $AB$; từ lúc gặp lần thứ nhất đến lần thứ hai hai người đi thêm tổng cộng $2$ lần $AB$, gấp đôi giai đoạn đầu, nên mỗi người cũng đi thêm gấp đôi quãng đã đi ở giai đoạn đầu.\n\n**Bước 1.** Giai đoạn đầu (từ lúc xuất phát đến lần gặp thứ nhất): hai người cùng đi hết quãng đường $AB$, trong đó An đi được $12$ km.\n\n**Bước 2.** Từ lần gặp thứ nhất đến lần gặp thứ hai: hai người đi tiếp tới hai đầu rồi quay lại gặp nhau; đếm xem tổng quãng đường hai người đi thêm bằng mấy lần $AB$ để suy ra thời gian gấp mấy lần giai đoạn đầu.\n\n**Bước 3.** Vì thời gian gấp mấy lần thì quãng đường mỗi người đi cũng gấp bấy nhiêu lần, nên tính được quãng đường An đi thêm ở giai đoạn sau.\n\n**Bước 4.** Quãng đường An đi thêm gồm đoạn từ chỗ gặp thứ nhất đến $B$ rồi quay lại $5$ km; từ đó tìm đoạn từ chỗ gặp thứ nhất đến $B$.\n\n**Bước 5.** Cộng đoạn từ $A$ đến chỗ gặp thứ nhất với đoạn từ chỗ gặp thứ nhất đến $B$ để được độ dài $AB$.\n\n**Chú ý:** Chỗ gặp thứ hai cách $B$ là $5$ km, tính từ $B$ về phía $A$; An đã đi qua $B$ rồi mới quay lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(An đi $A\\to C$ được $12$ km; Bình đi $B\\to C$; hai người gặp nhau lần 1 tại $C$)\n\nTừ lúc xuất phát đến lần gặp thứ nhất, hai người cùng đi hết quãng đường $AB$.\n\nTa có sơ đồ:\n\n(An đi $C\\to B$ rồi quay lại $D$ cách $B$ $5$ km; Bình đi $C\\to A$ rồi quay lại $D$)\n\nTừ lần gặp thứ nhất đến lần gặp thứ hai: An đi từ $C$ đến $B$, Bình đi từ $C$ đến $A$, hai người đi hết $AB$; sau đó cùng đi quay lại và gặp nhau, lại đi hết $AB$. Tổng quãng đường hai người đi thêm là $2$ lần $AB$.\n\nTổng quãng đường hai người đi ở giai đoạn này gấp $2$ lần giai đoạn đầu; vận tốc mỗi người không đổi nên thời gian cũng gấp $2$ lần, do đó An đi được gấp $2$ lần giai đoạn đầu: $12\\times 2=24$ (km)\n\nĐoạn từ $C$ đến $B$ dài là: $24-5=19$ (km)\n\nQuãng đường $AB$ dài là: $12+19=31$ (km)\n\nĐáp số: $31$ km"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P1.10",
+  "dap_an": "$196\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Hình vẽ không đúng tỉ lệ; các số 1–6 trên hình là TÊN các hình (1 là hình vuông tô màu, 6 là hình chữ nhật), không phải số đo. Quan hệ cạnh đọc theo vị trí các hình: (2) và (3) cùng đứng trên đáy tờ bìa, cạnh trên cùng nằm trên một đường thẳng (với đáy hình 1 và đáy hình 6) nên bằng nhau. Kết quả: cạnh các hình vuông (1)(2)(3)(4)(5) lần lượt 2; 4; 4; 6; 8 cm, hình 6 là 6 x 8 cm, cạnh tờ bìa 14 cm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi cạnh của một hình vuông hay của tờ bìa được ghép từ các cạnh của những hình khác, nên so sánh độ dài từng cạnh trên hình để tìm lần lượt cạnh các hình, bắt đầu từ hình số $1$ đã biết diện tích.\n\n**Bước 1.** Tìm cạnh hình vuông số $1$ (hình tô màu) từ diện tích của nó: cạnh là số nhân với chính nó bằng $4$.\n\n**Bước 2.** Nhìn hình thấy hình số $2$ và hình số $3$ cùng nằm trên đáy tờ bìa và có cạnh trên nằm trên cùng một đường thẳng nên hai hình vuông này bằng nhau.\n\n**Bước 3.** Viết hai quan hệ giữa các cạnh: cạnh bên trái của hình $4$ gồm cạnh phải của hình $1$ và hình $3$; cạnh dưới của hình $5$ gồm cạnh trên của hình $1$ và hình $4$.\n\n**Bước 4.** Cạnh phải của tờ bìa gồm cạnh hình $5$ và hình $4$, còn cạnh đáy gồm cạnh hình $2$, hình $3$ và hình $4$; cùng bớt cạnh hình $4$ ta so sánh được cạnh hình $5$ với tổng cạnh hình $2$ và hình $3$, từ đó tìm lần lượt cạnh các hình.\n\n**Bước 5.** Tính cạnh tờ bìa bằng cách cộng các cạnh nằm dọc theo đáy rồi tính diện tích hình vuông.\n\n**Chú ý:** Hình vẽ không đúng tỉ lệ nên không đo bằng mắt; chỉ dựa vào vị trí các hình đã ghép để tìm quan hệ các cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $2\\times 2=4$ nên cạnh hình vuông số $1$ là $2$ cm.\n\nTheo hình vẽ, hình số $2$ và hình số $3$ cùng đứng trên đáy tờ bìa và có cạnh trên nằm trên một đường thẳng nên cạnh hình $2$ bằng cạnh hình $3$.\n\nCạnh hình $4=$ cạnh hình $1+$ cạnh hình $3$.\n\nCạnh hình $5=$ cạnh hình $1+$ cạnh hình $4=$ cạnh hình $1+$ cạnh hình $1+$ cạnh hình $3$.\n\nCạnh phải của tờ bìa gồm hình $5$ và hình $4$, cạnh đáy gồm hình $2$, hình $3$ và hình $4$ nên cạnh hình $5=$ cạnh hình $2+$ cạnh hình $3$.\n\nDo đó cạnh hình $2+$ cạnh hình $3=$ cạnh hình $1+$ cạnh hình $1+$ cạnh hình $3$, suy ra cạnh hình $2=2+2=4$ (cm).\n\nCạnh hình $3$ là $4$ cm.\n\nCạnh hình $4$ là: $2+4=6$ (cm)\n\nCạnh hình $5$ là: $2+6=8$ (cm)\n\nCạnh tờ bìa là: $4+4+6=14$ (cm)\n\nDiện tích tờ bìa ban đầu là: $14\\times 14=196$ ($\\text{cm}^2$)\n\nĐáp số: $196\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P2.1",
+  "dap_an": "a) $2,244\\ \\text{m}^3$; b) $3\\dfrac{3}{560}$ giờ",
+  "ghi_chu_nghi": "Ý b: 75% thể tích = 1,683 m³ = 1683 lít, chia cho 560 l/giờ ra 1683/560 = 3 3/560 giờ (khoảng 3,005 giờ) — không tròn. Nếu vòi chảy 561 l/giờ thì ra đúng 3 giờ. Nghi số liệu 560 in sai (hoặc đáp án gốc làm tròn \"khoảng 3 giờ\"). Đã giải đúng theo đề; nhờ CEO / nguồn đối chiếu quyết định.",
+  "so_do_mo_ta": {
+   "tieu_de": "Nửa chu vi đáy bể",
+   "gia_tri_phan": 1.1,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "0,6 m"
+    }
+   ],
+   "tong": "2,8 m",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích xung quanh của hình hộp chữ nhật bằng chu vi đáy nhân chiều cao; từ đó tìm nửa chu vi đáy, rồi tìm chiều dài và chiều rộng bằng bài toán tổng – hiệu; ý b) dùng lại thể tích đã tìm ở ý a).\n\n**Bước 1.** Ý a): từ diện tích xung quanh và chiều cao tìm chu vi đáy, rồi chia $2$ để biết tổng của chiều dài và chiều rộng.\n\n**Bước 2.** Đây là bài tổng – hiệu: biết tổng chiều dài và chiều rộng, biết chiều dài hơn chiều rộng bao nhiêu nên tìm chiều rộng trước, rồi tìm chiều dài; sau đó nhân ba kích thước để được thể tích.\n\n**Bước 3.** Ý b): lượng nước cần có bằng $75\\%$ thể tích bể, tính bằng cách lấy thể tích nhân $75\\%$ (dùng lại kết quả ý a).\n\n**Bước 4.** Đổi lượng nước vừa tìm từ mét khối ra lít, nhớ $1$ mét khối bằng $1000$ lít.\n\n**Bước 5.** Chia lượng nước cần có cho lượng nước chảy vào mỗi giờ để biết số giờ.\n\n**Chú ý:** Diện tích xung quanh không tính hai mặt đáy, nên chỉ cần chu vi đáy nhân chiều cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Chu vi đáy bể là: $6,72:1,2=5,6$ (m)\n\nNửa chu vi đáy (tổng chiều dài và chiều rộng) là: $5,6:2=2,8$ (m)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; chiều dài 1 phần và hơn $0,6$ m; tổng $2,8$ m)\n\nChiều rộng bể là: $(2,8-0,6):2=1,1$ (m)\n\nChiều dài bể là: $1,1+0,6=1,7$ (m)\n\nThể tích bể nước là: $1,7\\times 1,1\\times 1,2=2,244$ ($\\text{m}^3$)\n\nb) Thể tích nước khi bằng $75\\%$ thể tích bể là: $2,244\\times 75\\%=1,683$ ($\\text{m}^3$)\n\nĐổi: $1,683\\ \\text{m}^3=1683$ lít\n\nThời gian để nước trong bể bằng $75\\%$ thể tích bể là: $1683:560=\\dfrac{1683}{560}=3\\dfrac{3}{560}$ (giờ)\n\nĐáp số: a) $2,244\\ \\text{m}^3$; b) $3\\dfrac{3}{560}$ giờ"
+ },
+ {
+  "ma_nguon": "NS-HB1 · P2.2",
+  "dap_an": "$8$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả công việc là $1$; mỗi người trong $1$ giờ làm được một phần công việc. Phần việc ba người cùng làm trong $1$ giờ bằng tổng phần việc của từng người, nên bớt phần việc của người thứ nhất và thứ hai thì còn lại phần việc của người thứ ba.\n\n**Bước 1.** Tính phần công việc ba người cùng làm trong $1$ giờ, biết họ làm xong trong $3$ giờ.\n\n**Bước 2.** Tính phần công việc người thứ nhất làm một mình trong $1$ giờ và phần công việc người thứ hai làm một mình trong $1$ giờ, rồi cộng hai phần đó lại.\n\n**Bước 3.** Lấy phần việc ba người làm trong $1$ giờ trừ đi phần việc hai người đầu làm trong $1$ giờ để được phần việc người thứ ba làm trong $1$ giờ.\n\n**Bước 4.** Tính thời gian người thứ ba làm một mình xong công việc bằng cách lấy $1$ chia cho phần việc làm được trong $1$ giờ.\n\n**Chú ý:** Muốn trừ hay cộng các phân số phải quy đồng về cùng mẫu số trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMột giờ cả ba người làm được: $1:3=\\dfrac{1}{3}$ (công việc)\n\nMột giờ người thứ nhất làm được: $1:8=\\dfrac{1}{8}$ (công việc)\n\nMột giờ người thứ hai làm được: $1:12=\\dfrac{1}{12}$ (công việc)\n\nMột giờ hai người đầu làm được: $\\dfrac{1}{8}+\\dfrac{1}{12}=\\dfrac{3}{24}+\\dfrac{2}{24}=\\dfrac{5}{24}$ (công việc)\n\nMột giờ người thứ ba làm được: $\\dfrac{1}{3}-\\dfrac{5}{24}=\\dfrac{8}{24}-\\dfrac{5}{24}=\\dfrac{3}{24}=\\dfrac{1}{8}$ (công việc)\n\nNgười thứ ba làm một mình xong công việc sau: $1:\\dfrac{1}{8}=8$ (giờ)\n\nĐáp số: $8$ giờ"
+ }
+]

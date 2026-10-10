@@ -1,0 +1,168 @@
+[
+ {
+  "ma_nguon": "NTT 2022 · 1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $45,6$ nên đặt $45,6$ ra ngoài; khi đó trong ngoặc là tổng hai tỉ số phần trăm, và $50\\%$ của một số chính là một nửa số đó.\n\n**Bước 1.** Nhìn kĩ hai tích thì thấy cùng có thừa số $45,6$, đó là dấu hiệu để dùng tính chất nhân một tổng với một số, đặt $45,6$ làm thừa số chung.\n\n**Bước 2.** Cộng hai tỉ số phần trăm trong ngoặc, hai số $27\\%$ và $23\\%$ cộng lại cho một số tròn.\n\n**Bước 3.** Tìm $50\\%$ của $45,6$: vì $50\\%$ là một nửa nên chỉ cần chia $45,6$ cho $2$, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Không cần đổi từng tỉ số phần trăm ra số thập phân rồi nhân riêng từng tích, làm vậy dài và dễ sai.\n\n**Phần 2. Trình bày**\n\n$27\\%\\times 45,6+23\\%\\times 45,6$\n\n$=(27\\%+23\\%)\\times 45,6$\n\n$=50\\%\\times 45,6$\n\n$=45,6:2$\n\n$=22,8$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "NTT 2022 · 2",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số khẩu trang còn lại ứng với một phân số của số khẩu trang lúc đầu; biết $12$ chiếc ứng với phân số đó thì lấy $12$ chia cho phân số để tìm số lúc đầu.\n\n**Bước 1.** Coi số khẩu trang lúc đầu là cả hộp, tức $1$ (một đơn vị); Hà tặng $\\dfrac{2}{5}$ số khẩu trang nên tính xem số còn lại bằng mấy phần số lúc đầu.\n\n**Bước 2.** Số $12$ chiếc là số khẩu trang CÒN LẠI, nên nó ứng với phân số vừa tìm được ở bước trước.\n\n**Bước 3.** Muốn tìm một số khi biết phân số của nó, ta lấy số đã cho chia cho phân số ấy, rồi đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** $12$ là số còn lại chứ không phải số đã tặng; nếu lấy $12$ chia cho $\\dfrac{2}{5}$ thì sẽ ra đúng một phương án sai.\n\nThử lại: lấy số tìm được trừ đi $\\dfrac{2}{5}$ của nó xem có đủ số khẩu trang còn lại đề cho hay không.\n\n**Phần 2. Trình bày**\n\nPhân số chỉ số khẩu trang còn lại là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số khẩu trang lúc đầu)\n\nSố khẩu trang trong hộp lúc đầu là: $12:\\dfrac{3}{5}=20$ (chiếc)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT 2022 · 3",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường bằng vận tốc nhân thời gian; vận tốc tính theo km/giờ nên thời gian đi phải đổi ra giờ trước khi nhân.\n\n**Bước 1.** Tính thời gian bạn Hòa đi từ nhà đến trường bằng cách lấy giờ đến trừ giờ khởi hành.\n\n**Bước 2.** Đổi thời gian đó từ phút ra giờ (lấy số phút chia cho $60$) để cùng đơn vị với vận tốc.\n\n**Bước 3.** Dùng công thức quãng đường bằng vận tốc nhân thời gian, rồi đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** Nếu nhân thẳng $12$ với số phút thì sẽ ra một số rất lớn, vì đơn vị chưa khớp nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Bạn Hòa đi từ nhà đến trường với vận tốc $12$ km/giờ trong $25$ phút; quãng đường cần tìm)\n\nThời gian bạn Hòa đi từ nhà đến trường là: $7$ giờ $-\\ 6$ giờ $35$ phút $=25$ phút\n\nĐổi: $25$ phút $=\\dfrac{25}{60}=\\dfrac{5}{12}$ giờ\n\nQuãng đường từ nhà bạn Hòa đến trường là: $12\\times\\dfrac{5}{12}=5$ (km)\n\nChọn A.",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Hòa đi lúc 6 giờ 35 phút, đến lúc 7 giờ",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0
+    },
+    {
+     "ten": "Trường",
+     "x": 5
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 5,
+     "nhan": "12 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 5,
+     "nhan": "? km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2022 · 4",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật bằng diện tích đáy nhân chiều cao, nên chiều cao là một thừa số chưa biết của phép nhân.\n\n**Bước 1.** Nhớ công thức thể tích hình hộp chữ nhật: thể tích bằng diện tích mặt đáy nhân với chiều cao.\n\n**Bước 2.** Đề cho thể tích và diện tích đáy; thể tích là tích, diện tích đáy là một thừa số nên chiều cao là thừa số còn lại.\n\n**Bước 3.** Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Thể tích tính bằng $\\text{cm}^3$, diện tích đáy tính bằng $\\text{cm}^2$, chia hai số đó cho nhau được độ dài tính bằng cm.\n\n**Phần 2. Trình bày**\n\nChiều cao của hình hộp chữ nhật là: $336:48=7$ (cm)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2022 · 5",
+  "dap_an": "$675$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba số tự nhiên liên tiếp hơn kém nhau $1$ đơn vị nên cách đều nhau; số ở giữa chính là trung bình cộng của ba số, bằng tổng chia cho $3$.\n\n**Bước 1.** Nhận ra ba số liên tiếp là ba số cách đều nhau, mỗi số hơn số đứng trước đúng $1$ đơn vị, nên số ở giữa bằng trung bình cộng của cả ba số.\n\n**Bước 2.** Tính trung bình cộng bằng cách lấy tổng ba số chia cho $3$ để tìm số ở giữa.\n\n**Bước 3.** Số lớn nhất đứng liền sau số ở giữa nên bằng số ở giữa cộng thêm $1$.\n\n**Chú ý:** Đề hỏi số lớn nhất, đừng dừng lại ở số ở giữa.\n\nThử lại: cộng ba số vừa tìm xem có đúng bằng tổng đề cho hay không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ở giữa trong ba số là: $2022:3=674$\n\nSố lớn nhất trong ba số là: $674+1=675$\n\nĐáp số: $675$"
+ },
+ {
+  "ma_nguon": "NTT 2022 · 6",
+  "dap_an": "$205$ huy chương vàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Số huy chương bạc bằng $\\dfrac{25}{41}$ số huy chương vàng\" nghĩa là chia số huy chương vàng thành $41$ phần bằng nhau thì số huy chương bạc là $25$ phần như thế; đây là bài tổng – tỉ.\n\n**Bước 1.** Đổi phân số $\\dfrac{25}{41}$ thành số phần bằng nhau: số huy chương vàng là $41$ phần, số huy chương bạc là $25$ phần.\n\n**Bước 2.** Tính tổng số phần bằng nhau của huy chương vàng và huy chương bạc.\n\n**Bước 3.** Tổng $330$ huy chương ứng với tổng số phần vừa tìm, nên chia $330$ cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 4.** Số huy chương vàng gồm $41$ phần nên lấy giá trị một phần nhân với $41$.\n\n**Chú ý:** Đề hỏi số huy chương vàng, đừng nhầm với số huy chương bạc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì số huy chương bạc bằng $\\dfrac{25}{41}$ số huy chương vàng nên số huy chương vàng là $41$ phần, số huy chương bạc là $25$ phần như thế.\n\nTổng số phần bằng nhau là: $41+25=66$ (phần)\n\nGiá trị của một phần là: $330:66=5$ (huy chương)\n\nSố huy chương vàng của Đoàn thể thao Việt Nam là: $5\\times 41=205$ (huy chương)\n\nĐáp số: $205$ huy chương vàng"
+ },
+ {
+  "ma_nguon": "NTT 2022 · 7",
+  "dap_an": "$1500000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi $20\\%$ so với tiền vốn nên tiền vốn là $100\\%$ và giá bán gồm tiền vốn cộng tiền lãi; biết giá bán ứng với bao nhiêu phần trăm tiền vốn thì tìm được tiền vốn.\n\n**Bước 1.** Coi tiền vốn là $100\\%$; tiền lãi là $20\\%$ của tiền vốn.\n\n**Bước 2.** Giá bán bằng tiền vốn cộng tiền lãi, nên tính xem giá bán bằng bao nhiêu phần trăm tiền vốn.\n\n**Bước 3.** Biết số tiền $1800000$ đồng ứng với số phần trăm vừa tìm của tiền vốn, muốn tìm tiền vốn ta lấy số tiền đó chia cho số phần trăm ấy.\n\n**Chú ý:** Lãi tính trên tiền vốn chứ không tính trên giá bán, nên không được lấy giá bán trừ đi $20\\%$ của giá bán.\n\nThử lại: lấy tiền vốn vừa tìm cộng với $20\\%$ của nó xem có đúng bằng giá bán hay không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán so với tiền vốn bằng: $100\\%+20\\%=120\\%$\n\nTiền vốn của chiếc quạt điện là: $1800000:120\\%=1500000$ (đồng)\n\nĐáp số: $1500000$ đồng"
+ },
+ {
+  "ma_nguon": "NTT 2022 · 8",
+  "dap_an": "$72\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không cho cạnh hình vuông AEFG; theo hình: E nằm trên AD, G-A-B thẳng hàng, F đối đỉnh A của AEFG. Đáp số 72 cm² KHÔNG phụ thuộc cạnh AEFG. Cách làm: AF // BD (hai đường chéo của hai hình vuông cùng nghiêng 45° so với đường thẳng GB) nên S(BDF) = S(BDA) = nửa hình vuông ABCD. Chỗ \"AF // BD\" dựa vào hình vẽ + tính chất hai đường chéo hình vuông; nếu CEO muốn chứng minh song song theo lối khác (hay cách khác: chia tam giác BDF thành 3 tam giác nhỏ rồi cộng, cần gọi cạnh AEFG và triệt tiêu) thì chốt.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $AF$ và $BD$ đều là đường chéo của hình vuông và cùng nghiêng $45^\\circ$ so với đường thẳng $GB$, nên $AF$ song song với $BD$; khi đó hai tam giác $BDF$ và $BDA$ có chung đáy $BD$ và chiều cao bằng nhau nên diện tích bằng nhau.\n\n**Bước 1.** Nhìn hình: $AF$ là đường chéo hình vuông $AEFG$, $BD$ là đường chéo hình vuông $ABCD$; mỗi đường chéo hình vuông chia góc vuông thành hai góc $45^\\circ$ nên hai đường chéo này cùng nghiêng $45^\\circ$ so với đường thẳng $GB$, suy ra $AF$ song song với $BD$.\n\n**Bước 2.** Xét hai tam giác $BDF$ và $BDA$: chung đáy $BD$, còn hai đỉnh $F$ và $A$ cùng nằm trên một đường thẳng song song với $BD$ nên đường cao hạ từ $F$ và từ $A$ xuống $BD$ bằng nhau, vậy diện tích hai tam giác bằng nhau.\n\n**Bước 3.** Tam giác $BDA$ là một nửa hình vuông $ABCD$ (đường chéo $BD$ chia hình vuông thành hai tam giác bằng nhau), nên tính diện tích hình vuông rồi chia $2$.\n\n**Chú ý:** Đề không cho cạnh hình vuông $AEFG$, và ta cũng không cần biết, vì diện tích tam giác $BDF$ không phụ thuộc vào nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $AF$ và $BD$ là hai đường chéo của hai hình vuông, cùng nghiêng $45^\\circ$ so với đường thẳng $GB$ nên $AF$ song song với $BD$.\n\nTam giác $BDF$ và tam giác $BDA$ có chung đáy $BD$, chiều cao hạ từ $F$ và từ $A$ xuống $BD$ bằng nhau (vì $AF$ song song với $BD$), suy ra $S_{BDF}=S_{BDA}$.\n\nDiện tích hình vuông $ABCD$ là: $12\\times 12=144$ ($\\text{cm}^2$)\n\nDiện tích tam giác $BDA$ bằng một nửa diện tích hình vuông $ABCD$ nên là: $144:2=72$ ($\\text{cm}^2$)\n\nDiện tích tam giác $BDF$ là $72$ $\\text{cm}^2$.\n\nĐáp số: $72\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NTT 2022 · 9",
+  "dap_an": "a) $\\dfrac{7}{10}$; b) $40$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển dầu từ thùng này sang thùng kia thì TỔNG số lít dầu của hai thùng không đổi; nhờ đó ta so sánh được số phần lúc đầu với số phần lúc sau.\n\n**Bước 1.** Đổi \"thùng thứ hai bằng $\\dfrac{3}{7}$ thùng thứ nhất\" thành số phần bằng nhau, rồi tính tổng số phần của hai thùng; ý a) lấy số phần của thùng thứ nhất so với tổng số phần.\n\n**Bước 2.** Sau khi chuyển dầu, tổng số dầu không đổi và hai thùng bằng nhau, nên mỗi thùng chiếm một nửa tổng số phần; tính số phần của mỗi thùng lúc đó.\n\n**Bước 3.** So sánh thùng thứ nhất lúc đầu với lúc sau để biết thùng thứ nhất đã giảm đi mấy phần; số phần giảm đó ứng với $8$ lít dầu nên tìm được giá trị một phần.\n\n**Bước 4.** Lấy giá trị một phần nhân với tổng số phần để tìm tổng số lít dầu của hai thùng (ý b).\n\n**Chú ý:** Ý b) dùng lại tổng số phần ở ý a); không được coi thùng thứ nhất giảm $8$ lít mà thùng thứ hai không tăng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Thùng thứ hai bằng $\\dfrac{3}{7}$ thùng thứ nhất nên thùng thứ nhất là $7$ phần, thùng thứ hai là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Thùng thứ nhất 7 phần; thùng thứ hai 3 phần)\n\nTổng số phần bằng nhau của hai thùng là: $7+3=10$ (phần)\n\nSố lít dầu thùng thứ nhất lúc ban đầu so với tổng số lít dầu cả hai thùng là: $\\dfrac{7}{10}$\n\nb) Chuyển dầu từ thùng này sang thùng kia thì tổng số lít dầu không đổi, vẫn là $10$ phần.\n\nSau khi chuyển, hai thùng bằng nhau nên mỗi thùng có: $10:2=5$ (phần)\n\nThùng thứ nhất lúc sau ít hơn lúc đầu: $7-5=2$ (phần)\n\nTa có sơ đồ:\n\n(Thùng thứ nhất lúc đầu 7 phần; thùng thứ nhất lúc sau 5 phần, ít hơn 8 lít; thùng thứ hai lúc sau 5 phần)\n\n$2$ phần ứng với $8$ lít nên giá trị một phần là: $8:2=4$ (lít)\n\nTổng số lít dầu trong cả hai thùng là: $4\\times 10=40$ (lít)\n\nĐáp số: a) $\\dfrac{7}{10}$; b) $40$ lít",
+  "so_do_mo_ta": [
+   {
+    "gia_tri_phan": 4,
+    "hang": [
+     {
+      "nhan": "Thùng thứ nhất",
+      "phan": 7
+     },
+     {
+      "nhan": "Thùng thứ hai",
+      "phan": 3
+     }
+    ]
+   },
+   {
+    "tieu_de": "Sau khi chuyển 8 lít",
+    "gia_tri_phan": 4,
+    "hang": [
+     {
+      "nhan": "Thùng 1 lúc đầu",
+      "phan": 7
+     },
+     {
+      "nhan": "Thùng 1 lúc sau",
+      "phan": 5
+     },
+     {
+      "nhan": "Thùng 2 lúc sau",
+      "phan": 3,
+      "them": "8 lít"
+     }
+    ],
+    "hieu": "8 lít"
+   }
+  ]
+ },
+ {
+  "ma_nguon": "NTT 2022 · 10",
+  "dap_an": "a) $6$ km/giờ; b) $3,6$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thuyền đi xuôi và đi ngược dòng cùng quãng đường $AB$, nên vận tốc gấp bao nhiêu lần thì thời gian bằng một phần bấy nhiêu lần; tổng thời gian đi và về là $1$ giờ nên đây là bài tổng – tỉ về thời gian.\n\n**Bước 1.** Ý a): vận tốc xuôi dòng bằng $\\dfrac{3}{2}$ vận tốc ngược dòng, nên muốn tìm vận tốc ngược dòng ta lấy vận tốc xuôi dòng chia cho $\\dfrac{3}{2}$.\n\n**Bước 2.** Thuyền xuất phát lúc $8$ giờ và về đến bến $A$ lúc $9$ giờ nên tính được tổng thời gian đi xuôi dòng và đi ngược dòng.\n\n**Bước 3.** Cùng quãng đường, vận tốc xuôi dòng gấp vận tốc ngược dòng một số lần thì thời gian đi xuôi dòng bằng một phần số lần đó thời gian đi ngược dòng; từ đó đổi thành số phần bằng nhau của hai thời gian.\n\n**Bước 4.** Chia tổng thời gian cho tổng số phần để tìm một phần, rồi nhân với số phần của thời gian đi xuôi dòng.\n\n**Bước 5.** Đổi thời gian đi xuôi dòng ra giờ rồi lấy vận tốc xuôi dòng nhân với thời gian đó để tìm quãng đường $AB$.\n\n**Chú ý:** Quãng đường $AB$ chỉ là MỘT chiều, nên không nhân vận tốc với cả $1$ giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Vận tốc của thuyền khi đi ngược dòng là: $9:\\dfrac{3}{2}=6$ (km/giờ)\n\nb) Thời gian thuyền đi xuôi dòng rồi đi ngược dòng về bến $A$ là: $9$ giờ $-\\ 8$ giờ $=1$ giờ $=60$ phút\n\nTa có sơ đồ:\n\n(Thuyền đi xuôi dòng từ $A$ đến $B$ với vận tốc $9$ km/giờ rồi quay về $A$ với vận tốc $6$ km/giờ; quãng đường $AB$ cần tìm)\n\nCùng đi quãng đường $AB$, vận tốc xuôi dòng gấp vận tốc ngược dòng số lần là: $9:6=\\dfrac{3}{2}$ (lần)\n\nNên thời gian đi xuôi dòng bằng $\\dfrac{2}{3}$ thời gian đi ngược dòng, tức thời gian đi xuôi dòng là $2$ phần, thời gian đi ngược dòng là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Thời gian đi xuôi dòng 2 phần; thời gian đi ngược dòng 3 phần; tổng 60 phút)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nGiá trị của một phần là: $60:5=12$ (phút)\n\nThời gian thuyền đi xuôi dòng là: $12\\times 2=24$ (phút)\n\nĐổi: $24$ phút $=0,4$ giờ\n\nQuãng đường từ bến $A$ đến bến $B$ là: $9\\times 0,4=3,6$ (km)\n\nĐáp số: a) $6$ km/giờ; b) $3,6$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Đi xuôi dòng rồi quay về",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 3.6
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 3.6,
+      "nhan": "Xuôi dòng: 9 km/giờ"
+     },
+     {
+      "tu": 3.6,
+      "den": 0,
+      "nhan": "Ngược dòng: 6 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 3.6,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "gia_tri_phan": 12,
+    "hang": [
+     {
+      "nhan": "Thời gian xuôi",
+      "phan": 2
+     },
+     {
+      "nhan": "Thời gian ngược",
+      "phan": 3
+     }
+    ],
+    "tong": "60 phút",
+    "dau_hoi": [
+     "Thời gian xuôi"
+    ]
+   }
+  ]
+ }
+]

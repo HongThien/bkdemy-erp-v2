@@ -51,9 +51,14 @@ for (const c of vao.cau) {
       tinhSach = k.dap_so_sach == null ? null : cs ? cs === chu(k.dap_so_tinh) : (k.khop_sach ?? null)
     } else {
       const a = tapSo(s.dap_an), b = tapSo(k.dap_so_tinh), d = tapSo(k.dap_so_sach)
-      soanTinh = a.length || b.length ? bang(a, b) || nam(a, b) || nam(b, a) : String(s.dap_an).trim().toLowerCase() === String(k.dap_so_tinh).trim().toLowerCase()
+      // đáp số bằng CHỮ (Thứ Tư, Đúng/Sai, màu đỏ, tên người…): bên này nằm trong bên kia sau khi bỏ công thức, dấu câu, hoa thường
+      const chuTron = (x) => String(x ?? '').replace(/\$|\\[a-zA-Z]+|[{}]/g, ' ').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim()
+      const sa = chuTron(s.dap_an), ti = chuTron(k.dap_so_tinh)
+      const chuKhop = sa.length > 0 && (ti.includes(sa) || sa.includes(ti))
+      soanTinh = a.length || b.length ? (bang(a, b) || nam(a, b) || nam(b, a)) || (!a.length && chuKhop) : chuKhop
       tinhSach = k.dap_so_sach == null ? null : (b.length || d.length ? bang(b, d) || nam(b, d) || nam(d, b) : null)
-      if (tinhSach == null && k.dap_so_sach != null) tinhSach = k.khop_sach ?? null   // đáp số chữ (Thứ Ba…): tin cờ của người kiểm
+      // người kiểm đã nhìn cả hai và ghi khop_sach = true ⇒ tin cờ ấy (đáp số chữ, phân số viết khác kiểu… máy so hay báo nhầm)
+      if (k.dap_so_sach != null && (tinhSach == null || (tinhSach === false && k.khop_sach === true))) tinhSach = k.khop_sach ?? null
       if (!a.length && !b.length && !soanTinh) vi = 'đáp số bằng chữ — so tay'
     }
     loai = !soanTinh ? 'lech' : tinhSach === false ? 'sach_lech' : 'khop'
@@ -66,7 +71,8 @@ console.log(`${vao.ma_de}: ${vao.cau.length} câu · ${JSON.stringify(dem)}${thu
 const cat = (s, n) => String(s ?? '—').replace(/\s+/g, ' ').slice(0, n)
 for (const r of kq) {
   const dau = { khop: '✔', sach_lech: '◐', lech: '✖', mot_nguon: '?', bo: '∅', thieu_soan: '✖' }[r.loai]
-  if (r.loai !== 'khop' || r.de_lech || r.ghi_chu_soan) {
+  // mặc định chỉ in câu KHÔNG khớp; --day-du in thêm câu khớp có ghi chú
+  if (r.loai !== 'khop' || (args.includes('--day-du') && (r.de_lech || r.ghi_chu_soan))) {
     console.log(`${dau} ${r.ma_nguon} [${r.kieu}] ${r.loai}\n    soạn: ${cat(r.soan, 90)}\n    tính: ${cat(r.tinh, 90)}\n    sách: ${cat(r.sach, 90)}${r.de_lech ? '\n    ĐỀ LỆCH: ' + cat(r.de_lech, 200) : ''}${r.ghi_chu_kiem ? '\n    kiểm ghi: ' + cat(r.ghi_chu_kiem, 220) : ''}${r.ghi_chu_soan ? '\n    soạn ghi: ' + cat(r.ghi_chu_soan, 220) : ''}${r.vi ? '\n    (' + r.vi + ')' : ''}`)
   }
 }

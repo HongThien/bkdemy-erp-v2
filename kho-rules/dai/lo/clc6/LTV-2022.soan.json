@@ -1,0 +1,171 @@
+[
+ {
+  "ma_nguon": "LTV 2022 · 1",
+  "dap_an": "$\\dfrac{7}{8}<\\dfrac{9}{10}<\\dfrac{4}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số $\\dfrac{7}{8}$ và $\\dfrac{9}{10}$ đều bé hơn $1$ còn $\\dfrac{4}{3}$ lớn hơn $1$, nên chỉ phải so sánh kĩ hai phân số đầu bằng cách quy đồng mẫu số.\n\n**Bước 1.** So sánh từng phân số với $1$: phân số có tử số bé hơn mẫu số thì bé hơn $1$, phân số có tử số lớn hơn mẫu số thì lớn hơn $1$.\n\n**Bước 2.** Hai phân số cùng bé hơn $1$ thì chưa biết phân số nào lớn hơn, nên quy đồng hai phân số này về mẫu số chung của $10$ và $8$.\n\n**Bước 3.** Sau khi cùng mẫu số, phân số nào có tử số lớn hơn thì lớn hơn; từ đó xếp cả ba phân số theo thứ tự từ bé đến lớn.\n\n**Chú ý:** Không so sánh chỉ bằng tử số hoặc chỉ bằng mẫu số; phải đưa về cùng mẫu số rồi mới so sánh.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{9}{10}=\\dfrac{9\\times 4}{10\\times 4}=\\dfrac{36}{40}$\n\n$\\dfrac{7}{8}=\\dfrac{7\\times 5}{8\\times 5}=\\dfrac{35}{40}$\n\nVì $\\dfrac{35}{40}<\\dfrac{36}{40}$ nên $\\dfrac{7}{8}<\\dfrac{9}{10}$.\n\nVì $\\dfrac{9}{10}<1$ và $\\dfrac{4}{3}>1$ nên $\\dfrac{9}{10}<\\dfrac{4}{3}$.\n\nVậy các phân số xếp từ bé đến lớn là: $\\dfrac{7}{8}<\\dfrac{9}{10}<\\dfrac{4}{3}$."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 2",
+  "dap_an": "$20,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số bằng tổng hai số chia cho $2$, nên muốn tìm số còn lại thì tìm tổng hai số trước rồi trừ đi số đã biết.\n\n**Bước 1.** Tìm tổng của hai số bằng cách lấy trung bình cộng nhân với $2$, vì có đúng hai số hạng.\n\n**Bước 2.** Biết tổng và một trong hai số, lấy tổng trừ đi số đã biết để được số còn lại.\n\n**Bước 3.** Thử lại: cộng hai số rồi chia cho $2$, kết quả phải đúng bằng trung bình cộng đề đã cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $21,35\\times 2=42,7$\n\nSố còn lại là: $42,7-22,1=20,6$\n\nĐáp số: $20,6$"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 3",
+  "dap_an": "$\\dfrac{4}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có cả phép cộng và phép chia nên thực hiện phép chia trước, phép cộng sau; muốn chia cho hỗn số thì đổi hỗn số ra phân số rồi nhân với phân số đảo ngược.\n\n**Bước 1.** Nhận ra thứ tự thực hiện: trong biểu thức không có ngoặc, phép chia làm trước phép cộng.\n\n**Bước 2.** Đổi hỗn số $1\\dfrac{1}{2}$ ra phân số; số này bé nên tử số không lớn, đổi ra phân số rất gọn.\n\n**Bước 3.** Chia phân số bằng cách lấy số bị chia nhân với phân số đảo ngược của số chia, rồi rút gọn ngay khi nhân.\n\n**Bước 4.** Cộng hai phân số cùng mẫu số vừa có để được kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{5}+\\dfrac{3}{5}:1\\dfrac{1}{2}$\n\n$=\\dfrac{2}{5}+\\dfrac{3}{5}:\\dfrac{3}{2}$\n\n$=\\dfrac{2}{5}+\\dfrac{3}{5}\\times\\dfrac{2}{3}$\n\n$=\\dfrac{2}{5}+\\dfrac{2}{5}$\n\n$=\\dfrac{4}{5}$"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 4",
+  "dap_an": "$33$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả lớp là một đơn vị, nữ chiếm $\\dfrac{2}{3}$ nên nam chiếm phần còn lại; $11$ học sinh nam ứng với phân số đó của cả lớp, nên lấy $11$ chia cho phân số ấy.\n\n**Bước 1.** Tìm phân số chỉ số học sinh nam bằng cách lấy cả lớp (là $1$) trừ đi phân số chỉ số học sinh nữ.\n\n**Bước 2.** Xác định $11$ học sinh nam ứng với phân số vừa tìm được của cả lớp.\n\n**Bước 3.** Muốn tìm cả lớp khi biết một phân số của nó, lấy số đã biết chia cho phân số đó.\n\n**Chú ý:** Con số $11$ là số học sinh nam, không phải số học sinh nữ, nên đừng chia $11$ cho $\\dfrac{2}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nam bằng: $1-\\dfrac{2}{3}=\\dfrac{1}{3}$ (số học sinh cả lớp)\n\nSố học sinh của lớp là: $11:\\dfrac{1}{3}=33$ (học sinh)\n\nĐáp số: $33$ học sinh"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 5",
+  "dap_an": "$27\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau, nên từ diện tích toàn phần tìm diện tích một mặt, rồi tìm cạnh, rồi mới tính thể tích.\n\n**Bước 1.** Lấy diện tích toàn phần chia cho $6$ để biết diện tích một mặt của hình lập phương.\n\n**Bước 2.** Diện tích một mặt là cạnh nhân với cạnh, nên tìm số nhân với chính nó ra diện tích đó để được độ dài cạnh.\n\n**Bước 3.** Thể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh; tính theo cạnh vừa tìm.\n\n**Chú ý:** Diện tích tính bằng xăng-ti-mét vuông còn cạnh tính bằng xăng-ti-mét, đừng lấy số chỉ diện tích một mặt làm độ dài cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $54:6=9$ ($\\text{cm}^2$)\n\nVì $3\\times 3=9$ nên cạnh của hình lập phương là $3$ cm.\n\nThể tích hình lập phương là: $3\\times 3\\times 3=27$ ($\\text{cm}^3$)\n\nĐáp số: $27\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 6",
+  "dap_an": "$600\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi hình chữ nhật gấp $2$ lần nửa chu vi, mà nửa chu vi chính là chiều dài cộng chiều rộng; biết chiều rộng thì tìm được chiều dài, rồi tính diện tích.\n\n**Bước 1.** Tính nửa chu vi bằng cách lấy chu vi chia cho $2$; đó là tổng của chiều dài và chiều rộng.\n\n**Bước 2.** Lấy nửa chu vi trừ đi chiều rộng đã biết để tìm chiều dài.\n\n**Bước 3.** Tính diện tích hình chữ nhật bằng chiều dài nhân chiều rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $100:2=50$ (cm)\n\nChiều dài hình chữ nhật là: $50-20=30$ (cm)\n\nDiện tích hình chữ nhật là: $30\\times 20=600$ ($\\text{cm}^2$)\n\nĐáp số: $600\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 7",
+  "dap_an": "$5$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số chia hết cho $5$ khi và chỉ khi chữ số tận cùng của nó là $0$ hoặc $5$, nên chỉ cần nhìn chữ số hàng đơn vị của từng số.\n\n**Bước 1.** Nhớ dấu hiệu chia hết cho $5$: chữ số tận cùng là $0$ hoặc $5$.\n\n**Bước 2.** Xét lần lượt từng số trong dãy, nhìn chữ số hàng đơn vị rồi đánh dấu những số thoả mãn.\n\n**Bước 3.** Đếm các số vừa đánh dấu để biết có bao nhiêu số chia hết cho $5$.\n\n**Chú ý:** Dãy có $9$ số, đừng đếm sót những số có chữ số tận cùng là $0$ như $90$ và $1990$.\n\n**Phần 2. Trình bày**\n\nSố chia hết cho $5$ có chữ số tận cùng là $0$ hoặc $5$.\n\nCác số có chữ số tận cùng là $0$: $90$; $1990$.\n\nCác số có chữ số tận cùng là $5$: $105$; $115$; $2345$.\n\nCác số $36$; $2022$; $2011$; $1989$ có chữ số tận cùng khác $0$ và $5$ nên không chia hết cho $5$.\n\nSố các số chia hết cho $5$ là: $2+3=5$ (số)\n\nVậy có $5$ số chia hết cho $5$."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 8",
+  "dap_an": "$2005$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi từng số đo về đơn vị đề-xi-mét vuông, rồi cộng lại; muốn đổi mét vuông ra đề-xi-mét vuông phải nhân với $100$ chứ không phải nhân với $10$.\n\n**Bước 1.** Nhớ rằng $1\\ \\text{m}^2=100\\ \\text{dm}^2$, hai đơn vị diện tích liền nhau hơn kém nhau $100$ lần.\n\n**Bước 2.** Đổi $20\\ \\text{m}^2$ ra đề-xi-mét vuông bằng cách nhân với $100$.\n\n**Bước 3.** Cộng kết quả vừa đổi với $5\\ \\text{dm}^2$ để được số cần điền vào chỗ chấm.\n\n**Chú ý:** Đổi đơn vị độ dài thì nhân $10$, còn đổi đơn vị diện tích thì nhân $100$.\n\n**Phần 2. Trình bày**\n\nĐổi: $20\\ \\text{m}^2=20\\times 100=2000\\ \\text{dm}^2$\n\n$20\\ \\text{m}^2\\ 5\\ \\text{dm}^2=2000+5=2005\\ \\text{dm}^2$\n\nSố thích hợp điền vào chỗ chấm là $2005$."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 9",
+  "dap_an": "$1000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lớn nhất có ba chữ số khác nhau thì chọn các chữ số lớn nhất từ hàng cao xuống hàng thấp; số lẻ nhỏ nhất có hai chữ số khác nhau thì thử các số có hai chữ số từ bé đến lớn.\n\n**Bước 1.** Tìm số lớn nhất có ba chữ số khác nhau: hàng trăm chọn chữ số lớn nhất, hàng chục và hàng đơn vị chọn chữ số lớn nhất còn lại.\n\n**Bước 2.** Tìm số lẻ nhỏ nhất có hai chữ số khác nhau: bắt đầu từ số có hai chữ số nhỏ nhất, kiểm tra từng số xem có lẻ và có hai chữ số khác nhau không.\n\n**Bước 3.** Cộng hai số vừa tìm được để ra kết quả của đề bài.\n\n**Chú ý:** Số $11$ là số lẻ nhưng hai chữ số giống nhau, nên không thoả mãn điều kiện \"khác nhau\".\n\n**Phần 2. Trình bày**\n\nSố tự nhiên lớn nhất có ba chữ số khác nhau là $987$.\n\nCác số $10$ và $12$ là số chẵn, số $11$ có hai chữ số giống nhau, số $13$ là số lẻ có hai chữ số khác nhau nên số lẻ nhỏ nhất có hai chữ số khác nhau là $13$.\n\nTổng của hai số đó là: $987+13=1000$\n\nVậy kết quả là $1000$."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 10",
+  "dap_an": "$900$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lít nước cần đổ thêm bằng phần bể còn trống, tức là $100\\%-75\\%$ thể tích bể; nhớ rằng $1\\ \\text{dm}^3$ chứa đúng $1$ lít nước.\n\n**Bước 1.** Đổi các kích thước của bể về cùng đơn vị đề-xi-mét để tính thể tích bể theo đề-xi-mét khối.\n\n**Bước 2.** Tính thể tích bể bằng chiều dài nhân chiều rộng nhân chiều cao, rồi đổi sang lít.\n\n**Bước 3.** Tìm phần trăm thể tích bể còn trống: lấy toàn bộ bể là $100\\%$ trừ đi phần nước đang có.\n\n**Bước 4.** Tìm số phần trăm đó của thể tích bể để biết số lít nước phải đổ thêm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $2$ m $=20$ dm; $1,5$ m $=15$ dm\n\nThể tích của bể là: $20\\times 15\\times 12=3600$ ($\\text{dm}^3$)\n\nĐổi: $3600\\ \\text{dm}^3=3600$ lít\n\nPhần bể còn trống chiếm số phần trăm thể tích bể là: $100\\%-75\\%=25\\%$\n\nSố lít nước phải đổ thêm là: $3600\\times 25\\%=900$ (lít)\n\nĐáp số: $900$ lít"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 11",
+  "dap_an": "$8000\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ lệ bản đồ $1:1000$ cho biết mỗi độ dài trên bản đồ được nhân với $1000$ ra độ dài thực tế; phải tìm chiều dài và chiều rộng thực tế trước, rồi mới tính diện tích.\n\n**Bước 1.** Tìm chiều dài thực tế của mảnh đất bằng cách lấy chiều dài trên bản đồ nhân với $1000$, rồi đổi từ xăng-ti-mét ra mét.\n\n**Bước 2.** Làm tương tự với chiều rộng để tìm chiều rộng thực tế của mảnh đất theo đơn vị mét.\n\n**Bước 3.** Tính diện tích thực tế bằng chiều dài nhân chiều rộng, vì đề hỏi diện tích theo mét vuông.\n\n**Chú ý:** Không nhân diện tích trên bản đồ với $1000$; phải đổi từng độ dài rồi mới tính diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài thực tế của mảnh đất là: $10\\times 1000=10000$ (cm)\n\nĐổi: $10000$ cm $=100$ m\n\nChiều rộng thực tế của mảnh đất là: $8\\times 1000=8000$ (cm)\n\nĐổi: $8000$ cm $=80$ m\n\nDiện tích thực tế của mảnh đất là: $100\\times 80=8000$ ($\\text{m}^2$)\n\nĐáp số: $8000\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 12",
+  "dap_an": "$20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết giảm giá bao nhiêu phần trăm so với giá niêm yết thì tìm số tiền được giảm, rồi tìm tỉ số phần trăm của số tiền giảm so với giá niêm yết.\n\n**Bước 1.** Tìm số tiền cửa hàng đã giảm bằng cách lấy giá niêm yết trừ đi giá Bình đã mua.\n\n**Bước 2.** Tìm tỉ số của số tiền giảm so với giá niêm yết: lấy số tiền giảm chia cho giá niêm yết.\n\n**Bước 3.** Đổi thương vừa tìm ra tỉ số phần trăm để trả lời đúng câu hỏi.\n\n**Chú ý:** Phải so với giá niêm yết (giá ban đầu), không so với giá sau khi giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền cửa hàng đã giảm là: $200000-160000=40000$ (đồng)\n\nCửa hàng đã giảm giá cái áo so với giá niêm yết số phần trăm là: $40000:200000=0,2=20\\%$\n\nĐáp số: $20\\%$"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 13",
+  "dap_an": "Hộp A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các bánh cùng loại và cùng độ dày thì bánh nào có mặt bánh rộng hơn thì nặng hơn, nên so sánh tổng diện tích các bánh trong mỗi hộp; hai hộp giống nhau nên phần hộp không làm hai bên khác nhau.\n\n**Bước 1.** Tìm bán kính mỗi loại bánh bằng cách lấy đường kính chia cho $2$.\n\n**Bước 2.** Tính diện tích mặt một bánh theo công thức bán kính nhân bán kính nhân $3,14$ cho từng loại bánh.\n\n**Bước 3.** Hộp B có hai bánh nên lấy diện tích một bánh nhân với $2$ để có tổng diện tích bánh trong hộp B.\n\n**Bước 4.** So sánh diện tích bánh ở hộp A với diện tích hai bánh ở hộp B rồi kết luận hộp nào nặng hơn.\n\n**Chú ý:** Hộp B có nhiều bánh hơn nhưng bánh nhỏ hơn, không được kết luận ngay theo số bánh mà phải so diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác bánh cùng loại, cùng độ dày nên bánh có diện tích mặt lớn hơn thì nặng hơn.\n\nBán kính bánh ở hộp A là: $24:2=12$ (cm)\n\nBán kính bánh ở hộp B là: $16:2=8$ (cm)\n\nDiện tích bánh ở hộp A là: $12\\times 12\\times 3,14=452,16$ ($\\text{cm}^2$)\n\nDiện tích một bánh ở hộp B là: $8\\times 8\\times 3,14=200,96$ ($\\text{cm}^2$)\n\nDiện tích hai bánh ở hộp B là: $200,96\\times 2=401,92$ ($\\text{cm}^2$)\n\nVì $452,16>401,92$ nên bánh ở hộp A nhiều hơn bánh ở hộp B, do đó hộp A nặng hơn.\n\nĐáp số: Hộp A",
+  "ghi_chu_nghi": "Hiểu: hai hộp giống nhau (hộp không làm khác biệt khối lượng), nên so khối lượng bánh; cùng loại, cùng độ dày ⇒ khối lượng tỉ lệ với diện tích mặt bánh. Kết quả: A (452,16 cm² > 401,92 cm²), không phụ thuộc giá trị 3,14 (144 > 128)."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 14",
+  "dap_an": "Hình thang thứ nhất",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình thang bằng tổng hai đáy nhân chiều cao rồi chia $2$; hai hình thang cùng diện tích nên tích của tổng hai đáy và chiều cao ở hai hình bằng nhau, vì vậy tổng hai đáy càng bé thì chiều cao càng lớn.\n\n**Bước 1.** Tính tổng hai đáy của từng hình thang.\n\n**Bước 2.** Viết lại công thức diện tích để thấy chiều cao bằng diện tích nhân $2$ rồi chia cho tổng hai đáy.\n\n**Bước 3.** So sánh: số bị chia (diện tích nhân $2$) của hai hình bằng nhau, số chia bé hơn thì thương lớn hơn, từ đó kết luận hình thang nào cao hơn.\n\n**Chú ý:** Đề không cho diện tích cụ thể nên không cần tính chiều cao ra số, chỉ cần so sánh.\n\n**Phần 2. Trình bày**\n\nTổng hai đáy của hình thang thứ nhất là: $8+10=18$ (cm)\n\nTổng hai đáy của hình thang thứ hai là: $5+14=19$ (cm)\n\nChiều cao của hình thang bằng diện tích nhân $2$ rồi chia cho tổng hai đáy.\n\nHai hình thang có diện tích bằng nhau nên số bị chia như nhau; mà $18<19$ nên chiều cao hình thang thứ nhất lớn hơn chiều cao hình thang thứ hai.\n\nVậy hình thang thứ nhất có chiều cao lớn hơn."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 15",
+  "dap_an": "$3000$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm $50$ học sinh nữ và bớt $50$ học sinh nam thì tổng số học sinh dự thi không đổi; so sánh phân số chỉ số học sinh nữ trước và sau với cùng một tổng không đổi để tìm $50$ học sinh ứng với bao nhiêu phần tổng.\n\n**Bước 1.** Nhận ra tổng số học sinh không đổi, nên dùng tổng này làm \"đơn vị\" chung để so sánh hai thời điểm.\n\n**Bước 2.** Đổi $45\\%$ ra phân số rồi quy đồng với $\\dfrac{7}{15}$ để so sánh số học sinh nữ trước và sau khi thêm.\n\n**Bước 3.** Lấy phân số lúc sau trừ phân số lúc đầu để biết $50$ học sinh nữ thêm vào ứng với bao nhiêu phần của tổng số học sinh.\n\n**Bước 4.** Lấy $50$ chia cho phân số đó để tìm tổng số học sinh dự thi.\n\n**Chú ý:** Việc bớt $50$ học sinh nam chỉ để giữ cho tổng số học sinh không đổi, không dùng thêm để tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThêm $50$ học sinh nữ và bớt $50$ học sinh nam thì tổng số học sinh dự thi không đổi.\n\nĐổi: $45\\%=\\dfrac{45}{100}=\\dfrac{9}{20}$\n\nLúc đầu số học sinh nữ bằng $\\dfrac{9}{20}$ tổng số học sinh, lúc sau bằng $\\dfrac{7}{15}$ tổng số học sinh.\n\n$\\dfrac{9}{20}=\\dfrac{27}{60}$ và $\\dfrac{7}{15}=\\dfrac{28}{60}$\n\n$50$ học sinh nữ thêm vào ứng với: $\\dfrac{28}{60}-\\dfrac{27}{60}=\\dfrac{1}{60}$ (tổng số học sinh)\n\nSố học sinh dự thi là: $50:\\dfrac{1}{60}=3000$ (học sinh)\n\nĐáp số: $3000$ học sinh"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 16",
+  "dap_an": "$62$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết thêm chữ số $7$ vào bên phải một số thì số đó gấp lên $10$ lần rồi cộng thêm $7$; vì vậy đây là bài toán tỉ số: số cũ là $1$ phần, số mới là $10$ phần và thêm $7$ đơn vị.\n\n**Bước 1.** Nhận ra số mới gồm $10$ lần số cũ và thêm $7$ đơn vị, rồi vẽ sơ đồ hai số.\n\n**Bước 2.** Số mới hơn số cũ $9$ lần số cũ cộng thêm $7$ đơn vị, nên bớt $7$ khỏi hiệu để còn đúng $9$ phần bằng nhau.\n\n**Bước 3.** Chia số vừa có cho $9$ để tìm giá trị một phần, đó chính là số cũ cần tìm.\n\nThử lại: viết thêm chữ số $7$ vào bên phải số vừa tìm rồi trừ đi số cũ, kết quả phải đúng $565$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhi viết thêm chữ số $7$ vào bên phải một số thì số mới bằng $10$ lần số cũ cộng thêm $7$.\n\nTa có sơ đồ:\n\n(Số cũ 1 phần; số mới 10 phần và thêm 7; số mới hơn số cũ 565)\n\nHiệu của số mới và số cũ gồm $10-1=9$ (phần) và $7$ đơn vị.\n\nChín phần bằng nhau ứng với: $565-7=558$\n\nSố cần tìm là: $558:9=62$\n\nĐáp số: $62$",
+  "so_do_mo_ta": {
+   "tieu_de": "Viết thêm chữ số 7 vào bên phải",
+   "gia_tri_phan": 62,
+   "hang": [
+    {
+     "nhan": "Số cũ",
+     "phan": 1
+    },
+    {
+     "nhan": "Số mới",
+     "phan": 10,
+     "them": "7"
+    }
+   ],
+   "hieu": "565",
+   "dau_hoi": [
+    "Số cũ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2022 · 17",
+  "dap_an": "$24$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của mẹ và con không bao giờ thay đổi; đề cho hai tỉ số tuổi ở hai thời điểm nên đưa hai hiệu về cùng số phần để so sánh tuổi con ở hai thời điểm.\n\n**Bước 1.** Với mỗi thời điểm, coi tuổi con là $1$ phần rồi tính hiệu số tuổi của mẹ và con bằng mấy phần.\n\n**Bước 2.** Hai hiệu này là một số tuổi duy nhất nên đưa chúng về cùng số phần, rồi vẽ sơ đồ tuổi mẹ và tuổi con ở từng thời điểm.\n\n**Bước 3.** Tuổi con hiện nay hơn tuổi con bốn năm trước đúng $4$ tuổi; so hai sơ đồ để biết $4$ tuổi ứng với mấy phần, từ đó tìm giá trị một phần và tìm hiệu số tuổi.\n\n**Bước 4.** Khi mẹ gấp $2$ lần tuổi con thì hiệu số tuổi bằng đúng một lần tuổi con, từ đó tìm tuổi con lúc đó.\n\n**Chú ý:** Đề hỏi tuổi con vào lúc mẹ gấp $2$ lần con, không phải tuổi con hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của mẹ và con không đổi theo thời gian.\n\nHiện nay mẹ gấp $3$ lần con nên tuổi con là $1$ phần, tuổi mẹ là $3$ phần, hiệu là $3-1=2$ (phần).\n\nBốn năm trước mẹ gấp $4$ lần con nên tuổi con là $1$ phần, tuổi mẹ là $4$ phần, hiệu là $4-1=3$ (phần).\n\nĐưa hai hiệu về cùng $6$ phần: hiện nay nhân $3$ lần thì tuổi con là $3$ phần, tuổi mẹ là $9$ phần; bốn năm trước nhân $2$ lần thì tuổi con là $2$ phần, tuổi mẹ là $8$ phần.\n\nTa có sơ đồ:\n\n(Hiện nay: tuổi mẹ 9 phần; tuổi con 3 phần)\n\nTa có sơ đồ:\n\n(Bốn năm trước: tuổi mẹ 8 phần; tuổi con 2 phần)\n\nBốn tuổi ứng với số phần là: $3-2=1$ (phần)\n\nHiệu số tuổi của mẹ và con là: $4\\times 6=24$ (tuổi)\n\nKhi tuổi mẹ gấp $2$ lần tuổi con thì hiệu số tuổi bằng $1$ lần tuổi con.\n\nTa có sơ đồ:\n\n(Tuổi mẹ 2 phần; tuổi con 1 phần; hiệu bằng tuổi con)\n\nLúc đó tuổi con là $24$ tuổi.\n\nĐáp số: $24$ tuổi",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Hiện nay",
+    "gia_tri_phan": 4,
+    "hang": [
+     {
+      "nhan": "Tuổi mẹ",
+      "phan": 9
+     },
+     {
+      "nhan": "Tuổi con",
+      "phan": 3
+     }
+    ]
+   },
+   {
+    "tieu_de": "4 năm trước",
+    "gia_tri_phan": 4,
+    "hang": [
+     {
+      "nhan": "Tuổi mẹ",
+      "phan": 8
+     },
+     {
+      "nhan": "Tuổi con",
+      "phan": 2
+     }
+    ]
+   },
+   {
+    "tieu_de": "Khi mẹ gấp 2 lần tuổi con",
+    "gia_tri_phan": 24,
+    "hang": [
+     {
+      "nhan": "Tuổi mẹ",
+      "phan": 2
+     },
+     {
+      "nhan": "Tuổi con",
+      "phan": 1
+     }
+    ],
+    "dau_hoi": [
+     "Tuổi con"
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "LTV 2022 · 18",
+  "dap_an": "$42$ bậc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bậc thang đi được tính theo số khoảng cầu thang nằm giữa các tầng, không tính theo số tầng; các khoảng giữa hai tầng liền nhau có số bậc như nhau.\n\n**Bước 1.** Đếm số khoảng cầu thang phải đi qua để từ tầng $1$ lên tầng $3$, rồi tìm số bậc thang của một khoảng giữa hai tầng liền nhau.\n\n**Bước 2.** Đếm số khoảng cầu thang phải đi qua để đi tiếp từ tầng $3$ lên tầng $5$.\n\n**Bước 3.** Lấy số bậc thang của một khoảng nhân với số khoảng vừa đếm để tìm số bậc thang phải đi thêm.\n\n**Chú ý:** Đừng lấy hiệu hai số tầng làm số bậc thang; phải tìm số bậc của một khoảng cầu thang trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ tầng $1$ lên tầng $3$ phải đi qua số khoảng cầu thang là: $3-1=2$ (khoảng)\n\nSố bậc thang của một khoảng giữa hai tầng liền nhau là: $42:2=21$ (bậc)\n\nTừ tầng $3$ lên tầng $5$ phải đi qua số khoảng cầu thang là: $5-3=2$ (khoảng)\n\nSố bậc thang phải đi thêm là: $21\\times 2=42$ (bậc)\n\nĐáp số: $42$ bậc"
+ },
+ {
+  "ma_nguon": "LTV 2022 · 19",
+  "dap_an": "$x=66$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số ở giữa mỗi hình có liên hệ cố định với bốn số xung quanh; tìm quy luật từ hai hình đã có số ở giữa, thử lại bằng cả hai hình, rồi áp dụng cho hình thứ ba.\n\n**Bước 1.** Với hình thứ nhất, cộng bốn số xung quanh rồi so sánh tổng với số ở giữa để xem hai số hơn kém nhau thế nào.\n\n**Bước 2.** Làm tương tự với hình thứ hai để kiểm tra xem quy luật vừa thấy có đúng cho hình này không.\n\n**Bước 3.** Áp dụng đúng quy luật đó cho bốn số xung quanh của hình thứ ba để tìm $x$.\n\n**Chú ý:** Quy luật chỉ được dùng khi đúng cho cả hai hình đã đầy đủ số.\n\n**Phần 2. Trình bày**\n\nHình thứ nhất: $19+6+1+5=31$ và số ở giữa là $32=31+1$.\n\nHình thứ hai: $30+2+9+4=45$ và số ở giữa là $46=45+1$.\n\nQuy luật: số ở giữa bằng tổng bốn số xung quanh cộng thêm $1$.\n\nHình thứ ba: $22+11+20+12=65$\n\nSố $x$ là: $65+1=66$\n\nVậy $x=66$.",
+  "ghi_chu_nghi": "Quy luật suy từ hai hình có số ở giữa: số ở giữa = tổng bốn số xung quanh + 1 (31→32, 45→46); hình 3 cho x = 65 + 1 = 66. Mọi quy luật chỉ dựa trên hai điểm dữ liệu — nếu nguồn khác cho đáp số khác thì xem lại quy luật."
+ },
+ {
+  "ma_nguon": "LTV 2022 · 20",
+  "dap_an": "$45\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; đi hai bước: từ tam giác $BDE$ sang tam giác $BDC$ (chung đỉnh $B$), rồi từ tam giác $BDC$ sang tam giác $ABC$ (chung đỉnh $C$).\n\n**Bước 1.** Nhìn hình vẽ để biết vị trí các điểm: $D$ nằm trên cạnh $AB$, còn $E$, $D$, $C$ thẳng hàng với $D$ nằm giữa $E$ và $C$.\n\n**Bước 2.** Từ $CE$ gấp $4$ lần $DE$ tìm xem $DC$ gấp $DE$ bao nhiêu lần, rồi dùng đường cao chung hạ từ $B$ xuống $EC$ để tìm diện tích tam giác $BDC$.\n\n**Bước 3.** Từ $AB$ gấp $3$ lần $AD$ tìm xem $AB$ gấp $BD$ bao nhiêu lần.\n\n**Bước 4.** Dùng đường cao chung hạ từ $C$ xuống $AB$ để đổi từ diện tích tam giác $BDC$ sang diện tích tam giác $ABC$.\n\n**Chú ý:** Đoạn $CE$ gồm cả $DE$ và $DC$, nên khi $CE$ gấp $4$ lần $DE$ thì $DC$ chưa gấp $4$ lần $DE$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $D$ nằm trên $AB$ và $E$, $D$, $C$ thẳng hàng.\n\nVì $CE$ gấp $4$ lần $DE$ nên $DC$ gấp $DE$ số lần là: $4-1=3$ (lần)\n\nTam giác $BDE$ và tam giác $BDC$ có chung đường cao hạ từ $B$ xuống $EC$, suy ra $\\dfrac{S_{BDC}}{S_{BDE}}=\\dfrac{DC}{DE}=3$\n\nDiện tích tam giác $BDC$ là: $10\\times 3=30$ ($\\text{cm}^2$)\n\nVì $AB$ gấp $3$ lần $AD$ nên $BD$ gấp $AD$ số lần là: $3-1=2$ (lần)\n\nDo đó $AB$ gấp $BD$ số lần là: $3:2=\\dfrac{3}{2}$ (lần)\n\nTam giác $ABC$ và tam giác $DBC$ có chung đường cao hạ từ $C$ xuống $AB$, suy ra $\\dfrac{S_{ABC}}{S_{DBC}}=\\dfrac{AB}{DB}=\\dfrac{3}{2}$\n\nDiện tích tam giác $ABC$ là: $30:2\\times 3=45$ ($\\text{cm}^2$)\n\nĐáp số: $45\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ: \"đoạn CE gấp 4 lần đoạn DE\" (D nằm giữa E và C ⇒ DC = 3×DE) ⇒ S_ABC = 45 cm². Hình vẽ lại có DC/DE ≈ 3,9 (gần 4) — nếu đề thật là \"CD gấp 4 lần DE\" thì DC = 4×DE ⇒ S_BDC = 40, S_ABC = 60. Theo đề chữ (brief): 45. Cần đối chiếu nguồn."
+ }
+]

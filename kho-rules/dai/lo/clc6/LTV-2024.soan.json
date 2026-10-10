@@ -1,0 +1,153 @@
+[
+ {
+  "ma_nguon": "LTV 2024 · 1",
+  "dap_an": "$a=6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong phép trừ này, $2\\times a$ là số bị trừ; muốn tìm số bị trừ ta lấy hiệu cộng với số trừ, rồi mới tìm thừa số $a$.\n\n**Bước 1.** Nhận ra $2\\times a$ là số bị trừ, $2\\dfrac{3}{5}$ là số trừ và $\\dfrac{47}{5}$ là hiệu của phép trừ.\n\n**Bước 2.** Tìm số bị trừ bằng cách lấy hiệu cộng số trừ; đổi hỗn số $2\\dfrac{3}{5}$ ra phân số cùng mẫu số $5$ rồi cộng hai phân số.\n\n**Bước 3.** Tìm thừa số chưa biết bằng cách lấy tích vừa tìm được chia cho thừa số đã biết là $2$.\n\n**Chú ý:** Vì $2\\times a$ là số bị trừ nên phải lấy hiệu cộng số trừ, không lấy hiệu trừ đi số trừ.\n\nThử lại: thay giá trị $a$ vừa tìm vào biểu thức ban đầu, tính ra phải bằng $\\dfrac{47}{5}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}2\\times a-2\\dfrac{3}{5}=\\dfrac{47}{5}\\\\ 2\\times a=\\dfrac{47}{5}+2\\dfrac{3}{5}\\\\ 2\\times a=\\dfrac{47}{5}+\\dfrac{13}{5}\\\\ 2\\times a=\\dfrac{60}{5}\\\\ 2\\times a=12\\\\ a=12:2\\\\ a=6\\end{array}$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 2",
+  "dap_an": "$35$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho cả $5$ và $7$ trước hết phải chia hết cho $7$; trong các số chia hết cho $7$, ta tìm số đầu tiên chia hết cho $5$, tức là có chữ số tận cùng là $0$ hoặc $5$.\n\n**Bước 1.** Hiểu đề: \"số tự nhiên nhỏ nhất\" ở đây là số tự nhiên khác $0$ nhỏ nhất, vì số $0$ chia hết cho mọi số nên không có ý nghĩa để so sánh.\n\n**Bước 2.** Viết lần lượt các số chia hết cho $7$ từ bé đến lớn, bằng cách lấy $7$ nhân với $1$, $2$, $3$, …\n\n**Bước 3.** Trong dãy đó, dừng lại ở số đầu tiên có chữ số tận cùng là $0$ hoặc $5$, vì đó là dấu hiệu chia hết cho $5$.\n\n**Chú ý:** Đề hiểu là số tự nhiên khác $0$ nhỏ nhất. Nếu đề hỏi số có hai chữ số nhỏ nhất thì kết quả vẫn không đổi, vì số tìm được đã có hai chữ số.\n\n**Phần 2. Trình bày**\n\nTa hiểu \"số tự nhiên nhỏ nhất\" là số tự nhiên khác $0$ nhỏ nhất.\n\nCác số chia hết cho $7$ là: $7;\\ 14;\\ 21;\\ 28;\\ 35;\\ \\ldots$\n\nSố chia hết cho $5$ có chữ số tận cùng là $0$ hoặc $5$, nên trong các số trên số đầu tiên chia hết cho $5$ là $35$.\n\nVậy số tự nhiên khác $0$ nhỏ nhất chia hết cho $5$ và $7$ là $35$."
+ },
+ {
+  "ma_nguon": "LTV 2024 · 3",
+  "dap_an": "$2,39$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trừ liên tiếp hai số cũng như trừ đi tổng của hai số đó; hai số $28,23$ và $21,77$ có phần thập phân $0,23$ và $0,77$ cộng lại bằng $1$, nên tổng của chúng là số tròn chục và phép trừ sau đó rất gọn.\n\n**Bước 1.** Nhìn các số trừ: $28,23$ và $21,77$ có phần thập phân cộng lại vừa đủ thành $1$, nên cộng hai số này trước sẽ được số tròn.\n\n**Bước 2.** Dùng tính chất một số trừ liên tiếp hai số bằng số đó trừ đi tổng hai số, rồi viết tổng của hai số đã nhận ra vào trong ngoặc.\n\n**Bước 3.** Tính tổng trong ngoặc trước, sau đó lấy $52,39$ trừ đi kết quả vừa tìm được.\n\n**Chú ý:** Tổng phải đặt trong ngoặc sau dấu trừ, không được viết $52,39-28,23+21,77$ vì như thế đổi mất giá trị biểu thức.\n\n**Phần 2. Trình bày**\n\n$52,39-28,23-21,77$\n\n$=52,39-(28,23+21,77)$\n\n$=52,39-50$\n\n$=2,39$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 4",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số $\\dfrac{48}{30}$ rút gọn được thành $\\dfrac{8}{5}$, đúng bằng phân số $\\dfrac{8}{5}$ đứng trước; hai phân số này triệt tiêu nhau, còn lại hai phân số cùng mẫu số $7$ để cộng.\n\n**Bước 1.** Rút gọn $\\dfrac{48}{30}$ bằng cách chia cả tử số và mẫu số cho $6$, để xem nó có bằng phân số nào đã có trong biểu thức hay không.\n\n**Bước 2.** Nhóm hai phân số cùng mẫu số $7$ lại với nhau, còn hai phân số bằng nhau $\\dfrac{8}{5}$ nhóm riêng thành một hiệu.\n\n**Bước 3.** Cộng hai phân số cùng mẫu số $7$, hiệu của hai phân số bằng nhau thì bằng $0$, rồi cộng hai kết quả với nhau.\n\n**Chú ý:** Đừng quy đồng mẫu số khi chưa nhận xét, vì làm như vậy các số rất lớn và dễ sai.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{7}+\\dfrac{8}{5}+\\dfrac{4}{7}-\\dfrac{48}{30}$\n\n$=\\dfrac{3}{7}+\\dfrac{8}{5}+\\dfrac{4}{7}-\\dfrac{8}{5}$\n\n$=\\left(\\dfrac{3}{7}+\\dfrac{4}{7}\\right)+\\left(\\dfrac{8}{5}-\\dfrac{8}{5}\\right)$\n\n$=1+0$\n\n$=1$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 5",
+  "dap_an": "$1300$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn đổi số đo có hai đơn vị ra một đơn vị, ta đổi riêng từng phần ra ki-lô-gam rồi cộng lại; cần nhớ $1$ tấn bằng $1000$ kg và $1$ tạ bằng $100$ kg.\n\n**Bước 1.** Nhớ lại mối quan hệ giữa các đơn vị đo khối lượng: $1$ tấn $=1000$ kg và $1$ tạ $=100$ kg.\n\n**Bước 2.** Đổi riêng phần tấn ra ki-lô-gam và đổi riêng phần tạ ra ki-lô-gam.\n\n**Bước 3.** Cộng hai kết quả vừa đổi để được số ki-lô-gam cần điền vào chỗ chấm.\n\n**Chú ý:** Không ghép chữ số $1$ và $3$ thành $13$, vì tấn và tạ là hai đơn vị khác nhau nên phải đổi riêng từng phần.\n\n**Phần 2. Trình bày**\n\nĐổi: $1$ tấn $=1000$ kg\n\nĐổi: $3$ tạ $=300$ kg\n\n$1$ tấn $3$ tạ $=1000+300=1300$ (kg)\n\nVậy số cần điền vào chỗ chấm là $1300$."
+ },
+ {
+  "ma_nguon": "LTV 2024 · 6",
+  "dap_an": "Số bé: $884$; số lớn: $1105$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 221,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 4
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 5
+    }
+   ],
+   "tong": "1989",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số $\\dfrac{4}{5}$ cho biết nếu chia số bé thành $4$ phần bằng nhau thì số lớn là $5$ phần như thế; đề cho tổng và tỉ số nên đây là bài toán tổng – tỉ.\n\n**Bước 1.** Chuyển tỉ số $\\dfrac{4}{5}$ thành số phần bằng nhau của mỗi số: xem số bé gồm mấy phần và số lớn gồm mấy phần.\n\n**Bước 2.** Tính tổng số phần bằng nhau rồi lấy tổng hai số chia cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 3.** Lấy giá trị một phần nhân với số phần của từng số để tìm số bé và số lớn.\n\nThử lại: cộng hai số vừa tìm được phải bằng $1989$ và số bé chia cho số lớn phải ra tỉ số $\\dfrac{4}{5}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì tỉ số của hai số là $\\dfrac{4}{5}$ nên số bé là $4$ phần, số lớn là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Số bé 4 phần; Số lớn 5 phần; tổng 1989)\n\nTổng số phần bằng nhau là: $4+5=9$ (phần)\n\nGiá trị một phần là: $1989:9=221$\n\nSố bé là: $221\\times 4=884$\n\nSố lớn là: $221\\times 5=1105$\n\nĐáp số: Số bé: $884$; số lớn: $1105$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 7",
+  "dap_an": "Mẹ: $34$ tuổi; con: $6$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai năm trước",
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 8
+    }
+   ],
+   "tong": "36 tuổi",
+   "dau_hoi": [
+    "Tuổi con",
+    "Tuổi mẹ"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi năm trôi qua mỗi người đều thêm $1$ tuổi, nên từ tổng số tuổi hai năm sau ta tính lùi được tổng số tuổi hai năm trước; lúc đó biết tổng và biết mẹ gấp $8$ lần con nên làm theo bài tổng – tỉ, rồi cộng thêm $2$ tuổi để được tuổi hiện nay.\n\n**Bước 1.** Từ hai năm trước đến hai năm sau là $4$ năm; mỗi năm cả hai người cùng thêm tuổi, nên tính xem tổng số tuổi của hai mẹ con tăng thêm bao nhiêu.\n\n**Bước 2.** Lấy tổng số tuổi hai năm sau trừ đi phần tăng thêm để tìm tổng số tuổi hai năm trước.\n\n**Bước 3.** Hai năm trước mẹ gấp $8$ lần con nên con là $1$ phần và mẹ là $8$ phần; chia tổng số tuổi cho tổng số phần để tìm tuổi con và tuổi mẹ lúc đó.\n\n**Bước 4.** Cộng thêm $2$ tuổi cho mỗi người để được tuổi hiện nay của mẹ và của con.\n\n**Chú ý:** Tỉ số cho ở hai năm trước còn tổng cho ở hai năm sau, hai mốc thời gian khác nhau; phải đưa về cùng một mốc rồi mới chia theo số phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ hai năm trước đến hai năm sau là: $2+2=4$ (năm)\n\nSau $4$ năm, tổng số tuổi của hai mẹ con tăng thêm: $4\\times 2=8$ (tuổi)\n\nTổng số tuổi của hai mẹ con hai năm trước là: $44-8=36$ (tuổi)\n\nHai năm trước mẹ gấp $8$ lần tuổi con nên tuổi con là $1$ phần, tuổi mẹ là $8$ phần như thế.\n\nTa có sơ đồ:\n\n(Hai năm trước: Tuổi con 1 phần; Tuổi mẹ 8 phần; tổng 36 tuổi)\n\nTổng số phần bằng nhau là: $1+8=9$ (phần)\n\nTuổi con hai năm trước là: $36:9=4$ (tuổi)\n\nTuổi mẹ hai năm trước là: $36-4=32$ (tuổi)\n\nTuổi con hiện nay là: $4+2=6$ (tuổi)\n\nTuổi mẹ hiện nay là: $32+2=34$ (tuổi)\n\nĐáp số: Mẹ: $34$ tuổi; con: $6$ tuổi"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 8",
+  "dap_an": "$4099$; $4100$",
+  "ghi_chu_nghi": "Đề có HAI đáp số: 4099 (xóa hai chữ số cuối 99 còn 40; 4099 − 40 = 4059) và 4100 (xóa hai chữ số cuối 00 còn 41; 4100 − 41 = 4059). Cả hai đều là số tự nhiên có 4 chữ số thoả đề. Lời giải nêu đủ cả hai, không sơ đồ vì hai chữ số cuối chưa biết (không vẽ đúng tỉ lệ). Nếu đáp án nguồn chỉ có 4100 thì đó là trường hợp hai chữ số cuối đều bằng 0.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Xoá hai chữ số cuối thì số mới chính là \"hai chữ số đầu\", còn số đã cho gấp $100$ lần số mới rồi cộng thêm hai chữ số cuối; vì vậy hiệu của hai số là $99$ lần số mới cộng hai chữ số cuối.\n\n**Bước 1.** Viết số đã cho thành \"hai chữ số đầu\" (chính là số mới) nhân với $100$ rồi cộng \"hai chữ số cuối\", để thấy số đã cho gấp $100$ lần số mới cộng thêm hai chữ số cuối.\n\n**Bước 2.** Lấy số đã cho trừ số mới thì được $99$ lần số mới cộng hai chữ số cuối, và hiệu này chính là $4059$.\n\n**Bước 3.** Hai chữ số cuối là một số từ $0$ đến $99$, nên $99$ lần số mới không nhỏ hơn $4059$ trừ $99$ và không lớn hơn $4059$; chia các số đó cho $99$ để tìm số mới.\n\n**Bước 4.** Với từng số mới tìm được, lấy $4059$ trừ $99$ lần số mới để tìm hai chữ số cuối, rồi ghép lại thành số có $4$ chữ số và thử lại.\n\n**Chú ý:** Hai chữ số cuối có thể là $00$, nên phải xét hết các giá trị có thể của số mới, không dừng lại ở số mới đầu tiên tìm được.\n\n**Phần 2. Trình bày**\n\nSố đã cho gồm hai chữ số đầu (gọi là số mới) và hai chữ số cuối, nên số đã cho gấp $100$ lần số mới rồi cộng thêm hai chữ số cuối.\n\nHiệu của số đã cho và số mới là $99$ lần số mới cộng hai chữ số cuối, và bằng $4059$.\n\nHai chữ số cuối là số không vượt quá $99$ nên $99$ lần số mới không nhỏ hơn $4059-99=3960$ và không lớn hơn $4059$.\n\nChia cho $99$ ta có $3960:99=40$ và $4059:99=41$, nên số mới là $40$ hoặc $41$.\n\nNếu số mới là $41$ thì $99\\times 41=4059$, nên hai chữ số cuối là $4059-4059=0$, tức là $00$; số đã cho là $4100$.\n\nNếu số mới là $40$ thì $99\\times 40=3960$, nên hai chữ số cuối là $4059-3960=99$; số đã cho là $4099$.\n\nThử lại: $4100-41=4059$ và $4099-40=4059$.\n\nVậy số cần tìm là $4099$ hoặc $4100$."
+ },
+ {
+  "ma_nguon": "LTV 2024 · 9",
+  "dap_an": "$7531$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích các chữ số bằng $105$ nên không có chữ số $0$; hãy tìm các chữ số khác nhau có tích bằng $105$, dùng càng nhiều chữ số càng tốt (số nhiều chữ số hơn thì lớn hơn) rồi xếp chúng từ lớn đến bé.\n\n**Bước 1.** Phân tích $105$ thành tích các số bé hơn $10$ bằng cách thử chia lần lượt cho $3$, $5$, $7$; vì $105$ là số lẻ và không chia hết cho $9$ nên không dùng được chữ số chẵn và chữ số $9$.\n\n**Bước 2.** Nhận xét có thể thêm chữ số $1$ vào, vì nhân với $1$ không làm thay đổi tích mà lại làm số có thêm một chữ số.\n\n**Bước 3.** Chọn tập chữ số có nhiều chữ số nhất, rồi xếp các chữ số từ lớn đến bé để được số lớn nhất.\n\n**Chú ý:** Các chữ số phải khác nhau, nên mỗi chữ số chỉ được dùng một lần; chữ số $1$ cũng chỉ dùng một lần.\n\n**Phần 2. Trình bày**\n\nTích các chữ số bằng $105$ nên không có chữ số $0$.\n\nTa có: $105=3\\times 5\\times 7$.\n\nVì $105$ không chia hết cho $2$ và không chia hết cho $9$ nên các chữ số không thể là chữ số chẵn hay chữ số $9$; các chữ số còn lại có tích $105$ là $3$, $5$ và $7$.\n\nCó thể thêm chữ số $1$ vì $3\\times 5\\times 7\\times 1=105$, và số có $4$ chữ số $1;\\ 3;\\ 5;\\ 7$ lớn hơn số chỉ có $3$ chữ số.\n\nXếp các chữ số từ lớn đến bé ta được số: $7531$\n\nVậy số lớn nhất cần tìm là $7531$."
+ },
+ {
+  "ma_nguon": "LTV 2024 · 10",
+  "dap_an": "$9000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền thu về $=$ giá một cây $\\times$ số cây bán được. Hai đại lượng trong phép tính (số tiền thu về và số cây) đều thay đổi thì đại lượng còn lại là giá một cây thay đổi tương ứng: giá bằng số tiền thu về chia cho số cây, nên lấy phần trăm của số tiền thu về chia cho phần trăm của số cây.\n\n**Bước 1.** Coi số tiền thu về buổi sáng là $100\\%$; số tiền thu về tăng $12,5\\%$ nên tính xem buổi chiều thu về bằng bao nhiêu phần trăm buổi sáng.\n\n**Bước 2.** Coi số xúc xích bán được buổi sáng là $100\\%$; số xúc xích bán được tăng $25\\%$ nên tính xem buổi chiều bán được bằng bao nhiêu phần trăm buổi sáng.\n\n**Bước 3.** Giá một cây bằng số tiền thu về chia cho số cây, nên lấy phần trăm số tiền chia cho phần trăm số cây (đổi ra số thập phân để chia) để biết giá buổi chiều bằng bao nhiêu phần trăm giá buổi sáng.\n\n**Bước 4.** Lấy giá một cây buổi sáng nhân với số phần trăm vừa tìm để được giá một cây buổi chiều.\n\n**Chú ý:** Không lấy $25\\%-12,5\\%$ làm số phần trăm giảm giá; phải so từng đại lượng với buổi sáng ($112,5\\%$ và $125\\%$) rồi mới chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền thu về buổi chiều so với buổi sáng bằng: $100\\%+12,5\\%=112,5\\%$\n\nSố xúc xích bán được buổi chiều so với buổi sáng bằng: $100\\%+25\\%=125\\%$\n\nGiá một cây xúc xích buổi chiều so với buổi sáng bằng: $112,5\\%:125\\%=1,125:1,25=0,9=90\\%$\n\nGiá một cây xúc xích buổi chiều là: $10000\\times 90\\%=9000$ (đồng)\n\nĐáp số: $9000$ đồng"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 11",
+  "dap_an": "$85\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Hiểu đề: \"các hình vuông có chứa con mèo\" là MỌI hình vuông tạo bởi các đường lưới (cạnh 1, 2, 3, 4 ô) mà chứa ô có con mèo (ô cột 2, hàng 2 của lưới 5 cột × 4 hàng); đề nói \"hình vuông bé\" nên còn có hình vuông lớn hơn. Số hình vuông: 1 + 4 + 4 + 2 = 11; tổng diện tích 1 + 16 + 36 + 32 = 85. Nếu chỉ hiểu là hình vuông bé có mèo thì đáp số chỉ 1 cm² (quá tầm thường nên không chọn).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình vuông nào chứa con mèo thì phải chứa ô vuông nhỏ có con mèo; vì vậy chia theo độ dài cạnh ($1$ ô, $2$ ô, $3$ ô, $4$ ô) rồi đếm xem mỗi loại có bao nhiêu hình vuông chứa ô có mèo.\n\n**Bước 1.** Xác định vị trí con mèo trên lưới: lưới có $5$ cột và $4$ hàng ô vuông nhỏ, con mèo nằm ở ô thuộc cột thứ hai, hàng thứ hai.\n\n**Bước 2.** Với mỗi độ dài cạnh, đếm số cách chọn các cột liên tiếp có chứa cột thứ hai và số cách chọn các hàng liên tiếp có chứa hàng thứ hai; số hình vuông là tích của hai số cách đó.\n\n**Bước 3.** Tính diện tích một hình vuông của từng loại bằng cạnh nhân cạnh rồi nhân với số hình vuông cùng loại.\n\n**Bước 4.** Cộng diện tích của tất cả các loại hình vuông để được tổng diện tích cần tìm.\n\n**Chú ý:** Lưới chỉ có $4$ hàng nên không có hình vuông cạnh $5$ ô.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, lưới có $5$ cột, $4$ hàng ô vuông nhỏ và con mèo nằm ở ô cột thứ hai, hàng thứ hai.\n\nHình vuông cạnh $1$ ô: có $1$ hình (chính ô có con mèo), tổng diện tích là: $1\\times 1=1$ ($\\text{cm}^2$)\n\nHình vuông cạnh $2$ ô: có $2$ cách chọn $2$ cột liên tiếp chứa cột thứ hai và $2$ cách chọn $2$ hàng liên tiếp chứa hàng thứ hai nên có $2\\times 2=4$ hình; tổng diện tích là: $4\\times (2\\times 2)=16$ ($\\text{cm}^2$)\n\nHình vuông cạnh $3$ ô: có $2$ cách chọn $3$ cột liên tiếp chứa cột thứ hai và $2$ cách chọn $3$ hàng liên tiếp chứa hàng thứ hai nên có $2\\times 2=4$ hình; tổng diện tích là: $4\\times (3\\times 3)=36$ ($\\text{cm}^2$)\n\nHình vuông cạnh $4$ ô: có $2$ cách chọn $4$ cột liên tiếp chứa cột thứ hai và $1$ cách chọn $4$ hàng nên có $2\\times 1=2$ hình; tổng diện tích là: $2\\times (4\\times 4)=32$ ($\\text{cm}^2$)\n\nTổng diện tích các hình vuông có chứa con mèo là: $1+16+36+32=85$ ($\\text{cm}^2$)\n\nĐáp số: $85\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 12",
+  "dap_an": "$19,5\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Hình không ghi tên điểm; tôi tự đặt O (đỉnh dưới bên phải hình vuông lớn, cũng là đỉnh chung của hai hình vuông nhỏ), A (đỉnh trên bên trái hình vuông lớn), B và C (đỉnh dưới bên phải của hình vuông nhỏ bên phải / phía dưới). Vị trí hai hình vuông nhỏ lấy từ hình: cạnh dưới hình vuông phải nằm trên đường thẳng chứa cạnh dưới hình vuông lớn, cạnh phải hình vuông dưới nằm trên đường thẳng chứa cạnh phải hình vuông lớn; O nằm trong tam giác tô đậm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác tô đậm không có cạnh nào nằm ngang hay thẳng đứng nên không tính trực tiếp được; nối đỉnh chung $O$ của các hình vuông với ba đỉnh của tam giác để chia thành ba tam giác nhỏ có đáy và đường cao biết ngay từ các cạnh hình vuông.\n\n**Bước 1.** Đặt tên điểm theo hình vẽ: $O$ là đỉnh chung của hai hình vuông nhỏ (cũng là đỉnh dưới bên phải của hình vuông lớn), $A$ là đỉnh trên bên trái của hình vuông lớn, $B$ và $C$ là hai đỉnh còn lại của tam giác tô đậm.\n\n**Bước 2.** Nối $O$ với $A$, $B$, $C$ thì tam giác $ABC$ được chia thành ba tam giác $AOB$, $BOC$ và $COA$, vì theo hình vẽ điểm $O$ nằm trong tam giác.\n\n**Bước 3.** Xem từng tam giác: $AOB$ và $COA$ có đáy là cạnh hình vuông nhỏ và đường cao hạ từ $A$ bằng cạnh hình vuông lớn; $BOC$ là tam giác vuông có hai cạnh góc vuông là hai cạnh hình vuông nhỏ.\n\n**Bước 4.** Tính diện tích ba tam giác nhỏ rồi cộng lại để được diện tích phần tô đậm.\n\n**Chú ý:** Phải cộng đủ cả ba tam giác, không bỏ sót tam giác vuông $BOC$ ở giữa hai hình vuông nhỏ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, gọi $O$ là đỉnh chung của hai hình vuông nhỏ (cũng là đỉnh dưới bên phải của hình vuông lớn), $A$ là đỉnh trên bên trái của hình vuông lớn, $B$ là đỉnh dưới bên phải của hình vuông nhỏ bên phải, $C$ là đỉnh dưới bên phải của hình vuông nhỏ phía dưới. Điểm $O$ nằm trong tam giác $ABC$ (phần tô đậm).\n\nNối $O$ với $A$, $B$, $C$, tam giác $ABC$ gồm ba tam giác $AOB$, $BOC$ và $COA$.\n\nTam giác $AOB$ có đáy $OB=3$ cm, đường cao hạ từ $A$ xuống đường thẳng $OB$ bằng cạnh hình vuông lớn là $5$ cm.\n\nDiện tích tam giác $AOB$ là: $3\\times 5:2=7,5$ ($\\text{cm}^2$)\n\nTam giác $COA$ có đáy $OC=3$ cm, đường cao hạ từ $A$ xuống đường thẳng $OC$ bằng cạnh hình vuông lớn là $5$ cm.\n\nDiện tích tam giác $COA$ là: $3\\times 5:2=7,5$ ($\\text{cm}^2$)\n\nTam giác $BOC$ vuông tại $O$ có hai cạnh góc vuông $OB=OC=3$ cm.\n\nDiện tích tam giác $BOC$ là: $3\\times 3:2=4,5$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $7,5+7,5+4,5=19,5$ ($\\text{cm}^2$)\n\nĐáp số: $19,5\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 13",
+  "dap_an": "$3,87\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ không nói về các cung tròn. Từ hình: cung AO và DO là cung của đường tròn tâm Q (trung điểm AD), cung BO và CO là cung của đường tròn tâm N (trung điểm BC), bán kính 3 cm, hai đường tròn tiếp xúc nhau tại tâm O của hình vuông. Phần tô = hình vuông MNPQ trừ hai hình quạt 1/4 hình tròn (tâm Q giữa QM–QP, tâm N giữa NM–NP); số liệu 3,87 đã kiểm bằng tính diện tích số trên lưới điểm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô màu là hình vuông $MNPQ$ bỏ đi hai hình quạt tròn nằm ở hai bên (mỗi hình quạt là một phần tư hình tròn có bán kính bằng nửa cạnh hình vuông $ABCD$), nên không cần tính riêng từng mảnh tô màu.\n\n**Bước 1.** Tìm cạnh hình vuông $ABCD$ từ chu vi; hai đường chéo $MP$ và $QN$ của hình vuông $MNPQ$ đều dài bằng cạnh này.\n\n**Bước 2.** Tính diện tích hình vuông $MNPQ$ bằng tích hai đường chéo chia $2$.\n\n**Bước 3.** Theo hình vẽ, các cung tròn là cung của đường tròn tâm $Q$ và tâm $N$ có bán kính bằng nửa cạnh $ABCD$; mỗi hình quạt trong hình vuông $MNPQ$ có góc ở tâm là góc vuông nên bằng một phần tư hình tròn, rồi tính diện tích hai hình quạt.\n\n**Bước 4.** Lấy diện tích hình vuông $MNPQ$ trừ diện tích hai hình quạt để được diện tích phần tô màu.\n\n**Chú ý:** Ở đây lấy số $\\pi$ bằng $3,14$ khi tính diện tích hình tròn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh hình vuông $ABCD$ là: $24:4=6$ (cm)\n\nHai đường chéo $MP$ và $QN$ của hình vuông $MNPQ$ đều dài $6$ cm (bằng cạnh hình vuông $ABCD$).\n\nDiện tích hình vuông $MNPQ$ là: $6\\times 6:2=18$ ($\\text{cm}^2$)\n\nTheo hình vẽ, các cung tròn là cung của đường tròn tâm $Q$ và đường tròn tâm $N$, bán kính là: $6:2=3$ (cm)\n\nHình quạt tâm $Q$ (giữa $QM$ và $QP$) có góc ở tâm là góc vuông nên bằng một phần tư hình tròn; hình quạt tâm $N$ cũng vậy.\n\nDiện tích hai hình quạt ghép lại bằng nửa hình tròn là: $3\\times 3\\times 3,14:2=14,13$ ($\\text{cm}^2$)\n\nDiện tích phần tô màu là: $18-14,13=3,87$ ($\\text{cm}^2$)\n\nĐáp số: $3,87\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 14",
+  "dap_an": "$1275$",
+  "ghi_chu_nghi": "Hiểu \"50 số tự nhiên đầu tiên\" là 0; 1; 2; …; 49 (số tự nhiên bắt đầu từ 0): tổng 1225, hiệu 2500 − 1225 = 1275. Nếu đề hiểu là 1; 2; …; 50 (tổng 1275) thì hiệu là 2500 − 1275 = 1225. Chọn theo định nghĩa số tự nhiên của chương trình tiểu học (có số 0); CEO xem lại nếu nguồn đáp án là 1225.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai dãy đều là dãy số cách đều nên tổng bằng (số đầu cộng số cuối) nhân số số hạng rồi chia $2$; phải xác định đúng số đầu và số cuối của từng dãy, nhớ rằng dãy số tự nhiên bắt đầu từ $0$.\n\n**Bước 1.** Viết dãy $50$ số lẻ đầu tiên, tìm số lẻ thứ $50$ (mỗi số lẻ hơn số đứng trước $2$ đơn vị) rồi tính tổng của dãy.\n\n**Bước 2.** Viết dãy $50$ số tự nhiên đầu tiên bắt đầu từ số $0$, tìm số cuối rồi tính tổng của dãy.\n\n**Bước 3.** Lấy tổng của $50$ số lẻ đầu tiên trừ tổng của $50$ số tự nhiên đầu tiên để được hiệu cần tìm.\n\n**Chú ý:** Số tự nhiên đầu tiên là $0$, nên $50$ số tự nhiên đầu tiên là các số từ $0$ đến $49$, không phải từ $1$ đến $50$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$50$ số lẻ đầu tiên là: $1;\\ 3;\\ 5;\\ \\ldots$\n\nSố lẻ thứ $50$ là: $1+(50-1)\\times 2=99$\n\nTổng của $50$ số lẻ đầu tiên là: $(99+1)\\times 50:2=2500$\n\n$50$ số tự nhiên đầu tiên là: $0;\\ 1;\\ 2;\\ \\ldots;\\ 49$\n\nTổng của $50$ số tự nhiên đầu tiên là: $(49+0)\\times 50:2=1225$\n\nHiệu cần tìm là: $2500-1225=1275$\n\nĐáp số: $1275$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 15",
+  "dap_an": "$24$; $26$; $28$; $30$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 24,
+   "hang": [
+    {
+     "nhan": "Số đầu",
+     "phan": 1
+    },
+    {
+     "nhan": "Số cuối",
+     "phan": 1,
+     "them": "6"
+    }
+   ],
+   "tong": "54",
+   "dau_hoi": [
+    "Số đầu",
+    "Số cuối"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn số chẵn liên tiếp cách đều nhau $2$ đơn vị, nên số đầu cộng số cuối bằng số thứ hai cộng số thứ ba, tức bằng một nửa tổng bốn số; còn số cuối hơn số đầu đúng ba lần khoảng cách. Biết tổng và hiệu của số đầu và số cuối thì tìm được từng số.\n\n**Bước 1.** Tính tổng bốn số từ trung bình cộng: lấy trung bình cộng nhân với số số hạng.\n\n**Bước 2.** Ghép bốn số thành hai cặp (số đầu với số cuối, số thứ hai với số thứ ba) có tổng bằng nhau, nên tổng của số đầu và số cuối bằng một nửa tổng bốn số.\n\n**Bước 3.** Tính xem số cuối hơn số đầu bao nhiêu: từ số đầu đến số cuối có $3$ khoảng cách, mỗi khoảng cách là $2$ đơn vị.\n\n**Bước 4.** Giải bài toán tổng – hiệu để tìm số đầu và số cuối, rồi cộng thêm $2$ lần lượt để được hai số ở giữa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của bốn số chẵn liên tiếp là: $27\\times 4=108$\n\nVì bốn số chẵn liên tiếp cách đều nhau $2$ đơn vị nên số đầu cộng số cuối bằng số thứ hai cộng số thứ ba. Do đó tổng của số đầu và số cuối là: $108:2=54$\n\nSố cuối hơn số đầu là: $2\\times 3=6$\n\nTa có sơ đồ:\n\n(Số đầu 1 phần; Số cuối bằng số đầu thêm 6; tổng 54)\n\nSố đầu là: $(54-6):2=24$\n\nSố cuối là: $24+6=30$\n\nHai số ở giữa là: $24+2=26$ và $26+2=28$\n\nĐáp số: $24;\\ 26;\\ 28;\\ 30$"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 16",
+  "dap_an": "$20$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Số học sinh nam bằng $\\dfrac{3}{8}$ số học sinh cả lớp\" nghĩa là chia cả lớp thành $8$ phần bằng nhau thì nam chiếm $3$ phần; muốn tìm số nữ thì tìm số nam trước (phân số của một số) rồi lấy cả lớp trừ đi số nam.\n\n**Bước 1.** Xác định cả lớp chia làm mấy phần bằng nhau và số học sinh nam chiếm mấy phần trong đó.\n\n**Bước 2.** Tìm số học sinh nam bằng cách chia số học sinh cả lớp cho $8$ rồi nhân với $3$.\n\n**Bước 3.** Lấy số học sinh cả lớp trừ đi số học sinh nam để được số học sinh nữ.\n\nThử lại: số nữ chiếm $5$ trong $8$ phần, tức bằng $\\dfrac{5}{8}$ số học sinh cả lớp, tính $\\dfrac{5}{8}$ của $32$ phải ra cùng kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nam của lớp $5A$ là: $32:8\\times 3=12$ (học sinh)\n\nSố học sinh nữ của lớp $5A$ là: $32-12=20$ (học sinh)\n\nĐáp số: $20$ học sinh"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 17",
+  "dap_an": "$6$ công nhân",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi và năng suất mỗi người như nhau nên số công nhân càng nhiều thì số ngày làm xong càng ít (hai đại lượng tỉ lệ nghịch); dùng cách rút về đơn vị: tìm xem một công nhân làm một mình xong việc trong bao nhiêu ngày.\n\n**Bước 1.** Nhận ra số công nhân và số ngày hoàn thành là hai đại lượng tỉ lệ nghịch, vì năng suất mỗi người như nhau.\n\n**Bước 2.** Rút về đơn vị: tính số ngày một công nhân làm một mình xong công việc bằng cách lấy số công nhân nhân với số ngày đã cho.\n\n**Bước 3.** Lấy số ngày của một công nhân chia cho số ngày muốn hoàn thành để tìm số công nhân cần có.\n\n**Bước 4.** Lấy số công nhân cần có trừ số công nhân hiện có để biết phải bổ sung bao nhiêu người.\n\n**Chú ý:** Đề hỏi số công nhân cần bổ sung, không phải số công nhân cần có, nên đừng dừng ở bước tìm số công nhân cần có.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ công nhân làm một mình xong công việc trong: $18\\times 12=216$ (ngày)\n\nĐể hoàn thành công việc trong $9$ ngày cần số công nhân là: $216:9=24$ (người)\n\nSố công nhân cần bổ sung là: $24-18=6$ (người)\n\nĐáp số: $6$ công nhân"
+ },
+ {
+  "ma_nguon": "LTV 2024 · 18",
+  "dap_an": "$1,2$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích nước $=$ diện tích đáy $\\times$ chiều cao mực nước, nên tìm chiều cao mực nước trước; mực nước bằng $\\dfrac{3}{4}$ chiều cao bể, tức là phân số $\\dfrac{3}{4}$ ứng với chiều cao mực nước, rồi chia để ra chiều cao cả bể.\n\n**Bước 1.** Tính diện tích đáy bể bơi bằng cách lấy chiều dài nhân với chiều rộng.\n\n**Bước 2.** Tìm chiều cao mực nước bằng cách lấy thể tích nước chia cho diện tích đáy.\n\n**Bước 3.** Nhận ra chiều cao mực nước chính là $\\dfrac{3}{4}$ chiều cao bể, nên phân số $\\dfrac{3}{4}$ của chiều cao bể ứng với chiều cao mực nước vừa tìm.\n\n**Bước 4.** Lấy chiều cao mực nước chia cho phân số $\\dfrac{3}{4}$ để tìm chiều cao của bể bơi.\n\n**Chú ý:** Chiều cao mực nước chỉ là một phần của bể, không phải chiều cao của bể, nên không dừng ở bước chia thể tích cho diện tích đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích đáy bể bơi là: $20,5\\times 16,2=332,1$ ($\\text{m}^2$)\n\nChiều cao mực nước là: $298,89:332,1=0,9$ (m)\n\n$\\dfrac{3}{4}$ chiều cao bể ứng với $0,9$ m, nên chiều cao bể bơi là: $0,9:\\dfrac{3}{4}=1,2$ (m)\n\nĐáp số: $1,2$ m"
+ }
+]

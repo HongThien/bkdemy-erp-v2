@@ -1,0 +1,75 @@
+[
+ {
+  "ma_nguon": "TX 2022 · P1.1",
+  "dap_an": "$8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chữ số tận cùng của một tích chỉ phụ thuộc vào chữ số tận cùng của các thừa số. Mọi thừa số của $A$ đều có tận cùng là $2$, nên chỉ cần biết có bao nhiêu thừa số rồi xem chữ số tận cùng lặp lại theo chu kỳ thế nào khi nhân dần các số tận cùng $2$.\n\n**Bước 1.** Nhận xét dãy $2;\\ 12;\\ 22;\\ \\ldots;\\ 2022$: hai số liền nhau hơn kém nhau $10$ đơn vị và số nào cũng có chữ số tận cùng là $2$. Từ đó tính xem dãy có bao nhiêu thừa số.\n\n**Bước 2.** Nhân thử từng bước các số tận cùng $2$ để tìm quy luật: chữ số tận cùng của tích lần lượt thay đổi rồi quay lại giá trị ban đầu sau một số thừa số nhất định, nên ta gom các thừa số thành từng nhóm cùng cỡ.\n\n**Bước 3.** Chia số thừa số cho số thừa số của một nhóm để biết có bao nhiêu nhóm đầy đủ và còn lại mấy thừa số lẻ.\n\n**Bước 4.** Tìm chữ số tận cùng của tích các nhóm đầy đủ, rồi của tích các thừa số còn lại; nhân hai chữ số tận cùng đó với nhau để ra chữ số tận cùng của $A$.\n\n**Chú ý:** Chỉ nhân các chữ số tận cùng với nhau chứ không nhân cả các số lớn, và đừng quên phần thừa số còn lẻ sau khi chia nhóm.\n\n**Phần 2. Trình bày**\n\nCác thừa số $2;\\ 12;\\ 22;\\ \\ldots;\\ 2022$ hơn kém nhau $10$ đơn vị và đều có chữ số tận cùng là $2$.\n\nSố thừa số của $A$ là: $(2022-2):10+1=203$ (thừa số)\n\nTích của $4$ số có tận cùng là $2$ thì có tận cùng giống $2\\times 2\\times 2\\times 2=16$, tức là tận cùng $6$.\n\nTa có $203:4=50$ (dư $3$), nên $A$ gồm $50$ nhóm, mỗi nhóm $4$ thừa số, và còn $3$ thừa số.\n\nTích của $50$ nhóm đó có tận cùng là $6$ (vì tích các số tận cùng $6$ vẫn có tận cùng $6$).\n\nTích của $3$ thừa số còn lại có tận cùng giống $2\\times 2\\times 2=8$, tức là tận cùng $8$.\n\nChữ số tận cùng của $A$ giống chữ số tận cùng của $6\\times 8=48$, tức là $8$.\n\nVậy $A$ có chữ số tận cùng là $8$."
+ },
+ {
+  "ma_nguon": "TX 2022 · P1.2",
+  "dap_an": "$484\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không cho số hình lập phương nhỏ. Số 484 chia 6 không tròn nên không tìm được cạnh khối lớn, nhưng đáp số không cần cạnh: bỏ khối ở đỉnh thì mất 3 mặt nhỏ lộ ra 3 mặt nhỏ, diện tích toàn phần không đổi. Hiểu mỗi cạnh khối lớn có ít nhất 3 hình lập phương nhỏ (4 hình bị bỏ không chạm nhau). Đáp số 484 cm².",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ một hình lập phương nhỏ ở đỉnh thì diện tích toàn phần không đổi: mất đi $3$ mặt nhỏ nằm ngoài nhưng lại lộ ra đúng $3$ mặt nhỏ mới của các hình kề bên. Vì vậy không cần biết cạnh khối lớn hay số hình nhỏ.\n\n**Bước 1.** Xét một hình lập phương nhỏ ở đỉnh: nó có $3$ mặt nằm ở bề mặt khối lớn, tức là $3$ mặt đang được tính vào diện tích toàn phần.\n\n**Bước 2.** Khi lấy hình đó đi, $3$ mặt này không còn thuộc bề mặt nữa nên diện tích toàn phần giảm đi $3$ mặt nhỏ.\n\n**Bước 3.** Chỗ hình bị lấy đi lộ ra $3$ mặt của $3$ hình lập phương kề bên (trước đó các mặt này dính vào hình bị lấy đi); mỗi mặt đó bằng một mặt nhỏ, nên diện tích tăng lên $3$ mặt nhỏ.\n\n**Bước 4.** So sánh phần mất đi và phần tăng thêm khi bỏ một hình, rồi áp dụng cho cả $4$ hình ở $4$ đỉnh.\n\n**Chú ý:** Không cần tìm cạnh khối lớn hay số hình nhỏ; chỉ cần so sánh phần mất đi với phần tăng thêm.\n\n**Phần 2. Trình bày**\n\nMỗi hình lập phương nhỏ ở đỉnh có $3$ mặt nằm ngoài, nên khi bỏ đi diện tích toàn phần giảm đi $3$ mặt nhỏ.\n\nChỗ bỏ đi lộ ra $3$ mặt của $3$ hình lập phương nhỏ kề bên, mỗi mặt bằng một mặt nhỏ, nên diện tích toàn phần tăng thêm $3$ mặt nhỏ.\n\nBỏ mỗi hình ở đỉnh thì diện tích toàn phần giảm $3$ mặt nhỏ và tăng $3$ mặt nhỏ, tức là không thay đổi.\n\nBỏ cả $4$ hình ở $4$ đỉnh thì diện tích toàn phần vẫn không đổi.\n\nVậy diện tích toàn phần còn lại là $484\\ \\text{cm}^2$."
+ },
+ {
+  "ma_nguon": "TX 2022 · P1.3",
+  "dap_an": "$13,76\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ chỉ nói bán kính 4 cm. Lấy từ hình: 4 đường tròn bằng nhau, tiếp xúc nhau từng đôi, tâm là 4 đỉnh của một hình vuông; phần tô màu là phần hình vuông nằm ngoài 4 hình quạt 1/4 hình tròn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, bốn đường tròn bằng nhau tiếp xúc nhau và tâm của chúng là bốn đỉnh của một hình vuông. Phần tô màu là hình vuông bỏ đi bốn phần tư hình tròn ở bốn góc; bốn phần tư đó ghép lại đúng bằng một hình tròn.\n\n**Bước 1.** Tìm cạnh hình vuông: hai đường tròn kề nhau tiếp xúc nhau nên khoảng cách giữa hai tâm bằng tổng hai bán kính, và đó cũng là cạnh hình vuông.\n\n**Bước 2.** Tính diện tích hình vuông bằng cạnh nhân với cạnh.\n\n**Bước 3.** Ở mỗi đỉnh hình vuông có một phần tư hình tròn bán kính $4$ cm; bốn phần tư ghép lại thành một hình tròn, rồi tính diện tích hình tròn đó.\n\n**Bước 4.** Lấy diện tích hình vuông trừ diện tích hình tròn vừa tính để được diện tích phần tô màu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, bốn đường tròn tiếp xúc nhau và tâm của chúng là bốn đỉnh của một hình vuông.\n\nCạnh hình vuông là: $4+4=8$ (cm)\n\nDiện tích hình vuông là: $8\\times 8=64$ ($\\text{cm}^2$)\n\nBốn phần tư hình tròn ghép lại thành một hình tròn có diện tích là: $4\\times 4\\times 3,14=50,24$ ($\\text{cm}^2$)\n\nDiện tích phần tô màu là: $64-50,24=13,76$ ($\\text{cm}^2$)\n\nĐáp số: $13,76\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "TX 2022 · P1.4",
+  "dap_an": "$615\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: tăng đáy lớn thêm 4 m, đáy bé và chiều cao giữ nguyên; phần diện tích tăng thêm là tam giác có đáy 4 m và chiều cao bằng chiều cao hình thang.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi chỉ kéo dài đáy lớn thêm một đoạn mà chiều cao không đổi, phần diện tích tăng thêm là một hình tam giác có đáy bằng đoạn kéo dài và chiều cao bằng chiều cao của hình thang. Biết diện tích tam giác đó thì tìm được chiều cao, rồi tính diện tích hình thang.\n\n**Bước 1.** Nhận ra phần diện tích tăng thêm là hình tam giác, đáy là đoạn đáy lớn được kéo dài, chiều cao chính là chiều cao của thửa ruộng.\n\n**Bước 2.** Diện tích tam giác bằng đáy nhân chiều cao rồi chia $2$, nên đáy nhân chiều cao bằng hai lần diện tích tam giác; từ đó chia cho đáy đã biết để tìm chiều cao.\n\n**Bước 3.** Diện tích hình thang bằng trung bình cộng hai đáy nhân với chiều cao, nên lấy số đã cho là trung bình cộng hai đáy nhân với chiều cao vừa tìm.\n\n**Chú ý:** Đề cho trung bình cộng hai đáy chứ không cho từng đáy, nên cứ dùng thẳng số đó trong công thức, không cần tìm riêng từng đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần diện tích tăng thêm là một tam giác có đáy $4$ m và chiều cao bằng chiều cao thửa ruộng.\n\nHai lần diện tích tam giác đó là: $60\\times 2=120$ ($\\text{m}^2$)\n\nChiều cao thửa ruộng là: $120:4=30$ (m)\n\nDiện tích thửa ruộng ban đầu là: $20,5\\times 30=615$ ($\\text{m}^2$)\n\nĐáp số: $615\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "TX 2022 · P1.5",
+  "dap_an": "$800$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi \"số thóc còn lại bằng $\\dfrac{1}{3}$ số thóc đã bán\" thành số thóc đã bán bằng bao nhiêu phần số thóc ban đầu. Sau đó số thóc đã bán gồm lần đầu ($\\dfrac{2}{5}$ số thóc ban đầu) và lần hai ($280$ kg), nên $280$ kg ứng với một phân số của số thóc ban đầu.\n\n**Bước 1.** Số thóc còn lại bằng $\\dfrac{1}{3}$ số thóc đã bán, nghĩa là chia số đã bán thành $3$ phần bằng nhau thì số còn lại là $1$ phần; từ đó biết số thóc ban đầu gồm bao nhiêu phần và số đã bán chiếm bao nhiêu phần trong đó.\n\n**Bước 2.** Số thóc đã bán là tổng của lần đầu và lần hai, nên phần ứng với lần hai chính là phần phân số của số thóc đã bán trừ đi phần phân số của lần đầu.\n\n**Bước 3.** Thực hiện phép trừ hai phân số khác mẫu bằng cách quy đồng mẫu số, vì phân số này cho biết $280$ kg bằng bao nhiêu phần số thóc ban đầu.\n\n**Bước 4.** Biết một phân số của số thóc ban đầu ứng với $280$ kg thì lấy $280$ chia cho phân số đó để tìm số thóc ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thóc còn lại bằng $\\dfrac{1}{3}$ số thóc đã bán nên nếu số thóc đã bán là $3$ phần thì số thóc còn lại là $1$ phần.\n\nSố thóc ban đầu gồm số phần bằng nhau là: $3+1=4$ (phần)\n\nSố thóc đã bán bằng số phần của số thóc ban đầu là: $\\dfrac{3}{4}$ (số thóc ban đầu)\n\n$280$ kg ứng với phân số của số thóc ban đầu là: $\\dfrac{3}{4}-\\dfrac{2}{5}=\\dfrac{15}{20}-\\dfrac{8}{20}=\\dfrac{7}{20}$ (số thóc ban đầu)\n\nSố thóc ban đầu là: $280:\\dfrac{7}{20}=280\\times\\dfrac{20}{7}=800$ (kg)\n\nĐáp số: $800$ kg"
+ },
+ {
+  "ma_nguon": "TX 2022 · P1.6",
+  "dap_an": "$48$ km/giờ",
+  "ghi_chu_nghi": "Hiểu: 8 giờ 20 phút là lúc xuất phát, 10 giờ 20 phút là lúc đến B (đã gồm 10 phút nghỉ); vận tốc tính theo thời gian ô tô thực sự chạy, không tính thời gian nghỉ.",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Ô tô đi từ A đến B",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 88
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 88,
+     "nhan": "? km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 88,
+     "nhan": "88 km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vận tốc bằng quãng đường chia cho thời gian đi, mà thời gian đi chỉ tính lúc ô tô thực sự chạy. Thời gian nghỉ dọc đường phải trừ ra khỏi tổng thời gian từ lúc xuất phát đến lúc tới nơi.\n\n**Bước 1.** Tính tổng thời gian từ lúc ô tô rời A đến lúc tới B bằng cách lấy giờ đến trừ giờ đi.\n\n**Bước 2.** Trừ đi thời gian ô tô nghỉ giữa đường để biết thời gian ô tô thực sự chạy.\n\n**Bước 3.** Vận tốc tính theo km/giờ nên đổi thời gian chạy ra giờ, dựa vào việc một giờ có $60$ phút.\n\n**Bước 4.** Lấy quãng đường chia cho thời gian chạy (đã đổi ra giờ) để tìm vận tốc.\n\n**Chú ý:** Không lấy quãng đường chia cho tổng thời gian kể cả lúc nghỉ, vì lúc nghỉ ô tô đứng yên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Quãng đường AB dài $88$ km; ô tô đi từ A đến B, vận tốc chưa biết)\n\nThời gian từ lúc ô tô rời A đến lúc tới B là: $10$ giờ $20$ phút $-\\ 8$ giờ $20$ phút $=2$ giờ\n\nThời gian ô tô thực sự chạy là: $2$ giờ $-\\ 10$ phút $=1$ giờ $50$ phút\n\nĐổi: $1$ giờ $50$ phút $=110$ phút $=\\dfrac{110}{60}$ giờ $=\\dfrac{11}{6}$ giờ\n\nVận tốc của ô tô là: $88:\\dfrac{11}{6}=88\\times\\dfrac{6}{11}=48$ (km/giờ)\n\nĐáp số: $48$ km/giờ"
+ },
+ {
+  "ma_nguon": "TX 2022 · P2.1",
+  "dap_an": "a) $120$ nghìn đồng; b) $2$ lọ",
+  "ghi_chu_nghi": "Đề \"mua 20 lọ hoa với giá 30 nghìn đồng\": hiểu 30 nghìn đồng là giá MỘT lọ (vốn 600 nghìn đồng); \"lãi 20%\" tính trên tiền vốn. Cách hiểu này cho số lọ nguyên (720 : 40 = 18). Nếu lãi 20% tính trên giá bán thì 600 : 80% = 750 không chia hết cho 40 nên loại.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi $20\\%$ nghĩa là tiền lãi bằng $20\\%$ tiền vốn (tiền mua hàng). Tiền thu về khi bán bằng tiền vốn cộng tiền lãi, rồi chia cho giá bán một lọ để biết đã bán được bao nhiêu lọ; số lọ còn thiếu so với lúc mua chính là số lọ vỡ, và ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Tính tiền vốn: cửa hàng mua $20$ lọ hoa, mỗi lọ $30$ nghìn đồng, nên lấy số lọ nhân giá mua một lọ.\n\n**Bước 2.** Ý a): tiền lãi bằng $20\\%$ tiền vốn, nên lấy tiền vốn nhân $20\\%$.\n\n**Bước 3.** Tiền thu được từ số lọ còn lại bằng tiền vốn cộng tiền lãi vừa tìm được ở ý a).\n\n**Bước 4.** Ý b): mỗi lọ bán với giá $40$ nghìn đồng nên lấy tổng tiền bán chia cho giá bán một lọ để biết số lọ đã bán được.\n\n**Bước 5.** Lấy số lọ đã mua trừ đi số lọ đã bán được thì ra số lọ bị vỡ.\n\n**Chú ý:** Lãi $20\\%$ tính trên tiền mua vào chứ không tính trên tiền bán ra.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền cửa hàng mua $20$ lọ hoa là: $30\\times 20=600$ (nghìn đồng)\n\na) Tiền lãi của cửa hàng là: $600\\times 20\\%=120$ (nghìn đồng)\n\nSố tiền bán các lọ hoa còn lại là: $600+120=720$ (nghìn đồng)\n\nb) Số lọ hoa bán được là: $720:40=18$ (lọ)\n\nSố lọ hoa bị vỡ là: $20-18=2$ (lọ)\n\nĐáp số: a) $120$ nghìn đồng; b) $2$ lọ"
+ },
+ {
+  "ma_nguon": "TX 2022 · P2.2",
+  "dap_an": "$A=\\dfrac{98}{33}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi mẫu số là tích hai số lẻ liên tiếp hơn kém nhau $2$. Nếu tử số bằng đúng hiệu hai thừa số của mẫu thì phân số tách được thành hiệu hai phân số, và khi cộng cả dãy các phân số ở giữa triệt tiêu nhau, chỉ còn số đầu và số cuối.\n\n**Bước 1.** Nhận xét tử số là $6$, gấp $3$ lần hiệu hai thừa số của mẫu ($2$), nên đặt thừa số chung $3$ ra ngoài để mỗi phân số trong ngoặc có tử số bằng $2$.\n\n**Bước 2.** Viết mỗi phân số có tử số $2$ thành hiệu của hai phân số có tử số $1$ và mẫu là từng thừa số của mẫu cũ.\n\n**Bước 3.** Cộng các hiệu đó lại: số bị trừ của hiệu sau bằng số trừ của hiệu trước nên các cặp triệt tiêu nhau, chỉ còn phân số đầu tiên và phân số cuối cùng.\n\n**Bước 4.** Tính hiệu hai phân số còn lại trong ngoặc rồi nhân kết quả với $3$ và rút gọn.\n\n**Chú ý:** Sau khi đặt $3$ ra ngoài phải nhớ nhân lại với $3$ ở bước cuối.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{6}{1\\times 3}+\\dfrac{6}{3\\times 5}+\\ldots+\\dfrac{6}{97\\times 99}$\n\n$A=3\\times\\left(\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\ldots+\\dfrac{2}{97\\times 99}\\right)$\n\n$A=3\\times\\left(\\dfrac{1}{1}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\ldots+\\dfrac{1}{97}-\\dfrac{1}{99}\\right)$\n\n$A=3\\times\\left(1-\\dfrac{1}{99}\\right)$\n\n$A=3\\times\\dfrac{98}{99}$\n\n$A=\\dfrac{98}{33}$"
+ }
+]

@@ -1,0 +1,124 @@
+[
+ {
+  "ma_nguon": "NTL 2025 · P1.1",
+  "dap_an": "$3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn phân số có hai loại mẫu số là $7$ và $13$ đứng xen kẽ nhau; dùng tính chất giao hoán và kết hợp để nhóm các phân số cùng mẫu số lại, khi đó mỗi tổng đều rút gọn được thành số tự nhiên.\n\n**Bước 1.** Quan sát bốn phân số: hai phân số có mẫu số $7$ và hai phân số có mẫu số $13$ đứng xen kẽ, đó là dấu hiệu để tính thuận tiện.\n\n**Bước 2.** Dùng tính chất giao hoán và kết hợp để nhóm hai phân số cùng mẫu số $7$ vào một ngoặc, hai phân số cùng mẫu số $13$ vào một ngoặc.\n\n**Bước 3.** Cộng hai phân số cùng mẫu số trong từng ngoặc bằng cách giữ nguyên mẫu số và cộng các tử số, rồi rút gọn mỗi kết quả thành số tự nhiên.\n\n**Bước 4.** Cộng hai số tự nhiên vừa tìm được để có kết quả của cả biểu thức.\n\n**Chú ý:** Chỉ cộng tử số với tử số khi hai phân số có cùng mẫu số; không cộng luôn mẫu số với mẫu số.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{7}+\\dfrac{6}{13}+\\dfrac{12}{7}+\\dfrac{7}{13}$\n\n$=\\left(\\dfrac{2}{7}+\\dfrac{12}{7}\\right)+\\left(\\dfrac{6}{13}+\\dfrac{7}{13}\\right)$\n\n$=\\dfrac{14}{7}+\\dfrac{13}{13}$\n\n$=2+1$\n\n$=3$"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.2",
+  "dap_an": "$x=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $x\\times 4,9$ và $x\\times 5,1$ có chung thừa số $x$, nên dùng tính chất nhân một số với một tổng để đưa $x$ ra ngoài; khi đó tổng $4,9+5,1$ là một số tròn.\n\n**Bước 1.** Nhận thấy vế trái gồm hai tích cùng có thừa số $x$, nên viết lại thành $x$ nhân với một tổng đặt trong ngoặc.\n\n**Bước 2.** Tính tổng trong ngoặc: hai số thập phân này cộng lại vừa tròn nên phép tính rất gọn.\n\n**Bước 3.** Lúc này $x$ là thừa số chưa biết của một tích, muốn tìm ta lấy tích chia cho thừa số đã biết.\n\nThử lại: thay giá trị $x$ vừa tìm vào vế trái, tính ra phải bằng $30$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}x\\times 4,9+x\\times 5,1=30\\\\ x\\times(4,9+5,1)=30\\\\ x\\times 10=30\\\\ x=30:10\\\\ x=3\\end{array}$"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.3",
+  "dap_an": "$33000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền còn lại bằng số tiền cầm đi trừ đi tổng số tiền đã mua; muốn có tổng số tiền đã mua thì tính riêng tiền bút bi và tiền vở rồi cộng lại.\n\n**Bước 1.** Tính tiền mua bút bi bằng cách lấy giá một cái bút nhân với số bút đã mua.\n\n**Bước 2.** Tính tiền mua vở bằng cách lấy giá một quyển vở nhân với số vở đã mua.\n\n**Bước 3.** Cộng hai số tiền vừa tìm để biết người đó đã tiêu hết bao nhiêu tiền.\n\n**Bước 4.** Lấy số tiền cầm lúc đầu trừ đi số tiền đã tiêu để biết số tiền còn lại.\n\n**Chú ý:** Số tiền $100000$ đồng là số tiền cầm lúc đầu, không phải số tiền đã tiêu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền mua $4$ bút bi là: $4\\times 4500=18000$ (đồng)\n\nSố tiền mua $7$ quyển vở là: $7\\times 7000=49000$ (đồng)\n\nTổng số tiền đã mua là: $18000+49000=67000$ (đồng)\n\nSố tiền người đó còn lại là: $100000-67000=33000$ (đồng)\n\nĐáp số: $33000$ đồng"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.4",
+  "dap_an": "$\\dfrac{7}{10}$",
+  "ghi_chu_nghi": "Đề ghi \"con xúc xắc\" nhưng \"mặt ngửa / mặt úp\" là của đồng xu. Hiểu: mỗi lần gieo chỉ có hai kết quả là mặt ngửa hoặc mặt úp ⇒ úp = 10 − 3 = 7 lần, tỉ số 7/10 (= 70%). Nếu kho muốn đáp số phần trăm thì ghi 70%.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần gieo chỉ có hai kết quả là mặt ngửa hoặc mặt úp, nên số lần ra mặt úp bằng tổng số lần gieo trừ đi số lần ra mặt ngửa; tỉ số của hai số được viết dưới dạng phân số, số đứng trước là tử số.\n\n**Bước 1.** Xác định tổng số lần gieo và số lần ra mặt ngửa mà đề đã cho.\n\n**Bước 2.** Tìm số lần ra mặt úp bằng cách lấy tổng số lần gieo trừ đi số lần ra mặt ngửa.\n\n**Bước 3.** Lập tỉ số của số lần mặt úp so với tổng số lần gieo: số lần mặt úp là tử số, tổng số lần gieo là mẫu số.\n\n**Chú ý:** Đề hỏi tỉ số so với TỔNG số lần gieo, không phải so với số lần mặt ngửa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lần nhận được mặt úp là: $10-3=7$ (lần)\n\nTỉ số của số lần nhận được mặt úp so với tổng số lần gieo là: $7:10=\\dfrac{7}{10}$\n\nĐáp số: $\\dfrac{7}{10}$"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.5",
+  "dap_an": "$1200000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi suất $6\\%$ một năm nghĩa là sau một năm tiền lãi bằng $6\\%$ số tiền đã gửi, nên đây là bài tìm phần trăm của một số: lấy số tiền gửi nhân với $6\\%$.\n\n**Bước 1.** Hiểu lãi suất $6\\%$ một năm nghĩa là sau một năm tiền lãi bằng $6\\%$ số tiền đã gửi.\n\n**Bước 2.** Đổi $20$ triệu đồng ra đồng để có số tiền đầy đủ cho dễ nhân với phần trăm.\n\n**Bước 3.** Tính tiền lãi bằng cách lấy số tiền gửi nhân với $6\\%$.\n\n**Chú ý:** Số tiền lãi chỉ là phần tiền sinh thêm, chưa cộng với số tiền gốc đã gửi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $20$ triệu đồng $=20000000$ đồng\n\nSố tiền lãi nhận được sau một năm là: $20000000\\times 6\\%=1200000$ (đồng)\n\nĐáp số: $1200000$ đồng"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.6",
+  "dap_an": "$192$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lít nước bể chứa được chính là thể tích của bể tính bằng đơn vị lít; tính thể tích hình hộp chữ nhật rồi đổi đơn vị, nhớ $1$ lít bằng $1\\ \\text{dm}^3$.\n\n**Bước 1.** Nhận ra bể chứa được bao nhiêu nước tức là tính thể tích của bể hình hộp chữ nhật.\n\n**Bước 2.** Tính thể tích bằng cách nhân chiều dài với chiều rộng rồi nhân với chiều cao; cả ba kích thước đều đang tính bằng xăng-ti-mét.\n\n**Bước 3.** Đổi thể tích từ $\\text{cm}^3$ sang $\\text{dm}^3$ rồi sang lít, vì $1\\ \\text{dm}^3=1000\\ \\text{cm}^3$ và $1\\ \\text{dm}^3=1$ lít.\n\n**Chú ý:** Thể tích tính bằng $\\text{cm}^3$ phải chia cho $1000$ mới ra $\\text{dm}^3$; đừng lấy luôn số $\\text{cm}^3$ làm số lít.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích của bể nước là: $80\\times 40\\times 60=192000$ ($\\text{cm}^3$)\n\nĐổi: $192000\\ \\text{cm}^3=192\\ \\text{dm}^3=192$ lít\n\nĐáp số: $192$ lít"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.7",
+  "dap_an": "$2,5$ km",
+  "so_do_mo_ta": {
+   "tieu_de": "Nam đi từ nhà đến trường",
+   "loai": "chuyen_dong",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0,
+     "ghi": "7 giờ"
+    },
+    {
+     "ten": "Trường",
+     "x": 2.5,
+     "ghi": "7 giờ 15 phút"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 2.5,
+     "nhan": "10 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 2.5,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề in \"10 km.giờ\" (lỗi gõ) — hiểu là vận tốc 10 km/giờ. Đáp số 2,5 km nhờ 15 phút = 1/4 giờ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường bằng vận tốc nhân với thời gian; vận tốc tính theo km/giờ nên thời gian phải đổi ra giờ trước khi nhân.\n\n**Bước 1.** Tìm thời gian Nam đi từ nhà đến trường bằng cách lấy giờ đến trường trừ đi giờ xuất phát.\n\n**Bước 2.** Đổi thời gian đó từ phút sang giờ, vì vận tốc cho theo km/giờ nên thời gian phải tính bằng giờ.\n\n**Bước 3.** Tính quãng đường bằng cách lấy vận tốc nhân với thời gian đã đổi ra giờ.\n\n**Chú ý:** Nếu nhân luôn $10$ với $15$ thì sẽ sai, vì lúc đó thời gian đang tính bằng phút còn vận tốc tính theo giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Nam đi từ nhà lúc $7$ giờ, đến trường lúc $7$ giờ $15$ phút; vận tốc $10$ km/giờ; quãng đường nhà – trường chưa biết)\n\nThời gian Nam đi từ nhà đến trường là: $7$ giờ $15$ phút $-\\ 7$ giờ $=15$ phút\n\nĐổi: $15$ phút $=15:60=0,25$ giờ\n\nQuãng đường từ nhà Nam đến trường là: $10\\times 0,25=2,5$ (km)\n\nĐáp số: $2,5$ km"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.8",
+  "dap_an": "$\\dfrac{7}{4}$",
+  "ghi_chu_nghi": "Hình có 3 vòng tròn: vòng thứ nhất để trống, chỉ vòng thứ hai có đủ số nên quy luật suy từ MỘT ví dụ: phân số ở phần dưới = tích hai phân số ở phần trên (12/14 × 10/12 = 5/7). Áp sang vòng ba: 7/3 × 3/4 = 7/4. Đã thử cộng, trừ, chia thì không ra 5/7. Kém chắc nhất vì chỉ một ví dụ — nên đối chiếu đáp số với nguồn khác.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chỉ có vòng tròn thứ hai ghi đủ số, nên phải tìm quy luật trên vòng tròn đó rồi mới áp dụng sang vòng tròn thứ ba: thử xem phân số ở phần dưới liên hệ thế nào với hai phân số ở phần trên.\n\n**Bước 1.** Quan sát vòng tròn thứ hai: có hai phân số ở nửa trên và một phân số ở phần dưới, đó là dữ kiện đầy đủ duy nhất để tìm quy luật.\n\n**Bước 2.** Thử lần lượt các phép tính cộng, trừ, nhân, chia giữa hai phân số ở trên xem phép nào cho ra đúng phân số ở dưới; để ý hai số $12$ ở tử số và mẫu số có thể rút gọn cho nhau.\n\n**Bước 3.** Kiểm tra quy luật vừa tìm bằng phép tính và rút gọn kết quả, phải được đúng phân số đã ghi ở phần dưới của vòng tròn thứ hai.\n\n**Bước 4.** Áp dụng đúng quy luật đó cho hai phân số ở phần trên của vòng tròn thứ ba để tìm phân số thay cho dấu hỏi.\n\n**Chú ý:** Phải rút gọn phân số kết quả trước khi so sánh với số ghi trên hình.\n\n**Phần 2. Trình bày**\n\nVòng tròn thứ hai: $\\dfrac{12}{14}\\times\\dfrac{10}{12}=\\dfrac{12\\times 10}{14\\times 12}=\\dfrac{10}{14}=\\dfrac{5}{7}$\n\nVậy quy luật: phân số ở phần dưới bằng tích hai phân số ở phần trên.\n\nVòng tròn thứ ba: $\\dfrac{7}{3}\\times\\dfrac{3}{4}=\\dfrac{7\\times 3}{3\\times 4}=\\dfrac{7}{4}$\n\nVậy phân số thích hợp thay cho dấu ? là $\\dfrac{7}{4}$."
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.9",
+  "dap_an": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu đồ cho biết mỗi môn chiếm bao nhiêu phần trăm số học sinh của câu lạc bộ; muốn kiểm từng mệnh đề thì tính số học sinh mỗi môn bằng cách lấy $60$ học sinh nhân với phần trăm tương ứng.\n\n**Bước 1.** Đọc biểu đồ để ghi lại phần trăm của từng môn bóng đá, bóng rổ, cầu lông và kiểm tra ba phần trăm cộng lại đủ $100\\%$.\n\n**Bước 2.** Tính số học sinh mỗi môn bằng cách lấy tổng số học sinh nhân với phần trăm của môn đó.\n\n**Bước 3.** Đối chiếu từng mệnh đề a), b), c), d) với số liệu vừa tính để kết luận Đúng hay Sai.\n\n**Chú ý:** Mệnh đề c) nói \"gấp đôi\" nên phải so sánh bằng phép nhân đôi, không chỉ nhìn hình lớn hay nhỏ.\n\n**Phần 2. Trình bày**\n\nTheo biểu đồ: bóng đá $40\\%$, bóng rổ $25\\%$, cầu lông $35\\%$ (kiểm tra: $40\\%+25\\%+35\\%=100\\%$).\n\nSố học sinh chơi bóng đá là: $60\\times 40\\%=24$ (học sinh)\n\nSố học sinh chơi bóng rổ là: $60\\times 25\\%=15$ (học sinh)\n\nSố học sinh chơi cầu lông là: $60\\times 35\\%=21$ (học sinh)\n\na) Bóng đá có $24$ học sinh, nhiều hơn bóng rổ ($15$ học sinh) và cầu lông ($21$ học sinh). Đúng.\n\nb) Bóng rổ có $15$ học sinh, không phải $12$ học sinh. Sai.\n\nc) Gấp đôi số học sinh bóng đá là: $24\\times 2=48$ (học sinh), mà cầu lông chỉ có $21$ học sinh. Sai.\n\nd) Cầu lông nhiều hơn bóng rổ: $21-15=6$ (học sinh). Đúng."
+ },
+ {
+  "ma_nguon": "NTL 2025 · P1.10",
+  "dap_an": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+  "ghi_chu_nghi": "Theo luu_y_de: chữ đề ghi \"hình vuông ABCD\" nhưng hình vẽ là hình chữ nhật 4 cột × 3 hàng ô vuông 1 cm (AB = 4 cm, AD = 3 cm, S = 12 cm²); AE = AH = 2 cm. Giải theo hình. Mệnh đề d) đếm được 20 hình vuông (12 + 6 + 2) ⇒ \"18 hình\" là Sai.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình đã cho các ô vuông cạnh $1$ cm, nên cạnh và diện tích các hình đều tính được bằng cách đếm ô; riêng mệnh đề đếm tất cả các hình vuông thì phải đếm theo từng cỡ cạnh $1$ cm, $2$ cm, $3$ cm rồi cộng lại.\n\n**Bước 1.** Đếm số ô vuông theo chiều ngang và chiều dọc để biết kích thước của hình lớn $ABCD$ và của tứ giác $AEGH$.\n\n**Bước 2.** Tính chu vi và diện tích hình vuông $AEGH$, rồi tính diện tích của $ABCD$ để so sánh hai diện tích với nhau.\n\n**Bước 3.** Đếm các hình vuông theo từng cỡ cạnh: mỗi cỡ đếm số vị trí theo chiều ngang nhân với số vị trí theo chiều dọc, rồi cộng các cỡ lại.\n\n**Bước 4.** Đối chiếu kết quả với từng mệnh đề a), b), c), d) để kết luận Đúng hay Sai.\n\n**Chú ý:** Đề ghi \"hình vuông $ABCD$\" nhưng theo hình vẽ $ABCD$ là hình chữ nhật, nên mọi số đo phải đếm từ hình vẽ chứ không suy từ chữ.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, $ABCD$ là hình chữ nhật gồm các ô vuông cạnh $1$ cm xếp thành $4$ cột và $3$ hàng, nên $AB=4$ cm, $AD=3$ cm.\n\nĐiểm $E$ trên cạnh $AB$ cách $A$ hai ô và điểm $H$ trên cạnh $AD$ cách $A$ hai ô nên $AE=AH=2$ cm, tứ giác $AEGH$ là hình vuông cạnh $2$ cm.\n\nDiện tích hình chữ nhật $ABCD$ là: $4\\times 3=12$ ($\\text{cm}^2$)\n\na) Chu vi hình vuông $AEGH$ là: $2\\times 4=8$ (cm), không phải $4$ cm. Sai.\n\nb) Diện tích hình vuông $AEGH$ là: $2\\times 2=4$ ($\\text{cm}^2$). Đúng.\n\nc) Một phần ba diện tích $ABCD$ là: $12:3=4$ ($\\text{cm}^2$), bằng diện tích $AEGH$ nên $S_{AEGH}=\\dfrac{1}{3}\\times S_{ABCD}$. Đúng.\n\nd) Số hình vuông cạnh $1$ cm là: $4\\times 3=12$ (hình). Số hình vuông cạnh $2$ cm là: $3\\times 2=6$ (hình) vì có $3$ vị trí theo chiều ngang và $2$ vị trí theo chiều dọc. Số hình vuông cạnh $3$ cm là: $2\\times 1=2$ (hình). Tổng số hình vuông là: $12+6+2=20$ (hình), không phải $18$ hình. Sai."
+ },
+ {
+  "ma_nguon": "NTL 2025 · P2.1",
+  "dap_an": "a) $24000000$ đồng; b) Mũ: $525$ cái; nón: $675$ cái",
+  "so_do_mo_ta": {
+   "tieu_de": "Số mũ và số nón ban đầu",
+   "gia_tri_phan": 525,
+   "hang": [
+    {
+     "nhan": "Số nón",
+     "phan": 1,
+     "them": "150 cái"
+    },
+    {
+     "nhan": "Số mũ",
+     "phan": 1
+    }
+   ],
+   "tong": "1200 cái",
+   "dau_hoi": [
+    "Số nón",
+    "Số mũ"
+   ]
+  },
+  "ghi_chu_nghi": "Nhiều cách (ý b): đã chọn tổng–hiệu (hiệu 100 + 50 = 150, tổng 1200). Cách khác: sau khi nhập thêm 100 mũ và bớt 50 nón thì hai loại bằng nhau, tổng 1200 + 100 − 50 = 1250 ⇒ mỗi loại 625 ⇒ mũ 525, nón 675 (không cần sơ đồ hiệu). CEO chốt một cách nếu cần.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Câu a) là bài tìm phân số của một số để biết số áo, rồi nhân với tiền lãi mỗi chiếc; câu b) dùng lại số áo ở câu a) để biết tổng số mũ và nón, sau đó biến đổi điều kiện \"thêm mũ, bớt nón thì bằng nhau\" thành một hiệu để đưa về bài tổng – hiệu.\n\n**Bước 1.** Câu a): tìm số áo bằng cách lấy tổng số vật phẩm nhân với $\\dfrac{2}{5}$, rồi nhân số áo với tiền lãi của mỗi chiếc áo.\n\n**Bước 2.** Câu b): dùng số áo vừa tìm để suy ra tổng số mũ và nón ban đầu bằng cách lấy tổng số vật phẩm trừ đi số áo.\n\n**Bước 3.** Sau khi nhập thêm mũ và giảm bớt nón thì hai số bằng nhau; từ đó biết ban đầu số nón nhiều hơn số mũ bao nhiêu cái.\n\n**Bước 4.** Bài trở thành tổng – hiệu: biết tổng số mũ và nón, biết hiệu của chúng, vẽ sơ đồ rồi tìm số nón (số lớn) trước, sau đó tìm số mũ.\n\n**Chú ý:** Hiệu phải gồm cả hai thay đổi (thêm mũ và bớt nón); không được chỉ lấy một trong hai số $100$ hoặc $50$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số áo của cửa hàng là: $2000\\times\\dfrac{2}{5}=800$ (chiếc)\n\nKhi bán hết số áo thì số tiền lãi nhận được là: $800\\times 30000=24000000$ (đồng)\n\nb) Tổng số mũ và số nón ban đầu là: $2000-800=1200$ (cái)\n\nSau khi nhập thêm $100$ mũ và giảm $50$ nón thì số mũ bằng số nón, nên ban đầu số nón nhiều hơn số mũ là: $100+50=150$ (cái)\n\nTa có sơ đồ:\n\n(Số nón: 1 phần và thêm 150 cái; số mũ: 1 phần; tổng 1200 cái)\n\nSố nón ban đầu là: $(1200+150):2=675$ (cái)\n\nSố mũ ban đầu là: $675-150=525$ (cái)\n\nĐáp số: a) $24000000$ đồng; b) mũ: $525$ cái; nón: $675$ cái"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P2.2",
+  "dap_an": "a) $4\\ \\text{cm}^2$; b) $6$ cm; c) $2$ cm",
+  "ghi_chu_nghi": "Ý c) giải thuần diện tích: S_AEC = 4 = S_ABE, hai tam giác ABE và ACE chung đáy AE ⇒ hai đường cao hạ từ B và C bằng nhau ⇒ S_BME = S_CME ⇒ M là trung điểm BC ⇒ BM = 2 cm (đã kiểm bằng tọa độ: M đúng là trung điểm BC). Hình vẽ khớp đề chữ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng liên tiếp ý \"hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy\" để từ $S_{ABN}$ tìm $S_{ABE}$ và $S_{ABC}$; riêng ý c) chứng tỏ $M$ là trung điểm của $BC$ bằng cách so sánh diện tích hai tam giác $BME$ và $CME$.\n\n**Bước 1.** Câu a): hai tam giác $ABE$ và $ABN$ có chung đường cao hạ từ $A$ xuống $BN$, mà $BE$ bằng $\\dfrac{2}{3}$ của $BN$, nên tìm $S_{ABE}$ từ $S_{ABN}$ theo tỉ số đáy.\n\n**Bước 2.** Câu b): hai tam giác $ABN$ và $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, mà $AN$ bằng một nửa $AC$ vì $AN=NC$, nên tìm được $S_{ABC}$; rồi lấy diện tích nhân $2$ chia cho đáy $BC$ để có chiều cao.\n\n**Bước 3.** Câu c): tìm diện tích các tam giác chứa $E$: $S_{AEN}$ bằng $S_{ABN}$ trừ $S_{ABE}$, $S_{CEN}$ bằng $S_{AEN}$ vì $AN=NC$, từ đó tìm $S_{ACE}$ rồi so với $S_{ABE}$.\n\n**Bước 4.** Hai tam giác $ABE$ và $ACE$ có chung đáy $AE$ và diện tích bằng nhau thì hai đường cao hạ từ $B$ và từ $C$ xuống $AE$ bằng nhau.\n\n**Bước 5.** Hai tam giác $BME$ và $CME$ có chung đáy $ME$ và cùng hai đường cao đó nên diện tích bằng nhau; lại chung đường cao hạ từ $E$ xuống $BC$ nên đáy $BM$ bằng $MC$, từ đó tính $BM$ từ $BC$.\n\n**Chú ý:** $E$ nằm trên đoạn $BN$ nên $S_{ABN}=S_{ABE}+S_{AEN}$; đừng nhầm $S_{AEN}$ với $S_{ABE}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Tam giác $ABE$ và tam giác $ABN$ có chung đường cao hạ từ $A$ xuống $BN$, suy ra $\\dfrac{S_{ABE}}{S_{ABN}}=\\dfrac{BE}{BN}=\\dfrac{2}{3}$\n\nDiện tích tam giác $ABE$ là: $6:3\\times 2=4$ ($\\text{cm}^2$)\n\nb) Vì $AN=NC$ nên $AN$ bằng $\\dfrac{1}{2}$ của $AC$.\n\nTam giác $ABN$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{2}$\n\nDiện tích tam giác $ABC$ là: $6\\times 2=12$ ($\\text{cm}^2$)\n\nChiều cao hạ từ $A$ xuống đáy $BC$ là: $12\\times 2:4=6$ (cm)\n\nc) Diện tích tam giác $AEN$ là: $6-4=2$ ($\\text{cm}^2$)\n\nTam giác $AEN$ và tam giác $CEN$ có chung đường cao hạ từ $E$ xuống $AC$ và $AN=NC$ nên $S_{CEN}=S_{AEN}=2$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ACE$ là: $2+2=4$ ($\\text{cm}^2$)\n\nTam giác $ABE$ và tam giác $ACE$ có chung đáy $AE$ và có diện tích bằng nhau ($4$ $\\text{cm}^2$) nên hai đường cao hạ từ $B$ và từ $C$ xuống $AE$ bằng nhau.\n\nTam giác $BME$ và tam giác $CME$ có chung đáy $ME$ và cùng hai đường cao đó nên $S_{BME}=S_{CME}$.\n\nTam giác $BME$ và tam giác $CME$ lại có chung đường cao hạ từ $E$ xuống $BC$, mà diện tích bằng nhau nên $BM=MC$.\n\nĐộ dài $BM$ là: $4:2=2$ (cm)\n\nĐáp số: a) $4\\ \\text{cm}^2$; b) $6$ cm; c) $2$ cm"
+ },
+ {
+  "ma_nguon": "NTL 2025 · P2.3",
+  "dap_an": "$18000$ đồng",
+  "ghi_chu_nghi": "Nhiều cách: đã chọn khử từng bước (hai hóa đơn cùng 1 chai nước ⇒ trừ để có \"1 sữa + 3 bánh\" = 23000, rồi tách hóa đơn Bảo = Mai + 2 × (1 sữa + 3 bánh)). Cách khác: lấy 3 lần hóa đơn Bảo trừ 2 lần hóa đơn Việt = 3×64000 − 2×87000 = 18000. Giá từng loại không xác định duy nhất nhưng tổng S+N+B xác định (đã kiểm với nhiều bộ nghiệm).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Việt và Bảo cùng mua $1$ chai nước nên lấy hai hóa đơn trừ nhau thì chai nước mất đi, còn lại giá của \"$1$ hộp sữa và $3$ cái bánh\"; sau đó thấy hóa đơn của Bảo gồm đúng phần Mai mua cộng thêm hai lần nhóm đó.\n\n**Bước 1.** Gọi giá một hộp sữa, một chai nước, một cái bánh lần lượt là $S$, $N$, $B$ (đồng), rồi viết hóa đơn của Việt và của Bảo thành hai dòng.\n\n**Bước 2.** Hai hóa đơn cùng có $1$ chai nước nên lấy dòng này trừ dòng kia để khử giá chai nước, được giá của một nhóm gồm sữa và bánh.\n\n**Bước 3.** Tách hóa đơn của Bảo thành phần Mai mua (mỗi loại một cái) cộng với hai lần nhóm sữa và bánh vừa tìm được.\n\n**Bước 4.** Lấy hóa đơn của Bảo trừ đi hai lần giá của nhóm đó để được số tiền Mai phải trả.\n\n**Chú ý:** Phải lấy hóa đơn lớn của Việt trừ hóa đơn bé của Bảo, và đếm đúng số lượng từng loại ở cả hai dòng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGọi giá một hộp sữa là $S$, giá một chai nước là $N$, giá một cái bánh là $B$ (đồng).\n\n$4\\times S+N+10\\times B=87000\\ (1)$\n\n$3\\times S+N+7\\times B=64000\\ (2)$\n\nLấy (1) trừ (2), ta được: $S+3\\times B=87000-64000=23000\\ (3)$\n\nTa có: $3\\times S+N+7\\times B=(S+N+B)+2\\times(S+3\\times B)$\n\nTừ (2) và (3), ta có: $(S+N+B)+2\\times 23000=64000$\n\nMai mua mỗi loại một cái hết số tiền là: $S+N+B=64000-46000=18000$ (đồng)\n\nĐáp số: $18000$ đồng"
+ }
+]

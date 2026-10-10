@@ -1,0 +1,239 @@
+[
+ {
+  "ma_nguon": "ARC 2020-NC · 1",
+  "dap_an": "$A=75$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba tích có thừa số đầu là $7,5$; $75$; $0,75$ chỉ khác nhau ở vị trí dấu phẩy. Nếu đưa cả ba tích về cùng thừa số $7,5$ thì dùng được tính chất nhân một số với một tổng và phép cộng ba số thập phân trong ngoặc sẽ gọn.\n\n**Bước 1.** Nhận ra $75$ gấp $10$ lần $7,5$ còn $0,75$ kém $7,5$ đi $10$ lần, nên hai tích sau có thể đổi về tích có thừa số $7,5$.\n\n**Bước 2.** Muốn tích không đổi thì thừa số này gấp lên bao nhiêu lần, thừa số kia phải giảm đi bấy nhiêu lần; áp dụng cho $75\\times 0,212$ (thừa số $75$ giảm $10$ lần) và $0,75\\times 2,1$ (thừa số $0,75$ gấp $10$ lần).\n\n**Bước 3.** Đặt thừa số chung $7,5$ ra ngoài dấu ngoặc, trong ngoặc là tổng ba số thập phân; cộng ba số này, chú ý các chữ số ở phần thập phân ghép lại thành số tròn.\n\n**Bước 4.** Nhân $7,5$ với tổng vừa tính để được giá trị của $A$.\n\n**Chú ý:** Dịch dấu phẩy phải làm ngược chiều ở hai thừa số của cùng một tích; làm cùng chiều thì tích bị đổi.\n\n**Phần 2. Trình bày**\n\n$A=7,5\\times 7,67+75\\times 0,212+0,75\\times 2,1$\n\n$A=7,5\\times 7,67+7,5\\times 2,12+7,5\\times 0,21$\n\n$A=7,5\\times (7,67+2,12+0,21)$\n\n$A=7,5\\times 10$\n\n$A=75$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 2",
+  "dap_an": "$x=72$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho $3$ chính là nhân với $\\dfrac{1}{3}$, chia cho $4$ chính là nhân với $\\dfrac{1}{4}$. Khi đó cả bốn số hạng đều là $x$ nhân với một số, nên đặt $x$ ra ngoài (nhân một số với một tổng) để còn lại $x$ nhân với một tổng đã biết.\n\n**Bước 1.** Viết $x:3$ thành $x\\times\\dfrac{1}{3}$ và $x:4$ thành $x\\times\\dfrac{1}{4}$ để bốn số hạng ở vế trái đều có thừa số $x$.\n\n**Bước 2.** Đặt thừa số chung $x$ ra ngoài dấu ngoặc, trong ngoặc là tổng của hai số tự nhiên và hai phân số.\n\n**Bước 3.** Tính tổng trong ngoặc: cộng hai số tự nhiên, quy đồng mẫu số để cộng hai phân số, rồi đổi hỗn số vừa được thành phân số.\n\n**Bước 4.** Lúc này $x$ là thừa số chưa biết của một tích, nên lấy tích đã cho chia cho thừa số đã biết; chia cho một phân số thì nhân với phân số đảo ngược, rút gọn trước khi tính.\n\n**Chú ý:** $x:3$ khác với $x\\times 3$; viết nhầm hai phép này thì tổng trong ngoặc sai ngay từ đầu.\n\nThử lại: thay giá trị $x$ vừa tìm vào vế trái, cộng bốn số hạng thì phải ra $546$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} x\\times 3+x\\times 4+x:3+x:4=546 \\\\ x\\times 3+x\\times 4+x\\times\\dfrac{1}{3}+x\\times\\dfrac{1}{4}=546 \\\\ x\\times\\left(3+4+\\dfrac{1}{3}+\\dfrac{1}{4}\\right)=546 \\\\ x\\times\\left(7+\\dfrac{4}{12}+\\dfrac{3}{12}\\right)=546 \\\\ x\\times 7\\dfrac{7}{12}=546 \\\\ x\\times\\dfrac{91}{12}=546 \\\\ x=546:\\dfrac{91}{12} \\\\ x=546\\times\\dfrac{12}{91} \\\\ x=(546:91)\\times 12 \\\\ x=6\\times 12 \\\\ x=72 \\end{array}$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 3",
+  "dap_an": "$B=\\dfrac{1515}{2021}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các thừa số ở mẫu $1;\\ 5;\\ 9;\\ 13;\\ ...$ hơn kém nhau đúng $4$ đơn vị. Phân số có tử số bằng hiệu hai thừa số ở mẫu thì tách được thành hiệu của hai phân số có tử số $1$, và các phân số ở giữa triệt tiêu nhau. Vì tử số đang là $3$ chứ chưa phải $4$, nên phải nhân $B$ với $\\dfrac{4}{3}$ trước.\n\n**Bước 1.** Nhận xét: hai thừa số ở mẫu của mỗi phân số hơn kém nhau $4$ còn tử số lại là $3$, nên chưa tách được ngay.\n\n**Bước 2.** Tính $B\\times\\dfrac{4}{3}$: mỗi phân số được nhân với $\\dfrac{4}{3}$ nên tử số $3$ đổi thành $4$, đúng bằng hiệu hai thừa số ở mẫu.\n\n**Bước 3.** Viết mỗi phân số thành hiệu của hai phân số có tử số $1$; cộng lại thì các phân số ở giữa bị trừ đi rồi lại cộng vào nên mất hết, chỉ còn số đầu và số cuối.\n\n**Bước 4.** Đã biết $B\\times\\dfrac{4}{3}$ nên $B$ bằng kết quả đó chia cho $\\dfrac{4}{3}$ (tìm thừa số chưa biết); chia cho phân số thì nhân với phân số đảo ngược rồi rút gọn.\n\n**Chú ý:** Chỉ tách được khi tử số đúng bằng hiệu hai thừa số ở mẫu; vì vậy phải đổi tử số $3$ thành $4$ trước chứ không tách thẳng.\n\n**Phần 2. Trình bày**\n\n$B\\times\\dfrac{4}{3}=\\dfrac{4}{1\\times 5}+\\dfrac{4}{5\\times 9}+\\dfrac{4}{9\\times 13}+...+\\dfrac{4}{2017\\times 2021}$\n\n$B\\times\\dfrac{4}{3}=\\left(\\dfrac{1}{1}-\\dfrac{1}{5}\\right)+\\left(\\dfrac{1}{5}-\\dfrac{1}{9}\\right)+\\left(\\dfrac{1}{9}-\\dfrac{1}{13}\\right)+...+\\left(\\dfrac{1}{2017}-\\dfrac{1}{2021}\\right)$\n\n$B\\times\\dfrac{4}{3}=1-\\dfrac{1}{2021}$\n\n$B\\times\\dfrac{4}{3}=\\dfrac{2020}{2021}$\n\n$B=\\dfrac{2020}{2021}:\\dfrac{4}{3}$\n\n$B=\\dfrac{2020}{2021}\\times\\dfrac{3}{4}$\n\n$B=\\dfrac{2020\\times 3}{2021\\times 4}$\n\n$B=\\dfrac{505\\times 3}{2021}$\n\n$B=\\dfrac{1515}{2021}$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 4",
+  "dap_an": "$7$ đơn vị",
+  "so_do_mo_ta": {
+   "tieu_de": "Phân số mới",
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 7
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 11
+    }
+   ],
+   "hieu": "24"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng bớt một số ở cả tử số và mẫu số thì HIỆU của mẫu số và tử số không đổi. Nhờ hiệu không đổi ấy cùng tỉ số mới $\\dfrac{7}{11}$ ta tìm được tử số mới và mẫu số mới, rồi so với tử số cũ để biết đã bớt bao nhiêu.\n\n**Bước 1.** Tính hiệu của mẫu số và tử số của phân số $\\dfrac{49}{73}$; hiệu này giữ nguyên sau khi cùng bớt.\n\n**Bước 2.** Phân số mới có giá trị $\\dfrac{7}{11}$ nên coi tử số mới là $7$ phần, mẫu số mới là $11$ phần bằng nhau; vẽ sơ đồ và tìm hiệu số phần.\n\n**Bước 3.** Lấy hiệu không đổi chia cho hiệu số phần để tìm giá trị một phần, rồi tìm tử số mới.\n\n**Bước 4.** Lấy tử số cũ trừ tử số mới để được số đơn vị đã bớt; có thể kiểm tra lại bằng mẫu số.\n\n**Chú ý:** Cùng bớt hay cùng thêm một số vào cả tử số và mẫu số thì hiệu giữa chúng vẫn không đổi, còn tỉ số thì thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của mẫu số và tử số lúc đầu là: $73-49=24$\n\nKhi cùng bớt một số ở tử số và mẫu số thì hiệu của chúng không đổi, vẫn bằng $24$.\n\nPhân số mới có giá trị $\\dfrac{7}{11}$ nên tử số mới là $7$ phần, mẫu số mới là $11$ phần như thế.\n\nTa có sơ đồ:\n\n(Tử số mới 7 phần; mẫu số mới 11 phần; hiệu 24)\n\nHiệu số phần bằng nhau là: $11-7=4$ (phần)\n\nGiá trị một phần là: $24:4=6$\n\nTử số mới là: $6\\times 7=42$\n\nSố đơn vị phải cùng bớt ở tử số và mẫu số là: $49-42=7$\n\nĐáp số: $7$ đơn vị"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 5",
+  "dap_an": "$1536\\ \\text{cm}^3$",
+  "so_do_mo_ta": {
+   "tieu_de": "Nửa chu vi đáy",
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "4 cm"
+    }
+   ],
+   "tong": "20 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích xung quanh bằng chu vi đáy nhân với chiều cao, nên từ đó tìm được chu vi đáy. Nửa chu vi đáy chính là tổng của chiều dài và chiều rộng; đã biết thêm hiệu của chúng thì đây là bài tìm hai số khi biết tổng và hiệu.\n\n**Bước 1.** Dùng công thức diện tích xung quanh bằng chu vi đáy nhân chiều cao để tìm chu vi đáy: lấy diện tích xung quanh chia cho chiều cao.\n\n**Bước 2.** Lấy chu vi đáy chia $2$ được nửa chu vi, tức là tổng của chiều dài và chiều rộng.\n\n**Bước 3.** Bài thuộc loại tìm hai số khi biết tổng và hiệu: vẽ sơ đồ, tìm chiều rộng bằng (tổng trừ hiệu) chia $2$, rồi chiều dài bằng chiều rộng cộng hiệu.\n\n**Bước 4.** Nhân chiều dài với chiều rộng và với chiều cao để tìm thể tích hình hộp chữ nhật.\n\n**Chú ý:** Tổng chiều dài và chiều rộng chỉ bằng một nửa chu vi đáy, đừng lấy cả chu vi làm tổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi đáy hình hộp chữ nhật là: $640:16=40$ (cm)\n\nNửa chu vi đáy (tổng chiều dài và chiều rộng) là: $40:2=20$ (cm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; chiều dài hơn chiều rộng 4 cm; tổng 20 cm)\n\nChiều rộng hình hộp chữ nhật là: $(20-4):2=8$ (cm)\n\nChiều dài hình hộp chữ nhật là: $8+4=12$ (cm)\n\nThể tích hình hộp chữ nhật là: $12\\times 8\\times 16=1536$ ($\\text{cm}^3$)\n\nĐáp số: $1536\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 6",
+  "dap_an": "$253000$ đồng",
+  "ghi_chu_nghi": "nhiều cách: (1) nhân hai tỉ số phần trăm 110% x 115% rồi tìm giá tháng 5 từ 26,5% (đã chọn, bám quan hệ gốc); (2) giả sử giá tháng 5 là một số cụ thể (vd 100) rồi tính tỉ lệ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tháng $6$ tăng $10\\%$ so với tháng $5$, còn tháng $7$ tăng $15\\%$ so với tháng $6$: hai tỉ số này lấy hai mốc khác nhau nên không được cộng $10\\%+15\\%$. Phải nhân hai tỉ số để biết giá tháng $7$ bằng bao nhiêu phần trăm giá tháng $5$, từ đó biết $53000$ đồng ứng với bao nhiêu phần trăm giá tháng $5$.\n\n**Bước 1.** Tính giá tháng $6$ và giá tháng $7$ bằng bao nhiêu phần trăm so với tháng liền trước: giá tăng nên lấy $100\\%$ cộng phần trăm tăng.\n\n**Bước 2.** Nhân hai tỉ số này để biết giá tháng $7$ bằng bao nhiêu phần trăm giá tháng $5$; nhớ đổi hai tỉ số ra số thập phân trước khi nhân rồi đổi lại ra phần trăm.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết giá tháng $7$ cao hơn giá tháng $5$ bao nhiêu phần trăm; số phần trăm đó ứng với $53000$ đồng nên tìm được giá tháng $5$ (biết $b\\%$ của một số là $M$ thì số đó là $M:b\\%$).\n\n**Bước 4.** Cộng giá tháng $5$ với số tiền chênh lệch để được giá một cân thịt bò tháng $7$.\n\n**Chú ý:** Không lấy $10\\%+15\\%=25\\%$, vì $15\\%$ được tính trên giá tháng $6$ chứ không phải giá tháng $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá tháng 6 so với giá tháng 5 bằng: $100\\%+10\\%=110\\%$\n\nGiá tháng 7 so với giá tháng 6 bằng: $100\\%+15\\%=115\\%$\n\nGiá tháng 7 so với giá tháng 5 bằng: $110\\%\\times 115\\%=1,1\\times 1,15=1,265=126,5\\%$\n\nGiá tháng 7 cao hơn giá tháng 5 là: $126,5\\%-100\\%=26,5\\%$ (giá tháng 5)\n\nGiá một cân thịt bò tháng 5 là: $53000:26,5\\%=200000$ (đồng)\n\nGiá một cân thịt bò tháng 7 là: $200000+53000=253000$ (đồng)\n\nĐáp số: $253000$ đồng"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 7",
+  "dap_an": "$1012$",
+  "ghi_chu_nghi": "Quy luật suy từ 6 số đầu: các số hạng ở vị trí lẻ là 1; 2; 3; ... , ở vị trí chẵn là 3; 4; 5; ... (đan xen). Không có cách hiểu nào khác khớp với 6 số đã cho.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy $1;\\ 3;\\ 2;\\ 4;\\ 3;\\ 5;\\ ...$ gồm hai dãy đan xen nhau: các số hạng đứng ở vị trí lẻ và các số hạng đứng ở vị trí chẵn. Tách riêng ra thì mỗi dãy đều tăng đều từng đơn vị. Số hạng thứ $2020$ đứng ở vị trí chẵn.\n\n**Bước 1.** Tách dãy thành hai dãy: các số ở vị trí thứ nhất, thứ ba, thứ năm,... và các số ở vị trí thứ hai, thứ tư, thứ sáu,... rồi tìm quy luật của từng dãy.\n\n**Bước 2.** Vị trí $2020$ là số chẵn nên số hạng cần tìm thuộc dãy các số ở vị trí chẵn; chia vị trí cho $2$ để biết nó là số hạng thứ mấy của dãy này.\n\n**Bước 3.** So sánh từng số hạng của dãy ở vị trí chẵn với số thứ tự của nó để tìm mối liên hệ giữa hai số đó.\n\n**Bước 4.** Áp dụng mối liên hệ vừa tìm cho số thứ tự đã tính ở bước hai để được số hạng cần tìm.\n\n**Chú ý:** Số thứ tự trong dãy ở vị trí chẵn chỉ bằng một nửa vị trí trong dãy đã cho, đừng dùng luôn $2020$ làm số thứ tự.\n\n**Phần 2. Trình bày**\n\nCác số hạng ở vị trí lẻ là $1;\\ 2;\\ 3;\\ ...$ còn các số hạng ở vị trí chẵn là $3;\\ 4;\\ 5;\\ ...$\n\nVị trí $2020$ là vị trí chẵn nên số hạng thứ $2020$ là số hạng thứ $2020:2=1010$ của dãy $3;\\ 4;\\ 5;\\ ...$\n\nTrong dãy này mỗi số hạng lớn hơn số thứ tự của nó $2$ đơn vị: $3=1+2$; $4=2+2$; $5=3+2$; ...\n\nSố hạng thứ $1010$ của dãy này là: $1010+2=1012$\n\nVậy số hạng thứ $2020$ của dãy đã cho là $1012$."
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 8",
+  "dap_an": "$16$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng công việc không đổi, nhưng số công nhân, số giờ mỗi ngày và số ngày cùng thay đổi nên không chia thẳng được. Cách gọn là rút về một công nhân làm trong một giờ: tính xem một công nhân phải làm tất cả bao nhiêu giờ thì xong việc, rồi xem mỗi ngày tổ $B$ làm được bao nhiêu giờ như thế.\n\n**Bước 1.** Tổ $A$ có $8$ công nhân, mỗi ngày làm $8$ giờ và làm trong $15$ ngày; tính số giờ cần nếu chỉ một công nhân làm, bằng cách nhân số công nhân, số giờ mỗi ngày và số ngày.\n\n**Bước 2.** Tổ $B$ có $12$ công nhân, mỗi ngày làm $5$ giờ; tính mỗi ngày tổ $B$ làm được bao nhiêu giờ tính theo một công nhân.\n\n**Bước 3.** Lấy số giờ cần của một công nhân chia cho số giờ tổ $B$ làm được mỗi ngày để biết cần bao nhiêu ngày.\n\n**Chú ý:** Không lấy $15$ ngày nhân hay chia thẳng với số công nhân; phải tính cả số giờ làm mỗi ngày của hai tổ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu chỉ có $1$ công nhân làm thì xong công việc trong số giờ là: $8\\times 8\\times 15=960$ (giờ)\n\nMỗi ngày tổ B làm được số giờ tính theo $1$ công nhân là: $12\\times 5=60$ (giờ)\n\nSố ngày tổ B làm xong công việc là: $960:60=16$ (ngày)\n\nĐáp số: $16$ ngày"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 9",
+  "dap_an": "$123,5$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5.67,
+   "hang": [
+    {
+     "nhan": "Số bé lúc đầu",
+     "phan": 10
+    },
+    {
+     "nhan": "Số bé sau khi dịch",
+     "phan": 1
+    }
+   ],
+   "hieu": "51,03",
+   "dau_hoi": [
+    "Số bé lúc đầu"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dịch dấu phẩy của số bé sang trái một hàng thì số bé giảm đi $10$ lần, nghĩa là chỉ còn $\\dfrac{1}{10}$ số cũ. Số lớn không đổi nên số bé giảm bao nhiêu thì hiệu tăng đúng bấy nhiêu; biết hiệu tăng thêm bao nhiêu ta tìm được số bé.\n\n**Bước 1.** Tính hiệu tăng thêm bằng cách lấy hiệu mới trừ hiệu cũ; đó chính là phần số bé đã bị giảm đi.\n\n**Bước 2.** Vẽ sơ đồ: số bé lúc đầu là $10$ phần thì số bé sau khi dịch dấu phẩy là $1$ phần, nên phần bị giảm đi là mấy phần bằng nhau.\n\n**Bước 3.** Lấy hiệu tăng thêm chia cho số phần bị giảm để tìm giá trị một phần, rồi nhân với $10$ để được số bé.\n\n**Bước 4.** Số lớn bằng số bé cộng với hiệu lúc đầu.\n\n**Chú ý:** Phải dùng hiệu cũ $66,8$ để tìm số lớn; hiệu mới chỉ dùng để tìm số bé.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDịch dấu phẩy của số bé sang trái $1$ hàng thì số bé giảm đi $10$ lần, số lớn không đổi nên hiệu tăng thêm đúng bằng phần số bé bị giảm.\n\nHiệu tăng thêm là: $117,83-66,8=51,03$\n\nTa có sơ đồ:\n\n(Số bé lúc đầu 10 phần; số bé sau khi dịch dấu phẩy 1 phần; phần giảm đi là 51,03)\n\nSố phần bằng nhau bị giảm đi là: $10-1=9$ (phần)\n\nGiá trị một phần là: $51,03:9=5,67$\n\nSố bé là: $5,67\\times 10=56,7$\n\nSố lớn là: $56,7+66,8=123,5$\n\nĐáp số: $123,5$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 10",
+  "dap_an": "$5$",
+  "ghi_chu_nghi": "Hiểu \"các số chẵn từ 1 đến 23\" là 2; 4; ...; 22 và \"các số lẻ từ 2 đến 22\" là 3; 5; ...; 21 (không tính số 1, 23 vì nằm ngoài khoảng của vế kia). Đáp số 5 không đổi nếu A, B tính cả 1 hoặc 23 hay không.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính $A$ và $B$ mà chỉ cần chữ số tận cùng của mỗi tích. Tích có thừa số $10$ thì tận cùng là $0$; tích toàn số lẻ có thừa số $5$ thì là số lẻ chia hết cho $5$ nên tận cùng là $5$. Chữ số tận cùng của hiệu suy ra từ hai chữ số này.\n\n**Bước 1.** Viết rõ $A$ là tích các số chẵn $2;\\ 4;\\ ...;\\ 22$ và $B$ là tích các số lẻ $3;\\ 5;\\ ...;\\ 21$.\n\n**Bước 2.** Tìm chữ số tận cùng của $A$: trong các thừa số có $10$, nên $A$ chia hết cho $10$.\n\n**Bước 3.** Tìm chữ số tận cùng của $B$: tích các số lẻ là một số lẻ, trong các thừa số có $5$ nên $B$ chia hết cho $5$; số lẻ chia hết cho $5$ thì tận cùng là $5$.\n\n**Bước 4.** So sánh $A$ với $B$ để chắc $A$ lớn hơn $B$ (phép trừ làm được), rồi trừ hai chữ số tận cùng, nhớ mượn một chục khi lấy $0$ trừ $5$.\n\n**Chú ý:** Số tận cùng $0$ trừ số tận cùng $5$ thì phải mượn một chục ở hàng bên trái, nên chữ số tận cùng của hiệu không phải là $0-5$.\n\n**Phần 2. Trình bày**\n\n$A=2\\times 4\\times 6\\times ...\\times 22$ và $B=3\\times 5\\times 7\\times ...\\times 21$\n\n$A$ có thừa số $10$ nên $A$ chia hết cho $10$, chữ số tận cùng của $A$ là $0$.\n\n$B$ là tích các số lẻ nên $B$ là số lẻ; $B$ có thừa số $5$ nên $B$ chia hết cho $5$. Số lẻ chia hết cho $5$ có chữ số tận cùng là $5$, nên chữ số tận cùng của $B$ là $5$.\n\nGhép các cặp $4>3;\\ 6>5;\\ ...;\\ 22>21$ nên $4\\times 6\\times ...\\times 22$ lớn hơn $B$, do đó $A$ còn lớn hơn $B$.\n\nSố có chữ số tận cùng $0$ trừ đi số có chữ số tận cùng $5$ thì hiệu có chữ số tận cùng là: $10-5=5$\n\nVậy chữ số tận cùng của hiệu giữa $A$ và $B$ là $5$."
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 11",
+  "dap_an": "$81$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phép chia cho $5$ và cho $8$ có cùng số dư. Số dư khi chia cho $5$ bé hơn $5$ nên số dư chung chỉ là $0;\\ 1;\\ 2;\\ 3;\\ 4$. Bớt số dư đi thì số còn lại chia hết cho cả $5$ và $8$, tức là chia hết cho $40$; từ đó liệt kê các số có hai chữ số rồi chọn số chia hết cho $9$.\n\n**Bước 1.** Số dư của phép chia cho $5$ phải bé hơn $5$, mà hai phép chia có cùng số dư nên số dư chung có thể là $0;\\ 1;\\ 2;\\ 3;\\ 4$.\n\n**Bước 2.** Bớt số dư khỏi số cần tìm thì số còn lại chia hết cho cả $5$ và $8$; hai số $5$ và $8$ không có thừa số chung nên số đó chia hết cho tích của chúng.\n\n**Bước 3.** Tìm các số chia hết cho tích đó mà lớn hơn $0$ và bé hơn $100$, rồi cộng thêm từng số dư để liệt kê mọi số có thể là số cần tìm.\n\n**Bước 4.** Dùng dấu hiệu chia hết cho $9$ (tổng các chữ số chia hết cho $9$) để chọn số thoả mãn.\n\n**Chú ý:** Số dư bằng $0$ cũng là \"cùng số dư\", nên các số chia hết cho cả $5$ và $8$ vẫn phải được xét.\n\n**Phần 2. Trình bày**\n\nSố đó chia cho $5$ và chia cho $8$ có cùng số dư, mà số dư khi chia cho $5$ bé hơn $5$ nên số dư chung là một trong các số $0;\\ 1;\\ 2;\\ 3;\\ 4$.\n\nBớt số dư đi thì số còn lại chia hết cho cả $5$ và $8$ nên chia hết cho $5\\times 8=40$.\n\nSố đó trừ đi số dư lớn hơn $0$ và bé hơn $100$ nên chỉ có thể là $40$ hoặc $80$.\n\nDo đó số cần tìm là một trong các số: $40;\\ 41;\\ 42;\\ 43;\\ 44;\\ 80;\\ 81;\\ 82;\\ 83;\\ 84$.\n\nSố đó chia hết cho $9$ nên tổng các chữ số chia hết cho $9$. Trong các số trên chỉ có $81$ có tổng các chữ số là $8+1=9$.\n\nVậy số cô giáo viết là $81$."
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 12",
+  "dap_an": "$1296$",
+  "ghi_chu_nghi": "Không vẽ sơ đồ: số cũ là 108 phần (hơn 12 phần một hàng), theo luật bỏ sơ đồ quá lớn; trình bày bằng cấu tạo số.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Xoá hai chữ số cuối thì số mới là $\\overline{ab}$, còn số cũ bằng $\\overline{ab}$ nhân $100$ rồi cộng thêm số $\\overline{cd}$ tạo bởi hai chữ số vừa xoá. Số cũ gấp $108$ lần số mới, hơn $100$ lần số mới là $8$ lần, nên $\\overline{cd}$ chính là $8$ lần $\\overline{ab}$.\n\n**Bước 1.** Gọi số cần tìm là $\\overline{abcd}$; xoá chữ số hàng chục và hàng đơn vị thì còn $\\overline{ab}$; viết số cũ theo số mới và $\\overline{cd}$ bằng cách phân tích số theo hàng.\n\n**Bước 2.** Số cũ gấp $108$ lần số mới; so hai cách viết số cũ để thấy $\\overline{cd}$ gấp mấy lần $\\overline{ab}$.\n\n**Bước 3.** Vì $\\overline{cd}$ là số có hai chữ số nên bé hơn $100$, từ đó giới hạn được các giá trị có thể của $\\overline{ab}$; tìm $\\overline{cd}$ ứng với từng giá trị.\n\n**Bước 4.** Viết ra từng số có bốn chữ số rồi loại những số có chữ số giống nhau để chọn đáp án.\n\n**Chú ý:** Đề yêu cầu bốn chữ số khác nhau nên phải kiểm tra từng số, không dừng lại ở số đầu tiên tìm được.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{abcd}$. Xoá chữ số hàng chục và hàng đơn vị thì được số $\\overline{ab}$.\n\n$\\overline{abcd}=\\overline{ab}\\times 100+\\overline{cd}$\n\nSố cũ gấp $108$ lần số mới nên $\\overline{abcd}=\\overline{ab}\\times 108$.\n\n$\\overline{ab}\\times 100+\\overline{cd}=\\overline{ab}\\times 108$\n\nCùng bớt $\\overline{ab}\\times 100$ ở hai vế thì được: $\\overline{cd}=\\overline{ab}\\times 8$\n\nVì $\\overline{cd}$ bé hơn $100$ nên $\\overline{ab}$ bé hơn $100:8=12,5$; mà $\\overline{ab}$ có hai chữ số nên $\\overline{ab}$ là $10$; $11$ hoặc $12$.\n\nVới $\\overline{ab}=10$ thì $\\overline{cd}=10\\times 8=80$, số là $1080$ (có hai chữ số $0$ giống nhau, loại).\n\nVới $\\overline{ab}=11$ thì $\\overline{cd}=11\\times 8=88$, số là $1188$ (có chữ số giống nhau, loại).\n\nVới $\\overline{ab}=12$ thì $\\overline{cd}=12\\times 8=96$, số là $1296$ (bốn chữ số khác nhau, nhận).\n\nVậy số cần tìm là $1296$."
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 13",
+  "dap_an": "$72$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 1
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 5
+    },
+    {
+     "nhan": "Số thứ ba",
+     "phan": 6
+    },
+    {
+     "nhan": "Trung bình cộng",
+     "phan": 4
+    }
+   ],
+   "hieu": "48",
+   "dau_hoi": [
+    "Số thứ ba"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba số đều được cho theo trung bình cộng, nên coi trung bình cộng là một đại lượng chung và chia nó thành các phần bằng nhau. Có $\\dfrac{1}{4}$ của nó nên chia thành $4$ phần. Chú ý tổng ba số bằng $3$ lần trung bình cộng.\n\n**Bước 1.** Coi trung bình cộng là $4$ phần bằng nhau, rồi đổi số thứ nhất (bằng $\\dfrac{1}{4}$ trung bình cộng) và số thứ ba (bằng $\\dfrac{3}{2}$ trung bình cộng) thành số phần.\n\n**Bước 2.** Tổng ba số bằng $3$ lần trung bình cộng nên tính được tổng số phần; lấy tổng đó trừ số phần của số thứ nhất và số thứ ba để tìm số phần của số thứ hai.\n\n**Bước 3.** Số thứ hai hơn số thứ nhất $48$ đơn vị, ứng với hiệu số phần của hai số này; chia $48$ cho hiệu số phần để tìm giá trị một phần.\n\n**Bước 4.** Số thứ ba gồm bao nhiêu phần thì nhân số phần đó với giá trị một phần.\n\n**Chú ý:** Tổng ba số là $3$ lần trung bình cộng chứ không phải một lần; quên điều này thì số phần của số thứ hai sai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng ba số bằng $3$ lần trung bình cộng. Coi trung bình cộng của ba số là $4$ phần bằng nhau thì:\n\nSố thứ nhất là: $4\\times\\dfrac{1}{4}=1$ (phần)\n\nSố thứ ba là: $4\\times\\dfrac{3}{2}=6$ (phần)\n\nTổng ba số là: $4\\times 3=12$ (phần)\n\nSố thứ hai là: $12-1-6=5$ (phần)\n\nTa có sơ đồ:\n\n(Số thứ nhất 1 phần; số thứ hai 5 phần, hơn số thứ nhất 48 đơn vị; số thứ ba 6 phần; trung bình cộng 4 phần)\n\nHiệu số phần của số thứ hai và số thứ nhất là: $5-1=4$ (phần)\n\nGiá trị một phần là: $48:4=12$\n\nSố thứ ba là: $12\\times 6=72$\n\nĐáp số: $72$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 14",
+  "dap_an": "$38$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai cách tính tuổi mẹ hiện nay",
+   "gia_tri_phan": 11,
+   "hang": [
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 3,
+     "them": "5 tuổi"
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 2,
+     "them": "16 tuổi"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai dữ kiện đều cho biết tuổi mẹ hiện nay theo tuổi con hiện nay, nhưng viết theo hai cách khác nhau. Vì cả hai cách cùng chỉ một tuổi mẹ nên chúng bằng nhau; so sánh hai cách ta tìm được tuổi con, rồi tìm tuổi mẹ.\n\n**Bước 1.** Coi tuổi con hiện nay là $1$ phần. Năm năm trước tuổi mẹ bằng $3$ lần tuổi con hiện nay, nên tuổi mẹ hiện nay bằng $3$ phần cộng thêm số tuổi của $5$ năm.\n\n**Bước 2.** Tám năm nữa tuổi con là $1$ phần cộng $8$ tuổi; hai lần tuổi đó bằng tuổi mẹ hiện nay, nên tuổi mẹ hiện nay cũng bằng $2$ phần cộng một số tuổi nữa.\n\n**Bước 3.** Vẽ sơ đồ hai cách viết tuổi mẹ; hai đoạn bằng nhau nên bớt đi những phần giống nhau để tìm giá trị của $1$ phần, tức tuổi con.\n\n**Bước 4.** Từ tuổi con hiện nay tính tuổi mẹ hiện nay bằng một trong hai cách viết.\n\n**Chú ý:** \"Năm năm trước\" thì phải cộng $5$ để về hiện nay; \"tám năm nữa\" thì phải cộng $8$ vào tuổi con rồi mới nhân đôi.\n\nThử lại: tuổi con và tuổi mẹ vừa tìm phải thoả cả hai dữ kiện của đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi tuổi con hiện nay là $1$ phần.\n\nTuổi mẹ $5$ năm trước bằng $3$ lần tuổi con hiện nay nên tuổi mẹ hiện nay bằng $3$ phần cộng $5$ tuổi.\n\nTuổi con $8$ năm nữa là $1$ phần cộng $8$ tuổi, hai lần tuổi đó là $2$ phần cộng $8\\times 2=16$ tuổi và bằng tuổi mẹ hiện nay.\n\nTa có sơ đồ:\n\n(1 phần là tuổi con hiện nay; tuổi mẹ = 3 phần + 5 tuổi; tuổi mẹ = 2 phần + 16 tuổi)\n\nHai đoạn đều chỉ tuổi mẹ nên $3$ phần cộng $5$ tuổi bằng $2$ phần cộng $16$ tuổi.\n\nCùng bớt $2$ phần và $5$ tuổi ở hai bên thì $1$ phần bằng $16-5$ tuổi.\n\nTuổi con hiện nay là: $16-5=11$ (tuổi)\n\nTuổi mẹ hiện nay là: $11\\times 3+5=38$ (tuổi)\n\nĐáp số: $38$ tuổi"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 15",
+  "dap_an": "$38$ học sinh",
+  "ghi_chu_nghi": "nhiều cách: (1) bớt 8 bạn được 10 điểm rồi ghép cặp 9 + 10 điểm (đã chọn); (2) giả thiết tạm: coi cả lớp được 9 điểm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bạn được $10$ điểm nhiều hơn số bạn được $9$ điểm là $8$ bạn. Nếu bớt $8$ bạn thừa đó ra khỏi nhóm $10$ điểm thì hai nhóm có số bạn bằng nhau, và cứ một bạn $9$ điểm ghép với một bạn $10$ điểm thành một cặp có số điểm biết trước.\n\n**Bước 1.** Bớt $8$ bạn được $10$ điểm ra khỏi lớp; tính số điểm của $8$ bạn đó rồi tìm tổng số điểm còn lại.\n\n**Bước 2.** Lúc này số bạn được $9$ điểm bằng số bạn được $10$ điểm; ghép mỗi bạn $9$ điểm với một bạn $10$ điểm và tính số điểm của mỗi cặp.\n\n**Bước 3.** Lấy tổng số điểm còn lại chia cho số điểm của mỗi cặp để tìm số cặp, rồi tính số học sinh trong các cặp.\n\n**Bước 4.** Cộng thêm $8$ bạn đã bớt ra ban đầu để được số học sinh cả lớp.\n\n**Chú ý:** Đừng quên cộng lại $8$ bạn đã bớt ra, vì lớp $5A$ gồm cả các bạn đó.\n\nThử lại: số bạn được $10$ điểm hơn số bạn được $9$ điểm phải đúng $8$ bạn và tổng điểm phải là $365$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố điểm của $8$ bạn được $10$ điểm là: $8\\times 10=80$ (điểm)\n\nBớt $8$ bạn đó ra thì số bạn được $9$ điểm bằng số bạn được $10$ điểm, tổng số điểm còn lại là: $365-80=285$ (điểm)\n\nSố điểm của mỗi cặp gồm $1$ bạn được $9$ điểm và $1$ bạn được $10$ điểm là: $9+10=19$ (điểm)\n\nSố cặp là: $285:19=15$ (cặp)\n\nSố học sinh trong các cặp là: $15\\times 2=30$ (học sinh)\n\nSố học sinh của lớp $5A$ là: $30+8=38$ (học sinh)\n\nĐáp số: $38$ học sinh"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 16",
+  "dap_an": "$360$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ngày Minh đọc một số phần trăm của số trang còn lại và thêm một số trang nữa, nên làm ngược từ ngày cuối: biết số trang còn lại sau mỗi ngày thì tìm được số trang còn lại trước ngày đó. Mỗi lần đi ngược dùng phép tính \"biết $b\\%$ của một số là $M$ thì số đó là $M:b\\%$\".\n\n**Bước 1.** Ngày thứ tư đọc nốt nên sau ngày thứ ba còn lại đúng số trang đó. Ngày thứ ba đọc $50\\%$ số trang còn lại rồi thêm $15$ trang nữa: cộng $15$ trang vào số trang còn lại sau ngày thứ ba thì được $50\\%$ số trang còn lại sau ngày thứ hai; từ đó tìm số trang còn lại sau ngày thứ hai.\n\n**Bước 2.** Làm tương tự với ngày thứ hai: ngày này đọc $60\\%$ rồi thêm $30$ trang nữa, nên cộng $30$ trang vào số trang còn lại sau ngày thứ hai thì được $40\\%$ số trang còn lại sau ngày thứ nhất; tìm số trang đó.\n\n**Bước 3.** Làm tương tự với ngày thứ nhất: ngày này đọc $15\\%$ cả cuốn sách rồi thêm $6$ trang nữa, nên cộng $6$ trang vào số trang còn lại sau ngày thứ nhất thì được $85\\%$ số trang cả cuốn sách; tìm số trang của cả cuốn sách.\n\n**Chú ý:** \"$60\\%$ số trang còn lại\" là $60\\%$ của số trang còn sau ngày hôm trước, không phải của cả cuốn sách.\n\nThử lại: tính xuôi từ cuốn sách vừa tìm, ngày thứ tư phải còn đúng $30$ trang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau ngày thứ ba còn lại $30$ trang (ngày thứ tư đọc nốt).\n\nNgày thứ ba đọc $50\\%$ số trang còn lại và $15$ trang nữa nên $100\\%-50\\%=50\\%$ số trang còn lại sau ngày thứ hai là: $30+15=45$ (trang)\n\nSố trang còn lại sau ngày thứ hai là: $45:50\\%=90$ (trang)\n\nNgày thứ hai đọc $60\\%$ số trang còn lại và $30$ trang nữa nên $100\\%-60\\%=40\\%$ số trang còn lại sau ngày thứ nhất là: $90+30=120$ (trang)\n\nSố trang còn lại sau ngày thứ nhất là: $120:40\\%=300$ (trang)\n\nNgày thứ nhất đọc $15\\%$ số trang và $6$ trang nữa nên $100\\%-15\\%=85\\%$ số trang cuốn sách là: $300+6=306$ (trang)\n\nSố trang của cuốn sách là: $306:85\\%=360$ (trang)\n\nĐáp số: $360$ trang"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 17",
+  "dap_an": "$4$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $5$ có chữ số tận cùng là $0$ hoặc $5$. Các chữ số tăng dần từ trái sang phải nên chữ số tận cùng là chữ số lớn nhất; xét xem trường hợp nào còn xếp được, rồi đếm các cách chọn ba chữ số còn lại.\n\n**Bước 1.** Xét chữ số tận cùng chỉ có thể là $0$ hoặc $5$, kiểm tra xem tận cùng bằng $0$ có thoả điều kiện các chữ số tăng dần hay không.\n\n**Bước 2.** Với chữ số tận cùng còn lại, ba chữ số đứng trước phải khác nhau, bé hơn chữ số tận cùng và chữ số đầu tiên khác $0$; xác định ba chữ số này chỉ được chọn trong những chữ số nào.\n\n**Bước 3.** Mỗi cách chọn ba chữ số chỉ xếp được đúng một số theo thứ tự tăng dần, nên liệt kê các cách chọn để đếm.\n\n**Chú ý:** Số có bốn chữ số không bắt đầu bằng $0$, mà các chữ số tăng dần thì chữ số $0$ nếu có phải đứng đầu, nên chữ số $0$ không dùng được.\n\n**Phần 2. Trình bày**\n\nSố chia hết cho $5$ có chữ số tận cùng là $0$ hoặc $5$.\n\nCác chữ số tăng dần từ trái sang phải nên chữ số tận cùng là chữ số lớn nhất. Nếu tận cùng là $0$ thì không còn chữ số nào bé hơn $0$, loại. Vậy chữ số tận cùng là $5$.\n\nBa chữ số còn lại khác nhau và bé hơn $5$. Chữ số $0$ nếu có thì phải đứng đầu, mà số có bốn chữ số không bắt đầu bằng $0$, nên ba chữ số đó được chọn trong bốn chữ số $1;\\ 2;\\ 3;\\ 4$.\n\nChọn ba trong bốn chữ số $1;\\ 2;\\ 3;\\ 4$ thì mỗi cách chọn chỉ xếp được một số tăng dần: $1235;\\ 1245;\\ 1345;\\ 2345$.\n\nVậy có $4$ số thoả mãn đề bài."
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 18",
+  "dap_an": "$1331\\ \\text{cm}^3$",
+  "ghi_chu_nghi": "Hiểu \"gấp rưỡi\" là gấp 1,5 lần; hình lập phương lớn được sơn bên ngoài rồi tách thành các hình nhỏ cạnh 1 cm. Cạnh khối lớn là 11 cm (khối trong cạnh 9 cm).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lớp ngoài cùng của hình lập phương lớn được sơn, còn các hình ở bên trong (không sơn mặt nào) tạo thành một hình lập phương nhỏ hơn có cạnh ít hơn cạnh hình lớn $2$ cm. Hình sơn đúng $1$ mặt nằm ở giữa mỗi mặt. Hai số hình này đều có chung số hình của một lớp bên trong, nên so sánh được ngay.\n\n**Bước 1.** Gọi $c$ là số hình trên một cạnh của hình lập phương nhỏ bên trong; một lớp của nó có $c\\times c$ hình và có $c$ lớp như vậy, từ đó tính số hình không sơn mặt nào.\n\n**Bước 2.** Mỗi mặt của hình lập phương lớn có $c\\times c$ hình chỉ được sơn $1$ mặt và có $6$ mặt như vậy, từ đó tính số hình sơn $1$ mặt.\n\n**Bước 3.** So sánh hai số hình: chúng có chung thừa số $c\\times c$ nên số hình không sơn gấp số hình sơn $1$ mặt một số lần theo $c$; đối chiếu với \"gấp rưỡi\" để tìm $c$.\n\n**Bước 4.** Cạnh hình lập phương lớn bằng $c$ cộng $2$ (hai lớp được sơn ở hai đầu), rồi tính thể tích.\n\n**Chú ý:** Mỗi cạnh của hình lập phương lớn có hai lớp được sơn ở hai đầu nên phải cộng $2$ chứ không phải cộng $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác hình không được sơn mặt nào ở bên trong tạo thành một hình lập phương nhỏ. Gọi $c$ là số hình trên một cạnh của hình lập phương nhỏ đó.\n\nSố hình không được sơn mặt nào là: $c\\times c\\times c$ (hình)\n\nMỗi mặt của hình lập phương lớn có $c\\times c$ hình chỉ được sơn $1$ mặt, có $6$ mặt nên số hình được sơn $1$ mặt là: $c\\times c\\times 6$ (hình)\n\nHai số hình trên có chung thừa số $c\\times c$, nên số hình không được sơn mặt nào gấp số hình được sơn $1$ mặt: $c:6$ (lần)\n\nGấp rưỡi là gấp $1,5$ lần nên $c:6=1,5$, do đó: $c=1,5\\times 6=9$ (hình)\n\nCạnh hình lập phương lớn là: $9+2=11$ (cm)\n\nThể tích hình lập phương lớn là: $11\\times 11\\times 11=1331$ ($\\text{cm}^3$)\n\nĐáp số: $1331\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 19",
+  "dap_an": "$367509$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt phép cộng theo cột rồi xét từng hàng từ phải sang trái; mỗi hàng chỉ nhớ $0$ hoặc $1$ sang hàng bên trái. Các chữ số khác nhau giúp loại các trường hợp, còn điều kiện chia hết cho $15$ (chia hết cho $5$ và cho $3$) giúp tìm chữ số hàng đơn vị và chữ số đầu.\n\n**Bước 1.** Xét hàng đơn vị: tổng $d+e$ có chữ số tận cùng là $d$, từ đó tìm $e$ và biết hàng đơn vị không nhớ.\n\n**Bước 2.** Xét hàng trăm: tổng $b+f$ cộng số nhớ từ hàng chục có chữ số tận cùng là $b$, kết hợp $f$ khác $e$ để tìm $f$ và số nhớ.\n\n**Bước 3.** Xét hàng chục và hàng nghìn với số nhớ vừa tìm để lập quan hệ giữa $a$, $b$ và $c$.\n\n**Bước 4.** Số chia hết cho $15$ thì chia hết cho $5$ nên tìm được $d$; chia hết cho $3$ thì tổng các chữ số chia hết cho $3$, dùng để tìm $a$.\n\n**Bước 5.** Ghép các chữ số vừa tìm thành số $\\overline{abcdef}$ và thử lại điều kiện của đề.\n\n**Chú ý:** Các chữ số $a,\\ b,\\ c,\\ d,\\ e,\\ f$ khác nhau nên $f$ không được trùng $e$ và $d$ không được trùng $e$.\n\n**Phần 2. Trình bày**\n\nXét phép cộng theo từng hàng, từ phải sang trái.\n\nHàng đơn vị: $d+e$ có chữ số tận cùng là $d$ nên $e=0$ và không nhớ sang hàng chục.\n\nHàng trăm: $b+f$ cộng số nhớ từ hàng chục có chữ số tận cùng là $b$ nên $f$ cộng số nhớ có chữ số tận cùng là $0$. Số nhớ chỉ là $0$ hoặc $1$ và $f$ khác $e=0$ nên $f$ cộng số nhớ bằng $10$, suy ra $f=9$ và số nhớ từ hàng chục là $1$.\n\nHàng chục: $c+9$ có nhớ $1$ nên $c+9=b+10$, do đó $b=c-1$.\n\nTrở lại hàng trăm: $b+9+1=b+10$, viết $b$ và nhớ $1$ sang hàng nghìn.\n\nHàng nghìn: $a+a+1=c$, nên $c=a\\times 2+1$ và $b=c-1=a\\times 2$.\n\n$\\overline{abcd}$ chia hết cho $15$ nên chia hết cho $5$, chữ số $d$ là $0$ hoặc $5$. Vì $e=0$ và các chữ số khác nhau nên $d=5$.\n\nVì $c=a\\times 2+1$ là một chữ số nên $a$ không lớn hơn $4$, do đó $a$ là $1;\\ 2;\\ 3$ hoặc $4$.\n\nTổng các chữ số của $\\overline{abcd}$ là: $a+a\\times 2+(a\\times 2+1)+5=a\\times 5+6$\n\nVới $a=1;\\ 2;\\ 3;\\ 4$ thì tổng này lần lượt là $11;\\ 16;\\ 21;\\ 26$. Số chia hết cho $3$ chỉ có $21$, nên $a=3$.\n\nKhi đó $b=6$; $c=7$; $d=5$; $e=0$; $f=9$ (sáu chữ số khác nhau).\n\nThử lại: $3675+3990=7665$ và $3675:15=245$.\n\nVậy $\\overline{abcdef}=367509$."
+ },
+ {
+  "ma_nguon": "ARC 2020-NC · 20",
+  "dap_an": "$88$ phút",
+  "ghi_chu_nghi": "Hiểu \"Chi ở chính giữa An và Bình\" là Chi đứng đúng trung điểm của đoạn nối vị trí An và Bình. Lúc đó Bình mới đi 66 km, chưa tới B (kiểm trong lời giải). nhiều cách: (1) điểm chính giữa đi với vận tốc trung bình cộng 40 km/giờ rồi bài gặp nhau (đã chọn); (2) lập vị trí An, Bình, Chi theo thời gian.",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 58.6667,
+     "ghi": "Chi ở chính giữa"
+    },
+    {
+     "ten": "B",
+     "x": 132
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 58.6667,
+     "nhan": "Điểm chính giữa An-Bình 40 km/giờ"
+    },
+    {
+     "tu": 132,
+     "den": 58.6667,
+     "nhan": "Chi 50 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 132,
+     "nhan": "132 km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi ở chính giữa An và Bình khi Chi đứng đúng điểm giữa của hai bạn. Điểm giữa của An và Bình luôn cách $A$ một đoạn bằng trung bình cộng quãng đường hai bạn đã đi, nên nó chuyển động với vận tốc bằng trung bình cộng hai vận tốc. Bài trở thành bài hai vật đi ngược chiều gặp nhau: Chi và điểm giữa.\n\n**Bước 1.** Tính vận tốc của điểm giữa của An và Bình bằng cách lấy trung bình cộng hai vận tốc của hai bạn.\n\n**Bước 2.** Coi Chi và điểm giữa là hai vật đi ngược chiều trên quãng đường $AB$: điểm giữa xuất phát từ $A$, Chi xuất phát từ $B$, cùng lúc; lúc hai vật gặp nhau chính là lúc Chi ở chính giữa An và Bình.\n\n**Bước 3.** Tính tổng vận tốc của hai vật rồi lấy quãng đường $AB$ chia cho tổng vận tốc để được thời gian gặp nhau tính bằng giờ.\n\n**Bước 4.** Đề hỏi bằng phút nên đổi số giờ vừa tìm ra phút.\n\n**Chú ý:** Thời gian tính ra bằng giờ, không phải phút; và cần kiểm tra lúc đó cả An và Bình chưa đến $B$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Điểm chính giữa của An và Bình đi từ A với vận tốc 40 km/giờ; Chi đi từ B với vận tốc 50 km/giờ; AB dài 132 km)\n\nĐiểm chính giữa của An và Bình có vận tốc là: $(35+45):2=40$ (km/giờ)\n\nTổng vận tốc của Chi và điểm chính giữa là: $50+40=90$ (km/giờ)\n\nThời gian để Chi ở chính giữa An và Bình là: $132:90=\\dfrac{22}{15}$ (giờ)\n\nLúc đó Bình đi được: $45\\times\\dfrac{22}{15}=66$ (km), bé hơn $132$ km nên cả hai bạn chưa đến B.\n\nĐổi: $\\dfrac{22}{15}$ giờ $=\\dfrac{22}{15}\\times 60=88$ phút\n\nĐáp số: $88$ phút"
+ }
+]

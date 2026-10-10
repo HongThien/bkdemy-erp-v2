@@ -1,0 +1,200 @@
+[
+ {
+  "ma_nguon": "NTL 2024 · P1.1",
+  "dap_an": "$41$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quan sát các số hạng để ghép cặp cho tính nhẩm được: $12,6$ và $25,4$ có phần thập phân cộng lại vừa đủ thành số tự nhiên, còn $9,3$ và $6,3$ có phần thập phân giống nhau nên trừ nhau ra số tự nhiên.\n\n**Bước 1.** Nhìn các số thập phân trong biểu thức và nhận ra hai cặp có thể ghép: $12,6$ với $25,4$, và $9,3$ với $6,3$.\n\n**Bước 2.** Nhóm hai cặp đó lại bằng ngoặc; số $6,3$ đang bị trừ nên nhóm thứ hai là một hiệu, việc đổi chỗ các số hạng như vậy dựa vào tính chất giao hoán và kết hợp của phép cộng.\n\n**Bước 3.** Tính giá trị từng nhóm trong ngoặc rồi cộng hai kết quả lại với nhau.\n\n**Chú ý:** Dấu trừ đứng ngay trước $6,3$ chỉ áp dụng cho số $6,3$, không áp dụng cho $25,4$ đứng trước nó.\n\n**Phần 2. Trình bày**\n\n$12,6+9,3+25,4-6,3$\n\n$=(12,6+25,4)+(9,3-6,3)$\n\n$=38+3$\n\n$=41$"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.2",
+  "dap_an": "$3$ chữ số",
+  "ghi_chu_nghi": "$a$ là chữ số hàng chục nghìn của số có năm chữ số nên $a\\neq 0$ (không tính $a=0$); nếu đề cho phép $a=0$ thì có $4$ chữ số ($0;3;6;9$).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số chia hết cho $3$ khi và chỉ khi tổng các chữ số của nó chia hết cho $3$; chữ số $a$ xuất hiện hai lần nên tổng các chữ số gồm hai lần $a$ cộng với các chữ số còn lại.\n\n**Bước 1.** Viết tổng các chữ số của số $\\overline{a31a5}$, gom hai chữ số $a$ lại thành hai lần $a$ và cộng các chữ số đã biết.\n\n**Bước 2.** Tổng các chữ số đã biết đã chia hết cho $3$, nên hai lần $a$ cũng phải chia hết cho $3$; hai lần $a$ là số chẵn chia hết cho $3$.\n\n**Bước 3.** $a$ là chữ số đứng đầu của một số có năm chữ số nên $a$ không thể bằng $0$; liệt kê các số chẵn chia hết cho $3$ trong khoảng của hai lần $a$ rồi tìm $a$ tương ứng.\n\n**Bước 4.** Đếm số giá trị của $a$ tìm được để trả lời câu hỏi \"có bao nhiêu chữ số\".\n\n**Chú ý:** Đề hỏi có bao nhiêu chữ số $a$, nên đáp số là một số đếm chứ không phải các chữ số $a$ đó.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{a31a5}$ chia hết cho $3$ thì tổng các chữ số của nó chia hết cho $3$.\n\nTổng các chữ số là: $a+3+1+a+5=a\\times 2+9$\n\nVì $9$ chia hết cho $3$ nên $a\\times 2$ phải chia hết cho $3$.\n\n$a$ là chữ số hàng chục nghìn nên $a$ từ $1$ đến $9$, do đó $a\\times 2$ là số chẵn từ $2$ đến $18$.\n\nCác số chẵn từ $2$ đến $18$ chia hết cho $3$ là: $6;\\ 12;\\ 18$, ứng với $a=3;\\ 6;\\ 9$.\n\nVậy có $3$ chữ số $a$ thoả mãn."
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.3",
+  "dap_an": "$9$ điểm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điểm trung bình nhân với số môn ra tổng số điểm; tổng điểm của cả ba môn trừ đi tổng điểm của hai môn đã biết thì ra điểm môn còn lại.\n\n**Bước 1.** Tính tổng số điểm của hai môn Toán và Tiếng Việt bằng cách lấy điểm trung bình nhân với số môn.\n\n**Bước 2.** Tính tổng số điểm cần có của cả ba môn bằng cách lấy điểm trung bình mong muốn nhân với $3$ môn.\n\n**Bước 3.** Lấy tổng điểm của ba môn trừ đi tổng điểm của hai môn đã có để tìm điểm cần đạt ở môn Tiếng Anh.\n\n**Chú ý:** Không cộng hai điểm trung bình lại rồi chia đôi; phải đổi điểm trung bình về tổng số điểm trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số điểm của hai môn Toán và Tiếng Việt là: $7,5\\times 2=15$ (điểm)\n\nTổng số điểm của cả ba môn là: $8\\times 3=24$ (điểm)\n\nMôn Tiếng Anh phải đạt số điểm là: $24-15=9$ (điểm)\n\nĐáp số: $9$ điểm"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.4",
+  "dap_an": "$8$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Cách đây 2 năm",
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Con",
+     "phan": 1
+    },
+    {
+     "nhan": "Bố",
+     "phan": 7
+    }
+   ],
+   "tong": "48 tuổi"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số $\\dfrac{1}{7}$ chỉ đúng vào lúc cách đây $2$ năm, nên phải đưa tổng số tuổi về lúc đó rồi mới chia theo tỉ số; mỗi người trẻ đi $2$ tuổi thì tổng số tuổi giảm đi hai lần như vậy.\n\n**Bước 1.** Tìm tổng số tuổi của hai bố con vào lúc $2$ năm trước: mỗi người nhỏ hơn hiện nay $2$ tuổi nên tổng số tuổi giảm đi hai lần $2$ tuổi.\n\n**Bước 2.** Con bằng $\\dfrac{1}{7}$ tuổi bố nên con là $1$ phần, bố là $7$ phần như thế; vẽ sơ đồ rồi tính tổng số phần bằng nhau.\n\n**Bước 3.** Chia tổng số tuổi lúc đó cho tổng số phần để tìm giá trị một phần, chính là tuổi con vào $2$ năm trước.\n\n**Bước 4.** Đề hỏi tuổi con hiện nay, nên cộng thêm số năm đã trôi qua vào tuổi con lúc đó.\n\n**Chú ý:** Không chia $52$ thẳng cho tổng số phần, vì tỉ số $\\dfrac{1}{7}$ chưa đúng với tuổi hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tuổi của hai bố con cách đây $2$ năm là: $52-2\\times 2=48$ (tuổi)\n\nCách đây $2$ năm tuổi con bằng $\\dfrac{1}{7}$ tuổi bố nên tuổi con là $1$ phần, tuổi bố là $7$ phần như thế.\n\nTa có sơ đồ:\n\n(Con 1 phần; bố 7 phần; tổng 48 tuổi)\n\nTổng số phần bằng nhau là: $1+7=8$ (phần)\n\nTuổi con cách đây $2$ năm là: $48:8\\times 1=6$ (tuổi)\n\nTuổi con hiện nay là: $6+2=8$ (tuổi)\n\nĐáp số: $8$ tuổi"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.5",
+  "dap_an": "$64\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau; biết diện tích toàn phần thì tìm được diện tích một mặt, từ đó tìm được cạnh rồi tính thể tích.\n\n**Bước 1.** Lấy diện tích toàn phần chia cho số mặt của hình lập phương để được diện tích một mặt.\n\n**Bước 2.** Mỗi mặt là một hình vuông nên tìm số nhân với chính nó bằng diện tích một mặt, đó chính là độ dài cạnh hình lập phương.\n\n**Bước 3.** Tính thể tích hình lập phương bằng cách lấy cạnh nhân cạnh nhân cạnh.\n\n**Chú ý:** Diện tích tính bằng xăng-ti-mét vuông còn thể tích tính bằng xăng-ti-mét khối, đừng viết nhầm đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $96:6=16$ ($\\text{cm}^2$)\n\nVì $4\\times 4=16$ nên cạnh của hình lập phương là $4$ cm.\n\nThể tích hình lập phương là: $4\\times 4\\times 4=64$ ($\\text{cm}^3$)\n\nĐáp số: $64\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.6",
+  "dap_an": "$53$ triệu đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi suất $6\\%$ một năm nghĩa là sau $1$ năm tiền lãi bằng $6\\%$ số tiền gửi; số tiền nhận được cả gốc và lãi bằng tiền gốc cộng tiền lãi.\n\n**Bước 1.** Hiểu đề: tiền lãi sau $1$ năm là $6\\%$ của số tiền gốc đã gửi.\n\n**Bước 2.** Tính tiền lãi bằng cách tìm $6\\%$ của số tiền gốc: lấy số tiền gốc nhân với $6\\%$.\n\n**Bước 3.** Cộng tiền gốc với tiền lãi vừa tính để được số tiền cả gốc và lãi.\n\n**Chú ý:** Đề hỏi số tiền nhận được cả gốc và lãi, đừng dừng lại ở tiền lãi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTiền lãi sau $1$ năm là: $50\\times 6\\%=3$ (triệu đồng)\n\nSố tiền cả gốc và lãi sau $1$ năm là: $50+3=53$ (triệu đồng)\n\nĐáp số: $53$ triệu đồng"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.7",
+  "dap_an": "$50,24\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Theo hình: hai đường tròn cùng tâm, phần tô đậm là hình vành khăn (giữa hai đường tròn). Lấy $\\pi=3,14$ (quy ước kho 5T).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, hai hình tròn có chung tâm và phần tô đậm là hình tròn lớn bỏ đi hình tròn nhỏ ở giữa; nên diện tích phần tô đậm bằng diện tích hình tròn lớn trừ diện tích hình tròn nhỏ.\n\n**Bước 1.** Nhìn hình để xác định phần tô đậm: đó là phần nằm giữa hai đường tròn cùng tâm, không bao gồm hình tròn nhỏ bên trong.\n\n**Bước 2.** Tính diện tích từng hình tròn bằng cách lấy bán kính nhân bán kính nhân $3,14$.\n\n**Bước 3.** Lấy diện tích hình tròn lớn trừ diện tích hình tròn nhỏ để được diện tích phần tô đậm.\n\n**Chú ý:** Đề đã cho sẵn bán kính, không lấy bán kính nhân đôi khi tính diện tích hình tròn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hai hình tròn có chung tâm; phần tô đậm là hình tròn lớn bỏ đi hình tròn nhỏ.\n\nDiện tích hình tròn lớn là: $5\\times 5\\times 3,14=78,5$ ($\\text{cm}^2$)\n\nDiện tích hình tròn nhỏ là: $3\\times 3\\times 3,14=28,26$ ($\\text{cm}^2$)\n\nDiện tích hình tô đậm là: $78,5-28,26=50,24$ ($\\text{cm}^2$)\n\nĐáp số: $50,24\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.8",
+  "dap_an": "$24$ viên",
+  "ghi_chu_nghi": "Nhiều cách: (1) đổi $60\\%=\\dfrac{3}{5}$ rồi làm hiệu – tỉ theo số phần (cách đã trình bày, có sơ đồ); (2) theo phần trăm: hiệu $60\\%-40\\%=20\\%$ số bi cả hộp, cả hộp $12:20\\%=60$ viên, bi đỏ $60\\times 40\\%=24$ viên.",
+  "so_do_mo_ta": {
+   "tieu_de": "Số bi trong hộp",
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Bi xanh",
+     "phan": 3
+    },
+    {
+     "nhan": "Bi đỏ",
+     "phan": 2
+    }
+   ],
+   "hieu": "12 viên",
+   "dau_hoi": [
+    "Bi đỏ"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bi xanh chiếm $60\\%$ số bi cả hộp, mà $60\\%$ chính là $\\dfrac{3}{5}$; đổi sang số phần bằng nhau thì bài trở thành bài hiệu – tỉ: hiệu số bi của hai loại ứng với hiệu số phần.\n\n**Bước 1.** Đổi $60\\%$ ra phân số rồi chia cả hộp thành số phần bằng nhau, từ đó biết số phần của bi xanh.\n\n**Bước 2.** Bi đỏ là phần còn lại của cả hộp, nên lấy tổng số phần trừ số phần của bi xanh để được số phần của bi đỏ.\n\n**Bước 3.** Tính hiệu số phần bằng nhau giữa bi xanh và bi đỏ; hiệu này ứng với số viên bi chênh lệch đề đã cho, từ đó tìm giá trị một phần.\n\n**Bước 4.** Lấy giá trị một phần nhân với số phần của bi đỏ để được số bi đỏ.\n\n**Chú ý:** Đề hỏi số bi đỏ, không phải số bi xanh hay số bi cả hộp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBi xanh chiếm $60\\%=\\dfrac{60}{100}=\\dfrac{3}{5}$ số bi của cả hộp nên bi xanh là $3$ phần, cả hộp là $5$ phần.\n\nSố phần bằng nhau của bi đỏ là: $5-3=2$ (phần)\n\nTa có sơ đồ:\n\n(Bi xanh 3 phần; bi đỏ 2 phần; hiệu 12 viên)\n\nHiệu số phần bằng nhau là: $3-2=1$ (phần)\n\nGiá trị một phần là: $12:1=12$ (viên)\n\nSố bi đỏ là: $12\\times 2=24$ (viên)\n\nĐáp số: $24$ viên"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.9",
+  "dap_an": "Chủ nhật",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một tuần có $7$ ngày nên thứ trong tuần lặp lại sau mỗi $7$ ngày; chỉ cần tính từ ngày đã biết đến ngày cần tìm có bao nhiêu ngày rồi lấy số ngày chia cho $7$ để xem dư mấy ngày.\n\n**Bước 1.** Xác định khoảng thời gian từ ngày $7/5/2024$ đến ngày $7/5/2028$ là $4$ năm, rồi xem trong khoảng đó có ngày $29/2$ của năm nhuận nào.\n\n**Bước 2.** Tính tổng số ngày: mỗi năm thường có $365$ ngày, năm nhuận có thêm $1$ ngày; cộng số ngày của $4$ năm lại.\n\n**Bước 3.** Chia tổng số ngày cho $7$ và chỉ quan tâm số dư, vì số tuần tròn không làm đổi thứ trong tuần.\n\n**Bước 4.** Từ ngày thứ Ba, đếm tiếp từng ngày theo số dư vừa tìm để biết thứ cần tìm.\n\n**Chú ý:** Ngày $29/2/2024$ đã qua trước ngày $7/5/2024$ nên không được tính; ngày $29/2/2028$ nằm trước ngày $7/5/2028$ nên được tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ ngày $7/5/2024$ đến ngày $7/5/2028$ là $4$ năm, trong đó có ngày $29/2/2028$ của năm nhuận $2028$.\n\nSố ngày từ ngày $7/5/2024$ đến ngày $7/5/2028$ là: $365\\times 4+1=1461$ (ngày)\n\nMột tuần có $7$ ngày, ta có: $1461:7=208$ (tuần) dư $5$ ngày\n\nSau $208$ tuần tròn vẫn là thứ Ba; đếm thêm $5$ ngày: thứ Tư, thứ Năm, thứ Sáu, thứ Bảy, Chủ nhật.\n\nVậy ngày $7/5/2028$ là Chủ nhật."
+ },
+ {
+  "ma_nguon": "NTL 2024 · P1.10",
+  "dap_an": "$54$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong mỗi hình, số ở ô trên liên hệ với hai số ở hai ô dưới theo cùng một quy luật; tìm quy luật từ ba hình đã đủ số rồi mới áp dụng cho hình cuối.\n\n**Bước 1.** Quan sát ba hình đầu: ô trên có ba chữ số, mỗi ô dưới có hai chữ số, và chữ số đầu của ô trên giống chữ số đầu của ô dưới bên trái; điều này gợi ý lấy ô trái nhân với $10$.\n\n**Bước 2.** Thử lấy ô trên trừ đi ô dưới bên trái nhân với $10$, xem kết quả có bằng ô dưới bên phải không.\n\n**Bước 3.** Kiểm tra quy luật vừa tìm bằng cả ba hình đầu; chỉ khi đúng với cả ba hình mới dùng được.\n\n**Bước 4.** Áp dụng quy luật cho hình cuối: lấy ô trên trừ đi ô trái nhân với $10$ để tìm số ở ô có dấu hỏi chấm.\n\n**Chú ý:** Quy luật phải đúng với cả ba hình đã đủ số, không chỉ đúng với một hình.\n\n**Phần 2. Trình bày**\n\nQuy luật: số ở ô trên bằng ô dưới bên trái nhân với $10$ rồi cộng với ô dưới bên phải.\n\nHình thứ nhất: $24\\times 10+34=274$\n\nHình thứ hai: $33\\times 10+46=376$\n\nHình thứ ba: $13\\times 10+35=165$\n\nHình thứ tư: ô dưới bên phải là: $364-31\\times 10=364-310=54$\n\nVậy số cần điền vào dấu hỏi chấm là $54$."
+ },
+ {
+  "ma_nguon": "NTL 2024 · P2.1",
+  "dap_an": "1) $x=1$; 2a) $45$ phút; 2b) $18$ km",
+  "ghi_chu_nghi": "Ý 2b: đề không nói vận tốc khi quay về A nên hiểu hai xe giữ nguyên vận tốc cũ ($12$ km/giờ và $36$ km/giờ); \"gặp nhau\" là xe máy đuổi kịp xe đạp trên đường về A. Kiểm: xe đạp về đến A mất $27:12=2,25$ giờ, xe máy đuổi kịp sau $0,5+0,25=0,75$ giờ kể từ lúc gặp lần đầu nên chưa tới A.",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Lúc xe máy xuất phát",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "D",
+      "x": 18,
+      "ghi": "xe đạp"
+     },
+     {
+      "ten": "E",
+      "x": 27,
+      "ghi": "gặp nhau"
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 27,
+      "nhan": "36 km/giờ"
+     },
+     {
+      "tu": 18,
+      "den": 27,
+      "nhan": "12 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 18,
+      "nhan": "18 km"
+     },
+     {
+      "tu": 0,
+      "den": 27,
+      "nhan": "? km"
+     }
+    ],
+    "loai": "chuyen_dong"
+   },
+   {
+    "tieu_de": "Lúc xe máy nghỉ xong",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "N",
+      "x": 18,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "P",
+      "x": 21,
+      "ghi": "xe đạp"
+     },
+     {
+      "ten": "E",
+      "x": 27,
+      "ghi": "xe máy"
+     }
+    ],
+    "di": [
+     {
+      "tu": 27,
+      "den": 18,
+      "nhan": "36 km/giờ"
+     },
+     {
+      "tu": 21,
+      "den": 18,
+      "nhan": "12 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 21,
+      "den": 27,
+      "nhan": "6 km"
+     },
+     {
+      "tu": 0,
+      "den": 18,
+      "nhan": "? km"
+     }
+    ],
+    "loai": "chuyen_dong"
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Câu 1 đưa về tìm thừa số rồi tìm số hạng chưa biết. Câu 2 là bài toán đuổi kịp: lấy khoảng cách ban đầu chia cho hiệu hai vận tốc để ra thời gian đuổi kịp; sau lần gặp thứ nhất, xe máy nghỉ nên giữa hai xe lại có khoảng cách và xe máy lại đuổi theo bằng đúng cách đó.\n\n**Bước 1.** Câu 1: rút gọn các phân số, tính vế phải bằng cách tách phần nguyên và phần phân số, rồi tìm thừa số chưa biết và tìm số hạng chưa biết.\n\n**Bước 2.** Câu 2a: xe đạp xuất phát trước $1$ giờ $30$ phút nên khi xe máy xuất phát hai xe đã cách nhau một quãng; tính quãng đường đó bằng vận tốc nhân thời gian xe đạp đã đi.\n\n**Bước 3.** Mỗi giờ xe máy chạy nhanh hơn xe đạp một quãng bằng hiệu hai vận tốc; lấy khoảng cách ban đầu chia cho hiệu vận tốc để được thời gian đuổi kịp, nhớ đổi ra phút.\n\n**Bước 4.** Câu 2b: tính chỗ hai xe gặp nhau lần đầu cách A bao nhiêu ki-lô-mét; trong lúc xe máy nghỉ xe đạp vẫn chạy về A nên đi thêm một quãng, từ đó biết lúc xe máy chạy lại hai xe cách nhau bao xa.\n\n**Bước 5.** Xe máy đuổi theo xe đạp cùng chiều về A: lấy khoảng cách chia hiệu vận tốc để tìm thời gian, tính quãng đường xe máy đi trong thời gian đó, rồi lấy chỗ gặp lần đầu trừ đi quãng đường này để được khoảng cách đến A.\n\n**Chú ý:** Đề không nói vận tốc khi quay về nên hiểu hai xe giữ nguyên vận tốc cũ.\n\n**Phần 2. Trình bày**\n\n1. Tìm $x$\n\n$\\begin{array}{l}\\left(x+\\dfrac{2}{3}\\right)\\times\\dfrac{9}{15}=2\\dfrac{1}{3}-\\dfrac{8}{6}\\\\ \\left(x+\\dfrac{2}{3}\\right)\\times\\dfrac{3}{5}=2\\dfrac{1}{3}-\\dfrac{4}{3}\\\\ \\left(x+\\dfrac{2}{3}\\right)\\times\\dfrac{3}{5}=2\\dfrac{1}{3}-1\\dfrac{1}{3}\\\\ \\left(x+\\dfrac{2}{3}\\right)\\times\\dfrac{3}{5}=1\\\\ x+\\dfrac{2}{3}=1:\\dfrac{3}{5}\\\\ x+\\dfrac{2}{3}=\\dfrac{5}{3}\\\\ x=\\dfrac{5}{3}-\\dfrac{2}{3}\\\\ x=1\\end{array}$\n\n2. Bài giải\n\na) Đổi: $1$ giờ $30$ phút $=1,5$ giờ\n\nKhi xe máy xuất phát, xe đạp đã đi được: $12\\times 1,5=18$ (km)\n\nTa có sơ đồ:\n\n(Xe đạp ở cách A $18$ km, đi $12$ km/giờ; xe máy xuất phát từ A, đi $36$ km/giờ; hai xe gặp nhau tại E)\n\nMỗi giờ xe máy đến gần xe đạp thêm: $36-12=24$ (km)\n\nThời gian để xe máy đuổi kịp xe đạp là: $18:24=0,75$ (giờ)\n\nĐổi: $0,75$ giờ $=45$ phút\n\nb) Chỗ hai xe gặp nhau lần đầu cách A là: $36\\times 0,75=27$ (km)\n\nXe máy nghỉ $30$ phút $=0,5$ giờ; trong thời gian đó xe đạp đi về phía A được: $12\\times 0,5=6$ (km)\n\nTa có sơ đồ:\n\n(Xe máy ở E cách A $27$ km; xe đạp ở P cách A $21$ km, hai xe cách nhau $6$ km, cùng đi về A; xe máy đuổi kịp xe đạp tại N)\n\nKhi xe máy nghỉ xong, xe đạp cách A: $27-6=21$ (km)\n\nThời gian để xe máy đuổi kịp xe đạp lần nữa là: $6:(36-12)=6:24=0,25$ (giờ)\n\nQuãng đường xe máy đi trong thời gian đó là: $36\\times 0,25=9$ (km)\n\nĐiểm gặp nhau cách A là: $27-9=18$ (km)\n\nĐáp số: 1) $x=1$; 2) a) $45$ phút; b) $18$ km"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P2.2",
+  "dap_an": "1) $\\dfrac{100}{3}\\ \\text{cm}^2$; 2) $\\dfrac{3}{2}$; 3) $\\dfrac{3}{2}$",
+  "ghi_chu_nghi": "Hình lệch chữ: trong hình, M nằm gần A hơn D (khoảng $\\dfrac{1}{3}$ cạnh) còn đề chữ ghi $AM=\\dfrac{2}{3}AD$. Làm theo đề chữ ($AM=\\dfrac{20}{3}$ cm); nếu đề thật là $AM=\\dfrac{1}{3}AD$ thì các đáp số khác. Ý 1 ra phân số $\\dfrac{100}{3}$ cm$^2$ ($=33\\dfrac{1}{3}$ cm$^2$), không tròn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình vuông cho ta nhiều tam giác có đường cao bằng cạnh hình vuông. Muốn tìm tỉ số hai đoạn thẳng BO và OM, tìm hai tam giác có chung đường cao hạ từ một đỉnh xuống đường thẳng chứa hai đoạn đó rồi chuyển sang tỉ số diện tích của hai tam giác ấy.\n\n**Bước 1.** Ý 1: tam giác ABM có góc vuông ở A nên AB là đường cao ứng với đáy AM; tìm độ dài AM theo $\\dfrac{2}{3}$ cạnh AD rồi tính diện tích.\n\n**Bước 2.** Ý 2: tam giác BMC có đáy BC; vì AD song song với BC nên đường cao hạ từ M xuống BC bằng cạnh hình vuông; tính diện tích rồi lập tỉ số với diện tích tam giác ABM ở ý 1.\n\n**Bước 3.** Ý 3: tam giác ABC và tam giác AMC có chung đáy AC nên tỉ số diện tích của chúng bằng tỉ số hai đường cao hạ từ B và từ M xuống AC; tính diện tích hai tam giác này, dùng lại kết quả ở ý 1.\n\n**Bước 4.** Tam giác OBC và tam giác OMC cũng có chung đáy OC và đúng hai đường cao đó nên có cùng tỉ số diện tích; mặt khác hai tam giác này chung đường cao hạ từ C xuống BM nên tỉ số diện tích chính là tỉ số của BO và OM.\n\n**Chú ý:** Ba ý nối tiếp nhau: ý sau dùng lại diện tích đã tính ở ý trước, không tính lại từ đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n1. Độ dài AM là: $10\\times\\dfrac{2}{3}=\\dfrac{20}{3}$ (cm)\n\nTam giác ABM vuông tại A nên diện tích tam giác ABM là: $S_{ABM}=\\dfrac{20}{3}\\times 10:2=\\dfrac{100}{3}$ ($\\text{cm}^2$)\n\n2. Tam giác BMC có đáy BC $=10$ cm; vì AD song song với BC nên đường cao hạ từ M xuống BC bằng cạnh hình vuông, là $10$ cm.\n\nDiện tích tam giác BMC là: $S_{BMC}=10\\times 10:2=50$ ($\\text{cm}^2$)\n\nTỉ số diện tích: $\\dfrac{S_{BMC}}{S_{ABM}}=50:\\dfrac{100}{3}=50\\times\\dfrac{3}{100}=\\dfrac{3}{2}$\n\n3. Diện tích tam giác ABC là: $S_{ABC}=10\\times 10:2=50$ ($\\text{cm}^2$)\n\nTam giác AMC có đáy AM và đường cao hạ từ C xuống AD bằng $10$ cm, bằng đường cao AB của tam giác ABM, nên $S_{AMC}=S_{ABM}=\\dfrac{100}{3}$ ($\\text{cm}^2$)\n\nTam giác ABC và tam giác AMC có chung đáy AC, suy ra tỉ số hai đường cao hạ từ B và từ M xuống AC bằng $\\dfrac{S_{ABC}}{S_{AMC}}=50:\\dfrac{100}{3}=\\dfrac{3}{2}$\n\nTam giác OBC và tam giác OMC có chung đáy OC và cùng hai đường cao đó, suy ra $\\dfrac{S_{OBC}}{S_{OMC}}=\\dfrac{3}{2}$\n\nTam giác OBC và tam giác OMC có chung đường cao hạ từ C xuống BM, suy ra $\\dfrac{S_{OBC}}{S_{OMC}}=\\dfrac{BO}{OM}$\n\nVậy $\\dfrac{BO}{OM}=\\dfrac{3}{2}$\n\nĐáp số: 1) $\\dfrac{100}{3}\\ \\text{cm}^2$; 2) $\\dfrac{3}{2}$; 3) $\\dfrac{3}{2}$"
+ },
+ {
+  "ma_nguon": "NTL 2024 · P2.3",
+  "dap_an": "Lan",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bạn nói về cùng hai thứ là quả táo và quả lê, nên nếu lời của bạn này đúng thì lời của bạn kia có thể suy ra được; đề cho chỉ một bạn đúng, nên ta thử xem nếu một bạn đúng thì có làm bạn còn lại đúng theo không.\n\n**Bước 1.** Gấp lời của Mai lên $3$ lần và lời của Lan lên $2$ lần để cả hai cùng nói về $6$ quả táo, rồi so sánh số quả lê trong hai lời nói đó.\n\n**Bước 2.** Giả sử Mai nói đúng, rồi xét xem khi đó lời của Lan có đúng không: so số quả lê trong lời Mai với số quả lê trong lời Lan.\n\n**Bước 3.** Nếu $6$ quả táo nặng hơn số quả lê nhiều hơn thì chắc chắn cũng nặng hơn số quả lê ít hơn, nghĩa là lời của Lan cũng đúng; điều này trái với đề bài là chỉ có một bạn đúng.\n\n**Bước 4.** Vì giả sử Mai đúng dẫn đến mâu thuẫn nên Mai nói sai, và người còn lại là người nói đúng.\n\n**Chú ý:** Mai nói sai nghĩa là hai quả táo không nặng hơn ba quả lê, có thể bằng hoặc nhẹ hơn; không cần biết cụ thể là trường hợp nào.\n\nThử lại: cho một quả táo nặng $7$ đơn vị, một quả lê nặng $5$ đơn vị rồi so sánh hai lời nói, xem có đúng một lời đúng hay không.\n\n**Phần 2. Trình bày**\n\nGiả sử Mai nói đúng: $2$ quả táo nặng hơn $3$ quả lê.\n\nGấp lên $3$ lần thì $6$ quả táo nặng hơn $9$ quả lê.\n\nMà $9$ quả lê nặng hơn $8$ quả lê nên $6$ quả táo nặng hơn $8$ quả lê.\n\nLan nói: $3$ quả táo nặng hơn $4$ quả lê; gấp lên $2$ lần là $6$ quả táo nặng hơn $8$ quả lê. Như vậy Lan cũng nói đúng.\n\nHai bạn cùng đúng, trái với đề bài (chỉ có $1$ bạn nói đúng), nên Mai nói sai.\n\nVậy Lan là người nói đúng."
+ }
+]

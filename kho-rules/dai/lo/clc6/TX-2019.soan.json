@@ -1,0 +1,127 @@
+[
+ {
+  "ma_nguon": "TX 2019 · 1",
+  "dap_an": "$2019$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $28,5\\times 20,19$ và $71,5\\times 20,19$ có chung thừa số $20,19$, nên dùng tính chất nhân một tổng với một số: đưa $20,19$ ra ngoài, trong ngoặc là tổng hai số thập phân cho kết quả tròn.\n\n**Bước 1.** Nhìn kĩ hai tích thì thấy cả hai cùng có thừa số $20,19$, đó là dấu hiệu để đặt thừa số chung ra ngoài.\n\n**Bước 2.** Viết lại biểu thức thành tổng $28,5+71,5$ đặt trong ngoặc rồi nhân với $20,19$; tổng trong ngoặc có phần thập phân cộng lại vừa tròn nên tính nhẩm được.\n\n**Bước 3.** Nhân kết quả trong ngoặc với $20,19$; nhân một số với $100$ chỉ cần dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** Không nhân từng tích riêng rồi mới cộng, vì như vậy phải làm hai phép nhân số thập phân rất dài.\n\n**Phần 2. Trình bày**\n\n$28,5\\times 20,19+71,5\\times 20,19$\n\n$=(28,5+71,5)\\times 20,19$\n\n$=100\\times 20,19$\n\n$=2019$"
+ },
+ {
+  "ma_nguon": "TX 2019 · 2",
+  "dap_an": "$42,0134\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giữa mét vuông và xăng-ti-mét vuông có hai bậc đơn vị đo diện tích (mét vuông, đề-xi-mét vuông, xăng-ti-mét vuông), mỗi bậc hơn kém nhau $100$ lần, nên $1\\ \\text{m}^2=10000\\ \\text{cm}^2$. Muốn đổi $\\text{cm}^2$ ra $\\text{m}^2$ thì chia cho $10000$.\n\n**Bước 1.** Nhớ lại quan hệ giữa hai đơn vị: một mét vuông bằng $10000$ xăng-ti-mét vuông, từ đó biết phải chia cho $10000$ khi đổi từ $\\text{cm}^2$ sang $\\text{m}^2$.\n\n**Bước 2.** Đổi riêng phần $134\\ \\text{cm}^2$ ra mét vuông bằng cách chia cho $10000$, tức là dịch dấu phẩy sang trái bốn chữ số và viết thêm chữ số $0$ cho đủ.\n\n**Bước 3.** Ghép phần nguyên $42\\ \\text{m}^2$ với phần vừa đổi được để có số đo viết bằng một đơn vị là mét vuông.\n\n**Chú ý:** Không viết $134\\ \\text{cm}^2=0,134\\ \\text{m}^2$: đổi diện tích mỗi bậc là $100$ lần, không phải $10$ lần như độ dài.\n\n**Phần 2. Trình bày**\n\nĐổi: $134\\ \\text{cm}^2=134:10000=0,0134\\ \\text{m}^2$\n\n$42\\ \\text{m}^2\\ 134\\ \\text{cm}^2=42\\ \\text{m}^2+0,0134\\ \\text{m}^2=42,0134\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "TX 2019 · 3",
+  "dap_an": "$52,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp thì lấy số học sinh nữ chia cho số học sinh CẢ LỚP rồi đổi kết quả ra phần trăm; vì vậy phải tìm đủ hai số này trước.\n\n**Bước 1.** Đề cho số học sinh nam và cho biết nữ nhiều hơn nam bao nhiêu bạn, nên tìm số học sinh nữ bằng cách cộng số nam với số bạn nữ nhiều hơn.\n\n**Bước 2.** Tìm số học sinh cả lớp bằng cách cộng số học sinh nam với số học sinh nữ vừa tìm.\n\n**Bước 3.** Lấy số học sinh nữ chia cho số học sinh cả lớp được một số thập phân, rồi viết số đó dưới dạng phần trăm.\n\n**Chú ý:** Phải so với số học sinh cả lớp, không so với số học sinh nam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ của lớp là: $19+2=21$ (học sinh)\n\nSố học sinh cả lớp là: $19+21=40$ (học sinh)\n\nSố học sinh nữ chiếm số phần trăm số học sinh cả lớp là: $21:40=0,525=52,5\\%$\n\nĐáp số: $52,5\\%$"
+ },
+ {
+  "ma_nguon": "TX 2019 · 4",
+  "dap_an": "$960$ bộ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bộ quần áo may được tỉ lệ thuận với số người thợ và cũng tỉ lệ thuận với số ngày làm, nên rút về đơn vị: tìm số bộ MỘT người may trong MỘT ngày (năng suất mỗi người như nhau), rồi nhân lên với số người và số ngày cần tính.\n\n**Bước 1.** Thấy đề cho hai đại lượng cùng thay đổi là số người và số ngày, nên ta rút về đơn vị là một người làm trong một ngày.\n\n**Bước 2.** Tìm số bộ quần áo một người may trong cả $8$ ngày bằng cách chia cho số người, rồi chia tiếp cho $8$ ngày để biết một người may trong một ngày.\n\n**Bước 3.** Nhân số bộ một người may trong một ngày với số người thợ mới để biết cả nhóm may được bao nhiêu bộ trong một ngày.\n\n**Bước 4.** Nhân số bộ cả nhóm may trong một ngày với số ngày làm việc mới để được số bộ quần áo cần tìm.\n\n**Chú ý:** Không nhân thẳng $160$ với $12$ và $16$; phải chia bớt cho số người và số ngày ban đầu của đề trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bộ quần áo $1$ người may được trong $8$ ngày là: $160:4=40$ (bộ)\n\nSố bộ quần áo $1$ người may được trong $1$ ngày là: $40:8=5$ (bộ)\n\nSố bộ quần áo $12$ người may được trong $1$ ngày là: $5\\times 12=60$ (bộ)\n\nSố bộ quần áo $12$ người may được trong $16$ ngày là: $60\\times 16=960$ (bộ)\n\nĐáp số: $960$ bộ"
+ },
+ {
+  "ma_nguon": "TX 2019 · 5",
+  "dap_an": "$50,24\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình tròn bằng bán kính nhân bán kính nhân $3,14$. Đề cho ĐƯỜNG KÍNH nên phải tìm bán kính trước: bán kính bằng một nửa đường kính.\n\n**Bước 1.** Nhận ra đề cho đường kính $8$ cm mà công thức tính diện tích lại dùng bán kính, nên phải đổi từ đường kính sang bán kính.\n\n**Bước 2.** Tìm bán kính bằng cách lấy đường kính chia cho $2$, vì đường kính gấp đôi bán kính.\n\n**Bước 3.** Áp dụng công thức diện tích hình tròn: lấy bán kính nhân bán kính rồi nhân với $3,14$.\n\n**Chú ý:** Không lấy đường kính nhân đường kính nhân $3,14$, vì như vậy diện tích gấp $4$ lần giá trị thật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBán kính hình tròn là: $8:2=4$ (cm)\n\nDiện tích hình tròn là: $4\\times 4\\times 3,14=50,24$ ($\\text{cm}^2$)\n\nĐáp số: $50,24\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "TX 2019 · 6",
+  "dap_an": "$y=\\dfrac{1}{32}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các phân số $\\dfrac{1}{2};\\ \\dfrac{1}{4};\\ \\dfrac{1}{8};\\ \\dfrac{1}{16};\\ \\dfrac{1}{32}$ có mẫu số sau gấp đôi mẫu số trước. Với dãy như vậy, nhân tổng với $2$ rồi trừ đi tổng cũ thì hầu hết các số hạng triệt tiêu nhau, chỉ còn số hạng đầu và cuối.\n\n**Bước 1.** Gọi tổng của năm phân số đã cho là $A$, nhận ra mẫu số mỗi số gấp đôi mẫu số số đứng trước nó nên nhân $A$ với $2$ sẽ làm mỗi số hạng thành số hạng đứng trước.\n\n**Bước 2.** Lấy $2\\times A$ trừ đi $A$: các phân số giống nhau ở hai dòng triệt tiêu, chỉ còn lại số $1$ và phân số cuối cùng bị trừ đi.\n\n**Bước 3.** Biết giá trị của $A$ thì đề trở thành phép cộng $y+A=1$, trong đó $y$ là số hạng chưa biết.\n\n**Bước 4.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết.\n\n**Chú ý:** Có thể không cần quy đồng cả năm phân số mà vẫn tính được $A$ rất nhanh theo cách nhân đôi.\n\nThử lại: cộng $\\dfrac{1}{32}$ với năm phân số của đề, tổng phải bằng $1$.\n\n**Phần 2. Trình bày**\n\n$y+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+\\dfrac{1}{32}=1$\n\nĐặt $A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+\\dfrac{1}{32}$\n\n$2\\times A=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}$\n\n$2\\times A-A=1-\\dfrac{1}{32}$\n\n$A=\\dfrac{31}{32}$\n\n$\\begin{array}{l} y+\\dfrac{31}{32}=1 \\\\ y=1-\\dfrac{31}{32} \\\\ y=\\dfrac{1}{32} \\end{array}$"
+ },
+ {
+  "ma_nguon": "TX 2019 · 7",
+  "dap_an": "$6$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau 4 năm nữa",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 2
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 7
+    }
+   ],
+   "hieu": "25 tuổi"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của mẹ và con không bao giờ thay đổi (luôn là $25$ tuổi). Sau $4$ năm nữa đề cho tỉ số tuổi hai người, nên đây là bài hiệu – tỉ: tìm tuổi con sau $4$ năm nữa rồi bớt đi $4$ năm.\n\n**Bước 1.** Đề cho hiệu số tuổi và tỉ số tuổi ở cùng một thời điểm là sau $4$ năm nữa, nên đổi tỉ số thành số phần bằng nhau: tuổi con là $2$ phần thì tuổi mẹ là $7$ phần.\n\n**Bước 2.** Tính hiệu số phần bằng nhau; hiệu này đúng bằng $25$ tuổi, vì hiệu số tuổi của hai mẹ con không đổi theo thời gian.\n\n**Bước 3.** Chia $25$ tuổi cho hiệu số phần để biết giá trị một phần, rồi nhân với số phần của tuổi con để được tuổi con sau $4$ năm nữa.\n\n**Bước 4.** Đề hỏi tuổi con HIỆN NAY nên lấy tuổi con sau $4$ năm nữa trừ đi $4$ năm.\n\n**Chú ý:** Số vừa tìm được sau khi nhân với số phần là tuổi con SAU $4$ năm nữa, chưa phải tuổi con hiện nay.\n\nThử lại: mẹ hiện nay hơn con $25$ tuổi, sau $4$ năm nữa tuổi con bằng $\\dfrac{2}{7}$ tuổi mẹ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau $4$ năm nữa tuổi con bằng $\\dfrac{2}{7}$ tuổi mẹ nên tuổi con là $2$ phần, tuổi mẹ là $7$ phần như thế; hiệu số tuổi của mẹ và con vẫn là $25$ tuổi.\n\nTa có sơ đồ:\n\n(Sau 4 năm nữa: tuổi con 2 phần; tuổi mẹ 7 phần; mẹ hơn con 25 tuổi)\n\nHiệu số phần bằng nhau là: $7-2=5$ (phần)\n\nGiá trị một phần là: $25:5=5$ (tuổi)\n\nTuổi con sau $4$ năm nữa là: $5\\times 2=10$ (tuổi)\n\nTuổi con hiện nay là: $10-4=6$ (tuổi)\n\nĐáp số: $6$ tuổi"
+ },
+ {
+  "ma_nguon": "TX 2019 · 8",
+  "dap_an": "$a=7$; $b=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $2$ và chia $5$ chỉ phụ thuộc vào chữ số tận cùng, còn chia $9$ thì phụ thuộc vào TỔNG các chữ số. Vậy dùng hai điều kiện đầu để tìm $b$ trước, rồi dùng điều kiện chia $9$ để tìm $a$.\n\n**Bước 1.** Số chia $2$ dư $1$ thì chữ số tận cùng là số lẻ; số chia $5$ dư $3$ thì chữ số tận cùng là $3$ hoặc $8$; chọn chữ số thoả mãn cả hai điều kiện để biết $b$.\n\n**Bước 2.** Nhớ dấu hiệu: một số chia $9$ dư bao nhiêu thì tổng các chữ số của nó chia $9$ cũng dư bấy nhiêu; áp dụng cho số $\\overline{2019ab}$.\n\n**Bước 3.** Tính tổng các chữ số đã biết và chữ số $b$ vừa tìm; vì $a$ là một chữ số nên tổng cả sáu chữ số chỉ nằm trong một khoảng giá trị, hãy xác định khoảng đó.\n\n**Bước 4.** Trong khoảng đó chọn số chia $9$ dư $4$, lấy số này trừ đi tổng các chữ số đã biết để tìm $a$.\n\n**Chú ý:** Chữ số $a$ có thể bằng $0$, nên khi tìm khoảng giá trị của tổng phải bắt đầu từ trường hợp $a=0$.\n\nThử lại: thay $a$ và $b$ vừa tìm vào số $overline{2019ab}$ rồi kiểm tra đủ ba điều kiện chia $2$, chia $5$ và chia $9$.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{2019ab}$ chia $2$ dư $1$ nên $b$ là chữ số lẻ; chia $5$ dư $3$ nên $b$ là $3$ hoặc $8$. Vậy $b=3$.\n\nSố chia $9$ dư $4$ nên tổng các chữ số chia $9$ dư $4$.\n\nTổng các chữ số của số đó là: $2+0+1+9+a+3=15+a$\n\nVì $a$ là chữ số nên tổng này từ $15$ đến $24$; trong khoảng đó chỉ có $22$ chia $9$ dư $4$ (vì $22=2\\times 9+4$).\n\nDo đó $15+a=22$, suy ra $a=22-15=7$.\n\nVậy $a=7$; $b=3$."
+ },
+ {
+  "ma_nguon": "TX 2019 · 9",
+  "dap_an": "$448000\\ \\text{cm}^3$",
+  "ghi_chu_nghi": "Hiểu hình: tháp 6 tầng, mỗi tầng xếp đầy (không chỗ hổng) thành hình tam giác — hàng ngoài cùng nhìn thấy của tầng thứ k có k viên, phía sau thêm các hàng k−1, …, 1 viên, nên các tầng từ trên xuống có 1; 3; 6; 10; 15; 21 viên, tổng 56 viên × 8000 = 448000 cm³. Nếu đề chỉ tính 21 viên nhìn thấy thì 21 × 8000 = 168000 cm³ — nhưng chữ \"không có chỗ hổng\" gợi ý phải tính cả các viên bị che. Câu này kém chắc nhất, cần đối chiếu nguồn khác.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích tháp bằng số viên gạch nhân với thể tích một viên gạch. Tháp xếp KHÔNG có chỗ hổng nên ngoài các viên nhìn thấy còn có các viên bị che khuất phía sau; phải đếm cả những viên đó.\n\n**Bước 1.** Nhìn hình vẽ, các hàng nhìn thấy từ trên xuống có $1;\\ 2;\\ 3;\\ 4;\\ 5;\\ 6$ viên, nên tháp có $6$ tầng, tầng trên cùng chỉ có một viên.\n\n**Bước 2.** Mỗi tầng xếp đầy: ở tầng thứ hai, sau hàng $2$ viên nhìn thấy còn một hàng $1$ viên nữa; cứ xuống một tầng thì thêm một hàng ở phía sau, nên tầng nào cũng gồm các hàng $1;\\ 2;\\ 3;\\ \\ldots$ cho tới số viên của hàng nhìn thấy.\n\n**Bước 3.** Đếm số viên của từng tầng rồi cộng lại thành tổng số viên gạch của cả tháp.\n\n**Bước 4.** Tính thể tích một viên gạch hình lập phương cạnh $20$ cm bằng cạnh nhân cạnh nhân cạnh.\n\n**Bước 5.** Nhân thể tích một viên gạch với số viên gạch của tháp để được thể tích cái tháp.\n\n**Chú ý:** Không chỉ đếm các viên nhìn thấy trên hình; các viên nằm phía sau cũng được tính vì tháp không có chỗ hổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTháp có $6$ tầng; theo hình vẽ, số viên gạch ở mỗi tầng tính từ trên xuống là:\n\nTầng $1$: $1$ viên\n\nTầng $2$: $1+2=3$ (viên)\n\nTầng $3$: $1+2+3=6$ (viên)\n\nTầng $4$: $1+2+3+4=10$ (viên)\n\nTầng $5$: $1+2+3+4+5=15$ (viên)\n\nTầng $6$: $1+2+3+4+5+6=21$ (viên)\n\nSố viên gạch của cái tháp là: $1+3+6+10+15+21=56$ (viên)\n\nThể tích một viên gạch là: $20\\times 20\\times 20=8000$ ($\\text{cm}^3$)\n\nThể tích cái tháp là: $8000\\times 56=448000$ ($\\text{cm}^3$)\n\nĐáp số: $448000\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "TX 2019 · 10",
+  "dap_an": "$10712$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số của dãy tăng rất nhanh và hiệu hai số liền nhau cũng không cố định, nên không phải dãy cộng thêm đều; hãy thử viết mỗi số thành tích của hai số tự nhiên liên tiếp. Khi đó các thừa số thứ nhất lập thành một dãy cách đều, dễ tìm số thứ $35$.\n\n**Bước 1.** Thử phân tích từng số đã cho thành tích hai số tự nhiên liền nhau: $2=1\\times 2$, $20=4\\times 5$, $56=7\\times 8$, $110=10\\times 11$, $182=13\\times 14$.\n\n**Bước 2.** Nhìn các thừa số thứ nhất $1;\\ 4;\\ 7;\\ 10;\\ 13$ thì thấy mỗi số hơn số đứng trước $3$ đơn vị; thừa số thứ hai luôn lớn hơn thừa số thứ nhất $1$ đơn vị.\n\n**Bước 3.** Tìm thừa số thứ nhất của số thứ $35$: bắt đầu từ $1$ và tăng thêm $3$ đơn vị, số lần tăng là $35-1$ lần chứ không phải $35$ lần.\n\n**Bước 4.** Tìm thừa số thứ hai bằng cách cộng thêm $1$ vào thừa số thứ nhất, rồi nhân hai thừa số với nhau để được số thứ $35$.\n\n**Chú ý:** Đi từ số thứ nhất đến số thứ $35$ chỉ có $34$ khoảng cách, không phải $35$ khoảng cách.\n\n**Phần 2. Trình bày**\n\nTa có: $2=1\\times 2$; $20=4\\times 5$; $56=7\\times 8$; $110=10\\times 11$; $182=13\\times 14$.\n\nMỗi số của dãy là tích hai số tự nhiên liên tiếp; các thừa số thứ nhất là $1;\\ 4;\\ 7;\\ 10;\\ 13;\\ldots$ cách đều nhau $3$ đơn vị.\n\nThừa số thứ nhất của số thứ $35$ là: $1+3\\times(35-1)=103$\n\nThừa số thứ hai của số thứ $35$ là: $103+1=104$\n\nSố thứ $35$ của dãy là: $103\\times 104=10712$\n\nVậy số thứ $35$ của dãy là $10712$."
+ },
+ {
+  "ma_nguon": "TX 2019 · 11",
+  "dap_an": "$157,5$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc 9 giờ 30 phút",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 112.5,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 157.5
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 112.5,
+     "nhan": "45 km/giờ"
+    },
+    {
+     "tu": 157.5,
+     "den": 112.5,
+     "nhan": "30 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 112.5,
+     "nhan": "112,5 km"
+    },
+    {
+     "tu": 112.5,
+     "den": 157.5,
+     "nhan": "45 km"
+    },
+    {
+     "tu": 0,
+     "den": 157.5,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe đi ngược chiều và gặp nhau, nên quãng đường $AB$ bằng quãng đường ô tô đi được cộng với quãng đường xe máy đi được tính đến lúc gặp. Mỗi xe có thời gian đi riêng vì xe máy xuất phát muộn hơn ô tô $1$ giờ.\n\n**Bước 1.** Tìm giờ xe máy xuất phát, rồi tìm thời gian đi của từng xe tính đến lúc gặp nhau là $9$ giờ $30$ phút: lấy giờ gặp trừ giờ xuất phát của chính xe đó.\n\n**Bước 2.** Đổi số giờ và phút của mỗi xe ra số giờ viết dưới dạng số thập phân để nhân được với vận tốc tính bằng kilômét trên giờ.\n\n**Bước 3.** Tính quãng đường mỗi xe đi được bằng cách lấy vận tốc nhân với thời gian đi của chính xe đó.\n\n**Bước 4.** Cộng hai quãng đường lại để được chiều dài quãng đường $AB$, vì hai xe cùng đi hết quãng đường này khi gặp nhau.\n\n**Chú ý:** Xe máy chỉ đi $1$ giờ $30$ phút chứ không đi $2$ giờ $30$ phút như ô tô, vì xuất phát muộn hơn $1$ giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Ô tô đi từ A với vận tốc 45 km/giờ; xe máy đi từ B với vận tốc 30 km/giờ; hai xe gặp nhau tại C lúc 9 giờ 30 phút)\n\nThời gian ô tô đi đến lúc gặp nhau là: $9$ giờ $30$ phút $-\\ 7$ giờ $=2$ giờ $30$ phút\n\nXe máy xuất phát lúc: $7$ giờ $+\\ 1$ giờ $=8$ giờ\n\nThời gian xe máy đi đến lúc gặp nhau là: $9$ giờ $30$ phút $-\\ 8$ giờ $=1$ giờ $30$ phút\n\nĐổi: $2$ giờ $30$ phút $=2,5$ giờ; $1$ giờ $30$ phút $=1,5$ giờ\n\nQuãng đường ô tô đi được là: $45\\times 2,5=112,5$ (km)\n\nQuãng đường xe máy đi được là: $30\\times 1,5=45$ (km)\n\nChiều dài quãng đường $AB$ là: $112,5+45=157,5$ (km)\n\nĐáp số: $157,5$ km"
+ },
+ {
+  "ma_nguon": "TX 2019 · 12",
+  "dap_an": "$75\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình; hiểu M nằm trên cạnh BC, N nằm trên cạnh AC, đủ dữ kiện để giải (nối A với M).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Biết diện tích tam giác $MNC$, ta đi từng bước lên tam giác lớn hơn: từ $MNC$ lên $MAC$ (chung đường cao hạ từ $M$), rồi từ $MAC$ lên $ABC$ (chung đường cao hạ từ $A$).\n\n**Bước 1.** Nối $A$ với $M$ để có tam giác trung gian $MAC$: tam giác $MNC$ nằm trong tam giác $MAC$, và tam giác $MAC$ nằm trong tam giác $ABC$.\n\n**Bước 2.** Từ $CM=2\\times BM$ suy ra $BC$ gồm $3$ phần, $CM$ chiếm $2$ phần, nên tam giác $MAC$ có diện tích bằng một phân số của tam giác $ABC$ vì hai tam giác chung đường cao hạ từ $A$.\n\n**Bước 3.** Từ $3\\times AN=2\\times CN$ suy ra $AN$ là $2$ phần, $CN$ là $3$ phần, $AC$ là $5$ phần; tam giác $MNC$ và $MAC$ chung đường cao hạ từ $M$ nên cho biết tỉ số $\\dfrac{S_{MNC}}{S_{MAC}}$.\n\n**Bước 4.** Biết $S_{MNC}=30\\ \\text{cm}^2$ thì tính được $S_{MAC}$ bằng cách chia cho phân số $\\dfrac{CN}{CA}$, rồi tính tiếp $S_{ABC}$ cũng bằng phép chia cho phân số $\\dfrac{CM}{BC}$.\n\n**Chú ý:** Từ $3\\times AN=2\\times CN$ không suy ra $CN=\\dfrac{2}{3}\\times AC$; phải đổi ra số phần ($2$ phần và $3$ phần) rồi tính $CN$ so với cả $AC$ ($5$ phần).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối $A$ với $M$.\n\nVì $CM=2\\times BM$ nên $BC$ gồm $3$ phần bằng nhau, $CM$ chiếm $2$ phần: $CM=\\dfrac{2}{3}\\times BC$\n\nTam giác $MAC$ và tam giác $ABC$ có chung đường cao hạ từ $A$ xuống $BC$, suy ra $\\dfrac{S_{MAC}}{S_{ABC}}=\\dfrac{CM}{BC}=\\dfrac{2}{3}$\n\nVì $3\\times AN=2\\times CN$ nên $AN$ là $2$ phần, $CN$ là $3$ phần, $AC$ là $5$ phần: $CN=\\dfrac{3}{5}\\times CA$\n\nTam giác $MNC$ và tam giác $MAC$ có chung đường cao hạ từ $M$ xuống $AC$, suy ra $\\dfrac{S_{MNC}}{S_{MAC}}=\\dfrac{CN}{CA}=\\dfrac{3}{5}$\n\nDiện tích tam giác $MAC$ là: $30:\\dfrac{3}{5}=50$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ABC$ là: $50:\\dfrac{2}{3}=75$ ($\\text{cm}^2$)\n\nĐáp số: $75\\ \\text{cm}^2$"
+ }
+]

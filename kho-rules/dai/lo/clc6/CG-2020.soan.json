@@ -1,0 +1,140 @@
+[
+ {
+  "ma_nguon": "CG 2020 · 1",
+  "dap_an": "$B=132,8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $13,28\\times 9,9$ và $13,28\\times 0,1$ có chung thừa số $13,28$, nên dùng tính chất nhân một số với một tổng để đưa $13,28$ ra ngoài; hai số còn lại cộng lại cho một số tròn rất dễ nhân.\n\n**Bước 1.** Nhận ra hai tích cùng có thừa số $13,28$, đó là dấu hiệu để nhóm lại thay vì tính riêng từng tích.\n\n**Bước 2.** Viết $13,28$ nhân với tổng của hai số còn lại đặt trong ngoặc, rồi cộng hai số trong ngoặc trước.\n\n**Bước 3.** Nhân số thập phân với $10$ bằng cách dời dấu phẩy sang phải một chữ số.\n\n**Chú ý:** Không cần nhân $13,28$ với $9,9$ rồi cộng, vì làm vậy vừa dài vừa dễ nhầm.\n\n**Phần 2. Trình bày**\n\n$B=13,28\\times 9,9+13,28\\times 0,1$\n\n$=13,28\\times (9,9+0,1)$\n\n$=13,28\\times 10$\n\n$=132,8$"
+ },
+ {
+  "ma_nguon": "CG 2020 · 2",
+  "dap_an": "$32$ phút",
+  "ghi_chu_nghi": "Hiểu \"phải đợi Cường bao nhiêu lâu\" là từ lúc Hùng đến (8 giờ 20 phút) đến lúc Cường đến (8 giờ 52 phút) = 32 phút, không phải chỉ 12 phút muộn so với giờ hẹn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hùng đợi từ lúc Hùng tới nơi cho đến lúc Cường tới nơi; muốn biết Cường tới lúc mấy giờ thì lấy giờ hẹn cộng với số phút Cường đến muộn.\n\n**Bước 1.** Tính giờ Cường đến: Cường đến muộn $12$ phút so với giờ hẹn nên lấy giờ hẹn cộng thêm $12$ phút.\n\n**Bước 2.** Hùng đến lúc $8$ giờ $20$ phút, sớm hơn giờ hẹn, nên khoảng thời gian Hùng đợi tính từ lúc Hùng đến chứ không tính từ giờ hẹn.\n\n**Bước 3.** Lấy giờ Cường đến trừ đi giờ Hùng đến để biết Hùng đã đợi bao lâu.\n\n**Chú ý:** Số $12$ phút chỉ là thời gian Cường muộn so với giờ hẹn, chưa phải thời gian Hùng đợi vì Hùng còn đến sớm trước giờ hẹn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCường đến lúc: $8$ giờ $40$ phút $+\\ 12$ phút $=8$ giờ $52$ phút\n\nThời gian Hùng phải đợi Cường là: $8$ giờ $52$ phút $-\\ 8$ giờ $20$ phút $=32$ phút\n\nĐáp số: $32$ phút"
+ },
+ {
+  "ma_nguon": "CG 2020 · 3",
+  "dap_an": "$12,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho biết $32\\%$ của số đó là $6,4$, tức là biết giá trị ứng với một số phần trăm của số cần tìm; phải tìm ra số đó trước rồi mới lấy $\\dfrac{5}{8}$ của nó.\n\n**Bước 1.** Nhận ra đây là bài tìm một số khi biết $32\\%$ của số đó, nên lấy $6,4$ chia cho $32\\%$ để tìm số ban đầu.\n\n**Bước 2.** Đổi $32\\%$ thành số thập phân $0,32$ để thực hiện phép chia cho dễ.\n\n**Bước 3.** Tìm $\\dfrac{5}{8}$ của số vừa tìm: chia số đó cho $8$ rồi nhân với $5$.\n\n**Chú ý:** Đề hỏi $\\dfrac{5}{8}$ của số đó chứ không hỏi bản thân số đó, đừng dừng lại sau bước đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đó là: $6,4:32\\%=6,4:0,32=20$\n\n$\\dfrac{5}{8}$ của số đó là: $20:8\\times 5=12,5$\n\nĐáp số: $12,5$"
+ },
+ {
+  "ma_nguon": "CG 2020 · 4",
+  "dap_an": "$216\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau; diện tích toàn phần gồm cả $6$ mặt, diện tích xung quanh chỉ gồm $4$ mặt bên, nên phần hơn nhau chính là diện tích hai mặt đáy.\n\n**Bước 1.** Xác định diện tích toàn phần hơn diện tích xung quanh bao nhiêu mặt: lấy số mặt toàn phần trừ số mặt xung quanh.\n\n**Bước 2.** Số mặt hơn nhau ứng với $72\\ \\text{cm}^2$, nên chia $72$ cho số mặt đó để tìm diện tích một mặt.\n\n**Bước 3.** Tìm cạnh là số nhân với chính nó ra diện tích một mặt, rồi tính thể tích bằng cạnh nhân cạnh nhân cạnh.\n\n**Chú ý:** Đề hỏi thể tích chứ không hỏi cạnh, nhớ nhân thêm lần cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích toàn phần gồm $6$ mặt, diện tích xung quanh gồm $4$ mặt nên diện tích toàn phần hơn diện tích xung quanh: $6-4=2$ (mặt)\n\nDiện tích một mặt của hình lập phương là: $72:2=36$ ($\\text{cm}^2$)\n\nVì $6\\times 6=36$ nên cạnh hình lập phương là $6$ cm.\n\nThể tích hình lập phương là: $6\\times 6\\times 6=216$ ($\\text{cm}^3$)\n\nĐáp số: $216\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "CG 2020 · 5",
+  "dap_an": "$10$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả lớp là $100\\%$ số học sinh; biết phần trăm của ba môn đã cho thì lấy $100\\%$ trừ đi sẽ ra phần trăm số bạn thích cầu lông, rồi lấy phần trăm đó của $50$ học sinh.\n\n**Bước 1.** Tính tổng số phần trăm các bạn thích đá bóng, chạy và đá cầu.\n\n**Bước 2.** Lấy $100\\%$ trừ tổng đó để biết số bạn thích cầu lông chiếm bao nhiêu phần trăm cả lớp.\n\n**Bước 3.** Tìm số bạn thích cầu lông bằng cách lấy $50$ nhân với số phần trăm vừa tìm.\n\n**Chú ý:** Mọi tỉ số phần trăm đều là phần trăm của cả lớp $50$ học sinh, nên cộng trừ trực tiếp được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn thích chơi cầu lông chiếm số phần trăm là: $100\\%-50\\%-12\\%-18\\%=20\\%$\n\nSố bạn thích chơi cầu lông là: $50\\times 20\\%=10$ (bạn)\n\nĐáp số: $10$ bạn"
+ },
+ {
+  "ma_nguon": "CG 2020 · 6",
+  "dap_an": "$1992$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 438,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "1554"
+    }
+   ],
+   "tong": "2430",
+   "dau_hoi": [
+    "Số lớn"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm hai số phải biết tổng của chúng; tổng $\\overline{2x3y}$ chia hết cho $2$, $5$ và $9$ nên dùng các dấu hiệu chia hết để tìm $y$ rồi $x$, sau đó giải bài tổng – hiệu.\n\n**Bước 1.** Số chia hết cho cả $2$ và $5$ thì chữ số hàng đơn vị là $0$, từ đó biết $y$.\n\n**Bước 2.** Số chia hết cho $9$ thì tổng các chữ số chia hết cho $9$; cộng các chữ số đã biết rồi tìm $x$ trong khoảng từ $0$ đến $9$.\n\n**Bước 3.** Viết ra tổng của hai số, rồi vẽ sơ đồ: số lớn bằng số bé thêm phần hiệu.\n\n**Bước 4.** Lấy tổng trừ hiệu rồi chia $2$ để tìm số bé, sau đó cộng số bé với hiệu để tìm số lớn.\n\n**Chú ý:** Chữ số $x$ chỉ có thể từ $0$ đến $9$ nên tổng các chữ số nằm trong một khoảng hẹp, chỉ có một giá trị chia hết cho $9$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng $\\overline{2x3y}$ chia hết cho $2$ và $5$ nên chữ số tận cùng là $0$, tức là $y=0$.\n\nSố $\\overline{2x30}$ chia hết cho $9$ nên tổng các chữ số của nó chia hết cho $9$: $2+x+3+0=5+x$\n\nVì $x$ là chữ số nên $5+x$ từ $5$ đến $14$, trong khoảng này chỉ có $9$ chia hết cho $9$, do đó $x=9-5=4$.\n\nTổng của hai số là $2430$.\n\nTa có sơ đồ:\n\n(Số bé 1 phần; số lớn bằng số bé thêm 1554; tổng 2430)\n\nSố bé là: $(2430-1554):2=438$\n\nSố lớn là: $438+1554=1992$\n\nĐáp số: $1992$"
+ },
+ {
+  "ma_nguon": "CG 2020 · 7",
+  "dap_an": "$70,5$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Xe đi từ A đến B",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 22.5,
+     "ghi": "nghỉ 15 phút"
+    },
+    {
+     "ten": "B",
+     "x": 70.5
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 22.5,
+     "nhan": "30 km/giờ"
+    },
+    {
+     "tu": 22.5,
+     "den": 70.5,
+     "nhan": "40 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 22.5,
+     "nhan": "? km"
+    },
+    {
+     "tu": 22.5,
+     "den": 70.5,
+     "nhan": "? km"
+    },
+    {
+     "tu": 0,
+     "den": 70.5,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường $AB$ gồm hai đoạn xe thật sự chạy với hai vận tốc khác nhau; thời gian nghỉ xe đứng yên nên không có quãng đường, chỉ làm mốc để xác định xe đi tiếp lúc nào.\n\n**Bước 1.** Tính thời gian xe chạy với vận tốc $30$ km/giờ: từ $14$ giờ đến $14$ giờ $45$ phút, rồi đổi ra giờ.\n\n**Bước 2.** Tính quãng đường đoạn đầu bằng vận tốc nhân thời gian chạy đoạn đầu.\n\n**Bước 3.** Xác định lúc xe nghỉ xong rồi tính thời gian đi đoạn sau, từ lúc nghỉ xong đến lúc tới $B$, và đổi ra giờ.\n\n**Bước 4.** Tính quãng đường đoạn sau bằng vận tốc $40$ km/giờ nhân thời gian đi đoạn sau, rồi cộng hai đoạn lại.\n\n**Chú ý:** Phải trừ $15$ phút nghỉ khỏi thời gian đi đoạn sau, vì trong lúc nghỉ xe không đi thêm quãng đường nào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Xe đi từ A đến C với vận tốc 30 km/giờ, nghỉ ở C 15 phút, rồi đi từ C đến B với vận tốc 40 km/giờ)\n\nĐổi: $45$ phút $=0,75$ giờ\n\nĐộ dài đoạn đường AC là: $30\\times 0,75=22,5$ (km)\n\nXe nghỉ xong lúc: $14$ giờ $45$ phút $+\\ 15$ phút $=15$ giờ\n\nThời gian xe đi đoạn CB là: $16$ giờ $12$ phút $-\\ 15$ giờ $=1$ giờ $12$ phút\n\nĐổi: $1$ giờ $12$ phút $=1,2$ giờ\n\nĐộ dài đoạn đường CB là: $40\\times 1,2=48$ (km)\n\nĐộ dài quãng đường AB là: $22,5+48=70,5$ (km)\n\nĐáp số: $70,5$ km"
+ },
+ {
+  "ma_nguon": "CG 2020 · 8",
+  "dap_an": "$10\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Theo hình: K nằm trên cạnh AC, Q nằm trên cạnh AB (góc vuông tại A không dùng đến). Tứ giác KQBC = tam giác ABC trừ tam giác AKQ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác $AKQ$ là một phần của tam giác $ABC$; muốn biết là bao nhiêu phần thì nối thêm $KB$ để dùng hai cặp tam giác có chung đường cao, rồi biết tứ giác $KQBC$ chiếm phần còn lại của tam giác $ABC$.\n\n**Bước 1.** Từ $\\dfrac{BQ}{AB}=\\dfrac{1}{6}$ tìm $\\dfrac{AQ}{AB}$ bằng cách lấy $1$ trừ $\\dfrac{1}{6}$.\n\n**Bước 2.** Nối $K$ với $B$, so sánh tam giác $AKQ$ với tam giác $AKB$ vì hai tam giác có chung đường cao hạ từ $K$.\n\n**Bước 3.** So sánh tam giác $AKB$ với tam giác $ABC$ vì hai tam giác có chung đường cao hạ từ $B$, rồi nhân hai tỉ số để biết tam giác $AKQ$ bằng bao nhiêu phần tam giác $ABC$.\n\n**Bước 4.** Tứ giác $KQBC$ là phần còn lại của tam giác $ABC$ nên tìm xem nó bằng bao nhiêu phần, rồi dùng $26\\ \\text{cm}^2$ để tìm diện tích tam giác $ABC$ và tam giác $AKQ$.\n\n**Chú ý:** Số $26\\ \\text{cm}^2$ là diện tích tứ giác $KQBC$, không phải diện tích tam giác $ABC$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $\\dfrac{BQ}{AB}=\\dfrac{1}{6}$ nên $\\dfrac{AQ}{AB}=1-\\dfrac{1}{6}=\\dfrac{5}{6}$\n\nNối $K$ với $B$. Tam giác $AKQ$ và tam giác $AKB$ có chung đường cao hạ từ $K$ xuống $AB$, suy ra $\\dfrac{S_{AKQ}}{S_{AKB}}=\\dfrac{AQ}{AB}=\\dfrac{5}{6}$\n\nTam giác $AKB$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{AKB}}{S_{ABC}}=\\dfrac{AK}{AC}=\\dfrac{1}{3}$\n\nVậy $S_{AKQ}=\\dfrac{5}{6}\\times S_{AKB}=\\dfrac{5}{6}\\times\\dfrac{1}{3}\\times S_{ABC}=\\dfrac{5}{18}\\times S_{ABC}$\n\nTứ giác $KQBC$ bằng số phần của tam giác $ABC$ là: $1-\\dfrac{5}{18}=\\dfrac{13}{18}$\n\nDiện tích tam giác $ABC$ là: $26:\\dfrac{13}{18}=36$ ($\\text{cm}^2$)\n\nDiện tích tam giác $AKQ$ là: $36\\times\\dfrac{5}{18}=10$ ($\\text{cm}^2$)\n\nĐáp số: $10\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "CG 2020 · 9",
+  "dap_an": "a) $280$ quyển; b) tầng 1: $280$ quyển; tầng 2: $180$ quyển; tầng 3: $240$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi chuyển sách",
+   "gia_tri_phan": 60,
+   "hang": [
+    {
+     "nhan": "Tầng 3",
+     "phan": 2
+    },
+    {
+     "nhan": "Tầng 2",
+     "phan": 5
+    }
+   ],
+   "tong": "420 quyển",
+   "dau_hoi": [
+    "Tầng 3",
+    "Tầng 2"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển sách qua lại giữa tầng 2 và tầng 3 thì tổng số sách hai tầng đó không đổi; sau khi chuyển, hai tầng có tỉ số $\\dfrac{2}{5}$ nên giải được bằng bài tổng – tỉ, rồi đi ngược về lúc đầu (ý b dùng lại kết quả ý a).\n\n**Bước 1.** Ý a: lấy $40\\%$ của $700$ quyển để tìm số sách ở tầng 1.\n\n**Bước 2.** Ý b: lấy tổng số sách trừ số sách tầng 1 để biết tầng 2 và tầng 3 có tất cả bao nhiêu quyển; con số này không đổi sau khi chuyển.\n\n**Bước 3.** Sau khi chuyển, tầng 3 bằng $\\dfrac{2}{5}$ tầng 2 nên tầng 3 là $2$ phần, tầng 2 là $5$ phần; chia tổng cho tổng số phần để tìm số sách mỗi tầng lúc sau.\n\n**Bước 4.** Số sách tầng 3 lúc sau chỉ bằng một nửa số sách tầng 3 ban đầu, nên gấp đôi lên để tìm số sách tầng 3 ban đầu và số sách đã chuyển.\n\n**Bước 5.** Lấy số sách tầng 2 lúc sau trừ số sách được chuyển sang để tìm số sách tầng 2 ban đầu.\n\n**Chú ý:** Số sách chuyển đi là một nửa số sách tầng 3 ban đầu, cũng chính là số sách còn lại ở tầng 3.\n\nThử lại: cộng số sách ba tầng ban đầu phải ra đúng $700$ quyển.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số sách ở tầng 1 là: $700\\times 40\\%=280$ (quyển)\n\nb) Số sách ở tầng 2 và tầng 3 là: $700-280=420$ (quyển)\n\nKhi chuyển sách giữa tầng 2 và tầng 3 thì tổng số sách hai tầng vẫn là $420$ quyển. Sau khi chuyển, tầng 3 bằng $\\dfrac{2}{5}$ tầng 2 nên tầng 3 là $2$ phần, tầng 2 là $5$ phần.\n\nTa có sơ đồ:\n\n(Tầng 3 lúc sau 2 phần; tầng 2 lúc sau 5 phần; tổng 420 quyển)\n\nTổng số phần bằng nhau là: $2+5=7$ (phần)\n\nGiá trị của một phần là: $420:7=60$ (quyển)\n\nSố sách tầng 3 lúc sau là: $60\\times 2=120$ (quyển)\n\nSố sách tầng 2 lúc sau là: $60\\times 5=300$ (quyển)\n\nTầng 3 lúc sau chỉ còn một nửa số sách ban đầu nên số sách tầng 3 ban đầu là: $120\\times 2=240$ (quyển)\n\nSố sách đã chuyển từ tầng 3 sang tầng 2 là: $240-120=120$ (quyển)\n\nSố sách tầng 2 ban đầu là: $300-120=180$ (quyển)\n\nĐáp số: a) $280$ quyển; b) tầng 1: $280$ quyển; tầng 2: $180$ quyển; tầng 3: $240$ quyển"
+ },
+ {
+  "ma_nguon": "CG 2020 · 10",
+  "dap_an": "a) $\\dfrac{6}{11}$; b) Đúng, số cuối cùng luôn là $\\dfrac{60}{137}$",
+  "ghi_chu_nghi": "Cách giải duy nhất đã biết là bất biến \"tổng các phân số 1/số trên bảng không đổi\" (1/c = 1/a + 1/b); chỉ dùng phân số, không dùng kiến thức lớp 6, nhưng là ý tưởng khó với HS lớp 5.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần xoá $a$, $b$ và viết $c=\\dfrac{a\\times b}{a+b}$ thì có một đại lượng không đổi: tổng các phân số có tử số $1$ và mẫu số là từng số trên bảng. Cuối cùng chỉ còn một số, số đó hoàn toàn do tổng này quyết định nên không phụ thuộc cách chọn hai số khi xoá.\n\n**Bước 1.** Thử viết $\\dfrac{1}{c}$ cho số $c$ mới: lật ngược phân số $\\dfrac{a\\times b}{a+b}$ thì được $\\dfrac{a+b}{a\\times b}$.\n\n**Bước 2.** Tách tử số $a+b$ thành hai phân số có chung mẫu số $a\\times b$ rồi rút gọn để thấy liên hệ của $\\dfrac{1}{c}$ với $\\dfrac{1}{a}$ và $\\dfrac{1}{b}$.\n\n**Bước 3.** Rút ra nhận xét: mỗi lần thay hai số bằng $c$ thì tổng các phân số có tử số $1$ và mẫu số là từng số trên bảng giữ nguyên.\n\n**Bước 4.** Ý a: tính tổng lúc đầu của ba số $1$, $2$, $3$; khi chỉ còn một số thì tổng đó chính là phân số có tử số $1$ và mẫu số là số cuối cùng.\n\n**Bước 5.** Ý b: làm tương tự với năm số $1$, $2$, $3$, $4$, $5$; nếu số cuối cùng chỉ do tổng quyết định thì mọi lần chơi cho kết quả giống nhau.\n\n**Chú ý:** Tính xong tổng chưa phải là xong, vì tổng đó là $\\dfrac{1}{x}$ với $x$ là số cuối cùng, nên còn phải đảo ngược phân số để ra $x$.\n\n**Phần 2. Trình bày**\n\na) Với hai số $a$, $b$ bất kì trên bảng, số mới là $c=\\dfrac{a\\times b}{a+b}$ nên: $\\dfrac{1}{c}=\\dfrac{a+b}{a\\times b}=\\dfrac{a}{a\\times b}+\\dfrac{b}{a\\times b}=\\dfrac{1}{b}+\\dfrac{1}{a}$\n\nVậy mỗi lần Nam xoá hai số và viết số mới, tổng các phân số có tử số $1$ và mẫu số là từng số trên bảng không thay đổi.\n\nLúc đầu tổng là: $\\dfrac{1}{1}+\\dfrac{1}{2}+\\dfrac{1}{3}=\\dfrac{6}{6}+\\dfrac{3}{6}+\\dfrac{2}{6}=\\dfrac{11}{6}$\n\nKhi chỉ còn một số $x$ thì $\\dfrac{1}{x}=\\dfrac{11}{6}$ nên $x=\\dfrac{6}{11}$.\n\nVậy số cuối cùng là $\\dfrac{6}{11}$, vì tổng các phân số đó luôn không đổi.\n\nb) Lúc đầu tổng là: $\\dfrac{1}{1}+\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4}+\\dfrac{1}{5}=\\dfrac{60}{60}+\\dfrac{30}{60}+\\dfrac{20}{60}+\\dfrac{15}{60}+\\dfrac{12}{60}=\\dfrac{137}{60}$\n\nCũng theo nhận xét ở ý a), tổng này không đổi qua mỗi lần xoá, nên khi chỉ còn một số $x$ thì $\\dfrac{1}{x}=\\dfrac{137}{60}$, suy ra $x=\\dfrac{60}{137}$.\n\nSố này không phụ thuộc cách chọn hai số khi xoá nên lần chơi nào cũng ra cùng một số cuối cùng.\n\nVậy nhận xét của Nam là đúng."
+ }
+]

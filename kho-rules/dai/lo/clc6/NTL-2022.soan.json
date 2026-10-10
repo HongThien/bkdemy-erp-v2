@@ -1,0 +1,224 @@
+[
+ {
+  "ma_nguon": "NTL 2022 · P1.1",
+  "dap_an": "$1260$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba tích đều có chung thừa số $126$, nên dùng tính chất nhân một số với một tổng (một hiệu) để đưa $126$ ra ngoài; khi đó trong ngoặc chỉ còn các số thập phân cộng trừ nhau và tính ra một số tròn chục.\n\n**Bước 1.** Quan sát ba tích thấy thừa số $126$ lặp lại ở cả ba tích, đó là dấu hiệu để nhóm lại bằng tính chất nhân một số với một tổng, một hiệu.\n\n**Bước 2.** Viết lại biểu thức bằng cách đặt $126$ ra ngoài và để các thừa số còn lại $9,8$; $0,7$; $0,5$ vào trong ngoặc, giữ nguyên các dấu cộng, trừ như ở đề.\n\n**Bước 3.** Tính trong ngoặc theo thứ tự từ trái sang phải: cộng hai số đầu rồi trừ đi số cuối, kết quả là một số tròn chục.\n\n**Bước 4.** Nhân $126$ với kết quả trong ngoặc; nhân với số tròn chục thì chỉ cần thêm một chữ số $0$ vào bên phải.\n\n**Chú ý:** Không nhân từng tích riêng rồi mới cộng trừ, vì các số lớn nhân với nhau dễ tính sai và mất nhiều thời gian.\n\n**Phần 2. Trình bày**\n\n$126\\times 9,8+126\\times 0,7-126\\times 0,5$\n\n$=126\\times(9,8+0,7-0,5)$\n\n$=126\\times(10,5-0,5)$\n\n$=126\\times 10$\n\n$=1260$"
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.2",
+  "dap_an": "$27\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau; diện tích toàn phần gồm cả $6$ mặt còn diện tích xung quanh chỉ gồm $4$ mặt bên, nên phần hơn nhau chính là diện tích hai mặt đáy.\n\n**Bước 1.** Nhớ lại hình lập phương có $6$ mặt bằng nhau, diện tích xung quanh chỉ có $4$ mặt, nên diện tích toàn phần hơn diện tích xung quanh đúng $2$ mặt.\n\n**Bước 2.** Số $18\\ \\text{cm}^2$ mà đề cho là diện tích của $2$ mặt, nên chia cho $2$ để biết diện tích một mặt.\n\n**Bước 3.** Diện tích một mặt là hình vuông, nên cạnh của hình lập phương là số tự nhiên nhân với chính nó bằng diện tích đó.\n\n**Bước 4.** Tính thể tích hình lập phương bằng cách lấy cạnh nhân cạnh nhân cạnh.\n\n**Chú ý:** Đề cho hiệu hai diện tích chứ không cho diện tích một mặt, đừng lấy $18$ làm diện tích một mặt.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích toàn phần gồm $6$ mặt, diện tích xung quanh gồm $4$ mặt nên diện tích toàn phần hơn diện tích xung quanh số mặt là: $6-4=2$ (mặt)\n\nDiện tích một mặt của hình lập phương là: $18:2=9$ ($\\text{cm}^2$)\n\nVì $3\\times 3=9$ nên cạnh của hình lập phương là $3$ cm.\n\nThể tích hình lập phương là: $3\\times 3\\times 3=27$ ($\\text{cm}^3$)\n\nĐáp số: $27\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.3",
+  "dap_an": "$37$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết thêm chữ số $2$ vào bên phải một số thì số đó được dời lên một hàng, tức là gấp $10$ lần, rồi thêm $2$ đơn vị; vậy số mới gồm $10$ phần như số cũ và $2$ đơn vị, đây là bài toán tỉ số có hiệu.\n\n**Bước 1.** Gọi số cũ là $1$ phần; viết thêm $2$ vào bên phải thì số mới gấp $10$ lần số cũ và thêm $2$ đơn vị, nên vẽ sơ đồ với số mới là $10$ phần và $2$ đơn vị.\n\n**Bước 2.** Hiệu hai số gồm $10-1=9$ phần cộng thêm $2$ đơn vị; bớt $2$ đơn vị đi thì phần còn lại của hiệu là đúng $9$ phần của số cũ.\n\n**Bước 3.** Chia số đơn vị của $9$ phần cho $9$ để tìm giá trị một phần, đó cũng chính là số cũ cần tìm.\n\n**Bước 4.** Thử lại bằng cách viết thêm chữ số $2$ vào bên phải số vừa tìm rồi trừ số cũ, xem hiệu có đúng như đề không.\n\n**Chú ý:** Phải bớt $2$ đơn vị trước rồi mới chia cho $9$, vì $2$ đơn vị không nằm trong $9$ phần bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nViết thêm chữ số $2$ vào bên phải số đó thì được số mới gấp $10$ lần số cũ và thêm $2$ đơn vị.\n\nTa có sơ đồ:\n\n(Số cũ 1 phần; số mới 10 phần và thêm 2; hiệu 335)\n\n$9$ phần bằng nhau của số cũ ứng với: $335-2=333$\n\nSố cũ là: $333:9=37$\n\nThử lại: số mới là $372$ và $372-37=335$ (đúng).\n\nĐáp số: $37$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 37,
+   "hang": [
+    {
+     "nhan": "Số cũ",
+     "phan": 1
+    },
+    {
+     "nhan": "Số mới",
+     "phan": 10,
+     "them": "2"
+    }
+   ],
+   "hieu": "335",
+   "dau_hoi": [
+    "Số cũ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.4",
+  "dap_an": "$\\dfrac{3}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn so sánh các phân số bé hơn $1$ mà tử số, mẫu số khác nhau như vậy, không cần quy đồng mà so sánh phần bù với $1$: phân số nào còn thiếu nhiều nhất để bằng $1$ thì bé nhất.\n\n**Bước 1.** Phân số $\\dfrac{3}{2}$ có tử số lớn hơn mẫu số nên lớn hơn $1$, còn bốn phân số kia đều bé hơn $1$, vì thế $\\dfrac{3}{2}$ chắc chắn không phải số bé nhất.\n\n**Bước 2.** Với bốn phân số bé hơn $1$, tìm phần bù của mỗi phân số, là hiệu của $1$ và phân số đó.\n\n**Bước 3.** Các phần bù đều có tử số bằng $1$; hai phân số có tử số bằng nhau thì phân số có mẫu số bé hơn là phân số lớn hơn, nhờ đó tìm ra phần bù lớn nhất.\n\n**Bước 4.** Phân số có phần bù lớn nhất là phân số thiếu nhiều nhất để đạt $1$, nên chính là phân số bé nhất; chọn phân số đó làm đáp số.\n\n**Chú ý:** Phần bù càng lớn thì phân số càng bé, chiều so sánh ngược lại với việc so sánh hai phân số thông thường.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{2}>1$ nên $\\dfrac{3}{2}$ không phải số bé nhất; bốn phân số còn lại đều bé hơn $1$.\n\nPhần bù với $1$ của $\\dfrac{5}{6}$ là: $1-\\dfrac{5}{6}=\\dfrac{1}{6}$\n\nPhần bù với $1$ của $\\dfrac{2021}{2022}$ là: $1-\\dfrac{2021}{2022}=\\dfrac{1}{2022}$\n\nPhần bù với $1$ của $\\dfrac{2020}{2021}$ là: $1-\\dfrac{2020}{2021}=\\dfrac{1}{2021}$\n\nPhần bù với $1$ của $\\dfrac{3}{4}$ là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$\n\nCác phần bù $\\dfrac{1}{6}$; $\\dfrac{1}{2022}$; $\\dfrac{1}{2021}$; $\\dfrac{1}{4}$ đều có tử số là $1$, mẫu số $4$ bé nhất nên $\\dfrac{1}{4}$ lớn nhất.\n\nPhần bù lớn nhất thì phân số bé nhất, nên $\\dfrac{3}{4}$ bé nhất.\n\nVậy phân số bé nhất là $\\dfrac{3}{4}$."
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.5",
+  "dap_an": "$x=12$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong phép trừ, $60:x$ là số bị trừ chưa biết; tìm nó trước bằng cách lấy hiệu cộng số trừ, sau đó $x$ là số chia chưa biết của phép chia.\n\n**Bước 1.** Nhận ra $60:x$ là số bị trừ của phép trừ, nên coi $60:x$ như một số chưa biết và tìm nó trước.\n\n**Bước 2.** Tìm số bị trừ bằng cách lấy hiệu cộng số trừ: tính $4\\dfrac{2}{3}+\\dfrac{1}{3}$ bằng cách tách phần nguyên ra, cộng hai phân số cùng mẫu rồi cộng với phần nguyên.\n\n**Bước 3.** Đến đây $60:x$ bằng một số tự nhiên, nên $x$ là số chia chưa biết của phép chia $60:x$.\n\n**Bước 4.** Muốn tìm số chia ta lấy số bị chia chia cho thương, tức là lấy $60$ chia cho số vừa tìm được.\n\n**Chú ý:** Số $4\\dfrac{2}{3}$ là hỗn số, không đổi ra phân số mà tách riêng phần nguyên và phần phân số để tính cho gọn.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}60:x-\\dfrac{1}{3}=4\\dfrac{2}{3}\\\\ 60:x=4\\dfrac{2}{3}+\\dfrac{1}{3}\\\\ 60:x=4+\\left(\\dfrac{2}{3}+\\dfrac{1}{3}\\right)\\\\ 60:x=4+1\\\\ 60:x=5\\\\ x=60:5\\\\ x=12\\end{array}$"
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.6",
+  "dap_an": "$10$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi sở thích được cho bằng một cách khác nhau (phân số, phần trăm), nên tính riêng số học sinh của từng sở thích đã biết rồi lấy cả lớp trừ đi; phần còn lại là số học sinh thích cầu lông.\n\n**Bước 1.** Tìm số học sinh thích đá bóng: đề cho $\\dfrac{2}{5}$ số học sinh cả lớp, nên chia $50$ thành $5$ phần bằng nhau rồi lấy $2$ phần.\n\n**Bước 2.** Tìm số học sinh thích đá cầu và thích bóng rổ: đề cho phần trăm của cả lớp, nên lấy $50$ nhân với từng tỉ số phần trăm đó.\n\n**Bước 3.** Lấy tổng số học sinh của lớp trừ đi số học sinh của ba sở thích đã tìm được để ra số học sinh thích cầu lông.\n\n**Chú ý:** Không cộng thẳng phân số $\\dfrac{2}{5}$ với các tỉ số phần trăm khi chưa đổi cùng một kiểu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh thích đá bóng là: $50:5\\times 2=20$ (học sinh)\n\nSố học sinh thích đá cầu là: $50\\times 16\\%=8$ (học sinh)\n\nSố học sinh thích bóng rổ là: $50\\times 24\\%=12$ (học sinh)\n\nSố học sinh thích cầu lông là: $50-20-8-12=10$ (học sinh)\n\nĐáp số: $10$ học sinh",
+  "ghi_chu_nghi": "Nhiều cách: cũng có thể đổi $\\dfrac{2}{5}=40\\%$ rồi lấy $100\\%-(40\\%+16\\%+24\\%)=20\\%$, $50\\times 20\\%=10$. Chọn cách tính số học sinh từng nhóm vì bám đề; chờ CEO chốt nếu muốn cách phần trăm."
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.7",
+  "dap_an": "$38$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tùng đến muộn $18$ phút so với giờ hẹn nên giờ Tùng đến bằng giờ hẹn cộng thêm $18$ phút; Nam chờ từ lúc mình đến cho tới lúc Tùng đến.\n\n**Bước 1.** Tìm giờ Tùng đến điểm hẹn bằng cách lấy giờ hẹn cộng với số phút Tùng đến muộn.\n\n**Bước 2.** Thời gian Nam phải chờ là khoảng thời gian từ lúc Nam đến cho tới lúc Tùng đến, nên lấy giờ Tùng đến trừ giờ Nam đến.\n\n**Bước 3.** Khi trừ số đo thời gian, nếu số phút bị trừ bé hơn số phút trừ thì đổi $1$ giờ thành $60$ phút để trừ được.\n\n**Chú ý:** Muộn là muộn so với giờ hẹn, không phải muộn so với giờ Nam đến.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTùng đến điểm hẹn lúc: $9$ giờ $10$ phút $+\\ 18$ phút $=9$ giờ $28$ phút\n\nĐổi: $9$ giờ $28$ phút $=8$ giờ $88$ phút\n\nThời gian Nam phải chờ là: $8$ giờ $88$ phút $-\\ 8$ giờ $50$ phút $=38$ phút\n\nĐáp số: $38$ phút",
+  "ghi_chu_nghi": "Hiểu: Tùng \"đến muộn 18 phút\" so với giờ hẹn 9 giờ 10 phút (Tùng đến 9 giờ 28 phút) và Nam chờ tới khi Tùng đến. Nếu chỉ tính chờ tới giờ hẹn thì là 20 phút — không chọn cách này vì đề hỏi Nam phải chờ Tùng."
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.8",
+  "dap_an": "$95$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số bằng tổng hai số chia $2$, nên tổng hai số bằng trung bình cộng nhân $2$; biết tổng và hiệu thì đây là bài tổng – hiệu.\n\n**Bước 1.** Tìm tổng hai số bằng cách lấy trung bình cộng nhân với số các số hạng, ở đây là hai số.\n\n**Bước 2.** Vẽ sơ đồ: số bé là một đoạn, số lớn là một đoạn cộng thêm phần hơn bằng hiệu; hai đoạn ghép lại có độ dài bằng tổng.\n\n**Bước 3.** Nếu thêm vào tổng phần hơn của số lớn thì được hai lần số lớn, nên lấy tổng cộng hiệu rồi chia $2$ để ra số lớn.\n\n**Chú ý:** Đề chỉ hỏi số lớn nên không cần tìm số bé.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng hai số là: $85\\times 2=170$\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; số lớn 1 đoạn và hơn 20; tổng 170)\n\nSố lớn là: $(170+20):2=95$\n\nĐáp số: $95$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 75,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "20"
+    }
+   ],
+   "tong": "170",
+   "dau_hoi": [
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.9",
+  "dap_an": "$6$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi năm qua đi, mỗi người đều thêm $1$ tuổi nên tổng số tuổi của hai anh em tăng thêm $2$ tuổi; vậy chỉ cần xem tổng số tuổi phải tăng thêm bao nhiêu rồi chia cho $2$ là ra số năm.\n\n**Bước 1.** Tính tổng số tuổi của hai anh em hiện nay.\n\n**Bước 2.** Tìm mỗi năm tổng số tuổi hai anh em tăng thêm bao nhiêu tuổi, vì mỗi người đều lớn thêm một tuổi.\n\n**Bước 3.** Tìm tổng số tuổi còn phải tăng thêm để đạt $28$ tuổi, rồi chia cho mức tăng mỗi năm để tìm số năm.\n\n**Chú ý:** Đề hỏi số năm chứ không hỏi tuổi của từng người sau đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tuổi hai anh em hiện nay là: $11+5=16$ (tuổi)\n\nMỗi năm mỗi người thêm $1$ tuổi nên tổng số tuổi hai anh em mỗi năm tăng: $1+1=2$ (tuổi)\n\nTổng số tuổi còn phải tăng thêm là: $28-16=12$ (tuổi)\n\nSố năm nữa để tổng số tuổi hai anh em là $28$ tuổi: $12:2=6$ (năm)\n\nĐáp số: $6$ năm"
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.10",
+  "dap_an": "$750000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết phải đánh bao nhiêu chữ số thì chia các số lẻ thành nhóm số có một chữ số và nhóm số có hai chữ số rồi đếm từng nhóm; tiền bằng số chữ số nhân với giá tiền đánh một chữ số.\n\n**Bước 1.** Đếm xem từ $1$ đến $29$ có bao nhiêu số lẻ, dùng cách tính số số hạng của dãy số cách đều.\n\n**Bước 2.** Tách riêng các số lẻ có một chữ số, rồi tìm số các số lẻ có hai chữ số bằng cách lấy tổng trừ đi.\n\n**Bước 3.** Tính tổng số chữ số phải đánh: mỗi số có một chữ số cần một chữ số, mỗi số có hai chữ số cần hai chữ số.\n\n**Bước 4.** Nhân tổng số chữ số với số tiền đánh một chữ số để tìm số tiền phải trả.\n\n**Chú ý:** Tiền tính theo từng chữ số chứ không tính theo từng số nhà, nên số có hai chữ số phải tính hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố các số lẻ từ $1$ đến $29$ là: $(29-1):2+1=15$ (số)\n\nCác số lẻ có một chữ số là $1;\\ 3;\\ 5;\\ 7;\\ 9$, có $5$ số nên số các số lẻ có hai chữ số là: $15-5=10$ (số)\n\nSố chữ số phải đánh là: $5\\times 1+10\\times 2=25$ (chữ số)\n\nSố tiền phải trả là: $25\\times 30000=750000$ (đồng)\n\nĐáp số: $750000$ đồng"
+ },
+ {
+  "ma_nguon": "NTL 2022 · P1.11",
+  "dap_an": "$6$ cách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Con kiến chỉ được đi theo chiều mũi tên nên số cách đến một điểm bằng tổng số cách đến các điểm có mũi tên chỉ vào điểm đó; đếm lần lượt từ điểm xuất phát M đến N.\n\n**Bước 1.** Quan sát hình, ghi lại chiều mũi tên trên từng đoạn để biết mỗi điểm có những mũi tên nào đi vào.\n\n**Bước 2.** Bắt đầu từ M, đếm các điểm gần M nhất bằng những điểm chỉ có mũi tên từ M đi vào.\n\n**Bước 3.** Đếm tiếp các điểm ở giữa theo thứ tự, mỗi điểm lấy tổng số cách đến các điểm đứng ngay trước nó có mũi tên chỉ vào.\n\n**Bước 4.** Đếm đến điểm N, đó chính là số cách cần tìm.\n\n**Chú ý:** Mũi tên trên đoạn AB chỉ từ B sang A nên phải đếm điểm B trước điểm A, không đếm theo thứ tự chữ cái.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, con kiến chỉ đi theo chiều mũi tên.\n\nĐiểm B chỉ nhận mũi tên từ M đi vào nên có $1$ cách đi từ M đến B.\n\nĐiểm A nhận mũi tên từ M và từ B đi vào nên số cách đi đến A là: $1+1=2$ (cách)\n\nĐiểm P chỉ nhận mũi tên từ A đi vào nên số cách đi đến P là $2$ cách.\n\nĐiểm C nhận mũi tên từ A, từ B và từ P đi vào nên số cách đi đến C là: $2+1+2=5$ (cách)\n\nĐiểm N nhận mũi tên từ B và từ C đi vào nên số cách đi đến N là: $1+5=6$ (cách)\n\nVậy có $6$ cách để con kiến đi từ M đến N.",
+  "ghi_chu_nghi": "Chiều mũi tên đọc từ hình: MA, MB, BA (từ B sang A), AP, AC, BC, PC, BN, CN. Đếm theo hình ra 6 cách."
+ },
+ {
+  "ma_nguon": "NTL 2022 · P2.1",
+  "dap_an": "a) Xe thứ nhất $60$ km/giờ, xe thứ hai $50$ km/giờ; b) $4$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe xuất phát cùng lúc rồi gặp nhau tại C nên xe đi sau đuổi kịp xe đi trước: khoảng cách ban đầu chia cho thời gian đuổi kịp là hiệu hai vận tốc, rồi dùng tỉ số để tìm từng vận tốc; ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Ý a): hiểu rằng hai xe xuất phát cùng lúc, xe thứ nhất từ A và xe thứ hai từ B, cùng đi về C rồi gặp nhau tại C sau $6$ giờ; từ đó tìm hiệu hai vận tốc bằng cách lấy AB chia cho $6$.\n\n**Bước 2.** Vận tốc xe thứ hai bằng $\\dfrac{5}{6}$ vận tốc xe thứ nhất nên coi xe thứ nhất là $6$ phần, xe thứ hai là $5$ phần; hiệu số phần ứng với hiệu hai vận tốc vừa tìm, từ đó tìm vận tốc từng xe.\n\n**Bước 3.** Ý b): dùng vận tốc xe thứ nhất và thời gian $6$ giờ để tính quãng đường AC, vì xe thứ nhất đi từ A đến C.\n\n**Bước 4.** Tính xe thứ hai đi được bao xa trong $2$ giờ sau khi quay lại từ C, rồi tìm lúc đó xe cách A bao nhiêu km; đó cũng là lúc xe đạp xuất phát từ A.\n\n**Bước 5.** Xe thứ hai và xe đạp đi ngược chiều nhau nên mỗi giờ lại gần nhau thêm bằng tổng hai vận tốc; lấy khoảng cách chia cho tổng vận tốc để tìm thời gian gặp nhau.\n\n**Chú ý:** Thời gian hai xe gặp nhau tính từ lúc xe đạp xuất phát, không tính từ lúc xe thứ hai quay lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Hai xe xuất phát cùng lúc: xe thứ nhất từ A, xe thứ hai từ B, cùng đi về C và gặp nhau tại C sau $6$ giờ.\n\nTa có sơ đồ:\n\n(Xe thứ nhất đi từ A, xe thứ hai đi từ B, cùng đi về C; AB dài 60 km)\n\nSau $6$ giờ xe thứ nhất đuổi kịp xe thứ hai nên xe thứ nhất đi nhiều hơn xe thứ hai đúng $60$ km. Mỗi giờ xe thứ nhất đi nhiều hơn xe thứ hai là: $60:6=10$ (km)\n\nVậy hiệu hai vận tốc là $10$ km/giờ.\n\nVận tốc xe thứ hai bằng $\\dfrac{5}{6}$ vận tốc xe thứ nhất nên vận tốc xe thứ nhất là $6$ phần, vận tốc xe thứ hai là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Vận tốc xe thứ nhất 6 phần; vận tốc xe thứ hai 5 phần; hiệu 10 km/giờ)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nVận tốc xe thứ nhất là: $10:1\\times 6=60$ (km/giờ)\n\nVận tốc xe thứ hai là: $10:1\\times 5=50$ (km/giờ)\n\nb) Quãng đường AC dài là: $60\\times 6=360$ (km)\n\nSau $2$ giờ kể từ lúc quay lại từ C, xe thứ hai đi được: $50\\times 2=100$ (km)\n\nLúc xe đạp xuất phát từ A, xe thứ hai cách A là: $360-100=260$ (km)\n\nTa có sơ đồ:\n\n(Xe thứ hai cách A 260 km đi về A với 50 km/giờ; xe đạp đi từ A về C với 15 km/giờ; hai xe đi ngược chiều gặp nhau)\n\nMỗi giờ xe thứ hai và xe đạp đi ngược chiều lại gần nhau thêm: $50+15=65$ (km)\n\nThời gian để hai xe gặp nhau, kể từ lúc xe đạp xuất phát, là: $260:65=4$ (giờ)\n\nĐáp số: a) Xe thứ nhất $60$ km/giờ, xe thứ hai $50$ km/giờ; b) $4$ giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Hai xe cùng đi về C",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 60
+     },
+     {
+      "ten": "C",
+      "x": 360,
+      "ghi": "gặp nhau"
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 360,
+      "nhan": "Xe thứ nhất"
+     },
+     {
+      "tu": 60,
+      "den": 360,
+      "nhan": "Xe thứ hai"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 60,
+      "nhan": "60 km"
+     },
+     {
+      "tu": 0,
+      "den": 360,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "gia_tri_phan": 10,
+    "hang": [
+     {
+      "nhan": "Vận tốc xe thứ nhất",
+      "phan": 6
+     },
+     {
+      "nhan": "Vận tốc xe thứ hai",
+      "phan": 5
+     }
+    ],
+    "hieu": "10 km/giờ",
+    "dau_hoi": [
+     "Vận tốc xe thứ nhất",
+     "Vận tốc xe thứ hai"
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Lúc xe đạp xuất phát",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "G",
+      "x": 60,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "H",
+      "x": 260,
+      "ghi": "xe thứ hai"
+     },
+     {
+      "ten": "C",
+      "x": 360
+     }
+    ],
+    "di": [
+     {
+      "tu": 360,
+      "den": 260,
+      "nhan": "50 km/giờ, 2 giờ"
+     },
+     {
+      "tu": 0,
+      "den": 60,
+      "nhan": "Xe đạp 15 km/giờ"
+     },
+     {
+      "tu": 260,
+      "den": 60,
+      "nhan": "50 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 260,
+      "nhan": "260 km"
+     },
+     {
+      "tu": 260,
+      "den": 360,
+      "nhan": "100 km"
+     }
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "Đề không nói rõ nhưng hiểu: hai xe xuất phát cùng lúc, xe thứ nhất từ A, xe thứ hai từ B, gặp nhau TẠI C (nếu gặp ở điểm khác thì thiếu độ dài BC, không giải được; ý b nói \"đi đến C\" nên khớp). Ý b: \"hai xe\" = xe thứ hai (đã quay đầu) và xe đạp; \"sau bao lâu\" tính từ lúc xe đạp xuất phát = 4 giờ (nếu tính từ lúc xe thứ hai quay đầu thì là 4 + 2 = 6 giờ)."
+ },
+ {
+  "ma_nguon": "NTL 2022 · P2.2",
+  "dap_an": "a) $15\\ \\text{cm}^2$; b) $2$; c) $\\dfrac{1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; ba ý đi theo một mạch: ý a) cho diện tích tam giác DMC, ý b) dùng nó để tìm tỉ số MN và DN, ý c) chuyển tỉ số cần tìm sang cặp tam giác có diện tích đã biết.\n\n**Bước 1.** Ý a): đường chéo BD chia hình chữ nhật thành hai tam giác bằng nhau nên tìm diện tích tam giác BDC; M là trung điểm của BC nên tam giác DMC có diện tích bằng một nửa tam giác DBC.\n\n**Bước 2.** Ý b): tam giác DMC gồm hai tam giác MNC và DNC; biết diện tích DMC và MNC thì tìm được diện tích DNC, rồi dùng hai tam giác này có chung đường cao hạ từ C xuống DM để tìm tỉ số MN và DN.\n\n**Bước 3.** Ý c): dùng kết quả ý a) để biết diện tích tam giác BDM, rồi trừ diện tích tam giác BMN (bằng tam giác MNC vì BM bằng MC) để tìm diện tích tam giác BDN, rồi cộng để tìm diện tích tam giác BNC.\n\n**Bước 4.** Tam giác NDP và NPC có chung đáy NP, còn tam giác BDN và BNC có chung đáy BN; hai đáy cùng nằm trên đường thẳng BP nên cả hai cặp tam giác có chung hai đường cao hạ từ D và từ C xuống BP, từ đó chuyển tỉ số cần tìm về tỉ số hai diện tích đã biết.\n\n**Chú ý:** Cặp tam giác dùng cho ý c) phải có chung đáy nằm trên đường thẳng BP; đừng lấy cặp có chung đỉnh nhưng đáy không cùng nằm trên một đường thẳng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, M nằm trên BC, P nằm trên DC; N là giao điểm của DM và BP.\n\na) Diện tích tam giác BDC là: $60:2=30$ ($\\text{cm}^2$)\n\nTam giác DMC và tam giác DBC có chung đường cao hạ từ D xuống BC, suy ra $\\dfrac{S_{DMC}}{S_{DBC}}=\\dfrac{MC}{BC}=\\dfrac{1}{2}$\n\nDiện tích tam giác DMC là: $30:2=15$ ($\\text{cm}^2$)\n\nb) Diện tích tam giác DNC là: $15-10=5$ ($\\text{cm}^2$)\n\nTam giác MNC và tam giác DNC có chung đường cao hạ từ C xuống DM, suy ra $\\dfrac{S_{MNC}}{S_{DNC}}=\\dfrac{MN}{DN}=\\dfrac{10}{5}=2$\n\nVậy $\\dfrac{MN}{DN}=2$.\n\nc) Tam giác BDM và tam giác CDM có chung đường cao hạ từ D xuống BC và $BM=MC$ nên $S_{BDM}=S_{CDM}=15$ ($\\text{cm}^2$)\n\nTam giác BNM và tam giác CNM có chung đường cao hạ từ N xuống BC và $BM=MC$ nên $S_{BNM}=S_{MNC}=10$ ($\\text{cm}^2$)\n\nDiện tích tam giác BDN là: $15-10=5$ ($\\text{cm}^2$)\n\nDiện tích tam giác BNC là: $10+10=20$ ($\\text{cm}^2$)\n\nTam giác NDP và tam giác NPC có chung đáy NP; tam giác BDN và tam giác BNC có chung đáy BN; các đáy NP, BN cùng nằm trên đường thẳng BP nên cả hai cặp tam giác đều có hai đường cao hạ từ D và từ C xuống BP. Vì vậy tỉ số diện tích của mỗi cặp bằng tỉ số hai đường cao ấy: $\\dfrac{S_{NDP}}{S_{NPC}}=\\dfrac{S_{BDN}}{S_{BNC}}=\\dfrac{5}{20}=\\dfrac{1}{4}$\n\nĐáp số: a) $15\\ \\text{cm}^2$; b) $2$; c) $\\dfrac{1}{4}$",
+  "ghi_chu_nghi": "Đề chữ không nói vị trí P, N; lấy từ hình: M trên BC, P trên DC, N là giao của DM và BP (BD nét đứt là đường phụ). Ý c) có cách khác: DP/PC = S_NDP/S_NPC; chọn chuyển qua cặp tam giác BDN và BNC (chung hai đường cao hạ từ D, C xuống BP). Đã kiểm bằng toạ độ: P chia DC theo tỉ số 1:4."
+ }
+]

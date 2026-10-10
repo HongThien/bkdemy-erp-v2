@@ -1,0 +1,433 @@
+[
+ {
+  "ma_nguon": "ARC 2022-CB · 1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho sẵn bán kính và hỏi diện tích, nên dùng công thức diện tích hình tròn: bán kính nhân bán kính nhân $3,14$. Đừng nhầm với công thức tính chu vi.\n\n**Bước 1.** Nhận ra đề hỏi diện tích (không phải chu vi) và đã cho sẵn bán kính $3$ cm, nên dùng ngay công thức diện tích hình tròn.\n\n**Bước 2.** Nhân bán kính với bán kính rồi nhân với $3,14$; đơn vị của kết quả là xăng-ti-mét vuông.\n\n**Bước 3.** Đối chiếu kết quả vừa tính với bốn phương án rồi chọn phương án trùng khớp.\n\n**Chú ý:** Nếu nhân hai lần bán kính với $3,14$ thì được chu vi chứ không phải diện tích.\n\n**Phần 2. Trình bày**\n\nDiện tích hình tròn là: $3\\times 3\\times 3,14=28,26$ ($\\text{cm}^2$)\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 2",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có cả phép cộng và phép nhân thì nhân trước, cộng sau. Nhân số đo thời gian với một số thì nhân riêng số giờ và số phút, nếu số phút đủ $60$ thì đổi ra giờ.\n\n**Bước 1.** Nhìn biểu thức: phép nhân $\\times 3$ chỉ gắn với $2$ giờ $10$ phút, nên phải làm phép nhân này trước.\n\n**Bước 2.** Nhân từng đơn vị: số giờ nhân $3$, số phút nhân $3$, rồi xem số phút có đủ $60$ để đổi ra giờ hay không.\n\n**Bước 3.** Cộng kết quả vừa tìm với $3$ giờ $18$ phút: cộng giờ với giờ, phút với phút, rồi chọn phương án đúng.\n\n**Chú ý:** Nếu cộng trước rồi mới nhân với $3$ thì sẽ ra kết quả sai.\n\n**Phần 2. Trình bày**\n\n$3$ giờ $18$ phút $+\\ 2$ giờ $10$ phút $\\times 3$\n\n$=3$ giờ $18$ phút $+\\ 6$ giờ $30$ phút\n\n$=9$ giờ $48$ phút\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 3",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi cạnh $1$ m dài $10$ dm nên $1\\ \\text{m}^3=10\\times 10\\times 10=1000\\ \\text{dm}^3$. Đổi từ đơn vị lớn sang đơn vị bé hơn thì nhân với $1000$.\n\n**Bước 1.** Nhận ra mét khối lớn hơn đề-xi-mét khối, nên đổi sang đơn vị bé hơn thì số đo phải lớn lên.\n\n**Bước 2.** Tìm $1\\ \\text{m}^3$ bằng bao nhiêu đề-xi-mét khối bằng cách lấy $1$ m $=10$ dm, rồi nhân ba lần $10$ với nhau.\n\n**Bước 3.** Nhân $3,14$ với số vừa tìm (dịch dấu phẩy sang phải) rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Chia đơn vị khối cho $10$ hoặc $100$ là nhầm với đổi đơn vị độ dài hoặc diện tích.\n\n**Phần 2. Trình bày**\n\nVì $1\\ \\text{m}^3=1000\\ \\text{dm}^3$ nên $3,14\\ \\text{m}^3=3,14\\times 1000=3140\\ \\text{dm}^3$\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 4",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có phép chia, phép nhân và phép cộng nên làm chia, nhân trước rồi cộng sau. Chia cho $0,5$ chính là nhân với $2$.\n\n**Bước 1.** Nhìn thứ tự thực hiện phép tính: phép chia và phép nhân thực hiện trước, phép cộng làm sau cùng.\n\n**Bước 2.** Tính hai kết quả trước: chia $2$ cho $0,5$ (chia cho $0,5$ nghĩa là hỏi có bao nhiêu nửa trong $2$) và nhân $10$ với $0,2$.\n\n**Bước 3.** Cộng hai kết quả vừa tìm rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Nếu cộng $2:0,5$ trước với $10$ rồi mới nhân thì sẽ sai thứ tự.\n\n**Phần 2. Trình bày**\n\n$A=2:0,5+10\\times 0,2$\n\n$A=4+2$\n\n$A=6$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 5",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn phân số có mẫu số khác nhau nên chưa so sánh ngay được. Phải quy đồng về cùng một mẫu số; khi cùng mẫu số thì phân số nào có tử số lớn hơn thì lớn hơn.\n\n**Bước 1.** Tìm mẫu số chung: xem trong các mẫu $10$; $15$; $20$; $60$ có mẫu nào chia hết cho tất cả các mẫu còn lại không.\n\n**Bước 2.** Quy đồng từng phân số về mẫu số chung đó bằng cách nhân cả tử số và mẫu số với cùng một số.\n\n**Bước 3.** So sánh các tử số: phân số nào có tử số lớn nhất là phân số lớn nhất, rồi chọn phương án tương ứng.\n\n**Chú ý:** Không so sánh theo tử số khi mẫu số chưa bằng nhau; $\\dfrac{7}{60}$ có tử số lớn nhất ban đầu nhưng chưa chắc là phân số lớn nhất.\n\n**Phần 2. Trình bày**\n\nMẫu số chung của các phân số là $60$.\n\n$\\dfrac{1}{10}=\\dfrac{1\\times 6}{10\\times 6}=\\dfrac{6}{60}$\n\n$\\dfrac{2}{15}=\\dfrac{2\\times 4}{15\\times 4}=\\dfrac{8}{60}$\n\n$\\dfrac{3}{20}=\\dfrac{3\\times 3}{20\\times 3}=\\dfrac{9}{60}$\n\nGiữ nguyên $\\dfrac{7}{60}$.\n\nVì $9>8>7>6$ nên $\\dfrac{9}{60}$ là phân số lớn nhất, đó là $\\dfrac{3}{20}$.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 6",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số bằng tổng hai số chia $2$, nên tổng hai số bằng trung bình cộng nhân $2$. Sau đó đây là bài tổng – hiệu: biết tổng và hiệu thì tìm được số bé rồi số lớn.\n\n**Bước 1.** Từ trung bình cộng tìm tổng hai số: tổng bằng trung bình cộng nhân với $2$.\n\n**Bước 2.** Vẽ sơ đồ: số bé là $1$ đoạn, số lớn là đoạn đó thêm một đoạn dài bằng hiệu; tổng hai số chính là hai đoạn bằng số bé cộng với hiệu.\n\n**Bước 3.** Lấy tổng trừ đi hiệu thì được hai lần số bé, rồi chia $2$ để tìm số bé.\n\n**Bước 4.** Số lớn bằng số bé cộng hiệu; đối chiếu với bốn phương án.\n\n**Chú ý:** Đề hỏi số lớn, không phải số bé; đừng dừng lại ở bước tìm số bé.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $3,2\\times 2=6,4$\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; số lớn 1 đoạn và thêm 2,3; tổng 6,4)\n\nHai lần số bé là: $6,4-2,3=4,1$\n\nSố bé là: $4,1:2=2,05$\n\nSố lớn là: $2,05+2,3=4,35$\n\nChọn C.",
+  "so_do_mo_ta": {
+   "tieu_de": "Tổng và hiệu hai số",
+   "gia_tri_phan": 2.05,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "2,3"
+    }
+   ],
+   "tong": "6,4",
+   "dau_hoi": [
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 7",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật bằng chiều dài nhân chiều rộng nhân chiều cao, ba kích thước phải cùng đơn vị đo.\n\n**Bước 1.** Nhận ra đề cho đủ ba kích thước của hình hộp chữ nhật, tất cả đều tính bằng xăng-ti-mét nên không phải đổi đơn vị.\n\n**Bước 2.** Nhân ba kích thước với nhau; ba số có số thập phân thì nhân hai số tròn trước cho dễ tính.\n\n**Bước 3.** Ghi đơn vị là xăng-ti-mét khối rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Đây là thể tích nên đơn vị là $\\text{cm}^3$; cộng ba kích thước hay nhân hai kích thước đều không phải là thể tích.\n\n**Phần 2. Trình bày**\n\nThể tích hình hộp chữ nhật là: $3\\times 2\\times 1,5=9$ ($\\text{cm}^3$)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 8",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi hỗn số nằm giữa hai số tự nhiên liên tiếp. Tìm hai số tự nhiên \"kẹp\" mỗi hỗn số, rồi liệt kê các số tự nhiên $a$ nằm giữa hai hỗn số đã cho.\n\n**Bước 1.** Xem $3\\dfrac{1}{4}$ nằm giữa hai số tự nhiên liên tiếp nào, vì $a$ phải lớn hơn hỗn số này.\n\n**Bước 2.** Xem $5\\dfrac{3}{4}$ nằm giữa hai số tự nhiên liên tiếp nào, vì $a$ phải bé hơn hỗn số này.\n\n**Bước 3.** Liệt kê các số tự nhiên $a$ thoả mãn cả hai điều kiện, rồi đếm xem có bao nhiêu số.\n\n**Chú ý:** Phải so từng số tự nhiên với cả hai hỗn số, đừng chỉ nhìn phần nguyên.\n\n**Phần 2. Trình bày**\n\n$3<3\\dfrac{1}{4}<4$ và $5<5\\dfrac{3}{4}<6$.\n\nSố $a$ lớn hơn $3\\dfrac{1}{4}$ nên $a$ không bé hơn $4$; số $a$ bé hơn $5\\dfrac{3}{4}$ nên $a$ không lớn hơn $5$.\n\nVậy $a$ là $4$ hoặc $5$, có $2$ số.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 9",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ lệ bản đồ cho biết độ dài. Độ dài ngoài thực tế gấp $2000$ lần độ dài trên bản đồ, nên diện tích (có hai chiều) thực tế gấp $2000\\times 2000$ lần diện tích trên bản đồ. Làm gọn bằng cách tìm diện tích thực của $1\\ \\text{cm}^2$ trên bản đồ.\n\n**Bước 1.** Hiểu tỉ lệ $1:2000$ nghĩa là $1$ cm trên bản đồ ứng với $2000$ cm ngoài thực tế, rồi đổi $2000$ cm ra mét cho gọn.\n\n**Bước 2.** Tìm diện tích thực của một hình vuông cạnh $1$ cm trên bản đồ: lấy độ dài thực của cạnh nhân với chính nó.\n\n**Bước 3.** Nhân diện tích thực của $1\\ \\text{cm}^2$ với số xăng-ti-mét vuông trên bản đồ để được diện tích thực của khu đất.\n\n**Chú ý:** Không lấy $3$ nhân $2000$ rồi dừng lại: diện tích gấp lên theo cả chiều dài lẫn chiều rộng, không phải chỉ một lần.\n\n**Phần 2. Trình bày**\n\nĐổi: $2000$ cm $=20$ m\n\nTỉ lệ $1:2000$ nên $1$ cm trên bản đồ ứng với $20$ m ngoài thực tế.\n\nDiện tích thực của $1\\ \\text{cm}^2$ trên bản đồ là: $20\\times 20=400$ ($\\text{m}^2$)\n\nDiện tích thực của khu đất là: $400\\times 3=1200$ ($\\text{m}^2$)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 10",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm số cách chọn lần lượt từng hàng: hàng trăm, hàng chục, hàng đơn vị. Mỗi lần chọn xong một chữ số thì chữ số đó không dùng được nữa vì các chữ số phải khác nhau.\n\n**Bước 1.** Chọn chữ số hàng trăm: có thể dùng bất kì chữ số nào trong các chữ số đã cho, đếm xem có bao nhiêu cách chọn.\n\n**Bước 2.** Chọn chữ số hàng chục: phải khác chữ số hàng trăm vừa chọn, nên số chữ số còn lại để chọn ít đi một.\n\n**Bước 3.** Chọn chữ số hàng đơn vị: phải khác cả hai chữ số đã chọn, đếm số cách còn lại.\n\n**Bước 4.** Nhân số cách chọn của ba hàng với nhau để được số các số lập được.\n\n**Chú ý:** Các chữ số đã cho đều khác $0$ nên chữ số nào đứng ở hàng trăm cũng được.\n\n**Phần 2. Trình bày**\n\nChữ số hàng trăm có $5$ cách chọn.\n\nChữ số hàng chục có $4$ cách chọn (khác chữ số hàng trăm).\n\nChữ số hàng đơn vị có $3$ cách chọn (khác hai chữ số đã chọn).\n\nSố các số có $3$ chữ số khác nhau lập được là: $5\\times 4\\times 3=60$ (số)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 11",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$\\dfrac{2}{5}$ của một số là $20$\" nghĩa là $20$ ứng với $\\dfrac{2}{5}$ của số cần tìm. Đây là bài tìm một số biết giá trị của một phân số của nó, nên lấy $20$ chia cho phân số $\\dfrac{2}{5}$.\n\n**Bước 1.** Nhận ra $20$ chính là giá trị ứng với phân số $\\dfrac{2}{5}$ của số cần tìm, chứ không phải ứng với cả số.\n\n**Bước 2.** Muốn biết cả số thì lấy giá trị đã cho chia cho phân số tương ứng: chia cho $\\dfrac{2}{5}$ nghĩa là nhân với phân số đảo ngược.\n\n**Bước 3.** Tính kết quả rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Không lấy $20$ nhân với $\\dfrac{2}{5}$ vì đó là tìm phân số của một số, ngược với đề.\n\nThử lại: lấy số vừa tìm nhân với $\\dfrac{2}{5}$ phải ra $20$.\n\n**Phần 2. Trình bày**\n\nSố đó là: $20:\\dfrac{2}{5}=20\\times\\dfrac{5}{2}=50$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 12",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương giống con xúc xắc: các mặt đều là hình vuông bằng nhau. Chỉ cần đếm mặt theo từng nhóm để khỏi sót.\n\n**Bước 1.** Hình dung hình lập phương như một chiếc hộp có đáy dưới, nắp trên và các mặt xung quanh.\n\n**Bước 2.** Đếm các mặt theo nhóm: hai mặt đối diện ở trên và dưới, rồi các mặt xung quanh.\n\n**Bước 3.** Cộng các nhóm lại để được tổng số mặt rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Số mặt khác số đỉnh và số cạnh; $12$ và $8$ trong các phương án là số cạnh và số đỉnh của hình lập phương.\n\n**Phần 2. Trình bày**\n\nHình lập phương có $2$ mặt đáy (trên và dưới) và $4$ mặt xung quanh.\n\nSố mặt của hình lập phương là: $2+4=6$ (mặt)\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 13",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài cho tổng và hiệu hai số nên là bài tổng – hiệu. Nếu bớt phần hơn của số lớn đi thì hai số bằng nhau, và tổng khi đó bằng hai lần số bé.\n\n**Bước 1.** Vẽ sơ đồ: số bé là $1$ đoạn, số lớn là đoạn đó thêm một đoạn dài bằng hiệu.\n\n**Bước 2.** Bớt phần hơn của số lớn khỏi tổng thì còn hai đoạn bằng nhau, mỗi đoạn là số bé; tìm giá trị của hai đoạn này.\n\n**Bước 3.** Chia cho $2$ để tìm số bé rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Đề hỏi số bé nên dừng ở bước chia $2$, đừng cộng thêm hiệu để tìm số lớn.\n\nThử lại: số bé cộng hiệu rồi cộng với số bé phải ra tổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; số lớn 1 đoạn và thêm 3; tổng 20)\n\nHai lần số bé là: $20-3=17$\n\nSố bé là: $17:2=8,5$\n\nChọn B.",
+  "so_do_mo_ta": {
+   "tieu_de": "Tổng và hiệu hai số",
+   "gia_tri_phan": 8.5,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "3"
+    }
+   ],
+   "tong": "20",
+   "dau_hoi": [
+    "Số bé"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 14",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba tuổi đều so được với tuổi Nam: mẹ hơn Nam $23$ tuổi, bố hơn mẹ $3$ tuổi nên bố hơn Nam hơn nữa. Quy ba người về \"tuổi Nam cộng phần hơn\" rồi làm bài tổng – hiệu.\n\n**Bước 1.** Tìm bố hơn Nam bao nhiêu tuổi bằng cách cộng hai chênh lệch: bố hơn mẹ và mẹ hơn Nam.\n\n**Bước 2.** Vẽ sơ đồ ba người: tuổi Nam là $1$ đoạn, tuổi mẹ và tuổi bố là đoạn đó cộng thêm phần hơn của từng người.\n\n**Bước 3.** Lấy tổng ba tuổi trừ các phần hơn thì còn ba đoạn bằng nhau, mỗi đoạn là tuổi Nam; chia $3$ để tìm tuổi Nam.\n\n**Bước 4.** Tuổi bố bằng tuổi Nam cộng với số tuổi bố hơn Nam.\n\n**Chú ý:** Đề hỏi tuổi bố, không phải tuổi Nam; đừng nhầm sang tuổi mẹ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBố hơn Nam số tuổi là: $23+3=26$ (tuổi)\n\nTa có sơ đồ:\n\n(Tuổi Nam 1 đoạn; tuổi mẹ 1 đoạn và thêm 23 tuổi; tuổi bố 1 đoạn và thêm 26 tuổi; tổng 76 tuổi)\n\nBa lần tuổi Nam là: $76-23-26=27$ (tuổi)\n\nTuổi Nam là: $27:3=9$ (tuổi)\n\nTuổi bố là: $9+26=35$ (tuổi)\n\nChọn A.",
+  "so_do_mo_ta": {
+   "tieu_de": "Tuổi ba người",
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Tuổi Nam",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 1,
+     "them": "23 tuổi"
+    },
+    {
+     "nhan": "Tuổi bố",
+     "phan": 1,
+     "them": "26 tuổi"
+    }
+   ],
+   "tong": "76 tuổi",
+   "dau_hoi": [
+    "Tuổi bố"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 15",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn đổi một phân số ra tỉ số phần trăm thì chia tử số cho mẫu số được số thập phân, rồi nhân với $100$ và viết kí hiệu $\\%$ (dịch dấu phẩy sang phải hai chữ số).\n\n**Bước 1.** Chia tử số cho mẫu số để đổi phân số thành số thập phân.\n\n**Bước 2.** Nhân số thập phân đó với $100$ bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Bước 3.** Viết thêm kí hiệu $\\%$ vào kết quả rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Không lấy tử số làm số phần trăm; $3\\%$ khác với $\\dfrac{3}{20}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{20}=3:20=0,15=15\\%$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 16",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi hiệu của hai số là $1$ phần thì tổng là $3$ phần. Số lớn hơn số bé đúng $1$ phần (bằng hiệu), nên tổng hai số bằng hai lần số bé cộng $1$ phần.\n\n**Bước 1.** Đổi \"tổng gấp $3$ lần hiệu\" thành số phần: hiệu là $1$ phần thì tổng là $3$ phần như thế.\n\n**Bước 2.** Nhận ra số lớn bằng số bé cộng với hiệu, tức là số lớn hơn số bé $1$ phần.\n\n**Bước 3.** Lấy tổng trừ đi phần hơn của số lớn thì được hai lần số bé; tìm số phần của số bé rồi số phần của số lớn.\n\n**Bước 4.** Chia số phần của số lớn cho số phần của số bé để biết gấp mấy lần.\n\n**Chú ý:** Đề hỏi số lớn gấp số bé mấy lần, không hỏi tổng gấp hiệu mấy lần ($3$ lần đã cho sẵn trong đề).\n\nThử lại: chọn hai số có tỉ số vừa tìm, tính tổng và hiệu của chúng rồi kiểm tra tổng có gấp $3$ lần hiệu hay không.\n\n**Phần 2. Trình bày**\n\nCoi hiệu của hai số là $1$ phần thì tổng của hai số là $3$ phần.\n\nSố lớn hơn số bé $1$ phần nên hai lần số bé bằng: $3-1=2$ (phần)\n\nSố bé là: $2:2=1$ (phần)\n\nSố lớn là: $1+1=2$ (phần)\n\nSố lớn gấp số bé số lần là: $2:1=2$ (lần)\n\nChọn C.",
+  "ghi_chu_nghi": "Không vẽ sơ đồ: đề không có số liệu cụ thể (kết quả chỉ là tỉ số nên không có \"giá trị thật của 1 phần\" để máy vẽ đúng tỉ lệ). Lập luận bằng số phần, lấy hiệu làm 1 phần."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 17",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi bán $\\dfrac{3}{5}$ số cam thì $42$ kg còn lại ứng với phần cam chưa bán, tức là $1-\\dfrac{3}{5}$ số cam. Biết giá trị của một phân số thì tìm cả số bằng cách chia cho phân số đó.\n\n**Bước 1.** Tìm phân số chỉ số cam còn lại: lấy cả số cam (là $1$) trừ phân số số cam đã bán.\n\n**Bước 2.** Nhận ra $42$ kg ứng với phân số vừa tìm, nên chia $42$ cho phân số đó để biết cửa hàng đã nhập bao nhiêu ki-lô-gam cam.\n\n**Bước 3.** Số cam đã bán bằng $\\dfrac{3}{5}$ số cam đã nhập; nhân số cam nhập với phân số này rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Đề hỏi số cam đã bán chứ không hỏi số cam đã nhập về.\n\nThử lại: số cam đã bán cộng với $42$ kg phải bằng số cam đã nhập.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cam còn lại chiếm phần số cam đã nhập là: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (số cam)\n\nSố cam cửa hàng đã nhập về là: $42:\\dfrac{2}{5}=42\\times\\dfrac{5}{2}=105$ (kg)\n\nSố cam cửa hàng đã bán là: $105\\times\\dfrac{3}{5}=63$ (kg)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 18",
+  "dap_an": "C",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 123,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "2"
+    }
+   ],
+   "tong": "248",
+   "dau_hoi": [
+    "Số lớn"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số lẻ liên tiếp hơn kém nhau đúng $2$ đơn vị, nên đây là bài biết tổng và hiệu của hai số; bớt phần hơn của số lớn thì hai số bằng nhau.\n\n**Bước 1.** Nhận ra hiệu của hai số: số lẻ đứng sau luôn hơn số lẻ đứng liền trước nó $2$ đơn vị.\n\n**Bước 2.** Vẽ sơ đồ: số bé là một đoạn, số lớn là đoạn đó thêm $2$ đơn vị; bớt phần thêm của số lớn thì hai số bằng nhau và tổng giảm đi $2$.\n\n**Bước 3.** Chia tổng sau khi bớt cho $2$ để tìm số bé, rồi cộng lại phần đã bớt để tìm số lớn là số đề hỏi.\n\n**Chú ý:** Đề hỏi số lớn chứ không hỏi số bé, nên phải cộng lại $2$ ở bước cuối.\n\nThử lại: hai số tìm được phải đều là số lẻ và cộng lại đủ $248$.\n\n**Phần 2. Trình bày**\n\nHai số lẻ liên tiếp hơn kém nhau $2$ đơn vị.\n\nTa có sơ đồ:\n\n(Số bé 1 phần; số lớn 1 phần và thêm 2; tổng 248)\n\nNếu bớt $2$ ở số lớn thì hai số bằng nhau và tổng còn: $248-2=246$\n\nSố bé là: $246:2=123$\n\nSố lớn là: $123+2=125$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 19",
+  "dap_an": "A",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Tử số",
+     "phan": 8
+    },
+    {
+     "nhan": "Mẫu số",
+     "phan": 5
+    }
+   ],
+   "hieu": "36",
+   "dau_hoi": [
+    "Tử số"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số có giá trị bằng $\\dfrac{8}{5}$ nghĩa là tử số bằng $\\dfrac{8}{5}$ mẫu số, tức tử số là $8$ phần còn mẫu số là $5$ phần như thế; đề cho hiệu nên đây là bài hiệu – tỉ.\n\n**Bước 1.** Từ giá trị phân số suy ra tử số và mẫu số gồm bao nhiêu phần bằng nhau, rồi vẽ sơ đồ hai đoạn thẳng.\n\n**Bước 2.** Tính hiệu của tử số và mẫu số gồm bao nhiêu phần bằng nhau.\n\n**Bước 3.** Hiệu ấy ứng với $36$ nên chia $36$ cho số phần của hiệu để tìm giá trị một phần.\n\n**Bước 4.** Tử số gồm nhiều phần như vậy nên lấy giá trị một phần nhân với số phần của tử số.\n\n**Chú ý:** Đề hỏi tử số, nên đừng dừng lại ở giá trị của mẫu số.\n\nThử lại: tử số trừ mẫu số phải bằng $36$ và tử số chia mẫu số phải bằng $\\dfrac{8}{5}$.\n\n**Phần 2. Trình bày**\n\nVì phân số có giá trị bằng $\\dfrac{8}{5}$ nên tử số là $8$ phần, mẫu số là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Tử số 8 phần; mẫu số 5 phần; hiệu 36)\n\nHiệu số phần bằng nhau là: $8-5=3$ (phần)\n\nGiá trị của một phần là: $36:3=12$\n\nTử số là: $12\\times 8=96$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 20",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một giờ có $60$ phút nên đổi giờ sang phút thì nhân với $60$; số giờ có phần thập phân thì đổi riêng phần nguyên và phần thập phân cho dễ tính.\n\n**Bước 1.** Tách $1,15$ giờ thành $1$ giờ cộng với $0,15$ giờ.\n\n**Bước 2.** Đổi phần nguyên là $1$ giờ sang phút, nhớ rằng một giờ có $60$ phút.\n\n**Bước 3.** Đổi $0,15$ giờ sang phút bằng cách nhân với $60$, rồi cộng hai kết quả lại.\n\n**Chú ý:** $1,15$ giờ không phải là $1$ giờ $15$ phút, vì phần thập phân của giờ không phải số phút.\n\n**Phần 2. Trình bày**\n\nĐổi: $1$ giờ $=60$ phút\n\n$0,15$ giờ $=0,15\\times 60=9$ phút\n\n$1,15$ giờ $=60+9=69$ phút\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 21",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho số học sinh nữ bằng $45\\%$ số học sinh cả lớp nhưng lại hỏi số học sinh nam, nên phải tìm số nữ trước rồi lấy cả lớp trừ đi số nữ.\n\n**Bước 1.** Nhận ra cả lớp gồm bạn nữ và bạn nam, đề đã cho số nữ theo phần trăm của cả lớp.\n\n**Bước 2.** Tìm $45\\%$ của $40$ học sinh bằng cách lấy $40$ nhân với $45\\%$ để biết số học sinh nữ.\n\n**Bước 3.** Lấy số học sinh cả lớp trừ số học sinh nữ để biết số học sinh nam rồi đối chiếu bốn phương án.\n\n**Chú ý:** Đề hỏi số bạn nam, nếu dừng ở số bạn nữ thì sẽ chọn nhầm phương án $18$ bạn.\n\n**Phần 2. Trình bày**\n\nSố học sinh nữ là: $40\\times 45\\%=18$ (bạn)\n\nSố học sinh nam là: $40-18=22$ (bạn)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 22",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá trị của một chữ số trong số thập phân phụ thuộc vào hàng nó đứng: chữ số ở hàng phần mười có giá trị bằng số đó nhân với $\\dfrac{1}{10}$, ở hàng phần trăm thì nhân với $\\dfrac{1}{100}$.\n\n**Bước 1.** Xác định xem chữ số $2$ trong số $3,02$ đứng ở hàng nào sau dấu phẩy.\n\n**Bước 2.** Viết giá trị của chữ số đó dưới dạng phân số thập phân theo hàng vừa tìm.\n\n**Bước 3.** Rút gọn phân số về phân số tối giản rồi tìm phương án trùng với kết quả.\n\n**Chú ý:** Chữ số $2$ đứng ở hàng phần trăm chứ không phải hàng phần mười, dễ nhầm với phương án $\\dfrac{1}{5}$.\n\n**Phần 2. Trình bày**\n\nSố $3,02$ có chữ số $0$ ở hàng phần mười và chữ số $2$ ở hàng phần trăm.\n\nGiá trị của chữ số $2$ là: $2\\times\\dfrac{1}{100}=\\dfrac{2}{100}$\n\nRút gọn: $\\dfrac{2}{100}=\\dfrac{1}{50}$\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 23",
+  "dap_an": "C",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi anh cho em 2 cái",
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Số kẹo của em",
+     "phan": 1
+    },
+    {
+     "nhan": "Số kẹo của anh",
+     "phan": 1,
+     "them": "2 cái"
+    }
+   ],
+   "tong": "22 cái",
+   "dau_hoi": [
+    "Số kẹo của em"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Anh cho em kẹo thì tổng số kẹo của hai anh em không đổi; sau khi cho, anh vẫn hơn em $2$ cái nên đó là bài biết tổng và hiệu, tìm số kẹo của em lúc sau rồi trả lại phần em đã nhận.\n\n**Bước 1.** Xác định tổng số kẹo của hai anh em sau khi chuyển kẹo vẫn là $22$ cái, và lúc đó anh hơn em $2$ cái.\n\n**Bước 2.** Vẽ sơ đồ: em là một đoạn, anh là đoạn đó thêm $2$ cái; bớt phần thêm của anh thì hai anh em bằng nhau.\n\n**Bước 3.** Chia tổng sau khi bớt cho $2$ để tìm số kẹo của em sau khi nhận thêm.\n\n**Bước 4.** Em đã nhận thêm kẹo của anh, nên bớt số kẹo nhận được để tìm số kẹo lúc đầu của em.\n\n**Chú ý:** Đề hỏi số kẹo của em lúc đầu, chứ không phải lúc sau khi anh đã cho.\n\nThử lại: lúc đầu anh có $14$ cái, em có $8$ cái; anh cho em $2$ cái thì còn $12$ và $10$, anh vẫn hơn $2$ cái.\n\n**Phần 2. Trình bày**\n\nSau khi anh cho em $2$ cái, tổng số kẹo vẫn là $22$ cái và anh hơn em $2$ cái.\n\nTa có sơ đồ:\n\n(Em 1 phần; anh 1 phần và thêm 2 cái; tổng 22 cái)\n\nNếu bớt $2$ cái của anh thì hai anh em bằng nhau và tổng còn: $22-2=20$ (cái)\n\nSố kẹo của em sau khi nhận thêm là: $20:2=10$ (cái)\n\nSố kẹo của em lúc đầu là: $10-2=8$ (cái)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 24",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy không tăng đều nên hãy xét hiệu của hai số đứng liền nhau; các hiệu ấy tăng dần đều từng đơn vị, nhờ vậy đoán được số tiếp theo.\n\n**Bước 1.** Lấy mỗi số trừ số đứng liền trước nó để lập dãy các hiệu.\n\n**Bước 2.** Nhìn dãy các hiệu để tìm quy luật tăng dần của chúng.\n\n**Bước 3.** Dựa vào quy luật đó, suy ra hiệu tiếp theo rồi cộng vào số cuối của dãy.\n\n**Chú ý:** Phải kiểm tra quy luật đúng với cả các số đã cho, chứ không chỉ với hai ba số đầu.\n\n**Phần 2. Trình bày**\n\nHiệu của hai số liền nhau trong dãy là: $4-3=1$; $6-4=2$; $9-6=3$; $13-9=4$; $18-13=5$; $24-18=6$\n\nCác hiệu tăng dần $1;\\ 2;\\ 3;\\ 4;\\ 5;\\ 6$ nên hiệu tiếp theo là $7$.\n\nSố tiếp theo là: $24+7=31$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 25",
+  "dap_an": "C",
+  "ghi_chu_nghi": "Đề chỉ có 3 phương án A, B, C (không có D) — giữ nguyên theo đề.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số chia hết cho $3$ khi tổng các chữ số của nó chia hết cho $3$; muốn biết cần cộng thêm số nào thì xem số đã cho chia cho $3$ dư mấy.\n\n**Bước 1.** Tính tổng các chữ số của số $2032022$ để biết số đó chia cho $3$ dư mấy.\n\n**Bước 2.** Suy ra số cần cộng thêm phải chia cho $3$ dư bao nhiêu thì tổng hai số mới chia hết cho $3$.\n\n**Bước 3.** Chia từng số ở ba phương án cho $3$ để xem số nào có số dư phù hợp.\n\n**Chú ý:** Số được cộng không cần chia hết cho $3$, mà phải có số dư bù cho số dư của $2032022$.\n\nThử lại: cộng số vừa chọn vào $2032022$ rồi tính tổng các chữ số, tổng này phải chia hết cho $3$.\n\n**Phần 2. Trình bày**\n\nTổng các chữ số của $2032022$ là: $2+0+3+2+0+2+2=11$\n\nVì $11:3=3$ (dư $2$) nên $2032022$ chia cho $3$ dư $2$.\n\nMuốn tổng chia hết cho $3$ thì số cộng thêm phải chia cho $3$ dư $1$, vì $2+1=3$.\n\nTa có: $15:3=5$ (dư $0$); $35:3=11$ (dư $2$); $25:3=8$ (dư $1$)\n\nVậy số cần cộng thêm là $25$.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 26",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $12=3\\times 4$ mà $3$ và $4$ không có thừa số chung, nên số chia hết cho cả $3$ và $4$ thì chia hết cho $12$.\n\n**Bước 1.** Tách điều kiện chia hết cho $12$ thành hai điều kiện đơn giản hơn là chia hết cho $4$ và chia hết cho $3$.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho $4$ (hai chữ số cuối tạo thành số chia hết cho $4$) để loại bớt các số trong bốn phương án.\n\n**Bước 3.** Với các số còn lại, dùng dấu hiệu chia hết cho $3$ (tổng các chữ số chia hết cho $3$) để chọn ra số cuối cùng.\n\n**Chú ý:** Phải thoả mãn cả hai điều kiện, chỉ chia hết cho $4$ hoặc chỉ chia hết cho $3$ thì chưa đủ.\n\nThử lại: chia số vừa chọn cho $12$ phải không dư.\n\n**Phần 2. Trình bày**\n\nSố chia hết cho $12$ thì chia hết cho cả $4$ và $3$.\n\nChia hết cho $4$: hai chữ số cuối của $2220$, $2032$, $2312$ là $20$, $32$, $12$ đều chia hết cho $4$; hai chữ số cuối của $2022$ là $22$ không chia hết cho $4$ nên loại $2022$.\n\nChia hết cho $3$: tổng các chữ số của $2220$ là $2+2+2+0=6$ (chia hết cho $3$); của $2032$ là $2+0+3+2=7$ (không chia hết); của $2312$ là $2+3+1+2=8$ (không chia hết).\n\nVậy chỉ có $2220$ chia hết cho cả $4$ và $3$ nên chia hết cho $12$.\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 27",
+  "dap_an": "D",
+  "ghi_chu_nghi": "Hiểu đề: khi nhân với 23, tích riêng thứ hai (nhân với chữ số hàng chục là 2) phải viết lùi sang trái một hàng, nghĩa là thực chất nhân với 20; bạn Khanh viết thẳng cột nên chỉ cộng \"số × 2\" thay vì \"số × 20\". Cách hiểu này cho kết quả 2024, trùng phương án D. Sơ đồ bỏ vì tích đúng có 23 phần (hơn 12 phần).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân với $23$ là nhân với $3$ rồi cộng với nhân với $20$ (tích riêng thứ hai phải lùi vào một hàng); để thẳng cột thì tích riêng thứ hai bị tính thành nhân với $2$, nên tích sai nhỏ hơn tích đúng.\n\n**Bước 1.** Coi số cần nhân là một phần; tích đúng gồm tích riêng nhân với $3$ và tích riêng nhân với $20$, từ đó tính số phần của tích đúng.\n\n**Bước 2.** Tích sai gồm tích riêng nhân với $3$ và tích riêng nhân với $2$, vậy tích sai gồm ít phần hơn; tính số phần của mỗi tích.\n\n**Bước 3.** Hiệu số phần của hai tích ứng với $1584$ nên chia để tìm giá trị một phần, đó chính là số cần nhân.\n\n**Bước 4.** Lấy số cần nhân nhân với $23$ để tìm tích đúng mà đề hỏi.\n\n**Chú ý:** Đề hỏi tích đúng chứ không hỏi số cần nhân, nên phải nhân thêm với $23$ ở bước cuối.\n\nThử lại: số tìm được nhân với $5$ phải kém số đó nhân với $23$ đúng $1584$.\n\n**Phần 2. Trình bày**\n\nCoi số cần nhân là $1$ phần. Nhân với $23$ là nhân với $3$ rồi cộng nhân với $20$, nên tích đúng là $3+20=23$ (phần).\n\nĐể các tích riêng thẳng cột thì tích riêng thứ hai bị tính thành nhân với $2$, nên tích sai là $3+2=5$ (phần).\n\nHiệu số phần của tích đúng và tích sai là: $23-5=18$ (phần)\n\nGiá trị của một phần, tức số cần nhân, là: $1584:18=88$\n\nTích đúng là: $88\\times 23=2024$\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 28",
+  "dap_an": "A",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 29,
+   "hang": [
+    {
+     "nhan": "Số cây bưởi",
+     "phan": 1
+    },
+    {
+     "nhan": "Số cây quýt",
+     "phan": 2
+    },
+    {
+     "nhan": "Số cây cam",
+     "phan": 4
+    }
+   ],
+   "tong": "203 cây",
+   "dau_hoi": [
+    "Số cây quýt"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số cây cam theo số cây quýt, số cây quýt theo số cây bưởi, nên lấy số cây bưởi (ít nhất) làm một phần để biểu thị cả ba loại cây bằng số phần bằng nhau; đây là bài tổng – tỉ.\n\n**Bước 1.** Lấy số cây bưởi làm một phần, từ đó tính số phần của số cây quýt.\n\n**Bước 2.** Từ số phần của cây quýt tính tiếp số phần của số cây cam, rồi vẽ sơ đồ ba đoạn thẳng.\n\n**Bước 3.** Cộng số phần của ba loại cây để biết $203$ cây ứng với bao nhiêu phần.\n\n**Bước 4.** Chia $203$ cho tổng số phần để tìm một phần, rồi tính số cây quýt theo số phần của nó.\n\n**Chú ý:** Đề hỏi số cây quýt, không phải số cây cam hay cây bưởi.\n\nThử lại: ba loại cây cộng lại phải đủ $203$ cây.\n\n**Phần 2. Trình bày**\n\nSố cây quýt gấp $2$ lần số cây bưởi, số cây cam gấp $2$ lần số cây quýt nên coi số cây bưởi là $1$ phần thì số cây quýt là $2$ phần, số cây cam là $2\\times 2=4$ phần.\n\nTa có sơ đồ:\n\n(Cây bưởi 1 phần; cây quýt 2 phần; cây cam 4 phần; tổng 203 cây)\n\nTổng số phần bằng nhau là: $1+2+4=7$ (phần)\n\nGiá trị của một phần là: $203:7=29$ (cây)\n\nSố cây quýt là: $29\\times 2=58$ (cây)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 29",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dung dịch chứa chín phần nghìn muối nghĩa là cứ $1000$ phần dung dịch có $9$ phần muối, nên số gam muối là $\\dfrac{9}{1000}$ của $800$ g dung dịch; đây là bài tìm một phân số của một số.\n\n**Bước 1.** Viết \"chín phần nghìn\" thành phân số có tử số là $9$ và mẫu số là $1000$.\n\n**Bước 2.** Tìm phân số đó của $800$ g bằng cách lấy $800$ nhân với phân số.\n\n**Bước 3.** Rút gọn hoặc chia để đổi kết quả sang số thập phân rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Chín phần nghìn là $\\dfrac{9}{1000}$ chứ không phải $9\\%$, vì $9\\%$ là chín phần trăm.\n\n**Phần 2. Trình bày**\n\nChín phần nghìn viết là $\\dfrac{9}{1000}$.\n\nSố gam muối cần dùng là: $800\\times\\dfrac{9}{1000}=\\dfrac{7200}{1000}=7,2$ (g)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 30",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các trang có số chữ số khác nhau tuỳ theo số trang có một, hai hay ba chữ số, nên chia các trang thành ba nhóm rồi tính số chữ số của từng nhóm.\n\n**Bước 1.** Tính số chữ số dùng để đánh số các trang có một chữ số, từ trang $1$ đến trang $9$.\n\n**Bước 2.** Đếm số trang có hai chữ số rồi nhân với $2$ để biết số chữ số của nhóm này.\n\n**Bước 3.** Đếm số trang có ba chữ số, từ trang $100$ đến trang cuối rồi nhân với $3$.\n\n**Bước 4.** Cộng số chữ số của ba nhóm để được tổng số chữ số đánh số cả tập tài liệu.\n\n**Chú ý:** Khi đếm số trang từ trang này đến trang kia phải cộng thêm $1$, vì trang đầu cũng được tính.\n\n**Phần 2. Trình bày**\n\nTừ trang $1$ đến trang $9$ có $9$ trang, mỗi trang $1$ chữ số: $9\\times 1=9$ (chữ số)\n\nTừ trang $10$ đến trang $99$ có: $99-10+1=90$ (trang)\n\nSố chữ số của $90$ trang này là: $90\\times 2=180$ (chữ số)\n\nTừ trang $100$ đến trang $320$ có: $320-100+1=221$ (trang)\n\nSố chữ số của $221$ trang này là: $221\\times 3=663$ (chữ số)\n\nSố chữ số để đánh số cả tập tài liệu là: $9+180+663=852$ (chữ số)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 31",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí vận chuyển tăng khi hàng nặng hơn và khi quãng đường dài hơn, nên đây là bài tỉ lệ thuận với cả hai đại lượng; cách gọn là rút về chi phí vận chuyển $1$ tấn hàng trên $1$ km.\n\n**Bước 1.** Nhận ra chi phí tỉ lệ thuận với số tấn hàng và tỉ lệ thuận với quãng đường.\n\n**Bước 2.** Rút về $1$ tấn hàng: chia chi phí lần đầu cho số tấn để biết chi phí vận chuyển $1$ tấn trên quãng đường $200$ km.\n\n**Bước 3.** Rút tiếp về $1$ km: chia chi phí vừa tìm cho $200$ để biết chi phí vận chuyển $1$ tấn hàng đi $1$ km.\n\n**Bước 4.** Nhân với $7$ tấn rồi nhân với $120$ km để tìm chi phí lần vận chuyển mới.\n\n**Chú ý:** Phải nhân cả số tấn và số km, không được chỉ nhân một trong hai đại lượng.\n\n**Phần 2. Trình bày**\n\nChi phí vận chuyển $1$ tấn hàng đi $200$ km là: $18:3=6$ (triệu đồng)\n\nChi phí vận chuyển $1$ tấn hàng đi $1$ km là: $6:200=0,03$ (triệu đồng)\n\nChi phí vận chuyển $7$ tấn hàng đi $1$ km là: $0,03\\times 7=0,21$ (triệu đồng)\n\nChi phí vận chuyển $7$ tấn hàng đi $120$ km là: $0,21\\times 120=25,2$ (triệu đồng)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 32",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi mẫu số là tích của hai số tự nhiên liên tiếp ($6=2\\times 3$, $12=3\\times 4$, $20=4\\times 5$...) và tử số là $1$, nên mỗi phân số viết được thành hiệu của hai phân số; các số hạng ở giữa triệt tiêu nhau.\n\n**Bước 1.** Viết mỗi mẫu số thành tích hai số tự nhiên liên tiếp, kể cả mẫu số cuối là $240$.\n\n**Bước 2.** Viết mỗi phân số thành hiệu của hai phân số, dựa vào việc hai thừa số ở mẫu hơn kém nhau $1$ còn tử số là $1$.\n\n**Bước 3.** Cộng các hiệu lại, thấy các phân số ở giữa vừa cộng vừa trừ nên triệt tiêu, chỉ còn số hạng đầu và số hạng cuối.\n\n**Bước 4.** Tính hiệu của hai phân số còn lại rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Cần xác định đúng thừa số cuối ở mẫu số của số hạng cuối, vì đó là phân số bị trừ cuối cùng.\n\nThử lại: số hạng cuối của dãy phải là $\\dfrac{1}{240}$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+...+\\dfrac{1}{15\\times 16}$\n\n$A=\\left(\\dfrac{1}{2}-\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}-\\dfrac{1}{4}\\right)+\\left(\\dfrac{1}{4}-\\dfrac{1}{5}\\right)+...+\\left(\\dfrac{1}{15}-\\dfrac{1}{16}\\right)$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{16}$\n\n$A=\\dfrac{8}{16}-\\dfrac{1}{16}=\\dfrac{7}{16}$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 33",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng số hoa của ba bạn không đổi sau khi cho nhau, nên biết số hoa lúc cuối của Trang rồi làm ngược lại các lần cho nhận của Trang thì tìm được số hoa ban đầu.\n\n**Bước 1.** Vì ba bạn cuối cùng có số hoa bằng nhau và tổng không đổi, nên chia tổng cho $3$ để biết mỗi bạn lúc cuối có bao nhiêu bông.\n\n**Bước 2.** Chỉ xét riêng Trang: Trang nhận $2$ bông của Hoa và cho Mai $6$ bông, tính xem Trang tăng hay giảm bao nhiêu bông.\n\n**Bước 3.** Làm ngược lại: lấy số hoa lúc cuối của Trang cộng bù phần đã giảm để tìm số hoa ban đầu.\n\n**Chú ý:** Phải làm ngược lại, nếu Trang giảm đi thì số hoa ban đầu lớn hơn số hoa lúc cuối chứ không nhỏ hơn.\n\nThử lại: ban đầu Mai có $13$ bông, Hoa có $15$ bông, Trang có $20$ bông, cộng lại đủ $48$ bông.\n\n**Phần 2. Trình bày**\n\nLúc cuối mỗi bạn có số bông hoa là: $48:3=16$ (bông)\n\nSau các lần cho nhận, số hoa của Trang giảm đi: $6-2=4$ (bông)\n\nSố hoa ban đầu của Trang là: $16+4=20$ (bông)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 34",
+  "dap_an": "C",
+  "ghi_chu_nghi": "nhiều cách: (1) coi cả công việc là 1, mỗi giờ làm được phân số công việc rồi lấy 1 chia tổng (đã dùng, bám quan hệ gốc); (2) coi công việc là 12 phần (BCNN của 4 và 6) — không dùng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc cho trước thời gian làm một mình của từng người, nên coi cả công việc là $1$ rồi tính mỗi giờ từng người làm được bao nhiêu phần công việc; cùng làm thì cộng hai phần việc làm được trong một giờ.\n\n**Bước 1.** Coi cả công việc là $1$, tính xem trong một giờ mỗi người làm được bao nhiêu phần công việc bằng cách lấy $1$ chia cho số giờ làm một mình.\n\n**Bước 2.** Cộng hai phân số vừa tìm (quy đồng mẫu số) để biết trong một giờ cả hai người cùng làm được bao nhiêu phần công việc.\n\n**Bước 3.** Lấy $1$ chia cho phần công việc làm được trong một giờ để tìm số giờ cùng làm xong.\n\n**Bước 4.** Đổi phần giờ lẻ sang phút bằng cách nhân với $60$ để có kết quả dạng giờ và phút.\n\n**Chú ý:** Không cộng số giờ của hai người ($4+6=10$), vì cùng làm thì xong nhanh hơn từng người làm riêng.\n\n**Phần 2. Trình bày**\n\nCoi cả công việc là $1$.\n\nMột giờ người thứ nhất làm được: $1:4=\\dfrac{1}{4}$ (công việc)\n\nMột giờ người thứ hai làm được: $1:6=\\dfrac{1}{6}$ (công việc)\n\nMột giờ cả hai người làm được: $\\dfrac{1}{4}+\\dfrac{1}{6}=\\dfrac{3}{12}+\\dfrac{2}{12}=\\dfrac{5}{12}$ (công việc)\n\nThời gian để cả hai người cùng làm xong là: $1:\\dfrac{5}{12}=\\dfrac{12}{5}$ (giờ)\n\nĐổi: $\\dfrac{12}{5}$ giờ $=2\\dfrac{2}{5}$ giờ\n\n$\\dfrac{2}{5}$ giờ $=\\dfrac{2}{5}\\times 60=24$ phút\n\nVậy $\\dfrac{12}{5}$ giờ $=2$ giờ $24$ phút\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 35",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chiều cao vừa ngắn hơn đáy lớn $4$ m, vừa dài hơn đáy bé $5$ m, nên đáy lớn hơn đáy bé đúng $4+5$ mét; kết hợp với \"đáy lớn gấp $2$ lần đáy bé\" thì đây là bài hiệu – tỉ.\n\n**Bước 1.** So sánh ba đoạn: chiều cao hơn đáy bé $5$ m và kém đáy lớn $4$ m, từ đó tìm xem đáy lớn hơn đáy bé bao nhiêu mét.\n\n**Bước 2.** Đáy lớn gấp $2$ lần đáy bé nên đáy bé là $1$ phần, đáy lớn là $2$ phần; hiệu hai đáy chính là $1$ phần, nên tìm được độ dài đáy bé rồi đáy lớn.\n\n**Bước 3.** Tìm chiều cao bằng cách lấy đáy bé cộng thêm $5$ m (hoặc lấy đáy lớn trừ đi $4$ m để kiểm tra lại).\n\n**Bước 4.** Dùng công thức diện tích hình thang: tổng hai đáy nhân chiều cao rồi chia $2$, sau đó đối chiếu với bốn phương án.\n\n**Chú ý:** Phải cộng cả hai đáy rồi mới nhân với chiều cao, đừng chỉ dùng đáy lớn hay đáy bé.\n\n**Phần 2. Trình bày**\n\nChiều cao hơn đáy bé $5$ m và kém đáy lớn $4$ m nên đáy lớn hơn đáy bé là: $5+4=9$ (m)\n\nĐáy lớn gấp $2$ lần đáy bé nên đáy bé là $1$ phần, đáy lớn là $2$ phần như thế.\n\nTa có sơ đồ:\n\n(Đáy lớn 2 phần; đáy bé 1 phần, đáy lớn hơn đáy bé 9 m; chiều cao bằng đáy bé thêm 5 m)\n\nHiệu số phần bằng nhau là: $2-1=1$ (phần)\n\nĐộ dài đáy bé là: $9:1=9$ (m)\n\nĐộ dài đáy lớn là: $9\\times 2=18$ (m)\n\nChiều cao thửa ruộng là: $9+5=14$ (m)\n\nDiện tích thửa ruộng là: $(18+9)\\times 14:2=189$ ($\\text{m}^2$)\n\nChọn D.",
+  "so_do_mo_ta": {
+   "tieu_de": "Thửa ruộng hình thang",
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Đáy lớn",
+     "phan": 2
+    },
+    {
+     "nhan": "Đáy bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều cao",
+     "phan": 1,
+     "them": "5 m"
+    }
+   ],
+   "hieu": "9 m"
+  }
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 36",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lít nước bằng số đề-xi-mét khối ($1$ lít $=1\\ \\text{dm}^3$), nên đổi mọi kích thước ra đề-xi-mét rồi tìm chiều cao lớp nước; mặt nước cách thành bể bằng chiều cao bể trừ chiều cao lớp nước.\n\n**Bước 1.** Đổi chiều dài $1,2$ m ra đề-xi-mét và đổi $432$ lít ra đề-xi-mét khối để mọi số đo cùng một hệ đơn vị.\n\n**Bước 2.** Tính diện tích đáy bể bằng chiều dài nhân chiều rộng, rồi lấy thể tích nước chia cho diện tích đáy để được chiều cao lớp nước.\n\n**Bước 3.** Lấy chiều cao của bể trừ chiều cao lớp nước để biết mặt nước cách miệng bể bao nhiêu đề-xi-mét.\n\n**Bước 4.** Đổi kết quả sang xăng-ti-mét vì các phương án đều tính bằng xăng-ti-mét, rồi chọn phương án đúng.\n\n**Chú ý:** Chiều dài cho bằng mét còn chiều rộng và chiều cao cho bằng đề-xi-mét, nên đừng quên đổi mét ra đề-xi-mét trước khi tính.\n\n**Phần 2. Trình bày**\n\nĐổi: $1,2$ m $=12$ dm; $432$ lít $=432\\ \\text{dm}^3$\n\nDiện tích đáy bể là: $12\\times 8=96$ ($\\text{dm}^2$)\n\nChiều cao lớp nước là: $432:96=4,5$ (dm)\n\nMặt nước cách thành bể là: $6-4,5=1,5$ (dm)\n\nĐổi: $1,5$ dm $=15$ cm\n\nChọn A.",
+  "ghi_chu_nghi": "Đề hỏi \"mặt nước cách thành bể\": hiểu là cách mép trên (miệng) bể, tức chiều cao bể 6 dm trừ chiều cao lớp nước 4,5 dm = 1,5 dm = 15 cm (phương án A)."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 37",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi cộng số bạn thích táo với số bạn thích xoài thì những bạn thích cả hai loại bị đếm hai lần; vì ai cũng thích ít nhất một loại nên phần đếm thừa ấy chính là số bạn thích cả hai.\n\n**Bước 1.** Cộng số bạn thích táo với số bạn thích xoài để được tổng số lần mà các bạn trong lớp được đếm.\n\n**Bước 2.** So tổng đó với sĩ số lớp: mỗi bạn thích đúng một loại được đếm một lần, mỗi bạn thích cả hai loại được đếm hai lần.\n\n**Bước 3.** Phần vượt quá sĩ số của lớp chính là số bạn thích cả hai loại, vì mỗi bạn như thế bị đếm thừa đúng một lần.\n\n**Chú ý:** Cách này chỉ dùng được vì đề cho biết mỗi bạn đều thích ít nhất một trong hai loại quả.\n\n**Phần 2. Trình bày**\n\nTổng số lần đếm là: $22+23=45$ (lần)\n\nSố bạn thích cả táo và xoài là: $45-32=13$ (bạn)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 38",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số khách không đổi nên số đò cần dùng tỉ lệ nghịch với số người ngồi mỗi đò; còn \"thiếu $1$ đò\" và \"thừa $1$ đò\" cho biết hai cách xếp dùng số đò hơn kém nhau $2$ đò.\n\n**Bước 1.** So với số đò đang có, cách xếp $6$ người một đò cần thêm $1$ đò, cách xếp $8$ người một đò thì thừa $1$ đò; vậy cách xếp $6$ người dùng nhiều hơn cách xếp $8$ người mấy đò.\n\n**Bước 2.** Số khách không đổi mà mỗi đò chở $8$ người nhiều hơn mỗi đò chở $6$ người, nên số đò ở cách xếp $8$ người chỉ bằng một phân số của số đò ở cách xếp $6$ người; suy ra tỉ số hai số đò.\n\n**Bước 3.** Có hiệu và tỉ số của hai số đò, ta làm bài hiệu – tỉ bằng sơ đồ để tìm số đò ở cách xếp $6$ người một đò.\n\n**Bước 4.** Số khách bằng số đò nhân với số người trên mỗi đò (cùng một cách xếp), rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Mỗi đò đều ngồi đủ số người theo cách xếp, nên số khách bằng số đò nhân với số người mỗi đò, không phải bằng số đò.\n\n**Phần 2. Trình bày**\n\nCách xếp $6$ người một đò dùng nhiều hơn cách xếp $8$ người một đò là: $1+1=2$ (đò)\n\nSố khách không đổi, mà $8:6=\\dfrac{4}{3}$ nên số đò theo cách $8$ người một đò bằng $\\dfrac{3}{4}$ số đò theo cách $6$ người một đò.\n\nTa có sơ đồ:\n\n(Số đò xếp 6 người một đò: 4 phần; số đò xếp 8 người một đò: 3 phần; hơn kém nhau 2 đò)\n\nHiệu số phần bằng nhau là: $4-3=1$ (phần)\n\nSố đò theo cách $6$ người một đò là: $2:1\\times 4=8$ (đò)\n\nSố khách trên bến là: $6\\times 8=48$ (người)\n\nChọn C.",
+  "so_do_mo_ta": {
+   "tieu_de": "Số đò theo hai cách xếp",
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "6 người/đò",
+     "phan": 4
+    },
+    {
+     "nhan": "8 người/đò",
+     "phan": 3
+    }
+   ],
+   "hieu": "2 đò"
+  },
+  "ghi_chu_nghi": "Hiểu \"thiếu 1 đò\" = xếp 6 người/đò thì cần thêm 1 đò so với số đò đang có; \"thừa 1 đò\" = xếp 8 người/đò thì dùng ít hơn số đò đang có 1 đò; mọi đò đều đầy. Kết quả 48 người (8 đò rồi 6 đò), chỉ phương án C khớp. Nhiều cách: cách khác là 6×(số đò cách 8 người + 2) = 8×(số đò cách 8 người); chọn cách hiệu – tỉ (tỉ lệ nghịch) cho đúng khuôn tiểu học — chờ CEO chốt."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 39",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác màu xanh không có cạnh nào để tính ngay, nhưng nó nằm trong một tam giác vuông lớn dễ tính; lấy tam giác lớn trừ đi hai tam giác ở hai bên thì còn lại tam giác màu xanh.\n\n**Bước 1.** Đặt tên các điểm trên hình và nhận ra tam giác màu xanh có một đỉnh nằm bên trong tam giác vuông lớn tạo bởi hai hình chữ nhật.\n\n**Bước 2.** Tính diện tích tam giác vuông lớn từ hai cạnh góc vuông của nó: cạnh đứng là chiều cao hình chữ nhật bên trái, cạnh nằm ngang là tổng hai chiều rộng.\n\n**Bước 3.** Tính diện tích hai tam giác còn lại, mỗi tam giác có một cạnh trên cạnh của tam giác lớn và chiều cao đọc được từ số đo trên hình.\n\n**Bước 4.** Lấy diện tích tam giác lớn trừ diện tích hai tam giác vừa tính để được diện tích tam giác màu xanh.\n\n**Chú ý:** Đừng tính tam giác màu xanh như một tam giác có đáy $6$ cm và đường cao $3$ cm, vì đáy và đường cao như vậy không có trên hình.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, gọi $A$ là đỉnh trên bên trái, $O$ là đỉnh dưới bên trái của hình chữ nhật bên trái, $C$ là đỉnh dưới bên phải của hình chữ nhật bên phải, $M$ là đỉnh trên bên trái của hình chữ nhật bên phải. Tam giác màu xanh là tam giác $AMC$.\n\nTam giác $AOC$ vuông tại $O$ có $OA=6$ cm và $OC=3+6=9$ (cm)\n\nDiện tích tam giác $AOC$ là: $6\\times 9:2=27$ ($\\text{cm}^2$)\n\nTam giác $AOM$ có đáy $OA=6$ cm, chiều cao $3$ cm (bằng chiều rộng hình chữ nhật bên trái), diện tích là: $6\\times 3:2=9$ ($\\text{cm}^2$)\n\nTam giác $MOC$ có đáy $OC=9$ cm, chiều cao $3$ cm (bằng chiều cao hình chữ nhật bên phải), diện tích là: $9\\times 3:2=13,5$ ($\\text{cm}^2$)\n\nDiện tích tam giác $AMC$ là: $27-9-13,5=4,5$ ($\\text{cm}^2$)\n\nChọn C.",
+  "ghi_chu_nghi": "Đề không đặt tên điểm; tên A, O, M, C do lời giải tự đặt theo hình. Theo hình: M là đỉnh trên bên trái của hình chữ nhật 6 cm × 3 cm, nằm trên cạnh bên phải của hình chữ nhật 3 cm × 6 cm (cách đáy 3 cm); hai cạnh đáy thẳng hàng nên OC = 3 + 6 = 9 cm."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 40",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai đường cao $BH$ và $CK$ cắt tứ giác thành ba phần dễ tính: tam giác vuông $ABH$, hình thang vuông $HBCK$ và tam giác vuông $CKD$; cộng ba diện tích lại là xong.\n\n**Bước 1.** Nhận ra theo dấu góc vuông trên hình thì $BH$ và $CK$ đều vuông góc với $AD$, nên chia được tứ giác thành ba phần.\n\n**Bước 2.** Tính diện tích tam giác $ABH$ với đáy là $AH$ và chiều cao là $BH$.\n\n**Bước 3.** Tính diện tích hình thang $HBCK$ có hai đáy là $BH$ và $CK$ (hai cạnh song song) còn chiều cao là $HK$.\n\n**Bước 4.** Tính diện tích tam giác $CKD$ với đáy là $KD$ và chiều cao là $CK$, rồi cộng ba diện tích lại.\n\n**Chú ý:** Ở hình thang $HBCK$, hai đáy là hai cạnh đứng $BH$ và $CK$, chiều cao nằm ngang là $HK$; đừng lẫn với $BC$.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, $BH$ và $CK$ vuông góc với $AD$; $AH=3$ cm, $HK=4$ cm, $KD=5$ cm, $BH=5$ cm, $CK=4$ cm.\n\nDiện tích tam giác $ABH$ là: $3\\times 5:2=7,5$ ($\\text{cm}^2$)\n\nDiện tích hình thang $HBCK$ là: $(5+4)\\times 4:2=18$ ($\\text{cm}^2$)\n\nDiện tích tam giác $CKD$ là: $5\\times 4:2=10$ ($\\text{cm}^2$)\n\nDiện tích tứ giác $ABCD$ là: $7,5+18+10=35,5$ ($\\text{cm}^2$)\n\nChọn D.",
+  "ghi_chu_nghi": "Đề chữ không nói BH, CK vuông góc với AD; lấy từ dấu góc vuông trên hình."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 41",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu thay đổi theo hai chiều ngược nhau: thêm vào số bị trừ thì hiệu tăng bấy nhiêu, thêm vào số trừ thì hiệu giảm bấy nhiêu; gộp hai thay đổi thì biết hiệu mới hơn hay kém hiệu cũ bao nhiêu.\n\n**Bước 1.** Khi thêm $3$ đơn vị vào số bị trừ thì hiệu tăng thêm đúng $3$ đơn vị.\n\n**Bước 2.** Khi thêm $20$ đơn vị vào số trừ thì hiệu giảm đi đúng $20$ đơn vị; gộp hai thay đổi để biết hiệu mới kém hiệu cũ bao nhiêu.\n\n**Bước 3.** Hiệu cũ bằng hiệu mới cộng với phần đã bị giảm đi, sau đó đối chiếu với các phương án.\n\n**Chú ý:** Hai thay đổi ngược chiều nhau nên phải lấy $20$ trừ $3$, không được cộng $3$ với $20$.\n\n**Phần 2. Trình bày**\n\nThêm $3$ vào số bị trừ thì hiệu tăng $3$ đơn vị; thêm $20$ vào số trừ thì hiệu giảm $20$ đơn vị.\n\nHiệu mới kém hiệu cũ là: $20-3=17$ (đơn vị)\n\nHiệu ban đầu là: $17+17=34$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 42",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi vòng quay, xe đạp đi được đúng bằng chu vi của bánh xe, nên quãng đường bằng chu vi bánh xe nhân với số vòng quay.\n\n**Bước 1.** Tính chu vi bánh xe từ bán kính theo công thức chu vi hình tròn: bán kính nhân $2$ nhân $3,14$.\n\n**Bước 2.** Nhân chu vi bánh xe với số vòng quay để được quãng đường xe đạp chạy, tính bằng đề-xi-mét.\n\n**Bước 3.** Đổi kết quả sang mét vì các phương án đều tính bằng mét, rồi chọn phương án đúng.\n\n**Chú ý:** Bán kính khác đường kính, và kết quả đổi từ đề-xi-mét sang mét phải chia cho $10$.\n\n**Phần 2. Trình bày**\n\nChu vi bánh xe là: $4\\times 2\\times 3,14=25,12$ (dm)\n\nQuãng đường xe đạp chạy được là: $25,12\\times 200=5024$ (dm)\n\nĐổi: $5024$ dm $=502,4$ m\n\nChọn D."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 43",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số chia hết cho $6$ liên tiếp nhau hơn kém nhau $6$ đơn vị nên lập thành một dãy cách đều; tổng của dãy cách đều bằng (số đầu cộng số cuối) nhân số số hạng rồi chia $2$.\n\n**Bước 1.** Tìm số lớn nhất chia hết cho $6$ mà nhỏ hơn $203$ bằng cách chia $203$ cho $6$ rồi lấy thương nhân với $6$.\n\n**Bước 2.** Số đầu là $6$, số cuối vừa tìm, khoảng cách là $6$; tính số số hạng của dãy cách đều.\n\n**Bước 3.** Dùng công thức tổng dãy cách đều để tính tổng, rồi đối chiếu với các phương án.\n\n**Chú ý:** Số $0$ cũng chia hết cho $6$ nhưng cộng thêm $0$ không làm đổi tổng.\n\n**Phần 2. Trình bày**\n\n$203:6=33$ (dư $5$) nên số lớn nhất chia hết cho $6$ và nhỏ hơn $203$ là: $6\\times 33=198$\n\nCác số cần cộng là: $6;\\ 12;\\ 18;\\ \\ldots;\\ 198$\n\nSố số hạng của dãy là: $(198-6):6+1=33$ (số)\n\nTổng các số đó là: $(198+6)\\times 33:2=3366$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 44",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Kết quả sau cùng phụ thuộc vào hai số bị xoá đầu tiên, mà lúc đầu chỉ có $3$ cách chọn $2$ số trong $3$ số; tính hết ba trường hợp rồi tìm số không xuất hiện.\n\n**Bước 1.** Liệt kê ba cách chọn cặp số bị xoá đầu tiên: ($90$ và $72$), ($90$ và $18$), ($72$ và $18$).\n\n**Bước 2.** Với mỗi cách, tính trung bình cộng của hai số bị xoá rồi viết số đó lên bảng cùng với số còn lại.\n\n**Bước 3.** Lấy trung bình cộng của hai số trên bảng ở mỗi trường hợp để được kết quả sau cùng.\n\n**Bước 4.** So ba kết quả tìm được với bốn phương án; phương án nào không trùng kết quả nào thì được chọn.\n\n**Chú ý:** Đề hỏi số KHÔNG thể là kết quả sau cùng; số $54$ có xuất hiện nhưng chỉ là số trung gian, không phải kết quả cuối.\n\n**Phần 2. Trình bày**\n\nCách 1: xoá $90$ và $72$, viết $(90+72):2=81$; còn $81$ và $18$ nên kết quả là $(81+18):2=49,5$\n\nCách 2: xoá $90$ và $18$, viết $(90+18):2=54$; còn $54$ và $72$ nên kết quả là $(54+72):2=63$\n\nCách 3: xoá $72$ và $18$, viết $(72+18):2=45$; còn $45$ và $90$ nên kết quả là $(45+90):2=67,5$\n\nKết quả sau cùng chỉ có thể là $49,5$; $63$ hoặc $67,5$. Số $54$ không phải kết quả sau cùng.\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 45",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Em cho anh bi thì tổng số bi của hai anh em không đổi, nên mọi tỉ số đều quy về phân số của tổng; số bi của anh lúc đầu bằng $\\dfrac{1}{3}$ tổng, lúc sau bằng $\\dfrac{2}{5}$ tổng, phần tăng thêm ứng với $3$ viên.\n\n**Bước 1.** Lúc đầu em gấp $2$ lần anh nên tổng gồm $3$ phần bằng nhau, từ đó biết số bi của anh bằng bao nhiêu phần tổng.\n\n**Bước 2.** Lúc sau em gấp $1,5$ lần anh, đổi $1,5$ ra phân số rồi tìm số bi của anh bằng bao nhiêu phần tổng.\n\n**Bước 3.** Anh nhận thêm $3$ viên nên hiệu hai phân số vừa tìm chính là phần tổng ứng với $3$ viên.\n\n**Bước 4.** Lấy $3$ viên chia cho phân số ứng với nó để tìm tổng số bi của hai anh em.\n\n**Chú ý:** Tổng không đổi nhưng phần của mỗi người đã đổi, nên đừng coi $3$ viên là một phần của lúc đầu.\n\n**Phần 2. Trình bày**\n\nLúc đầu em gấp $2$ lần anh nên số bi của anh bằng $\\dfrac{1}{3}$ tổng số bi.\n\nLúc sau em gấp $1,5=\\dfrac{3}{2}$ lần anh nên số bi của anh bằng $\\dfrac{2}{5}$ tổng số bi.\n\n$3$ viên ứng với: $\\dfrac{2}{5}-\\dfrac{1}{3}=\\dfrac{1}{15}$ (tổng số bi)\n\nTổng số bi của hai anh em là: $3:\\dfrac{1}{15}=45$ (viên)\n\nChọn B."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 46",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba lớp ăn bằng nhau nên lớp 5C ăn $\\dfrac{1}{3}$ tổng số kem, và kem đó do lớp 5A, 5B nhường; số tiền $800\\,000$ đồng là giá của phần kem lớp 5C ăn, chia cho 5A và 5B theo tỉ lệ số kem mỗi lớp nhường.\n\n**Bước 1.** Tính tổng số kem của hai lớp mang đi rồi chia đều cho ba lớp để biết mỗi lớp ăn bao nhiêu kilôgam.\n\n**Bước 2.** Lớp 5A ăn xong còn dư bao nhiêu thì đó là phần kem 5A nhường cho lớp 5C.\n\n**Bước 3.** Lớp 5C ăn đúng số kem mà hai lớp kia nhường, nên tìm phần kem 5A nhường chiếm bao nhiêu phần số kem 5C ăn.\n\n**Bước 4.** Lấy số tiền $800\\,000$ đồng nhân với phân số vừa tìm để được số tiền 5A nhận.\n\n**Chú ý:** Số tiền chia theo số kem mỗi lớp nhường chứ không chia theo số kem mỗi lớp mang đi.\n\n**Phần 2. Trình bày**\n\nTổng số kem hai lớp mang đi là: $12+8=20$ (kg)\n\nMỗi lớp ăn số kem là: $20:3=\\dfrac{20}{3}$ (kg)\n\nSố kem lớp 5A nhường cho lớp 5C là: $12-\\dfrac{20}{3}=\\dfrac{16}{3}$ (kg)\n\nSố kem 5A nhường bằng số phần kem 5C ăn là: $\\dfrac{16}{3}:\\dfrac{20}{3}=\\dfrac{4}{5}$ (số kem 5C ăn)\n\nSố tiền lớp 5A nhận được là: $800000\\times\\dfrac{4}{5}=640000$ (đồng)\n\nChọn B.",
+  "ghi_chu_nghi": "Hiểu 800 000 đồng là giá trị phần kem lớp 5C ăn (20/3 kg), chia cho 5A và 5B theo số kem nhường (16/3 kg và 4/3 kg)."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 47",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tiền bán mỗi ngày $=$ giá bán $\\times$ số hoa bán; so với vốn ($=$ giá nhập $\\times$ tổng số hoa) thì tiền bán mỗi ngày bằng tỉ số phần trăm của giá bán so với giá nhập nhân với tỉ số phần trăm số hoa đã bán so với tổng số hoa. Cộng ba ngày rồi trừ vốn.\n\n**Bước 1.** Tính số hoa bán mỗi ngày theo phần trăm tổng số hoa: ngày thứ nhất đã cho, ngày thứ hai bán một nửa số còn lại, ngày thứ ba bán hết số hoa còn lại.\n\n**Bước 2.** Mỗi ngày, nhân phần trăm giá bán (so với giá nhập) với phần trăm số hoa bán để biết tiền bán bằng bao nhiêu phần trăm vốn; nhân hai tỉ số phần trăm thì đổi ra số thập phân.\n\n**Bước 3.** Cộng tiền bán của ba ngày để biết tổng số tiền thu được so với vốn.\n\n**Bước 4.** Lấy tổng số tiền thu được trừ vốn ($100\\%$) để được phần trăm lãi so với số tiền nhập hoa.\n\n**Chú ý:** Ngày thứ hai chỉ bán một nửa số hoa còn lại sau ngày thứ nhất, không phải một nửa tổng số hoa.\n\n**Phần 2. Trình bày**\n\nCoi số tiền nhập hoa là $100\\%$ (giá nhập $\\times$ tổng số hoa).\n\nSố hoa bán ngày thứ hai là: $(100\\%-34\\%):2=33\\%$ (tổng số hoa)\n\nSố hoa bán ngày thứ ba là: $100\\%-34\\%-33\\%=33\\%$ (tổng số hoa)\n\nTiền bán ngày thứ nhất so với vốn là: $200\\%\\times 34\\%=2\\times 0,34=0,68=68\\%$\n\nTiền bán ngày thứ hai so với vốn là: $120\\%\\times 33\\%=1,2\\times 0,33=0,396=39,6\\%$\n\nTiền bán ngày thứ ba so với vốn là: $50\\%\\times 33\\%=0,5\\times 0,33=0,165=16,5\\%$\n\nTổng số tiền thu được so với vốn là: $68\\%+39,6\\%+16,5\\%=124,1\\%$\n\nPhần trăm lãi so với số tiền nhập hoa là: $124,1\\%-100\\%=24,1\\%$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 48",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi số bóng đang bật là một tích toàn thừa số $2$ (như $128=2\\times 2\\times 2\\times 2\\times 2\\times 2\\times 2$) thì mỗi vòng tắt đúng một nửa số bóng, và bóng được bỏ cách đầu tiên luôn được giữ lại đến cuối; vì thế phải tắt bớt cho còn $128$ bóng rồi xem bóng nào được bỏ cách đầu tiên.\n\n**Bước 1.** Tìm số lớn nhất dạng tích toàn thừa số $2$ mà không vượt quá $203$, rồi tính phải tắt bao nhiêu bóng để số bóng đang bật còn đúng bằng số đó.\n\n**Bước 2.** Các bóng bị tắt trước tiên là những bóng ở vị trí lẻ liên tiếp $1;\\ 3;\\ 5;\\ \\ldots$, nên tìm vị trí của bóng bị tắt cuối cùng trong lượt tắt bớt này.\n\n**Bước 3.** Bóng đang bật nằm ngay sau đó sẽ là bóng được bỏ cách đầu tiên; từ lúc ấy số bóng là tích toàn thừa số $2$ nên bóng đó sống sót đến cuối cùng.\n\n**Chú ý:** Quy luật \"bóng được bỏ cách đầu tiên sống sót\" chỉ dùng được khi số bóng đang bật là $2;\\ 4;\\ 8;\\ 16;\\ \\ldots$, vì vậy phải tắt bớt trước rồi mới áp dụng.\n\n**Phần 2. Trình bày**\n\nVì $128$ nhỏ hơn $203$ còn $256$ lớn hơn $203$ nên cần để lại $128$ bóng đang bật.\n\nSố bóng cần tắt bớt là: $203-128=75$ (bóng)\n\nCác bóng bị tắt lần lượt là bóng số $1;\\ 3;\\ 5;\\ \\ldots$ nên bóng bị tắt thứ $75$ ở vị trí: $75\\times 2-1=149$\n\nKhi đó còn $128$ bóng đang bật, và bóng đang bật ngay sau bóng $149$ là bóng $150$, được bỏ cách đầu tiên.\n\nVới $128$ bóng, mỗi vòng tắt một nửa số bóng nên còn lại $64;\\ 32;\\ 16;\\ 8;\\ 4;\\ 2;\\ 1$ bóng, và bóng $150$ luôn được giữ lại.\n\nVậy bóng đèn cuối cùng còn bật ở vị trí số $150$. Chọn A."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 49",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết $4$ con ngựa đổi được bao nhiêu thỏ thì phải đổi mọi thứ về ngựa; nhân điều kiện \"$1$ bò và $1$ ngựa\" lên $5$ lần để có \"$5$ bò\", rồi thay $5$ bò bằng $3$ ngựa.\n\n**Bước 1.** Nhân điều kiện \"$1$ bò và $1$ ngựa đổi được $44$ thỏ\" lên $5$ lần để có $5$ bò và $5$ ngựa.\n\n**Bước 2.** Thay $5$ bò bằng $3$ ngựa (theo tỉ giá bò – ngựa) để biết $5$ bò và $5$ ngựa tương đương bao nhiêu ngựa, từ đó biết số ngựa ứng với số thỏ đã tìm.\n\n**Bước 3.** $4$ con ngựa bằng một nửa số ngựa vừa tìm, nên chia số thỏ cho $2$ để được kết quả.\n\n**Chú ý:** Số thỏ đổi một con ngựa là số thập phân, nhưng không sao vì ta đổi luôn $4$ con ngựa cùng lúc.\n\n**Phần 2. Trình bày**\n\n$5$ bò và $5$ ngựa đổi được số thỏ là: $44\\times 5=220$ (con thỏ)\n\n$5$ bò đổi được $3$ ngựa nên $5$ bò và $5$ ngựa bằng số ngựa là: $3+5=8$ (con ngựa)\n\n$8$ con ngựa đổi được $220$ con thỏ.\n\n$8$ con ngựa gấp $4$ con ngựa là: $8:4=2$ (lần)\n\nSố thỏ đổi được $4$ con ngựa là: $220:2=110$ (con thỏ)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "ARC 2022-CB · 50",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi hình lập phương nhỏ có $6$ mặt; chỉ những mặt nằm trên bề mặt khối lớn mới được sơn, nên số mặt không được sơn bằng tổng số mặt của các hình nhỏ trừ đi số mặt đã sơn.\n\n**Bước 1.** Tìm xem mỗi cạnh của khối lớn xếp được mấy hình nhỏ bằng cách tìm số nhân ba lần với chính nó ra $64$.\n\n**Bước 2.** Tính số mặt nhỏ được sơn: khối lớn có $6$ mặt, mỗi mặt gồm một hình vuông các mặt nhỏ theo cạnh vừa tìm.\n\n**Bước 3.** Tính tổng số mặt của tất cả hình lập phương nhỏ rồi trừ đi số mặt đã được sơn để ra số mặt không được sơn.\n\n**Chú ý:** Đề hỏi số mặt không được sơn của tất cả các hình nhỏ, không phải số hình nhỏ nằm kín bên trong.\n\n**Phần 2. Trình bày**\n\nVì $4\\times 4\\times 4=64$ nên mỗi cạnh của khối lớn có $4$ hình lập phương nhỏ.\n\nSố mặt nhỏ trên một mặt của khối lớn là: $4\\times 4=16$ (mặt)\n\nSố mặt nhỏ được sơn là: $16\\times 6=96$ (mặt)\n\nTổng số mặt của $64$ hình lập phương nhỏ là: $64\\times 6=384$ (mặt)\n\nSố mặt không được sơn là: $384-96=288$ (mặt)\n\nChọn A."
+ }
+]

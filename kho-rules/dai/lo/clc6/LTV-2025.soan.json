@@ -1,0 +1,193 @@
+[
+ {
+  "ma_nguon": "LTV 2025 · 1",
+  "dap_an": "$2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các phân số có mẫu số khác nhau nên phải quy đồng trước; mẫu số chung nhỏ nhất là $24$ vì $24$ chia hết cho cả $4$, $8$ và $12$.\n\n**Bước 1.** Nhìn bốn mẫu số $4$, $8$, $24$, $12$ để chọn mẫu số chung: số $24$ chia hết cho tất cả các mẫu số còn lại nên chọn làm mẫu số chung.\n\n**Bước 2.** Quy đồng từng phân số về mẫu số $24$ bằng cách nhân cả tử số và mẫu số với cùng một số, riêng phân số mẫu $24$ giữ nguyên.\n\n**Bước 3.** Cộng trừ các tử số theo thứ tự từ trái sang phải, giữ nguyên mẫu số chung.\n\n**Bước 4.** Rút gọn phân số vừa tìm được, nếu tử số chia hết cho mẫu số thì kết quả là một số tự nhiên.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{4}+\\dfrac{3}{8}+\\dfrac{19}{24}-\\dfrac{5}{12}$\n\n$=\\dfrac{30}{24}+\\dfrac{9}{24}+\\dfrac{19}{24}-\\dfrac{10}{24}$\n\n$=\\dfrac{30+9+19-10}{24}$\n\n$=\\dfrac{48}{24}$\n\n$=2$"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 2",
+  "dap_an": "$x=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phép tính có dạng \"số bị trừ chưa biết\": $3\\times x$ trừ đi một hỗn số thì được hiệu; muốn tìm $3\\times x$ ta lấy hiệu cộng với số trừ, rồi tìm thừa số $x$.\n\n**Bước 1.** Nhận ra $3\\times x$ là số bị trừ, $3\\dfrac{5}{9}$ là số trừ và $\\dfrac{76}{9}$ là hiệu, nên số bị trừ bằng hiệu cộng số trừ.\n\n**Bước 2.** Đổi số trừ $3\\dfrac{5}{9}$ ra phân số cùng mẫu số $9$ với $\\dfrac{76}{9}$ (số này nhỏ nên đổi ra phân số được), rồi cộng hai phân số cùng mẫu.\n\n**Bước 3.** Tìm thừa số chưa biết $x$ bằng cách lấy tích vừa tìm chia cho thừa số đã biết là $3$.\n\nThử lại: thay $x$ vừa tìm vào vế trái, tính ra phải bằng $\\dfrac{76}{9}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}3\\times x-3\\dfrac{5}{9}=\\dfrac{76}{9}\\\\ 3\\times x=\\dfrac{76}{9}+3\\dfrac{5}{9}\\\\ 3\\times x=\\dfrac{76}{9}+\\dfrac{32}{9}\\\\ 3\\times x=\\dfrac{108}{9}\\\\ 3\\times x=12\\\\ x=12:3\\\\ x=4\\end{array}$"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 3",
+  "dap_an": "$75\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác vuông tại $A$ thì hai cạnh góc vuông $AB$ và $AC$ chính là đáy và đường cao của nhau, nên diện tích bằng $AB\\times AC:2$. Hai cạnh này có tổng và tỉ số, nên tìm chúng bằng cách giải bài toán tổng – tỉ.\n\n**Bước 1.** Đổi \"$AB$ gấp rưỡi $AC$\" thành tỉ số: $AB$ bằng $\\dfrac{3}{2}$ của $AC$, nên $AC$ là $2$ phần thì $AB$ là $3$ phần như thế.\n\n**Bước 2.** Tính tổng số phần bằng nhau rồi chia $25$ cm cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 3.** Tìm độ dài từng cạnh góc vuông bằng cách lấy giá trị một phần nhân với số phần của cạnh đó.\n\n**Bước 4.** Vì tam giác vuông tại $A$ nên lấy tích hai cạnh góc vuông chia $2$ để tìm diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AB$ gấp rưỡi $AC$ nên $AB$ bằng $\\dfrac{3}{2}$ của $AC$. Coi $AC$ là $2$ phần thì $AB$ là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Cạnh AC 2 phần; cạnh AB 3 phần; tổng 25 cm)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nGiá trị của một phần là: $25:5=5$ (cm)\n\nĐộ dài cạnh $AC$ là: $5\\times 2=10$ (cm)\n\nĐộ dài cạnh $AB$ là: $5\\times 3=15$ (cm)\n\nDiện tích tam giác $ABC$ là: $15\\times 10:2=75$ ($\\text{cm}^2$)\n\nĐáp số: $75\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai cạnh góc vuông",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Cạnh AC",
+     "phan": 2
+    },
+    {
+     "nhan": "Cạnh AB",
+     "phan": 3
+    }
+   ],
+   "tong": "25 cm"
+  }
+ },
+ {
+  "ma_nguon": "LTV 2025 · 4",
+  "dap_an": "$3,26$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức chỉ có các phép trừ liên tiếp nên thực hiện lần lượt từ trái sang phải; khi trừ số thập phân phải viết các dấu phẩy thẳng cột.\n\n**Bước 1.** Thực hiện phép trừ đầu tiên $73,48-39,34$ vì phép tính đứng ở bên trái, viết các dấu phẩy thẳng cột.\n\n**Bước 2.** Lấy kết quả vừa tìm được trừ tiếp cho $30,88$, vẫn viết dấu phẩy thẳng cột để không nhầm hàng.\n\n**Bước 3.** Thử lại bằng phép cộng: cộng kết quả với hai số đã trừ thì phải được lại số ban đầu.\n\n**Phần 2. Trình bày**\n\n$73,48-39,34-30,88$\n\n$=34,14-30,88$\n\n$=3,26$"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 5",
+  "dap_an": "Số bé: $625$; số lớn: $1500$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho tổng của hai số và tỉ số của chúng, đó là dấu hiệu của bài toán tổng – tỉ: tỉ số $\\dfrac{5}{12}$ cho biết số bé là $5$ phần thì số lớn là $12$ phần bằng nhau.\n\n**Bước 1.** Đổi tỉ số $\\dfrac{5}{12}$ thành số phần bằng nhau: số bé gồm $5$ phần, số lớn gồm $12$ phần như thế.\n\n**Bước 2.** Tính tổng số phần bằng nhau của hai số.\n\n**Bước 3.** Chia tổng $2125$ cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 4.** Nhân giá trị một phần với số phần của từng số để tìm số bé và số lớn.\n\n**Chú ý:** Thử lại bằng cách cộng hai số vừa tìm, tổng phải bằng $2125$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số bé 5 phần; số lớn 12 phần; tổng 2125)\n\nTổng số phần bằng nhau là: $5+12=17$ (phần)\n\nGiá trị của một phần là: $2125:17=125$\n\nSố bé là: $125\\times 5=625$\n\nSố lớn là: $125\\times 12=1500$\n\nĐáp số: Số bé: $625$; số lớn: $1500$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 125,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 5
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 12
+    }
+   ],
+   "tong": "2125"
+  }
+ },
+ {
+  "ma_nguon": "LTV 2025 · 6",
+  "dap_an": "$496$ và $504$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biết trung bình cộng thì biết tổng hai số; các số chẵn liên tiếp hơn kém nhau $2$ đơn vị nên biết số các số chẵn ở giữa thì tính được hiệu. Có tổng và hiệu thì giải bằng bài toán tổng – hiệu.\n\n**Bước 1.** Tìm tổng của hai số: trung bình cộng của hai số nhân với $2$.\n\n**Bước 2.** Hai số chẵn liền nhau hơn kém nhau $2$ đơn vị; giữa hai số có $3$ số chẵn khác nữa nên từ số bé đến số lớn có $4$ khoảng như thế, từ đó tính hiệu.\n\n**Bước 3.** Tìm số bé bằng cách lấy tổng trừ hiệu rồi chia $2$, sau đó tìm số lớn bằng cách cộng số bé với hiệu.\n\n**Chú ý:** Thử lại: viết các số chẵn từ số bé đến số lớn, giữa chúng phải có đúng $3$ số chẵn khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $500\\times 2=1000$\n\nGiữa hai số có $3$ số chẵn khác nữa nên từ số bé đến số lớn có số khoảng là: $3+1=4$ (khoảng)\n\nHiệu của hai số là: $2\\times 4=8$\n\nTa có sơ đồ:\n\n(Số bé 1 phần; số lớn 1 phần và thêm 8; tổng 1000)\n\nSố bé là: $(1000-8):2=496$\n\nSố lớn là: $496+8=504$\n\nĐáp số: $496$ và $504$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 496,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "8"
+    }
+   ],
+   "tong": "1000"
+  }
+ },
+ {
+  "ma_nguon": "LTV 2025 · 7",
+  "dap_an": "$25$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm một phần của cả lớp ta chia số học sinh cả lớp cho mẫu số rồi nhân với tử số; số học sinh nữ là số còn lại sau khi bớt đi số học sinh nam.\n\n**Bước 1.** Số học sinh nam chiếm $\\dfrac{4}{9}$ cả lớp, nên tìm $\\dfrac{4}{9}$ của $45$ học sinh bằng cách chia $45$ cho $9$ rồi nhân với $4$.\n\n**Bước 2.** Số học sinh nữ là phần còn lại, nên lấy số học sinh cả lớp trừ đi số học sinh nam.\n\n**Bước 3.** Kiểm tra lại: số học sinh nữ bằng $\\dfrac{5}{9}$ cả lớp, cũng tìm được bằng cách chia $45$ cho $9$ rồi nhân với $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nam của lớp là: $45:9\\times 4=20$ (học sinh)\n\nSố học sinh nữ của lớp là: $45-20=25$ (học sinh)\n\nĐáp số: $25$ học sinh"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 8",
+  "dap_an": "$144\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi hình chữ nhật là $2$ lần tổng chiều dài và chiều rộng, nên nửa chu vi chính là tổng hai kích thước; có thêm hiệu hai kích thước thì giải bằng bài toán tổng – hiệu.\n\n**Bước 1.** Đổi $70$ dm sang mét để cùng đơn vị với chu vi, vì $1$ m bằng $10$ dm.\n\n**Bước 2.** Tính nửa chu vi, đó là tổng của chiều dài và chiều rộng.\n\n**Bước 3.** Tìm chiều rộng bằng cách lấy tổng trừ hiệu rồi chia $2$, sau đó tìm chiều dài bằng cách cộng chiều rộng với hiệu.\n\n**Bước 4.** Lấy chiều dài nhân chiều rộng để tìm diện tích hình chữ nhật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $70$ dm $=7$ m\n\nNửa chu vi hình chữ nhật (tổng chiều dài và chiều rộng) là: $50:2=25$ (m)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; chiều dài 1 phần và thêm 7 m; tổng 25 m)\n\nChiều rộng hình chữ nhật là: $(25-7):2=9$ (m)\n\nChiều dài hình chữ nhật là: $9+7=16$ (m)\n\nDiện tích hình chữ nhật là: $16\\times 9=144$ ($\\text{m}^2$)\n\nĐáp số: $144\\ \\text{m}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "7 m"
+    }
+   ],
+   "tong": "25 m"
+  }
+ },
+ {
+  "ma_nguon": "LTV 2025 · 9",
+  "dap_an": "$262500$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền tỉ lệ thuận với số ki-lô-gam nho: biết giá $1$ kg thì lấy giá đó nhân với số ki-lô-gam để ra số tiền cần trả. Câu hỏi \"nhiều hơn bao nhiêu tiền\" là so sánh số tiền mua $4,5$ kg với số tiền mua $1$ kg.\n\n**Bước 1.** Tính số tiền phải trả khi mua $4,5$ kg nho khô bằng cách nhân giá $1$ kg với $4,5$.\n\n**Bước 2.** Đọc kĩ câu hỏi: so sánh số tiền mua $4,5$ kg với số tiền mua $1$ kg đã cho ở đầu bài.\n\n**Bước 3.** Lấy số tiền mua $4,5$ kg trừ số tiền mua $1$ kg để biết phải trả nhiều hơn bao nhiêu tiền.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền phải trả khi mua $4,5$ kg nho khô là: $75000\\times 4,5=337500$ (đồng)\n\nMua $4,5$ kg phải trả nhiều hơn mua $1$ kg số tiền là: $337500-75000=262500$ (đồng)\n\nĐáp số: $262500$ đồng",
+  "ghi_chu_nghi": "Đề hỏi \"phải trả nhiều hơn bao nhiêu tiền\" nhưng không nói nhiều hơn so với gì; hiểu là so với mua 1 kg (số tiền đã cho ở đầu đề): 337500 - 75000 = 262500 đồng (cũng bằng 75000 x 3,5). Nếu ý đề khác thì đáp số khác."
+ },
+ {
+  "ma_nguon": "LTV 2025 · 10",
+  "dap_an": "$45$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $2$ là số chẵn, tức có chữ số tận cùng là $0$, $2$, $4$, $6$ hoặc $8$. Các số chẵn có hai chữ số hợp thành dãy cách đều, nên đếm bằng công thức đếm số số hạng của dãy cách đều.\n\n**Bước 1.** Tìm số chẵn có hai chữ số nhỏ nhất và lớn nhất; hai số này là số đầu và số cuối của dãy.\n\n**Bước 2.** Hai số chẵn liên tiếp hơn kém nhau $2$ đơn vị nên dãy các số chẵn là dãy cách đều với khoảng cách $2$.\n\n**Bước 3.** Tính số số hạng của dãy cách đều bằng cách lấy hiệu hai số đầu cuối chia khoảng cách rồi cộng thêm $1$.\n\n**Phần 2. Trình bày**\n\nSố chẵn có hai chữ số nhỏ nhất là $10$, lớn nhất là $98$. Các số chẵn liên tiếp cách nhau $2$ đơn vị.\n\nSố các số tự nhiên có $2$ chữ số chia hết cho $2$ là: $(98-10):2+1=45$ (số)\n\nVậy có $45$ số."
+ },
+ {
+  "ma_nguon": "LTV 2025 · 11",
+  "dap_an": "$1,5$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích nước bằng diện tích đáy bể nhân với chiều cao mực nước, nên từ thể tích nước tìm được chiều cao mực nước; mực nước cao $\\dfrac{5}{6}$ chiều cao bể nên chia chiều cao mực nước cho $\\dfrac{5}{6}$ sẽ ra chiều cao bể.\n\n**Bước 1.** Tính diện tích đáy bể bơi bằng cách nhân chiều dài với chiều rộng.\n\n**Bước 2.** Thể tích nước bằng diện tích đáy nhân chiều cao mực nước, nên lấy thể tích nước chia diện tích đáy để tìm chiều cao mực nước.\n\n**Bước 3.** Chiều cao mực nước ứng với $\\dfrac{5}{6}$ chiều cao bể, nên lấy chiều cao mực nước chia cho $\\dfrac{5}{6}$ để tìm chiều cao của bể.\n\n**Chú ý:** Chiều cao của bể phải lớn hơn chiều cao mực nước; dùng điều này để kiểm tra kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích đáy của bể bơi là: $21,4\\times 15,6=333,84$ ($\\text{m}^2$)\n\nChiều cao mực nước trong bể là: $417,3:333,84=1,25$ (m)\n\nChiều cao mực nước ứng với $\\dfrac{5}{6}$ chiều cao của bể.\n\nChiều cao của bể là: $1,25:\\dfrac{5}{6}=1,25\\times\\dfrac{6}{5}=1,5$ (m)\n\nĐáp số: $1,5$ m"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 12",
+  "dap_an": "$20$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng một công việc, năng suất mỗi người như nhau thì số người làm càng nhiều, số ngày làm càng ít (tỉ lệ nghịch). Cách làm gọn là rút về đơn vị: tính xem một người làm một mình hết bao nhiêu ngày.\n\n**Bước 1.** Tính số ngày để một người làm một mình xong công việc: nếu $10$ người làm hết $8$ ngày thì một người làm lâu gấp $10$ lần.\n\n**Bước 2.** Muốn xong công việc trong $4$ ngày thì phải chia số ngày một người làm một mình cho $4$ để tìm số người cần.\n\n**Bước 3.** Kiểm tra lại: số ngày giảm đi một nửa (từ $8$ ngày xuống $4$ ngày) thì số người phải nhiều gấp đôi, đối chiếu với kết quả vừa tìm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMột người làm một mình xong công việc hết số ngày là: $8\\times 10=80$ (ngày)\n\nĐể làm xong công việc trong $4$ ngày cần số người là: $80:4=20$ (người)\n\nĐáp số: $20$ người"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 13",
+  "dap_an": "Mẹ: $39$ tuổi; con: $9$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng trải qua một khoảng thời gian thì mỗi người đều tăng thêm số tuổi bằng nhau, nên biết tổng tuổi hai mẹ con ở bốn năm sau thì tính được tổng tuổi ở bốn năm trước. Bốn năm trước tuổi mẹ gấp $7$ lần tuổi con nên giải bằng bài toán tổng – tỉ.\n\n**Bước 1.** Tính khoảng thời gian từ bốn năm trước đến bốn năm sau, rồi tính tổng số tuổi hai mẹ con tăng thêm trong khoảng thời gian đó.\n\n**Bước 2.** Lấy tổng tuổi bốn năm sau trừ đi số tuổi tăng thêm để tìm tổng tuổi hai mẹ con bốn năm trước.\n\n**Bước 3.** Bốn năm trước tuổi mẹ gấp $7$ lần tuổi con nên tuổi con là $1$ phần, tuổi mẹ là $7$ phần; chia tổng tuổi cho tổng số phần để tìm giá trị một phần.\n\n**Bước 4.** Tìm tuổi con và tuổi mẹ bốn năm trước, rồi cộng thêm $4$ tuổi mỗi người để được tuổi hiện nay.\n\n**Chú ý:** Đề hỏi tuổi hiện nay, đừng dừng lại ở tuổi của bốn năm trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ bốn năm trước đến bốn năm sau là: $4+4=8$ (năm)\n\nTrong $8$ năm đó mỗi người thêm $8$ tuổi, nên tổng số tuổi hai mẹ con thêm: $8\\times 2=16$ (tuổi)\n\nTổng số tuổi hai mẹ con bốn năm trước là: $56-16=40$ (tuổi)\n\nBốn năm trước tuổi mẹ gấp $7$ lần tuổi con nên tuổi con là $1$ phần, tuổi mẹ là $7$ phần như thế.\n\nTa có sơ đồ:\n\n(Bốn năm trước: tuổi con 1 phần; tuổi mẹ 7 phần; tổng 40 tuổi)\n\nTổng số phần bằng nhau là: $1+7=8$ (phần)\n\nTuổi con bốn năm trước là: $40:8=5$ (tuổi)\n\nTuổi mẹ bốn năm trước là: $5\\times 7=35$ (tuổi)\n\nTuổi con hiện nay là: $5+4=9$ (tuổi)\n\nTuổi mẹ hiện nay là: $35+4=39$ (tuổi)\n\nĐáp số: Mẹ: $39$ tuổi; con: $9$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Bốn năm trước",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 7
+    }
+   ],
+   "tong": "40 tuổi"
+  }
+ },
+ {
+  "ma_nguon": "LTV 2025 · 14",
+  "dap_an": "$7,74\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, phần tô đậm là hình vuông bỏ đi hai nửa hình tròn bằng nhau; hai nửa hình tròn đó ghép lại thành đúng một hình tròn có đường kính bằng cạnh hình vuông.\n\n**Bước 1.** Hai nửa hình tròn có cùng đường kính $6$ cm nên bằng nhau; ghép lại thành một hình tròn đường kính $6$ cm, từ đó tìm bán kính.\n\n**Bước 2.** Tính diện tích hình tròn vừa ghép bằng cách lấy bán kính nhân bán kính nhân $3,14$.\n\n**Bước 3.** Tính diện tích hình vuông $ABCD$ bằng cạnh nhân cạnh.\n\n**Bước 4.** Lấy diện tích hình vuông trừ diện tích hình tròn để được diện tích phần tô đậm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, phần tô đậm là hình vuông $ABCD$ bỏ đi hai nửa hình tròn. Hai nửa hình tròn bằng nhau (cùng đường kính $6$ cm) ghép lại thành một hình tròn.\n\nBán kính của hình tròn là: $6:2=3$ (cm)\n\nDiện tích hình tròn là: $3\\times 3\\times 3,14=28,26$ ($\\text{cm}^2$)\n\nDiện tích hình vuông $ABCD$ là: $6\\times 6=36$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $36-28,26=7,74$ ($\\text{cm}^2$)\n\nĐáp số: $7,74\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 15",
+  "dap_an": "$8$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số $\\dfrac{3}{8}$ là phân số tối giản; mọi phân số bằng nó đều có dạng tử số $3$, $6$, $9$,… và mẫu số tương ứng $8$, $16$, $24$,…, nên tổng số lần lấy bé nhất là $8$.\n\n**Bước 1.** Hiểu đề: mỗi lần lấy $2$ trong $3$ chiếc bút nên có $3$ cách lấy là mực – chì, mực – bi, chì – bi; \"tổng số lần lấy\" gồm cả ba cách này.\n\n**Bước 2.** Tỉ số $\\dfrac{3}{8}$ cho biết nếu chia tổng số lần lấy thành $8$ phần bằng nhau thì số lần lấy được mực và chì chiếm $3$ phần.\n\n**Bước 3.** Vì phân số $\\dfrac{3}{8}$ đã tối giản nên không thể có tổng số lần bé hơn $8$; các tổng số lần có thể là $8$, $16$, $24$,…, từ đó chọn số bé nhất.\n\n**Bước 4.** Kiểm tra xem với số lần bé nhất đó thì các lần còn lại lấy cặp bút khác có hợp lí với đề không.\n\n**Phần 2. Trình bày**\n\nTỉ số $\\dfrac{3}{8}$ cho biết nếu tổng số lần lấy là $8$ phần bằng nhau thì số lần lấy được bút mực và bút chì là $3$ phần.\n\nPhân số $\\dfrac{3}{8}$ đã tối giản nên tổng số lần lấy chỉ có thể là $8$; $16$; $24$;… lần, tương ứng số lần lấy được bút mực và bút chì là $3$; $6$; $9$;… lần.\n\nTổng số lần lấy bé nhất là $8$ lần, trong đó có $3$ lần lấy được bút mực và bút chì, còn $8-3=5$ lần lấy được hai chiếc bút khác.\n\nVậy Bách đã lấy ít nhất $8$ lần.",
+  "ghi_chu_nghi": "Đề không nói rõ mỗi lần lấy xong có trả bút lại hộp không; hiểu là trả lại (hộp luôn có đủ 3 bút), nên mỗi lần lấy có 3 khả năng (mực-chì, mực-bi, chì-bi) và 5 lần còn lại ở 8 lần là các cặp khác mực-chì. Đáp số 8 lấy từ việc 3/8 tối giản."
+ },
+ {
+  "ma_nguon": "LTV 2025 · 16",
+  "dap_an": "$12$ xe đạp",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình mỗi ngày bán được bao nhiêu xe là trung bình cộng của số xe bán trong $5$ ngày: lấy tổng số xe chia cho số ngày.\n\n**Bước 1.** Đọc bảng thống kê để lấy số xe đạp bán được trong từng ngày của $5$ ngày.\n\n**Bước 2.** Cộng số xe của $5$ ngày để tìm tổng số xe đạp bán được.\n\n**Bước 3.** Lấy tổng số xe chia cho $5$ ngày để tìm số xe trung bình mỗi ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số xe đạp cửa hàng bán trong $5$ ngày là: $12+8+10+11+19=60$ (xe đạp)\n\nTrung bình mỗi ngày cửa hàng bán được số xe đạp là: $60:5=12$ (xe đạp)\n\nĐáp số: $12$ xe đạp"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 17",
+  "dap_an": "$52\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phải tìm hết các hình vuông (không chỉ ô nhỏ nhất) có chứa chú thỏ: ô nhỏ $1\\times 1$, các hình vuông $2\\times 2$ và hình vuông $3\\times 3$. Chú thỏ nằm ở ô chính giữa nên hình vuông nào chứa ô chính giữa thì chứa chú thỏ.\n\n**Bước 1.** Nhìn hình: lưới gồm $3\\times 3$ ô vuông nhỏ và chú thỏ nằm trọn trong ô chính giữa.\n\n**Bước 2.** Đếm từng loại hình vuông chứa ô chính giữa: ô nhỏ, hình vuông gồm $4$ ô ($2\\times 2$) và hình vuông gồm $9$ ô ($3\\times 3$).\n\n**Bước 3.** Tính tổng số ô nhỏ của tất cả các hình vuông chứa chú thỏ bằng cách nhân số hình vuông mỗi loại với số ô của loại đó rồi cộng lại.\n\n**Bước 4.** Lấy tổng số ô nhỏ nhân với diện tích một ô nhỏ để tìm tổng diện tích.\n\n**Chú ý:** Lưới $3\\times 3$ có đúng $4$ hình vuông $2\\times 2$ và cả $4$ hình đều chứa ô chính giữa.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, chú thỏ nằm trong ô vuông ở chính giữa của lưới $3\\times 3$. Các hình vuông chứa chú thỏ gồm:\n\n$1$ hình vuông nhỏ nhất (chính là ô chính giữa) gồm $1$ ô.\n\n$4$ hình vuông cạnh $2$ ô (mỗi hình đều chứa ô chính giữa), mỗi hình gồm $2\\times 2=4$ (ô).\n\n$1$ hình vuông cạnh $3$ ô (cả lưới), gồm $3\\times 3=9$ (ô).\n\nTổng số ô nhỏ của các hình vuông chứa chú thỏ là: $1\\times 1+4\\times 4+1\\times 9=26$ (ô)\n\nTổng diện tích các hình vuông chứa chú thỏ là: $26\\times 2=52$ ($\\text{m}^2$)\n\nĐáp số: $52\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Đề nói \"các hình vuông chứa chú thỏ\" nên hiểu là MỌI hình vuông (cạnh 1, 2, 3 ô) chứa chú thỏ, chú thỏ nằm trọn trong ô chính giữa của lưới 3x3 theo hình: 1 ô + 4 hình 2x2 + 1 hình 3x3 = 26 ô x 2 m2 = 52 m2. Nếu chỉ tính ô nhỏ nhất chứa thỏ thì đáp số là 2 m2."
+ },
+ {
+  "ma_nguon": "LTV 2025 · 18",
+  "dap_an": "N",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy chữ lặp đi lặp lại theo từng nhóm chữ giống nhau, nên đếm số chữ cái của một nhóm rồi chia vị trí cần tìm cho số đó; số dư cho biết chữ cái đứng ở vị trí thứ mấy trong nhóm.\n\n**Bước 1.** Đếm số chữ cái của một nhóm \"CHUCMUNGNAMMOI\" (viết không dấu) bằng cách đếm lần lượt từng từ trong cụm.\n\n**Bước 2.** Chia vị trí $2025$ cho số chữ cái của một nhóm để biết có bao nhiêu nhóm đầy đủ và còn dư mấy chữ cái.\n\n**Bước 3.** Chữ cái thứ $2025$ là chữ cái đứng ở vị trí bằng số dư trong nhóm tiếp theo; đếm trong nhóm đến vị trí đó để tìm chữ cái.\n\n**Chú ý:** Nếu phép chia hết (không dư) thì chữ cái cần tìm là chữ cái cuối cùng của nhóm.\n\n**Phần 2. Trình bày**\n\nMột nhóm chữ CHUCMUNGNAMMOI có số chữ cái là: $4+4+3+3=14$ (chữ cái)\n\nTa có: $2025:14=144$ (dư $9$)\n\nVậy có $144$ nhóm đầy đủ, chữ cái thứ $2025$ là chữ cái thứ $9$ của nhóm tiếp theo.\n\nCác chữ cái của nhóm theo thứ tự là: C, H, U, C, M, U, N, G, N, A, M, M, O, I nên chữ cái thứ $9$ là chữ N.\n\nVậy chữ cái thứ $2025$ là chữ N."
+ },
+ {
+  "ma_nguon": "LTV 2025 · 19",
+  "dap_an": "$1225000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm giá có mốc khác nhau: lần $1$ giảm $25\\%$ so với giá ban đầu, lần $2$ giảm $20\\%$ so với giá đang bán (không phải giá ban đầu). Vì vậy không cộng hai tỉ số mà phải nhân chúng để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 1.** Sau lần giảm thứ nhất, giá còn lại bao nhiêu phần trăm so với giá ban đầu: lấy $100\\%$ trừ $25\\%$.\n\n**Bước 2.** Sau lần giảm thứ hai, giá còn lại bao nhiêu phần trăm so với giá đang bán: lấy $100\\%$ trừ $20\\%$.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết giá cuối cùng bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Biết $735000$ đồng ứng với số phần trăm đó của giá ban đầu, nên lấy $735000$ chia cho số phần trăm ấy để tìm giá ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm thứ nhất, giá bộ áo dài bằng so với giá ban đầu: $100\\%-25\\%=75\\%$\n\nSau lần giảm thứ hai, giá bộ áo dài bằng so với giá đang bán: $100\\%-20\\%=80\\%$\n\nGiá bộ áo dài sau hai lần giảm bằng so với giá ban đầu: $75\\%\\times 80\\%=0,75\\times 0,8=0,6=60\\%$\n\nGiá bộ áo dài trước khi giảm là: $735000:60\\%=1225000$ (đồng)\n\nĐáp số: $1225000$ đồng"
+ },
+ {
+  "ma_nguon": "LTV 2025 · 20",
+  "dap_an": "$84\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác chung đáy thì tỉ số diện tích bằng tỉ số hai đường cao. Vì $B$, $N$, $M$ thẳng hàng nên cặp tam giác $ABN$, $CBN$ và cặp tam giác $MNA$, $MNC$ có cùng hai đường cao hạ từ $A$ và $C$ xuống đường thẳng $BM$, do đó cùng tỉ số diện tích. Biết tỉ số và hiệu của $MNC$ và $MNA$ thì giải bằng bài toán hiệu – tỉ.\n\n**Bước 1.** Tính tỉ số diện tích của hai tam giác $ABN$ và $CBN$, chúng có chung đáy $BN$ nên tỉ số này bằng tỉ số hai đường cao hạ từ $A$ và $C$.\n\n**Bước 2.** Chuyển sang hai tam giác $MNA$ và $MNC$: chúng cùng có đáy $MN$ nằm trên đường thẳng $BM$ nên có cùng tỉ số diện tích như ở bước $1$.\n\n**Bước 3.** Đổi tỉ số vừa tìm thành số phần bằng nhau, rồi dùng hiệu $8\\ \\text{cm}^2$ để tìm giá trị của một phần, từ đó tìm diện tích hai tam giác $MNA$ và $MNC$.\n\n**Bước 4.** Diện tích tam giác $ABC$ là tổng bốn tam giác nhỏ $ABN$, $CBN$, $MNA$, $MNC$, nên cộng bốn diện tích lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác $ABN$ và tam giác $CBN$ có chung đáy $BN$, nên tỉ số diện tích bằng tỉ số hai đường cao hạ từ A và C xuống BM: $\\dfrac{S_{ABN}}{S_{CBN}}=\\dfrac{20}{36}=\\dfrac{5}{9}$\n\nTam giác $MNA$ và tam giác $MNC$ có chung đáy $MN$ nằm trên đường thẳng $BM$, hai đường cao hạ từ $A$ và $C$ xuống $BM$ vẫn là hai đường cao ở trên, suy ra $\\dfrac{S_{MNA}}{S_{MNC}}=\\dfrac{5}{9}$\n\nTa có sơ đồ:\n\n(Tam giác MNA 5 phần; tam giác MNC 9 phần; hiệu 8 cm²)\n\nHiệu số phần bằng nhau là: $9-5=4$ (phần)\n\nGiá trị của một phần là: $8:4=2$ ($\\text{cm}^2$)\n\nDiện tích tam giác $MNA$ là: $2\\times 5=10$ ($\\text{cm}^2$)\n\nDiện tích tam giác $MNC$ là: $2\\times 9=18$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ABC$ là: $20+36+10+18=84$ ($\\text{cm}^2$)\n\nĐáp số: $84\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Tam giác MNA",
+     "phan": 5
+    },
+    {
+     "nhan": "Tam giác MNC",
+     "phan": 9
+    }
+   ],
+   "hieu": "8 cm2"
+  }
+ }
+]

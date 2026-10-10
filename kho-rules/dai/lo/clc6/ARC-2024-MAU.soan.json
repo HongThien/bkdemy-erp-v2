@@ -1,0 +1,459 @@
+[
+ {
+  "ma_nguon": "ARC 2024-MAU · 1",
+  "dap_an": "$5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn đếm chữ số $0$ phải viết số từ chữ ra chữ số trước: hàng nào của số không có đơn vị nào thì phải viết chữ số $0$ vào hàng đó.\n\n**Bước 1.** Đọc kĩ cách đọc số: có $4$ triệu và $5$ trăm nghìn, ngoài ra không có thêm gì ở các hàng thấp hơn.\n\n**Bước 2.** Viết số từ hàng cao xuống hàng thấp: chữ số $4$ ở hàng triệu, chữ số $5$ ở hàng trăm nghìn, các hàng còn lại không có đơn vị nên viết $0$.\n\n**Bước 3.** Đếm số chữ số của số vừa viết rồi bỏ đi những chữ số khác $0$ để biết có bao nhiêu chữ số $0$.\n\n**Chú ý:** Chỉ đếm chữ số $0$, không đếm chữ số $4$ và chữ số $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố \"Bốn triệu năm trăm nghìn\" viết là: $4500000$\n\nSố này có $7$ chữ số, trong đó chỉ có chữ số $4$ và chữ số $5$ khác $0$.\n\nSố chữ số $0$ là: $7-2=5$ (chữ số)\n\nĐáp số: $5$ chữ số $0$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 2",
+  "dap_an": "$150000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong bài tính có nhiều số hạng, hãy tìm những cặp số cộng lại ra số tròn (tròn chục nghìn, tròn trăm nghìn) rồi ghép chúng lại với nhau, vì phép cộng có tính chất giao hoán và kết hợp.\n\n**Bước 1.** Nhìn chữ số hàng đơn vị của các số hạng: $7$ và $3$ cộng lại được $10$, nên ghép $34567$ với $15433$ thành một cặp.\n\n**Bước 2.** Chữ số hàng đơn vị $4$ và $6$ cũng cộng lại được $10$, nên ghép $82164$ với $17836$ thành cặp thứ hai.\n\n**Bước 3.** Tính tổng từng cặp rồi cộng hai kết quả lại với nhau.\n\n**Chú ý:** Không cộng lần lượt từ trái sang phải vì số lớn, dễ nhầm; ghép cặp thì cộng ra số tròn rất nhanh.\n\n**Phần 2. Trình bày**\n\n$34567+82164+17836+15433$\n\n$=(34567+15433)+(82164+17836)$\n\n$=50000+100000$\n\n$=150000$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 3",
+  "dap_an": "$1140$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu của phép trừ chính là số bị trừ bớt đi số trừ; số bị trừ gấp đôi số trừ nên đây là bài toán hiệu – tỉ: số bị trừ $2$ phần, số trừ $1$ phần thì hiệu là phần chênh lệch của hai số.\n\n**Bước 1.** Vẽ sơ đồ: coi số trừ là $1$ phần thì số bị trừ gấp đôi nên là $2$ phần bằng nhau như thế.\n\n**Bước 2.** Tìm hiệu số phần bằng nhau: lấy số phần của số bị trừ trừ đi số phần của số trừ.\n\n**Bước 3.** Hiệu số phần ứng với hiệu của phép trừ đề cho, từ đó chia để tìm giá trị của một phần.\n\n**Bước 4.** Số bị trừ có $2$ phần nên lấy giá trị một phần nhân với $2$.\n\n**Chú ý:** Đề hỏi số bị trừ chứ không hỏi số trừ, nên đừng dừng lại ở bước tìm giá trị một phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số bị trừ 2 phần; số trừ 1 phần; hiệu 570)\n\nHiệu số phần bằng nhau là: $2-1=1$ (phần)\n\nGiá trị của một phần, cũng là số trừ, là: $570:1=570$\n\nSố bị trừ là: $570\\times 2=1140$\n\nĐáp số: $1140$",
+  "so_do_mo_ta": {
+   "tieu_de": "Số bị trừ gấp đôi số trừ",
+   "gia_tri_phan": 570,
+   "hang": [
+    {
+     "nhan": "Số bị trừ",
+     "phan": 2
+    },
+    {
+     "nhan": "Số trừ",
+     "phan": 1
+    }
+   ],
+   "hieu": "570",
+   "dau_hoi": [
+    "Số bị trừ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 4",
+  "dap_an": "$140$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phép chia có dư thì số bị chia bằng thương nhân với số chia rồi cộng với số dư; từ phép chia ta suy ngược ra số cần tìm.\n\n**Bước 1.** Nhận ra số cần tìm là số bị chia của một phép chia có dư, số chia là $9$, thương là $15$, số dư là $5$.\n\n**Bước 2.** Nhớ công thức: số bị chia bằng thương nhân số chia, cộng với số dư.\n\n**Bước 3.** Tính tích của thương và số chia trước, rồi cộng thêm số dư vào kết quả.\n\n**Chú ý:** Số dư phải bé hơn số chia; ở đây số dư $5$ bé hơn số chia $9$ nên đề hợp lí.\n\nThử lại: lấy số vừa tìm chia cho $9$ phải được thương $15$ và dư $5$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cần tìm là: $15\\times 9+5=140$\n\nĐáp số: $140$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 5",
+  "dap_an": "$31$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm chữ số của dãy số liên tiếp thì chia dãy thành từng nhóm có cùng số chữ số (nhóm số có $1$ chữ số, nhóm số có $2$ chữ số), tính số chữ số của mỗi nhóm rồi cộng lại.\n\n**Bước 1.** Chia các số từ $1$ đến $20$ thành hai nhóm: các số có một chữ số và các số có hai chữ số.\n\n**Bước 2.** Đếm xem mỗi nhóm có bao nhiêu số, rồi nhân với số chữ số của mỗi số trong nhóm.\n\n**Bước 3.** Cộng số chữ số của hai nhóm để được tổng số chữ số cần dùng.\n\n**Chú ý:** Khi đếm số các số từ $10$ đến $20$ phải nhớ lấy cả hai đầu mút nên cộng thêm $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $1$ đến $9$ có $9$ số, mỗi số có $1$ chữ số nên cần số chữ số là: $9\\times 1=9$ (chữ số)\n\nTừ $10$ đến $20$ có số các số là: $(20-10):1+1=11$ (số)\n\nMỗi số có $2$ chữ số nên cần số chữ số là: $11\\times 2=22$ (chữ số)\n\nTổng số chữ số cần dùng là: $9+22=31$ (chữ số)\n\nĐáp số: $31$ chữ số"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 6",
+  "dap_an": "$\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân nhiều phân số thì viết thành một phân số có tử số là tích các tử số và mẫu số là tích các mẫu số, rồi rút gọn trước khi tính để các số không bị lớn lên.\n\n**Bước 1.** Viết tích ba phân số thành một phân số có tử số là tích ba tử số, mẫu số là tích ba mẫu số.\n\n**Bước 2.** Phân tích từng số trong tích thành các thừa số nhỏ hơn để nhìn thấy thừa số giống nhau ở tử số và mẫu số.\n\n**Bước 3.** Rút gọn các thừa số giống nhau ở tử số và mẫu số, phần còn lại là phân số cần tìm.\n\n**Chú ý:** Không nhân hết ra rồi mới rút gọn vì số sẽ lớn, dễ nhầm; rút gọn trước thì phép tính gọn hơn nhiều.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{9}\\times\\dfrac{18}{15}\\times\\dfrac{10}{4}$\n\n$=\\dfrac{2\\times 18\\times 10}{9\\times 15\\times 4}$\n\n$=\\dfrac{2\\times 2\\times 9\\times 2\\times 5}{9\\times 3\\times 5\\times 2\\times 2}$\n\n$=\\dfrac{2}{3}$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 7",
+  "dap_an": "$x=\\dfrac{8}{35}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là số hạng chưa biết của một phép cộng, nên muốn tìm $x$ ta lấy tổng trừ đi số hạng đã biết; hai phân số khác mẫu số phải quy đồng trước khi trừ.\n\n**Bước 1.** Nhận ra $x$ là số hạng chưa biết, còn $\\dfrac{3}{7}$ là tổng và $\\dfrac{1}{5}$ là số hạng đã biết.\n\n**Bước 2.** Viết phép trừ tìm số hạng chưa biết: lấy tổng trừ đi số hạng đã biết.\n\n**Bước 3.** Quy đồng hai phân số về cùng mẫu số $35$ rồi trừ hai tử số, giữ nguyên mẫu số.\n\n**Chú ý:** Hai phân số khác mẫu số thì không trừ trực tiếp được; phải quy đồng trước.\n\nThử lại: lấy $\\dfrac{1}{5}$ cộng với giá trị $x$ vừa tìm phải được $\\dfrac{3}{7}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} \\dfrac{1}{5}+x=\\dfrac{3}{7} \\\\ x=\\dfrac{3}{7}-\\dfrac{1}{5} \\\\ x=\\dfrac{15}{35}-\\dfrac{7}{35} \\\\ x=\\dfrac{8}{35} \\end{array}$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 8",
+  "dap_an": "$\\dfrac{12}{18}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân cả tử số và mẫu số của một phân số với cùng một số tự nhiên khác $0$ thì được phân số mới bằng phân số đã cho.\n\n**Bước 1.** So sánh mẫu số mới $18$ với mẫu số cũ $3$ xem mẫu số được nhân lên mấy lần.\n\n**Bước 2.** Nhân cả tử số và mẫu số của $\\dfrac{2}{3}$ với số lần vừa tìm để giữ nguyên giá trị phân số.\n\n**Bước 3.** Viết phân số mới và kiểm tra mẫu số đúng bằng $18$ như đề yêu cầu.\n\n**Chú ý:** Phải nhân cả tử số lẫn mẫu số; nếu chỉ nhân mẫu số thì giá trị phân số bị thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMẫu số được nhân lên số lần là: $18:3=6$ (lần)\n\n$\\dfrac{2}{3}=\\dfrac{2\\times 6}{3\\times 6}=\\dfrac{12}{18}$\n\nĐáp số: $\\dfrac{12}{18}$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 9",
+  "dap_an": "$\\dfrac{14}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn so sánh các số có dạng phân số và hỗn số thì đưa tất cả về hỗn số, so phần nguyên trước, nếu phần nguyên bằng nhau thì mới so phần phân số.\n\n**Bước 1.** Đổi các phân số $\\dfrac{14}{3}$ và $\\dfrac{9}{2}$ ra hỗn số bằng cách chia tử số cho mẫu số.\n\n**Bước 2.** So sánh phần nguyên của bốn số, bỏ số có phần nguyên bé hơn vì chắc chắn không phải số lớn nhất.\n\n**Bước 3.** Các số còn lại có phần nguyên bằng nhau, nên so sánh phần phân số của chúng bằng cách quy đồng mẫu số.\n\n**Bước 4.** Chọn số có phần phân số lớn nhất và viết lại đúng dạng mà đề cho.\n\n**Chú ý:** Số có phần nguyên lớn hơn thì lớn hơn, không cần xét phần phân số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $\\dfrac{14}{3}=4\\dfrac{2}{3}$ ; $\\dfrac{9}{2}=4\\dfrac{1}{2}$\n\nSố $3\\dfrac{9}{10}$ có phần nguyên là $3$, bé hơn $4$ nên không phải số lớn nhất.\n\nBa số $4\\dfrac{2}{3}$; $4\\dfrac{1}{2}$; $4\\dfrac{1}{7}$ có phần nguyên bằng nhau, so sánh phần phân số.\n\n$\\dfrac{2}{3}=\\dfrac{4}{6}$ và $\\dfrac{1}{2}=\\dfrac{3}{6}$ nên $\\dfrac{2}{3}>\\dfrac{1}{2}$\n\n$\\dfrac{1}{2}=\\dfrac{7}{14}$ và $\\dfrac{1}{7}=\\dfrac{2}{14}$ nên $\\dfrac{1}{2}>\\dfrac{1}{7}$\n\nVậy $\\dfrac{2}{3}>\\dfrac{1}{2}>\\dfrac{1}{7}$, nên số lớn nhất là $4\\dfrac{2}{3}=\\dfrac{14}{3}$."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 10",
+  "dap_an": "$\\dfrac{5}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia dãy thành từng nhóm các phân số có cùng mẫu số: nhóm mẫu số $2$ có $1$ phân số, mẫu số $3$ có $2$ phân số, mẫu số $4$ có $3$ phân số… nên mỗi nhóm có nhiều hơn nhóm trước $1$ phân số.\n\n**Bước 1.** Nhìn các phân số đã cho để thấy tử số tăng dần $1;\\ 2;\\ 3;\\dots$ cho tới mẫu số trừ $1$, rồi mẫu số mới tăng thêm $1$.\n\n**Bước 2.** Đếm số phân số của từng nhóm mẫu số $2$, $3$, $4$, $5$ rồi cộng lại để biết các nhóm đầu chiếm bao nhiêu vị trí.\n\n**Bước 3.** Lấy vị trí cần tìm trừ đi số vị trí của các nhóm đầu để biết phân số cần tìm đứng thứ mấy trong nhóm kế tiếp.\n\n**Bước 4.** Viết ra nhóm kế tiếp rồi chọn phân số ở đúng vị trí đó.\n\n**Chú ý:** Nhóm mẫu số $k$ chỉ có $k-1$ phân số (tử số từ $1$ đến $k-1$), đừng đếm nhầm thành $k$ phân số.\n\n**Phần 2. Trình bày**\n\nCác phân số có cùng mẫu số xếp thành một nhóm: mẫu số $2$ có $1$ phân số, mẫu số $3$ có $2$ phân số, mẫu số $4$ có $3$ phân số, mẫu số $5$ có $4$ phân số.\n\nBốn nhóm đầu có số phân số là: $1+2+3+4=10$ (phân số)\n\nPhân số thứ $15$ là phân số thứ: $15-10=5$ của nhóm kế tiếp, nhóm mẫu số $6$.\n\nNhóm mẫu số $6$ gồm: $\\dfrac{1}{6};\\ \\dfrac{2}{6};\\ \\dfrac{3}{6};\\ \\dfrac{4}{6};\\ \\dfrac{5}{6}$\n\nVậy phân số thứ $15$ là $\\dfrac{5}{6}$."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 11",
+  "dap_an": "$\\dfrac{6}{25}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thập phân có hai chữ số ở phần thập phân thì viết được thành phân số thập phân có mẫu số là $100$; sau đó rút gọn cho tới khi tử số và mẫu số không còn chia hết cho cùng một số nào lớn hơn $1$.\n\n**Bước 1.** Đọc số $0,24$ là hai mươi bốn phần trăm để viết thành phân số thập phân có mẫu số $100$.\n\n**Bước 2.** Tìm số lớn nhất mà cả tử số và mẫu số cùng chia hết, đó là số để rút gọn nhanh nhất.\n\n**Bước 3.** Chia cả tử số và mẫu số cho số đó rồi kiểm tra phân số mới đã tối giản chưa.\n\n**Chú ý:** Đề yêu cầu phân số tối giản nên không dừng lại ở $\\dfrac{24}{100}$; còn phải rút gọn.\n\n**Phần 2. Trình bày**\n\n$0,24=\\dfrac{24}{100}=\\dfrac{24:4}{100:4}=\\dfrac{6}{25}$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 12",
+  "dap_an": "$0,32$ tấn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi số đo có hai tên đơn vị về đơn vị bé nhất rồi mới đổi sang đơn vị lớn; muốn đổi ra tấn phải nhớ $1$ tấn $=1000$ kg, $1$ tạ $=100$ kg.\n\n**Bước 1.** Đổi $3$ tạ ra ki-lô-gam bằng cách nhân với số ki-lô-gam của $1$ tạ.\n\n**Bước 2.** Cộng thêm $20$ kg để biết khối lượng đó là bao nhiêu ki-lô-gam.\n\n**Bước 3.** Đổi số ki-lô-gam vừa tìm ra tấn bằng cách chia cho số ki-lô-gam của $1$ tấn, kết quả viết dưới dạng số thập phân.\n\n**Chú ý:** $1$ tạ bằng $100$ kg chứ không phải $1000$ kg; $1000$ kg mới là $1$ tấn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $3$ tạ $20$ kg $=3\\times 100+20=320$ (kg)\n\nĐổi: $320$ kg $=320:1000=0,32$ (tấn)\n\nĐáp số: $0,32$ tấn"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 13",
+  "dap_an": "$a=0,2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là bài tính ngược: đi từ kết quả cuối ngược về số đầu, mỗi phép tính được thay bằng phép tính ngược của nó (cộng thành trừ, chia thành nhân).\n\n**Bước 1.** Đọc hình vẽ: từ $a$ cộng $3,4$ được $b$, rồi lấy $b$ chia $0,5$ được $7,2$.\n\n**Bước 2.** Tìm $b$ trước: $b$ là số bị chia của phép chia cho $0,5$, nên lấy thương nhân với số chia.\n\n**Bước 3.** Tìm $a$: $a$ là số hạng chưa biết của phép cộng với $3,4$, nên lấy tổng $b$ trừ đi số hạng đã biết.\n\n**Chú ý:** Phải đi từ cuối về đầu; đừng thực hiện phép tính theo chiều mũi tên với $a$ chưa biết.\n\nThử lại: lấy $a$ cộng $3,4$ rồi chia cho $0,5$ phải được $7,2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ: $a+3,4=b$ và $b:0,5=7,2$\n\nSố $b$ là: $7,2\\times 0,5=3,6$\n\nSố $a$ là: $3,6-3,4=0,2$\n\nĐáp số: $a=0,2$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 14",
+  "dap_an": "$45$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $4,5$, nên dùng tính chất nhân một tổng với một số: đưa thừa số chung ra ngoài, cộng hai số còn lại rồi nhân với $4,5$.\n\n**Bước 1.** Nhận ra cả hai tích đều có thừa số $4,5$ — đó là dấu hiệu để đặt thừa số chung ra ngoài.\n\n**Bước 2.** Viết lại thành tổng của hai số $5,12$ và $4,88$ đặt trong ngoặc, nhân với thừa số chung $4,5$.\n\n**Bước 3.** Tính tổng trong ngoặc trước, vì hai số này cộng lại ra một số tròn, rồi nhân với $4,5$.\n\n**Chú ý:** Không nhân từng tích ra rồi mới cộng, vì làm vậy phép tính dài và dễ sai.\n\n**Phần 2. Trình bày**\n\n$5,12\\times 4,5+4,88\\times 4,5$\n\n$=(5,12+4,88)\\times 4,5$\n\n$=10\\times 4,5$\n\n$=45$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 15",
+  "dap_an": "$4$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thập phân có một chữ số ở phần nguyên và hai chữ số ở phần thập phân gồm tất cả ba chữ số, mà đề chỉ cho ba chữ số khác nhau, nên mỗi số phải dùng đủ cả ba chữ số, mỗi chữ số một lần.\n\n**Bước 1.** Xác định cấu tạo số cần viết: phần nguyên một chữ số, phần thập phân hai chữ số, ba chữ số đó khác nhau.\n\n**Bước 2.** Xét điều kiện lớn hơn $4$: số thập phân lớn hơn $4$ thì phần nguyên phải từ $4$ trở lên nên chỉ chọn được các chữ số nào cho phần nguyên.\n\n**Bước 3.** Với mỗi cách chọn phần nguyên, đếm số cách xếp hai chữ số còn lại vào phần thập phân.\n\n**Bước 4.** Cộng số các số của từng trường hợp để biết có tất cả bao nhiêu số.\n\n**Chú ý:** Nếu phần nguyên là $4$ thì số có dạng $4,\\dots$ vẫn lớn hơn $4$ (vì phần thập phân khác $0$), nên không được bỏ trường hợp này.\n\n**Phần 2. Trình bày**\n\nSố cần viết có dạng phần nguyên một chữ số, phần thập phân hai chữ số; ba chữ số $3;\\ 4;\\ 7$ khác nhau nên mỗi số dùng đủ cả ba chữ số.\n\nSố lớn hơn $4$ nên phần nguyên là $4$ hoặc $7$ (phần nguyên là $3$ thì số bé hơn $4$).\n\nPhần nguyên là $4$: hai chữ số $3$ và $7$ xếp ở phần thập phân được $2$ số là $4,37$ và $4,73$.\n\nPhần nguyên là $7$: hai chữ số $3$ và $4$ xếp ở phần thập phân được $2$ số là $7,34$ và $7,43$.\n\nSố các số viết được là: $2+2=4$ (số)\n\nĐáp số: $4$ số"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 16",
+  "dap_an": "$0,4$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cắt một sợi dây ra thành các đoạn bằng nhau thì độ dài mỗi đoạn bằng độ dài cả sợi dây chia cho số đoạn.\n\n**Bước 1.** Nhận ra cuộn dây được chia đều, nên mỗi đoạn là một phần của cả sợi dây và dùng phép chia.\n\n**Bước 2.** Viết phép chia độ dài cuộn dây cho số đoạn; số bị chia bé hơn số chia nên thương là số thập phân.\n\n**Bước 3.** Thực hiện phép chia: viết $0$ ở thương rồi đặt dấu phẩy, thêm $0$ vào số bị chia để chia tiếp.\n\n**Chú ý:** Số bị chia $6$ bé hơn số chia $15$ nên thương bé hơn $1$; kết quả phải là số thập phân.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi đoạn dây dài là: $6:15=0,4$ (m)\n\nĐáp số: $0,4$ m"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 17",
+  "dap_an": "$3,54$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số bằng tổng hai số chia $2$, nên tổng hai số bằng trung bình cộng nhân $2$; sau đó đây là bài toán tổng – hiệu.\n\n**Bước 1.** Tìm tổng hai số bằng cách nhân trung bình cộng với $2$, vì trung bình cộng của hai số là tổng chia $2$.\n\n**Bước 2.** Vẽ sơ đồ tổng – hiệu: số bé là $1$ phần, số lớn là $1$ phần cộng thêm đoạn bằng hiệu của hai số.\n\n**Bước 3.** Bớt phần hơn đi khỏi tổng thì còn lại hai lần số bé, vì hai số khi đó bằng nhau.\n\n**Bước 4.** Chia hai lần số bé cho $2$ để tìm số bé.\n\n**Chú ý:** Đề hỏi số bé, nên không lấy tổng cộng thêm hiệu rồi chia $2$ (cách đó ra số lớn).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $5,64\\times 2=11,28$\n\nTa có sơ đồ:\n\n(Số bé 1 phần; số lớn 1 phần và thêm 4,2; tổng 11,28)\n\nHai lần số bé là: $11,28-4,2=7,08$\n\nSố bé là: $7,08:2=3,54$\n\nĐáp số: $3,54$",
+  "so_do_mo_ta": {
+   "tieu_de": "Tổng hai số là 11,28",
+   "gia_tri_phan": 3.54,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "4,2"
+    }
+   ],
+   "tong": "11,28",
+   "dau_hoi": [
+    "Số bé"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 18",
+  "dap_an": "$245$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số $140$ không phải số cần tìm mà chỉ là giá trị của $\\dfrac{4}{7}$ số đó; muốn tìm cả số khi biết giá trị của một phân số của nó thì lấy giá trị đó chia cho phân số.\n\n**Bước 1.** Đọc kĩ đề để nhận ra $140$ ứng với $\\dfrac{4}{7}$ của số cần tìm, nên số cần tìm phải lớn hơn $140$.\n\n**Bước 2.** Áp dụng quy tắc: muốn tìm một số khi biết giá trị $\\dfrac{4}{7}$ của nó, ta lấy giá trị đó chia cho $\\dfrac{4}{7}$.\n\n**Bước 3.** Thực hiện phép chia phân số bằng cách nhân với phân số đảo ngược, rút gọn trước khi nhân cho dễ tính.\n\nThử lại: lấy $\\dfrac{4}{7}$ của số vừa tìm được phải ra đúng $140$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cần tìm là: $140:\\dfrac{4}{7}=245$\n\nĐáp số: $245$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 19",
+  "dap_an": "$24$ hình dán",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Làm ngược từ cuối về đầu: Hằng cho đi $\\dfrac{1}{2}$ số hình dán rồi cho thêm $1$ cái nữa mới còn $11$ cái, nên bù lại $1$ cái đã cho thêm thì sẽ biết số hình còn lại sau khi cho đi một nửa.\n\n**Bước 1.** Nhận ra Hằng cho bạn hai lần: lần thứ nhất cho $\\dfrac{1}{2}$ số hình dán, lần thứ hai cho thêm $1$ cái, sau đó còn $11$ cái.\n\n**Bước 2.** Lùi một bước: cộng lại $1$ cái đã cho thêm vào số hình còn lại để được số hình dán sau khi cho đi một nửa.\n\n**Bước 3.** Số hình dán vừa tìm chính là nửa còn lại, tức ứng với $\\dfrac{1}{2}$ số hình lúc đầu, nên lấy nó chia cho $\\dfrac{1}{2}$.\n\n**Chú ý:** Không lấy $11$ chia ngay cho $\\dfrac{1}{2}$, vì $1$ cái cho thêm nằm ngoài nửa số hình đã cho.\n\nThử lại: cho đi $\\dfrac{1}{2}$ số hình lúc đầu và cho thêm $1$ cái thì phải còn đúng $11$ cái.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố hình dán còn lại sau khi cho bạn $\\dfrac{1}{2}$ số hình dán là: $11+1=12$ (cái)\n\n$12$ cái ứng với $\\dfrac{1}{2}$ số hình dán lúc đầu của Hằng.\n\nLúc đầu Hằng có số hình dán là: $12:\\dfrac{1}{2}=24$ (cái)\n\nĐáp số: $24$ hình dán"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 20",
+  "dap_an": "$9000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho giá của \"$1$ quyển vở và $1$ cái bút\"; hãy làm cho hai lần mua có cùng số quyển vở bằng cách gấp giá đó lên $5$ lần, khi đó hiệu giữa hai lần mua chính là giá của một số cái bút.\n\n**Bước 1.** Tính xem mua $5$ quyển vở và $5$ cái bút hết bao nhiêu tiền bằng cách lấy giá của \"$1$ vở và $1$ bút\" nhân với $5$.\n\n**Bước 2.** So sánh với lần mua $5$ vở và $10$ bút: lần này nhiều hơn đúng $5$ cái bút, nên phần tiền chênh lệch là giá của $5$ cái bút.\n\n**Bước 3.** Chia số tiền của $5$ cái bút cho $5$ để biết giá một cái bút.\n\n**Bước 4.** Lấy giá của \"$1$ vở và $1$ bút\" trừ đi giá một cái bút để tìm giá một quyển vở.\n\nThử lại: $5$ vở và $10$ bút theo hai giá vừa tìm phải cộng lại đúng $95000$ đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền mua $5$ quyển vở và $5$ cái bút là: $14000\\times 5=70000$ (đồng)\n\nSố tiền mua $5$ cái bút là: $95000-70000=25000$ (đồng)\n\nGiá một cái bút là: $25000:5=5000$ (đồng)\n\nGiá một quyển vở là: $14000-5000=9000$ (đồng)\n\nĐáp số: $9000$ đồng",
+  "ghi_chu_nghi": "nhiều cách: (1) gấp giá \"1 vở + 1 bút\" lên 5 lần rồi trừ — đã chọn, bám quan hệ gốc của đề; (2) giả thiết tạm: giả sử cả 15 món đều là vở hoặc đều là bút. Cùng đáp số, CEO chốt cách chuẩn."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 21",
+  "dap_an": "$10$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cây cam chiếm $\\dfrac{1}{3}$ cả vườn nên $20$ cây chanh là phần còn lại, ứng với $1-\\dfrac{1}{3}$ tổng số cây; biết số cây ứng với phân số đó thì tìm được cả vườn, rồi tìm số cây cam.\n\n**Bước 1.** Tính xem cây chanh chiếm bao nhiêu phần của cả vườn: coi cả vườn là $1$ rồi bớt đi phần cây cam.\n\n**Bước 2.** Đề cho $20$ cây chanh ứng với phân số vừa tìm, nên lấy $20$ chia cho phân số đó để biết số cây cả vườn.\n\n**Bước 3.** Cây cam chiếm $\\dfrac{1}{3}$ cả vườn nên lấy số cây cả vườn nhân với $\\dfrac{1}{3}$ để ra số cây cam.\n\n**Chú ý:** $20$ là số cây chanh chứ không phải số cây cả vườn, nên không được lấy ngay $20\\times\\dfrac{1}{3}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây chanh chiếm số phần của cả vườn là: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số cây cả vườn)\n\nSố cây trong cả vườn là: $20:\\dfrac{2}{3}=30$ (cây)\n\nSố cây cam trong vườn là: $30\\times\\dfrac{1}{3}=10$ (cây)\n\nĐáp số: $10$ cây"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 22",
+  "dap_an": "$20$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của anh và em không đổi, luôn là $8$ tuổi; \"tuổi em bằng $\\dfrac{3}{5}$ tuổi anh\" cho biết tuổi anh là $5$ phần thì tuổi em là $3$ phần, nên $8$ tuổi ứng với hiệu số phần bằng nhau.\n\n**Bước 1.** Chia tuổi anh thành $5$ phần bằng nhau; tuổi em bằng $\\dfrac{3}{5}$ tuổi anh nên là $3$ phần như thế.\n\n**Bước 2.** Tính hiệu số phần bằng nhau giữa tuổi anh và tuổi em; hiệu này ứng với số tuổi anh hơn em.\n\n**Bước 3.** Chia $8$ tuổi cho hiệu số phần để tìm giá trị của một phần.\n\n**Bước 4.** Tuổi anh gồm $5$ phần nên lấy giá trị một phần nhân với $5$.\n\nThử lại: tuổi em phải bằng $\\dfrac{3}{5}$ tuổi anh và anh hơn em đúng $8$ tuổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì tuổi em bằng $\\dfrac{3}{5}$ tuổi anh nên nếu tuổi anh là $5$ phần thì tuổi em là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Tuổi em 3 phần; Tuổi anh 5 phần; anh hơn em 8 tuổi)\n\nHiệu số phần bằng nhau là: $5-3=2$ (phần)\n\nGiá trị một phần là: $8:2=4$ (tuổi)\n\nTuổi của anh hiện nay là: $4\\times 5=20$ (tuổi)\n\nĐáp số: $20$ tuổi",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Tuổi em",
+     "phan": 3
+    },
+    {
+     "nhan": "Tuổi anh",
+     "phan": 5
+    }
+   ],
+   "hieu": "8 tuổi",
+   "dau_hoi": [
+    "Tuổi anh"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 23",
+  "dap_an": "$162$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Năng suất mỗi người như nhau nên số mét đường sửa được tỉ lệ thuận với cả số người lẫn số ngày làm; cách gọn là rút về \"$1$ người làm trong $1$ ngày\" sửa được bao nhiêu mét.\n\n**Bước 1.** Nhận ra số mét đường tăng lên theo cả số người lẫn số ngày làm việc, nên rút về một người làm trong một ngày.\n\n**Bước 2.** Tính một người làm trong $5$ ngày sửa được bao nhiêu mét, rồi chia tiếp cho $5$ ngày để được số mét của một người trong một ngày.\n\n**Bước 3.** Lấy số mét của một người trong một ngày nhân với $9$ người rồi nhân với $6$ ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ người làm trong $5$ ngày sửa được: $75:5=15$ (m)\n\n$1$ người làm trong $1$ ngày sửa được: $15:5=3$ (m)\n\n$9$ người làm trong $6$ ngày sửa được: $3\\times 9\\times 6=162$ (m)\n\nĐáp số: $162$ m"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 24",
+  "dap_an": "$64$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một chai sữa cân nặng bằng sữa trong chai cộng với vỏ chai; vậy tính khối lượng sữa của một chai, cộng khối lượng vỏ, rồi mới nhân với số chai.\n\n**Bước 1.** Tính số ki-lô-gam sữa trong một chai bằng cách lấy số lít sữa của một chai nhân với số ki-lô-gam của mỗi lít.\n\n**Bước 2.** Cộng khối lượng sữa với khối lượng vỏ chai để biết một chai sữa cả vỏ nặng bao nhiêu.\n\n**Bước 3.** Nhân khối lượng của một chai với $100$ chai.\n\n**Chú ý:** Vỏ chai có ở từng chai nên khối lượng vỏ cũng phải tính cho cả $100$ chai, không chỉ tính sữa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMột chai có số ki-lô-gam sữa là: $0,5\\times 1,08=0,54$ (kg)\n\nMột chai sữa cả vỏ cân nặng là: $0,54+0,1=0,64$ (kg)\n\n$100$ chai sữa cân nặng là: $0,64\\times 100=64$ (kg)\n\nĐáp số: $64$ kg"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 25",
+  "dap_an": "$350$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Xoá chữ số hàng trăm thì số bị bớt đi đúng một số tròn trăm; số đã cho giảm $7$ lần thì số mới là $1$ phần, số đã cho là $7$ phần, nên hiệu $6$ phần chính là số tròn trăm bị xoá.\n\n**Bước 1.** Số mới sau khi xoá chữ số hàng trăm giảm $7$ lần so với số đã cho, nên coi số mới là $1$ phần thì số đã cho là $7$ phần.\n\n**Bước 2.** Hiệu giữa số đã cho và số mới là $6$ phần; hiệu này chính là chữ số hàng trăm kèm hai chữ số $0$ phía sau, tức là một số tròn trăm.\n\n**Bước 3.** Số mới chỉ còn nhiều nhất hai chữ số nên nhỏ hơn $100$, suy ra $6$ phần nhỏ hơn $600$; thử từng số tròn trăm nhỏ hơn $600$ và tìm số chia hết cho $6$.\n\n**Bước 4.** Chia số tròn trăm tìm được cho $6$ để có số mới, rồi nhân với $7$ để được số đã cho.\n\nThử lại: xoá chữ số hàng trăm của số vừa tìm rồi so sánh, số đã cho phải gấp số mới đúng $7$ lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đã cho giảm $7$ lần thì được số mới (sau khi xoá chữ số hàng trăm), nên coi số mới là $1$ phần thì số đã cho là $7$ phần.\n\nTa có sơ đồ:\n\n(Số sau khi xoá 1 phần; Số đã cho 7 phần; hiệu là số tròn trăm)\n\nHiệu số phần bằng nhau là: $7-1=6$ (phần)\n\nHiệu này là số tròn trăm (chữ số hàng trăm của số đã cho và hai chữ số $0$). Số mới có nhiều nhất hai chữ số nên nhỏ hơn $100$, do đó $6$ phần nhỏ hơn $600$.\n\nCác số tròn trăm nhỏ hơn $600$ là $100;\\ 200;\\ 300;\\ 400;\\ 500$, trong đó chỉ có $300$ chia hết cho $6$ nên $6$ phần là $300$.\n\nSố sau khi xoá chữ số hàng trăm là: $300:6=50$\n\nSố đã cho là: $50\\times 7=350$\n\nĐáp số: $350$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 50,
+   "hang": [
+    {
+     "nhan": "Số sau khi xoá",
+     "phan": 1
+    },
+    {
+     "nhan": "Số đã cho",
+     "phan": 7
+    }
+   ],
+   "hieu": "số tròn trăm",
+   "dau_hoi": [
+    "Số đã cho"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 26",
+  "dap_an": "$45\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình vuông biết diện tích nên tìm được cạnh rồi chu vi; chu vi hình chữ nhật bằng chu vi hình vuông nên có nửa chu vi, tức là tổng chiều dài và chiều rộng. Biết thêm chiều dài hơn chiều rộng $4$ cm thì đây là bài tổng – hiệu.\n\n**Bước 1.** Tìm cạnh hình vuông từ diện tích $49\\ \\text{cm}^2$ (số nhân với chính nó bằng $49$), rồi tính chu vi hình vuông.\n\n**Bước 2.** Chu vi hình chữ nhật bằng chu vi hình vuông; chia đôi chu vi để được nửa chu vi, chính là tổng chiều dài và chiều rộng.\n\n**Bước 3.** Biết tổng và hiệu của hai chiều: lấy tổng trừ hiệu rồi chia $2$ để tìm chiều rộng, sau đó tìm chiều dài.\n\n**Bước 4.** Nhân chiều dài với chiều rộng để tính diện tích hình chữ nhật.\n\nThử lại: chu vi hình chữ nhật vừa tìm được phải bằng chu vi hình vuông.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $7\\times 7=49$ nên cạnh hình vuông là $7$ cm.\n\nChu vi hình vuông là: $7\\times 4=28$ (cm)\n\nChu vi hình chữ nhật bằng chu vi hình vuông nên nửa chu vi hình chữ nhật là: $28:2=14$ (cm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; Chiều dài 1 phần và thêm 4 cm; tổng 14 cm)\n\nChiều rộng hình chữ nhật là: $(14-4):2=5$ (cm)\n\nChiều dài hình chữ nhật là: $5+4=9$ (cm)\n\nDiện tích hình chữ nhật là: $9\\times 5=45$ ($\\text{cm}^2$)\n\nĐáp số: $45\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "4 cm"
+    }
+   ],
+   "tong": "14 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 27",
+  "dap_an": "$10,5\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình thang $AHCB$ có hai đáy là $AB$ và $HC$ song song nhau, chiều cao là $AH$; đáy $AB$ đã biết, còn đáy $HC$ tìm từ tính chất hình bình hành: hai cạnh đối $AB$ và $DC$ bằng nhau.\n\n**Bước 1.** Nhìn hình vẽ: $AH$ vuông góc với $DC$ và $AB$ song song với $DC$, nên $AHCB$ là hình thang có hai đáy $AB$, $HC$ và chiều cao $AH$.\n\n**Bước 2.** Hình bình hành $ABCD$ có hai cạnh đối bằng nhau nên biết được $DC$; điểm $H$ nằm giữa $D$ và $C$ nên $HC$ bằng $DC$ bớt đi $DH$.\n\n**Bước 3.** Dùng công thức diện tích hình thang: lấy tổng hai đáy nhân với chiều cao rồi chia $2$.\n\n**Chú ý:** Chiều cao của hình thang là $AH$ (đoạn vuông góc với đáy), không phải cạnh bên $AD$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $AH$ vuông góc với $DC$, $AB$ song song với $DC$ và $H$ nằm giữa $D$ và $C$ nên $AHCB$ là hình thang có hai đáy $AB$, $HC$ và chiều cao $AH$.\n\nVì $ABCD$ là hình bình hành nên $DC=AB=4$ cm.\n\nĐộ dài đoạn $HC$ là: $4-1=3$ (cm)\n\nDiện tích hình thang $AHCB$ là: $(4+3)\\times 3:2=10,5$ ($\\text{cm}^2$)\n\nĐáp số: $10,5\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Theo hình: AH vuông góc DC (có ký hiệu góc vuông), H nằm giữa D và C, AB // DC (hình bình hành). Đề chữ không nói rõ H nằm trên DC — lấy từ hình."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 28",
+  "dap_an": "$2198$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi vòng lăn, bánh xe đi được đúng một quãng bằng chu vi bánh xe; vậy quãng đường xe đi được bằng chu vi bánh xe nhân với số vòng lăn, rồi đổi từ xăng-ti-mét ra mét.\n\n**Bước 1.** Bánh xe là hình tròn nên lấy đường kính nhân với $3,14$ để tính chu vi bánh xe.\n\n**Bước 2.** Mỗi vòng xe đi được một đoạn bằng chu vi bánh xe, nên lấy chu vi nhân với $1000$ vòng.\n\n**Bước 3.** Quãng đường vừa tính có đơn vị là xăng-ti-mét nhưng đề hỏi bằng mét, nên đổi đơn vị bằng cách chia cho $100$.\n\n**Chú ý:** Đề cho đường kính chứ không phải bán kính, nên không nhân đôi hay chia đôi gì khi tính chu vi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi bánh xe là: $70\\times 3,14=219,8$ (cm)\n\nQuãng đường xe đạp đi được khi bánh xe lăn $1000$ vòng là: $219,8\\times 1000=219800$ (cm)\n\nĐổi: $219800\\ \\text{cm}=2198\\ \\text{m}$\n\nĐáp số: $2198$ m"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 29",
+  "dap_an": "$525\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác $NCM$ nằm trong hình chữ nhật, phần còn lại của hình chữ nhật là ba tam giác vuông ở ba góc $A$, $B$, $D$; vậy diện tích $NCM$ bằng diện tích hình chữ nhật trừ đi diện tích ba tam giác vuông đó.\n\n**Bước 1.** Nhìn hình vẽ: $M$ nằm trên $AB$, $N$ nằm trên $AD$; hình chữ nhật chia thành tam giác $NCM$ và ba tam giác vuông $AMN$, $BMC$, $NDC$.\n\n**Bước 2.** Từ $BM=\\dfrac{2}{3}AB$ tìm độ dài $BM$, rồi lấy $AB$ trừ $BM$ để được $AM$.\n\n**Bước 3.** Từ $ND=\\dfrac{1}{2}AN$ suy ra $AN$ là $2$ phần, $ND$ là $1$ phần, nên $AD$ gồm $3$ phần bằng nhau; chia $AD$ cho $3$ để tìm $ND$ và $AN$.\n\n**Bước 4.** Tính diện tích ba tam giác vuông bằng nửa tích hai cạnh góc vuông, rồi lấy diện tích hình chữ nhật trừ đi cả ba.\n\n**Chú ý:** $ND=\\dfrac{1}{2}AN$ nên $ND$ bằng $\\dfrac{1}{3}$ của $AD$, không phải $\\dfrac{1}{2}$ của $AD$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $M$ nằm trên $AB$, $N$ nằm trên $AD$, diện tích tam giác $NCM$ bằng diện tích hình chữ nhật $ABCD$ trừ diện tích ba tam giác vuông $AMN$, $BMC$, $NDC$.\n\nDiện tích hình chữ nhật $ABCD$ là: $45\\times 30=1350$ ($\\text{cm}^2$)\n\nĐộ dài đoạn $BM$ là: $45\\times\\dfrac{2}{3}=30$ (cm)\n\nĐộ dài đoạn $AM$ là: $45-30=15$ (cm)\n\nVì $ND=\\dfrac{1}{2}AN$ nên $AN$ là $2$ phần, $ND$ là $1$ phần, $AD$ gồm $3$ phần như thế.\n\nĐộ dài đoạn $ND$ là: $30:3=10$ (cm)\n\nĐộ dài đoạn $AN$ là: $30-10=20$ (cm)\n\nDiện tích tam giác $AMN$ là: $15\\times 20:2=150$ ($\\text{cm}^2$)\n\nDiện tích tam giác $BMC$ là: $30\\times 30:2=450$ ($\\text{cm}^2$)\n\nDiện tích tam giác $NDC$ là: $10\\times 45:2=225$ ($\\text{cm}^2$)\n\nDiện tích tam giác $NCM$ là: $1350-150-450-225=525$ ($\\text{cm}^2$)\n\nĐáp số: $525\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 30",
+  "dap_an": "$26\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tứ giác $AFDE$ gồm hai tam giác $AED$ và $AFD$ ghép lại (chung cạnh $AD$); mỗi tam giác này có chung đường cao với một tam giác lớn hơn ($ABD$ hoặc $ADC$) nên tính được diện tích qua tỉ số hai đáy.\n\n**Bước 1.** $D$ là trung điểm của $BC$ nên hai tam giác $ABD$ và $ADC$ có chung đường cao hạ từ $A$ và hai đáy bằng nhau, vậy mỗi tam giác có diện tích bằng một nửa tam giác $ABC$.\n\n**Bước 2.** Đổi hai điều kiện của đề thành tỉ số đoạn thẳng: $AE=\\dfrac{1}{2}BE$ thì $AB$ gồm $3$ phần, $AE$ chiếm $1$ phần; $FC=\\dfrac{1}{3}AF$ thì $AC$ gồm $4$ phần, $AF$ chiếm $3$ phần.\n\n**Bước 3.** Tam giác $AED$ có chung đường cao hạ từ $D$ với tam giác $ABD$ nên diện tích bằng tỉ số $AE$ trên $AB$; làm tương tự cho tam giác $AFD$ và tam giác $ADC$.\n\n**Bước 4.** Cộng diện tích hai tam giác $AED$ và $AFD$ để được diện tích tứ giác $AFDE$.\n\n**Chú ý:** Hai tỉ số $\\dfrac{AE}{AB}$ và $\\dfrac{AF}{AC}$ lấy theo đoạn lớn ($AB$, $AC$), không lấy theo đoạn $BE$ hay $FC$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $E$ nằm trên $AB$, $F$ nằm trên $AC$, $D$ nằm trên $BC$; tứ giác $AFDE$ gồm tam giác $AED$ và tam giác $AFD$.\n\nTam giác $ABD$ và tam giác $ABC$ có chung đường cao hạ từ $A$ xuống $BC$, suy ra $\\dfrac{S_{ABD}}{S_{ABC}}=\\dfrac{BD}{BC}=\\dfrac{1}{2}$\n\nDiện tích tam giác $ABD$ là: $48:2=24$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ADC$ là: $48-24=24$ ($\\text{cm}^2$)\n\nVì $AE=\\dfrac{1}{2}BE$ nên $AB$ gồm $3$ phần bằng nhau, $AE$ là $1$ phần, $BE$ là $2$ phần.\n\nTam giác $AED$ và tam giác $ABD$ có chung đường cao hạ từ $D$ xuống $AB$, suy ra $\\dfrac{S_{AED}}{S_{ABD}}=\\dfrac{AE}{AB}=\\dfrac{1}{3}$\n\nDiện tích tam giác $AED$ là: $24:3=8$ ($\\text{cm}^2$)\n\nVì $FC=\\dfrac{1}{3}AF$ nên $AC$ gồm $4$ phần bằng nhau, $AF$ là $3$ phần, $FC$ là $1$ phần.\n\nTam giác $AFD$ và tam giác $ADC$ có chung đường cao hạ từ $D$ xuống $AC$, suy ra $\\dfrac{S_{AFD}}{S_{ADC}}=\\dfrac{AF}{AC}=\\dfrac{3}{4}$\n\nDiện tích tam giác $AFD$ là: $24:4\\times 3=18$ ($\\text{cm}^2$)\n\nDiện tích tứ giác $AFDE$ là: $8+18=26$ ($\\text{cm}^2$)\n\nĐáp số: $26\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 31",
+  "dap_an": "$9$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau; cạnh gấp lên $3$ lần thì hình vuông có cả hai cạnh gấp lên $3$ lần, nên diện tích mỗi mặt gấp lên $3\\times 3$ lần.\n\n**Bước 1.** Nhớ rằng diện tích toàn phần bằng diện tích một mặt nhân với $6$ mặt, nên diện tích toàn phần gấp lên bao nhiêu lần thì diện tích một mặt cũng gấp lên bấy nhiêu lần.\n\n**Bước 2.** Mỗi mặt là hình vuông có diện tích bằng cạnh nhân cạnh; khi cạnh gấp lên $3$ lần thì cả hai thừa số cùng gấp lên $3$ lần.\n\n**Bước 3.** Nhân hai số lần gấp của hai thừa số để biết diện tích một mặt gấp lên mấy lần, rồi kết luận cho diện tích toàn phần.\n\n**Chú ý:** Cạnh gấp $3$ lần thì diện tích không gấp $3$ lần mà gấp $3\\times 3$ lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHình lập phương có $6$ mặt là $6$ hình vuông bằng nhau.\n\nKhi cạnh gấp lên $3$ lần thì diện tích mỗi mặt gấp lên: $3\\times 3=9$ (lần)\n\nDiện tích toàn phần gồm $6$ mặt như thế nên cũng gấp lên $9$ lần.\n\nĐáp số: $9$ lần"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 32",
+  "dap_an": "$14$ khối",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quan sát hình để tìm quy luật: mỗi lớp xếp thành $2$ hàng giống nhau (hàng trước, hàng sau) và các lớp từ trên xuống rộng dần đều nhau; tìm số khối ở một hàng của lớp thứ tư rồi nhân với $2$ hàng.\n\n**Bước 1.** Quan sát hình: mỗi lớp gồm $2$ hàng khối giống nhau, lớp trên cùng có $2$ khối nên mỗi hàng của lớp này có $1$ khối.\n\n**Bước 2.** Đếm số khối ở một hàng của ba lớp nhìn thấy trong hình, rồi so sánh để biết mỗi lớp dưới nhiều hơn lớp ngay trên nó bao nhiêu khối ở mỗi hàng.\n\n**Bước 3.** Dùng quy luật đó tính số khối ở một hàng của lớp thứ tư, rồi nhân với $2$ hàng để được số khối của cả lớp.\n\n**Chú ý:** Đề hỏi số khối của cả lớp thứ tư, nên đừng dừng lại ở số khối của một hàng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, mỗi lớp có $2$ hàng khối giống nhau; số khối ở mỗi hàng của lớp thứ nhất, thứ hai, thứ ba lần lượt là $1;\\ 3;\\ 5$ (khối).\n\nLớp thứ nhất có $1\\times 2=2$ khối, đúng với đề bài.\n\nMỗi lớp dưới có số khối ở mỗi hàng nhiều hơn lớp ngay trên nó là: $3-1=5-3=2$ (khối)\n\nSố khối ở mỗi hàng của lớp thứ tư là: $5+2=7$ (khối)\n\nSố khối nhỏ ở lớp thứ tư là: $7\\times 2=14$ (khối)\n\nĐáp số: $14$ khối",
+  "ghi_chu_nghi": "Hình chỉ vẽ 3 lớp (mỗi lớp 2 hàng sâu, rộng 1 – 3 – 5 khối, tức 2 – 6 – 10 khối); hiểu quy luật mỗi lớp dưới rộng hơn lớp trên 2 khối ⇒ lớp 4 rộng 7 khối × 2 hàng = 14. Hình không có mũi tên \"nhìn từ trên xuống\" như đề nói; độ sâu 2 hàng đọc từ mặt bên phải của hình (hai hình bình hành liền nhau)."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 33",
+  "dap_an": "$192\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tính thể tích phải có đủ ba kích thước; chiều rộng đã biết, chiều dài tính từ chiều rộng, còn chiều cao tính từ chiều dài (không phải từ chiều rộng).\n\n**Bước 1.** Chiều dài gấp $2$ lần chiều rộng nên lấy chiều rộng nhân với $2$ để tìm chiều dài.\n\n**Bước 2.** Chiều cao ngắn hơn chiều dài $2$ cm nên lấy chiều dài trừ đi $2$ cm để tìm chiều cao.\n\n**Bước 3.** Thể tích hình hộp chữ nhật bằng chiều dài nhân chiều rộng nhân chiều cao.\n\n**Chú ý:** Chiều cao ngắn hơn chiều dài chứ không phải ngắn hơn chiều rộng, đừng trừ nhầm vào $4$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài hình hộp chữ nhật là: $4\\times 2=8$ (cm)\n\nChiều cao hình hộp chữ nhật là: $8-2=6$ (cm)\n\nThể tích hình hộp chữ nhật là: $8\\times 4\\times 6=192$ ($\\text{cm}^3$)\n\nĐáp số: $192\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 34",
+  "dap_an": "$125\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích toàn phần của hình lập phương gồm $6$ mặt, diện tích xung quanh gồm $4$ mặt bên; vậy hiệu của chúng chính là diện tích $2$ mặt đáy, từ đó tìm cạnh rồi thể tích.\n\n**Bước 1.** Nhận ra hình lập phương có $6$ mặt là hình vuông bằng nhau, diện tích xung quanh là $4$ mặt, nên hiệu hai diện tích là $2$ mặt.\n\n**Bước 2.** Chia hiệu $50\\ \\text{cm}^2$ cho $2$ để tìm diện tích của một mặt.\n\n**Bước 3.** Tìm cạnh hình lập phương: là số nhân với chính nó thì ra diện tích một mặt vừa tìm.\n\n**Bước 4.** Tính thể tích bằng cạnh nhân cạnh nhân cạnh.\n\nThử lại: với cạnh vừa tìm, diện tích toàn phần trừ diện tích xung quanh phải bằng $50\\ \\text{cm}^2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích toàn phần có $6$ mặt, diện tích xung quanh có $4$ mặt nên hiệu của chúng là diện tích $2$ mặt.\n\nDiện tích một mặt của hình lập phương là: $50:2=25$ ($\\text{cm}^2$)\n\nVì $5\\times 5=25$ nên cạnh hình lập phương là $5$ cm.\n\nThể tích hình lập phương là: $5\\times 5\\times 5=125$ ($\\text{cm}^3$)\n\nĐáp số: $125\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 35",
+  "dap_an": "$0,6\\ \\text{m}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hòn đá chiếm chỗ của nước nên khi thả vào bể, mực nước dâng lên; phần nước dâng thêm có thể tích đúng bằng thể tích phần hòn non bộ ngập trong nước.\n\n**Bước 1.** Tìm mực nước trong bể dâng thêm bao nhiêu khi thả hòn đá vào, bằng cách lấy mực nước sau trừ mực nước trước.\n\n**Bước 2.** Phần nước dâng thêm là một hình hộp chữ nhật có đáy chính là đáy bể và chiều cao là mực nước dâng thêm; tính thể tích hình hộp đó bằng chiều dài nhân chiều rộng nhân chiều cao.\n\n**Bước 3.** Kết luận thể tích hòn non bộ ngập trong nước bằng thể tích phần nước dâng thêm, vì nước không tràn ra ngoài; ghi kèm đơn vị mét khối.\n\n**Chú ý:** Không lấy thể tích cả lượng nước có trong bể; chỉ phần nước dâng thêm mới có thể tích bằng phần hòn đá ngập trong nước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMực nước trong bể dâng thêm là: $0,6-0,5=0,1$ (m)\n\nThể tích phần hòn non bộ ngập trong nước bằng thể tích phần nước dâng thêm, là: $3\\times 2\\times 0,1=0,6$ ($\\text{m}^3$)\n\nĐáp số: $0,6\\ \\text{m}^3$",
+  "ghi_chu_nghi": "Hiểu: nước không tràn ra ngoài, hòn đá ngập hoàn toàn nên thể tích phần ngập = thể tích nước dâng thêm. Đề không có hình, kích thước \"trong lòng bể\" lấy đúng chữ."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 36",
+  "dap_an": "$300$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số cần tìm là cả (ứng với $100\\%$), còn $21$ chỉ là $7\\%$ của nó; tìm một số khi biết $b\\%$ của số đó thì lấy giá trị đã biết chia cho $b\\%$.\n\n**Bước 1.** Nhận ra số cần tìm là số lớn ứng với $100\\%$ và con số $21$ ứng với $7\\%$ của số đó.\n\n**Bước 2.** Muốn tìm cả số khi biết một phần của nó, ta lấy giá trị đã biết chia cho tỉ số phần trăm tương ứng.\n\n**Bước 3.** Đổi $7\\%$ thành số thập phân rồi thực hiện phép chia, sau đó nhân ngược lại với $7\\%$ để thử kết quả.\n\nThử lại: lấy số vừa tìm nhân với $7\\%$ thì phải được đúng con số đề cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cần tìm là: $21:7\\%=21:0,07=300$\n\nĐáp số: $300$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 37",
+  "dap_an": "$42$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$70\\%$ cơ thể là nước\" nghĩa là nếu chia cân nặng thành $100$ phần bằng nhau thì nước chiếm $70$ phần; tìm $a\\%$ của một số $M$ thì lấy $M\\times a\\%$.\n\n**Bước 1.** Xác định cân nặng của người đó, $60$ kg, là cả (ứng với $100\\%$), còn khối lượng nước là $70\\%$ của cân nặng.\n\n**Bước 2.** Tìm $70\\%$ của $60$ kg bằng cách lấy $60$ nhân với $70\\%$.\n\n**Bước 3.** Đối chiếu kết quả với cân nặng cả người để chắc rằng khối lượng nước nhỏ hơn $60$ kg, rồi ghi đơn vị ki-lô-gam.\n\n**Chú ý:** $70\\%$ nhỏ hơn $100\\%$ nên số ki-lô-gam nước phải nhỏ hơn cân nặng cả người.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ki-lô-gam cơ thể là nước là: $60\\times 70\\%=42$ (kg)\n\nĐáp số: $42$ kg"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 38",
+  "dap_an": "$25$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả lớp là $100\\%$, nữ chiếm $40\\%$ nên nam chiếm phần còn lại; biết số học sinh nam và tỉ số phần trăm của nam thì tìm được cả lớp bằng phép chia cho tỉ số phần trăm đó.\n\n**Bước 1.** Coi cả lớp là $100\\%$, lấy $100\\%$ trừ tỉ số phần trăm của học sinh nữ để biết học sinh nam chiếm bao nhiêu phần trăm cả lớp.\n\n**Bước 2.** Nhận ra $15$ học sinh nam ứng với tỉ số phần trăm vừa tìm được của cả lớp.\n\n**Bước 3.** Muốn tìm cả lớp ta lấy số học sinh nam chia cho tỉ số phần trăm tương ứng của học sinh nam.\n\n**Chú ý:** Con số $15$ là số học sinh nam chứ không phải nữ, nên không chia $15$ cho $40\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nam chiếm số phần trăm số học sinh cả lớp là: $100\\%-40\\%=60\\%$\n\nLớp $5$A có tất cả số học sinh là: $15:60\\%=25$ (học sinh)\n\nĐáp số: $25$ học sinh"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 39",
+  "dap_an": "$5000000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giảm giá $20\\%$ so với giá ban đầu nghĩa là giá sau khi giảm chỉ còn $100\\%-20\\%$ của giá ban đầu; biết giá sau khi giảm ứng với số phần trăm đó thì chia cho nó để tìm giá ban đầu.\n\n**Bước 1.** Coi giá ban đầu là $100\\%$ rồi tính giá sau khi giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 2.** Nhận ra $4000000$ đồng ứng với số phần trăm vừa tìm được của giá ban đầu.\n\n**Bước 3.** Muốn tìm giá ban đầu ta lấy giá sau khi giảm chia cho tỉ số phần trăm tương ứng, rồi ghi đơn vị đồng.\n\n**Chú ý:** Không lấy $4000000$ nhân thêm $20\\%$ để cộng vào, vì $20\\%$ là của giá ban đầu chứ không phải của giá sau khi giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá sau khi giảm bằng số phần trăm giá ban đầu là: $100\\%-20\\%=80\\%$\n\nGiá ban đầu của chiếc tủ lạnh là: $4000000:80\\%=5000000$ (đồng)\n\nĐáp số: $5000000$ đồng"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 40",
+  "dap_an": "$10050000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi suất $0,5\\%$ một tháng nghĩa là sau một tháng tiền lãi bằng $0,5\\%$ số tiền gửi; đề hỏi \"cả số tiền gửi và tiền lãi\" nên phải cộng tiền gửi với tiền lãi.\n\n**Bước 1.** Tính tiền lãi sau một tháng, là $0,5\\%$ của số tiền gửi, bằng cách lấy số tiền gửi nhân với $0,5\\%$.\n\n**Bước 2.** Cộng số tiền gửi với tiền lãi vừa tìm để được cả số tiền gửi và tiền lãi.\n\n**Bước 3.** Kiểm tra kết quả phải lớn hơn số tiền gửi ban đầu một chút, rồi ghi đơn vị đồng.\n\n**Chú ý:** Đề hỏi cả số tiền gửi và tiền lãi nên không được dừng lại ở bước tìm tiền lãi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền lãi sau một tháng là: $10000000\\times 0,5\\%=50000$ (đồng)\n\nSau một tháng cả số tiền gửi và tiền lãi là: $10000000+50000=10050000$ (đồng)\n\nĐáp số: $10050000$ đồng"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 41",
+  "dap_an": "$8$ giờ $20$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng số đo thời gian thì cộng theo từng cột, giờ với giờ và phút với phút; nếu số phút từ $60$ trở lên thì đổi $60$ phút thành $1$ giờ rồi cộng vào số giờ.\n\n**Bước 1.** Cộng riêng số giờ với số giờ và số phút với số phút của hai khoảng thời gian.\n\n**Bước 2.** Nhìn số phút vừa cộng được: nếu từ $60$ phút trở lên thì phải đổi ra giờ và phút.\n\n**Bước 3.** Cộng số giờ vừa đổi ra vào số giờ đã có, và viết kết quả với số phút nhỏ hơn $60$.\n\n**Chú ý:** Kết quả cuối cùng không được để số phút lớn hơn hoặc bằng $60$.\n\n**Phần 2. Trình bày**\n\n$5$ giờ $45$ phút $+\\ 2$ giờ $35$ phút $=7$ giờ $80$ phút\n\nĐổi: $80$ phút $=1$ giờ $20$ phút\n\n$7$ giờ $80$ phút $=7$ giờ $+\\ 1$ giờ $20$ phút $=8$ giờ $20$ phút\n\nVậy $5$ giờ $45$ phút $+\\ 2$ giờ $35$ phút $=8$ giờ $20$ phút."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 42",
+  "dap_an": "$18$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $5$ m/s nghĩa là mỗi giây đi được $5$ m; muốn đổi sang km/giờ thì tính xem trong $1$ giờ (gồm nhiều giây) đi được bao nhiêu mét, rồi đổi mét ra ki-lô-mét.\n\n**Bước 1.** Đổi $1$ giờ ra giây, nhớ $1$ giờ có $60$ phút và mỗi phút có $60$ giây.\n\n**Bước 2.** Tính quãng đường đi được trong $1$ giờ bằng cách lấy quãng đường đi trong $1$ giây nhân với số giây của $1$ giờ.\n\n**Bước 3.** Đổi quãng đường vừa tìm từ mét sang ki-lô-mét, nhớ $1$ km bằng $1000$ m.\n\n**Chú ý:** Đổi cả quãng đường và thời gian, đừng chỉ đổi một trong hai đơn vị.\n\n**Phần 2. Trình bày**\n\nĐổi: $1$ giờ $=60$ phút $=3600$ giây\n\nTrong $1$ giờ vật đi được: $5\\times 3600=18000$ (m)\n\nĐổi: $18000$ m $=18$ km\n\nVậy $5$ m/s $=18$ km/giờ."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 43",
+  "dap_an": "$750$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường bằng vận tốc nhân với thời gian; vận tốc cho theo km/giờ nên thời gian phải đổi ra giờ, và đề hỏi mét nên cuối cùng phải đổi ki-lô-mét ra mét.\n\n**Bước 1.** Đổi $15$ phút ra giờ bằng cách chia cho $60$, để thời gian cùng đơn vị với vận tốc.\n\n**Bước 2.** Tính quãng đường từ nhà đến trường bằng vận tốc nhân với thời gian, kết quả tính bằng ki-lô-mét.\n\n**Bước 3.** Đổi số ki-lô-mét vừa tìm ra mét vì đề bài yêu cầu tính bằng mét.\n\n**Chú ý:** Đề hỏi quãng đường dài bao nhiêu mét, nên dừng ở ki-lô-mét là sai đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Tú đi từ nhà đến trường với vận tốc 3 km/giờ trong 15 phút)\n\nĐổi: $15$ phút $=15:60=0,25$ giờ\n\nQuãng đường từ nhà Tú đến trường là: $3\\times 0,25=0,75$ (km)\n\nĐổi: $0,75$ km $=750$ m\n\nĐáp số: $750$ m",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Tú đi trong 15 phút",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0
+    },
+    {
+     "ten": "Trường",
+     "x": 750
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 750,
+     "nhan": "3 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 750,
+     "nhan": "? m"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 44",
+  "dap_an": "$32$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vận tốc cho biết mỗi giờ đi được bao nhiêu ki-lô-mét, nên vận tốc bằng quãng đường chia cho thời gian đi hết quãng đường đó.\n\n**Bước 1.** Đọc kĩ đề để lấy quãng đường giữa hai thành phố và thời gian tàu đi, chú ý \"$5$ tiếng\" chính là $5$ giờ.\n\n**Bước 2.** Kiểm tra quãng đường tính bằng ki-lô-mét và thời gian tính bằng giờ nên không cần đổi đơn vị.\n\n**Bước 3.** Muốn tìm vận tốc ta lấy quãng đường chia cho thời gian, rồi ghi đơn vị là km/giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Tàu đi từ thành phố A đến thành phố B dài 160 km trong 5 giờ)\n\nVận tốc của tàu là: $160:5=32$ (km/giờ)\n\nĐáp số: $32$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Tàu đi trong 5 tiếng",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 160
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 160,
+     "nhan": "? km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 160,
+     "nhan": "160 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 45",
+  "dap_an": "$30$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì xe phải quay lại A nên đến B muộn hơn dự định; thời gian muộn gồm thời gian dừng ở A và thời gian xe đi thêm đoạn đường đi rồi quay về. Vận tốc không đổi nên lấy quãng đường đi thêm chia cho thời gian đi thêm.\n\n**Bước 1.** Tính xe đến B muộn hơn dự định bao lâu, bằng cách lấy giờ đến thực tế trừ giờ đến dự định.\n\n**Bước 2.** Trừ đi $10$ phút xe dừng lại ở A, vì lúc dừng xe không đi, để biết thời gian xe thật sự chạy thêm.\n\n**Bước 3.** Tìm quãng đường xe chạy thêm: xe đi một đoạn rồi quay về đúng điểm xuất phát nên đoạn đi và đoạn về bằng nhau.\n\n**Bước 4.** Đổi thời gian chạy thêm ra giờ rồi lấy quãng đường chạy thêm chia cho thời gian đó để tìm vận tốc.\n\n**Chú ý:** Quãng đường chạy thêm gồm cả lượt đi và lượt về, không chỉ lượt đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Xe đi 5 km từ A đến C, quay về A 5 km rồi dừng 10 phút)\n\nXe đến B muộn hơn dự định là: $9$ giờ $-\\ 8$ giờ $30$ phút $=30$ phút\n\nThời gian xe chạy thêm (không kể thời gian dừng) là: $30-10=20$ (phút)\n\nĐổi: $20$ phút $=\\dfrac{1}{3}$ giờ\n\nQuãng đường xe chạy thêm là: $5+5=10$ (km)\n\nVận tốc của xe máy là: $10:\\dfrac{1}{3}=30$ (km/giờ)\n\nĐáp số: $30$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Đoạn xe đi thêm",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 5,
+     "ghi": "quay lại"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 5,
+     "nhan": "đi 5 km"
+    },
+    {
+     "tu": 5,
+     "den": 0,
+     "nhan": "về A 5 km"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 5,
+     "nhan": "5 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề không cho độ dài AB và giờ khởi hành nên sơ đồ chỉ vẽ đoạn xe đi thêm (5 km đi + 5 km về), không vẽ B. Hiểu \"quay lại A\" là xe về đúng A rồi mới dừng 10 phút."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 46",
+  "dap_an": "$11110$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi hỗn số gồm phần nguyên và phần phân số; cộng hỗn số thì tính riêng tổng các phần nguyên và tổng các phần phân số rồi cộng hai kết quả, không đổi ra phân số vì tử số sẽ rất lớn.\n\n**Bước 1.** Tách mỗi hỗn số thành phần nguyên cộng phần phân số, gom các phần nguyên vào một nhóm và các phân số vào một nhóm.\n\n**Bước 2.** Tính nhóm phần nguyên: các số $9999;\\ 999;\\ 99;\\ 9$ lần lượt kém $10000;\\ 1000;\\ 100;\\ 10$ đúng $1$ đơn vị, nên cộng các số tròn rồi bớt đi $4$ cho gọn.\n\n**Bước 3.** Tính nhóm phân số: tất cả đều có mẫu số $9$ nên cộng các tử số rồi rút gọn, được một số tự nhiên.\n\n**Bước 4.** Cộng kết quả của hai nhóm để được giá trị của biểu thức.\n\n**Chú ý:** Đếm đúng số hỗn số có phần phân số $\\dfrac{8}{9}$ (có $4$ hỗn số) và đừng quên phân số $\\dfrac{4}{9}$ ở cuối.\n\n**Phần 2. Trình bày**\n\n$9999\\dfrac{8}{9}+999\\dfrac{8}{9}+99\\dfrac{8}{9}+9\\dfrac{8}{9}+\\dfrac{4}{9}$\n\n$=(9999+999+99+9)+\\left(\\dfrac{8}{9}+\\dfrac{8}{9}+\\dfrac{8}{9}+\\dfrac{8}{9}+\\dfrac{4}{9}\\right)$\n\n$=(10000+1000+100+10-4)+\\dfrac{36}{9}$\n\n$=(11110-4)+4$\n\n$=11106+4$\n\n$=11110$"
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 47",
+  "dap_an": "$10$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $3$ khi tổng các chữ số của nó chia hết cho $3$, nên trước hết chọn ra những bộ ba chữ số có tổng chia hết cho $3$, rồi đếm số cách xếp mỗi bộ thành số có ba chữ số.\n\n**Bước 1.** Liệt kê các bộ ba chữ số khác nhau lấy từ bốn chữ số $0;\\ 1;\\ 2;\\ 3$, mỗi bộ ứng với việc bỏ đi một chữ số.\n\n**Bước 2.** Tính tổng các chữ số của từng bộ và giữ lại những bộ có tổng chia hết cho $3$.\n\n**Bước 3.** Đếm số cách xếp theo từng hàng với bộ không có chữ số $0$: hàng trăm, hàng chục, hàng đơn vị lần lượt có số cách chọn giảm dần.\n\n**Bước 4.** Đếm tiếp với bộ có chữ số $0$, chú ý chữ số hàng trăm không được bằng $0$, rồi cộng số các số của các bộ.\n\n**Chú ý:** Số có ba chữ số thì chữ số hàng trăm khác $0$; chữ số $0$ chỉ được đặt ở hàng chục hoặc hàng đơn vị.\n\n**Phần 2. Trình bày**\n\nSố chia hết cho $3$ thì tổng các chữ số chia hết cho $3$.\n\nCác bộ ba chữ số khác nhau và tổng các chữ số: $0;1;2$ có tổng $3$ · $0;1;3$ có tổng $4$ · $0;2;3$ có tổng $5$ · $1;2;3$ có tổng $6$.\n\nChỉ có hai bộ $0;1;2$ và $1;2;3$ có tổng chia hết cho $3$.\n\nBộ $1;2;3$: hàng trăm có $3$ cách chọn, hàng chục có $2$ cách, hàng đơn vị có $1$ cách nên có: $3\\times 2\\times 1=6$ (số)\n\nBộ $0;1;2$: hàng trăm không được là $0$ nên có $2$ cách chọn, hàng chục có $2$ cách, hàng đơn vị có $1$ cách nên có: $2\\times 2\\times 1=4$ (số)\n\nSố các số lập được là: $6+4=10$ (số)\n\nĐó là các số $123;\\ 132;\\ 213;\\ 231;\\ 312;\\ 321;\\ 102;\\ 120;\\ 201;\\ 210$.\n\nVậy lập được $10$ số."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 48",
+  "dap_an": "$108$ cái kẹo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số học sinh và số kẹo không đổi; chia mỗi em thêm $1$ cái thì số kẹo còn lại giảm bớt, và số kẹo giảm bớt đó chính là số kẹo cả lớp được chia thêm. Đây là bài hai hiệu số.\n\n**Bước 1.** So sánh hai cách chia để biết mỗi học sinh được chia thêm bao nhiêu cái kẹo khi chuyển từ cách chia thứ nhất sang cách thứ hai.\n\n**Bước 2.** Tính số kẹo còn lại ở cách chia thứ nhất hơn số kẹo còn lại ở cách chia thứ hai bao nhiêu cái.\n\n**Bước 3.** Số kẹo còn lại giảm đi đúng bằng số kẹo cả lớp được chia thêm; mỗi em thêm một số cái xác định nên chia ra được số học sinh.\n\n**Bước 4.** Biết số học sinh thì tính số kẹo theo cách chia thứ nhất: số kẹo đã chia cộng với số kẹo còn thừa.\n\nThử lại: tính số kẹo theo cách chia thứ hai (số kẹo đã chia cộng số kẹo còn thừa), hai kết quả phải bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số kẹo; chia mỗi em 3 cái thì còn thừa 30 cái; chia mỗi em 4 cái thì còn thừa 4 cái)\n\nMỗi học sinh được chia thêm số cái kẹo là: $4-3=1$ (cái)\n\nSố kẹo còn lại giảm đi, cũng là số kẹo cả lớp được chia thêm, là: $30-4=26$ (cái)\n\nSố học sinh là: $26:1=26$ (học sinh)\n\nSố kẹo của cô giáo là: $26\\times 3+30=108$ (cái)\n\nĐáp số: $108$ cái kẹo",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 108,
+   "hang": [
+    {
+     "nhan": "Số kẹo",
+     "phan": 1
+    },
+    {
+     "nhan": "Chia mỗi em 3 cái",
+     "phan": 1,
+     "bot": "30 cái"
+    },
+    {
+     "nhan": "Chia mỗi em 4 cái",
+     "phan": 1,
+     "bot": "4 cái"
+    }
+   ],
+   "dau_hoi": [
+    "Số kẹo"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 49",
+  "dap_an": "Bình",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho biết có đúng một bạn nói dối, nên thử giả sử một bạn nói thật rồi xem có mâu thuẫn với điều kiện \"đúng một bạn nói dối\" hay không; trường hợp mâu thuẫn thì loại.\n\n**Bước 1.** Giả sử An nói thật, tức An cao nhất; khi đó nửa đầu trong lời Cường (\"không cao bằng An\") cũng đúng.\n\n**Bước 2.** Xét hai khả năng của Dũng: Dũng nói thật hoặc Dũng nói dối, và với mỗi khả năng hãy kiểm tra lời Bình và lời Cường.\n\n**Bước 3.** Nếu cả hai khả năng đều mâu thuẫn thì An phải là người nói dối, còn ba bạn kia nói thật.\n\n**Bước 4.** Dùng lời của ba bạn nói thật để sắp xếp chiều cao, loại dần những bạn không thể cao nhất để tìm ra người cao nhất.\n\n**Chú ý:** Phải kiểm cả hai khả năng của Dũng, vì đề chỉ cho biết có đúng một bạn nói dối mà không cho biết đó là ai.\n\n**Phần 2. Trình bày**\n\nGiả sử An nói thật, tức An cao nhất. Khi đó Cường nói đúng nửa đầu (Cường không cao bằng An).\n\nTrường hợp 1: Dũng nói thật, tức Dũng thấp nhất. Khi đó Bình không phải người thấp nhất nên Bình nói thật, và Cường vừa thấp hơn An vừa cao hơn Dũng nên Cường nói thật. Cả bốn bạn đều nói thật, trái với đề bài.\n\nTrường hợp 2: Dũng nói dối, tức Dũng không phải người thấp nhất. Khi đó Bình và Cường nói thật. Người thấp nhất không phải An, không phải Bình, không phải Dũng nên là Cường; nhưng Cường nói có người thấp hơn mình, mâu thuẫn.\n\nCả hai trường hợp đều mâu thuẫn nên An nói dối, tức An không cao nhất. Vậy Bình, Cường, Dũng đều nói thật.\n\nDũng thấp nhất, Cường thấp hơn An. Người cao nhất không phải An, không phải Cường, không phải Dũng nên là Bình.\n\nVậy bạn Bình cao nhất."
+ },
+ {
+  "ma_nguon": "ARC 2024-MAU · 50",
+  "dap_an": "$10$ phân số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số có giá trị là số tự nhiên khi tử số chia hết cho mẫu số. Các thẻ $13$ và $17$ rất \"khó tính\": chúng chỉ chia hết cho $1$ và chính nó, nên hai thẻ này không thể cùng nằm trong những phân số có giá trị là số tự nhiên.\n\n**Bước 1.** Nhớ rằng phân số có giá trị là số tự nhiên khi tử số chia hết cho mẫu số, rồi xét xem thẻ $13$ có thể đứng ở vị trí tử số hay mẫu số.\n\n**Bước 2.** Làm tương tự với thẻ $17$ và nhận ra cả hai thẻ này đều chỉ ghép được với thẻ $1$ để có giá trị là số tự nhiên.\n\n**Bước 3.** Vì chỉ có một thẻ $1$ nên có ít nhất một phân số không có giá trị là số tự nhiên, từ đó suy ra giới hạn trên của số phân số cần tìm.\n\n**Bước 4.** Chỉ ra một cách ghép cụ thể đạt đúng giới hạn đó: ghép hai thẻ khó tính với nhau, các thẻ còn lại ghép sao cho tử số chia hết cho mẫu số.\n\n**Chú ý:** Trả lời cần có cả hai phần: chứng tỏ không thể nhiều hơn, và chỉ ra một cách ghép đạt được số đó.\n\n**Phần 2. Trình bày**\n\nPhân số có giá trị là số tự nhiên thì tử số chia hết cho mẫu số.\n\nThẻ $13$ làm mẫu số thì tử số phải chia hết cho $13$ mà khác $13$, không có thẻ nào như vậy; nên thẻ $13$ chỉ có thể làm tử số với mẫu số là thẻ $1$. Thẻ $17$ cũng vậy.\n\nChỉ có một thẻ $1$ nên hai thẻ $13$ và $17$ không thể cùng nằm trong những phân số có giá trị là số tự nhiên. Do đó trong $11$ phân số có ít nhất $1$ phân số không có giá trị là số tự nhiên, nên có nhiều nhất $11-1=10$ phân số có giá trị là số tự nhiên.\n\nCó thể tạo được đúng $10$ phân số như vậy: ghép $\\dfrac{13}{17}$ (không phải số tự nhiên) và $10$ phân số $\\dfrac{19}{1};\\ \\dfrac{22}{11};\\ \\dfrac{20}{10};\\ \\dfrac{18}{9};\\ \\dfrac{16}{8};\\ \\dfrac{14}{7};\\ \\dfrac{12}{6};\\ \\dfrac{15}{5};\\ \\dfrac{21}{3};\\ \\dfrac{4}{2}$, đều có giá trị là số tự nhiên và dùng hết $22$ tấm thẻ.\n\nVậy có thể tạo được nhiều nhất $10$ phân số có giá trị bằng một số tự nhiên."
+ }
+]

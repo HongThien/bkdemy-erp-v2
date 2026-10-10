@@ -1,0 +1,251 @@
+[
+ {
+  "ma_nguon": "NTT 2019 · 2",
+  "dap_an": "Thứ Năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng một ngày tháng ở hai năm liền nhau cách nhau $365$ ngày hoặc $366$ ngày; chia số ngày cho $7$ thì số dư cho biết thứ trong tuần dịch đi mấy ngày. Vì vậy phải xét xem khoảng giữa hai lần sinh nhật có chứa ngày $29$ tháng $2$ (năm nhuận) hay không.\n\n**Bước 1.** Xác định \"sang năm\" là năm $2020$, rồi xét xem năm này có phải năm nhuận không: năm nào chia hết cho $4$ thì là năm nhuận có $366$ ngày.\n\n**Bước 2.** Sinh nhật Bình ở tháng $5$, sau tháng $2$, nên từ sinh nhật năm $2019$ đến sinh nhật năm $2020$ sẽ đi qua ngày $29$ tháng $2$ của năm nhuận; từ đó biết hai lần sinh nhật cách nhau bao nhiêu ngày.\n\n**Bước 3.** Một tuần có $7$ ngày, nên chia số ngày cho $7$ và lấy số dư: số dư chính là số ngày thứ trong tuần dịch đi.\n\n**Bước 4.** Từ thứ Ba, đếm tiếp đúng số ngày dư theo thứ tự các thứ trong tuần để biết sinh nhật năm sau rơi vào thứ mấy.\n\n**Chú ý:** Nếu quên rằng năm $2020$ là năm nhuận mà chỉ tính $365$ ngày thì đáp số sẽ lệch đi một ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSang năm là năm $2020$. Năm $2020$ chia hết cho $4$ nên là năm nhuận, tháng Hai có $29$ ngày, cả năm có $366$ ngày.\n\nSinh nhật Bình ở tháng Năm nên từ sinh nhật năm $2019$ đến sinh nhật năm $2020$ cách nhau $366$ ngày.\n\nSố tuần tròn và số ngày dư: $366:7=52$ (dư $2$)\n\nVậy sinh nhật năm sau muộn hơn sinh nhật năm nay $52$ tuần và $2$ ngày, nên thứ trong tuần đi tiếp $2$ ngày: thứ Ba, thứ Tư, thứ Năm.\n\nĐáp số: Thứ Năm"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 3",
+  "dap_an": "$3$ dm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bể đầy nước, thả vật chìm vào thì nước tràn ra đúng bằng thể tích của vật. Vậy $54$ lít nước tràn ra chính là thể tích của cả hai cục sắt, và nhớ rằng $1$ lít bằng $1\\ \\text{dm}^3$.\n\n**Bước 1.** Nhận ra thể tích nước tràn ra bằng thể tích hai cục sắt, rồi đổi số lít sang đơn vị đề-xi-mét khối cho cùng loại với thể tích hình lập phương.\n\n**Bước 2.** Hai cục sắt giống nhau (cùng là hình lập phương) nên chia thể tích chung cho $2$ để biết thể tích của một cục.\n\n**Bước 3.** Thể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh, nên tìm số tự nhiên nhân với chính nó ba lần ra thể tích của một cục.\n\n**Chú ý:** Đề cho đơn vị lít còn đáp số cần độ dài, nên phải đổi lít sang đề-xi-mét khối rồi mới tìm cạnh; cạnh tính bằng đề-xi-mét, không phải đề-xi-mét khối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $54$ lít $=54\\ \\text{dm}^3$\n\nThể tích của một cục sắt là: $54:2=27$ ($\\text{dm}^3$)\n\nVì $3\\times 3\\times 3=27$ nên cạnh của một cục sắt là $3$ dm.\n\nĐáp số: $3$ dm",
+  "ghi_chu_nghi": "Hiểu: hai cục sắt chìm hoàn toàn trong bể đầy nên nước tràn ra đúng bằng thể tích hai cục; 1 lít = 1 dm³."
+ },
+ {
+  "ma_nguon": "NTT 2019 · 4",
+  "dap_an": "$1260\\ \\text{m}^2$",
+  "so_do_mo_ta": {
+   "tieu_de": "Nửa chu vi sân trường",
+   "gia_tri_phan": 35,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 1,
+     "them": "1 m"
+    }
+   ],
+   "tong": "71 m"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi tăng chiều rộng và giảm chiều dài mà thành hình vuông thì hai cạnh bằng nhau, nghĩa là chiều dài đang hơn chiều rộng đúng bằng tổng hai phần đã thêm vào và bớt đi. Vậy bài trở thành tổng – hiệu với tổng là nửa chu vi.\n\n**Bước 1.** Tính nửa chu vi, chính là tổng của chiều dài và chiều rộng.\n\n**Bước 2.** Hình vuông có hai cạnh bằng nhau: chiều rộng cộng $0,5$ m bằng chiều dài trừ $0,5$ m, từ đó tìm chiều dài hơn chiều rộng bao nhiêu mét.\n\n**Bước 3.** Có tổng và hiệu thì vẽ sơ đồ, tìm chiều rộng bằng cách lấy tổng trừ hiệu rồi chia $2$, sau đó tìm chiều dài.\n\n**Bước 4.** Tính diện tích sân trường bằng chiều dài nhân chiều rộng.\n\n**Chú ý:** Đề cho chu vi chứ không phải nửa chu vi, nên phải chia $2$ trước khi dùng làm tổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi sân trường là: $142:2=71$ (m)\n\nNếu tăng chiều rộng $0,5$ m và giảm chiều dài $0,5$ m thì được hình vuông nên chiều dài hơn chiều rộng: $0,5+0,5=1$ (m)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; chiều dài 1 phần và thêm 1 m; tổng 71 m)\n\nChiều rộng sân trường là: $(71-1):2=35$ (m)\n\nChiều dài sân trường là: $35+1=36$ (m)\n\nDiện tích sân trường là: $36\\times 35=1260$ ($\\text{m}^2$)\n\nĐáp số: $1260\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 5",
+  "dap_an": "$M=280$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số mới và số cũ đều là một phần của cùng số $M$, nên hiệu của chúng cũng là một phần của $M$; tìm phân số chỉ hiệu rồi dùng \"phân số này ứng với $150$\" để tìm $M$.\n\n**Bước 1.** Nhận ra số mới là $\\dfrac{3}{4}$ của $M$ và số cũ là $\\dfrac{3}{14}$ của $M$, cùng lấy từ một số $M$ nên trừ hai phân số được phân số chỉ hiệu.\n\n**Bước 2.** Quy đồng hai phân số về cùng mẫu số $28$ để trừ cho dễ, rồi rút ra hiệu bằng bao nhiêu phần của $M$.\n\n**Bước 3.** Hiệu đó ứng với $150$, nên lấy $150$ chia cho phân số chỉ hiệu để tìm $M$.\n\n**Chú ý:** Chia cho một phân số thì nhân với phân số đảo ngược; cẩn thận không nhầm mẫu số $4$ với mẫu số $14$ khi quy đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của số mới và số cũ bằng: $\\dfrac{3}{4}-\\dfrac{3}{14}=\\dfrac{21}{28}-\\dfrac{6}{28}=\\dfrac{15}{28}$ (số $M$)\n\n$\\dfrac{15}{28}$ số $M$ ứng với $150$ nên số $M$ là: $150:\\dfrac{15}{28}=150\\times\\dfrac{28}{15}=280$\n\nĐáp số: $M=280$"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 6",
+  "dap_an": "$105$ vòng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi vòng quay, bánh xe lăn được một đoạn đường đúng bằng chu vi của bánh. Xe đi một quãng đường thì hai bánh cùng lăn quãng đường ấy, nên tính quãng đường từ bánh trước rồi chia cho chu vi bánh sau.\n\n**Bước 1.** Nhớ công thức chu vi hình tròn bằng đường kính nhân $3,14$, rồi tính chu vi của bánh trước và của bánh sau.\n\n**Bước 2.** Tính quãng đường xe đi được bằng cách lấy chu vi bánh trước nhân với số vòng bánh trước quay.\n\n**Bước 3.** Bánh sau cũng lăn đúng quãng đường đó, nên lấy quãng đường chia cho chu vi bánh sau để tìm số vòng.\n\n**Chú ý:** Bánh sau to hơn bánh trước nên mỗi vòng đi được xa hơn, vì vậy số vòng của bánh sau phải ít hơn $135$ vòng; nếu ra số lớn hơn là đã nhầm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi bánh trước là: $0,7\\times 3,14=2,198$ (m)\n\nChu vi bánh sau là: $0,9\\times 3,14=2,826$ (m)\n\nQuãng đường xe đi được khi bánh trước quay $135$ vòng là: $2,198\\times 135=296,73$ (m)\n\nSố vòng bánh sau quay được là: $296,73:2,826=105$ (vòng)\n\nĐáp số: $105$ vòng",
+  "ghi_chu_nghi": "nhiều cách: (1) tỉ lệ nghịch giữa đường kính và số vòng (135 × 0,7 : 0,9); (2) rút về chu vi × số vòng = quãng đường (đã chọn, bám công thức gốc, không cần tỉ lệ). Cả hai ra 105 vòng."
+ },
+ {
+  "ma_nguon": "NTT 2019 · 7",
+  "dap_an": "$100$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 100
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 100,
+      "nhan": "40 km/giờ"
+     },
+     {
+      "tu": 0,
+      "den": 100,
+      "nhan": "50 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 100,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi cùng một quãng đường",
+    "gia_tri_phan": 0.5,
+    "hang": [
+     {
+      "nhan": "Đi 40 km/giờ",
+      "phan": 5
+     },
+     {
+      "nhan": "Đi 50 km/giờ",
+      "phan": 4
+     }
+    ],
+    "hieu": "0,5 giờ"
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng một quãng đường thì vận tốc và thời gian tỉ lệ nghịch: vận tốc càng lớn thì đi càng nhanh. Từ tỉ số hai vận tốc suy ra tỉ số hai thời gian, rồi dùng hiệu thời gian ($30$ phút) để tìm thời gian thật, sau đó tìm quãng đường.\n\n**Bước 1.** Hai lần đi cùng xuất phát và cùng đi hết một quãng đường; đi nhanh hơn thì đến sớm hơn, nên tính hiệu thời gian đến nơi của hai lần đi.\n\n**Bước 2.** Lập tỉ số hai vận tốc; vì cùng quãng đường nên tỉ số hai thời gian là tỉ số đảo ngược của tỉ số vận tốc.\n\n**Bước 3.** Vẽ sơ đồ theo số phần của hai thời gian, hiệu số phần ứng với hiệu thời gian đã tìm, từ đó tính thời gian của một lần đi.\n\n**Bước 4.** Có vận tốc và thời gian của cùng một lần đi thì tính quãng đường bằng vận tốc nhân thời gian.\n\n**Chú ý:** Đổi thời gian ra giờ ($30$ phút bằng $0,5$ giờ) để cùng đơn vị với vận tốc km/giờ trước khi tính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(A đến B là quãng đường cần tìm; một xe đi 40 km/giờ, một xe đi 50 km/giờ trên cùng quãng đường)\n\nHai lần đi cùng xuất phát, lần đi nhanh đến sớm hơn lần đi chậm: $10$ giờ $15$ phút $-\\ 9$ giờ $45$ phút $=30$ phút\n\nĐổi: $30$ phút $=0,5$ giờ\n\nTỉ số hai vận tốc là: $40:50=\\dfrac{4}{5}$\n\nCùng một quãng đường, vận tốc và thời gian tỉ lệ nghịch nên thời gian đi với $40$ km/giờ bằng $\\dfrac{5}{4}$ thời gian đi với $50$ km/giờ.\n\nTa có sơ đồ:\n\n(Thời gian đi 40 km/giờ 5 phần; thời gian đi 50 km/giờ 4 phần; hiệu 0,5 giờ)\n\nHiệu số phần bằng nhau là: $5-4=1$ (phần)\n\nThời gian đi với $40$ km/giờ là: $0,5:1\\times 5=2,5$ (giờ)\n\nQuãng đường xe đã đi là: $40\\times 2,5=100$ (km)\n\nĐáp số: $100$ km",
+  "ghi_chu_nghi": "Đề không nói rõ nhưng hiểu: hai phương án đều xuất phát cùng một giờ, đi cùng một quãng đường (bài hai vận tốc – hai thời điểm đến)."
+ },
+ {
+  "ma_nguon": "NTT 2019 · 8",
+  "dap_an": "$95$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi chuyển 5 quyển",
+   "gia_tri_phan": 30,
+   "hang": [
+    {
+     "nhan": "Ngăn trên",
+     "phan": 2
+    },
+    {
+     "nhan": "Ngăn dưới",
+     "phan": 3
+    }
+   ],
+   "tong": "150 quyển"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển sách từ ngăn này sang ngăn kia thì tổng số sách hai ngăn không đổi. Sau khi chuyển, đã biết tổng và tỉ số, nên giải bài tổng – tỉ để tìm số sách ngăn dưới lúc sau, rồi cộng lại số sách đã chuyển đi.\n\n**Bước 1.** Nhận ra tổng số sách vẫn là $150$ quyển sau khi chuyển, và ngăn trên bằng $\\dfrac{2}{3}$ ngăn dưới nghĩa là ngăn trên $2$ phần, ngăn dưới $3$ phần.\n\n**Bước 2.** Vẽ sơ đồ rồi chia tổng cho tổng số phần để tìm giá trị một phần, sau đó tìm số sách ngăn dưới lúc sau khi đã chuyển.\n\n**Bước 3.** Ngăn dưới đã chuyển $5$ quyển đi, nên lúc đầu ngăn dưới nhiều hơn lúc sau; tính số sách ngăn dưới ban đầu.\n\n**Chú ý:** Số sách tìm được bằng sơ đồ là số sách lúc SAU khi chuyển, còn đề hỏi số sách ngăn dưới lúc đầu nên phải cộng thêm $5$ quyển.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi chuyển $5$ quyển, tổng số sách hai ngăn vẫn là $150$ quyển, ngăn trên bằng $\\dfrac{2}{3}$ ngăn dưới.\n\nTa có sơ đồ:\n\n(Ngăn trên 2 phần; ngăn dưới 3 phần; tổng 150 quyển)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nGiá trị của một phần là: $150:5=30$ (quyển)\n\nSố sách ngăn dưới sau khi chuyển là: $30\\times 3=90$ (quyển)\n\nSố sách ngăn dưới lúc đầu là: $90+5=95$ (quyển)\n\nĐáp số: $95$ quyển"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 9",
+  "dap_an": "$\\dfrac{35}{12}$ giờ, tức $2$ giờ $55$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả công việc là $1$. Làm một mình hết bao lâu thì trong $1$ giờ làm được bấy nhiêu phần công việc theo số đảo; hai bạn cùng làm thì cộng phần việc mỗi giờ của hai bạn rồi lấy $1$ chia cho tổng đó.\n\n**Bước 1.** Tính trong $1$ giờ mỗi bạn làm được mấy phần công việc: lấy $1$ chia cho số giờ bạn đó làm một mình.\n\n**Bước 2.** Cộng phần việc mỗi giờ của hai bạn, nhớ quy đồng mẫu số trước khi cộng, để biết cùng làm thì $1$ giờ được mấy phần công việc.\n\n**Bước 3.** Lấy cả công việc ($1$) chia cho phần việc làm chung trong $1$ giờ để biết thời gian làm xong.\n\n**Bước 4.** Đổi phần giờ lẻ ra phút để viết đáp số cho dễ hiểu.\n\n**Chú ý:** Không cộng số giờ $5$ và $7$ với nhau: cộng phải là phần công việc làm được trong cùng một giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi cả công việc là $1$.\n\nTrong $1$ giờ Lan làm được: $1:5=\\dfrac{1}{5}$ (công việc)\n\nTrong $1$ giờ Hoa làm được: $1:7=\\dfrac{1}{7}$ (công việc)\n\nTrong $1$ giờ hai bạn cùng làm được: $\\dfrac{1}{5}+\\dfrac{1}{7}=\\dfrac{7}{35}+\\dfrac{5}{35}=\\dfrac{12}{35}$ (công việc)\n\nThời gian hai bạn cùng làm xong là: $1:\\dfrac{12}{35}=\\dfrac{35}{12}$ (giờ)\n\nĐổi: $\\dfrac{35}{12}$ giờ $=2\\dfrac{11}{12}$ giờ $=2$ giờ $+\\dfrac{11}{12}\\times 60$ phút $=2$ giờ $55$ phút\n\nĐáp số: $\\dfrac{35}{12}$ giờ, tức $2$ giờ $55$ phút"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 10",
+  "dap_an": "$15$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài có ba đại lượng liên quan: số người, diện tích đất và thời gian. Cách gọn là rút về đơn vị: tìm xem $1$ người làm xong $1\\ \\text{m}^2$ đất mất bao lâu, rồi mới tính cho số người và diện tích mới.\n\n**Bước 1.** Từ $9$ người làm $30\\ \\text{m}^2$ trong $60$ phút, tìm xem $1$ người làm $30\\ \\text{m}^2$ mất bao lâu: ít người hơn thì làm lâu hơn.\n\n**Bước 2.** Chia cho diện tích để biết $1$ người làm $1\\ \\text{m}^2$ mất bao lâu.\n\n**Bước 3.** Nhân với diện tích mới để biết $1$ người làm xong mảnh đất mới mất bao lâu.\n\n**Bước 4.** Nhiều người cùng làm thì nhanh hơn, nên chia cho số người mới để được thời gian cần tìm.\n\n**Chú ý:** Số người tăng thì thời gian giảm, diện tích giảm thì thời gian cũng giảm; chú ý nhân hay chia cho đúng chiều của từng đại lượng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ người làm xong $30\\ \\text{m}^2$ đất hết số phút là: $60\\times 9=540$ (phút)\n\n$1$ người làm xong $1\\ \\text{m}^2$ đất hết số phút là: $540:30=18$ (phút)\n\n$1$ người làm xong $15\\ \\text{m}^2$ đất hết số phút là: $18\\times 15=270$ (phút)\n\n$18$ người làm xong $15\\ \\text{m}^2$ đất hết số phút là: $270:18=15$ (phút)\n\nĐáp số: $15$ phút"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 11",
+  "dap_an": "$495$ cây",
+  "so_do_mo_ta": {
+   "tieu_de": "Số cây còn lại sau ngày 1",
+   "gia_tri_phan": 30,
+   "hang": [
+    {
+     "nhan": "Ngày 2",
+     "phan": 6
+    },
+    {
+     "nhan": "Ngày 3",
+     "phan": 5
+    }
+   ],
+   "hieu": "30 cây"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số \"$\\dfrac{6}{11}$\" là của số cây CÒN LẠI sau ngày 1, không phải của tổng. Lấy số cây còn lại làm mốc ($11$ phần): ngày 2 là $6$ phần, ngày 3 là $5$ phần, hiệu $30$ cây ứng với $1$ phần; từ đó tìm số cây còn lại rồi mới tìm tổng.\n\n**Bước 1.** Sau ngày 1 còn lại $\\dfrac{2}{3}$ tổng số cây; ngày 2 trồng $\\dfrac{6}{11}$ số còn lại nên ngày 3 trồng phần còn lại là $\\dfrac{5}{11}$ số còn lại đó.\n\n**Bước 2.** Coi số cây còn lại sau ngày 1 gồm $11$ phần bằng nhau: ngày 2 chiếm $6$ phần, ngày 3 chiếm $5$ phần, rồi vẽ sơ đồ hiệu – tỉ.\n\n**Bước 3.** Hiệu $30$ cây ứng với hiệu số phần, từ đó tìm giá trị một phần và số cây còn lại sau ngày 1.\n\n**Bước 4.** Số cây còn lại ứng với $\\dfrac{2}{3}$ tổng số cây, nên lấy số cây còn lại chia cho phân số đó để tìm tổng.\n\n**Chú ý:** Không lấy $\\dfrac{6}{11}$ nhân với tổng số cây; phải nhân với số cây còn lại sau ngày 1.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây còn lại sau ngày 1 bằng: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (tổng số cây)\n\nSố cây ngày 3 bằng: $1-\\dfrac{6}{11}=\\dfrac{5}{11}$ (số cây còn lại sau ngày 1)\n\nTa có sơ đồ:\n\n(Số cây còn lại sau ngày 1 chia 11 phần: ngày 2 có 6 phần; ngày 3 có 5 phần; ngày 3 ít hơn ngày 2 là 30 cây)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\n$1$ phần ứng với $30$ cây nên số cây còn lại sau ngày 1 là: $30\\times 11=330$ (cây)\n\n$330$ cây ứng với $\\dfrac{2}{3}$ tổng số cây nên tổng số cây đã trồng là: $330:\\dfrac{2}{3}=330\\times\\dfrac{3}{2}=495$ (cây)\n\nĐáp số: $495$ cây"
+ },
+ {
+  "ma_nguon": "NTT 2019 · 12",
+  "dap_an": "a) $8$ giờ $45$ phút; b) $9$ giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Taxi gặp ô tô",
+    "diem": [
+     {
+      "ten": "Hà Nội",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 151.25,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "Hà Giang",
+      "x": 330
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 151.25,
+      "nhan": "Ô tô 55 km/giờ"
+     },
+     {
+      "tu": 330,
+      "den": 151.25,
+      "nhan": "Taxi 65 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 330,
+      "nhan": "330 km"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Ô tô cách đều taxi và xe tải",
+    "diem": [
+     {
+      "ten": "Hà Nội",
+      "x": 0
+     },
+     {
+      "ten": "Taxi",
+      "x": 135
+     },
+     {
+      "ten": "Ô tô",
+      "x": 165
+     },
+     {
+      "ten": "Xe tải",
+      "x": 195
+     },
+     {
+      "ten": "Hà Giang",
+      "x": 330
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 165,
+      "nhan": "Ô tô 55 km/giờ"
+     },
+     {
+      "tu": 330,
+      "den": 135,
+      "nhan": "Taxi 65 km/giờ"
+     },
+     {
+      "tu": 330,
+      "den": 195,
+      "nhan": "Xe tải 45 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 135,
+      "den": 165,
+      "nhan": "30 km"
+     },
+     {
+      "tu": 165,
+      "den": 195,
+      "nhan": "30 km"
+     }
+    ]
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) là bài hai xe đi ngược chiều gặp nhau: thời gian gặp bằng quãng đường chia cho tổng hai vận tốc. Ý b) ô tô cách đều taxi và xe tải nghĩa là ô tô đứng chính giữa hai xe đó; điểm chính giữa của taxi và xe tải chạy như một xe có vận tốc bằng trung bình cộng hai vận tốc, nên lại đưa về bài hai xe gặp nhau.\n\n**Bước 1.** Ý a): ô tô đi từ Hà Nội, taxi đi từ Hà Giang cùng lúc và đi ngược chiều nhau, nên mỗi giờ hai xe lại gần nhau một đoạn bằng tổng hai vận tốc.\n\n**Bước 2.** Lấy quãng đường Hà Nội – Hà Giang chia cho tổng hai vận tốc để tìm thời gian gặp nhau, đổi phần lẻ giờ ra phút, rồi cộng vào giờ xuất phát.\n\n**Bước 3.** Ý b): taxi nhanh hơn xe tải nên sau khi xuất phát hai xe không ở cùng một chỗ; do đó muốn cách đều ô tô thì ô tô phải ở chính giữa hai xe.\n\n**Bước 4.** Điểm chính giữa của taxi và xe tải mỗi giờ cách Hà Giang một đoạn bằng trung bình cộng quãng đường hai xe đi được, tức đi với vận tốc bằng trung bình cộng hai vận tốc.\n\n**Bước 5.** Ô tô và điểm chính giữa đi ngược chiều nhau từ hai đầu quãng đường, nên dùng tổng hai vận tốc để tìm thời gian ô tô vào chính giữa, rồi đổi sang giờ trong ngày.\n\n**Chú ý:** Đề không nói taxi và xe tải đi hướng nào; hiểu cả hai cùng đi về Hà Nội. Lúc vừa xuất phát hai khoảng cách cũng bằng nhau ($330$ km) nhưng đó là lúc taxi và xe tải còn ở cùng một chỗ, không phải đáp án cần tìm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Ô tô và taxi đi ngược chiều nhau, cùng xuất phát lúc $6$ giờ.\n\nTa có sơ đồ:\n\n(Hà Nội – Hà Giang dài 330 km; ô tô đi từ Hà Nội 55 km/giờ; taxi đi từ Hà Giang 65 km/giờ; hai xe gặp nhau ở C)\n\nMỗi giờ hai xe lại gần nhau: $55+65=120$ (km)\n\nThời gian để taxi gặp ô tô là: $330:120=2,75$ (giờ)\n\nĐổi: $2,75$ giờ $=2$ giờ $45$ phút\n\nTaxi gặp ô tô lúc: $6$ giờ $+\\ 2$ giờ $45$ phút $=8$ giờ $45$ phút\n\nb) Taxi và xe tải xuất phát cùng lúc, cùng một nơi nhưng đi nhanh chậm khác nhau nên không ở cùng một chỗ. Vì vậy ô tô cách đều hai xe khi ô tô ở chính giữa taxi và xe tải.\n\nMỗi giờ điểm chính giữa của taxi và xe tải cách Hà Giang: $(65+45):2=55$ (km)\n\nĐiểm chính giữa và ô tô đi ngược chiều nhau, mỗi giờ lại gần nhau: $55+55=110$ (km)\n\nTa có sơ đồ:\n\n(Lúc đó ô tô ở chính giữa: taxi cách ô tô 30 km, xe tải cách ô tô 30 km)\n\nThời gian để ô tô ở chính giữa hai xe là: $330:110=3$ (giờ)\n\nLúc đó là: $6$ giờ $+\\ 3$ giờ $=9$ giờ\n\nThử lại: sau $3$ giờ ô tô cách Hà Nội $55\\times 3=165$ (km), nên cách Hà Giang $330-165=165$ (km); taxi cách Hà Giang $65\\times 3=195$ (km), xe tải cách Hà Giang $45\\times 3=135$ (km).\n\nKhoảng cách từ taxi đến ô tô là $195-165=30$ (km), từ ô tô đến xe tải là $165-135=30$ (km), hai khoảng cách bằng nhau.\n\nĐáp số: a) $8$ giờ $45$ phút; b) $9$ giờ",
+  "ghi_chu_nghi": "Đề không nêu hướng đi của taxi và xe tải: hiểu cả hai cùng đi từ Hà Giang về Hà Nội (ngược chiều ô tô). Ý b) cách làm \"điểm chính giữa\" (nhiều cách: lập quãng đường từng xe theo thời gian rồi so sánh); lúc xuất phát hai khoảng cách bằng nhau (330 km) bị loại vì taxi và xe tải còn ở cùng một chỗ."
+ }
+]

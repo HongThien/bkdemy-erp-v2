@@ -1,0 +1,138 @@
+[
+ {
+  "ma_nguon": "CG 2019 · P1.1",
+  "dap_an": "$x=5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi hai phân số thập phân hai đầu ra số thập phân rồi so sánh từng hàng từ trái sang phải; ba số chỉ khác nhau ở hàng phần trăm, nên $x$ bị kẹp giữa chữ số hàng phần trăm của hai số ở hai đầu.\n\n**Bước 1.** Đổi $\\dfrac{134247}{1000}$ và $\\dfrac{134267}{1000}$ ra số thập phân bằng cách dịch dấu phẩy sang trái ba chữ số, để ba số cùng là số thập phân.\n\n**Bước 2.** So sánh ba số từng hàng từ trái sang phải: các hàng đã biết đều giống nhau, chỉ khác nhau ở hàng phần trăm, nơi có chữ số $x$ cần tìm.\n\n**Bước 3.** Chữ số $x$ ở hàng phần trăm phải lớn hơn chữ số cùng hàng của số bé và nhỏ hơn chữ số cùng hàng của số lớn, rồi chọn chữ số thoả mãn.\n\n**Chú ý:** Dấu $<$ ở hai đầu là dấu nhỏ hơn thật sự, nên hai chữ số ở hai đầu không được nhận (nếu bằng thì hai số bằng nhau, không phải nhỏ hơn).\n\n**Phần 2. Trình bày**\n\nĐổi: $\\dfrac{134247}{1000}=134,247$ và $\\dfrac{134267}{1000}=134,267$\n\nSố $\\overline{134,2x7}$ có $x$ là chữ số hàng phần trăm, nên ta có: $134,247<\\overline{134,2x7}<134,267$\n\nBa số này giống nhau ở các hàng còn lại, chỉ khác nhau ở hàng phần trăm nên $4<x<6$.\n\nVì $x$ là chữ số nên $x=5$."
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.2",
+  "dap_an": "$55$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy số có quy luật: phải tìm xem mỗi số liên hệ thế nào với các số đứng ngay trước nó, thử quy luật trên mấy số đầu rồi mới viết tiếp.\n\n**Bước 1.** Thử cộng hai số đứng liền nhau ở đầu dãy là $3$ và $5$ xem tổng có bằng số kế tiếp hay không.\n\n**Bước 2.** Kiểm tra quy luật vừa thấy trên các số còn lại của dãy ($5$ với $8$, $8$ với $13$…) để chắc chắn quy luật đúng với cả dãy.\n\n**Bước 3.** Viết tiếp từng số theo quy luật, vừa viết vừa đếm số thứ tự, dừng lại ở số thứ bảy của dãy.\n\n**Chú ý:** Dãy đã cho năm số, nên muốn có số thứ bảy phải viết thêm hai số nữa chứ không phải bảy số.\n\n**Phần 2. Trình bày**\n\nQuy luật: từ số thứ ba, mỗi số bằng tổng hai số đứng liền trước nó ($3+5=8$; $5+8=13$; $8+13=21$).\n\nSố thứ sáu là: $13+21=34$\n\nSố thứ bảy là: $21+34=55$\n\nVậy số thứ $7$ của dãy là $55$."
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.3",
+  "dap_an": "$7474$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dịch dấu phẩy ở một thừa số rồi bù lại ở thừa số kia thì tích không đổi, nên cả ba tích đều đưa được về cùng thừa số $101$; khi đó dùng tính chất nhân một số với một tổng.\n\n**Bước 1.** Nhận ra $10,1$ và $1,01$ đều có các chữ số $101$, chỉ khác vị trí dấu phẩy; tách $130=10\\times 13$ và $2700=100\\times 27$ để nhân $10$, $100$ với $10,1$, $1,01$ trước.\n\n**Bước 2.** Sau khi ba tích đều có thừa số $101$, đặt $101$ ra ngoài và cộng các thừa số còn lại trong ngoặc.\n\n**Bước 3.** Nhân $101$ với tổng vừa tìm; nhân với $101$ là nhân với $100$ rồi cộng thêm chính số đó.\n\n**Chú ý:** Cách này nhanh và ít sai hơn nhiều so với việc tính riêng từng tích có số thập phân rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$101\\times 34+10,1\\times 130+1,01\\times 2700$\n\n$=101\\times 34+10,1\\times 10\\times 13+1,01\\times 100\\times 27$\n\n$=101\\times 34+101\\times 13+101\\times 27$\n\n$=101\\times(34+13+27)$\n\n$=101\\times 74$\n\n$=7474$"
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.4",
+  "dap_an": "$5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích có một thừa số chia hết cho $5$ thì chia hết cho $5$ nên tận cùng là $0$ hoặc $5$; muốn biết là chữ số nào thì xét thêm tích đó chẵn hay lẻ.\n\n**Bước 1.** Tìm trong các thừa số $11;\\ 13;\\ 15;\\ \\ldots$ một thừa số chia hết cho $5$, từ đó biết chữ số tận cùng của tích chỉ có thể là $0$ hoặc $5$.\n\n**Bước 2.** Nhận xét các thừa số cách nhau $2$ đơn vị kể từ $11$ nên đều là số lẻ, mà tích của các số lẻ luôn là số lẻ.\n\n**Bước 3.** Số lẻ không thể tận cùng bằng $0$, nên loại $0$ và chọn chữ số còn lại.\n\n**Chú ý:** Đề viết \"dãy\" nhưng các số được nhân với nhau, nên đây là chữ số tận cùng của tích.\n\n**Phần 2. Trình bày**\n\nTrong tích có thừa số $15$ chia hết cho $5$ nên tích chia hết cho $5$, do đó chữ số tận cùng của tích là $0$ hoặc $5$.\n\nCác thừa số $11;\\ 13;\\ 15;\\ \\ldots;\\ 2019$ đều là số lẻ nên tích là số lẻ, chữ số tận cùng không thể là $0$.\n\nVậy chữ số tận cùng của tích là $5$."
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.5",
+  "dap_an": "$198$ viên bi",
+  "ghi_chu_nghi": "Đề: \"xếp mỗi hộp 2 hoặc 9 viên bi thì đủ\" — hiểu \"hoặc\" là xếp cách nào (2 viên hay 9 viên mỗi hộp) cũng đủ, tức số bi chia hết cho cả 2 và 9. Với cách hiểu này (cùng chia 5 dư 3, trong khoảng 111–249) chỉ có đúng một số: 198. Nếu hiểu \"chia hết cho 2 hoặc 9\" thì có nhiều số (vd 128, 138, 168…), đề sẽ vô nghiệm duy nhất — nên chọn cách hiểu trên.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho $5$ dư $3$ cho biết chữ số tận cùng; xếp hộp $2$ viên đủ cho biết số bi là số chẵn; xếp hộp $9$ viên đủ cho biết tổng các chữ số chia hết cho $9$. Ghép ba điều kiện với khoảng từ $110$ đến $250$ để tìm số bi.\n\n**Bước 1.** Số bi chia cho $5$ dư $3$ nên chữ số hàng đơn vị là $3$ hoặc $8$; số bi chia hết cho $2$ nên là số chẵn, từ đó chọn được chữ số hàng đơn vị.\n\n**Bước 2.** Số bi nhiều hơn $110$ và ít hơn $250$ nên là số có ba chữ số với chữ số hàng trăm là $1$ hoặc $2$; xét từng trường hợp.\n\n**Bước 3.** Số bi chia hết cho $9$ nên tổng ba chữ số chia hết cho $9$; với mỗi chữ số hàng trăm, cộng với chữ số hàng đơn vị rồi tìm chữ số hàng chục từ $0$ đến $9$ sao cho tổng chia hết cho $9$.\n\n**Bước 4.** Loại những số không nằm trong khoảng đề cho (nhiều hơn $110$ và ít hơn $250$) rồi kết luận số bi của Nam.\n\n**Chú ý:** Số bi phải thoả mãn cả khoảng đề cho lẫn ba điều kiện chia, nên chưa kiểm tra khoảng thì có thể nhận nhầm số.\n\nThử lại: lấy số bi tìm được chia cho $5$, cho $2$ và cho $9$ để kiểm tra các số dư.\n\n**Phần 2. Trình bày**\n\nSố bi chia cho $5$ dư $3$ nên chữ số hàng đơn vị là $3$ hoặc $8$; số bi chia hết cho $2$ nên là số chẵn, do đó chữ số hàng đơn vị là $8$.\n\nSố bi lớn hơn $110$, nhỏ hơn $250$ nên là số có ba chữ số, chữ số hàng trăm là $1$ hoặc $2$.\n\nSố bi chia hết cho $9$ nên tổng ba chữ số chia hết cho $9$.\n\nNếu chữ số hàng trăm là $1$: tổng hai chữ số hàng trăm và hàng đơn vị là $1+8=9$. Chữ số hàng chục từ $0$ đến $9$ nên tổng ba chữ số từ $9$ đến $18$; chia hết cho $9$ chỉ có $9$ và $18$, ứng với số $108$ và số $198$. Vì số bi lớn hơn $110$ nên chọn $198$.\n\nNếu chữ số hàng trăm là $2$: tổng hai chữ số hàng trăm và hàng đơn vị là $2+8=10$. Tổng ba chữ số từ $10$ đến $19$, chia hết cho $9$ chỉ có $18$, ứng với chữ số hàng chục là $18-10=8$, tức số $288$. Số này lớn hơn $250$ nên loại.\n\nVậy Nam có $198$ viên bi."
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.6",
+  "dap_an": "$16$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Tuổi hai chị em hiện nay",
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Tuổi em",
+     "phan": 4
+    },
+    {
+     "nhan": "Tuổi chị",
+     "phan": 5
+    }
+   ],
+   "tong": "36 tuổi",
+   "dau_hoi": [
+    "Tuổi em"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng số tuổi hai chị em thay đổi theo năm, còn tỉ số $\\dfrac{4}{5}$ chỉ nói về hiện nay; phải đưa tổng số tuổi về hiện nay rồi mới giải bài tổng – tỉ.\n\n**Bước 1.** Từ lúc \"cách đây $4$ năm\" đến hiện nay, mỗi người thêm $4$ tuổi và có hai người, từ đó tính tổng số tuổi hai chị em hiện nay.\n\n**Bước 2.** Tuổi em bằng $\\dfrac{4}{5}$ tuổi chị nên coi tuổi em là $4$ phần, tuổi chị là $5$ phần bằng nhau, rồi vẽ sơ đồ với tổng là tổng số tuổi hiện nay.\n\n**Bước 3.** Chia tổng số tuổi hiện nay cho tổng số phần để tìm giá trị một phần, rồi nhân với số phần của tuổi em.\n\n**Chú ý:** Không lấy $28$ làm tổng số tuổi hiện nay, vì $28$ là tổng số tuổi của hai chị em từ $4$ năm trước.\n\nThử lại: lùi tuổi em và tuổi chị tìm được đi $4$ năm rồi cộng lại, tổng phải đúng bằng $28$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tuổi của hai chị em hiện nay là: $28+4\\times 2=36$ (tuổi)\n\nTuổi em bằng $\\dfrac{4}{5}$ tuổi chị nên tuổi em là $4$ phần, tuổi chị là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Tuổi em 4 phần; tuổi chị 5 phần; tổng 36 tuổi)\n\nTổng số phần bằng nhau là: $4+5=9$ (phần)\n\nTuổi em hiện nay là: $36:9\\times 4=16$ (tuổi)\n\nĐáp số: $16$ tuổi"
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.7",
+  "dap_an": "$0,2424$ ha",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Khi hai đại lượng trong phép tính thay đổi thì đại lượng còn lại thay đổi tương ứng, nên so từng đại lượng với lúc đầu bằng tỉ số phần trăm rồi nhân các tỉ số đó, không cần giả sử số đo cụ thể.\n\n**Bước 1.** Chiều dài tăng $50\\%$ so với lúc đầu, nên tính xem chiều dài mới bằng bao nhiêu phần trăm chiều dài lúc đầu.\n\n**Bước 2.** Chiều rộng giảm $20\\%$ so với lúc đầu, nên tính xem chiều rộng mới bằng bao nhiêu phần trăm chiều rộng lúc đầu.\n\n**Bước 3.** Diện tích mới so với lúc đầu bằng tích hai tỉ số vừa tìm; nhân hai số phần trăm thì đổi ra số thập phân rồi nhân, kết quả viết lại dưới dạng phần trăm.\n\n**Bước 4.** Lấy diện tích lúc đầu nhân với số phần trăm vừa tìm, rồi đổi từ mét vuông sang héc-ta vì $1$ ha bằng $10000\\ \\text{m}^2$.\n\n**Chú ý:** Không lấy $50\\%-20\\%$ làm số phần trăm diện tích thay đổi, vì hai tỉ số này đều so với kích thước riêng của từng cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới so với lúc đầu bằng: $100\\%+50\\%=150\\%$\n\nChiều rộng mới so với lúc đầu bằng: $100\\%-20\\%=80\\%$\n\nDiện tích mới so với lúc đầu bằng: $150\\%\\times 80\\%=1,5\\times 0,8=1,2=120\\%$\n\nDiện tích mới là: $2020\\times 120\\%=2424$ ($\\text{m}^2$)\n\nĐổi: $2424\\ \\text{m}^2=0,2424$ ha\n\nĐáp số: $0,2424$ ha"
+ },
+ {
+  "ma_nguon": "CG 2019 · P1.8",
+  "dap_an": "$27$ quả bóng xanh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chỉ thêm bóng vàng nên số bóng xanh không đổi; hai phân số $\\dfrac{1}{3}$ và $\\dfrac{5}{9}$ cùng là phân số của số bóng xanh, nên $6$ bóng vàng thêm vào ứng với hiệu của hai phân số đó.\n\n**Bước 1.** Nhận ra số bóng xanh không đổi, chỉ số bóng vàng tăng thêm $6$ quả, nên so sánh hai phân số cùng so với số bóng xanh.\n\n**Bước 2.** Quy đồng mẫu số rồi trừ hai phân số để biết $6$ quả bóng vàng thêm vào ứng với bao nhiêu phần của số bóng xanh.\n\n**Bước 3.** Biết $6$ quả ứng với phân số đó của số bóng xanh thì lấy $6$ chia cho phân số này để tìm số bóng xanh.\n\n**Chú ý:** Đề hỏi số bóng xanh nên chia $6$ cho hiệu hai phân số, không phải cho một trong hai phân số đề cho.\n\nThử lại: từ số bóng xanh tìm được tính số bóng vàng lúc đầu, thêm $6$ rồi so với $\\dfrac{5}{9}$ số bóng xanh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bóng xanh không đổi. Lúc đầu số bóng vàng bằng $\\dfrac{1}{3}=\\dfrac{3}{9}$ số bóng xanh.\n\nSố bóng vàng thêm vào ứng với số phần của số bóng xanh là: $\\dfrac{5}{9}-\\dfrac{3}{9}=\\dfrac{2}{9}$ (số bóng xanh)\n\nSố bóng xanh là: $6:\\dfrac{2}{9}=6\\times\\dfrac{9}{2}=27$ (quả)\n\nĐáp số: $27$ quả bóng xanh"
+ },
+ {
+  "ma_nguon": "CG 2019 · P2.1",
+  "dap_an": "$100$ km",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: nửa quãng đường đầu Nam đi 40 km/giờ như dự định, nghỉ 15 phút, nửa quãng đường sau đi 50 km/giờ và đến B đúng giờ dự định. Nhiều cách: ① tỉ lệ nghịch vận tốc – thời gian trên nửa quãng đường sau, hiệu thời gian = 15 phút (đã chọn, đúng tiểu học, dùng sơ đồ tỉ số CĐ28); ② gọi nửa quãng là một số chưa biết rồi lập hiệu thời gian 1/40 − 1/50 mỗi km = 1/200 giờ (cùng kết quả, cần phép tính phân số hơi nặng) — CEO chốt nếu muốn cách ②.",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Nam đi từ A đến B",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 50,
+      "ghi": "nghỉ 15 phút"
+     },
+     {
+      "ten": "B",
+      "x": 100
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 50,
+      "nhan": "40 km/giờ"
+     },
+     {
+      "tu": 50,
+      "den": 100,
+      "nhan": "50 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 50,
+      "nhan": "Nửa quãng đường"
+     },
+     {
+      "tu": 50,
+      "den": 100,
+      "nhan": "Nửa quãng đường"
+     },
+     {
+      "tu": 0,
+      "den": 100,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi nửa quãng đường sau",
+    "gia_tri_phan": 15,
+    "hang": [
+     {
+      "nhan": "Dự định",
+      "phan": 5
+     },
+     {
+      "nhan": "Thực tế",
+      "phan": 4
+     }
+    ],
+    "hieu": "15 phút"
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nửa quãng đường đầu Nam đi đúng như dự định, nên $15$ phút nghỉ phải được bù hoàn toàn ở nửa quãng đường sau: thời gian dự định đi nửa quãng đường sau hơn thời gian thực tế đúng $15$ phút. Trên cùng quãng đường, vận tốc và thời gian tỉ lệ nghịch nên biết tỉ số hai vận tốc là biết tỉ số hai thời gian.\n\n**Bước 1.** Nhận ra Nam đi nửa quãng đường đầu đúng dự định, nên để đến B đúng giờ thì thời gian nghỉ cộng thời gian đi thực tế nửa quãng đường sau phải bằng thời gian dự định đi nửa quãng đường sau.\n\n**Bước 2.** So sánh hai vận tốc trên nửa quãng đường sau là $40$ km/giờ và $50$ km/giờ; vận tốc càng lớn thì thời gian càng ít nên tỉ số thời gian dự định và thời gian thực tế là số phần ngược với tỉ số vận tốc.\n\n**Bước 3.** Vẽ sơ đồ thời gian với số phần vừa tìm, hiệu số phần ứng với $15$ phút, từ đó tìm giá trị một phần và thời gian dự định đi nửa quãng đường sau.\n\n**Bước 4.** Đổi thời gian ra giờ, nhân với vận tốc dự định để được nửa quãng đường, rồi gấp đôi để tìm cả quãng đường $AB$.\n\n**Chú ý:** Không lấy tỉ số $4:5$ của vận tốc làm tỉ số thời gian; vận tốc lớn thì thời gian ít, nên tỉ số thời gian phải đảo lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Nam đi từ A đến B: nửa quãng đường đầu đi $40$ km/giờ, nghỉ $15$ phút, nửa quãng đường sau đi $50$ km/giờ)\n\nNửa quãng đường đầu Nam đi đúng như dự định, nên thời gian dự định đi nửa quãng đường sau hơn thời gian thực tế đi nửa quãng đường sau là $15$ phút.\n\nTrên cùng một quãng đường, vận tốc dự định và vận tốc thực tế có tỉ số $40:50=\\dfrac{4}{5}$ nên thời gian dự định bằng $\\dfrac{5}{4}$ thời gian thực tế: thời gian dự định là $5$ phần, thời gian thực tế là $4$ phần.\n\nTa có sơ đồ:\n\n(Thời gian dự định 5 phần; thời gian thực tế 4 phần; hiệu 15 phút)\n\nHiệu số phần bằng nhau là: $5-4=1$ (phần)\n\nGiá trị một phần là: $15:1=15$ (phút)\n\nThời gian dự định đi nửa quãng đường sau là: $15\\times 5=75$ (phút)\n\nĐổi: $75$ phút $=1,25$ giờ\n\nNửa quãng đường $AB$ dài là: $40\\times 1,25=50$ (km)\n\nQuãng đường $AB$ dài là: $50\\times 2=100$ (km)\n\nĐáp số: $100$ km"
+ },
+ {
+  "ma_nguon": "CG 2019 · P2.2",
+  "dap_an": "a) $\\dfrac{1}{2}$; b) $BC=CD$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: M là trung điểm AB; N nằm giữa A và C, NA = 2 × NC (AN = 2/3 AC); \"tỉ số diện tích ANM và BMNC\" là S_ANM : S_BMNC = 1/2; D là giao của đường thẳng MN với đường thẳng BC, nằm ngoài đoạn BC phía C (C là trung điểm BD) nên BC = CD (đã tính lại bằng toạ độ). Nhiều cách ở ý b): ① so cặp tam giác chung đường cao (MCD với MBC, NCD với NBC) rồi dùng hiệu (đã chọn, chỉ dùng diện tích); ② kẻ thêm đường song song / định lí Mê-nê-la-uýt (kiến thức lớp 8+, không dùng).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho các tỉ số cạnh ($M$ là trung điểm $AB$, $NA=2\\times NC$) nên đổi thành tỉ số diện tích các tam giác có chung đường cao; chọn một tam giác nhỏ làm $1$ phần rồi lần lượt tìm diện tích các tam giác còn lại. Ở ý b), $BC$ và $CD$ là đáy của các tam giác chung đường cao, nên so $BC$ với $CD$ bằng cách so diện tích.\n\n**Bước 1.** Chọn diện tích tam giác $CMN$ là $1$ phần; dùng cặp tam giác chung đường cao để tính diện tích các tam giác $AMN$, $BMN$, $ABN$, rồi diện tích tam giác $ABC$.\n\n**Bước 2.** Ý a): lấy diện tích tam giác $ABC$ trừ diện tích tam giác $AMN$ để được diện tích tứ giác $BMNC$, rồi lập tỉ số với diện tích tam giác $AMN$.\n\n**Bước 3.** Ý b): dùng lại kết quả ý a) để tìm diện tích các tam giác $MBC$ và $NBC$; chú ý đường thẳng $MN$ đi qua $N$ rồi cắt $BC$ kéo dài ở $D$, nên $C$ nằm giữa $B$ và $D$.\n\n**Bước 4.** Hai cặp tam giác $MCD$ với $MBC$ và $NCD$ với $NBC$ đều có tỉ số diện tích bằng $CD:BC$, từ đó suy ra tỉ số hai tam giác $MCD$ và $NCD$.\n\n**Bước 5.** Dùng hiệu diện tích hai tam giác $MCD$ và $NCD$ bằng diện tích tam giác $CMN$ để tìm diện tích tam giác $NCD$, rồi so với diện tích tam giác $NBC$ để so sánh $CD$ với $BC$.\n\n**Chú ý:** Tứ giác $BMNC$ bằng tam giác $ABC$ bớt tam giác $AMN$, không phải cộng thêm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Coi diện tích tam giác $CMN$ là $1$ phần.\n\nTam giác $AMN$ và tam giác $CMN$ có chung đường cao hạ từ $M$ xuống $AC$, mà $NA=2\\times NC$ nên $S_{AMN}=2\\times S_{CMN}=2$ (phần).\n\nTam giác $BMN$ và tam giác $AMN$ có chung đường cao hạ từ $N$ xuống $AB$, mà $BM=AM$ nên $S_{BMN}=S_{AMN}=2$ (phần).\n\nDiện tích tam giác $ABN$ là: $2+2=4$ (phần)\n\nVì $NA=2\\times NC$ nên $AC=3\\times NC$. Tam giác $ABN$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{2}{3}$.\n\nDiện tích tam giác $ABC$ là: $4:2\\times 3=6$ (phần)\n\nDiện tích tứ giác $BMNC$ là: $6-2=4$ (phần)\n\nTỉ số diện tích của tam giác $ANM$ và tứ giác $BMNC$ là: $\\dfrac{S_{ANM}}{S_{BMNC}}=\\dfrac{2}{4}=\\dfrac{1}{2}$\n\nb) Tam giác $MBC$ và tam giác $ABC$ có chung đường cao hạ từ $C$ xuống $AB$, mà $BM=\\dfrac{1}{2}\\times BA$ nên $S_{MBC}=6:2=3$ (phần).\n\nDiện tích tam giác $NBC$ là: $6-4=2$ (phần)\n\nĐường thẳng $MN$ cắt $BC$ tại $D$. Vì $N$ nằm trên $AC$ nên $D$ nằm bên kia $AC$ so với $B$, tức là $C$ nằm giữa $B$ và $D$.\n\nTam giác $MCD$ và tam giác $MBC$ có chung đường cao hạ từ $M$ xuống $BD$, suy ra $\\dfrac{S_{MCD}}{S_{MBC}}=\\dfrac{CD}{BC}$.\n\nTam giác $NCD$ và tam giác $NBC$ có chung đường cao hạ từ $N$ xuống $BD$, suy ra $\\dfrac{S_{NCD}}{S_{NBC}}=\\dfrac{CD}{BC}$.\n\nVậy $\\dfrac{S_{MCD}}{S_{MBC}}=\\dfrac{S_{NCD}}{S_{NBC}}$, suy ra $\\dfrac{S_{MCD}}{S_{NCD}}=\\dfrac{S_{MBC}}{S_{NBC}}=\\dfrac{3}{2}$, tức $S_{MCD}$ bằng $\\dfrac{3}{2}$ lần $S_{NCD}$.\n\nVì $N$ nằm trên $MD$ nên $S_{MCD}=S_{MCN}+S_{NCD}$, do đó $S_{MCD}-S_{NCD}=S_{MCN}=1$ (phần).\n\nHiệu $S_{MCD}-S_{NCD}$ bằng $\\dfrac{3}{2}-1=\\dfrac{1}{2}$ (lần $S_{NCD}$), nên $S_{NCD}$ là: $1:\\dfrac{1}{2}=2$ (phần)\n\nTam giác $NCD$ và tam giác $NBC$ có chung đường cao hạ từ $N$ xuống $BD$ và diện tích bằng nhau ($2$ phần) nên hai đáy bằng nhau.\n\nVậy $BC=CD$.\n\nĐáp số: a) $\\dfrac{1}{2}$; b) $BC=CD$"
+ }
+]

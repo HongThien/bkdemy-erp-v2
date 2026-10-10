@@ -1,0 +1,177 @@
+[
+ {
+  "ma_nguon": "TX 2023 · 1",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàng phần trăm là hàng ở vị trí thứ hai sau dấu phẩy, nên chỉ cần nhìn chữ số thứ hai của phần thập phân trong mỗi số.\n\n**Bước 1.** Nhớ thứ tự các hàng của phần thập phân: ngay sau dấu phẩy là hàng phần mười, tiếp theo là hàng phần trăm.\n\n**Bước 2.** Với mỗi số, tìm chữ số đứng thứ hai sau dấu phẩy; đó chính là chữ số ở hàng phần trăm của số ấy.\n\n**Bước 3.** So sánh chữ số vừa tìm được với số $9$ mà đề yêu cầu, rồi chọn số thoả mãn.\n\n**Chú ý:** Chữ số $9$ có mặt trong cả ba số nhưng ở những hàng khác nhau, nên phải xét đúng hàng phần trăm chứ không chỉ tìm chữ số $9$.\n\n**Phần 2. Trình bày**\n\nHàng phần trăm là chữ số thứ hai sau dấu phẩy.\n\nChữ số hàng phần trăm của $321,89$ là $9$.\n\nChữ số hàng phần trăm của $931,28$ là $8$.\n\nChữ số hàng phần trăm của $321,98$ là $8$.\n\nChọn A."
+ },
+ {
+  "ma_nguon": "TX 2023 · 2",
+  "dap_an": "$0,2023\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các đơn vị đo diện tích liền nhau hơn kém nhau $100$ lần, nên đổi lần lượt từng bậc: từ $\\text{cm}^2$ sang $\\text{dm}^2$, rồi từ $\\text{dm}^2$ sang $\\text{m}^2$.\n\n**Bước 1.** Đổi phần $23\\ \\text{cm}^2$ sang $\\text{dm}^2$ bằng cách chia cho $100$, vì $1\\ \\text{dm}^2=100\\ \\text{cm}^2$.\n\n**Bước 2.** Cộng phần vừa đổi với $20\\ \\text{dm}^2$ để có số đo viết hoàn toàn bằng đơn vị $\\text{dm}^2$.\n\n**Bước 3.** Đổi số đo vừa tìm sang $\\text{m}^2$ bằng cách chia cho $100$, vì $1\\ \\text{m}^2=100\\ \\text{dm}^2$.\n\n**Chú ý:** Với đơn vị đo diện tích, hai đơn vị liền nhau hơn kém $100$ lần chứ không phải $10$ lần như đơn vị đo độ dài.\n\n**Phần 2. Trình bày**\n\nĐổi: $23\\ \\text{cm}^2=0,23\\ \\text{dm}^2$\n\n$20\\ \\text{dm}^2\\ 23\\ \\text{cm}^2=20+0,23=20,23\\ \\text{dm}^2$\n\nĐổi: $20,23\\ \\text{dm}^2=0,2023\\ \\text{m}^2$\n\nVậy $20\\ \\text{dm}^2\\ 23\\ \\text{cm}^2=0,2023\\ \\text{m}^2$."
+ },
+ {
+  "ma_nguon": "TX 2023 · 3",
+  "dap_an": "$A=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa mọi số về số thập phân rồi nhóm những cặp số có tổng là số nguyên: $2,3$ với $0,7$ và $0,75$ với $0,25$.\n\n**Bước 1.** Đổi hỗn số, tỉ số phần trăm và phân số về số thập phân, vì trong biểu thức đã có sẵn số thập phân $0,7$.\n\n**Bước 2.** Nhận ra hai cặp số cộng lại cho kết quả là số nguyên: $2,3$ và $0,7$; $0,75$ và $0,25$.\n\n**Bước 3.** Nhóm lại: hai số được cộng cho vào một ngoặc, hai số bị trừ cho vào một ngoặc khác, vì trừ lần lượt hai số bằng trừ tổng của chúng.\n\n**Bước 4.** Tính từng ngoặc rồi lấy kết quả ngoặc thứ nhất trừ kết quả ngoặc thứ hai.\n\n**Chú ý:** Khi nhóm hai số bị trừ vào ngoặc thì vẫn là phép trừ cả ngoặc, không được đổi thành phép cộng.\n\n**Phần 2. Trình bày**\n\n$A=2\\dfrac{3}{10}-75\\%-\\dfrac{1}{4}+0,7$\n\nĐổi: $2\\dfrac{3}{10}=2,3$; $75\\%=0,75$; $\\dfrac{1}{4}=0,25$\n\n$A=2,3-0,75-0,25+0,7$\n\n$A=(2,3+0,7)-(0,75+0,25)$\n\n$A=3-1$\n\n$A=2$"
+ },
+ {
+  "ma_nguon": "TX 2023 · 4",
+  "dap_an": "$1210$ quyển",
+  "ghi_chu_nghi": "Hiểu \"sau mỗi năm số sách tăng thêm 10%\" là tăng 10% so với số sách của năm trước (tăng liên tiếp 2 lần, 1000 → 1100 → 1210). Nếu hiểu 10% của số sách ban đầu mỗi năm thì ra 1200; chọn cách thứ nhất vì đây là cách hiểu thông thường.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Sau mỗi năm tăng thêm $10\\%$\" là tăng $10\\%$ so với số sách của năm trước, nên mỗi năm số sách bằng $110\\%$ số sách năm trước; phải làm hai lần liên tiếp chứ không lấy $10\\%$ của $1000$ quyển hai lần.\n\n**Bước 1.** Tính xem sau mỗi năm tăng thêm $10\\%$ thì số sách bằng bao nhiêu phần trăm số sách của năm trước.\n\n**Bước 2.** Tính số sách sau năm đầu tiên: lấy số sách ban đầu nhân với tỉ số phần trăm vừa tìm.\n\n**Bước 3.** Năm thứ hai lại tăng $10\\%$ so với số sách cuối năm thứ nhất, nên lấy kết quả ở bước trước nhân với tỉ số đó thêm một lần nữa.\n\n**Chú ý:** Không lấy $10\\%+10\\%=20\\%$ của $1000$ quyển, vì sang năm thứ hai số sách đã khác lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau mỗi năm số sách bằng: $100\\%+10\\%=110\\%$ (số sách của năm trước)\n\nSố sách sau $1$ năm là: $1000\\times 110\\%=1100$ (quyển)\n\nSố sách sau $2$ năm là: $1100\\times 110\\%=1210$ (quyển)\n\nĐáp số: $1210$ quyển"
+ },
+ {
+  "ma_nguon": "TX 2023 · 5",
+  "dap_an": "$3,5$",
+  "ghi_chu_nghi": "Hiểu \"tăng lên 3 lần\" là GẤP 3 lần (thêm 2 lần số cũ): số thứ nhất 4,8, số thứ hai 3,5. Nếu hiểu \"tăng thêm 3 lần số cũ\" (gấp 4) thì ra số thứ nhất 3,2 và số thứ hai 5,1 (cũng tròn). Chọn cách hiểu gấp 3 lần theo cách dùng thông thường; cần người chốt nếu đáp án sách khác.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tổng chỉ khác nhau ở số thứ nhất: số thứ nhất gấp lên $3$ lần thì tăng thêm $2$ lần chính nó, nên phần tổng tăng thêm ứng với $2$ lần số thứ nhất.\n\n**Bước 1.** Tìm tổng tăng thêm bao nhiêu bằng cách lấy tổng mới trừ tổng cũ, vì số thứ hai được giữ nguyên.\n\n**Bước 2.** Số thứ nhất gấp lên $3$ lần tức là thêm $2$ lần số cũ, nên phần tổng tăng thêm ứng với $2$ lần số thứ nhất; chia để tìm số thứ nhất.\n\n**Bước 3.** Lấy tổng ban đầu trừ đi số thứ nhất vừa tìm để được số thứ hai.\n\nThử lại: số thứ nhất gấp $3$ lần rồi cộng với số thứ hai vừa tìm thì tổng phải bằng $17,9$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng tăng thêm là: $17,9-8,3=9,6$\n\nSố thứ nhất gấp lên $3$ lần thì tăng thêm: $3-1=2$ (lần số thứ nhất)\n\nSố thứ nhất là: $9,6:2=4,8$\n\nSố thứ hai là: $8,3-4,8=3,5$\n\nĐáp số: $3,5$"
+ },
+ {
+  "ma_nguon": "TX 2023 · 6",
+  "dap_an": "$6$ giờ $55$ phút",
+  "ghi_chu_nghi": "Đề hơi lộn xộn. Hiểu: Nam phải có mặt ở bến xe không muộn hơn giờ tàu khởi hành; tàu khởi hành lúc 6 giờ, 6 giờ 10 phút, … (cứ 10 phút một chuyến); tàu chạy 20 phút rồi Nam mất 5 phút nữa tới trường. Muộn nhất tàu khởi hành lúc 7 giờ 5 phút nhưng không có chuyến này nên lấy chuyến 7 giờ ⇒ Nam ra khỏi nhà lúc 6 giờ 55 phút (đến bến lúc 7 giờ đúng, không dư phút chờ nào).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính ngược từ giờ phải đến trường: trừ lần lượt thời gian từ điểm dừng đến trường và thời gian tàu chạy, rồi chọn chuyến tàu thật sự có theo lịch, sau đó mới trừ thời gian từ nhà đến bến xe.\n\n**Bước 1.** Lấy giờ phải đến trường trừ thời gian từ điểm dừng đến trường để biết muộn nhất mấy giờ Nam phải xuống tàu.\n\n**Bước 2.** Trừ tiếp thời gian chuyến tàu chạy để biết muộn nhất mấy giờ tàu có thể khởi hành.\n\n**Bước 3.** Đối chiếu với lịch tàu: các chuyến cách nhau $10$ phút kể từ $6$ giờ, nên chọn chuyến khởi hành muộn nhất mà không quá giờ vừa tìm được.\n\n**Bước 4.** Lấy giờ khởi hành của chuyến tàu đã chọn trừ thời gian từ nhà đến bến xe để biết giờ Nam ra khỏi nhà.\n\n**Chú ý:** Chuyến tàu muộn nhất thật sự có thể sớm hơn giờ vừa tính được, nên không được dừng lại ở bước tính ngược đầu tiên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMuộn nhất Nam phải xuống tàu lúc: $7$ giờ $30$ phút $-\\ 5$ phút $=7$ giờ $25$ phút\n\nMuộn nhất tàu phải khởi hành lúc: $7$ giờ $25$ phút $-\\ 20$ phút $=7$ giờ $5$ phút\n\nCác chuyến tàu khởi hành lúc $6$ giờ, $6$ giờ $10$ phút, $6$ giờ $20$ phút, … nên chuyến muộn nhất không quá $7$ giờ $5$ phút là chuyến $7$ giờ.\n\nMuộn nhất Nam phải ra khỏi nhà lúc: $7$ giờ $-\\ 5$ phút $=6$ giờ $55$ phút\n\nĐáp số: $6$ giờ $55$ phút"
+ },
+ {
+  "ma_nguon": "TX 2023 · 7",
+  "dap_an": "$9$ lần",
+  "ghi_chu_nghi": "Hiểu \"tăng cạnh lên 3 lần\" là gấp 3 lần (cạnh mới 24 cm).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích toàn phần của hình lập phương bằng $6$ lần diện tích một mặt, mà mỗi mặt là hình vuông có diện tích bằng cạnh nhân cạnh; cạnh gấp lên $3$ lần thì diện tích một mặt gấp lên $3\\times 3$ lần.\n\n**Bước 1.** Tính diện tích toàn phần của hình lập phương ban đầu: có $6$ mặt, mỗi mặt là hình vuông cạnh $8$ cm.\n\n**Bước 2.** Tính cạnh mới khi cạnh gấp lên $3$ lần, rồi tính diện tích toàn phần mới bằng cùng cách như trên.\n\n**Bước 3.** Lấy diện tích toàn phần mới chia cho diện tích toàn phần ban đầu để biết gấp lên bao nhiêu lần.\n\n**Chú ý:** Cạnh gấp $3$ lần không làm diện tích gấp $3$ lần, vì diện tích tính bằng cạnh nhân với cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích toàn phần lúc đầu là: $8\\times 8\\times 6=384$ ($\\text{cm}^2$)\n\nCạnh hình lập phương sau khi tăng là: $8\\times 3=24$ (cm)\n\nDiện tích toàn phần lúc sau là: $24\\times 24\\times 6=3456$ ($\\text{cm}^2$)\n\nDiện tích toàn phần tăng lên số lần là: $3456:384=9$ (lần)\n\nĐáp số: $9$ lần"
+ },
+ {
+  "ma_nguon": "TX 2023 · 8",
+  "dap_an": "$40$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích nước bằng diện tích đáy nhân chiều cao mực nước, nên chiều cao mực nước bằng thể tích chia diện tích đáy; trước hết phải đổi lít sang $\\text{cm}^3$ cho cùng đơn vị với các kích thước của bể.\n\n**Bước 1.** Đổi $96$ lít sang $\\text{cm}^3$, nhớ rằng $1$ lít bằng $1\\ \\text{dm}^3$ và $1\\ \\text{dm}^3$ bằng $1000\\ \\text{cm}^3$.\n\n**Bước 2.** Tính diện tích đáy bể bằng chiều dài nhân chiều rộng.\n\n**Bước 3.** Lấy thể tích nước chia cho diện tích đáy để tìm chiều cao mực nước.\n\n**Chú ý:** Chiều cao mực nước không phải chiều cao của bể, vì bể chưa chứa đầy nước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $96$ lít $=96\\ \\text{dm}^3=96000\\ \\text{cm}^3$\n\nDiện tích đáy bể là: $60\\times 40=2400$ ($\\text{cm}^2$)\n\nChiều cao mực nước là: $96000:2400=40$ (cm)\n\nĐáp số: $40$ cm"
+ },
+ {
+  "ma_nguon": "TX 2023 · 9",
+  "dap_an": "$125$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Số sách của các khối",
+   "gia_tri_phan": 105,
+   "hang": [
+    {
+     "nhan": "Trung bình 5 khối",
+     "phan": 1
+    },
+    {
+     "nhan": "Khối 5",
+     "phan": 1,
+     "them": "20 quyển"
+    },
+    {
+     "nhan": "Trung bình 4 khối đầu",
+     "phan": 1,
+     "bot": "? quyển",
+     "bot_gt": 5
+    }
+   ],
+   "dau_hoi": [
+    "Khối 5"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối 5 nhiều hơn trung bình $20$ quyển, tức là \"thừa\" $20$ quyển so với mức trung bình; chia số thừa đó đều cho $4$ khối còn lại thì mỗi khối được thêm một số quyển, và lúc đó cả $5$ khối cùng bằng mức trung bình.\n\n**Bước 1.** Tính tổng số sách của bốn khối đầu rồi tìm trung bình cộng của bốn khối này.\n\n**Bước 2.** Khối 5 hơn trung bình $20$ quyển; chia số thừa đó đều cho $4$ khối kia để biết mỗi khối còn kém trung bình bao nhiêu quyển.\n\n**Bước 3.** Cộng số vừa tìm vào trung bình cộng của bốn khối đầu để được trung bình cộng của cả năm khối.\n\n**Bước 4.** Cộng thêm $20$ quyển vào trung bình cộng cả năm khối để tìm số sách khối 5 quyên góp.\n\n**Chú ý:** Trung bình cộng của bốn khối đầu chưa phải trung bình cộng của cả năm khối, vì khối 5 quyên góp nhiều hơn mức trung bình.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cả 5 khối: 1 phần; khối 5: 1 phần và thêm 20 quyển; trung bình 4 khối đầu: 1 phần bớt đi một số quyển)\n\nTổng số sách của bốn khối đầu là: $134+98+87+81=400$ (quyển)\n\nTrung bình cộng số sách của bốn khối đầu là: $400:4=100$ (quyển)\n\nKhối 5 hơn trung bình $20$ quyển, chia đều cho $4$ khối đầu thì mỗi khối được thêm: $20:4=5$ (quyển)\n\nTrung bình cộng số sách của cả $5$ khối là: $100+5=105$ (quyển)\n\nSố sách khối 5 quyên góp là: $105+20=125$ (quyển)\n\nĐáp số: $125$ quyển"
+ },
+ {
+  "ma_nguon": "TX 2023 · 10",
+  "dap_an": "$180\\ \\text{m}^2$",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai đáy của hình thang",
+   "gia_tri_phan": 3,
+   "hang": [
+    {
+     "nhan": "Đáy lớn",
+     "phan": 5
+    },
+    {
+     "nhan": "Đáy bé",
+     "phan": 3
+    }
+   ],
+   "hieu": "6 m"
+  },
+  "ghi_chu_nghi": "Hiểu: tăng đáy bé thêm 6 m (về phía cạnh bên chưa vuông) thì được hình vuông ⇒ hình thang là hình thang vuông, đáy lớn hơn đáy bé 6 m, chiều cao bằng cạnh hình vuông = đáy lớn. Đề không có hình.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đáy bé tăng thêm $6$ m thì mảnh vườn thành hình vuông, nghĩa là đáy bé dài bằng đáy lớn; vậy đáy lớn hơn đáy bé $6$ m và chiều cao chính là cạnh hình vuông, bằng đáy lớn. Đây là bài hiệu – tỉ.\n\n**Bước 1.** Hiểu hình: đáy bé thêm $6$ m thì dài bằng đáy lớn nên hiệu hai đáy là $6$ m; hình vuông có các cạnh bằng nhau nên chiều cao bằng đáy lớn.\n\n**Bước 2.** Đáy bé bằng $\\dfrac{3}{5}$ đáy lớn: vẽ đáy lớn gồm $5$ phần bằng nhau, đáy bé gồm $3$ phần; hiệu hai đáy ứng với $6$ m nên tìm được giá trị một phần.\n\n**Bước 3.** Dùng giá trị một phần để tìm đáy lớn và đáy bé; chiều cao bằng đáy lớn.\n\n**Bước 4.** Tính diện tích hình thang bằng tổng hai đáy nhân chiều cao rồi chia cho $2$.\n\n**Chú ý:** Đề hỏi diện tích mảnh vườn ban đầu (hình thang), không phải diện tích hình vuông sau khi tăng đáy bé.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì tăng đáy bé $6$ m thì mảnh vườn thành hình vuông nên đáy lớn hơn đáy bé $6$ m và chiều cao bằng đáy lớn.\n\nTa có sơ đồ:\n\n(Đáy lớn 5 phần; đáy bé 3 phần; hiệu hai đáy 6 m)\n\nHiệu số phần bằng nhau là: $5-3=2$ (phần)\n\nGiá trị một phần là: $6:2=3$ (m)\n\nĐáy lớn là: $3\\times 5=15$ (m)\n\nĐáy bé là: $3\\times 3=9$ (m)\n\nChiều cao bằng đáy lớn nên là $15$ m.\n\nDiện tích mảnh vườn ban đầu là: $(15+9)\\times 15:2=180$ ($\\text{m}^2$)\n\nĐáp số: $180\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "TX 2023 · 11",
+  "dap_an": "$32$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài cho kết quả cuối cùng nên làm ngược từ lần bán thứ tư về lần thứ nhất; mỗi lần bán đi $\\dfrac{1}{2}$ số quả còn lại và thêm $2$ quả thì số quả còn lại sau khi bán, cộng với $2$ quả bán thêm, bằng $\\dfrac{1}{2}$ số quả trước lúc bán.\n\n**Bước 1.** Lần thứ tư bán $\\dfrac{1}{2}$ số quả còn lại và không bán thêm quả lẻ nào, nên $2$ quả còn lại ứng với $\\dfrac{1}{2}$ số quả trước lần bán đó.\n\n**Bước 2.** Ở lần thứ ba, cộng số quả còn lại với $2$ quả đã bán thêm rồi chia cho $\\dfrac{1}{2}$ để tìm số quả trước lần bán thứ ba.\n\n**Bước 3.** Làm tương tự cho lần bán thứ hai để tìm số quả trước lần bán thứ hai.\n\n**Bước 4.** Lần bán thứ nhất bán $4$ quả: cộng thêm $4$ quả vào số cam còn lại sau lần đó để có số cam ban đầu.\n\n**Chú ý:** Phải cộng $2$ quả bán thêm trước rồi mới chia cho $\\dfrac{1}{2}$, nếu không sẽ tìm sai số quả trước lúc bán.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLần thứ tư bán $\\dfrac{1}{2}$ số cam còn lại nên $2$ quả còn lại ứng với $\\dfrac{1}{2}$ số cam trước lần thứ tư.\n\nSố cam trước lần bán thứ tư là: $2:\\dfrac{1}{2}=4$ (quả)\n\nLần thứ ba bán $\\dfrac{1}{2}$ số cam còn lại và $2$ quả nên $4$ quả còn lại cộng $2$ quả bán thêm ứng với $\\dfrac{1}{2}$ số cam trước lần thứ ba.\n\nSố cam trước lần bán thứ ba là: $(4+2):\\dfrac{1}{2}=12$ (quả)\n\nLần thứ hai bán $\\dfrac{1}{2}$ số cam còn lại và $2$ quả nên $12$ quả còn lại cộng $2$ quả bán thêm ứng với $\\dfrac{1}{2}$ số cam trước lần thứ hai.\n\nSố cam trước lần bán thứ hai là: $(12+2):\\dfrac{1}{2}=28$ (quả)\n\nSố cam ban đầu là: $28+4=32$ (quả)\n\nĐáp số: $32$ quả"
+ },
+ {
+  "ma_nguon": "TX 2023 · 12",
+  "dap_an": "$x=18$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng đều có dạng \"$x$ chia cho một số rồi nhân với một số\", nên đổi mỗi số hạng thành \"$x$ nhân với một số\" bằng cách lấy số nhân chia cho số chia; sau đó đưa $x$ ra ngoài thành một tích.\n\n**Bước 1.** Với số hạng $x:4\\times 36$, thay hai phép tính liên tiếp bằng $x$ nhân với $36:4$; làm tương tự cho hai số hạng còn lại.\n\n**Bước 2.** Tính ba thương trong ngoặc để mỗi số hạng trở thành $x$ nhân với một số.\n\n**Bước 3.** Đặt thừa số chung $x$ ra ngoài rồi tính phép cộng, trừ trong ngoặc.\n\n**Bước 4.** Tìm thừa số chưa biết bằng cách lấy tích chia cho thừa số đã biết.\n\nThử lại: thay $x$ vừa tìm vào vế trái, tính từng số hạng rồi cộng trừ thì phải bằng $180$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} x:4\\times 36-x:7\\times 28+x:4\\times 20=180 \\\\ x\\times(36:4)-x\\times(28:7)+x\\times(20:4)=180 \\\\ x\\times 9-x\\times 4+x\\times 5=180 \\\\ x\\times(9-4+5)=180 \\\\ x\\times 10=180 \\\\ x=180:10 \\\\ x=18 \\end{array}$"
+ },
+ {
+  "ma_nguon": "TX 2023 · 13",
+  "dap_an": "$12,56$ cm",
+  "ghi_chu_nghi": "Đề chữ không nói hai cung là gì; theo hình: hai cung là hai phần tư đường tròn tâm D và tâm C, bán kính 8 cm (= AD = BC), phần tô đậm dưới là phần chung của hai phần tư hình tròn, phần tô đậm trên là phần hình chữ nhật không bị hai phần tư hình tròn phủ. π = 3,14. Kiểm bằng tính số: AB = 12,56 thì hai phần tô bằng nhau (hình vẽ AB ≈ 1,5 lần AD khớp).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phần tư hình tròn cộng lại thì phần chung (phần tô đậm dưới) được tính hai lần, còn phần tô đậm trên không được tính; hai phần tô đậm bằng nhau nên tổng diện tích hai phần tư hình tròn đúng bằng diện tích hình chữ nhật.\n\n**Bước 1.** Nhìn hình: hai cung tròn là hai phần tư hình tròn tâm $D$ và tâm $C$, bán kính bằng $AD$ và $BC$, đều là $8$ cm.\n\n**Bước 2.** So sánh hình chữ nhật với hai phần tư hình tròn: hai phần tư hình tròn phủ hình chữ nhật trừ phần tô đậm trên, và phần tô đậm dưới bị phủ hai lần.\n\n**Bước 3.** Vì hai phần tô đậm bằng nhau nên phần bị thiếu bù đúng cho phần bị thừa, suy ra diện tích hình chữ nhật bằng tổng diện tích hai phần tư hình tròn.\n\n**Bước 4.** Tính diện tích hai phần tư hình tròn bán kính $8$ cm, rồi chia cho chiều rộng $AD$ để tìm chiều dài $AB$.\n\n**Chú ý:** Bán kính các cung tròn là $8$ cm; độ dài $AB$ là số cần tìm, không phải bán kính.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hai cung tròn là hai phần tư hình tròn tâm $D$ và tâm $C$, bán kính $8$ cm.\n\nHai phần tư hình tròn phủ kín hình chữ nhật trừ phần tô đậm trên, và phần tô đậm dưới bị phủ hai lần. Hai phần tô đậm bằng nhau nên diện tích hình chữ nhật $ABCD$ bằng tổng diện tích hai phần tư hình tròn.\n\nDiện tích một phần tư hình tròn là: $8\\times 8\\times 3,14:4=50,24$ ($\\text{cm}^2$)\n\nDiện tích hình chữ nhật $ABCD$ là: $50,24\\times 2=100,48$ ($\\text{cm}^2$)\n\nĐộ dài $AB$ là: $100,48:8=12,56$ (cm)\n\nĐáp số: $12,56$ cm"
+ },
+ {
+  "ma_nguon": "TX 2023 · 14",
+  "dap_an": "$\\dfrac{1}{4760}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tử số đều bằng $1$ nên chỉ cần tìm quy luật của mẫu số: mỗi mẫu số là tích của hai số hơn kém nhau $2$, và thừa số thứ nhất của các mẫu số lập thành dãy cách đều.\n\n**Bước 1.** Viết mỗi mẫu số $8$; $35$; $80$; $143$ thành tích của hai số hơn kém nhau $2$ để thấy quy luật.\n\n**Bước 2.** Xét thừa số thứ nhất của các tích: dãy này cách đều nhau, tìm khoảng cách giữa hai số liên tiếp.\n\n**Bước 3.** Tìm thừa số thứ nhất của số hạng thứ $23$ theo quy luật cách đều, rồi tìm thừa số thứ hai.\n\n**Bước 4.** Nhân hai thừa số để được mẫu số của số hạng thứ $23$, tử số vẫn là $1$.\n\n**Chú ý:** Số hạng thứ $23$ có $22$ khoảng cách đều từ số hạng đầu tiên, không phải $23$ khoảng cách.\n\n**Phần 2. Trình bày**\n\nTa có: $8=2\\times 4$; $35=5\\times 7$; $80=8\\times 10$; $143=11\\times 13$.\n\nThừa số thứ nhất là các số $2;\\ 5;\\ 8;\\ 11;\\ \\ldots$, hơn kém nhau $3$; thừa số thứ hai luôn lớn hơn thừa số thứ nhất $2$.\n\nThừa số thứ nhất của số hạng thứ $23$ là: $2+3\\times(23-1)=68$\n\nThừa số thứ hai của số hạng thứ $23$ là: $68+2=70$\n\nMẫu số của số hạng thứ $23$ là: $68\\times 70=4760$\n\nVậy số thứ $23$ của dãy là $\\dfrac{1}{4760}$."
+ },
+ {
+  "ma_nguon": "TX 2023 · 15",
+  "dap_an": "$8$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi công việc là số \"công\" (một học sinh làm một ngày được một công); công việc còn lại sau $5$ ngày không đổi, nên chia cho số ngày làm nốt thực tế sẽ ra số học sinh lúc sau.\n\n**Bước 1.** Sau $5$ ngày, công việc còn lại bằng số công của $32$ học sinh làm tiếp số ngày dự định còn lại; tính số công này.\n\n**Bước 2.** Hoàn thành sớm hơn dự định $2$ ngày nên tổng thời gian làm thực tế ít hơn $15$ ngày; từ đó tìm số ngày làm nốt sau khi có thêm người.\n\n**Bước 3.** Lấy số công còn lại chia cho số ngày làm nốt để biết mỗi ngày cần bao nhiêu học sinh.\n\n**Bước 4.** Lấy số học sinh lúc sau trừ $32$ học sinh ban đầu để biết số bạn được bổ sung.\n\n**Chú ý:** Số ngày làm nốt tính từ lúc bổ sung người (sau ngày thứ $5$), không tính cả $5$ ngày đã làm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ngày dự định còn lại sau khi làm $5$ ngày là: $15-5=10$ (ngày)\n\nSố công việc còn lại (một học sinh làm $1$ ngày được $1$ công) là: $32\\times 10=320$ (công)\n\nThực tế hoàn thành trong: $15-2=13$ (ngày)\n\nSố ngày làm nốt sau khi có thêm người là: $13-5=8$ (ngày)\n\nSố học sinh làm trong $8$ ngày cuối là: $320:8=40$ (học sinh)\n\nSố học sinh được bổ sung là: $40-32=8$ (học sinh)\n\nĐáp số: $8$ học sinh"
+ },
+ {
+  "ma_nguon": "TX 2023 · 16",
+  "dap_an": "$36$ km/giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Quãng đường AB",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 90
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 90,
+      "nhan": "30 km/giờ: muộn 30 phút"
+     },
+     {
+      "tu": 0,
+      "den": 90,
+      "nhan": "40 km/giờ: sớm 15 phút"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 90,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi cả quãng đường AB",
+    "gia_tri_phan": 45,
+    "hang": [
+     {
+      "nhan": "Đi 30 km/giờ",
+      "phan": 4
+     },
+     {
+      "nhan": "Đi 40 km/giờ",
+      "phan": 3
+     }
+    ],
+    "hieu": "45 phút"
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trên cùng một quãng đường, vận tốc lớn hơn bao nhiêu lần thì thời gian nhỏ đi bấy nhiêu lần. Biết tỉ số hai thời gian và hiệu của chúng thì tìm được thời gian từng cách đi, từ đó tìm quãng đường và thời gian để đến đúng giờ.\n\n**Bước 1.** So sánh hai vận tốc để tìm tỉ số hai thời gian đi hết quãng đường $AB$: vận tốc lớn thì thời gian nhỏ.\n\n**Bước 2.** Tìm hiệu hai thời gian: một lần đến muộn, một lần đến sớm so với giờ quy định nên hiệu bằng tổng của khoảng muộn và khoảng sớm.\n\n**Bước 3.** Giải bài toán hiệu – tỉ để tìm thời gian đi với từng vận tốc, từ đó tính quãng đường $AB$.\n\n**Bước 4.** Tìm thời gian để đến đúng giờ rồi lấy quãng đường chia cho thời gian đó để có vận tốc cần tìm.\n\n**Chú ý:** Thời gian đi đúng giờ không bằng thời gian của cả hai cách đi đã cho, mà nằm giữa hai thời gian đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(A đến B; đi với vận tốc 30 km/giờ thì muộn 30 phút; đi với vận tốc 40 km/giờ thì sớm 15 phút; quãng đường AB chưa biết)\n\nVận tốc $40$ km/giờ gấp vận tốc $30$ km/giờ số lần là: $40:30=\\dfrac{4}{3}$ (lần)\n\nTrên cùng quãng đường, vận tốc gấp lên $\\dfrac{4}{3}$ lần thì thời gian giảm còn $\\dfrac{3}{4}$, nên thời gian đi với vận tốc $40$ km/giờ bằng $\\dfrac{3}{4}$ thời gian đi với vận tốc $30$ km/giờ.\n\nThời gian đi với vận tốc $30$ km/giờ hơn thời gian đi với vận tốc $40$ km/giờ là: $30+15=45$ (phút)\n\nTa có sơ đồ:\n\n(Thời gian đi với 30 km/giờ: 4 phần; thời gian đi với 40 km/giờ: 3 phần; hiệu 45 phút)\n\nHiệu số phần bằng nhau là: $4-3=1$ (phần)\n\nThời gian đi với vận tốc $30$ km/giờ là: $45:1\\times 4=180$ (phút)\n\nĐổi: $180$ phút $=3$ giờ\n\nQuãng đường $AB$ dài: $30\\times 3=90$ (km)\n\nĐi với vận tốc $30$ km/giờ thì muộn $30$ phút nên thời gian để đến đúng giờ là: $180-30=150$ (phút)\n\nĐổi: $150$ phút $=2,5$ giờ\n\nVận tốc để đến đúng giờ là: $90:2,5=36$ (km/giờ)\n\nĐáp số: $36$ km/giờ"
+ }
+]

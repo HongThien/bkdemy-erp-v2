@@ -1,0 +1,115 @@
+[
+ {
+  "ma_nguon": "NS 2025 · P1.1",
+  "dap_an": "$306,02$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi hàng của số thập phân có một chữ số; hàng nào đề không nhắc tới thì chữ số ở hàng đó là $0$. Phải đặt đúng \"trăm\", \"đơn vị\" ở phần nguyên và \"phần trăm\" ở phần thập phân.\n\n**Bước 1.** Xếp các hàng của phần nguyên: $3$ trăm ở hàng trăm, $6$ đơn vị ở hàng đơn vị, còn hàng chục không được nhắc tới.\n\n**Bước 2.** Xếp các hàng của phần thập phân: hàng phần mười đứng liền sau dấu phẩy, hàng phần trăm đứng ngay sau đó; đề chỉ cho hàng phần trăm.\n\n**Bước 3.** Hàng nào thiếu thì điền chữ số $0$, rồi viết các chữ số từ hàng cao đến hàng thấp và đặt dấu phẩy giữa hàng đơn vị và hàng phần mười.\n\n**Chú ý:** Không viết số này thành $362$ hay $3,62$: hàng chục và hàng phần mười phải có chữ số $0$ giữ chỗ.\n\n**Phần 2. Trình bày**\n\nSố cần viết có: $3$ trăm, $0$ chục, $6$ đơn vị, $0$ phần mười, $2$ phần trăm.\n\nSố đó là: $300+6+0,02=306,02$\n\nVậy số cần viết là $306,02$."
+ },
+ {
+  "ma_nguon": "NS 2025 · P1.2",
+  "dap_an": "$40,035\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình, hình tròn bé nằm trọn trong hình tròn lớn, nên phần tô đậm là hình tròn lớn bỏ đi hình tròn bé: diện tích tô đậm bằng hiệu hai diện tích. Đề cho đường kính mà công thức tính diện tích dùng bán kính.\n\n**Bước 1.** Nhìn hình để thấy phần tô đậm là phần còn lại của hình tròn lớn sau khi lấy đi hình tròn bé, nên phải lấy diện tích lớn trừ diện tích bé.\n\n**Bước 2.** Đổi đường kính ra bán kính cho từng hình tròn, vì đường kính gấp $2$ lần bán kính nên lấy đường kính chia $2$.\n\n**Bước 3.** Tính diện tích mỗi hình tròn bằng bán kính nhân bán kính nhân $3,14$.\n\n**Bước 4.** Lấy diện tích hình tròn lớn trừ diện tích hình tròn bé để được diện tích phần tô đậm.\n\n**Chú ý:** Không lấy đường kính nhân đường kính nhân $3,14$, vì như thế diện tích sẽ lớn gấp $4$ lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hình tròn bé nằm trọn trong hình tròn lớn.\n\nBán kính hình tròn lớn là: $10:2=5$ (cm)\n\nBán kính hình tròn bé là: $7:2=3,5$ (cm)\n\nDiện tích hình tròn lớn là: $5\\times 5\\times 3,14=78,5$ ($\\text{cm}^2$)\n\nDiện tích hình tròn bé là: $3,5\\times 3,5\\times 3,14=38,465$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $78,5-38,465=40,035$ ($\\text{cm}^2$)\n\nĐáp số: $40,035\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NS 2025 · P1.3",
+  "dap_an": "Anh: $21$ tuổi; em: $12$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của hai anh em không bao giờ thay đổi dù là lúc nào. Dùng hiệu này làm \"cầu nối\" giữa ba mốc thời gian: lúc trước, hiện nay và lúc sau, rồi chia theo số phần.\n\n**Bước 1.** Xét mốc \"khi tuổi anh bằng tuổi em hiện nay\": lúc đó coi tuổi em là $1$ phần thì tuổi em hiện nay gấp $4$ lần, là $4$ phần, và tuổi anh lúc đó cũng bằng tuổi em hiện nay, là $4$ phần; từ đó tìm hiệu số tuổi bằng mấy phần.\n\n**Bước 2.** Hiệu số tuổi không đổi, nên tuổi anh hiện nay bằng tuổi em hiện nay cộng với hiệu số tuổi; viết được tuổi anh hiện nay theo số phần.\n\n**Bước 3.** Xét mốc \"khi tuổi em bằng tuổi anh hiện nay\": khi đó tuổi em bằng số phần tuổi anh hiện nay, còn tuổi anh bằng tuổi em lúc đó cộng hiệu số tuổi; tính tổng số phần của hai anh em ở mốc này.\n\n**Bước 4.** Tổng số tuổi ở mốc này là $51$ tuổi, chia cho tổng số phần để biết một phần là bao nhiêu tuổi, rồi tính tuổi hiện nay của từng người.\n\n**Chú ý:** Tuổi anh hiện nay là số phần ở bước $2$, không phải số phần của anh ở mốc sau; mốc sau chỉ dùng để tìm giá trị một phần.\n\nThử lại: lùi và tiến hai mốc thời gian rồi kiểm tra cả hai điều kiện của đề với hai số tuổi vừa tìm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của hai anh em không đổi theo thời gian.\n\nKhi tuổi anh bằng tuổi em hiện nay, coi tuổi em lúc đó là $1$ phần thì tuổi em hiện nay là $4$ phần.\n\nTa có sơ đồ:\n\n(Khi tuổi anh bằng tuổi em hiện nay: tuổi em 1 phần; tuổi anh 4 phần)\n\nHiệu số tuổi của hai anh em là: $4-1=3$ (phần)\n\nTuổi anh hiện nay là: $4+3=7$ (phần)\n\nKhi tuổi em bằng tuổi anh hiện nay thì tuổi em là $7$ phần, tuổi anh là: $7+3=10$ (phần)\n\nTa có sơ đồ:\n\n(Khi tuổi em bằng tuổi anh hiện nay: tuổi em 7 phần; tuổi anh 10 phần; tổng 51 tuổi)\n\nTổng số phần bằng nhau là: $7+10=17$ (phần)\n\nGiá trị của một phần là: $51:17=3$ (tuổi)\n\nTuổi anh hiện nay là: $3\\times 7=21$ (tuổi)\n\nTuổi em hiện nay là: $3\\times 4=12$ (tuổi)\n\nĐáp số: Anh: $21$ tuổi; em: $12$ tuổi",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Khi anh bằng tuổi em hiện nay",
+    "gia_tri_phan": 3,
+    "hang": [
+     {
+      "nhan": "Tuổi em",
+      "phan": 1
+     },
+     {
+      "nhan": "Tuổi anh",
+      "phan": 4
+     }
+    ]
+   },
+   {
+    "tieu_de": "Khi em bằng tuổi anh hiện nay",
+    "gia_tri_phan": 3,
+    "hang": [
+     {
+      "nhan": "Tuổi em",
+      "phan": 7
+     },
+     {
+      "nhan": "Tuổi anh",
+      "phan": 10
+     }
+    ],
+    "tong": "51 tuổi"
+   }
+  ],
+  "ghi_chu_nghi": "Hiểu đề: \"khi tuổi anh bằng tuổi em hiện nay\" là mốc trong QUÁ KHỨ (anh hơn em nên mốc này em còn bé), \"khi tuổi em bằng tuổi anh hiện nay\" là mốc tương lai. Kiểm: hiện nay anh 21, em 12; lùi 9 năm anh 12, em 3 (12 = 4×3); tiến 9 năm em 21, anh 30, tổng 51."
+ },
+ {
+  "ma_nguon": "NS 2025 · P1.4",
+  "dap_an": "Người thứ nhất: $7,5$ giờ; người thứ hai: $15$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả công việc là $1$. Hai người làm chung xong trong $5$ giờ nên mỗi giờ cùng làm được một phần của công việc; phần việc người thứ hai làm nốt trong $9$ giờ cho biết mỗi giờ người thứ hai làm được bao nhiêu, từ đó tìm người thứ nhất.\n\n**Bước 1.** Tính mỗi giờ hai người cùng làm được bao nhiêu phần công việc, rồi tính $2$ giờ làm chung được bao nhiêu phần.\n\n**Bước 2.** Phần việc còn lại sau $2$ giờ chính là phần người thứ hai làm một mình trong $9$ giờ, nên lấy cả công việc trừ phần đã làm chung.\n\n**Bước 3.** Chia phần việc còn lại cho $9$ giờ để biết mỗi giờ người thứ hai làm được bao nhiêu, rồi lấy $1$ chia cho số đó để biết người thứ hai làm riêng hết bao nhiêu giờ.\n\n**Bước 4.** Lấy phần việc hai người làm trong một giờ trừ phần việc người thứ hai làm trong một giờ để được phần việc người thứ nhất làm trong một giờ, rồi tìm thời gian làm riêng của người thứ nhất.\n\n**Chú ý:** Thời gian làm riêng cả công việc bằng $1$ chia cho phần việc làm được trong một giờ, không phải lấy phần việc chia cho số giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi cả công việc là $1$.\n\nMỗi giờ hai người cùng làm được: $1:5=\\dfrac{1}{5}$ (công việc)\n\nHai giờ làm chung, hai người làm được: $\\dfrac{1}{5}\\times 2=\\dfrac{2}{5}$ (công việc)\n\nPhần việc người thứ hai làm nốt là: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (công việc)\n\nMỗi giờ người thứ hai làm được: $\\dfrac{3}{5}:9=\\dfrac{1}{15}$ (công việc)\n\nNgười thứ hai làm riêng xong công việc trong: $1:\\dfrac{1}{15}=15$ (giờ)\n\nMỗi giờ người thứ nhất làm được: $\\dfrac{1}{5}-\\dfrac{1}{15}=\\dfrac{2}{15}$ (công việc)\n\nNgười thứ nhất làm riêng xong công việc trong: $1:\\dfrac{2}{15}=\\dfrac{15}{2}=7,5$ (giờ)\n\nĐáp số: Người thứ nhất: $7,5$ giờ; người thứ hai: $15$ giờ",
+  "ghi_chu_nghi": "Hiểu đề: hai người làm CHUNG trong 2 giờ đầu rồi người thứ nhất nghỉ; \"5 giờ\" là thời gian dự định nếu cùng làm xong cả việc. 7,5 giờ = 7 giờ 30 phút."
+ },
+ {
+  "ma_nguon": "NS 2025 · P1.5",
+  "dap_an": "$\\dfrac{511}{510}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính riêng $A$ và $B$ rồi chia. $A$ là dãy mà mỗi mẫu số gấp đôi mẫu số trước, nên tính bằng $2\\times A-A$. Mẫu số của $B$ là tổng các số tự nhiên liên tiếp từ $1$, đổi được thành tích hai số liền nhau để tách mỗi phân số thành hiệu hai phân số rồi khử nhau.\n\n**Bước 1.** Với $A$, mẫu số gấp đôi liên tiếp nên nhân $A$ với $2$ để các số hạng dịch lùi một vị trí, rồi lấy $2\\times A$ trừ $A$ thì các số hạng ở giữa khử nhau.\n\n**Bước 2.** Với $B$, đổi mẫu số: tổng các số tự nhiên liên tiếp từ $1$ bằng số cuối nhân số liền sau rồi chia $2$, nên mỗi số hạng là một phân số có tử số $2$ và mẫu số là tích hai số liền nhau.\n\n**Bước 3.** Đưa thừa số $2$ ra ngoài, rồi tách mỗi phân số có tử số $1$ và mẫu số là tích hai số liền nhau thành hiệu hai phân số; các số hạng ở giữa khử nhau, chỉ còn số hạng đầu và số hạng cuối.\n\n**Bước 4.** Chia $A$ cho $B$ bằng cách lấy $A$ nhân với $B$ đảo ngược, rồi rút gọn kết quả.\n\n**Chú ý:** Số hạng đầu tiên của $B$ ứng với tích $2\\times 3$ (không có $1\\times 2$), nên sau khi khử nhau số hạng đầu còn lại là $\\dfrac{1}{2}$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+...+\\dfrac{1}{512}$\n\n$2\\times A=1+\\dfrac{1}{2}+\\dfrac{1}{4}+...+\\dfrac{1}{256}$\n\n$2\\times A-A=1-\\dfrac{1}{512}$\n\n$A=\\dfrac{511}{512}$\n\nTa có $1+2=2\\times 3:2$; $1+2+3=3\\times 4:2$; ...; $1+2+3+...+511=511\\times 512:2$ nên:\n\n$B=\\dfrac{2}{2\\times 3}+\\dfrac{2}{3\\times 4}+...+\\dfrac{2}{511\\times 512}$\n\n$B=2\\times\\left(\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+...+\\dfrac{1}{511\\times 512}\\right)$\n\nVì $\\dfrac{1}{2\\times 3}=\\dfrac{1}{2}-\\dfrac{1}{3}$; $\\dfrac{1}{3\\times 4}=\\dfrac{1}{3}-\\dfrac{1}{4}$; ...; $\\dfrac{1}{511\\times 512}=\\dfrac{1}{511}-\\dfrac{1}{512}$ nên:\n\n$B=2\\times\\left(\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+...+\\dfrac{1}{511}-\\dfrac{1}{512}\\right)$\n\n$B=2\\times\\left(\\dfrac{1}{2}-\\dfrac{1}{512}\\right)$\n\n$B=2\\times\\dfrac{255}{512}=\\dfrac{255}{256}$\n\n$\\dfrac{A}{B}=\\dfrac{511}{512}:\\dfrac{255}{256}$\n\n$\\dfrac{A}{B}=\\dfrac{511}{512}\\times\\dfrac{256}{255}$\n\n$\\dfrac{A}{B}=\\dfrac{511}{510}$"
+ },
+ {
+  "ma_nguon": "NS 2025 · P1.6",
+  "dap_an": "$120\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Vì $M$, $N$ là trung điểm nên nhiều cặp tam giác có đáy bằng nhau, suy ra diện tích bằng nhau; nối thêm $A$ với $O$ để chia tam giác $ABN$ thành các tam giác nhỏ mà ta đã biết diện tích.\n\n**Bước 1.** Mỗi tam giác $BMC$ và $BNC$ bằng một nửa tam giác $ABC$ (đáy là một nửa cạnh, chung đường cao với $ABC$), nên hai tam giác này bằng nhau; cùng bớt phần chung $BOC$ thì tam giác $NOC$ bằng tam giác $MOB$.\n\n**Bước 2.** Nối $A$ với $O$. Tam giác $AMO$ và $BMO$ chung đường cao hạ từ $O$, đáy $AM$ bằng $MB$ nên diện tích bằng nhau.\n\n**Bước 3.** Tương tự, tam giác $ANO$ và $CNO$ chung đường cao hạ từ $O$, đáy $AN$ bằng $NC$ nên diện tích bằng nhau; vậy ba tam giác $AMO$, $MOB$, $ANO$ có diện tích biết được.\n\n**Bước 4.** Ba tam giác đó ghép thành tam giác $ABN$, tính diện tích tam giác $ABN$.\n\n**Bước 5.** $N$ là trung điểm của $AC$ nên tam giác $ABN$ bằng một nửa tam giác $ABC$; từ đó tính diện tích tam giác $ABC$.\n\n**Chú ý:** Đề chỉ cho diện tích tam giác $MOB$; việc nối thêm $AO$ là bước quan trọng để chuyển sang các tam giác bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối $A$ với $O$.\n\nTam giác $BMC$ và tam giác $ABC$ có chung đường cao hạ từ $C$ xuống $AB$, mà $BM=\\dfrac{1}{2}\\times AB$ nên $S_{BMC}=\\dfrac{1}{2}\\times S_{ABC}$.\n\nTam giác $BNC$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, mà $NC=\\dfrac{1}{2}\\times AC$ nên $S_{BNC}=\\dfrac{1}{2}\\times S_{ABC}$.\n\nSuy ra $S_{BMC}=S_{BNC}$. Cùng bớt $S_{BOC}$ thì được: $S_{NOC}=S_{MOB}=20$ ($\\text{cm}^2$)\n\nTam giác $AMO$ và tam giác $BMO$ có chung đường cao hạ từ $O$ xuống $AB$, mà $AM=MB$ nên $S_{AMO}=S_{BMO}=20$ ($\\text{cm}^2$)\n\nTam giác $ANO$ và tam giác $CNO$ có chung đường cao hạ từ $O$ xuống $AC$, mà $AN=NC$ nên $S_{ANO}=S_{CNO}=20$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ABN$ là: $20+20+20=60$ ($\\text{cm}^2$)\n\nTam giác $ABN$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, mà $AN=\\dfrac{1}{2}\\times AC$ nên $S_{ABN}=\\dfrac{1}{2}\\times S_{ABC}$.\n\nDiện tích tam giác $ABC$ là: $60\\times 2=120$ ($\\text{cm}^2$)\n\nĐáp số: $120\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NS 2025 · P2.1",
+  "dap_an": "$x=1,45$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải là một tích đã biết hai thừa số, nên tính vế phải trước để đưa bài về dạng \"số hạng chưa biết cộng số hạng đã biết bằng một tổng\".\n\n**Bước 1.** Tính vế phải $3,5\\times 1,5$: nhân hai số thập phân như nhân số tự nhiên rồi đếm tổng số chữ số ở phần thập phân của hai thừa số để đặt dấu phẩy.\n\n**Bước 2.** Sau khi vế phải là một số, $x$ cộng với $3,8$ bằng số đó, nên $x$ là số hạng chưa biết của một phép cộng.\n\n**Bước 3.** Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết.\n\nThử lại: thay $x$ vừa tìm vào vế trái, cộng với $3,8$ phải ra đúng bằng vế phải.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}x+3,8=3,5\\times 1,5\\\\ x+3,8=5,25\\\\ x=5,25-3,8\\\\ x=1,45\\end{array}$"
+ },
+ {
+  "ma_nguon": "NS 2025 · P2.2",
+  "dap_an": "Ngày thứ nhất: $41$ tạ; ngày thứ hai: $12,3$ tạ; ngày thứ ba: $72,3$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia bài thành hai chặng. Chặng một là tổng – hiệu: ngày thứ ba hơn tổng hai ngày đầu $19$ tạ, nên tìm được tổng số gạo hai ngày đầu và số gạo ngày thứ ba. Chặng hai là tổng – tỉ: đổi $30\\%$ thành phân số để chia tổng hai ngày đầu cho ngày thứ nhất và ngày thứ hai.\n\n**Bước 1.** Coi tổng số gạo hai ngày đầu là số bé, ngày thứ ba là số lớn hơn số bé $19$ tạ; bớt $19$ tạ ở ngày thứ ba thì tổng còn lại gấp đôi tổng số gạo hai ngày đầu.\n\n**Bước 2.** Chia tổng còn lại cho $2$ để tìm tổng số gạo hai ngày đầu, rồi cộng thêm $19$ tạ để tìm số gạo bán ngày thứ ba.\n\n**Bước 3.** Đổi $30\\%$ thành phân số rồi coi số gạo ngày thứ nhất là một số phần bằng nhau, từ đó tìm số phần của ngày thứ hai và tổng số phần của hai ngày đầu.\n\n**Bước 4.** Chia tổng số gạo hai ngày đầu cho tổng số phần để tìm giá trị một phần, rồi nhân với số phần của từng ngày.\n\n**Chú ý:** Số bé của chặng một là tổng hai ngày đầu, không phải số gạo ngày thứ nhất; ngày thứ hai bằng $30\\%$ ngày thứ nhất, không phải ngày thứ ba.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố gạo bán ngày thứ ba hơn tổng số gạo bán hai ngày đầu là $19$ tạ.\n\nTa có sơ đồ:\n\n(Hai ngày đầu: một đoạn; ngày thứ ba: một đoạn như thế thêm 19 tạ; tổng 125,6 tạ)\n\nHai lần tổng số gạo bán hai ngày đầu là: $125,6-19=106,6$ (tạ)\n\nTổng số gạo bán hai ngày đầu là: $106,6:2=53,3$ (tạ)\n\nSố gạo bán ngày thứ ba là: $53,3+19=72,3$ (tạ)\n\nVì $30\\%=\\dfrac{3}{10}$ nên số gạo ngày thứ hai bằng $\\dfrac{3}{10}$ số gạo ngày thứ nhất, tức ngày thứ nhất là $10$ phần, ngày thứ hai là $3$ phần.\n\nTa có sơ đồ:\n\n(Ngày thứ nhất 10 phần; ngày thứ hai 3 phần; tổng 53,3 tạ)\n\nTổng số phần bằng nhau là: $10+3=13$ (phần)\n\nGiá trị của một phần là: $53,3:13=4,1$ (tạ)\n\nSố gạo bán ngày thứ nhất là: $4,1\\times 10=41$ (tạ)\n\nSố gạo bán ngày thứ hai là: $4,1\\times 3=12,3$ (tạ)\n\nĐáp số: Ngày thứ nhất: $41$ tạ; ngày thứ hai: $12,3$ tạ; ngày thứ ba: $72,3$ tạ",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Tổng số gạo ba ngày",
+    "gia_tri_phan": 53.3,
+    "hang": [
+     {
+      "nhan": "Ngày 1 và 2",
+      "phan": 1
+     },
+     {
+      "nhan": "Ngày thứ ba",
+      "phan": 1,
+      "them": "19 tạ"
+     }
+    ],
+    "tong": "125,6 tạ"
+   },
+   {
+    "tieu_de": "Số gạo hai ngày đầu",
+    "gia_tri_phan": 4.1,
+    "hang": [
+     {
+      "nhan": "Ngày thứ nhất",
+      "phan": 10
+     },
+     {
+      "nhan": "Ngày thứ hai",
+      "phan": 3
+     }
+    ],
+    "tong": "53,3 tạ"
+   }
+  ],
+  "ghi_chu_nghi": "Hiểu đề: \"ngày thứ ba hơn số gạo bán ngày thứ nhất và ngày thứ hai là 19 tạ\" = ngày 3 hơn TỔNG ngày 1 và ngày 2 là 19 tạ (kết quả 41; 12,3; 72,3 đều tròn đẹp)."
+ },
+ {
+  "ma_nguon": "NS 2025 · P2.3",
+  "dap_an": "a) $27$ hình tam giác; b) còn lại ít nhất $16$ hình tam giác",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm hình tam giác phải đếm có hệ thống theo từng loại: theo độ dài cạnh $1$ cm, $2$ cm, $3$ cm, $4$ cm và theo hướng của đỉnh (hướng lên hay hướng xuống), không đếm lộn xộn. Sang ý b), xoá một đoạn thì mất mọi hình tam giác có cạnh chứa đoạn đó, nên phải xoá những đoạn nằm trong nhiều hình tam giác nhất.\n\n**Bước 1.** Đếm các hình tam giác có đỉnh hướng lên theo từng loại cạnh: với mỗi độ dài cạnh, số hình bằng tổng các số tự nhiên liên tiếp bắt đầu từ $1$.\n\n**Bước 2.** Đếm các hình tam giác có đỉnh hướng xuống: chỉ có loại cạnh $1$ cm và loại cạnh $2$ cm, vì hình lớn chỉ cao $4$ hàng.\n\n**Bước 3.** Cộng tất cả các loại để trả lời ý a).\n\n**Bước 4.** Ý b): tìm số hình tam giác nhiều nhất có thể bị mất khi xoá một đoạn $1$ cm, rồi so sánh các cặp đoạn để biết hai đoạn xoá đi làm mất nhiều hình nhất, không tính trùng hình chứa cả hai đoạn.\n\n**Bước 5.** Lấy số hình tam giác lúc đầu trừ số hình bị mất nhiều nhất để được số hình còn lại ít nhất.\n\n**Chú ý:** Hình tam giác lớn cạnh $4$ cm cũng được tính; xoá đoạn nằm trên cạnh của nó thì hình lớn cũng mất. Khi cộng số hình mất của hai đoạn phải trừ đi hình chứa cả hai đoạn.\n\n**Phần 2. Trình bày**\n\na) Các hình tam giác có đỉnh hướng lên:\n\nCạnh $1$ cm: $1+2+3+4=10$ (hình)\n\nCạnh $2$ cm: $1+2+3=6$ (hình)\n\nCạnh $3$ cm: $1+2=3$ (hình)\n\nCạnh $4$ cm: $1$ (hình)\n\nCác hình tam giác có đỉnh hướng xuống:\n\nCạnh $1$ cm: $1+2+3=6$ (hình)\n\nCạnh $2$ cm: $1$ (hình)\n\nSố hình tam giác là: $10+6+3+1+6+1=27$ (hình)\n\nb) Xoá một đoạn $1$ cm thì mất mọi hình tam giác có cạnh chứa đoạn đó.\n\nĐếm các hình tam giác chứa từng đoạn $1$ cm thì thấy: mỗi đoạn nằm trong nhiều nhất $6$ hình tam giác; chỉ có $6$ đoạn như vậy, đó là hai đoạn ở giữa của mỗi cạnh hình tam giác lớn. Các đoạn còn lại nằm trong nhiều nhất $5$ hình.\n\nCả $6$ đoạn trên đều nằm trên cạnh của hình tam giác lớn, nên nếu xoá hai đoạn trong số đó thì hình tam giác lớn bị tính hai lần, số hình mất đi nhiều nhất là: $6+6-1=11$ (hình)\n\nNếu xoá một đoạn trong $6$ đoạn trên và một đoạn khác thì mất nhiều nhất: $6+5=11$ (hình)\n\nNếu xoá hai đoạn khác thì mất nhiều nhất: $5+5=10$ (hình)\n\nVậy xoá hai đoạn $1$ cm thì số hình tam giác mất đi không quá $11$ hình.\n\nXoá đoạn ở giữa của đường ngang dài $3$ cm (đường ngang thứ hai tính từ đáy) và đoạn thứ hai tính từ bên phải của đáy thì mất đúng $6+5=11$ (hình), vì hai đoạn này không cùng nằm trong hình tam giác nào.\n\nSố hình tam giác ít nhất còn lại là: $27-11=16$ (hình)\n\nĐáp số: a) $27$ hình tam giác; b) $16$ hình tam giác",
+  "ghi_chu_nghi": "Đề mơ hồ, đáp số theo cách hiểu sau — CEO chốt: (a) \"hình tam giác được cấu tạo bởi các tam giác cạnh 1 cm\" = MỌI hình tam giác ghép từ các ô nhỏ, tính cả chính ô nhỏ (27 = 20 hướng lên + 7 hướng xuống; nếu chỉ đếm ô cạnh 1 cm thì là 16). (b) hiểu \"ít hình tam giác nhất\" là số hình tam giác còn lại sau khi xoá; đề không hỏi rõ phải nêu cách xoá hay chỉ nêu số hình, nên lời giải nêu cả hai: đáp số 16, cách xoá là đoạn giữa của đường ngang dài 3 cm + đoạn thứ hai từ phải của đáy (đã duyệt bằng code toàn bộ 435 cách xoá hai đoạn: min = 16, có 6 cách đạt). Lập luận \"mỗi đoạn nằm trong nhiều nhất 6 hình\" ở ý b chưa chứng minh bằng đếm từng đoạn trong lời giải (chỉ nêu kết quả) — kém chắc nhất câu này."
+ }
+]

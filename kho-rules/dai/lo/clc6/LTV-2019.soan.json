@@ -1,0 +1,216 @@
+[
+ {
+  "ma_nguon": "LTV 2019 · 1",
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài chỉ có phép cộng và phép trừ nên được đổi chỗ các số, miễn là mỗi số mang theo dấu đứng ngay trước nó. Hai cặp số có phần thập phân giống nhau ($6,5$ với $2,5$ và $5,16$ với $7,16$) ghép lại cạnh nhau thì hiệu là số tự nhiên, tính nhẩm được.\n\n**Bước 1.** Quan sát bốn số và nhận ra hai cặp có phần thập phân giống nhau: $6,5$ và $2,5$; $5,16$ và $7,16$.\n\n**Bước 2.** Đổi chỗ các số sao cho mỗi cặp nằm cạnh nhau; mỗi số mang theo dấu đứng trước nó, nên $2,5$ đi cùng dấu trừ và $5,16$ cũng đi cùng dấu trừ.\n\n**Bước 3.** Đặt dấu ngoặc quanh từng cặp rồi tính hiệu của hai số trong mỗi cặp.\n\n**Bước 4.** Cộng hai kết quả vừa tìm được với nhau.\n\n**Chú ý:** Khi đổi chỗ phải mang cả dấu theo số, đừng để $5,16$ mất dấu trừ của nó.\n\n**Phần 2. Trình bày**\n\n$6,5-5,16+7,16-2,5$\n\n$=6,5-2,5+7,16-5,16$\n\n$=(6,5-2,5)+(7,16-5,16)$\n\n$=4+2$\n\n$=6$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 2",
+  "dap_an": "$x=15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi $120:x$ là một số bị trừ chưa biết trong phép trừ: tìm số bị trừ trước, rồi mới tìm $x$ là số chia của phép chia $120:x$.\n\n**Bước 1.** Nhận ra $120:x$ là số bị trừ, $\\dfrac{1}{4}$ là số trừ và $7\\dfrac{3}{4}$ là hiệu của phép trừ.\n\n**Bước 2.** Tìm số bị trừ bằng cách lấy hiệu cộng với số trừ; cộng hỗn số với phân số bằng cách giữ phần nguyên rồi cộng hai phân số cùng mẫu số.\n\n**Bước 3.** Sau bước trên ta biết thương của phép chia $120:x$; muốn tìm số chia chưa biết ta lấy số bị chia chia cho thương.\n\n**Chú ý:** $x$ là số chia nên phải lấy $120$ chia cho thương, không lấy thương chia cho $120$.\n\nThử lại: thay $x$ vừa tìm vào $120:x-\\dfrac{1}{4}$, kết quả phải bằng $7\\dfrac{3}{4}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 120:x-\\dfrac{1}{4}=7\\dfrac{3}{4} \\\\ 120:x=7\\dfrac{3}{4}+\\dfrac{1}{4} \\\\ 120:x=7+\\left(\\dfrac{3}{4}+\\dfrac{1}{4}\\right) \\\\ 120:x=8 \\\\ x=120:8 \\\\ x=15 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 3",
+  "dap_an": "Số bé: $60$; số lớn: $90$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số nhân với $2$ chính là tổng hai số. Biết tổng và hiệu của hai số thì đây là bài toán tổng – hiệu, giải bằng sơ đồ đoạn thẳng.\n\n**Bước 1.** Tìm tổng của hai số bằng cách lấy trung bình cộng nhân với $2$ (vì có hai số).\n\n**Bước 2.** Vẽ sơ đồ: số bé là một đoạn, số lớn gồm một đoạn bằng số bé và thêm một đoạn dài bằng hiệu của hai số.\n\n**Bước 3.** Bớt phần hơn đi thì hai số bằng nhau; tổng bớt đi hiệu được hai lần số bé, rồi chia đôi để tìm số bé.\n\n**Bước 4.** Số lớn bằng số bé cộng thêm hiệu.\n\nThử lại: hai số tìm được cộng lại phải bằng tổng và trừ nhau phải bằng hiệu đã cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $75\\times 2=150$\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; số lớn gồm 1 đoạn bằng số bé và thêm 30; tổng hai số 150)\n\nSố bé là: $(150-30):2=60$\n\nSố lớn là: $60+30=90$\n\nĐáp số: số bé $60$; số lớn $90$",
+  "so_do_mo_ta": {
+   "tieu_de": "Tổng hai số là 150",
+   "gia_tri_phan": 60,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "30"
+    }
+   ],
+   "tong": "150",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2019 · 4",
+  "dap_an": "$x=2$; $y=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho cả $2$ và $5$ thì có chữ số tận cùng là $0$; số chia hết cho $9$ thì tổng các chữ số chia hết cho $9$. Dùng điều kiện thứ nhất tìm $y$, rồi dùng điều kiện thứ hai tìm $x$.\n\n**Bước 1.** Số chia hết cho $2$ thì tận cùng là chữ số chẵn, chia hết cho $5$ thì tận cùng là $0$ hoặc $5$; chữ số tận cùng phải thoả mãn cả hai điều kiện này cùng lúc, từ đó tìm $y$.\n\n**Bước 2.** Thay $y$ vừa tìm vào số $\\overline{2x5y}$ rồi viết tổng các chữ số của số đó, trong tổng còn lại chữ số $x$ chưa biết.\n\n**Bước 3.** Số chia hết cho $9$ nên tổng các chữ số chia hết cho $9$; $x$ là chữ số từ $0$ đến $9$ nên tìm khoảng giá trị của tổng rồi chọn số chia hết cho $9$ nằm trong khoảng đó.\n\n**Bước 4.** Lấy số chia hết cho $9$ vừa chọn trừ đi phần tổng các chữ số đã biết để tìm $x$.\n\n**Chú ý:** $x$ có thể bằng $0$ nên khoảng giá trị của tổng các chữ số phải tính từ trường hợp $x=0$ đến trường hợp $x=9$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố chia hết cho $2$ và $5$ nên chữ số tận cùng là $0$, do đó $y=0$.\n\nKhi đó số có dạng $\\overline{2x50}$, tổng các chữ số là: $2+x+5+0=7+x$\n\nSố chia hết cho $9$ nên $7+x$ chia hết cho $9$.\n\nVì $x$ là chữ số nên $7+x$ nhận giá trị từ $7$ đến $16$; trong khoảng này chỉ có $9$ chia hết cho $9$.\n\nDo đó $7+x=9$ nên $x=9-7=2$\n\nĐáp số: $x=2$; $y=0$ (số đó là $2250$)"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 5",
+  "dap_an": "$3528\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi là tổng độ dài bốn cạnh nên nửa chu vi là tổng của chiều dài và chiều rộng. Chiều dài gấp đôi chiều rộng nên đây là bài toán tổng – tỉ; tìm hai cạnh rồi mới tính diện tích.\n\n**Bước 1.** Tính nửa chu vi bằng cách lấy chu vi chia cho $2$; số này là tổng của chiều dài và chiều rộng.\n\n**Bước 2.** Vẽ sơ đồ: chiều rộng là $1$ phần, chiều dài là $2$ phần như thế, rồi đếm tổng số phần bằng nhau.\n\n**Bước 3.** Chia nửa chu vi cho tổng số phần để tìm chiều rộng, rồi nhân với $2$ để tìm chiều dài.\n\n**Bước 4.** Diện tích hình chữ nhật bằng chiều dài nhân chiều rộng.\n\n**Chú ý:** Chu vi $252$ cm gồm cả bốn cạnh; phải lấy nửa chu vi mới là tổng của chiều dài và chiều rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật là: $252:2=126$ (cm)\n\nTa có sơ đồ:\n\n(Chiều rộng 1 phần; chiều dài 2 phần; tổng chiều dài và chiều rộng 126 cm)\n\nTổng số phần bằng nhau là: $1+2=3$ (phần)\n\nChiều rộng hình chữ nhật là: $126:3=42$ (cm)\n\nChiều dài hình chữ nhật là: $42\\times 2=84$ (cm)\n\nDiện tích hình chữ nhật là: $84\\times 42=3528$ ($\\text{cm}^2$)\n\nĐáp số: $3528\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "tieu_de": "Nửa chu vi hình chữ nhật",
+   "gia_tri_phan": 42,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 1
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 2
+    }
+   ],
+   "tong": "126 cm",
+   "dau_hoi": [
+    "Chiều rộng",
+    "Chiều dài"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2019 · 6",
+  "dap_an": "$13,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm một số phần trăm của một số thì lấy số đó nhân với số phần trăm; số phần trăm đổi ra số thập phân bằng cách chia cho $100$.\n\n**Bước 1.** Nhận ra đề hỏi giá trị $15\\%$ của số $90$, tức là tìm $15$ phần trăm của $90$.\n\n**Bước 2.** Viết $15\\%$ thành số thập phân bằng cách chia $15$ cho $100$.\n\n**Bước 3.** Nhân $90$ với số thập phân vừa viết được để tìm kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$15\\%$ của $90$ là: $90\\times 15\\%=90\\times 0,15=13,5$\n\nĐáp số: $13,5$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 7",
+  "dap_an": "$9375\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật bằng diện tích đáy nhân chiều cao, nhưng các số đo phải cùng một đơn vị. Đề cho cạnh đáy bằng xăng-ti-mét còn chiều cao bằng đề-xi-mét nên phải đổi trước khi tính.\n\n**Bước 1.** Nhận ra các số đo đang dùng hai đơn vị khác nhau là xăng-ti-mét và đề-xi-mét.\n\n**Bước 2.** Đổi chiều cao từ đề-xi-mét ra xăng-ti-mét, nhớ rằng $1$ dm bằng $10$ cm.\n\n**Bước 3.** Tính diện tích đáy hình vuông bằng cạnh nhân với cạnh.\n\n**Bước 4.** Nhân diện tích đáy với chiều cao để được thể tích.\n\n**Chú ý:** Không nhân thẳng $25$ với $25$ rồi với $1,5$, vì hai số đo này khác đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $1,5$ dm $=15$ cm\n\nDiện tích đáy hình hộp là: $25\\times 25=625$ ($\\text{cm}^2$)\n\nThể tích hình hộp chữ nhật là: $625\\times 15=9375$ ($\\text{cm}^3$)\n\nĐáp số: $9375\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 8",
+  "dap_an": "$\\dfrac{7}{8}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lớn hơn $1$ thì lớn hơn mọi số bé hơn $1$; nên chỉ cần tìm các số bé hơn $1$ rồi so sánh với nhau, không cần so sánh với các số lớn hơn $1$.\n\n**Bước 1.** So từng số với $1$: số thập phân $1,001$ và phân số có tử số lớn hơn mẫu số đều lớn hơn $1$, còn phân số có tử số bé hơn mẫu số thì bé hơn $1$.\n\n**Bước 2.** Loại các số lớn hơn $1$ khỏi việc chọn số bé nhất, chỉ còn lại hai phân số bé hơn $1$.\n\n**Bước 3.** Quy đồng mẫu số hai phân số còn lại rồi so sánh tử số.\n\n**Bước 4.** Phân số nào có tử số bé hơn thì bé hơn, từ đó chọn ra số bé nhất trong bốn số.\n\n**Chú ý:** $\\dfrac{2020}{2019}$ có tử số lớn hơn mẫu số nên lớn hơn $1$, đừng nhầm nó là số bé vì tử và mẫu gần bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có $1,001>1$ và $\\dfrac{2020}{2019}>1$ (tử số lớn hơn mẫu số).\n\nTa có $\\dfrac{7}{8}<1$ và $\\dfrac{8}{9}<1$ (tử số bé hơn mẫu số).\n\nQuy đồng: $\\dfrac{7}{8}=\\dfrac{7\\times 9}{8\\times 9}=\\dfrac{63}{72}$ và $\\dfrac{8}{9}=\\dfrac{8\\times 8}{9\\times 8}=\\dfrac{64}{72}$\n\nVì $\\dfrac{63}{72}<\\dfrac{64}{72}$ nên $\\dfrac{7}{8}<\\dfrac{8}{9}$.\n\nVậy số bé nhất là $\\dfrac{7}{8}$."
+ },
+ {
+  "ma_nguon": "LTV 2019 · 9",
+  "dap_an": "$9$ giờ $30$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Người thứ nhất đi trước $30$ phút nên lúc người thứ hai xuất phát, khoảng cách giữa hai người đã ngắn bớt. Từ lúc đó hai người đi ngược chiều, mỗi giờ lại gần nhau thêm đúng tổng hai vận tốc.\n\n**Bước 1.** Đổi $30$ phút ra giờ rồi tính quãng đường người thứ nhất đã đi trước khi người thứ hai xuất phát.\n\n**Bước 2.** Tính khoảng cách giữa hai người lúc người thứ hai xuất phát bằng cách lấy cả quãng đường $AB$ trừ quãng đường người thứ nhất đã đi.\n\n**Bước 3.** Hai người đi ngược chiều nên mỗi giờ khoảng cách giảm đi đúng tổng hai vận tốc; chia khoảng cách cho tổng vận tốc để tìm thời gian đi đến lúc gặp nhau.\n\n**Bước 4.** Cộng thời gian đó với giờ người thứ hai xuất phát để ra giờ hai người gặp nhau.\n\n**Chú ý:** Thời gian gặp nhau tính từ lúc người thứ hai xuất phát ($7$ giờ $30$ phút), không tính từ $7$ giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Quãng đường AB dài 160 km; người thứ nhất đi từ A với vận tốc 40 km/giờ, người thứ hai đi từ B với vận tốc 30 km/giờ, hai người gặp nhau tại C)\n\nĐổi: $30$ phút $=0,5$ giờ\n\nQuãng đường người thứ nhất đi trong $30$ phút đầu là: $40\\times 0,5=20$ (km)\n\nLúc $7$ giờ $30$ phút, khoảng cách giữa hai người là: $160-20=140$ (km)\n\nMỗi giờ hai người lại gần nhau thêm: $40+30=70$ (km)\n\nThời gian từ lúc $7$ giờ $30$ phút đến khi hai người gặp nhau là: $140:70=2$ (giờ)\n\nHai người gặp nhau lúc: $7$ giờ $30$ phút $+\\ 2$ giờ $=9$ giờ $30$ phút\n\nĐáp số: $9$ giờ $30$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Từ 7 giờ đến lúc gặp nhau",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 20
+    },
+    {
+     "ten": "C",
+     "x": 100,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 160
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 100,
+     "nhan": "40 km/giờ"
+    },
+    {
+     "tu": 160,
+     "den": 100,
+     "nhan": "30 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 160,
+     "nhan": "160 km"
+    },
+    {
+     "tu": 0,
+     "den": 20,
+     "nhan": "20 km"
+    },
+    {
+     "tu": 20,
+     "den": 160,
+     "nhan": "140 km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2019 · 10",
+  "dap_an": "$\\dfrac{1}{2018}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng của tử số và mẫu số không đổi, nên tử số càng bé thì mẫu số càng lớn; tử số bé đi và mẫu số lớn lên thì phân số càng bé. Vì vậy phân số nhỏ nhất có tử số bé nhất có thể.\n\n**Bước 1.** Nhận xét: tổng không đổi nên khi tử số giảm thì mẫu số tăng, và phân số có tử số bé hơn, mẫu số lớn hơn thì bé hơn.\n\n**Bước 2.** Tìm tử số bé nhất có thể: tử số phải là số tự nhiên khác $0$ nên tử số bé nhất là số tự nhiên nhỏ nhất khác $0$.\n\n**Bước 3.** Tìm mẫu số bằng cách lấy tổng đã cho trừ đi tử số vừa tìm, rồi viết phân số.\n\n**Chú ý:** Nếu tử số bằng $0$ thì giá trị bằng $0$, không còn là phân số đang xét; bài hiểu tử số là số tự nhiên khác $0$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng tử số và mẫu số không đổi nên tử số càng bé, mẫu số càng lớn thì phân số càng bé.\n\nTử số bé nhất có thể là $1$.\n\nKhi đó mẫu số là: $2019-1=2018$\n\nVậy phân số nhỏ nhất cần tìm là $\\dfrac{1}{2018}$.\n\nĐáp số: $\\dfrac{1}{2018}$",
+  "ghi_chu_nghi": "Hiểu phân số có tử số là số tự nhiên khác 0 (tử số 0 thì giá trị bằng 0, không còn là phân số đang xét). Nếu đề cho phép tử số 0 thì đáp số là 0/2019 = 0 — mong người duyệt xác nhận."
+ },
+ {
+  "ma_nguon": "LTV 2019 · 11",
+  "dap_an": "$500000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên giá đã giảm ở lần thứ nhất, không tính trên giá ban đầu. Vì vậy phải đi ngược từng bước, mỗi lần coi giá trước khi giảm là $100\\%$.\n\n**Bước 1.** Sau mỗi lần giảm $10\\%$, giá còn lại bằng $100\\%$ trừ $10\\%$ của giá trước lần giảm đó; tính số phần trăm này.\n\n**Bước 2.** Giá $405000$ đồng là giá sau lần giảm thứ hai, bằng số phần trăm vừa tìm của giá bán ngày khai trương; lấy $405000$ chia cho số phần trăm đó để tìm giá bán ngày khai trương.\n\n**Bước 3.** Giá bán ngày khai trương là giá sau lần giảm thứ nhất, nên làm tương tự một lần nữa để tìm giá lúc chưa giảm.\n\n**Chú ý:** Giảm $10\\%$ hai lần không phải giảm $20\\%$, vì lần giảm thứ hai tính trên giá đã giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau mỗi lần giảm $10\\%$, giá còn lại bằng: $100\\%-10\\%=90\\%$ (giá trước lần giảm đó)\n\nGiá bán ngày khai trương là: $405000:90\\%=450000$ (đồng)\n\nGiá bộ Lego trước khi giảm là: $450000:90\\%=500000$ (đồng)\n\nĐáp số: $500000$ đồng"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 12",
+  "dap_an": "$1234$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi hình tròn bằng đường kính nhân $3,14$ nên tổng chu vi các hình tròn bằng tổng các đường kính nhân $3,14$. Theo hình vẽ, ba đường kính của ba hình tròn còn lại nối tiếp nhau vừa khít một đường kính của hình tròn lớn nhất.\n\n**Bước 1.** Nhìn hình: ba hình tròn còn lại có tâm nằm trên cùng một đường kính của hình tròn lớn nhất, hai hình nhỏ tiếp xúc với hình ở giữa và đều tiếp xúc với hình tròn lớn.\n\n**Bước 2.** Từ đó thấy ba đường kính nối tiếp nhau trên một đường thẳng nên tổng ba đường kính bằng đường kính hình tròn lớn nhất.\n\n**Bước 3.** Viết chu vi mỗi hình tròn thành đường kính nhân $3,14$ rồi gộp lại, đưa về chu vi của hình tròn lớn nhất.\n\n**Chú ý:** Đề không cho các số đo của từng hình tròn nên không thể tính riêng từng chu vi; phải gộp lại như trên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChu vi hình tròn bằng đường kính nhân $3,14$.\n\nTheo hình vẽ, ba đường kính của ba hình tròn còn lại nối tiếp nhau nên tổng của chúng bằng đường kính hình tròn lớn nhất.\n\nTổng chu vi ba hình tròn còn lại bằng tổng ba đường kính nhân $3,14$, tức là bằng đường kính hình tròn lớn nhất nhân $3,14$, tức là bằng chu vi hình tròn lớn nhất.\n\nVậy tổng chu vi ba hình tròn còn lại là $1234$ cm.\n\nĐáp số: $1234$ cm",
+  "ghi_chu_nghi": "Dữ kiện chính nằm trên hình: ba hình tròn còn lại có đường kính nối tiếp nhau trên một đường kính của hình tròn lớn nhất (hình nhỏ – hình giữa – hình nhỏ, tiếp xúc nhau và tiếp xúc hình lớn). Đã kiểm trên ảnh: ba đường kính cộng lại vừa bằng đường kính hình lớn."
+ },
+ {
+  "ma_nguon": "LTV 2019 · 13",
+  "dap_an": "$204828$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng hơn số hạng đứng ngay trước nó đúng $10$ đơn vị nên đây là dãy số cách đều. Tổng dãy cách đều bằng trung bình cộng của số đầu và số cuối nhân với số số hạng.\n\n**Bước 1.** Tìm khoảng cách giữa hai số hạng liên tiếp của dãy.\n\n**Bước 2.** Tính số số hạng của dãy: lấy số cuối trừ số đầu, chia cho khoảng cách rồi cộng thêm $1$.\n\n**Bước 3.** Tính tổng: lấy tổng của số đầu và số cuối nhân với số số hạng rồi chia cho $2$.\n\n**Chú ý:** Khi đếm số số hạng nhớ cộng thêm $1$, vì phép trừ số cuối cho số đầu chưa tính số hạng đầu tiên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số cách đều, khoảng cách giữa hai số liên tiếp là: $19-9=10$\n\nSố số hạng của dãy là: $(2019-9):10+1=202$ (số)\n\nTổng của dãy số là: $(2019+9)\\times 202:2=2028\\times 101=204828$\n\nĐáp số: $204828$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 14",
+  "dap_an": "Năm $2032$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của mẹ và con không đổi theo thời gian. Biết hiệu số tuổi và tỉ số tuổi ở thời điểm cần tìm thì đây là bài toán hiệu – tỉ.\n\n**Bước 1.** Con sinh năm $2019$ khi mẹ $26$ tuổi nên mẹ hơn con $26$ tuổi, và hiệu này luôn giữ nguyên.\n\n**Bước 2.** Khi mẹ gấp $3$ lần tuổi con thì vẽ sơ đồ: tuổi con $1$ phần, tuổi mẹ $3$ phần; tìm hiệu số phần bằng nhau.\n\n**Bước 3.** Hiệu số phần ứng với $26$ tuổi nên chia $26$ cho hiệu số phần để tìm tuổi con lúc đó.\n\n**Bước 4.** Con sinh năm $2019$ nên năm cần tìm bằng $2019$ cộng với số tuổi của con lúc đó.\n\n**Chú ý:** Đề hỏi năm, không hỏi tuổi; tìm được tuổi con rồi còn phải cộng với năm sinh.\n\nThử lại: năm đó con và mẹ bao nhiêu tuổi, tuổi mẹ có gấp $3$ lần tuổi con không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCon sinh năm $2019$ khi mẹ $26$ tuổi nên mẹ luôn hơn con $26$ tuổi.\n\nTa có sơ đồ:\n\n(Tuổi con 1 phần; tuổi mẹ 3 phần; mẹ hơn con 26 tuổi)\n\nHiệu số phần bằng nhau là: $3-1=2$ (phần)\n\nKhi đó tuổi con là: $26:2=13$ (tuổi)\n\nNăm đó là: $2019+13=2032$\n\nĐáp số: năm $2032$",
+  "so_do_mo_ta": {
+   "tieu_de": "Khi tuổi mẹ gấp 3 lần tuổi con",
+   "gia_tri_phan": 13,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 3
+    }
+   ],
+   "hieu": "26 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2019 · 15",
+  "dap_an": "$250$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chữ số dùng để đánh trang phụ thuộc vào số chữ số của số trang, nên chia các trang thành ba nhóm: trang có một chữ số, trang có hai chữ số, trang có ba chữ số. Dùng hết các nhóm trước rồi số chữ số còn lại thuộc nhóm sau.\n\n**Bước 1.** Tính số chữ số dùng để đánh các trang có một chữ số, từ trang $1$ đến trang $9$.\n\n**Bước 2.** Tính số chữ số dùng để đánh các trang có hai chữ số, từ trang $10$ đến trang $99$, rồi cộng với số chữ số ở bước trước.\n\n**Bước 3.** Lấy tổng số chữ số đề cho trừ đi số chữ số đã dùng ở hai nhóm đầu để biết còn lại bao nhiêu chữ số dùng cho các trang có ba chữ số.\n\n**Bước 4.** Mỗi trang có ba chữ số dùng $3$ chữ số nên chia số chữ số còn lại cho $3$ để tìm số trang đó, rồi cộng với $99$ trang đã đánh.\n\n**Chú ý:** Số chữ số còn lại phải chia hết cho $3$ thì sách mới kết thúc đúng ở một trang trọn vẹn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ trang $1$ đến trang $9$ có $9$ trang, mỗi trang dùng $1$ chữ số: $9\\times 1=9$ (chữ số)\n\nTừ trang $10$ đến trang $99$ có số trang là: $99-10+1=90$ (trang)\n\nSố chữ số dùng để đánh các trang từ $10$ đến $99$ là: $90\\times 2=180$ (chữ số)\n\nSố chữ số dùng để đánh các trang từ $1$ đến $99$ là: $9+180=189$ (chữ số)\n\nSố chữ số dùng để đánh các trang có ba chữ số là: $642-189=453$ (chữ số)\n\nSố trang có ba chữ số là: $453:3=151$ (trang)\n\nCuốn sách có số trang là: $99+151=250$ (trang)\n\nĐáp số: $250$ trang"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 16",
+  "dap_an": "$944$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $3$ dư $2$, chia $5$ dư $4$, chia $7$ dư $6$ đều có số dư ít hơn số chia đúng $1$ đơn vị. Nên nếu thêm $1$ vào số cần tìm thì số mới chia hết cho cả $3$, $5$ và $7$.\n\n**Bước 1.** Nhận ra ở cả ba phép chia, số dư đều kém số chia $1$ đơn vị, nên số cần tìm cộng thêm $1$ sẽ chia hết cho $3$, $5$ và $7$.\n\n**Bước 2.** Số chia hết cho cả ba số $3$, $5$, $7$ (ba số này không có thừa số chung) thì chia hết cho tích của chúng; tính tích đó.\n\n**Bước 3.** Số cần tìm lớn nhất có ba chữ số nên số cộng thêm $1$ không vượt quá $1000$; chia $1000$ cho tích vừa tính để tìm số lớn nhất không vượt quá $1000$ mà chia hết cho tích đó.\n\n**Bước 4.** Trừ đi $1$ để được số cần tìm, rồi kiểm tra số đó có ba chữ số.\n\nThử lại: chia số tìm được lần lượt cho $3$, $5$, $7$ xem số dư có đúng là $2$, $4$, $6$ không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cần tìm thêm $1$ đơn vị thì chia hết cho cả $3$, $5$ và $7$.\n\nSố chia hết cho cả $3$, $5$ và $7$ thì chia hết cho: $3\\times 5\\times 7=105$\n\nSố cần tìm lớn nhất có ba chữ số nên số đó cộng $1$ không vượt quá $1000$.\n\nTa có $1000:105=9$ (dư $55$) nên số lớn nhất không vượt quá $1000$ mà chia hết cho $105$ là: $105\\times 9=945$\n\nSố cần tìm là: $945-1=944$\n\nThử lại: $944:3=314$ (dư $2$); $944:5=188$ (dư $4$); $944:7=134$ (dư $6$).\n\nĐáp số: $944$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 17",
+  "dap_an": "$43$ cách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $9=3\\times 3$ nên tích hai số chia hết cho $9$ khi có một số chia hết cho $9$, hoặc cả hai số cùng chia hết cho $3$. Chia các số từ $1$ đến $20$ thành nhóm rồi đếm từng trường hợp, không đếm trùng.\n\n**Bước 1.** Chia $20$ số thành ba nhóm: chia hết cho $9$; chia hết cho $3$ nhưng không chia hết cho $9$; không chia hết cho $3$; đếm xem mỗi nhóm có bao nhiêu số.\n\n**Bước 2.** Đếm các cặp có ít nhất một số chia hết cho $9$: đếm các cặp có số $9$ trước, rồi các cặp có số $18$ mà không có số $9$ để không bị đếm trùng.\n\n**Bước 3.** Đếm các cặp mà cả hai số cùng thuộc nhóm chia hết cho $3$ nhưng không chia hết cho $9$, bằng cách liệt kê hết các cặp.\n\n**Bước 4.** Kiểm tra các trường hợp còn lại không làm tích chia hết cho $9$, rồi cộng số cách của hai trường hợp đã đếm.\n\n**Chú ý:** Hai số chọn ra đổi chỗ cho nhau vẫn là một cách chọn, và cặp $9$ với $18$ chỉ đếm một lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong các số từ $1$ đến $20$:\n\nCác số chia hết cho $9$ là $9$; $18$ (có $2$ số).\n\nCác số chia hết cho $3$ nhưng không chia hết cho $9$ là $3$; $6$; $12$; $15$ (có $4$ số).\n\nCác số không chia hết cho $3$ có: $20-2-4=14$ (số)\n\nTrường hợp 1: có ít nhất một số chia hết cho $9$.\n\nChọn số $9$ cùng một trong $19$ số còn lại thì có $19$ cách.\n\nChọn số $18$ mà không chọn số $9$, cùng một trong $18$ số còn lại (trừ $9$ và $18$) thì có $18$ cách.\n\nSố cách ở trường hợp 1 là: $19+18=37$ (cách)\n\nTrường hợp 2: không có số chia hết cho $9$, nhưng cả hai số cùng chia hết cho $3$ (tích có hai thừa số $3$ nên chia hết cho $9$). Chọn hai số trong $3$; $6$; $12$; $15$ có các cặp $(3;6)$; $(3;12)$; $(3;15)$; $(6;12)$; $(6;15)$; $(12;15)$, tức là $6$ cách.\n\nCác trường hợp còn lại (một số chia hết cho $3$ mà không chia hết cho $9$ và một số không chia hết cho $3$, hoặc cả hai số không chia hết cho $3$) cho tích chỉ có nhiều nhất một thừa số $3$ nên không chia hết cho $9$.\n\nTất cả có số cách chọn là: $37+6=43$ (cách)\n\nĐáp số: $43$ cách",
+  "ghi_chu_nghi": "Hiểu \"cách chọn hai số khác nhau\" là chọn một cặp, không phân biệt thứ tự (chọn 9 rồi 18 và chọn 18 rồi 9 là một cách). Nếu tính có thứ tự thì gấp đôi: 86."
+ },
+ {
+  "ma_nguon": "LTV 2019 · 18",
+  "dap_an": "$312\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các hình lập phương nhỏ chỉ được sơn một mặt nằm ở giữa mặt lớn, không nằm ở hàng ngoài cùng. Bỏ chúng đi thì mỗi mặt lớn có một lỗ lõm sâu $1$ cm, nên diện tích toàn phần không giảm mà còn tăng thêm phần lõm.\n\n**Bước 1.** Tìm số hình lập phương nhỏ chỉ sơn một mặt trên mỗi mặt lớn: bỏ hai hàng ngoài cùng ở mỗi cạnh của mặt, phần giữa còn lại là một hình vuông nhỏ hơn.\n\n**Bước 2.** Bỏ các hình này đi thì mỗi mặt lớn có một lỗ lõm sâu $1$ cm; tính phần mặt ngoài bị mất đi.\n\n**Bước 3.** Tính phần mới lộ ra bên trong lỗ gồm đáy lỗ và bốn mặt bên của lỗ, rồi tìm xem diện tích tăng lên hay giảm đi bao nhiêu ở mỗi mặt lớn.\n\n**Bước 4.** Cộng phần thay đổi của $6$ mặt vào diện tích toàn phần của hình lập phương lúc đầu.\n\n**Chú ý:** Các lỗ nằm ở giữa mỗi mặt, cách nhau bởi các hàng hình lập phương ngoài cùng, nên không có lỗ nào chạm vào lỗ khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích toàn phần của hình lập phương lớn lúc đầu là: $6\\times 6\\times 6=216$ ($\\text{cm}^2$)\n\nMỗi cạnh của một mặt lớn có $6$ hình lập phương nhỏ; trừ hai hình ở hai hàng ngoài cùng, mỗi cạnh còn: $6-2=4$ (hình)\n\nSố hình lập phương nhỏ chỉ sơn một mặt trên mỗi mặt lớn là: $4\\times 4=16$ (hình)\n\nBỏ $16$ hình này đi thì mỗi mặt lớn có một lỗ lõm hình hộp đáy $4$ cm $\\times$ $4$ cm, sâu $1$ cm.\n\nDiện tích mặt ngoài mất đi ở mỗi lỗ là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nDiện tích đáy lỗ mới lộ ra là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nDiện tích bốn mặt bên của lỗ là: $4\\times 4\\times 1=16$ ($\\text{cm}^2$)\n\nMỗi mặt lớn có diện tích tăng thêm là: $16+16-16=16$ ($\\text{cm}^2$)\n\nSáu mặt lớn tăng thêm là: $16\\times 6=96$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình còn lại là: $216+96=312$ ($\\text{cm}^2$)\n\nĐáp số: $312\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Hiểu \"diện tích toàn phần của hình còn lại\" là diện tích mọi mặt lộ ra của khối sau khi bỏ các hình lập phương nhỏ chỉ sơn một mặt, kể cả các mặt lõm mới lộ ra bên trong lỗ (96 hình nhỏ bị bỏ; còn 120 hình; đã kiểm bằng đếm trên khối 6x6x6)."
+ },
+ {
+  "ma_nguon": "LTV 2019 · 19",
+  "dap_an": "$24$ chữ số $0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi chữ số $0$ ở cuối của một số ứng với một thừa số $10=2\\times 5$. $B$ có càng nhiều chữ số $0$ thì $A$ càng phải chứa nhiều cặp thừa số $2$ và $5$, nên cần đếm xem $A$ có nhiều nhất bao nhiêu cặp như vậy.\n\n**Bước 1.** Nhận ra $B$ có nhiều chữ số $0$ nhất khi $B$ là tích của nhiều thừa số $10$ nhất mà $A$ vẫn chia hết cho $B$, mỗi thừa số $10$ cần một thừa số $2$ và một thừa số $5$.\n\n**Bước 2.** Đếm số thừa số $5$ trong tích $1\\times 2\\times 3\\times\\ldots\\times 100$: trước hết đếm các số chia hết cho $5$, mỗi số có ít nhất một thừa số $5$.\n\n**Bước 3.** Đếm thêm các số chia hết cho $25$, vì mỗi số này còn có thêm một thừa số $5$ nữa, rồi cộng hai kết quả.\n\n**Bước 4.** So với số thừa số $2$: thừa số $2$ nhiều hơn thừa số $5$, nên số cặp $2$ và $5$ bằng số thừa số $5$.\n\n**Chú ý:** Các số $25$, $50$, $75$, $100$ phải đếm hai lần thừa số $5$ (một lần ở số chia hết cho $5$, một lần ở số chia hết cho $25$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi chữ số $0$ của $B$ ứng với một thừa số $10=2\\times 5$.\n\nTừ $1$ đến $100$ có số chia hết cho $5$ là: $100:5=20$ (số), mỗi số có ít nhất một thừa số $5$.\n\nTừ $1$ đến $100$ có số chia hết cho $25$ là: $100:25=4$ (số); đó là $25$; $50$; $75$; $100$, mỗi số có thêm một thừa số $5$ nữa.\n\nSố thừa số $5$ trong tích $A$ là: $20+4=24$ (thừa số)\n\nSố thừa số $2$ trong tích $A$ nhiều hơn $24$ (riêng $50$ số chẵn đã có ít nhất $50$ thừa số $2$), nên $A$ có đúng $24$ cặp thừa số $2$ và $5$.\n\nVậy $B$ có nhiều nhất $24$ chữ số $0$.\n\nĐáp số: $24$ chữ số $0$"
+ },
+ {
+  "ma_nguon": "LTV 2019 · 20",
+  "dap_an": "$70$ hình vuông",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm hình vuông theo từng kích thước (cạnh $1$ ô, $2$ ô, $3$ ô…), với mỗi kích thước đếm xem hình vuông có thể đặt ở bao nhiêu vị trí rồi cộng lại, như vậy không bỏ sót và không đếm trùng.\n\n**Bước 1.** Đếm số cột và số hàng ô vuông nhỏ của hình vẽ để biết kích thước lớn nhất của hình vuông có thể có.\n\n**Bước 2.** Với hình vuông cạnh $1$ ô thì số hình vuông bằng số ô nhỏ, tức là số cột nhân số hàng.\n\n**Bước 3.** Với hình vuông cạnh lớn hơn, mỗi lần tăng cạnh thêm $1$ ô thì số vị trí theo chiều ngang và chiều dọc đều giảm đi $1$; tính tiếp cho từng cạnh cho đến cạnh lớn nhất.\n\n**Bước 4.** Cộng số hình vuông của mọi kích thước.\n\n**Chú ý:** Hình có $5$ hàng nên không có hình vuông cạnh $6$ ô dù có $6$ cột.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hình có $6$ cột và $5$ hàng ô vuông nhỏ nên hình vuông lớn nhất có cạnh $5$ ô.\n\nSố hình vuông cạnh $1$ ô là: $6\\times 5=30$ (hình)\n\nSố hình vuông cạnh $2$ ô là: $5\\times 4=20$ (hình)\n\nSố hình vuông cạnh $3$ ô là: $4\\times 3=12$ (hình)\n\nSố hình vuông cạnh $4$ ô là: $3\\times 2=6$ (hình)\n\nSố hình vuông cạnh $5$ ô là: $2\\times 1=2$ (hình)\n\nSố hình vuông trong hình vẽ là: $30+20+12+6+2=70$ (hình)\n\nĐáp số: $70$ hình vuông",
+  "ghi_chu_nghi": "Số hàng/cột đọc từ ảnh: lưới 6 cột x 5 hàng ô vuông nhỏ bằng nhau (đã đếm các vạch kẻ trên ảnh: 7 vạch dọc, 6 vạch ngang)."
+ }
+]

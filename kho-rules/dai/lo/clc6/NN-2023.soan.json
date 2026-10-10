@@ -1,0 +1,133 @@
+[
+ {
+  "ma_nguon": "NN 2023 · 1",
+  "dap_an": "$51$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $18$ thì vừa chia hết cho $2$ vừa chia hết cho $9$. Chữ số tận cùng $b$ bị hai điều kiện \"chia $5$ dư $1$\" và \"chẵn\" khống chế, còn chữ số $a$ tìm từ dấu hiệu chia hết cho $9$.\n\n**Bước 1.** Dùng điều kiện chia $5$ dư $1$ để liệt kê các giá trị có thể có của chữ số tận cùng $b$; chỉ có hai khả năng.\n\n**Bước 2.** Số chia hết cho $18$ thì chia hết cho $2$ nên chữ số tận cùng phải là chữ số chẵn; dùng điều này để loại bớt một khả năng của $b$.\n\n**Bước 3.** Số chia hết cho $18$ cũng chia hết cho $9$ nên tổng các chữ số của nó chia hết cho $9$; viết tổng ba chữ số đã biết cộng với $a$ rồi xét xem $a$ có thể bằng mấy.\n\n**Bước 4.** Nhớ $a$ là chữ số hàng nghìn nên $a$ khác $0$; từ đó chọn đúng $a$, rồi thay $a$ và $b$ vào biểu thức mà đề yêu cầu tính.\n\n**Chú ý:** Thử lại số tìm được: nó phải vừa chia hết cho $18$ vừa chia cho $5$ dư $1$.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{a12b}$ chia $5$ dư $1$ nên chữ số tận cùng $b$ là $1$ hoặc $6$.\n\nSố đó chia hết cho $18$ nên chia hết cho $2$, do đó chữ số tận cùng là chữ số chẵn. Vậy $b=6$.\n\nSố đó chia hết cho $18$ nên cũng chia hết cho $9$, do đó tổng các chữ số của nó chia hết cho $9$: $a+1+2+6=a+9$.\n\nChữ số hàng nghìn $a$ khác $0$ nên $a+9$ lớn hơn $9$ và không lớn hơn $18$. Trong khoảng này chỉ có $18$ chia hết cho $9$ nên $a=18-9=9$.\n\nSố cần tìm là $9126$. Thử lại: $9126:18=507$ và $9126:5=1825$ (dư $1$).\n\nGiá trị của biểu thức là: $a\\times 3+b\\times 4=9\\times 3+6\\times 4=27+24=51$"
+ },
+ {
+  "ma_nguon": "NN 2023 · 2",
+  "dap_an": "$40$ hình",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chiều dài gấp $2$ lần chiều rộng và cũng gấp $2$ lần chiều cao nên chiều rộng bằng chiều cao, hình hộp gồm $2$ hình lập phương bằng nhau ghép lại. Hình nhỏ được sơn đúng $2$ mặt là hình nằm trên cạnh của hình hộp nhưng không nằm ở đỉnh.\n\n**Bước 1.** Chia hình hộp thành $2$ hình lập phương lớn bằng nhau rồi tìm xem mỗi hình lập phương lớn gồm bao nhiêu hình lập phương nhỏ.\n\n**Bước 2.** Tìm số hình nhỏ xếp trên một cạnh của hình lập phương lớn (số nhân với chính nó $3$ lần bằng số hình nhỏ trong mỗi hình lập phương lớn), từ đó biết ba kích thước của hình hộp tính bằng số hình nhỏ.\n\n**Bước 3.** Nhận ra hình nhỏ ở đỉnh được sơn $3$ mặt, hình nhỏ nằm trên cạnh (không ở đỉnh) được sơn đúng $2$ mặt, hình nhỏ ở giữa mặt chỉ được sơn $1$ mặt.\n\n**Bước 4.** Đếm theo từng nhóm cạnh: mỗi cạnh bỏ đi $2$ hình nhỏ ở hai đầu, rồi nhân với số cạnh có cùng độ dài.\n\n**Chú ý:** Hình hộp chữ nhật có $12$ cạnh, gồm $4$ cạnh dài, $4$ cạnh rộng và $4$ cạnh cao; đừng bỏ sót nhóm cạnh nào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài gấp $2$ lần chiều rộng và gấp $2$ lần chiều cao nên chiều rộng bằng chiều cao. Hình hộp gồm $2$ hình lập phương lớn bằng nhau, mỗi hình có cạnh bằng chiều rộng.\n\nSố hình lập phương nhỏ trong mỗi hình lập phương lớn là: $128:2=64$ (hình)\n\nVì $4\\times 4\\times 4=64$ nên cạnh mỗi hình lập phương lớn gồm $4$ hình nhỏ.\n\nVậy hình hộp có chiều rộng $4$ hình nhỏ, chiều cao $4$ hình nhỏ và chiều dài $4\\times 2=8$ (hình nhỏ).\n\nHình nhỏ được sơn $2$ mặt là hình nằm trên cạnh của hình hộp, trừ $2$ hình ở hai đỉnh đầu mỗi cạnh.\n\nMỗi cạnh dài có số hình sơn $2$ mặt là: $8-2=6$ (hình)\n\nMỗi cạnh rộng hoặc cạnh cao có số hình sơn $2$ mặt là: $4-2=2$ (hình)\n\nHình hộp có $4$ cạnh dài, $4$ cạnh rộng và $4$ cạnh cao nên số hình được sơn $2$ mặt là: $6\\times 4+2\\times 4+2\\times 4=40$ (hình)\n\nĐáp số: $40$ hình"
+ },
+ {
+  "ma_nguon": "NN 2023 · 3",
+  "dap_an": "$15$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi cho thêm nước vào dung dịch thì lượng muối không thay đổi, chỉ có khối lượng cả dung dịch thay đổi. Vì vậy tính lượng muối trước, rồi dùng lượng muối đó để tìm khối lượng dung dịch mới khi muối chiếm $5\\%$.\n\n**Bước 1.** Tính khối lượng muối có trong $25$ kg dung dịch lúc đầu bằng cách lấy $25$ nhân với $8\\%$.\n\n**Bước 2.** Lượng muối này không đổi và chiếm $5\\%$ khối lượng dung dịch mới, nên lấy lượng muối chia cho $5\\%$ để tìm khối lượng dung dịch mới.\n\n**Bước 3.** Phần khối lượng dung dịch tăng thêm chính là nước đã cho thêm vào, nên lấy khối lượng dung dịch mới trừ khối lượng dung dịch ban đầu.\n\n**Chú ý:** Chỉ cho thêm nước chứ không cho thêm muối, nên không được tính lại lượng muối theo khối lượng mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng muối trong $25$ kg dung dịch là: $25\\times 8\\%=2$ (kg)\n\nKhi cho thêm nước thì lượng muối vẫn là $2$ kg. Lượng muối này chiếm $5\\%$ dung dịch mới.\n\nKhối lượng dung dịch mới là: $2:5\\%=40$ (kg)\n\nKhối lượng nước cần cho thêm là: $40-25=15$ (kg)\n\nĐáp số: $15$ kg",
+  "ghi_chu_nghi": "Đề viết \"cho thêm vào dung dịch 25 kg\": hiểu là dung dịch ban đầu nặng 25 kg, cần cho thêm x kg nước (đáp số 15 kg). Cách hiểu khác (cho thêm đúng 25 kg nước) không hợp với câu hỏi \"bao nhiêu kg nước\"."
+ },
+ {
+  "ma_nguon": "NN 2023 · 4",
+  "dap_an": "$\\dfrac{3}{8}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** B chỉ cho đi kẹo (không cho A) nên số kẹo của A không đổi. Với đại lượng không đổi ấy, viết số kẹo của B ở hai lúc theo phân số của số kẹo A rồi xem B giảm đi bao nhiêu phần.\n\n**Bước 1.** Từ tỉ số số kẹo của A và B lúc đầu, đảo lại để viết số kẹo của B lúc đầu bằng mấy phần số kẹo của A.\n\n**Bước 2.** Sau khi B cho đi $6$ cái thì số kẹo của B gấp đôi số kẹo của A; so sánh hai lúc để biết $6$ cái kẹo ứng với mấy phần số kẹo của A.\n\n**Bước 3.** Lấy $6$ chia cho phân số vừa tìm để được số kẹo của A, rồi tính số kẹo của B lúc đầu.\n\n**Bước 4.** Làm đúng theo câu hỏi: B nhận thêm $2$ cái kẹo (tính từ lúc đầu), sau đó viết tỉ số số kẹo của A và B rồi rút gọn.\n\n**Chú ý:** Tỉ số của A và B viết số kẹo của A ở trên, của B ở dưới; đừng viết ngược lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số số kẹo của A và B là $\\dfrac{2}{5}$ nên lúc đầu số kẹo của B bằng $\\dfrac{5}{2}$ số kẹo của A.\n\nSố kẹo của A không đổi. Sau khi B cho đi $6$ cái, số kẹo của B gấp đôi số kẹo của A, tức là bằng $2$ số kẹo của A.\n\nSố kẹo của B giảm đi $6$ cái, ứng với số phần số kẹo của A là: $\\dfrac{5}{2}-2=\\dfrac{1}{2}$ (số kẹo của A)\n\nSố kẹo của A là: $6:\\dfrac{1}{2}=12$ (cái)\n\nSố kẹo của B lúc đầu là: $12\\times\\dfrac{5}{2}=30$ (cái)\n\nNếu B nhận thêm $2$ cái kẹo thì số kẹo của B là: $30+2=32$ (cái)\n\nTỉ số số kẹo của A và B lúc đó là: $12:32=\\dfrac{12}{32}=\\dfrac{3}{8}$\n\nĐáp số: $\\dfrac{3}{8}$",
+  "ghi_chu_nghi": "Đề có hai tình huống \"nếu\": (1) B cho đi 6 cái thì kẹo B gấp đôi A; (2) \"nếu B nhận thêm 2 cái\". Hiểu (2) là một tình huống riêng tính từ số kẹo lúc đầu (A = 12, B = 30 -> B = 32, tỉ số 3/8). Cách hiểu khác: B đã cho đi 6 rồi mới nhận thêm 2 (B = 26) thì tỉ số là 6/13. Cũng hiểu B cho đi 6 cái cho người khác (không cho A) nên A không đổi."
+ },
+ {
+  "ma_nguon": "NN 2023 · 5",
+  "dap_an": "$36\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác tô đậm nằm lệch nên khó tính diện tích trực tiếp. Hãy bao nó trong một hình vuông lớn rồi lấy diện tích hình vuông lớn trừ đi diện tích ba tam giác vuông ở ba góc.\n\n**Bước 1.** Nhìn hình: tam giác tô đậm có một đỉnh là $C$ và hai đỉnh còn lại là đỉnh xa nhất của hai hình vuông nhỏ. Vẽ hình vuông bao ngoài có hai cạnh đi qua hai hình vuông nhỏ và hai cạnh kia là đường $BC$, $DC$, rồi tính cạnh và diện tích của nó.\n\n**Bước 2.** Hình vuông bao ngoài còn lại ba tam giác vuông ở ba góc; tìm hai cạnh góc vuông của tam giác ở góc trên bên trái bằng cách cộng các cạnh $3$ cm của hai hình vuông nhỏ.\n\n**Bước 3.** Tìm hai cạnh góc vuông của hai tam giác vuông còn lại bằng cách lấy cạnh hình vuông bao ngoài trừ đoạn đã biết.\n\n**Bước 4.** Tính diện tích từng tam giác vuông, rồi lấy diện tích hình vuông bao ngoài trừ diện tích cả ba tam giác để được diện tích tam giác tô đậm.\n\n**Chú ý:** Cạnh hình vuông bao ngoài dài hơn cạnh hình vuông $ABCD$ vì nó còn gồm thêm cạnh của một hình vuông nhỏ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, gọi $M$ là đỉnh phía trên bên phải của hình vuông nhỏ ở phía trên, $N$ là đỉnh phía dưới bên trái của hình vuông nhỏ bên trái. Phần tô đậm là tam giác $MNC$.\n\nVẽ hình vuông $EFCG$ bao tam giác $MNC$: cạnh $EF$ đi qua cạnh trên của hình vuông nhỏ phía trên, cạnh $EG$ đi qua cạnh trái của hình vuông nhỏ bên trái, $F$ nằm trên đường $BC$, $G$ nằm trên đường $DC$ (điểm $M$ nằm trên $EF$, điểm $N$ nằm trên $EG$).\n\nCạnh hình vuông $EFCG$ là: $3+6=9$ (cm)\n\nDiện tích hình vuông $EFCG$ là: $9\\times 9=81$ ($\\text{cm}^2$)\n\n$EM$ gồm cạnh hình vuông nhỏ bên trái và cạnh hình vuông nhỏ phía trên nên $EM=3+3=6$ (cm). Tương tự $EN=3+3=6$ (cm).\n\nDiện tích tam giác $EMN$ là: $6\\times 6:2=18$ ($\\text{cm}^2$)\n\nTa có $MF=9-6=3$ (cm) và $FC=9$ cm. Diện tích tam giác $MFC$ là: $3\\times 9:2=13,5$ ($\\text{cm}^2$)\n\nTa có $NG=9-6=3$ (cm) và $GC=9$ cm. Diện tích tam giác $NGC$ là: $3\\times 9:2=13,5$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $81-18-13,5-13,5=36$ ($\\text{cm}^2$)\n\nĐáp số: $36\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ không nói vị trí hai hình vuông nhỏ; đọc từ hình: hình vuông nhỏ phía trên có cạnh trái nằm trên đường AD kéo dài, đáy nằm trên AB (ở ngoài hình vuông ABCD); hình vuông nhỏ bên trái có cạnh trên nằm trên đường AB kéo dài, cạnh phải nằm trên AD. Phần tô đậm là cả tam giác có ba đỉnh: đỉnh trên phải hình vuông nhỏ phía trên, đỉnh dưới trái hình vuông nhỏ bên trái, và C (cả phần nằm trong lẫn ngoài hình vuông ABCD). Kết quả 36 cm2 đã kiểm bằng toạ độ."
+ },
+ {
+  "ma_nguon": "NN 2023 · 6",
+  "dap_an": "Xe tải: $24$ km/giờ; xe khách: $36$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ lúc hai xe cùng chạy cho đến khi gặp nhau, thời gian đi của hai xe như nhau nên quãng đường tỉ lệ thuận với vận tốc. Ở lần thứ hai, phần quãng đường xe khách đi nhiều hơn mức tỉ lệ đó chính là quãng đường xe khách đã đi trong thời gian xuất phát trước.\n\n**Bước 1.** Ở lần thứ nhất, tìm quãng đường mỗi xe đã đi tới chỗ gặp nhau; hai xe đi cùng thời gian nên suy ra tỉ số vận tốc của hai xe.\n\n**Bước 2.** Ở lần thứ hai, tìm quãng đường xe khách đã đi tới chỗ gặp nhau (tính từ $B$, không phải từ $A$).\n\n**Bước 3.** Từ lúc xe tải xuất phát, hai xe đi cùng một thời gian: dùng tỉ số vận tốc để tìm xem trong thời gian xe tải đi hết quãng đường của nó, xe khách đi được bao nhiêu.\n\n**Bước 4.** Lấy quãng đường xe khách thực sự đi trừ phần vừa tìm để biết xe khách đã đi bao nhiêu trong thời gian xuất phát trước.\n\n**Bước 5.** Đổi thời gian xuất phát trước ra giờ, chia quãng đường tìm được cho thời gian đó để có vận tốc xe khách, rồi dùng tỉ số vận tốc để tìm vận tốc xe tải.\n\n**Chú ý:** Điểm $D$ cách $A$ là $72$ km nên đó là quãng đường xe tải đi, còn quãng đường xe khách đi là phần còn lại của $AB$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Hai xe xuất phát cùng lúc: xe tải đi từ A đến C dài $96$ km, xe khách đi từ B đến C; AB dài $240$ km)\n\nQuãng đường xe khách đi đến chỗ gặp nhau lần thứ nhất là: $240-96=144$ (km)\n\nHai xe đi cùng thời gian nên quãng đường tỉ lệ thuận với vận tốc. Vận tốc xe tải bằng số phần vận tốc xe khách là: $96:144=\\dfrac{2}{3}$ (vận tốc xe khách)\n\nTa có sơ đồ:\n\n(Xe khách đi trước $1$ giờ $40$ phút: xe tải đi từ A đến D dài $72$ km, xe khách đi từ B đến D; AB dài $240$ km)\n\nQuãng đường xe khách đi đến chỗ gặp nhau lần thứ hai là: $240-72=168$ (km)\n\nĐổi: $1$ giờ $40$ phút $=\\dfrac{5}{3}$ giờ\n\nTừ lúc xe tải xuất phát đến lúc gặp nhau, hai xe đi cùng thời gian. Trong thời gian xe tải đi $72$ km thì xe khách đi được: $72:2\\times 3=108$ (km)\n\nQuãng đường xe khách đi trong $1$ giờ $40$ phút xuất phát trước là: $168-108=60$ (km)\n\nVận tốc của xe khách là: $60:\\dfrac{5}{3}=36$ (km/giờ)\n\nVận tốc của xe tải là: $36\\times\\dfrac{2}{3}=24$ (km/giờ)\n\nĐáp số: xe tải $24$ km/giờ; xe khách $36$ km/giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Hai xe xuất phát cùng lúc",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 96,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 240
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 96,
+      "nhan": "Xe tải"
+     },
+     {
+      "tu": 240,
+      "den": 96,
+      "nhan": "Xe khách"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 240,
+      "nhan": "240 km"
+     },
+     {
+      "tu": 0,
+      "den": 96,
+      "nhan": "96 km"
+     },
+     {
+      "tu": 96,
+      "den": 240,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Xe khách đi trước 1 giờ 40 phút",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "D",
+      "x": 72,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 240
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 72,
+      "nhan": "Xe tải"
+     },
+     {
+      "tu": 240,
+      "den": 72,
+      "nhan": "Xe khách"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 240,
+      "nhan": "240 km"
+     },
+     {
+      "tu": 0,
+      "den": 72,
+      "nhan": "72 km"
+     },
+     {
+      "tu": 72,
+      "den": 240,
+      "nhan": "? km"
+     }
+    ]
+   }
+  ]
+ }
+]

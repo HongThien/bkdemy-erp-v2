@@ -1,0 +1,125 @@
+[
+ {
+  "ma_nguon": "NTT-MH1 · P1.1",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $2,34\\times 34,6$ và $23,4\\times 6,54$ nhìn chưa có thừa số chung, nhưng dịch dấu phẩy ở hai thừa số của tích đầu (một thừa số gấp lên $10$ lần thì thừa số kia giảm đi $10$ lần) thì được $23,4\\times 3,46$ có thừa số $23,4$ giống tích sau; còn hai phân số cùng mẫu $67$ thì cộng tử số.\n\n**Bước 1.** Quan sát các chữ số: $2,34$ chỉ khác $23,4$ ở vị trí dấu phẩy và $34,6$ chỉ khác $3,46$ ở vị trí dấu phẩy, nên viết lại tích đầu thành tích có thừa số chung $23,4$ (một thừa số gấp $10$ lần, thừa số kia giảm $10$ lần thì tích không đổi).\n\n**Bước 2.** Nhóm hai tích có thừa số chung $23,4$ rồi đặt $23,4$ ra ngoài; trong ngoặc là tổng $3,46+6,54$, hai số này có phần thập phân cộng lại vừa tròn nên tính rất gọn.\n\n**Bước 3.** Nhóm hai phân số cùng mẫu số $67$ rồi cộng tử số với nhau; tử số cộng lại đúng bằng mẫu số nên tổng là một số tự nhiên.\n\n**Bước 4.** Cộng hai kết quả vừa nhóm được rồi đối chiếu với bốn phương án để chọn đáp án đúng.\n\n**Chú ý:** Không nhân từng tích ra rồi cộng, vì số thập phân nhiều chữ số rất dễ tính sai; hãy tìm thừa số chung trước.\n\n**Phần 2. Trình bày**\n\n$2,34\\times 34,6+\\dfrac{55}{67}+23,4\\times 6,54+\\dfrac{12}{67}$\n\n$=23,4\\times 3,46+\\dfrac{55}{67}+23,4\\times 6,54+\\dfrac{12}{67}$\n\n$=\\left(23,4\\times 3,46+23,4\\times 6,54\\right)+\\left(\\dfrac{55}{67}+\\dfrac{12}{67}\\right)$\n\n$=23,4\\times\\left(3,46+6,54\\right)+\\dfrac{67}{67}$\n\n$=23,4\\times 10+1$\n\n$=234+1$\n\n$=235$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.2",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai phân số $\\dfrac{2}{5}$ và $\\dfrac{1}{3}$ đều là phân số của TỔNG số cam, nên số cam lần ba ($36$ quả) cũng ứng với một phân số của tổng số cam; biết một số ứng với một phân số thì lấy số đó chia cho phân số ấy để tìm tổng.\n\n**Bước 1.** Cộng hai phân số chỉ số cam bán lần một và lần hai để biết hai lần đầu bán được bao nhiêu phần tổng số cam; hai phân số khác mẫu nên phải quy đồng trước khi cộng.\n\n**Bước 2.** Lấy cả số cam (là $1$) trừ đi phần đã bán hai lần đầu để biết lần ba, tức $36$ quả cuối, ứng với phân số nào của tổng số cam.\n\n**Bước 3.** Lấy $36$ quả chia cho phân số vừa tìm để được tổng số cam, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Hai phân số đề cho đều tính trên TỔNG số cam chứ không phải trên số cam còn lại sau lần bán trước, nên cộng thẳng được.\n\nThử lại: lấy tổng số cam vừa tìm nhân với từng phân số để tìm số cam hai lần đầu, cộng với $36$ quả thì phải đúng bằng tổng số cam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai lần đầu bán được số phần tổng số cam là: $\\dfrac{2}{5}+\\dfrac{1}{3}=\\dfrac{6}{15}+\\dfrac{5}{15}=\\dfrac{11}{15}$ (tổng số cam)\n\nLần ba bán $36$ quả cuối, ứng với số phần tổng số cam là: $1-\\dfrac{11}{15}=\\dfrac{4}{15}$ (tổng số cam)\n\nTổng số cam người đó mang đi bán là: $36:\\dfrac{4}{15}=135$ (quả)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.3",
+  "dap_an": "A",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0
+    },
+    {
+     "ten": "Trường",
+     "x": 3
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 3,
+     "nhan": "12 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 3,
+     "nhan": "3 km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết muộn nhất mấy giờ phải ra khỏi nhà thì tính xem đi từ nhà đến trường mất bao lâu, rồi lấy giờ phải đến trường trừ đi thời gian đó; thời gian bằng quãng đường chia cho vận tốc.\n\n**Bước 1.** Tính thời gian Nam đạp xe từ nhà đến trường bằng cách lấy quãng đường chia cho vận tốc.\n\n**Bước 2.** Đổi thời gian vừa tìm được từ giờ sang phút để dễ trừ với số giờ, số phút của đồng hồ.\n\n**Bước 3.** Lấy giờ phải đến trường trừ đi thời gian đi để tìm giờ ra khỏi nhà muộn nhất, rồi chọn phương án trùng với kết quả.\n\n**Chú ý:** \"Muộn nhất\" nghĩa là Nam đạp xe liền một mạch và vừa kịp đến trường đúng lúc $7$ giờ $20$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Nhà cách trường $3$ km; Nam đi với vận tốc $12$ km/giờ)\n\nThời gian Nam đạp xe từ nhà đến trường là: $3:12=\\dfrac{1}{4}$ (giờ)\n\nĐổi: $\\dfrac{1}{4}$ giờ $=15$ phút\n\nMuộn nhất Nam phải ra khỏi nhà lúc: $7$ giờ $20$ phút $-\\ 15$ phút $=7$ giờ $5$ phút\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.4",
+  "dap_an": "D",
+  "ghi_chu_nghi": "nhiều cách: ① mực nước lúc đầu bằng 60% chiều cao bể (đáy không đổi) rồi tính thể tích theo mực nước mới (đã dùng, bám quan hệ gốc thể tích = diện tích đáy × chiều cao nước); ② lấy 60% thể tích bể trừ thể tích nước bốc hơi 25×25×7 = 4375 (cùng kết quả 5000). CEO chốt cách.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bể có đáy không đổi nên thể tích nước tỉ lệ thuận với chiều cao mực nước: nước chiếm $60\\%$ thể tích bể thì mực nước cao bằng $60\\%$ chiều cao bể; nước bốc hơi làm mực nước hạ xuống $70$ mm, phải đổi sang cùng đơn vị cm với cạnh bể.\n\n**Bước 1.** Đổi $70$ mm sang xăng-ti-mét; vì đáy bể không đổi nên tính chiều cao mực nước lúc đầu bằng $60\\%$ chiều cao bể (chiều cao bể bằng cạnh hình lập phương).\n\n**Bước 2.** Mực nước giảm đi một đoạn đã đổi ở bước $1$, nên lấy chiều cao mực nước lúc đầu trừ đoạn đó để được chiều cao mực nước còn lại.\n\n**Bước 3.** Thể tích nước còn lại bằng diện tích đáy nhân với chiều cao mực nước còn lại; đáy bể là hình vuông cạnh $25$ cm.\n\n**Bước 4.** Đối chiếu kết quả với bốn phương án đã cho để chọn đáp án đúng.\n\n**Chú ý:** Đề hỏi lượng nước CÒN LẠI, không phải lượng nước bốc hơi hay lượng nước lúc đầu.\n\nThử lại: lấy $60\\%$ thể tích cả bể trừ đi thể tích nước đã bốc hơi (đáy bể nhân $7$ cm), phải ra cùng kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $70$ mm $=7$ cm\n\nĐáy bể không đổi nên chiều cao mực nước lúc đầu bằng $60\\%$ chiều cao bể, là: $25\\times 60\\%=15$ (cm)\n\nChiều cao mực nước sau khi bốc hơi là: $15-7=8$ (cm)\n\nThể tích nước còn lại trong bể là: $25\\times 25\\times 8=5000$ ($\\text{cm}^3$)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.5",
+  "dap_an": "$109$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của bốn số bằng tổng bốn số chia cho $4$, nên muốn biết tổng bốn số thì lấy trung bình cộng nhân với $4$; biết tổng bốn số và tổng ba số thì số còn lại là hiệu của hai tổng.\n\n**Bước 1.** Nhớ lại: trung bình cộng bằng tổng chia cho số số hạng, từ đó suy ra tổng bằng trung bình cộng nhân với số số hạng.\n\n**Bước 2.** Tính tổng của cả bốn số bằng cách lấy trung bình cộng nhân với số các số.\n\n**Bước 3.** Lấy tổng bốn số trừ đi tổng ba số đã biết để tìm số thứ tư.\n\nThử lại: cộng số thứ tư với tổng ba số đầu rồi chia cho $4$, phải ra đúng trung bình cộng $49$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của bốn số là: $49\\times 4=196$\n\nSố thứ tư là: $196-87=109$\n\nĐáp số: $109$"
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.6",
+  "dap_an": "$4$ đơn vị",
+  "so_do_mo_ta": {
+   "tieu_de": "Phân số mới",
+   "gia_tri_phan": 3,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 6
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 7
+    }
+   ],
+   "hieu": "3"
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng thêm một số vào cả tử số và mẫu số thì HIỆU giữa mẫu số và tử số không đổi; hiệu không đổi cùng tỉ số tử số : mẫu số của phân số mới cho ta bài toán hiệu – tỉ.\n\n**Bước 1.** Tính hiệu của mẫu số và tử số của phân số ban đầu; hiệu này giữ nguyên sau khi cùng thêm một số vào cả hai số.\n\n**Bước 2.** Phân số mới bằng $\\dfrac{6}{7}$ nên tử số mới là $6$ phần, mẫu số mới là $7$ phần như thế; mẫu hơn tử đúng $1$ phần, và phần hơn đó chính là hiệu ở bước $1$.\n\n**Bước 3.** Tìm giá trị của một phần rồi tính tử số mới bằng cách lấy giá trị một phần nhân với số phần của tử số mới.\n\n**Bước 4.** Lấy tử số mới trừ tử số cũ để biết đã thêm bao nhiêu đơn vị vào cả tử số và mẫu số.\n\n**Chú ý:** Phân số $\\dfrac{6}{7}$ chỉ cho biết tỉ số giữa tử số và mẫu số, nên tử số mới là $6$ phần chứ không phải là số $6$.\n\nThử lại: cộng số vừa tìm vào cả tử số và mẫu số của $\\dfrac{14}{17}$ rồi rút gọn, phải được $\\dfrac{6}{7}$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của mẫu số và tử số lúc đầu là: $17-14=3$\n\nCùng thêm một số vào cả tử số và mẫu số thì hiệu của chúng không đổi, vẫn bằng $3$.\n\nTa có sơ đồ:\n\n(Tử số mới 6 phần; mẫu số mới 7 phần; hiệu 3)\n\nHiệu số phần bằng nhau là: $7-6=1$ (phần)\n\nGiá trị một phần là: $3:1=3$\n\nTử số mới là: $3\\times 6=18$\n\nSố đơn vị cần thêm vào cả tử số và mẫu số là: $18-14=4$ (đơn vị)\n\nĐáp số: $4$ đơn vị"
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.7",
+  "dap_an": "$32,25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình tròn $=$ bán kính $\\times$ bán kính $\\times\\ 3,14$. Có hai thừa số bán kính cùng thay đổi nên diện tích mới so với lúc đầu bằng tích hai tỉ số phần trăm của bán kính (số $3,14$ không đổi); đường kính tăng bao nhiêu phần trăm thì bán kính cũng tăng bấy nhiêu phần trăm.\n\n**Bước 1.** Nhận ra đường kính gấp đôi bán kính ở mọi lúc nên đường kính tăng $15\\%$ thì bán kính cũng tăng $15\\%$; tính bán kính mới bằng bao nhiêu phần trăm bán kính lúc đầu.\n\n**Bước 2.** Viết công thức diện tích hình tròn: bán kính nhân bán kính nhân $3,14$, trong đó hai thừa số bán kính cùng tăng như nhau.\n\n**Bước 3.** Nhân hai tỉ số phần trăm của bán kính, viết thêm bước đổi ra số thập phân để tính cho dễ rồi đổi lại thành phần trăm.\n\n**Bước 4.** Lấy diện tích mới (tính theo phần trăm của diện tích cũ) trừ $100\\%$ để biết diện tích đã tăng lên bao nhiêu phần trăm.\n\n**Chú ý:** Đường kính tăng $15\\%$ không có nghĩa là diện tích cũng tăng $15\\%$ hay tăng $30\\%$, vì diện tích có hai thừa số bán kính cùng tăng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐường kính gấp đôi bán kính nên bán kính cũng tăng $15\\%$.\n\nBán kính sau khi mở rộng so với lúc đầu bằng: $100\\%+15\\%=115\\%$\n\nDiện tích $=$ bán kính $\\times$ bán kính $\\times\\ 3,14$ nên diện tích sau khi mở rộng so với lúc đầu bằng: $115\\%\\times 115\\%=1,15\\times 1,15=1,3225=132,25\\%$\n\nDiện tích bề mặt ao đã tăng lên: $132,25\\%-100\\%=32,25\\%$\n\nĐáp số: $32,25\\%$"
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P1.8",
+  "dap_an": "$50\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Theo hình: A nằm giữa B và M, giữa P và C; C nằm giữa B và N; A nằm ngoài tam giác MNP (tứ giác APMN lồi). Nhiều cách: ② vì A là trung điểm của BM và của PC nên BCMP là hình bình hành, PM song song và bằng BC, chiều cao từ N xuống PM gấp đôi chiều cao từ A xuống BC → S(MNP)=2×S(ABC)=50; cách đã dùng chỉ dựa vào \"chung đường cao\". Kết quả hai cách như nhau.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác $MNP$ không có chung đường cao với tam giác $ABC$ nên không so sánh trực tiếp được. Tứ giác $APMN$ có hai đường chéo $AM$ và $PN$: chia theo $AM$ thì được tam giác $APM$ và $AMN$, chia theo $PN$ thì được tam giác $MNP$ và $APN$. Tìm ba tam giác $APM$, $AMN$, $APN$ rồi suy ra $S_{MNP}$.\n\n**Bước 1.** Nhận ra tứ giác $APMN$ chia được theo hai cách, từ đó viết được diện tích tam giác $MNP$ bằng tổng hai tam giác $APM$ và $AMN$ trừ đi tam giác $APN$.\n\n**Bước 2.** Tìm $S_{APM}$ bằng cách đi qua tam giác $ABP$: so sánh tam giác $ABP$ với tam giác $ABC$ vì $AP=AC$, rồi so sánh tam giác $APM$ với tam giác $ABP$ vì $AM=AB$.\n\n**Bước 3.** Tìm $S_{AMN}$ bằng cách đi qua tam giác $ABN$: so sánh tam giác $ABN$ với tam giác $ABC$ vì $BN$ gấp đôi $BC$, rồi so sánh tam giác $AMN$ với tam giác $ABN$ vì $AM=AB$.\n\n**Bước 4.** Tìm $S_{APN}$ bằng cách đi qua tam giác $ACN$: so sánh tam giác $ACN$ với tam giác $ABC$ vì $CN=CB$, rồi so sánh tam giác $APN$ với tam giác $ACN$ vì $AP=AC$.\n\n**Bước 5.** Thay ba diện tích vừa tìm vào hệ thức ở bước $1$ để tính diện tích tam giác $MNP$.\n\n**Chú ý:** Mỗi lần so sánh hai tam giác phải chỉ rõ chúng có chung đường cao hạ từ đỉnh nào xuống cạnh nào, và nhớ $B$, $A$, $M$ thẳng hàng; $P$, $A$, $C$ thẳng hàng; $B$, $C$, $N$ thẳng hàng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTam giác $ABP$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $PC$, mà $AP=AC$ nên $S_{ABP}=S_{ABC}=25$ ($\\text{cm}^2$)\n\nTam giác $APM$ và tam giác $ABP$ có chung đường cao hạ từ $P$ xuống $BM$, mà $AM=AB$ nên $S_{APM}=S_{ABP}=25$ ($\\text{cm}^2$)\n\nTam giác $ABN$ và tam giác $ABC$ có chung đường cao hạ từ $A$ xuống $BN$, mà $BN=BC+CN=2\\times BC$ nên $S_{ABN}=25\\times 2=50$ ($\\text{cm}^2$)\n\nTam giác $AMN$ và tam giác $ABN$ có chung đường cao hạ từ $N$ xuống $BM$, mà $AM=AB$ nên $S_{AMN}=S_{ABN}=50$ ($\\text{cm}^2$)\n\nTam giác $ACN$ và tam giác $ABC$ có chung đường cao hạ từ $A$ xuống $BN$, mà $CN=CB$ nên $S_{ACN}=S_{ABC}=25$ ($\\text{cm}^2$)\n\nTam giác $APN$ và tam giác $ACN$ có chung đường cao hạ từ $N$ xuống $PC$, mà $AP=AC$ nên $S_{APN}=S_{ACN}=25$ ($\\text{cm}^2$)\n\nChia tứ giác $APMN$ theo đường chéo $AM$, diện tích tứ giác $APMN$ là: $S_{APM}+S_{AMN}=25+50=75$ ($\\text{cm}^2$)\n\nChia tứ giác $APMN$ theo đường chéo $PN$ thì $S_{MNP}+S_{APN}=75$, nên diện tích tam giác $MNP$ là: $75-25=50$ ($\\text{cm}^2$)\n\nĐáp số: $50\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P2.1",
+  "dap_an": "a) $\\dfrac{1}{4}$; b) $16$ con thú bông",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Hộp thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "Hai hộp còn lại",
+     "phan": 3
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hộp thứ hai bằng $\\dfrac{1}{3}$ hai hộp còn lại tức là hộp thứ hai $1$ phần thì hai hộp kia $3$ phần, nên hộp thứ hai chiếm $\\dfrac{1}{4}$ cả ba hộp. Khi đã biết cả ba hộp đều là phân số của TỔNG, hiệu $4$ con ứng với một phân số của tổng, lấy $4$ chia cho phân số đó ra tổng; ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Ý a): coi số thú bông ở hộp thứ hai là $1$ phần thì hai hộp còn lại là $3$ phần như thế, cộng lại được tổng số phần của cả ba hộp để biết hộp thứ hai chiếm bao nhiêu phần.\n\n**Bước 2.** Ý b): tìm phân số của tổng ứng với hộp thứ ba bằng cách lấy $1$ trừ đi phân số của hộp thứ nhất và phân số của hộp thứ hai (ở ý a), phải quy đồng mẫu số trước khi trừ.\n\n**Bước 3.** Lấy phân số của hộp thứ ba trừ phân số của hộp thứ hai để biết hộp thứ ba hơn hộp thứ hai bằng bao nhiêu phần tổng số; phân số đó ứng với $4$ con thú bông.\n\n**Bước 4.** Lấy $4$ con chia cho phân số vừa tìm để được tổng số thú bông, rồi lấy tổng nhân với phân số của hộp thứ nhất để tìm số thú bông của hộp thứ nhất.\n\n**Chú ý:** Ý a) hỏi hộp thứ hai chiếm bao nhiêu phần so với CẢ BA hộp, nên không trả lời $\\dfrac{1}{3}$ (đó là phân số so với hai hộp còn lại).\n\nThử lại: tính số thú bông của cả ba hộp, rồi kiểm tra hộp thứ hai bằng $\\dfrac{1}{3}$ số thú bông hai hộp còn lại và hộp thứ ba hơn hộp thứ hai đúng $4$ con.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Hộp thứ hai bằng $\\dfrac{1}{3}$ số thú bông của hai hộp còn lại nên hộp thứ hai là $1$ phần, hai hộp còn lại là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Hộp thứ hai 1 phần; hai hộp còn lại 3 phần)\n\nTổng số phần của cả ba hộp là: $1+3=4$ (phần)\n\nSố thú bông ở hộp thứ hai chiếm $\\dfrac{1}{4}$ số thú bông trong cả ba hộp.\n\nb) Số thú bông ở hộp thứ ba chiếm số phần số thú bông cả ba hộp là: $1-\\dfrac{2}{5}-\\dfrac{1}{4}=\\dfrac{20}{20}-\\dfrac{8}{20}-\\dfrac{5}{20}=\\dfrac{7}{20}$ (tổng số thú bông)\n\nHộp thứ ba nhiều hơn hộp thứ hai số phần tổng số thú bông là: $\\dfrac{7}{20}-\\dfrac{1}{4}=\\dfrac{7}{20}-\\dfrac{5}{20}=\\dfrac{2}{20}=\\dfrac{1}{10}$ (tổng số thú bông)\n\nTổng số thú bông trong ba hộp là: $4:\\dfrac{1}{10}=40$ (con)\n\nSố thú bông trong hộp thứ nhất là: $40\\times\\dfrac{2}{5}=16$ (con)\n\nĐáp số: a) $\\dfrac{1}{4}$; b) $16$ con thú bông"
+ },
+ {
+  "ma_nguon": "NTT-MH1 · P2.2",
+  "dap_an": "$7$ giờ $30$ phút",
+  "so_do_mo_ta": {
+   "tieu_de": "Thời gian đi từ nhà đến trường",
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Đi xe đạp",
+     "phan": 10
+    },
+    {
+     "nhan": "Đi xe máy",
+     "phan": 3
+    }
+   ],
+   "hieu": "14 phút"
+  },
+  "ghi_chu_nghi": "nhiều cách: ① tỉ số vận tốc 12:40 → tỉ số thời gian 10:3 rồi hiệu–tỉ với hiệu 19−5=14 phút (đã dùng); ② rút về đơn vị / giả sử quãng đường là bội chung (vd 120 km) rồi so thời gian — không chọn số giả định. Đáp số 7 giờ 30 phút (xe đạp đi 20 phút, xe máy đi 6 phút, quãng đường 4 km). CEO chốt cách.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường từ nhà đến trường không đổi nên vận tốc và thời gian tỉ lệ nghịch: vận tốc càng lớn thì thời gian càng ít. Hai lần đều xuất phát lúc $7$ giờ $5$ phút nên chênh lệch thời gian đi bằng chênh lệch số phút đến sớm; đó là bài hiệu – tỉ.\n\n**Bước 1.** Lấy vận tốc xe máy chia cho vận tốc xe đạp để biết thời gian đi xe đạp gấp mấy lần thời gian đi xe máy, từ đó đổi thành số phần bằng nhau của hai thời gian.\n\n**Bước 2.** Tính hiệu hai thời gian đi: đến sớm càng nhiều thì đi càng nhanh, nên lấy số phút đến sớm khi đi xe máy trừ số phút đến sớm khi đi xe đạp (cùng giờ xuất phát).\n\n**Bước 3.** Giải bài hiệu – tỉ: tìm hiệu số phần, tìm giá trị một phần rồi tính thời gian đi xe đạp.\n\n**Bước 4.** Giờ vào học là giờ xuất phát cộng thời gian đi xe đạp rồi cộng thêm số phút đã đến sớm khi đi xe đạp.\n\n**Chú ý:** Đến sớm hơn giờ vào học nghĩa là giờ vào học còn muộn hơn lúc đến, nên phải CỘNG thêm số phút đến sớm chứ không trừ.\n\nThử lại: tính thời gian đi xe máy, cộng vào giờ xuất phát rồi cộng thêm $19$ phút, phải ra cùng giờ vào học.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường từ nhà đến trường không đổi nên vận tốc và thời gian tỉ lệ nghịch.\n\nVận tốc xe máy gấp vận tốc xe đạp số lần là: $40:12=\\dfrac{10}{3}$ (lần)\n\nDo đó thời gian đi xe đạp gấp $\\dfrac{10}{3}$ lần thời gian đi xe máy, tức là thời gian đi xe đạp là $10$ phần thì thời gian đi xe máy là $3$ phần như thế.\n\nĐạt xuất phát cùng lúc $7$ giờ $5$ phút nên thời gian đi xe đạp nhiều hơn thời gian đi xe máy là: $19-5=14$ (phút)\n\nTa có sơ đồ:\n\n(Thời gian đi xe đạp 10 phần; thời gian đi xe máy 3 phần; hiệu 14 phút)\n\nHiệu số phần bằng nhau là: $10-3=7$ (phần)\n\nGiá trị một phần là: $14:7=2$ (phút)\n\nThời gian Đạt đi xe đạp là: $2\\times 10=20$ (phút)\n\nTrường vào học lúc: $7$ giờ $5$ phút $+\\ 20$ phút $+\\ 5$ phút $=7$ giờ $30$ phút\n\nĐáp số: $7$ giờ $30$ phút"
+ }
+]

@@ -1,0 +1,118 @@
+[
+ {
+  "ma_nguon": "TX 2025 · 1",
+  "dap_an": "$700,007$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đọc từng hàng của số: mỗi hàng được nhắc tên thì ghi chữ số của hàng đó, hàng nào không được nhắc tới thì chữ số của hàng ấy là $0$.\n\n**Bước 1.** Xác định \"$7$ trăm\" là chữ số $7$ ở hàng trăm, tức là phần nguyên của số có giá trị bằng bảy trăm.\n\n**Bước 2.** Xác định \"$7$ phần nghìn\" là chữ số $7$ ở hàng phần nghìn, là hàng thứ ba sau dấu phẩy, nên giá trị của nó là bảy phần nghìn.\n\n**Bước 3.** Các hàng chục, đơn vị, phần mười, phần trăm không được nhắc tới nên đều là chữ số $0$; ghép các chữ số đúng vị trí từng hàng rồi viết số.\n\n**Chú ý:** Phải giữ các chữ số $0$ để mỗi chữ số đứng đúng hàng của nó, nếu bỏ bớt thì số sẽ đổi giá trị.\n\n**Phần 2. Trình bày**\n\n$7$ trăm là $700$, $7$ phần nghìn là $0,007$.\n\nSố gồm $7$ trăm và $7$ phần nghìn là: $700+0,007=700,007$\n\nVậy số cần tìm là $700,007$."
+ },
+ {
+  "ma_nguon": "TX 2025 · 2",
+  "dap_an": "$113,04\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tính diện tích hình tròn phải biết bán kính, mà đề chỉ cho chu vi; chu vi hình tròn bằng đường kính nhân $3,14$ nên chia chu vi cho $3,14$ thì ra đường kính, rồi lấy một nửa để có bán kính.\n\n**Bước 1.** Nhận ra đề cho chu vi nhưng hỏi diện tích, nên trước hết phải đi tìm bán kính của hình tròn.\n\n**Bước 2.** Tìm đường kính bằng cách lấy chu vi chia cho $3,14$, vì chu vi bằng đường kính nhân $3,14$.\n\n**Bước 3.** Lấy đường kính chia $2$ để được bán kính, rồi tính diện tích bằng bán kính nhân bán kính nhân $3,14$.\n\n**Chú ý:** Diện tích dùng bán kính chứ không dùng đường kính, và đơn vị của diện tích là xăng-ti-mét vuông.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐường kính hình tròn là: $37,68:3,14=12$ (cm)\n\nBán kính hình tròn là: $12:2=6$ (cm)\n\nDiện tích hình tròn là: $6\\times 6\\times 3,14=113,04$ ($\\text{cm}^2$)\n\nĐáp số: $113,04\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "TX 2025 · 3",
+  "dap_an": "$64$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh, có ba thừa số cạnh; cạnh tăng lên $4$ lần thì cả ba thừa số đều tăng lên $4$ lần.\n\n**Bước 1.** Nhớ công thức thể tích hình lập phương là cạnh nhân cạnh nhân cạnh, trong tích có ba thừa số bằng nhau.\n\n**Bước 2.** Mỗi thừa số là độ dài cạnh nên khi cạnh tăng lên $4$ lần thì từng thừa số trong tích đều tăng lên $4$ lần.\n\n**Bước 3.** Một tích có ba thừa số đều gấp lên $4$ lần thì tích gấp lên số lần bằng tích của ba số $4$.\n\n**Chú ý:** Không trả lời $4$ lần (lẫn với số lần của cạnh) và cũng không trả lời $16$ lần (đó là số lần tăng của diện tích một mặt).\n\n**Phần 2. Trình bày**\n\nThể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh; cạnh tăng lên $4$ lần thì cả ba thừa số đều tăng lên $4$ lần.\n\nThể tích hình lập phương tăng lên số lần là: $4\\times 4\\times 4=64$ (lần)\n\nVậy thể tích tăng lên $64$ lần."
+ },
+ {
+  "ma_nguon": "TX 2025 · 4",
+  "dap_an": "$0,96\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho cạnh bằng xăng-ti-mét nhưng hỏi thể tích bằng đề-xi-mét khối, nên tính thể tích ở xăng-ti-mét khối trước rồi mới đổi đơn vị; $1\\ \\text{dm}^3$ bằng $1000\\ \\text{cm}^3$.\n\n**Bước 1.** Tính thể tích một khối đá hình lập phương bằng cạnh nhân cạnh nhân cạnh, lúc này đơn vị là xăng-ti-mét khối.\n\n**Bước 2.** Có $120$ khối đá như nhau nên lấy thể tích một khối nhân với $120$ để được thể tích của tất cả.\n\n**Bước 3.** Đổi kết quả từ xăng-ti-mét khối sang đề-xi-mét khối bằng cách chia cho $1000$, vì đề hỏi bằng đề-xi-mét khối.\n\n**Chú ý:** Một đề-xi-mét khối bằng $1000$ xăng-ti-mét khối chứ không phải $100$; đổi nhầm thì kết quả sẽ lệch đi $10$ lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích một khối đá là: $2\\times 2\\times 2=8$ ($\\text{cm}^3$)\n\nThể tích $120$ khối đá là: $8\\times 120=960$ ($\\text{cm}^3$)\n\nĐổi: $960\\ \\text{cm}^3=0,96\\ \\text{dm}^3$\n\nĐáp số: $0,96\\ \\text{dm}^3$"
+ },
+ {
+  "ma_nguon": "TX 2025 · 5",
+  "dap_an": "$19$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Chắc chắn\" nghĩa là dù xui xẻo nhất cũng được, nên phải tính trường hợp xấu nhất: các viên lấy ra toàn là bi không phải màu xanh cho tới khi hết loại đó rồi mới lấy được bi xanh.\n\n**Bước 1.** Xét trường hợp xấu nhất là mỗi lần lấy đều trúng bi đỏ hoặc bi vàng, nên lấy hết bi đỏ và bi vàng mà chưa có viên xanh nào.\n\n**Bước 2.** Tính xem lấy hết bi đỏ và bi vàng thì đã lấy ra bao nhiêu viên.\n\n**Bước 3.** Lúc đó trong hộp chỉ còn bi xanh, nên lấy thêm $2$ viên nữa thì chắc chắn có đủ $2$ viên bi xanh; cộng hai số lại để được số viên ít nhất.\n\n**Chú ý:** Không cộng cả $8$ viên bi xanh vào, vì chỉ cần thêm đúng $2$ viên xanh là đủ yêu cầu.\n\n**Phần 2. Trình bày**\n\nTrường hợp xấu nhất là lấy hết bi đỏ và bi vàng mà chưa có viên bi xanh nào.\n\nSố viên bi đỏ và bi vàng là: $7+10=17$ (viên)\n\nLúc này trong hộp chỉ còn bi xanh, lấy thêm $2$ viên thì chắc chắn có $2$ viên bi xanh.\n\nSố viên bi ít nhất phải lấy ra là: $17+2=19$ (viên)\n\nVậy cần lấy ra ít nhất $19$ viên bi."
+ },
+ {
+  "ma_nguon": "TX 2025 · 6",
+  "dap_an": "$32$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho tổng số tuổi hiện nay nhưng cho tỉ số tuổi ở thời điểm \"$4$ năm sau\", nên phải đưa tổng về đúng thời điểm $4$ năm sau rồi mới chia theo số phần; cuối cùng lùi lại $4$ năm để ra tuổi hiện nay.\n\n**Bước 1.** Sau $4$ năm mỗi người đều thêm $4$ tuổi, có $4$ người nên tổng số tuổi tăng thêm $4$ lần $4$ tuổi; cộng vào tổng hiện nay để có tổng số tuổi sau $4$ năm.\n\n**Bước 2.** Sau $4$ năm, tuổi bố gấp đôi tổng số tuổi hai anh em và tuổi ông gấp đôi tuổi bố; coi tổng số tuổi hai anh em là $1$ phần thì bố là $2$ phần và ông là $4$ phần.\n\n**Bước 3.** Cộng số phần của cả ba bên rồi chia tổng số tuổi sau $4$ năm cho số phần đó để tìm giá trị của một phần, từ đó tìm tuổi bố sau $4$ năm.\n\n**Bước 4.** Đề hỏi tuổi bố hiện nay, nên lấy tuổi bố sau $4$ năm trừ đi $4$ tuổi.\n\n**Chú ý:** \"Tuổi bố gấp đôi tuổi của hai anh em\" là gấp đôi TỔNG số tuổi của hai anh em, nên hai anh em chỉ gộp thành một phần chứ không phải mỗi em một phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau $4$ năm nữa mỗi người thêm $4$ tuổi, nên tổng số tuổi của $4$ người tăng thêm: $4\\times 4=16$ (tuổi)\n\nSau $4$ năm nữa, tổng số tuổi của ông, bố và hai anh em là: $110+16=126$ (tuổi)\n\nSau $4$ năm nữa, tuổi bố gấp đôi tổng số tuổi hai anh em và tuổi ông gấp đôi tuổi bố.\n\nTa có sơ đồ:\n\n(Tổng tuổi hai anh em $1$ phần; tuổi bố $2$ phần; tuổi ông $4$ phần; tổng $126$ tuổi)\n\nTổng số phần bằng nhau là: $1+2+4=7$ (phần)\n\nGiá trị một phần là: $126:7=18$ (tuổi)\n\nSau $4$ năm nữa tuổi bố là: $18\\times 2=36$ (tuổi)\n\nTuổi bố hiện nay là: $36-4=32$ (tuổi)\n\nĐáp số: $32$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau 4 năm nữa",
+   "gia_tri_phan": 18,
+   "hang": [
+    {
+     "nhan": "Hai anh em",
+     "phan": 1
+    },
+    {
+     "nhan": "Bố",
+     "phan": 2
+    },
+    {
+     "nhan": "Ông",
+     "phan": 4
+    }
+   ],
+   "tong": "126 tuổi"
+  },
+  "ghi_chu_nghi": "Hiểu \"tuổi bố gấp đôi tuổi của 2 anh em\" là gấp đôi TỔNG tuổi hai anh em (cách hiểu mỗi em bằng nhau và bố gấp đôi mỗi em không có nghiệm nguyên — 126 không chia hết cho 8). Hiểu \"Hỏi tuổi bố\" là tuổi bố HIỆN NAY (32); nếu đề hỏi tuổi bố sau 4 năm thì là 36. Kiểm vét cạn: ông 68, bố 32, hai em tổng 10 tuổi."
+ },
+ {
+  "ma_nguon": "TX 2025 · 7",
+  "dap_an": "Màu đỏ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các lá cờ lặp lại theo từng nhóm $4$ lá (xanh, đỏ, tím, vàng); chia số thứ tự lá cờ cho $4$ thì số dư cho biết lá cờ đứng thứ mấy trong nhóm.\n\n**Bước 1.** Nhận ra các màu cờ lặp lại đều đặn, cứ $4$ lá cờ là một nhóm có đủ bốn màu theo đúng thứ tự.\n\n**Bước 2.** Chia số thứ tự $150$ cho $4$ để biết có bao nhiêu nhóm đầy đủ và còn dư mấy lá cờ.\n\n**Bước 3.** Số dư cho biết lá cờ thứ $150$ là lá thứ mấy của nhóm kế tiếp, từ đó đối chiếu với thứ tự các màu để biết màu cờ.\n\n**Chú ý:** Nếu phép chia hết thì lá cờ đó là lá cuối của nhóm; ở bài này phép chia còn dư nên phải đếm tiếp theo số dư.\n\n**Phần 2. Trình bày**\n\nCứ $4$ lá cờ là một nhóm theo thứ tự xanh, đỏ, tím, vàng.\n\nTa có: $150:4=37$ (dư $2$)\n\nCó $37$ nhóm đủ $4$ lá và dư $2$ lá, nên lá cờ thứ $150$ là lá thứ hai của nhóm kế tiếp.\n\nLá thứ hai trong nhóm có màu đỏ. Vậy lá cờ thứ $150$ có màu đỏ."
+ },
+ {
+  "ma_nguon": "TX 2025 · 8",
+  "dap_an": "$441$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Người thợ làm đều tay nên số sản phẩm tỉ lệ thuận với tổng số giờ làm việc; cách làm gọn là rút về đơn vị: tìm số sản phẩm làm được trong $1$ giờ.\n\n**Bước 1.** Tính tổng số giờ người thợ đã làm ở lần đầu, bằng số ngày nhân số giờ mỗi ngày.\n\n**Bước 2.** Rút về đơn vị: lấy số sản phẩm chia cho tổng số giờ để biết mỗi giờ làm được bao nhiêu sản phẩm.\n\n**Bước 3.** Tính tổng số giờ ở lần sau, bằng số ngày nhân số giờ mỗi ngày.\n\n**Bước 4.** Lấy số sản phẩm làm được trong $1$ giờ nhân với tổng số giờ của lần sau.\n\n**Chú ý:** Cả số ngày lẫn số giờ mỗi ngày đều thay đổi, nên phải nhân ra tổng số giờ chứ không chỉ so sánh số ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLần đầu người đó làm trong số giờ là: $8\\times 2=16$ (giờ)\n\nMỗi giờ người đó làm được số sản phẩm là: $112:16=7$ (sản phẩm)\n\nLần sau người đó làm trong số giờ là: $9\\times 7=63$ (giờ)\n\nSố sản phẩm làm được trong $63$ giờ là: $7\\times 63=441$ (sản phẩm)\n\nĐáp số: $441$ sản phẩm"
+ },
+ {
+  "ma_nguon": "TX 2025 · 9",
+  "dap_an": "$10800\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bản đồ tỉ lệ $1:3000$ nghĩa là $1$ cm trên bản đồ ứng với $3000$ cm ngoài thực tế; phải tìm từng kích thước thực tế rồi mới tính diện tích.\n\n**Bước 1.** Hiểu tỉ lệ $1:3000$ để biết mỗi xăng-ti-mét trên bản đồ ứng với bao nhiêu xăng-ti-mét ngoài thực tế.\n\n**Bước 2.** Tính chiều rộng và chiều dài thực tế của mảnh đất rồi đổi hai kích thước đó sang mét, vì đề hỏi diện tích bằng mét vuông.\n\n**Bước 3.** Lấy chiều dài thực tế nhân chiều rộng thực tế để được diện tích mảnh đất.\n\n**Chú ý:** Không lấy diện tích trên bản đồ nhân với $3000$, vì diện tích phải nhân với $3000\\times 3000$; vì vậy phải tính chiều dài và chiều rộng thực tế trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng thực tế của mảnh đất là: $3\\times 3000=9000$ (cm)\n\nĐổi: $9000$ cm $=90$ m\n\nChiều dài thực tế của mảnh đất là: $4\\times 3000=12000$ (cm)\n\nĐổi: $12000$ cm $=120$ m\n\nDiện tích thực tế của mảnh đất là: $90\\times 120=10800$ ($\\text{m}^2$)\n\nĐáp số: $10800\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "TX 2025 · 10",
+  "dap_an": "$300\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình hộp chữ nhật có $12$ cạnh gồm $4$ cạnh dài, $4$ cạnh rộng, $4$ cạnh cao; từ tổng các cạnh và chu vi đáy tìm được chiều cao, rồi từ diện tích toàn phần tìm diện tích đáy để tính thể tích.\n\n**Bước 1.** Tổng $12$ cạnh bằng $4$ lần tổng ba kích thước (dài, rộng, cao), nên chia tổng các cạnh cho $4$ để biết tổng ba kích thước.\n\n**Bước 2.** Chu vi đáy bằng hai lần tổng chiều dài và chiều rộng, nên lấy một nửa chu vi đáy rồi lấy tổng ba kích thước trừ đi nửa chu vi đó để tìm chiều cao.\n\n**Bước 3.** Diện tích toàn phần gồm diện tích xung quanh và diện tích hai đáy; tính diện tích xung quanh bằng chu vi đáy nhân chiều cao rồi trừ đi để tìm diện tích hai đáy, sau đó chia $2$ được diện tích một đáy.\n\n**Bước 4.** Thể tích hình hộp chữ nhật bằng diện tích đáy nhân chiều cao.\n\n**Chú ý:** Diện tích xung quanh chỉ có bốn mặt bên, không tính hai mặt đáy; phải trừ nó khỏi diện tích toàn phần trước khi chia $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng chiều dài, chiều rộng và chiều cao là: $84:4=21$ (cm)\n\nTổng chiều dài và chiều rộng (nửa chu vi đáy) là: $32:2=16$ (cm)\n\nChiều cao hình hộp chữ nhật là: $21-16=5$ (cm)\n\nDiện tích xung quanh là: $32\\times 5=160$ ($\\text{cm}^2$)\n\nDiện tích hai đáy là: $280-160=120$ ($\\text{cm}^2$)\n\nDiện tích một đáy là: $120:2=60$ ($\\text{cm}^2$)\n\nThể tích hình hộp chữ nhật là: $60\\times 5=300$ ($\\text{cm}^3$)\n\nĐáp số: $300\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "TX 2025 · 15",
+  "dap_an": "$60$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu ô tô không phải quay lại thì đã đến B đúng giờ dự định, nên thời gian đến muộn chính là do đi thêm đoạn đường đi $6$ km rồi quay về $6$ km và do nghỉ $10$ phút; trừ thời gian nghỉ ra thì biết xe chạy hết quãng đường thừa trong bao lâu.\n\n**Bước 1.** Tính xem ô tô đến B muộn hơn dự định bao nhiêu phút, bằng giờ đến thực tế trừ giờ đến dự định.\n\n**Bước 2.** Thời gian muộn gồm thời gian nghỉ và thời gian xe chạy đoạn đường thừa, nên lấy thời gian muộn trừ đi $10$ phút nghỉ để biết xe chạy đoạn đường thừa trong bao lâu.\n\n**Bước 3.** Đoạn đường thừa gồm $6$ km đi và $6$ km quay về, cộng lại để biết xe đã chạy bao nhiêu ki-lô-mét trong khoảng thời gian vừa tìm.\n\n**Bước 4.** Đổi thời gian ra giờ vì vận tốc tính bằng km/giờ, rồi lấy quãng đường chia cho thời gian để tìm vận tốc ô tô.\n\n**Chú ý:** Không cần biết độ dài quãng đường AB; đừng chỉ tính $6$ km một chiều, vì xe đã chạy cả lượt đi lẫn lượt về.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGọi C là chỗ ô tô đi được $6$ km rồi quay về A.\n\nTa có sơ đồ:\n\n(Ô tô đi từ A đến C dài $6$ km rồi quay về A; sau khi nghỉ mới đi từ A đến B)\n\nNếu không phải quay lại thì ô tô đến B lúc $9$ giờ $30$ phút.\n\nThời gian ô tô đến B muộn hơn dự định là: $9$ giờ $52$ phút $-$ $9$ giờ $30$ phút $=22$ phút\n\nThời gian ô tô chạy đoạn đường thừa (đi $6$ km rồi quay về) là: $22-10=12$ (phút)\n\nQuãng đường thừa ô tô đã chạy là: $6+6=12$ (km)\n\nĐổi: $12$ phút $=0,2$ giờ\n\nVận tốc của ô tô là: $12:0,2=60$ (km/giờ)\n\nĐáp số: $60$ km/giờ",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Đoạn đường đi rồi quay về",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 6,
+     "ghi": "quay lại"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 6,
+     "nhan": "đi 6 km"
+    },
+    {
+     "tu": 6,
+     "den": 0,
+     "nhan": "về 6 km"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 6,
+     "nhan": "6 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Giả thiết (đề không nói rõ): ô tô xuất phát đúng lúc dự định và chạy với vận tốc không đổi trong cả hai lượt; ngoài 10 phút nghỉ ở A không dừng lần nào khác. Độ dài AB không cho và không cần. Điểm C là tên tôi đặt cho chỗ quay lại (đề không đặt tên). Sơ đồ chuyển động chỉ vẽ đoạn đi 6 km rồi quay về vì AB không xác định được."
+ },
+ {
+  "ma_nguon": "TX 2025 · 16",
+  "dap_an": "a) $S_{AMB}=150\\ \\text{cm}^2$, $S_{NMP}=200\\ \\text{cm}^2$, $S_{BPC}=750\\ \\text{cm}^2$; b) $200\\ \\text{cm}^2$; c) $100\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đọc kĩ hình để biết điểm nào nằm trên cạnh nào; ý a) tính ba tam giác vuông bằng nửa tích hai cạnh góc vuông, ý b) lấy tổng diện tích hai hình vuông trừ ba tam giác của ý a), ý c) dùng lại kết quả ý b) qua hai tam giác chung đáy.\n\n**Bước 1.** Theo hình vẽ, hai hình vuông có chung đỉnh D, điểm M nằm trên cạnh AD và điểm P nằm trên đường thẳng CD kéo dài; từ đó tính được AM bằng AD trừ MD và PC bằng PD cộng DC.\n\n**Bước 2.** Ý a): ba tam giác AMB, NMP, BPC đều có một góc vuông, nên diện tích mỗi tam giác bằng nửa tích hai cạnh góc vuông của nó.\n\n**Bước 3.** Ý b): nối thêm các đoạn PB, PM, MB thì hình gồm hai hình vuông chia thành bốn tam giác NMP, AMB, PBC và PMB, nên diện tích tam giác PMB bằng tổng diện tích hai hình vuông trừ ba tam giác đã tính ở ý a).\n\n**Bước 4.** Ý c): hai tam giác PRB và MRB có chung đáy RB, còn M nằm giữa P và R nên tam giác PRB gồm tam giác PMB và tam giác MRB; vậy hiệu diện tích hai tam giác chính là diện tích tam giác PMB.\n\n**Bước 5.** Chiều cao hạ từ P và từ M xuống AB đều tìm được từ các cạnh hình vuông; dùng hiệu hai chiều cao và diện tích tam giác PMB để tìm đáy RB, rồi tính diện tích tam giác MRB.\n\n**Chú ý:** Điểm R không có trong đề chữ mà chỉ có trên hình: R là giao điểm của PM và AB; nhớ viết rõ \"theo hình vẽ\" khi dùng các dữ kiện đọc từ hình.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, M nằm trên cạnh AD; P, D, C nằm trên một đường thẳng; R là giao điểm của PM và AB.\n\na) Độ dài AM là: $30-20=10$ (cm)\n\nDiện tích tam giác AMB là: $10\\times 30:2=150$ ($\\text{cm}^2$)\n\nDiện tích tam giác NMP là: $20\\times 20:2=200$ ($\\text{cm}^2$)\n\nĐộ dài PC là: $20+30=50$ (cm)\n\nDiện tích tam giác BPC là: $30\\times 50:2=750$ ($\\text{cm}^2$)\n\nb) Tổng diện tích hai hình vuông ABCD và NMDP là: $30\\times 30+20\\times 20=1300$ ($\\text{cm}^2$)\n\nHình gồm hai hình vuông được chia thành bốn tam giác NMP, AMB, PBC và PMB.\n\nDiện tích tam giác PMB là: $1300-200-150-750=200$ ($\\text{cm}^2$)\n\nc) Hai tam giác PRB và MRB có chung đáy RB. Chiều cao hạ từ P xuống AB bằng $30$ cm, chiều cao hạ từ M xuống AB bằng AM $=10$ cm.\n\nHiệu hai chiều cao là: $30-10=20$ (cm)\n\nVì M nằm giữa P và R nên diện tích tam giác PRB hơn diện tích tam giác MRB đúng bằng diện tích tam giác PMB, tức là $RB\\times 20:2=200$.\n\nĐộ dài RB là: $200\\times 2:20=20$ (cm)\n\nDiện tích tam giác MRB là: $20\\times 10:2=100$ ($\\text{cm}^2$)\n\nĐáp số: a) $150\\ \\text{cm}^2$; $200\\ \\text{cm}^2$; $750\\ \\text{cm}^2$ ; b) $200\\ \\text{cm}^2$ ; c) $100\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Hình + luu_y_de: dữ kiện đọc từ hình — M nằm trên AD (nên AM = 30 − 20 = 10), P, D, C thẳng hàng (PC = 20 + 30 = 50), R là giao điểm của PM với AB. Đề chữ không nói các điểm này. Kiểm bằng toạ độ: AMB 150, NMP 200, BPC 750, PMB 200, R cách B 20 cm (R giữa A và B, AR = 10), MRB 100."
+ }
+]

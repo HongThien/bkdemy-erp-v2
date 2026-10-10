@@ -1,0 +1,144 @@
+[
+ {
+  "ma_nguon": "CG 2021 · 1",
+  "dap_an": "$8,4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $4,2$, nên đưa $4,2$ ra ngoài làm \"một số nhân với một tổng\"; hai phân số trong ngoặc cùng mẫu số $9$ nên cộng rất gọn.\n\n**Bước 1.** Nhìn hai tích $4,2\\times\\dfrac{13}{9}$ và $4,2\\times\\dfrac{5}{9}$ thì thấy cùng có thừa số $4,2$, đó là dấu hiệu để dùng tính chất nhân một số với một tổng.\n\n**Bước 2.** Viết lại biểu thức thành $4,2$ nhân với tổng hai phân số trong ngoặc, rồi cộng hai phân số cùng mẫu số bằng cách cộng hai tử số.\n\n**Bước 3.** Rút gọn phân số trong ngoặc về một số tự nhiên rồi nhân với $4,2$ để ra kết quả.\n\n**Chú ý:** Không đổi $4,2$ ra phân số rồi nhân từng tích, vì làm như vậy dài và dễ sai.\n\n**Phần 2. Trình bày**\n\n$4,2\\times\\dfrac{13}{9}+4,2\\times\\dfrac{5}{9}$\n\n$=4,2\\times\\left(\\dfrac{13}{9}+\\dfrac{5}{9}\\right)$\n\n$=4,2\\times\\dfrac{18}{9}$\n\n$=4,2\\times 2$\n\n$=8,4$"
+ },
+ {
+  "ma_nguon": "CG 2021 · 2",
+  "dap_an": "$400$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết số này gấp số kia bao nhiêu lần thì hai số phải cùng một đơn vị đo, rồi lấy số lớn chia cho số bé.\n\n**Bước 1.** Nhận ra hai diện tích đang dùng hai đơn vị khác nhau là héc-ta và mét vuông, nên chưa thể chia ngay.\n\n**Bước 2.** Đổi $3$ ha sang mét vuông, nhớ rằng $1$ ha bằng $10000\\ \\text{m}^2$ nên phải nhân với $10000$.\n\n**Bước 3.** Lấy diện tích lớn chia cho diện tích bé để biết gấp mấy lần.\n\n**Chú ý:** Nếu chia thẳng $3$ cho $75$ mà không đổi đơn vị thì kết quả sai hoàn toàn.\n\n**Phần 2. Trình bày**\n\nĐổi: $3$ ha $=30000\\ \\text{m}^2$\n\n$3$ ha gấp $75\\ \\text{m}^2$ số lần là: $30000:75=400$ (lần)\n\nĐáp số: $400$ lần"
+ },
+ {
+  "ma_nguon": "CG 2021 · 3",
+  "dap_an": "$9$ xe ô tô",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các xe ô tô cùng loại nên mỗi xe chở được số tấn vải như nhau; chở càng nhiều vải thì cần càng nhiều xe. Cách gọn là rút về đơn vị: tìm một xe chở được bao nhiêu tấn rồi lấy số vải mới chia cho số tấn đó.\n\n**Bước 1.** Nhận ra số tấn vải và số xe ô tô là hai đại lượng tỉ lệ thuận, nên ta rút về đơn vị là một xe ô tô.\n\n**Bước 2.** Tìm số tấn vải thiều một xe chở được ở ngày thứ nhất bằng cách lấy số tấn vải chia cho số xe.\n\n**Bước 3.** Lấy số tấn vải ngày thứ hai chia cho số tấn một xe chở được để biết cần bao nhiêu xe.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi xe ô tô chở được số tấn vải thiều là: $20:5=4$ (tấn)\n\nNgày thứ hai cần số xe ô tô để chở $36$ tấn vải thiều là: $36:4=9$ (xe)\n\nĐáp số: $9$ xe ô tô"
+ },
+ {
+  "ma_nguon": "CG 2021 · 4",
+  "dap_an": "$5$ giờ",
+  "ghi_chu_nghi": "Đề hỏi \"thời gian\" mà không nêu đơn vị: tính ra 300 phút = 5 giờ; đáp án ghi 5 giờ (lời giải nêu cả 300 phút).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng nước chứa đầy bể chính là thể tích trong lòng bể. Đổi thể tích đó ra lít rồi chia cho số lít chảy vào trong $1$ phút thì được số phút cần để đầy bể.\n\n**Bước 1.** Tính thể tích trong lòng bể hình hộp chữ nhật bằng chiều dài nhân chiều rộng nhân chiều cao.\n\n**Bước 2.** Đổi thể tích từ mét khối sang lít: $1\\ \\text{m}^3$ bằng $1000\\ \\text{dm}^3$, mà $1\\ \\text{dm}^3$ là $1$ lít, nên $1\\ \\text{m}^3$ bằng $1000$ lít.\n\n**Bước 3.** Lấy số lít nước chứa đầy bể chia cho số lít vòi chảy được trong $1$ phút để tìm số phút.\n\n**Bước 4.** Đổi số phút vừa tìm ra giờ cho gọn, nhớ rằng một giờ có $60$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích trong lòng bể là: $3\\times 2\\times 1,5=9$ ($\\text{m}^3$)\n\nĐổi: $9\\ \\text{m}^3=9000\\ \\text{dm}^3=9000$ lít\n\nThời gian vòi nước chảy đầy bể là: $9000:30=300$ (phút)\n\nĐổi: $300$ phút $=5$ giờ\n\nĐáp số: $5$ giờ"
+ },
+ {
+  "ma_nguon": "CG 2021 · 5",
+  "dap_an": "$19,5$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng dầu ban đầu là $100\\%$; dùng đi $40\\%$ thì lượng dầu còn lại bằng phần trăm còn lại của lượng dầu ban đầu, rồi tìm số phần trăm đó của $32,5$ lít.\n\n**Bước 1.** Tính xem lượng dầu còn lại bằng bao nhiêu phần trăm lượng dầu ban đầu, bằng cách lấy $100\\%$ trừ đi phần trăm đã dùng.\n\n**Bước 2.** Tìm số phần trăm đó của $32,5$ lít bằng cách lấy $32,5$ nhân với số phần trăm vừa tìm.\n\n**Bước 3.** Đối chiếu kết quả: số lít dầu còn lại phải bé hơn $32,5$ lít vì đã dùng bớt một phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố dầu còn lại so với lúc đầu bằng: $100\\%-40\\%=60\\%$\n\nSố lít dầu còn lại trong can là: $32,5\\times 60\\%=19,5$ (lít)\n\nĐáp số: $19,5$ lít"
+ },
+ {
+  "ma_nguon": "CG 2021 · 6",
+  "dap_an": "$37$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với dãy số cho trước, hãy xét hiệu của hai số đứng liền nhau; nếu các hiệu này lại theo một quy luật thì dùng quy luật đó để tìm số tiếp theo.\n\n**Bước 1.** Lấy từng số trừ đi số đứng liền trước nó để được dãy các hiệu.\n\n**Bước 2.** Quan sát dãy hiệu để tìm quy luật của nó, rồi kiểm tra quy luật đúng với mọi hiệu đã có.\n\n**Bước 3.** Viết tiếp hiệu kế tiếp theo quy luật rồi cộng với số hạng cuối của dãy để được số hạng cần tìm.\n\n**Phần 2. Trình bày**\n\nHiệu của hai số liền nhau trong dãy là: $2-1=1$; $5-2=3$; $10-5=5$; $17-10=7$; $26-17=9$.\n\nCác hiệu là những số lẻ liên tiếp $1;\\ 3;\\ 5;\\ 7;\\ 9$ nên hiệu kế tiếp là $11$.\n\nSố hạng tiếp theo của dãy là: $26+11=37$\n\nVậy số hạng tiếp theo của dãy là $37$."
+ },
+ {
+  "ma_nguon": "CG 2021 · 7",
+  "dap_an": "$140$ chai nước rửa tay",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi bán",
+   "gia_tri_phan": 30,
+   "hang": [
+    {
+     "nhan": "Nước rửa tay còn lại",
+     "phan": 4
+    },
+    {
+     "nhan": "Cồn còn lại",
+     "phan": 7
+    }
+   ],
+   "tong": "330 chai",
+   "dau_hoi": [
+    "Nước rửa tay còn lại"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Con số $400$ chai là tổng lúc đầu, còn tỉ số $\\dfrac{4}{7}$ chỉ đúng cho số chai LÚC SAU khi đã bán; vì vậy phải trừ số chai đã bán khỏi tổng trước, đưa về bài tổng – tỉ của số chai còn lại.\n\n**Bước 1.** Tính số chai đã bán đi cả hai loại, rồi tìm tổng số chai còn lại của cửa hàng.\n\n**Bước 2.** Số chai nước rửa tay còn lại bằng $\\dfrac{4}{7}$ số chai cồn còn lại nên coi số chai nước rửa tay là $4$ phần thì số chai cồn là $7$ phần như thế; vẽ sơ đồ với tổng là số chai còn lại.\n\n**Bước 3.** Tìm giá trị một phần bằng cách lấy tổng số chai còn lại chia cho tổng số phần, rồi tính số chai nước rửa tay còn lại.\n\n**Bước 4.** Cộng thêm số chai nước rửa tay đã bán để tìm số chai nước rửa tay lúc đầu.\n\n**Chú ý:** Đề hỏi số chai nước rửa tay lúc đầu, không phải lúc sau, nên đừng dừng ở bước tìm số chai còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố chai đã bán đi là: $20+50=70$ (chai)\n\nSố chai còn lại của cửa hàng là: $400-70=330$ (chai)\n\nSố chai nước rửa tay còn lại bằng $\\dfrac{4}{7}$ số chai cồn còn lại nên nước rửa tay còn lại là $4$ phần, cồn còn lại là $7$ phần như thế.\n\nTa có sơ đồ:\n\n(Nước rửa tay còn lại 4 phần; cồn còn lại 7 phần; tổng 330 chai)\n\nTổng số phần bằng nhau là: $4+7=11$ (phần)\n\nGiá trị của một phần là: $330:11=30$ (chai)\n\nSố chai nước rửa tay còn lại là: $30\\times 4=120$ (chai)\n\nSố chai nước rửa tay lúc đầu là: $120+20=140$ (chai)\n\nĐáp số: $140$ chai nước rửa tay"
+ },
+ {
+  "ma_nguon": "CG 2021 · 8",
+  "dap_an": "$8\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: hình thang ABCD có hai đáy AB // CD (vì đề cho AB = 2/3 CD), E nằm trên cạnh bên AD. Nếu AB, CD không phải hai đáy thì đề không đủ dữ kiện.",
+  "so_do_mo_ta": {
+   "tieu_de": "Chia hình thang bởi đường chéo BD",
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Tam giác ABD",
+     "phan": 2
+    },
+    {
+     "nhan": "Tam giác BCD",
+     "phan": 3
+    }
+   ],
+   "tong": "30 cm²",
+   "dau_hoi": [
+    "Tam giác ABD"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Kẻ đường chéo BD để tách hình thang thành hai tam giác ABD và BCD có chiều cao bằng nhau (bằng chiều cao hình thang), nên tỉ số diện tích hai tam giác bằng tỉ số hai đáy AB và CD; sau đó tam giác ABE chung đường cao hạ từ B với tam giác ABD nên lại dùng tỉ số hai đáy AE và AD.\n\n**Bước 1.** Nối B với D, hình thang chia thành hai tam giác ABD và BCD; hai tam giác này có đường cao bằng chiều cao hình thang, nên tỉ số diện tích của chúng bằng tỉ số hai đáy AB và CD.\n\n**Bước 2.** Đổi tỉ số đó thành số phần bằng nhau, coi diện tích hình thang là tổng, rồi giải bài tổng – tỉ để tìm diện tích tam giác ABD.\n\n**Bước 3.** Tam giác ABE và tam giác ABD có chung đường cao hạ từ B xuống AD, nên tỉ số diện tích bằng tỉ số AE và AD; dựa vào \"AE gấp $2$ lần ED\" để tìm AE bằng mấy phần AD.\n\n**Bước 4.** Nhân diện tích tam giác ABD với tỉ số vừa tìm để được diện tích tam giác ABE.\n\n**Chú ý:** Diện tích tam giác ABE tính từ tam giác ABD, không tính từ cả hình thang.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối B với D. Tam giác ABD và tam giác BCD có đường cao hạ từ D xuống AB và đường cao hạ từ B xuống CD đều bằng chiều cao hình thang, suy ra $\\dfrac{S_{ABD}}{S_{BCD}}=\\dfrac{AB}{CD}=\\dfrac{2}{3}$\n\nVậy diện tích tam giác ABD là $2$ phần, diện tích tam giác BCD là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Tam giác ABD 2 phần; tam giác BCD 3 phần; tổng 30 cm²)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nDiện tích tam giác ABD là: $30:5\\times 2=12$ ($\\text{cm}^2$)\n\nVì AE gấp $2$ lần ED nên AE là $2$ phần, AD là $2+1=3$ phần như thế, suy ra $AE=\\dfrac{2}{3}\\times AD$.\n\nTam giác ABE và tam giác ABD có chung đường cao hạ từ B xuống AD, suy ra $\\dfrac{S_{ABE}}{S_{ABD}}=\\dfrac{AE}{AD}=\\dfrac{2}{3}$\n\nDiện tích tam giác ABE là: $12\\times\\dfrac{2}{3}=8$ ($\\text{cm}^2$)\n\nĐáp số: $8\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "CG 2021 · 9",
+  "dap_an": "a) $5,5$ giờ; b) $150$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Đi từ A đến B rồi về A",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 150
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 150,
+      "nhan": "60 km/giờ"
+     },
+     {
+      "tu": 150,
+      "den": 0,
+      "nhan": "50 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 150,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian chạy xe",
+    "gia_tri_phan": 0.5,
+    "hang": [
+     {
+      "nhan": "Thời gian đi",
+      "phan": 5
+     },
+     {
+      "nhan": "Thời gian về",
+      "phan": 6
+     }
+    ],
+    "tong": "5,5 giờ",
+    "dau_hoi": [
+     "Thời gian đi"
+    ]
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường đi và quãng đường về bằng nhau, nên vận tốc càng lớn thì thời gian càng ít; từ tỉ số hai vận tốc suy ra tỉ số hai thời gian, rồi dùng tổng thời gian chạy xe (ý a) để chia theo tỉ số.\n\n**Bước 1.** Tìm thời gian từ lúc khởi hành đến lúc về tới A, rồi trừ thời gian nghỉ để được tổng thời gian thật sự chạy xe, đó là đáp số ý a).\n\n**Bước 2.** Sang ý b), nhận ra quãng đường đi và về bằng nhau nên vận tốc càng lớn thì thời gian càng ít; so sánh hai vận tốc để biết tỉ số giữa thời gian đi và thời gian về.\n\n**Bước 3.** Lấy tổng thời gian ở ý a) làm tổng, chia theo tỉ số thời gian đi và thời gian về (bài tổng – tỉ) để tìm thời gian đi.\n\n**Bước 4.** Tính quãng đường AB bằng vận tốc lúc đi nhân với thời gian đi.\n\n**Chú ý:** Phải trừ $1,5$ giờ nghỉ trước khi chia theo tỉ số, vì thời gian nghỉ không phải thời gian chạy xe.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Thời gian từ lúc khởi hành đến lúc về tới A là: $14$ giờ $15$ phút $-\\ 7$ giờ $15$ phút $=7$ giờ\n\nNếu không tính thời gian nghỉ thì tổng thời gian cả đi và về là: $7-1,5=5,5$ (giờ)\n\nb) Quãng đường lúc đi và lúc về bằng nhau.\n\nTa có sơ đồ:\n\n(Từ A đến B với vận tốc 60 km/giờ; từ B về A với vận tốc 50 km/giờ)\n\nVận tốc lúc đi so với vận tốc lúc về là: $60:50=\\dfrac{6}{5}$\n\nCùng đi một quãng đường, vận tốc đi gấp $\\dfrac{6}{5}$ vận tốc về nên thời gian đi bằng $\\dfrac{5}{6}$ thời gian về, tức thời gian đi là $5$ phần, thời gian về là $6$ phần như thế.\n\nTa có sơ đồ:\n\n(Thời gian đi 5 phần; thời gian về 6 phần; tổng 5,5 giờ)\n\nTổng số phần bằng nhau là: $5+6=11$ (phần)\n\nGiá trị của một phần là: $5,5:11=0,5$ (giờ)\n\nThời gian đi từ A đến B là: $0,5\\times 5=2,5$ (giờ)\n\nQuãng đường AB dài là: $60\\times 2,5=150$ (km)\n\nĐáp số: a) $5,5$ giờ; b) $150$ km"
+ },
+ {
+  "ma_nguon": "CG 2021 · 10",
+  "dap_an": "a) Lượt 2: $9;\\ 13;\\ 11$; lượt 3: $11;\\ 12;\\ 10$; b) Công nói đúng; yêu cầu của thầy không thực hiện được",
+  "ghi_chu_nghi": "Ý a) có NHIỀU đáp án đúng: sau lượt 1 là (7; 14; 12), sau lượt 4 là (10; 11; 12) (theo bảng) nên trong 3 lượt A nhận 2 lần, C nhận 1 lần, B không nhận — thứ tự nhận có 3 cách: (A,A,C) → lượt 2: 9;13;11, lượt 3: 11;12;10 · (A,C,A) → 9;13;11 rồi 8;12;13 · (C,A,A) → 6;13;14 rồi 8;12;13. Đã trình bày cách (A,A,C) và nêu trong Chú ý rằng thứ tự có thể khác; CEO chốt đáp án chuẩn nếu chỉ chấp nhận một cách. Đề chữ không nói \"sau lượt 4 là 10; 11; 12\" — lấy từ bảng ở hình đề (dòng \"Sau lượt 4\").",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lượt, hộp nhận bi tăng $2$ viên còn hai hộp kia mỗi hộp giảm $1$ viên. Ý a) dựa vào số bi cần tăng, cần giảm của từng hộp để biết hộp nào nhận bi mấy lần; ý b) chỉ ra điều không đổi: số dư khi chia $3$ của ba hộp luôn khác nhau.\n\n**Bước 1.** Theo bảng, sau lượt $4$ các hộp có $10$; $11$; $12$ viên, nên từ sau lượt $1$ xem mỗi hộp cần tăng hay giảm bao nhiêu viên trong $3$ lượt còn lại.\n\n**Bước 2.** Hộp không nhận bi thì mỗi lượt giảm $1$ viên; hộp cần giảm đúng bằng số lượt còn lại thì lượt nào cũng bị lấy bi, không lần nào nhận. Từ đó suy ra hộp nào nhận bi mấy lần để số bi tăng giảm đúng như cần.\n\n**Bước 3.** Chọn một thứ tự nhận bi hợp lí rồi tính từng lượt, kiểm tra sau lượt $4$ phải ra đúng $10$; $11$; $12$ viên.\n\n**Bước 4.** Sang ý b), tìm số dư khi chia $3$ của số bi ba hộp lúc đầu và nhận xét ba số dư đó có khác nhau không.\n\n**Bước 5.** Xét một lượt bất kì: hộp bị lấy $1$ viên và hộp nhận thêm $2$ viên thì số dư khi chia $3$ thay đổi thế nào; so sánh để thấy ba số dư thay đổi cùng một kiểu nên vẫn khác nhau.\n\n**Bước 6.** Tìm số dư của ba hộp khi mỗi hộp có $11$ viên theo yêu cầu của thầy, so với điều vừa chứng minh rồi kết luận có làm được hay không.\n\n**Chú ý:** Ở ý a) thứ tự chọn hộp nhận bi có thể khác nhau, miễn là mỗi lượt đúng luật và sau lượt $4$ ra đúng $10$; $11$; $12$ viên.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Theo bảng, sau lượt $4$ các hộp A, B, C có $10$; $11$; $12$ viên. Sau lượt $1$ có $7$; $14$; $12$ viên, còn $3$ lượt (lượt $2$, $3$, $4$).\n\nHộp A cần tăng: $10-7=3$ (viên)\n\nHộp B cần giảm: $14-11=3$ (viên)\n\nHộp C giữ nguyên $12$ viên.\n\nHộp không nhận bi thì mỗi lượt giảm $1$ viên. Hộp B phải giảm $3$ viên trong $3$ lượt nên lượt nào B cũng bị lấy $1$ viên, B không nhận bi lần nào.\n\nHộp A nhận bi $2$ lần thì tăng $2\\times 2=4$ viên và bị lấy $1$ viên: $4-1=3$ (viên), đúng như cần tăng.\n\nHộp C nhận bi $1$ lần thì tăng $2$ viên và bị lấy $2$ viên: $2-2=0$ (viên), đúng như cần giữ nguyên.\n\nChọn lượt $2$ và lượt $3$ cho A nhận bi, lượt $4$ cho C nhận bi:\n\nLượt $2$: lấy $1$ viên của B, $1$ viên của C cho vào A: $7+2=9$; $14-1=13$; $12-1=11$\n\nLượt $3$: lấy $1$ viên của B, $1$ viên của C cho vào A: $9+2=11$; $13-1=12$; $11-1=10$\n\nLượt $4$: lấy $1$ viên của A, $1$ viên của B cho vào C: $11-1=10$; $12-1=11$; $10+2=12$\n\nVậy lượt $2$ ghi $9$; $13$; $11$ và lượt $3$ ghi $11$; $12$; $10$ (sau lượt $4$ ra đúng $10$; $11$; $12$).\n\nb) Lúc đầu, số bi ba hộp chia $3$ có số dư là: $8:3=2$ (dư $2$); $15:3=5$ (dư $0$); $10:3=3$ (dư $1$). Ba số dư $2$; $0$; $1$ khác nhau.\n\nMỗi lượt, hộp bị lấy $1$ viên thì số dư lùi $1$: dư $2$ thành $1$, dư $1$ thành $0$, dư $0$ thành $2$.\n\nHộp nhận thêm $2$ viên thì số dư tăng $2$: dư $0$ thành $2$, dư $1$ thành $0$, dư $2$ thành $1$, cũng là lùi $1$ như trên.\n\nVậy sau mỗi lượt, số dư của cả ba hộp đều lùi $1$ theo cùng một cách nên ba số dư vẫn khác nhau. Lúc đầu ba số dư khác nhau nên sau lượt nào ba hộp cũng có số dư khác nhau, bạn Công nói đúng.\n\nThầy yêu cầu mỗi túi $11$ viên mà $11:3=3$ (dư $2$), tức cả ba túi cùng dư $2$, trái với điều vừa chứng minh.\n\nVậy yêu cầu của thầy không thực hiện được."
+ }
+]

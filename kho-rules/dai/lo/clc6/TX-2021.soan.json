@@ -1,0 +1,73 @@
+[
+ {
+  "ma_nguon": "TX 2021 · 1",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá trị của một chữ số phụ thuộc vào hàng mà nó đứng. Bên phải dấu phẩy, các hàng lần lượt là phần mười, phần trăm, phần nghìn; chữ số đứng ở hàng nào thì có giá trị bằng chữ số đó chia cho $10$, $100$ hay $1000$.\n\n**Bước 1.** Viết ra tên các hàng của phần thập phân của số $24,684$ theo thứ tự từ dấu phẩy sang phải: hàng phần mười, hàng phần trăm, hàng phần nghìn.\n\n**Bước 2.** Đối chiếu từng chữ số của phần thập phân với tên hàng để xác định chữ số $8$ đang đứng ở hàng nào.\n\n**Bước 3.** Chữ số đứng ở hàng phần trăm thì có giá trị bằng chữ số đó chia cho một số tương ứng với hàng; viết giá trị thành phân số rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Chữ số $8$ nằm sau dấu phẩy nên không thể có giá trị là số tự nhiên như $80$ hay $800$.\n\n**Phần 2. Trình bày**\n\nPhần thập phân của $24,684$ có chữ số $6$ ở hàng phần mười, chữ số $8$ ở hàng phần trăm, chữ số $4$ ở hàng phần nghìn.\n\nChữ số $8$ đứng ở hàng phần trăm nên giá trị của nó là $\\dfrac{8}{100}$.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "TX 2021 · 2",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có bốn số hạng đầu giống hệt nhau và một tích $4,8\\times 6$ cũng chứa thừa số $4,8$; vậy mọi số hạng đều có thừa số chung $4,8$, đặt ra ngoài thì chỉ còn tính một tổng nhỏ.\n\n**Bước 1.** Nhận ra bốn số hạng $4,8$ cộng với nhau chính là $4,8$ nhân với $4$, vì cộng nhiều số bằng nhau thì viết thành phép nhân.\n\n**Bước 2.** Lúc này cả hai số hạng của biểu thức đều có thừa số $4,8$, nên dùng tính chất nhân một số với một tổng để đưa $4,8$ ra ngoài dấu ngoặc.\n\n**Bước 3.** Tính tổng trong ngoặc trước, rồi nhân với $4,8$; nhân một số thập phân với $10$ chỉ cần dịch dấu phẩy sang phải một hàng, sau đó đối chiếu với bốn phương án.\n\n**Chú ý:** Phép nhân $4,8\\times 6$ chỉ gắn với số hạng cuối, không phải nhân cả bốn số $4,8$ đứng trước nó với $6$.\n\n**Phần 2. Trình bày**\n\n$4,8+4,8+4,8+4,8+4,8\\times 6$\n\n$=4,8\\times 4+4,8\\times 6$\n\n$=4,8\\times (4+6)$\n\n$=4,8\\times 10$\n\n$=48$\n\nChọn D."
+ },
+ {
+  "ma_nguon": "TX 2021 · 3",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi chia số thập phân và dừng ở chữ số thứ ba của phần thập phân, số dư không phải số tự nhiên đứng cuối phép chia mà phải đặt đúng hàng: số dư bằng số bị chia trừ đi tích của thương với số chia.\n\n**Bước 1.** Chia $1,385$ cho $15$ và dừng lại khi thương có đủ ba chữ số ở phần thập phân; để làm gọn, chia $1385$ cho $15$ rồi đặt dấu phẩy cho thương.\n\n**Bước 2.** Số bị chia $1,385$ có ba chữ số thập phân nên thương có ba chữ số thập phân là hàng phần nghìn; xác định thương là bao nhiêu và nhân thương với $15$.\n\n**Bước 3.** Lấy số bị chia trừ tích vừa tìm để được số dư, nhớ rằng số dư phải bé hơn số chia và có ba chữ số thập phân.\n\n**Chú ý:** Số dư phải có đúng ba chữ số thập phân như số bị chia; nếu chỉ lấy số dư cuối cùng của phép chia số tự nhiên thì sẽ chọn nhầm phương án.\n\n**Phần 2. Trình bày**\n\nTa có $15\\times 92=1380$ nên thương của $1,385:15$ lấy ba chữ số phần thập phân là $0,092$.\n\nTích của thương và số chia là: $0,092\\times 15=1,38$\n\nSố dư là: $1,385-1,38=0,005$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "TX 2021 · 4",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số sản phẩm làm được tỉ lệ thuận với cả số người lẫn số ngày làm. Vì thế rút về \"$1$ người làm trong $1$ ngày\" rồi mới tính cho $12$ người làm $16$ ngày.\n\n**Bước 1.** Nhận ra hai đại lượng cùng thay đổi: số người và số ngày; muốn tính gọn thì rút về trường hợp $1$ người làm trong $1$ ngày.\n\n**Bước 2.** Tìm số sản phẩm $1$ người làm trong $1$ ngày bằng cách lấy tổng sản phẩm chia cho số người, rồi chia cho số ngày.\n\n**Bước 3.** Nhân số sản phẩm của $1$ người trong $1$ ngày với số người mới, rồi nhân với số ngày mới để đối chiếu với bốn phương án.\n\n**Chú ý:** Không chỉ nhân hoặc chia cho một đại lượng; phải xét cả số người lẫn số ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ người làm trong $1$ ngày được số sản phẩm là: $800:4:8=25$ (sản phẩm)\n\n$12$ người làm trong $16$ ngày được số sản phẩm là: $25\\times 12\\times 16=4800$ (sản phẩm)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "TX 2021 · 5",
+  "dap_an": "B",
+  "ghi_chu_nghi": "Hiểu \"mất 2 giờ để đi đến B\" là thời gian ĐI (chưa kể nghỉ), nghỉ 15 phút cộng thêm nên đến lúc 9 giờ 35 phút (B). Nếu hiểu 2 giờ đã gồm cả nghỉ thì đến 9 giờ 20 phút (D) và dòng ngoặc về 15 phút nghỉ thừa; chọn cách hiểu dùng hết dữ kiện.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thời gian từ lúc xuất phát đến lúc tới B gồm thời gian đi và thời gian nghỉ giữa đường. Cộng cả hai rồi cộng vào giờ xuất phát thì ra giờ đến.\n\n**Bước 1.** Đọc kĩ đề: $2$ giờ là thời gian người đó đi, còn việc nghỉ $15$ phút giữa đường là dữ kiện thêm vào nên phải cộng cả hai.\n\n**Bước 2.** Tính tổng thời gian từ lúc xuất phát đến lúc tới B bằng cách cộng thời gian đi với thời gian nghỉ, viết dưới dạng giờ và phút.\n\n**Bước 3.** Cộng tổng thời gian đó vào giờ xuất phát $7$ giờ $20$ phút để tìm giờ đến B, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Nếu quên cộng thời gian nghỉ thì sẽ ra đáp án $9$ giờ $20$ phút, đó là bẫy của phương án D.\n\n**Phần 2. Trình bày**\n\nThời gian từ lúc xuất phát đến lúc tới B là: $2$ giờ $+\\ 15$ phút $=2$ giờ $15$ phút\n\nNgười đó đến B lúc: $7$ giờ $20$ phút $+\\ 2$ giờ $15$ phút $=9$ giờ $35$ phút\n\nChọn B."
+ },
+ {
+  "ma_nguon": "TX 2021 · 6",
+  "dap_an": "Số lớn: $75$; số bé: $25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu cả hai số cùng gấp lên số lần như nhau thì hiệu cũng gấp lên đúng số lần đó. Đề cho số lớn gấp $5$ lần còn số bé chỉ gấp $3$ lần, nên hiệu thật lớn hơn hiệu \"cùng gấp $3$ lần\" đúng bằng phần số lớn được gấp thêm.\n\n**Bước 1.** Tưởng tượng cả hai số cùng gấp lên $3$ lần (số lần của số bé); khi đó hiệu của chúng gấp lên $3$ lần so với hiệu ban đầu, tính ra hiệu đó.\n\n**Bước 2.** So sánh với hiệu thật mà đề cho: hiệu thật lớn hơn hiệu vừa tính vì số lớn được gấp thêm $5-3$ lần nữa, tìm số chênh lệch.\n\n**Bước 3.** Số chênh lệch đó chính là hai lần số lớn, nên chia cho số lần được gấp thêm để tìm số lớn; sau đó lấy số lớn trừ hiệu để tìm số bé.\n\n**Thử lại:** Nhân số lớn với $5$, số bé với $3$ rồi trừ hai kết quả; hiệu phải bằng $300$ như đề cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu gấp cả hai số lên $3$ lần thì hiệu của chúng là: $50\\times 3=150$\n\nSố lớn được gấp thêm số lần là: $5-3=2$ (lần)\n\nHiệu thật hơn hiệu vừa tính là: $300-150=150$\n\nHiệu đó bằng $2$ lần số lớn nên số lớn là: $150:2=75$\n\nSố bé là: $75-50=25$\n\nĐáp số: Số lớn: $75$; số bé: $25$"
+ },
+ {
+  "ma_nguon": "TX 2021 · 7",
+  "dap_an": "$n=9999$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu mỗi số hạng là tích của hai số lẻ liên tiếp ($3=1\\times 3$; $15=3\\times 5$; $35=5\\times 7$…) và tử số $2$ đúng bằng hiệu hai thừa số đó. Vì vậy mỗi số hạng viết được thành hiệu của hai phân số, và các phân số ở giữa triệt tiêu nhau.\n\n**Bước 1.** Phân tích các mẫu số $3$, $15$, $35$, $63$ thành tích hai số lẻ liên tiếp, và nhận ra mỗi tử số $2$ bằng hiệu của hai thừa số ở mẫu.\n\n**Bước 2.** Viết mỗi số hạng thành hiệu của hai phân số có tử số $1$ và mẫu là từng thừa số; phân số bị trừ ở số hạng này sẽ bằng phân số được trừ ở số hạng sau.\n\n**Bước 3.** Cộng cả dãy, các phân số ở giữa triệt tiêu nhau, chỉ còn lại $1$ trừ đi phân số cuối cùng bị trừ; cho kết quả bằng $\\dfrac{100}{101}$ để tìm phân số đó.\n\n**Bước 4.** Từ phân số cuối cùng bị trừ tìm thừa số lớn của mẫu số hạng cuối, thừa số bé hơn nó $2$ đơn vị, rồi nhân hai thừa số để được $n$.\n\n**Thử lại:** Viết số hạng cuối thành hiệu hai phân số và kiểm tra tổng cả dãy đúng bằng $\\dfrac{100}{101}$.\n\n**Phần 2. Trình bày**\n\nTa có $3=1\\times 3$; $15=3\\times 5$; $35=5\\times 7$; $63=7\\times 9$ nên mẫu mỗi số hạng là tích hai số lẻ liên tiếp.\n\n$\\dfrac{2}{1\\times 3}=\\dfrac{1}{1}-\\dfrac{1}{3}$; $\\dfrac{2}{3\\times 5}=\\dfrac{1}{3}-\\dfrac{1}{5}$; $\\dfrac{2}{5\\times 7}=\\dfrac{1}{5}-\\dfrac{1}{7}$; …\n\n$\\dfrac{2}{3}+\\dfrac{2}{15}+\\dfrac{2}{35}+\\dfrac{2}{63}+\\ldots+\\dfrac{2}{n}=\\left(1-\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}-\\dfrac{1}{5}\\right)+\\left(\\dfrac{1}{5}-\\dfrac{1}{7}\\right)+\\ldots$\n\nCác phân số ở giữa triệt tiêu nhau, tổng chỉ còn $1$ trừ đi phân số cuối cùng bị trừ.\n\nPhân số cuối cùng bị trừ là: $1-\\dfrac{100}{101}=\\dfrac{1}{101}$\n\nThừa số lớn ở mẫu số hạng cuối là $101$, thừa số bé là: $101-2=99$\n\nVậy $n=99\\times 101=9999$."
+ },
+ {
+  "ma_nguon": "TX 2021 · 8",
+  "dap_an": "$57\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ chỉ nói \"hình vuông ABCD cạnh 10 cm, phần tô màu\"; hiểu theo hình vẽ: bốn nửa hình tròn có đường kính là bốn cạnh hình vuông, vẽ vào trong hình vuông, phần tô màu là bốn \"cánh hoa\" chung của hai nửa hình tròn kề nhau (hai nét trắng là hai đường chéo). Kết quả 57 cm² dùng $\\pi=3,14$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn nửa hình tròn đường kính là bốn cạnh vẽ vào trong hình vuông phủ kín hình vuông, trong đó mỗi cánh hoa bị phủ hai lần. Vì thế tổng diện tích bốn nửa hình tròn lớn hơn diện tích hình vuông đúng bằng diện tích bốn cánh hoa.\n\n**Bước 1.** Theo hình vẽ, mỗi cạnh hình vuông là đường kính của một nửa hình tròn nên bán kính bằng một nửa cạnh; tìm bán kính đó.\n\n**Bước 2.** Bốn nửa hình tròn có tổng diện tích bằng hai hình tròn cùng bán kính, nên tính diện tích một hình tròn rồi nhân với $2$.\n\n**Bước 3.** Tính diện tích hình vuông, rồi nhận xét: các nửa hình tròn phủ kín hình vuông, mỗi cánh hoa bị hai nửa hình tròn phủ chồng lên nhau.\n\n**Bước 4.** Lấy tổng diện tích bốn nửa hình tròn trừ diện tích hình vuông để được diện tích phần tô màu là bốn cánh hoa.\n\n**Chú ý:** Dùng $3,14$ cho số $\\pi$ ở bài này vì các số liệu đều là số thập phân đơn giản.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, bốn nửa hình tròn có đường kính là bốn cạnh của hình vuông, phần tô màu là bốn cánh hoa.\n\nBán kính mỗi nửa hình tròn là: $10:2=5$ (cm)\n\nBốn nửa hình tròn ghép thành hai hình tròn, diện tích là: $5\\times 5\\times 3,14\\times 2=157$ ($\\text{cm}^2$)\n\nDiện tích hình vuông là: $10\\times 10=100$ ($\\text{cm}^2$)\n\nBốn nửa hình tròn phủ kín hình vuông, mỗi cánh hoa bị phủ hai lần nên diện tích bốn cánh hoa là: $157-100=57$ ($\\text{cm}^2$)\n\nĐáp số: $57\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "TX 2021 · 9",
+  "dap_an": "$220$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ngày trong ba ngày đầu bạn Hằng đọc \"một phần tư quyển và vài trang\". Gom riêng phần phân số của quyển sách và gom riêng các trang lẻ, thì số trang còn lại sẽ ứng với phần phân số của quyển sách chưa đọc đến.\n\n**Bước 1.** Cộng các phần phân số của quyển sách đã đọc trong ba ngày đầu để biết ba ngày đó đọc được bao nhiêu phần quyển.\n\n**Bước 2.** Cộng riêng các số trang lẻ trong ba ngày đầu; sau đó lấy cả quyển sách trừ đi phần phân số đã đọc để biết phần quyển sách còn lại.\n\n**Bước 3.** Phần quyển sách còn lại ứng với các trang lẻ cộng với số trang đọc ở ngày thứ tư; tính số trang đó.\n\n**Bước 4.** Biết một phân số của quyển sách ứng với bao nhiêu trang thì lấy số trang đó chia cho phân số để tìm cả quyển sách.\n\n**Chú ý:** Các trang lẻ $6$, $5$, $4$ không nằm trong phần phân số của quyển sách nên phải cộng riêng, không được trừ đi trước khi chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBa ngày đầu đọc được số phần quyển sách là: $\\dfrac{1}{4}\\times 3=\\dfrac{3}{4}$ (quyển sách)\n\nSố trang lẻ đã đọc trong ba ngày đầu là: $6+5+4=15$ (trang)\n\nPhần quyển sách còn lại ngoài $\\dfrac{3}{4}$ quyển là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (quyển sách)\n\nSố trang ứng với $\\dfrac{1}{4}$ quyển sách là: $15+40=55$ (trang)\n\nQuyển sách có số trang là: $55:\\dfrac{1}{4}=220$ (trang)\n\nĐáp số: $220$ trang"
+ },
+ {
+  "ma_nguon": "TX 2021 · 10",
+  "dap_an": "$150$ km",
+  "ghi_chu_nghi": "Đề có chữ \"ô tô đến B chậm\" trong câu nói về người đi xe máy (có thể in nhầm, nên là \"người đó\"/\"xe máy\"); hiểu là cùng một người đi và \"chậm\" so với giờ dự định (cùng một mốc). Khi đó thời gian đi với 25 km/giờ hơn thời gian đi với 30 km/giờ là 2 − 1 = 1 giờ.",
+  "so_do_mo_ta": {
+   "tieu_de": "Thời gian đi hết quãng đường AB",
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Đi 25 km/giờ",
+     "phan": 6
+    },
+    {
+     "nhan": "Đi 30 km/giờ",
+     "phan": 5
+    }
+   ],
+   "hieu": "1 giờ",
+   "dau_hoi": [
+    "Đi 25 km/giờ"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch. Hai lần đi cùng chậm hơn dự định ($2$ giờ và $1$ giờ) nên thời gian của hai lần đi hơn kém nhau đúng bằng hiệu của hai số giờ chậm, từ đó đưa về bài toán hiệu – tỉ.\n\n**Bước 1.** Lập tỉ số hai vận tốc rồi đổi sang tỉ số hai thời gian: vì cùng quãng đường nên tỉ số thời gian là tỉ số ngược lại với tỉ số vận tốc.\n\n**Bước 2.** So sánh hai lần đi: lần đi chậm hơn dự định $2$ giờ hơn lần đi chậm hơn dự định $1$ giờ là bao nhiêu giờ, đó là hiệu của hai thời gian đi.\n\n**Bước 3.** Vẽ sơ đồ hai thời gian theo số phần bằng nhau, hiệu hai thời gian ứng với hiệu số phần, rồi tìm thời gian đi với vận tốc nhỏ hơn.\n\n**Bước 4.** Nhân vận tốc nhỏ với thời gian tương ứng để tìm quãng đường AB.\n\n**Thử lại:** Dùng vận tốc còn lại và quãng đường vừa tìm để tính thời gian, hiệu hai thời gian phải đúng bằng số giờ đã tìm ở bước 2.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số vận tốc là: $25:30=\\dfrac{5}{6}$\n\nTrên cùng quãng đường AB, vận tốc và thời gian tỉ lệ nghịch nên tỉ số thời gian đi với $25$ km/giờ và thời gian đi với $30$ km/giờ là $\\dfrac{6}{5}$.\n\nHai lần đi chậm hơn dự định lần lượt $2$ giờ và $1$ giờ nên thời gian đi với $25$ km/giờ hơn thời gian đi với $30$ km/giờ là: $2-1=1$ (giờ)\n\nTa có sơ đồ:\n\n(Thời gian đi với $25$ km/giờ: $6$ phần; thời gian đi với $30$ km/giờ: $5$ phần; hiệu $1$ giờ)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nThời gian đi với $25$ km/giờ là: $1:1\\times 6=6$ (giờ)\n\nQuãng đường AB dài là: $25\\times 6=150$ (km)\n\nĐáp số: $150$ km"
+ }
+]

@@ -1,0 +1,181 @@
+[
+ {
+  "ma_nguon": "LTV 2020 · 1",
+  "dap_an": "$x=8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm $x$ phải gỡ dần từng phép tính bao quanh $x$: trước hết tìm số bị trừ (phần có chứa $x$), sau đó mới tìm thừa số chưa biết.\n\n**Bước 1.** Nhận ra $\\dfrac{3}{4}\\times x$ là số bị trừ trong phép trừ, hiệu là $\\dfrac{9}{2}$ còn số trừ là $\\dfrac{3}{2}$.\n\n**Bước 2.** Muốn tìm số bị trừ ta lấy hiệu cộng với số trừ; hai phân số này cùng mẫu số $2$ nên cộng rất gọn.\n\n**Bước 3.** Khi đã biết tích $\\dfrac{3}{4}\\times x$, muốn tìm thừa số chưa biết ta lấy tích chia cho thừa số đã biết; chia cho một phân số thì nhân với phân số đảo ngược.\n\nThử lại: thay giá trị $x$ vừa tìm vào vế trái, tính ra phải bằng $\\dfrac{9}{2}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}\\dfrac{3}{4}\\times x-\\dfrac{3}{2}=\\dfrac{9}{2}\\\\ \\dfrac{3}{4}\\times x=\\dfrac{9}{2}+\\dfrac{3}{2}\\\\ \\dfrac{3}{4}\\times x=\\dfrac{12}{2}\\\\ \\dfrac{3}{4}\\times x=6\\\\ x=6:\\dfrac{3}{4}\\\\ x=6\\times\\dfrac{4}{3}\\\\ x=8\\end{array}$"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 2",
+  "dap_an": "Giảm $\\dfrac{3}{2}$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật $=$ chiều dài $\\times$ chiều rộng $\\times$ chiều cao. Khi hai đại lượng trong phép nhân thay đổi mà tích không đổi thì đại lượng còn lại phải thay đổi ngược lại tương ứng.\n\n**Bước 1.** Viết công thức gốc của thể tích rồi nhóm chiều dài với chiều rộng thành diện tích đáy, vì chỉ hai kích thước này bị thay đổi.\n\n**Bước 2.** Tính diện tích đáy lúc sau gấp mấy lần lúc đầu: chiều dài giảm $2$ lần tức là còn $\\dfrac{1}{2}$ lúc đầu, chiều rộng tăng $3$ lần, rồi nhân hai tỉ số đó với nhau.\n\n**Bước 3.** Thể tích không đổi mà diện tích đáy đã thay đổi nên chiều cao phải thay đổi ngược lại đúng bấy nhiêu lần để bù lại.\n\n**Chú ý:** Phải nhân hai tỉ số của chiều dài và chiều rộng với nhau, không được cộng hay trừ số lần của chúng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích $=$ chiều dài $\\times$ chiều rộng $\\times$ chiều cao.\n\nChiều dài lúc sau so với lúc đầu bằng: $1:2=\\dfrac{1}{2}$ (lần)\n\nChiều rộng lúc sau so với lúc đầu bằng: $3$ (lần)\n\nDiện tích đáy (chiều dài $\\times$ chiều rộng) lúc sau so với lúc đầu bằng: $\\dfrac{1}{2}\\times 3=\\dfrac{3}{2}$ (lần)\n\nThể tích không đổi mà diện tích đáy gấp $\\dfrac{3}{2}$ lần nên chiều cao phải giảm đi $\\dfrac{3}{2}$ lần.\n\nĐáp số: giảm $\\dfrac{3}{2}$ lần",
+  "ghi_chu_nghi": "Hiểu \"giảm đi hai lần\" = chia cho 2 (còn một nửa). Đáp số tương đương: giảm 1,5 lần (chiều cao mới bằng 2/3 chiều cao cũ)."
+ },
+ {
+  "ma_nguon": "LTV 2020 · 3",
+  "dap_an": "Bố: $30$ tuổi; con: $3$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của bố và con không bao giờ thay đổi. Đề cho hai tỉ số ở hai thời điểm khác nhau nên ta biểu thị tuổi con theo hiệu số tuổi (đại lượng không đổi) ở cả hai lần rồi so sánh.\n\n**Bước 1.** Hiện nay tuổi bố gấp $10$ lần tuổi con, nên tìm hiệu số tuổi gấp tuổi con mấy lần; từ đó biết tuổi con hiện nay bằng bao nhiêu phần hiệu số tuổi.\n\n**Bước 2.** Làm tương tự với thời điểm $6$ năm sau, khi tuổi bố gấp $4$ lần tuổi con, để tìm tuổi con lúc đó bằng bao nhiêu phần hiệu số tuổi.\n\n**Bước 3.** Sau $6$ năm tuổi con tăng thêm đúng $6$ tuổi, nên $6$ tuổi ứng với phần chênh lệch giữa hai phân số vừa tìm; từ đó tìm được hiệu số tuổi.\n\n**Bước 4.** Từ hiệu số tuổi tính tuổi con hiện nay bằng phân số của nó, rồi tính tuổi bố hiện nay.\n\n**Chú ý:** Phải lấy phân số của cùng một hiệu số tuổi ở cả hai thời điểm, không so với tuổi bố vì tuổi bố cũng thay đổi theo thời gian.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiện nay tuổi bố gấp $10$ lần tuổi con nên hiệu số tuổi gấp tuổi con: $10-1=9$ (lần). Do đó tuổi con bằng $\\dfrac{1}{9}$ hiệu số tuổi.\n\nSau $6$ năm tuổi bố gấp $4$ lần tuổi con nên hiệu số tuổi gấp tuổi con: $4-1=3$ (lần). Do đó tuổi con bằng $\\dfrac{1}{3}$ hiệu số tuổi.\n\nHiệu số tuổi không đổi nên $6$ tuổi ứng với: $\\dfrac{1}{3}-\\dfrac{1}{9}=\\dfrac{2}{9}$ (hiệu số tuổi)\n\nHiệu số tuổi của bố và con là: $6:\\dfrac{2}{9}=27$ (tuổi)\n\nTuổi con hiện nay là: $27\\times\\dfrac{1}{9}=3$ (tuổi)\n\nTuổi bố hiện nay là: $27+3=30$ (tuổi)\n\nĐáp số: Bố: $30$ tuổi; con: $3$ tuổi"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 4",
+  "dap_an": "$13,4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức chỉ có chia, nhân và trừ nên làm chia và nhân từ trái sang phải trước, phép trừ làm sau cùng; chia số thập phân cho số thập phân thì nhân cả số bị chia và số chia với $100$ để chia số tự nhiên.\n\n**Bước 1.** Xác định thứ tự thực hiện: phép chia và phép nhân cùng cấp nên làm lần lượt từ trái sang phải, còn phép trừ làm sau cùng.\n\n**Bước 2.** Thực hiện phép chia hai số thập phân: nhân cả số bị chia và số chia với $100$ để hai số đều là số tự nhiên rồi chia.\n\n**Bước 3.** Nhân thương vừa tìm được với $4,5$, rồi cuối cùng trừ đi $13,6$ để ra kết quả.\n\n**Phần 2. Trình bày**\n\n$3,48:0,58\\times 4,5-13,6$\n\n$=348:58\\times 4,5-13,6$\n\n$=6\\times 4,5-13,6$\n\n$=27-13,6$\n\n$=13,4$"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 5",
+  "dap_an": "Số bé: $15$; số lớn: $25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của hai số nhân với $2$ chính là tổng của hai số đó. Có tổng và hiệu của hai số thì đây là bài toán tổng – hiệu, giải bằng sơ đồ đoạn thẳng.\n\n**Bước 1.** Đổi trung bình cộng thành tổng: tổng của hai số bằng trung bình cộng nhân với số các số hạng là $2$.\n\n**Bước 2.** Vẽ sơ đồ: số lớn gồm đoạn bằng số bé và thêm một đoạn bằng hiệu; nếu bớt đoạn thêm đó đi thì hai số bằng nhau.\n\n**Bước 3.** Tìm số bé: lấy tổng trừ đi hiệu rồi chia $2$, vì sau khi bớt phần hơn thì còn lại hai đoạn bằng nhau.\n\n**Bước 4.** Tìm số lớn bằng cách lấy số bé cộng với hiệu, rồi thử lại xem tổng và hiệu có đúng với đề không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của hai số là: $20\\times 2=40$\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; số lớn gồm 1 đoạn thêm 10; tổng 40)\n\nSố bé là: $(40-10):2=15$\n\nSố lớn là: $15+10=25$\n\nĐáp số: Số bé: $15$; số lớn: $25$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 15,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "10"
+    }
+   ],
+   "tong": "40",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2020 · 6",
+  "dap_an": "$67,32$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi hình chữ nhật $=$ (chiều dài $+$ chiều rộng) $\\times\\ 2$, nên phải tìm chiều dài trước vì đề chỉ cho chiều rộng và phần chiều dài hơn chiều rộng.\n\n**Bước 1.** Tìm chiều dài: chiều dài hơn chiều rộng một đoạn nên lấy chiều rộng cộng với phần hơn đó.\n\n**Bước 2.** Tính nửa chu vi bằng cách cộng chiều dài với chiều rộng.\n\n**Bước 3.** Nhân nửa chu vi với $2$ để được chu vi, nhớ viết đơn vị là mét.\n\n**Chú ý:** Khi cộng số thập phân phải đặt các dấu phẩy thẳng cột với nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài hình chữ nhật là: $15,21+3,24=18,45$ (m)\n\nNửa chu vi hình chữ nhật là: $18,45+15,21=33,66$ (m)\n\nChu vi hình chữ nhật là: $33,66\\times 2=67,32$ (m)\n\nĐáp số: $67,32$ m"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 7",
+  "dap_an": "$36$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số học sinh cả lớp là số cần tìm; $27$ bạn chỉ là một phần của lớp, ứng với $\\dfrac{3}{4}$ số học sinh. Muốn tìm cả lớp thì lấy $27$ chia cho $\\dfrac{3}{4}$.\n\n**Bước 1.** Xác định số nào ứng với phân số nào: $27$ bạn ứng với $\\dfrac{3}{4}$ số học sinh của cả lớp.\n\n**Bước 2.** Muốn tìm một số khi biết giá trị một phân số của số đó thì lấy giá trị ấy chia cho phân số.\n\n**Bước 3.** Chia cho một phân số thì nhân với phân số đảo ngược, rồi viết kết quả kèm đơn vị là học sinh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$27$ bạn ứng với $\\dfrac{3}{4}$ số học sinh của lớp.\n\nSố học sinh của lớp là: $27:\\dfrac{3}{4}=27\\times\\dfrac{4}{3}=36$ (học sinh)\n\nĐáp số: $36$ học sinh"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 8",
+  "dap_an": "$400$ nghìn đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mua càng nhiều khẩu trang cùng loại thì càng tốn nhiều tiền, nên số tiền tỉ lệ thuận với số khẩu trang. Làm bằng cách rút về đơn vị: tìm giá một chiếc khẩu trang rồi nhân với số chiếc cần mua.\n\n**Bước 1.** Nhận ra số khẩu trang và số tiền là hai đại lượng tỉ lệ thuận, nên rút về đơn vị là một chiếc khẩu trang.\n\n**Bước 2.** Tìm giá tiền một chiếc bằng cách lấy tổng số tiền chia cho số khẩu trang đã mua.\n\n**Bước 3.** Lấy giá tiền một chiếc nhân với số khẩu trang cần mua để tìm số tiền phải trả.\n\n**Chú ý:** Số tiền của đề cho theo đơn vị nghìn đồng nên đáp số cũng tính theo nghìn đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá tiền một chiếc khẩu trang là: $160:20=8$ (nghìn đồng)\n\nSố tiền mua $50$ chiếc khẩu trang là: $8\\times 50=400$ (nghìn đồng)\n\nĐáp số: $400$ nghìn đồng"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 9",
+  "dap_an": "$A=\\dfrac{119}{117}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số có cả tử số và mẫu số đều khác nhau, nên so sánh với $1$ cho gọn: phân số có tử số lớn hơn mẫu số thì lớn hơn $1$, phân số có tử số bé hơn mẫu số thì bé hơn $1$.\n\n**Bước 1.** Nhìn tử số và mẫu số của $A=\\dfrac{119}{117}$ để xem $A$ lớn hơn hay bé hơn $1$.\n\n**Bước 2.** Làm tương tự với $B=\\dfrac{201}{202}$ để xem $B$ lớn hơn hay bé hơn $1$.\n\n**Bước 3.** Dùng số $1$ làm cầu nối: số lớn hơn $1$ thì lớn hơn số bé hơn $1$, từ đó kết luận phân số nào lớn hơn.\n\n**Phần 2. Trình bày**\n\nVì $119>117$ nên $A=\\dfrac{119}{117}>1$.\n\nVì $201<202$ nên $B=\\dfrac{201}{202}<1$.\n\nDo đó $A>1>B$, vậy phân số lớn hơn là $A=\\dfrac{119}{117}$."
+ },
+ {
+  "ma_nguon": "LTV 2020 · 10",
+  "dap_an": "$9$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng công việc không đổi, nên bằng số \"giờ làm của $1$ người\" theo dự định: số người $\\times$ số giờ mỗi ngày $\\times$ số ngày. Thực tế mỗi ngày làm được nhiều hơn nên lấy khối lượng đó chia cho khối lượng làm được mỗi ngày thực tế.\n\n**Bước 1.** Tính khối lượng công việc theo dự định, tính bằng số giờ làm của một người: nhân số người, số giờ mỗi ngày và số ngày.\n\n**Bước 2.** Tính số người thực tế sau khi bổ sung và số giờ làm mỗi ngày thực tế sau khi làm thêm.\n\n**Bước 3.** Tính mỗi ngày thực tế cả đội làm được bao nhiêu giờ của một người, bằng cách nhân số người thực tế với số giờ mỗi ngày thực tế.\n\n**Bước 4.** Lấy khối lượng công việc chia cho khối lượng làm được mỗi ngày để tìm số ngày làm xong.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCông việc cần làm (tính theo số giờ làm của $1$ người) là: $15\\times 8\\times 12=1440$ (giờ)\n\nSố người thực tế là: $15+1=16$ (người)\n\nSố giờ làm mỗi ngày thực tế là: $8+2=10$ (giờ)\n\nMỗi ngày cả đội làm được (tính theo số giờ làm của $1$ người): $16\\times 10=160$ (giờ)\n\nSố ngày đội làm xong công việc là: $1440:160=9$ (ngày)\n\nĐáp số: $9$ ngày"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 11",
+  "dap_an": "$2,2$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe đi cùng chiều, xe máy ở phía sau và nhanh hơn nên mỗi giờ xe máy rút ngắn khoảng cách với xe đạp một đoạn bằng hiệu hai vận tốc. Thời gian đuổi kịp bằng khoảng cách ban đầu chia cho hiệu vận tốc.\n\n**Bước 1.** Đọc hình vẽ: xe máy xuất phát từ $A$, xe đạp xuất phát từ $B$ cùng lúc và cùng chiều, khoảng cách ban đầu $AB$ ghi trên hình.\n\n**Bước 2.** Tính mỗi giờ xe máy đến gần xe đạp thêm bao nhiêu kilômét: lấy vận tốc lớn trừ vận tốc bé.\n\n**Bước 3.** Lấy khoảng cách ban đầu chia cho quãng đường rút ngắn được mỗi giờ để tìm thời gian đuổi kịp, tính bằng giờ.\n\n**Bước 4.** Đổi phần thập phân của giờ ra phút để đáp số dễ hình dung hơn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Xe máy từ A với vận tốc 45 km/giờ; xe đạp từ B với vận tốc 15 km/giờ; AB dài 66 km; hai xe gặp nhau tại D)\n\nMỗi giờ xe máy đến gần xe đạp thêm: $45-15=30$ (km)\n\nThời gian để xe máy đuổi kịp xe đạp là: $66:30=2,2$ (giờ)\n\nĐổi: $2,2$ giờ $=2$ giờ $12$ phút\n\nĐáp số: $2,2$ giờ (tức $2$ giờ $12$ phút)",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc xuất phát",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 66
+    },
+    {
+     "ten": "D",
+     "x": 99,
+     "ghi": "đuổi kịp"
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 99,
+     "nhan": "45 km/giờ"
+    },
+    {
+     "tu": 66,
+     "den": 99,
+     "nhan": "15 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 66,
+     "nhan": "66 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đáp số ghi 2,2 giờ (= 2 giờ 12 phút); hai cách viết tương đương."
+ },
+ {
+  "ma_nguon": "LTV 2020 · 12",
+  "dap_an": "$900$ nghìn đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền còn lại sau mỗi lần tiêu là một phân số của số tiền ngay trước lần đó. Đổi từng lần ra \"bằng bao nhiêu phần số tiền được mừng tuổi\", rồi $400$ nghìn ứng với phân số cuối cùng.\n\n**Bước 1.** Sau khi mua đồ chơi hết $\\dfrac{1}{3}$ số tiền, tìm số tiền còn lại bằng bao nhiêu phần số tiền được mừng tuổi: lấy $1$ trừ $\\dfrac{1}{3}$.\n\n**Bước 2.** Ủng hộ $\\dfrac{1}{3}$ số tiền còn lại thì còn $1-\\dfrac{1}{3}$ số tiền còn lại; nhân phân số này với phân số ở bước trên để biết số tiền cuối cùng bằng bao nhiêu phần số tiền được mừng tuổi.\n\n**Bước 3.** Số tiền cuối cùng là $400$ nghìn ứng với phân số vừa tìm của tổng số tiền, nên lấy $400$ chia cho phân số đó.\n\n**Chú ý:** $\\dfrac{1}{3}$ ở lần thứ hai là $\\dfrac{1}{3}$ của số tiền còn lại chứ không phải của số tiền được mừng tuổi ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi mua đồ chơi, số tiền còn lại bằng: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số tiền được mừng tuổi)\n\nSau khi ủng hộ, số tiền còn lại bằng: $\\dfrac{2}{3}\\times\\left(1-\\dfrac{1}{3}\\right)=\\dfrac{2}{3}\\times\\dfrac{2}{3}=\\dfrac{4}{9}$ (số tiền được mừng tuổi)\n\n$400$ nghìn đồng ứng với $\\dfrac{4}{9}$ số tiền được mừng tuổi.\n\nSố tiền Chi được mừng tuổi là: $400:\\dfrac{4}{9}=400\\times\\dfrac{9}{4}=900$ (nghìn đồng)\n\nĐáp số: $900$ nghìn đồng"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 13",
+  "dap_an": "$14850$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số tự nhiên chia hết cho $3$ cách nhau đúng $3$ đơn vị nên lập thành một dãy cách đều. Tổng của dãy cách đều bằng (số đầu $+$ số cuối) $\\times$ số số hạng $:\\ 2$.\n\n**Bước 1.** Liệt kê vài số đầu của dãy và tìm số lớn nhất nhỏ hơn $300$ mà chia hết cho $3$ để biết số cuối của dãy.\n\n**Bước 2.** Chú ý số $0$ cũng chia hết cho $3$ nhưng cộng thêm $0$ không làm tổng thay đổi, nên có thể bắt đầu dãy từ số $3$.\n\n**Bước 3.** Tính số số hạng của dãy cách đều: lấy (số cuối trừ số đầu) chia cho khoảng cách giữa hai số liền nhau rồi cộng $1$.\n\n**Bước 4.** Tính tổng của dãy: lấy tổng của số đầu và số cuối nhân với số số hạng rồi chia $2$.\n\n**Chú ý:** Số cuối phải nhỏ hơn $300$ nên không được lấy chính số $300$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác số tự nhiên nhỏ hơn $300$ chia hết cho $3$ là $0;\\ 3;\\ 6;\\ \\ldots;\\ 297$. Số $0$ cộng vào không làm thay đổi tổng nên ta tính tổng của dãy $3;\\ 6;\\ 9;\\ \\ldots;\\ 297$, hai số liền nhau cách nhau $3$ đơn vị.\n\nSố số hạng của dãy là: $(297-3):3+1=99$ (số)\n\nTổng của dãy là: $(297+3)\\times 99:2=14850$\n\nĐáp số: $14850$"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 14",
+  "dap_an": "$x=0$, $y=0$ hoặc $x=6$, $y=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $5$ có chữ số tận cùng là $0$ hoặc $5$; số chia hết cho $4$ thì phải là số chẵn và hai chữ số tận cùng tạo thành số chia hết cho $4$; số chia hết cho $3$ thì tổng các chữ số chia hết cho $3$. Dùng lần lượt từng dấu hiệu để tìm $y$ rồi tìm $x$.\n\n**Bước 1.** Kết hợp dấu hiệu chia hết cho $5$ và dấu hiệu chia hết cho $4$ (số chẵn) để tìm chữ số hàng đơn vị $y$.\n\n**Bước 2.** Với $y$ vừa tìm, dùng dấu hiệu chia hết cho $4$ (xét hai chữ số tận cùng) để chọn các giá trị của chữ số hàng chục $x$.\n\n**Bước 3.** Dùng dấu hiệu chia hết cho $3$: tổng các chữ số của $\\overline{27xy}$ phải chia hết cho $3$, để tìm các giá trị khác của $x$ thoả điều kiện này.\n\n**Bước 4.** Chọn những giá trị của $x$ thoả mãn cả hai điều kiện rồi viết các số tìm được để kiểm tra lại.\n\n**Chú ý:** Đề hỏi \"các chữ số\" nên có thể có nhiều hơn một cặp $x$, $y$; chữ số $0$ cũng là giá trị được phép của $x$.\n\n**Phần 2. Trình bày**\n\nSố chia hết cho $5$ nên $y=0$ hoặc $y=5$; số chia hết cho $4$ là số chẵn nên $y=0$.\n\nSố có dạng $\\overline{27x0}$ chia hết cho $4$ nên $\\overline{x0}$ chia hết cho $4$, do đó $x$ là chữ số chẵn: $x=0;\\ 2;\\ 4;\\ 6;\\ 8$.\n\nSố chia hết cho $3$ nên tổng các chữ số $2+7+x+0=9+x$ chia hết cho $3$, do đó $x$ chia hết cho $3$: $x=0;\\ 3;\\ 6;\\ 9$.\n\nHai điều kiện cùng thoả mãn khi $x=0$ hoặc $x=6$.\n\nVậy $x=0$, $y=0$ (số $2700$) hoặc $x=6$, $y=0$ (số $2760$)."
+ },
+ {
+  "ma_nguon": "LTV 2020 · 15",
+  "dap_an": "$18,84\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm là nửa hình tròn lớn (đường kính $AC$) bỏ đi hai nửa hình tròn nhỏ (đường kính $AB$ và $BC$). Phải đổi $AB$ ra xăng-ti-mét cho cùng đơn vị với $BC$ rồi mới tìm các bán kính.\n\n**Bước 1.** Đổi $AB$ từ đề-xi-mét sang xăng-ti-mét cho cùng đơn vị với $BC$, rồi tìm đường kính $AC$ của nửa hình tròn lớn.\n\n**Bước 2.** Bán kính mỗi nửa hình tròn bằng một nửa đường kính; tìm bán kính của ba nửa hình tròn (một lớn, hai nhỏ).\n\n**Bước 3.** Tính diện tích từng nửa hình tròn: lấy bán kính nhân bán kính nhân $3,14$ rồi chia $2$.\n\n**Bước 4.** Lấy diện tích nửa hình tròn lớn trừ đi diện tích hai nửa hình tròn nhỏ để được phần tô đậm.\n\n**Chú ý:** Chỉ lấy một nửa hình tròn nên đừng quên chia $2$; diện tích tính ra có đơn vị là xăng-ti-mét vuông.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $B$ nằm giữa $A$ và $C$; phần tô đậm là nửa hình tròn đường kính $AC$ bỏ đi hai nửa hình tròn đường kính $AB$ và $BC$.\n\nĐổi: $0,6$ dm $=6$ cm\n\nĐường kính $AC$ là: $6+4=10$ (cm)\n\nBán kính nửa hình tròn đường kính $AC$ là: $10:2=5$ (cm)\n\nBán kính nửa hình tròn đường kính $AB$ là: $6:2=3$ (cm)\n\nBán kính nửa hình tròn đường kính $BC$ là: $4:2=2$ (cm)\n\nDiện tích nửa hình tròn đường kính $AC$ là: $5\\times 5\\times 3,14:2=39,25$ ($\\text{cm}^2$)\n\nDiện tích nửa hình tròn đường kính $AB$ là: $3\\times 3\\times 3,14:2=14,13$ ($\\text{cm}^2$)\n\nDiện tích nửa hình tròn đường kính $BC$ là: $2\\times 2\\times 3,14:2=6,28$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $39,25-14,13-6,28=18,84$ ($\\text{cm}^2$)\n\nĐáp số: $18,84\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 16",
+  "dap_an": "Gà: $16$ con; vịt: $24$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $50\\%$ chính là $\\dfrac{1}{2}$. Vì $\\dfrac{1}{2}$ số gà bằng $\\dfrac{1}{3}$ số vịt nên coi hai phần bằng nhau này là $1$ phần; khi đó số gà và số vịt đều là một số phần bằng nhau, đây là bài toán tổng – tỉ.\n\n**Bước 1.** Đổi $50\\%$ ra phân số rồi viết quan hệ đề cho: một nửa số gà bằng một phần ba số vịt.\n\n**Bước 2.** Coi $\\dfrac{1}{2}$ số gà và $\\dfrac{1}{3}$ số vịt cùng là $1$ phần, từ đó đếm số gà gồm mấy phần và số vịt gồm mấy phần như thế.\n\n**Bước 3.** Tìm tổng số phần bằng nhau rồi lấy $40$ con chia cho tổng đó để tìm giá trị của một phần.\n\n**Bước 4.** Nhân giá trị một phần với số phần của gà, rồi với số phần của vịt, để tìm số con mỗi loại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $50\\%=\\dfrac{1}{2}$\n\nCoi $\\dfrac{1}{2}$ số gà và $\\dfrac{1}{3}$ số vịt cùng là $1$ phần thì số gà là $2$ phần, số vịt là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Số gà 2 phần; số vịt 3 phần; tổng 40 con)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nGiá trị một phần là: $40:5=8$ (con)\n\nSố gà là: $8\\times 2=16$ (con)\n\nSố vịt là: $8\\times 3=24$ (con)\n\nĐáp số: Gà: $16$ con; vịt: $24$ con",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Số gà",
+     "phan": 2
+    },
+    {
+     "nhan": "Số vịt",
+     "phan": 3
+    }
+   ],
+   "tong": "40 con",
+   "dau_hoi": [
+    "Số gà",
+    "Số vịt"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LTV 2020 · 17",
+  "dap_an": "$x=\\dfrac{2}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các phân số $\\dfrac{1}{2};\\ \\dfrac{1}{6};\\ \\dfrac{1}{12};\\ \\dfrac{1}{20};\\ \\dfrac{1}{30}$ có mẫu số là tích của hai số tự nhiên liên tiếp ($1\\times 2;\\ 2\\times 3;\\ 3\\times 4;\\ 4\\times 5;\\ 5\\times 6$), nên mỗi phân số viết được thành hiệu của hai phân số và cả dãy rút gọn gần hết.\n\n**Bước 1.** Viết lại mỗi mẫu số thành tích của hai số tự nhiên liên tiếp để thấy rõ quy luật của dãy phân số.\n\n**Bước 2.** Viết mỗi phân số thành hiệu của hai phân số có tử số $1$ và mẫu số là hai thừa số của mẫu cũ; các phân số ở giữa vừa được cộng vừa bị trừ nên mất đi.\n\n**Bước 3.** Chỉ còn số đầu trừ số cuối, tính được tổng của năm phân số đã biết.\n\n**Bước 4.** $x$ cộng với tổng đó bằng $\\dfrac{47}{42}$, nên muốn tìm số hạng chưa biết ta lấy tổng trừ số hạng đã biết, quy đồng mẫu số $42$ để trừ.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}x+\\dfrac{1}{2}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{20}+\\dfrac{1}{30}=\\dfrac{47}{42}\\\\ x+\\dfrac{1}{1\\times 2}+\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}=\\dfrac{47}{42}\\\\ x+\\left(1-\\dfrac{1}{2}\\right)+\\left(\\dfrac{1}{2}-\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}-\\dfrac{1}{4}\\right)+\\left(\\dfrac{1}{4}-\\dfrac{1}{5}\\right)+\\left(\\dfrac{1}{5}-\\dfrac{1}{6}\\right)=\\dfrac{47}{42}\\\\ x+\\left(1-\\dfrac{1}{6}\\right)=\\dfrac{47}{42}\\\\ x+\\dfrac{5}{6}=\\dfrac{47}{42}\\\\ x=\\dfrac{47}{42}-\\dfrac{5}{6}\\\\ x=\\dfrac{47}{42}-\\dfrac{35}{42}\\\\ x=\\dfrac{12}{42}\\\\ x=\\dfrac{2}{7}\\end{array}$"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 18",
+  "dap_an": "$60$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trang đánh số bằng ba chữ số là các trang từ $100$ trở đi; đề lại hỏi ba chữ số KHÁC NHAU nên phải đếm những số có ba chữ số đôi một khác nhau trong khoảng đó. Đếm theo từng hàng: hàng trăm, hàng chục rồi hàng đơn vị.\n\n**Bước 1.** Xác định các trang có ba chữ số của quyển sách và chữ số hàng trăm chung của chúng.\n\n**Bước 2.** Chữ số hàng chục không được trùng chữ số hàng trăm; chia các trường hợp theo chữ số hàng chục vì giới hạn trang cuối cùng ảnh hưởng tới hàng chục lớn nhất.\n\n**Bước 3.** Với mỗi trường hợp, đếm số cách chọn chữ số hàng đơn vị sao cho khác hai chữ số đã chọn, rồi nhân với số cách chọn chữ số hàng chục.\n\n**Bước 4.** Cộng số trang của các trường hợp lại để có kết quả cuối cùng.\n\n**Chú ý:** Với chữ số hàng chục lớn nhất, chữ số hàng đơn vị bị giới hạn vì quyển sách chỉ có đến một trang cuối nhất định.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác trang có ba chữ số là trang $100$ đến trang $184$; chữ số hàng trăm đều là $1$, nên chữ số hàng chục khác $1$.\n\nHàng chục là $0$: hàng đơn vị khác $0$ và khác $1$ nên có $10-2=8$ trang ($102;\\ 103;\\ \\ldots;\\ 109$).\n\nHàng chục từ $2$ đến $7$ ($6$ chữ số): mỗi chữ số hàng chục có hàng đơn vị khác $1$ và khác hàng chục nên có $10-2=8$ cách. Số trang là: $6\\times 8=48$ (trang)\n\nHàng chục là $8$: trang không vượt quá $184$ nên hàng đơn vị chỉ có thể là $0;\\ 2;\\ 3;\\ 4$ (loại $1$), có $4$ trang.\n\nSố trang đánh số bằng ba chữ số khác nhau là: $8+48+4=60$ (trang)\n\nĐáp số: $60$ trang",
+  "ghi_chu_nghi": "Hiểu \"ba chữ số khác nhau\" = số có ba chữ số mà ba chữ số đôi một khác nhau (đáp số 60). Nếu chỉ hiểu là \"trang có ba chữ số\" thì là 85 trang (từ 100 đến 184)."
+ },
+ {
+  "ma_nguon": "LTV 2020 · 19",
+  "dap_an": "$640\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi cắt bốn hình vuông ở bốn góc rồi gấp lên, chiều cao hình hộp bằng cạnh hình vuông bị cắt, còn chiều dài và chiều rộng đáy hộp ngắn đi hai lần cạnh hình vuông đó so với tấm bìa.\n\n**Bước 1.** Tìm chiều cao hình hộp: phần bìa gấp lên chính là cạnh của hình vuông đã cắt.\n\n**Bước 2.** Tìm chiều dài và chiều rộng của đáy hộp: mỗi kích thước của tấm bìa bị mất đi hai đoạn bằng cạnh hình vuông ở hai đầu.\n\n**Bước 3.** Tính thể tích hình hộp chữ nhật bằng cách nhân chiều dài, chiều rộng và chiều cao.\n\n**Chú ý:** Mỗi kích thước bị cắt ở cả hai đầu nên phải trừ hai lần cạnh hình vuông, không phải trừ một lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều cao của hình hộp chữ nhật bằng cạnh hình vuông bị cắt, là $4$ cm.\n\nChiều dài đáy hộp là: $24-4\\times 2=16$ (cm)\n\nChiều rộng đáy hộp là: $18-4\\times 2=10$ (cm)\n\nThể tích hình hộp chữ nhật là: $16\\times 10\\times 4=640$ ($\\text{cm}^3$)\n\nĐáp số: $640\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LTV 2020 · 20",
+  "dap_an": "$\\dfrac{1}{15}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tam giác chung đáy nằm trên đường thẳng $PM$ thì tỉ số diện tích bằng tỉ số hai đường cao hạ xuống đường thẳng đó. So các đường cao hạ từ $A$, $B$, $C$ xuống $PM$ để tìm tỉ số $S_{PAN}:S_{PBN}$, rồi dùng tam giác $ABN$ có diện tích biết theo tam giác $ABC$.\n\n**Bước 1.** Dựa vào $AN=\\dfrac{1}{5}\\times AC$ tìm tỉ số hai đường cao hạ từ $A$ và từ $C$ xuống $MN$, thông qua hai tam giác $AMN$ và $CMN$.\n\n**Bước 2.** $M$ là trung điểm $BC$ nên hai đường cao hạ từ $B$ và từ $C$ xuống $MN$ bằng nhau; từ đó biết tỉ số hai đường cao hạ từ $A$ và từ $B$.\n\n**Bước 3.** Hai tam giác $PAN$ và $PBN$ chung đáy $PN$ nên tỉ số diện tích bằng tỉ số hai đường cao; vì $S_{PBN}$ gồm $S_{PAN}$ và $S_{ABN}$ nên tìm được $S_{ABN}$ gồm mấy phần $S_{PAN}$.\n\n**Bước 4.** Tính $S_{ABN}$ so với $S_{ABC}$ vì hai tam giác này chung đường cao hạ từ $B$ xuống $AC$, rồi suy ra tỉ số cần tìm.\n\n**Chú ý:** Ba điểm $P$, $N$, $M$ thẳng hàng nên đường thẳng $PM$ dùng chung làm đáy cho các tam giác này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $A$ nằm giữa $B$ và $P$, ba điểm $P$, $N$, $M$ thẳng hàng.\n\nVì $AN=\\dfrac{1}{5}\\times AC$ nên $NC=\\dfrac{4}{5}\\times AC$, do đó $AN=\\dfrac{1}{4}\\times NC$.\n\nTam giác $AMN$ và tam giác $CMN$ có chung đường cao hạ từ $M$ xuống $AC$, suy ra $\\dfrac{S_{AMN}}{S_{CMN}}=\\dfrac{AN}{NC}=\\dfrac{1}{4}$\n\nHai tam giác $AMN$ và $CMN$ có chung đáy $MN$ nên đường cao hạ từ $A$ xuống $MN$ bằng $\\dfrac{1}{4}$ đường cao hạ từ $C$ xuống $MN$.\n\nTam giác $BMN$ và tam giác $CMN$ có chung đường cao hạ từ $N$ xuống $BC$ và $BM=MC$ nên $S_{BMN}=S_{CMN}$; hai tam giác này chung đáy $MN$ nên đường cao hạ từ $B$ xuống $MN$ bằng đường cao hạ từ $C$ xuống $MN$.\n\nDo đó đường cao hạ từ $A$ xuống $PN$ bằng $\\dfrac{1}{4}$ đường cao hạ từ $B$ xuống $PN$.\n\nTam giác $PAN$ và tam giác $PBN$ có chung đáy $PN$, suy ra $\\dfrac{S_{PAN}}{S_{PBN}}=\\dfrac{1}{4}$\n\nVì $S_{PBN}=S_{PAN}+S_{ABN}$ nên $S_{ABN}$ bằng $4-1=3$ lần $S_{PAN}$, hay $S_{PAN}=\\dfrac{1}{3}\\times S_{ABN}$.\n\nTam giác $ABN$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{5}$\n\nTỉ số diện tích của tam giác $PAN$ và tam giác $ABC$ là: $\\dfrac{S_{PAN}}{S_{ABC}}=\\dfrac{1}{3}\\times\\dfrac{1}{5}=\\dfrac{1}{15}$\n\nĐáp số: $\\dfrac{1}{15}$",
+  "ghi_chu_nghi": "Đề chữ không nói P là gì; hiểu theo hình: P là giao điểm của đường thẳng BA (kéo dài qua A) với đường thẳng MN, nên A nằm giữa B và P, P–N–M thẳng hàng. Đã kiểm bằng toạ độ: tỉ số = 1/15."
+ }
+]

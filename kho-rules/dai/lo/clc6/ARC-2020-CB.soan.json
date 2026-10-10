@@ -1,0 +1,215 @@
+[
+ {
+  "ma_nguon": "ARC 2020-CB · 1",
+  "dap_an": "$21$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn đếm chữ số $1$ không sót, không trùng thì đếm riêng theo từng hàng (đơn vị, chục, trăm) rồi cộng lại; số $11$ có hai chữ số $1$ thì mỗi chữ số được đếm một lần ở hàng của nó.\n\n**Bước 1.** Đếm các chữ số $1$ đứng ở hàng đơn vị: đó là những số tận cùng bằng $1$, cách nhau $10$ đơn vị, bắt đầu từ $1$ và đi hết đến $100$.\n\n**Bước 2.** Đếm các chữ số $1$ đứng ở hàng chục: đó là những số có hàng chục bằng $1$, tức là một chục liên tiếp nằm giữa $10$ và $20$.\n\n**Bước 3.** Đếm các chữ số $1$ ở hàng trăm: trong khoảng từ $1$ đến $100$ chỉ có một số có ba chữ số.\n\n**Bước 4.** Cộng số chữ số $1$ của ba hàng lại để được kết quả.\n\n**Chú ý:** Số $11$ có hai chữ số $1$ nên được tính ở cả hàng đơn vị lẫn hàng chục, đừng bỏ sót hoặc đếm nó thành một.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác số có chữ số $1$ ở hàng đơn vị là $1;\\ 11;\\ 21;\\ \\ldots;\\ 91$, có: $(91-1):10+1=10$ (chữ số)\n\nCác số có chữ số $1$ ở hàng chục là $10;\\ 11;\\ \\ldots;\\ 19$, có: $19-10+1=10$ (chữ số)\n\nChữ số $1$ ở hàng trăm chỉ có ở số $100$, có $1$ chữ số.\n\nTừ $1$ đến $100$ có số chữ số $1$ là: $10+10+1=21$ (chữ số)\n\nĐáp số: $21$ chữ số"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 2",
+  "dap_an": "$26,64$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số thập phân thì nhân như nhân hai số tự nhiên (bỏ dấu phẩy), rồi đếm tổng số chữ số ở phần thập phân của hai thừa số để đặt dấu phẩy vào tích.\n\n**Bước 1.** Bỏ dấu phẩy ở hai thừa số $3,6$ và $7,4$ để được hai số tự nhiên, rồi nhân hai số tự nhiên đó với nhau.\n\n**Bước 2.** Đếm xem cả hai thừa số có tất cả bao nhiêu chữ số ở phần thập phân.\n\n**Bước 3.** Ở tích vừa tìm, dùng dấu phẩy tách ra từ phải sang trái đúng bằng ngần ấy chữ số.\n\nThử lại: ước lượng $3,6\\times 7,4$ gần với $4\\times 7=28$ nên tích phải hơi nhỏ hơn $28$.\n\n**Phần 2. Trình bày**\n\n$3,6\\times 7,4$\n\n$36\\times 74=36\\times 70+36\\times 4=2520+144=2664$\n\nHai thừa số có tất cả $1+1=2$ chữ số ở phần thập phân nên tích có $2$ chữ số ở phần thập phân.\n\n$3,6\\times 7,4=26,64$"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 3",
+  "dap_an": "$4,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm $a\\%$ của một số $M$ thì lấy $M\\times a\\%$; muốn tính được phải đổi phần trăm ra số thập phân.\n\n**Bước 1.** Nhận ra đây là bài tìm một số phần trăm của một số: số đã cho là $7,5$ còn tỉ số phần trăm là $60\\%$.\n\n**Bước 2.** Đổi $60\\%$ ra số thập phân bằng cách chia $60$ cho $100$.\n\n**Bước 3.** Lấy số đã cho nhân với số thập phân vừa đổi để được kết quả.\n\n**Phần 2. Trình bày**\n\n$60\\%$ của $7,5$ là $7,5\\times 60\\%$\n\nĐổi: $60\\%=0,6$\n\n$7,5\\times 0,6=4,5$\n\nVậy $60\\%$ của $7,5$ là $4,5$."
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 4",
+  "dap_an": "$110$ mảnh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số mảnh tam giác bằng $\\dfrac{1}{3}$ số mảnh hình vuông và hình chữ nhật cộng lại, nên đây là bài tổng – tỉ để tách mảnh tam giác ra khỏi hai loại kia; sau đó còn lại bài tổng – hiệu cho hình vuông và hình chữ nhật.\n\n**Bước 1.** Coi số mảnh tam giác là $1$ phần thì số mảnh hình vuông và hình chữ nhật cộng lại là $3$ phần như thế; từ đó đếm tổng số phần của $240$ mảnh.\n\n**Bước 2.** Chia $240$ cho tổng số phần để tìm giá trị một phần, đó là số mảnh tam giác.\n\n**Bước 3.** Lấy $240$ trừ số mảnh tam giác để tìm tổng số mảnh hình vuông và hình chữ nhật.\n\n**Bước 4.** Biết tổng và hiệu của số mảnh hình chữ nhật và hình vuông: lấy tổng trừ hiệu rồi chia $2$ để được số mảnh hình vuông, cộng thêm hiệu để được số mảnh hình chữ nhật.\n\nThử lại: cộng số mảnh của cả ba loại phải đủ $240$ mảnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố mảnh tam giác bằng $\\dfrac{1}{3}$ số mảnh hình vuông và hình chữ nhật nên số mảnh tam giác là $1$ phần, số mảnh hình vuông và hình chữ nhật là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Mảnh tam giác 1 phần; mảnh hình vuông và hình chữ nhật 3 phần; tổng 240 mảnh)\n\nTổng số phần bằng nhau là: $1+3=4$ (phần)\n\nSố mảnh hình tam giác là: $240:4\\times 1=60$ (mảnh)\n\nSố mảnh hình vuông và hình chữ nhật là: $240-60=180$ (mảnh)\n\nTa có sơ đồ:\n\n(Hình vuông 1 đoạn; hình chữ nhật 1 đoạn và thêm 40 mảnh; tổng 180 mảnh)\n\nSố mảnh hình vuông là: $(180-40):2=70$ (mảnh)\n\nSố mảnh hình chữ nhật là: $70+40=110$ (mảnh)\n\nĐáp số: $110$ mảnh",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Tổng số mảnh ghép",
+    "gia_tri_phan": 60,
+    "hang": [
+     {
+      "nhan": "Mảnh tam giác",
+      "phan": 1
+     },
+     {
+      "nhan": "Hình vuông và chữ nhật",
+      "phan": 3
+     }
+    ],
+    "tong": "240 mảnh",
+    "dau_hoi": [
+     "Mảnh tam giác"
+    ]
+   },
+   {
+    "tieu_de": "Hình vuông và hình chữ nhật",
+    "gia_tri_phan": 70,
+    "hang": [
+     {
+      "nhan": "Hình vuông",
+      "phan": 1
+     },
+     {
+      "nhan": "Hình chữ nhật",
+      "phan": 1,
+      "them": "40 mảnh"
+     }
+    ],
+    "tong": "180 mảnh",
+    "dau_hoi": [
+     "Hình chữ nhật"
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 5",
+  "dap_an": "$38$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết thêm chữ số $1$ vào giữa hai chữ số thì chữ số hàng chục cũ dịch sang hàng trăm, chữ số $1$ đứng ở hàng chục, chữ số hàng đơn vị giữ nguyên. Phân tích cả hai số theo hàng rồi bớt các phần giống nhau ở hai vế.\n\n**Bước 1.** Viết số ban đầu là $\\overline{ab}$, số mới là $\\overline{a1b}$; phân tích mỗi số theo hàng và viết rõ dấu nhân.\n\n**Bước 2.** Đề cho số mới hơn $8$ lần số ban đầu là $14$ đơn vị, nên số mới bằng $8$ lần số ban đầu cộng $14$; viết đẳng thức này theo hàng ở cả hai vế.\n\n**Bước 3.** Cùng bớt hai vế những phần giống nhau (phần có $a\\times 80$, chữ số $b$ và số $10$) để còn một đẳng thức gọn giữa hai biểu thức.\n\n**Bước 4.** Vế có $a\\times 20$ tận cùng bằng $0$, nên vế kia cũng phải tận cùng bằng $0$; từ đó tìm chữ số $b$ trước, rồi tìm chữ số $a$.\n\n**Chú ý:** Đề viết \"giữa hai số đó\" nhưng ý là giữa hai chữ số của số ban đầu.\n\nThử lại: viết số mới rồi so với $8$ lần số ban đầu cộng $14$.\n\n**Phần 2. Trình bày**\n\nGọi số ban đầu là $\\overline{ab}$ thì số mới là $\\overline{a1b}$.\n\n$\\overline{ab}=a\\times 10+b$ và $\\overline{a1b}=a\\times 100+10+b$\n\nSố mới hơn $8$ lần số ban đầu là $14$ nên: $\\overline{a1b}=8\\times\\overline{ab}+14$\n\n$a\\times 100+10+b=8\\times(a\\times 10+b)+14$\n\n$a\\times 100+10+b=a\\times 80+b\\times 8+14$\n\nCùng bớt hai vế đi $a\\times 80$, $b$ và $10$ thì được: $a\\times 20=b\\times 7+4$\n\nVế trái có chữ số tận cùng là $0$ nên $b\\times 7+4$ tận cùng là $0$, suy ra $b\\times 7$ tận cùng là $6$. Trong các tích $b\\times 7$ chỉ có $8\\times 7=56$ tận cùng là $6$ nên $b=8$.\n\nKhi đó $a\\times 20=8\\times 7+4=60$ nên $a=60:20=3$.\n\nVậy số ban đầu là $38$.\n\nThử lại: $8\\times 38+14=318$ đúng bằng số mới $318$.",
+  "ghi_chu_nghi": "Đề viết \"giữa hai số đó\", hiểu là chèn vào giữa hai chữ số của số hai chữ số. Làm theo cấu tạo số ($\\overline{ab}$ — kí hiệu quen thuộc của cấu tạo số, đề cho sẵn dạng số), phân tích theo hàng có dấu nhân, bớt hai vế như CĐ12 của 4T. Nhiều cách: thử chọn từng chữ số hàng chục."
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 6",
+  "dap_an": "$5$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bạn điểm $9$ gấp đôi số bạn điểm $10$, nên cứ $1$ bạn điểm $10$ đi kèm $2$ bạn điểm $9$ thành một nhóm $3$ bạn. Giả sử cả lớp đều được điểm $8$ rồi xem mỗi nhóm làm tổng điểm tăng thêm bao nhiêu.\n\n**Bước 1.** Giả sử cả $32$ bạn đều được điểm $8$ thì tính được tổng điểm giả sử, so với tổng điểm thật để biết còn thiếu bao nhiêu điểm.\n\n**Bước 2.** Tính xem mỗi nhóm gồm $1$ bạn điểm $10$ và $2$ bạn điểm $9$ làm tổng điểm tăng thêm bao nhiêu so với giả sử cùng điểm $8$.\n\n**Bước 3.** Lấy số điểm còn thiếu chia cho số điểm tăng thêm của một nhóm để biết có bao nhiêu nhóm.\n\n**Bước 4.** Từ số nhóm tính số bạn điểm $10$, số bạn điểm $9$, rồi lấy cả lớp trừ đi hai số đó để được số bạn điểm $8$.\n\nThử lại: cộng điểm của cả ba loại bạn phải ra đúng tổng điểm của đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu cả lớp đều được điểm $8$ thì tổng điểm là: $32\\times 8=256$ (điểm)\n\nTổng điểm thực tế hơn tổng điểm giả sử là: $292-256=36$ (điểm)\n\nSố bạn điểm $9$ gấp đôi số bạn điểm $10$ nên mỗi nhóm có $1$ bạn điểm $10$ và $2$ bạn điểm $9$ (gồm $3$ bạn).\n\nMỗi nhóm làm tổng điểm tăng thêm: $(10-8)+(9-8)\\times 2=4$ (điểm)\n\nSố nhóm là: $36:4=9$ (nhóm)\n\nSố bạn điểm $10$ là: $1\\times 9=9$ (bạn)\n\nSố bạn điểm $9$ là: $2\\times 9=18$ (bạn)\n\nSố bạn điểm $8$ là: $32-9-18=5$ (bạn)\n\nĐáp số: $5$ học sinh",
+  "ghi_chu_nghi": "Nhiều cách: giả thiết tạm (gom nhóm 1 điểm 10 + 2 điểm 9) hoặc thử chọn số bạn điểm 10; chọn giả thiết tạm cho hợp tiểu học."
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 7",
+  "dap_an": "$8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số $B$ gồm các số lẻ viết liền nhau, mỗi nhóm số có số chữ số khác nhau. Đếm xem nhóm số lẻ $1$ chữ số, $2$ chữ số, $3$ chữ số dùng hết bao nhiêu chữ số, phần còn lại của $2020$ nằm trong nhóm số lẻ $4$ chữ số; chia phần còn lại cho $4$ để biết chữ số cần tìm nằm ở số nào.\n\n**Bước 1.** Đếm số lẻ có $1$ chữ số, có $2$ chữ số, có $3$ chữ số (số số hạng của dãy cách đều bằng hiệu cuối đầu chia khoảng cách rồi cộng $1$), nhân với số chữ số của mỗi số rồi cộng lại.\n\n**Bước 2.** Lấy $2020$ trừ số chữ số đã dùng để biết còn bao nhiêu chữ số phải đếm tiếp trong nhóm số lẻ $4$ chữ số bắt đầu từ $1001$.\n\n**Bước 3.** Chia số chữ số còn lại cho $4$: thương là số các số $4$ chữ số đã viết đủ, số dư cho biết chữ số cần tìm là chữ số thứ mấy của số kế tiếp.\n\n**Bước 4.** Tìm số $4$ chữ số kế tiếp bằng quy luật cách đều $2$ đơn vị rồi đọc chữ số ở vị trí cần tìm.\n\n**Chú ý:** Số dư khác $0$ nên chữ số cần tìm nằm ở số kế tiếp sau các số đã viết đủ, không phải ở số cuối cùng của chúng.\n\n**Phần 2. Trình bày**\n\nSố lẻ có $1$ chữ số là $1;\\ 3;\\ 5;\\ 7;\\ 9$, có $5$ số, viết ra $5$ chữ số.\n\nSố lẻ có $2$ chữ số (từ $11$ đến $99$) có: $(99-11):2+1=45$ (số)\n\nSố chữ số của chúng là: $45\\times 2=90$ (chữ số)\n\nSố lẻ có $3$ chữ số (từ $101$ đến $999$) có: $(999-101):2+1=450$ (số)\n\nSố chữ số của chúng là: $450\\times 3=1350$ (chữ số)\n\nTừ số $1$ đến số $999$ đã viết: $5+90+1350=1445$ (chữ số)\n\nCòn phải đếm tiếp đến chữ số thứ $2020$ là: $2020-1445=575$ (chữ số)\n\nCác số lẻ $4$ chữ số bắt đầu từ $1001$, mỗi số có $4$ chữ số: $575:4=143$ (dư $3$)\n\nVậy đã viết đủ $143$ số lẻ $4$ chữ số, chữ số thứ $2020$ là chữ số thứ ba của số lẻ $4$ chữ số kế tiếp (số thứ $144$).\n\nSố lẻ $4$ chữ số thứ $144$ là: $1001+(144-1)\\times 2=1287$\n\nChữ số thứ ba của $1287$ là $8$.\n\nVậy chữ số thứ $2020$ là $8$.",
+  "ghi_chu_nghi": "Đề viết \"B=135791113....2021\", hiểu là viết liên tiếp mọi số lẻ từ 1 đến 2021 (2021 là số lẻ cuối)."
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 8",
+  "dap_an": "$11$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe gặp nhau ở chính giữa $AB$ nên mỗi xe đi đúng nửa quãng đường, hai quãng đường này bằng nhau. Quãng đường bằng nhau thì vận tốc và thời gian tỉ lệ nghịch với nhau; xe máy đi sớm hơn ô tô $1$ giờ cho biết hiệu hai thời gian.\n\n**Bước 1.** Từ chỗ gặp nhau ở chính giữa $AB$, nhận ra hai xe đi hai quãng đường bằng nhau khi gặp nhau.\n\n**Bước 2.** Lập tỉ số vận tốc của xe máy và ô tô, từ đó suy ra tỉ số thời gian của hai xe tới chỗ gặp nhau (tỉ lệ nghịch với vận tốc).\n\n**Bước 3.** Xe máy xuất phát trước ô tô $1$ giờ mà hai xe gặp nhau cùng lúc, nên thời gian xe máy đi hơn ô tô $1$ giờ; dùng hiệu số phần để tìm thời gian ô tô đi tới chỗ gặp.\n\n**Bước 4.** Tính nửa quãng đường $AB$ từ vận tốc và thời gian của ô tô, rồi gấp đôi để được quãng đường $AB$.\n\n**Bước 5.** Tính thời gian ô tô đi hết quãng đường $AB$, cộng vào giờ xuất phát để biết giờ ô tô đến $A$.\n\n**Chú ý:** Đề hỏi \"ô tô đi từ B về A lúc mấy giờ\" được hiểu là hỏi ô tô đến $A$ lúc mấy giờ, không phải giờ xuất phát (giờ xuất phát đã cho là $7$ giờ).\n\nThử lại: xe máy đi tới chỗ gặp bằng vận tốc nhân thời gian của nó phải ra đúng nửa quãng đường $AB$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo cách hiểu của đề, ta tìm giờ ô tô đến $A$.\n\nTa có sơ đồ:\n\n(A và B cách nhau ? km; xe máy đi từ A với vận tốc 40 km/giờ; ô tô đi từ B với vận tốc 60 km/giờ; hai xe gặp nhau tại C chính giữa AB)\n\nHai xe gặp nhau ở chính giữa $AB$ nên hai xe đi hai quãng đường bằng nhau.\n\nTỉ số vận tốc của xe máy và ô tô là: $40:60=\\dfrac{2}{3}$\n\nTrên cùng một quãng đường thì vận tốc và thời gian tỉ lệ nghịch nên thời gian xe máy bằng $\\dfrac{3}{2}$ thời gian ô tô, tức là xe máy $3$ phần, ô tô $2$ phần.\n\nTa có sơ đồ:\n\n(Thời gian xe máy đi 3 phần; thời gian ô tô đi 2 phần; hiệu 1 giờ)\n\nXe máy xuất phát trước ô tô: $7-6=1$ (giờ)\n\nHai xe gặp nhau cùng lúc nên thời gian xe máy đi hơn thời gian ô tô đi $1$ giờ.\n\nHiệu số phần bằng nhau là: $3-2=1$ (phần)\n\nThời gian ô tô đi tới chỗ gặp là: $1:1\\times 2=2$ (giờ)\n\nNửa quãng đường $AB$ dài: $60\\times 2=120$ (km)\n\nQuãng đường $AB$ dài: $120\\times 2=240$ (km)\n\nThời gian ô tô đi hết quãng đường $AB$ là: $240:60=4$ (giờ)\n\nÔ tô đến $A$ lúc: $7+4=11$ (giờ)\n\nĐáp số: $11$ giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Lúc hai xe gặp nhau",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 120,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 240
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 120,
+      "nhan": "40 km/giờ"
+     },
+     {
+      "tu": 240,
+      "den": 120,
+      "nhan": "60 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 120,
+      "nhan": "? km"
+     },
+     {
+      "tu": 120,
+      "den": 240,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi tới chỗ gặp",
+    "gia_tri_phan": 1,
+    "hang": [
+     {
+      "nhan": "Xe máy",
+      "phan": 3
+     },
+     {
+      "nhan": "Ô tô",
+      "phan": 2
+     }
+    ],
+    "hieu": "1 giờ",
+    "dau_hoi": [
+     "Ô tô"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "Theo luu_y_de: câu hỏi hiểu là ô tô ĐẾN A lúc mấy giờ (đề in \"đi từ B về A lúc mấy giờ\" nhưng giờ xuất phát đã cho 7 giờ). Nếu hỏi giờ xuất phát thì đáp số là 7 giờ — vô nghĩa với đề, nên giữ cách hiểu đã chốt."
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 9",
+  "dap_an": "$6$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của bố và con không đổi theo năm tháng. Ở mỗi thời điểm, tuổi con là một phân số của hiệu đó; hai phân số này khác nhau chính vì $10$ năm trôi qua.\n\n**Bước 1.** Hiện nay bố gấp $5$ lần con: hiệu số tuổi bằng $5-1$ lần tuổi con, từ đó tìm tuổi con hiện nay bằng mấy phần của hiệu.\n\n**Bước 2.** Sau $10$ năm nữa bố gấp $2,5$ lần con: hiệu số tuổi bằng $2,5-1$ lần tuổi con lúc đó, từ đó tìm tuổi con lúc đó bằng mấy phần của hiệu.\n\n**Bước 3.** Phần tuổi con tăng thêm của hiệu chính là ứng với $10$ năm; lấy phân số lớn trừ phân số bé để biết $10$ năm ứng với phân số nào của hiệu.\n\n**Bước 4.** Chia $10$ cho phân số đó để tìm hiệu số tuổi, rồi nhân hiệu với phân số tuổi con hiện nay.\n\nThử lại: tính tuổi bố hiện nay và sau $10$ năm, kiểm tra tỉ số tuổi hai bố con ở hai thời điểm có đúng như đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của bố và con không đổi theo thời gian.\n\nHiện nay bố gấp $5$ lần con nên hiệu số tuổi gấp tuổi con: $5-1=4$ (lần). Vậy tuổi con hiện nay bằng $\\dfrac{1}{4}$ hiệu.\n\nSau $10$ năm nữa bố gấp $2,5$ lần con nên hiệu số tuổi gấp tuổi con lúc đó: $2,5-1=1,5$ (lần)\n\nTuổi con sau $10$ năm nữa bằng: $1:1,5=1:\\dfrac{3}{2}=\\dfrac{2}{3}$ (hiệu)\n\n$10$ năm ứng với phân số của hiệu là: $\\dfrac{2}{3}-\\dfrac{1}{4}=\\dfrac{5}{12}$ (hiệu)\n\nHiệu số tuổi của bố và con là: $10:\\dfrac{5}{12}=24$ (tuổi)\n\nTuổi con hiện nay là: $24\\times\\dfrac{1}{4}=6$ (tuổi)\n\nĐáp số: $6$ tuổi"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 10",
+  "dap_an": "$76$ hình lập phương",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương chỉ được sơn $1$ mặt khi nó nằm ở phần giữa của một mặt được sơn, không chạm rìa chung với mặt sơn khác. Mặt tiếp đất không sơn nên hàng khối sát đất không bị loại ở phía dưới.\n\n**Bước 1.** Xác định các mặt được sơn: mặt trên và bốn mặt bên (mặt đáy tiếp đất không sơn).\n\n**Bước 2.** Với mặt trên: bỏ các khối ở rìa vì chúng còn chạm mặt bên bị sơn, chỉ giữ phần trong, tức là bớt $2$ ở mỗi chiều của mặt trên rồi nhân hai số còn lại.\n\n**Bước 3.** Với mỗi mặt bên: bỏ hai cột ở hai mép và hàng trên cùng, vì chúng chạm mặt sơn khác; hàng dưới cùng sát đất vẫn giữ lại.\n\n**Bước 4.** Tính riêng hai mặt bên dài, hai mặt bên ngắn, rồi cộng với mặt trên.\n\n**Chú ý:** Hàng dưới cùng sát đất vẫn tính, đừng bớt cả hàng đó giống như hàng trên cùng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác mặt được sơn là mặt trên và bốn mặt bên. Khối chỉ sơn $1$ mặt khi ở phần giữa một mặt được sơn.\n\nMặt trên có số khối sơn $1$ mặt là: $(8-2)\\times(4-2)=12$ (hình)\n\nMỗi mặt bên dài ($8$ dm, cao $5$ dm) có: $(8-2)\\times(5-1)=24$ (hình)\n\nHai mặt bên dài có: $24\\times 2=48$ (hình)\n\nMỗi mặt bên ngắn ($4$ dm, cao $5$ dm) có: $(4-2)\\times(5-1)=8$ (hình)\n\nHai mặt bên ngắn có: $8\\times 2=16$ (hình)\n\nSố hình lập phương được sơn $1$ mặt là: $12+48+16=76$ (hình)\n\nĐáp số: $76$ hình lập phương"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 11",
+  "dap_an": "$650000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giảm giá $30\\%$ nghĩa là giá sau khi giảm bằng $100\\%-30\\%=70\\%$ giá trước đó. Biết $70\\%$ của giá trước là bao nhiêu thì tìm giá trước bằng cách lấy số đó chia cho $70\\%$.\n\n**Bước 1.** Tính giá sau khi giảm bằng bao nhiêu phần trăm giá trước đó: lấy $100\\%$ trừ đi phần trăm đã giảm.\n\n**Bước 2.** Nhận ra $455000$ đồng ứng với số phần trăm vừa tìm của giá chưa giảm, tức là bài tìm một số biết một số phần trăm của nó.\n\n**Bước 3.** Muốn tìm số đó thì lấy số đã biết chia cho số phần trăm, có thể đổi số phần trăm ra số thập phân để chia.\n\nThử lại: giảm giá trước đó $30\\%$ thì phải được đúng $455000$ đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá quả bóng sau khi giảm bằng số phần trăm giá trước đó là: $100\\%-30\\%=70\\%$\n\nGiá quả bóng trước khi giảm là: $455000:70\\%=650000$ (đồng)\n\nĐáp số: $650000$ đồng"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 12",
+  "dap_an": "$40$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công suất mỗi người như nhau, nên rút về đơn vị: tìm xem $1$ công nhân làm trong $1$ giờ được bao nhiêu sản phẩm, rồi nhân với số công nhân và số giờ cần tính.\n\n**Bước 1.** Tìm số sản phẩm $1$ công nhân làm được trong $6$ giờ bằng cách lấy số sản phẩm chia cho số công nhân.\n\n**Bước 2.** Tìm số sản phẩm $1$ công nhân làm được trong $1$ giờ bằng cách chia cho số giờ.\n\n**Bước 3.** Nhân số sản phẩm của $1$ công nhân trong $1$ giờ với số công nhân và số giờ của câu hỏi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ công nhân làm trong $6$ giờ được: $21:7=3$ (sản phẩm)\n\n$1$ công nhân làm trong $1$ giờ được: $3:6=0,5$ (sản phẩm)\n\n$5$ công nhân làm trong $16$ giờ được: $0,5\\times 5\\times 16=40$ (sản phẩm)\n\nĐáp số: $40$ sản phẩm"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 13",
+  "dap_an": "$1200\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Diện tích không đổi mà một trong hai kích thước tăng thì kích thước còn lại phải giảm tương ứng; so từng kích thước với lúc đầu bằng tỉ số phần trăm rồi chia các tỉ số.\n\n**Bước 1.** Nhớ công thức diện tích $=$ dài $\\times$ rộng; diện tích không đổi nên diện tích sau so với lúc đầu là $100\\%$.\n\n**Bước 2.** Tính chiều rộng sau so với lúc đầu bằng bao nhiêu phần trăm, rồi suy ra chiều dài sau so với lúc đầu bằng bao nhiêu phần trăm (lấy $100\\%$ chia cho tỉ số của chiều rộng).\n\n**Bước 3.** Từ đó biết chiều dài đã giảm bao nhiêu phần trăm; $8$ m chính là phần giảm đó, nên tìm được chiều dài lúc đầu.\n\n**Bước 4.** Lấy chiều dài trừ $10$ m để được chiều rộng lúc đầu, rồi tính diện tích.\n\nThử lại: tính diện tích hình mới (rộng tăng $25\\%$, dài giảm $8$ m) phải bằng diện tích lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Diện tích không đổi nên diện tích sau so với lúc đầu bằng $100\\%$.\n\nChiều rộng sau so với lúc đầu bằng: $100\\%+25\\%=125\\%$\n\nChiều dài sau so với lúc đầu bằng: $100\\%:125\\%=1:1,25=0,8=80\\%$\n\nChiều dài đã giảm so với lúc đầu là: $100\\%-80\\%=20\\%$\n\nChiều dài lúc đầu là: $8:20\\%=40$ (m)\n\nChiều rộng lúc đầu là: $40-10=30$ (m)\n\nDiện tích hình chữ nhật là: $40\\times 30=1200$ ($\\text{m}^2$)\n\nĐáp số: $1200\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 14",
+  "dap_an": "$323$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy cộng cách đều thì tính được số số hạng rồi dùng công thức tổng $=$ (số đầu $+$ số cuối) $\\times$ số số hạng $:2$.\n\n**Bước 1.** Tìm khoảng cách giữa hai số hạng liên tiếp của dãy $3;\\ 5;\\ 7;\\ 9;\\ \\ldots$ để biết dãy cách đều bao nhiêu.\n\n**Bước 2.** Tính số số hạng bằng (số cuối trừ số đầu) chia khoảng cách rồi cộng $1$.\n\n**Bước 3.** Tính tổng bằng (số đầu cộng số cuối) nhân số số hạng rồi chia $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai số hạng liên tiếp cách nhau $2$ đơn vị.\n\nDãy có số số hạng là: $(35-3):2+1=17$ (số)\n\nTổng của dãy là: $(35+3)\\times 17:2=323$\n\nĐáp số: $323$"
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 15",
+  "dap_an": "$280$ và $290$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số tròn chục liên tiếp hơn kém nhau đúng $10$ đơn vị, nên bài trở thành tìm hai số biết tổng và hiệu.\n\n**Bước 1.** Nhận ra hai số tròn chục liên tiếp hơn kém nhau $10$ đơn vị, đó chính là hiệu của hai số.\n\n**Bước 2.** Lấy tổng trừ hiệu rồi chia $2$ để được số bé.\n\n**Bước 3.** Lấy số bé cộng hiệu để được số lớn.\n\nThử lại: cộng hai số vừa tìm phải bằng $570$ và cả hai đều tròn chục.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai số tròn chục liên tiếp hơn kém nhau $10$ đơn vị.\n\nTa có sơ đồ:\n\n(Số bé 1 đoạn; số lớn 1 đoạn và thêm 10; tổng 570)\n\nSố bé là: $(570-10):2=280$\n\nSố lớn là: $280+10=290$\n\nĐáp số: $280$ và $290$",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai số tròn chục liên tiếp",
+   "gia_tri_phan": 280,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "10"
+    }
+   ],
+   "tong": "570",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 16",
+  "dap_an": "$27$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng của một nhóm số bằng tổng chia cho số số hạng, nên tổng $=$ trung bình cộng $\\times$ số số hạng. Tính tổng của bốn số, tổng của năm số, rồi lấy hiệu hai tổng là số thứ năm.\n\n**Bước 1.** Tính tổng của bốn số đầu bằng trung bình cộng nhân với $4$.\n\n**Bước 2.** Tính tổng của năm số sau khi thêm số thứ năm bằng trung bình cộng mới nhân với $5$.\n\n**Bước 3.** Lấy tổng năm số trừ tổng bốn số để tìm số thứ năm.\n\nThử lại: cộng bốn số cũ với số thứ năm rồi chia $5$ phải ra trung bình cộng đã cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của bốn số là: $17\\times 4=68$\n\nTổng của năm số là: $19\\times 5=95$\n\nSố thứ năm là: $95-68=27$\n\nĐáp số: $27$",
+  "ghi_chu_nghi": "Nhiều cách: (a) tổng 5 số trừ tổng 4 số (đã dùng, bám công thức gốc TBC = tổng : số số hạng); (b) mỗi số trong 4 số tăng 2 đơn vị lên 19, số thứ năm = 19 + 4×2."
+ },
+ {
+  "ma_nguon": "ARC 2020-CB · 17",
+  "dap_an": "$10$ lần và $9$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết thêm một chữ số vào bên phải thì mọi chữ số của số cũ bị đẩy sang trái một hàng, còn chữ số mới chiếm hàng đơn vị. Nghĩ trên một ví dụ cụ thể sẽ thấy số mới liên hệ với số cũ ra sao.\n\n**Bước 1.** Lấy một số cụ thể, chẳng hạn $25$, viết thêm số $9$ vào bên phải để được $259$ và so sánh hai số.\n\n**Bước 2.** Nhận xét mỗi chữ số của số cũ chuyển sang hàng nào, từ đó biết giá trị của số cũ đã gấp lên mấy lần.\n\n**Bước 3.** Chữ số $9$ viết thêm đứng ở hàng đơn vị, từ đó biết số mới còn thêm bao nhiêu đơn vị.\n\n**Chú ý:** Đề hỏi hai chỗ trống: một chỗ là số lần, một chỗ là số đơn vị, đừng ghi nhầm vị trí.\n\n**Phần 2. Trình bày**\n\nVí dụ: số $25$ viết thêm số $9$ vào bên phải được số $259$, mà $259=25\\times 10+9$.\n\nKhi viết thêm số $9$ vào bên phải một số thì mỗi chữ số của số đó dịch sang trái một hàng nên số đó gấp lên $10$ lần.\n\nChữ số $9$ vừa viết đứng ở hàng đơn vị nên số mới còn thêm $9$ đơn vị.\n\nVậy số mới bằng số cũ $\\times 10+9$: tăng thêm $10$ lần và $9$ đơn vị.\n\nĐáp số: $10$ lần và $9$ đơn vị",
+  "ghi_chu_nghi": "Đề lửng \"tăng thêm ... lần và ... đơn vị\". Hiểu theo thói quen (như \"viết thêm chữ số 0 thì số tăng lên 10 lần\"): số mới = số cũ × 10 + 9 ⇒ \"10 lần và 9 đơn vị\". Nếu hiểu chặt \"tăng thêm\" là phần chênh lệch (số mới − số cũ = số cũ × 9 + 9) thì đáp số là \"9 lần và 9 đơn vị\". CEO chốt cách hiểu."
+ }
+]

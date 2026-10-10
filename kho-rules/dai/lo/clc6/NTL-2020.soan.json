@@ -1,0 +1,140 @@
+[
+ {
+  "ma_nguon": "NTL 2020 · 1",
+  "dap_an": "$A=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số $23,45$ và $2,345$ chỉ khác nhau ở vị trí dấu phẩy, nên có thể đưa hai tích đầu về cùng một thừa số $23,45$ rồi gộp lại bằng tính chất nhân một số với một tổng.\n\n**Bước 1.** Nhìn các thừa số $23,45$ và $2,345$: số này gấp $10$ lần số kia, nên nhân $630$ với $2,345$ thì có thể chia $630$ cho $10$ và nhân $2,345$ với $10$ mà tích không đổi.\n\n**Bước 2.** Sau khi đổi, hai tích đầu có chung thừa số $23,45$, nên đặt thừa số chung ra ngoài và cộng hai thừa số còn lại trong ngoặc.\n\n**Bước 3.** Tổng trong ngoặc là một số tròn trăm; nhân một số với $100$ chính là dịch dấu phẩy sang phải hai hàng.\n\n**Bước 4.** So sánh kết quả vừa có với số bị trừ ở cuối biểu thức rồi trừ để tìm giá trị của $A$.\n\n**Chú ý:** Phải viết lại $630\\times 2,345=63\\times 23,45$ ở một dòng riêng trước khi đặt thừa số chung, đừng làm ngầm.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A=37\\times 23,45+630\\times 2,345-2345 \\\\ A=37\\times 23,45+63\\times 23,45-2345 \\\\ A=(37+63)\\times 23,45-2345 \\\\ A=100\\times 23,45-2345 \\\\ A=2345-2345 \\\\ A=0 \\end{array}$"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 2",
+  "dap_an": "$x=2$",
+  "ghi_chu_nghi": "Đề không có câu lệnh (lửng): giữ nguyên đề, hiểu là \"Tìm $x$\". Kém chắc về yêu cầu, không kém chắc về đáp số.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn ngoặc đều có chung $x$, còn các phân số có dạng $\\dfrac{1}{a\\times b}$ với $a$, $b$ là hai số liền nhau, mỗi phân số viết được thành hiệu của hai phân số, rồi các số hạng liên tiếp triệt tiêu nhau.\n\n**Bước 1.** Bỏ ngoặc và gộp bốn số $x$ lại thành $x\\times 4$, phần còn lại là tổng bốn phân số có tử số $1$ và mẫu số là tích hai số tự nhiên liền nhau.\n\n**Bước 2.** Viết mỗi phân số thành hiệu hai phân số: $\\dfrac{1}{2\\times 3}=\\dfrac{1}{2}-\\dfrac{1}{3}$, các phân số khác làm tương tự.\n\n**Bước 3.** Viết cả tổng ra, thấy mỗi phân số bị trừ bị triệt tiêu bởi phân số cộng ở ngay sau nó, chỉ còn số hạng đầu và số hạng cuối; tính hiệu hai phân số này.\n\n**Bước 4.** Đến đây $x\\times 4$ cộng một phân số bằng $\\dfrac{25}{3}$; tìm số hạng chưa biết $x\\times 4$ rồi tìm thừa số $x$.\n\nThử lại: thay $x$ vừa tìm vào biểu thức ban đầu, vế trái phải bằng $\\dfrac{25}{3}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} \\left( x+\\dfrac{1}{2\\times 3} \\right)+\\left( x+\\dfrac{1}{3\\times 4} \\right)+\\left( x+\\dfrac{1}{4\\times 5} \\right)+\\left( x+\\dfrac{1}{5\\times 6} \\right)=\\dfrac{25}{3} \\\\ x\\times 4+\\left( \\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6} \\right)=\\dfrac{25}{3} \\\\ x\\times 4+\\left( \\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{6} \\right)=\\dfrac{25}{3} \\\\ x\\times 4+\\left( \\dfrac{1}{2}-\\dfrac{1}{6} \\right)=\\dfrac{25}{3} \\\\ x\\times 4+\\dfrac{1}{3}=\\dfrac{25}{3} \\\\ x\\times 4=\\dfrac{25}{3}-\\dfrac{1}{3} \\\\ x\\times 4=8 \\\\ x=8:4 \\\\ x=2 \\end{array}$"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 3",
+  "dap_an": "Điểm 9: $24$ học sinh; điểm 10: $19$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả lớp chỉ có hai loại điểm là $9$ và $10$, nên dùng phương pháp giả thiết tạm: giả sử mọi học sinh đều đạt điểm $9$, rồi xem tổng điểm thiếu bao nhiêu thì đó là do những bạn thật ra được điểm $10$.\n\n**Bước 1.** Giả sử cả $43$ học sinh đều đạt điểm $9$ và tính tổng số điểm của cả lớp theo giả sử đó.\n\n**Bước 2.** So sánh với tổng số điểm thật của đề bài để biết giả sử đang thiếu bao nhiêu điểm.\n\n**Bước 3.** Mỗi bạn thật ra đạt điểm $10$ mà ta tính thành $9$ thì bị thiếu đúng $1$ điểm, nên số điểm thiếu cho biết số bạn đạt điểm $10$.\n\n**Bước 4.** Lấy cả lớp trừ đi số bạn đạt điểm $10$ để tìm số bạn đạt điểm $9$.\n\nThử lại: số điểm của hai nhóm cộng lại phải bằng tổng số điểm của đề cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiả sử cả lớp đều đạt điểm $9$, tổng số điểm là: $9\\times 43=387$ (điểm)\n\nSố điểm còn thiếu so với thực tế là: $406-387=19$ (điểm)\n\nMỗi học sinh đạt điểm $10$ được tính thành điểm $9$ thì thiếu: $10-9=1$ (điểm)\n\nSố học sinh đạt điểm $10$ là: $19:1=19$ (học sinh)\n\nSố học sinh đạt điểm $9$ là: $43-19=24$ (học sinh)\n\nĐáp số: Điểm $9$: $24$ học sinh; điểm $10$: $19$ học sinh"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 4",
+  "dap_an": "$7$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Tuổi con và tuổi mẹ hiện nay",
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 5
+    }
+   ],
+   "hieu": "28 tuổi",
+   "dau_hoi": [
+    "Tuổi con"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho hiệu số tuổi ($28$) và tỉ số giữa hai tuổi ($20\\%$), đây là bài hiệu – tỉ: đổi $20\\%$ ra phân số để biết tuổi con và tuổi mẹ lần lượt là mấy phần bằng nhau, rồi dùng hiệu để tìm giá trị một phần.\n\n**Bước 1.** Đổi $20\\%$ thành phân số tối giản; đó là tuổi con so với tuổi mẹ, nên tuổi con là bao nhiêu phần và tuổi mẹ là bao nhiêu phần như thế.\n\n**Bước 2.** Tìm hiệu số phần bằng nhau của tuổi mẹ và tuổi con; hiệu này ứng với $28$ tuổi mà đề đã cho.\n\n**Bước 3.** Lấy $28$ chia cho hiệu số phần để tìm giá trị của một phần, rồi nhân với số phần của tuổi con.\n\n**Chú ý:** $20\\%$ là tuổi con so với tuổi mẹ, không phải tuổi mẹ so với tuổi con; đừng đảo hai phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $20\\%=\\dfrac{1}{5}$\n\nTuổi con bằng $\\dfrac{1}{5}$ tuổi mẹ nên tuổi con là $1$ phần, tuổi mẹ là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Tuổi con 1 phần; tuổi mẹ 5 phần; mẹ hơn con 28 tuổi)\n\nHiệu số phần bằng nhau là: $5-1=4$ (phần)\n\nTuổi con hiện nay là: $28:4\\times 1=7$ (tuổi)\n\nĐáp số: $7$ tuổi"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 5",
+  "dap_an": "$6974$",
+  "ghi_chu_nghi": "Đề hỏi lửng: hiểu dãy là các số tự nhiên từ 1 đến 2021 viết liền nhau; \"chữ số hàng nghìn của 2021\" là chữ số 2 đầu tiên của số 2021; hỏi vị trí của nó trong dãy chữ số.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy là các số $1;\\ 2;\\ 3;\\ \\ldots;\\ 2021$ viết liền nhau, và chữ số hàng nghìn của $2021$ là chữ số đầu tiên của số này, nên đứng ngay sau chữ số cuối cùng của số $2020$. Vậy chỉ cần đếm xem từ $1$ đến $2020$ viết ra bao nhiêu chữ số.\n\n**Bước 1.** Xác định chữ số cần tìm là chữ số đứng đầu của số $2021$, nên các chữ số đứng trước nó là toàn bộ chữ số của các số từ $1$ đến $2020$.\n\n**Bước 2.** Chia các số thành từng nhóm có cùng số chữ số (một, hai, ba chữ số); mỗi nhóm đếm xem có bao nhiêu số rồi nhân với số chữ số của mỗi số.\n\n**Bước 3.** Nhóm số có bốn chữ số chạy từ $1000$ đến $2020$ chứ không đến hết $9999$; đếm số các số bằng hiệu hai đầu cộng $1$ rồi nhân với $4$.\n\n**Bước 4.** Cộng số chữ số của các nhóm lại, rồi cộng thêm $1$ để được vị trí của chữ số hàng nghìn của $2021$.\n\n**Chú ý:** Số các số từ $a$ đến $b$ là $b-a+1$, đừng quên cộng $1$.\n\n**Phần 2. Trình bày**\n\nChữ số hàng nghìn của $2021$ là chữ số đầu tiên của số $2021$, đứng sau tất cả các chữ số của các số từ $1$ đến $2020$.\n\nTừ $1$ đến $9$ có $9$ số, mỗi số có $1$ chữ số: $9\\times 1=9$ (chữ số)\n\nSố các số có hai chữ số là: $99-10+1=90$ (số)\n\nCác số có hai chữ số viết ra: $90\\times 2=180$ (chữ số)\n\nSố các số có ba chữ số là: $999-100+1=900$ (số)\n\nCác số có ba chữ số viết ra: $900\\times 3=2700$ (chữ số)\n\nSố các số có bốn chữ số từ $1000$ đến $2020$ là: $2020-1000+1=1021$ (số)\n\nCác số này viết ra: $1021\\times 4=4084$ (chữ số)\n\nTừ $1$ đến $2020$ viết ra tất cả: $9+180+2700+4084=6973$ (chữ số)\n\nChữ số hàng nghìn của $2021$ đứng thứ: $6973+1=6974$\n\nVậy chữ số hàng nghìn của $2021$ đứng thứ $6974$."
+ },
+ {
+  "ma_nguon": "NTL 2020 · 6",
+  "dap_an": "$13$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ở cả hai phép chia, số dư đều kém số chia đúng $2$ đơn vị ($3-1=2$ và $5-3=2$), nên nếu thêm $2$ vào $A$ thì được số chia hết cho cả $3$ và $5$, từ đó suy ra chia hết cho $15$.\n\n**Bước 1.** So sánh số dư với số chia ở từng phép chia: mỗi lần số dư còn thiếu $2$ đơn vị nữa là vừa đủ chia hết.\n\n**Bước 2.** Vì vậy $A$ thêm $2$ đơn vị thì chia hết cho $3$ và cũng chia hết cho $5$.\n\n**Bước 3.** Số chia hết cho cả $3$ và $5$ thì chia hết cho $15$, nên $A$ thêm $2$ đơn vị là số chia hết cho $15$.\n\n**Bước 4.** $A$ còn thiếu $2$ đơn vị nữa mới chia hết cho $15$, nên số dư của $A$ khi chia cho $15$ là số chia trừ đi $2$.\n\n**Chú ý:** Số dư phải bé hơn số chia $15$.\n\n**Phần 2. Trình bày**\n\nVì $A$ chia $3$ dư $1$ nên $A+2$ chia hết cho $3$ (vì $1+2=3$).\n\nVì $A$ chia $5$ dư $3$ nên $A+2$ chia hết cho $5$ (vì $3+2=5$).\n\nSố chia hết cho cả $3$ và $5$ thì chia hết cho $15$, nên $A+2$ chia hết cho $15$.\n\nVậy $A$ chia cho $15$ thì dư: $15-2=13$\n\nThử lại: số $13$ chia $3$ dư $1$, chia $5$ dư $3$, chia $15$ dư $13$.\n\nVậy $A$ chia cho $15$ dư $13$."
+ },
+ {
+  "ma_nguon": "NTL 2020 · 7",
+  "dap_an": "$45$ chiếc mặt nạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi tổng số mặt nạ là $1$ (cả số mặt nạ); hai tổ đầu làm được mấy phần của số đó thì tổ $3$ làm phần còn lại, và phân số chỉ phần còn lại ứng với $10$ chiếc.\n\n**Bước 1.** Cộng hai phân số chỉ phần việc của tổ $1$ và tổ $2$, trước đó quy đồng chúng về cùng một mẫu số.\n\n**Bước 2.** Lấy $1$ (cả số mặt nạ) trừ đi tổng vừa tìm để được phân số chỉ số mặt nạ của tổ $3$.\n\n**Bước 3.** Phân số đó ứng với $10$ chiếc, nên muốn tìm số mặt nạ của cả lớp ta lấy $10$ chia cho phân số này.\n\n**Chú ý:** Muốn chia cho một phân số thì nhân với phân số đảo ngược.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai tổ $1$ và $2$ làm được số phần tổng số mặt nạ là: $\\dfrac{1}{3}+\\dfrac{4}{9}=\\dfrac{3}{9}+\\dfrac{4}{9}=\\dfrac{7}{9}$ (tổng số mặt nạ)\n\nTổ $3$ làm được số phần tổng số mặt nạ là: $1-\\dfrac{7}{9}=\\dfrac{2}{9}$ (tổng số mặt nạ)\n\n$10$ chiếc mặt nạ ứng với $\\dfrac{2}{9}$ tổng số mặt nạ.\n\nTổng số mặt nạ lớp $5$A làm được là: $10:\\dfrac{2}{9}=10\\times\\dfrac{9}{2}=45$ (chiếc)\n\nĐáp số: $45$ chiếc mặt nạ"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 8",
+  "dap_an": "$105$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc 7 giờ 15 phút",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 60,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 105
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 60,
+     "nhan": "48 km/giờ"
+    },
+    {
+     "tu": 105,
+     "den": 60,
+     "nhan": "36 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 105,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe đi ngược chiều từ hai đầu quãng đường AB và gặp nhau, nên mỗi giờ hai xe cùng lại gần nhau một đoạn bằng tổng hai vận tốc; quãng đường AB bằng quãng đường hai xe cùng đi được cho tới lúc gặp nhau.\n\n**Bước 1.** Tìm thời gian hai xe đi cho đến lúc gặp nhau bằng cách lấy giờ gặp nhau trừ giờ xuất phát, rồi đổi số phút sang giờ để nhân với vận tốc tính theo km/giờ.\n\n**Bước 2.** Tính tổng hai vận tốc: đó là quãng đường hai xe cùng đi lại gần nhau trong mỗi giờ.\n\n**Bước 3.** Nhân tổng vận tốc với thời gian đi để tìm độ dài quãng đường AB.\n\n**Chú ý:** $1$ giờ $15$ phút không phải $1,15$ giờ; $15$ phút bằng $\\dfrac{1}{4}$ giờ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Xe thứ nhất đi từ A với vận tốc 48 km/giờ; xe thứ hai đi từ B với vận tốc 36 km/giờ; hai xe gặp nhau lúc 7 giờ 15 phút; cần tìm độ dài AB)\n\nThời gian hai xe đi đến lúc gặp nhau là: $7$ giờ $15$ phút $-\\ 6$ giờ $=1$ giờ $15$ phút\n\nĐổi: $1$ giờ $15$ phút $=1,25$ giờ\n\nMỗi giờ hai xe cùng đi lại gần nhau: $48+36=84$ (km)\n\nĐộ dài quãng đường AB là: $84\\times 1,25=105$ (km)\n\nĐáp số: $105$ km"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 9",
+  "dap_an": "$6$ dm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hình có diện tích bằng nhau thì diện tích hình vuông bằng diện tích hình bình hành; tính diện tích hình bình hành rồi tìm cạnh hình vuông là số nhân với chính nó ra diện tích đó. Muốn tính phải đưa đáy và chiều cao về cùng một đơn vị đo.\n\n**Bước 1.** Đổi độ dài đáy $0,9$ m sang đề-xi-mét để cùng đơn vị với chiều cao $4$ dm.\n\n**Bước 2.** Tính diện tích hình bình hành bằng đáy nhân chiều cao.\n\n**Bước 3.** Diện tích hình vuông bằng diện tích này; tìm số nhân với chính nó ra diện tích đó, đó chính là cạnh hình vuông.\n\n**Chú ý:** Nếu không đổi đơn vị mà nhân thẳng $0,9\\times 4$ thì sẽ sai, vì hai số đo khác đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $0,9$ m $=9$ dm\n\nDiện tích hình bình hành là: $9\\times 4=36$ ($\\text{dm}^2$)\n\nDiện tích hình vuông cũng là $36\\ \\text{dm}^2$.\n\nVì $6\\times 6=36$ nên cạnh hình vuông là $6$ dm.\n\nĐáp số: $6$ dm"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 10",
+  "dap_an": "$10$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Chắc chắn\" nghĩa là kể cả khi rủi ro nhất vẫn đủ. Ta tìm số bi nhiều nhất có thể lấy mà vẫn chưa đủ $2$ bi vàng và $3$ bi đỏ, rồi lấy thêm $1$ bi nữa.\n\n**Bước 1.** Có hai cách để chưa đủ: chưa đủ $3$ bi đỏ hoặc chưa đủ $2$ bi vàng; ta xét lần lượt trường hợp rủi ro nhất của từng cách.\n\n**Bước 2.** Chưa đủ bi đỏ nhiều bi nhất khi đã lấy hết bi vàng và mới có $2$ bi đỏ; tính số bi lúc đó.\n\n**Bước 3.** Chưa đủ bi vàng nhiều bi nhất khi đã lấy hết bi đỏ và mới có $1$ bi vàng; tính số bi lúc đó.\n\n**Bước 4.** Lấy số bi lớn hơn trong hai trường hợp rồi cộng thêm $1$; kiểm tra lại số bi này có chắc chắn đủ cả hai loại không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrường hợp rủi ro nhất để chưa đủ $3$ bi đỏ: lấy hết $7$ bi vàng và $2$ bi đỏ, số bi đã lấy là: $7+2=9$ (bi)\n\nTrường hợp rủi ro nhất để chưa đủ $2$ bi vàng: lấy hết $5$ bi đỏ và $1$ bi vàng, số bi đã lấy là: $5+1=6$ (bi)\n\nVì $9>6$ nên có thể lấy $9$ bi mà vẫn chưa chắc đủ. Lấy thêm $1$ bi nữa thì số bi phải lấy là: $9+1=10$ (bi)\n\nKiểm tra: lấy $10$ bi thì bi vàng nhiều nhất là $7$ nên bi đỏ ít nhất là $10-7=3$; bi đỏ nhiều nhất là $5$ nên bi vàng ít nhất là $10-5=5$, lớn hơn $2$.\n\nĐáp số: $10$ viên bi"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 11",
+  "dap_an": "Xuân: $5$ cây; Hạ: $4$ cây; Thu: $2$ cây; Đông: $3$ cây",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi Xuân thêm 1, Hạ bớt 1 cây",
+   "gia_tri_phan": 3,
+   "hang": [
+    {
+     "nhan": "Xuân lúc sau",
+     "phan": 2
+    },
+    {
+     "nhan": "Hạ lúc sau",
+     "phan": 1
+    }
+   ],
+   "tong": "9 cây",
+   "dau_hoi": [
+    "Xuân lúc sau",
+    "Hạ lúc sau"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đi từng bạn: Thu tìm được ngay từ $\\dfrac{1}{7}$ của $14$ cây, Đông tìm được từ Thu qua phân số $\\dfrac{2}{3}$, còn Xuân và Hạ gộp lại thành một tổng; nếu Xuân thêm $1$ cây, Hạ bớt $1$ cây thì tổng của hai bạn không đổi, và bài trở thành bài tổng – tỉ.\n\n**Bước 1.** Tìm số cây của Thu bằng cách lấy $\\dfrac{1}{7}$ của tổng số cây của bốn bạn.\n\n**Bước 2.** Số cây của Thu ứng với $\\dfrac{2}{3}$ số cây của Đông, nên lấy số cây của Thu chia cho phân số này để tìm số cây của Đông.\n\n**Bước 3.** Lấy tổng số cây trừ số cây của Thu và Đông để được tổng số cây của Xuân và Hạ.\n\n**Bước 4.** Xuân thêm $1$ cây, Hạ bớt $1$ cây nên tổng của hai bạn vẫn như cũ nhưng số cây của Xuân gấp $2$ lần của Hạ; vẽ sơ đồ tổng – tỉ để tìm số cây của hai bạn lúc sau.\n\n**Bước 5.** Trả về số cây lúc đầu: Xuân đã được thêm $1$ cây nên bớt lại, Hạ đã bớt $1$ cây nên cộng lại.\n\n**Chú ý:** Tổng của Xuân và Hạ không đổi sau khi thêm bớt, nhưng từng bạn thì đổi; cuối cùng phải trả về số cây lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây Thu trồng được là: $14\\times\\dfrac{1}{7}=2$ (cây)\n\n$2$ cây ứng với $\\dfrac{2}{3}$ số cây của Đông. Số cây Đông trồng được là: $2:\\dfrac{2}{3}=2\\times\\dfrac{3}{2}=3$ (cây)\n\nTổng số cây của Xuân và Hạ là: $14-2-3=9$ (cây)\n\nXuân trồng thêm $1$ cây, Hạ bớt $1$ cây thì tổng số cây của hai bạn vẫn là $9$ cây, và số cây của Xuân gấp $2$ lần số cây của Hạ.\n\nTa có sơ đồ:\n\n(Số cây của Xuân lúc sau 2 phần; số cây của Hạ lúc sau 1 phần; tổng 9 cây)\n\nTổng số phần bằng nhau là: $2+1=3$ (phần)\n\nSố cây của Hạ lúc sau là: $9:3\\times 1=3$ (cây)\n\nSố cây của Xuân lúc sau là: $3\\times 2=6$ (cây)\n\nSố cây Xuân trồng được là: $6-1=5$ (cây)\n\nSố cây Hạ trồng được là: $3+1=4$ (cây)\n\nĐáp số: Xuân $5$ cây; Hạ $4$ cây; Thu $2$ cây; Đông $3$ cây"
+ },
+ {
+  "ma_nguon": "NTL 2020 · 12",
+  "dap_an": "$9$ cách",
+  "ghi_chu_nghi": "Nhiều cách hiểu \"cách\": (1) đếm theo tập thanh ở bốn cạnh, không tính thứ tự bốn cạnh và thứ tự thanh trong một cạnh => 9 cách (cạnh 7 cm: 1; 8 cm: 1; 9 cm: 5; 10 cm: 1; 11 cm: 1) — đã chọn; (2) chỉ đếm độ dài cạnh hình vuông khác nhau => 5 (7, 8, 9, 10, 11 cm). Chưa rõ sách tính theo cách nào; CÂU KÉM CHẮC NHẤT.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình vuông có bốn cạnh bằng nhau, mỗi cạnh ghép từ một hay nhiều thanh (mỗi thanh dùng không quá một lần, không bẻ gãy). Vậy phải chia các thanh thành $4$ nhóm rời nhau có tổng độ dài bằng nhau: tìm các độ dài cạnh có thể rồi đếm số cách chia với từng độ dài.\n\n**Bước 1.** Tìm độ dài cạnh lớn nhất có thể: bốn cạnh dùng không quá tổng độ dài cả chín thanh.\n\n**Bước 2.** Tìm độ dài cạnh bé nhất có thể: cạnh ngắn thì chỉ dùng được những thanh không dài hơn cạnh, tổng các thanh đó phải đủ cho bốn cạnh.\n\n**Bước 3.** Với mỗi độ dài cạnh, tính tổng độ dài bốn cạnh rồi so với tổng các thanh dùng được để biết phải bỏ lại những thanh nào.\n\n**Bước 4.** Xét thanh dài nhất của mỗi trường hợp: thanh dài chỉ ghép được với những thanh ngắn nhất định nên các nhóm bị gò ép, liệt kê dần được hết các cách.\n\n**Bước 5.** Cộng số cách của mọi độ dài cạnh để được đáp số.\n\n**Chú ý:** Hai cách ghép coi là khác nhau khi tập các thanh ở bốn cạnh khác nhau; thứ tự bốn cạnh và thứ tự các thanh trong một cạnh không tính.\n\n**Phần 2. Trình bày**\n\nTổng độ dài chín thanh là: $1+2+3+4+5+6+7+8+9=45$ (cm)\n\nCạnh dài $12$ cm thì bốn cạnh dài $4\\times 12=48$ (cm), lớn hơn $45$ cm nên không ghép được. Vậy cạnh dài nhiều nhất là $11$ cm, vì $4\\times 11=44$ (cm).\n\nCạnh bé hơn $7$ cm thì chỉ dùng được các thanh không dài hơn cạnh, tổng các thanh đó nhỏ hơn bốn lần cạnh (cạnh $6$ cm: $1+2+3+4+5+6=21<24$; cạnh $5$ cm: $15<20$; cạnh ngắn hơn càng thiếu) nên không ghép được. Vậy cạnh dài từ $7$ cm đến $11$ cm.\n\nCạnh $7$ cm: chỉ dùng thanh từ $1$ cm đến $7$ cm, tổng $28$ cm, đúng bằng $4\\times 7$ nên dùng hết bảy thanh: $7$; $1+6$; $2+5$; $3+4$. Có $1$ cách.\n\nCạnh $8$ cm: thanh từ $1$ cm đến $8$ cm có tổng $36$ cm, bốn cạnh dài $32$ cm nên bỏ lại thanh tổng $4$ cm: bỏ thanh $4$ cm hoặc bỏ hai thanh $1$ cm và $3$ cm. Bỏ thanh $1$ cm thì thanh $7$ cm không ghép được, nên chỉ bỏ thanh $4$ cm: $8$; $1+7$; $2+6$; $3+5$. Có $1$ cách.\n\nCạnh $9$ cm: các nhóm thanh có tổng $9$ cm là $9$; $1+8$; $2+7$; $3+6$; $4+5$; $1+2+6$; $1+3+5$; $2+3+4$. Thử từng nhóm ba thanh ($1+2+6$; $1+3+5$; $2+3+4$) đều không ghép thêm được đủ bốn cạnh rời nhau, nên chỉ còn thanh $9$ cm và các cặp thanh.\n\n- Có thanh $9$ cm (một mình một cạnh): chọn $3$ trong $4$ cặp $1+8$; $2+7$; $3+6$; $4+5$, có $4$ cách.\n\n- Không có thanh $9$ cm: bốn cạnh dài $36$ cm, đúng tổng các thanh từ $1$ đến $8$, nên dùng đủ bốn cặp $1+8$; $2+7$; $3+6$; $4+5$, có $1$ cách.\n\nCạnh $9$ cm có: $4+1=5$ (cách)\n\nCạnh $10$ cm: bốn cạnh dài $40$ cm nên bỏ lại thanh tổng $45-40=5$ cm: bỏ thanh $5$ cm, hoặc bỏ $1+4$, hoặc bỏ $2+3$. Thanh $9$ cm chỉ ghép được với thanh $1$ cm, thanh $8$ cm chỉ ghép được với thanh $2$ cm nên không được bỏ thanh $1$ cm hay $2$ cm. Chỉ bỏ thanh $5$ cm: $1+9$; $2+8$; $3+7$; $4+6$. Có $1$ cách.\n\nCạnh $11$ cm: bốn cạnh dài $44$ cm nên bỏ thanh $1$ cm. Thanh $9$ cm ghép với $2$ cm, thanh $8$ cm ghép với $3$ cm, thanh $7$ cm ghép với $4$ cm, thanh $6$ cm ghép với $5$ cm: $2+9$; $3+8$; $4+7$; $5+6$. Có $1$ cách.\n\nSố cách ghép là: $1+1+5+1+1=9$ (cách)\n\nVậy có $9$ cách ghép."
+ }
+]

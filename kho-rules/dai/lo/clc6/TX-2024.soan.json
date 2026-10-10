@@ -1,0 +1,191 @@
+[
+ {
+  "ma_nguon": "TX 2024 · 1",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ phải là số tự nhiên đồng thời lớn hơn $15,25$ và bé hơn $18,35$; muốn chọn số lớn nhất thì liệt kê các số tự nhiên nằm giữa hai số thập phân đó rồi lấy số cuối cùng.\n\n**Bước 1.** Đọc kĩ điều kiện: $x$ là số tự nhiên (không có phần thập phân) và phải thoả mãn cả hai điều kiện lớn hơn $15,25$ lẫn bé hơn $18,35$.\n\n**Bước 2.** So sánh phần nguyên của hai số thập phân với các số tự nhiên để liệt kê tất cả số tự nhiên nằm giữa chúng.\n\n**Bước 3.** Chọn số lớn nhất trong các số vừa liệt kê rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Khi so sánh số tự nhiên với số thập phân, xét phần nguyên trước; nếu phần nguyên bằng nhau thì xét tiếp phần thập phân.\n\n**Phần 2. Trình bày**\n\nVì $15,25<x<18,35$ nên $x$ là số tự nhiên lớn hơn $15,25$ và bé hơn $18,35$.\n\nCác số tự nhiên thoả mãn là: $16;\\ 17;\\ 18$.\n\nSố lớn nhất trong các số đó là $18$.\n\nChọn D."
+ },
+ {
+  "ma_nguon": "TX 2024 · 2",
+  "dap_an": "$10\\ \\text{dm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong biểu thức, phép nhân làm trước phép cộng; muốn cộng được thì hai số đo phải cùng đơn vị, nên đổi $\\text{cm}^2$ sang $\\text{dm}^2$ (hai đơn vị diện tích liền nhau hơn kém $100$ lần).\n\n**Bước 1.** Tính tích $50\\ \\text{cm}^2\\times 8$ trước, vì trong biểu thức phép nhân được thực hiện trước phép cộng.\n\n**Bước 2.** Đổi kết quả vừa tìm từ $\\text{cm}^2$ sang $\\text{dm}^2$: biết $1\\ \\text{dm}^2=100\\ \\text{cm}^2$ nên chia số đo cho $100$.\n\n**Bước 3.** Cộng với $6\\ \\text{dm}^2$ (hai số đo đã cùng đơn vị) để tìm số điền vào chỗ trống.\n\n**Chú ý:** Đổi đơn vị diện tích thì mỗi bậc hơn kém $100$ lần, không phải $10$ lần như đơn vị độ dài.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} 50\\ \\text{cm}^2\\times 8+6\\ \\text{dm}^2 \\\\ =400\\ \\text{cm}^2+6\\ \\text{dm}^2 \\\\ =4\\ \\text{dm}^2+6\\ \\text{dm}^2 \\\\ =10\\ \\text{dm}^2 \\end{array}$\n\nVậy số điền vào chỗ trống là $10$."
+ },
+ {
+  "ma_nguon": "TX 2024 · 3",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $4,8$ cho $3,5$ và dừng khi thương có hai chữ số ở phần thập phân thì phép chia còn dư; số dư của phép chia số thập phân tìm bằng cách lấy số bị chia trừ đi tích của thương với số chia.\n\n**Bước 1.** Tìm thương: bỏ dấu phẩy ở cả hai số (cùng nhân $10$) rồi đặt tính chia $48:35$, viết thêm số $0$ vào số dư để chia tiếp cho đến khi thương có hai chữ số ở phần thập phân.\n\n**Bước 2.** Tìm số dư theo quy tắc: số dư bằng số bị chia trừ đi tích của thương với số chia, dùng đúng hai số ban đầu của đề là $4,8$ và $3,5$.\n\n**Bước 3.** Tính tích rồi trừ, sau đó đối chiếu với bốn phương án; kiểm tra lại bằng cách lấy thương nhân số chia cộng số dư phải được số bị chia.\n\n**Chú ý:** Số dư ở bước đặt tính $48:35$ chưa phải số dư của $4,8:3,5$ vì hai số đã được nhân lên $10$ lần, phải tính lại theo hai số ban đầu của đề.\n\n**Phần 2. Trình bày**\n\n$48:35=1$ (dư $13$); $130:35=3$ (dư $25$); $250:35=7$ (dư $5$) nên $4,8:3,5=1,37$\n\nSố dư của phép chia là: $4,8-1,37\\times 3,5=4,8-4,795=0,005$\n\nThử lại: $1,37\\times 3,5+0,005=4,795+0,005=4,8$\n\nChọn A.",
+  "ghi_chu_nghi": "Số dư của phép chia số thập phân: tính theo quy ước dư = số bị chia − thương × số chia (0,005). Không nhầm với số dư 5 hoặc 0,05 của phép đặt tính 48 : 35."
+ },
+ {
+  "ma_nguon": "TX 2024 · 4",
+  "dap_an": "$M=3,6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có phép chia, phép nhân và phép cộng nên làm phép chia, phép nhân từ trái sang phải trước rồi mới cộng; số $36\\%$ đổi thành số thập phân $0,36$ để chia như các số thập phân khác.\n\n**Bước 1.** Đổi $36\\%$ ra số thập phân bằng cách chia cho $100$, để cả ba số hạng đều tính được với số thập phân.\n\n**Bước 2.** Tính riêng từng số hạng: hai số hạng đầu là phép chia số thập phân, số hạng thứ ba là tích ba số nhân từ trái sang phải.\n\n**Bước 3.** Cộng ba kết quả vừa tìm được để ra giá trị của $M$.\n\n**Chú ý:** Chia cho $0,25$ cũng là nhân với $4$ và chia cho $0,5$ cũng là nhân với $2$, dùng điều này để nhẩm cho nhanh và kiểm tra lại.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} M=0,36:0,25+36\\%:0,5+2\\times 4\\times 0,18 \\\\ M=0,36:0,25+0,36:0,5+8\\times 0,18 \\\\ M=1,44+0,72+1,44 \\\\ M=3,6 \\end{array}$"
+ },
+ {
+  "ma_nguon": "TX 2024 · 5",
+  "dap_an": "$168$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Năng suất mỗi người như nhau nên số mét vải một người làm trong một ngày không đổi; rút về đơn vị \"$1$ người trong $1$ ngày\" rồi nhân với số người và số ngày của tổ hai.\n\n**Bước 1.** Tìm số mét vải cả tổ một làm trong $1$ ngày bằng cách lấy tổng số vải chia cho số ngày.\n\n**Bước 2.** Tìm số mét vải $1$ người làm trong $1$ ngày bằng cách lấy kết quả trên chia cho số người của tổ một.\n\n**Bước 3.** Tính cho tổ hai: nhân số vải của $1$ người trong $1$ ngày với số người, rồi nhân với số ngày làm việc của tổ hai.\n\n**Chú ý:** Số vải tăng theo cả số người lẫn số ngày làm việc nên phải nhân với cả hai số, không bỏ sót số nào.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổ một làm trong $1$ ngày được: $180:3=60$ (m)\n\nMột người làm trong $1$ ngày được: $60:5=12$ (m)\n\nTổ hai làm trong $1$ ngày được: $12\\times 7=84$ (m)\n\nTổ hai làm trong $2$ ngày được: $84\\times 2=168$ (m)\n\nĐáp số: $168$ m"
+ },
+ {
+  "ma_nguon": "TX 2024 · 6",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số lẻ liên tiếp hơn kém nhau $2$ đơn vị; giữa hai số có $10$ số lẻ khác nên từ số bé đến số lớn có $11$ khoảng cách như vậy, tìm được hiệu, và đã biết tổng nên đây là bài tổng – hiệu.\n\n**Bước 1.** Đếm số khoảng cách giữa số lẻ bé và số lẻ lớn: có $10$ số lẻ ở giữa thì số khoảng cách nhiều hơn số lẻ ở giữa $1$ khoảng.\n\n**Bước 2.** Mỗi khoảng cách giữa hai số lẻ liên tiếp là $2$ đơn vị, nên nhân số khoảng cách với $2$ để tìm hiệu của hai số.\n\n**Bước 3.** Vẽ sơ đồ tổng – hiệu: bớt hiệu khỏi tổng thì còn lại hai lần số bé, rồi chia đôi để tìm số lẻ bé.\n\n**Bước 4.** Đối chiếu với bốn phương án và thử lại: số lớn tìm được cũng phải là số lẻ, cộng với số bé phải đúng bằng tổng đề cho.\n\n**Chú ý:** \"Giữa hai số có $10$ số lẻ\" nghĩa là $10$ số lẻ nằm bên trong, chưa tính hai số đầu cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai số lẻ liên tiếp hơn kém nhau $2$ đơn vị. Giữa hai số có $10$ số lẻ nên từ số lẻ bé đến số lẻ lớn có: $10+1=11$ (khoảng cách)\n\nHiệu của hai số lẻ là: $11\\times 2=22$\n\nTa có sơ đồ:\n\n(Số lẻ bé 1 phần; số lẻ lớn 1 phần và thêm 22; tổng 504)\n\nSố lẻ bé là: $(504-22):2=241$\n\nThử lại: số lẻ lớn là $241+22=263$ và $241+263=504$.\n\nChọn B.",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai số lẻ",
+   "gia_tri_phan": 241,
+   "hang": [
+    {
+     "nhan": "Số lẻ bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lẻ lớn",
+     "phan": 1,
+     "them": "22"
+    }
+   ],
+   "tong": "504",
+   "dau_hoi": [
+    "Số lẻ bé"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "TX 2024 · 7",
+  "dap_an": "$10,26\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình, có một phần tư hình tròn lớn và hai nửa hình tròn nhỏ; diện tích hai nửa hình tròn nhỏ cộng lại đúng bằng diện tích phần tư hình tròn lớn, nhờ đó phần tô đậm bên trái – dưới bằng phần chung của hai nửa hình tròn (cánh hoa) ở góc trên bên phải.\n\n**Bước 1.** Đọc hình: phần tư hình tròn lớn có bán kính bằng cạnh hình vuông là $6$ cm; hai nửa hình tròn nhỏ có đường kính là hai cạnh của hình vuông nên bán kính bằng một nửa cạnh.\n\n**Bước 2.** Tính diện tích phần tư hình tròn lớn và diện tích hai nửa hình tròn nhỏ ghép lại, rồi so sánh để thấy hai diện tích này bằng nhau.\n\n**Bước 3.** Giải thích vì sao phần tô đậm bên trái – dưới bằng cánh hoa: khi cộng hai nửa hình tròn nhỏ thì phần chung được tính hai lần, còn trong phần tư hình tròn lớn thì phần chung chỉ tính một lần.\n\n**Bước 4.** Tính diện tích cánh hoa: hai phần tư hình tròn nhỏ cùng nằm trong một hình vuông và chồng lên nhau đúng ở cánh hoa, nên cộng hai phần tư rồi trừ đi hình vuông.\n\n**Bước 5.** Phần tô đậm gồm hai phần có diện tích bằng nhau nên nhân diện tích cánh hoa với $2$.\n\n**Chú ý:** Đề không ghi chữ nào về các đường cong, mọi dữ kiện (tâm, bán kính, hình vuông cạnh $6$ cm) đều lấy từ hình vẽ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ: hình vuông cạnh $6$ cm có một phần tư hình tròn bán kính $6$ cm (tâm ở đỉnh góc trên bên phải) và hai nửa hình tròn bán kính $3$ cm (đường kính là cạnh trên và cạnh bên phải). Hai nửa hình tròn nhỏ có phần chung là cánh hoa ở góc trên bên phải.\n\nDiện tích phần tư hình tròn bán kính $6$ cm là: $6\\times 6\\times 3,14:4=28,26$ ($\\text{cm}^2$)\n\nDiện tích hai nửa hình tròn bán kính $3$ cm (ghép lại thành một hình tròn) là: $3\\times 3\\times 3,14=28,26$ ($\\text{cm}^2$)\n\nHai diện tích này bằng nhau. Phần tư hình tròn lớn gồm hai nửa hình tròn nhỏ (phần chung chỉ tính một lần) và phần tô đậm bên trái – dưới; còn cộng hai nửa hình tròn nhỏ thì phần chung được tính hai lần. Do đó phần tô đậm bên trái – dưới bằng phần chung (cánh hoa).\n\nDiện tích một phần tư hình tròn bán kính $3$ cm là: $3\\times 3\\times 3,14:4=7,065$ ($\\text{cm}^2$)\n\nHai phần tư hình tròn bán kính $3$ cm phủ kín hình vuông cạnh $3$ cm và chồng lên nhau đúng ở cánh hoa, nên diện tích cánh hoa là: $7,065\\times 2-3\\times 3=5,13$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $5,13\\times 2=10,26$ ($\\text{cm}^2$)\n\nĐáp số: $10,26\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ chỉ có \"Tính diện tích phần tô đậm\", toàn bộ dữ kiện lấy từ hình: hình vuông cạnh 6 cm; một cung phần tư đường tròn tâm ở đỉnh trên bên phải, bán kính 6 cm (đi từ đỉnh trên trái xuống đỉnh dưới phải); hai nửa đường tròn bán kính 3 cm có đường kính là cạnh trên và cạnh phải của hình vuông, cùng đi qua tâm hình vuông. Phần tô đậm = cánh hoa (phần chung hai nửa hình tròn) + phần liềm bên trái – dưới. Đã đối chiếu tỉ lệ ảnh: diện tích tô ≈ 28,2% hình vuông, khớp 10,26/36 = 28,5%. Nhiều cách: cách khác tính phần liềm bằng hình quạt trừ hai nửa hình tròn cộng phần chung; đã chọn cách bám quan hệ \"hai nửa hình tròn nhỏ = một phần tư hình tròn lớn\" để không cần tính riêng phần liềm."
+ },
+ {
+  "ma_nguon": "TX 2024 · 8",
+  "dap_an": "$15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng cộng một số tự nhiên vào cả tử số và mẫu số thì HIỆU của mẫu số và tử số không đổi; phân số mới bằng $\\dfrac{2}{5}$ nên hiệu đó ứng với $5-2$ phần bằng nhau, đây là bài hiệu – tỉ.\n\n**Bước 1.** Tính hiệu của mẫu số và tử số của phân số $\\dfrac{57}{165}$; hiệu này không đổi khi cùng cộng một số vào cả hai số.\n\n**Bước 2.** Vì phân số mới bằng $\\dfrac{2}{5}$ nên tử số mới là $2$ phần, mẫu số mới là $5$ phần; vẽ sơ đồ hiệu – tỉ và tìm hiệu số phần bằng nhau.\n\n**Bước 3.** Chia hiệu cho hiệu số phần để tìm giá trị một phần, rồi tìm tử số mới (hoặc mẫu số mới).\n\n**Bước 4.** Lấy tử số mới trừ tử số cũ để tìm số cần cộng, rồi thử lại bằng cách rút gọn phân số mới.\n\n**Chú ý:** Số cần tìm được cộng vào cả tử và mẫu, nên hiệu mới vẫn là hiệu cũ; đừng lấy hiệu của hai phân số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu của mẫu số và tử số lúc đầu là: $165-57=108$\n\nKhi cùng cộng vào cả tử số và mẫu số một số tự nhiên thì hiệu của mẫu số và tử số không đổi, vẫn bằng $108$.\n\nPhân số mới bằng $\\dfrac{2}{5}$ nên tử số mới là $2$ phần, mẫu số mới là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Tử số mới 2 phần; mẫu số mới 5 phần; hiệu 108)\n\nHiệu số phần bằng nhau là: $5-2=3$ (phần)\n\nGiá trị một phần là: $108:3=36$\n\nTử số mới là: $36\\times 2=72$\n\nSố tự nhiên cần cộng vào cả tử số và mẫu số là: $72-57=15$\n\nThử lại: $\\dfrac{57+15}{165+15}=\\dfrac{72}{180}=\\dfrac{2}{5}$\n\nĐáp số: $15$",
+  "so_do_mo_ta": {
+   "tieu_de": "Tử số và mẫu số mới",
+   "gia_tri_phan": 36,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 2
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 5
+    }
+   ],
+   "hieu": "108",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "TX 2024 · 9",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá bán sau khi giảm là một giá duy nhất, được so với hai mốc khác nhau: bằng $108\\%$ giá vốn (lãi $8\\%$ so với giá vốn) và bằng $90\\%$ giá niêm yết (giảm $10\\%$ so với giá niêm yết); từ đó biết giá niêm yết bằng bao nhiêu phần trăm giá vốn.\n\n**Bước 1.** Lấy giá vốn làm mốc $100\\%$; lãi $8\\%$ so với giá vốn nên tính giá bán sau khi giảm bằng bao nhiêu phần trăm giá vốn.\n\n**Bước 2.** Giảm $10\\%$ so với giá niêm yết nên tính giá bán sau khi giảm bằng bao nhiêu phần trăm giá niêm yết.\n\n**Bước 3.** Cùng một giá bán, nên lấy tỉ số phần trăm so với giá vốn chia cho tỉ số phần trăm so với giá niêm yết để biết giá niêm yết bằng bao nhiêu phần trăm giá vốn (viết thêm bước số thập phân cho dễ chia).\n\n**Bước 4.** Nếu không giảm giá thì bán đúng giá niêm yết; lấy tỉ số vừa tìm trừ đi $100\\%$ (giá vốn) để biết lãi bao nhiêu phần trăm.\n\n**Chú ý:** Lãi tính theo giá vốn còn giảm giá tính theo giá niêm yết, hai mốc khác nhau nên không được cộng hay trừ trực tiếp $8\\%$ với $10\\%$.\n\n**Phần 2. Trình bày**\n\nGiá bán sau khi giảm so với giá vốn bằng: $100\\%+8\\%=108\\%$\n\nGiá bán sau khi giảm so với giá niêm yết bằng: $100\\%-10\\%=90\\%$\n\nGiá niêm yết so với giá vốn bằng: $108\\%:90\\%=1,08:0,9=1,2=120\\%$\n\nNếu không giảm giá thì cửa hàng lãi số phần trăm so với giá vốn là: $120\\%-100\\%=20\\%$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "TX 2024 · 10",
+  "dap_an": "$19,6\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai đường chéo cắt nhau tại $O$ chia hình thang thành bốn tam giác; các tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Từ $AB=\\dfrac{3}{4}CD$ tìm tỉ số $OA$ và $OC$, rồi lần lượt tìm diện tích từng tam giác còn lại.\n\n**Bước 1.** So sánh hai tam giác $ABD$ và $CBD$: chiều cao của cả hai bằng chiều cao hình thang nên tỉ số diện tích bằng tỉ số hai đáy $AB$ và $CD$.\n\n**Bước 2.** Chia mỗi tam giác đó thành hai tam giác nhỏ nhờ điểm $O$; các cặp tam giác nhỏ có chung đường cao hạ xuống $AC$ nên có tỉ số diện tích bằng tỉ số $OA$ và $OC$, từ đó tìm được tỉ số này.\n\n**Bước 3.** Dùng tỉ số $OA$ và $OC$ để tìm $S_{BOC}$ từ $S_{AOB}$ (hai tam giác chung đường cao hạ từ $B$ xuống $AC$).\n\n**Bước 4.** Chứng minh $S_{AOD}=S_{BOC}$ (hai tam giác $ABD$ và $ABC$ chung đáy $AB$, cùng chiều cao hình thang), rồi tìm $S_{COD}$ từ $S_{AOD}$ cũng bằng tỉ số $OA$ và $OC$.\n\n**Bước 5.** Cộng diện tích bốn tam giác nhỏ để được diện tích hình thang.\n\n**Chú ý:** Đề không có hình, nên hiểu $ABCD$ là hình thang có hai đáy $AB$ và $CD$, còn $O$ là giao điểm của hai đường chéo $AC$ và $BD$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHình thang $ABCD$ có hai đáy $AB$ và $CD$; hai đường chéo $AC$ và $BD$ cắt nhau tại $O$.\n\nTam giác $ABD$ và tam giác $CBD$ có chiều cao bằng nhau (bằng chiều cao hình thang), suy ra $\\dfrac{S_{ABD}}{S_{CBD}}=\\dfrac{AB}{CD}=\\dfrac{3}{4}$\n\nTam giác $AOB$ và tam giác $COB$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{AOB}}{S_{COB}}=\\dfrac{OA}{OC}$\n\nTam giác $AOD$ và tam giác $COD$ có chung đường cao hạ từ $D$ xuống $AC$, suy ra $\\dfrac{S_{AOD}}{S_{COD}}=\\dfrac{OA}{OC}$\n\nVì $S_{ABD}=S_{AOB}+S_{AOD}$ và $S_{CBD}=S_{COB}+S_{COD}$ nên $\\dfrac{S_{ABD}}{S_{CBD}}=\\dfrac{OA}{OC}$, do đó $\\dfrac{OA}{OC}=\\dfrac{3}{4}$\n\nDiện tích tam giác $BOC$ là: $3,6:3\\times 4=4,8$ ($\\text{cm}^2$)\n\nTam giác $ABD$ và tam giác $ABC$ có chung đáy $AB$ và cùng chiều cao nên $S_{ABD}=S_{ABC}$; cùng bớt đi $S_{AOB}$ thì $S_{AOD}=S_{BOC}=4,8$ ($\\text{cm}^2$)\n\nDiện tích tam giác $COD$ là: $4,8:3\\times 4=6,4$ ($\\text{cm}^2$)\n\nDiện tích hình thang $ABCD$ là: $3,6+4,8+4,8+6,4=19,6$ ($\\text{cm}^2$)\n\nĐáp số: $19,6\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề thiếu hình (\"hình bên\" không có trong dữ liệu) và chữ không nói rõ O là gì. Đã hiểu theo cách chuẩn: ABCD là hình thang đáy AB, CD (AB // CD), O là giao điểm hai đường chéo AC, BD. Nếu hình thực tế khác (O ở vị trí khác) thì lời giải sai — cần người đối chiếu hình gốc."
+ },
+ {
+  "ma_nguon": "TX 2024 · 11",
+  "dap_an": "$73$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi bán, gạo tẻ gấp $3$ lần gạo nếp nên số gạo còn lại gồm $3+1=4$ phần bằng nhau, vậy số gạo còn lại phải chia hết cho $4$; dùng điều đó để tìm bao gạo nếp đã bán.\n\n**Bước 1.** Tính tổng khối lượng của cả năm bao gạo lúc đầu.\n\n**Bước 2.** Số gạo còn lại phải chia hết cho $4$, nên xét số dư khi chia tổng và khối lượng từng bao cho $4$ để tìm bao đã bán.\n\n**Bước 3.** Vẽ sơ đồ tổng – tỉ cho số gạo còn lại: gạo nếp $1$ phần, gạo tẻ $3$ phần, rồi tìm số gạo nếp còn lại.\n\n**Bước 4.** Tìm các bao còn lại có tổng đúng bằng số gạo nếp còn lại, rồi cộng thêm bao đã bán để được số gạo nếp ban đầu.\n\n**Chú ý:** Chỉ khi bao đã bán làm số gạo còn lại chia hết cho $4$ thì mới chia được thành $4$ phần bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số gạo của $5$ bao là: $40+44+25+60+48=217$ (kg)\n\nSau khi bán, gạo tẻ gấp $3$ lần gạo nếp nên số gạo còn lại gồm $3+1=4$ phần bằng nhau, do đó số gạo còn lại chia hết cho $4$.\n\n$217$ chia cho $4$ dư $1$. Các bao $40$ kg; $44$ kg; $60$ kg; $48$ kg đều chia hết cho $4$ nên bán bao nào trong bốn bao đó thì số gạo còn lại vẫn chia cho $4$ dư $1$. Bao $25$ kg chia cho $4$ dư $1$ nên chỉ khi bán bao $25$ kg thì số gạo còn lại mới chia hết cho $4$. Vậy bao gạo nếp đã bán nặng $25$ kg.\n\nSố gạo còn lại sau khi bán là: $217-25=192$ (kg)\n\nTa có sơ đồ:\n\n(Gạo nếp còn lại 1 phần; gạo tẻ 3 phần; tổng 192 kg)\n\nSố gạo nếp còn lại là: $192:4=48$ (kg)\n\nBốn bao còn lại nặng $40$ kg; $44$ kg; $60$ kg; $48$ kg. Hai bao bất kì trong bốn bao đều nặng hơn $48$ kg (hai bao nhẹ nhất đã là $40+44=84$ kg) nên số gạo nếp còn lại chỉ có thể là bao $48$ kg.\n\nTổng số gạo nếp ban đầu là: $48+25=73$ (kg)\n\nĐáp số: $73$ kg",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi bán 1 bao gạo nếp",
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Gạo nếp còn lại",
+     "phan": 1
+    },
+    {
+     "nhan": "Gạo tẻ",
+     "phan": 3
+    }
+   ],
+   "tong": "192 kg",
+   "dau_hoi": [
+    "Gạo nếp còn lại"
+   ]
+  },
+  "ghi_chu_nghi": "Hiểu đề: năm bao gồm cả gạo nếp và gạo tẻ; bán đúng một bao gạo nếp; sau đó tổng gạo tẻ = 3 × tổng gạo nếp còn lại. Với cách hiểu này nghiệm duy nhất (bán bao 25 kg; nếp còn lại 48 kg; tẻ 40+44+60=144 kg)."
+ },
+ {
+  "ma_nguon": "TX 2024 · 12",
+  "dap_an": "$8$ xe",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giả sử cả $14$ xe đều là xe nhỏ (chở $29$ bạn) thì chở được ít hơn thực tế; mỗi lần đổi một xe nhỏ thành xe lớn thì số bạn chở được tăng thêm đúng bằng hiệu hai loại xe, nhờ đó tìm được số xe lớn (giả thiết tạm).\n\n**Bước 1.** Giả sử cả $14$ xe đều chở $29$ bạn, tính số học sinh chở được theo giả thiết đó.\n\n**Bước 2.** So với số học sinh thực tế mà đề cho, xem còn thiếu bao nhiêu bạn.\n\n**Bước 3.** Mỗi lần thay một xe chở $29$ bạn bằng một xe chở $35$ bạn thì số bạn chở được tăng thêm một số cố định; tính số đó bằng hiệu hai loại xe.\n\n**Bước 4.** Lấy số bạn còn thiếu chia cho số bạn tăng thêm ở mỗi lần thay thì được số xe chở $35$ bạn; thử lại bằng tổng số học sinh.\n\n**Chú ý:** Mỗi lần thay chỉ tăng thêm $35-29$ bạn chứ không tăng thêm $35$ bạn, nên chia số thiếu cho mức tăng này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiả sử cả $14$ xe đều là xe chở $29$ bạn thì chở được: $29\\times 14=406$ (bạn)\n\nSố bạn chở thiếu so với thực tế là: $454-406=48$ (bạn)\n\nMỗi xe chở $35$ bạn thay cho một xe chở $29$ bạn thì chở thêm được: $35-29=6$ (bạn)\n\nSố xe chở $35$ bạn là: $48:6=8$ (xe)\n\nThử lại: số xe chở $29$ bạn là $14-8=6$ (xe); số bạn chở được là $35\\times 8+29\\times 6=280+174=454$ (bạn), đúng bằng số học sinh đi dã ngoại.\n\nĐáp số: $8$ xe"
+ },
+ {
+  "ma_nguon": "TX 2024 · 13",
+  "dap_an": "$1900\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng nước trong bể không đổi qua hai lần thả; mỗi lần thể tích nước bằng thể tích phần bể tính đến mặt nước trừ thể tích phần viên sắt đang chìm trong nước, nên so sánh hai lần sẽ tìm được diện tích đáy bể.\n\n**Bước 1.** Lần thả thứ nhất: nước dâng ngang cạnh trên viên sắt nên viên sắt chìm hết, thể tích phần chìm bằng cả viên sắt cạnh $10$ cm.\n\n**Bước 2.** Lần thả thứ hai: mực nước chỉ cao $12$ cm, thấp hơn cạnh $20$ cm của viên sắt, nên viên sắt chỉ chìm đến độ cao $12$ cm; tính thể tích phần chìm đó.\n\n**Bước 3.** Vì lượng nước không đổi nên phần bể cao $12$ cm hơn phần bể cao $10$ cm đúng bằng chênh lệch thể tích phần sắt chìm giữa hai lần.\n\n**Bước 4.** Phần bể hơn đó là một lớp cao $2$ cm có đáy là đáy bể; lấy chênh lệch thể tích chia cho độ cao của lớp này để tìm diện tích đáy bể.\n\n**Chú ý:** Viên sắt cạnh $20$ cm không chìm hết nên phần chìm chỉ cao bằng mực nước $12$ cm, không tính cả thể tích $20\\times 20\\times 20$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLần thứ nhất viên sắt chìm hết trong nước, thể tích phần sắt chìm là: $10\\times 10\\times 10=1000$ ($\\text{cm}^3$)\n\nLần thứ hai viên sắt chìm trong nước đến độ cao $12$ cm, thể tích phần sắt chìm là: $20\\times 20\\times 12=4800$ ($\\text{cm}^3$)\n\nLượng nước trong bể không đổi, mà thể tích nước bằng thể tích phần bể tính đến mặt nước trừ thể tích phần sắt chìm. Do đó thể tích phần bể cao $12$ cm hơn thể tích phần bể cao $10$ cm là: $4800-1000=3800$ ($\\text{cm}^3$)\n\nPhần bể hơn đó là một lớp cao: $12-10=2$ (cm)\n\nDiện tích đáy bể là: $3800:2=1900$ ($\\text{cm}^2$)\n\nĐáp số: $1900\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Hiểu đề: nước chưa tràn ra ngoài; lượng nước ban đầu như nhau ở hai lần thả; \"nước dâng cao ngang cạnh trên viên sắt\" = mực nước sau khi thả là 10 cm (viên 10 cm chìm vừa hết); viên 20 cm đặt sát đáy bể, mực nước 12 cm tính từ đáy bể. Kiểm tra: nước = 1900×10 − 1000 = 1900×12 − 4800 = 18000 cm3."
+ },
+ {
+  "ma_nguon": "TX 2024 · 14",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số trong dãy đều có phần nguyên $1$ và tử số $1$, nên chỉ cần tìm quy luật của mẫu số; mỗi mẫu số là tích của hai số hơn kém nhau $2$.\n\n**Bước 1.** Nhận xét phần nguyên và tử số của các hỗn số trong dãy: đều không đổi, chỉ mẫu số thay đổi nên tập trung tìm quy luật của mẫu số.\n\n**Bước 2.** Phân tích từng mẫu số đã cho thành tích của hai số hơn kém nhau $2$, rồi xem thừa số thứ nhất thay đổi thế nào từ số này sang số kế tiếp.\n\n**Bước 3.** Từ quy luật đó, tìm thừa số thứ nhất của số thứ $48$ (thừa số thứ nhất tăng thêm $1$ sau mỗi số), rồi suy ra thừa số thứ hai.\n\n**Bước 4.** Tính tích hai thừa số để được mẫu số, viết lại hỗn số rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Số thứ $48$ chỉ cách số thứ nhất $47$ lần tăng, không phải $48$ lần, nên cộng thêm $47$ chứ không cộng thêm $48$.\n\n**Phần 2. Trình bày**\n\nPhần nguyên và tử số của các số trong dãy đều bằng $1$. Mẫu số của các số là: $8=2\\times 4$; $15=3\\times 5$; $24=4\\times 6$; $35=5\\times 7$\n\nQuy luật: mẫu số là tích của hai số hơn kém nhau $2$; thừa số thứ nhất lần lượt là $2;\\ 3;\\ 4;\\ 5;\\ \\ldots$ (mỗi số hơn số liền trước $1$).\n\nThừa số thứ nhất của mẫu số ở số thứ $48$ là: $2+(48-1)\\times 1=49$\n\nThừa số thứ hai là: $49+2=51$\n\nMẫu số của số thứ $48$ là: $49\\times 51=2499$\n\nVậy số thứ $48$ là $1\\dfrac{1}{2499}$.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "TX 2024 · 15",
+  "dap_an": "$600000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng số tiền của bốn bạn không đổi; \"Việt góp bằng $\\dfrac{1}{2}$ số tiền ba bạn còn lại\" nghĩa là Việt $1$ phần, ba bạn kia $2$ phần nên Việt bằng một phần ba tổng số tiền; làm tương tự với Nam và Hòa, phần còn lại của tổng ứng với $130\\,000$ đồng của Bình.\n\n**Bước 1.** Đổi mỗi câu \"bằng $\\dfrac{1}{k}$ số tiền ba bạn còn lại\" thành phân số của TỔNG số tiền: bạn đó là $1$ phần, ba bạn còn lại là $k$ phần, cả bốn bạn là $1+k$ phần.\n\n**Bước 2.** Cộng ba phân số của Việt, Nam và Hòa (quy đồng mẫu số) để biết ba bạn góp được bao nhiêu phần của tổng số tiền.\n\n**Bước 3.** Lấy cả tổng số tiền (coi là $1$) trừ đi phân số vừa tìm được để biết Bình góp bằng bao nhiêu phần của tổng số tiền.\n\n**Bước 4.** Biết $130\\,000$ đồng ứng với phân số đó của tổng, chia cho tử số rồi nhân với mẫu số để tìm tổng số tiền.\n\n**Chú ý:** \"$\\dfrac{1}{2}$ số tiền ba bạn còn lại\" khác \"$\\dfrac{1}{2}$ tổng số tiền\": phải cộng thêm phần của chính bạn đó vào mới ra tổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền Việt góp bằng $\\dfrac{1}{2}$ số tiền ba bạn còn lại nên bằng $\\dfrac{1}{1+2}=\\dfrac{1}{3}$ tổng số tiền.\n\nSố tiền Nam góp bằng $\\dfrac{1}{3}$ số tiền ba bạn còn lại nên bằng $\\dfrac{1}{1+3}=\\dfrac{1}{4}$ tổng số tiền.\n\nSố tiền Hòa góp bằng $\\dfrac{1}{4}$ số tiền ba bạn còn lại nên bằng $\\dfrac{1}{1+4}=\\dfrac{1}{5}$ tổng số tiền.\n\nBa bạn Việt, Nam, Hòa góp được: $\\dfrac{1}{3}+\\dfrac{1}{4}+\\dfrac{1}{5}=\\dfrac{20}{60}+\\dfrac{15}{60}+\\dfrac{12}{60}=\\dfrac{47}{60}$ (tổng số tiền)\n\nBình góp được: $1-\\dfrac{47}{60}=\\dfrac{13}{60}$ (tổng số tiền)\n\nSố tiền bốn bạn đã góp là: $130000:13\\times 60=600000$ (đồng)\n\nĐáp số: $600000$ đồng"
+ },
+ {
+  "ma_nguon": "TX 2024 · 16",
+  "dap_an": "$9$ giờ $51$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề không cho độ dài quãng đường $AB$ nên coi cả quãng đường là $1$; mỗi xe mỗi giờ đi được một phân số của quãng đường. Hai xe đi ngược chiều nhau nên thời gian gặp bằng quãng đường còn lại chia cho quãng đường hai xe cùng đi được trong $1$ giờ.\n\n**Bước 1.** Tính mỗi xe mỗi giờ đi được bao nhiêu phần quãng đường $AB$, và xác định xe thứ hai xuất phát lúc mấy giờ (cộng $2$ giờ vào giờ xe thứ nhất xuất phát).\n\n**Bước 2.** Lúc xe thứ hai xuất phát thì xe thứ nhất đã đi được $2$ giờ; tính quãng đường xe thứ nhất đã đi rồi tìm quãng đường còn lại giữa hai xe.\n\n**Bước 3.** Tính mỗi giờ hai xe đi ngược chiều lại gần nhau thêm bao nhiêu phần quãng đường bằng cách cộng hai vận tốc.\n\n**Bước 4.** Lấy quãng đường còn lại chia cho quãng đường hai xe lại gần nhau trong $1$ giờ để tìm thời gian từ lúc xe thứ hai xuất phát đến lúc gặp, rồi đổi ra giờ và phút.\n\n**Bước 5.** Cộng thời gian đó với giờ xe thứ hai xuất phát để tìm giờ hai xe gặp nhau.\n\n**Chú ý:** Thời gian đến lúc gặp phải tính từ lúc xe thứ hai xuất phát chứ không tính từ lúc xe thứ nhất xuất phát.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi quãng đường $AB$ là $1$. Xe thứ nhất mỗi giờ đi được: $1:6=\\dfrac{1}{6}$ (quãng đường)\n\nXe thứ hai mỗi giờ đi được: $1:4=\\dfrac{1}{4}$ (quãng đường)\n\nXe thứ hai xuất phát lúc: $6$ giờ $15$ phút $+\\ 2$ giờ $=8$ giờ $15$ phút\n\nTa có sơ đồ:\n\n(Lúc 8 giờ 15 phút xe thứ nhất đã đi 1/3 quãng đường AB; xe thứ hai xuất phát từ B đi ngược lại; hai xe gặp nhau tại điểm C)\n\nLúc đó xe thứ nhất đã đi được: $\\dfrac{1}{6}\\times 2=\\dfrac{1}{3}$ (quãng đường)\n\nQuãng đường còn lại giữa hai xe là: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (quãng đường)\n\nMỗi giờ hai xe lại gần nhau thêm: $\\dfrac{1}{6}+\\dfrac{1}{4}=\\dfrac{5}{12}$ (quãng đường)\n\nThời gian từ lúc xe thứ hai xuất phát đến lúc hai xe gặp nhau là: $\\dfrac{2}{3}:\\dfrac{5}{12}=\\dfrac{8}{5}$ (giờ)\n\nĐổi: $\\dfrac{8}{5}$ giờ $=1,6$ giờ $=1$ giờ $36$ phút\n\nHai xe gặp nhau lúc: $8$ giờ $15$ phút $+\\ 1$ giờ $36$ phút $=9$ giờ $51$ phút\n\nĐáp số: $9$ giờ $51$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc 8 giờ 15 phút",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "D",
+     "x": 4,
+     "ghi": "xe 1 ở đây"
+    },
+    {
+     "ten": "C",
+     "x": 7.2,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 12
+    }
+   ],
+   "di": [
+    {
+     "tu": 4,
+     "den": 7.2,
+     "nhan": "xe 1"
+    },
+    {
+     "tu": 12,
+     "den": 7.2,
+     "nhan": "xe 2"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 12,
+     "nhan": "Cả quãng đường AB (coi là 1)"
+    },
+    {
+     "tu": 0,
+     "den": 4,
+     "nhan": "Xe 1 đã đi 1/3 quãng đường"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Hiểu đề: xe thứ hai đi từ B về A cũng mất 4 giờ (cùng vận tốc như khi đi A→B); \"sau 2 giờ\" là sau lúc 6 giờ 15 phút, tức xe 2 xuất phát lúc 8 giờ 15 phút; hai xe cùng đi trên đường AB, ngược chiều. Nhiều cách: coi quãng đường là 1 (đã chọn, bám quan hệ gốc) hoặc coi AB gồm 12 phần bằng nhau (kết quả như nhau). Sơ đồ vẽ theo thang 12 đơn vị cho cả quãng đường."
+ }
+]

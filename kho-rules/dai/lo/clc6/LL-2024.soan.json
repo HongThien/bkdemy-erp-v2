@@ -1,0 +1,145 @@
+[
+ {
+  "ma_nguon": "LL 2024 · 1",
+  "dap_an": "$A=6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong biểu thức có hai cặp số cùng phần thập phân: $6,5$ với $2,5$ và $7,16$ với $5,16$. Ghép từng cặp lại với nhau thì mỗi hiệu là một số tự nhiên, tính nhẩm rất gọn.\n\n**Bước 1.** Nhận ra hai cặp số có phần thập phân giống nhau là $6,5$ với $2,5$ và $7,16$ với $5,16$.\n\n**Bước 2.** Đổi chỗ các số hạng để ghép mỗi cặp lại với nhau, nhớ rằng dấu đứng trước số nào thì đi theo số đó.\n\n**Bước 3.** Tính từng hiệu trong ngoặc, rồi cộng hai kết quả lại với nhau.\n\n**Chú ý:** Dấu trừ đứng trước $5,16$ và $2,5$ phải được giữ nguyên khi đổi chỗ các số.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} A=6,5-5,16+7,16-2,5 \\\\ A=(6,5-2,5)+(7,16-5,16) \\\\ A=4+2 \\\\ A=6 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 2",
+  "dap_an": "$\\dfrac{7}{8}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm số bé nhất trong nhiều số, hãy so từng số với $1$ để loại bớt: số lớn hơn $1$ chắc chắn lớn hơn số bé hơn $1$. Những số còn lại cùng bé hơn $1$ thì quy đồng mẫu số để so sánh.\n\n**Bước 1.** So sánh từng số với $1$: số thập phân $1,001$ và hai phân số có tử số lớn hơn mẫu số thì xem số nào lớn hơn $1$.\n\n**Bước 2.** Loại những số lớn hơn $1$, chỉ giữ lại các phân số bé hơn $1$ để so sánh tiếp với nhau.\n\n**Bước 3.** Quy đồng mẫu số hai phân số còn lại, mẫu số chung là tích của $8$ và $9$.\n\n**Bước 4.** Hai phân số cùng mẫu số thì phân số nào có tử số bé hơn là phân số bé hơn.\n\n**Chú ý:** Phân số có tử số lớn hơn mẫu số thì lớn hơn $1$, nên $\\dfrac{2021}{2020}$ không thể là số bé nhất.\n\n**Phần 2. Trình bày**\n\n$1,001>1$ và $\\dfrac{2021}{2020}>1$ (vì tử số lớn hơn mẫu số), còn $\\dfrac{7}{8}<1$ và $\\dfrac{8}{9}<1$.\n\nQuy đồng: $\\dfrac{7}{8}=\\dfrac{7\\times 9}{8\\times 9}=\\dfrac{63}{72}$ và $\\dfrac{8}{9}=\\dfrac{8\\times 8}{9\\times 8}=\\dfrac{64}{72}$\n\nVì $\\dfrac{63}{72}<\\dfrac{64}{72}$ nên $\\dfrac{7}{8}<\\dfrac{8}{9}$.\n\nVậy số bé nhất trong bốn số là $\\dfrac{7}{8}$."
+ },
+ {
+  "ma_nguon": "LL 2024 · 3",
+  "dap_an": "Số lớn: $\\dfrac{7}{18}$; số bé: $\\dfrac{5}{18}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho tổng và hiệu của hai số nên đây là bài toán tổng – hiệu: lấy tổng bớt đi hiệu thì được hai lần số bé, rồi tìm số lớn bằng số bé cộng với hiệu.\n\n**Bước 1.** Nhận ra bài toán tổng – hiệu, rồi quy đồng để hai phân số $\\dfrac{2}{3}$ và $\\dfrac{1}{9}$ có cùng mẫu số.\n\n**Bước 2.** Lấy tổng trừ đi hiệu để được hai lần số bé, rồi chia cho $2$ để tìm số bé.\n\n**Bước 3.** Lấy số bé cộng với hiệu để tìm số lớn, nhớ đưa hai phân số về cùng mẫu số trước khi cộng.\n\nThử lại: cộng hai số tìm được phải ra tổng đề cho, lấy số lớn trừ số bé phải ra hiệu đề cho.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Số bé; số lớn hơn số bé $\\dfrac{1}{9}$; tổng hai số là $\\dfrac{2}{3}$)\n\nQuy đồng: $\\dfrac{2}{3}=\\dfrac{6}{9}$\n\nHai lần số bé là: $\\dfrac{6}{9}-\\dfrac{1}{9}=\\dfrac{5}{9}$\n\nSố bé là: $\\dfrac{5}{9}:2=\\dfrac{5}{18}$\n\nSố lớn là: $\\dfrac{5}{18}+\\dfrac{1}{9}=\\dfrac{5}{18}+\\dfrac{2}{18}=\\dfrac{7}{18}$\n\nĐáp số: Số lớn $\\dfrac{7}{18}$; số bé $\\dfrac{5}{18}$",
+  "so_do_mo_ta": {
+   "tieu_de": "Tổng và hiệu của hai số",
+   "gia_tri_phan": 0.2777777777777778,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "1/9",
+     "them_gt": 0.1111111111111111
+    }
+   ],
+   "tong": "Tổng 2/3",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LL 2024 · 4",
+  "dap_an": "Thứ Tư",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một tuần có $7$ ngày, nên chỉ cần biết sau $14$ năm thì tổng số ngày chia cho $7$ dư bao nhiêu. Năm thường có $365$ ngày, bằng $52$ tuần dư $1$ ngày; năm nhuận có $366$ ngày, bằng $52$ tuần dư $2$ ngày; vì vậy mỗi năm thứ trong tuần của một ngày cố định lùi thêm $1$ hoặc $2$ ngày.\n\n**Bước 1.** Xác định khoảng thời gian từ ngày $02/12/2006$ đến ngày $02/12/2020$ gồm bao nhiêu năm.\n\n**Bước 2.** Đếm số năm nhuận trong khoảng đó: năm nhuận có ngày $29/2$ và là năm chia hết cho $4$, chỉ tính những ngày $29/2$ nằm giữa hai ngày sinh nhật.\n\n**Bước 3.** Tính tổng số ngày dư sau khi bỏ hết các tuần trọn: mỗi năm thường dư $1$ ngày, mỗi năm nhuận dư $2$ ngày.\n\n**Bước 4.** Chia số ngày dư cho $7$ để biết thứ lệch mấy ngày, rồi đếm tiếp từ thứ Bảy theo số ngày lệch đó.\n\n**Chú ý:** Ngày $29/2/2006$ không tồn tại và nằm trước ngày $02/12/2006$ nên không tính; còn ngày $29/2/2020$ nằm trước ngày $02/12/2020$ nên có tính.\n\n**Phần 2. Trình bày**\n\nTừ ngày $02/12/2006$ đến ngày $02/12/2020$ là $2020-2006=14$ (năm).\n\nTrong khoảng đó có các ngày $29/2$ của những năm $2008$; $2012$; $2016$; $2020$ nên có $4$ năm nhuận và $14-4=10$ (năm thường).\n\nNăm thường có $365$ ngày $=52$ tuần dư $1$ ngày; năm nhuận có $366$ ngày $=52$ tuần dư $2$ ngày.\n\nSố ngày dư sau $14$ năm là: $10\\times 1+4\\times 2=18$ (ngày)\n\nVì $18:7=2$ (dư $4$) nên thứ trong tuần của ngày sinh nhật lùi thêm $4$ ngày so với thứ Bảy: Chủ nhật, thứ Hai, thứ Ba, thứ Tư.\n\nVậy $14$ năm sau sinh nhật bạn Khánh Linh vào thứ Tư."
+ },
+ {
+  "ma_nguon": "LL 2024 · 5",
+  "dap_an": "$13,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm $15\\%$ của $90$ thì lấy $90$ nhân với $15\\%$; đây là bài toán tìm giá trị phần trăm của một số cho trước.\n\n**Bước 1.** Nhận ra đề hỏi tìm $15\\%$ của số $90$, tức là tìm giá trị phần trăm của một số đã biết.\n\n**Bước 2.** Viết phép nhân của số $90$ với $15\\%$, đổi $15\\%$ thành số thập phân bằng cách chia cho $100$.\n\n**Bước 3.** Nhân số $90$ với số thập phân vừa đổi, đếm đúng số chữ số ở phần thập phân của kết quả.\n\n**Chú ý:** $15\\%$ nghĩa là $15$ phần trăm, tức $\\dfrac{15}{100}$, không phải $15$ lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$15\\%$ của $90$ là: $90\\times 15\\%=90\\times 0,15=13,5$\n\nĐáp số: $13,5$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 6",
+  "dap_an": "$B=\\dfrac{8}{3}$",
+  "ghi_chu_nghi": "Đề không nói dạng đáp số: $B=\\dfrac{8}{3}$ (= $2\\dfrac{2}{3}$).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $B$ là một thừa số chưa biết, nhân với tích của bốn thừa số đã biết; muốn tìm $B$ phải tính tích đã biết trước, rồi lấy kết quả của phép nhân chia cho tích đó.\n\n**Bước 1.** Tính từng ngoặc: lấy $1$ trừ phân số trong ngoặc, đổi $1$ thành phân số có cùng mẫu số rồi trừ.\n\n**Bước 2.** Nhân bốn phân số vừa tìm được, rút gọn ngay từng bước để các số không quá lớn.\n\n**Bước 3.** Đổi hỗn số $1\\dfrac{3}{5}$ ở vế phải thành phân số bằng cách lấy phần nguyên nhân mẫu số rồi cộng tử số.\n\n**Bước 4.** Muốn tìm thừa số chưa biết ta lấy tích chia cho thừa số đã biết, chia phân số là nhân với phân số đảo ngược.\n\nThử lại: nhân $B$ vừa tìm với tích của các ngoặc phải ra đúng $1\\dfrac{3}{5}$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} B\\times\\left(1-\\dfrac{1}{4}\\right)\\times\\left(1-\\dfrac{1}{9}\\right)\\times\\left(1-\\dfrac{1}{16}\\right)\\times\\left(1-\\dfrac{1}{25}\\right)=1\\dfrac{3}{5} \\\\ B\\times\\dfrac{3}{4}\\times\\dfrac{8}{9}\\times\\dfrac{15}{16}\\times\\dfrac{24}{25}=1\\dfrac{3}{5} \\\\ B\\times\\dfrac{2}{3}\\times\\dfrac{15}{16}\\times\\dfrac{24}{25}=1\\dfrac{3}{5} \\\\ B\\times\\dfrac{5}{8}\\times\\dfrac{24}{25}=1\\dfrac{3}{5} \\\\ B\\times\\dfrac{3}{5}=1\\dfrac{3}{5} \\\\ B\\times\\dfrac{3}{5}=\\dfrac{8}{5} \\\\ B=\\dfrac{8}{5}:\\dfrac{3}{5} \\\\ B=\\dfrac{8}{5}\\times\\dfrac{5}{3} \\\\ B=\\dfrac{8}{3} \\end{array}$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 7",
+  "dap_an": "$a=21$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số bằng nhau mà cùng mẫu số thì tử số bằng nhau. Vì vậy hãy quy đồng $\\dfrac{3}{5}$ về mẫu số $35$ rồi so tử số.\n\n**Bước 1.** So sánh hai mẫu số $35$ và $5$ để biết mẫu số $5$ phải nhân với bao nhiêu thì được $35$.\n\n**Bước 2.** Nhân cả tử số và mẫu số của $\\dfrac{3}{5}$ với số vừa tìm để được phân số có mẫu số $35$.\n\n**Bước 3.** Hai phân số bằng nhau và cùng mẫu số $35$ nên tử số của chúng bằng nhau, từ đó suy ra $a$.\n\n**Chú ý:** Phải nhân cả tử số lẫn mẫu số với cùng một số thì giá trị phân số mới không thay đổi.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} \\dfrac{a}{35}=\\dfrac{3}{5} \\\\ \\dfrac{a}{35}=\\dfrac{3\\times 7}{5\\times 7} \\\\ \\dfrac{a}{35}=\\dfrac{21}{35} \\\\ a=21 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 8",
+  "dap_an": "$64,8\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình thang bằng tổng hai đáy nhân chiều cao rồi chia $2$. Đề chỉ cho đáy lớn nên phải tìm đáy bé và chiều cao từ đáy lớn.\n\n**Bước 1.** Tìm đáy bé: đáy bé bằng nửa đáy lớn nên lấy đáy lớn chia cho $2$.\n\n**Bước 2.** Tìm chiều cao: chiều cao bằng $60\\%$ đáy lớn nên lấy đáy lớn nhân với $60\\%$.\n\n**Bước 3.** Áp dụng công thức diện tích hình thang: tổng hai đáy nhân với chiều cao rồi chia cho $2$.\n\n**Chú ý:** Đáy bé và chiều cao đều tính từ đáy lớn, không phải từ nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐáy bé của hình thang là: $12:2=6$ (cm)\n\nChiều cao của hình thang là: $12\\times 60\\%=7,2$ (cm)\n\nDiện tích hình thang là: $(12+6)\\times 7,2:2=64,8$ ($\\text{cm}^2$)\n\nĐáp số: $64,8\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 9",
+  "dap_an": "$3,44\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ không nói về cung tròn; lấy từ hình: cung là một phần tư đường tròn tâm ở đỉnh dưới bên trái, bán kính bằng cạnh hình vuông ($4$ cm), phần gạch chéo nằm giữa cung và đỉnh trên bên phải. Lấy $\\pi=3,14$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình, cung tròn có tâm ở một đỉnh của hình vuông và bán kính bằng cạnh hình vuông, nên phần không gạch chéo là một phần tư hình tròn. Phần gạch chéo là hình vuông bỏ đi phần một phần tư hình tròn đó.\n\n**Bước 1.** Nhìn hình để xác định cung tròn có tâm ở đỉnh nào của hình vuông và bán kính bằng bao nhiêu.\n\n**Bước 2.** Tính diện tích hình vuông bằng cạnh nhân cạnh.\n\n**Bước 3.** Tính diện tích phần không gạch chéo là một phần tư hình tròn: diện tích cả hình tròn rồi chia cho $4$.\n\n**Bước 4.** Lấy diện tích hình vuông trừ đi diện tích một phần tư hình tròn để được phần gạch chéo.\n\n**Chú ý:** Diện tích hình tròn là bán kính nhân bán kính nhân $3,14$; đừng nhầm với chu vi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, cung tròn có tâm là đỉnh dưới bên trái của hình vuông, bán kính bằng cạnh hình vuông, nên phần không gạch chéo là $\\dfrac{1}{4}$ hình tròn bán kính $4$ cm.\n\nDiện tích hình vuông là: $4\\times 4=16$ ($\\text{cm}^2$)\n\nDiện tích $\\dfrac{1}{4}$ hình tròn là: $4\\times 4\\times 3,14:4=12,56$ ($\\text{cm}^2$)\n\nDiện tích phần gạch chéo là: $16-12,56=3,44$ ($\\text{cm}^2$)\n\nĐáp số: $3,44\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 10",
+  "dap_an": "$1232$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy này không có công thức sẵn, nên hãy xem hiệu giữa hai số liền nhau: các hiệu tăng dần $1$ đơn vị mỗi lần. Vì vậy số hạng thứ $50$ bằng số hạng đầu cộng với tổng của các hiệu đó.\n\n**Bước 1.** Tính hiệu giữa hai số liền nhau của dãy để tìm quy luật của các hiệu.\n\n**Bước 2.** Đếm xem từ số hạng đầu đến số hạng thứ $50$ có bao nhiêu hiệu và viết ra dãy các hiệu đó.\n\n**Bước 3.** Tính tổng các hiệu theo cách của dãy cách đều: số đầu cộng số cuối, nhân với số số hạng rồi chia cho $2$.\n\n**Bước 4.** Cộng tổng các hiệu với số hạng đầu tiên để được số hạng thứ $50$.\n\n**Chú ý:** Từ số hạng thứ nhất đến số hạng thứ $50$ chỉ có $49$ hiệu chứ không phải $50$ hiệu.\n\n**Phần 2. Trình bày**\n\nHiệu giữa hai số liền nhau của dãy là: $8-7=1$; $10-8=2$; $13-10=3$; $17-13=4$; $\\ldots$ nên các hiệu tăng dần $1$; $2$; $3$; $4$; $\\ldots$\n\nTừ số hạng thứ nhất đến số hạng thứ $50$ có $50-1=49$ hiệu, đó là $1;\\ 2;\\ 3;\\ \\ldots;\\ 49$.\n\nTổng của $49$ hiệu đó là: $1+2+3+\\ldots+49=(49+1)\\times 49:2=1225$\n\nSố hạng thứ $50$ của dãy là: $7+1225=1232$\n\nVậy số hạng thứ $50$ của dãy là $1232$."
+ },
+ {
+  "ma_nguon": "LL 2024 · 11",
+  "dap_an": "$45$ ván cờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ván cờ có hai bạn cùng chơi, nên nếu đếm theo từng bạn thì mỗi ván bị đếm hai lần; phải chia kết quả cho $2$.\n\n**Bước 1.** Tìm số bạn mà mỗi bạn phải đấu cùng, không tính chính bạn đó.\n\n**Bước 2.** Nhân số bạn với số đối thủ của mỗi bạn để được số lượt đấu khi đếm theo từng bạn.\n\n**Bước 3.** Chia kết quả cho $2$ vì mỗi ván cờ đã bị đếm hai lần, một lần từ mỗi bạn.\n\n**Chú ý:** Không nhân $10\\times 10$ vì mỗi bạn không đấu với chính mình.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi bạn đấu với $10-1=9$ (bạn) còn lại.\n\nNếu đếm theo từng bạn thì số lượt đấu là: $10\\times 9=90$ (lượt)\n\nMỗi ván cờ có hai bạn nên bị đếm hai lần, vậy số ván cờ là: $90:2=45$ (ván)\n\nĐáp số: $45$ ván cờ"
+ },
+ {
+  "ma_nguon": "LL 2024 · 12",
+  "dap_an": "$19$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng cùng một số vào cả tử số và mẫu số thì hiệu giữa mẫu số và tử số không đổi. Phân số mới là $\\dfrac{3}{4}$ nên mẫu số hơn tử số đúng $1$ phần, từ đó tìm được tử số mới và mẫu số mới.\n\n**Bước 1.** Tính hiệu giữa mẫu số và tử số của phân số $\\dfrac{56}{81}$; hiệu này giữ nguyên sau khi cộng thêm.\n\n**Bước 2.** Vẽ sơ đồ cho phân số mới $\\dfrac{3}{4}$: tử số là $3$ phần, mẫu số là $4$ phần; hiệu số phần ứng với hiệu vừa tìm.\n\n**Bước 3.** Tìm giá trị một phần, rồi tìm tử số mới bằng giá trị một phần nhân với số phần của tử số.\n\n**Bước 4.** Lấy tử số mới trừ tử số cũ để được số cần cộng thêm, rồi thử lại với mẫu số.\n\n**Chú ý:** Số cộng vào tử số và mẫu số là cùng một số, nên tính qua tử số hay qua mẫu số đều ra kết quả như nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu giữa mẫu số và tử số của phân số $\\dfrac{56}{81}$ là: $81-56=25$\n\nKhi cộng cùng một số vào cả tử số và mẫu số thì hiệu giữa mẫu số và tử số không đổi, vẫn là $25$.\n\nTa có sơ đồ:\n\n(Tử số mới 3 phần; mẫu số mới 4 phần; hiệu 25)\n\nHiệu số phần bằng nhau là: $4-3=1$ (phần)\n\nTử số mới là: $25:1\\times 3=75$\n\nSố cần cộng thêm vào tử số và mẫu số là: $75-56=19$\n\nThử lại: $\\dfrac{56+19}{81+19}=\\dfrac{75}{100}=\\dfrac{3}{4}$\n\nĐáp số: $19$ đơn vị",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi cộng thêm vào tử và mẫu",
+   "gia_tri_phan": 25,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 3
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 4
+    }
+   ],
+   "hieu": "25"
+  }
+ },
+ {
+  "ma_nguon": "LL 2024 · 13",
+  "dap_an": "$x=2$; $y=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia hết cho $2$ và $5$ thì chữ số tận cùng là $0$; chia hết cho $9$ thì tổng các chữ số chia hết cho $9$. Dùng lần lượt hai dấu hiệu đó để tìm $y$ rồi tìm $x$.\n\n**Bước 1.** Số chia hết cho cả $2$ và $5$ thì tận cùng là $0$, từ đó xác định chữ số $y$.\n\n**Bước 2.** Số chia hết cho $9$ thì tổng các chữ số chia hết cho $9$; lập tổng $2+x+5+y$ với $y$ vừa tìm được.\n\n**Bước 3.** Vì $x$ là một chữ số nên tổng nằm trong một khoảng; tìm số chia hết cho $9$ nằm trong khoảng đó.\n\n**Bước 4.** Lấy tổng vừa chọn trừ đi phần đã biết để tìm $x$, rồi thử lại bằng cách chia số vừa lập cho $9$.\n\n**Chú ý:** Chữ số hàng nghìn là $2$ và chữ số hàng trăm là $x$ nên $x$ có thể bằng $0$; phải xét khoảng giá trị của tổng từ trường hợp đó.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{2x5y}$ chia hết cho $2$ và $5$ nên chữ số tận cùng là $0$, vậy $y=0$.\n\nSố có dạng $\\overline{2x50}$ chia hết cho $9$ nên tổng các chữ số $2+x+5+0=7+x$ chia hết cho $9$.\n\nVì $x$ là chữ số từ $0$ đến $9$ nên $7+x$ từ $7$ đến $16$; trong khoảng này chỉ có $9$ chia hết cho $9$.\n\nVậy $7+x=9$, suy ra $x=9-7=2$.\n\nThử lại: $2250:9=250$ nên số $2250$ chia hết cho $9$ (và cho $2$, $5$).\n\nVậy $x=2$ và $y=0$."
+ },
+ {
+  "ma_nguon": "LL 2024 · 16",
+  "dap_an": "$x=10$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái có $9$ số hạng và số hạng nào cũng chứa $x$, nên $x$ xuất hiện $9$ lần. Các số được cộng thêm và các số bị trừ bớt gộp lại thành một số duy nhất.\n\n**Bước 1.** Đếm số lần $x$ xuất hiện, đó là số số hạng ở vế trái, để viết thành $9$ nhân với $x$.\n\n**Bước 2.** Gộp riêng các số được cộng vào và riêng các số bị trừ đi, rồi lấy tổng số cộng trừ tổng số trừ.\n\n**Bước 3.** Đưa bài về dạng $9\\times x$ cộng một số đã biết bằng $95$; muốn tìm số hạng chưa biết ta lấy tổng trừ số hạng đã biết.\n\n**Bước 4.** Muốn tìm thừa số chưa biết ta lấy tích chia cho thừa số đã biết.\n\nThử lại: thay giá trị $x$ vừa tìm vào đề, tính vế trái phải ra đúng $95$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} (x+9)+(x-2)+(x+7)+(x-4)+(x+5)+(x-6)+(x+3)+(x-8)+(x+1)=95 \\\\ 9\\times x+(9+7+5+3+1)-(2+4+6+8)=95 \\\\ 9\\times x+25-20=95 \\\\ 9\\times x+5=95 \\\\ 9\\times x=95-5 \\\\ 9\\times x=90 \\\\ x=90:9 \\\\ x=10 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LL 2024 · 17",
+  "dap_an": "$36$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau $5$ năm mỗi người đều thêm $5$ tuổi nên tổng tuổi hai bố con tăng thêm $5\\times 2$ tuổi. Bớt phần tăng đó thì biết tổng tuổi hiện nay, rồi giải bài tổng – tỉ với tuổi bố gấp $4$ lần tuổi con.\n\n**Bước 1.** Tính tổng số tuổi hai bố con tăng thêm sau $5$ năm: mỗi người tăng $5$ tuổi và có hai người.\n\n**Bước 2.** Lấy tổng số tuổi sau $5$ năm trừ đi phần tăng thêm để tìm tổng số tuổi hiện nay.\n\n**Bước 3.** Vẽ sơ đồ hiện nay: tuổi con là $1$ phần, tuổi bố gấp $4$ lần nên là $4$ phần; tìm tổng số phần rồi giá trị một phần.\n\n**Bước 4.** Tuổi bố hiện nay gồm $4$ phần, lấy giá trị một phần nhân với $4$.\n\n**Chú ý:** Đề hỏi tuổi bố hiện nay, không phải tuổi bố sau $5$ năm nữa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau $5$ năm nữa, tổng số tuổi hai bố con tăng thêm: $5\\times 2=10$ (tuổi)\n\nTổng số tuổi hai bố con hiện nay là: $55-10=45$ (tuổi)\n\nTa có sơ đồ:\n\n(Tuổi con 1 phần; tuổi bố 4 phần; tổng 45 tuổi)\n\nTổng số phần bằng nhau là: $1+4=5$ (phần)\n\nGiá trị một phần là: $45:5=9$ (tuổi)\n\nTuổi bố hiện nay là: $9\\times 4=36$ (tuổi)\n\nĐáp số: $36$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Tuổi hai bố con hiện nay",
+   "gia_tri_phan": 9,
+   "hang": [
+    {
+     "nhan": "Tuổi con",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi bố",
+     "phan": 4
+    }
+   ],
+   "tong": "45 tuổi",
+   "dau_hoi": [
+    "Tuổi bố"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "LL 2024 · 19",
+  "dap_an": "$73600$ viên gạch",
+  "ghi_chu_nghi": "Hiểu \"lát gạch xung quanh và đáy bể\" là bốn mặt bên và mặt đáy (bể không có nắp, không lát miệng bể); các cạnh $1200$ cm, $850$ cm, $200$ cm đều chia hết cho $5$ nên số viên là số nguyên.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lát gạch xung quanh và đáy bể nên diện tích cần lát là diện tích xung quanh cộng diện tích đáy. Số viên gạch bằng diện tích cần lát chia cho diện tích một viên gạch, hai diện tích phải cùng đơn vị.\n\n**Bước 1.** Bể bơi không có nắp, nên các mặt cần lát gồm bốn mặt bên và một mặt đáy.\n\n**Bước 2.** Tính diện tích xung quanh bằng chu vi đáy nhân với chiều cao; chu vi đáy là hai lần tổng chiều dài và chiều rộng.\n\n**Bước 3.** Tính diện tích đáy bằng chiều dài nhân chiều rộng, rồi cộng với diện tích xung quanh để được diện tích cần lát.\n\n**Bước 4.** Đổi diện tích cần lát từ mét vuông sang xăng-ti-mét vuông để cùng đơn vị với diện tích viên gạch.\n\n**Bước 5.** Tính diện tích một viên gạch vuông, rồi chia diện tích cần lát cho diện tích đó để tìm số viên gạch.\n\n**Chú ý:** Gạch cạnh $5$ cm tính bằng xăng-ti-mét, còn kích thước bể tính bằng mét, phải đổi cùng đơn vị rồi mới chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích xung quanh bể bơi là: $(12+8,5)\\times 2\\times 2=82$ ($\\text{m}^2$)\n\nDiện tích đáy bể bơi là: $12\\times 8,5=102$ ($\\text{m}^2$)\n\nDiện tích cần lát gạch là: $82+102=184$ ($\\text{m}^2$)\n\nĐổi: $184\\ \\text{m}^2=1840000\\ \\text{cm}^2$\n\nDiện tích một viên gạch là: $5\\times 5=25$ ($\\text{cm}^2$)\n\nSố viên gạch cần dùng là: $1840000:25=73600$ (viên)\n\nĐáp số: $73600$ viên gạch"
+ },
+ {
+  "ma_nguon": "LL 2024 · 20",
+  "dap_an": "$84\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình; hiểu M nằm trên cạnh AB, N nằm trên cạnh AC, tứ giác MNBC là phần còn lại của tam giác ABC khi bỏ tam giác AMN.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Nối $B$ với $N$ để có tam giác $ABN$ làm cầu nối: nó chung đường cao với tam giác $AMN$ và cũng chung đường cao với tam giác $ABC$.\n\n**Bước 1.** Đổi \"$AM$ gấp rưỡi $MB$\" thành số phần bằng nhau để biết $AM$ bằng mấy phần của $AB$.\n\n**Bước 2.** Nối $B$ với $N$, so sánh hai tam giác $AMN$ và $ABN$ có chung đường cao hạ từ $N$ xuống $AB$, từ đó tìm diện tích tam giác $ABN$.\n\n**Bước 3.** So sánh hai tam giác $ABN$ và $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, từ đó tìm diện tích tam giác $ABC$.\n\n**Bước 4.** Lấy diện tích tam giác $ABC$ trừ diện tích tam giác $AMN$ để được diện tích tứ giác $MNBC$.\n\n**Chú ý:** Tứ giác $MNBC$ là phần còn lại khi bỏ tam giác $AMN$ khỏi tam giác $ABC$, không phải bỏ tam giác $ABN$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM$ gấp rưỡi $MB$ nên $AM$ là $3$ phần, $MB$ là $2$ phần bằng nhau, $AB$ gồm $3+2=5$ (phần). Do đó $AM=\\dfrac{3}{5}\\times AB$.\n\nNối $B$ với $N$. Tam giác $AMN$ và tam giác $ABN$ có chung đường cao hạ từ $N$ xuống $AB$, suy ra $\\dfrac{S_{AMN}}{S_{ABN}}=\\dfrac{AM}{AB}=\\dfrac{3}{5}$\n\nDiện tích tam giác $ABN$ là: $36:3\\times 5=60$ ($\\text{cm}^2$)\n\nTam giác $ABN$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{2}$\n\nDiện tích tam giác $ABC$ là: $60\\times 2=120$ ($\\text{cm}^2$)\n\nDiện tích tứ giác $MNBC$ là: $120-36=84$ ($\\text{cm}^2$)\n\nĐáp số: $84\\ \\text{cm}^2$"
+ }
+]
