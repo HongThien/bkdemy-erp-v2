@@ -113,6 +113,14 @@ export function khoaCongThuc(s) {
   return k.length >= 25 ? k : null
 }
 
+/** từng CÔNG THỨC DÀI của đề (giữ nguyên số): hai đề chung một công thức dài có quan hệ (= ≤ ≥ < >) thường là MỘT bài in lại với lời dẫn khác
+ *  ("là số dương" ↔ "> 0", "đôi một khác nhau" ↔ "khác nhau") — hai mức trùng ở trên và khuôn + đáp án đều không bắt (bài chứng minh không có đáp án).
+ *  Lô 6–7 của 8T (10/10): phụ lục của sách in lại bài của các chương ⇒ chỉ BÁO nghi, người mở hai đề ra so rồi ghi `bo` vào <tên>.sua.json. */
+export function khoaCongThucDai(s) {
+  const chuan = (x) => khoaChu(x).replaceAll(BS + 'leq', BS + 'le').replaceAll(BS + 'geq', BS + 'ge').replaceAll(BS + 'neq', BS + 'ne')
+  return [...new Set([...boNguon(s).matchAll(/\$([^$]+)\$/g)].map((m) => chuan(m[1])).filter((x) => x.length >= 14 && (/[=<>]/.test(x) || x.includes(BS + 'le') || x.includes(BS + 'ge'))))]
+}
+
 // ── chỉ mục + tìm trùng ──────────────────────────────────────────────────────
 /** ds = [{ id, noi_dung, dap_an?, kiem? }] ⇒ chỉ mục */
 export function taoChiMuc(ds) {
@@ -126,7 +134,7 @@ export function taoChiMuc(ds) {
   return { chu, toan, khuon }
 }
 function khoaNghi(c) {
-  const yeu = khoaToan(c).yeu
+  const yeu = [...khoaToan(c).yeu, ...khoaCongThucDai(c.noi_dung).map((k) => 'cc:' + k)]
   if (!c.dap_an || /^chứngminh$/.test(khoaDapAn(c.dap_an))) return yeu
   const da = khoaDapAn(c.dap_an), ct = khoaCongThuc(c.noi_dung)
   return [...yeu, khoaKhuon(c.noi_dung) + '⇒' + da, ...(ct ? ['ct:' + ct + '⇒' + da] : [])]

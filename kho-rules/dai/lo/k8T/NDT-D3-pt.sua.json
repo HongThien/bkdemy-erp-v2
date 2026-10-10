@@ -5,17 +5,22 @@
   "D3.25a@p59": {
     "sach_in_sai": "trang PDF 59, lời giải bài 25a dòng thứ hai: phân thức thứ ba in (b+c-x)/b, đúng là (c+a-x)/b như đề. Sách dừng ở dạng tích, không biện luận — kho biện luận đủ."
   },
-  "D3.44@p66": { "nhom": "T18T020101" },
+  "D3.44@p66": {
+    "nhom": "T18T020101"
+  },
   "D3.46@p67": {
     "sach_in_sai": "trang PDF 67, đề bài 46: giữa phân thức thứ hai và thứ ba in một dấu trông như dấu chia; lời giải của sách dùng dấu cộng và chỉ dấu cộng mới ra S = {3; -14}. Kho ghi dấu cộng (đã mở ảnh p-067)."
   },
-  "D3.47@p67": { "nhom": "T18T020101" },
-  "D3.49b@p68": { "nhom": "T18T020101" },
+  "D3.47@p67": {
+    "nhom": "T18T020101"
+  },
+  "D3.49b@p68": {
+    "nhom": "T18T020101"
+  },
   "D3.64@p76": {
     "sach_in_sai": "trang PDF 76, bài 64: đề in 4x - 7 = x + 11 nhưng lời giải của sách giải 4x - 7 = x + 1 (ra 8/3). Kho giữ đề như in, đáp số S = {6} (đã mở ảnh p-076)."
   },
   "D3.73@p80": {
-    "sach_in_sai": "trang PDF 80, bài 73: đề in 451 giây; sách lập 3x^2 + x - 902 = 0 rồi phân tích thành (x-19)(3x+58) = 0, mà tích đó bằng 3x^2 + x - 1102. Với 451 giây không có nghiệm nguyên dương; kết quả 950 m của sách ứng với 551 giây. Kho ghi đề 551 giây.",
-    "cho_quyet": "đề sách in 451 giây không có đáp số; kho tạm ghi 551 giây (khớp kết quả 950 m của sách) — chờ CEO chọn: giữ bản 551 giây hay bỏ câu"
+    "sach_in_sai": "trang PDF 80, bài 73: đề in 451 giây; sách lập 3x^2 + x - 902 = 0 rồi phân tích thành (x-19)(3x+58) = 0, mà tích đó bằng 3x^2 + x - 1102. Với 451 giây không có nghiệm nguyên dương; kết quả 950 m của sách ứng với 551 giây. Kho ghi đề 551 giây. Nhân chứng thứ hai (soát lô 7): phụ lục C, Đề 3 bài 6b (trang PDF 282) in lại chính bài này với 551 giây ⇒ bỏ cờ chờ quyết, tự duyệt."
   }
 }

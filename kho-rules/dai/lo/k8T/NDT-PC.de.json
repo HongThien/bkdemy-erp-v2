@@ -1,0 +1,294 @@
+[
+ {
+  "ma": "C1.1c@p271",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^7+x^2+1$."
+ },
+ {
+  "ma": "C1.2b@p271",
+  "noi_dung": "Tìm $x,y,z$ biết: $2(x^2+y^2)+z^2=-2xy+2yz-4x-4$."
+ },
+ {
+  "ma": "C1.3b@p271",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $a^2+b^2+c^2=2$. Tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức $M=a+b+c-abc$."
+ },
+ {
+  "ma": "C1.6b@p271",
+  "noi_dung": "Trong một giải bóng đá có $12$ đội tham dự, thi đấu vòng tròn một lượt (hai đội bất kì thi đấu với nhau đúng một trận).\n\ni) Chứng minh rằng sau $4$ vòng đấu (mỗi đội đấu đúng $4$ trận) luôn tìm được ba đội bóng đôi một chưa thi đấu với nhau.\n\nii) Khẳng định trên còn đúng không, nếu mỗi đội đã thi đấu đúng $5$ trận?"
+ },
+ {
+  "ma": "C2.1a@p276",
+  "noi_dung": "Giải phương trình: $\\dfrac{2-x}{2013}-1=\\dfrac{1-x}{2014}-\\dfrac{x}{2015}$."
+ },
+ {
+  "ma": "C2.1b@p276",
+  "noi_dung": "Giải phương trình: $\\dfrac{1}{x^2+9x+20}+\\dfrac{1}{x^2+11x+30}+\\dfrac{1}{x^2+13x+42}=\\dfrac{1}{18}$."
+ },
+ {
+  "ma": "C2.1c@p276",
+  "noi_dung": "Giải phương trình: $(x-1)^3+(2x+3)^3=27x^3+8$."
+ },
+ {
+  "ma": "C2.2a@p276",
+  "noi_dung": "Cho $a,b$ thỏa mãn $\\dfrac{a}{b}+\\dfrac{b}{a}=\\dfrac{a^2}{b}+\\dfrac{b^2}{a}=\\dfrac{a^3}{b}+\\dfrac{b^3}{a}$. Tính giá trị của biểu thức $M=\\dfrac{a^9}{b}+\\dfrac{b^9}{a}$."
+ },
+ {
+  "ma": "C2.2b@p276",
+  "noi_dung": "Tính tổng $S=\\dfrac{1^2}{1\\cdot3}+\\dfrac{2^2}{3\\cdot5}+\\dfrac{3^2}{5\\cdot7}+\\dots+\\dfrac{2016^2}{4031\\cdot4033}$."
+ },
+ {
+  "ma": "C2.3a@p276",
+  "noi_dung": "Cho $x,y,z>0$. Chứng minh rằng: $(x+y+z)\\left(\\dfrac1x+\\dfrac1y+\\dfrac1z\\right)\\ge9$."
+ },
+ {
+  "ma": "C2.3b@p276",
+  "noi_dung": "Cho $a,b,c$ là độ dài các cạnh của một tam giác có chu vi bằng $1$. Chứng minh rằng $\\dfrac{1-2a^2}{(1-2a)^2}+\\dfrac{1-2b^2}{(1-2b)^2}+\\dfrac{1-2c^2}{(1-2c)^2}\\ge21$."
+ },
+ {
+  "ma": "C2.6a@p277",
+  "noi_dung": "Mẹ gửi $100\\,000\\,000$ đồng vào ngân hàng với lãi suất kì hạn $1$ năm. Sau $2$ năm mẹ nhận số tiền cả vốn lẫn lãi là $112\\,360\\,000$ đồng. Hỏi lãi suất ngân hàng đó là bao nhiêu phần trăm trong một năm? Biết rằng số tiền lãi của năm đầu được gộp vào với vốn để tính lãi cho năm sau."
+ },
+ {
+  "ma": "C2.6b@p277",
+  "noi_dung": "Một đa giác lồi có mọi đường chéo bằng nhau. Đa giác này có mấy cạnh?"
+ },
+ {
+  "ma": "C3.1@p282",
+  "noi_dung": "Cho đa thức $P(x)=x^5-x$; $Q(x)=(x^2-4)(x^2-1)x$.\n\na) Hãy phân tích đa thức $P(x)-Q(x)$ thành tích các nhân tử.\n\nb) Chứng tỏ rằng nếu $x$ là số nguyên thì $P(x)$ luôn chia hết cho $5$."
+ },
+ {
+  "ma": "C3.2a@p282",
+  "noi_dung": "Cho $x_1,x_2\\in[0;1]$. Chứng minh rằng: $(1+x_1)^2\\ge4x_1^2$."
+ },
+ {
+  "ma": "C3.2b@p282",
+  "noi_dung": "Cho $x_1,x_2\\in[0;1]$. Chứng minh rằng: $(1+x_1+x_2)^2\\ge4(x_1^2+x_2^2)$."
+ },
+ {
+  "ma": "C3.6a@p282",
+  "noi_dung": "Cho $n\\in\\mathbb{N}$. Tìm số dư khi chia $2^{11n}$ cho $23$. Chứng minh rằng $2^a+29^b$ không chia hết cho $23$, với mọi $a,b\\in\\mathbb{N}$."
+ },
+ {
+  "ma": "C3.6b@p282",
+  "noi_dung": "Một rô bốt chuyển động từ $A$ đến $B$ theo cách sau: đi được $5$m dừng lại $1$ giây, rồi đi tiếp $10$m dừng lại $2$ giây, rồi đi tiếp $15$m dừng lại $3$ giây... Cứ như vậy đi từ $A$ đến $B$ kể cả dừng hết tất cả $551$ giây. Tính khoảng cách từ $A$ đến $B$. Biết rằng, khi đi rô bốt chuyển động với vận tốc là $2{,}5$m/giây."
+ },
+ {
+  "ma": "C4.1a@p286",
+  "noi_dung": "Chứng minh rằng $\\dfrac{a^2}{a+b}+\\dfrac{b^2}{b+c}+\\dfrac{c^2}{c+a}=\\dfrac{b^2}{a+b}+\\dfrac{c^2}{b+c}+\\dfrac{a^2}{c+a}$."
+ },
+ {
+  "ma": "C4.1b@p286",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$.\n\nTính giá trị biểu thức $M=\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}$."
+ },
+ {
+  "ma": "C4.2a@p286",
+  "noi_dung": "Chứng minh rằng: $a(a+b)(a^2+b^2)(a^4+b^4)+b(b+c)(b^2+c^2)(b^4+c^4)+c(c+a)(c^2+a^2)(c^4+a^4)\\ge0$"
+ },
+ {
+  "ma": "C4.2b@p286",
+  "noi_dung": "Cho $a,b,c,d,e\\ge0$ thỏa mãn $a+b+c+d+e=1$.\n\nChứng minh rằng $ab+bc+cd+de\\le\\dfrac{1}{4}$."
+ },
+ {
+  "ma": "C4.3a@p286",
+  "noi_dung": "Giải phương trình nghiệm nguyên $x^3+x^2+x+1=y^3$."
+ },
+ {
+  "ma": "C4.3b@p286",
+  "noi_dung": "Giải phương trình nghiệm nguyên dương: $x^4+x^3y+xy^3+y^4=(x+y)^3$."
+ },
+ {
+  "ma": "C4.6b@p287",
+  "noi_dung": "Tại mỗi đỉnh của đa giác đều $11$ cạnh ta ghi một số bất kì trong các số $31;32;61;62;91;92;331;361;332;362;961$ (mỗi số dùng đúng $1$ lần).\n\nChứng minh rằng tồn tại ba đỉnh của đa giác là ba đỉnh của một tam giác cân và tổng các số ghi trên các đỉnh là số chia hết cho $3$."
+ },
+ {
+  "ma": "C5.1a@p292",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-241}{17}+\\dfrac{x-220}{19}+\\dfrac{x-195}{21}+\\dfrac{x-166}{23}=10$."
+ },
+ {
+  "ma": "C5.1b@p292",
+  "noi_dung": "Giải phương trình: $(x^2-1)^2=4x+1$."
+ },
+ {
+  "ma": "C5.1c@p292",
+  "noi_dung": "Giải phương trình: $\\dfrac{5}{x^2+x-6}-\\dfrac{2}{x^2+4x+3}=\\dfrac{3}{4x-2}$."
+ },
+ {
+  "ma": "C5.2a@p292",
+  "noi_dung": "Rút gọn rồi tính giá trị của biểu thức $A=\\dfrac{x(x+5)+y(y+5)+2(xy-3)}{x(x+6)+y(y+6)+2xy}$ với $x+y=2016$."
+ },
+ {
+  "ma": "C5.2b@p292",
+  "noi_dung": "Cho ba số $x,y,z$ thỏa mãn đồng thời $x+y+z=0$ và $xy+yz+zx=0$. Hãy tính giá trị của biểu thức $P=(x+1)^{20}+(y-1)^{11}+(z+1)^{2017}$."
+ },
+ {
+  "ma": "C5.3a@p292",
+  "noi_dung": "Chứng minh rằng $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$."
+ },
+ {
+  "ma": "C5.3b@p292",
+  "noi_dung": "Cho $a,b,c,d>0$ thỏa mãn $a+b+c+d\\ge2016$. Tìm giá trị nhỏ nhất của biểu thức\n$M=\\dfrac{a^4}{(a^2+b^2)(a+b)}+\\dfrac{b^4}{(b^2+c^2)(b+c)}+\\dfrac{c^4}{(c^2+d^2)(c+d)}+\\dfrac{d^4}{(d^2+a^2)(d+a)}$."
+ },
+ {
+  "ma": "C5.6a@p292",
+  "noi_dung": "Cho $n\\in\\mathbb N$. Chứng minh rằng $B=4^n+15n-1$ chia hết cho $9$."
+ },
+ {
+  "ma": "C5.6b@p293",
+  "noi_dung": "Cho $2016$ điểm $A_1,A_2,\\dots,A_{2015},A_{2016}$. Người ta tô đỏ tất cả các trung điểm của các đoạn thẳng nối các cặp điểm trong số $2016$ điểm này.\nGọi $T$ là số điểm tô đỏ đó.\nTìm giá trị lớn nhất, giá trị nhỏ nhất của $T$."
+ },
+ {
+  "ma": "C6.1a@p298",
+  "noi_dung": "Cho $a,b,c$ là ba số khác $0$ thỏa mãn $3ab-2ca-bc=0$ và $a+2b-3c=0$. Chứng minh rằng $a=b=c$."
+ },
+ {
+  "ma": "C6.1b@p298",
+  "noi_dung": "Cho $x,y,z$ thỏa mãn $\\dfrac{x-y}{(z-x)(z-y)}+\\dfrac{y-z}{(x-y)(x-z)}+\\dfrac{z-x}{(y-z)(y-x)}=2017$. Tính giá trị của biểu thức $\\dfrac{1}{x-y}+\\dfrac{1}{y-z}+\\dfrac{1}{z-x}$."
+ },
+ {
+  "ma": "C6.2a@p298",
+  "noi_dung": "Chứng minh rằng $a^8+b^8\\ge a^7b+ab^7$."
+ },
+ {
+  "ma": "C6.2b@p298",
+  "noi_dung": "Chứng minh rằng $(x+y)^6-6x^3y^3\\ge4x^2y^2(x^2+y^2)+xy(x^4+y^4)$."
+ },
+ {
+  "ma": "C6.3a@p298",
+  "noi_dung": "Cho các số nguyên $a,b,c,d$ thỏa mãn $a^3=b^3-c^3+d^3$. Chứng minh rằng $a-b+c-d$ chia hết cho $6$."
+ },
+ {
+  "ma": "C6.3b@p298",
+  "noi_dung": "Cho $n\\in\\mathbb Z$. Chứng minh rằng $n^3+2$ không chia hết cho $2016$."
+ },
+ {
+  "ma": "C6.6a@p298",
+  "noi_dung": "Cô Uyên gửi tiết kiệm vào ngân hàng với số tiền ban đầu là $150$ (triệu đồng) với lãi suất là $5\\%$/năm, kì hạn $6$ tháng, lãi kép (tiền lãi được nhập vào vốn ban đầu để tính lãi tiếp). Hỏi để cô Uyên có số tiền ít nhất là $192$ (triệu đồng) thì cô Uyên phải gửi bao nhiêu năm?"
+ },
+ {
+  "ma": "C6.6b@p298",
+  "noi_dung": "Có $100$ người dự hội nghị, mỗi người trong họ quen với ít nhất $50$ người khác.\nChứng tỏ rằng có thể chọn ra $4$ người và mời họ ngồi quanh một bàn tròn sao cho mỗi người ngồi giữa hai người quen nhau."
+ },
+ {
+  "ma": "C7.1a@p303",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-15}{2000}+\\dfrac{x-14}{2001}+\\dfrac{x-13}{2002}=\\dfrac{x-12}{2003}+2$."
+ },
+ {
+  "ma": "C7.1b@p303",
+  "noi_dung": "Giải phương trình (ẩn $x,y,z$): $(x^2-6x+11)(y^2+2y+4)=2+4z-z^2$."
+ },
+ {
+  "ma": "C7.2a@p303",
+  "noi_dung": "Cho $a^2+b^2=c^2+d^2=5$; $ad+bc=0$. Chứng minh rằng $a^{2017}b^{2017}+c^{2017}d^{2017}=0$."
+ },
+ {
+  "ma": "C7.2b@p303",
+  "noi_dung": "Cho $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=0$. Tính giá trị của biểu thức $A=\\dfrac{yz}{(x-y)(x-z)}+\\dfrac{zx}{(y-x)(y-z)}+\\dfrac{xy}{(z-x)(z-y)}$."
+ },
+ {
+  "ma": "C7.3a@p303",
+  "noi_dung": "Cho $x,y,z$ là độ dài ba cạnh của một tam giác và $A=4x^2y^2-(x^2+y^2-z^2)^2$. Chứng minh rằng $A>0$."
+ },
+ {
+  "ma": "C7.3b@p303",
+  "noi_dung": "Cho $x,y$ là hai số dương thỏa mãn $x+y=1$. Chứng minh rằng $3(3x-2)^2+\\dfrac{8x}{y}\\ge7$."
+ },
+ {
+  "ma": "C7.6a@p303",
+  "noi_dung": "Tổng các chữ số của một số chính phương có thể là $2019$ được không? Hãy giải thích."
+ },
+ {
+  "ma": "C7.6b@p304",
+  "noi_dung": "Tìm các số nguyên dương $x,y$ thỏa mãn phương trình: $(x+y)^5=120y+3$."
+ },
+ {
+  "ma": "C8.1a@p307",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $3x^2-10x-8$."
+ },
+ {
+  "ma": "C8.1b@p307",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $18x^3-\\dfrac{8}{25}x$."
+ },
+ {
+  "ma": "C8.2a@p307",
+  "noi_dung": "Chứng minh rằng: $4n^3=n^2(n+1)^2-(n-1)^2n^2$.\n\nTừ đẳng thức trên tính tổng: $S=1^3+2^3+3^3+\\dots+100^3$"
+ },
+ {
+  "ma": "C8.2b@p308",
+  "noi_dung": "Cho $5$ số thỏa mãn điều kiện tổng của $2$ số bất kì trong chúng nhỏ hơn tổng $3$ số còn lại. Chứng minh rằng tích của $5$ số đã cho là một số dương."
+ },
+ {
+  "ma": "C8.3a@p308",
+  "noi_dung": "Cho các số nguyên dương $a,b,c$ sao cho $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$. Chứng minh rằng $a+b$ không thể là số nguyên tố."
+ },
+ {
+  "ma": "C8.3b@p308",
+  "noi_dung": "Cho các số nguyên dương $a,b,c$ sao cho $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$. Chứng minh rằng nếu $c>1$ thì $a+c$ và $b+c$ không thể đồng thời là số nguyên tố."
+ },
+ {
+  "ma": "C8.6a@p308",
+  "noi_dung": "Trong phòng có $100$ người mỗi người quen với ít nhất $67$ người khác. Chứng tỏ rằng trong phòng phải có $4$ người từng đôi một quen nhau."
+ },
+ {
+  "ma": "C8.6b@p308",
+  "noi_dung": "Trong một bảng có $4$ đội bóng đá thi đấu với nhau theo thể thức vòng tròn, đội thắng được $3$ điểm, đội hòa được $1$ điểm, đội thua được $0$ điểm. Kết thúc, kết quả của bảng như sau:\n\n1. Tổng số điểm của cả $4$ đội trong bảng là $16$.\n\n2. Đội nhất bảng là đội duy nhất được $6$ điểm.\n\nHỏi kết quả trận đấu giữa đội nhì bảng và cuối bảng?\n\nBiết rằng nếu hai đội có số điểm bằng nhau thì xét theo hiệu số bàn thắng thua và trường hợp này nếu vẫn chưa quyết định được thì bốc thăm để xếp thứ hạng."
+ },
+ {
+  "ma": "C9.1a@p313",
+  "noi_dung": "Tìm $x$ biết: $(x+1)(x+2)(x+3)(x+4)=24$."
+ },
+ {
+  "ma": "C9.1b@p313",
+  "noi_dung": "Tìm $x$ biết: $\\lvert x^2-1\\rvert+\\lvert a(x-1)\\rvert=0$."
+ },
+ {
+  "ma": "C9.2a@p313",
+  "noi_dung": "Tìm số dư trong phép chia của biểu thức $(x+1)(x+3)(x+5)(x+7)+2017$ cho $x^2+8x+12$."
+ },
+ {
+  "ma": "C9.2b@p313",
+  "noi_dung": "Cho các số nguyên dương $a,b,c,d$ thỏa mãn $ab=cd$. Chứng minh rằng $(a^{2016}+b^{2016})^2+(c^{2016}-d^{2016})^2$ là hợp số."
+ },
+ {
+  "ma": "C9.3a@p313",
+  "noi_dung": "Chứng minh rằng $a^2+b^2+c^2+d^2+e^2\\ge a(b+c+d+e)$."
+ },
+ {
+  "ma": "C9.3b@p313",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $1\\le a\\le2$, $1\\le b\\le2$, $1\\le c\\le2$. Chứng minh rằng $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)\\le10$."
+ },
+ {
+  "ma": "C9.6a@p314",
+  "noi_dung": "Có $10$ bạn đi dạo phố bằng $5$ xe máy. Biết rằng trong $10$ bạn này cứ nhóm $3$ người nào cũng có $1$ người quen với $2$ người kia. Chứng tỏ rằng có thể xếp $10$ bạn đó đi dạo phố bằng $5$ xe máy, mỗi xe $2$ người quen nhau (biết rằng cả $10$ bạn đều biết lái xe máy)."
+ },
+ {
+  "ma": "C9.6b@p314",
+  "noi_dung": "Cho một hình vuông và $17$ đường thẳng mỗi đường thẳng đều chia hình vuông thành hai tứ giác có tỉ số diện tích bằng $2:3$. Chứng minh rằng trong $17$ đường thẳng đó, có ít nhất $5$ đường thẳng cùng đi qua một điểm và xét các góc không có điểm trong chung của $5$ đường thẳng này, tồn tại hai góc lớn hơn hoặc bằng $36^\\circ$."
+ },
+ {
+  "ma": "C10.1a@p320",
+  "noi_dung": "Giải phương trình: $-x^3+2x^2+x-2=0$."
+ },
+ {
+  "ma": "C10.1b@p320",
+  "noi_dung": "Giải phương trình: $\\dfrac{x}{x-1}-\\dfrac{2(x+3)}{x+1}=\\dfrac{2}{x^2-1}$."
+ },
+ {
+  "ma": "C10.1c@p320",
+  "noi_dung": "Giải phương trình: $2\\lvert x+1\\rvert-3x=5$."
+ },
+ {
+  "ma": "C10.2a@p320",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $M=\\dfrac{x^2-2x+2016}{x^2}$ với $x\\ne0$."
+ },
+ {
+  "ma": "C10.2b@p320",
+  "noi_dung": "Cho ba số $a,b,c$ thỏa mãn $a+b+c=0$ và $a^2+b^2+c^2=2016$. Tính $A=a^4+b^4+c^4$."
+ },
+ {
+  "ma": "C10.6a@p321",
+  "noi_dung": "Tìm các cặp số nguyên $(x;y)$ thỏa mãn phương trình $2015(x^2+y^2)-2014(2xy+1)=25$."
+ },
+ {
+  "ma": "C10.6b@p321",
+  "noi_dung": "Cho $5$ số tự nhiên phân biệt sao cho tổng của ba số bất kì trong chúng lớn hơn tổng của hai số còn lại.\n\ni. Chứng minh rằng tất cả $5$ số đã cho đều không nhỏ hơn $5$.\n\nii. Tìm tất cả các bộ gồm $5$ số thỏa mãn đề bài mà tổng của chúng nhỏ hơn $40$."
+ }
+]

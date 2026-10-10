@@ -183,7 +183,7 @@ if (DUNG_DB && !loi.length) {
   writeFileSync(join(DIR, `${TEN}.trung.json`), JSON.stringify({ bo: trung, nghi: nghiTrung }, null, 1) + '\n')
   console.log(`  lọc trùng: kho ${KHOI} có ${kho.length} câu (${khoKhac.length} không thuộc lô này) · BỎ ${trung.length} câu trùng · nghi trùng khuôn ${nghiTrung.length} (giữ, người xem) → ${TEN}.trung.json`)
   for (const x of trung) console.log(`     ✂ ${x.ma} trùng ${x.kieu === 'chu' ? 'CHỮ' : 'TOÁN'} với ${x.voi} (${x.noi})`)
-  for (const x of nghiTrung) console.log(`     ? ${x.ma} NGHI trùng với ${x.voi} (cùng khuôn + cùng đáp án, hoặc cùng giá trị mà viết khác) — giữ, người xem`)
+  for (const x of nghiTrung) console.log(`     ? ${x.ma} NGHI trùng với ${x.voi} (cùng khuôn + cùng đáp án, cùng giá trị mà viết khác, hoặc chung một công thức dài) — giữ, người mở hai đề ra so`)
 }
 
 // ── ghi ra ───────────────────────────────────────────────────────────────────

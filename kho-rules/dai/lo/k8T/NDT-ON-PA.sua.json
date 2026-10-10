@@ -51,8 +51,7 @@
     "sach_in_sai": "trang PDF 244, đề bài 29: số hạng cuối in 2013/(1 + 2013^2 + 2014^4); lời giải của sách chỉ khớp với 2013^4. Kho ghi 2013^4."
   },
   "PA.31@p245": {
-    "sach_in_sai": "trang PDF 245, đề bài 31: sách in \"tồn tại hai số trong bốn số đó bằng 1\" — sai (a = 2, b = 1/2, c = 3, d = 1/3 thoả giả thiết, không số nào bằng 1). Lời giải của sách chứng minh ab = 1 hoặc bc = 1 hoặc bd = 1. Kho ghi \"có tích bằng 1\".",
-    "cho_quyet": "đề sách in \"tồn tại hai số … bằng 1\" là mệnh đề sai; kho tạm ghi \"có tích bằng 1\" (đúng cái lời giải của sách chứng minh) — chờ CEO chọn: giữ bản \"có tích bằng 1\" hay bỏ câu"
+    "sach_in_sai": "trang PDF 245, đề bài 31: sách in \"tồn tại hai số trong bốn số đó bằng 1\" — sai (a = 2, b = 1/2, c = 3, d = 1/3 thoả giả thiết, không số nào bằng 1). Lời giải của sách chứng minh ab = 1 hoặc bc = 1 hoặc bd = 1. Kho ghi \"có tích bằng 1\". Nhân chứng thứ hai (soát lô 7): phụ lục C, Đề 3 bài 3 (trang PDF 282) in lại chính bài này với kết luận \"tồn tại tích hai số trong bốn số đó bằng 1\" ⇒ bỏ cờ chờ quyết, tự duyệt."
   },
   "PA.32@p245": {
     "sach_in_sai": "trang PDF 246, lời giải bài 32: sách in (p/q)(1 + p/q)^3, đúng là (p/q)(1 + q/p)^3; dòng cuối in M = a + b^2 = c^3, đúng là a + b^2 + c^3."

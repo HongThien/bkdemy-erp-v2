@@ -1,0 +1,83 @@
+{
+  "C3.2a@p282": {
+    "sach_in_sai": "trang PDF 283, lời giải Đề 3 bài 2a dòng đầu: sách in -4x_2^2, đúng là -4x_1^2."
+  },
+  "C3.6a@p282": {
+    "sach_in_sai": "trang PDF 285, lời giải Đề 3 bài 6a: sách in 2^(n+2b), đúng là 2^(a+2b); sách không kiểm từng r từ 0 đến 10 — kho kiểm đủ."
+  },
+  "C3.6b@p282": {
+    "bo": "trùng với T18T020201004 (chương III bài 73 — bài rô bốt; đề ở Đề 3 in 551 giây, đúng con số kho đang ghi)"
+  },
+  "C4.2a@p286": {
+    "sach_in_sai": "trang PDF 288, lời giải Đề 4 bài 2a: ba dòng \"Vậy / Tương tự / Và\" in vế phải là (a^4-b^4)/2…, đúng là (a^8-b^8)/2… (đã nhân thêm a^4+b^4). Kết luận không đổi."
+  },
+  "C9.1a@p313": {
+    "sach_in_sai": "trang PDF 314, lời giải Đề 9 bài 1a: sách in \"x^2+5x+5 hay x^2+5x+5=-5\", thiếu \"=5\" ở vế đầu."
+  },
+  "C9.2a@p313": {
+    "sach_in_sai": "trang PDF 315, lời giải Đề 9 bài 2a: Cách 1 in \"(x+1)(x+3)(x+5)(x+7) = 2017\" (đúng: + 2017); Cách 2 đặt tính in số bị chia …+2132 (đúng 2122, như dòng khai triển ngay trên) và kết luận \"số dư là 1987\" trong khi phép chia ra 2002; Cách 3 in \"bậc của đa thức thương là 2\" (đúng: đa thức chia). Số dư đúng là 2002 (Cách 1, 3, 4)."
+  },
+  "C10.2a@p320": {
+    "sach_in_sai": "trang PDF 322, lời giải Đề 10 bài 2a dòng đầu: tử số in …+2016, thiếu mũ 2 (đúng: 2016^2, như dòng sau)."
+  },
+  "C10.2b@p320": {
+    "sach_in_sai": "trang PDF 322, lời giải Đề 10 bài 2b: dòng khai triển (ab+bc+ca)^2 in \"2(abbc+2abbc+2caab)\", đúng là 2(ab.bc+bc.ca+ca.ab) = 2abc(a+b+c)."
+  },
+  "C1.2b@p271": {
+    "sach_in_sai": "trang PDF 271, đề Đề 1 bài 2b: vế phải in \"-4x - y\"; lời giải của sách (trang 273) dùng \"-4x - 4\" và ra (x; y; z) = (-2; 2; 2); với \"- y\" phương trình có vô số nghiệm. Kho ghi \"- 4\". Lời giải còn in \"x - y = x + 2 = y - z = 0\", đúng là x + y."
+  },
+  "C1.6b@p271": {
+    "sach_in_sai": "trang PDF 271, đề Đề 1 bài 6b: sách in \"có 12 đợt tham dự\", đúng là \"12 đội\" (lời giải của sách: \"Có 12 đội\")."
+  },
+  "C2.2a@p276": {
+    "sach_in_sai": "trang PDF 276, đề Đề 2 bài 2a: sách in \"… = a^3/b = b^3/a\" (dấu bằng giữa hai phân thức cuối; đã phóng 400 dpi); lời giải của sách (trang 278) dùng a^3/b + b^3/a, và với dấu bằng thì không có a, b nào thoả. Kho ghi dấu cộng."
+  },
+  "C2.2b@p276": {
+    "sach_in_sai": "trang PDF 276, đề Đề 2 bài 2b: sách in \"Tính tổng S^2 = …\"; lời giải của sách tính S. Kho ghi S. Kết quả sách viết dạng hỗn số 504 và 504/4033."
+  },
+  "C2.3a@p276": {
+    "sach_in_sai": "trang PDF 279, lời giải Đề 2 bài 3a dòng cuối: sách in \"= 9 + … ≥ 0\", đúng là ≥ 9."
+  },
+  "C5.2b@p292": {
+    "sach_in_sai": "trang PDF 294, lời giải Đề 5 bài 2b: sách in (x+y+z)^2 = x^2+y^2+z^2 + x(xy+yz+zx), đúng là 2(xy+yz+zx)."
+  },
+  "C5.3b@p292": {
+    "sach_in_sai": "trang PDF 295, lời giải Đề 5 bài 3b dòng \"Do đó M = 1/2[…]\": các tử in a^4-b^4, b^4-c^4…, đúng là a^4+b^4, b^4+c^4… (các dòng sau của sách dùng dấu cộng)."
+  },
+  "C5.6a@p292": {
+    "sach_in_sai": "trang PDF 293 và 297, Đề 5 bài 6a: đề in B = 4^n+15n-1, lời giải của sách làm với 4^n+15n-10 (hai số hơn kém 9, cùng chia hết cho 9); lời giải còn in -9(2n-1) thay cho +9(2n-1). Kho giữ đề như in (-1). Ý A của bài (16^n-15n-1 chia hết cho 225) trùng phụ lục A bài 22a đã có trong kho nên không nhập lại — câu này chỉ còn ý B."
+  },
+  "C6.1a@p298": {
+    "sach_in_sai": "trang PDF 299, lời giải Đề 6 bài 1a: sách in -6(-2bc+b^2+c^2) = 6(b-c)^2, đúng là -6(b-c)^2."
+  },
+  "C6.2b@p298": {
+    "sach_in_sai": "trang PDF 300, lời giải Đề 6 bài 2b dòng khai triển: sách in -5ab^2, đúng là -4ab^2."
+  },
+  "C6.6a@p298": {
+    "sach_in_sai": "trang PDF 302, lời giải Đề 6 bài 6a: sách viết 1,025^n ≥ 1,025^10 như thể 192/150 = 1,025^10; thật ra 192/150 = 1,28 còn 1,025^10 ≈ 1,2801 và 1,025^9 ≈ 1,2489 — kho so sánh bằng số. Cách 2 của sách chặn bằng lãi đơn, không chặt chẽ; kho không dùng."
+  },
+  "C6.6b@p298": {
+    "sach_in_sai": "trang PDF 302, lời giải Đề 6 bài 6b: sách in \"50 + 50 = -98 = 2\", đúng là 50 + 50 - 98 = 2; sách bỏ trường hợp mọi cặp đều quen nhau — kho nêu đủ."
+  },
+  "C7.2b@p303": {
+    "sach_in_sai": "trang PDF 305, lời giải Đề 7 bài 2b: dòng thứ tư in tử số \"z(y-z)(y-z) + z(y-x)(z-y)\", đúng là z(y-z)(y-x) + x(x-y)(y-z). Sách suy ra x^2+2yz = (x-y)(x-z) từ giả thiết rồi không dùng: A = 1 với mọi x, y, z đôi một khác nhau."
+  },
+  "C7.3a@p303": {
+    "sach_in_sai": "trang PDF 305, lời giải Đề 7 bài 3a: thừa số thứ ba in (y - z + x), đúng là (y + z - x)."
+  },
+  "C7.3b@p303": {
+    "sach_in_sai": "trang PDF 305, lời giải Đề 7 bài 3b: dòng khai triển in \"+ 9x\" (đúng: + 8x) và dòng kế in \"-27x + 2 + 63x^2 - 33x + 5\" (đúng: -27x^3 + 63x^2 - 33x + 5)."
+  },
+  "C8.3a@p308": {
+    "sach_in_sai": "trang PDF 310, lời giải Đề 8 bài 3a: dòng đầu in 1/a + 1/b + 1/c (đúng: = 1/c); in \"a > a + b hoặc b > a + b\", đúng là a < a + b và b < a + b nên không chia hết."
+  },
+  "C8.3b@p308": {
+    "sach_in_sai": "trang PDF 310, lời giải Đề 8 bài 3b dòng (2): mất kí hiệu \"không chia hết\" giữa (a+c)(b+c) và c; sách không nêu vì sao tích hai số nguyên tố không chia hết cho c — kho bổ sung."
+  },
+  "C9.3a@p313": {
+    "bo": "trùng nguyên văn với T18T030101005 (chương IV bài 10e, đã có trong kho)"
+  },
+  "C4.3a@p286": {
+    "bo": "trùng với T18T040302001 (chương I bài 37: cùng phương trình nghiệm nguyên x^3+x^2+x+1=y^3, chỉ khác lời dẫn)"
+  }
+}

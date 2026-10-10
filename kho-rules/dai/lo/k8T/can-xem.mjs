@@ -34,9 +34,9 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
@@ -146,10 +146,10 @@ const F = [
 ]
 
 // ── LÔ 4 (NĐT Đại III — phương trình) ────────────────────────────────────────
-E.push(the('Bài 73 (ôn tập chương III) — số liệu của đề không ra đáp số', anh(80, 250, 820, 'Chương III bài 73, đề và lời giải của sách')
+F.push(the('Bài 73 (ôn tập chương III) — số liệu của đề không ra đáp số', anh(80, 250, 820, 'Chương III bài 73, đề và lời giải của sách') + anh(282, 1080, 150, 'Phụ lục C, Đề 3 bài 6 b — sách in lại bài này với 551 giây')
   + muc('Vấn đề', doan('Đề in **451 giây**. Phương trình sách lập là $3x^2+x-902=0$, không có nghiệm nguyên dương ($x=17$ cho $442$ giây, $x=18$ cho $495$ giây). Sách lại phân tích thành $(x-19)(3x+58)=0$, mà tích đó bằng $3x^2+x-1102$ — tức ứng với **551 giây** ($19\\cdot20+\\dfrac{19\\cdot18}{2}=551$). Kết quả $950$ m của sách chỉ đúng với 551 giây.'))
-  + muc('Trong kho (chưa duyệt)', trongKho('D3.73@p80')),
-  'Tôi tạm ghi đề với **551 giây** để khớp lời giải và kết quả của sách. Chị chọn: giữ bản 551 giây (tôi duyệt), hay bỏ câu này?'))
+  + muc('Trong kho', trongKho('D3.73@p80')),
+  'Kho ghi **551 giây**. Lúc đầu tôi để chờ chị; khi nhập phụ lục C thì thấy Đề 3 bài 6 b in lại chính bài này với 551 giây, nên tôi đã duyệt. Bản ở phụ lục C không nhập lần hai.', 'bao'))
 F.push(the('Bài 64 (ôn tập chương III) — đề và lời giải của sách lệch nhau', anh(76, 510, 125, 'Chương III bài 64, đề và lời giải của sách')
   + muc('Vấn đề', doan('Đề in $4x-7=x+11$ nhưng lời giải của sách giải $4x-7=x+1$ và ra $\\dfrac{8}{3}$.')) + muc('Trong kho', trongKho('D3.64@p76')),
   'Kho giữ đề như in ($x+11$), đáp số $S=\\{6\\}$.', 'bao'))
@@ -188,11 +188,13 @@ const GHI_CHU_LO5 = `<p class="dan">Lô 5 (chương IV, 130 câu): 62 trên 66 c
 // ── LÔ 6 (NĐT — ôn tập cuối năm phần Đại + phụ lục A) ──────────────────────
 const lech6 = (ma, hinh, nghieng) => the(`${ma.startsWith('ON.') ? 'Ôn tập cuối năm' : 'Phụ lục A'}, bài ${bai[ma]?.bai}${bai[ma]?.y ? ' ' + bai[ma].y : ''} — hai lượt gán nhóm lệch nhau`, hinh + muc('Trong kho', trongKho(ma))
   + muc('Lượt soạn chọn', `<p>${esc(tenN(lo[ma]?.nhom_soan))}</p>`) + muc('Lượt gán độc lập chọn', `<p>${esc(tenN(mu[ma]?.dang))}${mu[ma]?.ly_do ? ` <span class="mo">— ${esc(mu[ma].ly_do)}</span>` : ''}</p>`), nghieng)
-E.push(
-  the('Bài 31 (phụ lục A) — đề sách in là một mệnh đề sai', anh(245, 470, 655, 'Phụ lục A bài 31, đề và lời giải của sách')
+F.push(
+  the('Bài 31 (phụ lục A) — đề sách in là một mệnh đề sai', anh(245, 470, 655, 'Phụ lục A bài 31, đề và lời giải của sách') + anh(282, 640, 130, 'Phụ lục C, Đề 3 bài 3 — sách in lại bài này: "tồn tại tích hai số … bằng 1"')
     + muc('Vấn đề', doan('Sách in "Chứng minh rằng tồn tại hai số trong bốn số đó **bằng $1$**". Mệnh đề này sai: $a=2$, $b=\\dfrac{1}{2}$, $c=3$, $d=\\dfrac{1}{3}$ thoả cả hai giả thiết mà không số nào bằng $1$. Lời giải của sách chứng minh $ab=1$ hoặc $bc=1$ hoặc $bd=1$, tức là tồn tại hai số **có tích bằng $1$**.'))
-    + muc('Trong kho (chưa duyệt)', trongKho('PA.31@p245')),
-    'Tôi tạm ghi đề là "tồn tại hai số trong bốn số đó **có tích bằng $1$**". Chị chọn: giữ bản này (tôi duyệt), hay bỏ câu?'),
+    + muc('Trong kho', trongKho('PA.31@p245')),
+    'Kho ghi "tồn tại hai số trong bốn số đó **có tích bằng $1$**". Lúc đầu tôi để chờ chị; phụ lục C, Đề 3 bài 3 in lại bài này đúng với kết luận "tích hai số bằng 1", nên tôi đã duyệt.', 'bao'),
+)
+E.push(
   the('Bài 43, 44, 45 (phụ lục A) — bài bất biến, tô màu: bản đồ chưa có nhóm', anh(252, 225, 990, 'Phụ lục A bài 43 và 44, đề và lời giải của sách') + anh(252, 1215, 80, 'Bài 45, đề (phần đầu)') + anh(253, 95, 298, 'Bài 45, đề (phần còn lại)')
     + muc('Bài 43 trong kho', trongKho('PA.43@p252')) + muc('Bài 44 trong kho', trongKho('PA.44@p252')) + muc('Bài 45 trong kho', trongKho('PA.45@p252')),
     'Ba câu đang ở "Chưa phân dạng", chưa duyệt. Chị chọn: (1) xếp vào **Đi-rích-lê, cực hạn › Trong số học và suy luận** — chuyên đề gần nhất; hay (2) chị thêm một nhóm cho bài bất biến, tô màu rồi tôi chuyển sang. Tôi nghiêng về (2): cách giải là tìm một đại lượng không đổi qua mỗi thao tác, khác hẳn Đi-rích-lê và cực hạn.'),
@@ -243,6 +245,37 @@ F.push(
 const GHI_CHU_LO6 = `<p class="dan">Lô 6 (ôn tập cuối năm phần Đại và phụ lục A). Bài 5 a, 5 b ôn tập cuối năm trùng nguyên văn với câu đã có trong kho nên máy bỏ. Bài 20 b ôn tập cuối năm: sách chỉ nêu bất đẳng thức phụ ${toan('\\dfrac{x^2}{y}+\\dfrac{y^2}{z}+\\dfrac{z^2}{x}\\ge x+y+z')}, kho chứng minh đủ.</p>
 <p class="dan">Lỗi in của sách trong lời giải, kho ghi theo biểu thức đúng: phụ lục A bài 2 b, 3, 7, 8, 9, 12, 22 a, 22 b, 24, 25, 27, 28, 32, 35, 36 (kết quả in ${toan('a^4+18a^2+16+16a^2')}, đúng là ${toan('a^4+24a^2+16')}), 41, 42, 44, 45 (dãy đổi màu in ĐVVX → XXVV, đúng là XXVX). Sách nêu thiếu trường hợp dấu bằng, kho nêu đủ: bài 10 (thêm các hoán vị của ${toan('(1;0;0)')}), bài 21 (dấu bằng tại ${toan('(2;0;-1)')} và ${toan('(-2;0;1)')}, không phải ${toan('x=\\pm1,\\ y=0,\\ z=\\pm1')}).</p>`
 
+// ── LÔ 7 (NĐT — phụ lục C: 10 đề rèn luyện, phần Đại – số học – tổ hợp) ────
+const lech7 = (ma, hinh, nghieng) => the(`Phụ lục C, Đề ${ma.match(/^C(\d+)\./)?.[1]} bài ${bai[ma]?.bai}${bai[ma]?.y ? ' ' + bai[ma].y : ''} — hai lượt gán nhóm lệch nhau`, hinh + muc('Trong kho', trongKho(ma))
+  + muc('Lượt soạn chọn', `<p>${esc(tenN(lo[ma]?.nhom_soan))}</p>`) + muc('Lượt gán độc lập chọn', `<p>${esc(tenN(mu[ma]?.dang))}${mu[ma]?.ly_do ? ` <span class="mo">— ${esc(mu[ma].ly_do)}</span>` : ''}</p>`), nghieng)
+F.push(
+  the('Phụ lục C, Đề 1 bài 2 b — đề sách in sai một kí tự', anh(271, 450, 75, 'Đề 1 bài 2 b, đề') + anh(273, 245, 260, 'Đề 1 bài 2 b, lời giải của sách')
+    + muc('Vấn đề', doan('Đề in vế phải kết thúc bằng "$-4x-y$"; lời giải của sách viết "$-4x-4$" và ra $(x;y;z)=(-2;2;2)$. Với "$-y$" phương trình có vô số nghiệm.')) + muc('Trong kho', trongKho('C1.2b@p271')),
+    'Kho ghi "$-4x-4$".', 'bao'),
+  the('Phụ lục C, Đề 2 bài 2 a — đề sách in dấu bằng thay cho dấu cộng', anh(276, 435, 140, 'Đề 2 bài 2 a, đề') + anh(278, 405, 300, 'Đề 2 bài 2 a, lời giải của sách')
+    + muc('Vấn đề', doan('Đề in $\\dfrac{a}{b}+\\dfrac{b}{a}=\\dfrac{a^2}{b}+\\dfrac{b^2}{a}=\\dfrac{a^3}{b}=\\dfrac{b^3}{a}$ (tôi đã phóng to để chắc); lời giải của sách dùng $\\dfrac{a^3}{b}+\\dfrac{b^3}{a}$. Với dấu bằng thì không có $a,b$ nào thoả.')) + muc('Trong kho', trongKho('C2.2a@p276')),
+    'Kho ghi $\\dfrac{a^3}{b}+\\dfrac{b^3}{a}$.', 'bao'),
+  the('Phụ lục C, Đề 5 bài 6 a — chỉ nhập ý B; đề và lời giải của sách lệch nhau', anh(292, 1205, 70, 'Đề 5 bài 6 a, đề (phần đầu)') + anh(293, 95, 75, 'Đề 5 bài 6 a, đề (phần còn lại)') + anh(297, 130, 350, 'Đề 5 bài 6 a, lời giải của sách')
+    + muc('Vấn đề', doan('Bài gồm hai ý. Ý $A=16^n-15n-1$ chia hết cho $225$ đã có trong kho (phụ lục A bài 22 a) nên tôi không nhập lại. Ý $B$: đề in $4^n+15n-1$, lời giải của sách làm với $4^n+15n-10$ (là phụ lục A bài 22 b); hai biểu thức hơn kém nhau $9$ nên cùng chia hết cho $9$.')) + muc('Trong kho', trongKho('C5.6a@p292')),
+    'Kho giữ đề như in ($4^n+15n-1$) và soạn lời giải cho đúng biểu thức đó — coi là biến thể của bài 22 b.', 'bao'),
+)
+E.push(
+  lech7('C2.3a@p276', anh(276, 655, 150, 'Đề 2 bài 3 a, đề') + anh(279, 95, 500, 'Đề 2 bài 3 a, lời giải của sách'),
+    'Chọn nhóm nào? Sách nhân ra rồi viết thành $9$ cộng ba phân thức có tử là bình phương — là biến đổi, không viện bất đẳng thức có sẵn. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  lech7('C4.2a@p286', anh(286, 815, 70, 'Đề 4 bài 2 a, đề') + anh(288, 315, 540, 'Đề 4 bài 2 a, lời giải của sách'),
+    'Chọn nhóm nào? Sách chặn từng số hạng $a(a+b)\\ge\\dfrac{a^2-b^2}{2}$ rồi cộng lại cho triệt tiêu. Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  lech7('C7.6a@p303', anh(303, 1195, 100, 'Đề 7 bài 6 a, đề') + anh(307, 200, 300, 'Đề 7 bài 6 a, lời giải của sách'),
+    'Chọn nhóm nào? Công cụ là dấu hiệu chia hết cho $3$ và $9$, nhưng điều phải chứng minh là "số có tổng các chữ số $2019$ không là số chính phương". Tôi nghiêng về **Số nguyên tố, số chính phương › Chứng minh một số là (không là) số chính phương**.'),
+  lech7('C8.2a@p307', anh(307, 1160, 100, 'Đề 8 bài 2 a, đề') + anh(309, 1095, 170, 'Đề 8 bài 2 a, lời giải của sách (phần đầu)') + anh(310, 112, 155, 'Đề 8 bài 2 a, lời giải (phần còn lại)'),
+    'Chọn nhóm nào? Đích của bài là tính $1^3+2^3+\\dots+100^3$ bằng cách cộng các đẳng thức cho triệt tiêu. Tôi nghiêng về **Phân thức › Tổng, tích có quy luật** (nhóm duy nhất về tổng có quy luật, dù bài này không có phân thức).'),
+  lech7('C10.6b@p321', anh(321, 465, 180, 'Đề 10 bài 6 b, đề') + anh(325, 915, 280, 'Đề 10 bài 6 b, lời giải của sách (ý i)') + anh(326, 60, 430, 'Đề 10 bài 6 b, lời giải của sách (ý ii)'),
+    'Chọn nhóm nào? Bài sắp thứ tự năm số rồi suy luận, cùng kiểu với Đề 8 bài 2 b (hai lượt đều xếp "Đi-rích-lê, cực hạn › Trong số học và suy luận"). Tôi nghiêng về **Đi-rích-lê, cực hạn › Trong số học và suy luận**.'),
+  lech7('C2.6b@p277', anh(277, 280, 40, 'Đề 2 bài 6 b, đề') + anh(281, 1215, 60, 'Đề 2 bài 6 b, lời giải của sách (phần đầu)') + anh(282, 95, 190, 'Đề 2 bài 6 b, lời giải (phần còn lại)'),
+    'Chọn nhóm nào? Bài hỏi về đa giác lồi nhưng chỉ dùng bất đẳng thức tam giác và phản chứng. Tôi nghiêng về **Đi-rích-lê, cực hạn › Trong hình học tổ hợp**; chị muốn đưa sang nhánh Hình thì bảo.'),
+)
+const GHI_CHU_LO7 = `<p class="dan">Lô 7 (phụ lục C — 10 đề rèn luyện): chỉ nhập bài Đại số, số học, tổ hợp; bài 4 và bài 5 của mỗi đề là hình, để lại cho nhánh Hình. Sách in lại nhiều bài cũ, tôi không nhập lần hai: Đề 1 bài 1 a, 1 b, 2 a, 3 a, 6 a (phụ lục A bài 2, 14, 5, 16) · Đề 3 bài 3 (phụ lục A bài 31), bài 6 b (chương III bài 73) · Đề 4 bài 3 a (chương I bài 37), bài 6 a (chương II bài 51 c) · Đề 8 bài 1 c (ôn tập cuối năm bài 6 c) · Đề 9 bài 3 a (chương IV bài 10 e) · Đề 10 bài 3 (phụ lục A bài 32). Đề 4 bài 1 b hỏi "tính ${toan('M')}" trong khi kho đã có bản "chứng minh ${toan('M=0')}" (chương II bài 31 b): khác yêu cầu nên giữ.</p>
+<p class="dan">Lỗi in khác của sách ở phụ lục C, kho ghi theo bản đúng: Đề 1 bài 6 b (in "12 đợt", đúng là 12 đội) · Đề 2 bài 2 b (đề in ${toan('S^2')}, lời giải tính ${toan('S')}) · Đề 9 bài 2 a (cách 2 kết luận dư 1987 trong khi phép chia ra 2002) · và các lỗi trong lời giải ở Đề 2 bài 3 a, Đề 3 bài 2 a, 6 a, Đề 4 bài 2 a, Đề 5 bài 2 b, 3 b, Đề 6 bài 1 a, 2 b, 6 b, Đề 7 bài 2 b, 3 a, 3 b, Đề 8 bài 3 a, 3 b, Đề 9 bài 1 a, Đề 10 bài 2 a, 2 b. Sách lập luận chưa đủ, kho bổ sung: Đề 5 bài 6 b (chứng minh số trung điểm ít nhất là ${toan('4029')} cho vị trí bất kì), Đề 6 bài 6 a (so sánh ${toan('1{,}025^9')}, ${toan('1{,}025^{10}')} với ${toan('1{,}28')}), Đề 9 bài 6 b, Đề 10 bài 6 b. Đề 6 bài 6 b: đề in "mỗi người ngồi giữa hai người quen nhau", kho hiểu theo lời giải của sách là mỗi người quen cả hai người ngồi cạnh.</p>`
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -273,17 +306,18 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau sáu lô (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn: trọn bốn chương Đại số, ôn tập cuối năm phần Đại và phụ lục A): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–6: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<p class="dan">Kho Đại 8T sau bảy lô (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn: trọn phần Đại — bốn chương, ôn tập cuối năm, phụ lục A và 10 đề rèn luyện của phụ lục C): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–7: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
 <h2 id="e">Cần chị quyết — ${cauDb.filter((r) => !r.da_duyet).length} câu chưa duyệt, ${E.length} thẻ</h2>
-<p class="dan">Hai mươi câu đang ở "Chưa phân dạng": 16 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Ba câu còn lại (bài 73 chương III, bài 48 b chương IV, bài 31 phụ lục A) là đề sách in sai. Các thẻ của lô 6 (ôn tập cuối năm, phụ lục A) nằm ở cuối mục này.</p>
+<p class="dan">Hai mươi sáu câu đang ở "Chưa phân dạng": 22 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Câu còn lại (bài 48 b chương IV) là đề sách in sai. Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), rồi lô 7 (phụ lục C) ở cuối.</p>
 ${E.join('\n')}
-<h2 id="f">Lô 3, 4, 5, 6 — đã làm, chị xem</h2>
-<p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu), lô 4 (chương III — 93 câu), lô 5 (chương IV — 130 câu) và lô 6 (ôn tập cuối năm phần Đại, phụ lục A — 79 câu; các thẻ của lô 6 ở cuối mục). Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
+<h2 id="f">Lô 3, 4, 5, 6, 7 — đã làm, chị xem</h2>
+<p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu), lô 4 (chương III — 93 câu), lô 5 (chương IV — 130 câu) lô 6 (ôn tập cuối năm phần Đại, phụ lục A — 79 câu) và lô 7 (phụ lục C — 70 câu; các thẻ của lô 7 ở cuối mục). Hai câu trước đây tôi để chờ chị (bài 73 chương III, bài 31 phụ lục A) nay đã duyệt vì phụ lục C in lại đúng bản kho đang ghi — thẻ của hai bài này có thêm ảnh đó. Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
 ${F.join('\n')}
 ${GHI_CHU_LO4}
 ${GHI_CHU_LO5}
 ${GHI_CHU_LO6}
+${GHI_CHU_LO7}
 <p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
 <p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
 <p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>
