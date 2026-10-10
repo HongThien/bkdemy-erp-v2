@@ -266,7 +266,6 @@ A. $\widehat{M}=\widehat{P}$
 B. $\widehat{N}=\widehat{Q}$
 C. $\widehat{M}=\widehat{N}$
 D. $MQ=NP$
-**Ghi chú:** đề in "Từ giác $MNPQ$", đã sửa thành "Tứ giác".
 
 **Phần 1. Hướng dẫn**
 
@@ -278,7 +277,7 @@ D. $MQ=NP$
 
 **Bước 3.** Loại các phương án nói về hai góc đối nhau hoặc về hai cạnh bên bằng nhau, vì chúng chưa đảm bảo hình thang là hình thang cân.
 
-**Chú ý:** hai cạnh bên bằng nhau chưa đủ, vì hình bình hành cũng có hai cạnh bên bằng nhau mà hình bình hành không phải là hình chữ nhật thì không phải hình thang cân.
+**Chú ý:** hai cạnh bên bằng nhau chưa đủ, vì hình bình hành cũng có hai cạnh bên bằng nhau nhưng không phải hình thang cân.
 
 **Phần 2. Trình bày**
 
@@ -286,7 +285,7 @@ Hình thang $MNPQ$ có hai đáy là $MN$ và $PQ$.
 
 Hình thang cân là hình thang có hai góc kề một đáy bằng nhau. Hai góc kề đáy $MN$ là $\widehat{M}$ và $\widehat{N}$ nên cần thêm $\widehat{M}=\widehat{N}$.
 
-Các điều kiện $\widehat{M}=\widehat{P}$, $\widehat{N}=\widehat{Q}$, $MQ=NP$ đều chưa đủ: một hình bình hành $MNPQ$ không phải là hình chữ nhật cũng có $MN\parallel PQ$ và thoả mãn cả ba điều kiện này, nhưng hai góc kề đáy $MN$ của nó không bằng nhau nên nó không phải hình thang cân.
+Các điều kiện $\widehat{M}=\widehat{P}$, $\widehat{N}=\widehat{Q}$, $MQ=NP$ đều không phải điều kiện của hình thang cân (chúng cũng thoả mãn với hình bình hành).
 
 Chọn C.
 
@@ -531,7 +530,6 @@ A. Tứ giác có ba góc vuông là hình chữ nhật.
 B. Tứ giác có hai cạnh đối vừa song song vừa bằng nhau là hình bình hành.
 C. Tứ giác có hai đường chéo bằng nhau là hình thang cân.
 D. Tứ giác vừa là hình thoi vừa là hình chữ nhật thì là hình vuông.
-**Ghi chú:** phương án B đề in "… vừa bằng nhau là bình hành", đã sửa thành "là hình bình hành".
 
 **Phần 1. Hướng dẫn**
 
@@ -768,8 +766,6 @@ Từ $x^2+y^2-3x-3y+xy+3=0$, nhân hai vế với 2 ta được:
 $2x^2+2y^2-6x-6y+2xy+6=0$
 
 $(x^2+y^2+2xy-4x-4y+4)+(x^2-2x+1)+(y^2-2y+1)=0$
-
-$\left[(x+y)^2-2 \cdot (x+y) \cdot 2+2^2\right]+(x^2-2x+1)+(y^2-2y+1)=0$
 
 $(x+y-2)^2+(x-1)^2+(y-1)^2=0$
 

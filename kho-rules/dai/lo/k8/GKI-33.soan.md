@@ -281,6 +281,10 @@ Do đó:
 
 $416+10x-x^2=441$
 
+$10x-x^2=441-416$
+
+$10x-x^2=25$
+
 $x^2-10x+25=0$
 
 $x^2-2 \cdot x \cdot 5+5^2=0$
@@ -301,7 +305,7 @@ Vậy $x=5$ (m).
 2) Trên tia $AC$ lấy điểm $F$ sao cho $M$ là trung điểm của $AF$. Gọi $I$ là giao điểm của $HM$ và $FN$. Chứng minh rằng: $MN$ song song với $FH$ và tứ giác $AOIF$ là hình thang.
 3) Gọi $E$ là trung điểm của $BC$. Qua $A$ vẽ đường thẳng $xy$ vuông góc với $OE$. Chứng minh rằng $xy$, $BC$, $NM$ đồng quy.
 **Hình giải:** giai_bai5.png
-**Chưa chắc:** (1) dữ kiện ý 2 đúng là bài đường trung bình ($M$ trung điểm $AF$, $O$ trung điểm $AH$ ⇒ $MN\parallel FH$; $OI$ nối trung điểm $AH$ và $HM$) — lời giải tự chứng minh qua hình bình hành $NHFM$ và đường trung trực, CEO quyết có cho dùng đường trung bình ở đề này không; (2) ý 3 lời giải coi $K\neq E$ ($K$ là giao điểm $MN$ và $BC$) — kiểm bằng toạ độ với nhiều tam giác thì luôn đúng, nhưng chưa chứng minh được bằng kiến thức đã học.
+**Chưa chắc:** dữ kiện ý 2 đúng là bài đường trung bình ($M$ trung điểm $AF$, $O$ trung điểm $AH$ ⇒ $MN\parallel FH$; $OI$ nối trung điểm $AH$ và $HM$) — lời giải tự chứng minh qua hình bình hành $NHFM$ và đường trung trực, CEO quyết có cho dùng đường trung bình ở đề này không.
 
 **Phần 1. Hướng dẫn**
 
@@ -316,6 +320,8 @@ Vậy $x=5$ (m).
 **Bước 4.** Ý 3: muốn $xy$, $BC$, $NM$ đồng quy, gọi $K$ là giao điểm của $MN$ và $BC$ rồi cần $K$ thuộc $xy$, tức $AK\perp OE$. Muốn vậy cần $O$ là trực tâm của $\triangle AKE$ (ba đường cao đồng quy): $AO$ đã vuông góc với $KE$ (vì $AH\perp BC$), còn thiếu $KO\perp AE$, tức $MN\perp AE$.
 
 **Bước 5.** Ý 3, phần $MN\perp AE$: muốn có, gọi $Q$ là giao điểm của $AE$ và $MN$, cần $\widehat{QMA}+\widehat{QAM}=90^\circ$. Hai góc này lần lượt bằng $\widehat{HAC}$ (vì $\triangle OAM$ cân tại $O$) và $\widehat{C}$ (vì $\triangle EAC$ cân tại $E$, $AE$ là trung tuyến ứng với cạnh huyền); mà $\widehat{HAC}+\widehat{C}=90^\circ$ trong tam giác vuông $AHC$.
+
+**Bước 6.** Ý 3, phần tam giác $AKE$ có thật: cần $MN$ cắt $BC$ (nhờ $AB>AC$) và $K$ khác $E$. Cả hai chứng minh bằng phản chứng; riêng $K$ khác $E$: nếu $K$ trùng $E$ thì $AE\perp OE$, khi đó so sánh $AE$ với $AO$ theo hai cách (cạnh huyền của tam giác vuông $AEO$; đường vuông góc và đường xiên kẻ từ $A$ tới $BC$) sẽ ra hai kết quả trái nhau.
 
 **Chú ý:** điều kiện $AB>AC$ dùng để chắc chắn $MN$ cắt $BC$ (nếu $AB=AC$ thì $MN\parallel BC$ và không có giao điểm $K$).
 
@@ -335,7 +341,7 @@ Tứ giác $ANHM$ có bốn góc vuông nên $ANHM$ là hình chữ nhật.
 
 2) Vì $ANHM$ là hình chữ nhật nên $ANHM$ là hình bình hành, do đó $HN\parallel AM$ và $HN=AM$.
 
-Mà $M$ thuộc tia $AC$, $F$ thuộc tia $AC$ nên $HN\parallel MF$.
+Mà $A$, $M$, $F$ cùng thuộc đường thẳng $AC$ nên $HN\parallel MF$.
 
 Vì $M$ là trung điểm của $AF$ nên $AM=MF$. Suy ra $HN=MF$.
 
@@ -373,13 +379,21 @@ Nếu $MN\parallel BC$ thì $AE\perp BC$, mà $AH\perp BC$ nên $A$, $H$, $E$ th
 
 Vậy $MN$ cắt $BC$. Gọi $K$ là giao điểm của $MN$ và $BC$.
 
+Giả sử $K$ trùng $E$. Khi đó $E$ thuộc $MN$ nên $Q$ trùng $E$, do đó $AE\perp MN$ tại $E$, tức $\triangle AEO$ vuông tại $E$ ($O$ là trung điểm của $AH$ nên $O$ không thuộc $BC$, do đó $O$ khác $E$).
+
+Suy ra $AE<AO$ (trong tam giác vuông, cạnh huyền là cạnh lớn nhất).
+
+Mặt khác $AH\perp BC$ tại $H$ và $E$ thuộc $BC$ nên $AE \ge AH$ (đường vuông góc ngắn hơn mọi đường xiên); mà $AH>AO$ (vì $O$ là trung điểm của $AH$) nên $AE>AO$, mâu thuẫn với $AE<AO$.
+
+Vậy $K$ khác $E$. Hai điểm $K$, $E$ thuộc $BC$ còn $A$ không thuộc $BC$ nên ba điểm $A$, $K$, $E$ tạo thành một tam giác.
+
 Xét $\triangle AKE$ có $AH\perp KE$ (vì $K$, $H$, $E$ cùng thuộc $BC$) và $KO\perp AE$ (vì $K$, $O$ thuộc $MN$ và $MN\perp AE$).
 
 Hai đường cao $AH$ và $KO$ cắt nhau tại $O$ nên $O$ là trực tâm của $\triangle AKE$.
 
 Do đó $EO\perp AK$.
 
-Mà $xy$ là đường thẳng đi qua $A$ và vuông góc với $OE$ nên $xy$ trùng với $AK$, suy ra $K$ thuộc $xy$.
+Mà $xy$ là đường thẳng đi qua $A$ và vuông góc với $OE$ nên $xy$ trùng với $AK$ (qua $A$ chỉ có một đường thẳng vuông góc với $OE$), suy ra $K$ thuộc $xy$.
 
 Vậy ba đường thẳng $xy$, $BC$, $NM$ cùng đi qua $K$ nên chúng đồng quy.
 
@@ -426,6 +440,6 @@ Vậy nên trồng $25$ cây trên $100$ ($m^2$) thì tổng sản lượng lớ
 - Bộ sách: KNTT (đoán theo nội dung). Phạm vi đề chạm tới: Chương I (cộng, nhân đa thức, chia đa thức cho đơn thức), hằng đẳng thức bình phương một tổng / một hiệu và hiệu hai bình phương (Bài 2.2, 3.2; dùng lại ở Bài 4.2 và Bài 6), Chương III đến hình thang, hình bình hành, hình chữ nhật (Bài 5). Không có phân tích nhân tử bằng phương pháp, Pythagore, đường trung bình, Thalès nên lời giải không dùng; đặt thừa số chung ở Bài 6 chỉ là tính chất phân phối.
 - Tách ý: Bài 2.1 (a, b, c) và Bài 3 (1, 2) là các ý độc lập nên tách thành Bài 2.1a, 2.1b, 2.1c, Bài 3.1, 3.2. Bài 1, 2.2, 4, 5 giữ một câu vì các ý dùng kết quả của nhau (bài hình không tách ý).
 - Đáp số Bài 3.1 và Bài 3.2 đều là $-\dfrac{1}{2}$ (phân số) nên để tự luận. Bài 6 đáp số là số nguyên $25$ (số cây) nên để trả lời ngắn.
-- Bài 5 đề không cho hình: hình vẽ bằng code (dựng toạ độ số, $AB=8$, $AC=5$), chỉ hiện ở lời giải; có vẽ thêm điểm $K$ và đường thẳng $xy$ để minh hoạ lời giải ý 3.
+- Bài 5 đề không cho hình: hình vẽ bằng code (dựng toạ độ số, $AB=8$, $AC=5$), chỉ hiện ở lời giải; có vẽ thêm điểm $K$ và đường thẳng $xy$ để minh hoạ lời giải ý 3. Ý 3 có chứng minh đủ hai điều để tam giác $AKE$ tồn tại: $MN$ cắt $BC$ (nhờ $AB>AC$) và $K$ khác $E$ (phản chứng bằng quan hệ đường vuông góc – đường xiên, lớp 7).
 - Bài 6 là dạng giá trị lớn nhất, giải bằng đưa về $-2(n-25)^2+1250$ (hằng đẳng thức đề đã chạm tới ở Bài 2.2, 3.2); nếu CEO thấy vượt phạm vi giữa kì 1 thì đây là câu nâng cao cuối đề (0,5 điểm).
 - Bài 2.2 ý b có đáp án duy nhất $x=y=0$ (đã kiểm: $2x^2-2xy+y^2=x^2+(x-y)^2$).

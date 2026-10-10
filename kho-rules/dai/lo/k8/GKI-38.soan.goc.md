@@ -7,14 +7,14 @@ bo_sach: KNTT
 ### Câu 1 | kho=dai | loai=trac_nghiem | dap_an=B
 **Đề:** Trong các biểu thức sau, biểu thức nào là đơn thức?
 A. $2+x$
-B. $-x6y$
+B. $-x^6y$
 C. $8x^2-3x$
 D. $5x\sqrt{y}$
-**Ghi chú:** Phương án B chép đúng như đề in: "−x6y" (chữ số 6 nằm ngang hàng với chữ, không phải số mũ), tức là tích $-x \cdot 6 \cdot y=-6xy$. Có thể đề đánh máy rơi số mũ ($-x^6y$); hiểu cách nào thì đó vẫn là đơn thức, đáp án không đổi.
+**Ghi chú:** Đề in "−x6y" (chữ số 6 không được viết thành số mũ); đã sửa thành $-x^6y$. Hiểu theo cách nào ($-x^6y$ hay $-6xy$) thì đây vẫn là đơn thức, đáp án không đổi.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** đơn thức chỉ gồm số, biến và phép **nhân** giữa chúng (kể cả luỹ thừa của biến), **không cần đã thu gọn**; có phép cộng, trừ nối hai hạng tử hoặc biến nằm trong dấu căn thì không phải đơn thức.
+**Mấu chốt:** đơn thức chỉ gồm số, biến và phép **nhân** giữa chúng (kể cả luỹ thừa của biến); có phép cộng, trừ nối hai hạng tử hoặc biến nằm trong dấu căn thì không phải đơn thức.
 
 **Bước 1.** Nhắc lại định nghĩa: đơn thức là biểu thức chỉ gồm một số, một biến, hoặc tích của những số và biến.
 
@@ -22,7 +22,7 @@ D. $5x\sqrt{y}$
 
 **Bước 3.** Soát tiếp xem biến có nằm dưới dấu căn hay không; biến chỉ được xuất hiện dưới dạng luỹ thừa với số mũ nguyên dương.
 
-**Chú ý:** dấu trừ đứng đầu của $-x6y$ là dấu của hệ số, không phải phép trừ hai hạng tử; số 6 viết xen giữa hai biến vẫn chỉ là một thừa số của tích.
+**Chú ý:** dấu trừ đứng đầu của $-x^6y$ là dấu của hệ số $-1$, không phải phép trừ hai hạng tử.
 
 **Phần 2. Trình bày**
 
@@ -30,7 +30,7 @@ $2+x$ là tổng của hai hạng tử; $8x^2-3x$ là hiệu của hai hạng t�
 
 $5x\sqrt{y}$ có biến $y$ nằm dưới dấu căn nên không phải đơn thức.
 
-$-x6y=(-1) \cdot x \cdot 6 \cdot y$ là tích của các số và các biến nên là đơn thức (thu gọn được thành $-6xy$).
+$-x^6y=(-1) \cdot x^6 \cdot y$ là tích của một số với các luỹ thừa của biến nên là đơn thức.
 
 Chọn B.
 
@@ -268,7 +268,8 @@ B. Hình 2
 C. Hình 3
 D. Hình 4
 **Hình:** p1c10_hinh.png
-**Ghi chú:** Đề tô đỏ sẵn đáp án B (Hình 2) — phần tô đỏ SAI. Hình 2 có 5 đỉnh (ngũ giác, không phải tứ giác) nhưng là đa giác **lồi** (hai trạm đo toạ độ trên hình đều ra lồi); hình duy nhất không phải đa giác lồi là Hình 3 (hai cạnh cắt nhau). Kể cả hiểu câu hỏi là "hình nào không phải tứ giác lồi" thì Hình 3 vẫn thoả, còn B không phải đáp án duy nhất. Giữ đáp án đúng là C.
+**Ghi chú:** Đề in sẵn đáp án tô đỏ là B (Hình 2), nhưng Hình 2 là ngũ giác lồi (5 đỉnh, không có cạnh nào cắt nhau, đã kiểm bằng toạ độ trên hình); phương án duy nhất không phải đa giác lồi là Hình 3 (hai cạnh cắt nhau). Giữ đáp án đúng là C.
+**Chưa chắc:** bảng đáp án tô đỏ trong đề ghi B nhưng toán học chỉ cho C; CEO xem lại có đồng ý chọn C không.
 
 **Phần 1. Hướng dẫn**
 
@@ -286,7 +287,7 @@ D. Hình 4
 
 Hình 1 và Hình 4 là các tứ giác lồi; Hình 2 là đa giác lồi (ngũ giác lồi).
 
-Ở Hình 3 có hai cạnh cắt nhau, nên đường thẳng chứa một trong hai cạnh đó chia hai đỉnh còn lại về hai phía khác nhau. Do đó Hình 3 không phải đa giác lồi.
+Ở Hình 3, hai cạnh cắt nhau nên đường thẳng chứa mỗi cạnh chéo chia các đỉnh còn lại về hai phía khác nhau, do đó Hình 3 không phải đa giác lồi.
 
 Chọn C.
 
@@ -352,7 +353,7 @@ D. $70^\circ$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** tổng bốn góc của tứ giác $MNPQ$ bằng $360^\circ$; đọc đúng số đo của từng góc từ hình rồi viết đẳng thức tổng bốn góc để tìm $x$.
+**Mấu chốt:** tổng bốn góc của tứ giác $MNPQ$ bằng $360^\circ$; đọc đúng số đo của từng góc từ hình rồi lập một phương trình theo $x$.
 
 **Bước 1.** Đọc số đo bốn góc của tứ giác từ hình: góc tại $M$, $N$, $P$, $Q$.
 
@@ -605,7 +606,7 @@ Vậy $x=\dfrac{5}{2}$ hoặc $x=-\dfrac{7}{2}$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** khai triển vế trái thì hạng tử $x^2$ của hai phần **triệt tiêu** nhau, còn lại đẳng thức chỉ chứa $x$ ở bậc nhất nên tìm $x$ bằng quy tắc chuyển vế.
+**Mấu chốt:** khai triển hai vế phải, hạng tử $x^2$ ở hai phần **triệt tiêu** nhau, còn lại phương trình chỉ chứa $x$ ở bậc nhất.
 
 **Bước 1.** Khai triển $(x-5)^2$ bằng hằng đẳng thức bình phương của một hiệu và nhân $x$ với $(x+2)$.
 
@@ -637,6 +638,7 @@ a) Chứng minh rằng $DMBN$ là hình bình hành.
 b) Chứng minh rằng $AN$ là tia phân giác của góc $DAB$.
 c) Gọi giao điểm của $AN$ với $DM$ là $P$, $CM$ với $BN$ là $Q$. Tìm điều kiện của hình bình hành $ABCD$ để tứ giác $PMQN$ là hình vuông.
 **Hình giải:** giai_bai3.png
+**Ghi chú:** Hình giải vẽ ở lời giải; ý c đề hỏi "tìm điều kiện" nên lời giải chứng minh cả hai chiều (điều kiện cần và đủ).
 
 **Phần 1. Hướng dẫn**
 
@@ -646,7 +648,7 @@ c) Gọi giao điểm của $AN$ với $DM$ là $P$, $CM$ với $BN$ là $Q$. T�
 
 **Bước 2.** Ý b: muốn $AN$ là tia phân giác của góc $DAB$, cần $AN$ là đường chéo của một hình thoi có đỉnh $A$; muốn có hình thoi $AMND$, cần hình bình hành $AMND$ (làm như ý a) có hai cạnh kề $AM$, $AD$ bằng nhau, mà $AM=\dfrac{1}{2}AB=AD$.
 
-**Bước 3.** Ý c, giai đoạn 1: muốn $PMQN$ là hình vuông, trước hết cần nó là hình chữ nhật, tức là có bốn góc vuông; chỉ cần tìm ba góc vuông, góc thứ tư có được từ tổng các góc của tứ giác. Tương tự ý b, $MBCN$ cũng là hình thoi.
+**Bước 3.** Ý c, giai đoạn 1: muốn $PMQN$ là hình vuông, trước hết cần nó là hình chữ nhật, tức là có ba góc vuông; tương tự ý b, $MBCN$ cũng là hình thoi.
 
 **Bước 4.** Hai góc vuông ở $P$ và $Q$ có được từ hai đường chéo vuông góc của hai hình thoi $AMND$ và $MBCN$; góc vuông ở $M$ có được vì $MD$, $MC$ là hai tia phân giác của hai góc kề bù $\widehat{AMN}$ và $\widehat{NMB}$.
 
@@ -680,11 +682,9 @@ Vì $M$ nằm trên $AB$ nên góc $DAM$ cũng là góc $DAB$.
 
 Vậy $AN$ là tia phân giác của góc $DAB$.
 
-c) Tứ giác $MBCN$ có $MB \parallel NC$ (vì $AB \parallel CD$) và $MB=NC$ (cùng bằng $\dfrac{1}{2}AB$) nên $MBCN$ là hình bình hành (dấu hiệu nhận biết).
+c) Xét tứ giác $MBCN$ có $MB \parallel NC$ và $MB=NC$ (cùng bằng $\dfrac{1}{2}AB$) nên $MBCN$ là hình bình hành.
 
-Vì $ABCD$ là hình bình hành nên $BC=AD$ (hai cạnh đối), do đó $MB=\dfrac{1}{2}AB=AD=BC$.
-
-Hình bình hành $MBCN$ có hai cạnh kề $MB=BC$ nên $MBCN$ là hình thoi (dấu hiệu nhận biết).
+Hình bình hành $MBCN$ có $MB=\dfrac{1}{2}AB=AD=BC$ nên hai cạnh kề $MB$, $BC$ bằng nhau, do đó $MBCN$ là hình thoi.
 
 Hình thoi $AMND$ có hai đường chéo $AN$, $MD$ cắt nhau tại $P$ nên $AN \perp MD$, suy ra $\widehat{MPN}=90^\circ$; $MD$ là phân giác của góc $AMN$.
 
@@ -742,8 +742,8 @@ Vậy diện tích phần đất còn lại là $(600x+160000)$ ($m^2$).
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Bộ sách: KNTT (đoán theo nội dung đề). Phạm vi đề chạm tới: Chương I (đa thức, cộng – trừ – nhân đa thức, chia đa thức cho đơn thức), Chương II phần hằng đẳng thức (Câu 6, 7, 8, 9, Bài 2.1c, 2.2, Bài 4), Chương III (tứ giác, hình bình hành, hình thoi, hình vuông — Câu 10 đến 15, Bài 3). Đề KHÔNG có phân tích nhân tử, Pythagore nên lời giải không dùng (Bài 2.2a giải bằng "hai số có bình phương bằng nhau thì bằng nhau hoặc đối nhau", không phân tích nhân tử).
-- Đề in sẵn đáp án trắc nghiệm bằng chữ tô đỏ ở 15 câu: đối chiếu với lời giải tự làm thì khớp 14 câu, lệch Câu 10 (đề tô B, lời giải chọn C — trạm soát giải mù cũng ra C, đã phân xử: phần tô đỏ sai, xem `Ghi chú` ở Câu 10). Không chép bảng đáp án vào đề.
+- Đề in sẵn đáp án trắc nghiệm bằng chữ tô đỏ ở 15 câu: đối chiếu với lời giải tự làm thì khớp 14 câu, lệch Câu 10 (đề tô B, lời giải chọn C — xem `Chưa chắc` ở Câu 10). Không chép bảng đáp án vào đề.
 - Đề có 15 trắc nghiệm + 4 bài tự luận. Bài 1 (Tính giá trị) và Bài 2.1 (Thu gọn), 2.2 (Tìm $x$) có các ý độc lập nên tách ý: Bài 1a, 1b, 2.1a, 2.1b, 2.1c, 2.2a, 2.2b. Bài 3 (hình, 3 ý nối tiếp) và Bài 4 (lời văn) giữ một câu.
 - Bài 1a đáp số $8$ vừa 4 ô nên để trả lời ngắn; Bài 1b đáp số $-\dfrac{1}{2}$ là phân số nên để tự luận.
-- Bài 3 đề không cho hình: hình vẽ bằng code (góc $\widehat{DAB}=65^\circ$ minh hoạ, đã kiểm bằng toạ độ), chỉ hiện ở lời giải; hình không đánh dấu điều phải chứng minh; đoạn $MN$ nét đứt là đường phụ của lời giải. Ý c đề hỏi "tìm điều kiện" nên lời giải chứng minh cả hai chiều (điều kiện cần và đủ).
-- Câu 1: phương án B chép đúng như đề in "−x6y" ($=-6xy$); có thể đề rơi số mũ ($-x^6y$) — đáp án không đổi.
+- Bài 3 đề không cho hình: hình vẽ bằng code (góc $\widehat{DAB}=65^\circ$ minh hoạ, đã kiểm bằng toạ độ), chỉ hiện ở lời giải; hình không đánh dấu điều phải chứng minh.
+- Câu 1: đề in "−x6y" (lỗi in), đã sửa thành $-x^6y$.

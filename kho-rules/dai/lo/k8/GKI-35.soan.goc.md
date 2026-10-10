@@ -19,7 +19,7 @@ D. $\dfrac{-5}{7}x$
 
 **Bước 2.** Kiểm tra từng phương án xem có dấu cộng, trừ nối các hạng tử hay không; có thì đó là đa thức nhiều hạng tử.
 
-**Bước 3.** Kiểm tra tiếp xem có biến nào nằm ở mẫu (phép chia cho biến) hay không; nếu có thì cũng không phải đơn thức.
+**Bước 3.** Kiểm tra tiếp xem biến có nằm ở mẫu của một phân thức hay không; nếu có thì cũng không phải đơn thức.
 
 **Bước 4.** Phương án còn lại chỉ là tích của một số với biến nên thoả định nghĩa.
 
@@ -141,11 +141,7 @@ D. 3
 
 **Phần 2. Trình bày**
 
-$-2x^5+2x^2y-xy^3+2x^5-3$
-
-$=(-2x^5+2x^5)+2x^2y-xy^3-3$
-
-$=2x^2y-xy^3-3$
+$-2x^5+2x^2y-xy^3+2x^5-3=(-2x^5+2x^5)+2x^2y-xy^3-3=2x^2y-xy^3-3$
 
 Hạng tử $2x^2y$ có bậc là $2+1=3$.
 
@@ -306,6 +302,7 @@ A. Hình thang có hai đường chéo bằng nhau là hình thang cân
 B. Hình thang có hai cạnh bên bằng nhau là hình thang cân
 C. Tứ giác có hai cạnh đối song song và hai đường chéo bằng nhau là hình thang cân
 D. Hình thang có 2 góc kề một đáy bằng nhau là hình thang cân
+**Chưa chắc:** đề không in đáp án; chọn B theo quy ước hình thang của SGK (tứ giác có hai cạnh đối song song, nên hình bình hành cũng là hình thang).
 
 **Phần 1. Hướng dẫn**
 
@@ -325,7 +322,7 @@ A đúng (dấu hiệu nhận biết hình thang cân). D đúng (định nghĩa
 
 C: tứ giác có hai cạnh đối song song là hình thang, có thêm hai đường chéo bằng nhau nên là hình thang cân (dấu hiệu nhận biết). C đúng.
 
-B: hình bình hành $ABCD$ (không phải hình chữ nhật) là hình thang có hai cạnh bên $AD=BC$. Hai góc kề đáy $AB$ có $\widehat{A}+\widehat{B}=180^\circ$ nên chỉ bằng nhau khi cùng bằng $90^\circ$; hình bình hành này có góc không vuông nên hai góc kề đáy $AB$ không bằng nhau (tương tự với đáy $CD$), không là hình thang cân. Do đó B sai.
+B: hình bình hành $ABCD$ (không phải hình chữ nhật) là hình thang có hai cạnh bên $AD=BC$. Hai góc kề đáy $AB$ có $\widehat{A}+\widehat{B}=180^\circ$ nên chỉ bằng nhau khi cùng bằng $90^\circ$; hình bình hành này có góc không vuông nên hai góc kề đáy không bằng nhau, không là hình thang cân. Do đó B sai.
 
 Chọn B.
 
@@ -578,6 +575,7 @@ a) Chứng minh: Tứ giác $ADME$ là hình chữ nhật.
 b) Chứng minh: $ME=DB$ và tứ giác $MBDE$ là hình bình hành.
 c) Trên tia đối của tia $EM$ lấy điểm $K$ sao cho $E$ là trung điểm của $MK$. Gọi $I$ là giao điểm của $AM$ và $DE$. Chứng minh: ba điểm $B$, $I$, $K$ thẳng hàng.
 **Hình giải:** giai_bai5.png
+**Ghi chú:** đề không dùng đường trung bình; lời giải tự chứng minh $ME=DB$ bằng hai tam giác vuông bằng nhau (cạnh huyền – góc nhọn).
 
 **Phần 1. Hướng dẫn**
 
@@ -675,6 +673,5 @@ Vậy $M=1$ khi $x=2025$.
 - Bộ sách: KNTT (đoán theo nội dung đề). Đề kiểm tra Chương I (đơn thức, đa thức, cộng – nhân đa thức, chia đa thức cho đơn thức) và Chương III (tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông). Đề không có Pythagore, phân thức, phân tích nhân tử; Bài 2b có tích $(x+2y)(x^2-2xy+4y^2)$ nhưng giải bằng nhân đa thức, không dùng hằng đẳng thức; Bài 6 chỉ dùng thay số và bỏ ngoặc.
 - Đề có 12 câu trắc nghiệm + 6 bài tự luận; đề KHÔNG in đáp án trắc nghiệm, đáp án tự giải. Tách ý: Bài 2 (3 ý có biểu thức riêng, không dùng chung dữ kiện) thành Bài 2a, 2b, 2c; Bài 3 (Tìm $x$) thành Bài 3a, 3b; Bài 1 giữ một câu vì ý b dùng kết quả ý a; Bài 5 (hình) không tách ý.
 - Bài 3a, 3b, Bài 6 có đáp số nguyên nên nhập trả lời ngắn (3; $-4$; 1). Bài 2a, 2b, 2c, Bài 4 đáp số là đa thức hoặc hằng số cần trình bày nên để tự luận.
-- Bài 5 đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải; không vẽ đoạn $BK$ vì $B$, $I$, $K$ thẳng hàng là điều phải chứng minh. Điều kiện $AB<AC$ không dùng đến trong lời giải. Ý b không dùng đường trung bình (cấm ở giữa kì 1): $ME=DB$ được chứng minh bằng hai tam giác vuông $BDM$, $MEC$ bằng nhau (cạnh huyền – góc nhọn), lấy $ME\parallel AB$ từ hình chữ nhật ở ý a.
-- Câu 11: chỉ B sai theo định nghĩa SGK (hình thang = tứ giác có hai cạnh đối song song; hình thang cân = hình thang có hai góc kề một đáy bằng nhau) — hình bình hành không phải hình chữ nhật là hình thang có hai cạnh bên bằng nhau nhưng không cân; A là dấu hiệu, D là định nghĩa, C quy về A. Hai lượt giải độc lập cùng ra B.
+- Bài 5 đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải; không vẽ đoạn $BK$ vì $B$, $I$, $K$ thẳng hàng là điều phải chứng minh. Điều kiện $AB<AC$ không dùng đến trong lời giải.
 - Bài 6: dấu "…" trong đề được hiểu là các hạng tử liền nhau theo quy luật dấu đan xen với hệ số 2026 từ $x^9$ đến $x^1$ (đúng theo các hạng tử đề liệt kê hai đầu).

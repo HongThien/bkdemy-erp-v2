@@ -54,7 +54,7 @@ D. $-9x^4y^6$
 
 **Bước 3.** Loại phương án có số mũ khác hoặc thiếu một biến; chọn phương án còn lại.
 
-**Chú ý:** phương án A có hệ số liên quan tới $3^2$ nhưng số mũ của $x$, $y$ bị đổi chỗ — cùng hệ số không làm hai đơn thức đồng dạng.
+**Chú ý:** phương án A cũng có $3^2$ ở hệ số nhưng số mũ của $x$, $y$ bị đổi chỗ — hệ số trông giống nhau không làm hai đơn thức đồng dạng, phải so phần biến.
 
 **Phần 2. Trình bày**
 
@@ -591,7 +591,7 @@ c) Trên tia đối của tia $HM$ lấy điểm $E$ sao cho $H$ là trung đi�
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** đi từ điều phải chứng minh lùi về điều đã có; ý b và ý c cần biết $H$ là trung điểm của $AB$, mà bài chưa học đường trung bình nên ta tự chứng minh điều đó bằng hai tam giác vuông bằng nhau.
+**Mấu chốt:** đi từ điều phải chứng minh lùi về điều đã có; ý b cần $MH=KC$, ý c cần $H$ là trung điểm của $AB$ — bài chưa học đường trung bình nên ta tự chứng minh cả hai điều đó từ một cặp tam giác vuông bằng nhau $HBM$ và $KMC$.
 
 **Bước 1.** Ý a: muốn $AHMK$ là hình chữ nhật, cần nó có bốn góc vuông; ba góc $\widehat{A}$, $\widehat{AHM}$, $\widehat{AKM}$ vuông theo giả thiết, góc thứ tư suy ra từ tổng bốn góc của tứ giác.
 
@@ -693,6 +693,6 @@ Vậy $M=1$ khi $x=2024$.
 - Bộ sách: KNTT (đề không có Pythagore, hình chóp, phân thức). Đề chạm tới: Chương I (đơn thức, đa thức, cộng – trừ – nhân – chia) và Chương III (tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình vuông, hình thoi). Đề không có câu nào về hằng đẳng thức hay phân tích nhân tử nên Bài 2b giải bằng nhân đa thức với đa thức, Bài 6 giải bằng thay $2025=x+1$ rồi bỏ ngoặc.
 - Đề có 12 câu trắc nghiệm + 6 bài tự luận. Tách ý: Bài 2 thành 2a, 2b, 2c (ba ý độc lập, mỗi ý một dữ kiện riêng); Bài 3 thành 3a, 3b. Bài 1 giữ chung một câu vì ý b dùng kết quả ý a; Bài 5 là bài hình nên không tách ý.
 - Bài 3a, 3b, Bài 6 có đáp số là một số nguyên (4, 3, 1) nên để trả lời ngắn. Bài 6 hiểu dãy "$\dots$" là mọi luỹ thừa từ $x^9$ đến $x$ đều có hệ số $\pm 2025$ xen kẽ dấu (đúng với các số hạng đề viết ra).
-- Bài 5: dữ kiện đúng là bài đường trung bình ($H$, $K$ là trung điểm $AB$, $AC$) nhưng lời giải tự chứng minh $H$ là trung điểm của $AB$ bằng hai tam giác vuông bằng nhau $\triangle HBM=\triangle KMC$ rồi hình bình hành, không dùng đường trung bình. Điều kiện $AB<AC$ không dùng tới. Đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải, không vẽ đoạn $EC$ vì đó là điều phải chứng minh ở ý c.
+- Bài 5: cách giải nhanh hay gặp là dùng chiều đảo của đường trung bình ($MK\parallel AB$, $M$ là trung điểm $BC$ nên $K$ là trung điểm $AC$) — chưa học ở giữa kì 1 nên lời giải KHÔNG dùng: $MH=KC$ và "$H$ là trung điểm của $AB$" đều được chứng minh từ hai tam giác vuông bằng nhau $\triangle HBM=\triangle KMC$ (cạnh huyền - góc nhọn, lớp 7), sau đó chỉ dùng dấu hiệu và tính chất của hình bình hành, hình chữ nhật. Điều kiện $AB<AC$ không dùng tới. Đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải; hai đoạn $AE$, $BE$ vẽ nét đứt (đường phụ của ý c), không vẽ đoạn $EC$ vì đó là điều phải chứng minh ở ý c.
 - Bài 4: hình do máy cắt kèm mảnh chữ của đề nên đã cắt lại từ PDF (`p2c4_lai.png`).
 - Đề không in bảng đáp án. Đề này là "Đề 1" của trường (bộ đề có thêm GKI-35 cùng trường).

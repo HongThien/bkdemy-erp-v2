@@ -25,7 +25,7 @@ D. $x^2-\dfrac{x+3}{5}$
 
 **Phần 2. Trình bày**
 
-$5xy-3$; $x-2023$; $x^2-\dfrac{x+3}{5}$ đều có phép trừ nối các hạng tử với nhau nên không phải là đơn thức.
+$5xy-3$; $x-2023$; $x^2-\dfrac{x+3}{5}$ đều là hiệu của hai hạng tử nên không phải là đơn thức.
 
 $-5x^2y$ là tích của số $-5$ với các biến $x$, $y$ nên là đơn thức.
 
@@ -224,7 +224,7 @@ D. Hình thang cân có hai đường chéo bằng nhau là hình chữ nhật
 
 Phương án A sai vì tứ giác chỉ có hai đường chéo bằng nhau thì chưa chắc có cặp cạnh nào song song, nên chưa chắc là hình thang.
 
-Phương án B sai vì hình thang có một góc vuông là hình thang vuông; hình thang vuông có hai đáy khác nhau thì chỉ có hai góc vuông nên không phải hình chữ nhật.
+Phương án B sai vì hình thang vuông chỉ có hai góc vuông, không phải hình chữ nhật.
 
 Phương án D sai vì hình thang cân nào cũng có hai đường chéo bằng nhau, mà hình thang cân có hai đáy khác nhau thì không phải hình chữ nhật.
 
@@ -293,7 +293,7 @@ $=-x^3-y^3$
 
 **Bước 2.** Chia từng hạng tử: chia hệ số cho hệ số, chia các luỹ thừa cùng cơ số bằng cách trừ số mũ.
 
-**Bước 3.** Biến chỉ có ở hạng tử bị chia mà không có ở đơn thức chia (như $z$) thì giữ nguyên; viết kết quả thành đa thức.
+**Bước 3.** Biến chỉ có ở tử mà không có ở số chia (như $z$) thì giữ nguyên; viết kết quả thành đa thức.
 
 **Chú ý:** hệ số 4 không chia hết cho 3 nên thương là phân số $\dfrac{4}{3}$; đừng làm tròn hay bỏ phân số.
 
@@ -313,7 +313,7 @@ c) Tìm đa thức $B$, biết: $2xy^2(B-x^3y)=2x^3y^2-2x^4y^3$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** ý a và ý b xoay quanh bình phương của một hiệu: ý a nhận ra dạng $a^2-2ab+b^2$, ý b đổi $(1-x)^2$ về $(x-1)^2$; còn ý c là tìm thừa số chưa biết bằng phép chia.
+**Mấu chốt:** ba ý đều xoay quanh bình phương của một hiệu: ý a nhận ra dạng $a^2-2ab+b^2$, ý b đổi $(1-x)^2$ về $(x-1)^2$, còn ý c là tìm thừa số chưa biết bằng phép chia.
 
 **Bước 1.** Ý a: nhận ra biểu thức có dạng $a^2+b^2-2ab$ với $a=2x+3$ và $b=2x+5$, nên gộp lại thành bình phương của $a-b$.
 
@@ -417,10 +417,11 @@ b) Chứng minh: $DE=\dfrac{1}{2}BC$.
 c) Gọi $P$ là trung điểm của $BM$, $Q$ là trung điểm của $MC$. Chứng minh: $DP\parallel EQ$.
 d) Tam giác $ABC$ vuông ban đầu cần thêm điều kiện gì để tứ giác $DPQE$ là hình chữ nhật?
 **Hình giải:** giai_bai4.png
+**Chưa chắc:** ý b dùng tính chất trung tuyến ứng với cạnh huyền (học ở bài hình chữ nhật, và đề có hỏi hình chữ nhật nên dùng được) — CEO xác nhận cho dùng ở đề này; ý c, d đã tự chứng minh bằng hình chữ nhật, tam giác cân và hai tam giác bằng nhau, không dùng đường trung bình dù $D$, $E$, $P$, $Q$ đều là trung điểm (dữ kiện gợi bài đường trung bình).
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** tứ giác $ADME$ có ba góc vuông nên góc thứ tư cũng vuông, tức là có bốn góc vuông; trung tuyến $AM$ ứng với cạnh huyền cho $MA=MB=MC$, nhờ đó chứng minh được $D$, $E$ là trung điểm của $AB$, $AC$ bằng tam giác cân (bài này chưa được dùng đường trung bình).
+**Mấu chốt:** tứ giác $ADME$ có ba góc vuông nên là hình chữ nhật; từ đó suy ra $D$, $E$ là trung điểm của $AB$, $AC$, và mọi ý sau dựa vào các trung điểm này.
 
 **Bước 1.** Ý a: đếm số góc vuông của $ADME$: $\widehat{A}$ vuông theo đề, $D$ và $E$ vuông vì là hình chiếu; dùng tổng bốn góc tứ giác bằng $360^\circ$ để biết góc thứ tư.
 
@@ -432,7 +433,7 @@ d) Tam giác $ABC$ vuông ban đầu cần thêm điều kiện gì để tứ g
 
 **Bước 5.** Ý d: $DPQE$ đã là hình bình hành (ý c), nên chỉ cần thêm một góc vuông; chọn $\widehat{DPQ}=90^\circ$, tức $DP\perp BM$.
 
-**Bước 6.** Ý d: $DP\perp BM$ tại trung điểm $P$ của $BM$ xảy ra khi $\triangle DBM$ cân tại $D$, tức $DB=DM$; mà $DB=\dfrac{1}{2}AB$ và $DM=AE=\dfrac{1}{2}AC$, từ đó đọc ra điều kiện cần thêm cho hai cạnh góc vuông $AB$, $AC$.
+**Bước 6.** Ý d: $DP\perp BM$ tại trung điểm $P$ của $BM$ xảy ra khi $\triangle DBM$ cân tại $D$, tức $DB=DM$; mà $DB=\dfrac{1}{2}AB$ và $DM=\dfrac{1}{2}AC$ nên cần $AB=AC$.
 
 **Chú ý:** ý b dùng kết quả ý a, ý d dùng kết quả ý c; viết rõ "(câu a)", "(câu c)" mỗi khi dùng lại.
 
@@ -486,11 +487,7 @@ d) Điều kiện cần thêm: $AB=AC$, tức tam giác $ABC$ vuông cân tại 
 
 Thật vậy, ở câu c ta có $DP\parallel EQ$ và $DP=EQ$ nên tứ giác $DPQE$ là hình bình hành (dấu hiệu nhận biết).
 
-Tam giác $MAC$ có $MA=MC$ (cùng bằng $\dfrac{1}{2}BC$) nên cân tại $M$; đường cao $ME$ ($ME\perp AC$) đồng thời là đường trung tuyến, nên $E$ là trung điểm của $AC$.
-
-Ta có $DB=\dfrac{1}{2}AB$ ($D$ là trung điểm của $AB$, câu c) và $DM=AE=\dfrac{1}{2}AC$ ($DM=AE$ vì $ADME$ là hình chữ nhật, $E$ là trung điểm của $AC$).
-
-Nếu $AB=AC$ thì $DB=DM$.
+Nếu $AB=AC$: $DB=\dfrac{1}{2}AB$ ($D$ là trung điểm $AB$) và $DM=AE=\dfrac{1}{2}AC$ ($E$ là trung điểm $AC$, $DM=AE$ vì $ADME$ là hình chữ nhật) nên $DB=DM$.
 
 Tam giác $DBM$ cân tại $D$ có $DP$ là trung tuyến ($P$ là trung điểm $BM$) nên $DP$ đồng thời là đường cao: $DP\perp BM$.
 
@@ -521,11 +518,7 @@ Vậy tam giác $ABC$ cần thêm điều kiện $AB=AC$ (vuông cân tại $A$)
 
 **Phần 2. Trình bày**
 
-$3x^2-4xy+2y^2=x^2+(2x^2-4xy+2y^2)$
-
-$=x^2+2(x^2-2xy+y^2)$
-
-$=x^2+2(x-y)^2$
+$3x^2-4xy+2y^2=x^2+(2x^2-4xy+2y^2)=x^2+2(x-y)^2$
 
 Do đó $x^2+2(x-y)^2=3$.
 
@@ -558,6 +551,5 @@ Vậy $M=0$.
 - Bộ sách: KNTT (đoán theo nội dung đề). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, nhân – chia đa thức), hằng đẳng thức (Câu 4, Bài 2, Bài 5) và Chương III (tứ giác, hình bình hành, hình thang cân, hình chữ nhật). Đề KHÔNG có phân tích nhân tử, Pythagore, đường trung bình nên lời giải không dùng; Bài 2b giải bằng "hai số có bình phương bằng nhau thì bằng nhau hoặc đối nhau" (kiến thức lớp 7), không phân tích nhân tử.
 - Đề gồm 8 trắc nghiệm + 5 bài tự luận; Bài 1 (rút gọn, ba ý độc lập) tách thành Bài 1a, 1b, 1c. Bài 2 giữ một câu vì ba ý là ba loại khác nhau (chứng minh, tìm $x$, tìm đa thức); Bài 3 (lời văn) và Bài 4 (hình) giữ một câu.
 - Bài 5 có đáp số 0 (một số nguyên) nên nhập `tra_loi_ngan`. Bài 2, Bài 3 có đáp số là biểu thức / nhiều giá trị / số có đơn vị nên để `tu_luan`.
-- Bài 4: đề có hỏi hình chữ nhật (Câu 8, Bài 4a, 4d) nên ý b, c dùng "trung tuyến ứng với cạnh huyền" (cùng bài Hình chữ nhật). Ý c, d KHÔNG dùng đường trung bình: $D$, $E$ là trung điểm được chứng minh bằng tam giác cân $MAB$, $MAC$; $DP\parallel EQ$ bằng hai tam giác bằng nhau (c.g.c) và hai góc đồng vị.
 - Bài 4: đề không cho hình, đã vẽ hình giải bằng code (dựng toạ độ, không vẽ điều phải chứng minh $DP\parallel EQ$ bằng kí hiệu). Hình dùng tam giác không cân để không gợi sẵn điều kiện của ý d.
 - Đề không có bảng đáp án in sẵn.
