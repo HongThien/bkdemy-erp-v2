@@ -347,32 +347,31 @@ $=170-16$
 
 $=154$
 
-### Bài 2a | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Tìm số tự nhiên $x$, biết: $28+x=15$
-**Ghi chú:** Đề gốc in đúng là $28+x=15$ (đã phóng to ảnh trang để kiểm) — không có số tự nhiên $x$ nào thoả mãn, nên lời giải kết luận "không có số tự nhiên $x$ nào" và câu để tự luận (chỉ in).
-**Chưa chắc:** đề gốc nhiều khả năng in lỗi: ý tương ứng ở hai mã đề cùng đợt của trường là $x-38=25$ (mã 602) và $x-72=16$ (mã 603), đều có đáp số; mã 601 có thể định in $x-28=15$ (khi đó $x=43$) hoặc $28-x=15$ (khi đó $x=13$) — không đoán chắc được nên giữ đúng chữ in. CEO quyết: giữ câu vô nghiệm, đổi đề, hay bỏ câu.
+### Bài 2a | kho=dai | loai=tra_loi_ngan | dap_an=13
+**Đề:** Tìm số tự nhiên $x$, biết: $28-x=15$
+**Ghi chú:** Đề gốc in $28+x=15$ — không có số tự nhiên $x$ nào thoả mãn (đề giữa kì 1, chưa học số nguyên). CEO 10/10 sửa đề thành $28-x=15$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** coi $x$ là **số hạng chưa biết** và kiểm tra phép trừ có thực hiện được trong các số tự nhiên không.
+**Mấu chốt:** coi $x$ là **số trừ** chưa biết.
 
-**Bước 1.** Xác định vai trò: trong phép cộng $28+x=15$, số $x$ là số hạng chưa biết, còn $15$ là tổng.
+**Bước 1.** Xác định vai trò: trong phép trừ $28-x=15$, số $28$ là số bị trừ, $x$ là số trừ, $15$ là hiệu.
 
-**Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ số hạng đã biết, tức là $15-28$.
+**Bước 2.** Nhớ quy tắc: muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu.
 
-**Bước 3.** Kiểm tra: $15$ nhỏ hơn $28$ nên phép trừ này không thực hiện được trong các số tự nhiên, từ đó kết luận về $x$.
+**Bước 3.** Thực hiện phép trừ rồi thay kết quả vào đề để thử lại.
 
-**Chú ý:** tổng của hai số tự nhiên luôn lớn hơn hoặc bằng mỗi số hạng, nên tổng không thể nhỏ hơn số hạng $28$.
+**Chú ý:** $x$ đứng sau dấu trừ nên là số trừ; đừng lấy hiệu cộng với số bị trừ (đó là cách tìm số bị trừ).
+
+Thử lại: $28-13=15$ (đúng).
 
 **Phần 2. Trình bày**
 
-$28+x=15$
+$28-x=15$
 
-$x=15-28$
+$x=28-15$
 
-Vì $15<28$ nên phép trừ $15-28$ không thực hiện được trong $\mathbb{N}$.
-
-Vậy không có số tự nhiên $x$ nào thoả mãn.
+$x=13$
 
 ### Bài 2b | kho=dai | loai=tra_loi_ngan | dap_an=10
 **Đề:** Tìm số tự nhiên $x$, biết: $3x+6=3^2.4$
@@ -560,7 +559,7 @@ $\Rightarrow x\in\{4;5;7;11;19\}$
 
 - Câu đã bỏ: không (đề không có phần tiếng Anh).
 - Đề 2 phần: trắc nghiệm 8 câu (câu 1-6 số học, câu 7-8 hình) + tự luận 5 bài; không có phần riêng.
-- Bài 2a: đề in $28+x=15$ nên không có số tự nhiên $x$ nào thoả mãn — nhập `tu_luan` với kết luận "không có số tự nhiên $x$ nào"; nghi đề in lỗi (mã 602, 603 cùng đợt là $x-38=25$, $x-72=16$) — xem dòng Chưa chắc ở Bài 2a.
+- Bài 2a: đề gốc in $28+x=15$ (vô nghiệm trong số tự nhiên) — CEO 10/10 sửa đề thành $28-x=15$, đáp số $13$, trả lời ngắn.
 - Bài 4: đề in "số tiền mỗi loại bằng nhau" thì vô nghiệm với 32 tờ; đề trong tệp đã đổi thành "số tờ tiền mỗi loại bằng nhau" (8 tờ mỗi loại, 1440000 đồng); cách chữa khác là đổi 32 thành 36 tờ (20, 10, 4, 2 tờ, 800000 đồng) — xem dòng Chưa chắc ở Bài 4.
 - Hình Câu 8: dùng một ảnh chung `p1c8_chung.png` có đủ 4 hình và nhãn Hình 1 – Hình 4.
 - Hình Bài 3 (`p2c3_1.png`) chỉ là ảnh minh hoạ ruộng rau, bỏ đi vẫn giải được.
