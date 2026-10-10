@@ -94,6 +94,14 @@ input[type=range]::-moz-range-thumb{width:1.2rem;height:1.2rem;border-radius:50%
 .fx .katex{font-size:1.06em}
 .fx .res{border-top:1px dashed var(--line);padding-top:.6rem;color:var(--amber)}
 .cap{font-size:.8rem!important;color:var(--muted)!important;margin-top:-.35rem!important}
+.cap:empty{display:none}
+.fx .cap{margin:0!important}
+.panel .lbl2{font:600 .72rem/1.3 var(--f-data);color:var(--muted);margin-bottom:-.45rem}
+.fx.num{background:rgba(255,181,71,.06);border-color:rgba(255,181,71,.32)}
+.fx .katex-display{margin:0;text-align:left}
+.fx .katex-display>.katex{text-align:left}
+#sub6{display:flex;flex-direction:column;gap:.8rem}
+#sub6>*{margin:0}
 .seg{display:flex;gap:.35rem}
 .seg button{cursor:pointer;flex:1;background:var(--card-2);border:1px solid var(--line);border-radius:.6rem;padding:.6em 0;font:600 .95rem/1 var(--f-data);color:var(--ink-2);min-height:2.5em}
 .seg button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#1a1000}
@@ -180,9 +188,9 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v))
 const z0 = v => (Math.abs(v) < 5e-7 ? 0 : v)
 const fmt = (v, d = 2) => z0(v).toFixed(d).replace('.', ',').replace('-', '−')   // số hiển thị kiểu Việt: 2,12
 const tn = (v, d = 2) => z0(v).toFixed(d).replace('.', '{,}')                    // số trong công thức TeX
-function tex(el, s) {
+function tex(el, s, display) {
   if (!el) return
-  if (window.katex) { try { katex.render(s, el, { throwOnError: false }); return } catch (e) { /* rơi xuống chữ thường */ } }
+  if (window.katex) { try { katex.render(s, el, { throwOnError: false, displayMode: !!display }); return } catch (e) { /* rơi xuống chữ thường */ } }
   el.textContent = s.replace(/\\[a-zA-Z]+|[{}]/g, ' ')
 }
 
@@ -289,6 +297,7 @@ const S = {
   theta: 0,          // góc nghiêng của cốc (0 → α)
   frozen: false,     // true = nước "đông cứng" thành cái nêm, gắn theo cốc; false = nước lỏng, mặt nước luôn nằm ngang
   melted: false,     // bước 6: đã dựng cốc đứng cho nước chảy lại
+  subbed: false,     // bước 6: đã bấm "Thay số" (mặc định chỉ hiện công thức bằng chữ)
   playing: false,
   axis: 'x', t: { x: 2.4, y: 4, z: 3.6 },   // hướng cắt + vị trí lát
   n: 8, reveal: 8,   // số lát khi cộng + số lát đã hiện (hoạt cảnh)
@@ -530,14 +539,33 @@ function syncScene() {
 
 // ═══ 8. BẢNG LỜI GIẢI THEO BƯỚC ═══
 const panel = $('#panel')
-const STEPS = ['Đề bài', 'Nghiêng cốc', 'Khối nước', 'Cắt một lát', 'Cộng các lát', 'Kết quả']
+const STEPS = ['Đề bài', 'Nghiêng cốc', 'Khối nước', 'Cắt một lát', 'Cộng các lát', 'Tính thể tích']
 const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
 const AXES = {
-  x: { name: 'x', tab: ['Vuông góc AB', 'lát tam giác'], desc: 'Cắt khối nước bằng mặt phẳng vuông góc với <i>AB</i> tại điểm <i>M</i>, với <i>OM</i> = |<i>x</i>|. Lát cắt là <b>tam giác vuông <i>MNP</i></b>.' },
+  x: { name: 'x', tab: ['Vuông góc AB', 'lát tam giác'], desc: 'Cắt khối nước bằng mặt phẳng vuông góc với <i>AB</i> tại điểm <i>M</i>, với <i>OM</i> = |<i>x</i>|. Lát cắt là <b>tam giác vuông <i>MNP</i></b> (vuông tại <i>N</i>, góc tại <i>M</i> bằng α).' },
   y: { name: 'y', tab: ['Song song đáy', 'lát viên phân'], desc: 'Cắt bằng mặt phẳng song song với đáy ở độ cao <i>y</i>. Lát cắt là <b>hình viên phân</b>: phần hình tròn tâm <i>H</i> nằm ngoài dây cung đi qua <i>F</i>.' },
-  z: { name: 'z', tab: ['Song song AB', 'lát chữ nhật'], desc: 'Cắt bằng mặt phẳng song song với <i>AB</i> và vuông góc với đáy, cách <i>AB</i> một đoạn <i>z</i>. Lát cắt là <b>hình chữ nhật</b> rộng <i>a</i>, cao <i>b</i>.' },
+  z: { name: 'z', tab: ['Song song AB', 'lát chữ nhật'], desc: 'Cắt bằng mặt phẳng song song với <i>AB</i> và vuông góc với đáy, cách <i>AB</i> một đoạn <i>z</i>. Lát cắt là <b>hình chữ nhật</b>: rộng <i>a</i> (dây cung của đáy), cao <i>b</i> (độ cao mặt nước tại đó).' },
 }
 const tabsHTML = () => '<div class="tabs" role="tablist">' + ['x', 'y', 'z'].map(a => '<button type="button" role="tab" data-ax="' + a + '" aria-selected="' + (S.axis === a) + '">' + AXES[a].tab[0] + '<small>' + AXES[a].tab[1] + '</small></button>').join('') + '</div>'
+// CÔNG THỨC TỔNG QUÁT theo từng hướng cắt — viết bằng chữ R, h, CHƯA thay số (Thùy 10/10: học sinh phải thấy công thức trước,
+// rồi mới thay số). FX = diện tích một lát; VINT = V viết thành tích phân; VTINH = tính tích phân đó; cả ba hướng đều ra 2R²h/3.
+const FX = {
+  x: [String.raw`MN=\sqrt{R^2-x^2}`, String.raw`NP=MN\cdot\tan\alpha=\dfrac{h}{R}\,MN`, String.raw`S(x)=\tfrac{1}{2}\,MN\cdot NP=\dfrac{h}{2R}\left(R^2-x^2\right)`],
+  y: [String.raw`HF=\dfrac{y}{\tan\alpha}=\dfrac{R}{h}\,y`, String.raw`\cos\beta=\dfrac{HF}{R}=\dfrac{y}{h}`, String.raw`S(y)=R^2\beta-R^2\sin\beta\cos\beta`],
+  z: [String.raw`a=2\sqrt{R^2-z^2}`, String.raw`b=z\cdot\tan\alpha=\dfrac{h}{R}\,z`, String.raw`S(z)=a\cdot b=\dfrac{2h}{R}\,z\sqrt{R^2-z^2}`],
+}
+const VINT = {
+  x: String.raw`\begin{aligned}V&=\int_{-R}^{R}S(x)\,\mathrm{d}x\\[0.5em]&=\int_{-R}^{R}\frac{h}{2R}\left(R^2-x^2\right)\mathrm{d}x\end{aligned}`,
+  y: String.raw`\begin{aligned}V&=\int_{0}^{h}S(y)\,\mathrm{d}y\\[0.5em]&=\int_{0}^{h}R^2\left(\beta-\sin\beta\cos\beta\right)\mathrm{d}y\end{aligned}`,
+  z: String.raw`\begin{aligned}V&=\int_{0}^{R}S(z)\,\mathrm{d}z\\[0.5em]&=\int_{0}^{R}\frac{2h}{R}\,z\sqrt{R^2-z^2}\,\mathrm{d}z\end{aligned}`,
+}
+const VTINH = {
+  x: String.raw`\begin{aligned}V&=\frac{h}{2R}\left[R^2x-\frac{x^3}{3}\right]_{-R}^{R}\\[0.5em]&=\frac{h}{2R}\cdot\frac{4R^3}{3}\end{aligned}`,
+  y: String.raw`\begin{aligned}V&=R^2h\int_{0}^{\pi/2}\left(\beta-\sin\beta\cos\beta\right)\sin\beta\,\mathrm{d}\beta\\[0.5em]&=R^2h\left(1-\frac{1}{3}\right)\end{aligned}`,
+  z: String.raw`\begin{aligned}V&=\frac{2h}{R}\left[-\frac{\left(R^2-z^2\right)^{3/2}}{3}\right]_{0}^{R}\\[0.5em]&=\frac{2h}{R}\cdot\frac{R^3}{3}\end{aligned}`,
+}
+const VDOI = { y: 'Với cos β = y/h. Đổi biến y = h·cos β thì dy = −h·sin β dβ; y chạy từ 0 tới h thì β chạy từ π/2 về 0:' }
+const VCHU = { y: 'Đã dùng: ∫ β·sin β dβ = 1 (tích phân từng phần) và ∫ sin²β·cos β dβ = 1/3, cận từ 0 tới π/2.' }
 const PANELS = {
   1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Trong cốc có bao nhiêu nước?</h2>
     <p>Một cốc thủy tinh hình trụ có bán kính lòng đáy <b>6 cm</b>, chiều cao lòng cốc <b>10 cm</b>, đang chứa nước.</p>
@@ -562,26 +590,37 @@ const PANELS = {
   4: () => String.raw`<p class="kicker">Bước 4 · Cắt một lát</p><h2>Lát cắt có hình gì?</h2>` + tabsHTML() + String.raw`
     <p id="d4"></p>
     <label class="sl"><span class="nm" id="nm4"></span><input type="range" id="s4" min="0" max="1000" aria-label="Vị trí lát cắt"><output id="o4"></output></label>
-    <div class="fx"><div id="f41"></div><div id="f42"></div><div class="res" id="f43"></div></div>
-    <p class="cap" id="cap4"></p>`,
+    <p class="lbl2">Công thức tổng quát (R, h bất kỳ)</p>
+    <div class="fx"><div id="g41"></div><div id="g42"></div><div class="res" id="g43"></div></div>
+    <p class="cap" id="cap4"></p>
+    <p class="lbl2" id="l4"></p>
+    <div class="fx num"><div id="f41"></div><div id="f42"></div><div class="res" id="f43"></div></div>`,
   5: () => String.raw`<p class="kicker">Bước 5 · Cộng các lát</p><h2>Chồng các lát lại</h2>` + tabsHTML() + String.raw`
     <p>Chia khối thành <b>n</b> lát dày bằng nhau. Coi mỗi lát là một lăng trụ mỏng: thể tích ≈ diện tích lát × bề dày.</p>
     <div class="seg" id="seg5">${[4, 8, 16, 32, 64].map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (S.n === n) + '">' + n + '</button>').join('')}</div>
     <div class="sum"><span class="lbl">Tổng <b id="n5"></b> lát ≈</span><span class="big" id="sum5"></span><span class="unit">cm³</span><span class="off" id="off5"></span></div>
-    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này chính là tích phân:</p>
-    <div class="fx"><div class="res" id="f5" style="border:0;padding:0"></div><div id="f5b"></div></div>
-    <p class="note">Ba hướng cắt cho ba hình lát khác hẳn nhau nhưng cùng một thể tích.</p>`,
-  6: () => String.raw`<p class="kicker">Bước 6 · Kết quả</p><h2>Thể tích nước: 240 cm³</h2>
-    <div class="fx"><div data-tex="V=\int_{-R}^{R}\frac{h}{2R}\left(R^2-x^2\right)\mathrm{d}x=\frac{2}{3}R^2h"></div><div class="res" data-tex="V=\frac{2}{3}\cdot 6^2\cdot 10=240\ \text{cm}^3"></div></div>
-    <p>Cả cốc chứa được π<i>R</i>²<i>h</i> = 360π ≈ 1131 cm³, nên lượng nước chỉ bằng khoảng <b>21%</b> cốc.</p>
-    <button type="button" class="btn ghost" id="b6"></button>
-    <div class="fx" id="fx6" hidden><div data-tex="\pi R^2h_0=240\ \Rightarrow\ h_0=\dfrac{240}{36\pi}\approx 2{,}12\ \text{cm}"></div></div>
-    <p class="note">Cắt theo hướng nào cũng ra 240: thể tích không phụ thuộc cách cắt (nguyên lý Cavalieri). Khối nêm này có tên riêng là “móng guốc Archimedes”.</p>`,
+    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này chính là <b>tích phân của diện tích lát cắt</b>:</p>
+    <div class="fx"><div id="f5"></div><div id="f5b"></div></div>
+    <p class="note">Bước 6 tính tích phân này với <i>R</i>, <i>h</i> bất kỳ rồi mới thay số. Ba hướng cắt cho ba hình lát khác hẳn nhau nhưng cùng một thể tích.</p>`,
+  6: () => String.raw`<p class="kicker">Bước 6 · Tính thể tích</p><h2>Tính tích phân</h2>` + tabsHTML() + String.raw`
+    <p class="lbl2">Công thức tổng quát (R, h bất kỳ, chưa thay số)</p>
+    <div class="fx"><div id="k61"></div><p class="cap" id="k6d"></p><div id="k62"></div><p class="cap" id="k6c"></p><div class="res" data-d data-tex="V=\frac{2}{3}R^2h"></div></div>
+    <button type="button" class="btn" id="bSub"${S.subbed ? ' hidden' : ''}>Thay số R = 6, h = 10 ›</button>
+    <div id="sub6"${S.subbed ? '' : ' hidden'}>
+      <p class="lbl2">Thay số: R = 6, h = 10</p>
+      <div class="fx num"><div class="res" style="border:0;padding:0" data-d data-tex="V=\frac{2}{3}\cdot 6^2\cdot 10=240\ \text{cm}^3"></div></div>
+      <p>So với cả cốc (thể tích π<i>R</i>²<i>h</i>), nước chiếm:</p>
+      <div class="fx"><div data-d data-tex="\frac{V}{\pi R^2h}=\frac{2}{3\pi}\approx 21\%"></div></div>
+      <p class="cap">Tỉ số này không phụ thuộc <i>R</i> và <i>h</i>: cốc hình trụ nào nghiêng tới vị trí này cũng còn khoảng 21% nước.</p>
+      <button type="button" class="btn ghost" id="b6"></button>
+      <div class="fx" id="fx6" hidden><div data-d data-tex="\pi R^2h_0=V\ \Rightarrow\ h_0=\frac{V}{\pi R^2}=\frac{2h}{3\pi}"></div><div class="res" data-d data-tex="h_0=\frac{2\cdot 10}{3\pi}\approx 2{,}12\ \text{cm}"></div></div>
+      <p class="note">Cắt theo hướng nào cũng ra cùng một công thức: thể tích không phụ thuộc cách cắt (nguyên lý Cavalieri). Khối nêm này có tên riêng là “móng guốc Archimedes”.</p>
+    </div>`,
 }
 function renderPanel() {
   panel.innerHTML = PANELS[S.step](); panel.scrollTop = 0
-  $$('[data-tex]', panel).forEach(el => tex(el, el.dataset.tex))
-  $$('.tabs button', panel).forEach(b => b.addEventListener('click', () => { S.axis = b.dataset.ax; renderPanel(); setView('cat_' + S.axis); if (S.step === 5) playSlabs() }))
+  $$('[data-tex]', panel).forEach(el => tex(el, el.dataset.tex, el.hasAttribute('data-d')))
+  $$('.tabs button', panel).forEach(b => b.addEventListener('click', () => { S.axis = b.dataset.ax; renderPanel(); if (S.step !== 6) setView('cat_' + S.axis); if (S.step === 5) playSlabs() }))
   if (S.step === 1) $('#b1').addEventListener('click', () => goStep(2, { play: true }))
   if (S.step === 2) {
     $('#b2').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
@@ -592,16 +631,21 @@ function renderPanel() {
     const ax = S.axis, lo = RANGE[ax][0], hi = RANGE[ax][1], s = $('#s4')
     $('#d4').innerHTML = AXES[ax].desc; $('#nm4').textContent = AXES[ax].name
     s.value = Math.round((S.t[ax] - lo) / (hi - lo) * 1000)
-    s.addEventListener('input', () => { S.t[ax] = lo + (hi - lo) * s.value / 1000; sync4() })
+    s.addEventListener('input', () => { S.t[ax] = Math.round((lo + (hi - lo) * s.value / 1000) * 100) / 100; sync4() })   // làm tròn 0,01 để số thay vào công thức khớp kết quả
     sync4()
   }
   if (S.step === 5) {
     $$('#seg5 button').forEach(b => b.addEventListener('click', () => { S.n = +b.dataset.n; $$('#seg5 button').forEach(x => x.setAttribute('aria-pressed', x === b)); playSlabs() }))
-    tex($('#f5'), { x: String.raw`V=\int_{-6}^{6}\tfrac{5}{6}\left(36-x^2\right)\mathrm{d}x=240\ \text{cm}^3`, y: String.raw`V=\int_{0}^{10}36\left(\beta-\sin\beta\cos\beta\right)\mathrm{d}y=240\ \text{cm}^3`, z: String.raw`V=\int_{0}^{6}\tfrac{10}{3}\,z\sqrt{36-z^2}\,\mathrm{d}z=240\ \text{cm}^3` }[S.axis])
-    if (S.axis === 'y') tex($('#f5b'), String.raw`\beta=\arccos\dfrac{y}{10}`); else $('#f5b').remove()
+    tex($('#f5'), VINT[S.axis], true)
+    if (S.axis === 'y') tex($('#f5b'), String.raw`\cos\beta=\dfrac{y}{h}`); else $('#f5b').remove()
     syncSum()
   }
-  if (S.step === 6) { $('#b6').addEventListener('click', () => { S.melted = !S.melted; goStep(6) }); sync6() }
+  if (S.step === 6) {
+    tex($('#k61'), VINT[S.axis], true); tex($('#k62'), VTINH[S.axis], true)
+    $('#k6d').textContent = VDOI[S.axis] || ''; $('#k6c').textContent = VCHU[S.axis] || ''
+    $('#bSub').addEventListener('click', thaySo)
+    $('#b6').addEventListener('click', () => { S.melted = !S.melted; goStep(6) }); sync6()
+  }
 }
 function sync2() {
   const s = $('#s2'); if (!s) return
@@ -615,23 +659,25 @@ function sync2() {
   if (b.dataset.lab !== lab) { b.innerHTML = lab; b.dataset.lab = lab }
 }
 function sync4() {
-  const ax = S.axis, t = S.t[ax], a = area(ax, t)
-  $('#o4').textContent = fmt(t, 1)
+  const ax = S.axis, t = S.t[ax], a = area(ax, t), ts = tn(t), tp = t < 0 ? '(' + ts + ')' : ts
+  $('#o4').textContent = fmt(t, 2)
+  $('#l4').textContent = 'Thay số: R = 6, h = 10, ' + ax + ' = ' + fmt(t, 2)
+  FX[ax].forEach((f, i) => tex($('#g4' + (i + 1)), f))
   if (ax === 'x') { const w = Math.sqrt(Math.max(0, R * R - t * t))
-    tex($('#f41'), String.raw`MN=\sqrt{R^2-x^2}=\sqrt{36-x^2}=${tn(w)}`)
-    tex($('#f42'), String.raw`NP=MN\cdot\tan\alpha=\tfrac{5}{3}\,MN=${tn(w * TAN)}`)
-    tex($('#f43'), String.raw`S(x)=\tfrac{1}{2}\,MN\cdot NP=\tfrac{5}{6}\left(36-x^2\right)=${tn(a)}\ \text{cm}^2`)
-    $('#cap4').textContent = 'Tam giác MNP vuông tại N, góc tại M bằng α.' }
+    tex($('#f41'), String.raw`MN=\sqrt{6^2-${tp}^2}=${tn(w)}`)
+    tex($('#f42'), String.raw`NP=\dfrac{10}{6}\cdot ${tn(w)}=${tn(w * TAN)}`)
+    tex($('#f43'), String.raw`S(${ts})=\dfrac{10}{2\cdot 6}\left(6^2-${tp}^2\right)=${tn(a)}\ \text{cm}^2`)
+    $('#cap4').textContent = '' }
   else if (ax === 'y') { const d = t / TAN, b = Math.acos(clamp(d / R, 0, 1))
-    tex($('#f41'), String.raw`HF=\dfrac{y}{\tan\alpha}=0{,}6\,y=${tn(d)}`)
-    tex($('#f42'), String.raw`\cos\beta=\dfrac{HF}{R}=\dfrac{y}{10}\ \Rightarrow\ \beta=${tn(b, 3)}\ \text{rad}`)
-    tex($('#f43'), String.raw`S(y)=R^2\beta-R^2\sin\beta\cos\beta=${tn(a)}\ \text{cm}^2`)
+    tex($('#f41'), String.raw`HF=\dfrac{6}{10}\cdot ${ts}=${tn(d)}`)
+    tex($('#f42'), String.raw`\cos\beta=\dfrac{${ts}}{10}\ \Rightarrow\ \beta=${tn(b, 3)}\ \text{rad}`)
+    tex($('#f43'), String.raw`S(${ts})=6^2\left(\beta-\sin\beta\cos\beta\right)=${tn(a)}\ \text{cm}^2`)
     $('#cap4').textContent = 'β là góc EHF. Diện tích viên phân = hình quạt (góc 2β) trừ tam giác cân đỉnh H.' }
   else { const w = Math.sqrt(Math.max(0, R * R - t * t))
-    tex($('#f41'), String.raw`a=2\sqrt{36-z^2}=${tn(2 * w)}`)
-    tex($('#f42'), String.raw`b=z\cdot\tan\alpha=\tfrac{5}{3}\,z=${tn(t * TAN)}`)
-    tex($('#f43'), String.raw`S(z)=a\cdot b=\tfrac{10}{3}\,z\sqrt{36-z^2}=${tn(a)}\ \text{cm}^2`)
-    $('#cap4').textContent = 'a là dây cung của đáy cách AB một đoạn z; b là độ cao của mặt nước tại đó.' }
+    tex($('#f41'), String.raw`a=2\sqrt{6^2-${ts}^2}=${tn(2 * w)}`)
+    tex($('#f42'), String.raw`b=\dfrac{10}{6}\cdot ${ts}=${tn(t * TAN)}`)
+    tex($('#f43'), String.raw`S(${ts})=${tn(2 * w)}\cdot ${tn(t * TAN)}=${tn(a)}\ \text{cm}^2`)
+    $('#cap4').textContent = '' }
   updateSlice()
 }
 function syncSum() {
@@ -640,6 +686,12 @@ function syncSum() {
   $('#n5').textContent = full ? slab.n : r + '/' + slab.n
   $('#sum5').textContent = fmt(v, 2)
   $('#off5').textContent = full ? 'lệch ' + (v - V0 >= 0 ? '+' : '−') + fmt(Math.abs(v - V0), 2) + ' so với 240' : ''
+}
+function thaySo() {   // bước 6: công thức bằng chữ xong mới thay R = 6, h = 10
+  if (S.step !== 6 || S.subbed) return
+  S.subbed = true
+  const y = panel.scrollTop; renderPanel(); panel.scrollTop = y; syncChips()
+  const el = $('#sub6'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
 }
 function sync6() {
   const b = $('#b6'); if (!b) return
@@ -680,6 +732,7 @@ async function goStep(n, o) {
   n = clamp(n | 0, 1, 6); o = o || {}
   const my = ++token, prev = S.step
   S.playing = false; S.step = n; if (n !== 6) S.melted = false
+  if (prev !== 6 || o.first) S.subbed = !!o.sub   // mỗi lần vào bước 6 lại bắt đầu từ công thức chưa thay số
   renderPanel(); syncChips()
   $('#vDef').textContent = n <= 2 ? 'Góc ban đầu' : 'Góc nhìn sách'; $('#vCup').hidden = n <= 2
   if ((prev <= 2) !== (n <= 2) || o.first) setView('mac_dinh', o.first)
@@ -695,17 +748,19 @@ async function goStep(n, o) {
 }
 function syncChips() {
   $$('#chips .chip').forEach((c, i) => { c.classList.toggle('done', i + 1 < S.step); if (i + 1 === S.step) c.setAttribute('aria-current', 'step'); else c.removeAttribute('aria-current') })
-  $('#prev').disabled = S.step === 1; $('#next').disabled = S.step === 6
+  const cho = S.step === 6 && !S.subbed   // ở bước cuối, nút Tiếp (và phím →) dùng để thay số
+  $('#prev').disabled = S.step === 1; $('#next').disabled = S.step === 6 && S.subbed; $('#next').textContent = cho ? 'Thay số ›' : 'Tiếp ›'
 }
 $('#chips').innerHTML = STEPS.map((s, i) => '<li><button type="button" class="chip" data-step="' + (i + 1) + '"><span class="no">' + (i + 1) + '</span><span class="tx">' + s + '</span></button></li>').join('')
 $$('#chips .chip').forEach(c => c.addEventListener('click', () => goStep(+c.dataset.step)))
 $('#prev').addEventListener('click', () => goStep(S.step - 1))
-$('#next').addEventListener('click', () => goStep(S.step + 1, { play: S.step === 1 }))
+const tiep = () => (S.step === 6 ? thaySo() : goStep(S.step + 1, { play: S.step === 1 }))
+$('#next').addEventListener('click', tiep)
 $$('.views button[data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)))
 $('#vCup').addEventListener('click', e => { S.showCup = !S.showCup; e.currentTarget.setAttribute('aria-pressed', S.showCup); e.currentTarget.textContent = S.showCup ? 'Hiện cốc' : 'Ẩn cốc' })
 addEventListener('keydown', e => {   // bút trình chiếu gửi PageUp/PageDown
   if (e.target.matches && e.target.matches('input')) return
-  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goStep(S.step + 1, { play: S.step === 1 }) }
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); tiep() }
   else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goStep(S.step - 1) }
   else if (e.key === ' ' && S.step === 2) { e.preventDefault(); S.playing ? stopPlay() : startPlay() }
 })
@@ -732,12 +787,12 @@ function tick(now) {
 }
 function loop(now) { requestAnimationFrame(loop); tick(now + skew) }
 
-// Mở thẳng một bước để soát: ?buoc=4&huong=y&n=16
+// Mở thẳng một bước để soát: ?buoc=4&huong=y&n=16 · ?buoc=6&thay=1 (đã thay số)
 { const q = new URLSearchParams(location.search), ax = q.get('huong'), n = +q.get('n')
   if (AX[ax] !== undefined) S.axis = ax
   if ([4, 8, 16, 32, 64].includes(n)) S.n = n
   resize()
-  goStep(+q.get('buoc') || 1, { first: true })
+  goStep(+q.get('buoc') || 1, { first: true, sub: q.get('thay') === '1' })
   requestAnimationFrame(loop) }
 
 // Soát bằng máy: chụp canvas gửi về server dev (scripts/serve-games.mjs nhận POST /_snap)
