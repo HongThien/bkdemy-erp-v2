@@ -36798,3 +36798,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   138 → 149; T309010102 (mức 3, 0 MCQ) ra TLN; dạng có MCQ vẫn ra MCQ; bù T309010102 ra 10 câu TLN. Sau áp: chọn 5/10 câu đủ số.
 - Client: PhieuGiayYeuTA in dòng "Đáp số", nhập kết quả có nút Đúng/Sai + hiện đáp án cho câu TLN; app HS đổi câu báo dạng không có câu.
   CLAUDE.md + spec-bo-tro.md §17 ghi luật mới. Chưa bấm thử in/nhập phiếu TLN trên app thật.
+
+## 2026-10-10 (19h30) — Bổ trợ yếu: đồng bộ dạng bị xoá khỏi bản đồ (Thùy)
+
+- **Thùy:** ca bổ trợ yếu vẫn hiện dạng đã xoá ở bản đồ kiến thức. **Đo:** T107010102 gộp vào T107010101 ngày 06/10 (18/18 câu đổi dạng, log
+  `kho_doi_dang_log`) rồi xoá khỏi `dai_ban_do`; đường xoá lá bản đồ (client `.delete()`) không đồng bộ bảng trỏ dạng bằng text (khác
+  `fn_dai_chuyen_dang`). 3 case mở giữ mã chết (Lê Bảo Châu · Nguyễn Đăng Đức · Nguyễn Thái Anh).
+- **Sửa (mig 202610101921):** `_btyeu_dong_bo_dang_ban_do()` — dạng case mở không còn trong bản đồ: có đúng 1 dạng nhận hết câu (log) + còn trong
+  bản đồ + case chưa có ⇒ đổi mã; còn lại ⇒ đóng dạng (không xoá dòng). Trigger sau DELETE ở dai/hgt/hinh_hoc/khtn_ban_do + sau INSERT
+  kho_doi_dang_log. `fn_btyeu_ca_ta` ẩn dạng đã đóng mà đã xoá khỏi bản đồ. Kết quả: 2 đổi mã, 1 đóng; còn lệch 0. Thử xoá dạng còn câu: FK chặn
+  ⇒ câu luôn chuyển đi trước khi xoá dạng, mapping luôn có lúc trigger chạy.
+- **Cũng kiểm 10/10:** bản prod — HS đã lên (19:18), ERP có suất bậc lớp (08:06), **TA còn bản 03/10** (Thùy dính GitHub rate limit lúc deploy).
