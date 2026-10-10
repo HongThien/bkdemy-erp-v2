@@ -79,6 +79,7 @@ import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
 import { LocMoi } from './tutorial/LocMoi'
+import { NutBaoLoiCau } from './gopy/BaoLoiCau'
 import { datMan, EVT_MO_GOP_Y } from './gopy/manHienTai'
 import { chuongMo, CHUONG_LOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
 import { tutorialDaXem, tutorialGhi } from '../../lib/tutorial_hs'
@@ -1096,6 +1097,8 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
             {nhung
               ? <span className="flex items-center gap-2 text-[17.5px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc }}><span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={{ background: MAU.acc }} />Câu {idx + 1}/{total} · chọn đúng để tung phép</span>
               : <p className="text-[17.5px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>}
+            <span className="flex items-center gap-2">
+            <NutBaoLoiCau baiTestCauId={cau.id} />
             {cau.ly_thuyet && (
               <button onClick={() => setGoiY((v) => {
                 const nv = !v
@@ -1107,6 +1110,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
                 💡 Gợi ý
               </button>
             )}
+            </span>
           </div>
           {goiY && cau.ly_thuyet && (
             <div className="mb-3 p-3" style={HOP_GOI_Y}>

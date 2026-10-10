@@ -10,6 +10,7 @@ import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc, useSkinHT } 
 import { laySkin, type GiaoDien } from '../skin/registry'
 import { NhiemVuView } from '../NhiemVuHS'
 import { NutGopYNoi } from '../gopy/NutGopYNoi'
+import { NutBaoLoiCau } from '../gopy/BaoLoiCau'
 import { NguonCard, THU_TU_NHOM, type NhomKey, type NhomTong } from '../ViXuHS'
 import { DauNhiemVuArt } from '../NhiemVuArt'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
@@ -32,6 +33,7 @@ const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'nhiem_vu', ten: 'Nhiệm vụ', tt: ['Giữa tháng', 'Đầu tháng', 'Chưa mở'] },
   { id: 'vi_xu', ten: 'Ví xu · nguồn xu', tt: ['Có hoạt động'] },
+  { id: 'bao_loi_cau', ten: 'Báo lỗi câu', tt: ['Nút ở câu hỏi'] },
   { id: 'bxh', ten: 'Bảng xếp hạng', tt: ['Em hạng 6 (khối)', 'Chưa có hạng', 'Bảng sắp có'] },
   { id: 'thanh_tuu', ten: 'Thành tựu mùa', tt: ['Giữa mùa (2 thẻ chờ nhận)', 'Mới vào', 'Vừa nhận quà'] },
   { id: 'album', ten: 'Album', tt: ['Giữa năm (1 thẻ mở)', 'Mới vào (0 sao)', 'Lớp phủ sao mới'] },
@@ -173,6 +175,7 @@ function Man({ man, tt }: { man: string; tt: number }) {
     return <Khung nenAnh="nhiem_vu"><Dau tieuDe="Ví xu của em" phu="Xu để đổi quà — kiếm bằng cách học chăm chỉ mỗi ngày" />
       <div className="mt-4 grid grid-cols-2 gap-2.5 md:gap-3">{THU_TU_NHOM.map((k) => <NguonCard key={k} nhom={k} tong={T[k]} onClick={noop} />)}</div></Khung>
   }
+  if (man === 'bao_loi_cau') return <Khung nenAnh="nhiem_vu"><Dau tieuDe="Câu 3" phu="Nút ⚑ Báo lỗi nằm cùng hàng với Gợi ý ở mỗi câu" /><div className="mt-4 flex justify-end"><NutBaoLoiCau baiTestCauId="00000000-0000-0000-0000-000000000000" /></div></Khung>
   if (man === 'bxh') return <MauBxh tt={tt} />
   if (man === 'thanh_tuu') {
     const d = tt === 2 ? TT_MOI_VAO : TT_GIUA_MUA
