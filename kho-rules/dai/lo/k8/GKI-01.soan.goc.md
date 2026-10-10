@@ -27,7 +27,7 @@ D. $\sqrt{x}+y$
 
 $2x+1$; $x^2+y$; $\sqrt{x}+y$ đều là tổng của hai hạng tử nên không phải là đơn thức.
 
-$-6x^2y=-6 \cdot x \cdot x \cdot y$ là tích của một số với các biến nên là đơn thức.
+$-6x^2y$ là tích của số $-6$ với các biến $x^2$, $y$ nên là đơn thức.
 
 Chọn B.
 
@@ -48,7 +48,7 @@ D. $x^2y^3$
 
 **Bước 3.** Chọn phương án có phần biến trùng khớp cả hai số mũ.
 
-**Chú ý:** phương án có cùng hệ số 4 nhưng đổi chỗ số mũ ($4x^2y^3$) là bẫy — cùng hệ số không làm hai đơn thức đồng dạng.
+**Chú ý:** phương án có cùng hệ số 4 nhưng đổi chỗ số mũ ($x^2y^3$) là bẫy — cùng hệ số không làm hai đơn thức đồng dạng.
 
 **Phần 2. Trình bày**
 
@@ -426,9 +426,7 @@ Vậy ba điểm $E$, $O$, $K$ thẳng hàng.
 
 **Bước 3.** Viết $x=3a+1$, $y=3b+2$ với $a$, $b$ là số tự nhiên, rồi nhân đa thức với đa thức để khai triển $xy-2$.
 
-**Bước 4.** Sau khi thu gọn, số 2 triệt tiêu và mỗi hạng tử còn lại đều có hệ số chia hết cho 3; dùng tính chất chia hết của một tổng (lớp 6) để kết luận.
-
-**Chú ý:** bài này chưa được dùng cách đặt nhân tử chung (phân tích đa thức thành nhân tử học sau) nên ta xét từng hạng tử của tổng.
+**Bước 4.** Sau khi thu gọn, số 2 triệt tiêu và mọi hạng tử còn lại đều có thừa số 3, đặt 3 ra ngoài để kết luận.
 
 **Phần 2. Trình bày**
 
@@ -446,13 +444,12 @@ $=9ab+6a+3b+2-2$
 
 $=9ab+6a+3b$
 
-Vì $9ab$, $6a$, $3b$ đều chia hết cho 3 nên $9ab+6a+3b$ chia hết cho 3 (tính chất chia hết của một tổng).
+$=3(3ab+2a+b)$
 
-Vậy $xy-2$ chia hết cho 3.
+Vì $3(3ab+2a+b)$ chia hết cho 3 nên $xy-2$ chia hết cho 3.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: KNTT (đoán theo nội dung đề). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, cộng – trừ – nhân đa thức, chia đa thức cho đơn thức) và Chương III (tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình vuông — Câu 6, Câu 11). Đề KHÔNG có hằng đẳng thức, phân tích nhân tử, định lí Pythagore nên lời giải không dùng (Câu 13 kết luận bằng tính chất chia hết của một tổng, không đặt nhân tử chung).
 - Đề có 13 câu (8 trắc nghiệm + 5 tự luận). Câu 9 là bài "Tính giá trị biểu thức" có 2 ý độc lập nên tách thành Câu 9a, Câu 9b; Câu 10 có 3 ý chung dữ kiện nên giữ một câu.
 - Câu 9b đáp số là phân số $\dfrac{1}{4}$ nên để tự luận (không tô được trên phiếu 4 ô theo đúng dạng đề hỏi).
 - Câu 12 đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải (không vẽ đoạn $EK$ vì đó là điều phải chứng minh ở ý b).

@@ -53,6 +53,8 @@ Bạn là trạm SOẠN cho MỘT đề kiểm tra giữa học kì 1 Toán 8: *
    đủ mọi điểm của mọi ý, đánh dấu GIẢ THIẾT (gạch bằng nhau, góc vuông cho trước), **không đánh dấu điều phải chứng minh**; canvas cao ≤ 450px, chừa ≥ 35px
    dưới nhãn đáy, nhãn không đè đường. Vẽ xong mở ảnh bằng Read để kiểm, sai thì sửa.
    Bài yêu cầu VẼ hình (vd "Vẽ hình thang cân…") cũng làm như vậy.
+   **Đề có IN SẴN bảng đáp án / hướng dẫn chấm** (vài đề có, vd Quế Thuận in bảng đáp án trắc nghiệm ở trang 2): vẫn tự giải trước, rồi đối chiếu;
+   lệch ⇒ tính lại bằng máy, bảng in sai thì giữ đáp án đúng + `**Ghi chú:**`. Không chép bảng đáp án vào đề; nói trong trả lời cuối là đề có bảng đáp án.
 9. **Không chắc 100% thì NÓI RA** — thêm dòng `**Chưa chắc:** <điều chưa chắc>` ngay trong câu đó. CEO sẽ xem kĩ đúng những câu này, nên đừng giấu và đừng
    ghi tràn lan. Ghi khi: ảnh mờ không đọc chắc · đề có hai cách hiểu · đề in lỗi làm không có / có hai phương án đúng (vẫn chọn phương án hợp lí nhất và
    nói rõ) · không giải được trong phạm vi kiến thức của đề (xem mục 4 "Kiến thức") · đề thiếu điều kiện làm hình suy biến.
@@ -130,6 +132,9 @@ Chọn A.
   hỏi tới hình chữ nhật trở lên. Cần một kết quả chưa học ⇒ **tự chứng minh ngay trong lời giải** bằng cái đã học (vd đoạn nối hai trung điểm: chứng minh
   qua hình bình hành / tam giác bằng nhau). Không làm được ⇒ `**Chưa chắc:**` nói rõ, KHÔNG dùng công cụ cấm.
   Tìm $x$: biến đổi từng dòng bằng quy tắc chuyển vế (lớp 7), tích bằng 0 thì một thừa số bằng 0 — được; không viết "phương trình", "tập nghiệm".
+  **Ranh giới "phân tích nhân tử":** đặt thừa số chung theo **tính chất phân phối** ($ab+ac=a(b+c)$, vd $9ab+6a+3b=3(3ab+2a+b)$, $-2ax-2bx=-2x(a+b)$)
+  là kiến thức lớp 6–7, **luôn được dùng**. Cái bị cấm khi đề chưa chạm tới là các PHƯƠNG PHÁP phân tích nhân tử của Chương II: dùng hằng đẳng thức,
+  nhóm hạng tử, tách hạng tử, thêm bớt.
 
 ## 5. Tự kiểm trước khi nộp (bắt buộc)
 

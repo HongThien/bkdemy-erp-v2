@@ -14,6 +14,7 @@ chỉ đáng tin khi hai người giải độc lập ra cùng kết quả. Làm
 2. Mở HẾT ảnh trang `<LV>\trang\p-*.png` bằng công cụ Read. **Chưa mở** `<MA>.soan.md`. Đề scan chữ nhỏ ⇒ cắt phóng to 300 dpi từ `<LV>\goc.pdf`
    (`pdftoppm -r 300 -png -singlefile -f <trang> -l <trang> -x <X> -y <Y> -W <rộng> -H <cao> "<LV>/goc.pdf" "<LV>/tam/<tên>"`) trước khi giải.
 3. Tự giải mọi câu của đề. Đa thức / hằng đẳng thức / tìm $x$ tính bằng script node (thay số kiểm hai vế), không nhẩm.
+   Đề có IN SẴN bảng đáp án / hướng dẫn chấm ⇒ vẫn tự giải mù trước, SAU ĐÓ mới đọc bảng in và ghi thêm cột "đáp án in trong đề"; Pha 2 đối chiếu cả ba nguồn.
 4. Ghi `Repo\kho-rules\dai\lo\k8\<MA>.kiem.md`: một bảng `| Nhãn (Câu 1 / Bài 2a…) | Đáp án / đáp số / hướng chứng minh (1 dòng) | Ghi chú về đề (in lỗi, mờ, hai cách hiểu) |`.
 
 ## Pha 2 — soát bản soạn
@@ -24,7 +25,8 @@ chỉ đáng tin khi hai người giải độc lập ra cùng kết quả. Làm
    - **Đáp án** khớp Pha 1 chưa. Lệch ⇒ tính lại bằng máy để biết AI sai (có thể chính bạn sai ở Pha 1) — không mặc định bên nào đúng.
    - **Lời giải**: đúng toán từng dòng · **đúng luật kiến thức** (chỉ dùng cái học tới giữa kì 1 theo bộ sách của chính đề; KHÔNG đường trung bình, Thalès,
      đồng dạng, lượng giác; Pythagore / hằng đẳng thức / phân tích nhân tử / hình chữ nhật trở lên chỉ khi đề có chạm tới — kể cả dùng **ngầm** không gọi tên;
-     "tứ giác có ba góc vuông" không phải dấu hiệu) · Phần 2 đúng khuôn vở lớp 8, mỗi khẳng định hình có lí do · dấu nhân `\cdot` · Phần 1 có 3–6 bước là
+     "tứ giác có ba góc vuông" không phải dấu hiệu; **đặt thừa số chung theo tính chất phân phối $ab+ac=a(b+c)$ là kiến thức lớp 6–7, KHÔNG phải vi phạm** —
+     đừng sửa những chỗ đó; cái cấm là các phương pháp phân tích nhân tử của Chương II: dùng hằng đẳng thức, nhóm, tách hạng tử) · Phần 2 đúng khuôn vở lớp 8, mỗi khẳng định hình có lí do · dấu nhân `\cdot` · Phần 1 có 3–6 bước là
      **bước nghĩ thật** (không vụn, không bịa, không lộ đáp số cuối, không chép lại Phần 2); bài hình chứng minh thì Phần 1 đi theo chiều phân tích đi lên
      ("muốn có …, cần …") và Phần 2 đi ngược lại, khớp từng mắt xích.
    - **Phân loại**: `kho` (`hinh_hoc` = hình; `dai` = còn lại) · `loai` (trả lời ngắn chỉ khi đáp số là một số nguyên / thập phân ≤ 4 ô theo ĐÚNG dạng đề hỏi;
