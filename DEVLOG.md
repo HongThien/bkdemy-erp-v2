@@ -36611,3 +36611,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Giải lại 8 bài bằng CHỮ để ra công thức đóng cho luật A3, kiểm bằng số: câu 50 V = 2πb²(d − d³/(3a²)) · câu 52 V = (πl/15)(8R² + 4Rr + 3r²) · câu 45 V = πR²(h₁ + h₂/6) · câu 46 V = a³(4π/3 + π²/2) · câu 44 V = (2(π − 2)/3)ab² · câu 53 S′ = [R²(π − arccos(d/R)) + d√(R² − d²)]/cos φ · câu 49 V₁ = 28π/15, V₂ = 7π/3. Tất cả khớp đáp số bảng C.0.
 - Rút từ hai lần Thùy sửa (A3, A4): t trình bày theo thói quen người giải / bê khuôn bài trước sang bài khác loại ⇒ ghi câu tự hỏi vào S.8: "trên lớp GV có nói bước này không?"
 - Chưa làm: chưa chuyển hàm tròn xoay lên khung (để lúc dựng câu 49, có bài thứ hai cùng loại mới biết chỗ nào thật sự chung).
+
+## 10/10 (chiều) — Hình 3D: gom bài tròn xoay về một trang chuyên đề
+- **Thùy:** "Các câu tròn xoay ko nên làm HTML riêng mà nên làm 1 file quản trị chung để lựa chọn các bài nhỉ. Coi như là 1 chuyên đề. Tựa tựa như nhau. Sau này còn nhiều bài nữa cơ." + "Sau này còn đưa lên app cho học sinh view lại. các file này đi kèm với bài giải luôn ấy."
+- Dựng `tron-xoay.html` (động cơ đọc dữ liệu) + `tron-xoay-bai.js` (mỗi bài một mục: dải tô, miền, công thức chữ, dòng thay số, bẫy, đáp số). Bộ bước tự suy từ dữ liệu. Câu 48 chuyển nguyên sang dữ liệu; Câu 49 thêm thuần bằng dữ liệu (~45 dòng) để chứng minh khuôn dùng lại được.
+- Quy ước dữ liệu: mọi hàm = bán kính theo toạ độ dọc trục quay ⇒ quay quanh Ox hay Oy chỉ khác phép đổi toạ độ `P(t, r)` / `Q(t, r, góc)` (Oy mới viết, CHƯA chạy thử bài nào).
+- Tự kiểm: trang tính lại V từ `mien` bằng Simpson rồi so `dapSo`, lệch thì hiện dải đỏ — nhân chứng thứ hai giữa hình vẽ và lời giải. 48: lệch 6·10⁻¹², 49: 4·10⁻¹⁴.
+- Câu 49 số kiểm: V₁ = 28π/15, V₂ = 7π/3, V = 21π/5 ≈ 13,19; bẫy π∫(f² − g²): +23π/15 trên [−1; 0], −7π/15 trên [0; 1] ⇒ 16π/15.
+- Để gắn vào app HS sau này: địa chỉ cố định theo `id` (`?bai=48`), `&nhung=1` bỏ nút + bảng chọn bài. Chưa đụng app / DB — ghi câu mở B7 trong spec.
+- `mien-vat-qua-truc.html` đổi thành trang chuyển hướng (giữ địa chỉ cũ, mang theo tham số) thay vì xoá.
+- Sai nhỏ đã sửa: dòng nhãn đầu sân khấu quá dài đè lên nút "Chọn bài" ⇒ rút còn "Chuyên đề · Khối tròn xoay", nguồn chuyển xuống cuối bảng đề.
+- Ghi spec A5, B7, S.4b, D.7; sửa S.1/S.4/S.7; CLAUDE.md, HANDOFF.

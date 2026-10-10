@@ -1,8 +1,8 @@
 # DẠY HÌNH 3D — mô hình không gian tương tác cho bài tập Toán (tài liệu tổng)
 
 > **Đọc file này TRƯỚC khi dựng bất kỳ mô hình 3D nào cho bài tập Toán** (khối tròn xoay, khối tính bằng cắt lát, thiết diện…).
-> Mở 09/10/2026 tối. **Trạng thái (10/10 chiều): đã có 2 bài + khung chung.** Bài 1 Câu 43 cốc nghiêng (thiết diện — Thùy xem: ok, luật A3) ·
-> bài 2 Câu 48 miền vắt qua trục quay (tròn xoay — Thùy xem bản đầu, bắt bỏ cắt lát ⇒ luật A4, đã sửa còn 5 bước) · khung chung `khung.js` + `khung.css` (§D.5).
+> Mở 09/10/2026 tối. **Trạng thái (10/10 chiều):** bài thiết diện Câu 43 `coc-nghieng.html` (Thùy xem: ok) · **trang chuyên đề tròn xoay** `tron-xoay.html` + dữ liệu `tron-xoay-bai.js`,
+> đã có Câu 48 và Câu 49 (§D.7, luật A5 — Thùy chưa xem) · khung chung `khung.js` + `khung.css` (§D.5). Luật: A3 chữ trước số sau · A4 tròn xoay không cắt lát · A5 gom chuyên đề, mỗi bài một địa chỉ để gắn vào app HS.
 > Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** các bài đã dựng + khung chung · **Phần S** ⭐ **SỔ TAY DỰNG BÀI** (làm bài mới thì đọc A + S) · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
 > Nguồn đề + hình đã chép vào repo: [`docs/hinh-3d/`](docs/hinh-3d/) (không phụ thuộc ổ E: của máy công ty).
 
@@ -52,6 +52,15 @@
   KHÔNG dựng bước "cắt một lát", KHÔNG "chồng n lát", không tổng Riemann.
 - **Bài tính theo thiết diện S(x)** (43, 44, 47 — không phải tròn xoay): giữ đủ *cắt một lát → chồng lát → tích phân* như bài cốc nghiêng.
 
+### A5. Bài cùng loại gom về MỘT trang chuyên đề; mỗi bài có địa chỉ riêng để gắn vào bài giải trên app HS (Thùy 10/10)
+- Nguyên văn: *"Các câu tròn xoay không nên làm HTML riêng mà nên làm 1 file quản trị chung để lựa chọn các bài. Coi như là 1 chuyên đề. Tựa tựa như nhau. Sau này còn nhiều bài nữa cơ."*
+  và *"Sau này còn đưa lên app cho học sinh view lại. Các file này đi kèm với bài giải luôn."*
+- **Chuyên đề tròn xoay = một trang** `toan-site/the-tich/tron-xoay.html` (động cơ) + **một file dữ liệu** `tron-xoay-bai.js` (mỗi bài một mục). Thêm bài = thêm dữ liệu, KHÔNG viết HTML / hình mới.
+- **Mỗi bài có địa chỉ cố định theo `id`:** `tron-xoay.html?bai=<id>`; `id` đã phát hành thì KHÔNG đổi, không dùng lại (app HS sẽ trỏ tới). Thêm `&nhung=1` = chế độ nhúng cạnh bài giải (không nút / bảng chọn bài).
+- Vào trang không kèm `bai` ⇒ hiện bảng chọn bài của chuyên đề (GV dùng trên lớp).
+- Bài thiết diện (43, 44, 47) và mặt cắt (53) hình khối mỗi bài một khác ⇒ **tạm giữ mỗi bài một file**; khi có ≥ 3 bài cùng khuôn mới gom. File riêng cũng phải giữ địa chỉ cố định.
+- **Chưa làm (việc của đợt gắn vào app HS):** khoá nối bài ↔ câu trong kho (dùng mã câu, không dùng vị trí), nút mở mô hình cạnh lời giải, deploy site `toan`, soát màn dọc điện thoại. Xem câu mở B7.
+
 ---
 
 ## Phần B — CÂU CÒN MỞ (bản thử 1 chạy theo cột "Đề xuất của Claude"; Thùy xem 10/10: "còn lại ok rồi" — chưa trả lời từng câu)
@@ -64,6 +73,7 @@
 | **B4** | **Đặt ở đâu?** | Mục mới trong `toan-site/` (cùng tên miền toan.bkacademy.edu.vn), vd `toan-site/the-tich/cau-43.html`. **Không** theo nhịp du hành (trạm → bay → trả lời) — đây là mô hình cho *bài tập*, không phải bài giảng | Domain, mục lục, deploy |
 | **B5** | **Bài mẫu:** duyệt Câu 43, hay chọn bài khác? | Câu 43 (lý do §D.1) | — |
 | **B6** | **Có đo / ghi DB không?** | Chưa — demo như bài du hành | Nếu đo thì phải theo `mon` + luật §1.6 CLAUDE.md |
+| **B7** | **Gắn vào app HS thế nào?** (Thùy 10/10: sau này HS xem lại, đi kèm bài giải) | Trong dữ liệu bài thêm `maCau` (mã câu trong kho); màn lời giải của app HS thấy câu có mô hình thì hiện nút "Xem mô hình 3D" mở `…/tron-xoay.html?bai=<id>&nhung=1`. Cần: câu đã vào kho + site `toan` đã deploy | Quyết khoá nối (mã câu), nơi lưu danh sách câu-có-mô-hình (DB hay file), và có đo lượt xem không (§1.6: có `mon`) |
 
 ---
 
@@ -231,18 +241,26 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 - **Soát (bản 5 bước):** 1280×720, đủ 5 bước, gấp lên / trả về, hai lần Thay số; 0 lỗi KaTeX, không tràn ngang.
 - **Chưa làm / chưa biết:** Thùy chưa xem · chưa soi TV/iPad thật · nhìn dọc trục thì các nhãn a, p, q, b, O, M chồng lên nhau ở tâm · chưa duyệt câu chữ.
 
+### D.7 Trang chuyên đề tròn xoay — ĐÃ DỰNG (10/10 chiều, theo A5)
+
+- **File:** `toan-site/the-tich/tron-xoay.html` (động cơ) + `tron-xoay-bai.js` (dữ liệu) → `http://localhost:5281/the-tich/tron-xoay.html` (bảng chọn bài) · `?bai=48` · `?bai=49` · thêm `&nhung=1` để nhúng.
+- **Đã có 2 bài:** 48 (ba miền, có lỗ ở miền 1, bẫy ra 0 — chuyển nguyên từ file riêng) · 49 (hai miền chạm trục, bẫy ra 16π/15 — bài đầu tiên thêm THUẦN bằng dữ liệu, ~45 dòng).
+- `mien-vat-qua-truc.html` giờ chỉ là trang chuyển hướng sang `tron-xoay.html?bai=48` (giữ địa chỉ cũ, mang theo tham số).
+- **Soát:** 1280×720; bảng chọn bài; cả hai bài đủ 5 bước, gấp lên, hai lần Thay số; `kiem()` lệch < 10⁻¹¹ ở cả hai; chế độ nhúng không có nút chọn bài; địa chỉ cũ chuyển hướng đúng; 0 lỗi KaTeX, không tràn ngang.
+- **Chưa làm / chưa biết:** chưa soát 1920×1080 và màn dọc cho trang chuyên đề · chưa có bài quay quanh Oy / bài thực tế (xem S.4b) · chưa gắn vào app HS (B7) · Thùy chưa xem.
+
 ---
 
 ## Phần S — SỔ TAY DỰNG BÀI (đọc phần này + mở một bài mẫu là đủ để làm bài mới)
 
 > Viết 10/10 sau hai bài đầu, theo yêu cầu Thùy "để làm các câu còn lại nhanh hơn nữa". Mọi luật ở đây rút từ A1–A4 và từ những chỗ đã sai ở hai bài đầu.
-> **Hai bài mẫu để chép:** bài thiết diện = `coc-nghieng.html` · bài tròn xoay = `mien-vat-qua-truc.html`. Khung dùng chung: `khung.js` + `khung.css` (§D.5).
+> **Bài thiết diện:** chép `coc-nghieng.html`. **Bài tròn xoay: không viết file mới** — thêm một mục dữ liệu vào `tron-xoay-bai.js` (S.4b, luật A5). Khung dùng chung: `khung.js` + `khung.css` (§D.5).
 
 ### S.1 Việc đầu tiên: xếp loại → chọn bộ bước (A4)
 
 | Loại | Dấu hiệu trong đề | Bộ bước chuẩn | Bài mẫu để chép |
 |---|---|---|---|
-| **TX — tròn xoay** | "quay hình phẳng … quanh trục", vật tròn xoay có đường sinh là đồ thị hàm số | ① Đề bài → ② Đặt hệ trục *(chỉ khi đề là bài thực tế chưa có trục)* → ③ Quay quanh trục → ④ Chia miền *(chỉ khi có ≥ 2 miền / phải gấp / có lỗ)* → ⑤ Cái bẫy *(chỉ khi có lỗi kinh điển)* → ⑥ Tính thể tích: công thức chữ → bấm Thay số | `mien-vat-qua-truc.html` |
+| **TX — tròn xoay** | "quay hình phẳng … quanh trục", vật tròn xoay có đường sinh là đồ thị hàm số | ① Đề bài → ② Đặt hệ trục *(chỉ khi đề là bài thực tế chưa có trục)* → ③ Quay quanh trục → ④ Chia miền *(chỉ khi có ≥ 2 miền / phải gấp / có lỗ)* → ⑤ Cái bẫy *(chỉ khi có lỗi kinh điển)* → ⑥ Tính thể tích: công thức chữ → bấm Thay số | **không chép file** — thêm một mục vào `tron-xoay-bai.js` (S.4b) |
 | **TD — thiết diện** | khối KHÔNG tròn xoay; đề cho hình dạng mặt cắt, hoặc khối bị cắt bởi mặt phẳng | ① Đề bài → ② Dựng khối *(nghiêng, ghép, quét)* → ③ Khối có hình gì *(nét liền / nét đứt, kích thước)* → ④ Cắt một lát: S theo chữ → thay số → ⑤ Cộng các lát → ⑥ Tính thể tích: tích phân bằng chữ → bấm Thay số | `coc-nghieng.html` |
 | **MC — diện tích mặt cắt** | hỏi DIỆN TÍCH thiết diện (không hỏi thể tích) | ① Đề bài → ② Dựng mặt phẳng cắt → ③ Thiết diện là hình gì → ④ Chiếu xuống đáy → ⑤ Tính: công thức chữ → bấm Thay số | chưa có (câu 53) |
 
@@ -292,10 +310,19 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 ```
 
 - **Không sửa `khung.js` cho riêng một bài.** Thiếu thì thêm tuỳ chọn vào `cfg` hoặc thêm hàm dùng chung, rồi soát lại CẢ các bài cũ.
-- **Hàm đang nằm trong bài 2, bài TX nào cũng cần:** `pts` (lấy mẫu đồ thị), `circ` (đường tròn quanh trục), `strip` (tô miền giữa hai đường), `mkLuoi` (lưới mặt tròn xoay theo góc đã quay), `tween`, cụm hệ trục có mũi tên + vạch + nhãn, cặp nút chạy/dừng.
-  **Khi dựng bài TX kế tiếp (câu 49): chuyển cụm này lên `khung.js` thành `M.tx`** (và cho `mkLuoi` nhận đường cong tham số + trục quay Ox hoặc Oy — câu 45, 46 quay quanh Oy), sửa bài 2 dùng `M.tx`, soát lại bài 2.
+- **Bài TX không còn file riêng:** mọi hàm tròn xoay (`pts`, `circ`, `strip`, `mkLuoi`, `tween`, hệ trục…) nằm trong động cơ `tron-xoay.html`, bài chỉ là dữ liệu (S.4b).
 - **Hàm đang nằm trong bài 1, bài TD nào cũng cần:** `poly/area` theo hướng cắt, `updateSlice`, `buildSlabs/showSlabs/playSlabs`, `pair()` nét khuất. Khi dựng bài TD kế tiếp (câu 47) chuyển lên `khung.js` thành `M.td` theo cách tương tự.
 - Bẫy JS đã dính: `Object.assign` chép GIÁ TRỊ của getter · tiến độ hoạt cảnh phải lấy từ `clock()` (không dùng mốc giờ rAF) · nối hai tập bằng chỉ số là sai khi một bên đổi độ dài (đếm đỉnh theo từng lát, đừng giả định bằng nhau).
+
+### S.4b Bài tròn xoay: thêm bằng DỮ LIỆU (A5) — không viết HTML
+
+- Mở `toan-site/the-tich/tron-xoay-bai.js`, chép một mục `DS.push({...})` có sẵn (48 = ba miền có lỗ + bẫy; 49 = hai miền chạm trục), sửa. Quy ước từng trường ghi ở đầu file đó.
+- **Mọi hàm là bán kính theo toạ độ dọc trục quay** (`truc: 'x'` ⇒ y theo x; `truc: 'y'` ⇒ x theo y). Trường chính:
+  `to` (các dải tô của (H), dải `phia: 'duoi'` tự có hoạt cảnh gấp) · `mien` (mỗi miền: đoạn, hàm `ngoai`, hàm `trong` hoặc null, công thức chữ `tex`, dòng thay số `so`) ·
+  `chia` (bảng mốc) · `bay` (tuỳ chọn) · `tong` (công thức chữ + kết quả + nguyên hàm) · `dapSo`.
+- Trang tự suy ra: bộ bước (có "Chia miền" khi ≥ 2 miền, có "Cái bẫy" khi khai `bay`), mặt tròn xoay, đường gấp, đường bao, số miền trên hình, vạch + nhãn mốc.
+- **Tự kiểm:** lúc mở, trang tính lại thể tích từ `mien` (Simpson) và so với `dapSo`; lệch ⇒ dải đỏ ở đáy màn. `__dbg.kiem()` trả số. Đây là nhân chứng thứ hai cho "hình vẽ và lời giải nói cùng một chuyện" — không bỏ `dapSo`.
+- Thứ động cơ CHƯA có, phải thêm vào `tron-xoay.html` khi gặp bài cần (rồi soát lại mọi bài cũ): bước "Đặt hệ trục" cho bài thực tế (50, 52, 45) · đường sinh là đường cong tham số (46) · bài quay quanh Oy mới chỉ viết sẵn phép đổi toạ độ, **chưa chạy thử bài nào**.
 
 ### S.5 Quy trình 8 việc cho một bài (làm đúng thứ tự)
 
@@ -320,37 +347,32 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 ### S.7 Phiếu dựng 8 bài còn lại (công thức chữ đã kiểm bằng số 10/10)
 
-Thứ tự đề xuất: **49 → 50 → 52 → 45 → 46** (TX, dễ → khó) rồi **47 → 44** (TD) rồi **53** (MC).
+Thứ tự đề xuất: ~~49~~ (xong) → **50 → 52 → 45 → 46** (TX, dễ → khó; đều là thêm dữ liệu vào trang chuyên đề) rồi **47 → 44** (TD, file riêng) rồi **53** (MC).
 
-**Câu 49 — TX, vắt qua trục (gần như chép bài 2).** File `mien-hai-phia-truc.html`.
-- Đề: (H) giới hạn bởi y = x² + 1, y = −x − 1, x = −1, x = 1; quay quanh Ox.
-- Chữ: f = x² + 1 (trên trục), g = −x − 1 (dưới trục), a = −1, b = 1, c: f = −g (đường trên cắt đường gấp). Gấp g lên thành −g = x + 1.
-- Hai miền, đều chạm trục (không có vành khăn): V₁ = π∫ₐᶜ f² dx · V₂ = π∫_c^b g² dx. Thay số: c = 0; V₁ = 28π/15, V₂ = 7π/3, **V = 21π/5**.
-- Bẫy: π∫(f² − g²) cả đoạn = 16π/15 (sai, không vô lý lộ liễu như bài 2 — nói rõ sai vì trừ đi phần khối có thật).
-- Bước: Đề bài → Quay quanh Ox → Chia miền → Cái bẫy → Tính thể tích. Khác bài 2: miền hồng bắt đầu ngay từ a (ở x = −1, g = 0).
+**Câu 49 — TX, hai miền.** ✅ ĐÃ CÓ (10/10) — mục `id: '49'` trong `tron-xoay-bai.js`: V₁ = π∫ₐᶜ f², V₂ = π∫_c^b g², V = 21π/5; bẫy π∫(f² − g²) = 23π/15 − 7π/15 = 16π/15.
 
-**Câu 50 — TX một miền, bài thực tế.** File `thung-ruou-elip.html`.
+**Câu 50 — TX một miền, bài thực tế.** Mục `id: '50'` trong `tron-xoay-bai.js` (cần thêm bước "Đặt hệ trục" vào động cơ).
 - Đề: thùng gỗ tròn xoay, hai đáy bằng nhau cách nhau 8 dm, đường cong mặt bên là một phần elip trục lớn 10 dm, trục bé 6 dm. Hỏi chứa bao nhiêu lít.
 - Chữ: bán trục a, b; hai đáy ở x = ±d. Elip x²/a² + y²/b² = 1 ⇒ y² = b²(1 − x²/a²).
   V = π∫₋d^d b²(1 − x²/a²) dx = **2πb²(d − d³/(3a²))**. Thay a = 5, b = 3, d = 4: **1416π/25 dm³ ≈ 177,9 lít**.
 - Bước: Đề bài (thùng 3D + ảnh `image1144`) → Đặt hệ trục (cắt thùng bằng mặt phẳng qua trục, hiện elip đầy đủ, hai đường x = ±d) → Quay quanh Ox (nửa trên của elip quay ra thùng) → Tính thể tích.
 - Điểm đáng cho HS thấy: thùng = phần GIỮA của khối elipxôit; hai chỏm bị cắt đi (vẽ mờ).
 
-**Câu 52 — TX một miền, bài thực tế (cặp với 50).** File `thung-ruou-parabol.html`.
+**Câu 52 — TX một miền, bài thực tế (cặp với 50).** Mục `id: '52'`.
 - Đề: 7 thùng, đường sinh parabol, bán kính hai mặt 40 cm, giữa 50 cm, dài 100 cm; 30 nghìn đồng/lít. Tính tiền (nghìn đồng).
 - Chữ: R (giữa), r (hai đầu), dài l. Parabol y = R − kx² với k = 4(R − r)/l².
   V = π∫ (R − kx²)² dx trên [−l/2; l/2] = **(πl/15)(8R² + 4Rr + 3r²)**. Thay R = 0,5; r = 0,4; l = 1 (m): **82π/375 m³ ≈ 686,96 lít**.
 - Tiền: 7 · 30 · V(lít) = 45 920π ≈ 144 261,9 ⇒ **M = 144 262**. Nguồn làm tròn 687 lít trước nên ra 144 270 — **dùng 144 262**, và đây là chỗ nói với HS "đừng làm tròn giữa chừng".
 - Bước: như câu 50 + một dòng tính tiền ở khối Thay số. Có thể thêm nút so hai thùng (elip / parabol) nếu Thùy muốn.
 
-**Câu 45 — TX quanh Oy, hai miền xếp chồng.** File `mu-noel.html`.
+**Câu 45 — TX quanh Oy, hai miền xếp chồng.** Mục `id: '45'` (bài đầu tiên quay quanh Oy).
 - Đề: mũ tròn xoay; mặt cắt qua trục: OO′ = 5, OA = 10, OB = 20 (cm), cung AB là parabol đỉnh A.
 - Chữ: R = OA, h₁ = OO′, h₂ = OB. Gốc O, Oy là trục mũ. Parabol đỉnh A(R; 0) qua B(0; h₂): y = (h₂/R²)(R − x)² ⇒ **x = R(1 − √(y/h₂))**.
   V₁ (trụ vành mũ) = πR²h₁ · V₂ = π∫₀^{h₂} x² dy = πR²h₂/6 · **V = πR²(h₁ + h₂/6)**. Thay số: **2500π/3 ≈ 2618 cm³**.
 - Bước: Đề bài (mặt cắt như hình `image1029`) → Đặt hệ trục (viết x theo y) → Quay quanh Oy → Chia miền (trụ + chóp cong) → Tính thể tích.
 - Điểm khó: quay quanh **Oy** ⇒ công thức V = π∫ x² dy, phải đổi hàm sang x theo y. Cần `mkLuoi` quay quanh Oy.
 
-**Câu 46 — TX quanh Oy, có lỗ (khó nhất nhóm TX).** File `hoa-bon-canh.html`.
+**Câu 46 — TX quanh Oy, có lỗ (khó nhất nhóm TX).** Mục `id: '46'` (cần đường sinh tham số).
 - Đề: hình vuông ABCD cạnh 2√2, ngoài hình vuông vẽ 4 nửa đường tròn đường kính là các cạnh; quay cả hình quanh AC.
 - Chữ: a = OA (nửa đường chéo). A(0; a), B(a; 0), đường tròn đường kính AB: (x − a/2)² + (y − a/2)² = a²/2 (đi qua O). Nhánh phải x₊ = a/2 + √(a²/2 − (y − a/2)²), nhánh trái x₋ = a/2 − √(…).
   Đối xứng qua AC và BD ⇒ chỉ xét góc phần tư I rồi nhân 2. **Miền 1** (0 ≤ y ≤ a): đặc tới trục, V₁ = π∫ x₊² dy. **Miền 2** (a ≤ y ≤ a/2 + a/√2): có lỗ, V₂ = π∫ (x₊² − x₋²) dy.
@@ -414,3 +436,5 @@ Thứ tự đề xuất: **49 → 50 → 52 → 45 → 46** (TX, dễ → khó) 
 | 10/10 chiều | Claude | Sửa bài 2 còn 5 bước (bỏ "cắt một lát", "cộng các lát"; bước 3 thành "Chia miền" với 3 công thức; cái bẫy vẽ khối trơn thay vì chồng lát) |
 | 10/10 chiều | Thùy | "OK viết spec đi, để làm các câu còn lại nhanh hơn nữa." |
 | 10/10 chiều | Claude | Viết Phần S — sổ tay dựng bài: bộ bước theo loại, luật bảng + hình, khung file, quy trình 8 việc, danh mục soát, phiếu dựng 8 bài còn lại (công thức chữ đã kiểm số) |
+| 10/10 chiều | Thùy | Các câu tròn xoay không làm HTML riêng — một file chung để chọn bài, coi như một chuyên đề (còn nhiều bài nữa). Sau này đưa lên app cho HS xem lại, đi kèm bài giải (⇒ A5, B7) |
+| 10/10 chiều | Claude | Dựng trang chuyên đề `tron-xoay.html` + `tron-xoay-bai.js`; chuyển Câu 48 sang dữ liệu, thêm Câu 49 thuần bằng dữ liệu; địa chỉ theo `id`, chế độ nhúng `nhung=1`, tự kiểm thể tích với `dapSo` |
