@@ -102,7 +102,7 @@ B. 376 cm
 C. 248 cm
 D. 62 cm
 **Hình:** p1c4_lai.png
-**Chưa chắc:** đề có hai cách hiểu và cả hai đều có trong phương án. Đếm thanh của cả chiếc đèn (4 cạnh đáy lớn, 4 cạnh đáy nhỏ, 4 cạnh bên — mỗi cạnh bên là một thanh chung cho hai mặt kề nhau) ⇒ 248 cm (C). Cộng chu vi bốn mặt (mỗi cạnh bên bị tính hai lần) ⇒ $94.4=376$ cm (B). Hai trạm giải độc lập đều chọn C vì đề hỏi thanh của "một chiếc đèn", tả "thanh kim loại để làm một cạnh bên", và hình minh hoạ cho thấy mỗi cạnh bên chỉ có một thanh. Chưa có đáp án của trường để đối chiếu.
+**Ghi chú:** Mỗi cạnh bên là một thanh dùng chung cho hai mặt kề nhau nên chỉ tính một lần: 248 cm (C). Cộng chu vi bốn mặt ($94.4=376$ cm, phương án B) là tính lặp các cạnh bên. CEO chốt 10/10: đáp án C.
 
 **Phần 1. Hướng dẫn**
 

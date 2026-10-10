@@ -197,8 +197,8 @@ A. Hình a
 B. Hình b
 C. Hình c
 D. Hình d
-**Hình:** p1c7_chung.png
-**Chưa chắc:** hình của đề gốc bị kéo dãn theo chiều ngang khoảng 1,3 lần (chữ trên trang không dãn, chỉ hình dãn): đo trên ảnh, hình a có đáy dài hơn hai cạnh bên khoảng 1,2 lần nên theo đúng hình in thì không hình nào đều tuyệt đối. Nén ngang hình lại 0,76 lần thì ba cạnh của hình a bằng nhau, còn b, c, d vẫn không đều ⇒ chọn A (hai người giải độc lập cùng ra A). Cần người duyệt quyết: giữ hình scan như đề gốc hay thay bằng hình đã nén lại cho đúng tỉ lệ trước khi cho học sinh làm trên app.
+**Hình:** p1c7_ve.png
+**Ghi chú:** Hình của đề gốc (bản scan `p1c7_chung.png`) bị kéo dãn ngang khoảng 1,3 lần nên tam giác đều trông không đều. CEO chốt 10/10: vẽ lại hình đúng tỉ lệ (`p1c7_ve.png` — hình a có ba cạnh bằng nhau; b, c, d giữ dáng như đề gốc).
 
 **Phần 1. Hướng dẫn**
 

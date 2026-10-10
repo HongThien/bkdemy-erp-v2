@@ -582,7 +582,7 @@ Mà $A+1=2^x$ nên $x=101$.
 ### Bài 5.2 | kho=dai | loai=tra_loi_ngan | dap_an=35
 **Đề:** Các số được chọn ra từ 48 số tự nhiên từ 1 đến 48. Hỏi cần chọn ngẫu nhiên ít nhất bao nhiêu số để chắc chắn rằng có hai số mà có tổng bằng 30?
 **Ghi chú:** Đề gốc là ý b) của Bài 5, tách riêng vì là bài toán khác hẳn ý a). Hiểu đề là chọn các số **khác nhau** trong 48 số từ 1 đến 48 (nên $15+15$ không tính).
-**Chưa chắc:** đáp số 35 thì chắc (trạm soạn và trạm soát giải độc lập ra cùng kết quả, máy đếm lại khớp: 14 cặp, nhiều nhất 34 số chưa có hai số tổng 30). Điều cần xem là **cách trình bày**: bài thuộc loại "trường hợp xấu nhất" (bản chất nguyên lí Dirichlet), bản đồ K6 chưa có lý thuyết / khuôn cho loại này nên lời giải tự lập luận bằng cách ghép cặp, không trích tên nguyên lí.
+**Ghi chú:** Bài loại "trường hợp xấu nhất" (bản chất là nguyên lí Đi-rích-lê): lời giải ghép 14 cặp số có tổng 30 và tự lập luận — CEO duyệt 10/10; chờ chuyên đề Đi-rích-lê trên bản đồ khối 6 để xếp.
 
 **Phần 1. Hướng dẫn**
 

@@ -513,53 +513,44 @@ $56.450000=25200000$ (đồng)
 
 ### Bài 5 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Cho $p$ là số nguyên tố lớn hơn 3. Chứng minh: $(p-1).(p+1)$ chia hết cho 24.
-**Chưa chắc:** tính chất "chia hết cho hai số nguyên tố cùng nhau thì chia hết cho tích của chúng" không có trong lý thuyết bản đồ K6, nên bước cuối không trích tính chất đó mà lập luận trực tiếp (viết tích bằng $8.a$ rồi suy ra $a\vdots 3$ bằng tính chất chia hết của tổng). Đáp án của các trường thường viết gọn "vì $\text{ƯCLN}(8,3)=1$ nên tích chia hết cho 24" — cần người duyệt chọn cách trình bày.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** $24=8.3$ nên chứng minh tích chia hết cho 8, chia hết cho 3, rồi **ghép** hai kết quả lại.
+**Mấu chốt:** $24=8.3$ nên chứng minh tích **chia hết cho 8** và **chia hết cho 3**.
 
-**Bước 1.** Khai thác điều kiện $p$ nguyên tố lớn hơn 3: suy ra $p$ không chia hết cho 2 và không chia hết cho 3.
+**Bước 1.** Khai thác điều kiện $p$ là số nguyên tố lớn hơn 3: $p$ là số lẻ và $p$ không chia hết cho 3.
 
-**Bước 2.** Chứng minh chia hết cho 8: viết $p$ lẻ dưới dạng $2k+1$, tích hai thừa số chẵn có thừa số chung 4, phần còn lại là tích hai số tự nhiên liên tiếp nên chẵn.
+**Bước 2.** Chia hết cho 8: $p$ lẻ nên $p-1$ và $p+1$ là hai số chẵn liên tiếp; trong hai số chẵn liên tiếp có một số chia hết cho 4, số còn lại chia hết cho 2.
 
-**Bước 3.** Chứng minh chia hết cho 3: xét hai trường hợp $p$ chia cho 3 dư 1 hoặc dư 2, mỗi trường hợp có một thừa số chia hết cho 3.
+**Bước 3.** Chia hết cho 3: $p$ chia cho 3 dư 1 thì $p-1$ chia hết cho 3, dư 2 thì $p+1$ chia hết cho 3.
 
-**Bước 4.** Ghép hai kết quả: viết tích thành 8 nhân với một số $a$, dùng tính chất chia hết của tổng để suy ra $a$ chia hết cho 3, từ đó tích là 24 nhân với một số tự nhiên.
+**Bước 4.** Tích chia hết cho cả 8 và 3, hai số này có ước chung lớn nhất bằng 1 nên tích chia hết cho $8.3=24$.
 
 **Chú ý:** chỉ chứng minh tích chia hết cho 2 và cho 3 thì chưa đủ; phải chứng minh được tích chia hết cho 8.
 
 **Phần 2. Trình bày**
 
-Vì $p$ là số nguyên tố lớn hơn 3 nên $p$ không chia hết cho 2 và $p$ không chia hết cho 3 (nếu chia hết thì $p$ có thêm ước là 2 hoặc 3 ngoài 1 và chính nó).
+Vì $p$ là số nguyên tố lớn hơn 3 nên $p$ là số lẻ và $p$ không chia hết cho 3.
 
 Chứng minh $(p-1).(p+1)\vdots 8$.
 
-Vì $p$ là số lẻ nên đặt $p=2k+1$ ($k\in\mathbb{N}^*$).
+Vì $p$ là số lẻ nên $p-1$ và $p+1$ là hai số chẵn liên tiếp.
 
-Khi đó $(p-1).(p+1)=2k.(2k+2)=4.k.(k+1)$.
+Trong hai số chẵn liên tiếp có một số chia hết cho 4, số còn lại chia hết cho 2.
 
-Vì $k$ và $k+1$ là hai số tự nhiên liên tiếp nên có một số chẵn, suy ra $k.(k+1)\vdots 2$.
-
-Do đó $4.k.(k+1)\vdots 8$ hay $(p-1).(p+1)\vdots 8$.
+Do đó $(p-1).(p+1)\vdots 4.2$ hay $(p-1).(p+1)\vdots 8$.
 
 Chứng minh $(p-1).(p+1)\vdots 3$.
 
 Vì $p$ không chia hết cho 3 nên $p$ chia cho 3 dư 1 hoặc dư 2.
 
-Nếu $p=3m+1$ ($m\in\mathbb{N}^*$) thì $p-1=3m\vdots 3$.
+Nếu $p$ chia cho 3 dư 1 thì $(p-1)\vdots 3$.
 
-Nếu $p=3m+2$ ($m\in\mathbb{N}^*$) thì $p+1=3m+3=3.(m+1)\vdots 3$.
+Nếu $p$ chia cho 3 dư 2 thì $(p+1)\vdots 3$.
 
 Suy ra $(p-1).(p+1)\vdots 3$.
 
-Chứng minh $(p-1).(p+1)\vdots 24$.
-
-Vì $(p-1).(p+1)\vdots 8$ nên $(p-1).(p+1)=8.a$ ($a\in\mathbb{N}^*$).
-
-Ta có $8.a\vdots 3$ (chứng minh trên) và $8.a+a=9.a\vdots 3$ nên $a\vdots 3$.
-
-Đặt $a=3.b$ ($b\in\mathbb{N}^*$) thì $(p-1).(p+1)=8.3.b=24.b$.
+Vì $(p-1).(p+1)$ chia hết cho cả 8 và 3, mà $\text{ƯCLN}(8,3)=1$ nên $(p-1).(p+1)\vdots 8.3$.
 
 Vậy $(p-1).(p+1)$ chia hết cho 24.
 
@@ -569,6 +560,6 @@ Vậy $(p-1).(p+1)$ chia hết cho 24.
 - Bài 3 chuẩn hoá "8 000đ" thành "8 000 đồng". Câu 1 đề in chữ thường "N", "N*", "Z", "{N}" — đã gõ thành kí hiệu tập hợp $\mathbb{N}$, $\mathbb{N}^*$, $\mathbb{Z}$, $\{\mathbb{N}\}$.
 - Đề in nhãn "Câu 4" ở phần tự luận (các bài khác ghi "Bài"), đã giữ nguyên nhãn gốc.
 - Câu 4 (trắc nghiệm): phương án B (452) đúng nhưng thiếu 354, đáp án là C (đầy đủ) — xem dòng "Ghi chú" của câu.
-- Bài 5 (nâng cao): xem dòng "Chưa chắc" (cách trình bày bước cuối).
+- Bài 5 (nâng cao): CEO chốt 10/10 cách trình bày — chia hết cho 8 (hai số chẵn liên tiếp: một số chia hết cho 4, một số chia hết cho 2) và chia hết cho 3 (xét số dư của $p$ khi chia cho 3), rồi suy ra chia hết cho 24.
 - Hình câu 7 và câu 8: bản máy cắt rời từng hình a/b/c/d, đã cắt lại một ảnh chung cho mỗi câu (`p1c7_chung.png`, `p1c8_chung.png`).
 - Đề dùng đúng khuôn KNTT Chương I–II và hình phẳng Ch IV, không dùng kiến thức học sau.

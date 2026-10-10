@@ -1,22 +1,25 @@
 // ============================================================================
 // sua-cau-de.mjs — đề ĐÃ ghi ERP mà người duyệt quyết SỬA ĐỀ của một câu (đề gốc in lỗi): cập nhật câu trong kho theo `de.json` mới.
 //
-//   node scripts/kho/de-thi/sua-cau-de.mjs <thư mục làm việc> --nhan "Bài 2a" --de-cu "<nội dung câu ĐANG nằm trên ERP>" [--phan 2] [--ghi]
+//   node scripts/kho/de-thi/sua-cau-de.mjs <thư mục làm việc> --nhan "Bài 2a" --de-cu "<nội dung câu ĐANG nằm trên ERP>" [--phan 2] [--doi-hinh] [--ghi]
 //
 // Quy trình: sửa `<MA>.soan.md` → `dung-de-tu-soan.mjs` (ra de.json mới) → lệnh này. Mặc định chạy thử (ROLLBACK).
 // Tìm câu trên ERP bằng NỘI DUNG CŨ (khoá tự nhiên) trong đúng đề đó (theo sha256), không bằng vị trí. Chỉ đụng câu `nguon='de_thi'`, chưa duyệt.
 // Ghi đè: noi_dung · loai_cau · lua_chon · dap_an · loi_giai của câu, và ghi chú lúc nhập (cau_hinh.deThi.canhBaoCau[ma_cau]) của đề; bump updated_at đề.
+// `--doi-hinh`: hình đề của câu đã đổi tệp (vẽ lại) ⇒ tải tệp hình đầu của câu trong de.json lên kho-anh và trỏ `anh_de` sang; tệp cũ trên kho-anh GIỮ nguyên.
 // ============================================================================
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { randomUUID } from 'node:crypto'
 import pg from 'pg'
-import { bien } from '../cau-hinh.mjs'
+import { createClient } from '@supabase/supabase-js'
+import { bien, docEnv, GOC_REPO } from '../cau-hinh.mjs'
 
 const args = process.argv.slice(2)
 const lay = (k) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null }
 const dir = args.find((a, i) => !a.startsWith('--') && !['--nhan', '--de-cu', '--phan'].includes(args[i - 1]))
-const NHAN = lay('--nhan'), DE_CU = lay('--de-cu'), PHAN = lay('--phan'), GHI = args.includes('--ghi')
-if (!dir || !NHAN || !DE_CU) { console.error('Dùng: node scripts/kho/de-thi/sua-cau-de.mjs <thư mục> --nhan "Bài 2a" --de-cu "<nội dung cũ>" [--phan 2] [--ghi]'); process.exit(2) }
+const NHAN = lay('--nhan'), DE_CU = lay('--de-cu'), PHAN = lay('--phan'), GHI = args.includes('--ghi'), DOI_HINH = args.includes('--doi-hinh')
+if (!dir || !NHAN || !DE_CU) { console.error('Dùng: node scripts/kho/de-thi/sua-cau-de.mjs <thư mục> --nhan "Bài 2a" --de-cu "<nội dung cũ>" [--phan 2] [--doi-hinh] [--ghi]'); process.exit(2) }
 const de = JSON.parse(readFileSync(join(dir, 'de.json'), 'utf8'))
 const ung = de.cau.filter((q) => q.nhan === NHAN && (!PHAN || q.phan === Number(PHAN)))
 if (ung.length !== 1) { console.error(`❌ de.json có ${ung.length} câu nhãn "${NHAN}" — thêm --phan`); process.exit(2) }
@@ -38,6 +41,24 @@ try {
   if (trung.length) console.log(`  ⚠ nội dung MỚI trùng câu đã có trong kho: ${trung.map((x) => x.ma_cau).join(', ')} — vẫn sửa tại chỗ, người duyệt cân nhắc`)
   await c.query(`update ${tbl} set noi_dung = $1, loai_cau = $2, lua_chon = $3::jsonb, dap_an = $4, loi_giai = $5 where ma_cau = $6`,
     [q.noi_dung, q.loai_cau, q.lua_chon ? JSON.stringify(q.lua_chon) : null, q.dap_an ?? null, q.loi_giai, r.ma_cau])
+  if (DOI_HINH) {
+    const f = q.anh.find((x) => /\.(png|jpe?g)$/i.test(x)), p = f && join(dir, 'img', f)
+    if (!f || !existsSync(p)) throw new Error(`--doi-hinh: câu không khai hình hoặc thiếu tệp ${p ?? ''}`)
+    const { rows: [h] } = await c.query(`select anh_de from ${tbl} where ma_cau = $1`, [r.ma_cau])
+    let urlMoi = `dry://kho-anh/${f}`
+    if (GHI) { // tải lên ngoài transaction, như ghi.mjs; đường dẫn mới mỗi lần nên không đè tệp nào
+      const env = docEnv(join(GOC_REPO, '.env.local'))
+      if (!env.VITE_SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE) throw new Error('thiếu VITE_SUPABASE_URL / SUPABASE_SERVICE_ROLE trong .env.local')
+      const sb = createClient(env.VITE_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE, { auth: { persistSession: false, autoRefreshToken: false } })
+      const d = new Date(), ext = f.split('.').pop().toLowerCase()
+      const duong = `nhap_kho/${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}/${randomUUID()}_${de.sha256.slice(0, 8)}_p${q.phan}c${q.so}.${ext}`
+      const { error } = await sb.storage.from('kho-anh').upload(duong, readFileSync(p), { contentType: ext === 'png' ? 'image/png' : 'image/jpeg', upsert: false })
+      if (error) throw new Error(`upload ${duong}: ${error.message}`)
+      urlMoi = sb.storage.from('kho-anh').getPublicUrl(duong).data.publicUrl
+    }
+    await c.query(`update ${tbl} set anh_de = $1 where ma_cau = $2`, [urlMoi, r.ma_cau])
+    console.log(`  hình đề: ${h.anh_de ?? '—'}\n       ⇒ ${urlMoi}  (${f})`)
+  }
   if (q.canh_bao?.length) await c.query(`update tai_lieu set cau_hinh = jsonb_set(cau_hinh, array['deThi','canhBaoCau',$2], $3::jsonb, true), updated_at = now() where id = $1`, [tl.id, r.ma_cau, JSON.stringify(q.canh_bao)])
   else await c.query(`update tai_lieu set cau_hinh = cau_hinh #- array['deThi','canhBaoCau',$2], updated_at = now() where id = $1`, [tl.id, r.ma_cau])
   const { rows: [sau] } = await c.query(`select stt, loai_cau, dap_an from fn_de_thi_cau($1) where ma_cau = $2`, [tl.id, r.ma_cau])

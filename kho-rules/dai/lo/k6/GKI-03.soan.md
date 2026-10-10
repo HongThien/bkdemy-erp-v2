@@ -546,19 +546,18 @@ $590000:2500=236$ (viên)
 ### Bài 6 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Cho $p$ là số nguyên tố lớn hơn 3. Hỏi số $p^2+2024$ là số nguyên tố hay hợp số? Vì sao?
 **Ghi chú:** Đề gốc in "Vì sao" thiếu dấu "?" — đã thêm.
-**Chưa chắc:** bài nâng cao — đáp số (hợp số) và từng dòng tính đã được hai trạm kiểm khớp; điều cần CEO xem là KHUÔN trình bày: lời giải viết $p=3k+1$ hoặc $p=3k+2$ (số dư khi chia cho 3) rồi dùng tính chất phân phối, trong khi nhóm "chia có dư" trên bản đồ chưa có lý thuyết (`k6.md` §1 luật 3). Không dùng hằng đẳng thức hay đồng dư.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** $p$ không chia hết cho 3 nên chia 3 dư 1 hoặc dư 2; cả hai trường hợp đều làm cho $p^2+2024$ **chia hết cho 3**.
+**Mấu chốt:** **số chính phương chia cho 3 chỉ dư 0 hoặc 1**; $p$ không chia hết cho 3 nên $p^2$ chia cho 3 dư 1, khi đó $p^2+2024$ chia hết cho 3.
 
-**Bước 1.** Vì $p$ là số nguyên tố lớn hơn 3 nên $p$ không chia hết cho 3, từ đó chia hai trường hợp theo số dư khi chia $p$ cho 3.
+**Bước 1.** Vì $p$ là số nguyên tố lớn hơn 3 nên $p$ không chia hết cho 3, suy ra $p^2$ cũng không chia hết cho 3.
 
-**Bước 2.** Viết $p$ dưới dạng $3k+1$ (hoặc $3k+2$) rồi thay vào để biến đổi $p^2+2024$ thành tổng các số hạng.
+**Bước 2.** Dùng tính chất số chính phương chia cho 3 chỉ dư 0 hoặc 1 để kết luận $p^2$ chia cho 3 dư 1, viết $p^2=3k+1$.
 
-**Bước 3.** Gom các số hạng để đặt thừa số chung 3 ra ngoài, nhớ $2025$ và $2028$ đều chia hết cho 3.
+**Bước 3.** Thay vào $p^2+2024$, gom $1+2024=2025$ rồi đặt thừa số chung 3 ra ngoài.
 
-**Bước 4.** Kết luận số đó chia hết cho 3 và lớn hơn 3 nên có ước khác 1 và chính nó, tức là hợp số.
+**Bước 4.** Kết luận: số đó chia hết cho 3 và lớn hơn 3 nên có ước khác 1 và chính nó, tức là hợp số.
 
 Thử lại: $p=5$ thì $5^2+2024=2049=3.683$ (hợp số).
 
@@ -566,25 +565,15 @@ Thử lại: $p=5$ thì $5^2+2024=2049=3.683$ (hợp số).
 
 Vì $p$ là số nguyên tố lớn hơn 3 nên $p$ không chia hết cho 3.
 
-Suy ra $p$ chia cho 3 dư 1 hoặc dư 2.
+Số $p^2=p.p$ chỉ có ước nguyên tố là $p$ nên $p^2$ không chia hết cho 3.
 
-Trường hợp 1: $p=3k+1$ ($k\in\mathbb{N}^*$).
+Mà số chính phương chia cho 3 chỉ dư 0 hoặc 1 nên $p^2$ chia cho 3 dư 1.
 
-$p^2=p.p=p.(3k+1)=3kp+p$
+Đặt $p^2=3k+1$ ($k\in\mathbb{N}^*$).
 
-$p^2+2024=3kp+p+2024=3kp+(3k+1)+2024=3kp+3k+2025$
+$p^2+2024=3k+1+2024=3k+2025=3.(k+675)$
 
-$p^2+2024=3.(kp+k+675)$
-
-Trường hợp 2: $p=3k+2$ ($k\in\mathbb{N}^*$).
-
-$p^2=p.p=p.(3k+2)=3kp+2p$
-
-$p^2+2024=3kp+2p+2024=3kp+2.(3k+2)+2024=3kp+6k+2028$
-
-$p^2+2024=3.(kp+2k+676)$
-
-Trong cả hai trường hợp $p^2+2024$ chia hết cho 3, và $p^2+2024$ lớn hơn 3.
+Suy ra $p^2+2024$ chia hết cho 3, mà $p^2+2024$ lớn hơn 3 nên ngoài 1 và chính nó, số này còn có ước là 3.
 
 Vậy $p^2+2024$ là hợp số.
 
@@ -596,5 +585,5 @@ Vậy $p^2+2024$ là hợp số.
 - Bài 5 (1) vẽ hình vuông + 2) a b c về mảnh đất) giữ chung một câu theo luật "chỉ tách bài Tính và Tìm $x$"; nếu CEO muốn tách ý 1) vẽ hình riêng thì báo.
 - Bài 5c: viên gạch cạnh 50 cm, đổi diện tích sang $cm^2$ để không dùng số thập phân; $590000:2500=236$ chia hết đúng.
 - Bài 4: đề cho số tiền được trả lại nên giá bộ thước = $500000-67000-420000=13000$ đồng.
-- Bài 6 là câu nâng cao duy nhất, xem dòng "Chưa chắc" ở trên.
+- Bài 6 là câu nâng cao duy nhất; CEO chốt 10/10: lớp 6 dùng tính chất "số chính phương chia cho 3 chỉ dư 0 hoặc 1".
 - Đề thuộc bộ KNTT (có lục giác đều ký hiệu $ABCDEG$, khớp SGK KNTT).

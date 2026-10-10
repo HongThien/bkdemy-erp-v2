@@ -493,7 +493,7 @@ a) Tính chu vi của mảnh đất.
 b) Bác Minh chia mảnh đất thành 3 phần như hình vẽ. Phần thứ nhất là hình tam giác $ABH$ dùng để trồng hoa. Phần thứ hai là hình bình hành $AHCI$ có diện tích $72\ m^2$ dùng để đỗ xe. Phần còn lại bác dùng để làm ao cá. Tính diện tích bác Minh dùng để trồng hoa và làm ao cá.
 **Hình:** p2c4_1.png
 **Ghi chú:** Đề không ghi kí hiệu góc vuông; lời giải hiểu theo hình vẽ: các góc ở $A$, $B$, $C$, $D$, $E$, $F$ đều vuông, $H$ nằm trên cạnh $BC$, $I$ nằm trên cạnh $AF$.
-**Chưa chắc:** câu hỏi ý b "Tính diện tích bác Minh dùng để trồng hoa và làm ao cá" có hai cách hiểu: tính riêng từng phần (trồng hoa $36\ m^2$, ao cá $72\ m^2$) hoặc tính tổng hai phần ($108\ m^2$). Lời giải tính riêng từng phần rồi nêu cả tổng để đúng với cả hai cách hiểu.
+**Ghi chú:** Ý b "Tính diện tích bác Minh dùng để trồng hoa và làm ao cá" có thể hiểu là tính riêng từng phần hoặc tính tổng; lời giải nêu cả hai (trồng hoa $36\ m^2$, ao cá $72\ m^2$, tổng $108\ m^2$) — CEO duyệt 10/10.
 
 **Phần 1. Hướng dẫn**
 

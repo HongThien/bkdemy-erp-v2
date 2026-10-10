@@ -34,30 +34,28 @@ $=5^5$
 Chọn A.
 
 ### Câu 2 | kho=dai | loai=trac_nghiem | dap_an=B
-**Đề:** Chữ số 2 trong số 24 826 có giá trị là:
+**Đề:** Chữ số 2 ở hàng chục nghìn trong số 24 826 có giá trị là:
 A. 24826
 B. 20000
 C. 20
 D. 24000
-**Chưa chắc:** lỗi của đề gốc — số 24 826 có HAI chữ số 2 (hàng chục nghìn và hàng chục) nên cả B (20000) lẫn C (20) đều đúng tuỳ chữ số 2 nào được hỏi; trạm soát giải độc lập cũng ra hai phương án đúng. Tạm chọn B vì chữ số 2 đứng đầu số (hàng chục nghìn); nếu đáp án của trường là 20 thì sửa thành C, hoặc sửa đề thành "chữ số 2 ở hàng chục nghìn" để chỉ còn một phương án đúng.
+**Ghi chú:** Đề gốc in "Chữ số 2 trong số 24 826" — số này có hai chữ số 2 (hàng chục nghìn và hàng chục) nên B và C đều đúng. CEO chốt 10/10: sửa đề thành "chữ số 2 ở hàng chục nghìn" để chỉ còn B đúng.
 
 **Phần 1. Hướng dẫn**
 
 **Mấu chốt:** giá trị của một chữ số bằng chữ số đó nhân với giá trị của hàng mà nó đứng.
 
-**Bước 1.** Xác định hàng của chữ số 2 bằng cách đọc các hàng từ phải sang trái: đơn vị, chục, trăm, nghìn, chục nghìn.
+**Bước 1.** Đọc các hàng của số 24 826 từ phải sang trái: đơn vị, chục, trăm, nghìn, chục nghìn. Số này có hai chữ số 2 nên phải lấy đúng chữ số mà đề hỏi.
 
-**Bước 2.** Chữ số 2 đứng đầu số (ngoài cùng bên trái) nên nằm ở hàng chục nghìn.
+**Bước 2.** Chữ số 2 ở hàng chục nghìn là chữ số đứng đầu số (ngoài cùng bên trái).
 
 **Bước 3.** Lấy chữ số đó nhân với giá trị của hàng rồi đối chiếu với bốn phương án.
 
-**Chú ý:** phương án A là cả số, phương án D là hai chữ số đầu — không phải giá trị riêng của chữ số 2.
+**Chú ý:** phương án C là giá trị của chữ số 2 ở hàng chục; phương án A là cả số, phương án D là hai chữ số đầu.
 
 **Phần 2. Trình bày**
 
-Trong số 24 826, chữ số 2 đứng đầu số ở hàng chục nghìn.
-
-Giá trị của chữ số 2 là $2.10000=20000$.
+Trong số 24 826, chữ số 2 ở hàng chục nghìn có giá trị là $2.10000=20000$.
 
 Chọn B.
 

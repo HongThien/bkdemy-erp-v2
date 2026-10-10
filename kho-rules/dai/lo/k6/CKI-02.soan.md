@@ -487,7 +487,7 @@ $72.30000=2160000$ (đồng)
 **Đề:** Cho các số tự nhiên từ 2 đến 12 được viết theo một thứ tự tùy ý. Sau đó cộng mỗi số với số chỉ thứ tự của nó ta được một tổng. Chứng minh rằng trong các tổng nhận được, bao giờ cũng tìm ra hai tổng mà hiệu của chúng là một số chia hết cho 10.
 **Ghi chú:** Đề gốc là Bài V (0,5 điểm), học sinh chọn một trong hai câu 1) hoặc 2); cả hai đều được nhập (Bài 5.1 và Bài 5.2).
 **Ghi chú:** Bài V của đề cho học sinh chọn MỘT trong hai câu; kho nhập cả hai thành hai câu riêng (Bài 5.1, Bài 5.2).
-**Chưa chắc:** lời giải dùng nguyên lí Đi-rích-lê / "chuồng chim bồ câu" (11 tổng, chỉ có 10 số dư) — không có trong SGK KNTT 6, đã tự lập luận ngay trong bài; trạm soát đã kiểm lập luận đúng, xin người duyệt quyết có nhận cách trình bày này cho lớp 6 không.
+**Ghi chú:** Lời giải dùng nguyên lí Đi-rích-lê (11 tổng mà chỉ có 10 số dư), tự lập luận ngay trong bài. CEO 10/10: sẽ thêm một chuyên đề Đi-rích-lê vào bản đồ kiến thức khối 6 — có chuyên đề thì xếp câu này vào đó.
 
 **Phần 1. Hướng dẫn**
 

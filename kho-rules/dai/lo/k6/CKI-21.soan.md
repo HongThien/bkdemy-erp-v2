@@ -8,7 +8,7 @@ bo_sach: KNTT
 **Đề:** Cho tập hợp $M=\{x\in\mathbb{N}\mid -4<x\le 5\}$
 a) Viết tập hợp $M$ bằng cách liệt kê các phần tử.
 b) Tính tổng các phần tử của tập hợp $M$.
-**Chưa chắc:** Đề in chắc chắn là $x\in N$ (đã soi ảnh 600 dpi và lớp chữ của PDF — không phải $Z$), nhưng điều kiện $-4<x$ chỉ có ý nghĩa với số nguyên nên nhiều khả năng người ra đề định viết $x\in\mathbb{Z}$. Đang giữ đúng chữ in (số tự nhiên): $M=\{0;1;2;3;4;5\}$, tổng 15. Nếu CEO muốn sửa đề thành $x\in\mathbb{Z}$ thì $M=\{-3;-2;-1;0;1;2;3;4;5\}$ và tổng bằng 9 — phải viết lại lời giải.
+**Ghi chú:** Đề in $x\in\mathbb{N}$ cùng điều kiện $-4<x\le 5$. CEO chốt 10/10: không phải đề sai — học sinh đã học số nguyên, đây là câu bẫy (dễ liệt kê nhầm cả số âm); giữ nguyên đề, $M=\{0;1;2;3;4;5\}$, tổng 15.
 
 **Phần 1. Hướng dẫn**
 
@@ -22,7 +22,7 @@ b) Tính tổng các phần tử của tập hợp $M$.
 
 **Bước 4.** Ý b: cộng tất cả các phần tử vừa liệt kê, có thể gom cặp để cộng cho nhanh.
 
-**Chú ý:** số 0 là phần tử của $\mathbb{N}$ nhưng không làm tổng thay đổi; đừng bỏ sót số 5 ở đầu mút.
+**Chú ý:** đề cho $x\in\mathbb{N}$ nên không lấy các số âm $-3;-2;-1$ dù chúng lớn hơn $-4$; đừng bỏ sót số 0 và số 5 ở hai đầu.
 
 **Phần 2. Trình bày**
 

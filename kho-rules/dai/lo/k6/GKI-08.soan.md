@@ -497,33 +497,50 @@ Số tiền bác Lan bán được là:
 $2160.8000=17280000$ (đồng)
 
 ### Bài 4 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Để ủng hộ bà con ở khu vực Lạng Sơn bị lũ lụt, các học sinh trong một lớp đã quyên góp ủng hộ tiền mặt và lớp trưởng là người tổng hợp. Biết tổng số tiền ủng hộ của lớp gồm 4 loại tiền giấy với mệnh giá 10 000 đồng, 20 000 đồng, 50 000 đồng và 100 000 đồng, hơn nữa số tờ tiền mỗi loại bằng nhau và tất cả có 32 tờ tiền. Tính số tờ mỗi loại và tổng tiền ủng hộ hiện có?
-**Ghi chú:** Đề gốc in "số tiền mỗi loại bằng nhau" — đã sửa thành "số tờ tiền mỗi loại bằng nhau" (xem dòng Chưa chắc).
-**Chưa chắc:** đề gốc in lỗi, đáp số dưới đây theo một cách hiểu ĐOÁN. Hiểu đúng chữ "số tiền mỗi loại bằng nhau" thì số tiền mỗi loại là bội chung của bốn mệnh giá, cứ 100000 đồng mỗi loại cần $10+5+2+1=18$ tờ, mà $32$ không chia hết cho $18$ nên vô nghiệm (đã vét cạn bằng máy: 0 nghiệm). Có hai cách chữa: (1) đổi "số tiền" thành "số tờ" — ra $32:4=8$ tờ mỗi loại, tổng 1440000 đồng (cách đang dùng; cùng mức với Bài 4 của mã 602, 603 là toán thực tế bốn phép tính); (2) giữ "số tiền mỗi loại bằng nhau" và đổi 32 thành 36 tờ — ra 20, 10, 4, 2 tờ, tổng 800000 đồng. Không biết trường chấm theo đáp án nào — CEO chọn.
+**Đề:** Để ủng hộ bà con ở khu vực Lạng Sơn bị lũ lụt, các học sinh trong một lớp đã quyên góp ủng hộ tiền mặt và lớp trưởng là người tổng hợp. Biết tổng số tiền ủng hộ của lớp gồm 4 loại tiền giấy với mệnh giá 10 000 đồng, 20 000 đồng, 50 000 đồng và 100 000 đồng, hơn nữa số tiền mỗi loại bằng nhau và tất cả có 36 tờ tiền. Tính số tờ mỗi loại và tổng tiền ủng hộ hiện có?
+**Ghi chú:** Đề gốc in "tất cả có 32 tờ tiền" — vô nghiệm (số tiền mỗi loại bằng nhau thì cứ một tờ 100 000 đồng phải đi kèm 2 + 5 + 10 tờ của ba loại kia, tức 18 tờ một nhóm, mà 32 không chia hết cho 18). CEO chốt 10/10: sửa thành 36 tờ.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** bốn loại tiền có **cùng số tờ**, nên chia đều 32 tờ cho 4 loại.
+**Mấu chốt:** **số tiền** mỗi loại bằng nhau nên mệnh giá càng nhỏ thì càng phải nhiều tờ; lấy số tờ 100 000 đồng làm gốc để tính số tờ của ba loại còn lại.
 
-**Bước 1.** Hiểu đề: có 4 loại tiền, mỗi loại có số tờ như nhau và tổng cộng 32 tờ.
+**Bước 1.** Hiểu đề: bốn loại tiền có số tiền như nhau (không phải số tờ như nhau) và tổng cộng có 36 tờ.
 
-**Bước 2.** Tìm số tờ mỗi loại bằng cách lấy tổng số tờ chia cho số loại tiền.
+**Bước 2.** So các mệnh giá với 100 000 đồng: một tờ 100 000 đồng bằng mấy tờ 50 000 đồng, mấy tờ 20 000 đồng, mấy tờ 10 000 đồng.
 
-**Bước 3.** Tính tổng tiền: mỗi loại thu được số tờ nhân với mệnh giá, rồi cộng bốn loại lại.
+**Bước 3.** Gọi số tờ 100 000 đồng là $n$, viết số tờ của ba loại còn lại theo $n$ rồi cộng cả bốn loại, cho bằng 36 để tìm $n$.
 
-**Bước 4.** Đặt thừa số chung (số tờ mỗi loại) ra ngoài ngoặc để tính nhanh tổng tiền.
+**Bước 4.** Tính số tờ từng loại, rồi tính tổng tiền bằng số tiền của một loại nhân với 4.
 
-**Chú ý:** số tiền mỗi loại không bằng nhau vì mệnh giá khác nhau; thứ bằng nhau là số tờ.
+Thử lại: $2+4+10+20=36$ (tờ) và $2.100000=4.50000=10.20000=20.10000=200000$ (đồng).
 
 **Phần 2. Trình bày**
 
-Số tờ tiền mỗi loại là:
+Gọi số tờ tiền loại 100 000 đồng là $n$ (tờ, $n\in\mathbb{N}^*$).
 
-$32:4=8$ (tờ)
+Số tiền loại 100 000 đồng là $100000.n$ (đồng). Vì số tiền mỗi loại bằng nhau nên:
+
+Số tờ tiền loại 50 000 đồng là $100000.n:50000=2n$ (tờ)
+
+Số tờ tiền loại 20 000 đồng là $100000.n:20000=5n$ (tờ)
+
+Số tờ tiền loại 10 000 đồng là $100000.n:10000=10n$ (tờ)
+
+Tất cả có 36 tờ tiền nên:
+
+$n+2n+5n+10n=36$
+
+$18n=36$
+
+$n=36:18$
+
+$n=2$
+
+Vậy có 2 tờ 100 000 đồng, $2.2=4$ tờ 50 000 đồng, $5.2=10$ tờ 20 000 đồng và $10.2=20$ tờ 10 000 đồng.
 
 Tổng số tiền ủng hộ hiện có là:
 
-$8.(10000+20000+50000+100000)=8.180000=1440000$ (đồng)
+$4.(100000.2)=4.200000=800000$ (đồng)
 
 ### Bài 5 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm số tự nhiên $x$ để $(x+13)\vdots(x-3)$.

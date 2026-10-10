@@ -212,7 +212,7 @@ B. Hình b.
 C. Hình c.
 D. Hình d.
 **Hình:** p1c8_lai.png
-**Chưa chắc:** ĐỀ LỖI — không phương án nào đúng. Hai lượt giải độc lập (trạm soạn và trạm soát, đã phóng to từng biển từ PDF gốc ở 600 dpi) đều thấy cả 4 hình có trục đối xứng: a) biển tròn hai vạch chéo chữ X — 4 trục; b) tam giác có dấu "!" — 1 trục thẳng đứng; c) hình tròn có vạch ngang — 2 trục; d) mũi tên thẳng chỉ sang phải — 1 trục NẰM NGANG (thân, đầu và mũi nhọn của mũi tên cân qua đường ngang đi qua tâm hình tròn). Đang để `dap_an=D` vì hình d là hình duy nhất không có trục thẳng đứng (đoán ý người ra đề), lời giải viết đúng sự thật là hình d vẫn có trục nằm ngang. CEO quyết: bỏ câu · hoặc sửa đề thành "không có trục đối xứng thẳng đứng" (khi đó D đúng) · hoặc giữ nguyên.
+**Ghi chú:** Đề gốc lỗi: cả 4 biển đều có trục đối xứng (a: 4 trục · b: 1 trục thẳng đứng · c: 2 trục · d: 1 trục nằm ngang) nên theo đúng chữ thì không phương án nào đúng. CEO chốt 10/10: giữ đáp án D (hình duy nhất không có trục đối xứng thẳng đứng); lời giải nói rõ hình d vẫn có một trục nằm ngang.
 
 **Phần 1. Hướng dẫn**
 
@@ -327,8 +327,7 @@ $=30$
 
 ### Bài 2a | kho=dai | loai=tra_loi_ngan | dap_an=-4
 **Đề:** Tìm số nguyên $x$, biết: $x-8=-12$
-**Ghi chú:** Đề gốc in lời dẫn chung "Tìm số tự nhiên $x$" cho cả hai ý, nhưng ý a) có nghiệm $x=-4$ không phải số tự nhiên — đã sửa lời dẫn ý a) thành "số nguyên".
-**Chưa chắc:** đề in "số tự nhiên" nên theo đúng chữ thì ý a) không có số tự nhiên $x$ nào thoả mãn; cả hai lượt giải độc lập đều ra $x=-4$ và đều hiểu là đề in nhầm, muốn hỏi "số nguyên" (ý này thuộc phần số nguyên). CEO quyết: giữ cách sửa đề thành "số nguyên" (đáp số $-4$) hay giữ nguyên chữ của đề (trả lời "không có số tự nhiên $x$ nào", đổi sang tự luận).
+**Ghi chú:** Đề gốc in lời dẫn chung "Tìm số tự nhiên $x$" cho cả hai ý, nhưng ý a) có nghiệm $x=-4$ không phải số tự nhiên — đã sửa lời dẫn ý a) thành "số nguyên" (CEO duyệt 10/10).
 
 **Phần 1. Hướng dẫn**
 

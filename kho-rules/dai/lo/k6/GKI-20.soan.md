@@ -361,7 +361,7 @@ $x=112$
 
 ### Bài 2b | kho=dai | loai=tra_loi_ngan | dap_an=14
 **Đề:** Tìm số tự nhiên $x$, biết: $2x-3=5^5:5^3$
-**Chưa chắc:** đề gốc in HAI dòng mang nhãn b): dòng nằm đúng chỗ ý b) của Câu 2 là $2x-3=5^5:5^3$ (đã nhập ở đây), và một dòng lẻ "b) 2.(x – 3) = 98" nằm đầu trang 2, ngay sau ý d) và trước Câu 3. Dòng lẻ cùng phông chữ với ý a), còn chữ "b)" của ý đã nhập in phông khác ⇒ nhiều khả năng dòng lẻ là ý b) cũ, người ra đề thay ý mới mà quên xoá. Câu 2 đã đủ 4 ý a) – d) cho 2,0 điểm và cả đề đủ 10 điểm nên KHÔNG nhập dòng lẻ. Cần người duyệt quyết: bỏ hẳn như hiện tại, hay nhập thêm thành một câu (khi đó đáp số là $x=52$ vì $x-3=98:2=49$).
+**Ghi chú:** Đề gốc in thừa một dòng lẻ "b) $2.(x-3)=98$" ở đầu trang 2, sau ý d) và trước Câu 3 (ý b cũ quên xoá). CEO chốt 10/10: bỏ, không nhập dòng đó.
 
 **Phần 1. Hướng dẫn**
 

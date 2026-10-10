@@ -143,7 +143,7 @@ A. 1
 B. 3
 C. $\{1;4;7\}$
 D. 9
-**Chưa chắc:** phương án A (chữ số 1) cũng làm số chia hết cho 3 nhưng chưa đủ; chọn C vì đầy đủ các chữ số thoả mãn.
+**Ghi chú:** Phương án A (chữ số 1) cũng làm số chia hết cho 3 nhưng chưa đủ; đáp án là C vì nêu đủ các chữ số thoả mãn — CEO chốt 10/10.
 
 **Phần 1. Hướng dẫn**
 
@@ -230,9 +230,9 @@ Chọn A.
 **Đề:** Dạng phân tích ra thừa số nguyên tố của số 140 là:
 A. $4.5.7$
 B. $2^2.5.7$
-C. $2.2.5.7$
+C. $2.5^2.7$
 D. $2.70$
-**Chưa chắc:** phương án C ($2.2.5.7$) cũng là tích các thừa số nguyên tố bằng 140 nhưng chưa viết gọn bằng luỹ thừa; chọn B theo cách viết chuẩn của SGK.
+**Ghi chú:** Đề gốc in phương án C là $2.2.5.7$ — cũng là tích các thừa số nguyên tố bằng 140, chỉ chưa viết gọn bằng luỹ thừa, dễ gây tranh cãi. CEO chốt 10/10: đổi C thành phương án sai ($2.5^2.7$).
 
 **Phần 1. Hướng dẫn**
 
@@ -244,7 +244,7 @@ D. $2.70$
 
 **Bước 3.** Gom các thừa số giống nhau thành luỹ thừa rồi chọn phương án trùng với kết quả.
 
-**Chú ý:** thứ tự các thừa số trong tích không quan trọng.
+**Chú ý:** phương án C gồm toàn thừa số nguyên tố nhưng $2.5^2.7=350$, không bằng 140; phải kiểm cả giá trị của tích.
 
 **Phần 2. Trình bày**
 

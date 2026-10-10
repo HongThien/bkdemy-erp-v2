@@ -559,7 +559,7 @@ $x=55$
 a) Tính diện tích hồ bơi.
 b) Nếu lát sân bằng những viên gạch hình vuông có cạnh $50\ cm$ thì cần bao nhiêu viên gạch?
 **Hình:** p2c6_lai.png
-**Chưa chắc:** ý b đề gốc ghi "lát sân" trong khi hình chỉ có "hồ bơi" và không cho kích thước sân nào; lời giải hiểu là lát kín đúng phần diện tích hồ bơi ở ý a (cách hiểu duy nhất tính được, ra 216 viên). Người duyệt quyết có sửa chữ "lát sân" thành "lát đáy hồ bơi" hay không.
+**Ghi chú:** Ý b đề gốc ghi "lát sân" trong khi hình chỉ có hồ bơi và không cho kích thước sân nào; lời giải hiểu là lát kín đúng phần diện tích hồ bơi ở ý a (216 viên) — CEO duyệt 10/10.
 
 **Phần 1. Hướng dẫn**
 

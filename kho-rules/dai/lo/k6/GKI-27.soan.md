@@ -576,10 +576,10 @@ Với $2n+1=1$ thì $n=0$; với $2n+1=3$ thì $n=1$; với $2n+1=9$ thì $n=4$.
 
 Vậy $n\in\{0;1;4\}$.
 
-### Bài 5.2 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Năm sinh của một cầu thủ bóng đá là $\overline{19ab}$. Tính đến năm 2021, tuổi của cầu thủ này đúng bằng tổng các chữ số của năm sinh. Hỏi năm nay cầu thủ đó bao nhiêu tuổi?
+### Bài 5.2 | kho=dai | loai=tra_loi_ngan | dap_an=30
+**Đề:** Năm sinh của một cầu thủ bóng đá là $\overline{19ab}$. Tính đến năm 2021, tuổi của cầu thủ này đúng bằng tổng các chữ số của năm sinh. Hỏi năm nay (năm 2026) cầu thủ đó bao nhiêu tuổi?
 **Ghi chú:** Đề gốc là Bài 5, ý b).
-**Chưa chắc:** đề hỏi "năm nay" nhưng chỉ cho mốc năm 2021, trong khi đây là đề của năm học 2025–2026. Năm sinh 1996 là chắc chắn (hai trạm giải độc lập cùng ra). Lời giải đang hiểu "năm nay" là năm 2021 nên kết luận 25 tuổi; nếu hiểu "năm nay" là năm làm bài 2025 thì là $2025-1996=29$ tuổi. Đáp số phụ thuộc cách hiểu nên để tự luận (chỉ in). Cần người duyệt chốt: sửa chữ đề thành "Hỏi năm 2021…" (đáp số 25, đổi được sang trả lời ngắn) hay giữ nguyên đề.
+**Ghi chú:** Đề gốc hỏi "năm nay" mà chỉ cho mốc năm 2021. CEO chốt 10/10: năm nay là năm 2026 ⇒ 30 tuổi; đã thêm "(năm 2026)" vào câu hỏi để đáp số không đổi theo năm làm bài.
 
 **Phần 1. Hướng dẫn**
 
@@ -589,7 +589,9 @@ Vậy $n\in\{0;1;4\}$.
 
 **Bước 2.** Dùng điều kiện: tuổi cộng năm sinh bằng 2021, thay tuổi bằng tổng các chữ số để lập một đẳng thức theo $a$ và $b$.
 
-**Bước 3.** Vì $a$, $b$ là chữ số (từ 0 đến 9) nên giới hạn giá trị của $11a$, từ đó tìm $a$ rồi $b$ và tính tuổi.
+**Bước 3.** Vì $a$, $b$ là chữ số (từ 0 đến 9) nên giới hạn giá trị của $11a$, từ đó tìm $a$ rồi $b$ và năm sinh.
+
+**Bước 4.** Lấy năm nay (2026) trừ đi năm sinh để được tuổi năm nay.
 
 Thử lại: $2021-1996=25$ và $1+9+9+6=25$ (đúng).
 
@@ -615,9 +617,11 @@ Vì $a\le 9$ nên $11a\le 99$. Trong khoảng từ 93 đến 99 chỉ có 99 chi
 
 Khi đó $2b=111-99=12$ nên $b=6$.
 
-Năm sinh của cầu thủ là $1996$, nên tuổi tính đến năm 2021 là $2021-1996=25$ (tuổi).
+Vậy cầu thủ sinh năm $1996$.
 
-Vậy năm nay (năm 2021) cầu thủ đó 25 tuổi.
+Năm nay (năm 2026) cầu thủ đó có số tuổi là:
+
+$2026-1996=30$ (tuổi)
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
@@ -625,4 +629,4 @@ Vậy năm nay (năm 2021) cầu thủ đó 25 tuổi.
 - Đây là đề minh hoạ số 1 của THCS Nghĩa Tân (phường Nghĩa Đô), bộ KNTT, nội dung giữa kì 1 gồm số tự nhiên, chia hết, ước và hình phẳng. Bài 3.2 dùng ước của 36 (không cần ƯCLN hay BCNN).
 - Bài 3.1 và Bài 4.2 có đáp số tính theo nghìn đồng (3620 nghìn đồng; 18900 nghìn đồng), đề không nói đơn vị của đáp số nên để tự luận.
 - Bài 4 có hai ảnh trong đề: hình chữ nhật không số đo (gắn vào Bài 4.1) và tranh minh hoạ vườn rau (chỉ trang trí, không đính kèm Bài 4.2).
-- Bài 5.2: "năm nay" không khớp mốc 2021 của đề, xem dòng Chưa chắc của câu.
+- Bài 5.2: CEO chốt 10/10 "năm nay" là năm 2026 ⇒ 30 tuổi (trả lời ngắn), xem dòng Ghi chú của câu.
