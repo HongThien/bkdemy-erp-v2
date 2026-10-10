@@ -132,6 +132,7 @@ for (const t of tho) {
       ? { ket_qua: 'dat', ghi_chu: `nguồn là ẢNH scan (trang PDF ${b.trang_pdf}): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số` }
       : { ket_qua: 'khong_kiem_duoc', ghi_chu: `nguồn là ẢNH scan (trang PDF ${b.trang_pdf}): máy không đối chiếu được đề với kết quả sách (${chep.ghi_chu.slice(0, 70)}) — người soát đối chiếu ảnh` },
     ...(s.nhom_chot ? { kiem_dang: { ket_qua: 'dat', ghi_chu: `nhóm do CEO chốt (ghi trong ${TEN}.sua.json) — hai lượt gán máy lệch nhau` } } : nCB ? { kiem_dang: { ket_qua: 'dat', ghi_chu: `luật máy (CEO 10/10): câu tầng "Bài tập cơ bản" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài ${b.bai})` } } : {}),
+    ...(s.cho_quyet ? { cho_quyet: s.cho_quyet } : {}),   // --sua { cho_quyet: "<việc đang chờ CEO quyết>" } ⇒ tu-duyet.mjs KHÔNG tự duyệt câu này
     _kiem_dap_so: ds.ket_qua, _kiem: b.kiem,
   })
 }

@@ -287,6 +287,12 @@ Một chuyên đề **dùng chung**, đứng đầu chủ đề 1 và chủ đ�
 
 **Tên sách ghi vào `ten_de_goc`** (khoá chống ghi trùng, đừng đổi): NDT = `CĐ BD HSG Toán 8 – Nguyễn Đức Tấn`. Mã câu: `<khu>.<bài><ý>@p<trang PDF>` — khu NDT: `D1`–`D4` Đại chương I–IV · `H1`–`H4` Hình · `OT` ôn tập cuối năm · `PA` `PB` `PC` phụ lục.
 
+**⭐ TỰ DUYỆT (Thùy 10/10: *"bài của 8T, m auto duyệt đưa vào kho luôn nhé"*) — trạm 6, sau cổng ghi:** `node scripts/kho/sach/tu-duyet.mjs <lô.json> … --sach "<tên sách>" [--ghi]` ⇒
+`da_duyet = true`, `duyet_nguon = 'ai'` cho các câu của lô. **Không tự duyệt, để người:** câu ở dạng chờ (DB cũng chặn) · câu cổng gắn cờ `nghi` · câu đang chờ CEO quyết
+(`cho_quyet` trong `.sua.json` — các câu này có trên trang "câu cần chị xem"). Đây là quyết định RIÊNG của khối 8T; khối khác vẫn theo luật lên cấp của `spec-luong-kho.md` (C9: đo tỉ lệ lọt rồi mới tự duyệt)
+— script chỉ chạy cho khối có tên trong `DUOC_TU_DUYET`. Hệ quả phải nhớ: câu vào kho chuẩn ngay, **không còn người đọc trước** — lưới còn lại là máy thay số (≈ 60% câu),
+Opus soát đối chiếu ảnh sách (mọi câu), và báo sai từ GV / HS sau khi dùng. Câu chứng minh (máy không kiểm được) chỉ có một lớp là Opus soát.
+
 **⭐ LỌC TRÙNG (Thùy 10/10: *"T nghĩ phải làm lọc trùng đấy"*) — `scripts/kho/sach/loc-trung.mjs`, chạy trong trạm 2 khi thêm `--db --sach "<tên sách>"`:**
 
 | Mức | Máy nhận ra bằng gì | Máy làm gì |
@@ -311,7 +317,7 @@ Một chuyên đề **dùng chung**, đứng đầu chủ đề 1 và chủ đ�
 |---|---|---:|---:|---:|---:|---|---|
 | 1 (10/10) | NDT Đại I §3–5 — phân tích nhân tử, bài 27–60 | **72** | 34 | 55/72 | 4 | 67/72 | `NDT-D1-s3/s4/s5.cs.md` · `NDT-D1-ptnt.*` |
 | 2 (10/10) | NDT Đại I §2 hằng đẳng thức (14–26) · §7 chia đa thức (71–81) · ôn tập chương I (82–89) · ý b bài 35 | **71** | 33 | 40/71 | 3 | 34/38 câu không thuộc tầng cơ bản | `NDT-D1-s2/s7/ot/bs.cs.md` · `NDT-D1-hdt-chia-ot.*` |
-| **Tổng** | | **143** | 67 | | | | kho Đại 8T: **192 câu** (50 cũ đã duyệt + 142 mới chưa duyệt; 2 câu trùng của lô 1 đã xoá mềm; bài 89b nhập thêm sau khi CEO chốt) |
+| **Tổng** | | **143** | 67 | | | | kho Đại 8T: **192 câu** (50 cũ người duyệt + **141 mới đã tự duyệt** 10/10 + 1 chưa duyệt — bài 89b ở dạng chờ; 2 câu trùng của lô 1 đã xoá mềm; bài 89b nhập thêm sau khi CEO chốt) |
 
 Lọc trùng lô 2: bỏ 1 câu trước khi ghi (bài 17d = 17b đổi thứ tự hạng tử). Sách in sai máy bắt được: 55d, 82c, 84b (đều đã mở ảnh xác nhận; lời giải kho ghi kết quả đúng).
 
@@ -354,3 +360,4 @@ Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 | 10/10 | Lô 2 (71 câu) | *(ghi việc làm — CEO chưa xem)* | Bộ lọc trùng bản đầu coi "bằng nhau về giá trị" là trùng ⇒ bỏ nhầm bài 84b (hai đề khác nhau, cùng đa thức với 57b) — bắt được khi đọc báo cáo trước lúc ghi ⇒ hạ xuống mức NGHI; mức bỏ chỉ còn: cùng tập hạng tử, hoặc cùng bài của cùng sách |
 | 10/10 | Trang "câu cần chị xem" | *"Cái kia là biến đổi chứ. hay đề bài thế ?"* · *"Mấy câu sai cần review thì m phải cho t view cụ thể chứ"* | Báo câu treo bằng danh sách chữ là **không đủ**: mỗi lần báo lô kèm trang `k8T-can-xem.html` (ảnh cắt từ sách gốc + đề / đáp án / lời giải trong kho + việc cần quyết), dựng bằng `lo/k8T/can-xem.mjs` |
 | 10/10 | 18 thẻ của trang xem | 1–2: *"Bỏ câu a"* · 3: *"Cho thêm điều kiện"* · 4–6: *"Sửa nhé"* · 7–8: OK · 9–11: *"Của đề riêng cứ để riêng thôi. Coi như là biến thể. Giữ nhé"*, *"Form ban đầu khác nhau mà"*, *"Giữ cả. giống hệt nhau mới bỏ. chứ còn form đề khác nhau cứ giữ"* · 12: *"cái sau. Ưu tiên các dạng ở đây là dùng biến đổi và phân tích thành nhân tử, chưa có công cụ lớn đâu"* · 13: *"Nhẩm nghiệm. bậc 3 hầu như là nhẩm nghiệm"* · 14–17: lượt gán thứ hai · 18: lượt thứ nhất | Xoá mềm 2 câu, xếp nhóm 7 câu (`ap-chot-2026-10-10.mjs`). **Luật trùng:** giống hệt (hoặc sách in sẵn dạng đã tách của cùng bài) mới bỏ; đề khác form, đề thi khác nhau khác số = biến thể, giữ. **Luật xếp nhóm** (ghi vào brief §4): chương đa thức – nhân tử ưu tiên nhóm "biến đổi", chưa dùng nhóm "công cụ lớn"; đa thức bậc ba ⇒ nhóm nhẩm nghiệm. Thẻ 9 (bài 89b) tôi không chắc câu trả lời nào là của nó ⇒ hỏi lại, chưa nhập |
+| 10/10 | Duyệt | *"bài của 8T, m auto duyệt đưa vào kho luôn nhé"* | `tu-duyet.mjs` (trạm 6): câu qua cổng ⇒ `da_duyet=true`, `duyet_nguon='ai'`; trừ câu dạng chờ / cờ nghi / đang chờ CEO quyết. Áp ngay cho lô 1–2: tự duyệt 141 câu (84 máy đã xác nhận đáp án, 57 chỉ có Opus soát). Quyết định riêng 8T — khác `spec-luong-kho.md` C9, CEO biết và chọn |

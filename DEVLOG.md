@@ -36686,3 +36686,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **10/10 (khuya 3, tiếp):** Thùy chốt bài 89b: "Nhập kết quả đúng nhé" ⇒ gỡ `bo` trong `NDT-D1-hdt-chia-ot.sua.json`, ghi `sach_in_sai`, dựng lại lô 2 (72 câu) và ghi thêm đúng 1 câu (71 câu cũ cổng bỏ qua). Kho Đại 8T: 192 câu, dạng chờ 1 (89b).
 
 - **10/10 (tiếp 3):** Thùy: "đưa Nuôi thú ra màn hình chính" ⇒ nút 🐾 Nuôi thú ở màn bìa (hàng 3 nút Toán/Anh/Thú), `S.tuTho` nhớ màn trước để nút quay lại về đúng chỗ. Commit LunarCherry.
+
+## 10/10 (khuya 4) — 8T: tự duyệt
+- **Thùy:** "bài của 8T, m auto duyệt đưa vào kho luôn nhé".
+- **Làm:** `scripts/kho/sach/tu-duyet.mjs` (chỉ khối trong `DUOC_TU_DUYET` = 8T; `da_duyet=true`, `duyet_nguon='ai'`; bỏ qua câu dạng chờ / cờ nghi / `cho_quyet`). Chạy thử ROLLBACK rồi `--ghi` cho lô 1–2: 141 câu (84 `khop`, 57 `khong_kiem_duoc`), 1 câu để lại (89b, dạng chờ). DB: kho Đại 8T 191 đã duyệt (50 người + 141 ai) · 1 chưa.
+- **Ghi chú:** khác luật lên cấp C9 của `spec-luong-kho.md` (đo tỉ lệ lọt trước khi tự duyệt) — là quyết định riêng của CEO cho 8T, ghi ở `k8T.md` §7 + §10. Lô 3 (7 agent: NĐT Đại I §1, §6 + chương II) đang chạy.
