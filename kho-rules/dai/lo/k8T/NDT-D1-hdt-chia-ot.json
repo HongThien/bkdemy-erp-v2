@@ -1617,6 +1617,28 @@
   "_kiem_dap_so": "khong_kiem_duoc"
  },
  {
+  "ma_nguon": "D1.89b@p30",
+  "lo": 2,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hai đa thức $P(x)=3x^5+2x^2+2011$, $Q(x)=2x^2+x-1$. Gọi $x_1,x_2,x_3,x_4,x_5$ là các nghiệm của đa thức $P(x)$. Hãy tính giá trị của $Q(x_1)Q(x_2)Q(x_3)Q(x_4)Q(x_5)$.",
+  "noi_dung_sach": "Cho hai đa thức $P(x)=3x^5+2x^2+2011$, $Q(x)=2x^2+x-1$. Gọi $x_1,x_2,x_3,x_4,x_5$ là các nghiệm của đa thức $P(x)$. Hãy tính giá trị của $Q(x_1)Q(x_2)Q(x_3)Q(x_4)Q(x_5)$.",
+  "dap_an": "$14376190$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cần tích các giá trị $Q(x_i)$ theo các nghiệm của $P$, mà $Q$ phân tích được thành hai nhân tử bậc nhất; tích $\\prod(c-x_i)$ chính là $P(c)$ chia cho hệ số cao nhất của $P$, nên không cần tìm từng nghiệm.\n\n**Bước 1.** Viết $P(x)$ thành tích của hệ số cao nhất với các nhân tử $x-x_i$, vì $x_1,\\dots,x_5$ là năm nghiệm của đa thức bậc năm.\n\n**Bước 2.** Phân tích $Q(x)$ thành tích của hệ số $2$ với hai nhân tử bậc nhất rồi viết tích cần tính thành hai tích theo các nhân tử đó.\n\n**Bước 3.** Mỗi tích $\\prod(c-x_i)$ bằng $P(c)$ chia cho hệ số cao nhất của $P$, thay $c$ bằng hai giá trị thích hợp để tính.\n\n**Chú ý:** Đừng quên chia cho hệ số cao nhất $3$ của $P$ ở mỗi tích; thiếu bước này kết quả sẽ sai gấp $9$ lần.\n\n**Phần 2. Trình bày**\n\nVì $P(x)$ có bậc $5$, hệ số cao nhất $3$ và nhận $x_1,\\dots,x_5$ làm nghiệm nên $P(x)=3(x-x_1)(x-x_2)(x-x_3)(x-x_4)(x-x_5)$.\n\nTa có $Q(x)=2x^2+x-1=2\\left(\\dfrac{1}{2}-x\\right)(-1-x)$.\n\n$Q(x_1)Q(x_2)Q(x_3)Q(x_4)Q(x_5)=2^5\\left(\\dfrac{1}{2}-x_1\\right)\\cdots\\left(\\dfrac{1}{2}-x_5\\right)\\cdot(-1-x_1)\\cdots(-1-x_5)$\n\nTừ $P\\left(\\dfrac{1}{2}\\right)=3\\left(\\dfrac{1}{2}-x_1\\right)\\cdots\\left(\\dfrac{1}{2}-x_5\\right)$ và $P(-1)=3(-1-x_1)\\cdots(-1-x_5)$ suy ra\n\n$=32\\cdot\\dfrac{P\\left(\\dfrac{1}{2}\\right)}{3}\\cdot\\dfrac{P(-1)}{3}=\\dfrac{32}{9}P\\left(\\dfrac{1}{2}\\right)P(-1)$\n\nMà $P\\left(\\dfrac{1}{2}\\right)=\\dfrac{3}{32}+\\dfrac{1}{2}+2011=\\dfrac{64371}{32}$ và $P(-1)=-3+2+2011=2010$.\n\n$=\\dfrac{32}{9}\\cdot\\dfrac{64371}{32}\\cdot2010=\\dfrac{64371\\cdot2010}{9}=21457\\cdot670=14376190$\n\nVậy $Q(x_1)Q(x_2)Q(x_3)Q(x_4)Q(x_5)=14376190$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích đa thức theo nghiệm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 30): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 30, bài 89 b) sách viết ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
   "ma_nguon": "D1.35b@p13",
   "lo": 2,
   "khoi": "8T",

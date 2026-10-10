@@ -311,7 +311,7 @@ Một chuyên đề **dùng chung**, đứng đầu chủ đề 1 và chủ đ�
 |---|---|---:|---:|---:|---:|---|---|
 | 1 (10/10) | NDT Đại I §3–5 — phân tích nhân tử, bài 27–60 | **72** | 34 | 55/72 | 4 | 67/72 | `NDT-D1-s3/s4/s5.cs.md` · `NDT-D1-ptnt.*` |
 | 2 (10/10) | NDT Đại I §2 hằng đẳng thức (14–26) · §7 chia đa thức (71–81) · ôn tập chương I (82–89) · ý b bài 35 | **71** | 33 | 40/71 | 3 | 34/38 câu không thuộc tầng cơ bản | `NDT-D1-s2/s7/ot/bs.cs.md` · `NDT-D1-hdt-chia-ot.*` |
-| **Tổng** | | **143** | 67 | | | | kho Đại 8T: **191 câu** (50 cũ đã duyệt + 141 mới chưa duyệt; 2 câu trùng của lô 1 đã xoá mềm) |
+| **Tổng** | | **143** | 67 | | | | kho Đại 8T: **192 câu** (50 cũ đã duyệt + 142 mới chưa duyệt; 2 câu trùng của lô 1 đã xoá mềm; bài 89b nhập thêm sau khi CEO chốt) |
 
 Lọc trùng lô 2: bỏ 1 câu trước khi ghi (bài 17d = 17b đổi thứ tự hạng tử). Sách in sai máy bắt được: 55d, 82c, 84b (đều đã mở ảnh xác nhận; lời giải kho ghi kết quả đúng).
 
@@ -322,10 +322,10 @@ Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 
 | Câu | Vì sao | Cần gì |
 |---|---|---|
-| NDT ôn tập chương I bài 89b (tích $Q(x_1)\dots Q(x_5)$ theo các nghiệm của đa thức bậc năm) | Đề giả thiết đa thức có 5 nghiệm (thực ra chỉ 1 nghiệm thực); kết quả sách sai gấp 9 | CEO: nhập (với kết quả đúng 14376190) hay bỏ — câu trả lời 10/10 của Thùy ở thẻ này chưa rõ, đã hỏi lại. Hiện **chưa nhập** |
+| NDT ôn tập chương I bài 89b — **đã nhập 10/10** với kết quả đúng 14376190 (Thùy: *"Nhập kết quả đúng nhé"*), đang ở dạng chờ `T18T000000` | Hai lượt gán đều không thấy nhóm khớp (tính tích giá trị đa thức theo các nghiệm) | Học thuật chọn nhóm — tôi nghiêng về 1.3 ① *Tìm dư: Bê-du* (cùng ý "giá trị đa thức tại một điểm") |
 | 41 nhóm mới: mức độ + bậc tối thiểu đang tạm (nâng cao 4 / A · cơ bản 2 / A) | Hai cột bắt buộc, chưa có giá trị thật | CEO chỉnh ở màn Bản đồ |
 
-**Đã chốt 10/10 (Thùy xem trang, trả lời từng thẻ — áp bằng `kho-rules/dai/lo/k8T/ap-chot-2026-10-10.mjs`):** xoá mềm 2 câu trùng (50a, 53a: *"Bỏ câu a"*) · 6 chỗ sách in sai / đề thiếu: đồng ý cách đã sửa · ba câu họ $a^{100}+b^{100}=\dots$ và cặp 84b – 57b: **giữ cả** · 7 câu dạng chờ đã có nhóm (36 → 3.1 ① · 55a → 1.2 ③ · 26b → 1.5 ② · 26d → 4.1 ② · 80a, 80b → 1.3 ① · 86 → 1.5 ②). Dạng chờ `T18T000000` hiện 0 câu.
+**Đã chốt 10/10 (Thùy xem trang, trả lời từng thẻ — áp bằng `kho-rules/dai/lo/k8T/ap-chot-2026-10-10.mjs`):** xoá mềm 2 câu trùng (50a, 53a: *"Bỏ câu a"*) · 6 chỗ sách in sai / đề thiếu: đồng ý cách đã sửa · ba câu họ $a^{100}+b^{100}=\dots$ và cặp 84b – 57b: **giữ cả** · 7 câu dạng chờ đã có nhóm (36 → 3.1 ① · 55a → 1.2 ③ · 26b → 1.5 ② · 26d → 4.1 ② · 80a, 80b → 1.3 ① · 86 → 1.5 ②). Dạng chờ `T18T000000` hiện 1 câu (bài 89b).
 
 **Việc kỹ thuật còn lại (Claude tự làm):** nhánh Hình: brief chép–soạn Hình + vẽ hình bằng code + `nhap_hh_tu_draft.mjs` vào bài của bản đồ Hình · lý thuyết cho 18 bài Hình 8T · `k8T-kiem.mjs`: thêm vét cạn cho bài nghiệm nguyên / tìm $n$ để chia hết, `\sqrt` cho đáp án có căn · bảng `--co-ban` cho Đại III–IV và các quyển sau.
 

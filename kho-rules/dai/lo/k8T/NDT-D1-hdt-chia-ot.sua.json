@@ -1,9 +1,19 @@
 {
-  "D1.26b@p10": { "nhom_chot": "T18T010302" },
-  "D1.26d@p11": { "nhom_chot": "T18T040102" },
-  "D1.80a@p27": { "nhom_chot": "T18T010401" },
-  "D1.80b@p27": { "nhom_chot": "T18T010401" },
-  "D1.86@p29": { "nhom_chot": "T18T010302" },
+  "D1.26b@p10": {
+    "nhom_chot": "T18T010302"
+  },
+  "D1.26d@p11": {
+    "nhom_chot": "T18T040102"
+  },
+  "D1.80a@p27": {
+    "nhom_chot": "T18T010401"
+  },
+  "D1.80b@p27": {
+    "nhom_chot": "T18T010401"
+  },
+  "D1.86@p29": {
+    "nhom_chot": "T18T010302"
+  },
   "D1.82c@p28": {
     "sach_in_sai": "trang PDF 28, bài 82 c) sách in 3x^2(x+5y)(x-5xy); nhân tử cuối phải là (x-5y). Đã mở ảnh p-028 xác nhận sách in x-5xy."
   },
@@ -11,6 +21,6 @@
     "sach_in_sai": "trang PDF 29, bài 84 b) sách in (a-b)(b-c)(c-a) — sai dấu (a=0, b=1, c=2: đề cho -2, kết quả sách cho +2); đúng là (a-b)(a-c)(b-c). Đã mở ảnh p-029 xác nhận."
   },
   "D1.89b@p30": {
-    "bo": "đề giả thiết đa thức bậc năm 3x^5+2x^2+2011 có năm nghiệm x1…x5 (thực ra chỉ có một nghiệm thực — cần số phức), và kết quả sách 129385710 sai gấp 9 (đúng 14376190 vì sách quên hệ số cao nhất 3). Để CEO quyết có nhập không."
+    "sach_in_sai": "trang PDF 30, bài 89 b) sách viết P(x)=(x-x1)…(x-x5), quên hệ số cao nhất 3 ⇒ kết quả 129385710 sai gấp 9; đúng là 14376190. CEO 10/10: \"Nhập kết quả đúng nhé\". Lưu ý đề: đa thức chỉ có một nghiệm thực, năm nghiệm là kể cả nghiệm phức."
   }
 }

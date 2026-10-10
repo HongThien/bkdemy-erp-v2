@@ -88,9 +88,9 @@ const B = [
   the('Bài 23 ý b — sách in sai dấu và chưa kết luận', anh(9, 1205, 80, 'Bài 23, đề') + anh(10, 95, 265, 'Bài 23, lời giải của sách')
     + muc('Vấn đề', doan('Dòng cuối sách in $-\\left[\\left(x-\\dfrac{5}{2}\\right)^2-120\\dfrac{3}{4}\\right]$ — phải là $+120\\dfrac{3}{4}$ (vì $127-\\dfrac{25}{4}=120\\dfrac{3}{4}$), và sách chưa nêu giá trị lớn nhất.'))
     + muc('Trong kho', trongKho('D1.23b@p9')), 'Kho ghi GTLN bằng $-\\dfrac{483}{4}$ khi $x=\\dfrac{5}{2}$.', true),
-  the('Bài 89 ý b — đề có vấn đề, kết quả sách sai — CHƯA nhập', anh(30, 435, 625, 'Bài 89, đề và lời giải của sách')
+  the('Bài 89 ý b — đề có vấn đề, kết quả sách sai', anh(30, 435, 625, 'Bài 89, đề và lời giải của sách')
     + muc('Vấn đề', doan('(1) Đề nói "gọi $x_1,\\dots,x_5$ là các nghiệm của $P(x)=3x^5+2x^2+2011$" — đa thức này chỉ có **một** nghiệm thực; năm nghiệm thì phải kể nghiệm phức, ngoài tầm lớp 8.\n\n(2) Sách viết $P(x)=(x-x_1)\\dots(x-x_5)$, quên hệ số cao nhất $3$ ⇒ kết quả $129385710$ sai gấp $9$ lần. Tính đúng: $32\\cdot\\dfrac{P\\left(\\frac12\\right)}{3}\\cdot\\dfrac{P(-1)}{3}=14376190$.')),
-    'Bỏ hẳn câu này, hay nhập với kết quả đúng $14376190$ (lời giải vẫn dùng cách "phân tích theo nghiệm" như sách)?'),
+    + muc('Trong kho', trongKho('D1.89b@p30')), 'Chị chốt 10/10: nhập với kết quả đúng $14376190$. Câu đang ở "Chưa phân dạng" vì chưa nhóm nào khớp.', true),
 ]
 const C = [
   the('Ba câu cùng họ "$a^{100}+b^{100}=a^{101}+b^{101}=a^{102}+b^{102}$"', anh(15, 595, 135, 'NĐT bài 38 c') + anh(18, 95, 170, 'NĐT bài 48')
@@ -146,7 +146,7 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 <p class="dan">Chị hỏi "cái kia là biến đổi chứ, hay đề bài thế?". Cả hai đều là đề của sách: sách cho ý a) ở dạng đã tách sẵn để dẫn sang ý b). Chị đã chốt bỏ ý a) ở cả hai bài.</p>
 ${A.join('\n')}
 <h2 id="b">B. Sách in sai hoặc đề thiếu</h2>
-<p class="dan">Sáu câu đầu đã xử lý trong kho và chị đã xem. Câu cuối (bài 89 b) chưa nhập, còn chờ chị quyết.</p>
+<p class="dan">Sáu câu đầu đã xử lý trong kho và chị đã xem. Câu cuối (bài 89 b) chị đã chốt nhập với kết quả đúng.</p>
 ${B.join('\n')}
 <h2 id="c">C. Máy nghi trùng nhưng không tự bỏ</h2>
 ${C.join('\n')}

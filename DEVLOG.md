@@ -36682,3 +36682,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Luật rút ra:** trùng — giống hệt mới bỏ, khác form / đề thi khác số là biến thể (giữ); xếp nhóm — chương đa thức ưu tiên nhóm biến đổi, bậc ba là nhẩm nghiệm (brief §4).
 - **Sai của tôi:** lượt báo trước chỉ liệt kê câu treo bằng chữ, mô tả hai câu trùng mà không cho thấy đề sách ⇒ Thùy phải hỏi lại. Từ nay trang xem đi kèm báo cáo lô.
 - **Treo:** bài 89b (câu trả lời ở thẻ 9 chưa rõ — đã hỏi lại) · mức độ / bậc của 41 nhóm mới.
+
+- **10/10 (khuya 3, tiếp):** Thùy chốt bài 89b: "Nhập kết quả đúng nhé" ⇒ gỡ `bo` trong `NDT-D1-hdt-chia-ot.sua.json`, ghi `sach_in_sai`, dựng lại lô 2 (72 câu) và ghi thêm đúng 1 câu (71 câu cũ cổng bỏ qua). Kho Đại 8T: 192 câu, dạng chờ 1 (89b).
