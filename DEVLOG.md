@@ -36781,3 +36781,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai rồi sửa:** vá `.cs.md` bằng `node -e` trong bash làm mất `\v` của `\vdots` ⇒ chuyển sang công cụ Edit. Script ghi quy ước bằng template string dính `\8` (đường dẫn Windows) ⇒ viết nội dung ra tệp rồi nối.
 - **Công cụ:** `can-xem.mjs` cắt được ảnh từ PDF thứ hai (`anhT`), tra câu trong kho theo mã nguồn của mọi quyển; `baiTuMa` nhận khu lẫn chữ – số.
 - **Trang xem:** 71 thẻ, 107 ảnh, publish Version 9. Đang chạy 5 agent chép §2 (ví dụ Dạng 1–8, bài tập 1–54).
+
+### 10/10 (tiếp 4) — Lunar Cherry: cho ăn không giới hạn
+- **Thùy:** "để thú ăn được nhiều hơn, con rất thích cho ăn". Bỏ luật từ chối khi no (Talking Tom từ chối, nhưng với bé 6 tuổi cho ăn là trò chính): mỗi món +10 (trước 25), cá +20, đói tụt 20/giờ (trước 12), no ≥ 95 vẫn ăn chỉ ợ "Burp!" + ngáp; 🚽 hiện sau 3 món (trước 2). Thử: 7 món liên tiếp đều ăn, 3 món sau ợ. Commit LunarCherry + spec §3.7.
