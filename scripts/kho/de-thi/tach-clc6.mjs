@@ -101,7 +101,10 @@ function tachDe(ten, ds) {
       nhanTruoc = nhan
       mo(m[2], (m[1] + ' ' + m[4]).trim(), m[3]); continue
     }
-    if (c) c.dong.push(t); else dau.push(t)
+    if (c) c.dong.push(t)
+    // Phần tự luận chỉ có MỘT bài, đề không đánh nhãn "Câu/Bài" (NN 2023) ⇒ mở câu ngầm, đánh số nối tiếp câu cuối của đề
+    else if (p.kieu === 'tu_luan' && cau.length && t.length > 40) { mo(cau.at(-1).so + 1, t); co.push(`câu ${cau.at(-1).so}: đề KHÔNG ghi nhãn câu trong phần tự luận — đánh số nối tiếp`) }
+    else dau.push(t)
   }
   // dựng câu
   const ra = cau.map((x) => {
@@ -118,6 +121,9 @@ function tachDe(ten, ds) {
       const pa = {}
       let hopLe = true
       for (const s of parts) { const mm = /^([A-E])\s*[.)]\s*([\s\S]*)$/.exec(s); if (!mm) { hopLe = false; break } pa[mm[1]] = mm[2].trim() }
+      // tiêu đề phần kế gõ dính sau phương án cuối ("D. 6 ⇥ II. Viết đáp số vào ô trả lời…") ⇒ cắt khỏi phương án
+      const cuoi = Object.keys(pa).at(-1)
+      if (cuoi) pa[cuoi] = pa[cuoi].replace(/\s+(?:[IVX]+\.|PHẦN\s|Phần\s)\s*(?:Viết|VIẾT|Phần|PHẦN|Tự|TỰ|Trắc|TRẮC|Điền|ĐIỀN|Trả|TRẢ|\d|[IVX])[\s\S]*$/, '').trim()
       const k = Object.keys(pa).join('')
       if (hopLe && /^ABC?D?E?$/.test(k) && k.length >= 3) { lua = pa; de = sach.slice(0, iA) } else co.push(`câu ${x.phan}.${x.so}: có dòng "A." nhưng không tách được phương án (${k || 'rỗng'})`)
     }

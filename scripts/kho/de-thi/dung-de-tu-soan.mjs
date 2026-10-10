@@ -36,6 +36,9 @@ const mdDu = readFileSync(tep, 'utf8').replace(/\r\n/g, '\n')
 const iGhiChu = mdDu.search(/^## GHI CHÚ/m)
 const md = iGhiChu >= 0 ? mdDu.slice(0, iGhiChu) : mdDu
 const loi = [], nhac = []
+// Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10).
+const NHAN_CHAM = String(KHOI) !== '8'
+const KHO_DUOC = String(KHOI) === '8' ? ['dai', 'hinh_hoc'] : ['dai', 'hgt']
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)
 if (!mTen) loi.push('thiếu dòng đầu "# ĐỀ | <tên đề>"')
 const meta = Object.fromEntries([...md.slice(0, md.search(/^## /m)).matchAll(/^([a-z_]+):\s*(.+)$/gm)].map((m) => [m[1], m[2].trim()]))
@@ -47,7 +50,11 @@ function kiemCongThuc(nhan, cho, s) {
   for (const m of s.matchAll(/\$([^$]+)\$/g)) {
     try { katex.renderToString(m[1], { throwOnError: true, strict: 'ignore' }) } catch (e) { loi.push(`${nhan} (${cho}): KaTeX hỏng «${m[1].slice(0, 50)}» — ${e.message.slice(0, 80)}`) }
     if (/[À-ỹĐđ]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) loi.push(`${nhan} (${cho}): chữ Việt trong công thức ngoài \\text{}: «${m[1].slice(0, 50)}»`)
-    if (/\\cdot|\\times/.test(m[1])) loi.push(`${nhan} (${cho}): dấu nhân phải là dấu chấm như SGK, gặp «${m[1].slice(0, 50)}»`)
+    if (NHAN_CHAM) { if (/\\cdot|\\times/.test(m[1])) loi.push(`${nhan} (${cho}): dấu nhân phải là dấu chấm như SGK, gặp «${m[1].slice(0, 50)}»`) }
+    else { // khối 8 (k8.md §3): dấu nhân tường minh là \cdot — không \times, không dấu chấm
+      if (/\\times/.test(m[1])) loi.push(`${nhan} (${cho}): khối ${KHOI} không dùng \\times, dùng \\cdot — «${m[1].slice(0, 50)}»`)
+      if (/[0-9A-Za-z)}]\s*\.\s*[0-9A-Za-z(\\]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) loi.push(`${nhan} (${cho}): dấu chấm làm dấu nhân — khối ${KHOI} viết \\cdot — «${m[1].slice(0, 50)}»`)
+    }
   }
 }
 
@@ -70,13 +77,15 @@ for (const kp of khoiPhan) {
     const i1 = than.indexOf('**Phần 1. Hướng dẫn**'), i2 = than.indexOf('**Phần 2. Trình bày**')
     if (i1 < 0 || i2 < i1) { loi.push(`${nhan}: thiếu Phần 1 / Phần 2`); continue }
     // phần trước lời giải: đề · phương án · hình · ghi chú
-    const noiDung = [], luaChon = {}, anh = [], canhBao = []
+    const noiDung = [], luaChon = {}, anh = [], anhGiai = [], canhBao = []
     let dang = null
     for (const d of than.slice(0, i1).split('\n')) {
       let m
       if ((m = d.match(/^\*\*Đề:\*\*\s*(.*)$/))) { dang = 'de'; if (m[1]) noiDung.push(m[1]) }
       else if ((m = d.match(/^([A-D])\.\s+(.+)$/)) && kv.loai === 'trac_nghiem') { dang = 'lc'; luaChon[m[1]] = m[2].trim() }
       else if ((m = d.match(/^\*\*Hình:\*\*\s*(.+)$/))) { dang = null; anh.push(...m[1].split(',').map((x) => x.trim()).filter(Boolean)) }
+      // hình CHỈ của lời giải (bài hình đề không cho hình, HS tự vẽ — K8 10/10): không hiện ở đề, ghi.mjs đưa vào anh_dap_an
+      else if ((m = d.match(/^\*\*Hình giải:\*\*\s*(.+)$/))) { dang = null; anhGiai.push(...m[1].split(',').map((x) => x.trim()).filter(Boolean)) }
       else if ((m = d.match(/^\*\*Ghi chú:\*\*\s*(.+)$/))) { dang = null; canhBao.push(m[1].trim()) }
       else if ((m = d.match(/^\*\*Chưa chắc:\*\*\s*(.+)$/))) { dang = null; canhBao.push('CHƯA CHẮC — ' + m[1].trim()) }
       else if (dang === 'de') noiDung.push(d)
@@ -86,7 +95,7 @@ for (const kp of khoiPhan) {
     const loiGiai = gon(than.slice(i1))
     const p1 = gon(than.slice(i1, i2))
     if (!nd) loi.push(`${nhan}: thiếu "**Đề:**"`)
-    if (!['dai', 'hgt'].includes(kv.kho)) loi.push(`${nhan}: kho phải là dai / hgt`)
+    if (!KHO_DUOC.includes(kv.kho)) loi.push(`${nhan}: kho phải là ${KHO_DUOC.join(' / ')}`)
     if (!['trac_nghiem', 'tra_loi_ngan', 'tu_luan'].includes(kv.loai)) loi.push(`${nhan}: loai sai «${kv.loai}»`)
     for (const l of kiemP1(p1)) loi.push(`${nhan} Phần 1: ${l}`)
     kiemCongThuc(nhan, 'đề', nd); kiemCongThuc(nhan, 'lời giải', loiGiai)
@@ -104,10 +113,11 @@ for (const kp of khoiPhan) {
       // phiếu trả lời 4 ô: chữ số, dấu "-" chỉ ở ô 1, dấu "," ở ô 2 hoặc 3
       if (!/^-?\d+(,\d+)?$/.test(dapAn ?? '') || dapAn.length > 4) loi.push(`${nhan}: đáp số «${dapAn}» không tô được trên 4 ô ⇒ để loai=tu_luan`)
     }
-    for (const f of anh) if (!existsSync(join(LV, 'img', f))) loi.push(`${nhan}: không có hình img/${f}`)
+    for (const f of [...anh, ...anhGiai]) if (!existsSync(join(LV, 'img', f))) loi.push(`${nhan}: không có hình img/${f}`)
+    if (anhGiai.length > 1) nhac.push(`${nhan}: ${anhGiai.length} hình giải — ERP chỉ giữ hình đầu`)
     if (anh.length > 1) nhac.push(`${nhan}: ${anh.length} hình — ERP chỉ giữ hình đầu`)
     cau.push({ phan: thuTu, so: ++so, nhan: mc[1].trim(), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: dapAn, dap_an_nguon: 'claude_giai',
-      menh_de: null, loi_giai: loiGiai, anh, anh_giai: [], dang: null, canh_bao: canhBao })
+      menh_de: null, loi_giai: loiGiai, anh, anh_giai: anhGiai, dang: null, canh_bao: canhBao })
   }
   if (!so) loi.push(`Phần ${thuTu}: không có câu nào`)
 }

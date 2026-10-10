@@ -9,7 +9,9 @@ Bạn soạn lời giải cho MỘT đề thi vào lớp 6 (kiến thức Toán 
 Brief này chỉ nêu phần KHÁC của đề thi.
 
 ## Đầu vào
-`<IN>` = `{ ma_de, ten_de, phan[], cau[] }`. Mỗi câu: `ma_nguon` (vd `"LTV 2018 · 7"`, `"CG 2022 · P1.3"`), `kieu`, `noi_dung`, `lua_chon` (nếu trắc nghiệm), `hinh[]` (đường dẫn ảnh — **phải mở bằng Read** rồi mới giải).
+`<IN>` = `{ ma_de, ten_de, phan[], cau[] }`. Mỗi câu: `ma_nguon` (vd `"LTV 2018 · 7"`, `"CG 2022 · P1.3"`), `kieu`, `noi_dung`, `lua_chon` (nếu trắc nghiệm), `hinh[]` (đường dẫn ảnh — **phải mở bằng Read** rồi mới giải),
+`luu_y_de` (nếu có — cách hiểu đề đã được người duyệt chốt: **làm đúng theo đó** và nói rõ giả thiết ấy trong lời giải).
+Đề đã được đối chiếu với bản PDF gốc và sửa lỗi chép trước khi giao cho bạn.
 
 ## Mỗi câu của đề = MỘT câu kho
 - **Không tách ý**, kể cả câu có a) b) c) — giữ đúng đơn vị câu của đề (đề thi sau này còn in lại nguyên đề).
@@ -21,6 +23,7 @@ Brief này chỉ nêu phần KHÁC của đề thi.
 | `dien` (điền đáp số) | đáp số gọn như HS ghi vào ô: số + đơn vị (`$36000$ đồng`, `$x=4$`, `Thứ Ba`) | trình bày ĐẦY ĐỦ như bài tự luận lớp 5 (câu lời giải – phép tính – đáp số); bài "Tính / Tìm $x$" thì biến đổi từng dòng |
 | `trac_nghiem` | **một chữ cái** `A`/`B`/`C`/`D` | giải ra kết quả như trên, dòng cuối: `Chọn B.` (không lặp lại nội dung phương án trong `dap_an`) |
 | `tu_luan` | `a) …; b) …` (mỗi ý một đáp số) | `a)` … `b)` …, mỗi ý trình bày đầy đủ; ý sau DÙNG LẠI kết quả ý trước |
+| `dung_sai` (bốn mệnh đề a–d, trả lời Đúng – Sai) | `a) Đúng; b) Sai; c) Sai; d) Đúng` (đủ mọi mệnh đề, đúng thứ tự) | tính các số liệu chung trước, rồi `a)` … `b)` … mỗi mệnh đề một đoạn: tính / so sánh rồi kết luận "Đúng." hoặc "Sai." |
 
 - Trắc nghiệm: phải GIẢI ra kết quả rồi mới đối chiếu phương án — không thử từng phương án (trừ khi đề đúng là bài "thử chọn").
   Kết quả không trùng phương án nào ⇒ `dap_an: ""` + `ghi_chu_nghi` nêu kết quả tính được; **không chọn bừa**.

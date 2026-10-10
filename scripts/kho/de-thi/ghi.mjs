@@ -34,7 +34,7 @@ if (!de.khoi) loi.push('thiếu khoi')
 if (!de.ten) loi.push('thiếu ten')
 de.cau.forEach((q) => {
   const ten = `P${q.phan} câu ${q.so}`
-  if (!['dai', 'hgt'].includes(q.kho)) loi.push(`${ten}: chưa chọn kho (dai / hgt)`)
+  if (!['dai', 'hgt', 'hinh_hoc'].includes(q.kho)) loi.push(`${ten}: chưa chọn kho (dai / hgt / hinh_hoc)`)
   if (q.loai_cau === 'trac_nghiem') {
     if (!Array.isArray(q.lua_chon) || q.lua_chon.length !== 4 || q.lua_chon.some((x) => !x)) loi.push(`${ten}: trắc nghiệm phải đủ 4 phương án`)
     if (q.dap_an != null && !/^[ABCD]$/.test(q.dap_an)) loi.push(`${ten}: đáp án TN phải là A/B/C/D`)
@@ -100,7 +100,7 @@ try {
   await c.query('begin')
   const maCua = new Map() // q → { ma_cau, kho, trung }
   const tk = { moi: 0, trung: 0, dang_cho: 0, menh_de_cho: 0 }
-  for (const kho of ['dai', 'hgt']) {
+  for (const kho of ['dai', 'hgt', 'hinh_hoc']) { // hinh_hoc = hình phẳng THCS (K8 10/10), mã câu do DB cấp
     const grp = de.cau.filter((q) => q.kho === kho)
     if (!grp.length) continue
     const cauList = grp.map((q) => {
@@ -127,6 +127,7 @@ try {
   for (const q of de.cau) {
     const m = maCua.get(q)
     if (m.kho === 'hgt') nhanhByCau[m.ma_cau] = 'hinh_gt'
+    else if (m.kho === 'hinh_hoc') nhanhByCau[m.ma_cau] = 'hinh_hoc'
     const cb = [...(q.canh_bao ?? []), ...(canhBaoThem.get(q) ?? [])]
     if (cb.length) canhBaoCau[m.ma_cau] = cb
   }
