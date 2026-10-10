@@ -9,6 +9,7 @@ import { Khung, NutBack } from '../TuLuyenChuDe'
 import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc, useSkinHT } from '../skin/KhungHS'
 import { laySkin, type GiaoDien } from '../skin/registry'
 import { NhiemVuView } from '../NhiemVuHS'
+import { NutGopYNoi } from '../gopy/NutGopYNoi'
 import { NguonCard, THU_TU_NHOM, type NhomKey, type NhomTong } from '../ViXuHS'
 import { DauNhiemVuArt } from '../NhiemVuArt'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
@@ -271,6 +272,7 @@ export default function XemMauGami() {
   const chip = (chon: boolean) => (chon ? { background: MAU.acc, color: MAU.accInk } : { ...THE_TRON, borderRadius: 999, color: MAU.ink })
   return (
     <>
+      <NutGopYNoi />{/* xem thử nút góp ý nổi (ở app thật gắn ở AppHS cho mọi màn) */}
       {!an && (
         <div className="sticky top-0 z-30 flex flex-col gap-1.5 px-3 py-2 text-[13px] font-bold" style={{ background: MAU.bg, borderBottom: `1px solid ${MAU.line}`, color: MAU.ink }}>
           <div className="flex gap-1.5 overflow-x-auto">

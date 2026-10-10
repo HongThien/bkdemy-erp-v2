@@ -9,6 +9,7 @@ import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
 import Login from './auth/Login'
 import HocSinhApp, { HomeCap1 } from './screens/hocsinh/HocSinhApp'
+import { NutGopYNoi } from './screens/hocsinh/gopy/NutGopYNoi'
 import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import HomeHS, { type HomeCard } from './screens/hocsinh/HomeHS'
 import HomeHS912 from './screens/hocsinh/HomeHS912'
@@ -302,5 +303,5 @@ export default function AppHS() {
   const maHS = (session.user.email ?? '').split('@')[0]
   return phaiDoiMK
     ? <DoiMatKhau maHS={maHS} batBuoc onXong={() => supabase.auth.getSession().then(({ data }) => setSession(data.session))} />
-    : <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} maHS={maHS} />
+    : <><HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} maHS={maHS} /><NutGopYNoi /></>
 }

@@ -79,6 +79,7 @@ import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
 import { LocMoi } from './tutorial/LocMoi'
+import { datMan, EVT_MO_GOP_Y } from './gopy/manHienTai'
 import { chuongMo, CHUONG_LOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
 import { tutorialDaXem, tutorialGhi } from '../../lib/tutorial_hs'
 import AlbumHS from './AlbumHS'
@@ -480,6 +481,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const moTN = (ma: string) => tn === 'tat_ca' || (!!tn && tn.has(ma))
   const oMo = (id: string) => !MA_TINH_NANG_O[id] || moTN(MA_TINH_NANG_O[id])
   const rankMo = () => rankBat() && moTN('rank')
+  // NÚT GÓP Ý NỔI (ở mọi màn): báo cho nút biết em đang ở màn nào + nghe yêu cầu "Xem góp ý của em" từ tấm nhập nhanh.
+  useEffect(() => { datMan(direct ?? (khu ? `khu_${khu}` : 'man_chinh')) }, [direct, khu])
+  useEffect(() => {
+    const mo = () => { setTuHoSo(false); setDirect('gop_y') }
+    window.addEventListener(EVT_MO_GOP_Y, mo)
+    return () => window.removeEventListener(EVT_MO_GOP_Y, mo)
+  }, [])
   // TUTORIAL DO LỘC DẪN (Thùy 07/10): tiến độ theo TÀI KHOẢN (hs_tutorial). Lần đầu (chưa xem/bỏ qua chặng nào) tự mở; sau đó tính năng MỚI mở ⇒ Lộc đứng góc màn chính
   // mời kể đúng phần mới. `tutXong` undefined = chưa tải/lỗi ⇒ không tự mở, không nhắc (hỏng thì im, không chặn app).
   const [tutXong, setTutXong] = useState<Set<string> | undefined>(undefined)
