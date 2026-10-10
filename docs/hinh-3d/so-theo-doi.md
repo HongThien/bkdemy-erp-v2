@@ -22,6 +22,8 @@ Trang đang chạy: **https://toan.bkacademy.edu.vn/the-tich/** (deploy tay — 
 | 49 | NBV-12-18-F · câu 49 | Hai đường ở hai phía trục | tròn xoay | `tron-xoay.html?bai=49` | 21π/5 | 10/10/2026 | chưa xem | |
 | 50 | NBV-12-18-F · câu 50 | Thùng rượu đường sinh elip | tròn xoay · bài thực tế | `tron-xoay.html?bai=50` | 1416π/25 ≈ 177,9 lít | 10/10/2026 | chưa xem | |
 | 52 | NBV-12-18-F · câu 52 | Thùng rượu đường sinh parabol | tròn xoay · bài thực tế | `tron-xoay.html?bai=52` | 656π/3 ≈ 686,96 lít/thùng · M = 144 262 (nguồn ghi 144 270 — sai do làm tròn sớm) | 10/10/2026 | chưa xem | |
+| 45 | NBV-12-18-F · câu 45 | Mũ ông già Noel | tròn xoay quanh Oy · đề cho mặt cắt | `tron-xoay.html?bai=45` | 2500π/3 ≈ 2618 cm³ | 10/10/2026 | chưa xem | |
+| 46 | NBV-12-18-F · câu 46 | Bông hoa bốn cánh (hình vuông + bốn nửa đường tròn) | tròn xoay quanh Oy · có lỗ | `tron-xoay.html?bai=46` | 32π/3 + 4π² ≈ 72,99 | 10/10/2026 | chưa xem | |
 
 Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài giải (không có nút / bảng chọn bài).
 
@@ -30,8 +32,6 @@ Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài 
 | Nguồn · câu | Tên dự kiến | Loại | Đáp số | Ghi chú |
 |---|---|---|---|---|
 | NBV-12-18-F · câu 44 | Mái vòm sân vận động | thiết diện | (π − 2)·101 250 ≈ 115 586 m³ | file riêng |
-| NBV-12-18-F · câu 45 | Mũ Noel | tròn xoay (quanh Oy) | 2500π/3 | thêm vào trang chuyên đề |
-| NBV-12-18-F · câu 46 | Hình vuông + bốn nửa đường tròn | tròn xoay (quanh Oy, có lỗ) | 32π/3 + 4π² | thêm vào trang chuyên đề |
 | NBV-12-18-F · câu 47 | Giao hai khối ¼ trụ | thiết diện | 2a³/3 | file riêng |
 | NBV-12-18-F · câu 53 | Trụ bị mặt phẳng nghiêng cắt | diện tích mặt cắt | (4π/3 + √3/2)R² (nguồn Cách 1 sai) | file riêng |
 

@@ -245,7 +245,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 ### D.7 Trang chuyên đề tròn xoay — ĐÃ DỰNG (10/10 chiều, theo A5)
 
 - **File:** `toan-site/the-tich/tron-xoay.html` (động cơ) + `tron-xoay-bai.js` (dữ liệu) → `http://localhost:5281/the-tich/tron-xoay.html` (bảng chọn bài) · `?bai=48` · `?bai=49` · thêm `&nhung=1` để nhúng.
-- **Đã có 4 bài:** 48 (ba miền, có lỗ ở miền 1, bẫy ra 0) · 49 (hai miền chạm trục, bẫy ra 16π/15 — bài đầu tiên thêm THUẦN bằng dữ liệu) · 50, 52 (hai thùng rượu — bài thực tế, thêm bước "Đặt hệ trục", 4 bước).
+- **Đã có 6 bài — hết nhóm tròn xoay của tài liệu này:** 48 (ba miền, có lỗ ở miền 1, bẫy ra 0) · 49 (hai miền chạm trục, bẫy ra 16π/15 — bài đầu tiên thêm THUẦN bằng dữ liệu) · 50, 52 (hai thùng rượu — bài thực tế, thêm bước "Đặt hệ trục", 4 bước) · 45 (mũ Noel — bài đầu quay quanh Oy, đề cho mặt cắt) · 46 (bông hoa bốn cánh — khối có lỗ, tính nửa trên rồi nhân 2).
 - `mien-vat-qua-truc.html` giờ chỉ là trang chuyển hướng sang `tron-xoay.html?bai=48` (giữ địa chỉ cũ, mang theo tham số).
 - **Soát:** 1280×720; bảng chọn bài; cả hai bài đủ 5 bước, gấp lên, hai lần Thay số; `kiem()` lệch < 10⁻¹¹ ở cả hai; chế độ nhúng không có nút chọn bài; địa chỉ cũ chuyển hướng đúng; 0 lỗi KaTeX, không tràn ngang.
 - **Chưa làm / chưa biết:** chưa soát 1920×1080 và màn dọc cho trang chuyên đề · chưa có bài quay quanh Oy / bài thực tế (xem S.4b) · chưa gắn vào app HS (B7) · Thùy chưa xem.
@@ -340,7 +340,11 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 - **Tự kiểm:** lúc mở, trang tính lại thể tích từ `mien` (Simpson) và so với `dapSo`; lệch ⇒ dải đỏ ở đáy màn. `__dbg.kiem()` trả số. Đây là nhân chứng thứ hai cho "hình vẽ và lời giải nói cùng một chuyện" — không bỏ `dapSo`.
 - **Bài thực tế** (thùng, mũ… — đề chưa có trục): khai thêm `thucTe: { tieuDe, html, tex, soTen, so }` ⇒ trang thêm bước "Đặt hệ trục" và ở bước Đề bài chỉ hiện vật thật (khối đã quay), chưa có trục / đường / nhãn. Mẫu: mục 50, 52.
 - Trang tự thêm **mặt đáy phẳng** ở hai đầu khối khi hình phẳng kết thúc bằng một đoạn vuông góc với trục (thùng rượu, bài 49).
-- Thứ động cơ CHƯA có, phải thêm vào `tron-xoay.html` khi gặp bài cần (rồi soát lại mọi bài cũ): đường sinh là đường cong tham số (46) · bài quay quanh Oy mới chỉ viết sẵn phép đổi toạ độ, **chưa chạy thử bài nào** (45, 46).
+- **Quay quanh Oy** (`truc: 'y'`): mọi hàm vẫn là bán kính theo toạ độ dọc trục, tức **x theo y**; đề cho y theo x thì phải đảo hàm trước (đây cũng chính là bước khó của HS — cho nó vào bước Đặt hệ trục). Mẫu: mục 45, 46.
+- **Đề cho sẵn hình phẳng** (mặt cắt qua trục, hình hình học — chưa có trục): `thucTe.dePhang: true` ⇒ bước Đề bài hiện hình phẳng + tên điểm (`nhanDiem`), chưa có trục; `thucTe.deCoO: true` nếu điểm O có tên ngay trong đề. Đề vẽ hình ở cả hai bên trục: khai nửa quay ở `to`, nửa kia ở `toMo` (ở đề tô như nhau, từ lúc có trục thì mờ đi), thêm `doiXung: true` cho hình thu nhỏ. Cạnh thẳng không phải đồ thị hàm: `doan`.
+- **Đường có tiếp tuyến vuông góc với trục quay ở đầu mút** (đỉnh parabol nằm ngang, điểm cao nhất của cung tròn): `mauDau: true` — không có thì đầu mút bị gãy thành góc nhọn. Hàm có căn phải kẹp `Math.max(0, …)`.
+- **Hình đối xứng, chỉ tính một nửa:** miền của nửa kia vẫn khai trong `mien` nhưng thêm `an: true` — không liệt kê, không đánh số, chỉ để trang tự kiểm ra đủ thể tích. Mốc có giá trị không gọn: `moc.gt: '1 + √2'`.
+- Thứ động cơ CHƯA có: bước "Cái bẫy" cho bài quay quanh Oy chưa chạy thử · bổ đôi khối để nhìn lỗ (46 hiện dựa vào mặt trong suốt + nút Nhìn dọc trục).
 
 ### S.5 Quy trình 8 việc cho một bài (làm đúng thứ tự)
 
@@ -365,27 +369,19 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 ### S.7 Phiếu dựng 8 bài còn lại (công thức chữ đã kiểm bằng số 10/10)
 
-Thứ tự đề xuất: ~~49 → 50 → 52~~ (xong) → **45 → 46** (TX, dễ → khó; đều là thêm dữ liệu vào trang chuyên đề) rồi **47 → 44** (TD, file riêng) rồi **53** (MC).
+Thứ tự đề xuất: ~~49 → 50 → 52 → 45 → 46~~ (xong — hết nhóm TX) → **47 → 44** (TD, file riêng) rồi **53** (MC).
 
 **Câu 49 — TX, hai miền.** ✅ ĐÃ CÓ (10/10) — mục `id: '49'` trong `tron-xoay-bai.js`: V₁ = π∫ₐᶜ f², V₂ = π∫_c^b g², V = 21π/5; bẫy π∫(f² − g²) = 23π/15 − 7π/15 = 16π/15.
 
 **Câu 50, 52 — TX một miền, bài thực tế (hai thùng rượu).** ✅ ĐÃ CÓ (10/10) — mục `id: '50'`, `'52'`: 4 bước (đề: vật thật → đặt hệ trục → quay → lắp công thức).
 - 50: V = 2πb²(d − d³/(3a²)) = 1416π/25 dm³ ≈ 177,9 lít. 52: tính bằng **dm** để ra thẳng lít, V = (πl/15)(8R² + 4Rr + 3r²) = 656π/3 ≈ 686,96; tiền 210·V = 45 920π ⇒ **M = 144 262** (nói rõ với HS: làm tròn sớm ra 144 270).
 
-**Câu 45 — TX quanh Oy, hai miền xếp chồng.** Mục `id: '45'` (bài đầu tiên quay quanh Oy).
-- Đề: mũ tròn xoay; mặt cắt qua trục: OO′ = 5, OA = 10, OB = 20 (cm), cung AB là parabol đỉnh A.
-- Chữ: R = OA, h₁ = OO′, h₂ = OB. Gốc O, Oy là trục mũ. Parabol đỉnh A(R; 0) qua B(0; h₂): y = (h₂/R²)(R − x)² ⇒ **x = R(1 − √(y/h₂))**.
-  V₁ (trụ vành mũ) = πR²h₁ · V₂ = π∫₀^{h₂} x² dy = πR²h₂/6 · **V = πR²(h₁ + h₂/6)**. Thay số: **2500π/3 ≈ 2618 cm³**.
-- Bước: Đề bài (mặt cắt như hình `image1029`) → Đặt hệ trục (viết x theo y) → Quay quanh Oy → Chia miền (trụ + chóp cong) → Tính thể tích.
-- Điểm khó: quay quanh **Oy** ⇒ công thức V = π∫ x² dy, phải đổi hàm sang x theo y. Cần `mkLuoi` quay quanh Oy.
+**Câu 45 — TX quanh Oy, hai miền xếp chồng.** ✅ ĐÃ CÓ (10/10) — mục `id: '45'`: 5 bước (đề: mặt cắt như hình trong sách → đặt hệ trục, viết x theo y → quay → chia miền → tính).
+- Chữ: R = OA, h₁ = OO′, h₂ = OB. x = R(1 − √(y/h₂)). V₁ = πR²h₁ (vành mũ = khối trụ), V₂ = π∫₀^{h₂} x² dy = πR²h₂/6, **V = πR²(h₁ + h₂/6)** = 2500π/3 ≈ 2618 cm³. Ghi chú cho HS: thân mũ chỉ bằng 1/6 khối trụ cùng đáy cùng cao.
 
-**Câu 46 — TX quanh Oy, có lỗ (khó nhất nhóm TX).** Mục `id: '46'` (cần đường sinh tham số).
-- Đề: hình vuông ABCD cạnh 2√2, ngoài hình vuông vẽ 4 nửa đường tròn đường kính là các cạnh; quay cả hình quanh AC.
-- Chữ: a = OA (nửa đường chéo). A(0; a), B(a; 0), đường tròn đường kính AB: (x − a/2)² + (y − a/2)² = a²/2 (đi qua O). Nhánh phải x₊ = a/2 + √(a²/2 − (y − a/2)²), nhánh trái x₋ = a/2 − √(…).
-  Đối xứng qua AC và BD ⇒ chỉ xét góc phần tư I rồi nhân 2. **Miền 1** (0 ≤ y ≤ a): đặc tới trục, V₁ = π∫ x₊² dy. **Miền 2** (a ≤ y ≤ a/2 + a/√2): có lỗ, V₂ = π∫ (x₊² − x₋²) dy.
-  **V = 2(V₁ + V₂) = a³(4π/3 + π²/2)**. Thay a = 2: V₁ = 16π/3 + 2π + π², V₂ = π² − 2π, **V = 32π/3 + 4π² ≈ 72,99**.
-- Bước: Đề bài (hình phẳng `image1042`) → Quay quanh AC → Chia miền (đối xứng; miền 2 có lỗ — bổ đôi khối cho thấy lỗ) → Tính thể tích.
-- Bẫy đáng làm thành bước nếu còn chỗ: coi miền 2 là đặc (quên trừ x₋²). Đường sinh là cung tròn nên `mkLuoi` phải nhận đường cong tham số.
+**Câu 46 — TX quanh Oy, có lỗ.** ✅ ĐÃ CÓ (10/10) — mục `id: '46'`, tên "Bông hoa bốn cánh": 5 bước (đề: hình phẳng → đặt hệ trục, AC là Oy → quay → chia miền → tính).
+- Chữ: a = OA. x± = a/2 ± √(a²/2 − (y − a/2)²), c = a/2 + a/√2. V₁ = π∫₀ᵃ x₊² dy, V₂ = π∫ₐᶜ (x₊² − x₋²) dy, **V = 2(V₁ + V₂) = a³(4π/3 + π²/2)**. Thay a = 2: V₁ = 22π/3 + π², V₂ = π² − 2π, V = 32π/3 + 4π² ≈ 72,99.
+- KHÔNG làm bước "Cái bẫy" (coi miền 2 là đặc): số xấu, lệch ít (≈ 0,2), không đáng một bước — chỉ ghi ở dòng lưu ý cuối. Cung tròn không cần đường cong tham số: viết hai nhánh x₊, x₋ theo y là đủ.
 
 **Câu 47 — TD, lát hình vuông.** File `giao-hai-tru.html`.
 - Đề: (H) là phần chung của hai khối ¼ trụ bán kính a, hai trục vuông góc. Tính V(H). Đáp số theo a ⇒ **không có bước thay số** (A3 chỉ đòi chữ trước; ở đây chữ là hết).
@@ -453,3 +449,5 @@ Thứ tự đề xuất: ~~49 → 50 → 52~~ (xong) → **45 → 46** (TX, dễ
 | 10/10 chiều | Claude | Bảng chọn bài: mỗi bài một thẻ ngang, hình đồ thị tự vẽ từ dữ liệu bài (ôm sát hình phẳng + gốc toạ độ) |
 | 10/10 tối | Thùy | "Làm tiếp đi" |
 | 10/10 tối | Claude | Thêm Câu 50, 52 (thùng rượu) vào trang chuyên đề; động cơ thêm bước "Đặt hệ trục" cho bài thực tế + mặt đáy phẳng ở hai đầu khối. Soát lại 48, 49. Deploy |
+| 10/10 tối | Thùy | "Tiếp đi" |
+| 10/10 tối | Claude | Thêm Câu 45 (mũ Noel), 46 (bông hoa bốn cánh) — hai bài quay quanh Oy; hết nhóm tròn xoay. Động cơ: đề là hình phẳng chưa có trục, nửa hình bên kia trục, đoạn thẳng lẻ + tên điểm, dồn điểm mẫu về đầu mút, miền đối xứng ẩn. Sửa dòng kết quả Câu 48 rơi một gạch chéo. Soát lại 48, 49, 50, 52. Deploy |

@@ -36650,3 +36650,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Deploy xong mở bản thật `?bai=52&buoc=4&thay=1`: khối thay số tràn ngang 598px. Gốc: dòng `kq` sửa lần cuối bằng script Python nhét trong heredoc — `\[0.4em]` (xuống dòng của `aligned`) rơi còn một gạch chéo ⇒ KaTeX coi là `\[` và dồn cả 4 dòng thành 1. Lỗi này KHÔNG làm `katex-error` tăng, chỉ bắt được bằng đo `scrollWidth − clientWidth`.
 - **Sai quy trình của t:** sửa dữ liệu xong không mở lại bước đó trước khi deploy. Sửa bằng file `.py` viết qua Write (có `assert` đếm đủ 3 dấu xuống dòng), soát lại ở máy (tràn = 0) rồi mới deploy.
 - Luật rút ra (đã có ở HANDOFF, nhắc lại): mọi chỉnh sửa có LaTeX ⇒ file `.py` qua Write; sau MỖI lần đổi dữ liệu bài phải mở đúng bước đó, đo tràn ngang, rồi mới deploy.
+
+## 10/10 (tối) — Hình 3D: thêm Câu 45, 46 (quay quanh Oy) — hết nhóm tròn xoay
+- **Thùy:** "Tiếp đi".
+- Câu 45 (mũ Noel): đề cho MẶT CẮT qua trục chứ không phải vật thật ⇒ bước Đề bài hiện hình phẳng như trong sách (cả hai nửa, tên điểm O, O′, A, B), chưa có trục; bước Đặt hệ trục mới có trục và viết x theo y. V = πR²(h₁ + h₂/6) = 2500π/3.
+- Câu 46 (hình vuông + bốn nửa đường tròn quay quanh AC, đặt tên "Bông hoa bốn cánh" vì tên dài đè lên trục Oy): a = OA, hai nhánh x± theo y; miền 1 đặc, miền 2 có lỗ; đối xứng qua BD nên tính nửa trên rồi nhân 2. V = a³(4π/3 + π²/2) = 32π/3 + 4π². Không làm bước Cái bẫy (số xấu, lệch ít).
+- Động cơ `tron-xoay.html`: tách nhóm trục khỏi hình phẳng (`dePhang`), `toMo` (nửa hình bên kia trục), `doan`, `nhanDiem`, `doiXung`, `mauDau` (dồn điểm mẫu về hai đầu — không có thì đỉnh parabol / điểm cao nhất cung tròn gãy thành góc nhọn), `mien[].an`, `moc.gt`, `vachR` nhận [r, 'R'], `chia.mocDong` bỏ được, `tong.nguyenHamTen`.
+- **Hai chỗ sửa nền:** (1) số điểm mẫu trước tính theo ĐƠN VỊ (28 điểm / 1 đơn vị) ⇒ bài 45 dài 20 cm sẽ ra lưới 560 × 73 điểm, dựng lại mỗi khung hình; đổi sang tính theo cỡ hình. (2) tự kiểm thể tích dùng Simpson đều ⇒ hàm có căn ở đầu mút (45, 46) lệch cỡ 10⁻³, sát ngưỡng báo đỏ; đổi biến t theo cos, lệch còn 10⁻¹².
+- **Sai cũ bắt được:** dòng kết quả Câu 48 cũng rơi một gạch chéo (`\[0.4em]`) từ lần vá qua heredoc — cùng gốc với lỗi Câu 52, lần trước chỉ soát 50 và 52. Đã sửa; đã dò cả thư mục, không còn chỗ nào.
+- Soát 1280×720: 45 và 46 đủ 5 bước + Thay số, không tràn ngang, 0 lỗi KaTeX, `kiem()` lệch 1·10⁻¹² và 3·10⁻¹²; chạy lại 48 (bước 3, 5), 49 (bước 5), 50 (bước 1), 52 (bước 2) — không đổi; bảng chọn bài 6 thẻ.
+- Chưa: 47, 44 (thiết diện), 53 (mặt cắt); soát 1920×1080 + màn dọc; Thùy chưa xem bài nào trong trang chuyên đề.
