@@ -73,7 +73,11 @@ export async function attachPdfGoc(id: string, url: string): Promise<void> { awa
 
 // Số dòng kẻ để HS viết của câu TỰ LUẬN trên bản in — `cau_hinh.btvnLinesByCau` (key = ma_cau), CÙNG khoá với ET/MT/BTVN nên
 // DeThiPrintView đọc sẵn và bản chép cho lớp (fn gán đề chép nguyên cau_hinh) theo luôn. Chưa đặt ⇒ DONG_TU_LUAN_MAC_DINH.
+// Tự luận mặc định 4 dòng; TRẢ LỜI NGẮN mặc định 0 (như trước) nhưng ĐẶT ĐƯỢC — đề giấy hay xếp "Thực hiện phép tính" vào phần
+// Tự luận, kho lưu là trả lời ngắn (để app chấm được) mà trên giấy em vẫn cần chỗ trình bày. Trắc nghiệm / Đúng-Sai: không kẻ dòng.
 export const DONG_TU_LUAN_MAC_DINH = 4
+export const coDongKeDeThi = (loaiCau: string | null | undefined) => loaiCau === 'tu_luan' || loaiCau === 'tra_loi_ngan'
+export const dongMacDinhDeThi = (loaiCau: string | null | undefined) => (loaiCau === 'tu_luan' ? DONG_TU_LUAN_MAC_DINH : 0)
 export function soDongDeThi(d: Pick<DeThi, 'cau_hinh'>): Record<string, number> { return (d.cau_hinh?.btvnLinesByCau ?? {}) as Record<string, number> }
 export async function setSoDongDeThi(id: string, patch: Record<string, number>): Promise<void> {
   const { data: cur, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
