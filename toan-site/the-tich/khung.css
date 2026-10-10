@@ -29,6 +29,8 @@ button{font:inherit;color:inherit}
 .lb.dim{font:600 .8rem/1 var(--f-data);color:var(--ink);background:rgba(4,9,20,.78);border:1px solid var(--line);border-radius:999px;padding:.3em .65em;text-shadow:none}
 .head{position:absolute;left:1rem;top:.85rem;pointer-events:none;max-width:60%}
 .head .eyebrow{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.head .ve{pointer-events:auto;display:inline-block;margin-bottom:.35rem;font:600 .74rem/1 var(--f-data);color:var(--scan);text-decoration:none}
+.head .ve:hover{text-decoration:underline}
 .head h1{margin:.25rem 0 0;font:800 1.45rem/1.1 var(--f-ui);letter-spacing:-.01em}
 .views{position:absolute;right:.8rem;top:.8rem;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.4rem;max-width:55%}
 .views button{cursor:pointer;background:rgba(11,22,48,.82);border:1px solid var(--line);border-radius:999px;padding:.5em .95em;font:600 .78rem/1 var(--f-ui);color:var(--ink-2);min-height:2.4em}

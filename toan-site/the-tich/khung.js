@@ -40,9 +40,10 @@ window.MoHinh = function (cfg) {
 
   // ── khung trang: sân khấu trái · bảng lời giải phải · thanh bước đáy ──
   const N = cfg.buoc.length
+  const NHUNG = new URLSearchParams(location.search).get('nhung') === '1'   // nhúng cạnh bài giải trên app: không có đường về trang chính
   const app = $('#app'); app.className = 'app'
   app.innerHTML = '<div class="stage" id="stage"><canvas id="cv" aria-label="Mô hình 3D, kéo để xoay"></canvas><div class="labels" id="labels" aria-hidden="true"></div>' +
-    '<div class="head"><div class="eyebrow">' + cfg.nhan + '</div><h1>' + cfg.tieuDe + '</h1></div>' +
+    '<div class="head">' + (NHUNG ? '' : '<a class="ve" href="../">‹ Trang Toán</a>') + '<div class="eyebrow">' + cfg.nhan + '</div><h1>' + cfg.tieuDe + '</h1></div>' +
     '<div class="views" id="views">' + cfg.nutGoc.map(v => '<button type="button" data-view="' + v[0] + '"' + (v[0] === 'mac_dinh' ? ' id="vDef"' : '') + '>' + v[1] + '</button>').join('') + '</div>' +
     '<div class="hint" id="hint">Kéo để xoay · cuộn hoặc chụm hai ngón để phóng to</div></div>' +
     '<aside class="panel" id="panel" aria-live="polite"></aside>' +

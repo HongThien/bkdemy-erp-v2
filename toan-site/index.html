@@ -41,6 +41,10 @@ h1 em{font-style:normal;color:var(--amber)}
 .lesson p{margin:0;font:400 14.5px/1.55 var(--f-ui);color:var(--ink-2)}
 .lesson .go{margin-top:auto;padding-top:6px;font:700 15px/1 var(--f-ui);color:var(--scan)}
 .note{margin:36px 0 0;font:500 12.5px/1.6 var(--f-data);color:var(--muted)}
+/* Nhóm thứ hai trên trang (mô hình 3D cho bài tập): tiêu đề nhóm nhỏ hơn h1, cách nhóm trên một quãng */
+.sec-eyebrow{margin-top:64px}
+.sec{font:800 clamp(26px,4vw,40px)/1.1 var(--f-ui);letter-spacing:-.02em;margin:10px 0 12px;text-wrap:balance}
+.sec em{font-style:normal;color:var(--amber)}
 @media (prefers-reduced-motion:reduce){.lesson{transition:none}.lesson:hover{transform:none}}
 </style>
 </head>
@@ -76,6 +80,42 @@ h1 em{font-style:normal;color:var(--amber)}
         <h2>Thi đội: cạnh – cạnh – cạnh</h2>
         <p>Lớp chia đội, mỗi đội một iPad, TV chiếu bảng điểm. Tìm ô đúng kéo vào bài trình bày c.c.c. Kéo sai là sang câu tiếp, tính tổng thời gian 10 câu.</p>
         <span class="go">Mở game ›</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Mô hình 3D cho bài tập (spec-day-hinh-3d.md) — khác bài du hành: không bay, không trạm; GV chiếu TV bấm từng bước -->
+  <div class="eyebrow sec-eyebrow">Toán 12 · Mô hình 3D cho bài tập</div>
+  <h2 class="sec">Thể tích bằng <em>tích phân</em></h2>
+  <p class="lead">Những khối khó vẽ trên bảng, dựng thành hình không gian xoay được. Đi từng bước: xem khối sinh ra thế nào, lập công thức bằng chữ, rồi mới thay số.</p>
+
+  <ul class="lessons">
+    <li>
+      <a class="lesson" href="the-tich/tron-xoay.html">
+        <svg viewBox="0 0 300 110" aria-hidden="true">
+          <line x1="20" y1="58" x2="284" y2="58" stroke="#8fa3c4" stroke-width="2"/>
+          <path d="M40 58 L40 20 Q150 20 250 58 Z" fill="rgba(92,225,255,.18)" stroke="#5ce1ff" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M40 58 L40 96 Q150 96 250 58 Z" fill="rgba(92,225,255,.07)" stroke="#5ce1ff" stroke-width="2" stroke-dasharray="6 5" stroke-linejoin="round"/>
+          <ellipse cx="40" cy="58" rx="9" ry="38" fill="none" stroke="#ffb547" stroke-width="3"/>
+        </svg>
+        <span class="meta">Chuyên đề · chọn bài · quay quanh trục</span>
+        <h2>Thể tích khối tròn xoay</h2>
+        <p>Quay hình phẳng quanh trục thành khối 3D. Hình phẳng vắt qua trục thì gấp phần dưới lên, chia miền rồi lắp công thức. Có cả cái bẫy “một công thức cho cả đoạn”.</p>
+        <span class="go">Chọn bài ›</span>
+      </a>
+    </li>
+    <li>
+      <a class="lesson" href="the-tich/coc-nghieng.html">
+        <svg viewBox="0 0 300 110" aria-hidden="true">
+          <g transform="rotate(32 150 60)">
+            <rect x="112" y="14" width="76" height="88" rx="4" fill="rgba(255,255,255,.04)" stroke="#dfe9ff" stroke-width="3"/>
+            <path d="M112 102 L188 102 L188 34 Z" fill="rgba(92,225,255,.28)" stroke="#5ce1ff" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+        </svg>
+        <span class="meta">Tính theo thiết diện · 6 bước</span>
+        <h2>Cốc nước nghiêng</h2>
+        <p>Nghiêng cốc tới khi nước chạm miệng: khối nước thành cái nêm. Cắt lát theo ba hướng, chồng các lát lại, ra thể tích 240 cm³.</p>
+        <span class="go">Mở mô hình ›</span>
       </a>
     </li>
   </ul>
