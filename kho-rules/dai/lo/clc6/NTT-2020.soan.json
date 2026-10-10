@@ -1,0 +1,138 @@
+[
+ {
+  "ma_nguon": "NTT 2020 · P1.1",
+  "dap_an": "$25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi $20\\%$ là tính theo giá bán, còn đề hỏi lãi bằng bao nhiêu phần trăm giá MUA, nên mốc so sánh đã đổi từ giá bán sang giá mua. Phải tìm giá mua bằng bao nhiêu phần trăm giá bán rồi mới so sánh lãi với giá mua.\n\n**Bước 1.** Coi giá bán là $100\\%$; giá bán gồm giá mua cộng với tiền lãi, nên giá mua bằng giá bán trừ đi tiền lãi, từ đó biết giá mua bằng bao nhiêu phần trăm giá bán.\n\n**Bước 2.** Lúc này cả lãi và giá mua đều đã được tính theo cùng một mốc là giá bán, nên so sánh được trực tiếp hai số phần trăm đó với nhau.\n\n**Bước 3.** Lãi bằng bao nhiêu phần trăm giá mua thì lấy phần trăm của lãi chia cho phần trăm của giá mua, đổi ra số thập phân cho dễ chia rồi viết lại thành phần trăm.\n\n**Chú ý:** Không trả lời ngay $20\\%$ vì số này tính theo giá bán, không phải theo giá mua.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi giá bán là $100\\%$, lãi là $20\\%$ nên giá mua bằng: $100\\%-20\\%=80\\%$ (giá bán)\n\nLãi so với giá mua bằng: $20\\%:80\\%=0,2:0,8=0,25=25\\%$\n\nĐáp số: $25\\%$"
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.2",
+  "dap_an": "$4$ lần",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình tròn bằng bán kính nhân bán kính nhân $3,14$, nên bán kính có mặt HAI lần trong phép nhân. Một tích mà hai thừa số cùng gấp lên $2$ lần thì tích gấp lên $2\\times 2$ lần chứ không chỉ $2$ lần.\n\n**Bước 1.** Nhớ công thức diện tích hình tròn rồi viết thành tích ba thừa số: bán kính, bán kính và số $3,14$.\n\n**Bước 2.** Bán kính gấp lên $2$ lần thì cả hai thừa số bán kính trong tích đều gấp lên $2$ lần, còn thừa số $3,14$ giữ nguyên.\n\n**Bước 3.** Một tích có hai thừa số cùng gấp lên $2$ lần thì tích gấp lên bằng cách lấy $2$ nhân với $2$.\n\n**Chú ý:** Bán kính gấp $2$ lần không có nghĩa là diện tích cũng chỉ gấp $2$ lần, vì bán kính xuất hiện hai lần trong công thức.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình tròn bằng bán kính nhân bán kính nhân $3,14$.\n\nBán kính gấp lên $2$ lần thì cả hai thừa số bán kính đều gấp lên $2$ lần, nên diện tích gấp lên: $2\\times 2=4$ (lần)\n\nĐáp số: $4$ lần"
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.3",
+  "dap_an": "$303$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mực nước phải cao hơn hòn non bộ $15$ cm nên hòn non bộ chìm hẳn trong nước và chiếm chỗ của nước. Lượng nước cần đổ bằng thể tích phần bể từ đáy lên tới mực nước (nước cộng hòn non bộ) trừ đi thể tích hòn non bộ.\n\n**Bước 1.** Tính mực nước cần đạt: bằng chiều cao hòn non bộ cộng thêm $15$ cm, rồi xem mực nước đó có thấp hơn chiều cao bể không.\n\n**Bước 2.** Tính thể tích phần bể từ đáy lên tới mực nước bằng cách nhân chiều dài, chiều rộng và mực nước, đơn vị là $\\text{cm}^3$.\n\n**Bước 3.** Đổi thể tích đó ra $\\text{dm}^3$ cho cùng đơn vị với thể tích hòn non bộ, nhớ $1\\ \\text{dm}^3=1000\\ \\text{cm}^3$.\n\n**Bước 4.** Phần thể tích này gồm hòn non bộ và nước, nên lấy nó trừ thể tích hòn non bộ rồi đổi ra lít, vì $1\\ \\text{dm}^3$ chứa $1$ lít.\n\n**Chú ý:** Nếu quên trừ thể tích hòn non bộ thì sẽ đổ thừa nước, vì hòn non bộ đã chiếm một phần chỗ trong bể.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMực nước trong bể cần đạt là: $35+15=50$ (cm)\n\nThể tích phần bể từ đáy lên tới mực nước đó là: $120\\times 60\\times 50=360000$ ($\\text{cm}^3$)\n\nĐổi: $360000\\ \\text{cm}^3=360\\ \\text{dm}^3$\n\nThể tích nước cần đổ là: $360-57=303$ ($\\text{dm}^3$)\n\nĐổi: $303\\ \\text{dm}^3=303$ lít\n\nĐáp số: $303$ lít"
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.4",
+  "dap_an": "$120$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ngày thứ hai thu $\\dfrac{3}{5}$ của số giấy CÒN LẠI chứ không phải của cả số giấy, nên phải đổi mọi phần về cùng một mốc là cả số giấy cần thu. Ngày thứ ba thu nốt phần còn lại, ứng với $36$ kg.\n\n**Bước 1.** Coi cả số giấy cần thu là $1$; sau ngày thứ nhất thu $\\dfrac{1}{4}$ thì số giấy còn lại là bao nhiêu phần của cả số giấy.\n\n**Bước 2.** Sau ngày thứ hai thu $\\dfrac{3}{5}$ số giấy còn lại thì còn $1-\\dfrac{3}{5}$ số giấy còn lại đó, và phần này chính là số giấy thu ngày thứ ba.\n\n**Bước 3.** Lấy phân số của số giấy còn lại sau ngày thứ nhất nhân với phân số vừa tìm để biết ngày thứ ba thu được bao nhiêu phần của cả số giấy.\n\n**Bước 4.** Biết $36$ kg ứng với phân số đó của cả số giấy thì lấy $36$ chia cho phân số đó để tìm cả số giấy.\n\n**Chú ý:** Không lấy $\\dfrac{3}{5}$ của cả số giấy, vì đề nói $\\dfrac{3}{5}$ của số giấy còn lại sau ngày thứ nhất.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau ngày thứ nhất, số giấy còn lại bằng: $1-\\dfrac{1}{4}=\\dfrac{3}{4}$ (tổng số giấy)\n\nSau ngày thứ hai, số giấy còn lại bằng: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (số giấy còn lại sau ngày thứ nhất)\n\nSố giấy ngày thứ ba thu được ứng với: $\\dfrac{3}{4}\\times\\dfrac{2}{5}=\\dfrac{3}{10}$ (tổng số giấy)\n\nTổng số giấy cần thu là: $36:\\dfrac{3}{10}=120$ (kg)\n\nĐáp số: $120$ kg",
+  "ghi_chu_nghi": "Hiểu ngày thứ ba thu NỐT toàn bộ phần còn lại (đề không nói rõ nhưng \"tổng số giấy cần thu\" chỉ tính được theo cách hiểu này)."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.5",
+  "dap_an": "$160$ m",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Đầu tàu vào hầm → đuôi tàu ra khỏi hầm",
+   "diem": [
+    {
+     "ten": "Đầu hầm",
+     "x": 0
+    },
+    {
+     "ten": "Cuối hầm",
+     "x": 1840
+    }
+   ],
+   "vat": [
+    {
+     "tu": -160,
+     "den": 0,
+     "nhan": "Đoàn tàu",
+     "kieu": "tau"
+    },
+    {
+     "tu": 0,
+     "den": 1840,
+     "nhan": "Hầm 1840 m",
+     "kieu": "cau"
+    }
+   ],
+   "di": [
+    {
+     "tu": -160,
+     "den": 1840,
+     "nhan": "Đuôi tàu đi: 40 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": -160,
+     "den": 0,
+     "nhan": "? m"
+    },
+    {
+     "tu": 0,
+     "den": 1840,
+     "nhan": "1840 m"
+    },
+    {
+     "tu": -160,
+     "den": 1840,
+     "nhan": "2000 m"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tàu \"đi qua\" hầm nghĩa là từ lúc đầu tàu vào hầm đến lúc đuôi tàu ra khỏi hầm, nên quãng đường tàu đi bằng chiều dài hầm CỘNG chiều dài tàu. Biết vận tốc và thời gian thì tính được quãng đường, rồi trừ chiều dài hầm để ra chiều dài tàu.\n\n**Bước 1.** Vận tốc cho theo km/giờ mà thời gian cho bằng phút, nên đổi $3$ phút ra giờ rồi lấy vận tốc nhân thời gian để tìm quãng đường tàu đi.\n\n**Bước 2.** Đổi quãng đường vừa tìm từ kilômét sang mét để cùng đơn vị với chiều dài hầm.\n\n**Bước 3.** Hiểu quãng đường đó gồm đoạn đi hết chiều dài hầm và đoạn đi thêm đúng một chiều dài tàu, nên lấy quãng đường trừ chiều dài hầm để được chiều dài tàu.\n\n**Chú ý:** Quãng đường tàu đi không phải chỉ bằng chiều dài hầm, vì đuôi tàu còn phải đi thêm một chiều dài tàu mới ra khỏi hầm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Hầm dài $1840$ m; đoàn tàu dài ? m; từ lúc đầu tàu vào hầm đến lúc đuôi tàu ra khỏi hầm, tàu đi với vận tốc $40$ km/giờ trong $3$ phút)\n\nĐổi: $3$ phút $=\\dfrac{3}{60}=\\dfrac{1}{20}$ giờ\n\nQuãng đường đoàn tàu đi trong $3$ phút là: $40\\times\\dfrac{1}{20}=2$ (km)\n\nĐổi: $2$ km $=2000$ m\n\nChiều dài đoàn tàu là: $2000-1840=160$ (m)\n\nĐáp số: $160$ m",
+  "ghi_chu_nghi": "Đề không có hình. Đề đầu nói \"cầu\", cuối nói \"đoạn hầm\" — hiểu cùng một vật dài 1840 m. Hiểu \"mất 3 phút\" tính từ lúc đầu tàu vào hầm đến lúc đuôi tàu ra khỏi hầm (cách hiểu chuẩn của bài tàu qua cầu/hầm)."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.6",
+  "dap_an": "$0,850402\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số người nhiễm ở Trung Quốc được so với châu Á, còn câu hỏi so với thế giới, nên phải đi qua châu Á làm cầu nối: Trung Quốc bằng $8,74\\%$ của châu Á, mà châu Á lại bằng $9,73\\%$ của thế giới.\n\n**Bước 1.** Nhận ra hai tỉ số phần trăm đang tính theo hai mốc khác nhau (châu Á và thế giới), nên không thể cộng hay trừ chúng với nhau.\n\n**Bước 2.** Lấy $8,74\\%$ của số ở châu Á, mà số ở châu Á lại là $9,73\\%$ của thế giới, nên Trung Quốc bằng tích của hai tỉ số phần trăm so với thế giới.\n\n**Bước 3.** Đổi hai tỉ số phần trăm ra số thập phân rồi nhân với nhau, sau đó đổi kết quả trở lại thành phần trăm.\n\n**Chú ý:** Kết quả rất bé vì lấy một phần nhỏ của một phần nhỏ; đó là điều bình thường, không phải tính sai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người nhiễm ở Trung Quốc so với thế giới bằng: $9,73\\%\\times 8,74\\%=0,0973\\times 0,0874=0,00850402=0,850402\\%$\n\nĐáp số: $0,850402\\%$",
+  "ghi_chu_nghi": "Đề không yêu cầu làm tròn nên giữ kết quả chính xác 0,850402% (≈ 0,85%; nếu đáp án của đề làm tròn thì dap_an cần đổi). Đề có chữ lạ \"(hoặc 26/6)\", bỏ qua. Hiểu \"thế giới\" = dân số thế giới, \"số ca nhiễm\" = \"số người nhiễm\"."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.7",
+  "dap_an": "$32$ con",
+  "so_do_mo_ta": {
+   "tieu_de": "Gà và vịt",
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Số gà",
+     "phan": 4
+    },
+    {
+     "nhan": "Số vịt",
+     "phan": 3
+    }
+   ],
+   "tong": "56 con",
+   "dau_hoi": [
+    "Số gà"
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai đại lượng khác nhau (số gà và số vịt) có hai phân số của chúng bằng nhau thì đưa được về số phần bằng nhau: lấy đoạn bằng $\\dfrac{1}{2}$ số gà và bằng $\\dfrac{2}{3}$ số vịt làm chuẩn, rồi chia ra xem gà và vịt mỗi loại gồm mấy phần như thế. Sau đó là bài tổng – tỉ.\n\n**Bước 1.** Coi $\\dfrac{2}{3}$ số vịt là $2$ phần bằng nhau, thì $\\dfrac{1}{3}$ số vịt là $1$ phần, nên cả số vịt gồm $3$ phần như thế.\n\n**Bước 2.** $\\dfrac{1}{2}$ số gà cũng là $2$ phần bằng nhau ấy, mà cả số gà gấp $2$ lần $\\dfrac{1}{2}$ số gà, nên số gà gồm bao nhiêu phần.\n\n**Bước 3.** Đã biết số gà và số vịt gồm bao nhiêu phần, cộng lại được tổng số phần; $56$ con ứng với tổng số phần này, nên chia $56$ cho tổng số phần để tìm giá trị một phần.\n\n**Bước 4.** Số gà gồm mấy phần thì lấy giá trị một phần nhân với số phần đó.\n\n**Chú ý:** Đề hỏi số gà chứ không hỏi số vịt, đừng dừng lại ở số vịt.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$\\dfrac{1}{2}$ số gà bằng $\\dfrac{2}{3}$ số vịt nên coi mỗi đại lượng đó là $2$ phần bằng nhau.\n\nVì $\\dfrac{1}{3}$ số vịt là $1$ phần nên số vịt là $3$ phần; số gà gấp $2$ lần $\\dfrac{1}{2}$ số gà nên số gà là: $2\\times 2=4$ (phần)\n\nTa có sơ đồ:\n\n(Số gà 4 phần; số vịt 3 phần; tổng 56 con)\n\nTổng số phần bằng nhau là: $4+3=7$ (phần)\n\nGiá trị của một phần là: $56:7=8$ (con)\n\nSố gà là: $8\\times 4=32$ (con)\n\nĐáp số: $32$ con"
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.8",
+  "dap_an": "$1050\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nối A với C thì tứ giác AECF chia thành hai tam giác AEC và ACF. Mỗi tam giác có một cạnh nằm trên một cạnh của hình chữ nhật làm đáy, và cạnh kề của hình chữ nhật làm đường cao, nên chỉ cần tìm hai đáy EC và CF.\n\n**Bước 1.** Nhận ra đề ghi \"hình vuông\" nhưng $AB$ khác $AD$, nên ABCD là hình chữ nhật; các cạnh đối bằng nhau nên biết ngay $BC$ và $CD$.\n\n**Bước 2.** Tìm $EC$ từ $BE=\\dfrac{1}{2}BC$ và tìm $CF$ từ $CF=\\dfrac{2}{3}CD$, dựa vào độ dài $BC$ và $CD$ vừa biết.\n\n**Bước 3.** Nối A với C. Tam giác AEC có đáy $EC$ và đường cao hạ từ A xuống $BC$ chính là $AB$; tam giác ACF có đáy $CF$ và đường cao hạ từ A xuống $CD$ chính là $AD$.\n\n**Bước 4.** Tính diện tích từng tam giác bằng đáy nhân đường cao rồi chia $2$, sau đó cộng hai diện tích lại.\n\n**Chú ý:** Đường cao của tam giác AEC là $AB$ (không phải $AD$), còn đường cao của tam giác ACF là $AD$; đừng nhầm hai cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nABCD là hình chữ nhật nên $BC=AD=30$ m và $CD=AB=60$ m.\n\n$BE=\\dfrac{1}{2}BC$ nên $EC=\\dfrac{1}{2}BC$, độ dài $EC$ là: $30:2=15$ (m)\n\nĐộ dài $CF$ là: $60\\times\\dfrac{2}{3}=40$ (m)\n\nNối A với C. Tam giác AEC có đáy $EC$ và đường cao hạ từ A xuống $BC$ là $AB$.\n\nDiện tích tam giác AEC là: $15\\times 60:2=450$ ($\\text{m}^2$)\n\nTam giác ACF có đáy $CF$ và đường cao hạ từ A xuống $CD$ là $AD$.\n\nDiện tích tam giác ACF là: $40\\times 30:2=600$ ($\\text{m}^2$)\n\nDiện tích tứ giác AECF là: $450+600=1050$ ($\\text{m}^2$)\n\nĐáp số: $1050\\ \\text{m}^2$",
+  "ghi_chu_nghi": "Đề ghi \"hình vuông ABCD\" nhưng AB = 60 m, AD = 30 m (không bằng nhau) ⇒ hiểu là HÌNH CHỮ NHẬT ABCD (AB dài, AD rộng). Đề không có hình; E nằm trên cạnh BC, F nằm trên cạnh CD, tứ giác AECF theo thứ tự A–E–C–F."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.9",
+  "dap_an": "$515000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công thức pha chế có $150+500+350=1000$ ml, tức là cho đúng $1$ lít nước ép, nên chỉ cần xem lượng nước ép cần pha gấp bao nhiêu lần công thức rồi nhân từng loại. Đề lưu ý nguyên liệu bán theo hộp nguyên, nên số hộp phải là số tự nhiên đủ dùng, thiếu một chút cũng phải mua thêm hộp.\n\n**Bước 1.** Tính tổng lượng nước ép cần pha: số bạn nhân $2$ cốc mỗi bạn rồi nhân dung tích mỗi cốc.\n\n**Bước 2.** Cộng ba lượng trong công thức để biết một công thức pha được bao nhiêu mililít, rồi xem lượng cần pha gấp công thức bao nhiêu lần.\n\n**Bước 3.** Nhân lượng mỗi loại trong công thức với số lần vừa tìm để biết cần bao nhiêu mililít nước cam, nước dứa và nước cà rốt.\n\n**Bước 4.** So lượng cần dùng của từng loại với dung tích một hộp để tìm số hộp nguyên cần mua, thiếu một chút cũng phải mua thêm một hộp.\n\n**Bước 5.** Nhân số hộp mỗi loại với giá một hộp rồi cộng tiền ba loại.\n\n**Chú ý:** Nguyên liệu không bán lẻ, nên phần nước thừa trong hộp vẫn phải trả tiền; không tính tiền theo số mililít cần dùng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $1$ lít $=1000$ ml; $2$ lít $=2000$ ml\n\nTổng lượng nước ép cần pha là: $9\\times 2\\times 300=5400$ (ml)\n\nMột công thức pha chế được: $150+500+350=1000$ (ml)\n\nLượng nước ép cần pha gấp công thức số lần là: $5400:1000=5,4$ (lần)\n\nLượng nước cam cần dùng là: $150\\times 5,4=810$ (ml)\n\nLượng nước dứa cần dùng là: $500\\times 5,4=2700$ (ml)\n\nLượng nước cà rốt cần dùng là: $350\\times 5,4=1890$ (ml)\n\nMột hộp nước cam có $1000$ ml, mà $810<1000$ nên chỉ cần mua $1$ hộp.\n\nMột hộp nước dứa có $2000$ ml, mà $2000<2700<4000$ nên cần mua $2$ hộp.\n\nMột hộp nước cà rốt có $1000$ ml, mà $1000<1890<2000$ nên cần mua $2$ hộp.\n\nTiền mua nước cam là: $1\\times 85000=85000$ (đồng)\n\nTiền mua nước dứa là: $2\\times 95000=190000$ (đồng)\n\nTiền mua nước cà rốt là: $2\\times 120000=240000$ (đồng)\n\nSố tiền Vui đã dùng để mua nguyên liệu là: $85000+190000+240000=515000$ (đồng)\n\nĐáp số: $515000$ đồng",
+  "ghi_chu_nghi": "luu_y_de (mua theo hộp nguyên) đã áp dụng. Hiểu: (1) chỉ 9 bạn được mời (Vui không tính); (2) công thức 150 + 500 + 350 = 1000 ml là cho 1 lít nước ép (tổng đúng 1000 ml); (3) nhiều cách: lượng từng loại = 15% / 50% / 35% của 5400 ml (cùng kết quả). Nếu tính cả Vui (10 người, 6 lít) thì cam 1 hộp, dứa 2 hộp, cà rốt 3 hộp = 635000 đồng."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P1.10",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thập phân có phần nguyên rồi dấu phẩy, sau dấu phẩy lần lượt là hàng phần mười, hàng phần trăm, hàng phần nghìn. Đề không nhắc tới hàng phần trăm, nghĩa là hàng đó có $0$ đơn vị và phải điền chữ số $0$ vào đúng chỗ.\n\n**Bước 1.** Viết phần nguyên của số trước dấu phẩy theo số đơn vị đề cho.\n\n**Bước 2.** Viết lần lượt các chữ số sau dấu phẩy theo thứ tự hàng phần mười, phần trăm, phần nghìn; hàng nào đề không nói tới thì điền $0$.\n\n**Bước 3.** Ghép lại thành số thập phân hoàn chỉnh, đếm số chữ số sau dấu phẩy rồi đối chiếu với bốn phương án để chọn.\n\n**Chú ý:** Hàng phần nghìn là chữ số thứ ba sau dấu phẩy, nên số cần tìm phải có đủ ba chữ số sau dấu phẩy.\n\n**Phần 2. Trình bày**\n\nPhần nguyên là $4$; hàng phần mười là $3$; hàng phần trăm là $0$ (đề không có phần trăm); hàng phần nghìn là $5$.\n\nSố thập phân cần tìm là $4,305$.\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P2.1",
+  "dap_an": "$72$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi thêm học sinh nam thì số học sinh nữ KHÔNG đổi, nên so sánh số nam lúc đầu và lúc sau với cùng số nữ. Hai lần so sánh chỉ khác nhau đúng $16$ học sinh nam thêm vào.\n\n**Bước 1.** Từ $\\dfrac{1}{5}$ số nam bằng $\\dfrac{5}{11}$ số nữ, nhân lên $5$ lần để biết cả số nam lúc đầu bằng bao nhiêu phần số nữ.\n\n**Bước 2.** Sau khi thêm, số nam gấp $3$ lần số nữ; viết $3$ thành phân số có mẫu số $11$ để so sánh với phân số ở bước trước.\n\n**Bước 3.** $16$ học sinh nam thêm vào chính là phần chênh lệch giữa hai phân số, nên $16$ học sinh ứng với bao nhiêu phần số nữ; chia $16$ cho phân số đó để tìm số nữ.\n\n**Bước 4.** Từ số nữ tìm số nam lúc đầu rồi cộng hai số lại để được số học sinh của câu lạc bộ.\n\n**Chú ý:** Số học sinh của câu lạc bộ ở đây là số lúc chưa thêm $16$ bạn nam; đừng cộng thêm $16$ vào kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$\\dfrac{1}{5}$ số nam bằng $\\dfrac{5}{11}$ số nữ nên số nam lúc đầu bằng: $\\dfrac{5}{11}\\times 5=\\dfrac{25}{11}$ (số nữ)\n\nSố nữ không đổi; sau khi thêm $16$ học sinh nam thì số nam bằng: $3=\\dfrac{33}{11}$ (số nữ)\n\n$16$ học sinh nam thêm vào ứng với: $\\dfrac{33}{11}-\\dfrac{25}{11}=\\dfrac{8}{11}$ (số nữ)\n\nSố học sinh nữ là: $16:\\dfrac{8}{11}=22$ (học sinh)\n\nSố học sinh nam lúc đầu là: $22\\times\\dfrac{25}{11}=50$ (học sinh)\n\nSố học sinh của câu lạc bộ khoa học là: $22+50=72$ (học sinh)\n\nĐáp số: $72$ học sinh",
+  "ghi_chu_nghi": "Đề hỏi \"số học sinh của câu lạc bộ\" nhưng có hai mốc: lúc đầu (50 nam + 22 nữ = 72) hoặc sau khi thêm 16 nam (66 nam + 22 nữ = 88). Chọn 72 (lúc đầu — số liệu của câu lạc bộ trước khi thêm); nếu đáp án đề là 88 thì cần đổi. Hai tỉ số CĐ8 nên không vẽ sơ đồ (phân số của đại lượng không đổi); các hàng sơ đồ cũng vượt 12 phần."
+ },
+ {
+  "ma_nguon": "NTT 2020 · P2.2",
+  "dap_an": "a) Năm $1995$; b) Năm $1999$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) là bài tìm phân số của một số: lấy $\\dfrac{5}{12}$ của số năm Hiệp hội đã tổ chức, rồi lùi từ năm $2015$. Ý b) dùng lại kết quả ý a): vì Lào tham gia trong một khoảng năm nhất định nên tổng số năm của hai nước nằm trong một khoảng, rồi lọc bằng điều kiện chia hết cho $3$ và cho $4$.\n\n**Bước 1.** Ý a): tính số năm Hiệp hội đã tổ chức tính đến năm $2015$ bằng cách lấy $2015$ trừ năm thành lập, rồi lấy $\\dfrac{5}{12}$ của số năm đó để biết số năm Việt Nam tham gia.\n\n**Bước 2.** Lấy năm $2015$ trừ số năm Việt Nam tham gia để tìm năm Việt Nam tham gia Hiệp hội.\n\n**Bước 3.** Ý b): Lào tham gia sau năm Việt Nam và trước năm $2010$, nên tìm năm tham gia sớm nhất và muộn nhất của Lào, từ đó tìm số năm tham gia nhiều nhất và ít nhất tính đến năm $2015$.\n\n**Bước 4.** Cộng thêm số năm Việt Nam tham gia (dùng kết quả ý a) để được khoảng giá trị của tổng số năm hai nước, trong khoảng đó chọn số chia hết cho $4$ rồi chọn số chia hết cho $3$.\n\n**Bước 5.** Lấy tổng số năm vừa tìm trừ số năm Việt Nam để được số năm Lào tham gia, rồi lùi từ năm $2015$ để biết năm Lào tham gia.\n\n**Chú ý:** Điều kiện \"chia hết cho $3$ và $4$\" nghĩa là chia hết cho cả hai số; phải kiểm tra đủ cả hai điều kiện, không chỉ một.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số năm Hiệp hội đã tổ chức tính đến năm $2015$ là: $2015-1967=48$ (năm)\n\nSố năm Việt Nam tham gia tính đến năm $2015$ là: $48\\times\\dfrac{5}{12}=20$ (năm)\n\nViệt Nam tham gia Hiệp hội vào năm: $2015-20=1995$\n\nb) Lào tham gia sau năm $1995$ và trước năm $2010$ nên Lào tham gia sớm nhất vào năm $1996$ và muộn nhất vào năm $2009$.\n\nSố năm Lào tham gia tính đến năm $2015$ nhiều nhất là: $2015-1996=19$ (năm)\n\nSố năm Lào tham gia tính đến năm $2015$ ít nhất là: $2015-2009=6$ (năm)\n\nTổng số năm của Lào và Việt Nam nằm trong khoảng từ $20+6=26$ đến $20+19=39$ (năm).\n\nTrong khoảng từ $26$ đến $39$, các số chia hết cho $4$ là: $28;\\ 32;\\ 36$.\n\nTrong ba số đó chỉ có $36$ chia hết cho $3$ (vì $3+6=9$ chia hết cho $3$).\n\nSố năm Lào tham gia tính đến năm $2015$ là: $36-20=16$ (năm)\n\nLào tham gia vào năm: $2015-16=1999$\n\nĐáp số: a) Năm $1995$; b) Năm $1999$"
+ }
+]

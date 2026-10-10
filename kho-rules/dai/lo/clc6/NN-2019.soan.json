@@ -1,0 +1,177 @@
+[
+ {
+  "ma_nguon": "NN 2019 · 1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho số của Bình theo số của An, rồi số của Cường theo số của Bình; muốn biết số của Cường so với số của An thì \"nối\" hai tỉ số lại bằng cách nhân chúng với nhau, mọi thứ đều quy về số của An.\n\n**Bước 1.** Đổi $60\\%$ ra phân số tối giản để cùng kiểu số với $\\dfrac{4}{3}$ của đề, vì hai tỉ số này sắp được nhân với nhau.\n\n**Bước 2.** Số của Cường bằng $60\\%$ số của Bình, còn số của Bình bằng $\\dfrac{4}{3}$ số của An; vì vậy số của Cường so với số của An là tích của hai tỉ số đó.\n\n**Bước 3.** Tính tích hai phân số rồi rút gọn về phân số tối giản.\n\n**Bước 4.** Đổi phân số vừa tìm được ra số thập phân, rồi ra phần trăm và đối chiếu với bốn phương án.\n\n**Chú ý:** Hai tỉ số đều so với số đứng ngay trước nó nên phải nhân với nhau, không được cộng hay trừ hai tỉ số.\n\n**Phần 2. Trình bày**\n\nĐổi: $60\\%=\\dfrac{3}{5}$\n\nSố của Cường so với số của An bằng: $\\dfrac{4}{3}\\times\\dfrac{3}{5}=\\dfrac{4}{5}$ (số của An)\n\nĐổi: $\\dfrac{4}{5}=0,8=80\\%$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "NN 2019 · 2",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết số có hai chữ số theo hàng chục và hàng đơn vị, lập đẳng thức \"số đó bằng $4$ lần tổng hai chữ số\"; hai bên có những phần giống nhau nên bớt đi, còn lại là quan hệ đơn giản giữa chữ số hàng chục và chữ số hàng đơn vị.\n\n**Bước 1.** Gọi số cần tìm là $\\overline{ab}$ rồi phân tích theo hàng: $\\overline{ab}$ gồm $a$ chục và $b$ đơn vị, còn $4$ lần tổng hai chữ số gồm $4$ lần $a$ và $4$ lần $b$.\n\n**Bước 2.** Viết hai bên bằng nhau rồi bớt cả hai bên những phần giống nhau (có $a\\times 4$ và $b$ ở cả hai bên) để còn một đẳng thức gọn.\n\n**Bước 3.** Chia cả hai bên của đẳng thức gọn cho cùng một số để biết chữ số hàng đơn vị gấp mấy lần chữ số hàng chục.\n\n**Bước 4.** Cho chữ số hàng chục lần lượt là $1$, $2$, $3$… rồi tìm chữ số hàng đơn vị tương ứng, nhớ rằng chữ số chỉ từ $0$ đến $9$; sau đó đếm các số thoả mãn.\n\n**Chú ý:** Chữ số hàng chục của số có hai chữ số không thể bằng $0$, và chữ số hàng đơn vị lớn nhất là $9$ nên phải dừng đúng chỗ.\n\n**Phần 2. Trình bày**\n\nGọi số có hai chữ số đó là $\\overline{ab}$.\n\n$\\overline{ab}=4\\times(a+b)$\n\n$a\\times 10+b=a\\times 4+b\\times 4$\n\nBớt cả hai bên $a\\times 4$ và $b$: $a\\times 6=b\\times 3$\n\nChia cả hai bên cho $3$: $a\\times 2=b$\n\nChữ số hàng đơn vị $b$ gấp đôi chữ số hàng chục $a$, mà $b$ là chữ số nên $a\\times 2$ không vượt quá $9$, do đó $a$ là $1;\\ 2;\\ 3;\\ 4$.\n\nVậy các số cần tìm là $12;\\ 24;\\ 36;\\ 48$, có $4$ số.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NN 2019 · 3",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tuổi bố và tuổi mẹ đều gấp tuổi bé An một số lần, nên coi tuổi bé An là $1$ phần thì tuổi bố và tuổi mẹ đều là một số phần; khi đó $4$ tuổi bố hơn mẹ chính là phần chênh lệch giữa hai số phần ấy.\n\n**Bước 1.** Coi tuổi bé An là $1$ phần rồi suy ra số phần ứng với tuổi bố và số phần ứng với tuổi mẹ.\n\n**Bước 2.** Tính xem tuổi bố hơn tuổi mẹ bao nhiêu phần bằng nhau.\n\n**Bước 3.** Số phần chênh lệch ứng với $4$ tuổi nên chia $4$ tuổi cho số phần đó để tìm giá trị một phần, cũng là tuổi bé An hiện nay.\n\n**Bước 4.** Đề hỏi tuổi bé An vào sang năm nên cộng thêm một tuổi rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Đừng chọn ngay tuổi hiện nay của bé An, vì đề hỏi tuổi sang năm.\n\n**Phần 2. Trình bày**\n\nCoi tuổi bé An là $1$ phần thì tuổi bố là $8$ phần, tuổi mẹ là $7$ phần như thế.\n\nTa có sơ đồ:\n\n(Tuổi bố 8 phần; tuổi mẹ 7 phần; tuổi bé An 1 phần; bố hơn mẹ 4 tuổi)\n\nHiệu số phần bằng nhau là: $8-7=1$ (phần)\n\nTuổi bé An hiện nay là: $4:1=4$ (tuổi)\n\nSang năm bé An có số tuổi là: $4+1=5$ (tuổi)\n\nChọn C.",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Tuổi bố",
+     "phan": 8
+    },
+    {
+     "nhan": "Tuổi mẹ",
+     "phan": 7
+    },
+    {
+     "nhan": "Tuổi bé An",
+     "phan": 1
+    }
+   ],
+   "hieu": "4 tuổi",
+   "dau_hoi": [
+    "Tuổi bé An"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2019 · 4",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; ta dùng điều này để \"bắc cầu\" từ hai tam giác cần so sánh sang các tam giác nhỏ khác trong hình, rồi bớt phần chung.\n\n**Bước 1.** Đọc hình vẽ: các chấm chia đều $BC$ và $AC$ thành các đoạn bằng nhau, từ đó tìm tỉ số $BD:DC$ và tỉ số $AE:EC$.\n\n**Bước 2.** Nối $C$ với $F$, rồi dùng đáy trên $AC$ và đáy trên $BC$ để viết $S_{CEF}$ qua $S_{AEF}$ và $S_{CDF}$ qua $S_{BDF}$, vì mỗi cặp tam giác chung đường cao hạ từ $F$.\n\n**Bước 3.** So sánh hai tam giác $ABE$ và $CBE$ chung đường cao hạ từ $B$, chia cả hai thành các tam giác nhỏ rồi bớt phần chung để tìm $S_{ABF}$ theo $S_{BDF}$.\n\n**Bước 4.** Làm tương tự với hai tam giác $ABD$ và $ACD$ chung đường cao hạ từ $A$ để tìm $S_{ABF}$ theo $S_{AEF}$.\n\n**Bước 5.** Hai kết quả đều nói về $S_{ABF}$ nên so sánh được $S_{BDF}$ với $S_{AEF}$, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Đề không ghi số đo trên hình, mọi tỉ số đều lấy từ các chấm chia đều trên hình vẽ.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, các chấm chia $BC$ thành $3$ đoạn bằng nhau và chia $AC$ thành $4$ đoạn bằng nhau, nên $BD=\\dfrac{1}{2}\\times DC$ và $AE=\\dfrac{1}{3}\\times EC$.\n\nNối $C$ với $F$.\n\nTam giác $AEF$ và tam giác $CEF$ có chung đường cao hạ từ $F$ xuống $AC$, suy ra $\\dfrac{S_{AEF}}{S_{CEF}}=\\dfrac{AE}{EC}=\\dfrac{1}{3}$, do đó $S_{CEF}=3\\times S_{AEF}$.\n\nTam giác $BDF$ và tam giác $CDF$ có chung đường cao hạ từ $F$ xuống $BC$, suy ra $\\dfrac{S_{BDF}}{S_{CDF}}=\\dfrac{BD}{DC}=\\dfrac{1}{2}$, do đó $S_{CDF}=2\\times S_{BDF}$.\n\nTam giác $ABE$ và tam giác $CBE$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{ABE}}{S_{CBE}}=\\dfrac{AE}{EC}=\\dfrac{1}{3}$.\n\n$S_{CBE}=S_{BDF}+S_{CDF}+S_{CEF}=S_{BDF}+2\\times S_{BDF}+3\\times S_{AEF}=3\\times S_{BDF}+3\\times S_{AEF}$\n\nDo đó $S_{ABE}=S_{BDF}+S_{AEF}$.\n\nMà $S_{ABE}=S_{ABF}+S_{AEF}$. Bớt $S_{AEF}$ ở cả hai bên được: $S_{ABF}=S_{BDF}$ (1)\n\nTam giác $ABD$ và tam giác $ACD$ có chung đường cao hạ từ $A$ xuống $BC$, suy ra $\\dfrac{S_{ABD}}{S_{ACD}}=\\dfrac{BD}{DC}=\\dfrac{1}{2}$.\n\n$S_{ACD}=S_{AEF}+S_{CEF}+S_{CDF}=S_{AEF}+3\\times S_{AEF}+2\\times S_{BDF}=4\\times S_{AEF}+2\\times S_{BDF}$\n\nDo đó $S_{ABD}=2\\times S_{AEF}+S_{BDF}$.\n\nMà $S_{ABD}=S_{ABF}+S_{BDF}$. Bớt $S_{BDF}$ ở cả hai bên được: $S_{ABF}=2\\times S_{AEF}$ (2)\n\nTừ (1) và (2) ta có $S_{BDF}=S_{ABF}=2\\times S_{AEF}$.\n\nTỉ số diện tích hai tam giác $BDF$ và $AEF$ là: $\\dfrac{S_{BDF}}{S_{AEF}}=2$\n\nChọn A.",
+  "ghi_chu_nghi": "Hình không ghi số đo; chỉ có các chấm chia. Hiểu theo hình: BC có D và một chấm nữa chia thành 3 đoạn bằng nhau (BD = 1/3 BC), AC có E và hai chấm nữa chia thành 4 đoạn bằng nhau (AE = 1/4 AC) — vị trí E trên hình hơi lệch khỏi 1/4 (≈0,30 AC) nhưng 3 chấm trong AC cách đều như điểm chia tư. Với cách hiểu này S_BDF : S_AEF = 2 (khớp phương án A). Nếu đề gốc có số khác (vd AE = 1/3 AC) thì đáp số khác (khi đó tỉ số = 1). Cần đối chiếu đề gốc."
+ },
+ {
+  "ma_nguon": "NN 2019 · 5",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả công việc coi là $1$; mỗi người làm xong trong bao lâu thì mỗi giờ làm được bấy nhiêu phần công việc, nên muốn biết cả hai người cùng làm thì cộng phần việc mỗi giờ của hai người, rồi lấy $1$ chia cho tổng đó.\n\n**Bước 1.** Coi cả công việc là $1$ và tính xem mỗi giờ người thứ nhất làm được bao nhiêu phần công việc.\n\n**Bước 2.** Tính tương tự phần công việc mà người thứ hai làm được trong một giờ.\n\n**Bước 3.** Cộng hai phân số khác mẫu số (quy đồng trước) để biết mỗi giờ cả hai người cùng làm được bao nhiêu phần công việc.\n\n**Bước 4.** Lấy cả công việc chia cho phần việc làm được mỗi giờ để tìm thời gian làm xong, rồi chọn phương án.\n\n**Chú ý:** Không cộng $5$ giờ với $4$ giờ; làm chung thì thời gian phải ngắn hơn thời gian của người làm nhanh nhất.\n\n**Phần 2. Trình bày**\n\nMỗi giờ người thứ nhất làm được: $1:5=\\dfrac{1}{5}$ (công việc)\n\nMỗi giờ người thứ hai làm được: $1:4=\\dfrac{1}{4}$ (công việc)\n\nMỗi giờ cả hai người cùng làm được: $\\dfrac{1}{5}+\\dfrac{1}{4}=\\dfrac{4}{20}+\\dfrac{5}{20}=\\dfrac{9}{20}$ (công việc)\n\nThời gian cả hai người cùng làm xong công việc là: $1:\\dfrac{9}{20}=\\dfrac{20}{9}$ (giờ)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NN 2019 · 6",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mặt nước cách mặt bể $10$ cm nên nước ở mỗi khu sâu kém độ sâu của khu đó đúng $10$ cm; thể tích nước bằng diện tích mặt nước nhân với độ sâu của nước, tính riêng từng khu rồi cộng lại.\n\n**Bước 1.** Đổi $10$ cm ra mét cho cùng đơn vị với các kích thước khác của bể.\n\n**Bước 2.** Tính diện tích mặt bể rồi chia đôi để được diện tích mặt nước mỗi khu, vì đề cho hai khu có diện tích mặt nước bằng nhau.\n\n**Bước 3.** Tìm độ sâu của nước ở mỗi khu bằng cách lấy độ sâu của khu trừ đi khoảng cách $10$ cm vừa đổi.\n\n**Bước 4.** Tính thể tích nước ở từng khu bằng diện tích nhân độ sâu của nước, rồi cộng hai thể tích để được lượng nước cần xả vào.\n\n**Chú ý:** Không dùng thẳng độ sâu của bể ($0,8$ m và $1$ m) để tính, vì nước chưa đầy tới mặt bể.\n\n**Phần 2. Trình bày**\n\nĐổi: $10$ cm $=0,1$ m\n\nDiện tích mặt bể là: $15\\times 10=150$ ($\\text{m}^2$)\n\nDiện tích mặt nước của mỗi khu là: $150:2=75$ ($\\text{m}^2$)\n\nĐộ sâu của nước ở khu nông là: $0,8-0,1=0,7$ (m)\n\nĐộ sâu của nước ở khu sâu là: $1-0,1=0,9$ (m)\n\nThể tích nước ở khu nông là: $75\\times 0,7=52,5$ ($\\text{m}^3$)\n\nThể tích nước ở khu sâu là: $75\\times 0,9=67,5$ ($\\text{m}^3$)\n\nThể tích nước phải xả vào bể là: $52,5+67,5=120$ ($\\text{m}^3$)\n\nChọn D.",
+  "ghi_chu_nghi": "Đề không có hình: hiểu bể gồm hai khu đáy phẳng, độ sâu 0,8 m và 1 m tính từ mặt bể, mặt bể hình chữ nhật 15 m x 10 m, hai khu có diện tích mặt nước bằng nhau (mỗi khu 75 m²)."
+ },
+ {
+  "ma_nguon": "NN 2019 · 7",
+  "dap_an": "Can một: $10$ lít; can hai: $13$ lít; can ba: $13$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rót dầu từ can này sang can khác không làm thay đổi tổng số dầu; mọi dữ kiện của đề ($\\dfrac{2}{9}$ tổng và $75\\%$ số dầu can ba) đều nói về số dầu LÚC SAU, nên tính số dầu lúc sau của từng can trước rồi mới lùi về lúc đầu.\n\n**Bước 1.** Coi tổng số dầu là $9$ phần bằng nhau; can một lúc sau chiếm $\\dfrac{2}{9}$ tổng nên tính xem hai can còn lại chiếm bao nhiêu phần.\n\n**Bước 2.** Đổi $75\\%$ ra phân số rồi chia số phần của hai can còn lại cho can hai và can ba theo tỉ số đó.\n\n**Bước 3.** Tìm hiệu số phần giữa can ba và can một lúc sau; hiệu này ứng với $8$ lít nên tìm được giá trị một phần.\n\n**Bước 4.** Tính số dầu lúc sau của từng can, rồi lùi lại từng lần rót để tìm số dầu lúc đầu: can một đã cho đi $2$ lít, can hai nhận $2$ lít và cho đi $3$ lít, can ba nhận $3$ lít.\n\nThử lại: cộng số dầu lúc đầu của ba can phải bằng tổng số dầu ($9$ phần) vừa tìm được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nRót dầu không làm đổi tổng số dầu. Sau khi rót, can một có $\\dfrac{2}{9}$ tổng số dầu nên can một là $2$ phần, tổng số dầu là $9$ phần bằng nhau.\n\nHai can còn lại có số phần là: $9-2=7$ (phần)\n\nĐổi: $75\\%=\\dfrac{3}{4}$\n\nSau khi rót, số dầu can hai bằng $\\dfrac{3}{4}$ số dầu can ba nên can hai là $3$ phần, can ba là $4$ phần như thế. Hai can có $3+4=7$ (phần), khớp với $7$ phần ở trên.\n\nTa có sơ đồ:\n\n(Sau khi rót: can ba 4 phần; can một 2 phần; can hai 3 phần; can ba nhiều hơn can một 8 lít)\n\nCan ba nhiều hơn can một số phần là: $4-2=2$ (phần)\n\nGiá trị của một phần là: $8:2=4$ (lít)\n\nSau khi rót, can một có: $4\\times 2=8$ (lít)\n\nSau khi rót, can hai có: $4\\times 3=12$ (lít)\n\nSau khi rót, can ba có: $4\\times 4=16$ (lít)\n\nLúc đầu can một có: $8+2=10$ (lít)\n\nLúc đầu can hai có: $12+3-2=13$ (lít)\n\nLúc đầu can ba có: $16-3=13$ (lít)\n\nĐáp số: Can một: $10$ lít; can hai: $13$ lít; can ba: $13$ lít",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi rót dầu",
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Can ba",
+     "phan": 4
+    },
+    {
+     "nhan": "Can một",
+     "phan": 2
+    },
+    {
+     "nhan": "Can hai",
+     "phan": 3
+    }
+   ],
+   "hieu": "8 lít",
+   "dau_hoi": [
+    "Can một",
+    "Can hai",
+    "Can ba"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2019 · 8",
+  "dap_an": "Xe đi từ A: $15$ km/giờ; xe đi từ B: $12$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe cùng khởi hành, đi ngược chiều thì thời gian gặp nhau bằng quãng đường chia cho tổng vận tốc; khi gặp nhau ở chính giữa quãng đường thì mỗi xe đi được nửa quãng đường trong cùng một thời gian, nên lúc sau hai xe có vận tốc bằng nhau.\n\n**Bước 1.** Đổi hỗn số ra phân số rồi tính tổng vận tốc hai xe lúc đầu bằng cách lấy quãng đường chia cho thời gian gặp nhau.\n\n**Bước 2.** Xe B tăng thêm $3$ km/giờ còn xe A giữ nguyên nên tổng vận tốc lúc sau tăng thêm đúng $3$ km/giờ; từ đó tính thời gian hai xe gặp nhau lúc sau.\n\n**Bước 3.** Gặp nhau ở chính giữa nên xe A đi nửa quãng đường AB; lấy quãng đường đó chia cho thời gian lúc sau để tìm vận tốc xe A.\n\n**Bước 4.** Lấy tổng vận tốc lúc đầu trừ đi vận tốc xe A để tìm vận tốc xe B lúc đầu.\n\nThử lại: vận tốc xe B lúc đầu cộng $3$ km/giờ phải bằng vận tốc xe A, vì lúc sau hai xe cùng đi nửa quãng đường trong cùng một thời gian.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Lúc đầu: xe từ A và xe từ B đi ngược chiều, gặp nhau sau $2\\dfrac{2}{9}$ giờ; AB dài 60 km)\n\nTa có sơ đồ:\n\n(Khi xe từ B tăng thêm 3 km/giờ: hai xe gặp nhau ở chính giữa AB, mỗi xe đi 30 km)\n\nĐổi: $2\\dfrac{2}{9}$ giờ $=\\dfrac{20}{9}$ giờ\n\nTổng vận tốc của hai xe lúc đầu là: $60:\\dfrac{20}{9}=27$ (km/giờ)\n\nKhi xe đi từ B tăng thêm $3$ km/giờ, tổng vận tốc của hai xe là: $27+3=30$ (km/giờ)\n\nThời gian hai xe gặp nhau lúc sau là: $60:30=2$ (giờ)\n\nGặp nhau ở chính giữa nên mỗi xe đi được: $60:2=30$ (km)\n\nVận tốc của xe đi từ A là: $30:2=15$ (km/giờ)\n\nVận tốc của xe đi từ B lúc đầu là: $27-15=12$ (km/giờ)\n\nĐáp số: Xe đi từ A: $15$ km/giờ; xe đi từ B: $12$ km/giờ",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Lúc đầu",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 33.333333333333336,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 60
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 33.333333333333336,
+      "nhan": "? km/giờ"
+     },
+     {
+      "tu": 60,
+      "den": 33.333333333333336,
+      "nhan": "? km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 60,
+      "nhan": "60 km"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Xe từ B tăng thêm 3 km/giờ",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "G",
+      "x": 30,
+      "ghi": "gặp nhau, chính giữa"
+     },
+     {
+      "ten": "B",
+      "x": 60
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 30,
+      "nhan": "? km/giờ"
+     },
+     {
+      "tu": 60,
+      "den": 30,
+      "nhan": "? km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 30,
+      "nhan": "30 km"
+     },
+     {
+      "tu": 30,
+      "den": 60,
+      "nhan": "30 km"
+     },
+     {
+      "tu": 0,
+      "den": 60,
+      "nhan": "60 km"
+     }
+    ]
+   }
+  ]
+ }
+]

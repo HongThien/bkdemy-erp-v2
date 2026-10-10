@@ -1,0 +1,151 @@
+[
+ {
+  "ma_nguon": "AMS 2020 · 1",
+  "dap_an": "$A=96$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích đầu và sau đều có thể viết thành \"$0,48$ nhân với một số\": $0,12\\times 4=0,48$ và $4,8=0,48\\times 10$. Có thừa số chung $0,48$ thì đặt ra ngoài, phần còn lại cộng lại thành số tròn trăm.\n\n**Bước 1.** Nhìn tích đầu thấy hai thừa số $0,12$ và $4$ nhân với nhau cho số gọn là $0,48$, còn $4,8$ ở tích sau chỉ khác $0,48$ ở vị trí dấu phẩy; đó là dấu hiệu có thừa số chung $0,48$.\n\n**Bước 2.** Đổi chỗ các thừa số ở tích đầu để $0,12$ và $4$ đứng cạnh nhau, rồi nhân $0,12$ với $4$ để được $0,48$.\n\n**Bước 3.** Ở tích sau, nhân thừa số $6,5$ với $10$ và chia thừa số $4,8$ cho $10$ thì tích không đổi, nhưng thừa số $4,8$ trở thành $0,48$.\n\n**Bước 4.** Đặt thừa số chung $0,48$ ra ngoài (nhân một số với một tổng), tính tổng trong ngoặc là số tròn trăm rồi nhân.\n\n**Chú ý:** Không nên nhân lần lượt từng số vì phép tính dài và dễ nhầm dấu phẩy; tìm thừa số chung sẽ gọn hơn nhiều.\n\n**Phần 2. Trình bày**\n\n$A=0,12\\times 135\\times 4+6,5\\times 4,8$\n\n$=0,12\\times 4\\times 135+6,5\\times 4,8$\n\n$=0,48\\times 135+(6,5\\times 10)\\times(4,8:10)$\n\n$=0,48\\times 135+65\\times 0,48$\n\n$=0,48\\times(135+65)$\n\n$=0,48\\times 200$\n\n$=96$"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 2",
+  "dap_an": "$700\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: hình mới nằm gọn trong hình cũ (cùng một góc), phần giảm đi = diện tích hình cũ trừ diện tích hình mới. Không cần tìm riêng chiều dài, chiều rộng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng giảm chiều dài và chiều rộng đi một độ dài thì nửa chu vi giảm đi hai lần độ dài đó. Phần diện tích bị bớt là hình chữ L gồm hai dải cùng bề rộng, ghép nối đầu thành một dải dài, tính được mà không cần biết riêng chiều dài, chiều rộng.\n\n**Bước 1.** Tính nửa chu vi lúc đầu và nửa chu vi hình mới, từ đó biết nửa chu vi đã giảm đi bao nhiêu xăng-ti-mét.\n\n**Bước 2.** Nửa chu vi gồm một chiều dài cộng một chiều rộng, mỗi chiều đều giảm cùng độ dài, nên chia số đã giảm cho $2$ để biết mỗi chiều giảm bao nhiêu.\n\n**Bước 3.** Vẽ hình mới nằm trong góc của hình cũ thì phần giảm đi gồm một dải dọc theo cả chiều dài cũ và một dải dọc theo phần chiều rộng còn lại, hai dải cùng rộng bằng độ dài đã giảm.\n\n**Bước 4.** Ghép hai dải nối tiếp nhau thành một dải: chiều dài của dải này là nửa chu vi cũ trừ đi độ dài đã giảm, rồi nhân với bề rộng để tìm diện tích.\n\n**Chú ý:** Phải trừ đi độ dài đã giảm một lần khi ghép hai dải, vì hai dải có chung một hình vuông nhỏ ở góc không được tính hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi hình chữ nhật lúc đầu là: $160:2=80$ (cm)\n\nNửa chu vi hình chữ nhật mới là: $120:2=60$ (cm)\n\nNửa chu vi đã giảm đi là: $80-60=20$ (cm)\n\nChiều dài và chiều rộng mỗi chiều giảm đi là: $20:2=10$ (cm)\n\nPhần diện tích giảm đi gồm hai dải rộng $10$ cm. Ghép nối tiếp hai dải thành một dải dài là: $80-10=70$ (cm)\n\nDiện tích phần giảm đi là: $10\\times 70=700$ ($\\text{cm}^2$)\n\nĐáp số: $700\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 3",
+  "dap_an": "$40$ ngày",
+  "ghi_chu_nghi": "Hiểu: đội thứ nhất làm tiếp cùng đội thứ hai trong 4 ngày, năng suất mỗi đội không đổi.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả đoạn đường là $1$ công việc. Đội thứ nhất làm xong trong $10$ ngày nên mỗi ngày làm được $\\dfrac{1}{10}$ đoạn đường; biết phần việc đội thứ nhất làm trong $9$ ngày thì phần còn lại là của đội thứ hai.\n\n**Bước 1.** Tính mỗi ngày đội thứ nhất làm được mấy phần đoạn đường, rồi tính phần đoạn đường đội đó đã làm trong $5$ ngày đầu.\n\n**Bước 2.** Tìm phần đoạn đường còn lại sau $5$ ngày, đó là phần việc hai đội cùng làm trong $4$ ngày tiếp theo.\n\n**Bước 3.** Đội thứ nhất vẫn làm đều mỗi ngày như cũ nên tính phần việc đội thứ nhất làm trong $4$ ngày cùng làm chung, rồi lấy phần còn lại trừ đi để biết phần việc đội thứ hai làm.\n\n**Bước 4.** Tìm mỗi ngày đội thứ hai làm được mấy phần đoạn đường, rồi lấy cả đoạn đường chia cho phần đó để biết số ngày làm một mình.\n\n**Chú ý:** Đội thứ nhất làm cả $5$ ngày đầu và $4$ ngày sau, không phải chỉ $4$ ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi ngày đội thứ nhất làm được: $1:10=\\dfrac{1}{10}$ (đoạn đường)\n\nSau $5$ ngày đội thứ nhất làm được: $\\dfrac{1}{10}\\times 5=\\dfrac{1}{2}$ (đoạn đường)\n\nPhần đoạn đường còn lại là: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$ (đoạn đường)\n\nTrong $4$ ngày làm chung, đội thứ nhất làm được: $\\dfrac{1}{10}\\times 4=\\dfrac{2}{5}$ (đoạn đường)\n\nTrong $4$ ngày làm chung, đội thứ hai làm được: $\\dfrac{1}{2}-\\dfrac{2}{5}=\\dfrac{1}{10}$ (đoạn đường)\n\nMỗi ngày đội thứ hai làm được: $\\dfrac{1}{10}:4=\\dfrac{1}{40}$ (đoạn đường)\n\nĐội thứ hai làm một mình xong đoạn đường trong: $1:\\dfrac{1}{40}=40$ (ngày)\n\nĐáp số: $40$ ngày"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 4",
+  "dap_an": "$5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số chia hết cho $9$ khi tổng các chữ số của nó chia hết cho $9$, và số dư khi chia cho $9$ của một số bằng số dư khi chia cho $9$ của tổng các chữ số. Vậy chỉ cần tính tổng các chữ số của số đã cho rồi xem còn thiếu bao nhiêu để đủ chia hết cho $9$.\n\n**Bước 1.** Đếm tổng các chữ số của số đã cho: số này chỉ gồm các chữ số $1$ nên tổng bằng số chữ số $1$.\n\n**Bước 2.** Chia tổng đó cho $9$ để tìm số dư, từ đó biết số đã cho chia cho $9$ dư bao nhiêu.\n\n**Bước 3.** Số đơn vị cần cộng thêm là số còn thiếu để số dư lên đủ $9$; cộng ít hơn số đó thì số dư vẫn chưa đủ $9$ nên chưa chia hết.\n\n**Chú ý:** Phải cộng thêm ít nhất, nên lấy số bé nhất làm cho số dư thành $9$, không lấy số dư làm số cần cộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đã cho có $2020$ chữ số $1$ nên tổng các chữ số là: $1\\times 2020=2020$\n\nChia $2020$ cho $9$ được: $2020:9=224$ (dư $4$)\n\nSố đã cho chia cho $9$ dư $4$ (vì số dư của số bằng số dư của tổng các chữ số).\n\nMuốn chia hết cho $9$ thì phải cộng thêm số đơn vị là: $9-4=5$ (đơn vị)\n\nCộng thêm $1$, $2$, $3$ hoặc $4$ đơn vị thì số dư là $5$, $6$, $7$ hoặc $8$, chưa chia hết cho $9$. Vậy phải cộng thêm ít nhất $5$ đơn vị.\n\nĐáp số: $5$ đơn vị"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 5",
+  "dap_an": "$125\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau, nên diện tích toàn phần chia cho $6$ ra diện tích một mặt; từ đó tìm cạnh rồi tìm thể tích.\n\n**Bước 1.** Chia diện tích toàn phần cho $6$ để được diện tích một mặt, vì hình lập phương có $6$ mặt bằng nhau.\n\n**Bước 2.** Mỗi mặt là hình vuông, nên cạnh là số mà nhân với chính nó bằng diện tích một mặt; tìm số đó.\n\n**Bước 3.** Thể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh, rồi ghi đơn vị là xăng-ti-mét khối.\n\n**Chú ý:** Đừng lấy diện tích một mặt làm độ dài cạnh; diện tích tính bằng $\\text{cm}^2$ còn cạnh tính bằng cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $150:6=25$ ($\\text{cm}^2$)\n\nVì $5\\times 5=25$ nên cạnh của hình lập phương là $5$ cm.\n\nThể tích của hình lập phương là: $5\\times 5\\times 5=125$ ($\\text{cm}^3$)\n\nĐáp số: $125\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 6",
+  "dap_an": "$50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích $=$ chiều dài $\\times$ chiều rộng $\\times$ chiều cao. Khi hai đại lượng trong phép nhân thay đổi thì đại lượng còn lại thay đổi tương ứng: chiều cao $=$ thể tích $:$ (chiều dài $\\times$ chiều rộng), nên so với lúc đầu, chiều cao bằng bao nhiêu phần trăm thì lấy phần trăm của thể tích chia cho phần trăm của diện tích đáy.\n\n**Bước 1.** Viết số phần trăm của chiều dài mới, chiều rộng mới và thể tích mới so với lúc đầu (lúc đầu của mỗi đại lượng là $100\\%$).\n\n**Bước 2.** Diện tích đáy bằng chiều dài nhân chiều rộng, nên nhân hai tỉ số phần trăm của chiều dài và chiều rộng, viết thêm bước đổi ra số thập phân để tính cho dễ.\n\n**Bước 3.** Chiều cao mới so với lúc đầu bằng phần trăm của thể tích chia cho phần trăm của diện tích đáy; đổi về số thập phân rồi chia.\n\n**Bước 4.** Đề hỏi chiều cao cần tăng thêm bao nhiêu phần trăm, nên lấy số phần trăm chiều cao mới trừ đi $100\\%$.\n\n**Chú ý:** Không được cộng trừ trực tiếp các số phần trăm kiểu $10\\%-20\\%$ hay $32\\%-10\\%+20\\%$; phải nhân chia các tỉ số so với lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới so với lúc đầu bằng: $100\\%+10\\%=110\\%$\n\nChiều rộng mới so với lúc đầu bằng: $100\\%-20\\%=80\\%$\n\nThể tích mới so với lúc đầu bằng: $100\\%+32\\%=132\\%$\n\nDiện tích đáy mới so với lúc đầu bằng: $110\\%\\times 80\\%=1,1\\times 0,8=0,88=88\\%$\n\nChiều cao mới so với lúc đầu bằng: $132\\%:88\\%=1,32:0,88=1,5=150\\%$\n\nChiều cao cần tăng thêm số phần trăm là: $150\\%-100\\%=50\\%$\n\nĐáp số: $50\\%$"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 7",
+  "dap_an": "$135$ cái bắt tay",
+  "ghi_chu_nghi": "Hiểu: mỗi ông chồng bắt tay mọi người trừ chính mình và vợ mình (18 người); các bà vợ không bắt tay nhau. Mỗi cái bắt tay tính một lần.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vợ không bắt tay vợ nên mỗi cái bắt tay có ít nhất một ông chồng. Chia các cái bắt tay thành hai nhóm không trùng nhau: chồng với chồng, và chồng với vợ của người khác.\n\n**Bước 1.** Đếm số cái bắt tay giữa các ông chồng với nhau: mỗi ông bắt tay các ông còn lại, nhưng mỗi cái bắt tay bị đếm hai lần (một lần từ mỗi người) nên phải chia đôi.\n\n**Bước 2.** Đếm số cái bắt tay giữa chồng và vợ: mỗi ông chồng bắt tay các bà vợ trừ vợ của mình, mỗi cái bắt tay này chỉ đếm từ phía ông chồng nên đếm đúng một lần.\n\n**Bước 3.** Cộng hai nhóm lại, không có nhóm thứ ba vì các bà vợ không bắt tay nhau.\n\n**Chú ý:** Đừng lấy $10\\times 18$ rồi chia đôi, vì cái bắt tay giữa chồng và vợ người khác chỉ đếm một lần từ phía ông chồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi ông chồng bắt tay với $10-1=9$ ông chồng khác. Số cái bắt tay giữa các ông chồng với nhau là: $10\\times 9:2=45$ (cái)\n\nMỗi ông chồng bắt tay với các bà vợ trừ vợ mình, tức là: $10-1=9$ (bà)\n\nSố cái bắt tay giữa chồng và vợ của người khác là: $10\\times 9=90$ (cái)\n\nCác bà vợ không bắt tay nhau nên có tất cả số cái bắt tay là: $45+90=135$ (cái)\n\nĐáp số: $135$ cái bắt tay"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 8",
+  "dap_an": "$24$ tuổi",
+  "ghi_chu_nghi": "Theo luu_y_de: đề thi năm 2020 nên \"năm nay\" = 2020, đáp số 24 tuổi. Tuổi tính đến năm 2021 (đúng bằng tổng chữ số) là 25; năm sinh 1996.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tuổi tính đến năm $2021$ bằng $2021$ trừ năm sinh. Tổng các chữ số của số $\\overline{19ab}$ không thể quá lớn nên tuổi cũng bị chặn, từ đó thu hẹp năm sinh vào vài năm rồi thử từng năm.\n\n**Bước 1.** Tìm tổng các chữ số lớn nhất có thể của năm sinh $\\overline{19ab}$, tức là khi hai chữ số $a$ và $b$ đều lớn nhất; tuổi cầu thủ không thể vượt quá số đó.\n\n**Bước 2.** Từ tuổi lớn nhất đó suy ra năm sinh không thể sớm hơn một năm nhất định, rồi liệt kê các năm sinh còn lại có dạng $\\overline{19ab}$.\n\n**Bước 3.** Thử từng năm sinh: tính tuổi đến năm $2021$ và tổng các chữ số; mỗi năm sinh muộn hơn một năm thì tuổi giảm $1$, còn tổng các chữ số tăng $1$, nên có đúng một năm hai số bằng nhau.\n\n**Bước 4.** Đề hỏi tuổi \"năm nay\" mà đề thi này làm năm $2020$, nên lấy $2020$ trừ năm sinh để được tuổi cần tìm.\n\n**Chú ý:** Tuổi đúng bằng tổng chữ số là tuổi tính đến năm $2021$, chưa phải tuổi năm $2020$.\n\n**Phần 2. Trình bày**\n\nGiả thiết: đề thi năm $2020$ nên \"năm nay\" là năm $2020$; tuổi cầu thủ tính đến năm $2021$ bằng tổng các chữ số của năm sinh.\n\nTổng các chữ số lớn nhất của $\\overline{19ab}$ là: $1+9+9+9=28$\n\nTuổi của cầu thủ năm $2021$ không quá $28$ nên năm sinh không sớm hơn: $2021-28=1993$. Vậy năm sinh là một trong các năm $1993$; $1994$; $1995$; $1996$; $1997$; $1998$; $1999$.\n\nNăm sinh $1993$: tuổi là $2021-1993=28$, tổng các chữ số là $1+9+9+3=22$; hai số khác nhau.\n\nNăm sinh $1994$: tuổi là $27$, tổng các chữ số là $23$; hai số khác nhau.\n\nNăm sinh $1995$: tuổi là $26$, tổng các chữ số là $24$; hai số khác nhau.\n\nNăm sinh $1996$: tuổi là $25$, tổng các chữ số là $1+9+9+6=25$; hai số bằng nhau.\n\nTừ năm $1997$ trở đi tuổi nhỏ hơn tổng các chữ số nên không còn năm nào thoả mãn. Vậy cầu thủ sinh năm $1996$.\n\nNăm nay ($2020$) cầu thủ đó có số tuổi là: $2020-1996=24$ (tuổi)\n\nĐáp số: $24$ tuổi"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 9",
+  "dap_an": "Số thứ $66$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số xếp theo thứ tự tăng dần thì số có ít chữ số hơn đứng trước. Vì vậy vị trí của một số bằng số các số có ít chữ số hơn nó, cộng với vị trí của nó trong nhóm các số cùng số chữ số.\n\n**Bước 1.** Nhận ra mọi số trong dãy chỉ gồm chữ số $0$ và $2$, và chữ số đầu tiên phải là $2$ vì số tự nhiên khác $0$ không bắt đầu bằng chữ số $0$.\n\n**Bước 2.** Đếm các số có $1$, $2$, $3$,… chữ số: chữ số đầu có $1$ cách chọn, mỗi chữ số còn lại có $2$ cách chọn (là $0$ hoặc $2$).\n\n**Bước 3.** Cộng số các số có từ $1$ đến $6$ chữ số để biết có bao nhiêu số đứng trước nhóm số có $7$ chữ số.\n\n**Bước 4.** Trong nhóm số có $7$ chữ số, viết lần lượt từ số bé nhất cho tới số cần tìm để biết nó đứng thứ mấy trong nhóm, rồi cộng với số các số đứng trước.\n\n**Chú ý:** Số $2000020$ có $7$ chữ số nên mọi số có $6$ chữ số trở xuống đều đứng trước nó.\n\n**Phần 2. Trình bày**\n\nSố có $1$ chữ số: chỉ có số $2$, tức là $1$ số.\n\nSố có $2$ chữ số: chữ số đầu là $2$, chữ số thứ hai có $2$ cách chọn nên có $1\\times 2=2$ (số).\n\nSố có $3$ chữ số: $1\\times 2\\times 2=4$ (số)\n\nSố có $4$ chữ số: $1\\times 2\\times 2\\times 2=8$ (số)\n\nSố có $5$ chữ số có $16$ số và số có $6$ chữ số có $32$ số, tính tương tự.\n\nSố các số có từ $1$ đến $6$ chữ số là: $1+2+4+8+16+32=63$ (số)\n\nCác số có $7$ chữ số xếp theo thứ tự tăng dần bắt đầu là: $2000000$; $2000002$; $2000020$. Vậy $2000020$ là số thứ ba trong nhóm số có $7$ chữ số.\n\nSố $2000020$ là số thứ: $63+3=66$\n\nĐáp số: số thứ $66$"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 10",
+  "dap_an": "$23$ câu",
+  "ghi_chu_nghi": "Hiểu \"làm được tổng cộng 30 câu\" là 30 câu làm ĐÚNG (câu sai không có điểm nên không tính vào số câu làm được).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là bài giả thiết tạm: giả sử cả $30$ câu đều là câu trắc nghiệm thì điểm sẽ ít hơn thực tế. Mỗi lần đổi một câu trắc nghiệm thành một câu tự luận thì điểm tăng thêm một lượng cố định.\n\n**Bước 1.** Giả sử cả $30$ câu bạn A làm đúng đều là câu trắc nghiệm, rồi tính tổng điểm trong trường hợp giả sử đó.\n\n**Bước 2.** So sánh điểm giả sử với điểm thật $18,5$ để biết điểm đang thiếu bao nhiêu.\n\n**Bước 3.** Mỗi lần đổi một câu trắc nghiệm thành một câu tự luận thì điểm tăng bằng hiệu điểm hai loại câu; lấy điểm thiếu chia cho số điểm tăng này để biết số câu tự luận.\n\n**Bước 4.** Lấy tổng số câu trừ đi số câu tự luận để tìm số câu trắc nghiệm đúng, rồi thử lại tổng điểm.\n\n**Chú ý:** Đề hỏi số câu trắc nghiệm làm đúng, không phải số câu tự luận.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu cả $30$ câu đều là câu trắc nghiệm thì bạn A được: $0,5\\times 30=15$ (điểm)\n\nSố điểm còn thiếu so với thực tế là: $18,5-15=3,5$ (điểm)\n\nMỗi câu tự luận thay cho một câu trắc nghiệm thì điểm tăng: $1,0-0,5=0,5$ (điểm)\n\nSố câu tự luận bạn A làm đúng là: $3,5:0,5=7$ (câu)\n\nSố câu trắc nghiệm bạn A làm đúng là: $30-7=23$ (câu)\n\nĐáp số: $23$ câu"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 11",
+  "dap_an": "$150$ hộp",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số hộp ở kho không đổi và chiếm $1-\\dfrac{1}{10}=\\dfrac{9}{10}$ số hộp nhập về. Biết kho gấp $15$ lần số hộp còn lại ở quầy thì tìm được số hộp ở quầy theo phân số của số hộp nhập về, từ đó tìm phân số ứng với $6$ hộp đã bán.\n\n**Bước 1.** Tính số hộp ở kho bằng mấy phần số hộp nhập về, vì quầy chiếm $\\dfrac{1}{10}$ còn phần còn lại cất vào kho.\n\n**Bước 2.** Kho gấp $15$ lần số hộp còn lại ở quầy, nên số hộp còn lại ở quầy bằng số hộp ở kho chia cho $15$; tính theo phân số của số hộp nhập về.\n\n**Bước 3.** Số hộp ở quầy lúc đầu trừ số hộp còn lại ở quầy cho biết phân số ứng với $6$ hộp đã bán; thực hiện phép trừ hai phân số.\n\n**Bước 4.** Biết $6$ hộp ứng với một phân số của số hộp nhập về thì lấy $6$ chia cho phân số đó để tìm số hộp nhập về.\n\n**Chú ý:** Số hộp ở kho không thay đổi khi bán ở quầy, chỉ có số hộp ở quầy giảm đi $6$ hộp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố hộp ở kho bằng: $1-\\dfrac{1}{10}=\\dfrac{9}{10}$ (số hộp nhập về)\n\nSố hộp còn lại ở quầy bằng: $\\dfrac{9}{10}:15=\\dfrac{3}{50}$ (số hộp nhập về)\n\n$6$ hộp đã bán ứng với: $\\dfrac{1}{10}-\\dfrac{3}{50}=\\dfrac{5}{50}-\\dfrac{3}{50}=\\dfrac{1}{25}$ (số hộp nhập về)\n\nSố hộp cửa hàng nhập về là: $6:\\dfrac{1}{25}=150$ (hộp)\n\nĐáp số: $150$ hộp"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 12",
+  "dap_an": "$120$ kg",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Lúc đầu",
+    "gia_tri_phan": 60,
+    "hang": [
+     {
+      "nhan": "Số táo",
+      "phan": 3
+     },
+     {
+      "nhan": "Số lê",
+      "phan": 4
+     }
+    ],
+    "tong": "420 kg"
+   },
+   {
+    "tieu_de": "Số ki-lô-gam đã bán",
+    "gia_tri_phan": 20,
+    "hang": [
+     {
+      "nhan": "Số lê đã bán",
+      "phan": 6
+     },
+     {
+      "nhan": "Số táo đã bán",
+      "phan": 1
+     }
+    ],
+    "hieu": "100 kg",
+    "dau_hoi": [
+     "Số lê đã bán"
+    ]
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Táo còn lại hơn lê còn lại $40$ kg, còn lúc đầu táo lại ít hơn lê; suy ra số lê đã bán phải nhiều hơn số táo đã bán. Tìm hiệu số lê bán và táo bán rồi dùng tỉ số $\\dfrac{1}{6}$ để giải bài hiệu – tỉ.\n\n**Bước 1.** Dùng tỉ số lúc đầu của táo và lê cùng tổng $420$ kg để tìm số táo và số lê lúc đầu (bài tổng – tỉ).\n\n**Bước 2.** So sánh lúc đầu táo ít hơn lê bao nhiêu ki-lô-gam, rồi so với kết quả sau khi bán táo nhiều hơn lê $40$ kg để biết lê đã bán nhiều hơn táo đã bán bao nhiêu ki-lô-gam.\n\n**Bước 3.** Số táo đã bán bằng $\\dfrac{1}{6}$ số lê đã bán nên táo đã bán là $1$ phần, lê đã bán là $6$ phần; vẽ sơ đồ theo số phần và hiệu vừa tìm.\n\n**Bước 4.** Tìm giá trị một phần bằng cách chia hiệu cho hiệu số phần, rồi nhân với số phần của lê đã bán.\n\n**Chú ý:** Đề hỏi số lê đã bán, không phải số lê còn lại; chú ý táo còn nhiều hơn lê chứ không phải ít hơn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc đầu số táo bằng $\\dfrac{3}{4}$ số lê nên số táo là $3$ phần, số lê là $4$ phần như thế.\n\nTa có sơ đồ:\n\n(Số táo lúc đầu 3 phần; số lê lúc đầu 4 phần; tổng 420 kg)\n\nTổng số phần bằng nhau là: $3+4=7$ (phần)\n\nGiá trị một phần là: $420:7=60$ (kg)\n\nSố táo lúc đầu là: $60\\times 3=180$ (kg)\n\nSố lê lúc đầu là: $60\\times 4=240$ (kg)\n\nLúc đầu số táo ít hơn số lê là: $240-180=60$ (kg)\n\nSau khi bán, táo còn nhiều hơn lê còn $40$ kg nên số lê đã bán nhiều hơn số táo đã bán là: $60+40=100$ (kg)\n\nSố táo đã bán bằng $\\dfrac{1}{6}$ số lê đã bán nên số lê đã bán là $6$ phần, số táo đã bán là $1$ phần như thế.\n\nTa có sơ đồ:\n\n(Số lê đã bán 6 phần; số táo đã bán 1 phần; hơn kém nhau 100 kg)\n\nHiệu số phần bằng nhau là: $6-1=5$ (phần)\n\nGiá trị một phần là: $100:5=20$ (kg)\n\nSố lê đã bán là: $20\\times 6=120$ (kg)\n\nĐáp số: $120$ kg"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 13",
+  "dap_an": "$40$ m",
+  "ghi_chu_nghi": "nhiều cách: (1) so lãi trên cùng 15 phần vải rồi dùng chênh giá bán 40 − 38 = 2 nghìn đồng/mét (đã dùng, bám công thức lãi 1 mét = giá bán − giá vốn); (2) tìm giá vốn 1 mét (32 nghìn đồng) bằng so lãi hai phần rồi suy ra số mét. Kết quả như nhau (40 m).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi $1$ mét vải bằng giá bán trừ giá vốn. Cùng một tấm vải thì giá vốn mỗi mét như nhau, nên bán giá $40$ nghìn đồng lãi hơn bán giá $38$ nghìn đồng đúng $2$ nghìn đồng cho mỗi mét. Đưa hai phần vải về cùng số mét thì chênh lệch lãi cho biết số mét.\n\n**Bước 1.** Chia tấm vải thành $8$ phần bằng nhau: $5$ phần bán giá $40$ nghìn đồng một mét và $3$ phần bán giá $38$ nghìn đồng một mét.\n\n**Bước 2.** Để so sánh, chọn cùng $15$ phần vải (vì $15$ chia hết cho cả $5$ và $3$): tính lãi nếu $15$ phần đều bán giá $40$ nghìn, và lãi nếu $15$ phần đều bán giá $38$ nghìn.\n\n**Bước 3.** Hiệu hai khoản lãi đó chỉ do mỗi mét giá bán chênh nhau $2$ nghìn đồng (giá vốn như nhau), nên chia hiệu lãi cho $2$ để biết $15$ phần vải dài bao nhiêu mét.\n\n**Bước 4.** Chia số mét của $15$ phần cho $15$ để tìm một phần, rồi nhân với $8$ để được chiều dài cả tấm vải.\n\n**Chú ý:** Giá vốn một mét không cho biết nhưng không cần tìm, vì khi lấy hiệu hai khoản lãi thì giá vốn tự mất đi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChia tấm vải thành $8$ phần bằng nhau thì có $5$ phần bán giá $40$ nghìn đồng một mét và $3$ phần bán giá $38$ nghìn đồng một mét.\n\nNếu $15$ phần (gấp $5$ phần là $3$ lần) đều bán giá $40$ nghìn đồng một mét thì lãi là: $200\\times 3=600$ (nghìn đồng)\n\nNếu $15$ phần (gấp $3$ phần là $5$ lần) đều bán giá $38$ nghìn đồng một mét thì lãi là: $90\\times 5=450$ (nghìn đồng)\n\nVới $15$ phần vải, lãi hai trường hợp chênh nhau: $600-450=150$ (nghìn đồng)\n\nMỗi mét vải bán giá $40$ nghìn đồng lãi hơn bán giá $38$ nghìn đồng là: $40-38=2$ (nghìn đồng)\n\n$15$ phần tấm vải dài là: $150:2=75$ (m)\n\nMột phần tấm vải dài là: $75:15=5$ (m)\n\nCả tấm vải dài là: $5\\times 8=40$ (m)\n\nĐáp số: $40$ m"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 14",
+  "dap_an": "$100\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác $ABM$ và $BCD$ đều có diện tích bằng nửa hình chữ nhật $ABCD$ nên bằng nhau. Mỗi tam giác lại gồm các tam giác nhỏ trong hình, hai bên có chung tam giác $BIM$ nên phần còn lại bằng nhau.\n\n**Bước 1.** Từ $S_{BMC}=\\dfrac{9}{16}\\times S_{IMD}$ tìm $S_{IMD}$ bằng cách lấy $36$ chia cho $\\dfrac{9}{16}$.\n\n**Bước 2.** Chứng tỏ $S_{ABM}=S_{BCD}$: tam giác $ABM$ có đáy $AB$ và chiều cao bằng $BC$ nên bằng nửa hình chữ nhật, còn đường chéo $BD$ cũng chia hình chữ nhật thành hai nửa bằng nhau.\n\n**Bước 3.** Chia mỗi tam giác thành các tam giác nhỏ trong hình: $ABM$ gồm $ABI$ và $BIM$; $BCD$ gồm $BMC$, $BIM$ và $IMD$ (vì $M$ nằm trên $CD$ và $I$ nằm trên $BD$).\n\n**Bước 4.** Hai tam giác bằng nhau và cùng có tam giác $BIM$, nên bớt $BIM$ ở cả hai bên thì $S_{ABI}$ bằng tổng hai tam giác còn lại; cộng hai diện tích đã biết.\n\n**Chú ý:** Không cần tìm riêng chiều dài, chiều rộng của hình chữ nhật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích tam giác $IMD$ là: $36:\\dfrac{9}{16}=64$ ($\\text{cm}^2$)\n\nĐường chéo $BD$ chia hình chữ nhật $ABCD$ thành hai tam giác bằng nhau nên $S_{BCD}=\\dfrac{1}{2}\\times S_{ABCD}$.\n\nTam giác $ABM$ có đáy $AB$ và chiều cao bằng $BC$ nên $S_{ABM}=\\dfrac{AB\\times BC}{2}=\\dfrac{1}{2}\\times S_{ABCD}$.\n\nSuy ra $S_{ABM}=S_{BCD}$.\n\nMà $S_{ABM}=S_{ABI}+S_{BIM}$ và $S_{BCD}=S_{BMC}+S_{BIM}+S_{IMD}$.\n\nCùng bớt $S_{BIM}$ thì $S_{ABI}=S_{BMC}+S_{IMD}$.\n\nDiện tích tam giác $ABI$ là: $36+64=100$ ($\\text{cm}^2$)\n\nĐáp số: $100\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "AMS 2020 · 15",
+  "dap_an": "$3$ giờ",
+  "ghi_chu_nghi": "Đề không cho vận tốc trên đường bằng và không cho độ dài riêng từng đoạn dốc; không cần dùng. Hiểu: dốc (lên + xuống) + đường bằng 6 km = 10 km nên dốc tổng 4 km. Sơ đồ chỉ minh hoạ độ dài gộp (dốc 4 km, bằng 6 km; thứ tự theo thứ tự đề liệt kê, không ảnh hưởng đáp số). Kiểm tra: vận tốc đường bằng = 12 : 3 = 4 km/giờ, hợp lí.",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Quãng đường từ A đến B",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "B",
+     "x": 10
+    }
+   ],
+   "di": [],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 10,
+     "nhan": "10 km"
+    },
+    {
+     "tu": 0,
+     "den": 4,
+     "nhan": "4 km (các đoạn dốc)"
+    },
+    {
+     "tu": 4,
+     "den": 10,
+     "nhan": "6 km (đường bằng)"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đoạn lên dốc lúc đi lại là đoạn xuống dốc lúc về, và ngược lại. Vì vậy mỗi ki-lô-mét dốc, tính cả đi lẫn về, người đó đi đúng một lần lên dốc và một lần xuống dốc; thời gian trên các đoạn dốc không phụ thuộc vào độ dài riêng từng đoạn.\n\n**Bước 1.** Tìm tổng độ dài các đoạn dốc bằng cách lấy cả quãng đường trừ đoạn đường bằng.\n\n**Bước 2.** Nhận ra mỗi ki-lô-mét dốc phải đi một lần lên dốc và một lần xuống dốc khi đi cả đi lẫn về, rồi tính thời gian đi $1$ km lên dốc cộng thời gian đi $1$ km xuống dốc.\n\n**Bước 3.** Nhân thời gian đó với tổng độ dài các đoạn dốc để biết thời gian đi trên dốc cả đi lẫn về.\n\n**Bước 4.** Tính tổng thời gian từ lúc đi đến lúc về tới A, rồi trừ đi thời gian trên dốc để được thời gian trên đường bằng.\n\n**Chú ý:** Đề không cho vận tốc trên đường bằng, nhưng không cần dùng vì thời gian đường bằng tìm được bằng cách trừ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(A đến B dài 10 km gồm các đoạn dốc 4 km và đường bằng 6 km)\n\nThời gian người đó đi cả đi lẫn về là: $11$ giờ $30$ phút $-\\ 6$ giờ $30$ phút $=5$ (giờ)\n\nTổng độ dài các đoạn dốc là: $10-6=4$ (km)\n\nĐoạn lên dốc lúc đi là xuống dốc lúc về và ngược lại, nên mỗi ki-lô-mét dốc người đó đi một lần lên dốc và một lần xuống dốc.\n\nThời gian đi $1$ km dốc cả lên và xuống là: $1:3+1:6=\\dfrac{1}{3}+\\dfrac{1}{6}=\\dfrac{1}{2}$ (giờ)\n\nThời gian đi trên các đoạn dốc cả đi lẫn về là: $4\\times\\dfrac{1}{2}=2$ (giờ)\n\nThời gian đi trên đoạn đường bằng cả đi lẫn về là: $5-2=3$ (giờ)\n\nĐáp số: $3$ giờ"
+ }
+]

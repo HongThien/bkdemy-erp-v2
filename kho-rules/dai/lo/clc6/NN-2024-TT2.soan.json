@@ -1,0 +1,167 @@
+[
+ {
+  "ma_nguon": "NN 2024-TT2 · P1.1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của ông và cháu không bao giờ thay đổi. Một năm có $12$ tháng nên tuổi cháu tính bằng tháng gấp $12$ lần tuổi cháu tính bằng năm; đề cho số tháng của cháu bằng số năm của ông, nên sang năm tuổi ông gấp $12$ lần tuổi cháu. Đó là bài toán hiệu – tỉ.\n\n**Bước 1.** Nhận ra hiệu số tuổi của ông và cháu luôn là $66$ tuổi, kể cả sang năm, nên có thể dùng hiệu này để giải bài toán ở thời điểm sang năm.\n\n**Bước 2.** Đổi tuổi cháu từ tháng sang năm: vì một năm có $12$ tháng nên số tháng gấp $12$ lần số năm. Mà số năm của ông bằng số tháng của cháu, từ đó biết sang năm tuổi ông gấp mấy lần tuổi cháu rồi vẽ sơ đồ.\n\n**Bước 3.** Tìm hiệu số phần bằng nhau, rồi lấy hiệu số tuổi chia cho hiệu số phần để tìm tuổi cháu sang năm.\n\n**Bước 4.** Tuổi cháu hiện nay ít hơn tuổi cháu sang năm một tuổi, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Số tìm được ở bước 3 là tuổi cháu SANG NĂM chứ chưa phải tuổi hiện nay, nên chọn ngay phương án trùng với số đó là dễ sai.\n\nThử lại: sang năm số tháng tuổi của cháu phải bằng số năm tuổi của ông.\n\n**Phần 2. Trình bày**\n\nHiệu số tuổi của ông và cháu không đổi, luôn là $66$ tuổi.\n\nMột năm có $12$ tháng nên số tháng của cháu gấp $12$ lần số năm của cháu. Sang năm, số năm của ông bằng số tháng của cháu, nên sang năm tuổi ông gấp $12$ lần tuổi cháu.\n\nTa có sơ đồ:\n\n(Sang năm: tuổi cháu $1$ phần; tuổi ông $12$ phần; ông hơn cháu $66$ tuổi)\n\nHiệu số phần bằng nhau là: $12-1=11$ (phần)\n\nTuổi cháu sang năm là: $66:11\\times 1=6$ (tuổi)\n\nTuổi cháu hiện nay là: $6-1=5$ (tuổi)\n\nChọn B.",
+  "so_do_mo_ta": {
+   "tieu_de": "Sang năm",
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Tuổi cháu",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi ông",
+     "phan": 12
+    }
+   ],
+   "hieu": "66 tuổi",
+   "dau_hoi": [
+    "Tuổi cháu"
+   ]
+  },
+  "ghi_chu_nghi": "Hiểu \"tuổi cháu có bao nhiêu tháng\" là số tháng tròn của tuổi cháu sang năm (cháu tròn số tuổi nguyên) — cách hiểu duy nhất cho ra tuổi nguyên; thử lại: sang năm cháu 6 tuổi = 72 tháng, ông 5+66+1 = 72 tuổi."
+ },
+ {
+  "ma_nguon": "NN 2024-TT2 · P1.2",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích ba chữ số bằng $7$ nên $7$ chia hết cho từng chữ số ấy. Số $7$ chỉ chia hết cho $1$ và $7$, vì vậy mỗi chữ số chỉ có thể là $1$ hoặc $7$; từ đó tìm đủ ba chữ số của số rồi mới cộng lại.\n\n**Bước 1.** Vì tích bằng $7$ (khác $0$) nên không có chữ số $0$, và $7$ chia hết cho mỗi chữ số của số đó.\n\n**Bước 2.** Số $7$ chỉ chia hết cho $1$ và $7$, nên mỗi chữ số là $1$ hoặc $7$; xét các trường hợp: không có chữ số $7$, có đúng một chữ số $7$, có từ hai chữ số $7$ trở lên.\n\n**Bước 3.** Chọn trường hợp cho tích đúng bằng $7$ để biết cả ba chữ số, rồi cộng ba chữ số đó và đối chiếu với bốn phương án.\n\n**Chú ý:** Số đó có thể là nhiều số khác nhau do đổi chỗ các chữ số, nhưng tổng các chữ số của chúng đều như nhau.\n\n**Phần 2. Trình bày**\n\nTích các chữ số bằng $7$ nên không có chữ số $0$, và $7$ chia hết cho từng chữ số.\n\nSố $7$ chỉ chia hết cho $1$ và $7$ nên mỗi chữ số là $1$ hoặc $7$.\n\nNếu cả ba chữ số đều là $1$ thì tích là $1\\times 1\\times 1=1$, khác $7$.\n\nNếu có từ hai chữ số $7$ thì tích ít nhất là $7\\times 7\\times 1=49$, lớn hơn $7$.\n\nVậy có đúng một chữ số $7$ và hai chữ số $1$, vì $1\\times 1\\times 7=7$.\n\nTổng các chữ số của số đó là: $1+1+7=9$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NN 2024-TT2 · P1.3",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một tuần có $7$ ngày nên chỉ cần biết số ngày từ sinh nhật năm $2020$ đến sinh nhật năm $2024$ chia cho $7$ dư mấy. Năm thường có $365$ ngày, năm nhuận có $366$ ngày; Dũng sinh vào tháng $4$ nên chỉ những năm nhuận có ngày $29$ tháng $2$ nằm giữa hai sinh nhật mới được tính $366$ ngày.\n\n**Bước 1.** Xét từng khoảng một năm giữa các sinh nhật liên tiếp: $2020\\to 2021$, $2021\\to 2022$, $2022\\to 2023$ và $2023\\to 2024$, xem khoảng nào chứa ngày $29$ tháng $2$.\n\n**Bước 2.** Ngày $29$ tháng $2$ của năm $2024$ nằm giữa hai sinh nhật $2023$ và $2024$ nên khoảng đó có $366$ ngày; ba khoảng còn lại đều có $365$ ngày. Tính tổng số ngày.\n\n**Bước 3.** Chia tổng số ngày cho $7$ để biết số tuần tròn và số ngày dư; số tuần tròn không làm đổi thứ trong tuần.\n\n**Bước 4.** Từ Chủ nhật đếm tiếp đúng số ngày dư để tìm thứ của sinh nhật năm $2024$, rồi chọn phương án.\n\n**Chú ý:** Năm $2020$ là năm nhuận nhưng ngày $29$ tháng $2$ năm $2020$ đã qua trước sinh nhật tháng $4$, nên không tính vào khoảng thời gian này.\n\n**Phần 2. Trình bày**\n\nTừ sinh nhật năm $2020$ đến sinh nhật năm $2024$ chỉ có ngày $29$ tháng $2$ của năm $2024$ nằm giữa (ba năm $2021$, $2022$, $2023$ đều không nhuận).\n\nSố ngày từ sinh nhật năm $2020$ đến sinh nhật năm $2024$ là: $365\\times 3+366=1461$ (ngày)\n\nTa có: $1461:7=208$ (dư $5$)\n\nSau $208$ tuần tròn vẫn là Chủ nhật, đếm tiếp $5$ ngày: thứ Hai, thứ Ba, thứ Tư, thứ Năm, thứ Sáu.\n\nVậy sinh nhật Dũng năm $2024$ vào thứ Sáu.\n\nChọn B.",
+  "ghi_chu_nghi": "Hiểu sinh nhật là một ngày cố định trong tháng 4 (không phải 29/2). Đề không nêu ngày cụ thể; kết quả không phụ thuộc ngày nào trong tháng 4."
+ },
+ {
+  "ma_nguon": "NN 2024-TT2 · P1.4",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi hình chữ nhật cho biết tổng chiều dài và chiều rộng, kết hợp với tỉ số hai chiều (bài tổng – tỉ) tìm được kích thước và diện tích tấm bìa chữ nhật. Diện tích chữ nhật bằng $\\dfrac{2}{3}$ diện tích tam giác, nên tìm diện tích tam giác bằng cách tìm số biết một phần của nó, rồi mới tìm đáy.\n\n**Bước 1.** Lấy chu vi chia $2$ để được nửa chu vi, chính là tổng chiều dài và chiều rộng; đổi tỉ số $\\dfrac{12}{5}$ thành số phần của chiều dài và chiều rộng rồi vẽ sơ đồ tổng – tỉ.\n\n**Bước 2.** Tìm giá trị một phần, rồi tìm chiều rộng và chiều dài tấm bìa chữ nhật.\n\n**Bước 3.** Tính diện tích tấm bìa hình chữ nhật, vì đề cho diện tích này bằng $\\dfrac{2}{3}$ diện tích tấm bìa tam giác.\n\n**Bước 4.** Diện tích hình chữ nhật ứng với $\\dfrac{2}{3}$ diện tích tam giác, nên lấy diện tích hình chữ nhật chia cho $\\dfrac{2}{3}$ để được diện tích tam giác.\n\n**Bước 5.** Diện tích tam giác bằng đáy nhân chiều cao rồi chia $2$, nên đáy bằng diện tích nhân $2$ rồi chia cho chiều cao; sau đó chọn phương án.\n\n**Chú ý:** Chu vi là tổng bốn cạnh nên $68$ gấp đôi tổng chiều dài và chiều rộng; đừng dùng luôn $68$ làm tổng hai cạnh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNửa chu vi tấm bìa hình chữ nhật (tổng chiều dài và chiều rộng) là: $68:2=34$ (cm)\n\nChiều dài bằng $\\dfrac{12}{5}$ chiều rộng nên chiều rộng là $5$ phần, chiều dài là $12$ phần như thế.\n\nTa có sơ đồ:\n\n(Chiều rộng $5$ phần; chiều dài $12$ phần; tổng $34$ cm)\n\nTổng số phần bằng nhau là: $5+12=17$ (phần)\n\nChiều rộng tấm bìa là: $34:17\\times 5=10$ (cm)\n\nChiều dài tấm bìa là: $34:17\\times 12=24$ (cm)\n\nDiện tích tấm bìa hình chữ nhật là: $24\\times 10=240$ ($\\text{cm}^2$)\n\nDiện tích tấm bìa hình tam giác là: $240:\\dfrac{2}{3}=360$ ($\\text{cm}^2$)\n\nĐộ dài cạnh đáy tấm bìa hình tam giác là: $360\\times 2:18=40$ (cm)\n\nChọn C.",
+  "so_do_mo_ta": {
+   "tieu_de": "Tấm bìa hình chữ nhật",
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Chiều rộng",
+     "phan": 5
+    },
+    {
+     "nhan": "Chiều dài",
+     "phan": 12
+    }
+   ],
+   "tong": "34 cm"
+  }
+ },
+ {
+  "ma_nguon": "NN 2024-TT2 · P1.5",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường từ nhà đến trường không đổi, nên thời gian đi càng ít thì vận tốc càng lớn: thời gian sáng nay bằng bao nhiêu phần thời gian hàng ngày thì vận tốc sáng nay bằng số đảo ngược của phân số đó. Biết vận tốc sáng nay hơn $50$ m mỗi phút thì tìm được vận tốc hàng ngày, rồi nhân với thời gian đi hàng ngày để được quãng đường.\n\n**Bước 1.** Đổi mốc \"$8$ giờ kém $20$ phút\" thành giờ và phút, rồi tính thời gian An đi từ nhà đến trường hàng ngày và thời gian đi sáng nay.\n\n**Bước 2.** Lập tỉ số thời gian sáng nay so với hàng ngày; vì cùng quãng đường nên tỉ số vận tốc là số đảo ngược của tỉ số đó, từ đó biết vận tốc mỗi lần gồm mấy phần.\n\n**Bước 3.** Hiệu hai vận tốc là $50$ m/phút ứng với hiệu số phần, từ đó tìm được vận tốc hàng ngày.\n\n**Bước 4.** Lấy vận tốc hàng ngày nhân với thời gian đi hàng ngày để tìm quãng đường, rồi đổi ra kilômét và chọn phương án.\n\n**Chú ý:** Vận tốc tính theo mét trên phút nên quãng đường ra mét trước; phải đổi sang kilômét rồi mới đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nĐổi: $8$ giờ kém $20$ phút $=7$ giờ $40$ phút\n\nThời gian An đi hàng ngày là: $7$ giờ $40$ phút $-\\ 7$ giờ $25$ phút $=15$ phút\n\nThời gian An đi sáng nay là: $7$ giờ $40$ phút $-\\ 7$ giờ $30$ phút $=10$ phút\n\nTa có sơ đồ:\n\n(Nhà và trường cách nhau một quãng đường không đổi; hàng ngày đi $15$ phút, sáng nay đi $10$ phút)\n\nThời gian đi sáng nay bằng số phần thời gian đi hàng ngày là: $10:15=\\dfrac{2}{3}$\n\nCùng một quãng đường, thời gian bằng $\\dfrac{2}{3}$ thì vận tốc bằng $\\dfrac{3}{2}$. Vậy vận tốc sáng nay là $3$ phần, vận tốc hàng ngày là $2$ phần như thế.\n\nTa có sơ đồ:\n\n(Vận tốc sáng nay $3$ phần; vận tốc hàng ngày $2$ phần; hiệu $50$ m/phút)\n\nHiệu số phần bằng nhau là: $3-2=1$ (phần)\n\nVận tốc hàng ngày của An là: $50:1\\times 2=100$ (m/phút)\n\nQuãng đường từ nhà An đến trường là: $100\\times 15=1500$ (m)\n\nĐổi: $1500$ m $=1,5$ km\n\nChọn C.",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Cùng quãng đường nhà – trường",
+    "diem": [
+     {
+      "ten": "Nhà",
+      "x": 0
+     },
+     {
+      "ten": "Trường",
+      "x": 1500
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 1500,
+      "nhan": "Hàng ngày: 15 phút"
+     },
+     {
+      "tu": 0,
+      "den": 1500,
+      "nhan": "Sáng nay: 10 phút"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 1500,
+      "nhan": "? m"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Vận tốc (m/phút)",
+    "gia_tri_phan": 50,
+    "hang": [
+     {
+      "nhan": "Sáng nay",
+      "phan": 3
+     },
+     {
+      "nhan": "Hàng ngày",
+      "phan": 2
+     }
+    ],
+    "hieu": "50 m/phút",
+    "dau_hoi": [
+     "Hàng ngày"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "Nhiều cách: (1) tỉ số thời gian → tỉ số vận tốc (đảo ngược) rồi hiệu–tỉ [chọn, bám quan hệ gốc quãng đường = vận tốc × thời gian]; (2) gọi vận tốc hàng ngày rồi lập phương trình (cấm); (3) thử chọn từng phương án (không dùng)."
+ },
+ {
+  "ma_nguon": "NN 2024-TT2 · P2.1",
+  "dap_an": "An: $20$ quyển; Toàn: $10$ quyển; Giao: $18$ quyển; Thông: $12$ quyển",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng số vở của cả bốn bạn là một đại lượng chung. Phải đổi mỗi câu \"bằng ... tổng số vở của ba bạn còn lại\" thành \"bằng bao nhiêu phần tổng số vở của cả bốn bạn\"; khi đó hiệu số vở An hơn Toàn ứng với một phân số của tổng, từ đó tìm được tổng số vở.\n\n**Bước 1.** Số vở của An bằng $\\dfrac{1}{2}$ tổng ba bạn còn lại nên An là $1$ phần thì ba bạn còn lại là $2$ phần; cả bốn bạn là $3$ phần, tức là An bằng một phân số của tổng số vở bốn bạn.\n\n**Bước 2.** Làm tương tự với Toàn (bằng $\\dfrac{1}{5}$ tổng ba bạn còn lại) để biết Toàn bằng phân số nào của tổng số vở bốn bạn.\n\n**Bước 3.** Lấy phân số của An trừ phân số của Toàn: hiệu này ứng với $10$ quyển vở An có nhiều hơn Toàn, từ đó tìm tổng số vở, rồi số vở của An và của Toàn.\n\n**Bước 4.** Lấy tổng số vở trừ số vở của An và Toàn để được tổng số vở của Giao và Thông.\n\n**Bước 5.** Giao bằng $\\dfrac{3}{2}$ Thông nên Giao $3$ phần, Thông $2$ phần; chia tổng số vở của hai bạn theo bài toán tổng – tỉ để tìm số vở của mỗi bạn.\n\n**Chú ý:** Phân số của An, của Toàn phải so với CÙNG một đại lượng là tổng số vở của cả bốn bạn; không so với \"ba bạn còn lại\" vì ba bạn còn lại của An và của Toàn là hai nhóm khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố vở của An bằng $\\dfrac{1}{2}$ tổng số vở của ba bạn còn lại nên An là $1$ phần thì ba bạn còn lại là $2$ phần.\n\nTổng số phần của cả bốn bạn là: $1+2=3$ (phần)\n\nSố vở của An bằng $\\dfrac{1}{3}$ tổng số vở của bốn bạn.\n\nSố vở của Toàn bằng $\\dfrac{1}{5}$ tổng số vở của ba bạn còn lại nên Toàn là $1$ phần thì ba bạn còn lại là $5$ phần.\n\nTổng số phần của cả bốn bạn là: $1+5=6$ (phần)\n\nSố vở của Toàn bằng $\\dfrac{1}{6}$ tổng số vở của bốn bạn.\n\nSố vở của An nhiều hơn số vở của Toàn bằng số phần của tổng là: $\\dfrac{1}{3}-\\dfrac{1}{6}=\\dfrac{1}{6}$ (tổng số vở)\n\nTa có sơ đồ:\n\n(Chia tổng số vở của bốn bạn thành $6$ phần bằng nhau: An $2$ phần; Toàn $1$ phần; Giao và Thông $3$ phần; An hơn Toàn $10$ quyển)\n\nTổng số vở của bốn bạn là: $10:\\dfrac{1}{6}=60$ (quyển)\n\nSố vở của An là: $60\\times\\dfrac{1}{3}=20$ (quyển)\n\nSố vở của Toàn là: $60\\times\\dfrac{1}{6}=10$ (quyển)\n\nSố vở của Giao và Thông là: $60-20-10=30$ (quyển)\n\nSố vở của Giao bằng $\\dfrac{3}{2}$ số vở của Thông nên Giao là $3$ phần, Thông là $2$ phần như thế.\n\nTa có sơ đồ:\n\n(Giao $3$ phần; Thông $2$ phần; tổng $30$ quyển)\n\nTổng số phần bằng nhau là: $3+2=5$ (phần)\n\nSố vở của Giao là: $30:5\\times 3=18$ (quyển)\n\nSố vở của Thông là: $30:5\\times 2=12$ (quyển)\n\nĐáp số: An: $20$ quyển; Toàn: $10$ quyển; Giao: $18$ quyển; Thông: $12$ quyển",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Chia tổng số vở thành 6 phần",
+    "gia_tri_phan": 10,
+    "hang": [
+     {
+      "nhan": "An",
+      "phan": 2
+     },
+     {
+      "nhan": "Toàn",
+      "phan": 1
+     },
+     {
+      "nhan": "Giao và Thông",
+      "phan": 3
+     }
+    ],
+    "hieu": "10 quyển",
+    "dau_hoi": [
+     "Giao và Thông"
+    ]
+   },
+   {
+    "tieu_de": "Giao và Thông",
+    "gia_tri_phan": 6,
+    "hang": [
+     {
+      "nhan": "Giao",
+      "phan": 3
+     },
+     {
+      "nhan": "Thông",
+      "phan": 2
+     }
+    ],
+    "tong": "30 quyển"
+   }
+  ],
+  "ghi_chu_nghi": "Nhiều cách: (1) đổi mỗi quan hệ thành phân số của tổng bốn bạn, hiệu An–Toàn ứng với 1/6 tổng [chọn, dạng \"phân số ứng với\" như §2b D]; (2) chia cho cùng 6 phần rồi tìm từng bạn (cùng ý, trình bày khác)."
+ },
+ {
+  "ma_nguon": "NN 2024-TT2 · P2.2",
+  "dap_an": "a) $\\dfrac{4}{3}$; b) $\\dfrac{4}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $ABCH$ là hình chữ nhật nên $CH=AB$. Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; ý b) dùng lại kết quả ý a), và tỉ số $AN:ND$ tìm bằng tỉ số diện tích hai tam giác $ACM$ và $DCM$.\n\n**Bước 1.** Ý a): $ABCH$ là hình chữ nhật nên $CH=AB=\\dfrac{2}{5}\\times CD$; chia $CD$ thành $5$ phần bằng nhau thì biết $CH$ và $HD$ là mấy phần.\n\n**Bước 2.** Tam giác $ACH$ và tam giác $AHD$ có chung đường cao hạ từ $A$ xuống $CD$ nên tỉ số diện tích bằng tỉ số $CH:HD$; đường chéo $AC$ chia hình chữ nhật thành hai tam giác bằng nhau, từ đó so sánh $S_{ABCH}$ với $S_{AHD}$.\n\n**Bước 3.** Ý b): $N$ nằm trên $CM$ kéo dài, nên hai tam giác $ACM$ và $DCM$ cùng có đáy $CM$ nằm trên đường thẳng $CN$; chứng tỏ tỉ số $AN:ND$ bằng tỉ số diện tích hai tam giác này.\n\n**Bước 4.** Dùng lại tỉ số ở ý a), chia $S_{ACH}$ và $S_{AHD}$ thành số phần bằng nhau dễ tính, rồi tính $S_{ACM}$ từ $S_{ACH}$ (chung đường cao hạ từ $C$ xuống $AH$).\n\n**Bước 5.** Tính $S_{DCM}$ bằng tổng $S_{CMH}$ và $S_{DMH}$ (vì $H$ nằm trên $CD$), mỗi tam giác nhỏ tìm từ tam giác lớn cùng đỉnh $C$ hoặc $D$ có đáy $AH$; cuối cùng lấy $S_{ACM}$ chia cho $S_{DCM}$.\n\n**Chú ý:** Đề hỏi \"tỉ số của $AN$ và $ND$\" nên kết quả viết $AN$ trước, $ND$ sau, không đảo ngược thành $ND$ so với $AN$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) $ABCH$ là hình chữ nhật nên $CH=AB=\\dfrac{2}{5}\\times CD$.\n\nChia $CD$ thành $5$ phần bằng nhau thì $CH$ là $2$ phần, $HD$ là $5-2=3$ phần như thế.\n\nTam giác $ACH$ và tam giác $AHD$ có chung đường cao hạ từ $A$ xuống $CD$, suy ra $\\dfrac{S_{ACH}}{S_{AHD}}=\\dfrac{CH}{HD}=\\dfrac{2}{3}$\n\nĐường chéo $AC$ chia hình chữ nhật $ABCH$ thành hai tam giác bằng nhau nên $S_{ABCH}=2\\times S_{ACH}$.\n\nCoi $S_{ACH}$ là $2$ phần thì $S_{AHD}$ là $3$ phần và $S_{ABCH}$ là: $2\\times 2=4$ (phần)\n\nTỉ số của diện tích hình chữ nhật $ABCH$ và diện tích tam giác $AHD$ là $\\dfrac{4}{3}$.\n\nb) Theo ý a), $\\dfrac{S_{ACH}}{S_{AHD}}=\\dfrac{2}{3}=\\dfrac{6}{9}$ nên coi $S_{ACH}$ là $6$ phần thì $S_{AHD}$ là $9$ phần.\n\nVì $MH=\\dfrac{1}{3}\\times AH$ nên $AM=\\dfrac{2}{3}\\times AH$ và $\\dfrac{AM}{AH}=\\dfrac{2}{3}$.\n\nTam giác $ACM$ và tam giác $ACH$ có chung đường cao hạ từ $C$ xuống $AH$, suy ra $\\dfrac{S_{ACM}}{S_{ACH}}=\\dfrac{AM}{AH}=\\dfrac{2}{3}$\n\nDiện tích tam giác $ACM$ là: $6\\times\\dfrac{2}{3}=4$ (phần)\n\nTam giác $CMH$ và tam giác $CAH$ có chung đường cao hạ từ $C$ xuống $AH$, suy ra $\\dfrac{S_{CMH}}{S_{CAH}}=\\dfrac{MH}{AH}=\\dfrac{1}{3}$\n\nDiện tích tam giác $CMH$ là: $6\\times\\dfrac{1}{3}=2$ (phần)\n\nTam giác $DMH$ và tam giác $DAH$ có chung đường cao hạ từ $D$ xuống $AH$, suy ra $\\dfrac{S_{DMH}}{S_{DAH}}=\\dfrac{MH}{AH}=\\dfrac{1}{3}$\n\nDiện tích tam giác $DMH$ là: $9\\times\\dfrac{1}{3}=3$ (phần)\n\nVì $H$ nằm trên $CD$ nên diện tích tam giác $DCM$ là: $2+3=5$ (phần)\n\nTam giác $ACN$ và tam giác $DCN$ có chung đường cao hạ từ $C$ xuống $AD$, suy ra $\\dfrac{AN}{ND}=\\dfrac{S_{ACN}}{S_{DCN}}$\n\nHai tam giác $ACN$ và $DCN$ có chung đáy $CN$; hai tam giác $ACM$ và $DCM$ có chung đáy $CM$ nằm trên $CN$. Cả bốn tam giác cùng có hai đường cao hạ từ $A$ và từ $D$ xuống đường thẳng $CN$, nên $\\dfrac{S_{ACN}}{S_{DCN}}=\\dfrac{S_{ACM}}{S_{DCM}}$\n\nVậy tỉ số của $AN$ và $ND$ là $\\dfrac{AN}{ND}=\\dfrac{S_{ACM}}{S_{DCM}}=\\dfrac{4}{5}$.\n\nĐáp số: a) $\\dfrac{4}{3}$; b) $\\dfrac{4}{5}$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: AB // CD (đáy), H nằm trên CD (AH vuông góc CD) nên ABCH là hình chữ nhật và CH = AB; M nằm giữa A và H; N nằm trên đoạn AD. Kết quả đối chiếu bằng toạ độ: AN:ND = 4:5."
+ }
+]

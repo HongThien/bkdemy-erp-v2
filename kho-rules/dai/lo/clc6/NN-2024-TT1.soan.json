@@ -1,0 +1,160 @@
+[
+ {
+  "ma_nguon": "NN 2024-TT1 · P1.1",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bé tăng thêm còn số lớn giảm đi thì hai số lại gần nhau hơn: hiệu của chúng giảm đúng bằng tổng hai lượng thay đổi. Biết hiệu sau khi thay đổi thì tìm được hiệu lúc đầu, rồi giải bài toán tổng – hiệu với tổng $370$.\n\n**Bước 1.** Tính xem hiệu hai số giảm đi bao nhiêu khi số bé tăng thêm $20$ đơn vị và số lớn giảm đi $10$ đơn vị.\n\n**Bước 2.** Hiệu sau khi thay đổi là $50$ đơn vị; cộng thêm phần đã giảm đi để tìm hiệu của hai số lúc đầu.\n\n**Bước 3.** Lúc đầu biết tổng là $370$ và biết hiệu vừa tìm, nên vẽ sơ đồ rồi tìm số bé bằng cách lấy tổng trừ hiệu rồi chia $2$.\n\n**Bước 4.** Lấy số bé cộng với hiệu để tìm số lớn, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Sau khi thay đổi, tổng hai số không còn là $370$ nữa nên không được ghép tổng $370$ với hiệu $50$; phải tìm hiệu lúc đầu rồi mới dùng tổng $370$.\n\n**Phần 2. Trình bày**\n\nSố bé tăng thêm $20$ và số lớn giảm đi $10$ thì hiệu hai số giảm đi: $20+10=30$ (đơn vị)\n\nHiệu của hai số lúc đầu là: $50+30=80$\n\nTa có sơ đồ:\n\n(Số bé 1 phần; Số lớn bằng số bé thêm 80; tổng 370)\n\nSố bé là: $(370-80):2=145$\n\nSố lớn là: $145+80=225$\n\nChọn D.",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc đầu",
+   "gia_tri_phan": 145,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "80"
+    }
+   ],
+   "tong": "370",
+   "hieu": "80",
+   "dau_hoi": [
+    "Số lớn"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2024-TT1 · P1.2",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tính thể tích nước thì tính thể tích cả bể rồi lấy $80\\%$ của nó. Ba kích thước đề cho bằng ba đơn vị khác nhau (m, dm, cm) nên phải đổi về cùng một đơn vị trước; đổi sang dm cho tiện vì $1\\ \\text{dm}^3$ bằng $1$ lít.\n\n**Bước 1.** Nhận ra ba kích thước đang dùng các đơn vị khác nhau, nên đổi cả ba về đề-xi-mét (dm) trước khi nhân.\n\n**Bước 2.** Tính thể tích cả bể bằng cách nhân chiều dài, chiều rộng và chiều cao.\n\n**Bước 3.** Nước chỉ đầy $80\\%$ bể nên lấy thể tích cả bể nhân với $80\\%$ để được thể tích nước.\n\n**Bước 4.** Đổi thể tích nước từ đề-xi-mét khối sang lít, nhớ $1\\ \\text{dm}^3$ bằng $1$ lít, rồi chọn phương án.\n\n**Chú ý:** Có phương án ghi thể tích cả bể, đó là bẫy cho ai quên lấy $80\\%$.\n\n**Phần 2. Trình bày**\n\nĐổi: $1,5$ m $=15$ dm; $170$ cm $=17$ dm\n\nThể tích cả bể là: $26\\times 17\\times 15=6630$ ($\\text{dm}^3$)\n\nThể tích nước trong bể là: $6630\\times 80\\%=5304$ ($\\text{dm}^3$)\n\nĐổi: $5304\\ \\text{dm}^3=5304$ lít\n\nChọn B."
+ },
+ {
+  "ma_nguon": "NN 2024-TT1 · P1.3",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Làm ngược từ giờ vào học: lấy giờ vào học trừ thời gian đi xe bus để biết xe phải rời bến chậm nhất lúc nào. Xe chỉ chạy theo các giờ cố định cách nhau $15$ phút nên phải chọn chuyến muộn nhất còn kịp, rồi trừ thời gian đi bộ ra bến để biết giờ xuất phát.\n\n**Bước 1.** Tính giờ vào học sau khi nhà trường dời muộn $15$ phút.\n\n**Bước 2.** Lấy giờ vào học trừ thời gian xe bus chạy từ bến đến trường để biết xe bus phải rời bến chậm nhất lúc mấy giờ.\n\n**Bước 3.** Liệt kê các chuyến xe bus bắt đầu từ chuyến $6$ giờ $50$ phút, mỗi chuyến cách nhau $15$ phút, rồi chọn chuyến muộn nhất không quá giờ vừa tìm.\n\n**Bước 4.** Hoa phải có mặt ở bến đúng giờ của chuyến xe đã chọn nên lấy giờ đó trừ thời gian đi bộ để biết giờ xuất phát muộn nhất.\n\n**Chú ý:** Xe bus chỉ chạy vào các giờ cố định nên không thể lấy ngay giờ xe rời bến chậm nhất làm giờ lên xe; phải chọn chuyến có giờ không muộn hơn giờ đó.\n\n**Phần 2. Trình bày**\n\nGiờ vào học sau khi dời muộn là: $7$ giờ $30$ phút $+\\ 15$ phút $=7$ giờ $45$ phút\n\nXe bus chạy từ bến đến trường mất $20$ phút nên xe phải rời bến chậm nhất lúc: $7$ giờ $45$ phút $-\\ 20$ phút $=7$ giờ $25$ phút\n\nCác chuyến xe bus (cách nhau $15$ phút) lần lượt là: $6$ giờ $50$ phút; $7$ giờ $5$ phút; $7$ giờ $20$ phút; $7$ giờ $35$ phút; …\n\nChuyến $7$ giờ $35$ phút muộn hơn $7$ giờ $25$ phút nên không kịp, chuyến muộn nhất còn kịp là chuyến $7$ giờ $20$ phút.\n\nHoa đi bộ ra bến mất $5$ phút nên giờ xuất phát muộn nhất là: $7$ giờ $20$ phút $-\\ 5$ phút $=7$ giờ $15$ phút\n\nChọn C.",
+  "ghi_chu_nghi": "Đề viết \"chuyến xe đầu tiên sẽ đến nhà Hoa vào lúc 6h50\": đã hiểu là xe tới bến xe bus gần nhà Hoa lúc 6 giờ 50 (vì Hoa phải đi bộ 5 phút ra bến mới lên xe) ⇒ các chuyến tới bến lúc 6:50, 7:05, 7:20, 7:35; chọn chuyến 7:20 (đến trường 7:40, còn chuyến 7:35 đến 7:55 là muộn) ⇒ Hoa xuất phát 7 giờ 15 phút (C). Nếu hiểu 6:50 là giờ xe tới đúng cửa nhà rồi Hoa mới đi bộ 5 phút tới bến (xe tới bến 6:55, 7:10, 7:25…) thì chuyến muộn nhất là 7:25 (đến trường 7:45), xuất phát 7 giờ 20 phút (D). Cách hiểu thứ nhất tự nhiên hơn nhưng đề mơ hồ — cần người chốt."
+ },
+ {
+  "ma_nguon": "NN 2024-TT1 · P1.4",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Minh bằng một nửa Uy nên cho Minh $1$ phần thì Uy là $2$ phần. Uy lại bằng một nửa số kẹo của hai bạn còn lại, nên hai bạn Minh và Sáng cộng lại gấp đôi Uy; từ đó tìm được số phần của Sáng.\n\n**Bước 1.** Chọn số kẹo của Minh là $1$ phần; vì Minh bằng $\\dfrac{1}{2}$ số kẹo của Uy nên tìm số phần của Uy.\n\n**Bước 2.** Uy bằng $\\dfrac{1}{2}$ số kẹo của Minh và Sáng cộng lại, nên số kẹo của hai bạn Minh và Sáng gấp $2$ lần số kẹo của Uy; tính số phần của hai bạn này.\n\n**Bước 3.** Lấy số phần của hai bạn Minh và Sáng trừ đi số phần của Minh để tìm số phần của Sáng.\n\n**Bước 4.** Viết tỉ số số phần của Uy và của Sáng rồi đối chiếu với các phương án.\n\n**Chú ý:** Hai bạn \"còn lại\" của Uy là Minh và Sáng, đừng cộng thêm số kẹo của chính Uy vào.\n\n**Phần 2. Trình bày**\n\nCoi số kẹo của Minh là $1$ phần. Minh bằng $\\dfrac{1}{2}$ số kẹo của Uy nên số kẹo của Uy là: $1\\times 2=2$ (phần)\n\nUy bằng $\\dfrac{1}{2}$ số kẹo của Minh và Sáng nên số kẹo của Minh và Sáng là: $2\\times 2=4$ (phần)\n\nSố kẹo của Sáng là: $4-1=3$ (phần)\n\nTa có sơ đồ:\n\n(Minh 1 phần; Uy 2 phần; Sáng 3 phần)\n\nTỉ số kẹo giữa Uy và Sáng là $2:3$.\n\nChọn A.",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Minh",
+     "phan": 1
+    },
+    {
+     "nhan": "Uy",
+     "phan": 2
+    },
+    {
+     "nhan": "Sáng",
+     "phan": 3
+    }
+   ],
+   "dau_hoi": [
+    "Sáng"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2024-TT1 · P1.5",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm là phần hình tròn nằm ngoài hình vuông nhỏ, nên bằng diện tích hình tròn trừ diện tích hình vuông nhỏ. Đường kính hình tròn bằng cạnh hình vuông to, còn đường chéo hình vuông nhỏ chính là đường kính hình tròn.\n\n**Bước 1.** Quan sát hình: hình tròn chạm bốn cạnh của hình vuông to nên đường kính hình tròn bằng cạnh hình vuông to; từ đó tìm bán kính rồi tính diện tích hình tròn.\n\n**Bước 2.** Bốn đỉnh của hình vuông nhỏ nằm trên đường tròn nên đường chéo của nó cũng chính là đường kính của hình tròn.\n\n**Bước 3.** Hình vuông cũng là hình thoi nên diện tích bằng tích hai đường chéo chia $2$; tính diện tích hình vuông nhỏ.\n\n**Bước 4.** Lấy diện tích hình tròn trừ diện tích hình vuông nhỏ để được diện tích phần tô đậm rồi chọn phương án.\n\n**Chú ý:** $10$ cm là cạnh hình vuông to và cũng là đường kính hình tròn, nhưng không phải là cạnh hình vuông nhỏ.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, hình tròn chạm bốn cạnh của hình vuông to nên đường kính hình tròn là $10$ cm.\n\nBán kính hình tròn là: $10:2=5$ (cm)\n\nDiện tích hình tròn là: $5\\times 5\\times 3,14=78,5$ ($\\text{cm}^2$)\n\nTheo hình vẽ, bốn đỉnh của hình vuông nhỏ nằm trên đường tròn nên hai đường chéo của nó đều bằng $10$ cm.\n\nDiện tích hình vuông nhỏ là: $10\\times 10:2=50$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $78,5-50=28,5$ ($\\text{cm}^2$)\n\nChọn B.",
+  "ghi_chu_nghi": "Đề chữ không mô tả hình, mọi dữ kiện lấy từ hình: hình tròn chạm bốn cạnh hình vuông to (cạnh 10 cm), bốn đỉnh hình vuông nhỏ nằm trên đường tròn, phần tô đậm = hình tròn trừ hình vuông nhỏ. Ảnh hình vẽ lệch nhẹ giữa các nét (hình vuông nhỏ nhìn hơi lệch tâm); hiểu theo cách bố trí thông dụng của bài, kết quả 28,5 cm² trùng phương án B."
+ },
+ {
+  "ma_nguon": "NN 2024-TT1 · P2.1",
+  "dap_an": "a) Xuôi dòng: $20$ km/giờ; ngược dòng: $16$ km/giờ; b) $40$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** So với lúc nước lặng, cano đi xuôi dòng nhanh hơn và đi ngược dòng chậm hơn đúng bằng vận tốc dòng nước. Đi và về cùng một quãng đường AB thì vận tốc càng lớn thời gian càng ít (tỉ lệ nghịch), và phải bỏ $30$ phút nghỉ ra khỏi tổng $5$ giờ vì lúc nghỉ cano không chạy.\n\n**Bước 1.** Ý a): vận tốc xuôi dòng bằng vận tốc nước lặng cộng vận tốc dòng nước, còn vận tốc ngược dòng bằng vận tốc nước lặng trừ vận tốc dòng nước.\n\n**Bước 2.** Ý b): lấy tổng thời gian trừ thời gian nghỉ để biết thời gian cano thực sự chạy cả đi lẫn về, nhớ đổi $30$ phút ra giờ.\n\n**Bước 3.** Đi và về cùng quãng đường AB nên vận tốc và thời gian tỉ lệ nghịch; dùng kết quả ý a) lập tỉ số vận tốc rồi đảo lại thành tỉ số thời gian đi xuôi và đi ngược.\n\n**Bước 4.** Đây là bài tổng – tỉ về thời gian: chia thời gian chạy theo tổng số phần để tìm thời gian đi xuôi dòng.\n\n**Bước 5.** Dùng công thức quãng đường bằng vận tốc nhân thời gian, với vận tốc và thời gian đi xuôi dòng, để tìm khoảng cách từ A đến B.\n\n**Chú ý:** Chỉ khi hai chuyến đi cùng một quãng đường thì mới đảo tỉ số vận tốc thành tỉ số thời gian; đừng quên trừ thời gian nghỉ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Vận tốc của cano khi đi xuôi dòng là: $18+2=20$ (km/giờ)\n\nVận tốc của cano khi đi ngược dòng là: $18-2=16$ (km/giờ)\n\nb) Ta có sơ đồ:\n\n(A và B cách nhau một quãng đường chưa biết; cano đi xuôi dòng từ A đến B với vận tốc 20 km/giờ, nghỉ ở B rồi đi ngược dòng từ B về A với vận tốc 16 km/giờ)\n\nĐổi: $30$ phút $=0,5$ giờ\n\nThời gian cano thực sự chạy (không kể nghỉ) là: $5-0,5=4,5$ (giờ)\n\nCano đi và về trên cùng quãng đường AB nên vận tốc và thời gian tỉ lệ nghịch.\n\nTỉ số vận tốc xuôi dòng và ngược dòng là: $20:16=\\dfrac{5}{4}$\n\nDo đó thời gian đi xuôi dòng bằng $\\dfrac{4}{5}$ thời gian đi ngược dòng, tức là thời gian đi xuôi là $4$ phần, thời gian đi ngược là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Thời gian đi xuôi dòng 4 phần; thời gian đi ngược dòng 5 phần; tổng 4,5 giờ)\n\nTổng số phần bằng nhau là: $4+5=9$ (phần)\n\nGiá trị một phần là: $4,5:9=0,5$ (giờ)\n\nThời gian đi xuôi dòng là: $0,5\\times 4=2$ (giờ)\n\nKhoảng cách từ A đến B là: $20\\times 2=40$ (km)\n\nĐáp số: a) Xuôi dòng: $20$ km/giờ; ngược dòng: $16$ km/giờ; b) $40$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Đi xuôi dòng rồi ngược dòng",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 40
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 40,
+      "nhan": "Xuôi dòng: 20 km/giờ"
+     },
+     {
+      "tu": 40,
+      "den": 0,
+      "nhan": "Ngược dòng: 16 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 40,
+      "nhan": "Quãng sông AB"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian chạy của cano",
+    "gia_tri_phan": 0.5,
+    "hang": [
+     {
+      "nhan": "Đi xuôi dòng",
+      "phan": 4
+     },
+     {
+      "nhan": "Đi ngược dòng",
+      "phan": 5
+     }
+    ],
+    "tong": "4,5 giờ",
+    "dau_hoi": [
+     "Đi xuôi dòng"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "nhiều cách: (1) tỉ lệ nghịch giữa vận tốc và thời gian rồi tổng – tỉ (đã chọn, đúng khuôn CĐ28 và bám công thức s = v × t); (2) rút về 1 km: đi 1 km xuôi mất 1/20 giờ, ngược mất 1/16 giờ, cả đi và về 1 km mất 9/80 giờ nên quãng đường = 4,5 : 9/80 = 40 km. Cả hai ra 40 km."
+ },
+ {
+  "ma_nguon": "NN 2024-TT1 · P2.2",
+  "dap_an": "$40$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa số vải của từng ngày về \"số phần bằng nhau\" theo lần lượt từng quan hệ: chọn ngày đầu là $2$ phần để \"gấp rưỡi\" ra số nguyên, từ đó suy ra ngày hai, tổng ngày ba và ngày tư, rồi từng ngày. Ngày đầu hơn ngày ba bao nhiêu phần thì bấy nhiêu phần ứng với $5$ m.\n\n**Bước 1.** Ngày thứ hai bán gấp rưỡi ngày đầu, nên coi ngày đầu là $2$ phần để ngày thứ hai cũng là số phần nguyên rồi tính số phần của ngày thứ hai.\n\n**Bước 2.** Ngày đầu bằng $\\dfrac{1}{3}$ tổng ba ngày còn lại, nên ba ngày còn lại gấp $3$ lần ngày đầu; từ đó tìm số phần của ngày ba và ngày tư gộp lại.\n\n**Bước 3.** Ngày ba bằng một nửa ngày tư nên ngày ba bằng $\\dfrac{1}{3}$ tổng hai ngày này; chia ra số phần của ngày ba và của ngày tư.\n\n**Bước 4.** Tìm ngày đầu hơn ngày ba bao nhiêu phần; số phần chênh lệch này ứng với $5$ m, từ đó tìm độ dài một phần.\n\n**Bước 5.** Cộng số phần của cả bốn ngày rồi nhân với độ dài một phần để được độ dài cả khúc vải.\n\n**Chú ý:** \"Ba ngày còn lại\" của ngày đầu là ngày hai, ngày ba và ngày tư; đừng nhầm với tổng của cả bốn ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi số vải bán ngày đầu là $2$ phần. Ngày thứ hai bán gấp rưỡi ngày đầu nên số vải ngày thứ hai là: $2\\times 1,5=3$ (phần)\n\nNgày đầu bằng $\\dfrac{1}{3}$ tổng ba ngày còn lại nên số vải ba ngày còn lại là: $2\\times 3=6$ (phần)\n\nTổng số vải ngày thứ ba và ngày thứ tư là: $6-3=3$ (phần)\n\nNgày thứ ba bằng một nửa ngày thứ tư nên ngày thứ ba bằng $\\dfrac{1}{3}$ tổng hai ngày này, số vải ngày thứ ba là: $3:3=1$ (phần)\n\nSố vải ngày thứ tư là: $3-1=2$ (phần)\n\nTa có sơ đồ:\n\n(Ngày 1: 2 phần; Ngày 2: 3 phần; Ngày 3: 1 phần; Ngày 4: 2 phần; ngày 1 hơn ngày 3 là 5 m)\n\nNgày thứ nhất bán hơn ngày thứ ba là: $2-1=1$ (phần)\n\nVậy $1$ phần ứng với $5$ m.\n\nCả khúc vải có số phần là: $2+3+1+2=8$ (phần)\n\nĐộ dài cả khúc vải là: $5\\times 8=40$ (m)\n\nĐáp số: $40$ m",
+  "so_do_mo_ta": {
+   "tieu_de": "Số vải bán mỗi ngày",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Ngày 1",
+     "phan": 2
+    },
+    {
+     "nhan": "Ngày 2",
+     "phan": 3
+    },
+    {
+     "nhan": "Ngày 3",
+     "phan": 1
+    },
+    {
+     "nhan": "Ngày 4",
+     "phan": 2
+    }
+   ],
+   "tong": "? m",
+   "dau_hoi": [
+    "Ngày 3"
+   ]
+  },
+  "ghi_chu_nghi": "nhiều cách: (1) số phần với ngày đầu = 2 phần (đã chọn); (2) phân số của cả khúc vải: ngày 1 = 1/4, ngày 2 = 3/8, ngày 3 + ngày 4 = 3/8 nên ngày 3 = 1/8, ngày 1 hơn ngày 3 = 1/8 khúc vải ứng với 5 m. Cả hai ra 40 m."
+ }
+]

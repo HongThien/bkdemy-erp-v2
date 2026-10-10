@@ -1,0 +1,109 @@
+[
+ {
+  "ma_nguon": "NTT 2023 · 1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia một số cho $100$ giống như nhân số đó với $0,01$. Khi đó hai tích có chung thừa số $2,75$ và hai số còn lại là $0,99$ và $0,01$ cộng lại vừa tròn $1$, nên đặt thừa số chung ra ngoài sẽ tính rất gọn.\n\n**Bước 1.** Nhận ra phép chia cho $100$ chính là phép nhân với $0,01$, rồi đổi phép chia thành phép nhân để hai số hạng cùng có dạng \"$2,75$ nhân một số\".\n\n**Bước 2.** Hai tích có chung thừa số $2,75$ nên dùng tính chất nhân một số với một tổng: đặt $2,75$ ra ngoài, trong ngoặc là tổng hai số thập phân.\n\n**Bước 3.** Cộng hai số trong ngoặc (hai số này cộng lại ra số tròn), nhân kết quả với $2,75$ rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Không nên nhân $2,75\\times 0,99$ trực tiếp vì tính dài và dễ sai; nhận ra chung thừa số mới là mấu chốt.\n\n**Phần 2. Trình bày**\n\n$2,75\\times 0,99+2,75:100$\n\n$=2,75\\times 0,99+2,75\\times 0,01$\n\n$=2,75\\times(0,99+0,01)$\n\n$=2,75\\times 1$\n\n$=2,75$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "NTT 2023 · 2",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bể chỉ có hai loại bóng là xanh và vàng nên số bóng vàng chiếm phần còn lại của toàn bộ số bóng sau khi bỏ đi phần của bóng xanh; rồi áp dụng bài toán tìm phân số của một số.\n\n**Bước 1.** Toàn bộ số bóng trong bể là $1$ (cũng là $\\dfrac{5}{5}$), gồm bóng xanh và bóng vàng, nên bóng vàng là phần còn lại sau khi trừ đi phần bóng xanh.\n\n**Bước 2.** Tính phân số chỉ số bóng vàng bằng cách lấy $1$ trừ đi phân số chỉ số bóng xanh.\n\n**Bước 3.** Muốn tìm phân số của một số, ta lấy số đó nhân với phân số; sau đó đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** Đề hỏi số bóng vàng; số bóng xanh là một phương án khác trong bài nên đừng chọn nhầm.\n\n**Phần 2. Trình bày**\n\nSố bóng màu vàng chiếm số phần so với tổng số bóng là: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (số bóng)\n\nSố quả bóng màu vàng là: $360\\times\\dfrac{2}{5}=144$ (quả)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2023 · 3",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng nước trong bể là thể tích của một hình hộp chữ nhật có hai cạnh đáy bằng chiều dài và chiều rộng của bể, còn chiều cao chỉ bằng mực nước. Phải đổi ba kích thước về cùng một đơn vị là đề-xi-mét thì mới nhân được.\n\n**Bước 1.** Thấy kích thước bể cho bằng hai đơn vị khác nhau là mét và đề-xi-mét, nên đổi chiều dài sang đề-xi-mét để cả ba kích thước cùng đơn vị.\n\n**Bước 2.** Tính chiều cao của mực nước: mực nước bằng một phân số của chiều cao bể, nên lấy chiều cao bể nhân với phân số đó.\n\n**Bước 3.** Lượng nước bằng chiều dài nhân chiều rộng nhân mực nước, rồi đối chiếu với bốn phương án và chú ý đơn vị.\n\n**Chú ý:** Phương án C cũng có số $200$ nhưng đơn vị là $\\text{m}^3$; đơn vị khác nhau thì không thể cùng là kết quả của phép tính.\n\n**Phần 2. Trình bày**\n\nĐổi: $1$ m $=10$ dm\n\nMực nước trong bể cao là: $6\\times\\dfrac{2}{3}=4$ (dm)\n\nLượng nước trong bể là: $10\\times 5\\times 4=200$ ($\\text{dm}^3$)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NTT 2023 · 4",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm tỉ số phần trăm của số học sinh học Guitar so với tổng số học sinh, phải biết cả hai số: số học sinh học Guitar và tổng số học sinh của tất cả các môn; hai số này đều đọc được từ biểu đồ cột.\n\n**Bước 1.** Đọc chiều cao từng cột của biểu đồ, đối chiếu với các vạch chia $5$ học sinh trên trục để biết số học sinh học từng môn.\n\n**Bước 2.** Cộng số học sinh của cả sáu môn để tìm tổng số học sinh tham gia câu lạc bộ nghệ thuật.\n\n**Bước 3.** Tìm tỉ số phần trăm bằng cách lấy số học sinh học Guitar chia cho tổng số học sinh, rồi đổi kết quả sang phần trăm.\n\n**Chú ý:** Đề so với tổng số học sinh của cả câu lạc bộ, không so với số học sinh của một môn khác.\n\n**Phần 2. Trình bày**\n\nTheo biểu đồ, số học sinh học từng môn là: Mĩ thuật $15$; Thanh nhạc $20$; Guitar $30$; Sáo $25$; Múa $20$; Organ $10$.\n\nTổng số học sinh tham gia câu lạc bộ là: $15+20+30+25+20+10=120$ (học sinh)\n\nTỉ số phần trăm của số học sinh học Guitar so với tổng số học sinh là: $30:120=0,25=25\\%$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NTT 2023 · 5",
+  "dap_an": "$21,7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trung bình cộng nhân với số các số hạng thì bằng tổng các số hạng. Biết tổng ba số và tổng hai số đầu thì số thứ ba chính là hiệu của hai tổng đó.\n\n**Bước 1.** Tìm tổng của cả ba số bằng cách lấy trung bình cộng của ba số nhân với $3$.\n\n**Bước 2.** Tìm tổng của số thứ nhất và số thứ hai bằng cách lấy trung bình cộng của hai số đó nhân với $2$.\n\n**Bước 3.** Lấy tổng ba số trừ đi tổng hai số đầu thì còn lại đúng số thứ ba.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của ba số là: $15,3\\times 3=45,9$\n\nTổng của số thứ nhất và số thứ hai là: $12,1\\times 2=24,2$\n\nSố thứ ba là: $45,9-24,2=21,7$\n\nĐáp số: $21,7$"
+ },
+ {
+  "ma_nguon": "NTT 2023 · 6",
+  "dap_an": "$250000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá niêm yết là giá lúc đầu nên coi là $100\\%$. Cửa hàng giảm giá $15\\%$ thì mẹ bạn Mai chỉ phải trả phần còn lại của giá niêm yết; số tiền đã trả ứng với phần trăm đó, từ đó tìm số biết một số phần trăm của nó.\n\n**Bước 1.** Coi giá niêm yết của bộ váy là $100\\%$ rồi tính xem sau khi giảm giá $15\\%$ thì giá phải trả bằng bao nhiêu phần trăm giá niêm yết.\n\n**Bước 2.** Số tiền $212\\,500$ đồng mẹ bạn Mai đã trả chính là số tiền ứng với số phần trăm vừa tìm được của giá niêm yết.\n\n**Bước 3.** Biết một số phần trăm của giá niêm yết, muốn tìm giá niêm yết ta lấy số tiền đã trả chia cho số phần trăm đó.\n\n**Chú ý:** Giảm giá $15\\%$ là giảm trên giá niêm yết, nên không được lấy số tiền đã trả cộng thêm $15\\%$ của chính nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền mẹ bạn Mai trả bằng số phần trăm giá niêm yết là: $100\\%-15\\%=85\\%$\n\nGiá niêm yết của bộ váy là: $212500:85\\%=250000$ (đồng)\n\nĐáp số: $250000$ đồng"
+ },
+ {
+  "ma_nguon": "NTT 2023 · 7",
+  "dap_an": "$610245$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $45=5\\times 9$ nên số chia hết cho $45$ thì chia hết cho cả $5$ và $9$. Dấu hiệu chia hết cho $5$ cho biết chữ số $b$, dấu hiệu chia hết cho $9$ cho biết chữ số $a$; sau đó chọn số lớn nhất.\n\n**Bước 1.** Số chia hết cho $5$ thì chữ số tận cùng là $0$ hoặc $5$, nên chữ số $b$ chỉ có hai trường hợp.\n\n**Bước 2.** Số chia hết cho $9$ thì tổng các chữ số chia hết cho $9$; viết tổng sáu chữ số của $\\overline{a1024b}$ để tìm điều kiện của $a$ và $b$.\n\n**Bước 3.** Xét từng trường hợp của $b$: tính khoảng giá trị của tổng chứa $a$ (chú ý $a$ là chữ số đầu nên không bằng $0$) rồi chọn số chia hết cho $9$.\n\n**Bước 4.** So sánh các số tìm được để chọn số lớn nhất, sau đó thử lại bằng phép chia cho $45$.\n\n**Chú ý:** Phải xét đủ cả hai trường hợp của $b$ rồi mới so sánh, không dừng ở trường hợp đầu tiên tìm được.\n\n**Phần 2. Trình bày**\n\nSố chia hết cho $45$ thì chia hết cho $5$ và chia hết cho $9$.\n\nSố chia hết cho $5$ nên chữ số $b$ là $0$ hoặc $5$.\n\nSố chia hết cho $9$ nên tổng các chữ số $a+1+0+2+4+b=a+b+7$ chia hết cho $9$.\n\nNếu $b=0$ thì $a+7$ chia hết cho $9$; mà $a+7$ nằm từ $8$ đến $16$ nên $a+7=9$, suy ra $a=2$ và số đó là $210240$.\n\nNếu $b=5$ thì $a+12$ chia hết cho $9$; mà $a+12$ nằm từ $13$ đến $21$ nên $a+12=18$, suy ra $a=6$ và số đó là $610245$.\n\nVì $610245>210240$ nên số lớn nhất cần tìm là $610245$.\n\nThử lại: $610245:45=13561$."
+ },
+ {
+  "ma_nguon": "NTT 2023 · 8",
+  "dap_an": "$6,28$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong hình chữ nhật có hai phần tư hình tròn (tâm $D$ và tâm $C$) chồng lên nhau ở phần gạch chéo, còn phần tô đậm không thuộc phần tư hình tròn nào. Cộng hai phần tư hình tròn thì phần chồng bị tính hai lần (thừa) còn phần tô đậm không được tính (thiếu); hai phần này bằng nhau nên thừa bù thiếu, và diện tích hình chữ nhật bằng tổng diện tích hai phần tư hình tròn.\n\n**Bước 1.** Theo hình vẽ, hình tròn tâm $D$ có bán kính $DA=4$ cm và phần của nó nằm trong hình chữ nhật là một phần tư hình tròn; hình tròn tâm $C$ bán kính $CB=4$ cm cũng vậy.\n\n**Bước 2.** Tính diện tích một phần tư hình tròn bán kính $4$ cm, rồi nhân đôi để được tổng diện tích hai phần tư hình tròn.\n\n**Bước 3.** So sánh với hình chữ nhật: cộng hai phần tư hình tròn thì phần gạch chéo bị tính hai lần và phần tô đậm chưa được tính; vì hai phần này bằng nhau nên diện tích hình chữ nhật bằng đúng tổng vừa tìm.\n\n**Bước 4.** Cạnh $CD$ là chiều dài hình chữ nhật, nên lấy diện tích hình chữ nhật chia cho chiều rộng $AD$ đã biết.\n\n**Chú ý:** Không cần tính riêng diện tích phần gạch chéo hay phần tô đậm vì ta chỉ dùng việc hai phần đó bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần hình tròn tâm $D$ nằm trong hình chữ nhật là $\\dfrac{1}{4}$ hình tròn bán kính $4$ cm; phần hình tròn tâm $C$ nằm trong hình chữ nhật cũng vậy.\n\nDiện tích mỗi phần tư hình tròn là: $4\\times 4\\times 3,14:4=12,56$ ($\\text{cm}^2$)\n\nTổng diện tích hai phần tư hình tròn là: $12,56\\times 2=25,12$ ($\\text{cm}^2$)\n\nPhần gạch chéo bị tính hai lần bằng đúng phần tô đậm chưa được tính, nên diện tích hình chữ nhật $ABCD$ bằng tổng diện tích hai phần tư hình tròn, là $25,12$ $\\text{cm}^2$.\n\nĐộ dài cạnh $CD$ là: $25,12:4=6,28$ (cm)\n\nĐáp số: $6,28$ cm",
+  "ghi_chu_nghi": "ĐỀ MƠ HỒ giữa chữ và hình. Hình vẽ: hai đường tròn đầy đủ tâm D và C (bán kính 4 cm), phần gạch chéo là CẢ hình thấu kính giao của hai đường tròn (kéo xuống dưới cạnh DC), phần tô đậm là phần hình chữ nhật nằm ngoài cả hai hình tròn. Hiểu đúng theo hình (gạch chéo = cả thấu kính) thì phương trình diện tích dẫn tới CD khoảng 6,74 cm (cần giải phương trình siêu việt, không giải được bằng kiến thức tiểu học). Tôi giải theo cách hiểu GẠCH CHÉO = phần giao của hai phần tư hình tròn NẰM TRONG hình chữ nhật (nửa trên thấu kính) — cách duy nhất ra số tròn, đúng khuôn bài kinh điển \"hai phần tư hình tròn chồng nhau trong hình chữ nhật\": 4×CD = 2×(1/4 hình tròn), CD = 2×3,14 = 6,28 cm (với π=3,14). Đáp số 6,28 cm là phỏng đoán ý đề; cần đối chiếu đáp án nguồn."
+ },
+ {
+  "ma_nguon": "NTT 2023 · 9",
+  "dap_an": "a) $12$ km/giờ; b) $5,4$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) dùng công thức vận tốc bằng quãng đường chia thời gian (đổi phút ra giờ trước). Ý b) dùng kết quả ý a): cùng đi một quãng đường thì thời gian gấp bao nhiêu lần, vận tốc chỉ bằng bấy nhiêu lần ở chiều ngược lại; khi hai bạn đi ngược chiều gặp nhau thì mỗi giờ họ cùng làm quãng đường giữa hai bạn ngắn lại bằng tổng hai vận tốc.\n\n**Bước 1.** Ý a): đổi $6$ phút ra giờ vì vận tốc tính theo kilômét trên giờ, rồi lấy quãng đường An đã đi chia cho thời gian đó.\n\n**Bước 2.** Ý b): An và Bình cùng đi một quãng đường từ trường đến sân vận động, mà thời gian của An bằng một phân số của thời gian Bình, nên vận tốc của hai bạn tỉ lệ nghịch với thời gian.\n\n**Bước 3.** Thời gian của An nhiều hơn thì An đi chậm hơn; từ đó viết vận tốc của Bình bằng một phân số của vận tốc An (dùng kết quả ý a) rồi tính vận tốc của Bình.\n\n**Bước 4.** Hai bạn xuất phát cùng lúc từ hai đầu quãng đường và đi ngược chiều nhau; đổi $12$ phút ra giờ và tính mỗi giờ hai bạn cùng đi được bao nhiêu kilômét (tổng hai vận tốc).\n\n**Bước 5.** Quãng đường từ trường đến sân vận động chính là quãng đường hai bạn đã đi cho đến khi gặp nhau, bằng tổng hai vận tốc nhân với thời gian gặp nhau.\n\n**Chú ý:** Vận tốc của Bình lớn hơn An vì Bình đi hết quãng đường trong thời gian ngắn hơn, đừng tính ngược lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Đổi: $6$ phút $=0,1$ giờ\n\nVận tốc của bạn An là: $1,2:0,1=12$ (km/giờ)\n\nb) Cùng đi một quãng đường, thời gian của An bằng $\\dfrac{5}{4}$ thời gian của Bình nên vận tốc của An bằng $\\dfrac{4}{5}$ vận tốc của Bình, tức vận tốc của Bình bằng $\\dfrac{5}{4}$ vận tốc của An.\n\nVận tốc của bạn Bình là: $12\\times\\dfrac{5}{4}=15$ (km/giờ)\n\nĐổi: $12$ phút $=0,2$ giờ\n\nTa có sơ đồ:\n\n(An xuất phát từ trường với vận tốc 12 km/giờ, Bình xuất phát từ sân vận động với vận tốc 15 km/giờ, đi ngược chiều và gặp nhau sau 12 phút; quãng đường từ trường đến sân vận động là ? km)\n\nMỗi giờ hai bạn cùng đi được số ki-lô-mét là: $12+15=27$ (km)\n\nQuãng đường từ trường đến sân vận động dài là: $27\\times 0,2=5,4$ (km)\n\nĐáp số: a) $12$ km/giờ; b) $5,4$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Sau 12 phút hai bạn gặp nhau",
+   "diem": [
+    {
+     "ten": "Trường",
+     "x": 0
+    },
+    {
+     "ten": "G",
+     "x": 2.4,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "Sân VĐ",
+     "x": 5.4
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 2.4,
+     "nhan": "An 12 km/giờ"
+    },
+    {
+     "tu": 5.4,
+     "den": 2.4,
+     "nhan": "Bình 15 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 5.4,
+     "nhan": "? km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2023 · 10",
+  "dap_an": "a) $24\\ \\text{cm}^2$; b) $52,8\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) dùng hai tam giác chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Ý b) dùng kết quả ý a): tứ giác $AEGD$ gồm tam giác $AED$ (đã biết) và tam giác $DEG$; để tìm tam giác $DEG$ so sánh hai tam giác chung đáy $EC$ rồi chuyển sang hai tam giác nhỏ $GEB$, $GED$ có chung đáy $GE$ và cùng hai đường cao.\n\n**Bước 1.** Ý a): đường chéo $BD$ chia hình chữ nhật thành hai tam giác bằng nhau, rồi so sánh tam giác $AED$ với tam giác $ABD$ có chung đường cao hạ từ $D$ xuống $AB$ và đáy $AE$ bằng một phần ba đáy $AB$.\n\n**Bước 2.** Ý b): từ diện tích tam giác $ABD$ và $AED$ tìm diện tích tam giác $EBD$; tương tự tìm diện tích tam giác $EBC$ (chung đường cao hạ từ $C$ với tam giác $ABC$) và diện tích tam giác $DEC$ (bằng nửa hình chữ nhật).\n\n**Bước 3.** Hai tam giác $BEC$ và $DEC$ có chung đáy $EC$ nên tỉ số diện tích của chúng bằng tỉ số hai đường cao hạ từ $B$ và từ $D$ xuống $EC$.\n\n**Bước 4.** Điểm $G$ nằm trên $EC$ nên hai tam giác $GEB$ và $GED$ có chung đáy $GE$ và cùng hai đường cao đó; do đó tỉ số diện tích của hai tam giác này bằng tỉ số vừa tìm, mà tổng hai diện tích là diện tích tam giác $EBD$, đây là bài toán tổng – tỉ.\n\n**Bước 5.** Tứ giác $AEGD$ được đường chéo $DE$ chia thành tam giác $AED$ và tam giác $DEG$, nên cộng hai diện tích lại.\n\n**Chú ý:** Không cần biết hình chữ nhật dài rộng bao nhiêu, chỉ cần diện tích $144$ $\\text{cm}^2$ và tỉ số các đoạn trên $AB$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Đường chéo $BD$ chia hình chữ nhật $ABCD$ thành hai tam giác bằng nhau nên diện tích tam giác $ABD$ là: $144:2=72$ ($\\text{cm}^2$)\n\nVì $AB=AE\\times 3$ nên $AE=\\dfrac{1}{3}\\times AB$.\n\nTam giác $AED$ và tam giác $ABD$ có chung đường cao hạ từ $D$ xuống $AB$, suy ra $\\dfrac{S_{AED}}{S_{ABD}}=\\dfrac{AE}{AB}=\\dfrac{1}{3}$\n\nDiện tích tam giác $AED$ là: $72:3=24$ ($\\text{cm}^2$)\n\nb) Diện tích tam giác $EBD$ là: $72-24=48$ ($\\text{cm}^2$)\n\nVì $AE=\\dfrac{1}{3}\\times AB$ nên $EB=\\dfrac{2}{3}\\times AB$.\n\nTam giác $EBC$ và tam giác $ABC$ có chung đường cao hạ từ $C$ xuống $AB$, suy ra $\\dfrac{S_{EBC}}{S_{ABC}}=\\dfrac{EB}{AB}=\\dfrac{2}{3}$\n\nDiện tích tam giác $ABC$ là $144:2=72$ ($\\text{cm}^2$) nên diện tích tam giác $EBC$ là: $72:3\\times 2=48$ ($\\text{cm}^2$)\n\nTam giác $DEC$ có đáy $DC$ và đường cao bằng $AD$ nên diện tích bằng một nửa hình chữ nhật: $144:2=72$ ($\\text{cm}^2$)\n\nTam giác $BEC$ và tam giác $DEC$ có chung đáy $EC$, suy ra $\\dfrac{S_{BEC}}{S_{DEC}}=\\dfrac{48}{72}=\\dfrac{2}{3}$, cũng là tỉ số hai đường cao hạ từ $B$ và từ $D$ xuống $EC$.\n\nTam giác $GEB$ và tam giác $GED$ có chung đáy $GE$, hai đường cao hạ từ $B$ và từ $D$ xuống $GE$ cũng là hai đường cao hạ xuống $EC$ (vì $G$ nằm trên $EC$), suy ra $\\dfrac{S_{GEB}}{S_{GED}}=\\dfrac{2}{3}$\n\nTam giác $EBD$ gồm tam giác $GEB$ và tam giác $GED$ (vì $G$ nằm trên $BD$).\n\nTa có sơ đồ:\n\n(Tam giác GEB 2 phần; tam giác GED 3 phần; tổng 48 cm²)\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nDiện tích tam giác $GED$ là: $48:5\\times 3=28,8$ ($\\text{cm}^2$)\n\nTứ giác $AEGD$ gồm tam giác $AED$ và tam giác $DEG$ nên diện tích tứ giác $AEGD$ là: $24+28,8=52,8$ ($\\text{cm}^2$)\n\nĐáp số: a) $24\\ \\text{cm}^2$; b) $52,8\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "tieu_de": "Tam giác EBD chia thành 2 phần",
+   "gia_tri_phan": 9.6,
+   "hang": [
+    {
+     "nhan": "S GEB",
+     "phan": 2
+    },
+    {
+     "nhan": "S GED",
+     "phan": 3
+    }
+   ],
+   "tong": "48 cm²",
+   "dau_hoi": [
+    "S GED"
+   ]
+  }
+ }
+]

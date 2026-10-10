@@ -1,0 +1,97 @@
+[
+ {
+  "ma_nguon": "NN 2024 · P1.1",
+  "dap_an": "$15$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số \"tuổi em bằng $\\dfrac{2}{3}$ tuổi chị\" nói về HIỆN NAY, còn tổng $25$ tuổi lại là của $5$ năm trước. Mỗi năm mỗi người thêm $1$ tuổi, nên phải đưa tổng số tuổi về hiện nay trước rồi mới chia theo tỉ số.\n\n**Bước 1.** Tính tổng số tuổi của hai chị em hiện nay: từ $5$ năm trước đến nay, mỗi người đều thêm $5$ tuổi nên tổng tăng thêm gấp đôi số đó.\n\n**Bước 2.** Tuổi em bằng $\\dfrac{2}{3}$ tuổi chị nên chia tuổi chị thành $3$ phần bằng nhau thì tuổi em là $2$ phần như thế; từ đó đếm tổng số phần.\n\n**Bước 3.** Tổng số tuổi hiện nay ứng với tổng số phần vừa đếm, nên chia để tìm giá trị của một phần.\n\n**Bước 4.** Nhân giá trị một phần với số phần của em để được tuổi em hiện nay, rồi cộng thêm $1$ năm để trả lời đúng câu hỏi \"năm sau\".\n\n**Chú ý:** Không lấy $25$ làm tổng số tuổi hiện nay; đề hỏi tuổi em NĂM SAU chứ không phải tuổi em hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $5$ năm trước đến nay mỗi người đều thêm $5$ tuổi. Tổng số tuổi của hai chị em hiện nay là: $25+5\\times 2=35$ (tuổi)\n\nTa có sơ đồ:\n\n(Tuổi chị hiện nay 3 phần; tuổi em hiện nay 2 phần; tổng 35 tuổi)\n\nTổng số phần bằng nhau là: $3+2=5$ (phần)\n\nGiá trị một phần là: $35:5=7$ (tuổi)\n\nTuổi em hiện nay là: $7\\times 2=14$ (tuổi)\n\nNăm sau tuổi em là: $14+1=15$ (tuổi)\n\nĐáp số: $15$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hiện nay",
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Tuổi chị",
+     "phan": 3
+    },
+    {
+     "nhan": "Tuổi em",
+     "phan": 2
+    }
+   ],
+   "tong": "35 tuổi",
+   "dau_hoi": [
+    "Tuổi em"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2024 · P1.2",
+  "dap_an": "$56$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần việc còn lại sau $13$ ngày là một khối lượng cố định, dù thêm người hay không. Rút về \"$1$ người làm phần việc đó hết bao nhiêu ngày\", con số này không đổi; sau đó chia cho số người mới thì ra số ngày cần.\n\n**Bước 1.** Tính số ngày còn lại theo kế hoạch ban đầu: đội đã làm một số ngày trong tổng số ngày dự kiến, lúc đó vẫn còn đủ số người ban đầu.\n\n**Bước 2.** Rút về $1$ người: nếu chỉ có $1$ người làm phần việc còn lại thì số ngày phải gấp lên đúng bằng số người ban đầu (ít người hơn thì làm lâu hơn).\n\n**Bước 3.** Tính số người của đội sau khi có thêm người.\n\n**Bước 4.** Chia số ngày của $1$ người cho số người mới, vì nhiều người hơn thì số ngày giảm đi tương ứng; kết quả là số ngày đội còn cần để xong việc.\n\n**Chú ý:** Đề hỏi số ngày cần làm tiếp kể từ lúc có thêm người (sau ngày thứ $13$), không phải tổng số ngày làm cả công việc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu vẫn $42$ người thì số ngày còn lại để làm xong công việc là: $85-13=72$ (ngày)\n\n$1$ người làm xong phần việc còn lại trong số ngày là: $72\\times 42=3024$ (ngày)\n\nSố người của đội sau khi có thêm $12$ người là: $42+12=54$ (người)\n\nSố ngày đội còn cần để hoàn thành công việc là: $3024:54=56$ (ngày)\n\nĐáp số: $56$ ngày",
+  "ghi_chu_nghi": "Hiểu \"cần thêm bao nhiêu ngày\" = số ngày làm tiếp sau ngày thứ 13 (56 ngày). Nếu hiểu là tổng số ngày cả công việc thì là 13 + 56 = 69 ngày."
+ },
+ {
+  "ma_nguon": "NN 2024 · P1.3",
+  "dap_an": "$25,6$ gam",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số gam khí $\\text{O}_2$ điều chế được tỉ lệ thuận với số gam khí $\\text{CO}_2$ (có nhiều gấp mấy lần thì điều chế được nhiều gấp bấy nhiêu lần). Cách làm là rút về đơn vị: tìm xem $1$ gam khí $\\text{CO}_2$ điều chế được bao nhiêu gam khí $\\text{O}_2$.\n\n**Bước 1.** Nhận ra hai đại lượng tỉ lệ thuận với nhau, nên ta rút về đơn vị là $1$ gam khí $\\text{CO}_2$.\n\n**Bước 2.** Lấy số gam khí $\\text{O}_2$ chia cho số gam khí $\\text{CO}_2$ trong trường hợp đầu; phép chia không ra số tròn nên giữ kết quả dưới dạng phân số.\n\n**Bước 3.** Nhân kết quả vừa tìm với số gam khí $\\text{CO}_2$ của trường hợp sau; nhân phân số với số thập phân thì nhân tử số trước rồi mới chia cho mẫu số.\n\n**Chú ý:** Không lấy hiệu hai số gam ($35,2-11$) để cộng thêm vào $8$; hai đại lượng tỉ lệ thuận thì phải nhân hoặc chia chứ không cộng trừ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$1$ gam khí $\\text{CO}_2$ điều chế được số gam khí $\\text{O}_2$ là: $8:11=\\dfrac{8}{11}$ (gam)\n\n$35,2$ gam khí $\\text{CO}_2$ điều chế được số gam khí $\\text{O}_2$ là: $\\dfrac{8}{11}\\times 35,2=\\dfrac{8\\times 35,2}{11}=\\dfrac{281,6}{11}=25,6$ (gam)\n\nĐáp số: $25,6$ gam",
+  "ghi_chu_nghi": "nhiều cách: ① rút về đơn vị ($\\dfrac{8}{11}$ gam, đã chọn theo §2b dòng B) · ② lập tỉ số: $35,2:11=3,2$ (lần) rồi $8\\times 3,2=25,6$ — số đẹp hơn, không có phân số. CEO chốt nếu muốn dùng cách ② cho bài số này."
+ },
+ {
+  "ma_nguon": "NN 2024 · P1.4",
+  "dap_an": "$18$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho cả $5$ và $9$ thì chia hết cho $45$. Vì $A$ chia hết cho $9$ nên $B$ cũng phải chia hết cho $9$; còn điều kiện chia hết cho $5$ chỉ cần nhìn chữ số tận cùng của $A+B$.\n\n**Bước 1.** Tính tổng các chữ số của $A$ (gồm $2024$ chữ số $9$) để biết $A$ có chia hết cho $9$ hay không.\n\n**Bước 2.** $A$ chia hết cho $9$ và $A+B$ chia hết cho $9$ nên $B$ cũng chia hết cho $9$ (hiệu của hai số chia hết cho $9$ thì chia hết cho $9$).\n\n**Bước 3.** $A+B$ chia hết cho $5$ nên tận cùng là $0$ hoặc $5$; $A$ tận cùng là $9$, từ đó tìm chữ số tận cùng của $B$ để cộng với $9$ ra tận cùng $0$ hoặc $5$.\n\n**Bước 4.** Viết các số chia hết cho $9$ theo thứ tự từ bé đến lớn, chọn số đầu tiên có chữ số tận cùng phù hợp rồi nhân các chữ số của nó.\n\n**Chú ý:** $B=0$ không dùng được, vì khi đó $A+B=A$ tận cùng là $9$ nên không chia hết cho $5$.\n\n**Phần 2. Trình bày**\n\nTổng các chữ số của $A$ là $9\\times 2024$, chia hết cho $9$ nên $A$ chia hết cho $9$.\n\n$A+B$ chia hết cho $45$ nên chia hết cho $9$ và chia hết cho $5$. Vì $A$ và $A+B$ cùng chia hết cho $9$ nên $B$ chia hết cho $9$.\n\n$A+B$ chia hết cho $5$ nên chữ số tận cùng của $A+B$ là $0$ hoặc $5$. Chữ số tận cùng của $A$ là $9$ nên chữ số tận cùng của $B$ là $1$ (vì $9+1=10$) hoặc $6$ (vì $9+6=15$).\n\nCác số chia hết cho $9$ từ bé đến lớn là $9;\\ 18;\\ 27;\\ 36;\\ \\ldots$ có chữ số tận cùng lần lượt là $9;\\ 8;\\ 7;\\ 6;\\ \\ldots$ nên số đầu tiên có chữ số tận cùng là $1$ hoặc $6$ là $36$.\n\nVậy $B=36$ và tích các chữ số của $B$ là: $3\\times 6=18$."
+ },
+ {
+  "ma_nguon": "NN 2024 · P1.5",
+  "dap_an": "$112\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích toàn phần của hình ghép bằng tổng diện tích toàn phần của hai hình hộp trừ đi phần bị che khuất. Hai hình hộp dính nhau ở một mặt, mà mặt đó bị che ở CẢ hai hình hộp nên phải trừ hai lần diện tích mặt tiếp xúc.\n\n**Bước 1.** Nhìn hình để xác định cách ghép: hộp thứ nhất nằm bên dưới; hộp thứ hai dựng đứng cao $4$ cm trên mặt trên của hộp thứ nhất, nên đứng trên mặt có hai kích thước là $2$ cm và $4$ cm.\n\n**Bước 2.** Tính diện tích toàn phần của một hình hộp chữ nhật bằng diện tích xung quanh cộng diện tích hai mặt đáy.\n\n**Bước 3.** Hai hình hộp bằng nhau nên diện tích toàn phần của cả hai hộp khi còn rời nhau gấp đôi diện tích toàn phần một hộp.\n\n**Bước 4.** Tính diện tích mặt tiếp xúc rồi trừ đi hai lần, vì mặt này không còn nằm ở bề mặt ngoài của hộp nào nữa.\n\n**Chú ý:** Chỉ trừ một lần mặt tiếp xúc là sai, vì mỗi hộp đều mất đi một mặt bị che.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, hộp thứ hai đứng trên hộp thứ nhất bằng mặt có kích thước $2$ cm $\\times$ $4$ cm.\n\nDiện tích xung quanh của mỗi hình hộp là: $(4+4)\\times 2\\times 2=32$ ($\\text{cm}^2$)\n\nDiện tích hai mặt đáy của mỗi hình hộp là: $4\\times 4\\times 2=32$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của mỗi hình hộp là: $32+32=64$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hai hình hộp khi còn rời nhau là: $64\\times 2=128$ ($\\text{cm}^2$)\n\nDiện tích mặt tiếp xúc của hai hình hộp là: $2\\times 4=8$ ($\\text{cm}^2$)\n\nDiện tích toàn phần của hình đã cho là: $128-8\\times 2=112$ ($\\text{cm}^2$)\n\nĐáp số: $112\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ không nói cách ghép; hiểu theo hình: hộp nằm (đáy 4 × 4, cao 2) ở dưới, hộp đứng (đứng trên mặt 2 × 4, cao 4) đặt trên, sát mép trái, mặt tiếp xúc 2 × 4 = 8 cm². Kiểm bằng cách khác: hình là lăng trụ L (mặt cắt L diện tích 16, chu vi 20, cao 4) ⇒ 2×16 + 20×4 = 112."
+ },
+ {
+  "ma_nguon": "NN 2024 · P2.1",
+  "dap_an": "a) $2$; b) $99\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Cạnh $AC$ bị chia theo tỉ số $AN:NC=2$ và cạnh $BC$ bị chia theo tỉ số $EC:EB=3$; ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Ý a): xét hai cặp tam giác có đáy nằm trên $AC$ và chung đường cao hạ xuống $AC$, là $ABN$ với $CBN$ và $AIN$ với $CIN$; mỗi cặp có diện tích gấp nhau đúng bằng tỉ số $AN:NC$.\n\n**Bước 2.** Tam giác $ABI$ là phần còn lại của $ABN$ sau khi bỏ $AIN$, tam giác $BIC$ là phần còn lại của $CBN$ sau khi bỏ $CIN$; lấy hiệu hai cặp trên để tìm tỉ số $S_{ABI}$ so với $S_{BIC}$.\n\n**Bước 3.** Ý b): từ $S_{EIB}$ đã biết, tìm $S_{EIC}$ nhờ hai tam giác chung đường cao hạ từ $I$ xuống $BC$ và có đáy $EB$, $EC$; cộng lại để được $S_{BIC}$.\n\n**Bước 4.** Dùng kết quả ý a) để đổi từ $S_{BIC}$ sang $S_{ABI}$.\n\n**Bước 5.** Điểm $I$ nằm trên $AE$ nên tam giác $ABE$ được ghép từ hai tam giác $ABI$ và $EIB$; cộng hai diện tích này lại.\n\n**Chú ý:** Ở ý a) chỉ cần so sánh các diện tích với nhau, không cần biết số đo cụ thể; đừng nhầm $ABE$ với $ABC$ khi cộng các tam giác nhỏ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Tam giác $ABN$ và tam giác $CBN$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{ABN}}{S_{CBN}}=\\dfrac{AN}{NC}=2$, nên $S_{ABN}=S_{CBN}\\times 2$.\n\nTam giác $AIN$ và tam giác $CIN$ có chung đường cao hạ từ $I$ xuống $AC$, suy ra $\\dfrac{S_{AIN}}{S_{CIN}}=\\dfrac{AN}{NC}=2$, nên $S_{AIN}=S_{CIN}\\times 2$.\n\n$S_{ABI}=S_{ABN}-S_{AIN}=S_{CBN}\\times 2-S_{CIN}\\times 2=(S_{CBN}-S_{CIN})\\times 2=S_{BIC}\\times 2$\n\nVậy $\\dfrac{S_{ABI}}{S_{BIC}}=2$.\n\nb) Tam giác $EIC$ và tam giác $EIB$ có chung đường cao hạ từ $I$ xuống $BC$, suy ra $\\dfrac{S_{EIC}}{S_{EIB}}=\\dfrac{EC}{EB}=3$.\n\nDiện tích tam giác $EIC$ là: $11\\times 3=33$ ($\\text{cm}^2$)\n\nDiện tích tam giác $BIC$ là: $11+33=44$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ABI$ (theo ý a) là: $44\\times 2=88$ ($\\text{cm}^2$)\n\nDiện tích tam giác $ABE$ là: $88+11=99$ ($\\text{cm}^2$)\n\nĐáp số: a) $2$; b) $99\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình; hiểu N thuộc đoạn AC, E thuộc đoạn BC nên AE và BN cắt nhau tại I nằm trong tam giác. Đề ghi S_EIB = 11 cm² hai lần (ở phần dẫn và ở ý b) — giữ nguyên. Kiểm bằng toạ độ: S_ABE = 9 × S_EIB = 99."
+ },
+ {
+  "ma_nguon": "NN 2024 · P2.2",
+  "dap_an": "a) $11$ giờ; b) $1,4$ giờ (tức $1$ giờ $24$ phút); c) $55$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Đến nơi đúng giờ dự định\" nghĩa là giờ đến vẫn như khi đi suốt quãng đường với vận tốc $35$ km/giờ. Từ đó tính được thời gian thật sự đi trên đường (không kể sửa xe), rồi giải bài giả thiết tạm để tách thời gian đi mỗi vận tốc.\n\n**Bước 1.** Ý a): tính thời gian dự định đi hết quãng đường với vận tốc ban đầu, rồi cộng với giờ xuất phát để biết giờ đến.\n\n**Bước 2.** Ý b): đổi thời gian sửa xe ra giờ và trừ khỏi thời gian dự định để biết chú Hải thật sự chạy trên đường bao lâu.\n\n**Bước 3.** Giả sử trong suốt thời gian chạy đó chú chỉ đi với vận tốc nhỏ; so sánh với quãng đường thật để tìm đoạn đường còn thiếu.\n\n**Bước 4.** Mỗi giờ đổi từ vận tốc nhỏ sang vận tốc lớn thì được thêm một đoạn đường; lấy đoạn thiếu chia cho đoạn thêm này để tìm thời gian đi với vận tốc lớn.\n\n**Bước 5.** Ý c): tìm thời gian đi với vận tốc nhỏ để biết lúc nào xe hỏng, cộng thời gian sửa, rồi tính quãng đường đã đi thêm đến mốc giờ đề hỏi và cộng hai đoạn.\n\n**Chú ý:** Trong lúc sửa xe chú Hải không đi được km nào; chỉ tính quãng đường trong thời gian xe chạy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Chú Hải đi từ nhà đến Hà Nội dài 105 km: đoạn đầu với vận tốc 35 km/giờ, dừng sửa xe 36 phút, đoạn sau với vận tốc 50 km/giờ)\n\na) Thời gian dự định đi hết quãng đường là: $105:35=3$ (giờ)\n\nChú Hải đến nơi lúc: $8+3=11$ (giờ)\n\nb) Đổi: $36$ phút $=0,6$ giờ\n\nThời gian chú Hải chạy trên đường là: $3-0,6=2,4$ (giờ)\n\nGiả sử cả $2,4$ giờ chú đều đi với vận tốc $35$ km/giờ thì đi được: $35\\times 2,4=84$ (km)\n\nQuãng đường còn thiếu là: $105-84=21$ (km)\n\nMỗi giờ đi $50$ km/giờ thay cho $35$ km/giờ thì đi được nhiều hơn: $50-35=15$ (km)\n\nThời gian chú Hải đi với vận tốc $50$ km/giờ là: $21:15=1,4$ (giờ)\n\nĐổi: $1,4$ giờ $=1$ giờ $24$ phút\n\nc) Thời gian chú Hải đi với vận tốc $35$ km/giờ là: $2,4-1,4=1$ (giờ)\n\nQuãng đường đi trước khi hỏng xe là: $35\\times 1=35$ (km)\n\nXe hỏng lúc $9$ giờ, sửa xong lúc: $9$ giờ $+\\ 36$ phút $=9$ giờ $36$ phút\n\nThời gian đi với vận tốc $50$ km/giờ từ $9$ giờ $36$ phút đến $10$ giờ là $24$ phút $=0,4$ giờ\n\nQuãng đường đi trong thời gian đó là: $50\\times 0,4=20$ (km)\n\nLúc $10$ giờ chú Hải đi được: $35+20=55$ (km)\n\nĐáp số: a) $11$ giờ; b) $1,4$ giờ (tức $1$ giờ $24$ phút); c) $55$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0
+    },
+    {
+     "ten": "Hỏng xe",
+     "x": 35,
+     "ghi": "sửa 36 phút"
+    },
+    {
+     "ten": "Hà Nội",
+     "x": 105
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 35,
+     "nhan": "35 km/giờ"
+    },
+    {
+     "tu": 35,
+     "den": 105,
+     "nhan": "50 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 105,
+     "nhan": "105 km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề không nói \"giờ dự định\" là gì; hiểu là giờ đến nếu đi suốt quãng đường với vận tốc 35 km/giờ (105 : 35 = 3 giờ ⇒ 11 giờ). Cách hiểu này cho số đẹp (đi 35 km/giờ đúng 1 giờ, 50 km/giờ đúng 1,4 giờ; thử lại 35 + 70 = 105). Sơ đồ đặt chỗ hỏng xe ở vị trí thật 35 km (suy ra từ lời giải), không ghi nhãn số 35."
+ }
+]

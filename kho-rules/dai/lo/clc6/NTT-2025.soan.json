@@ -1,0 +1,220 @@
+[
+ {
+  "ma_nguon": "NTT 2025 · 1",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hình tròn là $100\\%$ số học sinh toàn trường, nên tỉ số phần trăm của khối 9 bằng $100\\%$ trừ đi phần trăm của ba khối còn lại. Khối 6 không ghi số phần trăm, nhưng có kí hiệu góc vuông ở tâm cho biết nó chiếm đúng một phần tư hình tròn.\n\n**Bước 1.** Đọc biểu đồ: khối 8 chiếm $40\\%$ và khối 7 chiếm $12,5\\%$ là hai số đã ghi sẵn trên hình.\n\n**Bước 2.** Khối 6 là hình quạt có góc ở tâm là góc vuông; bốn góc vuông ghép lại thành cả hình tròn nên khối 6 chiếm một phần tư hình tròn, rồi đổi một phần tư ra số phần trăm.\n\n**Bước 3.** Cộng phần trăm của ba khối 6, 7, 8, rồi lấy $100\\%$ trừ đi tổng đó để được phần trăm của khối 9, sau đó đối chiếu với bốn phương án.\n\n**Chú ý:** Phần trăm của khối 6 phải đọc từ góc vuông trên hình, không đoán bằng mắt.\n\n**Phần 2. Trình bày**\n\nKhối 6 có góc ở tâm là góc vuông nên chiếm một phần tư hình tròn: $1:4=0,25=25\\%$\n\nTổng phần trăm của khối 6, khối 7, khối 8 là: $25\\%+12,5\\%+40\\%=77,5\\%$\n\nTỉ số phần trăm số học sinh khối 9 so với số học sinh toàn trường là: $100\\%-77,5\\%=22,5\\%$\n\nChọn A.",
+  "ghi_chu_nghi": "Hình biểu đồ: khối 6 chỉ có kí hiệu góc vuông, không ghi %; hiểu là 1/4 hình tròn = 25% (khối 9 = 100% − 40% − 12,5% − 25% = 22,5%)."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 2",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mặt có số chấm là số lẻ là mặt $1$ chấm, $3$ chấm, $5$ chấm. Tỉ số của hai số là phép chia số thứ nhất cho số thứ hai, nên viết được thành phân số có tử số là số lần xuất hiện các mặt lẻ, mẫu số là tổng số lần gieo.\n\n**Bước 1.** Nhìn bảng, chọn ra các mặt có số chấm là số lẻ và bỏ qua các mặt có số chấm là số chẵn.\n\n**Bước 2.** Cộng số lần xuất hiện của các mặt lẻ vừa chọn để biết tổng số lần mặt lẻ xuất hiện.\n\n**Bước 3.** Viết tỉ số của số lần mặt lẻ xuất hiện và tổng số lần gieo (đề cho là $20$ lần) thành phân số, rút gọn nếu được rồi đối chiếu với các phương án.\n\n**Chú ý:** Đừng cộng nhầm các mặt $2$, $4$, $6$ chấm là các mặt chẵn.\n\n**Phần 2. Trình bày**\n\nCác mặt có số chấm là số lẻ gồm: $1$ chấm, $3$ chấm, $5$ chấm.\n\nSố lần xuất hiện mặt có số chấm là số lẻ là: $5+3+1=9$ (lần)\n\nTỉ số giữa số lần xuất hiện mặt có số chấm là số lẻ và tổng số lần đã gieo là: $9:20=\\dfrac{9}{20}$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 3",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số $\\dfrac{5}{26}$ và $\\dfrac{6}{25}$ khác mẫu số nên phải quy đồng cả ba phân số về cùng một mẫu số; khi đó so sánh các tử số, và tử số của phân số ở giữa phải nằm giữa hai tử số kia.\n\n**Bước 1.** Tìm mẫu số chung của $26$ và $25$; hai số này không có thừa số chung nên mẫu số chung là tích của chúng.\n\n**Bước 2.** Quy đồng $\\dfrac{5}{26}$ và $\\dfrac{6}{25}$; còn phân số ở giữa có mẫu số $26$ nên khi quy đồng tử số của nó là số cần điền nhân với $25$.\n\n**Bước 3.** Tìm các số nằm giữa hai tử số vừa quy đồng và chia hết cho $25$, rồi chia cho $25$ để được số cần điền, sau đó đối chiếu với các phương án.\n\n**Chú ý:** Đề dùng dấu bé hơn nên không được chọn số làm hai phân số bằng nhau.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{26}=\\dfrac{5\\times 25}{26\\times 25}=\\dfrac{125}{650}$\n\n$\\dfrac{6}{25}=\\dfrac{6\\times 26}{25\\times 26}=\\dfrac{156}{650}$\n\nPhân số ở giữa có tử số là số cần điền nhân với $25$ và mẫu số là $650$, nên số cần điền nhân $25$ phải lớn hơn $125$ và bé hơn $156$.\n\nSố cần điền nhân $25$ chia hết cho $25$, mà giữa $125$ và $156$ chỉ có số $150$ chia hết cho $25$.\n\nSố cần điền là: $150:25=6$\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 4",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $20,26$ nên dùng tính chất nhân một số với một tổng để đưa $20,26$ ra ngoài; trong ngoặc là tổng $42,6+57,4$ có phần thập phân cộng lại ra số tròn.\n\n**Bước 1.** Nhận ra hai tích đều có thừa số $20,26$, đó là dấu hiệu để dùng tính chất nhân một số với một tổng.\n\n**Bước 2.** Đặt thừa số chung $20,26$ ra ngoài và viết tổng của hai thừa số còn lại trong ngoặc.\n\n**Bước 3.** Tính tổng trong ngoặc rồi nhân với kết quả theo quy tắc nhân một số thập phân với $100$ (dịch dấu phẩy sang bên phải hai chữ số), sau đó đối chiếu với các phương án.\n\n**Chú ý:** Không cần nhân từng tích riêng rồi mới cộng, vì các số rất khó tính nhẩm.\n\n**Phần 2. Trình bày**\n\n$20,26\\times 42,6+20,26\\times 57,4$\n\n$=20,26\\times(42,6+57,4)$\n\n$=20,26\\times 100$\n\n$=2026$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 5",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $60$ m$^2$ là phần CÒN LẠI sau khi trồng cây ăn quả, nên nó ứng với phân số \"cả mảnh đất trừ $\\dfrac{3}{5}$ diện tích\". Biết một phân số của mảnh đất là $60$ m$^2$ thì lấy $60$ chia cho phân số đó để tìm cả mảnh đất.\n\n**Bước 1.** Coi cả mảnh đất là $1$ đơn vị, rồi lấy $1$ trừ $\\dfrac{3}{5}$ để biết phần còn lại bằng bao nhiêu phần diện tích mảnh đất.\n\n**Bước 2.** Nhận ra $60$ m$^2$ chính là phần còn lại, nghĩa là $60$ m$^2$ ứng với phân số vừa tìm được của diện tích mảnh đất.\n\n**Bước 3.** Muốn tìm cả mảnh đất, lấy $60$ chia cho phân số đó, rồi đối chiếu với các phương án.\n\n**Chú ý:** $60$ m$^2$ ứng với phần còn lại chứ không ứng với $\\dfrac{3}{5}$ diện tích; chia $60$ cho $\\dfrac{3}{5}$ là chọn nhầm.\n\n**Phần 2. Trình bày**\n\nPhần còn lại bằng: $1-\\dfrac{3}{5}=\\dfrac{2}{5}$ (diện tích mảnh đất)\n\nDiện tích mảnh đất là: $60:\\dfrac{2}{5}=150$ ($\\text{m}^2$)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 6",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cắt bốn hình vuông ở bốn góc rồi gấp các phần nhô ra lên thì tạo thành bốn mặt bên: chiều cao của hộp bằng cạnh hình vuông bị cắt, còn mỗi cạnh đáy của hộp bị bớt đi hai lần cạnh hình vuông (một lần ở mỗi đầu).\n\n**Bước 1.** Xem hình: các hình vuông cạnh $5$ cm bị cắt đi ở bốn góc, phần còn lại gấp lên thành các mặt bên của hộp, nên chiều cao hộp bằng cạnh hình vuông.\n\n**Bước 2.** Tìm chiều dài đáy hộp: chiều dài miếng bìa bớt đi cạnh hình vuông ở cả hai đầu; làm tương tự để tìm chiều rộng đáy.\n\n**Bước 3.** Tính thể tích hình hộp chữ nhật bằng chiều dài nhân chiều rộng nhân chiều cao, rồi đối chiếu với các phương án.\n\n**Chú ý:** Chiều dài và chiều rộng của đáy không còn là $25$ cm và $20$ cm, vì đã bị cắt đi ở các góc.\n\n**Phần 2. Trình bày**\n\nChiều cao của hình hộp chữ nhật bằng cạnh hình vuông bị cắt là $5$ cm.\n\nChiều dài đáy hình hộp là: $25-5\\times 2=15$ (cm)\n\nChiều rộng đáy hình hộp là: $20-5\\times 2=10$ (cm)\n\nThể tích hình hộp chữ nhật là: $15\\times 10\\times 5=750$ ($\\text{cm}^3$)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 7",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, đường kính của mỗi nửa hình tròn nhỏ bằng bán kính của nửa hình tròn lớn; hai nửa hình tròn nhỏ bị cắt đi ghép lại thành một hình tròn có bán kính bằng một nửa đường kính của mỗi nửa.\n\n**Bước 1.** Tìm bán kính của nửa hình tròn lớn từ đường kính $40$ cm; số này chính là đường kính của mỗi nửa hình tròn nhỏ.\n\n**Bước 2.** Tìm bán kính của nửa hình tròn nhỏ bằng một nửa đường kính của nó; hai nửa hình tròn nhỏ ghép lại thành một hình tròn bán kính đó.\n\n**Bước 3.** Tính diện tích hình tròn mới bằng bán kính nhân bán kính nhân $3,14$, rồi đối chiếu với các phương án.\n\n**Chú ý:** Đề hỏi diện tích hình tròn tạo bởi hai nửa hình tròn nhỏ bị cắt, không phải diện tích nửa hình tròn lớn.\n\n**Phần 2. Trình bày**\n\nBán kính của nửa hình tròn lớn là: $40:2=20$ (cm)\n\nĐường kính của mỗi nửa hình tròn nhỏ là $20$ cm nên bán kính của nó là: $20:2=10$ (cm)\n\nHai nửa hình tròn nhỏ ghép lại thành một hình tròn bán kính $10$ cm.\n\nDiện tích hình tròn mới bị cắt là: $10\\times 10\\times 3,14=314$ ($\\text{cm}^2$)\n\nChọn A.",
+  "ghi_chu_nghi": "Đề hỏi \"diện tích của hình tròn mới bị cắt\": hiểu là hình tròn ghép từ 2 nửa hình tròn nhỏ bị cắt đi (r = 10 cm) = 314 cm². Cách hiểu khác (phần tô đậm còn lại = 3,14×20×20:2 − 314) cũng ra 314 cm² nên đáp án A không đổi."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 8",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chữ số hàng chục bằng chữ số hàng đơn vị cộng $4$, mà chữ số hàng chục không thể quá $9$; vì vậy chọn lần lượt chữ số hàng đơn vị rồi suy ra chữ số hàng chục, chữ số hàng đơn vị chỉ nhận được các giá trị nhỏ.\n\n**Bước 1.** Viết quan hệ của hai chữ số: chữ số hàng chục bằng chữ số hàng đơn vị cộng $4$, nên chọn chữ số hàng đơn vị trước rồi suy ra chữ số hàng chục.\n\n**Bước 2.** Chữ số hàng chục tối đa là $9$, nên tìm chữ số hàng đơn vị lớn nhất mà vẫn còn thoả mãn.\n\n**Bước 3.** Liệt kê các số theo chữ số hàng đơn vị từ bé đến lớn rồi đếm số các số, sau đó đối chiếu với các phương án.\n\n**Chú ý:** Chữ số hàng đơn vị có thể bằng $0$, nên đừng bỏ sót trường hợp này.\n\n**Phần 2. Trình bày**\n\nChữ số hàng chục bằng chữ số hàng đơn vị cộng $4$, mà chữ số hàng chục không quá $9$ nên chữ số hàng đơn vị không quá: $9-4=5$\n\nChữ số hàng đơn vị là $0;\\ 1;\\ 2;\\ 3;\\ 4;\\ 5$ thì chữ số hàng chục là $4;\\ 5;\\ 6;\\ 7;\\ 8;\\ 9$, ta được các số: $40;\\ 51;\\ 62;\\ 73;\\ 84;\\ 95$.\n\nCó tất cả $6$ số thoả mãn.\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 9",
+  "dap_an": "$240000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai là $40\\%$ của GIÁ ĐÃ GIẢM LẦN ĐẦU chứ không phải của giá ban đầu, nên không được cộng hai tỉ số $20\\%$ và $40\\%$ lại; phải tính giá sau từng lần giảm, mỗi lần lấy giá ngay trước đó làm mốc.\n\n**Bước 1.** Sau lần giảm đầu, giá áo còn lại bằng $100\\%$ trừ $20\\%$ giá ban đầu; tính xem lúc đó giá áo là bao nhiêu đồng.\n\n**Bước 2.** Ở lần giảm thứ hai, lấy giá vừa tìm làm mốc $100\\%$, nên giá áo còn lại bằng $100\\%$ trừ $40\\%$ của giá đó.\n\n**Bước 3.** Nhân giá sau lần giảm thứ nhất với số phần trăm còn lại của lần giảm thứ hai để được giá chiếc áo sau hai lần giảm.\n\n**Chú ý:** Không lấy giá ban đầu nhân với $100\\%-20\\%-40\\%$, vì hai lần giảm có mốc tính khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá chiếc áo sau lần giảm thứ nhất bằng: $100\\%-20\\%=80\\%$ (giá ban đầu)\n\nGiá chiếc áo sau lần giảm thứ nhất là: $500000\\times 80\\%=400000$ (đồng)\n\nGiá chiếc áo sau lần giảm thứ hai bằng: $100\\%-40\\%=60\\%$ (giá sau lần giảm thứ nhất)\n\nGiá chiếc áo sau $2$ lần giảm là: $400000\\times 60\\%=240000$ (đồng)\n\nĐáp số: $240000$ đồng"
+ },
+ {
+  "ma_nguon": "NTT 2025 · 10",
+  "dap_an": "$80$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe đi ngược chiều, hai xe đi về phía nhau nên đến $9$ giờ, khoảng cách giữa hai xe bằng quãng đường $AB$ trừ đi tổng quãng đường hai xe đã đi. Mỗi xe đã đi từ lúc xuất phát của riêng nó, nên thời gian đi của hai xe khác nhau.\n\n**Bước 1.** Xe khách xuất phát sau xe tải $30$ phút, nên tìm giờ xe khách xuất phát rồi tính thời gian mỗi xe đã đi đến $9$ giờ.\n\n**Bước 2.** Đổi thời gian đi của xe tải ra giờ cho cùng đơn vị với vận tốc tính theo ki-lô-mét trên giờ.\n\n**Bước 3.** Tính quãng đường mỗi xe đã đi bằng vận tốc nhân với thời gian đi của chính xe đó, rồi cộng hai quãng đường lại.\n\n**Bước 4.** Lấy quãng đường $AB$ trừ đi tổng quãng đường hai xe đã đi để được khoảng cách của hai xe lúc $9$ giờ.\n\n**Chú ý:** Hai xe xuất phát ở hai thời điểm khác nhau, không được nhân cả hai vận tốc với cùng một thời gian.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Quãng đường AB dài 200 km; xe tải đi từ A, xe khách đi từ B; lúc 9 giờ hai xe còn cách nhau ? km)\n\nXe khách xuất phát lúc: $7$ giờ $30$ phút $+\\ 30$ phút $=8$ giờ\n\nThời gian xe tải đã đi đến $9$ giờ là: $9$ giờ $-\\ 7$ giờ $30$ phút $=1$ giờ $30$ phút\n\nĐổi: $1$ giờ $30$ phút $=1,5$ giờ\n\nQuãng đường xe tải đã đi là: $40\\times 1,5=60$ (km)\n\nThời gian xe khách đã đi đến $9$ giờ là: $9-8=1$ (giờ)\n\nQuãng đường xe khách đã đi là: $60\\times 1=60$ (km)\n\nLúc $9$ giờ hai xe cách nhau: $200-(60+60)=80$ (km)\n\nĐáp số: $80$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc 9 giờ",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 60,
+     "ghi": "xe tải"
+    },
+    {
+     "ten": "D",
+     "x": 140,
+     "ghi": "xe khách"
+    },
+    {
+     "ten": "B",
+     "x": 200
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 60,
+     "nhan": "Xe tải 40 km/giờ"
+    },
+    {
+     "tu": 200,
+     "den": 140,
+     "nhan": "Xe khách 60 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 200,
+     "nhan": "200 km"
+    },
+    {
+     "tu": 60,
+     "den": 140,
+     "nhan": "? km"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề viết \"hai người đi ngược chiều\" nhưng nội dung là hai xe: hiểu xe tải đi từ A, xe khách đi từ B, hai xe đi về phía nhau; xe khách xuất phát lúc 8 giờ. Lúc 9 giờ chưa gặp nhau (còn cách 80 km)."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 11",
+  "dap_an": "$25$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Số học sinh nam bằng $\\dfrac{4}{5}$ số học sinh nữ\" cho biết nam chiếm $4$ phần và nữ chiếm $5$ phần bằng nhau; đề lại cho tổng số học sinh nên đây là bài tổng – tỉ.\n\n**Bước 1.** Chia số học sinh nữ thành $5$ phần bằng nhau thì số học sinh nam là $4$ phần như thế, vì nam bằng $\\dfrac{4}{5}$ nữ.\n\n**Bước 2.** Tìm tổng số phần bằng nhau của cả lớp; tổng số $45$ học sinh ứng với tổng số phần đó.\n\n**Bước 3.** Chia $45$ cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 4.** Đề hỏi số học sinh nữ, nên nhân giá trị một phần với số phần của nữ.\n\n**Chú ý:** Đề hỏi số học sinh nữ, đừng dừng lại ở số học sinh nam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì số học sinh nam bằng $\\dfrac{4}{5}$ số học sinh nữ nên số học sinh nam là $4$ phần, số học sinh nữ là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Số học sinh nam 4 phần; số học sinh nữ 5 phần; tổng 45 học sinh)\n\nTổng số phần bằng nhau là: $4+5=9$ (phần)\n\nGiá trị của một phần là: $45:9=5$ (học sinh)\n\nSố học sinh nữ là: $5\\times 5=25$ (học sinh)\n\nĐáp số: $25$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Số học sinh nam",
+     "phan": 4
+    },
+    {
+     "nhan": "Số học sinh nữ",
+     "phan": 5
+    }
+   ],
+   "tong": "45 học sinh",
+   "dau_hoi": [
+    "Số học sinh nữ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2025 · 12",
+  "dap_an": "$62\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi cách xếp $15$ khối đều có thể tích bằng nhau, nên ba kích thước của hình hộp chữ nhật là ba số tự nhiên nhân với nhau ra $15$. Chỉ có ít cách tách $15$ thành tích ba số như vậy; tính diện tích toàn phần của từng cách rồi so sánh.\n\n**Bước 1.** Tính thể tích của hình lớn bằng tổng thể tích $15$ hình lập phương nhỏ, rồi nhận ra chiều dài, chiều rộng, chiều cao đều là số tự nhiên có tích bằng thể tích đó.\n\n**Bước 2.** Liệt kê các cách tách thể tích đó thành tích của ba số tự nhiên, bỏ các cách chỉ khác nhau thứ tự.\n\n**Bước 3.** Với mỗi cách, tính diện tích xung quanh rồi cộng với diện tích hai đáy để được diện tích toàn phần.\n\n**Bước 4.** So sánh diện tích toàn phần của các cách xếp để chọn ra giá trị lớn nhất.\n\n**Chú ý:** Cách xếp thành một hàng dài trông \"gầy\" nhưng lại có nhiều mặt ngoài nhất, nên đừng chỉ thử cách xếp gọn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHình lớn xếp từ $15$ hình lập phương nhỏ cạnh $1$ cm nên có thể tích là: $15\\times 1=15$ ($\\text{cm}^3$)\n\nChiều dài, chiều rộng, chiều cao (cm) là ba số tự nhiên nhân với nhau bằng $15$. Vì $15=3\\times 5$ nên chỉ có hai cách: $15;\\ 1;\\ 1$ hoặc $5;\\ 3;\\ 1$.\n\nCách $1$: hình hộp chữ nhật có chiều dài $15$ cm, chiều rộng $1$ cm, chiều cao $1$ cm.\n\nDiện tích xung quanh là: $(15+1)\\times 2\\times 1=32$ ($\\text{cm}^2$)\n\nDiện tích hai đáy là: $15\\times 1\\times 2=30$ ($\\text{cm}^2$)\n\nDiện tích toàn phần là: $32+30=62$ ($\\text{cm}^2$)\n\nCách $2$: hình hộp chữ nhật có chiều dài $5$ cm, chiều rộng $3$ cm, chiều cao $1$ cm.\n\nDiện tích xung quanh là: $(5+3)\\times 2\\times 1=16$ ($\\text{cm}^2$)\n\nDiện tích hai đáy là: $5\\times 3\\times 2=30$ ($\\text{cm}^2$)\n\nDiện tích toàn phần là: $16+30=46$ ($\\text{cm}^2$)\n\nVì $62>46$ nên diện tích toàn phần lớn nhất là $62$ $\\text{cm}^2$.\n\nĐáp số: $62\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Theo luu_y_de: 15 khối không xếp được thành hình lập phương; hiểu \"hình lớn\" là hình hộp chữ nhật xếp từ đủ 15 khối, xét mọi cách xếp (15×1×1 → 62 cm²; 5×3×1 → 46 cm²) và lấy lớn nhất = 62 cm²."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 13",
+  "dap_an": "Lớp 6A: $4$ triệu đồng; lớp 6B: $6$ triệu đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biết trung bình cộng của hai số thì biết tổng của hai số đó (tổng bằng trung bình cộng nhân $2$). Có tổng và có hiệu (lớp 6B hơn lớp 6A $2$ triệu đồng) nên đây là bài tổng – hiệu.\n\n**Bước 1.** Từ trung bình cộng số tiền của hai lớp, tìm tổng số tiền hai lớp bằng cách nhân với số lớp.\n\n**Bước 2.** Nhận ra bài toán cho biết tổng và hiệu: lớp 6B nhiều hơn lớp 6A $2$ triệu đồng; bớt phần hơn đó đi thì hai lớp có số tiền bằng nhau.\n\n**Bước 3.** Tìm số tiền lớp 6A bằng cách lấy tổng trừ đi hiệu rồi chia cho $2$.\n\n**Bước 4.** Tìm số tiền lớp 6B bằng cách lấy số tiền lớp 6A cộng với phần hơn.\n\nThử lại: Thay vào đề: $6-4=2$ (triệu đồng) và $(4+6):2=5$ (triệu đồng) đều khớp với đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tiền hai lớp thu được là: $5\\times 2=10$ (triệu đồng)\n\nTa có sơ đồ:\n\n(Lớp 6A 1 phần; lớp 6B 1 phần và thêm 2 triệu đồng; tổng 10 triệu đồng)\n\nSố tiền lớp 6A nhận được là: $(10-2):2=4$ (triệu đồng)\n\nSố tiền lớp 6B nhận được là: $4+2=6$ (triệu đồng)\n\nĐáp số: Lớp 6A: $4$ triệu đồng; lớp 6B: $6$ triệu đồng",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Lớp 6A",
+     "phan": 1
+    },
+    {
+     "nhan": "Lớp 6B",
+     "phan": 1,
+     "them": "2 triệu"
+    }
+   ],
+   "tong": "10 triệu",
+   "dau_hoi": [
+    "Lớp 6A",
+    "Lớp 6B"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2025 · 14",
+  "dap_an": "$2,4$ giờ (tức $2$ giờ $24$ phút)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai xe cùng xuất phát từ $A$ và cùng đi về $B$ nên quãng đường còn lại của xe máy hơn quãng đường còn lại của ô tô đúng bằng quãng đường ô tô đã đi hơn xe máy. Khi xe máy còn lại gấp đôi ô tô thì phần hơn đó chính là quãng đường còn lại của ô tô; từ đó quãng đường ô tô đã đi cộng với quãng đường ô tô đã đi hơn xe máy bằng cả quãng đường $AB$.\n\n**Bước 1.** Nhận ra mối liên hệ: cùng đi từ $A$ về $B$ thì xe nào còn lại ít hơn là xe đã đi nhiều hơn, và hai chênh lệch này bằng nhau.\n\n**Bước 2.** Khi xe máy còn lại gấp đôi ô tô, chênh lệch đó bằng đúng quãng đường còn lại của ô tô, nên quãng đường ô tô đã đi cộng với quãng đường ô tô đi hơn xe máy bằng $180$ km.\n\n**Bước 3.** Tính xem mỗi giờ ô tô đi hơn xe máy bao nhiêu ki-lô-mét, rồi cộng với quãng đường ô tô đi trong một giờ để biết tổng ấy tăng thêm bao nhiêu ki-lô-mét mỗi giờ.\n\n**Bước 4.** Lấy quãng đường $AB$ chia cho số ki-lô-mét tăng thêm mỗi giờ để tìm thời gian, rồi đổi ra giờ và phút.\n\n**Chú ý:** Quãng đường \"còn lại\" tính tới $B$, không phải quãng đường đã đi; đừng nhầm hai đại lượng này.\n\nThử lại: sau $2,4$ giờ xe máy còn cách $B$: $180-45\\times 2,4=72$ (km), ô tô còn cách $B$: $180-60\\times 2,4=36$ (km); $72=36\\times 2$ nên đúng đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Hai xe cùng đi từ A về B dài 180 km; lúc cần tìm, xe máy còn lại 2 phần, ô tô còn lại 1 phần)\n\nHai xe cùng đi từ $A$ về $B$ nên quãng đường còn lại của xe máy hơn quãng đường còn lại của ô tô đúng bằng quãng đường ô tô đã đi hơn xe máy.\n\nLúc xe máy còn lại gấp đôi ô tô thì phần hơn đó là $1$ phần, bằng quãng đường còn lại của ô tô. Do đó, quãng đường ô tô đã đi cộng với quãng đường ô tô đã đi hơn xe máy bằng $180$ km.\n\nMỗi giờ ô tô đi hơn xe máy là: $60-45=15$ (km)\n\nMỗi giờ, tổng của quãng đường ô tô đã đi và quãng đường ô tô đã đi hơn xe máy tăng thêm: $60+15=75$ (km)\n\nThời gian cần tìm là: $180:75=2,4$ (giờ)\n\nĐổi: $2,4$ giờ $=2$ giờ $24$ phút\n\nĐáp số: $2,4$ giờ ($2$ giờ $24$ phút)",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Lúc xe máy còn lại gấp đôi ô tô",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 108,
+     "ghi": "xe máy"
+    },
+    {
+     "ten": "D",
+     "x": 144,
+     "ghi": "ô tô"
+    },
+    {
+     "ten": "B",
+     "x": 180
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 108,
+     "nhan": "Xe máy 45 km/giờ"
+    },
+    {
+     "tu": 0,
+     "den": 144,
+     "nhan": "Ô tô 60 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 180,
+     "nhan": "180 km"
+    },
+    {
+     "tu": 108,
+     "den": 180,
+     "nhan": "Xe máy còn lại: 2 phần"
+    },
+    {
+     "tu": 144,
+     "den": 180,
+     "nhan": "Ô tô còn lại: 1 phần"
+    }
+   ]
+  },
+  "ghi_chu_nghi": "Đề không nói rõ hai xe xuất phát cùng lúc từ A: hiểu hai xe cùng khởi hành tại A cùng một lúc, cùng đi về B; \"quãng đường còn lại\" = khoảng cách tới B (đáp số 2,4 giờ; lúc đó xe máy còn 72 km, ô tô còn 36 km). Nhiều cách: ① (đã chọn) tổng \"quãng ô tô đã đi + phần ô tô đi hơn xe máy\" = 180 km nên chia 180 : (60+15); ② lập hai số còn lại theo thời gian rồi thử chọn thời gian — CEO chốt cách chính."
+ },
+ {
+  "ma_nguon": "NTT 2025 · 15",
+  "dap_an": "$70\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề không cho độ dài nào nên chỉ làm bằng tỉ số diện tích của các tam giác có chung đường cao. Lấy tam giác nhỏ $FEC$ làm $1$ phần, tính lần lượt số phần của các tam giác còn lại, rồi so với $S_{ACF}=20$ cm$^2$.\n\n**Bước 1.** Nối $B$ với $F$; hai tam giác $FBE$ và $FEC$ có chung đường cao hạ từ $F$ xuống $BC$ mà $BE$ gấp đôi $CE$, từ đó tính số phần của tam giác $FBE$ và tam giác $FBC$.\n\n**Bước 2.** So sánh hai tam giác $ACF$ và $BCF$: hai cặp tam giác có chung đường cao với $AD$ gấp đôi $BD$ đều có tỉ số diện tích là $2$, nên phần diện tích hơn của $ACF$ so với $BCF$ cũng gấp đôi, từ đó tính số phần của tam giác $ACF$.\n\n**Bước 3.** Tìm tỉ số $AF$ và $FE$ bằng hai tam giác $ACF$ và $FEC$ có chung đường cao hạ từ $C$ xuống $AE$, rồi tính số phần của tam giác $ABF$ nhờ chung đường cao hạ từ $B$ xuống $AE$.\n\n**Bước 4.** Cộng số phần của ba tam giác $ABF$, $FBC$, $ACF$ ghép thành tam giác $ABC$, rồi dùng $20$ cm$^2$ ứng với số phần của tam giác $ACF$ để tìm diện tích tam giác $ABC$.\n\n**Chú ý:** Tam giác $ABC$ được chia bởi điểm $F$ thành ba tam giác $ABF$, $FBC$, $ACF$; nhớ cộng đủ cả ba tam giác này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNối $B$ với $F$.\n\nTam giác $FBE$ và tam giác $FEC$ có chung đường cao hạ từ $F$ xuống $BC$, suy ra $\\dfrac{S_{FBE}}{S_{FEC}}=\\dfrac{BE}{CE}=2$\n\nCoi $S_{FEC}$ là $1$ phần thì $S_{FBE}$ là $2$ phần, nên $S_{FBC}$ là: $1+2=3$ (phần)\n\nTam giác $ACD$ và tam giác $BCD$ có chung đường cao hạ từ $C$ xuống $AB$, suy ra $\\dfrac{S_{ACD}}{S_{BCD}}=\\dfrac{AD}{BD}=2$\n\nTam giác $AFD$ và tam giác $BFD$ có chung đường cao hạ từ $F$ xuống $AB$, suy ra $\\dfrac{S_{AFD}}{S_{BFD}}=\\dfrac{AD}{BD}=2$\n\nDo $S_{ACF}=S_{ACD}-S_{AFD}$ và $S_{BCF}=S_{BCD}-S_{BFD}$ nên $S_{ACF}$ gấp $2$ lần $S_{BCF}$, suy ra $S_{ACF}$ là: $3\\times 2=6$ (phần)\n\nTam giác $ACF$ và tam giác $FEC$ có chung đường cao hạ từ $C$ xuống $AE$, suy ra $\\dfrac{AF}{FE}=\\dfrac{S_{ACF}}{S_{FEC}}=\\dfrac{6}{1}$\n\nTam giác $ABF$ và tam giác $FBE$ có chung đường cao hạ từ $B$ xuống $AE$, suy ra $\\dfrac{S_{ABF}}{S_{FBE}}=\\dfrac{AF}{FE}=6$, nên $S_{ABF}$ là: $2\\times 6=12$ (phần)\n\nDiện tích tam giác $ABC$ là: $12+3+6=21$ (phần)\n\nTam giác $ACF$ là $6$ phần ứng với $20$ $\\text{cm}^2$, nên diện tích tam giác $ABC$ là: $20:6\\times 21=70$ ($\\text{cm}^2$)\n\nĐáp số: $70\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình; dựng theo mô tả (D trên AB gần B, E trên BC gần C, F là giao AE và CD nằm trong tam giác). Đáp số 70 cm² (kiểm bằng toạ độ: S_ACF = 2/7 S_ABC)."
+ }
+]

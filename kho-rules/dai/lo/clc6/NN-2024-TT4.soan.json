@@ -1,0 +1,172 @@
+[
+ {
+  "ma_nguon": "NN 2024-TT4 · P1.1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ngày dài $24$ giờ, gồm thời gian đã trôi qua và thời gian còn lại; câu \"đã trôi qua bằng $\\dfrac{3}{5}$ thời gian còn lại\" cho biết tỉ số hai phần ấy, nên đây là bài tổng – tỉ với tổng là $24$ giờ.\n\n**Bước 1.** Nhận ra tổng không đổi: thời gian đã trôi qua cộng thời gian còn lại luôn bằng cả ngày là $24$ giờ.\n\n**Bước 2.** Đổi \"bằng $\\dfrac{3}{5}$\" thành số phần bằng nhau: thời gian còn lại là $5$ phần thì thời gian đã trôi qua là $3$ phần; rồi cộng để biết cả ngày có bao nhiêu phần.\n\n**Bước 3.** Chia $24$ giờ cho tổng số phần để biết mỗi phần là bao nhiêu giờ.\n\n**Bước 4.** Nhân giá trị một phần với số phần của thời gian đã trôi qua, rồi đọc kết quả thành giờ trên đồng hồ $24$ giờ để đối chiếu bốn phương án.\n\n**Chú ý:** Đề hỏi giờ hiện trên đồng hồ chứ không hỏi thời gian còn lại; thời gian đã trôi qua được tính từ lúc đầu ngày.\n\n**Phần 2. Trình bày**\n\nThời gian đã trôi qua bằng $\\dfrac{3}{5}$ thời gian còn lại nên nếu coi thời gian còn lại là $5$ phần thì thời gian đã trôi qua là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Đã trôi qua 3 phần; còn lại 5 phần; cả ngày 24 giờ)\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nGiá trị của một phần là: $24:8=3$ (giờ)\n\nThời gian đã trôi qua trong ngày là: $3\\times 3=9$ (giờ)\n\nVậy lúc đó đồng hồ chỉ $9$ giờ, tức $09:00$.\n\nChọn B.",
+  "so_do_mo_ta": {
+   "tieu_de": "Một ngày 24 giờ",
+   "gia_tri_phan": 3,
+   "hang": [
+    {
+     "nhan": "Đã trôi qua",
+     "phan": 3
+    },
+    {
+     "nhan": "Còn lại",
+     "phan": 5
+    }
+   ],
+   "tong": "24 giờ",
+   "dau_hoi": [
+    "Đã trôi qua"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2024-TT4 · P1.2",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau; diện tích toàn phần gồm $6$ mặt, diện tích xung quanh gồm $4$ mặt, nên hiệu của hai diện tích ấy chính là diện tích $2$ mặt (hai mặt đáy).\n\n**Bước 1.** Nhận ra diện tích toàn phần hơn diện tích xung quanh đúng diện tích hai mặt, nên $72\\ \\text{cm}^2$ là diện tích của hai mặt hình lập phương to.\n\n**Bước 2.** Chia $72$ cho $2$ để biết diện tích một mặt của hình lập phương to.\n\n**Bước 3.** Tìm cạnh của hình lập phương to: đó là số nhân với chính nó thì bằng diện tích một mặt vừa tìm.\n\n**Bước 4.** Tính thể tích hình lập phương to bằng cạnh nhân cạnh nhân cạnh rồi chọn phương án trùng kết quả.\n\n**Chú ý:** Hình vẽ cho thấy mỗi cạnh khối to gồm $2$ hình lập phương nhỏ, nhưng bài chỉ cần cạnh của khối to; thể tích một khối nhỏ là phương án dễ chọn nhầm.\n\n**Phần 2. Trình bày**\n\nDiện tích toàn phần hơn diện tích xung quanh là diện tích hai mặt của hình lập phương to, nên diện tích hai mặt là $72\\ \\text{cm}^2$.\n\nDiện tích một mặt của hình lập phương to là: $72:2=36$ ($\\text{cm}^2$)\n\nVì $6\\times 6=36$ nên cạnh của hình lập phương to là $6$ cm.\n\nThể tích của hình lập phương to là: $6\\times 6\\times 6=216$ ($\\text{cm}^3$)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NN 2024-TT4 · P1.3",
+  "dap_an": "C",
+  "ghi_chu_nghi": "Hình vẽ không đúng tỉ lệ (vd đoạn c vẽ dài hơn đoạn a trong khi tính ra c ngắn hơn) nên so sánh dựa vào diện tích, không đo bằng mắt. Hiểu: nửa trên-phải có 3 tam giác chung đỉnh góc trên bên phải (đáy a; b và c; d và e, diện tích 2 – ? – 9), nửa dưới-trái có 3 tam giác chung đỉnh góc dưới bên trái (đáy a và b; c và d; e, diện tích 5 – ? – 4).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tam giác nhỏ trong hình đều có đáy nằm trên đường chéo và có cùng chiều cao, nên tam giác nào có diện tích lớn hơn thì đáy dài hơn; muốn so sánh các đoạn $a, b, c, d, e$ phải đổi diện tích của từng tam giác thành độ dài đáy.\n\n**Bước 1.** Tính diện tích mỗi nửa hình vuông, rồi từ các diện tích đã cho tìm diện tích tam giác còn thiếu ở giữa của mỗi nửa.\n\n**Bước 2.** Chứng tỏ sáu tam giác có cùng chiều cao: hai nửa hình vuông bằng nhau và chung đáy là đường chéo nên hai góc còn lại của hình vuông cách đường chéo một khoảng bằng nhau.\n\n**Bước 3.** Vì chiều cao bằng nhau nên độ dài đáy tỉ lệ với diện tích; lấy độ dài ứng với $1\\ \\text{cm}^2$ làm một phần rồi ghi số phần của đáy mỗi tam giác (đoạn $a$; đoạn $b$ và $c$; đoạn $d$ và $e$; rồi đoạn $a$ và $b$; đoạn $c$ và $d$; đoạn $e$).\n\n**Bước 4.** Lấy đoạn ghép lớn trừ đoạn nhỏ đã biết để tìm lần lượt từng đoạn $b, c, d$, rồi so sánh năm đoạn để chọn đoạn dài nhất.\n\n**Chú ý:** Hình vẽ không đúng tỉ lệ nên không so sánh bằng mắt, chỉ dựa vào diện tích các tam giác.\n\n**Phần 2. Trình bày**\n\nDiện tích mỗi nửa hình vuông là: $30:2=15$ ($\\text{cm}^2$)\n\nỞ nửa hình vuông phía trên bên phải, ba tam giác chung đỉnh là góc trên bên phải, đáy lần lượt là đoạn $a$, đoạn $b$ và $c$, đoạn $d$ và $e$.\n\nDiện tích tam giác có đáy là $b$ và $c$ là: $15-2-9=4$ ($\\text{cm}^2$)\n\nỞ nửa hình vuông phía dưới bên trái, ba tam giác chung đỉnh là góc dưới bên trái, đáy lần lượt là đoạn $a$ và $b$, đoạn $c$ và $d$, đoạn $e$.\n\nDiện tích tam giác có đáy là $c$ và $d$ là: $15-5-4=6$ ($\\text{cm}^2$)\n\nHai nửa hình vuông bằng nhau và chung đáy là đường chéo nên chiều cao của sáu tam giác bằng nhau, do đó độ dài đáy tỉ lệ với diện tích.\n\nLấy độ dài ứng với $1\\ \\text{cm}^2$ làm một phần thì: đoạn $a$ là $2$ phần; đoạn $b$ và $c$ là $4$ phần; đoạn $d$ và $e$ là $9$ phần; đoạn $a$ và $b$ là $5$ phần; đoạn $c$ và $d$ là $6$ phần; đoạn $e$ là $4$ phần.\n\nĐoạn $b$ dài: $5-2=3$ (phần)\n\nĐoạn $c$ dài: $4-3=1$ (phần)\n\nĐoạn $d$ dài: $6-1=5$ (phần)\n\nThử lại: đoạn $d$ và $e$ dài $5+4=9$ (phần), đúng với số đã tìm.\n\nCác đoạn $a, b, c, d, e$ lần lượt dài $2; 3; 1; 5; 4$ phần, trong đó đoạn $d$ dài nhất.\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NN 2024-TT4 · P1.4",
+  "dap_an": "A",
+  "ghi_chu_nghi": "Nhiều cách: (1) tỉ lệ thuận giữa quãng đường và vận tốc, chia khoảng cách theo tỉ số vận tốc (đã chọn, bám quan hệ gốc); (2) giả sử AB có độ dài cụ thể rồi tính từng bước. Sơ đồ chuyển động dùng AB = 6 đơn vị chỉ để vẽ đúng tỉ lệ (không ghi số trong nhãn).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bạn xuất phát cùng lúc từ $A$ nên trong cùng một thời gian, quãng đường đi được tỉ lệ thuận với vận tốc. Chỗ Dũng đứng khi Tuấn tới $B$ cho biết vận tốc của Tuấn gấp mấy lần vận tốc của Dũng; sau đó hai bạn đi ngược chiều nhau trên đoạn còn lại, ta chia đoạn đó theo tỉ số vận tốc.\n\n**Bước 1.** So sánh quãng đường hai bạn đi được trong cùng thời gian cho đến lúc Tuấn tới $B$, để biết vận tốc của Tuấn gấp mấy lần vận tốc của Dũng.\n\n**Bước 2.** Tính khoảng cách giữa Dũng và $B$ vào lúc Tuấn vừa tới $B$, tính theo quãng đường $AB$.\n\n**Bước 3.** Từ lúc Tuấn quay lại, hai bạn đi ngược chiều và cùng đi cho đến khi gặp nhau, nên quãng đường mỗi bạn đi trong khoảng này cũng tỉ lệ với vận tốc; chia khoảng cách ở bước 2 theo tỉ số ấy để tìm quãng đường Dũng đi thêm.\n\n**Bước 4.** Cộng quãng đường Dũng đã đi lúc Tuấn ở $B$ với quãng đường đi thêm để biết Dũng đi được bao nhiêu phần quãng đường $AB$.\n\n**Chú ý:** Đề hỏi Dũng đi được bao nhiêu phần quãng đường $AB$ tính từ $A$, không phải chỉ đoạn Dũng đi thêm sau khi Tuấn quay lại.\n\n**Phần 2. Trình bày**\n\nCoi cả quãng đường $AB$ là $1$ đơn vị. Cùng một thời gian, Tuấn chạy hết quãng đường $AB$ còn Dũng mới đi đến chính giữa $AB$.\n\nTa có sơ đồ:\n\n(Quãng đường AB; M là điểm chính giữa; Tuấn chạy từ A đến B, Dũng đi từ A đến M; sau đó Tuấn chạy ngược lại từ B, hai bạn gặp nhau tại C)\n\nVận tốc của Tuấn gấp vận tốc của Dũng số lần là: $1:\\dfrac{1}{2}=2$ (lần)\n\nLúc Tuấn tới $B$, Dũng còn cách $B$ là: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$ (quãng đường $AB$)\n\nTừ lúc đó, hai bạn đi ngược chiều nhau và cùng đi trong một thời gian nên quãng đường Tuấn đi gấp $2$ lần quãng đường Dũng đi.\n\nTa có sơ đồ:\n\n(Đoạn từ Dũng đến B: Tuấn đi 2 phần; Dũng đi 1 phần; tổng là nửa quãng đường AB)\n\nTổng số phần bằng nhau là: $2+1=3$ (phần)\n\nQuãng đường Dũng đi thêm là: $\\dfrac{1}{2}:3\\times 1=\\dfrac{1}{6}$ (quãng đường $AB$)\n\nKhi gặp Tuấn, Dũng đã đi được: $\\dfrac{1}{2}+\\dfrac{1}{6}=\\dfrac{2}{3}$ (quãng đường $AB$)\n\nChọn A.",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Tuấn chạy đến B rồi quay lại",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "M",
+      "x": 3,
+      "ghi": "chính giữa"
+     },
+     {
+      "ten": "C",
+      "x": 4,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 6
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 6,
+      "nhan": "Tuấn chạy"
+     },
+     {
+      "tu": 6,
+      "den": 4,
+      "nhan": "Tuấn quay lại"
+     },
+     {
+      "tu": 0,
+      "den": 3,
+      "nhan": "Dũng đi bộ"
+     },
+     {
+      "tu": 3,
+      "den": 4,
+      "nhan": "Dũng đi tiếp"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 6,
+      "nhan": "Cả quãng đường AB"
+     },
+     {
+      "tu": 0,
+      "den": 4,
+      "nhan": "? (Dũng đã đi)"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Đoạn từ Dũng đến B lúc Tuấn ở B",
+    "gia_tri_phan": 1,
+    "hang": [
+     {
+      "nhan": "Tuấn đi",
+      "phan": 2
+     },
+     {
+      "nhan": "Dũng đi",
+      "phan": 1
+     }
+    ],
+    "tong": "Nửa quãng đường AB"
+   }
+  ]
+ },
+ {
+  "ma_nguon": "NN 2024-TT4 · P1.5",
+  "dap_an": "A",
+  "ghi_chu_nghi": "Dùng dấu hiệu chia hết cho 11 (hiệu của tổng chữ số hàng trăm + hàng đơn vị với chữ số hàng chục chia hết cho 11) — có thể vượt chương trình lớp 5. Nhiều cách: liệt kê các số ba chữ số chia hết cho 11 có tổng chữ số 6 (132; 231; 330) rồi chọn số lẻ. Chiều cao 2,31 m khớp thực tế.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện chia hết cho $11$ của số $\\overline{abc}$ được kiểm bằng hiệu giữa tổng các chữ số hàng trăm, hàng đơn vị và chữ số hàng chục; kết hợp với tổng các chữ số bằng $6$ thì tìm ra ngay chữ số hàng chục, rồi dùng điều kiện số lẻ để chọn $a$ và $c$.\n\n**Bước 1.** Viết điều kiện tổng các chữ số bằng $6$ thành một đẳng thức có ba chữ số $a$, $b$, $c$.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho $11$: hiệu giữa $a+c$ và $b$ phải chia hết cho $11$; hai số này đều không vượt quá $6$ nên hiệu của chúng nhỏ hơn $11$, từ đó biết hiệu đó bằng bao nhiêu.\n\n**Bước 3.** Kết hợp hai điều kiện để tìm chữ số hàng chục $b$ và tổng $a+c$.\n\n**Bước 4.** Số $\\overline{abc}$ là số lẻ và $a$ là chữ số hàng trăm khác $0$, nên chọn được $a$ và $c$; cuối cùng thay vào biểu thức cần tính.\n\n**Chú ý:** Chữ số hàng trăm $a$ phải khác $0$, vì chiều cao của người là số lớn hơn $1$ mét.\n\n**Phần 2. Trình bày**\n\nTổng các chữ số của $\\overline{abc}$ là $6$ nên: $a+b+c=6$\n\nSố $\\overline{abc}$ chia hết cho $11$ nên hiệu giữa $a+c$ và $b$ chia hết cho $11$ hoặc bằng $0$.\n\nHai số $a+c$ và $b$ đều không vượt quá $6$ nên hiệu của chúng nhỏ hơn $11$. Vậy hiệu đó bằng $0$, tức là $a+c=b$.\n\nTừ $a+b+c=6$ suy ra $b+b=6$, nên $b=6:2=3$ và $a+c=3$.\n\nSố $\\overline{abc}$ là số lẻ nên $c$ là chữ số lẻ; $a$ khác $0$ nên $c$ không thể bằng $3$, vậy $c=1$ và $a=3-1=2$.\n\nSố $\\overline{abc}$ là $231$, chiều cao của George Muresan là $2,31$ m.\n\nGiá trị của phép tính là: $2\\times 2+3+1\\times 3=10$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NN 2024-TT4 · P2.1",
+  "dap_an": "a) Năm $1995$; b) Năm $2023$",
+  "ghi_chu_nghi": "Ý b) hiểu: \"số năm Việt Nam tham gia\" và \"số năm hiệp hội bắt đầu tổ chức\" đều tính đến cùng một năm cần tìm; hiệu hai số năm luôn bằng khoảng cách từ 1967 đến 1995 (28 năm).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số năm tham gia của mỗi bên được tính từ lúc bắt đầu, nên hiệu giữa số năm ASEAN đã tổ chức và số năm Việt Nam tham gia luôn không đổi (bằng khoảng thời gian từ khi ASEAN thành lập đến khi Việt Nam gia nhập). Ý a) là bài tìm phân số của một số, ý b) dùng kết quả ý a) để đưa về bài hiệu – tỉ.\n\n**Bước 1.** Ý a): tính số năm hiệp hội đã được tổ chức tính đến năm $2021$ bằng cách lấy $2021$ trừ năm thành lập.\n\n**Bước 2.** Số năm Việt Nam tham gia bằng $\\dfrac{13}{27}$ số năm vừa tìm nên lấy số năm đó nhân với $\\dfrac{13}{27}$, rồi lấy $2021$ trừ số năm Việt Nam tham gia để biết năm bắt đầu tham gia.\n\n**Bước 3.** Ý b): dùng kết quả ý a) để tính hiệu giữa số năm ASEAN đã tổ chức và số năm Việt Nam tham gia, tức là số năm từ lúc ASEAN thành lập đến lúc Việt Nam gia nhập; hiệu này không đổi theo thời gian.\n\n**Bước 4.** Số năm Việt Nam tham gia bằng $\\dfrac{1}{2}$ số năm của hiệp hội nên coi là $1$ phần còn số năm của hiệp hội là $2$ phần; hiệu số phần ứng với hiệu ở bước 3 cho biết số năm Việt Nam tham gia, rồi cộng với năm gia nhập để được năm cần tìm.\n\n**Chú ý:** Ý b) hỏi năm (một mốc thời gian) chứ không hỏi số năm tham gia, nên phải cộng thêm vào năm Việt Nam gia nhập.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Tính đến năm $2021$, số năm ASEAN đã được tổ chức là: $2021-1967=54$ (năm)\n\nSố năm Việt Nam tham gia ASEAN là: $54\\times\\dfrac{13}{27}=26$ (năm)\n\nViệt Nam bắt đầu tham gia ASEAN vào năm: $2021-26=1995$\n\nb) Số năm ASEAN đã tổ chức hơn số năm Việt Nam tham gia là: $1995-1967=28$ (năm)\n\nHiệu này không đổi theo thời gian. Khi số năm Việt Nam tham gia bằng $\\dfrac{1}{2}$ số năm của hiệp hội thì số năm Việt Nam tham gia là $1$ phần, số năm của hiệp hội là $2$ phần như thế.\n\nTa có sơ đồ:\n\n(Việt Nam 1 phần; ASEAN 2 phần; hiệu 28 năm)\n\nHiệu số phần bằng nhau là: $2-1=1$ (phần)\n\nSố năm Việt Nam tham gia khi đó là: $28:1\\times 1=28$ (năm)\n\nNăm đó là: $1995+28=2023$\n\nĐáp số: a) Năm $1995$; b) Năm $2023$",
+  "so_do_mo_ta": {
+   "tieu_de": "Số năm tính đến năm cần tìm",
+   "gia_tri_phan": 28,
+   "hang": [
+    {
+     "nhan": "Việt Nam",
+     "phan": 1
+    },
+    {
+     "nhan": "ASEAN",
+     "phan": 2
+    }
+   ],
+   "hieu": "28 năm",
+   "dau_hoi": [
+    "Việt Nam"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NN 2024-TT4 · P2.2",
+  "dap_an": "$4,5$ km/giờ",
+  "ghi_chu_nghi": "Hiểu \"gặp lại nhau\" là lần gặp đầu tiên sau khi xuất phát: cùng chiều thì bố hơn Ánh đúng một vòng, ngược chiều thì hai người cùng chạy hết một vòng. Đơn vị vận tốc chọn km/giờ (4,5 km/giờ = 75 m/phút). Đường chạy là vòng quanh hồ nên dùng sơ đồ tổng – hiệu vận tốc thay cho sơ đồ đường đi.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chạy cùng chiều từ cùng một điểm, người nhanh hơn gặp lại người chậm khi đã hơn đúng một vòng, nên độ dài một vòng chia cho thời gian là hiệu hai vận tốc; chạy ngược chiều thì lúc gặp nhau hai người cùng chạy hết một vòng, nên độ dài một vòng chia cho thời gian là tổng hai vận tốc. Có tổng và hiệu thì tìm được số bé là vận tốc của Ánh.\n\n**Bước 1.** Chạy cùng chiều: sau $40$ phút bố chạy hơn Ánh đúng một vòng; đổi $40$ phút sang giờ rồi lấy độ dài một vòng chia cho thời gian để tìm hiệu hai vận tốc.\n\n**Bước 2.** Chạy ngược chiều: sau $10$ phút hai người cùng chạy hết một vòng; đổi $10$ phút sang giờ rồi lấy độ dài một vòng chia cho thời gian để tìm tổng hai vận tốc.\n\n**Bước 3.** Có tổng và hiệu hai vận tốc, vẽ sơ đồ rồi lấy tổng trừ hiệu để được hai lần vận tốc của người chạy chậm hơn, từ đó tìm vận tốc của Ánh.\n\n**Chú ý:** Ánh chạy chậm hơn nên vận tốc của Ánh là số bé; phải đổi phút ra giờ trước khi chia để vận tốc tính theo km/giờ.\n\nThử lại: tìm vận tốc của bố, rồi kiểm tra lại cả hai điều kiện cùng chiều và ngược chiều của đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $40$ phút $=\\dfrac{2}{3}$ giờ; $10$ phút $=\\dfrac{1}{6}$ giờ\n\nChạy cùng chiều, sau $40$ phút bố hơn Ánh đúng một vòng nên hiệu hai vận tốc là: $2:\\dfrac{2}{3}=3$ (km/giờ)\n\nChạy ngược chiều, sau $10$ phút hai người cùng chạy hết một vòng nên tổng hai vận tốc là: $2:\\dfrac{1}{6}=12$ (km/giờ)\n\nTa có sơ đồ:\n\n(Vận tốc của Ánh 1 phần; vận tốc của bố 1 phần và thêm 3 km/giờ; tổng 12 km/giờ)\n\nVận tốc chạy của Ánh là: $(12-3):2=4,5$ (km/giờ)\n\nĐáp số: $4,5$ km/giờ",
+  "so_do_mo_ta": {
+   "tieu_de": "Vận tốc của hai bố con",
+   "gia_tri_phan": 4.5,
+   "hang": [
+    {
+     "nhan": "Ánh",
+     "phan": 1
+    },
+    {
+     "nhan": "Bố",
+     "phan": 1,
+     "them": "3 km/giờ"
+    }
+   ],
+   "tong": "12 km/giờ",
+   "dau_hoi": [
+    "Ánh"
+   ]
+  }
+ }
+]

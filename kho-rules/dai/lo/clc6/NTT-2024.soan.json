@@ -1,0 +1,192 @@
+[
+ {
+  "ma_nguon": "NTT 2024 · 1",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $17,2$, còn hai thừa số kia là $95$ và $5$ cộng lại ra một số tròn trăm, nên dùng tính chất nhân một số với một tổng thay vì tính từng tích.\n\n**Bước 1.** Nhìn hai tích thấy cùng có thừa số $17,2$; đó là dấu hiệu để đặt thừa số chung ra ngoài ngoặc, vì nhân từng tích với số thập phân vừa dài vừa dễ sai.\n\n**Bước 2.** Viết lại thành $17,2$ nhân với tổng của hai thừa số còn lại, rồi cộng hai thừa số đó trong ngoặc trước vì chúng cộng lại thành số tròn.\n\n**Bước 3.** Nhân $17,2$ với số tròn vừa tìm bằng cách dịch dấu phẩy sang bên phải, rồi đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** Hai phương án $172$ và $1720$ chỉ khác nhau một chữ số $0$, nên phải đếm kĩ khi dịch dấu phẩy.\n\n**Phần 2. Trình bày**\n\n$17,2\\times 95+17,2\\times 5$\n\n$=17,2\\times(95+5)$\n\n$=17,2\\times 100$\n\n$=1720$\n\nChọn A."
+ },
+ {
+  "ma_nguon": "NTT 2024 · 2",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tỉ số phần trăm của hai số là thương của hai số đó nhân với $100$; ở đây lấy số sản phẩm bị lỗi chia cho số sản phẩm đã kiểm tra.\n\n**Bước 1.** Xác định số bị chia và số chia: đề hỏi tỉ số phần trăm của số sản phẩm bị lỗi và số sản phẩm đã kiểm tra, nên số bị chia là số sản phẩm bị lỗi.\n\n**Bước 2.** Chia số sản phẩm bị lỗi cho số sản phẩm đã kiểm tra để được một số thập phân.\n\n**Bước 3.** Nhân thương vừa tìm với $100$ bằng cách dịch dấu phẩy sang phải hai hàng rồi viết thêm kí hiệu phần trăm, sau đó chọn phương án trùng.\n\n**Chú ý:** Số sản phẩm đã kiểm tra là $1000$ chứ không phải $100$; đừng viết thẳng số sản phẩm lỗi kèm dấu phần trăm.\n\n**Phần 2. Trình bày**\n\nTỉ số phần trăm của số sản phẩm bị lỗi và số sản phẩm đã kiểm tra là:\n\n$8:1000=0,008=0,8\\%$\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2024 · 3",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"$\\dfrac{1}{2}$ số thí sinh nam bằng số thí sinh nữ\" nghĩa là nếu số nữ là $1$ phần thì số nam là $2$ phần; vậy đây là bài tổng – tỉ có tổng là $24$ thí sinh.\n\n**Bước 1.** Đọc kĩ câu \"$\\dfrac{1}{2}$ số thí sinh nam bằng số thí sinh nữ\": chia số nam thành $2$ phần bằng nhau thì một phần đó chính là số nữ.\n\n**Bước 2.** Nhờ vậy số nữ là $1$ phần, số nam là $2$ phần, hai số này cộng lại là $24$ thí sinh; đếm tổng số phần bằng nhau.\n\n**Bước 3.** Chia $24$ cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 4.** Đề hỏi số thí sinh nam nên lấy giá trị một phần nhân với số phần của nam, rồi chọn phương án trùng.\n\n**Chú ý:** Đừng hiểu nhầm số nam là $\\dfrac{1}{2}$ của cả phòng thi; phân số $\\dfrac{1}{2}$ ở đây là phân số của số nam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $\\dfrac{1}{2}$ số thí sinh nam bằng số thí sinh nữ nên số thí sinh nam là $2$ phần, số thí sinh nữ là $1$ phần như thế.\n\nTa có sơ đồ:\n\n(Số thí sinh nữ 1 phần; số thí sinh nam 2 phần; tổng 24 thí sinh)\n\nTổng số phần bằng nhau là: $2+1=3$ (phần)\n\nSố thí sinh nam là: $24:3\\times 2=16$ (thí sinh)\n\nChọn B.",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Số thí sinh nữ",
+     "phan": 1
+    },
+    {
+     "nhan": "Số thí sinh nam",
+     "phan": 2
+    }
+   ],
+   "tong": "24 thí sinh",
+   "dau_hoi": [
+    "Số thí sinh nam"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2024 · 4",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hình tròn là $100\\%$ số bóng; biết ba phần đã ghi phần trăm thì phần còn lại là bóng màu đỏ, rồi lấy tỉ số phần trăm đó của $2000$ quả.\n\n**Bước 1.** Quan sát biểu đồ hình tròn: các phần xanh, vàng và \"các màu còn lại\" đã ghi số phần trăm, còn phần màu đỏ không ghi số.\n\n**Bước 2.** Cộng ba tỉ số phần trăm đã biết, rồi lấy $100\\%$ trừ đi tổng đó để tìm tỉ số phần trăm của bóng màu đỏ.\n\n**Bước 3.** Tìm số bóng màu đỏ bằng cách lấy $2000$ nhân với tỉ số phần trăm vừa tìm, rồi chọn phương án trùng.\n\n**Chú ý:** \"Các màu còn lại\" là một nhóm riêng không có màu đỏ; đừng lấy số phần trăm của nhóm đó làm số bóng đỏ.\n\n**Phần 2. Trình bày**\n\nTheo biểu đồ, cả hình tròn là $100\\%$ số bóng; phần màu xanh là $40\\%$, màu vàng là $15\\%$, các màu còn lại là $25\\%$.\n\nBa phần đã biết chiếm: $40\\%+15\\%+25\\%=80\\%$\n\nSố bóng màu đỏ chiếm: $100\\%-80\\%=20\\%$ (tổng số bóng)\n\nSố bóng màu đỏ là: $2000\\times 20\\%=400$ (quả)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "NTT 2024 · 5",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lít nước cần bơm thêm bằng sức chứa của bể trừ số nước đang có; sức chứa chính là thể tích bể, nên phải tính thể tích rồi đổi ra lít.\n\n**Bước 1.** Tìm chiều cao của bể: chiều cao bằng $\\dfrac{1}{2}$ chiều dài, nên lấy chiều dài (tính bằng mét) nhân với $\\dfrac{1}{2}$.\n\n**Bước 2.** Tính thể tích bể bằng chiều dài nhân chiều rộng nhân chiều cao; đó là sức chứa của bể.\n\n**Bước 3.** Đổi thể tích sang lít, nhớ rằng $1\\ \\text{m}^3=1000\\ \\text{dm}^3$ và $1\\ \\text{dm}^3$ bằng $1$ lít.\n\n**Bước 4.** Lấy sức chứa của bể trừ số lít nước hiện có để được số lít cần bơm thêm, rồi chọn phương án trùng.\n\n**Chú ý:** Phải đổi đơn vị trước khi trừ; không lấy $1100$ lít trừ trực tiếp cho thể tích đang tính bằng mét khối.\n\n**Phần 2. Trình bày**\n\nChiều cao của bể là: $2\\times\\dfrac{1}{2}=1$ (m)\n\nThể tích của bể là: $2\\times 1\\times 1=2$ ($\\text{m}^3$)\n\nĐổi: $2\\ \\text{m}^3=2000\\ \\text{dm}^3=2000$ lít\n\nSố lít nước cần bơm thêm là: $2000-1100=900$ (lít)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "NTT 2024 · 6",
+  "dap_an": "B",
+  "ghi_chu_nghi": "Đề không nêu giá trị của số pi: dùng 3,14 (đúng với phương án B). Hiểu hình trái tim = hình vuông + hai nửa hình tròn nằm NGOÀI hình vuông (nửa còn lại của mỗi đường tròn nằm trong hình vuông, nét đứt trên hình); hai nửa ngoài không chồng nhau, ghép thành 1 hình tròn bán kính 10 cm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình trái tim gồm hình vuông và hai nửa hình tròn nằm ngoài hình vuông; hai nửa hình tròn bằng nhau ghép lại thành đúng một hình tròn có đường kính bằng cạnh hình vuông.\n\n**Bước 1.** Nhìn hình vẽ: mỗi đường tròn có đường kính là một cạnh hình vuông, nửa nằm trong hình vuông đã thuộc hình vuông rồi, nên chỉ cần thêm nửa nằm ngoài.\n\n**Bước 2.** Tính diện tích hình vuông bằng cạnh nhân cạnh.\n\n**Bước 3.** Tìm bán kính bằng nửa đường kính, rồi tính diện tích một hình tròn với số pi bằng $3,14$; hai nửa hình tròn ngoài ghép lại đúng bằng một hình tròn như thế.\n\n**Bước 4.** Cộng diện tích hình vuông với diện tích hình tròn để được diện tích hình trái tim, rồi chọn phương án trùng.\n\n**Chú ý:** Cạnh $20$ cm là đường kính chứ không phải bán kính; nếu lấy $20$ làm bán kính sẽ ra một số lớn hơn nhiều.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, hình trái tim gồm hình vuông cạnh $20$ cm và hai nửa hình tròn nằm ngoài hình vuông.\n\nDiện tích hình vuông là: $20\\times 20=400$ ($\\text{cm}^2$)\n\nBán kính mỗi đường tròn là: $20:2=10$ (cm)\n\nHai nửa hình tròn ghép lại thành một hình tròn bán kính $10$ cm, có diện tích là: $10\\times 10\\times 3,14=314$ ($\\text{cm}^2$)\n\nDiện tích hình trái tim là: $400+314=714$ ($\\text{cm}^2$)\n\nChọn B."
+ },
+ {
+  "ma_nguon": "NTT 2024 · 7",
+  "dap_an": "$8$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là bài tổng – hiệu: biết tổng số tuổi hai anh em và tuổi anh hơn tuổi em bao nhiêu; nếu bớt phần anh hơn đi thì hai anh em có số tuổi bằng nhau.\n\n**Bước 1.** Nhận ra đề cho tổng số tuổi và hiệu số tuổi của hai anh em, nên đây là dạng tổng – hiệu và vẽ sơ đồ đoạn thẳng.\n\n**Bước 2.** Vẽ đoạn tuổi em là một đoạn, đoạn tuổi anh dài hơn đoạn của em đúng phần hơn; bớt phần dài hơn đó đi thì còn hai đoạn bằng nhau.\n\n**Bước 3.** Tính tổng số tuổi sau khi bớt phần anh hơn, rồi chia đôi để được số tuổi của em.\n\n**Chú ý:** Đề hỏi tuổi em chứ không hỏi tuổi anh; nếu cộng thêm phần hơn vào sẽ ra tuổi anh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Tuổi em 1 đoạn; tuổi anh 1 đoạn và 4 tuổi; tổng 20 tuổi)\n\nTuổi của em hiện nay là: $(20-4):2=8$ (tuổi)\n\nĐáp số: $8$ tuổi",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 8,
+   "hang": [
+    {
+     "nhan": "Tuổi em",
+     "phan": 1
+    },
+    {
+     "nhan": "Tuổi anh",
+     "phan": 1,
+     "them": "4 tuổi"
+    }
+   ],
+   "tong": "20 tuổi",
+   "dau_hoi": [
+    "Tuổi em"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2024 · 8",
+  "dap_an": "$30$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, số người làm càng ít thì số ngày càng nhiều nên số người và số ngày là hai đại lượng tỉ lệ nghịch; ta rút về một người làm một mình rồi chia cho số người mới.\n\n**Bước 1.** Nhận ra công việc giữ nguyên và năng suất mỗi người như nhau, nên số người giảm thì số ngày tăng lên.\n\n**Bước 2.** Rút về đơn vị: tìm số ngày để một người làm xong công việc bằng cách nhân số người lúc đầu với số ngày đã cho.\n\n**Bước 3.** Lấy số ngày một người làm một mình chia cho số người của đội mới để tìm số ngày cần.\n\nThử lại: số người ít hơn nên số ngày phải nhiều hơn $20$ ngày; đáp số tìm được cần thoả điều đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ngày để $1$ người làm xong công việc là: $20\\times 15=300$ (ngày)\n\nSố ngày để $10$ người làm xong công việc là: $300:10=30$ (ngày)\n\nĐáp số: $30$ ngày"
+ },
+ {
+  "ma_nguon": "NTT 2024 · 9",
+  "dap_an": "$20$ km",
+  "ghi_chu_nghi": "nhiều cách: (1) quãng đường đi = về nên vận tốc và thời gian tỉ lệ nghịch (50:40=5:4 ⇒ thời gian đi : về = 4:5), chia 54 phút theo tỉ số — ĐÃ CHỌN, đúng khuôn CĐ28 của sách; (2) rút về 1 km: đi 1 km hết 1/50 giờ, về 1 km hết 1/40 giờ, cả đi lẫn về 9/200 giờ; 54 phút = 0,9 giờ ứng với 0,9 : 9/200 = 20 km. Hiểu đề: 3 giờ hoạt động là thời gian đứng tại khu dã ngoại (ô tô không chạy); thời gian chạy xe = 3 giờ 54 phút − 3 giờ = 54 phút.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường đi và về bằng nhau nên vận tốc và thời gian tỉ lệ nghịch; trước hết phải bỏ $3$ giờ nghỉ ra khỏi tổng thời gian để biết thời gian ô tô thực sự chạy, rồi chia thời gian đó theo tỉ số.\n\n**Bước 1.** Tính tổng thời gian từ lúc xuất phát đến lúc về tới trường, rồi trừ đi $3$ giờ học sinh hoạt động vì lúc đó ô tô đứng yên.\n\n**Bước 2.** Lập tỉ số hai vận tốc lúc đi và lúc về; cùng một quãng đường nên thời gian đi và thời gian về có tỉ số ngược lại (vận tốc lớn hơn thì đi mất ít thời gian hơn).\n\n**Bước 3.** Chia thời gian ô tô chạy theo tỉ số thời gian (bài tổng – tỉ) để tìm thời gian lúc đi.\n\n**Bước 4.** Đổi thời gian đi ra giờ, rồi lấy vận tốc lúc đi nhân với thời gian đi để được quãng đường.\n\nThử lại: tính quãng đường theo lượt về (vận tốc lúc về nhân thời gian về) phải ra cùng kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Từ trường A đến khu dã ngoại B đi với vận tốc 50 km/giờ, từ B về A với vận tốc 40 km/giờ; quãng đường đi bằng quãng đường về)\n\nThời gian từ lúc xuất phát đến lúc về tới trường là: $10$ giờ $24$ phút $-\\ 6$ giờ $30$ phút $=3$ giờ $54$ phút\n\nThời gian ô tô chạy trên đường (không kể $3$ giờ nghỉ) là: $3$ giờ $54$ phút $-\\ 3$ giờ $=54$ phút\n\nTỉ số vận tốc lúc đi và lúc về là: $50:40=\\dfrac{5}{4}$\n\nCùng một quãng đường, vận tốc và thời gian tỉ lệ nghịch nên thời gian đi bằng $\\dfrac{4}{5}$ thời gian về.\n\nTa có sơ đồ:\n\n(Thời gian đi 4 phần; thời gian về 5 phần; tổng 54 phút)\n\nTổng số phần bằng nhau là: $4+5=9$ (phần)\n\nGiá trị của một phần là: $54:9=6$ (phút)\n\nThời gian ô tô đi từ trường đến khu dã ngoại là: $6\\times 4=24$ (phút)\n\nĐổi: $24$ phút $=24:60=0,4$ giờ\n\nQuãng đường từ trường đến khu dã ngoại là: $50\\times 0,4=20$ (km)\n\nĐáp số: $20$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Đi và về cùng một quãng đường",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0,
+      "ghi": "trường"
+     },
+     {
+      "ten": "B",
+      "x": 20,
+      "ghi": "khu dã ngoại"
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 20,
+      "nhan": "Đi: 50 km/giờ"
+     },
+     {
+      "tu": 20,
+      "den": 0,
+      "nhan": "Về: 40 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 20,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian ô tô chạy",
+    "gia_tri_phan": 6,
+    "hang": [
+     {
+      "nhan": "Thời gian đi",
+      "phan": 4
+     },
+     {
+      "nhan": "Thời gian về",
+      "phan": 5
+     }
+    ],
+    "tong": "54 phút",
+    "dau_hoi": [
+     "Thời gian đi"
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "NTT 2024 · 10",
+  "dap_an": "$56\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đọc từ hình (lưới 12 ô: hàng 1 có 2 ô, hàng 2 có 4 ô, hàng 3 và 4 mỗi hàng 3 ô): ba đỉnh tam giác tô đậm là đỉnh trên (đường kẻ dọc thứ hai từ trái, mép trên), đỉnh trái (đường kẻ ngang thứ hai từ trên, mép trái), đỉnh phải-dưới (góc dưới phải). Hình vuông bao 4×4 ô là đường kẻ phụ (4 ô thiếu không vẽ trên hình, không ảnh hưởng). nhiều cách: ngoài cách trừ ba tam giác vuông (đã chọn) còn cách chia tam giác thành hai phần bằng đường chia theo lưới; kết quả 3,5 ô = 56 cm².",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác tô đậm nằm lệch trên lưới ô vuông nên không tính trực tiếp được; ta kẻ hình vuông bao quanh ba đỉnh của nó rồi lấy diện tích hình vuông trừ đi diện tích ba tam giác vuông ở ngoài.\n\n**Bước 1.** Tìm cạnh của một ô vuông nhỏ từ diện tích $16\\ \\text{cm}^2$ (cạnh nhân cạnh), để đổi số ô trên lưới ra xăng-ti-mét.\n\n**Bước 2.** Quan sát ba đỉnh của tam giác tô đậm trên lưới, kẻ hình vuông nhỏ nhất bao hết tam giác rồi tính diện tích hình vuông này.\n\n**Bước 3.** Phần hình vuông nằm ngoài tam giác tô đậm gồm ba tam giác vuông; đếm số ô trên hai cạnh góc vuông của từng tam giác, đổi ra xăng-ti-mét rồi tính diện tích.\n\n**Bước 4.** Lấy diện tích hình vuông bao trừ tổng diện tích ba tam giác vuông để được diện tích phần tô đậm.\n\n**Chú ý:** Hình chỉ vẽ $12$ ô nên một phần hình vuông bao không có đường kẻ; đó chỉ là đường kẻ phụ và không làm đổi kết quả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $4\\times 4=16$ nên cạnh của mỗi hình vuông nhỏ là $4$ cm.\n\nTheo hình vẽ, kẻ thêm hình vuông lớn bao quanh tam giác tô đậm, cạnh bằng $4$ cạnh ô nhỏ: $4\\times 4=16$ (cm)\n\nDiện tích hình vuông lớn là: $16\\times 16=256$ ($\\text{cm}^2$)\n\nTam giác vuông ở góc trên bên trái có hai cạnh góc vuông đều bằng $1$ cạnh ô nhỏ, diện tích là: $4\\times 4:2=8$ ($\\text{cm}^2$)\n\nHai tam giác vuông còn lại có một cạnh góc vuông bằng $3$ cạnh ô nhỏ là: $4\\times 3=12$ (cm)\n\nCạnh góc vuông kia của hai tam giác đó là cạnh hình vuông lớn, bằng $16$ cm.\n\nDiện tích mỗi tam giác vuông đó là: $12\\times 16:2=96$ ($\\text{cm}^2$)\n\nDiện tích phần tô màu đậm là: $256-8-96-96=56$ ($\\text{cm}^2$)\n\nĐáp số: $56\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "NTT 2024 · 11",
+  "dap_an": "a) $20$ học sinh; b) $5$ học sinh",
+  "ghi_chu_nghi": "nhiều cách ý b): (1) hiệu nữ − nam không đổi (10 học sinh), nữ sau = 140% = 7/5 nam sau ⇒ nam 5 phần, nữ 7 phần, 1 phần = 10:2 = 5 — ĐÃ CHỌN (có sơ đồ hiệu–tỉ); (2) hiệu 10 ứng với 140% − 100% = 40% số nam sau ⇒ nam sau = 10 : 40% = 25, nữ sau = 25 × 140% = 35. Cả hai ra 5.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) là bài \"tìm một số biết $60\\%$ của nó là $30$\"; ý b) số học sinh nam và nữ cùng tăng thêm như nhau nên hiệu số học sinh nữ và nam không đổi, đó là chìa khoá của bài hiệu – tỉ.\n\n**Bước 1.** Ý a): $30$ học sinh nữ ứng với $60\\%$ tổng số học sinh, nên lấy $30$ chia cho $60\\%$ để biết tổng số học sinh, rồi trừ đi số nữ để tìm số nam.\n\n**Bước 2.** Ý b): tìm hiệu số học sinh nữ hơn nam lúc đầu từ kết quả ý a); vì số nam và số nữ chuyển đến như nhau nên hiệu này không thay đổi.\n\n**Bước 3.** Đổi $140\\%$ ra phân số để biết sau khi chuyển đến số nữ bằng mấy phần số nam, từ đó vẽ sơ đồ hiệu – tỉ.\n\n**Bước 4.** Tìm số học sinh nữ sau khi chuyển đến theo bài hiệu – tỉ: chia hiệu cho hiệu số phần rồi nhân với số phần của nữ.\n\n**Bước 5.** Lấy số học sinh nữ lúc sau trừ số học sinh nữ lúc đầu để được số học sinh nữ đã chuyển đến.\n\n**Chú ý:** Đề hỏi số học sinh nữ chuyển đến chứ không hỏi số nữ lúc sau; đừng dừng lại ở bước tìm số nữ lúc sau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Tổng số học sinh của câu lạc bộ lúc đầu là: $30:60\\%=50$ (học sinh)\n\nSố học sinh nam của câu lạc bộ là: $50-30=20$ (học sinh)\n\nb) Lúc đầu số học sinh nữ nhiều hơn số học sinh nam là: $30-20=10$ (học sinh)\n\nSố học sinh nam và nữ chuyển đến như nhau nên hiệu số học sinh nữ và nam không đổi, sau khi chuyển đến số nữ vẫn nhiều hơn số nam $10$ học sinh.\n\nĐổi: $140\\%=\\dfrac{140}{100}=\\dfrac{7}{5}$\n\nVậy sau khi chuyển đến, số học sinh nữ bằng $\\dfrac{7}{5}$ số học sinh nam: số nam là $5$ phần, số nữ là $7$ phần như thế.\n\nTa có sơ đồ:\n\n(Số học sinh nam 5 phần; số học sinh nữ 7 phần; hiệu 10 học sinh)\n\nHiệu số phần bằng nhau là: $7-5=2$ (phần)\n\nGiá trị của một phần là: $10:2=5$ (học sinh)\n\nSố học sinh nữ sau khi chuyển đến là: $5\\times 7=35$ (học sinh)\n\nSố học sinh nữ đã chuyển đến là: $35-30=5$ (học sinh)\n\nĐáp số: a) $20$ học sinh; b) $5$ học sinh",
+  "so_do_mo_ta": {
+   "tieu_de": "Sau khi chuyển đến",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Số học sinh nam",
+     "phan": 5
+    },
+    {
+     "nhan": "Số học sinh nữ",
+     "phan": 7
+    }
+   ],
+   "hieu": "10 học sinh",
+   "dau_hoi": [
+    "Số học sinh nữ"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2024 · 12",
+  "dap_an": "a) $180\\ \\text{cm}^2$; b) $4\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề đánh số ý là 1. và 2.; Phần 2 ghi 1) 2) theo đề, còn dap_an ghi a) b) theo khuôn kho — ghép 1)=a), 2)=b). nhiều cách ý 2: có thể tìm DP = DC/5 trước rồi tính S_DNP = S_ADC/30 (tọa độ cho cùng 4 cm²); chọn cách không cần tìm DP (so sánh hai cặp tam giác cùng tỉ số DP:DC, đưa về hiệu–tỉ), toàn tỉ số diện tích chung đường cao. Hình đề khớp chữ (A,B trên; D,P,C dưới; M trên AC; N trên DM).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi diện tích đều tìm bằng một ý: hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy. Ý 1 dùng hai tam giác ABC và ADC có chiều cao bằng nhau; ý 2 so sánh hai cặp tam giác cùng có tỉ số $DP:DC$ để đưa về bài hiệu – tỉ.\n\n**Bước 1.** Ý 1: tam giác ABC và tam giác ADC cùng có chiều cao bằng chiều cao hình thang, đáy CD gấp $2$ lần đáy AB nên diện tích tam giác ADC gấp $2$ lần diện tích tam giác ABC; cộng lại được diện tích hình thang.\n\n**Bước 2.** Ý 2: dùng diện tích tam giác ADC vừa tìm, vì M là trung điểm của AC nên chia đôi để được diện tích tam giác DMC (chung đường cao hạ từ D).\n\n**Bước 3.** Từ $MN=2\\times DN$ suy ra DN bằng một phần ba DM, nên diện tích tam giác NDC bằng một phần ba diện tích tam giác DMC, và diện tích tam giác AND bằng một phần ba diện tích tam giác ADM.\n\n**Bước 4.** So sánh hai cặp tam giác cùng có tỉ số $DP:DC$: tam giác ADP với tam giác ADC (chung đường cao hạ từ A) và tam giác NDP với tam giác NDC (chung đường cao hạ từ N), để biết diện tích ADP gấp diện tích NDP mấy lần.\n\n**Bước 5.** Vì N nằm trên AP nên tam giác ADP gồm hai tam giác AND và NDP; hiệu của ADP và NDP chính là diện tích AND, đưa về bài hiệu – tỉ để tìm diện tích NDP.\n\n**Chú ý:** Không cần tìm độ dài DP; chỉ cần so sánh tỉ số diện tích của hai cặp tam giác có cùng tỉ số đáy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n1) Tam giác ABC và tam giác ADC có đường cao bằng nhau (đều bằng chiều cao hình thang ABCD) và $CD=2\\times AB$ nên $S_{ADC}=2\\times S_{ABC}$.\n\nDiện tích tam giác ADC là: $60\\times 2=120$ ($\\text{cm}^2$)\n\nDiện tích hình thang ABCD là: $60+120=180$ ($\\text{cm}^2$)\n\n2) Tam giác DMC và tam giác DAC có chung đường cao hạ từ D xuống AC, suy ra $\\dfrac{S_{DMC}}{S_{DAC}}=\\dfrac{MC}{AC}=\\dfrac{1}{2}$\n\nDiện tích tam giác DMC là: $120:2=60$ ($\\text{cm}^2$)\n\nTam giác DMC và tam giác DMA có chung đường cao hạ từ D xuống AC và $AM=MC$ nên $S_{DMA}=S_{DMC}=60$ ($\\text{cm}^2$).\n\nVì $MN=2\\times DN$ nên $DM=DN+MN=3\\times DN$, hay $DN=\\dfrac{1}{3}\\times DM$.\n\nTam giác NDC và tam giác MDC có chung đường cao hạ từ C xuống DM, suy ra $\\dfrac{S_{NDC}}{S_{MDC}}=\\dfrac{DN}{DM}=\\dfrac{1}{3}$\n\nDiện tích tam giác NDC là: $60:3=20$ ($\\text{cm}^2$)\n\nTam giác AND và tam giác AMD có chung đường cao hạ từ A xuống DM, suy ra $\\dfrac{S_{AND}}{S_{AMD}}=\\dfrac{DN}{DM}=\\dfrac{1}{3}$\n\nDiện tích tam giác AND là: $60:3=20$ ($\\text{cm}^2$)\n\nTam giác ADP và tam giác ADC có chung đường cao hạ từ A xuống DC, suy ra $\\dfrac{S_{ADP}}{S_{ADC}}=\\dfrac{DP}{DC}$\n\nTam giác NDP và tam giác NDC có chung đường cao hạ từ N xuống DC, suy ra $\\dfrac{S_{NDP}}{S_{NDC}}=\\dfrac{DP}{DC}$\n\nDo đó $\\dfrac{S_{ADP}}{S_{ADC}}=\\dfrac{S_{NDP}}{S_{NDC}}$, hay $\\dfrac{S_{ADP}}{120}=\\dfrac{S_{NDP}}{20}$. Vì $120=6\\times 20$ nên $S_{ADP}=6\\times S_{NDP}$.\n\nVì N nằm trên AP nên $S_{ADP}=S_{AND}+S_{NDP}$, tức là $S_{ADP}$ hơn $S_{NDP}$ đúng $S_{AND}=20$ ($\\text{cm}^2$).\n\nTa có sơ đồ:\n\n(Diện tích tam giác NDP 1 phần; diện tích tam giác ADP 6 phần; hiệu 20 cm2)\n\nHiệu số phần bằng nhau là: $6-1=5$ (phần)\n\nDiện tích tam giác NDP là: $20:5\\times 1=4$ ($\\text{cm}^2$)\n\nĐáp số: 1) $180\\ \\text{cm}^2$; 2) $4\\ \\text{cm}^2$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "S tam giác NDP",
+     "phan": 1
+    },
+    {
+     "nhan": "S tam giác ADP",
+     "phan": 6
+    }
+   ],
+   "hieu": "20 cm²",
+   "dau_hoi": [
+    "S tam giác NDP"
+   ]
+  }
+ }
+]

@@ -1,0 +1,278 @@
+[
+ {
+  "ma_nguon": "AMS 2022 · P1.1",
+  "dap_an": "$84$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $0,14\\times 253\\times 3$ và $4,2\\times 5,3$ trông khác nhau nhưng cùng chứa thừa số $0,42$; đưa về cùng một thừa số rồi dùng tính chất nhân một số với một hiệu thì tính được gọn.\n\n**Bước 1.** Ở tích thứ nhất, nhân $0,14$ với $3$ trước (đổi chỗ các thừa số) để được một thừa số mới; thừa số này giống $4,2$ nhưng dấu phẩy lệch một hàng.\n\n**Bước 2.** Viết $4,2$ thành $0,42\\times 10$ rồi nhân $10$ với $5,3$, để tích thứ hai cũng có thừa số $0,42$ như tích thứ nhất.\n\n**Bước 3.** Đặt thừa số chung $0,42$ ra ngoài theo tính chất nhân một số với một hiệu, trong ngoặc còn hiệu của hai số tự nhiên.\n\n**Bước 4.** Tính hiệu trong ngoặc trước rồi nhân với thừa số chung; hiệu này là số tròn trăm nên phép nhân rất gọn.\n\n**Chú ý:** Khi đổi $4,2$ thành $0,42\\times 10$ thì phải giữ nguyên giá trị: thừa số bé đi $10$ lần thì phải nhân thêm $10$.\n\n**Phần 2. Trình bày**\n\n$0,14\\times 253\\times 3-4,2\\times 5,3$\n\n$=0,14\\times 3\\times 253-4,2\\times 5,3$\n\n$=0,42\\times 253-0,42\\times 10\\times 5,3$\n\n$=0,42\\times 253-0,42\\times 53$\n\n$=0,42\\times (253-53)$\n\n$=0,42\\times 200$\n\n$=84$"
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.2",
+  "dap_an": "$35$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho $5$ thì chữ số hàng đơn vị là $0$ hoặc $5$; số chia hết cho $9$ thì tổng các chữ số chia hết cho $9$. Dùng lần lượt hai dấu hiệu này để tìm $b$ rồi tìm $a$.\n\n**Bước 1.** Dùng dấu hiệu chia hết cho $5$ để biết $b$ có thể là những chữ số nào, rồi dùng điều kiện $b>0$ để loại bớt.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho $9$: cộng các chữ số đã biết là $2$, $0$, $2$, $2$ và $b$ lại, tổng này cộng thêm $a$ phải chia hết cho $9$.\n\n**Bước 3.** Chữ số $a$ chỉ có thể từ $0$ đến $9$, nên xác định khoảng giá trị của tổng tất cả các chữ số rồi chọn số chia hết cho $9$ trong khoảng đó.\n\n**Bước 4.** Lấy tổng vừa chọn trừ đi tổng các chữ số đã biết để tìm $a$, rồi nhân $a$ với $b$.\n\nThử lại: viết số $\\overline{2022ab}$ vừa tìm được rồi chia cho $5$ và chia cho $9$, cả hai phép chia đều phải không dư.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{2022ab}$ chia hết cho $5$ nên $b$ là $0$ hoặc $5$; vì $b>0$ nên $b=5$.\n\nTổng các chữ số đã biết là: $2+0+2+2+5=11$\n\nSố đó chia hết cho $9$ nên tổng các chữ số chia hết cho $9$, tức là $11+a$ chia hết cho $9$.\n\nChữ số $a$ từ $0$ đến $9$ nên $11+a$ từ $11$ đến $20$; trong khoảng này chỉ có $18$ chia hết cho $9$.\n\nDo đó $a=18-11=7$.\n\nVậy $a\\times b=7\\times 5=35$."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.3",
+  "dap_an": "$\\dfrac{1}{2022}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính từng ngoặc sẽ ra các phân số $\\dfrac{1}{2}$, $\\dfrac{2}{3}$, $\\dfrac{3}{4}$,… mà tử số của phân số này bằng mẫu số của phân số đứng trước nó, nên khi nhân tất cả lại thì hầu hết các số bị rút gọn.\n\n**Bước 1.** Tính vài ngoặc đầu: viết $1$ thành phân số có cùng mẫu với số bị trừ rồi trừ, để thấy dạng của từng thừa số.\n\n**Bước 2.** Tìm quy luật của một thừa số bất kì: mỗi ngoặc là một phân số có tử số kém mẫu số $1$ đơn vị, mẫu số tăng dần từ $2$ đến $2022$.\n\n**Bước 3.** Viết tích thành một phân số lớn có tử số là tích các tử số, mẫu số là tích các mẫu số, rồi gạch các thừa số giống nhau ở tử và mẫu.\n\n**Bước 4.** Xác định những thừa số còn lại sau khi rút gọn: tử số còn một thừa số, mẫu số còn một thừa số; từ đó viết kết quả.\n\n**Chú ý:** Mẫu số cuối cùng là $2022$ vì ngoặc cuối cùng có số trừ là $\\dfrac{1}{2022}$; đừng nhầm với số thừa số của tích.\n\n**Phần 2. Trình bày**\n\n$\\left(1-\\dfrac{1}{2}\\right)\\times\\left(1-\\dfrac{1}{3}\\right)\\times\\left(1-\\dfrac{1}{4}\\right)\\times\\cdots\\times\\left(1-\\dfrac{1}{2022}\\right)$\n\n$=\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times\\dfrac{3}{4}\\times\\cdots\\times\\dfrac{2021}{2022}$\n\n$=\\dfrac{1\\times 2\\times 3\\times\\cdots\\times 2021}{2\\times 3\\times 4\\times\\cdots\\times 2022}$\n\n$=\\dfrac{1\\times (2\\times 3\\times\\cdots\\times 2021)}{(2\\times 3\\times\\cdots\\times 2021)\\times 2022}$\n\n$=\\dfrac{1}{2022}$"
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.4",
+  "dap_an": "$1011$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả ba số đều quy được về cùng một số phần bằng nhau: lấy số thứ nhất làm $1$ phần thì số thứ hai là $3$ phần, số thứ ba là $2$ phần; đây là bài toán tổng – tỉ.\n\n**Bước 1.** Số thứ nhất bằng $\\dfrac{1}{3}$ số thứ hai, nên chia số thứ hai thành $3$ phần bằng nhau thì số thứ nhất là $1$ phần như thế.\n\n**Bước 2.** Số thứ ba gấp đôi số thứ nhất nên tìm số phần của số thứ ba, rồi cộng số phần của cả ba số.\n\n**Bước 3.** Chia tổng $2022$ cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 4.** So sánh số phần của ba số để nhận ra số lớn nhất, rồi nhân giá trị một phần với số phần của số đó.\n\n**Chú ý:** Số lớn nhất là số có nhiều phần nhất, không phải lúc nào cũng là số được nhắc đến sau cùng trong đề.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thứ nhất bằng $\\dfrac{1}{3}$ số thứ hai nên số thứ nhất là $1$ phần, số thứ hai là $3$ phần; số thứ ba gấp đôi số thứ nhất nên là $2$ phần.\n\nTa có sơ đồ:\n\n(Số thứ nhất 1 phần; số thứ hai 3 phần; số thứ ba 2 phần; tổng 2022)\n\nTổng số phần bằng nhau là: $1+3+2=6$ (phần)\n\nGiá trị của một phần là: $2022:6=337$\n\nSố lớn nhất là số thứ hai, bằng: $337\\times 3=1011$\n\nĐáp số: $1011$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 337,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 1
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 3
+    },
+    {
+     "nhan": "Số thứ ba",
+     "phan": 2
+    }
+   ],
+   "tong": "2022",
+   "dau_hoi": [
+    "Số thứ hai"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.5",
+  "dap_an": "$300$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cùng đi hết quãng đường $AB$ thì vận tốc và thời gian tỉ lệ nghịch với nhau; hai ô tô xuất phát cùng lúc nên đến chỗ gặp nhau đã đi cùng một thời gian, do đó quãng đường mỗi xe đi được tỉ lệ thuận với vận tốc.\n\n**Bước 1.** Tính mỗi giờ mỗi ô tô đi được bao nhiêu phần quãng đường $AB$: ô tô nào đi hết quãng đường trong ít thời gian hơn thì đi nhanh hơn.\n\n**Bước 2.** So sánh hai phân số vừa tìm bằng phép chia để được tỉ số vận tốc của hai ô tô, rồi viết tỉ số đó thành số phần bằng nhau.\n\n**Bước 3.** Vì đi cùng một khoảng thời gian đến lúc gặp nhau nên quãng đường mỗi ô tô đi được bằng số phần ứng với vận tốc của nó; lúc gặp nhau hai ô tô đi được tất cả đúng bằng quãng đường $AB$.\n\n**Bước 4.** Dùng quãng đường ô tô thứ nhất đã đi (cách $A$ là $140$ km) để tìm giá trị một phần, rồi nhân với tổng số phần để được quãng đường $AB$.\n\n**Chú ý:** Ô tô thứ nhất đi hết nhiều thời gian hơn nên đi chậm hơn, vì vậy chỗ gặp nhau nằm gần $A$ hơn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Quãng đường AB; hai ô tô cùng khởi hành, đi ngược chiều và gặp nhau tại C cách A 140 km)\n\nMỗi giờ ô tô thứ nhất đi được: $1:8=\\dfrac{1}{8}$ (quãng đường $AB$)\n\nMỗi giờ ô tô thứ hai đi được: $1:7=\\dfrac{1}{7}$ (quãng đường $AB$)\n\nTỉ số vận tốc của ô tô thứ nhất và ô tô thứ hai là: $\\dfrac{1}{8}:\\dfrac{1}{7}=\\dfrac{7}{8}$\n\nHai ô tô cùng khởi hành, đến chỗ gặp nhau thời gian đi như nhau nên quãng đường ô tô thứ nhất đi bằng $\\dfrac{7}{8}$ quãng đường ô tô thứ hai, tức là ô tô thứ nhất đi $7$ phần, ô tô thứ hai đi $8$ phần như thế.\n\nTa có sơ đồ:\n\n(Quãng đường đến chỗ gặp: ô tô thứ nhất 7 phần, ô tô thứ hai 8 phần; cả quãng đường AB là 15 phần)\n\nGiá trị của một phần là: $140:7=20$ (km)\n\nKhi gặp nhau, hai ô tô đi hết quãng đường $AB$ nên số phần của quãng đường $AB$ là: $7+8=15$ (phần)\n\nQuãng đường $AB$ dài: $20\\times 15=300$ (km)\n\nĐáp số: $300$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Hai ô tô gặp nhau",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 140,
+      "ghi": "gặp nhau"
+     },
+     {
+      "ten": "B",
+      "x": 300
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 140,
+      "nhan": "Ô tô thứ nhất"
+     },
+     {
+      "tu": 300,
+      "den": 140,
+      "nhan": "Ô tô thứ hai"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 140,
+      "nhan": "140 km"
+     },
+     {
+      "tu": 0,
+      "den": 300,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Quãng đường mỗi xe đi đến lúc gặp",
+    "gia_tri_phan": 20,
+    "hang": [
+     {
+      "nhan": "Ô tô thứ nhất",
+      "phan": 7
+     },
+     {
+      "nhan": "Ô tô thứ hai",
+      "phan": 8
+     }
+    ],
+    "tong": "? km"
+   }
+  ],
+  "ghi_chu_nghi": "nhiều cách: (1) tỉ số vận tốc 7:8 rồi quãng đường tỉ lệ vận tốc (đã chọn — bám quan hệ gốc); (2) coi quãng đường AB gồm 56 phần (BCNN của 8 và 7), là cách giả định số — không chọn."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.6",
+  "dap_an": "$1155$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng nước ban đầu bằng lượng nước khi đầy bể trừ đi lượng nước vòi đã chảy vào; cần đổi mọi số đo về lít và đổi thời gian ra giờ.\n\n**Bước 1.** Tính thể tích bể bằng chiều dài nhân chiều rộng nhân chiều cao, rồi đổi từ mét khối sang lít vì $1\\ \\text{m}^3$ bằng $1000$ lít.\n\n**Bước 2.** Đổi $1$ giờ $15$ phút ra số giờ dạng số thập phân, vì đề cho số lít vòi chảy được trong $1$ giờ.\n\n**Bước 3.** Nhân số lít vòi chảy trong $1$ giờ với số giờ vòi chảy để biết vòi đã đưa vào bể bao nhiêu lít nước.\n\n**Bước 4.** Lấy sức chứa của bể trừ đi lượng nước vòi đã chảy vào để tìm lượng nước có sẵn trong bể lúc đầu.\n\n**Chú ý:** Bể đầy sau $1$ giờ $15$ phút nghĩa là lượng nước ban đầu cộng lượng nước chảy vào đúng bằng sức chứa của bể.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích của bể là: $3\\times 2\\times 1,6=9,6$ ($\\text{m}^3$)\n\nĐổi: $9,6\\ \\text{m}^3=9600\\ \\text{dm}^3=9600$ lít\n\nĐổi: $1$ giờ $15$ phút $=1,25$ giờ\n\nSố lít nước vòi chảy vào bể là: $6756\\times 1,25=8445$ (lít)\n\nSố lít nước trong bể lúc đầu là: $9600-8445=1155$ (lít)\n\nĐáp số: $1155$ lít"
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.7",
+  "dap_an": "$4110736$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số chỉ khác nhau ở hai chữ số tận cùng ($23$ và $32$), các chữ số còn lại giống hệt nhau, nên hiệu của chúng chỉ là $32-23$; biết tổng và hiệu thì tìm được từng số.\n\n**Bước 1.** Nhận xét: số lớn có được bằng cách đổi chỗ hai chữ số tận cùng của số bé, nên phần đứng trước hai chữ số tận cùng của hai số là giống nhau.\n\n**Bước 2.** Tính hiệu của hai số bằng cách chỉ so sánh hai chữ số tận cùng của chúng.\n\n**Bước 3.** Biết tổng và hiệu: tìm số lớn bằng cách lấy tổng cộng hiệu rồi chia $2$, sau đó tìm số bé từ tổng.\n\n**Bước 4.** Nhân hai số vừa tìm được với nhau để ra tích.\n\n**Chú ý:** Hai chữ số tận cùng $23$ khi đổi chỗ thì thành $32$, các chữ số phía trước giữ nguyên chứ không bị đổi chỗ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lớn có được khi đổi chỗ hai chữ số tận cùng của số bé, các chữ số còn lại giữ nguyên, nên hiệu của số lớn và số bé là: $32-23=9$\n\nTa có sơ đồ:\n\n(Số bé; số lớn bằng số bé thêm 9; tổng 4055)\n\nSố lớn là: $(4055+9):2=2032$\n\nSố bé là: $4055-2032=2023$\n\nTích hai số đó là: $2023\\times 2032=4110736$\n\nĐáp số: $4110736$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2023,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 1,
+     "them": "9"
+    }
+   ],
+   "tong": "4055"
+  },
+  "ghi_chu_nghi": "Đề: \"đổi chỗ hai chữ số cho nhau\" — hiểu là đổi chỗ hai chữ số tận cùng 2 và 3 (23 thành 32), các chữ số còn lại giữ nguyên ⇒ số bé 2023, số lớn 2032."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.8",
+  "dap_an": "$27$ chai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn có nhiều chai $600$ ml nhất thì hai loại chai còn lại phải dùng ít nhất có thể, tức là mỗi loại chỉ cần đúng $1$ chai; phần nước còn lại dồn vào chai $600$ ml, rồi phải kiểm tra xem cách chia có rót vừa hết $18$ lít không.\n\n**Bước 1.** Đổi $18$ lít ra mililít để mọi số đo nước trong chai cùng một đơn vị.\n\n**Bước 2.** Lấy ra $1$ chai $400$ ml và $1$ chai $1$ lít (vì mỗi loại ít nhất $1$ chai), tính số mililít nước trong hai chai đó rồi tìm số nước còn lại.\n\n**Bước 3.** Chia số nước còn lại cho $600$ ml để biết nhiều nhất rót đầy được bao nhiêu chai $600$ ml và còn dư bao nhiêu mililít.\n\n**Bước 4.** Kiểm tra phần nước dư có rót vừa vào chai $400$ ml hay không, để chắc chắn cách chia này dùng hết đúng $18$ lít.\n\n**Chú ý:** Nếu phần dư không rót vừa vào chai $400$ ml hoặc chai $1$ lít thì phải bớt $1$ chai $600$ ml rồi tính lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $18$ lít $=18000$ ml\n\nMỗi loại có ít nhất $1$ chai nên số nước trong chai $400$ ml và chai $1$ lít ít nhất là: $400+1000=1400$ (ml)\n\nSố nước nhiều nhất dành cho các chai $600$ ml là: $18000-1400=16600$ (ml)\n\nTa có: $16600:600=27$ (dư $400$)\n\nVậy có nhiều nhất $27$ chai $600$ ml (rót $28$ chai cần $16800$ ml, nhiều hơn $16600$ ml).\n\nPhần dư $400$ ml vừa đủ rót thêm $1$ chai $400$ ml, nên có cách chia: $2$ chai $400$ ml, $27$ chai $600$ ml, $1$ chai $1$ lít.\n\nThử lại: $400\\times 2+600\\times 27+1000=800+16200+1000=18000$ (ml)\n\nĐáp số: $27$ chai"
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.9",
+  "dap_an": "$27$ viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Chắc chắn\" nghĩa là phải tính cho trường hợp xấu nhất: lần chuyển từ hộp $A$ sang hộp $B$ có thể rơi vào những viên khiến hộp $A$ thiếu nhiều nhất, và khi lấy từ hộp $B$ về thì có thể lấy phải những viên không cần trước.\n\n**Bước 1.** Tính số bi còn lại trong hộp $A$ và số bi có trong hộp $B$ sau lần chuyển đầu, rồi nhận xét số bi mỗi màu của hộp $A$ phụ thuộc vào $10$ viên đã chuyển đi.\n\n**Bước 2.** Xét một màu bất kì: nếu hộp $A$ mất nhiều nhất $1$ viên màu đó thì vẫn còn đủ $8$ viên; nếu mất từ $2$ viên trở lên thì phải bổ sung từ hộp $B$ số viên màu đó bằng số viên đã mất trừ $1$.\n\n**Bước 3.** Tìm trường hợp xấu nhất khi lấy từ hộp $B$: lấy hết các viên khác màu ra trước, rồi mới lấy đến viên màu cần bổ sung; đếm số viên khác màu và số viên màu cần còn thiếu.\n\n**Bước 4.** Nhận xét tổng số viên lấy trong trường hợp xấu nhất đó không phụ thuộc số viên đã mất, rồi suy ra số viên chắc chắn đủ và kiểm tra bằng một ví dụ rằng bớt đi một viên thì chưa chắc đủ.\n\n**Chú ý:** Lấy bi từ hộp $B$ về là lấy không nhìn màu, nên phải tính theo trường hợp xấu nhất chứ không tính theo trường hợp may mắn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần chuyển thứ nhất, hộp $A$ còn: $9\\times 3-10=17$ (viên); hộp $B$ có: $9\\times 3+10=37$ (viên).\n\nXét một màu bất kì. Nếu hộp $A$ đã mất không quá $1$ viên màu đó thì hộp $A$ còn ít nhất $8$ viên màu đó, không cần bổ sung.\n\nNếu hộp $A$ đã mất từ $2$ viên màu đó trở lên thì cần bổ sung từ hộp $B$ số viên màu đó bằng số viên đã mất trừ $1$.\n\nTrong hộp $B$, số viên màu đó là $9$ cộng với số viên đã chuyển sang; số viên khác màu đó là $37-9=28$ trừ đi số viên đã chuyển sang.\n\nTrường hợp xấu nhất: lấy hết các viên khác màu rồi lấy tiếp số viên màu đó vẫn còn thiếu $1$ viên, tức là lấy được số viên màu đó bằng số viên đã chuyển sang trừ $2$.\n\nSố viên đã lấy trong trường hợp xấu nhất là: (số viên khác màu) $+$ (số viên màu đó) $=(28-$ số viên đã chuyển sang$)+($số viên đã chuyển sang $-2)=28-2=26$ (viên).\n\nVậy lấy $26$ viên thì chưa chắc đủ. Ví dụ hộp $A$ đã chuyển đi $9$ viên trắng và $1$ viên xanh; lấy từ hộp $B$ về $7$ viên trắng, $10$ viên xanh, $9$ viên đỏ (tất cả $26$ viên) thì hộp $A$ chỉ có $7$ viên trắng.\n\nLấy thêm $1$ viên nữa thì dù ở màu nào cũng đã đủ số viên cần bổ sung. Số viên cần chuyển từ hộp $B$ sang hộp $A$ là: $26+1=27$ (viên)\n\nĐáp số: $27$ viên",
+  "ghi_chu_nghi": "Hiểu: cả lần chuyển A→B và lần chuyển B→A đều không nhìn màu, tính theo trường hợp xấu nhất. Đã vét cạn mọi cách A mất 10 viên và mọi cách lấy từ B: nhỏ nhất chắc chắn là 27."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.10",
+  "dap_an": "$18$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ghép đủ $4$ mảnh thì diện tích hình chữ nhật bằng tổng số ô vuông của $4$ mảnh; từ diện tích tìm các kích thước có thể, rồi dùng hình dạng các mảnh để loại bớt, còn lại kích thước ghép được.\n\n**Bước 1.** Đếm số ô vuông của từng mảnh trong hình rồi cộng lại để biết hình chữ nhật có bao nhiêu ô vuông, tức là biết diện tích.\n\n**Bước 2.** Liệt kê các cặp chiều dài – chiều rộng là số ô nguyên có cùng diện tích đó.\n\n**Bước 3.** Loại các cặp không ghép được: mảnh $(1)$ rộng $2$ ô nên cần chiều rộng ít nhất $2$; với hình chỉ rộng $2$ ô thì mảnh chữ $T$ luôn để lại các chỗ khuyết $1$ ô mà chỉ một loại mảnh lấp được.\n\n**Bước 4.** Ghép thử với kích thước còn lại để chắc chắn ghép được, rồi tính chu vi bằng nửa chu vi nhân $2$.\n\n**Chú ý:** Các mảnh được xoay cho vừa, nên mảnh đặt nằm ngang hay đứng đều được; không có mảnh nào bị lật mặt.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ô vuông của mảnh $(1)$ là: $2\\times 3=6$ (ô)\n\nSố ô vuông của mảnh $(2)$ là: $3+1=4$ (ô)\n\nSố ô vuông của mảnh $(3)$ là: $3$ (ô)\n\nSố ô vuông của mảnh $(4)$ là: $1+2+2=5$ (ô)\n\nDiện tích hình chữ nhật ghép được là: $6+4+3+5=18$ ($\\text{cm}^2$)\n\nHình chữ nhật có diện tích $18\\ \\text{cm}^2$ và các cạnh là số nguyên xăng-ti-mét thì có thể là $1\\times 18$, $2\\times 9$ hoặc $3\\times 6$.\n\nMảnh $(1)$ rộng $2$ ô nên không ghép được hình $1\\times 18$. Với hình rộng $2$ ô, mảnh $(2)$ để lại hai chỗ khuyết $1$ ô mà chỉ mảnh $(4)$ lấp được (mảnh $(3)$ lấp vào sẽ để lại hai ô trống liền nhau không còn mảnh nào lấp vừa), trong khi chỉ có một mảnh $(4)$ nên không ghép được hình $2\\times 9$.\n\nVậy hình chữ nhật ghép được là $3\\times 6$: đặt mảnh $(1)$ đứng ở hai cột bên trái, mảnh $(3)$ nằm ngang ở hàng trên cùng ba cột bên phải, mảnh $(2)$ xoay sang phải (ba ô dọc ở cột thứ ba, một ô nhô sang cột thứ tư ở hàng giữa), mảnh $(4)$ lấp phần còn lại.\n\nChu vi hình chữ nhật là: $(3+6)\\times 2=18$ (cm)\n\nĐáp số: $18$ cm",
+  "ghi_chu_nghi": "Hình: 4 mảnh = 6+4+3+5 = 18 ô. Hiểu các mảnh được xoay (không lật). Đã vét cạn bằng code: chỉ ghép được hình chữ nhật 3×6 (2×9 và 1×18 không ghép được, cả khi cho lật mặt) ⇒ chu vi 18 cm là duy nhất."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.11",
+  "dap_an": "$48\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $AP=CQ$ nên tổng hai đáy $PB+QC$ của hình thang $PBCQ$ luôn bằng $AB$, dù $P$ nằm ở đâu; bỏ đi hai tam giác vuông ở hai đầu cạnh $BC$ thì còn tam giác $PMQ$, nên không cần biết độ dài $AP$.\n\n**Bước 1.** Nhận xét $PB+QC=PB+AP=AB$ nhờ điều kiện $AP=CQ$, từ đó biết tổng hai đáy của hình thang $PBCQ$ mà không cần tìm $AP$.\n\n**Bước 2.** Tính diện tích hình thang $PBCQ$ bằng tổng hai đáy nhân chiều cao rồi chia $2$, chiều cao chính là cạnh $BC$.\n\n**Bước 3.** Tính tổng diện tích hai tam giác vuông $PBM$ và $QCM$: hai tam giác này có đường cao $BM$ và $CM$ bằng nhau vì $M$ là trung điểm của $BC$.\n\n**Bước 4.** Lấy diện tích hình thang trừ đi tổng diện tích hai tam giác vuông để được diện tích tam giác $PMQ$.\n\n**Chú ý:** Đề không cho biết $AP$ dài bao nhiêu; nếu thấy mình cần tìm $AP$ thì đang đi sai hướng, vì kết quả không phụ thuộc vị trí của $P$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AP=CQ$ nên $PB+QC=PB+AP=AB=16$ (cm)\n\nHình thang $PBCQ$ có hai đáy $PB$, $QC$ và chiều cao $BC$, nên diện tích hình thang $PBCQ$ là: $16\\times 12:2=96$ ($\\text{cm}^2$)\n\n$M$ là trung điểm của $BC$ nên $BM=CM=12:2=6$ (cm)\n\nTổng diện tích hai tam giác $PBM$ và $QCM$ là: $PB\\times 6:2+QC\\times 6:2=(PB+QC)\\times 6:2=16\\times 6:2=48$ ($\\text{cm}^2$)\n\nDiện tích tam giác $PMQ$ là: $96-48=48$ ($\\text{cm}^2$)\n\nĐáp số: $48\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "AMS 2022 · P1.12",
+  "dap_an": "$20$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân số $\\dfrac{487}{340}$ lớn hơn $1$ nên $a$ là phần nguyên của nó; phần phân số còn lại bằng $1$ chia cho một phân số khác, rồi lặp lại cách làm đó với phân số mới cho đến khi gặp phân số có tử số $1$.\n\n**Bước 1.** Tách $\\dfrac{487}{340}$ thành phần nguyên cộng phần phân số, phần nguyên chính là $a$.\n\n**Bước 2.** Viết phần phân số dưới dạng $1$ chia cho phân số đảo ngược của nó (đổi chỗ tử số và mẫu số), phân số đảo ngược này lớn hơn $1$ nên có phần nguyên là $b$.\n\n**Bước 3.** Lặp lại cách làm với phần phân số của phân số đảo ngược để tìm $c$, rồi $d$, cho đến khi phần phân số còn lại có tử số bằng $1$; khi đó mẫu số của nó là $e$.\n\n**Bước 4.** Ghép các kết quả vào đúng dạng đề đã cho để đọc ra $a$, $b$, $c$, $d$, $e$ rồi cộng lại.\n\nThử lại: tính ngược từ dưới lên, cộng lần lượt rồi lấy nghịch đảo, phải ra đúng $\\dfrac{487}{340}$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{487}{340}=1+\\dfrac{147}{340}=1+\\dfrac{1}{\\dfrac{340}{147}}$\n\n$\\dfrac{340}{147}=2+\\dfrac{46}{147}=2+\\dfrac{1}{\\dfrac{147}{46}}$\n\n$\\dfrac{147}{46}=3+\\dfrac{9}{46}=3+\\dfrac{1}{\\dfrac{46}{9}}$\n\n$\\dfrac{46}{9}=5+\\dfrac{1}{9}$\n\nDo đó $\\dfrac{487}{340}=1+\\dfrac{1}{2+\\dfrac{1}{3+\\dfrac{1}{5+\\dfrac{1}{9}}}}$\n\nVậy $a=1$; $b=2$; $c=3$; $d=5$; $e=9$.\n\n$a+b+c+d+e=1+2+3+5+9=20$",
+  "ghi_chu_nghi": "Đề không nói a, b, c, d, e là số tự nhiên; hiểu là các số tự nhiên (liên phân số). Với 5 số tự nhiên thì cách viết duy nhất là 1; 2; 3; 5; 9."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P2.1",
+  "dap_an": "$30$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số học sinh nam không đổi trước và sau khi chuyển; hai tỉ số \"nữ so với nam\" ở hai lúc cho biết số nữ giảm đi bao nhiêu phần của số nam, mà phần giảm đó ứng với đúng $2$ học sinh.\n\n**Bước 1.** Lúc đầu số nam gấp đôi số nữ, nên đổi ý này thành: số nữ lúc đầu bằng một phần mấy số nam.\n\n**Bước 2.** Lúc sau số nam bằng $\\dfrac{5}{2}$ số nữ, nên đổi ý này thành: số nữ lúc sau bằng một phần mấy số nam.\n\n**Bước 3.** Lấy phân số của lúc đầu trừ phân số của lúc sau để biết $2$ học sinh nữ chuyển đi ứng với bao nhiêu phần số nam.\n\n**Bước 4.** Tìm số nam (đại lượng không đổi), suy ra số nữ lúc đầu rồi cộng lại để được số học sinh của lớp.\n\n**Chú ý:** Phải lấy số nam làm chuẩn so sánh ở cả hai lúc, vì chỉ có số nam là không đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLúc đầu số nam gấp đôi số nữ nên số nữ lúc đầu bằng $\\dfrac{1}{2}$ số nam.\n\nLúc sau số nam bằng $\\dfrac{5}{2}$ số nữ nên số nữ lúc sau bằng $\\dfrac{2}{5}$ số nam.\n\nHai học sinh nữ chuyển đi ứng với: $\\dfrac{1}{2}-\\dfrac{2}{5}=\\dfrac{5}{10}-\\dfrac{4}{10}=\\dfrac{1}{10}$ (số nam)\n\nSố học sinh nam là: $2:\\dfrac{1}{10}=20$ (học sinh)\n\nSố học sinh nữ lúc đầu là: $20:2=10$ (học sinh)\n\nSố học sinh lớp $5A$ lúc đầu là: $20+10=30$ (học sinh)\n\nĐáp số: $30$ học sinh"
+ },
+ {
+  "ma_nguon": "AMS 2022 · P2.2",
+  "dap_an": "$16$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần hai bạn gặp nhau đối đầu thì cả hai cùng đi thêm đúng một lần quãng đường $AB$; hai bạn đi với vận tốc không đổi nên đến lần gặp thứ hai, mỗi bạn đã đi quãng đường gấp $3$ lần lúc gặp lần thứ nhất.\n\n**Bước 1.** Xác định từ lúc xuất phát đến lần gặp thứ nhất, hai bạn cùng đi hết mấy lần quãng đường $AB$ và Minh đã đi bao nhiêu kilômét.\n\n**Bước 2.** Từ lần gặp thứ nhất, mỗi bạn đi tiếp tới đầu mút rồi quay lại cho tới lần gặp thứ hai; đếm xem hai bạn cùng đi thêm mấy lần quãng đường $AB$ để biết tổng số lần quãng đường $AB$ từ lúc xuất phát.\n\n**Bước 3.** Vì thời gian đi của hai bạn bằng nhau và vận tốc không đổi, nên quãng đường Minh đi được tăng lên đúng bấy nhiêu lần so với lần gặp thứ nhất.\n\n**Bước 4.** Dựa vào vị trí gặp lần thứ hai (cách $B$ là $5$ km) để biết Minh đã đi hết quãng đường $AB$ rồi quay lại bao nhiêu kilômét, từ đó suy ra độ dài $AB$.\n\n**Chú ý:** Lần gặp thứ hai là lúc cả hai bạn đã quay lại và đi ngược chiều nhau, nên phần Minh quay lại $5$ km không thuộc quãng đường $AB$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ lúc xuất phát đến lần gặp thứ nhất, hai bạn cùng đi hết $1$ lần quãng đường $AB$.\n\nTa có sơ đồ:\n\n(Lần gặp thứ nhất tại C: hai bạn cùng đi hết 1 lần quãng đường AB, Minh đi được 7 km tính từ A)\n\nSau đó hai bạn đi tiếp tới hai đầu mút, cùng đi thêm $1$ lần quãng đường $AB$, rồi quay lại gặp nhau, lại cùng đi thêm $1$ lần quãng đường $AB$.\n\nTừ lúc xuất phát đến lần gặp thứ hai, hai bạn cùng đi hết số lần quãng đường $AB$ là: $1+1+1=3$ (lần)\n\nTa có sơ đồ:\n\n(Lần gặp thứ hai tại E: Minh đi tới B rồi quay lại, Ngọc đi tới A rồi quay lại, hai bạn gặp nhau tại điểm cách B 5 km)\n\nThời gian đi của hai bạn như nhau nên quãng đường Minh đi được đến lần gặp thứ hai gấp $3$ lần quãng đường Minh đi được đến lần gặp thứ nhất.\n\nQuãng đường Minh đi được đến lần gặp thứ hai là: $7\\times 3=21$ (km)\n\nLúc đó Minh đã đi hết quãng đường $AB$ rồi quay lại $5$ km, nên quãng đường $AB$ dài: $21-5=16$ (km)\n\nĐáp số: $16$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Lần gặp thứ nhất",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 7,
+      "ghi": "gặp lần 1"
+     },
+     {
+      "ten": "B",
+      "x": 16
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 7,
+      "nhan": "Minh"
+     },
+     {
+      "tu": 16,
+      "den": 7,
+      "nhan": "Ngọc"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 7,
+      "nhan": "7 km"
+     },
+     {
+      "tu": 0,
+      "den": 16,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Lần gặp thứ hai",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "E",
+      "x": 11,
+      "ghi": "gặp lần 2"
+     },
+     {
+      "ten": "B",
+      "x": 16
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 16,
+      "nhan": "Minh đi tới B"
+     },
+     {
+      "tu": 16,
+      "den": 11,
+      "nhan": "Minh quay lại"
+     },
+     {
+      "tu": 16,
+      "den": 0,
+      "nhan": "Ngọc đi tới A"
+     },
+     {
+      "tu": 0,
+      "den": 11,
+      "nhan": "Ngọc quay lại"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 11,
+      "den": 16,
+      "nhan": "5 km"
+     },
+     {
+      "tu": 0,
+      "den": 16,
+      "nhan": "? km"
+     }
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "Hiểu \"gặp nhau lần thứ hai\" là gặp đối đầu sau khi cả hai đã quay đầu (tổng quãng đường hai bạn đi = 3 lần AB) ⇒ AB = 16 km. Nếu hiểu Ngọc (đi nhanh hơn) quay ở A rồi đuổi kịp Minh trước khi Minh tới B thì không ra số tròn."
+ },
+ {
+  "ma_nguon": "AMS 2022 · P2.3",
+  "dap_an": "a) $S_{BDN}=S_{BDM}$ (hai tam giác có diện tích bằng nhau); b) $\\dfrac{S_{ABND}}{S_{BNC}}=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình thang $BDNM$ có đáy $BD$ nên $MN$ song song với $BD$; hai tam giác chung đáy $BD$ mà đỉnh nằm trên một đường thẳng song song với $BD$ thì cùng chiều cao nên bằng diện tích. Ý b) dùng kết quả ý a) để đưa $S_{BNC}$ về một phần của diện tích cả hình thang $ABCD$.\n\n**Bước 1.** Xác định hai đáy của hình thang $BDNM$: $DN$ nằm trên $CD$ mà $BM$ không song song với $CD$, nên hai đáy là $BD$ và $MN$, tức là $MN$ song song với $BD$.\n\n**Bước 2.** Ý a): so sánh hai tam giác $BDN$ và $BDM$ có chung đáy $BD$, đường cao hạ từ $N$ và từ $M$ xuống $BD$ đều là khoảng cách giữa hai đường thẳng song song.\n\n**Bước 3.** Ý b): viết $S_{BNC}$ bằng hiệu $S_{BCD}-S_{BDN}$ rồi dùng ý a) thay $S_{BDN}$ bằng $S_{BDM}$, sau đó tách tam giác $BCD$ thành ba tam giác nhỏ có chung đỉnh $M$.\n\n**Bước 4.** Dùng điều kiện $AM=2\\times MC$ để biết $MC$ bằng một phần mấy $AC$, rồi so sánh diện tích hai cặp tam giác chung đường cao hạ xuống $AC$: $BMC$ với $ABC$ và $DMC$ với $ADC$.\n\n**Bước 5.** Cộng hai kết quả để biết $S_{BNC}$ bằng một phần mấy diện tích hình thang $ABCD$, rồi tìm $S_{ABND}$ và lập tỉ số.\n\n**Chú ý:** Vì $N$ nằm trên cạnh $CD$ và $MN$ song song với $BD$ nên $M$ nằm cùng phía với $C$ so với $BD$, tức là $M$ ở trong tam giác $BCD$; nhờ vậy mới tách được tam giác $BCD$ thành ba tam giác có đỉnh chung $M$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) $BDNM$ là hình thang mà $DN$ nằm trên $CD$ không song song với $BM$, nên hai đáy của hình thang là $BD$ và $MN$, tức là $MN$ song song với $BD$.\n\nHai tam giác $BDN$ và $BDM$ có chung đáy $BD$, đường cao hạ từ $N$ và từ $M$ xuống $BD$ bằng nhau (cùng bằng khoảng cách giữa hai đường thẳng song song $BD$ và $MN$).\n\nVậy $S_{BDN}=S_{BDM}$.\n\nb) Vì $AM=2\\times MC$ nên $AC=AM+MC=3\\times MC$, do đó $MC=\\dfrac{1}{3}\\times AC$.\n\nTam giác $BMC$ và tam giác $ABC$ có chung đường cao hạ từ $B$ xuống $AC$, suy ra $\\dfrac{S_{BMC}}{S_{ABC}}=\\dfrac{MC}{AC}=\\dfrac{1}{3}$\n\nTam giác $DMC$ và tam giác $ADC$ có chung đường cao hạ từ $D$ xuống $AC$, suy ra $\\dfrac{S_{DMC}}{S_{ADC}}=\\dfrac{MC}{AC}=\\dfrac{1}{3}$\n\nVì $N$ nằm trên cạnh $CD$ nên $S_{BNC}=S_{BCD}-S_{BDN}=S_{BCD}-S_{BDM}$ (theo ý a).\n\n$M$ nằm trong tam giác $BCD$ nên $S_{BCD}=S_{BDM}+S_{BMC}+S_{DMC}$, do đó $S_{BNC}=S_{BMC}+S_{DMC}$.\n\n$S_{BNC}=\\dfrac{1}{3}\\times S_{ABC}+\\dfrac{1}{3}\\times S_{ADC}=\\dfrac{1}{3}\\times (S_{ABC}+S_{ADC})=\\dfrac{1}{3}\\times S_{ABCD}$\n\n$S_{ABND}=S_{ABCD}-S_{BNC}=S_{ABCD}-\\dfrac{1}{3}\\times S_{ABCD}=\\dfrac{2}{3}\\times S_{ABCD}$\n\nTỉ số $\\dfrac{S_{ABND}}{S_{BNC}}=\\dfrac{2}{3}:\\dfrac{1}{3}=2$\n\nĐáp số: a) $S_{BDN}=S_{BDM}$; b) $2$",
+  "ghi_chu_nghi": "Đề không có hình và không nêu đáy của hình thang ABCD. Hiểu BDNM là hình thang có hai đáy BD và MN (MN // BD) vì DN nằm trên CD không song song BM. Lời giải chỉ dùng M thuộc AC (AM = 2MC), N thuộc CD, MN // BD nên không phụ thuộc cặp đáy của ABCD; đã kiểm bằng toạ độ nhiều hình thang: tỉ số luôn bằng 2."
+ }
+]
