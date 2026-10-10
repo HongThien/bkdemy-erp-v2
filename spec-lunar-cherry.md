@@ -63,18 +63,23 @@
 ### 3.4 Ôn từ sai (Monkey)
 - Thống kê `S.anh.sai[từ]` (miss) / `S.anh.dung[từ]` (đúng ngay). Chọn từ có trọng số `max(0,3; 1 + 2·sai − 0,25·đúng)` ⇒ từ sai ra gấp đôi, từ thuộc ra thưa dần. Áp mọi dạng bài có từ đích.
 
-### 3.5 Dán sticker (CEO 09/10: "quà trang trí 2D dạng sticker, con rất thích dán sticker")
-- Khay = hình **từ đã học** + **sticker quà** (15 món, mở 1 món mỗi 3 sao: sao → cầu vồng → bóng bay → bánh kem → mặt trời → hoa → gấu bông → diều → trăng → xe → thỏ → rô-bốt → mây → bóng xanh → kem).
-- 3 cảnh (Rừng anh đào, Bãi biển, Xứ băng). Kéo từ khay lên cảnh (lấp lánh), kéo đi chỗ khác tuỳ ý, kéo vào giỏ để cất. Mỗi sticker dán 1 lần/cảnh. Lưu vị trí `S.anh.dan[cảnh]`.
+### 3.5 Sổ sticker (CEO 09/10: "quà trang trí 2D dạng sticker, con rất thích dán sticker"; 10/10: "có sẵn ô trống tối màu, kéo sticker vào đúng ô thì sáng lên như xếp hình; sticker phải là loại bán ngoài hàng, phải đẹp")
+- **Sổ 8 tờ** (`sticker.js` → `TO`): mỗi tờ là 1 chủ đề (màu, số, con vật, đồ ăn, gia đình, đồ chơi, nhà, thời tiết), mỗi ô = 1 sticker đúng vị trí `[id, x%, y%, w%]`. Ô chưa có = **bóng tối màu** (silhouette) ngay chỗ đó.
+- Có sticker khi **từ đã học** (`S.anh.hoc`) hoặc nhận **sticker quà** (`QUA`, mở 1 món mỗi 3 sao). Khay dưới liệt kê sticker đang có mà chưa dán.
+- Kéo từ khay lên tờ: **đúng ô ⇒ hít vào, sáng lên + pháo giấy** (`stkSang`); sai ô ⇒ bật về khay. Đã dán thì dính, lưu `S.anh.dan`. Không có giỏ/kéo tự do nữa (bản 09/10 đã bỏ).
+- Hình sticker: tạm là hình 3D vẽ bằng code; **bản thật đặt ChatGPT** theo `docs/dat-hang-sticker.md` (prompt phong cách + 60 tên file), thả vào `assets/sticker/<id>.png` là app tự dùng (`LC.STICKER_SRC`).
 
 ### 3.6 Truyện ngắn (Duolingo ABC / Monkey Stories)
 - Mỗi đảo 1 truyện **4 trang**: hình + 1 câu bằng từ đã học. Máy đọc, **tô sáng từng chữ** (sự kiện boundary của speechSynthesis; máy không bắn thì ước lượng theo độ dài chữ). Chạm chữ = nghe chữ. Hết truyện: pháo giấy.
 
-### 3.7 Chăm Thỏ (CEO 09/10: "giống trò nuôi mèo Talking Tom")
-- Thỏ Bông (hình 3D 5 trạng thái: chờ · vui · ngủ · nói · ăn). Chạm ⇒ nhảy + nói 1 câu tiếng Anh ngắn (đói ⇒ "Feed me!").
-- 🎤 **Nhại giọng**: ghi âm 3 giây (MediaRecorder) → phát nhanh 1,5× (giọng the thé), miệng há, xong "Hee hee!".
-- 🥕 Cho ăn: cà rốt = tổng sao các trận thắng; ăn 1 = no 5 nấc, 3 giờ đói 1 nấc; không phạt.
-- 💤 Tắt đèn ⇒ ngủ (nhắm mắt, Zzz, "Good night!").
+### 3.7 Chăm thú cưng (CEO 09/10: "giống trò nuôi mèo Talking Tom"; 10/10: "con mèo Tom xấu — lấy luôn model mấy con bên Bắt Thú, cute hơn, có sẵn động tác")
+- Thú = **model 3D SỐNG của engine Bắt Thú** (không vẽ lại, không ảnh tĩnh): `BatThu/src/thu/thu-cung.ts` gói `Thu4` + bộ ~25 động tác thành 1 ES module `assets/thu-cung.js` (~1 MB, `window.ThuCung.gan(canvas, loai)` → `lam/nen/doi`). Build lại khi Bắt Thú đổi model: `npx vite build -c vite.lib.config.ts` rồi chép sang.
+- Bé **chọn 1 trong 11 loài** (Cáo Lửa mặc định, Cừu Mây, Khỉ Lá, Sói Nguyệt, Nhím Điện, Cánh Cụt Nước, Gà Lửa, Bò Tuyết, Sư Tử Lửa, Voi Rừng, Mèo Bông), lưu `S.anh.tho.loai`. Bỏ 2 khuôn ngựa/sói to.
+- Chạm ⇒ 1 trong vui/nhảy/vuốt/làm nũng/ăn mừng + nói 1 câu tiếng Anh ngắn (đói ⇒ "Feed me!").
+- 🎤 **Nhại giọng**: ghi âm 3 giây (MediaRecorder) → phát nhanh 1,5× (giọng the thé), thú gầm theo, xong ăn mừng "Hee hee!".
+- 🐟 Cho ăn: cá = tổng sao các trận thắng; ăn 1 = no 5 nấc, 3 giờ đói 1 nấc; không phạt. Động tác nền `an` 2,6 giây.
+- 💤 Tắt đèn ⇒ nền `ngu` (nhắm mắt, Zzz, "Good night!"); bật đèn ⇒ ngáp.
+- Máy không tải được module/WebGL ⇒ về ảnh tĩnh mèo (`assets/pet/meo_*.webp`, xuất từ `BatThu/thu-xuat.html`).
 
 ## 4. Kỹ thuật & vận hành
 
