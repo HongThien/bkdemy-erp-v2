@@ -279,7 +279,7 @@ $=4500$
 
 **Bước 4.** Cuối cùng nhân kết quả ngoặc nhọn với 50.
 
-**Chú ý:** trong ngoặc vuông phải làm $5^3.2$ trước rồi mới lấy 261 trừ đi; lấy $261-5^3$ trước rồi mới nhân 2 là sai thứ tự thực hiện phép tính.
+**Chú ý:** luỹ thừa $5^3$ chỉ nhân với 2, không nhân với 261.
 
 **Phần 2. Trình bày**
 
@@ -449,7 +449,7 @@ Vậy chia được nhiều nhất 34 phần thưởng, mỗi phần có 11 quy�
 ### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
 **Đề:** Một căn phòng nhà bạn Nam có nền nhà hình chữ nhật với chiều dài $8\ m$ và chiều rộng $6\ m$.
 a) Tính diện tích nền căn phòng đó.
-b) Bố bạn Nam muốn mua loại gạch lát nền hình vuông có cạnh $40\ cm$. Hỏi cần dùng bao nhiêu viên gạch để lát kín nền căn phòng đó (Coi mạch nối giữa các viên gạch là không đáng kể).
+b) Bố bạn Nam muốn mua loại gạch lát nền hình vuông có cạnh $40\ cm$. Hỏi cần dùng bao nhiêu viên gạch để lát kín nền căn phòng đó (coi mạch nối giữa các viên gạch là không đáng kể).
 c) Biết rằng mỗi mét vuông gạch có giá 250 000 đồng. Hỏi bố bạn Nam phải cần bao nhiêu tiền để mua số gạch ở trên?
 
 **Phần 1. Hướng dẫn**

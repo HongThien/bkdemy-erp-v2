@@ -11,13 +11,13 @@ bo_sach: KNTT
 
 **Mấu chốt:** phép tính chỉ có cộng nên đổi chỗ, nhóm các số để ra **tổng tròn trăm**.
 
-**Bước 1.** Quan sát bốn số hạng: $(-67)$ và $(-33)$ cộng lại được số tròn trăm, $125$ và $75$ cộng lại cũng được số tròn trăm.
+**Bước 1.** Quan sát bốn số hạng: $-67$ và $-33$ cộng lại được số tròn chục, $125$ và $75$ cộng lại cũng tròn.
 
 **Bước 2.** Dùng tính chất giao hoán và kết hợp để gom từng cặp: cặp hai số âm và cặp hai số dương.
 
-**Bước 3.** Tính tổng mỗi cặp (cộng hai số nguyên âm thì cộng phần số tự nhiên của chúng rồi đặt dấu "$-$" trước kết quả) rồi cộng hai kết quả.
+**Bước 3.** Tính tổng mỗi cặp (cộng hai số âm thì cộng hai số đối của chúng rồi đặt dấu trừ) rồi cộng hai kết quả.
 
-**Chú ý:** cộng hai số nguyên khác dấu thì lấy hiệu hai phần số tự nhiên (số lớn trừ số nhỏ) rồi đặt trước hiệu dấu của số có phần số tự nhiên lớn hơn.
+**Chú ý:** cộng số âm với số dương thì lấy số lớn trừ số nhỏ (theo giá trị không dấu) và mang dấu của số lớn hơn.
 
 **Phần 2. Trình bày**
 
@@ -34,13 +34,13 @@ $=100$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** số $3023$ có mặt cả ở ngoài lẫn trong ngoặc; **bỏ ngoặc** thì số $3023$ trong ngoặc đổi thành $+3023$, là số đối của $(-3023)$ ở ngoài nên hai số **triệt tiêu** nhau.
+**Mấu chốt:** trong ngoặc có $-3023$, ngoài ngoặc có $(-3023)$ nên **bỏ ngoặc** để hai số này **triệt tiêu** nhau.
 
-**Bước 1.** Nhận ra số $3023$ xuất hiện ở cả hai nơi: ngoài ngoặc là $(-3023)$, trong ngoặc là số bị trừ đi, nên chưa vội tính hiệu trong ngoặc.
+**Bước 1.** Nhận ra số $3023$ xuất hiện ở cả hai nơi, một nơi mang dấu âm và một nơi bị trừ đi, nên có thể rút gọn.
 
 **Bước 2.** Bỏ dấu ngoặc có dấu trừ đứng trước: đổi dấu mọi số hạng trong ngoặc.
 
-**Bước 3.** Nhóm hai số đối nhau để được tổng bằng 0, rồi tính nốt với số còn lại.
+**Bước 3.** Nhóm hai số hạng đối nhau để được 0, rồi tính nốt số còn lại.
 
 **Chú ý:** bỏ ngoặc có dấu trừ đằng trước thì **mọi** số hạng trong ngoặc đều đổi dấu, không chỉ số đầu tiên.
 
@@ -50,7 +50,7 @@ $(-3023)-(765-3023)$
 
 $=(-3023)-765+3023$
 
-$=[(-3023)+3023]-765$
+$=(-3023+3023)-765$
 
 $=0-765$
 
@@ -213,14 +213,15 @@ $x=11$
 
 ### Bài 2d | kho=dai | loai=tra_loi_ngan | dap_an=2
 **Đề:** Tìm số nguyên $x$, biết: $(x^2+9).(x-2)=0$
+**Chưa chắc:** lời giải dùng "bình phương của một số nguyên luôn không âm" và "tích bằng 0 thì có thừa số bằng 0" — hai điều này SGK Kết nối tri thức 6 chưa nêu thành quy tắc riêng (lý thuyết bản đồ K6 chưa phủ Chương III); đáp số $x=2$ chắc chắn.
 
 **Phần 1. Hướng dẫn**
 
 **Mấu chốt:** tích bằng 0 thì có một thừa số bằng 0; thừa số $x^2+9$ **không bao giờ bằng 0**.
 
-**Bước 1.** Nhận ra vế trái là tích của hai thừa số, vế phải bằng 0: hai số nguyên khác 0 nhân với nhau chỉ ra số dương hoặc số âm, nên phải có ít nhất một thừa số bằng 0.
+**Bước 1.** Nhận ra vế trái là tích của hai thừa số, vế phải bằng 0, nên ít nhất một thừa số phải bằng 0.
 
-**Bước 2.** Xét thừa số $x^2+9$: $x^2=x.x$ là tích của hai số nguyên cùng dấu (hoặc bằng 0 khi $x=0$) nên không âm, cộng thêm 9 thì luôn lớn hơn 0, loại thừa số này.
+**Bước 2.** Xét thừa số $x^2+9$: bình phương của số nguyên luôn không âm nên cộng thêm 9 thì luôn lớn hơn 0, loại thừa số này.
 
 **Bước 3.** Vậy thừa số còn lại bằng 0, từ đó tìm $x$ theo phép trừ (số bị trừ bằng hiệu cộng số trừ).
 
@@ -230,11 +231,9 @@ Thử lại: $(2^2+9).(2-2)=13.0=0$ (đúng).
 
 $(x^2+9).(x-2)=0$
 
-Vì $x^2=x.x\ge 0$ với mọi số nguyên $x$ nên $x^2+9\ge 9$, do đó $x^2+9\ne 0$.
+Vì $x^2\ge 0$ nên $x^2+9\ge 9$, do đó $x^2+9\ne 0$.
 
-Tích bằng 0 mà thừa số $x^2+9$ khác 0 nên thừa số còn lại bằng 0:
-
-$x-2=0$
+Suy ra $x-2=0$
 
 $x=0+2$
 
@@ -242,6 +241,7 @@ $x=2$
 
 ### Bài 3 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Một trường THCS tổ chức cho học sinh đi tham quan bằng ô tô. Khi xếp lên các xe 36 chỗ ngồi, xe 40 chỗ ngồi hay xe 45 chỗ ngồi thì các xe đều vừa đủ chỗ. Tính số học sinh đi tham quan của trường đó? Biết rằng số học sinh của trường đó khoảng 1000 đến 1100 học sinh. Nếu cả trường cùng đi xe 45 chỗ ngồi thì cần bao nhiêu xe để xếp đủ học sinh?
+**Chưa chắc:** "khoảng 1000 đến 1100" được hiểu là $1000\le x\le 1100$; trong khoảng này chỉ có một bội chung (1080) nên đáp số không phụ thuộc cách hiểu đóng hay mở hai đầu.
 
 **Phần 1. Hướng dẫn**
 
@@ -282,26 +282,27 @@ Vậy cần 24 xe 45 chỗ ngồi.
 ### Bài 4.1 | kho=hgt | loai=tu_luan | dap_an=—
 **Đề:** Trong các hình dưới đây, hình nào có tâm đối xứng? Hình nào có trục đối xứng?
 **Hình:** p1c4_1_lai.png
+**Chưa chắc:** kết luận dựa trên hình vẽ trong ảnh (xem như hình lí tưởng); lý thuyết bản đồ K6 chưa phủ Chương V (tính đối xứng) nên cách trình bày theo SGK KNTT 6, CEO xem khuôn.
 
 **Phần 1. Hướng dẫn**
 
 **Mấu chốt:** hình có **tâm đối xứng** khi quay nửa vòng quanh một điểm thì trùng với chính nó; có **trục đối xứng** khi gấp theo một đường thẳng thì hai nửa trùng nhau.
 
-**Bước 1.** Xét H1 (bông hoa có 8 cánh chụm tại một điểm): thử gấp theo đường thẳng đi qua điểm chụm và nằm giữa hai cánh kề nhau; rồi thử quay nửa vòng quanh điểm chụm, để ý hoa có số cánh chẵn nên mỗi cánh có một cánh nằm đối diện.
+**Bước 1.** Nhớ hai định nghĩa: tâm đối xứng (xoay nửa vòng quanh một điểm) và trục đối xứng (đường thẳng chia hình thành hai nửa chồng khít khi gấp).
 
-**Bước 2.** Xét H2 (các hình vuông lồng nhau, chung một tâm): hình vuông có tâm đối xứng là giao điểm hai đường chéo và có trục đối xứng, nên thử chính tâm chung đó và các đường thẳng đi qua nó.
+**Bước 2.** Xét từng hình về trục đối xứng: tìm đường thẳng mà gấp theo đó hai nửa của hình trùng nhau.
 
-**Bước 3.** Xét H3: thử gấp theo đoạn thẳng nằm ngang ở giữa hình; rồi thử quay nửa vòng, để ý một đầu của hình là đỉnh nhọn còn đầu kia là hai tam giác nhỏ.
+**Bước 3.** Xét từng hình về tâm đối xứng: tìm điểm mà xoay nửa vòng quanh nó hình vẫn trùng với chính nó, chú ý phần đầu và phần đuôi của hình có giống nhau không.
 
-**Chú ý:** một hình có thể có trục đối xứng mà không có tâm đối xứng, nên phải xét riêng hai câu hỏi cho từng hình.
+**Bước 4.** Tổng hợp kết quả thành hai danh sách: các hình có tâm đối xứng, các hình có trục đối xứng.
 
 **Phần 2. Trình bày**
 
-Hình H1 có tâm đối xứng (là điểm chụm của các cánh hoa) và có trục đối xứng.
+Hình H1 có tâm đối xứng (là tâm của bông hoa) và có trục đối xứng.
 
 Hình H2 có tâm đối xứng (là tâm chung của các hình vuông) và có trục đối xứng.
 
-Hình H3 có trục đối xứng (là đường thẳng chứa đoạn thẳng nằm ngang ở giữa hình) nhưng không có tâm đối xứng, vì quay nửa vòng thì đỉnh nhọn và hai tam giác nhỏ ở hai đầu đổi chỗ cho nhau, hình không trùng với chính nó.
+Hình H3 có trục đối xứng là đường thẳng nằm ngang qua thân cá, nhưng không có tâm đối xứng vì đầu và đuôi cá không giống nhau.
 
 Vậy các hình có tâm đối xứng là H1, H2; các hình có trục đối xứng là H1, H2, H3.
 
@@ -310,7 +311,7 @@ Vậy các hình có tâm đối xứng là H1, H2; các hình có trục đối
 a) Tính diện tích mảnh đất và sân khấu.
 b) Để trang trí sân khấu người ta phải trả cho mỗi mét vuông sân khấu là 500 000 đồng. Hỏi người ta phải chi hết bao nhiêu tiền để trang trí sân khấu?
 **Hình:** p2c4_4.png
-**Ghi chú:** Kích thước sân khấu không có trong lời đề, chỉ ghi trên hình: đáy lớn $20\ m$ (nằm trên cạnh mảnh đất, đánh dấu bằng cung nét đứt), đáy nhỏ $12\ m$, chiều cao $6\ m$ — câu bắt buộc đi kèm hình.
+**Chưa chắc:** hình ghi hai đáy của hình thang cân là $20\ m$ (đáy trên, nét đứt) và $12\ m$ (đáy dưới), chiều cao $6\ m$ — đọc theo hình.
 
 **Phần 1. Hướng dẫn**
 
@@ -371,4 +372,4 @@ Suy ra $A$ chia hết cho 7.
 - Bài 4 là vỏ gom hai bài toán khác nhau (đối xứng · diện tích hình thang cân) nên tách thành Bài 4.1 và Bài 4.2.
 - Bài 3 giữ chung một câu (bài lời văn, hai ý hỏi nối tiếp nhau).
 - Các bài tìm $x$ và tính có số nguyên (Chương III), tính đối xứng (Chương V), diện tích hình thang cân (Chương IV) chưa có lý thuyết trên bản đồ K6; lời giải theo SGK Kết nối tri thức 6, CEO xem khuôn ở lô này.
-- Bài 2d cần hai điều: bình phương của số nguyên không âm, và tích bằng 0 thì có thừa số bằng 0 — lời giải lập luận cả hai ngay trong bài từ quy tắc dấu của phép nhân số nguyên (Chương III).
+- Bài 2d dùng hai điều ngoài lý thuyết bản đồ (bình phương không âm, tích bằng 0) — đã ghi "Chưa chắc".

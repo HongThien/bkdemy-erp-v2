@@ -596,10 +596,10 @@ Số viên gạch cần dùng để lát kín sân là:
 
 $1200000:2500=480$ (viên)
 
-### Bài 5 | kho=dai | loai=tra_loi_ngan | dap_an=21
+### Bài 5 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Bạn Hùng mua 5 cây bút mỗi cây có giá là 7 nghìn đồng; 6 quyển vở mỗi quyển có giá là 24 nghìn đồng. Bạn đưa cho cô thu ngân 200 nghìn đồng. Hỏi bạn được cô thu ngân trả lại bao nhiêu tiền?
 **Ghi chú:** Đáp số tính theo đơn vị nghìn đồng (21 nghìn đồng, tức 21000 đồng).
-**Chưa chắc:** đề không nói đơn vị của đáp số nên học sinh có thể điền 21 (nghìn đồng) hoặc 21000 (đồng, 5 chữ số, không vừa 4 ô); đang để trả lời ngắn với đáp án 21 — cần quyết giữ trả lời ngắn hay chuyển tự luận (chỉ in).
+**Ghi chú:** Đáp số 21000 đồng có 5 chữ số, không vừa 4 ô trả lời ngắn (viết "21 nghìn đồng" thì học sinh không biết điền theo đơn vị nào) nên để tự luận (chỉ in).
 
 **Phần 1. Hướng dẫn**
 

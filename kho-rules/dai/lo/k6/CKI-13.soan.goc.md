@@ -155,7 +155,7 @@ D. $-10\ m$
 
 **Bước 3.** Thực hiện phép trừ hai số nguyên rồi đối chiếu với các phương án.
 
-**Chú ý:** lặn xuống nên không dùng phép cộng $(-20)+30$ — phép cộng đó cho ra 10 (phương án A là bẫy).
+**Chú ý:** lặn xuống nên không dùng phép cộng $(-20)+30$ (phương án D là bẫy).
 
 **Phần 2. Trình bày**
 
@@ -322,7 +322,7 @@ B. Hình 2
 C. Hình 3
 D. Hình 4
 **Hình:** p2c12_lai.png
-**Ghi chú:** Trên hình của đề gốc, nhãn "3cm" in ở khoảng giữa hình 2 và hình 3. Đó là chiều rộng của hình 2: hình 2 không còn nhãn nào khác, còn hình 3 đã có riêng đáy 5 cm và chiều cao 3 cm (cạnh xiên của hình 3 không thể bằng chiều cao). Đáp án D không phụ thuộc nhãn này vì hình 4 chỉ có 7,5 $cm^2$.
+**Chưa chắc:** nhãn "3cm" đặt giữa hình 2 và hình 3 (hình 2 không có nhãn nào khác cho cạnh thứ hai). Tôi hiểu đó là cạnh còn lại của hình chữ nhật (hình 2 là 5 cm và 3 cm); nếu không phải thì hình 2 không đủ dữ kiện tính. Với cách hiểu nào hình 4 cũng nhỏ nhất (7,5 $cm^2$) miễn cạnh còn lại của hình 2 lớn hơn 1,5 cm.
 
 **Phần 1. Hướng dẫn**
 
@@ -438,7 +438,9 @@ $=245-50+1$
 $=196$
 
 ### Bài 2a | kho=dai | loai=tra_loi_ngan | dap_an=-6
-**Đề:** Tìm $x$, biết: $x+30=24$
+**Đề:** Tìm số nguyên $x$, biết: $x+30=24$
+**Ghi chú:** Đề gốc chỉ in "Tìm $x$ biết"; vì $24<30$ nên không có số tự nhiên nào thoả, đã ghi rõ $x$ là số nguyên để câu có đáp số.
+**Chưa chắc:** đề không nói $x$ thuộc tập nào; tôi chọn số nguyên (đề cuối kì có chương số nguyên), đáp số $-6$.
 
 **Phần 1. Hướng dẫn**
 
@@ -448,7 +450,7 @@ $=196$
 
 **Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết.
 
-**Bước 3.** Vì số bị trừ nhỏ hơn số trừ nên lấy số lớn trừ đi số nhỏ rồi viết dấu trừ đằng trước kết quả.
+**Bước 3.** Vì số bị trừ nhỏ hơn số trừ nên lấy hiệu hai số bỏ dấu rồi viết dấu trừ đằng trước.
 
 Thử lại: $(-6)+30=24$ (đúng).
 
@@ -635,7 +637,7 @@ $\Rightarrow 5.(7n+10)\vdots d$ và $7.(5n+7)\vdots d$
 
 $\Rightarrow (35n+50)\vdots d$ và $(35n+49)\vdots d$
 
-$\Rightarrow [(35n+50)-(35n+49)]\vdots d$
+$\Rightarrow (35n+50)-(35n+49)\vdots d$
 
 $\Rightarrow 1\vdots d$
 
@@ -646,7 +648,7 @@ Vậy $7n+10$ và $5n+7$ là hai số nguyên tố cùng nhau.
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Đề do Phòng GD&ĐT huyện Chương Mỹ, không ghi tên trường và không có mã đề; 2 trang ảnh là MỘT đề đầy đủ (12 câu trắc nghiệm + 5 bài tự luận), không có phần riêng hệ A / hệ T nên không bỏ câu nào.
-- Bài 2a: đề gốc in "Tìm $x$ biết: $x+30=24$" (không nói $x$ thuộc tập nào) — giữ nguyên lời đề; đề cuối kì có chương số nguyên nên đáp số là $-6$.
-- Câu 12: nhãn "3cm" in giữa hình 2 và hình 3 là chiều rộng hình 2 (xem dòng Ghi chú ở câu); đáp án D không phụ thuộc nhãn này.
+- Bài 2a: đề gốc chỉ in "Tìm $x$ biết: $x+30=24$", không có số tự nhiên thoả; đã ghi rõ $x$ nguyên và đáp số $-6$ (xem dòng Chưa chắc ở câu).
+- Câu 12: nhãn "3cm" của hình 2 hơi mơ hồ (xem dòng Chưa chắc); đáp án D không đổi.
 - Câu 12 và Bài 4: ảnh máy cắt bị cụt chữ / thiếu nhãn "20 m" nên đã cắt lại từ PDF (`p2c12_lai.png`, `p2c4_lai.png`); câu 10 cũng cắt lại (`p1c10_lai.png`) vì ảnh cũ dính chữ của đề.
 - Bài 1c dùng $(-1)^{2024}$ (luỹ thừa của số nguyên âm) — lời giải giải thích bằng cặp $(-1).(-1)=1$, không dùng quy tắc ngoài SGK.

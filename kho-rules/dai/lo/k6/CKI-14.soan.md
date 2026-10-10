@@ -44,7 +44,7 @@ D. $\{0;-25;-24;24;25\}$
 
 **Bước 1.** Chia năm số thành nhóm số âm $-25;-24$, số 0 và nhóm số dương $24;25$.
 
-**Bước 2.** Xếp thứ tự trong nhóm số âm: số âm có phần số lớn hơn thì nhỏ hơn, nên $-25$ đứng trước $-24$.
+**Bước 2.** Xếp thứ tự trong nhóm số âm: số âm có phần số tự nhiên lớn hơn thì nhỏ hơn, nên $-25$ đứng trước $-24$.
 
 **Bước 3.** Ghép lại theo thứ tự số âm, số 0, số dương rồi đối chiếu với từng phương án.
 
@@ -85,7 +85,7 @@ Phương án C sai vì $10\vdots 5$ nhưng chữ số tận cùng là 0.
 
 Phương án D sai vì $4\vdots 2$ nhưng chữ số tận cùng là 4.
 
-Phương án B đúng: số chia hết cho 9 thì tổng các chữ số chia hết cho 9, nên cũng chia hết cho 3.
+Phương án B đúng: số chia hết cho 9 thì có tổng các chữ số chia hết cho 9, nên tổng các chữ số cũng chia hết cho 3, do đó số ấy chia hết cho 3.
 
 Chọn B.
 
@@ -119,7 +119,7 @@ Chọn D.
 ### Câu 5 | kho=dai | loai=trac_nghiem | dap_an=A
 **Đề:** Tổng của số nguyên âm lớn nhất và số nguyên dương nhỏ nhất là:
 A. 0
-B. -1
+B. $-1$
 C. 1
 D. 10
 
@@ -195,7 +195,7 @@ D. $400\ cm$
 
 Độ dài viền khung ảnh là chu vi của hình thoi:
 
-$20.4=80$ ($cm$)
+$20.4=80$ (cm)
 
 Chọn B.
 
@@ -206,7 +206,6 @@ B. H1, H2
 C. H1, H2, H3
 D. H1, H2, H3, H4
 **Hình:** p1c8_lai.png
-**Chưa chắc:** đáp án chọn theo hình vẽ biển báo trong đề (H1, H2, H3 có trục đối xứng; H4 không vì gạch chéo làm mất đối xứng); đề không có đáp án để đối chiếu.
 
 **Phần 1. Hướng dẫn**
 
@@ -226,9 +225,9 @@ H1 có trục đối xứng là đường thẳng nằm ngang qua tâm và đư�
 
 H2 có trục đối xứng là đường thẳng chứa gạch chéo.
 
-H3 có trục đối xứng là đường thẳng nằm dọc theo các vạch song song.
+H3 có trục đối xứng là đường thẳng chứa vạch chéo ở chính giữa.
 
-H4 không có trục đối xứng vì gạch chéo và mũi tên không đối xứng qua bất kì đường thẳng nào.
+H4 không có trục đối xứng: mũi tên chỉ có một trục đối xứng là đường thẳng đứng qua tâm, nhưng gấp theo đường thẳng đó thì hai nửa của gạch chéo không chồng khít lên nhau.
 
 Vậy các biển báo có trục đối xứng là H1, H2, H3.
 
@@ -245,7 +244,7 @@ Chọn C.
 
 **Bước 1.** Làm phép trừ đầu tiên $2-7$: lấy số lớn trừ số nhỏ rồi đặt dấu âm vì số bị trừ nhỏ hơn số trừ.
 
-**Bước 2.** Cộng kết quả với số $(-4)$: cộng hai số nguyên âm thì cộng hai phần số rồi giữ dấu âm.
+**Bước 2.** Cộng kết quả với số $(-4)$: cộng hai số nguyên âm thì cộng hai phần số tự nhiên rồi đặt dấu âm trước kết quả.
 
 **Bước 3.** Kiểm lại bằng cách cộng gộp các số âm trước: $-7$ và $-4$ rồi cộng với 2.
 
@@ -395,7 +394,7 @@ $x=-9$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** nhiệt độ **giảm** thì cộng số âm, **tăng** thì cộng số dương; làm lần lượt hai giai đoạn theo thời gian.
+**Mấu chốt:** nhiệt độ **giảm** thì trừ đi, **tăng** thì cộng thêm; làm lần lượt hai giai đoạn theo thời gian.
 
 **Bước 1.** Giai đoạn 1 (từ 2 giờ đến 6 giờ): đếm số giờ rồi tính tổng nhiệt độ đã giảm.
 
@@ -434,7 +433,7 @@ Vậy lúc 9 giờ sáng nhiệt độ tại Thủ đô Moskva là $-15^\circ C$
 
 **Mấu chốt:** "chia đều và chia hết" nghĩa là số túi là **ước chung** của 84, 72, 120; "nhiều nhất" nghĩa là **ƯCLN**.
 
-**Bước 1.** Gọi số túi là $x$ và nêu điều kiện: $x$ phải chia hết cả 84, 72 và 120, nên $x$ là ước chung của ba số.
+**Bước 1.** Gọi số túi là $x$ và nêu điều kiện: cả 84, 72 và 120 đều phải chia hết cho $x$, nên $x$ là ước chung của ba số.
 
 **Bước 2.** Vì cần số túi nhiều nhất nên $x$ là ƯCLN của ba số; phân tích từng số ra thừa số nguyên tố.
 
@@ -487,7 +486,7 @@ c) Biết mỗi $m^2$ (mét vuông) chi phí trồng cà chua hết 15 000 đồ
 
 **Bước 5.** Lấy doanh thu trừ tổng chi phí để ra tiền lãi.
 
-**Chú ý:** diện tích trồng cà chua là $23.13$, không phải $25.15-2.2$; tiền lãi tính trên phần diện tích trồng cà chua chứ không tính trên cả vườn.
+**Chú ý:** lối đi có dạng chữ L, hai nhánh chung nhau một ô vuông ở góc vườn — nếu tính diện tích lối đi rồi lấy diện tích vườn trừ đi thì không được tính ô góc hai lần; tiền lãi tính trên phần diện tích trồng cà chua chứ không tính trên cả vườn.
 
 **Phần 2. Trình bày**
 
@@ -558,7 +557,8 @@ Vậy $\text{ƯCLN}(a,b)=1$ hay số bông hoa điểm tốt của Mai và Đào
 
 - Đề gồm đúng một bài (2 trang), phần trắc nghiệm 8 câu và tự luận 6 bài, không có phần riêng hệ A / hệ T, không bỏ câu nào.
 - Đề gốc không ghi tên trường, chỉ ghi "Phòng GD&ĐT Quốc Oai" nên tên đề ghi theo phòng giáo dục; đề không ghi bộ sách, để mặc định KNTT.
-- Câu 8: chỉ có H1, H2, H3 có trục đối xứng theo hình vẽ — phụ thuộc vào cách đọc hình biển báo, đã ghi `Chưa chắc`.
+- Câu 8: H1, H2, H3 có trục đối xứng, H4 không — trạm soát đã cắt phóng to từng biển từ PDF (400 và 600 dpi) và giải độc lập ra cùng đáp án C.
 - Bài 3: đáp số là $-15$ (độ C), nhập `tra_loi_ngan` vì chỉ có một số, không cần đổi đơn vị.
-- Bài 5: hình vẽ cho thấy lối đi nằm ở một cạnh dài (phía trên) và một cạnh ngắn (bên phải), nên phần trồng cà chua là $23\ m$ nhân $13\ m$.
+- Bài 5: hình vẽ cho thấy lối đi nằm ở một cạnh dài (phía trên) và một cạnh ngắn (bên phải), nên phần trồng cà chua là $23\ m$ nhân $13\ m$ (trạm soát đã kiểm lại trên hình cắt 400 dpi).
+- Số nguyên (Câu 2, Câu 5, Bài 1, Bài 2, Bài 3), hình phẳng (Câu 7, Bài 5) và trục đối xứng (Câu 8) thuộc Chương III–V — bản đồ K6 chưa có lý thuyết (`k6.md` §1 luật 3, câu hỏi Q5 còn mở); lời giải theo SGK Kết nối tri thức 6, khuôn trình bày của các nhóm này chờ CEO duyệt.
 - Bài 6: số bông hoa là số tự nhiên dương (7q+3, 9q+4 đều lớn hơn 0 với mọi $q\in\mathbb{N}$).

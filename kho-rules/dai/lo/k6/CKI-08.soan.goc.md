@@ -102,7 +102,7 @@ B. 376 cm
 C. 248 cm
 D. 62 cm
 **Hình:** p1c4_lai.png
-**Chưa chắc:** đề có hai cách hiểu và cả hai đều có trong phương án. Đếm thanh của cả chiếc đèn (4 cạnh đáy lớn, 4 cạnh đáy nhỏ, 4 cạnh bên — mỗi cạnh bên là một thanh chung cho hai mặt kề nhau) ⇒ 248 cm (C). Cộng chu vi bốn mặt (mỗi cạnh bên bị tính hai lần) ⇒ $94.4=376$ cm (B). Hai trạm giải độc lập đều chọn C vì đề hỏi thanh của "một chiếc đèn", tả "thanh kim loại để làm một cạnh bên", và hình minh hoạ cho thấy mỗi cạnh bên chỉ có một thanh. Chưa có đáp án của trường để đối chiếu.
+**Chưa chắc:** đề không nói rõ hai mặt kề nhau có dùng chung thanh cạnh bên hay không. Lời giải chọn cách hiểu theo hình thật: cái đèn là một khối có 4 thanh cạnh bên, mỗi thanh dùng chung cho 2 mặt kề nhau ⇒ 248 cm (C). Nếu đề tính riêng từng mặt (không dùng chung) thì $94.4=376$ (B). Phương án C là phương án đã loại được cả hai bẫy "tính một mặt" (94) và "quên một cạnh bên" (62) nên chọn C, nhưng CEO xem kĩ.
 
 **Phần 1. Hướng dẫn**
 
@@ -169,7 +169,7 @@ $25=5^2$; $12=2^2.3$
 Hai số không có thừa số nguyên tố chung nên $\text{ƯCLN}(25,12)=1$.
 
 ### Câu 7 | kho=dai | loai=tra_loi_ngan | dap_an=-6
-**Đề:** Nhiệt độ buổi sáng của phòng ướp lạnh là $-11^{\circ}C$ và nhiệt độ buổi chiều tăng $5^{\circ}C$ so với buổi sáng. Nhiệt độ buổi chiều của phòng ướp lạnh là: .............
+**Đề:** Nhiệt độ buổi sáng của phòng ướp lạnh là $-11^{\circ}C$ và nhiệt độ buổi chiều tăng $5^{\circ}C$ so với buổi sáng. Nhiệt độ buổi chiều của phòng ướp lạnh (đơn vị $^{\circ}C$) là: .............
 
 **Phần 1. Hướng dẫn**
 
@@ -179,7 +179,7 @@ Hai số không có thừa số nguyên tố chung nên $\text{ƯCLN}(25,12)=1$.
 
 **Bước 2.** Viết số âm trong ngoặc rồi lập phép cộng hai số nguyên khác dấu.
 
-**Bước 3.** Cộng hai số nguyên khác dấu: lấy phần số tự nhiên lớn hơn trừ phần số tự nhiên nhỏ hơn, rồi đặt trước kết quả dấu của số có phần số tự nhiên lớn hơn.
+**Bước 3.** Cộng hai số nguyên khác dấu: lấy số có phần số tự nhiên lớn hơn trừ số kia rồi đặt dấu của số lớn hơn.
 
 **Chú ý:** nhiệt độ vẫn còn dưới 0 nên kết quả phải là số âm.
 
@@ -190,7 +190,7 @@ Nhiệt độ buổi chiều của phòng ướp lạnh là:
 $(-11)+5=-6$ ($^{\circ}C$)
 
 ### Câu 8 | kho=hgt | loai=tra_loi_ngan | dap_an=100
-**Đề:** Diện tích của hình vuông có chu vi bằng 40 cm là: .............
+**Đề:** Diện tích của hình vuông có chu vi bằng 40 cm (đơn vị $cm^2$) là: .............
 
 **Phần 1. Hướng dẫn**
 
@@ -241,6 +241,7 @@ $=-100$
 
 ### Bài 1b | kho=dai | loai=tra_loi_ngan | dap_an=-300
 **Đề:** Thực hiện phép tính: $12.87+13.12+(-1500)$
+**Chưa chắc:** trong ảnh các dấu "." là dấu chấm nằm dưới dòng; hiểu là dấu nhân theo cách viết của đề (đúng quy ước k6.md), vì khi đó $12.87+13.12$ có thừa số chung 12 và ra số tròn trăm. Hiểu là số thập phân thì $12,87+13,12=25,99$ không gọn.
 
 **Phần 1. Hướng dẫn**
 
@@ -252,7 +253,7 @@ $=-100$
 
 **Bước 3.** Tính tổng trong ngoặc được số tròn trăm rồi nhân với 12.
 
-**Bước 4.** Cộng kết quả với số $(-1500)$: cộng hai số nguyên khác dấu thì lấy phần số tự nhiên lớn hơn trừ phần số tự nhiên nhỏ hơn, rồi đặt trước kết quả dấu của số có phần số tự nhiên lớn hơn.
+**Bước 4.** Cộng kết quả với số $(-1500)$: cộng hai số nguyên khác dấu thì lấy số có phần số tự nhiên lớn hơn trừ số kia và đặt dấu của số đó.
 
 **Phần 2. Trình bày**
 
@@ -270,6 +271,7 @@ $=-300$
 
 ### Bài 1c | kho=dai | loai=tra_loi_ngan | dap_an=31
 **Đề:** Thực hiện phép tính: $\left\{62.5-\left[13+(10-7)^3\right]\right\}:9+2025^0$
+**Chưa chắc:** ảnh in "62.5" với dấu chấm dưới dòng, hiểu là $62.5$ = 62 nhân 5 = 310 (cùng quy ước dấu nhân với Bài 1b); khi đó $270:9=30$ chia hết, gọn. Hiểu là số thập phân 62,5 thì $62,5-40=22,5$ rồi $22,5:9=2,5$ không phù hợp mức lớp 6 học kì 1.
 
 **Phần 1. Hướng dẫn**
 
@@ -582,6 +584,7 @@ Vậy $p=5$, $q=2$.
 **Đề:** **Tấm thảm Sierpinski** là công trình khoa học nổi tiếng của nhà toán học Waclaw Sierpinski. Đây là loại hình học tự đồng dạng. Tấm thảm Sierpinski được tạo ra như sau: Đầu tiên cho một hình vuông. Ta sẽ chia hình vuông này thành 9 phần bằng nhau, rồi tô đen phần chính giữa. Tiếp theo, ta lại chia 8 phần còn lại, mỗi phần được chia thành 9 phần, rồi lại tô đen phần chính giữa (nhỏ hơn) của chúng. Cứ như thế, ta được tấm thảm Sierpinski.
 Biết rằng ban đầu tấm thảm là hình vuông có cạnh 243 cm. Hỏi rằng khi chia đến lần thứ tư thì tổng diện tích các phần tô đen là bao nhiêu $cm^2$?
 **Hình:** p3c5_lai.png
+**Chưa chắc:** "lần thứ tư" hiểu là bước chia thứ tư ứng với hình thứ tư trong bốn hình của đề (hình 1 sau lần chia đầu tiên). Cách hiểu này khớp bốn hình đã cho. Phân kho: bài tính diện tích các hình vuông nhỏ dần nên xếp `hgt`, nhưng cũng có thể xếp `dai` (toán thực tế về số).
 
 **Phần 1. Hướng dẫn**
 
@@ -623,9 +626,7 @@ $6561+5832+5184+4608=22185$ ($cm^2$)
 
 - Đề kiểm tra cuối học kì 1 Toán 6 năm học 2025–2026, THCS Ngô Sĩ Liên (phường Cửa Nam, Hà Nội), đề chính thức, 2 trang, ngày 22/12/2025 — chỉ một đề, không có trang của đề khác; không có phần riêng bằng tiếng Anh nên không bỏ câu nào.
 - Cấu trúc: Phần 1 trắc nghiệm 4 câu · Phần 2 trả lời ngắn 4 câu · Phần 3 tự luận 5 bài (Bài 1 tách 3 ý, Bài 2 tách 5 ý, Bài 5 là vỏ gom hai bài toán khác nhau nên nhập thành Bài 5.1 và Bài 5.2). Tổng 20 câu.
-- Cả đề dùng dấu chấm làm dấu nhân (Bài 1b: $12.87$, $13.12$; Bài 1c: $62.5$), không có số thập phân — đề viết số thập phân bằng dấu phẩy ("2,0 điểm", "1,5 điểm"), và đọc thành phép nhân thì Bài 1b có thừa số chung 12, Bài 1c chia hết cho 9.
+- Cả đề dùng dấu chấm làm dấu nhân (62.5, 12.87…), không có số thập phân.
 - Bài 2.1 (số nguyên $x$) và Bài 1a, Bài 2.2a dùng phép cộng số nguyên (Chương III); nội dung đã học trong phạm vi cuối kì 1.
-- Câu cần xem kĩ: Câu 4 (248 hay 376 — đề không nói rõ khung dùng chung cạnh bên; cả hai số đều có trong phương án).
-- Bài 5.2: "tổng diện tích các phần tô đen khi chia đến lần thứ tư" tính cộng dồn cả bốn lần (bốn hình của đề ứng với lần 1 đến lần 4); xếp kho `hgt` vì là bài tính diện tích hình vuông.
-- Câu 7, Câu 8 (trả lời ngắn): đề không ghi đơn vị của ô trả lời; đáp án lưu là $-6$ (độ C) và $100$ ($cm^2$) — đơn vị duy nhất hợp với câu hỏi.
+- Câu cần xem kĩ: Câu 4 (248 hay 376 — đề không nói rõ khung dùng chung cạnh bên), Bài 5.2 (cách hiểu "lần thứ tư" và phân kho).
 - Bài 4: số đo hai đường chéo hình thoi (6 m và 4 m) đọc từ hình vẽ (ba hình thoi nối đỉnh nhau trải hết chiều dài 18 m, chạm hai cạnh trên và dưới); đề không ghi số này bằng chữ.

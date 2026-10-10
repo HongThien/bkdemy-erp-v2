@@ -8,7 +8,7 @@ bo_sach: KNTT
 **Đề:** Cho tập hợp $M=\{x\in\mathbb{N}\mid -4<x\le 5\}$
 a) Viết tập hợp $M$ bằng cách liệt kê các phần tử.
 b) Tính tổng các phần tử của tập hợp $M$.
-**Chưa chắc:** Đề in chắc chắn là $x\in N$ (đã soi ảnh 600 dpi và lớp chữ của PDF — không phải $Z$), nhưng điều kiện $-4<x$ chỉ có ý nghĩa với số nguyên nên nhiều khả năng người ra đề định viết $x\in\mathbb{Z}$. Đang giữ đúng chữ in (số tự nhiên): $M=\{0;1;2;3;4;5\}$, tổng 15. Nếu CEO muốn sửa đề thành $x\in\mathbb{Z}$ thì $M=\{-3;-2;-1;0;1;2;3;4;5\}$ và tổng bằng 9 — phải viết lại lời giải.
+**Chưa chắc:** Đề in $x\in\mathbb{N}$ nhưng điều kiện $-4<x$ chỉ có ý nghĩa với số nguyên. Giữ đúng đề (số tự nhiên) nên $M=\{0;1;2;3;4;5\}$, tổng 15; nếu đề thật ra là $x\in\mathbb{Z}$ thì $M=\{-3;-2;-1;0;1;2;3;4;5\}$ và tổng bằng 9.
 
 **Phần 1. Hướng dẫn**
 
@@ -69,11 +69,11 @@ $x=40$
 
 **Bước 1.** Nhận ra vế trái là tích của hai thừa số $(x+7)$ và $(x-5)$, vế phải bằng 0.
 
-**Bước 2.** Cho từng thừa số bằng 0, được hai bài tìm $x$ riêng: một bài có $x$ là số hạng, một bài có $x$ là số bị trừ.
+**Bước 2.** Cho từng thừa số bằng 0, được hai phương trình riêng để giải.
 
-**Bước 3.** Làm từng bài bằng cách tìm số hạng (hoặc số bị trừ) chưa biết, rồi kết luận cả hai giá trị của $x$.
+**Bước 3.** Giải mỗi phương trình bằng cách tìm số hạng (hoặc số bị trừ) chưa biết, rồi kết luận cả hai giá trị của $x$.
 
-**Chú ý:** phải lấy **cả hai** giá trị của $x$, bỏ một giá trị là thiếu đáp án.
+**Chú ý:** phải lấy **cả hai** nghiệm, bỏ một nghiệm là thiếu đáp án.
 
 **Phần 2. Trình bày**
 
@@ -98,7 +98,7 @@ Vậy $x\in\{-7;5\}$.
 
 **Bước 2.** Viết 49 thành luỹ thừa của 7, rồi cho số mũ hai vế bằng nhau.
 
-**Bước 3.** Từ đẳng thức của hai số mũ, tìm $x$ bằng cách tìm số bị trừ $2x$ trước rồi tìm thừa số chưa biết.
+**Bước 3.** Giải phương trình số mũ bằng cách tìm số bị trừ rồi tìm thừa số chưa biết.
 
 Thử lại: $7^{2.4-6}=7^2=49$ (đúng).
 
@@ -208,13 +208,13 @@ $=-900$
 
 **Mấu chốt:** hai tích có **chung thừa số 47** nên đặt thừa số chung, sau khi đưa phép trừ về phép cộng.
 
-**Bước 1.** Quan sát hai tích $47.69$ và $31.(-47)$: một tích có thừa số 47, tích kia có thừa số $-47$, chỉ khác nhau về dấu.
+**Bước 1.** Quan sát thấy cả hai tích đều có thừa số 47, một tích nhân với $-31$ nên dạng $a.b-c.a$ có thể đổi dấu.
 
 **Bước 2.** Trừ cho một tích âm thì thành cộng một tích dương, viết lại phép tính cho dễ nhìn.
 
 **Bước 3.** Đặt thừa số chung 47 ra ngoài ngoặc rồi tính tổng trong ngoặc trước.
 
-**Chú ý:** $31.(-47)=-(31.47)$ là một số âm, nên trừ đi $31.(-47)$ chính là cộng với $31.47$.
+**Chú ý:** $-31.(-47)=+31.47$ vì nhân hai số nguyên cùng dấu.
 
 **Phần 2. Trình bày**
 
@@ -272,7 +272,7 @@ $=596$
 
 **Phần 2. Trình bày**
 
-Gọi số học sinh của trường là $x$ (em) ($x\in\mathbb{N}^*$, $500\le x\le 600$).
+Gọi số học sinh của trường là $x$ (em) ($500\le x\le 600$).
 
 Vì xếp thành 12 hàng, 18 hàng, 28 hàng đều vừa đủ nên $x\in\text{BC}(12;18;28)$.
 
@@ -328,7 +328,7 @@ c) Người ta rào phần đất hình chữ nhật $ABCD$, phần còn lại h
 - Tính diện tích đất trồng hoa hướng dương?
 - Nếu mỗi túi hạt giống hoa gieo vừa đủ trên $56\ m^2$ đất thì cần bao nhiêu túi hạt giống để gieo hết phần đất đó?
 **Hình:** p1b5_hinh.png
-**Ghi chú:** Đề gốc in sai "dáy nhỏ" và "khu đấthinh thang cân" — đã sửa thành "đáy nhỏ" và "khu đất hình thang cân".
+**Ghi chú:** Đề gốc in sai "khu đấthinh thang cân" — đã sửa thành "khu đất hình thang cân".
 
 **Phần 1. Hướng dẫn**
 
@@ -384,7 +384,7 @@ $168:56=3$ (túi)
 
 **Bước 4.** Thay $n$ vừa tìm vào $5n+20$ và $n+3$ để ra số vở và số bút.
 
-Thử lại: với $n=2$ thì $5.2+20=30$ và $2+3=5$, mà $30:5=6$ nên $30\vdots 5$ (đúng).
+Thử lại: số vở chia cho số bút là một số tự nhiên.
 
 **Phần 2. Trình bày**
 
@@ -403,7 +403,6 @@ Khi đó số vở là $5.2+20=30$ (quyển), số bút là $2+3=5$ (cái).
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Không bỏ câu nào; đề không có phần riêng bằng tiếng Anh. Đề 1 trang, chỉ có tự luận, một đề duy nhất (xem ảnh trang đầy đủ).
-- Bài 1: đề in "1)" mà không có "2)" (đã bỏ số "1)"); kí hiệu tập hợp in là $N$ — xem dòng `Chưa chắc` của Bài 1.
 - Bài 4 là hai bài toán khác hẳn nhau (lời văn bội chung / tìm chữ số) nên tách thành Bài 4.1 và Bài 4.2.
 - Các câu thuộc Chương III (số nguyên: quy tắc nhân, bỏ ngoặc có dấu trừ) và Chương IV (công thức diện tích hình thang) mà lý thuyết bản đồ K6 chưa phủ (`k6.md` §1 luật 3) — lời giải dùng đúng quy tắc SGK Kết nối tri thức 6, CEO soát lại khuôn.
 - Bài 2b (tích bằng 0 thì một thừa số bằng 0) và Bài 6 (tách $5n+20=5.(n+3)+5$) là dạng quen thuộc nhưng không có khuôn trên bản đồ; Bài 6 theo nhóm $an+b\vdots cn+d$ (NNB00911).

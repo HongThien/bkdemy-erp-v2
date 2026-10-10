@@ -43,7 +43,7 @@ D. Sao Hỏa
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** các nhiệt độ đều là số nguyên âm, và trong hai số nguyên âm, số nào có phần số tự nhiên (bỏ dấu trừ) lớn hơn thì số đó nhỏ hơn.
+**Mấu chốt:** các nhiệt độ đều là số nguyên âm, và số nguyên âm có giá trị tuyệt đối càng lớn thì càng nhỏ.
 
 **Bước 1.** Đọc bảng, ghi lại nhiệt độ của từng hành tinh: cả bốn đều là số nguyên âm.
 
@@ -115,11 +115,9 @@ $15-5+3=13$ không chia hết cho 3.
 
 $7.3+120=21+120=141$, có $1+4+1=6\vdots 3$ nên $141\vdots 3$.
 
-$14.123:2=1722:2=861$, có $8+6+1=15\vdots 3$ nên $861\vdots 3$.
+$14.123:2=861$, có $8+6+1=15\vdots 3$ nên $861\vdots 3$.
 
-$6.4-12.2=24-24=0$, mà $0\vdots 3$.
-
-Vậy chỉ có kết quả của phép tính $15-5+3$ không chia hết cho 3.
+$6.4-12.2=24-24=0$ nên $0\vdots 3$.
 
 Chọn A.
 
@@ -164,7 +162,7 @@ D. $\{2;3\}$
 
 **Mấu chốt:** ước chung là số vừa là ước của 6 vừa là ước của 9.
 
-**Bước 1.** Liệt kê tất cả các ước của 6 bằng cách chia 6 lần lượt cho các số từ 1 đến 6, phép chia nào hết thì số chia là ước.
+**Bước 1.** Liệt kê tất cả các ước của 6 bằng cách thử chia 6 cho 1, 2, 3, 6.
 
 **Bước 2.** Liệt kê tất cả các ước của 9 bằng cách thử chia 9 cho các số nhỏ hơn hoặc bằng 9.
 
@@ -256,7 +254,7 @@ Chọn D.
 
 **Mấu chốt:** trong tổng có hai số đối nhau là $-33$ và $33$, còn $55$ và $45$ ghép thành số tròn chục.
 
-**Bước 1.** Nhận ra $-33$ và $33$ là hai số đối nhau, mà tổng của hai số đối nhau luôn bằng 0.
+**Bước 1.** Nhận ra hai số đối nhau $-33$ và $33$, tổng của chúng triệt tiêu về một giá trị đặc biệt.
 
 **Bước 2.** Dùng tính chất giao hoán và kết hợp để gom $55$ với $45$ và gom $-33$ với $33$.
 
@@ -420,25 +418,24 @@ Vậy có thể chia nhiều nhất 16 nhóm, mỗi nhóm có 3 học sinh lớp
 a) Tính diện tích mảnh vườn mới.
 b) Bà Tư định cứ 5 mét vuông thì trồng một cây quất. Biết một cây quất giống có giá 30 000 đồng. Tính số tiền bà Tư cần để mua đủ số cây giống trồng vào mảnh vườn mới.
 **Hình:** p2c4_1.png
-**Ghi chú:** Hình vẽ: $AB=15$ m, $AD=20$ m, $ND=CM=3$ m; hình không đánh dấu góc vuông — chiều cao $AD$ suy từ $ABCD$ là hình chữ nhật. Lời giải chưa có hình vẽ lại (đề yêu cầu HS vẽ lại hình vào bài làm).
+**Ghi chú:** Hình vẽ: $AB=15$ m, $AD=20$ m, $DN=CM=3$ m. Lời giải chưa có hình vẽ lại (đề yêu cầu HS vẽ lại hình vào bài làm).
+**Chưa chắc:** Diện tích hình thang cân không có công thức riêng trong SGK Kết nối tri thức 6 — lời giải ghép từ hình chữ nhật và hai tam giác vuông (kiến thức tiểu học), theo hình vẽ giả định $AD\perp DN$ và $BC\perp CM$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** ý 1 hỏi mảnh vườn chữ nhật ban đầu; mảnh vườn mới là hình thang cân $ABMN$ có đáy nhỏ $AB$, đáy lớn $NM$ và chiều cao chính là cạnh $AD$ của hình chữ nhật.
+**Mấu chốt:** chu vi cho mảnh vườn chữ nhật ban đầu; mảnh vườn mới là hình chữ nhật ghép thêm hai tam giác vuông hai bên, rồi từ diện tích tính số cây và số tiền.
 
 **Bước 1.** Ý 1: tính chu vi hình chữ nhật bằng cách lấy chiều dài cộng chiều rộng rồi nhân 2.
 
-**Bước 2.** Ý 2a: tìm đáy lớn từ hình vẽ: bốn điểm $N$, $D$, $C$, $M$ thẳng hàng nên $NM$ bằng tổng ba đoạn $ND$, $DC$, $CM$, trong đó $DC=AB$ vì $ABCD$ là hình chữ nhật.
+**Bước 2.** Ý 2a: chia mảnh vườn mới thành ba phần gồm hình chữ nhật $ABCD$ và hai tam giác vuông ở hai bên, nhìn các kích thước trên hình vẽ.
 
-**Bước 3.** Xác định chiều cao: $ABCD$ là hình chữ nhật nên $AD$ vuông góc với $DC$, do đó $AD$ là chiều cao của hình thang.
+**Bước 3.** Tính diện tích từng phần: hình chữ nhật bằng dài nhân rộng, tam giác vuông bằng nửa tích hai cạnh góc vuông, hai tam giác bằng nhau vì hình thang cân.
 
-**Bước 4.** Tính diện tích hình thang bằng cách lấy tổng độ dài hai đáy nhân với chiều cao rồi chia cho 2.
+**Bước 4.** Cộng diện tích ba phần để được diện tích mảnh vườn mới.
 
-**Bước 5.** Ý 2b: lấy diện tích mảnh vườn mới chia cho 5 để ra số cây, rồi nhân với giá một cây để ra số tiền.
+**Bước 5.** Ý 2b: lấy diện tích mảnh vườn chia cho 5 để ra số cây, rồi nhân với giá một cây để ra số tiền.
 
-**Chú ý:** đáy lớn là cả đoạn $NM$ chứ không phải $DC$; chiều cao là $AD$ chứ không phải cạnh bên $AN$.
-
-Thử lại: mảnh vườn mới gồm hình chữ nhật $ABCD$ và hai tam giác vuông $ADN$, $BCM$ nên diện tích là $20.15+3.20:2+3.20:2=360$ ($m^2$) (đúng).
+**Chú ý:** hai tam giác ở hai bên có cạnh góc vuông 3 m và 20 m, không phải 15 m.
 
 **Phần 2. Trình bày**
 
@@ -446,15 +443,17 @@ Thử lại: mảnh vườn mới gồm hình chữ nhật $ABCD$ và hai tam gi
 
 $(20+15).2=70$ (m)
 
-2) a) Vì $ABCD$ là hình chữ nhật nên $DC=AB=15$ m và $AD$ vuông góc với $NM$, do đó $AD=20$ m là chiều cao của hình thang cân $ABMN$.
+2) a) Diện tích hình chữ nhật $ABCD$ là:
 
-Độ dài đáy lớn $NM$ là:
+$20.15=300$ ($m^2$)
 
-$3+15+3=21$ (m)
+Diện tích mỗi tam giác vuông $ADN$ và $BCM$ là:
+
+$3.20:2=30$ ($m^2$)
 
 Diện tích mảnh vườn mới là:
 
-$(15+21).20:2=360$ ($m^2$)
+$300+30+30=360$ ($m^2$)
 
 b) Số cây quất cần trồng là:
 
@@ -464,33 +463,35 @@ Số tiền bà Tư cần để mua cây giống là:
 
 $72.30000=2160000$ (đồng)
 
-### Bài V | kho=dai | loai=tra_loi_ngan | dap_an=53
-**Đề:** Trong buổi lễ sơ kết học kì I của trường A, số phần thưởng của học sinh khối lớp 6 là số tự nhiên nhỏ nhất thỏa mãn khi chia cho 3 thì dư 2, khi chia cho 5 thì dư 3, khi chia cho 7 dư 4. Tính số phần thưởng của học sinh khối lớp 6?
+### Bài V | kho=dai | loai=tu_luan | dap_an=—
+**Đề:** Trong buổi lễ sơ kết học kì 1 của trường A, số phần thưởng của học sinh khối lớp 6 là số tự nhiên nhỏ nhất thỏa mãn khi chia cho 3 thì dư 2, khi chia cho 5 thì dư 3, khi chia cho 7 dư 4. Tính số phần thưởng của học sinh khối lớp 6?
 **Ghi chú:** Đề gốc in "phẩn thưởng" — đã sửa thành "phần thưởng".
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** gấp đôi các số dư 2, 3, 4 thì được 4, 6, 8 — mỗi số hơn số chia tương ứng đúng 1 đơn vị, nên $2n$ chia cho 3, 5, 7 đều dư 1, tức $2n-1$ chia hết cho cả ba số.
+**Mấu chốt:** nhân đôi số cần tìm để ba số dư cùng "thiếu 1" so với số chia, khi đó một biểu thức chia hết cho cả 3, 5, 7.
 
 **Bước 1.** Gọi số cần tìm là $n$ rồi viết ba điều kiện: $n-2$ chia hết cho 3, $n-3$ chia hết cho 5, $n-4$ chia hết cho 7.
 
-**Bước 2.** Nhân đôi từng hiệu rồi cộng thêm đúng số chia, ví dụ $2.(n-2)+3$, để cả ba biểu thức cùng trở thành $2n-1$.
+**Bước 2.** Thử nhân đôi từng số rồi cộng thêm số chia để ba biểu thức đều về dạng $2n-1$, ví dụ $2.(n-2)+3$.
 
 **Bước 3.** Dùng tính chất chia hết của tổng để kết luận $2n-1$ chia hết cho cả 3, 5, 7, tức là bội chung của ba số.
 
 **Bước 4.** Tìm bội chung nhỏ nhất khác 0 của 3, 5, 7 rồi suy ra $n$ nhỏ nhất, nhớ thử lại với cả ba điều kiện.
 
-**Chú ý:** $2n-1$ là số dương vì $n$ không nhỏ hơn 4 (chia cho 7 dư 4); tìm được $n$ rồi phải thử lại cả ba phép chia.
+**Chú ý:** $2n-1$ là số dương vì $n$ phải lớn hơn 4 (chia cho 7 dư 4).
+
+Thử lại: $53=3.17+2=5.10+3=7.7+4$ (đúng).
 
 **Phần 2. Trình bày**
 
 Gọi số phần thưởng của học sinh khối 6 là $n$ ($n\in\mathbb{N}$).
 
-Vì $n$ chia 3 dư 2 nên $(n-2)\vdots 3$, suy ra $[2.(n-2)+3]\vdots 3$ hay $(2n-1)\vdots 3$.
+Vì $n$ chia 3 dư 2 nên $(n-2)\vdots 3$, suy ra $2n-1=2.(n-2)+3\vdots 3$.
 
-Vì $n$ chia 5 dư 3 nên $(n-3)\vdots 5$, suy ra $[2.(n-3)+5]\vdots 5$ hay $(2n-1)\vdots 5$.
+Vì $n$ chia 5 dư 3 nên $(n-3)\vdots 5$, suy ra $2n-1=2.(n-3)+5\vdots 5$.
 
-Vì $n$ chia 7 dư 4 nên $(n-4)\vdots 7$, suy ra $[2.(n-4)+7]\vdots 7$ hay $(2n-1)\vdots 7$.
+Vì $n$ chia 7 dư 4 nên $(n-4)\vdots 7$, suy ra $2n-1=2.(n-4)+7\vdots 7$.
 
 Do đó $2n-1\in\text{BC}(3;5;7)$.
 
@@ -500,8 +501,6 @@ Vì $n\ge 4$ nên $2n-1>0$, mà $n$ nhỏ nhất nên $2n-1$ nhỏ nhất, tức
 
 Suy ra $2n=106$, do đó $n=53$.
 
-Thử lại: $53=3.17+2=5.10+3=7.7+4$ (thỏa mãn).
-
 Vậy số phần thưởng của học sinh khối lớp 6 là 53.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
@@ -510,5 +509,5 @@ Vậy số phần thưởng của học sinh khối lớp 6 là 53.
 - Câu bỏ: không. Đề không có phần riêng bằng tiếng Anh.
 - Hình: Câu 2 dùng `p1c2_bang2.png` (bảng nhiệt độ), Câu 7 dùng `p1c7_hinh2.png` (bốn hình, một ảnh chung), Bài IV dùng `p2c4_1.png` (hình thang cân).
 - Bài V là câu nâng cao (số dư 2, 3, 4 ứng với số chia 3, 5, 7): lời giải dùng cách nhân đôi để đưa về bội chung, chỉ dựa trên tính chất chia hết của tổng và BC / BCNN, không dùng định lí số dư Trung Hoa.
-- Bài IV.2a: tính theo công thức diện tích hình thang (tổng hai đáy nhân chiều cao chia 2 — có ở tiểu học và SGK Toán 6 bài chu vi, diện tích tứ giác); đã thử lại bằng cách ghép hình chữ nhật với hai tam giác vuông, cùng ra $360\ m^2$.
+- Bài IV.2a: đề không nêu công thức diện tích hình thang cân; xem dòng "Chưa chắc" của câu đó.
 - Đề thuộc bộ Kết nối tri thức (số nguyên, ƯC–BC, tính đối xứng đều nằm trong phạm vi cuối kì 1).

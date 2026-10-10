@@ -71,15 +71,15 @@ D. $0;\ 1;\ -21;\ -19;\ 5;\ 8;\ -3$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** số âm luôn nhỏ hơn 0 và nhỏ hơn mọi số dương, còn trong hai số âm thì số nào có phần số tự nhiên lớn hơn lại nhỏ hơn.
+**Mấu chốt:** số âm luôn nhỏ hơn 0 và nhỏ hơn mọi số dương, còn trong hai số âm thì số nào có phần số lớn hơn lại nhỏ hơn.
 
 **Bước 1.** Chia các số đã cho thành ba nhóm: số âm, số 0 và số dương.
 
-**Bước 2.** Sắp xếp riêng nhóm số âm: số âm có phần số tự nhiên càng lớn thì càng nhỏ, nên đứng càng về bên trái.
+**Bước 2.** Sắp xếp riêng nhóm số âm: số âm có phần số càng lớn thì càng nhỏ, nên đứng càng về bên trái.
 
 **Bước 3.** Ghép ba nhóm theo thứ tự số âm, số 0, số dương rồi đối chiếu với bốn phương án.
 
-**Chú ý:** đừng xếp số âm theo thứ tự của phần số tự nhiên, vì $-3$ lớn hơn $-21$.
+**Chú ý:** đừng xếp số âm theo thứ tự của phần số, vì $-3$ lớn hơn $-21$.
 
 **Phần 2. Trình bày**
 
@@ -141,7 +141,7 @@ D. Số nguyên âm nhỏ nhất có hai chữ số là $-10$.
 
 **Bước 3.** Kiểm khẳng định D: so sánh $-10$ với các số nguyên âm khác cũng có hai chữ số.
 
-**Chú ý:** với số âm, phần số tự nhiên càng lớn thì số càng nhỏ, nên "nhỏ nhất" là số có phần số tự nhiên lớn nhất.
+**Chú ý:** với số âm, phần số càng lớn thì số càng nhỏ, nên "nhỏ nhất" là số có phần số lớn nhất.
 
 **Phần 2. Trình bày**
 
@@ -227,7 +227,7 @@ D. Hình a và Hình c.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** biển báo chỉ có trục đối xứng khi **cả viền biển lẫn hình vẽ bên trong** cùng đối xứng qua một đường thẳng.
+**Mấu chốt:** hình có trục đối xứng là hình mà khi gấp theo một đường thẳng thì hai nửa trùng khít nhau.
 
 **Bước 1.** Nhớ định nghĩa: hình có trục đối xứng nếu có một đường thẳng chia hình thành hai phần chồng khít khi gấp lại.
 
@@ -235,7 +235,7 @@ D. Hình a và Hình c.
 
 **Bước 3.** Chú ý các hình có người hoặc xe đạp: các chi tiết này lệch về một phía nên dễ làm mất tính đối xứng.
 
-**Chú ý:** viền biển (hình tròn, tam giác, hình vuông) đều đối xứng, nên phần quyết định là hình vẽ bên trong; không xét chữ cái "a, b, c, d" ghi dưới biển.
+**Chú ý:** chỉ cần nhìn phần hình vẽ bên trong, không xét chữ cái "a, b, c, d" ghi dưới biển.
 
 **Phần 2. Trình bày**
 
@@ -243,7 +243,7 @@ Hình a có trục đối xứng (đường thẳng đứng và đường nằm 
 
 Hình c có trục đối xứng là đường thẳng đứng đi qua tâm.
 
-Hình b có hình người đi xe đạp, hình d có hình người đi bộ; các hình vẽ này không đối xứng nên hình b và hình d không có trục đối xứng.
+Hình b và hình d có hình người đi bộ, người đi xe đạp không đối xứng nên không có trục đối xứng.
 
 Vậy hình a và hình c có trục đối xứng.
 
@@ -258,7 +258,7 @@ Chọn D.
 
 **Mấu chốt:** gom các số hạng sao cho tổng từng cặp là số tròn hoặc hai số đối nhau.
 
-**Bước 1.** Quan sát các số hạng: $45$ và $55$ cộng lại được số tròn chục, còn $-128$ và $28$ có phần số tự nhiên hơn kém nhau đúng một số tròn trăm.
+**Bước 1.** Quan sát các số hạng: $45$ và $55$ cộng lại được số tròn chục, còn $-128$ và $28$ có phần số hơn kém nhau đúng một số tròn.
 
 **Bước 2.** Dùng tính chất giao hoán và kết hợp để gom $45+55$ và $(-128)+28$.
 
@@ -279,13 +279,13 @@ $=0$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** trong ngoặc thứ hai là $+53$ nên bỏ ngoặc không tạo ra cặp số đối nhau nào, vì vậy cứ tính từng ngoặc trước rồi trừ.
+**Mấu chốt:** hai ngoặc không có cặp số đối hay số tròn để gom nên cứ tính từng ngoặc trước rồi trừ.
 
-**Bước 1.** Tính ngoặc thứ nhất: $-53-23$ là tổng của hai số âm $-53$ và $-23$, cộng hai phần số tự nhiên rồi đặt dấu trừ trước kết quả.
+**Bước 1.** Tính ngoặc thứ nhất: cộng hai số âm bằng cách cộng phần số rồi giữ dấu âm.
 
 **Bước 2.** Tính ngoặc thứ hai: cộng hai số nguyên dương.
 
-**Bước 3.** Trừ hai kết quả: muốn trừ đi một số thì cộng với số đối của số đó, rồi cộng hai số nguyên âm.
+**Bước 3.** Trừ hai kết quả: trừ một số dương tức là cộng với số âm có cùng phần số.
 
 **Chú ý:** dấu trừ đứng trước ngoặc chỉ bỏ được ngoặc khi đổi dấu mọi số hạng trong ngoặc.
 
@@ -296,8 +296,6 @@ Thử lại: $-53-23-567-53=-(53+23+567+53)=-696$ (đúng).
 $(-53-23)-(567+53)$
 
 $=(-76)-620$
-
-$=(-76)+(-620)$
 
 $=-696$
 
@@ -337,7 +335,7 @@ $=100$
 
 **Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết.
 
-**Bước 3.** Thực hiện phép trừ hai số nguyên: muốn trừ đi một số thì cộng với số đối của số đó.
+**Bước 3.** Thực hiện phép trừ hai số nguyên: trừ một số dương tức là cộng với số âm.
 
 Thử lại: $(-32)+13=-19$ (đúng).
 
@@ -485,7 +483,7 @@ Diện tích cái ao $ABEF$ là:
 
 $(60+40).40:2=2000$ ($m^2$)
 
-c) Diện tích mặt ao gấp $2\ m^2$ số lần là:
+c) Số lần $2\ m^2$ trong ao là:
 
 $2000:2=1000$ (lần)
 
@@ -540,6 +538,6 @@ $27.27=729$ (viên)
 - Đề không ghi quận/phường nên tiêu đề chỉ ghi tên trường.
 - Số nguyên (Ch III), hình phẳng (Ch IV), tính đối xứng (Ch V) chưa có lý thuyết trên bản đồ K6: lời giải dựa vào SGK KNTT 6 (cộng trừ số nguyên, phá ngoặc, số đối, thứ tự số nguyên, công thức chu vi, diện tích hình thang). Câu 4 ghép cặp số đối.
 - Bài 5 (gạch trên hai đường chéo) đặt kho=hgt vì nói về hình vuông và đường chéo; có thể coi là bài số học nếu CEO muốn phân khác.
-- Bài 1b: đề in $(-53-23)-(567+53)$ (đã đọc lại ở ảnh phóng to 400 dpi — đúng là dấu cộng). Bỏ ngoặc không có cặp số đối nào nên lời giải tính từng ngoặc, đáp số $-696$. Dạng quen thuộc của bài này là $(567-53)$ (khi đó $-53$ và $+53$ triệt tiêu, ra $-590$) — có thể đề gốc in nhầm dấu, nhưng câu được nhập đúng như đề in.
+- Bài 1b: đề không có cặp số đối hay số tròn để gom, nên chỉ tính từng ngoặc.
 - Bài 4: ý b dùng AB = cạnh hình thoi = 60 m (hình thoi có bốn cạnh bằng nhau) để suy ra đáy lớn của ao.
 - Hình p1c8_lai.png và p2c4_lai.png là ảnh cắt lại từ PDF (ảnh máy cắt `p1c8_1..4.png` hỏng, `p2c4_1.png` cụt mất nhãn D).

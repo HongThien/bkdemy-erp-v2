@@ -39,7 +39,7 @@ A. Oxygen
 B. Rượu
 C. Thủy Ngân
 D. Chlorine
-**Hình:** p1c2_bang_lai.png
+**Hình:** p1c2_bang.png
 
 **Phần 1. Hướng dẫn**
 
@@ -194,7 +194,7 @@ B. Hình b
 C. Hình c
 D. Hình d
 **Hình:** p1c7_chung.png
-**Ghi chú:** Hình b (giọt nước) có vệt sáng nằm lệch về bên phải nên không có trục đối xứng; hình c (hình tròn có vạch ngang chính giữa) là hình duy nhất có trục đối xứng.
+**Chưa chắc:** hình b (giọt nước) có đốm sáng nằm lệch về bên phải nên coi là không có trục đối xứng; nếu chỉ xét đường viền thì giọt nước gần đối xứng — vẫn chọn C vì đó là hình duy nhất đối xứng rõ ràng.
 
 **Phần 1. Hướng dẫn**
 
@@ -342,7 +342,7 @@ $=400$
 
 **Bước 2.** Tìm số trừ bằng cách lấy số bị trừ trừ đi hiệu.
 
-**Bước 3.** Tính hiệu rồi kiểm tra kết quả có là số nguyên như đề yêu cầu, sau đó thay ngược vào đề để thử lại.
+**Bước 3.** Tính hiệu hai số rồi viết đáp số.
 
 Thử lại: $23-4=19$ (đúng).
 
@@ -557,9 +557,9 @@ $24.50000=1200000$ (đồng)
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** gọi $d$ là **ước chung lớn nhất** của hai số mới rồi chứng minh $d$ cũng là ước chung của $a$ và $b$, nên $d=1$.
+**Mấu chốt:** gọi $d$ là một **ước chung** của hai số mới rồi chứng minh $d$ cũng là ước chung của $a$ và $b$, nên $d=1$.
 
-**Bước 1.** Gọi $d$ là ước chung lớn nhất của $5a+2b$ và $7a+3b$, khi đó cả hai số đều chia hết cho $d$.
+**Bước 1.** Gọi $d$ là ước chung của $5a+2b$ và $7a+3b$, tức cả hai số đều chia hết cho $d$.
 
 **Bước 2.** Nhân hai số với các hệ số thích hợp sao cho phần chứa $b$ (hoặc $a$) bằng nhau rồi trừ để khử bớt một ẩn.
 
@@ -567,11 +567,11 @@ $24.50000=1200000$ (đồng)
 
 **Bước 4.** Dùng giả thiết $a$ và $b$ nguyên tố cùng nhau để suy ra $d$ chỉ có thể bằng 1 rồi kết luận.
 
-**Chú ý:** phải lập luận với $a$, $b$ **bất kì**; thử vài giá trị cụ thể của $a$ và $b$ không phải là chứng minh.
+**Chú ý:** phải chứng minh cho **mọi** ước chung $d$ của hai số mới, không chỉ thử vài giá trị của $a$ và $b$.
 
 **Phần 2. Trình bày**
 
-Gọi $d=\text{ƯCLN}(5a+2b,7a+3b)$.
+Gọi $d$ là ước chung của $5a+2b$ và $7a+3b$.
 
 Khi đó $(5a+2b)\vdots d$ và $(7a+3b)\vdots d$.
 
@@ -579,13 +579,13 @@ Suy ra $3.(5a+2b)\vdots d$ và $2.(7a+3b)\vdots d$.
 
 Do đó $\left[3.(5a+2b)-2.(7a+3b)\right]\vdots d$ hay $a\vdots d$.
 
-Lại có $5.(7a+3b)\vdots d$ và $7.(5a+2b)\vdots d$.
+Suy ra $7.(5a+2b)\vdots d$ và $5.(7a+3b)\vdots d$.
 
 Do đó $\left[5.(7a+3b)-7.(5a+2b)\right]\vdots d$ hay $b\vdots d$.
 
 Vì $a\vdots d$ và $b\vdots d$ nên $d$ là ước chung của $a$ và $b$.
 
-Mà $a$ và $b$ là hai số nguyên tố cùng nhau nên $d=1$.
+Mà $a$ và $b$ nguyên tố cùng nhau nên $d=1$.
 
 Vậy $5a+2b$ và $7a+3b$ là hai số nguyên tố cùng nhau.
 
@@ -593,7 +593,7 @@ Vậy $5a+2b$ và $7a+3b$ là hai số nguyên tố cùng nhau.
 
 - Bộ ảnh trang chỉ có MỘT đề (mã đề 601, 2 trang, THCS Phúc Đồng). Không bỏ câu nào.
 - Đề cuối học kì 1 có số nguyên (Ch III), hình phẳng (Ch IV), đối xứng (Ch V): bản đồ K6 chưa có lý thuyết các chương này (`k6.md` §1 luật 3), nên các câu này (Câu 1, 2, 7, 8, Bài 1a–b, 2a–d, III, IV) giải theo SGK Kết nối tri thức 6 — mong người duyệt soát khuôn trình bày: phép cộng/trừ/nhân số nguyên, tìm $x$ khi số âm xuất hiện, tính chất "tích bằng 0 thì có thừa số bằng 0" (Bài 2d), diện tích hình bình hành bằng đáy nhân chiều cao (Câu 8, Bài IV).
-- Câu 2: máy đã cắt bảng bị lệch sang tên ảnh khác (`p2c2_1.png`); đã cắt lại bảng thành `p1c2_bang_lai.png` (trạm soát cắt lại lần hai cho đủ bốn đường viền) và chép thêm số liệu của bảng vào phần đề để đọc được cả khi không có ảnh.
+- Câu 2: máy đã cắt bảng bị lệch sang tên ảnh khác (`p2c2_1.png`); đã cắt lại bảng thành `p1c2_bang.png` và chép thêm số liệu của bảng vào phần đề để đọc được cả khi không có ảnh.
 - Câu 7: ảnh 4 hình nhỏ (p1c7_1…4) được gộp lại thành một ảnh chung `p1c7_chung.png` (có nhãn a) b) c) d)).
 - Bài IV: hình khu đất là ảnh máy gắn nhầm tên `p2c5_1.png` — ảnh đúng và đủ nên dùng nguyên.
 - Tách ý theo luật: Bài 1 (a, b, c) và Bài 2 (a–d) tách từng ý; Bài III có hai bài toán khác hẳn nhau (tàu ngầm / chia nhóm) nên tách thành `Bài III.1`, `Bài III.2`; Bài IV, Bài V giữ nguyên một câu.

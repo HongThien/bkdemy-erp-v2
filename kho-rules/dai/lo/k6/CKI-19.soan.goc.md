@@ -45,7 +45,7 @@ D. Hình 4.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hình có tâm đối xứng là hình mà khi quay nửa vòng quanh một điểm thì trùng khít với chính nó.
+**Mấu chốt:** hình có tâm đối xứng là hình mà khi quay nửa vòng (180°) quanh một điểm thì trùng khít với chính nó.
 
 **Bước 1.** Nhớ lại ý nghĩa của tâm đối xứng: quay hình nửa vòng quanh tâm thì hình không thay đổi.
 
@@ -65,10 +65,10 @@ Chọn A.
 
 ### Câu 3 | kho=dai | loai=trac_nghiem | dap_an=A
 **Đề:** Số đối của số $(-15)$ là
-A. $15$
-B. $-15$
-C. $-51$
-D. $51$
+A. 15
+B. -15
+C. -51
+D. 51
 
 **Phần 1. Hướng dẫn**
 
@@ -120,7 +120,7 @@ Chọn B.
 ## PHẦN 2 | Trả lời ngắn | tra_loi_ngan
 
 ### Câu 5 | kho=dai | loai=tra_loi_ngan | dap_an=-5
-**Đề:** Trong một ngày, nhiệt độ lúc 15 giờ ở Mát-xcơ-va là $-2^\circ C$, đến 21 giờ nhiệt độ đã giảm đi $3^\circ C$ so với lúc 15 giờ. Nhiệt độ ở Mát-xcơ-va vào lúc 21 giờ bao nhiêu $^\circ C$?
+**Đề:** Trong một ngày, nhiệt độ lúc 15 giờ ở Mát-xcơ-va là $-2^\circ C$, đến 21 giờ nhiệt độ đã giảm đi $3^\circ C$ so với lúc 15 giờ. Nhiệt độ ở Mát-xcơ-va vào lúc 21 giờ là bao nhiêu độ $C$?
 
 **Phần 1. Hướng dẫn**
 
@@ -130,7 +130,7 @@ Chọn B.
 
 **Bước 2.** Vì nhiệt độ giảm nên lập phép trừ: nhiệt độ lúc đầu trừ số độ giảm.
 
-**Bước 3.** Thực hiện phép trừ số nguyên: trừ đi một số là cộng với số đối của số đó, nên phép trừ trở thành phép cộng hai số nguyên âm.
+**Bước 3.** Thực hiện phép trừ số nguyên: hai số cùng âm thì cộng hai số đối của chúng rồi đặt dấu trừ.
 
 **Chú ý:** nhiệt độ giảm từ số âm thì kết quả còn âm hơn nữa.
 
@@ -138,10 +138,10 @@ Chọn B.
 
 Nhiệt độ ở Mát-xcơ-va vào lúc 21 giờ là:
 
-$(-2)-3=(-2)+(-3)=-5$ ($^\circ C$)
+$(-2)-3=-5$ ($^\circ C$)
 
 ### Câu 6 | kho=hgt | loai=tra_loi_ngan | dap_an=8
-**Đề:** Một hình bình hành có diện tích là $48\ cm^2$ và đường cao của hình bình hành là $6\ cm$. Tính độ dài cạnh tương ứng với đường cao đó?
+**Đề:** Một hình bình hành có diện tích là $48\ cm^2$ và đường cao của hình bình hành là $6\ cm$. Tính độ dài cạnh tương ứng với đường cao đó (đơn vị: $cm$).
 
 **Phần 1. Hướng dẫn**
 
@@ -164,8 +164,7 @@ $48:6=8$ ($cm$)
 ## PHẦN 3 | Đúng / Sai | tu_luan
 
 ### Câu 7 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Hãy ghi chữ Đ (đúng) hoặc S (sai) ở mỗi ý a), b):
-a) Tập hợp các số nguyên $\mathbb{Z}$ bao gồm các số nguyên dương và các số nguyên âm.
+**Đề:** a) Tập hợp các số nguyên $\mathbb{Z}$ bao gồm các số nguyên dương và các số nguyên âm.
 b) Tổng hai số nguyên âm là một số nguyên âm.
 **Ghi chú:** câu Đúng/Sai nhập dạng tự luận
 
@@ -376,6 +375,7 @@ $x=-20$
 ### Bài 2c | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm số nguyên $x$, biết: $(x-3)(2x-8)=0$
 **Ghi chú:** Đáp án là hai giá trị $x=3$ hoặc $x=4$ — để tự luận (chỉ in), không lên app dạng trả lời ngắn.
+**Chưa chắc:** lời giải dùng tính chất "tích bằng 0 thì có một thừa số bằng 0" (SGK KNTT 6 có ở phần phép nhân số nguyên) — bản đồ K6 chưa có lý thuyết số nguyên để đối chiếu.
 
 **Phần 1. Hướng dẫn**
 

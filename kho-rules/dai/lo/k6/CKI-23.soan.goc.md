@@ -1,4 +1,4 @@
-# ĐỀ | Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — Cụm chuyên môn số 14, bộ sách Kết nối tri thức (đề không ghi mã đề)
+# ĐỀ | Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — Cụm chuyên môn số 14 (mã đề CKI-23)
 nam: 2025
 bo_sach: KNTT
 
@@ -132,7 +132,7 @@ a) Hai đường chéo $AC$ và $BD$ vuông góc với nhau
 b) Hình thoi $ABCD$ có 4 trục đối xứng.
 c) Diện tích của hình thoi $ABCD$ bằng tích độ dài của hai đường chéo $AC$ và $BD$.
 d) Chu vi hình thoi bằng độ dài một cạnh nhân với 4.
-**Hình:** p1c5_lai.png
+**Hình:** p2c5_1.png
 **Ghi chú:** câu Đúng/Sai nhập dạng tự luận
 
 **Phần 1. Hướng dẫn**
@@ -187,7 +187,6 @@ $=2025-5+9-2026$
 
 ### Câu 7 | kho=dai | loai=tra_loi_ngan | dap_an=4
 **Đề:** Tổng tất cả các số nguyên $x$ thỏa mãn $-3\le x<5$ là:
-**Ghi chú:** Đề gốc in lỗi phông chữ "ng□yên" — đã sửa thành "nguyên".
 
 **Phần 1. Hướng dẫn**
 
@@ -380,7 +379,7 @@ $x=2$
 
 **Bước 2.** Cho từng thừa số bằng 0 để được hai trường hợp riêng.
 
-**Bước 3.** Giải mỗi trường hợp bằng cách tìm thành phần chưa biết (số bị trừ, số hạng rồi thừa số chưa biết), rồi kết luận có hai giá trị của $x$.
+**Bước 3.** Giải mỗi trường hợp bằng cách tìm thành phần chưa biết, rồi kết luận có hai giá trị của $x$.
 
 **Chú ý:** phải xét cả hai thừa số, không bỏ sót trường hợp nào.
 
@@ -390,29 +389,14 @@ Thử lại: $x=1$ thì $(1-1).9=0$; $x=-2$ thì $(-2-1).0=0$ (đều đúng).
 
 $(x-1).(3x+6)=0$
 
-Vì tích bằng 0 nên $x-1=0$ hoặc $3x+6=0$.
+Trường hợp 1: $x-1=0$ nên $x=0+1$ hay $x=1$.
 
-Trường hợp 1: $x-1=0$
-
-$x=0+1$
-
-$x=1$
-
-Trường hợp 2: $3x+6=0$
-
-$3x=0-6$
-
-$3x=-6$
-
-$x=(-6):3$
-
-$x=-2$
+Trường hợp 2: $3x+6=0$ nên $3x=0-6$ hay $3x=-6$, suy ra $x=(-6):3=-2$.
 
 Vậy $x\in\{1;-2\}$.
 
 ### Bài 3.1 | kho=dai | loai=tra_loi_ngan | dap_an=-9
-**Đề:** Trong một ngày nhiệt độ Bắc Kinh lúc 7 giờ là $-10^\circ C$, đến 12 giờ tăng thêm $6^\circ C$, và lúc 20 giờ lại giảm $5^\circ C$ so với thời điểm 12 giờ. Hỏi nhiệt độ ở Bắc Kinh lúc 20 giờ là bao nhiêu?
-**Ghi chú:** Đáp số là $-9^\circ C$; ô trả lời ngắn chỉ nhập số $-9$ (đơn vị $^\circ C$ đã có trong đề).
+**Đề:** Trong một ngày nhiệt độ Bắc Kinh lúc 7 giờ là $-10^\circ C$, đến 12 giờ tăng thêm $6^\circ C$, và lúc 20 giờ lại giảm $5^\circ C$ so với thời điểm 12 giờ. Hỏi nhiệt độ ở Bắc Kinh lúc 20 giờ là bao nhiêu (độ $C$)?
 
 **Phần 1. Hướng dẫn**
 

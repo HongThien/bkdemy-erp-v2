@@ -65,7 +65,7 @@ Chọn D.
 A. Số đối của một số nguyên luôn nhỏ hơn chính số nguyên đó.
 B. Tập hợp số nguyên bao gồm số nguyên âm và số nguyên dương.
 C. Tập hợp số nguyên bao gồm số tự nhiên và số nguyên âm.
-D. Số nguyên âm lớn nhất có hai chữ số là $-99$.
+D. Số nguyên âm lớn nhất có hai chữ số là -99.
 
 **Phần 1. Hướng dẫn**
 
@@ -160,7 +160,7 @@ D. $14\ cm$
 
 **Bước 3.** Dùng công thức chu vi hình chữ nhật: cộng hai kích thước rồi nhân với $2$.
 
-**Chú ý:** $7\ cm$ chỉ là độ dài cạnh $AD$; $14\ cm$ là kết quả nếu hiểu nhầm "hơn $5\ cm$" thành $AD=5\ cm$.
+**Chú ý:** $7\ cm$ chỉ là độ dài một cạnh, $14\ cm$ là kết quả nếu quên cộng thêm $5\ cm$ cho chiều dài.
 
 **Phần 2. Trình bày**
 
@@ -208,6 +208,7 @@ B. a, b, d.
 C. b, c, d.
 D. a, d.
 **Hình:** p1c8_lai.png
+**Chưa chắc:** hình d (đèn giao thông) có ba màu đỏ, vàng, xanh khác nhau — lời giải coi đối xứng theo hình dạng, bỏ qua màu sắc.
 
 **Phần 1. Hướng dẫn**
 
@@ -219,7 +220,7 @@ D. a, d.
 
 **Bước 3.** Biển nào có hình vẽ bên trong lệch về một phía hoặc hai nửa khác nhau thì không có trục đối xứng, từ đó chọn phương án đúng.
 
-**Chú ý:** khung tam giác đều đối xứng nhưng cả biển chỉ đối xứng khi hình vẽ bên trong cũng đối xứng qua **cùng** đường thẳng đó; ở biển d) ba màu xếp theo chiều dọc nên màu ở hai nửa trái, phải vẫn giống nhau.
+**Chú ý:** khung tam giác đều đối xứng nhưng cả biển chỉ đối xứng khi hình vẽ bên trong cũng đối xứng.
 
 **Phần 2. Trình bày**
 
@@ -227,9 +228,9 @@ Biển a): hai nửa trái và phải của hình vẽ trùng nhau khi gấp the
 
 Biển b): hai mũi tên một xuống, một lên nên hai nửa không trùng nhau, không có trục đối xứng.
 
-Biển c): nhánh rẽ chỉ nằm ở bên phải nên gấp theo đường thẳng đứng thì hai nửa không trùng nhau; gấp theo đường nằm ngang qua nhánh rẽ thì khung tam giác không trùng nhau, không có trục đối xứng.
+Biển c): nhánh rẽ chỉ nằm một phía bên phải nên không có trục đối xứng.
 
-Biển d): cột đèn ba màu nằm chính giữa biển và xếp theo chiều dọc nên gấp theo đường thẳng đứng qua đỉnh thì hai nửa trái và phải trùng nhau, có trục đối xứng.
+Biển d): hai nửa trái và phải của hình vẽ trùng nhau nên có trục đối xứng.
 
 Vậy các hình có trục đối xứng là a, d.
 
@@ -535,7 +536,7 @@ b) Hình chữ nhật có $2$ trục đối xứng: đường thẳng đi qua tr
 **Đề:** Bác Mai có hai mảnh vườn cạnh nhau. Mảnh thứ nhất dạng hình vuông có cạnh $AB=8\ m$. Mảnh vườn thứ hai có dạng hình thang cân với các kích thước như hình vẽ.
 a) Em hãy tính diện tích của mảnh vườn hình vuông $ABCD$.
 b) Em hãy tính diện tích của mảnh vườn hình thang cân $CDEG$.
-c) Trên hai mảnh vườn, bác Mai trồng hoa. Cứ $1\ m^2$ trồng được $5$ cây hoa, giá mỗi cây hoa là 10 000 đồng. Em hãy tính số cây hoa được trồng và số tiền mua cây.
+c) Trên hai mảnh vườn, bác Mai trồng hoa. Cứ $1\ m^2$ trồng được $5$ cây hoa, giá mỗi cây hoa là $10000$ đồng. Em hãy tính số cây hoa được trồng và số tiền mua cây.
 **Hình:** p2c4_1.png
 
 **Phần 1. Hướng dẫn**
@@ -558,9 +559,7 @@ a) Diện tích mảnh vườn hình vuông $ABCD$ là:
 
 $8.8=64$ ($m^2$)
 
-b) Vì $ABCD$ là hình vuông nên $DC=AB=8\ m$.
-
-Hình thang cân $CDEG$ có đáy lớn $DC=8\ m$, đáy nhỏ $EG=6\ m$ và chiều cao $3\ m$.
+b) Hình thang cân $CDEG$ có đáy lớn $DC=8\ m$, đáy nhỏ $EG=6\ m$ và chiều cao $3\ m$.
 
 Diện tích mảnh vườn hình thang cân $CDEG$ là:
 
@@ -586,7 +585,7 @@ $425.10000=4250000$ (đồng)
 
 **Mấu chốt:** gọi $d$ là $\text{ƯCLN}$ rồi dùng tính chất chia hết của tổng để **thu hẹp các giá trị có thể của $d$**.
 
-**Bước 1.** Gọi $d=\text{ƯCLN}(a,b,c)$; vì cả ba số $a$, $b$, $c$ đều chia hết cho $d$ và $d$ chia hết cho chính nó nên tổng $a+b+c+d$ chia hết cho $d$, tức $8$ chia hết cho $d$.
+**Bước 1.** Gọi $d=\text{ƯCLN}(a,b,c)$; vì $d$ chia hết cho cả ba số $a$, $b$, $c$ và chia hết cho chính nó nên $d$ chia hết cho tổng, tức chia hết cho $8$.
 
 **Bước 2.** Liệt kê các ước của $8$ để có các giá trị có thể của $d$.
 
@@ -622,8 +621,8 @@ Vậy các bộ ba cần tìm là $(1;1;5)$, $(1;2;4)$, $(1;3;3)$, $(2;2;2)$, $(
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- **Đã bỏ Bài 7 (Điểm thưởng):** bài ra bằng tiếng Anh về ba bạn đi bơi — bỏ theo luật bỏ phần tiếng Anh.
+- **Đã bỏ Bài 7 (Điểm thưởng):** bài tiếng Anh về ba bạn đi bơi (phần riêng "Hệ T" theo luật bỏ).
 - Đề cuối học kì 1, bộ sách không ghi trên đề nên để `KNTT`; đề không có mã đề (chỉ ghi "Đề chính thức").
 - Câu 1–5 và Bài 1a thuộc **Ch III Số nguyên**, Câu 6–8 và Bài 4–5 thuộc **Ch IV–V** (hình phẳng, đối xứng): các chương này chưa có lý thuyết trên bản đồ K6 (k6.md §1 luật 3, Q5) — lời giải theo SGK KNTT 6, cần CEO soát khuôn.
-- Bài 6 là bài nâng cao (ƯCLN trong phương trình nghiệm tự nhiên); lời giải dùng tính chất chia hết của tổng, không dùng $\text{ƯCLN}.\text{BCNN}=a.b$.
+- Bài 6 là bài nâng cao (ƯCLN trong phương trình nghiệm tự nhiên); lời giải dùng tính chất chia hết của tổng, không dùng $\text{ƯCLN}\cdot\text{BCNN}=a.b$.
 - Bài 4a yêu cầu vẽ hình nên lời giải tả các bước vẽ, chưa có hình.
