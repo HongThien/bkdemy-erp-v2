@@ -40,7 +40,7 @@ cạnh (không có "góc nội tiếp chắn nửa đường tròn"). Bài toán
 
 ## 3. Định dạng (R1 + R2 + 2 phần)
 
-> **⭐ Phần 1 nhiều bước ⇒ mỗi bước một CARD, mũi tên sang card kế (CEO 09/10, `kho-rules/README.md` §3):** mỗi bước là một đoạn riêng mở bằng `**Bước k.**`; `**Mấu chốt:**` đứng trước chuỗi bước, `**Chú ý:**` đứng sau; chỉ dùng khi ≥ 2 bước. **Tách ý** chỉ cho bài *Tính* và *Tìm $x$*; bài lời văn giữ chung một câu. *Hình:* chuỗi bước của Phần 1 (kể cả từng mắt xích của sơ đồ phân tích đi lên, k8 §1.6) viết thành các đoạn `**Bước k.**` — hiểu của Claude, chờ CEO xác nhận.
+> **⭐ Phần 1 nhiều bước ⇒ mỗi bước một CARD, mũi tên sang card kế (CEO 09/10, `kho-rules/README.md` §3):** mỗi bước là một đoạn riêng mở bằng `**Bước k.**`; `**Mấu chốt:**` đứng trước chuỗi bước, `**Chú ý:**` đứng sau; **mọi bài 3–6 bước**, mỗi bước một ý trọn vẹn (CEO 09/10 tối). **Tách ý** chỉ cho bài *Tính* và *Tìm $x$*; bài lời văn giữ chung một câu. *Hình:* chuỗi bước của Phần 1 (kể cả từng mắt xích của sơ đồ phân tích đi lên, k8 §1.6) viết thành các đoạn `**Bước k.**` — hiểu của Claude, chờ CEO xác nhận.
 - `noi_dung` (đề): KHÔNG dòng trống. Câu dẫn, ý a), b)… mỗi thứ một dòng. Đề **tự đủ dữ kiện không cần nhìn hình**: số đo, điểm nằm giữa,
   cung nhỏ/lớn… chỉ có trên hình ⇒ ghi thẳng vào đề ("biết …"). Giữ nguyên ý đề sách; sửa lỗi gõ rõ ràng (ghi ở nghi vấn).
 - `loi_giai`: `**Phần 1. Hướng dẫn**` rồi xuống dòng nội dung; `**Phần 2. Trình bày**` rồi nội dung. Xuống dòng ĐƠN; dòng trống CHỈ trước
