@@ -89,29 +89,42 @@ html,body{height:100%;margin:0;background:var(--void);color:var(--ink);font-fami
 .film .bar{position:absolute;left:0;right:0;height:7vh;background:#000}
 .film .bar.t{top:0}
 .film .bar.b{bottom:0}
-.sub{position:absolute;left:50%;bottom:calc(7vh + 12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(860px,calc(100% - 32px));max-height:calc(100% - 14vh - 60px);overflow:auto;background:rgba(4,9,20,.9);border:1px solid var(--line);border-radius:16px;padding:14px 18px;pointer-events:auto}
+.sub{position:absolute;left:50%;bottom:calc(7vh + 12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(980px,calc(100% - 32px));max-height:calc(100% - 14vh - 60px);overflow:auto;background:rgba(4,9,20,.9);border:1px solid var(--line);border-radius:16px;padding:14px 18px;pointer-events:auto}
 .sub-meta{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .sub-meta .n{font:600 12px/1 var(--f-data);color:var(--muted);font-variant-numeric:tabular-nums}
-.sub p{margin:8px 0 12px;font:500 clamp(16px,2.1vw,21px)/1.6 var(--f-ui);color:var(--ink);text-wrap:pretty}
+.sub p{margin:8px 0 12px;font:500 clamp(16px,2.1vw,24px)/1.55 var(--f-ui);color:var(--ink);text-wrap:pretty}
 .sub p b{color:var(--gold);font-weight:700}
 .sub .opts{margin:2px 0 4px}
 .sub .opt{min-height:48px}
 .sub .fb{margin:10px 0 0}
 .sub-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px}
 .sub-actions .spacer{flex:1}
+/* bố cục trạm trình bày: khung lời dẫn đứng bên phải, hình bên trái */
+.film.side .sub{left:auto;right:16px;transform:none;top:calc(7vh + 10px);bottom:calc(7vh + 10px);width:min(54vw,780px);max-height:none;display:flex;flex-direction:column;padding:12px 16px}
+.film.side .sub p{font-size:clamp(15px,1.55vw,23px);margin:6px 0 8px}
+.film.side .fb{margin:8px 0 0;padding:8px 12px;font-size:clamp(13px,1.2vw,16px)}
+.film.side .sub-actions{margin-top:auto;padding-top:10px}
+.proofbox{margin:2px 0 12px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);font:600 clamp(16px,1.6vw,23px)/1.65 var(--f-ui);color:var(--ink-2)}
+.proofbox .new{color:var(--gold)}
+.drag.proof .rows{gap:6px;font-size:clamp(16px,1.5vw,22px)}
+.drag.proof .row{gap:6px;flex-wrap:nowrap}
+.drag.proof .blank{flex:1;min-width:0;min-height:40px;justify-content:start;text-align:left;padding:4px 12px;font-size:clamp(14px,1.35vw,20px)}
+.drag.proof .tray{gap:6px;margin-top:10px}
+.drag.proof .tile{min-height:40px;min-width:0;padding:4px 11px;font-size:clamp(14px,1.35vw,20px);box-shadow:0 3px 0 rgba(0,0,0,.35)}
 
 /* kéo thả: chỗ trống trong dòng chữ, hoặc ô trống bám theo đỉnh tam giác */
 .drag{margin:2px 0 4px}
-.drag .rows{display:flex;flex-direction:column;gap:8px;font:700 clamp(19px,2.3vw,25px)/1.4 var(--f-ui)}
+.drag .rows{display:flex;flex-direction:column;gap:8px;font:700 clamp(20px,2.5vw,30px)/1.4 var(--f-ui)}
+.drag .pair{display:inline-flex;align-items:center;gap:10px;margin-right:26px}
 .drag .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.blank{appearance:none;min-width:96px;min-height:50px;display:inline-grid;place-items:center;font:700 clamp(19px,2.3vw,25px)/1 var(--f-ui);color:var(--ink);border:2px dashed rgba(92,225,255,.75);border-radius:12px;padding:6px 14px;background:rgba(92,225,255,.06);pointer-events:auto;cursor:pointer}
+.blank{appearance:none;min-width:104px;min-height:56px;display:inline-grid;place-items:center;font:700 clamp(20px,2.5vw,30px)/1 var(--f-ui);color:var(--ink);border:2px dashed rgba(92,225,255,.75);border-radius:12px;padding:6px 14px;background:rgba(92,225,255,.06);pointer-events:auto;cursor:pointer}
 .blank.act{border-style:solid;box-shadow:0 0 0 4px rgba(92,225,255,.2)}
 .blank.hov{background:rgba(92,225,255,.22)}
 .blank.ok{border:2px solid var(--ok);background:rgba(74,222,128,.16);cursor:default}
 .blank.bad{animation:badflash .5s}
 @keyframes badflash{30%{border-color:var(--bad);background:rgba(255,122,122,.25)}}
 .tray{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-.tile{appearance:none;min-width:76px;min-height:54px;padding:8px 18px;border-radius:12px;background:#1a2b52;border:1.5px solid rgba(255,255,255,.24);color:var(--ink);font:700 clamp(19px,2.3vw,25px)/1 var(--f-ui);cursor:grab;touch-action:none;pointer-events:auto;box-shadow:0 4px 0 rgba(0,0,0,.35)}
+.tile{appearance:none;min-width:84px;min-height:60px;padding:8px 20px;border-radius:12px;background:#1a2b52;border:1.5px solid rgba(255,255,255,.24);color:var(--ink);font:700 clamp(20px,2.5vw,30px)/1 var(--f-ui);cursor:grab;touch-action:none;pointer-events:auto;box-shadow:0 4px 0 rgba(0,0,0,.35)}
 .tile:hover{border-color:rgba(255,209,102,.7)}
 .tile.sel{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,209,102,.35)}
 .tile.lift{opacity:.35}
@@ -120,7 +133,7 @@ html,body{height:100%;margin:0;background:var(--void);color:var(--ink);font-fami
 @keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
 .ghost{position:fixed!important;left:0;top:0;z-index:9;pointer-events:none!important;opacity:.95;box-shadow:0 14px 30px rgba(0,0,0,.5)!important}
 .slots{position:fixed;inset:0;z-index:3;pointer-events:none}
-.slot{position:absolute;left:0;top:0;width:60px;min-width:0;height:60px;margin:-30px 0 0 -30px;padding:0;border-radius:50%;background:rgba(255,181,71,.12);border-color:rgba(255,197,110,.9)}
+.slot{position:absolute;left:0;top:0;width:68px;min-width:0;height:68px;margin:-34px 0 0 -34px;padding:0;border-radius:50%;background:rgba(255,181,71,.12);border-color:rgba(255,197,110,.9)}
 .slot.act{box-shadow:0 0 0 5px rgba(255,197,110,.25)}
 
 .modal{position:fixed;inset:0;z-index:6;display:grid;place-items:center;padding:16px;background:rgba(2,6,16,.6);overflow:auto}
@@ -128,8 +141,10 @@ html,body{height:100%;margin:0;background:var(--void);color:var(--ink);font-fami
 .q{font:700 clamp(18px,2.6vw,22px)/1.45 var(--f-ui);margin:8px 0 16px;text-wrap:balance}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:520px){.opts{grid-template-columns:1fr}}
+.opts.row4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:620px){.opts.row4{grid-template-columns:1fr 1fr}}
 .opt{min-height:56px;text-align:left;font:600 15px/1.4 var(--f-ui);color:var(--ink);background:var(--opt);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;pointer-events:auto}
-.opt.big{font-size:clamp(18px,2.2vw,23px);text-align:center}
+.opt.big{font-size:clamp(19px,2.4vw,30px);text-align:center}
 .opt:hover:not(:disabled){border-color:rgba(92,225,255,.7)}
 .opt:disabled{cursor:default;opacity:.75}
 .opt.ok{border-color:var(--ok);background:rgba(74,222,128,.14);opacity:1}
@@ -151,7 +166,7 @@ html,body{height:100%;margin:0;background:var(--void);color:var(--ink);font-fami
 .box{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.02);min-width:0}
 .box h4{margin:0 0 8px;font:600 11px/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .box ul,.box ol{margin:0;padding-left:18px;font:400 14px/1.65 var(--f-ui);color:var(--ink-2)}
-.route{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:4px 16px;padding:0!important;margin:0}
+.route{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,auto);grid-auto-flow:column;gap:4px 16px;padding:0!important;margin:0}
 @media (max-width:420px){.route{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
 .route li{font:500 13.5px/1.55 var(--f-ui);color:var(--ink-2)}
 .route li span{font:600 12px/1 var(--f-data);color:var(--scan);margin-right:6px;font-variant-numeric:tabular-nums}
@@ -205,11 +220,13 @@ kbd{font:600 12px/1 var(--f-data);border:1px solid var(--line);border-bottom-wid
   <div class="sub" role="region" aria-label="Lời dẫn">
     <div class="sub-meta"><span class="eyebrow" id="filmTitle">Lời dẫn</span><span class="n" id="filmStep"></span></div>
     <p id="filmText" aria-live="polite"></p>
+    <div class="proofbox" id="filmProof" hidden></div>
     <div class="opts" id="filmOpts" hidden></div>
     <div class="drag" id="filmDrag" hidden></div>
     <div class="fb" id="filmFb" hidden></div>
     <div class="sub-actions">
       <button class="btn" id="filmMarks" type="button" hidden>Ký hiệu</button>
+      <button class="btn" id="filmReveal" type="button" hidden>Đáp án (GV)</button>
       <span class="spacer"></span>
       <button class="btn" id="filmSkip" type="button">Bỏ qua phim</button>
       <button class="btn" id="filmPause" type="button">⏸ Dừng</button>
@@ -233,12 +250,12 @@ kbd{font:600 12px/1 var(--f-data);border:1px solid var(--line);border-bottom-wid
 
 <div class="modal intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
   <div class="card">
-    <div class="eyebrow">Toán 7 · Hình học · Bản thử 1</div>
+    <div class="eyebrow">Toán 7 · Hình học · Bản thử 2</div>
     <h1 id="introTitle">Du hành <em>Tam giác bằng nhau</em></h1>
-    <p class="lead">Em lái tàu tới những tấm bảng lơ lửng giữa không gian. Trên mỗi tấm bảng có hai tấm tam giác nằm ở hai tư thế khác nhau. Hết chuyến, em biết thế nào là hai tam giác bằng nhau, viết tên chúng đúng thứ tự đỉnh, và đọc ra ngay các cặp cạnh, cặp góc bằng nhau.</p>
+    <p class="lead">Em lái tàu tới những tấm bảng lơ lửng giữa không gian. Trên mỗi tấm bảng có hai tấm tam giác nằm ở hai tư thế khác nhau. Hết chuyến, em biết thế nào là hai tam giác bằng nhau, viết tên chúng đúng thứ tự đỉnh, hiểu vì sao ba cạnh bằng nhau là đủ (c.c.c), và trình bày được bài chứng minh 5 dòng.</p>
     <div class="grid2">
       <div class="box">
-        <h4>Trạm học (1–2)</h4>
+        <h4>Trạm học (1, 2, 6, 8)</h4>
         <ol>
           <li><b>Xem phim</b> có lời dẫn.</li>
           <li><b>Bay tự do quan sát.</b> Lại gần điểm sáng để đọc chú thích.</li>
@@ -246,10 +263,10 @@ kbd{font:600 12px/1 var(--f-data);border:1px solid var(--line);border-bottom-wid
         </ol>
       </div>
       <div class="box">
-        <h4>Trạm luyện tập (3–5)</h4>
+        <h4>Trạm luyện tập (3, 4, 5, 7, 9)</h4>
         <ul>
-          <li>Chọn tên đúng, hoặc kéo ô vào chỗ trống (chạm ô rồi chạm chỗ trống cũng được).</li>
-          <li>Đúng thì xem tấm vàng nhấc lên, lật, xoay, rồi chồng khít lên tấm xanh.</li>
+          <li>Mỗi trạm là một chuỗi 3–5 câu ngay trên tấm bảng: chọn tên, kéo ô vào chỗ trống (chạm ô rồi chạm chỗ trống cũng được), kéo đủ 5 dòng trình bày.</li>
+          <li>Đúng thì xem tấm vàng chồng khít lên tấm xanh. Thầy cô có nút <b>Ký hiệu</b> (đổi mức ký hiệu) và <b>Đáp án (GV)</b>.</li>
         </ul>
       </div>
     </div>
@@ -281,14 +298,15 @@ kbd{font:600 12px/1 var(--f-data);border:1px solid var(--line);border-bottom-wid
 
 <div class="modal end" id="end" hidden role="dialog" aria-modal="true" aria-labelledby="endTitle">
   <div class="card">
-    <div class="eyebrow">Về đích phần 1 · Bản thử</div>
-    <div class="q" id="endTitle">Em mang về 3 điều</div>
+    <div class="eyebrow">Về đích · Bản thử 2</div>
+    <div class="q" id="endTitle">Em mang về 5 điều</div>
     <ol>
       <li><b>Hai tam giác bằng nhau</b> là hai tam giác có các cạnh tương ứng bằng nhau và các góc tương ứng bằng nhau: nhấc một tấm lên (lật, xoay nếu cần) là chồng khít lên tấm kia.</li>
       <li>Viết <b>△ABC = △DEF</b> thì các đỉnh tương ứng phải đứng <b>cùng thứ tự</b>: A ứng với D, B với E, C với F.</li>
       <li>Nhìn tên là đọc ra ngay: <b>AB = DE, BC = EF, CA = FD</b> và góc A = góc D, góc B = góc E, góc C = góc F.</li>
+      <li><b>Cạnh – cạnh – cạnh (c.c.c):</b> ba cạnh của tam giác này bằng ba cạnh của tam giác kia thì hai tam giác bằng nhau. Hai cạnh là chưa đủ.</li>
+      <li><b>Trình bày 5 dòng:</b> Xét △… và △… có: · ba dòng cặp cạnh kèm lý do (cạnh chung thì viết “… chung”) · Do đó △… = △… (c.c.c).</li>
     </ol>
-    <p class="note">Bản thử 1 mới có phần "Hai tam giác bằng nhau". Phần trường hợp cạnh – cạnh – cạnh, trình bày 5 dòng và mini game đội đang làm tiếp.</p>
     <div class="actions"><button class="primary" id="btnAgain" type="button">Bay lại từ đầu</button></div>
   </div>
 </div>
@@ -402,6 +420,7 @@ function makeTri(P,names,kind){
     angleFill(k,color){if(fills[k]){inner.remove(fills[k]);disposeTree(fills[k]);}const a=angs[k];
       const m=new THREE.Mesh(new THREE.CircleGeometry(7.4,32,a.start,a.span),new THREE.MeshBasicMaterial({color,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));
       m.position.set(P[k].x,P[k].y,.06);inner.add(m);fills[k]=m;ftween(.6,q=>{m.material.opacity=.6*q;});},
+    world(k){return V3(P[k].x,P[k].y,0).applyQuaternion(g.quaternion).add(V3(g.position.x,g.position.y,0));},
     flash(k,color){const s=glowSprite(color,2,1);s.position.set(P[k].x,P[k].y,1.2);inner.add(s);
       ftween(1.5,q=>{s.scale.setScalar(4+16*Math.sin(Math.PI*q));s.material.opacity=1-.5*q;},()=>{inner.remove(s);s.material.dispose();});}
   };
@@ -433,19 +452,50 @@ function moveTri(t,to,done,spreadTo){
     if(needFlip)ftween(1.3,k=>{t.g.quaternion.copy(q0).slerp(qF,k);},turn);else turn();
   });
 }
-const superpose=(h,done)=>moveTri(h.B,h.A.pose,done,1);
+/* xoay tấm quanh một trục (trong toạ độ trạm) đi qua pivot — gấp quanh một đường thẳng nằm trong mặt bảng (trục nằm ngang mặt bảng)
+   hoặc quay quanh một điểm (trục vuông góc mặt bảng); xong thì chốt đúng tư thế đích cho khỏi sai số */
+function pivotTo(t,axis,pivot,ang,to,done,spreadTo){
+  const p0=t.g.position.clone(),q0=t.g.quaternion.clone(),sp0=t.sp;
+  ftween(2.4,k=>{const q=new THREE.Quaternion().setFromAxisAngle(axis,ang*k);t.g.position.copy(p0).sub(pivot).applyQuaternion(q).add(pivot);t.g.quaternion.copy(q).multiply(q0);
+    if(spreadTo!=null)t.spread(sp0+(spreadTo-sp0)*k);},()=>{t.setPose(to);if(spreadTo!=null)t.spread(spreadTo);if(done)done();});
+}
+function superpose(h,done){
+  const cs=h.cs||{};if(!cs.join)return moveTri(h.B,h.A.pose,done,1);
+  const [i,j]=cs.edge,a=h.A.world(i),b=h.A.world(j),d=b.clone().sub(a);let axis,pivot;
+  if(cs.join==='spin'){axis=V3(0,0,1);pivot=a.clone().add(b).multiplyScalar(.5);}          /* đường chéo chung: quay nửa vòng quanh trung điểm */
+  else if(cs.join==='fold'){axis=d.clone().normalize();pivot=a.clone();}                   /* cạnh chung kiểu diều: gấp quanh cạnh chung */
+  else{axis=V3(-d.y,d.x,0).normalize();pivot=a.clone().add(b).multiplyScalar(.5);}         /* 'bis': chồng lên nhau, gấp quanh trung trực của cạnh chung */
+  pivot.z=h.B.z0;pivotTo(h.B,axis,pivot,Math.PI,h.A.pose,done,1);
+}
+/* đặt tấm xanh theo một cạnh: cạnh i→j hướng dir (độ), trung điểm cạnh nằm ở mid */
+function placePose(P,{edge:[i,j],mid,dir}){
+  const d=P[j].clone().sub(P[i]),rot=dir-Math.atan2(d.y,d.x)*180/Math.PI;
+  const m=P[i].clone().add(P[j]).multiplyScalar(.5).rotateAround(V2(0,0),rot*Math.PI/180);
+  return {x:mid[0]-m.x,y:mid[1]-m.y,rot,flip:false};
+}
+/* tư thế tấm vàng = ảnh của tấm xanh qua: 'fold' đối xứng trục là cạnh chung · 'bis' đối xứng trục là trung trực cạnh chung ·
+   'spin' đối xứng tâm là trung điểm cạnh chung. Đối xứng trục = quay 180° quanh trục nằm trong mặt bảng ⇒ rot' = 2φ − rot, đổi mặt. */
+function joinPose(P,p1,join,[i,j]){
+  const w=k=>V2(P[k].x,p1.flip?-P[k].y:P[k].y).rotateAround(V2(0,0),p1.rot*Math.PI/180).add(V2(p1.x,p1.y));
+  const a=w(i),b=w(j),c=V2(p1.x,p1.y);
+  if(join==='spin'){const m=a.clone().add(b).multiplyScalar(.5);return {x:2*m.x-c.x,y:2*m.y-c.y,rot:p1.rot+180,flip:!!p1.flip};}
+  let o=a,phi=Math.atan2(b.y-a.y,b.x-a.x);if(join==='bis'){o=a.clone().add(b).multiplyScalar(.5);phi+=Math.PI/2;}
+  const u=V2(Math.cos(phi),Math.sin(phi)),v=c.clone().sub(o),r=u.clone().multiplyScalar(2*v.dot(u)).sub(v).add(o);
+  return {x:r.x,y:r.y,rot:2*phi*180/Math.PI-p1.rot,flip:!p1.flip};
+}
 const goHome=(h,done)=>moveTri(h.B,h.B.home,done,0);
 function flashPairs(h,gap=1.2){[0,1,2].forEach(k=>fdelay(gap*k,()=>{h.A.flash(k,PAIR[k]);h.A.nameColor(k,PAIRC[k]);if(h.B.names[k])h.B.nameColor(k,PAIRC[k]);}));}
 function eqParts(n1,n2,bad){const p=[['△',INK]];n1.forEach((n,k)=>p.push([n,PAIRC[k]]));p.push([' = △',INK]);n2.forEach((n,k)=>p.push([n,bad?'#ff7a7a':PAIRC[k]]));return p;}
-function showEq(h,parts,y,hgt=7.6){const s=makeRich(parts,hgt);s.position.set(0,y??h.eqY,1.5);s.material.opacity=0;h.root.add(s);ftween(.7,k=>{s.material.opacity=k;});return s;}
+function showEq(h,parts,y,hgt=7.6){const s=makeRich(parts,hgt);s.position.set(0,y??h.eqY,1.5);s.material.opacity=0;h.root.add(s);if(h.dyn)h.dyn.push(s);ftween(.7,k=>{s.material.opacity=k;});return s;}
 function fadeOut(s){if(!s)return;ftween(.6,k=>{s.material.opacity=1-k;},()=>{s.visible=false;});}
 
 /* gợi ý khi chọn sai — đổi theo mức ký hiệu đang hiện (chỉ hình dạng / + cạnh / + góc) */
 const rankOf=(vals,k)=>[...vals].sort((a,b)=>a-b).indexOf(vals[k]);
 const edgeName=(names,k)=>names[k]+names[(k+1)%3];
+const tw=n=>n?`cạnh ${n} gạch`:'cạnh chung';
 function hintVtx(h,k,lead){const nm=h.A.names[k];lead=lead||'Đỉnh nào';
   if(h.level>=2)return `Góc ${nm} của tấm xanh có ${h.arcs[k]} cung. ${lead} của tấm vàng có góc cũng ${h.arcs[k]} cung?`;
-  if(h.level>=1)return `Đỉnh ${nm} nằm giữa cạnh ${h.ticks[k]} gạch và cạnh ${h.ticks[(k+2)%3]} gạch. ${lead} của tấm vàng cũng nằm giữa hai cạnh như thế?`;
+  if(h.level>=1)return `Đỉnh ${nm} nằm giữa ${tw(h.ticks[k])} và ${tw(h.ticks[(k+2)%3])}. ${lead} của tấm vàng cũng nằm giữa hai cạnh như thế?`;
   const r=rankOf(h.A.angs.map(a=>a.span),k);
   if(r===1)return `Góc ${nm} không to nhất, cũng không nhỏ nhất trong tấm xanh. ${lead} của tấm vàng có góc như vậy?`;
   const w=r?'to nhất':'nhỏ nhất';return `Góc ${nm} là góc ${w} của tấm xanh. ${lead} của tấm vàng có góc ${w}?`;}
@@ -456,7 +506,7 @@ function hintEdge(h,k){const nm=edgeName(h.A.names,k);
   const w=r?'dài nhất':'ngắn nhất';return `${nm} là cạnh ${w} của tấm xanh. Cạnh nào của tấm vàng cũng ${w}?`;}
 
 /* ================= world props ================= */
-(function stars(){const N=3200,p=new Float32Array(N*3);for(let i=0;i<N;i++){let x,y;do{x=(Math.random()-.5)*900;y=(Math.random()-.5)*500;}while(Math.abs(x)<120&&Math.abs(y)<80);p[i*3]=x;p[i*3+1]=y;p[i*3+2]=200-Math.random()*1800;}
+(function stars(){const N=3200,p=new Float32Array(N*3);for(let i=0;i<N;i++){let x,y;do{x=(Math.random()-.5)*900;y=(Math.random()-.5)*500;}while(Math.abs(x)<120&&Math.abs(y)<80);p[i*3]=x;p[i*3+1]=y;p[i*3+2]=200-Math.random()*2900;}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));
   scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9fb8ff,size:.9,transparent:true,opacity:.55})));})();
 function makeShip(){
@@ -472,7 +522,7 @@ const shipMesh=makeShip();scene.add(shipMesh);
 
 /* ================= stations ================= */
 const START=V3(0,0,40);
-const T=[V3(0,0,-40),V3(14,6,-310),V3(-16,-4,-580),V3(10,8,-850),V3(-12,0,-1120),V3(8,-6,-1390)];
+const T=[V3(0,0,-40),V3(14,6,-310),V3(-16,-4,-580),V3(10,8,-850),V3(-12,0,-1120),V3(8,-6,-1390),V3(-14,4,-1660),V3(12,-4,-1930),V3(-10,6,-2200),V3(10,0,-2470)];
 const stations=[];let cur=0;
 const BEACON_GEO=new THREE.OctahedronGeometry(.9,0);
 function build(st){
@@ -495,20 +545,32 @@ function defStation(i,o){
 function setSeen(p,v){p.seen=v;p.beacon.material.color.set(v?COL.ok:COL.scan);p.glow.material.color.set(v?COL.ok:COL.scan);p.glow.material.opacity=v?.25:.55;}
 const taskDone=(st,tk)=>tk.pts.every(id=>{const p=st.points.find(q=>q.id===id);return p&&p.seen;});
 
-/* trạm có tấm bảng + 2 tấm tam giác bằng nhau. names2[k] = tên đỉnh của tấm vàng ứng với đỉnh k của tấm xanh */
+/* trạm có tấm bảng + 2 tấm tam giác bằng nhau. Một CÂU (case) = {sides, pose1, pose2, names2, level, ticks, arcs, hide2};
+   names2[k] = tên đỉnh của tấm vàng ứng với đỉnh k của tấm xanh. Trạm học có 1 câu; trạm luyện tập có cả chuỗi câu,
+   nạp lần lượt trên CÙNG tấm bảng (h.loadCase) — trên lớp không bay giữa từng câu cho đỡ mất thời gian. */
 const BOARD={w:160,h:94};
-const SIDES={A:[16,22,30],B:[14,24,32],C:[18,25,33]}; /* lệch hẳn: mọi cặp cạnh lệch ≥ 25%, mọi cặp góc lệch ≥ 15° */
+/* lệch hẳn: mọi cặp cạnh lệch ≥ 25%, mọi cặp góc lệch ≥ 15° (góc: A 31·46·103 · B 24·44·112 · C 33·48·99 · D 32·48·101 · E 30·46·104 · F 18·34·129) */
+const SIDES={A:[16,22,30],B:[14,24,32],C:[18,25,33],D:[15,21,28],E:[16,23,31],F:[12,22,31]};
 function triStation(i,c){
   return defStation(i,Object.assign({zoneR:100,filmDist:175,box:{x:0,y:1,w:BOARD.w-8,h:BOARD.h-10},noReplay:!!c.practice},c,{
-    make(g){
+    make(g,st){
       const board=makeBoard(BOARD.w,BOARD.h);g.add(board);
-      const P=triFromSides(...c.sides,c.scale||1.55);
-      const A=makeTri(P,c.names1||['A','B','C'],'a');A.setPose(c.pose1);A.home=A.pose;g.add(A.g);
-      const B=makeTri(P,c.hide2?[null,null,null]:c.names2,'b');B.setPose(c.pose2);B.home=B.pose;g.add(B.g);
-      const h={root:g,board,P,A,B,names2:c.names2,level:c.level||0,maxLevel:c.maxLevel??2,ticks:c.ticks||[1,2,3],arcs:c.arcs||[1,2,3],eqY:37,
-        left:{x:c.pose1.x,y:c.pose1.y,w:88,h:84},
-        setLevel(lv){this.level=lv;[A,B].forEach(t=>t.setMarks(lv,this.ticks,this.arcs));}};
-      h.setLevel(h.level);
+      const h={root:g,board,dyn:[],eqY:37,maxLevel:c.maxLevel??2,A:null,B:null,
+        loadCase(cs){
+          [this.A&&this.A.g,this.B&&this.B.g,...this.dyn].forEach(o=>{if(o){g.remove(o);disposeTree(o);}});this.dyn=[];
+          const P=triFromSides(...cs.sides,cs.scale||1.55);
+          const pose1=cs.place?placePose(P,cs.place):cs.pose1,pose2=cs.join?joinPose(P,pose1,cs.join,cs.edge):cs.pose2;
+          /* bend: tấm vàng giữ nguyên 2 cạnh ở đỉnh 0 (cạnh 0 và cạnh 2) nhưng đổi góc ở đỉnh 0 ⇒ cạnh thứ ba khác ⇒ KHÔNG bằng nhau */
+          let P2=P;if(cs.bend){P2=P.map(p=>p.clone());P2[2]=P[2].clone().rotateAround(P[0],cs.bend*Math.PI/180);}
+          const shown=cs.hide2?[null,null,null]:cs.names2.map((n,k)=>cs.show2&&!cs.show2[k]?null:n); /* đỉnh chung: chỉ ghi tên 1 lần (ở tấm xanh) */
+          const A=makeTri(P,cs.names1||['A','B','C'],'a');A.setPose(pose1);A.home=A.pose;g.add(A.g);
+          const B=makeTri(P2,shown,'b');B.setPose(pose2);B.home=B.pose;g.add(B.g);
+          Object.assign(this,{P,A,B,cs,names2:cs.names2,ticks:cs.ticks||[1,2,3],arcs:cs.arcs||[1,2,3],left:{x:pose1.x,y:pose1.y,w:88,h:84}});
+          this.setLevel(st.lvGV??cs.level??0); /* GV đã chọn mức ký hiệu thì giữ cho các câu sau của trạm */
+          if(cs.pop)[A,B].forEach(t=>{t.g.scale.setScalar(.01);ftween(.5,k=>t.g.scale.setScalar(.01+.99*k));});
+        },
+        setLevel(lv){this.level=lv;[this.A,this.B].forEach(t=>t.setMarks(lv,this.ticks,this.arcs));}};
+      h.loadCase(c.cases?c.cases[0]:c);
       return h;
     }}));
 }
@@ -579,44 +641,242 @@ triStation(2,{name:'Viết tên đúng thứ tự đỉnh',sides:SIDES.B,pose1:{
      explain:'Đổi thứ tự đỉnh được, miễn là đổi y hệt ở cả hai bên: B với P, A với N, C với M vẫn đứng cùng vị trí.',
      hint:'Kiểm từng cặp: chữ thứ nhất bên trái phải ứng với chữ thứ nhất bên phải, rồi chữ thứ hai, chữ thứ ba.'}]});
 
-/* ---------- Trạm 3: luyện kiểu 1 — tam giác này bằng tam giác nào ---------- */
-triStation(3,{name:'Luyện tập 1: Bằng tam giác nào?',practice:true,marks:true,sides:SIDES.C,pose1:{x:-38,y:-5,rot:4},pose2:{x:38,y:-3,rot:155,flip:true},names2:['E','F','D'],level:0,ticks:[1,3,2],arcs:[2,1,3],
-  film:h=>[
-    {frame:'board',move:3,text:'Trạm luyện tập. Hai tấm tam giác này bằng nhau nhưng nằm ở hai tư thế khác nhau. Em nhìn hình dạng để tìm đỉnh nào ứng với đỉnh nào nhé.'},
-    {frame:'board',ask:{q:'△ABC bằng tam giác nào?',opts:['△EFD','△DEF','△EDF','△FDE'],ans:0,big:true,
-      explain:'A ứng với E, B ứng với F, C ứng với D, nên viết △ABC = △EFD.',hint:h=>hintVtx(h,0)+' Rồi làm tương tự với B và C.'}},
-    Object.assign({move:2,text:'Đúng rồi! Chồng thử tấm vàng lên tấm xanh nhé…',on(){superpose(h);}},OBL),
-    {frame:'left',text:'A trùng E, B trùng F, C trùng D.',on(){flashPairs(h);}},
-    {frame:'board',hold:true,next:'Bay tiếp ›',text:'Vậy <b>△ABC = △EFD</b>: các đỉnh tương ứng viết theo cùng thứ tự.',on(){showEq(h,eqParts(['A','B','C'],['E','F','D']));goHome(h);}}]});
+/* ================= trạm LUYỆN TẬP = chuỗi câu trên cùng tấm bảng =================
+   Trên lớp: chiếu TV, GV hỏi cả lớp rồi GV (hoặc HS lên bảng) bấm/kéo. Mỗi câu: hỏi → đúng (hoặc GV bấm "Đáp án") →
+   hoạt cảnh chồng hình → kết quả, GV bấm "Câu tiếp". Ký hiệu trên hình bớt dần qua từng câu (đỡ dần — faded scaffolding).
+   Loại câu: 'ten' chọn tên tam giác · 'canh'/'goc' kéo cạnh/góc tương ứng (ks = các cạnh/góc được hỏi) · 'gan' gắn tên đỉnh ·
+   'khong' hai tam giác có bằng nhau không (c.c.c) · 'tb' kéo đủ 5 dòng trình bày. */
+const ABC=['A','B','C'];
+const triName=n=>'△'+n.join('');
+const edgeOf=(n,k)=>n[k]+n[(k+1)%3];
+/* đáp án nhiễu của câu chọn tên = các hoán vị khác của tên tấm vàng; luôn có cách đọc theo thứ tự chữ cái (bẫy hay gặp nhất) */
+function optsTen(n){
+  const ok=triName(n),alpha=triName([...n].sort());
+  const all=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]].map(p=>triName(p.map(i=>n[i]))).filter(x=>x!==ok&&x!==alpha);
+  return [ok,...(alpha!==ok?[alpha]:[]),...all].slice(0,4);
+}
+/* 5 dòng trình bày c.c.c (luật lời giải Hình — docs/log-giai-hinh-hoc-bai.md): cạnh không có gạch = cạnh chung */
+function proofLines(N1,N2,ticks){
+  const conds=[0,1,2].map(k=>ticks[k]?`${edgeOf(N1,k)} = ${edgeOf(N2,k)} (giả thiết)`:`${edgeOf(N1,k)} chung`);
+  return {head:`Xét ${triName(N1)} và ${triName(N2)} có:`,conds,tail:`Do đó ${triName(N1)} = ${triName(N2)} (c.c.c).`};
+}
+/* "A ứng với C, B ứng với D…"; đỉnh trùng tên ở hai tam giác (cạnh chung) thì gom lại: "B, D là đỉnh chung" */
+function mapText(N1,N,verb){const own=[0,1,2].filter(k=>N1[k]!==N[k]).map(k=>`${N1[k]} ${verb} ${N[k]}`),sh=[0,1,2].filter(k=>N1[k]===N[k]).map(k=>N1[k]);
+  return own.join(', ')+(sh.length?`; ${sh.join(', ')} là đỉnh chung`:'');}
+function caseSteps(h,cs,j,n,c){
+  const N=cs.names2,N1=cs.names1||ABC,last=j===n-1,first=j===0;
+  const showGiven=()=>{if(cs.kind==='gan')showEq(h,eqParts(N1,N));};
+  const lead=first?[{frame:'board',move:3,text:c.intro,on:showGiven}]:[];
+  const load=first?{}:{on(){h.loadCase(cs);showGiven();}}; /* câu đầu đã dựng sẵn từ lúc tàu tới trạm */
+  let q,res,anim='Chồng thử tấm vàng lên tấm xanh nhé…';
+  if(cs.join==='fold')anim='Gấp tấm vàng quanh cạnh chung, chồng lên tấm xanh…';
+  if(cs.join==='spin')anim='Quay tấm vàng nửa vòng quanh trung điểm cạnh chung…';
+  if(cs.join==='bis')anim='Lật tấm vàng quanh đường trung trực của cạnh chung…';
+  if(cs.kind==='ten'){
+    q={ask:{q:`${triName(N1)} bằng tam giác nào?`,opts:optsTen(N),ans:0,big:true,
+      explain:`${mapText(N1,N,'ứng với')}, nên viết ${triName(N1)} = ${triName(N)}.`,hint:hh=>hintVtx(hh,0)+` Rồi làm tương tự với ${N1[1]} và ${N1[2]}.`}};
+    res={text:`${mapText(N1,N,'trùng')}. Vậy <b>${triName(N1)} = ${triName(N)}</b>${c.ccc?' (c.c.c)':''}.`,on(){flashPairs(h);showEq(h,eqParts(N1,N));}};
+  }else if(cs.kind==='khong'){
+    const e=edgeOf(N1,1),e2=edgeOf(N,1);
+    q={ask:{q:`${triName(N1)} và ${triName(N)} có bằng nhau không?`,opts:['Không bằng nhau','Bằng nhau (c.c.c)','Bằng nhau, vì có hai cặp cạnh bằng nhau'],ans:0,
+      explain:`Mới có hai cặp cạnh bằng nhau. Cạnh thứ ba ${e} và ${e2} không có ký hiệu bằng nhau, nhìn đã thấy dài ngắn khác nhau.`,
+      hint:'Đếm xem trên hình có mấy cặp cạnh được đánh dấu bằng nhau. Trường hợp c.c.c cần mấy cặp?'}};
+    anim='Thử chồng tấm vàng lên tấm xanh…';
+    res={text:`Hai cạnh khớp nhau, nhưng cạnh thứ ba ${e} và ${e2} lệch hẳn: hai tam giác <b>không bằng nhau</b>. Hai cặp cạnh là chưa đủ.`,on(){
+      h.A.edgeHi(1,0xff7a7a);h.B.edgeHi(1,0xff7a7a);[0,2].forEach(k=>{h.A.edgeHi(k,PAIR[k]);h.B.edgeHi(k,PAIR[k]);});}};
+  }else if(cs.kind==='canh'||cs.kind==='goc'){
+    const isC=cs.kind==='canh',ks=cs.ks,one=ks.length===1;
+    const lab=k=>isC?edgeOf(N1,k):'^'+N1[k],ansOf=k=>isC?edgeOf(N,k):N[k],tile=k=>isC?{id:edgeOf(N,k),t:edgeOf(N,k)}:{id:N[k],t:'^'+N[k]};
+    const pairs=ks.map(k=>`${lab(k)} = ${isC?'':'^'}${ansOf(k)}`).join(', ');
+    q={drag:{q:one?(isC?`Cạnh ${lab(ks[0])} bằng cạnh nào của tấm vàng?`:`Góc ${N1[ks[0]]} bằng góc nào của tấm vàng?`):(isC?'Kéo mỗi cạnh của tấm vàng vào đúng chỗ.':'Kéo mỗi góc của tấm vàng vào đúng chỗ.'),
+      rows:[ks.map(k=>({t:lab(k)+' =',blank:'b'+k,ans:ansOf(k),k}))],tiles:[0,1,2].map(tile),
+      explain:one?`${pairs}: hai ${isC?'cạnh':'góc'} tương ứng.`:`${pairs}: các cặp ${isC?'cạnh':'góc'} tương ứng.`,
+      hint:(hh,b)=>isC?hintEdge(hh,b.k):hintVtx(hh,b.k,'Góc nào')}};
+    res={text:`${pairs}. Hai tấm này là <b>${triName(N1)} = ${triName(N)}</b>.`,on(){
+      ks.forEach((k,i)=>fdelay(.5*i,()=>{const ends=isC?[k,(k+1)%3]:[k];
+        if(isC){h.A.edgeHi(k,PAIR[k]);h.B.edgeHi(k,PAIR[k]);}else{h.A.angleFill(k,PAIR[k]);h.B.angleFill(k,PAIR[k]);}
+        ends.forEach(e=>{h.A.nameColor(e,PAIRC[e]);h.B.nameColor(e,PAIRC[e]);});}));
+      showEq(h,eqParts(N1,N));}};
+  }else if(cs.kind==='gan'){
+    const sorted=[...N].sort();
+    q={drag:{q:`Kéo ${sorted.join(', ')} vào đúng đỉnh của tấm vàng.`,slots:[0,1,2].map(k=>({vtx:k,ans:N[k]})),tiles:sorted.map(x=>({id:x,t:x})),fixed:true,
+      explain:`${N[0]} ứng với ${N1[0]}, ${N[1]} ứng với ${N1[1]}, ${N[2]} ứng với ${N1[2]}, đúng thứ tự trong ${triName(N1)} = ${triName(N)}.`,
+      hint:(hh,b,t)=>{const pos=hh.names2.indexOf(t.id);return `Trong ${triName(N1)} = ${triName(N)}, ${t.id} đứng thứ ${pos+1} nên ${t.id} ứng với ${hh.A.names[pos]}. `+hintVtx(hh,pos);},
+      onPlace(hh,b,t){hh.B.setName(b.vtx,t.id);}}};
+    res={text:`${edgeOf(N1,0)} = ${edgeOf(N,0)}, ${edgeOf(N1,1)} = ${edgeOf(N,1)}, ${edgeOf(N1,2)} = ${edgeOf(N,2)}: ba cặp cạnh tương ứng bằng nhau.`,on(){
+      [0,1,2].forEach(k=>fdelay(.6*k,()=>{h.A.edgeHi(k,PAIR[k]);h.B.edgeHi(k,PAIR[k]);h.A.nameColor(k,PAIRC[k]);h.B.nameColor(k,PAIRC[k]);}));}};
+  }else{ /* 'tb' — kéo đủ 5 dòng; 3 dòng điều kiện đúng ở THỨ TỰ NÀO cũng được (chấm theo nội dung ô, không theo vị trí) */
+    const L=proofLines(N1,N,cs.ticks),sw=[N[1],N[0],N[2]];
+    const shared=[0,1,2].find(k=>!cs.ticks[k]);
+    const bad=[`${edgeOf(N1,0)} = ${edgeOf(N,1)} (giả thiết)`,shared!=null?`${edgeOf(N1,shared)} = ${edgeOf(N,shared)} (giả thiết)`:`${edgeOf(N1,1)} = ${edgeOf(N,2)} (giả thiết)`];
+    const tiles=[{id:'h',t:L.head},{id:'hx',t:`Xét ${triName(N1)} = ${triName(N)} có:`},
+      ...L.conds.map((t,k)=>({id:'c'+k,t})),...bad.map((t,k)=>({id:'x'+k,t})),
+      {id:'t',t:L.tail},{id:'tx',t:`Do đó ${triName(N1)} = ${triName(sw)} (c.c.c).`},{id:'ty',t:`Do đó ${triName(N1)} = ${triName(N)} (c.g.c).`}];
+    const C=['c0','c1','c2'];
+    q={drag:{q:`Chứng minh ${triName(N1)} = ${triName(N)}. Kéo đủ 5 dòng vào bài trình bày.`,proof:true,
+      rows:[[{blank:'r0',ans:'h',hint:'Dòng đầu: gọi tên hai tam giác, nối bằng chữ “và”, các đỉnh viết đúng thứ tự tương ứng.'}],
+        [{blank:'r1',ans:C},{t:';'}],[{blank:'r2',ans:C},{t:';'}],[{blank:'r3',ans:C},{t:'.'}],
+        [{blank:'r4',ans:'t',hint:'Kết luận: đỉnh viết đúng thứ tự như dòng đầu, kèm tên trường hợp — ba cặp cạnh thì là (c.c.c).'}]],
+      tiles,explain:'Đủ 5 dòng: xét hai tam giác, ba cặp cạnh bằng nhau kèm lý do, rồi kết luận kèm (c.c.c).',
+      hint:(hh,b,t)=>b.hint||'Mỗi dòng giữa là một cặp cạnh bằng nhau: hai cạnh có cùng số gạch, kèm lý do. Cạnh nằm chung cả hai tam giác thì viết “… chung”.'}};
+    res={text:`${L.head} ${L.conds.join('; ')}. ${L.tail}`,on(){[0,1,2].forEach(k=>fdelay(.5*k,()=>{h.A.edgeHi(k,PAIR[k]);h.B.edgeHi(k,PAIR[k]);}));showEq(h,eqParts(N1,N).concat([['  (c.c.c)',INK]]));}};
+  }
+  return [...lead,Object.assign({frame:'tri'},q,load),
+    Object.assign({move:2,text:anim,on(){superpose(h);}},OBL),
+    Object.assign({frame:'board',hold:true,next:last?(c.lastNext||'Bay tiếp ›'):'Câu tiếp ›'},res)];
+}
+function practiceStation(i,c){
+  const cases=c.cases.map((cs,j)=>Object.assign({pop:j>0},cs));
+  return triStation(i,Object.assign({practice:true,marks:true},c,{cases,film:h=>cases.flatMap((cs,j)=>caseSteps(h,cs,j,cases.length,c))}));
+}
+/* tư thế tấm vàng so với tấm xanh: dời (cùng góc quay) · xoay · lật (rot + 180, flip = soi gương qua trục đứng) · xoay + lật */
+const L1={x:-38,y:-5},R1={x:38,y:-4};
+const P1=(rot)=>Object.assign({rot},L1),P2=(rot,flip)=>Object.assign({rot,flip:!!flip},R1);
 
-/* ---------- Trạm 4: luyện kiểu 2 — cạnh nào, góc nào bằng nhau ---------- */
-triStation(4,{name:'Luyện tập 2: Cạnh nào, góc nào bằng nhau?',practice:true,marks:true,sides:SIDES.A,pose1:{x:-38,y:-5,rot:-24},pose2:{x:38,y:-4,rot:70},names2:['P','M','N'],level:1,ticks:[2,3,1],arcs:[3,1,2],
-  film:h=>[
-    {frame:'board',move:3,text:'Trạm luyện tập. Hai tấm tam giác này bằng nhau. Em tìm cạnh và góc tương ứng, rồi kéo ô đúng thả vào chỗ trống nhé.'},
-    {frame:'board',drag:{q:'Cạnh AB bằng cạnh nào của tấm vàng?',rows:[[{t:'AB ='},{blank:'x',ans:'PM'}]],tiles:[{id:'PM',t:'PM'},{id:'MN',t:'MN'},{id:'NP',t:'NP'}],
-      explain:'AB và PM là hai cạnh tương ứng.',hint:h=>hintEdge(h,0)}},
-    Object.assign({move:2,text:'Chồng thử nhé…',on(){superpose(h);}},OBL),
-    {frame:'left',text:'AB trùng khít PM: hai cạnh tương ứng bằng nhau.',on(){h.A.edgeHi(0,PAIR[0]);h.B.edgeHi(0,PAIR[0]);h.A.nameColor(0,PAIRC[0]);h.A.nameColor(1,PAIRC[1]);h.B.nameColor(0,PAIRC[0]);h.B.nameColor(1,PAIRC[1]);}},
-    {frame:'board',text:'Tấm vàng về chỗ cũ. Giờ đến góc.',on(){goHome(h);[0,1].forEach(k=>{h.A.edgeReset(k);h.B.edgeReset(k);});}},
-    {frame:'board',drag:{q:'Góc A bằng góc nào của tấm vàng?',rows:[[{t:'^A ='},{blank:'y',ans:'P'}]],tiles:[{id:'P',t:'^P'},{id:'M',t:'^M'},{id:'N',t:'^N'}],
-      explain:'^A và ^P là hai góc tương ứng.',hint:h=>hintVtx(h,0,'Góc nào')}},
-    Object.assign({move:2,text:'Chồng thử lần nữa…',on(){superpose(h);}},OBL),
-    {frame:'left',text:'^A trùng khít ^P: hai góc tương ứng bằng nhau.',on(){h.A.angleFill(0,PAIR[0]);h.B.angleFill(0,PAIR[0]);h.A.nameColor(0,PAIRC[0]);h.B.nameColor(0,PAIRC[0]);}},
-    {frame:'board',hold:true,next:'Bay tiếp ›',text:'Hai tấm này là <b>△ABC = △PMN</b>, nên AB = PM và ^A = ^P.',on(){showEq(h,eqParts(['A','B','C'],['P','M','N']));goHome(h);}}]});
+/* ---------- Trạm 3: luyện kiểu 1 — bằng tam giác nào (4 câu) ---------- */
+practiceStation(3,{name:'Luyện tập 1: Bằng tam giác nào?',
+  intro:'Trạm luyện tập, 4 câu. Mỗi câu là hai tấm tam giác bằng nhau ở một tư thế khác: dời đi, xoay, lật, rồi vừa xoay vừa lật. Ký hiệu trên hình bớt dần qua từng câu. Em tìm đỉnh nào ứng với đỉnh nào nhé.',
+  cases:[
+    {kind:'ten',sides:SIDES.D,level:2,ticks:[2,1,3],arcs:[1,3,2],pose1:P1(0),pose2:P2(0),names2:['E','F','D']},
+    {kind:'ten',sides:SIDES.A,level:1,ticks:[3,1,2],arcs:[2,1,3],pose1:P1(10),pose2:P2(132),names2:['N','P','M']},
+    {kind:'ten',sides:SIDES.F,level:0,pose1:P1(-6),pose2:P2(174,true),names2:['K','H','I']},
+    {kind:'ten',sides:SIDES.C,level:0,ticks:[1,3,2],arcs:[2,1,3],pose1:P1(4),pose2:P2(155,true),names2:['E','F','D']}]});
 
-/* ---------- Trạm 5: luyện kiểu 3 — gắn tên đỉnh ---------- */
-triStation(5,{name:'Luyện tập 3: Gắn tên đỉnh',practice:true,marks:true,sides:SIDES.B,pose1:{x:-38,y:-6,rot:14},pose2:{x:38,y:-4,rot:-95,flip:true},names2:['D','E','F'],hide2:true,level:0,ticks:[3,1,2],arcs:[2,3,1],
+/* ---------- Trạm 4: luyện kiểu 2 — cạnh nào, góc nào bằng nhau (4 câu) ---------- */
+practiceStation(4,{name:'Luyện tập 2: Cạnh nào, góc nào bằng nhau?',
+  intro:'Trạm luyện tập, 4 câu. Em tìm cạnh tương ứng, góc tương ứng, rồi kéo ô đúng thả vào chỗ trống. Chạm ô rồi chạm chỗ trống cũng được.',
+  cases:[
+    {kind:'canh',ks:[0],sides:SIDES.B,level:2,ticks:[2,3,1],arcs:[3,1,2],pose1:P1(-15),pose2:P2(100),names2:['M','P','N']},
+    {kind:'goc',ks:[2],sides:SIDES.E,level:1,ticks:[1,2,3],arcs:[2,3,1],pose1:P1(8),pose2:P2(188,true),names2:['R','P','Q']},
+    {kind:'canh',ks:[0,1,2],sides:SIDES.A,level:1,ticks:[2,3,1],arcs:[3,1,2],pose1:P1(-24),pose2:P2(70,true),names2:['P','M','N']},
+    {kind:'goc',ks:[0,1,2],sides:SIDES.D,level:0,ticks:[3,2,1],arcs:[1,2,3],pose1:P1(12),pose2:P2(-110),names2:['K','I','H']}]});
+
+/* ---------- Trạm 5: luyện kiểu 3 — gắn tên đỉnh (3 câu) ---------- */
+practiceStation(5,{name:'Luyện tập 3: Gắn tên đỉnh',
+  intro:'Trạm luyện tập, 3 câu. Mỗi câu cho sẵn tên hai tam giác bằng nhau, nhưng tấm vàng chưa ghi tên đỉnh. Em kéo tên vào đúng ô trống quanh các đỉnh của tấm vàng.',
+  cases:[
+    {kind:'gan',sides:SIDES.B,level:1,ticks:[3,1,2],arcs:[2,3,1],hide2:true,pose1:P1(14),pose2:P2(-130),names2:['D','E','F']},
+    {kind:'gan',sides:SIDES.C,level:0,hide2:true,pose1:P1(0),pose2:P2(176,true),names2:['M','P','N']},
+    {kind:'gan',sides:SIDES.F,level:0,hide2:true,pose1:P1(-8),pose2:P2(-95,true),names2:['I','K','H']}]});
+
+/* ---------- Trạm 6: c.c.c — vì sao ba cạnh là đủ (dựng bằng compa) ----------
+   Ba đoạn BC = 36, CA = 28, AB = 21 (góc A 93,5° · B 50,9° · C 35,6° — lệch hẳn). Hai cung tròn tâm B, C cắt nhau ở đúng 2 điểm A, A'
+   đối xứng qua BC ⇒ △A'BC gấp quanh BC trùng △ABC ⇒ ba cạnh chỉ ghép được MỘT tam giác. Bản lề hai cạnh: cạnh thứ ba đổi ⇒ hai cạnh chưa đủ. */
+class Arc3 extends THREE.Curve{constructor(c,r,a0,a1){super();this.c=c;this.r=r;this.a0=a0;this.a1=a1;}
+  getPoint(t,o=new THREE.Vector3()){const a=this.a0+(this.a1-this.a0)*t;return o.set(this.c.x+this.r*Math.cos(a),this.c.y+this.r*Math.sin(a),.3);}}
+function arcTube(c,r,a0,a1,color){const geo=new THREE.TubeGeometry(new Arc3(c,r,a0,a1),120,.3,6,false);geo.setDrawRange(0,0);
+  return new THREE.Mesh(geo,new THREE.MeshBasicMaterial({color}));}
+function triAt(pts,names,kind){const cx=(pts[0].x+pts[1].x+pts[2].x)/3,cy=(pts[0].y+pts[1].y+pts[2].y)/3;
+  const t=makeTri(pts.map(p=>V2(p.x-cx,p.y-cy)),names,kind);t.setPose({x:cx,y:cy,rot:0});return t;}
+defStation(6,{name:'Cạnh – cạnh – cạnh: vì sao ba cạnh là đủ',zoneR:100,filmDist:175,box:{x:0,y:1,w:BOARD.w-8,h:BOARD.h-10},
+  make(g){
+    const board=makeBoard(BOARD.w,BOARD.h);g.add(board);
+    const a=36,b=28,c=21,B=V2(-26,-16),C=V2(B.x+a,B.y);
+    const ax=(c*c-b*b+a*a)/(2*a),ay=Math.sqrt(c*c-ax*ax),A=V2(B.x+ax,B.y+ay),A2=V2(A.x,2*B.y-A.y);
+    /* ba đoạn cho trước: AB hồng, BC xanh lá, CA tím — cùng màu cạnh tương ứng trên tam giác */
+    const st=[[c,PAIR[0]],[a,PAIR[1]],[b,PAIR[2]]].map(([L,col],k)=>{const y=36-k*8,m=bar(V2(-72,y),V2(-72+L,y),.9,new THREE.MeshBasicMaterial({color:col}),.3);g.add(m);return m;});
+    const moving=bar(V2(-72,28),V2(-72+a,28),.9,new THREE.MeshBasicMaterial({color:PAIR[1]}),.35);moving.visible=false;g.add(moving);
+    const dot=(p,col)=>{const s=glowSprite(col,5,0);s.position.set(p.x,p.y,1);g.add(s);return s;};
+    const dB=dot(B,0xffffff),dC=dot(C,0xffffff),dA=dot(A,COL.gold),dA2=dot(A2,COL.gold);
+    const lab=(t,p,dy,col)=>{const s=makeText(t,6.4,col);s.position.set(p.x,p.y+dy,1);s.material.opacity=0;g.add(s);return s;};
+    const lB=lab('B',B,-5.5,'#8eeaff'),lC=lab('C',C,-5.5,'#8eeaff'),lA=lab('A',A,5.5,'#ffd166'),lA2=lab("A'",A2,-5.5,'#ffd166');
+    const arcB=arcTube(B,c,-1.35,1.35,PAIR[0]),arcC=arcTube(C,b,Math.PI-1.05,Math.PI+1.05,PAIR[2]);g.add(arcB,arcC);
+    const arm=bar(V2(0,0),V2(1,0),.35,new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.75}),.4);arm.visible=false;g.add(arm);
+    const tip=glowSprite(0xffffff,4,0);g.add(tip);
+    const T1=triAt([A,B,C],[null,null,null],'a'),T2=triAt([A2,B,C],[null,null,null],'b'); /* tên đỉnh dùng nhãn riêng lA, lA2, lB, lC */
+    [T1,T2].forEach(t=>{t.g.visible=false;g.add(t.g);});
+    const title=makeText('cạnh – cạnh – cạnh (c.c.c)',7,'#ffd166');title.position.set(30,40,1.5);title.material.opacity=0;g.add(title);
+    /* bản lề: hai cạnh 21 (hồng) và 28 (tím) chung đỉnh H, góc mở thay đổi ⇒ cạnh thứ ba (trắng) đổi theo */
+    const hinge=new THREE.Group();hinge.visible=false;g.add(hinge);const H=V2(46,30);
+    const hm=col=>{const m=new THREE.Mesh(new THREE.BoxGeometry(1,.9,.2),new THREE.MeshBasicMaterial({color:col}));m.position.z=.3;hinge.add(m);return m;};
+    const s1=hm(PAIR[0]),s2=hm(PAIR[2]),s3=hm(0xffffff);const hl=makeText('cạnh thứ ba đổi theo',4.6,'#e8f1ff');hl.position.set(54,-3,1);hinge.add(hl);
+    const setBar=(m,p,q)=>{const d=q.clone().sub(p);m.position.set((p.x+q.x)/2,(p.y+q.y)/2,.3);m.rotation.z=Math.atan2(d.y,d.x);m.scale.x=d.length();};
+    const h={board,arcB,arcC,arm,tip,A,B,C,A2,T1,T2,hinge,hingeOn:false,
+      solids:[],
+      stick(){moving.visible=true;st[1].visible=false;const p0=V2(-72+a/2,28),p1=B.clone().add(C).multiplyScalar(.5);
+        ftween(1.6,k=>{moving.position.set(p0.x+(p1.x-p0.x)*k,p0.y+(p1.y-p0.y)*k,.35);},()=>{[dB,dC].forEach(s=>s.material.opacity=.9);[lB,lC].forEach(s=>s.material.opacity=1);});},
+      draw(arc,ctr,r,a0,a1){const n=arc.geometry.index.count;arm.visible=true;tip.material.opacity=.9;
+        ftween(2.6,k=>{const seg=Math.floor(n*k/36)*36;arc.geometry.setDrawRange(0,seg);const an=a0+(a1-a0)*k,p=V2(ctr.x+r*Math.cos(an),ctr.y+r*Math.sin(an));
+          setBar(arm,ctr,p);tip.position.set(p.x,p.y,1);},()=>{arc.geometry.setDrawRange(0,n);arm.visible=false;tip.material.opacity=0;});},
+      meet(){ftween(.8,k=>{[dA,dA2].forEach(s=>{s.material.opacity=k;s.scale.setScalar(5+6*Math.sin(Math.PI*k));});[lA,lA2].forEach(s=>s.material.opacity=k);});
+        [T1,T2].forEach(t=>{t.g.visible=true;t.g.scale.setScalar(.01);ftween(.7,k=>t.g.scale.setScalar(.01+.99*k));});
+        [0,1,2].forEach(k=>{T1.edgeHi(k,PAIR[k]);T2.edgeHi(k,PAIR[k]);});},
+      /* gấp quanh BC: △A'BC (toạ độ đã là ảnh đối xứng) quay 180° quanh BC ⇒ nằm khít △ABC với mặt đã lật */
+      fold(){const pv=V3(B.x,B.y,.6);pivotTo(T2,V3(1,0,0),pv,Math.PI,{x:T1.pose.x,y:T1.pose.y,rot:0,flip:true},null);ftween(.4,k=>{lA2.material.opacity=1-k;});},
+      showTitle(){ftween(.8,k=>{title.material.opacity=k;});},
+      update(dt,t){if(!this.hingeOn)return;const al=(87+50*Math.sin(t*.9))*Math.PI/180,b0=-2.2;
+        const p1=V2(H.x+c*Math.cos(b0),H.y+c*Math.sin(b0)),p2=V2(H.x+b*Math.cos(b0+al),H.y+b*Math.sin(b0+al));
+        setBar(s1,H,p1);setBar(s2,H,p2);setBar(s3,p1,p2);}};
+    return h;
+  },
   film:h=>[
-    {frame:'board',move:3,text:'Trạm luyện tập. Biết <b>△ABC = △DEF</b>, nhưng tấm vàng chưa ghi tên đỉnh. Em kéo D, E, F vào đúng ô trống quanh các đỉnh của tấm vàng nhé.',on(){h.eq=showEq(h,eqParts(['A','B','C'],['D','E','F']));}},
-    {frame:'board',drag:{q:'Kéo D, E, F vào đúng đỉnh của tấm vàng.',slots:[{vtx:0,ans:'D'},{vtx:1,ans:'E'},{vtx:2,ans:'F'}],tiles:[{id:'D',t:'D'},{id:'E',t:'E'},{id:'F',t:'F'}],fixed:true,
-      explain:'D ứng với A, E ứng với B, F ứng với C, đúng thứ tự trong △ABC = △DEF.',
-      hint:(h,b,t)=>{const pos=h.names2.indexOf(t.id);return `Trong △ABC = △DEF, ${t.id} đứng thứ ${pos+1} nên ${t.id} ứng với ${h.A.names[pos]}. `+hintVtx(h,pos);},
-      onPlace(h,b,t){h.B.setName(b.vtx,t.id);}}},
-    Object.assign({move:2,text:'Đủ cả ba đỉnh! Chồng thử nhé…',on(){superpose(h);}},OBL),
-    {frame:'left',text:'AB = DE.',on(){h.A.edgeHi(0,PAIR[0]);h.B.edgeHi(0,PAIR[0]);}},
-    {text:'BC = EF.',on(){h.A.edgeHi(1,PAIR[1]);h.B.edgeHi(1,PAIR[1]);}},
-    {text:'CA = FD.',on(){h.A.edgeHi(2,PAIR[2]);h.B.edgeHi(2,PAIR[2]);}},
-    {frame:'board',hold:true,next:'Về đích ›',text:'Ba cặp cạnh tương ứng bằng nhau, ba cặp góc tương ứng cũng bằng nhau: <b>△ABC = △DEF</b>.',on(){[0,1,2].forEach(k=>{h.A.angleFill(k,PAIR[k]);h.B.angleFill(k,PAIR[k]);h.A.nameColor(k,PAIRC[k]);h.B.nameColor(k,PAIRC[k]);});goHome(h);}}]});
+    {frame:'board',move:3,text:'Trạm học. Cho ba đoạn thẳng: hồng, xanh lá, tím. Ghép ba đoạn này thành một tam giác thì được <b>mấy hình khác nhau</b>?'},
+    {text:'Đặt đoạn xanh lá làm cạnh BC.',on(){h.stick();}},
+    {text:'Ở đầu B, quay compa với bán kính bằng <b>đoạn hồng</b>. Đỉnh A phải nằm trên cung này, vì AB bằng đoạn hồng.',on(){h.draw(h.arcB,h.B,21,-1.35,1.35);}},
+    {text:'Ở đầu C, quay compa với bán kính bằng <b>đoạn tím</b>. Đỉnh A cũng phải nằm trên cung này, vì CA bằng đoạn tím.',on(){h.draw(h.arcC,h.C,28,Math.PI-1.05,Math.PI+1.05);}},
+    {text:'Hai cung cắt nhau ở <b>đúng hai điểm</b>: A ở trên, A\' ở dưới. Ta được △ABC và △A\'BC.',on(){h.meet();}},
+    Object.assign({move:2,text:'Gấp △A\'BC lên quanh cạnh BC…',on(){h.fold();}},{cam:[40,-70,110],look:[-8,-10,0]}),
+    {frame:'board',text:'…trùng khít △ABC! Vậy ba đoạn đã cho chỉ ghép được <b>một hình tam giác</b>; hình kia lật lên là trùng.'},
+    {text:'Vì thế: nếu <b>ba cạnh</b> của tam giác này bằng <b>ba cạnh</b> của tam giác kia thì hai tam giác đó bằng nhau. Đây là trường hợp <b>cạnh – cạnh – cạnh</b>, viết tắt <b>(c.c.c)</b>.',on(){h.showTitle();}},
+    {text:'Còn nếu chỉ biết <b>hai</b> cạnh? Hai đoạn nối nhau như cái bản lề: mở rộng, khép hẹp, cạnh thứ ba đổi theo, nên có rất nhiều tam giác khác nhau. Hai cạnh là <b>chưa đủ</b>.',on(){h.hinge.visible=true;h.hingeOn=true;}}],
+  guide:'Giờ em hãy bay quanh tấm bảng. Nhìn hai cung tròn cắt nhau và cái bản lề: vì sao ba cạnh thì đủ, còn hai cạnh thì chưa?',
+  points:[
+    {id:'cung',pos:[-8,6,8],title:'Hai cung tròn',text:'Đỉnh A phải cách B đúng bằng đoạn hồng và cách C đúng bằng đoạn tím. Chỉ có hai điểm như thế: A và A\'.'},
+    {id:'banle',pos:[46,34,8],title:'Bản lề',text:'Hai cạnh giữ nguyên độ dài, nhưng góc giữa chúng mở ra khép vào thì cạnh thứ ba đổi theo.'}],
+  tasks:[{t:'Ba đoạn thẳng ghép được mấy hình tam giác?'},{t:'Vì sao hai cạnh thì chưa đủ?'}],
+  quiz:[
+    {q:'△ABC và △DEF có AB = DE, BC = EF, CA = FD. Kết luận nào đúng?',opts:['△ABC = △DEF (c.c.c)','△ABC = △EDF (c.c.c)','Chưa đủ để kết luận','△ABC = △DEF (c.g.c)'],ans:0,big:true,
+     explain:'Ba cặp cạnh tương ứng bằng nhau ⇒ hai tam giác bằng nhau theo trường hợp cạnh – cạnh – cạnh. Thứ tự đỉnh: A với D, B với E, C với F.',
+     hint:'Đếm số cặp cạnh bằng nhau. Rồi xem A đi với đỉnh nào (AB = DE nên A đi với D).'},
+    {q:'Chỉ biết AB = DE và AC = DF (hai cặp cạnh). Đã kết luận được △ABC = △DEF chưa?',opts:['Chưa. Cạnh thứ ba có thể khác, như cái bản lề','Rồi. Hai cặp cạnh là đủ'],ans:0,
+     explain:'Hai cạnh như cái bản lề: góc mở khác nhau thì cạnh thứ ba khác nhau. Cần đủ ba cặp cạnh (c.c.c).',
+     hint:'Nhớ lại cái bản lề: hai cạnh giữ nguyên thì cạnh thứ ba có cố định không?'},
+    {q:'Vì sao trường hợp c.c.c không cần nói gì về góc?',opts:['Ba cạnh đã cho chỉ ghép được một hình tam giác, nên các góc tự bằng nhau','Vì góc nào cũng bằng nhau','Vì tam giác nào cũng có ba cạnh','Vì hai tam giác luôn cùng tư thế'],ans:0,
+     explain:'Ba cạnh xác định đúng một hình tam giác (hai cung tròn chỉ cắt nhau ở A và A\', mà A\' lật lên là trùng A). Hình đã khít thì góc cũng khít.',
+     hint:'Nhớ lại hai cung tròn: chúng cắt nhau ở mấy điểm?'}]});
+
+/* ---------- Trạm 7: luyện c.c.c (5 câu) — chỉ ký hiệu cạnh; cạnh không gạch = cạnh chung ---------- */
+practiceStation(7,{name:'Luyện tập 4: Trường hợp c.c.c',ccc:true,maxLevel:1,
+  intro:'Trạm luyện tập, 5 câu, chỉ dùng ký hiệu cạnh. Có hai tam giác rời nhau, có hai tam giác chung một cạnh, và có cả trường hợp KHÔNG bằng nhau. Cạnh nằm chung cả hai tam giác thì không cần gạch.',
+  cases:[
+    {kind:'ten',sides:SIDES.E,level:1,ticks:[1,2,3],pose1:P1(6),pose2:P2(-120),names2:['N','M','P']},
+    {kind:'khong',sides:SIDES.D,level:1,ticks:[1,0,2],bend:-15,pose1:P1(0),pose2:P2(150),names2:['M','N','P']},
+    {kind:'ten',sides:SIDES.A,level:1,names1:['A','B','D'],ticks:[1,0,2],place:{edge:[1,2],mid:[0,-6],dir:90},join:'fold',edge:[1,2],names2:['C','B','D'],show2:[true,false,false]},
+    {kind:'ten',sides:SIDES.E,level:1,ticks:[1,2,0],place:{edge:[0,2],mid:[0,-6],dir:28},join:'spin',edge:[0,2],names2:['C','D','A'],show2:[false,true,false]},
+    {kind:'ten',sides:SIDES.B,level:1,ticks:[0,1,2],place:{edge:[0,1],mid:[0,-20],dir:0},join:'bis',edge:[0,1],names2:['B','A','D'],show2:[false,false,true]}]});
+
+/* ---------- Trạm 8: trình bày 5 dòng (học) ---------- */
+const TB8=proofLines(ABC,['E','F','D'],[1,2,3]);
+const TB8L=[TB8.head,TB8.conds[0]+';',TB8.conds[1]+';',TB8.conds[2]+'.',TB8.tail];
+triStation(8,{name:'Trình bày: 5 dòng chứng minh',side:true,maxLevel:1,sides:SIDES.C,level:1,ticks:[1,2,3],pose1:{x:-36,y:-5,rot:6},pose2:{x:36,y:-4,rot:-140,flip:true},names2:['E','F','D'],
+  film:h=>[
+    {frame:'tri',move:3,text:'Trạm học. Bài toán: cho hình vẽ, chứng minh <b>△ABC = △EFD</b>. Bài trình bày gồm đúng 5 dòng.'},
+    {text:'Trước khi viết, tìm các cặp cạnh bằng nhau trên hình: hai cạnh có <b>cùng số gạch</b>.',on(){[0,1,2].forEach(k=>fdelay(.7*k,()=>{h.A.edgeHi(k,PAIR[k]);h.B.edgeHi(k,PAIR[k]);}));}},
+    {proof:1,text:'<b>Dòng 1</b>: gọi tên hai tam giác, nối bằng chữ “và”. Các đỉnh viết đúng thứ tự tương ứng: A với E, B với F, C với D.',on(){[0,1,2].forEach(k=>{h.A.nameColor(k,PAIRC[k]);h.B.nameColor(k,PAIRC[k]);});}},
+    {proof:2,text:'<b>Dòng 2</b>: cặp cạnh thứ nhất, kèm lý do trong ngoặc. AB và EF cùng 1 gạch, đề cho nên lý do là “giả thiết”.',on(){h.A.flash(0,PAIR[0]);h.B.flash(0,PAIR[0]);}},
+    {proof:3,text:'<b>Dòng 3</b>: cặp cạnh thứ hai, BC = FD.',on(){h.A.flash(1,PAIR[1]);h.B.flash(1,PAIR[1]);}},
+    {proof:4,text:'<b>Dòng 4</b>: cặp cạnh thứ ba, CA = DE. Dòng điều kiện cuối kết thúc bằng dấu chấm.',on(){h.A.flash(2,PAIR[2]);h.B.flash(2,PAIR[2]);}},
+    Object.assign({proof:5,move:2,text:'<b>Dòng 5</b>: kết luận, đỉnh đúng thứ tự như dòng 1, kèm tên trường hợp <b>(c.c.c)</b>.',on(){superpose(h);}},OBL),
+    {proof:5,frame:'tri',text:'Nếu hai tam giác <b>chung một cạnh</b>, ví dụ BD, thì dòng của cạnh đó viết gọn: <b>BD chung</b>.',on(){showEq(h,eqParts(ABC,['E','F','D']).concat([['  (c.c.c)',INK]]));}}],
+  guide:'Giờ em hãy bay quanh hai tấm. Đọc lại 5 dòng và dò từng dòng với các cặp cạnh cùng màu trên hình.',
+  points:[{id:'dong',pos:[0,30,8],title:'Thứ tự đỉnh',text:'Dòng 1 và dòng 5 viết các đỉnh cùng một thứ tự: A với E, B với F, C với D.'}],
+  tasks:[{t:'Dòng đầu tiên viết thế nào?'},{t:'Cạnh chung viết thế nào?'},{t:'Kết luận cần ghi thêm gì?'}],
+  quiz:[
+    {q:'Dòng đầu tiên của bài trình bày là gì?',opts:['Xét △ABC và △EFD có:','Xét △ABC = △EFD có:','Do đó △ABC = △EFD','AB = EF (giả thiết);'],ans:0,
+     explain:'Dòng đầu gọi tên hai tam giác đang xét, nối bằng chữ “và” (chưa được viết dấu “=” vì chưa chứng minh xong).',hint:'Lúc mới bắt đầu, ta đã biết hai tam giác bằng nhau chưa?'},
+    {q:'△ABD và △CBD có chung cạnh BD. Dòng của cạnh đó viết thế nào?',opts:['BD chung','BD = BD (giả thiết)','BD = DB','Không cần viết'],ans:0,
+     explain:'Cạnh nằm chung ở cả hai tam giác thì viết “BD chung”. Vẫn phải có dòng này vì c.c.c cần đủ ba cặp cạnh.',hint:'Cạnh đó có phải do đề cho bằng nhau không?'},
+    {q:'Kết luận nào viết đúng?',opts:['Do đó △ABC = △EFD (c.c.c).','Do đó △ABC = △DEF (c.c.c).','Do đó △ABC = △EFD (c.g.c).','Do đó △ABC = △EFD.'],ans:0,
+     explain:'Đỉnh đúng thứ tự tương ứng (A–E, B–F, C–D) và ghi tên trường hợp (c.c.c).',hint:'Kiểm thứ tự đỉnh như dòng 1, và trường hợp dùng ba cặp cạnh tên là gì?'}],
+  proofText:TB8L});
+
+/* ---------- Trạm 9: luyện trình bày — kéo đủ 5 dòng (3 câu) ---------- */
+practiceStation(9,{name:'Luyện tập 5: Trình bày c.c.c',ccc:true,maxLevel:1,side:true,lastNext:'Về đích ›',
+  intro:'Trạm luyện tập cuối, 3 câu. Mỗi câu em kéo đủ 5 dòng vào bài trình bày. Ba dòng giữa xếp theo thứ tự nào cũng được. Có nhiều ô sai lẫn vào, đọc kỹ từng chữ.',
+  cases:[
+    {kind:'tb',sides:SIDES.B,level:1,ticks:[2,1,3],pose1:{x:-36,y:-5,rot:-10},pose2:{x:36,y:-4,rot:115,flip:true},names2:['N','P','M']},
+    {kind:'tb',sides:SIDES.D,level:1,names1:['A','B','D'],ticks:[1,0,2],place:{edge:[1,2],mid:[0,-6],dir:90},join:'fold',edge:[1,2],names2:['C','B','D'],show2:[true,false,false]},
+    {kind:'tb',sides:SIDES.E,level:1,ticks:[1,2,0],place:{edge:[0,2],mid:[0,-6],dir:28},join:'spin',edge:[0,2],names2:['C','D','A'],show2:[false,true,false]}]});
 
 /* ================= zone (khuôn khổ bay tự do) ================= */
 let zoneA=START.clone(),zoneB=T[0].clone(),zoneR=72,zoneMesh=null;
@@ -699,13 +959,20 @@ function follow(dt,fwd){
 /* khung r (toạ độ trong trạm) nằm gọn giữa viền đen trên và khung lời dẫn dưới; máy quay đặt thẳng trước khung,
    nhìn song song pháp tuyến tấm bảng (không chúc, không ngóc) ⇒ ảnh của tấm bảng là hình đồng dạng, không méo */
 function frameRect(r){
+  if($('#film').classList.contains('side')&&!$('#film').hidden){
+    const W=innerWidth,sr=$('#film .sub').getBoundingClientRect(),x0=.02,x1=clamp(sr.left/W-.02,.3,.98),y0=.095,y1=.905;
+    const tanH=Math.tan(camera.fov/2*Math.PI/180),tanW=tanH*camera.aspect;
+    const D=Math.max(r.h/((y1-y0)*2*tanH),r.w/((x1-x0)*2*tanW),30),visH=2*D*tanH,visW=2*D*tanW;
+    const camY=r.y+((y0+y1)/2-.5)*visH,camX=r.x-((x0+x1)/2-.5)*visW;return {cam:[camX,camY,D],look:[camX,camY,0]};
+  }
   const H=innerHeight;const sub=$('#film .sub');const subTop=sub&&!$('#film').hidden?sub.getBoundingClientRect().top/H:.93;
   const topF=.07+.025,botF=clamp(subTop-.025,topF+.2,.93);const tanH=Math.tan(camera.fov/2*Math.PI/180);
   const D=Math.max(r.h/((botF-topF)*2*tanH),r.w/(.94*2*tanH*camera.aspect),30);
   const visH=2*D*tanH,mid=(topF+botF)/2,camY=r.y+(mid-.5)*visH;
   return {cam:[r.x,camY,D],look:[r.x,camY,0]};
 }
-function resolveFrame(f,st){if(f==='board')return st.box;if(f==='left')return st.h.left;return f;}
+/* 'tri' = sát hai tam giác (bỏ phần đầu bảng dành cho đẳng thức) — dùng lúc hỏi, khung lời dẫn đang cao */
+function resolveFrame(f,st){if(f==='board')return st.box;if(f==='tri')return {x:0,y:-5,w:148,h:70};if(f==='left')return st.h.left;return f;}
 function reframe(smooth){if(!film||!film.frame)return;const f=frameRect(resolveFrame(film.frame,film.st));const base=film.st.g.position;
   if(smooth){film.camFrom=camera.position.clone();film.lookFrom=camLook.clone();film.camT=0;film.move=.6;}
   film.camTo=V3(...f.cam).add(base);film.lookTo=V3(...f.look).add(base);}
@@ -735,24 +1002,29 @@ function nextStep(){
   film.t=0;film.dur=hold?Infinity:Math.max(5.5,plainLen(txt)/12+1.5);film.paused=false;$('#filmPause').textContent='⏸ Dừng';
   const prevCam=film.camTo||camera.position.clone(),prevLook=film.lookTo||camLook.clone();
   film.camFrom=camera.position.clone();film.lookFrom=camLook.clone();film.camT=0;film.move=s.move??2.4;
-  rich($('#filmText'),txt);
+  $('#film').classList.toggle('side',!!film.st.side);
+  rich($('#filmText'),txt);renderProof(s.proof?film.st.proofText.slice(0,s.proof):null);
   const isQ=x=>x.ask||x.drag;const nQ=film.steps.filter(isQ).length,kQ=film.steps.slice(0,film.i+1).filter(isQ).length,nPlain=film.steps.filter(x=>!x.guide).length;
   $('#filmStep').textContent=s.guide?'Nhiệm vụ':(ask||dg)?`Câu ${kQ}/${nQ}`:`${film.i+1}/${nPlain}`;
   const box=$('#filmOpts');$('#filmFb').hidden=true;
   if(ask){
     const opts=ask.opts.map((t,i)=>({t,ok:i===ask.ans}));if(!ask.fixed&&opts.length>2)shuffle(opts);
-    box.replaceChildren(...opts.map(o=>{const b=document.createElement('button');b.type='button';b.className='opt'+(ask.big?' big':'');rich(b,o.t);b.onclick=()=>chooseFilm(b,o,s);return b;}));box.hidden=false;
+    box.classList.toggle('row4',opts.length===4&&opts.every(o=>plainLen(o.t)<=8));
+    box.replaceChildren(...opts.map(o=>{const b=document.createElement('button');b.type='button';b.className='opt'+(ask.big?' big':'');if(o.ok)b.dataset.ok='1';rich(b,o.t);b.onclick=()=>chooseFilm(b,o,s);return b;}));box.hidden=false;
   }else{box.hidden=true;box.replaceChildren();}
   if(dg)renderDrag(s);
   $('#filmNext').hidden=!!(ask||dg);$('#filmNext').textContent=s.guide?'Bắt đầu quan sát ›':s.hold?(s.next||'Tiếp ›'):'Tiếp ›';
   $('#filmPause').hidden=hold;$('#filmSkip').hidden=hold||!!film.st.practice;
-  renderMarksBtn();subH=subEl.offsetHeight;
+  renderMarksBtn();$('#filmReveal').hidden=!(film.st.practice&&(ask||dg));subH=subEl.offsetHeight;
   const base=film.st.g.position;
   if(s.frame){film.frame=s.frame;reframe();}
   else if(s.cam){film.frame=null;film.camTo=V3(...s.cam).add(base);film.lookTo=V3(...(s.look||[0,0,0])).add(base);}
   else{film.camTo=prevCam.clone();film.lookTo=prevLook.clone();if(film.frame)reframe();}
   if(s.on)s.on();
 }
+/* bảng chứng minh trong khung lời dẫn: hiện dần từng dòng, dòng mới nhất tô vàng */
+function renderProof(lines){const el=$('#filmProof');if(!lines){el.hidden=true;el.replaceChildren();return;}
+  el.hidden=false;el.replaceChildren(...lines.map((t,i)=>{const d=rich(document.createElement('div'),t);if(i===lines.length-1)d.className='new';return d;}));}
 function feedback(ok,text){const fb=$('#filmFb'),b=document.createElement('b');b.textContent=ok?'Đúng. ':'Chưa đúng. ';fb.className='fb '+(ok?'good':'miss');fb.replaceChildren(b,rich(document.createElement('span'),text));fb.hidden=false;}
 function chooseFilm(btn,o,s){
   if(o.ok){[...$('#filmOpts').children].forEach(x=>x.disabled=true);btn.classList.add('ok');feedback(true,s.ask.explain);
@@ -766,17 +1038,22 @@ function updateFilm(dt){
 }
 function skipToGuide(){while(film&&!film.steps[film.i].guide&&!film.steps[film.i].ask&&!film.steps[film.i].drag&&!film.steps[film.i].hold)nextStep();}
 function endFilm(){
-  finishFilmTweens();clearDrag();const st=film.st,rp=film.replay,prev=film.prevPhase;film=null;
+  finishFilmTweens();clearDrag();renderProof(null);$('#film').classList.remove('side');const st=film.st,rp=film.replay,prev=film.prevPhase;film=null;
   $('#film').hidden=true;$('#hud').hidden=false;mode='fly';camPos.copy(camera.position);st.filmDone=true;
   if(rp)st.phase=prev;else if(st.practice)complete(st);else startExplore(st);
   renderTasks();canvas.focus();
 }
 /* chạy phim "câm" tới cuối — dùng khi GV bấm qua trạm */
-function fastForwardFilm(st){if(st.filmDone||!st.film)return;st.film(st.h,st).forEach(s=>{finishFilmTweens();if(s.drag&&s.drag.onPlace&&s.drag.slots)s.drag.slots.forEach(sl=>s.drag.onPlace(st.h,sl,{id:sl.ans}));if(s.on)s.on();if(s.onRight)s.onRight();});finishFilmTweens();st.filmDone=true;}
+function fastForwardFilm(st){if(st.filmDone||!st.film)return;st.film(st.h,st).forEach(s=>{finishFilmTweens();if(s.on)s.on();if(s.drag&&s.drag.onPlace&&s.drag.slots)s.drag.slots.forEach(sl=>s.drag.onPlace(st.h,sl,{id:sl.ans}));if(s.onRight)s.onRight();});finishFilmTweens();st.filmDone=true;}
 $('#filmNext').onclick=()=>{if(film)nextStep();};
 $('#filmSkip').onclick=()=>{if(film)skipToGuide();};
 $('#filmPause').onclick=()=>{if(!film)return;film.paused=!film.paused;$('#filmPause').textContent=film.paused?'▶ Chạy tiếp':'⏸ Dừng';};
-$('#filmMarks').onclick=()=>{const st=film&&film.st;if(!st||!st.marks)return;st.h.setLevel((st.h.level+1)%(st.h.maxLevel+1));renderMarksBtn();};
+/* GV đổi mức ký hiệu ⇒ giữ mức đó cho các câu sau của trạm (lớp mạnh bỏ hẳn ký hiệu, lớp yếu giữ đủ) */
+$('#filmMarks').onclick=()=>{const st=film&&film.st;if(!st||!st.marks)return;st.lvGV=(st.h.level+1)%(st.h.maxLevel+1);st.h.setLevel(st.lvGV);renderMarksBtn();};
+/* cả lớp bí ⇒ GV bấm cho hiện đáp án, rồi xem hoạt cảnh như khi trả lời đúng */
+$('#filmReveal').onclick=()=>{if(!film)return;const s=film.steps[film.i];
+  if(s.ask){const b=$('#filmOpts [data-ok="1"]');if(b&&!b.disabled)b.click();}
+  else if(s.drag&&dragCtx&&!dragCtx.done)dragCtx.blanks.forEach(b=>{if(b.filled)return;const t=dragCtx.tiles.find(x=>!x.used&&b.ans.includes(x.id));if(t)tryPlace(t,b);});};
 
 /* ================= kéo thả =================
    d.rows : [[{t:'AB ='},{blank:'x',ans:'PM' | ['…','…']}], …] — chỗ trống nằm trong dòng chữ
@@ -789,13 +1066,15 @@ function clearDrag(){
   if(dragCtx&&dragCtx.ghost)dragCtx.ghost.remove();dragCtx=null;
 }
 function renderDrag(s){
-  const d=s.drag,h=film.st.h;const box=$('#filmDrag');box.replaceChildren();box.hidden=false;
+  const d=s.drag,h=film.st.h;const box=$('#filmDrag');box.replaceChildren();box.hidden=false;box.classList.toggle('proof',!!d.proof);
   const ctx=dragCtx={s,d,h,blanks:[],tiles:[],sel:null,act:null,done:false,ghost:null};
   const mkBlank=(id,ans,extra,cls)=>{const el=document.createElement('button');el.type='button';el.className='blank'+(cls?' '+cls:'');el.setAttribute('aria-label','Chỗ trống');
     const b=Object.assign({id,el,ans:[].concat(ans),filled:null},extra);el.onclick=()=>tapBlank(b);ctx.blanks.push(b);return el;};
   if(d.rows){const rows=document.createElement('div');rows.className='rows';
     d.rows.forEach(r=>{const row=document.createElement('div');row.className='row';
-      r.forEach(it=>{if(it.blank)row.append(mkBlank(it.blank,it.ans,{hint:it.hint}));else row.append(rich(document.createElement('span'),it.t));});rows.append(row);});
+      r.forEach(it=>{const bl=it.blank?mkBlank(it.blank,it.ans,{hint:it.hint,k:it.k}):null;
+        if(bl&&it.t){const p=document.createElement('span');p.className='pair';p.append(rich(document.createElement('span'),it.t),bl);row.append(p);}
+        else row.append(bl||rich(document.createElement('span'),it.t));});rows.append(row);});
     box.append(rows);}
   if(d.slots){const layer=$('#slots');d.slots.forEach(sl=>layer.append(mkBlank('v'+sl.vtx,sl.ans,{vtx:sl.vtx,slot:true},'slot')));}
   const tray=document.createElement('div');tray.className='tray';
@@ -947,7 +1226,7 @@ function openQuiz(q,ctx){
   mode='quiz';quizCtx={q,ctx};keys.clear();renderTasks();
   $('#qEyebrow').textContent=ctx.eyebrow||'Câu hỏi';rich($('#qText'),q.q);
   const opts=q.opts.map((t,i)=>({t,ok:i===q.ans}));if(opts.length>2)shuffle(opts);
-  $('#qOpts').replaceChildren(...opts.map(o=>{const b=document.createElement('button');b.type='button';b.className='opt'+(q.big?' big':'');rich(b,o.t);b.onclick=()=>choose(b,o);return b;}));
+  $('#qOpts').replaceChildren(...opts.map(o=>{const b=document.createElement('button');b.type='button';b.className='opt'+(q.big?' big':'');if(o.ok)b.dataset.ok='1';rich(b,o.t);b.onclick=()=>choose(b,o);return b;}));
   $('#qFb').hidden=true;$('#qNext').hidden=true;$('#qClose').hidden=false;$('#quiz').hidden=false;
 }
 function choose(btn,o){
@@ -1006,7 +1285,7 @@ window.__dbg={
   approach(){const st=stations[cur];this.fly(st.g.position.x,st.g.position.y,st.g.position.z+st.filmDist-5);},
   skipFilm(){if(film){skipToGuide();if(film&&!film.steps[film.i].ask&&!film.steps[film.i].drag)nextStep();}},
   next(){if(film&&!$('#filmNext').hidden)nextStep();return this.state();},
-  answer(){if(!film)return false;const s=film.steps[film.i];if(!s.ask)return false;const b=[...$('#filmOpts').children].find(x=>x.dataset.ok==='1'||x.textContent===s.ask.opts[s.ask.ans].replace(/\^/g,''));b.click();return b.textContent;},
+  answer(){if(!film)return false;const s=film.steps[film.i];if(!s.ask)return false;const b=$('#filmOpts [data-ok="1"]');b.click();return b.textContent;},
   drop(){if(!dragCtx)return false;dragCtx.blanks.forEach(b=>{if(b.filled)return;const t=dragCtx.tiles.find(x=>!x.used&&b.ans.includes(x.id));if(t)tryPlace(t,b);});return dragCtx.done;},
   wrong(){if(!dragCtx)return false;const b=openBlanks()[0];const t=dragCtx.tiles.find(x=>!x.used&&!b.ans.includes(x.id));if(t)tryPlace(t,b);return $('#filmFb').textContent;},
   level(n){const st=stations[cur];if(st.h.setLevel){st.h.setLevel(n);renderMarksBtn();}},
