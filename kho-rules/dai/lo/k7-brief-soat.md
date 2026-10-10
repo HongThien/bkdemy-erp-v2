@@ -42,6 +42,16 @@ chỉ đáng tin khi hai người giải độc lập ra cùng kết quả. Làm
    - bảng chỗ đã sửa: `| Câu | Loại lỗi (chép đề / đáp số / lập luận / kiến thức / định dạng / phân loại / hình) | Sửa gì | Vì sao |`;
    - danh sách câu còn `Chưa chắc` (nhãn + lí do) — đây là danh sách gửi CEO.
 
+## Ảnh cho CEO (CEO 10/10: "các câu có vấn đề chụp ảnh câu đấy để t sửa, viết thế kia t khó tìm")
+
+Với MỖI câu còn `**Chưa chắc:**` sau khi soát, và MỖI câu có `**Ghi chú:**` báo lỗi / thiếu dữ kiện của ĐỀ GỐC: cắt ảnh **NGUYÊN câu đó từ đề gốc** (đủ lời đề, hình, các phương án — cả khối câu, không cắt vụn)
+vào `Repokho-rulesdailok7can-xem<MA>_<nhãn>.png` (nhãn bỏ khoảng trắng: `GKI-09_Cau8.png`, `GKI-01_Bai3.1b.png`). Lệnh cắt như brief soạn mục 3.8
+(`pdftoppm -r 150 -png -singlefile -f <trang> -l <trang> -x … -y … -W … -H … "<LV>/goc.pdf" "<ra không đuôi>"`; câu vắt qua 2 trang thì cắt 2 ảnh `…_a.png`, `…_b.png`).
+MỞ ảnh vừa cắt kiểm: thấy trọn câu, không cụt, không dính câu khác. Cuối biên bản `<MA>.soat.md` thêm mục `## ẢNH CHO CEO`, mỗi câu một dòng:
+`| Câu | Ảnh (tên tệp) | Trang trong PDF gốc BỘ-ĐỀ-GKI-7 | Vấn đề (MỘT câu, nói thẳng chỗ CEO cần sửa/quyết) |`
+— **Trang trong PDF gốc** = số trang của `BỘ-ĐỀ-GKI-7.pdf` (trang đầu của đề này là trang <trang bắt đầu> của file gốc, xem bảng `k7.md` §5), để CEO mở đúng chỗ.
+Không có câu nào cần CEO xem ⇒ ghi "Không".
+
 ## Trả lời cuối
 
 Vài dòng: kết luận · số câu sửa theo loại lỗi · các câu `Chưa chắc`.

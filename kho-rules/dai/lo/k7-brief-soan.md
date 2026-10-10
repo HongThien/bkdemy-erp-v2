@@ -98,7 +98,7 @@ D. …
 Chọn A.
 ```
 
-- `nam` = năm đầu của năm học. `bo_sach` = `KNTT` / `Cánh Diều` / `CTST` (đề không ghi ⇒ `KNTT`). `thoi_gian_phut` = số phút ghi trên đề (không ghi ⇒ 90).
+- `nam` = năm đầu của năm học. `bo_sach` = luôn `KNTT` (CEO 10/10: **chỉ dùng sách Kết nối tri thức**; đề thuộc bộ sách khác đã bị loại ở bước phân loại, không tới đây — nếu bạn thấy đề này rõ ràng KHÔNG phải KNTT, DỪNG và báo ở trả lời cuối, đừng soạn). `thoi_gian_phut` = số phút ghi trên đề (không ghi ⇒ 90).
   Tên đề: "giữa học kì 1".
 - `## PHẦN <n> | <tên> | <trac_nghiem|tu_luan|tra_loi_ngan>` — theo các phần của đề, đánh số từ 1. Phần Đúng/Sai ⇒ `tu_luan` (mục 3.6).
 - `### <nhãn gốc của đề: Câu 3 / Bài 2a> | kho=… | loai=… | dap_an=…`. Các dòng `**Hình:**`, `**Ghi chú:**`, `**Chưa chắc:**` là tuỳ chọn, mỗi loại một dòng,
