@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khối tròn xoay · Chuyên đề thể tích</title>
+<meta name="description" content="Chuyên đề thể tích khối tròn xoay: chọn bài, xem hình phẳng quay quanh trục thành khối 3D xoay được, chia miền rồi lắp công thức tròn xoay, công thức bằng chữ trước rồi mới thay số.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="khung.css">
+<style>
+/* Màu của chuyên đề: xanh = phần của (H) ở TRÊN trục quay · hồng = phần ở DƯỚI trục · đỏ = phần bị công thức sai trừ đi */
+.panel b.tren{color:#5ce1ff}
+.panel b.duoi{color:#ff7ab8}
+.panel b.am{color:#ff7373}
+.lb.so{font:700 .9rem/1 var(--f-data);width:1.75em;height:1.75em;display:grid;place-items:center;border-radius:50%;background:var(--amber);color:#1a1000;text-shadow:none}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="chon" id="chon" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineMaterial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="khung.js"></script>
+<script src="tron-xoay-bai.js"></script>
+<script>
+// CHUYÊN ĐỀ KHỐI TRÒN XOAY — MỘT trang cho MỌI bài tròn xoay (Thùy 10/10: "tựa tựa như nhau, sau này còn nhiều bài nữa").
+// Bài = một mục dữ liệu trong tron-xoay-bai.js (xem quy ước ở đầu file đó). Trang này chỉ là động cơ: đọc dữ liệu → dựng hình + bảng.
+// Bộ bước (A4, không cắt lát): Đề bài → Quay quanh trục → Chia miền (nếu ≥ 2 miền) → Cái bẫy (nếu bài có) → Tính thể tích.
+// Địa chỉ: ?bai=48 (không có thì mở bảng chọn bài) · ?buoc=N · ?thay=1 · ?nhung=1 (nhúng vào app HS cạnh bài giải: không có nút / bảng chọn bài).
+// Mỗi bài có địa chỉ CỐ ĐỊNH theo id — id đã phát hành thì không đổi (sau này app HS trỏ tới theo id).
+(function () {
+'use strict'
+const DS = window.BAI_TRON_XOAY || []
+const q0 = new URLSearchParams(location.search)
+const bai = DS.find(b => b.id === q0.get('bai')) || DS[0]
+if (!bai) { document.body.insertAdjacentHTML('beforeend', '<p class="err">Chưa có bài nào trong tron-xoay-bai.js.</p>'); return }
+
+// ═══ 1. TỪ DỮ LIỆU RA CÁC THỨ DÙNG CHUNG ═══
+const TX = bai.truc === 'y' ? 'y' : 'x'                    // trục quay
+const TAU = Math.PI * 2
+const C = { tren: 0x5ce1ff, duoi: 0xff7ab8, nhan: 0xffb547, am: 0xff5b5b, truc: 0xdfe9ff, duong: 0xe6efff }
+const P = (t, r) => (TX === 'x' ? [t, r, 0] : [r, t, 0])                                                       // điểm của hình phẳng
+const Q = (t, r, a) => (TX === 'x' ? [t, r * Math.cos(a), r * Math.sin(a)] : [r * Math.cos(a), t, -r * Math.sin(a)])   // điểm ấy sau khi quay góc a quanh trục
+const F0 = fn => fn || (() => 0)
+const coGap = bai.to.some(s => s.phia === 'duoi'), coChia = bai.mien.length > 1
+const BUOC = [{ k: 'de', ten: 'Đề bài' }, { k: 'quay', ten: 'Quay quanh O' + TX }, coChia && { k: 'chia', ten: 'Chia miền' }, bai.bay && { k: 'bay', ten: 'Cái bẫy' }, { k: 'tinh', ten: 'Tính thể tích' }].filter(Boolean)
+const nBuoc = k => BUOC.findIndex(b => b.k === k) + 1      // 0 nếu bài không có bước đó
+const kNow = () => BUOC[M.step - 1].k
+const so = v => String(v).replace('-', '−')
+
+// ═══ 2. KHUNG CHUNG ═══
+const gocCua = n => { const k = BUOC[n - 1].k; return k === 'de' ? 'phang' : k === 'chia' ? (coGap ? 'gap' : 'phang') : 'ba_chieu' }
+const M = MoHinh({
+  nhan: 'Chuyên đề · Khối tròn xoay', tieuDe: bai.ten,
+  buoc: BUOC.map(b => b.ten),
+  nutGoc: [['mac_dinh', 'Góc ban đầu'], ['phang', 'Nhìn thẳng'], ['doc_truc', 'Nhìn dọc trục']],
+  goc: {   // máy quay đứng phía +z: hình đầu tiên đúng như hình vẽ trên giấy
+    phang: { az: 0, pol: Math.PI / 2 },
+    ba_chieu: TX === 'x' ? { az: 0.55, pol: 1.16 } : { az: 0.5, pol: 1.08 },
+    gap: TX === 'x' ? { az: 0.34, pol: 1.22 } : { az: 0.3, pol: 1.15 },   // hơi chếch để thấy phần dưới lật qua không gian
+    doc_truc: TX === 'x' ? { az: Math.PI / 2 - 0.02, pol: Math.PI / 2 - 0.02 } : { az: 0, pol: 0.14 },
+  },
+  khung: { chinh: bai.ve.ngam },
+  khungNao: () => 'chinh', gocMacDinh: () => gocCua(M.step),
+  bang: n => PANELS[BUOC[n - 1].k](n), sauBang: bindPanel, truocBang, khiDoiBuoc,
+  moiKhung: () => { if (dirty) { dirty = false; syncQuay(); syncGap() } },
+  dongBo,
+  tiep: () => { const k = kNow(); if ((k === 'bay' && !S.thayBay) || (k === 'tinh' && !S.thay)) { thaySo(); return true } return false },   // nút Tiếp / phím → cũng là "Thay số"
+  nutTiep: () => { const k = kNow(); return k === 'bay' && !S.thayBay ? { chu: 'Thay số ›' } : k === 'tinh' ? { chu: S.thay ? 'Tiếp ›' : 'Thay số ›', tat: S.thay } : null },
+  phimCach: () => { if (kNow() !== 'quay') return false; S.playing ? stopPlay() : startPlay(); return true },
+  thamSo: q => ({ sub: q.get('thay') === '1' }),
+})
+if (!M) return
+const { RM, $, scene, mkLine, setLine, setView, clock, anims, label, dot, tex } = M
+
+// ═══ 3. TRẠNG THÁI ═══
+const S = { phi: 0, playing: false, fold: 0, thayBay: false, thay: false }   // phi: góc đã quay · fold: phần dưới đã lật lên bao nhiêu (0 → 1)
+let dirty = true
+const buocTu = k => { const n = nBuoc(k); return n > 0 && M.step >= n }       // đã tới bước k chưa
+const daGap = () => { const n = nBuoc('chia'); return n > 0 && (M.step > n || (M.step === n && (!coGap || S.fold > 0.98))) }
+const phangGap = () => kNow() === 'chia' && daGap()
+
+// ═══ 4. VẬT THỂ (hình phẳng nằm trong mặt z = 0) ═══
+const flat = A => { const o = []; for (const p of A) o.push(p[0], p[1], p[2]); return o }
+const pts = (fn, t0, t1, n) => { const o = []; for (let i = 0; i <= n; i++) { const t = t0 + (t1 - t0) * i / n; o.push(P(t, fn(t))) } return flat(o) }
+const circ = (t, r) => { const o = []; for (let i = 0; i <= 72; i++) o.push(Q(t, r, TAU * i / 72)); return flat(o) }
+const net = { color: C.truc, width: 1.4, opacity: 0.6, dashed: true, dash: 0.22, gap: 0.16, order: 4 }
+const nMau = (t0, t1) => Math.max(8, Math.round(Math.abs(t1 - t0) * 28))
+
+// Hệ trục: trục ngang của cảnh là Ox, trục đứng là Oy; trục quay là một trong hai
+{ const RX = TX === 'x' ? bai.ve.t : bai.ve.r, RY = TX === 'x' ? bai.ve.r : bai.ve.t
+  scene.add(mkLine([RX[0], 0, 0, RX[1], 0, 0], { color: C.truc, width: 2.2, order: 4 }), mkLine([0, RY[0], 0, 0, RY[1], 0], { color: C.truc, width: 2.2, order: 4 }))
+  const mat = new THREE.MeshBasicMaterial({ color: C.truc }), geo = new THREE.ConeGeometry(0.02 * (RX[1] - RX[0]), 0.06 * (RX[1] - RX[0]), 18)
+  const cx = new THREE.Mesh(geo, mat); cx.rotation.z = -Math.PI / 2; cx.position.set(RX[1], 0, 0)
+  const cy = new THREE.Mesh(geo, mat); cy.position.set(0, RY[1], 0); scene.add(cx, cy)
+  label('x', () => [RX[1], 0, 0], () => true, 0.3, 1); label('y', () => [0, RY[1], 0], () => true, -0.9, 0); label('O', () => [0, 0, 0], () => true, -0.8, 0.95) }
+const DV = 0.019 * (bai.ve.t[1] - bai.ve.t[0])   // nửa chiều dài vạch chia
+const vachT = t => mkLine(flat([P(t, -DV), P(t, DV)]), { color: C.truc, width: 2, order: 4 })
+for (const t of bai.vach || []) scene.add(vachT(t))
+for (const r of bai.vachR || []) { scene.add(mkLine(flat([P(-DV, r), P(DV, r)]), { color: C.truc, width: 2, order: 4 })); label(so(r), () => P(0, r), () => !buocTu('bay') && !buocTu('tinh'), TX === 'x' ? -0.8 : 0, TX === 'x' ? 0 : 1) }
+for (const [t, r] of bai.giong || []) scene.add(mkLine(flat([P(t, 0), P(t, r), P(0, r)]), net))
+for (const t of bai.dung || []) scene.add(mkLine(flat([P(t, bai.ve.r[0] * 0.92), P(t, bai.ve.r[1] * 0.92)]), { color: C.duong, width: 2.2 }))
+
+// Các đường của đề + hình phẳng (H): phần trên trục (xanh), phần dưới trục (hồng)
+for (const d of bai.duong) { scene.add(mkLine(pts(d.fn, d.t[0], d.t[1], nMau(d.t[0], d.t[1]) * 2), { color: C.duong, width: 2.6 })); if (d.nhan) label(d.nhan, () => P(d.o[0], d.fn(d.o[0])), () => true, d.o[1], d.o[2]) }
+function strip(s) {
+  const n = nMau(s.t[0], s.t[1]) * 2, pos = [], idx = [], a = F0(s.tren), b = F0(s.duoi)
+  for (let i = 0; i <= n; i++) { const t = s.t[0] + (s.t[1] - s.t[0]) * i / n; pos.push(...P(t, a(t)), ...P(t, b(t))); if (i < n) { const k = i * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2) } }
+  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); geo.setIndex(idx); return geo
+}
+const mkMat = (color, opacity) => new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthWrite: false })
+const matTo = { tren: mkMat(C.tren, 0.42), duoi: mkMat(C.duoi, 0.42) }
+const mesh2 = (geo, mat, order) => { const m = new THREE.Mesh(geo, mat); m.renderOrder = order; m.frustumCulled = false; return m }
+const faceG = new THREE.Group(), foldG = new THREE.Group(); scene.add(faceG, foldG)   // faceG: bản sao (H) ở góc phi · foldG: phần dưới trục đang lật lên
+const gapLines = []
+for (const s of bai.to) {
+  const geo = strip(s); s.geo = geo
+  scene.add(mesh2(geo, matTo[s.phia], 2)); faceG.add(mesh2(geo, matTo[s.phia], 2))
+  for (const fn of [s.tren, s.duoi]) if (fn) faceG.add(mkLine(pts(fn, s.t[0], s.t[1], nMau(s.t[0], s.t[1])), { color: C.duong, width: 2 }))
+  if (s.phia === 'duoi') {
+    foldG.add(mesh2(geo, mkMat(C.duoi, 0.55), 2), mkLine(pts(s.duoi, s.t[0], s.t[1], nMau(s.t[0], s.t[1])), { color: C.duoi, width: 3 }))
+    const l = mkLine(pts(t => -s.duoi(t), s.t[0], s.t[1], nMau(s.t[0], s.t[1])), { color: C.duoi, width: 2.4, dashed: true, dash: 0.045 * (bai.ve.t[1] - bai.ve.t[0]), gap: 0.03 * (bai.ve.t[1] - bai.ve.t[0]) })   // đường gấp
+    scene.add(l); gapLines.push(l)
+  }
+}
+
+// Mặt tròn xoay: lưới (t, góc)
+const NT = 72
+function mkLuoi(nx, mat, order) {
+  const pos = new Float32Array((nx + 1) * (NT + 1) * 3), idx = [], geo = new THREE.BufferGeometry()
+  for (let i = 0; i < nx; i++) for (let j = 0; j < NT; j++) { const a = i * (NT + 1) + j, b = a + 1, c = a + NT + 1, d = c + 1; idx.push(a, c, b, b, c, d) }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setIndex(idx)
+  const mesh = mesh2(geo, mat, order)
+  return { mesh, mat, set(fn, t0, t1, phi) {
+    let k = 0
+    for (let i = 0; i <= nx; i++) { const t = t0 + (t1 - t0) * i / nx, r = fn(t); for (let j = 0; j <= NT; j++) { const p = Q(t, r, phi * j / NT); pos[k++] = p[0]; pos[k++] = p[1]; pos[k++] = p[2] } }
+    geo.attributes.position.needsUpdate = true; geo.computeVertexNormals()
+  } }
+}
+// Khối sinh ra khi quay tới góc phi: mỗi đường biên của mỗi dải tô vạch ra một mặt
+const phong = c => new THREE.MeshPhongMaterial({ color: c, transparent: true, opacity: 0.4, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x334455 })
+const sweeps = []
+for (const s of bai.to) for (const fn of [s.tren, s.duoi]) if (fn) { const l = mkLuoi(nMau(s.t[0], s.t[1]), phong(C[s.phia]), 3); scene.add(l.mesh); sweeps.push([l, fn, s.t[0], s.t[1]]) }
+const arcOf = (t, r, phi) => { const o = []; for (let j = 0; j <= NT; j++) o.push(Q(t, r, phi * j / NT)); return flat(o) }
+const vet = (bai.vet || []).map(v => { const l = mkLine(arcOf(v[0], v[1], 0), { color: C[v[2]], width: 2.4, order: 6 }); scene.add(l); return [l, v[0], v[1]] })
+
+// Ranh các miền: trên hình phẳng (nét gióng + vạch) và trên khối (đường tròn)
+const ranh = bai.mien.slice(0, -1).map(m => ({ t: m.t[1], r: m.ngoai(m.t[1]) }))
+const rings = ranh.map(o => { const l = mkLine(circ(o.t, o.r), { color: 0xffffff, width: 1.6, opacity: 0.6, order: 6 }); scene.add(l); return l })
+const mocVe = ranh.map(o => { const l = mkLine(flat([P(o.t, 0), P(o.t, o.r)]), net); scene.add(l); return l })
+const vachAn = (bai.moc || []).filter(m => m.an).map(m => { const l = vachT(m.t); scene.add(l); return l })
+// Đường bao của hình sau khi gấp: ngoài (đậm) + trong (nhạt)
+const envOut = mkLine([].concat(...bai.mien.map(m => pts(m.ngoai, m.t[0], m.t[1], nMau(m.t[0], m.t[1])))), { color: C.nhan, width: 5, order: 6 }); scene.add(envOut)
+const envIn = bai.mien.filter(m => m.trong).map(m => { const l = mkLine(pts(m.trong, m.t[0], m.t[1], nMau(m.t[0], m.t[1])), { color: 0xffe2ad, width: 5, order: 6 }); scene.add(l); return l })
+
+// Cái bẫy: phần khối nằm GIỮA hai mặt mà công thức sai đem cộng (xanh) / đem trừ (đỏ)
+const bayG = new THREE.Group(); scene.add(bayG)
+if (bai.bay) { const lam = c => new THREE.MeshLambertMaterial({ color: c, side: THREE.DoubleSide }), mau = { 1: lam(0x39c6ee), '-1': lam(C.am) }
+  for (const d of bai.bay.doan) for (const fn of [d.ngoai, d.trong]) { const l = mkLuoi(nMau(d.t[0], d.t[1]) + 10, mau[d.dau], 0); l.set(fn, d.t[0], d.t[1], TAU); bayG.add(l.mesh) } }
+
+// ═══ 5. NHÃN + CHẤM ĐIỂM ═══
+const dyT = TX === 'x' ? 1.3 : 0, dxT = TX === 'x' ? 0 : -1.6
+for (const t of bai.vach || []) label(so(t), () => P(t, 0), () => !coChia || !buocTu('chia') || !(bai.moc || []).some(m => m.t === t), TX === 'x' ? -0.05 : -0.8, TX === 'x' ? 1.05 : 0)
+for (const m of bai.moc || []) label(m.chu + ' = ' + so(m.t), () => P(m.t, 0), () => (coChia ? buocTu('chia') : buocTu('quay')), (m.dx || 0) + dxT, m.dy || dyT, 'dim')
+bai.mien.forEach((m, i) => { if (coChia && m.nhan) label(String(i + 1), () => P(m.nhan[0], m.nhan[1]), phangGap, 0, 0, 'so') })
+for (const d of bai.diem || []) dot(() => P(d[0], d[1]), () => true, 0xffffff, DV * 0.9)
+for (const o of ranh) dot(() => P(o.t, o.r), daGap, C.nhan, DV * 1.15)
+
+// ═══ 6. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
+let phiVe = -1
+function dongBo() {
+  const k = kNow(), phi = S.phi, du = phi >= TAU - 1e-3, co = phi > 0.002, bay = k === 'bay' && du
+  if (phi !== phiVe) { phiVe = phi; for (const s of sweeps) s[0].set(s[1], s[2], s[3], phi); for (const v of vet) setLine(v[0], arcOf(v[1], v[2], phi)); faceG.rotation[TX] = phi }
+  for (const s of sweeps) s[0].mesh.visible = co && !bay
+  faceG.visible = co && !du
+  for (const v of vet) v[0].visible = co && !bay
+  for (const l of rings) l.visible = du && k === 'tinh'
+  matTo.tren.opacity = matTo.duoi.opacity = bay ? 0.2 : 0.42
+  foldG.visible = k === 'chia' && S.fold > 0.001; foldG.rotation[TX] = Math.PI * S.fold
+  const gap = buocTu('chia') && daGap()
+  for (const l of gapLines) l.visible = gap
+  envOut.visible = phangGap(); for (const l of envIn) l.visible = phangGap()
+  for (const l of mocVe) l.visible = buocTu('chia'); for (const l of vachAn) l.visible = buocTu('chia')
+  bayG.visible = bay
+}
+
+// ═══ 7. BẢNG LỜI GIẢI THEO BƯỚC (A3: công thức bằng chữ trước, thay số sau) ═══
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
+const kicker = n => '<p class="kicker">Bước ' + n + ' · ' + BUOC[n - 1].ten + '</p>'
+const dong = (ds, lop) => ds.map(t => '<div' + (lop ? ' class="' + lop + '"' : '') + ' data-d data-tex="' + t + '"></div>').join('')
+const subs = (da, ruot) => '<button type="button" class="btn" id="bSub"' + (da ? ' hidden' : '') + '>Thay số ›</button><div class="subs" id="subs"' + (da ? '' : ' hidden') + '>' + ruot + '</div>'
+const PANELS = {
+  de: n => kicker(n) + '<h2>' + bai.de.tieuDe + '</h2>' + bai.de.html +
+    '<div class="chips">' + bai.de.chips.map(c => '<span>' + c + '</span>').join('') + '<span class="q">V = ?</span></div>' +
+    (bai.de.chuY ? '<p class="note">' + bai.de.chuY + '</p>' : '') + '<button type="button" class="btn" id="b1">Quay quanh O' + TX + ' ›</button><p class="cap">Nguồn: ' + bai.nguon + '</p>',
+  quay: n => kicker(n) + '<h2>Quay một vòng</h2><p>Mỗi điểm của <i>(H)</i> vạch một đường tròn quanh trục <i>O' + TX + '</i>.' + (coGap ? ' Phần xanh và phần hồng quay cùng lúc.' : '') + '</p>' +
+    '<div class="row"><button type="button" class="btn" id="b2"></button><span class="ro"><small>Góc quay</small><b id="r2">0°</b></span></div>' +
+    '<input type="range" id="s2" min="0" max="1000" value="0" aria-label="Góc quay quanh trục">' +
+    '<ul class="cond">' + (coGap ? '<li id="c2a"><i></i><span>Nửa vòng: phần dưới trục đã lên phía trên</span><em>180°</em></li>' : '') +
+    '<li id="c2b"><i></i><span>Đủ một vòng: khối tròn xoay hoàn chỉnh</span><em>360°</em></li></ul>' +
+    (coGap ? '<p class="note" id="n2" hidden>Trong khối này phần xanh và phần hồng <b>chồng lên nhau</b>. Thể tích chỗ chồng chỉ được tính một lần.</p>' : ''),
+  chia: n => kicker(n) + '<h2>' + bai.chia.tieuDe + '</h2>' + bai.chia.html + (coGap ? '<button type="button" class="btn" id="b3"></button>' : '') +
+    '<p class="lbl2">Công thức tròn xoay cho từng miền</p><div class="fx">' +
+    bai.mien.map((m, i) => '<div class="r2"><span data-d data-tex="' + m.tex + '"></span><small>miền ' + (i + 1) + '<br>' + m.chu + '</small></div>').join('') + '</div>' +
+    '<p class="lbl2">Thay số — ' + bai.chia.mocTen + '</p><div class="fx num">' + bai.chia.mocDong.map(t => '<div data-tex="' + t + '"></div>').join('') + '<div class="res" data-tex="' + bai.chia.mocKq + '"></div></div>',
+  bay: n => { const b = bai.bay; return kicker(n) + '<h2>' + b.tieuDe + '</h2>' + b.html + '<div class="fx">' + dong([b.tex]) + '</div>' + b.giai +
+    subs(S.thayBay, '<p class="lbl2">Thay số: ' + b.soTen + '</p><div class="fx num">' + dong(b.so) + dong([b.kq], 'res') + '</div><p>' + b.ketLuan + '</p>' +
+      b.sai.map(t => '<p>' + t + '</p>').join('') + '<p class="note">' + b.luu + '</p>') },
+  tinh: n => { const t = bai.tong; return kicker(n) + '<h2>' + t.tieuDe + '</h2><p class="lbl2">Công thức tổng quát (chưa thay số)</p><div class="fx">' + dong([t.tex]) + '</div>' +
+    subs(S.thay, '<p class="lbl2">Thay số: ' + t.soTen + '</p><div class="fx num">' + (coChia ? dong(bai.mien.map(m => m.so)) : '') + dong([t.kq], 'res') + '</div>' +
+      (t.nguyenHam ? '<p class="lbl2">Nguyên hàm đã dùng</p><div class="fx">' + dong(t.nguyenHam) + '</div>' : '') + (t.luu ? '<p class="note">' + t.luu + '</p>' : '')) },
+}
+function bindPanel() {
+  const k = kNow()
+  if (k === 'de') $('#b1').addEventListener('click', () => M.goStep(nBuoc('quay'), { play: true }))
+  if (k === 'quay') {
+    $('#b2').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
+    $('#s2').addEventListener('input', e => { stopPlay(); S.phi = e.target.value / 1000 * TAU; dirty = true })
+    syncQuay()
+  }
+  if (k === 'chia' && coGap) { $('#b3').addEventListener('click', () => foldTo(S.fold > 0.5 ? 0 : 1)); syncGap() }
+  if (k === 'bay' || k === 'tinh') $('#bSub').addEventListener('click', thaySo)
+}
+function syncQuay() {
+  const s = $('#s2'); if (!s) return
+  const du = S.phi >= TAU - 1e-3
+  if (document.activeElement !== s || S.playing) s.value = Math.round(S.phi / TAU * 1000)
+  $('#r2').textContent = Math.round(S.phi * 180 / Math.PI) + '°'
+  if ($('#c2a')) $('#c2a').classList.toggle('ok', S.phi >= Math.PI - 1e-3)
+  $('#c2b').classList.toggle('ok', du); if ($('#n2')) $('#n2').hidden = !du
+  const lab = (S.playing ? ICON_PAUSE + 'Dừng' : ICON_PLAY + (du ? 'Quay lại' : 'Quay')), b = $('#b2')
+  if (b.dataset.lab !== lab) { b.innerHTML = lab; b.dataset.lab = lab }
+}
+function syncGap() { const b = $('#b3'); if (b) b.textContent = S.fold > 0.5 ? 'Trả phần hồng về chỗ cũ' : 'Gấp phần hồng lên' }
+function thaySo() {
+  const k = kNow()
+  if (k === 'bay') S.thayBay = true; else if (k === 'tinh') S.thay = true; else return
+  M.renderPanel(true); M.syncChips()
+  const el = $('#subs'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
+}
+
+// ═══ 8. CHUYỂN BƯỚC ═══
+function tween(get, set, target, ms, my) {
+  return new Promise(res => {
+    const a = get(), d = target - a
+    if (Math.abs(d) < 1e-5) { set(target); dirty = true; return res() }
+    const dur = RM ? 1 : ms, t0 = clock()
+    anims.push(now => {
+      if (!M.alive(my)) { res(); return true }
+      const k = Math.min(1, (now - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
+      set(a + d * e); dirty = true
+      if (k >= 1) { res(); return true }
+      return false
+    })
+  })
+}
+const phiTo = (t, ms, my) => tween(() => S.phi, v => { S.phi = v }, t, Math.max(300, ms * Math.abs(t - S.phi) / TAU), my)
+const foldTo = t => tween(() => S.fold, v => { S.fold = v }, t, 1500, M.token())
+function startPlay() {
+  if (kNow() !== 'quay') return
+  if (S.phi >= TAU - 1e-3) S.phi = 0
+  S.playing = true; dirty = true
+  const my = M.token(), a = S.phi, t0 = clock(), dur = RM ? 1 : 9000 * (TAU - a) / TAU
+  anims.push(now => {
+    if (!S.playing || !M.alive(my)) return true
+    const k = Math.min(1, (now - t0) / dur)
+    S.phi = a + (TAU - a) * k; dirty = true
+    if (k >= 1) { S.phi = TAU; S.playing = false; return true }
+    return false
+  })
+}
+function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
+function truocBang(n, prev, o) {
+  S.playing = false
+  const k = BUOC[n - 1].k
+  if (prev !== n || o.first) { if (k === 'bay') S.thayBay = !!o.sub; if (k === 'tinh') S.thay = !!o.sub }   // mỗi lần vào lại bắt đầu từ công thức chưa thay số
+}
+async function khiDoiBuoc(n, prev, o, my) {
+  const k = BUOC[n - 1].k
+  if (o.first || gocCua(n) !== gocCua(prev)) setView('mac_dinh', o.first)
+  // Góc quay đích: đề + chia miền = hình phẳng chưa quay · quay = do người dùng điều khiển · cái bẫy + tính = khối đã quay đủ vòng
+  const dich = k === 'de' || k === 'chia' ? 0 : k === 'quay' ? (prev > n ? TAU : S.phi) : TAU
+  if (k !== 'chia') S.fold = 0
+  if (o.first) { S.phi = dich; if (k === 'chia' && o.sub) S.fold = 1; dirty = true; return }
+  await phiTo(dich, 1300, my); if (!M.alive(my)) return
+  if (k === 'quay' && (o.play || o.next)) startPlay()
+}
+
+// ═══ 9. CHỌN BÀI ═══
+const chon = $('#chon')
+chon.innerHTML = '<div class="chon-hop"><div class="chon-dau"><div><div class="eyebrow">Chuyên đề · Toán 12 · Ứng dụng tích phân</div><h2>Thể tích khối tròn xoay</h2></div>' +
+  '<button type="button" class="nav" id="chonDong">Đóng</button></div><ol class="chon-ds">' +
+  DS.map((b, i) => '<li><a class="chon-the' + (b === bai ? ' dang' : '') + '" href="?bai=' + b.id + '"><span class="no">' + (i + 1) + '</span><span class="tt"><b>' + b.ten + '</b><small>' + b.moTa + '</small><em>' + b.nguon + '</em></span></a></li>').join('') + '</ol></div>'
+const NHUNG = q0.get('nhung') === '1'
+const moChon = mo => { chon.hidden = !mo }
+if (!NHUNG) { M.views.insertAdjacentHTML('afterbegin', '<button type="button" id="vChon" class="chinh">Chọn bài (' + DS.length + ')</button>'); $('#vChon').addEventListener('click', () => moChon(true)) }
+$('#chonDong').addEventListener('click', () => moChon(false))
+chon.addEventListener('click', e => { if (e.target === chon) moChon(false) })
+addEventListener('keydown', e => { if (e.key === 'Escape') moChon(false) })
+if (!q0.get('bai') && !NHUNG) moChon(true)   // vào chuyên đề không kèm bài ⇒ hiện danh sách trước
+
+// ═══ 10. CHẠY + TỰ KIỂM ═══
+M.start()
+// Tự tính lại thể tích từ các miền đã khai (Simpson) rồi so với dapSo: lệch tức là hình vẽ và lời giải không nói cùng một chuyện.
+function kiem() {
+  let v = 0
+  for (const m of bai.mien) { const n = 2000, h = (m.t[1] - m.t[0]) / n, g = t => m.ngoai(t) ** 2 - (m.trong ? m.trong(t) ** 2 : 0); let s = g(m.t[0]) + g(m.t[1]); for (let i = 1; i < n; i++) s += (i % 2 ? 4 : 2) * g(m.t[0] + i * h); v += Math.PI * s * h / 3 }
+  return { tinh: v, dapSo: bai.dapSo, lech: Math.abs(v - bai.dapSo) }
+}
+if (kiem().lech > 1e-6 * Math.max(1, Math.abs(bai.dapSo))) document.body.insertAdjacentHTML('beforeend', '<p class="err">Bài ' + bai.id + ': thể tích tính từ các miền (' + kiem().tinh.toFixed(4) + ') lệch đáp số khai (' + bai.dapSo.toFixed(4) + ') — xem lại tron-xoay-bai.js.</p>')
+Object.assign(window.__dbg, { S, bai, DS, kiem })
+})()
+</script>
+</body>
+</html>

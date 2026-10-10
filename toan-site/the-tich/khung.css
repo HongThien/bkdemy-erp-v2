@@ -115,6 +115,22 @@ input[type=range]::-moz-range-thumb{width:1.2rem;height:1.2rem;border-radius:50%
 .nav{cursor:pointer;background:var(--card-2);border:1px solid var(--line);border-radius:.7rem;padding:.7em 1.1em;font:700 .9rem/1 var(--f-ui);min-height:2.8em;white-space:nowrap}
 .nav.next{background:var(--scan);border-color:var(--scan);color:#00222b}
 .nav:disabled{opacity:.35;cursor:default}
+/* ── Bảng chọn bài của trang chuyên đề (một trang, nhiều bài — vd tron-xoay.html) ── */
+.views button.chinh{background:var(--amber);border-color:var(--amber);color:#1a1000}
+.chon{position:fixed;inset:0;z-index:20;background:rgba(4,9,20,.84);display:grid;place-items:center;padding:1rem}
+.chon-hop{width:min(62rem,100%);max-height:100%;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:1.2rem;padding:1.4rem}
+.chon-dau{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
+.chon-dau h2{margin:.3rem 0 0;font:800 1.7rem/1.1 var(--f-ui);letter-spacing:-.01em}
+.chon .eyebrow{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chon-ds{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));gap:.8rem}
+.chon-the{display:flex;gap:.8rem;align-items:flex-start;height:100%;background:var(--card-2);border:1px solid var(--line);border-radius:1rem;padding:1rem;color:inherit;text-decoration:none}
+.chon-the:hover{border-color:rgba(92,225,255,.7)}
+.chon-the.dang{border-color:var(--amber)}
+.chon-the .no{flex:none;display:grid;place-items:center;width:2.2em;height:2.2em;border-radius:50%;background:var(--scan);color:#00222b;font:600 1rem/1 var(--f-data)}
+.chon-the .tt{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.chon-the b{font:700 1.05rem/1.25 var(--f-ui)}
+.chon-the small{font:400 .86rem/1.45 var(--f-ui);color:var(--ink-2)}
+.chon-the em{font:600 .68rem/1.3 var(--f-data);font-style:normal;color:var(--muted)}
 .err{position:fixed;inset:auto 0 0 0;padding:1rem;background:#5a1020;color:#fff;font:600 1rem var(--f-ui);z-index:9}
 
 @media (max-width:1100px){.chip .tx{display:none}.chip{padding:.3em}}
