@@ -36645,3 +36645,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Câu 50: elip a = 5, b = 3, đáy ở x = ±4 ⇒ V = 2πb²(d − d³/(3a²)) = 1416π/25. Câu 52: đổi sang dm (R = 5, r = 4, l = 10, k = 0,04) ⇒ V = (πl/15)(8R² + 4Rr + 3r²) = 656π/3 ≈ 686,96 lít; 210·V = 45 920π ≈ 144 261,9 ⇒ M = 144 262.
 - Soát 1280×720: 50 và 52 đủ 4 bước + Thay số, `kiem()` lệch 6·10⁻¹⁴ và 4·10⁻¹²; chạy lại 48 (đủ nhãn a p q b + số miền) và 49 (5 bước) — không đổi; bảng chọn bài 4 thẻ có hình. Sai đã sửa: dòng kết quả câu 52 tràn ngang 95px ⇒ tách 4 dòng; chấm điểm to che số trên trục ⇒ thu nhỏ.
 - Chưa: 45, 46 (quay quanh Oy), soát 1920×1080 + màn dọc cho trang chuyên đề.
+
+## 10/10 (tối) — Hình 3D: câu 52 tràn ngang trên bản thật (lỗi do vá qua heredoc, lần thứ 2)
+- Deploy xong mở bản thật `?bai=52&buoc=4&thay=1`: khối thay số tràn ngang 598px. Gốc: dòng `kq` sửa lần cuối bằng script Python nhét trong heredoc — `\[0.4em]` (xuống dòng của `aligned`) rơi còn một gạch chéo ⇒ KaTeX coi là `\[` và dồn cả 4 dòng thành 1. Lỗi này KHÔNG làm `katex-error` tăng, chỉ bắt được bằng đo `scrollWidth − clientWidth`.
+- **Sai quy trình của t:** sửa dữ liệu xong không mở lại bước đó trước khi deploy. Sửa bằng file `.py` viết qua Write (có `assert` đếm đủ 3 dấu xuống dòng), soát lại ở máy (tràn = 0) rồi mới deploy.
+- Luật rút ra (đã có ở HANDOFF, nhắc lại): mọi chỉnh sửa có LaTeX ⇒ file `.py` qua Write; sau MỖI lần đổi dữ liệu bài phải mở đúng bước đó, đo tràn ngang, rồi mới deploy.
