@@ -317,7 +317,7 @@
   mỗi bài = 1 file HTML xoay + thao tác được, dựng trên khung chung `toan-site/the-tich/khung.js` + `khung.css` · KHÁC khuôn du hành (không trạm/bay) ·
   **công thức TỔNG QUÁT (chữ) trước, THAY SỐ sau** · **cắt lát CHỈ cho bài tính theo thiết diện; bài tròn xoay chia miền rồi lắp thẳng công thức** (Thùy 10/10) ·
   kho 10 bài thể tích K12 (NBV 12-18 F) đã giải + kiểm, nguồn ở `docs/hinh-3d/` ·
-  đã có: Câu 43 `coc-nghieng.html` (Thùy xem: ok) + Câu 48 `mien-vat-qua-truc.html` (chờ xem).
+  đã có: Câu 43 `coc-nghieng.html` + Câu 48 `mien-vat-qua-truc.html` · **làm bài mới: đọc Phần A + Phần S (sổ tay dựng bài, có phiếu cho 8 bài còn lại)**.
 - **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):

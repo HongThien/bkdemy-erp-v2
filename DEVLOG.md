@@ -36569,3 +36569,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai của t:** bê nguyên khuôn bài 1 (cắt một lát → chồng n lát → tích phân) sang bài tròn xoay. Với tròn xoay, HS đã có công thức V = π∫f² — lát cắt và tổng Riemann là thừa, làm dài bài và che mất việc chính là CHIA MIỀN.
 - **Sửa bài 2:** 7 → 5 bước. Bỏ "Cắt một lát" + "Cộng các lát" (xoá khối lát, chồng lát, sync4/syncSum). Bước 3 thành "Chia miền": ba miền đánh số trên hình + V₁, V₂, V₃. Bước "Cái bẫy" vẽ khối trơn (lưới mặt ngoài/mặt trong của từng đoạn) thay cho 40 vành khăn. Bước cuối: V = V₁ + V₂ + V₃.
 - Ghi spec A4 + sửa bảng phân loại C.0, §D.6; CLAUDE.md, HANDOFF. Bài 1 (thiết diện) giữ nguyên.
+
+## 10/10 (chiều) — Hình 3D: viết sổ tay dựng bài (spec Phần S)
+- **Thùy:** "OK viết spec đi. để làm các câu còn lại nhanh hơn nữa."
+- Viết `spec-day-hinh-3d.md` Phần S: S.1 xếp loại → bộ bước (TX tròn xoay / TD thiết diện / MC diện tích mặt cắt) · S.2 luật bảng lời giải · S.3 luật hình · S.4 bộ khung file + hàm nào sẽ chuyển lên khung (`M.tx`, `M.td`) · S.5 quy trình 8 việc · S.6 danh mục soát · S.7 phiếu dựng 8 bài còn lại · S.8 cách xử lý góp ý.
+- Giải lại 8 bài bằng CHỮ để ra công thức đóng cho luật A3, kiểm bằng số: câu 50 V = 2πb²(d − d³/(3a²)) · câu 52 V = (πl/15)(8R² + 4Rr + 3r²) · câu 45 V = πR²(h₁ + h₂/6) · câu 46 V = a³(4π/3 + π²/2) · câu 44 V = (2(π − 2)/3)ab² · câu 53 S′ = [R²(π − arccos(d/R)) + d√(R² − d²)]/cos φ · câu 49 V₁ = 28π/15, V₂ = 7π/3. Tất cả khớp đáp số bảng C.0.
+- Rút từ hai lần Thùy sửa (A3, A4): t trình bày theo thói quen người giải / bê khuôn bài trước sang bài khác loại ⇒ ghi câu tự hỏi vào S.8: "trên lớp GV có nói bước này không?"
+- Chưa làm: chưa chuyển hàm tròn xoay lên khung (để lúc dựng câu 49, có bài thứ hai cùng loại mới biết chỗ nào thật sự chung).

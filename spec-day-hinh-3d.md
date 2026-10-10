@@ -3,7 +3,7 @@
 > **Đọc file này TRƯỚC khi dựng bất kỳ mô hình 3D nào cho bài tập Toán** (khối tròn xoay, khối tính bằng cắt lát, thiết diện…).
 > Mở 09/10/2026 tối. **Trạng thái (10/10 chiều): đã có 2 bài + khung chung.** Bài 1 Câu 43 cốc nghiêng (thiết diện — Thùy xem: ok, luật A3) ·
 > bài 2 Câu 48 miền vắt qua trục quay (tròn xoay — Thùy xem bản đầu, bắt bỏ cắt lát ⇒ luật A4, đã sửa còn 5 bước) · khung chung `khung.js` + `khung.css` (§D.5).
-> Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** bài mẫu đề xuất · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
+> Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** các bài đã dựng + khung chung · **Phần S** ⭐ **SỔ TAY DỰNG BÀI** (làm bài mới thì đọc A + S) · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
 > Nguồn đề + hình đã chép vào repo: [`docs/hinh-3d/`](docs/hinh-3d/) (không phụ thuộc ổ E: của máy công ty).
 
 ---
@@ -15,7 +15,7 @@
 - **Đã làm (09/10):** đọc + tự giải cả 10 bài, kiểm bằng tích phân số / Monte Carlo — **10/10 khớp**; bắt được **2 lỗi đáp số của nguồn** (§C.11).
 - **Bài mẫu đề xuất: Câu 43 — cốc nước nghiêng** (§D). Bài mẫu thứ hai (loại tròn xoay) nếu cần: **Câu 48**.
 - **Đã dựng (10/10):** bài 1 Câu 43 (cắt lát, 6 bước — Thùy xem: ok) · bài 2 Câu 48 (tròn xoay, miền vắt qua trục, 7 bước — chưa xem) · khung chung `toan-site/the-tich/khung.js` + `khung.css`.
-- **Việc kế tiếp:** Thùy xem bài 2 → soi TV/iPad thật + duyệt câu chữ cả hai bài → thêm vào mục lục `toan-site/` → các bài còn lại (44, 45, 46, 47, 49, 50, 52, 53) dựng trên khung.
+- **Việc kế tiếp:** dựng 8 bài còn lại theo **Phần S** (sổ tay + phiếu từng bài), thứ tự 49 → 50 → 52 → 45 → 46 → 47 → 44 → 53; song song chờ Thùy xem lại bài 2 bản 5 bước, soi TV/iPad thật, duyệt câu chữ, thêm mục lục.
 
 ## 1. Nguồn & cách trích lại
 
@@ -233,6 +233,158 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 ---
 
+## Phần S — SỔ TAY DỰNG BÀI (đọc phần này + mở một bài mẫu là đủ để làm bài mới)
+
+> Viết 10/10 sau hai bài đầu, theo yêu cầu Thùy "để làm các câu còn lại nhanh hơn nữa". Mọi luật ở đây rút từ A1–A4 và từ những chỗ đã sai ở hai bài đầu.
+> **Hai bài mẫu để chép:** bài thiết diện = `coc-nghieng.html` · bài tròn xoay = `mien-vat-qua-truc.html`. Khung dùng chung: `khung.js` + `khung.css` (§D.5).
+
+### S.1 Việc đầu tiên: xếp loại → chọn bộ bước (A4)
+
+| Loại | Dấu hiệu trong đề | Bộ bước chuẩn | Bài mẫu để chép |
+|---|---|---|---|
+| **TX — tròn xoay** | "quay hình phẳng … quanh trục", vật tròn xoay có đường sinh là đồ thị hàm số | ① Đề bài → ② Đặt hệ trục *(chỉ khi đề là bài thực tế chưa có trục)* → ③ Quay quanh trục → ④ Chia miền *(chỉ khi có ≥ 2 miền / phải gấp / có lỗ)* → ⑤ Cái bẫy *(chỉ khi có lỗi kinh điển)* → ⑥ Tính thể tích: công thức chữ → bấm Thay số | `mien-vat-qua-truc.html` |
+| **TD — thiết diện** | khối KHÔNG tròn xoay; đề cho hình dạng mặt cắt, hoặc khối bị cắt bởi mặt phẳng | ① Đề bài → ② Dựng khối *(nghiêng, ghép, quét)* → ③ Khối có hình gì *(nét liền / nét đứt, kích thước)* → ④ Cắt một lát: S theo chữ → thay số → ⑤ Cộng các lát → ⑥ Tính thể tích: tích phân bằng chữ → bấm Thay số | `coc-nghieng.html` |
+| **MC — diện tích mặt cắt** | hỏi DIỆN TÍCH thiết diện (không hỏi thể tích) | ① Đề bài → ② Dựng mặt phẳng cắt → ③ Thiết diện là hình gì → ④ Chiếu xuống đáy → ⑤ Tính: công thức chữ → bấm Thay số | chưa có (câu 53) |
+
+- **Bài TX tuyệt đối không có** bước "cắt một lát", "chồng n lát", tổng Riemann (A4). Bài TX một miền (thùng rượu) chỉ 3–4 bước — đừng độn thêm cho đủ.
+- Bước nào không có việc thật thì bỏ; tên bước ngắn (≤ 3 từ) vì thanh bước chỉ rộng chừng đó.
+
+### S.2 Luật trình bày bảng lời giải (cột phải)
+
+1. **A3 — chữ trước, số sau.** Mỗi chỗ tính có 2 khối: `.fx` (công thức bằng chữ) đặt trên, `.fx.num` (thay số) đặt dưới, mỗi khối có một dòng tên `.lbl2`.
+   Chữ của bài = các tham số đề cho (R, h, a, b…); đề cho hàm cụ thể thì chữ là tên hàm và tên mốc (f, g, a, p, q, b).
+2. **Bước ra đáp số phải BẤM mới thay số:** khối số nằm trong `<div class="subs" id="subs" hidden>`, có nút `#bSub` "Thay số ›"; khai `tiep` + `nutTiep` trong `cfg` để nút Tiếp / phím → cũng là Thay số. Trạng thái "đã thay" đặt lại mỗi lần vào bước (`truocBang`).
+3. **Viết rõ phép thay**, không nhảy cóc: `S(2,40) = 10/(2·6)·(6² − 2,40²) = 25,20`, không viết thẳng `(5/6)(36 − x²)`.
+4. **Chữ lộ ra điều số che mất** thì nói một câu (vd tỉ số nước/cốc = 2/(3π) không phụ thuộc R, h).
+5. **Một bảng ≤ một màn 1920×1080** (cao 1005px ở cỡ chữ 21px). Dài quá thì: gom chú thích sang phải dòng công thức (`.fx .r2`), bỏ đoạn văn lặp ý, tách công thức dài thành 2 dòng `aligned`.
+6. **Câu chữ:** câu ngắn, có chủ ngữ, không dấu gạch dài trong câu, không ký hiệu lạ (✓ ✗ ▶ ① trong chữ thường hay mất font — dùng CSS / SVG / số thường). Tên điểm, tên hàm đặt trong `<i>`.
+7. **KaTeX:** tĩnh thì `data-tex="…"`, thêm `data-d` cho tích phân / phân số to; động thì `tex(el, chuỗi, true|false)`. Số trong công thức dùng `tn()` (ra `2{,}40`), số ngoài công thức dùng `fmt()`.
+   **Không đưa chữ có dấu vào `\text{}`** — chú thích tiếng Việt để ở HTML. Dãy biến đổi dùng `\begin{aligned}…\\[0.5em]…\end{aligned}`.
+8. **Đề bài viết lại bằng lời của mình** (đúng dữ kiện, không chép nguyên văn sách), kèm dải `.chips` các dữ kiện và ô `V = ?`.
+
+### S.3 Luật hình (cột trái)
+
+- **Toạ độ cảnh = toạ độ toán của lời giải** (đặt trục như lời giải đặt). Bài TX: hình phẳng nằm trong mặt z = 0, máy quay đứng phía +z để hình đầu tiên **giống hệt hình trên giấy** (`goc.phang`).
+- **Màu cố định giữa các bài:** xanh `0x5ce1ff` = khối / phần chính · hồng `0xff7ab8` = phần thứ hai (dưới trục, phần gấp) · hổ phách `0xffb547` = thứ đang được chỉ (lát cắt, đường bao, số miền, đường kính) · đỏ `0xff5b5b` = phần bị tính sai / bị trừ · trắng xanh `0xe6efff` = đường, trục.
+- **Nét:** đường chính 2,6–3px, đường nhấn 4,5–5px, nét phụ 1,4–2px đứt. Luôn `mkLine` (nét dày), không dùng `THREE.Line` trần.
+- **Mặt trong suốt:** `transparent + depthWrite:false + DoubleSide`, độ đục 0,4 (khối) / 0,42 (hình phẳng); thứ cần thấy xuyên qua khối thì `depthTest:false`. Khối đặc so sánh (chồng lát, cái bẫy) dùng `MeshLambertMaterial` không trong suốt.
+- **Nét khuất kiểu sách** (chỉ bài TD cần): lượt ghi độ sâu + mỗi cạnh 2 nét — chép nguyên cụm `prepass` / `pair()` ở `coc-nghieng.html`.
+- **Nhãn:** `label(html, () => [x, y, z], khiNao, dx, dy, lớp)`; lớp `hot` = hổ phách, `dim` = viên chữ số liệu, `so` = huy hiệu tròn (số miền). Nhãn nào cũng phải có điều kiện hiện theo bước; kiểm chồng nhãn ở góc mặc định của từng bước.
+- **Góc nhìn:** mỗi bước có góc mặc định (`gocMacDinh`); đổi bước mà góc mặc định khác thì mới `setView`. Nút góc: "Góc ban đầu / Nhìn thẳng (hoặc Nhìn ngang) / Nhìn dọc trục (hoặc Nhìn từ trên)". Điểm ngắm đặt sao cho hình không chạm tên bài ở góc trái trên.
+- **Hoạt cảnh chính của bài** (nghiêng, quay, gấp, quét): có nút chạy / dừng + thanh kéo + 1–2 ô điều kiện bật đúng thời điểm đáng nhìn. Chuyển bước thì tự tua tới trạng thái đích (`khiDoiBuoc`), mở thẳng bằng `?buoc=N` thì vào luôn trạng thái đích, không diễn lại.
+
+### S.4 Bộ khung một file bài (chép từ bài mẫu rồi thay ruột)
+
+```
+<head>  … khung.css + (style riêng của bài, vài dòng)
+<body>  <div id="app"></div> + three r128 + 5 file Line2 + KaTeX + khung.js
+<script>
+  1. SỐ LIỆU CỦA BÀI      hằng số, hàm f/g, mốc, màu
+  2. KHUNG CHUNG          const M = MoHinh({ nhan, tieuDe, buoc, nutGoc, goc, khung, khungNao, gocMacDinh,
+                                             bang, sauBang, truocBang, khiDoiBuoc, moiKhung, dongBo, tiep, nutTiep, phimCach, thamSo })
+  3. TRẠNG THÁI           const S = {…}; Object.defineProperty(S, 'step', { get: () => M.step }); let dirty = true
+  4. VẬT THỂ              trục, đường, mặt, khối — mọi thứ tạo MỘT lần, bật/tắt ở dongBo()
+  5. NHÃN + CHẤM          label(…), dot(…)
+  6. ĐỒNG BỘ MỖI KHUNG    function dongBo() { … chỉ đặt visible / opacity / vị trí theo S … }
+  7. BẢNG TỪNG BƯỚC       const PANELS = { 1: () => String.raw`…`, … }; function bindPanel() {…}; các sync…()
+  8. CHUYỂN BƯỚC          tween, startPlay/stopPlay, truocBang, khiDoiBuoc
+  9. CHẠY                 M.start(); Object.assign(window.__dbg, { S, … })
+```
+
+- **Không sửa `khung.js` cho riêng một bài.** Thiếu thì thêm tuỳ chọn vào `cfg` hoặc thêm hàm dùng chung, rồi soát lại CẢ các bài cũ.
+- **Hàm đang nằm trong bài 2, bài TX nào cũng cần:** `pts` (lấy mẫu đồ thị), `circ` (đường tròn quanh trục), `strip` (tô miền giữa hai đường), `mkLuoi` (lưới mặt tròn xoay theo góc đã quay), `tween`, cụm hệ trục có mũi tên + vạch + nhãn, cặp nút chạy/dừng.
+  **Khi dựng bài TX kế tiếp (câu 49): chuyển cụm này lên `khung.js` thành `M.tx`** (và cho `mkLuoi` nhận đường cong tham số + trục quay Ox hoặc Oy — câu 45, 46 quay quanh Oy), sửa bài 2 dùng `M.tx`, soát lại bài 2.
+- **Hàm đang nằm trong bài 1, bài TD nào cũng cần:** `poly/area` theo hướng cắt, `updateSlice`, `buildSlabs/showSlabs/playSlabs`, `pair()` nét khuất. Khi dựng bài TD kế tiếp (câu 47) chuyển lên `khung.js` thành `M.td` theo cách tương tự.
+- Bẫy JS đã dính: `Object.assign` chép GIÁ TRỊ của getter · tiến độ hoạt cảnh phải lấy từ `clock()` (không dùng mốc giờ rAF) · nối hai tập bằng chỉ số là sai khi một bên đổi độ dài (đếm đỉnh theo từng lát, đừng giả định bằng nhau).
+
+### S.5 Quy trình 8 việc cho một bài (làm đúng thứ tự)
+
+1. **Đọc phiếu của bài ở S.7** + mục C tương ứng + hình gốc ở `docs/hinh-3d/hinh/`.
+2. **Giải lại bằng CHỮ trước** (tham số thay cho số của đề) → ra công thức đóng → thay số phải trùng đáp số ở bảng C.0. Thêm 1 dòng kiểm vào `docs/hinh-3d/kiem-dap-so.mjs` nếu công thức chữ là mới.
+3. **Viết kịch bản bước** theo S.1 ngay trong đầu file (vài dòng ghi chú): mỗi bước HS thấy gì, bấm gì, bảng hiện gì.
+4. **Chép bài mẫu cùng loại**, thay mục 1 (số liệu) và mục 4–5 (vật thể, nhãn) trước cho hình đứng được; rồi mới viết bảng.
+5. **Viết bảng từng bước** theo S.2.
+6. **Soát bằng máy** (S.6). Sửa tới khi sạch.
+7. **Ghi:** thêm mục `D.x` vào spec này (file · bộ bước · số kiểm · chưa làm) + 1 mục DEVLOG. HANDOFF chỉ sửa dòng "đã có những bài nào".
+8. **Commit** đúng các file của bài (`git commit -- <đường dẫn>`), push, báo Thùy xem. **Thùy chưa xem bài N thì vẫn được làm bài N+1** (đã có khung + luật), nhưng góp ý của Thùy ở bài nào thành luật thì sửa hết các bài cũ cùng loại.
+
+### S.6 Soát bằng máy (không bỏ mục nào)
+
+- Mở `http://localhost:5281/the-tich/<file>.html` (launch `toan`; cổng do phiên khác giữ thì `preview_start {url}`), `resize_window` 1280×720 rồi 1920×1080.
+- **Từng bước** (`?buoc=N`, và `&thay=1` cho bước có Thay số): `document.querySelectorAll('.katex-error').length === 0` · bảng không tràn ngang (`.fx`: `scrollWidth ≤ clientWidth`) · ở 1920×1080 bảng không phải cuộn (`#panel`: `scrollHeight ≤ clientHeight`, trừ sau khi bấm Thay số) · `read_console_messages` không có lỗi MỚI (bộ đệm console giữ cả lỗi cũ — nhìn số dòng của file).
+- **Hoạt cảnh:** pane ẩn thì rAF không chạy ⇒ `__dbg.run(ms)` để tua; ảnh chụp trễ một khung ⇒ `run(200)` thêm rồi chụp lại. Thử kéo thanh, chạy/dừng, bấm lại khi đang chạy, đổi lựa chọn liên tục thật nhanh.
+- **Số:** mọi số in trên bảng đối chiếu với phép tính độc lập (node) — ghi các số kiểm vào mục D.x.
+- **Đi hết đường:** Tiếp từ bước 1 tới cuối bằng nút, bằng phím →, lùi bằng ←, nhảy chip 1 → cuối, mở thẳng từng bước.
+- **Bài cũ:** nếu đã đụng `khung.js` / `khung.css` thì mở lại từng bài cũ, đi hết các bước một lượt.
+- Chưa máy nào thay được: TV thật, iPad thật (chụm 2 ngón), người duyệt câu chữ — ghi rõ "chưa" trong D.x.
+
+### S.7 Phiếu dựng 8 bài còn lại (công thức chữ đã kiểm bằng số 10/10)
+
+Thứ tự đề xuất: **49 → 50 → 52 → 45 → 46** (TX, dễ → khó) rồi **47 → 44** (TD) rồi **53** (MC).
+
+**Câu 49 — TX, vắt qua trục (gần như chép bài 2).** File `mien-hai-phia-truc.html`.
+- Đề: (H) giới hạn bởi y = x² + 1, y = −x − 1, x = −1, x = 1; quay quanh Ox.
+- Chữ: f = x² + 1 (trên trục), g = −x − 1 (dưới trục), a = −1, b = 1, c: f = −g (đường trên cắt đường gấp). Gấp g lên thành −g = x + 1.
+- Hai miền, đều chạm trục (không có vành khăn): V₁ = π∫ₐᶜ f² dx · V₂ = π∫_c^b g² dx. Thay số: c = 0; V₁ = 28π/15, V₂ = 7π/3, **V = 21π/5**.
+- Bẫy: π∫(f² − g²) cả đoạn = 16π/15 (sai, không vô lý lộ liễu như bài 2 — nói rõ sai vì trừ đi phần khối có thật).
+- Bước: Đề bài → Quay quanh Ox → Chia miền → Cái bẫy → Tính thể tích. Khác bài 2: miền hồng bắt đầu ngay từ a (ở x = −1, g = 0).
+
+**Câu 50 — TX một miền, bài thực tế.** File `thung-ruou-elip.html`.
+- Đề: thùng gỗ tròn xoay, hai đáy bằng nhau cách nhau 8 dm, đường cong mặt bên là một phần elip trục lớn 10 dm, trục bé 6 dm. Hỏi chứa bao nhiêu lít.
+- Chữ: bán trục a, b; hai đáy ở x = ±d. Elip x²/a² + y²/b² = 1 ⇒ y² = b²(1 − x²/a²).
+  V = π∫₋d^d b²(1 − x²/a²) dx = **2πb²(d − d³/(3a²))**. Thay a = 5, b = 3, d = 4: **1416π/25 dm³ ≈ 177,9 lít**.
+- Bước: Đề bài (thùng 3D + ảnh `image1144`) → Đặt hệ trục (cắt thùng bằng mặt phẳng qua trục, hiện elip đầy đủ, hai đường x = ±d) → Quay quanh Ox (nửa trên của elip quay ra thùng) → Tính thể tích.
+- Điểm đáng cho HS thấy: thùng = phần GIỮA của khối elipxôit; hai chỏm bị cắt đi (vẽ mờ).
+
+**Câu 52 — TX một miền, bài thực tế (cặp với 50).** File `thung-ruou-parabol.html`.
+- Đề: 7 thùng, đường sinh parabol, bán kính hai mặt 40 cm, giữa 50 cm, dài 100 cm; 30 nghìn đồng/lít. Tính tiền (nghìn đồng).
+- Chữ: R (giữa), r (hai đầu), dài l. Parabol y = R − kx² với k = 4(R − r)/l².
+  V = π∫ (R − kx²)² dx trên [−l/2; l/2] = **(πl/15)(8R² + 4Rr + 3r²)**. Thay R = 0,5; r = 0,4; l = 1 (m): **82π/375 m³ ≈ 686,96 lít**.
+- Tiền: 7 · 30 · V(lít) = 45 920π ≈ 144 261,9 ⇒ **M = 144 262**. Nguồn làm tròn 687 lít trước nên ra 144 270 — **dùng 144 262**, và đây là chỗ nói với HS "đừng làm tròn giữa chừng".
+- Bước: như câu 50 + một dòng tính tiền ở khối Thay số. Có thể thêm nút so hai thùng (elip / parabol) nếu Thùy muốn.
+
+**Câu 45 — TX quanh Oy, hai miền xếp chồng.** File `mu-noel.html`.
+- Đề: mũ tròn xoay; mặt cắt qua trục: OO′ = 5, OA = 10, OB = 20 (cm), cung AB là parabol đỉnh A.
+- Chữ: R = OA, h₁ = OO′, h₂ = OB. Gốc O, Oy là trục mũ. Parabol đỉnh A(R; 0) qua B(0; h₂): y = (h₂/R²)(R − x)² ⇒ **x = R(1 − √(y/h₂))**.
+  V₁ (trụ vành mũ) = πR²h₁ · V₂ = π∫₀^{h₂} x² dy = πR²h₂/6 · **V = πR²(h₁ + h₂/6)**. Thay số: **2500π/3 ≈ 2618 cm³**.
+- Bước: Đề bài (mặt cắt như hình `image1029`) → Đặt hệ trục (viết x theo y) → Quay quanh Oy → Chia miền (trụ + chóp cong) → Tính thể tích.
+- Điểm khó: quay quanh **Oy** ⇒ công thức V = π∫ x² dy, phải đổi hàm sang x theo y. Cần `mkLuoi` quay quanh Oy.
+
+**Câu 46 — TX quanh Oy, có lỗ (khó nhất nhóm TX).** File `hoa-bon-canh.html`.
+- Đề: hình vuông ABCD cạnh 2√2, ngoài hình vuông vẽ 4 nửa đường tròn đường kính là các cạnh; quay cả hình quanh AC.
+- Chữ: a = OA (nửa đường chéo). A(0; a), B(a; 0), đường tròn đường kính AB: (x − a/2)² + (y − a/2)² = a²/2 (đi qua O). Nhánh phải x₊ = a/2 + √(a²/2 − (y − a/2)²), nhánh trái x₋ = a/2 − √(…).
+  Đối xứng qua AC và BD ⇒ chỉ xét góc phần tư I rồi nhân 2. **Miền 1** (0 ≤ y ≤ a): đặc tới trục, V₁ = π∫ x₊² dy. **Miền 2** (a ≤ y ≤ a/2 + a/√2): có lỗ, V₂ = π∫ (x₊² − x₋²) dy.
+  **V = 2(V₁ + V₂) = a³(4π/3 + π²/2)**. Thay a = 2: V₁ = 16π/3 + 2π + π², V₂ = π² − 2π, **V = 32π/3 + 4π² ≈ 72,99**.
+- Bước: Đề bài (hình phẳng `image1042`) → Quay quanh AC → Chia miền (đối xứng; miền 2 có lỗ — bổ đôi khối cho thấy lỗ) → Tính thể tích.
+- Bẫy đáng làm thành bước nếu còn chỗ: coi miền 2 là đặc (quên trừ x₋²). Đường sinh là cung tròn nên `mkLuoi` phải nhận đường cong tham số.
+
+**Câu 47 — TD, lát hình vuông.** File `giao-hai-tru.html`.
+- Đề: (H) là phần chung của hai khối ¼ trụ bán kính a, hai trục vuông góc. Tính V(H). Đáp số theo a ⇒ **không có bước thay số** (A3 chỉ đòi chữ trước; ở đây chữ là hết).
+- Chữ: (H) = {x² + y² ≤ a², x² + z² ≤ a², x, y, z ≥ 0}. Lát ⟂ Ox tại x: hình vuông cạnh √(a² − x²) ⇒ S(x) = a² − x² ⇒ **V = ∫₀ᵃ (a² − x²) dx = 2a³/3**.
+- Bước: Đề bài (hai khối ¼ trụ rời nhau) → Dựng khối (đẩy hai khối vào nhau, tô phần chung, làm mờ phần thừa) → Khối có hình gì (nét liền/đứt) → Cắt một lát (hình vuông) → Cộng các lát → Tính thể tích.
+- Mở rộng (1 bước hoặc 1 đoạn cuối): đặt ⅛ hình cầu bán kính a vào trong — mỗi lát tròn (¼ đĩa) nằm trong lát vuông, tỉ số luôn π/4 ⇒ V(⅛ cầu) = (π/4)(2a³/3) = πa³/6 ⇒ V cầu = 4πa³/3 (Tổ Hằng).
+
+**Câu 44 — TD, lát viên phân.** File `mai-vom.html`.
+- Đề: nền sân là elip trục lớn 150 m, trục bé 90 m; cắt bởi mặt phẳng ⟂ trục lớn tại M, N thì thiết diện là phần hình tròn tâm I giới hạn bởi dây MN, góc MIN = 90°. Tính thể tích dưới mái.
+- Chữ: bán trục a, b. MN = 2b√(1 − x²/a²); bán kính cung ρ = MN/√2; viên phân 90°: S = (π/4 − 1/2)ρ² ⇒ **S(x) = ((π − 2)/2)·b²(1 − x²/a²)**.
+  **V = ∫₋ₐᵃ S dx = (2(π − 2)/3)·a·b²**. Thay a = 75, b = 45: (π − 2)·101 250 ≈ **115 586 m³**.
+- Bước: Đề bài (ảnh thật `image1014`, nền elip) → Dựng mái (một cung viên phân chạy dọc trục lớn quét ra mái) → Cắt một lát → Cộng các lát → Tính thể tích.
+- Dựng mái: tại x, nửa dây m = b√(1 − x²/a²), tâm cung nằm dưới mặt sân một đoạn m, bán kính m√2; điểm cung (x; m√2·cos θ − m; m√2·sin θ), θ ∈ [−45°; 45°].
+
+**Câu 53 — MC, diện tích thiết diện.** File `tru-cat-nghieng.html`.
+- Đề: trụ đáy (O; R), cao 4R; dây AB = R√3 trên đáy (nguồn ghi nhầm a√3); mặt phẳng qua AB, cắt đoạn OO′, nghiêng 60° với đáy. Tính diện tích thiết diện.
+- Chữ: R, góc φ, d = khoảng cách từ O tới AB = √(R² − (AB/2)²). Hình chiếu của thiết diện xuống đáy = phần hình tròn phía xa AB:
+  S = R²(π − arccos(d/R)) + d√(R² − d²) · thiết diện **S′ = S / cos φ**. Thay AB = R√3 ⇒ d = R/2, φ = 60°: S = (2π/3 + √3/4)R², **S′ = (4π/3 + √3/2)R²**.
+- Phải kiểm trước khi dùng công thức: mặt phẳng ra khỏi trụ ở thành bên, độ cao lớn nhất (R + d)·tan φ = 3√3R/2 ≈ 2,6R < 4R — cho HS kéo góc φ để thấy khi nào mặt phẳng chạm đáy trên (lúc đó công thức đổi).
+- Bước: Đề bài → Dựng mặt phẳng (kéo góc) → Thiết diện là hình gì (một phần elip, bán trục R/cos φ và R) → Chiếu xuống đáy → Tính diện tích. Nguồn: Cách 1 sai, Cách 2 đúng (§C.11).
+
+### S.8 Khi Thùy góp ý
+
+- Góp ý về **một bài** ⇒ sửa bài đó. Góp ý nghe như **luật chung** (cách trình bày, có/không có một loại bước) ⇒ ghi thành mục A mới, sửa S.1–S.3 cho khớp, sửa hết các bài cũ cùng loại, ghi memory.
+- Đã có: A3 (chữ trước, số sau) · A4 (cắt lát chỉ cho bài thiết diện). Hai lần Thùy sửa đều vì t **bê khuôn bài trước sang bài khác loại / trình bày theo thói quen người giải** thay vì theo cách thầy cô giảng ⇒ trước khi viết bảng, tự hỏi: "trên lớp GV có nói bước này không?"
+
+---
+
 ## Phần E — Đứng trên vai ai (R7)
 
 | Ý trong bài | Tên gọi / lý thuyết | Dùng vào đâu |
@@ -260,3 +412,5 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 | 10/10 chiều | Claude | Rút khung chung (`khung.js`, `khung.css`), chuyển bài 1 sang khung; dựng bài 2 = Câu 48 miền vắt qua trục (7 bước, có bước "Cái bẫy"). Chờ Thùy xem |
 | 10/10 chiều | Thùy | Xem bài 2: bài tròn xoay có hàm tường minh không cần cắt lát — chia miền rồi lắp thẳng công thức; cắt lát chỉ hợp bài tính theo thiết diện (⇒ A4) |
 | 10/10 chiều | Claude | Sửa bài 2 còn 5 bước (bỏ "cắt một lát", "cộng các lát"; bước 3 thành "Chia miền" với 3 công thức; cái bẫy vẽ khối trơn thay vì chồng lát) |
+| 10/10 chiều | Thùy | "OK viết spec đi, để làm các câu còn lại nhanh hơn nữa." |
+| 10/10 chiều | Claude | Viết Phần S — sổ tay dựng bài: bộ bước theo loại, luật bảng + hình, khung file, quy trình 8 việc, danh mục soát, phiếu dựng 8 bài còn lại (công thức chữ đã kiểm số) |
