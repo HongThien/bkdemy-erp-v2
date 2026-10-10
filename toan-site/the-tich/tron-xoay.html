@@ -297,9 +297,39 @@ async function khiDoiBuoc(n, prev, o, my) {
 
 // ═══ 9. CHỌN BÀI ═══
 const chon = $('#chon')
+// Hình thu nhỏ của một bài: vẽ lại đúng hình phẳng của đề (trục, các đường, miền tô) từ dữ liệu — để nhìn thẻ là hình dung được bài
+function hinhNho(b) {
+  // Khung nhìn ôm sát hình phẳng (H) + gốc toạ độ, chừa lề 18% — không dùng khung của cảnh 3D (rộng hơn nhiều, hình sẽ bé)
+  let t0 = 0, t1 = 0, r0 = 0, r1 = 0
+  for (const d of b.to) for (let i = 0; i <= 24; i++) { const t = d.t[0] + (d.t[1] - d.t[0]) * i / 24; t0 = Math.min(t0, t); t1 = Math.max(t1, t); for (const fn of [d.tren, d.duoi]) { const r = fn ? fn(t) : 0; r0 = Math.min(r0, r); r1 = Math.max(r1, r) } }
+  const mt = 0.18 * (t1 - t0), mr = 0.18 * (r1 - r0), RT = [t0 - mt, t1 + mt], RR = [r0 - mr, r1 + mr]
+  const laX = b.truc !== 'y', RX = laX ? RT : RR, RY = laX ? RR : RT, W = 340, H = 240, le = 10
+  const k = Math.min((W - 2 * le) / (RX[1] - RX[0]), (H - 2 * le) / (RY[1] - RY[0]))
+  const ox = (W - k * (RX[1] - RX[0])) / 2, oy = (H - k * (RY[1] - RY[0])) / 2
+  const X = x => (ox + (x - RX[0]) * k).toFixed(1), Y = y => (H - oy - (y - RY[0]) * k).toFixed(1)
+  const diem = (t, r) => (laX ? X(t) + ',' + Y(r) : X(r) + ',' + Y(t))
+  const lay = (fn, t0, t1, n) => { const o = []; for (let i = 0; i <= n; i++) { const t = t0 + (t1 - t0) * i / n; o.push(diem(t, fn ? fn(t) : 0)) } return o }
+  let s = '<svg class="hinh" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true">'
+  for (const d of b.to) s += '<polygon points="' + lay(d.tren, d.t[0], d.t[1], 40).concat(lay(d.duoi, d.t[0], d.t[1], 40).reverse()).join(' ') + '" fill="' + (d.phia === 'duoi' ? 'rgba(255,122,184,.42)' : 'rgba(92,225,255,.38)') + '"/>'
+  const truc = '#9fb3d6'
+  s += '<path d="M' + X(RX[0]) + ' ' + Y(0) + ' H' + X(RX[1]) + ' M' + X(0) + ' ' + Y(RY[0]) + ' V' + Y(RY[1]) + '" stroke="' + truc + '" stroke-width="1.5" fill="none"/>'
+  s += '<path d="M' + X(RX[1]) + ' ' + Y(0) + ' l-7 -3.5 v7 z M' + X(0) + ' ' + Y(RY[1]) + ' l-3.5 7 h7 z" fill="' + truc + '"/>'
+  for (const t of b.dung || []) s += '<polyline points="' + diem(t, RR[0]) + ' ' + diem(t, RR[1]) + '" stroke="#e6efff" stroke-width="1.6" fill="none"/>'
+  for (const c of b.duong) s += '<polyline points="' + lay(c.fn, c.t[0], c.t[1], 60).join(' ') + '" stroke="#e6efff" stroke-width="2.2" fill="none" stroke-linejoin="round"/>'
+  const chu = (x, y, t, dx, dy) => '<text x="' + (+x + dx) + '" y="' + (+y + dy) + '" fill="#c3d2ec" font-size="12" font-family="Roboto Mono,monospace" text-anchor="middle">' + t + '</text>'
+  for (const t of b.vach || []) { const p = diem(t, 0).split(','); s += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="2.4" fill="#ffb547"/>' + (laX ? chu(p[0], p[1], so(t), 0, 15) : chu(p[0], p[1], so(t), -12, 4)) }
+  s += '<text x="' + (+X(RX[1]) - 4) + '" y="' + (+Y(0) + 16) + '" fill="#e8f1ff" font-size="13" font-style="italic" font-family="Times New Roman,serif" text-anchor="end">x</text>'
+  s += '<text x="' + (+X(0) - 9) + '" y="' + (+Y(RY[1]) + 12) + '" fill="#e8f1ff" font-size="13" font-style="italic" font-family="Times New Roman,serif" text-anchor="end">y</text>'
+  return s + '</svg>'
+}
+const tomTat = b => [b.mien.length + ' miền', 'quay quanh O' + (b.truc === 'y' ? 'y' : 'x'), b.to.some(d => d.phia === 'duoi') ? 'có phần dưới trục' : '', b.bay ? 'có cái bẫy' : ''].filter(Boolean)
 chon.innerHTML = '<div class="chon-hop"><div class="chon-dau"><div><div class="eyebrow">Chuyên đề · Toán 12 · Ứng dụng tích phân</div><h2>Thể tích khối tròn xoay</h2></div>' +
   '<button type="button" class="nav" id="chonDong">Đóng</button></div><ol class="chon-ds">' +
-  DS.map((b, i) => '<li><a class="chon-the' + (b === bai ? ' dang' : '') + '" href="?bai=' + b.id + '"><span class="no">' + (i + 1) + '</span><span class="tt"><b>' + b.ten + '</b><small>' + b.moTa + '</small><em>' + b.nguon + '</em></span></a></li>').join('') + '</ol></div>'
+  DS.map((b, i) => '<li><a class="chon-the' + (b === bai ? ' dang' : '') + '" href="?bai=' + b.id + '">' + hinhNho(b) +
+    '<span class="tt"><span class="dau"><span class="no">' + (i + 1) + '</span><b>' + b.ten + '</b></span><small>' + b.moTa + '</small>' +
+    '<span class="chips">' + b.de.chips.map(c => '<span>' + c + '</span>').join('') + '</span>' +
+    '<span class="meta">' + tomTat(b).map(t => '<i>' + t + '</i>').join('') + '<em>' + b.nguon + '</em></span></span>' +
+    '<span class="vao">' + (b === bai ? 'Đang mở' : 'Mở bài ›') + '</span></a></li>').join('') + '</ol></div>'
 const NHUNG = q0.get('nhung') === '1'
 const moChon = mo => { chon.hidden = !mo }
 if (!NHUNG) { M.views.insertAdjacentHTML('afterbegin', '<button type="button" id="vChon" class="chinh">Chọn bài (' + DS.length + ')</button>'); $('#vChon').addEventListener('click', () => moChon(true)) }

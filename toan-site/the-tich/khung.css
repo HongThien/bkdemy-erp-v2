@@ -120,19 +120,28 @@ input[type=range]::-moz-range-thumb{width:1.2rem;height:1.2rem;border-radius:50%
 /* ── Bảng chọn bài của trang chuyên đề (một trang, nhiều bài — vd tron-xoay.html) ── */
 .views button.chinh{background:var(--amber);border-color:var(--amber);color:#1a1000}
 .chon{position:fixed;inset:0;z-index:20;background:rgba(4,9,20,.84);display:grid;place-items:center;padding:1rem}
-.chon-hop{width:min(62rem,100%);max-height:100%;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:1.2rem;padding:1.4rem}
+.chon-hop{width:min(76rem,100%);max-height:100%;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:1.2rem;padding:1.4rem}
 .chon-dau{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
 .chon-dau h2{margin:.3rem 0 0;font:800 1.7rem/1.1 var(--f-ui);letter-spacing:-.01em}
 .chon .eyebrow{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.chon-ds{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));gap:.8rem}
-.chon-the{display:flex;gap:.8rem;align-items:flex-start;height:100%;background:var(--card-2);border:1px solid var(--line);border-radius:1rem;padding:1rem;color:inherit;text-decoration:none}
+/* Mỗi bài một thẻ RỘNG HẾT CHIỀU NGANG: hình vẽ đồ thị bên trái · tên + mô tả + dữ kiện ở giữa · nút mở bên phải */
+.chon-ds{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.chon-the{display:grid;grid-template-columns:clamp(13rem,26vw,21rem) minmax(0,1fr) auto;gap:1.3rem;align-items:center;background:var(--card-2);border:1px solid var(--line);border-radius:1rem;padding:.9rem 1.2rem .9rem .9rem;color:inherit;text-decoration:none}
 .chon-the:hover{border-color:rgba(92,225,255,.7)}
 .chon-the.dang{border-color:var(--amber)}
-.chon-the .no{flex:none;display:grid;place-items:center;width:2.2em;height:2.2em;border-radius:50%;background:var(--scan);color:#00222b;font:600 1rem/1 var(--f-data)}
-.chon-the .tt{display:flex;flex-direction:column;gap:.35rem;min-width:0}
-.chon-the b{font:700 1.05rem/1.25 var(--f-ui)}
-.chon-the small{font:400 .86rem/1.45 var(--f-ui);color:var(--ink-2)}
-.chon-the em{font:600 .68rem/1.3 var(--f-data);font-style:normal;color:var(--muted)}
+.chon-the .hinh{width:100%;height:auto;display:block;background:var(--void);border:1px solid var(--line);border-radius:.7rem}
+.chon-the .tt{display:flex;flex-direction:column;gap:.55rem;min-width:0}
+.chon-the .dau{display:flex;align-items:center;gap:.7rem}
+.chon-the .no{flex:none;display:grid;place-items:center;width:2.1em;height:2.1em;border-radius:50%;background:var(--scan);color:#00222b;font:600 1rem/1 var(--f-data)}
+.chon-the b{font:800 1.35rem/1.2 var(--f-ui);letter-spacing:-.01em}
+.chon-the small{font:400 .95rem/1.5 var(--f-ui);color:var(--ink-2)}
+.chon-the .chips span{background:rgba(4,9,20,.5)}
+.chon-the .meta{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .5rem}
+.chon-the .meta i{font:600 .72rem/1 var(--f-ui);font-style:normal;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:.42em .75em}
+.chon-the .meta em{font:600 .68rem/1.3 var(--f-data);font-style:normal;color:var(--muted);margin-left:.3rem}
+.chon-the .vao{font:700 .95rem/1 var(--f-ui);color:var(--scan);white-space:nowrap}
+.chon-the.dang .vao{color:var(--amber)}
+@media (max-width:720px){.chon-the{grid-template-columns:minmax(0,1fr);padding:.9rem}.chon-the .vao{justify-self:end}}
 .err{position:fixed;inset:auto 0 0 0;padding:1rem;background:#5a1020;color:#fff;font:600 1rem var(--f-ui);z-index:9}
 
 @media (max-width:1100px){.chip .tx{display:none}.chip{padding:.3em}}
