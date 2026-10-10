@@ -1,0 +1,104 @@
+[
+ {
+  "ma_nguon": "LTV 2018 · 1",
+  "dap_an": "$95719$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số nào có chữ số đứng đầu lớn hơn thì lớn hơn; nếu chữ số đầu bằng nhau thì xét chữ số thứ hai, rồi chữ số thứ ba… Vì vậy phải chọn các chữ số GIỮ LẠI lần lượt từ trái sang phải, mỗi lần chọn chữ số lớn nhất có thể, miễn là phía sau còn đủ chữ số để giữ cho đủ số lượng.\n\n**Bước 1.** Viết liên tiếp $10$ số lẻ đầu tiên rồi đếm xem có bao nhiêu chữ số; xoá đi $10$ chữ số thì biết số mới còn lại bao nhiêu chữ số.\n\n**Bước 2.** Chọn chữ số đầu tiên: nó phải chừa lại đủ chữ số phía sau, nên chỉ được chọn trong những chữ số đầu của số; trong khoảng đó lấy chữ số lớn nhất, các chữ số đứng trước nó bị xoá.\n\n**Bước 3.** Chọn chữ số thứ hai cũng theo cách đó, nhưng chỉ xét các chữ số nằm bên phải chữ số vừa chọn và vẫn phải chừa đủ chỗ cho các chữ số còn lại.\n\n**Bước 4.** Làm tương tự cho các chữ số tiếp theo cho đến khi giữ đủ số chữ số cần giữ; đếm lại tổng số chữ số đã xoá phải đúng $10$.\n\n**Chú ý:** Chỉ được xoá chữ số chứ không được đổi chỗ các chữ số còn lại.\n\n**Phần 2. Trình bày**\n\nViết liên tiếp $10$ số lẻ đầu tiên $1;\\ 3;\\ 5;\\ 7;\\ 9;\\ 11;\\ 13;\\ 15;\\ 17;\\ 19$ ta được số $135791113151719$.\n\nSố này có số chữ số là: $5+5\\times 2=15$ (chữ số)\n\nSố chữ số còn lại sau khi xoá là: $15-10=5$ (chữ số)\n\nChữ số đầu tiên phải còn chừa $4$ chữ số phía sau, nên chọn trong $11$ chữ số đầu $13579111315$; chữ số lớn nhất là $9$. Xoá $4$ chữ số đứng trước là $1;\\ 3;\\ 5;\\ 7$.\n\nChữ số thứ hai phải chừa $3$ chữ số phía sau, nên chọn trong $7$ chữ số $1113151$ đứng ngay sau số $9$; chữ số lớn nhất là $5$. Xoá $5$ chữ số đứng trước nó là $1;\\ 1;\\ 1;\\ 3;\\ 1$.\n\nChữ số thứ ba phải chừa $2$ chữ số phía sau, nên chọn trong $2$ chữ số $17$ đứng ngay sau số $5$; chữ số lớn nhất là $7$. Xoá chữ số $1$ đứng trước nó.\n\nHai chữ số cuối giữ nguyên là $1$ và $9$. Số chữ số đã xoá là: $4+5+1=10$ (chữ số)\n\nVậy số lớn nhất nhận được là $95719$."
+ },
+ {
+  "ma_nguon": "LTV 2018 · 2",
+  "dap_an": "$7820\\ \\text{cm}^3$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu: lỗ đục xuyên suốt, vuông góc với một mặt của khối, là hình hộp chữ nhật đáy vuông cạnh 3 cm, cao bằng cạnh khối (20 cm). \"Ở chính giữa\" chỉ vị trí, không ảnh hưởng thể tích.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích phần còn lại bằng thể tích cả khối gỗ trừ thể tích phần gỗ đã bị đục đi. Vì lỗ xuyên suốt khối gỗ nên phần bị đục chính là một hình hộp chữ nhật có đáy là hình vuông cạnh $3$ cm và chiều cao bằng cạnh khối gỗ.\n\n**Bước 1.** Tính thể tích khối gỗ hình lập phương lúc chưa đục: lấy cạnh nhân cạnh nhân cạnh.\n\n**Bước 2.** Tính thể tích phần gỗ bị đục: hình hộp chữ nhật có hai cạnh đáy là $3$ cm và chiều cao bằng cạnh khối gỗ, vì lỗ đục xuyên qua hết khối.\n\n**Bước 3.** Lấy thể tích khối gỗ lúc đầu trừ thể tích phần bị đục để được thể tích phần gỗ còn lại.\n\n**Chú ý:** Lỗ nằm \"ở chính giữa\" chỉ cho biết vị trí lỗ, không làm thay đổi thể tích phần bị đục.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThể tích khối gỗ lúc đầu là: $20\\times 20\\times 20=8000$ ($\\text{cm}^3$)\n\nThể tích phần gỗ bị đục đi là: $3\\times 3\\times 20=180$ ($\\text{cm}^3$)\n\nThể tích phần còn lại của khối gỗ là: $8000-180=7820$ ($\\text{cm}^3$)\n\nĐáp số: $7820\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 3",
+  "dap_an": "Thứ Ba",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai ngày chủ nhật liên tiếp cách nhau đúng $7$ ngày, mà $7$ là số lẻ, nên ngày chủ nhật này chẵn thì ngày chủ nhật kế tiếp lẻ, rồi lại chẵn, cứ xen kẽ nhau. Dựa vào đó tìm xem tháng phải có mấy ngày chủ nhật mới có $3$ ngày chủ nhật chẵn.\n\n**Bước 1.** Nhận xét: cộng thêm $7$ (số lẻ) vào một ngày chẵn thì được ngày lẻ, cộng thêm $7$ vào ngày lẻ thì được ngày chẵn, nên các chủ nhật chẵn lẻ xen kẽ nhau.\n\n**Bước 2.** Một tháng có $4$ hoặc $5$ ngày chủ nhật. Với $4$ chủ nhật xen kẽ chẵn lẻ thì nhiều nhất chỉ có $2$ ngày chẵn, nên muốn có $3$ ngày chẵn phải có $5$ chủ nhật và ngày chủ nhật đầu tiên là ngày chẵn.\n\n**Bước 3.** Tháng có $5$ chủ nhật thì chủ nhật đầu tiên chỉ có thể là ngày $1$, $2$ hoặc $3$ (vì chủ nhật thứ năm không quá ngày $31$); chọn ngày chẵn rồi liệt kê các chủ nhật của tháng.\n\n**Bước 4.** Từ ngày chủ nhật gần ngày $25$ nhất, đếm tiếp từng ngày để biết ngày $25$ là thứ mấy.\n\n**Phần 2. Trình bày**\n\nHai chủ nhật liên tiếp cách nhau $7$ ngày (số lẻ) nên các ngày chủ nhật là chẵn, lẻ xen kẽ nhau.\n\nTháng có $4$ chủ nhật thì có nhiều nhất $2$ chủ nhật là ngày chẵn, nên tháng đó có $5$ chủ nhật và chủ nhật đầu tiên là ngày chẵn.\n\nChủ nhật đầu tiên không thể quá ngày $3$ vì $3+7\\times 4=31$; mà đó là ngày chẵn nên chủ nhật đầu tiên là ngày $2$.\n\nCác ngày chủ nhật của tháng là: $2;\\ 9;\\ 16;\\ 23;\\ 30$.\n\nNgày $25$ sau chủ nhật ngày $23$ là: $25-23=2$ (ngày)\n\nSau chủ nhật hai ngày là thứ ba.\n\nVậy ngày $25$ của tháng đó là thứ Ba."
+ },
+ {
+  "ma_nguon": "LTV 2018 · 4",
+  "dap_an": "$36000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu bằng giá vé nhân với số khán giả. Đề chỉ cho tỉ lệ phần trăm tăng của số khán giả và của doanh thu, không cho số cụ thể, nên ta chọn số khán giả ban đầu là một số đẹp ($100$ người) rồi tính lần lượt doanh thu cũ, doanh thu mới, số khán giả mới và giá vé mới. Chọn số khác thì kết quả giá vé vẫn như vậy vì mọi đại lượng đều tăng theo cùng tỉ lệ.\n\n**Bước 1.** Đổi giá vé ra đồng, giả sử trước khi giảm giá có $100$ khán giả rồi tính doanh thu lúc đầu bằng giá vé nhân với số khán giả.\n\n**Bước 2.** Tính doanh thu sau khi giảm giá: doanh thu tăng $8\\%$ nghĩa là bằng $108\\%$ doanh thu lúc đầu.\n\n**Bước 3.** Tính số khán giả sau khi giảm giá: tăng thêm $20\\%$ nghĩa là bằng $120\\%$ số khán giả lúc đầu.\n\n**Bước 4.** Giá vé sau khi giảm bằng doanh thu mới chia cho số khán giả mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $40$ nghìn đồng $=40000$ đồng\n\nGiả sử trước khi giảm giá có $100$ khán giả.\n\nDoanh thu trước khi giảm giá là: $40000\\times 100=4000000$ (đồng)\n\nDoanh thu sau khi giảm giá là: $4000000\\times 108\\%=4320000$ (đồng)\n\nSố khán giả sau khi giảm giá là: $100\\times 120\\%=120$ (người)\n\nGiá vé sau khi giảm là: $4320000:120=36000$ (đồng)\n\nĐáp số: $36000$ đồng"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 5",
+  "dap_an": "$x=6,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải là tổng của hai số thập phân $6,72$ và $3,28$ có phần thập phân cộng lại ra đúng một số tròn, nên tính vế phải trước để đưa bài về dạng tìm số hạng chưa biết.\n\n**Bước 1.** Tính vế phải $6,72+3,28$ thành một số duy nhất; hai số này có hai chữ số phần thập phân cộng lại vừa đủ tròn.\n\n**Bước 2.** Sau khi vế phải là một số, $x$ cộng với $3,5$ bằng số đó, nên $x$ là số hạng chưa biết của một phép cộng.\n\n**Bước 3.** Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l} x+3,5=6,72+3,28 \\\\ x+3,5=10 \\\\ x=10-3,5 \\\\ x=6,5 \\end{array}$"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 6",
+  "dap_an": "$7$ giờ $5$ phút",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Từ nhà đến trường",
+   "diem": [
+    {
+     "ten": "Nhà",
+     "x": 0
+    },
+    {
+     "ten": "Trường",
+     "x": 3
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 3,
+     "nhan": "12 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 3,
+     "nhan": "3 km"
+    }
+   ]
+  },
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết muộn nhất mấy giờ phải ra khỏi nhà thì tính xem đi từ nhà đến trường mất bao lâu, rồi lấy giờ phải đến trường trừ đi thời gian đó. Thời gian bằng quãng đường chia cho vận tốc.\n\n**Bước 1.** Tính thời gian Chi đạp xe từ nhà đến trường bằng cách lấy quãng đường chia cho vận tốc.\n\n**Bước 2.** Đổi thời gian vừa tìm được từ giờ sang phút để dễ trừ với số giờ phút của đồng hồ.\n\n**Bước 3.** Lấy giờ phải đến trường trừ đi thời gian đi để tìm giờ ra khỏi nhà muộn nhất.\n\n**Chú ý:** \"Muộn nhất\" nghĩa là Chi đạp xe liền một mạch và vừa kịp đến trường lúc $7$ giờ $20$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Nhà cách trường $3$ km; Chi đi với vận tốc $12$ km/giờ)\n\nThời gian Chi đạp xe từ nhà đến trường là: $3:12=\\dfrac{1}{4}$ (giờ)\n\nĐổi: $\\dfrac{1}{4}$ giờ $=15$ phút\n\nMuộn nhất Chi phải ra khỏi nhà lúc: $7$ giờ $20$ phút $-\\ 15$ phút $=7$ giờ $5$ phút\n\nĐáp số: $7$ giờ $5$ phút"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 7",
+  "dap_an": "$x=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để so sánh ba phân số $\\dfrac{2}{5}$, $\\dfrac{x}{8}$ và $\\dfrac{3}{5}$ phải quy đồng chúng về cùng mẫu số; khi đó phân số nào có tử số lớn hơn thì lớn hơn, nên bài toán trở thành tìm $x$ sao cho tử số của $\\dfrac{x}{8}$ nằm giữa hai tử số kia.\n\n**Bước 1.** Tìm mẫu số chung của $5$ và $8$ rồi quy đồng cả ba phân số về mẫu số chung đó.\n\n**Bước 2.** Sau khi cùng mẫu số, so sánh các tử số: tử số của $\\dfrac{x}{8}$ phải lớn hơn tử số của phân số bé và bé hơn tử số của phân số lớn.\n\n**Bước 3.** Tử số của $\\dfrac{x}{8}$ sau khi quy đồng là $x$ nhân $5$ nên phải chia hết cho $5$; tìm số chia hết cho $5$ nằm giữa hai tử số đó, rồi chia cho $5$ để tìm $x$.\n\n**Chú ý:** $x$ là số tự nhiên nên chỉ nhận những giá trị làm cho $x\\times 5$ chia hết cho $5$ và nằm đúng khoảng đã tìm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2}{5}<\\dfrac{x}{8}<\\dfrac{3}{5}$\n\n$\\dfrac{16}{40}<\\dfrac{x\\times 5}{40}<\\dfrac{24}{40}$\n\nVì $16<x\\times 5<24$ và $x\\times 5$ chia hết cho $5$ nên $x\\times 5=20$.\n\nVậy $x=20:5=4$."
+ },
+ {
+  "ma_nguon": "LTV 2018 · 8",
+  "dap_an": "$60$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chiều dài gấp đôi chiều rộng nên chia mảnh vườn thành $2$ hình vuông bằng nhau, mỗi hình vuông có cạnh bằng chiều rộng. Biết diện tích mỗi hình vuông thì tìm được cạnh, từ đó tìm chiều dài và chu vi.\n\n**Bước 1.** Chia hình chữ nhật thành $2$ hình vuông bằng nhau, cạnh mỗi hình vuông bằng chiều rộng mảnh vườn.\n\n**Bước 2.** Tính diện tích một hình vuông rồi tìm cạnh của nó: cạnh là số nhân với chính nó ra diện tích đó.\n\n**Bước 3.** Cạnh hình vuông là chiều rộng; chiều dài gấp đôi chiều rộng; sau đó tính chu vi bằng nửa chu vi nhân $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChia mảnh vườn thành $2$ hình vuông bằng nhau, cạnh mỗi hình vuông bằng chiều rộng.\n\nDiện tích mỗi hình vuông là: $200:2=100$ ($\\text{m}^2$)\n\nVì $10\\times 10=100$ nên chiều rộng mảnh vườn là $10$ m.\n\nChiều dài mảnh vườn là: $10\\times 2=20$ (m)\n\nChu vi mảnh vườn là: $(20+10)\\times 2=60$ (m)\n\nĐáp số: $60$ m"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 9",
+  "dap_an": "$22,4$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các bộ quần áo giống nhau nên số mét vải cần dùng tỉ lệ thuận với số bộ: may nhiều bộ gấp bao nhiêu lần thì cần vải gấp bấy nhiêu lần. Cách làm gọn là rút về đơn vị: tìm số mét vải may một bộ rồi nhân với số bộ cần may.\n\n**Bước 1.** Nhận ra số vải và số bộ quần áo là hai đại lượng tỉ lệ thuận, nên ta rút về đơn vị là một bộ quần áo.\n\n**Bước 2.** Tìm số mét vải may một bộ quần áo bằng cách lấy tổng số vải chia cho số bộ đã may.\n\n**Bước 3.** Lấy số mét vải may một bộ nhân với số bộ cần may để tìm số vải cần dùng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố mét vải để may $1$ bộ quần áo là: $70:25=2,8$ (m)\n\nSố mét vải để may $8$ bộ quần áo là: $2,8\\times 8=22,4$ (m)\n\nĐáp số: $22,4$ m"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 10",
+  "dap_an": "$5\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Dựa vào hình: AB song song DC; E, F nằm trên AB, H, G nằm trên DC; tứ giác GHEF là hình thang giữa có hai đáy EF và HG, cùng chiều cao với hình thang ABCD. Đề chữ không nói rõ AB // DC, lấy từ hình vẽ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hình thang $ABCD$ và $GHEF$ có cùng chiều cao; đáy bé và đáy lớn của $GHEF$ đều bằng $\\dfrac{1}{3}$ đáy tương ứng của $ABCD$, nên tổng hai đáy của $GHEF$ bằng $\\dfrac{1}{3}$ tổng hai đáy của $ABCD$. Diện tích hình thang bằng tổng hai đáy nhân chiều cao rồi chia $2$ nên diện tích $GHEF$ cũng bằng $\\dfrac{1}{3}$ diện tích $ABCD$.\n\n**Bước 1.** Nhìn hình vẽ: $AB$ và $DC$ song song nên $ABCD$ là hình thang; $E$, $F$ nằm trên $AB$ còn $H$, $G$ nằm trên $DC$ nên $GHEF$ cũng là hình thang có cùng chiều cao với $ABCD$.\n\n**Bước 2.** So sánh các đáy: $AE=EF=FB$ nên $AB$ gồm $3$ đoạn bằng nhau, suy ra $EF$ bằng $\\dfrac{1}{3}$ của $AB$; tương tự $HG$ bằng $\\dfrac{1}{3}$ của $DC$.\n\n**Bước 3.** Vì tổng hai đáy giảm còn $\\dfrac{1}{3}$ còn chiều cao không đổi nên diện tích hình thang $GHEF$ bằng $\\dfrac{1}{3}$ diện tích hình thang $ABCD$.\n\n**Bước 4.** Lấy diện tích $ABCD$ chia cho $3$ để tìm diện tích $GHEF$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, $ABCD$ và $GHEF$ là hai hình thang có cùng chiều cao.\n\nVì $AE=EF=FB$ nên $EF=\\dfrac{1}{3}\\times AB$.\n\nVì $DH=HG=GC$ nên $HG=\\dfrac{1}{3}\\times DC$.\n\nTổng hai đáy hình thang $GHEF$ bằng $\\dfrac{1}{3}$ tổng hai đáy hình thang $ABCD$, chiều cao bằng nhau nên $S_{GHEF}=\\dfrac{1}{3}\\times S_{ABCD}$.\n\nDiện tích tứ giác $GHEF$ là: $15:3=5$ ($\\text{cm}^2$)\n\nĐáp số: $5\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 11",
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích đầu có chung thừa số $\\dfrac{3}{7}$, nên dùng tính chất nhân một số với một tổng để đưa $\\dfrac{3}{7}$ ra ngoài; trong ngoặc là hai phân số cùng mẫu $13$ có tổng bằng $1$. Sau đó $\\dfrac{3}{7}$ và phần phân số của $5\\dfrac{4}{7}$ cùng mẫu $7$ nên cộng gọn được.\n\n**Bước 1.** Đặt thừa số chung $\\dfrac{3}{7}$ ra ngoài, trong ngoặc là tổng hai phân số $\\dfrac{5}{13}$ và $\\dfrac{8}{13}$.\n\n**Bước 2.** Cộng hai phân số cùng mẫu số $13$: tử số cộng lại bằng mẫu số nên tổng bằng $1$, rồi lấy $\\dfrac{3}{7}$ nhân với $1$ thì giữ nguyên.\n\n**Bước 3.** Cộng hỗn số bằng cách tách phần nguyên và phần phân số: cộng hai phân số cùng mẫu $7$ trước rồi cộng với phần nguyên.\n\n**Chú ý:** Không đổi $5\\dfrac{4}{7}$ ra phân số vì tử số sẽ lớn, khó tính.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{7}\\times\\dfrac{5}{13}+\\dfrac{3}{7}\\times\\dfrac{8}{13}+5\\dfrac{4}{7}$\n\n$=\\dfrac{3}{7}\\times\\left(\\dfrac{5}{13}+\\dfrac{8}{13}\\right)+5\\dfrac{4}{7}$\n\n$=\\dfrac{3}{7}\\times 1+5\\dfrac{4}{7}$\n\n$=\\dfrac{3}{7}+5\\dfrac{4}{7}$\n\n$=5+\\left(\\dfrac{3}{7}+\\dfrac{4}{7}\\right)$\n\n$=5+1$\n\n$=6$"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 12",
+  "dap_an": "Sau $23$ năm nữa",
+  "ghi_chu_nghi": "Đề hỏi \"đến năm nào\" nhưng không cho năm hiện tại, nên đáp số là \"sau 23 năm nữa\" (nếu năm nay là N thì năm đó là N+23). Thử lại: sau 23 năm bố 65 tuổi, chị 35, em 30 (35+30=65).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi năm qua đi, tuổi bố tăng $1$ tuổi nhưng tổng số tuổi hai chị em tăng $2$ tuổi (mỗi em tăng $1$ tuổi). Vì vậy tuổi bố hiện đang hơn tổng tuổi hai chị em bao nhiêu thì mỗi năm khoảng cách đó giảm đi $1$ tuổi, đến khi hết khoảng cách thì hai bên bằng nhau.\n\n**Bước 1.** Tính tổng số tuổi của chị và em hiện nay rồi so với tuổi bố để biết bố đang hơn bao nhiêu tuổi.\n\n**Bước 2.** Tính mỗi năm khoảng cách giữa tuổi bố và tổng tuổi hai chị em giảm đi bao nhiêu tuổi.\n\n**Bước 3.** Lấy khoảng cách hiện nay chia cho số tuổi giảm đi mỗi năm để biết sau bao nhiêu năm thì tuổi bố bằng tổng tuổi hai chị em.\n\n**Chú ý:** Đề không cho biết năm nay là năm nào, nên câu trả lời là sau bao nhiêu năm nữa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tuổi của chị và em hiện nay là: $12+7=19$ (tuổi)\n\nHiện nay tuổi bố hơn tổng số tuổi hai chị em là: $42-19=23$ (tuổi)\n\nMỗi năm tổng số tuổi hai chị em tăng $1+1=2$ (tuổi), tuổi bố tăng $1$ tuổi nên mỗi năm khoảng cách giảm đi: $2-1=1$ (tuổi)\n\nSố năm để tuổi bố bằng tổng số tuổi hai chị em là: $23:1=23$ (năm)\n\nĐáp số: sau $23$ năm nữa"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 13",
+  "dap_an": "$13,76\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề chữ không nói các đường tròn tiếp xúc nhau; lấy từ hình: 4 đường tròn bằng nhau, tiếp xúc nhau, tâm của chúng là 4 đỉnh của hình vuông. Phần đánh dấu chấm = hình vuông trừ 4 hình quạt 1/4 hình tròn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo hình vẽ, bốn đường tròn bằng nhau tiếp xúc nhau và tâm của chúng là bốn đỉnh của một hình vuông. Phần đánh dấu chấm là hình vuông bỏ đi bốn phần tư hình tròn ở bốn góc; bốn phần tư ghép lại đúng bằng một hình tròn.\n\n**Bước 1.** Tìm cạnh hình vuông: hai đường tròn kề nhau tiếp xúc nhau nên khoảng cách giữa hai tâm bằng tổng hai bán kính, cũng là cạnh hình vuông.\n\n**Bước 2.** Tính diện tích hình vuông bằng cạnh nhân cạnh.\n\n**Bước 3.** Ở mỗi đỉnh hình vuông có một phần tư hình tròn bán kính $4$ cm; bốn phần tư ghép lại thành một hình tròn, tính diện tích hình tròn đó.\n\n**Bước 4.** Lấy diện tích hình vuông trừ diện tích hình tròn vừa tính để được diện tích phần đánh dấu chấm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, bốn đường tròn tiếp xúc nhau và tâm của chúng là bốn đỉnh của một hình vuông.\n\nCạnh hình vuông là: $4+4=8$ (cm)\n\nDiện tích hình vuông là: $8\\times 8=64$ ($\\text{cm}^2$)\n\nBốn phần tư hình tròn ghép lại thành một hình tròn có diện tích là: $4\\times 4\\times 3,14=50,24$ ($\\text{cm}^2$)\n\nDiện tích phần đánh dấu chấm là: $64-50,24=13,76$ ($\\text{cm}^2$)\n\nĐáp số: $13,76\\ \\text{cm}^2$"
+ },
+ {
+  "ma_nguon": "LTV 2018 · 14",
+  "dap_an": "$144$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với dãy số cho trước, hãy thử xem mỗi số có liên hệ gì với các số đứng trước nó. Ở dãy này, từ số thứ ba trở đi, mỗi số bằng tổng của hai số đứng liền trước nó.\n\n**Bước 1.** Thử tìm quy luật từ những số đầu: cộng hai số đứng liền trước xem có bằng số kế tiếp hay không.\n\n**Bước 2.** Kiểm tra quy luật vừa tìm bằng tất cả các số đã cho trong dãy để chắc chắn quy luật đúng.\n\n**Bước 3.** Viết tiếp từng số theo quy luật, vừa viết vừa đếm số thứ tự cho tới số thứ $12$.\n\n**Phần 2. Trình bày**\n\nQuy luật: từ số thứ ba, mỗi số bằng tổng hai số đứng liền trước nó.\n\nSố thứ bảy là: $5+8=13$\n\nSố thứ tám là: $8+13=21$\n\nSố thứ chín là: $13+21=34$\n\nSố thứ mười là: $21+34=55$\n\nSố thứ mười một là: $34+55=89$\n\nSố thứ mười hai là: $55+89=144$\n\nVậy số thứ $12$ của dãy là $144$."
+ }
+]

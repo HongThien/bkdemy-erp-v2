@@ -1,0 +1,132 @@
+[
+ {
+  "ma_nguon": "CG 2022 · P1.1",
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $\\dfrac{1}{4}$ nên đưa $\\dfrac{1}{4}$ ra ngoài, biến biểu thức thành \"một hiệu nhân với $\\dfrac{1}{4}$\" cho dễ tính.\n\n**Bước 1.** Nhìn kĩ hai tích $3,5\\times\\dfrac{1}{4}$ và $1,5\\times\\dfrac{1}{4}$ thì thấy cùng có thừa số $\\dfrac{1}{4}$, đó là dấu hiệu để dùng tính chất nhân một số với một hiệu.\n\n**Bước 2.** Viết lại biểu thức thành hiệu của hai số thập phân đặt trong ngoặc rồi nhân với $\\dfrac{1}{4}$, và tính hiệu trong ngoặc trước vì hai số này tính nhẩm rất gọn.\n\n**Bước 3.** Nhân kết quả trong ngoặc với $\\dfrac{1}{4}$ theo quy tắc nhân số tự nhiên với phân số, rút gọn phân số rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Không cần đổi $3,5$ và $1,5$ ra phân số; đặt thừa số chung ra ngoài thì mọi phép tính đều đơn giản.\n\n**Phần 2. Trình bày**\n\n$3,5\\times\\dfrac{1}{4}-1,5\\times\\dfrac{1}{4}$\n\n$=(3,5-1,5)\\times\\dfrac{1}{4}$\n\n$=2\\times\\dfrac{1}{4}$\n\n$=\\dfrac{2}{4}=\\dfrac{1}{2}$\n\nChọn B."
+ },
+ {
+  "ma_nguon": "CG 2022 · P1.2",
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết số này gấp số kia bao nhiêu lần thì hai số phải cùng một đơn vị đo, rồi lấy số lớn chia cho số bé.\n\n**Bước 1.** Nhận ra hai thể tích đang dùng hai đơn vị khác nhau là mét khối và đề-xi-mét khối, nên chưa thể chia ngay.\n\n**Bước 2.** Đổi $0,2\\ \\text{m}^3$ sang đề-xi-mét khối, nhớ rằng $1\\ \\text{m}^3$ bằng $1000\\ \\text{dm}^3$ nên phải nhân với $1000$.\n\n**Bước 3.** Lấy thể tích lớn chia cho thể tích bé để biết gấp mấy lần, rồi chọn phương án trùng với kết quả.\n\n**Chú ý:** Nếu chia thẳng $0,2$ cho $25$ mà không đổi đơn vị thì sẽ ra con số $0,008$ rất dễ chọn nhầm.\n\n**Phần 2. Trình bày**\n\nĐổi: $0,2\\ \\text{m}^3=200\\ \\text{dm}^3$\n\n$200\\ \\text{dm}^3$ gấp $25\\ \\text{dm}^3$ số lần là: $200:25=8$ (lần)\n\nChọn C."
+ },
+ {
+  "ma_nguon": "CG 2022 · P1.3",
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vận tốc cho theo km/giờ thì thời gian phải tính bằng giờ, nên đổi $12$ phút ra giờ trước rồi mới nhân.\n\n**Bước 1.** Thấy vận tốc tính theo kilômét trên giờ mà thời gian lại cho bằng phút, nghĩa là đơn vị chưa khớp nhau.\n\n**Bước 2.** Đổi $12$ phút ra giờ bằng cách lấy $12$ chia cho $60$, vì một giờ có $60$ phút.\n\n**Bước 3.** Dùng công thức quãng đường bằng vận tốc nhân với thời gian, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Nhân thẳng $60$ với $12$ sẽ ra số rất lớn, đó là bẫy của phương án có $720$ km.\n\n**Phần 2. Trình bày**\n\nĐổi: $12$ phút $=12:60=0,2$ giờ\n\nQuãng đường ô tô đi được trong $12$ phút là: $60\\times 0,2=12$ (km)\n\nChọn D."
+ },
+ {
+  "ma_nguon": "CG 2022 · P1.4",
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ diện tích toàn phần tìm ra cạnh hình lập phương, rồi nhớ rằng \"cạnh bằng trung bình cộng ba kích thước\" nên tổng ba kích thước bằng $3$ lần cạnh.\n\n**Bước 1.** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau, nên lấy diện tích toàn phần chia cho $6$ để biết diện tích một mặt.\n\n**Bước 2.** Tìm cạnh hình lập phương là số nhân với chính nó thì bằng diện tích một mặt vừa tìm.\n\n**Bước 3.** Cạnh bằng trung bình cộng của ba kích thước nên tổng ba kích thước của hình hộp chữ nhật bằng cạnh nhân với $3$.\n\n**Bước 4.** Lấy tổng ba kích thước trừ đi chiều dài và chiều rộng đã biết để được chiều cao, rồi chọn phương án.\n\n**Chú ý:** Đừng lấy diện tích một mặt làm độ dài cạnh, vì diện tích tính bằng xăng-ti-mét vuông còn cạnh tính bằng xăng-ti-mét.\n\n**Phần 2. Trình bày**\n\nDiện tích một mặt của hình lập phương là: $486:6=81$ ($\\text{cm}^2$)\n\nVì $9\\times 9=81$ nên cạnh của hình lập phương là $9$ cm.\n\nTổng ba kích thước của hình hộp chữ nhật là: $9\\times 3=27$ (cm)\n\nChiều cao của hình hộp chữ nhật là: $27-12-8=7$ (cm)\n\nChọn A."
+ },
+ {
+  "ma_nguon": "CG 2022 · P2.5",
+  "dap_an": "$x=2,9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi tích $5\\times x$ là một số trừ chưa biết trong phép trừ, tìm số trừ trước rồi mới tìm thừa số $x$.\n\n**Bước 1.** Nhận ra phần chưa biết nằm trong tích $5\\times x$, và tích này đứng ở vị trí số trừ của phép trừ $15,25-\\ldots=0,75$.\n\n**Bước 2.** Tìm số trừ bằng cách lấy số bị trừ trừ đi hiệu, tức là tính $15,25-0,75$ để biết tích $5\\times x$.\n\n**Bước 3.** Tìm thừa số chưa biết bằng cách lấy tích vừa tìm chia cho thừa số đã biết là $5$.\n\nThử lại: thay giá trị $x$ vừa tìm vào biểu thức ban đầu, tính ra phải bằng $0,75$.\n\n**Phần 2. Trình bày**\n\n$\\begin{array}{l}15,25-5\\times x=0,75\\\\ 5\\times x=15,25-0,75\\\\ 5\\times x=14,5\\\\ x=14,5:5\\\\ x=2,9\\end{array}$"
+ },
+ {
+  "ma_nguon": "CG 2022 · P2.6",
+  "dap_an": "$225$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Xếp thành $10$ hàng dư $5$\" cho biết chữ số hàng đơn vị, còn \"xếp thành $9$ hàng không dư\" là dấu hiệu chia hết cho $9$ (tổng các chữ số chia hết cho $9$).\n\n**Bước 1.** Số học sinh chia cho $10$ dư $5$ nên chữ số tận cùng, tức chữ số hàng đơn vị, chính là $5$.\n\n**Bước 2.** Số học sinh chia hết cho $9$ nên tổng ba chữ số của nó phải chia hết cho $9$.\n\n**Bước 3.** Chữ số hàng trăm và hàng đơn vị đã biết, còn chữ số hàng chục chỉ có thể từ $0$ đến $9$, từ đó tìm được khoảng giá trị của tổng ba chữ số và chọn số chia hết cho $9$.\n\n**Bước 4.** Lấy tổng đó trừ đi tổng hai chữ số đã biết để tìm chữ số hàng chục, rồi viết ra số học sinh.\n\n**Chú ý:** Chữ số hàng chục có thể bằng $0$, nên phải tính khoảng giá trị của tổng bắt đầu từ trường hợp đó.\n\n**Phần 2. Trình bày**\n\nXếp thành $10$ hàng thì dư $5$ học sinh nên chữ số hàng đơn vị của số học sinh là $5$.\n\nTổng chữ số hàng trăm và hàng đơn vị là: $2+5=7$\n\nXếp thành $9$ hàng không dư nên số học sinh chia hết cho $9$, do đó tổng ba chữ số chia hết cho $9$.\n\nChữ số hàng chục từ $0$ đến $9$ nên tổng ba chữ số từ $7$ đến $16$, trong khoảng này chỉ có $9$ chia hết cho $9$.\n\nChữ số hàng chục là: $9-7=2$\n\nVậy số học sinh khối 5 là $225$ học sinh."
+ },
+ {
+  "ma_nguon": "CG 2022 · P2.7",
+  "dap_an": "$10$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi \"tuổi anh bằng $\\dfrac{5}{4}$ tuổi em\" thành số phần bằng nhau (anh $5$ phần, em $4$ phần), rồi đếm \"hai lần tuổi anh cộng tuổi em\" gồm bao nhiêu phần; đề cho tổng này là $28$ nên đây là bài tổng – tỉ.\n\n**Bước 1.** Chia tuổi em thành $4$ phần bằng nhau thì tuổi anh bằng $\\dfrac{5}{4}$ tuổi em nên là $5$ phần như thế.\n\n**Bước 2.** Hai lần tuổi anh là hai lần $5$ phần, cộng thêm tuổi em là $4$ phần, từ đó đếm được tổng số phần bằng nhau.\n\n**Bước 3.** Con số $28$ tuổi ứng với tổng số phần vừa đếm, nên chia $28$ cho tổng số phần để tìm giá trị của một phần.\n\n**Bước 4.** Tuổi anh gồm $5$ phần nên lấy giá trị một phần nhân với $5$.\n\n**Chú ý:** Đề hỏi tuổi anh chứ không hỏi tổng, đừng dừng lại ở bước tìm giá trị một phần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì tuổi anh bằng $\\dfrac{5}{4}$ tuổi em nên tuổi anh là $5$ phần, tuổi em là $4$ phần như thế.\n\nTa có sơ đồ:\n\n(Tuổi anh 5 phần; tuổi anh lần thứ hai 5 phần; tuổi em 4 phần; tổng 28 tuổi)\n\nHai lần tuổi anh cộng tuổi em gồm số phần bằng nhau là: $5\\times 2+4=14$ (phần)\n\nGiá trị của một phần là: $28:14=2$ (tuổi)\n\nTuổi của anh là: $2\\times 5=10$ (tuổi)\n\nĐáp số: $10$ tuổi",
+  "so_do_mo_ta": {
+   "tieu_de": "Hai lần tuổi anh cộng tuổi em",
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Tuổi anh",
+     "phan": 5
+    },
+    {
+     "nhan": "Tuổi anh (lần 2)",
+     "phan": 5
+    },
+    {
+     "nhan": "Tuổi em",
+     "phan": 4
+    }
+   ],
+   "tong": "28 tuổi",
+   "dau_hoi": [
+    "Tuổi anh"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "CG 2022 · P2.8",
+  "dap_an": "$51,2\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; từ cặp tam giác đã biết diện tích tìm được tỉ số $OB:OD$, rồi dùng tỉ số đó cho cặp tam giác còn lại.\n\n**Bước 1.** Hai đường chéo chia hình thang thành bốn tam giác; hai tam giác ABD và ABC có chung đáy AB và cùng chiều cao, nên bớt đi phần chung OAB thì hai tam giác ở hai bên (OAD và OBC) có diện tích bằng nhau.\n\n**Bước 2.** Tam giác OAB và tam giác OAD cùng có đỉnh A, đáy nằm trên BD, nên tỉ số diện tích của chúng cho biết tỉ số hai đoạn $OB$ và $OD$.\n\n**Bước 3.** Tam giác OBC và tam giác OCD cũng cùng có đỉnh C và đáy nằm trên BD, nên có cùng tỉ số $OB:OD$; biết diện tích tam giác OBC thì tìm được diện tích tam giác OCD.\n\n**Bước 4.** Cộng diện tích bốn tam giác nhỏ ghép lại thành hình thang để được kết quả cuối cùng.\n\n**Chú ý:** Hình thang có đúng bốn tam giác nhỏ, nhớ cộng đủ cả bốn chứ không bỏ sót tam giác OBC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai tam giác ABD và ABC có chung đáy AB và có chiều cao bằng nhau (bằng chiều cao hình thang) nên $S_{ABD}=S_{ABC}$.\n\nCùng bớt đi $S_{OAB}$ thì được: $S_{OBC}=S_{OAD}=11$ ($\\text{cm}^2$)\n\nTam giác OAB và tam giác OAD có chung đường cao hạ từ A xuống BD, suy ra $\\dfrac{S_{OAB}}{S_{OAD}}=\\dfrac{OB}{OD}=\\dfrac{5}{11}$\n\nTam giác OBC và tam giác OCD có chung đường cao hạ từ C xuống BD, suy ra $\\dfrac{S_{OBC}}{S_{OCD}}=\\dfrac{OB}{OD}=\\dfrac{5}{11}$\n\nDiện tích tam giác OCD là: $11:5\\times 11=24,2$ ($\\text{cm}^2$)\n\nDiện tích hình thang ABCD là: $5+11+11+24,2=51,2$ ($\\text{cm}^2$)\n\nĐáp số: $51,2\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề thiếu hình (chỉ mô tả bằng chữ) nhưng đủ dữ kiện: hình thang ABCD đáy AB, CD; giải theo cách hiểu chuẩn (O giao hai đường chéo). Cuối nội dung đề dính nhầm chuỗi \"Phần 3: Tự luận\" (lỗi tách đề, không phải đề) — bỏ qua khi in. Đáp số 51,2 là số thập phân không tròn nhưng nhất quán với dữ kiện."
+ },
+ {
+  "ma_nguon": "CG 2022 · P3.1",
+  "dap_an": "a) $12$ học sinh; b) $55$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia bài làm hai chặng tổng – tỉ: chặng thứ nhất tách giải nhì ($1$ phần) khỏi ba giải còn lại ($5$ phần), chặng thứ hai tách giải ba ($3$ phần) khỏi giải khuyến khích ($5$ phần); ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Ý a): giải nhất bằng $10\\%$ tổng số học sinh đạt giải, nên lấy $10\\%$ của $120$ học sinh.\n\n**Bước 2.** Giải nhì bằng $\\dfrac{1}{5}$ tổng ba giải còn lại nên giải nhì là $1$ phần, ba giải còn lại là $5$ phần; $120$ học sinh ứng với tổng số phần này, từ đó tìm được số học sinh giải nhì.\n\n**Bước 3.** Lấy $120$ trừ đi số học sinh giải nhất và giải nhì (dùng lại kết quả ý a) để biết hai giải còn lại là giải ba và giải khuyến khích có tất cả bao nhiêu học sinh.\n\n**Bước 4.** Giải ba bằng $\\dfrac{3}{5}$ giải khuyến khích nên giải ba là $3$ phần, giải khuyến khích là $5$ phần; chia số học sinh vừa tìm theo tổng số phần để tìm giải khuyến khích.\n\n**Chú ý:** \"Ba giải còn lại\" của giải nhì gồm giải nhất, giải ba và giải khuyến khích, không phải chỉ ba giải xếp sau giải nhì.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số học sinh đạt giải nhất là: $120\\times 10\\%=12$ (học sinh)\n\nb) Giải nhì bằng $\\dfrac{1}{5}$ tổng số học sinh ba giải còn lại nên giải nhì là $1$ phần, ba giải còn lại là $5$ phần.\n\nTa có sơ đồ:\n\n(Giải nhì 1 phần; ba giải còn lại 5 phần; tổng 120 học sinh)\n\nTổng số phần bằng nhau là: $1+5=6$ (phần)\n\nSố học sinh đạt giải nhì là: $120:6\\times 1=20$ (học sinh)\n\nSố học sinh đạt giải ba và giải khuyến khích là: $120-12-20=88$ (học sinh)\n\nGiải ba bằng $\\dfrac{3}{5}$ giải khuyến khích nên giải ba là $3$ phần, giải khuyến khích là $5$ phần.\n\nTa có sơ đồ:\n\n(Giải ba 3 phần; giải khuyến khích 5 phần; tổng 88 học sinh)\n\nTổng số phần bằng nhau là: $3+5=8$ (phần)\n\nSố học sinh đạt giải khuyến khích là: $88:8\\times 5=55$ (học sinh)\n\nĐáp số: a) $12$ học sinh; b) $55$ học sinh",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Giải nhì và ba giải còn lại",
+    "gia_tri_phan": 20,
+    "hang": [
+     {
+      "nhan": "Giải nhì",
+      "phan": 1
+     },
+     {
+      "nhan": "Ba giải còn lại",
+      "phan": 5
+     }
+    ],
+    "tong": "120 học sinh",
+    "dau_hoi": [
+     "Giải nhì"
+    ]
+   },
+   {
+    "tieu_de": "Giải ba và giải khuyến khích",
+    "gia_tri_phan": 11,
+    "hang": [
+     {
+      "nhan": "Giải ba",
+      "phan": 3
+     },
+     {
+      "nhan": "Giải khuyến khích",
+      "phan": 5
+     }
+    ],
+    "tong": "88 học sinh",
+    "dau_hoi": [
+     "Giải khuyến khích"
+    ]
+   }
+  ]
+ },
+ {
+  "ma_nguon": "CG 2022 · P3.2",
+  "dap_an": "Toán: $332$ học sinh; Tiếng Anh: $240$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ \"$\\dfrac{1}{10}$ số HS giỏi Tiếng Anh bằng $\\dfrac{6}{83}$ số HS giỏi Toán\" suy ra tỉ số hai môn (Toán $83$ phần, Tiếng Anh $60$ phần), nên hiệu là một số phần cố định; điều kiện chia $5$ và chia $9$ đều dư $2$ dùng để chọn ra hiệu thật.\n\n**Bước 1.** Một phần mười số học sinh giỏi Tiếng Anh cho trước, nên gấp lên $10$ lần để biết cả số học sinh giỏi Tiếng Anh bằng bao nhiêu phần số học sinh giỏi Toán.\n\n**Bước 2.** Đổi tỉ số vừa tìm thành số phần bằng nhau, và vì phân số đó đã tối giản nên mỗi phần là một số học sinh nguyên; từ đó tìm được hiệu gồm bao nhiêu phần.\n\n**Bước 3.** Hiệu có hai chữ số và bằng một số nguyên lần số phần ở bước trước, nên liệt kê các số có hai chữ số như vậy rồi lọc bằng điều kiện chia $5$ dư $2$ và chia $9$ dư $2$.\n\n**Bước 4.** Biết hiệu thật, chia cho số phần của hiệu để tìm một phần, rồi nhân với số phần của từng môn.\n\n**Chú ý:** Phải thử cả hai điều kiện chia $5$ dư $2$ và chia $9$ dư $2$ cho số còn lại, chỉ dùng một điều kiện thì chưa đủ chắc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$\\dfrac{1}{10}$ số học sinh giỏi Tiếng Anh bằng $\\dfrac{6}{83}$ số học sinh giỏi Toán nên số học sinh giỏi Tiếng Anh bằng: $\\dfrac{6}{83}\\times 10=\\dfrac{60}{83}$ (số học sinh giỏi Toán)\n\nDo đó số học sinh giỏi Toán là $83$ phần, số học sinh giỏi Tiếng Anh là $60$ phần như thế.\n\nHiệu số phần bằng nhau là: $83-60=23$ (phần)\n\nHiệu là số có hai chữ số chia hết cho $23$ nên hiệu là một trong các số: $23$; $46$; $69$; $92$.\n\nHiệu chia cho $5$ dư $2$ nên chữ số tận cùng là $2$ hoặc $7$, trong bốn số trên chỉ có $92$.\n\nThử lại: $92:9=10$ (dư $2$), thoả mãn chia $9$ dư $2$.\n\nVậy số học sinh giỏi Toán hơn số học sinh giỏi Tiếng Anh là $92$ học sinh.\n\nTa có sơ đồ:\n\n(Giỏi Toán 83 phần; giỏi Tiếng Anh 60 phần; hiệu 92 học sinh)\n\nGiá trị của một phần là: $92:23=4$ (học sinh)\n\nSố học sinh giỏi Toán là: $4\\times 83=332$ (học sinh)\n\nSố học sinh giỏi Tiếng Anh là: $4\\times 60=240$ (học sinh)\n\nĐáp số: Toán: $332$ học sinh; Tiếng Anh: $240$ học sinh",
+  "so_do_mo_ta": {
+   "tieu_de": "Học sinh giỏi Toán và Tiếng Anh",
+   "gia_tri_phan": 4,
+   "hang": [
+    {
+     "nhan": "Giỏi Toán",
+     "phan": 83
+    },
+    {
+     "nhan": "Giỏi Tiếng Anh",
+     "phan": 60
+    }
+   ],
+   "hieu": "92 học sinh",
+   "dau_hoi": [
+    "Giỏi Toán",
+    "Giỏi Tiếng Anh"
+   ]
+  }
+ }
+]

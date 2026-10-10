@@ -63,7 +63,11 @@ function tachDe(ten, ds) {
   let p = { stt: 0, ten: null, kieu: null }, c = null, bang = false, dau = []
   const dong_ = ds.filter((l) => boB(l).trim() && !/^(STT|Câu hỏi|Đáp số|Đáp án|Trả lời)$/i.test(boB(l).trim()))
   if (ds.some((l) => /^STT$/i.test(boB(l).trim()))) bang = true
-  const dong2 = bang ? dong_ : dong_
+  // Tiêu đề phần gõ DÍNH cuối dòng của câu trước ("…Tính diện tích hình thang ABCD. [[b]]Phần 3: Tự luận[[/b]]") ⇒ tách thành dòng riêng
+  const dong2 = dong_.flatMap((l) => {
+    const m = /^(.*\S)\s*(\[\[b\]\](?:Phần|PHẦN)\s*(?:\d+|[IVX]+)\s*[:.][^\[]*\[\[\/b\]\])\s*$/.exec(l)
+    return m && boB(m[1]).trim() ? [m[1], m[2]] : [l]
+  })
   const mo = (so, dau_, diem) => { c = { phan: p.stt, so: +so, diem: diem ?? null, dong: dau_ ? [dau_] : [] }; cau.push(c) }
   const RE_SO_DAM = /^\[\[b\]\]\d{1,2}[.)]?\[\[\/b\]\]$/
   const soDamKe = (i) => { for (let j = i + 1; j < dong2.length; j++) if (RE_SO_DAM.test(dong2[j].trim())) return +boB(dong2[j]).replace(/\D/g, ''); return null }
