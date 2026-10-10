@@ -1,0 +1,102 @@
+{
+  "PA.12@p236": {
+    "sach_in_sai": "trang PDF 236, lời giải bài 12 nhánh y > 2013: sách in (y - x + 50)(x + y + 39776), đúng là (y - x - 50)(x + y + 3976). Không ảnh hưởng kết quả."
+  },
+  "PA.18@p238": {
+    "sach_in_sai": "trang PDF 238, đề bài 18: sách in ax^2 = by^2 = 5; lời giải của sách (trang 239) dùng ax^2 + by^2 = 5 và chỉ bản đó khớp các dữ kiện còn lại (a = b = 1, {x; y} = {1; 2}). Kho ghi dấu cộng. Lời giải sách còn in 175xy thay cho 17 + 5xy."
+  },
+  "PA.21@p240": {
+    "sach_in_sai": "trang PDF 240, lời giải bài 21: sách ghi dấu bằng xảy ra khi x = ±1, y = 0, z = ±1 — khi đó M = 8/3, không phải 32/3. Đúng là (x; y; z) = (2; 0; -1) hoặc (-2; 0; 1). Giá trị lớn nhất 32/3 của sách đúng."
+  },
+  "PA.22a@p240": {
+    "sach_in_sai": "trang PDF 240, lời giải bài 22a dòng thứ ba: sách in 15(16^(n-2) + … + 16 + 1 - n), thiếu số hạng 16^(n-1)."
+  },
+  "PA.22b@p240": {
+    "sach_in_sai": "trang PDF 241, lời giải bài 22b dòng cuối: sách in (4^(n-1) - 1^(n-2)), đúng là (4^(n-2) - 1^(n-2))."
+  },
+  "PA.2b@p232": {
+    "sach_in_sai": "trang PDF 232, lời giải bài 2b dòng thứ hai: sách in (x^2 - 6x + 8)(x^2 - 5x + 8 - x), nhân tử sau đúng là (x^2 - 5x + 8 + x)."
+  },
+  "PA.3@p232": {
+    "sach_in_sai": "trang PDF 232, lời giải bài 3 dòng đầu: sách in \"x - 3, x - 3, x - 1, x\", đúng là x - 3, x - 2, x - 1, x."
+  },
+  "PA.4@p233": {
+    "sach_in_sai": "trang PDF 233, đề bài 4b: sách in x^3 + y^3 + mxyz, thiếu z^3; lời giải của sách dùng x^3 + y^3 + z^3 + mxyz (với đề như in thì không có m nào thoả). Kho ghi đề có z^3."
+  },
+  "PA.7@p234": {
+    "sach_in_sai": "trang PDF 234, lời giải bài 7 dòng (1): sách in 2014^201 + 1, đúng là 2014^2015 + 1."
+  },
+  "PA.8@p234": {
+    "sach_in_sai": "trang PDF 235, lời giải bài 8: sách in dấu \"=\" thay cho \"+\" ở n^2 + 6n = 9 và 2n = 9."
+  },
+  "PA.9@p235": {
+    "sach_in_sai": "trang PDF 235, lời giải bài 9: sách in (a^2 + ab = b^2 - b^2 - bc - c^2), dấu \"=\" đúng là \"+\"."
+  },
+  "PA.10@p235": {
+    "sach_in_sai": "trang PDF 236, lời giải bài 10: sách chỉ nêu dấu bằng tại các hoán vị của (0; 1/2; 1/2), bỏ sót các hoán vị của (1; 0; 0) (khi đó hai vế cùng bằng 0). Kho nêu đủ."
+  },
+  "PA.24@p241": {
+    "sach_in_sai": "trang PDF 242, dòng kết luận bài 24: sách in 2^9 + 29^b, đúng là 2^a + 29^b."
+  },
+  "PA.25@p242": {
+    "sach_in_sai": "trang PDF 242, bài 25: đề ý c in \"là các số điều hòa\" (đúng: \"là số điều hòa\"); lời giải ý a in \"287 = 1.7 + 4.1\" (đúng: 287 = 7·41); cuối ý b in \"= -28 = 8\" (đúng: -28 ≠ 8)."
+  },
+  "PA.27@p243": {
+    "sach_in_sai": "trang PDF 243, lời giải bài 27 dòng giải thích: sách in (125^k - 1)^40, đúng là (125k - 1)^40."
+  },
+  "PA.28@p243": {
+    "sach_in_sai": "trang PDF 244, lời giải bài 28: sách in c + a + b + 2 = 1/(abc), đúng là 1/c + 1/a + 1/b + 2 = 1/(abc); sách đặt a = x/(y+z)… với x + y + z = 1 mà không giải thích vì sao đặt được — kho bổ sung."
+  },
+  "PA.29@p244": {
+    "sach_in_sai": "trang PDF 244, đề bài 29: số hạng cuối in 2013/(1 + 2013^2 + 2014^4); lời giải của sách chỉ khớp với 2013^4. Kho ghi 2013^4."
+  },
+  "PA.31@p245": {
+    "sach_in_sai": "trang PDF 245, đề bài 31: sách in \"tồn tại hai số trong bốn số đó bằng 1\" — sai (a = 2, b = 1/2, c = 3, d = 1/3 thoả giả thiết, không số nào bằng 1). Lời giải của sách chứng minh ab = 1 hoặc bc = 1 hoặc bd = 1. Kho ghi \"có tích bằng 1\".",
+    "cho_quyet": "đề sách in \"tồn tại hai số … bằng 1\" là mệnh đề sai; kho tạm ghi \"có tích bằng 1\" (đúng cái lời giải của sách chứng minh) — chờ CEO chọn: giữ bản \"có tích bằng 1\" hay bỏ câu"
+  },
+  "PA.32@p245": {
+    "sach_in_sai": "trang PDF 246, lời giải bài 32: sách in (p/q)(1 + p/q)^3, đúng là (p/q)(1 + q/p)^3; dòng cuối in M = a + b^2 = c^3, đúng là a + b^2 + c^3."
+  },
+  "ON.9@p219": {
+    "sach_in_sai": "trang PDF 219, lời giải bài 9 ôn tập cuối năm: sách in A = 12,65/11,15 = 253/223, mất dấu trừ ở tử (-3/4 + 1,5 - 13,4 = -12,65). Giá trị đúng là -253/223."
+  },
+  "ON.16a@p221": {
+    "sach_in_sai": "trang PDF 221, đề bài 16a ôn tập cuối năm: sách in mẫu thứ ba là x^2 - x; lời giải của sách dùng x^2 - 4 (điều kiện x ≠ ±2, nghiệm x = -4; với x^2 - x thì -4 không là nghiệm). Kho ghi x^2 - 4."
+  },
+  "PA.35@p247": {
+    "sach_in_sai": "trang PDF 247, lời giải bài 35: sách in \"có 2n số hạng là số lẻ\", đúng là 2m (n = 4m). Không ảnh hưởng kết luận."
+  },
+  "PA.36@p248": {
+    "sach_in_sai": "trang PDF 248, kết quả bài 36: sách in tử số a^4 + 18a^2 + 16 + 16a^2 (khai triển (a^2 + 4)^2 sai hệ số); đúng là a^4 + 8a^2 + 16 + 16a^2 = a^4 + 24a^2 + 16."
+  },
+  "PA.37@p248": {
+    "sach_in_sai": "trang PDF 248, đề bài 37: sách in điều kiện a ≠ b, đúng là a ≠ -b (mẫu số là a + b). Kho ghi a ≠ -b. Dòng \"Tương tự có\" của lời giải in lệch mẫu số của hai phân thức ((c-b)/(a+c) và (a-c)/(a+b)); đúng là (c-b)/(a+b) và (a-c)/(b+c)."
+  },
+  "PA.38@p249": {
+    "sach_in_sai": "trang PDF 249, đề bài 38: số hạng thứ hai in 1/(a^2+1)^2 (lặp lại số hạng đầu); lời giải của sách đặt 1/(b^2+1) = y nên đúng là 1/(b^2+1)^2. Kho ghi b. Lời giải sách còn in thừa 2xy và thiếu 1 ở dòng [(x+y)^2 - 2(x+y) + 1] + (z-t)^2."
+  },
+  "PA.41@p251": {
+    "sach_in_sai": "trang PDF 251, lời giải bài 41 dòng (3): sách in tử số b^2, thiếu +2 (đúng: b^2 + 2)."
+  },
+  "PA.42@p251": {
+    "sach_in_sai": "trang PDF 252, lời giải bài 42: sách in tử số y^2z^2 + 2y^2 + 3z^2 và z^2x^2 + 3z^2 + 4x^2; đúng là y^2z^2 + 2y^2 + z^2 và z^2x^2 + 3z^2 + x^2. Không ảnh hưởng kết luận x = y = z = 0."
+  },
+  "PA.44@p252": {
+    "sach_in_sai": "trang PDF 252, lời giải bài 44: sách in \"khác đỉnh chẵn lẻ\", đúng là \"khác tính chẵn lẻ\"."
+  },
+  "PA.45@p252": {
+    "sach_in_sai": "trang PDF 253, lời giải bài 45 trường hợp ĐĐXX: sách in ĐĐXX → ĐVVX → XXVV → XĐĐX…, bước thứ ba đúng là XXVX."
+  },
+  "PA.17@p238": {
+    "bo": "trùng với T18T030101015 (chương IV bài 14b ý 2: cùng giả thiết, cùng kết luận — sách in lại bài này ở phụ lục A)"
+  },
+  "PA.34@p247": {
+    "bo": "trùng với T18T010302015 (chương II bài 51c: cùng đề — sách in lại bài này ở phụ lục A)"
+  },
+  "ON.5a@p217": {
+    "bo": "trùng nguyên văn với T18T010202009 (đã có trong kho)"
+  },
+  "ON.5b@p217": {
+    "bo": "trùng nguyên văn với T18T010202015 (đã có trong kho)"
+  }
+}

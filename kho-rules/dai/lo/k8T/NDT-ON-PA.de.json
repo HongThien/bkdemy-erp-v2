@@ -1,0 +1,334 @@
+[
+ {
+  "ma": "ON.1@p216",
+  "noi_dung": "Tính: $S=1^2-2^2+3^2-4^2+\\ldots+99^2-100^2+101^2$."
+ },
+ {
+  "ma": "ON.2@p216",
+  "noi_dung": "Cho $a+b+c=9$ và $a^2+b^2+c^2=53$. Tính $ab+bc+ca$."
+ },
+ {
+  "ma": "ON.3@p216",
+  "noi_dung": "Cho $a+b+c+d=0$. Chứng minh rằng: $a^3+b^3+c^3+d^3=3(c+d)(ab-cd)$."
+ },
+ {
+  "ma": "ON.4@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $12x^2+7x-12$."
+ },
+ {
+  "ma": "ON.5a@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^5+x+1$."
+ },
+ {
+  "ma": "ON.5b@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^7+x^5+1$."
+ },
+ {
+  "ma": "ON.5c@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^{11}+x^4+1$."
+ },
+ {
+  "ma": "ON.5d@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^8+x+1$."
+ },
+ {
+  "ma": "ON.6a@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^3+6x^2+12x-19$."
+ },
+ {
+  "ma": "ON.6b@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^6+x^3-3x^2+3x-1$."
+ },
+ {
+  "ma": "ON.6c@p217",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $(x^2-x+2)^2+(x-2)^2$."
+ },
+ {
+  "ma": "ON.7a@p218",
+  "noi_dung": "Thu gọn biểu thức sau: $\\left(\\dfrac{x-3}{2x-7}-\\dfrac{x+1}{2x+1}\\right)\\cdot\\dfrac{4x^2-12x-7}{5}$."
+ },
+ {
+  "ma": "ON.7b@p218",
+  "noi_dung": "Thu gọn biểu thức sau: $\\left(\\dfrac{5x+2}{x^2-10x}+\\dfrac{5x-2}{x^2+10x}\\right)\\cdot\\dfrac{x^2-100}{x^2+4}$."
+ },
+ {
+  "ma": "ON.8a@p218",
+  "noi_dung": "Thu gọn biểu thức sau: $\\left(\\dfrac{1}{2x-y}+\\dfrac{3y}{y^2-4x^2}-\\dfrac{2}{2x+y}\\right):\\left(\\dfrac{4x^2+y^2}{4x^2-y^2}+1\\right)$."
+ },
+ {
+  "ma": "ON.8b@p218",
+  "noi_dung": "Thu gọn biểu thức sau, với $x\\neq0$; $y\\neq0$; $x\\neq y$: $\\dfrac{2}{xy}:\\left(\\dfrac{1}{x}-\\dfrac{1}{y}\\right)^2-\\dfrac{x^2+y^2}{(x-y)^2}$."
+ },
+ {
+  "ma": "ON.9@p219",
+  "noi_dung": "Tính giá trị của: $A=\\dfrac{x^2+y^2-z^2+2xy}{x^2-y^2+z^2+2zx}$ với $x=-\\dfrac{3}{4}$; $y=1{,}5$; $z=13{,}4$."
+ },
+ {
+  "ma": "ON.10a@p219",
+  "noi_dung": "Giải phương trình: $5x(x+9)+6(x+9)=0$."
+ },
+ {
+  "ma": "ON.10b@p219",
+  "noi_dung": "Giải phương trình: $x^2+x=7x+7$."
+ },
+ {
+  "ma": "ON.11a@p219",
+  "noi_dung": "Giải phương trình: $x^3+3x^2=-6x-18$."
+ },
+ {
+  "ma": "ON.11b@p219",
+  "noi_dung": "Giải phương trình: $x^3+3x^2+3x+1=0$."
+ },
+ {
+  "ma": "ON.12a@p219",
+  "noi_dung": "Giải phương trình: $\\dfrac{3}{4x-20}+\\dfrac{15}{50-2x^2}+\\dfrac{7}{6x+30}=0$."
+ },
+ {
+  "ma": "ON.12b@p219",
+  "noi_dung": "Giải phương trình: $\\dfrac{5x-2}{12}-\\dfrac{2x^2+1}{8}=\\dfrac{x-3}{6}+\\dfrac{1-x^2}{4}$."
+ },
+ {
+  "ma": "ON.13a@p220",
+  "noi_dung": "Giải phương trình: $x^4+x^2-6=0$."
+ },
+ {
+  "ma": "ON.13b@p220",
+  "noi_dung": "Giải phương trình: $8x^3-12x^2+6x-1=0$."
+ },
+ {
+  "ma": "ON.14a@p220",
+  "noi_dung": "Giải phương trình: $(x+1)(x-2)^2=(x-2)(x+1)^2$."
+ },
+ {
+  "ma": "ON.14b@p220",
+  "noi_dung": "Giải phương trình: $\\dfrac{x}{x-1}+\\dfrac{3x^2}{x^2+x+1}=\\dfrac{4x^3-2x^2}{x^3-1}$."
+ },
+ {
+  "ma": "ON.15a@p220",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-1}{x^2-x+1}+\\dfrac{x+1}{x^2+x+1}=\\dfrac{32}{x(x^4+x^2+1)}$."
+ },
+ {
+  "ma": "ON.15b@p220",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+9}{10}+\\dfrac{x+10}{9}=\\dfrac{9}{x+10}+\\dfrac{10}{x+9}$."
+ },
+ {
+  "ma": "ON.16a@p221",
+  "noi_dung": "Giải phương trình: $\\dfrac{5}{x-2}-\\dfrac{1}{x+2}+\\dfrac{4}{x^2-4}=0$."
+ },
+ {
+  "ma": "ON.16b@p221",
+  "noi_dung": "Giải phương trình: $\\dfrac{x^2}{x^3-4x}+\\dfrac{6}{6-3x}+\\dfrac{1}{x+2}=1$."
+ },
+ {
+  "ma": "ON.17@p221",
+  "noi_dung": "Giải bất phương trình sau: $\\dfrac{x-4}{3}+\\dfrac{2x-1}{5}\\ge\\dfrac{x+1}{30}$."
+ },
+ {
+  "ma": "ON.18a@p222",
+  "noi_dung": "Chứng minh rằng: $a^2+b^2+c^2\\ge ab+bc+ca+\\dfrac{(a-b)^2}{26}+\\dfrac{(b-c)^2}{6}+\\dfrac{(c-a)^2}{2009}$."
+ },
+ {
+  "ma": "ON.18b@p222",
+  "noi_dung": "Cho $a,b$ khác $0$. Chứng minh rằng $\\dfrac{a^2}{b^2}+\\dfrac{b^2}{a^2}\\ge3\\left(\\dfrac{a}{b}+\\dfrac{b}{a}\\right)-4$."
+ },
+ {
+  "ma": "ON.19@p222",
+  "noi_dung": "Cho $a,b,c$ thoả mãn $-1\\le a\\le2$, $-1\\le b\\le2$, $-1\\le c\\le2$ và $a^2+b^2+c^2=6$. Chứng minh rằng $a+b+c\\ge0$."
+ },
+ {
+  "ma": "ON.20a@p222",
+  "noi_dung": "Cho $abc=1$. Tính $\\dfrac{a}{ab+a+1}+\\dfrac{b}{bc+b+1}+\\dfrac{c}{ca+c+1}$."
+ },
+ {
+  "ma": "ON.20b@p223",
+  "noi_dung": "Cho $a,b,c>0$ thoả mãn $abc=1$. Chứng minh rằng: $\\dfrac{a^2(bc+b+1)}{b(ab+a+1)^2}+\\dfrac{b^2(ca+c+1)}{c(bc+b+1)^2}+\\dfrac{c^2(ab+a+1)}{a(ca+c+1)^2}\\ge1$."
+ },
+ {
+  "ma": "PA.1@p232",
+  "noi_dung": "Cho $a,b,c$ khác nhau thỏa mãn: $a^2(b+c)=b^2(c+a)$. Chứng minh rằng: $b^2(c+a)=c^2(a+b)$."
+ },
+ {
+  "ma": "PA.2a@p232",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $(x^2-3x+2)^2-4x+2$."
+ },
+ {
+  "ma": "PA.2b@p232",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $(x^2-5x+8)^2-6x+8$."
+ },
+ {
+  "ma": "PA.3@p232",
+  "noi_dung": "Tồn tại hay không số nguyên $x$ thỏa mãn: $(x-3)^3+(x-2)^2+\\lvert x-1\\rvert+x=2013$."
+ },
+ {
+  "ma": "PA.4@p233",
+  "noi_dung": "a) Chứng tỏ rằng đa thức $x^3+y^3+z^3-3xyz$ chia hết cho đa thức $x+y+z$.\n\nb) Xác định số $m$ để đa thức $x^3+y^3+z^3+mxyz$ chia hết cho đa thức $x+y+z$."
+ },
+ {
+  "ma": "PA.5@p233",
+  "noi_dung": "Gọi $m$ là số nhỏ nhất trong ba số $(x-y)^2$, $(y-z)^2$, $(z-x)^2$. Chứng minh rằng: $m\\le\\dfrac{x^2+y^2+z^2}{2}$."
+ },
+ {
+  "ma": "PA.6@p234",
+  "noi_dung": "Chứng tỏ rằng không tồn tại các số nguyên $a,b,c$ để có $a^3+b^3+c^3=2012$."
+ },
+ {
+  "ma": "PA.7@p234",
+  "noi_dung": "Chứng minh rằng không tồn tại số nguyên $x$ thỏa mãn: $2014^{2015}+1$ chia hết cho $x^3+5x$."
+ },
+ {
+  "ma": "PA.8@p234",
+  "noi_dung": "Tìm các số tự nhiên $n$ sao cho dãy số $n+9$; $2n+9$; $3n+9$; $4n+9$; $\\dots$ không chứa số chính phương nào."
+ },
+ {
+  "ma": "PA.9@p235",
+  "noi_dung": "Tìm tất cả các bộ ba số nguyên $a,b,c$ thỏa mãn: $a^3(b-c)+b^3(c-a)+c^3(a-b)=2014^{2015}$."
+ },
+ {
+  "ma": "PA.10@p235",
+  "noi_dung": "Cho $a,b,c\\ge0$ thỏa mãn $a+b+c=1$. Chứng minh rằng: $8(a^2+b^2+c^2)(a^2b^2+b^2c^2+c^2a^2+abc)\\le ab+bc+ca$. Dấu \"=\" xảy ra khi nào?"
+ },
+ {
+  "ma": "PA.11@p236",
+  "noi_dung": "Cho $a,b,c\\ge0$. Chứng minh rằng: $a^2+b^2+c^2+2abc+1\\ge2(ab+bc+ca)$."
+ },
+ {
+  "ma": "PA.12@p236",
+  "noi_dung": "Tìm các số tự nhiên $x,y$ biết rằng: $(x+2013)^2+y=(y+1963)^2+2013$."
+ },
+ {
+  "ma": "PA.13@p237",
+  "noi_dung": "Tìm $x,y$ nguyên dương thỏa mãn: $1!+2!+3!+\\dots+x!=y^2$."
+ },
+ {
+  "ma": "PA.14@p237",
+  "noi_dung": "Cho $x,y$ thỏa mãn $x^3-9x^2+29x-47=0$ và $y^3-9y^2+29y-19=0$. Tính giá trị của biểu thức $M=x+y$."
+ },
+ {
+  "ma": "PA.15@p237",
+  "noi_dung": "Cho các số $a,b,c,d,e$ thỏa mãn: $a^2+b^2+c^2+d^2+e^2=1$. Chứng minh rằng: $a^2b^2+b^2c^2+c^2d^2+d^2e^2\\le\\dfrac{1}{4}$."
+ },
+ {
+  "ma": "PA.16@p238",
+  "noi_dung": "Tìm $x,y,z$ nguyên dương thỏa mãn: $xyz=x+y+z+9$."
+ },
+ {
+  "ma": "PA.17@p238",
+  "noi_dung": "Cho $x,y>0$ thỏa mãn: $x^3+y^4\\le x^2+y^3$. Chứng minh rằng: $x^2+y^3\\le x+y^2$."
+ },
+ {
+  "ma": "PA.18@p238",
+  "noi_dung": "Cho $a,b,x,y$ thỏa mãn: $ax+by=3$, $ax^2+by^2=5$, $ax^3+by^3=9$ và $ax^4+by^4=17$. Tính giá trị của biểu thức: $M=ax^{2013}+by^{2013}$."
+ },
+ {
+  "ma": "PA.19@p239",
+  "noi_dung": "Tìm $x,y$ nguyên thỏa mãn: $8x^2y^2+x^2+y^2=10xy$."
+ },
+ {
+  "ma": "PA.20@p239",
+  "noi_dung": "Cho $A=\\dfrac{5^{125}-1}{5^{25}-1}$. Chứng minh rằng $A$ là hợp số."
+ },
+ {
+  "ma": "PA.21@p240",
+  "noi_dung": "Cho $x,y,z$ thỏa mãn: $\\lvert x+y+z\\rvert\\le1$, $\\lvert x-y+z\\rvert\\le1$, $\\lvert z\\rvert\\le1$. Tìm giá trị lớn nhất của $M=\\dfrac{8}{3}x^2+y^2$."
+ },
+ {
+  "ma": "PA.22a@p240",
+  "noi_dung": "Cho $n\\in\\mathbb N$. Chứng minh rằng $16^n-15n-1$ chia hết cho $225$."
+ },
+ {
+  "ma": "PA.22b@p240",
+  "noi_dung": "Cho $n\\in\\mathbb N$. Chứng minh rằng $4^n+15n-10$ chia hết cho $9$."
+ },
+ {
+  "ma": "PA.23@p241",
+  "noi_dung": "Cho $n$ số nguyên lẻ $a_1;a_2;\\dots;a_n$ ($n>2015$) thỏa mãn\n\n$a_1^2+a_2^2+\\dots+a_{2013}^2=a_{2014}^2+a_{2015}^2+\\dots+a_n^2$\n\nTìm giá trị nhỏ nhất của $n$ và chỉ ra một bộ số $(a_1;a_2;\\dots;a_n)$ với $n$ tìm được."
+ },
+ {
+  "ma": "PA.24@p241",
+  "noi_dung": "Chứng minh rằng $2^a+29^b$ không chia hết cho $23$ với mọi $a,b$ là các số tự nhiên."
+ },
+ {
+  "ma": "PA.25@p242",
+  "noi_dung": "Số nguyên dương $n$ được gọi là số điều hòa nếu như tổng các bình phương của các ước dương của nó (kể cả $1$ và $n$) đúng bằng $(n+3)^2$.\n\na) Chứng minh rằng số $287$ là số điều hòa.\n\nb) Chứng minh rằng số $n=p^3$ ($p$ nguyên tố) không phải số điều hòa.\n\nc) Chứng minh rằng nếu số $n=pq$ ($p,q$ là các số nguyên tố khác nhau) là số điều hòa thì $n+2$ là số chính phương."
+ },
+ {
+  "ma": "PA.26@p243",
+  "noi_dung": "Cho $x,y,z$ thỏa mãn: $x^2+y^2+z^2=1$.\n\nTìm giá trị lớn nhất của biểu thức:\n\n$M=xy+yz+zx+\\dfrac{1}{2}[x^2(y-z)^2+y^2(z-x)^2+z^2(x-y)^2]$"
+ },
+ {
+  "ma": "PA.27@p243",
+  "noi_dung": "Tìm ba chữ số tận cùng của số $2^{2013}$."
+ },
+ {
+  "ma": "PA.28@p243",
+  "noi_dung": "Cho $a,b,c>0$ thỏa mãn: $ab+bc+ca+2abc=1$\n\nChứng minh rằng: $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\ge4(a+b+c)$"
+ },
+ {
+  "ma": "PA.29@p244",
+  "noi_dung": "Tính tổng:\n\n$M=\\dfrac{1}{1+1^2+1^4}+\\dfrac{2}{1+2^2+2^4}+\\dfrac{3}{1+3^2+3^4}+\\dots+\\dfrac{2013}{1+2013^2+2013^4}$"
+ },
+ {
+  "ma": "PA.30@p245",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức:\n\n$M=\\left(x+\\dfrac{1}{x}\\right)^3-3\\left(x+\\dfrac{1}{x}\\right)^2+1$ với $x>0$"
+ },
+ {
+  "ma": "PA.31@p245",
+  "noi_dung": "Cho bốn số $a,b,c,d$ khác $0$ thỏa mãn $abcd=1$ và:\n\n$a+b+c+d=\\dfrac1a+\\dfrac1b+\\dfrac1c+\\dfrac1d$\n\nChứng minh rằng tồn tại hai số trong bốn số đó có tích bằng $1$."
+ },
+ {
+  "ma": "PA.32@p245",
+  "noi_dung": "Cho $a,b,c$ là các số hữu tỉ dương thỏa mãn $a+\\dfrac{1}{bc}$; $b+\\dfrac{1}{ca}$; $c+\\dfrac{1}{ab}$ là những số nguyên. Tìm giá trị lớn nhất của biểu thức:\n\n$M=a+b^2+c^3$"
+ },
+ {
+  "ma": "PA.33@p246",
+  "noi_dung": "Chứng minh rằng: $\\dfrac{1}{2^3}+\\dfrac{1}{3^3}+\\dots+\\dfrac{1}{2009^3}<\\dfrac14$"
+ },
+ {
+  "ma": "PA.34@p247",
+  "noi_dung": "Cho $a,b,c,d$ là các số nguyên dương khác nhau thỏa mãn: $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+d}+\\dfrac{d}{d+a}=2$. Chứng minh rằng tích $abcd$ là một số chính phương."
+ },
+ {
+  "ma": "PA.35@p247",
+  "noi_dung": "Cho $n$ là số nguyên dương chia hết cho $4$ và $k$ là số tự nhiên lẻ. Chứng minh rằng: $\\dfrac{1^k+2^k+3^k+\\dots+n^k}{2}$ là số tự nhiên chia hết cho $n+1$."
+ },
+ {
+  "ma": "PA.36@p248",
+  "noi_dung": "Cho $x,y$ thỏa mãn $x\\ne\\pm y$. Đặt $\\dfrac{x+y}{x-y}+\\dfrac{x-y}{x+y}=a$. Tính giá trị của biểu thức $M=\\dfrac{x^4+y^4}{x^4-y^4}+\\dfrac{x^4-y^4}{x^4+y^4}$ theo $a$."
+ },
+ {
+  "ma": "PA.37@p248",
+  "noi_dung": "Cho $a\\ne-b$, $b\\ne-c$, $c\\ne-a$. Chứng minh rằng: $\\dfrac{b^2-c^2}{(a+b)(a+c)}+\\dfrac{c^2-a^2}{(b+c)(b+a)}+\\dfrac{a^2-b^2}{(c+a)(c+b)}=\\dfrac{b-c}{b+c}+\\dfrac{c-a}{c+a}+\\dfrac{a-b}{a+b}$"
+ },
+ {
+  "ma": "PA.38@p249",
+  "noi_dung": "Cho $a,b,c,d>0$ thỏa mãn: $\\dfrac{1}{(a^2+1)^2}+\\dfrac{1}{(b^2+1)^2}+\\dfrac{1}{(c^2+1)^2}+\\dfrac{1}{(d^2+1)^2}\\le1$. Chứng minh rằng: $abcd\\ge1$"
+ },
+ {
+  "ma": "PA.39@p250",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $\\left\\lvert\\left(\\dfrac{a}{b}+\\dfrac{b}{c}+\\dfrac{c}{a}\\right)-\\left(\\dfrac{a}{c}+\\dfrac{c}{b}+\\dfrac{b}{a}\\right)\\right\\rvert<1$"
+ },
+ {
+  "ma": "PA.40@p250",
+  "noi_dung": "Cho $a,b,c>0$ thỏa mãn: $a^2+b^2+c^2=1$. Chứng minh: $\\dfrac{1}{1-ab}+\\dfrac{1}{1-bc}+\\dfrac{1}{1-ca}\\le\\dfrac{9}{2}$"
+ },
+ {
+  "ma": "PA.41@p251",
+  "noi_dung": "Cho $a,b,c>0$ thỏa mãn $ab+bc+ca=3$. Chứng minh rằng: $\\dfrac{1}{a^2+b^2+1}+\\dfrac{1}{b^2+c^2+1}+\\dfrac{1}{c^2+a^2+1}\\le1$"
+ },
+ {
+  "ma": "PA.42@p251",
+  "noi_dung": "Tìm $x,y,z$ biết: $x^2+y^2+z^2=\\dfrac{x^2-y^2}{y^2+2}+\\dfrac{y^2-z^2}{z^2+3}+\\dfrac{z^2-x^2}{x^2+4}$"
+ },
+ {
+  "ma": "PA.43@p252",
+  "noi_dung": "Cho lục giác đều $ABCDEG$ trong đó đỉnh $A$ được tô đỏ, các đỉnh còn lại được tô xanh. Người ta đổi màu các đỉnh của lục giác theo quy tắc sau: mỗi lần đổi màu đồng thời ba đỉnh liên tiếp (xanh thành đỏ, đỏ thành xanh). Hỏi sau một số lần đổi màu có thể đạt được đỉnh $B$ được tô đỏ, các đỉnh còn lại được tô xanh hay không?"
+ },
+ {
+  "ma": "PA.44@p252",
+  "noi_dung": "Tại đỉnh $A_1$ của đa giác đều $12$ cạnh $A_1A_2\\dots A_{12}$ ta viết dấu $(-)$, các đỉnh còn lại viết dấu $(+)$. Mỗi lần cho phép lấy ra ba đỉnh liên tiếp và đổi dấu đồng thời các đỉnh đó. Hỏi sau hữu hạn bước có thể nhận được kết quả là đỉnh $A_2$ mang dấu $(-)$ còn các đỉnh khác mang dấu $(+)$ được không?"
+ },
+ {
+  "ma": "PA.45@p252",
+  "noi_dung": "Cho đa giác đều $n$ cạnh. Dùng $3$ màu xanh, đỏ, vàng tô màu các đỉnh đa giác một cách tùy ý (mỗi đỉnh được tô bởi một màu và tất cả các đỉnh đều được tô màu). Cho phép thực hiện thao tác sau đây: chọn hai đỉnh kề nhau bất kì (nghĩa là hai đỉnh liên tiếp) khác màu và thay màu của hai đỉnh đó bằng màu còn lại.\n\na) Chứng minh rằng bằng cách thực hiện thao tác trên một số lần ta luôn luôn làm cho các đỉnh của đa giác chỉ còn được tô bởi hai màu.\n\nb) Chứng minh rằng với $n=4$ và $n=8$, bằng cách thực hiện thao tác trên một số lần ta có thể làm cho các đỉnh của đa giác chỉ còn được tô bởi một màu."
+ }
+]

@@ -22,3 +22,5 @@ Lưu ý chung:
 10. (lô 4) Số liệu đề làm bài không có đáp số (lời giải của sách chỉ đúng với số liệu khác) ⇒ vẫn chép đề đúng như in, `ghi_chu_nghi` nêu rõ số liệu nào thì khớp lời giải sách; ĐỪNG soạn lời giải kiểu "bài toán không có đáp số" — người soát sẽ đưa CEO quyết.
 11. (lô 5) Đề có lời dẫn chung + nhiều ý mà giữ thành MỘT câu ⇒ mỗi ý xuống một đoạn riêng (dòng trống giữa các ý), không viết liền "a) …; b) …; c) …" trên một dòng.
 12. (lô 5) Đề gốc là HÌNH (trục số, sơ đồ) ⇒ mô tả hình bằng lời thật chính xác trong đề và ghi `ghi_chu_nghi: đề gốc là hình …` để người soát biết câu này chưa có hình.
+13. (lô 6) Số trang trong mã câu (`@pNNN`), ở dòng `trang:` và trong mọi ghi chú là **trang PDF** (số của tệp ảnh `p-NNN.png`), không phải số in ở chân trang sách (lệch nhau 1 ở quyển NĐT).
+14. (lô 6) Bài cuối của khu được giao mà lời giải (hoặc các ý còn lại) tràn sang trang không có ảnh ⇒ KHÔNG tự soạn rồi để `muc_loi_giai_sach: khong`; báo ngay trong báo cáo "thiếu ảnh trang N" để người giao dựng thêm trang. (Người giao: trước khi giao, dựng dư một trang sau trang cuối của khu.)
