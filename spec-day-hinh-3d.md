@@ -1,7 +1,8 @@
 # DẠY HÌNH 3D — mô hình không gian tương tác cho bài tập Toán (tài liệu tổng)
 
 > **Đọc file này TRƯỚC khi dựng bất kỳ mô hình 3D nào cho bài tập Toán** (khối tròn xoay, khối tính bằng cắt lát, thiết diện…).
-> Mở 09/10/2026 tối. **Trạng thái: ĐANG BÀN — chưa code.** Claude đã đọc, giải, kiểm 10 bài và đề xuất bài mẫu; chờ Thùy trả lời Phần B.
+> Mở 09/10/2026 tối. **Trạng thái (10/10 rạng sáng): BẢN THỬ 1 của Câu 43 đã dựng** (`toan-site/the-tich/coc-nghieng.html`, §D.4) theo các *đề xuất mặc định* ở Phần B —
+> **Thùy CHƯA chốt B1–B6** (Thùy nói "làm tiếp thôi" khi chưa trả lời) ⇒ xem bản thử rồi chốt/sửa. Chưa làm bài thứ hai.
 > Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** bài mẫu đề xuất · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
 > Nguồn đề + hình đã chép vào repo: [`docs/hinh-3d/`](docs/hinh-3d/) (không phụ thuộc ổ E: của máy công ty).
 
@@ -13,7 +14,8 @@
 - **Nguồn đợt đầu:** NBV *12-18. Ứng dụng TP tính diện tích – thể tích*, file **F. Bài tập nâng cao**, Dạng 2. Trong đó có **10 bài thật sự 3D** (câu 43–50, 52, 53).
 - **Đã làm (09/10):** đọc + tự giải cả 10 bài, kiểm bằng tích phân số / Monte Carlo — **10/10 khớp**; bắt được **2 lỗi đáp số của nguồn** (§C.11).
 - **Bài mẫu đề xuất: Câu 43 — cốc nước nghiêng** (§D). Bài mẫu thứ hai (loại tròn xoay) nếu cần: **Câu 48**.
-- **Việc kế tiếp:** Thùy trả lời B1–B6 → Claude dựng bản thử Câu 43 → soi trên TV/iPad → duyệt → mới tính khuôn chung cho 9 bài còn lại.
+- **Đã dựng (10/10):** bản thử 1 Câu 43 — 6 bước, xoay được, cắt lát 3 hướng, chồng lát; soát trên máy 4 cỡ màn, 0 lỗi console (§D.4).
+- **Việc kế tiếp:** Thùy xem bản thử + chốt B1–B6 → sửa theo góp ý → soi TV/iPad thật → duyệt → mới tính khuôn chung cho 9 bài còn lại.
 
 ## 1. Nguồn & cách trích lại
 
@@ -37,7 +39,7 @@
 
 ---
 
-## Phần B — CÂU CÒN MỞ (Thùy trả lời trước khi code)
+## Phần B — CÂU CÒN MỞ (Thùy chưa trả lời — bản thử 1 đang chạy theo cột "Đề xuất của Claude")
 
 | # | Câu hỏi | Đề xuất của Claude | Vì sao quan trọng |
 |---|---|---|---|
@@ -162,6 +164,33 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 - **Nét khuất:** mẹo vẽ cạnh 2 lần — nét liền `depthFunc` thường + nét đứt `depthFunc = GreaterDepth`.
 - **Kiểm:** số trên màn = số §C.1; soi trên 1920×1080 (TV) và iPad; 0 lỗi console.
 
+### D.4 Bản thử 1 — ĐÃ DỰNG (10/10 rạng sáng)
+
+- **File:** `toan-site/the-tich/coc-nghieng.html` (một file, không build). **Xem:** launch `toan` (cổng 5281) → `http://localhost:5281/the-tich/coc-nghieng.html`.
+  Chưa có đường dẫn trong mục lục `toan-site/index.html` (chờ B4).
+- **Bố cục:** sân khấu 3D bên trái · bảng lời giải bên phải (màn dọc: xếp trên/dưới) · thanh 6 bước ở đáy. Phím ← → hoặc PageUp/PageDown (bút trình chiếu) đổi bước, Space chạy/dừng cảnh nghiêng.
+- **6 bước:** ① Đề bài → ② Nghiêng cốc (tự chạy hoặc kéo thanh; 2 ô điều kiện "chạm miệng" + "trùng đường kính" cùng bật ở 59°) → ③ Khối nước (cái nêm nét liền/nét đứt, R, h, α) →
+  ④ Cắt một lát (3 hướng, công thức nhảy số) → ⑤ Cộng các lát (n = 4/8/16/32/64, tổng tiến về 240) → ⑥ Kết quả (2R²h/3 = 240, ≈ 21% cốc, nút "cho nước chảy lại" ra h₀ ≈ 2,12 cm).
+- **Khác kịch bản D.2:** cắt **3 hướng** thay vì 2 — thêm hướng song song AB (lát **chữ nhật**, S(z) = (10/3)·z·√(36 − z²), tích phân đổi biến ra 240); mỗi hướng có góc nhìn riêng.
+  Thêm nút "Nhìn ngang" (thấy đúng tam giác OKI, tan α = h/R) và "Nhìn từ trên".
+- **Tổng n lát (quy tắc điểm giữa) — số trên màn phải khớp bảng này:**
+
+  | n | ⟂ AB (tam giác) | ∥ đáy (viên phân) | ∥ AB (chữ nhật) |
+  |---|---|---|---|
+  | 4 | 247,50 | 238,48 | 248,97 |
+  | 8 | 241,88 | 239,59 | 243,09 |
+  | 16 | 240,47 | 239,89 | 241,07 |
+  | 32 | 240,12 | 239,97 | 240,37 |
+  | 64 | 240,03 | 239,99 | 240,13 |
+
+- **Kỹ thuật đã dùng (chạy được):** three r128 (cdnjs) + nét dày `Line2` (jsdelivr `three@0.128.0/examples/js/lines/*`, thiếu thì lùi về nét 1px) + KaTeX 0.16.9.
+  Nét khuất: vẽ khối nêm một lượt **chỉ ghi độ sâu** (`colorWrite:false`, `polygonOffset`), mỗi cạnh vẽ 2 lần — nét liền `LessEqualDepth`, nét đứt `GreaterDepth`; đường sinh biên tính theo vị trí máy quay.
+  Nước lỏng ↔ nêm đông cứng chỉ đổi cho nhau ở đúng góc α (hai hình trùng khít) nên mọi lần chuyển bước đều đi qua α. Lát cắt vẽ `depthTest:false` để thấy xuyên qua khối.
+  `r128` cần tự gán `material.defines.USE_DASH = ''` thì `LineMaterial` mới ra nét đứt.
+- **Soát bằng máy:** `?buoc=4&huong=y&n=16` mở thẳng một bước · `__dbg.run(ms)` tua nhanh hoạt cảnh (**Browser pane ẩn thì `requestAnimationFrame` không chạy** — không tua thì ảnh chụp là khung cũ) · `__dbg.snap()` chụp canvas.
+  Đã soát 1280×720, 1920×1080, 1024×768, 375×812: 6 bước, 3 hướng cắt, kéo xoay, cuộn phóng, bấm chip, phím mũi tên, nhảy bước 1 → 5.
+- **Chưa làm / chưa biết:** chưa soi **TV và iPad thật** (cảm ứng chụm 2 ngón chưa thử tay) · chưa ai duyệt **câu chữ** · chưa có mục lục · chưa rút khuôn chung · B1–B6 chưa chốt.
+
 ---
 
 ## Phần E — Đứng trên vai ai (R7)
@@ -183,3 +212,5 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 |---|---|---|
 | 09/10 tối | Thùy | Mở luồng: bài tập thể tích K12 khó vẽ trên bảng → HTML 3D xoay/thao tác được. Giao Claude đọc + giải + chọn mẫu, rồi bàn |
 | 09/10 tối | Claude | Trích file F (MathType), giải + kiểm 10 bài, bắt 2 lỗi đáp số nguồn, đề xuất mẫu Câu 43 (+ Câu 48), đưa 6 câu hỏi B1–B6. Chưa code |
+| 10/10 rạng sáng | Thùy | "Làm tiếp thôi" (chưa trả lời B1–B6) |
+| 10/10 rạng sáng | Claude | Dựng bản thử 1 Câu 43 theo đề xuất mặc định của Phần B (§D.4); thêm hướng cắt thứ ba (chữ nhật). Chờ Thùy xem + chốt |
