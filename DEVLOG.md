@@ -36811,3 +36811,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Nghi lỗi dữ liệu nguồn/kho (agent báo, CHƯA sửa):** T112040101035 (đề ghi `x²+2x+C`), T112040102048 (đề là câu lời giải), T112050201065 (đáp án ghi B=−1 nhưng tính ra −5), T1120000001097 (ghi A=10, tính ra 8=B), nbv17 C câu 8 (gạch chân B, "Chọn A" — nguồn tự mâu thuẫn, đã bỏ), PNL Dạng 03 mũ: 17 câu không có đáp án trong file (bỏ).
 - **Sai rồi sửa:** (a) `\` trong heredoc bash bị nuốt ⇒ regex sai âm thầm (`\frac`→`\f` form-feed, `\*`→`*`) — chuyển sang Edit tool + `String.fromCharCode(92)`; (b) `cd` sang ổ E: đổi luôn working directory của phiên; (c) `ma_nguon = tệp#số câu` không duy nhất ⇒ map nhập lệch, 15 câu mới bị sót, 30 câu trùng lọt — sửa bằng `…@thứ-tự` và nhập bù.
 - **Chưa làm:** soát tay mẫu gán (Thùy review); trang xem cụ thể 818 câu chưa khớp (khuôn `k6-chua-chac.html`); B5 chuyển bản đồ; chỗ đọc `dai_ban_do` lọc `xoa_at`. Scripts tạm để ở scratchpad (`k12/tools`), không commit.
+
+## 10/10 (khuya) — Đề cương Toán 6 Ngôi Sao Hoàng Mai + tab "Đề cương" trong Kho đề thi
+- **Yêu cầu Thùy:** gõ lại đề cương ôn tập giữa kì I Toán 6 (3 ảnh) vào Kho đề thi, có tab riêng "Đề cương", lọc tách khỏi đề thi.
+- **Làm:** (1) gõ 20 bài → 88 câu (tách ý Bài 1–11 theo luật K6; lời văn Bài 12–15 + chứng minh Bài 16–20 giữ cả bài), `tu_luan`, không đáp án; build bằng `kho-rules/dai/lo/k6/de-cuong/NSHM-GKI-2026.build.mjs`
+  (3 ảnh → `goc.pdf` bằng Chrome; KaTeX kiểm từng câu) → `ghi.mjs --ghi` (tai_lieu `953e4a25-cd25-41dc-be41-7e094832241a`, mã câu T106000000654…741, dạng chờ).
+  (2) Dấu tách: `cau_hinh.deThi.kieu='de_cuong'` + mig `202610102204_de_thi_tab_de_cuong` (fn_de_thi_ds / fn_de_thi_dem); `ghi.mjs` ghi `kieu` + `thoiGianPhut` null; `KhoDeThi.tsx` thêm tab thứ tư.
+- **Số đo:** DB: Toán khối 6 → de_cuong 1 · chờ duyệt 45 (đề K6, không lẫn); Toán mọi khối → chờ duyệt 543 / sẵn sàng 1 / đã giao 1 / đề cương 1. UI (dev, đăng nhập nhanh admin): 4 tab, tab Đề cương 1 dòng 88 câu, mở đề 145 KaTeX, 0 lỗi.
+- **Sai / sửa:** ảnh đề cương có 3 chỗ lệch cần quyết — Bài 4a TRỐNG ô ký hiệu giữa $a$ và $10$ (giữ $\square$ + ghi chú CHƯA CHẮC, KHÔNG đoán); Bài 7k in $2023^3$ (sửa $2023^2$ theo quy luật, ghi chú chữ gốc); dấu ":" chỉ chia hết ở Bài 2d/4b–d nhập thành `\vdots`
+  (Bài 9–11 ":" là phép chia, giữ). Nhãn gốc Bài 9/10 j) q) k) giữ nguyên.
+- **Treo, chờ Thùy:** điền ký hiệu Bài 4a · có muốn Claude GIẢI cả đề cương (dây chuyền K6: Sonnet soạn + Opus soát) hay chỉ để gõ lại.

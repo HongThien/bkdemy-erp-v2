@@ -10,6 +10,7 @@ import { listPhan, addPhan, getTaiLieuFull, khoCuaMon, renumberBuoiLop, type Tai
 import type { CauHoi, MenhDe } from './kho/api'
 
 export type DeThiMeta = {
+  kieu?: 'de_cuong'      // đề cương ôn tập (tab "Đề cương" của Kho đề thi); vắng = đề thi
   nguon: string          // trường/sở
   cap: string            // vd 'vao_10', 'thpt_qg' — free text, vocab tái dùng nếu có
   nam: number | null
@@ -189,7 +190,8 @@ export async function suaCauDeThi(mon: string, kho: Kho, maCau: string, patch: S
 
 // ═══════════ KHO ĐỀ THI (spec-de-thi.md §10.5 K1, mig 202610011501) ═══════════
 // 3 tab SUY ĐỘNG ở DB: chờ duyệt (chưa có dấu duyệt) · sẵn sàng (đã duyệt) · đã giao (có bài test trỏ về đề).
-export type TabKhoDe = 'cho_duyet' | 'san_sang' | 'da_giao'
+// Tab thứ tư `de_cuong` (CEO 10/10, mig 202610102204): đề cương ôn tập = cau_hinh.deThi.kieu='de_cuong', TÁCH khỏi 3 tab trên.
+export type TabKhoDe = 'cho_duyet' | 'san_sang' | 'da_giao' | 'de_cuong'
 export type DeThiDong = {
   id: string; ten: string; khoi: string; mon: string; created_at: string; updated_at: string; duyet_at: string | null
   nguon: string | null; nam: number | null; co_de_goc: boolean

@@ -472,3 +472,11 @@ CEO: *"Phát hành nên có 2 chế độ: phát hành TOÀN BỘ — giống bu
 - Đụng tới luồng **Học online** (nhánh `worktree-hoc-online`, chưa merge — có màn `CaOnlinePanel` phát hành từng câu): hai bên dùng chung 2 bảng phát hành
   và `fn_bt_mo_cau` / `fn_bt_dong_cau`; trigger `fn_bt_tu_phat_hanh_dang1` của luồng đó được thêm một điều kiện bỏ qua bài từ đề. Khi merge nhánh đó phải
   ghép với `LiveTab` đã sửa ở đây.
+
+### 10.10 Tab "Đề cương" — tài liệu ôn tập tách khỏi đề thi (Thùy 10/10) · ĐÃ BUILD
+- **Đề cương ôn tập** (vd "Tài liệu ôn tập kiểm tra giữa kì I" của trường / GV) KHÔNG phải đề thi nhưng dùng đúng hạ tầng đề: `tai_lieu(loai='de_thi')` + phần + câu,
+  mở bằng cùng màn sửa / in / giao. Phân biệt bằng **`cau_hinh.deThi.kieu = 'de_cuong'`** (không thêm loại mới ⇒ mọi chỗ đọc `loai='de_thi'` vẫn chạy).
+- Màn **Kho đề thi** có tab thứ tư **"Đề cương"** (mig `202610102204_de_thi_tab_de_cuong`): `fn_de_thi_ds(p_tab='de_cuong')` = mọi đề cương mọi trạng thái;
+  3 tab Chờ duyệt / Sẵn sàng / Đã giao **loại đề cương ra** (để không lẫn vào hàng đợi duyệt đề thi); `fn_de_thi_dem` trả thêm khoá `de_cuong`.
+- Nhập: `de.json` có `kieu: 'de_cuong'` (+ `thoi_gian_phut: null`) ⇒ `ghi.mjs` ghi dấu. Đề cương thường KHÔNG có đáp án / lời giải ⇒ chỉ gõ lại, `loai_cau = tu_luan`,
+  tách ý theo luật chung (Tính / Tìm x / viết tập hợp tách; lời văn + chứng minh giữ cả bài). Mẫu: `kho-rules/dai/lo/k6/de-cuong/NSHM-GKI-2026.build.mjs`.

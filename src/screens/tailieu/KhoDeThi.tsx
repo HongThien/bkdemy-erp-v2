@@ -26,7 +26,8 @@ import DeThiPrintView from './DeThiPrintView'
 import { GiaoDeModal, DaGanPanel, LuotThiPanel } from './DuyetDeThi'
 
 const MONS = MON_DE_THI
-const TABS: { key: TabKhoDe; ten: string }[] = [{ key: 'cho_duyet', ten: 'Chờ duyệt' }, { key: 'san_sang', ten: 'Sẵn sàng' }, { key: 'da_giao', ten: 'Đã giao' }]
+// 3 tab đầu = ĐỀ THI (suy động ở DB); tab "Đề cương" = tài liệu ôn tập, tách riêng khỏi đề thi (CEO 10/10, mig 202610102204)
+const TABS: { key: TabKhoDe; ten: string }[] = [{ key: 'cho_duyet', ten: 'Chờ duyệt' }, { key: 'san_sang', ten: 'Sẵn sàng' }, { key: 'da_giao', ten: 'Đã giao' }, { key: 'de_cuong', ten: 'Đề cương' }]
 const LOAI_TEN: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng / sai', tra_loi_ngan: 'Trả lời ngắn', tu_luan: 'Tự luận' }
 const LOI_TEN: Record<LoiDeThi, string> = {
   cau_da_xoa: 'câu đã vào kho rác', dang_cho: 'chưa có dạng', thieu_dap_an: 'thiếu đáp án', thieu_phuong_an: 'thiếu phương án',
@@ -130,13 +131,15 @@ export default function KhoDeThiScreen() {
         <button onClick={() => setTao(true)} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">+ Tạo đề trống</button>
       </div>
       <div className="border-b border-slate-100 bg-slate-50 px-6 py-1.5 text-[12px] text-slate-500">
-        Đề mới: thả file (Word / PDF) vào <code className="rounded bg-white px-1">E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L&lt;khối&gt;</code> rồi gọi Claude chạy <code className="rounded bg-white px-1">/nhap-de-thi &lt;khối&gt;</code> — đề hiện ở tab Chờ duyệt.
+        {tab === 'de_cuong'
+          ? <>Đề cương ôn tập (không phải đề thi) — tách riêng khỏi 3 tab đề thi. Mở đề để xem / sửa câu, in hoặc giao như đề thường.</>
+          : <>Đề mới: thả file (Word / PDF) vào <code className="rounded bg-white px-1">E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L&lt;khối&gt;</code> rồi gọi Claude chạy <code className="rounded bg-white px-1">/nhap-de-thi &lt;khối&gt;</code> — đề hiện ở tab Chờ duyệt.</>}
       </div>
 
       <div ref={cuon} onScroll={(e) => { NHO.scrollTop = (e.target as HTMLDivElement).scrollTop }} className="min-h-0 flex-1 overflow-auto p-6">
         {loi ? <p className="text-sm text-rose-600">Không tải được: {loi}</p>
           : loading && rows.length === 0 ? <p className="text-sm text-slate-400">Đang tải…</p>
-          : rows.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">Không có đề nào ở tab này.</div>
+          : rows.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">{tab === 'de_cuong' ? 'Chưa có đề cương nào.' : 'Không có đề nào ở tab này.'}</div>
           : (
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
               <table className="w-full text-[13px]">

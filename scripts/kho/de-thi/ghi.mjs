@@ -132,7 +132,9 @@ try {
     if (cb.length) canhBaoCau[m.ma_cau] = cb
   }
   const cauHinh = {
-    deThi: { nguon: de.nguon ?? 'le', nam: de.nam ?? null, thoiGianPhut: de.thoi_gian_phut ?? 90, thangDiem: de.thang_diem ?? 10,
+    // `kieu: 'de_cuong'` ⇒ tab "Đề cương" của Kho đề thi (không lẫn Chờ duyệt / Sẵn sàng / Đã giao); đề cương không có thời gian làm bài (null)
+    deThi: { ...(de.kieu ? { kieu: de.kieu } : {}), nguon: de.nguon ?? 'le', nam: de.nam ?? null,
+      thoiGianPhut: de.thoi_gian_phut === null ? null : (de.thoi_gian_phut ?? 90), thangDiem: de.thang_diem ?? 10,
       sha256: de.sha256, file: de.file, pdfGocUrl, phan: de.phan.map(({ thu_tu, ten, dang_thuc, diem_moi_cau }) => ({ thu_tu, ten, dang_thuc, diem_moi_cau })),
       ...(Object.keys(canhBaoCau).length ? { canhBaoCau } : {}) },
     ...(Object.keys(nhanhByCau).length ? { nhanhByCau } : {}),
