@@ -25,13 +25,17 @@ Bạn là trạm SOẠN cho MỘT đề kiểm tra Toán 6: **soát lại đề 
 1. **Soát đề** từng câu so với ảnh: chữ, số, công thức, đủ 4 phương án, đủ các ý, không sót không thừa câu.
 2. **Bỏ** phần riêng bằng tiếng Anh ("Hệ T", Exercise…). Mọi phần khác của đề đều làm (kể cả "phần riêng hệ chuẩn / hệ A").
 3. **Lỗi in của đề** (sai chính tả, lệch tên, thiếu dấu) ⇒ sửa tối thiểu cho đề đúng nghĩa + ghi dòng `**Ghi chú:** …` nói đã sửa gì.
+   `Ghi chú` chỉ dành cho lỗi của ĐỀ GỐC và điều người duyệt cần biết về câu — **không** ghi "bản máy gõ nhầm …" (đó là lỗi công cụ, báo ở trả lời cuối).
 4. **Phân kho** từng câu: `kho=hgt` = hình học (nhận biết hình, cạnh / góc / đường chéo, chu vi, diện tích, vẽ hình, trục / tâm đối xứng);
    `kho=dai` = còn lại (tập hợp, số tự nhiên, luỹ thừa, chia hết, số nguyên tố, ƯC – BC, số nguyên, toán thực tế về số).
 5. **Tách ý — CHỈ bài "Thực hiện phép tính / Tính" và "Tìm $x$"**: mỗi ý một câu, nhãn `Bài 1a`, `Bài 1b`…; đề của câu = lời dẫn của bài +
    biểu thức của ý (vd `Thực hiện phép tính (tính hợp lí nếu có thể): $…$`, `Tìm số tự nhiên $x$, biết: $…$`).
    **Mọi bài khác GIỮ CHUNG một câu** (bài lời văn, hình, chia hết, chứng minh — kể cả khi có ý a) b)); Phần 2 ghi `a)` `b)`.
+   **Ngoại lệ — "Bài" chỉ là cái vỏ gom 2 BÀI TOÁN KHÁC HẲN NHAU** (đánh số 1) 2), mỗi bài toán một đề bài, một bộ dữ kiện riêng; vd Bài V: 1) chứng minh
+   chia hết · 2) tính diện tích hình ghép) ⇒ mỗi bài toán MỘT câu, nhãn `Bài 5.1`, `Bài 5.2`, `kho` theo từng bài toán. Các ý a) b) c) của CÙNG một
+   bài toán (chung dữ kiện) vẫn giữ chung. Bài cho chọn 1 trong 2 ⇒ nhập cả hai như hai câu.
 6. **Loại câu:** `trac_nghiem` (đủ 4 dòng `A. ` `B. ` `C. ` `D. `) · `tra_loi_ngan` CHỈ khi đáp số là MỘT số viết được trong 4 ô (chữ số, dấu `-`
-   đầu, dấu `,` thập phân; vd `3000`, `-12`, `2,5`; số 5 chữ số trở lên thì KHÔNG) · còn lại `tu_luan` (`dap_an=—`).
+   đầu, dấu `,` thập phân; vd `3000`, `-12`, `2,5`; số 5 chữ số trở lên thì KHÔNG; đáp số phải đổi đơn vị mới vừa 4 ô — vd 180000 đồng viết thành "180 nghìn đồng" — cũng KHÔNG, vì học sinh không biết phải điền theo đơn vị nào) · còn lại `tu_luan` (`dap_an=—`).
    Câu Đúng/Sai nhiều mệnh đề ⇒ nhập `tu_luan`, đề giữ đủ các mệnh đề a) b) c) d), lời giải xét từng mệnh đề, thêm `**Ghi chú:** câu Đúng/Sai nhập dạng tự luận`.
 7. **Giải** mọi câu theo `k6.md`, lời giải 2 phần (mục 4 dưới). **Mọi đáp số phải thử lại** (thay ngược vào đề / tính lại bằng cách khác;
    số lớn thì dùng `node -e` để tính, đừng nhẩm).
@@ -115,3 +119,9 @@ node scripts/kho/de-thi/dung-de-tu-soan.mjs kho-rules/dai/lo/k6/<MA>.soan.md --l
 ## 6. Trả lời cuối
 
 Vài dòng: số câu theo loại · các câu có `Chưa chắc` (nhãn + một câu lí do) · câu đã bỏ · cổng đã đạt chưa.
+
+## 7. Bẫy đọc ảnh đã cắn thật (đọc kĩ)
+
+- **Kí hiệu "không chia hết"** (ba chấm dọc có gạch chéo) ở ảnh 150 dpi rất dễ đọc nhầm thành "chia hết" — GKI-21 đã sai vì thế (đáp án Đúng/Sai lật ngược).
+  Gặp kí hiệu chia hết ở bất kì đâu ⇒ cắt phóng to từ PDF (`pdftoppm -r 400 … -x -y -W -H`) rồi mới chép.
+- Số mũ, dấu âm trước số, dấu gạch ngang trên số, chỉ số nhỏ: không chắc ⇒ phóng to, không đoán.

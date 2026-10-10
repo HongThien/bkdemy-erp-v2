@@ -23,7 +23,10 @@ chỉ đáng tin khi hai người giải độc lập ra cùng kết quả. Làm
    - **Đáp án** khớp Pha 1 chưa. Lệch ⇒ tính lại bằng máy để biết AI sai (có thể chính bạn sai ở Pha 1) — không mặc định bên nào đúng.
    - **Lời giải**: đúng toán từng dòng · đúng kiến thức lớp 6 tại thời điểm kiểm tra (không chuyển vế, không kiến thức học sau) · Phần 2 đúng khuôn
      nhóm bài `k6.md` §2 · dấu nhân là dấu chấm · Phần 1 có 3–6 bước là **bước nghĩ thật** (không vụn, không bịa, không lộ đáp số cuối, không chép lại Phần 2).
-   - **Phân loại**: `kho` (hgt = hình) · `loai` (trả lời ngắn chỉ khi đáp số là một số ≤ 4 ô) · tách ý đúng luật (chỉ bài Tính và Tìm $x$).
+   - **Phân loại**: `kho` (hgt = hình) · `loai` (trả lời ngắn chỉ khi đáp số là một số ≤ 4 ô theo ĐÚNG đơn vị đề hỏi; đáp số phải tự đổi đơn vị mới vừa 4 ô, vd "180 nghìn đồng", thì đổi sang `tu_luan`) · tách ý đúng luật (chỉ bài Tính và Tìm $x$;
+     ngoại lệ: "Bài" gom 2 bài toán khác hẳn nhau đánh số 1) 2), mỗi bài toán một bộ dữ kiện ⇒ mỗi bài toán một câu `Bài 5.1`, `Bài 5.2`, `kho` theo
+     từng bài toán — bản soạn chưa tách thì bạn tách; các ý a) b) của cùng một bài toán vẫn giữ chung).
+   - **Ghi chú**: dòng `**Ghi chú:**` chỉ dành cho lỗi của ĐỀ GỐC / điều người duyệt cần biết; ghi chú kiểu "bản máy gõ nhầm…" thì xoá.
    - **Hình**: mở tệp trong `<LV>\img\` ứng với dòng `**Hình:**` — đúng hình của câu, không cụt. Câu cần hình mà thiếu ⇒ cắt lại theo lệnh `pdftoppm` trong brief soạn.
 7. **Sửa**: trước khi sửa lần đầu, chép nguyên bản sang `<MA>.soan.goc.md` (để đo tỉ lệ phải sửa). Rồi sửa THẲNG vào `<MA>.soan.md` những lỗi bạn
    **chắc chắn**. Chỗ bạn không chắc (đề mơ hồ, hai cách hiểu, ảnh mờ, hai bên lệch mà không phân xử được) ⇒ thêm / giữ dòng `**Chưa chắc:** …`
@@ -39,3 +42,8 @@ chỉ đáng tin khi hai người giải độc lập ra cùng kết quả. Làm
 ## Trả lời cuối
 
 Vài dòng: kết luận · số câu sửa theo loại lỗi · các câu `Chưa chắc`.
+
+## Bẫy đọc ảnh đã cắn thật
+
+- Kí hiệu **"không chia hết"** (ba chấm dọc có gạch chéo) ở ảnh 150 dpi dễ đọc nhầm thành "chia hết" (GKI-21: cả đề lẫn đáp án Đúng/Sai lật ngược).
+  Ở Pha 1, gặp kí hiệu chia hết / số mũ / dấu âm mà chưa rõ ⇒ cắt phóng to 400 dpi từ `goc.pdf` trước khi giải.
