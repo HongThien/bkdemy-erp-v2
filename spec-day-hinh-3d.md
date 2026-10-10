@@ -1,8 +1,8 @@
 # DẠY HÌNH 3D — mô hình không gian tương tác cho bài tập Toán (tài liệu tổng)
 
 > **Đọc file này TRƯỚC khi dựng bất kỳ mô hình 3D nào cho bài tập Toán** (khối tròn xoay, khối tính bằng cắt lát, thiết diện…).
-> Mở 09/10/2026 tối. **Trạng thái (10/10 chiều): đã có 2 bài + khung chung.** Bài 1 Câu 43 cốc nghiêng (Thùy xem: ok, thêm luật A3) ·
-> bài 2 Câu 48 miền vắt qua trục quay (§D.6, Thùy CHƯA xem) · phần dùng chung đã rút thành `khung.js` + `khung.css` (§D.5).
+> Mở 09/10/2026 tối. **Trạng thái (10/10 chiều): đã có 2 bài + khung chung.** Bài 1 Câu 43 cốc nghiêng (thiết diện — Thùy xem: ok, luật A3) ·
+> bài 2 Câu 48 miền vắt qua trục quay (tròn xoay — Thùy xem bản đầu, bắt bỏ cắt lát ⇒ luật A4, đã sửa còn 5 bước) · khung chung `khung.js` + `khung.css` (§D.5).
 > Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** bài mẫu đề xuất · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
 > Nguồn đề + hình đã chép vào repo: [`docs/hinh-3d/`](docs/hinh-3d/) (không phụ thuộc ổ E: của máy công ty).
 
@@ -45,6 +45,13 @@
 - Hệ quả tốt: công thức chữ lộ ra điều số không lộ — vd tỉ số nước/cốc = 2/(3π) và mực nước h₀ = 2h/(3π) **không phụ thuộc R**.
 - Không áp cho tổng n lát ở bước "chồng lát" (bản chất là xấp xỉ bằng số).
 
+### A4. Cắt lát CHỈ cho bài tính theo thiết diện; bài tròn xoay lắp thẳng công thức (Thùy 10/10 — áp cho MỌI mô hình)
+- Nguyên văn: *"Các bài mà tròn xoay có hàm riêng thế này không cần dùng cái cắt lát đâu — dùng trực tiếp công thức tròn xoay. Như bài này chia được 3 miền là lắp công thức được rồi.
+  Bài cắt lát phù hợp với kiểu bài không dùng công thức tròn xoay mà dùng công thức tính theo thiết diện."*
+- **Bài tròn xoay có hàm tường minh** (45, 46, 48, 49, 50, 52): mô hình chỉ cần *đề → quay → (gấp / chia miền nếu cần) → lắp công thức tròn xoay → thay số*.
+  KHÔNG dựng bước "cắt một lát", KHÔNG "chồng n lát", không tổng Riemann.
+- **Bài tính theo thiết diện S(x)** (43, 44, 47 — không phải tròn xoay): giữ đủ *cắt một lát → chồng lát → tích phân* như bài cốc nghiêng.
+
 ---
 
 ## Phần B — CÂU CÒN MỞ (bản thử 1 chạy theo cột "Đề xuất của Claude"; Thùy xem 10/10: "còn lại ok rồi" — chưa trả lời từng câu)
@@ -67,7 +74,7 @@
 | Loại | Câu | Cách tính | Cái khó HS gặp → 3D giúp gì |
 |---|---|---|---|
 | **1. Cắt lát S(x)** (không tròn xoay) | 43 · 44 · 47 | V = ∫ S(x) dx, S(x) = diện tích lát cắt | **Khó tưởng tượng nhất**: lát cắt có hình gì? → kéo thanh trượt thấy lát chạy dọc khối |
-| **2. Tròn xoay** | 45 · 46 · 48 · 49 · 50 · 52 | V = π∫ r² (đĩa) hoặc π∫ (R² − r²) (vành khăn) | Dễ hơn, trừ **miền vắt qua trục** (48, 49) và **vành khăn có lỗ** (46) → quay từng phần, thấy phần nào bị nuốt |
+| **2. Tròn xoay** | 45 · 46 · 48 · 49 · 50 · 52 | V = π∫ r² hoặc π∫ (R² − r²) — **lắp thẳng công thức, không cắt lát (A4)** | Dễ hơn, trừ **miền vắt qua trục** (48, 49) và **khối có lỗ** (46) → cho quay, gấp phần dưới lên, **chia miền** |
 | **3. Thiết diện** | 53 | Diện tích mặt cắt (định lý hình chiếu) | Mặt phẳng nghiêng cắt trụ ra hình gì, ra khỏi trụ ở đâu |
 
 Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Monte Carlo 2·10⁶ điểm — chạy lại: `node docs/hinh-3d/kiem-dap-so.mjs`):
@@ -215,14 +222,13 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 - **File:** `toan-site/the-tich/mien-vat-qua-truc.html` → `http://localhost:5281/the-tich/mien-vat-qua-truc.html` (launch `toan`).
 - **Màu:** xanh = phần của (H) ở TRÊN trục · hồng = phần ở DƯỚI trục · hổ phách = lát cắt · đỏ = phần bị công thức sai trừ đi.
-- **7 bước:** ① Đề bài (hình phẳng đúng như hình trên giấy) → ② Quay quanh Ox (kéo thanh hoặc tự chạy 0 → 360°; ô "nửa vòng: phần dưới đã lên trên" bật ở 180°) →
-  ③ Gấp lên (phần hồng lật quanh Ox lên trên; đường bao ngoài R và trong r; bảng 3 đoạn [a; p] vành khăn · [p; q] đĩa bán kính g · [q; b] đĩa bán kính |f|; rồi thay số a = 1, p = 2, q = 3, b = 6) →
-  ④ Cắt một lát (kéo x; hai điểm G, F vạch hai đường tròn; S = πR² − πr² rồi công thức của đúng đoạn đang đứng, sau đó thay số) → ⑤ Cộng các lát (n = 5/10/20/40/80) →
-  ⑥ **Cái bẫy** (π∫(g² − f²)dx trên cả đoạn: lát xanh được cộng, lát đỏ bị trừ; bấm Thay số ⇒ +108π/5 − 108π/5 = **0**) → ⑦ Tính thể tích (công thức ba tích phân bằng chữ → bấm Thay số ⇒ 64π/5 + 37π/3 + 153π/5 = **836π/15 ≈ 175,09**).
-- **Theo luật A3:** ở bài này "chữ" là a, p, q, b, f, g (đề không có tham số R, h): bước 3–7 đều viết theo chữ trước; bước 6 và 7 phải bấm mới thay số.
-- **Tổng n lát (điểm giữa) — số trên màn phải khớp:** n = 5: 184,18 · 10: 177,33 · 20: 175,65 · 40: 175,23 · 80: 175,13 (đích 175,09). Bẫy với 40 lát: tổng có dấu ≈ 0,10.
-- **Kỹ thuật riêng:** mặt tròn xoay là lưới tự dựng theo góc đã quay φ (điểm (x; y; 0) → (x; y·cos φ; y·sin φ)), dựng lại mỗi khung hình khi φ đổi; lát / chồng lát là vành khăn tự dựng; nút "Nhìn dọc trục" cho thấy lát đúng hình tròn.
-- **Soát:** 1280×720 và 1920×1080, đủ 7 bước, 3 đoạn của bước 4, đổi n liên tục, hai lần Thay số; 0 lỗi KaTeX, không tràn ngang. 1920×1080: mọi bước vừa khít, riêng bước 7 sau khi thay số phải cuộn 30px (bảng tự cuộn tới kết quả).
+- **5 bước (bản sửa theo A4 — bản đầu có 7 bước, Thùy bỏ "cắt một lát" + "cộng các lát"):** ① Đề bài (hình phẳng đúng như hình trên giấy) → ② Quay quanh Ox (kéo thanh hoặc tự chạy 0 → 360°; ô "nửa vòng: phần dưới đã lên trên" bật ở 180°) →
+  ③ **Chia miền** (phần hồng lật quanh Ox lên trên; ba miền đánh số 1, 2, 3 trên hình; mỗi miền một công thức tròn xoay: V₁ = π∫ₐᵖ(g² − f²) · V₂ = π∫ₚ^q g² · V₃ = π∫_q^b f²; rồi thay số a = 1, p = 2, q = 3, b = 6) →
+  ④ **Cái bẫy** (không chia miền, áp π∫(g² − f²)dx cho cả đoạn: phần khối giữa hai mặt g và |f| — xanh nơi được cộng, đỏ nơi bị trừ; bấm Thay số ⇒ +108π/5 − 108π/5 = **0**) →
+  ⑤ Tính thể tích (V = V₁ + V₂ + V₃ bằng chữ → bấm Thay số ⇒ 64π/5 + 37π/3 + 153π/5 = **836π/15 ≈ 175,09**).
+- **Theo luật A3:** ở bài này "chữ" là a, p, q, b, f, g (đề không có tham số R, h): bước 3–5 viết theo chữ trước; bước 4 và 5 phải bấm mới thay số.
+- **Kỹ thuật riêng:** mặt tròn xoay là lưới tự dựng theo góc đã quay φ (điểm (x; y; 0) → (x; y·cos φ; y·sin φ)), dựng lại mỗi khung hình khi φ đổi; khối của bước "Cái bẫy" cũng là các lưới ấy (mặt ngoài + mặt trong của từng đoạn), tô đặc.
+- **Soát (bản 5 bước):** 1280×720, đủ 5 bước, gấp lên / trả về, hai lần Thay số; 0 lỗi KaTeX, không tràn ngang.
 - **Chưa làm / chưa biết:** Thùy chưa xem · chưa soi TV/iPad thật · nhìn dọc trục thì các nhãn a, p, q, b, O, M chồng lên nhau ở tâm · chưa duyệt câu chữ.
 
 ---
@@ -252,3 +258,5 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 | 10/10 | Claude | Sửa bước 4–5–6 theo luật A3 (khối tổng quát → khối thay số; bước 6 = Tính thể tích, bấm mới thay số). Ghi A3 là luật cho mọi mô hình sau |
 | 10/10 chiều | Thùy | "Tiếp tục 1 bài khác nào" |
 | 10/10 chiều | Claude | Rút khung chung (`khung.js`, `khung.css`), chuyển bài 1 sang khung; dựng bài 2 = Câu 48 miền vắt qua trục (7 bước, có bước "Cái bẫy"). Chờ Thùy xem |
+| 10/10 chiều | Thùy | Xem bài 2: bài tròn xoay có hàm tường minh không cần cắt lát — chia miền rồi lắp thẳng công thức; cắt lát chỉ hợp bài tính theo thiết diện (⇒ A4) |
+| 10/10 chiều | Claude | Sửa bài 2 còn 5 bước (bỏ "cắt một lát", "cộng các lát"; bước 3 thành "Chia miền" với 3 công thức; cái bẫy vẽ khối trơn thay vì chồng lát) |

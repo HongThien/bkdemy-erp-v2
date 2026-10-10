@@ -36563,3 +36563,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bẫy công cụ:** vá file chứa LaTeX qua heredoc Python ⇒ `\frac` thành ký tự form-feed + `\,` cảnh báo; chuyển sang file `.py` viết bằng Write, chuỗi raw. Ảnh chụp Browser pane trễ một khung ⇒ `__dbg.run()` thêm một nhịp rồi chụp lại.
 - Cổng 5281 phiên khác đã thả ⇒ phiên này tự `preview_start {name: 'toan'}`.
 - **Chưa:** Thùy xem bài 2 · TV/iPad thật · duyệt câu chữ · mục lục · nhãn chồng nhau khi nhìn dọc trục.
+
+## 10/10 (chiều) — Hình 3D: bài tròn xoay không cắt lát (Thùy xem bài 2)
+- **Thùy:** "Các bài mà tròn xoay có hàm riêng thế này ko cần dùng cái cắt lát đâu - dùng trực tiếp công thức tròn xoay. Như bài này chia được 3 miền là lắp công thức được rồi. Bài cắt lát phù hợp với kiểu bài ko dùng công thức tròn xoay mà dùng công thức tính theo thiết diện ấy."
+- **Sai của t:** bê nguyên khuôn bài 1 (cắt một lát → chồng n lát → tích phân) sang bài tròn xoay. Với tròn xoay, HS đã có công thức V = π∫f² — lát cắt và tổng Riemann là thừa, làm dài bài và che mất việc chính là CHIA MIỀN.
+- **Sửa bài 2:** 7 → 5 bước. Bỏ "Cắt một lát" + "Cộng các lát" (xoá khối lát, chồng lát, sync4/syncSum). Bước 3 thành "Chia miền": ba miền đánh số trên hình + V₁, V₂, V₃. Bước "Cái bẫy" vẽ khối trơn (lưới mặt ngoài/mặt trong của từng đoạn) thay cho 40 vành khăn. Bước cuối: V = V₁ + V₂ + V₃.
+- Ghi spec A4 + sửa bảng phân loại C.0, §D.6; CLAUDE.md, HANDOFF. Bài 1 (thiết diện) giữ nguyên.
