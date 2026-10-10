@@ -36629,3 +36629,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Kiểm trên địa chỉ thật: `/`, `the-tich/tron-xoay.html`, `coc-nghieng.html`, `khung.js`, `tron-xoay-bai.js` = 200; `.env.local`, `.vercel/project.json` = 404 (không lộ); mở `?bai=49&buoc=3&thay=1`: nét dày + KaTeX tải được, `kiem().lech` = 4·10⁻¹⁴.
 - Bẫy: `vercel link` tự tạo `.env.local` + `.gitignore` + `.vercel/` trong thư mục deploy (để ở worktree tạm, không commit). Project chưa nối git ⇒ nút Create Deployment của dashboard không dùng được, ghi lệnh deploy vào spec §D.8.
 - Lưu vết: `docs/hinh-3d/so-theo-doi.md` (nguồn · câu · tên · loại · địa chỉ · đáp số · ngày · Thùy xem · mã câu trong kho để trống) + trường `maCau: null` trong `tron-xoay-bai.js`. Khớp với kho/app làm sau, khớp bằng nội dung đề chứ không bằng số thứ tự.
+
+## 10/10 (chiều) — Toán site: trang chính dẫn sang mô hình 3D
+- **Thùy:** "là có project của toán chưa vậy. tưởng phải có project ở vercel chứ. Vào trang chính phải có chỗ chọn lựa để sang tròn xoay chứ nhỉ".
+- Trả lời bằng đo: `vercel project ls` cả 2 trang = 22 project, trước hôm nay không có project nào tên toán / giữ `toan.bkacademy.edu.vn` (chỉ có bản ghi DNS). Project duy nhất của Toán = `bkdemy-erp-v2-toan-site` t tạo chiều nay.
+- **Thiếu của t:** deploy xong mà trang chính không có đường sang `the-tich/` — phải gõ địa chỉ mới vào được. Thêm nhóm "Thể tích bằng tích phân" (2 thẻ) vào `toan-site/index.html`, thêm nút "‹ Trang Toán" vào khung mô hình (ẩn khi nhúng). Deploy lại.

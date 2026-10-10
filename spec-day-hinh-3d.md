@@ -260,6 +260,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
   vercel deploy --prod --yes
   ```
   `vercel link` đẻ ra `.vercel/`, `.env.local`, `.gitignore` trong `toan-site/` — không commit ba thứ đó. Muốn nút dashboard thì Thùy nối repo + đặt Root Directory `toan-site` trong Settings.
+- **Đường vào:** trang chính `https://toan.bkacademy.edu.vn/` có nhóm "Thể tích bằng tích phân" với hai thẻ: *Thể tích khối tròn xoay* (→ bảng chọn bài) và *Cốc nước nghiêng*. Mỗi mô hình có nút "‹ Trang Toán" ở góc trái trên (ẩn khi `nhung=1`). Thêm chuyên đề / bài file riêng mới thì thêm thẻ vào `toan-site/index.html`.
 - **Deploy xong phải kiểm:** mở địa chỉ thật, `__dbg.kiem().lech` ≈ 0, không có dải đỏ, không lỗi KaTeX.
 - **Sổ theo dõi:** `docs/hinh-3d/so-theo-doi.md` — mô hình nào ứng với câu nào của tài liệu nào, địa chỉ, đáp số, ngày dựng, Thùy đã xem chưa, **mã câu trong kho (để trống tới khi khớp)**. Dựng thêm mô hình = thêm dòng vào sổ trong cùng commit.
 
@@ -454,3 +455,5 @@ Thứ tự đề xuất: ~~49~~ (xong) → **50 → 52 → 45 → 46** (TX, dễ
 | 10/10 chiều | Claude | Dựng trang chuyên đề `tron-xoay.html` + `tron-xoay-bai.js`; chuyển Câu 48 sang dữ liệu, thêm Câu 49 thuần bằng dữ liệu; địa chỉ theo `id`, chế độ nhúng `nhung=1`, tự kiểm thể tích với `dapSo` |
 | 10/10 chiều | Thùy | "Có toan.bkacademy.edu.vn rồi, build project đưa lên đấy thôi." · "Đưa lên app thì cứ từ từ. Khớp sau. Lưu vết để sau này còn track." |
 | 10/10 chiều | Claude | Tạo project Vercel `bkdemy-erp-v2-toan-site`, deploy `toan-site/` lên toan.bkacademy.edu.vn (§D.8); lập `docs/hinh-3d/so-theo-doi.md`, thêm trường `maCau: null` vào dữ liệu bài |
+| 10/10 chiều | Thùy | Hỏi đã có project Vercel của Toán chưa; trang chính phải có chỗ chọn để sang tròn xoay |
+| 10/10 chiều | Claude | Trước 10/10 chưa có project nào giữ tên miền (đã liệt kê hết 22 project); project `bkdemy-erp-v2-toan-site` là cái vừa tạo. Thêm nhóm thẻ vào trang chính + nút về trang chính trong mô hình, deploy lại |
