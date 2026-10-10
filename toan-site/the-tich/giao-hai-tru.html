@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Giao của hai khối trụ · Thể tích bằng tích phân</title>
+<meta name="description" content="Mô hình 3D xoay được: phần chung của hai khối một phần tư trụ có trục vuông góc. Cắt ngang thì lát nào cũng là hình vuông, cộng các lát ra thể tích 2a³/3, rồi từ đó ra thể tích hình cầu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="khung.css">
+<style>
+/* Màu của bài: xanh = khối trụ thứ nhất · hồng = khối trụ thứ hai (và phần hình cầu ở bước cuối) · hổ phách = phần chung / lát cắt đang chỉ */
+.panel b.k1{color:#5ce1ff}
+.panel b.k2{color:#ff7ab8}
+.panel b.ch{color:#ffb547}
+.seg.chu button{font:600 .8rem/1.15 var(--f-ui);padding:.55em .3em}
+.fx .r2>span:first-child{white-space:nowrap}   /* công thức không gãy dòng ở dấu = khi chú thích bên phải dài */
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineMaterial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="khung.js"></script>
+<script>
+// BÀI: Câu 47 (NBV 12-18 F) — phần chung (H) của hai khối 1/4 trụ bán kính a, hai trục vuông góc. Loại THIẾT DIỆN (spec A4): cắt lát.
+// Kịch bản: 1 Đề bài (hai khối xếp chữ L như hình trong sách) → 2 Phần chung (tô từng khối, tách phần chung) → 3 Khối (H) (hệ trục, nét liền / nét đứt)
+//           → 4 Cắt một lát (lát ⟂ Ox là hình vuông cạnh √(a² − x²)) → 5 Cộng các lát → 6 Tính thể tích (2a³/3 — đáp số theo chữ, không có bước thay số)
+//           → 7 Hình cầu (mở rộng: 1/8 khối cầu nằm trong (H), lát nào cũng theo tỉ số π/4 ⇒ thể tích hình cầu).
+// Địa chỉ: ?buoc=N · ?xem=ca|1|2|h (bước 2) · ?x=0.4 (vị trí lát, tính theo a) · ?n=16 (số lát).
+(function () {
+'use strict'
+// ═══ 1. SỐ LIỆU CỦA BÀI ═══
+const A = 6                    // bán kính a tính bằng đơn vị của cảnh. Đáp số theo CHỮ a nên con số này chỉ để vẽ; mọi số in ra đều chia cho A
+const L = 2.2 * A              // chiều dài mỗi khối 1/4 trụ trên hình
+const HQ = Math.PI / 2
+// Toạ độ TOÁN như lời giải: Ox thẳng đứng, Oy và Oz nằm trên sàn. (H) = { x² + z² ≤ a², x² + y² ≤ a², x, y, z ≥ 0 }.
+// Trục đứng của three.js là Y ⇒ đổi (x, y, z) toán → (z, x, y) cảnh (giữ tam diện thuận, y sang trái – z sang phải như hình trong sách).
+const T = (x, y, z) => [z, x, y]
+const K1 = T, K2 = (x, y, z) => T(x, z, y)   // khối 1 nằm dọc Oy (x² + z² ≤ a²) · khối 2 nằm dọc Oz (x² + y² ≤ a²) = khối 1 đổi chỗ y ↔ z
+const canh = x => Math.sqrt(Math.max(0, A * A - x * x))   // cạnh của lát vuông ở độ cao x
+const MAU = { k1: 0x2fb9e8, k2: 0xff7ab8, chung: 0xffb547, net: 0xe6efff, netH: 0xbff3ff }
+
+// ═══ 2. KHUNG CHUNG ═══
+const khungCua = n => (n <= 2 ? 'rong' : 'gan'), gocCua = n => (n === 4 || n === 7 ? 'cat' : 'sach')
+const M = MoHinh({
+  nhan: 'Toán 12 · Ứng dụng tích phân · Thể tích', tieuDe: 'Giao của hai khối trụ',
+  buoc: ['Đề bài', 'Phần chung', 'Khối (H)', 'Cắt một lát', 'Cộng các lát', 'Tính thể tích', 'Hình cầu'],
+  nutGoc: [['mac_dinh', 'Góc ban đầu'], ['ngang', 'Nhìn ngang'], ['tren', 'Nhìn từ trên']],
+  goc: {   // máy quay đứng ở góc giữa Oy và Oz, hơi lệch để đường giao của hai mặt cong không trùng trục đứng
+    sach: { az: Math.PI / 4 + 0.2, pol: 1.04 },
+    cat: { az: Math.PI / 4 + 0.2, pol: 0.86 },      // có lát cắt nằm ngang: nhìn chếch từ trên xuống hơn
+    ngang: { az: Math.PI / 2, pol: 1.5 },           // nhìn dọc Oz: thấy 1/4 hình tròn của khối 2
+    tren: { az: Math.PI / 4, pol: 0.14 },
+  },
+  khung: { rong: { tx: 0.82 * A, ty: 0.3 * A, tz: 0.82 * A, r: 2.05 * A }, gan: { tx: 0.5 * A, ty: 0.52 * A, tz: 0.5 * A, r: 1.32 * A } },
+  khungNao: () => khungCua(M.step), gocMacDinh: () => gocCua(M.step),
+  bang: n => PANELS[n](), sauBang: bindPanel, truocBang, khiDoiBuoc, dongBo,
+  thamSo: q => {
+    const xem = q.get('xem'), x = +q.get('x'), n = +q.get('n')
+    if (['ca', '1', '2', 'h'].includes(xem)) S.xem = xem
+    if (x > 0 && x < 1) S.x = x * A
+    if ([4, 8, 16, 32, 64].includes(n)) S.n = n
+    return {}
+  },
+})
+if (!M) return
+const { RM, $, $$, fmt, tn, tex, scene, mkLine, setLine, setView, clock, anims, label, dot } = M
+
+// ═══ 3. TRẠNG THÁI ═══
+const S = {
+  xem: 'ca',          // bước 2: đang xem 'ca' hai khối · '1' · '2' · 'h' chỉ phần chung
+  x: 0.4 * A,         // độ cao của lát cắt
+  n: 8, reveal: 8,    // số lát khi cộng + số lát đã hiện
+  cube: false,        // bước 6: hiện khối lập phương cạnh a
+  showArms: false,    // từ bước 3: hiện mờ hai khối trụ
+}
+
+// ═══ 4. VẬT THỂ ═══
+const flat = (P, close) => { const o = []; for (const p of P) o.push(p[0], p[1], p[2]); if (close) o.push(P[0][0], P[0][1], P[0][2]); return o }
+function GB() {   // gom nhiều mảnh mặt (lưới tham số) vào một BufferGeometry
+  const pos = [], idx = []
+  return {
+    them(f, ns, nt) {
+      const b = pos.length / 3
+      for (let i = 0; i <= ns; i++) for (let j = 0; j <= nt; j++) pos.push(...f(i / ns, j / nt))
+      for (let i = 0; i < ns; i++) for (let j = 0; j < nt; j++) { const a = b + i * (nt + 1) + j, c = a + nt + 1; idx.push(a, c, a + 1, a + 1, c, c + 1) }
+      return this
+    },
+    geo() { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals(); return g },
+  }
+}
+const phong = (color, opacity) => new THREE.MeshPhongMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x335566, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+const ghiSau = () => new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+const mesh = (geo, mat, order) => { const m = new THREE.Mesh(geo, mat); m.renderOrder = order; m.frustumCulled = false; scene.add(m); return m }
+// Nét khuất kiểu sách: lượt vẽ "chỉ ghi độ sâu" của khối (renderOrder âm) + mỗi cạnh vẽ 2 lần — nét liền chỗ nhìn thấy, nét đứt chỗ bị khối che
+function pair(P, o, gs, gd) {
+  gs.add(mkLine(P, Object.assign({}, o, { depthFunc: THREE.LessEqualDepth })))
+  gd.add(mkLine(P, Object.assign({}, o, { width: (o.width || 2) * 0.8, opacity: (o.opacity || 1) * 0.75, dashed: true, depthFunc: THREE.GreaterDepth })))
+}
+const nhom = () => { const g = new THREE.Group(); scene.add(g); return g }
+const cung = (f, n) => { const o = []; for (let i = 0; i <= (n || 48); i++) o.push(...f(i / (n || 48) * HQ)); return o }
+
+// Hai khối 1/4 trụ. Viết cho khối 1 (trục Oy) trong toạ độ toán rồi đổi qua Pm; khối 2 dùng K2.
+function taoKhoi(Pm, mau) {
+  const geo = GB()
+    .them((s, t) => Pm(A * Math.cos(s * HQ), t * L, A * Math.sin(s * HQ)), 40, 1)                 // mặt cong
+    .them((s, t) => Pm(s * A, t * L, 0), 1, 1)                                                     // mặt đứng phía sau
+    .them((s, t) => Pm(0, t * L, s * A), 1, 1)                                                     // mặt đáy
+    .them((s, t) => Pm(t * A * Math.cos(s * HQ), 0, t * A * Math.sin(s * HQ)), 40, 1)              // hai đầu: 1/4 hình tròn
+    .them((s, t) => Pm(t * A * Math.cos(s * HQ), L, t * A * Math.sin(s * HQ)), 40, 1).geo()
+  const mat = phong(mau, 0.3), k = { mau, mat, mesh: mesh(geo, mat, 3), sau: mesh(geo, ghiSau(), -10), lien: nhom(), dut: nhom() }
+  const o = { color: MAU.net, width: 2.6 }
+  pair([...Pm(A, 0, 0), ...Pm(A, L, 0)], o, k.lien, k.dut)   // cạnh trên của mặt đứng
+  pair([...Pm(0, 0, 0), ...Pm(0, L, 0)], o, k.lien, k.dut)   // trục của khối
+  pair([...Pm(0, 0, A), ...Pm(0, L, A)], o, k.lien, k.dut)   // mép trước trên sàn
+  for (const y of [0, L]) { pair([...Pm(A, y, 0), ...Pm(0, y, 0), ...Pm(0, y, A)], o, k.lien, k.dut); pair(cung(u => Pm(A * Math.cos(u), y, A * Math.sin(u))), o, k.lien, k.dut) }
+  return k
+}
+const khoi = [taoKhoi(K1, MAU.k1), taoKhoi(K2, MAU.k2)]
+const giaoPts = cung(u => T(A * Math.cos(u), A * Math.sin(u), A * Math.sin(u)))   // đường giao của hai mặt cong: y = z
+const giaoLien = nhom(), giaoDut = nhom(); pair(giaoPts, { color: MAU.net, width: 2.6 }, giaoLien, giaoDut)
+
+// Phần chung (H): hai mảnh mặt cong (mỗi mảnh thuộc một khối trụ), đáy vuông, hai mặt đứng là 1/4 hình tròn
+const hGeo = GB()
+  .them((s, t) => { const z = A * Math.sin(s * HQ); return T(A * Math.cos(s * HQ), t * z, z) }, 48, 1)   // mảnh của khối 1 (phía z ≥ y)
+  .them((s, t) => { const y = A * Math.sin(s * HQ); return T(A * Math.cos(s * HQ), y, t * y) }, 48, 1)   // mảnh của khối 2 (phía y ≥ z)
+  .them((s, t) => T(0, s * A, t * A), 1, 1)
+  .them((s, t) => T(t * A * Math.cos(s * HQ), 0, t * A * Math.sin(s * HQ)), 40, 1)
+  .them((s, t) => T(t * A * Math.cos(s * HQ), t * A * Math.sin(s * HQ), 0), 40, 1).geo()
+const hMat = phong(MAU.k1, 0.42), hMesh = mesh(hGeo, hMat, 2), hSau = mesh(hGeo, ghiSau(), -10)
+const hLien = nhom(), hDut = nhom()
+{ const o = { color: MAU.netH, width: 3 }
+  pair(cung(u => T(A * Math.cos(u), A * Math.sin(u), 0)), o, hLien, hDut)    // cung trên mặt z = 0
+  pair(cung(u => T(A * Math.cos(u), 0, A * Math.sin(u))), o, hLien, hDut)    // cung trên mặt y = 0
+  pair(giaoPts, o, hLien, hDut)
+  pair(flat([T(0, 0, 0), T(0, A, 0), T(0, A, A), T(0, 0, A)], true), o, hLien, hDut)   // đáy vuông
+  pair(flat([T(0, 0, 0), T(A, 0, 0)]), o, hLien, hDut) }                               // cạnh đứng
+
+// Hệ trục Oxyz (từ bước 3)
+const trucLien = nhom(), trucDut = nhom(), trucMui = nhom(), DT = 1.5 * A
+{ const o = { color: 0xffffff, width: 2, opacity: 0.9 }, mat = new THREE.MeshBasicMaterial({ color: 0xffffff }), geo = new THREE.ConeGeometry(0.13, 0.46, 16)
+  for (const [p, rx, rz] of [[T(DT, 0, 0), 0, 0], [T(0, DT, 0), Math.PI / 2, 0], [T(0, 0, DT), 0, -Math.PI / 2]]) {
+    pair(flat([T(0, 0, 0), p]), o, trucLien, trucDut)
+    const c = new THREE.Mesh(geo, mat); c.position.set(p[0], p[1], p[2]); c.rotation.set(rx, 0, rz); trucMui.add(c) } }
+
+// Lát cắt ở độ cao x: hình vuông MNQP (+ 1/4 hình tròn tâm M ở bước 7)
+const sliceG = nhom()
+const vuongGeo = new THREE.BufferGeometry(); vuongGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(12), 3)); vuongGeo.setIndex([0, 1, 2, 0, 2, 3])
+const phang = (color, opacity) => new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthTest: false, depthWrite: false })
+const vuong = new THREE.Mesh(vuongGeo, phang(MAU.chung, 0.8)); vuong.renderOrder = 6; vuong.frustumCulled = false; sliceG.add(vuong)
+const vuongVien = mkLine(new Array(15).fill(0), { color: 0xfff1d6, width: 3, depthTest: false, order: 8 }); sliceG.add(vuongVien)
+const banKinh = [mkLine([0, 0, 0, 1, 0, 0], { color: 0xffe2ad, width: 2, depthTest: false, order: 8 }), mkLine([0, 0, 0, 1, 0, 0], { color: 0xffe2ad, width: 2, depthTest: false, order: 8 })]   // ON, OP
+banKinh.forEach(l => sliceG.add(l))
+const NQ = 32, quatGeo = new THREE.BufferGeometry(); quatGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array((NQ + 2) * 3), 3))
+{ const i = []; for (let k = 1; k <= NQ; k++) i.push(0, k, k + 1); quatGeo.setIndex(i) }
+const quat = new THREE.Mesh(quatGeo, phang(MAU.k2, 0.92)); quat.renderOrder = 7; quat.frustumCulled = false; sliceG.add(quat)
+const quatVien = mkLine(new Array((NQ + 1) * 3).fill(0), { color: 0xffffff, width: 2.6, depthTest: false, order: 8 }); sliceG.add(quatVien)
+function updateSlice() {
+  const x = S.x, s = canh(x), P = [T(x, 0, 0), T(x, s, 0), T(x, s, s), T(x, 0, s)]
+  vuongGeo.attributes.position.array.set(flat(P)); vuongGeo.attributes.position.needsUpdate = true
+  setLine(vuongVien, flat(P, true))
+  setLine(banKinh[0], flat([T(0, 0, 0), P[1]])); setLine(banKinh[1], flat([T(0, 0, 0), P[3]]))
+  const a = quatGeo.attributes.position.array, v = []; a.set(P[0], 0)
+  for (let k = 0; k <= NQ; k++) { const p = T(x, s * Math.cos(k / NQ * HQ), s * Math.sin(k / NQ * HQ)); a.set(p, (k + 1) * 3); v.push(...p) }
+  quatGeo.attributes.position.needsUpdate = true; setLine(quatVien, v)
+}
+
+// Chồng n lát: mỗi lát là một hộp đáy vuông, cạnh lấy ở GIỮA khoảng (quy tắc điểm giữa)
+const slabG = nhom()
+const slabMats = [new THREE.MeshLambertMaterial({ color: 0xffb547 }), new THREE.MeshLambertMaterial({ color: 0xe08a22 })]
+const slabEdgeMat = new THREE.LineBasicMaterial({ color: 0x3a2300, transparent: true, opacity: 0.6 })
+let slab = null, slabRun = 0
+function buildSlabs() {
+  while (slabG.children.length) { const c = slabG.children.pop(); c.geometry.dispose() }
+  const n = S.n, dx = A / n, sums = []; let acc = 0
+  for (let i = 0; i < n; i++) {
+    const m = (i + 0.5) * dx, s = canh(m), g = new THREE.BoxGeometry(s, dx, s), b = new THREE.Mesh(g, slabMats[i % 2])
+    b.position.set(s / 2, m, s / 2); b.userData.i = i; slabG.add(b)
+    if (n <= 16) { const e = new THREE.LineSegments(new THREE.EdgesGeometry(g), slabEdgeMat); e.position.copy(b.position); e.userData.i = i; slabG.add(e) }
+    acc += s * s * dx; sums.push(acc / (A * A * A))
+  }
+  slab = { n, sums }
+}
+function showSlabs(r) { for (const c of slabG.children) c.visible = c.userData.i < r }
+function playSlabs() {
+  buildSlabs(); S.reveal = 0; showSlabs(0); syncSum()
+  const run = ++slabRun, n = S.n, t0 = clock(), dur = RM ? 1 : 500 + 14 * n
+  anims.push(now => {
+    if (run !== slabRun || M.step !== 5) return true
+    const k = Math.min(1, (now - t0) / dur), r = Math.round(k * n)
+    if (r !== S.reveal) { S.reveal = r; showSlabs(r); syncSum() }
+    return k >= 1
+  })
+}
+
+// Khối lập phương cạnh a (bước 6) + 1/8 khối cầu bán kính a (bước 7)
+const hopG = nhom()
+{ const o = { color: 0xffffff, width: 1.8, opacity: 0.75, dashed: true, dash: 0.3, gap: 0.22, order: 6 }, c = (x, y, z) => T(x * A, y * A, z * A)
+  hopG.add(mkLine(flat([c(1, 0, 0), c(1, 1, 0), c(1, 1, 1), c(1, 0, 1)], true), o))
+  for (const [y, z] of [[1, 0], [1, 1], [0, 1]]) hopG.add(mkLine(flat([c(0, y, z), c(1, y, z)]), o)) }
+// Khối cầu nằm TRONG (H) nên không được thử độ sâu: lượt ghi độ sâu của (H) (để vẽ nét khuất) sẽ che mất nó
+const cauMat = phong(MAU.k2, 0.46); cauMat.depthTest = false
+const cau = mesh(GB().them((s, t) => T(A * Math.cos(s * HQ), A * Math.sin(s * HQ) * Math.cos(t * HQ), A * Math.sin(s * HQ) * Math.sin(t * HQ)), 36, 36).geo(), cauMat, 3)
+const cauVien = mkLine(cung(u => T(0, A * Math.cos(u), A * Math.sin(u))), { color: 0xffd3e6, width: 2.4, order: 6, depthTest: false }); scene.add(cauVien)   // 1/4 đường tròn trên sàn
+
+// ═══ 5. NHÃN + CHẤM ĐIỂM ═══
+const tu = n => () => M.step >= n, o = n => () => M.step === n, lat = () => M.step === 4 || M.step === 7
+const Ws = () => canh(S.x)
+label('O', () => T(0, 0, 0), tu(3), -0.75, 0.6); label('x', () => T(DT, 0, 0), tu(3), 0.75, 0.2); label('y', () => T(0, DT, 0), tu(3), -0.2, 1); label('z', () => T(0, 0, DT), tu(3), 0.2, 1)
+label('a', () => T(A / 2, L, 0), () => M.step <= 2 && S.xem !== '2' && S.xem !== 'h', -1, 0, 'dim'); label('a', () => T(0, L, A / 2), () => M.step <= 2 && S.xem !== '2' && S.xem !== 'h', 0, 1.1, 'dim')
+label('a', () => T(0, A, A / 2), o(3), -0.2, 1.1, 'dim'); label('a', () => T(0, A / 2, A), o(3), 0.2, 1.1, 'dim'); label('a', () => T(A / 2, 0, 0), o(3), -1.1, 0, 'dim')
+label('M', () => T(S.x, 0, 0), lat, -0.8, -0.5); label('N', () => T(S.x, Ws(), 0), lat, -0.9, 0); label('P', () => T(S.x, 0, Ws()), lat, 0.9, 0); label('Q', () => T(S.x, Ws(), Ws()), o(4), 0, 1)
+label('a', () => T(S.x / 2, Ws() / 2, 0), o(4), -0.2, 0.95, 'hot')
+dot(() => T(0, 0, 0), tu(3))
+dot(() => T(S.x, 0, 0), lat, 0xfff1d6); dot(() => T(S.x, Ws(), 0), lat, 0xfff1d6); dot(() => T(S.x, 0, Ws()), lat, 0xfff1d6); dot(() => T(S.x, Ws(), Ws()), o(4), 0xfff1d6)
+
+// ═══ 6. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
+function dongBo() {
+  const st = M.step, ca = st === 1 || (st === 2 && S.xem === 'ca')
+  const day = [ca || (st === 2 && S.xem === '1'), ca || (st === 2 && S.xem === '2')], mo = st >= 3 && S.showArms
+  khoi.forEach((k, i) => {
+    k.mesh.visible = day[i] || mo; k.sau.visible = day[i]; k.lien.visible = day[i] || mo; k.dut.visible = day[i]
+    k.mat.opacity = day[i] ? (st === 1 ? 0.3 : 0.36) : 0.05; k.mat.color.setHex(st === 1 ? MAU.k1 : k.mau)
+    for (const l of k.lien.children) l.material.opacity = day[i] ? 1 : 0.28
+  })
+  giaoLien.visible = giaoDut.visible = ca
+  const coH = st >= 3 || (st === 2 && (S.xem === 'ca' || S.xem === 'h')), rieng = st >= 3 || (st === 2 && S.xem === 'h')
+  hMesh.visible = coH; hSau.visible = hLien.visible = hDut.visible = rieng
+  hMat.color.setHex(st === 2 ? MAU.chung : MAU.k1); hMat.opacity = st === 2 ? (S.xem === 'ca' ? 0.72 : 0.55) : st === 5 ? 0.12 : st === 7 ? 0.2 : 0.42
+  const noi = st === 2 && S.xem === 'ca'   // đang nằm trong hai khối: vẽ sau cùng, không thử độ sâu, để phần chung nổi lên qua hai khối
+  hMat.depthTest = !noi; hMesh.renderOrder = noi ? 4 : 2
+  trucLien.visible = trucDut.visible = trucMui.visible = st >= 3
+  sliceG.visible = lat(); quat.visible = quatVien.visible = st === 7; banKinh[0].visible = banKinh[1].visible = st === 4
+  slabG.visible = st === 5
+  hopG.visible = st === 6 && S.cube
+  cau.visible = cauVien.visible = st === 7
+}
+
+// ═══ 7. BẢNG LỜI GIẢI THEO BƯỚC (đáp số theo chữ a: chỉ có công thức bằng chữ; các số 0,40a… là ví dụ tại một lát) ═══
+const XEM = [['ca', 'Cả hai khối'], ['1', 'Khối xanh'], ['2', 'Khối hồng'], ['h', 'Phần chung']]
+const truot = id => '<label class="sl"><span class="nm">x</span><input type="range" id="' + id + '" min="20" max="980" aria-label="Độ cao của lát cắt"><output id="o' + id + '"></output></label>'
+const PANELS = {
+  1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Phần chung của hai khối trụ</h2>
+    <p>Có hai khối, mỗi khối là <b>một phần tư khối trụ</b> bán kính đáy <i>a</i>. Đặt chúng nằm trên sàn thành hình chữ L sao cho <b>hai trục vuông góc với nhau</b> (hình bên).</p>
+    <p>Gọi <i>(H)</i> là phần chung của hai khối. Tính thể tích của <i>(H)</i> theo <i>a</i>.</p>
+    <div class="chips"><span>hai khối ¼ trụ</span><span>bán kính a</span><span>hai trục vuông góc</span><span class="q">V = ?</span></div>
+    <button type="button" class="btn" id="b1">Tìm phần chung ›</button>
+    <p class="cap">Nguồn: NBV 12-18 F · câu 47</p>`,
+  2: () => String.raw`<p class="kicker">Bước 2 · Phần chung</p><h2>Phần chung nằm ở đâu?</h2>
+    <p>Khối <b class="k1">xanh</b> và khối <b class="k2">hồng</b> đè lên nhau ở góc chữ L. Bấm để xem riêng từng khối.</p>
+    <div class="seg chu" id="seg2">${XEM.map(v => '<button type="button" data-xem="' + v[0] + '" aria-pressed="' + (S.xem === v[0]) + '">' + v[1] + '</button>').join('')}</div>
+    <p>Một điểm thuộc <i>(H)</i> khi nó nằm trong <b>cả hai</b> khối: ở dưới mặt cong của khối xanh <b>và</b> ở dưới mặt cong của khối hồng. Đó là phần màu <b class="ch">vàng</b>.</p>
+    <p class="note">Hai mặt cong cắt nhau theo một đường cong chạy từ đỉnh góc chữ L xuống sàn. Xoay hình để nhìn đường này từ nhiều phía.</p>`,
+  3: () => String.raw`<p class="kicker">Bước 3 · Khối (H)</p><h2>Khối (H) có hình gì?</h2>
+    <p>Đặt hệ trục <i>Oxyz</i>: <i>O</i> là góc trong của chữ L trên sàn, <i>Ox</i> thẳng đứng, <i>Oy</i> và <i>Oz</i> là trục của hai khối trụ.</p>
+    <div class="fx"><div class="r2"><span data-tex="x^2+z^2\le a^2"></span><small>khối có trục Oy</small></div><div class="r2"><span data-tex="x^2+y^2\le a^2"></span><small>khối có trục Oz</small></div><div class="r2"><span data-tex="x\ge 0,\ y\ge 0,\ z\ge 0"></span><small>cả hai khối</small></div></div>
+    <p><i>(H)</i> có năm mặt: đáy là <b>hình vuông cạnh <i>a</i></b>, hai mặt đứng là hai <b>phần tư hình tròn</b> bán kính <i>a</i>, và <b>hai mặt cong</b> gặp nhau theo một đường cong đi từ đỉnh xuống góc đáy.</p>
+    <p>Khối này không phải trụ, nón hay cầu nên không có sẵn công thức. Cách làm: <b>cắt nó thành nhiều lát mỏng</b>.</p>
+    <p class="note">Nét liền là cạnh nhìn thấy, nét đứt là cạnh bị khối che, giống hình vẽ trong sách. Nút “Hiện hai khối” cho thấy lại <i>(H)</i> nằm ở đâu.</p>`,
+  4: () => String.raw`<p class="kicker">Bước 4 · Cắt một lát</p><h2>Lát cắt là hình vuông</h2>
+    <p>Cắt <i>(H)</i> bằng mặt phẳng vuông góc với <i>Ox</i> tại điểm <i>M</i>, với <i>OM</i> = <i>x</i>. Mặt phẳng nằm ngang cắt mỗi mặt trụ theo một <b>đoạn thẳng</b>, nên lát cắt là <b>hình vuông <i>MNQP</i></b>.</p>` + truot('s4') + String.raw`
+    <p class="lbl2">Công thức tổng quát</p>
+    <div class="fx"><div data-tex="MN=\sqrt{ON^2-OM^2}=\sqrt{a^2-x^2}"></div><div class="r2"><span data-tex="MP=\sqrt{a^2-x^2}"></span><small>tương tự</small></div><div class="res" data-tex="S(x)=MN\cdot MP=a^2-x^2"></div></div>
+    <p class="cap">Tam giác <i>OMN</i> vuông tại <i>M</i>, cạnh huyền <i>ON</i> = <i>a</i> là bán kính của khối trụ.</p>
+    <p class="lbl2" id="l4"></p>
+    <div class="fx num"><div id="f41"></div><div class="res" id="f42"></div></div>`,
+  5: () => String.raw`<p class="kicker">Bước 5 · Cộng các lát</p><h2>Chồng các lát lại</h2>
+    <p>Chia đoạn [0; <i>a</i>] trên <i>Ox</i> thành <b>n</b> phần bằng nhau. Coi mỗi lát là một hộp đáy vuông: thể tích ≈ diện tích lát × bề dày.</p>
+    <div class="seg" id="seg5">${[4, 8, 16, 32, 64].map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (S.n === n) + '">' + n + '</button>').join('')}</div>
+    <div class="sum"><span class="lbl">Tổng <b id="n5"></b> lát ≈</span><span class="big" id="sum5"></span><span class="unit">a³</span><span class="off" id="off5"></span></div>
+    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này chính là <b>tích phân của diện tích lát cắt</b>:</p>
+    <div class="fx"><div data-d data-tex="V=\int_{0}^{a}S(x)\,\mathrm{d}x"></div></div>`,
+  6: () => String.raw`<p class="kicker">Bước 6 · Tính thể tích</p><h2>Tính tích phân</h2>
+    <p class="lbl2">Thể tích bằng tích phân của diện tích lát cắt</p>
+    <div class="fx"><div data-d data-tex="\begin{aligned}V&=\int_{0}^{a}S(x)\,\mathrm{d}x=\int_{0}^{a}\left(a^2-x^2\right)\mathrm{d}x\\[0.5em]&=\left[a^2x-\frac{x^3}{3}\right]_{0}^{a}=a^3-\frac{a^3}{3}\end{aligned}"></div><div class="res" data-d data-tex="V=\frac{2a^3}{3}"></div></div>
+    <p>Đề cho bán kính bằng chữ <i>a</i> nên đáp số dừng ở đây, không có bước thay số.</p>
+    <button type="button" class="btn ghost" id="b6"></button>
+    <div class="fx" id="fx6" hidden><div data-d data-tex="\frac{V}{a^3}=\frac{2}{3}"></div></div>
+    <p class="cap" id="cap6" hidden><i>(H)</i> nằm gọn trong khối lập phương cạnh <i>a</i> và chiếm đúng hai phần ba khối đó, với mọi <i>a</i>.</p>`,
+  7: () => String.raw`<p class="kicker">Bước 7 · Hình cầu</p><h2>Từ (H) ra thể tích hình cầu</h2>
+    <p>Đặt vào trong <i>(H)</i> <b class="k2">một phần tám khối cầu</b> tâm <i>O</i> bán kính <i>a</i>. Cắt cả hai ở cùng độ cao <i>x</i>, đặt <i>r</i> = <i>MN</i>:</p>` + truot('s7') + String.raw`
+    <div class="fx"><div class="r2"><span data-tex="S_H=r^2"></span><small>lát của (H):<br>hình vuông cạnh r</small></div><div class="r2"><span data-tex="S_C=\dfrac{\pi r^2}{4}"></span><small>lát của khối cầu:<br>¼ hình tròn bán kính r</small></div><div class="res" data-d data-tex="\frac{S_C}{S_H}=\frac{\pi}{4}"></div></div>
+    <p class="cap" id="cap7"></p>
+    <p>Tỉ số này <b>như nhau ở mọi độ cao</b>, nên hai thể tích cũng theo đúng tỉ số đó. Gọi <i>V</i><sub>8</sub> là thể tích một phần tám khối cầu:</p>
+    <div class="fx"><div data-d data-tex="V_8=\frac{\pi}{4}\cdot\frac{2a^3}{3}=\frac{\pi a^3}{6}"></div><div class="res r2"><span data-d data-tex="8\,V_8=\frac{4}{3}\pi a^3"></span><small>cả khối cầu</small></div></div>
+    <p class="note">Cha con Tổ Xung Chi, Tổ Hằng (thế kỷ 5–6) tìm ra thể tích hình cầu đúng bằng cách này; ngày nay gọi là nguyên lý Cavalieri.</p>`,
+}
+function bindPanel() {
+  const st = M.step
+  if (st === 1) $('#b1').addEventListener('click', () => M.goStep(2))
+  if (st === 2) $$('#seg2 button').forEach(b => b.addEventListener('click', () => { S.xem = b.dataset.xem; $$('#seg2 button').forEach(x => x.setAttribute('aria-pressed', x === b)) }))
+  if (st === 4 || st === 7) {
+    const s = $(st === 4 ? '#s4' : '#s7'); s.value = Math.round(S.x / A * 1000)
+    s.addEventListener('input', () => { S.x = Math.round(s.value / 10) / 100 * A; syncLat() }); syncLat()   // làm tròn 0,01a để số thay vào công thức khớp kết quả
+  }
+  if (st === 5) { $$('#seg5 button').forEach(b => b.addEventListener('click', () => { S.n = +b.dataset.n; $$('#seg5 button').forEach(x => x.setAttribute('aria-pressed', x === b)); playSlabs() })); syncSum() }
+  if (st === 6) { $('#b6').addEventListener('click', () => { S.cube = !S.cube; sync6() }); sync6() }
+}
+function syncLat() {
+  const k = S.x / A, r = canh(S.x) / A, ks = tn(k), o4 = $('#os4'), o7 = $('#os7')
+  if (o4) { o4.textContent = fmt(k) + 'a'
+    $('#l4').textContent = 'Ví dụ: lát ở độ cao x = ' + fmt(k) + 'a'
+    tex($('#f41'), String.raw`MN=\sqrt{a^2-(${ks}a)^2}=${tn(r)}\,a`)
+    tex($('#f42'), String.raw`S=a^2-(${ks}a)^2=${tn(1 - k * k)}\,a^2`) }
+  if (o7) { o7.textContent = fmt(k) + 'a'
+    $('#cap7').textContent = 'Lát ở độ cao x = ' + fmt(k) + 'a: r = ' + fmt(r) + 'a, hình vuông ' + fmt(r * r) + 'a², phần tư hình tròn ' + fmt(Math.PI * r * r / 4) + 'a².' }
+  updateSlice()
+}
+function syncSum() {
+  if (!$('#sum5') || !slab) return
+  const r = S.reveal, v = r ? slab.sums[r - 1] : 0, full = r === slab.n, d = v - 2 / 3
+  $('#n5').textContent = full ? slab.n : r + '/' + slab.n
+  $('#sum5').textContent = fmt(v, 4)
+  $('#off5').textContent = full ? 'lệch ' + (d >= 0 ? '+' : '−') + fmt(Math.abs(d), 4) + ' so với 2/3 ≈ 0,6667' : ''
+}
+function sync6() {
+  const b = $('#b6'); if (!b) return
+  b.textContent = S.cube ? 'Ẩn khối lập phương' : 'So với khối lập phương cạnh a'
+  $('#fx6').hidden = $('#cap6').hidden = !S.cube
+}
+
+// ═══ 8. CHUYỂN BƯỚC ═══
+function truocBang(n, prev, o) { if (!o.first && prev !== n) { S.xem = 'ca'; S.cube = false } }   // vào lại bước nào cũng bắt đầu từ trạng thái gốc của bước đó
+async function khiDoiBuoc(n, prev, o) {
+  $('#vArm').hidden = n < 3
+  if (o.first || khungCua(n) !== khungCua(prev) || gocCua(n) !== gocCua(prev)) setView('mac_dinh', o.first)
+  if (n === 5) playSlabs()
+}
+M.views.insertAdjacentHTML('beforeend', '<button type="button" id="vArm" aria-pressed="false" hidden>Hiện hai khối</button>')
+$('#vArm').addEventListener('click', e => { S.showArms = !S.showArms; e.currentTarget.setAttribute('aria-pressed', S.showArms); e.currentTarget.textContent = S.showArms ? 'Ẩn hai khối' : 'Hiện hai khối' })
+
+// ═══ 9. CHẠY + TỰ KIỂM ═══
+updateSlice()
+M.start()
+// Cộng 4000 lát (điểm giữa) phải ra 2/3: hình vẽ và lời giải nói cùng một chuyện.
+function kiem() { let v = 0; const n = 4000; for (let i = 0; i < n; i++) { const s = canh((i + 0.5) * A / n) / A; v += s * s / n } return { tinh: v, dapSo: 2 / 3, lech: Math.abs(v - 2 / 3) } }
+Object.assign(window.__dbg, { S, kiem })
+})()
+</script>
+</body>
+</html>
