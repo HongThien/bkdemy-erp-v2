@@ -1,8 +1,8 @@
 # DẠY HÌNH 3D — mô hình không gian tương tác cho bài tập Toán (tài liệu tổng)
 
 > **Đọc file này TRƯỚC khi dựng bất kỳ mô hình 3D nào cho bài tập Toán** (khối tròn xoay, khối tính bằng cắt lát, thiết diện…).
-> Mở 09/10/2026 tối. **Trạng thái (10/10): BẢN THỬ 1 của Câu 43 đã dựng** (`toan-site/the-tich/coc-nghieng.html`, §D.4) và **Thùy đã xem**: yêu cầu một điều —
-> *chỗ tính tích phân phải có công thức tổng quát, chưa thay số, rồi mới thay số* (đã làm, luật A3) — **"còn lại ok rồi"**. Chưa làm bài thứ hai.
+> Mở 09/10/2026 tối. **Trạng thái (10/10 chiều): đã có 2 bài + khung chung.** Bài 1 Câu 43 cốc nghiêng (Thùy xem: ok, thêm luật A3) ·
+> bài 2 Câu 48 miền vắt qua trục quay (§D.6, Thùy CHƯA xem) · phần dùng chung đã rút thành `khung.js` + `khung.css` (§D.5).
 > Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** bài mẫu đề xuất · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
 > Nguồn đề + hình đã chép vào repo: [`docs/hinh-3d/`](docs/hinh-3d/) (không phụ thuộc ổ E: của máy công ty).
 
@@ -14,8 +14,8 @@
 - **Nguồn đợt đầu:** NBV *12-18. Ứng dụng TP tính diện tích – thể tích*, file **F. Bài tập nâng cao**, Dạng 2. Trong đó có **10 bài thật sự 3D** (câu 43–50, 52, 53).
 - **Đã làm (09/10):** đọc + tự giải cả 10 bài, kiểm bằng tích phân số / Monte Carlo — **10/10 khớp**; bắt được **2 lỗi đáp số của nguồn** (§C.11).
 - **Bài mẫu đề xuất: Câu 43 — cốc nước nghiêng** (§D). Bài mẫu thứ hai (loại tròn xoay) nếu cần: **Câu 48**.
-- **Đã dựng (10/10):** bản thử 1 Câu 43 — 6 bước, xoay được, cắt lát 3 hướng, chồng lát, tính tích phân bằng chữ rồi mới thay số (§D.4). Thùy xem: ok.
-- **Việc kế tiếp:** soi TV/iPad thật + duyệt câu chữ → thêm vào mục lục `toan-site/` → bài mẫu tròn xoay (đề xuất Câu 48) → rút khuôn chung cho 9 bài còn lại.
+- **Đã dựng (10/10):** bài 1 Câu 43 (cắt lát, 6 bước — Thùy xem: ok) · bài 2 Câu 48 (tròn xoay, miền vắt qua trục, 7 bước — chưa xem) · khung chung `toan-site/the-tich/khung.js` + `khung.css`.
+- **Việc kế tiếp:** Thùy xem bài 2 → soi TV/iPad thật + duyệt câu chữ cả hai bài → thêm vào mục lục `toan-site/` → các bài còn lại (44, 45, 46, 47, 49, 50, 52, 53) dựng trên khung.
 
 ## 1. Nguồn & cách trích lại
 
@@ -201,6 +201,30 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
   Đã soát 1280×720, 1920×1080, 1024×768, 375×812: 6 bước, 3 hướng cắt, kéo xoay, cuộn phóng, bấm chip, phím mũi tên, nhảy bước 1 → 5.
 - **Chưa làm / chưa biết:** chưa soi **TV và iPad thật** (cảm ứng chụm 2 ngón chưa thử tay) · chưa ai duyệt **câu chữ** · chưa có mục lục · chưa rút khuôn chung · màn 1280×720 bước 4 phải cuộn bảng ~100px mới thấy hết khối thay số (1920×1080 vừa khít).
 
+### D.5 Khung chung — ĐÃ RÚT (10/10 chiều, sau khi bài mẫu được duyệt — đúng đề xuất B3)
+
+- **`toan-site/the-tich/khung.css`** — toàn bộ kiểu dáng (sân khấu, bảng lời giải, thanh bước, khối công thức `.fx`, khối thay số `.fx.num`, dòng tên khối `.lbl2`, khối chỉ hiện sau khi bấm `.subs`).
+- **`toan-site/the-tich/khung.js`** — `MoHinh(cfg)` tự dựng khung trang trong `<div id="app">` và lo: three.js + đèn, **nét dày** `mkLine/setLine`, **máy quay** kéo-xoay / chụm / cuộn + các góc đặt sẵn,
+  **nhãn và chấm bám điểm 3D** (`label`, `dot`), **thanh bước** + phím ← → / PageUp PageDown / Space, vẽ bảng + KaTeX (`data-tex`, thêm `data-d` = chế độ trình bày), **đồng hồ hoạt cảnh** `clock()` + `anims`, công cụ soát `__dbg.run/snap`.
+- **Trang bài chỉ khai:** số liệu · vật thể · `bang(n)` (HTML từng bước) · `sauBang` (gắn sự kiện) · `truocBang` / `khiDoiBuoc` (chuyển bước) · `moiKhung` / `dongBo` (mỗi khung hình) · `tiep` / `nutTiep` (nút Tiếp dùng để "Thay số" ở bước cuối). Mẫu đầy đủ ở đầu `khung.js`.
+- Bài 1 đã chuyển sang khung (58 KB → 41 KB), soát lại đủ 6 bước: hành vi không đổi. **Bài mới = chép khung HTML của một bài có sẵn + viết phần riêng**; đừng sửa khung cho riêng một bài — thiếu gì thì thêm tuỳ chọn vào `cfg`.
+- **Lỗi ngầm đã sửa ở khung (dính cả bài 1):** hoạt cảnh từng nhận mốc giờ của `requestAnimationFrame` — đó là giờ ĐẦU khung hình, có thể SỚM hơn `t0 = clock()` lấy trong sự kiện bấm cùng khung ⇒ tiến độ âm
+  (chồng 80 lát: −0,01 × 80 làm tròn thành lát thứ −1 ⇒ văng lỗi). Giờ vòng lặp luôn gọi `tick(clock())`.
+
+### D.6 Bài 2 — Câu 48, miền vắt qua trục quay — ĐÃ DỰNG (10/10 chiều, Thùy chưa xem)
+
+- **File:** `toan-site/the-tich/mien-vat-qua-truc.html` → `http://localhost:5281/the-tich/mien-vat-qua-truc.html` (launch `toan`).
+- **Màu:** xanh = phần của (H) ở TRÊN trục · hồng = phần ở DƯỚI trục · hổ phách = lát cắt · đỏ = phần bị công thức sai trừ đi.
+- **7 bước:** ① Đề bài (hình phẳng đúng như hình trên giấy) → ② Quay quanh Ox (kéo thanh hoặc tự chạy 0 → 360°; ô "nửa vòng: phần dưới đã lên trên" bật ở 180°) →
+  ③ Gấp lên (phần hồng lật quanh Ox lên trên; đường bao ngoài R và trong r; bảng 3 đoạn [a; p] vành khăn · [p; q] đĩa bán kính g · [q; b] đĩa bán kính |f|; rồi thay số a = 1, p = 2, q = 3, b = 6) →
+  ④ Cắt một lát (kéo x; hai điểm G, F vạch hai đường tròn; S = πR² − πr² rồi công thức của đúng đoạn đang đứng, sau đó thay số) → ⑤ Cộng các lát (n = 5/10/20/40/80) →
+  ⑥ **Cái bẫy** (π∫(g² − f²)dx trên cả đoạn: lát xanh được cộng, lát đỏ bị trừ; bấm Thay số ⇒ +108π/5 − 108π/5 = **0**) → ⑦ Tính thể tích (công thức ba tích phân bằng chữ → bấm Thay số ⇒ 64π/5 + 37π/3 + 153π/5 = **836π/15 ≈ 175,09**).
+- **Theo luật A3:** ở bài này "chữ" là a, p, q, b, f, g (đề không có tham số R, h): bước 3–7 đều viết theo chữ trước; bước 6 và 7 phải bấm mới thay số.
+- **Tổng n lát (điểm giữa) — số trên màn phải khớp:** n = 5: 184,18 · 10: 177,33 · 20: 175,65 · 40: 175,23 · 80: 175,13 (đích 175,09). Bẫy với 40 lát: tổng có dấu ≈ 0,10.
+- **Kỹ thuật riêng:** mặt tròn xoay là lưới tự dựng theo góc đã quay φ (điểm (x; y; 0) → (x; y·cos φ; y·sin φ)), dựng lại mỗi khung hình khi φ đổi; lát / chồng lát là vành khăn tự dựng; nút "Nhìn dọc trục" cho thấy lát đúng hình tròn.
+- **Soát:** 1280×720 và 1920×1080, đủ 7 bước, 3 đoạn của bước 4, đổi n liên tục, hai lần Thay số; 0 lỗi KaTeX, không tràn ngang. 1920×1080: mọi bước vừa khít, riêng bước 7 sau khi thay số phải cuộn 30px (bảng tự cuộn tới kết quả).
+- **Chưa làm / chưa biết:** Thùy chưa xem · chưa soi TV/iPad thật · nhìn dọc trục thì các nhãn a, p, q, b, O, M chồng lên nhau ở tâm · chưa duyệt câu chữ.
+
 ---
 
 ## Phần E — Đứng trên vai ai (R7)
@@ -226,3 +250,5 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 | 10/10 rạng sáng | Claude | Dựng bản thử 1 Câu 43 theo đề xuất mặc định của Phần B (§D.4); thêm hướng cắt thứ ba (chữ nhật). Chờ Thùy xem + chốt |
 | 10/10 | Thùy | Xem bản thử 1: *"Chỗ tính tích phân — muốn có công thức tổng quát, chưa thay số trước để học sinh hình dung ra công thức, rồi mới thay số vào. Còn lại ok rồi."* |
 | 10/10 | Claude | Sửa bước 4–5–6 theo luật A3 (khối tổng quát → khối thay số; bước 6 = Tính thể tích, bấm mới thay số). Ghi A3 là luật cho mọi mô hình sau |
+| 10/10 chiều | Thùy | "Tiếp tục 1 bài khác nào" |
+| 10/10 chiều | Claude | Rút khung chung (`khung.js`, `khung.css`), chuyển bài 1 sang khung; dựng bài 2 = Câu 48 miền vắt qua trục (7 bước, có bước "Cái bẫy"). Chờ Thùy xem |
