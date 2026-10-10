@@ -1,0 +1,36 @@
+{
+ "ma_de": "LTV-2025",
+ "so_cau": 20,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "LTV 2025 · 15",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt và Bước 3 của Phần 1 nói thẳng \"tổng số lần lấy bé nhất là 8\" / \"8, 16, 24… chọn số bé nhất\" ⇒ lộ đáp số cuối. Đã viết lại Phần 1 chỉ nêu cách nghĩ (phân số tối giản, gấp tử và mẫu lên cùng số lần), không ghi số cuối. Đáp số 8 tự tính lại: 3/8 tối giản ⇒ tổng số lần là bội của 8, nhỏ nhất 8 — đúng.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2025 · 15",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Giả thiết \"lấy xong trả bút lại hộp\" (bắt buộc, vì chỉ có 3 bút) chỉ nằm ở ghi_chu_nghi, chưa nói trong lời giải; câu \"5 lần lấy được hai chiếc bút khác\" dễ hiểu nhầm. Đã thêm dòng giả thiết ở đầu Phần 2 và sửa thành \"5 lần lấy các cặp bút khác (mực – bi hoặc chì – bi)\".",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2025 · 19",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ba câu lời giải viết \"giá … bằng so với giá ban đầu: …\" — sai ngữ pháp, HS lớp 5 đọc vấp. Đã đổi theo khuôn CEO 10/10: \"giá … so với giá ban đầu bằng: …\". Phép tính giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2025 · 9",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề hỏi \"trả nhiều hơn bao nhiêu tiền\" không nói hơn so với gì. Cách hiểu của người soạn (hơn so với mua 1 kg: 337500 − 75000 = 262500) là cách hiểu tự nhiên duy nhất tôi thấy (đã được ghi ở ghi_chu_nghi); không sửa, báo để CEO biết nếu muốn chốt.",
+   "da_sua": false
+  }
+ ]
+}

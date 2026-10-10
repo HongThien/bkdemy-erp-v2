@@ -1,0 +1,22 @@
+{
+ "ma_de": "CG-2019",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "CG 2019 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ý b): khẳng định \"Vì N nằm trên AC nên D nằm bên kia AC so với B, tức C nằm giữa B và D\" không suy ra được (nhảy bước); cả lời giải sau đó (S_MCD = S_MCN + S_NCD) dựa vào vị trí này. Đã thay bằng lập luận bằng diện tích: BMN > CMN chung đáy MN nên B xa MN hơn C; B, C cùng phía MN nên D nằm ngoài BC về phía C; M, D hai phía AC nên N nằm giữa M và D. Cũng viết rõ NBC = ABC - ABN (6-4). Phần 1 bước 3 sửa theo. Đáp số không đổi (đã kiểm bằng toạ độ: BC = CD, ANM/BMNC = 1/2).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "CG 2019 · P2.1",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng suy ra \"thời gian dự định hơn thời gian thực tế nửa quãng sau là 15 phút\" thiếu điều kiện \"Nam đến B đúng giờ dự định\". Đã thêm. Sơ đồ giữ nguyên.",
+   "da_sua": true
+  }
+ ]
+}

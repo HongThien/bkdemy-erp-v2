@@ -1,0 +1,50 @@
+{
+ "ma_de": "AMS-2023",
+ "so_cau": 15,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 5,
+ "van_de": [
+  {
+   "ma_nguon": "AMS 2023 · P1.2",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt và Bước 3 của Phần 1 nói thẳng \"b = 0 nên tích không phụ thuộc a\" — gần như đã nêu đáp số. Đã đổi thành \"b được xác định ngay, cần xem tích có còn phụ thuộc a không\". Phần 2 và đáp số 0 giữ nguyên (tính lại bằng code: mọi a thoả đều cho a×b=0).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "AMS 2023 · P1.5",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Đáp số N đúng (đã mở ảnh: hàng trên R-Q-M, N ngay dưới M, P bên phải N; mô phỏng gấp: N đáy, M/Q/R/P bốn mặt bên). Nhưng lập luận \"gấp thử thì Q và P đối diện\" là bước HS phải tự bù. Đã viết lại cả Phần 1 + Phần 2 theo lập luận vòng bốn mặt bên: ba ô thẳng hàng thành ba mặt bên liên tiếp; ô dính cạnh dưới ô cuối dải nằm ngang = đáy; ô dính cạnh bên của đáy gấp lên thành mặt bên thứ tư.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "AMS 2023 · P1.7",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước: từ \"sáu bao hơn Bình 1 nghìn đồng\" sang \"Bình có các bao này trừ bao 1\" mà không nói vì sao phần thiếu phải là đúng bao 1 nghìn. Đã thêm một dòng nối. Đáp số 5 đúng (tính lại bằng code: duy nhất một tập con có tổng 363, gồm 5 bao).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "AMS 2023 · P1.12",
+   "muc": "nen_sua",
+   "loai": "kiến thức",
+   "mo_ta": "Toán và đáp số 101/299 đúng (tính lại bằng phân số chính xác: 101/299; hai vế 299×A và 101×B cùng bằng H101+H299−H400). Nhưng Phần 1 dùng công thức chữ k, d (biểu thức chữ), nói \"phân số âm / nhóm dương\" (số âm) trái k5T §1; Phần 2 kết luận \"tỉ số ngược\" không giải thích. Đã viết lại mấu chốt bằng số cụ thể (299/(1×300)=1/1−1/300), đổi \"dương/âm\" thành \"được cộng/bị trừ\", và thay câu cuối bằng \"coi A là 101 phần thì B là 299 phần\" rồi mới kết luận.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "AMS 2023 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng đầu Phần 2 nói \"số nam ngồi cạnh nữ bằng số nữ ngồi cạnh nam\" mà không nêu lý do (mỗi bàn một nam một nữ thì mỗi bên đúng một người) — lý do chỉ nằm ở Phần 1. Đã thêm lý do vào Phần 2. Đáp số 6 đúng (tính lại: nam 16, nữ 20, 8 bàn nam–nữ, 4 bàn nam–nam, 6 bàn nữ–nữ, tổng 18 bàn).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "AMS 2023 · P2.3",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề hỏi \"sau bao nhiêu lần gặp nhau thì gặp lần đầu ở điểm xuất phát\". Mô phỏng: hai bạn lần đầu cùng ở điểm xuất phát lúc 30 phút, lúc đó là lần gặp thứ 11 (lần 1–10 ở chỗ khác). Đáp số 11 hợp lí hơn, nhưng nếu hiểu \"sau 10 lần gặp thì lần kế ở điểm xuất phát\" ra 10. Người soạn đã ghi ghi_chu_nghi; cần CEO chốt. Không sửa.",
+   "da_sua": false
+  }
+ ]
+}

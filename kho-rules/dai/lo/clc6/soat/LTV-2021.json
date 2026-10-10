@@ -1,0 +1,15 @@
+{
+ "ma_de": "LTV-2021",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "LTV 2021 · 8",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết \"hàng sau 3 hình xếp sát phía sau 3 hình đầu\" — không nói rõ là 3 hình bên trái hay bên phải, mà vị trí ô khuyết quyết định chu vi đáy; dòng đi vòng quanh đáy chỉ liệt kê số, HS không biết cạnh nào. Đã ghi rõ \"3 hình bên trái của hàng trước (khuyết ở góc sau bên phải)\" và gắn tên từng cạnh. Toán và đáp số (322 dm²) giữ nguyên; đã tự đếm lại theo từng hướng: trước+sau=112, trái+phải=42, trên+dưới=168.",
+   "da_sua": true
+  }
+ ]
+}

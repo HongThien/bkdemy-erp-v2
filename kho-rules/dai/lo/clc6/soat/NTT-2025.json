@@ -1,0 +1,36 @@
+{
+ "ma_de": "NTT-2025",
+ "so_cau": 15,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 4,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2025 · 12",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Chú ý ở Phần 1 nói cách xếp một hàng dài có nhiều mặt ngoài nhất ⇒ gợi trước cách cho kết quả lớn nhất. Đã đổi thành lời nhắc trung tính (tính cả hai cách rồi so sánh).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2025 · 13",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi $6-4=2$ và $(4+6):2=5$ ⇒ lộ đáp số cuối (4 và 6 triệu). Đã viết lại không kèm số của đáp án.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2025 · 14",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi 2,4 giờ, 72 km, 36 km ⇒ lộ đáp số cuối. Đã viết lại không kèm số của đáp án.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2025 · 15",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Bước 2 Phần 1 diễn đạt rối (\"phần diện tích hơn của ACF so với BCF cũng gấp đôi\" không đúng ý). Đã viết lại: ACD=2BCD, AFD=2BFD, lấy hiệu ⇒ ACF=2BCF (khớp Phần 2).",
+   "da_sua": true
+  }
+ ]
+}

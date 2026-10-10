@@ -27,6 +27,12 @@ function kiemKhuon(s, tracNghiem) {
   else { const e = kiemP1(lg.slice(0, i2).trim()); if (e.length) l.push('Phần 1: ' + e.join('; ')) }
   if ((lg.match(/(?<!\\)\$/g) ?? []).length % 2) l.push('số $ lẻ')
   if (/[\f\t\v\b]/.test(lg + (s.dap_an ?? ''))) l.push('ký tự điều khiển (gạch ngược LaTeX hỏng)')
+  // lệnh LaTeX mất gạch ngược ($overline{ab}$, $2 times 3$…) hoặc chữ Việt có dấu nằm trong công thức
+  for (const m of (lg + '\n' + (s.dap_an ?? '')).matchAll(/\$([^$]*)\$/g)) {
+    const k = m[1].match(/(?<![\\a-zA-Z])(dfrac|frac|times|overline|widehat|ldots|cdots|cdot|approx|text|underbrace|quad)(?![a-zA-Z])/)
+    if (k) { l.push(`lệnh LaTeX thiếu gạch ngược «${k[1]}» trong $${m[1].slice(0, 40)}$`); break }
+    if (/[À-ỹ]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) { l.push(`chữ Việt trong công thức $${m[1].slice(0, 40)}$`); break }
+  }
   if (tracNghiem && s.dap_an && !new RegExp(`Chọn ${s.dap_an}\\.\\s*$`).test(lg.trim())) l.push(`dòng cuối không phải "Chọn ${s.dap_an}."`)
   const nSoDo = (lg.match(/Ta có sơ đồ/g) ?? []).length, mt = s.so_do_mo_ta == null ? 0 : Array.isArray(s.so_do_mo_ta) ? s.so_do_mo_ta.length : 1
   if (nSoDo !== mt) l.push(`"Ta có sơ đồ" ${nSoDo} lần mà so_do_mo_ta có ${mt}`)
@@ -34,7 +40,7 @@ function kiemKhuon(s, tracNghiem) {
 }
 
 const dsSoan = readdirSync(RA).filter((f) => f.endsWith('.soan.json')).map((f) => f.replace('.soan.json', ''))
-const tong = { de: 0, chua_soat: [], cau_sua: 0, tu_choi: [], van_de: { sai: 0, nen_sua: 0, hoi: 0 }, chua_dat: [] }, tatCa = []
+const tong = { de: 0, chua_soat: [], cau_sua: 0, tu_choi: [], van_de: { sai: 0, nen_sua: 0, hoi: 0 }, chua_dat: [], khuon: [] }, tatCa = []
 if (GHI) mkdirSync(join(RA, 'soat'), { recursive: true })
 for (const K of dsSoan) {
   // biên bản: một tệp hoặc các phần
@@ -50,6 +56,9 @@ for (const K of dsSoan) {
     if (existsSync(join(SOAT, `${p}.sua.json`))) sua.push(...doc(join(SOAT, `${p}.sua.json`)))
     else console.log(`⚠ ${p}: có biên bản mà thiếu tệp .sua.json`)
   }
+  // cổng khuôn chạy lại trên MỌI câu của đề (kể cả câu người soát không đụng)
+  const dsIn = new Set(sua.map((m) => m.ma_nguon))
+  for (const x of soan) if (!x.bo && !dsIn.has(x.ma_nguon)) { const e = kiemKhuon(x, /^[A-E]$/.test(x.dap_an ?? '')); if (e.length) tong.khuon.push(`${x.ma_nguon}: ${e.join(' · ')}`) }
   for (const v of vanDe) { tong.van_de[v.muc] = (tong.van_de[v.muc] ?? 0) + 1; tatCa.push({ de: K, ...v }) }
   let nSua = 0
   for (const m of sua) {
@@ -77,5 +86,6 @@ console.log(`${tong.de}/${dsSoan.length} đề đã soát · vấn đề ${JSON.
 if (tong.chua_soat.length) console.log(`chưa soát (${tong.chua_soat.length}): ${tong.chua_soat.join(', ')}`)
 if (tong.chua_dat.length) console.log(`CHƯA ĐẠT: ${tong.chua_dat.join(', ')}`)
 if (tong.tu_choi.length) { console.log(`\n── bản sửa KHÔNG nhận (${tong.tu_choi.length}):`); for (const t of tong.tu_choi) console.log('  ✖', t) }
+if (tong.khuon.length) { console.log(`\n── câu KHÔNG được soát sửa mà lỗi khuôn (${tong.khuon.length}):`); for (const t of tong.khuon) console.log('  ✖', t) }
 const canXem = tatCa.filter((v) => v.muc === 'hoi' || (v.muc === 'sai' && !v.da_sua))
 if (canXem.length) { console.log(`\n── cần Opus xem (${canXem.length}):`); for (const v of canXem) console.log(`  [${v.muc}] ${v.ma_nguon} (${v.loai}): ${String(v.mo_ta).replace(/\s+/g, ' ').slice(0, 400)}`) }

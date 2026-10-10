@@ -1,0 +1,36 @@
+{
+ "ma_de": "NN-2019",
+ "so_cau": 8,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2019 · 2",
+   "muc": "nen_sua",
+   "loai": "kiến thức",
+   "mo_ta": "Bước \"chia cả hai bên cho 3\" thuộc nhóm nhân/chia hai vế (k5T §1 cấm). Đã thay bằng: viết a×6 = (a×2)×3 rồi so với b×3 nên b = a×2; Phần 1 bước 3 sửa theo. Chữ a, b là kí hiệu cấu tạo số (ab = a×10+b), chấp nhận được; đáp số 12; 24; 36; 48 (4 số) đã tính lại đúng.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2019 · 4",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng đầu Phần 2 viết \"chia BC thành 3 đoạn, AC thành 4 đoạn, nên BD = 1/2 DC và AE = 1/3 EC\" nhảy bước. Đã tách hai dòng, nói rõ BD là 1 đoạn - DC là 2 đoạn; AE là 1 đoạn - EC là 3 đoạn. Phần suy diễn diện tích phía sau đã kiểm từng dòng: đúng (S_ABF = S_BDF = 2 S_AEF).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2019 · 7",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Câu \"can hai 3 phần, can ba 4 phần ... khớp với 7 phần ở trên\" chỉ nêu trùng hợp chứ chưa giải thích vì sao 1 phần theo tỉ số 3:4 bằng 1 phần của tổng 9 phần (HS phải tự bù bước). Đã viết lại: hai can chiếm 7 phần của tổng và 3+4=7 nên mỗi phần như thế đúng bằng một phần trong 9 phần.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2019 · 4",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đáp số A (2) chỉ đúng khi hiểu theo hình: BD = 1/3 BC và AE = 1/4 AC (các chấm chia đều). Đo trên ảnh: D ở 0,34 BC; E, hai chấm sau ở 0,30 / 0,51 / 0,74 AC (hình vẽ tay, lệch ±0,05). Tính lại bằng code: (BD=1/3 BC, AE=1/4 AC) cho 2; (BD=1/3 BC, AE=1/3 AC) cho 1 (cũng là phương án D). Không đổi dap_an (đã khớp ba nguồn); ghi_chu_nghi của người soạn đã nêu đúng điều này - chỉ báo để CEO biết câu phụ thuộc cách đọc chấm chia trên hình.",
+   "da_sua": false
+  }
+ ]
+}

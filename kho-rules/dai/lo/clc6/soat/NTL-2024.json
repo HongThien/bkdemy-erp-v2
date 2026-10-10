@@ -1,0 +1,29 @@
+{
+ "ma_de": "NTL-2024",
+ "so_cau": 13,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NTL 2024 · P2.1",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 ý b: mô tả sơ đồ thứ hai nhắc \"xe đạp cách A 21 km\" trước khi dòng tính 27−6=21 xuất hiện. Đã đưa dòng tính 21 km lên trước \"Ta có sơ đồ:\". Toán, dữ kiện, sơ đồ giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTL 2024 · P2.3",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Phần 1 Bước 4 chốt luôn kết luận (\"Mai nói sai, người còn lại nói đúng\") — gần như lộ đáp số; Phần 2 nhảy từ \"Mai sai\" sang \"Lan đúng\" mà thiếu câu dùng điều kiện \"chỉ một bạn đúng\". Đã viết lại Bước 4 không chốt, thêm một dòng ở Phần 2.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTL 2024 · P2.2",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Hình vẽ đặt M gần A (AM khoảng 1/3 AD) nhưng đề chữ ghi AM = 2/3 AD. Bản soạn theo đề chữ (đã có ghi_chu_nghi, đúng luật \"hình lệch chữ theo chữ\"). Tôi tính lại theo 2/3: S_ABM=100/3, S_BMC/S_ABM=3/2, BO/OM=3/2 (toạ độ O=(4,4)) — khớp dap_an. Nếu đề gốc thật là 1/3 thì đáp số khác (S_ABM=50/3, tỉ số 3); chỉ báo, không sửa.",
+   "da_sua": false
+  }
+ ]
+}

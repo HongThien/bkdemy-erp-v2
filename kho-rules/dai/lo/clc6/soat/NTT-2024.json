@@ -1,0 +1,15 @@
+{
+ "ma_de": "NTT-2024",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2024 · 10",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết \"hai tam giác vuông còn lại có một cạnh góc vuông bằng 3 cạnh ô nhỏ\" mà không chỉ tam giác nào, cạnh nào (hình đề không có hình vuông bao nên HS phải tự suy). Đã tách thành hai tam giác (góc trên bên phải, góc dưới bên trái), nói rõ cạnh 12 cm nằm trên cạnh nào và cạnh 16 cm là cạnh nào của hình vuông lớn. Toán và đáp số 56 cm² không đổi.",
+   "da_sua": true
+  }
+ ]
+}

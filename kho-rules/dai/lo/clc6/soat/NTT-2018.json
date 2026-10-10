@@ -1,0 +1,36 @@
+{
+ "ma_de": "NTT-2018",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2018 · 4",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Bước 3 Phần 1 viết \"nhân với số lần viết\" dễ hiểu nhầm là 20 lần, trong khi Phần 2 dùng 19 lần đứng trước; đã làm rõ.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2018 · 8",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Sơ đồ (trạng thái lúc sau) đánh dấu \"?\" ở hàng Cành dưới, nhưng đề hỏi số chim cành dưới LÚC ĐẦU; đã bỏ dau_hoi để khỏi gợi nhầm giá trị 6 là đáp số.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2018 · 6",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề hỏi \"ít nhất\" nhưng số liệu 15+20-30 cho đúng một giá trị 5 (nếu 30 em là toàn bộ số em đăng kí ít nhất một trong hai CLB). dap_an 5 khớp cách hiểu này; không phát hiện cách hiểu tự nhiên hơn cho đáp số khác. Chỉ báo cho CEO biết, không sửa.",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "NTT 2018 · 10",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Cách hiểu 200 hộp/50 gói là số lượng cần có (kể cả quà) cho 1 985 000 đồng (tự tính lại: p+⌊p/5⌋≥200 nhỏ nhất p=167; p+⌊p/10⌋≥50 nhỏ nhất p=46; 167×5000+46×25000=1985000). Cách hiểu \"mua đủ rồi nhận thêm\" cho 2 250 000. Hợp lí hơn là cách 1; giữ nguyên dap_an, đã có ghi_chu_nghi.",
+   "da_sua": false
+  }
+ ]
+}

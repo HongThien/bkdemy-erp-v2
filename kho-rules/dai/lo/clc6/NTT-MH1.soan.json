@@ -99,27 +99,61 @@
     }
    ]
   },
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hộp thứ hai bằng $\\dfrac{1}{3}$ hai hộp còn lại tức là hộp thứ hai $1$ phần thì hai hộp kia $3$ phần, nên hộp thứ hai chiếm $\\dfrac{1}{4}$ cả ba hộp. Khi đã biết cả ba hộp đều là phân số của TỔNG, hiệu $4$ con ứng với một phân số của tổng, lấy $4$ chia cho phân số đó ra tổng; ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Ý a): coi số thú bông ở hộp thứ hai là $1$ phần thì hai hộp còn lại là $3$ phần như thế, cộng lại được tổng số phần của cả ba hộp để biết hộp thứ hai chiếm bao nhiêu phần.\n\n**Bước 2.** Ý b): tìm phân số của tổng ứng với hộp thứ ba bằng cách lấy $1$ trừ đi phân số của hộp thứ nhất và phân số của hộp thứ hai (ở ý a), phải quy đồng mẫu số trước khi trừ.\n\n**Bước 3.** Lấy phân số của hộp thứ ba trừ phân số của hộp thứ hai để biết hộp thứ ba hơn hộp thứ hai bằng bao nhiêu phần tổng số; phân số đó ứng với $4$ con thú bông.\n\n**Bước 4.** Lấy $4$ con chia cho phân số vừa tìm để được tổng số thú bông, rồi lấy tổng nhân với phân số của hộp thứ nhất để tìm số thú bông của hộp thứ nhất.\n\n**Chú ý:** Ý a) hỏi hộp thứ hai chiếm bao nhiêu phần so với CẢ BA hộp, nên không trả lời $\\dfrac{1}{3}$ (đó là phân số so với hai hộp còn lại).\n\nThử lại: tính số thú bông của cả ba hộp, rồi kiểm tra hộp thứ hai bằng $\\dfrac{1}{3}$ số thú bông hai hộp còn lại và hộp thứ ba hơn hộp thứ hai đúng $4$ con.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Hộp thứ hai bằng $\\dfrac{1}{3}$ số thú bông của hai hộp còn lại nên hộp thứ hai là $1$ phần, hai hộp còn lại là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Hộp thứ hai 1 phần; hai hộp còn lại 3 phần)\n\nTổng số phần của cả ba hộp là: $1+3=4$ (phần)\n\nSố thú bông ở hộp thứ hai chiếm $\\dfrac{1}{4}$ số thú bông trong cả ba hộp.\n\nb) Số thú bông ở hộp thứ ba chiếm số phần số thú bông cả ba hộp là: $1-\\dfrac{2}{5}-\\dfrac{1}{4}=\\dfrac{20}{20}-\\dfrac{8}{20}-\\dfrac{5}{20}=\\dfrac{7}{20}$ (tổng số thú bông)\n\nHộp thứ ba nhiều hơn hộp thứ hai số phần tổng số thú bông là: $\\dfrac{7}{20}-\\dfrac{1}{4}=\\dfrac{7}{20}-\\dfrac{5}{20}=\\dfrac{2}{20}=\\dfrac{1}{10}$ (tổng số thú bông)\n\nTổng số thú bông trong ba hộp là: $4:\\dfrac{1}{10}=40$ (con)\n\nSố thú bông trong hộp thứ nhất là: $40\\times\\dfrac{2}{5}=16$ (con)\n\nĐáp số: a) $\\dfrac{1}{4}$; b) $16$ con thú bông"
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi dữ kiện của bài nên đổi thành phân số của TỔNG số thú bông ba hộp. Hộp thứ hai bằng $\\dfrac{1}{3}$ hai hộp còn lại tức là hộp thứ hai $1$ phần thì hai hộp kia $3$ phần, từ đó tìm được hộp thứ hai chiếm bao nhiêu phần của cả ba hộp (ý a). Khi cả ba hộp đều là phân số của tổng, hiệu $4$ con ứng với một phân số của tổng, lấy $4$ chia cho phân số đó ra tổng; ý b) dùng lại kết quả ý a).\n\n**Bước 1.** Ý a): coi số thú bông ở hộp thứ hai là $1$ phần thì hai hộp còn lại là $3$ phần như thế, cộng lại được tổng số phần của cả ba hộp để biết hộp thứ hai chiếm bao nhiêu phần.\n\n**Bước 2.** Ý b): tìm phân số của tổng ứng với hộp thứ ba bằng cách lấy $1$ trừ đi phân số của hộp thứ nhất và phân số của hộp thứ hai (ở ý a), phải quy đồng mẫu số trước khi trừ.\n\n**Bước 3.** Lấy phân số của hộp thứ ba trừ phân số của hộp thứ hai để biết hộp thứ ba hơn hộp thứ hai bằng bao nhiêu phần tổng số; phân số đó ứng với $4$ con thú bông.\n\n**Bước 4.** Lấy $4$ con chia cho phân số vừa tìm để được tổng số thú bông, rồi lấy tổng nhân với phân số của hộp thứ nhất để tìm số thú bông của hộp thứ nhất.\n\n**Chú ý:** Ý a) hỏi hộp thứ hai chiếm bao nhiêu phần so với CẢ BA hộp, nên không trả lời $\\dfrac{1}{3}$ (đó là phân số so với hai hộp còn lại).\n\nThử lại: tính số thú bông của cả ba hộp, rồi kiểm tra hộp thứ hai bằng $\\dfrac{1}{3}$ số thú bông hai hộp còn lại và hộp thứ ba hơn hộp thứ hai đúng $4$ con.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Hộp thứ hai bằng $\\dfrac{1}{3}$ số thú bông của hai hộp còn lại nên hộp thứ hai là $1$ phần, hai hộp còn lại là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Hộp thứ hai 1 phần; hai hộp còn lại 3 phần)\n\nTổng số phần của cả ba hộp là: $1+3=4$ (phần)\n\nSố thú bông ở hộp thứ hai chiếm $\\dfrac{1}{4}$ số thú bông trong cả ba hộp.\n\nb) Số thú bông ở hộp thứ ba bằng số phần của tổng số thú bông là: $1-\\dfrac{2}{5}-\\dfrac{1}{4}=\\dfrac{20}{20}-\\dfrac{8}{20}-\\dfrac{5}{20}=\\dfrac{7}{20}$ (tổng số thú bông)\n\nHộp thứ ba nhiều hơn hộp thứ hai số phần tổng số thú bông là: $\\dfrac{7}{20}-\\dfrac{1}{4}=\\dfrac{7}{20}-\\dfrac{5}{20}=\\dfrac{2}{20}=\\dfrac{1}{10}$ (tổng số thú bông)\n\nTổng số thú bông trong ba hộp là: $4:\\dfrac{1}{10}=40$ (con)\n\nSố thú bông trong hộp thứ nhất là: $40\\times\\dfrac{2}{5}=16$ (con)\n\nĐáp số: a) $\\dfrac{1}{4}$; b) $16$ con thú bông"
  },
  {
   "ma_nguon": "NTT-MH1 · P2.2",
   "dap_an": "$7$ giờ $30$ phút",
-  "so_do_mo_ta": {
-   "tieu_de": "Thời gian đi từ nhà đến trường",
-   "gia_tri_phan": 2,
-   "hang": [
-    {
-     "nhan": "Đi xe đạp",
-     "phan": 10
-    },
-    {
-     "nhan": "Đi xe máy",
-     "phan": 3
-    }
-   ],
-   "hieu": "14 phút"
-  },
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "diem": [
+     {
+      "ten": "Nhà",
+      "x": 0
+     },
+     {
+      "ten": "Trường",
+      "x": 4
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 4,
+      "nhan": "Xe đạp: 12 km/giờ"
+     },
+     {
+      "tu": 0,
+      "den": 4,
+      "nhan": "Xe máy: 40 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 4,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi từ nhà đến trường",
+    "gia_tri_phan": 2,
+    "hang": [
+     {
+      "nhan": "Đi xe đạp",
+      "phan": 10
+     },
+     {
+      "nhan": "Đi xe máy",
+      "phan": 3
+     }
+    ],
+    "hieu": "14 phút"
+   }
+  ],
   "ghi_chu_nghi": "nhiều cách: ① tỉ số vận tốc 12:40 → tỉ số thời gian 10:3 rồi hiệu–tỉ với hiệu 19−5=14 phút (đã dùng); ② rút về đơn vị / giả sử quãng đường là bội chung (vd 120 km) rồi so thời gian — không chọn số giả định. Đáp số 7 giờ 30 phút (xe đạp đi 20 phút, xe máy đi 6 phút, quãng đường 4 km). CEO chốt cách.",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường từ nhà đến trường không đổi nên vận tốc và thời gian tỉ lệ nghịch: vận tốc càng lớn thì thời gian càng ít. Hai lần đều xuất phát lúc $7$ giờ $5$ phút nên chênh lệch thời gian đi bằng chênh lệch số phút đến sớm; đó là bài hiệu – tỉ.\n\n**Bước 1.** Lấy vận tốc xe máy chia cho vận tốc xe đạp để biết thời gian đi xe đạp gấp mấy lần thời gian đi xe máy, từ đó đổi thành số phần bằng nhau của hai thời gian.\n\n**Bước 2.** Tính hiệu hai thời gian đi: đến sớm càng nhiều thì đi càng nhanh, nên lấy số phút đến sớm khi đi xe máy trừ số phút đến sớm khi đi xe đạp (cùng giờ xuất phát).\n\n**Bước 3.** Giải bài hiệu – tỉ: tìm hiệu số phần, tìm giá trị một phần rồi tính thời gian đi xe đạp.\n\n**Bước 4.** Giờ vào học là giờ xuất phát cộng thời gian đi xe đạp rồi cộng thêm số phút đã đến sớm khi đi xe đạp.\n\n**Chú ý:** Đến sớm hơn giờ vào học nghĩa là giờ vào học còn muộn hơn lúc đến, nên phải CỘNG thêm số phút đến sớm chứ không trừ.\n\nThử lại: tính thời gian đi xe máy, cộng vào giờ xuất phát rồi cộng thêm $19$ phút, phải ra cùng giờ vào học.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường từ nhà đến trường không đổi nên vận tốc và thời gian tỉ lệ nghịch.\n\nVận tốc xe máy gấp vận tốc xe đạp số lần là: $40:12=\\dfrac{10}{3}$ (lần)\n\nDo đó thời gian đi xe đạp gấp $\\dfrac{10}{3}$ lần thời gian đi xe máy, tức là thời gian đi xe đạp là $10$ phần thì thời gian đi xe máy là $3$ phần như thế.\n\nĐạt xuất phát cùng lúc $7$ giờ $5$ phút nên thời gian đi xe đạp nhiều hơn thời gian đi xe máy là: $19-5=14$ (phút)\n\nTa có sơ đồ:\n\n(Thời gian đi xe đạp 10 phần; thời gian đi xe máy 3 phần; hiệu 14 phút)\n\nHiệu số phần bằng nhau là: $10-3=7$ (phần)\n\nGiá trị một phần là: $14:7=2$ (phút)\n\nThời gian Đạt đi xe đạp là: $2\\times 10=20$ (phút)\n\nTrường vào học lúc: $7$ giờ $5$ phút $+\\ 20$ phút $+\\ 5$ phút $=7$ giờ $30$ phút\n\nĐáp số: $7$ giờ $30$ phút"
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường từ nhà đến trường không đổi nên vận tốc và thời gian tỉ lệ nghịch: vận tốc càng lớn thì thời gian càng ít. Hai lần đều xuất phát lúc $7$ giờ $5$ phút nên chênh lệch thời gian đi bằng chênh lệch số phút đến sớm; đó là bài hiệu – tỉ.\n\n**Bước 1.** Lấy vận tốc xe máy chia cho vận tốc xe đạp để biết thời gian đi xe đạp gấp mấy lần thời gian đi xe máy, từ đó đổi thành số phần bằng nhau của hai thời gian.\n\n**Bước 2.** Tính hiệu hai thời gian đi: đến sớm càng nhiều thì đi càng nhanh, nên lấy số phút đến sớm khi đi xe máy trừ số phút đến sớm khi đi xe đạp (cùng giờ xuất phát).\n\n**Bước 3.** Giải bài hiệu – tỉ: tìm hiệu số phần, tìm giá trị một phần rồi tính thời gian đi xe đạp.\n\n**Bước 4.** Giờ vào học là giờ xuất phát cộng thời gian đi xe đạp rồi cộng thêm số phút đã đến sớm khi đi xe đạp.\n\n**Chú ý:** Đến sớm hơn giờ vào học nghĩa là giờ vào học còn muộn hơn lúc đến, nên phải CỘNG thêm số phút đến sớm chứ không trừ.\n\nThử lại: tính thời gian đi xe máy, cộng vào giờ xuất phát rồi cộng thêm $19$ phút, phải ra cùng giờ vào học.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Nhà cách trường một quãng đường như nhau; Đạt đi xe đạp với vận tốc $12$ km/giờ, đi xe máy với vận tốc $40$ km/giờ)\n\nQuãng đường từ nhà đến trường không đổi nên vận tốc và thời gian tỉ lệ nghịch.\n\nVận tốc xe máy gấp vận tốc xe đạp số lần là: $40:12=\\dfrac{10}{3}$ (lần)\n\nDo đó thời gian đi xe đạp gấp $\\dfrac{10}{3}$ lần thời gian đi xe máy, tức là thời gian đi xe đạp là $10$ phần thì thời gian đi xe máy là $3$ phần như thế.\n\nĐạt xuất phát cùng lúc $7$ giờ $5$ phút nên thời gian đi xe đạp nhiều hơn thời gian đi xe máy là: $19-5=14$ (phút)\n\nTa có sơ đồ:\n\n(Thời gian đi xe đạp 10 phần; thời gian đi xe máy 3 phần; hiệu 14 phút)\n\nHiệu số phần bằng nhau là: $10-3=7$ (phần)\n\nGiá trị một phần là: $14:7=2$ (phút)\n\nThời gian Đạt đi xe đạp là: $2\\times 10=20$ (phút)\n\nTrường vào học lúc: $7$ giờ $5$ phút $+\\ 20$ phút $+\\ 5$ phút $=7$ giờ $30$ phút\n\nĐáp số: $7$ giờ $30$ phút"
  }
 ]

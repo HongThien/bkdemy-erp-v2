@@ -1,0 +1,15 @@
+{
+ "ma_de": "CG-2024",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "CG 2024 · 10",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Bước 3 của Phần 1 nói chung chung (\"chọn cách hai số có quan hệ đúng như đề đòi hỏi\") — HS không biết quan hệ gì. Đã viết lại: tích $b\times(a+b)$ đã biết, liệt kê cách viết thành tích hai số rồi chọn cách hai thừa số hơn kém nhau đúng a (vì (a+b)-b=a); không lộ đáp số. Phần 2 và đáp số không đổi.",
+   "da_sua": true
+  }
+ ]
+}

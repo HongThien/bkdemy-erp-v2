@@ -1,0 +1,29 @@
+{
+ "ma_de": "CG-2021",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "CG 2021 · 9",
+   "muc": "nen_sua",
+   "loai": "cách chuẩn",
+   "mo_ta": "Ý b) giải được nhiều cách (tỉ số thời gian / rút về 1 km) nhưng bản soạn không có ghi_chu_nghi \"nhiều cách\" như brief yêu cầu. Đã bổ sung ghi_chu_nghi; lời giải và đáp số giữ nguyên (đúng: 5,5 giờ; 150 km — đã thử lại, đi 2,5 giờ + về 3 giờ = 5,5 giờ).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "CG 2021 · 10",
+   "muc": "hoi",
+   "loai": "đáp số",
+   "mo_ta": "Ý a) có 3 đáp án hợp lệ (đã tính lại): thứ tự nhận bi (A,A,C) → lượt 2: 9;13;11, lượt 3: 11;12;10; (A,C,A) → 9;13;11 rồi 8;12;13; (C,A,A) → 6;13;14 rồi 8;12;13 (đều về 10;11;12 sau lượt 4). Bản soạn chọn (A,A,C) và đã nêu trong ghi_chu_nghi + Chú ý. Toán đúng; CHỈ báo để CEO chốt đáp án chuẩn nếu máy chấm so đúng một bộ số. Ý b) (số dư chia 3 cùng lùi 1; 11 chia 3 dư 2 cho cả ba hộp) đúng.",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "CG 2021 · 8",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề không có hình; bản soạn hiểu AB, CD là hai đáy (AB // CD), E nằm trên cạnh bên AD — hợp lí và đã ghi ghi_chu_nghi. Với cách hiểu này S_ABD:S_BCD = 2:3 → S_ABD = 12; S_ABE = 12 × 2/3 = 8 cm² (khớp dap_an). Chỉ báo để CEO biết đề thiếu hình, không sửa.",
+   "da_sua": false
+  }
+ ]
+}

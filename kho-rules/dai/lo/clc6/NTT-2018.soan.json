@@ -36,7 +36,7 @@
  {
   "ma_nguon": "NTT 2018 · 4",
   "dap_an": "D",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần viết câu đều có cùng số chữ cái, và âm Ê chỉ nằm trong chữ NGUYỄN; âm Ê cuối cùng nằm ở lần viết thứ $20$, nên vị trí của nó bằng số chữ cái của các lần viết trước cộng với vị trí của Ê trong lần viết cuối.\n\n**Bước 1.** Đếm số chữ cái của một câu \"TRƯỜNG NGUYỄN TẤT THÀNH\"; đề nói viết liên tiếp nên không tính khoảng trống giữa các chữ.\n\n**Bước 2.** Tìm vị trí của chữ cái Ê trong một câu bằng cách đếm từ đầu câu: Ê nằm ở chữ NGUYỄN.\n\n**Bước 3.** Tính số chữ cái của các lần viết đầy đủ đứng trước lần viết thứ $20$ bằng cách lấy số chữ cái của một câu nhân với số lần viết.\n\n**Bước 4.** Cộng số chữ cái đó với vị trí của Ê trong câu cuối cùng để được vị trí cần tìm, rồi chọn phương án.\n\n**Chú ý:** Chữ Ễ có dấu ngã nhưng vẫn là âm Ê, và mỗi câu chỉ có một chữ Ê.\n\n**Phần 2. Trình bày**\n\nCâu \"TRƯỜNG NGUYỄN TẤT THÀNH\" có số chữ cái là: $6+6+3+5=20$ (chữ cái)\n\nÂm Ê là chữ cái thứ $5$ của chữ NGUYỄN, mà trước đó chữ TRƯỜNG có $6$ chữ cái, nên trong một câu âm Ê đứng ở vị trí thứ: $6+5=11$\n\nÂm Ê cuối cùng nằm trong lần viết thứ $20$; số chữ cái của $19$ lần viết đứng trước là: $20\\times 19=380$ (chữ cái)\n\nVị trí của âm Ê cuối cùng là: $380+11=391$\n\nChọn D.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần viết câu đều có cùng số chữ cái, và âm Ê chỉ nằm trong chữ NGUYỄN; âm Ê cuối cùng nằm ở lần viết thứ $20$, nên vị trí của nó bằng số chữ cái của các lần viết trước cộng với vị trí của Ê trong lần viết cuối.\n\n**Bước 1.** Đếm số chữ cái của một câu \"TRƯỜNG NGUYỄN TẤT THÀNH\"; đề nói viết liên tiếp nên không tính khoảng trống giữa các chữ.\n\n**Bước 2.** Tìm vị trí của chữ cái Ê trong một câu bằng cách đếm từ đầu câu: Ê nằm ở chữ NGUYỄN.\n\n**Bước 3.** Tính số chữ cái của các lần viết đầy đủ đứng trước lần viết thứ $20$ bằng cách lấy số chữ cái của một câu nhân với số lần viết đứng trước lần viết cuối (tức là bớt đi một lần so với $20$ lần).\n\n**Bước 4.** Cộng số chữ cái đó với vị trí của Ê trong câu cuối cùng để được vị trí cần tìm, rồi chọn phương án.\n\n**Chú ý:** Chữ Ễ có dấu ngã nhưng vẫn là âm Ê, và mỗi câu chỉ có một chữ Ê.\n\n**Phần 2. Trình bày**\n\nCâu \"TRƯỜNG NGUYỄN TẤT THÀNH\" có số chữ cái là: $6+6+3+5=20$ (chữ cái)\n\nÂm Ê là chữ cái thứ $5$ của chữ NGUYỄN, mà trước đó chữ TRƯỜNG có $6$ chữ cái, nên trong một câu âm Ê đứng ở vị trí thứ: $6+5=11$\n\nÂm Ê cuối cùng nằm trong lần viết thứ $20$; số chữ cái của $19$ lần viết đứng trước là: $20\\times 19=380$ (chữ cái)\n\nVị trí của âm Ê cuối cùng là: $380+11=391$\n\nChọn D.",
   "ghi_chu_nghi": "Hiểu: đếm theo chữ cái, không tính khoảng trống (đề nói \"viết liên tiếp\"); chữ Ễ trong NGUYỄN là âm Ê. Kết quả 391 trùng phương án D."
  },
  {
@@ -112,10 +112,7 @@
      "phan": 3
     }
    ],
-   "tong": "10 con",
-   "dau_hoi": [
-    "Cành dưới"
-   ]
+   "tong": "10 con"
   }
  },
  {

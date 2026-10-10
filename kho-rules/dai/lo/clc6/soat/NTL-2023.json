@@ -1,0 +1,29 @@
+{
+ "ma_de": "NTL-2023",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NTL 2023 · P1.10",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết 3×3=9, 2×2=4, 1×1=1 không nói vì sao số hàng/cột là 3, 2, 1 — HS lớp 5 phải tự bù bước. Đã thêm vào mỗi dòng lý do (góc trên bên trái của hình vuông chỉ nằm ở 3/2/1 hàng đầu và cột đầu). Đáp số 30 không đổi.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTL 2023 · P1.6",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề hỏi \"Tìm số sách ngăn 2\" không nói lúc đầu hay sau khi chuyển. Lời giải và dap_an (27) theo cách hiểu LÚC ĐẦU, nhất quán nội bộ; cách hiểu SAU khi chuyển cho 30. Tôi tính lại: tổng 48, sau chuyển 18 và 30, lúc đầu 21 và 27. Đáp số đã được so ba nguồn ở khâu khác nên không đổi; ghi_chu_nghi của bản soạn còn câu \"Cần đối chiếu nguồn khác\" — nên bỏ câu đó khi ghi kho nếu ba nguồn đã khớp 27.",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "NTL 2023 · P2.2",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Ý c) đề chỉ ghi \"So sánh BK/KC\" (lửng, thiếu vế sau). Bản soạn tính BK/KC = 2/3 (BK ngắn hơn KC). Tôi kiểm lại bằng toạ độ: BK/KC = 2/3 đúng, a)=30 và b)=2 đúng. Không phân xử được đề gốc so sánh BK/KC với gì (2/3? 1? hay BK với KC) — lời giải đã trình bày đủ để suy ra mọi kết luận so sánh; cần đối chiếu PDF đề.",
+   "da_sua": false
+  }
+ ]
+}

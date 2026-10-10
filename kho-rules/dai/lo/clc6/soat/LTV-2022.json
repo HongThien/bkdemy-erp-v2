@@ -1,0 +1,36 @@
+{
+ "ma_de": "LTV-2022",
+ "so_cau": 20,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "LTV 2022 · 17",
+   "muc": "sai",
+   "loai": "cách chuẩn",
+   "mo_ta": "Bài hai tỉ số (hiệu số tuổi không đổi) mà bản soạn dùng 3 sơ đồ đoạn thẳng và quy đồng số phần; CEO đã chốt CĐ8 hai tỉ số: phân số của đại lượng không đổi, KHÔNG sơ đồ (k5T.md §2b). Đã viết lại: tuổi con hiện nay = 1/2 hiệu, bốn năm trước = 1/3 hiệu, 1/2-1/3=1/6 hiệu ứng 4 tuổi, hiệu = 4:1/6 = 24, con lúc mẹ gấp 2 lần = 24. Đáp số giữ nguyên 24; bỏ so_do_mo_ta; Phần 1 viết lại theo cùng cách.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2022 · 13",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng kết luận Phần 2 viết \"bánh ở hộp A nhiều hơn bánh ở hộp B\" (sai nghĩa: so diện tích/khối lượng, không so số bánh). Đã sửa thành so khối lượng bánh theo diện tích.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2022 · 20",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề chữ \"CE gấp 4 lần DE\" (D giữa E và C) => DC=3DE => S_ABC=45 (đúng như bản soạn: 10x3=30; 30:2x3=45). Nhưng đo trên hình: DE≈106px, DC≈412px, DC/DE≈3,9 (gần 4), trong khi AB/AD đo được ≈2,98 đúng 3 => hình vẽ chính xác hợp với \"CD gấp 4 lần DE\" (cho S_ABC=60: BDC=40, x1,5). Không sửa vì dap_an đã khớp ba nguồn theo đề chữ; báo để người đối chiếu bản gốc đề (có thể đề in \"CD\" hay \"CE\").",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "LTV 2022 · 19",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Quy luật \"số giữa = tổng bốn số quanh + 1\" suy từ hai hình (31->32, 45->46); dò mọi tổ hợp tuyến tính hệ số -2..2 + hằng số khớp cả hai hình chỉ có đúng quy luật này, cho x=66. Không nghi sai, chỉ ghi nhận quy luật dựa trên hai điểm dữ liệu.",
+   "da_sua": false
+  }
+ ]
+}

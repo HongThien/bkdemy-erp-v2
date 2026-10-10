@@ -1,0 +1,22 @@
+{
+ "ma_de": "ARC-2024-MAU",
+ "so_cau": 50,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "ARC 2024-MAU · 15",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Lập luận chưa đủ: khẳng định ngay \"phần nguyên một chữ số\" rồi mới nói \"ba chữ số khác nhau nên dùng đủ cả ba\" — thứ tự lý do ngược, HS không thấy vì sao phần nguyên chỉ có một chữ số. Đã sửa (Mấu chốt, Bước 1, câu đầu Phần 2): hai chữ số thập phân khác nhau trong ba chữ số được cho ⇒ phần nguyên chỉ còn một chữ số. Đáp số 4 không đổi.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2024-MAU · 30",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Phần 1 Bước 3 viết \"diện tích bằng tỉ số AE trên AB\" (thiếu \"của diện tích tam giác ABD\", dễ hiểu thành diện tích bằng một tỉ số). Đã viết lại thành \"diện tích tam giác AED bằng AE/AB diện tích tam giác ABD\", nêu rõ đường cao hạ từ D xuống AB.",
+   "da_sua": true
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "ma_de": "NS-2021",
+ "so_cau": 13,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "NS 2021 · P1.1",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết hỗn số không chuẩn \"7 7/7\" rồi đổi ngầm thành 8. Sửa: tách phần nguyên 2+5=7 và phần phân số 3/7+4/7=1, rồi 7+1=8, khớp Bước 4 của Phần 1.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2021 · P1.8",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Cụm \"thời gian dự định\" dùng ở cả Phần 1 lẫn Phần 2 mà không được định nghĩa (HS phải tự đoán). Sửa: thêm câu định nghĩa (thời gian đi đoạn đường đó nếu giữ nguyên vận tốc ban đầu) ở Bước 2 và đầu phần tính của Phần 2. Toán, sơ đồ chuyển động và đáp số giữ nguyên (tự kiểm lại: v=50 km/giờ, AB=400 km).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2021 · P1.9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Chu vi từng tầng (18, 12, 8, 4) được ghi thẳng, HS không biết tính ra sao. Sửa: nêu cách tính \"số cạnh 1 cm của các khối trừ 2 lần số cặp khối chung cạnh\" (9x4-9x2=18; 5x4-4x2=12; 3x4-2x2=8; 4), cập nhật Bước 3 Phần 1 cho cùng cách.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2021 · P1.9",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đáp số 60 cm2 phụ thuộc cách đọc hình 3D. Tôi tự đọc hình độc lập và ra đúng cùng bố cục với người soạn: 9 cột, độ cao theo hàng (trước ra sau) 1;2;1 | 1 | 3;2;1 | 3;4, tổng 18 khối; đếm đủ mặt ngoài (kể cả chỗ lõm giữa các cột) = 18 mặt trên+dưới + 42 mặt xung quanh = 60. Nếu đáp án in trong sách là 56 thì đó là cách đếm theo hình chiếu (bỏ sót 4 mặt ở chỗ lõm) và 60 vẫn là đáp số đúng của hình; cần đối chiếu với nguồn đáp án. Giả định khối bị che đều có khối đỡ bên dưới, không có khối ẩn thêm phía sau.",
+   "da_sua": false
+  }
+ ]
+}

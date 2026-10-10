@@ -1,0 +1,22 @@
+{
+ "ma_de": "NS-2025",
+ "so_cau": 9,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NS 2025 · P2.3",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ý b) khẳng định \"đếm thì thấy mỗi đoạn nằm trong nhiều nhất 6 hình, chỉ 6 đoạn như vậy, còn lại nhiều nhất 5\" mà không cho HS thấy số đếm; toàn bộ lập luận \"không quá 11 hình\" dựa vào điều này. Đã chạy lại bằng code (30 đoạn: 3 đoạn 2 hình, 18 đoạn 4 hình, 3 đoạn 5 hình, 6 đoạn 6 hình; tổng 27 hình; xoá hai đoạn: nhỏ nhất còn 16, đúng 6 cách; cặp đoạn giữa đường ngang dài 3 cm + đoạn thứ hai từ phải của đáy mất đúng 11 hình, hai tập hình rời nhau). Đã thêm bảng số hình theo từng đoạn nằm ngang (4;6;6;4 / 4;5;4 / 4;4 / 2), phần còn lại giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2025 · P2.3",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Không phân xử được hai chỗ đề mơ hồ (người soạn đã ghi ghi_chu_nghi): (a) \"hình tam giác được cấu tạo bởi các hình tam giác có cạnh 1 cm\" hiểu là mọi tam giác ghép từ các ô nhỏ = 27 (nếu chỉ đếm ô cạnh 1 cm thì 16); (b) \"ít hình tam giác nhất\" hiểu là số tam giác còn lại = 16 (đề cũng có thể chỉ đòi chỉ ra cách xoá). Cách hiểu của người soạn là cách tự nhiên nhất; không đổi.",
+   "da_sua": false
+  }
+ ]
+}

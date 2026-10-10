@@ -2,7 +2,7 @@
  {
   "ma_nguon": "TX 2021 · 1",
   "dap_an": "C",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá trị của một chữ số phụ thuộc vào hàng mà nó đứng. Bên phải dấu phẩy, các hàng lần lượt là phần mười, phần trăm, phần nghìn; chữ số đứng ở hàng nào thì có giá trị bằng chữ số đó chia cho $10$, $100$ hay $1000$.\n\n**Bước 1.** Viết ra tên các hàng của phần thập phân của số $24,684$ theo thứ tự từ dấu phẩy sang phải: hàng phần mười, hàng phần trăm, hàng phần nghìn.\n\n**Bước 2.** Đối chiếu từng chữ số của phần thập phân với tên hàng để xác định chữ số $8$ đang đứng ở hàng nào.\n\n**Bước 3.** Chữ số đứng ở hàng phần trăm thì có giá trị bằng chữ số đó chia cho một số tương ứng với hàng; viết giá trị thành phân số rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Chữ số $8$ nằm sau dấu phẩy nên không thể có giá trị là số tự nhiên như $80$ hay $800$.\n\n**Phần 2. Trình bày**\n\nPhần thập phân của $24,684$ có chữ số $6$ ở hàng phần mười, chữ số $8$ ở hàng phần trăm, chữ số $4$ ở hàng phần nghìn.\n\nChữ số $8$ đứng ở hàng phần trăm nên giá trị của nó là $\\dfrac{8}{100}$.\n\nChọn C."
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá trị của một chữ số phụ thuộc vào hàng mà nó đứng. Bên phải dấu phẩy, các hàng lần lượt là phần mười, phần trăm, phần nghìn; chữ số đứng ở hàng nào thì có giá trị bằng chữ số đó chia cho $10$, $100$ hay $1000$.\n\n**Bước 1.** Viết ra tên các hàng của phần thập phân của số $24,684$ theo thứ tự từ dấu phẩy sang phải: hàng phần mười, hàng phần trăm, hàng phần nghìn.\n\n**Bước 2.** Đối chiếu từng chữ số của phần thập phân với tên hàng để xác định chữ số $8$ đang đứng ở hàng nào.\n\n**Bước 3.** Biết chữ số $8$ đứng ở hàng nào, viết giá trị của nó thành phân số có tử số là chữ số đó và mẫu số là $10$, $100$ hoặc $1000$ tương ứng với hàng ấy, rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Chữ số $8$ nằm sau dấu phẩy nên không thể có giá trị là số tự nhiên như $80$ hay $800$.\n\n**Phần 2. Trình bày**\n\nPhần thập phân của $24,684$ có chữ số $6$ ở hàng phần mười, chữ số $8$ ở hàng phần trăm, chữ số $4$ ở hàng phần nghìn.\n\nChữ số $8$ đứng ở hàng phần trăm nên giá trị của nó là $\\dfrac{8}{100}$.\n\nChọn C."
  },
  {
   "ma_nguon": "TX 2021 · 2",
@@ -12,7 +12,7 @@
  {
   "ma_nguon": "TX 2021 · 3",
   "dap_an": "C",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi chia số thập phân và dừng ở chữ số thứ ba của phần thập phân, số dư không phải số tự nhiên đứng cuối phép chia mà phải đặt đúng hàng: số dư bằng số bị chia trừ đi tích của thương với số chia.\n\n**Bước 1.** Chia $1,385$ cho $15$ và dừng lại khi thương có đủ ba chữ số ở phần thập phân; để làm gọn, chia $1385$ cho $15$ rồi đặt dấu phẩy cho thương.\n\n**Bước 2.** Số bị chia $1,385$ có ba chữ số thập phân nên thương có ba chữ số thập phân là hàng phần nghìn; xác định thương là bao nhiêu và nhân thương với $15$.\n\n**Bước 3.** Lấy số bị chia trừ tích vừa tìm để được số dư, nhớ rằng số dư phải bé hơn số chia và có ba chữ số thập phân.\n\n**Chú ý:** Số dư phải có đúng ba chữ số thập phân như số bị chia; nếu chỉ lấy số dư cuối cùng của phép chia số tự nhiên thì sẽ chọn nhầm phương án.\n\n**Phần 2. Trình bày**\n\nTa có $15\\times 92=1380$ nên thương của $1,385:15$ lấy ba chữ số phần thập phân là $0,092$.\n\nTích của thương và số chia là: $0,092\\times 15=1,38$\n\nSố dư là: $1,385-1,38=0,005$\n\nChọn C."
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi chia số thập phân và dừng ở chữ số thứ ba của phần thập phân, số dư không phải số tự nhiên đứng cuối phép chia mà phải đặt đúng hàng: số dư bằng số bị chia trừ đi tích của thương với số chia.\n\n**Bước 1.** Nhận ra $1,385$ có ba chữ số ở phần thập phân, tức là $1385$ phần nghìn; thương lấy ba chữ số thập phân cũng được tính theo phần nghìn.\n\n**Bước 2.** Chia $1385$ cho $15$ như chia số tự nhiên để tìm thương và số dư; thương này là số phần nghìn, viết lại thành số thập phân.\n\n**Bước 3.** Số dư cũng đếm theo phần nghìn, nên viết nó thành số thập phân có ba chữ số ở phần thập phân rồi đối chiếu với bốn phương án.\n\n**Chú ý:** Số dư phải có đúng ba chữ số thập phân như số bị chia; nếu chỉ lấy số dư cuối cùng của phép chia số tự nhiên thì sẽ chọn nhầm phương án.\n\n**Phần 2. Trình bày**\n\nSố $1,385$ là $1385$ phần nghìn.\n\nChia $1385$ cho $15$ ta được: $1385:15=92$ (dư $5$)\n\nVậy thương lấy ba chữ số ở phần thập phân là $0,092$ và số dư là $5$ phần nghìn, tức là $0,005$.\n\nChọn C."
  },
  {
   "ma_nguon": "TX 2021 · 4",
@@ -44,30 +44,65 @@
  {
   "ma_nguon": "TX 2021 · 9",
   "dap_an": "$220$ trang",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ngày trong ba ngày đầu bạn Hằng đọc \"một phần tư quyển và vài trang\". Gom riêng phần phân số của quyển sách và gom riêng các trang lẻ, thì số trang còn lại sẽ ứng với phần phân số của quyển sách chưa đọc đến.\n\n**Bước 1.** Cộng các phần phân số của quyển sách đã đọc trong ba ngày đầu để biết ba ngày đó đọc được bao nhiêu phần quyển.\n\n**Bước 2.** Cộng riêng các số trang lẻ trong ba ngày đầu; sau đó lấy cả quyển sách trừ đi phần phân số đã đọc để biết phần quyển sách còn lại.\n\n**Bước 3.** Phần quyển sách còn lại ứng với các trang lẻ cộng với số trang đọc ở ngày thứ tư; tính số trang đó.\n\n**Bước 4.** Biết một phân số của quyển sách ứng với bao nhiêu trang thì lấy số trang đó chia cho phân số để tìm cả quyển sách.\n\n**Chú ý:** Các trang lẻ $6$, $5$, $4$ không nằm trong phần phân số của quyển sách nên phải cộng riêng, không được trừ đi trước khi chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBa ngày đầu đọc được số phần quyển sách là: $\\dfrac{1}{4}\\times 3=\\dfrac{3}{4}$ (quyển sách)\n\nSố trang lẻ đã đọc trong ba ngày đầu là: $6+5+4=15$ (trang)\n\nPhần quyển sách còn lại ngoài $\\dfrac{3}{4}$ quyển là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (quyển sách)\n\nSố trang ứng với $\\dfrac{1}{4}$ quyển sách là: $15+40=55$ (trang)\n\nQuyển sách có số trang là: $55:\\dfrac{1}{4}=220$ (trang)\n\nĐáp số: $220$ trang"
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ngày trong ba ngày đầu bạn Hằng đọc \"một phần tư quyển và vài trang\". Gom riêng phần phân số của quyển sách và gom riêng các trang lẻ, thì số trang còn lại sẽ ứng với phần phân số của quyển sách chưa đọc đến.\n\n**Bước 1.** Cộng các phần phân số của quyển sách đã đọc trong ba ngày đầu để biết ba ngày đó đọc được bao nhiêu phần quyển.\n\n**Bước 2.** Cộng riêng các số trang lẻ trong ba ngày đầu; sau đó lấy cả quyển sách trừ đi phần phân số đã đọc để biết phần quyển sách còn lại.\n\n**Bước 3.** Phần quyển sách còn lại ứng với các trang lẻ cộng với số trang đọc ở ngày thứ tư; tính số trang đó.\n\n**Bước 4.** Biết một phân số của quyển sách ứng với bao nhiêu trang thì lấy số trang đó chia cho phân số để tìm cả quyển sách.\n\n**Chú ý:** Các trang lẻ $6$, $5$, $4$ không nằm trong phần phân số của quyển sách nên phải cộng riêng; số trang ứng với phần quyển sách còn lại gồm cả các trang lẻ đó và số trang đọc ở ngày thứ tư, đừng đem riêng số trang ngày thứ tư chia cho phân số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBa ngày đầu đọc được số phần quyển sách là: $\\dfrac{1}{4}\\times 3=\\dfrac{3}{4}$ (quyển sách)\n\nSố trang lẻ đã đọc trong ba ngày đầu là: $6+5+4=15$ (trang)\n\nPhần quyển sách còn lại ngoài $\\dfrac{3}{4}$ quyển là: $1-\\dfrac{3}{4}=\\dfrac{1}{4}$ (quyển sách)\n\nSố trang ứng với $\\dfrac{1}{4}$ quyển sách là: $15+40=55$ (trang)\n\nQuyển sách có số trang là: $55:\\dfrac{1}{4}=220$ (trang)\n\nĐáp số: $220$ trang"
  },
  {
   "ma_nguon": "TX 2021 · 10",
   "dap_an": "$150$ km",
   "ghi_chu_nghi": "Đề có chữ \"ô tô đến B chậm\" trong câu nói về người đi xe máy (có thể in nhầm, nên là \"người đó\"/\"xe máy\"); hiểu là cùng một người đi và \"chậm\" so với giờ dự định (cùng một mốc). Khi đó thời gian đi với 25 km/giờ hơn thời gian đi với 30 km/giờ là 2 − 1 = 1 giờ.",
-  "so_do_mo_ta": {
-   "tieu_de": "Thời gian đi hết quãng đường AB",
-   "gia_tri_phan": 1,
-   "hang": [
-    {
-     "nhan": "Đi 25 km/giờ",
-     "phan": 6
-    },
-    {
-     "nhan": "Đi 30 km/giờ",
-     "phan": 5
-    }
-   ],
-   "hieu": "1 giờ",
-   "dau_hoi": [
-    "Đi 25 km/giờ"
-   ]
-  },
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch. Hai lần đi cùng chậm hơn dự định ($2$ giờ và $1$ giờ) nên thời gian của hai lần đi hơn kém nhau đúng bằng hiệu của hai số giờ chậm, từ đó đưa về bài toán hiệu – tỉ.\n\n**Bước 1.** Lập tỉ số hai vận tốc rồi đổi sang tỉ số hai thời gian: vì cùng quãng đường nên tỉ số thời gian là tỉ số ngược lại với tỉ số vận tốc.\n\n**Bước 2.** So sánh hai lần đi: lần đi chậm hơn dự định $2$ giờ hơn lần đi chậm hơn dự định $1$ giờ là bao nhiêu giờ, đó là hiệu của hai thời gian đi.\n\n**Bước 3.** Vẽ sơ đồ hai thời gian theo số phần bằng nhau, hiệu hai thời gian ứng với hiệu số phần, rồi tìm thời gian đi với vận tốc nhỏ hơn.\n\n**Bước 4.** Nhân vận tốc nhỏ với thời gian tương ứng để tìm quãng đường AB.\n\n**Thử lại:** Dùng vận tốc còn lại và quãng đường vừa tìm để tính thời gian, hiệu hai thời gian phải đúng bằng số giờ đã tìm ở bước 2.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số vận tốc là: $25:30=\\dfrac{5}{6}$\n\nTrên cùng quãng đường AB, vận tốc và thời gian tỉ lệ nghịch nên tỉ số thời gian đi với $25$ km/giờ và thời gian đi với $30$ km/giờ là $\\dfrac{6}{5}$.\n\nHai lần đi chậm hơn dự định lần lượt $2$ giờ và $1$ giờ nên thời gian đi với $25$ km/giờ hơn thời gian đi với $30$ km/giờ là: $2-1=1$ (giờ)\n\nTa có sơ đồ:\n\n(Thời gian đi với $25$ km/giờ: $6$ phần; thời gian đi với $30$ km/giờ: $5$ phần; hiệu $1$ giờ)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nThời gian đi với $25$ km/giờ là: $1:1\\times 6=6$ (giờ)\n\nQuãng đường AB dài là: $25\\times 6=150$ (km)\n\nĐáp số: $150$ km"
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Cùng đi từ A đến B",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "B",
+      "x": 150
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 150,
+      "nhan": "25 km/giờ: chậm 2 giờ"
+     },
+     {
+      "tu": 0,
+      "den": 150,
+      "nhan": "30 km/giờ: chậm 1 giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 150,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi hết quãng đường AB",
+    "gia_tri_phan": 1,
+    "hang": [
+     {
+      "nhan": "Đi 25 km/giờ",
+      "phan": 6
+     },
+     {
+      "nhan": "Đi 30 km/giờ",
+      "phan": 5
+     }
+    ],
+    "hieu": "1 giờ",
+    "dau_hoi": [
+     "Đi 25 km/giờ"
+    ]
+   }
+  ],
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trên cùng một quãng đường, vận tốc và thời gian là hai đại lượng tỉ lệ nghịch. Hai lần đi cùng chậm hơn dự định ($2$ giờ và $1$ giờ) nên thời gian của hai lần đi hơn kém nhau đúng bằng hiệu của hai số giờ chậm, từ đó đưa về bài toán hiệu – tỉ.\n\n**Bước 1.** Lập tỉ số hai vận tốc rồi đổi sang tỉ số hai thời gian: vì cùng quãng đường nên tỉ số thời gian là tỉ số ngược lại với tỉ số vận tốc.\n\n**Bước 2.** So sánh hai lần đi: lần đi chậm hơn dự định $2$ giờ hơn lần đi chậm hơn dự định $1$ giờ là bao nhiêu giờ, đó là hiệu của hai thời gian đi.\n\n**Bước 3.** Vẽ sơ đồ hai thời gian theo số phần bằng nhau, hiệu hai thời gian ứng với hiệu số phần, rồi tìm thời gian đi với vận tốc nhỏ hơn.\n\n**Bước 4.** Nhân vận tốc nhỏ với thời gian tương ứng để tìm quãng đường AB.\n\n**Thử lại:** Dùng vận tốc còn lại và quãng đường vừa tìm để tính thời gian, hiệu hai thời gian phải đúng bằng số giờ đã tìm ở bước 2.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Người đó đi từ A đến B, quãng đường AB chưa biết; đi với $25$ km/giờ thì đến chậm $2$ giờ, đi với $30$ km/giờ thì đến chậm $1$ giờ)\n\nTỉ số vận tốc là: $25:30=\\dfrac{5}{6}$\n\nTrên cùng quãng đường AB, vận tốc và thời gian tỉ lệ nghịch nên tỉ số thời gian đi với $25$ km/giờ và thời gian đi với $30$ km/giờ là $\\dfrac{6}{5}$.\n\nHai lần đi chậm hơn dự định lần lượt $2$ giờ và $1$ giờ nên thời gian đi với $25$ km/giờ hơn thời gian đi với $30$ km/giờ là: $2-1=1$ (giờ)\n\nTa có sơ đồ:\n\n(Thời gian đi với $25$ km/giờ: $6$ phần; thời gian đi với $30$ km/giờ: $5$ phần; hiệu $1$ giờ)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nThời gian đi với $25$ km/giờ là: $1:1\\times 6=6$ (giờ)\n\nQuãng đường AB dài là: $25\\times 6=150$ (km)\n\nĐáp số: $150$ km"
  }
 ]

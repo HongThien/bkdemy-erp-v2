@@ -1,0 +1,29 @@
+{
+ "ma_de": "NN-2023",
+ "so_cau": 6,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2023 · 4",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề mơ hồ ở hai chỗ nhưng ghi_chu_nghi của người soạn đã nêu đúng. Cách hiểu của người soạn (B cho người khác 6 cái nên A không đổi; câu cuối là tình huống riêng tính từ lúc đầu): A=12, B=30, B+2=32, tỉ số 12:32=3/8 (đã tự tính lại, đúng). Hai cách hiểu khác: (i) B cho đi 6 rồi mới nhận thêm 2 (B=26) cho 6/13; (ii) B cho A 6 cái thì 5k-6=2(2k+6) cho k=18, A=36, B=90, B+2=92, tỉ số 9/23. Không đổi dap_an (3/8 là cách hiểu tự nhiên nhất, các số đẹp); chỉ báo để CEO biết.",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "NN 2023 · 5",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Đáp số 36 cm2 đúng (tính lại bằng toạ độ). Nhưng Phần 2 viết cạnh hình vuông EFCG là 3+6=9 mà không nói 3 và 6 là gì (HS phải tự bù), nói F, G nằm trên đường BC, DC mà thực ra nằm trên phần kéo dài, và MF, NG chỉ ghi 9-6 không nói là EF-EM, EG-EN. Đã sửa: nêu 3 là cạnh hình vuông nhỏ, 6 là cạnh ABCD; ghi rõ đường thẳng BC, DC kéo dài về phía B, D; MF=EF-EM, NG=EG-EN. Phần 1 giữ nguyên, qua kiemP1.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2023 · 6",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Đáp số đúng (xe tải 24, xe khách 36; thử lại: 96:24=144:36=4 giờ; lần hai 72:24=3 giờ, 168:36-3=5/3 giờ). Dòng 72:2x3=108 nhảy bước: HS phải tự nhớ tỉ số 2:3 từ lần một. Đã sửa thành: quãng đường xe tải bằng 2/3 quãng đường xe khách cùng thời gian, nên 72:2/3=108 (đúng nếp phân số ứng với rồi chia). Sơ đồ giữ nguyên, máy vẽ chạy lại OK.",
+   "da_sua": true
+  }
+ ]
+}

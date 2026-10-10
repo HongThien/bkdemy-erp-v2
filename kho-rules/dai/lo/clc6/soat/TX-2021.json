@@ -1,0 +1,36 @@
+{
+ "ma_de": "TX-2021",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 4,
+ "van_de": [
+  {
+   "ma_nguon": "TX 2021 · 1",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Bước 3 nói sẵn \"chữ số đứng ở hàng phần trăm\" nên lộ hàng của chữ số 8 (điều HS phải tự tìm ở Bước 2). Đã viết lại trung tính.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2021 · 3",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết 15×92=1380 rồi kết luận thương là 0,092 mà không chứng tỏ 92 là lớn nhất (nhảy bước), Phần 1 và Phần 2 lệch cách làm. Đã viết lại: 1,385 là 1385 phần nghìn, 1385:15=92 (dư 5) nên thương 0,092, dư 0,005; Phần 1 khớp. Đáp số C giữ nguyên (đã tự tính lại: 0,005).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2021 · 9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Chú ý ở Phần 1 viết \"không được trừ đi trước khi chia\" trong khi lời giải không có phép trừ nào, dễ gây hiểu nhầm. Đã viết lại: số trang ứng với phần còn lại gồm cả trang lẻ và 40 trang ngày thứ tư.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2021 · 10",
+   "muc": "sai",
+   "loai": "sơ đồ",
+   "mo_ta": "Bài chuyển động có quãng đường AB nhưng chỉ có sơ đồ hiệu–tỉ thời gian; thiếu sơ đồ chuyển động (luật k5T §1: bài chuyển động có quãng đường PHẢI có, CĐ28 vẽ thêm sơ đồ tỉ số). Đã thêm sơ đồ chuyển động (A→B, hai lần đi, nhãn \"? km\", không lộ 150) đặt ngay sau \"Bài giải\"; so_do_mo_ta thành mảng 2 phần tử, 2 dòng \"Ta có sơ đồ:\", máy vẽ chạy OK.",
+   "da_sua": true
+  }
+ ]
+}

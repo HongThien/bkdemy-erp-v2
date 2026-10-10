@@ -1,0 +1,22 @@
+{
+ "ma_de": "TX-2022",
+ "so_cau": 8,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "TX 2022 · P1.2",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt nói thẳng 'diện tích toàn phần không đổi' — chính là kết luận (đáp số 484) nên gần như lộ đáp số ở Phần 1. Đã viết lại Mấu chốt thành: bề mặt vừa mất vừa lộ thêm mặt nhỏ, chỉ cần so sánh hai số mặt đó. Các bước và Phần 2 giữ nguyên (toán đúng: bỏ hình ở đỉnh mất 3 mặt, lộ 3 mặt; điều kiện mỗi cạnh ≥3 hình nhỏ đã có trong ghi_chu_nghi).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2022 · P1.5",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng Phần 2 'Số thóc đã bán bằng số phần của số thóc ban đầu là: 3/4' khó hiểu. Đã viết lại: 'Số thóc đã bán là 3 phần trong 4 phần nên bằng: 3/4 (số thóc ban đầu)'. Toán và đáp số (800 kg) không đổi.",
+   "da_sua": true
+  }
+ ]
+}

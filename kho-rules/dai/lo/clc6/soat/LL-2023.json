@@ -1,0 +1,22 @@
+{
+ "ma_de": "LL-2023",
+ "so_cau": 20,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "LL 2023 · 5",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Mục \"Chú ý\" nói \"không được lấy nhầm số của đề làm đáp số\" trong khi đáp số đúng tình cờ cũng là 216 — dễ khiến HS nghĩ 216 là sai. Đã viết lại: phải tìm cạnh rồi mới tính thể tích.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LL 2023 · 17",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Phần 1 (Mấu chốt, Bước 2) dùng biểu thức chữ n×(n+2) — HS lớp 5 không quen, trái tinh thần \"không biểu thức chữ\". Đã thay bằng ví dụ số cụ thể (1×3; 3×5; 5×7, và 2/(3×5)=1/3-1/5). Phần 2 không đổi.",
+   "da_sua": true
+  }
+ ]
+}

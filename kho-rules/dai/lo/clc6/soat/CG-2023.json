@@ -1,0 +1,22 @@
+{
+ "ma_de": "CG-2023",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "CG 2023 · P3.1",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Phần 1, dòng \"Chú ý\" ghi \"(48 phút là 0,8 giờ)\" — trùng đúng đáp số ý a) (0,8 giờ) nên lộ đáp số ở Phần 1. Đã đổi thành \"(chia số phút cho 60)\".",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "CG 2023 · P3.1",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước: từ \"5/12 giờ đi 1 km mỗi đoạn dốc\" sang \"AB = 1 : 5/12\" mà không nói ý nghĩa phép chia. Đã tách thành hai dòng: \"số lần 5/12 giờ chứa trong 1 giờ = 12/5 (lần)\" rồi \"AB = 1 × 12/5 = 2,4 (km)\". Toán và đáp số không đổi (đã tính lại: 2,4/4 + 2,4/6 = 1 giờ; AD = 8,8 km).",
+   "da_sua": true
+  }
+ ]
+}

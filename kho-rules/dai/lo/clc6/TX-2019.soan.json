@@ -52,13 +52,13 @@
  {
   "ma_nguon": "TX 2019 · 8",
   "dap_an": "$a=7$; $b=3$",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $2$ và chia $5$ chỉ phụ thuộc vào chữ số tận cùng, còn chia $9$ thì phụ thuộc vào TỔNG các chữ số. Vậy dùng hai điều kiện đầu để tìm $b$ trước, rồi dùng điều kiện chia $9$ để tìm $a$.\n\n**Bước 1.** Số chia $2$ dư $1$ thì chữ số tận cùng là số lẻ; số chia $5$ dư $3$ thì chữ số tận cùng là $3$ hoặc $8$; chọn chữ số thoả mãn cả hai điều kiện để biết $b$.\n\n**Bước 2.** Nhớ dấu hiệu: một số chia $9$ dư bao nhiêu thì tổng các chữ số của nó chia $9$ cũng dư bấy nhiêu; áp dụng cho số $\\overline{2019ab}$.\n\n**Bước 3.** Tính tổng các chữ số đã biết và chữ số $b$ vừa tìm; vì $a$ là một chữ số nên tổng cả sáu chữ số chỉ nằm trong một khoảng giá trị, hãy xác định khoảng đó.\n\n**Bước 4.** Trong khoảng đó chọn số chia $9$ dư $4$, lấy số này trừ đi tổng các chữ số đã biết để tìm $a$.\n\n**Chú ý:** Chữ số $a$ có thể bằng $0$, nên khi tìm khoảng giá trị của tổng phải bắt đầu từ trường hợp $a=0$.\n\nThử lại: thay $a$ và $b$ vừa tìm vào số $overline{2019ab}$ rồi kiểm tra đủ ba điều kiện chia $2$, chia $5$ và chia $9$.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{2019ab}$ chia $2$ dư $1$ nên $b$ là chữ số lẻ; chia $5$ dư $3$ nên $b$ là $3$ hoặc $8$. Vậy $b=3$.\n\nSố chia $9$ dư $4$ nên tổng các chữ số chia $9$ dư $4$.\n\nTổng các chữ số của số đó là: $2+0+1+9+a+3=15+a$\n\nVì $a$ là chữ số nên tổng này từ $15$ đến $24$; trong khoảng đó chỉ có $22$ chia $9$ dư $4$ (vì $22=2\\times 9+4$).\n\nDo đó $15+a=22$, suy ra $a=22-15=7$.\n\nVậy $a=7$; $b=3$."
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $2$ và chia $5$ chỉ phụ thuộc vào chữ số tận cùng, còn chia $9$ thì phụ thuộc vào TỔNG các chữ số. Vậy dùng hai điều kiện đầu để tìm $b$ trước, rồi dùng điều kiện chia $9$ để tìm $a$.\n\n**Bước 1.** Số chia $2$ dư $1$ thì chữ số tận cùng là số lẻ; số chia $5$ dư $3$ thì chữ số tận cùng là $3$ hoặc $8$; chọn chữ số thoả mãn cả hai điều kiện để biết $b$.\n\n**Bước 2.** Nhớ dấu hiệu: một số chia $9$ dư bao nhiêu thì tổng các chữ số của nó chia $9$ cũng dư bấy nhiêu; áp dụng cho số $\\overline{2019ab}$.\n\n**Bước 3.** Tính tổng các chữ số đã biết và chữ số $b$ vừa tìm; vì $a$ là một chữ số nên tổng cả sáu chữ số chỉ nằm trong một khoảng giá trị, hãy xác định khoảng đó.\n\n**Bước 4.** Trong khoảng đó chọn số chia $9$ dư $4$, lấy số này trừ đi tổng các chữ số đã biết để tìm $a$.\n\n**Chú ý:** Chữ số $a$ có thể bằng $0$, nên khi tìm khoảng giá trị của tổng phải bắt đầu từ trường hợp $a=0$.\n\nThử lại: thay $a$ và $b$ vừa tìm vào số $\\overline{2019ab}$ rồi kiểm tra đủ ba điều kiện chia $2$, chia $5$ và chia $9$.\n\n**Phần 2. Trình bày**\n\nSố $\\overline{2019ab}$ chia $2$ dư $1$ nên $b$ là chữ số lẻ; chia $5$ dư $3$ nên $b$ là $3$ hoặc $8$. Vậy $b=3$.\n\nSố chia $9$ dư $4$ nên tổng các chữ số chia $9$ dư $4$.\n\nTổng các chữ số của số đó là: $2+0+1+9+a+3=15+a$\n\nVì $a$ là chữ số nên tổng này từ $15$ đến $24$; trong khoảng đó chỉ có $22$ chia $9$ dư $4$ (vì $22=2\\times 9+4$).\n\nDo đó $15+a=22$, suy ra $a=22-15=7$.\n\nVậy $a=7$; $b=3$."
  },
  {
   "ma_nguon": "TX 2019 · 9",
   "dap_an": "$448000\\ \\text{cm}^3$",
   "ghi_chu_nghi": "Hiểu hình: tháp 6 tầng, mỗi tầng xếp đầy (không chỗ hổng) thành hình tam giác — hàng ngoài cùng nhìn thấy của tầng thứ k có k viên, phía sau thêm các hàng k−1, …, 1 viên, nên các tầng từ trên xuống có 1; 3; 6; 10; 15; 21 viên, tổng 56 viên × 8000 = 448000 cm³. Nếu đề chỉ tính 21 viên nhìn thấy thì 21 × 8000 = 168000 cm³ — nhưng chữ \"không có chỗ hổng\" gợi ý phải tính cả các viên bị che. Câu này kém chắc nhất, cần đối chiếu nguồn khác.",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích tháp bằng số viên gạch nhân với thể tích một viên gạch. Tháp xếp KHÔNG có chỗ hổng nên ngoài các viên nhìn thấy còn có các viên bị che khuất phía sau; phải đếm cả những viên đó.\n\n**Bước 1.** Nhìn hình vẽ, các hàng nhìn thấy từ trên xuống có $1;\\ 2;\\ 3;\\ 4;\\ 5;\\ 6$ viên, nên tháp có $6$ tầng, tầng trên cùng chỉ có một viên.\n\n**Bước 2.** Mỗi tầng xếp đầy: ở tầng thứ hai, sau hàng $2$ viên nhìn thấy còn một hàng $1$ viên nữa; cứ xuống một tầng thì thêm một hàng ở phía sau, nên tầng nào cũng gồm các hàng $1;\\ 2;\\ 3;\\ \\ldots$ cho tới số viên của hàng nhìn thấy.\n\n**Bước 3.** Đếm số viên của từng tầng rồi cộng lại thành tổng số viên gạch của cả tháp.\n\n**Bước 4.** Tính thể tích một viên gạch hình lập phương cạnh $20$ cm bằng cạnh nhân cạnh nhân cạnh.\n\n**Bước 5.** Nhân thể tích một viên gạch với số viên gạch của tháp để được thể tích cái tháp.\n\n**Chú ý:** Không chỉ đếm các viên nhìn thấy trên hình; các viên nằm phía sau cũng được tính vì tháp không có chỗ hổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTháp có $6$ tầng; theo hình vẽ, số viên gạch ở mỗi tầng tính từ trên xuống là:\n\nTầng $1$: $1$ viên\n\nTầng $2$: $1+2=3$ (viên)\n\nTầng $3$: $1+2+3=6$ (viên)\n\nTầng $4$: $1+2+3+4=10$ (viên)\n\nTầng $5$: $1+2+3+4+5=15$ (viên)\n\nTầng $6$: $1+2+3+4+5+6=21$ (viên)\n\nSố viên gạch của cái tháp là: $1+3+6+10+15+21=56$ (viên)\n\nThể tích một viên gạch là: $20\\times 20\\times 20=8000$ ($\\text{cm}^3$)\n\nThể tích cái tháp là: $8000\\times 56=448000$ ($\\text{cm}^3$)\n\nĐáp số: $448000\\ \\text{cm}^3$"
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích tháp bằng số viên gạch nhân với thể tích một viên gạch. Tháp xếp KHÔNG có chỗ hổng nên ngoài các viên nhìn thấy còn có các viên bị che khuất phía sau; phải đếm cả những viên đó.\n\n**Bước 1.** Nhìn hình vẽ, các hàng nhìn thấy từ trên xuống có $1;\\ 2;\\ 3;\\ 4;\\ 5;\\ 6$ viên, nên tháp có $6$ tầng, tầng trên cùng chỉ có một viên.\n\n**Bước 2.** Mỗi tầng xếp đầy: ở tầng thứ hai, sau hàng $2$ viên nhìn thấy còn một hàng $1$ viên nữa; cứ xuống một tầng thì thêm một hàng ở phía sau, nên tầng nào cũng gồm các hàng $1;\\ 2;\\ 3;\\ \\ldots$ cho tới số viên của hàng nhìn thấy.\n\n**Bước 3.** Đếm số viên của từng tầng rồi cộng lại thành tổng số viên gạch của cả tháp.\n\n**Bước 4.** Tính thể tích một viên gạch hình lập phương cạnh $20$ cm bằng cạnh nhân cạnh nhân cạnh.\n\n**Bước 5.** Nhân thể tích một viên gạch với số viên gạch của tháp để được thể tích cái tháp.\n\n**Chú ý:** Không chỉ đếm các viên nhìn thấy trên hình; các viên nằm phía sau cũng được tính vì tháp không có chỗ hổng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTháp xếp không có chỗ hổng nên tháp có $6$ tầng; tầng thứ $k$ tính từ trên xuống gồm các hàng $1;\\ 2;\\ \\ldots;\\ k$ viên xếp liền nhau, trong đó hàng $k$ viên là hàng ngoài cùng nhìn thấy trên hình. Số viên gạch ở mỗi tầng là:\n\nTầng $1$: $1$ viên\n\nTầng $2$: $1+2=3$ (viên)\n\nTầng $3$: $1+2+3=6$ (viên)\n\nTầng $4$: $1+2+3+4=10$ (viên)\n\nTầng $5$: $1+2+3+4+5=15$ (viên)\n\nTầng $6$: $1+2+3+4+5+6=21$ (viên)\n\nSố viên gạch của cái tháp là: $1+3+6+10+15+21=56$ (viên)\n\nThể tích một viên gạch là: $20\\times 20\\times 20=8000$ ($\\text{cm}^3$)\n\nThể tích cái tháp là: $8000\\times 56=448000$ ($\\text{cm}^3$)\n\nĐáp số: $448000\\ \\text{cm}^3$"
  },
  {
   "ma_nguon": "TX 2019 · 10",
@@ -102,17 +102,17 @@
     {
      "tu": 0,
      "den": 112.5,
-     "nhan": "112,5 km"
+     "nhan": "Ô tô đi: ? km"
     },
     {
      "tu": 112.5,
      "den": 157.5,
-     "nhan": "45 km"
+     "nhan": "Xe máy đi: ? km"
     },
     {
      "tu": 0,
      "den": 157.5,
-     "nhan": "? km"
+     "nhan": "AB: ? km"
     }
    ]
   },

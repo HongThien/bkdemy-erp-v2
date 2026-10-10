@@ -18,7 +18,6 @@
     }
    ],
    "tong": "370",
-   "hieu": "80",
    "dau_hoi": [
     "Số lớn"
    ]
@@ -63,7 +62,7 @@
  {
   "ma_nguon": "NN 2024-TT1 · P1.5",
   "dap_an": "B",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm là phần hình tròn nằm ngoài hình vuông nhỏ, nên bằng diện tích hình tròn trừ diện tích hình vuông nhỏ. Đường kính hình tròn bằng cạnh hình vuông to, còn đường chéo hình vuông nhỏ chính là đường kính hình tròn.\n\n**Bước 1.** Quan sát hình: hình tròn chạm bốn cạnh của hình vuông to nên đường kính hình tròn bằng cạnh hình vuông to; từ đó tìm bán kính rồi tính diện tích hình tròn.\n\n**Bước 2.** Bốn đỉnh của hình vuông nhỏ nằm trên đường tròn nên đường chéo của nó cũng chính là đường kính của hình tròn.\n\n**Bước 3.** Hình vuông cũng là hình thoi nên diện tích bằng tích hai đường chéo chia $2$; tính diện tích hình vuông nhỏ.\n\n**Bước 4.** Lấy diện tích hình tròn trừ diện tích hình vuông nhỏ để được diện tích phần tô đậm rồi chọn phương án.\n\n**Chú ý:** $10$ cm là cạnh hình vuông to và cũng là đường kính hình tròn, nhưng không phải là cạnh hình vuông nhỏ.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, hình tròn chạm bốn cạnh của hình vuông to nên đường kính hình tròn là $10$ cm.\n\nBán kính hình tròn là: $10:2=5$ (cm)\n\nDiện tích hình tròn là: $5\\times 5\\times 3,14=78,5$ ($\\text{cm}^2$)\n\nTheo hình vẽ, bốn đỉnh của hình vuông nhỏ nằm trên đường tròn nên hai đường chéo của nó đều bằng $10$ cm.\n\nDiện tích hình vuông nhỏ là: $10\\times 10:2=50$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $78,5-50=28,5$ ($\\text{cm}^2$)\n\nChọn B.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tô đậm là phần hình tròn nằm ngoài hình vuông nhỏ, nên bằng diện tích hình tròn trừ diện tích hình vuông nhỏ. Đường kính hình tròn bằng cạnh hình vuông to, còn đường chéo hình vuông nhỏ chính là đường kính hình tròn.\n\n**Bước 1.** Quan sát hình: hình tròn chạm bốn cạnh của hình vuông to nên đường kính hình tròn bằng cạnh hình vuông to; từ đó tìm bán kính rồi tính diện tích hình tròn.\n\n**Bước 2.** Theo hình vẽ, bốn đỉnh của hình vuông nhỏ nằm trên đường tròn và hai đường chéo của nó đi qua tâm hình tròn, nên mỗi đường chéo cũng chính là một đường kính của hình tròn.\n\n**Bước 3.** Hình vuông cũng là hình thoi nên diện tích bằng tích hai đường chéo chia $2$; tính diện tích hình vuông nhỏ.\n\n**Bước 4.** Lấy diện tích hình tròn trừ diện tích hình vuông nhỏ để được diện tích phần tô đậm rồi chọn phương án.\n\n**Chú ý:** $10$ cm là cạnh hình vuông to và cũng là đường kính hình tròn, nhưng không phải là cạnh hình vuông nhỏ.\n\n**Phần 2. Trình bày**\n\nTheo hình vẽ, hình tròn chạm bốn cạnh của hình vuông to nên đường kính hình tròn là $10$ cm.\n\nBán kính hình tròn là: $10:2=5$ (cm)\n\nDiện tích hình tròn là: $5\\times 5\\times 3,14=78,5$ ($\\text{cm}^2$)\n\nTheo hình vẽ, bốn đỉnh của hình vuông nhỏ nằm trên đường tròn, hai đường chéo của nó đi qua tâm nên là hai đường kính của hình tròn, mỗi đường chéo dài $10$ cm.\n\nDiện tích hình vuông nhỏ là: $10\\times 10:2=50$ ($\\text{cm}^2$)\n\nDiện tích phần tô đậm là: $78,5-50=28,5$ ($\\text{cm}^2$)\n\nChọn B.",
   "ghi_chu_nghi": "Đề chữ không mô tả hình, mọi dữ kiện lấy từ hình: hình tròn chạm bốn cạnh hình vuông to (cạnh 10 cm), bốn đỉnh hình vuông nhỏ nằm trên đường tròn, phần tô đậm = hình tròn trừ hình vuông nhỏ. Ảnh hình vẽ lệch nhẹ giữa các nét (hình vuông nhỏ nhìn hơi lệch tâm); hiểu theo cách bố trí thông dụng của bài, kết quả 28,5 cm² trùng phương án B."
  },
  {
@@ -128,7 +127,7 @@
  {
   "ma_nguon": "NN 2024-TT1 · P2.2",
   "dap_an": "$40$ m",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa số vải của từng ngày về \"số phần bằng nhau\" theo lần lượt từng quan hệ: chọn ngày đầu là $2$ phần để \"gấp rưỡi\" ra số nguyên, từ đó suy ra ngày hai, tổng ngày ba và ngày tư, rồi từng ngày. Ngày đầu hơn ngày ba bao nhiêu phần thì bấy nhiêu phần ứng với $5$ m.\n\n**Bước 1.** Ngày thứ hai bán gấp rưỡi ngày đầu, nên coi ngày đầu là $2$ phần để ngày thứ hai cũng là số phần nguyên rồi tính số phần của ngày thứ hai.\n\n**Bước 2.** Ngày đầu bằng $\\dfrac{1}{3}$ tổng ba ngày còn lại, nên ba ngày còn lại gấp $3$ lần ngày đầu; từ đó tìm số phần của ngày ba và ngày tư gộp lại.\n\n**Bước 3.** Ngày ba bằng một nửa ngày tư nên ngày ba bằng $\\dfrac{1}{3}$ tổng hai ngày này; chia ra số phần của ngày ba và của ngày tư.\n\n**Bước 4.** Tìm ngày đầu hơn ngày ba bao nhiêu phần; số phần chênh lệch này ứng với $5$ m, từ đó tìm độ dài một phần.\n\n**Bước 5.** Cộng số phần của cả bốn ngày rồi nhân với độ dài một phần để được độ dài cả khúc vải.\n\n**Chú ý:** \"Ba ngày còn lại\" của ngày đầu là ngày hai, ngày ba và ngày tư; đừng nhầm với tổng của cả bốn ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi số vải bán ngày đầu là $2$ phần. Ngày thứ hai bán gấp rưỡi ngày đầu nên số vải ngày thứ hai là: $2\\times 1,5=3$ (phần)\n\nNgày đầu bằng $\\dfrac{1}{3}$ tổng ba ngày còn lại nên số vải ba ngày còn lại là: $2\\times 3=6$ (phần)\n\nTổng số vải ngày thứ ba và ngày thứ tư là: $6-3=3$ (phần)\n\nNgày thứ ba bằng một nửa ngày thứ tư nên ngày thứ ba bằng $\\dfrac{1}{3}$ tổng hai ngày này, số vải ngày thứ ba là: $3:3=1$ (phần)\n\nSố vải ngày thứ tư là: $3-1=2$ (phần)\n\nTa có sơ đồ:\n\n(Ngày 1: 2 phần; Ngày 2: 3 phần; Ngày 3: 1 phần; Ngày 4: 2 phần; ngày 1 hơn ngày 3 là 5 m)\n\nNgày thứ nhất bán hơn ngày thứ ba là: $2-1=1$ (phần)\n\nVậy $1$ phần ứng với $5$ m.\n\nCả khúc vải có số phần là: $2+3+1+2=8$ (phần)\n\nĐộ dài cả khúc vải là: $5\\times 8=40$ (m)\n\nĐáp số: $40$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa số vải của từng ngày về \"số phần bằng nhau\" theo lần lượt từng quan hệ: chọn ngày đầu là $2$ phần để \"gấp rưỡi\" ra số nguyên, từ đó suy ra ngày hai, tổng ngày ba và ngày tư, rồi từng ngày. Ngày đầu hơn ngày ba bao nhiêu phần thì bấy nhiêu phần ứng với $5$ m.\n\n**Bước 1.** Ngày thứ hai bán gấp rưỡi ngày đầu, nên coi ngày đầu là $2$ phần để ngày thứ hai cũng là số phần nguyên rồi tính số phần của ngày thứ hai.\n\n**Bước 2.** Ngày đầu bằng $\\dfrac{1}{3}$ tổng ba ngày còn lại, nên ba ngày còn lại gấp $3$ lần ngày đầu; từ đó tìm số phần của ngày ba và ngày tư gộp lại.\n\n**Bước 3.** Ngày ba bằng một nửa ngày tư nên ngày ba bằng $\\dfrac{1}{3}$ tổng hai ngày này; chia ra số phần của ngày ba và của ngày tư.\n\n**Bước 4.** Tìm ngày đầu hơn ngày ba bao nhiêu phần; số phần chênh lệch này ứng với $5$ m, từ đó tìm độ dài một phần.\n\n**Bước 5.** Cộng số phần của cả bốn ngày rồi nhân với độ dài một phần để được độ dài cả khúc vải.\n\n**Chú ý:** \"Ba ngày còn lại\" của ngày đầu là ngày hai, ngày ba và ngày tư; đừng nhầm với tổng của cả bốn ngày.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi số vải bán ngày đầu là $2$ phần. Ngày thứ hai bán gấp rưỡi ngày đầu nên số vải ngày thứ hai là: $2\\times 1,5=3$ (phần)\n\nNgày đầu bằng $\\dfrac{1}{3}$ tổng ba ngày còn lại nên số vải ba ngày còn lại là: $2\\times 3=6$ (phần)\n\nTổng số vải ngày thứ ba và ngày thứ tư là: $6-3=3$ (phần)\n\nNgày thứ ba bằng một nửa ngày thứ tư nên ngày thứ ba bằng $\\dfrac{1}{3}$ tổng hai ngày này, số vải ngày thứ ba là: $3:3=1$ (phần)\n\nSố vải ngày thứ tư là: $3-1=2$ (phần)\n\nTa có sơ đồ:\n\n(Ngày 1: 2 phần; Ngày 3: 1 phần; Ngày 2: 3 phần; Ngày 4: 2 phần; ngày 1 hơn ngày 3 là 5 m; cả khúc vải: ? m)\n\nNgày thứ nhất bán hơn ngày thứ ba là: $2-1=1$ (phần)\n\nVậy $1$ phần ứng với $5$ m.\n\nCả khúc vải có số phần là: $2+3+1+2=8$ (phần)\n\nĐộ dài cả khúc vải là: $5\\times 8=40$ (m)\n\nĐáp số: $40$ m",
   "so_do_mo_ta": {
    "tieu_de": "Số vải bán mỗi ngày",
    "gia_tri_phan": 5,
@@ -138,12 +137,12 @@
      "phan": 2
     },
     {
-     "nhan": "Ngày 2",
-     "phan": 3
-    },
-    {
      "nhan": "Ngày 3",
      "phan": 1
+    },
+    {
+     "nhan": "Ngày 2",
+     "phan": 3
     },
     {
      "nhan": "Ngày 4",
@@ -151,9 +150,7 @@
     }
    ],
    "tong": "? m",
-   "dau_hoi": [
-    "Ngày 3"
-   ]
+   "hieu": "5 m"
   },
   "ghi_chu_nghi": "nhiều cách: (1) số phần với ngày đầu = 2 phần (đã chọn); (2) phân số của cả khúc vải: ngày 1 = 1/4, ngày 2 = 3/8, ngày 3 + ngày 4 = 3/8 nên ngày 3 = 1/8, ngày 1 hơn ngày 3 = 1/8 khúc vải ứng với 5 m. Cả hai ra 40 m."
  }

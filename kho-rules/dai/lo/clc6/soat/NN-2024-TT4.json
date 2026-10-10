@@ -1,0 +1,22 @@
+{
+ "ma_de": "NN-2024-TT4",
+ "so_cau": 7,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2024-TT4 · P1.5",
+   "muc": "sai",
+   "loai": "kiến thức",
+   "mo_ta": "Lời giải dùng dấu hiệu chia hết cho 11 (hiệu của a+c và b chia hết cho 11) — ngoài lớp 5 và không được chứng minh trong bài. Đã viết lại không đổi dap_an (A): liệt kê 9 số lẻ có tổng chữ số 6 (c = 1; 3; 5), chia từng số cho 11 (chỉ 231 chia hết, dư 0), ra 2,31 m và 10. Đáp số, toán đều đúng; ghi_chu_nghi nêu cách dùng dấu hiệu 11 để CEO chốt nếu muốn giữ.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024-TT4 · P2.2",
+   "muc": "hoi",
+   "loai": "sơ đồ",
+   "mo_ta": "Bài chuyển động có quãng đường (vòng hồ 2 km) nhưng sơ đồ là tổng–hiệu vận tốc, không có sơ đồ đường đi theo luật CEO 'bài chuyển động có quãng đường phải có sơ đồ'. Máy vẽ chuyển động chỉ vẽ đoạn thẳng; người soạn đã nêu lý do ở ghi_chu_nghi. Toán đúng (hiệu 3, tổng 12, Ánh 4,5 km/giờ). Nhờ CEO xác nhận có chấp nhận hay cần thêm sơ đồ trải thẳng đường chạy.",
+   "da_sua": false
+  }
+ ]
+}

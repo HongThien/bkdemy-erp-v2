@@ -1,0 +1,36 @@
+{
+ "ma_de": "TX-2024",
+ "so_cau": 16,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "TX 2024 · 4",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 đổi ngầm 36% thành 0,36 (và 2×4 thành 8) ngay trong dòng biến đổi; quy ước là mọi bước đổi (phần trăm, thập phân, hỗn số) đứng thành một dòng riêng. Đã tách dòng \"Đổi: 36% = 0,36\", giữ nguyên 2×4×0,18 ở dòng kế rồi mới tính 8×0,18. Đáp số không đổi (M = 3,6).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2024 · 7",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhắc \"hình vuông cạnh 3 cm\" và \"hai phần tư hình tròn bán kính 3 cm\" mà hình không vẽ hình vuông nhỏ đó và đề chưa nói hai phần tư ấy là gì, HS phải tự đoán. Đã thêm câu nêu rõ: hình vuông cạnh 3 cm ở góc trên bên phải chứa hai phần tư hình tròn (mỗi phần tư là phần của một nửa hình tròn nhỏ), phủ kín hình vuông và chồng lên nhau đúng ở cánh hoa. Toán đã tự kiểm: cánh hoa = 2×(9π/4) − 9 = 5,13; phần liềm = phần tư lớn − hợp hai nửa hình tròn = cánh hoa; tổng 10,26 khớp dap_an.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2024 · 10",
+   "muc": "nen_sua",
+   "loai": "toán",
+   "mo_ta": "Dòng \"Vì S_ABD = S_AOB + S_AOD và S_CBD = S_COB + S_COD nên S_ABD/S_CBD = OA/OC\" nhảy bước: từ hai tỉ số bằng nhau suy ra tỉ số của hai tổng mà không nói lí do. Đã thêm một câu: hai tam giác phía C gấp hai tam giác phía A (theo thứ tự) cùng một số lần OC/OA nên cộng lại tam giác CBD cũng gấp tam giác ABD số lần đó. Các số S_BOC = 4,8; S_COD = 6,4; tổng 19,6 đã tính lại đúng.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2024 · 10",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề thiếu hình (không có trong dữ liệu); người soạn hiểu ABCD là hình thang đáy AB // CD, O là giao điểm hai đường chéo. Cách hiểu này là chuẩn của dạng và đáp số 19,6 cm² nhất quán (S_COD = S_AOB × (4/3)² = 6,4; S_AOD = S_BOC = căn(3,6 × 6,4) = 4,8), nhưng cần người đối chiếu với hình gốc của đề nếu có.",
+   "da_sua": false
+  }
+ ]
+}

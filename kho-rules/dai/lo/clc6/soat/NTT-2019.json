@@ -1,0 +1,43 @@
+{
+ "ma_de": "NTT-2019",
+ "so_cau": 11,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 5,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2019 · 2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết \"Sinh nhật ở tháng Năm nên cách nhau 366 ngày\" — thiếu mắt xích vì sao tháng Năm dẫn tới 366 (khoảng đó đi qua tháng Hai năm 2020). Đã thêm.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2019 · 3",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 mở bằng \"Đổi: 54 lít = 54 dm³\" rồi chia 2, chưa có dòng nói nước tràn ra bằng thể tích hai cục sắt (ý quyết định của bài). Đã thêm dòng đó.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2019 · 7",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Dòng mô tả sơ đồ thứ nhất viết \"một xe đi 40 km/giờ, một xe đi 50 km/giờ\" trong khi đề chỉ có MỘT người lái xe với hai phương án vận tốc; dễ làm HS tưởng hai xe. Đã sửa lời mô tả (JSON sơ đồ giữ nguyên).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2019 · 11",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết \"Số cây ngày 3 bằng 1 − 6/11\" mà không nói vì sao ngày 3 là phần còn lại (đội trồng đúng 3 ngày, ngày 3 trồng nốt). Đã thêm vế \"Ngày 3 đội trồng nốt số cây còn lại nên…\".",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2019 · 12",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Sơ đồ thứ hai (ý b) ghi sẵn nhãn \"30 km\" ở hai khoảng cách trước khi Phần 2 tính ra số đó (chỉ xuất hiện ở dòng Thử lại); đổi nhãn và mô tả thành \"bằng nhau\" (đúng điều đề nói), vị trí các điểm giữ nguyên. Máy vẽ chạy lại không lỗi.",
+   "da_sua": true
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "ma_de": "NN-2024",
+ "so_cau": 7,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2024 · P1.3",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết phân số có tử số thập phân ($\\dfrac{281,6}{11}$) — không phải phân số lớp 5. Đổi thành $8\\times 35,2:11=281,6:11=25,6$; sửa lại câu chữ Bước 3 Phần 1 cho khớp.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024 · P1.4",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 mới chứng minh điều kiện CẦN (B chia hết cho 9, tận cùng 1 hoặc 6) rồi kết luận B=36, thiếu bước thử lại điều kiện ĐỦ (A+36 chia hết cho cả 9 và 5 nên chia hết cho 45). Đã thêm dòng \"Thử lại\".",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ý c): nhảy bước — ghi \"Xe hỏng lúc 9 giờ\" mà chưa có phép tính 8+1=9; \"24 phút\" chưa có phép trừ 10 giờ − 9 giờ 36 phút; đổi 24 phút ra giờ gộp chung dòng. Đã tách thành các dòng riêng (hỏng xe lúc · sửa xong lúc · khoảng thời gian · Đổi · quãng đường).",
+   "da_sua": true
+  }
+ ]
+}

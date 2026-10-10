@@ -62,7 +62,7 @@
  {
   "ma_nguon": "LTV 2022 · 13",
   "dap_an": "Hộp A",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các bánh cùng loại và cùng độ dày thì bánh nào có mặt bánh rộng hơn thì nặng hơn, nên so sánh tổng diện tích các bánh trong mỗi hộp; hai hộp giống nhau nên phần hộp không làm hai bên khác nhau.\n\n**Bước 1.** Tìm bán kính mỗi loại bánh bằng cách lấy đường kính chia cho $2$.\n\n**Bước 2.** Tính diện tích mặt một bánh theo công thức bán kính nhân bán kính nhân $3,14$ cho từng loại bánh.\n\n**Bước 3.** Hộp B có hai bánh nên lấy diện tích một bánh nhân với $2$ để có tổng diện tích bánh trong hộp B.\n\n**Bước 4.** So sánh diện tích bánh ở hộp A với diện tích hai bánh ở hộp B rồi kết luận hộp nào nặng hơn.\n\n**Chú ý:** Hộp B có nhiều bánh hơn nhưng bánh nhỏ hơn, không được kết luận ngay theo số bánh mà phải so diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác bánh cùng loại, cùng độ dày nên bánh có diện tích mặt lớn hơn thì nặng hơn.\n\nBán kính bánh ở hộp A là: $24:2=12$ (cm)\n\nBán kính bánh ở hộp B là: $16:2=8$ (cm)\n\nDiện tích bánh ở hộp A là: $12\\times 12\\times 3,14=452,16$ ($\\text{cm}^2$)\n\nDiện tích một bánh ở hộp B là: $8\\times 8\\times 3,14=200,96$ ($\\text{cm}^2$)\n\nDiện tích hai bánh ở hộp B là: $200,96\\times 2=401,92$ ($\\text{cm}^2$)\n\nVì $452,16>401,92$ nên bánh ở hộp A nhiều hơn bánh ở hộp B, do đó hộp A nặng hơn.\n\nĐáp số: Hộp A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các bánh cùng loại và cùng độ dày thì bánh nào có mặt bánh rộng hơn thì nặng hơn, nên so sánh tổng diện tích các bánh trong mỗi hộp; hai hộp giống nhau nên phần hộp không làm hai bên khác nhau.\n\n**Bước 1.** Tìm bán kính mỗi loại bánh bằng cách lấy đường kính chia cho $2$.\n\n**Bước 2.** Tính diện tích mặt một bánh theo công thức bán kính nhân bán kính nhân $3,14$ cho từng loại bánh.\n\n**Bước 3.** Hộp B có hai bánh nên lấy diện tích một bánh nhân với $2$ để có tổng diện tích bánh trong hộp B.\n\n**Bước 4.** So sánh diện tích bánh ở hộp A với diện tích hai bánh ở hộp B rồi kết luận hộp nào nặng hơn.\n\n**Chú ý:** Hộp B có nhiều bánh hơn nhưng bánh nhỏ hơn, không được kết luận ngay theo số bánh mà phải so diện tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác bánh cùng loại, cùng độ dày nên bánh có diện tích mặt lớn hơn thì nặng hơn.\n\nBán kính bánh ở hộp A là: $24:2=12$ (cm)\n\nBán kính bánh ở hộp B là: $16:2=8$ (cm)\n\nDiện tích bánh ở hộp A là: $12\\times 12\\times 3,14=452,16$ ($\\text{cm}^2$)\n\nDiện tích một bánh ở hộp B là: $8\\times 8\\times 3,14=200,96$ ($\\text{cm}^2$)\n\nDiện tích hai bánh ở hộp B là: $200,96\\times 2=401,92$ ($\\text{cm}^2$)\n\nVì $452,16>401,92$ nên diện tích bánh ở hộp A lớn hơn tổng diện tích hai bánh ở hộp B, do đó khối lượng bánh ở hộp A lớn hơn khối lượng bánh ở hộp B, nên hộp A nặng hơn.\n\nĐáp số: Hộp A",
   "ghi_chu_nghi": "Hiểu: hai hộp giống nhau (hộp không làm khác biệt khối lượng), nên so khối lượng bánh; cùng loại, cùng độ dày ⇒ khối lượng tỉ lệ với diện tích mặt bánh. Kết quả: A (452,16 cm² > 401,92 cm²), không phụ thuộc giá trị 3,14 (144 > 128)."
  },
  {
@@ -102,54 +102,7 @@
  {
   "ma_nguon": "LTV 2022 · 17",
   "dap_an": "$24$ tuổi",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của mẹ và con không bao giờ thay đổi; đề cho hai tỉ số tuổi ở hai thời điểm nên đưa hai hiệu về cùng số phần để so sánh tuổi con ở hai thời điểm.\n\n**Bước 1.** Với mỗi thời điểm, coi tuổi con là $1$ phần rồi tính hiệu số tuổi của mẹ và con bằng mấy phần.\n\n**Bước 2.** Hai hiệu này là một số tuổi duy nhất nên đưa chúng về cùng số phần, rồi vẽ sơ đồ tuổi mẹ và tuổi con ở từng thời điểm.\n\n**Bước 3.** Tuổi con hiện nay hơn tuổi con bốn năm trước đúng $4$ tuổi; so hai sơ đồ để biết $4$ tuổi ứng với mấy phần, từ đó tìm giá trị một phần và tìm hiệu số tuổi.\n\n**Bước 4.** Khi mẹ gấp $2$ lần tuổi con thì hiệu số tuổi bằng đúng một lần tuổi con, từ đó tìm tuổi con lúc đó.\n\n**Chú ý:** Đề hỏi tuổi con vào lúc mẹ gấp $2$ lần con, không phải tuổi con hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của mẹ và con không đổi theo thời gian.\n\nHiện nay mẹ gấp $3$ lần con nên tuổi con là $1$ phần, tuổi mẹ là $3$ phần, hiệu là $3-1=2$ (phần).\n\nBốn năm trước mẹ gấp $4$ lần con nên tuổi con là $1$ phần, tuổi mẹ là $4$ phần, hiệu là $4-1=3$ (phần).\n\nĐưa hai hiệu về cùng $6$ phần: hiện nay nhân $3$ lần thì tuổi con là $3$ phần, tuổi mẹ là $9$ phần; bốn năm trước nhân $2$ lần thì tuổi con là $2$ phần, tuổi mẹ là $8$ phần.\n\nTa có sơ đồ:\n\n(Hiện nay: tuổi mẹ 9 phần; tuổi con 3 phần)\n\nTa có sơ đồ:\n\n(Bốn năm trước: tuổi mẹ 8 phần; tuổi con 2 phần)\n\nBốn tuổi ứng với số phần là: $3-2=1$ (phần)\n\nHiệu số tuổi của mẹ và con là: $4\\times 6=24$ (tuổi)\n\nKhi tuổi mẹ gấp $2$ lần tuổi con thì hiệu số tuổi bằng $1$ lần tuổi con.\n\nTa có sơ đồ:\n\n(Tuổi mẹ 2 phần; tuổi con 1 phần; hiệu bằng tuổi con)\n\nLúc đó tuổi con là $24$ tuổi.\n\nĐáp số: $24$ tuổi",
-  "so_do_mo_ta": [
-   {
-    "tieu_de": "Hiện nay",
-    "gia_tri_phan": 4,
-    "hang": [
-     {
-      "nhan": "Tuổi mẹ",
-      "phan": 9
-     },
-     {
-      "nhan": "Tuổi con",
-      "phan": 3
-     }
-    ]
-   },
-   {
-    "tieu_de": "4 năm trước",
-    "gia_tri_phan": 4,
-    "hang": [
-     {
-      "nhan": "Tuổi mẹ",
-      "phan": 8
-     },
-     {
-      "nhan": "Tuổi con",
-      "phan": 2
-     }
-    ]
-   },
-   {
-    "tieu_de": "Khi mẹ gấp 2 lần tuổi con",
-    "gia_tri_phan": 24,
-    "hang": [
-     {
-      "nhan": "Tuổi mẹ",
-      "phan": 2
-     },
-     {
-      "nhan": "Tuổi con",
-      "phan": 1
-     }
-    ],
-    "dau_hoi": [
-     "Tuổi con"
-    ]
-   }
-  ]
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu số tuổi của mẹ và con không bao giờ thay đổi; đề cho hai tỉ số tuổi ở hai thời điểm, nên lấy hiệu số tuổi (không đổi) làm \"đơn vị\" chung và viết tuổi con ở mỗi thời điểm thành một phân số của hiệu đó.\n\n**Bước 1.** Hiện nay mẹ gấp $3$ lần tuổi con nên hiệu số tuổi gấp tuổi con một số lần; từ đó viết tuổi con hiện nay thành một phân số của hiệu số tuổi.\n\n**Bước 2.** Làm tương tự với thời điểm bốn năm trước, khi mẹ gấp $4$ lần tuổi con: viết tuổi con lúc đó thành một phân số của cùng hiệu số tuổi.\n\n**Bước 3.** Tuổi con hiện nay hơn tuổi con bốn năm trước đúng $4$ tuổi; lấy hai phân số trừ nhau để biết $4$ tuổi ứng với bao nhiêu phần của hiệu số tuổi, rồi chia để tìm hiệu số tuổi.\n\n**Bước 4.** Khi tuổi mẹ gấp $2$ lần tuổi con thì hiệu số tuổi đúng bằng một lần tuổi con, từ đó tìm được tuổi con lúc đó.\n\n**Chú ý:** Đề hỏi tuổi con vào lúc mẹ gấp $2$ lần tuổi con, không phải tuổi con hiện nay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHiệu số tuổi của mẹ và con không đổi theo thời gian.\n\nHiện nay mẹ gấp $3$ lần tuổi con nên hiệu số tuổi gấp tuổi con số lần là: $3-1=2$ (lần)\n\nHiện nay tuổi con bằng: $1:2=\\dfrac{1}{2}$ (hiệu số tuổi)\n\nBốn năm trước mẹ gấp $4$ lần tuổi con nên hiệu số tuổi gấp tuổi con số lần là: $4-1=3$ (lần)\n\nBốn năm trước tuổi con bằng: $1:3=\\dfrac{1}{3}$ (hiệu số tuổi)\n\nTuổi con hiện nay hơn tuổi con bốn năm trước là $4$ tuổi, ứng với: $\\dfrac{1}{2}-\\dfrac{1}{3}=\\dfrac{1}{6}$ (hiệu số tuổi)\n\nHiệu số tuổi của mẹ và con là: $4:\\dfrac{1}{6}=24$ (tuổi)\n\nKhi tuổi mẹ gấp $2$ lần tuổi con thì hiệu số tuổi bằng $1$ lần tuổi con, nên lúc đó tuổi con là $24$ tuổi.\n\nĐáp số: $24$ tuổi"
  },
  {
   "ma_nguon": "LTV 2022 · 18",

@@ -1,0 +1,1266 @@
+[
+ {
+  "de": "AMS-2020",
+  "ma_nguon": "AMS 2020 · 2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng \"ghép hai dải thành một dải dài 80−10=70\" nhảy bước: không nói vì sao ghép ra 80−10 (một dải dài bằng chiều dài cũ, dải kia là chiều rộng cũ bớt 10 cm ở góc). Đã viết rõ lại hai dòng; đáp số, Phần 1 không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2022",
+  "ma_nguon": "AMS 2022 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Nhảy bước: \"thời gian đi như nhau nên quãng đường Minh đi gấp 3 lần\" — thiếu mắt xích: tổng quãng đường hai bạn cùng đi gấp 3 lần, vận tốc không đổi nên thời gian gấp 3 lần. Đã thêm câu nối.",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2022",
+  "ma_nguon": "AMS 2022 · P2.3",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý a) khẳng định \"DN không song song BM\" không nêu lí do (đề không có hình, không nêu đáy ABCD). Đã thêm: theo cách gọi tên thông thường ABCD có đáy AB, CD, BM cắt AB nên không song song CD; cập nhật Bước 1 Phần 1 và ghi_chu_nghi (nếu BM // CD thì N tuỳ ý, đề không xác định).",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2023",
+  "ma_nguon": "AMS 2023 · P1.2",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt và Bước 3 của Phần 1 nói thẳng \"b = 0 nên tích không phụ thuộc a\" — gần như đã nêu đáp số. Đã đổi thành \"b được xác định ngay, cần xem tích có còn phụ thuộc a không\". Phần 2 và đáp số 0 giữ nguyên (tính lại bằng code: mọi a thoả đều cho a×b=0).",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2023",
+  "ma_nguon": "AMS 2023 · P1.5",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Đáp số N đúng (đã mở ảnh: hàng trên R-Q-M, N ngay dưới M, P bên phải N; mô phỏng gấp: N đáy, M/Q/R/P bốn mặt bên). Nhưng lập luận \"gấp thử thì Q và P đối diện\" là bước HS phải tự bù. Đã viết lại cả Phần 1 + Phần 2 theo lập luận vòng bốn mặt bên: ba ô thẳng hàng thành ba mặt bên liên tiếp; ô dính cạnh dưới ô cuối dải nằm ngang = đáy; ô dính cạnh bên của đáy gấp lên thành mặt bên thứ tư.",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2023",
+  "ma_nguon": "AMS 2023 · P1.7",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước: từ \"sáu bao hơn Bình 1 nghìn đồng\" sang \"Bình có các bao này trừ bao 1\" mà không nói vì sao phần thiếu phải là đúng bao 1 nghìn. Đã thêm một dòng nối. Đáp số 5 đúng (tính lại bằng code: duy nhất một tập con có tổng 363, gồm 5 bao).",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2023",
+  "ma_nguon": "AMS 2023 · P1.12",
+  "muc": "nen_sua",
+  "loai": "kiến thức",
+  "mo_ta": "Toán và đáp số 101/299 đúng (tính lại bằng phân số chính xác: 101/299; hai vế 299×A và 101×B cùng bằng H101+H299−H400). Nhưng Phần 1 dùng công thức chữ k, d (biểu thức chữ), nói \"phân số âm / nhóm dương\" (số âm) trái k5T §1; Phần 2 kết luận \"tỉ số ngược\" không giải thích. Đã viết lại mấu chốt bằng số cụ thể (299/(1×300)=1/1−1/300), đổi \"dương/âm\" thành \"được cộng/bị trừ\", và thay câu cuối bằng \"coi A là 101 phần thì B là 299 phần\" rồi mới kết luận.",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2023",
+  "ma_nguon": "AMS 2023 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng đầu Phần 2 nói \"số nam ngồi cạnh nữ bằng số nữ ngồi cạnh nam\" mà không nêu lý do (mỗi bàn một nam một nữ thì mỗi bên đúng một người) — lý do chỉ nằm ở Phần 1. Đã thêm lý do vào Phần 2. Đáp số 6 đúng (tính lại: nam 16, nữ 20, 8 bàn nam–nữ, 4 bàn nam–nam, 6 bàn nữ–nữ, tổng 18 bàn).",
+  "da_sua": true
+ },
+ {
+  "de": "AMS-2023",
+  "ma_nguon": "AMS 2023 · P2.3",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề hỏi \"sau bao nhiêu lần gặp nhau thì gặp lần đầu ở điểm xuất phát\". Mô phỏng: hai bạn lần đầu cùng ở điểm xuất phát lúc 30 phút, lúc đó là lần gặp thứ 11 (lần 1–10 ở chỗ khác). Đáp số 11 hợp lí hơn, nhưng nếu hiểu \"sau 10 lần gặp thì lần kế ở điểm xuất phát\" ra 10. Người soạn đã ghi ghi_chu_nghi; cần CEO chốt. Không sửa.",
+  "da_sua": false
+ },
+ {
+  "de": "ARC-2020-CB",
+  "ma_nguon": "ARC 2020-CB · 10",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết (8-2)×(5-1), (4-2)×(5-1)... không nói vì sao bớt 2 / bớt 1 (bỏ cột mép, bỏ hàng trên cùng, giữ hàng sát đất) nên HS phải tự bù bước. Đã thêm mệnh đề giải thích vào từng dòng; số liệu và đáp số 76 giữ nguyên (đã tính lại bằng code đếm từng khối: 76).",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2020-CB",
+  "ma_nguon": "ARC 2020-CB · 5",
+  "muc": "hoi",
+  "loai": "cách chuẩn",
+  "mo_ta": "Đúng toán (38; 8×38+14=318=số mới; tính lại bằng code duy nhất a=3,b=8). Nhưng k5T §1 chỉ cho phân tích theo hàng với số \"đề cho sẵn cấu tạo số\" ($\\overline{ab}$ có trong đề); ở đây đề chỉ nói \"số có hai chữ số\", người soạn tự \"Gọi số ban đầu là ab\" rồi lập a×20=b×7+4 (bớt hai vế). Bảng §2b chưa có dạng \"chèn chữ số vào GIỮA\" (khác thêm bên trái/phải = tỉ số). Không có cách tiểu học không dùng chữ nào gọn hơn, nên giữ; CEO nên chốt có chấp nhận cách này cho dạng chèn giữa không (người soạn đã ghi ghi_chu_nghi).",
+  "da_sua": false
+ },
+ {
+  "de": "ARC-2020-CB",
+  "ma_nguon": "ARC 2020-CB · 17",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề lửng \"tăng thêm ... lần và ... đơn vị\". Đáp số 10 lần và 9 đơn vị (số mới = số cũ×10+9) là cách nói quen thuộc của sách (\"tăng lên 10 lần và 9 đơn vị\"); đọc chặt \"tăng thêm\" thì số mới − số cũ = số cũ×9+9 ⇒ \"9 lần và 9 đơn vị\". Tôi nghiêng về 10 lần nhưng không phân xử được; ghi_chu_nghi của người soạn đã nêu đủ hai cách hiểu — để CEO chốt.",
+  "da_sua": false
+ },
+ {
+  "de": "ARC-2020-NC",
+  "ma_nguon": "ARC 2020-NC · 18",
+  "muc": "sai",
+  "loai": "kiến thức",
+  "mo_ta": "Phần 1 (Bước 1) và Phần 2 tự đặt chữ \"c\" làm ẩn rồi lập đẳng thức c:6=1,5 (luật k5T §1 cấm tự đặt ẩn mới). Đã viết lại bằng ngôn ngữ \"lớp\": hình nhỏ bên trong có (số lớp) lớp, số hình sơn 1 mặt bằng 6 lớp, nên số lớp = 6×1,5 = 9; cạnh lớn 9+2 = 11, thể tích 1331 (đáp số không đổi).",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2020-NC",
+  "ma_nguon": "ARC 2020-NC · 19",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 rút gọn biểu thức chữ a+a×2+(a×2+1)+5 = a×5+6 (gom hạng tử chữ, quá tầm lớp 5). Đã thay bằng liệt kê a = 1; 2; 3; 4, tính trực tiếp từng tổng chữ số (a=2 loại luôn vì c trùng d).",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2020-NC",
+  "ma_nguon": "ARC 2020-NC · 16",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ba dòng \"… nên 100% − x% = y% số trang còn lại … là: …\" đọc rất khó (HS phải tự bù bước). Đã viết lại: sau khi đọc x% còn y% chưa đọc; đọc thêm n trang thì còn m trang; vậy y% là m+n. Số liệu không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2021-NC",
+  "ma_nguon": "ARC 2021-NC · 1",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt/Bước 2 gọi tổng 60,12 + 16,88 (=77) là \"số tròn\" và \"số rất quen thuộc\" — 77 không tròn, mơ hồ; k5T §1.5 cấm gọi số không tròn là số tròn. Đã viết lại: tổng bằng đúng thừa số thứ nhất của số hạng đầu (không nêu số), phần thập phân 0,12 + 0,88 = 1.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2021-NC",
+  "ma_nguon": "ARC 2021-NC · 3",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 chỉ loại hàng trăm = 4, rồi kết luận hàng trăm = 3, bỏ sót hàng trăm 5–9 (nhảy bước). Đã sửa thành \"4 trở lên\" (số nhỏ nhất 2456 > 2401).",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 7",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Bước 2 ghi \"ba số có số thập phân thì nhân hai số tròn trước\" — sai thực tế: trong ba kích thước chỉ có 1,5 là số thập phân. Đã sửa câu chữ.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 16",
+  "muc": "hoi",
+  "loai": "sơ đồ",
+  "mo_ta": "Bài tổng–hiệu (tổng gấp 3 lần hiệu) không có sơ đồ; người soạn đã ghi ghi_chu_nghi (không có số thật để máy vẽ). Nhận xét: nếu vẽ sơ đồ số bé/số lớn thì chính hình lộ đáp số (tỉ lệ 1:2), nên bỏ là hợp lí; chỉ báo để CEO biết ngoại lệ so với luật \"tổng–hiệu bắt buộc có sơ đồ\". Toán và đáp số C đúng (tính lại: số bé 1 phần, số lớn 2 phần).",
+  "da_sua": false
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 23",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi rõ số kẹo lúc đầu của anh (14) và của em (8) = đáp số cuối. Đã thay bằng câu thử lại không nêu số.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 33",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi số hoa ban đầu của Mai (13), Hoa (15), Trang (20) = đáp số cuối. Đã thay bằng câu thử lại không nêu số.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 32",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Bài tính: Phần 2 không mở bằng dòng chép nguyên biểu thức đề mà đổi ngầm 6, 12, 20,..., 240 thành tích hai số liền nhau ngay dòng đầu. Đã thêm dòng chép đề và dòng \"Ta có: 6=2x3; ...; 240=15x16\".",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 44",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Phần 1 (Chú ý) lộ đáp số: nêu thẳng \"số 54 có xuất hiện nhưng chỉ là số trung gian\" — chính là phương án đúng B. Đã viết lại Chú ý không nêu số cụ thể.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 48",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 chỉ khẳng định \"bóng 150 luôn được giữ lại\" mà không giải thích vì sao (nhảy bước). Đã thêm: 128 là số chẵn nên bóng cuối vòng bị tắt, vòng sau lại bắt đầu bỏ cách bóng 150. Đáp số 150 đã mô phỏng lại bằng code, đúng.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 45",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước từ \"em gấp 3/2 lần anh\" sang \"anh bằng 2/5 tổng\" (và 2 lần -> 1/3). Đã thêm dòng nêu số phần (anh 2 phần, em 3 phần, tổng 5 phần; lúc đầu 1 + 2 = 3 phần).",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 46",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Câu \"Số kem 5A nhường bằng số phần kem 5C ăn là\" lủng củng, và thiếu dòng nói rõ 800 000 đồng là tiền của 20/3 kg kem 5C ăn (do 5A, 5B nhường). Đã sửa câu chữ và thêm dòng đó. Đáp số B giữ nguyên (tự tính: 16/3 kg x 120 000 đ/kg = 640 000).",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2022-CB",
+  "ma_nguon": "ARC 2022-CB · 41",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng \"17+17=34\" dễ lẫn vì hai số 17 khác nghĩa (hiệu mới / phần kém). Đã thêm lời nêu rõ nghĩa.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2024-MAU",
+  "ma_nguon": "ARC 2024-MAU · 15",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Lập luận chưa đủ: khẳng định ngay \"phần nguyên một chữ số\" rồi mới nói \"ba chữ số khác nhau nên dùng đủ cả ba\" — thứ tự lý do ngược, HS không thấy vì sao phần nguyên chỉ có một chữ số. Đã sửa (Mấu chốt, Bước 1, câu đầu Phần 2): hai chữ số thập phân khác nhau trong ba chữ số được cho ⇒ phần nguyên chỉ còn một chữ số. Đáp số 4 không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "ARC-2024-MAU",
+  "ma_nguon": "ARC 2024-MAU · 30",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Phần 1 Bước 3 viết \"diện tích bằng tỉ số AE trên AB\" (thiếu \"của diện tích tam giác ABD\", dễ hiểu thành diện tích bằng một tỉ số). Đã viết lại thành \"diện tích tam giác AED bằng AE/AB diện tích tam giác ABD\", nêu rõ đường cao hạ từ D xuống AB.",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2019",
+  "ma_nguon": "CG 2019 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý b): khẳng định \"Vì N nằm trên AC nên D nằm bên kia AC so với B, tức C nằm giữa B và D\" không suy ra được (nhảy bước); cả lời giải sau đó (S_MCD = S_MCN + S_NCD) dựa vào vị trí này. Đã thay bằng lập luận bằng diện tích: BMN > CMN chung đáy MN nên B xa MN hơn C; B, C cùng phía MN nên D nằm ngoài BC về phía C; M, D hai phía AC nên N nằm giữa M và D. Cũng viết rõ NBC = ABC - ABN (6-4). Phần 1 bước 3 sửa theo. Đáp số không đổi (đã kiểm bằng toạ độ: BC = CD, ANM/BMNC = 1/2).",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2019",
+  "ma_nguon": "CG 2019 · P2.1",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng suy ra \"thời gian dự định hơn thời gian thực tế nửa quãng sau là 15 phút\" thiếu điều kiện \"Nam đến B đúng giờ dự định\". Đã thêm. Sơ đồ giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2020",
+  "ma_nguon": "CG 2020 · 8",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 chuyển thẳng sang \"Tứ giác KQBC bằng số phần của tam giác ABC là 1 − 5/18\" mà không nói vì sao (KQBC = ABC bỏ AKQ); lý do chỉ có ở Phần 1, HS phải tự bù bước. Đã thêm vế \"là phần còn lại của tam giác ABC sau khi bỏ tam giác AKQ nên …\". Toán và đáp số không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2021",
+  "ma_nguon": "CG 2021 · 9",
+  "muc": "nen_sua",
+  "loai": "cách chuẩn",
+  "mo_ta": "Ý b) giải được nhiều cách (tỉ số thời gian / rút về 1 km) nhưng bản soạn không có ghi_chu_nghi \"nhiều cách\" như brief yêu cầu. Đã bổ sung ghi_chu_nghi; lời giải và đáp số giữ nguyên (đúng: 5,5 giờ; 150 km — đã thử lại, đi 2,5 giờ + về 3 giờ = 5,5 giờ).",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2021",
+  "ma_nguon": "CG 2021 · 10",
+  "muc": "hoi",
+  "loai": "đáp số",
+  "mo_ta": "Ý a) có 3 đáp án hợp lệ (đã tính lại): thứ tự nhận bi (A,A,C) → lượt 2: 9;13;11, lượt 3: 11;12;10; (A,C,A) → 9;13;11 rồi 8;12;13; (C,A,A) → 6;13;14 rồi 8;12;13 (đều về 10;11;12 sau lượt 4). Bản soạn chọn (A,A,C) và đã nêu trong ghi_chu_nghi + Chú ý. Toán đúng; CHỈ báo để CEO chốt đáp án chuẩn nếu máy chấm so đúng một bộ số. Ý b) (số dư chia 3 cùng lùi 1; 11 chia 3 dư 2 cho cả ba hộp) đúng.",
+  "da_sua": false
+ },
+ {
+  "de": "CG-2021",
+  "ma_nguon": "CG 2021 · 8",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề không có hình; bản soạn hiểu AB, CD là hai đáy (AB // CD), E nằm trên cạnh bên AD — hợp lí và đã ghi ghi_chu_nghi. Với cách hiểu này S_ABD:S_BCD = 2:3 → S_ABD = 12; S_ABE = 12 × 2/3 = 8 cm² (khớp dap_an). Chỉ báo để CEO biết đề thiếu hình, không sửa.",
+  "da_sua": false
+ },
+ {
+  "de": "CG-2023",
+  "ma_nguon": "CG 2023 · P3.1",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Phần 1, dòng \"Chú ý\" ghi \"(48 phút là 0,8 giờ)\" — trùng đúng đáp số ý a) (0,8 giờ) nên lộ đáp số ở Phần 1. Đã đổi thành \"(chia số phút cho 60)\".",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2023",
+  "ma_nguon": "CG 2023 · P3.1",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước: từ \"5/12 giờ đi 1 km mỗi đoạn dốc\" sang \"AB = 1 : 5/12\" mà không nói ý nghĩa phép chia. Đã tách thành hai dòng: \"số lần 5/12 giờ chứa trong 1 giờ = 12/5 (lần)\" rồi \"AB = 1 × 12/5 = 2,4 (km)\". Toán và đáp số không đổi (đã tính lại: 2,4/4 + 2,4/6 = 1 giờ; AD = 8,8 km).",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2024",
+  "ma_nguon": "CG 2024 · 10",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Bước 3 của Phần 1 nói chung chung (\"chọn cách hai số có quan hệ đúng như đề đòi hỏi\") — HS không biết quan hệ gì. Đã viết lại: tích $b\times(a+b)$ đã biết, liệt kê cách viết thành tích hai số rồi chọn cách hai thừa số hơn kém nhau đúng a (vì (a+b)-b=a); không lộ đáp số. Phần 2 và đáp số không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2025",
+  "ma_nguon": "CG 2025 · 9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 ý b) nhảy bước: từ \"số quà lúc đến khu D = 35\" sang \"35+5=40\" mà không nói số quà lúc đến D chính là số quà còn lại sau khi khu C phát xong, và 40 là số còn lại nếu chưa kể 5 món lẻ. Đã thêm câu nối (đáp số, các phép tính không đổi: 35, 40, 4/9, 90, 180 đều tính lại đúng).",
+  "da_sua": true
+ },
+ {
+  "de": "CG-2025",
+  "ma_nguon": "CG 2025 · 10",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Ý b) đề hỏi lửng \"Làm thế nào để lấy được 6 thẻ ghi số giống nhau?\". Người soạn hiểu là \"lấy ít nhất bao nhiêu thẻ (không nhìn số) thì chắc chắn có 6 thẻ cùng số\" = 66 (trường hợp xấu nhất: 15 thẻ của các loại 1–5 thẻ + 10 loại x 5 thẻ = 65, thêm 1). Tính lại: 15+50+1=66, đúng. Đây là cách hiểu hợp lí nhất, nhưng đề không nói rõ \"chắc chắn/ít nhất\"; nếu đề gốc thật sự hỏi cách lấy khi được nhìn số thì đáp số khác (6 thẻ cùng một số từ 7 đến 16). Giữ nguyên, chờ CEO xác nhận như ghi_chu_nghi.",
+  "da_sua": false
+ },
+ {
+  "de": "LL-2023",
+  "ma_nguon": "LL 2023 · 5",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Mục \"Chú ý\" nói \"không được lấy nhầm số của đề làm đáp số\" trong khi đáp số đúng tình cờ cũng là 216 — dễ khiến HS nghĩ 216 là sai. Đã viết lại: phải tìm cạnh rồi mới tính thể tích.",
+  "da_sua": true
+ },
+ {
+  "de": "LL-2023",
+  "ma_nguon": "LL 2023 · 17",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Phần 1 (Mấu chốt, Bước 2) dùng biểu thức chữ n×(n+2) — HS lớp 5 không quen, trái tinh thần \"không biểu thức chữ\". Đã thay bằng ví dụ số cụ thể (1×3; 3×5; 5×7, và 2/(3×5)=1/3-1/5). Phần 2 không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "LL-2024",
+  "ma_nguon": "LL 2024 · 4",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dùng \"lùi thêm N ngày\" trong khi thứ đi TỚI (Bảy → Chủ nhật → … → Tư); HS lớp 5 dễ hiểu ngược thành thứ Ba. Đã đổi sang \"chuyển sang các thứ đứng sau thêm N ngày\" ở Mấu chốt và Phần 2. Đáp số Thứ Tư đúng (đã kiểm: 02/12/2020 là thứ Tư).",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2019",
+  "ma_nguon": "LTV 2019 · 9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Sơ đồ chuyển động vẽ điểm D (chỗ người thứ nhất lúc 7 giờ 30 phút, nhãn 20 km / 140 km) nhưng dòng mô tả \"Ta có sơ đồ\" không nói D là gì. Đã thêm \"D là chỗ người thứ nhất đến lúc 7 giờ 30 phút\". Số liệu sơ đồ đúng (C ở 100 km: 40×2,5=100; 160−30×2=100).",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2019",
+  "ma_nguon": "LTV 2019 · 13",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng tổng nhảy bước: \"(2019+9)×202:2=2028×101=204828\" (không nói vì sao ra ×101). Đã tách: 2019+9=2028; rồi 2028×202:2=409656:2=204828 (tính lại: 2028×202=409656, nửa là 204828 đúng).",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2019",
+  "ma_nguon": "LTV 2019 · 18",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng \"bốn mặt bên của lỗ: 4×4×1=16\" dễ bị đọc nhầm thành đáy 4×4 nhân cao 1. Đã viết rõ: mỗi mặt rộng 4 cm, cao 1 cm, 4×(4×1)=16. Toán đúng (đếm bằng code: còn 120 khối nhỏ, diện tích mặt lộ ra 312).",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2020",
+  "ma_nguon": "LTV 2020 · 14",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước: \"x0 chia hết cho 4, do đó x là chữ số chẵn\" không nêu lý do; và \"x chia hết cho 3\" thiếu lý do 9 chia hết cho 3. Đã viết lại hai dòng (liệt kê x0 = 0;10;...;90 chọn số chia hết cho 4; thêm \"mà 9 chia hết cho 3\"). dap_an giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2021",
+  "ma_nguon": "LTV 2021 · 8",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết \"hàng sau 3 hình xếp sát phía sau 3 hình đầu\" — không nói rõ là 3 hình bên trái hay bên phải, mà vị trí ô khuyết quyết định chu vi đáy; dòng đi vòng quanh đáy chỉ liệt kê số, HS không biết cạnh nào. Đã ghi rõ \"3 hình bên trái của hàng trước (khuyết ở góc sau bên phải)\" và gắn tên từng cạnh. Toán và đáp số (322 dm²) giữ nguyên; đã tự đếm lại theo từng hướng: trước+sau=112, trái+phải=42, trên+dưới=168.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2022",
+  "ma_nguon": "LTV 2022 · 17",
+  "muc": "sai",
+  "loai": "cách chuẩn",
+  "mo_ta": "Bài hai tỉ số (hiệu số tuổi không đổi) mà bản soạn dùng 3 sơ đồ đoạn thẳng và quy đồng số phần; CEO đã chốt CĐ8 hai tỉ số: phân số của đại lượng không đổi, KHÔNG sơ đồ (k5T.md §2b). Đã viết lại: tuổi con hiện nay = 1/2 hiệu, bốn năm trước = 1/3 hiệu, 1/2-1/3=1/6 hiệu ứng 4 tuổi, hiệu = 4:1/6 = 24, con lúc mẹ gấp 2 lần = 24. Đáp số giữ nguyên 24; bỏ so_do_mo_ta; Phần 1 viết lại theo cùng cách.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2022",
+  "ma_nguon": "LTV 2022 · 13",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng kết luận Phần 2 viết \"bánh ở hộp A nhiều hơn bánh ở hộp B\" (sai nghĩa: so diện tích/khối lượng, không so số bánh). Đã sửa thành so khối lượng bánh theo diện tích.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2022",
+  "ma_nguon": "LTV 2022 · 20",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề chữ \"CE gấp 4 lần DE\" (D giữa E và C) => DC=3DE => S_ABC=45 (đúng như bản soạn: 10x3=30; 30:2x3=45). Nhưng đo trên hình: DE≈106px, DC≈412px, DC/DE≈3,9 (gần 4), trong khi AB/AD đo được ≈2,98 đúng 3 => hình vẽ chính xác hợp với \"CD gấp 4 lần DE\" (cho S_ABC=60: BDC=40, x1,5). Không sửa vì dap_an đã khớp ba nguồn theo đề chữ; báo để người đối chiếu bản gốc đề (có thể đề in \"CD\" hay \"CE\").",
+  "da_sua": false
+ },
+ {
+  "de": "LTV-2022",
+  "ma_nguon": "LTV 2022 · 19",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Quy luật \"số giữa = tổng bốn số quanh + 1\" suy từ hai hình (31->32, 45->46); dò mọi tổ hợp tuyến tính hệ số -2..2 + hằng số khớp cả hai hình chỉ có đúng quy luật này, cho x=66. Không nghi sai, chỉ ghi nhận quy luật dựa trên hai điểm dữ liệu.",
+  "da_sua": false
+ },
+ {
+  "de": "LTV-2023",
+  "ma_nguon": "LTV 2023 · 20",
+  "muc": "nen_sua",
+  "loai": "cách chuẩn",
+  "mo_ta": "Toán và đáp số đúng (AN/AD = 1/3, đã tính lại bằng toạ độ). Nhưng Phần 2 biến đổi như đại số trên độ dài AN, ND, CD (S_AMN = CD×AN/4, \"(AN+2×ND)/4 = 5/12×AD\", \"ND = 5/3×AD − AD\", giản ước CD hai vế) — sát ranh giới cấm đặt ẩn/chuyển vế/nhân chia hai vế của lớp 5, và không theo cách chuẩn \"tam giác … có chung đường cao hạ từ … xuống …, suy ra …\". Đã viết lại bằng tỉ số diện tích: S_MBC = 1/4; S_AMN+S_NDC = 5/12; S_ANC+S_NDC = 1/2 ⇒ S_ANC − S_AMN = 1/12; S_AMN = 1/2 S_ANC (chung đáy AN, AM = 1/2 CD) ⇒ S_ANC = 1/6; AN/AD = S_ANC/S_ADC = 1/3. Phần 1 viết lại 5 bước theo cùng cách, không lộ 1/3; ghi_chu_nghi cập nhật.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2023",
+  "ma_nguon": "LTV 2023 · 19",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đáp số 3 đúng nếu mỗi cạnh tam giác là ĐÚNG MỘT que (tam giác đều cạnh 1 que; lưới tam giác: 4 tam giác cần ≥ 9 que). Nhưng nếu được đặt hai que nối thẳng hàng làm một cạnh thì có hình 7 que cho nhiều hơn 3 tam giác: tam giác ABC có AB = AC = 2 que, BC = 1 que, thêm BP = 1 que (P trên AC, CP = 0,5) và CQ = 1 que (Q trên AB, BQ = 0,5) → 5 đường thẳng, 8 tam giác (ABC, ABP, AQC, BQC, BPC, BQX, CPX, BXC). Đề không nói rõ, không sửa; Phần 2 cũng không chứng minh \"tối đa\" chặt (chỉ nêu cách ghép chung cạnh). Nếu nguồn đáp án là 3 thì giữ, và nên ghi rõ giả thiết \"mỗi cạnh tam giác là một que\" khi người duyệt chốt.",
+  "da_sua": false
+ },
+ {
+  "de": "LTV-2023",
+  "ma_nguon": "LTV 2023 · 17",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Trên hình, nhãn \"8cm\" nằm cạnh đoạn OC (không nằm sát đường chéo AC), còn đề chữ ghi AC = 8 cm. Theo đề chữ: S_hv = 8×8:2 = 32, r×r = 8, hình tròn 25,12, đáp số 6,88 cm² (đúng với dap_an). Nếu 8 cm là OC thì AC = 16, S_hv = 128, r×r = 32, hình tròn 100,48 ⇒ 27,52 cm². Không đổi vì đề chữ rõ và dap_an đã khớp nhiều nguồn.",
+  "da_sua": false
+ },
+ {
+  "de": "LTV-2024",
+  "ma_nguon": "LTV 2024 · 9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước: từ \"không chữ số chẵn, không chữ số 9\" suy ngay ra \"các chữ số còn lại có tích 105 là 3, 5, 7\" mà không nói vì sao phải có đủ cả ba chữ số. Đã bổ sung: các chữ số chỉ có thể là 1, 3, 5, 7; 105 chia hết cho 3, 5, 7 mà mỗi chữ số trong tập đó chỉ có một chữ số chia hết cho 3 (là 3), cho 5 (là 5), cho 7 (là 7) nên phải có đủ 3, 5, 7.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2024",
+  "ma_nguon": "LTV 2024 · 13",
+  "muc": "nen_sua",
+  "loai": "kiến thức",
+  "mo_ta": "Dùng thuật ngữ \"hình quạt\" (không có trong chương trình lớp 5, mẫu đã duyệt LTV 2018 câu 13 nói \"một phần tư hình tròn\"). Đã thay bằng cách nói \"phần nằm trong đường tròn tâm Q/N có góc ở tâm vuông nên bằng một phần tư hình tròn\" ở Mấu chốt, Bước 3, 4 và Phần 2; số liệu không đổi (18 - 14,13 = 3,87).",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2024",
+  "ma_nguon": "LTV 2024 · 18",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng cuối chia số thập phân cho phân số (\"0,9 : 3/4 = 1,2\") nhảy bước, trái luật k5T §1.5 (mỗi bước đổi thập phân/phân số là một dòng riêng). Đã tách dòng \"Đổi: 3/4 = 0,75\" rồi \"0,9 : 0,75 = 1,2\"; Bước 4 Phần 1 sửa khớp.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2024",
+  "ma_nguon": "LTV 2024 · 14",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Không nghi dap_an (1275 trùng ba nguồn); chỉ nhắc: đáp số phụ thuộc \"50 số tự nhiên đầu tiên\" là 0..49 (tổng 1225 -> hiệu 1275) hay 1..50 (tổng 1275 -> hiệu 1225). Người soạn đã ghi ghi_chu_nghi đúng; cách hiểu có số 0 là cách hiểu tiểu học VN, giữ nguyên. Không sửa.",
+  "da_sua": false
+ },
+ {
+  "de": "LTV-2025",
+  "ma_nguon": "LTV 2025 · 15",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt và Bước 3 của Phần 1 nói thẳng \"tổng số lần lấy bé nhất là 8\" / \"8, 16, 24… chọn số bé nhất\" ⇒ lộ đáp số cuối. Đã viết lại Phần 1 chỉ nêu cách nghĩ (phân số tối giản, gấp tử và mẫu lên cùng số lần), không ghi số cuối. Đáp số 8 tự tính lại: 3/8 tối giản ⇒ tổng số lần là bội của 8, nhỏ nhất 8 — đúng.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2025",
+  "ma_nguon": "LTV 2025 · 15",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Giả thiết \"lấy xong trả bút lại hộp\" (bắt buộc, vì chỉ có 3 bút) chỉ nằm ở ghi_chu_nghi, chưa nói trong lời giải; câu \"5 lần lấy được hai chiếc bút khác\" dễ hiểu nhầm. Đã thêm dòng giả thiết ở đầu Phần 2 và sửa thành \"5 lần lấy các cặp bút khác (mực – bi hoặc chì – bi)\".",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2025",
+  "ma_nguon": "LTV 2025 · 19",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ba câu lời giải viết \"giá … bằng so với giá ban đầu: …\" — sai ngữ pháp, HS lớp 5 đọc vấp. Đã đổi theo khuôn CEO 10/10: \"giá … so với giá ban đầu bằng: …\". Phép tính giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "LTV-2025",
+  "ma_nguon": "LTV 2025 · 9",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề hỏi \"trả nhiều hơn bao nhiêu tiền\" không nói hơn so với gì. Cách hiểu của người soạn (hơn so với mua 1 kg: 337500 − 75000 = 262500) là cách hiểu tự nhiên duy nhất tôi thấy (đã được ghi ở ghi_chu_nghi); không sửa, báo để CEO biết nếu muốn chốt.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2019",
+  "ma_nguon": "NN 2019 · 2",
+  "muc": "nen_sua",
+  "loai": "kiến thức",
+  "mo_ta": "Bước \"chia cả hai bên cho 3\" thuộc nhóm nhân/chia hai vế (k5T §1 cấm). Đã thay bằng: viết a×6 = (a×2)×3 rồi so với b×3 nên b = a×2; Phần 1 bước 3 sửa theo. Chữ a, b là kí hiệu cấu tạo số (ab = a×10+b), chấp nhận được; đáp số 12; 24; 36; 48 (4 số) đã tính lại đúng.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2019",
+  "ma_nguon": "NN 2019 · 4",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng đầu Phần 2 viết \"chia BC thành 3 đoạn, AC thành 4 đoạn, nên BD = 1/2 DC và AE = 1/3 EC\" nhảy bước. Đã tách hai dòng, nói rõ BD là 1 đoạn - DC là 2 đoạn; AE là 1 đoạn - EC là 3 đoạn. Phần suy diễn diện tích phía sau đã kiểm từng dòng: đúng (S_ABF = S_BDF = 2 S_AEF).",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2019",
+  "ma_nguon": "NN 2019 · 7",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Câu \"can hai 3 phần, can ba 4 phần ... khớp với 7 phần ở trên\" chỉ nêu trùng hợp chứ chưa giải thích vì sao 1 phần theo tỉ số 3:4 bằng 1 phần của tổng 9 phần (HS phải tự bù bước). Đã viết lại: hai can chiếm 7 phần của tổng và 3+4=7 nên mỗi phần như thế đúng bằng một phần trong 9 phần.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2019",
+  "ma_nguon": "NN 2019 · 4",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đáp số A (2) chỉ đúng khi hiểu theo hình: BD = 1/3 BC và AE = 1/4 AC (các chấm chia đều). Đo trên ảnh: D ở 0,34 BC; E, hai chấm sau ở 0,30 / 0,51 / 0,74 AC (hình vẽ tay, lệch ±0,05). Tính lại bằng code: (BD=1/3 BC, AE=1/4 AC) cho 2; (BD=1/3 BC, AE=1/3 AC) cho 1 (cũng là phương án D). Không đổi dap_an (đã khớp ba nguồn); ghi_chu_nghi của người soạn đã nêu đúng điều này - chỉ báo để CEO biết câu phụ thuộc cách đọc chấm chia trên hình.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2021",
+  "ma_nguon": "NN 2021 · 5",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 đi thẳng \"45:(1+2)×2=30\" mà không nói hình thang gồm hai tam giác ABC và ACD; và nhảy từ AO/OC=1/2 sang AO=1/3×AC, AN/NC=3/2 sang AN=3/5×AC mà không nêu số phần của AC. Đã thêm 3 dòng giải thích (không đổi cách giải, đáp số, sơ đồ).",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2023",
+  "ma_nguon": "NN 2023 · 4",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề mơ hồ ở hai chỗ nhưng ghi_chu_nghi của người soạn đã nêu đúng. Cách hiểu của người soạn (B cho người khác 6 cái nên A không đổi; câu cuối là tình huống riêng tính từ lúc đầu): A=12, B=30, B+2=32, tỉ số 12:32=3/8 (đã tự tính lại, đúng). Hai cách hiểu khác: (i) B cho đi 6 rồi mới nhận thêm 2 (B=26) cho 6/13; (ii) B cho A 6 cái thì 5k-6=2(2k+6) cho k=18, A=36, B=90, B+2=92, tỉ số 9/23. Không đổi dap_an (3/8 là cách hiểu tự nhiên nhất, các số đẹp); chỉ báo để CEO biết.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2023",
+  "ma_nguon": "NN 2023 · 5",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Đáp số 36 cm2 đúng (tính lại bằng toạ độ). Nhưng Phần 2 viết cạnh hình vuông EFCG là 3+6=9 mà không nói 3 và 6 là gì (HS phải tự bù), nói F, G nằm trên đường BC, DC mà thực ra nằm trên phần kéo dài, và MF, NG chỉ ghi 9-6 không nói là EF-EM, EG-EN. Đã sửa: nêu 3 là cạnh hình vuông nhỏ, 6 là cạnh ABCD; ghi rõ đường thẳng BC, DC kéo dài về phía B, D; MF=EF-EM, NG=EG-EN. Phần 1 giữ nguyên, qua kiemP1.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2023",
+  "ma_nguon": "NN 2023 · 6",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Đáp số đúng (xe tải 24, xe khách 36; thử lại: 96:24=144:36=4 giờ; lần hai 72:24=3 giờ, 168:36-3=5/3 giờ). Dòng 72:2x3=108 nhảy bước: HS phải tự nhớ tỉ số 2:3 từ lần một. Đã sửa thành: quãng đường xe tải bằng 2/3 quãng đường xe khách cùng thời gian, nên 72:2/3=108 (đúng nếp phân số ứng với rồi chia). Sơ đồ giữ nguyên, máy vẽ chạy lại OK.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT1",
+  "ma_nguon": "NN 2024-TT1 · P1.1",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Sơ đồ tổng–hiệu ghi hiệu 80 hai lần (them \"80\" trên hàng Số lớn và nhãn hieu \"80\") — luật sơ đồ 5T: đã ghi hiệu bằng them thì không thêm hieu. Đã bỏ nhãn hieu.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT1",
+  "ma_nguon": "NN 2024-TT1 · P1.3",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề \"chuyến xe đầu tiên sẽ đến nhà Hoa lúc 6h50\" mơ hồ. Cách hiểu của người soạn (xe tới bến gần nhà lúc 6:50, 7:05, 7:20, 7:35 ⇒ chọn 7:20 ⇒ xuất phát 7:15, đáp C) là tự nhiên nhất; nếu hiểu 6:50 là xe qua nhà rồi Hoa mới đi bộ 5 phút tới bến (xe tới bến 6:55, 7:10, 7:25) thì ra 7:20 (D). Tính lại cả hai đúng. ghi_chu_nghi đã nêu cả hai; không sửa, chờ người chốt.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2024-TT1",
+  "ma_nguon": "NN 2024-TT1 · P1.5",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 1 bước 2 và Phần 2 viết \"đỉnh nằm trên đường tròn nên đường chéo = đường kính\" — nhảy bước (lớp 5 chưa suy được). Đã viết lại: theo hình vẽ hai đường chéo đi qua tâm nên là hai đường kính. Đáp số 28,5 cm² (B) đúng, đã đối chiếu hình.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT1",
+  "ma_nguon": "NN 2024-TT1 · P2.2",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Sơ đồ có dấu \"?\" dưới hàng Ngày 3 trong khi đề hỏi độ dài cả khúc vải; hiệu 5 m không hiện trên sơ đồ. Đã bỏ dau_hoi, xếp Ngày 1 và Ngày 3 lên đầu và ghi hieu \"5 m\"; dòng mô tả trong Phần 2 sửa theo. Số liệu đã qua máy vẽ.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT2",
+  "ma_nguon": "NN 2024-TT2 · P2.1",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Sơ đồ chia tổng số vở thành 6 phần (An 2, Toàn 1, Giao+Thông 3) nhưng Phần 2 chưa nói vì sao An là 2 phần (1/3 = 2/6) và Giao+Thông là 3 phần; HS phải tự bù bước. Đã thêm hai dòng: quy đồng 1/3 = 2/6 và 6-2-1 = 3 trước dòng \"Ta có sơ đồ:\". Số lần \"Ta có sơ đồ:\" và so_do_mo_ta không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT2",
+  "ma_nguon": "NN 2024-TT2 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Đoạn chứng minh S_ACN/S_DCN = S_ACM/S_DCM (ý b) đúng nhưng câu chữ rối (\"cả bốn tam giác cùng có hai đường cao\"). Viết lại thành ba dòng: hai tam giác chung đáy CN có tỉ số diện tích bằng tỉ số hai đường cao hạ từ A, D xuống CN; tương tự cho đáy CM; suy ra hai tỉ số bằng nhau. Toán không đổi, đáp số 4/3 và 4/5 giữ nguyên (đã kiểm bằng toạ độ: AN:ND = 4:5).",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT2",
+  "ma_nguon": "NN 2024-TT2 · P1.5",
+  "muc": "hoi",
+  "loai": "cách chuẩn",
+  "mo_ta": "Đáp số 1,5 km đúng (d/10 - d/15 = d/30 = 50 m nên d = 1500 m). ghi_chu_nghi chỉ nêu hai cách \"yếu\" (phương trình, thử phương án) mà bỏ sót đối thủ thật của cách đã chọn: cách \"phân số của quãng đường\" (1 phút hàng ngày đi 1/15 quãng đường, sáng nay 1/10; hiệu 1/10 - 1/15 = 1/30 quãng đường ứng với 50 m nên quãng đường là 50 x 30 = 1500 m) — cũng bám quan hệ gốc s = v x t, không cần sơ đồ hiệu–tỉ, và hợp §2b dòng D (\"phân số ứng với\"). Cách đã viết (đảo tỉ số thời gian thành tỉ số vận tốc rồi hiệu–tỉ) cũng đúng và là cách phổ biến của CĐ28; để CEO chốt cách nào làm chuẩn cho dạng \"cùng quãng đường, hai vận tốc, biết hiệu vận tốc\". Không sửa.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2024-TT3",
+  "ma_nguon": "NN 2024-TT3 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết thẳng \"$2\times 2=4$\" cho hiệu hai vận tốc mà không nêu vì sao (xuôi dòng = vận tốc ca nô + vận tốc dòng, ngược dòng = ca nô − dòng); HS phải tự bù bước then chốt (ý này chỉ có ở Phần 1). Đã thêm một câu giải thích ngay trước dòng tính; đáp số và các dòng khác giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT3",
+  "ma_nguon": "NN 2024-TT3 · P1.5",
+  "muc": "hoi",
+  "loai": "sơ đồ",
+  "mo_ta": "Bài chuyển động (hai xe ngược chiều gặp nhau) không có sơ đồ, vì đề không cho độ dài quãng đường nên máy vẽ chuyển động (cần vị trí thật) không dùng được; người soạn đã ghi ghi_chu_nghi. Luật 5T yêu cầu mọi bài chuyển động có quãng đường đều có sơ đồ — CEO quyết định có chấp nhận ngoại lệ \"quãng đường không cho số\" hay không. Lời giải (cách coi cả quãng đường là 1 đơn vị) và đáp số 2 giờ 55 phút đều đúng: 1/5+1/7=12/35; 1:12/35=35/12 giờ=2 giờ 55 phút.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2024-TT3",
+  "ma_nguon": "NN 2024-TT3 · P2.1",
+  "muc": "hoi",
+  "loai": "cách chuẩn",
+  "mo_ta": "Ý b) toán đúng (đã giải độc lập: 250000 và 300000; thử lại: còn lại 150000 và 250000, hiệu 100000) nhưng cách \"tính ngược phân số, viết số tiền mang đi của hai bác theo số tiền còn lại của bác Minh\" khá dày đặc với HS lớp 5. Dạng \"hai phân số tiêu, biết hiệu số tiền còn lại\" chưa có cách chuẩn trong k5T §2b (người soạn đã ghi ghi_chu_nghi); không sửa vì chưa có cách chuẩn để so, cần CEO chốt.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2024-TT4",
+  "ma_nguon": "NN 2024-TT4 · P1.5",
+  "muc": "sai",
+  "loai": "kiến thức",
+  "mo_ta": "Lời giải dùng dấu hiệu chia hết cho 11 (hiệu của a+c và b chia hết cho 11) — ngoài lớp 5 và không được chứng minh trong bài. Đã viết lại không đổi dap_an (A): liệt kê 9 số lẻ có tổng chữ số 6 (c = 1; 3; 5), chia từng số cho 11 (chỉ 231 chia hết, dư 0), ra 2,31 m và 10. Đáp số, toán đều đúng; ghi_chu_nghi nêu cách dùng dấu hiệu 11 để CEO chốt nếu muốn giữ.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024-TT4",
+  "ma_nguon": "NN 2024-TT4 · P2.2",
+  "muc": "hoi",
+  "loai": "sơ đồ",
+  "mo_ta": "Bài chuyển động có quãng đường (vòng hồ 2 km) nhưng sơ đồ là tổng–hiệu vận tốc, không có sơ đồ đường đi theo luật CEO 'bài chuyển động có quãng đường phải có sơ đồ'. Máy vẽ chuyển động chỉ vẽ đoạn thẳng; người soạn đã nêu lý do ở ghi_chu_nghi. Toán đúng (hiệu 3, tổng 12, Ánh 4,5 km/giờ). Nhờ CEO xác nhận có chấp nhận hay cần thêm sơ đồ trải thẳng đường chạy.",
+  "da_sua": false
+ },
+ {
+  "de": "NN-2024",
+  "ma_nguon": "NN 2024 · P1.3",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết phân số có tử số thập phân ($\\dfrac{281,6}{11}$) — không phải phân số lớp 5. Đổi thành $8\\times 35,2:11=281,6:11=25,6$; sửa lại câu chữ Bước 3 Phần 1 cho khớp.",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024",
+  "ma_nguon": "NN 2024 · P1.4",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 mới chứng minh điều kiện CẦN (B chia hết cho 9, tận cùng 1 hoặc 6) rồi kết luận B=36, thiếu bước thử lại điều kiện ĐỦ (A+36 chia hết cho cả 9 và 5 nên chia hết cho 45). Đã thêm dòng \"Thử lại\".",
+  "da_sua": true
+ },
+ {
+  "de": "NN-2024",
+  "ma_nguon": "NN 2024 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý c): nhảy bước — ghi \"Xe hỏng lúc 9 giờ\" mà chưa có phép tính 8+1=9; \"24 phút\" chưa có phép trừ 10 giờ − 9 giờ 36 phút; đổi 24 phút ra giờ gộp chung dòng. Đã tách thành các dòng riêng (hỏng xe lúc · sửa xong lúc · khoảng thời gian · Đổi · quãng đường).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2020",
+  "ma_nguon": "NS 2020 · 8",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Phần 1 lộ đáp số: Mấu chốt ghi \"nếu số lần khớp … thì tử số bằng mẫu số\" và Bước 4 ghi \"tử số và mẫu số bằng nhau thì thương bằng 1, từ đó tìm M\" ⇒ nói thẳng M = 1. Đã viết lại Mấu chốt (chỉ bảo đếm rồi so với mẫu số) và Bước 4 (nhận xét rồi suy ra giá trị phân số). Phần 2 và đáp số đúng (tính lại: tử = mẫu = 1375775540).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2020",
+  "ma_nguon": "NS 2020 · 12",
+  "muc": "sai",
+  "loai": "toán",
+  "mo_ta": "Lập luận chữ số tận cùng thiếu trường hợp: số quả còn lại (242 − giỏ bán) tận cùng 0 hoặc 5 thì giỏ bán tận cùng 2 HOẶC 7, bản soạn chỉ nêu 2 (\"giỏ đã bán phải có chữ số tận cùng là 2\") mà bỏ qua 7. Kết quả vẫn đúng vì không giỏ nào tận cùng 7, nhưng suy luận hỏng. Đã sửa cả Bước 2 (Phần 1) và dòng lập luận (Phần 2), nêu rõ không có giỏ nào tận cùng 7. Đáp số 42 đúng (còn lại 200 = 40 xoài + 160 cam = 36+39+41+44).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2020",
+  "ma_nguon": "NS 2020 · 7",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Bước 1 (Phần 1) và dòng đầu Phần 2 viết \"đường kính nằm trên đường thẳng chứa cạnh hình vuông, nên bán kính bằng cạnh hình vuông\" — không suy ra được như vậy. Đã mở ảnh: tâm B (C) là đỉnh hình vuông, một đầu mút đường kính trùng đỉnh kia của cạnh nên bán kính = cạnh = 21 cm. Đã viết lại cho đúng lý do ở cả hai phần. Đáp số 1825,74 cm² đúng (441 + 441 × 3,14).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2021",
+  "ma_nguon": "NS 2021 · P1.1",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết hỗn số không chuẩn \"7 7/7\" rồi đổi ngầm thành 8. Sửa: tách phần nguyên 2+5=7 và phần phân số 3/7+4/7=1, rồi 7+1=8, khớp Bước 4 của Phần 1.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2021",
+  "ma_nguon": "NS 2021 · P1.8",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Cụm \"thời gian dự định\" dùng ở cả Phần 1 lẫn Phần 2 mà không được định nghĩa (HS phải tự đoán). Sửa: thêm câu định nghĩa (thời gian đi đoạn đường đó nếu giữ nguyên vận tốc ban đầu) ở Bước 2 và đầu phần tính của Phần 2. Toán, sơ đồ chuyển động và đáp số giữ nguyên (tự kiểm lại: v=50 km/giờ, AB=400 km).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2021",
+  "ma_nguon": "NS 2021 · P1.9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Chu vi từng tầng (18, 12, 8, 4) được ghi thẳng, HS không biết tính ra sao. Sửa: nêu cách tính \"số cạnh 1 cm của các khối trừ 2 lần số cặp khối chung cạnh\" (9x4-9x2=18; 5x4-4x2=12; 3x4-2x2=8; 4), cập nhật Bước 3 Phần 1 cho cùng cách.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2021",
+  "ma_nguon": "NS 2021 · P1.9",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đáp số 60 cm2 phụ thuộc cách đọc hình 3D. Tôi tự đọc hình độc lập và ra đúng cùng bố cục với người soạn: 9 cột, độ cao theo hàng (trước ra sau) 1;2;1 | 1 | 3;2;1 | 3;4, tổng 18 khối; đếm đủ mặt ngoài (kể cả chỗ lõm giữa các cột) = 18 mặt trên+dưới + 42 mặt xung quanh = 60. Nếu đáp án in trong sách là 56 thì đó là cách đếm theo hình chiếu (bỏ sót 4 mặt ở chỗ lõm) và 60 vẫn là đáp số đúng của hình; cần đối chiếu với nguồn đáp án. Giả định khối bị che đều có khối đỡ bên dưới, không có khối ẩn thêm phía sau.",
+  "da_sua": false
+ },
+ {
+  "de": "NS-2023",
+  "ma_nguon": "NS 2023 · P2.5",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt và Bước 5 của Phần 1 nói thẳng kết luận \"không bao giờ đạt được toàn đống 1 viên\" ⇒ lộ đáp số (Không). Đã viết lại: Mấu chốt chỉ nêu cách nghĩ (tìm tính chất không đổi rồi đối chiếu với đống 1 viên), Bước 5 chỉ bảo đối chiếu và trả lời.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2023",
+  "ma_nguon": "NS 2023 · P2.4",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Ý b dùng cách \"tổng–tỉ\" (BDE 2 phần, ADE 1 phần, tổng 8 cm²) nhưng không có sơ đồ; luật tổng–tỉ bắt buộc sơ đồ. Đã thêm \"Ta có sơ đồ:\" + so_do_mo_ta (gia_tri_phan 8/3, tổng 8 cm²; máy vẽ chạy được) và sửa ghi_chu_nghi cho khớp.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2023",
+  "ma_nguon": "NS 2023 · P1.9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng then chốt \"hai nửa tròn nhỏ + tam giác = phần tô đậm + nửa tròn lớn\" được khẳng định mà không giải thích (nhảy bước; HS không tự bù được). Đã thêm 2 câu giải thích (nửa tròn lớn = tam giác + hai phần giữa cạnh và cung lớn; mỗi nửa tròn nhỏ = một mảnh trăng + một phần đó) ở cả Mấu chốt và Phần 2. Đáp số 24 giữ nguyên (đã tính lại: 14,13+25,12+24−39,25=24).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2023",
+  "ma_nguon": "NS 2023 · P1.7",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Câu \"đỉnh M … cách NQ 3 đường kẻ\" mơ hồ (đọc được là 3 đường kẻ ở giữa ⇒ đường cao 4). Đã đổi thành \"cách NQ đúng 3 khoảng giữa các đường kẻ song song\" ở Phần 2 và Bước 3 Phần 1. Đã tự đo lại theo toạ độ lưới từ hình: M(hàng 2, cạnh trái), N(hàng 3, cạnh phải), P, Q đáy hàng 6 vị trí 4 và 3 ⇒ 12 tam giác nhỏ = 24 cm²; NQ, MQ… nằm đúng đường kẻ, chia 6 + 18 đúng.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2023",
+  "ma_nguon": "NS 2023 · P1.5",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt viết \"số bông chênh lệch này CHÍNH LÀ phần trăm chênh lệch\" (bông ≠ phần trăm). Đã sửa thành \"ứng với số phần trăm chênh lệch\". Toán đúng: 2 bông ↔ 51%−49%=2% ⇒ 100 bông (thử: 46 mỗi bó, 51 hồng + 49 cúc).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2025",
+  "ma_nguon": "NS 2025 · P2.3",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý b) khẳng định \"đếm thì thấy mỗi đoạn nằm trong nhiều nhất 6 hình, chỉ 6 đoạn như vậy, còn lại nhiều nhất 5\" mà không cho HS thấy số đếm; toàn bộ lập luận \"không quá 11 hình\" dựa vào điều này. Đã chạy lại bằng code (30 đoạn: 3 đoạn 2 hình, 18 đoạn 4 hình, 3 đoạn 5 hình, 6 đoạn 6 hình; tổng 27 hình; xoá hai đoạn: nhỏ nhất còn 16, đúng 6 cách; cặp đoạn giữa đường ngang dài 3 cm + đoạn thứ hai từ phải của đáy mất đúng 11 hình, hai tập hình rời nhau). Đã thêm bảng số hình theo từng đoạn nằm ngang (4;6;6;4 / 4;5;4 / 4;4 / 2), phần còn lại giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-2025",
+  "ma_nguon": "NS 2025 · P2.3",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Không phân xử được hai chỗ đề mơ hồ (người soạn đã ghi ghi_chu_nghi): (a) \"hình tam giác được cấu tạo bởi các hình tam giác có cạnh 1 cm\" hiểu là mọi tam giác ghép từ các ô nhỏ = 27 (nếu chỉ đếm ô cạnh 1 cm thì 16); (b) \"ít hình tam giác nhất\" hiểu là số tam giác còn lại = 16 (đề cũng có thể chỉ đòi chỉ ra cách xoá). Cách hiểu của người soạn là cách tự nhiên nhất; không đổi.",
+  "da_sua": false
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P1.1",
+  "muc": "nen_sua",
+  "loai": "kiến thức",
+  "mo_ta": "Lập luận \"4 không chia hết cho 5 mà b×4 chia hết cho 5 nên b chia hết cho 5\" dùng tính chất nguyên tố cùng nhau (lớp 6), vượt quy định chỉ dùng dấu hiệu chia hết. Đã viết lại: b×4 chia hết cho 5 và chẵn nên tận cùng 0, b×4 từ 4 đến 36 nên là 10; 20; 30, chỉ 20 chia hết cho 4 (dấu hiệu chia hết cho 4). Phần 1 Bước 3 sửa theo. Đáp số giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P1.1",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề \"Tìm a, b\" không nói a, b khác 0: cặp a=b=0 cũng thoả (0,0=0). Người soạn đã loại và nêu trong ghi_chu_nghi; đáp số 4;5 khớp cách hiểu thông dụng. Nhờ CEO xác nhận a,b khác 0 (hoặc ghi cả a=b=0).",
+  "da_sua": false
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P1.3",
+  "muc": "sai",
+  "loai": "toán",
+  "mo_ta": "Phần 2 chứng minh \"số số hạng phải là bội của 5\" thiếu ca 6; 7; 8; 9 số hạng (chỉ xét 1–5 rồi nhảy sang từ 10 trở lên), nên chưa loại được các trường hợp này. Đã thêm câu: với 6; 7; 8; 9 số hạng thì tổng chữ số tận cùng 48; 56; 64; 72 đều không tận cùng 0. Đáp số 888+88+8+8+8=1000 (8 chữ số 8) đúng (đã duyệt bằng vét cạn: 111x+11y+z=125, nhỏ nhất 3x+2y+z=8).",
+  "da_sua": true
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P1.5",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước từ (1/8+8) sang 65/8 (HS phải tự đổi 8 = 64/8 ngầm). Đã thêm dòng y×(1/8+64/8)=195.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P1.7",
+  "muc": "nen_sua",
+  "loai": "kiến thức",
+  "mo_ta": "Phần 2 viết \"chia hết cho cả 10 và 8 nên là một trong các số 40; 80; 120…\" mà không chứng minh mọi số chia hết cho cả hai đều là bội của 40 (kiến thức bội chung, lớp 6). Đã viết lại theo dấu hiệu chia hết: chia hết cho 10 và <50 là 10; 20; 30; 40, chỉ 40 chia hết cho 8. Phần 1 Bước 1–2 sửa theo. Đáp số 31 giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P1.10",
+  "muc": "nen_sua",
+  "loai": "hiểu đề",
+  "mo_ta": "Đọc hình (đã kiểm từng cạnh trên ảnh): lời giải và đáp số 196 cm² ĐÚNG. Chỉ có ghi_chu_nghi ghi sai kích thước hình chữ nhật 6 (\"6 x 8 cm\"); đúng là 6 x 10 cm (rộng = 14-8 = 6, cao = 14-4 = 10; tổng diện tích 4+16+16+36+64+60 = 196). Đã sửa ghi chú.",
+  "da_sua": true
+ },
+ {
+  "de": "NS-HB1",
+  "ma_nguon": "NS-HB1 · P2.1",
+  "muc": "hoi",
+  "loai": "đáp số",
+  "mo_ta": "Ý b ra 1683:560 = 3 3/560 giờ (≈3,005 giờ), không tròn; nếu vòi 561 lít/giờ thì đúng 3 giờ. Tôi tính lại độc lập: thể tích 2,244 m³, 75% = 1,683 m³ = 1683 lít, đúng như bản soạn. Nghi đề in sai số 560 (hoặc đáp án gốc làm tròn \"3 giờ\"). Không sửa dap_an; nhờ CEO / nguồn đối chiếu quyết định.",
+  "da_sua": false
+ },
+ {
+  "de": "NTL-2020",
+  "ma_nguon": "NTL 2020 · 6",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy từ \"A+2 chia hết cho 15\" sang \"A chia 15 dư 15−2=13\" không nói vì sao; HS lớp 5 phải tự bù bước. Đã thêm một dòng nối (\"A kém một số chia hết cho 15 là 2 đơn vị, tức A hơn số chia hết cho 15 liền trước đó 15−2=13 đơn vị\") và sửa dòng Thử lại cho rõ là thử với A=13 (một giá trị ví dụ).",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2020",
+  "ma_nguon": "NTL 2020 · 12",
+  "muc": "nen_sua",
+  "loai": "toán",
+  "mo_ta": "Cạnh 9 cm: câu \"thử từng nhóm ba thanh (1+2+6; 1+3+5; 2+3+4) đều không ghép thêm được đủ bốn cạnh\" nói suông, không có lập luận, mà đáp số 5 cách của cạnh 9 phụ thuộc hoàn toàn vào ý này. Đã viết rõ từng nhóm: chọn nhóm ba thanh đó thì chỉ còn ghép thêm được đúng 2 nhóm (9 và 4+5 / 9 và 2+7 / 9 và 1+8) nên chỉ có 3 nhóm, thiếu một cạnh. Đã kiểm lại bằng vét cạn (script): tổng 9 cách (cạnh 7:1, 8:1, 9:5, 10:1, 11:1), đúng với dap_an và các trường hợp cạnh 7, 8, 10, 11 trong lời giải.",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2022",
+  "ma_nguon": "NTL 2022 · P1.11",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Bước 2 của Phần 1 viết lủng củng (\"đếm các điểm gần M nhất bằng những điểm chỉ có mũi tên từ M đi vào\"), HS khó hiểu phải làm gì. Đã viết lại: điểm chỉ nhận mũi tên từ M thì có đúng 1 cách, ghi số cách bên cạnh trước. Không lộ đáp số.",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2022",
+  "ma_nguon": "NTL 2022 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý c): một dòng Phần 2 dồn hai cặp tam giác + lập luận đường cao + kết quả, câu \"cả hai cặp đều có hai đường cao hạ từ D và từ C xuống BP\" rối. Đã tách thành 3 dòng (cặp NDP–NPC · cặp BDN–BNC · kết luận), toán không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2023",
+  "ma_nguon": "NTL 2023 · P1.10",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết 3×3=9, 2×2=4, 1×1=1 không nói vì sao số hàng/cột là 3, 2, 1 — HS lớp 5 phải tự bù bước. Đã thêm vào mỗi dòng lý do (góc trên bên trái của hình vuông chỉ nằm ở 3/2/1 hàng đầu và cột đầu). Đáp số 30 không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2023",
+  "ma_nguon": "NTL 2023 · P1.6",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề hỏi \"Tìm số sách ngăn 2\" không nói lúc đầu hay sau khi chuyển. Lời giải và dap_an (27) theo cách hiểu LÚC ĐẦU, nhất quán nội bộ; cách hiểu SAU khi chuyển cho 30. Tôi tính lại: tổng 48, sau chuyển 18 và 30, lúc đầu 21 và 27. Đáp số đã được so ba nguồn ở khâu khác nên không đổi; ghi_chu_nghi của bản soạn còn câu \"Cần đối chiếu nguồn khác\" — nên bỏ câu đó khi ghi kho nếu ba nguồn đã khớp 27.",
+  "da_sua": false
+ },
+ {
+  "de": "NTL-2023",
+  "ma_nguon": "NTL 2023 · P2.2",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Ý c) đề chỉ ghi \"So sánh BK/KC\" (lửng, thiếu vế sau). Bản soạn tính BK/KC = 2/3 (BK ngắn hơn KC). Tôi kiểm lại bằng toạ độ: BK/KC = 2/3 đúng, a)=30 và b)=2 đúng. Không phân xử được đề gốc so sánh BK/KC với gì (2/3? 1? hay BK với KC) — lời giải đã trình bày đủ để suy ra mọi kết luận so sánh; cần đối chiếu PDF đề.",
+  "da_sua": false
+ },
+ {
+  "de": "NTL-2024",
+  "ma_nguon": "NTL 2024 · P2.1",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 ý b: mô tả sơ đồ thứ hai nhắc \"xe đạp cách A 21 km\" trước khi dòng tính 27−6=21 xuất hiện. Đã đưa dòng tính 21 km lên trước \"Ta có sơ đồ:\". Toán, dữ kiện, sơ đồ giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2024",
+  "ma_nguon": "NTL 2024 · P2.3",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Phần 1 Bước 4 chốt luôn kết luận (\"Mai nói sai, người còn lại nói đúng\") — gần như lộ đáp số; Phần 2 nhảy từ \"Mai sai\" sang \"Lan đúng\" mà thiếu câu dùng điều kiện \"chỉ một bạn đúng\". Đã viết lại Bước 4 không chốt, thêm một dòng ở Phần 2.",
+  "da_sua": true
+ },
+ {
+  "de": "NTL-2024",
+  "ma_nguon": "NTL 2024 · P2.2",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Hình vẽ đặt M gần A (AM khoảng 1/3 AD) nhưng đề chữ ghi AM = 2/3 AD. Bản soạn theo đề chữ (đã có ghi_chu_nghi, đúng luật \"hình lệch chữ theo chữ\"). Tôi tính lại theo 2/3: S_ABM=100/3, S_BMC/S_ABM=3/2, BO/OM=3/2 (toạ độ O=(4,4)) — khớp dap_an. Nếu đề gốc thật là 1/3 thì đáp số khác (S_ABM=50/3, tỉ số 3); chỉ báo, không sửa.",
+  "da_sua": false
+ },
+ {
+  "de": "NTL-2025",
+  "ma_nguon": "NTL 2025 · P1.10",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Mệnh đề d) gộp ba lần đếm vào một đoạn dài, cỡ cạnh 3 cm không giải thích số vị trí (chỉ ghi 2×1). Đã tách từng cỡ một dòng, nêu số vị trí ngang/dọc ở cả ba cỡ.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2018",
+  "ma_nguon": "NTT 2018 · 4",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Bước 3 Phần 1 viết \"nhân với số lần viết\" dễ hiểu nhầm là 20 lần, trong khi Phần 2 dùng 19 lần đứng trước; đã làm rõ.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2018",
+  "ma_nguon": "NTT 2018 · 8",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Sơ đồ (trạng thái lúc sau) đánh dấu \"?\" ở hàng Cành dưới, nhưng đề hỏi số chim cành dưới LÚC ĐẦU; đã bỏ dau_hoi để khỏi gợi nhầm giá trị 6 là đáp số.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2018",
+  "ma_nguon": "NTT 2018 · 6",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề hỏi \"ít nhất\" nhưng số liệu 15+20-30 cho đúng một giá trị 5 (nếu 30 em là toàn bộ số em đăng kí ít nhất một trong hai CLB). dap_an 5 khớp cách hiểu này; không phát hiện cách hiểu tự nhiên hơn cho đáp số khác. Chỉ báo cho CEO biết, không sửa.",
+  "da_sua": false
+ },
+ {
+  "de": "NTT-2018",
+  "ma_nguon": "NTT 2018 · 10",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Cách hiểu 200 hộp/50 gói là số lượng cần có (kể cả quà) cho 1 985 000 đồng (tự tính lại: p+⌊p/5⌋≥200 nhỏ nhất p=167; p+⌊p/10⌋≥50 nhỏ nhất p=46; 167×5000+46×25000=1985000). Cách hiểu \"mua đủ rồi nhận thêm\" cho 2 250 000. Hợp lí hơn là cách 1; giữ nguyên dap_an, đã có ghi_chu_nghi.",
+  "da_sua": false
+ },
+ {
+  "de": "NTT-2019",
+  "ma_nguon": "NTT 2019 · 2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết \"Sinh nhật ở tháng Năm nên cách nhau 366 ngày\" — thiếu mắt xích vì sao tháng Năm dẫn tới 366 (khoảng đó đi qua tháng Hai năm 2020). Đã thêm.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2019",
+  "ma_nguon": "NTT 2019 · 3",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 mở bằng \"Đổi: 54 lít = 54 dm³\" rồi chia 2, chưa có dòng nói nước tràn ra bằng thể tích hai cục sắt (ý quyết định của bài). Đã thêm dòng đó.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2019",
+  "ma_nguon": "NTT 2019 · 7",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Dòng mô tả sơ đồ thứ nhất viết \"một xe đi 40 km/giờ, một xe đi 50 km/giờ\" trong khi đề chỉ có MỘT người lái xe với hai phương án vận tốc; dễ làm HS tưởng hai xe. Đã sửa lời mô tả (JSON sơ đồ giữ nguyên).",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2019",
+  "ma_nguon": "NTT 2019 · 11",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết \"Số cây ngày 3 bằng 1 − 6/11\" mà không nói vì sao ngày 3 là phần còn lại (đội trồng đúng 3 ngày, ngày 3 trồng nốt). Đã thêm vế \"Ngày 3 đội trồng nốt số cây còn lại nên…\".",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2019",
+  "ma_nguon": "NTT 2019 · 12",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Sơ đồ thứ hai (ý b) ghi sẵn nhãn \"30 km\" ở hai khoảng cách trước khi Phần 2 tính ra số đó (chỉ xuất hiện ở dòng Thử lại); đổi nhãn và mô tả thành \"bằng nhau\" (đúng điều đề nói), vị trí các điểm giữ nguyên. Máy vẽ chạy lại không lỗi.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2020",
+  "ma_nguon": "NTT 2020 · P1.2",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt và Bước 3 viết sẵn \"gấp lên 2×2 lần\" / \"lấy 2 nhân với 2\" — gần như lộ phép tính cuối. Đã viết lại trung tính (tích thay đổi theo cả hai thừa số; tích các số lần gấp), Phần 2 giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2020",
+  "ma_nguon": "NTT 2020 · P2.2",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý b: khẳng định \"trong 28; 32; 36 chỉ có 36 chia hết cho 3\" mà chỉ thử 36 (nhảy bước). Đã thêm tổng chữ số của 28 và 32 (10 và 5, không chia hết cho 3).",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2020",
+  "ma_nguon": "NTT 2020 · P2.1",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "\"Số học sinh của câu lạc bộ\" có thể hiểu lúc đầu (50 nam + 22 nữ = 72, bản soạn chọn) hoặc sau khi thêm 16 nam (66 + 22 = 88). Toán các bước đúng (nữ 22, nam đầu 50, nam sau 66 = 3×22); bản soạn 72 trùng ba nguồn nên có vẻ là đáp án đề, nhưng đề mơ hồ — CEO nên chốt.",
+  "da_sua": false
+ },
+ {
+  "de": "NTT-2022",
+  "ma_nguon": "NTT 2022 · 10",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 1 (Mấu chốt + Bước 3) viết \"thời gian đi xuôi dòng bằng một phần số lần đó thời gian đi ngược dòng\" — khó hiểu với HS lớp 5. Đã viết lại: vận tốc nhỏ hơn bao nhiêu lần thì thời gian đi dài gấp bấy nhiêu lần; thời gian ngược gấp thời gian xuôi đúng số lần đó. Toán, Phần 2, sơ đồ, đáp số giữ nguyên; qua lại cổng kiemP1, $, KaTeX, máy vẽ sơ đồ.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2022",
+  "ma_nguon": "NTT 2022 · 8",
+  "muc": "hoi",
+  "loai": "kiến thức",
+  "mo_ta": "Đáp số 72 cm² đúng (đã đối chiếu hình: ABCD đỉnh D trên, A dưới trái, B dưới phải; AEFG có E trên AD, G-A-B thẳng hàng, F đối đỉnh A; toạ độ cho S_BDF = 72 với mọi cạnh AEFG). Bước then chốt \"AF // BD vì cùng nghiêng 45° so với GB\" thực chất là hai góc đồng vị bằng nhau (kiến thức lớp 7), với HS lớp 5 chỉ chấp nhận được như nhận xét từ hình vẽ. Không có cách chứng minh song song thuần lớp 5 mà tôi chắc là tốt hơn (cách chia 3 tam giác nhỏ cần cạnh AEFG chưa biết và triệt tiêu, trái luật không đặt ẩn). Để CEO chốt: giữ cách này (có ghi_chu_nghi của người soạn) hay đổi.",
+  "da_sua": false
+ },
+ {
+  "de": "NTT-2023",
+  "ma_nguon": "NTT 2023 · 3",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Chú ý ở Phần 1 viết \"Phương án C cũng có số 200\" ⇒ lộ giá trị số của đáp số cuối (200). Đã thay bằng chú ý chỉ nói về đơn vị, không nêu số.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2023",
+  "ma_nguon": "NTT 2023 · 8",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Hình đề: hai đường tròn ĐẦY ĐỦ tâm D, C; phần gạch chéo là CẢ thấu kính giao của hai đường tròn (kể cả nửa dưới DC, ngoài hình chữ nhật); phần tô đậm là phần HCN nằm ngoài cả hai hình tròn. Bản soạn hiểu gạch chéo = chỉ phần giao nằm TRONG hình chữ nhật (thừa bù thiếu: 4×CD = 2 phần tư hình tròn ⇒ CD = 6,28 cm). Hiểu đúng theo hình (gạch chéo = cả thấu kính) thì dữ kiện thành: HCN − 2·(¼ hình tròn) + ½·thấu kính = thấu kính ⇒ 4·CD = 25,12 + ½·S_thấu kính, CD ≈ 6,74 cm (phương trình siêu việt, không giải được ở lớp 5). Cách hiểu 6,28 là cách duy nhất ra số tròn và khớp tỉ lệ hình vẽ gần nhất (CD/AD đo trên hình ≈ 1,5 ≈ 6,28/4 = 1,57; 6,74/4 = 1,69 lệch hơn). Lời giải Phần 2 nói \"phần gạch chéo bị tính hai lần\" — đúng theo cách hiểu đã nêu nhưng mâu thuẫn nhẹ với hình (gạch chéo kéo xuống dưới DC). Không phân xử được ⇒ báo CEO; nếu nguồn/đáp án sách = 6,28 thì giữ nguyên, có thể thêm ghi chú hiểu đề vào Phần 2 (\"phần gạch chéo trong hình chữ nhật\").",
+  "da_sua": false
+ },
+ {
+  "de": "NTT-2024",
+  "ma_nguon": "NTT 2024 · 10",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết \"hai tam giác vuông còn lại có một cạnh góc vuông bằng 3 cạnh ô nhỏ\" mà không chỉ tam giác nào, cạnh nào (hình đề không có hình vuông bao nên HS phải tự suy). Đã tách thành hai tam giác (góc trên bên phải, góc dưới bên trái), nói rõ cạnh 12 cm nằm trên cạnh nào và cạnh 16 cm là cạnh nào của hình vuông lớn. Toán và đáp số 56 cm² không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2025",
+  "ma_nguon": "NTT 2025 · 12",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Chú ý ở Phần 1 nói cách xếp một hàng dài có nhiều mặt ngoài nhất ⇒ gợi trước cách cho kết quả lớn nhất. Đã đổi thành lời nhắc trung tính (tính cả hai cách rồi so sánh).",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2025",
+  "ma_nguon": "NTT 2025 · 13",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi $6-4=2$ và $(4+6):2=5$ ⇒ lộ đáp số cuối (4 và 6 triệu). Đã viết lại không kèm số của đáp án.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2025",
+  "ma_nguon": "NTT 2025 · 14",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi 2,4 giờ, 72 km, 36 km ⇒ lộ đáp số cuối. Đã viết lại không kèm số của đáp án.",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-2025",
+  "ma_nguon": "NTT 2025 · 15",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Bước 2 Phần 1 diễn đạt rối (\"phần diện tích hơn của ACF so với BCF cũng gấp đôi\" không đúng ý). Đã viết lại: ACD=2BCD, AFD=2BFD, lấy hiệu ⇒ ACF=2BCF (khớp Phần 2).",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-MH1",
+  "ma_nguon": "NTT-MH1 · P2.1",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt ghi sẵn đáp số ý a) (\"hộp thứ hai chiếm 1/4 cả ba hộp\") — lộ đáp số ở Phần 1. Đã viết lại Mấu chốt chỉ nêu hướng làm (đổi mọi dữ kiện thành phân số của tổng; 1 phần – 3 phần), không nêu 1/4. Đồng thời sửa câu Phần 2 b) \"chiếm số phần số thú bông cả ba hộp\" thành \"bằng số phần của tổng số thú bông\".",
+  "da_sua": true
+ },
+ {
+  "de": "NTT-MH1",
+  "ma_nguon": "NTT-MH1 · P2.2",
+  "muc": "sai",
+  "loai": "sơ đồ",
+  "mo_ta": "Bài chuyển động có quãng đường nhưng chỉ có sơ đồ hiệu–tỉ, thiếu sơ đồ đường đi (cách chuẩn CEO: bài chuyển động PHẢI có sơ đồ đường đi, chuyển động có tỉ số vẽ THÊM sơ đồ đoạn thẳng). Đã thêm sơ đồ chuyển động (Nhà – Trường, hai mũi tên xe đạp 12 km/giờ và xe máy 40 km/giờ cùng một quãng đường, nhãn \"? km\") ngay sau \"Bài giải\"; giữ sơ đồ hiệu–tỉ phía sau. so_do_mo_ta thành mảng 2 phần tử, 2 dòng \"Ta có sơ đồ:\", máy vẽ chạy được.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2019",
+  "ma_nguon": "TX 2019 · 8",
+  "muc": "sai",
+  "loai": "trình bày",
+  "mo_ta": "Dòng \"Thử lại\" ở Phần 1 viết \"$overline{2019ab}$\" thiếu dấu gạch ngược nên hiển thị thành chữ \"overline\" thay vì gạch trên; đã sửa thành \\overline{2019ab}. Toán và đáp số (a=7; b=3) đúng, tìm lại bằng vét cạn chỉ có đúng một nghiệm.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2019",
+  "ma_nguon": "TX 2019 · 9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy thẳng vào \"Tầng 2: 1+2=3 viên\" mà không nói vì sao tầng xếp thành hình tam giác; đã thêm một câu nêu lý do (không chỗ hổng nên tầng k gồm các hàng 1;2;...;k viên, hàng k viên là hàng ngoài cùng nhìn thấy). Đã xem hình: các hàng nhìn thấy 1..6 viên, mỗi bước xuống một hàng thì thấp đi một tầng, tức cột (i,j) cao 6-i-j; tổng 56 viên tính độc lập cũng ra 56 nên đáp số 448000 cm3 phù hợp với cách hiểu của người soạn.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2019",
+  "ma_nguon": "TX 2019 · 11",
+  "muc": "nen_sua",
+  "loai": "sơ đồ",
+  "mo_ta": "Nhãn sơ đồ chuyển động ghi sẵn \"112,5 km\" và \"45 km\" (hai quãng đường thành phần, là kết quả trung gian) nên HS cộng lại là ra đáp số ngay trên hình, trái luật nhãn sơ đồ không lộ kết quả; đã đổi thành \"Ô tô đi: ? km\", \"Xe máy đi: ? km\", \"AB: ? km\", toạ độ vẽ giữ nguyên (đúng tỉ lệ), máy vẽ chạy lại không lỗi.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2021",
+  "ma_nguon": "TX 2021 · 1",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Bước 3 nói sẵn \"chữ số đứng ở hàng phần trăm\" nên lộ hàng của chữ số 8 (điều HS phải tự tìm ở Bước 2). Đã viết lại trung tính.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2021",
+  "ma_nguon": "TX 2021 · 3",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 viết 15×92=1380 rồi kết luận thương là 0,092 mà không chứng tỏ 92 là lớn nhất (nhảy bước), Phần 1 và Phần 2 lệch cách làm. Đã viết lại: 1,385 là 1385 phần nghìn, 1385:15=92 (dư 5) nên thương 0,092, dư 0,005; Phần 1 khớp. Đáp số C giữ nguyên (đã tự tính lại: 0,005).",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2021",
+  "ma_nguon": "TX 2021 · 9",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Chú ý ở Phần 1 viết \"không được trừ đi trước khi chia\" trong khi lời giải không có phép trừ nào, dễ gây hiểu nhầm. Đã viết lại: số trang ứng với phần còn lại gồm cả trang lẻ và 40 trang ngày thứ tư.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2021",
+  "ma_nguon": "TX 2021 · 10",
+  "muc": "sai",
+  "loai": "sơ đồ",
+  "mo_ta": "Bài chuyển động có quãng đường AB nhưng chỉ có sơ đồ hiệu–tỉ thời gian; thiếu sơ đồ chuyển động (luật k5T §1: bài chuyển động có quãng đường PHẢI có, CĐ28 vẽ thêm sơ đồ tỉ số). Đã thêm sơ đồ chuyển động (A→B, hai lần đi, nhãn \"? km\", không lộ 150) đặt ngay sau \"Bài giải\"; so_do_mo_ta thành mảng 2 phần tử, 2 dòng \"Ta có sơ đồ:\", máy vẽ chạy OK.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2022",
+  "ma_nguon": "TX 2022 · P1.2",
+  "muc": "nen_sua",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt nói thẳng 'diện tích toàn phần không đổi' — chính là kết luận (đáp số 484) nên gần như lộ đáp số ở Phần 1. Đã viết lại Mấu chốt thành: bề mặt vừa mất vừa lộ thêm mặt nhỏ, chỉ cần so sánh hai số mặt đó. Các bước và Phần 2 giữ nguyên (toán đúng: bỏ hình ở đỉnh mất 3 mặt, lộ 3 mặt; điều kiện mỗi cạnh ≥3 hình nhỏ đã có trong ghi_chu_nghi).",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2022",
+  "ma_nguon": "TX 2022 · P1.5",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Dòng Phần 2 'Số thóc đã bán bằng số phần của số thóc ban đầu là: 3/4' khó hiểu. Đã viết lại: 'Số thóc đã bán là 3 phần trong 4 phần nên bằng: 3/4 (số thóc ban đầu)'. Toán và đáp số (800 kg) không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2023",
+  "ma_nguon": "TX 2023 · 5",
+  "muc": "sai",
+  "loai": "sơ đồ",
+  "mo_ta": "Bài hiệu–tỉ (số thứ nhất lúc sau gấp 3 lần lúc đầu, hiệu = phần tổng tăng thêm 9,6) thuộc loại bắt buộc có sơ đồ nhưng bản soạn không có. Đã thêm sơ đồ 1 phần / 3 phần, hiệu 9,6 (máy vẽ qua); Phần 1 Bước 2 và Phần 2 viết lại theo sơ đồ. Đáp số 3,5 không đổi.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2023",
+  "ma_nguon": "TX 2023 · 6",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhảy bước khi chọn chuyến tàu 7 giờ (\"6 giờ, 6 giờ 10, 6 giờ 20, …\" rồi kết luận). Đã viết rõ: có chuyến 7 giờ, chuyến kế là 7 giờ 10 phút muộn hơn 7 giờ 5 phút.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2023",
+  "ma_nguon": "TX 2023 · 9",
+  "muc": "sai",
+  "loai": "phần 1",
+  "mo_ta": "Mấu chốt nói sai \"cả 5 khối cùng bằng mức trung bình\" (chỉ khối 5 và trung bình cộng 4 khối kia thay đổi, từng khối không bằng nhau); Bước 2 \"mỗi khối còn kém trung bình\" cũng sai ý; Phần 2 \"hơn trung bình ... mỗi khối được thêm\" nhảy bước, không nói rõ là trung bình cả 5 khối. Đã viết lại: khối 5 chuyển 20 quyển cho 4 khối kia thì khối 5 bằng trung bình cộng, trung bình cộng 4 khối kia tăng 20:4=5. Sơ đồ và đáp số 125 giữ nguyên.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2024",
+  "ma_nguon": "TX 2024 · 4",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 đổi ngầm 36% thành 0,36 (và 2×4 thành 8) ngay trong dòng biến đổi; quy ước là mọi bước đổi (phần trăm, thập phân, hỗn số) đứng thành một dòng riêng. Đã tách dòng \"Đổi: 36% = 0,36\", giữ nguyên 2×4×0,18 ở dòng kế rồi mới tính 8×0,18. Đáp số không đổi (M = 3,6).",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2024",
+  "ma_nguon": "TX 2024 · 7",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Phần 2 nhắc \"hình vuông cạnh 3 cm\" và \"hai phần tư hình tròn bán kính 3 cm\" mà hình không vẽ hình vuông nhỏ đó và đề chưa nói hai phần tư ấy là gì, HS phải tự đoán. Đã thêm câu nêu rõ: hình vuông cạnh 3 cm ở góc trên bên phải chứa hai phần tư hình tròn (mỗi phần tư là phần của một nửa hình tròn nhỏ), phủ kín hình vuông và chồng lên nhau đúng ở cánh hoa. Toán đã tự kiểm: cánh hoa = 2×(9π/4) − 9 = 5,13; phần liềm = phần tư lớn − hợp hai nửa hình tròn = cánh hoa; tổng 10,26 khớp dap_an.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2024",
+  "ma_nguon": "TX 2024 · 10",
+  "muc": "nen_sua",
+  "loai": "toán",
+  "mo_ta": "Dòng \"Vì S_ABD = S_AOB + S_AOD và S_CBD = S_COB + S_COD nên S_ABD/S_CBD = OA/OC\" nhảy bước: từ hai tỉ số bằng nhau suy ra tỉ số của hai tổng mà không nói lí do. Đã thêm một câu: hai tam giác phía C gấp hai tam giác phía A (theo thứ tự) cùng một số lần OC/OA nên cộng lại tam giác CBD cũng gấp tam giác ABD số lần đó. Các số S_BOC = 4,8; S_COD = 6,4; tổng 19,6 đã tính lại đúng.",
+  "da_sua": true
+ },
+ {
+  "de": "TX-2024",
+  "ma_nguon": "TX 2024 · 10",
+  "muc": "hoi",
+  "loai": "hiểu đề",
+  "mo_ta": "Đề thiếu hình (không có trong dữ liệu); người soạn hiểu ABCD là hình thang đáy AB // CD, O là giao điểm hai đường chéo. Cách hiểu này là chuẩn của dạng và đáp số 19,6 cm² nhất quán (S_COD = S_AOB × (4/3)² = 6,4; S_AOD = S_BOC = căn(3,6 × 6,4) = 4,8), nhưng cần người đối chiếu với hình gốc của đề nếu có.",
+  "da_sua": false
+ },
+ {
+  "de": "TX-2025",
+  "ma_nguon": "TX 2025 · 16",
+  "muc": "nen_sua",
+  "loai": "trình bày",
+  "mo_ta": "Ý c) nhảy bước: dùng \"chiều cao hạ từ P xuống AB bằng 30 cm\" mà không nêu lý do (PC song song AB, cách AB đúng bằng BC), và dùng \"M nằm giữa P và R\" (đọc từ hình) mà không nói theo hình. Đã thêm hai câu; thêm khoảng trắng thừa trong dòng Đáp số. Đáp số, Phần 1, hướng giải không đổi.",
+  "da_sua": true
+ }
+]
