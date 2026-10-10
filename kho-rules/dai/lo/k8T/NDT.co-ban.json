@@ -1,7 +1,9 @@
 [
-  { "khu": "D1", "tu": 1,  "den": 13, "nhom": "T18T010601", "bai_hoc": "§1 Nhân đơn thức, đa thức" },
-  { "khu": "D1", "tu": 14, "den": 26, "nhom": "T18T010602", "bai_hoc": "§2 Hằng đẳng thức đáng nhớ" },
-  { "khu": "D1", "tu": 27, "den": 60, "nhom": "T18T010603", "bai_hoc": "§3–§5 Phân tích đa thức thành nhân tử" },
-  { "khu": "D1", "tu": 61, "den": 81, "nhom": "T18T010601", "bai_hoc": "§6–§7 Chia đơn thức, đa thức" },
-  { "khu": "D2", "tu": 1,  "den": 52, "nhom": "T18T010604", "bai_hoc": "Chương II Phân thức đại số" }
+  {"khu":"D1","tu":1,"den":13,"nhom":"T18T010601","bai_hoc":"§1 Nhân đơn thức, đa thức"},
+  {"khu":"D1","tu":14,"den":26,"nhom":"T18T010602","bai_hoc":"§2 Hằng đẳng thức đáng nhớ"},
+  {"khu":"D1","tu":27,"den":60,"nhom":"T18T010603","bai_hoc":"§3–§5 Phân tích đa thức thành nhân tử"},
+  {"khu":"D1","tu":61,"den":81,"nhom":"T18T010601","bai_hoc":"§6–§7 Chia đơn thức, đa thức"},
+  {"khu":"D2","tu":1,"den":52,"nhom":"T18T010604","bai_hoc":"Chương II Phân thức đại số"},
+  {"khu":"D3","tu":1,"den":49,"nhom":"T18T020401","bai_hoc":"Chương III §1–§4 Phương trình bậc nhất, đưa về ax+b=0, tích, chứa ẩn ở mẫu"},
+  {"khu":"D3","tu":50,"den":63,"nhom":"T18T020402","bai_hoc":"Chương III §5 Giải bài toán bằng cách lập phương trình"}
 ]

@@ -1,0 +1,2113 @@
+[
+ {
+  "ma_nguon": "D3.1@p53",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Với mỗi phương trình sau, hãy xét xem $x=-5$ có là nghiệm của phương trình không?\n\na) $x+20=-2x+5$;\n\nb) $3x=x+10$;\n\nc) $x-11=\\dfrac{x}{5}-15$;\n\nd) $x^2=x-20$.",
+  "noi_dung_sach": "Với mỗi phương trình sau, hãy xét xem $x=-5$ có là nghiệm của phương trình không?\n\na) $x+20=-2x+5$;\n\nb) $3x=x+10$;\n\nc) $x-11=\\dfrac{x}{5}-15$;\n\nd) $x^2=x-20$.",
+  "dap_an": "$x=-5$ là nghiệm của phương trình ở ý a), c); không là nghiệm của phương trình ở ý b), d)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số là nghiệm của phương trình khi thay vào thì hai vế cho cùng một giá trị, nên chỉ cần tính riêng từng vế tại $x=-5$ rồi so sánh.\n\n**Bước 1.** Thay $x=-5$ vào vế trái của từng phương trình rồi tính giá trị của vế đó.\n\n**Bước 2.** Thay $x=-5$ vào vế phải của cùng phương trình và tính giá trị tương ứng.\n\n**Bước 3.** So sánh hai giá trị: bằng nhau thì $x=-5$ là nghiệm, khác nhau thì không phải là nghiệm của phương trình đó.\n\n**Chú ý:** Ở ý d) phải tính $(-5)^2$ có ngoặc, vì $-5^2$ mang nghĩa khác.\n\n**Phần 2. Trình bày**\n\na) Với $x=-5$: vế trái $=-5+20=15$, vế phải $=-2(-5)+5=15$.\n\nHai vế bằng nhau nên $x=-5$ là nghiệm của phương trình $x+20=-2x+5$.\n\nb) Với $x=-5$: vế trái $=3(-5)=-15$, vế phải $=-5+10=5$.\n\nVì $-15\\neq5$ nên $x=-5$ không là nghiệm của phương trình $3x=x+10$.\n\nc) Với $x=-5$: vế trái $=-5-11=-16$, vế phải $=\\dfrac{-5}{5}-15=-1-15=-16$.\n\nHai vế bằng nhau nên $x=-5$ là nghiệm của phương trình $x-11=\\dfrac{x}{5}-15$.\n\nd) Với $x=-5$: vế trái $=(-5)^2=25$, vế phải $=-5-20=-25$.\n\nVì $25\\neq-25$ nên $x=-5$ không là nghiệm của phương trình $x^2=x-20$.\n\nVậy $x=-5$ là nghiệm của phương trình ở ý a), c) và không là nghiệm của phương trình ở ý b), d).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 53): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 1)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.2a@p53",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy cho biết tập nghiệm của phương trình: $5x-4=-4+5x$.",
+  "noi_dung_sach": "Hãy cho biết tập nghiệm của phương trình: $5x-4=-4+5x$.",
+  "dap_an": "$S=\\mathbb{R}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế có cùng hạng tử chứa $x$ nên sau khi thu gọn hệ số của $x$ sẽ biến mất, phương trình không còn là bậc nhất mà chỉ còn so sánh hai hằng số.\n\n**Bước 1.** Chuyển các hạng tử chứa $x$ sang cùng một vế và các số hạng tự do sang vế còn lại.\n\n**Bước 2.** Thu gọn hai vế để xem hệ số của $x$ sau khi thu gọn bằng bao nhiêu.\n\n**Bước 3.** Xét đẳng thức nhận được đúng với mọi $x$ hay không đúng với giá trị nào của $x$, từ đó viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$5x-4=-4+5x$\n\n$\\Leftrightarrow 5x-5x=-4+4$\n\n$\\Leftrightarrow 0x=0$\n\nĐẳng thức $0x=0$ đúng với mọi giá trị của $x$.\n\nVậy $S=\\mathbb{R}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 53): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.2b@p53",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy cho biết tập nghiệm của phương trình: $2x-3=4+2x$.",
+  "noi_dung_sach": "Hãy cho biết tập nghiệm của phương trình: $2x-3=4+2x$.",
+  "dap_an": "$S=\\varnothing$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế có cùng hạng tử $2x$ nên khi chuyển vế hệ số của $x$ triệt tiêu, phương trình chỉ còn so sánh hai hằng số khác nhau.\n\n**Bước 1.** Chuyển hạng tử chứa $x$ sang vế trái và số hạng tự do sang vế phải, nhớ đổi dấu khi chuyển vế.\n\n**Bước 2.** Thu gọn hai vế để đưa phương trình về dạng một hệ số nhân với $x$ bằng một hằng số.\n\n**Bước 3.** Xét xem có giá trị nào của $x$ làm đẳng thức thu được đúng hay không rồi viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$2x-3=4+2x$\n\n$\\Leftrightarrow 2x-2x=4+3$\n\n$\\Leftrightarrow 0x=7$\n\nKhông có giá trị nào của $x$ thoả mãn $0x=7$.\n\nVậy $S=\\varnothing$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 53): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.3@p53",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy thử lại và cho biết các kết luận sau có đúng không?\n\na) $x+9=2x-5\\Leftrightarrow x=4$;\n\nb) $x-\\sqrt{2}=\\sqrt{2}\\Leftrightarrow x=\\sqrt{2}$;\n\nc) $x^2-5=x+3\\Leftrightarrow x=-3$.",
+  "noi_dung_sach": "Hãy thử lại và cho biết các kết luận sau có đúng không?\n\na) $x+9=2x-5\\Leftrightarrow x=4$;\n\nb) $x-\\sqrt{2}=\\sqrt{2}\\Leftrightarrow x=\\sqrt{2}$;\n\nc) $x^2-5=x+3\\Leftrightarrow x=-3$.",
+  "dap_an": "Cả ba kết luận đều sai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phương trình nối bởi dấu $\\Leftrightarrow$ phải có cùng nghiệm, nên nếu giá trị $x$ ghi ở vế phải của kết luận không thoả phương trình đầu thì kết luận đó sai.\n\n**Bước 1.** Thay giá trị $x$ cho ở vế sau của dấu $\\Leftrightarrow$ vào vế trái của phương trình đầu rồi tính.\n\n**Bước 2.** Thay cùng giá trị đó vào vế phải của phương trình đầu và tính giá trị tương ứng.\n\n**Bước 3.** So sánh hai kết quả để biết giá trị đó có là nghiệm hay không, rồi kết luận về từng khẳng định.\n\n**Chú ý:** Nghiệm đúng của ý a) là $x=14$ và của ý b) là $x=2\\sqrt{2}$; việc thử lại như trên chỉ cần chỉ ra giá trị đã cho không thoả mãn là đủ bác bỏ.\n\n**Phần 2. Trình bày**\n\na) Với $x=4$: vế trái $=4+9=13$, vế phải $=2\\cdot4-5=3$.\n\nVì $13\\neq3$ nên $x=4$ không là nghiệm của phương trình $x+9=2x-5$, kết luận a) sai.\n\nb) Với $x=\\sqrt{2}$: vế trái $=\\sqrt{2}-\\sqrt{2}=0$, vế phải $=\\sqrt{2}$.\n\nVì $0\\neq\\sqrt{2}$ nên $x=\\sqrt{2}$ không là nghiệm của phương trình $x-\\sqrt{2}=\\sqrt{2}$, kết luận b) sai.\n\nc) Với $x=-3$: vế trái $=(-3)^2-5=4$, vế phải $=-3+3=0$.\n\nVì $4\\neq0$ nên $x=-3$ không là nghiệm của phương trình $x^2-5=x+3$, kết luận c) sai.\n\nVậy cả ba kết luận đều sai.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 53): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 3)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.4@p53",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hai phương trình sau có tương đương không? Vì sao?\n\n$x^2-4=0$ và $x-2=0$.",
+  "noi_dung_sach": "Hai phương trình sau có tương đương không? Vì sao?\n\n$x^2-4=0$ và $x-2=0$.",
+  "dap_an": "Hai phương trình không tương đương",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phương trình tương đương khi có cùng tập nghiệm, nên chỉ cần tìm tập nghiệm của mỗi phương trình rồi so sánh, hoặc tìm một giá trị là nghiệm của phương trình này mà không là nghiệm của phương trình kia.\n\n**Bước 1.** Giải phương trình $x-2=0$ bằng cách chuyển vế để tìm tập nghiệm của nó.\n\n**Bước 2.** Phân tích vế trái của phương trình $x^2-4=0$ thành tích hai nhân tử rồi tìm tập nghiệm của nó.\n\n**Bước 3.** So sánh hai tập nghiệm, chỉ ra giá trị nằm trong tập này mà không nằm trong tập kia rồi kết luận về sự tương đương.\n\n**Phần 2. Trình bày**\n\n$x-2=0\\Leftrightarrow x=2$, nên phương trình $x-2=0$ có tập nghiệm $S_2=\\{2\\}$.\n\n$x^2-4=0\\Leftrightarrow(x-2)(x+2)=0\\Leftrightarrow x=2$ hoặc $x=-2$, nên phương trình $x^2-4=0$ có tập nghiệm $S_1=\\{2;-2\\}$.\n\nGiá trị $x=-2$ là nghiệm của $x^2-4=0$ nhưng không là nghiệm của $x-2=0$ (vì $-2-2=-4\\neq0$), nên $S_1\\neq S_2$.\n\nVậy hai phương trình $x^2-4=0$ và $x-2=0$ không tương đương.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 53): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 4)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.5@p53",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy chỉ ra các phương trình bậc nhất trong các phương trình sau:\n\na) $-x+6=0$;\n\nb) $-x^2+4=0$;\n\nc) $\\sqrt{2}x-7=0$;\n\nd) $x(x+5)=0$;\n\ne) $\\dfrac{x}{4}=-7$;\n\nf) $\\dfrac{4}{x}=-7$.",
+  "noi_dung_sach": "Hãy chỉ ra các phương trình bậc nhất trong các phương trình sau:\n\na) $-x+6=0$;\n\nb) $-x^2+4=0$;\n\nc) $\\sqrt{2}x-7=0$;\n\nd) $x(x+5)=0$;\n\ne) $\\dfrac{x}{4}=-7$;\n\nf) $\\dfrac{4}{x}=-7$.",
+  "dap_an": "Các phương trình ở ý a), c), e)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình bậc nhất một ẩn là phương trình đưa được về dạng $ax+b=0$ với $a\\neq0$, nên ẩn chỉ được có bậc một và không được nằm ở mẫu.\n\n**Bước 1.** Khai triển và thu gọn từng phương trình để thấy rõ bậc của ẩn trong mỗi phương trình.\n\n**Bước 2.** Loại những phương trình mà ẩn có bậc cao hơn một hoặc ẩn nằm ở mẫu số.\n\n**Bước 3.** Với các phương trình còn lại, viết về dạng $ax+b=0$ và kiểm tra hệ số $a$ khác $0$ rồi kết luận.\n\n**Chú ý:** Hệ số của $x$ có thể là phân số hoặc số vô tỉ như $\\dfrac{1}{4}$ hay $\\sqrt{2}$, miễn là khác $0$.\n\n**Phần 2. Trình bày**\n\na) $-x+6=0$ có dạng $ax+b=0$ với $a=-1\\neq0$ nên là phương trình bậc nhất.\n\nb) $-x^2+4=0$ có chứa $x^2$ nên không là phương trình bậc nhất.\n\nc) $\\sqrt{2}x-7=0$ có dạng $ax+b=0$ với $a=\\sqrt{2}\\neq0$ nên là phương trình bậc nhất.\n\nd) $x(x+5)=0\\Leftrightarrow x^2+5x=0$ có chứa $x^2$ nên không là phương trình bậc nhất.\n\ne) $\\dfrac{x}{4}=-7\\Leftrightarrow\\dfrac{1}{4}x+7=0$ có $a=\\dfrac{1}{4}\\neq0$ nên là phương trình bậc nhất.\n\nf) $\\dfrac{4}{x}=-7$ có ẩn nằm ở mẫu, không đưa được về dạng $ax+b=0$ nên không là phương trình bậc nhất.\n\nVậy các phương trình bậc nhất là các phương trình ở ý a), c), e).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 53): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 5)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.6a@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $7x-35=0$.",
+  "noi_dung_sach": "Giải phương trình: $7x-35=0$.",
+  "dap_an": "$S=\\{5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình có dạng $ax+b=0$ với $a\\neq0$ nên giải bằng cách chuyển số hạng tự do sang vế phải rồi chia cho hệ số của $x$.\n\n**Bước 1.** Chuyển số hạng tự do sang vế phải và đổi dấu nó cho đúng quy tắc chuyển vế.\n\n**Bước 2.** Chia cả hai vế cho hệ số của $x$, là số khác $0$, để tìm giá trị của $x$.\n\n**Bước 3.** Ghi kết quả dưới dạng tập nghiệm của phương trình.\n\n**Phần 2. Trình bày**\n\n$7x-35=0$\n\n$\\Leftrightarrow 7x=35$\n\n$\\Leftrightarrow x=35:7$\n\n$\\Leftrightarrow x=5$\n\nVậy $S=\\{5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.6b@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $4x-x-18=0$.",
+  "noi_dung_sach": "Giải phương trình: $4x-x-18=0$.",
+  "dap_an": "$S=\\{6\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái có hai hạng tử cùng chứa $x$ nên thu gọn chúng trước, sau đó phương trình trở về dạng bậc nhất quen thuộc.\n\n**Bước 1.** Thu gọn hai hạng tử chứa $x$ ở vế trái để chỉ còn một hạng tử chứa $x$.\n\n**Bước 2.** Chuyển số hạng tự do sang vế phải và đổi dấu nó.\n\n**Bước 3.** Chia cả hai vế cho hệ số của $x$ để tìm nghiệm rồi viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$4x-x-18=0$\n\n$\\Leftrightarrow 3x-18=0$\n\n$\\Leftrightarrow 3x=18$\n\n$\\Leftrightarrow x=18:3$\n\n$\\Leftrightarrow x=6$\n\nVậy $S=\\{6\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.6c@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x-6=8-x$.",
+  "noi_dung_sach": "Giải phương trình: $x-6=8-x$.",
+  "dap_an": "$S=\\{7\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ẩn xuất hiện ở cả hai vế nên phải dồn các hạng tử chứa $x$ về một vế và các số hạng tự do về vế còn lại.\n\n**Bước 1.** Chuyển hạng tử chứa $x$ ở vế phải sang vế trái và số hạng tự do ở vế trái sang vế phải, nhớ đổi dấu.\n\n**Bước 2.** Thu gọn từng vế để đưa phương trình về dạng một hệ số nhân với $x$ bằng một số.\n\n**Bước 3.** Chia cả hai vế cho hệ số của $x$ để tìm nghiệm rồi viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$x-6=8-x$\n\n$\\Leftrightarrow x+x=8+6$\n\n$\\Leftrightarrow 2x=14$\n\n$\\Leftrightarrow x=14:2$\n\n$\\Leftrightarrow x=7$\n\nVậy $S=\\{7\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.6d@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $48-5x=39-2x$.",
+  "noi_dung_sach": "Giải phương trình: $48-5x=39-2x$.",
+  "dap_an": "$S=\\{3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ẩn có mặt ở cả hai vế nên cần dồn các hạng tử chứa $x$ về một vế và các số hạng tự do về vế còn lại trước khi chia.\n\n**Bước 1.** Chuyển hạng tử chứa $x$ ở vế phải sang vế trái và số hạng tự do ở vế trái sang vế phải với dấu đã đổi.\n\n**Bước 2.** Thu gọn hai vế, chú ý hệ số của $x$ nhận được là một số âm.\n\n**Bước 3.** Chia cả hai vế cho hệ số của $x$ để tìm nghiệm rồi viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$48-5x=39-2x$\n\n$\\Leftrightarrow -5x+2x=39-48$\n\n$\\Leftrightarrow -3x=-9$\n\n$\\Leftrightarrow x=-9:(-3)$\n\n$\\Leftrightarrow x=3$\n\nVậy $S=\\{3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.7@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của $m$ sao cho phương trình sau nhận $x=-5$ làm nghiệm: $2x-3m=x+9$.",
+  "noi_dung_sach": "Tìm giá trị của $m$ sao cho phương trình sau nhận $x=-5$ làm nghiệm: $2x-3m=x+9$.",
+  "dap_an": "$m=-\\dfrac{14}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình nhận $x=-5$ làm nghiệm khi thay $x=-5$ vào thì hai vế bằng nhau, và điều kiện đó trở thành một phương trình bậc nhất với ẩn là $m$.\n\n**Bước 1.** Thay $x=-5$ vào cả hai vế của phương trình để nhận được phương trình chỉ còn chứa ẩn $m$.\n\n**Bước 2.** Thu gọn hai vế rồi chuyển số hạng tự do sang vế còn lại, nhớ đổi dấu.\n\n**Bước 3.** Chia hai vế cho hệ số của $m$ để tìm giá trị cần tìm.\n\n**Phần 2. Trình bày**\n\nVì $x=-5$ là nghiệm của phương trình $2x-3m=x+9$ nên\n\n$2(-5)-3m=-5+9$\n\n$\\Leftrightarrow -10-3m=4$\n\n$\\Leftrightarrow -3m=14$\n\n$\\Leftrightarrow m=-\\dfrac{14}{3}$\n\nVậy $m=-\\dfrac{14}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 7)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.8@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của $m$, biết rằng phương trình $5x+2m=23$ nhận $x=2$ làm nghiệm.",
+  "noi_dung_sach": "Tìm giá trị của $m$, biết rằng phương trình $5x+2m=23$ nhận $x=2$ làm nghiệm.",
+  "dap_an": "$m=\\dfrac{13}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nghiệm của phương trình làm hai vế bằng nhau, nên thay $x=2$ vào sẽ được một phương trình bậc nhất mà ẩn là $m$.\n\n**Bước 1.** Thay $x=2$ vào phương trình đã cho để chỉ còn lại ẩn $m$.\n\n**Bước 2.** Tính giá trị các số hạng đã biết rồi chuyển chúng sang vế phải với dấu đã đổi.\n\n**Bước 3.** Chia cả hai vế cho hệ số của $m$ để tìm giá trị cần tìm.\n\n**Phần 2. Trình bày**\n\nVì $x=2$ là nghiệm của phương trình $5x+2m=23$ nên\n\n$5\\cdot2+2m=23$\n\n$\\Leftrightarrow 2m=13$\n\n$\\Leftrightarrow m=\\dfrac{13}{2}$\n\nVậy $m=\\dfrac{13}{2}$ (tức $m=6{,}5$).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 8)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.9@p54",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định giá trị của $m$ để phương trình sau nhận $x=5$ là nghiệm: $4x+m^2=22$.",
+  "noi_dung_sach": "Xác định giá trị của $m$ để phương trình sau nhận $x=5$ là nghiệm: $4x+m^2=22$.",
+  "dap_an": "$m=\\sqrt{2}$ hoặc $m=-\\sqrt{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay nghiệm đã cho vào phương trình thì được một phương trình theo $m$ mà $m$ nằm trong bình phương, nên có thể có hai giá trị của $m$ đối nhau chứ không chỉ một.\n\n**Bước 1.** Thay $x=5$ vào phương trình để nhận được phương trình chỉ chứa ẩn $m$.\n\n**Bước 2.** Chuyển số hạng tự do sang vế phải để tìm xem $m^2$ bằng bao nhiêu.\n\n**Bước 3.** Lấy căn bậc hai hai vế và chú ý lấy đủ cả hai dấu của căn bậc hai.\n\n**Chú ý:** Chỉ ghi một giá trị của $m$ là thiếu đáp số, vì $m^2$ nhận cả hai giá trị $m$ và $-m$.\n\n**Phần 2. Trình bày**\n\nVì $x=5$ là nghiệm của phương trình $4x+m^2=22$ nên\n\n$4\\cdot5+m^2=22$\n\n$\\Leftrightarrow m^2=2$\n\n$\\Leftrightarrow m=\\sqrt{2}$ hoặc $m=-\\sqrt{2}$\n\nVậy $m=\\sqrt{2}$ hoặc $m=-\\sqrt{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 54): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.10@p55",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định giá trị của $m$ để phương trình $(m+7)x=2m-1$ vô nghiệm.",
+  "noi_dung_sach": "Xác định giá trị của $m$ để phương trình $(m+7)x=2m-1$ vô nghiệm.",
+  "dap_an": "$m=-7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình dạng $ax=b$ chỉ vô nghiệm khi hệ số của $x$ bằng $0$ mà vế phải khác $0$, vì khi đó không có $x$ nào làm đẳng thức đúng.\n\n**Bước 1.** Xét trường hợp hệ số của $x$ khác $0$ để thấy phương trình khi đó luôn có nghiệm duy nhất.\n\n**Bước 2.** Cho hệ số của $x$ bằng $0$ và tìm giá trị của $m$ tương ứng.\n\n**Bước 3.** Thay giá trị của $m$ vừa tìm vào vế phải để kiểm tra vế phải khác $0$ rồi kết luận.\n\n**Chú ý:** Nếu hệ số của $x$ bằng $0$ mà vế phải cũng bằng $0$ thì phương trình lại nghiệm đúng với mọi $x$, chứ không vô nghiệm.\n\n**Phần 2. Trình bày**\n\nNếu $m+7\\neq0$ thì phương trình có nghiệm duy nhất $x=\\dfrac{2m-1}{m+7}$, nên không vô nghiệm.\n\nNếu $m+7=0$, tức $m=-7$, thì phương trình trở thành $0x=2(-7)-1=-15$, mà $-15\\neq0$ nên không có $x$ nào thoả mãn: phương trình vô nghiệm.\n\nVậy phương trình $(m+7)x=2m-1$ vô nghiệm khi $m=-7$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Điều kiện vô nghiệm của phương trình bậc nhất chứa tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 55): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.11@p55",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình (với $m$ là tham số): $(m-2)x=m-2$.",
+  "noi_dung_sach": "Giải phương trình (với $m$ là tham số): $(m-2)x=m-2$.",
+  "dap_an": "Nếu $m=2$ thì $S=\\mathbb{R}$; nếu $m\\neq2$ thì $S=\\{1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ số của $x$ chứa tham số có thể bằng $0$ nên không được chia hai vế cho $m-2$ ngay, mà phải xét riêng hai trường hợp theo giá trị của tham số.\n\n**Bước 1.** Xét trường hợp hệ số của $x$ bằng $0$ rồi thay giá trị đó của $m$ vào để xem phương trình trở thành gì.\n\n**Bước 2.** Xét trường hợp hệ số của $x$ khác $0$ và chia hai vế cho hệ số đó để tìm $x$.\n\n**Bước 3.** Tổng hợp hai trường hợp thành kết luận về tập nghiệm theo giá trị của tham số $m$.\n\n**Chú ý:** Sai lầm hay gặp là chia hai vế cho $m-2$ ngay rồi kết luận một nghiệm duy nhất, làm mất trường hợp tham số làm hệ số của $x$ bằng $0$.\n\n**Phần 2. Trình bày**\n\nPhương trình $(m-2)x=m-2$ $(*)$.\n\nTrường hợp $m=2$: $(*)$ trở thành $0x=0$, đẳng thức này đúng với mọi $x$ nên $S=\\mathbb{R}$.\n\nTrường hợp $m\\neq2$: chia hai vế của $(*)$ cho $m-2\\neq0$ được $x=1$, nên $S=\\{1\\}$.\n\nVậy nếu $m=2$ thì phương trình nghiệm đúng với mọi $x$; nếu $m\\neq2$ thì phương trình có một nghiệm $x=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Biện luận phương trình bậc nhất chứa tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 55): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.12@p55",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi giải Lê Quý Đôn Toán lớp 8, báo Khăn Quàng Đỏ, TP. Hồ Chí Minh, năm học 2004 – 2005) Giải phương trình (với $a$ là tham số): $(a-3)x=a(a-3)$.",
+  "noi_dung_sach": "(Đề thi giải Lê Quý Đôn Toán lớp 8, báo Khăn Quàng Đỏ, TP. Hồ Chí Minh, năm học 2004 – 2005) Giải phương trình (với $a$ là tham số): $(a-3)x=a(a-3)$.",
+  "dap_an": "Nếu $a=3$ thì $S=\\mathbb{R}$; nếu $a\\neq3$ thì $S=\\{a\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ số của $x$ là $a-3$ có thể bằng $0$ nên dù cả hai vế đều chứa $a-3$ cũng không được rút gọn ngay, mà phải xét riêng giá trị tham số làm hệ số của $x$ triệt tiêu.\n\n**Bước 1.** Xét trường hợp hệ số của $x$ bằng $0$ và thay giá trị tương ứng của $a$ vào phương trình.\n\n**Bước 2.** Xét trường hợp hệ số của $x$ khác $0$ rồi chia hai vế cho hệ số đó và rút gọn.\n\n**Bước 3.** Viết kết luận về tập nghiệm theo từng trường hợp của tham số $a$.\n\n**Chú ý:** Chỉ được rút gọn thừa số $a-3$ khi đã biết $a\\neq3$; nếu chia ngay thì mất trường hợp $a=3$.\n\n**Phần 2. Trình bày**\n\nPhương trình $(a-3)x=a(a-3)$ $(*)$.\n\nTrường hợp $a=3$: $(*)$ trở thành $0x=0$, đẳng thức này đúng với mọi $x$ nên $S=\\mathbb{R}$.\n\nTrường hợp $a\\neq3$: chia hai vế của $(*)$ cho $a-3\\neq0$ được $x=\\dfrac{a(a-3)}{a-3}=a$, nên $S=\\{a\\}$.\n\nVậy nếu $a=3$ thì phương trình nghiệm đúng với mọi $x$; nếu $a\\neq3$ thì phương trình có một nghiệm $x=a$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Biện luận phương trình bậc nhất chứa tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 55): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.13a@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $5x-8=4x-5$.",
+  "noi_dung_sach": "Giải phương trình: $5x-8=4x-5$.",
+  "dap_an": "$S=\\{3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ẩn có mặt ở cả hai vế, nên phải dồn các hạng tử chứa $x$ về một vế và các số về vế còn lại để đưa phương trình về dạng $ax=b$.\n\n**Bước 1.** Chuyển hạng tử chứa $x$ ở vế phải sang vế trái và nhớ đổi dấu của nó.\n\n**Bước 2.** Chuyển số hạng tự do ở vế trái sang vế phải, đổi dấu, rồi thu gọn hai vế.\n\n**Bước 3.** Đọc nghiệm từ phương trình đã thu gọn và kết luận tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$5x-8=4x-5$\n\n$\\Leftrightarrow5x-4x=-5+8$\n\n$\\Leftrightarrow x=3$\n\nVậy $S=\\{3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 13)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.13b@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $4-(x-5)=5(2-3x)$.",
+  "noi_dung_sach": "Giải phương trình: $4-(x-5)=5(2-3x)$.",
+  "dap_an": "$S=\\left\\{\\dfrac{1}{14}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái có dấu ngoặc đứng sau dấu trừ, vế phải có ngoặc đứng sau một hệ số, nên phải bỏ ngoặc đúng dấu trước khi chuyển vế.\n\n**Bước 1.** Bỏ dấu ngoặc ở cả hai vế, chú ý đổi dấu mọi hạng tử trong ngoặc đứng sau dấu trừ, rồi thu gọn các số.\n\n**Bước 2.** Chuyển các hạng tử chứa $x$ về một vế và các số về vế kia, đổi dấu khi chuyển.\n\n**Bước 3.** Chia hai vế cho hệ số của $x$ để tìm nghiệm.\n\n**Phần 2. Trình bày**\n\n$4-(x-5)=5(2-3x)$\n\n$\\Leftrightarrow4-x+5=10-15x$\n\n$\\Leftrightarrow9-x=10-15x$\n\n$\\Leftrightarrow14x=1$\n\n$\\Leftrightarrow x=\\dfrac{1}{14}$\n\nVậy $S=\\left\\{\\dfrac{1}{14}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 13)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.14@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{3x-7}{5}=\\dfrac{2x-1}{3}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{3x-7}{5}=\\dfrac{2x-1}{3}$.",
+  "dap_an": "$S=\\{-16\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế đều là phân thức có mẫu là số, nên quy đồng rồi khử mẫu bằng mẫu chung nhỏ nhất của các mẫu để đưa về phương trình không còn mẫu.\n\n**Bước 1.** Tìm mẫu chung của $5$ và $3$, quy đồng hai vế rồi bỏ mẫu để được phương trình có ngoặc.\n\n**Bước 2.** Bỏ ngoặc ở cả hai vế bằng cách nhân phân phối.\n\n**Bước 3.** Chuyển vế, thu gọn rồi tìm nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3x-7}{5}=\\dfrac{2x-1}{3}$\n\n$\\Leftrightarrow3(3x-7)=5(2x-1)$\n\n$\\Leftrightarrow9x-21=10x-5$\n\n$\\Leftrightarrow-x=16$\n\n$\\Leftrightarrow x=-16$\n\nVậy $S=\\{-16\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 14)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.15@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+2009}{1234}+\\dfrac{x+2009}{5678}+\\dfrac{x+2009}{197}=0$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x+2009}{1234}+\\dfrac{x+2009}{5678}+\\dfrac{x+2009}{197}=0$.",
+  "dap_an": "$S=\\{-2009\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba phân thức có cùng tử số $x+2009$ và vế phải bằng $0$, nên đặt tử số chung ra ngoài thay vì quy đồng mẫu số rất lớn.\n\n**Bước 1.** Đặt tử số chung $x+2009$ làm nhân tử chung của vế trái để đưa phương trình về dạng tích bằng $0$.\n\n**Bước 2.** Nhận xét thừa số còn lại trong ngoặc là tổng của các số dương nên chắc chắn khác $0$.\n\n**Bước 3.** Suy ra thừa số chứa $x$ phải bằng $0$ và giải tìm nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+2009}{1234}+\\dfrac{x+2009}{5678}+\\dfrac{x+2009}{197}=0$\n\n$\\Leftrightarrow(x+2009)\\left(\\dfrac{1}{1234}+\\dfrac{1}{5678}+\\dfrac{1}{197}\\right)=0$\n\nVì $\\dfrac{1}{1234}+\\dfrac{1}{5678}+\\dfrac{1}{197}>0$ nên $x+2009=0$\n\n$\\Leftrightarrow x=-2009$\n\nVậy $S=\\{-2009\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt nhân tử chung là tử số giống nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 15)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.16@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{5x-8}{3}=\\dfrac{1-3x}{2}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{5x-8}{3}=\\dfrac{1-3x}{2}$.",
+  "dap_an": "$S=\\{1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế là các phân thức có mẫu số khác nhau, nên khử mẫu bằng mẫu chung nhỏ nhất rồi giải phương trình bậc nhất còn lại.\n\n**Bước 1.** Quy đồng hai vế với mẫu chung của $3$ và $2$ rồi bỏ mẫu.\n\n**Bước 2.** Nhân phân phối để bỏ ngoặc ở hai vế.\n\n**Bước 3.** Chuyển các hạng tử chứa $x$ về một vế, các số về vế kia rồi tìm nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5x-8}{3}=\\dfrac{1-3x}{2}$\n\n$\\Leftrightarrow2(5x-8)=3(1-3x)$\n\n$\\Leftrightarrow10x-16=3-9x$\n\n$\\Leftrightarrow19x=19$\n\n$\\Leftrightarrow x=1$\n\nVậy $S=\\{1\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 16)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.17a@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $6(x-7)=5(x+2)+x$.",
+  "noi_dung_sach": "Giải phương trình: $6(x-7)=5(x+2)+x$.",
+  "dap_an": "$S=\\varnothing$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi bỏ ngoặc và thu gọn, hạng tử chứa $x$ ở hai vế có thể giống hệt nhau và triệt tiêu, khi đó phải xét vế còn lại để biết phương trình vô nghiệm hay đúng với mọi $x$.\n\n**Bước 1.** Bỏ ngoặc ở cả hai vế rồi thu gọn các hạng tử đồng dạng.\n\n**Bước 2.** Chuyển các hạng tử chứa $x$ về một vế và các số về vế còn lại.\n\n**Bước 3.** Xét phương trình dạng $0x=b$: so sánh $b$ với $0$ để biết có nghiệm hay không rồi kết luận.\n\n**Phần 2. Trình bày**\n\n$6(x-7)=5(x+2)+x$\n\n$\\Leftrightarrow6x-42=6x+10$\n\n$\\Leftrightarrow0x=52$\n\nVì $0x=0\\ne52$ với mọi $x$ nên phương trình vô nghiệm.\n\nVậy $S=\\varnothing$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 17)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.17b@p56",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $5x-8=2(x-4)+3x$.",
+  "noi_dung_sach": "Giải phương trình: $5x-8=2(x-4)+3x$.",
+  "dap_an": "$S=\\mathbb{R}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi bỏ ngoặc và thu gọn, hai vế có thể trở thành hai biểu thức giống hệt nhau, khi đó phương trình nghiệm đúng với mọi $x$.\n\n**Bước 1.** Bỏ ngoặc ở vế phải rồi thu gọn các hạng tử đồng dạng của từng vế.\n\n**Bước 2.** Chuyển các hạng tử chứa $x$ về một vế và các số về vế còn lại.\n\n**Bước 3.** Xét phương trình dạng $0x=b$: nếu $b=0$ thì mọi số thực đều là nghiệm.\n\n**Phần 2. Trình bày**\n\n$5x-8=2(x-4)+3x$\n\n$\\Leftrightarrow5x-8=5x-8$\n\n$\\Leftrightarrow0x=0$\n\nPhương trình này nghiệm đúng với mọi $x$.\n\nVậy $S=\\mathbb{R}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 56): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 17)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.18@p57",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{\\dfrac{x-1}{2}-3}{5}-\\dfrac{\\dfrac{3x-2}{5}+2}{4}=1$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{\\dfrac{x-1}{2}-3}{5}-\\dfrac{\\dfrac{3x-2}{5}+2}{4}=1$.",
+  "dap_an": "$S=\\{-42\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân thức có tử số chứa một phân thức khác, nên xử lý từ trong ra ngoài: đưa tử số về một phân thức rồi mới khử mẫu của cả phương trình.\n\n**Bước 1.** Quy đồng tử số của từng phân thức để mỗi vế trái có dạng một phân thức đơn với mẫu là số.\n\n**Bước 2.** Nhân hai vế với mẫu chung nhỏ nhất của hai mẫu mới để bỏ mẫu.\n\n**Bước 3.** Bỏ ngoặc, thu gọn rồi giải phương trình bậc nhất còn lại.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{\\dfrac{x-1}{2}-3}{5}-\\dfrac{\\dfrac{3x-2}{5}+2}{4}=1$\n\n$\\Leftrightarrow\\dfrac{x-1-6}{10}-\\dfrac{3x-2+10}{20}=1$\n\n$\\Leftrightarrow2(x-7)-(3x+8)=20$\n\n$\\Leftrightarrow2x-14-3x-8=20$\n\n$\\Leftrightarrow-x-22=20$\n\n$\\Leftrightarrow x=-42$\n\nVậy $S=\\{-42\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 57): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 18)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.19@p57",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của $m$ sao cho phương trình $(m-5)x-m=7$ có nghiệm $x=3$.",
+  "noi_dung_sach": "Tìm giá trị của $m$ sao cho phương trình $(m-5)x-m=7$ có nghiệm $x=3$.",
+  "dap_an": "$m=11$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số là nghiệm của phương trình khi và chỉ khi thay nó vào thì hai vế bằng nhau, nên thay $x=3$ vào sẽ được phương trình mà ẩn là $m$.\n\n**Bước 1.** Thay $x=3$ vào phương trình đã cho để có một đẳng thức chứa $m$.\n\n**Bước 2.** Bỏ ngoặc, thu gọn rồi chuyển vế để đưa về phương trình bậc nhất ẩn $m$.\n\n**Bước 3.** Giải phương trình ẩn $m$ để tìm giá trị cần tìm.\n\n**Phần 2. Trình bày**\n\nPhương trình có nghiệm $x=3$ nên $(m-5)\\cdot3-m=7$\n\n$\\Leftrightarrow3m-15-m=7$\n\n$\\Leftrightarrow2m=22$\n\n$\\Leftrightarrow m=11$\n\nVậy $m=11$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 57): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 19)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.20@p57",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Gọi số học sinh lớp 8A của trường M là $x$. Viết phương trình biểu thị điều có được sau: $2$ lần số học sinh lớp 8A cộng thêm $30$ học sinh nữa thì bằng $5$ lần số học sinh lớp 8A bớt đi $90$ học sinh.",
+  "noi_dung_sach": "Gọi số học sinh lớp 8A của trường M là $x$. Viết phương trình biểu thị điều có được sau: $2$ lần số học sinh lớp 8A cộng thêm $30$ học sinh nữa thì bằng $5$ lần số học sinh lớp 8A bớt đi $90$ học sinh.",
+  "dap_an": "$2x+30=5x-90$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dịch từng cụm từ của đề thành biểu thức theo ẩn $x$, rồi nối hai biểu thức bằng dấu bằng ở chỗ đề nói \"thì bằng\".\n\n**Bước 1.** Biểu diễn \"$2$ lần số học sinh lớp 8A cộng thêm $30$ học sinh\": nhân đôi $x$ rồi cộng $30$.\n\n**Bước 2.** Biểu diễn \"$5$ lần số học sinh lớp 8A bớt đi $90$ học sinh\": nhân $x$ với $5$ rồi trừ $90$.\n\n**Bước 3.** Viết dấu bằng giữa hai biểu thức vừa lập để có phương trình cần tìm.\n\n**Phần 2. Trình bày**\n\n$2$ lần số học sinh lớp 8A cộng thêm $30$ học sinh là $2x+30$.\n\n$5$ lần số học sinh lớp 8A bớt đi $90$ học sinh là $5x-90$.\n\nHai đại lượng này bằng nhau nên ta có phương trình: $2x+30=5x-90$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 57): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 20)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.21@p57",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+1}{2009}+\\dfrac{x+2}{2008}+\\dfrac{x+17}{1993}+3=0$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x+1}{2009}+\\dfrac{x+2}{2008}+\\dfrac{x+17}{1993}+3=0$.",
+  "dap_an": "$S=\\{-2010\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng mỗi tử số với đúng mẫu số của nó thì cả ba tử số đều thành cùng một nhị thức, và hằng số $3$ ở cuối vừa đủ để cộng $1$ vào mỗi phân thức.\n\n**Bước 1.** Tách hằng số $3$ thành ba số $1$ rồi ghép mỗi số $1$ với một phân thức, làm xuất hiện tử số mới.\n\n**Bước 2.** Kiểm tra ba tử số mới giống hệt nhau, đặt tử số chung đó làm nhân tử chung.\n\n**Bước 3.** Chứng tỏ thừa số trong ngoặc khác $0$, từ đó suy ra thừa số chứa $x$ bằng $0$ và giải.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+1}{2009}+\\dfrac{x+2}{2008}+\\dfrac{x+17}{1993}+3=0$\n\n$\\Leftrightarrow\\left(\\dfrac{x+1}{2009}+1\\right)+\\left(\\dfrac{x+2}{2008}+1\\right)+\\left(\\dfrac{x+17}{1993}+1\\right)=0$\n\n$\\Leftrightarrow\\dfrac{x+2010}{2009}+\\dfrac{x+2010}{2008}+\\dfrac{x+2010}{1993}=0$\n\n$\\Leftrightarrow(x+2010)\\left(\\dfrac{1}{2009}+\\dfrac{1}{2008}+\\dfrac{1}{1993}\\right)=0$\n\nVì $\\dfrac{1}{2009}+\\dfrac{1}{2008}+\\dfrac{1}{1993}>0$ nên $x+2010=0$\n\n$\\Leftrightarrow x=-2010$\n\nVậy $S=\\{-2010\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hằng số rồi cộng vào từng phân thức để tử số giống nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 57): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.22@p58",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+3}{97}+\\dfrac{x+5}{95}+\\dfrac{x+9}{91}=\\dfrac{x+91}{9}+\\dfrac{x+92}{8}+\\dfrac{x+61}{39}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x+3}{97}+\\dfrac{x+5}{95}+\\dfrac{x+9}{91}=\\dfrac{x+91}{9}+\\dfrac{x+92}{8}+\\dfrac{x+61}{39}$.",
+  "dap_an": "$S=\\{-100\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi tử số cộng với mẫu số của chính nó đều cho $100$, nên cộng $1$ vào cả sáu phân thức sẽ làm mọi tử số thành $x+100$.\n\n**Bước 1.** Cộng $1$ vào từng phân thức ở cả hai vế (mỗi vế ba phân thức nên phương trình không đổi) để các tử số đều giống nhau.\n\n**Bước 2.** Chuyển vế phải sang trái và đặt nhân tử chung $x+100$.\n\n**Bước 3.** So sánh từng cặp phân thức trong ngoặc để chứng tỏ thừa số đó khác $0$, rồi giải thừa số còn lại.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+3}{97}+\\dfrac{x+5}{95}+\\dfrac{x+9}{91}=\\dfrac{x+91}{9}+\\dfrac{x+92}{8}+\\dfrac{x+61}{39}$\n\n$\\Leftrightarrow\\left(\\dfrac{x+3}{97}+1\\right)+\\left(\\dfrac{x+5}{95}+1\\right)+\\left(\\dfrac{x+9}{91}+1\\right)=\\left(\\dfrac{x+91}{9}+1\\right)+\\left(\\dfrac{x+92}{8}+1\\right)+\\left(\\dfrac{x+61}{39}+1\\right)$\n\n$\\Leftrightarrow\\dfrac{x+100}{97}+\\dfrac{x+100}{95}+\\dfrac{x+100}{91}=\\dfrac{x+100}{9}+\\dfrac{x+100}{8}+\\dfrac{x+100}{39}$\n\n$\\Leftrightarrow(x+100)\\left(\\dfrac{1}{97}+\\dfrac{1}{95}+\\dfrac{1}{91}-\\dfrac{1}{9}-\\dfrac{1}{8}-\\dfrac{1}{39}\\right)=0$\n\nVì $\\dfrac{1}{97}<\\dfrac{1}{9}$, $\\dfrac{1}{95}<\\dfrac{1}{8}$, $\\dfrac{1}{91}<\\dfrac{1}{39}$ nên $\\dfrac{1}{97}+\\dfrac{1}{95}+\\dfrac{1}{91}-\\dfrac{1}{9}-\\dfrac{1}{8}-\\dfrac{1}{39}<0$, do đó $x+100=0$\n\n$\\Leftrightarrow x=-100$\n\nVậy $S=\\{-100\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng cùng một hằng số vào từng phân thức để tử số giống nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 58): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.23a@p58",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình (với $a,b,c$ là tham số): $\\dfrac{x+a}{b+c}+\\dfrac{x+b}{c+a}+\\dfrac{x+c}{a+b}=-3$.",
+  "noi_dung_sach": "Giải phương trình (với $a,b,c$ là tham số): $\\dfrac{x+a}{b+c}+\\dfrac{x+b}{c+a}+\\dfrac{x+c}{a+b}=-3$.",
+  "dap_an": "Nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\ne0$ thì $S=\\{-(a+b+c)\\}$; nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}=0$ thì $S=\\mathbb{R}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba phân thức có tử số $x+a$, $x+b$, $x+c$ và mẫu số là các tổng hai chữ còn lại, nên cộng thêm $1$ vào mỗi phân thức sẽ làm cả ba tử số cùng thành $x+a+b+c$.\n\n**Bước 1.** Chuyển $-3$ sang vế trái, tách thành ba số $1$ rồi cộng mỗi số $1$ vào một phân thức.\n\n**Bước 2.** Đặt nhân tử chung của ba tử số giống nhau để đưa vế trái về dạng tích hai thừa số.\n\n**Bước 3.** Biện luận theo giá trị của thừa số chứa ba phân thức: khác $0$ thì thừa số còn lại phải bằng $0$, bằng $0$ thì phương trình thỏa mãn với mọi $x$.\n\n**Chú ý:** Không được chia hai vế cho tổng ba phân thức khi chưa biết nó khác $0$; tổng này có thể bằng $0$ với một số bộ giá trị $a,b,c$.\n\n**Phần 2. Trình bày**\n\nVới $b+c\\ne0$, $c+a\\ne0$, $a+b\\ne0$ (để các phân thức có nghĩa):\n\n$\\dfrac{x+a}{b+c}+\\dfrac{x+b}{c+a}+\\dfrac{x+c}{a+b}=-3$\n\n$\\Leftrightarrow\\left(\\dfrac{x+a}{b+c}+1\\right)+\\left(\\dfrac{x+b}{c+a}+1\\right)+\\left(\\dfrac{x+c}{a+b}+1\\right)=0$\n\n$\\Leftrightarrow\\dfrac{x+a+b+c}{b+c}+\\dfrac{x+a+b+c}{c+a}+\\dfrac{x+a+b+c}{a+b}=0$\n\n$\\Leftrightarrow(x+a+b+c)\\left(\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\right)=0$ $(*)$\n\nNếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\ne0$ thì $(*)\\Leftrightarrow x+a+b+c=0\\Leftrightarrow x=-(a+b+c)$.\n\nNếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}=0$ thì $(*)$ trở thành $0\\cdot(x+a+b+c)=0$, nghiệm đúng với mọi $x$.\n\nKết luận: nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\ne0$ thì $S=\\{-(a+b+c)\\}$; nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}=0$ thì $S=\\mathbb{R}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng 1 vào từng phân thức để tử số giống nhau",
+   "biện luận theo tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 58): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.23b@p58",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình (với $a,b,c$ là tham số): $\\dfrac{x-a}{b+c}+\\dfrac{x-b}{c+a}+\\dfrac{x-c}{a+b}=3$.",
+  "noi_dung_sach": "Giải phương trình (với $a,b,c$ là tham số): $\\dfrac{x-a}{b+c}+\\dfrac{x-b}{c+a}+\\dfrac{x-c}{a+b}=3$.",
+  "dap_an": "Nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\ne0$ thì $S=\\{a+b+c\\}$; nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}=0$ thì $S=\\mathbb{R}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân thức có tử số $x-a$, $x-b$, $x-c$, nên trừ $1$ khỏi mỗi phân thức sẽ làm cả ba tử số cùng thành $x-a-b-c$.\n\n**Bước 1.** Chuyển $3$ sang vế trái, tách thành ba số $1$ rồi trừ mỗi số $1$ khỏi một phân thức.\n\n**Bước 2.** Đặt nhân tử chung của ba tử số giống nhau để đưa vế trái về dạng tích hai thừa số.\n\n**Bước 3.** Biện luận theo thừa số chứa ba phân thức: khác $0$ thì thừa số còn lại bằng $0$, bằng $0$ thì mọi $x$ đều là nghiệm.\n\n**Chú ý:** Thừa số chứa ba phân thức có thể bằng $0$ với một số bộ giá trị $a,b,c$, nên bắt buộc phải xét hai trường hợp.\n\n**Phần 2. Trình bày**\n\nVới $b+c\\ne0$, $c+a\\ne0$, $a+b\\ne0$ (để các phân thức có nghĩa):\n\n$\\dfrac{x-a}{b+c}+\\dfrac{x-b}{c+a}+\\dfrac{x-c}{a+b}=3$\n\n$\\Leftrightarrow\\left(\\dfrac{x-a}{b+c}-1\\right)+\\left(\\dfrac{x-b}{c+a}-1\\right)+\\left(\\dfrac{x-c}{a+b}-1\\right)=0$\n\n$\\Leftrightarrow\\dfrac{x-a-b-c}{b+c}+\\dfrac{x-a-b-c}{c+a}+\\dfrac{x-a-b-c}{a+b}=0$\n\n$\\Leftrightarrow(x-a-b-c)\\left(\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\right)=0$ $(*)$\n\nNếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\ne0$ thì $(*)\\Leftrightarrow x-a-b-c=0\\Leftrightarrow x=a+b+c$.\n\nNếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}=0$ thì $(*)$ trở thành $0\\cdot(x-a-b-c)=0$, nghiệm đúng với mọi $x$.\n\nKết luận: nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}\\ne0$ thì $S=\\{a+b+c\\}$; nếu $\\dfrac{1}{b+c}+\\dfrac{1}{c+a}+\\dfrac{1}{a+b}=0$ thì $S=\\mathbb{R}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "trừ 1 vào từng phân thức để tử số giống nhau",
+   "biện luận theo tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 58): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.24@p58",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – TP. Hồ Chí Minh, năm học 2002 – 2003) Giải phương trình: $\\dfrac{x-342}{15}+\\dfrac{x-323}{17}+\\dfrac{x-300}{19}+\\dfrac{x-273}{21}=10$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – TP. Hồ Chí Minh, năm học 2002 – 2003) Giải phương trình: $\\dfrac{x-342}{15}+\\dfrac{x-323}{17}+\\dfrac{x-300}{19}+\\dfrac{x-273}{21}=10$.",
+  "dap_an": "$S=\\{357\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải $10=1+2+3+4$ có đúng bốn số hạng ứng với bốn phân thức, và mỗi tử số cộng với (số trừ nhân mẫu số) đều ra cùng một số, nên trừ lần lượt $1,2,3,4$ vào các phân thức sẽ làm tử số giống nhau.\n\n**Bước 1.** Chuyển $10$ sang vế trái, tách thành $1+2+3+4$ rồi ghép từng số với một phân thức.\n\n**Bước 2.** Đưa mỗi hiệu về một phân thức duy nhất rồi kiểm tra bốn tử số đều thành cùng một nhị thức.\n\n**Bước 3.** Đặt nhân tử chung, chỉ ra thừa số còn lại là tổng các số dương nên khác $0$, rồi suy ra nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-342}{15}+\\dfrac{x-323}{17}+\\dfrac{x-300}{19}+\\dfrac{x-273}{21}=10$\n\n$\\Leftrightarrow\\left(\\dfrac{x-342}{15}-1\\right)+\\left(\\dfrac{x-323}{17}-2\\right)+\\left(\\dfrac{x-300}{19}-3\\right)+\\left(\\dfrac{x-273}{21}-4\\right)=0$\n\n$\\Leftrightarrow\\dfrac{x-357}{15}+\\dfrac{x-357}{17}+\\dfrac{x-357}{19}+\\dfrac{x-357}{21}=0$\n\n$\\Leftrightarrow(x-357)\\left(\\dfrac{1}{15}+\\dfrac{1}{17}+\\dfrac{1}{19}+\\dfrac{1}{21}\\right)=0$\n\nVì $\\dfrac{1}{15}+\\dfrac{1}{17}+\\dfrac{1}{19}+\\dfrac{1}{21}>0$ nên $x-357=0$\n\n$\\Leftrightarrow x=357$\n\nVậy $S=\\{357\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hằng số thành tổng rồi trừ vào từng phân thức để tử số giống nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 58): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 59, lời giải bài 24 dòng) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.25a@p59",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 6 – TP. Hồ Chí Minh, năm học 1990 – 1991) Giải phương trình (với $a,b,c$ là các tham số): $\\dfrac{a+b-x}{c}+\\dfrac{b+c-x}{a}+\\dfrac{c+a-x}{b}+\\dfrac{4x}{a+b+c}=1$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 6 – TP. Hồ Chí Minh, năm học 1990 – 1991) Giải phương trình (với $a,b,c$ là các tham số): $\\dfrac{a+b-x}{c}+\\dfrac{b+c-x}{a}+\\dfrac{c+a-x}{b}+\\dfrac{4x}{a+b+c}=1$.",
+  "dap_an": "Nếu $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\ne\\dfrac{4}{a+b+c}$ thì $S=\\{a+b+c\\}$; nếu $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{4}{a+b+c}$ thì $S=\\mathbb{R}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng $1$ vào ba phân thức đầu làm các tử số cùng thành $a+b+c-x$, còn $\\dfrac{4x}{a+b+c}$ trừ đi $4$ cũng cho một tử số chứa đúng nhân tử đó.\n\n**Bước 1.** Chuyển $1$ sang vế trái rồi cộng $1$ vào mỗi phân thức trong ba phân thức đầu (và trừ $3$ bù lại) để ba tử số đều giống nhau.\n\n**Bước 2.** Gộp $\\dfrac{4x}{a+b+c}$ với $-4$ để hạng tử này cũng chứa nhân tử $a+b+c-x$, rồi đặt nhân tử chung cho cả vế trái.\n\n**Bước 3.** Biện luận theo thừa số thứ hai: khác $0$ thì thừa số chứa $x$ bằng $0$, bằng $0$ thì phương trình thỏa mãn với mọi $x$.\n\n**Chú ý:** Thừa số thứ hai có thể bằng $0$ với một số bộ $a,b,c$, nên không được bỏ qua trường hợp $x$ tùy ý.\n\n**Phần 2. Trình bày**\n\nVới $a,b,c\\ne0$ và $a+b+c\\ne0$ (để các phân thức có nghĩa):\n\n$\\dfrac{a+b-x}{c}+\\dfrac{b+c-x}{a}+\\dfrac{c+a-x}{b}+\\dfrac{4x}{a+b+c}=1$\n\n$\\Leftrightarrow\\left(\\dfrac{a+b-x}{c}+1\\right)+\\left(\\dfrac{b+c-x}{a}+1\\right)+\\left(\\dfrac{c+a-x}{b}+1\\right)+\\dfrac{4x}{a+b+c}-4=0$\n\n$\\Leftrightarrow\\dfrac{a+b+c-x}{c}+\\dfrac{a+b+c-x}{a}+\\dfrac{a+b+c-x}{b}-\\dfrac{4(a+b+c-x)}{a+b+c}=0$\n\n$\\Leftrightarrow(a+b+c-x)\\left(\\dfrac{1}{c}+\\dfrac{1}{a}+\\dfrac{1}{b}-\\dfrac{4}{a+b+c}\\right)=0$ $(*)$\n\nNếu $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}-\\dfrac{4}{a+b+c}\\ne0$ thì $(*)\\Leftrightarrow a+b+c-x=0\\Leftrightarrow x=a+b+c$.\n\nNếu $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}-\\dfrac{4}{a+b+c}=0$ thì $(*)$ trở thành $0\\cdot(a+b+c-x)=0$, nghiệm đúng với mọi $x$.\n\nKết luận: nếu $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\ne\\dfrac{4}{a+b+c}$ thì $S=\\{a+b+c\\}$; nếu $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{4}{a+b+c}$ thì $S=\\mathbb{R}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng 1 vào từng phân thức để tử số giống nhau",
+   "biện luận theo tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 59): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 59, lời giải bài 25a dòn) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.25b@p59",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường chuyên Văn – Toán huyện Đức Phổ, tỉnh Quảng Ngãi, năm học 1988 – 1989) Giải phương trình (với $a,b,c$ là các tham số): $\\dfrac{1}{2}\\left(\\dfrac{x-a}{bc}+\\dfrac{x-b}{ca}+\\dfrac{x-c}{ab}\\right)=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường chuyên Văn – Toán huyện Đức Phổ, tỉnh Quảng Ngãi, năm học 1988 – 1989) Giải phương trình (với $a,b,c$ là các tham số): $\\dfrac{1}{2}\\left(\\dfrac{x-a}{bc}+\\dfrac{x-b}{ca}+\\dfrac{x-c}{ab}\\right)=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$.",
+  "dap_an": "Nếu $a+b+c\\ne0$ thì $S=\\{a+b+c\\}$; nếu $a+b+c=0$ thì $S=\\mathbb{R}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi nhân hai vế với $2$, vế phải là $2\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)$ và có thể chia thành ba nhóm hai số hạng; trừ mỗi nhóm vào một phân thức vế trái thì cả ba tử số cùng thành $x-a-b-c$.\n\n**Bước 1.** Nhân hai vế với $2$ rồi viết vế phải thành tổng ba nhóm, mỗi nhóm gồm hai trong ba phân thức $\\dfrac{1}{a},\\dfrac{1}{b},\\dfrac{1}{c}$.\n\n**Bước 2.** Chuyển các nhóm sang vế trái, trừ nhóm phù hợp vào từng phân thức và quy đồng để cả ba tử số đều là $x-a-b-c$.\n\n**Bước 3.** Đặt nhân tử chung, rút gọn tổng ba phân thức còn lại rồi biện luận theo giá trị của $a+b+c$.\n\n**Chú ý:** Tổng $\\dfrac{1}{bc}+\\dfrac{1}{ca}+\\dfrac{1}{ab}$ bằng $\\dfrac{a+b+c}{abc}$ nên nó bằng $0$ đúng khi $a+b+c=0$.\n\n**Phần 2. Trình bày**\n\nVới $a,b,c\\ne0$ (để các phân thức có nghĩa):\n\n$\\dfrac{1}{2}\\left(\\dfrac{x-a}{bc}+\\dfrac{x-b}{ca}+\\dfrac{x-c}{ab}\\right)=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$\n\n$\\Leftrightarrow\\dfrac{x-a}{bc}+\\dfrac{x-b}{ca}+\\dfrac{x-c}{ab}=\\left(\\dfrac{1}{c}+\\dfrac{1}{b}\\right)+\\left(\\dfrac{1}{a}+\\dfrac{1}{c}\\right)+\\left(\\dfrac{1}{a}+\\dfrac{1}{b}\\right)$\n\n$\\Leftrightarrow\\left(\\dfrac{x-a}{bc}-\\dfrac{1}{c}-\\dfrac{1}{b}\\right)+\\left(\\dfrac{x-b}{ca}-\\dfrac{1}{a}-\\dfrac{1}{c}\\right)+\\left(\\dfrac{x-c}{ab}-\\dfrac{1}{a}-\\dfrac{1}{b}\\right)=0$\n\n$\\Leftrightarrow\\dfrac{x-a-b-c}{bc}+\\dfrac{x-a-b-c}{ca}+\\dfrac{x-a-b-c}{ab}=0$\n\n$\\Leftrightarrow(x-a-b-c)\\left(\\dfrac{1}{bc}+\\dfrac{1}{ca}+\\dfrac{1}{ab}\\right)=0$\n\n$\\Leftrightarrow(x-a-b-c)\\cdot\\dfrac{a+b+c}{abc}=0$ $(*)$\n\nNếu $a+b+c\\ne0$ thì $(*)\\Leftrightarrow x-a-b-c=0\\Leftrightarrow x=a+b+c$.\n\nNếu $a+b+c=0$ thì $(*)$ trở thành $0=0$, nghiệm đúng với mọi $x$.\n\nKết luận: nếu $a+b+c\\ne0$ thì $S=\\{a+b+c\\}$; nếu $a+b+c=0$ thì $S=\\mathbb{R}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách vế phải rồi trừ vào từng phân thức để tử số giống nhau",
+   "biện luận theo tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 59): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.26a@p60",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(5x-3)(4x+7)=0$.",
+  "noi_dung_sach": "Giải phương trình: $(5x-3)(4x+7)=0$.",
+  "dap_an": "$S=\\left\\{\\dfrac{3}{5};-\\dfrac{7}{4}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái đã là tích của hai nhân tử còn vế phải bằng $0$, nên dùng ngay tính chất tích bằng $0$ khi và chỉ khi có ít nhất một thừa số bằng $0$.\n\n**Bước 1.** Cho từng nhân tử ở vế trái bằng $0$ để được hai phương trình bậc nhất riêng biệt.\n\n**Bước 2.** Giải riêng từng phương trình bậc nhất vừa lập được.\n\n**Bước 3.** Gộp các nghiệm tìm được thành tập nghiệm của phương trình ban đầu.\n\n**Phần 2. Trình bày**\n\n$(5x-3)(4x+7)=0$\n\n$\\Leftrightarrow 5x-3=0$ hoặc $4x+7=0$\n\n$\\Leftrightarrow x=\\dfrac{3}{5}$ hoặc $x=-\\dfrac{7}{4}$\n\nVậy $S=\\left\\{\\dfrac{3}{5};-\\dfrac{7}{4}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 60): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 26)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.26b@p60",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x(2x+1)(5x-6)=0$.",
+  "noi_dung_sach": "Giải phương trình: $x(2x+1)(5x-6)=0$.",
+  "dap_an": "$S=\\left\\{0;-\\dfrac{1}{2};\\dfrac{6}{5}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là tích của ba nhân tử trong đó $x$ đứng một mình cũng là một nhân tử, nên cho từng nhân tử bằng $0$.\n\n**Bước 1.** Liệt kê đủ ba nhân tử của vế trái, không bỏ sót nhân tử $x$ đứng riêng.\n\n**Bước 2.** Cho từng nhân tử bằng $0$ rồi giải ba phương trình bậc nhất tương ứng.\n\n**Bước 3.** Gộp ba nghiệm thành tập nghiệm của phương trình đã cho.\n\n**Phần 2. Trình bày**\n\n$x(2x+1)(5x-6)=0$\n\n$\\Leftrightarrow x=0$ hoặc $2x+1=0$ hoặc $5x-6=0$\n\n$\\Leftrightarrow x=0$ hoặc $x=-\\dfrac{1}{2}$ hoặc $x=\\dfrac{6}{5}$\n\nVậy $S=\\left\\{0;-\\dfrac{1}{2};\\dfrac{6}{5}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 60): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 26)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.27@p60",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $3x(x-7)+5(x-7)=0$.",
+  "noi_dung_sach": "Giải phương trình: $3x(x-7)+5(x-7)=0$.",
+  "dap_an": "$S=\\left\\{7;-\\dfrac{5}{3}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hạng tử ở vế trái cùng chứa thừa số $x-7$, nên đặt nó làm nhân tử chung để đưa phương trình về dạng tích.\n\n**Bước 1.** Đặt $x-7$ ra ngoài làm nhân tử chung của hai hạng tử ở vế trái.\n\n**Bước 2.** Áp dụng tính chất tích bằng $0$: cho từng nhân tử bằng $0$.\n\n**Bước 3.** Giải hai phương trình bậc nhất rồi kết luận tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$3x(x-7)+5(x-7)=0$\n\n$\\Leftrightarrow(x-7)(3x+5)=0$\n\n$\\Leftrightarrow x-7=0$ hoặc $3x+5=0$\n\n$\\Leftrightarrow x=7$ hoặc $x=-\\dfrac{5}{3}$\n\nVậy $S=\\left\\{7;-\\dfrac{5}{3}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 60): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 27)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.28@p60",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $5x(x-9)=2(x-9)$.",
+  "noi_dung_sach": "Giải phương trình: $5x(x-9)=2(x-9)$.",
+  "dap_an": "$S=\\left\\{9;\\dfrac{2}{5}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế cùng chứa thừa số $x-9$; muốn không mất nghiệm thì chuyển vế rồi đặt thừa số chung, chứ không chia hai vế cho $x-9$.\n\n**Bước 1.** Chuyển hạng tử ở vế phải sang vế trái để vế phải bằng $0$.\n\n**Bước 2.** Đặt nhân tử chung $x-9$ ra ngoài để vế trái thành tích.\n\n**Bước 3.** Cho từng nhân tử bằng $0$, giải rồi kết luận tập nghiệm.\n\n**Chú ý:** Nếu chia hai vế cho $x-9$ thì phải xét riêng trường hợp $x-9=0$, rất dễ bỏ sót nghiệm $x=9$.\n\n**Phần 2. Trình bày**\n\n$5x(x-9)=2(x-9)$\n\n$\\Leftrightarrow5x(x-9)-2(x-9)=0$\n\n$\\Leftrightarrow(x-9)(5x-2)=0$\n\n$\\Leftrightarrow x-9=0$ hoặc $5x-2=0$\n\n$\\Leftrightarrow x=9$ hoặc $x=\\dfrac{2}{5}$\n\nVậy $S=\\left\\{9;\\dfrac{2}{5}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 60): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 28)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.29@p60",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(x^2-6x+9)-25=0$.",
+  "noi_dung_sach": "Giải phương trình: $(x^2-6x+9)-25=0$.",
+  "dap_an": "$S=\\{-2;8\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba hạng tử trong ngoặc là khai triển của bình phương một hiệu, và $25$ là bình phương của $5$, nên vế trái là hiệu hai bình phương.\n\n**Bước 1.** Nhận ra ba hạng tử trong ngoặc là bình phương của một hiệu rồi viết gọn lại.\n\n**Bước 2.** Viết $25$ thành bình phương của một số để áp dụng hằng đẳng thức hiệu hai bình phương, đưa vế trái về tích.\n\n**Bước 3.** Cho từng nhân tử bằng $0$, giải rồi kết luận tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$(x^2-6x+9)-25=0$\n\n$\\Leftrightarrow(x-3)^2-5^2=0$\n\n$\\Leftrightarrow(x-3+5)(x-3-5)=0$\n\n$\\Leftrightarrow(x+2)(x-8)=0$\n\n$\\Leftrightarrow x+2=0$ hoặc $x-8=0$\n\n$\\Leftrightarrow x=-2$ hoặc $x=8$\n\nVậy $S=\\{-2;8\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 60): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 29)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.30@p61",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(4x-3)(x^2-2x+4)=(4x-3)(6x-12)$.",
+  "noi_dung_sach": "Giải phương trình: $(4x-3)(x^2-2x+4)=(4x-3)(6x-12)$.",
+  "dap_an": "$S=\\left\\{\\dfrac{3}{4};4\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế cùng chứa thừa số $4x-3$, nên chuyển vế và đặt thừa số chung thay vì chia hai vế, rồi nhân tử còn lại sẽ là một bình phương.\n\n**Bước 1.** Chuyển vế phải sang vế trái rồi đặt thừa số chung $4x-3$ ra ngoài.\n\n**Bước 2.** Thu gọn biểu thức trong ngoặc vuông, nhận ra nhân tử còn lại là bình phương của một hiệu.\n\n**Bước 3.** Cho từng nhân tử bằng $0$, giải rồi kết luận tập nghiệm.\n\n**Chú ý:** Không chia hai vế cho $4x-3$, vì như vậy sẽ mất nghiệm làm $4x-3=0$.\n\n**Phần 2. Trình bày**\n\n$(4x-3)(x^2-2x+4)=(4x-3)(6x-12)$\n\n$\\Leftrightarrow(4x-3)(x^2-2x+4)-(4x-3)(6x-12)=0$\n\n$\\Leftrightarrow(4x-3)\\left[(x^2-2x+4)-(6x-12)\\right]=0$\n\n$\\Leftrightarrow(4x-3)(x^2-8x+16)=0$\n\n$\\Leftrightarrow(4x-3)(x-4)^2=0$\n\n$\\Leftrightarrow4x-3=0$ hoặc $x-4=0$\n\n$\\Leftrightarrow x=\\dfrac{3}{4}$ hoặc $x=4$\n\nVậy $S=\\left\\{\\dfrac{3}{4};4\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 61): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 30)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.31@p61",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định $m$ để phương trình sau có nghiệm bằng $5$: $(m-2)x-3m^2+10=0$.",
+  "noi_dung_sach": "Xác định $m$ để phương trình sau có nghiệm bằng $5$: $(m-2)x-3m^2+10=0$.",
+  "dap_an": "$m\\in\\left\\{0;\\dfrac{5}{3}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình có nghiệm bằng $5$ nghĩa là thay $x=5$ vào thì được đẳng thức đúng, nên đề bài trở thành một phương trình ẩn $m$.\n\n**Bước 1.** Thay $x=5$ vào phương trình đã cho để được một phương trình theo ẩn $m$.\n\n**Bước 2.** Thu gọn rồi đặt nhân tử chung để đưa phương trình theo $m$ về dạng tích.\n\n**Bước 3.** Cho từng nhân tử bằng $0$ để tìm các giá trị của $m$.\n\n**Chú ý:** Có thể thử lại bằng cách thay từng giá trị $m$ vào phương trình ban đầu rồi giải để kiểm tra nghiệm bằng $5$.\n\n**Phần 2. Trình bày**\n\nPhương trình có nghiệm bằng $5$ khi và chỉ khi $x=5$ thoả mãn phương trình, tức là\n\n$5(m-2)-3m^2+10=0$\n\n$\\Leftrightarrow5m-10-3m^2+10=0$\n\n$\\Leftrightarrow5m-3m^2=0$\n\n$\\Leftrightarrow m(5-3m)=0$\n\n$\\Leftrightarrow m=0$ hoặc $5-3m=0$\n\n$\\Leftrightarrow m=0$ hoặc $m=\\dfrac{5}{3}$\n\nVậy $m=0$ hoặc $m=\\dfrac{5}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 61): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 31)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.32a@p61",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x^3+x^2-6x=0$.",
+  "noi_dung_sach": "Giải phương trình: $x^3+x^2-6x=0$.",
+  "dap_an": "$S=\\{0;2;-3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi hạng tử đều chứa $x$ nên đặt $x$ ra ngoài, nhân tử còn lại là tam thức bậc hai có thể tách hạng tử để phân tích tiếp.\n\n**Bước 1.** Đặt $x$ làm nhân tử chung của cả ba hạng tử để hạ bậc đa thức trong ngoặc.\n\n**Bước 2.** Tách hạng tử bậc nhất của tam thức bậc hai trong ngoặc rồi nhóm để phân tích thành hai nhân tử.\n\n**Bước 3.** Cho từng nhân tử bằng $0$ rồi giải để được tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$x^3+x^2-6x=0$\n\n$\\Leftrightarrow x(x^2+x-6)=0$\n\n$\\Leftrightarrow x(x^2-2x+3x-6)=0$\n\n$\\Leftrightarrow x\\left[x(x-2)+3(x-2)\\right]=0$\n\n$\\Leftrightarrow x(x-2)(x+3)=0$\n\n$\\Leftrightarrow x=0$ hoặc $x-2=0$ hoặc $x+3=0$\n\n$\\Leftrightarrow x=0$ hoặc $x=2$ hoặc $x=-3$\n\nVậy $S=\\{0;2;-3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 61): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.32b@p61",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $2x^3+x^2-x+3=0$.",
+  "noi_dung_sach": "Giải phương trình: $2x^3+x^2-x+3=0$.",
+  "dap_an": "$S=\\left\\{-\\dfrac{3}{2}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc ba không có nhân tử chung và không nhóm được ngay, nên nhẩm một nghiệm hữu tỉ để biết trước một nhân tử rồi tách hạng tử cho nhân tử đó xuất hiện.\n\n**Bước 1.** Thử các giá trị hữu tỉ có dạng ước của $3$ chia cho ước của $2$ cho đến khi tìm được giá trị làm đa thức bằng $0$, từ đó biết nhân tử dạng $2x+3$.\n\n**Bước 2.** Tách các hạng tử thành từng nhóm sao cho nhóm nào cũng chứa nhân tử vừa tìm, rồi đặt nhân tử đó làm nhân tử chung.\n\n**Bước 3.** Viết nhân tử bậc hai còn lại thành tổng của một bình phương và một số dương để chỉ ra nó không bao giờ bằng $0$.\n\n**Bước 4.** Kết luận nghiệm chỉ đến từ nhân tử bậc nhất.\n\n**Chú ý:** Không được dừng lại sớm khi chưa xét nhân tử bậc hai; ở đây nó vô nghiệm nên không thêm nghiệm nào.\n\n**Phần 2. Trình bày**\n\n$2x^3+x^2-x+3=0$\n\n$\\Leftrightarrow2x^3+3x^2-2x^2-3x+2x+3=0$\n\n$\\Leftrightarrow x^2(2x+3)-x(2x+3)+(2x+3)=0$\n\n$\\Leftrightarrow(2x+3)(x^2-x+1)=0$\n\nVì $x^2-x+1=\\left(x-\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ với mọi $x$ nên\n\n$\\Leftrightarrow2x+3=0$\n\n$\\Leftrightarrow x=-\\dfrac{3}{2}$\n\nVậy $S=\\left\\{-\\dfrac{3}{2}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhẩm nghiệm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 61): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.33@p61",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(x+1)(x+2)(x+4)(x+5)=40$.",
+  "noi_dung_sach": "Giải phương trình: $(x+1)(x+2)(x+4)(x+5)=40$.",
+  "dap_an": "$S=\\{0;-6\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng tự do thoả $1+5=2+4$, nên ghép $(x+1)(x+5)$ và $(x+2)(x+4)$ thì hai tích cùng chứa $x^2+6x$, gợi đặt ẩn phụ.\n\n**Bước 1.** Ghép các nhân tử thành hai cặp sao cho sau khi nhân, hai tam thức có chung phần $x^2+6x$.\n\n**Bước 2.** Đặt ẩn phụ cho phần chung đó, đưa phương trình về bậc hai theo ẩn mới rồi phân tích thành tích.\n\n**Bước 3.** Với mỗi giá trị của ẩn phụ, trở về ẩn $x$ để giải và loại trường hợp vô nghiệm.\n\n**Chú ý:** Đừng nhân cả bốn nhân tử ngay, vì sẽ ra phương trình bậc bốn rất khó phân tích.\n\n**Phần 2. Trình bày**\n\n$(x+1)(x+2)(x+4)(x+5)=40$\n\n$\\Leftrightarrow(x+1)(x+5)(x+2)(x+4)=40$\n\n$\\Leftrightarrow(x^2+6x+5)(x^2+6x+8)=40$\n\nĐặt $t=x^2+6x$, phương trình trở thành $(t+5)(t+8)=40$\n\n$\\Leftrightarrow t^2+13t=0$\n\n$\\Leftrightarrow t(t+13)=0$\n\n$\\Leftrightarrow t=0$ hoặc $t=-13$\n\nVới $t=0$: $x^2+6x=0\\Leftrightarrow x(x+6)=0\\Leftrightarrow x=0$ hoặc $x=-6$.\n\nVới $t=-13$: $x^2+6x+13=0\\Leftrightarrow(x+3)^2+4=0$, vô nghiệm vì $(x+3)^2+4\\ge4>0$.\n\nVậy $S=\\{0;-6\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 61): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.34@p62",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(2x+1)(x+1)^2(2x+3)=18$.",
+  "noi_dung_sach": "Giải phương trình: $(2x+1)(x+1)^2(2x+3)=18$.",
+  "dap_an": "$S=\\left\\{-\\dfrac{5}{2};\\dfrac{1}{2}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích $(2x+1)(2x+3)=4x^2+8x+3$ và $4x^2+8x+4=4(x+1)^2$ cùng liên hệ với $(x+1)^2$, nên đặt $y=(x+1)^2$ để đưa về phương trình bậc hai theo $y$.\n\n**Bước 1.** Nhân hai nhân tử bậc nhất rồi biểu diễn kết quả theo $(x+1)^2$.\n\n**Bước 2.** Đặt ẩn phụ kèm điều kiện không âm, đưa về phương trình bậc hai theo ẩn mới rồi phân tích thành tích.\n\n**Bước 3.** Loại giá trị không thoả điều kiện, rồi trở về ẩn $x$ và giải bằng hằng đẳng thức hiệu hai bình phương.\n\n**Chú ý:** Quên điều kiện của ẩn phụ sẽ giữ lại một giá trị vô nghĩa, vì bình phương không thể âm.\n\n**Phần 2. Trình bày**\n\n$(2x+1)(x+1)^2(2x+3)=18$\n\n$\\Leftrightarrow(x+1)^2(2x+1)(2x+3)-18=0$\n\n$\\Leftrightarrow(x+1)^2(4x^2+8x+3)-18=0$\n\nĐặt $y=(x+1)^2$ ($y\\ge0$), khi đó $4x^2+8x+3=4(x+1)^2-1=4y-1$.\n\nPhương trình trở thành $y(4y-1)-18=0$\n\n$\\Leftrightarrow4y^2-y-18=0$\n\n$\\Leftrightarrow4y^2-9y+8y-18=0$\n\n$\\Leftrightarrow y(4y-9)+2(4y-9)=0$\n\n$\\Leftrightarrow(4y-9)(y+2)=0$\n\n$\\Leftrightarrow y=\\dfrac{9}{4}$ hoặc $y=-2$ (loại vì $y\\ge0$).\n\nVới $y=\\dfrac{9}{4}$: $(x+1)^2=\\dfrac{9}{4}$\n\n$\\Leftrightarrow4(x+1)^2-9=0$\n\n$\\Leftrightarrow(2x+2+3)(2x+2-3)=0$\n\n$\\Leftrightarrow(2x+5)(2x-1)=0$\n\n$\\Leftrightarrow x=-\\dfrac{5}{2}$ hoặc $x=\\dfrac{1}{2}$\n\nVậy $S=\\left\\{-\\dfrac{5}{2};\\dfrac{1}{2}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 62): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.35@p62",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(x-3)(x-5)(x-6)(x-10)=24x^2$.",
+  "noi_dung_sach": "Giải phương trình: $(x-3)(x-5)(x-6)(x-10)=24x^2$.",
+  "dap_an": "$S=\\{2;15\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng tự do thoả $3\\cdot10=5\\cdot6=30$, nên ghép $(x-3)(x-10)$ và $(x-5)(x-6)$ thì hai tam thức cùng có $x^2+30$, và vế phải $24x^2$ cho phép tạo ra hiệu hai bình phương.\n\n**Bước 1.** Ghép các nhân tử thành hai cặp có tích hai số hạng tự do bằng nhau rồi nhân từng cặp.\n\n**Bước 2.** Viết hai tam thức dưới dạng phần chung cộng và trừ cùng một số hạng, để vế trái thành bình phương của phần chung trừ bình phương của số hạng đó.\n\n**Bước 3.** Chuyển $24x^2$ sang vế trái, gộp với bình phương vừa có để được hiệu hai bình phương và phân tích thành tích hai tam thức.\n\n**Bước 4.** Phân tích hoặc xét dấu từng tam thức bậc hai để tìm đúng các nghiệm.\n\n**Chú ý:** Phải kiểm tra từng tam thức bậc hai có nghiệm hay không, không phải tam thức nào cũng cho nghiệm.\n\n**Phần 2. Trình bày**\n\n$(x-3)(x-5)(x-6)(x-10)=24x^2$\n\n$\\Leftrightarrow(x-3)(x-10)(x-5)(x-6)=24x^2$\n\n$\\Leftrightarrow(x^2-13x+30)(x^2-11x+30)=24x^2$\n\n$\\Leftrightarrow(x^2-12x+30-x)(x^2-12x+30+x)-24x^2=0$\n\n$\\Leftrightarrow(x^2-12x+30)^2-x^2-24x^2=0$\n\n$\\Leftrightarrow(x^2-12x+30)^2-(5x)^2=0$\n\n$\\Leftrightarrow(x^2-12x+30-5x)(x^2-12x+30+5x)=0$\n\n$\\Leftrightarrow(x^2-17x+30)(x^2-7x+30)=0$\n\nTa có $x^2-17x+30=x^2-2x-15x+30=(x-2)(x-15)$.\n\nTa có $x^2-7x+30=\\left(x-\\dfrac{7}{2}\\right)^2+\\dfrac{71}{4}>0$ với mọi $x$.\n\nDo đó $(x-2)(x-15)=0\\Leftrightarrow x=2$ hoặc $x=15$.\n\nVậy $S=\\{2;15\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 62): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.36@p63",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(x-6)^4+(x-8)^4=272$.",
+  "noi_dung_sach": "Giải phương trình: $(x-6)^4+(x-8)^4=272$.",
+  "dap_an": "$S=\\{4;10\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai biểu thức $x-6$ và $x-8$ đối xứng quanh $x-7$, nên đặt $y=x-7$ để chúng thành $y+1$ và $y-1$, khi cộng hai luỹ thừa bậc bốn các số hạng bậc lẻ sẽ triệt tiêu.\n\n**Bước 1.** Đặt ẩn phụ là số chính giữa hai biểu thức trong ngoặc để hai nhân tử đối xứng nhau.\n\n**Bước 2.** Khai triển hai luỹ thừa bậc bốn rồi cộng lại, các số hạng bậc lẻ triệt tiêu và còn phương trình trùng phương.\n\n**Bước 3.** Tách hạng tử để phân tích vế trái thành tích, chỉ ra thừa số luôn dương.\n\n**Bước 4.** Giải phần còn lại rồi trở về ẩn $x$ để kết luận.\n\n**Phần 2. Trình bày**\n\nĐặt $y=x-7$, phương trình trở thành $(y+1)^4+(y-1)^4=272$\n\n$\\Leftrightarrow y^4+4y^3+6y^2+4y+1+y^4-4y^3+6y^2-4y+1=272$\n\n$\\Leftrightarrow2y^4+12y^2+2=272$\n\n$\\Leftrightarrow y^4+6y^2-135=0$\n\n$\\Leftrightarrow y^4-9y^2+15y^2-135=0$\n\n$\\Leftrightarrow y^2(y^2-9)+15(y^2-9)=0$\n\n$\\Leftrightarrow(y^2-9)(y^2+15)=0$\n\nVì $y^2+15>0$ nên $y^2-9=0$, tức là $(x-7)^2-9=0$\n\n$\\Leftrightarrow(x-7-3)(x-7+3)=0$\n\n$\\Leftrightarrow(x-10)(x-4)=0$\n\n$\\Leftrightarrow x=10$ hoặc $x=4$\n\nVậy $S=\\{4;10\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 63): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.37@p63",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x^4-3x^3+2x^2-9x+9=0$.",
+  "noi_dung_sach": "Giải phương trình: $x^4-3x^3+2x^2-9x+9=0$.",
+  "dap_an": "$S=\\{1;3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các hạng tử $x^4$, $9$ và việc $-3x^3-9x=-3x(x^2+3)$ gợi viết vế trái theo $x^2+3$; thêm bớt $4x^2$ để $x^4+6x^2+9$ thành bình phương $(x^2+3)^2$.\n\n**Bước 1.** Thêm bớt hạng tử $4x^2$ để ba hạng tử $x^4+6x^2+9$ hợp thành bình phương, còn hai hạng tử bậc lẻ gom thành tích với $x^2+3$.\n\n**Bước 2.** Xem $x^2+3$ như một biến, tách hạng tử ở giữa của tam thức theo biến đó rồi nhóm để phân tích thành tích.\n\n**Bước 3.** Phân tích tiếp nhân tử bậc hai có nghiệm, và chỉ ra nhân tử bậc hai còn lại luôn dương.\n\n**Bước 4.** Cho từng nhân tử còn lại bằng $0$ rồi kết luận tập nghiệm.\n\n**Chú ý:** Cách khác là nhẩm nghiệm nguyên (ước của $9$) rồi chia đa thức, nhưng cách thêm bớt ở trên gọn hơn.\n\n**Phần 2. Trình bày**\n\n$x^4-3x^3+2x^2-9x+9=0$\n\n$\\Leftrightarrow(x^4+6x^2+9)-(3x^3+9x)-4x^2=0$\n\n$\\Leftrightarrow(x^2+3)^2-3x(x^2+3)-4x^2=0$\n\n$\\Leftrightarrow(x^2+3)^2-4x(x^2+3)+x(x^2+3)-4x^2=0$\n\n$\\Leftrightarrow(x^2+3)(x^2+3-4x)+x(x^2+3-4x)=0$\n\n$\\Leftrightarrow(x^2+3-4x)(x^2+3+x)=0$\n\n$\\Leftrightarrow(x-1)(x-3)(x^2+x+3)=0$\n\nVì $x^2+x+3=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{11}{4}>0$ với mọi $x$ nên\n\n$\\Leftrightarrow(x-1)(x-3)=0$\n\n$\\Leftrightarrow x=1$ hoặc $x=3$\n\nVậy $S=\\{1;3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 63): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.38a@p64",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{4}{x}+5=\\dfrac{1}{2}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{4}{x}+5=\\dfrac{1}{2}$.",
+  "dap_an": "$S=\\left\\{-\\dfrac{8}{9}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ẩn $x$ nằm ở mẫu của một phân thức, nên phải đặt điều kiện cho mẫu khác $0$ rồi mới quy đồng khử mẫu.\n\n**Bước 1.** Đặt điều kiện để mẫu chứa ẩn khác $0$, vì phương trình chỉ có nghĩa khi mọi mẫu đều khác không.\n\n**Bước 2.** Quy đồng hai vế với mẫu chung của cả phương trình rồi khử mẫu để được phương trình bậc nhất.\n\n**Bước 3.** Giải phương trình bậc nhất vừa nhận được để tìm giá trị của ẩn.\n\n**Bước 4.** Đối chiếu giá trị tìm được với điều kiện xác định rồi mới kết luận tập nghiệm.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne0$.\n\n$\\dfrac{4}{x}+5=\\dfrac{1}{2}\\Leftrightarrow\\dfrac{8}{2x}+\\dfrac{10x}{2x}=\\dfrac{x}{2x}$\n\n$\\Leftrightarrow8+10x=x$\n\n$\\Leftrightarrow9x=-8$\n\n$\\Leftrightarrow x=-\\dfrac{8}{9}$ (thoả mãn ĐKXĐ).\n\nVậy $S=\\left\\{-\\dfrac{8}{9}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 64): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 38)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.38b@p64",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{6x^2}{3x-5}-2x=0$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{6x^2}{3x-5}-2x=0$.",
+  "dap_an": "$S=\\{0\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $3x-5$ chứa ẩn nên phải loại giá trị làm mẫu bằng $0$; sau khi khử mẫu, hai hạng tử bậc hai triệt tiêu và còn phương trình bậc nhất.\n\n**Bước 1.** Tìm điều kiện xác định bằng cách cho mẫu $3x-5$ khác $0$.\n\n**Bước 2.** Nhân hai vế với mẫu để khử mẫu, chú ý nhân cả hạng tử $-2x$ với $3x-5$.\n\n**Bước 3.** Khai triển và rút gọn, nhận ra các hạng tử bậc hai đối nhau nên phương trình trở thành bậc nhất.\n\n**Bước 4.** Giải phương trình bậc nhất và đối chiếu nghiệm với điều kiện xác định.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne\\dfrac{5}{3}$.\n\n$\\dfrac{6x^2}{3x-5}-2x=0\\Leftrightarrow6x^2-2x(3x-5)=0$\n\n$\\Leftrightarrow6x^2-6x^2+10x=0$\n\n$\\Leftrightarrow10x=0$\n\n$\\Leftrightarrow x=0$ (thoả mãn ĐKXĐ).\n\nVậy $S=\\{0\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 64): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 38)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.39a@p64",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{5x-3}{x+2}-4=\\dfrac{6}{x+2}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{5x-3}{x+2}-4=\\dfrac{6}{x+2}$.",
+  "dap_an": "$S=\\{17\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai vế đã có cùng mẫu $x+2$, nên chỉ cần đặt điều kiện rồi nhân hai vế với mẫu chung để khử mẫu, không phải quy đồng thêm.\n\n**Bước 1.** Đặt điều kiện xác định để mẫu $x+2$ khác $0$.\n\n**Bước 2.** Nhân hai vế với $x+2$ để khử mẫu, nhớ nhân cả số hạng $-4$ với $x+2$.\n\n**Bước 3.** Khai triển, thu gọn rồi giải phương trình bậc nhất nhận được.\n\n**Bước 4.** Đối chiếu nghiệm với điều kiện xác định để kết luận.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne-2$.\n\n$\\dfrac{5x-3}{x+2}-4=\\dfrac{6}{x+2}\\Leftrightarrow5x-3-4(x+2)=6$\n\n$\\Leftrightarrow x-11=6$\n\n$\\Leftrightarrow x=17$ (thoả mãn ĐKXĐ).\n\nVậy $S=\\{17\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 64): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 39)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.39b@p64",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{1}{x}-\\dfrac{x+2}{x-2}=\\dfrac{-2}{x(x-2)}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{1}{x}-\\dfrac{x+2}{x-2}=\\dfrac{-2}{x(x-2)}$.",
+  "dap_an": "$S=\\{-1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu chung của cả phương trình là $x(x-2)$; sau khi khử mẫu ra phương trình bậc hai có một nghiệm trùng giá trị bị loại bởi điều kiện xác định.\n\n**Bước 1.** Đặt điều kiện để cả hai mẫu $x$ và $x-2$ đều khác $0$.\n\n**Bước 2.** Quy đồng hai vế với mẫu chung $x(x-2)$ rồi khử mẫu, chú ý mẫu của vế phải đã là mẫu chung.\n\n**Bước 3.** Khai triển, thu gọn rồi đưa phương trình bậc hai về dạng tích bằng cách đặt nhân tử chung.\n\n**Bước 4.** Đối chiếu từng nghiệm với điều kiện xác định và loại nghiệm không thoả mãn.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne0$ và $x\\ne2$.\n\n$\\dfrac{1}{x}-\\dfrac{x+2}{x-2}=\\dfrac{-2}{x(x-2)}\\Leftrightarrow x-2-x(x+2)=-2$\n\n$\\Leftrightarrow x-2-x^2-2x=-2$\n\n$\\Leftrightarrow-x^2-x=0$\n\n$\\Leftrightarrow-x(x+1)=0$\n\n$\\Leftrightarrow x=0$ hoặc $x=-1$\n\n$x=0$ không thoả mãn ĐKXĐ nên bị loại; $x=-1$ thoả mãn ĐKXĐ.\n\nVậy $S=\\{-1\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 64): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 39)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.40a@p65",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{7}{x-5}-2=\\dfrac{3}{5-x}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{7}{x-5}-2=\\dfrac{3}{5-x}$.",
+  "dap_an": "$S=\\{10\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai mẫu $x-5$ và $5-x$ đối nhau, nên đưa về cùng một mẫu bằng cách đổi dấu phân thức ở vế phải rồi khử mẫu.\n\n**Bước 1.** Đặt điều kiện xác định để mẫu $x-5$ khác $0$ (khi đó $5-x$ cũng khác $0$).\n\n**Bước 2.** Đổi $5-x$ thành $-(x-5)$ để hai vế cùng mẫu, rồi nhân hai vế với $x-5$ để khử mẫu.\n\n**Bước 3.** Khai triển, thu gọn rồi giải phương trình bậc nhất nhận được.\n\n**Bước 4.** Đối chiếu nghiệm với điều kiện xác định để kết luận.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne5$.\n\n$\\dfrac{7}{x-5}-2=\\dfrac{3}{5-x}\\Leftrightarrow\\dfrac{7}{x-5}-2=\\dfrac{-3}{x-5}$\n\n$\\Leftrightarrow7-2(x-5)=-3$\n\n$\\Leftrightarrow-2x+17=-3$\n\n$\\Leftrightarrow x=10$ (thoả mãn ĐKXĐ).\n\nVậy $S=\\{10\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 65): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 40)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.40b@p65",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x}{x+2}-\\dfrac{x-1}{x-2}=\\dfrac{-3x+2}{x^2-4}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x}{x+2}-\\dfrac{x-1}{x-2}=\\dfrac{-3x+2}{x^2-4}$.",
+  "dap_an": "$S=\\mathbb{R}\\setminus\\{-2;2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $x^2-4$ phân tích được thành $(x-2)(x+2)$ nên là mẫu chung; nếu sau khi khử mẫu hai vế giống hệt nhau thì mọi giá trị thoả điều kiện xác định đều là nghiệm.\n\n**Bước 1.** Phân tích $x^2-4$ thành nhân tử để tìm mẫu chung và đặt điều kiện xác định.\n\n**Bước 2.** Quy đồng vế trái về mẫu chung $(x+2)(x-2)$ rồi nhân hai vế với mẫu chung để khử mẫu.\n\n**Bước 3.** Khai triển, thu gọn hai vế và nhận xét xem hai vế có đồng nhất hay không.\n\n**Bước 4.** Kết luận tập nghiệm là mọi giá trị của $x$ thoả mãn điều kiện xác định.\n\n**Chú ý:** Phương trình đồng nhất không có nghĩa là mọi số thực đều là nghiệm — vẫn phải loại những giá trị làm mẫu bằng $0$.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne2$ và $x\\ne-2$ (vì $x^2-4=(x-2)(x+2)$).\n\n$\\dfrac{x}{x+2}-\\dfrac{x-1}{x-2}=\\dfrac{-3x+2}{x^2-4}\\Leftrightarrow x(x-2)-(x-1)(x+2)=-3x+2$\n\n$\\Leftrightarrow x^2-2x-(x^2+x-2)=-3x+2$\n\n$\\Leftrightarrow-3x+2=-3x+2$\n\n$\\Leftrightarrow0x=0$ (đúng với mọi $x$).\n\nVậy $S=\\mathbb{R}\\setminus\\{-2;2\\}$, tức là mọi $x$ khác $2$ và khác $-2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 65): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 40)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.41@p65",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-1}{x+2}+\\dfrac{x+1}{x-2}=\\dfrac{2(x^2+2)}{x^2-4}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x-1}{x+2}+\\dfrac{x+1}{x-2}=\\dfrac{2(x^2+2)}{x^2-4}$.",
+  "dap_an": "$S=\\mathbb{R}\\setminus\\{-2;2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $x^2-4=(x-2)(x+2)$ chính là mẫu chung của hai phân thức vế trái, nên quy đồng khử mẫu rồi so sánh hai vế sẽ thấy chúng đồng nhất.\n\n**Bước 1.** Phân tích mẫu $x^2-4$ thành nhân tử để thấy mẫu chung và đặt điều kiện xác định.\n\n**Bước 2.** Nhân hai vế với $(x+2)(x-2)$ để khử mẫu, mỗi tử ở vế trái được nhân với thừa số còn thiếu.\n\n**Bước 3.** Khai triển, thu gọn rồi nhận xét hai vế có bằng nhau với mọi $x$ hay không.\n\n**Bước 4.** Kết luận tập nghiệm gồm mọi giá trị của $x$ thoả mãn điều kiện xác định.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne2$ và $x\\ne-2$ (vì $x^2-4=(x-2)(x+2)$).\n\n$\\dfrac{x-1}{x+2}+\\dfrac{x+1}{x-2}=\\dfrac{2(x^2+2)}{x^2-4}\\Leftrightarrow(x-1)(x-2)+(x+1)(x+2)=2(x^2+2)$\n\n$\\Leftrightarrow x^2-3x+2+x^2+3x+2=2x^2+4$\n\n$\\Leftrightarrow2x^2+4=2x^2+4$\n\n$\\Leftrightarrow0x=0$ (đúng với mọi $x$).\n\nVậy $S=\\mathbb{R}\\setminus\\{-2;2\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 65): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 41)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.42a@p65",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{9}{x}+x=-6$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{9}{x}+x=-6$.",
+  "dap_an": "$S=\\{-3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai vế với $x$ để khử mẫu thì được phương trình bậc hai có vế trái là bình phương của một nhị thức.\n\n**Bước 1.** Đặt điều kiện xác định để mẫu $x$ khác $0$.\n\n**Bước 2.** Nhân hai vế với $x$ để khử mẫu, rồi chuyển mọi hạng tử về một vế.\n\n**Bước 3.** Nhận ra vế trái là hằng đẳng thức bình phương của một tổng rồi giải phương trình tích.\n\n**Bước 4.** Đối chiếu nghiệm với điều kiện xác định để kết luận.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne0$.\n\n$\\dfrac{9}{x}+x=-6\\Leftrightarrow9+x^2=-6x$\n\n$\\Leftrightarrow x^2+6x+9=0$\n\n$\\Leftrightarrow(x+3)^2=0$\n\n$\\Leftrightarrow x=-3$ (thoả mãn ĐKXĐ).\n\nVậy $S=\\{-3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 65): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 42)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.42b@p65",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x^2-4}{x+2}+\\dfrac{x^2+6x+9}{x+3}=\\dfrac{x^2-5x}{x-5}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x^2-4}{x+2}+\\dfrac{x^2+6x+9}{x+3}=\\dfrac{x^2-5x}{x-5}$.",
+  "dap_an": "$S=\\{-1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi tử đều phân tích được thành nhân tử chứa đúng nhân tử ở mẫu của nó, nên rút gọn từng phân thức trước rồi mới giải sẽ nhanh hơn quy đồng.\n\n**Bước 1.** Tìm điều kiện xác định bằng cách cho cả ba mẫu $x+2$, $x+3$ và $x-5$ khác $0$.\n\n**Bước 2.** Phân tích tử của từng phân thức thành nhân tử bằng hằng đẳng thức hoặc đặt nhân tử chung.\n\n**Bước 3.** Rút gọn từng phân thức cho nhân tử chung (khác $0$ nhờ điều kiện xác định) để được phương trình bậc nhất.\n\n**Bước 4.** Giải phương trình bậc nhất rồi đối chiếu nghiệm với điều kiện xác định.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne-2$, $x\\ne-3$ và $x\\ne5$.\n\n$\\dfrac{x^2-4}{x+2}+\\dfrac{x^2+6x+9}{x+3}=\\dfrac{x^2-5x}{x-5}\\Leftrightarrow\\dfrac{(x+2)(x-2)}{x+2}+\\dfrac{(x+3)^2}{x+3}=\\dfrac{x(x-5)}{x-5}$\n\n$\\Leftrightarrow x-2+x+3=x$\n\n$\\Leftrightarrow x=-1$ (thoả mãn ĐKXĐ).\n\nVậy $S=\\{-1\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 65): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 42)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.43@p66",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020401",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Với giá trị nào của $a$ thì biểu thức sau có giá trị bằng $1$: $2a-\\dfrac{5}{3a+2}$.",
+  "noi_dung_sach": "Với giá trị nào của $a$ thì biểu thức sau có giá trị bằng $1$: $2a-\\dfrac{5}{3a+2}$.",
+  "dap_an": "$S=\\left\\{1;-\\dfrac{7}{6}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Biểu thức có giá trị bằng $1$\" nghĩa là phải giải phương trình $2a-\\dfrac{5}{3a+2}=1$, trong đó $a$ nằm ở mẫu nên cần điều kiện xác định.\n\n**Bước 1.** Lập phương trình từ đề bài và đặt điều kiện để mẫu $3a+2$ khác $0$.\n\n**Bước 2.** Quy đồng hai vế với mẫu $3a+2$ rồi khử mẫu để được phương trình bậc hai.\n\n**Bước 3.** Đưa phương trình bậc hai về dạng tích bằng cách tách hạng tử bậc nhất rồi đặt nhân tử chung.\n\n**Bước 4.** Giải phương trình tích rồi đối chiếu từng nghiệm với điều kiện xác định.\n\n**Phần 2. Trình bày**\n\nBiểu thức có giá trị bằng $1$ khi $2a-\\dfrac{5}{3a+2}=1$.\n\nĐKXĐ: $a\\ne-\\dfrac{2}{3}$.\n\n$2a-\\dfrac{5}{3a+2}=1\\Leftrightarrow2a(3a+2)-5=3a+2$\n\n$\\Leftrightarrow6a^2+a-7=0$\n\n$\\Leftrightarrow6a^2-6a+7a-7=0$\n\n$\\Leftrightarrow(a-1)(6a+7)=0$\n\n$\\Leftrightarrow a=1$ hoặc $a=-\\dfrac{7}{6}$ (cả hai đều thoả mãn ĐKXĐ).\n\nVậy biểu thức có giá trị bằng $1$ khi $a=1$ hoặc $a=-\\dfrac{7}{6}$, tức $S=\\left\\{1;-\\dfrac{7}{6}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 66): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 43)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.44@p66",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x^2-x-18+\\dfrac{72}{x^2-x}=0$.",
+  "noi_dung_sach": "Giải phương trình: $x^2-x-18+\\dfrac{72}{x^2-x}=0$.",
+  "dap_an": "$S=\\{3;-2;-3;4\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức $x^2-x$ xuất hiện cả ở ngoài lẫn ở mẫu, nên đặt nó làm ẩn phụ để phương trình chứa ẩn ở mẫu trở thành phương trình bậc hai.\n\n**Bước 1.** Phân tích mẫu $x^2-x=x(x-1)$ để tìm điều kiện xác định.\n\n**Bước 2.** Đặt $t=x^2-x$ (với $t\\ne0$) rồi nhân hai vế với $t$ để khử mẫu, được phương trình bậc hai theo $t$.\n\n**Bước 3.** Phân tích tam thức theo $t$ thành tích hai nhị thức và tìm các giá trị của $t$.\n\n**Bước 4.** Với mỗi giá trị của $t$, giải phương trình bậc hai theo $x$ bằng cách phân tích thành nhân tử.\n\n**Bước 5.** Đối chiếu bốn nghiệm với điều kiện xác định rồi kết luận.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne0$ và $x\\ne1$ (vì $x^2-x=x(x-1)$).\n\nĐặt $t=x^2-x$ ($t\\ne0$), phương trình trở thành $t-18+\\dfrac{72}{t}=0$\n\n$\\Leftrightarrow t^2-18t+72=0$\n\n$\\Leftrightarrow(t-6)(t-12)=0$\n\n$\\Leftrightarrow t=6$ hoặc $t=12$\n\nVới $t=6$: $x^2-x-6=0\\Leftrightarrow(x-3)(x+2)=0\\Leftrightarrow x=3$ hoặc $x=-2$.\n\nVới $t=12$: $x^2-x-12=0\\Leftrightarrow(x-4)(x+3)=0\\Leftrightarrow x=4$ hoặc $x=-3$.\n\nCả bốn giá trị đều khác $0$ và khác $1$ nên thoả mãn ĐKXĐ.\n\nVậy $S=\\{3;-2;-3;4\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 66): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.45@p66",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}=\\dfrac{3}{10}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}=\\dfrac{3}{10}$.",
+  "dap_an": "$S=\\{2;-5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân thức có mẫu là tích hai nhân tử hơn kém nhau $1$ đơn vị, nên tách được thành hiệu hai phân thức và các số hạng ở giữa triệt tiêu liên tiếp.\n\n**Bước 1.** Đặt điều kiện để mọi nhân tử ở các mẫu đều khác $0$.\n\n**Bước 2.** Tách từng phân thức theo công thức $\\dfrac{1}{a(a+1)}=\\dfrac{1}{a}-\\dfrac{1}{a+1}$ để các số hạng ở giữa khử nhau.\n\n**Bước 3.** Rút gọn vế trái chỉ còn hiệu của hai phân thức rồi khử mẫu để được phương trình bậc hai.\n\n**Bước 4.** Giải phương trình bậc hai bằng cách đưa về dạng tích rồi đối chiếu nghiệm với điều kiện xác định.\n\n**Chú ý:** Công thức tách chỉ đúng khi hai nhân tử ở mẫu hơn kém nhau đúng $1$; nếu hơn kém $k$ thì tử phải là $k$.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne0$, $x\\ne-1$, $x\\ne-2$ và $x\\ne-3$.\n\n$\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}=\\dfrac{3}{10}$\n\n$\\Leftrightarrow\\dfrac{1}{x}-\\dfrac{1}{x+1}+\\dfrac{1}{x+1}-\\dfrac{1}{x+2}+\\dfrac{1}{x+2}-\\dfrac{1}{x+3}=\\dfrac{3}{10}$\n\n$\\Leftrightarrow\\dfrac{1}{x}-\\dfrac{1}{x+3}=\\dfrac{3}{10}$\n\n$\\Leftrightarrow10(x+3)-10x=3x(x+3)$\n\n$\\Leftrightarrow3x^2+9x-30=0$\n\n$\\Leftrightarrow x^2+3x-10=0$\n\n$\\Leftrightarrow(x-2)(x+5)=0$\n\n$\\Leftrightarrow x=2$ hoặc $x=-5$ (cả hai đều thoả mãn ĐKXĐ).\n\nVậy $S=\\{2;-5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Tách phân thức thành hiệu (khử liên tiếp)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 66): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.46@p67",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{2}{x^2+4x+3}+\\dfrac{5}{x^2+11x+24}+\\dfrac{2}{x^2+18x+80}=\\dfrac{9}{52}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{2}{x^2+4x+3}+\\dfrac{5}{x^2+11x+24}+\\dfrac{2}{x^2+18x+80}=\\dfrac{9}{52}$.",
+  "dap_an": "$S=\\{3;-14\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi phân tích các mẫu thành tích hai nhị thức, ba phân thức có tử bằng hiệu hai nhân tử ở mẫu, nên mỗi phân thức tách được thành hiệu và cả tổng khử liên tiếp.\n\n**Bước 1.** Phân tích từng mẫu bậc hai thành tích hai nhị thức rồi đặt điều kiện xác định.\n\n**Bước 2.** Nhận thấy tử bằng hiệu hai số hạng tự do ở mẫu, từ đó tách mỗi phân thức thành hiệu hai phân thức đơn giản.\n\n**Bước 3.** Cộng ba hiệu lại cho các số hạng ở giữa khử nhau, vế trái chỉ còn hiệu của hai phân thức.\n\n**Bước 4.** Khử mẫu để được phương trình bậc hai rồi đưa về dạng tích để giải.\n\n**Bước 5.** Đối chiếu hai nghiệm với điều kiện xác định để kết luận.\n\n**Phần 2. Trình bày**\n\nTa có $x^2+4x+3=(x+1)(x+3)$, $x^2+11x+24=(x+3)(x+8)$, $x^2+18x+80=(x+8)(x+10)$.\n\nĐKXĐ: $x\\ne-1$, $x\\ne-3$, $x\\ne-8$ và $x\\ne-10$.\n\n$\\dfrac{2}{(x+1)(x+3)}+\\dfrac{5}{(x+3)(x+8)}+\\dfrac{2}{(x+8)(x+10)}=\\dfrac{9}{52}$\n\n$\\Leftrightarrow\\dfrac{1}{x+1}-\\dfrac{1}{x+3}+\\dfrac{1}{x+3}-\\dfrac{1}{x+8}+\\dfrac{1}{x+8}-\\dfrac{1}{x+10}=\\dfrac{9}{52}$\n\n$\\Leftrightarrow\\dfrac{1}{x+1}-\\dfrac{1}{x+10}=\\dfrac{9}{52}$\n\n$\\Leftrightarrow52(x+10)-52(x+1)=9(x+1)(x+10)$\n\n$\\Leftrightarrow9x^2+99x-378=0$\n\n$\\Leftrightarrow x^2+11x-42=0$\n\n$\\Leftrightarrow(x-3)(x+14)=0$\n\n$\\Leftrightarrow x=3$ hoặc $x=-14$ (cả hai đều thoả mãn ĐKXĐ).\n\nVậy $S=\\{3;-14\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Tách phân thức thành hiệu (khử liên tiếp)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 67): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 67, đề bài 46: giữa phân) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.47@p67",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x^2+\\dfrac{4x^2}{(x+2)^2}=12$.",
+  "noi_dung_sach": "Giải phương trình: $x^2+\\dfrac{4x^2}{(x+2)^2}=12$.",
+  "dap_an": "$S=\\{1+\\sqrt{5};1-\\sqrt{5}\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái có dạng $a^2+b^2$ với $a=x$, $b=\\dfrac{2x}{x+2}$; viết $a^2+b^2=(a-b)^2+2ab$ thì $a-b$ và $ab$ cùng chứa $\\dfrac{x^2}{x+2}$, đó là ẩn phụ cần đặt.\n\n**Bước 1.** Đặt điều kiện xác định để mẫu $x+2$ khác $0$.\n\n**Bước 2.** Viết tổng hai bình phương ở vế trái thành bình phương của một hiệu cộng hai lần tích, rồi tính hiệu và tích đó.\n\n**Bước 3.** Đặt ẩn phụ $y=\\dfrac{x^2}{x+2}$ để được phương trình bậc hai theo $y$ và giải bằng cách phân tích thành nhân tử.\n\n**Bước 4.** Với mỗi giá trị của $y$, khử mẫu để được phương trình bậc hai theo $x$ rồi xét nghiệm của nó.\n\n**Bước 5.** Đối chiếu các nghiệm tìm được với điều kiện xác định để kết luận.\n\n**Chú ý:** Phương trình $x^2+6x+12=0$ vô nghiệm vì $x^2+6x+12=(x+3)^2+3>0$, không được bỏ sót bước xét này.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne-2$.\n\n$x^2+\\dfrac{4x^2}{(x+2)^2}=12\\Leftrightarrow\\left(x-\\dfrac{2x}{x+2}\\right)^2+2\\cdot x\\cdot\\dfrac{2x}{x+2}=12$\n\n$\\Leftrightarrow\\left(\\dfrac{x^2}{x+2}\\right)^2+4\\cdot\\dfrac{x^2}{x+2}-12=0$\n\nĐặt $y=\\dfrac{x^2}{x+2}$, phương trình trở thành $y^2+4y-12=0$\n\n$\\Leftrightarrow(y-2)(y+6)=0$\n\n$\\Leftrightarrow y=2$ hoặc $y=-6$\n\nVới $y=2$: $\\dfrac{x^2}{x+2}=2\\Leftrightarrow x^2-2x-4=0\\Leftrightarrow(x-1)^2=5\\Leftrightarrow x=1+\\sqrt{5}$ hoặc $x=1-\\sqrt{5}$.\n\nVới $y=-6$: $\\dfrac{x^2}{x+2}=-6\\Leftrightarrow x^2+6x+12=0\\Leftrightarrow(x+3)^2+3=0$, vô nghiệm vì $(x+3)^2+3>0$.\n\nHai nghiệm $1\\pm\\sqrt{5}$ đều khác $-2$ nên thoả mãn ĐKXĐ.\n\nVậy $S=\\{1+\\sqrt{5};1-\\sqrt{5}\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Đặt ẩn phụ",
+   "Hằng đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 67): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.48@p68",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình sau (với $m$ là tham số): $\\dfrac{x-2}{x-m}=\\dfrac{x-1}{x+2}$.",
+  "noi_dung_sach": "Giải phương trình sau (với $m$ là tham số): $\\dfrac{x-2}{x-m}=\\dfrac{x-1}{x+2}$.",
+  "dap_an": "$m\\ne-1$, $m\\ne2$, $m\\ne-2$ thì $S=\\left\\{\\dfrac{m+4}{m+1}\\right\\}$; $m=-1$, $m=2$ hoặc $m=-2$ thì $S=\\varnothing$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khử mẫu được phương trình bậc nhất $(m+1)x=m+4$ nên phải xét hệ số $m+1$ bằng $0$ hay khác $0$; nghiệm tìm được còn phải khác $m$ và $-2$ vì điều kiện xác định cũng chứa tham số.\n\n**Bước 1.** Đặt điều kiện xác định $x\\ne m$ và $x\\ne-2$ để cả hai mẫu khác $0$.\n\n**Bước 2.** Nhân chéo để khử mẫu rồi rút gọn về phương trình bậc nhất ẩn $x$ có hệ số chứa $m$.\n\n**Bước 3.** Xét trường hợp hệ số của $x$ bằng $0$ để biết phương trình vô nghiệm hay vô số nghiệm.\n\n**Bước 4.** Với hệ số khác $0$, tính $x$ theo $m$ rồi tìm các giá trị của $m$ làm $x$ trùng $m$ hoặc trùng $-2$.\n\n**Bước 5.** Tổng hợp các trường hợp của $m$ để kết luận.\n\n**Chú ý:** Nghiệm của phương trình bậc nhất sau khi khử mẫu chưa chắc là nghiệm của phương trình đầu; với tham số phải tìm điều kiện của tham số để nghiệm đó không bị loại.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne m$ và $x\\ne-2$.\n\n$\\dfrac{x-2}{x-m}=\\dfrac{x-1}{x+2}\\Leftrightarrow(x-2)(x+2)=(x-1)(x-m)$\n\n$\\Leftrightarrow x^2-4=x^2-(m+1)x+m$\n\n$\\Leftrightarrow(m+1)x=m+4$ $(*)$\n\nNếu $m=-1$: $(*)$ trở thành $0x=3$, vô nghiệm, nên $S=\\varnothing$.\n\nNếu $m\\ne-1$: $(*)\\Leftrightarrow x=\\dfrac{m+4}{m+1}$.\n\nGiá trị này là nghiệm khi và chỉ khi nó thoả ĐKXĐ.\n\n$\\dfrac{m+4}{m+1}\\ne m\\Leftrightarrow m+4\\ne m^2+m\\Leftrightarrow m^2\\ne4\\Leftrightarrow m\\ne\\pm2$\n\n$\\dfrac{m+4}{m+1}\\ne-2\\Leftrightarrow m+4\\ne-2m-2\\Leftrightarrow m\\ne-2$\n\nVậy: nếu $m\\ne-1$, $m\\ne2$ và $m\\ne-2$ thì $S=\\left\\{\\dfrac{m+4}{m+1}\\right\\}$; nếu $m=-1$, $m=2$ hoặc $m=-2$ thì phương trình vô nghiệm, $S=\\varnothing$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Biện luận phương trình theo tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 68): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.49a@p68",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – TP. Hồ Chí Minh, năm học 2003 – 2004) Giải phương trình: $\\dfrac{1}{x-1}+\\dfrac{2x^2-5}{x^3-1}=\\dfrac{4}{x^2+x+1}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – TP. Hồ Chí Minh, năm học 2003 – 2004) Giải phương trình: $\\dfrac{1}{x-1}+\\dfrac{2x^2-5}{x^3-1}=\\dfrac{4}{x^2+x+1}$.",
+  "dap_an": "$S=\\{0\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $x^3-1=(x-1)(x^2+x+1)$ chính là mẫu chung, nên chỉ cần phân tích mẫu bằng hằng đẳng thức rồi quy đồng khử mẫu.\n\n**Bước 1.** Phân tích $x^3-1$ thành nhân tử rồi đặt điều kiện xác định, chú ý nhân tử bậc hai luôn khác $0$.\n\n**Bước 2.** Quy đồng ba phân thức về mẫu chung $(x-1)(x^2+x+1)$ rồi khử mẫu.\n\n**Bước 3.** Khai triển, thu gọn để được phương trình bậc hai và giải bằng cách đặt nhân tử chung.\n\n**Bước 4.** Đối chiếu từng nghiệm với điều kiện xác định và loại nghiệm không thoả mãn.\n\n**Phần 2. Trình bày**\n\nTa có $x^3-1=(x-1)(x^2+x+1)$ và $x^2+x+1=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ với mọi $x$.\n\nĐKXĐ: $x\\ne1$.\n\n$\\dfrac{1}{x-1}+\\dfrac{2x^2-5}{(x-1)(x^2+x+1)}=\\dfrac{4}{x^2+x+1}\\Leftrightarrow(x^2+x+1)+2x^2-5=4(x-1)$\n\n$\\Leftrightarrow3x^2+x-4=4x-4$\n\n$\\Leftrightarrow3x^2-3x=0$\n\n$\\Leftrightarrow3x(x-1)=0$\n\n$\\Leftrightarrow x=0$ hoặc $x=1$\n\n$x=1$ không thoả mãn ĐKXĐ nên bị loại; $x=0$ thoả mãn ĐKXĐ.\n\nVậy $S=\\{0\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 68): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.49b@p68",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 2003 – 2004) Giải phương trình: $x^2+\\left(\\dfrac{x}{x+1}\\right)^2=\\dfrac{5}{4}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 2003 – 2004) Giải phương trình: $x^2+\\left(\\dfrac{x}{x+1}\\right)^2=\\dfrac{5}{4}$.",
+  "dap_an": "$S=\\left\\{1;-\\dfrac{1}{2}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái có dạng $a^2+b^2$ với $a=x$ và $b=\\dfrac{x}{x+1}$; viết $a^2+b^2=(a-b)^2+2ab$ thì cả $a-b$ lẫn $ab$ đều chứa $\\dfrac{x^2}{x+1}$, đó là ẩn phụ cần đặt.\n\n**Bước 1.** Đặt điều kiện xác định để mẫu $x+1$ khác $0$.\n\n**Bước 2.** Viết tổng hai bình phương ở vế trái thành bình phương của một hiệu cộng hai lần tích rồi tính hiệu và tích đó.\n\n**Bước 3.** Đặt ẩn phụ cho biểu thức chung để được phương trình bậc hai theo ẩn phụ và giải bằng cách phân tích thành nhân tử.\n\n**Bước 4.** Với mỗi giá trị của ẩn phụ, khử mẫu để được phương trình bậc hai theo $x$ rồi xét nghiệm của nó.\n\n**Bước 5.** Đối chiếu các nghiệm tìm được với điều kiện xác định để kết luận.\n\n**Chú ý:** Phương trình $2x^2+5x+5=0$ vô nghiệm vì $2x^2+5x+5=2\\left(x+\\dfrac{5}{4}\\right)^2+\\dfrac{15}{8}>0$, phải xét đủ cả hai giá trị của ẩn phụ.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne-1$.\n\n$x^2+\\left(\\dfrac{x}{x+1}\\right)^2=\\dfrac{5}{4}\\Leftrightarrow\\left(x-\\dfrac{x}{x+1}\\right)^2+2\\cdot x\\cdot\\dfrac{x}{x+1}=\\dfrac{5}{4}$\n\n$\\Leftrightarrow\\left(\\dfrac{x^2}{x+1}\\right)^2+2\\cdot\\dfrac{x^2}{x+1}-\\dfrac{5}{4}=0$\n\nĐặt $y=\\dfrac{x^2}{x+1}$, phương trình trở thành $y^2+2y-\\dfrac{5}{4}=0$\n\n$\\Leftrightarrow4y^2+8y-5=0$\n\n$\\Leftrightarrow(2y-1)(2y+5)=0$\n\n$\\Leftrightarrow y=\\dfrac{1}{2}$ hoặc $y=-\\dfrac{5}{2}$\n\nVới $y=\\dfrac{1}{2}$: $\\dfrac{x^2}{x+1}=\\dfrac{1}{2}\\Leftrightarrow2x^2-x-1=0\\Leftrightarrow(x-1)(2x+1)=0\\Leftrightarrow x=1$ hoặc $x=-\\dfrac{1}{2}$.\n\nVới $y=-\\dfrac{5}{2}$: $\\dfrac{x^2}{x+1}=-\\dfrac{5}{2}\\Leftrightarrow2x^2+5x+5=0$, vô nghiệm vì $2x^2+5x+5=2\\left(x+\\dfrac{5}{4}\\right)^2+\\dfrac{15}{8}>0$.\n\nHai nghiệm $1$ và $-\\dfrac{1}{2}$ đều khác $-1$ nên thoả mãn ĐKXĐ.\n\nVậy $S=\\left\\{1;-\\dfrac{1}{2}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Đặt ẩn phụ",
+   "Hằng đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 68): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.50@p69",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Mẫu của một phân số lớn hơn tử số của nó là $8$ đơn vị. Nếu tăng cả tử và mẫu của nó thêm $3$ đơn vị thì được phân số mới bằng $\\dfrac{5}{9}$. Tìm phân số ban đầu.",
+  "noi_dung_sach": "Mẫu của một phân số lớn hơn tử số của nó là $8$ đơn vị. Nếu tăng cả tử và mẫu của nó thêm $3$ đơn vị thì được phân số mới bằng $\\dfrac{5}{9}$. Tìm phân số ban đầu.",
+  "dap_an": "$\\dfrac{7}{15}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu hơn tử đúng $8$ đơn vị nên chỉ cần một ẩn là tử số; điều kiện \"phân số mới bằng $\\dfrac{5}{9}$\" cho ngay một phương trình mà ta khử mẫu bằng cách nhân chéo.\n\n**Bước 1.** Gọi tử số của phân số ban đầu là ẩn, ghi điều kiện, rồi biểu diễn mẫu số theo tử số bằng dữ kiện hơn $8$ đơn vị.\n\n**Bước 2.** Cộng thêm $3$ vào cả tử số lẫn mẫu số để viết phân số mới theo ẩn, rồi cho phân số đó bằng $\\dfrac{5}{9}$.\n\n**Bước 3.** Nhân chéo để bỏ mẫu, giải phương trình bậc nhất thu được và đối chiếu nghiệm với điều kiện của ẩn.\n\n**Bước 4.** Từ tử số vừa tìm được suy ra mẫu số, rồi viết phân số ban đầu để trả lời đúng câu hỏi của đề.\n\n**Phần 2. Trình bày**\n\nGọi tử số của phân số ban đầu là $x$ (điều kiện: $x\\in\\mathbb{Z}$, $x\\ne-8$, $x\\ne-11$ để các mẫu khác $0$).\n\nMẫu số của phân số ban đầu là $x+8$.\n\nSau khi tăng cả tử và mẫu thêm $3$ đơn vị, phân số mới là $\\dfrac{x+3}{x+11}$, nên theo đề ta có phương trình\n\n$\\dfrac{x+3}{x+11}=\\dfrac{5}{9}$\n\n$\\Leftrightarrow 9(x+3)=5(x+11)$\n\n$\\Leftrightarrow 9x+27=5x+55$\n\n$\\Leftrightarrow 4x=28$\n\n$\\Leftrightarrow x=7$\n\nGiá trị $x=7$ thoả mãn điều kiện, khi đó mẫu số là $7+8=15$.\n\nVậy phân số ban đầu là $\\dfrac{7}{15}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 69): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 50)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.51@p69",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Điểm kiểm tra môn Toán ở học kì I của học sinh lớp 8A có $\\dfrac{5}{7}$ số học sinh cả lớp đạt điểm $10$. Nếu có thêm $3$ bạn đạt điểm $10$ nữa thì tổng số học sinh đạt điểm $10$ bằng $80\\%$ số học sinh cả lớp. Hỏi lớp 8A có bao nhiêu học sinh?",
+  "noi_dung_sach": "Điểm kiểm tra môn Toán ở học kì I của học sinh lớp 8A có $\\dfrac{5}{7}$ số học sinh cả lớp đạt điểm $10$. Nếu có thêm $3$ bạn đạt điểm $10$ nữa thì tổng số học sinh đạt điểm $10$ bằng $80\\%$ số học sinh cả lớp. Hỏi lớp 8A có bao nhiêu học sinh?",
+  "dap_an": "$35$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số học sinh đạt điểm $10$ được cho bằng một phân số của sĩ số, nên gọi sĩ số là ẩn; thêm $3$ bạn thì số đó bằng $80\\%$ sĩ số, đó chính là phương trình cần lập.\n\n**Bước 1.** Gọi số học sinh cả lớp là ẩn, ghi điều kiện, rồi biểu diễn số học sinh đạt điểm $10$ lúc đầu bằng $\\dfrac{5}{7}$ ẩn.\n\n**Bước 2.** Cộng thêm $3$ bạn vào số học sinh đạt điểm $10$ và cho bằng $80\\%$ sĩ số, đổi $80\\%$ thành phân số tối giản để tính cho gọn.\n\n**Bước 3.** Chuyển các hạng tử chứa ẩn sang cùng một vế, quy đồng rồi giải phương trình, sau đó đối chiếu với điều kiện của ẩn.\n\n**Chú ý:** Số học sinh đạt điểm $10$ lúc đầu phải là số nguyên nên sĩ số phải chia hết cho $7$; nghiệm tìm được cần thoả điều kiện này.\n\n**Phần 2. Trình bày**\n\nGọi số học sinh lớp 8A là $x$ (học sinh), $x\\in\\mathbb{N}^*$.\n\nSố học sinh đạt điểm $10$ lúc đầu là $\\dfrac{5}{7}x$ (học sinh).\n\nCó thêm $3$ bạn đạt điểm $10$ thì số học sinh đạt điểm $10$ là $\\dfrac{5}{7}x+3$, bằng $80\\%=\\dfrac{4}{5}$ sĩ số, nên ta có phương trình\n\n$\\dfrac{5}{7}x+3=\\dfrac{4}{5}x$\n\n$\\Leftrightarrow\\dfrac{4}{5}x-\\dfrac{5}{7}x=3$\n\n$\\Leftrightarrow\\dfrac{3}{35}x=3$\n\n$\\Leftrightarrow x=35$\n\nGiá trị $x=35$ thoả mãn điều kiện (và chia hết cho $7$).\n\nVậy lớp 8A có $35$ học sinh.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 69): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 51)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.52@p70",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Bài toán cổ Hi Lạp) \"Thưa Py-ta-go lỗi lạc, Ngài có bao nhiêu môn đệ? Py-ta-go trả lời: Hiện nay một nửa số học trò của tôi đang học toán, một phần tư đang học nhạc, một phần bảy đang ngồi yên suy nghĩ, ngoài ra còn có ba phụ nữ. Hỏi Py-ta-go có bao nhiêu học trò?\"",
+  "noi_dung_sach": "(Bài toán cổ Hi Lạp) \"Thưa Py-ta-go lỗi lạc, Ngài có bao nhiêu môn đệ? Py-ta-go trả lời: Hiện nay một nửa số học trò của tôi đang học toán, một phần tư đang học nhạc, một phần bảy đang ngồi yên suy nghĩ, ngoài ra còn có ba phụ nữ. Hỏi Py-ta-go có bao nhiêu học trò?\"",
+  "dap_an": "$28$ học trò",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các nhóm học trò (một nửa, một phần tư, một phần bảy) cộng với $3$ phụ nữ phải đủ cả đoàn, nên gọi tổng số môn đệ là ẩn và cho tổng các phần bằng chính ẩn đó.\n\n**Bước 1.** Gọi tổng số môn đệ của Py-ta-go là ẩn và ghi điều kiện ẩn là số nguyên dương.\n\n**Bước 2.** Biểu diễn số người học toán, học nhạc và ngồi suy nghĩ theo ẩn, rồi cộng thêm $3$ người phụ nữ.\n\n**Bước 3.** Cho tổng các phần bằng tổng số môn đệ, quy đồng mẫu số rồi giải phương trình bậc nhất thu được.\n\n**Bước 4.** Đối chiếu nghiệm với điều kiện (mỗi nhóm phải có số người nguyên) rồi kết luận.\n\n**Phần 2. Trình bày**\n\nGọi số môn đệ của Py-ta-go là $x$ (người), $x\\in\\mathbb{N}^*$.\n\nSố người học toán, học nhạc, ngồi suy nghĩ lần lượt là $\\dfrac{1}{2}x$, $\\dfrac{1}{4}x$, $\\dfrac{1}{7}x$ (người).\n\nCùng với $3$ phụ nữ, họ là cả đoàn nên\n\n$x=\\dfrac{1}{2}x+\\dfrac{1}{4}x+\\dfrac{1}{7}x+3$\n\n$\\Leftrightarrow x-\\dfrac{1}{2}x-\\dfrac{1}{4}x-\\dfrac{1}{7}x=3$\n\n$\\Leftrightarrow\\dfrac{28x-14x-7x-4x}{28}=3$\n\n$\\Leftrightarrow\\dfrac{3x}{28}=3$\n\n$\\Leftrightarrow x=28$\n\nGiá trị $x=28$ thoả mãn điều kiện, và $\\dfrac{1}{2}\\cdot28$, $\\dfrac{1}{4}\\cdot28$, $\\dfrac{1}{7}\\cdot28$ đều là số nguyên.\n\nVậy Py-ta-go có $28$ học trò.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 70): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 52)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.53@p70",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hai vòi nước cùng chảy vào một bể cạn, sau $4\\dfrac{4}{9}$ giờ thì bể đầy. Mỗi giờ lượng nước vòi I chảy được bằng $1\\dfrac{1}{4}$ lượng nước vòi II chảy trong một giờ. Hỏi mỗi vòi chảy riêng trong bao lâu thì bể đầy?",
+  "noi_dung_sach": "Hai vòi nước cùng chảy vào một bể cạn, sau $4\\dfrac{4}{9}$ giờ thì bể đầy. Mỗi giờ lượng nước vòi I chảy được bằng $1\\dfrac{1}{4}$ lượng nước vòi II chảy trong một giờ. Hỏi mỗi vòi chảy riêng trong bao lâu thì bể đầy?",
+  "dap_an": "Vòi I chảy một mình đầy bể sau $8$ giờ; vòi II chảy một mình đầy bể sau $10$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả bể là $1$ đơn vị công việc: phần bể mỗi vòi chảy được trong một giờ cộng lại bằng phần bể cả hai vòi chảy chung trong một giờ.\n\n**Bước 1.** Gọi thời gian vòi II chảy một mình đầy bể là ẩn, ghi điều kiện, rồi viết phần bể vòi II chảy được trong một giờ.\n\n**Bước 2.** Dùng tỉ lệ $1\\dfrac{1}{4}$ giữa hai vòi để viết phần bể vòi I chảy được trong một giờ theo cùng ẩn.\n\n**Bước 3.** Từ thời gian $4\\dfrac{4}{9}$ giờ hai vòi cùng chảy đầy bể, tính phần bể cả hai vòi chảy được trong một giờ.\n\n**Bước 4.** Lập phương trình cộng hai năng suất riêng bằng năng suất chung, giải ra thời gian vòi II rồi tính thời gian vòi I.\n\n**Chú ý:** Thời gian chảy riêng của mỗi vòi phải lớn hơn thời gian chảy chung, nên cần kiểm tra cả hai vòi chứ không chỉ vòi II.\n\n**Phần 2. Trình bày**\n\nGọi thời gian vòi II chảy một mình đầy bể là $x$ (giờ), $x>4\\dfrac{4}{9}$.\n\nMỗi giờ vòi II chảy được $\\dfrac{1}{x}$ bể, vòi I chảy được $1\\dfrac{1}{4}\\cdot\\dfrac{1}{x}=\\dfrac{5}{4x}$ bể.\n\nHai vòi cùng chảy trong $4\\dfrac{4}{9}=\\dfrac{40}{9}$ giờ thì đầy bể nên mỗi giờ cả hai vòi chảy được $1:\\dfrac{40}{9}=\\dfrac{9}{40}$ bể.\n\nTa có phương trình\n\n$\\dfrac{1}{x}+\\dfrac{5}{4x}=\\dfrac{9}{40}$\n\n$\\Leftrightarrow 40+50=9x$\n\n$\\Leftrightarrow x=10$\n\nGiá trị $x=10$ thoả mãn điều kiện $x>4\\dfrac{4}{9}$.\n\nMỗi giờ vòi I chảy được $\\dfrac{5}{4\\cdot10}=\\dfrac{1}{8}$ bể nên vòi I chảy một mình đầy bể sau $8$ giờ (cũng lớn hơn $4\\dfrac{4}{9}$ giờ).\n\nVậy vòi I chảy một mình đầy bể sau $8$ giờ, vòi II chảy một mình đầy bể sau $10$ giờ.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 70): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 53)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.54@p71",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một đơn vị dân quân tham gia đắp một đoạn đường trong một số ngày quy định. Nếu mỗi ngày họ đắp được $50$ m đường thì sẽ hoàn thành công việc sớm hơn thời gian quy định $1$ ngày. Nếu mỗi ngày họ chỉ đắp được $35$ m đường thì sẽ hoàn thành công việc trễ hơn $2$ ngày so với thời gian quy định. Tính chiều dài đoạn đường mà đơn vị dân quân phải đắp.",
+  "noi_dung_sach": "Một đơn vị dân quân tham gia đắp một đoạn đường trong một số ngày quy định. Nếu mỗi ngày họ đắp được $50$ m đường thì sẽ hoàn thành công việc sớm hơn thời gian quy định $1$ ngày. Nếu mỗi ngày họ chỉ đắp được $35$ m đường thì sẽ hoàn thành công việc trễ hơn $2$ ngày so với thời gian quy định. Tính chiều dài đoạn đường mà đơn vị dân quân phải đắp.",
+  "dap_an": "$350$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đoạn đường là một, dù đắp theo cách nào cũng cùng chiều dài, nên viết chiều dài theo hai cách (mỗi ngày đắp bao nhiêu nhân số ngày đắp) rồi cho bằng nhau.\n\n**Bước 1.** Gọi số ngày quy định là ẩn và ghi điều kiện để số ngày đắp theo cách sớm hơn vẫn dương.\n\n**Bước 2.** Viết chiều dài đoạn đường theo cách đắp $50$ m mỗi ngày (xong sớm hơn $1$ ngày) và theo cách đắp $35$ m mỗi ngày (xong trễ hơn $2$ ngày).\n\n**Bước 3.** Cho hai biểu thức chiều dài bằng nhau, giải phương trình bậc nhất để tìm số ngày quy định.\n\n**Bước 4.** Thay số ngày vào một trong hai biểu thức để tính chiều dài, vì đề hỏi chiều dài chứ không hỏi số ngày.\n\n**Phần 2. Trình bày**\n\nGọi thời gian quy định là $x$ (ngày), $x>1$.\n\nNếu mỗi ngày đắp $50$ m và xong sớm hơn $1$ ngày thì số ngày đắp là $x-1$, đoạn đường dài $50(x-1)$ m.\n\nNếu mỗi ngày đắp $35$ m và xong trễ hơn $2$ ngày thì số ngày đắp là $x+2$, đoạn đường dài $35(x+2)$ m.\n\nChiều dài đoạn đường không đổi nên\n\n$50(x-1)=35(x+2)$\n\n$\\Leftrightarrow 50x-50=35x+70$\n\n$\\Leftrightarrow 15x=120$\n\n$\\Leftrightarrow x=8$\n\nGiá trị $x=8$ thoả mãn điều kiện $x>1$.\n\nChiều dài đoạn đường là $50(8-1)=350$ (m).\n\nVậy đoạn đường đơn vị dân quân phải đắp dài $350$ m.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 71): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 54)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.55@p71",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hiệu của hai số bằng $64$, số thứ nhất gấp $5$ lần số thứ hai. Tìm hai số đó.",
+  "noi_dung_sach": "Hiệu của hai số bằng $64$, số thứ nhất gấp $5$ lần số thứ hai. Tìm hai số đó.",
+  "dap_an": "$16$ và $80$, hoặc $-16$ và $-80$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề chỉ nói \"hiệu bằng $64$\" mà không nói số nào lớn hơn, nên phải xét hai cách trừ; mỗi cách cho một phương trình bậc nhất riêng.\n\n**Bước 1.** Gọi một trong hai số là ẩn, rồi biểu diễn số còn lại bằng $5$ lần ẩn nhờ dữ kiện gấp $5$ lần.\n\n**Bước 2.** Lập hai phương trình ứng với hai khả năng: ẩn là số lớn hơn hoặc ẩn là số bé hơn.\n\n**Bước 3.** Giải từng phương trình, mỗi nghiệm cho một cặp số, rồi thử lại cả hai cặp với điều kiện của đề.\n\n**Chú ý:** Hai số có thể âm, nên đừng bỏ trường hợp ẩn nhận giá trị âm.\n\n**Phần 2. Trình bày**\n\nGọi một trong hai số là $x$ thì số kia là $5x$.\n\nHiệu của hai số bằng $64$ nên $5x-x=64$ hoặc $x-5x=64$\n\n$\\Leftrightarrow 4x=64$ hoặc $-4x=64$\n\n$\\Leftrightarrow x=16$ hoặc $x=-16$\n\nVới $x=16$ ta được hai số $16$ và $80$; với $x=-16$ ta được hai số $-16$ và $-80$.\n\nThử lại: $80-16=64$ và $-16-(-80)=64$, trong mỗi cặp một số gấp $5$ lần số kia.\n\nVậy hai số cần tìm là $16$ và $80$, hoặc $-16$ và $-80$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 71): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 55)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.56@p71",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một hình chữ nhật có chu vi bằng $200$ m, nếu tăng chiều dài $20$ m và tăng chiều rộng $10$ m (ta vẫn được hình chữ nhật) thì diện tích tăng thêm $1600$ m². Tính kích thước của hình chữ nhật ban đầu.",
+  "noi_dung_sach": "Một hình chữ nhật có chu vi bằng $200$ m, nếu tăng chiều dài $20$ m và tăng chiều rộng $10$ m (ta vẫn được hình chữ nhật) thì diện tích tăng thêm $1600$ m². Tính kích thước của hình chữ nhật ban đầu.",
+  "dap_an": "Chiều rộng $40$ m, chiều dài $60$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi cho biết nửa chu vi nên chiều dài biểu diễn được qua chiều rộng; \"diện tích tăng thêm\" nghĩa là diện tích mới trừ diện tích cũ, và các hạng tử bậc hai sẽ triệt tiêu.\n\n**Bước 1.** Gọi chiều rộng ban đầu là ẩn, dùng nửa chu vi để biểu diễn chiều dài theo ẩn và ghi điều kiện cho ẩn.\n\n**Bước 2.** Viết chiều rộng và chiều dài của hình chữ nhật mới sau khi tăng chiều dài $20$ m và chiều rộng $10$ m.\n\n**Bước 3.** Lập phương trình diện tích mới trừ diện tích cũ bằng $1600$ m², khai triển để các hạng tử bậc hai khử nhau.\n\n**Bước 4.** Giải phương trình bậc nhất, đối chiếu điều kiện rồi tính chiều dài ban đầu.\n\n**Chú ý:** Điều kiện $0<x\\le50$ xuất hiện vì chiều rộng không vượt quá chiều dài, tức $x\\le100-x$.\n\n**Phần 2. Trình bày**\n\nGọi chiều rộng ban đầu là $x$ (m), $0<x\\le50$.\n\nNửa chu vi là $100$ m nên chiều dài ban đầu là $100-x$ (m).\n\nHình chữ nhật mới có chiều rộng $x+10$ (m) và chiều dài $100-x+20=120-x$ (m).\n\nDiện tích tăng thêm $1600$ m² nên\n\n$(x+10)(120-x)-x(100-x)=1600$\n\n$\\Leftrightarrow 120x-x^2+1200-10x-100x+x^2=1600$\n\n$\\Leftrightarrow 10x+1200=1600$\n\n$\\Leftrightarrow x=40$\n\nGiá trị $x=40$ thoả mãn điều kiện, khi đó chiều dài là $100-40=60$ (m).\n\nVậy hình chữ nhật ban đầu có chiều rộng $40$ m, chiều dài $60$ m.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 71): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 56)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.57@p72",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm số tự nhiên có hai chữ số. Biết rằng tổng của hai chữ số ấy là $12$ và nếu đổi chỗ hai chữ số ấy thì được số mới lớn hơn số cũ là $36$.",
+  "noi_dung_sach": "Tìm số tự nhiên có hai chữ số. Biết rằng tổng của hai chữ số ấy là $12$ và nếu đổi chỗ hai chữ số ấy thì được số mới lớn hơn số cũ là $36$.",
+  "dap_an": "$48$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số có hai chữ số viết được theo chữ số hàng chục và hàng đơn vị; vì tổng hai chữ số là $12$ nên cả hai chữ số biểu diễn được bằng một ẩn.\n\n**Bước 1.** Gọi chữ số hàng chục là ẩn, dùng tổng $12$ để biểu diễn chữ số hàng đơn vị, rồi ghi điều kiện để cả hai đều là chữ số.\n\n**Bước 2.** Viết số cần tìm và số mới sau khi đổi chỗ bằng cách lấy mười lần chữ số hàng chục cộng chữ số hàng đơn vị.\n\n**Bước 3.** Lập phương trình số mới trừ số cũ bằng $36$, giải rồi đối chiếu điều kiện của ẩn.\n\n**Bước 4.** Tính chữ số hàng đơn vị từ nghiệm tìm được và viết số cần tìm theo yêu cầu của đề.\n\n**Phần 2. Trình bày**\n\nGọi chữ số hàng chục của số cần tìm là $x$ thì chữ số hàng đơn vị là $12-x$.\n\nVì cả hai là chữ số nên $x\\in\\mathbb{N}$, $3\\le x\\le9$.\n\nSố cần tìm là $10x+(12-x)=9x+12$; số mới là $10(12-x)+x=120-9x$.\n\nSố mới lớn hơn số cũ là $36$ nên\n\n$120-9x-(9x+12)=36$\n\n$\\Leftrightarrow 108-18x=36$\n\n$\\Leftrightarrow 18x=72$\n\n$\\Leftrightarrow x=4$\n\nGiá trị $x=4$ thoả mãn điều kiện, khi đó chữ số hàng đơn vị là $12-4=8$.\n\nVậy số cần tìm là $48$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 72): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 57)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.58@p72",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020402",
+  "nhom_soan": "T18T020201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một xuồng máy xuôi dòng từ A đến B mất $4$ giờ và ngược dòng từ B về A mất $5$ giờ. Tính quãng đường AB, biết vận tốc của dòng nước là $2$ km/giờ.",
+  "noi_dung_sach": "Một xuồng máy xuôi dòng từ A đến B mất $4$ giờ và ngược dòng từ B về A mất $5$ giờ. Tính quãng đường AB, biết vận tốc của dòng nước là $2$ km/giờ.",
+  "dap_an": "$80$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường AB như nhau ở cả hai chiều; vận tốc xuôi dòng bằng vận tốc riêng cộng vận tốc dòng nước, ngược dòng thì trừ đi.\n\n**Bước 1.** Gọi vận tốc riêng của xuồng là ẩn và ghi điều kiện lớn hơn vận tốc dòng nước để xuồng còn ngược dòng được.\n\n**Bước 2.** Biểu diễn vận tốc xuôi dòng và ngược dòng theo ẩn rồi tính quãng đường AB theo từng chiều bằng vận tốc nhân thời gian.\n\n**Bước 3.** Cho hai biểu thức quãng đường bằng nhau, giải ra vận tốc riêng, rồi tính quãng đường AB mà đề hỏi.\n\n**Phần 2. Trình bày**\n\nGọi vận tốc riêng của xuồng máy là $x$ (km/giờ), $x>2$.\n\nVận tốc xuôi dòng là $x+2$ (km/giờ), vận tốc ngược dòng là $x-2$ (km/giờ).\n\nQuãng đường AB tính theo chiều xuôi dòng là $4(x+2)$ (km), theo chiều ngược dòng là $5(x-2)$ (km).\n\nHai quãng đường bằng nhau nên\n\n$4(x+2)=5(x-2)$\n\n$\\Leftrightarrow 4x+8=5x-10$\n\n$\\Leftrightarrow x=18$\n\nGiá trị $x=18$ thoả mãn điều kiện $x>2$.\n\nQuãng đường AB dài $4(18+2)=80$ (km).\n\nVậy quãng đường AB dài $80$ km.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 72): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 58)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.59@p72",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020201",
+  "nhom_soan": "T18T020201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một người đi xe gắn máy từ thành phố A đến thành phố B cách nhau $200$ km. Cùng lúc đó có một người đi xe gắn máy khác từ B đến A. Sau $5$ giờ hai xe gặp nhau. Nếu sau khi đi được $1$ giờ $15$ phút mà người đi từ A dừng lại $40$ phút rồi mới đi tiếp thì phải sau $5$ giờ $22$ phút kể từ lúc khởi hành, hai người mới gặp nhau. Tính vận tốc của mỗi người?",
+  "noi_dung_sach": "Một người đi xe gắn máy từ thành phố A đến thành phố B cách nhau $200$ km. Cùng lúc đó có một người đi xe gắn máy khác từ B đến A. Sau $5$ giờ hai xe gặp nhau. Nếu sau khi đi được $1$ giờ $15$ phút mà người đi từ A dừng lại $40$ phút rồi mới đi tiếp thì phải sau $5$ giờ $22$ phút kể từ lúc khởi hành, hai người mới gặp nhau. Tính vận tốc của mỗi người?",
+  "dap_an": "Xe đi từ A: $22$ km/giờ; xe đi từ B: $18$ km/giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần gặp thứ nhất (hai xe đi liên tục, cùng khởi hành) cho biết tổng hai vận tốc; lần gặp thứ hai thì quãng đường mỗi xe đi được là vận tốc nhân thời gian chạy thật, và tổng hai quãng đường bằng $200$ km.\n\n**Bước 1.** Dùng lần gặp thứ nhất sau $5$ giờ để tìm tổng hai vận tốc, từ đó biểu diễn vận tốc xe thứ hai qua vận tốc xe đi từ A.\n\n**Bước 2.** Đổi các khoảng thời gian ra giờ rồi tính thời gian chạy thật của xe đi từ A bằng cách trừ thời gian dừng.\n\n**Bước 3.** Lập phương trình tổng hai quãng đường hai xe đã đi đến lúc gặp nhau bằng $200$ km, quy đồng để khử mẫu.\n\n**Bước 4.** Giải phương trình, đối chiếu điều kiện của ẩn rồi tính vận tốc xe còn lại.\n\n**Chú ý:** Dữ kiện \"sau $1$ giờ $15$ phút\" chỉ nói lúc xe đi từ A dừng, cách giải chỉ cần tổng thời gian dừng là $40$ phút nên không dùng đến mốc $1$ giờ $15$ phút.\n\n**Phần 2. Trình bày**\n\nĐổi $5$ giờ $22$ phút $=\\dfrac{161}{30}$ giờ, $40$ phút $=\\dfrac{2}{3}$ giờ.\n\nHai xe khởi hành cùng lúc, đi liên tục và gặp nhau sau $5$ giờ nên tổng vận tốc hai xe là $200:5=40$ (km/giờ).\n\nGọi vận tốc xe đi từ A là $x$ (km/giờ), $0<x<40$.\n\nVận tốc xe đi từ B là $40-x$ (km/giờ).\n\nĐến lúc gặp nhau ở lần sau, xe đi từ A chạy trong $\\dfrac{161}{30}-\\dfrac{2}{3}=\\dfrac{47}{10}$ giờ, xe đi từ B chạy trong $\\dfrac{161}{30}$ giờ.\n\nTổng quãng đường hai xe đi được là $200$ km nên\n\n$\\dfrac{47}{10}x+\\dfrac{161}{30}(40-x)=200$\n\n$\\Leftrightarrow 141x+161(40-x)=6000$\n\n$\\Leftrightarrow 141x+6440-161x=6000$\n\n$\\Leftrightarrow 20x=440$\n\n$\\Leftrightarrow x=22$\n\nGiá trị $x=22$ thoả mãn điều kiện, khi đó vận tốc xe đi từ B là $40-22=18$ (km/giờ).\n\nVậy vận tốc xe đi từ A là $22$ km/giờ, vận tốc xe đi từ B là $18$ km/giờ.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 72): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.60@p73",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Năm ngoái, tổng số dân của hai tỉnh A và B là $4$ triệu người. Dân số tỉnh A năm nay tăng $1{,}2\\%$; còn tỉnh B tăng $1{,}1\\%$. Tổng số dân hai tỉnh năm nay là $4045000$ người. Tính số dân của mỗi tỉnh năm ngoái.",
+  "noi_dung_sach": "Năm ngoái, tổng số dân của hai tỉnh A và B là $4$ triệu người. Dân số tỉnh A năm nay tăng $1{,}2\\%$; còn tỉnh B tăng $1{,}1\\%$. Tổng số dân hai tỉnh năm nay là $4045000$ người. Tính số dân của mỗi tỉnh năm ngoái.",
+  "dap_an": "Năm ngoái tỉnh A có $1000000$ người, tỉnh B có $3000000$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số dân tăng thêm của mỗi tỉnh bằng tỉ lệ phần trăm nhân với số dân năm ngoái của tỉnh đó, và tổng số dân tăng thêm của hai tỉnh bằng hiệu giữa tổng dân số năm nay và năm ngoái.\n\n**Bước 1.** Gọi số dân tỉnh A năm ngoái là ẩn, rồi dùng tổng $4$ triệu để biểu diễn số dân tỉnh B năm ngoái.\n\n**Bước 2.** Tính số dân tăng thêm của từng tỉnh bằng cách nhân tỉ lệ phần trăm tăng với số dân năm ngoái của tỉnh đó.\n\n**Bước 3.** Cho tổng hai số dân tăng thêm bằng hiệu của tổng dân số hai năm, rồi giải phương trình bậc nhất thu được.\n\n**Bước 4.** Đối chiếu điều kiện, tính số dân tỉnh B năm ngoái và trả lời cho cả hai tỉnh.\n\n**Phần 2. Trình bày**\n\nGọi số dân tỉnh A năm ngoái là $x$ (người), $x\\in\\mathbb{N}^*$, $x<4000000$.\n\nSố dân tỉnh B năm ngoái là $4000000-x$ (người).\n\nSố dân tỉnh A tăng thêm là $1{,}2\\%\\cdot x=\\dfrac{12}{1000}x$ (người); số dân tỉnh B tăng thêm là $1{,}1\\%\\cdot(4000000-x)=\\dfrac{11}{1000}(4000000-x)$ (người).\n\nTổng số dân hai tỉnh tăng thêm là $4045000-4000000=45000$ (người) nên\n\n$\\dfrac{12}{1000}x+\\dfrac{11}{1000}(4000000-x)=45000$\n\n$\\Leftrightarrow 12x+44000000-11x=45000000$\n\n$\\Leftrightarrow x=1000000$\n\nGiá trị $x=1000000$ thoả mãn điều kiện, khi đó số dân tỉnh B năm ngoái là $4000000-1000000=3000000$ (người).\n\nVậy năm ngoái tỉnh A có $1000000$ người, tỉnh B có $3000000$ người.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 73): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.61@p73",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Trong một cái giỏ đựng một số táo. Đầu tiên người ta lấy ra một nửa số táo và bỏ lại $5$ quả, sau đó lấy thêm ra $\\dfrac{1}{3}$ số táo còn lại và lấy thêm $4$ quả. Cuối cùng trong giỏ còn lại $12$ quả. Hỏi trong giỏ lúc đầu có bao nhiêu quả?",
+  "noi_dung_sach": "Trong một cái giỏ đựng một số táo. Đầu tiên người ta lấy ra một nửa số táo và bỏ lại $5$ quả, sau đó lấy thêm ra $\\dfrac{1}{3}$ số táo còn lại và lấy thêm $4$ quả. Cuối cùng trong giỏ còn lại $12$ quả. Hỏi trong giỏ lúc đầu có bao nhiêu quả?",
+  "dap_an": "$38$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài làm lần lượt theo hai lần lấy, nên ta theo dõi số táo còn trong giỏ sau mỗi lần; lần lấy thứ hai tính trên số táo còn lại sau lần thứ nhất, không phải trên số táo ban đầu.\n\n**Bước 1.** Gọi số táo ban đầu là ẩn rồi tính số táo còn trong giỏ sau lần đầu, nhớ rằng $5$ quả được trả lại giỏ.\n\n**Bước 2.** Tính số táo lấy ra ở lần thứ hai bằng một phần ba số táo còn lại cộng thêm $4$ quả, rồi suy ra số táo còn lại sau lần này.\n\n**Bước 3.** Cho số táo còn lại sau cùng bằng $12$, giải phương trình bằng cách biến đổi từ ngoài vào trong và đối chiếu điều kiện.\n\n**Chú ý:** Số táo còn lại sau lần hai là $\\dfrac{2}{3}$ số táo còn lại sau lần một trừ đi $4$; gom như vậy tránh phải khai triển nhiều phân số.\n\n**Phần 2. Trình bày**\n\nGọi số táo trong giỏ lúc đầu là $x$ (quả), $x\\in\\mathbb{N}^*$, $x>12$.\n\nSau lần thứ nhất, người ta lấy ra $\\dfrac{x}{2}$ quả rồi bỏ lại $5$ quả nên trong giỏ còn $x-\\dfrac{x}{2}+5=\\dfrac{x}{2}+5$ (quả).\n\nLần thứ hai lấy ra $\\dfrac{1}{3}\\left(\\dfrac{x}{2}+5\\right)+4$ (quả), nên số táo còn lại là\n\n$\\dfrac{x}{2}+5-\\left[\\dfrac{1}{3}\\left(\\dfrac{x}{2}+5\\right)+4\\right]=\\dfrac{2}{3}\\left(\\dfrac{x}{2}+5\\right)-4$\n\nCuối cùng trong giỏ còn $12$ quả nên\n\n$\\dfrac{2}{3}\\left(\\dfrac{x}{2}+5\\right)-4=12$\n\n$\\Leftrightarrow\\dfrac{2}{3}\\left(\\dfrac{x}{2}+5\\right)=16$\n\n$\\Leftrightarrow\\dfrac{x}{2}+5=24$\n\n$\\Leftrightarrow x=38$\n\nGiá trị $x=38$ thoả mãn điều kiện.\n\nVậy lúc đầu trong giỏ có $38$ quả táo.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 73): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.62@p74",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một tổ học sinh được tặng một số kẹo. Số kẹo này được chia hết và chia đều cho mọi người trong tổ. Để đảm bảo nguyên tắc chia, tổ trưởng đã đề xuất cách nhận phần kẹo của mỗi người như sau: Bạn thứ nhất nhận $1$ cái kẹo và được lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Sau khi bạn thứ nhất đã lấy phần mình, bạn thứ hai nhận $2$ cái kẹo và được lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Cứ tiếp tục như thế đến bạn cuối cùng thứ $n$ nhận $n$ cái kẹo và lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Hỏi tổ học sinh nói trên có bao nhiêu bạn và mỗi bạn được nhận bao nhiêu cái kẹo?",
+  "noi_dung_sach": "Một tổ học sinh được tặng một số kẹo. Số kẹo này được chia hết và chia đều cho mọi người trong tổ. Để đảm bảo nguyên tắc chia, tổ trưởng đã đề xuất cách nhận phần kẹo của mỗi người như sau: Bạn thứ nhất nhận $1$ cái kẹo và được lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Sau khi bạn thứ nhất đã lấy phần mình, bạn thứ hai nhận $2$ cái kẹo và được lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Cứ tiếp tục như thế đến bạn cuối cùng thứ $n$ nhận $n$ cái kẹo và lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Hỏi tổ học sinh nói trên có bao nhiêu bạn và mỗi bạn được nhận bao nhiêu cái kẹo?",
+  "dap_an": "Tổ có $10$ bạn, mỗi bạn nhận $10$ cái kẹo (tổng số kẹo là $100$ cái)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Kẹo được chia đều nên mọi bạn nhận số kẹo bằng nhau; chỉ cần viết số kẹo của hai bạn đầu theo tổng số kẹo rồi cho bằng nhau là đủ để tìm tổng số kẹo.\n\n**Bước 1.** Gọi tổng số kẹo là ẩn và tính số kẹo bạn thứ nhất nhận: một cái cộng một phần mười một số kẹo còn lại.\n\n**Bước 2.** Tính số kẹo còn lại sau bạn thứ nhất, từ đó tính số kẹo bạn thứ hai nhận theo cùng quy tắc.\n\n**Bước 3.** Cho hai số kẹo ấy bằng nhau vì chia đều, quy đồng rồi giải phương trình bậc nhất để tìm tổng số kẹo.\n\n**Bước 4.** Tính số kẹo mỗi bạn nhận, rồi lấy tổng số kẹo chia cho số kẹo mỗi bạn để biết số bạn trong tổ.\n\n**Phần 2. Trình bày**\n\nGọi tổng số kẹo được tặng là $x$ (cái), $x\\in\\mathbb{N}^*$.\n\nSố kẹo bạn thứ nhất nhận là $1+\\dfrac{1}{11}(x-1)=\\dfrac{x+10}{11}$ (cái).\n\nSố kẹo còn lại sau bạn thứ nhất là $x-\\dfrac{x+10}{11}=\\dfrac{10x-10}{11}$ (cái).\n\nSố kẹo bạn thứ hai nhận là $2+\\dfrac{1}{11}\\left(\\dfrac{10x-10}{11}-2\\right)=2+\\dfrac{10x-32}{121}=\\dfrac{10x+210}{121}$ (cái).\n\nKẹo được chia đều nên số kẹo của hai bạn bằng nhau:\n\n$\\dfrac{x+10}{11}=\\dfrac{10x+210}{121}$\n\n$\\Leftrightarrow 11(x+10)=10x+210$\n\n$\\Leftrightarrow 11x+110=10x+210$\n\n$\\Leftrightarrow x=100$\n\nGiá trị $x=100$ thoả mãn điều kiện.\n\nMỗi bạn nhận $\\dfrac{100+10}{11}=10$ (cái) kẹo, nên số bạn trong tổ là $100:10=10$ (bạn).\n\nThử lại: chín bạn đầu nhận $90$ cái, còn lại $10$ cái, bạn thứ mười nhận đúng $10$ cái và không còn dư, khớp với cách chia của tổ trưởng.\n\nVậy tổ có $10$ bạn và mỗi bạn nhận $10$ cái kẹo.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 74): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.63a@p75",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi học sinh giỏi Lê Quý Đôn môn Toán lớp 8, báo Khăn Quàng Đỏ, TP. Hồ Chí Minh, năm học 2006 – 2007) Tìm một số tự nhiên có $5$ chữ số, biết rằng nếu thêm chữ số $1$ vào bên phải số ấy thì được một số gấp $3$ lần số được tạo nên khi ta thêm chữ số $1$ vào bên trái số đã cho.",
+  "noi_dung_sach": "(Đề thi học sinh giỏi Lê Quý Đôn môn Toán lớp 8, báo Khăn Quàng Đỏ, TP. Hồ Chí Minh, năm học 2006 – 2007) Tìm một số tự nhiên có $5$ chữ số, biết rằng nếu thêm chữ số $1$ vào bên phải số ấy thì được một số gấp $3$ lần số được tạo nên khi ta thêm chữ số $1$ vào bên trái số đã cho.",
+  "dap_an": "$42857$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi cả số $5$ chữ số là một ẩn thì việc thêm chữ số $1$ vào bên phải hay bên trái đều biểu diễn được bằng phép tính trên ẩn đó, không cần tách từng chữ số.\n\n**Bước 1.** Gọi số cần tìm là ẩn và ghi điều kiện để số đó có đúng $5$ chữ số.\n\n**Bước 2.** Thêm chữ số $1$ vào bên phải thì số cũ bị đẩy lên một hàng, nên số mới là mười lần số cũ cộng $1$.\n\n**Bước 3.** Thêm chữ số $1$ vào bên trái thì chữ số $1$ đứng ở hàng trăm nghìn, nên số mới là số cũ cộng $100000$.\n\n**Bước 4.** Lập phương trình số thứ nhất gấp $3$ lần số thứ hai, giải rồi đối chiếu điều kiện của ẩn.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $x$ (điều kiện: $x\\in\\mathbb{N}$, $10000\\le x\\le99999$).\n\nThêm chữ số $1$ vào bên phải được số $10x+1$; thêm chữ số $1$ vào bên trái được số $x+100000$.\n\nTheo đề ta có\n\n$10x+1=3(x+100000)$\n\n$\\Leftrightarrow 10x+1=3x+300000$\n\n$\\Leftrightarrow 7x=299999$\n\n$\\Leftrightarrow x=42857$\n\nGiá trị $x=42857$ thoả mãn điều kiện.\n\nVậy số tự nhiên cần tìm là $42857$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 75): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.63b@p75",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020201",
+  "nhom_soan": "T18T020201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi Tuyển sinh vào lớp 10, Trường Phổ thông Năng khiếu ĐHQG TP. Hồ Chí Minh, năm học 2008 – 2009) Một sinh viên suýt bị tai nạn tàu hoả kể chuyện với các bạn: \"Khi đang đi trên cây cầu sắt (sử dụng cho tàu hoả) dài $120$ m thì tôi thấy một chiếc xe lửa tốc hành đang lao đến. Thay vì chạy cùng chiều với xe lửa, tôi quyết định chạy nước rút ngược chiều xe lửa. Dù là vô địch chạy nước rút của trường, tôi cũng chỉ chạy được với vận tốc $18$ km/giờ vì đang mang ba lô trên lưng. May mắn thay, khi tôi chạy đến đầu cầu bên này thì $2$ giây sau xe lửa mới đến nên tôi đã kịp tránh sang bên. Khi hoàn hồn, tôi tính được rằng nếu tôi chạy cùng chiều với xe lửa thì ngay khi đến đầu cầu bên kia tôi sẽ bị xe lửa đụng. May thật!\" Biết xe lửa chạy với vận tốc $72$ km/giờ, em hãy tính xem khi thấy xe lửa, anh sinh viên đang ở cách đầu cầu bên này bao nhiêu mét?",
+  "noi_dung_sach": "(Đề thi Tuyển sinh vào lớp 10, Trường Phổ thông Năng khiếu ĐHQG TP. Hồ Chí Minh, năm học 2008 – 2009) Một sinh viên suýt bị tai nạn tàu hoả kể chuyện với các bạn: \"Khi đang đi trên cây cầu sắt (sử dụng cho tàu hoả) dài $120$ m thì tôi thấy một chiếc xe lửa tốc hành đang lao đến. Thay vì chạy cùng chiều với xe lửa, tôi quyết định chạy nước rút ngược chiều xe lửa. Dù là vô địch chạy nước rút của trường, tôi cũng chỉ chạy được với vận tốc $18$ km/giờ vì đang mang ba lô trên lưng. May mắn thay, khi tôi chạy đến đầu cầu bên này thì $2$ giây sau xe lửa mới đến nên tôi đã kịp tránh sang bên. Khi hoàn hồn, tôi tính được rằng nếu tôi chạy cùng chiều với xe lửa thì ngay khi đến đầu cầu bên kia tôi sẽ bị xe lửa đụng. May thật!\" Biết xe lửa chạy với vận tốc $72$ km/giờ, em hãy tính xem khi thấy xe lửa, anh sinh viên đang ở cách đầu cầu bên này bao nhiêu mét?",
+  "dap_an": "$40$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai tình huống đều kết thúc bằng việc xe lửa đến đầu cầu bên kia đúng lúc anh sinh viên (nếu chạy cùng chiều) đến đó, nên ta tính thời điểm đến đầu cầu bên kia theo hai cách rồi cho bằng nhau.\n\n**Bước 1.** Đổi hai vận tốc sang mét trên giây rồi đặt ẩn là khoảng cách từ anh sinh viên đến đầu cầu bên này, kèm điều kiện nằm trên cầu.\n\n**Bước 2.** Tính thời điểm xe lửa đến đầu cầu bên này, rồi cộng thời gian xe lửa đi hết cầu để được thời điểm xe lửa đến đầu cầu bên kia.\n\n**Bước 3.** Tính thời gian anh sinh viên cần để chạy tới đầu cầu bên kia nếu chạy cùng chiều xe lửa.\n\n**Bước 4.** Cho hai thời điểm bằng nhau để lập phương trình bậc nhất, giải rồi đối chiếu điều kiện của ẩn.\n\n**Chú ý:** Coi xe lửa như một điểm, và nhớ rằng xe lửa đến đầu cầu bên này chậm hơn anh sinh viên $2$ giây, không phải nhanh hơn.\n\n**Phần 2. Trình bày**\n\nĐổi $18$ km/giờ $=5$ m/giây và $72$ km/giờ $=20$ m/giây.\n\nGọi khoảng cách từ anh sinh viên đến đầu cầu bên này khi thấy xe lửa là $x$ (m), $0<x<120$.\n\nKhoảng cách đến đầu cầu bên kia là $120-x$ (m).\n\nKể từ lúc thấy xe lửa, anh chạy đến đầu cầu bên này mất $\\dfrac{x}{5}$ giây, và $2$ giây sau xe lửa mới đến đó, tức xe lửa đến đầu cầu bên này sau $\\dfrac{x}{5}+2$ giây.\n\nXe lửa đi hết cầu mất $\\dfrac{120}{20}=6$ giây nên đến đầu cầu bên kia sau $\\dfrac{x}{5}+2+6=\\dfrac{x}{5}+8$ giây.\n\nNếu anh chạy cùng chiều xe lửa thì đến đầu cầu bên kia sau $\\dfrac{120-x}{5}$ giây, và lúc đó vừa bị xe lửa đụng nên\n\n$\\dfrac{x}{5}+8=\\dfrac{120-x}{5}$\n\n$\\Leftrightarrow x+40=120-x$\n\n$\\Leftrightarrow 2x=80$\n\n$\\Leftrightarrow x=40$\n\nGiá trị $x=40$ thoả mãn điều kiện $0<x<120$.\n\nVậy khi thấy xe lửa, anh sinh viên đang ở cách đầu cầu bên này $40$ m.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 75): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.64@p76",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $4x-7=x+11$.",
+  "noi_dung_sach": "Giải phương trình: $4x-7=x+11$.",
+  "dap_an": "$S=\\{6\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là phương trình bậc nhất một ẩn: chỉ cần chuyển các hạng tử chứa $x$ về một vế, các số về vế kia rồi chia hai vế cho hệ số của $x$.\n\n**Bước 1.** Chuyển hạng tử chứa $x$ ở vế phải sang vế trái và số $-7$ sang vế phải, nhớ đổi dấu khi chuyển vế.\n\n**Bước 2.** Thu gọn hai vế để đưa phương trình về dạng $ax=b$.\n\n**Bước 3.** Chia hai vế cho hệ số $a\\neq0$ để tìm $x$, rồi viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$4x-7=x+11$\n\n$\\Leftrightarrow 4x-x=11+7$\n\n$\\Leftrightarrow 3x=18$\n\n$\\Leftrightarrow x=6$\n\nVậy $S=\\{6\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 76): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 76, bài 64: đề in 4x - 7) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.65a@p76",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $x^3-25x=0$.",
+  "noi_dung_sach": "Giải phương trình: $x^3-25x=0$.",
+  "dap_an": "$S=\\{0;5;-5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái không có hạng tử tự do nên đặt được $x$ làm nhân tử chung, nhân tử còn lại là hiệu hai bình phương; vế phải bằng $0$ nên đưa về phương trình tích.\n\n**Bước 1.** Đặt $x$ làm nhân tử chung ở vế trái để nhân tử còn lại có dạng hiệu hai bình phương.\n\n**Bước 2.** Phân tích hiệu hai bình phương thành tích hai nhân tử bậc nhất, khi đó vế trái là tích ba nhân tử.\n\n**Bước 3.** Cho từng nhân tử bằng $0$, giải các phương trình bậc nhất và viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$x^3-25x=0$\n\n$\\Leftrightarrow x(x^2-25)=0$\n\n$\\Leftrightarrow x(x-5)(x+5)=0$\n\n$\\Leftrightarrow x=0$ hoặc $x=5$ hoặc $x=-5$\n\nVậy $S=\\{0;5;-5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 76): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.65b@p76",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $4x^2-49+5(2x-7)=0$.",
+  "noi_dung_sach": "Giải phương trình: $4x^2-49+5(2x-7)=0$.",
+  "dap_an": "$S=\\{\\dfrac{7}{2};-6\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hạng tử $4x^2-49$ là hiệu hai bình phương có một nhân tử là $2x-7$, trùng với biểu thức trong hạng tử $5(2x-7)$, nên hai hạng tử có nhân tử chung.\n\n**Bước 1.** Viết $4x^2-49$ thành tích của tổng và hiệu để thấy nhân tử $2x-7$ xuất hiện ở cả hai hạng tử.\n\n**Bước 2.** Đặt $2x-7$ làm nhân tử chung và gộp các số hạng còn lại trong ngoặc thứ hai.\n\n**Bước 3.** Cho từng nhân tử bằng $0$, giải hai phương trình bậc nhất rồi kết luận tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$4x^2-49+5(2x-7)=0$\n\n$\\Leftrightarrow (2x-7)(2x+7)+5(2x-7)=0$\n\n$\\Leftrightarrow (2x-7)(2x+7+5)=0$\n\n$\\Leftrightarrow (2x-7)(2x+12)=0$\n\n$\\Leftrightarrow 2x-7=0$ hoặc $2x+12=0$\n\n$\\Leftrightarrow x=\\dfrac{7}{2}$ hoặc $x=-6$\n\nVậy $S=\\{\\dfrac{7}{2};-6\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 76): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.65c@p76",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $2x^4+7x^3-9x^2=0$.",
+  "noi_dung_sach": "Giải phương trình: $2x^4+7x^3-9x^2=0$.",
+  "dap_an": "$S=\\{0;1;-\\dfrac{9}{2}\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi hạng tử của vế trái đều chứa $x^2$; đặt $x^2$ ra ngoài thì còn lại một tam thức bậc hai, phân tích tiếp để đưa về phương trình tích.\n\n**Bước 1.** Đặt $x^2$ làm nhân tử chung của cả ba hạng tử, vế trái thành $x^2$ nhân với một tam thức bậc hai.\n\n**Bước 2.** Tách hạng tử bậc nhất của tam thức thành hai hạng tử sao cho nhóm được thành tích hai nhân tử bậc nhất.\n\n**Bước 3.** Cho từng nhân tử bằng $0$ (kể cả $x^2=0$), giải từng phương trình rồi liệt kê đủ các nghiệm.\n\n**Phần 2. Trình bày**\n\n$2x^4+7x^3-9x^2=0$\n\n$\\Leftrightarrow x^2(2x^2+7x-9)=0$\n\n$\\Leftrightarrow x^2(2x^2-2x+9x-9)=0$\n\n$\\Leftrightarrow x^2[2x(x-1)+9(x-1)]=0$\n\n$\\Leftrightarrow x^2(x-1)(2x+9)=0$\n\n$\\Leftrightarrow x=0$ hoặc $x=1$ hoặc $x=-\\dfrac{9}{2}$\n\nVậy $S=\\{0;1;-\\dfrac{9}{2}\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 76): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.66a@p77",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+9}{2000}+\\dfrac{x+11}{1998}=\\dfrac{x+13}{1996}+\\dfrac{x+15}{1994}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x+9}{2000}+\\dfrac{x+11}{1998}=\\dfrac{x+13}{1996}+\\dfrac{x+15}{1994}$.",
+  "dap_an": "$S=\\{-2009\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các mẫu khác nhau nhưng mỗi tử có dạng $x$ cộng một số mà số đó cộng với mẫu đều ra cùng một giá trị ($9+2000=11+1998=13+1996=15+1994$), nên cộng thêm $1$ vào từng phân số sẽ làm mọi tử bằng nhau.\n\n**Bước 1.** Cộng thêm $1$ vào mỗi phân số ở cả hai vế, viết $1$ dưới dạng mẫu trên chính mẫu của phân số đó.\n\n**Bước 2.** Gộp các tử lại, nhận ra tử của mọi phân số đều bằng nhau rồi chuyển các phân số ở vế phải sang vế trái.\n\n**Bước 3.** Đặt tử chung ra ngoài để vế trái thành tích của hai thừa số.\n\n**Bước 4.** Chứng tỏ thừa số trong ngoặc khác $0$ bằng cách so sánh từng cặp phân số có cùng tử, từ đó suy ra thừa số còn lại bằng $0$.\n\n**Chú ý:** Không được quy đồng mẫu số, vì các mẫu rất lớn; điểm mấu chốt của bài là làm xuất hiện tử chung.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+9}{2000}+\\dfrac{x+11}{1998}=\\dfrac{x+13}{1996}+\\dfrac{x+15}{1994}$\n\n$\\Leftrightarrow \\left(\\dfrac{x+9}{2000}+1\\right)+\\left(\\dfrac{x+11}{1998}+1\\right)=\\left(\\dfrac{x+13}{1996}+1\\right)+\\left(\\dfrac{x+15}{1994}+1\\right)$\n\n$\\Leftrightarrow \\dfrac{x+2009}{2000}+\\dfrac{x+2009}{1998}=\\dfrac{x+2009}{1996}+\\dfrac{x+2009}{1994}$\n\n$\\Leftrightarrow (x+2009)\\left(\\dfrac{1}{2000}+\\dfrac{1}{1998}-\\dfrac{1}{1996}-\\dfrac{1}{1994}\\right)=0$\n\nVì $\\dfrac{1}{2000}<\\dfrac{1}{1996}$ nên $\\dfrac{1}{2000}-\\dfrac{1}{1996}<0$; vì $\\dfrac{1}{1998}<\\dfrac{1}{1994}$ nên $\\dfrac{1}{1998}-\\dfrac{1}{1994}<0$.\n\nSuy ra $\\dfrac{1}{2000}+\\dfrac{1}{1998}-\\dfrac{1}{1996}-\\dfrac{1}{1994}<0$, tức thừa số trong ngoặc khác $0$.\n\nDo đó $x+2009=0$, tức $x=-2009$.\n\nVậy $S=\\{-2009\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hằng số để tạo tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 77): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.66b@p77",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-10}{1999}+\\dfrac{x-20}{1989}=\\dfrac{x-50}{1959}+\\dfrac{x-80}{1929}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x-10}{1999}+\\dfrac{x-20}{1989}=\\dfrac{x-50}{1959}+\\dfrac{x-80}{1929}$.",
+  "dap_an": "$S=\\{2009\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi tử có dạng $x$ trừ một số mà số đó cộng với mẫu đều ra $2009$ ($10+1999=20+1989=50+1959=80+1929$), nên trừ $1$ vào từng phân số sẽ làm mọi tử đều bằng $x-2009$.\n\n**Bước 1.** Trừ đi $1$ ở mỗi phân số của cả hai vế, viết $1$ dưới dạng mẫu trên chính mẫu của phân số đó.\n\n**Bước 2.** Gộp tử từng phân số để thấy mọi tử đều bằng nhau, rồi chuyển các phân số ở vế phải sang vế trái.\n\n**Bước 3.** Đặt tử chung ra ngoài để vế trái thành tích của hai thừa số.\n\n**Bước 4.** Chứng tỏ thừa số trong ngoặc khác $0$ bằng cách so sánh các cặp phân số có cùng tử, rồi suy ra thừa số còn lại bằng $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-10}{1999}+\\dfrac{x-20}{1989}=\\dfrac{x-50}{1959}+\\dfrac{x-80}{1929}$\n\n$\\Leftrightarrow \\left(\\dfrac{x-10}{1999}-1\\right)+\\left(\\dfrac{x-20}{1989}-1\\right)=\\left(\\dfrac{x-50}{1959}-1\\right)+\\left(\\dfrac{x-80}{1929}-1\\right)$\n\n$\\Leftrightarrow \\dfrac{x-2009}{1999}+\\dfrac{x-2009}{1989}=\\dfrac{x-2009}{1959}+\\dfrac{x-2009}{1929}$\n\n$\\Leftrightarrow (x-2009)\\left(\\dfrac{1}{1999}+\\dfrac{1}{1989}-\\dfrac{1}{1959}-\\dfrac{1}{1929}\\right)=0$\n\nVì $\\dfrac{1}{1999}<\\dfrac{1}{1959}$ và $\\dfrac{1}{1989}<\\dfrac{1}{1929}$ nên $\\dfrac{1}{1999}+\\dfrac{1}{1989}-\\dfrac{1}{1959}-\\dfrac{1}{1929}<0$, tức thừa số trong ngoặc khác $0$.\n\nDo đó $x-2009=0$, tức $x=2009$.\n\nVậy $S=\\{2009\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hằng số để tạo tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 77): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.67@p77",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{2x-5}{3}-\\dfrac{3}{4}=\\dfrac{x+3}{6}-\\dfrac{x-2}{2}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{2x-5}{3}-\\dfrac{3}{4}=\\dfrac{x+3}{6}-\\dfrac{x-2}{2}$.",
+  "dap_an": "$S=\\{\\dfrac{47}{12}\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình có các phân số với mẫu số là số khác nhau nên quy đồng khử mẫu bằng cách nhân hai vế với bội chung nhỏ nhất của các mẫu.\n\n**Bước 1.** Tìm bội chung nhỏ nhất của các mẫu $3,4,6,2$ để nhân hai vế với số đó và khử hết mẫu.\n\n**Bước 2.** Nhân từng hạng tử với số đó và rút gọn, nhớ nhân cả hạng tử có dấu trừ đứng trước và đặt trong ngoặc.\n\n**Bước 3.** Bỏ ngoặc, chuyển các hạng tử chứa $x$ về vế trái, số về vế phải rồi thu gọn.\n\n**Bước 4.** Chia hai vế cho hệ số của $x$ để tìm nghiệm và viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2x-5}{3}-\\dfrac{3}{4}=\\dfrac{x+3}{6}-\\dfrac{x-2}{2}$\n\n$\\Leftrightarrow 4(2x-5)-9=2(x+3)-6(x-2)$ (nhân hai vế với $12$)\n\n$\\Leftrightarrow 8x-20-9=2x+6-6x+12$\n\n$\\Leftrightarrow 8x-2x+6x=6+12+20+9$\n\n$\\Leftrightarrow 12x=47$\n\n$\\Leftrightarrow x=\\dfrac{47}{12}$\n\nVậy $S=\\{\\dfrac{47}{12}\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 77): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.68@p78",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{5x-9}{6}+\\dfrac{2x-3}{9}=\\dfrac{-4x-3}{2}-\\dfrac{-7x+3}{3}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{5x-9}{6}+\\dfrac{2x-3}{9}=\\dfrac{-4x-3}{2}-\\dfrac{-7x+3}{3}$.",
+  "dap_an": "$S=\\{-\\dfrac{12}{13}\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình chứa bốn phân số có mẫu số là số, nên nhân hai vế với bội chung nhỏ nhất của các mẫu để khử mẫu rồi giải phương trình bậc nhất.\n\n**Bước 1.** Tìm bội chung nhỏ nhất của các mẫu $6,9,2,3$ rồi nhân hai vế của phương trình với số đó.\n\n**Bước 2.** Rút gọn từng phân số, giữ nguyên dấu ngoặc ở các tử và chú ý dấu trừ đứng trước phân số cuối.\n\n**Bước 3.** Bỏ ngoặc, chuyển vế các hạng tử chứa $x$ sang một vế và các số sang vế còn lại rồi thu gọn.\n\n**Bước 4.** Chia hai vế cho hệ số của $x$ và viết tập nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5x-9}{6}+\\dfrac{2x-3}{9}=\\dfrac{-4x-3}{2}-\\dfrac{-7x+3}{3}$\n\n$\\Leftrightarrow 3(5x-9)+2(2x-3)=9(-4x-3)-6(-7x+3)$ (nhân hai vế với $18$)\n\n$\\Leftrightarrow 15x-27+4x-6=-36x-27+42x-18$\n\n$\\Leftrightarrow 15x+4x+36x-42x=-27-18+27+6$\n\n$\\Leftrightarrow 13x=-12$\n\n$\\Leftrightarrow x=-\\dfrac{12}{13}$\n\nVậy $S=\\{-\\dfrac{12}{13}\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 78): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.69a@p78",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho phương trình $(m-5)x+4m^2=10$. Giải phương trình với $m=-1$.",
+  "noi_dung_sach": "Cho phương trình $(m-5)x+4m^2=10$. Giải phương trình với $m=-1$.",
+  "dap_an": "$S=\\{-1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cho giá trị cụ thể của tham số $m$ thì phương trình chỉ còn ẩn $x$, trở thành phương trình bậc nhất thông thường.\n\n**Bước 1.** Thay $m=-1$ vào mọi chỗ có $m$ trong phương trình, chú ý bình phương của số âm.\n\n**Bước 2.** Thu gọn các hệ số để được phương trình bậc nhất dạng $ax+b=c$.\n\n**Bước 3.** Chuyển số hạng tự do sang vế phải rồi chia hai vế cho hệ số của $x$.\n\n**Phần 2. Trình bày**\n\nVới $m=-1$, phương trình trở thành $(-1-5)x+4(-1)^2=10$\n\n$\\Leftrightarrow -6x+4=10$\n\n$\\Leftrightarrow -6x=6$\n\n$\\Leftrightarrow x=-1$\n\nVậy $S=\\{-1\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 78): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.69b@p78",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho phương trình $(m-5)x+4m^2=10$. Tìm các giá trị của $m$ để phương trình đã cho nhận $x=-2$ làm nghiệm.",
+  "noi_dung_sach": "Cho phương trình $(m-5)x+4m^2=10$. Tìm các giá trị của $m$ để phương trình đã cho nhận $x=-2$ làm nghiệm.",
+  "dap_an": "$m\\in\\{0;\\dfrac{1}{2}\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số $x=-2$ là nghiệm khi thay vào phương trình cho đẳng thức đúng; đẳng thức đó là một phương trình mà ẩn lúc này là $m$.\n\n**Bước 1.** Thay $x=-2$ vào phương trình đã cho để được một phương trình có ẩn là $m$.\n\n**Bước 2.** Khai triển và rút gọn hai vế để vế phải triệt tiêu với số hạng tự do, đưa về phương trình có vế phải bằng $0$.\n\n**Bước 3.** Đặt nhân tử chung ở vế trái để thành tích, cho từng nhân tử bằng $0$ rồi tìm $m$.\n\n**Phần 2. Trình bày**\n\nPhương trình nhận $x=-2$ làm nghiệm khi và chỉ khi\n\n$(m-5)(-2)+4m^2=10$\n\n$\\Leftrightarrow -2m+10+4m^2=10$\n\n$\\Leftrightarrow 4m^2-2m=0$\n\n$\\Leftrightarrow 2m(2m-1)=0$\n\n$\\Leftrightarrow m=0$ hoặc $m=\\dfrac{1}{2}$\n\nVậy $m=0$ hoặc $m=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 78): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D3.70@p78",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020201",
+  "nhom_soan": "T18T020201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một ô tô đi nửa quãng đường $AB$ với vận tốc $60$ km/h và đi nửa quãng đường còn lại với vận tốc $90$ km/h. Tính vận tốc trung bình của ô tô trên cả quãng đường $AB$.",
+  "noi_dung_sach": "Một ô tô đi nửa quãng đường $AB$ với vận tốc $60$ km/h và đi nửa quãng đường còn lại với vận tốc $90$ km/h. Tính vận tốc trung bình của ô tô trên cả quãng đường $AB$.",
+  "dap_an": "Vận tốc trung bình là $72$ km/h.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vận tốc trung bình bằng tổng quãng đường chia tổng thời gian chứ không phải trung bình cộng hai vận tốc; quãng đường chưa biết nên đặt nó bằng một ẩn phụ rồi để ẩn này tự khử.\n\n**Bước 1.** Gọi vận tốc trung bình là $x$ km/h và nửa quãng đường là $a$ km, kèm điều kiện $x>0$, $a>0$.\n\n**Bước 2.** Biểu diễn thời gian đi từng nửa quãng đường theo $a$, và thời gian đi cả quãng đường theo $a$ và $x$.\n\n**Bước 3.** Lập phương trình: tổng thời gian hai nửa bằng thời gian đi cả quãng đường, rồi chia hai vế cho $a$ để ẩn phụ biến mất.\n\n**Bước 4.** Quy đồng, giải phương trình tìm $x$, đối chiếu điều kiện rồi trả lời.\n\n**Chú ý:** Không được lấy $\\dfrac{60+90}{2}=75$ làm đáp số, vì hai nửa quãng đường có thời gian đi khác nhau.\n\n**Phần 2. Trình bày**\n\nGọi vận tốc trung bình của ô tô trên cả quãng đường $AB$ là $x$ (km/h), điều kiện $x>0$; gọi nửa quãng đường $AB$ dài $a$ (km), $a>0$.\n\nThời gian đi nửa quãng đường đầu là $\\dfrac{a}{60}$ (giờ), thời gian đi nửa còn lại là $\\dfrac{a}{90}$ (giờ).\n\nCả quãng đường dài $2a$ km, đi với vận tốc trung bình $x$ nên mất $\\dfrac{2a}{x}$ (giờ).\n\nTa có phương trình $\\dfrac{a}{60}+\\dfrac{a}{90}=\\dfrac{2a}{x}$\n\nChia hai vế cho $a>0$ ta được $\\dfrac{1}{60}+\\dfrac{1}{90}=\\dfrac{2}{x}$\n\n$\\Leftrightarrow 3x+2x=360$ (nhân hai vế với $180x$)\n\n$\\Leftrightarrow 5x=360$\n\n$\\Leftrightarrow x=72$ (thỏa mãn điều kiện).\n\nVậy vận tốc trung bình của ô tô trên cả quãng đường $AB$ là $72$ km/h.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 78): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.71@p79",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một con cá voi có: đầu dài $3$ m; mình dài bằng ba lần đầu và nửa đuôi; đuôi dài bằng một đầu và nửa mình. Tìm chiều dài con cá voi.",
+  "noi_dung_sach": "Một con cá voi có: đầu dài $3$ m; mình dài bằng ba lần đầu và nửa đuôi; đuôi dài bằng một đầu và nửa mình. Tìm chiều dài con cá voi.",
+  "dap_an": "Con cá voi dài $27$ m.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mình phụ thuộc vào đuôi và đuôi lại phụ thuộc vào mình, nên chỉ cần đặt đuôi là ẩn, biểu diễn mình theo đuôi rồi viết lại đuôi theo chính nó để lập phương trình.\n\n**Bước 1.** Gọi độ dài đuôi là $x$ m và nêu điều kiện $x>0$.\n\n**Bước 2.** Biểu diễn độ dài mình theo $x$ bằng điều kiện \"mình dài bằng ba lần đầu và nửa đuôi\".\n\n**Bước 3.** Biểu diễn lại độ dài đuôi qua đầu và nửa mình, rồi cho nó bằng chính $x$ để lập phương trình.\n\n**Bước 4.** Giải phương trình, đối chiếu điều kiện, tính độ dài mình rồi cộng đầu, mình, đuôi để trả lời.\n\n**Phần 2. Trình bày**\n\nGọi độ dài đuôi cá là $x$ (m), điều kiện $x>0$.\n\nĐộ dài mình cá là $3\\cdot3+\\dfrac{1}{2}x=9+\\dfrac{1}{2}x$ (m).\n\nĐuôi dài bằng một đầu và nửa mình nên độ dài đuôi là $3+\\dfrac{1}{2}\\left(9+\\dfrac{1}{2}x\\right)=\\dfrac{15}{2}+\\dfrac{1}{4}x$ (m).\n\nTa có phương trình $\\dfrac{15}{2}+\\dfrac{1}{4}x=x$\n\n$\\Leftrightarrow 30+x=4x$ (nhân hai vế với $4$)\n\n$\\Leftrightarrow 3x=30$\n\n$\\Leftrightarrow x=10$ (thỏa mãn điều kiện).\n\nVậy đuôi cá dài $10$ m, mình cá dài $9+\\dfrac{1}{2}\\cdot10=14$ (m).\n\nChiều dài con cá voi là $3+14+10=27$ (m).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 79): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.72@p79",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho một lượng dung dịch chứa $10\\%$ muối. Nếu pha thêm $200$ gam nước thì được một dung dịch $6\\%$. Hỏi có bao nhiêu gam dung dịch đã cho?",
+  "noi_dung_sach": "Cho một lượng dung dịch chứa $10\\%$ muối. Nếu pha thêm $200$ gam nước thì được một dung dịch $6\\%$. Hỏi có bao nhiêu gam dung dịch đã cho?",
+  "dap_an": "Lượng dung dịch đã cho là $300$ gam.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Pha thêm nước thì khối lượng muối giữ nguyên, chỉ khối lượng dung dịch tăng; vì thế lập phương trình theo tỉ lệ muối trong dung dịch mới.\n\n**Bước 1.** Gọi khối lượng dung dịch ban đầu là $x$ gam rồi tính khối lượng muối trong dung dịch đó theo $10\\%$.\n\n**Bước 2.** Tính khối lượng dung dịch mới sau khi pha thêm nước, khối lượng muối vẫn không đổi.\n\n**Bước 3.** Lập phương trình: khối lượng muối chia khối lượng dung dịch mới bằng $6\\%$.\n\n**Bước 4.** Giải phương trình bằng cách khử mẫu, đối chiếu điều kiện rồi trả lời.\n\n**Phần 2. Trình bày**\n\nGọi khối lượng dung dịch ban đầu là $x$ (g), điều kiện $x>0$.\n\nKhối lượng muối trong dung dịch ban đầu là $\\dfrac{10}{100}x=\\dfrac{x}{10}$ (g).\n\nSau khi pha thêm $200$ g nước, dung dịch mới nặng $x+200$ (g), khối lượng muối vẫn là $\\dfrac{x}{10}$ (g).\n\nTa có phương trình $\\dfrac{x}{10(x+200)}=\\dfrac{6}{100}$\n\n$\\Leftrightarrow \\dfrac{x}{x+200}=\\dfrac{3}{5}$ (nhân hai vế với $10$)\n\n$\\Leftrightarrow 5x=3(x+200)$\n\n$\\Leftrightarrow 2x=600$\n\n$\\Leftrightarrow x=300$ (thỏa mãn điều kiện).\n\nVậy lượng dung dịch đã cho là $300$ gam.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 79): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D3.73@p80",
+  "lo": 4,
+  "khoi": "8T",
+  "dang_chinh": "T18T020201",
+  "nhom_soan": "T18T020201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một vật thể chuyển động từ $A$ đến $B$ theo cách sau: đi được $5$ m dừng lại $1$ giây, rồi đi tiếp $10$ m dừng lại $2$ giây, rồi đi tiếp $15$ m dừng $3$ giây, $\\dots$ Cứ như vậy đi từ $A$ đến $B$ kể cả dừng hết tất cả $551$ giây. Tính khoảng cách từ $A$ đến $B$. Biết rằng khi đi vật thể luôn có vận tốc là $2{,}5$ m/giây.",
+  "noi_dung_sach": "Một vật thể chuyển động từ $A$ đến $B$ theo cách sau: đi được $5$ m dừng lại $1$ giây, rồi đi tiếp $10$ m dừng lại $2$ giây, rồi đi tiếp $15$ m dừng $3$ giây, $\\dots$ Cứ như vậy đi từ $A$ đến $B$ kể cả dừng hết tất cả $551$ giây. Tính khoảng cách từ $A$ đến $B$. Biết rằng khi đi vật thể luôn có vận tốc là $2{,}5$ m/giây.",
+  "dap_an": "Khoảng cách từ $A$ đến $B$ là $950$ m.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thời gian đi và thời gian dừng đều là tổng của một dãy số cách đều, nên tính bằng công thức tổng dãy; đặt ẩn là số lần đi rồi lập phương trình theo tổng thời gian.\n\n**Bước 1.** Nhận xét vật dừng sau mỗi lần đi trừ lần cuối đến $B$, nên số lần dừng ít hơn số lần đi một lần; đặt ẩn là số lần đi.\n\n**Bước 2.** Tính thời gian từng lần đi bằng quãng đường chia vận tốc rồi cộng lại thành tổng một dãy số cách đều.\n\n**Bước 3.** Tính tổng thời gian các lần dừng, cũng là tổng của một dãy số cách đều.\n\n**Bước 4.** Lập phương trình tổng thời gian đi và dừng bằng số giây của đề, đưa về phương trình tích để giải rồi đối chiếu điều kiện số lần đi là số nguyên dương.\n\n**Bước 5.** Từ số lần đi tính tổng thời gian đi, nhân với vận tốc để ra khoảng cách cần tìm.\n\n**Chú ý:** Khoảng cách chỉ tính theo thời gian đi, không nhân vận tốc với cả thời gian dừng.\n\n**Phần 2. Trình bày**\n\nGọi số lần đi là $x$ (lần), điều kiện $x\\in\\mathbb{N}^*$; khi đó số lần dừng là $x-1$ (lần).\n\nLần đi thứ $k$ dài $5k$ m nên mất $\\dfrac{5k}{2{,}5}=2k$ (giây).\n\nTổng thời gian đi là $2+4+6+\\dots+2x=\\dfrac{(2+2x)x}{2}=x(x+1)$ (giây).\n\nTổng thời gian dừng là $1+2+3+\\dots+(x-1)=\\dfrac{x(x-1)}{2}$ (giây).\n\nTheo đề ta có phương trình $x(x+1)+\\dfrac{x(x-1)}{2}=551$\n\n$\\Leftrightarrow 2x^2+2x+x^2-x=1102$\n\n$\\Leftrightarrow 3x^2+x-1102=0$\n\n$\\Leftrightarrow 3x^2-57x+58x-1102=0$\n\n$\\Leftrightarrow 3x(x-19)+58(x-19)=0$\n\n$\\Leftrightarrow (x-19)(3x+58)=0$\n\n$\\Leftrightarrow x=19$ (thoả mãn điều kiện) hoặc $x=-\\dfrac{58}{3}$ (loại).\n\nThời gian đi là $19\\cdot20=380$ (giây).\n\nVậy khoảng cách từ $A$ đến $B$ là $2{,}5\\cdot380=950$ (m).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng dãy số cách đều"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 80): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 80, bài 73: đề in 451 gi) — người soát đối chiếu ảnh"
+  },
+  "cho_quyet": "đề sách in 451 giây không có đáp số; kho tạm ghi 551 giây (khớp kết quả 950 m của sách) — chờ CEO chọn: giữ bản 551 giây hay bỏ câu",
+  "_kiem_dap_so": "khong_kiem_duoc"
+ }
+]

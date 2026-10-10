@@ -36698,3 +36698,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bài học:** tách ý xong phải đọc lại lời giải của từng ý xem còn dẫn chiếu sang ý khác không — máy không bắt được loại này, chỉ người soát thấy. Đưa vào lời giao việc cho agent ở lô sau.
 - **Tự quyết, đã báo CEO trên trang xem:** đề bài 69 chương I ghi $y>0$ thay cho $yge0$ của sách (số chia bằng 0 tại y = 0); 11 câu tầng "nâng cao" của §1, §6 xếp vào nhóm Kiến thức cơ bản › Nhân, chia đa thức (bản đồ không có nhóm chuyên biệt) — chờ CEO xác nhận.
 - **Trang xem:** `can-xem.mjs` thêm lô 3 (28 thẻ, 32 ảnh), publish lại Artifact (Version 4).
+
+## 10/10 (khuya 6) — 8T lô 4: NĐT Đại III phương trình (trọn chương)
+- **Làm:** 6 agent Sonnet chép–soạn p52–80 (bài 1–73) ⇒ 93 câu; Opus soát từng trang ảnh; bảng `NDT.co-ban.json` thêm khu D3 (1–49 → `T18T020401`, 50–63 → `T18T020402`); agent Opus riêng gán nhóm mù 45 câu — khớp 45/45; `ghi-lo --ghi` 93, `tu-duyet --ghi` 92. DB: kho Đại 8T 390 câu · 385 đã duyệt (335 `ai` + 50 `nguoi`) · 5 chưa.
+- **Sửa khi soát:** bài 64 — trạm chép đưa câu "sách in lời giải với vế phải x+1…" vào mục Chú ý của lời giải (lời cho học sinh) ⇒ bỏ. Bài 73 — đề in 451 giây không có đáp số, trạm chép soạn lời giải "bài toán không có đáp số; nếu 551 giây thì 950 m" ⇒ viết lại bản 551 giây (khớp lời giải và kết quả của sách), đánh `cho_quyet`, không tự duyệt.
+- **Ranh giới nhóm đặt thêm (brief §4):** phương trình chứa ẩn ở mẫu ⇒ `020101` kể cả khử mẫu ra bậc cao / đặt ẩn phụ; có tham số ⇒ `020103`.
+- **Trang xem:** thêm thẻ bài 73 (cần quyết) và bài 64 (đã làm), publish Version 5.

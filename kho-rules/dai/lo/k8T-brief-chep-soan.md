@@ -111,6 +111,8 @@ Ranh giới đã chốt qua các lô (lô 1, 10/10 — hai lượt gán lệch n
   - Từ điều kiện suy ra một đẳng thức / một hệ thức giữa các chữ (kể cả "lập hệ thức giữa $a,b,c$", "là tổng của ba số chính phương") ⇒ `T18T010302`.
 - **Phương trình bậc ≥ 3** (kể cả khi chỉ cần nhóm hạng tử đưa về tích) ⇒ `T18T020102` *bậc cao*. `T18T020101` chỉ cho phương trình bậc 1–2 và phương trình chứa ẩn ở mẫu.
   (Sách Trần Thị Vân Anh cũng xếp "đưa về dạng tích" là cách thứ nhất của dạng *Phương trình bậc cao*.)
+  **Phương trình chứa ẩn ở mẫu ⇒ `T18T020101` kể cả khi khử mẫu ra bậc cao hoặc phải đặt ẩn phụ** (lô 4 — đọc theo đúng câu trên: `020102` là cho phương trình ĐA THỨC bậc ≥ 3).
+  Phương trình có tham số (tìm $m$ để…, giải và biện luận theo $a,b,c$) ⇒ `T18T020103`, dù dạng của nó là bậc nhất hay chứa ẩn ở mẫu.
 - **Chương phân thức (lô 3 — Claude đặt theo tên nhóm CEO đã duyệt, "…và các câu hỏi kèm theo"):** bài cho một phân thức / biểu thức hữu tỉ rồi hỏi về chính nó — rút gọn, điều kiện
   xác định, tìm $x$ để nó bằng $0$ / nguyên / âm dương, giá trị nhỏ nhất của kết quả rút gọn, chứng minh không phụ thuộc biến — ⇒ `T18T010501`, **không** tách sang nhóm phương trình /
   chia hết / cực trị. Chỉ rời `010501` khi đề **không** còn là "làm việc với một phân thức cho trước" (vd cho điều kiện giữa $a,b,c$ rồi tính / chứng minh ⇒ `010301` / `010302`).

@@ -18,3 +18,5 @@ Lưu ý chung:
 6. (lô 3) Tách ý xong, đọc lại lời giải TỪNG ý: không được còn "theo câu a)", "tương tự ý trên" trỏ sang một ý đã thành câu khác — mỗi câu phải tự đủ. Ý sau thật sự cần kết quả ý trước ⇒ giữ cả bài thành một câu.
 7. (lô 3) Sách ghi "Tương tự a)" / "HD: …" vẫn là CÓ lời giải ⇒ `muc_loi_giai_sach: tat` (không phải `khong` — `khong` làm cổng bỏ câu).
 8. (lô 3) Trong công thức không dùng `\text{…}` chứa chữ tiếng Việt có dấu (KaTeX của cổng từ chối) — viết lời ra ngoài dấu `$`.
+9. (lô 4) Mục **Chú ý** là lời dặn cho HỌC SINH (bẫy hay gặp, điều kiện dễ quên) — không viết nhận xét về sách ("sách in sai…", "sách giải theo…") vào lời giải; chuyện của sách ghi ở `ghi_chu_nghi`.
+10. (lô 4) Số liệu đề làm bài không có đáp số (lời giải của sách chỉ đúng với số liệu khác) ⇒ vẫn chép đề đúng như in, `ghi_chu_nghi` nêu rõ số liệu nào thì khớp lời giải sách; ĐỪNG soạn lời giải kiểu "bài toán không có đáp số" — người soát sẽ đưa CEO quyết.

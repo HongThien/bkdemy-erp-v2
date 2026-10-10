@@ -34,9 +34,9 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
@@ -145,6 +145,17 @@ const F = [
     + muc('Trong kho', trongKho('D2.51a@p50')), 'Kho viết đủ: lập ba hệ thức, nhân theo vế, rồi tách hai trường hợp (tích ba hiệu khác $0$ và bằng $0$).', 'bao'),
 ]
 
+// ── LÔ 4 (NĐT Đại III — phương trình) ────────────────────────────────────────
+E.push(the('Bài 73 (ôn tập chương III) — số liệu của đề không ra đáp số', anh(80, 250, 820, 'Chương III bài 73, đề và lời giải của sách')
+  + muc('Vấn đề', doan('Đề in **451 giây**. Phương trình sách lập là $3x^2+x-902=0$, không có nghiệm nguyên dương ($x=17$ cho $442$ giây, $x=18$ cho $495$ giây). Sách lại phân tích thành $(x-19)(3x+58)=0$, mà tích đó bằng $3x^2+x-1102$ — tức ứng với **551 giây** ($19\\cdot20+\\dfrac{19\\cdot18}{2}=551$). Kết quả $950$ m của sách chỉ đúng với 551 giây.'))
+  + muc('Trong kho (chưa duyệt)', trongKho('D3.73@p80')),
+  'Tôi tạm ghi đề với **551 giây** để khớp lời giải và kết quả của sách. Chị chọn: giữ bản 551 giây (tôi duyệt), hay bỏ câu này?'))
+F.push(the('Bài 64 (ôn tập chương III) — đề và lời giải của sách lệch nhau', anh(76, 510, 125, 'Chương III bài 64, đề và lời giải của sách')
+  + muc('Vấn đề', doan('Đề in $4x-7=x+11$ nhưng lời giải của sách giải $4x-7=x+1$ và ra $\\dfrac{8}{3}$.')) + muc('Trong kho', trongKho('D3.64@p76')),
+  'Kho giữ đề như in ($x+11$), đáp số $S=\\{6\\}$.', 'bao'))
+const GHI_CHU_LO4 = `<p class="dan">Lô 4 (chương III, 93 câu): cả 45 câu ngoài tầng cơ bản hai lượt gán nhóm đều khớp. Phương trình chứa ẩn ở mẫu tôi xếp cả vào "Đưa về bậc nhất, phương trình tích, chứa ẩn ở mẫu", kể cả bài phải đặt ẩn phụ (44, 47, 49 b); phương trình đa thức bậc ba trở lên vào "Bậc cao"; bài có tham số vào "Có tham số".</p>
+<p class="dan">Lỗi in của sách ở chương III, kho ghi theo biểu thức đúng: bài 24 (dòng cuối in ${toan('\\dfrac{1}{20}')} và ${toan('x-375')} thay cho ${toan('\\dfrac{1}{21}')} và ${toan('x-357')}), bài 25 a (in ${toan('\\dfrac{b+c-x}{b}')} thay cho ${toan('\\dfrac{c+a-x}{b}')}), bài 46 (đề in một dấu trông như dấu chia giữa hai phân thức; lời giải của sách dùng dấu cộng). Sách dừng giữa chừng, kho soạn tiếp: bài 23 b, 25 a, 25 b (biện luận theo tham số), bài 33, 35, bài 48 (nêu đủ ba giá trị ${toan('m')} làm phương trình vô nghiệm), bài 49 a, 49 b (sách chỉ ghi đáp số).</p>`
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -175,14 +186,15 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau ba lô (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn, chương I và chương II): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
-<h2 id="e">Cần chị quyết — ${E.length} câu chưa có nhóm bài</h2>
-<p class="dan">Bốn câu này đang ở "Chưa phân dạng" nên chưa được duyệt. Ba câu đầu là của lô 3: hai lượt gán nhóm độc lập chọn khác nhau. Chị chọn nhóm, tôi xếp và duyệt.</p>
+<p class="dan">Kho Đại 8T sau bốn lô (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn, chương I, II và III): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–4: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<h2 id="e">Cần chị quyết — ${E.length} câu chưa duyệt</h2>
+<p class="dan">Bốn câu đầu đang ở "Chưa phân dạng": ba câu của lô 3 hai lượt gán nhóm độc lập chọn khác nhau, và bài 89 b. Chị chọn nhóm, tôi xếp và duyệt. Câu cuối (bài 73 chương III) là đề sách in sai số liệu.</p>
 ${E.join('\n')}
-<h2 id="f">Lô 3 — đã làm, chị xem</h2>
-<p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu). Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
+<h2 id="f">Lô 3 và lô 4 — đã làm, chị xem</h2>
+<p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu) và lô 4 (chương III — 93 câu). Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
 ${F.join('\n')}
+${GHI_CHU_LO4}
 <p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
 <p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
 <p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>
