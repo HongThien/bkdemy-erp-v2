@@ -179,7 +179,7 @@ window.BAI_TRON_XOAY = (function () {
       tong: { tieuDe: 'Lắp công thức, rồi tính tiền',
         tex: String.raw`\begin{aligned}V&=\pi\int_{-l/2}^{l/2}\left(R-kx^2\right)^2\mathrm{d}x\\[0.5em]&=\frac{\pi l}{15}\left(8R^2+4Rr+3r^2\right)\end{aligned}`,
         soTen: 'R = 5, r = 4, l = 10 (dm) · tiền = 7 thùng × 30 nghìn × V',
-        kq: String.raw`\begin{aligned}V&=\frac{10\pi}{15}\left(200+80+48\right)=\frac{656\pi}{3}\[0.4em]&\approx 686{,}96\ \text{dm}^3\[0.6em]210\,V&=45\,920\,\pi\approx 144\,261{,}9\[0.4em]M&=144\,262\end{aligned}`,
+        kq: String.raw`\begin{aligned}V&=\frac{10\pi}{15}\left(200+80+48\right)=\frac{656\pi}{3}\\[0.4em]&\approx 686{,}96\ \text{dm}^3\\[0.6em]210\,V&=45\,920\,\pi\approx 144\,261{,}9\\[0.4em]M&=144\,262\end{aligned}`,
         luu: String.raw`<b>Đừng làm tròn giữa chừng.</b> Nếu lấy mỗi thùng 687 lít rồi mới nhân thì ra 144 270, lệch 8 nghìn đồng so với kết quả đúng.` },
     }) }
 
