@@ -24,16 +24,13 @@ và 1 chỗ lời giải sách sai dù đáp số đúng (LTV 2018 câu 13: sác
 
 Mỗi câu của đề = một câu kho (không tách ý) để sau này còn in lại nguyên đề. Phần 1 mọi câu = card 3–6 bước.
 
-## Chỗ cần CEO chốt
+## CEO đã chốt (10/10)
 
-1. **LTV 2018 câu 4 (giá vé – doanh thu) — bài có hai cách.** Bản soạn dùng "giả sử lúc đầu có 100 khán giả" rồi tính doanh thu cũ, doanh thu mới,
-   số khán giả mới, giá vé mới. Sách dùng tỉ số: giá vé mới $=108\%:120\%=90\%$ giá vé cũ. Chốt cách nào làm chuẩn cho dạng
-   "hai đại lượng nhân với nhau, cho % thay đổi"?
-2. **CG 2022 bài 2 tự luận — sơ đồ quá nhiều phần** (Toán 83 phần, Tiếng Anh 60 phần). Giữ sơ đồ (máy vẫn vẽ được, vạch dày) hay khi số phần lớn thì bỏ sơ đồ, chỉ viết "83 phần / 60 phần"?
-3. **Đề Word thiếu hình nhưng đề chữ đủ dữ kiện** (CG 2022 câu 8 — PDF có hình hình thang; LTV 2018 câu 2). Đang giải theo chữ, không thêm hình.
-   Có cần lấy hình từ PDF bù vào cho những câu như vậy không?
-4. **LTV 2018 câu 12** — đề hỏi "đến năm nào" nhưng không cho năm hiện tại ⇒ đáp án ghi "Sau 23 năm nữa" (sách cũng ghi vậy). Giữ nguyên đề.
-5. **Khối:** các câu này vào chung khối 5T (dạng chờ `T15T000000`, tên đề gốc dạng `CLC6 · LTV 2018 · 7`) — hay khối riêng?
+1. **Một đại lượng = tích hai đại lượng, cho phần trăm thay đổi** (LTV 2018 câu 4): làm bằng tỉ số phần trăm của từng đại lượng so với lúc đầu (108% : 120% = 90%), Mấu chốt nêu công thức gốc "Doanh thu = giá vé × số người" — không "giả sử có 100 khán giả". Đã viết lại câu 4; luật ghi ở k5T.md §2b dòng H.
+2. **Sơ đồ quá lớn thì bỏ sơ đồ** (hơn 12 phần ở một hàng): CG 2022 bài 2 đã bỏ sơ đồ 83/60 phần.
+3. **Word thiếu hình mà PDF có thì bù vào**: CG 2022 câu 8 đã bù hình từ PDF (lo/clc6/hinh-bu.json).
+4. **Khối 5**: hiểu là 5T — dạng chờ T15T000000 (lớp ôn thi là 5T1; 836 câu sách cũng ở đó). Nếu là khối 5 thường (T105000000) thì đổi trước khi ghi DB.
+5. LTV 2018 câu 12: giữ nguyên đề, đáp án "Sau 23 năm nữa".
 
 ---
 
@@ -151,15 +148,17 @@ Vậy ngày $25$ của tháng đó là thứ Ba.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** Doanh thu bằng giá vé nhân với số khán giả. Đề chỉ cho tỉ lệ phần trăm tăng của số khán giả và của doanh thu, không cho số cụ thể, nên ta chọn số khán giả ban đầu là một số đẹp ($100$ người) rồi tính lần lượt doanh thu cũ, doanh thu mới, số khán giả mới và giá vé mới. Chọn số khác thì kết quả giá vé vẫn như vậy vì mọi đại lượng đều tăng theo cùng tỉ lệ.
+**Mấu chốt:** Doanh thu $=$ giá vé $\times$ số khán giả. Khi hai đại lượng trong phép tính thay đổi thì đại lượng còn lại thay đổi tương ứng: giá vé $=$ doanh thu $:$ số khán giả, nên muốn biết giá vé mới bằng bao nhiêu phần trăm giá vé cũ thì lấy **phần trăm của doanh thu chia cho phần trăm của số khán giả**.
 
-**Bước 1.** Đổi giá vé ra đồng, giả sử trước khi giảm giá có $100$ khán giả rồi tính doanh thu lúc đầu bằng giá vé nhân với số khán giả.
+**Bước 1.** Coi doanh thu lúc đầu là $100\%$; doanh thu tăng $8\%$ nên tính xem doanh thu sau khi giảm giá bằng bao nhiêu phần trăm doanh thu lúc đầu.
 
-**Bước 2.** Tính doanh thu sau khi giảm giá: doanh thu tăng $8\%$ nghĩa là bằng $108\%$ doanh thu lúc đầu.
+**Bước 2.** Coi số khán giả lúc đầu là $100\%$; số khán giả tăng thêm $20\%$ nên tính xem số khán giả sau khi giảm giá bằng bao nhiêu phần trăm lúc đầu.
 
-**Bước 3.** Tính số khán giả sau khi giảm giá: tăng thêm $20\%$ nghĩa là bằng $120\%$ số khán giả lúc đầu.
+**Bước 3.** Giá vé bằng doanh thu chia cho số khán giả, nên lấy phần trăm doanh thu chia cho phần trăm số khán giả để biết giá vé mới bằng bao nhiêu phần trăm giá vé cũ.
 
-**Bước 4.** Giá vé sau khi giảm bằng doanh thu mới chia cho số khán giả mới.
+**Bước 4.** Lấy giá vé lúc đầu nhân với số phần trăm vừa tìm để được giá vé sau khi giảm.
+
+**Chú ý:** Không lấy $20\%-8\%$ để làm số phần trăm giảm giá; phải so từng đại lượng với lúc đầu ($108\%$ và $120\%$) rồi mới chia.
 
 **Phần 2. Trình bày**
 
@@ -167,15 +166,13 @@ Bài giải
 
 Đổi: $40$ nghìn đồng $=40000$ đồng
 
-Giả sử trước khi giảm giá có $100$ khán giả.
+Doanh thu sau khi giảm giá so với lúc đầu bằng: $100\%+8\%=108\%$
 
-Doanh thu trước khi giảm giá là: $40000\times 100=4000000$ (đồng)
+Số khán giả sau khi giảm giá so với lúc đầu bằng: $100\%+20\%=120\%$
 
-Doanh thu sau khi giảm giá là: $4000000\times 108\%=4320000$ (đồng)
+Giá vé sau khi giảm so với lúc đầu bằng: $108\%:120\%=1,08:1,2=0,9=90\%$
 
-Số khán giả sau khi giảm giá là: $100\times 120\%=120$ (người)
-
-Giá vé sau khi giảm là: $4320000:120=36000$ (đồng)
+Giá vé sau khi giảm là: $40000\times 90\%=36000$ (đồng)
 
 Đáp số: $36000$ đồng
 
@@ -725,9 +722,11 @@ Tuổi của anh là: $2\times 5=10$ (tuổi)
 
 **Đề.** Cho hình thang ABCD có hai đáy AB, CD. Hai đường chéo AC và BD cắt nhau tại O. Biết diện tích tam giác OAD là $11cm^{2}$, diện tích tam giác OAB là $5cm^{2}$. Tính diện tích hình thang ABCD.
 
+![hình đề (bù từ PDF)](hinh-de/CLC6-CG-2022-P2-8.png)
+
 **Đáp án:** $51,2\ \text{cm}^2$  ·  *đối chiếu:* người kiểm tự tính `51,2 cm²` · sách `51,2 cm²` ⇒ **khớp cả ba**
 
-> Người soạn ghi: Đề thiếu hình (chỉ mô tả bằng chữ) nhưng đủ dữ kiện: hình thang ABCD đáy AB, CD; giải theo cách hiểu chuẩn (O giao hai đường chéo). Cuối nội dung đề dính nhầm chuỗi "Phần 3: Tự luận" (lỗi tách đề, không phải đề) — bỏ qua khi in. Đáp số 51,2 là số thập phân không tròn nhưng nhất quán với dữ kiện.
+> Người soạn ghi: Bản Word thiếu hình; hình lấy bù từ PDF đề lẻ (trang 2). Đề chữ đủ dữ kiện.
 
 > Người kiểm ghi (đề Word ↔ PDF): Word: không có hình, và cuối nội dung dính thừa chuỗi "Phần 3: Tự luận" (tiêu đề phần kế bị chép lẫn vào câu) / PDF: câu 8 có hình hình thang ABCD với hai đường chéo cắt nhau tại O (hình có ở cả đề và lời giải); số liệu 11 cm², 5 cm² khớp.
 
@@ -854,10 +853,6 @@ Hiệu chia cho $5$ dư $2$ nên chữ số tận cùng là $2$ hoặc $7$, tron
 Thử lại: $92:9=10$ (dư $2$), thoả mãn chia $9$ dư $2$.
 
 Vậy số học sinh giỏi Toán hơn số học sinh giỏi Tiếng Anh là $92$ học sinh.
-
-Ta có sơ đồ:
-
-(Giỏi Toán 83 phần; giỏi Tiếng Anh 60 phần; hiệu 92 học sinh)
 
 Giá trị của một phần là: $92:23=4$ (học sinh)
 

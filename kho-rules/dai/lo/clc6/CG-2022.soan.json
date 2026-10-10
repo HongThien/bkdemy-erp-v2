@@ -60,7 +60,7 @@
   "ma_nguon": "CG 2022 · P2.8",
   "dap_an": "$51,2\\ \\text{cm}^2$",
   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đường cao thì tỉ số diện tích bằng tỉ số hai đáy; từ cặp tam giác đã biết diện tích tìm được tỉ số $OB:OD$, rồi dùng tỉ số đó cho cặp tam giác còn lại.\n\n**Bước 1.** Hai đường chéo chia hình thang thành bốn tam giác; hai tam giác ABD và ABC có chung đáy AB và cùng chiều cao, nên bớt đi phần chung OAB thì hai tam giác ở hai bên (OAD và OBC) có diện tích bằng nhau.\n\n**Bước 2.** Tam giác OAB và tam giác OAD cùng có đỉnh A, đáy nằm trên BD, nên tỉ số diện tích của chúng cho biết tỉ số hai đoạn $OB$ và $OD$.\n\n**Bước 3.** Tam giác OBC và tam giác OCD cũng cùng có đỉnh C và đáy nằm trên BD, nên có cùng tỉ số $OB:OD$; biết diện tích tam giác OBC thì tìm được diện tích tam giác OCD.\n\n**Bước 4.** Cộng diện tích bốn tam giác nhỏ ghép lại thành hình thang để được kết quả cuối cùng.\n\n**Chú ý:** Hình thang có đúng bốn tam giác nhỏ, nhớ cộng đủ cả bốn chứ không bỏ sót tam giác OBC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai tam giác ABD và ABC có chung đáy AB và có chiều cao bằng nhau (bằng chiều cao hình thang) nên $S_{ABD}=S_{ABC}$.\n\nCùng bớt đi $S_{OAB}$ thì được: $S_{OBC}=S_{OAD}=11$ ($\\text{cm}^2$)\n\nTam giác OAB và tam giác OAD có chung đường cao hạ từ A xuống BD, suy ra $\\dfrac{S_{OAB}}{S_{OAD}}=\\dfrac{OB}{OD}=\\dfrac{5}{11}$\n\nTam giác OBC và tam giác OCD có chung đường cao hạ từ C xuống BD, suy ra $\\dfrac{S_{OBC}}{S_{OCD}}=\\dfrac{OB}{OD}=\\dfrac{5}{11}$\n\nDiện tích tam giác OCD là: $11:5\\times 11=24,2$ ($\\text{cm}^2$)\n\nDiện tích hình thang ABCD là: $5+11+11+24,2=51,2$ ($\\text{cm}^2$)\n\nĐáp số: $51,2\\ \\text{cm}^2$",
-  "ghi_chu_nghi": "Đề thiếu hình (chỉ mô tả bằng chữ) nhưng đủ dữ kiện: hình thang ABCD đáy AB, CD; giải theo cách hiểu chuẩn (O giao hai đường chéo). Cuối nội dung đề dính nhầm chuỗi \"Phần 3: Tự luận\" (lỗi tách đề, không phải đề) — bỏ qua khi in. Đáp số 51,2 là số thập phân không tròn nhưng nhất quán với dữ kiện."
+  "ghi_chu_nghi": "Bản Word thiếu hình; hình lấy bù từ PDF đề lẻ (trang 2). Đề chữ đủ dữ kiện."
  },
  {
   "ma_nguon": "CG 2022 · P3.1",
@@ -108,25 +108,6 @@
  {
   "ma_nguon": "CG 2022 · P3.2",
   "dap_an": "Toán: $332$ học sinh; Tiếng Anh: $240$ học sinh",
-  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ \"$\\dfrac{1}{10}$ số HS giỏi Tiếng Anh bằng $\\dfrac{6}{83}$ số HS giỏi Toán\" suy ra tỉ số hai môn (Toán $83$ phần, Tiếng Anh $60$ phần), nên hiệu là một số phần cố định; điều kiện chia $5$ và chia $9$ đều dư $2$ dùng để chọn ra hiệu thật.\n\n**Bước 1.** Một phần mười số học sinh giỏi Tiếng Anh cho trước, nên gấp lên $10$ lần để biết cả số học sinh giỏi Tiếng Anh bằng bao nhiêu phần số học sinh giỏi Toán.\n\n**Bước 2.** Đổi tỉ số vừa tìm thành số phần bằng nhau, và vì phân số đó đã tối giản nên mỗi phần là một số học sinh nguyên; từ đó tìm được hiệu gồm bao nhiêu phần.\n\n**Bước 3.** Hiệu có hai chữ số và bằng một số nguyên lần số phần ở bước trước, nên liệt kê các số có hai chữ số như vậy rồi lọc bằng điều kiện chia $5$ dư $2$ và chia $9$ dư $2$.\n\n**Bước 4.** Biết hiệu thật, chia cho số phần của hiệu để tìm một phần, rồi nhân với số phần của từng môn.\n\n**Chú ý:** Phải thử cả hai điều kiện chia $5$ dư $2$ và chia $9$ dư $2$ cho số còn lại, chỉ dùng một điều kiện thì chưa đủ chắc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$\\dfrac{1}{10}$ số học sinh giỏi Tiếng Anh bằng $\\dfrac{6}{83}$ số học sinh giỏi Toán nên số học sinh giỏi Tiếng Anh bằng: $\\dfrac{6}{83}\\times 10=\\dfrac{60}{83}$ (số học sinh giỏi Toán)\n\nDo đó số học sinh giỏi Toán là $83$ phần, số học sinh giỏi Tiếng Anh là $60$ phần như thế.\n\nHiệu số phần bằng nhau là: $83-60=23$ (phần)\n\nHiệu là số có hai chữ số chia hết cho $23$ nên hiệu là một trong các số: $23$; $46$; $69$; $92$.\n\nHiệu chia cho $5$ dư $2$ nên chữ số tận cùng là $2$ hoặc $7$, trong bốn số trên chỉ có $92$.\n\nThử lại: $92:9=10$ (dư $2$), thoả mãn chia $9$ dư $2$.\n\nVậy số học sinh giỏi Toán hơn số học sinh giỏi Tiếng Anh là $92$ học sinh.\n\nTa có sơ đồ:\n\n(Giỏi Toán 83 phần; giỏi Tiếng Anh 60 phần; hiệu 92 học sinh)\n\nGiá trị của một phần là: $92:23=4$ (học sinh)\n\nSố học sinh giỏi Toán là: $4\\times 83=332$ (học sinh)\n\nSố học sinh giỏi Tiếng Anh là: $4\\times 60=240$ (học sinh)\n\nĐáp số: Toán: $332$ học sinh; Tiếng Anh: $240$ học sinh",
-  "so_do_mo_ta": {
-   "tieu_de": "Học sinh giỏi Toán và Tiếng Anh",
-   "gia_tri_phan": 4,
-   "hang": [
-    {
-     "nhan": "Giỏi Toán",
-     "phan": 83
-    },
-    {
-     "nhan": "Giỏi Tiếng Anh",
-     "phan": 60
-    }
-   ],
-   "hieu": "92 học sinh",
-   "dau_hoi": [
-    "Giỏi Toán",
-    "Giỏi Tiếng Anh"
-   ]
-  }
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ \"$\\dfrac{1}{10}$ số HS giỏi Tiếng Anh bằng $\\dfrac{6}{83}$ số HS giỏi Toán\" suy ra tỉ số hai môn (Toán $83$ phần, Tiếng Anh $60$ phần), nên hiệu là một số phần cố định; điều kiện chia $5$ và chia $9$ đều dư $2$ dùng để chọn ra hiệu thật.\n\n**Bước 1.** Một phần mười số học sinh giỏi Tiếng Anh cho trước, nên gấp lên $10$ lần để biết cả số học sinh giỏi Tiếng Anh bằng bao nhiêu phần số học sinh giỏi Toán.\n\n**Bước 2.** Đổi tỉ số vừa tìm thành số phần bằng nhau, và vì phân số đó đã tối giản nên mỗi phần là một số học sinh nguyên; từ đó tìm được hiệu gồm bao nhiêu phần.\n\n**Bước 3.** Hiệu có hai chữ số và bằng một số nguyên lần số phần ở bước trước, nên liệt kê các số có hai chữ số như vậy rồi lọc bằng điều kiện chia $5$ dư $2$ và chia $9$ dư $2$.\n\n**Bước 4.** Biết hiệu thật, chia cho số phần của hiệu để tìm một phần, rồi nhân với số phần của từng môn.\n\n**Chú ý:** Phải thử cả hai điều kiện chia $5$ dư $2$ và chia $9$ dư $2$ cho số còn lại, chỉ dùng một điều kiện thì chưa đủ chắc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$\\dfrac{1}{10}$ số học sinh giỏi Tiếng Anh bằng $\\dfrac{6}{83}$ số học sinh giỏi Toán nên số học sinh giỏi Tiếng Anh bằng: $\\dfrac{6}{83}\\times 10=\\dfrac{60}{83}$ (số học sinh giỏi Toán)\n\nDo đó số học sinh giỏi Toán là $83$ phần, số học sinh giỏi Tiếng Anh là $60$ phần như thế.\n\nHiệu số phần bằng nhau là: $83-60=23$ (phần)\n\nHiệu là số có hai chữ số chia hết cho $23$ nên hiệu là một trong các số: $23$; $46$; $69$; $92$.\n\nHiệu chia cho $5$ dư $2$ nên chữ số tận cùng là $2$ hoặc $7$, trong bốn số trên chỉ có $92$.\n\nThử lại: $92:9=10$ (dư $2$), thoả mãn chia $9$ dư $2$.\n\nVậy số học sinh giỏi Toán hơn số học sinh giỏi Tiếng Anh là $92$ học sinh.\n\nGiá trị của một phần là: $92:23=4$ (học sinh)\n\nSố học sinh giỏi Toán là: $4\\times 83=332$ (học sinh)\n\nSố học sinh giỏi Tiếng Anh là: $4\\times 60=240$ (học sinh)\n\nĐáp số: Toán: $332$ học sinh; Tiếng Anh: $240$ học sinh"
  }
 ]

@@ -123,6 +123,7 @@ HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái �
 | F | Dãy phân số mẫu gấp đôi (lô 1 câu 11; sách 5T không có VD) | ① "$2\times B-B$" · ② viết mỗi số hạng thành hiệu hai phân số | ① | ✅ **①** |
 | G | Tìm $a\%$ của một số (CĐ14–17) | ① $200\times 25\%$ (Tóm tắt CĐ15, VD 15.2) · ② $200\times 25:100$ (VD 16.1–16.3) | ① — đồng bộ cả CĐ14–17; chiều ngược $M:b\%$ | ✅ **①** $M\times a\%$ · ngược $M:b\%$ |
 | — | Hai tỉ số (CĐ8) | phân số của đại lượng không đổi | — | ✅ CEO 08/10: không sơ đồ |
+| H | Một đại lượng = TÍCH hai đại lượng, đề cho **phần trăm thay đổi** (doanh thu = giá vé × số người; diện tích = dài × rộng; quãng đường = vận tốc × thời gian) — đề CLC LTV 2018 câu 4 | ① giả sử một số cụ thể ("lúc đầu có 100 khán giả") rồi tính từng đại lượng · ② tỉ số phần trăm của từng đại lượng so với lúc đầu rồi nhân/chia các tỉ số | ② | ✅ **②** (CEO 10/10): "Doanh thu sau so với ban đầu: $100\%+8\%=108\%$ · Khán giả sau so với ban đầu: $100\%+20\%=120\%$ · Giá vé so với ban đầu: $108\%:120\%=90\%$ · Giá vé sau: $40000\times 90\%=36000$". **Mấu chốt phải nêu công thức gốc** (Doanh thu = giá vé × số người) và ý "hai đại lượng trong phép tính thay đổi thì đại lượng còn lại thay đổi tương ứng". Nhân/chia hai tỉ số % viết thêm bước số thập phân ($108\%:120\%=1,08:1,2=0,9=90\%$) |
 
 ## 3. Định dạng (giữ quy ước kho Đại)
 

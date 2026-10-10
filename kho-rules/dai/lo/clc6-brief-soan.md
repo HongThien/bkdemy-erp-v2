@@ -26,6 +26,16 @@ Brief này chỉ nêu phần KHÁC của đề thi.
   Kết quả không trùng phương án nào ⇒ `dap_an: ""` + `ghi_chu_nghi` nêu kết quả tính được; **không chọn bừa**.
 - Đề thi có câu ngoài khuôn sách (lịch – thứ ngày, suy luận lôgic, đếm, xoá chữ số…): vẫn Phần 1 card 3–6 bước, Phần 2 lập luận bằng câu văn ngắn + phép tính.
 
+## Cách chuẩn CEO chốt riêng cho đề thi (ngoài bảng §2b của k5T.md)
+- **Một đại lượng = tích hai đại lượng, đề cho phần trăm thay đổi** (doanh thu = giá vé × số người; diện tích = dài × rộng; quãng đường = vận tốc × thời gian…)
+  ⇒ **KHÔNG "giả sử lúc đầu có 100 …"**. Làm bằng tỉ số phần trăm của từng đại lượng so với lúc đầu, rồi nhân/chia các tỉ số:
+  "Doanh thu sau so với lúc đầu bằng: $100\%+8\%=108\%$ · Số khán giả sau so với lúc đầu bằng: $100\%+20\%=120\%$ ·
+  Giá vé sau so với lúc đầu bằng: $108\%:120\%=1,08:1,2=0,9=90\%$ · Giá vé sau khi giảm là: $40000\times 90\%=36000$ (đồng)".
+  **Mấu chốt phải nêu công thức gốc** (Doanh thu $=$ giá vé $\times$ số khán giả) và ý "hai đại lượng trong phép tính thay đổi thì đại lượng còn lại thay đổi tương ứng".
+- **Sơ đồ quá lớn thì BỎ sơ đồ** (CEO 10/10): một hàng của sơ đồ có **hơn 12 phần** (vd Toán 83 phần, Tiếng Anh 60 phần) ⇒ không vẽ, không ghi
+  "Ta có sơ đồ:", chỉ viết bằng lời "… là 83 phần, … là 60 phần như thế" rồi tính. Các luật sơ đồ khác của 5T giữ nguyên.
+- **Bài nhiều cách mà bảng §2b chưa có:** chọn cách bám công thức / quan hệ gốc của bài (không chọn số giả định), và ghi `ghi_chu_nghi`: "nhiều cách: …" để CEO chốt.
+
 ## Đề có vấn đề — KHÔNG tự bịa dữ kiện
 - Thiếu hình mà đề nói "hình bên", thiếu dữ kiện, số liệu vô lí, điểm/tên không xác định ⇒ ghi `ghi_chu_nghi` (nói rõ thiếu gì, bạn đã hiểu đề thế nào).
   Không thể giải nếu không đoán ⇒ thêm `"bo": "<lý do>"` cho câu đó (vẫn giữ phần tử trong mảng) và bỏ trống lời giải.
