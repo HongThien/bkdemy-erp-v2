@@ -1,4 +1,4 @@
-# ĐỀ | Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nội Duệ, xã Tiên Du
+# ĐỀ | Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nội Duệ, xã Tiên Du (mã đề …)
 nam: 2025
 bo_sach: CTST
 
@@ -456,6 +456,7 @@ A. Hình bình hành
 B. Hình vuông
 C. Hình thang cân
 D. Hình chữ nhật
+**Chưa chắc:** đề viết "hai cạnh đối song song" (một cặp) nên hiểu là hình thang có hai đường chéo bằng nhau, đáp án theo dấu hiệu hình thang cân (C); nếu hiểu hai cặp cạnh đối song song thì tứ giác là hình bình hành có hai đường chéo bằng nhau, tức hình chữ nhật (D). Hình chữ nhật cũng thoả điều kiện đề theo nghĩa rộng — CEO xác nhận đáp án.
 
 **Phần 1. Hướng dẫn**
 
@@ -467,7 +468,7 @@ D. Hình chữ nhật
 
 **Bước 3.** Đối chiếu với dấu hiệu nhận biết hình thang cân và loại các phương án không suy ra được từ dữ kiện.
 
-**Chú ý:** "hai cạnh đối song song" là **một cặp** cạnh đối. Hình chữ nhật, hình vuông cũng thoả mãn hai điều kiện của đề, nhưng từ hai điều kiện đó chưa suy ra được tứ giác có góc vuông; chúng chỉ là trường hợp riêng của hình thang cân.
+**Chú ý:** hình bình hành và hình vuông không bắt buộc có hai đường chéo bằng nhau hoặc không suy ra từ hai điều kiện trên.
 
 **Phần 2. Trình bày**
 
@@ -494,9 +495,9 @@ D. Hình thang cân
 
 **Bước 2.** Từ dữ kiện thứ nhất suy ra tứ giác là hình bình hành (dấu hiệu nhận biết theo đường chéo).
 
-**Bước 3.** Ghép thêm dữ kiện hai đường chéo vuông góc và đối chiếu với dấu hiệu nhận biết từ hình bình hành; xem hình có cho hai đường chéo bằng nhau không để loại các hình còn lại.
+**Bước 3.** Hình bình hành có hai đường chéo vuông góc là hình thoi; so độ dài hai đường chéo trên hình để loại hình vuông.
 
-**Chú ý:** hai nửa của $AC$ đánh hai gạch, hai nửa của $BD$ đánh một gạch, tức hình không cho $AC=BD$ nên không kết luận được hình chữ nhật hay hình vuông.
+**Chú ý:** hai đường chéo $AC$ và $BD$ không bằng nhau nên không phải hình chữ nhật hay hình vuông.
 
 **Phần 2. Trình bày**
 
@@ -504,17 +505,17 @@ Theo hình vẽ, hai đường chéo $AC$ và $BD$ cắt nhau tại trung điể
 
 Hình bình hành $ABCD$ có hai đường chéo $AC \perp BD$ nên $ABCD$ là hình thoi (dấu hiệu nhận biết).
 
-Hình vẽ không cho hai đường chéo $AC$ và $BD$ bằng nhau, mà hình vuông, hình chữ nhật, hình thang cân đều có hai đường chéo bằng nhau, nên không kết luận được $ABCD$ là các hình đó.
+Hai đường chéo $AC$ và $BD$ không bằng nhau nên $ABCD$ không phải hình chữ nhật, hình vuông; đây cũng không phải hình thang cân.
 
 Chọn B.
 
 ### Câu 19 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Trong các khẳng định sau, khẳng định nào **sai**?
 A. Tứ giác có ba góc vuông là hình chữ nhật.
-B. Tứ giác có hai cạnh đối vừa song song vừa bằng nhau là hình bình hành.
+B. Tứ giác có hai cạnh đối vừa song song vừa bằng nhau là bình hành.
 C. Tứ giác có hai đường chéo bằng nhau là hình thang cân.
 D. Tứ giác vừa là hình thoi vừa là hình chữ nhật thì là hình vuông.
-**Ghi chú:** Đề in thiếu chữ "hình" ở phương án B ("là bình hành"), đã sửa thành "là hình bình hành".
+**Ghi chú:** Đề in thiếu chữ "hình" ở phương án B ("là bình hành"), đã hiểu là "hình bình hành".
 
 **Phần 1. Hướng dẫn**
 
@@ -680,7 +681,7 @@ Từ 51 kWh – 100 kWh: giá 2 500 đồng / 1 kWh
 Từ 101 kWh – 200 kWh: giá 3 000 đồng / 1 kWh
 Từ 201 kWh trở lên: giá 4 000 đồng / 1 kWh
 Nhà Bình sử dụng hết $x$ kWh ($x>200$). Viết đa thức thu gọn biến $x$ biểu thị số tiền nhà Bình phải trả.
-**Ghi chú:** Đề in "thu gon" (thiếu dấu), đã sửa thành "thu gọn"; dòng cuối bảng giá đề in "Từ 201 kWh : giá 4 000 đồng", đã thêm "trở lên" cho rõ nghĩa.
+**Ghi chú:** Đề in "thu gon biến X", đã sửa thành "thu gọn biến $x$".
 
 **Phần 1. Hướng dẫn**
 
@@ -730,7 +731,7 @@ c) $FC$ cắt $AI$ tại $G$, $BG$ cắt $FI$ tại $O$. Chứng minh $O$ là tr
 
 **Bước 2.** Ý b: muốn $\triangle IAB$ cân tại $I$, cần $IA=IB$; muốn thế, cần $IF$ vừa vuông góc vừa chia $AB$ thành hai đoạn bằng nhau, tức $F$ là trung điểm $AB$ (khi đó hai tam giác vuông $IFA$, $IFB$ bằng nhau c.g.c).
 
-**Bước 3.** Ý b (tiếp): muốn $FA=FB$, đổi $FA=IE$ (cạnh đối của hình chữ nhật, ý a) rồi cần $BF=IE$; hai đoạn này là cạnh tương ứng của $\triangle BFI$ và $\triangle IEC$, nên cần hai tam giác vuông này bằng nhau: cạnh huyền $BI=IC$ và hai góc nhọn $\widehat{BIF}=\widehat{ICE}$ (đồng vị, vì $IF\parallel AC$). Bài này chưa được dùng đường trung bình nên ta tự chứng minh $F$ là trung điểm $AB$ bằng tam giác bằng nhau.
+**Bước 3.** Ý b (tiếp): muốn $FA=FB$, đổi $FA=IE$ (cạnh đối của hình chữ nhật, ý a) rồi cần $BF=IE$; hai đoạn này là cạnh tương ứng của $\triangle BFI$ và $\triangle IEC$, nên cần hai tam giác vuông này bằng nhau: cạnh huyền $BI=IC$ và hai góc nhọn $\widehat{BIF}=\widehat{ICE}$ (đồng vị, vì $IF\parallel AC$). Bài này chưa dùng đường trung bình hay trung tuyến ứng với cạnh huyền nên ta tự chứng minh $F$ là trung điểm $AB$ bằng tam giác bằng nhau.
 
 **Bước 4.** Ý c: muốn $O$ là trung điểm $IF$, tìm hình bình hành nhận $IF$ làm một đường chéo: tứ giác $FBIE$ có $FB\parallel IE$ (cùng vuông góc $AC$) và $FB=IE$ (ý b); khi đó đường chéo $BE$ cắt $FI$ tại trung điểm của $FI$.
 
@@ -796,8 +797,8 @@ Vậy $O$ là trung điểm của đoạn thẳng $IF$.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: CTST (đoán theo nội dung: có định lí Pythagore ở Câu 14 ngay giữa học kì 1 — KNTT dạy Pythagore ở học kì 2; cũng có thể là Cánh Diều, đề không đủ dấu hiệu để phân biệt hai bộ này). Đề không in bảng đáp án.
-- Phạm vi đề chạm tới: đơn thức, đa thức, cộng – nhân – chia đa thức, hằng đẳng thức (bình phương tổng/hiệu, hiệu hai bình phương), định lí Pythagore (chỉ ở Câu 14), tứ giác, hình bình hành, hình chữ nhật, hình thoi, hình vuông, hình thang cân. Lời giải không dùng đường trung bình, Thalès hay đồng dạng. Bài 3 tự chứng minh $F$, $E$ là trung điểm bằng hai tam giác vuông bằng nhau nên cũng không cần tới "trung tuyến ứng với cạnh huyền" (đề có hỏi hình chữ nhật nên dùng tính chất này cũng hợp lệ và ngắn hơn: $IA=IB=\dfrac{1}{2}BC$).
+- Bộ sách: CTST (đoán theo nội dung: có Pythagore ở Câu 14 và hằng đẳng thức tổng hai lập phương ở Câu 8 — không phải khuôn KNTT; cũng có thể là Cánh Diều). Đề không in bảng đáp án.
+- Phạm vi đề chạm tới: đơn thức, đa thức, cộng – nhân – chia đa thức, hằng đẳng thức (bình phương tổng/hiệu, hiệu hai bình phương), định lí Pythagore (chỉ ở Câu 14), tứ giác, hình bình hành, hình chữ nhật, hình thoi, hình vuông, hình thang cân. Lời giải không dùng đường trung bình, trung tuyến ứng với cạnh huyền, Thalès hay đồng dạng. Bài 3 tự chứng minh $F$, $E$ là trung điểm bằng tam giác bằng nhau.
 - Đề có 20 câu trắc nghiệm + 4 bài tự luận (7 câu sau khi tách ý). Bài 1 có bốn ý độc lập (tính, tìm đa thức, rút gọn, tìm $x$) nên tách thành Bài 1a, 1b, 1c, 1d; Bài 1d đáp số là một số nguyên nên để trả lời ngắn. Bài 2 (lời văn) và Bài 3 (hình) giữ nguyên thành một câu.
-- Câu 17: "hai cạnh đối song song" là một cặp cạnh đối (chính đề dùng đúng nghĩa này ở Câu 19B: "hai cạnh đối vừa song song vừa bằng nhau"), nên tứ giác là hình thang có hai đường chéo bằng nhau, tức hình thang cân (C); trạm soát giải độc lập cũng ra C. Câu 12 chọn C vì $\sqrt{x^2y}$ có biến dưới dấu căn (không phải đơn thức ở lớp 8).
+- Câu 17 có thể hiểu hai cách (hình thang cân hoặc hình chữ nhật) — xem dòng Chưa chắc ở câu đó. Câu 12 chọn C vì $\sqrt{x^2y}$ có biến dưới dấu căn (không phải đơn thức ở lớp 8).
 - Bài 3: đề không cho hình, đã vẽ hình bằng code cho lời giải (`giai_bai3.png`), hình dựng bằng toạ độ và không vẽ đoạn $O$ trung điểm hay đánh dấu điều phải chứng minh. Đã kiểm bằng máy với 4 bộ toạ độ (góc vuông, $F$, $E$ là trung điểm, $G$ thuộc $BE$, $O$ là trung điểm $FI$, $FBIE$ là hình bình hành).

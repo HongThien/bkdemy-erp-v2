@@ -234,7 +234,7 @@ D. $AB=AD$
 
 Trong hình bình hành $ABCD$, các cạnh đối bằng nhau nên $AB=CD$.
 
-Hai đường chéo $AC$ và $BD$, hai cạnh kề $AB$ và $AD$, cạnh $DC$ và đường chéo $AC$ của một hình bình hành không nhất thiết bằng nhau nên A, C, D không đúng với mọi hình bình hành.
+$AC=BD$ chỉ đúng khi $ABCD$ là hình chữ nhật; $AB=AD$ chỉ đúng khi $ABCD$ là hình thoi; $DC$ là cạnh còn $AC$ là đường chéo nên $DC=AC$ không đúng với mọi hình bình hành.
 
 Chọn B.
 
@@ -284,7 +284,7 @@ $=-x^3y^2-4x^2y-y^2$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** nhân đơn thức với đa thức rồi thu gọn; tích của $2xy^2$ với hạng tử đầu tiên trong ngoặc sẽ triệt tiêu với $-6x^3y^2$.
+**Mấu chốt:** nhân đơn thức với đa thức rồi thu gọn; hạng tử bậc cao nhất sẽ triệt tiêu với $-6x^3y^2$.
 
 **Bước 1.** Nhân đơn thức $2xy^2$ với từng hạng tử trong ngoặc, nhân hệ số với hệ số và cộng số mũ của cùng một biến.
 
@@ -453,7 +453,8 @@ a) Chứng minh tứ giác $AHDC$ là hình bình hành.
 b) Gọi $N$, $K$ lần lượt là trung điểm của các đoạn thẳng $AH$ và $CD$. Chứng minh $HK\parallel NC$ và $M$ là trung điểm của $NK$.
 c) Từ $K$ kẻ đường thẳng vuông góc với $AD$ cắt $HD$ tại $Q$. Chứng minh $\widehat{BNM}=\widehat{KQH}$.
 **Hình giải:** giai_bai4.png
-**Ghi chú:** đề in "trung điểm của của $NK$", đã sửa thành "trung điểm của $NK$". Đề không cho hình; hình vẽ bằng code chỉ hiện ở lời giải, có thêm điểm phụ $E$ (giao của $BN$ với đường thẳng $HD$) dùng ở ý c. Ở ý c, vị trí các điểm ($E$ nằm giữa $B$ và $N$; $H$ nằm giữa $E$ và $Q$) lời giải lấy theo hình vẽ như cách trình bày thông thường ở lớp 8; hai điều này chứng minh được và đã kiểm bằng toạ độ trên 2000 tam giác.
+**Ghi chú:** đề in "trung điểm của của $NK$", đã sửa thành "trung điểm của $NK$". Đề không cho hình; hình vẽ bằng code chỉ hiện ở lời giải, có thêm điểm phụ $E$ (giao của $BN$ với $HD$) dùng ở ý c.
+**Chưa chắc:** ý c đã kiểm bằng toạ độ trên 400 tam giác ngẫu nhiên (BN vuông góc AD, $E$ nằm trên tia $NB$, $H$ nằm trên tia $QE$, hai góc bằng nhau đều đúng) nhưng lời giải chỉ nêu vị trí điểm $E$, không chứng minh thứ tự điểm; đáp án gốc của đề có thể đi cách khác.
 
 **Phần 1. Hướng dẫn**
 
@@ -463,7 +464,7 @@ c) Từ $K$ kẻ đường thẳng vuông góc với $AD$ cắt $HD$ tại $Q$. 
 
 **Bước 2.** Ý b: muốn $HK\parallel NC$, cần $HNCK$ là hình bình hành; muốn vậy cần $HN\parallel CK$ và $HN=CK$, có từ $AH\parallel CD$, $AH=CD$ (ý a) và $N$, $K$ là trung điểm của hai cạnh đó. Khi $HNCK$ là hình bình hành thì hai đường chéo $HC$, $NK$ cắt nhau tại trung điểm, mà $M$ là trung điểm $HC$ nên $M$ là trung điểm $NK$.
 
-**Bước 3.** Ý c: muốn $\widehat{BNM}=\widehat{KQH}$, gọi $E$ là giao điểm của $BN$ với đường thẳng $HD$ rồi chứng minh $ENKQ$ là hình bình hành; khi đó hai góc đối ở đỉnh $N$ và $Q$ bằng nhau. Muốn vậy cần $NK\parallel EQ$ (tức $NK\parallel HD$) và $NE\parallel KQ$ (tức $BN\parallel KQ$).
+**Bước 3.** Ý c: muốn $\widehat{BNM}=\widehat{KQH}$, kéo dài $BN$ cắt $HD$ tại $E$ rồi chứng minh $ENKQ$ là hình bình hành; khi đó hai góc đối ở đỉnh $N$ và $Q$ bằng nhau. Muốn vậy cần $NK\parallel EQ$ (tức $NK\parallel HD$) và $NE\parallel KQ$ (tức $BN\parallel KQ$).
 
 **Bước 4.** Muốn $NK\parallel HD$, cần $NHDK$ là hình bình hành, có từ $NH\parallel DK$ và $NH=DK$ (vì $N$, $K$ là trung điểm của hai cạnh $AH$, $CD$ song song và bằng nhau).
 
@@ -503,11 +504,11 @@ Xét $\triangle ABM$ có $AH\perp BM$ (vì $M$ thuộc đường thẳng $BC$) v
 
 Do đó $BN$ là đường cao thứ ba, tức $BN\perp AM$, hay $BN\perp AD$.
 
-Mà $KQ\perp AD$ (giả thiết) nên $BN\parallel KQ$ (cùng vuông góc với $AD$).
+Mà $KQ\perp AD$ (giả thiết) nên $BN\parallel KQ$.
 
 Vì $NH\parallel DK$ (do $AH\parallel CD$) và $NH=\dfrac{1}{2}AH=\dfrac{1}{2}CD=DK$ nên tứ giác $NHDK$ là hình bình hành. Suy ra $NK\parallel HD$.
 
-Gọi $E$ là giao điểm của $BN$ và đường thẳng $HD$. Tứ giác $ENKQ$ có $NK\parallel EQ$ (vì $NK\parallel HD$) và $NE\parallel KQ$ (vì $BN\parallel KQ$) nên $ENKQ$ là hình bình hành (các cạnh đối song song).
+Gọi $E$ là giao điểm của $BN$ và $HD$. Tứ giác $ENKQ$ có $NK\parallel EQ$ (vì $NK\parallel HD$) và $NE\parallel KQ$ (vì $BN\parallel KQ$) nên $ENKQ$ là hình bình hành.
 
 Suy ra $\widehat{ENK}=\widehat{KQE}$ (hai góc đối của hình bình hành).
 
@@ -539,8 +540,6 @@ Vì $a+b+c=0$ nên $c=-(a+b)$, do đó $c^5=-(a+b)^5$.
 
 Ta có $(a+b)^5=(a+b)^2(a+b)^3=(a^2+2ab+b^2)(a^3+3a^2b+3ab^2+b^3)$
 
-$=a^5+3a^4b+3a^3b^2+a^2b^3+2a^4b+6a^3b^2+6a^2b^3+2ab^4+a^3b^2+3a^2b^3+3ab^4+b^5$
-
 $=a^5+5a^4b+10a^3b^2+10a^2b^3+5ab^4+b^5$
 
 Vế trái: $2(a^5+b^5+c^5)=2\left[a^5+b^5-(a+b)^5\right]$
@@ -566,4 +565,4 @@ Vậy $2(a^5+b^5+c^5)=5abc(a^2+b^2+c^2)$.
 - Bộ sách: KNTT (đoán theo nội dung đề, không có Pythagore, phân thức hay hình chóp). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, nhân – chia), hằng đẳng thức (bình phương, lập phương, hiệu hai bình phương, tổng – hiệu hai lập phương) và Chương III tới hình bình hành (Câu 6, 7, 8, Bài 4). Đề KHÔNG có phân tích nhân tử bằng phương pháp (chỉ đặt thừa số chung theo tính chất phân phối ở Bài 5), không hình chữ nhật trở lên; lời giải Bài 4 không dùng đường trung bình (tự chứng minh qua hình bình hành), có dùng "ba đường cao của tam giác đồng quy" (Hình 7).
 - Đề là ảnh scan 2 trang, đã đối chiếu từng câu với ảnh (phóng to 300–600 dpi chỗ số mũ). Đề không có đáp án in sẵn, không câu nào bị bỏ.
 - Đề có 5 bài tự luận: Bài 2 và Bài 3 tách ý (2a–2c, 3a–3c); Bài 1 (cho sẵn đa thức rồi hỏi hai ý), Bài 4 (hình) và Bài 5 giữ nguyên một câu. Bài 3a (đáp số $-2$) và 3b (đáp số $0$) là trả lời ngắn; Bài 3c đáp số $\dfrac{27}{8}$ là phân số nên để tự luận.
-- Bài 4 đề không cho hình, đã vẽ hình giải bằng code (`giai_bai4.png`, tam giác dựng đúng $AH^2=BH\cdot HC$ với $AB<AC$); hình chỉ vẽ đoạn $NM$, không vẽ đoạn $MK$ (ba điểm $N$, $M$, $K$ thẳng hàng là điều phải chứng minh ở ý b).
+- Bài 4 đề không cho hình, đã vẽ hình giải bằng code (`giai_bai4.png`, tam giác dựng đúng $AH^2=BH\cdot HC$ với $AB<AC$); hình không vẽ đoạn $NK$ (điều phải chứng minh ở ý b).

@@ -1,4 +1,4 @@
-# ĐỀ | Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Chuyên Mỹ
+# ĐỀ | Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Chuyên Mỹ (mã đề …)
 nam: 2025
 bo_sach: KNTT
 
@@ -183,24 +183,23 @@ B. Hình vuông
 C. Hình chữ nhật
 D. Hình thoi
 **Hình:** p1c7_1.png
+**Chưa chắc:** đáp án đọc từ ảnh chụp mặt bàn có phối cảnh: mặt bàn có hai cạnh dài song song, hai cạnh bên xiên vào nhau và đối xứng nên chọn hình thang cân; đề không in số đo nào.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hình vuông, hình chữ nhật, hình thoi đều có **hai cặp** cạnh đối song song và các cạnh đối **bằng nhau**, còn mặt bàn trong hình chỉ có **một cặp** mép song song, hai mép đó dài ngắn khác nhau.
+**Mấu chốt:** hình vuông, hình chữ nhật, hình thoi đều có **hai cặp** cạnh đối song song, còn mặt bàn trong hình chỉ có **một cặp** cạnh song song.
 
-**Bước 1.** Nhìn mặt bàn như một tứ giác: mỗi góc bàn nằm phía trên một chân bàn, bốn mép bàn là bốn cạnh; rồi tìm các cặp mép song song.
+**Bước 1.** Nhìn mặt bàn như một tứ giác và tìm các cặp cạnh có vẻ song song.
 
-**Bước 2.** Nhận ra hai mép dài (mép phía trước và mép phía sau) song song với nhau nhưng mép phía sau dài hơn hẳn mép phía trước, còn hai mép ngắn ở hai bên không song song mà nghiêng vào nhau.
+**Bước 2.** Nhận ra hai cạnh dài (mép trước và mép sau) song song, còn hai cạnh bên không song song mà nghiêng vào nhau.
 
-**Bước 3.** Loại các hình có hai cặp cạnh đối song song; với hình còn lại, xét thêm hai mép bên có nghiêng đều như nhau về hai phía hay không để gọi đúng tên hình.
-
-**Chú ý:** ảnh chụp nghiêng nên các mép trông không đúng độ dài thật; nhưng trong ảnh, mép ở xa mà vẫn dài hơn mép ở gần thì ngoài thực tế chắc chắn nó dài hơn, nên mặt bàn không thể là hình chữ nhật.
+**Bước 3.** Một tứ giác chỉ có một cặp cạnh đối song song là hình thang, và hai cạnh bên nghiêng đối xứng như nhau nên đó là hình thang cân.
 
 **Phần 2. Trình bày**
 
-Mặt bàn là tứ giác có hai mép dài song song với nhau nhưng không bằng nhau, hai mép còn lại không song song. Do đó mặt bàn không thể là hình vuông, hình chữ nhật hay hình thoi (các hình này có hai cặp cạnh đối song song).
+Mặt bàn là tứ giác có hai cạnh đối song song, hai cạnh còn lại không song song nên không thể là hình vuông, hình chữ nhật hay hình thoi (các hình này có hai cặp cạnh đối song song).
 
-Mặt bàn là hình thang, hai mép bên nghiêng đều như nhau về hai phía (hai góc kề một đáy bằng nhau) nên là hình thang cân.
+Mặt bàn là hình thang, hai cạnh bên đối xứng nhau nên là hình thang cân.
 
 Chọn A.
 
@@ -230,11 +229,12 @@ Suy ra $\widehat{B}=360^\circ-(110^\circ+70^\circ+80^\circ)=360^\circ-260^\circ=
 Chọn D.
 
 ### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
-**Đề:** Phát biểu nào sau đây đúng?
+**Đề:** Phát biểu nào sau đây đúng ?
 A. Tứ giác có hai cạnh đối song song là hình bình hành
 B. Tứ giác có hai cạnh đối bằng nhau là hình bình hành
 C. Tứ giác có hai góc đối bằng nhau là hình bình hành
 D. Tứ giác có các cạnh đối song song là hình bình hành
+**Chưa chắc:** phương án A ("hai cạnh đối song song") nếu hiểu là một cặp cạnh thì sai, còn nếu hiểu là cả hai cặp cạnh đối thì trùng với D; đã chọn D vì D dùng chữ "các cạnh đối", đúng nguyên văn định nghĩa.
 
 **Phần 1. Hướng dẫn**
 
@@ -250,7 +250,7 @@ D. Tứ giác có các cạnh đối song song là hình bình hành
 
 **Phần 2. Trình bày**
 
-Phương án A: tứ giác có hai cạnh đối song song là hình thang (định nghĩa), chưa chắc là hình bình hành.
+Phương án A: tứ giác chỉ có một cặp cạnh đối song song là hình thang, chưa chắc là hình bình hành.
 
 Phương án B: hình thang cân có hai cạnh bên bằng nhau nhưng không phải hình bình hành.
 
@@ -271,9 +271,9 @@ D. Hình bình hành có hai đường chéo vuông góc với nhau là hình th
 
 **Mấu chốt:** hình thoi phải có điều kiện về **cạnh** (4 cạnh bằng nhau) hoặc là **hình bình hành** cộng thêm một điều kiện; chỉ nói về đường chéo mà không có tính hình bình hành thì chưa đủ.
 
-**Bước 1.** Nhắc lại định nghĩa hình thoi (tứ giác có bốn cạnh bằng nhau) và ba dấu hiệu nhận biết từ hình bình hành: có hai cạnh kề bằng nhau; có hai đường chéo vuông góc; có một đường chéo là đường phân giác của một góc.
+**Bước 1.** Nhắc lại ba dấu hiệu nhận biết hình thoi: tứ giác có bốn cạnh bằng nhau; hình bình hành có hai cạnh kề bằng nhau; hình bình hành có hai đường chéo vuông góc (hoặc một đường chéo là phân giác của một góc).
 
-**Bước 2.** Đối chiếu từng phát biểu với định nghĩa và các dấu hiệu đó: phát biểu nào trùng khớp thì đúng.
+**Bước 2.** Đối chiếu từng phát biểu với các dấu hiệu đó: phát biểu trùng một dấu hiệu thì đúng.
 
 **Bước 3.** Với phát biểu còn lại, thử dựng tứ giác có hai đường chéo vuông góc và bằng nhau mà các đường chéo không cắt nhau tại trung điểm để thấy nó sai.
 
@@ -281,7 +281,7 @@ D. Hình bình hành có hai đường chéo vuông góc với nhau là hình th
 
 **Phần 2. Trình bày**
 
-Phát biểu A đúng (định nghĩa hình thoi).
+Phát biểu A đúng (dấu hiệu nhận biết hình thoi).
 
 Phát biểu C, D đúng (dấu hiệu nhận biết hình thoi từ hình bình hành).
 
@@ -509,7 +509,8 @@ a) Chứng minh tứ giác $AFHE$ là hình chữ nhật.
 b) Trên tia đối của tia $FH$ lấy điểm $M$ sao cho $FH=FM$. Trên tia đối của tia $EH$ lấy điểm $N$ sao cho $EH=EN$. Chứng minh tứ giác $AEFM$ là hình bình hành.
 c) Chứng minh $A$, $M$, $N$ thẳng hàng.
 **Hình giải:** giai_cau16.png
-**Chưa chắc:** ý c có dữ kiện kiểu đường trung bình ($E$, $F$ là trung điểm của $HN$, $HM$ nên $EF$ là đường trung bình của $\triangle HMN$, suy ra $EF\parallel MN$) nhưng đề giữa kì 1 cấm đường trung bình; lời giải tự chứng minh bằng hai hình bình hành $AEFM$, $AFEN$ và tiên đề Euclid. Trạm soát đã kiểm: cách này đủ chặt và không cần đường trung bình (đường trung bình chỉ cho $EF\parallel MN$, vẫn phải có thêm $AM\parallel EF$ mới ra thẳng hàng). CEO quyết định giữ cách này hay cho dùng đường trung bình.
+**Ghi chú:** Đề không cho hình nên hình vẽ bằng code, chỉ hiện ở lời giải (không vẽ đoạn $MN$ vì đó là điều phải chứng minh ở ý c).
+**Chưa chắc:** ý c đúng dạng đường trung bình ($EF$ là đường trung bình của $\triangle HMN$, suy ra $EF\parallel MN$) nhưng đề giữa kì 1 cấm đường trung bình; lời giải tự chứng minh bằng hai hình bình hành $AEFM$, $AFEN$ và tiên đề Euclid. CEO quyết định giữ cách này hay cho dùng đường trung bình.
 
 **Phần 1. Hướng dẫn**
 
@@ -551,9 +552,9 @@ Tứ giác $AEFM$ có $AE\parallel FM$ và $AE=FM$ nên là hình bình hành (d
 
 c) Vì $AEFM$ là hình bình hành (câu b) nên $AM\parallel EF$.
 
-Vì $AFHE$ là hình chữ nhật (câu a) nên cũng là hình bình hành, do đó $AF\parallel EH$ và $AF=EH$ (tính chất hai cạnh đối).
+Vì $AFHE$ là hình bình hành (câu a) nên $AF\parallel EH$ và $AF=EH$.
 
-Vì $N$ nằm trên tia đối của tia $EH$ nên $N$ thuộc đường thẳng $EH$, do đó $AF\parallel EN$.
+Vì $N$ nằm trên đường thẳng $EH$ nên $AF\parallel EN$.
 
 Mà $EN=EH$ (giả thiết) nên $AF=EN$.
 
@@ -571,7 +572,5 @@ Vậy ba điểm $A$, $M$, $N$ thẳng hàng.
 - **Câu 17 (0,5 điểm, bài thực tế hàng rào hình chữ nhật) đã BỎ**: đề bị cắt ngang ở cuối trang 2 ("… Bác dự") — tệp nguồn `BỘ-ĐỀ-GKI-8.pdf` trang 48 kết thúc ở đó và trang kế tiếp đã là đề khác (Mỹ Tiến), nên không có đề đầy đủ để giải. Nếu CEO có bản đầy đủ của Câu 17 thì bổ sung sau.
 - Đề không in tên phường / xã nên tiêu đề chỉ ghi "THCS Chuyên Mỹ". Đề không có mã đề; không có bảng đáp án in sẵn.
 - Câu 13 (a, b, c) và Câu 15 (a, b) là bài "Thực hiện phép tính" / "Tìm $x$" gồm các ý độc lập nên đã tách thành từng câu; Câu 14 đáp số 1000 vừa 4 ô nên để trả lời ngắn; Câu 15a (-3) và 15b (5) là số nguyên nên để trả lời ngắn; Câu 13a, 13b, 13c đáp số là biểu thức nên để tự luận.
-- Câu chưa chắc: Câu 16 (ý c có dữ kiện kiểu đường trung bình, đã tự chứng minh bằng hai hình bình hành + tiên đề Euclid — chờ CEO quyết).
-- Câu 7: hình là ảnh chụp nghiêng một chiếc bàn. Trạm soát đã phóng to ảnh: mặt bàn có bốn góc, mép phía xa dài hơn hẳn mép phía gần song song với nó (hình chữ nhật, hình vuông, hình thoi chụp nghiêng thì mép xa không thể dài hơn mép gần) nên đáp án hình thang cân là chắc.
-- Câu 16 đề không cho hình: hình vẽ bằng code, chỉ hiện ở lời giải; có đoạn $AM$ (cạnh của tứ giác $AEFM$ ở ý b), không vẽ đoạn $AN$ để không lộ điều phải chứng minh ở ý c.
+- Câu chưa chắc: Câu 7 (đọc hình thang cân từ ảnh phối cảnh), Câu 9 (A "hai cạnh đối" có hai cách hiểu), Câu 16 (ý c là dạng đường trung bình, đã tự chứng minh bằng hai hình bình hành + tiên đề Euclid).
 - Câu 12: ba hình đã gộp thành một ảnh `p2c12_all.png` (máy cắt thành ba ảnh rời).

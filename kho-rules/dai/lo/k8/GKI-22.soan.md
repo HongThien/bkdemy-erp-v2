@@ -6,7 +6,7 @@ bo_sach: KNTT
 
 ### Bài 1a | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Rút gọn biểu thức: $6xy^2-3xy^2-12xy^2$.
-**Chưa chắc:** ảnh scan làm chữ số "3" ở hạng tử thứ hai bị nhoè (đọc là $3xy^2$); nếu là số khác thì hệ số cuối thay đổi.
+**Chưa chắc:** ảnh scan mất nét nửa trên của hệ số ở hạng tử thứ hai. Ba lượt đọc (trạm soạn, trạm soát phóng to 1200 dpi, máy) đều ra $3xy^2$ — nét còn lại hợp với chữ số 3, nhưng không loại hẳn được chữ số 5 (khi đó đáp số là $-11xy^2$).
 
 **Phần 1. Hướng dẫn**
 
@@ -112,7 +112,7 @@ $=2x^2+3x+17$
 
 **Mấu chốt:** đây là tìm thành phần chưa biết từng lớp: $2$ nhân với cả biểu thức trong ngoặc, nên bóc từng lớp từ ngoài vào trong.
 
-**Bước 1.** Coi $3x-1$ là thừa số chưa biết của tích $2 \cdot (3x-1)=10$, tìm nó bằng phép chia $10:2$.
+**Bước 1.** Coi $3x-1$ là thừa số chưa biết của tích $2(3x-1)=10$, tìm nó bằng phép chia $10:2$.
 
 **Bước 2.** Coi $3x$ là số bị trừ của hiệu $3x-1$, tìm nó bằng cách chuyển $-1$ sang vế bên kia thành $+1$.
 
@@ -171,11 +171,10 @@ Vậy $x=\dfrac{1}{2}$.
 
 ### Bài 2c | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm $x$ biết: $(x-5)^2-x(x+2)=5$.
-**Chưa chắc:** ảnh scan làm số mũ của $(x-5)$ bị nhoè (hiện như dấu "?"). Đọc là số mũ $2$ (giống ý d và để hạng tử $x^2$ triệt tiêu); nếu số mũ khác thì kết quả khác.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** khai triển bình phương của một hiệu, hạng tử $x^2$ ở hai vế triệt tiêu nên còn lại biểu thức bậc nhất của $x$.
+**Mấu chốt:** khai triển bình phương của một hiệu, hai hạng tử $x^2$ và $-x^2$ ở vế trái triệt tiêu nên chỉ còn lại biểu thức bậc nhất của $x$.
 
 **Bước 1.** Khai triển $(x-5)^2$ bằng hằng đẳng thức bình phương của một hiệu $(A-B)^2=A^2-2AB+B^2$.
 
@@ -183,7 +182,7 @@ Vậy $x=\dfrac{1}{2}$.
 
 **Bước 3.** Thu gọn vế trái, chuyển số tự do sang vế phải rồi chia cho hệ số của $x$.
 
-**Chú ý:** hệ số của $x$ sau khi thu gọn là số âm, khi chia hai vế cho số âm đừng quên đổi dấu kết quả.
+**Chú ý:** sau khi thu gọn, hệ số của $x$ và số ở vế phải đều là số âm; số âm chia cho số âm được số dương, đừng để sót dấu trừ ở kết quả.
 
 **Phần 2. Trình bày**
 
@@ -291,7 +290,9 @@ Vậy $P$ luôn dương với mọi giá trị của $x$.
 ### Bài 4.1 | kho=hinh_hoc | loai=tra_loi_ngan | dap_an=14,5
 **Đề:** Để tính khoảng cách giữa hai vị trí $A$ và $B$ ở hai bên bờ ao cá, người ta đã thực hiện đo đạc như hình bên. Hỏi hai vị trí $A$ và $B$ cách nhau bao nhiêu mét?
 **Hình:** p1c4_1.png
+**Hình giải:** giai_bai4_1.png
 **Ghi chú:** Dữ kiện chỉ có trên hình: $A$ nằm trên $MN$ với $MA=AN=9$ m; $B$ nằm trên $MP$ với $MB=BP=16$ m; $NP=29$ m.
+**Chưa chắc:** dữ kiện đúng là bài đường trung bình; lời giải tự chứng minh theo luật không dùng kiến thức chương sau — CEO quyết có cho dùng đường trung bình ở đề này không
 
 **Phần 1. Hướng dẫn**
 
@@ -299,7 +300,7 @@ Vậy $P$ luôn dương với mọi giá trị của $x$.
 
 **Bước 1.** Đọc hình: $MA=AN=9$ m và $MB=BP=16$ m nên $A$ là trung điểm của $MN$, $B$ là trung điểm của $MP$.
 
-**Bước 2.** Lấy điểm $K$ đối xứng với $A$ qua $B$; tứ giác $PAMK$ có hai đường chéo $PM$ và $AK$ cắt nhau tại trung điểm $B$ nên là hình bình hành.
+**Bước 2.** Lấy điểm $K$ trên tia đối của tia $BA$ sao cho $BK=BA$; tứ giác $PAMK$ có hai đường chéo $PM$ và $AK$ cắt nhau tại trung điểm $B$ của mỗi đường nên là hình bình hành.
 
 **Bước 3.** Từ hình bình hành đó có $PK\parallel AM$ và $PK=AM=AN$, nên tứ giác $PKAN$ có một cặp cạnh đối song song và bằng nhau, vậy nó cũng là hình bình hành.
 
@@ -309,9 +310,9 @@ Vậy $P$ luôn dương với mọi giá trị của $x$.
 
 **Phần 2. Trình bày**
 
-Vì $MA=AN=9$ m nên $A$ là trung điểm của $MN$.
+Theo hình vẽ, $A$ nằm trên cạnh $MN$ và $MA=AN=9$ m nên $A$ là trung điểm của $MN$.
 
-Vì $MB=BP=16$ m nên $B$ là trung điểm của $MP$.
+$B$ nằm trên cạnh $MP$ và $MB=BP=16$ m nên $B$ là trung điểm của $MP$.
 
 Lấy điểm $K$ trên tia đối của tia $BA$ sao cho $BK=BA$, khi đó $B$ là trung điểm của $AK$.
 
@@ -335,6 +336,7 @@ a) Chứng minh tứ giác $EFMN$ là hình thang.
 b) Trên tia đối của tia $FN$ lấy điểm $D$ sao cho $FD=FG$, trên tia đối của tia $EM$ lấy điểm $H$ sao cho $GH=MG$. Chứng minh $MGPD$ là hình bình hành và $GE=EH$.
 c) Để $MDPH$ là hình thang cân thì $\triangle MNP$ cần thêm điều kiện gì?
 **Hình giải:** giai_bai4_2.png
+**Chưa chắc:** dữ kiện đúng là bài đường trung bình; lời giải tự chứng minh theo luật không dùng kiến thức chương sau — CEO quyết có cho dùng đường trung bình ở đề này không
 
 **Phần 1. Hướng dẫn**
 
@@ -342,7 +344,7 @@ c) Để $MDPH$ là hình thang cân thì $\triangle MNP$ cần thêm điều ki
 
 **Bước 1.** Ý a: muốn $EFMN$ là hình thang, cần $EF\parallel MN$ (hình thang là tứ giác có một cặp cạnh đối song song); vì chưa học đường trung bình nên ta phải tự chứng minh điều này.
 
-**Bước 2.** Ý a: muốn $EF\parallel MN$, lấy $K$ đối xứng với $E$ qua $F$ rồi cần $MKEN$ là hình bình hành, tức cần $MK\parallel NE$ và $MK=NE$; điều này có được nếu $MEPK$ là hình bình hành (khi đó $MK=EP=NE$), mà $MEPK$ có hai đường chéo $MP$, $EK$ cắt nhau tại trung điểm $F$.
+**Bước 2.** Ý a: muốn $EF\parallel MN$, lấy $K$ trên tia đối của tia $FE$ sao cho $FK=FE$ rồi cần $MKEN$ là hình bình hành, tức cần $MK\parallel NE$ và $MK=NE$; điều này có được nếu $MEPK$ là hình bình hành (khi đó $MK=EP=NE$), mà $MEPK$ có hai đường chéo $MP$, $EK$ cắt nhau tại trung điểm $F$.
 
 **Bước 3.** Ý b: muốn $MGPD$ là hình bình hành, cần hai đường chéo $MP$ và $GD$ cắt nhau tại trung điểm của mỗi đường; điều này có sẵn vì $F$ là trung điểm $MP$ (giả thiết trung tuyến) và $FD=FG$ (giả thiết).
 
@@ -376,7 +378,9 @@ b) Vì $G$ nằm trên đoạn $NF$ nên $G$ thuộc tia $FN$; $D$ thuộc tia �
 
 Tứ giác $MGPD$ có hai đường chéo $MP$ và $GD$ cắt nhau tại $F$, là trung điểm của $MP$ và của $GD$, nên $MGPD$ là hình bình hành (dấu hiệu nhận biết).
 
-Vì $G$ là trọng tâm của $\triangle MNP$ nên $MG=2GE$.
+Vì hai đường trung tuyến $ME$, $NF$ của $\triangle MNP$ cắt nhau tại $G$ nên $G$ là trọng tâm của $\triangle MNP$.
+
+Suy ra $MG=\dfrac{2}{3}ME$ (tính chất trọng tâm), do đó $GE=\dfrac{1}{3}ME$ và $MG=2GE$.
 
 Mà $GH=MG$ nên $GH=2GE$.
 
@@ -406,12 +410,11 @@ Vậy để $MDPH$ là hình thang cân thì $\triangle MNP$ cần thêm điều
 
 ### Bài 5 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Một khách sạn có 50 phòng. Hiện tại mỗi phòng khách sạn cho thuê với giá 400 nghìn đồng/1 ngày và toàn bộ phòng đã được thuê hết. Biết cứ mỗi lần khách sạn tăng giá thuê phòng thêm 20 nghìn đồng/1 ngày thì có thêm 2 phòng trống. Hỏi khách sạn nên tăng giá phòng thêm bao nhiêu để doanh thu của khách sạn trong một ngày là lớn nhất?
-**Ghi chú:** Đề in "đồng/ 1 ngày" xuống dòng giữa chừng; đã nối lại thành "đồng/1 ngày".
 **Chưa chắc:** đề có hai cách hiểu. Hiểu theo tỉ lệ (cứ tăng 10 nghìn đồng thì trống thêm 1 phòng) cho đáp số duy nhất: tăng 50 nghìn đồng, doanh thu lớn nhất 20 250 nghìn đồng/ngày (bài này chọn cách hiểu đó). Nếu chỉ được tăng đúng từng bậc 20 nghìn đồng thì doanh thu lớn nhất là 20 240 nghìn đồng, đạt khi tăng 40 hoặc 60 nghìn đồng (hai đáp số).
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** viết doanh thu một ngày = giá phòng × số phòng thuê theo một ẩn, rồi biến đổi thành "hằng số trừ một số không âm" để tìm giá trị lớn nhất.
+**Mấu chốt:** viết doanh thu một ngày (giá một phòng nhân với số phòng được thuê) theo một chữ $x$, rồi biến đổi thành "hằng số trừ một số không âm" để tìm giá trị lớn nhất.
 
 **Bước 1.** Từ "tăng 20 nghìn thì trống thêm 2 phòng" suy ra cứ tăng 10 nghìn thì trống thêm 1 phòng; đặt $x$ là số phòng trống thêm.
 
@@ -427,7 +430,9 @@ Vậy để $MDPH$ là hình thang cân thì $\triangle MNP$ cần thêm điều
 
 Gọi $x$ là số phòng trống thêm ($x$ là số tự nhiên, $x\le 50$).
 
-Vì cứ tăng $10$ nghìn đồng thì trống thêm $1$ phòng nên giá thuê một phòng khi đó là $400+10x$ (nghìn đồng) và số phòng được thuê là $50-x$.
+Cứ tăng giá thêm $20$ nghìn đồng thì có thêm $2$ phòng trống, tức là cứ tăng $10$ nghìn đồng thì trống thêm $1$ phòng.
+
+Do đó khi có $x$ phòng trống thêm thì giá thuê một phòng là $400+10x$ (nghìn đồng) và số phòng được thuê là $50-x$ (phòng).
 
 Doanh thu một ngày là:
 
@@ -459,4 +464,5 @@ Vậy khách sạn nên tăng giá phòng thêm $50$ nghìn đồng/1 ngày.
 - Bài 4.1 nhập dạng trả lời ngắn (đáp số $14{,}5$ vừa 4 ô).
 - Bài 4.2 ý c: điều kiện tìm được là $\triangle MNP$ cân tại $M$; đã thử bằng toạ độ số cả hai chiều (cân tại $M$ thì $MDPH$ là hình thang cân, không cân thì hai đường chéo $MP$, $DH$ khác nhau). $MH=2DP$ nên $MDPH$ không bao giờ là hình bình hành.
 - Bài 5 có hai cách hiểu, xem dòng `Chưa chắc` ở câu đó.
-- Ảnh đề là bản scan chất lượng thấp: hai chỗ nhoè (Bài 1a: hệ số $3$; Bài 2c: số mũ) đã ghi `Chưa chắc`. Hình của Bài 4.1 cắt từ ảnh trang (tệp `p1c4_1.png`); tệp `p2c4_1.png` do máy cắt cũng là hình này nhưng gắn nhầm vào ý II.4, không dùng.
+- Ảnh đề là bản scan chất lượng thấp, có hai chỗ nhoè. Bài 1a (hệ số của hạng tử thứ hai): mất nét nửa trên, đọc là $3$ nhưng không loại hẳn được $5$ nên giữ `Chưa chắc`. Bài 2c (số mũ của $(x-5)$): phóng to 1200 dpi còn rõ nét móc phía trên và vết chân ngang của chữ số 2 (so với số mũ 2 ở ý d và số mũ 3 ở Bài 1d cùng trang), trạm soát đọc chắc là mũ 2 nên đã bỏ `Chưa chắc`.
+- Hình của Bài 4.1 cắt từ ảnh trang (tệp `p1c4_1.png`); tệp `p2c4_1.png` do máy cắt cũng là hình này nhưng gắn nhầm vào ý II.4, không dùng. Bài 4.1 có thêm `Hình giải` (vẽ đúng tỉ lệ $18$ – $32$ – $29$, điểm phụ $K$ và các đường phụ nét đứt). `Hình giải` của Bài 4.2 có điểm phụ $K$ (ý a) và đoạn $NH$ (ý c) nét đứt; không gạch dấu $GH=MG$ vì gạch trên $GH$ sẽ rơi vào đoạn $GE$, dễ đọc nhầm.

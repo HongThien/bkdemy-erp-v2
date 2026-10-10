@@ -77,7 +77,7 @@ D. $2x^3y^3z^3$
 
 **Bước 3.** Giữ lại phương án mà cả ba số mũ đều không vượt quá.
 
-**Chú ý:** không cần xét hệ số 10 có chia hết cho hệ số $-9$ hay không, vì điều kiện chia hết của đơn thức chỉ xét phần biến.
+**Chú ý:** không cần quan tâm hệ số $-9$ có chia hết cho 10 hay không, vì phép chia đơn thức cho đơn thức chỉ xét phần biến.
 
 **Phần 2. Trình bày**
 
@@ -170,7 +170,7 @@ D. Hình chữ nhật
 
 Hình thang có hai đường chéo bằng nhau là hình thang cân (dấu hiệu nhận biết).
 
-Có những hình thang cân mà hai cạnh bên không song song (hai đáy không bằng nhau): chúng có hai đường chéo bằng nhau nhưng không phải là hình bình hành, hình chữ nhật hay hình vuông. Do đó A, B, D không đúng.
+Hình thang cân có hai cạnh bên không song song nên không phải hình bình hành, hình chữ nhật hay hình vuông; do đó A, B, D không đúng.
 
 Chọn C.
 
@@ -442,8 +442,8 @@ Diện tích khu vườn hình vuông ban đầu là $30^2=900$ ($m^2$).
 a) Tam giác $AMH$ cân.
 b) Tứ giác $DHMN$ là hình thang cân.
 **Hình giải:** giai_bai3.png
-**Ghi chú:** Đề in chỉ có $AB<BC$. Để $D$ khác $H$ và $H$ nằm giữa $B$ và $D$ (nhờ đó $DHMN$ là tứ giác lồi với các đỉnh đúng thứ tự $D, H, M, N$) cần thêm điều kiện $AB<AC$; nếu $AB=AC$ thì $D$ trùng $H$, nếu $AB>AC$ (vd tam giác nhọn có $AB=5$, $BC=6$, $AC=4$ vẫn thoả $AB<BC$) thì $H$ nằm giữa $D$ và $C$, hai cạnh $HM$, $ND$ cắt nhau nên $DHMN$ không là hình thang. Đã thêm $AB<AC$ vào đề.
-**Chưa chắc:** Đề in $AB<BC$ (đã đọc lại ảnh phóng to: đúng là $BC$) — điều kiện này không đủ và lời giải cũng không dùng tới; nhiều khả năng đề gõ nhầm $AC$ thành $BC$. Kho đang giữ $AB<BC$ và thêm $AB<AC$; CEO chọn giữ như vậy hay thay hẳn bằng $AB<AC$. Ý 2b lấy vị trí "$H$ nằm giữa $B$ và $D$" theo hình vẽ (đúng khi $AB<AC$, đã kiểm bằng toạ độ), lời giải không chứng minh vị trí này.
+**Ghi chú:** Đề in $AB<BC$. Để $D$ khác $H$ và $H$ nằm giữa $B$ và $D$ (nhờ đó $DHMN$ là tứ giác lồi với các đỉnh đúng thứ tự $D, H, M, N$) cần thêm điều kiện $AB<AC$; nếu $AB=AC$ thì $D$ trùng $H$, nếu $AB>AC$ thì thứ tự điểm trên $BC$ đổi và $DHMN$ tự cắt. Đã thêm $AB<AC$ vào đề.
+**Chưa chắc:** (1) Có thể đề gốc định in $AB<AC$ chứ không phải $AB<BC$; đã giữ nguyên $AB<BC$ và thêm $AB<AC$. (2) Ý 2b dùng "$H$ nằm giữa $B$ và $D$" theo hình vẽ khi $AB<AC$, lời giải không chứng minh điều này bằng kiến thức đã học. (3) Giả thiết ($M$ là trung điểm $AB$, $MN\parallel BC$) đúng kiểu bài đường trung bình, nhưng lời giải không dùng đường trung bình ($N$ là trung điểm $AC$, $MN=\dfrac{1}{2}BC$): ý 1 chỉ dùng $BD=MN$ của đề.
 
 **Phần 1. Hướng dẫn**
 
@@ -483,7 +483,7 @@ Vì $H$ thuộc cạnh $BC$ nên $\widehat{MBH}=\widehat{ABC}$. Do đó $\wideha
 
 Vì $BMND$ là hình bình hành (câu 1) nên $DN\parallel BM$, tức là $DN\parallel BA$. Suy ra $\widehat{NDC}=\widehat{ABC}$ (hai góc đồng vị) (2).
 
-Vì $AB<AC$ nên điểm $H$ nằm giữa hai điểm $B$ và $D$ (hình vẽ), do đó $\widehat{DHM}$ và $\widehat{MHB}$ là hai góc kề bù: $\widehat{DHM}=180^\circ-\widehat{MHB}$ (3).
+Vì $H$ nằm giữa $B$ và $D$ nên $\widehat{DHM}$ và $\widehat{MHB}$ là hai góc kề bù: $\widehat{DHM}=180^\circ-\widehat{MHB}$ (3).
 
 Vì $D$ nằm giữa $B$ và $C$ nên $\widehat{BDN}$ và $\widehat{NDC}$ là hai góc kề bù; mà tia $DH$ trùng tia $DB$ nên $\widehat{HDN}=\widehat{BDN}=180^\circ-\widehat{NDC}$ (4).
 
@@ -502,13 +502,13 @@ Hình thang $DHMN$ có hai góc kề đáy $DH$ bằng nhau ($\widehat{DHM}=\wid
 
 **Bước 1.** Nhìn các hạng tử chứa $x$: $9x^2=(3x)^2$, $-12xy$ và $18x$ gợi ý ghép thành bình phương $(3x-2y+3)^2$, vì $2 \cdot 3x \cdot 3=18x$ và $2 \cdot 3x \cdot (-2y)=-12xy$.
 
-**Bước 2.** Khai triển $(3x-2y+3)^2$ bằng cách coi nó là bình phương của $(3x-2y)+3$, rồi tách $M$ thành bình phương đó cộng phần còn lại: tách $6y^2=4y^2+2y^2$ và tách số $-27$ thành $9$ cộng với một số âm.
+**Bước 2.** Khai triển $(3x-2y+3)^2$ bằng cách coi nó là bình phương của $(3x-2y)+3$, rồi tách $M$ thành bình phương đó cộng phần còn lại ($6y^2=4y^2+2y^2$ và $-27=9-36$).
 
-**Bước 3.** Phần còn lại gồm $2y^2$ và một hằng số; vì $(3x-2y+3)^2$ và $2y^2$ đều không âm nên $M$ không nhỏ hơn hằng số đó.
+**Bước 3.** Phần còn lại là $2y^2-36$; cả $(3x-2y+3)^2$ và $2y^2$ đều không âm nên $M$ không nhỏ hơn $-36$.
 
 **Bước 4.** Tìm $x$, $y$ để cả hai bình phương cùng bằng 0, từ đó kết luận giá trị nhỏ nhất đạt được.
 
-**Chú ý:** phải chỉ ra giá trị của $x$, $y$ làm dấu bằng xảy ra, nếu không thì mới chỉ biết $M$ không nhỏ hơn hằng số đó, chưa biết $M$ có đạt được giá trị ấy hay không.
+**Chú ý:** phải chỉ ra giá trị của $x$, $y$ làm dấu bằng xảy ra, nếu không thì $-36$ mới chỉ là một cận dưới.
 
 **Phần 2. Trình bày**
 
@@ -536,6 +536,6 @@ Vậy giá trị nhỏ nhất của $M$ là $-36$, đạt được khi $x=-1$ v�
 - Vì đề hỏi trung tuyến ứng với cạnh huyền (Câu 8) nên Bài 3 ý 2a dùng tính chất này như kiến thức đã học (không chứng minh lại). Không dùng đường trung bình ở chỗ nào.
 - Đề có 13 câu vào kho: 8 trắc nghiệm, 1 câu Đúng/Sai (nhập tự luận), Bài 1 tách thành Bài 1.1a, 1.1b, 1.1c (ba ý "thực hiện phép tính" độc lập) và Bài 1.2 (chứng minh không phụ thuộc biến, một bài toán riêng), Bài 2 (lời văn, hai ý nối nhau, giữ chung), Bài 3 (bài hình, không tách ý), Bài 4 (trả lời ngắn, đáp số $-36$).
 - Câu 9 là câu Đúng/Sai nhiều mệnh đề nên nhập `tu_luan`; đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.
-- Bài 3 đề không cho hình: đã vẽ hình giải bằng code (`giai_bai3.png`), chỉ hiện ở lời giải, không vẽ các điều phải chứng minh ($MA=MH$, $DHMN$ cân). Đề gốc thiếu điều kiện $AB<AC$ — xem `**Ghi chú:**` và `**Chưa chắc:**` của Bài 3. Giả thiết ($M$ là trung điểm $AB$, $MN\parallel BC$) giống bài đường trung bình nhưng lời giải không cần tới: không dùng "$N$ là trung điểm $AC$" hay "$MN=\dfrac{1}{2}BC$", ý 1 chỉ dùng $BD=MN$ của đề.
+- Bài 3 đề không cho hình: đã vẽ hình giải bằng code (`giai_bai3.png`), chỉ hiện ở lời giải, không vẽ các điều phải chứng minh ($MA=MH$, $DHMN$ cân). Đề gốc thiếu điều kiện $AB<AC$ — xem `**Ghi chú:**` và `**Chưa chắc:**` của Bài 3.
 - Bài 1.1c: dấu `:xy` chỉ chia cho dấu ngoặc đứng ngay trước nó (nhân chia trước, trừ sau); đề in ngay sau dấu ngoặc nên không có cách hiểu khác hợp lí.
 - Đề không có bảng đáp án in sẵn.

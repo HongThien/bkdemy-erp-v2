@@ -307,7 +307,7 @@ c) Kẻ đường trung tuyến $AM$, $DE$ cắt $AM$ ở $Q$. Chứng minh $\tr
 
 **Bước 2.** Ý b: muốn $DHKE$ là hình bình hành, cần một cặp cạnh đối vừa song song vừa bằng nhau; chọn cặp $DH$ và $KE$.
 
-**Bước 3.** Ý b: $DH\parallel AE$ và $DH=AE$ (hình chữ nhật $ADHE$ ở ý a cũng là hình bình hành nên hai cạnh đối song song và bằng nhau); mà $K$ nằm trên đường thẳng $AE$ với $EK=AE$ (vì $E$ là trung điểm $AK$) nên $DH\parallel KE$ và $DH=KE$.
+**Bước 3.** Ý b: $DH\parallel AE$ và $DH=AE$ (cạnh đối của $ADHE$, ý a); mà $K$ nằm trên đường thẳng $AE$ với $EK=AE$ (vì $E$ là trung điểm $AK$) nên $DH\parallel KE$ và $DH=KE$.
 
 **Bước 4.** Ý c: muốn $\triangle AEQ$ vuông ở $Q$, cần $\widehat{QAE}+\widehat{QEA}=90^\circ$ (vì tổng ba góc tam giác $=180^\circ$).
 
@@ -315,7 +315,7 @@ c) Kẻ đường trung tuyến $AM$, $DE$ cắt $AM$ ở $Q$. Chứng minh $\tr
 
 **Bước 6.** Ý c: $\widehat{QEA}=\widehat{DEA}=\widehat{HAC}$ vì hai đường chéo $AH$, $DE$ của hình chữ nhật $ADHE$ bằng nhau và cắt nhau tại trung điểm $O$ nên $\triangle OAE$ cân; mà $\widehat{HAC}=90^\circ-\widehat{C}$ (tam giác $AHC$ vuông ở $H$), nên tổng hai góc cần tìm bằng $\widehat{C}+90^\circ-\widehat{C}=90^\circ$.
 
-**Chú ý:** tính chất trung tuyến ứng với cạnh huyền học cùng bài hình chữ nhật, và đề này đã hỏi tới hình chữ nhật nên được dùng; $Q$ nằm trên đoạn $DE$ và trên tia $AM$ nên $\widehat{QEA}$ chính là $\widehat{DEA}$, $\widehat{QAE}$ chính là $\widehat{MAC}$.
+**Chú ý:** tính chất trung tuyến ứng với cạnh huyền học cùng bài hình chữ nhật, và đề này đã hỏi tới hình chữ nhật nên được dùng; $Q$ nằm trên đoạn $DE$ và trên tia $AM$ nên các góc ở $Q$ đổi thành góc ở $D$, $M$ được.
 
 **Phần 2. Trình bày**
 
@@ -329,9 +329,9 @@ Tổng các góc của tứ giác $ADHE$ bằng $360^\circ$ nên $\widehat{DHE}=
 
 Tứ giác $ADHE$ có bốn góc vuông nên $ADHE$ là hình chữ nhật.
 
-b) Vì $ADHE$ là hình chữ nhật (câu a) nên $ADHE$ cũng là hình bình hành.
+b) Tứ giác $ADHE$ có các góc đối bằng nhau (cùng bằng $90^\circ$) nên $ADHE$ là hình bình hành (dấu hiệu nhận biết).
 
-Do đó $DH\parallel AE$ và $DH=AE$ (hai cạnh đối của hình bình hành).
+Do đó $DH\parallel AE$ và $DH=AE$ (tính chất hình bình hành).
 
 Vì $E$ là trung điểm của $AK$ nên ba điểm $A$, $E$, $K$ thẳng hàng và $EK=AE$.
 
@@ -364,21 +364,21 @@ Vậy $\triangle AEQ$ vuông ở $Q$.
 ### Bài 6 | kho=dai | loai=tra_loi_ngan | dap_an=4050
 **Đề:** Bác nông dân làm một hàng rào trồng rau hình chữ nhật có chiều dài song song với bờ tường. Bác chỉ làm ba mặt vì mặt thứ tư bác tận dụng luôn bờ tường. Bác dự tính sẽ dùng $180$ m lưới sắt để làm nên toàn bộ hàng rào đó. Hỏi diện tích lớn nhất bác có thể rào là bao nhiêu?
 **Hình:** p1c6_rao.png
-**Chưa chắc:** bài tìm giá trị lớn nhất này thường giải bằng hằng đẳng thức bình phương của một hiệu, nhưng cả đề không có câu nào khác về hằng đẳng thức nên lời giải tự khai triển $(x-45)(x-45)$ bằng nhân đa thức rồi dùng "bình phương của một số thì không âm"; CEO quyết giữ cách này hay đổi sang hằng đẳng thức. Đáp số $4050$ ($m^2$) chắc chắn (hai trạm giải độc lập, máy kiểm).
+**Chưa chắc:** bài tìm giá trị lớn nhất này thường giải bằng hằng đẳng thức bình phương của một hiệu, nhưng cả đề không có câu nào về hằng đẳng thức nên lời giải tự khai triển $(x-45)(x-45)$ bằng nhân đa thức rồi dùng "bình phương một số không âm"; CEO quyết giữ cách này hay đổi sang hằng đẳng thức. Đáp số 4050 ($m^2$) chắc chắn.
 
 **Phần 1. Hướng dẫn**
 
 **Mấu chốt:** hàng rào chỉ có ba mặt (hai chiều rộng và một chiều dài), nên hai lần chiều rộng cộng chiều dài bằng $180$ m; diện tích là một biểu thức bậc hai của chiều rộng và ta chặn nó bằng một bình phương không âm.
 
-**Bước 1.** Gọi chiều rộng là $x$ (hai cạnh vuông góc với bờ tường) và chiều dài là $y$ (cạnh song song với bờ tường); ba mặt rào dài $2x+y=180$ nên tính được $y$ theo $x$.
+**Bước 1.** Gọi chiều rộng là $x$ (hai cạnh vuông góc với bờ tường) và chiều dài là $y$ (cạnh song song bờ tường); ba mặt rào dài $2x+y=180$ nên $y=180-2x$.
 
-**Bước 2.** Viết diện tích bằng tích hai kích thước rồi nhân ra, được một biểu thức chỉ còn $x$, có hạng tử $-2x^2$ và một hạng tử bậc nhất.
+**Bước 2.** Viết diện tích bằng tích hai kích thước rồi khai triển: $S=xy=x(180-2x)=180x-2x^2$.
 
-**Bước 3.** Muốn tìm giá trị lớn nhất, đưa $S$ về dạng "một số trừ đi hai lần một bình phương": tìm số $a$ sao cho $2(x-a)(x-a)$ khi nhân ra có đúng hạng tử bậc nhất của $S$ (đổi dấu); số còn dư ra chính là số chặn trên của $S$.
+**Bước 3.** Muốn tìm giá trị lớn nhất, ta thử chặn $S$ bởi một số: biến đổi $4050-S$ thành $2(x-45)(x-45)$ (nghĩa là $2(x-45)^2$), nó không âm với mọi $x$.
 
-**Bước 4.** Bình phương của một số thì không âm, nên $S$ không vượt quá số chặn đó và bằng đúng số đó khi $x=a$; kiểm tra lại với $x=a$ thì chiều dài $y$ dương và không nhỏ hơn chiều rộng.
+**Bước 4.** Từ $4050-S\ge 0$ suy ra $S\le 4050$; dấu bằng xảy ra khi $x=45$, kiểm tra thấy $y=90>0$ nên đạt được.
 
-**Chú ý:** đề này chưa hỏi tới hằng đẳng thức nên không viết thẳng $x^2-90x+2025=(x-45)^2$; ta tự kiểm bằng cách nhân $(x-45)(x-45)$ ra rồi mới dùng.
+**Chú ý:** số $4050$ lấy từ việc làm cho hạng tử $-180x$ khớp với $2(x-45)(x-45)=2x^2-180x+4050$.
 
 **Phần 2. Trình bày**
 
@@ -386,7 +386,7 @@ Gọi chiều rộng của hàng rào là $x$ (m) ($0<x<90$), chiều dài là $
 
 Hàng rào chỉ có ba mặt nên $2x+y=180$, suy ra $y=180-2x$.
 
-Diện tích khu đất được rào là $S=xy=x(180-2x)=180x-2x^2$ ($m^2$).
+Diện tích hàng rào là $S=xy=x(180-2x)=180x-2x^2$ ($m^2$).
 
 Xét $4050-S=4050-180x+2x^2=2(x^2-90x+2025)$.
 

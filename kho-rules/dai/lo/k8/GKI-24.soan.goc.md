@@ -424,7 +424,7 @@ A. Hình chữ nhật có hai cạnh kề bằng nhau là hình vuông.
 B. Hình thang có hai cạnh bên song song là hình bình hành.
 C. Hình thang có hai cạnh đáy bằng nhau là hình bình hành.
 D. Tứ giác có hai cặp cạnh song song là hình bình hành.
-**Chưa chắc:** Đề lỗi — cả bốn phát biểu đều đúng (A là dấu hiệu nhận biết hình vuông; B, C là nhận xét về hình thang trong sách giáo khoa; D đúng vì hai cạnh kề không thể song song nên hai cặp cạnh song song buộc là hai cặp cạnh đối). Hai lượt giải độc lập cùng kết luận như vậy. Tạm chọn D vì đây là phát biểu duy nhất thiếu chữ "đối" so với sách giáo khoa; CEO quyết giữ D hay bỏ câu.
+**Chưa chắc:** Cả bốn phát biểu đều đúng theo sách giáo khoa (D đúng vì hai cặp cạnh song song chỉ có thể là hai cặp cạnh đối), nên đề in có thể sai. Chọn D vì đây là phát biểu không nêu "cạnh đối" như dấu hiệu nhận biết trong sách giáo khoa, tức là phát biểu kém chặt chẽ nhất; cần đối chiếu đáp án gốc của trường.
 
 **Phần 1. Hướng dẫn**
 
@@ -650,7 +650,7 @@ Vậy $x=-1$.
 a) Tính theo $a$ tổng diện tích bốn hình vuông nhỏ.
 b) Tìm giá trị của $a$ để tổng diện tích bốn hình vuông nhỏ bằng diện tích phần còn lại.
 **Hình:** p2c1_1.png
-**Chưa chắc:** Ý b giải theo đúng câu chữ: "phần còn lại" là phần bìa còn lại sau khi cắt bốn góc, diện tích $1600-4a^2$, ra $a=\sqrt{200}\approx 14{,}1$ (hai lượt giải độc lập cùng ra kết quả này). Số không đẹp; nếu người ra đề coi "phần còn lại" là đáy thùng, diện tích $(40-2a)^2$, thì $a=10$. CEO quyết giữ cách hiểu nào.
+**Chưa chắc:** Hiểu "phần còn lại" là phần bìa còn lại sau khi cắt bốn góc, diện tích $1600-4a^2$; khi đó $a=10\sqrt{2}$ không phải số đẹp, nên có thể đề muốn một cách hiểu khác.
 
 **Phần 1. Hướng dẫn**
 
@@ -664,7 +664,7 @@ b) Tìm giá trị của $a$ để tổng diện tích bốn hình vuông nhỏ 
 
 **Bước 4.** Lấy căn bậc hai dương của số đó (vì $a$ là độ dài nên $a>0$) rồi kiểm tra các hình vuông nhỏ có nằm vừa trong tấm bìa không.
 
-**Chú ý:** $a$ là độ dài cạnh nên chỉ lấy giá trị dương. Kết quả là một căn bậc hai không tính ra số tự nhiên, cứ để nguyên dấu căn rồi ghi thêm giá trị gần đúng.
+**Chú ý:** phải bỏ nghiệm âm vì $a$ là độ dài cạnh.
 
 **Phần 2. Trình bày**
 
@@ -682,11 +682,11 @@ $8a^2=1600$
 
 $a^2=200$
 
-Vì $a>0$ nên $a=\sqrt{200}$ (cm), tức là $a\approx 14{,}1$ cm.
+Vì $a>0$ nên $a=\sqrt{200}=10\sqrt{2}$ (cm).
 
-Vì $a^2=200<400=20^2$ nên $a<20$, tức là $2a<40$: bốn hình vuông nhỏ cắt được ở bốn góc mà không chồng lên nhau.
+Giá trị này thoả điều kiện vì $2a=20\sqrt{2}<40$ nên các hình vuông nhỏ không chồng lên nhau.
 
-Vậy $a=\sqrt{200}\approx 14{,}1$ (cm).
+Vậy $a=10\sqrt{2}$ cm.
 
 ### Câu 3 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho $\triangle ABC$ vuông tại $A$, kẻ đường cao $AH$ ($H\in BC$). Từ $H$ kẻ các đường thẳng vuông góc với $AB$, $AC$ lần lượt tại $D$ và $E$. Gọi $M$ là trung điểm của $BC$.
@@ -775,7 +775,7 @@ $S=x^2-y^2=(x-y)(x+y)=50(x-y)$
 
 Vì $x=50-y$ nên $x-y=50-2y$, do đó $S=50(50-2y)$.
 
-Vì $y$ càng nhỏ thì $50-2y$ càng lớn nên $S$ lớn nhất khi $y$ nhỏ nhất. Vì $y$ là số tự nhiên khác 0 nên $y$ nhỏ nhất bằng 1.
+$S$ lớn nhất khi $y$ nhỏ nhất. Vì $y$ là số tự nhiên khác 0 nên $y$ nhỏ nhất bằng 1.
 
 Khi đó $x=49$ và $S=50 \cdot 48=2400$ ($cm^2$).
 
@@ -786,6 +786,6 @@ Vậy An cần cắt sợi dây thành hai đoạn dài $4$ cm và $196$ cm; khi
 - Bộ sách: CTST (đoán theo nội dung đề: có định lí Pythagore, hằng đẳng thức tới lập phương, hình thoi, hình chữ nhật, trung tuyến ứng với cạnh huyền ở giữa kì 1). Lời giải chỉ dùng các kiến thức đề này chạm tới; câu 8 tự chứng minh chiều đảo của trung tuyến ứng với cạnh huyền bằng tam giác cân thay vì trích dẫn.
 - Đề có 24 câu gốc: 20 trắc nghiệm + 4 tự luận. Câu 1 tự luận có hai ý độc lập nên tách thành Câu 1.1 (rút gọn) và Câu 1.2 (tìm $x$, đáp số $-1$ nên tô được 4 ô). Các bài còn lại giữ chung một câu.
 - Câu 15: cả bốn phát biểu đều đúng, đề in có thể lỗi; đã chọn D và ghi `Chưa chắc`.
-- Câu 2 (tự luận): $a=\sqrt{200}\approx 14{,}1$ (bằng $10\sqrt{2}$; lớp 8 chưa học đưa thừa số ra ngoài dấu căn nên lời giải để $\sqrt{200}$), ghi `Chưa chắc` về cách hiểu "phần còn lại".
+- Câu 2 (tự luận): $a=10\sqrt{2}$, ghi `Chưa chắc` về cách hiểu "phần còn lại".
 - Hình `p1c11_1.png` là hình của Câu 12 (bản máy gắn nhầm cho Câu 11); `p2c1_1.png` là hình của Câu 2 tự luận; Câu 4 tự luận dùng hình cắt lại `p2c4_lai.png` (hình máy cắt thiếu cạnh dưới). Câu 3 tự luận đề không cho hình nên vẽ `giai_cau3.png` chỉ hiện ở lời giải.
-- Đề không in sẵn đáp án.
+- Bản máy gõ lại bị lẫn nhiều chỗ so với ảnh (Câu 3 TN, Câu 9 TN, Câu 18 TN); đã soát theo ảnh trang. Đề không in sẵn đáp án.

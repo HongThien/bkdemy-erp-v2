@@ -202,6 +202,7 @@ A. Tứ giác có hai cạnh đối song song là hình bình hành
 B. Tứ giác có hai cạnh đối bằng nhau là hình bình hành
 C. Tứ giác có hai góc đối bằng nhau là hình bình hành
 D. Tứ giác có các cạnh đối song song là hình bình hành
+**Chưa chắc:** C và D đều có thể bị coi là đúng tuỳ cách hiểu. Dấu hiệu chuẩn là "các góc đối bằng nhau" (cả hai cặp) và "các cạnh đối song song" (cả hai cặp, chính là định nghĩa). Vì A, B, C dùng "hai cạnh đối / hai góc đối" (chỉ một cặp) nên sai, D dùng "các cạnh đối" nên đúng; nếu người ra đề hiểu "hai góc đối bằng nhau" là hai cặp góc đối thì C cũng đúng. Chọn D là phương án hợp lí nhất.
 
 **Phần 1. Hướng dẫn**
 
@@ -221,7 +222,7 @@ A sai: hình thang có hai cạnh đối (hai đáy) song song nhưng không là
 
 B sai: hình thang cân có hai cạnh đối (hai cạnh bên) bằng nhau nhưng không là hình bình hành.
 
-C sai: tứ giác có bốn góc lần lượt bằng $90^\circ$, $60^\circ$, $90^\circ$, $120^\circ$ có hai góc đối bằng nhau (cùng bằng $90^\circ$) nhưng hai góc đối còn lại không bằng nhau nên không là hình bình hành.
+C sai: tứ giác chỉ có một cặp góc đối bằng nhau chưa đủ để là hình bình hành.
 
 D đúng: tứ giác có các cạnh đối song song là hình bình hành (định nghĩa).
 
@@ -403,12 +404,12 @@ $=9 \cdot 41=369$.
 Vậy diện tích khu đất không trồng rau là $369\ m^2$.
 
 ### Câu 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
-**Đề:** Cho $\triangle ABC$ vuông cân tại $A$. Gọi $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ bất kì ($MD\neq MA$). Từ $D$ kẻ các đường thẳng vuông góc với $AB$, $AC$ lần lượt tại $E$, $F$.
+**Đề:** Cho $\triangle ABC$ vuông cân tại $A$. Gọi $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ bất kì ($D$ không phải điểm đối xứng với $A$ qua $M$). Từ $D$ kẻ các đường thẳng vuông góc với $AB$, $AC$ lần lượt tại $E$, $F$.
 a) Chứng minh $AEDF$ là hình vuông.
 b) Chứng minh $EF\parallel BC$.
 c) Qua $E$ kẻ đường thẳng vuông góc với $MF$ tại $N$. Chứng minh $\widehat{AND}=90^\circ$.
 **Hình giải:** giai_cau4.png
-**Ghi chú:** đề gốc chỉ nói "$D$ bất kì". Nếu $MD=MA$ thì $E$ trùng $B$, $F$ trùng $C$: đường thẳng $EF$ trùng với $BC$ (ý b không còn là hai đường thẳng song song) và $N$ trùng $E$ (ý c không còn tam giác $ENF$), nên thêm điều kiện $MD\neq MA$ để loại trường hợp này.
+**Ghi chú:** đề gốc chỉ nói "$D$ bất kì". Nếu $D$ là điểm đối xứng với $A$ qua $M$ thì $E\equiv B$, $F\equiv C$, đường thẳng $EF$ trùng $BC$ (ý b không còn là hai đường song song) và $N\equiv M$ (ý c suy biến), nên thêm điều kiện loại trường hợp này.
 
 **Phần 1. Hướng dẫn**
 
@@ -442,7 +443,7 @@ $AM$ là cạnh chung
 
 Do đó $\triangle ABM=\triangle ACM$ (c.c.c).
 
-Suy ra $\widehat{BAM}=\widehat{CAM}$ nên $AM$ là tia phân giác của $\widehat{BAC}$. Mà $D$ thuộc tia $AM$ (vì $D$ nằm trên tia đối của tia $MA$), $E$ thuộc $AB$, $F$ thuộc $AC$ nên $AD$ là tia phân giác của $\widehat{EAF}$.
+Suy ra $\widehat{BAM}=\widehat{CAM}$ nên $AM$ là tia phân giác của $\widehat{BAC}$. Mà $A$, $M$, $D$ thẳng hàng, $E$ thuộc $AB$, $F$ thuộc $AC$ nên $AD$ là tia phân giác của $\widehat{EAF}$.
 
 Tứ giác $AEDF$ có $\widehat{EAF}=\widehat{BAC}=90^\circ$, $\widehat{AED}=90^\circ$ ($DE\perp AB$), $\widehat{AFD}=90^\circ$ ($DF\perp AC$).
 
@@ -462,7 +463,7 @@ Vậy $EF\parallel BC$ (cùng vuông góc với $AD$).
 
 c) Gọi $I$ là giao điểm của hai đường chéo $AD$ và $EF$ của hình vuông $AEDF$.
 
-Vì $AEDF$ là hình vuông (câu a) nên hai đường chéo $AD$ và $EF$ bằng nhau và cắt nhau tại trung điểm của mỗi đường. Do đó $AD=EF$ và $I$ là trung điểm của $AD$, của $EF$.
+Khi đó $I$ là trung điểm của $AD$ và của $EF$, và $AD=EF$ (hai đường chéo của hình chữ nhật bằng nhau).
 
 Xét $\triangle ENF$ có $\widehat{ENF}=90^\circ$ ($EN\perp MF$) và $I$ là trung điểm của cạnh huyền $EF$ nên $NI=\dfrac{1}{2}EF$ (trung tuyến ứng với cạnh huyền).
 
@@ -474,12 +475,13 @@ Vậy $\widehat{AND}=90^\circ$.
 
 ### Câu 5 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm đa thức $f(x)$ biết $f(x)$ chia cho $x-2$ thì dư 5, $f(x)$ chia cho $x-1$ thì dư 3, $f(x)$ chia cho $(x-1)(x-2)$ thì được thương là $2x-1$ và còn dư.
+**Chưa chắc:** phép chia đa thức một biến cho đa thức có dư không nằm trong KNTT 8 (chương trình chỉ chia cho đơn thức), có vẻ là câu nâng cao. Lời giải chỉ dùng hai điều: số dư có bậc nhỏ hơn bậc của số chia (nên là $ax+b$) và thay giá trị $x=1$, $x=2$. Đáp số $f(x)=2x^3-7x^2+9x-1$ đã thử lại ($f(1)=3$, $f(2)=5$, thương $2x-1$).
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** dùng phép chia có dư của đa thức một biến (lớp 7): đa thức bị chia bằng đa thức chia nhân thương cộng dư. Viết $f(x)$ theo phép chia cho $(x-1)(x-2)$ với dư dạng $ax+b$, rồi thay $x=1$ và $x=2$ để tìm $a$, $b$.
+**Mấu chốt:** viết $f(x)$ theo phép chia cho $(x-1)(x-2)$ với số dư dạng $ax+b$, rồi thay $x=1$ và $x=2$ để tìm $a$, $b$.
 
-**Bước 1.** Đa thức chia $(x-1)(x-2)$ có bậc 2 nên dư có bậc nhỏ hơn 2, đặt dư là $ax+b$ và viết $f(x)$ bằng đa thức chia nhân thương cộng dư.
+**Bước 1.** Số chia $(x-1)(x-2)$ có bậc 2 nên số dư có bậc nhỏ hơn 2, đặt dư là $ax+b$ và viết $f(x)$ = thương nhân số chia cộng số dư.
 
 **Bước 2.** Từ "chia cho $x-2$ dư 5" viết $f(x)=(x-2)\cdot q(x)+5$ rồi thay $x=2$ để biết giá trị $f(2)$; làm tương tự với $x-1$ dư 3 để biết $f(1)$.
 
@@ -491,13 +493,13 @@ Vậy $\widehat{AND}=90^\circ$.
 
 **Phần 2. Trình bày**
 
-Vì đa thức chia $(x-1)(x-2)$ có bậc 2 nên dư của phép chia $f(x)$ cho $(x-1)(x-2)$ có bậc nhỏ hơn 2, đặt dư là $ax+b$.
+Vì $(x-1)(x-2)$ có bậc 2 nên số dư của phép chia $f(x)$ cho $(x-1)(x-2)$ có bậc nhỏ hơn 2, đặt số dư là $ax+b$.
 
 Khi đó $f(x)=(x-1)(x-2)(2x-1)+ax+b$ (1).
 
-Vì $f(x)$ chia cho $x-1$ dư 3 nên $f(x)=(x-1) \cdot p(x)+3$ (với $p(x)$ là thương). Thay $x=1$ được $f(1)=3$.
+Vì $f(x)$ chia cho $x-1$ dư 3 nên $f(x)=(x-1) \cdot p(x)+3$. Thay $x=1$ được $f(1)=3$.
 
-Vì $f(x)$ chia cho $x-2$ dư 5 nên $f(x)=(x-2) \cdot q(x)+5$ (với $q(x)$ là thương). Thay $x=2$ được $f(2)=5$.
+Vì $f(x)$ chia cho $x-2$ dư 5 nên $f(x)=(x-2) \cdot q(x)+5$. Thay $x=2$ được $f(2)=5$.
 
 Thay $x=1$ vào (1): $f(1)=0+a+b=a+b$. Do đó $a+b=3$ (2).
 
@@ -523,6 +525,6 @@ Vậy $f(x)=2x^3-7x^2+9x-1$.
 
 - Đề là ảnh scan 2 trang, không có tên phường / quận, không có mã đề, không có bảng đáp án. Bộ sách: KNTT (đoán theo nội dung). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, các phép tính, chia đơn thức), Câu 3a có "viết $S$ dưới dạng tích" nên dùng hằng đẳng thức hiệu hai bình phương (đề chạm tới hằng đẳng thức ở chỗ này), Chương III (tứ giác, hình bình hành, hình chữ nhật, hình vuông — Câu 4 hỏi hình vuông nên được dùng trung tuyến ứng cạnh huyền ở ý c).
 - Đề có 13 mục: 8 trắc nghiệm + Câu 1 (tách Câu 1.1a, 1.1b, 1.2), Câu 2 (tách 2a, 2b), Câu 3, Câu 4, Câu 5. Tách ý: Câu 1.1 (hai biểu thức rút gọn độc lập) và Câu 2 (hai bài tìm $x$ độc lập); Câu 3 là bài lời văn nên giữ chung; Câu 4 là bài hình nên không tách. Câu 2a, 2b đáp số là một số nguyên nên nhập trả lời ngắn.
-- Câu 4: thêm điều kiện $MD\neq MA$ (xem Ghi chú trong câu). Đề không cho hình nên có hình giải vẽ bằng code (không vẽ gì thêm ngoài giả thiết; điểm $I$ là điểm phụ dùng trong lời giải ý c). Điểm $M$ không thực sự cần ở ý c (đúng với mọi đường thẳng qua $F$) — có thể đề gốc có chỗ in thiếu; không ảnh hưởng lời giải.
-- Câu 8: A, B, C nói "hai cạnh đối / hai góc đối" (một cặp) nên sai, chỉ D nói "các cạnh đối" (định nghĩa) là đúng. Câu 5: câu nâng cao; lời giải chỉ dùng phép chia có dư của đa thức một biến đã học ở lớp 7 (đa thức bị chia bằng đa thức chia nhân thương cộng dư, dư có bậc nhỏ hơn bậc của đa thức chia) rồi thay $x=1$, $x=2$, không dùng định lí Bézout.
+- Câu 4: thêm điều kiện loại trường hợp $D$ đối xứng với $A$ qua $M$ (xem Ghi chú trong câu). Đề không cho hình nên có hình giải vẽ bằng code (không vẽ gì thêm ngoài giả thiết; điểm $I$ là điểm phụ dùng trong lời giải ý c). Điểm $M$ không thực sự cần ở ý c (đúng với mọi đường thẳng qua $F$) — có thể đề gốc có chỗ in thiếu; không ảnh hưởng lời giải.
+- Câu 8: hai phương án C và D có thể cùng bị coi là đúng, đã ghi Chưa chắc. Câu 5: câu nâng cao ngoài KNTT 8, đã ghi Chưa chắc.
 - Phương án B của Câu 4 trắc nghiệm in mờ dấu giữa hai hạng tử; không ảnh hưởng đáp án.
