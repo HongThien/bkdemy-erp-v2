@@ -311,7 +311,8 @@
   KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
 - **`spec-toan-du-hanh.md` — ĐỌC trước khi sửa/làm bài Toán dạng du hành** (thư mục `toan-site/`, Thùy chốt 09/10): 3D chỉ ở đoạn bay, hình phẳng
   nằm trên tấm bảng, máy quay VUÔNG GÓC tấm bảng lúc HS so hình · tam giác lệch hẳn (cấm cân/gần cân) · ký hiệu 3 mức GV đổi được · học = cả lớp
-  nhìn TV, iPad chỉ cho mini game đội · chưa đo, site riêng toan.bkacademy.edu.vn. Bài đã có: Tam giác bằng nhau (bản thử 1 — phần 1).
+  nhìn TV, iPad chỉ cho mini game đội · trạm luyện = chuỗi câu trên cùng tấm bảng, có nút Đáp án (GV) · chưa đo, site riêng toan.bkacademy.edu.vn.
+  Đã có: bài Tam giác bằng nhau 10 trạm (định nghĩa · c.c.c · trình bày 5 dòng) + mini game đội TV–iPad `thi-doi.html` (5 phiên × 10 câu).
 - **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):
