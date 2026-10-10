@@ -58,6 +58,7 @@
 - **Chuyên đề tròn xoay = một trang** `toan-site/the-tich/tron-xoay.html` (động cơ) + **một file dữ liệu** `tron-xoay-bai.js` (mỗi bài một mục). Thêm bài = thêm dữ liệu, KHÔNG viết HTML / hình mới.
 - **Mỗi bài có địa chỉ cố định theo `id`:** `tron-xoay.html?bai=<id>`; `id` đã phát hành thì KHÔNG đổi, không dùng lại (app HS sẽ trỏ tới). Thêm `&nhung=1` = chế độ nhúng cạnh bài giải (không nút / bảng chọn bài).
 - Vào trang không kèm `bai` ⇒ hiện bảng chọn bài của chuyên đề (GV dùng trên lớp).
+- **Bảng chọn bài (Thùy 10/10):** mỗi bài một thẻ **rộng hết chiều ngang**, bên trái là **hình vẽ đồ thị của đề** (trang tự vẽ từ dữ liệu: trục, các đường, miền tô), giữa là tên + mô tả + dữ kiện, phải là nút mở — *"có hình vẽ, đồ thị thì mới tưởng tượng được"*. Không dùng lưới thẻ nhỏ chỉ có chữ.
 - Bài thiết diện (43, 44, 47) và mặt cắt (53) hình khối mỗi bài một khác ⇒ **tạm giữ mỗi bài một file**; khi có ≥ 3 bài cùng khuôn mới gom. File riêng cũng phải giữ địa chỉ cố định.
 - **Chưa làm (việc của đợt gắn vào app HS):** khoá nối bài ↔ câu trong kho (dùng mã câu, không dùng vị trí), nút mở mô hình cạnh lời giải, deploy site `toan`, soát màn dọc điện thoại. Xem câu mở B7.
 
@@ -457,3 +458,5 @@ Thứ tự đề xuất: ~~49~~ (xong) → **50 → 52 → 45 → 46** (TX, dễ
 | 10/10 chiều | Claude | Tạo project Vercel `bkdemy-erp-v2-toan-site`, deploy `toan-site/` lên toan.bkacademy.edu.vn (§D.8); lập `docs/hinh-3d/so-theo-doi.md`, thêm trường `maCau: null` vào dữ liệu bài |
 | 10/10 chiều | Thùy | Hỏi đã có project Vercel của Toán chưa; trang chính phải có chỗ chọn để sang tròn xoay |
 | 10/10 chiều | Claude | Trước 10/10 chưa có project nào giữ tên miền (đã liệt kê hết 22 project); project `bkdemy-erp-v2-toan-site` là cái vừa tạo. Thêm nhóm thẻ vào trang chính + nút về trang chính trong mô hình, deploy lại |
+| 10/10 chiều | Thùy | Menu chọn bài phải rõ hơn: thẻ rộng hết chiều ngang, có hình vẽ đồ thị thì mới tưởng tượng được |
+| 10/10 chiều | Claude | Bảng chọn bài: mỗi bài một thẻ ngang, hình đồ thị tự vẽ từ dữ liệu bài (ôm sát hình phẳng + gốc toạ độ) |

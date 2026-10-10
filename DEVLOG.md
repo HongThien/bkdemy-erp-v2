@@ -36634,3 +36634,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** "là có project của toán chưa vậy. tưởng phải có project ở vercel chứ. Vào trang chính phải có chỗ chọn lựa để sang tròn xoay chứ nhỉ".
 - Trả lời bằng đo: `vercel project ls` cả 2 trang = 22 project, trước hôm nay không có project nào tên toán / giữ `toan.bkacademy.edu.vn` (chỉ có bản ghi DNS). Project duy nhất của Toán = `bkdemy-erp-v2-toan-site` t tạo chiều nay.
 - **Thiếu của t:** deploy xong mà trang chính không có đường sang `the-tich/` — phải gõ địa chỉ mới vào được. Thêm nhóm "Thể tích bằng tích phân" (2 thẻ) vào `toan-site/index.html`, thêm nút "‹ Trang Toán" vào khung mô hình (ẩn khi nhúng). Deploy lại.
+
+## 10/10 (chiều) — Hình 3D: bảng chọn bài có hình đồ thị
+- **Thùy:** "Chỗ menu chọn bài m cần làm rõ hơn. Card full chiều ngang màn hình, có hình vẽ - đồ thị thì t mới tưởng tượng được."
+- Bản trước: lưới thẻ nhỏ chỉ có số + tên + mô tả chữ. Sửa: mỗi bài một thẻ ngang; `hinhNho(b)` vẽ SVG từ chính dữ liệu bài (miền tô xanh/hồng, các đường, trục, vạch mốc). Lần đầu dùng khung của cảnh 3D nên hình bé — đổi sang khung ôm sát hình phẳng + gốc toạ độ, lề 18%.
