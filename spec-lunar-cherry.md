@@ -75,11 +75,18 @@
 ### 3.7 Chăm thú cưng (CEO 09/10: "giống trò nuôi mèo Talking Tom"; 10/10: "con mèo Tom xấu — lấy luôn model mấy con bên Bắt Thú, cute hơn, có sẵn động tác")
 - Thú = **model 3D SỐNG của engine Bắt Thú** (không vẽ lại, không ảnh tĩnh): `BatThu/src/thu/thu-cung.ts` gói `Thu4` + bộ ~25 động tác thành 1 ES module `assets/thu-cung.js` (~1 MB, `window.ThuCung.gan(canvas, loai)` → `lam/nen/doi`). Build lại khi Bắt Thú đổi model: `npx vite build -c vite.lib.config.ts` rồi chép sang.
 - Bé **chọn 1 trong 11 loài** (Cáo Lửa mặc định, Cừu Mây, Khỉ Lá, Sói Nguyệt, Nhím Điện, Cánh Cụt Nước, Gà Lửa, Bò Tuyết, Sư Tử Lửa, Voi Rừng, Mèo Bông), lưu `S.anh.tho.loai`. Bỏ 2 khuôn ngựa/sói to.
-- Chạm ⇒ 1 trong vui/nhảy/vuốt/làm nũng/ăn mừng + nói 1 câu tiếng Anh ngắn (đói ⇒ "Feed me!").
-- 🎤 **Nhại giọng**: ghi âm 3 giây (MediaRecorder) → phát nhanh 1,5× (giọng the thé), thú gầm theo, xong ăn mừng "Hee hee!".
-- 🐟 Cho ăn: cá = tổng sao các trận thắng; ăn 1 = no 5 nấc, 3 giờ đói 1 nấc; không phạt. Động tác nền `an` 2,6 giây.
-- 💤 Tắt đèn ⇒ nền `ngu` (nhắm mắt, Zzz, "Good night!"); bật đèn ⇒ ngáp.
+- **Vòng chăm sóc = My Talking Tom** (CEO 10/10: "cần thêm hoạt động tương tác như Talking Tom: cho ăn, đi chơi, tắm…"). 4 nhu cầu 🍎 đói · 🫧 sạch · 😊 vui · 💤 khoẻ (0–100, lưu `{gt, luc}`, tụt theo GIỜ THẬT: 12 · 7 · 10 · 8 mỗi giờ; ngủ thì khoẻ +40/giờ). **Không phạt** (Talking Tom cũng không chết): dưới 35 thanh đỏ nhấp nháy, thú làm nũng kêu bằng tiếng Anh ("I'm hungry!" / "I'm dirty!" / "Play with me!" / "I'm sleepy…"). Mặt ở tiêu đề 😄 🙂 😢 theo nhu cầu thấp nhất.
+- **5 phòng** (nav dưới, phòng vẽ bằng CSS, không ảnh):
+  - 🍳 **Bếp**: khay 10 món = từ đảo Đồ ăn (hình 3D sẵn) + 🐟 cá (quà đặc biệt, trừ 1 cá). Chạm món ⇒ bay vào mồm; kéo thả vào thú cũng được. Món mê (banana, cake, ice cream) ⇒ ăn mừng; món ghét (carrot) ⇒ "Yuck!" làm nũng. Đói ≥ 92 ⇒ "I'm full!" từ chối. Ăn 2 món ⇒ hiện 🚽.
+  - 🛁 **Phòng tắm**: xoa tay lên thú ⇒ bọt xà phòng mọc ngay chỗ chạm (sạch tính theo lượng bọt); 🚿 dội nước (giọt rơi, bọt tan, "Splash! So clean!"), chưa đủ bọt thì "More soap first!"; 🪥 đánh răng (+12 sạch); 🚽 đi vệ sinh (ngồi 2 giây, xả nước, "Phew!").
+  - 🛏 **Phòng ngủ**: tắt đèn ⇒ nền `ngu` (nhắm mắt, Zzz, "Good night!"), sang phòng khác tự bật đèn; bật đèn ⇒ ngáp "Good morning!".
+  - 🎮 **Sân chơi**: chạm ĐẦU = vuốt (Purr~) · BỤNG = cù (cười) · CHÂN = hù (giật mình) — như Talking Tom chọc/vuốt; 🎾 ném bóng (bóng bay vòng cung, thú nhảy bắt); 🎈 **mini game "Pop the red balloon!"**: 3 bóng màu, máy đọc tên màu, chạm đúng ⇒ nổ + ăn mừng, 5 lượt đúng ≥ 4 ⇒ +1 🐟 (học màu đảo 1).
+  - 🚶 **Đi dạo**: thú đi (`di`) qua 8 cảnh nền trận (2,6 giây/cảnh, nói tên vùng đất), cuối đường pháo giấy + 🎁 +2 🐟, vui +25, khoẻ −8.
+- 🎤 **Nhại giọng** (phòng ngủ + sân chơi): ghi âm 3 giây (MediaRecorder) → phát nhanh 1,5× (giọng the thé), thú gầm theo, xong ăn mừng "Hee hee!".
+- 🐟 Cá = tiền: thắng boss (số sao) · mini game bóng bay · đi dạo. Dùng cho món cá đặc biệt (sau này: đồ trang trí/áo).
+- Mọi hành động thú NÓI 1 câu tiếng Anh (giọng pitch 1,5); món ăn nói tên tiếng Anh của món ⇒ chăm thú cũng là ôn từ.
 - Máy không tải được module/WebGL ⇒ về ảnh tĩnh mèo (`assets/pet/meo_*.webp`, xuất từ `BatThu/thu-xuat.html`).
+- Chưa làm (Talking Tom có): tủ quần áo / trang trí nhà bằng cá · nhiều mini game hơn · cấp độ lớn lên theo ngày.
 
 ## 4. Kỹ thuật & vận hành
 
