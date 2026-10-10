@@ -20,6 +20,8 @@ Trang đang chạy: **https://toan.bkacademy.edu.vn/the-tich/** (deploy tay — 
 | 43 | NBV-12-18-F · câu 43 | Cốc nước nghiêng | thiết diện | `coc-nghieng.html` | 240 cm³ | 10/10/2026 | ok 10/10 (thêm luật A3) | |
 | 48 | NBV-12-18-F · câu 48 | Miền vắt qua trục quay | tròn xoay | `tron-xoay.html?bai=48` | 836π/15 | 10/10/2026 | bản 7 bước: bắt bỏ cắt lát (A4); bản 5 bước trong trang chuyên đề: chưa xem | |
 | 49 | NBV-12-18-F · câu 49 | Hai đường ở hai phía trục | tròn xoay | `tron-xoay.html?bai=49` | 21π/5 | 10/10/2026 | chưa xem | |
+| 50 | NBV-12-18-F · câu 50 | Thùng rượu đường sinh elip | tròn xoay · bài thực tế | `tron-xoay.html?bai=50` | 1416π/25 ≈ 177,9 lít | 10/10/2026 | chưa xem | |
+| 52 | NBV-12-18-F · câu 52 | Thùng rượu đường sinh parabol | tròn xoay · bài thực tế | `tron-xoay.html?bai=52` | 656π/3 ≈ 686,96 lít/thùng · M = 144 262 (nguồn ghi 144 270 — sai do làm tròn sớm) | 10/10/2026 | chưa xem | |
 
 Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài giải (không có nút / bảng chọn bài).
 
@@ -31,8 +33,6 @@ Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài 
 | NBV-12-18-F · câu 45 | Mũ Noel | tròn xoay (quanh Oy) | 2500π/3 | thêm vào trang chuyên đề |
 | NBV-12-18-F · câu 46 | Hình vuông + bốn nửa đường tròn | tròn xoay (quanh Oy, có lỗ) | 32π/3 + 4π² | thêm vào trang chuyên đề |
 | NBV-12-18-F · câu 47 | Giao hai khối ¼ trụ | thiết diện | 2a³/3 | file riêng |
-| NBV-12-18-F · câu 50 | Thùng rượu đường sinh elip | tròn xoay | 1416π/25 ≈ 177,9 lít | thêm vào trang chuyên đề |
-| NBV-12-18-F · câu 52 | Thùng rượu đường sinh parabol | tròn xoay | M = 144 262 (nguồn ghi 144 270 — sai) | thêm vào trang chuyên đề |
 | NBV-12-18-F · câu 53 | Trụ bị mặt phẳng nghiêng cắt | diện tích mặt cắt | (4π/3 + √3/2)R² (nguồn Cách 1 sai) | file riêng |
 
 ## Khi khớp với kho / app (chưa làm)

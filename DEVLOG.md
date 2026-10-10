@@ -36638,3 +36638,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 10/10 (chiều) — Hình 3D: bảng chọn bài có hình đồ thị
 - **Thùy:** "Chỗ menu chọn bài m cần làm rõ hơn. Card full chiều ngang màn hình, có hình vẽ - đồ thị thì t mới tưởng tượng được."
 - Bản trước: lưới thẻ nhỏ chỉ có số + tên + mô tả chữ. Sửa: mỗi bài một thẻ ngang; `hinhNho(b)` vẽ SVG từ chính dữ liệu bài (miền tô xanh/hồng, các đường, trục, vạch mốc). Lần đầu dùng khung của cảnh 3D nên hình bé — đổi sang khung ôm sát hình phẳng + gốc toạ độ, lề 18%.
+
+## 10/10 (tối) — Hình 3D: thêm Câu 50, 52 (hai thùng rượu) vào chuyên đề tròn xoay
+- **Thùy:** "Làm tiếp đi".
+- Động cơ `tron-xoay.html`: (1) bài thực tế — khai `thucTe` thì có bước "Đặt hệ trục", bước Đề bài hiện vật thật (khối đã quay đủ vòng), ẩn nhóm nền (trục, đường, hình phẳng) và mọi nhãn; (2) mặt đáy phẳng ở hai đầu mỗi phần (lưới 1 ô theo bán kính) — bài 49 trước đó hở hai đầu; (3) nét đứt / chấm tính theo cỡ hình thay vì số cứng.
+- Câu 50: elip a = 5, b = 3, đáy ở x = ±4 ⇒ V = 2πb²(d − d³/(3a²)) = 1416π/25. Câu 52: đổi sang dm (R = 5, r = 4, l = 10, k = 0,04) ⇒ V = (πl/15)(8R² + 4Rr + 3r²) = 656π/3 ≈ 686,96 lít; 210·V = 45 920π ≈ 144 261,9 ⇒ M = 144 262.
+- Soát 1280×720: 50 và 52 đủ 4 bước + Thay số, `kiem()` lệch 6·10⁻¹⁴ và 4·10⁻¹²; chạy lại 48 (đủ nhãn a p q b + số miền) và 49 (5 bước) — không đổi; bảng chọn bài 4 thẻ có hình. Sai đã sửa: dòng kết quả câu 52 tràn ngang 95px ⇒ tách 4 dòng; chấm điểm to che số trên trục ⇒ thu nhỏ.
+- Chưa: 45, 46 (quay quanh Oy), soát 1920×1080 + màn dọc cho trang chuyên đề.

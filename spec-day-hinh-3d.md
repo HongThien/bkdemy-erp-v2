@@ -245,7 +245,7 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 ### D.7 Trang chuyên đề tròn xoay — ĐÃ DỰNG (10/10 chiều, theo A5)
 
 - **File:** `toan-site/the-tich/tron-xoay.html` (động cơ) + `tron-xoay-bai.js` (dữ liệu) → `http://localhost:5281/the-tich/tron-xoay.html` (bảng chọn bài) · `?bai=48` · `?bai=49` · thêm `&nhung=1` để nhúng.
-- **Đã có 2 bài:** 48 (ba miền, có lỗ ở miền 1, bẫy ra 0 — chuyển nguyên từ file riêng) · 49 (hai miền chạm trục, bẫy ra 16π/15 — bài đầu tiên thêm THUẦN bằng dữ liệu, ~45 dòng).
+- **Đã có 4 bài:** 48 (ba miền, có lỗ ở miền 1, bẫy ra 0) · 49 (hai miền chạm trục, bẫy ra 16π/15 — bài đầu tiên thêm THUẦN bằng dữ liệu) · 50, 52 (hai thùng rượu — bài thực tế, thêm bước "Đặt hệ trục", 4 bước).
 - `mien-vat-qua-truc.html` giờ chỉ là trang chuyển hướng sang `tron-xoay.html?bai=48` (giữ địa chỉ cũ, mang theo tham số).
 - **Soát:** 1280×720; bảng chọn bài; cả hai bài đủ 5 bước, gấp lên, hai lần Thay số; `kiem()` lệch < 10⁻¹¹ ở cả hai; chế độ nhúng không có nút chọn bài; địa chỉ cũ chuyển hướng đúng; 0 lỗi KaTeX, không tràn ngang.
 - **Chưa làm / chưa biết:** chưa soát 1920×1080 và màn dọc cho trang chuyên đề · chưa có bài quay quanh Oy / bài thực tế (xem S.4b) · chưa gắn vào app HS (B7) · Thùy chưa xem.
@@ -338,7 +338,9 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
   `chia` (bảng mốc) · `bay` (tuỳ chọn) · `tong` (công thức chữ + kết quả + nguyên hàm) · `dapSo`.
 - Trang tự suy ra: bộ bước (có "Chia miền" khi ≥ 2 miền, có "Cái bẫy" khi khai `bay`), mặt tròn xoay, đường gấp, đường bao, số miền trên hình, vạch + nhãn mốc.
 - **Tự kiểm:** lúc mở, trang tính lại thể tích từ `mien` (Simpson) và so với `dapSo`; lệch ⇒ dải đỏ ở đáy màn. `__dbg.kiem()` trả số. Đây là nhân chứng thứ hai cho "hình vẽ và lời giải nói cùng một chuyện" — không bỏ `dapSo`.
-- Thứ động cơ CHƯA có, phải thêm vào `tron-xoay.html` khi gặp bài cần (rồi soát lại mọi bài cũ): bước "Đặt hệ trục" cho bài thực tế (50, 52, 45) · đường sinh là đường cong tham số (46) · bài quay quanh Oy mới chỉ viết sẵn phép đổi toạ độ, **chưa chạy thử bài nào**.
+- **Bài thực tế** (thùng, mũ… — đề chưa có trục): khai thêm `thucTe: { tieuDe, html, tex, soTen, so }` ⇒ trang thêm bước "Đặt hệ trục" và ở bước Đề bài chỉ hiện vật thật (khối đã quay), chưa có trục / đường / nhãn. Mẫu: mục 50, 52.
+- Trang tự thêm **mặt đáy phẳng** ở hai đầu khối khi hình phẳng kết thúc bằng một đoạn vuông góc với trục (thùng rượu, bài 49).
+- Thứ động cơ CHƯA có, phải thêm vào `tron-xoay.html` khi gặp bài cần (rồi soát lại mọi bài cũ): đường sinh là đường cong tham số (46) · bài quay quanh Oy mới chỉ viết sẵn phép đổi toạ độ, **chưa chạy thử bài nào** (45, 46).
 
 ### S.5 Quy trình 8 việc cho một bài (làm đúng thứ tự)
 
@@ -363,23 +365,12 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 
 ### S.7 Phiếu dựng 8 bài còn lại (công thức chữ đã kiểm bằng số 10/10)
 
-Thứ tự đề xuất: ~~49~~ (xong) → **50 → 52 → 45 → 46** (TX, dễ → khó; đều là thêm dữ liệu vào trang chuyên đề) rồi **47 → 44** (TD, file riêng) rồi **53** (MC).
+Thứ tự đề xuất: ~~49 → 50 → 52~~ (xong) → **45 → 46** (TX, dễ → khó; đều là thêm dữ liệu vào trang chuyên đề) rồi **47 → 44** (TD, file riêng) rồi **53** (MC).
 
 **Câu 49 — TX, hai miền.** ✅ ĐÃ CÓ (10/10) — mục `id: '49'` trong `tron-xoay-bai.js`: V₁ = π∫ₐᶜ f², V₂ = π∫_c^b g², V = 21π/5; bẫy π∫(f² − g²) = 23π/15 − 7π/15 = 16π/15.
 
-**Câu 50 — TX một miền, bài thực tế.** Mục `id: '50'` trong `tron-xoay-bai.js` (cần thêm bước "Đặt hệ trục" vào động cơ).
-- Đề: thùng gỗ tròn xoay, hai đáy bằng nhau cách nhau 8 dm, đường cong mặt bên là một phần elip trục lớn 10 dm, trục bé 6 dm. Hỏi chứa bao nhiêu lít.
-- Chữ: bán trục a, b; hai đáy ở x = ±d. Elip x²/a² + y²/b² = 1 ⇒ y² = b²(1 − x²/a²).
-  V = π∫₋d^d b²(1 − x²/a²) dx = **2πb²(d − d³/(3a²))**. Thay a = 5, b = 3, d = 4: **1416π/25 dm³ ≈ 177,9 lít**.
-- Bước: Đề bài (thùng 3D + ảnh `image1144`) → Đặt hệ trục (cắt thùng bằng mặt phẳng qua trục, hiện elip đầy đủ, hai đường x = ±d) → Quay quanh Ox (nửa trên của elip quay ra thùng) → Tính thể tích.
-- Điểm đáng cho HS thấy: thùng = phần GIỮA của khối elipxôit; hai chỏm bị cắt đi (vẽ mờ).
-
-**Câu 52 — TX một miền, bài thực tế (cặp với 50).** Mục `id: '52'`.
-- Đề: 7 thùng, đường sinh parabol, bán kính hai mặt 40 cm, giữa 50 cm, dài 100 cm; 30 nghìn đồng/lít. Tính tiền (nghìn đồng).
-- Chữ: R (giữa), r (hai đầu), dài l. Parabol y = R − kx² với k = 4(R − r)/l².
-  V = π∫ (R − kx²)² dx trên [−l/2; l/2] = **(πl/15)(8R² + 4Rr + 3r²)**. Thay R = 0,5; r = 0,4; l = 1 (m): **82π/375 m³ ≈ 686,96 lít**.
-- Tiền: 7 · 30 · V(lít) = 45 920π ≈ 144 261,9 ⇒ **M = 144 262**. Nguồn làm tròn 687 lít trước nên ra 144 270 — **dùng 144 262**, và đây là chỗ nói với HS "đừng làm tròn giữa chừng".
-- Bước: như câu 50 + một dòng tính tiền ở khối Thay số. Có thể thêm nút so hai thùng (elip / parabol) nếu Thùy muốn.
+**Câu 50, 52 — TX một miền, bài thực tế (hai thùng rượu).** ✅ ĐÃ CÓ (10/10) — mục `id: '50'`, `'52'`: 4 bước (đề: vật thật → đặt hệ trục → quay → lắp công thức).
+- 50: V = 2πb²(d − d³/(3a²)) = 1416π/25 dm³ ≈ 177,9 lít. 52: tính bằng **dm** để ra thẳng lít, V = (πl/15)(8R² + 4Rr + 3r²) = 656π/3 ≈ 686,96; tiền 210·V = 45 920π ⇒ **M = 144 262** (nói rõ với HS: làm tròn sớm ra 144 270).
 
 **Câu 45 — TX quanh Oy, hai miền xếp chồng.** Mục `id: '45'` (bài đầu tiên quay quanh Oy).
 - Đề: mũ tròn xoay; mặt cắt qua trục: OO′ = 5, OA = 10, OB = 20 (cm), cung AB là parabol đỉnh A.
@@ -460,3 +451,5 @@ Thứ tự đề xuất: ~~49~~ (xong) → **50 → 52 → 45 → 46** (TX, dễ
 | 10/10 chiều | Claude | Trước 10/10 chưa có project nào giữ tên miền (đã liệt kê hết 22 project); project `bkdemy-erp-v2-toan-site` là cái vừa tạo. Thêm nhóm thẻ vào trang chính + nút về trang chính trong mô hình, deploy lại |
 | 10/10 chiều | Thùy | Menu chọn bài phải rõ hơn: thẻ rộng hết chiều ngang, có hình vẽ đồ thị thì mới tưởng tượng được |
 | 10/10 chiều | Claude | Bảng chọn bài: mỗi bài một thẻ ngang, hình đồ thị tự vẽ từ dữ liệu bài (ôm sát hình phẳng + gốc toạ độ) |
+| 10/10 tối | Thùy | "Làm tiếp đi" |
+| 10/10 tối | Claude | Thêm Câu 50, 52 (thùng rượu) vào trang chuyên đề; động cơ thêm bước "Đặt hệ trục" cho bài thực tế + mặt đáy phẳng ở hai đầu khối. Soát lại 48, 49. Deploy |
