@@ -784,6 +784,13 @@ export async function saveCloneChoDuyet(a: {
   if (error) throw error
   return rows.length
 }
+/** Tên dạng theo mã (màn "Câu chờ duyệt" gom câu theo dạng — chỉ để HIỂN THỊ nhãn nhóm). */
+export async function tenDangTheoMa(maDang: string[]): Promise<Record<string, string>> {
+  if (!maDang.length) return {}
+  const { data, error } = await supabase.from('dai_ban_do').select('ma_dang, ten_dang').in('ma_dang', maDang).limit(LIMIT)
+  if (error) throw error
+  return Object.fromEntries((data ?? []).map((d) => [d.ma_dang, d.ten_dang]))
+}
 export async function listCloneChoDuyet(): Promise<CloneChoDuyet[]> {
   const { data, error } = await supabase.from('dai_cau_hoi_clone_cho_duyet').select('*')
     .is('tu_choi_at', null).order('created_at').limit(LIMIT)
