@@ -20,3 +20,5 @@ Lưu ý chung:
 8. (lô 3) Trong công thức không dùng `\text{…}` chứa chữ tiếng Việt có dấu (KaTeX của cổng từ chối) — viết lời ra ngoài dấu `$`.
 9. (lô 4) Mục **Chú ý** là lời dặn cho HỌC SINH (bẫy hay gặp, điều kiện dễ quên) — không viết nhận xét về sách ("sách in sai…", "sách giải theo…") vào lời giải; chuyện của sách ghi ở `ghi_chu_nghi`.
 10. (lô 4) Số liệu đề làm bài không có đáp số (lời giải của sách chỉ đúng với số liệu khác) ⇒ vẫn chép đề đúng như in, `ghi_chu_nghi` nêu rõ số liệu nào thì khớp lời giải sách; ĐỪNG soạn lời giải kiểu "bài toán không có đáp số" — người soát sẽ đưa CEO quyết.
+11. (lô 5) Đề có lời dẫn chung + nhiều ý mà giữ thành MỘT câu ⇒ mỗi ý xuống một đoạn riêng (dòng trống giữa các ý), không viết liền "a) …; b) …; c) …" trên một dòng.
+12. (lô 5) Đề gốc là HÌNH (trục số, sơ đồ) ⇒ mô tả hình bằng lời thật chính xác trong đề và ghi `ghi_chu_nghi: đề gốc là hình …` để người soát biết câu này chưa có hình.

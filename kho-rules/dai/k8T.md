@@ -319,7 +319,10 @@ Opus soát đối chiếu ảnh sách (mọi câu), và báo sai từ GV / HS sa
 | 2 (10/10) | NDT Đại I §2 hằng đẳng thức (14–26) · §7 chia đa thức (71–81) · ôn tập chương I (82–89) · ý b bài 35 | **71** | 33 | 40/71 | 3 | 34/38 câu không thuộc tầng cơ bản | `NDT-D1-s2/s7/ot/bs.cs.md` · `NDT-D1-hdt-chia-ot.*` |
 | 3 (10/10) | NDT Đại I §1 nhân đa thức (1–13) · §6 chia đơn thức (61–70) · **Đại II phân thức trọn chương** (1–52) | **105** | 51 | 48/105 (kiểm chép + đáp số; riêng đáp số 57) | 4 câu sửa nội dung · 8 chỗ sách in sai | 51/54 câu không thuộc tầng cơ bản | `NDT-D1-s1/s6.cs.md` · `NDT-D2-s1/s2/s3/s4/ot.cs.md` · `NDT-D1s16-D2.*` |
 | 4 (10/10) | NDT **Đại III phương trình trọn chương** (1–73): §1 mở đầu · §2 đưa về $ax+b=0$ · §3 tích · §4 chứa ẩn ở mẫu · §5 lập phương trình · ôn tập | **93** | 48 | 49/93 (kiểm chép + đáp số) | 2 câu sửa nội dung · 6 chỗ sách in sai | **45/45** câu không thuộc tầng cơ bản | `NDT-D3-s1…s5.cs.md` · `NDT-D3-ot.cs.md` · `NDT-D3-pt.*` |
-| **Tổng** | | **341** | 166 | | | | kho Đại 8T: **390 câu** — 385 đã duyệt (50 cũ người duyệt + **335 mới tự duyệt**) · 5 chưa duyệt (4 câu dạng chờ: 89b + 3 câu lô 3 · bài 73 chương III chờ CEO quyết); 2 câu trùng của lô 1 đã xoá mềm |
+| 5 (10/10) | NDT **Đại IV trọn chương** (1–52): §1 liên hệ thứ tự + bất đẳng thức · §2 bất phương trình bậc nhất · §3 phương trình chứa dấu giá trị tuyệt đối · ôn tập | **130** | 64 | 9/130 (chương này phần lớn là chứng minh và bất phương trình — máy chưa kiểm được) | 3 câu sửa nội dung · 9 chỗ sách in sai | 62/66 câu không thuộc tầng cơ bản | `NDT-D4-s1a/s1b/s2/s3.cs.md` · `NDT-D4-ot.cs.md` · `NDT-D4-bdt.*` |
+| **Tổng** | | **471** | 230 | | | | kho Đại 8T: **520 câu** — 510 đã duyệt (50 cũ người duyệt + **460 mới tự duyệt**) · 10 chưa duyệt (8 câu dạng chờ: 89b + 3 câu lô 3 + 4 câu lô 5 · 2 câu đề sách in sai chờ CEO: bài 73 chương III, bài 48b chương IV); 2 câu trùng của lô 1 đã xoá mềm. **Bốn chương Đại số của NĐT đã nhập xong.** |
+
+Lô 5: lọc trùng không bỏ câu nào (2 cặp máy nghi cùng khuôn + cùng đáp số — đã mở DB xem, là phương trình khác nhau). Soát đối chiếu ảnh p81–104. Sửa khi soát: bài 48b — sách in $c(a+b)^3$ (phóng 400 dpi xác nhận), với mũ 3 bất đẳng thức sai, kho ghi mũ 2, `cho_quyet`; bài 13a ý 3 — đề thiếu điều kiện, kho thêm "Cho $a,b,c>0$" (lời giải sách có nêu); bài 47 — xuống dòng ba ý. Bài 21: đề gốc là hình trục số, kho mô tả bằng lời (chưa có hình). Bài 13b ý 1 trùng bất đẳng thức với 10f nhưng là đề thi có nguồn riêng ⇒ giữ (CEO 10/10: đề riêng để riêng). Máy kiểm đáp số thấp là do bản chất chương (chứng minh, bất phương trình): `k8T-kiem.mjs` chưa có kiểu kiểm cho bất phương trình — việc kỹ thuật còn nợ.
 
 Lô 4: lọc trùng không bỏ câu nào; soát đối chiếu ảnh p52–80. Sách in sai (đã mở ảnh): bài 24, 25a (dòng biến đổi), 46 (dấu trong đề), **64** (đề $x+11$, lời giải của sách giải $x+1$ — kho giữ đề, đáp số $S={6}$), **73** (đề 451 giây không có đáp số; lời giải và kết quả 950 m của sách ứng với 551 giây — kho ghi 551 giây, `cho_quyet`, chưa duyệt). Sách bỏ dở, kho soạn tiếp: 23b, 25a, 25b, 33, 35, 48, 49a, 49b. Ranh giới thêm vào brief §4: phương trình chứa ẩn ở mẫu ⇒ `020101` kể cả khi khử mẫu ra bậc cao; có tham số ⇒ `020103`.
 
@@ -328,7 +331,7 @@ Lô 3: lọc trùng không bỏ câu nào. Soát đối chiếu ảnh (Opus, p4�
 
 Lọc trùng lô 2: bỏ 1 câu trước khi ghi (bài 17d = 17b đổi thứ tự hạng tử). Sách in sai máy bắt được: 55d, 82c, 84b (đều đã mở ảnh xác nhận; lời giải kho ghi kết quả đúng).
 
-**Còn lại của NDT (≈ 360 bài):** Đại IV bất đẳng thức – bất phương trình (52) · ôn tập cuối năm Đại (20) · phụ lục A (45) + C (60) · **Hình I–III + phụ lục B (≈ 220 bài, nhánh Hình)**. Hình IV (không gian, 30 bài): không nhập.
+**Còn lại của NDT (≈ 310 bài):** ôn tập cuối năm Đại (20) · phụ lục A (45) + C (60) · **Hình I–III + phụ lục B (≈ 220 bài, nhánh Hình)**. Hình IV (không gian, 30 bài): không nhập.
 Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 
 **Câu treo — cần CEO / người** (trang xem cụ thể, có ảnh sách gốc: `kho-rules/dai/k8T-can-xem.html`, dựng lại bằng `node kho-rules/dai/lo/k8T/can-xem.mjs` — **mỗi lần báo lô phải kèm trang này**, Thùy 10/10: *"Mấy câu sai cần review thì m phải cho t view cụ thể chứ"*):
@@ -337,13 +340,15 @@ Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 |---|---|---|
 | NDT ôn tập chương I bài 89b — **đã nhập 10/10** với kết quả đúng 14376190 (Thùy: *"Nhập kết quả đúng nhé"*), đang ở dạng chờ `T18T000000` | Hai lượt gán đều không thấy nhóm khớp (tính tích giá trị đa thức theo các nghiệm) | Học thuật chọn nhóm — tôi nghiêng về 1.3 ① *Tìm dư: Bê-du* (cùng ý "giá trị đa thức tại một điểm") |
 | Lô 3 — 3 câu hai lượt gán nhóm lệch nhau, đang ở dạng chờ: chương I 11b (`040302` ↔ `040301`) · 13a (`010101` ↔ `010601`) · chương II 34 (`010301` ↔ `030101`) | Trạm soạn và lượt gán độc lập chọn khác nhau | CEO chọn nhóm (trang xem, mục "Cần chị quyết") — tôi nghiêng: 11b → `040302` · 13a → `010601` · 34 → `030101` |
+| Lô 5 — 4 câu hai lượt gán nhóm lệch nhau, đang ở dạng chờ: chương IV 13a ý 1 (`030101` ↔ `030102`) · 13b ý 2 (`030102` ↔ `030101`) · 14d (`030101` ↔ `030103`) · 47 (`030101` ↔ `030102`) | Trạm soạn và lượt gán độc lập chọn khác nhau | CEO chọn nhóm — tôi nghiêng: 13a1 → `030101` · 13b2 → `030102` · 14d → `030103` (không chắc) · 47 → `030101` |
+| Lô 5 — bài 48b chương IV (`T18T030101023`, chưa duyệt): đề sách in $c(a+b)^3$ là bất đẳng thức sai | Lời giải của sách chỉ đúng với mũ 2; kho tạm ghi mũ 2 | CEO chọn: giữ bản mũ 2 (rồi duyệt) hay bỏ câu |
 | Lô 4 — bài 73 chương III (`T18T020201004`, chưa duyệt): đề sách in 451 giây không có đáp số | Kết quả 950 m của sách ứng với 551 giây; kho tạm ghi 551 giây | CEO chọn: giữ bản 551 giây (rồi duyệt) hay bỏ câu |
 | Lô 3 — luật "bài nâng cao của bài học cơ bản ⇒ nhóm Kiến thức cơ bản" (11 câu) | Tôi tự đặt vì bản đồ không có nhóm chuyên biệt | CEO xác nhận hoặc bác (trang xem, mục "đã làm, chị xem") |
 | 41 nhóm mới: mức độ + bậc tối thiểu đang tạm (nâng cao 4 / A · cơ bản 2 / A) | Hai cột bắt buộc, chưa có giá trị thật | CEO chỉnh ở màn Bản đồ |
 
 **Đã chốt 10/10 (Thùy xem trang, trả lời từng thẻ — áp bằng `kho-rules/dai/lo/k8T/ap-chot-2026-10-10.mjs`):** xoá mềm 2 câu trùng (50a, 53a: *"Bỏ câu a"*) · 6 chỗ sách in sai / đề thiếu: đồng ý cách đã sửa · ba câu họ $a^{100}+b^{100}=\dots$ và cặp 84b – 57b: **giữ cả** · 7 câu dạng chờ đã có nhóm (36 → 3.1 ① · 55a → 1.2 ③ · 26b → 1.5 ② · 26d → 4.1 ② · 80a, 80b → 1.3 ① · 86 → 1.5 ②). Dạng chờ `T18T000000` hiện 1 câu (bài 89b).
 
-**Việc kỹ thuật còn lại (Claude tự làm):** nhánh Hình: brief chép–soạn Hình + vẽ hình bằng code + `nhap_hh_tu_draft.mjs` vào bài của bản đồ Hình · lý thuyết cho 18 bài Hình 8T · `k8T-kiem.mjs`: thêm vét cạn cho bài nghiệm nguyên / tìm $n$ để chia hết, `\sqrt` cho đáp án có căn · bảng `--co-ban` cho Đại III–IV và các quyển sau.
+**Việc kỹ thuật còn lại (Claude tự làm):** nhánh Hình: brief chép–soạn Hình + vẽ hình bằng code + `nhap_hh_tu_draft.mjs` vào bài của bản đồ Hình · lý thuyết cho 18 bài Hình 8T · `k8T-kiem.mjs`: thêm kiểu kiểm bất phương trình (thử điểm trong / ngoài tập nghiệm), thêm vét cạn cho bài nghiệm nguyên / tìm $n$ để chia hết, `\sqrt` cho đáp án có căn · bảng `--co-ban` cho Đại III–IV và các quyển sau.
 
 ## 9. Câu hỏi CEO còn mở
 
@@ -373,3 +378,4 @@ Sau NDT: TVA → TCDS → VHB1, VHB2 → TCHH.
 | 10/10 | Duyệt | *"bài của 8T, m auto duyệt đưa vào kho luôn nhé"* | `tu-duyet.mjs` (trạm 6): câu qua cổng ⇒ `da_duyet=true`, `duyet_nguon='ai'`; trừ câu dạng chờ / cờ nghi / đang chờ CEO quyết. Áp ngay cho lô 1–2: tự duyệt 141 câu (84 máy đã xác nhận đáp án, 57 chỉ có Opus soát). Quyết định riêng 8T — khác `spec-luong-kho.md` C9, CEO biết và chọn |
 | 10/10 | Lô 3 | *"tiếp đi"* | Nhập NĐT Đại I §1, §6 và trọn chương II phân thức: 105 câu qua cổng, tự duyệt 102, 3 câu vào dạng chờ vì hai lượt gán nhóm lệch nhau. Đặt hai ranh giới xếp nhóm (brief §4), một cái chờ CEO xác nhận. Trang xem thêm mục "Cần chị quyết" và "Lô 3 — đã làm, chị xem" |
 | 10/10 | Lô 4 | (tiếp theo *"tiếp đi"*) | Nhập trọn chương III phương trình của NĐT: 93 câu qua cổng, tự duyệt 92; bài 73 (đề in sai số liệu) để chờ CEO. 45/45 câu ngoài tầng cơ bản hai lượt gán nhóm khớp |
+| 10/10 | Lô 5 | (tiếp theo *"tiếp đi"*) | Nhập trọn chương IV của NĐT: 130 câu qua cổng, tự duyệt 125; 4 câu dạng chờ (gán nhóm lệch), bài 48b (đề in sai) chờ CEO. Xong bốn chương Đại số của NĐT |

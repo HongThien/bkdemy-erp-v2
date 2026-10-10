@@ -36704,3 +36704,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sửa khi soát:** bài 64 — trạm chép đưa câu "sách in lời giải với vế phải x+1…" vào mục Chú ý của lời giải (lời cho học sinh) ⇒ bỏ. Bài 73 — đề in 451 giây không có đáp số, trạm chép soạn lời giải "bài toán không có đáp số; nếu 551 giây thì 950 m" ⇒ viết lại bản 551 giây (khớp lời giải và kết quả của sách), đánh `cho_quyet`, không tự duyệt.
 - **Ranh giới nhóm đặt thêm (brief §4):** phương trình chứa ẩn ở mẫu ⇒ `020101` kể cả khử mẫu ra bậc cao / đặt ẩn phụ; có tham số ⇒ `020103`.
 - **Trang xem:** thêm thẻ bài 73 (cần quyết) và bài 64 (đã làm), publish Version 5.
+
+## 10/10 (khuya 7) — 8T lô 5: NĐT Đại IV (trọn chương) — xong 4 chương Đại số
+- **Làm:** 5 agent Sonnet chép–soạn p81–104 (bài 1–52) ⇒ 130 câu; Opus soát từng trang ảnh; `NDT.co-ban.json` thêm khu D4 (1–28 → `T18T020403`, 29–42 → `T18T020401`); agent Opus riêng gán nhóm mù 66 câu — khớp 62, lệch 4 ⇒ dạng chờ; `ghi-lo --ghi` 130, `tu-duyet --ghi` 125. DB: kho Đại 8T 520 câu · 510 đã duyệt (460 `ai` + 50 `nguoi`) · 10 chưa.
+- **Sửa khi soát:** bài 48b — trạm chép để đề mũ 3 (như sách in) nhưng soạn lời giải cho mũ 2 ⇒ đề và lời giải vênh nhau; phóng ảnh 400 dpi xác nhận sách in mũ 3 (bất đẳng thức sai), ghi đề mũ 2 + `cho_quyet`. Bài 13a ý 3 thêm điều kiện a, b, c > 0. Bài 52c: ghi chú "hình nằm ở trang sau" của trạm chép sai — trang sau là Phần Hình học, sách không in hình đó.
+- **Đo:** máy xác nhận đáp số chỉ 9/130 ở lô này (chứng minh + bất phương trình) ⇒ lưới của lô 5 gần như chỉ còn một lớp Opus soát. Nợ kỹ thuật: thêm kiểu kiểm bất phương trình vào `k8T-kiem.mjs`.
+- **Ranh giới nhóm thêm (brief §4):** bài chỉ áp dụng trực tiếp liên hệ thứ tự ở tầng ôn tập ⇒ `020403`; giá trị tuyệt đối ⇒ `020104`, có tham số ⇒ `020103`; bất phương trình bậc nhất ⇒ `020301`, tích / thương ⇒ `020302`.
+- **Trang xem:** thêm 5 thẻ cần quyết + 3 thẻ đã làm của lô 5 (38 thẻ, 48 ảnh), publish Version 6.

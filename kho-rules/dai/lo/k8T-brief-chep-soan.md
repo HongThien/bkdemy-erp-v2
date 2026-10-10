@@ -119,6 +119,11 @@ Ranh giới đã chốt qua các lô (lô 1, 10/10 — hai lượt gán lệch n
 - **Bài "nâng cao" của một bài học cơ bản mà bản đồ không có nhóm chuyên biệt** (lô 3 — Claude đề xuất, CHỜ CEO xác nhận): nhân đơn thức – đa thức, chia đơn thức / đa thức cho đơn thức
   ở tầng nâng cao (tính $x^{n+19}:x^{14}$, tìm đơn thức $A$ biết $A\cdot(\dots)=\dots$, tính giá trị bằng cách thay hằng số theo biến, đồng nhất hệ số sau khi nhân…) ⇒ nhóm
   "Kiến thức cơ bản" của bài học đó (bảng dưới), thay vì ép vào một nhóm chuyên đề khác hoặc để dạng chờ.
+  Cùng luật này ở chương bất phương trình (lô 5): bài chỉ áp dụng trực tiếp liên hệ giữa thứ tự với phép cộng / phép nhân ("Cho $a\ge b$, chứng minh $3a-7\ge3b-7$", "So sánh $m$ và $n$ nếu
+  $-6m\le-6n$") ở tầng ôn tập / nâng cao ⇒ `T18T020403`, không vào nhóm bất đẳng thức `0301xx` (các nhóm đó dành cho bất đẳng thức phải biến đổi, xét hiệu thật sự).
+- **Chương bất phương trình – giá trị tuyệt đối (lô 5):** phương trình chứa dấu giá trị tuyệt đối ⇒ `T18T020104`; có thêm tham số ⇒ `T18T020103`. Bất phương trình bậc nhất (kể cả mẹo cộng 1 vào
+  từng phân số, kể cả giải và biện luận theo tham số) ⇒ `T18T020301`; bất phương trình tích, thương ⇒ `T18T020302`. Bài toán lời văn chỉ yêu cầu LẬP (bất) phương trình ⇒ xếp theo loại bài toán
+  (`020201` chuyển động / `020202` loại khác).
 
 | Mã | Kiến thức cơ bản › Nhóm theo bài học (câu `tang: co_ban` do MÁY xếp; câu tầng khác chỉ vào đây theo luật ngay trên) |
 |---|---|

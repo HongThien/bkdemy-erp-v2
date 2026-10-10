@@ -5,5 +5,7 @@
   {"khu":"D1","tu":61,"den":81,"nhom":"T18T010601","bai_hoc":"§6–§7 Chia đơn thức, đa thức"},
   {"khu":"D2","tu":1,"den":52,"nhom":"T18T010604","bai_hoc":"Chương II Phân thức đại số"},
   {"khu":"D3","tu":1,"den":49,"nhom":"T18T020401","bai_hoc":"Chương III §1–§4 Phương trình bậc nhất, đưa về ax+b=0, tích, chứa ẩn ở mẫu"},
-  {"khu":"D3","tu":50,"den":63,"nhom":"T18T020402","bai_hoc":"Chương III §5 Giải bài toán bằng cách lập phương trình"}
+  {"khu":"D3","tu":50,"den":63,"nhom":"T18T020402","bai_hoc":"Chương III §5 Giải bài toán bằng cách lập phương trình"},
+  {"khu":"D4","tu":1,"den":28,"nhom":"T18T020403","bai_hoc":"Chương IV §1–§2 Liên hệ thứ tự với phép cộng, phép nhân; bất phương trình bậc nhất một ẩn"},
+  {"khu":"D4","tu":29,"den":42,"nhom":"T18T020401","bai_hoc":"Chương IV §3 Phương trình chứa dấu giá trị tuyệt đối (là phương trình ⇒ nhóm cơ bản Phương trình)"}
 ]
