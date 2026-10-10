@@ -1,6 +1,6 @@
 # ĐỀ | Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Quán Toan, phường Hồng An
 nam: 2025
-bo_sach: Cánh Diều
+bo_sach: KNTT
 
 ## PHẦN 1 | Trắc nghiệm nhiều phương án lựa chọn | trac_nghiem
 
@@ -292,17 +292,17 @@ D. một cặp cạnh vừa song song vừa bằng nhau
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** dấu hiệu nhận biết hình thoi theo cạnh: tứ giác có bốn cạnh bằng nhau.
+**Mấu chốt:** câu cần điền chính là định nghĩa hình thoi, một định nghĩa nói về bốn cạnh của tứ giác.
 
-**Bước 1.** Nhắc lại các dấu hiệu nhận biết hình thoi và định nghĩa hình thoi theo cạnh.
+**Bước 1.** Nhắc lại định nghĩa hình thoi (nói về bốn cạnh của một tứ giác) và phân biệt với các dấu hiệu nhận biết hình thoi (đều đi từ hình bình hành).
 
-**Bước 2.** Thử điền lần lượt từng phương án vào chỗ trống rồi xem câu thu được có phải một dấu hiệu nhận biết hình thoi không.
+**Bước 2.** Thử điền lần lượt từng phương án vào chỗ trống rồi xem câu thu được có đúng với mọi tứ giác như thế hay không.
 
 **Bước 3.** Loại các phương án chỉ nói về tính song song, vì chúng dẫn tới hình bình hành hoặc hình thang chứ chưa chắc là hình thoi.
 
 **Phần 2. Trình bày**
 
-Tứ giác có bốn cạnh bằng nhau là hình thoi (dấu hiệu nhận biết).
+Tứ giác có bốn cạnh bằng nhau là hình thoi (định nghĩa).
 
 Tứ giác có hai cặp cạnh song song, hoặc có một cặp cạnh vừa song song vừa bằng nhau, là hình bình hành; tứ giác có một cặp cạnh song song là hình thang. Các phương án này không đủ để kết luận là hình thoi.
 
@@ -346,7 +346,7 @@ b) Biểu thức biểu thị diện tích của mảnh đất hình chữ nhậ
 c) Diện tích của mảnh đất hình chữ nhật bằng $120$ ($m^2$) khi $x=10$.
 d) Diện tích của phần đường đi xung quanh vườn hoa là $x^2+2x$ ($m^2$).
 **Hình:** p2c13_1.png
-**Ghi chú:** câu Đúng/Sai nhập dạng tự luận.
+**Ghi chú:** câu Đúng/Sai nhập dạng tự luận. Ý d) đề gốc in thiếu chữ "là" ("… xung quanh vườn hoa $x^2+2x$"), đã thêm cho đủ câu.
 
 **Phần 1. Hướng dẫn**
 
@@ -726,6 +726,6 @@ Vậy các cặp số nguyên $(x;y)$ cần tìm là $(-1;12)$, $(9;2)$, $(-3;-1
 - Đề không ghi mã đề / đề số. Đề có 18 câu trắc nghiệm các loại + 3 bài tự luận; Bài 1 tách thành Bài 1a, Bài 1b (hai ý độc lập: thu gọn, tìm $x$); Bài 2 là bài hình, giữ chung một câu.
 - Câu 9: đề gốc in hai phương án A và D cùng bằng $240^\circ$ — giữ nguyên như đề, chọn A.
 - Câu 13, 14: Đúng/Sai nhập dạng tự luận (đáp án: Câu 13 a) đúng, b) đúng, c) sai, d) sai; Câu 14 a) đúng, b) sai, c) sai, d) đúng). Câu 14 d) chứng minh bằng quan hệ đường vuông góc – đường xiên (lớp 7), không dùng tính chất hình thang vuông.
-- Câu 14: đề không cho hình; hình giải vẽ hai trường hợp (hình thang cân, hình bình hành) cùng thoả giả thiết. Bài 2: đề không cho hình; hình giải vẽ bằng code, không vẽ ba đoạn $AM$, $DB$, $KN$ vì đó là điều phải chứng minh ở ý b.
+- Câu 14: đề không cho hình; hình giải vẽ hai trường hợp (hình thang cân, hình bình hành) cùng thoả giả thiết. Bài 2: đề không cho hình; hình giải vẽ bằng code, có đủ ba đoạn $AM$, $DB$, $KN$ của ý b nhưng không chấm giao điểm (ba đường đồng quy là điều phải chứng minh).
 - Câu 18: cần định lí Pythagore đảo (xem `Chưa chắc` ở câu này).
 - Đáp số đã thử bằng máy (`tam\kiem.mjs`): các biến đổi đa thức thay nhiều bộ số, nghiệm Bài 3 quét $-200\le x,y\le200$ ra đúng 4 cặp, Bài 2 dựng toạ độ kiểm $MCDN$ là hình thoi và ba trung tuyến đồng quy.

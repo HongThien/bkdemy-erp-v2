@@ -33,23 +33,23 @@ $5x+9$ là tổng của hai hạng tử $5x$ và $9$ nên không phải đơn th
 
 Chọn B.
 
-### Câu 2 | kho=dai | loai=trac_nghiem | dap_an=B
+### Câu 2 | kho=dai | loai=trac_nghiem | dap_an=C
 **Đề:** Có mấy nhóm đơn thức đồng dạng với nhau trong các đơn thức sau: $\dfrac{-2}{3}x^3y$; $-xy^2$; $5x^2y$; $6xy^2$; $2x^3y$; $\dfrac{2}{5}$; $\dfrac{1}{2}x^2y$?
 A. 2
 B. 3
 C. 4
 D. 5
-**Chưa chắc:** đề có hai cách đếm. Chọn B (3 nhóm): một nhóm "đơn thức đồng dạng với nhau" phải có từ hai đơn thức trở lên, số $\dfrac{2}{5}$ không đồng dạng với đơn thức nào trong dãy nên không lập thành nhóm. Nếu người ra đề tính cả $\dfrac{2}{5}$ là một nhóm riêng thì đáp án là C (4 nhóm) — trạm soạn đã chọn C, trạm soát giải độc lập ra B; đề không in đáp án để phân xử.
+**Chưa chắc:** đề không nói rõ số hạng $\dfrac{2}{5}$ (một mình) có tính là một nhóm hay không. Theo quy ước "hai số khác 0 bất kì là hai đơn thức đồng dạng" thì $\dfrac{2}{5}$ lập thành một nhóm riêng nên có 4 nhóm (đáp án C). Nếu người ra đề chỉ đếm các nhóm có từ hai đơn thức trở lên thì đáp án là B (3 nhóm).
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hai đơn thức đồng dạng khi có **phần biến giống nhau** (hệ số khác 0, khác nhau cũng được); một nhóm đồng dạng với nhau phải có ít nhất hai đơn thức.
+**Mấu chốt:** hai đơn thức đồng dạng khi có **phần biến giống nhau** (hệ số khác 0, khác nhau cũng được); các số khác 0 cũng đồng dạng với nhau.
 
 **Bước 1.** Với mỗi đơn thức, tách hệ số và phần biến: chỉ phần biến mới dùng để xếp nhóm.
 
 **Bước 2.** Xếp các đơn thức có cùng phần biến vào một nhóm; chú ý $x^3y$, $x^2y$ và $xy^2$ là ba phần biến khác nhau dù cùng gồm $x$ và $y$.
 
-**Bước 3.** Xét riêng số $\dfrac{2}{5}$: nó không có phần biến, trong dãy không còn số nào khác để đồng dạng với nó, nên nó không tạo thành nhóm; đếm các nhóm còn lại.
+**Bước 3.** Số $\dfrac{2}{5}$ không có biến (phần biến rỗng) nên đứng thành một nhóm riêng; đếm tổng số nhóm.
 
 **Chú ý:** đừng gộp $x^2y$ với $xy^2$ — số mũ của từng biến phải trùng khớp.
 
@@ -61,11 +61,11 @@ Nhóm 2 (phần biến $xy^2$): $-xy^2$; $6xy^2$.
 
 Nhóm 3 (phần biến $x^2y$): $5x^2y$; $\dfrac{1}{2}x^2y$.
 
-Số $\dfrac{2}{5}$ không đồng dạng với đơn thức nào trong các đơn thức đã cho.
+Nhóm 4 (không có biến): $\dfrac{2}{5}$.
 
-Vậy có 3 nhóm đơn thức đồng dạng với nhau.
+Vậy có 4 nhóm đơn thức đồng dạng.
 
-Chọn B.
+Chọn C.
 
 ### Câu 3 | kho=dai | loai=trac_nghiem | dap_an=A
 **Đề:** Sau khi thu gọn đơn thức $2 \cdot (-3x^3y)y^2$ ta được đơn thức:
@@ -102,6 +102,7 @@ A. 4
 B. 5
 C. 6
 D. 7
+**Chưa chắc:** ảnh scan mờ, số mũ của $y$ ở hạng tử đầu đọc là $5$ (giống chữ số 5 ở $8x^5$ của Câu 5). Nếu là $y^3$ thì bậc là 6 (đáp án C).
 
 **Phần 1. Hướng dẫn**
 
@@ -142,11 +143,11 @@ D. 8; 2; $-7$; 1.
 
 **Bước 1.** Kiểm tra đa thức đã thu gọn chưa: các hạng tử $8x^5$, $2x^3$, $-7x$, $1$ có số mũ khác nhau nên không cần gộp.
 
-**Bước 2.** Đọc hệ số của từng hạng tử, lấy cả dấu đứng trước nó (hạng tử $-7x$ có hệ số là số âm).
+**Bước 2.** Viết hệ số của từng hạng tử, kể cả dấu: $8$; $2$; $-7$ và hệ số của hạng tử $1$.
 
-**Bước 3.** Đối chiếu để chọn phương án có đủ hệ số của mọi hạng tử, không nhầm với số mũ hay tổng các hệ số.
+**Bước 3.** Đối chiếu để chọn phương án đủ cả bốn hệ số, không nhầm với số mũ hay tổng các hệ số.
 
-**Chú ý:** hạng tử không chứa biến cũng có hệ số (hệ số tự do) nên đừng bỏ sót; số mũ của $x$ không phải là hệ số.
+**Chú ý:** phương án A là các số mũ, không phải hệ số; phương án B thiếu hệ số của hạng tử $1$.
 
 **Phần 2. Trình bày**
 
@@ -302,13 +303,13 @@ Chọn C.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** đây là định lí về tổng các góc của tứ giác: tổng đó luôn là một số không đổi, không phụ thuộc hình dạng của tứ giác.
+**Mấu chốt:** đây là định lí về tổng các góc của tứ giác: luôn là một số không đổi, không phụ thuộc hình dạng.
 
-**Bước 1.** Nhớ lại định lí tổng các góc của một tứ giác đã học ở bài Tứ giác.
+**Bước 1.** Nhớ lại định lí: tổng bốn góc trong của một tứ giác bằng $360^\circ$.
 
-**Bước 2.** Nếu quên, kẻ một đường chéo để chia tứ giác thành hai tam giác: tổng các góc của tứ giác bằng tổng các góc của hai tam giác đó.
+**Bước 2.** Có thể kiểm tra bằng hình vuông: bốn góc vuông có tổng $4 \cdot 90^\circ=360^\circ$.
 
-**Bước 3.** Mỗi tam giác có tổng ba góc bằng $180^\circ$ nên lấy hai lần số đó; chỉ ghi số đo (không ghi đơn vị) vào ô trả lời.
+**Bước 3.** Chỉ ghi số đo (không ghi đơn vị) vào ô trả lời.
 
 **Phần 2. Trình bày**
 
@@ -423,11 +424,11 @@ $=(x+y)(x-y+4)$
 
 **Mấu chốt:** ba hạng tử đầu là một bình phương, hai hạng tử cuối cùng có chung $2$ và cùng liên hệ với $2x+y$: nhóm rồi đặt $(2x+y)$ làm nhân tử chung.
 
-**Bước 1.** Nhóm ba hạng tử bậc hai $4x^2+4xy+y^2$ thành một nhóm, hai hạng tử bậc nhất $-4x-2y$ thành một nhóm.
+**Bước 1.** Nhóm $4x^2+4xy+y^2$ và $-4x-2y$.
 
-**Bước 2.** Nhóm thứ nhất có dạng $A^2+2AB+B^2$ với $A=2x$, $B=y$ nên viết được thành bình phương của một tổng; nhóm thứ hai đặt $-2$ ra ngoài thì trong ngoặc cũng xuất hiện $2x+y$.
+**Bước 2.** Nhận ra $4x^2+4xy+y^2=(2x)^2+2 \cdot 2x \cdot y+y^2=(2x+y)^2$ và $-4x-2y=-2(2x+y)$.
 
-**Bước 3.** Cả hai nhóm có nhân tử chung $(2x+y)$, đặt nó ra ngoài để được một tích.
+**Bước 3.** Cả hai nhóm có nhân tử chung $(2x+y)$, đặt ra ngoài.
 
 **Chú ý:** đặt dấu trừ khi nhóm hạng tử cuối: $-4x-2y=-2(2x+y)$.
 
@@ -447,7 +448,7 @@ $=(2x+y)(2x+y-2)$
 
 **Mấu chốt:** bốn hạng tử đầu chính là khai triển của lập phương một hiệu, hai hạng tử cuối là hiệu hai bình phương; cả hai đều chứa nhân tử $(x-y)$.
 
-**Bước 1.** Nhóm bốn hạng tử bậc ba $x^3-3x^2y+3xy^2-y^3$ thành một nhóm, hai hạng tử bậc hai $x^2-y^2$ thành một nhóm.
+**Bước 1.** Nhóm $x^3-3x^2y+3xy^2-y^3$ và $x^2-y^2$.
 
 **Bước 2.** Nhận ra nhóm đầu là $(x-y)^3$ (hằng đẳng thức lập phương của một hiệu) và nhóm sau là $(x-y)(x+y)$.
 
@@ -465,18 +466,17 @@ $=(x-y)(x^2-2xy+y^2+x+y)$
 
 ### Bài 3a | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tính nhanh giá trị của biểu thức $x^2+12x+36$ tại $x=-1006$.
+**Ghi chú:** đáp số là $1\,000\,000$ (7 chữ số) không vừa 4 ô của câu trả lời ngắn nên nhập tự luận. Bài 3 gồm ba ý độc lập (tính nhanh, tìm $x$, chứng minh) nên tách thành Bài 3a, 3b, 3c.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** $x^2+12x+36$ là bình phương của một tổng; đưa về dạng bình phương rồi mới thay số thì tính nhanh được.
+**Mấu chốt:** $x^2+12x+36$ là bình phương của một tổng, đưa về $(x+6)^2$ rồi mới thay số để tính nhanh.
 
-**Bước 1.** Thay thẳng $x=-1006$ thì phải tính $1006^2$ rất cồng kềnh, nên tìm cách viết gọn biểu thức trước.
+**Bước 1.** Nhận ra $x^2=x^2$, $36=6^2$ và $12x=2 \cdot x \cdot 6$, nên có dạng $A^2+2AB+B^2$ với $A=x$, $B=6$.
 
-**Bước 2.** Nhận ra $36=6^2$ và $12x=2 \cdot x \cdot 6$, nên biểu thức có dạng $A^2+2AB+B^2$ với $A=x$, $B=6$; viết nó thành bình phương của tổng $A+B$.
+**Bước 2.** Viết biểu thức thành $(x+6)^2$.
 
-**Bước 3.** Thay $x=-1006$ vào dạng bình phương: tổng trong ngoặc trở thành một số tròn nghìn nên bình phương rất dễ tính.
-
-**Chú ý:** bình phương của một số âm là số dương.
+**Bước 3.** Thay $x=-1006$ vào: $x+6$ trở thành một số tròn nghìn, bình phương rất dễ tính.
 
 **Phần 2. Trình bày**
 
@@ -490,18 +490,19 @@ Vậy giá trị của biểu thức bằng $1\,000\,000$.
 
 ### Bài 3b | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm $x$ biết: $x^2-9x=0$.
+**Ghi chú:** có hai giá trị $x$ nên nhập tự luận.
 
 **Phần 1. Hướng dẫn**
 
 **Mấu chốt:** vế phải bằng 0, đưa vế trái về dạng **tích** rồi dùng: tích bằng 0 thì có một thừa số bằng 0.
 
-**Bước 1.** Hai hạng tử $x^2$ và $-9x$ có nhân tử chung $x$, đặt $x$ ra ngoài để vế trái thành tích của hai thừa số.
+**Bước 1.** Hai hạng tử $x^2$ và $-9x$ có nhân tử chung $x$, đặt $x$ ra ngoài.
 
-**Bước 2.** Một tích bằng 0 khi một trong các thừa số bằng 0, nên xét hai trường hợp: thừa số thứ nhất bằng 0 hoặc thừa số thứ hai bằng 0.
+**Bước 2.** Được tích $x(x-9)=0$, nên $x=0$ hoặc $x-9=0$.
 
-**Bước 3.** Tìm $x$ trong từng trường hợp bằng quy tắc chuyển vế rồi kết luận đủ cả hai giá trị.
+**Bước 3.** Giải từng trường hợp bằng quy tắc chuyển vế rồi kết luận cả hai giá trị.
 
-**Chú ý:** đừng chia hai vế cho $x$, vì $x$ có thể bằng 0 — chia như vậy sẽ làm mất một giá trị của $x$.
+**Chú ý:** đừng chia hai vế cho $x$, vì sẽ mất nghiệm $x=0$.
 
 **Phần 2. Trình bày**
 
@@ -551,7 +552,6 @@ Vậy $M$ luôn có giá trị dương với mọi giá trị của $x$ và $y$.
 a) Viết đa thức biểu thị chu vi của mảnh đất làm nhà.
 b) Biết chu vi của mảnh đất dành để làm nhà bằng $40$ m. Tính diện tích của khu vườn hình vuông ban đầu.
 **Hình:** p3c4_1.png
-**Hình giải:** giai_bai4.png
 **Ghi chú:** dữ kiện chỉ có trên hình: cạnh khu vườn là $x$ (m); đoạn $25$ (m) đo từ mép trái khu vườn đến mép trái mảnh đất; đoạn $15$ (m) đo từ mép dưới mảnh đất đến mép dưới khu vườn. Nên mảnh đất làm nhà có chiều rộng $x-25$ (m) và chiều dài $x-15$ (m).
 
 **Phần 1. Hướng dẫn**
@@ -560,13 +560,13 @@ b) Biết chu vi của mảnh đất dành để làm nhà bằng $40$ m. Tính 
 
 **Bước 1.** Ý a: tìm hai kích thước của mảnh đất hình chữ nhật: chiều ngang bằng $x$ trừ $25$, chiều dọc bằng $x$ trừ $15$.
 
-**Bước 2.** Dùng công thức: chu vi hình chữ nhật bằng hai lần tổng của chiều dài và chiều rộng, rồi bỏ ngoặc và thu gọn thành đa thức của $x$.
+**Bước 2.** Dùng công thức chu vi hình chữ nhật $=2 \cdot ($chiều dài + chiều rộng$)$, rồi bỏ ngoặc và thu gọn thành đa thức của $x$.
 
-**Bước 3.** Ý b: cho đa thức chu vi ở ý a bằng $40$, rồi tìm $x$ (cạnh khu vườn) bằng quy tắc chuyển vế.
+**Bước 3.** Ý b: cho đa thức chu vi bằng $40$, đây là một đẳng thức bậc nhất của $x$; giải bằng quy tắc chuyển vế để tìm $x$ (cạnh khu vườn).
 
 **Bước 4.** Khu vườn là hình vuông cạnh $x$ nên diện tích bằng $x^2$; thay giá trị $x$ vừa tìm và ghi đơn vị $m^2$.
 
-**Chú ý:** tìm được $x$ rồi nên thử lại: $x$ phải lớn hơn $25$ (để mảnh đất làm nhà có thật), và chu vi tính từ hai kích thước của mảnh đất phải đúng bằng $40$ m.
+**Chú ý:** thử lại: $x=30$ thì mảnh đất có kích thước $5$ m và $15$ m, chu vi $2 \cdot (5+15)=40$ m, khớp đề.
 
 **Phần 2. Trình bày**
 
@@ -595,10 +595,9 @@ $30^2=900$ ($m^2$)
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Bộ sách: KNTT (đoán theo nội dung). Phạm vi đề chạm tới: Chương I (đơn thức, đa thức, cộng – trừ – nhân đa thức, chia), Chương II (hằng đẳng thức, phân tích nhân tử) và tứ giác (chỉ tổng các góc của tứ giác, Câu 11–12). Đề không có hình thang, hình bình hành... nên lời giải không dùng.
-- Đề là ảnh SCAN 2 trang, chữ mờ; toàn bộ đề đã soát lại theo ảnh phóng to (hai trạm đọc độc lập, khớp nhau). Số mũ $y^5$ ở Câu 4 in mờ nhưng đọc chắc: nét chữ số trùng với số mũ 5 của $8x^5$ ở Câu 5 (phương án A của Câu 5 liệt kê đúng các số mũ 5; 3; 1) và khác hẳn nét số mũ 3. Bài 1: $x^3yz^2$ ở cả $P$ và $Q$ đọc rõ ở ảnh phóng to.
-- Đề có 16 câu theo đánh số gốc (10 trắc nghiệm + 2 trả lời ngắn + 4 bài tự luận). Bài 2 (Phân tích đa thức thành nhân tử) tách ý thành Bài 2a/2b/2c. Bài 3 gom ba bài toán khác hẳn nhau, không chung dữ kiện (tính nhanh, tìm $x$, chứng minh) nên tách thành Bài 3a/3b/3c. Bài 1 và Bài 4 giữ chung vì các ý dùng chung dữ kiện. Tổng 20 câu.
-- Phần 2 của đề ghi 2 câu "trả lời ngắn"; cả hai đáp số (360 và 167) vừa 4 ô nên nhập `tra_loi_ngan`. Bài 3a đáp số $1\,000\,000$ (7 chữ số) không vừa 4 ô, Bài 3b có hai giá trị của $x$ nên cả hai nhập `tu_luan`.
+- Đề là ảnh SCAN 2 trang, chữ mờ. Máy gõ lại sai nhiều chỗ (Câu 2, 4, 5, 6, Bài 1 sai số mũ / biểu thức), toàn bộ đã soát lại theo ảnh phóng to. Các số mũ đã phóng to nhưng vẫn mờ: Câu 4 ($y^5$), Bài 1 ($x^3yz^2$ ở $P$ và $Q$) — xem Chưa chắc ở Câu 4.
+- Đề có 16 câu theo đánh số gốc (10 trắc nghiệm + 2 trả lời ngắn + 4 bài tự luận). Bài 2 và Bài 3 tách ý nên thành Bài 2a/2b/2c, Bài 3a/3b/3c; Bài 1 và Bài 4 giữ chung vì các ý dùng chung dữ kiện. Tổng 19 câu.
+- Phần 2 của đề ghi 2 câu "trả lời ngắn"; cả hai đáp số (360 và 167) vừa 4 ô nên nhập `tra_loi_ngan`.
 - Đề không in bảng đáp án.
-- Một chỗ cần CEO xem: Câu 2 (có tính số $\dfrac{2}{5}$ đứng một mình là một nhóm hay không — chọn B, 3 nhóm).
-- Lỗi in của đề: Bài 2 "các thức" thay vì "các đa thức" (đã sửa nhẹ trong đề); Câu 1 đề ngắt câu bằng dấu chấm ("… đại số sau. Biểu thức nào …"), viết lại thành một câu hỏi.
-- Bài 4: mọi số đo chỉ có trên hình (25 m, 15 m, $x$ m); chữ trong ô xám của hình là "Mảnh đất xây nhà" (ảnh scan mờ). Bài thuộc kho Đại (viết và tính biểu thức đại số). Vì hình scan của đề mờ nên lời giải có thêm hình vẽ lại bằng code (`giai_bai4.png`, đúng tỉ lệ thật $x=30$, ghi rõ hai kích thước $x-25$ và $x-15$ của mảnh đất) — hình này chỉ hiện ở lời giải. Đề không có bài hình tự luận nào.
+- Hai chỗ cần CEO xem: Câu 2 (có tính nhóm $\dfrac{2}{5}$ hay không) và Câu 4 (số mũ đọc từ ảnh mờ).
+- Lỗi in của đề: Bài 2 "các thức" thay vì "các đa thức"; đã sửa nhẹ trong đề.

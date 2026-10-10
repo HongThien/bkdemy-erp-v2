@@ -95,7 +95,7 @@ A. 2
 B. 3
 C. 5
 D. 6
-**Ghi chú:** đề gốc in $2x^2y3xy^2$ (thiếu dấu nhân giữa hai đơn thức); đã thêm dấu nhân cho đúng nghĩa.
+**Ghi chú:** đề gốc in liền $2x^2y3xy^2$ (đơn thức chưa thu gọn, không có dấu nhân); đã thêm dấu nhân trước số 3 cho dễ đọc, nghĩa không đổi.
 
 **Phần 1. Hướng dẫn**
 
@@ -439,7 +439,7 @@ D. $(4x-9y)(4x+9y)$
 
 **Bước 2.** Xác định $A=2x$, $B=3y$ rồi áp dụng hằng đẳng thức hiệu hai bình phương.
 
-**Bước 3.** Đối chiếu phương án; chú ý $A$, $B$ là căn của số hạng chứ không phải chính số hạng.
+**Bước 3.** Đối chiếu phương án; chú ý $A$, $B$ là biểu thức đem bình phương ($2x$ và $3y$) chứ không phải chính hai số hạng $4x^2$, $9y^2$.
 
 **Phần 2. Trình bày**
 
@@ -455,7 +455,6 @@ A. 9
 B. $\pm 3$
 C. $-3$
 D. 3
-**Chưa chắc:** cả $x=3$ và $x=-3$ đều thoả mãn nên C, D mỗi phương án chỉ đúng một nửa; chọn B vì là phương án duy nhất nêu đủ hai giá trị.
 
 **Phần 1. Hướng dẫn**
 
@@ -466,6 +465,8 @@ D. 3
 **Bước 2.** Phân tích thành tích $(x-3)(x+3)$ rồi cho từng thừa số bằng 0.
 
 **Bước 3.** Gộp hai giá trị tìm được và chọn phương án nêu đủ cả hai.
+
+**Chú ý:** phương án C và phương án D mỗi phương án chỉ nêu một trong hai giá trị nên chưa đủ; phải chọn phương án nêu cả hai.
 
 **Phần 2. Trình bày**
 
@@ -482,18 +483,18 @@ Vậy $x=\pm 3$.
 Chọn B.
 
 ### Câu 18 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
-**Đề:** Tam giác vuông $ABC$ có độ dài các cạnh $AB=3$ cm; $AC=4$ cm. Độ dài cạnh $BC$ là?
+**Đề:** Tam giác $ABC$ vuông tại $A$ có độ dài các cạnh $AB=3$ cm; $AC=4$ cm. Độ dài cạnh $BC$ là?
 A. 5 cm
 B. 4 cm
 C. 3 cm
 D. 2 cm
-**Chưa chắc:** đề không nói tam giác vuông tại đỉnh nào; chọn vuông tại $A$ (hai cạnh $AB$, $AC$ là hai cạnh góc vuông) vì chỉ khi đó $BC$ nằm trong các phương án (nếu vuông tại $B$ thì $BC=\sqrt{7}$ cm, nếu vuông tại $C$ thì không tồn tại tam giác vì $AB<AC$).
+**Ghi chú:** đề gốc chỉ ghi "Tam giác vuông $ABC$", không nói vuông tại đỉnh nào; đã thêm "vuông tại $A$" vì chỉ trường hợp này $BC$ có trong các phương án (vuông tại $B$ thì $BC=\sqrt{7}$ cm, vuông tại $C$ thì không có tam giác nào vì cạnh huyền $AB$ ngắn hơn cạnh góc vuông $AC$); đáp án in đỏ trong đề cũng là 5 cm.
 
 **Phần 1. Hướng dẫn**
 
 **Mấu chốt:** biết hai cạnh góc vuông, tìm cạnh huyền bằng **định lí Pythagore**: bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông.
 
-**Bước 1.** Xác định cạnh huyền là cạnh đối diện góc vuông; ở đây $AB$, $AC$ là hai cạnh góc vuông nên cạnh huyền là $BC$.
+**Bước 1.** Xác định cạnh huyền là cạnh đối diện góc vuông; tam giác vuông tại $A$ nên $AB$, $AC$ là hai cạnh góc vuông và cạnh huyền là $BC$.
 
 **Bước 2.** Viết định lí Pythagore: $BC^2=AB^2+AC^2$ rồi thay số.
 
@@ -638,7 +639,7 @@ D. $110^\circ$
 
 **Bước 3.** Suy ra số đo $\widehat{C}$ rồi đối chiếu phương án.
 
-**Chú ý:** $50^\circ$ là số đo của góc kề với $\widehat{A}$ (hai góc kề bù nhau), không phải góc đối.
+**Chú ý:** $50^\circ$ là số đo của góc $\widehat{B}$ kề với $\widehat{A}$ (hai góc trong cùng phía của $AD\parallel BC$ nên bù nhau), không phải góc đối.
 
 **Phần 2. Trình bày**
 
@@ -886,7 +887,7 @@ Suy ra $DH=CK$ (hai cạnh tương ứng).
 
 c) Vì $E$ đối xứng với $D$ qua $H$ nên $H$ là trung điểm của $DE$, suy ra $DE=2DH$ và $E$ thuộc tia $DC$.
 
-Vì $H$, $K$ thuộc đoạn $CD$ nên $DC=DH+HK+KC$. Mà $KC=DH$ (câu b) nên $DC=2DH+HK$.
+Trên đoạn thẳng $DC$, các điểm $D$, $H$, $K$, $C$ nằm theo thứ tự đó nên $DC=DH+HK+KC$. Mà $KC=DH$ (câu b) nên $DC=2DH+HK$.
 
 Do $DE=2DH<2DH+HK=DC$ nên $E$ nằm giữa $D$ và $C$, do đó $EC=DC-DE=(2DH+HK)-2DH=HK$.
 
@@ -949,10 +950,10 @@ Vậy $M=\dfrac{4}{5}$.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: đề có định lí Pythagore (Câu 18, Câu 21) ở học kì 1 nên không phải KNTT; đoán là Cánh Diều (có thể là Chân trời sáng tạo — cả hai dạy Pythagore trước tứ giác). Phạm vi đề chạm tới: đơn thức, đa thức, cộng – nhân – chia đa thức cho đơn thức, các hằng đẳng thức (bình phương tổng / hiệu, hiệu hai bình phương, lập phương tổng, tổng và hiệu hai lập phương), định lí Pythagore, tứ giác, hình thang cân, hình bình hành, hình chữ nhật. Lời giải chỉ dùng những kiến thức đó; không dùng phân tích đa thức thành nhân tử bằng đặt nhân tử chung (Câu 17 chỉ dùng hiệu hai bình phương).
+- Bộ sách: đề có định lí Pythagore (Câu 18, Câu 21) ở học kì 1 nên không phải KNTT; đoán là Cánh Diều (có thể là Chân trời sáng tạo — cả hai dạy Pythagore trước tứ giác). Phạm vi đề chạm tới: đơn thức, đa thức, cộng – nhân – chia đa thức cho đơn thức, các hằng đẳng thức (bình phương tổng / hiệu, hiệu hai bình phương, lập phương tổng, tổng và hiệu hai lập phương), định lí Pythagore, tứ giác, hình thang cân, hình bình hành, hình chữ nhật. Lời giải chỉ dùng những kiến thức đó; đề không hỏi phân tích nhân tử bằng nhóm / tách hạng tử nên lời giải không dùng (Câu 17 chỉ viết hiệu hai bình phương thành tích, như chính Câu 12 và Câu 16 của đề).
 - Đề có 30 câu (25 trắc nghiệm + 5 tự luận). Tách ý: Câu 26 → 26a, 26b; Câu 27 → 27a, 27b; giữ chung Câu 28 (cho sẵn $M$, $N$ rồi hỏi nhiều ý), Câu 29 (hình), Câu 30. Tổng 32 câu nhập.
-- Đề in sẵn đáp án bằng chữ đỏ ở phương án đúng; đối chiếu với lời giải thì khớp ở cả 25 câu trắc nghiệm (bản máy gõ lại sai ở Câu 2 phương án C, Câu 27b và đáp án Câu 8; đã sửa theo ảnh).
+- Đề in sẵn đáp án bằng chữ đỏ ở phương án đúng; đối chiếu với lời giải thì khớp ở cả 25 câu trắc nghiệm.
 - Câu 24: đề gốc chỉ có 3 phương án nên nhập dạng tự luận (không bịa phương án D); đáp án C.
-- Câu 17 và Câu 18 có `Chưa chắc` (nhiều đáp án gần đúng / đề không nói vuông tại đâu).
+- Câu 18: đề gốc không nói tam giác vuông tại đỉnh nào; đã thêm "vuông tại $A$" (xem **Ghi chú** của câu). Câu 4: đề in liền đơn thức chưa thu gọn, đã thêm dấu nhân.
 - Câu 27b rút gọn ra một số nguyên $-30$ nên nhập `tra_loi_ngan`; nếu người duyệt thấy "Rút gọn" phải để biểu thức thì đổi thành tự luận.
 - Câu 29 đề không cho hình: đã vẽ hình giải bằng code (không vẽ đoạn $AC$ vì đó là điều phải chứng minh ở ý c). Vị trí các điểm $D$, $H$, $K$, $C$ theo thứ tự trên đường thẳng $CD$ lấy theo hình và đề ("$H$, $K$ thuộc $CD$").

@@ -43,6 +43,7 @@ A. 2.
 B. 3.
 C. 4.
 D. 5.
+**Chưa chắc:** biểu thức $\dfrac{-8}{9}x^2y(2x-3)$ là tích của đơn thức với đa thức, chưa viết thành tổng các đơn thức; tôi tính nó là đa thức (vì nhân ra được tổng các đơn thức) nên đáp án là 3 (B). Nếu người ra đề không tính biểu thức này thì đáp án là 2 (A).
 
 **Phần 1. Hướng dẫn**
 
@@ -252,23 +253,21 @@ D. Hình thang cân.
 
 **Mấu chốt:** đọc kí hiệu trên hình: hai đường chéo cắt nhau tại trung điểm mỗi đường và vuông góc với nhau.
 
-**Bước 1.** Gọi $O$ là giao điểm của $AC$ và $BD$ rồi đọc dữ kiện từ hình: hai đoạn cùng đánh hai gạch cho $OA=OC$, hai đoạn cùng đánh một gạch cho $OB=OD$, ô vuông tại $O$ cho $AC\perp BD$.
+**Bước 1.** Đọc dữ kiện từ hình: hai gạch kép cho $OA=OC$, một gạch đơn cho $OB=OD$, ô vuông tại $O$ cho $AC\perp BD$.
 
 **Bước 2.** Hai đường chéo cắt nhau tại trung điểm mỗi đường nên tứ giác là hình bình hành (dấu hiệu nhận biết).
 
 **Bước 3.** Hình bình hành có hai đường chéo vuông góc là hình thoi (dấu hiệu nhận biết), rồi đối chiếu phương án.
 
-**Chú ý:** hai nửa của $AC$ đánh hai gạch còn hai nửa của $BD$ đánh một gạch — kí hiệu khác nhau nên hình không cho $AC=BD$; vì vậy chỉ kết luận được hình thoi, không kết luận được hình vuông.
+**Chú ý:** hình vuông cũng là hình thoi, nhưng trên hình không có kí hiệu $AC=BD$ (và hai đường chéo trông không bằng nhau) nên chỉ kết luận được hình thoi.
 
 **Phần 2. Trình bày**
 
-Gọi $O$ là giao điểm của $AC$ và $BD$.
-
-Theo kí hiệu trên hình vẽ, $OA=OC$ và $OB=OD$ nên $O$ là trung điểm của $AC$ và của $BD$.
+Theo hình vẽ, $OA=OC$ và $OB=OD$ nên $O$ là trung điểm của $AC$ và của $BD$.
 
 Tứ giác $ABCD$ có hai đường chéo cắt nhau tại trung điểm mỗi đường nên $ABCD$ là hình bình hành.
 
-Hình bình hành $ABCD$ có hai đường chéo vuông góc ($AC\perp BD$ theo kí hiệu góc vuông trên hình) nên $ABCD$ là hình thoi.
+Hình bình hành $ABCD$ có $AC\perp BD$ nên $ABCD$ là hình thoi.
 
 Chọn B.
 
@@ -414,8 +413,8 @@ a) Tứ giác $ABCD$ là hình thang.
 b) Tứ giác $ABCD$ có $AB\parallel CD$, $AD=BC$ nên tứ giác $ABCD$ là hình thang cân.
 c) Tứ giác $ABCD$ có $\widehat{D}=60^\circ$.
 d) Nếu $\widehat{A}=90^\circ$ thì tứ giác $ABCD$ là hình vuông.
-**Hình giải:** giai_cau14.png
-**Ghi chú:** Đề in "là tứ hình thang" ở ý a), đã sửa thành "là hình thang". Câu Đúng/Sai nhập dạng tự luận: với mỗi ý a), b), c), d), trả lời Đúng hoặc Sai và giải thích. Đề không cho hình; hình giải vẽ hai trường hợp cùng thoả giả thiết (hình thang cân và hình bình hành) để minh hoạ ý b).
+**Ghi chú:** Đề in "là tứ hình thang" ở ý a), đã sửa thành "là hình thang". Câu Đúng/Sai nhập dạng tự luận: với mỗi ý a), b), c), d), trả lời Đúng hoặc Sai và giải thích.
+**Chưa chắc:** ý b) tôi xét Sai (còn trường hợp hình bình hành không phải hình thang cân); người ra đề có thể đã coi "$AB\parallel CD$, $AD=BC$" là đủ cho hình thang cân và chấm b) Đúng.
 
 **Phần 1. Hướng dẫn**
 
@@ -435,13 +434,11 @@ d) Nếu $\widehat{A}=90^\circ$ thì tứ giác $ABCD$ là hình vuông.
 
 a) Tứ giác $ABCD$ có $AB\parallel CD$ nên $ABCD$ là hình thang (định nghĩa). Vậy ý a) Đúng.
 
-b) Xét hình bình hành $ABCD$ có $\widehat{A}=60^\circ$: nó có $AB\parallel CD$ và $AD=BC$ (hai cạnh đối của hình bình hành) nên thoả mọi điều kiện của đề.
+b) Xét hình bình hành $ABCD$ có $\widehat{A}=60^\circ$: nó thoả $AB\parallel CD$ và $AD=BC$ (cạnh đối bằng nhau).
 
-Vì $AD\parallel BC$ nên $\widehat{A}+\widehat{B}=180^\circ$ (hai góc trong cùng phía bù nhau), suy ra $\widehat{B}=180^\circ-60^\circ=120^\circ\neq\widehat{A}$.
+Hình bình hành này có $\widehat{B}=180^\circ-60^\circ=120^\circ\neq\widehat{A}$ nên không phải hình thang cân.
 
-Hai góc kề đáy $AB$ không bằng nhau nên hình bình hành này không phải hình thang cân.
-
-Như vậy từ $AB\parallel CD$, $AD=BC$ chưa suy ra được $ABCD$ là hình thang cân. Vậy ý b) Sai.
+Vậy ý b) Sai.
 
 c) Vì $AB\parallel CD$ nên $\widehat{A}+\widehat{D}=180^\circ$ (hai góc trong cùng phía bù nhau).
 
@@ -528,33 +525,32 @@ $=1200$
 
 ### Câu 18 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Hình bình hành $ABCD$ có đường chéo $AC$ và $BD$ cắt nhau tại $O$. Biết $AB=7$ cm, $BC=5$ cm và $AC=10$ cm. Tính độ dài $AO+BO$.
-**Hình giải:** giai_cau18.png
-**Ghi chú:** Đề gốc lỗi số liệu (xem Chưa chắc). Đây là câu trả lời ngắn của đề nhưng nhập dạng tự luận, vì đáp số đúng $5+2\sqrt{3}$ (cm) không phải số nguyên hay số thập phân hữu hạn.
-**Chưa chắc:** đã phóng to 300 dpi: đề in đúng là $AB=7$ cm, $BC=5$ cm, $AC=10$ cm, không kèm hình. Về toán, đề KHÔNG thiếu dữ kiện: tam giác $ABC$ biết ba cạnh nên hình bình hành xác định duy nhất, đáp số đúng là $AO+BO=5+2\sqrt{3}\approx 8{,}46$ cm (hai lượt giải độc lập + máy dựng toạ độ). Nhưng muốn ra $BO$ phải dùng định lí Pythagore và căn bậc hai — ngoài phạm vi giữa kì 1 — và kết quả không gọn cho câu trả lời ngắn. Đề 1 cùng trường (GKI-12, Câu 18) hỏi y hệt với ba số 8, 6, 10 ($8^2+6^2=10^2$ nên là hình chữ nhật, đáp số 10); đề 2 đổi thành 7, 5, 10 làm mất bộ ba đó ($7^2+5^2=74\neq 100$) ⇒ người ra đề đổi số hỏng, không biết đáp án của trường là gì. Lời giải dưới đây chỉ đi tới $AO=5$ cm bằng kiến thức đã học, rồi ghi đáp số đúng trong ngoặc. Người duyệt quyết: bỏ câu, sửa số liệu, hay giữ như vậy.
+**Ghi chú:** Câu để dạng tự luận vì đáp số không phải số nguyên hay số thập phân gọn (xem Chưa chắc).
+**Chưa chắc:** với kiến thức tới giữa học kì 1 chỉ tính được $AO=5$ cm; muốn có $BO$ phải biết $BD$, mà đề chỉ cho $AB$, $BC$, $AC$. Nếu dùng công cụ học sau (định lí Pythagore / công thức đường trung tuyến) thì $BO=2\sqrt{3}$ cm, $AO+BO=5+2\sqrt{3}\approx 8{,}46$ cm (đã tính bằng máy, tam giác $ABC$ có ba cạnh $7$, $5$, $10$ hợp lệ). Nghi đề in thiếu dữ kiện (ví dụ thiếu độ dài $BD$) hoặc đề sai; cần đối chiếu đáp án của trường trước khi dùng câu này.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hai đường chéo của hình bình hành cắt nhau tại trung điểm mỗi đường, nên $AO$ là nửa đường chéo $AC$ và $BO$ là nửa đường chéo $BD$; đề cho $AC$ nhưng không cho $BD$.
+**Mấu chốt:** hai đường chéo của hình bình hành cắt nhau tại trung điểm mỗi đường, nên $AO$ và $BO$ lần lượt là nửa đường chéo $AC$ và nửa đường chéo $BD$.
 
 **Bước 1.** Xác định $AO$ là nửa của $AC$ và $BO$ là nửa của $BD$ (tính chất đường chéo hình bình hành).
 
 **Bước 2.** Tính $AO$ bằng cách lấy một nửa độ dài đường chéo $AC$ mà đề đã cho.
 
-**Bước 3.** Để tính $BO$ cần biết $BD$; đề không cho $ABCD$ là hình chữ nhật nên không được lấy $BD=AC$.
+**Bước 3.** Để tính $BO$ cần biết $BD$; kiểm tra xem các dữ kiện $AB$, $BC$ có cho ra $BD$ bằng kiến thức đã học không.
 
-**Bước 4.** Ba độ dài $AB$, $BC$, $AC$ đã xác định hình bình hành, nhưng muốn tính $BD$ từ chúng phải dùng định lí Pythagore (học sau); với kiến thức tới giữa học kì 1 thì chưa tính được $BO$.
+**Bước 4.** Với kiến thức đã học (tính chất hình bình hành), từ độ dài hai cạnh $AB$, $BC$ và đường chéo $AC$ chưa tính được $BD$, nên chưa tính được $BO$.
 
-**Chú ý:** sai lầm dễ gặp là coi $BO=AO$ rồi cộng hai nửa đường chéo bằng nhau; điều đó chỉ đúng với hình chữ nhật, còn hình bình hành nói chung có hai đường chéo dài khác nhau.
+**Chú ý:** hai cạnh $AB$, $BC$ không đủ để suy ra độ dài đường chéo $BD$ nếu không có công cụ tính độ dài đoạn thẳng học sau.
 
 **Phần 2. Trình bày**
 
 Vì $ABCD$ là hình bình hành nên hai đường chéo $AC$ và $BD$ cắt nhau tại trung điểm $O$ của mỗi đường.
 
-Do đó $AO=\dfrac{1}{2}AC=\dfrac{1}{2} \cdot 10=5$ (cm) và $BO=\dfrac{1}{2}BD$.
+Do đó $AO=\dfrac{1}{2}AC=\dfrac{1}{2} \cdot 10=5$ (cm).
 
-Đề không cho $BD$; với kiến thức đã học tới giữa học kì 1, từ $AB$, $BC$, $AC$ chưa tính được $BD$ nên chưa tính được $BO$.
+Độ dài $BO=\dfrac{1}{2}BD$, nhưng đề không cho $BD$ và các dữ kiện còn lại không đủ để tính $BD$ bằng kiến thức đã học.
 
-(Dùng định lí Pythagore — học ở học kì 2 — tính được $BD^2=48$, khi đó $BO=2\sqrt{3}$ cm và $AO+BO=5+2\sqrt{3}\approx 8{,}46$ cm.)
+Vậy chỉ tính được $AO=5$ cm; chưa tính được $AO+BO$ với dữ kiện đề cho.
 
 ## PHẦN 4 | Tự luận | tu_luan
 
@@ -615,6 +611,7 @@ Vậy $x=-\dfrac{8}{7}$.
 a) Chứng minh tứ giác $ADHE$ là hình chữ nhật.
 b) Gọi $O$ là trung điểm của $HC$. Trên tia đối của tia $OA$ lấy điểm $G$ sao cho $O$ là trung điểm của $AG$. Chứng minh ba điểm $D$, $H$, $G$ thẳng hàng.
 **Hình giải:** giai_bai2.png
+**Ghi chú:** Đề không cho hình; hình giải vẽ bằng code, không nối $HG$ vì $D$, $H$, $G$ thẳng hàng là điều phải chứng minh.
 
 **Phần 1. Hướng dẫn**
 
@@ -659,11 +656,11 @@ Vậy ba điểm $D$, $H$, $G$ thẳng hàng.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** đưa vế trái về dạng **một tích** của hai thừa số, vì tích hai số nguyên bằng 13 thì mỗi thừa số phải là ước nguyên của 13; đề viết sẵn $2(y-1)$ là gợi ý tìm thừa số $y-1$ ở phần còn lại.
+**Mấu chốt:** đưa vế trái về dạng **một tích** $(x+2)(y-1)$, vì tích hai số nguyên bằng 13 thì mỗi thừa số phải là ước nguyên của 13.
 
-**Bước 1.** Quan sát vế trái: hạng tử $2(y-1)$ đã có thừa số $y-1$; hai hạng tử $xy-x$ có chung thừa số $x$, đặt $x$ ra ngoài (tính chất phân phối) để xem trong ngoặc còn lại gì.
+**Bước 1.** Quan sát vế trái $xy-x+2y-2$: có $-x$ đi với $y$ nên thử một tích dạng $(x+a)(y-1)$ và tìm số $a$.
 
-**Bước 2.** Hai nhóm cùng chứa thừa số $y-1$ nên dùng tính chất phân phối lần nữa để viết vế trái thành tích của hai thừa số.
+**Bước 2.** Nhân $(x+2)(y-1)$ ra và so với vế trái để khẳng định hai biểu thức bằng nhau.
 
 **Bước 3.** Viết đẳng thức dưới dạng tích bằng 13; vì 13 chỉ có các ước nguyên là $\pm 1$ và $\pm 13$ nên liệt kê bốn trường hợp cho $x+2$.
 
@@ -673,13 +670,13 @@ Vậy ba điểm $D$, $H$, $G$ thẳng hàng.
 
 **Phần 2. Trình bày**
 
-Ta có $xy-x+2(y-1)=x(y-1)+2(y-1)=(x+2)(y-1)$ (tính chất phân phối của phép nhân đối với phép cộng).
+Ta có $(x+2)(y-1)=xy-x+2y-2=xy-x+2(y-1)$.
 
 Do đó đẳng thức đã cho trở thành $(x+2)(y-1)=13$.
 
 Vì $x$, $y$ là số nguyên nên $x+2$ và $y-1$ là các ước nguyên của 13, tức là thuộc $\{1;\,-1;\,13;\,-13\}$.
 
-Xét bốn trường hợp:
+Ta có bảng:
 
 $x+2=1$ thì $y-1=13$, suy ra $x=-1$, $y=14$.
 
@@ -695,11 +692,10 @@ Vậy các cặp số nguyên $(x;y)$ cần tìm là $(-1;14)$, $(11;2)$, $(-3;-
 
 - Bộ sách: KNTT (không có định lí Pythagore, hình chóp, phân thức). Đề chạm tới: Chương I (đơn thức, đa thức, cộng – nhân – chia đa thức), hằng đẳng thức (bình phương của một tổng / một hiệu, hiệu hai bình phương — Câu 6, 7, 17, Bài 1b), Chương III (đa giác lồi, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông). Đề này là đề thứ hai của trường THCS Quán Toan (đề 1 là GKI-12), nên tên đề thêm "(đề 2)".
 - Đề có 18 câu (12 trắc nghiệm + 2 đúng sai + 4 trả lời ngắn) và 3 bài tự luận. Bài 1 có hai ý độc lập (phép tính; tìm $x$) nên tách thành Bài 1a, Bài 1b. Bài 2 (hình) không tách ý. Bài 3 giữ một câu.
-- Câu Đúng/Sai (13, 14) nhập dạng tự luận, đề giữ đủ bốn ý a)–d). Câu 15, 16, 17 trả lời ngắn (đáp số 5, 60, 1200).
-- **Câu 18 — đề gốc lỗi số liệu** (dòng `Chưa chắc` duy nhất của đề): đề 1 cùng trường cho 8, 6, 10 (hình chữ nhật, đáp số 10), đề 2 đổi thành 7, 5, 10 nên hình bình hành không còn là hình chữ nhật; đáp số đúng $5+2\sqrt{3}\approx 8{,}46$ cm chỉ ra được bằng định lí Pythagore. Câu nhập dạng tự luận, lời giải dừng ở $AO=5$ cm và ghi đáp số đúng trong ngoặc. Cần người duyệt quyết: bỏ câu, sửa số liệu, hay giữ.
-- Câu 2: $\dfrac{-8}{9}x^2y(2x-3)$ là tích của đơn thức với đa thức nên là đa thức (nhân ra được tổng hai đơn thức) ⇒ có 3 đa thức, đáp án B; hai biểu thức bị loại là hai biểu thức có biến ở mẫu.
-- Câu 14 b): Sai — hình bình hành có $\widehat{A}=60^\circ$ cũng thoả $AB\parallel CD$, $AD=BC$ mà không phải hình thang cân (hình giải vẽ cả hai trường hợp). Đây là bẫy quen thuộc "hình thang có hai cạnh bên bằng nhau chưa chắc là hình thang cân".
-- Bài 3: đưa vế trái về tích bằng tính chất phân phối $ab+ac=a(b+c)$ dùng hai lần ($xy-x=x(y-1)$, rồi $x(y-1)+2(y-1)=(x+2)(y-1)$) — kiến thức lớp 6–7, không phải phương pháp phân tích nhân tử của Chương II. Đáp số đã kiểm bằng máy với $|x|,|y|\le 500$.
+- Câu Đúng/Sai (13, 14) nhập dạng tự luận, đề giữ đủ bốn ý a)–d). Câu 18 để tự luận vì đề không đủ dữ kiện (xem `Chưa chắc` ở Câu 18). Câu 15, 16, 17 trả lời ngắn (đáp số 5, 60, 1200).
+- Câu 2: đáp án 3 (B) chỉ khi tính $\dfrac{-8}{9}x^2y(2x-3)$ là đa thức; đã đánh dấu `Chưa chắc`.
+- Câu 14 b): xem `Chưa chắc` — chấm Sai theo kiến thức đúng; người ra đề có thể đã nghĩ Đúng.
+- Bài 3: vế trái là kết quả của $(x+2)(y-1)$; lời giải chỉ nhân ra để khẳng định đẳng thức (không dùng đặt nhân tử chung / nhóm hạng tử), vì cả đề không có câu nào kiểm tra phân tích đa thức thành nhân tử. Nếu trường đã dạy phân tích nhân tử thì cách giải gốc có thể là $x(y-1)+2(y-1)=(x+2)(y-1)$; đáp số không đổi (đã kiểm bằng máy với $|x|,|y|\le 300$).
 - Câu 8: Hình 2 là ngũ giác và Hình 3 có hai cạnh cắt nhau (không phải tứ giác đúng nghĩa); đề in thế nên giữ nguyên, đáp án Hình 3.
 - Câu 12 phương án B in sai "ai" (đã sửa "hai"); Câu 14 ý a) in sai "tứ hình thang" (đã sửa).
 - Không bỏ câu nào.

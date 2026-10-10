@@ -152,6 +152,9 @@ Vài dòng (≤ 120 từ): số câu theo loại · các câu có `Chưa chắc`
 
 - Số mũ, dấu âm trước số, dấu gạch ngang, chỉ số nhỏ ở ảnh 150 dpi (nhất là đề scan): không chắc ⇒ phóng to 300 dpi, không đoán.
 - Lời giải Hình ngầm dùng **đường trung bình** mà không gọi tên ("$NP\parallel BC$ vì $N$, $P$ là trung điểm") — vẫn là dùng kiến thức cấm. Phải tự chứng minh.
+- **Bài mà dữ kiện đúng là bài đường trung bình** (đo khoảng cách qua hai trung điểm $D$, $E$; đã gặp ở GKI-17, GKI-21): đường trung bình vẫn CẤM ở mọi đề
+  giữa kì 1 ⇒ tự chứng minh bằng hình bình hành (lấy điểm $F$ sao cho $E$ là trung điểm $DF$…), và thêm `**Chưa chắc:**` nói rõ "dữ kiện đúng là bài đường
+  trung bình, lời giải tự chứng minh — CEO quyết có cho dùng đường trung bình ở đề này không".
 - "Tứ giác có ba góc vuông là hình chữ nhật" KHÔNG phải dấu hiệu trong SGK ⇒ viết: tổng các góc của tứ giác bằng $360^\circ$ nên góc thứ tư cũng vuông,
   tứ giác có bốn góc vuông là hình chữ nhật.
 - Đề thiếu điều kiện làm hình suy biến hoặc phép cộng góc sai chiều (vd thiếu $AB<AC$) ⇒ thêm điều kiện tối thiểu vào đề + `**Ghi chú:**`.

@@ -31,6 +31,7 @@ Vậy $97^2-9=9400$.
 
 ### Bài 1b | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tính nhanh: $28^2+72^2+28 \cdot 144$.
+**Ghi chú:** dấu chấm trong $28.144$ của đề là dấu nhân, đã viết thành $28 \cdot 144$.
 
 **Phần 1. Hướng dẫn**
 
@@ -121,15 +122,15 @@ $=-2x+20$
 
 **Bước 3.** Cộng hai kết quả rồi bỏ ngoặc và thu gọn các hạng tử đồng dạng.
 
-**Chú ý:** $9x^2:(3x^2)=3$ (không còn biến), đừng viết thành $3x^2$.
+**Chú ý:** $9x^2:3x^2=3$ (không còn biến), đừng viết thành $3x^2$.
 
 **Phần 2. Trình bày**
 
 $C=(4-x)(4+x)+(3x^4-6x^3+9x^2):(3x^2)$
 
-$=(16-x^2)+\left[3x^4:(3x^2)-6x^3:(3x^2)+9x^2:(3x^2)\right]$
+$(3x^4-6x^3+9x^2):(3x^2)=3x^4:3x^2-6x^3:3x^2+9x^2:3x^2=x^2-2x+3$
 
-$=(16-x^2)+(x^2-2x+3)$
+$C=(16-x^2)+(x^2-2x+3)$
 
 $=16-x^2+x^2-2x+3$
 
@@ -301,21 +302,21 @@ c) $AM$ cắt $DE$ tại $O$, kẻ đường cao $AH$ của tam giác $ABC$. Tí
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** ý a cho hình chữ nhật $ADME$; ý b dùng các cạnh đối của nó để có hai hình bình hành $ADEF$ và $AEDG$ cùng nhận $DE$ làm một cạnh; ý c dùng hai đường chéo $AM$ và $DE$ bằng nhau, cắt nhau tại trung điểm $O$.
+**Mấu chốt:** ý a cho hình chữ nhật $ADME$; ý b dùng các cạnh đối và đường chéo của nó để dựng hình bình hành $ADEF$ và hai tam giác bằng nhau; ý c dùng đường chéo $AM$ và $DE$ cắt nhau tại trung điểm $O$.
 
 **Bước 1.** Ý a: muốn $ADME$ là hình chữ nhật, cần tứ giác có bốn góc vuông; ba góc ở $A$, $D$, $E$ vuông theo giả thiết, góc thứ tư ở $M$ suy ra từ tổng bốn góc của tứ giác bằng $360^\circ$.
 
-**Bước 2.** Ý b (hình bình hành): muốn $ADEF$ là hình bình hành, cần hai cặp cạnh đối song song; $AF\parallel DE$ có sẵn từ cách kẻ $Ax$, còn $AD\parallel EF$ lấy từ $AD\parallel ME$ (hai cạnh đối của hình chữ nhật ở ý a) vì $F$ nằm trên đường thẳng $ME$.
+**Bước 2.** Ý b (hình bình hành): muốn $ADEF$ là hình bình hành, cần hai cặp cạnh đối song song; $AF\parallel DE$ có sẵn từ cách kẻ $Ax$, còn $AD\parallel EF$ lấy từ $AD\parallel ME$ (hai cạnh đối của hình chữ nhật ở ý a) vì $F$ nằm trên $ME$.
 
-**Bước 3.** Ý b (trung điểm): muốn $A$ là trung điểm của $GF$, cần ba điểm $G$, $A$, $F$ thẳng hàng và $AG=AF$. Muốn thẳng hàng, cần $AG$ và $AF$ cùng song song với $DE$ (khi đó hai đường thẳng trùng nhau theo tiên đề Euclid); muốn $AG=AF$, cần hai đoạn đó cùng bằng $DE$.
+**Bước 3.** Ý b (trung điểm): muốn $A$ là trung điểm của $GF$, cần ba điểm $G$, $A$, $F$ thẳng hàng và $AG=AF$; cả hai điều này suy ra từ việc hai tam giác $GDA$ và $AEF$ bằng nhau.
 
-**Bước 4.** $AF\parallel DE$ và $AF=DE$ đã có vì chúng là hai cạnh đối của hình bình hành $ADEF$. Còn muốn $AG\parallel DE$ và $AG=DE$, cần $AEDG$ cũng là hình bình hành.
+**Bước 4.** Muốn hai tam giác đó bằng nhau theo trường hợp cạnh – góc – cạnh, cần $DG=EA$ (vì $DG=DM$ và $DM=AE$ là hai cạnh đối của hình chữ nhật), $DA=EF$ (hai cạnh đối của hình bình hành $ADEF$) và hai góc vuông tại $D$ và $E$.
 
-**Bước 5.** Muốn $AEDG$ là hình bình hành, cần một cặp cạnh đối song song và bằng nhau: $DG\parallel AE$ vì $G$ nằm trên đường thẳng $MD$ và $MD\parallel AE$; $DG=AE$ vì $DG=DM$ ($D$ là trung điểm của $MG$) và $DM=AE$ (hai cạnh đối của hình chữ nhật).
+**Bước 5.** Từ hai tam giác bằng nhau được $AG=AF$ và $\widehat{GAD}=\widehat{AFE}$; cộng với tam giác $AEF$ vuông tại $E$ và góc vuông $\widehat{DAE}$, tổng các góc kề nhau ở đỉnh $A$ cho thấy $G$, $A$, $F$ thẳng hàng và $A$ nằm giữa $G$ và $F$.
 
 **Bước 6.** Ý c: muốn tính góc $DHE$, cần xét đường trung tuyến $HO$ của tam giác $DHE$ và so với $DE$; vì $O$ là trung điểm của hai đường chéo hình chữ nhật nên $OD=OE=\dfrac{1}{2}AM$, còn $HO=\dfrac{1}{2}AM$ vì $HO$ là trung tuyến ứng với cạnh huyền $AM$ của tam giác $AHM$ vuông tại $H$.
 
-**Chú ý:** ý b chứng minh ba điểm thẳng hàng bằng tiên đề Euclid: qua một điểm ở ngoài một đường thẳng chỉ có một đường thẳng song song với đường thẳng đó; ý c dùng chiều đảo: tam giác có đường trung tuyến ứng với một cạnh bằng nửa cạnh ấy là tam giác vuông.
+**Chú ý:** ý b dùng tam giác bằng nhau (cạnh – góc – cạnh) vì chưa học kết quả "đối xứng qua một điểm"; ý c dùng dấu hiệu nhận biết tam giác vuông bằng đường trung tuyến bằng nửa cạnh tương ứng.
 
 **Phần 2. Trình bày**
 
@@ -333,25 +334,37 @@ Tứ giác $ADME$ có bốn góc vuông nên $ADME$ là hình chữ nhật (đ�
 
 b) Vì $Ax\parallel DE$ và $F$ thuộc $Ax$ nên $AF\parallel DE$.
 
-Vì $ADME$ là hình chữ nhật (câu a) nên $AD\parallel ME$. Mà $F$ thuộc đường thẳng $ME$ nên $AD\parallel EF$.
+Vì $ADME$ là hình chữ nhật (câu a) nên $AD\parallel ME$. Mà $F$ thuộc $ME$ nên $AD\parallel EF$.
 
 Tứ giác $ADEF$ có $AF\parallel DE$ và $AD\parallel EF$ nên $ADEF$ là hình bình hành (định nghĩa).
 
-Suy ra $AF=DE$ (hai cạnh đối của hình bình hành).
+Vì $ADEF$ là hình bình hành nên $AD=EF$ (hai cạnh đối).
 
-Vì $ADME$ là hình chữ nhật nên $DM\parallel AE$ và $DM=AE$ (hai cạnh đối).
+Vì $ADME$ là hình chữ nhật nên $DM=AE$ (hai cạnh đối). Vì $D$ là trung điểm của $MG$ nên $DG=DM$. Do đó $DG=AE$.
 
-Vì $D$ là trung điểm của $MG$ nên $G$ thuộc đường thẳng $DM$ và $DG=DM$.
+Vì $AD\perp MD$ và $G$ thuộc đường thẳng $MD$ nên $\widehat{GDA}=90^\circ$.
 
-Do đó $DG\parallel AE$ và $DG=AE$.
+Vì $AE\perp ME$ và $F$ thuộc đường thẳng $ME$ nên $\widehat{AEF}=90^\circ$.
 
-Tứ giác $AEDG$ có $DG\parallel AE$ và $DG=AE$ nên $AEDG$ là hình bình hành (tứ giác có một cặp cạnh đối song song và bằng nhau).
+Xét $\triangle GDA$ và $\triangle AEF$ có:
 
-Suy ra $AG\parallel DE$ và $AG=DE$ (hai cạnh đối của hình bình hành).
+$DG=EA$ (chứng minh trên)
 
-Qua điểm $A$ có hai đường thẳng $AG$ và $AF$ cùng song song với $DE$ nên hai đường thẳng này trùng nhau (tiên đề Euclid). Do đó ba điểm $G$, $A$, $F$ thẳng hàng.
+$\widehat{GDA}=\widehat{AEF}=90^\circ$
 
-Lại có $AG=AF$ (cùng bằng $DE$) nên $A$ là trung điểm của đoạn thẳng $GF$.
+$DA=EF$ (chứng minh trên)
+
+Do đó $\triangle GDA=\triangle AEF$ (c.g.c).
+
+Suy ra $AG=AF$ và $\widehat{GAD}=\widehat{AFE}$ (hai góc tương ứng).
+
+Tam giác $AEF$ vuông tại $E$ nên $\widehat{AFE}+\widehat{EAF}=90^\circ$. Suy ra $\widehat{GAD}+\widehat{EAF}=90^\circ$.
+
+Vì $G$ và $E$ nằm khác phía đối với đường thẳng $AB$, $F$ và $D$ nằm khác phía đối với đường thẳng $AC$ nên các góc $\widehat{GAD}$, $\widehat{DAE}$, $\widehat{EAF}$ kề nhau và
+
+$\widehat{GAF}=\widehat{GAD}+\widehat{DAE}+\widehat{EAF}=90^\circ+90^\circ=180^\circ$.
+
+Do đó $G$, $A$, $F$ thẳng hàng và $A$ nằm giữa $G$ và $F$. Mà $AG=AF$ nên $A$ là trung điểm của đoạn thẳng $GF$.
 
 c) Vì $ADME$ là hình chữ nhật nên hai đường chéo $AM$ và $DE$ bằng nhau và cắt nhau tại trung điểm $O$ của mỗi đường.
 
@@ -418,5 +431,5 @@ Vậy $A=0$.
 - Tách ý: Bài 1 → 1a, 1b; Bài 2 → 2a, 2b, 2c; Bài 3 → 3a, 3b, 3c (ba bài "Tính nhanh / Rút gọn / Tìm $x$" có các ý độc lập). Bài 4 (bài toán thực tế, ý b dùng biểu thức ý a) giữ chung một câu. Bài 5 là vỏ gom hai bài toán hình khác nhau nên thành Bài 5.1 và Bài 5.2, không tách ý trong Bài 5.2.
 - Loại câu: Bài 1a (9400), Bài 3a (-6), Bài 5.1 (79), Bài 6 (0) là trả lời ngắn. Bài 1b có đáp số 10000 gồm 5 chữ số, không vừa 4 ô của phiếu nên để tự luận; Bài 3c có hai giá trị của $x$ nên để tự luận.
 - Bài 6: đề không có điều kiện nào khác ngoài hai đẳng thức; chứng minh được $a=b=c=0$ bằng cách nhân đa thức rồi dùng bình phương không âm (không dùng hằng đẳng thức bình phương của tổng ba số vì chưa học).
-- Bài 5.2: đề không cho hình, đã vẽ hình giải bằng code (không vẽ đoạn $AG$, $GF$ vì ba điểm $G$, $A$, $F$ thẳng hàng là điều phải chứng minh ở ý b; $HD$, $HE$, $HO$ của ý c vẽ nét đứt). Ý b chứng minh $A$ là trung điểm của $GF$ qua hai hình bình hành $ADEF$, $AEDG$ và tiên đề Euclid. Ở ý c thêm trường hợp $H$ trùng $M$ (khi $AM\perp BC$) để lời giải đủ cho mọi vị trí của $M$; ý c dùng đường trung tuyến ứng với cạnh huyền và chiều đảo (thuộc bài Hình chữ nhật). Điều kiện $AB<AC$ không được dùng trong lời giải.
+- Bài 5.2: đề không cho hình, đã vẽ hình giải bằng code (không vẽ đoạn $GF$ vì đó là điều phải chứng minh ở ý b). Ở ý c thêm trường hợp $H$ trùng $M$ (khi $AM\perp BC$) để lời giải đủ cho mọi vị trí của $M$. Điều kiện $AB<AC$ không được dùng trong lời giải.
 - Đề không có bảng đáp án in sẵn.

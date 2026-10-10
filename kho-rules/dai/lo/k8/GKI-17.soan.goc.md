@@ -189,7 +189,7 @@ Vậy $x=-1$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hai tích ở vế trái khi khai triển đều cho hạng tử $3x^2$, mà giữa chúng là dấu trừ nên các hạng tử bậc hai triệt tiêu và chỉ còn $x$ ở bậc nhất.
+**Mấu chốt:** hai vế đều có $3x^2$ nên sau khi khai triển, các hạng tử bậc hai triệt tiêu và chỉ còn $x$ ở bậc nhất.
 
 **Bước 1.** Khai triển $(x-2)(3x+1)$ và $3x(x+5)$ bằng quy tắc nhân đa thức.
 
@@ -256,8 +256,7 @@ Vậy $x=\dfrac{3}{22}$.
 **Đề:** Giữa hai điểm $B$ và $C$ có một chướng ngại vật, không thể đo trực tiếp được. Để đo khoảng cách giữa hai điểm $B$ và $C$, người ta lấy thêm các điểm $A, D, E$ như trên hình vẽ và đo đoạn thẳng $DE$. Hỏi khoảng cách giữa $B$ và $C$ là bao nhiêu mét, biết $DE=35$ m.
 **Hình:** p1b41_hinh.png
 **Hình giải:** giai_bai41.png
-**Ghi chú:** Dữ kiện chỉ có trên hình: $BD=DA$ (một gạch) và $AE=EC$ (hai gạch), tức $D$ là trung điểm của $AB$, $E$ là trung điểm của $AC$.
-**Chưa chắc:** Dữ kiện của đề (hai trung điểm $D$, $E$ và độ dài đoạn nối $DE$, hỏi $BC$) đúng là bài áp dụng trực tiếp **đường trung bình của tam giác** ($BC=2DE$) — tức chính đề này kiểm tra đường trung bình, kiến thức mà luật khối 8 đang cấm ở mọi đề giữa kì 1. Lời giải dưới đây KHÔNG dùng định lí đó mà tự chứng minh $BC=2DE$ bằng hai hình bình hành (dài hơn nhiều so với đáp án 2 dòng của trường). Cần CEO quyết: giữ cách tự chứng minh, hay riêng đề này cho dùng đường trung bình.
+**Ghi chú:** Dữ kiện chỉ có trên hình: $BD=DA$ (một gạch) và $AE=EC$ (hai gạch), tức $D$ là trung điểm của $AB$, $E$ là trung điểm của $AC$. Đề này dùng "đường trung bình" (chương sau), nên lời giải tự chứng minh $DE=\dfrac{1}{2}BC$ bằng hình bình hành.
 
 **Phần 1. Hướng dẫn**
 
@@ -265,7 +264,7 @@ Vậy $x=\dfrac{3}{22}$.
 
 **Bước 1.** Đọc hình: các gạch bằng nhau cho biết $D$ là trung điểm $AB$ và $E$ là trung điểm $AC$. Muốn tìm $BC$ ta cần liên hệ $BC$ với $DE$.
 
-**Bước 2.** Muốn có $BC=2DE$, trên tia đối của tia $ED$ lấy điểm $F$ sao cho $EF=ED$ để $DF=2DE$, rồi cần chứng minh $DF=BC$.
+**Bước 2.** Muốn có $BC=2DE$, lấy điểm $F$ đối xứng với $D$ qua $E$ để $DF=2DE$, rồi cần chứng minh $DF=BC$.
 
 **Bước 3.** Muốn có $DF=BC$, cần $DBCF$ là hình bình hành (các cạnh đối bằng nhau); muốn vậy cần $CF\parallel DB$ và $CF=DB$ (một cặp cạnh đối song song và bằng nhau).
 
@@ -361,7 +360,7 @@ Vậy $\widehat{MIN}=90^\circ$.
 
 **Bước 2.** Bỏ ngoặc với dấu trừ ở giữa (đổi dấu mọi hạng tử của tích thứ hai) rồi gom các hạng tử đồng dạng.
 
-**Bước 3.** Sau khi thu gọn chỉ còn hai hạng tử, mỗi hạng tử là 2 nhân với một số nguyên (vì $x$, $y$ nguyên) nên đều chia hết cho 2; dùng tính chất chia hết của một hiệu để kết luận.
+**Bước 3.** Kết quả có dạng $2 \cdot (\text{số nguyên})$ hoặc hiệu của hai tích có thừa số 2; dùng tính chất chia hết của một hiệu để kết luận.
 
 **Chú ý:** $xy \cdot x^{2023}=x^{2024}y$ và $xy \cdot y^{2023}=xy^{2024}$ — nhân hai luỹ thừa cùng cơ số thì cộng số mũ.
 
@@ -383,7 +382,7 @@ Vậy $M$ chia hết cho 2.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bộ sách: KNTT (không xác định được bộ sách từ nội dung đề). Đề kiểm tra Chương I (đa thức), hằng đẳng thức (Bài 3c) và Chương III (hình chữ nhật, hình bình hành); riêng Bài 4.1 (đo khoảng cách qua chướng ngại vật) vốn dùng đường trung bình — kiến thức học sau giữa kì ở bộ KNTT. Nếu trường dùng bộ sách khác thì đề này đã dạy tới đường trung bình. Theo luật khối 8, lời giải KHÔNG dùng đường trung bình mà tự chứng minh bằng hình bình hành — câu này mang dòng `Chưa chắc` để CEO quyết.
+- Bộ sách: KNTT (không xác định được bộ sách từ nội dung đề). Đề kiểm tra Chương I (đa thức), hằng đẳng thức (Bài 3c) và Chương III (hình chữ nhật, hình bình hành); riêng Bài 4.1 (đo khoảng cách qua chướng ngại vật) vốn dùng đường trung bình — kiến thức học sau giữa kì ở bộ KNTT. Nếu trường dùng bộ sách khác thì đề này đã dạy tới đường trung bình. Theo luật khối 8, lời giải KHÔNG dùng đường trung bình mà tự chứng minh bằng hình bình hành.
 - Bài 4.2 ý c dùng trung tuyến ứng với cạnh huyền và chiều đảo của nó (có trong bài Hình chữ nhật) — hợp lệ vì đề có hỏi hình chữ nhật.
 - Đề có 5 bài: Bài 1 gồm hai bài toán khác nhau (1.1 đa thức, 1.2 bài toán lời văn) tách thành Bài 1.1, Bài 1.2; Bài 2 (rút gọn) và Bài 3 (tìm $x$) tách ý thành 2a–2c, 3a–3c; Bài 4 là hai bài toán khác nhau (4.1 đo khoảng cách, 4.2 hình chứng minh) giữ nguyên, không tách ý; Bài 5 giữ một câu.
 - Đề in "ĐỀ 2" nên mã đề ghi là 2. Đề không in sẵn bảng đáp án.

@@ -1,6 +1,6 @@
 # ĐỀ | Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Sơn Động
 nam: 2024
-bo_sach: CTST
+bo_sach: Cánh Diều
 
 ## PHẦN 1 | Trắc nghiệm | trac_nghiem
 
@@ -74,8 +74,8 @@ Chọn A.
 **Đề:** Phần hệ số của đơn thức $9x^2\left(\dfrac{-1}{3}\right)xy^3$ là:
 A. 27
 B. 3
-C. $-3$
-D. $-27$
+C. -3
+D. -27
 
 **Phần 1. Hướng dẫn**
 
@@ -159,7 +159,7 @@ A. $3x+4y$
 B. $4x+y$
 C. $3x-6y$
 D. $6x+7y$
-**Hình:** p1c6_lai.png
+**Hình:** p1c6_1.png
 **Ghi chú:** Dữ kiện chỉ có trên hình: hai cạnh đã biết của tam giác có độ dài $3x-y$ và $x+2y$.
 
 **Phần 1. Hướng dẫn**
@@ -228,7 +228,7 @@ D. $(a+2)^3$
 
 **Mấu chốt:** thừa số $a^2+2a+4$ có dạng $A^2+AB+B^2$ với $A=a$, $B=2$, nên tích với $(a-2)$ là hằng đẳng thức hiệu hai lập phương.
 
-**Bước 1.** Nhận ra $a^2+2a+4=a^2+a \cdot 2+2^2$ có dạng $A^2+AB+B^2$, còn thừa số $a-2$ ứng với $A-B$.
+**Bước 1.** Nhận ra $a^2+2a+4=a^2+a \cdot 2+2^2$ và $a-2=a-2$ ứng với $A-B$.
 
 **Bước 2.** Nhớ hằng đẳng thức $(A-B)(A^2+AB+B^2)=A^3-B^3$ rồi thay $A=a$, $B=2$.
 
@@ -375,11 +375,7 @@ D. Hình thang có hai góc kề một đáy bằng nhau là hình thang cân.
 
 Khẳng định A, C là tính chất của hình thang cân nên đúng; khẳng định D là định nghĩa hình thang cân nên đúng.
 
-Khẳng định B sai. Chẳng hạn, lấy hình bình hành $ABCD$ có $\widehat{A}=60^\circ$. Vì $AB\parallel CD$ nên $ABCD$ là hình thang, hai cạnh bên $AD=BC$ (cạnh đối của hình bình hành).
-
-Vì $AD\parallel BC$ nên $\widehat{A}+\widehat{B}=180^\circ$ (hai góc trong cùng phía), suy ra $\widehat{B}=120^\circ$. Lại có $\widehat{C}=\widehat{A}=60^\circ$, $\widehat{D}=\widehat{B}=120^\circ$ (góc đối của hình bình hành).
-
-Hai góc kề đáy $AB$ không bằng nhau ($60^\circ\ne 120^\circ$), hai góc kề đáy $CD$ cũng không bằng nhau nên $ABCD$ không phải là hình thang cân.
+Khẳng định B sai: hình bình hành $ABCD$ ($AB\parallel CD$) có hai cạnh bên $AD=BC$ nhưng $\widehat{A}+\widehat{B}=180^\circ$ và $\widehat{A}\ne 90^\circ$ nên $\widehat{A}\ne\widehat{B}$, do đó không phải hình thang cân.
 
 Chọn B.
 
@@ -631,7 +627,7 @@ $=10000$
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** khai triển $(x-1)^2$ thì hai hạng tử $x^2$ triệt tiêu, đẳng thức chỉ còn là bài tìm $x$ quen thuộc của lớp 7.
+**Mấu chốt:** khai triển $(x-1)^2$ thì hai hạng tử $x^2$ triệt tiêu, phương trình chỉ còn là một phép tìm $x$ bậc nhất đơn giản.
 
 **Bước 1.** Khai triển bình phương của một hiệu $(x-1)^2$ bằng hằng đẳng thức.
 
@@ -705,8 +701,6 @@ Theo định lí Pythagore: $AC^2=AB^2-BC^2=40^2-24^2=1600-576=1024$.
 
 Suy ra $AC=32$ (m) (vì $32^2=1024$ và $AC>0$).
 
-Đường nằm ngang qua $B$ cách mặt đất $1{,}2$ m nên điểm $C$ cách mặt đất $1{,}2$ m.
-
 Độ cao của con diều so với mặt đất là: $32+1{,}2=33{,}2$ (m).
 
 Vậy con diều ở độ cao $33{,}2$ m so với mặt đất.
@@ -754,23 +748,19 @@ Vậy ba điểm $A$, $M$, $E$ thẳng hàng.
 
 **Mấu chốt:** biến đổi $P$ thành tổng các bình phương cộng một số: bình phương luôn không âm nên $P$ nhỏ nhất khi các bình phương cùng bằng 0, từ đó tìm được $x$, $y$.
 
-**Bước 1.** Gom các hạng tử chứa $x$ ($x^2$, $-4xy$, $-4x$): ghép $x^2-4xy$ với $4y^2$ (mượn từ $5y^2$) thành $(x-2y)^2$, còn $-4x$ đi cùng $8y$ thành $-4(x-2y)$.
+**Bước 1.** Gom các hạng tử chứa $x$ ($x^2$, $-4xy$, $-4x$) để tạo thành bình phương của một hiệu $(x-2y-2)^2$, hạng tử $4y^2$ và $4$ lấy từ phần còn lại của $P$.
 
-**Bước 2.** Coi $x-2y$ là một số hạng: $(x-2y)^2-4(x-2y)$ cần thêm $4$ để thành bình phương của một hiệu; ghi lại những gì đã mượn ($4y^2$, $8y$, $4$) để biết phần còn lại chỉ chứa $y$ là gì.
+**Bước 2.** Khai triển $(x-2y-2)^2$ rồi lấy $P$ trừ đi để xem phần còn lại chỉ chứa biến $y$ là gì.
 
 **Bước 3.** Viết phần chứa $y$ thành bình phương của một hiệu cộng một số, từ đó đánh giá $P$ lớn hơn hoặc bằng một số cố định.
 
 **Bước 4.** Tìm điều kiện để dấu bằng xảy ra, tức tìm $x$, $y$ rồi thay vào $M$ và tính.
 
-**Chú ý:** luỹ thừa bậc chẵn của một số âm là số dương, nên phải xem số mũ 2024 chẵn hay lẻ trước khi tính.
-
 **Phần 2. Trình bày**
 
 $P=x^2+5y^2-4xy-4x+2y+15$
 
-$=(x^2-4xy+4y^2)-(4x-8y)+4+(y^2-6y+9)+2$
-
-$=(x-2y)^2-2 \cdot (x-2y) \cdot 2+2^2+(y-3)^2+2$
+$=(x^2+4y^2+4-4xy-4x+8y)+(y^2-6y+9)+2$
 
 $=(x-2y-2)^2+(y-3)^2+2$
 
@@ -786,12 +776,10 @@ Vậy $M=2$.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Đề KHÔNG có đáp án / hướng dẫn chấm in sẵn; toàn bộ đáp án do lượt giải tính, đã thử lại bằng máy (`tam/kiem.mjs` của trạm soạn, `tam/soat_kiem.mjs` của trạm soát — hai script viết độc lập, đều đạt) và khớp 27/27 với bảng giải mù của trạm soát.
-- Bộ sách: ghi `CTST` (đoán theo nội dung, đề không ghi). Đề có định lí Pythagore (Câu 14, 16, 20, Bài 3.1) nên không phải KNTT; Câu 6 (cạnh còn thiếu của tam giác chu vi $7x+5y$) và Bài 3.1 (độ cao con diều) giống bài tập của sách Chân trời sáng tạo — trạm soát nhận theo trí nhớ, chưa mở sách đối chiếu. Cũng có thể là Cánh Diều; lời giải chỉ dùng kiến thức chung của cả hai bộ. Đề không hỏi tới hình chữ nhật, hình thoi nên lời giải không dùng.
+- Đề KHÔNG có đáp án / hướng dẫn chấm in sẵn; toàn bộ đáp án do lượt giải này tính và đã thử lại bằng máy (`tam/kiem.mjs`).
+- Bộ sách: đoán `Cánh Diều` vì đề có định lí Pythagore (Câu 14, 16, 20, Bài 3.1), hằng đẳng thức, phân tích nhân tử, đa thức, hình thang cân, hình bình hành. Có thể là Chân trời sáng tạo; lời giải chỉ dùng kiến thức chung của cả hai bộ. Đề không hỏi tới hình chữ nhật, hình thoi nên lời giải không dùng.
 - Phạm vi kiến thức đề chạm tới: đa thức (đơn thức, cộng, trừ, nhân, chia cho đơn thức), hằng đẳng thức (bình phương tổng, hiệu, hiệu hai bình phương, hiệu hai lập phương), phân tích nhân tử (đặt nhân tử chung + hằng đẳng thức), tứ giác, hình thang cân, hình bình hành, định lí Pythagore (và đảo).
 - Đề gồm 20 câu trắc nghiệm + 4 bài tự luận. Bài 2 có 3 ý độc lập (tính nhanh / tìm $x$ / phân tích nhân tử) nên tách thành Bài 2.1, 2.2, 2.3 (đề đánh số 1) 2) 3)). Bài 1 giữ một câu vì ý b dùng kết quả ý a. Bài 3 chia hai bài toán hình khác nhau: Bài 3.1 (Pythagore, có hình trong đề) và Bài 3.2 (chứng minh, đề không cho hình).
 - Bài 3.1 và Bài 4 có đáp số là một số (33,2 và 2) nên nhập `tra_loi_ngan`; Bài 2.2 đáp số một số nguyên nên cũng `tra_loi_ngan`. Bài 2.1 đáp số 10000 có 5 chữ số (không vừa 4 ô) nên để `tu_luan`.
 - Hình Bài 3.1 ảnh cắt tự động ban đầu gán nhầm cho Câu 20 (tên `p1c20_1.png`); thực tế Câu 20 không có hình, hình đó thuộc Bài 3.1, đã cắt lại thành `p2b3_1.png`. Tệp `p1c20_1.png` còn nằm trong thư mục `img` nhưng không dùng.
-- Hình Câu 6 cắt lại thành `p1c6_lai.png` (bản cắt tự động `p1c6_1.png` dính mép dòng chữ phía trên).
-- Bài 3.2 đề không cho hình: hình giải vẽ bằng code, chỉ hiện ở lời giải; có vẽ hai đường thẳng $x$, $y$, tam giác $ABC$ nhọn rõ (góc $A\approx 72^\circ$), không vẽ đoạn $AE$ vì ba điểm $A$, $M$, $E$ thẳng hàng là điều phải chứng minh ở ý b.
-- Bài 4: lời giải tách bình phương qua hai bước $(x-2y)^2-2 \cdot (x-2y) \cdot 2+2^2$ để chỉ dùng hằng đẳng thức bình phương của một hiệu (sách không có công thức bình phương của tổng ba số hạng).
+- Bài 3.2 đề không cho hình: hình giải vẽ bằng code, chỉ hiện ở lời giải, không vẽ đoạn $AE$ vì đó là điều phải chứng minh ở ý b.
