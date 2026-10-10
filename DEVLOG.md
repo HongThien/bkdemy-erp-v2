@@ -36622,3 +36622,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `mien-vat-qua-truc.html` đổi thành trang chuyển hướng (giữ địa chỉ cũ, mang theo tham số) thay vì xoá.
 - Sai nhỏ đã sửa: dòng nhãn đầu sân khấu quá dài đè lên nút "Chọn bài" ⇒ rút còn "Chuyên đề · Khối tròn xoay", nguồn chuyển xuống cuối bảng đề.
 - Ghi spec A5, B7, S.4b, D.7; sửa S.1/S.4/S.7; CLAUDE.md, HANDOFF.
+
+## 10/10 (chiều) — Hình 3D: đưa lên toan.bkacademy.edu.vn + lập sổ theo dõi
+- **Thùy:** "có toan.bkacademy.edu.vn rồi. buildproject đưa lên đấy thôi" · "Đưa lên app thì cứ từ từ. Khớp sau. m lưu vết để sau này còn track đấy".
+- Đo trước khi làm: DNS `toan.bkacademy.edu.vn` đã trỏ Vercel nhưng http 404, https không bắt tay được; `vercel domains inspect` không thấy project nào giữ tên miền ⇒ chưa có project. Tạo `bkdemy-erp-v2-toan-site` (`vercel project add`), `vercel link` + `vercel deploy --prod` từ bản main sạch (worktree tạm ở a992fa9b), `vercel domains add`. ~20 giây sau https trả 200.
+- Kiểm trên địa chỉ thật: `/`, `the-tich/tron-xoay.html`, `coc-nghieng.html`, `khung.js`, `tron-xoay-bai.js` = 200; `.env.local`, `.vercel/project.json` = 404 (không lộ); mở `?bai=49&buoc=3&thay=1`: nét dày + KaTeX tải được, `kiem().lech` = 4·10⁻¹⁴.
+- Bẫy: `vercel link` tự tạo `.env.local` + `.gitignore` + `.vercel/` trong thư mục deploy (để ở worktree tạm, không commit). Project chưa nối git ⇒ nút Create Deployment của dashboard không dùng được, ghi lệnh deploy vào spec §D.8.
+- Lưu vết: `docs/hinh-3d/so-theo-doi.md` (nguồn · câu · tên · loại · địa chỉ · đáp số · ngày · Thùy xem · mã câu trong kho để trống) + trường `maCau: null` trong `tron-xoay-bai.js`. Khớp với kho/app làm sau, khớp bằng nội dung đề chứ không bằng số thứ tự.

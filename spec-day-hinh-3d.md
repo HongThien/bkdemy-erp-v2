@@ -249,6 +249,20 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 - **Soát:** 1280×720; bảng chọn bài; cả hai bài đủ 5 bước, gấp lên, hai lần Thay số; `kiem()` lệch < 10⁻¹¹ ở cả hai; chế độ nhúng không có nút chọn bài; địa chỉ cũ chuyển hướng đúng; 0 lỗi KaTeX, không tràn ngang.
 - **Chưa làm / chưa biết:** chưa soát 1920×1080 và màn dọc cho trang chuyên đề · chưa có bài quay quanh Oy / bài thực tế (xem S.4b) · chưa gắn vào app HS (B7) · Thùy chưa xem.
 
+### D.8 Đã lên mạng + sổ theo dõi (10/10 chiều)
+
+- **Địa chỉ:** `https://toan.bkacademy.edu.vn/the-tich/tron-xoay.html` (bảng chọn bài) · `…/tron-xoay.html?bai=48` · `…?bai=49` · `…/coc-nghieng.html`. Cả site `toan-site/` (kể cả bài du hành Tam giác bằng nhau) lên cùng lúc.
+- **Project Vercel:** `bkdemy-erp-v2-toan-site` (Claude tạo 10/10 bằng CLI theo lời Thùy "có toan.bkacademy.edu.vn rồi, build project đưa lên đấy"; trước đó tên miền mới có bản ghi DNS, chưa gắn project nào).
+  **Chưa nối git** ⇒ nút "Create Deployment" trên dashboard KHÔNG dùng được cho project này; deploy bằng lệnh:
+  ```
+  cd toan-site                                               # trong một bản main SẠCH (đừng deploy từ checkout đang có file sửa dở của phiên khác)
+  vercel link --yes --project bkdemy-erp-v2-toan-site        # lần đầu trên mỗi máy / mỗi bản checkout
+  vercel deploy --prod --yes
+  ```
+  `vercel link` đẻ ra `.vercel/`, `.env.local`, `.gitignore` trong `toan-site/` — không commit ba thứ đó. Muốn nút dashboard thì Thùy nối repo + đặt Root Directory `toan-site` trong Settings.
+- **Deploy xong phải kiểm:** mở địa chỉ thật, `__dbg.kiem().lech` ≈ 0, không có dải đỏ, không lỗi KaTeX.
+- **Sổ theo dõi:** `docs/hinh-3d/so-theo-doi.md` — mô hình nào ứng với câu nào của tài liệu nào, địa chỉ, đáp số, ngày dựng, Thùy đã xem chưa, **mã câu trong kho (để trống tới khi khớp)**. Dựng thêm mô hình = thêm dòng vào sổ trong cùng commit.
+
 ---
 
 ## Phần S — SỔ TAY DỰNG BÀI (đọc phần này + mở một bài mẫu là đủ để làm bài mới)
@@ -332,8 +346,8 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 4. **Chép bài mẫu cùng loại**, thay mục 1 (số liệu) và mục 4–5 (vật thể, nhãn) trước cho hình đứng được; rồi mới viết bảng.
 5. **Viết bảng từng bước** theo S.2.
 6. **Soát bằng máy** (S.6). Sửa tới khi sạch.
-7. **Ghi:** thêm mục `D.x` vào spec này (file · bộ bước · số kiểm · chưa làm) + 1 mục DEVLOG. HANDOFF chỉ sửa dòng "đã có những bài nào".
-8. **Commit** đúng các file của bài (`git commit -- <đường dẫn>`), push, báo Thùy xem. **Thùy chưa xem bài N thì vẫn được làm bài N+1** (đã có khung + luật), nhưng góp ý của Thùy ở bài nào thành luật thì sửa hết các bài cũ cùng loại.
+7. **Ghi:** thêm một dòng vào **`docs/hinh-3d/so-theo-doi.md`** (bắt buộc — đó là vết để sau này khớp với kho / app) + mục `D.x` trong spec này (bộ bước · số kiểm · chưa làm) + 1 mục DEVLOG. HANDOFF chỉ sửa dòng "đã có những bài nào".
+8. **Commit** đúng các file của bài (`git commit -- <đường dẫn>`), push, **deploy** (§D.8), báo Thùy xem bằng địa chỉ thật. **Thùy chưa xem bài N thì vẫn được làm bài N+1** (đã có khung + luật), nhưng góp ý của Thùy ở bài nào thành luật thì sửa hết các bài cũ cùng loại.
 
 ### S.6 Soát bằng máy (không bỏ mục nào)
 
@@ -438,3 +452,5 @@ Thứ tự đề xuất: ~~49~~ (xong) → **50 → 52 → 45 → 46** (TX, dễ
 | 10/10 chiều | Claude | Viết Phần S — sổ tay dựng bài: bộ bước theo loại, luật bảng + hình, khung file, quy trình 8 việc, danh mục soát, phiếu dựng 8 bài còn lại (công thức chữ đã kiểm số) |
 | 10/10 chiều | Thùy | Các câu tròn xoay không làm HTML riêng — một file chung để chọn bài, coi như một chuyên đề (còn nhiều bài nữa). Sau này đưa lên app cho HS xem lại, đi kèm bài giải (⇒ A5, B7) |
 | 10/10 chiều | Claude | Dựng trang chuyên đề `tron-xoay.html` + `tron-xoay-bai.js`; chuyển Câu 48 sang dữ liệu, thêm Câu 49 thuần bằng dữ liệu; địa chỉ theo `id`, chế độ nhúng `nhung=1`, tự kiểm thể tích với `dapSo` |
+| 10/10 chiều | Thùy | "Có toan.bkacademy.edu.vn rồi, build project đưa lên đấy thôi." · "Đưa lên app thì cứ từ từ. Khớp sau. Lưu vết để sau này còn track." |
+| 10/10 chiều | Claude | Tạo project Vercel `bkdemy-erp-v2-toan-site`, deploy `toan-site/` lên toan.bkacademy.edu.vn (§D.8); lập `docs/hinh-3d/so-theo-doi.md`, thêm trường `maCau: null` vào dữ liệu bài |
