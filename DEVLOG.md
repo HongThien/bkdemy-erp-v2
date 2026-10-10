@@ -36767,3 +36767,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Công cụ:** `loc-trung.mjs` thêm `khoaCongThucDai` + khoá nghi `cc:` (công thức ≥ 14 ký tự có quan hệ, giữ nguyên số, áp cả cho bài chứng minh). Thử trên lô 7: báo đúng 1 cặp (Đề 4 bài 1b ↔ T18T010301049 — khác yêu cầu, giữ), không báo nhầm.
 - **Trang xem:** 66 thẻ, 99 ảnh, publish Version 8: thêm 6 thẻ lệch nhóm + 3 thẻ đã làm của lô 7; thẻ bài 73 chương III và bài 31 phụ lục A chuyển sang "đã làm" kèm ảnh bản in lại.
 - **Còn của NĐT:** chỉ nhánh Hình (Hình I–III, ôn tập cuối năm phần Hình, phụ lục B, bài 4–5 của 10 đề phụ lục C) — chưa có brief Hình cho 8T.
+
+### 10/10 (tiếp 3) — Lunar Cherry: iPad không hiện thú nuôi
+- **Thùy báo:** "trên iPad không hiện thú nuôi" (chưa biết iOS mấy, chưa có ảnh). Không có iPad để thử ⇒ sửa cả 3 chỗ nghi, kèm chẩn đoán tự hiện.
+- **Nghi + sửa:** (1) `.tho-pet` chỉ có `height` + `aspect-ratio: 1` ⇒ iOS < 15 không hiểu ⇒ width 0 ⇒ cả canvas lẫn ảnh dự phòng đều vô hình — đặt rõ `width: min(62vh, 88vw)`. (2) `thu-cung.js` build Vite target mặc định có `??=` + `#private` ⇒ Safari < 14.1 không parse ⇒ cả module chết ⇒ `window.ThuCung` undefined — build lại `target ['es2018','safari12']`, kiểm `esbuild --target=es2018` parse sạch (2 match `#` còn lại là GLSL trong string). (3) `ThuCung.gan` không try/catch ⇒ WebGL lỗi là trắng màn — giờ bắt lỗi, về ảnh mèo tĩnh + bong bóng "3D lỗi: <message>" để lần sau Thùy chụp màn là biết nguyên nhân.
+- **Chưa chắc:** chưa verify trên iPad thật. Nếu vẫn trắng ⇒ cần ảnh chụp + iOS version. `.duo` (hero trận đấu) cũng dùng aspect-ratio — nếu iPad cũ thì trận đấu cũng hỏng, chưa sửa.
+- Commit LunarCherry (master) + BatThu `vite.lib.config.ts`. Phiên fork cùng lúc đã thêm nút 🐾 Nuôi thú ở màn bìa (4e6f966).
