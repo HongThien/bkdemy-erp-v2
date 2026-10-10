@@ -3,7 +3,8 @@
 
    QUY ƯỚC DỮ LIỆU
    - Mọi hàm là BÁN KÍNH (khoảng cách có dấu tới trục quay) theo toạ độ dọc trục t.  truc: 'x' ⇒ t = x, bán kính = y  ·  truc: 'y' ⇒ t = y, bán kính = x.
-   - id        : mã trên địa chỉ (?bai=48)          ten, nguon, moTa : hiện ở tên bài + bảng chọn bài
+   - id        : mã trên địa chỉ (?bai=48) — đã phát hành thì KHÔNG đổi, không dùng lại          ten, nguon, moTa : hiện ở tên bài + bảng chọn bài
+   - maCau     : mã câu trong kho ERP — null cho tới khi khớp THẬT (đối chiếu đề + đáp số; thà trống còn hơn sai). Sổ: docs/hinh-3d/so-theo-doi.md
    - dapSo     : đáp số bằng số — trang TỰ TÍNH lại thể tích từ `mien` và báo lỗi đỏ nếu lệch (đừng bỏ)
    - ve        : { t: [min, max] trục quay · r: [min, max] trục kia · ngam: { tx, ty, tz, r } điểm ngắm + bán kính cần thấy }
    - de        : { tieuDe, html, chips: [...], chuY }     (đề viết lại bằng lời của mình)
@@ -25,7 +26,7 @@ window.BAI_TRON_XOAY = (function () {
   // ───────── Câu 48 (NBV 12-18 F) ─────────
   { const f = x => x * x - 8 * x + 12, g = x => 6 - x
     DS.push({
-      id: '48', ten: 'Miền vắt qua trục quay', nguon: 'NBV 12-18 F · câu 48',
+      id: '48', maCau: null, ten: 'Miền vắt qua trục quay', nguon: 'NBV 12-18 F · câu 48',
       moTa: 'Parabol và đường thẳng; hình phẳng nằm ở cả hai phía của trục Ox. Ba miền, có cái bẫy công thức ra 0.',
       truc: 'x', dapSo: 836 * PI / 15,
       ve: { t: [-1.2, 7.7], r: [-5.3, 6.4], ngam: { tx: 2.4, ty: 0.95, tz: 0, r: 6.9 } },
@@ -73,7 +74,7 @@ window.BAI_TRON_XOAY = (function () {
   // ───────── Câu 49 (NBV 12-18 F) ─────────
   { const f = x => x * x + 1, g = x => -x - 1
     DS.push({
-      id: '49', ten: 'Hai đường ở hai phía trục', nguon: 'NBV 12-18 F · câu 49',
+      id: '49', maCau: null, ten: 'Hai đường ở hai phía trục', nguon: 'NBV 12-18 F · câu 49',
       moTa: 'Parabol nằm trên trục, đường thẳng nằm dưới trục, chặn bởi x = −1 và x = 1. Hai miền, không có lỗ.',
       truc: 'x', dapSo: 21 * PI / 5,
       ve: { t: [-2.4, 2.6], r: [-2.7, 3.5], ngam: { tx: 0.35, ty: 0.55, tz: 0, r: 3.9 } },
