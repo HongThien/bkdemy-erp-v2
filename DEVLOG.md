@@ -36586,3 +36586,28 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Đã có từ trước:** màn `GopYHS` + RPC `fn_hs_gui_gop_y` (mig 202610011539, dùng bảng bao_loi, 10–1.500 chữ, 5 lần/ngày, ảnh tuỳ chọn) + màn duyệt `BaoLoiScreen` phía nhân sự — nhưng chỉ vào được từ menu ⋯ ở màn chính/Hồ sơ.
 - **Mới:** `gopy/NutGopYNoi.tsx` gắn ở `AppHS` ngay cạnh `HocSinhApp` (sau cổng đổi mật khẩu) ⇒ có ở MỌI màn. Chấm tròn 44px ở góc dưới phải; KÉO được sang cạnh/độ cao khác (nhớ trong máy: `hs_gopy_vt`). Bấm ⇒ tấm nhập nhanh NGAY TẠI CHỖ (không rời màn — em đang làm bài không mất): Báo lỗi / Góp ý tưởng, chữ, ảnh; gửi qua `guiGopY` với `route` = màn đang mở (`gopy/manHienTai.ts`, HocSinhApp ghi `direct`/`khu`) + context môn · cỡ màn · UA · `nguon:'nut_noi'`. Sau gửi: "Gửi thêm" / "Xem góp ý của em" (mở màn Góp ý đầy đủ qua sự kiện `bk-hs-mo-gopy`). Ẩn ở màn Góp ý và Hướng dẫn tương tác (tutorial).
 - **Kiểm:** preview 375 (`?xem=gami&man=nhiem_vu`): nút hiện góc dưới phải, tấm mở đúng, tsc sạch, check:style-hs ✔. **Chưa kiểm:** gửi thật (cần đăng nhập HS) + màn duyệt nhân sự thấy dòng mới, nút che nút khác ở màn làm bài.
+
+## 10/10 (chiều) — Hình 3D: rút khung chung + bài 2 (Câu 48 miền vắt qua trục quay)
+- **Thùy:** "tiếp tục 1 bài khác nào". Chọn Câu 48 (đã đề xuất từ đầu: bài tròn xoay có cái bẫy công thức ra 0).
+- **Rút khung trước khi viết bài 2** (bài mẫu đã duyệt, đúng B3): `khung.css` = nguyên phần style của bài 1; `khung.js` = `MoHinh(cfg)` (sân khấu, máy quay, Line2, nhãn/chấm, thanh bước, phím, KaTeX, clock/anims, __dbg). Bài 1 chuyển sang khung bằng script cắt-dán có kiểm (`tach_khung.py`: mỗi chỗ thay phải khớp đúng 1 lần), soát lại 6 bước: số liệu y hệt (25,20 · 28,54 · 57,60 · 241,88 · thay số · nước chảy lại).
+- **Sai khi tách:** (1) script nối lại trang làm rơi `</head><body>` (lấy nhầm phần sau, bỏ phần trước) ⇒ khôi phục file từ `git show HEAD:` rồi chạy lại. (2) `Object.assign(M, { get step() {…} })` chép GIÁ TRỊ của getter ⇒ `M.step` đứng ở 1; phải `Object.defineProperty`.
+- **Bài 2** `mien-vat-qua-truc.html`: f = x² − 8x + 12, g = 6 − x; mốc a = 1 (f = g), p = 2 (f = 0), q = 3 (g = −f), b = 6. Lát tại x: R = xa trục nhất, r = gần trục nhất ⇒ [a; p] vành khăn (g, f) · [p; q] đĩa g · [q; b] đĩa |f|. 7 bước; bước 6 "Cái bẫy": π∫₁³(g² − f²) = +108π/5, π∫₃⁶ = −108π/5 ⇒ 0 — vẽ thành lát xanh (cộng) và lát đỏ (trừ).
+- Số kiểm: từng đoạn 64π/5 + 37π/3 + 153π/5 = 836π/15 ≈ 175,09; tổng điểm giữa n = 5…80: 184,18 · 177,33 · 175,65 · 175,23 · 175,13; lát x = 1,5: 47,71 · x = 2,4: 40,72 · x = 4,5: 44,18.
+- **Lỗi thật bắt được nhờ đổi n liên tục:** `Cannot read properties of undefined (reading 'toFixed')` trong `syncSum`. Gốc: hoạt cảnh nhận `now` của rAF = giờ ĐẦU khung hình, còn `t0 = clock()` lấy trong sự kiện bấm của CÙNG khung ⇒ `now < t0`, tiến độ −0,01; với 80 lát làm tròn thành lát thứ −1 ⇒ `sums[−2]`. Bài 1 cũng có lỗi này (64 lát) mà chưa lộ. Sửa ở khung: `loop()` gọi `tick(clock())`.
+- **Sai nhỏ đã sửa lúc soi:** tên bài đè lên trục y (dời điểm ngắm) · bảng bước 3 dài quá màn 720p (gom chú thích sang phải mỗi dòng công thức, `.fx .r2`) · bước 4 rối vì còn đường bao R/r của bước 3 (chỉ để ở bước 3) · nguyên hàm ∫f² tràn ngang (tách 2 dòng).
+- **Bẫy công cụ:** vá file chứa LaTeX qua heredoc Python ⇒ `\frac` thành ký tự form-feed + `\,` cảnh báo; chuyển sang file `.py` viết bằng Write, chuỗi raw. Ảnh chụp Browser pane trễ một khung ⇒ `__dbg.run()` thêm một nhịp rồi chụp lại.
+- Cổng 5281 phiên khác đã thả ⇒ phiên này tự `preview_start {name: 'toan'}`.
+- **Chưa:** Thùy xem bài 2 · TV/iPad thật · duyệt câu chữ · mục lục · nhãn chồng nhau khi nhìn dọc trục.
+
+## 10/10 (chiều) — Hình 3D: bài tròn xoay không cắt lát (Thùy xem bài 2)
+- **Thùy:** "Các bài mà tròn xoay có hàm riêng thế này ko cần dùng cái cắt lát đâu - dùng trực tiếp công thức tròn xoay. Như bài này chia được 3 miền là lắp công thức được rồi. Bài cắt lát phù hợp với kiểu bài ko dùng công thức tròn xoay mà dùng công thức tính theo thiết diện ấy."
+- **Sai của t:** bê nguyên khuôn bài 1 (cắt một lát → chồng n lát → tích phân) sang bài tròn xoay. Với tròn xoay, HS đã có công thức V = π∫f² — lát cắt và tổng Riemann là thừa, làm dài bài và che mất việc chính là CHIA MIỀN.
+- **Sửa bài 2:** 7 → 5 bước. Bỏ "Cắt một lát" + "Cộng các lát" (xoá khối lát, chồng lát, sync4/syncSum). Bước 3 thành "Chia miền": ba miền đánh số trên hình + V₁, V₂, V₃. Bước "Cái bẫy" vẽ khối trơn (lưới mặt ngoài/mặt trong của từng đoạn) thay cho 40 vành khăn. Bước cuối: V = V₁ + V₂ + V₃.
+- Ghi spec A4 + sửa bảng phân loại C.0, §D.6; CLAUDE.md, HANDOFF. Bài 1 (thiết diện) giữ nguyên.
+
+## 10/10 (chiều) — Hình 3D: viết sổ tay dựng bài (spec Phần S)
+- **Thùy:** "OK viết spec đi. để làm các câu còn lại nhanh hơn nữa."
+- Viết `spec-day-hinh-3d.md` Phần S: S.1 xếp loại → bộ bước (TX tròn xoay / TD thiết diện / MC diện tích mặt cắt) · S.2 luật bảng lời giải · S.3 luật hình · S.4 bộ khung file + hàm nào sẽ chuyển lên khung (`M.tx`, `M.td`) · S.5 quy trình 8 việc · S.6 danh mục soát · S.7 phiếu dựng 8 bài còn lại · S.8 cách xử lý góp ý.
+- Giải lại 8 bài bằng CHỮ để ra công thức đóng cho luật A3, kiểm bằng số: câu 50 V = 2πb²(d − d³/(3a²)) · câu 52 V = (πl/15)(8R² + 4Rr + 3r²) · câu 45 V = πR²(h₁ + h₂/6) · câu 46 V = a³(4π/3 + π²/2) · câu 44 V = (2(π − 2)/3)ab² · câu 53 S′ = [R²(π − arccos(d/R)) + d√(R² − d²)]/cos φ · câu 49 V₁ = 28π/15, V₂ = 7π/3. Tất cả khớp đáp số bảng C.0.
+- Rút từ hai lần Thùy sửa (A3, A4): t trình bày theo thói quen người giải / bê khuôn bài trước sang bài khác loại ⇒ ghi câu tự hỏi vào S.8: "trên lớp GV có nói bước này không?"
+- Chưa làm: chưa chuyển hàm tròn xoay lên khung (để lúc dựng câu 49, có bài thứ hai cùng loại mới biết chỗ nào thật sự chung).
