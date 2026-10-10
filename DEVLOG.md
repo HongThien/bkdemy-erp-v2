@@ -36492,6 +36492,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai → sửa:** (1) khung máy ảnh theo `Box3.setFromObject(t.g)` ⇒ nhìn từ trên xuống, thú bé tí — bbox ôm cả sprite ẩn + bóng + vòng hào quang (rộng gấp 3 thân). Sửa: bbox chỉ mesh thân đang hiện, bỏ Sprite, bỏ mesh dẹt <0,02. (2) vòng rAF `return` khi `document.hidden` TRƯỚC khi `setSize` ⇒ canvas 300×150 méo lúc pane ẩn; sửa: `kich()` trước, render đầu ngay trong `dat()`.
 - **Spec:** `spec-lunar-cherry.md` §3.5 (sổ sticker ô tối, hít đúng ô) + §3.7 (thú Bắt Thú sống) cập nhật.
 
+## 10/10 — Hình 3D: công thức tổng quát trước, thay số sau (Thùy xem bản thử 1)
+- **Thùy:** "Chỗ tính tích phân — T muốn có công thức tổng quát — chưa thay số trước để học sinh hình dung ra công thức, rồi mới thay số vào ấy. Còn lại ok rồi."
+- **Sai của bản trước:** bước 5 viết thẳng V = ∫₋₆⁶ (5/6)(36 − x²)dx = 240 và bước 4 viết S(x) = (5/6)(36 − x²) — số của đề trộn ngay vào công thức, HS không thấy h/(2R) từ đâu ra. Chỉ bước 6 có dạng chữ, và chỉ cho 1 hướng.
+- **Sửa:** bảng `FX` / `VINT` / `VTINH` giữ công thức bằng chữ cho cả 3 hướng. Bước 4: khối "Công thức tổng quát (R, h bất kỳ)" rồi khối "Thay số: R = 6, h = 10, x = …" (viết rõ phép thay: S(2,40) = 10/(2·6)·(6² − 2,40²) = 25,20). Bước 5: kết bằng V = ∫S = ∫(biểu thức theo R, h). Bước 6 đổi tên "Tính thể tích": tính tích phân bằng chữ → V = 2R²h/3 → nút "Thay số" (nút Tiếp và phím → ở bước cuối cũng là thay số) mới hiện 240.
+- Tính lại bằng chữ 3 hướng: ⟂ AB: (h/2R)·4R³/3 · ∥ AB: (2h/R)·R³/3 · ∥ đáy: đổi biến y = h·cos β ⇒ R²h∫₀^{π/2}(β − sin β cos β) sin β dβ = R²h(1 − 1/3). Cả ba = 2R²h/3. Viết chữ còn lộ ra: nước/cốc = 2/(3π) ≈ 21% và h₀ = 2h/(3π) không phụ thuộc R.
+- Vị trí lát làm tròn 0,01 (trước là bội của 0,012) để số thay vào công thức khớp kết quả in ra. KaTeX: khối tích phân dùng `displayMode` + `aligned`; không đưa chữ có dấu vào `\text{}` (chú thích tiếng Việt để ở HTML).
+- Soát: 3 hướng × bước 4/5/6, trước và sau khi thay số, 1280×720 + 1920×1080; 0 lỗi KaTeX, 0 lỗi console, không tràn ngang. 1280×720 bước 4 phải cuộn bảng ~100px; 1920×1080 vừa khít (sau khi thay số ở bước 6 bảng tự cuộn tới khối số).
+- Ghi spec A3 (luật cho mọi mô hình), sửa dòng trỏ CLAUDE.md, HANDOFF ①. Commit `aeb04f64` ở checkout chính, cherry-pick sang worktree tạm rồi push.
+
 ## 10/10 (tiếp) — CLC6: tách 58 đề (805 câu) + lô thử 2 đề (24 câu) khớp ba nguồn
 - **Thùy:** "Chuyên đề cũng là từ đề ra mà. ko cần đâu. sau này gán dạng là tự thành chuyên đề thôi. Chỉ giải 58 đề nhé."
 - Đọc Word bằng doc-docx: 883/883 công thức MathType ra LaTeX. Viết scripts/kho/de-thi/tach-clc6.mjs: 58 đề · 805 câu (điền 568 · TN 139 · tự luận 98) · 84 hình. Bẫy đã gặp: tiêu đề thân bài cũng kết thúc bằng chữ số năm (không phân biệt được với mục lục bằng "số ở cuối" ⇒ chia đôi rồi đối chiếu cặp); bảng có số thứ tự không in đậm (LTV 2023); nhãn câu in nhầm (LTV 2022 câu 8 ghi "1"); phần tự luận không tiêu đề (đổi nhãn Câu → Bài); tiêu đề phần gõ dính cuối câu trước (CG 2022 — người kiểm bắt được).

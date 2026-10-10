@@ -1,8 +1,8 @@
 # DẠY HÌNH 3D — mô hình không gian tương tác cho bài tập Toán (tài liệu tổng)
 
 > **Đọc file này TRƯỚC khi dựng bất kỳ mô hình 3D nào cho bài tập Toán** (khối tròn xoay, khối tính bằng cắt lát, thiết diện…).
-> Mở 09/10/2026 tối. **Trạng thái (10/10 rạng sáng): BẢN THỬ 1 của Câu 43 đã dựng** (`toan-site/the-tich/coc-nghieng.html`, §D.4) theo các *đề xuất mặc định* ở Phần B —
-> **Thùy CHƯA chốt B1–B6** (Thùy nói "làm tiếp thôi" khi chưa trả lời) ⇒ xem bản thử rồi chốt/sửa. Chưa làm bài thứ hai.
+> Mở 09/10/2026 tối. **Trạng thái (10/10): BẢN THỬ 1 của Câu 43 đã dựng** (`toan-site/the-tich/coc-nghieng.html`, §D.4) và **Thùy đã xem**: yêu cầu một điều —
+> *chỗ tính tích phân phải có công thức tổng quát, chưa thay số, rồi mới thay số* (đã làm, luật A3) — **"còn lại ok rồi"**. Chưa làm bài thứ hai.
 > Cấu trúc: **Phần A** đã chốt · **Phần B** câu còn mở · **Phần C** kho bài đã giải · **Phần D** bài mẫu đề xuất · **Phần E** đứng trên vai ai · **Phần F** nhật ký quyết định.
 > Nguồn đề + hình đã chép vào repo: [`docs/hinh-3d/`](docs/hinh-3d/) (không phụ thuộc ổ E: của máy công ty).
 
@@ -14,8 +14,8 @@
 - **Nguồn đợt đầu:** NBV *12-18. Ứng dụng TP tính diện tích – thể tích*, file **F. Bài tập nâng cao**, Dạng 2. Trong đó có **10 bài thật sự 3D** (câu 43–50, 52, 53).
 - **Đã làm (09/10):** đọc + tự giải cả 10 bài, kiểm bằng tích phân số / Monte Carlo — **10/10 khớp**; bắt được **2 lỗi đáp số của nguồn** (§C.11).
 - **Bài mẫu đề xuất: Câu 43 — cốc nước nghiêng** (§D). Bài mẫu thứ hai (loại tròn xoay) nếu cần: **Câu 48**.
-- **Đã dựng (10/10):** bản thử 1 Câu 43 — 6 bước, xoay được, cắt lát 3 hướng, chồng lát; soát trên máy 4 cỡ màn, 0 lỗi console (§D.4).
-- **Việc kế tiếp:** Thùy xem bản thử + chốt B1–B6 → sửa theo góp ý → soi TV/iPad thật → duyệt → mới tính khuôn chung cho 9 bài còn lại.
+- **Đã dựng (10/10):** bản thử 1 Câu 43 — 6 bước, xoay được, cắt lát 3 hướng, chồng lát, tính tích phân bằng chữ rồi mới thay số (§D.4). Thùy xem: ok.
+- **Việc kế tiếp:** soi TV/iPad thật + duyệt câu chữ → thêm vào mục lục `toan-site/` → bài mẫu tròn xoay (đề xuất Câu 48) → rút khuôn chung cho 9 bài còn lại.
 
 ## 1. Nguồn & cách trích lại
 
@@ -37,9 +37,17 @@
 ### A2. Cách làm (Thùy 09/10)
 - Claude đọc đề, giải một số bài, **chọn 1 bài làm mẫu → bàn với Thùy → mới dựng**. Mẫu chưa duyệt thì chưa làm bài thứ hai.
 
+### A3. Công thức TỔNG QUÁT trước, THAY SỐ sau (Thùy 10/10 — áp cho MỌI mô hình)
+- Nguyên văn: *"Chỗ tính tích phân — t muốn có công thức tổng quát, chưa thay số trước để học sinh hình dung ra công thức, rồi mới thay số vào."*
+- Cụ thể hoá: mọi đại lượng tính được (diện tích lát S, tích phân V, tỉ số, mực nước…) viết **bằng chữ** (R, h, α…) trước, thành một khối riêng;
+  số của đề (R = 6, h = 10) chỉ xuất hiện ở khối **"Thay số"** đặt sau. Riêng bước ra đáp số: công thức chữ hiện sẵn, **bấm mới thay số**
+  (nút trong bảng, nút "Tiếp", hoặc phím →) để GV giảng xong công thức rồi mới cho số.
+- Hệ quả tốt: công thức chữ lộ ra điều số không lộ — vd tỉ số nước/cốc = 2/(3π) và mực nước h₀ = 2h/(3π) **không phụ thuộc R**.
+- Không áp cho tổng n lát ở bước "chồng lát" (bản chất là xấp xỉ bằng số).
+
 ---
 
-## Phần B — CÂU CÒN MỞ (Thùy chưa trả lời — bản thử 1 đang chạy theo cột "Đề xuất của Claude")
+## Phần B — CÂU CÒN MỞ (bản thử 1 chạy theo cột "Đề xuất của Claude"; Thùy xem 10/10: "còn lại ok rồi" — chưa trả lời từng câu)
 
 | # | Câu hỏi | Đề xuất của Claude | Vì sao quan trọng |
 |---|---|---|---|
@@ -170,7 +178,9 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
   Chưa có đường dẫn trong mục lục `toan-site/index.html` (chờ B4).
 - **Bố cục:** sân khấu 3D bên trái · bảng lời giải bên phải (màn dọc: xếp trên/dưới) · thanh 6 bước ở đáy. Phím ← → hoặc PageUp/PageDown (bút trình chiếu) đổi bước, Space chạy/dừng cảnh nghiêng.
 - **6 bước:** ① Đề bài → ② Nghiêng cốc (tự chạy hoặc kéo thanh; 2 ô điều kiện "chạm miệng" + "trùng đường kính" cùng bật ở 59°) → ③ Khối nước (cái nêm nét liền/nét đứt, R, h, α) →
-  ④ Cắt một lát (3 hướng, công thức nhảy số) → ⑤ Cộng các lát (n = 4/8/16/32/64, tổng tiến về 240) → ⑥ Kết quả (2R²h/3 = 240, ≈ 21% cốc, nút "cho nước chảy lại" ra h₀ ≈ 2,12 cm).
+  ④ Cắt một lát (3 hướng; khối **công thức tổng quát** S theo R, h rồi khối **thay số** theo vị trí đang kéo) → ⑤ Cộng các lát (n = 4/8/16/32/64, tổng tiến về 240; kết bằng V = ∫S viết theo R, h, chưa có số) →
+  ⑥ **Tính thể tích** (tính tích phân bằng chữ cho cả 3 hướng, đều ra V = 2R²h/3 → bấm **"Thay số"** / Tiếp / phím → mới hiện 240 cm³; rồi tỉ số với cả cốc 2/(3π) ≈ 21%, nút "cho nước chảy lại" ra h₀ = 2h/(3π) ≈ 2,12 cm).
+  Tích phân theo từng hướng: ⟂ AB: (h/2R)[R²x − x³/3] từ −R tới R · ∥ đáy: đổi biến y = h·cos β ⇒ R²h(1 − 1/3) · ∥ AB: (2h/R)[−(R² − z²)^{3/2}/3] từ 0 tới R.
 - **Khác kịch bản D.2:** cắt **3 hướng** thay vì 2 — thêm hướng song song AB (lát **chữ nhật**, S(z) = (10/3)·z·√(36 − z²), tích phân đổi biến ra 240); mỗi hướng có góc nhìn riêng.
   Thêm nút "Nhìn ngang" (thấy đúng tam giác OKI, tan α = h/R) và "Nhìn từ trên".
 - **Tổng n lát (quy tắc điểm giữa) — số trên màn phải khớp bảng này:**
@@ -187,9 +197,9 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
   Nét khuất: vẽ khối nêm một lượt **chỉ ghi độ sâu** (`colorWrite:false`, `polygonOffset`), mỗi cạnh vẽ 2 lần — nét liền `LessEqualDepth`, nét đứt `GreaterDepth`; đường sinh biên tính theo vị trí máy quay.
   Nước lỏng ↔ nêm đông cứng chỉ đổi cho nhau ở đúng góc α (hai hình trùng khít) nên mọi lần chuyển bước đều đi qua α. Lát cắt vẽ `depthTest:false` để thấy xuyên qua khối.
   `r128` cần tự gán `material.defines.USE_DASH = ''` thì `LineMaterial` mới ra nét đứt.
-- **Soát bằng máy:** `?buoc=4&huong=y&n=16` mở thẳng một bước · `__dbg.run(ms)` tua nhanh hoạt cảnh (**Browser pane ẩn thì `requestAnimationFrame` không chạy** — không tua thì ảnh chụp là khung cũ) · `__dbg.snap()` chụp canvas.
+- **Soát bằng máy:** `?buoc=4&huong=y&n=16` mở thẳng một bước · `?buoc=6&thay=1` mở bước 6 đã thay số · `__dbg.run(ms)` tua nhanh hoạt cảnh (**Browser pane ẩn thì `requestAnimationFrame` không chạy** — không tua thì ảnh chụp là khung cũ) · `__dbg.snap()` chụp canvas.
   Đã soát 1280×720, 1920×1080, 1024×768, 375×812: 6 bước, 3 hướng cắt, kéo xoay, cuộn phóng, bấm chip, phím mũi tên, nhảy bước 1 → 5.
-- **Chưa làm / chưa biết:** chưa soi **TV và iPad thật** (cảm ứng chụm 2 ngón chưa thử tay) · chưa ai duyệt **câu chữ** · chưa có mục lục · chưa rút khuôn chung · B1–B6 chưa chốt.
+- **Chưa làm / chưa biết:** chưa soi **TV và iPad thật** (cảm ứng chụm 2 ngón chưa thử tay) · chưa ai duyệt **câu chữ** · chưa có mục lục · chưa rút khuôn chung · màn 1280×720 bước 4 phải cuộn bảng ~100px mới thấy hết khối thay số (1920×1080 vừa khít).
 
 ---
 
@@ -214,3 +224,5 @@ Bảng đáp số (đã kiểm: tự giải tay + tích phân số Simpson / Mon
 | 09/10 tối | Claude | Trích file F (MathType), giải + kiểm 10 bài, bắt 2 lỗi đáp số nguồn, đề xuất mẫu Câu 43 (+ Câu 48), đưa 6 câu hỏi B1–B6. Chưa code |
 | 10/10 rạng sáng | Thùy | "Làm tiếp thôi" (chưa trả lời B1–B6) |
 | 10/10 rạng sáng | Claude | Dựng bản thử 1 Câu 43 theo đề xuất mặc định của Phần B (§D.4); thêm hướng cắt thứ ba (chữ nhật). Chờ Thùy xem + chốt |
+| 10/10 | Thùy | Xem bản thử 1: *"Chỗ tính tích phân — muốn có công thức tổng quát, chưa thay số trước để học sinh hình dung ra công thức, rồi mới thay số vào. Còn lại ok rồi."* |
+| 10/10 | Claude | Sửa bước 4–5–6 theo luật A3 (khối tổng quát → khối thay số; bước 6 = Tính thể tích, bấm mới thay số). Ghi A3 là luật cho mọi mô hình sau |
