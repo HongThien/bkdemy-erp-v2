@@ -396,7 +396,41 @@ export async function taoCaTest(input: TaoCaTestInput): Promise<CaTest> {
 }
 
 // Upload bài test scan (PDF/ảnh, 1 file — giống hướng "scan cả lớp thành 1 PDF" của Story-4 OPS spec).
-export async function uploadCaTestBai(file: File): Promise<string> { return (await uploadKhoFile(file)).url }
+// ⭐ 10/10 (CEO "Ops không upload được file scan bài test"): đo thật bằng tài khoản đăng nhập — PNG/PDF/HEIC nhỏ đều lên,
+// file 60 MB bị Storage trả 413 "The object exceeded the maximum allowed size" (ngưỡng project Supabase 50 MB). Scan điện
+// thoại nhiều trang dễ vượt, mà app chỉ hiện dòng đỏ tiếng Anh ⇒ Ops thấy "không upload được". Giờ: ảnh JPG/PNG/WebP
+// lớn tự thu nhỏ (cạnh dài ≤ 2200px, JPEG 0.85 — đủ đọc để chấm) trước khi đẩy; file vẫn vượt ngưỡng ⇒ báo tiếng Việt
+// kèm dung lượng + cách xử lý; lỗi Storage khác cũng dịch ra tiếng Việt.
+export const GIOI_HAN_UPLOAD_MB = 50
+const NEN_ANH_TU_MB = 3
+const mb = (n: number) => (n / 1024 / 1024).toFixed(1)
+async function thuNhoAnh(file: File): Promise<File> {
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < NEN_ANH_TU_MB * 1024 * 1024) return file
+  try {
+    const bmp = await createImageBitmap(file)
+    const k = Math.min(1, 2200 / Math.max(bmp.width, bmp.height))
+    const cv = document.createElement('canvas'); cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k)
+    const ctx = cv.getContext('2d'); if (!ctx) return file
+    ctx.drawImage(bmp, 0, 0, cv.width, cv.height); bmp.close()
+    const blob = await new Promise<Blob | null>((r) => cv.toBlob(r, 'image/jpeg', 0.85))
+    if (!blob || blob.size >= file.size) return file
+    return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' })
+  } catch { return file } // không decode được (ảnh lạ) ⇒ gửi nguyên, để Storage quyết
+}
+export async function uploadCaTestBai(file: File): Promise<string> {
+  const f = await thuNhoAnh(file)
+  if (f.size > GIOI_HAN_UPLOAD_MB * 1024 * 1024) {
+    throw new Error(`File ${mb(f.size)} MB vượt giới hạn ${GIOI_HAN_UPLOAD_MB} MB của kho ảnh. ${f.type === 'application/pdf' ? 'Scan lại ở độ phân giải thấp hơn (150 dpi đủ chấm) hoặc nén PDF, hoặc chụp ảnh từng trang.' : 'Chụp/scan lại ở độ phân giải thấp hơn.'}`)
+  }
+  try { return (await uploadKhoFile(f)).url }
+  catch (e: any) {
+    const m = String(e?.message ?? e)
+    if (/exceeded the maximum allowed size/i.test(m)) throw new Error(`Kho ảnh từ chối: file ${mb(f.size)} MB vượt giới hạn ${GIOI_HAN_UPLOAD_MB} MB — scan lại độ phân giải thấp hơn hoặc nén PDF.`)
+    if (/row-level security|not authorized|Unauthorized|jwt/i.test(m)) throw new Error('Phiên đăng nhập hết hạn hoặc không có quyền tải lên — đăng xuất rồi đăng nhập lại.')
+    if (/Failed to fetch|NetworkError|network/i.test(m)) throw new Error('Mất mạng giữa chừng — kiểm tra wifi rồi chọn lại file.')
+    throw new Error(`Không tải được file (${mb(f.size)} MB): ${m}`)
+  }
+}
 export async function ganBaiCaTest(id: string, baiUrl: string): Promise<void> {
   const { error } = await supabase.from('ca_test').update({ bai_url: baiUrl }).eq('id', id)
   if (error) throw error

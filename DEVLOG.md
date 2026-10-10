@@ -36743,3 +36743,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Đề sách in sai (đã mở ảnh), kho ghi bản khớp lời giải của sách:** ôn tập 16a · phụ lục A 4b, 18, 25c, 29, 37, 38. Bài 31 phụ lục A: đề là mệnh đề sai ("tồn tại hai số bằng 1") ⇒ ghi "có tích bằng 1" + `cho_quyet`. Ôn tập 9: kết quả sách mất dấu trừ (máy thay số bắt được).
 - **Trang xem:** thêm 11 thẻ cần quyết (bài 31, ba bài bất biến – tô màu chưa có nhóm, 9 câu lệch nhóm) + 8 thẻ đã làm của lô 6 (57 thẻ, 75 ảnh), publish Version 7. Đầu mục "Cần chị quyết" đổi sang đếm câu chưa duyệt từ DB (một thẻ có thể gồm nhiều câu).
 - **Còn của NĐT:** phụ lục C; nhánh Hình (I–III, ôn tập cuối năm phần Hình, phụ lục B) chưa chạy.
+
+## 2026-10-10 — Test đầu vào: Ops "không upload được file scan bài"
+
+**(CEO "Ops đang không upload được file scan bài test đầu vào. Kiểm tra đi")**
+- Đo: DB cho thấy hôm nay 10/10 vẫn có 2 ca (Trần Tùng Lâm) upload thành công ⇒ không chết hẳn. Role DB không đọc được schema `storage` (permission denied — cả claude_ro lẫn claude_build), `.env.local` không có service role ⇒ test thẳng bằng tài khoản đăng nhập trong app (server riêng, admin quick-login): PNG · PDF · HEIC nhỏ đều "ok"; **60 MB ⇒ 413 "The object exceeded the maximum allowed size"**; đo ngưỡng: 49 MB ok, 51 MB 413 ⇒ **giới hạn project Supabase = 50 MB**. Scan điện thoại nhiều trang (300 dpi màu) dễ vượt, app chỉ hiện dòng đỏ tiếng Anh nhỏ dưới thẻ ⇒ Ops hiểu là "không upload được". Thêm bẫy UI: thất bại rồi chọn LẠI CÙNG file ⇒ `onChange` không bắn (input giữ value) ⇒ bấm mãi không thấy gì.
+- Fix (`uploadCaTestBai`, tuyensinh.ts): ảnh JPG/PNG/WebP ≥ 3 MB tự thu nhỏ bằng canvas (cạnh dài ≤ 2200px, JPEG 0.85) trước khi đẩy; file vẫn > 50 MB ⇒ chặn ngay ở client, báo tiếng Việt kèm dung lượng + cách xử lý (scan 150 dpi / nén PDF / chụp từng trang); lỗi Storage khác dịch ra tiếng Việt (413, quyền/JWT, mất mạng). `chonFile` reset `input.value` ngay khi chọn ⇒ chọn lại cùng file vẫn chạy.
+- Dọn: các object `thu-ops-*` tôi upload thử lên bucket kho-tailieu (png/pdf/heic/49MB) — xoá bằng Storage API với phiên đăng nhập (policy kho_tl_delete to authenticated), không đụng file thật.
+- Chưa làm: nâng giới hạn 50 MB là cài đặt Supabase Dashboard (Storage › Settings › Global file size limit) — CEO/Admin bật nếu muốn, không phải migration.
