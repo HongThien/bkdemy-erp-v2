@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mái vòm sân vận động · Thể tích bằng tích phân</title>
+<meta name="description" content="Mô hình 3D xoay được: mái vòm trên nền sân hình elip. Mỗi lát cắt ngang sân là một hình viên phân có góc ở tâm 90°; cho lát chạy dọc sân để dựng mái, tính diện tích một lát rồi cộng lại ra thể tích dưới mái.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="khung.css">
+<style>
+.fx .r2>span:first-child{white-space:nowrap}   /* công thức không gãy dòng ở dấu = khi chú thích bên phải dài */
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineMaterial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="khung.js"></script>
+<script>
+// BÀI: Câu 44 (NBV 12-18 F) — mái vòm trên nền sân hình elip. Loại THIẾT DIỆN (spec A4): cắt lát.
+// Kịch bản: 1 Đề bài (mái + một lát mẫu có M, N, I) → 2 Dựng mái (lát viên phân chạy dọc trục lớn, quét ra mái)
+//           → 3 Cắt một lát (MN → R → S(x): chữ trước, số sau) → 4 Cộng các lát → 5 Tính thể tích (công thức chữ → bấm Thay số).
+// Địa chỉ: ?buoc=N · ?x=30 (vị trí lát, mét) · ?n=16 (số lát) · ?thay=1 (bước 5 đã thay số).
+(function () {
+'use strict'
+// ═══ 1. SỐ LIỆU CỦA BÀI (mét) ═══
+const a = 75, b = 45                       // bán trục lớn, bán trục bé của nền sân
+const SC = 0.1                             // 1 m = 0,1 đơn vị cảnh
+const HS = (Math.PI - 2) / 2               // S(x) = HS · m², m = nửa dây MN
+const V0 = 4 * HS * a * b * b / 3          // = 2(π − 2)/3 · a·b² ≈ 115 586 m³ (đáp số)
+const nua = x => b * Math.sqrt(Math.max(0, 1 - x * x / (a * a)))   // nửa dây MN tại vị trí x
+const dt = x => HS * nua(x) ** 2                                   // diện tích lát tại x
+// Toạ độ TOÁN: Ox = trục lớn, Oy = trục bé, h = độ cao. Trục đứng của three.js là Y ⇒ (x, y, h) → (x, h, −y) (giữ tam diện thuận).
+const T = (x, y, h) => [x * SC, h * SC, -y * SC]
+const NK = 24, Q4 = Math.PI / 4
+// Lát tại x: hình viên phân. Tâm I nằm dưới mặt sân một đoạn m, bán kính m√2; cung chạy từ N (y = −m) tới M (y = m).
+const poly = x => { const m = nua(x), r = m * Math.SQRT2, P = []; for (let k = 0; k <= NK; k++) { const t = -Q4 + 2 * Q4 * k / NK; P.push(T(x, r * Math.sin(t), r * Math.cos(t) - m)) } return P }
+
+// ═══ 2. KHUNG CHUNG ═══
+const gocCua = n => (n === 3 ? 'cat' : 'chinh')
+const M = MoHinh({
+  nhan: 'Toán 12 · Ứng dụng tích phân · Thể tích', tieuDe: 'Mái vòm sân vận động',
+  buoc: ['Đề bài', 'Dựng mái', 'Cắt một lát', 'Cộng các lát', 'Tính thể tích'],
+  nutGoc: [['mac_dinh', 'Góc ban đầu'], ['doc', 'Nhìn dọc sân'], ['tren', 'Nhìn từ trên']],
+  goc: {   // máy quay đứng phía −y: trục lớn Ox chạy sang phải như hình vẽ nền sân trong đề
+    chinh: { az: 0.5, pol: 1.13 },
+    cat: { az: 1.0, pol: 1.2 },                       // nhìn chếch dọc sân: thấy lát cắt gần chính diện
+    doc: { az: Math.PI / 2 - 0.03, pol: 1.5 },
+    tren: { az: 0, pol: 0.14 },
+  },
+  khung: { chinh: { tx: 0.4, ty: -1.1, tz: 0, r: 7 } },   // gồm cả tâm I nằm dưới mặt sân; sân dài nhưng màn hình rộng nên bán kính chỉ cần đủ chiều đứng
+  khungNao: () => 'chinh', gocMacDinh: () => gocCua(M.step),
+  bang: n => PANELS[n](), sauBang: bindPanel, truocBang, khiDoiBuoc, dongBo,
+  moiKhung: () => { if (dirty) { dirty = false; capNhatLat(M.step === 2 ? S.q : S.x); sync2() } },
+  tiep: () => { if (M.step !== 5 || S.subbed) return false; thaySo(); return true },   // ở bước cuối, nút Tiếp (và phím →) dùng để thay số
+  nutTiep: () => (M.step === 5 ? { chu: S.subbed ? 'Tiếp ›' : 'Thay số ›', tat: S.subbed } : null),
+  phimCach: () => { if (M.step !== 2) return false; S.playing ? stopPlay() : startPlay(); return true },
+  thamSo: q => {
+    const x = q.get('x'), n = +q.get('n')
+    if (x !== null && x !== '' && Math.abs(+x) < a) S.x = Math.round(+x)
+    if ([4, 8, 16, 32, 64].includes(n)) S.n = n
+    return { sub: q.get('thay') === '1' }
+  },
+})
+if (!M) return
+const { RM, $, $$, fmt, tn, tex, scene, mkLine, setLine, setView, clock, anims, label, dot, flat, matGhiSau, capNet, luoi } = M
+
+// ═══ 3. TRẠNG THÁI ═══
+const S = {
+  x: 30,              // vị trí lát cắt (bước 1, 3)
+  q: a, playing: false,   // bước 2: lát đang quét tới đâu (−a → a)
+  n: 8, reveal: 8,    // số lát khi cộng + số lát đã hiện
+  subbed: false,      // bước 5: đã bấm "Thay số"
+}
+let dirty = true
+
+// ═══ 4. VẬT THỂ ═══
+const nhom = () => { const g = new THREE.Group(); scene.add(g); return g }
+const NX = 120, xs = []; for (let i = 0; i <= NX; i++) xs.push(-a * Math.cos(Math.PI * i / NX))   // dồn điểm mẫu về hai đầu sân (elip dốc đứng ở đó)
+const xCua = s => xs[Math.round(s * NX)]
+// Mái: mặt cong (x, góc) — tam giác xếp theo dải x nên "dựng tới đâu" chỉ là setDrawRange
+const maiGeo = luoi().them((s, t) => { const x = xCua(s), m = nua(x), r = m * Math.SQRT2, g = -Q4 + 2 * Q4 * t; return T(x, r * Math.sin(g), r * Math.cos(g) - m) }, NX, NK).geo()
+const sanGeo = luoi().them((s, t) => { const g = 2 * Math.PI * s; return T(t * a * Math.cos(g), t * b * Math.sin(g), 0) }, 96, 1).geo()
+const maiMat = new THREE.MeshPhongMaterial({ color: 0x2fb9e8, transparent: true, opacity: 0.4, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x335566, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+const sanMat = new THREE.MeshBasicMaterial({ color: 0x7daaff, transparent: true, opacity: 0.1, side: THREE.DoubleSide, depthWrite: false })
+const mesh = (geo, mat, order) => { const m = new THREE.Mesh(geo, mat); m.renderOrder = order; m.frustumCulled = false; scene.add(m); return m }
+const mai = mesh(maiGeo, maiMat, 3), san = mesh(sanGeo, sanMat, 1), maiSau = mesh(maiGeo, matGhiSau(), -10), sanSau = mesh(sanGeo, matGhiSau(), -10)
+// Nền sân: elip + hai trục (nét liền chỗ nhìn thấy, nét đứt chỗ bị mái che)
+const netLien = nhom(), netDut = nhom()
+{ const E = []; for (let i = 0; i <= 160; i++) { const g = 2 * Math.PI * i / 160; E.push(...T(a * Math.cos(g), b * Math.sin(g), 0)) }
+  capNet(E, { color: 0xe6efff, width: 2.8 }, netLien, netDut)
+  capNet(flat([T(-a, 0, 0), T(a + 14, 0, 0)]), { color: 0xffffff, width: 2, opacity: 0.9 }, netLien, netDut)   // trục lớn = Ox
+  capNet(flat([T(0, -b, 0), T(0, b, 0)]), { color: 0xffffff, width: 2, opacity: 0.6 }, netLien, netDut)        // trục bé
+  const mui = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.46, 16), new THREE.MeshBasicMaterial({ color: 0xffffff })); mui.position.set((a + 14) * SC, 0, 0); mui.rotation.z = -Math.PI / 2; scene.add(mui) }
+
+// Lát đang chỉ: hình viên phân (tô) + viền + hai bán kính IM, IN + dấu góc vuông tại I. Nằm trong / dưới khối nên không thử độ sâu.
+const latG = nhom()
+const latGeo = new THREE.BufferGeometry(); latGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array((NK + 1) * 3), 3))
+{ const i = []; for (let k = 1; k < NK; k++) i.push(0, k, k + 1); latGeo.setIndex(i) }
+const latMesh = new THREE.Mesh(latGeo, new THREE.MeshBasicMaterial({ color: 0xffb547, transparent: true, opacity: 0.82, side: THREE.DoubleSide, depthTest: false, depthWrite: false })); latMesh.renderOrder = 6; latMesh.frustumCulled = false; latG.add(latMesh)
+const latVien = mkLine(new Array((NK + 2) * 3).fill(0), { color: 0xfff1d6, width: 3, depthTest: false, order: 8 }); latG.add(latVien)
+const tia = mkLine(new Array(9).fill(0), { color: 0xffe2ad, width: 2, depthTest: false, order: 8 }); latG.add(tia)            // M – I – N
+const gocVuong = mkLine(new Array(9).fill(0), { color: 0xffffff, width: 1.6, opacity: 0.85, depthTest: false, order: 8 }); latG.add(gocVuong)
+let latX = NaN
+function capNhatLat(x) {
+  if (x === latX) return
+  latX = x
+  const m = nua(x), P = poly(x), I = [x, 0, -m], d = Math.min(5, m * 0.16) / Math.SQRT2
+  latGeo.attributes.position.array.set(flat(P)); latGeo.attributes.position.needsUpdate = true
+  setLine(latVien, flat(P, true))
+  setLine(tia, flat([T(x, m, 0), T(...I), T(x, -m, 0)]))
+  setLine(gocVuong, flat([T(x, d, -m + d), T(x, 0, -m + 2 * d), T(x, -d, -m + d)]))
+}
+
+// Chồng n lát dọc trục lớn (khung lo; đơn vị dọc trục là đơn vị cảnh nên diện tích chia SC để tổng ra mét khối)
+const CL = M.chongLat()
+const cauHinhLat = () => ({ poly: t => poly(t / SC), truc: 0, lo: -a * SC, hi: a * SC, n: S.n, dienTich: t => dt(t / SC) / SC, canhBen: np => [0, np - 1] })
+const playSlabs = () => CL.chay(cauHinhLat(), { con: () => M.step === 4, khi: r => { S.reveal = r; syncSum() } })
+
+// ═══ 5. NHÃN + CHẤM ĐIỂM ═══
+const coLat = () => M.step <= 3, xLat = () => (M.step === 2 ? S.q : S.x), mLat = () => nua(xLat()), ro = () => coLat() && mLat() > 6
+label('O', () => T(0, 0, 0), () => true, -0.7, 0.75); label('x', () => T(a + 14, 0, 0), () => true, 0.5, 0.9)
+label('M', () => T(xLat(), mLat(), 0), ro, 0.8, -0.5); label('N', () => T(xLat(), -mLat(), 0), ro, -0.8, 0.6); label('I', () => T(xLat(), 0, -mLat()), ro, 0.8, 0.5)
+label('R', () => T(xLat(), mLat() / 2, -mLat() / 2), () => M.step === 3 && ro(), 0.75, 0.3, 'hot')
+label('150 m', () => T(-a * 0.55, -nua(-a * 0.55), 0), () => M.step === 1, -1.6, 0.9, 'dim'); label('90 m', () => T(0, b * 0.5, 0), () => M.step === 1, -1.9, -0.2, 'dim')
+dot(() => T(0, 0, 0), () => true)
+dot(() => T(xLat(), mLat(), 0), coLat, 0xfff1d6); dot(() => T(xLat(), -mLat(), 0), coLat, 0xfff1d6); dot(() => T(xLat(), 0, -mLat()), ro, 0xfff1d6)
+
+// ═══ 6. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
+let daiVe = -1
+function dongBo() {
+  const st = M.step
+  // bước 2: mái mới dựng tới vị trí lát đang quét
+  let dai = NX; if (st === 2) { dai = 0; while (dai < NX && xs[dai + 1] <= S.q + 1e-9) dai++ }
+  if (dai !== daiVe) { daiVe = dai; maiGeo.setDrawRange(0, dai * NK * 6) }
+  maiMat.opacity = st === 4 ? 0.1 : st === 3 ? 0.3 : 0.4
+  maiSau.visible = sanSau.visible = netDut.visible = st !== 4
+  latG.visible = coLat(); tia.visible = gocVuong.visible = ro()
+  CL.nhom.visible = st === 4
+}
+
+// ═══ 7. BẢNG LỜI GIẢI THEO BƯỚC (A3: công thức bằng chữ trước, thay số sau) ═══
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
+const PANELS = {
+  1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Dưới mái vòm có bao nhiêu mét khối?</h2>
+    <p>Một sân vận động có nền là hình elip, trục lớn dài <b>150 m</b>, trục bé dài <b>90 m</b>, phía trên là mái vòm.</p>
+    <p>Cắt sân bằng một mặt phẳng vuông góc với trục lớn, cắt elip tại <i>M</i> và <i>N</i>. Thiết diện luôn là phần hình tròn tâm <i>I</i> nằm phía trên dây cung <i>MN</i>, với góc <i>MIN</i> bằng <b>90°</b>.</p>
+    <p>Tính thể tích phần không gian nằm dưới mái và trên mặt sân.</p>
+    <div class="chips"><span>trục lớn 150 m</span><span>trục bé 90 m</span><span>góc MIN = 90°</span><span class="q">V = ?</span></div>
+    <button type="button" class="btn" id="b1">Dựng mái ›</button>
+    <p class="cap">Nguồn: NBV 12-18 F · câu 44</p>`,
+  2: () => String.raw`<p class="kicker">Bước 2 · Dựng mái</p><h2>Cho lát cắt chạy dọc sân</h2>
+    <p>Đặt trục <i>Ox</i> dọc theo trục lớn, gốc <i>O</i> ở tâm sân. Tại mỗi vị trí <i>x</i>, lát cắt là một <b>hình viên phân</b>: dây <i>MN</i> nằm trên mặt sân, tâm <i>I</i> nằm <b>dưới</b> mặt sân, hai bán kính <i>IM</i>, <i>IN</i> vuông góc với nhau.</p>
+    <div class="row"><button type="button" class="btn" id="b2"></button><span class="ro"><small>Vị trí lát</small><b id="r2">0 m</b></span></div>
+    <input type="range" id="s2" min="0" max="1000" value="1000" aria-label="Vị trí của lát cắt dọc sân">
+    <ul class="cond">
+      <li id="c2a"><i></i><span>Giữa sân: dây <i>MN</i> dài nhất, lát to nhất</span><em>x = 0</em></li>
+      <li id="c2b"><i></i><span>Hết sân: mái đã dựng xong</span><em>x = 75</em></li>
+    </ul>
+    <p class="note">Lát thay đổi theo <i>x</i> nên khối dưới mái không phải khối quen thuộc nào. Muốn có thể tích phải biết <b>diện tích của lát</b> theo <i>x</i>.</p>`,
+  3: () => String.raw`<p class="kicker">Bước 3 · Cắt một lát</p><h2>Diện tích một lát</h2>
+    <p>Lát tại vị trí <i>x</i> là hình quạt <i>IMN</i> (góc 90°) bỏ đi tam giác <i>IMN</i>.</p>
+    <label class="sl"><span class="nm">x</span><input type="range" id="s3" min="-70" max="70" step="1" aria-label="Vị trí lát cắt"><output id="o3"></output></label>
+    <p class="lbl2">Công thức tổng quát (a, b: hai bán trục)</p>
+    <div class="fx"><div class="r2"><span data-tex="MN=2b\sqrt{1-\dfrac{x^2}{a^2}}"></span><small>M, N nằm trên elip</small></div>
+      <div class="r2"><span data-tex="R=IM=\dfrac{MN}{\sqrt2}"></span><small>tam giác IMN<br>vuông cân tại I</small></div>
+      <div class="res" data-tex="S(x)=\dfrac{\pi R^2}{4}-\dfrac{R^2}{2}=\dfrac{\pi-2}{2}\,b^2\!\left(1-\dfrac{x^2}{a^2}\right)"></div></div>
+    <p class="lbl2" id="l3"></p>
+    <div class="fx num"><div id="f31"></div><div id="f32"></div><div class="res" id="f33"></div></div>`,
+  4: () => String.raw`<p class="kicker">Bước 4 · Cộng các lát</p><h2>Chồng các lát lại</h2>
+    <p>Chia trục lớn thành <b>n</b> đoạn bằng nhau. Coi mỗi lát là một tấm mỏng: thể tích ≈ diện tích lát × bề dày.</p>
+    <div class="seg" id="seg4">${[4, 8, 16, 32, 64].map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (S.n === n) + '">' + n + '</button>').join('')}</div>
+    <div class="sum"><span class="lbl">Tổng <b id="n4"></b> lát ≈</span><span class="big" id="sum4"></span><span class="unit">m³</span><span class="off" id="off4"></span></div>
+    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này chính là <b>tích phân của diện tích lát cắt</b>:</p>
+    <div class="fx"><div data-d data-tex="V=\int_{-a}^{a}S(x)\,\mathrm{d}x"></div></div>`,
+  5: () => String.raw`<p class="kicker">Bước 5 · Tính thể tích</p><h2>Tính tích phân</h2>
+    <p class="lbl2">Công thức tổng quát (a, b bất kỳ, chưa thay số)</p>
+    <div class="fx"><div data-d data-tex="\begin{aligned}V&=\int_{-a}^{a}S(x)\,\mathrm{d}x\\[0.5em]&=\frac{\pi-2}{2}\,b^2\int_{-a}^{a}\left(1-\frac{x^2}{a^2}\right)\mathrm{d}x\\[0.5em]&=\frac{\pi-2}{2}\,b^2\left[x-\frac{x^3}{3a^2}\right]_{-a}^{a}=\frac{\pi-2}{2}\,b^2\cdot\frac{4a}{3}\end{aligned}"></div><div class="res" data-d data-tex="V=\frac{2(\pi-2)}{3}\,ab^2"></div></div>
+    <button type="button" class="btn" id="bSub"${S.subbed ? ' hidden' : ''}>Thay số a = 75, b = 45 ›</button>
+    <div class="subs" id="subs"${S.subbed ? '' : ' hidden'}>
+      <p class="lbl2">Thay số: a = 75, b = 45 (m)</p>
+      <div class="fx num"><div class="res" style="border:0;padding:0" data-d data-tex="\begin{aligned}V&=\frac{2(\pi-2)}{3}\cdot 75\cdot 45^2=101\,250\,(\pi-2)\\[0.4em]&\approx 115\,586\ \text{m}^3\end{aligned}"></div></div>
+      <p>Chỗ cao nhất của mái là ở giữa sân. Ở đó bán kính là <i>b</i>√2, tâm <i>I</i> nằm sâu <i>b</i> dưới mặt sân:</p>
+      <div class="fx"><div data-tex="h_{\max}=b\sqrt2-b\approx 18{,}6\ \text{m}"></div></div>
+      <p class="note">Thể tích tỉ lệ với <i>a</i>·<i>b</i>². Sân dài gấp đôi thì thể tích gấp đôi; sân rộng gấp đôi thì thể tích gấp <b>bốn</b>, vì mái cũng cao gấp đôi.</p>
+    </div>`,
+}
+function bindPanel() {
+  const st = M.step
+  if (st === 1) $('#b1').addEventListener('click', () => M.goStep(2, { play: true }))
+  if (st === 2) {
+    $('#b2').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
+    $('#s2').addEventListener('input', e => { stopPlay(); S.q = -a + 2 * a * e.target.value / 1000; dirty = true })
+    sync2()
+  }
+  if (st === 3) { const s = $('#s3'); s.value = S.x; s.addEventListener('input', () => { S.x = +s.value; sync3() }); sync3() }
+  if (st === 4) { $$('#seg4 button').forEach(bt => bt.addEventListener('click', () => { S.n = +bt.dataset.n; $$('#seg4 button').forEach(x => x.setAttribute('aria-pressed', x === bt)); playSlabs() })); syncSum() }
+  if (st === 5) $('#bSub').addEventListener('click', thaySo)
+}
+function sync2() {
+  const s = $('#s2'); if (!s) return
+  const het = S.q >= a - 1e-6
+  if (document.activeElement !== s || S.playing) s.value = Math.round((S.q + a) / (2 * a) * 1000)
+  $('#r2').textContent = 'x = ' + fmt(Math.round(S.q), 0) + ' m'
+  $('#c2a').classList.toggle('ok', S.q >= -1e-6); $('#c2b').classList.toggle('ok', het)
+  const lab = (S.playing ? ICON_PAUSE + 'Dừng' : ICON_PLAY + (het ? 'Dựng lại' : 'Dựng mái')), bt = $('#b2')
+  if (bt.dataset.lab !== lab) { bt.innerHTML = lab; bt.dataset.lab = lab }
+}
+function sync3() {
+  const x = S.x, m = nua(x), mn = 2 * m, r = mn / Math.SQRT2, xs2 = x < 0 ? '(' + x + ')' : '' + x
+  $('#o3').textContent = fmt(x, 0) + ' m'
+  $('#l3').textContent = 'Thay số: a = 75, b = 45, x = ' + fmt(x, 0)
+  tex($('#f31'), String.raw`MN=2\cdot 45\sqrt{1-\dfrac{${xs2}^2}{75^2}}=${tn(mn)}`)
+  tex($('#f32'), String.raw`R=\dfrac{${tn(mn)}}{\sqrt2}=${tn(r)}`)
+  // dòng kết quả thay thẳng a, b, x vào công thức gọn (không dùng R đã làm tròn) để bấm máy theo đúng dòng này ra đúng số in ra
+  tex($('#f33'), String.raw`S(${x})=\dfrac{\pi-2}{2}\cdot 45^2\!\left(1-\dfrac{${xs2}^2}{75^2}\right)=${tn(dt(x), 1)}\ \text{m}^2`)
+  dirty = true
+}
+const nghin = v => Math.round(v).toString().replace(/\B(?=(\d{3})+$)/g, ' ')   // 115586 → "115 586"
+function syncSum() {
+  const lat = CL.lat; if (!$('#sum4') || !lat) return
+  const r = S.reveal, v = r ? lat.sums[r - 1] : 0, full = r === lat.n, d = v - V0
+  $('#n4').textContent = full ? lat.n : r + '/' + lat.n
+  $('#sum4').textContent = nghin(v)
+  $('#off4').textContent = full ? 'lệch ' + (d >= 0 ? '+' : '−') + nghin(Math.abs(d)) + ' so với ' + nghin(V0) : ''
+}
+function thaySo() {
+  if (M.step !== 5 || S.subbed) return
+  S.subbed = true
+  M.renderPanel(true); M.syncChips()
+  const el = $('#subs'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
+}
+
+// ═══ 8. CHUYỂN BƯỚC ═══
+function startPlay() {
+  if (M.step !== 2) return
+  if (S.q >= a - 1e-6) S.q = -a
+  S.playing = true; dirty = true
+  const my = M.token(), q0 = S.q, t0 = clock(), dur = RM ? 1 : 8000 * (a - q0) / (2 * a)
+  anims.push(now => {
+    if (!S.playing || !M.alive(my)) return true
+    const k = Math.min(1, (now - t0) / dur)
+    S.q = q0 + (a - q0) * k; dirty = true
+    if (k >= 1) { S.q = a; S.playing = false; return true }
+    return false
+  })
+}
+function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
+function truocBang(n, prev, o) {
+  S.playing = false
+  if (prev !== 5 || o.first) S.subbed = !!o.sub   // mỗi lần vào bước 5 lại bắt đầu từ công thức chưa thay số
+  if (n === 2 && (prev !== 2 || o.first)) S.q = o.first ? 0 : (o.play || o.next) ? -a : a   // mở thẳng: lát ở giữa sân · bấm tới: dựng từ đầu · lùi về: mái đã xong
+}
+async function khiDoiBuoc(n, prev, o) {
+  dirty = true
+  if (o.first || gocCua(n) !== gocCua(prev)) setView('mac_dinh', o.first)
+  if (n === 2 && !o.first && (o.play || o.next)) startPlay()
+  if (n === 4) playSlabs()
+}
+
+// ═══ 9. CHẠY + TỰ KIỂM ═══
+M.start()
+// Cộng 4000 lát (điểm giữa) phải ra đáp số: hình vẽ và lời giải nói cùng một chuyện.
+function kiem() { let v = 0; const n = 4000, h = 2 * a / n; for (let i = 0; i < n; i++) v += dt(-a + (i + 0.5) * h) * h; return { tinh: v, dapSo: V0, lech: Math.abs(v - V0) } }
+Object.assign(window.__dbg, { S, kiem, CL })
+})()
+</script>
+</body>
+</html>
