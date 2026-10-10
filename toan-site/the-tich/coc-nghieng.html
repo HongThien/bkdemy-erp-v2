@@ -9,159 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<style>
-/* MÔ HÌNH 3D CHO BÀI TẬP (spec-day-hinh-3d.md) — bài mẫu: Câu 43, cốc nước nghiêng.
-   Cùng thế giới tối với toan-site (nền không gian, xanh quét + hổ phách) nhưng KHÔNG theo nhịp du hành:
-   một sân khấu 3D bên trái, một bảng lời giải bên phải, thanh bước ở đáy (GV bấm từng bước trên TV). */
-:root{
-  --void:#040914; --ink:#e8f1ff; --ink-2:#c3d2ec; --muted:#8fa3c4;
-  --card:#0b1630; --card-2:#101f42; --line:rgba(125,170,255,.24);
-  --scan:#5ce1ff; --amber:#ffb547; --ok:#6ee7a8;
-  --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --f-data:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
-  color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none!important}
-html{font-size:clamp(15px,.6vw + 9.5px,22px)}
-html,body{margin:0;height:100%;background:var(--void);color:var(--ink);font-family:var(--f-ui);overflow:hidden}
-button{font:inherit;color:inherit}
-.app{height:100vh;height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) clamp(20rem,32vw,29rem);grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"stage panel" "steps steps"}
-
-/* ── Sân khấu 3D ── */
-.stage{grid-area:stage;position:relative;min-width:0;min-height:0;overflow:hidden;touch-action:none;cursor:grab;
-  background:radial-gradient(900px 520px at 70% -10%,rgba(92,225,255,.10),transparent 60%),radial-gradient(700px 420px at 0% 110%,rgba(255,181,71,.06),transparent 60%),var(--void)}
-.stage.drag{cursor:grabbing}
-#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
-.labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.lb{position:absolute;left:0;top:0;white-space:nowrap;font:italic 700 1.2rem/1 "Times New Roman",Times,serif;color:#fff;
-  text-shadow:0 0 4px var(--void),0 0 9px var(--void),0 1px 2px var(--void);will-change:transform}
-.lb.hot{color:var(--amber)}
-.lb.dim{font:600 .8rem/1 var(--f-data);color:var(--ink);background:rgba(4,9,20,.78);border:1px solid var(--line);border-radius:999px;padding:.3em .65em;text-shadow:none}
-.head{position:absolute;left:1rem;top:.85rem;pointer-events:none;max-width:60%}
-.head .eyebrow{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.head h1{margin:.25rem 0 0;font:800 1.45rem/1.1 var(--f-ui);letter-spacing:-.01em}
-.views{position:absolute;right:.8rem;top:.8rem;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.4rem;max-width:55%}
-.views button{cursor:pointer;background:rgba(11,22,48,.82);border:1px solid var(--line);border-radius:999px;padding:.5em .95em;font:600 .78rem/1 var(--f-ui);color:var(--ink-2);min-height:2.4em}
-.views button:hover{border-color:rgba(92,225,255,.7);color:var(--ink)}
-.views button[aria-pressed="false"]{color:var(--muted)}
-.hint{position:absolute;left:1rem;bottom:.8rem;font:500 .72rem/1.3 var(--f-data);color:var(--muted);transition:opacity .4s}
-.hint.off{opacity:0}
-
-/* ── Bảng lời giải ── */
-.panel{grid-area:panel;min-width:0;min-height:0;overflow:auto;background:var(--card);border-left:1px solid var(--line);padding:1.15rem 1.2rem 1.5rem;display:flex;flex-direction:column;gap:.8rem}
-.panel>*{margin:0;flex-shrink:0}
-.kicker{font:600 .68rem/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--scan)}
-.panel h2{font:800 1.5rem/1.15 var(--f-ui);letter-spacing:-.01em;text-wrap:balance}
-.panel p{font:400 .98rem/1.55 var(--f-ui);color:var(--ink-2)}
-.panel p b{color:var(--ink);font-weight:700}
-.panel p i{font-family:"Times New Roman",Times,serif;font-size:1.1em;color:var(--ink)}
-.note{font-size:.88rem!important;color:var(--muted)!important;border-left:2px solid var(--line);padding-left:.75rem}
-.chips{display:flex;flex-wrap:wrap;gap:.45rem}
-.chips span{font:600 .85rem/1 var(--f-data);background:var(--card-2);border:1px solid var(--line);border-radius:999px;padding:.55em .9em}
-.chips .q{color:var(--amber);border-color:rgba(255,181,71,.5)}
-.btn{cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.5em;background:var(--amber);color:#1a1000;border:0;border-radius:.8rem;padding:.8em 1.2em;font:700 1rem/1 var(--f-ui);min-height:2.9em}
-.btn:hover{filter:brightness(1.07)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn svg{width:1em;height:1em;fill:currentColor}
-:is(button,input,a):focus-visible{outline:2px solid var(--scan);outline-offset:3px}
-.row{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
-.ro{display:flex;flex-direction:column;gap:.15rem}
-.ro small{font:600 .64rem/1.2 var(--f-data);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.ro b{font:600 1.5rem/1 var(--f-data);color:var(--ink)}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2.2rem;background:transparent;margin:0;cursor:pointer}
-input[type=range]::-webkit-slider-runnable-track{height:.5rem;border-radius:999px;background:linear-gradient(90deg,var(--scan),var(--amber))}
-input[type=range]::-moz-range-track{height:.5rem;border-radius:999px;background:linear-gradient(90deg,var(--scan),var(--amber))}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:1.7rem;height:1.7rem;margin-top:-.6rem;border-radius:50%;background:#fff;border:.28rem solid var(--amber);box-shadow:0 2px 8px rgba(0,0,0,.5)}
-input[type=range]::-moz-range-thumb{width:1.2rem;height:1.2rem;border-radius:50%;background:#fff;border:.28rem solid var(--amber)}
-.sl{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.7rem}
-.sl .nm{font:italic 700 1.3rem/1 "Times New Roman",Times,serif}
-.sl output{font:600 1.05rem/1 var(--f-data);min-width:4.6ch;text-align:right}
-.cond{list-style:none;padding:0;display:grid;gap:.5rem}
-.cond li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.6rem;background:var(--card-2);border:1px solid var(--line);border-radius:.8rem;padding:.65rem .8rem;font:500 .92rem/1.3 var(--f-ui)}
-.cond li>i{width:1.25rem;height:1.25rem;border-radius:50%;border:2px solid var(--muted);position:relative}
-.cond li em{font:600 .78rem/1 var(--f-data);font-style:normal;color:var(--muted);text-align:right}
-.cond li.ok{border-color:rgba(110,231,168,.6)}
-.cond li.ok>i{background:var(--ok);border-color:var(--ok)}
-.cond li.ok>i::after{content:"";position:absolute;left:28%;top:10%;width:32%;height:58%;border:solid #04210f;border-width:0 .16rem .16rem 0;transform:rotate(42deg)}
-.cond li.ok em{color:var(--ok)}
-.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
-.tabs button{cursor:pointer;background:var(--card-2);border:1px solid var(--line);border-radius:.7rem;padding:.55rem .4rem;display:flex;flex-direction:column;align-items:center;gap:.2rem;font:700 .8rem/1.15 var(--f-ui);color:var(--ink-2);text-align:center}
-.tabs button small{font:500 .68rem/1.2 var(--f-ui);color:var(--muted)}
-.tabs button[aria-selected="true"]{background:rgba(255,181,71,.14);border-color:var(--amber);color:var(--ink)}
-.tabs button[aria-selected="true"] small{color:var(--amber)}
-.fx{background:rgba(92,225,255,.05);border:1px solid var(--line);border-radius:.8rem;padding:.75rem .85rem;display:grid;gap:.6rem;overflow-x:auto}
-.fx .katex{font-size:1.06em}
-.fx .res{border-top:1px dashed var(--line);padding-top:.6rem;color:var(--amber)}
-.cap{font-size:.8rem!important;color:var(--muted)!important;margin-top:-.35rem!important}
-.cap:empty{display:none}
-.fx .cap{margin:0!important}
-.panel .lbl2{font:600 .72rem/1.3 var(--f-data);color:var(--muted);margin-bottom:-.45rem}
-.fx.num{background:rgba(255,181,71,.06);border-color:rgba(255,181,71,.32)}
-.fx .katex-display{margin:0;text-align:left}
-.fx .katex-display>.katex{text-align:left}
-#sub6{display:flex;flex-direction:column;gap:.8rem}
-#sub6>*{margin:0}
-.seg{display:flex;gap:.35rem}
-.seg button{cursor:pointer;flex:1;background:var(--card-2);border:1px solid var(--line);border-radius:.6rem;padding:.6em 0;font:600 .95rem/1 var(--f-data);color:var(--ink-2);min-height:2.5em}
-.seg button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#1a1000}
-.sum{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
-.sum .lbl{font:500 .9rem/1.2 var(--f-ui);color:var(--ink-2)}
-.sum .big{font:600 2.3rem/1 var(--f-data);color:var(--amber);font-variant-numeric:tabular-nums}
-.sum .unit{font:600 .9rem/1 var(--f-data);color:var(--muted)}
-.sum .off{font:600 .8rem/1 var(--f-data);color:var(--muted);margin-left:auto}
-
-/* ── Thanh bước ── */
-.steps{grid-area:steps;display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem calc(.5rem + env(safe-area-inset-bottom,0px));background:#070f22;border-top:1px solid var(--line)}
-.steps ol{list-style:none;margin:0;padding:0;display:flex;gap:.35rem;flex:1;justify-content:center;min-width:0}
-.steps li{min-width:0}
-.chip{cursor:pointer;display:flex;align-items:center;gap:.5em;background:transparent;border:1px solid transparent;border-radius:999px;padding:.4em .85em .4em .4em;font:600 .82rem/1 var(--f-ui);color:var(--muted);white-space:nowrap;min-height:2.6em}
-.chip .no{display:grid;place-items:center;width:1.9em;height:1.9em;border-radius:50%;background:var(--card-2);border:1px solid var(--line);font:600 .9em/1 var(--f-data);color:var(--ink-2)}
-.chip:hover{color:var(--ink)}
-.chip[aria-current="step"]{background:rgba(92,225,255,.1);border-color:rgba(92,225,255,.55);color:var(--ink)}
-.chip[aria-current="step"] .no{background:var(--scan);border-color:var(--scan);color:#00222b}
-.chip.done .no{border-color:rgba(110,231,168,.6);color:var(--ok)}
-.nav{cursor:pointer;background:var(--card-2);border:1px solid var(--line);border-radius:.7rem;padding:.7em 1.1em;font:700 .9rem/1 var(--f-ui);min-height:2.8em;white-space:nowrap}
-.nav.next{background:var(--scan);border-color:var(--scan);color:#00222b}
-.nav:disabled{opacity:.35;cursor:default}
-.err{position:fixed;inset:auto 0 0 0;padding:1rem;background:#5a1020;color:#fff;font:600 1rem var(--f-ui);z-index:9}
-
-@media (max-width:1100px){.chip .tx{display:none}.chip{padding:.3em}}
-@media (max-aspect-ratio:1/1),(max-width:720px){
-  .app{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,46fr) minmax(0,54fr) auto;grid-template-areas:"stage" "panel" "steps"}
-  .panel{border-left:0;border-top:1px solid var(--line)}
-  .head h1{font-size:1.15rem}
-  .head .eyebrow{display:none}
-  .views button{padding:.45em .8em;font-size:.72rem}
-  .views{max-width:48%}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
+<link rel="stylesheet" href="khung.css">
 </head>
 <body>
-<div class="app">
-  <div class="stage" id="stage">
-    <canvas id="cv" aria-label="Mô hình 3D cốc nước, kéo để xoay"></canvas>
-    <div class="labels" id="labels" aria-hidden="true"></div>
-    <div class="head">
-      <div class="eyebrow">Toán 12 · Ứng dụng tích phân · Thể tích</div>
-      <h1>Cốc nước nghiêng</h1>
-    </div>
-    <div class="views">
-      <button type="button" data-view="mac_dinh" id="vDef">Góc ban đầu</button>
-      <button type="button" data-view="ngang">Nhìn ngang</button>
-      <button type="button" data-view="tren">Nhìn từ trên</button>
-      <button type="button" id="vCup" aria-pressed="true" hidden>Hiện cốc</button>
-    </div>
-    <div class="hint" id="hint">Kéo để xoay · cuộn hoặc chụm hai ngón để phóng to</div>
-  </div>
-  <aside class="panel" id="panel" aria-live="polite"></aside>
-  <nav class="steps" aria-label="Các bước">
-    <button type="button" class="nav" id="prev">‹ Trước</button>
-    <ol id="chips"></ol>
-    <button type="button" class="nav next" id="next">Tiếp ›</button>
-  </nav>
-</div>
+<div id="app"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
@@ -170,130 +21,51 @@ input[type=range]::-moz-range-thumb{width:1.2rem;height:1.2rem;border-radius:50%
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="khung.js"></script>
 <script>
+// BÀI: Câu 43 (NBV 12-18 F) — cốc nước nghiêng. Phần dùng chung nằm ở khung.js / khung.css; file này chỉ có vật thể + bảng lời giải.
 (function () {
 'use strict'
-if (!window.THREE) { document.body.insertAdjacentHTML('beforeend', '<p class="err">Không tải được thư viện 3D — cần có mạng.</p>'); return }
-
 // ═══ 1. SỐ LIỆU CỦA BÀI (đổi bài = đổi khối này + mục 5) ═══
 const R = 6, H = 10                      // bán kính lòng đáy, chiều cao lòng cốc (cm)
 const TAN = H / R, ALPHA = Math.atan(TAN) // mặt nước lúc cuối nghiêng góc α với đáy, tan α = h/R
 const V0 = 2 * R * R * H / 3              // = 240 — thể tích nước (đáp số)
 const H0 = V0 / (Math.PI * R * R)         // mực nước khi cốc đứng ≈ 2,122
 
-const RM = matchMedia('(prefers-reduced-motion: reduce)').matches
-const $ = (s, r) => (r || document).querySelector(s)
-const $$ = (s, r) => [...(r || document).querySelectorAll(s)]
-const clamp = (v, a, b) => Math.min(b, Math.max(a, v))
-const z0 = v => (Math.abs(v) < 5e-7 ? 0 : v)
-const fmt = (v, d = 2) => z0(v).toFixed(d).replace('.', ',').replace('-', '−')   // số hiển thị kiểu Việt: 2,12
-const tn = (v, d = 2) => z0(v).toFixed(d).replace('.', '{,}')                    // số trong công thức TeX
-function tex(el, s, display) {
-  if (!el) return
-  if (window.katex) { try { katex.render(s, el, { throwOnError: false, displayMode: !!display }); return } catch (e) { /* rơi xuống chữ thường */ } }
-  el.textContent = s.replace(/\\[a-zA-Z]+|[{}]/g, ' ')
-}
-
-// ═══ 2. SÂN KHẤU: renderer, máy quay kéo-xoay, nét dày ═══
-const stage = $('#stage'), cv = $('#cv'), labelsEl = $('#labels')
-const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true })
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
-const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(32, 1, 0.5, 600)
-scene.add(camera)
-scene.add(new THREE.AmbientLight(0xffffff, 0.72))
-const headlight = new THREE.DirectionalLight(0xffffff, 0.62); headlight.position.set(-3, 6, 2); camera.add(headlight)
-
-// Nét dày (Line2) — TV cần nét ≥ 2px; WebGL thường chỉ vẽ được 1px. Thiếu thư viện thì lùi về nét 1px.
-const FAT = !!(THREE.Line2 && THREE.LineMaterial && THREE.LineGeometry)
-const lineMats = []
-function mkLine(P, o) {
-  o = o || {}
-  const color = o.color === undefined ? 0xffffff : o.color, width = o.width || 2, dashed = !!o.dashed, opacity = o.opacity === undefined ? 1 : o.opacity
-  let l
-  if (FAT) {
-    const g = new THREE.LineGeometry(); g.setPositions(P)
-    const m = new THREE.LineMaterial({ color, linewidth: width, transparent: true, opacity, depthWrite: false, depthTest: o.depthTest !== false, dashed, dashSize: 0.5, gapSize: 0.36 })
-    if (dashed) m.defines.USE_DASH = ''
-    if (o.depthFunc !== undefined) m.depthFunc = o.depthFunc
-    m.resolution.set(1, 1); lineMats.push(m)
-    l = new THREE.Line2(g, m)
-  } else {
-    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3))
-    const M = dashed ? THREE.LineDashedMaterial : THREE.LineBasicMaterial
-    const m = new M({ color, transparent: true, opacity, depthWrite: false, depthTest: o.depthTest !== false, dashSize: 0.5, gapSize: 0.36 })
-    if (o.depthFunc !== undefined) m.depthFunc = o.depthFunc
-    l = new THREE.Line(g, m)
-  }
-  l.userData.dashed = dashed
-  if (dashed) l.computeLineDistances()
-  l.renderOrder = o.order === undefined ? 5 : o.order
-  l.frustumCulled = false
-  return l
-}
-function setLine(l, P) {   // cập nhật toạ độ; cùng số điểm thì ghi đè tại chỗ (gọi mỗi khung hình)
-  if (!FAT) { l.geometry.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)) }
-  else {
-    const a = l.geometry.attributes.instanceStart, n = P.length / 3 - 1
-    if (a && a.data.array.length === n * 6) { const arr = a.data.array; for (let i = 0; i < n; i++) for (let k = 0; k < 6; k++) arr[i * 6 + k] = P[i * 3 + k]; a.data.needsUpdate = true }
-    else l.geometry.setPositions(P)
-  }
-  if (l.userData.dashed) l.computeLineDistances()
-}
-
-// Máy quay: góc phương vị az, góc từ đỉnh pol, khoảng cách dist quanh điểm ngắm (tx,ty,tz); view đuổi theo goal.
-const view = { az: -1.9, pol: 1.3, dist: 50, tx: 0, ty: 6, tz: 4 }, goal = Object.assign({}, view)
-let baseDist = 50
-const ANG = {   // máy quay đứng phía −x: trục z chạy sang phải màn hình, đường kính AB (trục x) chạy theo chiều sâu
-  nghieng: { az: -Math.PI / 2 - 0.34, pol: 1.3 },
-  sach: { az: -Math.PI / 2 + 0.16, pol: 0.9 },
-  ngang: { az: -Math.PI / 2, pol: 1.52 },
-  tren: { az: -Math.PI / 2, pol: 0.14 },
-  cat_x: { az: -Math.PI / 2 + 0.16, pol: 0.9 },    // lát ⟂ AB: nhìn dọc AB thấy tam giác gần chính diện
-  cat_y: { az: -Math.PI / 2 + 0.16, pol: 0.6 },    // lát song song đáy: nhìn chếch từ trên xuống
-  cat_z: { az: -Math.PI / 2 - 1.05, pol: 1.02 },   // lát song song AB: vòng sang phía mặt nước để thấy hình chữ nhật
-}
-const CTX = { nghieng: { tx: 0, ty: 6.3, tz: 4.3, r: 13.4 }, sach: { tx: 0, ty: 4.5, tz: 1.8, r: 9.6 } }
-function fitDist(r) {
-  const half = THREE.MathUtils.degToRad(camera.fov / 2), hh = Math.atan(Math.tan(half) * camera.aspect)
-  return Math.max(r / Math.sin(half), r / Math.sin(hh)) * 1.03
-}
-function setView(name, instant) {
-  const c = CTX[ctxName()], a = ANG[name === 'mac_dinh' ? ctxName() : name]
-  let az = a.az; while (az - view.az > Math.PI) az -= 2 * Math.PI; while (az - view.az < -Math.PI) az += 2 * Math.PI
-  baseDist = fitDist(c.r)
-  Object.assign(goal, { az, pol: a.pol, tx: c.tx, ty: c.ty, tz: c.tz, dist: baseDist })
-  if (instant) Object.assign(view, goal)
-}
-function placeCamera() {
-  const sp = Math.sin(view.pol)
-  camera.position.set(view.tx + view.dist * sp * Math.sin(view.az), view.ty + view.dist * Math.cos(view.pol), view.tz + view.dist * sp * Math.cos(view.az))
-  camera.lookAt(view.tx, view.ty, view.tz)
-}
-const ptr = new Map(); let pinchD = 0
-stage.addEventListener('pointerdown', e => {
-  if (e.target.closest('button,a')) return
-  ptr.set(e.pointerId, [e.clientX, e.clientY]); try { stage.setPointerCapture(e.pointerId) } catch (_) { }
-  stage.classList.add('drag'); $('#hint').classList.add('off')
-  if (ptr.size === 2) { const p = [...ptr.values()]; pinchD = Math.hypot(p[0][0] - p[1][0], p[0][1] - p[1][1]) }
+// ═══ 2. KHUNG CHUNG (khung.js): sân khấu, máy quay kéo-xoay, nét dày, nhãn, thanh bước ═══
+const M = MoHinh({
+  nhan: 'Toán 12 · Ứng dụng tích phân · Thể tích', tieuDe: 'Cốc nước nghiêng',
+  buoc: ['Đề bài', 'Nghiêng cốc', 'Khối nước', 'Cắt một lát', 'Cộng các lát', 'Tính thể tích'],
+  nutGoc: [['mac_dinh', 'Góc ban đầu'], ['ngang', 'Nhìn ngang'], ['tren', 'Nhìn từ trên']],
+  goc: {   // máy quay đứng phía −x: trục z chạy sang phải màn hình, đường kính AB (trục x) chạy theo chiều sâu
+    nghieng: { az: -Math.PI / 2 - 0.34, pol: 1.3 },
+    sach: { az: -Math.PI / 2 + 0.16, pol: 0.9 },
+    ngang: { az: -Math.PI / 2, pol: 1.52 },
+    tren: { az: -Math.PI / 2, pol: 0.14 },
+    cat_x: { az: -Math.PI / 2 + 0.16, pol: 0.9 },    // lát ⟂ AB: nhìn dọc AB thấy tam giác gần chính diện
+    cat_y: { az: -Math.PI / 2 + 0.16, pol: 0.6 },    // lát song song đáy: nhìn chếch từ trên xuống
+    cat_z: { az: -Math.PI / 2 - 1.05, pol: 1.02 },   // lát song song AB: vòng sang phía mặt nước để thấy hình chữ nhật
+  },
+  khung: { nghieng: { tx: 0, ty: 6.3, tz: 4.3, r: 13.4 }, sach: { tx: 0, ty: 4.5, tz: 1.8, r: 9.6 } },
+  khungNao: () => (M.step <= 2 ? 'nghieng' : 'sach'), gocMacDinh: () => (M.step <= 2 ? 'nghieng' : 'sach'),
+  bang: n => PANELS[n](), sauBang: bindPanel, truocBang, khiDoiBuoc,
+  moiKhung: () => { if (dirty) { dirty = false; pivot.rotation.x = S.theta; updateWater(); sync2() } },
+  dongBo: syncScene,
+  tiep: () => { if (M.step !== 6) return false; thaySo(); return true },   // ở bước cuối, nút Tiếp (và phím →) dùng để thay số
+  nutTiep: () => (M.step === 6 ? { chu: S.subbed ? 'Tiếp ›' : 'Thay số ›', tat: S.subbed } : null),
+  phimCach: () => { if (M.step !== 2) return false; S.playing ? stopPlay() : startPlay(); return true },
+  thamSo: q => {   // ?huong=x|y|z · ?n=16 · ?thay=1 (bước 6 đã thay số)
+    const ax = q.get('huong'), n = +q.get('n')
+    if (AX[ax] !== undefined) S.axis = ax
+    if ([4, 8, 16, 32, 64].includes(n)) S.n = n
+    return { sub: q.get('thay') === '1' }
+  },
 })
-stage.addEventListener('pointermove', e => {
-  const p = ptr.get(e.pointerId); if (!p) return
-  const dx = e.clientX - p[0], dy = e.clientY - p[1]; p[0] = e.clientX; p[1] = e.clientY
-  if (ptr.size === 1) { goal.az -= dx * 0.0065; goal.pol = clamp(goal.pol - dy * 0.0065, 0.12, 2.7); view.az = goal.az; view.pol = goal.pol }
-  else if (ptr.size === 2) {
-    const q = [...ptr.values()], d = Math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1])
-    if (pinchD > 0 && d > 0) goal.dist = clamp(goal.dist * pinchD / d, baseDist * 0.4, baseDist * 2.4)
-    pinchD = d
-  }
-})
-const ptrUp = e => { ptr.delete(e.pointerId); pinchD = 0; if (!ptr.size) stage.classList.remove('drag') }
-stage.addEventListener('pointerup', ptrUp); stage.addEventListener('pointercancel', ptrUp)
-stage.addEventListener('wheel', e => { e.preventDefault(); goal.dist = clamp(goal.dist * Math.exp(e.deltaY * 0.0012), baseDist * 0.4, baseDist * 2.4); $('#hint').classList.add('off') }, { passive: false })
+if (!M) return
+const { RM, $, $$, clamp, fmt, tn, tex, scene, camera, mkLine, setLine, setView, clock, anims, label, dot } = M
 
 // ═══ 3. TRẠNG THÁI ═══
 const S = {
-  step: 1,
   theta: 0,          // góc nghiêng của cốc (0 → α)
   frozen: false,     // true = nước "đông cứng" thành cái nêm, gắn theo cốc; false = nước lỏng, mặt nước luôn nằm ngang
   melted: false,     // bước 6: đã dựng cốc đứng cho nước chảy lại
@@ -303,10 +75,8 @@ const S = {
   n: 8, reveal: 8,   // số lát khi cộng + số lát đã hiện (hoạt cảnh)
   showCup: true,
 }
-let token = 0, dirty = true, skew = 0
-const clock = () => performance.now() + skew   // đồng hồ của mọi hoạt cảnh; skew chỉ khác 0 khi máy soát tua nhanh (__dbg.run)
-const anims = []
-const ctxName = () => (S.step <= 2 ? 'nghieng' : 'sach')
+let dirty = true
+Object.defineProperty(S, 'step', { get: () => M.step })   // số bước do khung giữ
 
 // ═══ 4. VẬT THỂ ═══
 // Hệ toạ độ CỦA CỐC: đáy nằm trong mặt y = 0, tâm đáy O ở gốc, trục cốc = trục y.
@@ -314,6 +84,7 @@ const ctxName = () => (S.step <= 2 ? 'nghieng' : 'sach')
 // Cốc nghiêng quanh mép đáy K(0;0;R) đặt trên mặt bàn: pivot ở K, quay quanh trục x góc theta.
 const pivot = new THREE.Group(); pivot.position.set(0, 0, R); scene.add(pivot)
 const cup = new THREE.Group(); cup.position.set(0, 0, -R); pivot.add(cup)
+M.local = cup   // nhãn + chấm điểm của bài này tính trong hệ toạ độ của cốc
 
 // Mặt bàn (mốc nằm ngang để thấy mặt nước luôn song song với bàn)
 const table = new THREE.Mesh(new THREE.CircleGeometry(24, 96), new THREE.MeshBasicMaterial({ color: 0x7daaff, transparent: true, opacity: 0.05, depthWrite: false, side: THREE.DoubleSide }))
@@ -480,14 +251,11 @@ function playSlabs() {
 }
 
 // ═══ 6. NHÃN + CHẤM ĐIỂM (toạ độ trong hệ của cốc) ═══
-const REM = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
 const atEnd = () => S.frozen || (S.step === 2 && S.theta >= ALPHA - 1e-3)
 const cons = () => S.frozen && (S.step === 3 || S.step === 6)
-const cutX = () => S.frozen && S.step === 4 && S.axis === 'x', cutY = () => S.frozen && S.step === 4 && S.axis === 'y'
+const upright = () => S.theta < 0.02
+const cutX = () => S.frozen && S.step === 4 && S.axis === 'x' && upright(), cutY = () => S.frozen && S.step === 4 && S.axis === 'y' && upright()
 const Mx = () => S.t.x, wX = () => Math.sqrt(Math.max(0, R * R - S.t.x * S.t.x))
-const L = [], D = []
-function label(html, get, when, dx, dy, cls) { const el = document.createElement('div'); el.className = 'lb ' + (cls || ''); el.innerHTML = html; el.style.display = 'none'; labelsEl.appendChild(el); L.push({ el, get, when, dx: dx || 0, dy: dy || 0, on: false }) }
-function dot(get, when, color, r) { const m = new THREE.Mesh(new THREE.SphereGeometry(r || 0.16, 16, 12), new THREE.MeshBasicMaterial({ color: color || 0xffffff, transparent: true, depthTest: false })); m.renderOrder = 9; cup.add(m); D.push({ m, get, when }) }
 label('A', () => [-R, 0, 0], atEnd, -1, 0.5, 'hot'); label('B', () => [R, 0, 0], atEnd, 1, -0.4, 'hot'); label('I', () => [0, H, R], atEnd, 0.9, -0.7)
 label('O', () => [0, 0, 0], cons, -0.9, 0.3); label('K', () => [0, 0, R], cons, 0.9, 0.6)
 label('R = 6', () => [0, 0, R / 2], cons, 0, 1.2, 'dim'); label('h = 10', () => [0, H / 2, R], cons, 2.7, 0, 'dim'); label('α', () => [0, 1.25, 2.5], cons, 0, 0, 'hot')
@@ -499,16 +267,6 @@ dot(() => [-R, 0, 0], atEnd, 0xffb547); dot(() => [R, 0, 0], atEnd, 0xffb547); d
 dot(() => [0, 0, 0], cons); dot(() => [0, 0, R], cons)
 dot(() => [Mx(), 0, 0], cutX, 0xfff1d6); dot(() => [Mx(), 0, wX()], cutX, 0xfff1d6); dot(() => [Mx(), wX() * TAN, wX()], cutX, 0xfff1d6)
 dot(() => [0, S.t.y, 0], cutY, 0xfff1d6); dot(() => [0, S.t.y, S.t.y / TAN], cutY, 0xfff1d6)
-const v3 = new THREE.Vector3()
-function placeLabels() {
-  const w = stage.clientWidth, h = stage.clientHeight, rem = REM()
-  for (const it of L) {
-    let on = it.when()
-    if (on) { const p = it.get(); v3.set(p[0], p[1], p[2]); cup.localToWorld(v3); v3.project(camera); on = v3.z < 1
-      if (on) it.el.style.transform = 'translate(' + ((v3.x * 0.5 + 0.5) * w + it.dx * rem).toFixed(1) + 'px,' + ((-v3.y * 0.5 + 0.5) * h + it.dy * rem).toFixed(1) + 'px) translate(-50%,-50%)' }
-    if (on !== it.on) { it.el.style.display = on ? '' : 'none'; it.on = on }
-  }
-}
 
 // ═══ 7. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
 const camL = new THREE.Vector3()
@@ -525,7 +283,6 @@ function syncScene() {
   for (const l of glassLines) l.material.opacity = g
   sliceGroup.visible = S.frozen && st === 4 && up
   slabGroup.visible = S.frozen && st === 5 && up
-  for (const d of D) { const on = d.when() && (S.step !== 4 || up); d.m.visible = on; if (on) { const p = d.get(); d.m.position.set(p[0], p[1], p[2]) } }
   // Đường sinh biên (đổi theo góc nhìn): tiếp tuyến kẻ từ hình chiếu của máy quay tới đường tròn đáy
   camL.copy(camera.position); cup.worldToLocal(camL)
   const rho = Math.hypot(camL.x, camL.z), ok = rho > R * 1.02
@@ -538,8 +295,7 @@ function syncScene() {
 }
 
 // ═══ 8. BẢNG LỜI GIẢI THEO BƯỚC ═══
-const panel = $('#panel')
-const STEPS = ['Đề bài', 'Nghiêng cốc', 'Khối nước', 'Cắt một lát', 'Cộng các lát', 'Tính thể tích']
+const panel = M.panel
 const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
 const AXES = {
   x: { name: 'x', tab: ['Vuông góc AB', 'lát tam giác'], desc: 'Cắt khối nước bằng mặt phẳng vuông góc với <i>AB</i> tại điểm <i>M</i>, với <i>OM</i> = |<i>x</i>|. Lát cắt là <b>tam giác vuông <i>MNP</i></b> (vuông tại <i>N</i>, góc tại <i>M</i> bằng α).' },
@@ -606,7 +362,7 @@ const PANELS = {
     <p class="lbl2">Công thức tổng quát (R, h bất kỳ, chưa thay số)</p>
     <div class="fx"><div id="k61"></div><p class="cap" id="k6d"></p><div id="k62"></div><p class="cap" id="k6c"></p><div class="res" data-d data-tex="V=\frac{2}{3}R^2h"></div></div>
     <button type="button" class="btn" id="bSub"${S.subbed ? ' hidden' : ''}>Thay số R = 6, h = 10 ›</button>
-    <div id="sub6"${S.subbed ? '' : ' hidden'}>
+    <div class="subs" id="sub6"${S.subbed ? '' : ' hidden'}>
       <p class="lbl2">Thay số: R = 6, h = 10</p>
       <div class="fx num"><div class="res" style="border:0;padding:0" data-d data-tex="V=\frac{2}{3}\cdot 6^2\cdot 10=240\ \text{cm}^3"></div></div>
       <p>So với cả cốc (thể tích π<i>R</i>²<i>h</i>), nước chiếm:</p>
@@ -617,11 +373,9 @@ const PANELS = {
       <p class="note">Cắt theo hướng nào cũng ra cùng một công thức: thể tích không phụ thuộc cách cắt (nguyên lý Cavalieri). Khối nêm này có tên riêng là “móng guốc Archimedes”.</p>
     </div>`,
 }
-function renderPanel() {
-  panel.innerHTML = PANELS[S.step](); panel.scrollTop = 0
-  $$('[data-tex]', panel).forEach(el => tex(el, el.dataset.tex, el.hasAttribute('data-d')))
-  $$('.tabs button', panel).forEach(b => b.addEventListener('click', () => { S.axis = b.dataset.ax; renderPanel(); if (S.step !== 6) setView('cat_' + S.axis); if (S.step === 5) playSlabs() }))
-  if (S.step === 1) $('#b1').addEventListener('click', () => goStep(2, { play: true }))
+function bindPanel() {   // khung vừa vẽ PANELS[bước] vào bảng; ở đây gắn sự kiện + điền số
+  $$('.tabs button', panel).forEach(b => b.addEventListener('click', () => { S.axis = b.dataset.ax; M.renderPanel(); if (S.step !== 6) setView('cat_' + S.axis); if (S.step === 5) playSlabs() }))
+  if (S.step === 1) $('#b1').addEventListener('click', () => M.goStep(2, { play: true }))
   if (S.step === 2) {
     $('#b2').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
     $('#s2').addEventListener('input', e => { stopPlay(); S.theta = e.target.value / 1000 * ALPHA; dirty = true })
@@ -644,7 +398,7 @@ function renderPanel() {
     tex($('#k61'), VINT[S.axis], true); tex($('#k62'), VTINH[S.axis], true)
     $('#k6d').textContent = VDOI[S.axis] || ''; $('#k6c').textContent = VCHU[S.axis] || ''
     $('#bSub').addEventListener('click', thaySo)
-    $('#b6').addEventListener('click', () => { S.melted = !S.melted; goStep(6) }); sync6()
+    $('#b6').addEventListener('click', () => { S.melted = !S.melted; M.goStep(6) }); sync6()
   }
 }
 function sync2() {
@@ -690,7 +444,7 @@ function syncSum() {
 function thaySo() {   // bước 6: công thức bằng chữ xong mới thay R = 6, h = 10
   if (S.step !== 6 || S.subbed) return
   S.subbed = true
-  const y = panel.scrollTop; renderPanel(); panel.scrollTop = y; syncChips()
+  M.renderPanel(true); M.syncChips()
   const el = $('#sub6'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
 }
 function sync6() {
@@ -706,7 +460,7 @@ function tiltTo(target, ms, my) {
     if (Math.abs(d) < 1e-5) { S.theta = target; dirty = true; return res() }
     const dur = RM ? 1 : Math.max(280, ms * Math.abs(d) / ALPHA), t0 = clock()
     anims.push(now => {
-      if (my !== token) { res(); return true }
+      if (!M.alive(my)) { res(); return true }
       const k = Math.min(1, (now - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
       S.theta = a + d * e; dirty = true
       if (k >= 1) { res(); return true }
@@ -718,9 +472,9 @@ function startPlay() {
   if (S.step !== 2) return
   if (S.theta >= ALPHA - 1e-3) S.theta = 0
   S.playing = true; dirty = true
-  const my = token, a = S.theta, t0 = clock(), dur = RM ? 1 : 7500 * (ALPHA - a) / ALPHA
+  const my = M.token(), a = S.theta, t0 = clock(), dur = RM ? 1 : 7500 * (ALPHA - a) / ALPHA
   anims.push(now => {
-    if (!S.playing || my !== token) return true
+    if (!S.playing || !M.alive(my)) return true
     const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 1.6)   // chậm dần về cuối để kịp nhìn hai điều kiện cùng xảy ra
     S.theta = a + (ALPHA - a) * e; dirty = true
     if (k >= 1) { S.theta = ALPHA; S.playing = false; return true }
@@ -728,77 +482,29 @@ function startPlay() {
   })
 }
 function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
-async function goStep(n, o) {
-  n = clamp(n | 0, 1, 6); o = o || {}
-  const my = ++token, prev = S.step
-  S.playing = false; S.step = n; if (n !== 6) S.melted = false
+function truocBang(n, prev, o) {   // khung gọi trước khi vẽ bảng: đặt lại trạng thái riêng của bài
+  S.playing = false; if (n !== 6) S.melted = false
   if (prev !== 6 || o.first) S.subbed = !!o.sub   // mỗi lần vào bước 6 lại bắt đầu từ công thức chưa thay số
-  renderPanel(); syncChips()
+}
+async function khiDoiBuoc(n, prev, o, my) {   // khung gọi sau khi vẽ bảng: góc nhìn + hoạt cảnh chuyển bước
   $('#vDef').textContent = n <= 2 ? 'Góc ban đầu' : 'Góc nhìn sách'; $('#vCup').hidden = n <= 2
   if ((prev <= 2) !== (n <= 2) || o.first) setView('mac_dinh', o.first)
   // Nước lỏng ↔ nêm đông cứng chỉ đổi cho nhau ở đúng góc α (lúc đó hai hình trùng khít), nên luôn đi qua α.
   const wantFrozen = n >= 3 && !S.melted
   if (o.first) { S.frozen = wantFrozen; S.theta = 0; dirty = true; if (n === 5) playSlabs(); return }
-  if (wantFrozen) { if (!S.frozen) { await tiltTo(ALPHA, 800, my); if (my !== token) return; S.frozen = true; dirty = true } await tiltTo(0, 1100, my); if (n === 5 && my === token) playSlabs() }
+  if (wantFrozen) { if (!S.frozen) { await tiltTo(ALPHA, 800, my); if (!M.alive(my)) return; S.frozen = true; dirty = true } await tiltTo(0, 1100, my); if (n === 5 && M.alive(my)) playSlabs() }
   else {
-    if (S.frozen) { await tiltTo(ALPHA, 800, my); if (my !== token) return; S.frozen = false; dirty = true }
+    if (S.frozen) { await tiltTo(ALPHA, 800, my); if (!M.alive(my)) return; S.frozen = false; dirty = true }
     if (n !== 2) await tiltTo(0, 1100, my)
-    else if (o.play) startPlay()
+    else if (o.play || o.next) startPlay()   // bấm "Nghiêng cốc" hoặc nút Tiếp từ bước 1 thì tự chạy
   }
 }
-function syncChips() {
-  $$('#chips .chip').forEach((c, i) => { c.classList.toggle('done', i + 1 < S.step); if (i + 1 === S.step) c.setAttribute('aria-current', 'step'); else c.removeAttribute('aria-current') })
-  const cho = S.step === 6 && !S.subbed   // ở bước cuối, nút Tiếp (và phím →) dùng để thay số
-  $('#prev').disabled = S.step === 1; $('#next').disabled = S.step === 6 && S.subbed; $('#next').textContent = cho ? 'Thay số ›' : 'Tiếp ›'
-}
-$('#chips').innerHTML = STEPS.map((s, i) => '<li><button type="button" class="chip" data-step="' + (i + 1) + '"><span class="no">' + (i + 1) + '</span><span class="tx">' + s + '</span></button></li>').join('')
-$$('#chips .chip').forEach(c => c.addEventListener('click', () => goStep(+c.dataset.step)))
-$('#prev').addEventListener('click', () => goStep(S.step - 1))
-const tiep = () => (S.step === 6 ? thaySo() : goStep(S.step + 1, { play: S.step === 1 }))
-$('#next').addEventListener('click', tiep)
-$$('.views button[data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)))
+M.views.insertAdjacentHTML('beforeend', '<button type="button" id="vCup" aria-pressed="true" hidden>Hiện cốc</button>')
 $('#vCup').addEventListener('click', e => { S.showCup = !S.showCup; e.currentTarget.setAttribute('aria-pressed', S.showCup); e.currentTarget.textContent = S.showCup ? 'Hiện cốc' : 'Ẩn cốc' })
-addEventListener('keydown', e => {   // bút trình chiếu gửi PageUp/PageDown
-  if (e.target.matches && e.target.matches('input')) return
-  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); tiep() }
-  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goStep(S.step - 1) }
-  else if (e.key === ' ' && S.step === 2) { e.preventDefault(); S.playing ? stopPlay() : startPlay() }
-})
 
-// ═══ 10. VÒNG LẶP ═══
-function resize() {
-  const w = stage.clientWidth || 1, h = stage.clientHeight || 1, zoom = goal.dist / baseDist
-  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix()
-  for (const m of lineMats) m.resolution.set(w, h)
-  baseDist = fitDist(CTX[ctxName()].r); goal.dist = baseDist * zoom
-}
-new ResizeObserver(resize).observe(stage)
-let last = clock()
-function tick(now) {
-  const dt = clamp((now - last) / 1000, 0, 0.05); last = now
-  for (let i = anims.length - 1; i >= 0; i--) if (anims[i](now)) anims.splice(i, 1)
-  const k = RM ? 1 : 1 - Math.exp(-dt * 8)
-  for (const key in view) view[key] += (goal[key] - view[key]) * k
-  placeCamera()
-  if (dirty) { dirty = false; pivot.rotation.x = S.theta; updateWater(); sync2() }
-  scene.updateMatrixWorld(); syncScene()
-  renderer.render(scene, camera)
-  placeLabels()
-}
-function loop(now) { requestAnimationFrame(loop); tick(now + skew) }
-
-// Mở thẳng một bước để soát: ?buoc=4&huong=y&n=16 · ?buoc=6&thay=1 (đã thay số)
-{ const q = new URLSearchParams(location.search), ax = q.get('huong'), n = +q.get('n')
-  if (AX[ax] !== undefined) S.axis = ax
-  if ([4, 8, 16, 32, 64].includes(n)) S.n = n
-  resize()
-  goStep(+q.get('buoc') || 1, { first: true, sub: q.get('thay') === '1' })
-  requestAnimationFrame(loop) }
-
-// Soát bằng máy: chụp canvas gửi về server dev (scripts/serve-games.mjs nhận POST /_snap)
-window.__dbg = { S, W, goStep, setView, view, goal, area, level, fat: FAT,
-  run(ms) { const b = clock(); for (let t = 16; t <= ms; t += 16) tick(b + t); skew += ms },   // tua nhanh ms mili-giây (pane ẩn thì rAF không chạy)
-  snap(name) { tick(clock()); return fetch('/_snap?name=' + (name || 'the-tich'), { method: 'POST', body: cv.toDataURL('image/jpeg', 0.9) }).then(r => r.text()) } }
+// ═══ 10. CHẠY ═══
+M.start()
+Object.assign(window.__dbg, { S, W, area, level })
 })()
 </script>
 </body>
