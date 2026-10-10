@@ -103,8 +103,8 @@ export function khoaToan(c) {
   if (k.kieu === 'gia_tri') { const g = Object.entries(k.gan).sort().map(([a, b]) => `${a}=${khoaChu(b)}`).join(';'); return { manh: vanTay(k.bieu_thuc).slice(-1).map((v) => `gt|${v}|${g}`), yeu: [] } }
   return { manh: [], yeu: [] }
 }
-/** khoá BÀI từ mã nguồn: "D1.50a@p18" ⇒ "D1.50" (ghép thêm tên sách ở nơi gọi) */
-export const baiTuMa = (ma) => { const m = String(ma ?? '').match(/^([A-Z]+\d*\.\d+)/); return m ? m[1] : null }
+/** khoá BÀI từ mã nguồn: "D1.50a@p18" ⇒ "D1.50" · "T2V4b.1a@p21" ⇒ "T2V4b.1" (khu có thể lẫn chữ và số — quyển TVA; ghép thêm tên sách ở nơi gọi) */
+export const baiTuMa = (ma) => { const m = String(ma ?? '').match(/^([A-Z][A-Za-z0-9]*\.\d+)/); return m ? m[1] : null }
 const khoaDapAn = (s) => { const t = khoaChu(String(s ?? '')); return t.includes('=') && !t.includes('\\{') ? t.slice(t.lastIndexOf('=') + 1) : t }   // "$P=2$" và "$2$" là một đáp án
 /** khuôn theo CÔNG THỨC (bỏ lời văn): hai đề diễn đạt khác nhau nhưng cùng các công thức sau khi thay số bằng # — chỉ lập khi đủ dài để không bắt nhầm bài luyện ngắn */
 export function khoaCongThuc(s) {

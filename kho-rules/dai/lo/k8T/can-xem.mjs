@@ -19,12 +19,13 @@ import pg from 'pg'
 const DIR = dirname(fileURLToPath(import.meta.url)), GOC = join(DIR, '..', '..', '..', '..')
 const PDF = 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/Chuyên đề bồi dưỡng HSG Toán 8-NĐT.pdf'
 const SACH = 'CĐ BD HSG Toán 8 – Nguyễn Đức Tấn'
+const PDF_TVA = 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/Bồi Dưỡng Học Sinh Giỏi Toán Đại Số 8 - Trần Thị Vân Anh.pdf'   // trang 1240 × 1754 ở 150 dpi
 const tam = process.env.K8T_XEM_TAM ?? mkdtempSync(join(tmpdir(), 'k8t-xem-'))
 let soAnh = 0
 /** cắt một dải ngang của trang PDF ⇒ data URI */
-function cat(trang, y, cao) {
+function cat(trang, y, cao, pdf = PDF, rong = 900) {
   const ra = join(tam, `a${++soAnh}`)
-  execFileSync('pdftoppm', ['-r', '150', '-gray', '-f', String(trang), '-l', String(trang), '-x', '0', '-y', String(y), '-W', '900', '-H', String(cao), '-png', '-singlefile', PDF, ra])
+  execFileSync('pdftoppm', ['-r', '150', '-gray', '-f', String(trang), '-l', String(trang), '-x', '0', '-y', String(y), '-W', String(rong), '-H', String(cao), '-png', '-singlefile', pdf, ra])
   return `data:image/png;base64,${readFileSync(ra + '.png').toString('base64')}`
 }
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -34,16 +35,17 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
 const { rows: cauDb } = await db.query(`select ma_cau, noi_dung, dap_an, loi_giai, ten_de_goc, dang_chinh, da_duyet from dai_cau_hoi where xoa_at is null and left(dang_chinh, 4) = 'T18T'`)
 const { rows: nhomDb } = await db.query(`select ma_dang, ten_chuyen_de, ten_dang from dai_ban_do where khoi = '8T'`)
 await db.end()
-const theoNguon = Object.fromEntries(cauDb.filter((r) => r.ten_de_goc?.startsWith(SACH)).map((r) => [r.ten_de_goc.slice(SACH.length + 3), r]))
+// khoá = mã nguồn sau dấu ' · ' cuối (mã không trùng giữa các quyển: D1.…, PA.…, C3.… của NĐT; T1V.…, T1B.… của TVA)
+const theoNguon = Object.fromEntries(cauDb.filter((r) => r.ten_de_goc?.includes(' · ')).map((r) => [r.ten_de_goc.slice(r.ten_de_goc.lastIndexOf(' · ') + 3), r]))
 const theoMa = Object.fromEntries(cauDb.map((r) => [r.ma_cau, r]))
 const tenNhom = Object.fromEntries(nhomDb.map((r) => [r.ma_dang, `${r.ten_chuyen_de} › ${r.ten_dang}`]))
 
@@ -54,6 +56,7 @@ function trongKho(ma, { loiGiai = true } = {}) {
   return `<div class="kho"><div class="ma"><code>${r.ma_cau}</code> · ${r.da_duyet ? 'đã duyệt' : 'chưa duyệt'} · ${esc(tenNhom[r.dang_chinh] ?? r.dang_chinh)}</div>${doan(r.noi_dung)}<p class="da">Đáp án: ${dong(r.dap_an ?? '')}</p>${loiGiai && r.loi_giai ? `<details><summary>Lời giải đang để trong kho</summary><div class="lg">${doan(r.loi_giai)}</div></details>` : ''}</div>`
 }
 const khoMa = (maCau) => { const r = theoMa[maCau]; return r ? `<div class="kho"><div class="ma"><code>${r.ma_cau}</code> · ${r.da_duyet ? 'đã duyệt' : 'chưa duyệt'} · ${esc(tenNhom[r.dang_chinh] ?? r.dang_chinh)}</div>${doan(r.noi_dung)}<p class="da">Đáp án: ${dong(r.dap_an ?? '')}</p></div>` : '' }
+const anhT = (trang, y, cao, chu) => `<figure><img alt="${esc(chu)}" src="${cat(trang, y, cao, PDF_TVA, 1240)}"><figcaption>${esc(chu)} · Trần Thị Vân Anh, trang PDF ${trang}</figcaption></figure>`
 const anh = (trang, y, cao, chu) => `<figure><img alt="${esc(chu)}" src="${cat(trang, y, cao)}"><figcaption>${esc(chu)} · trang PDF ${trang}</figcaption></figure>`
 
 // ── các thẻ ──────────────────────────────────────────────────────────────────
@@ -276,6 +279,26 @@ E.push(
 const GHI_CHU_LO7 = `<p class="dan">Lô 7 (phụ lục C — 10 đề rèn luyện): chỉ nhập bài Đại số, số học, tổ hợp; bài 4 và bài 5 của mỗi đề là hình, để lại cho nhánh Hình. Sách in lại nhiều bài cũ, tôi không nhập lần hai: Đề 1 bài 1 a, 1 b, 2 a, 3 a, 6 a (phụ lục A bài 2, 14, 5, 16) · Đề 3 bài 3 (phụ lục A bài 31), bài 6 b (chương III bài 73) · Đề 4 bài 3 a (chương I bài 37), bài 6 a (chương II bài 51 c) · Đề 8 bài 1 c (ôn tập cuối năm bài 6 c) · Đề 9 bài 3 a (chương IV bài 10 e) · Đề 10 bài 3 (phụ lục A bài 32). Đề 4 bài 1 b hỏi "tính ${toan('M')}" trong khi kho đã có bản "chứng minh ${toan('M=0')}" (chương II bài 31 b): khác yêu cầu nên giữ.</p>
 <p class="dan">Lỗi in khác của sách ở phụ lục C, kho ghi theo bản đúng: Đề 1 bài 6 b (in "12 đợt", đúng là 12 đội) · Đề 2 bài 2 b (đề in ${toan('S^2')}, lời giải tính ${toan('S')}) · Đề 9 bài 2 a (cách 2 kết luận dư 1987 trong khi phép chia ra 2002) · và các lỗi trong lời giải ở Đề 2 bài 3 a, Đề 3 bài 2 a, 6 a, Đề 4 bài 2 a, Đề 5 bài 2 b, 3 b, Đề 6 bài 1 a, 2 b, 6 b, Đề 7 bài 2 b, 3 a, 3 b, Đề 8 bài 3 a, 3 b, Đề 9 bài 1 a, Đề 10 bài 2 a, 2 b. Sách lập luận chưa đủ, kho bổ sung: Đề 5 bài 6 b (chứng minh số trung điểm ít nhất là ${toan('4029')} cho vị trí bất kì), Đề 6 bài 6 a (so sánh ${toan('1{,}025^9')}, ${toan('1{,}025^{10}')} với ${toan('1{,}28')}), Đề 9 bài 6 b, Đề 10 bài 6 b. Đề 6 bài 6 b: đề in "mỗi người ngồi giữa hai người quen nhau", kho hiểu theo lời giải của sách là mỗi người quen cả hai người ngồi cạnh.</p>`
 
+// ── LÔ 8 (TVA §1 — Chia đa thức: 9 ví dụ + 22 bài tập) ─────────────────────
+const lechT = (ma, hinh, nghieng) => the(`Trần Thị Vân Anh, ${/^T\d+V/.test(ma) ? 'ví dụ' : 'bài tập'} ${bai[ma]?.bai}${bai[ma]?.y ? ' ý ' + bai[ma].y : ''} (§${ma.match(/^T(\d+)/)?.[1]}) — hai lượt gán nhóm lệch nhau`, hinh + muc('Trong kho', trongKho(ma))
+  + muc('Lượt soạn chọn', `<p>${esc(tenN(lo[ma]?.nhom_soan))}</p>`) + muc('Lượt gán độc lập chọn', `<p>${esc(tenN(mu[ma]?.dang))}${mu[ma]?.ly_do ? ` <span class="mo">— ${esc(mu[ma].ly_do)}</span>` : ''}</p>`), nghieng)
+E.push(
+  lechT('T1B.1n5@p12', anhT(12, 165, 260, '§1 bài tập 1, đề (năm ý)') + anhT(14, 195, 420, '§1 bài tập 1, hướng dẫn của sách'),
+    'Chọn nhóm nào? Bốn ý đầu của bài là rút gọn luỹ thừa số (hai lượt đều xếp "Kiến thức cơ bản › Nhân, chia đa thức"); ý 5 cùng kiểu nhưng có chữ. Tôi nghiêng về **Kiến thức cơ bản › Nhân, chia đa thức** cho cả bài.'),
+  lechT('T1B.9a@p12', anhT(12, 1055, 140, '§1 bài tập 9, đề (mép trang mất chữ "x" ở ý a)') + anhT(15, 220, 210, '§1 bài tập 9, hướng dẫn của sách'),
+    'Chọn nhóm nào (cho cả ý a và ý b)? Bài bảo "không làm phép chia", tức là tính số dư bằng định lí Bê-du; ý b ra dư $-60$. Tôi nghiêng về **Đa thức và phép chia › Tìm dư: định lí Bê-du, sơ đồ Hoóc-ne**.'),
+  lechT('T1B.9b@p12', '', 'Cùng bài 9, ảnh sách ở thẻ ngay trên. Tôi nghiêng về **Đa thức và phép chia › Tìm dư: định lí Bê-du, sơ đồ Hoóc-ne**.'),
+)
+F.push(
+  the('Trần Thị Vân Anh §1, bài tập 8 — đề sách in thiếu số mũ', anhT(12, 955, 100, '§1 bài tập 8, đề') + anhT(15, 175, 55, '§1 bài tập 8, hướng dẫn của sách')
+    + muc('Vấn đề', doan('Đề in $2n-3n^2+n+3$ (tôi đã phóng to: không có số mũ ở $2n$). Hai hạng tử $2n$ và $n$ để rời cho thấy sách in mất số mũ: $2n^3-3n^2+n+3=(n^2-n)(2n-1)+3$. Hướng dẫn của sách ("$n^2-n$ phải là ước của $3$") đúng với cả hai bản.')) + muc('Trong kho', trongKho('T1B.8@p12')),
+    'Kho ghi $2n^3-3n^2+n+3$. Đây là chỗ tôi suy ra, không có bản in thứ hai để đối chiếu; chị muốn giữ đúng như sách in thì bảo.', 'bao'),
+  the('Trần Thị Vân Anh §1, bài tập 15 — đáp số của sách thừa một giá trị', anhT(13, 315, 100, '§1 bài tập 15, đề') + anhT(16, 122, 50, '§1 bài tập 15, đáp số của sách')
+    + muc('Vấn đề', doan('Đề hỏi **số tự nhiên** $n$; sách ghi đáp số $5;\\ 3;\\ 27;\\ -19$.')) + muc('Trong kho', trongKho('T1B.15@p13')),
+    'Kho loại $-19$, đáp án $\\{3;5;27\\}$.', 'bao'),
+)
+const GHI_CHU_LO8 = `<p class="dan">Lô 8 — quyển thứ hai, Bồi dưỡng HSG Toán Đại số 8 của Trần Thị Vân Anh, §1 Chia đa thức (51 câu). Quyển này có ví dụ kèm lời giải đầy đủ: tôi nhập mỗi ví dụ thành một câu như bài tập. Bài tập lấy lời giải ở phần "Hướng dẫn và đáp số" cuối chuyên đề; chỗ sách chỉ ghi đáp số thì kho soạn đủ lời giải. Sách không chia tầng cơ bản / nâng cao nên nhóm do hai lượt gán quyết định; 10 câu chia đa thức đặt tính và rút gọn luỹ thừa vào "Kiến thức cơ bản › Nhân, chia đa thức". Bản scan mất 1–2 chữ ở mép trái: bài tập 1 ý 3 (mẫu in ".8", kho ghi ${toan('3^8')} — chỉ bản này khớp đáp số ${toan('\\dfrac{1}{15}')} của sách), bài 9 a, 11 a (kho ghi ${toan('x-2')}, ${toan('x-1')} theo hướng dẫn). Bài tập 22 ý b, c không nhập (đề bị che / không in đề, và trùng bài 2, bài 3).</p>`
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -306,18 +329,19 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau bảy lô (quyển Chuyên đề bồi dưỡng HSG Toán 8 của Nguyễn Đức Tấn: trọn phần Đại — bốn chương, ôn tập cuối năm, phụ lục A và 10 đề rèn luyện của phụ lục C): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–7: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<p class="dan">Kho Đại 8T sau tám lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8: §1 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–8: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
 <h2 id="e">Cần chị quyết — ${cauDb.filter((r) => !r.da_duyet).length} câu chưa duyệt, ${E.length} thẻ</h2>
-<p class="dan">Hai mươi sáu câu đang ở "Chưa phân dạng": 22 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Câu còn lại (bài 48 b chương IV) là đề sách in sai. Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), rồi lô 7 (phụ lục C) ở cuối.</p>
+<p class="dan">Hai mươi chín câu đang ở "Chưa phân dạng": 25 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Câu còn lại (bài 48 b chương IV) là đề sách in sai. Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8 (quyển Trần Thị Vân Anh) ở cuối.</p>
 ${E.join('\n')}
-<h2 id="f">Lô 3, 4, 5, 6, 7 — đã làm, chị xem</h2>
+<h2 id="f">Lô 3 đến lô 8 — đã làm, chị xem</h2>
 <p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu), lô 4 (chương III — 93 câu), lô 5 (chương IV — 130 câu) lô 6 (ôn tập cuối năm phần Đại, phụ lục A — 79 câu) và lô 7 (phụ lục C — 70 câu; các thẻ của lô 7 ở cuối mục). Hai câu trước đây tôi để chờ chị (bài 73 chương III, bài 31 phụ lục A) nay đã duyệt vì phụ lục C in lại đúng bản kho đang ghi — thẻ của hai bài này có thêm ảnh đó. Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
 ${F.join('\n')}
 ${GHI_CHU_LO4}
 ${GHI_CHU_LO5}
 ${GHI_CHU_LO6}
 ${GHI_CHU_LO7}
+${GHI_CHU_LO8}
 <p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
 <p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
 <p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>

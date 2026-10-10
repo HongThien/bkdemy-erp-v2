@@ -26,3 +26,19 @@ Lưu ý chung:
 14. (lô 6) Bài cuối của khu được giao mà lời giải (hoặc các ý còn lại) tràn sang trang không có ảnh ⇒ KHÔNG tự soạn rồi để `muc_loi_giai_sach: khong`; báo ngay trong báo cáo "thiếu ảnh trang N" để người giao dựng thêm trang. (Người giao: trước khi giao, dựng dư một trang sau trang cuối của khu.)
 15. (lô 7) Phần "đề rèn luyện / đề thi" của một quyển: chỉ chép bài của nhánh được giao (Đại hay Hình); ý nào trùng đề đã có trong tệp `<lô trước>.de.json` thì không chép và ghi cặp mã trùng vào báo cáo. Bài gộp hai ý mà MỘT ý trùng ⇒ vẫn chép cả bài, ghi `ghi_chu_nghi` — người soát cắt ý trùng.
 16. (lô 7) Trạm chép KHÔNG tự sửa đề theo lời giải rồi im lặng: sửa thì `ghi_chu_nghi` phải nêu nguyên văn chỗ sách in và lí do (người soát sẽ mở ảnh — lô 7 phát hiện thêm một chỗ trạm không báo: Đề 2 bài 2a, dấu "=" in nhầm cho dấu "+").
+
+## Riêng quyển TVA (Bồi dưỡng HSG Toán Đại số 8 — Trần Thị Vân Anh) — quy ước đặt ở lô 8 (10/10)
+
+Sách chia 10 chuyên đề "§"; mỗi § gồm **Các ví dụ minh họa** (có lời giải đủ, thường chia theo "Dạng k", số ví dụ đánh LẠI từ 1 trong mỗi dạng) → **Bài tập vận dụng** (đánh số liên tục trong §) → **Hướng dẫn và đáp số** ở cuối § (đánh theo số bài tập). Tên sách ghi vào kho: `BD HSG Toán 8 Đại số – Trần Thị Vân Anh`. Ảnh: `C:\Users\WBPC\bk-kho-lam-viec\sach\8T\TVA\trang\p-NNN.png` (150 dpi).
+
+- **Khu và mã câu** (khoá tự nhiên — số ví dụ lặp lại giữa các dạng nên dạng phải nằm trong khu):
+  - bài tập vận dụng của §n: khu `T<n>B` ⇒ `T1B.5a@p12`;
+  - ví dụ của § không chia dạng: khu `T<n>V` ⇒ `T1V.3@p7`; ví dụ của Dạng k: khu `T<n>V<k>` ⇒ `T2V3.1a@p19`; dạng chia nhóm a./b./c. mà mỗi nhóm đánh lại số ví dụ: `T2V4b.1@p21`;
+  - ý đánh bằng SỐ (1., 2., 3.…) thay cho chữ ⇒ viết `n<số>` sau số bài: `T1B.1n3@p12` (dòng `y: 3`); ý chữ trong ý chữ như cũ (`a1`, `b2`).
+  - `@p` = trang PDF nơi ĐỀ được in (với bài tập: trang của phần "Bài tập vận dụng", không phải trang hướng dẫn).
+- **Tầng:** sách không có tầng "cơ bản" ⇒ mọi câu ghi `tang: nang_cao`; nhóm do hai lượt gán quyết định.
+- **Ví dụ là câu:** mỗi ví dụ (mỗi ý độc lập của ví dụ) là một câu như bài tập; `## SACH` chép lời giải của ví dụ — có nhiều "Cách" thì chép đủ. Lời "Nhận xét" của sách sau ví dụ: chép vào cuối `## SACH` sau dòng `Nhận xét:`.
+- **Bài tập:** `## SACH` chép từ "Hướng dẫn và đáp số". Chỉ có đáp số ⇒ `muc_loi_giai_sach: dap_so`; "Tương tự bài …" / một dòng gợi ý ⇒ `tat`; giải từng bước ⇒ `du`. Bài KHÔNG có trong phần hướng dẫn (và các "bài tập tự giải" không đáp số ở §5, §10) ⇒ KHÔNG chép, ghi vào báo cáo.
+- **Mép trái trang bị mất 1–2 chữ cái** (và logo che góc dưới trái): chữ thường thì tự bù theo ngữ cảnh; nếu chỗ mất là một phần CÔNG THỨC (vd ý "a) x − 2" chỉ còn ": − 2") thì dựng lại theo lời giải / hướng dẫn và ghi `ghi_chu_nghi: mép trang mất …, dựng lại theo …`. Không dựng lại được ⇒ không chép câu đó, báo.
+- **Thiếu trang sách 32–33** (trong §2): bài mất đề hoặc mất lời giải ⇒ không chép, báo.
+- **Trùng với quyển NĐT đã nhập:** không cần tự dò — máy lọc trùng và người soát sẽ làm; cứ chép đủ.

@@ -1,0 +1,1140 @@
+[
+ {
+  "ma_nguon": "T1V.1@p6",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hệ số $a$ để đa thức $x^3-3x+a$ chia hết cho $(x-1)^2$.",
+  "noi_dung_sach": "Xác định hệ số $a$ để đa thức $x^3-3x+a$ chia hết cho $(x-1)^2$.",
+  "dap_an": "$a=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $(x-1)^2$ có nghiệm $x=1$, nên nếu chia hết thì thay $x=1$ vào đẳng thức chia hết là vế phải triệt tiêu và còn lại một phương trình theo $a$; thay một giá trị chỉ cho điều kiện cần nên phải thử lại.\n\n**Bước 1.** Viết điều kiện chia hết thành đẳng thức $x^3-3x+a=(x-1)^2Q(x)$ đúng với mọi $x$, trong đó $Q(x)$ là một đa thức nào đó.\n\n**Bước 2.** Thay $x=1$ để vế phải bằng $0$, từ đó suy ra giá trị của $a$ mà phép chia hết buộc phải có.\n\n**Bước 3.** Thử lại với giá trị $a$ vừa tìm bằng cách phân tích đa thức thành nhân tử và chỉ ra nhân tử $(x-1)^2$, để chắc chắn phép chia thật sự hết.\n\n**Chú ý:** Chia đặt tính $x^3-3x+a$ cho $x^2-2x+1$ được thương $x+2$ và dư $a-2$; cho dư bằng $0$ thì không cần thử lại.\n\n**Phần 2. Trình bày**\n\nGiả sử $x^3-3x+a=(x-1)^2Q(x)$ với mọi $x$.\n\nThay $x=1$: $1-3+a=0$, suy ra $a=2$.\n\nThử lại: với $a=2$ ta có $x^3-3x+2=x^3-x-2x+2$\n\n$=x(x-1)(x+1)-2(x-1)$\n\n$=(x-1)(x^2+x-2)$\n\n$=(x-1)^2(x+2)$ nên chia hết cho $(x-1)^2$.\n\nVậy $a=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "trị số riêng",
+   "đồng nhất đa thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 6): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.2a@p7",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax^2+b$ chia hết cho $x^2-x+1$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax^2+b$ chia hết cho $x^2-x+1$.",
+  "dap_an": "$(a;b)=(1;1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức bậc bốn chia hết cho đa thức bậc hai thì thương là tam thức bậc hai biết hệ số cao nhất và hệ số tự do, chỉ còn một hệ số chưa biết; nhân ra và đồng nhất hệ số với số bị chia (số bị chia thiếu các hạng tử $x^3$ và $x$) là tìm được hết.\n\n**Bước 1.** Xác định dạng của thương: bậc $4-2=2$, hệ số bậc cao nhất là $1$ và hệ số tự do là $b$ vì số chia có hệ số tự do bằng $1$.\n\n**Bước 2.** Nhân thương với số chia, gom các hạng tử đồng dạng rồi so sánh từng hệ số với đa thức $x^4+0x^3+ax^2+0x+b$.\n\n**Bước 3.** Giải hệ ba phương trình thu được, bắt đầu từ phương trình đơn giản nhất, để tìm hệ số còn thiếu của thương rồi tìm $a$ và $b$.\n\n**Chú ý:** Có thể đặt tính chia, được dư là $(a-1)x+(b-a)$, rồi cho dư đồng nhất bằng $0$; cho kết quả như nhau.\n\n**Phần 2. Trình bày**\n\nVì $x^4+ax^2+b$ chia hết cho $x^2-x+1$ nên thương có bậc hai, hệ số bậc cao nhất bằng $1$ và hệ số tự do bằng $b$; đặt thương là $x^2+cx+b$.\n\nKhi đó với mọi $x$:\n\n$x^4+ax^2+b=(x^2-x+1)(x^2+cx+b)$\n\n$=x^4+(c-1)x^3+(b-c+1)x^2+(c-b)x+b$.\n\nĐồng nhất hệ số: $c-1=0$; $b-c+1=a$; $c-b=0$.\n\nTừ đó $c=1$, $b=c=1$, $a=b-c+1=1$.\n\nVậy $a=b=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ số bất định",
+   "đồng nhất đa thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 7): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.2b@p7",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $ax^3+bx^2+5x-50$ chia hết cho $x^2+3x-10$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $ax^3+bx^2+5x-50$ chia hết cho $x^2+3x-10$.",
+  "dap_an": "$(a;b)=(1;8)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2+3x-10$ phân tích được thành $(x+5)(x-2)$ có hai nghiệm dễ thấy, nên đa thức bị chia phải triệt tiêu tại hai nghiệm đó; mỗi nghiệm cho một phương trình bậc nhất theo $a,b$.\n\n**Bước 1.** Phân tích số chia thành nhân tử để thấy hai nghiệm $x=-5$ và $x=2$, rồi viết đa thức bị chia dưới dạng tích của số chia với một thương $Q(x)$.\n\n**Bước 2.** Thay lần lượt hai giá trị của $x$ vào đẳng thức đó cho vế phải bằng $0$, được hệ hai phương trình bậc nhất hai ẩn $a,b$.\n\n**Bước 3.** Giải hệ để tìm $a$ và $b$, rồi thử lại bằng cách nhân số chia với một nhị thức bậc nhất thích hợp cho ra đúng đa thức bị chia.\n\n**Chú ý:** Hai điều kiện từ hai nghiệm chỉ là điều kiện cần, nên phải thử lại; hoặc đồng nhất hệ số với tích $(x^2+3x-10)(ax+5)$ (thương có hệ số cao nhất $a$ và hệ số tự do $-50:(-10)=5$).\n\n**Phần 2. Trình bày**\n\nTa có $x^2+3x-10=(x+5)(x-2)$.\n\nVì $ax^3+bx^2+5x-50$ chia hết cho $(x+5)(x-2)$ nên $ax^3+bx^2+5x-50=(x+5)(x-2)Q(x)$ với mọi $x$.\n\nThay $x=-5$: $-125a+25b-25-50=0$, tức là $-5a+b=3$.\n\nThay $x=2$: $8a+4b+10-50=0$, tức là $2a+b=10$.\n\nTrừ hai phương trình theo vế: $7a=7$, suy ra $a=1$ và $b=8$.\n\nThử lại: $x^3+8x^2+5x-50=(x^2+3x-10)(x+5)$ nên phép chia hết.\n\nVậy $a=1$, $b=8$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "trị số riêng",
+   "phân tích số chia thành nhân tử",
+   "đồng nhất đa thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 7): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.3@p7",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các hằng số $a$ và $b$ sao cho $x^3+ax+b$ chia cho $x+1$ thì dư $7$, chia cho $x-3$ thì dư $-5$.",
+  "noi_dung_sach": "Tìm các hằng số $a$ và $b$ sao cho $x^3+ax+b$ chia cho $x+1$ thì dư $7$, chia cho $x-3$ thì dư $-5$.",
+  "dap_an": "$(a;b)=(-10;-2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dư của phép chia cho nhị thức $x-c$ chính là giá trị của đa thức tại $x=c$ (định lí Bê-du), nên mỗi dữ kiện về số dư cho ngay một phương trình bậc nhất theo $a,b$.\n\n**Bước 1.** Gọi $P(x)=x^3+ax+b$ và đổi mỗi dữ kiện thành giá trị của $P$: chia cho $x+1=x-(-1)$ dư $7$ nghĩa là $P(-1)=7$, và dữ kiện còn lại cho $P(3)$.\n\n**Bước 2.** Tính $P(-1)$ và $P(3)$ theo $a,b$ rồi viết thành hai phương trình bậc nhất hai ẩn.\n\n**Bước 3.** Giải hệ phương trình bằng cách trừ theo vế để tìm $a$, sau đó thay vào một phương trình để tìm $b$.\n\n**Chú ý:** Nhớ $x+1=x-(-1)$ nên phải thay $x=-1$, không phải $x=1$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=x^3+ax+b$.\n\nTheo định lí Bê-du:\n\n$P(-1)=7\\Rightarrow-1-a+b=7\\Rightarrow-a+b=8$ (1)\n\n$P(3)=-5\\Rightarrow27+3a+b=-5\\Rightarrow3a+b=-32$ (2)\n\nLấy (2) trừ (1) theo vế: $4a=-40$, suy ra $a=-10$.\n\nThay vào (1): $b=8+a=-2$.\n\nVậy $a=-10$, $b=-2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 7): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.4@p7",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các hằng số $a,b,c$ sao cho $ax^3+bx^2+c$ chia hết cho $x+2$, chia cho $x^2-1$ thì dư $x+5$.",
+  "noi_dung_sach": "Tìm các hằng số $a,b,c$ sao cho $ax^3+bx^2+c$ chia hết cho $x+2$, chia cho $x^2-1$ thì dư $x+5$.",
+  "dap_an": "$(a;b;c)=(1;1;4)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai dữ kiện đều là điều kiện về giá trị của đa thức tại các nghiệm của số chia ($x=-2$; $x=1$ và $x=-1$ vì $x^2-1=(x-1)(x+1)$), nên thay các giá trị đó vào đẳng thức chia có dư là ra hệ ba phương trình bậc nhất.\n\n**Bước 1.** Từ điều kiện chia hết cho $x+2$ suy ra đa thức triệt tiêu tại $x=-2$, được phương trình thứ nhất.\n\n**Bước 2.** Viết điều kiện chia cho $x^2-1$ dư $x+5$ thành đẳng thức có thương $Q(x)$, rồi thay $x=1$ và $x=-1$ để thương biến mất, được hai phương trình nữa.\n\n**Bước 3.** Trừ hai phương trình vừa có để tìm $a$ trước, rồi thay vào phương trình còn lại để tìm $b$ và $c$.\n\n**Bước 4.** Thử lại với bộ ba giá trị tìm được để chắc chắn cả hai điều kiện đều thoả mãn.\n\n**Chú ý:** Dư của phép chia cho đa thức bậc hai có bậc không quá $1$, nên $x+5$ là dư hợp lệ; việc thay $x=1,-1$ chỉ cho điều kiện cần nên bước thử lại không được bỏ.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=ax^3+bx^2+c$.\n\n$P(x)$ chia hết cho $x+2$ nên $P(-2)=0$, tức là $-8a+4b+c=0$ (1)\n\n$P(x)$ chia cho $x^2-1$ dư $x+5$ nên $P(x)=(x-1)(x+1)Q(x)+x+5$ với mọi $x$.\n\nThay $x=1$: $a+b+c=6$ (2)\n\nThay $x=-1$: $-a+b+c=4$ (3)\n\nLấy (2) trừ (3): $2a=2$, suy ra $a=1$ và $b+c=5$, tức là $c=5-b$.\n\nThay vào (1): $-8+4b+5-b=0$, suy ra $b=1$ và $c=4$.\n\nThử lại: $x^3+x^2+4=(x+2)(x^2-x+2)$ và $x^3+x^2+4-(x+5)=x^3+x^2-x-1=(x+1)(x^2-1)$.\n\nVậy $a=1$, $b=1$, $c=4$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 7): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.5@p8",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Đa thức $P(x)$ chia cho $x-1$ được số dư bằng $4$, chia cho $x-3$ được số dư bằng $14$. Tìm số dư của phép chia $P(x)$ cho $(x-1)(x-3)$.",
+  "noi_dung_sach": "Đa thức $P(x)$ chia cho $x-1$ được số dư bằng $4$, chia cho $x-3$ được số dư bằng $14$. Tìm số dư của phép chia $P(x)$ cho $(x-1)(x-3)$.",
+  "dap_an": "$5x-1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $(x-1)(x-3)$ bậc hai nên dư có dạng $ax+b$; hai dữ kiện về số dư khi chia cho $x-1$ và $x-3$ chính là giá trị của $P$ tại $1$ và $3$ (định lí Bê-du), đủ để tìm hai hệ số $a,b$.\n\n**Bước 1.** Viết phép chia $P(x)$ cho $(x-1)(x-3)$ dưới dạng thương nhân số chia cộng dư, trong đó dư có bậc nhỏ hơn $2$ nên có dạng $ax+b$.\n\n**Bước 2.** Dùng định lí Bê-du để biết $P(1)$ và $P(3)$, rồi thay $x=1$ và $x=3$ vào đẳng thức trên để phần tích với số chia triệt tiêu.\n\n**Bước 3.** Giải hệ hai phương trình bậc nhất theo $a,b$ rồi viết dư.\n\n**Chú ý:** Đừng viết dư là hằng số: số chia bậc hai thì dư có thể bậc nhất, và vì dư luôn là duy nhất nên kết quả không phụ thuộc cách làm.\n\n**Phần 2. Trình bày**\n\nTheo định lí Bê-du: $P(1)=4$ và $P(3)=14$.\n\nGọi $C(x)$ là thương và $ax+b$ là dư của phép chia $P(x)$ cho $(x-1)(x-3)$ (dư có bậc nhỏ hơn $2$).\n\nKhi đó $P(x)=(x-1)(x-3)C(x)+ax+b$ với mọi $x$.\n\nThay $x=1$: $P(1)=a+b$, nên $a+b=4$.\n\nThay $x=3$: $P(3)=3a+b$, nên $3a+b=14$.\n\nTrừ hai phương trình: $2a=10$, suy ra $a=5$ và $b=-1$.\n\nVậy dư của phép chia $P(x)$ cho $(x-1)(x-3)$ là $5x-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du",
+   "dư có bậc nhỏ hơn số chia"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 8): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 8, ví dụ 5 cách 2: dòng ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.6a@p8",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chia đa thức: $(3x^4-8x^3-10x^2+8x-5):(3x^2-2x+1)$.",
+  "noi_dung_sach": "Chia đa thức: $(3x^4-8x^3-10x^2+8x-5):(3x^2-2x+1)$.",
+  "dap_an": "$x^2-2x-5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là phép chia đa thức một biến theo cách đặt tính: lần lượt chia hạng tử bậc cao nhất của số bị chia (rồi của từng dư) cho hạng tử bậc cao nhất của số chia để lập từng hạng tử của thương.\n\n**Bước 1.** Chia hạng tử bậc cao nhất của số bị chia cho hạng tử bậc cao nhất của số chia để được hạng tử đầu của thương.\n\n**Bước 2.** Nhân hạng tử đó với cả số chia rồi lấy số bị chia trừ đi tích, được dư mới có bậc thấp hơn.\n\n**Bước 3.** Lặp lại với dư mới cho đến khi dư bằng $0$ hoặc có bậc nhỏ hơn bậc số chia, rồi viết lại dưới dạng số bị chia bằng số chia nhân thương.\n\n**Chú ý:** Có thể dùng hệ số bất định: thương dạng $x^2+ax-5$ (hệ số cao nhất $3:3=1$, hệ số tự do $-5:1=-5$), nhân ra rồi đồng nhất hệ số; nhưng chỉ dùng được khi biết chắc phép chia hết.\n\n**Phần 2. Trình bày**\n\n$(3x^4-8x^3-10x^2+8x-5):(3x^2-2x+1)$\n\nHạng tử đầu của thương: $3x^4:3x^2=x^2$.\n\nLấy số bị chia trừ $x^2(3x^2-2x+1)=3x^4-2x^3+x^2$, còn lại $-6x^3-11x^2+8x-5$.\n\nHạng tử tiếp theo: $-6x^3:3x^2=-2x$.\n\nLấy dư trừ $-2x(3x^2-2x+1)=-6x^3+4x^2-2x$, còn lại $-15x^2+10x-5$.\n\nHạng tử cuối: $-15x^2:3x^2=-5$.\n\nLấy dư trừ $-5(3x^2-2x+1)=-15x^2+10x-5$, còn lại $0$.\n\nVậy $3x^4-8x^3-10x^2+8x-5=(3x^2-2x+1)(x^2-2x-5)$, thương là $x^2-2x-5$, dư $0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức đặt tính",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 8): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 9, ví dụ 6a cách 2: sách) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1V.6b@p8",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chia đa thức: $(2x^3-9x^2+19x-15):(x^2-3x+5)$.",
+  "noi_dung_sach": "Chia đa thức: $(2x^3-9x^2+19x-15):(x^2-3x+5)$.",
+  "dap_an": "$2x-3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia đa thức một biến theo cách đặt tính: số bị chia bậc ba, số chia bậc hai nên thương bậc nhất; lập từng hạng tử của thương từ hạng tử bậc cao nhất của số bị chia và của từng dư.\n\n**Bước 1.** Chia hạng tử bậc cao nhất của số bị chia cho hạng tử bậc cao nhất của số chia để được hạng tử đầu của thương.\n\n**Bước 2.** Nhân hạng tử đó với số chia rồi lấy số bị chia trừ đi tích để được dư mới có bậc nhỏ hơn.\n\n**Bước 3.** Lặp lại với dư mới cho đến khi dư bằng $0$, rồi kiểm tra lại bằng cách nhân thương với số chia.\n\n**Chú ý:** Hệ số bất định cũng làm nhanh được: thương dạng $2x+c$ với hệ số tự do $-15:5=-3$, rồi nhân ra để kiểm tra đúng bằng số bị chia.\n\n**Phần 2. Trình bày**\n\n$(2x^3-9x^2+19x-15):(x^2-3x+5)$\n\nHạng tử đầu của thương: $2x^3:x^2=2x$.\n\nLấy số bị chia trừ $2x(x^2-3x+5)=2x^3-6x^2+10x$, còn lại $-3x^2+9x-15$.\n\nHạng tử cuối: $-3x^2:x^2=-3$.\n\nLấy dư trừ $-3(x^2-3x+5)=-3x^2+9x-15$, còn lại $0$.\n\nVậy $2x^3-9x^2+19x-15=(x^2-3x+5)(2x-3)$, thương là $2x-3$, dư $0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức đặt tính",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 8): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1V.6c@p8",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chia đa thức: $(6x^5-3x^4y+2x^3y^2+4x^2y^3-5xy^4+2y^5):(3x^3-2xy^2+y^3)$.",
+  "noi_dung_sach": "Chia đa thức: $(6x^5-3x^4y+2x^3y^2+4x^2y^3-5xy^4+2y^5):(3x^3-2xy^2+y^3)$.",
+  "dap_an": "$2x^2-xy+2y^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hai biến vẫn chia đặt tính được nếu sắp xếp cả số bị chia và số chia theo luỹ thừa giảm dần của $x$; mỗi hạng tử của thương lấy từ hạng tử đầu của số bị chia (hoặc của dư) chia cho hạng tử đầu của số chia.\n\n**Bước 1.** Chia hạng tử đầu $6x^5$ của số bị chia cho hạng tử đầu $3x^3$ của số chia để được hạng tử đầu của thương.\n\n**Bước 2.** Nhân hạng tử đó với cả số chia rồi lấy số bị chia trừ đi tích, chú ý trừ từng hạng tử đồng dạng và giữ đúng dấu.\n\n**Bước 3.** Lặp lại với dư mới cho đến khi dư bằng $0$, rồi viết số bị chia bằng số chia nhân thương.\n\n**Chú ý:** Có thể dùng hệ số bất định: thương dạng $2x^2+axy+2y^2$, so hệ số của $x^4y$ để tìm $a$; nhưng chỉ làm được khi biết chắc phép chia hết.\n\n**Phần 2. Trình bày**\n\n$(6x^5-3x^4y+2x^3y^2+4x^2y^3-5xy^4+2y^5):(3x^3-2xy^2+y^3)$\n\nHạng tử đầu của thương: $6x^5:3x^3=2x^2$.\n\nLấy số bị chia trừ $2x^2(3x^3-2xy^2+y^3)=6x^5-4x^3y^2+2x^2y^3$, còn lại $-3x^4y+6x^3y^2+2x^2y^3-5xy^4+2y^5$.\n\nHạng tử tiếp theo: $-3x^4y:3x^3=-xy$.\n\nLấy dư trừ $-xy(3x^3-2xy^2+y^3)=-3x^4y+2x^2y^3-xy^4$, còn lại $6x^3y^2-4xy^4+2y^5$.\n\nHạng tử cuối: $6x^3y^2:3x^3=2y^2$.\n\nLấy dư trừ $2y^2(3x^3-2xy^2+y^3)=6x^3y^2-4xy^4+2y^5$, còn lại $0$.\n\nVậy thương là $2x^2-xy+2y^2$, dư $0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức đặt tính",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 8): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1V.7@p10",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh định lí \"Số dư trong phép chia đa thức $f(x)$ cho nhị thức $(x-a)$ bằng giá trị của đa thức ấy tại $x=a$\".",
+  "noi_dung_sach": "Chứng minh định lí \"Số dư trong phép chia đa thức $f(x)$ cho nhị thức $(x-a)$ bằng giá trị của đa thức ấy tại $x=a$\".",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x-a$ có bậc một nên dư là một hằng số; viết phép chia dưới dạng đẳng thức đúng với mọi $x$ rồi thay $x=a$ để số hạng chứa $(x-a)$ biến mất.\n\n**Bước 1.** Viết phép chia $f(x)$ cho $x-a$ thành $f(x)=(x-a)Q(x)+R$, trong đó dư $R$ có bậc nhỏ hơn bậc của số chia nên là một hằng số.\n\n**Bước 2.** Nhận xét rằng đẳng thức đó đúng với mọi giá trị của $x$, nên thay được riêng $x=a$ vào cả hai vế.\n\n**Bước 3.** Tính giá trị hai vế tại $x=a$ để rút ra mối liên hệ giữa dư và $f(a)$.\n\n**Chú ý:** Từ định lí suy ra ngay: $f(x)$ chia hết cho $x-a$ khi và chỉ khi $f(a)=0$, tức là $a$ là nghiệm của $f(x)$.\n\n**Phần 2. Trình bày**\n\nChia $f(x)$ cho $x-a$, gọi thương là $Q(x)$ và dư là $r$.\n\nVì bậc của dư nhỏ hơn bậc của $x-a$ (bằng $1$) nên $r$ là hằng số.\n\nTa có $f(x)=(x-a)Q(x)+r$ với mọi $x$.\n\nThay $x=a$: $f(a)=(a-a)Q(a)+r=r$.\n\nVậy số dư trong phép chia $f(x)$ cho $x-a$ bằng $f(a)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phép chia có dư",
+   "bậc của dư nhỏ hơn bậc số chia"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 10): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.8a@p11",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho đa thức $f(x)=a_0x^4+a_1x^3+a_2x^2+a_3x+a_4$. Chứng minh rằng đa thức $f(x)$ chia hết cho $(x-1)$ nếu tổng các hệ số bằng $0$.",
+  "noi_dung_sach": "Cho đa thức $f(x)=a_0x^4+a_1x^3+a_2x^2+a_3x+a_4$. Chứng minh rằng đa thức $f(x)$ chia hết cho $(x-1)$ nếu tổng các hệ số bằng $0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo định lí Bê-du, dư của phép chia cho $x-1$ bằng $f(1)$, mà $f(1)$ chính là tổng các hệ số vì mọi luỹ thừa của $1$ đều bằng $1$.\n\n**Bước 1.** Áp dụng định lí Bê-du để biết số dư của phép chia $f(x)$ cho $x-1$ bằng giá trị của $f$ tại một số cụ thể.\n\n**Bước 2.** Thay $x=1$ vào $f(x)$ và nhận ra giá trị thu được là tổng của các hệ số.\n\n**Bước 3.** Dùng giả thiết tổng các hệ số bằng $0$ để kết luận số dư bằng $0$, tức là phép chia hết.\n\n**Chú ý:** Lập luận không phụ thuộc bậc của $f(x)$, đúng với đa thức bậc bất kì.\n\n**Phần 2. Trình bày**\n\nTheo định lí Bê-du, số dư của phép chia $f(x)$ cho $x-1$ là\n\n$r=f(1)=a_0+a_1+a_2+a_3+a_4$.\n\nTheo giả thiết $a_0+a_1+a_2+a_3+a_4=0$ nên $r=0$.\n\nVậy $f(x)$ chia hết cho $x-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 11): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.8b@p11",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho đa thức $f(x)=a_0x^4+a_1x^3+a_2x^2+a_3x+a_4$. Chứng minh rằng đa thức $f(x)$ chia hết cho $(x+1)$ nếu tổng các hệ số của hạng tử bậc chẵn bằng tổng các hệ số của hạng tử bậc lẻ.",
+  "noi_dung_sach": "Cho đa thức $f(x)=a_0x^4+a_1x^3+a_2x^2+a_3x+a_4$. Chứng minh rằng đa thức $f(x)$ chia hết cho $(x+1)$ nếu tổng các hệ số của hạng tử bậc chẵn bằng tổng các hệ số của hạng tử bậc lẻ.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dư của phép chia cho $x+1=x-(-1)$ bằng $f(-1)$; thay $x=-1$ thì luỹ thừa chẵn cho dấu cộng, luỹ thừa lẻ cho dấu trừ, nên $f(-1)$ là hiệu của hai tổng hệ số cần so sánh.\n\n**Bước 1.** Áp dụng định lí Bê-du cho nhị thức $x+1=x-(-1)$ để biết số dư bằng giá trị của $f$ tại $x=-1$.\n\n**Bước 2.** Thay $x=-1$ vào $f(x)$ và để ý dấu của từng hạng tử theo tính chẵn lẻ của số mũ.\n\n**Bước 3.** Nhóm các hệ số của hạng tử bậc chẵn và của hạng tử bậc lẻ, rồi dùng giả thiết hai tổng bằng nhau để kết luận số dư bằng $0$.\n\n**Chú ý:** Hạng tử tự do $a_4$ là hạng tử bậc $0$, tức bậc chẵn. Lập luận đúng với đa thức bậc bất kì.\n\n**Phần 2. Trình bày**\n\nTheo định lí Bê-du, số dư của phép chia $f(x)$ cho $x+1$ là\n\n$r=f(-1)=a_0-a_1+a_2-a_3+a_4$\n\n$=(a_0+a_2+a_4)-(a_1+a_3)$.\n\nTheo giả thiết $a_0+a_2+a_4=a_1+a_3$ nên $r=0$.\n\nVậy $f(x)$ chia hết cho $x+1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "định lí Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 11): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1V.9@p11",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các giá trị nguyên của $n$ để giá trị của biểu thức $2n^2+3n+3$ chia hết cho giá trị của biểu thức $2n-1$.",
+  "noi_dung_sach": "Tìm các giá trị nguyên của $n$ để giá trị của biểu thức $2n^2+3n+3$ chia hết cho giá trị của biểu thức $2n-1$.",
+  "dap_an": "$n\\in\\{-2;0;1;3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $2n^2+3n+3$ cho $2n-1$ được thương nguyên và một dư là hằng số; với $n$ nguyên thì tích thương nhân $2n-1$ luôn chia hết cho $2n-1$, nên chỉ cần dư (một số nguyên) chia hết cho $2n-1$, tức $2n-1$ là ước của dư.\n\n**Bước 1.** Chia đa thức $2n^2+3n+3$ cho $2n-1$ để viết biểu thức dưới dạng tích của $2n-1$ với một nhị thức cộng một hằng số, rồi nhân lại để kiểm tra.\n\n**Bước 2.** Lập luận với $n$ nguyên rằng giá trị tích đó chia hết cho $2n-1$, nên biểu thức chia hết cho $2n-1$ khi và chỉ khi hằng số dư cũng chia hết cho $2n-1$.\n\n**Bước 3.** Liệt kê tất cả các ước nguyên của hằng số dư, kể cả ước âm, để tìm giá trị của $2n-1$.\n\n**Bước 4.** Cho $2n-1$ bằng từng ước đã liệt kê để tìm $n$, rồi kiểm tra $n$ có là số nguyên hay không.\n\n**Chú ý:** Ước của một số nguyên gồm cả số âm — quên ước âm là mất nghiệm; đa thức không chia hết cho đa thức nhưng giá trị vẫn có thể chia hết với một số $n$.\n\n**Phần 2. Trình bày**\n\nTa có $2n^2+3n+3=(2n-1)(n+2)+5$ (vì $(2n-1)(n+2)=2n^2+3n-2$).\n\nVới $n$ nguyên thì $n+2$ nguyên, nên $(2n-1)(n+2)\\vdots(2n-1)$.\n\nDo đó $(2n^2+3n+3)\\vdots(2n-1)\\Leftrightarrow5\\vdots(2n-1)$.\n\nVậy $2n-1\\in\\{-5;-1;1;5\\}$.\n\n$2n-1=-5\\Rightarrow n=-2$; $2n-1=-1\\Rightarrow n=0$; $2n-1=1\\Rightarrow n=1$; $2n-1=5\\Rightarrow n=3$.\n\nCả bốn giá trị đều là số nguyên.\n\nVậy $n\\in\\{-2;0;1;3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức",
+   "ước của một số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 11): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 11, ví dụ 9: dòng đầu củ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.1n1@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $\\left(\\dfrac{3}{4}\\right)^{45}:\\left(\\dfrac{9}{16}\\right)^{10}$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $\\left(\\dfrac{3}{4}\\right)^{45}:\\left(\\dfrac{9}{16}\\right)^{10}$.",
+  "dap_an": "$\\left(\\dfrac{3}{4}\\right)^{25}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai cơ số $\\dfrac{3}{4}$ và $\\dfrac{9}{16}$ liên hệ qua $\\dfrac{9}{16}=\\left(\\dfrac{3}{4}\\right)^2$, nên đưa về cùng một cơ số rồi dùng luật chia hai luỹ thừa cùng cơ số.\n\n**Bước 1.** Nhận ra $\\dfrac{9}{16}$ là bình phương của $\\dfrac{3}{4}$ để hai thừa số có thể cùng cơ số.\n\n**Bước 2.** Dùng $(a^m)^n=a^{mn}$ để viết $\\left(\\dfrac{9}{16}\\right)^{10}$ thành luỹ thừa của $\\dfrac{3}{4}$ với số mũ nhân đôi.\n\n**Bước 3.** Chia hai luỹ thừa cùng cơ số bằng cách lấy hiệu hai số mũ.\n\n**Phần 2. Trình bày**\n\n$\\left(\\dfrac{3}{4}\\right)^{45}:\\left(\\dfrac{9}{16}\\right)^{10}$\n\n$=\\left(\\dfrac{3}{4}\\right)^{45}:\\left[\\left(\\dfrac{3}{4}\\right)^2\\right]^{10}$\n\n$=\\left(\\dfrac{3}{4}\\right)^{45}:\\left(\\dfrac{3}{4}\\right)^{20}$\n\n$=\\left(\\dfrac{3}{4}\\right)^{25}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.1n2@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{125^{100}\\cdot 2^{160}}{5^{298}\\cdot 4^{80}}$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $\\dfrac{125^{100}\\cdot 2^{160}}{5^{298}\\cdot 4^{80}}$.",
+  "dap_an": "$25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $125=5^3$ và $4=2^2$ nên cả tử lẫn mẫu chỉ còn hai cơ số $5$ và $2$; đưa về luỹ thừa của hai cơ số này rồi giản ước từng cơ số.\n\n**Bước 1.** Viết $125$ và $4$ thành luỹ thừa của $5$ và của $2$ để tử và mẫu cùng chỉ chứa hai cơ số này.\n\n**Bước 2.** Dùng $(a^m)^n=a^{mn}$ để tính số mũ mới của $5$ và của $2$ ở tử và ở mẫu.\n\n**Bước 3.** So sánh số mũ của từng cơ số ở tử và ở mẫu rồi giản ước bằng quy tắc chia hai luỹ thừa cùng cơ số.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{125^{100}\\cdot 2^{160}}{5^{298}\\cdot 4^{80}}$\n\n$=\\dfrac{(5^3)^{100}\\cdot 2^{160}}{5^{298}\\cdot(2^2)^{80}}$\n\n$=\\dfrac{5^{300}\\cdot 2^{160}}{5^{298}\\cdot 2^{160}}$\n\n$=5^2=25$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.1n3@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{9^8\\cdot 5^3}{3^8\\cdot 27^3\\cdot 5^4}$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $\\dfrac{9^8\\cdot 5^3}{3^8\\cdot 27^3\\cdot 5^4}$.",
+  "dap_an": "$\\dfrac{1}{15}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $9=3^2$ và $27=3^3$ nên mọi cơ số đều quy về $3$ hoặc $5$; đưa về luỹ thừa của $3$ và của $5$ rồi giản ước từng cơ số.\n\n**Bước 1.** Viết $9$ và $27$ thành luỹ thừa của $3$ để tử và mẫu chỉ còn hai cơ số $3$ và $5$.\n\n**Bước 2.** Dùng $(a^m)^n=a^{mn}$ rồi gộp các luỹ thừa của $3$ ở mẫu bằng cách cộng số mũ.\n\n**Bước 3.** Giản ước từng cơ số giữa tử và mẫu cho đến khi chỉ còn một phân số tối giản.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{9^8\\cdot 5^3}{3^8\\cdot 27^3\\cdot 5^4}$\n\n$=\\dfrac{3^{16}\\cdot 5^3}{3^8\\cdot 3^9\\cdot 5^4}$\n\n$=\\dfrac{3^{16}\\cdot 5^3}{3^{17}\\cdot 5^4}$\n\n$=\\dfrac{1}{3\\cdot 5}=\\dfrac{1}{15}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.1n4@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Rút gọn biểu thức: $(15\\cdot 3^{11}+4\\cdot 27^4):9^7$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $(15\\cdot 3^{11}+4\\cdot 27^4):9^7$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy $27^4$ và $9^7$ về luỹ thừa của $3$ để hai hạng tử trong ngoặc cùng chứa $3^{11}$, rồi đặt $3^{11}$ làm nhân tử chung.\n\n**Bước 1.** Viết $27^4$ thành luỹ thừa của $3$ rồi tách một thừa số $3$ để hạng tử thứ hai cũng chứa $3^{11}$.\n\n**Bước 2.** Đặt $3^{11}$ làm nhân tử chung và tính giá trị của biểu thức còn lại trong ngoặc.\n\n**Bước 3.** Viết $9^7$ thành luỹ thừa của $3$ rồi chia hai luỹ thừa cùng cơ số.\n\n**Phần 2. Trình bày**\n\n$(15\\cdot 3^{11}+4\\cdot 27^4):9^7$\n\n$=(15\\cdot 3^{11}+4\\cdot 3^{12}):3^{14}$\n\n$=3^{11}(15+4\\cdot 3):3^{14}$\n\n$=3^{11}\\cdot 27:3^{14}$\n\n$=3^{14}:3^{14}=1$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.1n5@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{8(x+2y)^5}{2x+4y}$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $\\dfrac{8(x+2y)^5}{2x+4y}$.",
+  "dap_an": "$4(x+2y)^4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $2x+4y$ đặt được nhân tử chung $2$ để lộ nhân tử $x+2y$, chính là cơ số của luỹ thừa ở tử.\n\n**Bước 1.** Đặt nhân tử chung ở mẫu để xuất hiện nhân tử $x+2y$, đồng thời nêu điều kiện để mẫu khác $0$.\n\n**Bước 2.** Giản ước hệ số bằng số và nhân tử chung $x+2y$ giữa tử và mẫu.\n\n**Bước 3.** Chia luỹ thừa cùng cơ số $x+2y$ bằng cách trừ số mũ để được kết quả gọn nhất.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x+2y\\neq0$.\n\n$\\dfrac{8(x+2y)^5}{2x+4y}$\n\n$=\\dfrac{8(x+2y)^5}{2(x+2y)}$\n\n$=4(x+2y)^4$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.2@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hệ số $a$ để đa thức $x^4+ax^2+1$ chia hết cho $x^2+2x+1$.",
+  "noi_dung_sach": "Xác định hệ số $a$ để đa thức $x^4+ax^2+1$ chia hết cho $x^2+2x+1$.",
+  "dap_an": "$a=-2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2+2x+1=(x+1)^2$ có nghiệm kép $-1$ nên đa thức bị chia phải triệt tiêu tại $x=-1$; điều kiện này đủ để tìm $a$, sau đó chỉ cần thử lại.\n\n**Bước 1.** Nhận ra số chia là $(x+1)^2$, suy ra đa thức bị chia phải chia hết cho $x+1$, tức nhận giá trị $0$ tại $x=-1$ (định lí Bê-du).\n\n**Bước 2.** Thay $x=-1$ vào đa thức để lập phương trình theo $a$ rồi giải ra giá trị cần tìm.\n\n**Bước 3.** Thử lại với giá trị $a$ vừa tìm bằng cách phân tích đa thức thành nhân tử, vì điều kiện ở bước trên mới chỉ là điều kiện cần.\n\n**Chú ý:** Chia hết cho $(x+1)^2$ khó hơn chia hết cho $x+1$ — không được dừng lại khi mới có $P(-1)=0$.\n\n**Phần 2. Trình bày**\n\nVì $x^2+2x+1=(x+1)^2$ nên nếu $P(x)=x^4+ax^2+1$ chia hết cho $x^2+2x+1$ thì $P(x)$ chia hết cho $x+1$, suy ra $P(-1)=0$.\n\n$P(-1)=1+a+1=a+2=0\\Rightarrow a=-2$\n\nThử lại: với $a=-2$ thì $x^4-2x^2+1=(x^2-1)^2=(x-1)^2(x+1)^2$, chia hết cho $(x+1)^2$.\n\nVậy $a=-2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giá trị riêng",
+   "Bê-du",
+   "thử lại"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.3@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hệ số $a$ để phép chia $3x^2+ax+27$ cho $x+5$ có số dư bằng $2$.",
+  "noi_dung_sach": "Xác định hệ số $a$ để phép chia $3x^2+ax+27$ cho $x+5$ có số dư bằng $2$.",
+  "dap_an": "$a=20$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số dư của phép chia cho $x+5$ chính là giá trị của đa thức tại $x=-5$ (định lí Bê-du), nên chỉ cần cho giá trị đó bằng $2$.\n\n**Bước 1.** Viết phép chia dưới dạng đa thức bằng thương nhân số chia cộng số dư, đúng với mọi giá trị của $x$.\n\n**Bước 2.** Cho $x=-5$ để số hạng chứa thương biến mất, chỉ còn một phương trình bậc nhất theo $a$.\n\n**Bước 3.** Giải phương trình đó để tìm $a$.\n\n**Phần 2. Trình bày**\n\nGọi $Q(x)$ là thương.\n\nTa có $3x^2+ax+27=(x+5)Q(x)+2$ với mọi $x$.\n\nCho $x=-5$: $3\\cdot 25-5a+27=2$\n\n$\\Leftrightarrow 102-5a=2$\n\n$\\Leftrightarrow a=20$\n\nVậy $a=20$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.4@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm hệ số $a$ và $b$ để đa thức $x^4+ax^2+b$ chia hết cho $x^2+x+1$.",
+  "noi_dung_sach": "Tìm hệ số $a$ và $b$ để đa thức $x^4+ax^2+b$ chia hết cho $x^2+x+1$.",
+  "dap_an": "$a=1$; $b=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2+x+1$ không có nghiệm thực nên không dùng được giá trị riêng; ta làm phép chia đặt tính rồi cho đa thức dư bằng $0$.\n\n**Bước 1.** Sắp xếp theo luỹ thừa giảm dần và chia từng bước, nhớ viết cả các hạng tử thiếu $0x^3$ và $0x$.\n\n**Bước 2.** Dừng lại khi dư có bậc nhỏ hơn bậc số chia, được dư dạng $mx+n$ với $m,n$ phụ thuộc $a,b$.\n\n**Bước 3.** Đa thức dư bằng $0$ với mọi $x$ khi cả hai hệ số của nó bằng $0$, giải hai phương trình đó để tìm $a$ và $b$.\n\n**Chú ý:** Có thể kiểm tra nhanh bằng cách khai triển tích thương nhân số chia với giá trị $a,b$ tìm được.\n\n**Phần 2. Trình bày**\n\n$x^4+ax^2+b-x^2(x^2+x+1)=-x^3+(a-1)x^2+b$\n\n$-x^3+(a-1)x^2+b+x(x^2+x+1)=ax^2+x+b$\n\n$ax^2+x+b-a(x^2+x+1)=(1-a)x+(b-a)$\n\nVậy $x^4+ax^2+b=(x^2+x+1)(x^2-x+a)+(1-a)x+(b-a)$.\n\nPhép chia hết khi dư bằng $0$ với mọi $x$, tức $1-a=0$ và $b-a=0$, suy ra $a=1$, $b=1$.\n\nVậy $a=1$, $b=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức đặt tính",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.5@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm hệ số $a$ và $b$ sao cho $ax^3+bx-24$ chia hết cho $(x+1)(x+3)$.",
+  "noi_dung_sach": "Tìm hệ số $a$ và $b$ sao cho $ax^3+bx-24$ chia hết cho $(x+1)(x+3)$.",
+  "dap_an": "$a=2$; $b=-26$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia là tích của hai nhị thức có nghiệm $-1$ và $-3$ dễ thấy, nên đa thức bị chia phải triệt tiêu tại cả hai giá trị đó; cho giá trị riêng được hai phương trình theo $a,b$.\n\n**Bước 1.** Viết đa thức bị chia bằng tích số chia với một thương nào đó, đúng với mọi $x$, rồi lần lượt cho $x=-1$ và $x=-3$ để số hạng chứa thương biến mất.\n\n**Bước 2.** Giải hệ hai phương trình bậc nhất hai ẩn $a,b$ vừa lập được.\n\n**Bước 3.** Thử lại bằng cách phân tích đa thức ứng với $a,b$ tìm được thành tích, vì hai điều kiện trên mới chỉ là điều kiện cần.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=ax^3+bx-24$.\n\nVì $P(x)$ chia hết cho $(x+1)(x+3)$ nên $P(x)=(x+1)(x+3)Q(x)$ với mọi $x$.\n\nCho $x=-1$: $-a-b-24=0$, tức $b=-a-24$.\n\nCho $x=-3$: $-27a-3b-24=0$.\n\nThế $b=-a-24$: $-27a+3a+72-24=0\\Leftrightarrow -24a+48=0\\Leftrightarrow a=2$, suy ra $b=-26$.\n\nThử lại: $2x^3-26x-24=(x+1)(x+3)(2x-8)$.\n\nVậy $a=2$, $b=-26$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giá trị riêng",
+   "Bê-du",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.6@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm hệ số $a$ và $b$ sao cho $x^4-x^3-3x^2+ax+b$ chia cho $x^2-x-2$ được dư là $2x-3$.",
+  "noi_dung_sach": "Tìm hệ số $a$ và $b$ sao cho $x^4-x^3-3x^2+ax+b$ chia cho $x^2-x-2$ được dư là $2x-3$.",
+  "dap_an": "$a=3$; $b=-1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho $x^2-x-2=(x-2)(x+1)$ được dư $2x-3$ nghĩa là $P(x)-(2x-3)$ chia hết cho $(x-2)(x+1)$, nên $P(x)$ nhận giá trị $2\\cdot2-3$ tại $x=2$ và $2\\cdot(-1)-3$ tại $x=-1$.\n\n**Bước 1.** Phân tích số chia thành tích hai nhị thức để thấy hai nghiệm $2$ và $-1$.\n\n**Bước 2.** Viết đa thức bằng số chia nhân thương cộng dư rồi lần lượt cho $x=2$ và $x=-1$ để lập hai phương trình theo $a,b$.\n\n**Bước 3.** Giải hệ hai phương trình đó để tìm $a$ và $b$.\n\n**Bước 4.** Thử lại bằng cách thực hiện phép chia với giá trị vừa tìm, nhớ rằng dư phải có bậc nhỏ hơn bậc số chia.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=x^4-x^3-3x^2+ax+b$.\n\nVì $x^2-x-2=(x-2)(x+1)$ nên $P(x)=(x-2)(x+1)Q(x)+2x-3$ với mọi $x$.\n\nCho $x=2$: $16-8-12+2a+b=1\\Leftrightarrow 2a+b=5$.\n\nCho $x=-1$: $1+1-3-a+b=-5\\Leftrightarrow b-a=-4$.\n\nTrừ vế hai phương trình: $3a=9$, suy ra $a=3$, $b=-1$.\n\nThử lại: $x^4-x^3-3x^2+3x-1=(x^2-x-2)(x^2-1)+2x-3$, dư $2x-3$ có bậc nhỏ hơn $2$.\n\nVậy $a=3$, $b=-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du",
+   "giá trị riêng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.7@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Đa thức $2x^3+ax+b$ chia cho $x+1$ dư $-6$, đa thức ấy chia cho $x-2$ dư $21$. Xác định các hệ số $a$ và $b$.",
+  "noi_dung_sach": "Đa thức $2x^3+ax+b$ chia cho $x+1$ dư $-6$, đa thức ấy chia cho $x-2$ dư $21$. Xác định các hệ số $a$ và $b$.",
+  "dap_an": "$a=3$; $b=-1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số dư khi chia cho $x-c$ chính là giá trị của đa thức tại $x=c$ (định lí Bê-du), nên hai điều kiện về số dư cho hai phương trình bậc nhất theo $a$ và $b$.\n\n**Bước 1.** Áp dụng định lí Bê-du cho số chia $x+1$ để lập phương trình thứ nhất từ giá trị của đa thức tại $x=-1$.\n\n**Bước 2.** Áp dụng định lí Bê-du cho số chia $x-2$ để lập phương trình thứ hai từ giá trị của đa thức tại $x=2$.\n\n**Bước 3.** Giải hệ hai phương trình bậc nhất hai ẩn vừa lập để tìm $a$ và $b$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=2x^3+ax+b$.\n\nTheo định lí Bê-du: $P(-1)=-6$ và $P(2)=21$.\n\n$P(-1)=-2-a+b=-6\\Leftrightarrow b-a=-4$ (1)\n\n$P(2)=16+2a+b=21\\Leftrightarrow 2a+b=5$ (2)\n\nLấy (2) trừ (1): $3a=9\\Rightarrow a=3$, thay vào (1) được $b=-1$.\n\nVậy $a=3$, $b=-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.8@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng không tồn tại số tự nhiên $n$ nào để giá trị của biểu thức $2n^3-3n^2+n+3$ chia hết cho giá trị của biểu thức $n^2-n$.",
+  "noi_dung_sach": "Chứng minh rằng không tồn tại số tự nhiên $n$ nào để giá trị của biểu thức $2n^3-3n^2+n+3$ chia hết cho giá trị của biểu thức $n^2-n$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức bị chia bằng một bội của $n^2-n$ cộng với $3$, nên muốn chia hết thì $n^2-n$ phải là ước của $3$; mà $n^2-n=n(n-1)$ là tích hai số tự nhiên liên tiếp nên luôn chẵn.\n\n**Bước 1.** Biến đổi biểu thức bị chia để tách ra một bội của $n^2-n$ và phần dư còn lại.\n\n**Bước 2.** Từ đó suy ra điều kiện cần là $3$ phải chia hết cho $n^2-n$, tức $n^2-n$ là một ước dương của $3$ (sau khi loại các giá trị $n$ làm số chia bằng $0$).\n\n**Bước 3.** Chỉ ra rằng $n^2-n$ luôn là số chẵn trong khi mọi ước dương của $3$ đều lẻ để dẫn tới mâu thuẫn.\n\n**Chú ý:** Số chia bằng $0$ không có nghĩa trong phép chia hết, nên $n=0$ và $n=1$ phải được loại riêng.\n\n**Phần 2. Trình bày**\n\nĐặt $A=2n^3-3n^2+n+3$ và $B=n^2-n$.\n\nTa có $(n^2-n)(2n-1)=2n^3-3n^2+n$ nên $A=(2n-1)B+3$.\n\nVới $n=0$ hoặc $n=1$ thì $B=0$, không thể làm số chia nên loại.\n\nVới $n\\ge2$: $B=n(n-1)\\ge2$.\n\nNếu $A\\vdots B$ thì $3=A-(2n-1)B\\vdots B$, nên $B$ là ước dương của $3$, tức $B=1$ hoặc $B=3$ — đều là số lẻ.\n\nNhưng $B=n(n-1)$ là tích hai số tự nhiên liên tiếp nên là số chẵn.\n\nMâu thuẫn.\n\nVậy không tồn tại số tự nhiên $n$ nào thoả mãn đề bài.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "biểu diễn bội cộng số dư",
+   "tích hai số tự nhiên liên tiếp là số chẵn"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 12, đề bài tập 8 §1: sác) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.9a@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Không làm phép chia đa thức, hãy xác định xem đa thức $4x^3-7x^2-x-2$ có chia hết cho đa thức $x-2$ hay không.",
+  "noi_dung_sach": "Không làm phép chia đa thức, hãy xác định xem đa thức $4x^3-7x^2-x-2$ có chia hết cho đa thức $x-2$ hay không.",
+  "dap_an": "Chia hết",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không chia thật thì dùng định lí Bê-du: dư của phép chia cho $x-2$ chính là giá trị của đa thức tại $x=2$.\n\n**Bước 1.** Viết đa thức dưới dạng số chia nhân thương cộng dư, với dư là một hằng số vì số chia bậc nhất.\n\n**Bước 2.** Cho $x=2$ để số hạng chứa thương biến mất, nhờ đó biết ngay giá trị của dư.\n\n**Bước 3.** So sánh dư vừa tính với $0$ để kết luận về tính chia hết.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=4x^3-7x^2-x-2$.\n\nSố dư của phép chia $P(x)$ cho $x-2$ là $P(2)$.\n\n$P(2)=4\\cdot 8-7\\cdot 4-2-2=32-28-4=0$\n\nVậy $P(x)$ chia hết cho $x-2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.9b@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Không làm phép chia đa thức, hãy xác định xem đa thức $4x^3-7x^2-x-2$ có chia hết cho đa thức $x+2$ hay không.",
+  "noi_dung_sach": "Không làm phép chia đa thức, hãy xác định xem đa thức $4x^3-7x^2-x-2$ có chia hết cho đa thức $x+2$ hay không.",
+  "dap_an": "Không chia hết, dư $-60$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không chia thật thì dùng định lí Bê-du: dư của phép chia cho $x+2=x-(-2)$ chính là giá trị của đa thức tại $x=-2$.\n\n**Bước 1.** Nhận ra số chia $x+2$ có nghiệm $x=-2$, nên dư của phép chia là giá trị của đa thức tại điểm đó.\n\n**Bước 2.** Thay $x=-2$ vào đa thức và tính cẩn thận dấu của từng hạng tử.\n\n**Bước 3.** So sánh dư vừa tính với $0$ để kết luận về tính chia hết.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=4x^3-7x^2-x-2$.\n\nSố dư của phép chia $P(x)$ cho $x+2$ là $P(-2)$.\n\n$P(-2)=4\\cdot(-8)-7\\cdot 4+2-2=-32-28+2-2=-60\\neq0$\n\nVậy $P(x)$ không chia hết cho $x+2$ (dư $-60$).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.10a@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho đa thức $P(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$. Chứng minh $P(x)$ chia hết cho $x-1$ nếu tổng các hệ số bằng $0$.",
+  "noi_dung_sach": "Cho đa thức $P(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$. Chứng minh $P(x)$ chia hết cho $x-1$ nếu tổng các hệ số bằng $0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dư của phép chia cho $x-1$ là $P(1)$ (định lí Bê-du), mà $P(1)$ chính là tổng tất cả các hệ số của $P(x)$.\n\n**Bước 1.** Viết $P(x)$ dưới dạng $(x-1)Q(x)+r$ với $r$ là hằng số, vì số chia có bậc nhất.\n\n**Bước 2.** Thay $x=1$ để biểu diễn $r$ qua các hệ số của $P(x)$.\n\n**Bước 3.** Dùng giả thiết tổng các hệ số bằng $0$ để kết luận về $r$ và về tính chia hết.\n\n**Phần 2. Trình bày**\n\nChia $P(x)$ cho $x-1$, gọi thương là $Q(x)$ và dư là $r$ (hằng số): $P(x)=(x-1)Q(x)+r$ với mọi $x$.\n\nCho $x=1$: $r=P(1)=a_5+a_4+a_3+a_2+a_1+a_0$.\n\nTheo giả thiết tổng các hệ số bằng $0$ nên $r=0$.\n\nVậy $P(x)$ chia hết cho $x-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.10b@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho đa thức $P(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$. Chứng minh $P(x)$ chia hết cho $x+1$ nếu tổng các hệ số của luỹ thừa bậc lẻ đối với $x$ bằng tổng các hệ số của luỹ thừa bậc chẵn đối với $x$.",
+  "noi_dung_sach": "Cho đa thức $P(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$. Chứng minh $P(x)$ chia hết cho $x+1$ nếu tổng các hệ số của luỹ thừa bậc lẻ đối với $x$ bằng tổng các hệ số của luỹ thừa bậc chẵn đối với $x$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dư của phép chia cho $x+1$ là $P(-1)$ (định lí Bê-du); khi thay $x=-1$, các luỹ thừa bậc lẻ đổi dấu còn các luỹ thừa bậc chẵn giữ nguyên dấu.\n\n**Bước 1.** Viết $P(x)$ dưới dạng $(x+1)Q(x)+r$ với $r$ là hằng số, vì số chia có bậc nhất.\n\n**Bước 2.** Thay $x=-1$ và phân biệt các hạng tử bậc lẻ với bậc chẵn để biểu diễn $r$ qua các hệ số.\n\n**Bước 3.** Nhóm các hệ số theo bậc lẻ và bậc chẵn rồi dùng giả thiết để kết luận $r=0$.\n\n**Phần 2. Trình bày**\n\nChia $P(x)$ cho $x+1$, gọi thương là $Q(x)$ và dư là $r$: $P(x)=(x+1)Q(x)+r$ với mọi $x$.\n\nCho $x=-1$: $r=P(-1)=-a_5+a_4-a_3+a_2-a_1+a_0=(a_4+a_2+a_0)-(a_5+a_3+a_1)$.\n\nTheo giả thiết $a_5+a_3+a_1=a_4+a_2+a_0$ nên $r=0$.\n\nVậy $P(x)$ chia hết cho $x+1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.11a@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định dư của phép chia đa thức $x+x^3+x^9+x^{27}+x^{81}$ cho $x-1$.",
+  "noi_dung_sach": "Xác định dư của phép chia đa thức $x+x^3+x^9+x^{27}+x^{81}$ cho $x-1$.",
+  "dap_an": "Dư $5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x-1$ có bậc nhất nên dư là một hằng số, và theo định lí Bê-du hằng số đó bằng giá trị của đa thức tại $x=1$.\n\n**Bước 1.** Viết đa thức dưới dạng số chia nhân thương cộng dư, với dư là một hằng số $r$.\n\n**Bước 2.** Cho $x=1$ để số hạng chứa thương biến mất, chỉ còn $r$ bằng giá trị của đa thức tại $1$.\n\n**Bước 3.** Tính giá trị đó: mọi luỹ thừa của $1$ đều bằng $1$.\n\n**Phần 2. Trình bày**\n\nSố chia $x-1$ có bậc nhất nên dư là hằng số $r$.\n\nGọi $Q(x)$ là thương, ta có với mọi $x$:\n\n$x+x^3+x^9+x^{27}+x^{81}=(x-1)Q(x)+r$\n\nCho $x=1$: $r=1+1+1+1+1=5$.\n\nVậy số dư của phép chia là $5$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.11b@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định dư của phép chia đa thức $x+x^3+x^9+x^{27}+x^{81}$ cho $x^2-1$.",
+  "noi_dung_sach": "Xác định dư của phép chia đa thức $x+x^3+x^9+x^{27}+x^{81}$ cho $x^2-1$.",
+  "dap_an": "Dư $5x$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2-1=(x-1)(x+1)$ có hai nghiệm $1$ và $-1$, còn dư có bậc nhỏ hơn $2$ nên có dạng $ax+b$; cho $x=\\pm1$ là tìm được $a,b$.\n\n**Bước 1.** Viết đa thức dưới dạng số chia nhân thương cộng dư, với dư có dạng $ax+b$ vì số chia bậc hai.\n\n**Bước 2.** Cho $x=1$ và $x=-1$ để số hạng chứa thương biến mất, mỗi giá trị cho một phương trình theo $a,b$.\n\n**Bước 3.** Tính giá trị của đa thức tại hai điểm đó (chú ý các luỹ thừa lẻ của $-1$ đều bằng $-1$) rồi giải hệ tìm $a,b$.\n\n**Phần 2. Trình bày**\n\nSố chia có bậc hai nên dư có dạng $ax+b$.\n\nGọi $Q(x)$ là thương, ta có với mọi $x$:\n\n$x+x^3+x^9+x^{27}+x^{81}=(x^2-1)Q(x)+ax+b$\n\nCho $x=1$: $5=a+b$.\n\nCho $x=-1$: $-5=-a+b$.\n\nCộng vế hai phương trình: $0=2b$, nên $b=0$ và $a=5$.\n\nVậy dư của phép chia là $5x$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du",
+   "giá trị riêng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.12@p12",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $(x^2+x-1)^{10}+(x^2-x+1)^{10}-2$ chia hết cho $x-1$.",
+  "noi_dung_sach": "Chứng minh rằng $(x^2+x-1)^{10}+(x^2-x+1)^{10}-2$ chia hết cho $x-1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức chia hết cho $x-1$ khi và chỉ khi giá trị của nó tại $x=1$ bằng $0$ (định lí Bê-du), nên không cần khai triển luỹ thừa bậc $10$.\n\n**Bước 1.** Gọi đa thức đã cho là $P(x)$ và nêu điều kiện cần kiểm tra: dư của phép chia cho $x-1$ là $P(1)$.\n\n**Bước 2.** Thay $x=1$ vào từng cơ số trong ngoặc để tính giá trị của hai luỹ thừa.\n\n**Bước 3.** Cộng các kết quả và so sánh với $0$ để kết luận.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=(x^2+x-1)^{10}+(x^2-x+1)^{10}-2$.\n\nDư của phép chia $P(x)$ cho $x-1$ là $P(1)$.\n\n$P(1)=(1+1-1)^{10}+(1-1+1)^{10}-2=1+1-2=0$\n\nVậy $P(x)$ chia hết cho $x-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 12): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.13@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để số trị biểu thức $2x^2+x-7$ chia hết cho số trị biểu thức $x-2$.",
+  "noi_dung_sach": "Tìm các giá trị nguyên của $x$ để số trị biểu thức $2x^2+x-7$ chia hết cho số trị biểu thức $x-2$.",
+  "dap_an": "$S=\\{-1;1;3;5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia đa thức để tách $2x^2+x-7$ thành bội của $x-2$ cộng một số dư; với $x$ nguyên thì chỉ cần $x-2$ là ước của số dư đó.\n\n**Bước 1.** Thực hiện phép chia (hoặc tách hạng tử) để viết biểu thức bị chia dưới dạng thương nhân $x-2$ cộng số dư.\n\n**Bước 2.** Vì $x$ nguyên nên phần thương nhân $x-2$ luôn chia hết cho $x-2$, do đó điều kiện của đề tương đương với việc số dư chia hết cho $x-2$.\n\n**Bước 3.** Liệt kê tất cả các ước của số dư rồi tính $x$ ứng với từng ước.\n\n**Chú ý:** Chỉ nhận các giá trị $x$ nguyên; với mỗi giá trị tìm được nên thử lại bằng cách thay vào đề.\n\n**Phần 2. Trình bày**\n\n$2x^2+x-7=(x-2)(2x+5)+3$.\n\nVới $x\\in\\mathbb{Z}$ thì $(x-2)(2x+5)\\vdots(x-2)$, nên $(2x^2+x-7)\\vdots(x-2)\\Leftrightarrow 3\\vdots(x-2)$.\n\nVậy $x-2\\in\\{-3;-1;1;3\\}$, tức là $x\\in\\{-1;1;3;5\\}$.\n\nVậy $S=\\{-1;1;3;5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức",
+   "số dư là ước"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.14@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để số trị biểu thức $10x^2-7x-5$ chia hết cho số trị biểu thức $2x-3$.",
+  "noi_dung_sach": "Tìm các giá trị nguyên của $x$ để số trị biểu thức $10x^2-7x-5$ chia hết cho số trị biểu thức $2x-3$.",
+  "dap_an": "$S=\\{-2;1;2;5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $10x^2-7x-5$ cho $2x-3$ được thương nguyên và một số dư là hằng số; với $x$ nguyên thì chỉ cần $2x-3$ là ước của số dư đó.\n\n**Bước 1.** Thực hiện phép chia đa thức (hoặc tách hạng tử) để viết biểu thức bị chia dưới dạng thương nhân $2x-3$ cộng số dư.\n\n**Bước 2.** Với $x$ nguyên, phần thương nhân $2x-3$ luôn chia hết cho $2x-3$, nên chỉ cần $2x-3$ là ước của số dư.\n\n**Bước 3.** Liệt kê các ước của số dư rồi giải $2x-3$ bằng từng ước để tìm $x$.\n\n**Chú ý:** $2x-3$ luôn là số lẻ khi $x$ nguyên, nhưng ở bài này mọi ước của số dư đều lẻ nên không loại giá trị nào.\n\n**Phần 2. Trình bày**\n\n$10x^2-7x-5=(2x-3)(5x+4)+7$.\n\nVới $x\\in\\mathbb{Z}$ thì $(2x-3)(5x+4)\\vdots(2x-3)$, nên $(10x^2-7x-5)\\vdots(2x-3)\\Leftrightarrow 7\\vdots(2x-3)$.\n\n$2x-3\\in\\{-7;-1;1;7\\}$, lần lượt cho $x=-2;1;2;5$.\n\nVậy $S=\\{-2;1;2;5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức",
+   "số dư là ước"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.15@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định số tự nhiên $n$ để số trị biểu thức $25n^2-97n+11$ chia hết cho số trị biểu thức $n-4$.",
+  "noi_dung_sach": "Xác định số tự nhiên $n$ để số trị biểu thức $25n^2-97n+11$ chia hết cho số trị biểu thức $n-4$.",
+  "dap_an": "$S=\\{3;5;27\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia $25n^2-97n+11$ cho $n-4$ được thương nguyên và dư $23$; với $n$ nguyên thì chỉ cần $n-4$ là ước của $23$, rồi chọn các $n$ là số tự nhiên.\n\n**Bước 1.** Thực hiện phép chia đa thức (hoặc tách hạng tử) để viết biểu thức bị chia dưới dạng thương nhân $n-4$ cộng số dư.\n\n**Bước 2.** Suy ra điều kiện của đề tương đương với việc $n-4$ là ước của số dư, vì phần thương nhân $n-4$ luôn chia hết cho $n-4$.\n\n**Bước 3.** Liệt kê các ước của số dư, tính $n$ ứng với từng ước rồi loại những giá trị không phải số tự nhiên.\n\n**Chú ý:** Đề chỉ nhận $n\\in\\mathbb{N}$ — đừng quên loại các giá trị âm.\n\n**Phần 2. Trình bày**\n\n$25n^2-97n+11=(n-4)(25n+3)+23$.\n\nVới $n$ nguyên thì $(25n^2-97n+11)\\vdots(n-4)\\Leftrightarrow 23\\vdots(n-4)$.\n\n$n-4\\in\\{-23;-1;1;23\\}$, lần lượt cho $n=-19;3;5;27$.\n\nVì $n$ là số tự nhiên nên loại $n=-19$.\n\nVậy $S=\\{3;5;27\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức",
+   "số dư là ước"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 16, đáp số bài tập 15 §1) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.16@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm đa thức $P(x)$ biết rằng $P(x)$ chia cho $x+3$ thì dư $1$, chia cho $x-4$ thì dư $8$, chia cho $(x+3)(x-4)$ được thương là $3x$ và còn dư.",
+  "noi_dung_sach": "Tìm đa thức $P(x)$ biết rằng $P(x)$ chia cho $x+3$ thì dư $1$, chia cho $x-4$ thì dư $8$, chia cho $(x+3)(x-4)$ được thương là $3x$ và còn dư.",
+  "dap_an": "$P(x)=3x^3-3x^2-35x+4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho $(x+3)(x-4)$ được thương $3x$ nên $P(x)=3x(x+3)(x-4)+R(x)$ với dư $R(x)$ có bậc nhỏ hơn $2$; hai số dư đã cho (định lí Bê-du) chính là $R(-3)$ và $R(4)$, đủ để xác định $R(x)$.\n\n**Bước 1.** Viết $P(x)$ dưới dạng thương nhân số chia cộng dư $ax+b$, vì dư của phép chia cho tam thức bậc hai có bậc nhỏ hơn $2$.\n\n**Bước 2.** Dùng hai điều kiện về số dư: $P(-3)=1$ và $P(4)=8$; tại hai giá trị này phần thương nhân số chia bằng $0$ nên chỉ còn lại dư.\n\n**Bước 3.** Giải hệ hai phương trình bậc nhất của $a,b$ rồi khai triển để có $P(x)$ ở dạng đa thức.\n\n**Phần 2. Trình bày**\n\nVì dư của phép chia cho $(x+3)(x-4)$ có bậc nhỏ hơn $2$ nên $P(x)=3x(x+3)(x-4)+ax+b$.\n\nSố dư khi chia $P(x)$ cho $x+3$ là $1$: $P(-3)=-3a+b=1$.\n\nSố dư khi chia $P(x)$ cho $x-4$ là $8$: $P(4)=4a+b=8$.\n\nTrừ vế hai phương trình: $7a=7$, suy ra $a=1$, $b=4$.\n\n$P(x)=3x(x+3)(x-4)+x+4=3x(x^2-x-12)+x+4=3x^3-3x^2-35x+4$\n\nVậy $P(x)=3x^3-3x^2-35x+4$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du",
+   "giá trị riêng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.17a@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hằng số $a$ sao cho $4x^2-6x+a$ chia hết cho $x-3$.",
+  "noi_dung_sach": "Xác định hằng số $a$ sao cho $4x^2-6x+a$ chia hết cho $x-3$.",
+  "dap_an": "$a=-18$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức chia hết cho $x-3$ khi và chỉ khi giá trị của nó tại $x=3$ bằng $0$ (định lí Bê-du).\n\n**Bước 1.** Áp dụng định lí Bê-du: dư của phép chia cho $x-3$ chính là giá trị của đa thức tại $x=3$.\n\n**Bước 2.** Tính giá trị đó theo $a$ rồi cho bằng $0$ để lập phương trình.\n\n**Bước 3.** Giải phương trình bậc nhất vừa lập để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=4x^2-6x+a$. $P(x)$ chia hết cho $x-3$ khi và chỉ khi $P(3)=0$.\n\n$P(3)=4\\cdot 9-6\\cdot 3+a=18+a=0\\Leftrightarrow a=-18$\n\nVậy $a=-18$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.17b@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hằng số $a$ sao cho $2x^2+x+a$ chia hết cho $x+3$.",
+  "noi_dung_sach": "Xác định hằng số $a$ sao cho $2x^2+x+a$ chia hết cho $x+3$.",
+  "dap_an": "$a=-15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức chia hết cho $x+3=x-(-3)$ khi và chỉ khi giá trị của nó tại $x=-3$ bằng $0$ (định lí Bê-du).\n\n**Bước 1.** Nhận ra nghiệm của số chia là $x=-3$ rồi áp dụng định lí Bê-du.\n\n**Bước 2.** Thay $x=-3$ vào đa thức, tính theo $a$ và cho bằng $0$ để lập phương trình.\n\n**Bước 3.** Giải phương trình bậc nhất vừa lập để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=2x^2+x+a$. $P(x)$ chia hết cho $x+3$ khi và chỉ khi $P(-3)=0$.\n\n$P(-3)=2\\cdot 9-3+a=15+a=0\\Leftrightarrow a=-15$\n\nVậy $a=-15$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.17c@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hằng số $a$ sao cho $x^3+ax^2-4$ chia hết cho $x^2+4x+4$.",
+  "noi_dung_sach": "Xác định hằng số $a$ sao cho $x^3+ax^2-4$ chia hết cho $x^2+4x+4$.",
+  "dap_an": "$a=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2+4x+4=(x+2)^2$ có nghiệm kép $-2$ nên đa thức bị chia phải triệt tiêu tại $x=-2$; điều kiện này tìm ra $a$, rồi phải thử lại.\n\n**Bước 1.** Nhận ra số chia là $(x+2)^2$ và suy ra đa thức bị chia phải chia hết cho $x+2$, tức nhận giá trị $0$ tại $x=-2$.\n\n**Bước 2.** Thay $x=-2$ để lập phương trình theo $a$ rồi giải ra $a$.\n\n**Bước 3.** Thử lại bằng cách phân tích đa thức với giá trị $a$ vừa tìm, vì mới chỉ dùng điều kiện cần.\n\n**Phần 2. Trình bày**\n\nVì $x^2+4x+4=(x+2)^2$ nên nếu $P(x)=x^3+ax^2-4$ chia hết cho $x^2+4x+4$ thì $P(x)$ chia hết cho $x+2$, suy ra $P(-2)=0$.\n\n$P(-2)=-8+4a-4=4a-12=0\\Leftrightarrow a=3$\n\nThử lại: với $a=3$ thì $x^3+3x^2-4=(x-1)(x^2+4x+4)$, chia hết cho $x^2+4x+4$.\n\nVậy $a=3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giá trị riêng",
+   "Bê-du",
+   "thử lại"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.18a@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hằng số $a$ sao cho $10x^2-7x+a$ chia hết cho $2x-3$.",
+  "noi_dung_sach": "Xác định hằng số $a$ sao cho $10x^2-7x+a$ chia hết cho $2x-3$.",
+  "dap_an": "$a=-12$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $2x-3$ có nghiệm $x=\\dfrac{3}{2}$ nên đa thức bị chia chia hết cho nó khi và chỉ khi giá trị tại $x=\\dfrac{3}{2}$ bằng $0$.\n\n**Bước 1.** Tìm nghiệm của số chia $2x-3$ rồi áp dụng định lí Bê-du với nghiệm đó (chia hết cho $2x-3$ cũng là chia hết cho $x-\\dfrac{3}{2}$).\n\n**Bước 2.** Thay nghiệm vào đa thức, tính theo $a$ và cho bằng $0$ để lập phương trình.\n\n**Bước 3.** Giải phương trình bậc nhất vừa lập để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=10x^2-7x+a$. $P(x)$ chia hết cho $2x-3$ khi và chỉ khi $P\\left(\\dfrac{3}{2}\\right)=0$.\n\n$P\\left(\\dfrac{3}{2}\\right)=10\\cdot\\dfrac{9}{4}-7\\cdot\\dfrac{3}{2}+a=\\dfrac{45}{2}-\\dfrac{21}{2}+a=12+a=0\\Leftrightarrow a=-12$\n\nVậy $a=-12$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.18b@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hằng số $a$ sao cho $2x^2+ax+1$ chia cho $x-3$ dư $4$.",
+  "noi_dung_sach": "Xác định hằng số $a$ sao cho $2x^2+ax+1$ chia cho $x-3$ dư $4$.",
+  "dap_an": "$a=-5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số dư của phép chia cho $x-3$ chính là giá trị của đa thức tại $x=3$ (định lí Bê-du), nên chỉ cần cho giá trị đó bằng $4$.\n\n**Bước 1.** Áp dụng định lí Bê-du cho số chia $x-3$ để biết dư bằng giá trị của đa thức tại $x=3$.\n\n**Bước 2.** Thay $x=3$ vào đa thức rồi cho bằng số dư $4$ để lập phương trình theo $a$.\n\n**Bước 3.** Giải phương trình bậc nhất vừa lập để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=2x^2+ax+1$.\n\nSố dư của phép chia $P(x)$ cho $x-3$ là $P(3)$, nên $P(3)=4$.\n\n$P(3)=18+3a+1=4\\Leftrightarrow 3a=-15\\Leftrightarrow a=-5$\n\nVậy $a=-5$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.18c@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định hằng số $a$ sao cho $ax^5+5x^4-9$ chia hết cho $x-1$.",
+  "noi_dung_sach": "Xác định hằng số $a$ sao cho $ax^5+5x^4-9$ chia hết cho $x-1$.",
+  "dap_an": "$a=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức chia hết cho $x-1$ khi và chỉ khi giá trị của nó tại $x=1$ bằng $0$, mà tại $x=1$ mọi luỹ thừa đều bằng $1$ nên không cần khai triển.\n\n**Bước 1.** Áp dụng định lí Bê-du cho số chia $x-1$.\n\n**Bước 2.** Thay $x=1$ vào đa thức, mọi luỹ thừa của $1$ đều bằng $1$, rồi cho kết quả bằng $0$.\n\n**Bước 3.** Giải phương trình bậc nhất vừa lập để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=ax^5+5x^4-9$. $P(x)$ chia hết cho $x-1$ khi và chỉ khi $P(1)=0$.\n\n$P(1)=a+5-9=a-4=0\\Leftrightarrow a=4$\n\nVậy $a=4$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.19a@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax+b$ chia hết cho $x^2-4$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax+b$ chia hết cho $x^2-4$.",
+  "dap_an": "$a=0$; $b=-16$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2-4=(x-2)(x+2)$ có hai nghiệm $2$ và $-2$ dễ thấy, nên đa thức bị chia phải triệt tiêu tại cả hai giá trị đó; cho giá trị riêng được hai phương trình theo $a,b$.\n\n**Bước 1.** Phân tích số chia thành tích hai nhị thức để thấy hai nghiệm $2$ và $-2$.\n\n**Bước 2.** Cho đa thức bằng $0$ tại $x=2$ và $x=-2$ để lập hệ hai phương trình theo $a$ và $b$.\n\n**Bước 3.** Giải hệ rồi thử lại bằng cách phân tích đa thức với $a,b$ vừa tìm, vì hai điều kiện trên mới chỉ là điều kiện cần.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=x^4+ax+b$.\n\nVì $x^2-4=(x-2)(x+2)$ nên $P(x)$ chia hết cho $x^2-4$ thì $P(2)=0$ và $P(-2)=0$.\n\n$P(2)=16+2a+b=0$ (1)\n\n$P(-2)=16-2a+b=0$ (2)\n\nCộng (1) và (2): $32+2b=0\\Rightarrow b=-16$.\n\nLấy (1) trừ (2): $4a=0\\Rightarrow a=0$.\n\nThử lại: $x^4-16=(x^2-4)(x^2+4)$, chia hết cho $x^2-4$.\n\nVậy $a=0$, $b=-16$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giá trị riêng",
+   "Bê-du",
+   "thử lại"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.19b@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax^3+bx-1$ chia hết cho $x^2-1$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax^3+bx-1$ chia hết cho $x^2-1$.",
+  "dap_an": "$a+b=0$ (tức $a$ tuỳ ý, $b=-a$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2-1=(x-1)(x+1)$ có hai nghiệm $1$ và $-1$ nên đa thức bị chia phải triệt tiêu tại cả hai giá trị đó; hai điều kiện này có thể trùng nhau.\n\n**Bước 1.** Phân tích số chia thành tích hai nhị thức để thấy hai nghiệm $1$ và $-1$.\n\n**Bước 2.** Cho đa thức bằng $0$ tại $x=1$ và $x=-1$ rồi nhận xét xem hai phương trình thu được có độc lập hay không.\n\n**Bước 3.** Thử lại bằng cách phân tích đa thức với điều kiện tìm được, vì mới chỉ dùng điều kiện cần.\n\n**Chú ý:** Hai phương trình trùng nhau thì hệ có vô số nghiệm — không được ép ra một cặp $a,b$ duy nhất.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=x^4+ax^3+bx-1$.\n\nVì $x^2-1=(x-1)(x+1)$ nên $P(x)$ chia hết cho $x^2-1$ thì $P(1)=0$ và $P(-1)=0$.\n\n$P(1)=1+a+b-1=a+b=0$\n\n$P(-1)=1-a-b-1=-(a+b)=0$\n\nHai điều kiện cùng là $a+b=0$, tức $b=-a$.\n\nThử lại: với $b=-a$ thì $P(x)=x^4-1+ax(x^2-1)=(x^2-1)(x^2+1+ax)$, chia hết cho $x^2-1$.\n\nVậy điều kiện là $a+b=0$ (với $a$ tuỳ ý, $b=-a$).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giá trị riêng",
+   "Bê-du",
+   "thử lại"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.19c@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^3+ax+b$ chia hết cho $x^2+2x-2$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $x^3+ax+b$ chia hết cho $x^2+2x-2$.",
+  "dap_an": "$a=-6$; $b=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $x^2+2x-2$ không có nghiệm hữu tỉ nên không dùng giá trị riêng gọn được; ta chia đa thức đặt tính rồi cho dư bằng $0$.\n\n**Bước 1.** Sắp xếp theo luỹ thừa giảm dần và chia từng bước, nhớ viết cả hạng tử thiếu $0x^2$.\n\n**Bước 2.** Dừng khi dư có bậc nhỏ hơn bậc số chia, được dư dạng $mx+n$ với $m,n$ phụ thuộc $a,b$.\n\n**Bước 3.** Cho cả hai hệ số của dư bằng $0$ rồi giải hai phương trình để tìm $a$ và $b$.\n\n**Phần 2. Trình bày**\n\n$x^3+ax+b-x(x^2+2x-2)=-2x^2+(a+2)x+b$\n\n$-2x^2+(a+2)x+b+2(x^2+2x-2)=(a+6)x+(b-4)$\n\nVậy $x^3+ax+b=(x^2+2x-2)(x-2)+(a+6)x+(b-4)$.\n\nPhép chia hết khi dư bằng $0$ với mọi $x$, tức $a+6=0$ và $b-4=0$.\n\nVậy $a=-6$, $b=4$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chia đa thức đặt tính",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.20a@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $ax^4+bx^3+1$ chia hết cho $(x-1)^2$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $ax^4+bx^3+1$ chia hết cho $(x-1)^2$.",
+  "dap_an": "$a=3$; $b=-4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia hết cho $(x-1)^2$ thì trước hết phải chia hết cho $x-1$, nên $P(1)=0$ cho một hệ thức giữa $a,b$; sau đó tách một nhân tử $x-1$ ra và dùng Bê-du lần nữa cho thương.\n\n**Bước 1.** Dùng định lí Bê-du với nghiệm $x=1$ để rút $b$ theo $a$.\n\n**Bước 2.** Thay $b$ vào rồi phân tích đa thức thành $(x-1)$ nhân một đa thức bậc ba theo $a$.\n\n**Bước 3.** Đa thức đã chia hết cho $(x-1)^2$ khi đa thức bậc ba còn lại chia hết cho $x-1$, dùng Bê-du lần nữa để tìm $a$ rồi suy ra $b$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=ax^4+bx^3+1$.\n\nVì $P(x)$ chia hết cho $(x-1)^2$ nên chia hết cho $x-1$, suy ra $P(1)=a+b+1=0$, tức $b=-a-1$.\n\nKhi đó $P(x)=ax^4-(a+1)x^3+1=ax^3(x-1)-(x^3-1)=(x-1)(ax^3-x^2-x-1)$.\n\n$P(x)$ chia hết cho $(x-1)^2$ khi và chỉ khi $Q(x)=ax^3-x^2-x-1$ chia hết cho $x-1$, tức $Q(1)=a-3=0$.\n\nSuy ra $a=3$ và $b=-a-1=-4$.\n\nVậy $a=3$, $b=-4$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du",
+   "giá trị riêng",
+   "hệ số bất định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.20b@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+4$ chia hết cho $x^2+ax+b$.",
+  "noi_dung_sach": "Xác định các hằng số $a$ và $b$ sao cho $x^4+4$ chia hết cho $x^2+ax+b$.",
+  "dap_an": "$a=\\pm2$; $b=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x^4+4$ phân tích được thành tích hai tam thức bậc hai bằng cách thêm bớt $4x^2$; để chắc không sót và không thừa trường hợp nào, ta đặt thương cũng là tam thức bậc hai rồi đồng nhất hệ số.\n\n**Bước 1.** Phân tích $x^4+4$ bằng cách thêm bớt $4x^2$ để dự đoán các tam thức có thể làm số chia.\n\n**Bước 2.** Đặt $x^4+4=(x^2+ax+b)(x^2+cx+d)$, khai triển rồi đồng nhất hệ số từng luỹ thừa của $x$ để lập hệ bốn phương trình.\n\n**Bước 3.** Giải hệ bằng cách xét hai trường hợp phát sinh từ phương trình chứa tích $a(d-b)$, loại trường hợp vô lí rồi rút ra $a,b$.\n\n**Phần 2. Trình bày**\n\nVì $x^2+ax+b$ là ước bậc hai có hệ số cao nhất bằng $1$ của $x^4+4$ nên $x^4+4=(x^2+ax+b)(x^2+cx+d)$ với mọi $x$.\n\nKhai triển: $x^4+4=x^4+(a+c)x^3+(b+d+ac)x^2+(ad+bc)x+bd$.\n\nĐồng nhất hệ số: $a+c=0$, $b+d+ac=0$, $ad+bc=0$, $bd=4$.\n\nTừ $c=-a$ ta được $b+d=a^2$ và $a(d-b)=0$.\n\nNếu $a=0$: $b+d=0$ và $bd=4$, suy ra $-b^2=4$, vô lí.\n\nNếu $d=b$: $b^2=4$ và $2b=a^2\\ge0$, nên $b=2$ và $a^2=4$, tức $a=\\pm2$.\n\nThử lại: $x^4+4=(x^2+2x+2)(x^2-2x+2)$.\n\nVậy $a=2$, $b=2$ hoặc $a=-2$, $b=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ số bất định",
+   "phân tích $x^4+4$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T1B.21a@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $49^{12}:7^4$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $49^{12}:7^4$.",
+  "dap_an": "$7^{20}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $49=7^2$ nên đưa $49^{12}$ về luỹ thừa cơ số $7$ rồi chia hai luỹ thừa cùng cơ số.\n\n**Bước 1.** Viết $49$ thành luỹ thừa của $7$ để hai thừa số cùng cơ số.\n\n**Bước 2.** Dùng $(a^m)^n=a^{mn}$ để tính số mũ mới của $7$ ở số bị chia.\n\n**Bước 3.** Chia hai luỹ thừa cùng cơ số bằng cách lấy hiệu hai số mũ.\n\n**Phần 2. Trình bày**\n\n$49^{12}:7^4$\n\n$=(7^2)^{12}:7^4$\n\n$=7^{24}:7^4$\n\n$=7^{20}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.21b@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Rút gọn biểu thức: $\\left(\\dfrac{25}{16}\\right)^{25}:\\left(\\dfrac{5}{4}\\right)^{50}$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $\\left(\\dfrac{25}{16}\\right)^{25}:\\left(\\dfrac{5}{4}\\right)^{50}$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $\\dfrac{25}{16}=\\left(\\dfrac{5}{4}\\right)^2$ nên đưa số bị chia về luỹ thừa của $\\dfrac{5}{4}$ rồi so sánh hai số mũ.\n\n**Bước 1.** Nhận ra $\\dfrac{25}{16}$ là bình phương của $\\dfrac{5}{4}$ để hai thừa số có thể cùng cơ số.\n\n**Bước 2.** Dùng $(a^m)^n=a^{mn}$ để tính số mũ mới của $\\dfrac{5}{4}$ ở số bị chia.\n\n**Bước 3.** So sánh với số mũ của số chia: hai luỹ thừa cùng cơ số và cùng số mũ thì thương của chúng bằng bao nhiêu.\n\n**Phần 2. Trình bày**\n\n$\\left(\\dfrac{25}{16}\\right)^{25}:\\left(\\dfrac{5}{4}\\right)^{50}$\n\n$=\\left[\\left(\\dfrac{5}{4}\\right)^2\\right]^{25}:\\left(\\dfrac{5}{4}\\right)^{50}$\n\n$=\\left(\\dfrac{5}{4}\\right)^{50}:\\left(\\dfrac{5}{4}\\right)^{50}$\n\n$=1$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.21c@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $\\left(\\dfrac{3}{4}\\right)^{25}:\\left(\\dfrac{9}{16}\\right)^{10}$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $\\left(\\dfrac{3}{4}\\right)^{25}:\\left(\\dfrac{9}{16}\\right)^{10}$.",
+  "dap_an": "$\\left(\\dfrac{3}{4}\\right)^5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $\\dfrac{9}{16}=\\left(\\dfrac{3}{4}\\right)^2$ nên đưa số chia về luỹ thừa của $\\dfrac{3}{4}$ rồi dùng luật chia hai luỹ thừa cùng cơ số.\n\n**Bước 1.** Nhận ra $\\dfrac{9}{16}$ là bình phương của $\\dfrac{3}{4}$ để hai thừa số có thể cùng cơ số.\n\n**Bước 2.** Dùng $(a^m)^n=a^{mn}$ để viết số chia thành luỹ thừa của $\\dfrac{3}{4}$ với số mũ nhân đôi.\n\n**Bước 3.** Chia hai luỹ thừa cùng cơ số bằng cách lấy hiệu hai số mũ.\n\n**Phần 2. Trình bày**\n\n$\\left(\\dfrac{3}{4}\\right)^{25}:\\left(\\dfrac{9}{16}\\right)^{10}$\n\n$=\\left(\\dfrac{3}{4}\\right)^{25}:\\left[\\left(\\dfrac{3}{4}\\right)^2\\right]^{10}$\n\n$=\\left(\\dfrac{3}{4}\\right)^{25}:\\left(\\dfrac{3}{4}\\right)^{20}$\n\n$=\\left(\\dfrac{3}{4}\\right)^5$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T1B.22a@p13",
+  "lo": 8,
+  "khoi": "8T",
+  "dang_chinh": "T18T010402",
+  "nhom_soan": "T18T010402",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định số $a$ sao cho $27x^2+a$ chia hết cho $3x+2$.",
+  "noi_dung_sach": "Xác định số $a$ sao cho $27x^2+a$ chia hết cho $3x+2$.",
+  "dap_an": "$a=-12$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $3x+2$ có nghiệm $x=-\\dfrac{2}{3}$ nên đa thức bị chia chia hết cho nó khi và chỉ khi giá trị tại $x=-\\dfrac{2}{3}$ bằng $0$ (định lí Bê-du).\n\n**Bước 1.** Tìm nghiệm của số chia $3x+2$ rồi áp dụng định lí Bê-du với nghiệm đó.\n\n**Bước 2.** Thay nghiệm vào đa thức, tính theo $a$ và cho bằng $0$ để lập phương trình.\n\n**Bước 3.** Giải phương trình bậc nhất vừa lập để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $P(x)=27x^2+a$. $P(x)$ chia hết cho $3x+2$ khi và chỉ khi $P\\left(-\\dfrac{2}{3}\\right)=0$.\n\n$P\\left(-\\dfrac{2}{3}\\right)=27\\cdot\\dfrac{4}{9}+a=12+a=0\\Leftrightarrow a=-12$\n\nVậy $a=-12$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bê-du"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 13): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ }
+]
