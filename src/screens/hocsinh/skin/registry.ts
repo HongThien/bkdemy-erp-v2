@@ -13,7 +13,8 @@ export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau, MauDoc } from './kieu
 
 // Khối dùng Home mới + tự chọn skin. Thùy 28/09 tối: MỌI skin mở cho MỌI em, không giới hạn tuổi ("lớp 6 vẫn thích anime")
 // — nhóm tuổi chỉ là chuẩn để THIẾT KẾ skin. Cấp 1 (3–5) còn HomeCap1 riêng cho iPad, chưa chuyển. Khối lấy từ hs_khoi_cua_toi.
-export const KHOI_CHON_SKIN = new Set(['6', '7', '8', '9', '10', '11', '12'])
+// Thùy 11/10: cấp 1 (3–5, kể cả 4T/5T) DÙNG CHUNG màn chính + style như cấp 2 — bỏ HomeCap1 riêng.
+export const KHOI_CHON_SKIN = new Set(['3', '4', '4T', '5', '5T', '6', '7', '8', '9', '10', '11', '12'])
 
 // Thùy 29/09: 4 skin thử (Tối giản · Đấu trường · Y2K · Soft Hàn) đã XOÁ — chỉ Anime RPG dùng thật; style mới thêm vào đây.
 // Thùy 02/10: dựng lại Tối giản (đơn sắc, nền trơn) cho em không thích rối mắt.
@@ -25,7 +26,8 @@ export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng
 /** STYLE + ẢNH NỀN MẶC ĐỊNH THEO KHỐI (Thùy 09/10): lớp 4–7 = Khối vuông (Minecraft) · lớp 8–12 (và khối khác) = Anime RPG.
  *  Chỉ là mặc định khi em CHƯA tự chọn (chưa có dòng hs_giao_dien); em đã chọn thì lựa chọn của em thắng. */
 export function skinMacDinhTheoKhoi(khoi: string | null | undefined): SkinId {
-  return khoi === '4' || khoi === '5' || khoi === '6' || khoi === '7' ? 'khoi' : SKIN_MAC_DINH
+  const so = parseInt(khoi ?? '', 10)   // '4T' · '5T' = lớp 4/5 nâng cao ⇒ cũng tính
+  return so >= 4 && so <= 7 ? 'khoi' : SKIN_MAC_DINH
 }
 // id = null/undefined ⇒ style ĐANG ÁP (KhungHS.ganBien gắn khi app HS chạy; chưa gắn — vd trang game mở riêng — ⇒ mặc định).
 // 07/10: trước đây null rơi THẲNG về mặc định ⇒ mọi màn gọi laySkin(null) (khu Học tập, Chinh phục, quái/boss 2D…) luôn vẽ hình RPG

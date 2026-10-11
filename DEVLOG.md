@@ -36863,3 +36863,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Chuyên đề `T15T0301` giờ có 30 câu (3 · 4 · 12 · 11), dạng chờ 5T còn 819. `k5T.md` §8.1 + §9 đã ghi luật.
 - **Sai / sửa:** lượt đầu tôi (Opus) xếp 6 câu này vào dạng cơ bản theo "phương pháp thắng chủ đề"; CEO chốt ngược lại — với dạng này dấu hiệu đề thắng. Lượt gán mù Sonnet đã đúng.
 - **Treo, hỏi CEO:** ON 67 (thêm bao nhiêu người để xong sớm) · LT 5.1 (thêm xe) · LT 5.7 (thêm máy bơm) đang ở dạng cơ bản — có sang `030104` không.
+
+## 11/10 — Cấp 1 dùng CHUNG màn chính + style với cấp 2
+- **Thùy:** "Đổi UI của học sinh cấp 1 giống cấp 2."
+- **Trước:** khối 3–5 (`hs_cap1_cua_toi`: '3','4','4T','5','5T') chạy `HomeCap1` riêng (iPad-first, 6 ô cố định, 1 skin) — không chọn style/hình nền, không banner Chuỗi chuẩn, không công tắc tính năng đầy đủ.
+- **Sau:** `KHOI_CHON_SKIN` thêm 3/4/4T/5/5T ⇒ `nhom912 = true` ⇒ cấp 1 đi cùng đường `HomeHS912` (ngang/dọc, chọn style + hình nền, banner Chuỗi, ô theo `KHU_CAP2` + công tắc, Lộc/tutorial). `cards` dùng `KHU_CAP2` cho `cap2 || cap1`. `HomeCap1` chỉ còn là đường lùi khi không xác định được khối (`cap1 && !nhom912`). `skinMacDinhTheoKhoi` parse số đầu ⇒ '4T'/'5T' cũng ra Minecraft (trước đó chỉ '4'/'5' — lỗi bỏ sót nhóm 4T/5T, 22 HS).
+- **Chủ ý KHÔNG đổi:** Thế giới BK (mạng xã hội khoe) vẫn ẨN với cấp 1 (`oMo('the_gioi') = false` khi cap1) — cấp 1 trước nay không có, không tự thêm tính năng xã hội cho em nhỏ; chờ Thùy quyết. Màn BXH cấp 1 vẫn là `BangXepHang` cũ (khung desktop); `LamBai/LamThuThach desktop={!!cap1}` giữ nguyên (bố cục rộng cho iPad).
+- **Chưa kiểm:** chưa có tài khoản cấp 1 thật để xem (chỉ tsc + check:style-hs + xem thử HomeHS912).

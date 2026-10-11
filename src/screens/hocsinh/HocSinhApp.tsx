@@ -480,7 +480,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tn, setTn] = useState<TinhNangMo | undefined>(undefined)
   useEffect(() => { if (direct === null) tinhNangMoCuaToi().then(setTn).catch(() => setTn((c) => c ?? 'tat_ca')) }, [direct])
   const moTN = (ma: string) => tn === 'tat_ca' || (!!tn && tn.has(ma))
-  const oMo = (id: string) => !MA_TINH_NANG_O[id] || moTN(MA_TINH_NANG_O[id])
+  // Thế giới BK (mạng xã hội khoe) CHƯA mở cho cấp 1 — cấp 1 trước nay không có; dùng chung màn chính với cấp 2 từ 11/10 nhưng không tự thêm tính năng xã hội cho em nhỏ.
+  const oMo = (id: string) => (id === 'the_gioi' && !!cap1) ? false : (!MA_TINH_NANG_O[id] || moTN(MA_TINH_NANG_O[id]))
   const rankMo = () => rankBat() && moTN('rank')
   // NÚT GÓP Ý NỔI (ở mọi màn): báo cho nút biết em đang ở màn nào + nghe yêu cầu "Xem góp ý của em" từ tấm nhập nhanh.
   useEffect(() => { datMan(direct ?? (khu ? `khu_${khu}` : 'man_chinh')) }, [direct, khu])
@@ -790,7 +791,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const coQuay = moTN('nhiem_vu') && (maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay))
   const moiQuay = <><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
     {tutXong && tutXong.size > 0 && <LocMoi n={chuongMoi.length} ten={NGUOI_DAN_LOC} onMo={() => { tutLanDau.current = false; setTutDs(chuongMoi.map((c) => c.id)); setDirect('tutorial') }} />}</>
-  if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
+  // Cấp 1 DÙNG CHUNG màn chính với cấp 2 (Thùy 11/10): HomeCap1 chỉ còn là đường lùi khi không xác định được khối để chọn style.
+  if (!khu && cap1 && !nhom912) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>
       {moTN('chuoi') && chuoi && <div className="mt-5"><BannerChuoi c={chuoi} onLuyen={() => setDirect('tu_luyen_chon')} /></div>}
@@ -820,7 +822,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
         onClick: () => setDirect('htd_chu_de') }]
     : []
   if (!khu) {
-    const cards: HomeCard[] = chenRieng(cap2
+    const cards: HomeCard[] = chenRieng(cap2 || cap1
       ? [...KHU_CAP2.filter((k) => !anO.has(k.id)).map((k) => {
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
@@ -875,7 +877,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       onGopY={() => { setTuHoSo(false); setDirect('gop_y') }} gopYMoi={gopYMoi}
       onTutorial={() => { tutLanDau.current = false; setTutDs(null); setDirect('tutorial') }}
       chuoi={moTN('chuoi') ? chuoi : null} onLuyenChuoi={() => setDirect('tu_luyen_chon')}
-      theGioi={tgHome} onTheGioi={moTN('the_gioi') ? () => setDirect('the_gioi') : undefined}
+      theGioi={tgHome} onTheGioi={moTN('the_gioi') && !cap1 ? () => setDirect('the_gioi') : undefined}
       rank={moTN('rank') && rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTN('rank') ? moTuHome('rank') : undefined} /></>
     return <>{moiQuay}<HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
