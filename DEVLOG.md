@@ -36890,3 +36890,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   kho_doi_dang_log. `fn_btyeu_ca_ta` ẩn dạng đã đóng mà đã xoá khỏi bản đồ. Kết quả: 2 đổi mã, 1 đóng; còn lệch 0. Thử xoá dạng còn câu: FK chặn
   ⇒ câu luôn chuyển đi trước khi xoá dạng, mapping luôn có lúc trigger chạy.
 - **Cũng kiểm 10/10:** bản prod — HS đã lên (19:18), ERP có suất bậc lớp (08:06), **TA còn bản 03/10** (Thùy dính GitHub rate limit lúc deploy).
+
+## 11/10 (tiếp) — Mọi cấp cùng 1 UI
+- **Thùy:** "tất cả các cấp UI giống nhau luôn" (sau khi cấp 1 đã dùng chung màn chính với cấp 2).
+- **Còn lệch sau bước 1 → gỡ:** (1) Bảng xếp hạng: cấp 1 dùng `BangXepHang` cũ, cấp 2–3 dùng `BangXepHangHS` ⇒ MỌI cấp `BangXepHangHS` (test rollback `fn_bxh_danh_muc` + `fn_bxh` với HS khối 3/4T/5: trả dữ liệu đúng; lớp nhỏ nên ít người). `BangXepHang` cũ giữ code, `export` để không lỗi unused — chờ Thùy duyệt mới xoá. (2) Khung làm bài rộng `desktop={!!cap1}` ×4 (LamThuThach · LamTuLuyen · LamHTD · CaBoTroHS) ⇒ theo MÀN HÌNH `useMedia('(min-width:768px)')` — iPad/laptop khung rộng cho mọi cấp, điện thoại khung hẹp cho mọi cấp. (3) Bỏ ngoại lệ ẩn Thế giới BK với cấp 1 (hôm qua tôi giữ ẩn, Thùy nay muốn đồng nhất) — Thế giới BK theo công tắc `the_gioi` như mọi cấp.
+- **KHÔNG đổi (khác biệt CHỨC NĂNG, không phải UI):** khối 10–12 còn thêm 3 ô Bài tập trên lớp · ET · BTVN (`KHU` cũ — việc thầy cô giao, HS làm online); cấp 1–2 ẩn 3 ô đó theo quyết định 11/09. Muốn bỏ hẳn cho khối 10–12 ⇒ Thùy chốt riêng (mất đường làm ET/BTVN online).
+- **Chưa kiểm:** tài khoản HS cấp 1 thật · màn rộng ≥768 của cấp 2–3 (khung desktop nay áp cho cả họ — trước đây chỉ cấp 1).
