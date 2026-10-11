@@ -9,10 +9,67 @@ import { useEffect, useState } from 'react'
 import { listCauByDang, listCumBai, coCumBai, tenCum, LOAI_CAU, type CauHoi, type CumBai } from '../lib/kho/api'
 import { cauUsage } from '../lib/tailieu'
 import { MathText } from '../screens/kho/ui'
+import { splitStem } from '../screens/tailieu/PrintView'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 function MaCau({ ma }: { ma: string }) {
   return <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
+}
+
+// Khối xem nhanh TOÀN NỘI DUNG 1 câu trong Picker — Thùy 11/10 "phải hiện full đề, hình và đáp án
+// trắc nghiệm nếu có chứ mới nhìn rõ". Tái dùng splitStem để tách ĐỀ + ý con / đáp án nhúng, kèm:
+//   · menh_de (câu Đúng/Sai) với nhãn Đ/S highlight · lua_chon (TN) với ✓ ở đáp án đúng · ảnh đề.
+// KHÔNG hiện lời giải / ảnh đáp án đầy đủ (đã đủ dữ kiện để chọn đúng câu; đỡ phình label).
+function CauPreview({ c }: { c: CauHoi }) {
+  const md = c.menh_de && c.menh_de.length ? c.menh_de : null
+  const hasOpts = !!(c.lua_chon && c.lua_chon.length)
+  const { stem, grid, emb } = splitStem(c)
+  const letter = (i: number) => String.fromCharCode(65 + i)
+  const dap = (c.dap_an ?? '').trim().toUpperCase()
+  return (
+    <div className="space-y-1.5">
+      <div className="text-[14px] leading-relaxed text-slate-700"><MathText>{md ? c.noi_dung : stem}</MathText></div>
+      {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto block max-h-56 w-auto max-w-full rounded-lg border border-slate-200" />}
+      {!md && grid && (
+        <div className="grid grid-cols-1 gap-x-3 gap-y-0.5 text-[13px] text-slate-700 sm:grid-cols-2">
+          {grid.map((p, i) => (
+            <div key={i} className="flex gap-1.5">
+              {p.lbl && <b className="shrink-0 text-slate-500">{p.lbl}{emb ? '.' : ')'}</b>}
+              <span className="min-w-0 flex-1"><MathText>{p.body}</MathText></span>
+            </div>
+          ))}
+        </div>
+      )}
+      {md && (
+        <ol className="space-y-0.5 text-[13px] text-slate-700">
+          {md.map((m, i) => (
+            <li key={i} className="flex gap-1.5">
+              <b className="shrink-0 text-slate-500">{String.fromCharCode(97 + i)})</b>
+              <span className="min-w-0 flex-1"><MathText>{m.noi_dung}</MathText></span>
+              <span className={`shrink-0 rounded px-1.5 text-[11px] font-semibold ${m.dap_an === 'D' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>{m.dap_an === 'D' ? 'Đúng' : 'Sai'}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+      {!md && hasOpts && (
+        <div className="grid grid-cols-1 gap-x-3 gap-y-0.5 text-[13px] sm:grid-cols-2">
+          {c.lua_chon!.map((o, i) => {
+            const correct = dap === letter(i)
+            return (
+              <div key={i} className={`flex gap-1.5 rounded px-1.5 py-0.5 ${correct ? 'bg-emerald-50 text-emerald-800' : 'text-slate-700'}`}>
+                <b className="shrink-0">{letter(i)}.</b>
+                <span className="min-w-0 flex-1"><MathText>{o}</MathText></span>
+                {correct && <span className="shrink-0 font-bold text-emerald-600">✓</span>}
+              </div>
+            )
+          })}
+        </div>
+      )}
+      {!md && !hasOpts && dap && (
+        <div className="text-[12.5px] text-slate-600"><b className="text-slate-500">Đáp án: </b><MathText>{c.dap_an!}</MathText></div>
+      )}
+    </div>
+  )
 }
 
 // Sắp câu của 1 dạng theo cụm: từng cụm 1 nhóm (theo thu_tu của cụm), câu chưa phân cụm CUỐI.
@@ -87,20 +144,21 @@ export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_
                 const n = usage.get(c.ma_cau) ?? 0
                 return (
                   <label key={c.ma_cau} title={isBlocked ? 'Câu này đã dùng trong buổi này / buổi trước — không chọn lại' : undefined}
-                    className={`flex flex-col gap-1.5 rounded-md border px-2.5 py-1.5 ${isBlocked ? 'cursor-not-allowed border-slate-100 bg-slate-50 opacity-55' : sel.has(c.ma_cau) ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
+                    className={`flex flex-col gap-2 rounded-md border px-3 py-2 ${isBlocked ? 'cursor-not-allowed border-slate-100 bg-slate-50 opacity-55' : sel.has(c.ma_cau) ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
                     <div className="flex items-start gap-2">
                       <input type="checkbox" checked={sel.has(c.ma_cau)} disabled={isBlocked} onChange={() => toggle(c.ma_cau)} className="mt-1" />
                       <MaCau ma={c.ma_cau} />
-                      <span className="min-w-0 flex-1 text-[14px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
-                      {isBlocked
-                        ? <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600">đã dùng</span>
-                        : <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${n > 0 ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'}`} title="Số lượt câu này đã dùng trong các tài liệu ở Kho">{n > 0 ? `dùng ${n}×` : 'chưa dùng'}</span>}
-                      <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
+                      <span className="ml-auto flex items-center gap-1.5">
+                        {isBlocked
+                          ? <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600">đã dùng</span>
+                          : <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${n > 0 ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'}`} title="Số lượt câu này đã dùng trong các tài liệu ở Kho">{n > 0 ? `dùng ${n}×` : 'chưa dùng'}</span>}
+                        <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
+                      </span>
                     </div>
-                    {/* ⭐ 16/09 (CEO): "Lúc chọn câu phải có hình mới chọn được" — câu có ảnh đề phải hiện
-                        ĐẦY ĐỦ ở KhoPicker (chứ không chỉ text) để chọn câu đúng bằng hình. Áp cho mọi nhánh
-                        có `anh_de` (Đại/KHTN/HGT/Hình học). Ảnh block, giới hạn max-h để không lấn scroll. */}
-                    {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto block max-h-56 w-auto max-w-full rounded-lg border border-slate-200" />}
+                    {/* ⭐ 11/10 (Thùy): PICKER phải hiện FULL đề + hình + đáp án TN (nếu có) chứ mới nhìn
+                        rõ để chọn. Trước đây chỉ text ngắn + ảnh đề — không thấy A/B/C/D, không thấy Đ/S
+                        của câu đúng/sai, không tách được đáp án nhúng trong đề. CauPreview xử tất. */}
+                    <CauPreview c={c} />
                   </label>
                 )
               }
