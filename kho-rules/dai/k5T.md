@@ -296,15 +296,18 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 | `030101` Cơ bản về tỉ lệ thuận | hai đại lượng cùng tăng cùng giảm; rút về 1 đơn vị rồi nhân / chia | VD 5.1 · LT 5.1 · ON 66 |
 | `030102` Cơ bản về tỉ lệ nghịch | một đại lượng không đổi (cả công việc / số tiền / số gạo) = tích hai đại lượng kia; tính tích rồi chia | VD 5.2 · LT 5.6 · LT 5.7 · ON 67 |
 | `030103` Tỉ lệ kép | BA đại lượng cùng đổi (người – ngày – sản phẩm…); rút về "1 người trong 1 ngày" (§2b dòng C) | VD 5.3 · LT 5.13–5.21 · ON 70 · ON 71 |
-| `030104` Thay đổi số người | số người đổi GIỮA CHỪNG (làm / ăn được mấy ngày rồi mới thêm, bớt người) ⇒ xét phần việc / số gạo CÒN LẠI | LT 5.10 · LT 5.11 · LT 5.12 · ON 68 · ON 69 |
+| `030104` Thay đổi số người | đề có SỰ KIỆN đổi số người (thêm người đến / bớt người đi), **hai loại, cùng một dạng**: ① đổi **từ đầu** (tính số người mới, hoặc tìm số người thêm / bớt) · ② đổi **giữa chừng** (làm / ăn được mấy ngày rồi mới đổi ⇒ xét phần việc / số gạo CÒN LẠI) | ① LT 5.2 · 5.3 · 5.4 · 5.5 · 5.8 · 5.9 · ② LT 5.10 · 5.11 · 5.12 · ON 68 · ON 69 |
 
-- "Cần **thêm** bao nhiêu xe / máy / người để…" mà chỉ là phép trừ ở bước cuối (LT 5.1, LT 5.7, ON 67) ⇒ vẫn là dạng cơ bản — hai trạm cùng ý.
-- **⏳ CHỜ CEO CHỐT RANH GIỚI `030104` (6 câu đang ở dạng chờ):** LT 5.2 · LT 5.3 · LT 5.4 · LT 5.5 (tỉ lệ thuận) · LT 5.8 · LT 5.9 (tỉ lệ nghịch) —
-  đề có thêm / bớt người **ngay từ đầu** (không chia hai giai đoạn), lời giải là đúng một phép tỉ lệ cơ bản cộng một phép cộng / trừ.
-  Trạm làm (Opus) xếp dạng cơ bản theo luật "phương pháp thắng"; trạm gán mù (Sonnet) xếp `030104` vì đề có sự kiện đổi số người. Hai trạm lệch ⇒ chưa gán.
+- **⭐ CEO chốt 11/10:** *"thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* ⇒ bài có thêm / bớt người vào `030104`
+  dù lời giải chỉ là một phép tỉ lệ cơ bản cộng một phép cộng / trừ, dù nền là tỉ lệ thuận (LT 5.2–5.5) hay tỉ lệ nghịch (LT 5.8, 5.9).
+  Ở đây **dấu hiệu đề thắng "phương pháp"** — ngoại lệ có chủ ý của luật "phương pháp thắng chủ đề". (Trước khi CEO chốt: Opus xếp 6 câu này vào dạng cơ bản, Sonnet gán mù xếp `030104`.)
+- **⏳ Còn hỏi CEO (3 câu đang ở dạng cơ bản, hai trạm cùng ý lúc chưa có luật trên):** ON 67 ("muốn xong trong 16 ngày thì cần **thêm** bao nhiêu người nữa") ·
+  LT 5.1 ("phải huy động **thêm** bao nhiêu xe") · LT 5.7 ("cần sử dụng **thêm** bao nhiêu máy bơm") — cùng khuôn với LT 5.4 / 5.8 (tìm lượng thêm), nhưng đề đổi MỤC TIÊU
+  (số ngày, số tấn, số giờ) chứ không kể sự kiện người đến / đi, và LT 5.1, 5.7 là xe / máy chứ không phải người.
 - **Không thuộc chuyên đề này, để nguyên dạng chờ** (tỉ lệ thuận chỉ là một bước của bài khác): LT 11.7 · LT 11.12 · LT 20.7 · LT 22.5 · LT 22.14
   (diện tích rồi mới "cứ … thì …") · LT 17.12 · LT 17.13 (tỉ số %) · VD 28.1–28.2 · LT 28.4 · 28.6–28.9 (chuyển động: vận tốc – thời gian) — chờ bản đồ các chuyên đề ấy.
-- Dữ liệu lượt gán: `lo/k5T-gan-tile.json` (30 câu: 24 gán, 6 lệch). Sau lượt này dạng chờ 5T còn 825 câu.
+- Dữ liệu lượt gán: `lo/k5T-gan-tile.json` (30 câu: 24 gán, 6 lệch) · `lo/k5T-gan-tile-2.json` (6 câu lệch, gán sau khi CEO chốt). Cả 30 câu đã vào bản đồ
+  (`030101`: 3 · `030102`: 4 · `030103`: 12 · `030104`: 11). Dạng chờ 5T còn 819 câu.
 
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
@@ -324,3 +327,4 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 | 09/10 | Lô sách 2 — 2 câu hỏi | *"1. Kiểu 1. 2. Có, viết thêm cho dễ hiểu."* | §2b dòng G chốt ①; §1: nhân hai tỉ số phần trăm viết thêm bước đổi số thập phân — đã sửa lô 2 câu 24, 26. |
 | 09/10 | Lô 3 + lô 4 — 4 câu hỏi | *"1. OK · 2. Câu đấy nên viết đầy đủ là Tam giác AMC và ABC có chung đường cao hạ từ … suy ra … · 3. Vẽ được sơ đồ minh hoạ là chuẩn. Bài chuyển động rất cần · 4. Bài thêm bớt chữ số bên trái bên phải là bài toán tỉ số, giải kiểu sơ đồ được. Còn bài đề cho cấu tạo số thì giải như cấu tạo số."* | §1: hình hỏng vẽ lại bằng code; tỉ số diện tích viết đầy đủ câu (sửa lô 3, 7 dòng); chuyển động bắt buộc sơ đồ minh hoạ — máy vẽ mới `so-do-chuyen-dong.mjs`, chèn 11 câu lô 4; cấu tạo số tách 2 loại. |
 | 09/10 | Cả 4 lô sách (101 câu) | *"OK rồi. Lên V1 thôi."* | **v1.** Sang bước 2: giải toàn bộ sách theo dây chuyền README §2b, ghi dạng chờ. |
+| 11/10 | Gán dạng chuyên đề Tỉ lệ thuận – nghịch: 6 câu thêm / bớt người từ đầu (LT 5.2–5.5, 5.8, 5.9) | *"Thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* | §8.1: `030104` gồm cả hai loại; ở dạng này dấu hiệu đề (có người đến / đi) thắng phương pháp. 6 câu đã gán `030104`. |

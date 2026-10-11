@@ -1,0 +1,72 @@
+{
+ "khoi": "5T",
+ "chuyen_de": "T15T0301 Tỉ lệ thuận - Tỉ lệ nghịch (CEO tạo 11/10) — lượt 2: 6 câu sau khi CEO chốt ranh giới 030104",
+ "lan_chay": "gan-opus-5T-tile-2-20261011",
+ "model": "claude-opus-5-5",
+ "kiem": {
+  "model": "claude-sonnet-5-5",
+  "lan_chay": "gan-mu-sonnet-5T-tile-20261011"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000214",
+   "ma_nguon": "LT 5.2",
+   "dang": "T15T030104",
+   "ly_do": "CEO chốt 11/10: \"thay đổi số người\" gồm đổi TỪ ĐẦU và đổi GIỮA CHỪNG — cùng tư duy nên dạy cùng nhau (trước đó trạm làm xếp T15T030101)",
+   "dang_mu": "T15T030104",
+   "chac_mu": "vua",
+   "ly_do_mu": "Tổ có thêm 4 công nhân đến, phải tính số người mới rồi suy ra sản phẩm; cốt lõi là số người thay đổi.",
+   "dang_truoc_khi_ceo_chot": "T15T030101"
+  },
+  {
+   "ma_cau": "T15T000000215",
+   "ma_nguon": "LT 5.3",
+   "dang": "T15T030104",
+   "ly_do": "CEO chốt 11/10: \"thay đổi số người\" gồm đổi TỪ ĐẦU và đổi GIỮA CHỪNG — cùng tư duy nên dạy cùng nhau (trước đó trạm làm xếp T15T030101)",
+   "dang_mu": "T15T030104",
+   "chac_mu": "vua",
+   "ly_do_mu": "Ngày hai có thêm 5 người, tính số người mới rồi suy ra số mét đường; cốt lõi là số người thay đổi.",
+   "dang_truoc_khi_ceo_chot": "T15T030101"
+  },
+  {
+   "ma_cau": "T15T000000216",
+   "ma_nguon": "LT 5.4",
+   "dang": "T15T030104",
+   "ly_do": "CEO chốt 11/10: \"thay đổi số người\" gồm đổi TỪ ĐẦU và đổi GIỮA CHỪNG — cùng tư duy nên dạy cùng nhau (trước đó trạm làm xếp T15T030101)",
+   "dang_mu": "T15T030104",
+   "chac_mu": "cao",
+   "ly_do_mu": "Hỏi số người nhận thêm khi sản phẩm tăng; ẩn là số người thay đổi.",
+   "dang_truoc_khi_ceo_chot": "T15T030101"
+  },
+  {
+   "ma_cau": "T15T000000217",
+   "ma_nguon": "LT 5.5",
+   "dang": "T15T030104",
+   "ly_do": "CEO chốt 11/10: \"thay đổi số người\" gồm đổi TỪ ĐẦU và đổi GIỮA CHỪNG — cùng tư duy nên dạy cùng nhau (trước đó trạm làm xếp T15T030101)",
+   "dang_mu": "T15T030104",
+   "chac_mu": "cao",
+   "ly_do_mu": "Hỏi số người chuyển đi khi sản phẩm giảm; ẩn là số người thay đổi.",
+   "dang_truoc_khi_ceo_chot": "T15T030101"
+  },
+  {
+   "ma_cau": "T15T000000219",
+   "ma_nguon": "LT 5.8",
+   "dang": "T15T030104",
+   "ly_do": "CEO chốt 11/10: \"thay đổi số người\" gồm đổi TỪ ĐẦU và đổi GIỮA CHỪNG — cùng tư duy nên dạy cùng nhau (trước đó trạm làm xếp T15T030102)",
+   "dang_mu": "T15T030104",
+   "chac_mu": "vua",
+   "ly_do_mu": "Một số người bị điều đi làm số ngày ăn tăng; ẩn là số người bị điều đi, đại lượng tỉ lệ nghịch.",
+   "dang_truoc_khi_ceo_chot": "T15T030102"
+  },
+  {
+   "ma_cau": "T15T000000220",
+   "ma_nguon": "LT 5.9",
+   "dang": "T15T030104",
+   "ly_do": "CEO chốt 11/10: \"thay đổi số người\" gồm đổi TỪ ĐẦU và đổi GIỮA CHỪNG — cùng tư duy nên dạy cùng nhau (trước đó trạm làm xếp T15T030102)",
+   "dang_mu": "T15T030104",
+   "chac_mu": "vua",
+   "ly_do_mu": "Điều thêm 6 người nữa vào phân xưởng, hỏi số ngày mới; có sự kiện thêm người.",
+   "dang_truoc_khi_ceo_chot": "T15T030102"
+  }
+ ]
+}

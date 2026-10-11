@@ -36855,3 +36855,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Trùng 24/30 ⇒ ghi bằng `scripts/kho/sach/gan-dang.mjs` (mới; chỉ đổi `dang_chinh`, nối biên bản `kiem-dang` vào `kiem_may_ghi`, trigger DB ghi 24 dòng vết đổi dạng):
   030101: 3 · 030102: 4 · 030103: 12 · 030104: 5. Dạng chờ 5T 849 → 825.
 - **Treo, chờ CEO:** 6 câu lệch ở lại dạng chờ — LT 5.2–5.5, 5.8, 5.9 (thêm / bớt người ngay từ đầu): dạng cơ bản hay `030104`? Luật + bảng dấu hiệu: `k5T.md` §8.1.
+
+## 11/10 — 5T tỉ lệ thuận – nghịch: CEO chốt ranh giới dạng "Thay đổi số người", gán nốt 6 câu
+
+- **Quyết định CEO:** "thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau" ⇒ `T15T030104` gồm cả bài thêm / bớt người ngay từ đầu.
+- **Làm:** `lo/k5T-gan-tile-2.json` (6 câu LT 5.2–5.5, 5.8, 5.9 → `030104`, trùng với lượt gán mù) → `gan-dang.mjs --ghi`: gán 6, DB ghi 6 vết đổi dạng.
+  Chuyên đề `T15T0301` giờ có 30 câu (3 · 4 · 12 · 11), dạng chờ 5T còn 819. `k5T.md` §8.1 + §9 đã ghi luật.
+- **Sai / sửa:** lượt đầu tôi (Opus) xếp 6 câu này vào dạng cơ bản theo "phương pháp thắng chủ đề"; CEO chốt ngược lại — với dạng này dấu hiệu đề thắng. Lượt gán mù Sonnet đã đúng.
+- **Treo, hỏi CEO:** ON 67 (thêm bao nhiêu người để xong sớm) · LT 5.1 (thêm xe) · LT 5.7 (thêm máy bơm) đang ở dạng cơ bản — có sang `030104` không.
