@@ -278,12 +278,33 @@ chú thích "(như VD … của sách)"; ghi đè 1 transaction, mỗi câu `whe
 bộ kiểm thêm hàm vào `lo/k5T-kiem.mjs` → Sonnet xem ảnh sơ đồ ký `kiem-hinh-b` → `ghi-lo.mjs … --sach "Toán 5 TLTK" --chua-gan-dang` chạy thử → `--ghi`.
 
 
-## 8. GÁN DẠNG — chưa viết
+## 8. GÁN DẠNG — làm theo từng chuyên đề, CEO xong bản đồ phần nào xếp phần đó (bắt đầu 11/10)
 
-Viết ở bước 3, khi CEO xong bản đồ 5T: bảng dấu hiệu nhận dạng theo chủ đề nhiều dạng + bảng chỗ bản đồ chưa có dạng, đúng khuôn `k4T.md` §5.
+Bảng dấu hiệu nhận dạng viết dần theo từng chuyên đề CEO làm xong, đúng khuôn `k4T.md` §5.
 Luật chung đã chốt ở 4T áp luôn: **phương pháp thắng chủ đề** (giải bằng tổng–hiệu ⇒ dạng tổng–hiệu dù câu nằm ở chuyên đề khác) ·
 không khớp ⇒ dạng chờ, không ép · bài nhiều ý độc lập tách rồi gán từng ý · CEO duyệt một câu vào dạng mà bảng thiếu đang liệt kê ⇒ xoá
 dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T) · kiểm bằng model khác gán MÙ.
+
+**Lệnh một lượt gán:** dựng `lo/k5T-gan-<tên>.json` (dạng trạm làm chọn + dạng trạm kiểm gán mù) → `node scripts/kho/sach/gan-dang.mjs <tệp>` (chạy thử, ROLLBACK)
+→ `--ghi`. Script chỉ gán câu HAI TRẠM RA CÙNG DẠNG; câu lệch ở lại dạng chờ và in ra cho CEO chốt. Chỉ đổi `dang_chinh` (bản đồ `dai_ban_do` — "kho cũ"),
+không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi dạng.
+
+### 8.1 Chuyên đề `T15T0301` Tỉ lệ thuận – Tỉ lệ nghịch (CEO tạo 11/10, 4 dạng, chưa có mô tả nhận biết) ↔ CĐ5 của sách + ON 66–71
+
+| Dạng | Dấu hiệu (theo phương pháp của lời giải đã ghi kho) | Câu đã gán 11/10 |
+|---|---|---|
+| `030101` Cơ bản về tỉ lệ thuận | hai đại lượng cùng tăng cùng giảm; rút về 1 đơn vị rồi nhân / chia | VD 5.1 · LT 5.1 · ON 66 |
+| `030102` Cơ bản về tỉ lệ nghịch | một đại lượng không đổi (cả công việc / số tiền / số gạo) = tích hai đại lượng kia; tính tích rồi chia | VD 5.2 · LT 5.6 · LT 5.7 · ON 67 |
+| `030103` Tỉ lệ kép | BA đại lượng cùng đổi (người – ngày – sản phẩm…); rút về "1 người trong 1 ngày" (§2b dòng C) | VD 5.3 · LT 5.13–5.21 · ON 70 · ON 71 |
+| `030104` Thay đổi số người | số người đổi GIỮA CHỪNG (làm / ăn được mấy ngày rồi mới thêm, bớt người) ⇒ xét phần việc / số gạo CÒN LẠI | LT 5.10 · LT 5.11 · LT 5.12 · ON 68 · ON 69 |
+
+- "Cần **thêm** bao nhiêu xe / máy / người để…" mà chỉ là phép trừ ở bước cuối (LT 5.1, LT 5.7, ON 67) ⇒ vẫn là dạng cơ bản — hai trạm cùng ý.
+- **⏳ CHỜ CEO CHỐT RANH GIỚI `030104` (6 câu đang ở dạng chờ):** LT 5.2 · LT 5.3 · LT 5.4 · LT 5.5 (tỉ lệ thuận) · LT 5.8 · LT 5.9 (tỉ lệ nghịch) —
+  đề có thêm / bớt người **ngay từ đầu** (không chia hai giai đoạn), lời giải là đúng một phép tỉ lệ cơ bản cộng một phép cộng / trừ.
+  Trạm làm (Opus) xếp dạng cơ bản theo luật "phương pháp thắng"; trạm gán mù (Sonnet) xếp `030104` vì đề có sự kiện đổi số người. Hai trạm lệch ⇒ chưa gán.
+- **Không thuộc chuyên đề này, để nguyên dạng chờ** (tỉ lệ thuận chỉ là một bước của bài khác): LT 11.7 · LT 11.12 · LT 20.7 · LT 22.5 · LT 22.14
+  (diện tích rồi mới "cứ … thì …") · LT 17.12 · LT 17.13 (tỉ số %) · VD 28.1–28.2 · LT 28.4 · 28.6–28.9 (chuyển động: vận tốc – thời gian) — chờ bản đồ các chuyên đề ấy.
+- Dữ liệu lượt gán: `lo/k5T-gan-tile.json` (30 câu: 24 gán, 6 lệch). Sau lượt này dạng chờ 5T còn 825 câu.
 
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 

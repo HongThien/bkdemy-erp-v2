@@ -36832,3 +36832,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   nghi vấn "in nhầm số" dưới đây cần đối chiếu BẢN GỐC, không phải ảnh.
 - **Treo, chờ Thùy (8 câu Chưa chắc — đều nghi đề cương in lỗi):** 4a ô trống ký hiệu (đang hiểu $a>10$) · 6f $21.3$ hay $21.36$ (2253 hay 1560) · 8f $6^6.120$ hay $6^9.120$ (221/1620 hay 4/5) ·
   9f $2^2.3^3$ hay $2^2.3^2$ (vô nghiệm hay $x=42$) · 9k $x=1$ có nhận không ({1;2} hay 2) · 10d $125^3:5^2$ (vô nghiệm; $125^3:5^3$ thì $x=3$) · 11d $26.2^3$ (vô nghiệm; $26.2^2$ thì $x=4$) · 17b $a^3$ phải là $a^{39}$.
+
+## 11/10 — CLC6: soạn xong 58 đề + so ba nguồn + đọc soát + kiểm ảnh sơ đồ (CHƯA ghi kho, chờ CEO)
+
+- **Làm:** 60 lượt Sonnet soạn 58 đề (803 câu; 14 lượt bị ngắt vì hết hạn mức, chạy tiếp bằng SendMessage) → `gom-soan-clc6.mjs` gom về
+  `kho-rules/dai/lo/clc6/<K>.soan.json` + so ba nguồn (`so-ba-nguon.json`): 785 khớp · 8 sách sai · 9 đã phân xử (`phan-xu.mjs`) · 1 chờ CEO.
+  Đọc soát 56 đề (60 lượt Sonnet lượt khác, brief `lo/clc6-brief-soat.md`) → `ap-soat-clc6.mjs`: 158 vấn đề (21 sai · 104 nên sửa · 33 hỏi), áp 123 câu sửa,
+  không đổi đáp số nào; biên bản `lo/clc6/soat/`. Kiểm ảnh 173 sơ đồ (`anh-so-do-clc6.mjs` dựng PNG, 6 lượt xem ảnh): 167 đạt, 6 lộ số trung gian trên nhãn
+  (LTV 2019·9 · ARC 2020-NC·20 · TX 2024·16 · NTT 2020 P1.5 · NN 2024-TT3 P1.4 · AMS 2020·15) — CHƯA sửa. Viết `ghi-clc6.mjs` (câu → dạng chờ qua cổng ghi), chạy thử 1 lần.
+- **Sai / sửa:** ARC 2022-CB·46 trạm kiểm theo đáp án sách (C, chia theo kem mang đi) — bản soạn đúng (B = 640 000, chia theo kem nhường) ⇒ giữ soạn.
+  NS 2023 P1.10 soạn 85, sách + kiểm 113 (mật mã cho chữ số 0 đứng đầu) ⇒ soạn lại 113. AMS 2022 P1.5, P2.2: 2 sơ đồ mà 1 dòng "Ta có sơ đồ" ⇒ sửa.
+  TX 2019·8 mất gạch ngược `overline` (người soát bắt) ⇒ thêm cổng "lệnh LaTeX thiếu gạch ngược" vào `ap-soat-clc6.mjs`. CG 2023 P2.7 Word gắn nhầm ảnh của P2.8 ⇒ gỡ.
+  TX 2024·7 và CG 2024·8 cùng chữ "Tính diện tích phần tô đậm:" khác hình ⇒ `ghi-clc6.mjs` không lọc trùng theo chữ với câu có hình đề.
+  Heredoc của Bash nuốt một gạch ngược trong regex (`[\a-z]` → `[\a-z]`) ⇒ regex có gạch ngược chỉ viết bằng Write/Edit.
+- **Treo, chờ CEO:** (1) ghi vào khối 5T hay khối 5 thường · (2) chỉ ghi câu hay dựng luôn 58 đề trong Kho đề thi · (3) sửa nhãn 6 sơ đồ · (4) 33 chỗ đề mơ hồ + câu sửa đề theo suy luận.
+  CEO đã chặn lệnh chạy thử ghi + chép 84 ảnh đề về repo (chưa rõ chặn phần nào) ⇒ dừng, chưa chạy lại. Chưa commit: `ghi-clc6.mjs`, `anh-so-do-clc6.mjs`, dòng CG 2023 P2.7 trong `sua-de.mjs`, `de-da-sua.json`.
+
+## 11/10 — 5T bước 3 (lần đầu): xếp chuyên đề Tỉ lệ thuận – Tỉ lệ nghịch vào bản đồ kho cũ
+
+- **Quyết định CEO:** "đưa phần tỉ lệ thuận – tỉ lệ nghịch vào kho cũ, t mới xong bản đồ kiến thức đó" — 4 dạng `T15T030101`–`030104` CEO tạo 08:33 ở `dai_ban_do` (chưa có mô tả nhận biết).
+- **Làm:** 24 câu CĐ5 của sách + 6 câu ôn tập cùng loại (ON 66–71). Opus xếp theo phương pháp của lời giải; Sonnet gán mù (chỉ thấy tên dạng, câu đã xáo).
+  Trùng 24/30 ⇒ ghi bằng `scripts/kho/sach/gan-dang.mjs` (mới; chỉ đổi `dang_chinh`, nối biên bản `kiem-dang` vào `kiem_may_ghi`, trigger DB ghi 24 dòng vết đổi dạng):
+  030101: 3 · 030102: 4 · 030103: 12 · 030104: 5. Dạng chờ 5T 849 → 825.
+- **Treo, chờ CEO:** 6 câu lệch ở lại dạng chờ — LT 5.2–5.5, 5.8, 5.9 (thêm / bớt người ngay từ đầu): dạng cơ bản hay `030104`? Luật + bảng dấu hiệu: `k5T.md` §8.1.
