@@ -30,6 +30,13 @@
 > ⇒ (a) đề xuất gắn dạng cũ → bản mới ở mức dạng (học thuật xác nhận) · (b) gán từng câu gốc (bản sao theo gốc) ⇒ CEO/học thuật duyệt.
 > Vỏ đã chép (§9.3) CEO đang sửa tiếp (≈200 lần sửa trong buổi chiều 08/10) — KHÔNG xoá.
 
+> **⭐ Cập nhật 11/10 (CEO):** **BỎ nối tiền đề giữa các nhóm bài — "thứ tự là đủ".** Nhóm bài chỉ còn SỐ THỨ TỰ (vị trí `thu_tu`,
+> đổi bằng ◀ ▶); màn không còn mũi tên, không còn dải "học SAU", không còn mục tiền đề trong popup. §6.1 (tiền đề 3 tầng) vì thế
+> **không còn áp cho tầng nhóm bài** ở bản đồ mới; thứ tự học = thứ tự chuyên đề → thứ tự nhóm → thứ tự dạng bài.
+> Bảng `dai_bdm_nhom_tien_de` giữ nguyên (5 mũi tên K7 CEO nối 10/10 nằm yên, không tham gia tính số) — mig `202610110944`.
+> **Kéo nhóm A thả VÀO TRONG nhóm B = hạ A thành dạng bài của B** (CEO: "rất nhiều nhóm sẽ bị hạ"): A thành 1 dạng bài (tên · mô tả ·
+> lý thuyết), dạng bài con của A chuyển sang B ngay sau nó — không mất gì, câu đã gán (K12: 1.249 câu AI gán 10/10) đi theo nguyên vẹn.
+
 ## 1. Quyết định CEO (07/10)
 
 | # | Quyết định | Hệ quả kỹ thuật |
