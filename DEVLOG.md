@@ -36821,3 +36821,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai / sửa:** ảnh đề cương có 3 chỗ lệch cần quyết — Bài 4a TRỐNG ô ký hiệu giữa $a$ và $10$ (giữ $\square$ + ghi chú CHƯA CHẮC, KHÔNG đoán); Bài 7k in $2023^3$ (sửa $2023^2$ theo quy luật, ghi chú chữ gốc); dấu ":" chỉ chia hết ở Bài 2d/4b–d nhập thành `\vdots`
   (Bài 9–11 ":" là phép chia, giữ). Nhãn gốc Bài 9/10 j) q) k) giữ nguyên.
 - **Treo, chờ Thùy:** điền ký hiệu Bài 4a · có muốn Claude GIẢI cả đề cương (dây chuyền K6: Sonnet soạn + Opus soát) hay chỉ để gõ lại.
+
+## 11/10 — Đề cương Toán 6 Ngôi Sao Hoàng Mai: GIẢI 88 câu (soạn → soát mù → cổng → ERP)
+- **Yêu cầu Thùy:** "m phải giải luôn chứ" (sau khi đề cương đã gõ vào tab Đề cương, chưa có lời giải).
+- **Làm:** dây chuyền K6: `tao-khung.mjs` chia 88 câu thành 10 phần → 10 trạm soạn (Sonnet, brief `de-cuong/brief-soan.md`) → 10 trạm soát (Opus, giải MÙ rồi đối chiếu, `brief-soat.md`)
+  → `ghep-va-len.mjs ghep` (ghép + cổng `dung-de-tu-soan.mjs` trên tệp đầy đủ + gộp de.json giữ `kieu`/`nguon`) → `ghep-va-len.mjs len --ghi` (88 lần `sua-cau-de.mjs`, tuần tự).
+- **Số đo (DB live):** 88 câu đều có lời giải 2 phần; 53 trả lời ngắn (có `dap_an`), 35 tự luận; 0 câu thiếu đáp án chặn; 8 câu `CHƯA CHẮC`. Khớp Pha 1 ngay từ đầu 88/88;
+  soát sửa 10 câu (đều lỗi lập luận / trình bày: 4c, 7a, 7b, 7c, 7h, 7k, 8f, 10g, 11b, 17b, 19b — đáp số không câu nào đổi). Kiểm thêm tay 12 đáp số Bài 4c, 5, 9a–e, 13: đúng.
+- **Sai / sửa:** trạm soạn P3 để "không lỗi" ở 6f còn trạm soát nghi $21.3$ là $21.36$ ⇒ thêm Chưa chắc. Ảnh dùng để soát chỉ có độ phân giải ảnh Thùy gửi (1068 px) — "phóng 300–400 dpi từ goc.pdf" không thêm thông tin, nên mọi
+  nghi vấn "in nhầm số" dưới đây cần đối chiếu BẢN GỐC, không phải ảnh.
+- **Treo, chờ Thùy (8 câu Chưa chắc — đều nghi đề cương in lỗi):** 4a ô trống ký hiệu (đang hiểu $a>10$) · 6f $21.3$ hay $21.36$ (2253 hay 1560) · 8f $6^6.120$ hay $6^9.120$ (221/1620 hay 4/5) ·
+  9f $2^2.3^3$ hay $2^2.3^2$ (vô nghiệm hay $x=42$) · 9k $x=1$ có nhận không ({1;2} hay 2) · 10d $125^3:5^2$ (vô nghiệm; $125^3:5^3$ thì $x=3$) · 11d $26.2^3$ (vô nghiệm; $26.2^2$ thì $x=4$) · 17b $a^3$ phải là $a^{39}$.
