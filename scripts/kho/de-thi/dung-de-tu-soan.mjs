@@ -131,6 +131,8 @@ const fBoc = join(LV, 'de.boc.json'), fDe = join(LV, 'de.json')
 if (!existsSync(fBoc)) { if (!existsSync(fDe)) { console.error('❌ thư mục làm việc không có de.json của boc-pdf'); process.exit(2) } renameSync(fDe, fBoc) }
 const boc = JSON.parse(readFileSync(fBoc, 'utf8'))
 const de = { file: boc.file, sha256: boc.sha256, ten: mTen[1].trim(), khoi: String(KHOI), mon: 'Toán', nguon: 'le', nam: meta.nam ? Number(meta.nam) : null,
-  thoi_gian_phut: Number(meta.thoi_gian_phut ?? 90), thang_diem: 10, bo_sach: meta.bo_sach ?? null, soan: basename(tep), phan, cau }
+  // dòng `kieu: de_cuong` ở đầu tệp ⇒ ĐỀ CƯƠNG ôn tập (tab "Đề cương" của Kho đề thi, tách khỏi đề thi; không có thời gian làm bài) — CEO 10–11/10
+  ...(meta.kieu === 'de_cuong' ? { kieu: 'de_cuong' } : {}),
+  thoi_gian_phut: meta.kieu === 'de_cuong' ? null : Number(meta.thoi_gian_phut ?? 90), thang_diem: 10, bo_sach: meta.bo_sach ?? null, soan: basename(tep), phan, cau }
 writeFileSync(fDe, JSON.stringify(de, null, 1))
 console.log('✔ ' + fDe)
