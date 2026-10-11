@@ -715,9 +715,12 @@ function optCols(opts: string[]): number {
 }
 // Tách nhãn a)b)c)… (ý con) HOẶC A)B)C)D. (đáp án nhúng trong đề — câu lua_chon=null) → cho lên lưới cột.
 // Yêu cầu ≥2 nhãn LIÊN TỤC theo `seq` (chống bắt nhầm "a)"/"A." lẻ trong văn). Trả null nếu không phải.
+// ⭐ 10-11 (Thùy): câu có "a) ... b) ... c) ..." viết LIỀN 1 dòng (DB `noi_dung` thiếu `\n`) vẫn phải nhận
+//   ra ý con — không thì PDF in liền tù tì, lộn ý. Regex giờ chấp nhận ranh `^` / `\n` / **mọi khoảng
+//   trắng** trước nhãn (vẫn ép monotonic a→b→c + ≥2 nhãn, nên "ta có a) 1, b) 2" rơi vào yc là chủ ý).
 function splitLabeled(s: string, seq: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
   const cls = seq[0] === 'A' ? 'A-Z' : 'a-l' // uppercase (đáp án) vs lowercase (ý con)
-  const re = new RegExp(`(?:^|\\n)[ \\t]*([${cls}])[ \\t]*[).][ \\t]+`, 'g')
+  const re = new RegExp(`(?:^|\\s)([${cls}])[ \\t]*[).][ \\t]+`, 'g')
   const marks: { idx: number; lbl: string; start: number }[] = []
   let m: RegExpExecArray | null
   while ((m = re.exec(s))) marks.push({ idx: m.index, lbl: m[1], start: re.lastIndex })
@@ -752,9 +755,14 @@ export function splitStem(c: CauHoi): { stem: string; grid: { lbl: string; body:
   return { stem: emb?.stem ?? yc?.stem ?? un?.stem ?? noiDung, grid: emb?.parts ?? yc?.parts ?? un?.parts ?? null, emb: !!emb }
 }
 // Lưới ý con (đáp án nhúng / ý con có/không nhãn). Không nhãn → chỉ hiện nội dung, không dấu ).
+// ⭐ 10-11 (Thùy): ý con LOWERCASE a)/b)/c)… LUÔN 1 cột — mỗi ý xuống dòng riêng, không ép bên cạnh dù
+//   ngắn (yêu cầu PDF "tự xuống dòng khi có các ý a,b,c"). Đáp án nhúng A/B/C/D (emb) + unlabeled (lbl='')
+//   giữ nguyên optCols — những dòng đó là đáp án ngắn song song, muốn gọn.
 export function OptGrid({ grid, emb }: { grid: { lbl: string; body: string }[]; emb: boolean }) {
+  const ycNho = !emb && !!grid[0]?.lbl // ý con có nhãn chữ thường
+  const cols = ycNho ? 1 : optCols(grid.map((p) => p.body))
   return (
-    <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(grid.map((p) => p.body))}, minmax(0,1fr))` }}>
+    <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}>
       {grid.map((p, i) => <div key={i} className="pv-opt">{p.lbl ? <><b>{p.lbl}{emb ? '.' : ')'}</b> </> : null}<span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
     </div>
   )
