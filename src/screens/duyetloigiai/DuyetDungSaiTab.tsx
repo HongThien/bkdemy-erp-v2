@@ -64,7 +64,15 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
 
   const rowsNhanh = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
   // Lọc theo DẠNG của câu (Thùy 06/10, LocDang.tsx dùng chung mọi tab duyệt)
-  const locDang = useLocDang(rowsNhanh, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de }))
+  // Câu còn ở dạng chờ ⇒ lọc theo GỢI Ý BẢN ĐỒ MỚI (chủ đề › nhóm › dạng bài; rổ chưa khớp = ⚠) — Thùy 11/10 "ko check được riêng chủ đề tích phân"
+  const locDang = useLocDang(rowsNhanh, (r) => {
+    if (laDangCho(r.dang_chinh)) {
+      if (r.bdm_dang_bai_id) return { ma: r.bdm_dang_bai_id, ten: r.bdm_dang_bai ?? r.bdm_dang_bai_id, cd: `${r.bdm_chu_de} › ${r.bdm_nhom}` }
+      if (r.bdm_trang_thai === 'chua_khop') return { ma: `ck:${r.bdm_chu_de}`, ten: '⚠ Chưa khớp dạng bài nào', cd: r.bdm_chu_de ?? '' }
+      return { ma: r.dang_chinh, ten: 'Chưa có gợi ý bản đồ mới', cd: '' }
+    }
+    return { ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de }
+  })
   const rowsShown = locDang.loc
   const batch = rowsShown.slice(0, BATCH_SIZE)
   const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
@@ -105,7 +113,7 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
         )}
-        <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={locDang.setChon} tong={locDang.tong} />
+        <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={locDang.setChon} tong={locDang.tong} nhan="Dạng / dạng bài (bản đồ mới)" />
         <span className="text-[12px] text-slate-500">Mỗi mệnh đề là 1 dạng — duyệt từng mệnh đề, đủ hết mới duyệt được câu.</span>
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
         <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
@@ -181,6 +189,8 @@ function The({ r, mon, busyAll, onVaMenhDe, onXong }: {
         </span>
         {r.so_thieu_dang > 0 && <span className="rounded bg-amber-100 px-2 py-0.5 font-medium text-amber-800" title="Dạng ghi trong jsonb không còn trong bản đồ (renumber) — chọn dạng mới rồi duyệt">⚠ {r.so_thieu_dang} mệnh đề chưa gán dạng</span>}
         {r.ten_de_goc && <span className="text-slate-400" title="Tên đề/tài liệu gốc">📄 {r.ten_de_goc}</span>}
+        {r.bdm_trang_thai === 'gan' && <span className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700" title="AI gán vào dạng bài của bản đồ mới (dai_bdm_gan_cau) — chờ Thùy xác nhận">🆕 {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai}</span>}
+        {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
         {!r.kho_chuan && <span className="rounded bg-rose-50 px-1.5 py-0.5 text-rose-700" title="Chỗ chọn câu cho HS/ET không lấy câu này tới khi duyệt">ngoài kho chuẩn</span>}
         <span className="text-slate-400">· vào kho {fmtTs(r.created_at)}</span>
         <div className="ml-auto flex items-center gap-1.5">

@@ -30,6 +30,17 @@ const NHANH_HINH_HOC = 'hinh_hoc' // nhánh của DangPickerOne/khoCuaMon cho kh
 const fmtTs = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
 const BATCH_SIZE = 20
 
+// Bộ lọc dạng của hàng duyệt. Tab "Chưa phân dạng": mọi câu cùng 1 dạng chờ ⇒ lọc vô nghĩa — lọc theo GỢI Ý BẢN ĐỒ MỚI
+// (chủ đề › nhóm › dạng bài do AI gán; rổ "chưa khớp" = ⚠ theo chủ đề). Tab khác: dạng thật như cũ. (Thùy 11/10: "ko check được riêng chủ đề tích phân")
+function layDangLoc(r: { dang_chinh: string; ten_dang: string; ten_chuyen_de: string; bdm_chu_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null; bdm_trang_thai?: string | null }, loc: HangDuyetLoc) {
+  if (loc === 'chua_dang') {
+    if (r.bdm_dang_bai_id) return { ma: r.bdm_dang_bai_id, ten: r.bdm_dang_bai ?? r.bdm_dang_bai_id, cd: `${r.bdm_chu_de} › ${r.bdm_nhom}` }
+    if (r.bdm_trang_thai === 'chua_khop') return { ma: `ck:${r.bdm_chu_de}`, ten: '⚠ Chưa khớp dạng bài nào', cd: r.bdm_chu_de ?? '' }
+    return { ma: r.dang_chinh, ten: 'Chưa có gợi ý bản đồ mới', cd: '' }
+  }
+  return { ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de }
+}
+
 export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string; khoi: string; loc: HangDuyetLoc; onChanged?: () => void }) {
   const kho = nhanhCuaMon(mon).filter((n): n is KhoMon => n !== 'hinh')
   const [rows, setRows] = useState<Row[]>([])
@@ -72,7 +83,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   // Lọc theo chip nhánh; batch 20 câu / lần (CEO 11/09). Sau khi duyệt/từ chối trong batch, câu bị filter khỏi rows → batch tự dịch xuống.
   const rowsNhanh = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
   // Lọc theo DẠNG (Thùy 06/10) — lựa chọn = các dạng đang có câu trong hàng duyệt (LocDang.tsx, dùng chung mọi tab duyệt).
-  const locDang = useLocDang(rowsNhanh, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de }))
+  const locDang = useLocDang(rowsNhanh, (r) => layDangLoc(r, loc))
   const rowsShown = locDang.loc
   const batch = rowsShown.slice(0, BATCH_SIZE)
   const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
@@ -118,10 +129,11 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
         )}
-        <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={locDang.setChon} tong={locDang.tong} />
+        <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={locDang.setChon} tong={locDang.tong}
+          nhan={loc === 'chua_dang' ? 'Dạng bài (bản đồ mới)' : undefined} />
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}
         {loc === 'cau_moi' && <span className="text-[12px] text-slate-500">Câu vào kho sau 08/09 — HS chưa thấy tới khi duyệt.</span>}
-        {loc === 'chua_dang' && <span className="text-[12px] text-amber-700">Câu nhập kho mà Claude không chắc dạng (§1.5 thà bỏ trống). Bấm 📁 chọn dạng thật cho từng câu rồi Duyệt — không có duyệt hàng loạt ở tab này.</span>}
+        {loc === 'chua_dang' && <span className="text-[12px] text-amber-700">Câu nhập kho mà Claude không chắc dạng (§1.5 thà bỏ trống). Lọc theo «Dạng bài (bản đồ mới)» để xem riêng 1 chủ đề; bấm 📁 chọn dạng thật cho từng câu rồi Duyệt — không có duyệt hàng loạt ở tab này.</span>}
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
         {/* Tab Chưa phân dạng: không có batch — mọi câu đều còn dạng chờ, DB (trg_chan_duyet_dang_cho) sẽ chặn từng câu. */}
         {loc !== 'chua_dang' && (
@@ -253,6 +265,8 @@ function The({ r, mon, busyAll, onXong, onSua, anh }: { r: Row; mon: string; bus
           📁 {dang.cd ? <span className="text-slate-400">{dang.cd} › </span> : null}{dang.ten} <code className="ml-1 text-[11px] text-slate-400">{dang.ma}</code>
         </button>
         {r.dang_ai_de_xuat && r.dang_ai_de_xuat !== r.dang_chinh && <span className="text-slate-400" title="Dạng AI gán lúc vào kho">AI đề xuất: <code>{r.dang_ai_de_xuat}</code></span>}
+        {r.bdm_trang_thai === 'gan' && <span className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700" title="AI gán vào dạng bài của bản đồ mới (dai_bdm_gan_cau) — chờ Thùy xác nhận">🆕 {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai}</span>}
+        {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
         {!laAnh && <span className="ml-2 text-slate-400">Cụm:</span>}
         {laAnh ? null : cums === null ? <span className="text-slate-400">…</span>
           : (

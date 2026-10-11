@@ -2607,11 +2607,23 @@ export type CauHangDuyet = {
   ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean
   kiem_may: 'khop' | 'nghi' | 'khong_kiem_duoc' | null; kiem_may_boi: string | null; kiem_may_ghi: string | null; kiem_may_at: string | null
   dang_ai_de_xuat: string | null
+  // Gợi ý BẢN ĐỒ MỚI (chỉ Toán Đại; mig 202610110939): 'gan' = đã có dạng bài (dai_bdm_gan_cau) · 'chua_khop' = rổ chưa khớp · null = chưa ai xét
+  bdm_chu_de?: string | null; bdm_chuyen_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null
+  bdm_trang_thai?: 'gan' | 'chua_khop' | null; bdm_ly_do?: string | null
 }
+// Supabase API cắt mọi truy vấn ở 1000 dòng (max_rows) — `p_limit` lớn hơn bị bỏ qua âm thầm ⇒ PHÂN TRANG theo p_offset (11/10: khối 12
+// có >6.000 câu chờ duyệt, màn Duyệt từng chỉ thấy 1000 câu đầu).
+const TRANG_RPC = 1000
 export async function listHangDuyet(mon: KhoMon, loc: HangDuyetLoc, khoi?: string | null): Promise<CauHangDuyet[]> {
-  const { data, error } = await supabase.rpc('fn_kho_hang_duyet', { p_mon: mon, p_loc: loc, p_khoi: khoi || null, p_limit: LIMIT })
-  if (error) throw error
-  return (data ?? []) as CauHangDuyet[]
+  const out: CauHangDuyet[] = []
+  for (let off = 0; off < LIMIT; off += TRANG_RPC) {
+    const { data, error } = await supabase.rpc('fn_kho_hang_duyet', { p_mon: mon, p_loc: loc, p_khoi: khoi || null, p_limit: TRANG_RPC, p_offset: off })
+    if (error) throw error
+    const rows = (data ?? []) as CauHangDuyet[]
+    out.push(...rows)
+    if (rows.length < TRANG_RPC) break
+  }
+  return out
 }
 // khoi = null ⇒ tổng của bộ lọc (grouping sets ở DB)
 export type DemHangDuyet = { loc: HangDuyetLoc; khoi: string | null; so_cau: number }
@@ -2648,11 +2660,20 @@ export type CauDungSaiDuyet = {
   noi_dung: string; loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; created_at: string
   ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean; dang_ai_de_xuat: string | null; ten_de_goc: string | null
   so_menh_de: number; so_da_duyet: number; so_thieu_dang: number; menh_de_hop: MenhDeHop[]
+  // Gợi ý bản đồ mới (chỉ Toán Đại; mig 202610110943) — cùng ý nghĩa như CauHangDuyet
+  bdm_chu_de?: string | null; bdm_chuyen_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null
+  bdm_trang_thai?: 'gan' | 'chua_khop' | null; bdm_ly_do?: string | null
 }
 export async function listHangDuyetDs(mon: KhoMon, khoi?: string | null): Promise<CauDungSaiDuyet[]> {
-  const { data, error } = await supabase.rpc('fn_kho_hang_duyet_ds', { p_mon: mon, p_khoi: khoi || null, p_limit: LIMIT })
-  if (error) throw error
-  return (data ?? []) as CauDungSaiDuyet[]
+  const out: CauDungSaiDuyet[] = []
+  for (let off = 0; off < LIMIT; off += TRANG_RPC) {   // phân trang — API cắt 1000 dòng (xem listHangDuyet)
+    const { data, error } = await supabase.rpc('fn_kho_hang_duyet_ds', { p_mon: mon, p_khoi: khoi || null, p_limit: TRANG_RPC, p_offset: off })
+    if (error) throw error
+    const rows = (data ?? []) as CauDungSaiDuyet[]
+    out.push(...rows)
+    if (rows.length < TRANG_RPC) break
+  }
+  return out
 }
 // Duyệt 1 mệnh đề = áp sửa (key vắng = giữ) + ký; DB ghi cả bảng con và jsonb cha trong 1 tx. Trả mệnh đề sau ghi để cha vá tại chỗ.
 export type SuaMenhDe = { dang_chinh?: string; noi_dung?: string; dung?: boolean; loi_giai?: string | null }
