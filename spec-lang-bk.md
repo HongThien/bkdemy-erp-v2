@@ -1,7 +1,7 @@
 # Spec — "Làng BK" (tên tạm): thế giới sống kiểu Stardew cho HS khối 4–8
 
 > Thùy ↔ CTO, 11–12/10/2026. **Trạng thái: LOGIC đã chốt phần ghi "CEO chốt" · CHƯA code.** Số liệu ghi **TỰ ĐẶT** = khởi điểm để chạy thử.
-> Liên quan: `spec-bk-world.md` (game trồng + bắt thú + ấp trứng, kinh tế "kiếm xu" — file này đổi chiều xu, xem §5) ·
+> Liên quan: `spec-bk-world.md` (game trồng + bắt thú + ấp trứng — **GỘP vào Làng BK**, CEO chốt 12/10; chiều xu giữ nguyên, xem §5) ·
 > `spec-the-gioi-bk.md` (feed khoe — đây là "bảng tin" của làng, KHÔNG trùng tên) · `spec-che-do-game.md` (Đấu trường = một toà nhà trong làng).
 > Tên "Làng BK" chỉ là tạm — đặt tên khác hẳn "Thế giới BK" (CEO chốt).
 
@@ -13,7 +13,7 @@
 
 - **Định vị theo PHASE, không phải đổi ý:** khi năng lực chưa đủ ⇒ BK làm game "chơi vì bạn bè + xu". Khi năng lực đủ và có cơ hội ⇒ làm **game thật hay**.
   Làng BK là **đích của phase 2**; phase 1 (BK World, Đấu Từ, Thế giới BK) chuẩn bị đường cho nó.
-- **Game là nơi TIÊU xu, không kiếm xu.** Muốn vào chơi thì học (cổng học, §5).
+- **Vòng xu khép kín trong Làng (CEO 12/10):** **nông trại = KIẾM xu** (có trần/tháng như `spec-nong-trai-nhip-ngay.md`), **nhà cửa/đồ khoe = TIÊU xu** ⇒ HS mua đồ trong Làng giúp **cân bằng kinh tế xu của BK**. Muốn có hạt để trồng thì phải học (cổng học, §5).
 - **Không làm "Stardew đầy đủ".** Học sinh BK **quen nhau ngoài đời** ⇒ sức hút xã hội do bạn bè gánh, nên cắt: cốt truyện dài, hẹn hò NPC, chiến đấu, hang mỏ, chuỗi chế tác.
 - **Khoe nhà, câu cá được con hiếm, xây nhà to để khoe bạn** là trải nghiệm chính — "vừa giống vừa khác Roblox".
 
@@ -44,16 +44,20 @@
 ## 4. Đất, nhà, đồ
 
 - Đất chọn bằng **lô theo khu** (phố nhỏ / phố lớn); lô trống = không có dòng DB (chỉ ghi khi có chủ — CLAUDE §1.5).
-- Nhà có 3 bậc; nâng bậc bằng **vàng + xu** (đồ xác định, không ngẫu nhiên).
+- Nhà có 3 bậc; nâng bậc bằng **xu** (đồ xác định, không ngẫu nhiên).
 - Đồ nội thất/skin/đồ khoe: **bán giá cố định**; đồ hiếm chỉ có được nhờ chơi (câu được, sự kiện), **không bán bằng xu ngẫu nhiên** (không rương/trứng ngẫu nhiên — tránh cấu trúc cờ bạc).
 - Em nghỉ học lâu ⇒ đất đóng băng, sau N ngày thu hồi (**bàn sau**).
 
-## 5. Kinh tế — ĐẢO CHIỀU so với `spec-bk-world.md`
+## 5. Kinh tế xu — vòng khép kín kiếm ⇄ tiêu (CEO chốt 12/10)
 
-- **Hai loại tiền, tách hẳn:**
-  - **Xu ví BK** (kiếm từ học, đổi quà ở Tủ quà): vào làng **MỘT CHIỀU** — mua nhà bậc cao, nội thất, skin. **Không có đường làng ⇒ xu.**
-  - **Vàng** (kiếm từ ruộng, câu cá, bán đồ trong làng): chỉ sống trong làng.
-- **Cổng học:** điểm học tập (= `_luot_hoc_that`) mua hạt giống/vé và là nguồn "năng lượng ngày" (**đề xuất, CEO chưa gật** — xem Phần C).
+> Thùy: *"Nông trại là kiếm xu, nhà cửa là tiêu xu, giúp cân bằng kinh tế BK qua việc học sinh mua đồ trong Làng BK."*
+
+- **MỘT loại tiền = xu ví BK** (cùng ví với Tủ quà). V1 **không** thêm loại "vàng" riêng — bớt một lớp để cân bằng.
+- **Nguồn xu (KIẾM):** nông trại — bán nông sản, nhiệm vụ NPC. Giữ NGUYÊN luật + **trần tháng** của `spec-nong-trai-nhip-ngay.md` (30 xu/tháng, mùa đầu 45; mọi nguồn xu trong Làng dùng chung trần).
+- **Chỗ tiêu xu (TIÊU):** nhà bậc cao, đất mở rộng, nội thất, skin, đồ khoe — **đồ xác định, giá cố định, KHÔNG ngẫu nhiên** (không rương/trứng bằng xu).
+- **Vì sao cân bằng:** xu từ nông trại (có trần) quay về Làng qua mua đồ, nên xu không chỉ chảy ra Tủ quà (BK tốn tiền thật). Giá đồ đặt sao cho **một món lớn ≈ 1–2 tháng thu nhập nông trại** — **TỰ ĐẶT, chỉnh bằng bot**.
+- **Chống "cày xu không học":** hạt giống/vé mua bằng **điểm học tập** (= `_luot_hoc_that`), nên vòng nông trại luôn bắt đầu từ việc học (cổng học — **đề xuất, CEO chưa gật**, Phần C).
+- **Hai đầu cần canh:** tiêu < kiếm ⇒ HS tích xu đổi Tủ quà; tiêu > kiếm ⇒ HS chán. Bot đo tỉ lệ xu **tiêu trong Làng / tổng xu kiếm** (mục tiêu: **bàn sau**).
 - Mua bán giữa HS qua **sạp** (niêm yết giá, có log). Không chuyển đồ trực tiếp; không đấu giá.
 - Mọi phép tính (giá, cây chín, số dư, đổi) ở Postgres `fn_tg_*` transactional (CLAUDE §2.0). Số dư = tổng sổ giao dịch.
 - **Bot kinh tế 60 ngày** chạy trước khi mở cho HS (đã có tiền lệ Nông Trại).
@@ -101,7 +105,7 @@ Postgres: tg_dat · tg_nha · tg_vat · tg_cay · tg_kho (sổ) · tg_sap · tg_
 |---|---|---|---|
 | **M0** | Spike: đi lại · thấy nhau · vào nhà (bot 100 client) | 2–3 tuần | 100 bot mượt; iPad gen 7 ≥ 30 FPS |
 | **M1** | 2 phố + quảng trường · chọn đất · nhà 3 bậc · nội thất · thăm nhà | 5 tuần | 5 em thật chơi 1 buổi, không mất dữ liệu |
-| **M2** | Cây · vật nuôi · vàng · cửa hàng · sạp · tiêu xu · cổng học | 3–4 tuần | Bot kinh tế 60 ngày không lạm phát/nhân đôi |
+| **M2** | Cây · vật nuôi · bán nông sản (kiếm xu, có trần) · cửa hàng · sạp · tiêu xu · cổng học | 3–4 tuần | Bot kinh tế 60 ngày không lạm phát/nhân đôi |
 | **M3** | Câu cá · bảng tin · sự kiện · nhà lớp · quà GV | 3–4 tuần | 1 lớp ≤15 em chơi 2 tuần liền |
 | **M4** | Chặn/báo cáo · giới hạn giờ · báo cáo PH · mở theo khối | 3 tuần | 0 lỗi mất đồ; soát kinh tế |
 | **Tổng** | | **~16–19 tuần** | |
@@ -113,7 +117,7 @@ Postgres: tg_dat · tg_nha · tg_vat · tg_cay · tg_kho (sổ) · tg_sap · tg_
 
 # PHẦN B — BÀN SAU (CTO điền mặc định, Thùy sửa)
 
-- Giá đất/nhà/nội thất/hạt giống · số loại cây, cá, vật nuôi · công thức vàng/xu.
+- Giá đất/nhà/nội thất/hạt giống · số loại cây, cá, vật nuôi · giá đồ so với thu nhập nông trại/tháng · mục tiêu tỉ lệ xu tiêu/kiếm.
 - Kích thước phố, số lô, số nhà tối đa/phố · luật thu hồi đất khi nghỉ.
 - Danh mục câu soạn sẵn + emote (chung nguồn với `the_gioi_danh_muc`).
 - Lịch sự kiện (tuần/tháng) · quà GV.
@@ -124,5 +128,5 @@ Postgres: tg_dat · tg_nha · tg_vat · tg_cay · tg_kho (sổ) · tg_sap · tg_
 
 1. **Nhúng trong app HS** (đề xuất) hay trang riêng?
 2. **Cổng học:** mua hạt/năng lượng bằng điểm học tập (như BK World) hay V1 chưa cần?
-3. **Quan hệ với BK World:** gộp (thú + trồng trọt thành một phần của Làng) hay chạy song song? Đề xuất: **gộp** (§7.1 BK World đã chốt "thú đi dạo ở trang trại").
+3. ~~Quan hệ với BK World~~ → **GỘP tất cả game vào Làng BK** (CEO chốt 12/10): nông trại, thú, ấp trứng là hoạt động bên trong Làng.
 4. Tên game.
