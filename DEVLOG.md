@@ -36870,3 +36870,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sau:** `KHOI_CHON_SKIN` thêm 3/4/4T/5/5T ⇒ `nhom912 = true` ⇒ cấp 1 đi cùng đường `HomeHS912` (ngang/dọc, chọn style + hình nền, banner Chuỗi, ô theo `KHU_CAP2` + công tắc, Lộc/tutorial). `cards` dùng `KHU_CAP2` cho `cap2 || cap1`. `HomeCap1` chỉ còn là đường lùi khi không xác định được khối (`cap1 && !nhom912`). `skinMacDinhTheoKhoi` parse số đầu ⇒ '4T'/'5T' cũng ra Minecraft (trước đó chỉ '4'/'5' — lỗi bỏ sót nhóm 4T/5T, 22 HS).
 - **Chủ ý KHÔNG đổi:** Thế giới BK (mạng xã hội khoe) vẫn ẨN với cấp 1 (`oMo('the_gioi') = false` khi cap1) — cấp 1 trước nay không có, không tự thêm tính năng xã hội cho em nhỏ; chờ Thùy quyết. Màn BXH cấp 1 vẫn là `BangXepHang` cũ (khung desktop); `LamBai/LamThuThach desktop={!!cap1}` giữ nguyên (bố cục rộng cho iPad).
 - **Chưa kiểm:** chưa có tài khoản cấp 1 thật để xem (chỉ tsc + check:style-hs + xem thử HomeHS912).
+
+## 2026-10-10 (19h) — Dạng không có MCQ ⇒ trả lời ngắn (Thùy)
+
+- Thùy: dạng không có MCQ thì ưu tiên hiện trả lời ngắn, đừng báo "không có". Thay luật 20/09 (tuyệt đối) · 28/09 (chỉ mức 4–5) · 03/10 (bù 100% MCQ).
+- Mig 202610101851 (dựng từ bản đang chạy): `_btyeu_chon_cau` bỏ điều kiện mức ≥4; `tu_luyen_chu_de_sinh` bu_* lùi TLN khi 0 MCQ;
+  `fn_btyeu_giay_nhap` nhận câu tra_loi_ngan (1 đúng / 0 sai); `fn_hs_bu_dang.co_mcq` = MCQ hoặc TLN. Chạy thử (rollback): 152 dạng case mở có câu
+  138 → 149; T309010102 (mức 3, 0 MCQ) ra TLN; dạng có MCQ vẫn ra MCQ; bù T309010102 ra 10 câu TLN. Sau áp: chọn 5/10 câu đủ số.
+- Client: PhieuGiayYeuTA in dòng "Đáp số", nhập kết quả có nút Đúng/Sai + hiện đáp án cho câu TLN; app HS đổi câu báo dạng không có câu.
+  CLAUDE.md + spec-bo-tro.md §17 ghi luật mới. Chưa bấm thử in/nhập phiếu TLN trên app thật.
+
+## 2026-10-10 (19h30) — Bổ trợ yếu: đồng bộ dạng bị xoá khỏi bản đồ (Thùy)
+
+- **Thùy:** ca bổ trợ yếu vẫn hiện dạng đã xoá ở bản đồ kiến thức. **Đo:** T107010102 gộp vào T107010101 ngày 06/10 (18/18 câu đổi dạng, log
+  `kho_doi_dang_log`) rồi xoá khỏi `dai_ban_do`; đường xoá lá bản đồ (client `.delete()`) không đồng bộ bảng trỏ dạng bằng text (khác
+  `fn_dai_chuyen_dang`). 3 case mở giữ mã chết (Lê Bảo Châu · Nguyễn Đăng Đức · Nguyễn Thái Anh).
+- **Sửa (mig 202610101921):** `_btyeu_dong_bo_dang_ban_do()` — dạng case mở không còn trong bản đồ: có đúng 1 dạng nhận hết câu (log) + còn trong
+  bản đồ + case chưa có ⇒ đổi mã; còn lại ⇒ đóng dạng (không xoá dòng). Trigger sau DELETE ở dai/hgt/hinh_hoc/khtn_ban_do + sau INSERT
+  kho_doi_dang_log. `fn_btyeu_ca_ta` ẩn dạng đã đóng mà đã xoá khỏi bản đồ. Kết quả: 2 đổi mã, 1 đóng; còn lệch 0. Thử xoá dạng còn câu: FK chặn
+  ⇒ câu luôn chuyển đi trước khi xoá dạng, mapping luôn có lúc trigger chạy.
+- **Cũng kiểm 10/10:** bản prod — HS đã lên (19:18), ERP có suất bậc lớp (08:06), **TA còn bản 03/10** (Thùy dính GitHub rate limit lúc deploy).

@@ -302,3 +302,13 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   môn của ca). Em có 2 lượt trong cùng ca chỉ tính 1 lần. **Đơn vị (30'×TA) giữ nguyên** — ca vẫn đầy khi hết suất HOẶC hết đơn vị.
   DB: `_bt_trong_so_lop` · `_ca_bo_tro_trong_so_bhh` · `_ca_bo_tro_suc_nguoi`; sửa `fn_ca_bo_tro_ngay/ung_vien/xep/xac_nhan` (mig 202610091449).
   Lịch phòng hiện "N em · x/3 suất", hàng chờ báo "hết suất (còn x, em cần y)".
+
+## 17. Cập nhật 10/10 — dạng không có MCQ ⇒ trả lời ngắn (THAY §4)
+
+- **CEO 10/10:** "Với những dạng không có MCQ thì hệ thống ưu tiên hiển thị trả lời ngắn — như cũ là đang báo không có."
+  ⇒ luật chọn câu của bổ trợ: **MCQ trước; cả dạng 0 MCQ ⇒ câu trả lời ngắn có đáp án (kho chuẩn), MỌI mức độ.** §4 ("MCQ tuyệt đối",
+  ngoại lệ chỉ mức 4–5) và chốt 03/10 ("bù 100% MCQ, 0 MCQ thì khoá") HẾT hiệu lực.
+- Áp ở `_btyeu_chon_cau` (yếu: luyện · test cuối ca · retest · phiếu giấy) và `tu_luyen_chu_de_sinh` loai `bu_luyen`/`bu_test` (bù). Phiếu giấy:
+  câu trả lời ngắn in kèm dòng "Đáp số: …", màn Nhập kết quả hiện đáp án + 2 nút **Đúng / Sai** (`fn_btyeu_giay_nhap` nhận 1/0).
+- Đo 10/10 (152 dạng trong case mở): có câu để làm 138 → 149. Còn 3 dạng không có cả MCQ lẫn trả lời ngắn (T107010102 · T107010506 · HH00023)
+  ⇒ app báo học trên giấy, TA tick tay. "Học từ đầu" (đuổi) không đổi.

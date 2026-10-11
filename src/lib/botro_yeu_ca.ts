@@ -171,7 +171,7 @@ export async function caTheoDoi(ngay?: string): Promise<CaTheoDoi[]> {
 export type CauInGiay = {
   id: string; thu_tu: number; ma_cau: string | null; ma_dang: string | null; ten_dang: string
   noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; dap_an_key: unknown; loi_giai: string | null
-  chon: number | null; verdict: 'correct' | 'wrong' | null
+  chon: number | null; verdict: 'correct' | 'wrong' | null // câu trả lời ngắn (lua_chon rỗng): TA chấm 1 = đúng · 0 = sai (Thùy 10/10)
 }
 export type BaiInGiay = {
   bai_test_id: string; loai: 'bo_tro' | 'bo_tro_test'; da_nop: boolean; mon: string; ngay: string; in_giay_at: string | null; buoi_id: string | null
@@ -273,7 +273,7 @@ export async function seedBtvnBu(bhhId: string): Promise<number> {
 }
 
 // ── CA BÙ trên app HS (Thùy 03/10, mig 202610031604): "Vào ca" ⇒ các DẠNG của buổi em đã nghỉ; mở từng dạng bằng màn Học từ đầu.
-export type BuDangHS = { mon: string; ten_lop: string | null; ngay_me: string | null; ngay_bu: string; dangs: { ma_dang: string; ten_dang: string; co_mcq: boolean }[] } // co_mcq = có câu trắc nghiệm (bù 100% MCQ)
+export type BuDangHS = { mon: string; ten_lop: string | null; ngay_me: string | null; ngay_bu: string; dangs: { ma_dang: string; ten_dang: string; co_mcq: boolean }[] } // co_mcq = có câu dùng được trên app: trắc nghiệm, không có thì trả lời ngắn (Thùy 10/10)
 export async function buDangCuaToi(buoiId: string): Promise<BuDangHS> {
   const { data, error } = await supabase.rpc('fn_hs_bu_dang', { p_buoi: buoiId })
   if (error) throw error
