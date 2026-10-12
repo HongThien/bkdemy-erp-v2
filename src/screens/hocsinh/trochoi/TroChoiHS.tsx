@@ -13,13 +13,13 @@ function Anh({ g }: { g: GameHS }) {
         style={{ ...HEAD, background: 'var(--sk-surface2)', color: MAU.muted, border: '1.5px dashed var(--sk-line)' }}>?</span>
 }
 
-export default function TroChoiHS({ onBack, onChoi }: { onBack: () => void; onChoi: (id: string) => void }) {
+export default function TroChoiHS({ onBack, onChoi, sapRa }: { onBack: () => void; onChoi: (id: string) => void; sapRa?: Record<string, boolean> }) {
   return (
     <ManHS>
       <DauTrangHS tieuDe="Trò chơi" phu="Giải lao sau giờ học" onBack={onBack} />
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         {DS_GAME.map((g) => {
-          const san = g.trangThai === 'san_sang'
+          const san = g.trangThai === 'san_sang' && !sapRa?.[g.id]   // sapRa = công tắc tính năng của game đang đóng
           return (
             <TheHS key={g.id} onClick={san ? () => onChoi(g.id) : undefined} tat={!san} className="flex gap-4 p-4">
               <Anh g={g} />

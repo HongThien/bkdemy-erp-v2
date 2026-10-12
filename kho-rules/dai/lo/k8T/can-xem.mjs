@@ -35,9 +35,9 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
@@ -299,6 +299,39 @@ F.push(
 )
 const GHI_CHU_LO8 = `<p class="dan">Lô 8 — quyển thứ hai, Bồi dưỡng HSG Toán Đại số 8 của Trần Thị Vân Anh, §1 Chia đa thức (51 câu). Quyển này có ví dụ kèm lời giải đầy đủ: tôi nhập mỗi ví dụ thành một câu như bài tập. Bài tập lấy lời giải ở phần "Hướng dẫn và đáp số" cuối chuyên đề; chỗ sách chỉ ghi đáp số thì kho soạn đủ lời giải. Sách không chia tầng cơ bản / nâng cao nên nhóm do hai lượt gán quyết định; 10 câu chia đa thức đặt tính và rút gọn luỹ thừa vào "Kiến thức cơ bản › Nhân, chia đa thức". Bản scan mất 1–2 chữ ở mép trái: bài tập 1 ý 3 (mẫu in ".8", kho ghi ${toan('3^8')} — chỉ bản này khớp đáp số ${toan('\\dfrac{1}{15}')} của sách), bài 9 a, 11 a (kho ghi ${toan('x-2')}, ${toan('x-1')} theo hướng dẫn). Bài tập 22 ý b, c không nhập (đề bị che / không in đề, và trùng bài 2, bài 3).</p>`
 
+// ── LÔ 9 (TVA §2 — Phân tích đa thức thành nhân tử) ────────────────────────
+E.push(
+  lechT('T2V5.1a@p25', anhT(25, 745, 130, '§2 Dạng 5 (phối hợp nhiều phương pháp) ví dụ 1, đề') + anhT(25, 920, 95, 'Ví dụ 1 a, lời giải của sách (dừng ở nhân tử bậc ba)'),
+    'Chọn nhóm nào? Đặt $a^2$ rồi nhóm thì còn $a^3-a^2+2$, phải tách tiếp mới ra $(a+1)(a^2-2a+2)$. Theo luật "xếp theo phương pháp khó nhất phải dùng", tôi nghiêng về **Phân tích nhân tử › Tách hạng tử, thêm bớt hạng tử**.'),
+  lechT('T2V7.6a@p30', anhT(30, 830, 235, '§2 Dạng 7 ví dụ 6, đề (hai ý)') + anhT(30, 1065, 555, 'Ví dụ 6, lời giải của sách'),
+    'Chọn nhóm nào (cho cả ý a và ý b)? Cách giải là đưa về tổng các bình phương bằng $0$; còn đề là "từ điều kiện suy ra hệ thức giữa các chữ". Theo luật chị đã chốt cho loại đề này, tôi nghiêng về **Biểu thức đặc biệt › Chứng minh đẳng thức có điều kiện**.'),
+  lechT('T2V7.6b@p30', '', 'Cùng ví dụ 6, ảnh sách ở thẻ ngay trên. Tôi nghiêng về **Biểu thức đặc biệt › Chứng minh đẳng thức có điều kiện**.'),
+  lechT('T2V7.12@p33', anhT(33, 190, 470, '§2 Dạng 7 ví dụ 12, đề và lời giải của sách'),
+    'Chọn nhóm nào? Việc chính của bài là phân tích đa thức hoán vị vòng $a^4(b-c)+b^4(c-a)+c^4(a-b)$ thành nhân tử. Tôi nghiêng về một nhóm thứ ba, khác cả hai lượt: **Phân tích nhân tử › Đa thức nhiều biến: hoán vị vòng, đa thức đặc biệt**.'),
+  lechT('T2B.15@p35', anhT(35, 925, 50, '§2 bài tập 15, đề'),
+    'Chọn nhóm nào? Đa thức trùng phương $6x^4-11x^2+3$, tách như tam thức bậc hai theo $x^2$. Tôi nghiêng về **Phân tích nhân tử › Tách hạng tử, thêm bớt hạng tử**.'),
+  lechT('T2B.27@p35', anhT(35, 1470, 50, '§2 bài tập 27, đề'),
+    'Chọn nhóm nào? Đa thức bậc bốn hệ số đối xứng, ra $(x^2+3x+1)^2$ bằng đổi biến hoặc hệ số bất định. Tôi nghiêng về **Phân tích nhân tử › Đổi biến (đặt ẩn phụ), hệ số bất định, nhẩm nghiệm**.'),
+  lechT('T2B.46@p36', anhT(36, 1265, 115, '§2 bài tập 46, đề'),
+    'Chọn nhóm nào? Bài rút gọn một phân số bằng số, tử và mẫu viết theo luỹ thừa của $10$. Tôi nghiêng về **Phân thức › Rút gọn phân thức và các câu hỏi kèm theo**.'),
+  lechT('T2B.48@p36', anhT(36, 1490, 100, '§2 bài tập 48, đề') + anhT(37, 80, 90, '§2 bài tập 49, đề'),
+    'Chọn nhóm nào (cho cả bài 48 và bài 49)? Hai bài so sánh hai phân số bằng số. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  lechT('T2B.49@p37', '', 'Cùng loại với bài 48, ảnh sách ở thẻ ngay trên. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+)
+F.push(
+  the('Trần Thị Vân Anh §2, Dạng 4 b ví dụ 1 b — đề sách in sai số mũ', anhT(23, 435, 320, '§2 Dạng 4 b ví dụ 1, đề và lời giải của sách')
+    + muc('Vấn đề', doan('Đề in $a^4+4b^2$; lời giải của sách ngay dưới giải $a^4+4b^4$ (thêm bớt $4a^2b^2$). Với $4b^2$ thì không phân tích được.')) + muc('Trong kho', trongKho('T2V4b.1b@p23')),
+    'Kho ghi $a^4+4b^4$.', 'bao'),
+  the('Trần Thị Vân Anh §2, bài tập 44 — đề sách in thừa một dấu cộng', anhT(36, 1125, 85, '§2 bài tập 44, đề')
+    + muc('Vấn đề', doan('Vế phải in $(a+b)^2(b+c)^2+(c+a)^2$ và thừa số đầu in $(an+bc)$. Hướng dẫn của sách chứng minh $am+bc=(a+b)(a+c)$ và hai đẳng thức tương tự, nên vế phải là tích $(a+b)^2(b+c)^2(c+a)^2$.')) + muc('Trong kho', trongKho('T2B.44@p36')),
+    'Kho ghi vế phải là tích ba bình phương.', 'bao'),
+  the('Trần Thị Vân Anh §2, bài tập 35 — không nhập', anhT(36, 370, 50, '§2 bài tập 35, đề')
+    + muc('Vấn đề', doan('Đề in $x^7+x^2-1$, nhưng hướng dẫn và đáp số của sách là của $x^7+x^2+1$; đa thức in trong đề không phân tích được thành nhân tử hệ số nguyên.')) + muc('Bản $+1$ đã có trong kho', khoMa('T18T010202021')),
+    'Tôi không nhập bài này: với đề như in thì không có lời giải, còn bản $+1$ đã có trong kho.', 'bao'),
+)
+const GHI_CHU_LO9 = `<p class="dan">Lô 9 — Trần Thị Vân Anh §2 Phân tích đa thức thành nhân tử (107 câu). Sách lặp nhiều bài đã có: tôi không nhập 20 câu. Máy bắt 12 câu cùng đa thức với câu trong kho hoặc ví dụ và bài tập lặp nhau trong chính chuyên đề. Tôi bỏ tay 7 câu: ${toan('a^4+64')}, ${toan('a^5+a+1')}, ${toan('a^7+a^2+1')} và bài tập 40 chỉ đổi tên biến so với kho; bài tập 1, 6 lặp lại ví dụ cùng chuyên đề; bài tập 43 là bài 35 b chương I của quyển Nguyễn Đức Tấn. Câu thứ 20 là bài tập 35 (thẻ riêng). Giữ làm biến thể: ${toan('x^3+y^3+z^3-3xyz')} (đề thi có nguồn riêng), ${toan('ab(a-b)+bc(b-c)+ca(c-a)')} (viết khác dạng với câu trong kho).</p>
+<p class="dan">Không nhập được ở §2: Dạng 7 ví dụ 9 c (sách không in lời giải); Dạng 8 ví dụ 3 c và các ví dụ sau đó (lời giải nằm ở hai trang sách 32–33, bản scan thiếu). Sách chưa phân tích đến cùng, kho làm tiếp: Dạng 5 ví dụ 1 a, ví dụ 6. Lỗi in trong lời giải, kho ghi bản đúng: Dạng 3 ví dụ 1 c (in ${toan('(2m+3n)^2')}, đúng là mũ 3), Dạng 7 ví dụ 3 a, 9 b, Dạng 8 ví dụ 3 a (cách 1 in ${toan('(x+3)')}, đúng là ${toan('(x-3)')}).</p>`
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -329,12 +362,12 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau tám lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8: §1 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–8: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<p class="dan">Kho Đại 8T sau chín lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8–9: §1, §2 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–9: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
 <h2 id="e">Cần chị quyết — ${cauDb.filter((r) => !r.da_duyet).length} câu chưa duyệt, ${E.length} thẻ</h2>
-<p class="dan">Hai mươi chín câu đang ở "Chưa phân dạng": 25 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Câu còn lại (bài 48 b chương IV) là đề sách in sai. Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8 (quyển Trần Thị Vân Anh) ở cuối.</p>
+<p class="dan">Ba mươi tám câu đang ở "Chưa phân dạng": 34 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Câu còn lại (bài 48 b chương IV) là đề sách in sai. Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8, lô 9 (quyển Trần Thị Vân Anh) ở cuối.</p>
 ${E.join('\n')}
-<h2 id="f">Lô 3 đến lô 8 — đã làm, chị xem</h2>
+<h2 id="f">Lô 3 đến lô 9 — đã làm, chị xem</h2>
 <p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu), lô 4 (chương III — 93 câu), lô 5 (chương IV — 130 câu) lô 6 (ôn tập cuối năm phần Đại, phụ lục A — 79 câu) và lô 7 (phụ lục C — 70 câu; các thẻ của lô 7 ở cuối mục). Hai câu trước đây tôi để chờ chị (bài 73 chương III, bài 31 phụ lục A) nay đã duyệt vì phụ lục C in lại đúng bản kho đang ghi — thẻ của hai bài này có thêm ảnh đó. Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
 ${F.join('\n')}
 ${GHI_CHU_LO4}
@@ -342,6 +375,7 @@ ${GHI_CHU_LO5}
 ${GHI_CHU_LO6}
 ${GHI_CHU_LO7}
 ${GHI_CHU_LO8}
+${GHI_CHU_LO9}
 <p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
 <p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
 <p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>

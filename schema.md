@@ -7145,7 +7145,7 @@ WITH luot AS (
 - `fn_bao_loi_cau_xu_ly(p_mon text, p_ma_cau text, p_ket_qua text, p_ghi_chu text DEFAULT NULL::text)` → integer
 - `fn_bao_loi_tra_loi(p_id uuid, p_noi_dung text)` → void
 - `fn_bdm_cau_chua_gan(p_nhom text, p_chu_de text, p_chuyen_de text, p_limit integer DEFAULT 200, p_offset integer DEFAULT 0)` → jsonb
-- `fn_bdm_cay(p_khoi text, p_nhanh text DEFAULT 'toan'::text)` → jsonb
+- `fn_bdm_cay(p_khoi text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `fn_bdm_chuyen_dang_bai(p_id text, p_nhom_id text, p_thu_tu_dich text[])` → void
 - `fn_bdm_chuyen_nhom(p_id text, p_chu_de_id text, p_chuyen_de_id text, p_thu_tu_dich text[])` → void
 - `fn_bdm_chuyen_o(p_chu_de_cu text, p_chuyen_de_id text, p_chu_de_moi text)` → void
@@ -7776,8 +7776,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

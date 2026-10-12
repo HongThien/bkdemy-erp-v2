@@ -137,6 +137,8 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', loai: 'de_thi', mau: 'ph-purple' }, // 27/09: đề thi thầy/cô phát hành cho lớp (fn_de_thi_mo)
   { id: 'thu_vien', ten: 'Thư viện BK', icon: '📚', direct: true, mau: 'brand' }, // 03/10: nơi tìm hiểu mọi thông tin trên app (Rank ở trong)
   { id: 'tro_choi', ten: 'Trò chơi', icon: '🎮', direct: true, mau: 'brand' }, // 06/10: danh sách game (Nông trại BK + sắp có) — khối Giải trí
+  { id: 'thanh_tuu', ten: 'Thành tựu', icon: '🏆', direct: true, mau: 'ph-orange' }, // 11/10: cấp 3 hiện đủ ô như lớp 9 (trước đây thiếu Thành tựu + Ví xu)
+  { id: 'vi_xu', ten: 'Ví xu', icon: '🪙', direct: true, mau: 'ph-orange' },
 ]
 // ── KHU cấp 2 (lớp 6-9) — Thùy 11/09: ẨN Bài tập trên lớp/ET/BTVN, thêm 3 ô mới ─────────────────
 // (Bài tập được giao "sắp có" — sau này nối bổ trợ; Thành tựu = giai_thuong đã công bố; May mắn =
@@ -648,8 +650,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     }].filter((t) => t.id !== 'rank' || rankMo())} />
   }
   // TRÒ CHƠI (06/10): danh sách game; Nông trại BK nhúng iframe (public/games/nong-trai — scripts/dong-bo-nong-trai.mjs)
-  if (direct === 'nong_trai') return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
-  if (direct === 'tro_choi') return <TroChoiHS onBack={() => setDirect(null)} onChoi={(id) => { if (id === 'nong_trai') setDirect('nong_trai') }} />
+  // Nông trại BK: công tắc riêng `nong_trai` (khoá tạm 12/10 — bản thử chưa lưu theo tài khoản). Đóng ⇒ trong ô Trò chơi hiện "Sắp ra mắt", không vào được.
+  if (direct === 'nong_trai' && moTN('nong_trai')) return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
+  if (direct === 'tro_choi' || direct === 'nong_trai') return <TroChoiHS onBack={() => setDirect(null)} sapRa={{ nong_trai: !moTN('nong_trai') }} onChoi={(id) => { if (id === 'nong_trai' && moTN('nong_trai')) setDirect('nong_trai') }} />
   // HƯỚNG DẪN CHƠI (Thùy 03/10): gallery giải thích mọi chức năng — vào từ Thư viện BK.
   if (direct === 'tutorial') {
     const dsT = tutDs ? chuongMo(moTN, tutDs) : undefined
@@ -780,7 +783,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const anO = new Set((['nhiem_vu', 'rank'] as KhuId[]).filter((id) => oGami(id) === null || !oMo(id)))
   for (const id of Object.keys(MA_TINH_NANG_O) as KhuId[]) if (!oMo(id)) anO.add(id)
 
-  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', tro_choi: 'Nông trại BK và các game khác', xep_hang: 'Xem em đứng hạng mấy', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app' }
+  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', tro_choi: 'Nông trại BK và các game khác', xep_hang: 'Xem em đứng hạng mấy', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app', thanh_tuu: 'Xem giải thưởng của em', vi_xu: 'Xem xu & lịch sử' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null || nhom912 === null || tn === undefined || (nhom912 && giaoDien === undefined))) return <ManCho>Đang tải…</ManCho>
@@ -863,7 +866,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
           return {
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge: nChuaLam, disabled: sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id],
-            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay' | 'the_gioi' | 'thu_vien' | 'tro_choi')) : () => { setKhu(k.id); setTab('chua') },
+            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay' | 'the_gioi' | 'thu_vien' | 'tro_choi' | 'thanh_tuu' | 'vi_xu')) : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),
           } satisfies HomeCard

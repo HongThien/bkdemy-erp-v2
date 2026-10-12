@@ -36931,3 +36931,21 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm trên bản thật sau khi áp:** đóng vai 53 HS đang có case yếu gọi hs_dang_hoc_tap: 1.842 dạng hiện, 0 dạng ngoài bản đồ, 0 không tên. Nhánh HGT/KHTN/Hình/Anh: 0 ô bị đổi mã. Thời gian: mastery toàn trường ~10s → ~9,5s (không đổi) · màn Dạng yếu của 1 HS 176 → ~290ms.
 - **Còn lại:** 9 ô yếu mang mã T112030102/03 (chuyên đề lớp 12 xoá 24/09, câu đang ở "Chưa phân dạng") — giữ mã chép đúng luật, app HS và bổ trợ không hiện. `_bxh_gia_tri` + `fn_hs_xep_hang_ti_le_dat` (BXH tỉ lệ đạt) vẫn đếm theo mã chép — CHƯA nối, để phiên bản đồ P1. Đuổi: 15 dòng bo_tro_duoi_dang ở mã chết (2 mã T106020204/05 trong case mở) chưa đồng bộ — chờ Thùy.
 - **Sai rồi sửa:** bản đầu gọi hàm theo từng lượt chấm trong mệnh đề exists ⇒ dạng-yếu-2-cửa-sổ chậm gấp 2,5 lần; đổi sang phân giải 1 lần cho mỗi cặp. Phiên bản đồ: §10 đã bật — đừng dựng lại `_do_nhom_cua_o`.
+## 11/10 — 8T: xong phần dở của lô 9 (trang xem + spec)
+- Trang xem thêm 9 thẻ lệch nhóm + 3 thẻ đã làm của lô 9 (83 thẻ, 120 ảnh), publish Version 10; `k8T.md` §8/§10 có dòng lô 9.
+- Ba trong bốn agent chép §3 chết vì hết hạn mức phiên NGAY SAU khi ghi tệp (chưa tự kiểm, chưa báo cáo): bốn tệp `TVA-T3-*.cs.md` đều trọn vẹn (94 khối), qua cổng khuôn, chỉ vướng Dạng 3 ví dụ 3d (đề và lời giải của sách vênh nhau) ⇒ không giao lại, soát thẳng.
+
+
+### 12/10 — Thùy chốt phạm vi bản đồ mới K12
+- **Thùy:** "bản đồ 12 mới chỉ phần nguyên hàm tích phân là chuẩn thôi, các phần còn lại chưa chuẩn". Ghi vào spec-ban-do-4-tang.md (đầu file) + memory. Hệ quả: B5/tài liệu K12 theo CHỦ ĐỀ NH-TP (NCD00095), không theo khối; chủ đề khác giữ bản đồ cũ; NH-TP là ứng viên pilot B5 (0 tham chiếu từ đo lường/ET/tài liệu — đo 10/10). Chưa chạm DB.
+
+
+### 12/10 (tiếp) — Bản đồ mới: chọn nhánh Đại · Hình giải tích · Hình (Thùy: "Bản đồ mới chưa cho chọn phần Đại - Hình giải tích - Hình")
+- **Làm:** mig `202610121613` — cột `nhanh` (toan|hgt|hinh, mặc định toan) trên `dai_bdm_chu_de` + `dai_bdm_chuyen_de`; trigger `_bdm_o_cung_nhanh` chặn nối ô chủ đề ↔ chuyên đề khác nhánh; `fn_bdm_cay(p_khoi, p_nhanh default toan)` lọc theo nhánh, phần đếm dạng cũ/câu chỉ tính cho Đại (nhánh khác trả 0). Client: chip nhánh ở đầu màn Bản đồ mới (nhớ nhánh gần nhất), `getCay/themChuDe/themChuyenDeVaoChuDe` truyền nhánh; nhóm + dạng bài đi theo chủ đề nên tự thuộc nhánh.
+- **Kiểm (ROLLBACK):** Đại K12 vẫn 6 chủ đề y như trước; hgt/hinh rỗng; tạo chủ đề hgt không lẫn sang Đại; nối chéo nhánh bị chặn. tsc không thêm lỗi. CHƯA mở màn bằng phiên đăng nhập thật.
+- **Cố ý chưa làm:** gán câu / đối ứng dạng cũ / rổ chưa khớp cho hgt + hinh (phần đó dính bảng câu riêng từng nhánh — dai_cau_hoi/dai_ban_do; hgt_cau_hoi, hinh_hoc_*) — hiện nhánh hgt/hinh chỉ soạn cấu trúc 4 tầng + lý thuyết + ví dụ + mô tả. Tên bảng vẫn dai_bdm_* (lịch sử). "Hình học" (hinh_hoc, kho kiểu 1) không có trong chip — Thùy chỉ nêu 3 nhánh.
+
+## 12/10 — KHOÁ TẠM Nông trại BK + bắt đầu hoàn thiện từng bước
+- **Thùy:** "1. Khoá tạm game nông trại trên app · 2. Làm hoàn thiện game nông trại từng bước một." (sau khi t báo: game mới là bản thử — tiến độ lưu theo thiết bị, bạn bè là bạn ảo, chưa nối xu/ĐHT, ngày theo đồng hồ máy, chưa giới hạn giờ).
+- **Khoá (mig `202610121618`, ĐÃ ÁP — có hiệu lực ngay, không cần deploy):** `tro_choi` ĐÓNG (ô Trò chơi ẩn khỏi màn chính — chỉ có Nông trại + 1 game "sắp ra mắt") + thêm công tắc riêng `nong_trai` (ĐÓNG). Code: `TroChoiHS` prop `sapRa`; `HocSinhApp` chỉ vào game khi `moTN('nong_trai')`. Sau deploy, mở lại ô Trò chơi mà vẫn khoá riêng Nông trại ⇒ hiện mờ "Sắp ra mắt". **Lưu ý:** file tĩnh `/games/nong-trai/` vẫn truy cập được nếu biết URL (khoá ở tầng app, không ở tầng file); tiến độ em đã chơi trên thiết bị KHÔNG bị đụng.
+- **Lộ trình hoàn thiện (làm lần lượt, mỗi bước xong báo Thùy):** B1 lưu tiến độ THEO TÀI KHOẢN (DB, cầu nối postMessage app↔game) → B2 ngày/giờ theo server + giới hạn giờ chơi → B3 nối ĐHT/xu (kinh tế đã giả lập) → B4 bạn lớp thật (thăm · hái trộm · giúp, `fn_nt_*`) → B5 Bác Hai → hướng dẫn thật + kiểm bằng HS thật → mở lại `nong_trai`.

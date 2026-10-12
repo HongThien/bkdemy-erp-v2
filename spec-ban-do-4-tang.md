@@ -2,6 +2,8 @@
 
 > **Trạng thái (08/10):** CEO chốt **phương án "bản đồ mới trên ERP"** (§0). Đã build: bảng nháp + màn soạn (B1, mig `202610081147`, tab Kho › 🆕 Bản đồ mới).
 > Các bước B2–B5 chưa làm.
+> **⭐ Cập nhật 12/10 (CEO):** bản đồ mới **K12 chỉ chủ đề Nguyên hàm – Tích phân (`NCD00095`) là chuẩn**; các chủ đề K12 còn lại trong bản nháp CHƯA chuẩn.
+> ⇒ B5 Chuyển và việc dựng tài liệu/giáo trình/ET theo bản đồ mới của K12 chỉ áp **theo chủ đề NH-TP**, không theo cả khối; chủ đề khác giữ bản đồ cũ. Điều kiện "khối xong khi về 0" (§9.2) và "1 lần/khối" (§0, §11) hiểu là **theo chủ đề** cho K12.
 > **Phạm vi đợt này:** nhánh **Đại** (`dai_*`). HGT/KHTN cùng khuôn ⇒ áp sau qua registry. Hình (`hinh_*`) và Tiếng Anh tự cấu trúc riêng (§1.6 CLAUDE.md), không nằm trong spec này.
 > **Thay thế một phần:** `spec-cum-bai.md` (định nghĩa "cụm") và `spec-luong-kho.md` §2 (phân tầng Dạng / Cụm / Biến thể). Hai file đó vẫn đúng ở các phần khác.
 > Số liệu đo trên DB live 07/10 trong phiên read-only.
