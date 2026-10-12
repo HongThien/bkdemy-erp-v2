@@ -1,0 +1,9 @@
+# NSHM-GKI-2026 — Phần 7 (Bài 10, 11, 12) — lượt giải MÙ của trạm soát (Pha 1, chưa mở bản soạn)
+
+Máy kiểm: `<LV>\tam\kiem_mu_p7.mjs` (vét cạn số vé / số sản phẩm; quét số + bất đẳng thức cho Bài 12b).
+
+| Nhãn | Đáp án / đáp số / hướng chứng minh (1 dòng) | Ghi chú về đề (in lỗi, mờ, hai cách hiểu, đề sai) |
+|---|---|---|
+| Bài 10 | a) $T=70000x+50000y$ (đồng); $x=4,\ y=6$ ⇒ $580000$ đồng. b) Mua $\ge 10$ vé được giảm 10% ⇒ cần $0{,}9(70000x+50000y)\le 600000$ ⇔ $7x+5y\le 66$ (số nguyên); có cả hai loại ($x,y\ge 1$) ⇒ nhiều nhất **12 vé** (vd 1 người lớn + 11 trẻ em, trả $558000$ đồng; cũng được 2+10, 3+9). Kiểm: 13 vé có ≥1 người lớn ⇒ $7+5\cdot 12=67>66$ không được | Hai cách hiểu b): "bao gồm cả vé người lớn và vé trẻ em" = phải có cả hai loại ⇒ 12; nếu cho phép chỉ mua vé trẻ em ⇒ 13 vé ($0{,}9\cdot 650000=585000$). Tôi theo cách hiểu "có cả hai loại" (12) — nên giữ cờ chưa chắc nếu bản soạn không nêu |
+| Bài 11 | a) $T=50000x+60000y+20000z$ (đồng). b) $x+y+z=18\ge 15$ ⇒ trả $0{,}85T$; $T=50000x+60000y+20000(18-x-y)=360000+30000x+40000y$ nhỏ nhất khi $x=y=1$ ⇒ $z=16$; $T=430000$, trả $365500$ đồng. Vậy 1 gói bánh dẻo, 1 gói bánh nướng, 16 chai nước ngọt | Không |
+| Bài 12 | a) Diện tích sơn $=xy+2xz+2yz$ (trần + 4 tường) ⇒ chi phí $120000(xy+2xz+2yz)=120000xy+240000xz+240000yz$; $x=5,y=4,z=3$ ⇒ $74\ \text{m}^2$ ⇒ $8880000$ đồng. b) $xy=20$, $xyz=60$ ⇒ $z=3$; $S=20+6(x+y)$; $(x+y)^2=(x-y)^2+4xy\ge 80$ ⇒ $x+y\ge 4\sqrt5$, dấu bằng khi $x=y=2\sqrt5\approx 4{,}47$ m ⇒ $S_{\min}=20+24\sqrt5$, chi phí nhỏ nhất $2400000+2880000\sqrt5\approx 8839876$ đồng | Hai cách hiểu b): nếu kích thước là số nguyên (đề a dùng 5, 4, 3) ⇒ $5\times4\times3$, $8880000$ đồng; không ràng buộc nguyên ⇒ $x=y=2\sqrt5$ (sàn hình vuông, "dài = rộng"). Đề không nói nguyên ⇒ đáp đúng toán là $2\sqrt5$; nên giữ cờ chưa chắc. Giả thiết: không sơn sàn, không trừ cửa |

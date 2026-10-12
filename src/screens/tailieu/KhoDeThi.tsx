@@ -58,6 +58,9 @@ export default function KhoDeThiScreen() {
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(',')]) // eslint-disable-line
   const [khoi, setKhoi] = useState<string | null>(NHO.khoi)
   const [tab, setTab] = useState<TabKhoDe>(NHO.tab)
+  // tab trạng thái đề thi người dùng đứng gần nhất — bấm "Đề thi" từ "Đề cương" quay lại đúng chỗ đó
+  const tabDeThiCuoi = useRef<TabKhoDe>(NHO.tab === 'de_cuong' ? 'cho_duyet' : NHO.tab)
+  useEffect(() => { if (tab !== 'de_cuong') tabDeThiCuoi.current = tab }, [tab])
   const [tim, setTim] = useState(NHO.tim)
   const [rows, setRows] = useState<DeThiDong[]>(NHO.coDuLieu ? NHO.rows : [])
   const [het, setHet] = useState(NHO.het)
@@ -116,13 +119,28 @@ export default function KhoDeThiScreen() {
             {allowedMons.map((m) => <button key={m} onClick={() => setMon(m)} className={`rounded-md px-3 py-1 text-[13px] font-medium ${mon === m ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>{m}</button>)}
           </div>
         )}
-        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
-          {TABS.map((t) => (
-            <button key={t.key} onClick={() => setTab(t.key)} className={`rounded-md px-3 py-1 text-[13px] font-medium ${tab === t.key ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-              {t.ten}{dem ? <span className={`ml-1.5 rounded-full px-1.5 text-[11px] ${tab === t.key ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-200 text-slate-600'}`}>{dem[t.key]}</span> : null}
-            </button>
-          ))}
+        {/* Bộ lọc LOẠI tài liệu: Đề thi | Đề cương (CEO 12/10). Đề thi mới có 3 tab trạng thái bên cạnh. */}
+        <div className="flex gap-0.5 rounded-lg bg-indigo-50 p-0.5" title="Loại tài liệu">
+          {([['de_thi', 'Đề thi'], ['de_cuong', 'Đề cương']] as const).map(([k, ten]) => {
+            const bat = (k === 'de_cuong') === (tab === 'de_cuong')
+            const n = dem ? (k === 'de_cuong' ? dem.de_cuong : dem.cho_duyet + dem.san_sang) : null
+            return (
+              <button key={k} onClick={() => { if (!bat) setTab(k === 'de_cuong' ? 'de_cuong' : tabDeThiCuoi.current) }}
+                className={`rounded-md px-3 py-1 text-[13px] font-semibold ${bat ? 'bg-indigo-600 text-white shadow-sm' : 'text-indigo-700 hover:bg-indigo-100'}`}>
+                {ten}{n !== null ? <span className={`ml-1.5 rounded-full px-1.5 text-[11px] ${bat ? 'bg-white/25 text-white' : 'bg-indigo-100 text-indigo-700'}`}>{n}</span> : null}
+              </button>
+            )
+          })}
         </div>
+        {tab !== 'de_cuong' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            {TABS.filter((t) => t.key !== 'de_cuong').map((t) => (
+              <button key={t.key} onClick={() => setTab(t.key)} className={`rounded-md px-3 py-1 text-[13px] font-medium ${tab === t.key ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                {t.ten}{dem ? <span className={`ml-1.5 rounded-full px-1.5 text-[11px] ${tab === t.key ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-200 text-slate-600'}`}>{dem[t.key]}</span> : null}
+              </button>
+            ))}
+          </div>
+        )}
         <select value={khoi ?? ''} onChange={(e) => setKhoi(e.target.value || null)} className="rounded-md border border-slate-200 bg-white px-2 py-1.5 text-[13px] text-slate-700">
           <option value="">Mọi khối</option>
           {KHOI_OPTIONS.map((k) => <option key={k} value={k}>Khối {k}</option>)}
@@ -132,7 +150,7 @@ export default function KhoDeThiScreen() {
       </div>
       <div className="border-b border-slate-100 bg-slate-50 px-6 py-1.5 text-[12px] text-slate-500">
         {tab === 'de_cuong'
-          ? <>Đề cương ôn tập (không phải đề thi) — tách riêng khỏi 3 tab đề thi. Mở đề để xem / sửa câu, in hoặc giao như đề thường.</>
+          ? <>Đề cương ôn tập (không phải đề thi) — lọc riêng, không lẫn vào Chờ duyệt / Sẵn sàng / Đã giao của đề thi. Mở đề để xem / sửa câu, in hoặc giao như đề thường.</>
           : <>Đề mới: thả file (Word / PDF) vào <code className="rounded bg-white px-1">E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L&lt;khối&gt;</code> rồi gọi Claude chạy <code className="rounded bg-white px-1">/nhap-de-thi &lt;khối&gt;</code> — đề hiện ở tab Chờ duyệt.</>}
       </div>
 

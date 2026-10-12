@@ -480,3 +480,5 @@ CEO: *"Phát hành nên có 2 chế độ: phát hành TOÀN BỘ — giống bu
   3 tab Chờ duyệt / Sẵn sàng / Đã giao **loại đề cương ra** (để không lẫn vào hàng đợi duyệt đề thi); `fn_de_thi_dem` trả thêm khoá `de_cuong`.
 - Nhập: `de.json` có `kieu: 'de_cuong'` (+ `thoi_gian_phut: null`) ⇒ `ghi.mjs` ghi dấu. Đề cương thường KHÔNG có đáp án / lời giải ⇒ chỉ gõ lại, `loai_cau = tu_luan`,
   tách ý theo luật chung (Tính / Tìm x / viết tập hợp tách; lời văn + chứng minh giữ cả bài). Mẫu: `kho-rules/dai/lo/k6/de-cuong/NSHM-GKI-2026.build.mjs`.
+- **Bộ lọc loại tài liệu (Thùy 12/10):** hàng đầu của màn là công tắc **Đề thi | Đề cương** (kèm số đếm); chọn "Đề thi" thì mới hiện 3 tab trạng thái Chờ duyệt / Sẵn sàng / Đã giao,
+  chọn "Đề cương" thì ẩn 3 tab đó (đề cương không có hàng đợi duyệt). Nhớ tab đề thi gần nhất để bấm "Đề thi" quay lại đúng chỗ. Mẫu đề cương CÓ lời giải + hình giải: `kho-rules/dai/lo/k8/de-cuong/` (k8.md §12).

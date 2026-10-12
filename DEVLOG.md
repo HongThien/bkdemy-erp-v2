@@ -36992,3 +36992,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Game:** `cau.js` báo xu khi `s.thang.ra` tăng, gửi lại theo nhịp nếu rớt mạng · toast "💰 +N xu đã vào ví BK" · chợ ghi rõ luật xu (1/ngày, 20/tháng, đã vào ví x/20).
 - **Kiểm (harness):** bán nông sản ⇒ game đổi 1 xu ⇒ báo (k=24321 khớp k server) ⇒ nhận 1 xu, thông tin hiện ở chợ ✔.
 - **GHI CHÚ TRUNG THỰC:** `ra` do client gửi ⇒ khai khống bị chặn bởi trần ngày/tháng (tối đa 1 xu × ngày chơi thật), chưa chặn tuyệt đối — luật kinh tế server là B4. Ví/số liệu thật chỉ kiểm bằng rollback + harness; chưa kiểm HS thật (game đang khoá).
+
+### 12/10 — Kho K8: ĐỀ CƯƠNG giữa kì I Toán 8 (Ngôi Sao Hoàng Mai) gõ lại + giải 59 câu + công tắc Đề thi | Đề cương
+- **Yêu cầu Thùy:** "ưu tiên cái này trước: đề cương của lớp 8. m gõ lại đề cương này và giải. Cho vào cùng mục kho đề thi, làm thêm filter riêng: đề thi và đề cương." (5 ảnh, 32 bài)
+- **Làm:** (1) `kho-rules/dai/lo/k8/de-cuong/NSHM-GKI-2026.build.mjs`: gõ 32 bài → 59 câu (Bài 5–7 tách 30 ý độc lập; Bài 1–4, 8–12 giữ cả bài; Bài 13–22 hình không tách, kho `hinh_hoc`; Bài 23–32 một bài một câu),
+  dựng `goc.pdf` + `de.json` + 12 khung. (2) 12 trạm soạn (Sonnet, `brief-soan.md`) → 12 trạm soát (Opus giải MÙ, `brief-soat.md`) → `ghep.mjs` (ghép + cổng `--khoi 8` + de.json kieu=de_cuong) → `ghi.mjs --ghi` MỘT lần.
+  (3) UI: `KhoDeThi.tsx` — công tắc **Đề thi | Đề cương** (kèm số đếm) tách khỏi 3 tab trạng thái; nhớ tab đề thi gần nhất.
+- **Số đo (DB live, chỉ đọc):** `tai_lieu` 07468a7b-3ff0-49a1-99fa-ef276ffc7535 · 59 câu (Đại 49 `T108000000473…521` + Hình 10 `HHC002612…621`) · 9 TLN + 50 tự luận · 49/49 + 10/10 lời giải 2 phần · 10 hình giải · 0 đã duyệt · `fn_de_thi_dem('Toán','8')` → de_cuong 1.
+  UI (dev, đăng nhập nhanh admin): đề cương K8 mở được, 3664 KaTeX · 0 lỗi · 10 hình.
+- **Chất lượng:** giải mù khớp bản soạn 59/59 đáp số; soát sửa lập luận / định dạng / hình ở 9/12 phần (không đổi đáp số; riêng 5g đổi sang trả lời ngắn 3,75; 12b bỏ phép rút căn của lớp 9).
+- **Sai / sửa:** (a) tôi đọc nhầm Bài 13c "KH ⊥ AN" ở ảnh nhỏ — dựng toạ độ thấy $AN\perp HC$ sai, phóng to mới thấy "AB" ⇒ ảnh nhỏ phải phóng to trước khi gõ. (b) PIL hỏng (`unknown slot ID`) ⇒ cắt ảnh bằng puppeteer-core (`crop.mjs`).
+  (c) Bài 23 không có lời giải sơ cấp đủ (Ramanujan–Nagell) — đã nói thẳng, không bịa.
+- **Treo, chờ Thùy (10 câu, `lo/k8/de-cuong/chua-chac.md`):** 7i · 7k (nghi in lỗi) · 10b · 12b · 14b, 15c, 16, 19 (đường trung bình — cùng câu hỏi với 5 đề Hà Nội GKI-17/21/22/29/33) · 17 · 23 (giữ / thay đề kinh điển $2^{2008}+2^{2011}+2^n$ / bỏ).
