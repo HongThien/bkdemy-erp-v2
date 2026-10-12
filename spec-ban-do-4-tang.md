@@ -371,6 +371,12 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 
 ## 10. Mastery "đi theo câu" (Q10 — CEO 08/10: "câu đang thuộc dạng nào thì tính về dạng đó")
 
+> **⭐ ĐÃ BẬT 12/10 (mig `202610121610_do_nhom_di_theo_cau`, phiên bổ trợ — Thùy báo dạng yếu ở app HS lệch bản đồ).** `_do_nhom_cua_o(ma_cau, ma_dang_chep)` đã có,
+> đã nối vào `fn_mastery_cells` (phân giải theo CẶP câu–mã chép để không chậm) · `hs_dang_evals` · `fn_btyeu_dang_yeu_2_cua_so` · `fn_btyeu_de_xuat_dang_moi` · `fn_hs_bu_dang`.
+> Thêm so với luật dưới: mã chép đã **xoá cứng** (không còn dòng để mang `gop_vao`) mà `kho_doi_dang_log` chỉ ra đúng MỘT dạng nhận còn sống ⇒ tính về dạng đó.
+> **Chưa nối:** `_bxh_gia_tri` · `fn_hs_xep_hang_ti_le_dat` (đếm theo mã chép). `fn_thanh_tuu_thang` · `_troly_cc_hoc_tap_hoc_sinh` · `fn_btyeu_lich_su_hs` không đọc mã chép trực tiếp (qua `fn_mastery_cells` ⇒ đã theo).
+> Trước/sau 12/10: 14.673 → 14.384 ô, 50 ô đổi mức ở 37 HS, tổng lượt đo không đổi (DEVLOG 12/10). Phạm vi vẫn chỉ nhánh Đại.
+
 - **Hiện nay:** `fn_mastery_cells` lấy `ma_dang` từ **bản chép lưu trên dòng đo** (`gami_session_problems`, `bai_test_cau`, `bt_grades`).
 - **Luật phân giải nhóm của một lần đo** (một hàm duy nhất `_do_nhom_cua_o(ma_cau, ma_dang_chep)`):
   1. Có `ma_cau`, câu **còn trong kho** (không `xoa_at`), và nhóm hiện tại của câu là **nhóm thật** (không phải dạng chờ "Chưa phân dạng", không `xoa_at`) ⇒ tính về **nhóm hiện tại của câu**.
