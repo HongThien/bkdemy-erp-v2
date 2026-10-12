@@ -1,4 +1,4 @@
-import { Children, Fragment, useEffect, useRef, useState, type CSSProperties } from 'react'
+import { Children, Fragment, useContext, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
@@ -12,6 +12,7 @@ import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/u
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
+import { AnhMmCtx } from './anhMmCtx'
 
 // Bộ đếm render TOÀN CỤC → mỗi lần dựng trang có 1 class scope riêng (`pv-scope-N`) gắn lên container.
 // CSS chrome (::before/::after) prefix bằng class này ⇒ stylesheet paged.js chèn vào <head> chỉ khớp ĐÚNG
@@ -435,10 +436,16 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
   return out
 }
 
-function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: {
+type DocProps = {
   full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string
   perHS?: boolean; roster?: { id: string; ho_ten: string }[]; ngayNop?: string; lopTen?: string
-}) {
+}
+// Bọc context cỡ ảnh IN theo câu (cau_hinh.anhMmByCau — Thùy 12/10) để mọi <AnhDe> bên trong đọc được mà khỏi khoan prop.
+function Doc(props: DocProps) {
+  return <AnhMmCtx.Provider value={props.full.taiLieu.cau_hinh?.anhMmByCau ?? {}}><DocInner {...props} /></AnhMmCtx.Provider>
+}
+
+function DocInner({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: DocProps) {
   const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
@@ -805,6 +812,13 @@ export function WriteLines({ n }: { n: number }) {
     </div>
   )
 }
+/** Ảnh đề của câu. Có cỡ IN riêng (cau_hinh.anhMmByCau) ⇒ width đúng mm, cao theo tỉ lệ, KHÔNG bị max-height 60mm / max-width cột
+ *  co lại (ảnh "cầm thước đo" phải in đúng cm). Không có ⇒ như cũ (.pv-img tự co). */
+function AnhDe({ ma, src }: { ma: string; src: string }) {
+  const mm = useContext(AnhMmCtx)[ma]
+  if (!(mm > 0)) return <img src={src} alt="" className="pv-img" />
+  return <img src={src} alt="" className="pv-img" style={{ width: `${mm}mm`, height: 'auto', maxWidth: 'none', maxHeight: 'none' }} />
+}
 // TÁCH 1 câu thành `content` (đề + hình + ý con + phương án/mệnh đề/lời giải GV — mọi thứ TRỪ dòng kẻ) và
 // `lines` (SỐ dòng kẻ viết tay, 0 nếu không có). Dòng kẻ tách riêng để CauColumns rải THÀNH TỪNG HÀNG lưới
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
@@ -821,8 +835,8 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; 
   const cd = cheDoHinh ?? 'hien'
   const anhBlock = cd === 'khong' ? null
     : cd === 'o_trong'
-      ? (gv && c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : <div className="pv-vebox" />)
-      : (c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : null)
+      ? (gv && c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : <div className="pv-vebox" />)
+      : (c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : null)
   return {
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
@@ -870,7 +884,7 @@ export function questionOnlyContent(no: number, c: CauHoi): React.ReactNode {
   return (<>
     <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
     {grid && <OptGrid grid={grid} emb={emb} />}
-    {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+    {c.anh_de && <AnhDe ma={c.ma_cau} src={c.anh_de} />}
   </>)
 }
 // Trả lời ngắn (Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG 2 cột thay dòng-kẻ-viết-tay.
