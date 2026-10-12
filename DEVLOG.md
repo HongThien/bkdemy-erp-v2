@@ -36963,3 +36963,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Game (repo `bk-nong-trai`, nhánh `nhip-ngay`):** `js/cau.js` mới · `engine.luu` — nhúng + đã nạp từ server thì KHÔNG ghi localStorage (máy dùng chung không lẫn) · `main.js` — server chưa có ⇒ nhận bản trên máy MỘT lần rồi chuyển lên server · xung đột ⇒ lớp phủ "Tải lại". Không nhúng/app không trả lời 4s ⇒ lùi về localStorage như cũ. Đồng bộ vào `public/games/nong-trai/` bằng `scripts/dong-bo-nong-trai.mjs`.
 - **Kiểm:** `tools/test-engine.mjs` "Tất cả luật đúng" · harness trong preview (trang cha giả): handshake ✔, game nhận state server (vi=777) ✔, game đẩy `luu` v=2 ✔, `xung_dot` hiện lớp phủ và dừng ghi ✔. **CHƯA kiểm:** HS thật đăng nhập (RPC thật qua cầu nối) — game đang KHOÁ nên chỉ Thùy/nhân sự mới thử được qua mở công tắc ngoại lệ lớp.
 - **Giới hạn nói thẳng:** state do client gửi ⇒ chống MẤT/LẪN tiến độ, KHÔNG chống gian lận (sửa state trước khi gửi). Chống gian lận = luật phía server (B2–B4).
+
+
+### 12/10 (tiếp 3) — Gỡ phần thừa của chọn-nhánh (Thùy: "gỡ đi")
+- **Gỡ (mig `202610121623`, đã liệt kê + Thùy gật theo Luật xoá):** trigger `trg_bdm_o_cung_nhanh`, hàm `_bdm_o_cung_nhanh()`, cột `dai_bdm_chuyen_de.nhanh` (+ CHECK đi theo cột). Trước khi gỡ: 196 dòng đều mặc định `toan`, không hàm nào nhắc tới (quét prosrc), client không dùng. Giữ `dai_bdm_chu_de.nhanh` (vùng kiến thức của chủ đề).
+- **Kiểm (kết nối mới):** 3 thứ đã mất; `fn_bdm_cay('12')` vẫn 6 chủ đề; thêm chủ đề → chuyên đề → ô → đổi vùng chạy trong ROLLBACK.

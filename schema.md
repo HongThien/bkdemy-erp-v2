@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-360 bảng · 20 view · 0 enum · 164 trigger · 920 function
+360 bảng · 20 view · 0 enum · 163 trigger · 919 function
 
 ## _app_secrets
 
@@ -1073,7 +1073,6 @@
 | mo_ta | text |  | ''::text |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
-| nhanh | text |  | 'toan'::text |  | `toan` · `hgt` · `hinh` |
 
 ## dai_bdm_dang_bai
 
@@ -6754,7 +6753,6 @@ WITH luot AS (
 | dai_bdm_nhom | trg_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
 | dai_bdm_nhom_tien_de | trg_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_nhom_tien_de | trg_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _bdm_tien_de_kiem |
-| dai_bdm_o | trg_bdm_o_cung_nhanh | BEFORE | INSERT/UPDATE | _bdm_o_cung_nhanh |
 | dai_bdm_o | trg_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_o | trg_bdm_o_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_cau_form_dien | dai_cau_form_dien_kiem | BEFORE | INSERT/UPDATE | dai_cau_form_dien_kiem |
@@ -6865,7 +6863,6 @@ WITH luot AS (
 - `_bdm_cau_giai(p_dang_cu text[])` → TABLE(ma_cau text, goc text, la_goc boolean, ma_dang_cu text, ma_cum_cu text, dang_bai_id text, nguon text)
 - `_bdm_dang_cu_cua_khoi(p_khoi text)` → text[]
 - `_bdm_ghi_log()` → trigger
-- `_bdm_o_cung_nhanh()` → trigger
 - `_bdm_so_nhom(p_chu_de text, p_chuyen_de text)` → TABLE(id text, so integer, tang integer)
 - `_bdm_thu_tu()` → trigger
 - `_bdm_tien_de_cung_o()` → trigger
