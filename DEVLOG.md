@@ -36926,3 +36926,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 11/10 — 8T: xong phần dở của lô 9 (trang xem + spec)
 - Trang xem thêm 9 thẻ lệch nhóm + 3 thẻ đã làm của lô 9 (83 thẻ, 120 ảnh), publish Version 10; `k8T.md` §8/§10 có dòng lô 9.
 - Ba trong bốn agent chép §3 chết vì hết hạn mức phiên NGAY SAU khi ghi tệp (chưa tự kiểm, chưa báo cáo): bốn tệp `TVA-T3-*.cs.md` đều trọn vẹn (94 khối), qua cổng khuôn, chỉ vướng Dạng 3 ví dụ 3d (đề và lời giải của sách vênh nhau) ⇒ không giao lại, soát thẳng.
+
+
+### 12/10 — Thùy chốt phạm vi bản đồ mới K12
+- **Thùy:** "bản đồ 12 mới chỉ phần nguyên hàm tích phân là chuẩn thôi, các phần còn lại chưa chuẩn". Ghi vào spec-ban-do-4-tang.md (đầu file) + memory. Hệ quả: B5/tài liệu K12 theo CHỦ ĐỀ NH-TP (NCD00095), không theo khối; chủ đề khác giữ bản đồ cũ; NH-TP là ứng viên pilot B5 (0 tham chiếu từ đo lường/ET/tài liệu — đo 10/10). Chưa chạm DB.
