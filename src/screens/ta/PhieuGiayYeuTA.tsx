@@ -42,7 +42,7 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
             {caus.map((k) => (
               <div key={k.id} className="bk-cau mb-3">
                 <div><b>Câu {k.thu_tu}.</b> <MathText>{k.noi_dung}</MathText></div>
-                {k.anh_de && <img src={k.anh_de} alt="" className="my-1 max-h-[220px]" />}
+                {k.anh_de && <img src={k.anh_de} alt="" className="my-1 max-h-[260px] max-w-full" />}
                 <div className="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 pl-4">
                   {(k.lua_chon ?? []).map((lc, i) => <div key={i}><b>{CHU[i]}.</b> <MathText>{lc}</MathText></div>)}
                 </div>
@@ -99,7 +99,9 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
         <div className="space-y-2">
           {caus.map((k) => (
             <div key={k.id} className={`rounded-xl px-3 py-2 ring-1 ${k.verdict === 'correct' ? 'bg-emerald-50/50 ring-emerald-200' : k.verdict ? 'bg-rose-50/50 ring-rose-200' : 'ring-slate-200'}`}>
-              <div className="text-[12.5px] text-slate-700"><b>Câu {k.thu_tu}.</b> <span className="text-slate-500"><MathText>{(k.noi_dung ?? '').slice(0, 140)}</MathText></span></div>
+              <div className="text-[12.5px] text-slate-700"><b>Câu {k.thu_tu}.</b> <span className="text-slate-500"><MathText>{k.noi_dung ?? ''}</MathText></span></div>
+              {/* Thùy 12/10: hiện ĐỦ đề + hình (trước cắt 140 ký tự, cắt giữa công thức là vỡ; câu có hình không thấy hình) */}
+              {k.anh_de && <img src={k.anh_de} alt="hình của câu" className="mt-1 max-h-[200px] max-w-full rounded border border-slate-200 bg-white" />}
               <div className="mt-1.5 flex items-center gap-1.5">
                 {/* Thùy 10/10: câu TRẢ LỜI NGẮN (không có lựa chọn) — TA chấm Đúng (1) / Sai (0) theo đáp án hiện bên cạnh */}
                 {!(k.lua_chon ?? []).length && ([[1, 'Đúng', 'bg-emerald-600'], [0, 'Sai', 'bg-rose-600']] as const).map(([v, ten, mau]) => {

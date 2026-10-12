@@ -37008,3 +37008,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ### 12/10 (tiếp 4) — Bản đồ mới: nhóm bài trở lại MỘT HÀNG NGANG, hết chỗ thì cuộn (Thùy: "sao tự dưng xuống dòng… hết chỗ thì kéo thanh bar chứ")
 - **Nguyên nhân:** commit 648da666 (11/10, bỏ nối tiền đề) đổi lưới nhóm sang `flex-wrap` "hết hàng xuống hàng". Thùy không muốn. **Sửa:** `BanDoMoi.tsx` — hàng nhóm `flex-nowrap`, mỗi box `shrink-0`, khung ngoài `min-w-max` để ô `overflow-auto` hiện thanh cuộn ngang (không dùng `justify-center` trên hàng tràn — nửa trái sẽ không cuộn tới được). CHƯA mở bằng phiên đăng nhập thật; chỉ tsc.
+
+## 12/10 — [Bổ trợ · app TA] Câu có hình ở bài test bổ trợ thiếu hình trên màn TA / phiếu giấy
+- **Thùy:** "Các câu có hình trên Bài test của bổ trợ ko hiện đầy đủ. Check và fix đi."
+- **Đo:** dữ liệu ĐỦ — _kho_snapshot_cau chép anh_de vào bai_test_cau; 151/151 URL hình của bài bổ trợ (yếu·bù·đuổi) tải được (HTTP 200); app HS (LamBai/LamET) có vẽ anh_de. Thiếu ở 3 màn phía TA:
+  1. **Đuổi · phiếu giấy** (DuoiGiayTA): câu lấy bằng select không có cột anh_de ⇒ phiếu luyện / bài kiểm tra giấy KHÔNG BAO GIỜ có hình (30 ngày: 29 bài htd_test có 79 câu hình).
+  2. **Yếu · mục "Câu trả lời ngắn — chỉnh kết quả"** (CaBoTroTA): hàm đã trả anh_de nhưng màn không vẽ (14 ngày: 23/50 lượt trả lời ngắn là câu có hình, 6 ca) — lộ ra từ 10/10 khi dạng không có MCQ chuyển sang trả lời ngắn (đa số là câu Hình).
+  3. **Yếu · Nhập kết quả phiếu giấy** (PhieuGiayYeuTA): đề bị cắt 140 ký tự (cắt giữa công thức là vỡ), không có hình.
+- **Sửa:** cả 3 màn hiện đủ đề + hình; bản in yếu nới hình 220 → 260px + không tràn ngang. Chỉ sửa giao diện (app TA + ERP dùng chung PhieuGiayYeuTA), không đụng DB.
+- **Kiểm trên màn thật** (app TA chạy máy, ca Tuệ Nhi 12/10 19:30): mục trả lời ngắn 3 câu ⇒ 3 hình hiện đủ (1 PNG 853×621, 2 SVG). Phiếu đuổi giấy: CHƯA mở được trên bài thật (cần sinh bài mới cho HS thật — không làm).
+- **Giả thuyết đã loại (có chụp):** 645 hình SVG dán từ Word không có viewBox — nghi bị cắt khi thu nhỏ; dựng lại trên Chrome thì co đủ, không cắt.
+- **Còn lại (dữ liệu kho, chưa sửa):** 31 câu kho chuẩn có ghi "[hình…]" trong đề nhưng CHƯA đính hình (Đại 13 · Hình GT 6 · Hình học 12) vẫn có thể rơi vào bài bổ trợ — cần học thuật đính hình, hoặc chặn chọn các câu này.

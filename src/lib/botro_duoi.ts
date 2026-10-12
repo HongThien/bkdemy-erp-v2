@@ -223,11 +223,11 @@ export async function sinhBaiGiayDuoi(
   return data as { bai_test_id: string; so_cau: number }
 }
 
-export type CauGiayDuoi = { id: string; thu_tu: number; noi_dung: string | null; lua_chon: string[] | null; loai_cau: string; verdict: 'correct' | 'partial' | 'wrong' | null }
+export type CauGiayDuoi = { id: string; thu_tu: number; noi_dung: string | null; anh_de: string | null; lua_chon: string[] | null; loai_cau: string; verdict: 'correct' | 'partial' | 'wrong' | null }
 // Câu của 1 bài giấy — verdict luôn null lúc mới sinh (chưa ai chấm); mở lại bài đang chấm dở thì gọi
 // thêm layVerdictDaCham để lấp verdict đã có.
 export async function layCauBaiTest(baiTestId: string): Promise<CauGiayDuoi[]> {
-  const { data, error } = await supabase.from('bai_test_cau').select('id, thu_tu, noi_dung, lua_chon, loai_cau').eq('bai_test_id', baiTestId).order('thu_tu').limit(LIMIT)
+  const { data, error } = await supabase.from('bai_test_cau').select('id, thu_tu, noi_dung, anh_de, lua_chon, loai_cau').eq('bai_test_id', baiTestId) // anh_de: câu có hình phải in kèm hình (Thùy 12/10).order('thu_tu').limit(LIMIT)
   if (error) throw error
   return ((data ?? []) as any[]).map((c) => ({ ...c, verdict: null }))
 }

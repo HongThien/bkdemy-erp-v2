@@ -331,6 +331,8 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                         {x.da_sua && <span className="rounded bg-amber-100 px-1.5 py-px text-amber-800">đã chỉnh tay</span>}
                       </div>
                       {x.noi_dung && <div className="mt-1 text-[13px] leading-snug text-slate-800"><MathText>{x.noi_dung}</MathText></div>}
+                      {/* Thùy 12/10: câu có hình — TA phải thấy hình mới so được bài em làm */}
+                      {x.anh_de && <img src={x.anh_de} alt="hình của câu" className="mt-1.5 max-h-[240px] max-w-full rounded border border-slate-200 bg-white" />}
                       <div className="mt-1 grid grid-cols-2 gap-2 text-[12.5px]">
                         <div><span className="text-slate-400">Em trả lời: </span><b className={dung ? 'text-emerald-700' : 'text-rose-700'}><MathText>{hsTxt}</MathText></b></div>
                         <div><span className="text-slate-400">Đáp án: </span><b className="text-slate-700"><MathText>{keyTxt}</MathText></b></div>
