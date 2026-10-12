@@ -263,3 +263,52 @@ Cốt truyện dài · hẹn hò/NPC sâu · chiến đấu/boss · hang mỏ ·
 5. **Ngày/đêm theo giờ thật** hay theo chu kỳ riêng ngắn hơn?
 6. **Có "thời tiết"** (mưa, tuyết) ở V1 hay để sau?
 7. **Nhà lớp:** GV hay HS quyết định trang trí chung?
+
+---
+
+## D9. PHỐ, BIỂN, KIẾN TRÚC (Thùy 12/10 — "phải giống một con phố; nhà ai phải có biển; nhiều loại kiến trúc, nhiều cỡ để phân biệt nhà ai to đẹp")
+
+> Mục này thay các chỗ nói chung chung "lô đất, nhà 3 bậc" ở D2/D4.
+
+**Nguyên tắc:** nhìn từ xa phải đọc được *"nhà ai, to hay nhỏ, đẹp hay thường"* — như đi trên phố thật. **Mặt tiền là thứ được khoe.**
+
+| Yếu tố | Thiết kế |
+|---|---|
+| **Con phố** | Một đường chính có nhà hai bên, số nhà liên tục; **mỗi lớp một dãy** (bạn cùng lớp ở sát nhau, "dãy 7A1"). Có ngõ nhỏ, ghế đá, đèn đường, cây |
+| **Biển nhà** | Mọi nhà BẮT BUỘC có biển: **tên chủ + lớp** (hoặc mã HS) + **tên nhà** chọn từ kho soạn sẵn (không gõ tự do) + biểu tượng + khung biển |
+| **Biển nâng cấp** | Khung biển đổi theo thành tích/bậc (gỗ → đồng → bạc → vàng); gắn được 1–3 huy hiệu hiếm lên biển; có bảng "số lượt ghé" |
+| **Kiến trúc** | Nhiều **kiểu** (nhà mái ngói, nhà ống phố, nhà gỗ, nhà cây, biệt thự, nhà kính, lâu đài mini…) — kiểu mới mở theo thành tích/mùa/sự kiện |
+| **Cỡ** | Lô **nhỏ · vừa · lớn · đại**; khác nhau bởi **số tầng, số gian, sân, vườn, cổng**. Nhà đại thấy từ cuối phố |
+| **Trang trí mặt tiền** | Đèn lồng, hoa, hàng rào, cổng, cờ, mái hiên, bảng khuyến mãi… (đây là nơi "to đẹp" phân hoá) |
+| **Nhà nổi bật** | Nhà được khen nhiều trong tuần: có đèn/pháo hoa nhẹ, và lên "**Nhà của tuần**" ở quảng trường |
+| **Skyline** | Quảng trường nhìn xuống hai phố: nhà to hiện rõ như thành phố có toà cao |
+
+**Khoe là được "nhìn thấy khi đi ngang"**, không chỉ khi bước vào. Vào nhà là tầng khoe thứ hai (phòng khoe, sổ khách).
+
+**Ràng buộc thiết kế (không phải kinh tế):** "to/đẹp" nên là **dấu của sự cố gắng** (học, chăm chỉ, sưu tầm) chứ không chỉ của "ai có nhiều"; có kiểu nhà **nhỏ mà đẹp** để em nhỏ/ít chơi vẫn tự hào (đã có phản ví dụ Prodigy: đồ nhìn thấy được chia HS thành hai tầng lớp).
+
+## D10. 2D hay 2.5D? (CEO đang cân nhắc — CTO phân tích, CHƯA chốt; §7 "pixel" tạm chờ)
+
+Chữ "2.5D" gộp hai thứ khác nhau, nên tách ra:
+
+| | **A. 2D nhìn chếch (kiểu Stardew)** | **B. 2D mặt tiền ngang (phố cuộn)** | **C. 2.5D = 3D low-poly/voxel, camera chếch cố định** |
+|---|---|---|---|
+| Hình dung | Nhìn từ trên xuống nghiêng, thấy mặt tiền + mái | Con phố nhìn thẳng, đi ngang trái–phải, nhà liền kề | Khối ghép (giống Roblox/Minecraft), camera cố định nghiêng ~45° |
+| Đọc biển + mặt tiền | Tốt | **Tốt nhất** | Tốt (biển quay về phía camera) |
+| Đọc "to nhỏ" | Tốt | Rất tốt (cao/rộng thấy ngay) | Tốt |
+| Nhiều kiểu kiến trúc | Phải vẽ từng kiểu hoặc ghép module sprite | **Ghép module (tầng+mái+cửa+biển) bằng code** → vô hạn biến thể, rẻ | **Ghép khối bằng code** → vô hạn biến thể, rẻ, không cần hoạ sĩ |
+| Nội thất trong nhà | Lưới top-down | Cắt ngang như phòng Habbo | Lưới 3D, cần camera trong nhà |
+| Art khi không thuê freelance | Pack + AI, phải đồng bộ | Pack + code ghép, dễ nhất | **Code sinh hết** (như thú đã làm bằng code) |
+| Nhất quán với BK World hiện có | Phải làm lại thú/cây | Phải làm lại | **Tái dùng thú, cây, ruộng, hoạ cảnh nở (đã three r186)** |
+| Cảm giác "Roblox" HS thích | Thấp | Thấp | **Cao** |
+| Hiệu năng iPad gen 7 | Nhẹ nhất | Nhẹ nhất | **Rủi ro** — phải đo; đã có luật "bản Nhẹ" |
+| Độ khó dựng | Thấp | Thấp | Vừa (camera, chọn vật, sắp đặt 3D) |
+
+**Khuyến nghị CTO: C (3D low-poly, camera chếch cố định)**, vì ba lý do:
+1. **Nhà nhiều kiểu + nhiều cỡ** — đúng điều bạn muốn — là bài toán *ghép khối* mà code làm tốt, không cần hoạ sĩ.
+2. **Tái dùng tài sản BK World** (thú làm bằng code, ruộng, hoạ cảnh) thay vì làm lại bằng pixel.
+3. **Gần Roblox hơn** — thứ HS đã thích.
+
+**Rủi ro cần đo TRƯỚC khi chốt (cổng go/no-go của M0):** cảnh ~60 nhà + ~25 avatar + thú phải chạy **≥30 FPS trên iPad gen 7** ở bản Nhẹ, và tải trang < vài giây. **Nếu trượt ⇒ lùi về B** (2D mặt tiền ngang, nhà ghép module sprite) — vẫn giữ đủ ý "phố có biển, nhà to nhỏ".
+
+**Không chọn A** vì vừa không rẻ như B vừa không tái dùng được như C.
