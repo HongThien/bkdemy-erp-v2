@@ -17,8 +17,10 @@ function bam(k) {
 }
 
 // ---------- đồng hồ & ngày nông trại ----------
-function gio(s) { const d = s.dongHo; return d.game + (Date.now() - d.thuc) * d.tocDo; }
-function datTocDo(s, v) { const g = gio(s); s.dongHo = { tocDo: v, thuc: Date.now(), game: g }; }
+// Chơi theo TÀI KHOẢN (nhúng trong app HS, js/cau.js): GIỜ = giờ SERVER (Date.now()+lệch), bỏ qua đồng hồ ảo `dongHo` — không tua ngày/tốc độ được.
+const theoServer = () => !!(window.NT_CAU && window.NT_CAU.dang);
+function gio(s) { if (theoServer()) return window.NT_CAU.gioMs(); const d = s.dongHo; return d.game + (Date.now() - d.thuc) * d.tocDo; }
+function datTocDo(s, v) { if (theoServer()) return; const g = gio(s); s.dongHo = { tocDo: v, thuc: Date.now(), game: g }; }
 const ngayCua = t => Math.floor((t + LECH) / NGAY);          // ngày nông trại chứa mốc t
 const dauNgay = d => d * NGAY - LECH;                          // 5 giờ sáng VN của ngày nông trại d
 const homNay = s => ngayCua(gio(s));
@@ -27,7 +29,7 @@ const tuanCua = d => Math.floor((d + 3) / 7);                  // tuần bắt �
 const thangCua = d => { const x = new Date(d * NGAY); return x.getUTCFullYear() * 12 + x.getUTCMonth(); };
 const ngayVN = d => { const x = new Date(d * NGAY); return x.getUTCDate() + '/' + (x.getUTCMonth() + 1); };
 // DEV: nhảy sang 18 giờ ngày nông trại hôm sau (giờ HS đi học về)
-function sangNgayMoi(s) { s.dongHo = { tocDo: s.dongHo.tocDo, thuc: Date.now(), game: dauNgay(homNay(s) + 1) + 13 * GIO }; }
+function sangNgayMoi(s) { if (theoServer()) return; s.dongHo = { tocDo: s.dongHo.tocDo, thuc: Date.now(), game: dauNgay(homNay(s) + 1) + 13 * GIO }; }
 
 // ---------- mùa (mùa đầu 1 lần, sau đó xoay vòng các mùa còn lại) ----------
 // bonus: M.bonus là số (cả mùa) hoặc mảng theo từng 30 ngày của mùa (mùa đầu: tháng 1 cao nhất, tháng sau giảm dần)
@@ -45,7 +47,7 @@ const bonusCua = (s, d0) => muaCua(s, d0).bonus;             // bonus mùa tính
 
 // ---------- tạo / lưu ----------
 function moi() {
-  const t = Date.now(), b = LUAT.batDau, d = ngayCua(t);
+  const t = theoServer() ? window.NT_CAU.gioMs() : Date.now(), b = LUAT.batDau, d = ngayCua(t);
   const s = {
     v: 2, taoLuc: t, hat: String(Math.floor(Math.random() * 1e9)), dongHo: { tocDo: 1, thuc: t, game: t }, ngay0: d,
     vi: { xu: b.xu, exp: 0 }, diem: b.diem, nn: 0, cap: 1, kho: Object.assign({}, b.kho), oMo: LUAT.oDau, ruong: [], lo: null,

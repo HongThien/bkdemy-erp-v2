@@ -15,7 +15,7 @@
     let s = null, tuServer = false;
     if (window.NT_CAU && NT_CAU.nhung) {
       const kq = await NT_CAU.hoi(4000);
-      if (kq && kq.ok) { tuServer = true; NT_CAU.dang = true; s = kq.state ? NT_ENGINE.chuanHoa(kq.state) : NT_ENGINE.nap(); }
+      if (kq && kq.ok) { tuServer = true; NT_CAU.dang = true; s = kq.state ? NT_ENGINE.chuanHoa(kq.state) : NT_ENGINE.nap(); }   // giờ server đã nạp trong NT_CAU.docGio
       NT_CAU.onXungDot = () => {
         const d = document.createElement('div');
         d.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.78);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:600 18px system-ui;text-align:center;padding:24px';
@@ -26,7 +26,21 @@
     }
     if (!s) s = (tuServer ? null : NT_ENGINE.nap()) || NT_ENGINE.moi();
     NT_UI.batDau(s);
-    if (tuServer) NT_CAU.gui(s);   // tài khoản chưa có bản lưu ⇒ tạo ngay (kể cả bản chuyển từ máy)
+    if (tuServer) {
+      NT_CAU.gui(s);
+      // GIỚI HẠN GIỜ CHƠI mỗi ngày (B2): hết giờ ⇒ chặn màn; sắp hết (≤ 5 phút) ⇒ nhắc 1 lần.
+      NT_CAU.onSapHet = (giay) => { try { NT_UI.thongBao('⏳ Còn ' + Math.max(1, Math.ceil(giay / 60)) + ' phút chơi hôm nay'); } catch (e) {} };
+      NT_CAU.onHet = () => {
+        if (document.getElementById('ntHetGio')) return;
+        NT_CAU.xa();
+        const d = document.createElement('div'); d.id = 'ntHetGio';
+        d.style.cssText = 'position:fixed;inset:0;z-index:99998;background:rgba(10,20,10,.88);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:600 19px system-ui;text-align:center;padding:24px';
+        d.innerHTML = '<div style="font-size:44px">🌙</div><div>Hết giờ chơi hôm nay rồi!</div><div style="font-weight:400;font-size:15px;opacity:.85">Nông trại của em vẫn được giữ nguyên. Mai quay lại chăm nhé.</div><button style="padding:12px 22px;border-radius:12px;border:0;font:700 17px system-ui;background:#ffd24a;color:#3a2a00">Về</button>';
+        d.querySelector('button').onclick = () => NT_CAU.thoat();
+        document.body.appendChild(d);
+      };
+      if (NT_CAU.het && NT_CAU.onHet) NT_CAU.onHet();   // mở lại khi đã hết giờ từ trước
+    }   // tài khoản chưa có bản lưu ⇒ tạo ngay (kể cả bản chuyển từ máy)
     setTimeout(() => $('manTai').classList.add('xong'), 150);
   } catch (e) {
     console.error(e);

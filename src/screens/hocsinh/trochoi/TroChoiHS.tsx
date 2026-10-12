@@ -6,7 +6,7 @@
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, TheHS } from '../skin/KhungHS'
 import { DS_GAME, type GameHS } from './dsGame'
 import { useEffect, useRef } from 'react'
-import { ntLuuDoc, ntLuuGhi } from '../../../lib/nt_luu'
+import { ntLuuDoc, ntLuuGhi, ntNhip, type NtNhip } from '../../../lib/nt_luu'
 
 function Anh({ g }: { g: GameHS }) {
   return g.anh
@@ -51,6 +51,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   const hen = useRef<number | undefined>(undefined)
   const xung = useRef(false)
   const dang = useRef(false)
+  const sanSang = useRef(false)   // đã bắt tay xong ⇒ mới gửi nhịp giờ chơi
   const noi = (m: Record<string, unknown>) => khung.current?.contentWindow?.postMessage({ bk: 'nt', ...m }, location.origin)
   const xa = useRef<() => Promise<void>>(async () => {})
   xa.current = async () => {
@@ -59,7 +60,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
     cho.current = null; dang.current = true
     try {
       const r = await ntLuuGhi(st, cap.current)
-      if (r.ok) cap.current = r.cap_nhat ?? null
+      if (r.ok) { cap.current = r.cap_nhat ?? null; if (typeof r.gio_ms === 'number') noi({ loai: 'gio', gioMs: r.gio_ms }) }
       else { xung.current = true; noi({ loai: 'xung_dot' }) }
     } catch { noi({ loai: 'loi_luu' }); if (!cho.current) cho.current = st }   // lỗi mạng: giữ bản mới nhất, lần sau gửi lại
     finally { dang.current = false; if (cho.current && !xung.current && hen.current === undefined) hen.current = window.setTimeout(() => void xa.current(), 5000) }
@@ -70,15 +71,25 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
       const d = e.data as { bk?: string; loai?: string; state?: Record<string, unknown> } | null
       if (!d || d.bk !== 'nt') return
       if (d.loai === 'san_sang') {
-        ntLuuDoc().then((r) => { cap.current = r?.cap_nhat ?? null; noi({ loai: 'nap', ok: true, state: r?.state ?? null }) })
-          .catch(() => noi({ loai: 'nap', ok: false }))   // không đọc được server ⇒ game tự lùi về bản lưu trên máy
+        // bản lưu + GIỜ SERVER + giờ chơi còn lại (nhịp đầu không cộng giờ). Không đọc được ⇒ game tự lùi về bản lưu trên máy.
+        Promise.all([ntLuuDoc(), ntNhip()]).then(([r, h]) => {
+          cap.current = r?.cap_nhat ?? null; sanSang.current = true
+          noi({ loai: 'nap', ok: true, state: r?.state ?? null, gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het })
+        }).catch(() => noi({ loai: 'nap', ok: false }))
+      } else if (d.loai === 'thoat') {
+        onBack()
       } else if (d.loai === 'luu' && d.state) {
         cho.current = d.state
         if (hen.current === undefined) hen.current = window.setTimeout(() => void xa.current(), 5000)
       }
     }
     window.addEventListener('message', nghe)
-    return () => { window.removeEventListener('message', nghe); window.clearTimeout(hen.current); void xa.current() }   // rời màn ⇒ đẩy nốt bản mới nhất
+    // NHỊP giờ chơi 30 giây/lần khi em đang nhìn màn (tab/app hiện) — server tự đo khoảng liên tục, client không khai số giây.
+    const nhip = window.setInterval(() => {
+      if (!sanSang.current || document.visibilityState !== 'visible') return
+      ntNhip().then((h: NtNhip) => noi({ loai: 'gio', gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het })).catch(() => {})
+    }, 30000)
+    return () => { window.clearInterval(nhip); window.removeEventListener('message', nghe); window.clearTimeout(hen.current); void xa.current() }   // rời màn ⇒ đẩy nốt bản mới nhất
   }, [])
   return (
     <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }}>

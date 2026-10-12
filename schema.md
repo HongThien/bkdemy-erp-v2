@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-360 bảng · 20 view · 0 enum · 163 trigger · 919 function
+362 bảng · 20 view · 0 enum · 163 trigger · 922 function
 
 ## _app_secrets
 
@@ -3166,7 +3166,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -3785,6 +3785,25 @@ END |  |  |
 | tran_exp_nhiem_vu | integer |  | 2000 |  |  |
 | tran_exp_vong_quay | integer |  | 1000 |  |  |
 | dht_so_du_max | integer |  | 6000 |  |  |
+
+## nt_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | integer |  | 1 | PK |  |
+| bat | boolean |  | true |  |  |
+| gio_toi_da_phut | integer |  | 30 |  |  |
+| gio_doi_ngay | integer |  | 5 |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## nt_gio_choi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| ngay | date |  |  | PK |  |
+| giay | integer |  | 0 |  |  |
+| nhip_cuoi | timestamp with time zone |  |  |  |  |
 
 ## nt_luu
 
@@ -6974,6 +6993,7 @@ WITH luot AS (
 - `_mt_khung_tinh(p_buoi uuid)` → TABLE(id uuid, moi numeric, nc boolean, ngoai boolean, tl uuid, dbc jsonb)
 - `_mt_ky_thi(p_buoi uuid)` → uuid
 - `_mt_phan_nang_cao(p_phan uuid)` → boolean
+- `_nt_ngay(p_t timestamp with time zone DEFAULT clock_timestamp())` → date
 - `_nv_con_mo(p_mo integer[], p_units integer[], p_cap integer)` → integer
 - `_nv_luot_dat(p_mon text, p_hs uuid[], p_tu date, p_den date, p_ti_le numeric, p_lan integer)` → TABLE(hoc_sinh_id uuid, ngay date, nop_at timestamp with time zone, stt integer)
 - `_nv_xep(p_mo integer[], p_units integer[], p_cap integer)` → integer[]
@@ -7516,8 +7536,10 @@ WITH luot AS (
 - `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
 - `fn_nhiem_vu_chang_thang(p_mon text, p_ym text, p_hs uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, diem_chang integer, cap integer, so_ruong integer, exp integer)
 - `fn_nhiem_vu_hoan_thanh(p_mon text, p_ym text, p_hs uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, ma text, tang text, xong_ngay date, so integer)
+- `fn_nt_cau_hinh_dat(p_bat boolean DEFAULT NULL::boolean, p_gio_toi_da_phut integer DEFAULT NULL::integer, p_gio_doi_ngay integer DEFAULT NULL::integer)` → jsonb
 - `fn_nt_luu_doc()` → jsonb
 - `fn_nt_luu_ghi(p_state jsonb, p_cap_nhat timestamp with time zone DEFAULT NULL::timestamp with time zone)` → jsonb
+- `fn_nt_nhip()` → jsonb
 - `fn_ops_cho_duyet(p_tu date, p_den date)` → TABLE(loai text, ngay date, tkb_id uuid, phong text, luot text, ten_viec text, ca text, nhan_su_ten text, anh_url text, dong_at timestamp with time zone, han timestamp with time zone, tre_phut integer, chat_luong numeric)
 - `fn_ops_dashboard(p_ym text)` → jsonb
 - `fn_ops_duyet_ngay(p_ngay date, p_items jsonb)` → integer
@@ -7950,6 +7972,10 @@ WITH luot AS (
 | may_man_hs_luot | may_man_hs_luot_exp_check | `CHECK ((exp >= 0))` |
 | may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
+| nt_cau_hinh | nt_cau_hinh_gio_doi_ngay_check | `CHECK (((gio_doi_ngay >= 0) AND (gio_doi_ngay <= 23)))` |
+| nt_cau_hinh | nt_cau_hinh_gio_toi_da_phut_check | `CHECK (((gio_toi_da_phut >= 1) AND (gio_toi_da_phut <= 1440)))` |
+| nt_cau_hinh | nt_cau_hinh_id_check | `CHECK ((id = 1))` |
+| nt_gio_choi | nt_gio_choi_giay_check | `CHECK ((giay >= 0))` |
 | nt_luu | nt_luu_state_check | `CHECK ((octet_length((state)::text) <= 262144))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | qlht_doi_qua | qlht_doi_qua_so_luong_check | `CHECK ((so_luong > 0))` |
