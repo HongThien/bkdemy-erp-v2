@@ -326,3 +326,14 @@ Chữ "2.5D" gộp hai thứ khác nhau, nên tách ra:
 - **Cổng go/no-go M0:** ~60 nhà + ~25 avatar + thú ≥ **30 FPS iPad gen 7 (bản Nhẹ)**, tải trang < vài giây. Trượt ⇒ lùi phương án B (2D mặt tiền ngang).
 - **Thay đổi kiến trúc §8:** client = three r186 (thay Phaser 3); server/DB giữ nguyên (Colyseus + Postgres `fn_tg_*`). Vẫn **nhúng app HS** (đề xuất, chưa gật) và dựng khung ngoài bằng `KhungHS`.
 - **Việc M0 (spike) — chưa làm:** (1) một con phố ~60 nhà sinh từ dữ liệu (kiểu × cỡ × màu × biển); (2) camera chếch + xoay 4 hướng + zoom; (3) đi chạm-để-đến + ~25 avatar giả (bot) di chuyển; (4) đo FPS iPad gen 7 + máy lớp; (5) biển đọc được ở khoảng cách xa/gần.
+
+## D10d. Kết quả M0 spike (12/10 — `lang-bk-spike/`, chạy: launch `lang` cổng 5282 hoặc `node scripts/serve-games.mjs 5282 lang-bk-spike`)
+
+- **Dựng được:** phố ~60 nhà sinh từ dữ liệu (5 kiểu × 4 cỡ lô × màu tường/mái/rào × trang trí mặt tiền × khung biển theo bậc go/đồng/bạc/vàng), 25 avatar đi lại, camera chếch + xoay 4 hướng + zoom, chạm-để-đi.
+- **Chi phí dựng hình:** gộp toàn bộ nhà/cây/đèn/đường vào **1 mesh** (màu đỉnh) + **1 mesh biển** (atlas 1 texture) + 3 InstancedMesh avatar ⇒ **~10 draw call, ~64k tam giác** cho 60 nhà + 25 người. Ở máy dev (RX 5700) ~0,8 ms/khung — **KHÔNG đại diện iPad gen 7**; số thật phải đo trên iPad (mở `?nhe=1`, HUD tự báo ĐẠT/TRƯỢT ≥30 FPS). Stress: `?nha=200&nguoi=100`.
+- **Phát hiện thiết kế (quan trọng):**
+  1. **Biển phải luôn quay mặt về camera** (billboard quanh trục đứng, làm trong vertex shader) — biển cố định vuông góc phố thì nửa số biển bị nhìn nghiêng/lệch khi xoay 4 hướng. Đã làm; đọc rõ ở cả 4 hướng.
+  2. **Nhà cỡ "đại" che tầm nhìn** (che cả phố khi camera thấp/gần) — cần: xoay cho khỏi che, làm trong suốt nhà che avatar mình, hoặc hạn chế chiều cao.
+  3. Biển ở khoảng cách zoom mặc định (36–42) chỉ đọc được tên nhà khi gần ≲ 25 đơn vị; **nên có zoom/nhãn tự phóng khi rê chuột** hoặc biển cỡ lớn theo bậc (đã làm: biển to dần theo cỡ nhà).
+  4. Nhìn tổng thể: phong cách khối ghép đủ "ra phố" (nhà phân biệt rõ kiểu + cỡ), chưa cần pack/hoạ sĩ.
+- **Chưa đo / chưa làm:** FPS trên iPad gen 7 (cổng go/no-go chính) · nhân vật có animation tay chân · bản Đẹp có đổ bóng trên iPad · vào trong nhà · nhiều người thật (mạng).
