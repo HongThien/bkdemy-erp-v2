@@ -4,7 +4,7 @@
 > - **Thị trấn** (chuẩn thiết kế lớp 3–5, mở cho mọi khối — Thùy 28/09 tối) → **Đơn 1 v2** (giao không qua zip, như Đơn 3 v3)
 > - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2** — ⚠ THAY bởi `design/DON-HANG-STYLE-KHOI.md` (01/10)
 > - **Lớp 9–12** · nhiều skin để HS chọn · có điện thoại riêng. 4 skin (Tối giản, Đấu trường, Y2K, Soft Hàn) Claude dựng bằng code, không cần ChatGPT.
->   2 skin cần hình → **Đơn 3 v3 (Lo-fi đêm)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
+>   2 skin cần hình → **Đơn 3 v3 (Lo-fi đêm — ⚠ THAY bởi `design/DON-HANG-STYLE-LOFI.md` 09/10)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
 >
 > Spec tổng: `spec-giao-dien-hs.md`.
 
@@ -244,6 +244,8 @@ thuốc đếm ngược THPT, chỉ banner Bổ trợ · ③ trống — không 
 ---
 
 ## Đơn 3 v3 — Lớp 9–12 · skin Lo-fi đêm (làm lại — soạn 28/09 theo bài học Đơn 4)
+
+> ⚠ **THAY bởi `design/DON-HANG-STYLE-LOFI.md` (09/10, style "Lo-fi chill")** — đơn dưới CHƯA gửi, đừng gửi bản này.
 
 > v1 bị trả: tranh nền là khối phẳng ghép bằng code, 2 biến thể gần trùng nhau.
 > v2 chưa gửi — soạn lại vì Đơn 4 lộ lỗi mới: **ảnh ChatGPT VẼ trong chat thì đẹp, nhưng file nó ĐÓNG ZIP lại là bản dựng bằng code**

@@ -8,6 +8,7 @@ import type { Skin, CheDo, HinhNen, SkinId, MauDoc } from './kieu'
 import { RPG } from './styles/rpg'
 import { TOI_GIAN } from './styles/toiGian'
 import { KHOI } from './styles/khoi'
+import { LOFI } from './styles/lofi'
 import { skinDangApId } from './loi'
 export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau, MauDoc } from './kieu'
 
@@ -18,7 +19,8 @@ export const KHOI_CHON_SKIN = new Set(['6', '7', '8', '9', '10', '11', '12'])
 // Thùy 29/09: 4 skin thử (Tối giản · Đấu trường · Y2K · Soft Hàn) đã XOÁ — chỉ Anime RPG dùng thật; style mới thêm vào đây.
 // Thùy 02/10: dựng lại Tối giản (đơn sắc, nền trơn) cho em không thích rối mắt.
 // Thùy 03/10: thêm Khối vuông (cảm hứng Minecraft) làm lựa chọn — RPG vẫn là mặc định.
-export const SKINS: Skin[] = [RPG, KHOI, TOI_GIAN]
+// Thùy 12/10: thêm Lo-fi chill (góc học yên tĩnh, có cả sáng lẫn tối) — style "chọn vào", không mặc định cho khối nào.
+export const SKINS: Skin[] = [RPG, KHOI, LOFI, TOI_GIAN]
 
 export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 
@@ -76,6 +78,9 @@ export function nenCua(hn: HinhNen, cd: 'sang' | 'toi', doc: boolean): string | 
 export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null | undefined, doc = false): Record<string, string> {
   const m = (cd === 'toi' ? skin.toi : skin.sang) ?? (skin.toi ?? skin.sang)!
   const hn = layHinhNen(skin, hinhNenId)
+  // theTiep / nenTen: style 2 chế độ khai { sang, toi } — lấy đúng bản của chế độ đang vẽ
+  const tiep = skin.theTiep && ('sang' in skin.theTiep ? skin.theTiep[cd] : skin.theTiep)
+  const nenTen = typeof skin.nenTen === 'object' ? skin.nenTen[cd] : skin.nenTen
   return {
     '--sk-page': nenCua(hn, cd, doc) ?? m.bg,
     '--sk-nen-trong': m.nenTrong ?? m.bg, // màn TRONG: đơn sắc, không tranh
@@ -84,11 +89,11 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
     '--sk-card-border': m.cardBorder, '--sk-card-shadow': m.cardShadow, '--sk-card-clip': skin.cardClip,
     '--sk-card-left': skin.cardAccentLeft === 'none' ? m.cardBorder : skin.cardAccentLeft,
     '--sk-radius': skin.radius, '--sk-radius-pill': skin.radiusPill ?? '999px', '--sk-blur': skin.blur,
-    '--sk-next-bg': skin.theTiep?.bg ?? m.acc, '--sk-next-ink': skin.theTiep?.ink ?? m.accInk, '--sk-next-border': skin.theTiep?.border ?? 'none',
-    '--sk-name-plate': skin.nenTen ?? 'transparent',
+    '--sk-next-bg': tiep?.bg ?? m.acc, '--sk-next-ink': tiep?.ink ?? m.accInk, '--sk-next-border': tiep?.border ?? 'none',
+    '--sk-name-plate': nenTen ?? 'transparent',
     // Bóng chữ kế thừa cho MỌI chữ trong khung trang: skin nền ẢNH (có nenTen) cần — chữ đè đèn/lâu đài không đọc được (Thùy 29/09).
     // Chỉ ở chế độ TỐI: style SÁNG có tấm tên (Khối vuông 03/10) chữ tối — bóng tối quanh chữ tối thì nhoè, càng khó đọc.
-    '--sk-chu-bong': skin.nenTen && cd === 'toi' ? '0 1px 6px rgba(8,10,24,0.9)' : 'none',
+    '--sk-chu-bong': nenTen && cd === 'toi' ? '0 1px 6px rgba(8,10,24,0.9)' : 'none',
     '--sk-tran-font': skin.tran?.font ?? skin.font, '--sk-tran-nen': skin.tran?.nen ?? m.surface,
     '--sk-tran-vien': skin.tran?.vien ?? `0 0 0 1px ${m.line}`, '--sk-tran-phien': skin.tran?.phien ?? m.surface2, '--sk-tran-phien-day': skin.tran?.phienDay ?? m.line,
     '--sk-goc': skin.trangTri?.goc ? `url(${skin.trangTri.goc})` : 'none',

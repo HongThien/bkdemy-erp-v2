@@ -50,11 +50,13 @@ export function ganSkinMacDinh() {
   ganBien(GD_MAC_DINH, mm('(prefers-color-scheme: dark)'), mm('(orientation: portrait)'))
 }
 
-/** TRANG XEM THỬ (?xem=…, không đăng nhập): `&skin=<id>[&nen=<id>]` ⇒ gắn style đó NGAY (trước lần vẽ đầu — màn đọc `laySkin(null)` lúc khởi tạo
+/** TRANG XEM THỬ (?xem=…, không đăng nhập): `&skin=<id>[&nen=<id>][&che_do=sang|toi|he_thong]` ⇒ gắn style đó NGAY (trước lần vẽ đầu — màn đọc `laySkin(null)` lúc khởi tạo
  *  thấy đúng style) rồi trả GiaoDien để trang gọi tiếp `useApSkinGoc` (xoay máy vẫn gắn lại). Không có `skin` ⇒ style mặc định. */
 export function ganSkinXemThu(): GiaoDien {
   const q = new URLSearchParams(location.search)
-  const gd: GiaoDien = { ...GD_MAC_DINH, skin: laySkin(q.get('skin') ?? GD_MAC_DINH.skin).id, hinh_nen: q.get('nen') ?? GD_MAC_DINH.hinh_nen }
+  const cd = q.get('che_do') // style có cả sáng lẫn tối (Lo-fi): &che_do=sang để soi bản sáng — mặc định như GD_MAC_DINH
+  const gd: GiaoDien = { ...GD_MAC_DINH, skin: laySkin(q.get('skin') ?? GD_MAC_DINH.skin).id, hinh_nen: q.get('nen') ?? GD_MAC_DINH.hinh_nen,
+    che_do: cd === 'sang' || cd === 'toi' || cd === 'he_thong' ? cd : GD_MAC_DINH.che_do }
   const mm = (m: string) => !!window.matchMedia?.(m).matches
   ganBien(gd, mm('(prefers-color-scheme: dark)'), mm('(orientation: portrait)'))
   return gd

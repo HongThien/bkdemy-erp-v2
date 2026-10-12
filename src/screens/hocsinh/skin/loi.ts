@@ -98,6 +98,38 @@ export const LOI_GAME: Partial<LoiHS> = {
   },
 }
 
+/** Giọng LO-FI (Thùy chốt 09/10 — design/DON-HANG-STYLE-LOFI.md mục 5): thong thả, không "chiêu / quái / TUYỆT KỸ". Cùng cấu trúc trận, đổi ẩn dụ:
+ *  mỗi nhóm câu là một bé tinh linh đang RỐI, trả lời đúng = gỡ một nút. giongGame = false ⇒ trang Hướng dẫn dùng bản formal. */
+export const LOI_LOFI: Partial<LoiHS> = {
+  giongGame: false,
+  chieu: ['Nút rối thắt thêm một chút', 'Gỡ được một nút', 'Gỡ được hai nút', 'Gỡ trọn cả ba'],
+  chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · gỡ ${dung} nút` : ''} · ${ten}`,
+  nhanCombo: 'Nhịp',
+  doiHinh: 'Các bé đang rối',
+  nhanBoss: 'CUỘN RỐI LỚN',
+  nhanThuong: (n, tong) => `BÉ ${n}/${tong}`,
+  moMan: (ten) => `${ten} đang rối — mình gỡ cùng nhé`,
+  huongDan: (n) => `Mỗi ${n} câu là một nhịp — đúng cả ${n} là gỡ trọn`,
+  con: (n) => `Còn ${n} nút`,
+  daXong: 'Đã hết rối',
+  hetDoiHinh: 'Mọi thứ đã gọn gàng',
+  yeu: {
+    tieuDe: 'Góc ôn chỗ yếu',
+    hoi: 'Pha một cốc trà rồi mình bắt đầu nhé?',
+    nut: 'Bắt đầu thong thả',
+    dongLuat: (n) => `Mỗi lượt ${n} câu về những dạng em còn chưa chắc. Đúng từ 7 câu là lượt này trọn vẹn.`,
+    dongDau: 'Cứ từ từ — lượt chỉ được tính khi em không bấm quá vội.',
+    dangYeu: 'Những dạng em đang cần ôn',
+  },
+  ketQua: {
+    duocTinh: 'Lượt này đã được ghi vào chuỗi và nhiệm vụ.',
+    ghiNhan: 'Độ nắm dạng được cập nhật theo kết quả thật khi em quay lại.',
+    luyenTiep: 'Làm thêm một lượt',
+    veChang: 'Về con phố',
+    veKhu: 'Về góc Học tập',
+  },
+}
+
 // ── style đang áp (cùng chỗ gắn biến --sk-* ở KhungHS.ganBien) ─────────────────────────────────────────────────────
 // Màn cần LỜI mà không cần biết style là gì ⇒ chỉ đọc qua useLoi(), không so sánh id style.
 let skinDangAp: SkinId | null = null

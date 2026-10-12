@@ -204,3 +204,9 @@ pixel 16×16. **Thùy 01/10: giống Minecraft NHẤT CÓ THỂ (khung cảnh �
 5. Soi bằng mắt (khổ NGANG trước — `spec-v1-app-hs.md` §0): Home 1180×820 + 1440×900 × 3 nền · Home dọc 390×844 không vỡ · Nhiệm vụ · Album ·
    Rank · Hồ sơ · Thế giới BK · 1 màn làm bài · 1 màn rỗng. Nền anh đào nhiều hồng ⇒ soi kỹ badge đỏ + nút xanh còn nổi không. Trang mẫu `hs.html?xem=gami` cần thêm công tắc chọn style để soi không cần đăng nhập.
 6. K2 (bản đồ + quái): dựng sau khi luồng Giao diện có màn bản đồ cho RPG — cùng tên file, chỉ thêm thư mục `khoi`.
+
+## 11. Style 4 — Lo-fi chill · ĐÃ DỰNG 12/10
+
+Thùy 09/10: *"giao diện mới: lofi chill … cho những học sinh thích kiểu học 1 mình, chill chill dễ chịu"*. Quyết định thiết kế, đơn hình, bảng kiểm hàng, tình trạng dựng
+và việc còn lại: **`design/DON-HANG-STYLE-LOFI.md`** (1 nguồn — không chép lại ở đây). Luật mới cho style 2 chế độ + màn chính "sống": `design/STYLE-HS.md` §2.7.
+Style kế tiếp đã có hình (130/150 đạt, chưa dựng): **Đáng yêu** (cảm hứng Chiikawa) — `design/DON-HANG-STYLE-NHO-XINH.md`; làm song song với Thị trấn (§9).
