@@ -1,0 +1,43 @@
+{
+ "ma_de": "NS-2023",
+ "so_cau": 15,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 5,
+ "van_de": [
+  {
+   "ma_nguon": "NS 2023 · P2.5",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt và Bước 5 của Phần 1 nói thẳng kết luận \"không bao giờ đạt được toàn đống 1 viên\" ⇒ lộ đáp số (Không). Đã viết lại: Mấu chốt chỉ nêu cách nghĩ (tìm tính chất không đổi rồi đối chiếu với đống 1 viên), Bước 5 chỉ bảo đối chiếu và trả lời.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2023 · P2.4",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Ý b dùng cách \"tổng–tỉ\" (BDE 2 phần, ADE 1 phần, tổng 8 cm²) nhưng không có sơ đồ; luật tổng–tỉ bắt buộc sơ đồ. Đã thêm \"Ta có sơ đồ:\" + so_do_mo_ta (gia_tri_phan 8/3, tổng 8 cm²; máy vẽ chạy được) và sửa ghi_chu_nghi cho khớp.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2023 · P1.9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng then chốt \"hai nửa tròn nhỏ + tam giác = phần tô đậm + nửa tròn lớn\" được khẳng định mà không giải thích (nhảy bước; HS không tự bù được). Đã thêm 2 câu giải thích (nửa tròn lớn = tam giác + hai phần giữa cạnh và cung lớn; mỗi nửa tròn nhỏ = một mảnh trăng + một phần đó) ở cả Mấu chốt và Phần 2. Đáp số 24 giữ nguyên (đã tính lại: 14,13+25,12+24−39,25=24).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2023 · P1.7",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Câu \"đỉnh M … cách NQ 3 đường kẻ\" mơ hồ (đọc được là 3 đường kẻ ở giữa ⇒ đường cao 4). Đã đổi thành \"cách NQ đúng 3 khoảng giữa các đường kẻ song song\" ở Phần 2 và Bước 3 Phần 1. Đã tự đo lại theo toạ độ lưới từ hình: M(hàng 2, cạnh trái), N(hàng 3, cạnh phải), P, Q đáy hàng 6 vị trí 4 và 3 ⇒ 12 tam giác nhỏ = 24 cm²; NQ, MQ… nằm đúng đường kẻ, chia 6 + 18 đúng.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2023 · P1.5",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt viết \"số bông chênh lệch này CHÍNH LÀ phần trăm chênh lệch\" (bông ≠ phần trăm). Đã sửa thành \"ứng với số phần trăm chênh lệch\". Toán đúng: 2 bông ↔ 51%−49%=2% ⇒ 100 bông (thử: 46 mỗi bó, 51 hồng + 49 cúc).",
+   "da_sua": true
+  }
+ ]
+}

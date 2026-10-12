@@ -1,0 +1,100 @@
+{
+ "LTV 2018 · 1": {
+  "de_lech": null,
+  "dap_so_sach": "95719",
+  "dap_so_tinh": "95719",
+  "khop_sach": true,
+  "ghi_chu": "Vét cạn: 15 chữ số 135791113151719, giữ 5 chữ số lớn nhất theo thứ tự."
+ },
+ "LTV 2018 · 2": {
+  "de_lech": null,
+  "dap_so_sach": "7820 cm³",
+  "dap_so_tinh": "7820 cm³",
+  "khop_sach": true,
+  "ghi_chu": "Lỗ vuông cạnh 3cm xuyên suốt: 8000 - 3x3x20 = 7820."
+ },
+ "LTV 2018 · 3": {
+  "de_lech": null,
+  "dap_so_sach": "Thứ Ba",
+  "dap_so_tinh": "Thứ Ba",
+  "khop_sach": true,
+  "ghi_chu": "Vét cạn ngày bắt đầu CN: chỉ CN rơi vào ngày 2,9,16,23,30 cho đúng 3 CN chẵn (2,16,30) => 25 = 23+2 => thứ Ba."
+ },
+ "LTV 2018 · 4": {
+  "de_lech": null,
+  "dap_so_sach": "36 000 đồng",
+  "dap_so_tinh": "36 000 đồng (36 nghìn đồng)",
+  "khop_sach": true,
+  "ghi_chu": "p x 1,2 = 40 x 1,08 => p = 36."
+ },
+ "LTV 2018 · 5": {
+  "de_lech": null,
+  "dap_so_sach": "6,5",
+  "dap_so_tinh": "6,5",
+  "khop_sach": true,
+  "ghi_chu": null
+ },
+ "LTV 2018 · 6": {
+  "de_lech": null,
+  "dap_so_sach": "7 giờ 5 phút",
+  "dap_so_tinh": "7 giờ 5 phút",
+  "khop_sach": true,
+  "ghi_chu": "3:12 = 15 phút; 7h20 - 15 phút."
+ },
+ "LTV 2018 · 7": {
+  "de_lech": null,
+  "dap_so_sach": "x = 4",
+  "dap_so_tinh": "x = 4",
+  "khop_sach": true,
+  "ghi_chu": "Vét cạn x tự nhiên: 3,2 < x < 4,8 => chỉ x=4."
+ },
+ "LTV 2018 · 8": {
+  "de_lech": null,
+  "dap_so_sach": "60 m",
+  "dap_so_tinh": "60 m",
+  "khop_sach": true,
+  "ghi_chu": "Rộng 10, dài 20, chu vi 60."
+ },
+ "LTV 2018 · 9": {
+  "de_lech": null,
+  "dap_so_sach": "22,4 m",
+  "dap_so_tinh": "22,4 m",
+  "khop_sach": true,
+  "ghi_chu": null
+ },
+ "LTV 2018 · 10": {
+  "de_lech": null,
+  "dap_so_sach": "5cm²",
+  "dap_so_tinh": "5 cm²",
+  "khop_sach": true,
+  "ghi_chu": "Ba hình thang AEHD, EFGH, FBCG cùng chiều cao, tổng hai đáy bằng nhau (a+b) => diện tích bằng nhau = 15/3 = 5. Hình xác nhận E,F trên AB; H,G trên DC."
+ },
+ "LTV 2018 · 11": {
+  "de_lech": null,
+  "dap_so_sach": "6",
+  "dap_so_tinh": "6",
+  "khop_sach": true,
+  "ghi_chu": "Phân số chính xác: 3/7 + 39/7 = 6."
+ },
+ "LTV 2018 · 12": {
+  "de_lech": null,
+  "dap_so_sach": "23 năm nữa",
+  "dap_so_tinh": "23 năm nữa (tức sau 23 năm; đề không cho năm hiện tại nên không ra mốc năm cụ thể)",
+  "khop_sach": true,
+  "ghi_chu": "42+t = 19+2t => t=23."
+ },
+ "LTV 2018 · 13": {
+  "de_lech": null,
+  "dap_so_sach": "13,76 cm²",
+  "dap_so_tinh": "13,76 cm² (64 - 16 x 3,14)",
+  "khop_sach": true,
+  "ghi_chu": "Đã xem hình: tâm 4 đường tròn ở 4 đỉnh hình vuông cạnh 8; phần tô = hình vuông - 4 phần tư hình tròn = 64 - 16x3,14 = 13,76. Đáp số sách đúng, nhưng LỜI GIẢI sách sai/thiếu: dòng \"diện tích hình tròn 3,14x4x4 = 13,76\" sai (3,14x4x4 = 50,24); bước đúng là 64 - 50,24 = 13,76. Đừng chép lời giải sách."
+ },
+ "LTV 2018 · 14": {
+  "de_lech": null,
+  "dap_so_sach": "144",
+  "dap_so_tinh": "144",
+  "khop_sach": true,
+  "ghi_chu": "Fibonacci: số thứ 12 = 144."
+ }
+}

@@ -1,0 +1,42 @@
+{
+  "D1.7a@p5": { "nhom": "T18T010601" },
+  "D1.7b@p5": { "nhom": "T18T010601" },
+  "D1.8@p5": { "nhom": "T18T010601" },
+  "D1.10@p6": { "nhom": "T18T010601" },
+  "D1.66a@p23": { "nhom": "T18T010601" },
+  "D1.66b@p23": { "nhom": "T18T010601" },
+  "D1.67a@p23": { "nhom": "T18T010601" },
+  "D1.67b@p23": { "nhom": "T18T010601" },
+  "D1.68a@p23": { "nhom": "T18T010601" },
+  "D1.68b@p23": { "nhom": "T18T010601" },
+  "D1.69@p23": {
+    "nhom": "T18T010601",
+    "sach_in_sai": "trang PDF 23, bài 69: đề in điều kiện (x ≠ 0, y ≥ 0); tại y = 0 số chia -2x^2y^3 bằng 0 nên biểu thức không xác định. Kho ghi y > 0 (đã mở ảnh p-023 xác nhận sách in ≥)."
+  },
+  "D2.10a@p33": {
+    "sach_in_sai": "trang PDF 33, lời giải bài 10a dòng đầu: mẫu in (x-y)^2+(y-z)^2+(z-y)^2, đúng là (z-x)^2 như đề; các dòng sau của sách khai triển theo (z-x)^2."
+  },
+  "D2.13@p36": {
+    "sach_in_sai": "trang PDF 36, lời giải bài 13: sách in 48x^2y / 12x^6y^6, thừa chữ y ở tử (4·12x^2 = 48x^2). Kho ghi 48x^2."
+  },
+  "D2.14@p36": {
+    "sach_in_sai": "trang PDF 36, lời giải bài 14 dòng giữa: mẫu in 4(x+5).(x+5), đúng là 4(x+5)(x-5)."
+  },
+  "D2.32b@p42": {
+    "sach_in_sai": "trang PDF 42, lời giải bài 32b dòng 'Từ (1), (2) và (3) cho ta': số hạng thứ ba in mẫu (c-b)^2, đúng là (a-b)^2. Sách không lập luận bước từ tổng bằng 0 sang 'có một số âm và một số dương' — kho bổ sung bằng phản chứng."
+  },
+  "D2.34@p43": {
+    "sach_in_sai": "trang PDF 43, lời giải bài 34: (x-1)(y-1)(z-1) không bằng 2abc/((b-c)(c-a)(a-b)) như sách ghi trong ngoặc (tử đúng là (a+b-c)(b+c-a)(c+a-b)); sách còn in nhầm 'zy+yz' và 'xy+yx'. Chứng minh không dùng đến ngoặc đó nên kết quả S = -1 vẫn đúng."
+  },
+  "D2.40a@p46": { "nhom": "T18T010501" },
+  "D2.40b@p46": { "nhom": "T18T010501" },
+  "D2.46@p49": { "nhom": "T18T010501" },
+  "D2.47@p49": { "nhom": "T18T010501" },
+  "D2.48@p49": { "nhom": "T18T010501" },
+  "D2.51b@p50": {
+    "sach_in_sai": "trang PDF 51, lời giải bài 51b: sách in (x^2/b)^1005, đúng là (y^2/b)^1005."
+  },
+  "D2.51c@p50": {
+    "sach_in_sai": "trang PDF 51, lời giải bài 51c: sách in b(c+d)(d+a) + d(a+b)(b+c) = 0, đúng là dấu trừ — dòng kế tiếp abc - acd + bd^2 - b^2d = 0 chỉ khớp với dấu trừ."
+  }
+}

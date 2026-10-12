@@ -1,0 +1,430 @@
+[
+ {
+  "ma": "T2V1.1a@p18",
+  "noi_dung": "Đưa các nhân tử chung ra ngoài dấu ngoặc: $a^{m+2}-a^m$."
+ },
+ {
+  "ma": "T2V1.1b@p18",
+  "noi_dung": "Đưa các nhân tử chung ra ngoài dấu ngoặc: $-5x^my+15x^ny$."
+ },
+ {
+  "ma": "T2V2.1a@p18",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3z+x^2yz-x^2z^2-xyz^2$."
+ },
+ {
+  "ma": "T2V2.1b@p18",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $p^{m+2}q-p^{m+1}q^3-p^2q^{n+1}+pq^{n+3}$."
+ },
+ {
+  "ma": "T2V2.2a@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-(a+b)xy+aby^2$."
+ },
+ {
+  "ma": "T2V2.2b@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $ab(x^2+y^2)+xy(a^2+b^2)$."
+ },
+ {
+  "ma": "T2V2.2c@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(xy+ab)^2+(ay-bx)^2$."
+ },
+ {
+  "ma": "T2V3.1a@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $25x^4-10x^2y+y^2$."
+ },
+ {
+  "ma": "T2V3.1b@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $-16a^4b^6-24a^5b^5-9a^6b^4$."
+ },
+ {
+  "ma": "T2V3.1c@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $8m^3+36m^2n+54mn^2+27n^3$."
+ },
+ {
+  "ma": "T2V3.2a@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4b^2c^2-(b^2+c^2-a^2)^2$."
+ },
+ {
+  "ma": "T2V3.2b@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(ax+by)^2-(ay+bx)^2$."
+ },
+ {
+  "ma": "T2V3.2c@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a^2+b^2-5)^2-4(ab+2)^2$."
+ },
+ {
+  "ma": "T2V3.2d@p19",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(4x^2-3x-18)^2-(4x^2+3x)^2$."
+ },
+ {
+  "ma": "T2V3.3@p20",
+  "noi_dung": "(Đề thi vô địch toán vòng II, Belarussia, 1958) Phân tích đa thức thành nhân tử: $\\left[4abcd+(a^2+b^2)(c^2+d^2)\\right]^2-4\\left[cd(a^2+b^2)+ab(c^2+d^2)\\right]^2$."
+ },
+ {
+  "ma": "T2V4a.1@p20",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-6x+8$."
+ },
+ {
+  "ma": "T2V4a.2a@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-7xy+10y^2$."
+ },
+ {
+  "ma": "T2V4a.2b@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^2-5a-14$."
+ },
+ {
+  "ma": "T2V4a.3a@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2m^2+10m+8$."
+ },
+ {
+  "ma": "T2V4a.3b@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4p^2-36p+56$."
+ },
+ {
+  "ma": "T2V4a.3c@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-5x^2-14x$."
+ },
+ {
+  "ma": "T2V4a.3d@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2yz+5xyz-14yz$."
+ },
+ {
+  "ma": "T2V4a.4@p21",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3+3x^2-4$."
+ },
+ {
+  "ma": "T2V4a.5@p22",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x^3-5x^2+8x-3$."
+ },
+ {
+  "ma": "T2V4b.1b@p23",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^4+4b^4$."
+ },
+ {
+  "ma": "T2V4b.3a@p24",
+  "noi_dung": "Phân tích biểu thức sau thành nhân tử: $m^3-6m^2+11m-6$."
+ },
+ {
+  "ma": "T2V4b.3c@p24",
+  "noi_dung": "Phân tích biểu thức sau thành nhân tử: $n^8+n^4+1$."
+ },
+ {
+  "ma": "T2V4c.1@p24",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(x^2+x)^2+4x^2+4x-12$."
+ },
+ {
+  "ma": "T2V4c.2@p24",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x(x+4)(x+6)(x+10)+128$."
+ },
+ {
+  "ma": "T2V4c.3@p24",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $A=x^4+6x^3+7x^2-6x+1$."
+ },
+ {
+  "ma": "T2V4c.4@p25",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-2xy+y^2+3x-3y-10$."
+ },
+ {
+  "ma": "T2V5.1a@p25",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^6-a^4+2a^3+2a^2$."
+ },
+ {
+  "ma": "T2V5.1b@p25",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a+b)^3-(a-b)^3$."
+ },
+ {
+  "ma": "T2V5.1c@p25",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-3x^2+3x-1-y^3$."
+ },
+ {
+  "ma": "T2V5.2a@p25",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x^2(a+b+c)-4xy(a+b+c)+2y^2(a+b+c)$."
+ },
+ {
+  "ma": "T2V5.2b@p25",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^{m+4}+x^{m+3}-x-1$."
+ },
+ {
+  "ma": "T2V5.3@p26",
+  "noi_dung": "(Đề thi vô địch toán lớp 8, vòng 1, Belarussia, 1952) Phân tích đa thức thành nhân tử: $(x+y+z)^3-x^3-y^3-z^3$."
+ },
+ {
+  "ma": "T2V5.4@p26",
+  "noi_dung": "(Đề thi vào lớp 10 CT Lê Hồng Phong, Tp HCM, 1988) Phân tích đa thức thành nhân tử: $x^3+y^3+z^3-3xyz$."
+ },
+ {
+  "ma": "T2V5.5@p27",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(x+y)^5-x^5-y^5$."
+ },
+ {
+  "ma": "T2V5.6@p27",
+  "noi_dung": "(Đề thi vô địch toán lớp 8, vòng I, Belarussia, 1957) Phân tích đa thức thành nhân tử: $A=(x^2+y^2)^3+(z^2-x^2)^3-(y^2+z^2)^3$."
+ },
+ {
+  "ma": "T2V5.7@p27",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $A=3abc+a^2(a-b-c)+b^2(b-a-c)+c^2(c-a-b)-c(b-c)(a-c)$."
+ },
+ {
+  "ma": "T2V5.8@p28",
+  "noi_dung": "(Đề thi học sinh giỏi cấp II miền Bắc, 1967) Phân tích đa thức sau thành nhân tử: $a^{16}+a^8b^8+b^{16}$."
+ },
+ {
+  "ma": "T2V5.9@p28",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $P=ab(a-b)+bc(b-c)+ca(c-a)$."
+ },
+ {
+  "ma": "T2V6.1@p28",
+  "noi_dung": "Giải phương trình: $2x^3+7x^2+7x+2=0$."
+ },
+ {
+  "ma": "T2V7.1@p28",
+  "noi_dung": "(Đề thi vào chuyên toán miền Bắc, 1979) Phân tích thành thừa số: $A=2a^2b^2+2b^2c^2+2a^2c^2-a^4-b^4-c^4$.\n\nChứng minh rằng nếu $a,b,c$ là ba cạnh của tam giác thì $A>0$."
+ },
+ {
+  "ma": "T2V7.2@p29",
+  "noi_dung": "(Đề thi vô địch toán Úc, 1971) Chứng minh rằng với mọi số dương $a,b,c$ ta có: $a^2(b+c-a)+b^2(a+c-b)+c^2(a+b-c)\\leq 3abc$."
+ },
+ {
+  "ma": "T2V7.3@p29",
+  "noi_dung": "(Đề thi vào lớp chuyên toán miền Bắc, 1975) a) Phân tích ra thừa số: $A=a^4-6a^3+27a^2-54a+32$.\n\nb) Từ kết quả câu trên suy ra rằng biểu thức $n^4-6n^3+27n^2-54n+32$ luôn luôn là số chẵn với mọi số nguyên $n$."
+ },
+ {
+  "ma": "T2V7.4@p30",
+  "noi_dung": "Cho biết $a+b+c=0$, chứng minh rằng: $(a^2+b^2+c^2)^2=2(a^4+b^4+c^4)$."
+ },
+ {
+  "ma": "T2V7.5@p30",
+  "noi_dung": "Chứng minh rằng nếu $a+b+c=0$ (1) thì $a^3+b^3+c^3=3abc$ (2).\n\nĐảo lại, nếu có (2) thì có (1) không?"
+ },
+ {
+  "ma": "T2V7.6a@p30",
+  "noi_dung": "Chứng minh rằng từ đẳng thức: $(x-y)^2+(y-z)^2+(z-x)^2=(x+y-2z)^2+(y+z-2x)^2+(z+x-2y)^2$ ta suy ra $x=y=z$."
+ },
+ {
+  "ma": "T2V7.6b@p30",
+  "noi_dung": "Chứng minh rằng nếu $a^2+b^2+c^2=ab+bc+ac$ thì $a=b=c$."
+ },
+ {
+  "ma": "T2V7.7a@p31",
+  "noi_dung": "$x,y,z$ liên hệ với nhau bởi các đẳng thức: $x^2-y=a$; $y^2-z=b$; $z^2-x=c$. Tính giá trị của biểu thức: $P=x^3(z-y^2)+y^3(x-z^2)+z^3(y-x^2)+xyz(xyz-1)$."
+ },
+ {
+  "ma": "T2V7.7b@p31",
+  "noi_dung": "Cho $x+y=a$, $x^2+y^2=b$, $x^3+y^3=c$. Chứng minh rằng $a^3-3ab+2c=0$."
+ },
+ {
+  "ma": "T2V7.8@p31",
+  "noi_dung": "Chứng minh rằng nếu $a,b,c$ là ba số thỏa mãn hệ thức: $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{1}{a+b+c}$ thì hai trong ba số đó phải là hai số đối nhau."
+ },
+ {
+  "ma": "T2V7.9a@p31",
+  "noi_dung": "Xác định các giá trị của $a,b$ và $c$ để đa thức $P(x)=x^4+ax^2+bx+c$ chia hết cho $(x-3)^3$."
+ },
+ {
+  "ma": "T2V7.9b@p31",
+  "noi_dung": "Xác định các giá trị $a,b$ sao cho đa thức $Q(x)=6x^4-7x^3+ax^2+3x+2$ chia hết cho đa thức $M(x)=x^2-x+b$."
+ },
+ {
+  "ma": "T2V7.10@p32",
+  "noi_dung": "Hãy xác định các số $a,b,c$ để có đẳng thức: $x^3-ax^2+bx-c=(x-a)(x-b)(x-c)$."
+ },
+ {
+  "ma": "T2V7.11@p32",
+  "noi_dung": "Ta biết rằng: (1) $a^3+b^3=(a+b)^3-3ab(a+b)$.\n\nChứng minh rằng (1) $\\Rightarrow$ (2) $\\Rightarrow$ (3) $\\Rightarrow$ (4), với:\n\n(2) $a^3+b^3+c^3=(a+b+c)^3-3(a+b)(b+c)(c+a)$;\n\n(3) Nếu $a+b+c=0$ thì $a^3+b^3+c^3=3abc$;\n\n(4) Nếu $a+b+c+d=0$ thì $a^3+b^3+c^3+d^3=3(ab-cd)(c+d)$."
+ },
+ {
+  "ma": "T2V7.12@p33",
+  "noi_dung": "Cho $a,b,c$ là ba số phân biệt; chứng minh rằng: $a^4(b-c)+b^4(c-a)+c^4(a-b)\\neq 0$."
+ },
+ {
+  "ma": "T2V8.2@p34",
+  "noi_dung": "Phân tích thành nhân tử: $f(x)=x^3+4x^2+4x+3$."
+ },
+ {
+  "ma": "T2V8.3b@p34",
+  "noi_dung": "Phân tích thành nhân tử: $x^3-19x-30$."
+ },
+ {
+  "ma": "T2B.2@p35",
+  "noi_dung": "Tính tổng: $(S-2b)(S-2c)+(S-2c)(S-2a)+(S-2a)(S-2b)$ trong đó $S=a+b+c$."
+ },
+ {
+  "ma": "T2B.3@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(xy+1)^2-(x+y)^2$."
+ },
+ {
+  "ma": "T2B.4@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a+b+c)^2+(a+b-c)^2-4c^2$."
+ },
+ {
+  "ma": "T2B.5@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a(b^2-c^2)-b(a^2-c^2)+c(a^2-b^2)$."
+ },
+ {
+  "ma": "T2B.7@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $ab(a+b)+bc(b+c)+ac(a+c)+2abc$."
+ },
+ {
+  "ma": "T2B.8@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a(b^3-c^3)+b(c^3-a^3)+c(a^3-b^3)$."
+ },
+ {
+  "ma": "T2B.9@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^3(b^2-c^2)+b^3(c^2-a^2)+c^3(a^2-b^2)$."
+ },
+ {
+  "ma": "T2B.11@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(a+b+c)^3-a^3-b^3-c^3$."
+ },
+ {
+  "ma": "T2B.12@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-2x-35$."
+ },
+ {
+  "ma": "T2B.13@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $9x^2+6x-8$."
+ },
+ {
+  "ma": "T2B.14@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4x^2-3x-1$."
+ },
+ {
+  "ma": "T2B.15@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $6x^4-11x^2+3$."
+ },
+ {
+  "ma": "T2B.16@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^2-7xy+12y^2$."
+ },
+ {
+  "ma": "T2B.18@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $2x^3-12x^2+17x-2$."
+ },
+ {
+  "ma": "T2B.19@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3-3x+2$."
+ },
+ {
+  "ma": "T2B.20@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3+3x^2+6x+4$."
+ },
+ {
+  "ma": "T2B.21@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^3+9x^2+26x+24$."
+ },
+ {
+  "ma": "T2B.23@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $3x^3-14x^2+4x+3$."
+ },
+ {
+  "ma": "T2B.26@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $(1+x^2)^2-4x(1-x^2)$."
+ },
+ {
+  "ma": "T2B.27@p35",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4+6x^3+11x^2+6x+1$."
+ },
+ {
+  "ma": "T2B.28@p35",
+  "noi_dung": "Tìm số nguyên $a$ sao cho đa thức $(x+a)(x-5)+2$ phân tích được thành $(x+b)(x+c)$ với $b$, $c$ là các số nguyên."
+ },
+ {
+  "ma": "T2B.29@p36",
+  "noi_dung": "Tìm số nguyên $m$ sao cho $(x+m)(x+5)+3$ phân tích được thành $(x+a)(x+b)$ với $a$, $b$ là các số nguyên."
+ },
+ {
+  "ma": "T2B.30@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $3x^2-8x+4$."
+ },
+ {
+  "ma": "T2B.31@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $3x^3-7x^2+17x-5$."
+ },
+ {
+  "ma": "T2B.32@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $4x^4+81$."
+ },
+ {
+  "ma": "T2B.33@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $64x^4+y^4$."
+ },
+ {
+  "ma": "T2B.34@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^5+x-1$."
+ },
+ {
+  "ma": "T2B.36@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $x^4-6x^3+12x^2-14x+3$."
+ },
+ {
+  "ma": "T2B.37@p36",
+  "noi_dung": "Cho $a+b+c=0$. Rút gọn biểu thức: $M=a^3+b^3+c(a^2+b^2)-abc$."
+ },
+ {
+  "ma": "T2B.38@p36",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $(x-y)^3+(y-z)^3+(z-x)^3$."
+ },
+ {
+  "ma": "T2B.39@p36",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $8(x+y+z)^3-(x+y)^3-(y+z)^3-(z+x)^3$."
+ },
+ {
+  "ma": "T2B.41a@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $ab(a+b)-bc(b+c)+ac(a-c)$."
+ },
+ {
+  "ma": "T2B.41b@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a(b^2+c^2)+b(c^2+a^2)+c(a^2+b^2)+2abc$."
+ },
+ {
+  "ma": "T2B.41e@p36",
+  "noi_dung": "Phân tích đa thức thành nhân tử: $a^3(c-b^2)+b^3(a-c^2)+c^3(b-a^2)+abc(abc-1)$."
+ },
+ {
+  "ma": "T2B.42@p36",
+  "noi_dung": "Chứng minh rằng nếu $a^3+b^3+c^3=3abc$ và $a$, $b$, $c$ là các số dương thì $a=b=c$."
+ },
+ {
+  "ma": "T2B.44@p36",
+  "noi_dung": "Chứng minh rằng nếu $m=a+b+c$ thì $(am+bc)(bm+ac)(cm+ab)=(a+b)^2(b+c)^2(c+a)^2$."
+ },
+ {
+  "ma": "T2B.45@p36",
+  "noi_dung": "Cho $a^2+b^2=1$, $c^2+d^2=1$, $ac+bd=0$. Chứng minh rằng $ab+cd=0$."
+ },
+ {
+  "ma": "T2B.46@p36",
+  "noi_dung": "Rút gọn phân số $\\dfrac{19\\ldots9}{99\\ldots95}$ với $n$ chữ số $9$ ở tử và $n$ chữ số $9$ ở mẫu ($n$ là số tự nhiên)."
+ },
+ {
+  "ma": "T2B.47@p36",
+  "noi_dung": "Tính số trị của phân thức sau bằng cách nhanh nhất: $\\dfrac{a^3-4a^2-a+4}{a^3-7a^2+14a-8}$ với $a=102$."
+ },
+ {
+  "ma": "T2B.48@p36",
+  "noi_dung": "Số nào lớn hơn: $\\dfrac{1981-1980}{1981+1980}$ hay $\\dfrac{1981^2-1980^2}{1981^2+1980^2}$?"
+ },
+ {
+  "ma": "T2B.49@p37",
+  "noi_dung": "Số nào lớn hơn: $\\dfrac{10^{1979}+1}{10^{1980}+1}$ hay $\\dfrac{10^{1980}+1}{10^{1981}+1}$?"
+ },
+ {
+  "ma": "T2B.50@p37",
+  "noi_dung": "Tìm giá trị của $\\dfrac{a+b}{a-b}$ nếu $2a^2+2b^2=5ab$ và $b>a>0$."
+ },
+ {
+  "ma": "T2B.51@p37",
+  "noi_dung": "Chứng minh rằng nếu $c^2+2(ab-ac-bc)=0$; $b\\neq c$; $a+b\\neq c$ thì $\\dfrac{a^2+(a-c)^2}{b^2+(b-c)^2}=\\dfrac{a-c}{b-c}$."
+ },
+ {
+  "ma": "T2B.52@p37",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}$. Chứng minh rằng phân thức trên không phụ thuộc vào $x$, có nghĩa với mọi $x$ và $a$."
+ },
+ {
+  "ma": "T2B.53@p37",
+  "noi_dung": "Chứng minh rằng nếu $x=by+cz$ (1); $y=ax+cz$ (2); $z=ax+by$ (3) và $x+y+z\\neq0$ thì $\\dfrac{1}{1+a}+\\dfrac{1}{1+b}+\\dfrac{1}{1+c}=2$."
+ },
+ {
+  "ma": "T2B.54@p37",
+  "noi_dung": "Thực hiện phép tính: $\\dfrac{1}{(b-c)(a^2+ac-b^2-bc)}+\\dfrac{1}{(c-a)(b^2+ab-c^2-ac)}+\\dfrac{1}{(a-b)(c^2+bc-a^2-ab)}$."
+ }
+]

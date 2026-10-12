@@ -1,0 +1,22 @@
+{
+ "ma_de": "CG-2025",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "CG 2025 · 9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 ý b) nhảy bước: từ \"số quà lúc đến khu D = 35\" sang \"35+5=40\" mà không nói số quà lúc đến D chính là số quà còn lại sau khi khu C phát xong, và 40 là số còn lại nếu chưa kể 5 món lẻ. Đã thêm câu nối (đáp số, các phép tính không đổi: 35, 40, 4/9, 90, 180 đều tính lại đúng).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "CG 2025 · 10",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Ý b) đề hỏi lửng \"Làm thế nào để lấy được 6 thẻ ghi số giống nhau?\". Người soạn hiểu là \"lấy ít nhất bao nhiêu thẻ (không nhìn số) thì chắc chắn có 6 thẻ cùng số\" = 66 (trường hợp xấu nhất: 15 thẻ của các loại 1–5 thẻ + 10 loại x 5 thẻ = 65, thêm 1). Tính lại: 15+50+1=66, đúng. Đây là cách hiểu hợp lí nhất, nhưng đề không nói rõ \"chắc chắn/ít nhất\"; nếu đề gốc thật sự hỏi cách lấy khi được nhìn số thì đáp số khác (6 thẻ cùng một số từ 7 đến 16). Giữ nguyên, chờ CEO xác nhận như ghi_chu_nghi.",
+   "da_sua": false
+  }
+ ]
+}

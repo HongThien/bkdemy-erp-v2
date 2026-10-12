@@ -1,0 +1,10 @@
+{
+ "bo": [],
+ "nghi": [
+  {
+   "ma": "C4.1b@p286",
+   "voi": "T18T010301049",
+   "de": "Cho $a,b,c$ thỏa mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$.\n\nTính giá trị biểu thức $M=\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}$."
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "ma_de": "ARC-2020-NC",
+ "so_cau": 20,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "ARC 2020-NC · 18",
+   "muc": "sai",
+   "loai": "kiến thức",
+   "mo_ta": "Phần 1 (Bước 1) và Phần 2 tự đặt chữ \"c\" làm ẩn rồi lập đẳng thức c:6=1,5 (luật k5T §1 cấm tự đặt ẩn mới). Đã viết lại bằng ngôn ngữ \"lớp\": hình nhỏ bên trong có (số lớp) lớp, số hình sơn 1 mặt bằng 6 lớp, nên số lớp = 6×1,5 = 9; cạnh lớn 9+2 = 11, thể tích 1331 (đáp số không đổi).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2020-NC · 19",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 rút gọn biểu thức chữ a+a×2+(a×2+1)+5 = a×5+6 (gom hạng tử chữ, quá tầm lớp 5). Đã thay bằng liệt kê a = 1; 2; 3; 4, tính trực tiếp từng tổng chữ số (a=2 loại luôn vì c trùng d).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2020-NC · 16",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ba dòng \"… nên 100% − x% = y% số trang còn lại … là: …\" đọc rất khó (HS phải tự bù bước). Đã viết lại: sau khi đọc x% còn y% chưa đọc; đọc thêm n trang thì còn m trang; vậy y% là m+n. Số liệu không đổi.",
+   "da_sua": true
+  }
+ ]
+}

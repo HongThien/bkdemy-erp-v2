@@ -50,8 +50,8 @@ const MUA = [
 // ---------- CON VẬT NUÔI (spec §5.4) ----------
 // an: {món: số cần cho 1 con 1 ngày} · ra: sản phẩm sáng hôm sau · phan: tỉ lệ ra thêm 1 phân bón · toiDa: [[cấp, số con tối đa]]
 const VAT = {
-  ga: { ten: 'Gà', cap: 4, gia: 30, an: { lua_mi: 1, ngo: 1 }, ra: 'trung', phan: 0.3, toiDa: [[4, 2], [8, 4], [12, 6]] },   // ~tuần 2
-  bo: { ten: 'Bò', cap: 10, gia: 80, an: { ngo: 2, bi_ngo: 1 }, ra: 'sua', phan: 0.5, toiDa: [[10, 1], [14, 2], [18, 3]] },  // ~tuần 5
+  ga: { ten: 'Gà', cap: 4, gia: 30, diem: 10, an: { lua_mi: 1, ngo: 1 }, ra: 'trung', phan: 0.3, toiDa: [[4, 2], [8, 4], [12, 6]] },   // ~tuần 2
+  bo: { ten: 'Bò', cap: 10, gia: 80, diem: 25, an: { ngo: 2, bi_ngo: 1 }, ra: 'sua', phan: 0.5, toiDa: [[10, 1], [14, 2], [18, 3]] },  // ~tuần 5
 };
 for (const k in VAT) VAT[k].id = k;
 
@@ -86,9 +86,10 @@ I.dong_xu_co = { id: 'dong_xu_co', ten: 'Đồng xu cổ', loai: 'quy', gia: 50 
 
 // ---------- THÚ CƯNG (spec §5.8): mỗi con 1 lần/ngày, +5 thiện cảm, mốc 20/50/100 ----------
 const THU = {
-  cho:  { ten: 'Chó', cap: 1, viec: 'Xoa đầu' },
-  meo:  { ten: 'Mèo', cap: PHA >= 2 ? 5 : SAU, viec: 'Vuốt ve' },
-  chim: { ten: 'Chim', cap: PHA >= 2 ? 7 : SAU, viec: 'Cho ăn', an: 'lua_mi' },   // cho chim ăn tốn 1 lúa mì
+  // diem = giá mua bằng ĐIỂM HỌC TẬP (chỉ khi chơi theo tài khoản — Thùy 12/10 "mua thú cưng nữa"); capMua = cấp tối thiểu để mua (SAU = chưa bán ở pha này)
+  cho:  { ten: 'Chó', cap: 1, viec: 'Xoa đầu', diem: 15, capMua: 1 },
+  meo:  { ten: 'Mèo', cap: PHA >= 2 ? 5 : SAU, viec: 'Vuốt ve', diem: 30, capMua: PHA >= 2 ? 5 : SAU },
+  chim: { ten: 'Chim', cap: PHA >= 2 ? 7 : SAU, viec: 'Cho ăn', an: 'lua_mi', diem: 45, capMua: PHA >= 2 ? 7 : SAU },   // cho chim ăn tốn 1 lúa mì
 };
 
 // ---------- CẤP NÔNG TRẠI (điểm nhà nông — KHÔNG gọi EXP để khỏi lẫn với EXP ra xu) ----------
@@ -138,11 +139,13 @@ const LUAT = {
   sauTiLe: 0.25, sauTru: 0.2,    // mỗi ngày cây đang lớn có 25% bị sâu; sâu còn lúc thu: −20%/con
   roiGoc: 0.05, roiBon: 0.15, roiGiup: 0.10,   // tỉ lệ rơi vật phẩm bất ngờ: thu 1 ô · thu ô đã bón · giúp bạn 1 lượt
   roiLoai: PHA >= 2 ? [['trangtri', 0.6], ['phan_bon', 0.3], ['dong_xu_co', 0.1]] : [['phan_bon', 0.8], ['dong_xu_co', 0.2]],
+  giaPhanDiem: 3,                // giá phân bón khi chơi theo tài khoản (điểm học tập) ≈ giaPhan ÷ 3,2 như giá hạt
   giaPhan: 10,                   // mua phân bón ở chợ (EXP) — CEO 30/09: tác dụng mạnh thì phải đắt; chỉ đáng bón cho cây đắt / lâu ngày
   // điểm chăm chỉ (spec §3.3 — CEO: lượt 10 câu ≥70%, điểm = số câu đúng, trần 20–30 câu/ngày)
   nguongDat: 7, tranDiemNgay: 30,
   // tiền (spec §3.2 — CEO: trần xu nông trại trả ra 30/tháng, mùa đầu 45)
   tranXuThang: 30, tranXuThangMuaDau: 45,
+  tranXuThangOnline: 20,         // Thùy 12/10: chơi theo tài khoản (xu thật) — trần 20 xu/tháng nếu chơi đầy đủ, mọi mùa như nhau
   tranXuTieuThang: 5,            // CEO 30/09: "chỉ nên cho HS dùng 5 xu" — xu đổi ra để mua bịch/đồ mỗi tháng (muốn thêm: trả bằng điểm = phải học)
   tranXuTuan: null,              // BỎ 30/09 (thay bằng giới hạn hạt mỗi ngày = số ô). Đặt số > 0 để bật lại trần xu tiêu mỗi tuần
   // sang vườn bạn (spec §5.7 — CEO: trộm 3 / giúp 5)

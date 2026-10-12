@@ -74,8 +74,13 @@ export function OpsBack({ onClick, dark }: { onClick: () => void; dark?: boolean
 // `wash`: phủ thêm lớp màu tone lên ảnh (đậm ở đỉnh, nhạt dần) để giấu chữ/avatar TĨNH baked sẵn trong
 // ảnh (khác dữ liệu THẬT — tên, avatar, trạng thái — HTML vẽ đè lên trên); ảnh KHÔNG cần sửa pixel, tránh
 // artefact khi tự xoá vùng rộng. Report/Prep/Test (nội dung baked ĐÃ ĐÚNG, không có dữ liệu động) → không wash.
-export function OpsHero({ tone, title, onBack, character, characterSize = 92, bubble, right, children, bgImage, bgAspect, bgFill, wash }: {
-  tone: OpsTone; title?: string; onBack?: () => void; character?: string; characterSize?: number; bubble?: string; right?: ReactNode; children?: ReactNode; bgImage?: string; bgAspect?: number; bgFill?: boolean; wash?: boolean
+// ⭐ MÁY TÍNH (lg, ≥1024px — Thùy 10/10 "app ops chưa có giao diện cho máy tính"): header ẢNH (bgFill) cao theo
+// tỉ lệ × bề ngang ⇒ ở màn 1440px nó cao 400–700px, nuốt cả màn. Từ lg trở lên header ảnh thành 1 BANNER có
+// bề ngang giới hạn, bo góc, canh giữa (`khung` — màn nào đặt banner trong cột riêng thì truyền class khác).
+// Header gradient (không ảnh) vẫn trải ngang vì chiều cao của nó theo nội dung, không theo bề ngang.
+export const OPS_KHUNG_BANNER = 'lg:mx-auto lg:mt-4 lg:w-full lg:max-w-[480px] lg:shrink-0 lg:rounded-3xl'
+export function OpsHero({ tone, title, onBack, character, characterSize = 92, bubble, right, children, bgImage, bgAspect, bgFill, wash, khung }: {
+  tone: OpsTone; title?: string; onBack?: () => void; character?: string; characterSize?: number; bubble?: string; right?: ReactNode; children?: ReactNode; bgImage?: string; bgAspect?: number; bgFill?: boolean; wash?: boolean; khung?: string
 }) {
   const c = OPS[tone]
   // `bgFill`: ép chiều cao hero ĐÚNG tỉ lệ ảnh (box-sizing border-box) — dùng khi children có chữ/hình
@@ -84,7 +89,7 @@ export function OpsHero({ tone, title, onBack, character, characterSize = 92, bu
   // lỗi này, CEO báo "Tủ quà bị lỗi phần header"). Mặc định: ảnh chỉ ghim SÁT ĐỈNH theo đúng tỉ lệ của
   // nó, hero cao theo NỘI DUNG (children) như bình thường — ảnh không co giãn theo, chỉ đứng yên phía sau.
   return (
-    <div className="relative overflow-hidden px-3 pb-3" style={{
+    <div className={`relative overflow-hidden px-3 pb-3 ${bgImage && bgFill ? (khung ?? OPS_KHUNG_BANNER) : ''}`} style={{
       paddingTop: 'max(0.6rem, env(safe-area-inset-top))', background: bgImage ? undefined : c.grad,
       ...(bgImage && bgFill ? { aspectRatio: `1 / ${bgAspect ?? 0.43}`, boxSizing: 'border-box' as const } : {}),
     }}>
@@ -106,7 +111,7 @@ export function OpsHero({ tone, title, onBack, character, characterSize = 92, bu
         <span className="pointer-events-none absolute right-24 top-10 text-[10px] text-white/40">✦</span>
       </>}
       {(title || onBack || right) && (
-        <div className="relative mx-auto flex max-w-[760px] items-center gap-2">
+        <div className={`relative mx-auto flex max-w-[760px] items-center gap-2 ${bgImage ? '' : 'lg:max-w-[1100px]'}`}>
           {onBack && <OpsBack onClick={onBack} />}
           {title && <p className="min-w-0 flex-1 truncate text-[19px] font-extrabold text-white">{title}</p>}
           {!title && <div className="min-w-0 flex-1" />}

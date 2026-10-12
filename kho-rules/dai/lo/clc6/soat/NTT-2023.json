@@ -1,0 +1,22 @@
+{
+ "ma_de": "NTT-2023",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2023 · 3",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Chú ý ở Phần 1 viết \"Phương án C cũng có số 200\" ⇒ lộ giá trị số của đáp số cuối (200). Đã thay bằng chú ý chỉ nói về đơn vị, không nêu số.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2023 · 8",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Hình đề: hai đường tròn ĐẦY ĐỦ tâm D, C; phần gạch chéo là CẢ thấu kính giao của hai đường tròn (kể cả nửa dưới DC, ngoài hình chữ nhật); phần tô đậm là phần HCN nằm ngoài cả hai hình tròn. Bản soạn hiểu gạch chéo = chỉ phần giao nằm TRONG hình chữ nhật (thừa bù thiếu: 4×CD = 2 phần tư hình tròn ⇒ CD = 6,28 cm). Hiểu đúng theo hình (gạch chéo = cả thấu kính) thì dữ kiện thành: HCN − 2·(¼ hình tròn) + ½·thấu kính = thấu kính ⇒ 4·CD = 25,12 + ½·S_thấu kính, CD ≈ 6,74 cm (phương trình siêu việt, không giải được ở lớp 5). Cách hiểu 6,28 là cách duy nhất ra số tròn và khớp tỉ lệ hình vẽ gần nhất (CD/AD đo trên hình ≈ 1,5 ≈ 6,28/4 = 1,57; 6,74/4 = 1,69 lệch hơn). Lời giải Phần 2 nói \"phần gạch chéo bị tính hai lần\" — đúng theo cách hiểu đã nêu nhưng mâu thuẫn nhẹ với hình (gạch chéo kéo xuống dưới DC). Không phân xử được ⇒ báo CEO; nếu nguồn/đáp án sách = 6,28 thì giữ nguyên, có thể thêm ghi chú hiểu đề vào Phần 2 (\"phần gạch chéo trong hình chữ nhật\").",
+   "da_sua": false
+  }
+ ]
+}

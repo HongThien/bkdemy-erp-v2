@@ -1,0 +1,29 @@
+{
+ "ma_de": "ARC-2020-CB",
+ "so_cau": 17,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "ARC 2020-CB · 10",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết (8-2)×(5-1), (4-2)×(5-1)... không nói vì sao bớt 2 / bớt 1 (bỏ cột mép, bỏ hàng trên cùng, giữ hàng sát đất) nên HS phải tự bù bước. Đã thêm mệnh đề giải thích vào từng dòng; số liệu và đáp số 76 giữ nguyên (đã tính lại bằng code đếm từng khối: 76).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2020-CB · 5",
+   "muc": "hoi",
+   "loai": "cách chuẩn",
+   "mo_ta": "Đúng toán (38; 8×38+14=318=số mới; tính lại bằng code duy nhất a=3,b=8). Nhưng k5T §1 chỉ cho phân tích theo hàng với số \"đề cho sẵn cấu tạo số\" ($\\overline{ab}$ có trong đề); ở đây đề chỉ nói \"số có hai chữ số\", người soạn tự \"Gọi số ban đầu là ab\" rồi lập a×20=b×7+4 (bớt hai vế). Bảng §2b chưa có dạng \"chèn chữ số vào GIỮA\" (khác thêm bên trái/phải = tỉ số). Không có cách tiểu học không dùng chữ nào gọn hơn, nên giữ; CEO nên chốt có chấp nhận cách này cho dạng chèn giữa không (người soạn đã ghi ghi_chu_nghi).",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "ARC 2020-CB · 17",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề lửng \"tăng thêm ... lần và ... đơn vị\". Đáp số 10 lần và 9 đơn vị (số mới = số cũ×10+9) là cách nói quen thuộc của sách (\"tăng lên 10 lần và 9 đơn vị\"); đọc chặt \"tăng thêm\" thì số mới − số cũ = số cũ×9+9 ⇒ \"9 lần và 9 đơn vị\". Tôi nghiêng về 10 lần nhưng không phân xử được; ghi_chu_nghi của người soạn đã nêu đủ hai cách hiểu — để CEO chốt.",
+   "da_sua": false
+  }
+ ]
+}

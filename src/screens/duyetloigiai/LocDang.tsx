@@ -21,11 +21,11 @@ export function useLocDang<T>(rows: T[], layDang: (r: T) => { ma: string; ten?: 
   return { opts, loc, dangChon, setChon, reset: () => setChon('all'), tong: rows.length }
 }
 
-export function ChonDang({ opts, value, onChange, tong }: { opts: DangOpt[]; value: string; onChange: (v: string) => void; tong: number }) {
+export function ChonDang({ opts, value, onChange, tong, nhan = 'Dạng' }: { opts: DangOpt[]; value: string; onChange: (v: string) => void; tong: number; nhan?: string }) {
   if (opts.length <= 1) return null // 1 dạng thì không có gì để lọc
   return (
     <label className="flex items-center gap-1.5 text-[12px] text-slate-500">
-      Dạng
+      {nhan}
       <select value={value} onChange={(e) => onChange(e.target.value)}
         className="max-w-[420px] rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px] text-slate-700 focus:border-violet-400 focus:outline-none">
         <option value="all">Tất cả dạng ({tong})</option>

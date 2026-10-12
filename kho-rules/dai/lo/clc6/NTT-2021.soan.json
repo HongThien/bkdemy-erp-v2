@@ -1,0 +1,180 @@
+[
+ {
+  "ma_nguon": "NTT 2021 · P1.1",
+  "dap_an": "$2021$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích đầu có chung thừa số $55$, nên gộp lại bằng cách nhân một tổng với một số; tổng thu được lại trùng đúng với thừa số $20,21$ của tích thứ ba, nên tiếp tục gộp thêm một lần nữa cho đến khi chỉ còn một phép nhân đơn giản.\n\n**Bước 1.** Nhìn hai tích đầu $20\\times 55$ và $0,21\\times 55$ thì thấy cùng có thừa số $55$, nên đặt $55$ ra ngoài và cộng hai thừa số còn lại trong ngoặc.\n\n**Bước 2.** Tính tổng trong ngoặc rồi so sánh với tích thứ ba: số vừa tìm được chính là thừa số $20,21$ ở tích cuối, đó là dấu hiệu để gộp tiếp.\n\n**Bước 3.** Đặt thừa số chung $20,21$ ra ngoài, trong ngoặc là tổng hai thừa số $55$ và $45$ còn lại.\n\n**Bước 4.** Cộng hai số trong ngoặc được một số tròn trăm, rồi nhân số thập phân với số tròn trăm đó bằng cách dịch dấu phẩy sang phải.\n\n**Chú ý:** Không nhân từng tích ra rồi mới cộng, vì các số rất xấu và dễ tính sai.\n\n**Phần 2. Trình bày**\n\n$20\\times 55+0,21\\times 55+20,21\\times 45$\n\n$=(20+0,21)\\times 55+20,21\\times 45$\n\n$=20,21\\times 55+20,21\\times 45$\n\n$=20,21\\times(55+45)$\n\n$=20,21\\times 100$\n\n$=2021$"
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.2",
+  "dap_an": "$20$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bạn đi ngược chiều, xuất phát cùng lúc và đi đến khi gặp nhau, nên mỗi giờ khoảng cách giữa hai bạn rút ngắn đi đúng bằng tổng hai vận tốc. Tìm được thời gian đi đến lúc gặp nhau thì tìm được quãng đường mỗi bạn đã đi.\n\n**Bước 1.** Tính tổng vận tốc của hai bạn: đó là quãng đường mà hai bạn cùng đi được sau mỗi giờ.\n\n**Bước 2.** Cả quãng đường $AB$ do hai bạn cùng đi hết khi gặp nhau, nên lấy độ dài $AB$ chia cho tổng vận tốc để tìm thời gian đến lúc gặp nhau.\n\n**Bước 3.** Điểm $C$ là chỗ gặp nhau, còn $AC$ là đoạn đường bạn Hòa đã đi từ $A$, nên lấy vận tốc của Hòa nhân với thời gian vừa tìm.\n\n**Chú ý:** Vận tốc hai bạn khác nhau nên chỗ gặp nhau không nằm chính giữa $AB$; đừng lấy $AB$ chia $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Quãng đường $AB$ dài $36$ km; Hòa đi từ $A$ với vận tốc $10$ km/giờ; Bình đi từ $B$ với vận tốc $8$ km/giờ; hai bạn gặp nhau ở $C$)\n\nMỗi giờ hai bạn cùng đi được: $10+8=18$ (km)\n\nThời gian từ lúc xuất phát đến lúc hai bạn gặp nhau là: $36:18=2$ (giờ)\n\nQuãng đường $AC$ là: $10\\times 2=20$ (km)\n\nĐáp số: $20$ km",
+  "so_do_mo_ta": {
+   "loai": "chuyen_dong",
+   "tieu_de": "Hòa và Bình gặp nhau ở C",
+   "diem": [
+    {
+     "ten": "A",
+     "x": 0
+    },
+    {
+     "ten": "C",
+     "x": 20,
+     "ghi": "gặp nhau"
+    },
+    {
+     "ten": "B",
+     "x": 36
+    }
+   ],
+   "di": [
+    {
+     "tu": 0,
+     "den": 20,
+     "nhan": "10 km/giờ"
+    },
+    {
+     "tu": 36,
+     "den": 20,
+     "nhan": "8 km/giờ"
+    }
+   ],
+   "khoang": [
+    {
+     "tu": 0,
+     "den": 36,
+     "nhan": "36 km"
+    },
+    {
+     "tu": 0,
+     "den": 20,
+     "nhan": "? km"
+    }
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.3",
+  "dap_an": "$165\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mảnh đất chia làm hai phần là phần làm nhà và phần làm vườn, nên diện tích đất làm vườn bằng diện tích cả mảnh đất trừ đi phần làm nhà. Phần làm nhà là $45\\%$ của diện tích cả mảnh đất, nên lấy diện tích nhân với $45\\%$.\n\n**Bước 1.** Tính diện tích cả mảnh đất hình chữ nhật bằng cách lấy chiều dài nhân với chiều rộng.\n\n**Bước 2.** Tìm diện tích làm nhà: muốn tìm $45\\%$ của một số thì lấy số đó nhân với $45\\%$.\n\n**Bước 3.** Lấy diện tích cả mảnh đất trừ đi diện tích làm nhà để được diện tích đất làm vườn.\n\n**Chú ý:** Đề hỏi diện tích làm vườn chứ không hỏi diện tích làm nhà, đừng dừng ở bước tìm phần làm nhà.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $20\\times 15=300$ ($\\text{m}^2$)\n\nDiện tích đất làm nhà là: $300\\times 45\\%=135$ ($\\text{m}^2$)\n\nDiện tích đất làm vườn là: $300-135=165$ ($\\text{m}^2$)\n\nĐáp số: $165\\ \\text{m}^2$"
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.4",
+  "dap_an": "$27\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình lập phương có $6$ mặt là $6$ hình vuông bằng nhau, nên diện tích toàn phần chia cho $6$ là diện tích một mặt. Từ diện tích một mặt tìm được cạnh, rồi tính thể tích bằng cạnh nhân cạnh nhân cạnh.\n\n**Bước 1.** Lấy diện tích toàn phần chia cho $6$ để biết diện tích của một mặt hình vuông.\n\n**Bước 2.** Tìm cạnh hình lập phương: cạnh là số mà nhân với chính nó thì bằng diện tích một mặt vừa tìm.\n\n**Bước 3.** Tính thể tích hình lập phương bằng cách lấy cạnh nhân cạnh nhân cạnh.\n\n**Chú ý:** Diện tích tính bằng $\\text{cm}^2$, còn thể tích tính bằng $\\text{cm}^3$; đừng ghi nhầm đơn vị.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích một mặt của hình lập phương là: $54:6=9$ ($\\text{cm}^2$)\n\nVì $3\\times 3=9$ nên cạnh hình lập phương là $3$ cm.\n\nThể tích hình lập phương là: $3\\times 3\\times 3=27$ ($\\text{cm}^3$)\n\nĐáp số: $27\\ \\text{cm}^3$"
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.5",
+  "dap_an": "$25$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho hai phân số bằng nhau của số nam và số nữ. Chia số nam thành các phần bằng nhau rồi chọn phần của số nữ sao cho hai phân số đó cùng là một số phần như nhau, bài toán trở thành bài tổng – tỉ với tổng là $40$ học sinh.\n\n**Bước 1.** Chia số học sinh nam thành $5$ phần bằng nhau để xem $\\dfrac{2}{5}$ số nam gồm mấy phần.\n\n**Bước 2.** Vì $\\dfrac{2}{5}$ số nam bằng $\\dfrac{2}{3}$ số nữ nên $\\dfrac{2}{3}$ số nữ cũng gồm chừng ấy phần bằng nhau; từ đó suy ra $\\dfrac{1}{3}$ số nữ là mấy phần và cả số nữ gồm mấy phần.\n\n**Bước 3.** Cộng số phần của số nam và số nữ để được tổng số phần bằng nhau; $40$ học sinh ứng với tổng số phần này.\n\n**Bước 4.** Chia $40$ cho tổng số phần để tìm giá trị một phần, rồi nhân với số phần của số học sinh nam.\n\n**Chú ý:** Các phần của số nam và số nữ phải bằng nhau thật sự thì mới cộng được; đó là lý do phải so sánh $\\dfrac{2}{5}$ số nam với $\\dfrac{2}{3}$ số nữ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChia số học sinh nam thành $5$ phần bằng nhau thì $\\dfrac{2}{5}$ số nam là $2$ phần.\n\nVì $\\dfrac{2}{5}$ số nam bằng $\\dfrac{2}{3}$ số nữ nên $\\dfrac{2}{3}$ số nữ cũng là $2$ phần, suy ra $\\dfrac{1}{3}$ số nữ là $1$ phần, số nữ là $3$ phần như thế.\n\nTa có sơ đồ:\n\n(Số nam 5 phần; số nữ 3 phần; tổng 40 học sinh)\n\nTổng số phần bằng nhau là: $5+3=8$ (phần)\n\nGiá trị của một phần là: $40:8=5$ (học sinh)\n\nSố học sinh nam là: $5\\times 5=25$ (học sinh)\n\nĐáp số: $25$ học sinh",
+  "so_do_mo_ta": {
+   "tieu_de": "Số học sinh lớp 5A",
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Số nam",
+     "phan": 5
+    },
+    {
+     "nhan": "Số nữ",
+     "phan": 3
+    }
+   ],
+   "tong": "40 học sinh",
+   "dau_hoi": [
+    "Số nam"
+   ]
+  }
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.6",
+  "dap_an": "$15$ giờ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi cả công việc là $1$ thì mỗi giờ một đội làm được một phần của công việc. Phần việc cả hai đội cùng làm trong một giờ bằng phần việc đội A làm cộng phần việc đội B làm, nên phần việc đội B làm trong một giờ là hiệu của hai phần việc đã biết.\n\n**Bước 1.** Coi cả công việc là $1$ và tính xem mỗi giờ đội A làm được bao nhiêu phần công việc.\n\n**Bước 2.** Tính tương tự để biết mỗi giờ cả hai đội cùng làm được bao nhiêu phần công việc.\n\n**Bước 3.** Lấy phần việc của cả hai đội trong một giờ trừ đi phần việc của đội A để được phần việc đội B làm trong một giờ; hai phân số khác mẫu nên phải quy đồng trước khi trừ.\n\n**Bước 4.** Cả công việc là $1$, nên chia $1$ cho phần việc đội B làm trong một giờ để biết đội B làm một mình hết bao nhiêu giờ.\n\n**Chú ý:** Không lấy $10-6$ để tính thời gian của đội B; thời gian không cộng trừ được như vậy, chỉ có phần việc làm trong một giờ mới cộng trừ được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCoi cả công việc là $1$.\n\nMỗi giờ đội A làm được: $1:10=\\dfrac{1}{10}$ (công việc)\n\nMỗi giờ cả hai đội làm được: $1:6=\\dfrac{1}{6}$ (công việc)\n\nMỗi giờ đội B làm được: $\\dfrac{1}{6}-\\dfrac{1}{10}=\\dfrac{5}{30}-\\dfrac{3}{30}=\\dfrac{2}{30}=\\dfrac{1}{15}$ (công việc)\n\nĐội B làm một mình xong công việc trong: $1:\\dfrac{1}{15}=15$ (giờ)\n\nĐáp số: $15$ giờ",
+  "ghi_chu_nghi": "nhiều cách: (1) phần việc làm trong một giờ (cách đã chọn, bám quan hệ gốc: phần việc hai đội = phần việc A + phần việc B); (2) coi cả công việc là 30 phần (BCNN của 10 và 6) rồi tính số phần mỗi đội làm trong một giờ. Bảng §2b chưa có dòng cho dạng \"công việc chung\" (CĐ3) — xin CEO chốt."
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.7",
+  "dap_an": "$30\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tam giác có chung đỉnh và hai đáy nằm trên cùng một đường thẳng thì tỉ số diện tích bằng tỉ số hai đáy. Đi từng bước: từ tam giác $ABC$ sang tam giác $ABE$ (đổi đáy $BC$ thành $BE$), rồi từ tam giác $ABE$ sang tam giác $ADE$ (đổi đáy $AB$ thành $AD$).\n\n**Bước 1.** Từ $AB=BD$ suy ra $AD$ gấp $AB$ mấy lần; từ $BC=\\dfrac{1}{2}\\times CE$ suy ra $CE$ gấp $BC$ mấy lần, rồi tìm $BE$ gấp $BC$ mấy lần.\n\n**Bước 2.** So sánh tam giác $ABE$ với tam giác $ABC$: hai tam giác có chung đường cao hạ từ $A$ xuống $BE$ nên tỉ số diện tích bằng tỉ số $BE$ và $BC$; từ đó tính diện tích tam giác $ABE$.\n\n**Bước 3.** So sánh tam giác $ADE$ với tam giác $ABE$: hai tam giác có chung đường cao hạ từ $E$ xuống $AD$ nên tỉ số diện tích bằng tỉ số $AD$ và $AB$.\n\n**Bước 4.** Nhân diện tích tam giác $ABE$ với tỉ số vừa tìm để được diện tích tam giác $ADE$.\n\n**Chú ý:** Đoạn $BE$ gồm cả $BC$ và $CE$, không phải chỉ có $CE$; nhớ cộng cả hai đoạn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo đề bài, $B$ nằm giữa $A$ và $D$, $C$ nằm giữa $B$ và $E$.\n\nVì $AB=BD$ nên $AD=2\\times AB$.\n\nVì $BC=\\dfrac{1}{2}\\times CE$ nên $CE=2\\times BC$, do đó $BE=BC+CE=3\\times BC$.\n\nTam giác $ABE$ và tam giác $ABC$ có chung đường cao hạ từ $A$ xuống $BE$, suy ra $\\dfrac{S_{ABE}}{S_{ABC}}=\\dfrac{BE}{BC}=3$\n\nDiện tích tam giác $ABE$ là: $5\\times 3=15$ ($\\text{cm}^2$)\n\nTam giác $ADE$ và tam giác $ABE$ có chung đường cao hạ từ $E$ xuống $AD$, suy ra $\\dfrac{S_{ADE}}{S_{ABE}}=\\dfrac{AD}{AB}=2$\n\nDiện tích tam giác $ADE$ là: $15\\times 2=30$ ($\\text{cm}^2$)\n\nĐáp số: $30\\ \\text{cm}^2$",
+  "ghi_chu_nghi": "Đề không có hình. Hiểu \"kéo dài AB ra một đoạn BD = AB\" là D nằm trên tia AB, B ở giữa A và D; \"kéo dài BC ra một đoạn\" là E nằm trên tia BC, C ở giữa B và E, với BC = CE/2 (CE = 2·BC, BE = 3·BC). Theo cách hiểu này diện tích ADE = 30 cm²."
+ },
+ {
+  "ma_nguon": "NTT 2021 · P1.8",
+  "dap_an": "Hình chữ nhật dài $20$ dm, rộng $1$ dm (chu vi $42$ dm)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi miếng bìa có diện tích $1\\ \\text{dm}^2$, nên hình chữ nhật xếp bằng tất cả các miếng bìa có diện tích bằng số miếng bìa. Mỗi cách xếp ứng với một cách viết diện tích đó thành tích của chiều dài và chiều rộng, nên phải liệt kê hết các cách viết rồi so sánh chu vi.\n\n**Bước 1.** Tính diện tích hình chữ nhật xếp được từ tất cả các miếng bìa, mỗi miếng bìa có diện tích $1\\ \\text{dm}^2$.\n\n**Bước 2.** Chiều dài và chiều rộng là số đo nguyên theo cạnh các miếng bìa, nên liệt kê các cách viết diện tích đó thành tích của hai số tự nhiên (chiều dài không bé hơn chiều rộng).\n\n**Bước 3.** Với mỗi hình chữ nhật tìm được, tính chu vi bằng cách lấy tổng chiều dài và chiều rộng nhân với $2$.\n\n**Bước 4.** So sánh các chu vi vừa tính để chọn hình có chu vi lớn nhất.\n\n**Chú ý:** Phải liệt kê đủ mọi cách xếp, không bỏ sót hình nào, rồi mới so sánh chu vi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích hình chữ nhật xếp được là: $1\\times 1\\times 20=20$ ($\\text{dm}^2$)\n\nVì $20=1\\times 20=2\\times 10=4\\times 5$ nên có $3$ hình chữ nhật có thể xếp được.\n\nHình chữ nhật dài $20$ dm, rộng $1$ dm có chu vi: $(20+1)\\times 2=42$ (dm)\n\nHình chữ nhật dài $10$ dm, rộng $2$ dm có chu vi: $(10+2)\\times 2=24$ (dm)\n\nHình chữ nhật dài $5$ dm, rộng $4$ dm có chu vi: $(5+4)\\times 2=18$ (dm)\n\nVì $42>24>18$ nên hình chữ nhật có chu vi lớn nhất là hình dài $20$ dm, rộng $1$ dm.\n\nĐáp số: Hình chữ nhật dài $20$ dm, rộng $1$ dm (chu vi $42$ dm)",
+  "ghi_chu_nghi": "Đề hỏi \"hình nào có chu vi lớn nhất\" nên đáp án là hình 20 dm × 1 dm, ghi kèm chu vi 42 dm. Nếu nguồn đối chiếu chỉ ghi \"42 dm\" thì hai đáp án vẫn cùng một kết quả."
+ },
+ {
+  "ma_nguon": "NTT 2021 · P2.1",
+  "dap_an": "Tiền vốn: $2700000$ đồng; số quả trứng bị vỡ: $10$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá vốn tính theo cả $1000$ quả mua vào, không phụ thuộc vào việc quả nào bị vỡ. Lãi $10\\%$ so với giá vốn nghĩa là số tiền thu về bằng $110\\%$ số tiền vốn; biết số tiền thu về và giá bán một quả thì tìm được số quả bán được, từ đó tìm số quả bị vỡ.\n\n**Bước 1.** Giá trứng cho theo chục quả nên đổi $1000$ quả ra số chục, rồi nhân với giá một chục để được số tiền vốn.\n\n**Bước 2.** Người bán lãi $10\\%$ so với vốn nên tiền thu về bằng $100\\%+10\\%$ của tiền vốn; tìm $110\\%$ của số tiền vốn bằng cách nhân với $110\\%$.\n\n**Bước 3.** Lấy số tiền thu về chia cho giá bán một quả để biết số quả trứng đã bán được.\n\n**Bước 4.** Số quả bị vỡ bằng số quả mua vào trừ số quả đã bán được.\n\n**Chú ý:** Giá vốn là của $1000$ quả mua vào, không phải chỉ của số quả còn lại sau khi vỡ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố chục quả trứng đã mua là: $1000:10=100$ (chục)\n\nSố tiền vốn là: $27000\\times 100=2700000$ (đồng)\n\nSố tiền thu về so với tiền vốn bằng: $100\\%+10\\%=110\\%$\n\nSố tiền bán trứng thu được là: $2700000\\times 110\\%=2970000$ (đồng)\n\nSố quả trứng bán được là: $2970000:3000=990$ (quả)\n\nSố quả trứng bị vỡ là: $1000-990=10$ (quả)\n\nĐáp số: Tiền vốn: $2700000$ đồng; số quả trứng bị vỡ: $10$ quả"
+ },
+ {
+  "ma_nguon": "NTT 2021 · P2.2",
+  "dap_an": "a) $9$ giờ $24$ phút; b) $70$ km",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) là bài chuyển động đều: thời gian bằng quãng đường chia cho vận tốc. Ý b) chỉ có đoạn $CB$ khác dự kiến (vận tốc $60$ km/giờ thay vì $50$ km/giờ); đi nhanh hơn nên ngoài $5$ phút sửa xe còn bù thêm $5$ phút sớm, và trên cùng một quãng đường thì thời gian tỉ lệ nghịch với vận tốc.\n\n**Bước 1.** Ý a): lấy quãng đường $AB$ chia cho vận tốc dự định để biết thời gian đi, đổi phần thập phân của giờ ra phút rồi cộng vào giờ xuất phát.\n\n**Bước 2.** Ý b): đoạn $AC$ vẫn đi với vận tốc $50$ km/giờ như dự định, nên chỉ có đoạn $CB$ làm thời gian thay đổi.\n\n**Bước 3.** Xe dừng sửa $5$ phút mà vẫn đến sớm $5$ phút, nghĩa là đoạn $CB$ đi với vận tốc mới nhanh hơn đi với vận tốc cũ một số phút bằng tổng hai lần $5$ phút đó.\n\n**Bước 4.** Trên cùng đoạn $CB$, vận tốc $50$ km/giờ so với $60$ km/giờ có tỉ số $5:6$ nên thời gian đi tỉ lệ nghịch là $6:5$; xem hai thời gian đó là $6$ phần và $5$ phần, hiệu của chúng ứng với số phút vừa tìm.\n\n**Bước 5.** Tìm giá trị một phần rồi suy ra thời gian đi đoạn $CB$ với vận tốc $50$ km/giờ, đổi ra giờ rồi nhân với $50$ để tìm độ dài $CB$.\n\n**Bước 6.** Lấy độ dài $AB$ trừ độ dài $CB$ để được quãng đường $AC$.\n\n**Chú ý:** Thời gian sửa xe $5$ phút không tính vào lúc xe chạy; nhưng nó làm xe chậm thêm $5$ phút nên đoạn $CB$ phải nhanh hơn dự kiến tổng cộng $10$ phút mới đến sớm $5$ phút.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Thời gian ô tô đi từ $A$ đến $B$ theo dự định là: $120:50=2,4$ (giờ)\n\nĐổi: $2,4$ giờ $=2$ giờ $24$ phút\n\nÔ tô đến $B$ lúc: $7$ giờ $+\\ 2$ giờ $24$ phút $=9$ giờ $24$ phút\n\nb) Ta có sơ đồ:\n\n(Quãng đường $AB$ dài $120$ km; từ $A$ đến $C$ xe đi với vận tốc $50$ km/giờ; từ $C$ đến $B$ xe đi với vận tốc $60$ km/giờ)\n\nXe dừng sửa $5$ phút mà vẫn đến sớm $5$ phút, nên đoạn $CB$ đi với vận tốc $60$ km/giờ nhanh hơn đi với vận tốc $50$ km/giờ: $5+5=10$ (phút)\n\nTrên cùng đoạn $CB$, vận tốc $50$ km/giờ và $60$ km/giờ có tỉ số $50:60=\\dfrac{5}{6}$ nên thời gian đi với vận tốc $50$ km/giờ là $6$ phần, thời gian đi với vận tốc $60$ km/giờ là $5$ phần như thế.\n\nTa có sơ đồ:\n\n(Đi $CB$ với vận tốc $50$ km/giờ: 6 phần; đi $CB$ với vận tốc $60$ km/giờ: 5 phần; hiệu 10 phút)\n\nHiệu số phần bằng nhau là: $6-5=1$ (phần)\n\nThời gian đi đoạn $CB$ với vận tốc $50$ km/giờ là: $10:1\\times 6=60$ (phút)\n\nĐổi: $60$ phút $=1$ giờ\n\nQuãng đường $CB$ là: $50\\times 1=50$ (km)\n\nQuãng đường $AC$ là: $120-50=70$ (km)\n\nĐáp số: a) $9$ giờ $24$ phút; b) $70$ km",
+  "so_do_mo_ta": [
+   {
+    "loai": "chuyen_dong",
+    "tieu_de": "Thực tế xe đi từ A đến B",
+    "diem": [
+     {
+      "ten": "A",
+      "x": 0
+     },
+     {
+      "ten": "C",
+      "x": 70,
+      "ghi": "sửa xe 5 phút"
+     },
+     {
+      "ten": "B",
+      "x": 120
+     }
+    ],
+    "di": [
+     {
+      "tu": 0,
+      "den": 70,
+      "nhan": "50 km/giờ"
+     },
+     {
+      "tu": 70,
+      "den": 120,
+      "nhan": "60 km/giờ"
+     }
+    ],
+    "khoang": [
+     {
+      "tu": 0,
+      "den": 120,
+      "nhan": "120 km"
+     },
+     {
+      "tu": 0,
+      "den": 70,
+      "nhan": "? km"
+     }
+    ]
+   },
+   {
+    "tieu_de": "Thời gian đi đoạn CB",
+    "gia_tri_phan": 10,
+    "hang": [
+     {
+      "nhan": "Vận tốc 50 km/giờ",
+      "phan": 6
+     },
+     {
+      "nhan": "Vận tốc 60 km/giờ",
+      "phan": 5
+     }
+    ],
+    "hieu": "10 phút",
+    "dau_hoi": [
+     "Vận tốc 50 km/giờ"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": "nhiều cách ở ý b): (1) tỉ lệ nghịch vận tốc–thời gian trên đoạn CB (cách đã chọn); (2) tính tiết kiệm mỗi km: đi 1 km ở 50 km/giờ mất 1,2 phút, ở 60 km/giờ mất 1 phút, tiết kiệm 0,2 phút/km, 10 phút : 0,2 = 50 km. Chọn (1) vì bám CĐ28 của sách. Bảng §2b chưa có dòng này — xin CEO chốt."
+ }
+]

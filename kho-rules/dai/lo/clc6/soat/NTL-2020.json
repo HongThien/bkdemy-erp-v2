@@ -1,0 +1,22 @@
+{
+ "ma_de": "NTL-2020",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NTL 2020 · 6",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy từ \"A+2 chia hết cho 15\" sang \"A chia 15 dư 15−2=13\" không nói vì sao; HS lớp 5 phải tự bù bước. Đã thêm một dòng nối (\"A kém một số chia hết cho 15 là 2 đơn vị, tức A hơn số chia hết cho 15 liền trước đó 15−2=13 đơn vị\") và sửa dòng Thử lại cho rõ là thử với A=13 (một giá trị ví dụ).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTL 2020 · 12",
+   "muc": "nen_sua",
+   "loai": "toán",
+   "mo_ta": "Cạnh 9 cm: câu \"thử từng nhóm ba thanh (1+2+6; 1+3+5; 2+3+4) đều không ghép thêm được đủ bốn cạnh\" nói suông, không có lập luận, mà đáp số 5 cách của cạnh 9 phụ thuộc hoàn toàn vào ý này. Đã viết rõ từng nhóm: chọn nhóm ba thanh đó thì chỉ còn ghép thêm được đúng 2 nhóm (9 và 4+5 / 9 và 2+7 / 9 và 1+8) nên chỉ có 3 nhóm, thiếu một cạnh. Đã kiểm lại bằng vét cạn (script): tổng 9 cách (cạnh 7:1, 8:1, 9:5, 10:1, 11:1), đúng với dap_an và các trường hợp cạnh 7, 8, 10, 11 trong lời giải.",
+   "da_sua": true
+  }
+ ]
+}

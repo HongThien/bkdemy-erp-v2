@@ -1,4 +1,6 @@
-// Bản đồ MỚI (nháp) — nhánh Đại. spec-ban-do-4-tang.md §0 + §9.0 · mig 202610081147.
+// Bản đồ MỚI (nháp). spec-ban-do-4-tang.md §0 + §9.0 · mig 202610081147.
+// VÙNG KIẾN THỨC (Đại · Hình giải tích · Hình — mig 202610121613/202610121621) là thuộc tính của CHỦ ĐỀ, đổi được sau khi tạo.
+// Phần đụng CÂU (gán câu, đối ứng dạng cũ) hiện chỉ có cho Đại ('toan'); hgt/hinh soạn cấu trúc 4 tầng + lý thuyết/ví dụ.
 // CEO soạn 4 tầng trên bản nháp (chia tầng · lý thuyết · ví dụ · mô tả); bản đồ đang chạy KHÔNG bị đụng.
 // Cây đọc 1 lần qua RPC fn_bdm_cay (đếm/ghép ở DB, §2.0). Ghi = CRUD dòng đơn + RPC chuyển/sắp xếp/nâng/hạ.
 import { supabase } from '../supabase'
@@ -11,7 +13,7 @@ export type BdmDangCuRef = { ma: string; ten: string }
 export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_ly_thuyet: boolean; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
 export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[] }
 export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; dang_cu: BdmDangCuRef[]; chua_gan: number; nhom: BdmNhom[] }
-export type BdmChuDe = { id: string; ten: string; thu_tu: number; o: BdmO[] }
+export type BdmChuDe = { id: string; ten: string; thu_tu: number; nhanh: BdmNhanh; o: BdmO[] }
 export type BdmChuyenDe = { id: string; ten: string; so_chu_de: number; khoi: string[] }
 // tong: tổng hợp khối (dạng cũ CỦA khối) — khối xong khi dang_cu_chua_gan = 0 và cau_chua_gan = 0
 export type BdmTong = { dang_cu: number; dang_cu_chua_gan: number; cau_dang_cu_chua_gan: number; cau: number; cau_chua_gan: number }
@@ -38,6 +40,11 @@ function loi(e: { code?: string; message?: string } | null): never {
   throw new Error(e?.message ?? 'Lỗi không rõ')
 }
 
+// Vùng kiến thức của chủ đề — khoá khớp KhoNhanh (api.ts): toan = Đại.
+export type BdmNhanh = 'toan' | 'hgt' | 'hinh'
+export const BDM_NHANH: { id: BdmNhanh; nhan: string }[] = [
+  { id: 'toan', nhan: 'Đại' }, { id: 'hgt', nhan: 'Hình giải tích' }, { id: 'hinh', nhan: 'Hình' },
+]
 export async function getCay(khoi: string): Promise<BdmCay> {
   const { data, error } = await supabase.rpc('fn_bdm_cay', { p_khoi: khoi })
   if (error) loi(error)
@@ -64,7 +71,11 @@ export async function xoaChuDeTronGoi(id: string): Promise<KqXoa> {
 
 // ── Chủ đề ──
 export async function themChuDe(khoi: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() })
+  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() }) // vùng mặc định Đại — chọn lại sau ở đầu màn
+  if (error) loi(error)
+}
+export async function doiVungChuDe(id: string, nhanh: BdmNhanh): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_chu_de').update({ nhanh }).eq('id', id)
   if (error) loi(error)
 }
 export async function suaChuDe(id: string, ten: string): Promise<void> {

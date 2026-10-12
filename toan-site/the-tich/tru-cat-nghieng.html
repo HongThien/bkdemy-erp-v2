@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trụ bị mặt phẳng nghiêng cắt · Diện tích thiết diện</title>
+<meta name="description" content="Mô hình 3D xoay được: mặt phẳng nghiêng 60° đi qua một dây cung của đáy cắt khối trụ theo một phần elip. Chiếu thiết diện xuống đáy rồi dùng công thức hình chiếu để ra diện tích.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="khung.css">
+<style>
+/* Màu của bài: hổ phách = thiết diện · xanh = hình chiếu của nó trên đáy · hồng = phần hình tròn đáy bị dây AB cắt đi */
+.panel b.td{color:#ffb547}
+.panel b.hc{color:#5ce1ff}
+.panel b.bo{color:#ff7ab8}
+.fx .r2>span:first-child{white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineMaterial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="khung.js"></script>
+<script>
+// BÀI: Câu 53 (NBV 12-18 F) — diện tích thiết diện của khối trụ cắt bởi mặt phẳng nghiêng. Loại MẶT CẮT (spec S.1): không cắt lát, không thể tích.
+// Kịch bản: 1 Đề bài → 2 Dựng mặt phẳng (kéo góc nghiêng, xem khi nào chạm đáy trên) → 3 Thiết diện (một phần elip: bị dây AB cắt mất một chỏm)
+//           → 4 Chiếu xuống đáy (hoạt cảnh ép thiết diện xuống; S' = S / cos φ) → 5 Tính diện tích (công thức chữ → bấm Thay số).
+// Địa chỉ: ?buoc=N · ?goc=45 (bước 2, độ) · ?thay=1 (bước 5 đã thay số).
+(function () {
+'use strict'
+// ═══ 1. SỐ LIỆU CỦA BÀI ═══
+const R = 2.5                              // bán kính đáy tính bằng đơn vị cảnh — đáp số theo CHỮ R nên con số này chỉ để vẽ
+const CAO = 4 * R                          // OO' = 4R
+const D = R / 2                            // d = OH = khoảng cách từ O tới dây AB (AB = R√3 ⇒ d = R/2)
+const W0 = Math.sqrt(R * R - D * D)        // nửa dây AB
+const PHI0 = Math.PI / 3                   // góc của đề: 60°
+const DEG = Math.PI / 180
+// Toạ độ TOÁN: đáy trong mặt z = 0, trục trụ là Oz, dây AB nằm trên đường x = −d, mặt phẳng (P): z = (x + d)·tan φ (dốc lên về phía K).
+// Trục đứng của three.js là Y ⇒ (x, y, z) → (x, z, −y) (giữ tam diện thuận; A ở phía sau, B ở phía trước như hình trong sách).
+const T = (x, y, z) => [x, z, -y]
+const xDinh = phi => Math.min(R, CAO / Math.tan(phi) - D)          // (P) lên tới đâu thì ra khỏi trụ: tới thành bên (x = R) hay đụng đáy trên trước
+const hinhChieu = (d, r) => Math.PI * r * r - (r * r * Math.acos(d / r) - d * Math.sqrt(r * r - d * d))   // hình tròn bỏ viên phân nhỏ phía dây
+
+// ═══ 2. KHUNG CHUNG ═══
+const khungCua = n => (n <= 2 ? 'rong' : 'gan'), gocCua = n => (n >= 4 ? 'cao' : 'chinh')
+const M = MoHinh({
+  nhan: 'Toán 12 · Ứng dụng tích phân · Diện tích', tieuDe: 'Trụ bị mặt phẳng nghiêng cắt',
+  buoc: ['Đề bài', 'Dựng mặt phẳng', 'Thiết diện', 'Chiếu xuống đáy', 'Tính diện tích'],
+  nutGoc: [['mac_dinh', 'Góc ban đầu'], ['ngang', 'Nhìn dọc AB'], ['tren', 'Nhìn từ trên']],
+  goc: {   // máy quay đứng phía dây AB, nhìn lên theo con dốc: thấy trọn mặt thiết diện. (Đứng ngang hông như hình trong sách thì máy quay phối cảnh
+           // chỉ thấy (P) gần như một nét, vì (P) chứa phương AB.)
+    chinh: { az: -1.0, pol: 1.12 },
+    cao: { az: -1.0, pol: 0.86 },                     // có hình chiếu trên đáy: nhìn từ trên xuống nhiều hơn
+    ngang: { az: 0, pol: 1.53 },                      // nhìn dọc AB: mặt phẳng (P) chỉ còn là một đường thẳng, thấy đúng góc nghiêng
+    tren: { az: -Math.PI / 2, pol: 0.12 },
+  },
+  // điểm ngắm lệch sang trái màn hình để khối trụ không đè lên tên bài
+  khung: { rong: { tx: -0.45 * R, ty: 1.85 * R, tz: -0.7 * R, r: 2.75 * R }, gan: { tx: -0.1 * R, ty: 0.9 * R, tz: -0.2 * R, r: 2.3 * R } },
+  khungNao: () => khungCua(M.step), gocMacDinh: () => gocCua(M.step),
+  bang: n => PANELS[n](), sauBang: bindPanel, truocBang, khiDoiBuoc, dongBo,
+  moiKhung: () => { if (dirty) { dirty = false; capNhat(); sync2(); sync4() } },
+  tiep: () => { if (M.step !== 5 || S.subbed) return false; thaySo(); return true },
+  nutTiep: () => (M.step === 5 ? { chu: S.subbed ? 'Tiếp ›' : 'Thay số ›', tat: S.subbed } : null),
+  phimCach: () => { if (M.step !== 4) return false; S.playing ? stopPlay() : startPlay(); return true },
+  thamSo: q => { const g = +q.get('goc'); if (g >= 20 && g <= 80) S.phi = g * DEG; return { sub: q.get('thay') === '1' } },
+})
+if (!M) return
+const { RM, $, fmt, scene, camera, mkLine, setLine, setView, clock, anims, label, dot, flat, matGhiSau, capNet, luoi } = M
+
+// ═══ 3. TRẠNG THÁI ═══
+const S = {
+  phi: PHI0,          // góc giữa (P) và đáy (chỉ đổi được ở bước 2; các bước khác luôn là 60° của đề)
+  chieu: 0,           // bước 4: thiết diện đã ép xuống đáy bao nhiêu (0 → 1)
+  playing: false,
+  subbed: false,      // bước 5: đã bấm "Thay số"
+}
+let dirty = true
+
+// ═══ 4. VẬT THỂ ═══
+const nhom = () => { const g = new THREE.Group(); scene.add(g); return g }
+const mesh = (geo, mat, order) => { const m = new THREE.Mesh(geo, mat); m.renderOrder = order; m.frustumCulled = false; scene.add(m); return m }
+const TAU = Math.PI * 2
+// Khối trụ (thủy tinh) + lượt ghi độ sâu để các cạnh phía sau thành nét đứt
+const truGeo = luoi()
+  .them((s, t) => T(R * Math.cos(s * TAU), R * Math.sin(s * TAU), t * CAO), 96, 1)
+  .them((s, t) => T(t * R * Math.cos(s * TAU), t * R * Math.sin(s * TAU), 0), 96, 1)
+  .them((s, t) => T(t * R * Math.cos(s * TAU), t * R * Math.sin(s * TAU), CAO), 96, 1).geo()
+const truMat = new THREE.MeshPhongMaterial({ color: 0xbfd6ff, transparent: true, opacity: 0.1, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x335566, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+mesh(truGeo, truMat, 1); mesh(truGeo, matGhiSau(), -10)
+const netLien = nhom(), netDut = nhom(), phuLien = nhom(), phuDut = nhom()   // net: cạnh của trụ + dây AB · phu: các đoạn dựng thêm (OH, OK, IH…)
+const vong = z => { const P = []; for (let i = 0; i <= 144; i++) { const a = TAU * i / 144; P.push(...T(R * Math.cos(a), R * Math.sin(a), z)) } return P }
+{ const o = { color: 0xe6efff, width: 2.6 }
+  capNet(vong(0), o, netLien, netDut); capNet(vong(CAO), o, netLien, netDut)
+  capNet(flat([T(0, 0, 0), T(0, 0, CAO)]), { color: 0xffffff, width: 1.8, opacity: 0.8 }, netLien, netDut)        // trục OO'
+  capNet(flat([T(-D, W0, 0), T(-D, -W0, 0)]), { color: 0xffb547, width: 3.2 }, netLien, netDut)                    // dây AB
+  capNet(flat([T(-D, 0, 0), T(R, 0, 0)]), { color: 0xffffff, width: 1.8, opacity: 0.85 }, phuLien, phuDut) }       // H – O – K
+const sinh = [mkLine([0, 0, 0, 0, 1, 0], { color: 0xe6efff, width: 2.6, order: 4 }), mkLine([0, 0, 0, 0, 1, 0], { color: 0xe6efff, width: 2.6, order: 4 })]   // hai đường sinh biên (đổi theo góc nhìn)
+sinh.forEach(l => scene.add(l))
+
+// Thiết diện (đổi theo góc φ) + bản sao của nó đang bị ép xuống đáy (hình chiếu). Nằm trong khối trụ nên không thử độ sâu.
+const NS = 64, NV = 2 * (NS + 1)
+const dai = () => { const g = new THREE.BufferGeometry(), i = []; g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(NV * 3), 3))
+  for (let k = 0; k < NS; k++) { const a = 2 * k; i.push(a, a + 1, a + 2, a + 1, a + 3, a + 2) } g.setIndex(i); return g }
+const phang = (color, opacity) => new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthTest: false, depthWrite: false })
+const tdGeo = dai(), bongGeo = dai()
+const tdMat = phang(0xffb547, 0.78), bongMat = phang(0x2fb9e8, 0.6)
+const bong = mesh(bongGeo, bongMat, 5), td = mesh(tdGeo, tdMat, 6)
+const tdVien = mkLine(new Array((NV + 1) * 3).fill(0), { color: 0xfff1d6, width: 3, depthTest: false, order: 8 }); scene.add(tdVien)
+const bongVien = mkLine(new Array((NV + 1) * 3).fill(0), { color: 0xa9f1ff, width: 2.4, depthTest: false, order: 7 }); scene.add(bongVien)
+// Mặt phẳng (P): tấm phẳng chìa ra ngoài trụ
+const pGeo = new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(12), 3)); pGeo.setIndex([0, 1, 2, 0, 2, 3])
+const pMesh = mesh(pGeo, new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.11, side: THREE.DoubleSide, depthWrite: false }), 2)
+const pVien = mkLine(new Array(15).fill(0), { color: 0xffffff, width: 1.6, opacity: 0.5, order: 4 }); scene.add(pVien)
+// Các đoạn đổi theo φ: HE (đường dốc nhất của (P)), cung góc φ tại H, elip đầy đủ + hai trục của nó (bước 3), các đường gióng xuống đáy (bước 4)
+const duongHE = mkLine(new Array(6).fill(0), { color: 0xffe2ad, width: 2.2, depthTest: false, order: 8 }); scene.add(duongHE)
+const NG = 16, cungGoc = mkLine(new Array((NG + 1) * 3).fill(0), { color: 0xffb547, width: 2.4, depthTest: false, order: 8 }); scene.add(cungGoc)
+const NE = 120, elip = mkLine(new Array((NE + 1) * 3).fill(0), { color: 0xffffff, width: 1.8, opacity: 0.8, dashed: true, dash: 0.2, gap: 0.14, depthTest: false, order: 7 }); scene.add(elip)
+const trucBe = mkLine(new Array(6).fill(0), { color: 0xffffff, width: 1.6, opacity: 0.8, depthTest: false, order: 7 }); scene.add(trucBe)
+const giong = [NS, Math.round(NS * 0.72), Math.round(NS * 0.72), Math.round(NS * 0.42), Math.round(NS * 0.42)].map((i, k) => ({ i, dau: k === 0 ? 0 : k % 2 ? 1 : -1, l: mkLine(new Array(6).fill(0), { color: 0xffffff, width: 1.4, opacity: 0.6, dashed: true, dash: 0.16, gap: 0.12, depthTest: false, order: 7 }) }))
+giong.forEach(g => scene.add(g.l))
+// Phần hình tròn đáy bị dây AB cắt đi (viên phân nhỏ) + hai bán kính OA, OB — bước 5
+const boGeo = (() => { const P = [], a0 = Math.acos(-D / R), n = 40; for (let i = 0; i <= n; i++) { const a = a0 + (TAU - 2 * a0) * i / n; P.push(T(R * Math.cos(a), R * Math.sin(a), 0)) }
+  const g = new THREE.BufferGeometry(), idx = []; g.setAttribute('position', new THREE.Float32BufferAttribute(flat(P), 3)); for (let i = 1; i < n; i++) idx.push(0, i, i + 1); g.setIndex(idx); return g })()
+const bo = mesh(boGeo, phang(0xff7ab8, 0.5), 5)
+const banKinh = mkLine(flat([T(-D, W0, 0), T(0, 0, 0), T(-D, -W0, 0)]), { color: 0xffd3e6, width: 1.8, depthTest: false, order: 7 }); scene.add(banKinh)
+
+const E = { x: R, z: 0, i: 0 }   // điểm cao nhất của thiết diện + giao của (P) với trục (cập nhật trong capNhat)
+function capNhat() {
+  const phi = S.phi, tan = Math.tan(phi), xm = xDinh(phi), k = 1 - S.chieu
+  const a = tdGeo.attributes.position.array, b = bongGeo.attributes.position.array, tren = [], duoi = [], btren = [], bduoi = []
+  for (let i = 0; i <= NS; i++) {
+    const x = -D + (xm + D) * (1 - Math.cos(Math.PI * i / NS)) / 2, w = Math.sqrt(Math.max(0, R * R - x * x)), z = (x + D) * tan
+    const p = T(x, w, z), q = T(x, -w, z), pb = T(x, w, z * k), qb = T(x, -w, z * k)
+    a.set(p, i * 6); a.set(q, i * 6 + 3); b.set(pb, i * 6); b.set(qb, i * 6 + 3)
+    tren.push(p); duoi.unshift(q); btren.push(pb); bduoi.unshift(qb)
+  }
+  tdGeo.attributes.position.needsUpdate = bongGeo.attributes.position.needsUpdate = true
+  setLine(tdVien, flat(tren.concat(duoi), true)); setLine(bongVien, flat(btren.concat(bduoi), true))
+  E.x = xm; E.z = (xm + D) * tan; E.i = D * tan
+  const x1 = -D - 0.55 * R, x2 = xm + 0.45 * R, yw = 1.45 * R, Q = [T(x1, yw, (x1 + D) * tan), T(x1, -yw, (x1 + D) * tan), T(x2, -yw, (x2 + D) * tan), T(x2, yw, (x2 + D) * tan)]
+  pGeo.attributes.position.array.set(flat(Q)); pGeo.attributes.position.needsUpdate = true; setLine(pVien, flat(Q, true))
+  setLine(duongHE, flat([T(-D, 0, 0), T(xm, 0, E.z)]))
+  const c = []; for (let i = 0; i <= NG; i++) { const g = phi * i / NG; c.push(...T(-D + 0.34 * R * Math.cos(g), 0, 0.34 * R * Math.sin(g))) } setLine(cungGoc, c)
+  const e = []; for (let i = 0; i <= NE; i++) { const g = TAU * i / NE; e.push(...T(R * Math.cos(g), R * Math.sin(g), (R * Math.cos(g) + D) * tan)) } setLine(elip, e)
+  setLine(trucBe, flat([T(0, R, E.i), T(0, -R, E.i)]))
+  for (const g of giong) { const x = -D + (xm + D) * (1 - Math.cos(Math.PI * g.i / NS)) / 2, w = g.dau * Math.sqrt(Math.max(0, R * R - x * x)), z = (x + D) * tan; setLine(g.l, flat([T(x, w, z), T(x, w, 0)])) }
+}
+
+// ═══ 5. NHÃN + CHẤM ĐIỂM ═══
+const tu = n => () => M.step >= n, dung = n => () => M.step === n, lechGoc = () => Math.abs(S.phi - PHI0) > 0.01
+label('O', () => T(0, 0, 0), () => true, 0.1, 1); label('O′', () => T(0, 0, CAO), () => M.step <= 2, -0.1, -1)
+label('A', () => T(-D, W0, 0), () => true, -0.85, -0.3, 'hot'); label('B', () => T(-D, -W0, 0), () => true, -0.5, 0.95, 'hot')
+label('H', () => T(-D, 0, 0), tu(2), -0.9, 0.2); label('K', () => T(R, 0, 0), tu(2), 0.85, 0.3)
+label('I', () => T(0, 0, E.i), tu(2), 0.75, 0.55); label('E', () => T(E.x, 0, E.z), tu(2), 0.85, -0.3)
+label('φ', () => T(-D + 0.52 * R * Math.cos(S.phi / 2), 0, 0.52 * R * Math.sin(S.phi / 2)), () => M.step >= 2 && M.step <= 4, 0, 0, 'hot')
+label('(P)', () => T(E.x + 0.3 * R, -1.3 * R, (E.x + 0.3 * R + D) * Math.tan(S.phi)), () => M.step <= 3, 0.4, -0.4)
+label('d', () => T(-D / 2, 0, 0), dung(5), 0, 1, 'dim'); label('OO′ = 4R', () => T(0, 0, CAO * 0.8), dung(1), 3.1, 0, 'dim')
+dot(() => T(0, 0, 0), () => true, 0xffffff, 0.09); dot(() => T(0, 0, CAO), () => M.step <= 2, 0xffffff, 0.09)
+dot(() => T(-D, W0, 0), () => true, 0xffb547, 0.1); dot(() => T(-D, -W0, 0), () => true, 0xffb547, 0.1)
+dot(() => T(-D, 0, 0), tu(2), 0xffffff, 0.09); dot(() => T(R, 0, 0), tu(2), 0xffffff, 0.09)
+dot(() => T(0, 0, E.i), tu(2), 0xfff1d6, 0.09); dot(() => T(E.x, 0, E.z), tu(2), 0xfff1d6, 0.09)
+
+// ═══ 6. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
+const camL = new THREE.Vector3()
+function dongBo() {
+  const st = M.step
+  phuLien.visible = phuDut.visible = st >= 2
+  pMesh.visible = pVien.visible = st <= 3
+  td.visible = tdVien.visible = true; tdMat.opacity = st === 4 ? 0.78 - 0.3 * S.chieu : st === 5 ? 0.3 : 0.78
+  bong.visible = bongVien.visible = st >= 4
+  duongHE.visible = cungGoc.visible = st >= 2 && st <= 4
+  elip.visible = trucBe.visible = st === 3
+  for (const g of giong) g.l.visible = st === 4 || st === 5
+  bo.visible = banKinh.visible = st === 5
+  // hai đường sinh biên: tiếp tuyến kẻ từ hình chiếu của máy quay tới đường tròn đáy
+  camL.copy(camera.position)
+  const rho = Math.hypot(camL.x, camL.z), ok = rho > R * 1.02, psi = Math.atan2(camL.z, camL.x), dl = ok ? Math.acos(R / rho) : 0
+  for (let i = 0; i < 2; i++) { const a = psi + (i ? -dl : dl), x = R * Math.cos(a), z = R * Math.sin(a); sinh[i].visible = ok; if (ok) setLine(sinh[i], [x, 0, z, x, CAO, z]) }
+}
+
+// ═══ 7. BẢNG LỜI GIẢI THEO BƯỚC (A3: công thức bằng chữ trước, thay số sau; "số" của bài này là AB = R√3 và φ = 60°) ═══
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
+const PANELS = {
+  1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Diện tích thiết diện bằng bao nhiêu?</h2>
+    <p>Cho khối trụ có hai đáy là hai hình tròn (<i>O</i>; <i>R</i>) và (<i>O′</i>; <i>R</i>), chiều cao <i>OO′</i> = 4<i>R</i>. Trên đường tròn (<i>O</i>; <i>R</i>) lấy hai điểm <i>A</i>, <i>B</i> sao cho <i>AB</i> = <i>R</i>√3.</p>
+    <p>Mặt phẳng <i>(P)</i> đi qua <i>A</i>, <i>B</i>, cắt đoạn <i>OO′</i> và tạo với mặt đáy một góc <b>60°</b>. Tính diện tích <b class="td">thiết diện</b> của khối trụ cắt bởi <i>(P)</i>.</p>
+    <div class="chips"><span>OO′ = 4R</span><span>AB = R√3</span><span>góc với đáy 60°</span><span class="q">S = ?</span></div>
+    <button type="button" class="btn" id="b1">Dựng mặt phẳng ›</button>
+    <p class="cap">Nguồn: NBV 12-18 F · câu 53 (bản in ghi nhầm <i>AB</i> = <i>a</i>√3)</p>`,
+  2: () => String.raw`<p class="kicker">Bước 2 · Dựng mặt phẳng</p><h2>Mặt phẳng nghiêng bao nhiêu?</h2>
+    <p>Gọi <i>H</i> là trung điểm <i>AB</i>, <i>I</i> là giao của <i>(P)</i> với trục <i>OO′</i>. Vì <i>OH</i> ⊥ <i>AB</i> và <i>IH</i> ⊥ <i>AB</i> nên góc giữa <i>(P)</i> và đáy chính là góc <i>IHO</i> = φ.</p>
+    <label class="sl"><span class="nm">φ</span><input type="range" id="s2" min="20" max="80" step="1" aria-label="Góc giữa mặt phẳng và đáy"><output id="o2"></output></label>
+    <ul class="cond">
+      <li id="c2a"><i></i><span>Đúng góc của đề</span><em>60°</em></li>
+      <li id="c2b"><i></i><span><i>(P)</i> ra khỏi trụ ở thành bên, chưa chạm đáy trên</span><em id="r2"></em></li>
+    </ul>
+    <button type="button" class="btn ghost" id="b2">Về góc 60° của đề</button>
+    <p class="note" id="n2"></p>`,
+  3: () => String.raw`<p class="kicker">Bước 3 · Thiết diện</p><h2>Thiết diện là hình gì?</h2>
+    <p>Mặt phẳng nghiêng cắt <b>mặt trụ</b> theo một <b>elip</b> tâm <i>I</i> (nét đứt). Bán trục bé nằm ngang, bằng <i>R</i>. Bán trục lớn nằm dọc đường dốc <i>HE</i>:</p>
+    <div class="fx"><div data-tex="IE=\dfrac{OK}{\cos\varphi}=\dfrac{R}{\cos\varphi}"></div></div>
+    <p>Nhưng elip này thò xuống <b>dưới mặt đáy</b> ở phía <i>AB</i>. Khối trụ chỉ giữ lại phần nằm trên đáy, nên <b class="td">thiết diện</b> là elip <b>bị dây <i>AB</i> cắt mất một chỏm</b>.</p>
+    <p class="note">Vì thế không dùng ngay được công thức diện tích elip π·<i>a</i>·<i>b</i>. Cách gọn hơn: <b>chiếu thiết diện xuống đáy</b>, ở đó mọi thứ là hình tròn.</p>`,
+  4: () => String.raw`<p class="kicker">Bước 4 · Chiếu xuống đáy</p><h2>Ép thiết diện xuống mặt đáy</h2>
+    <p>Chiếu vuông góc <b class="td">thiết diện</b> xuống đáy được <b class="hc">hình chiếu</b>: phần hình tròn đáy nằm về phía <i>K</i> của dây <i>AB</i>.</p>
+    <div class="row"><button type="button" class="btn" id="b4"></button><span class="ro"><small>Đã ép</small><b id="r4">0%</b></span></div>
+    <input type="range" id="s4" min="0" max="1000" value="0" aria-label="Mức ép thiết diện xuống đáy">
+    <p>Khi ép, mọi đoạn song song với <i>AB</i> giữ nguyên độ dài; chiều dọc theo đường dốc co lại cos φ lần (<i>HE</i> thành <i>HK</i>). Nên diện tích cũng co lại đúng cos φ lần:</p>
+    <div class="fx"><div data-tex="HK=HE\cdot\cos\varphi"></div><div class="res" data-d data-tex="S=S'\cdot\cos\varphi\ \Rightarrow\ S'=\frac{S}{\cos\varphi}"></div></div>
+    <p class="cap"><i>S′</i> là diện tích thiết diện, <i>S</i> là diện tích hình chiếu của nó trên đáy.</p>`,
+  5: () => String.raw`<p class="kicker">Bước 5 · Tính diện tích</p><h2>Tính trên mặt đáy</h2>
+    <p><b class="hc">Hình chiếu</b> là cả hình tròn đáy bỏ đi <b class="bo">viên phân nhỏ</b> phía dây <i>AB</i>. Gọi <i>d</i> = <i>OH</i>.</p>
+    <p class="lbl2">Công thức tổng quát (R, d, φ bất kỳ, chưa thay số)</p>
+    <div class="fx"><div data-tex="S_{vp}=R^2\arccos\dfrac{d}{R}-d\sqrt{R^2-d^2}"></div>
+      <div data-tex="S=\pi R^2-S_{vp}"></div><div class="res" data-d data-tex="S'=\frac{S}{\cos\varphi}"></div></div>
+    <p class="cap"><i>S</i><sub>vp</sub> là diện tích viên phân nhỏ: hình quạt <i>OAB</i> trừ tam giác <i>OAB</i>.</p>
+    <button type="button" class="btn" id="bSub"${S.subbed ? ' hidden' : ''}>Thay số AB = R√3, φ = 60° ›</button>
+    <div class="subs" id="subs"${S.subbed ? '' : ' hidden'}>
+      <p class="lbl2">Thay số: AB = R√3, φ = 60°</p>
+      <div class="fx num"><div data-tex="d=\sqrt{R^2-\left(\tfrac{AB}{2}\right)^2}=\dfrac{R}{2}"></div>
+        <div data-tex="\arccos\dfrac{d}{R}=\arccos\dfrac12=\dfrac{\pi}{3}"></div>
+        <div data-tex="S_{vp}=\left(\dfrac{\pi}{3}-\dfrac{\sqrt3}{4}\right)R^2"></div>
+        <div data-tex="S=\pi R^2-S_{vp}=\left(\dfrac{2\pi}{3}+\dfrac{\sqrt3}{4}\right)R^2"></div>
+        <div class="res" data-d data-tex="\begin{aligned}S'&=\frac{S}{\cos 60^\circ}=2S\\[0.4em]&=\left(\frac{4\pi}{3}+\frac{\sqrt3}{2}\right)R^2\approx 5{,}05\,R^2\end{aligned}"></div></div>
+      <p class="note">Đúng với điều kiện <i>(P)</i> không chạm đáy trên (bước 2): điểm cao nhất <i>E</i> ở độ cao (<i>R</i> + <i>d</i>)·tan φ ≈ 2,6<i>R</i>, thấp hơn 4<i>R</i>. Elip nguyên vẹn có diện tích 2π<i>R</i>² ≈ 6,28<i>R</i>², thiết diện nhỏ hơn vì mất một chỏm.</p>
+    </div>`,
+}
+function bindPanel() {
+  const st = M.step
+  if (st === 1) $('#b1').addEventListener('click', () => M.goStep(2))
+  if (st === 2) {
+    const s = $('#s2'); s.value = Math.round(S.phi / DEG)
+    s.addEventListener('input', () => { S.phi = +s.value * DEG; dirty = true })
+    $('#b2').addEventListener('click', () => phiTo(PHI0, M.token()))
+    sync2()
+  }
+  if (st === 4) {
+    $('#b4').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
+    $('#s4').addEventListener('input', e => { stopPlay(); S.chieu = e.target.value / 1000; dirty = true })
+    sync4()
+  }
+  if (st === 5) $('#bSub').addEventListener('click', thaySo)
+}
+function sync2() {
+  const s = $('#s2'); if (!s) return
+  const g = Math.round(S.phi / DEG), cao = (R + D) * Math.tan(S.phi) / R, ben = cao <= 4 + 1e-9
+  if (document.activeElement !== s) s.value = g
+  $('#o2').textContent = g + '°'
+  $('#c2a').classList.toggle('ok', !lechGoc()); $('#c2b').classList.toggle('ok', ben)
+  $('#r2').textContent = ben ? 'cao nhất ' + fmt(cao) + 'R' : 'đã chạm'
+  $('#b2').hidden = !lechGoc()
+  $('#n2').innerHTML = ben ? 'Nhìn bằng nút “Nhìn dọc AB”: <i>(P)</i> chỉ còn là một đường thẳng, thấy rõ góc φ tại <i>H</i>. Kéo φ lên quá khoảng 69° thì <i>(P)</i> chạm đáy trên.'
+    : 'Ở góc này <i>(P)</i> <b>chạm đáy trên</b> trước khi tới thành bên: thiết diện bị cụt cả hai đầu, cách tính ở các bước sau không còn đúng. Đề cho 60° nên không rơi vào trường hợp này.'
+}
+function sync4() {
+  const s = $('#s4'); if (!s) return
+  if (document.activeElement !== s || S.playing) s.value = Math.round(S.chieu * 1000)
+  $('#r4').textContent = Math.round(S.chieu * 100) + '%'
+  const het = S.chieu >= 1 - 1e-6, lab = (S.playing ? ICON_PAUSE + 'Dừng' : ICON_PLAY + (het ? 'Ép lại' : 'Ép xuống đáy')), bt = $('#b4')
+  if (bt.dataset.lab !== lab) { bt.innerHTML = lab; bt.dataset.lab = lab }
+}
+function thaySo() {
+  if (M.step !== 5 || S.subbed) return
+  S.subbed = true
+  M.renderPanel(true); M.syncChips()
+  const el = $('#subs'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
+}
+
+// ═══ 8. CHUYỂN BƯỚC ═══
+function tween(get, set, dich, ms, my) {
+  return new Promise(res => {
+    const a = get(), d = dich - a
+    if (Math.abs(d) < 1e-5) { set(dich); dirty = true; return res() }
+    const dur = RM ? 1 : ms, t0 = clock()
+    anims.push(now => {
+      if (!M.alive(my)) { res(); return true }
+      const k = Math.min(1, (now - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
+      set(a + d * e); dirty = true
+      if (k >= 1) { res(); return true }
+      return false
+    })
+  })
+}
+const phiTo = (g, my) => tween(() => S.phi, v => { S.phi = v }, g, 700, my)
+const chieuTo = (c, my) => tween(() => S.chieu, v => { S.chieu = v }, c, 900, my)
+function startPlay() {
+  if (M.step !== 4) return
+  if (S.chieu >= 1 - 1e-6) S.chieu = 0
+  S.playing = true; dirty = true
+  const my = M.token(), c0 = S.chieu, t0 = clock(), dur = RM ? 1 : 4200 * (1 - c0)
+  anims.push(now => {
+    if (!S.playing || !M.alive(my)) return true
+    const k = Math.min(1, (now - t0) / dur)
+    S.chieu = c0 + (1 - c0) * (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2); dirty = true
+    if (k >= 1) { S.chieu = 1; S.playing = false; return true }
+    return false
+  })
+}
+function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
+function truocBang(n, prev, o) {
+  S.playing = false
+  if (prev !== 5 || o.first) S.subbed = !!o.sub
+  if (o.first) { if (n !== 2) S.phi = PHI0; S.chieu = n === 5 ? 1 : 0 }
+}
+async function khiDoiBuoc(n, prev, o, my) {
+  dirty = true
+  if (o.first || khungCua(n) !== khungCua(prev) || gocCua(n) !== gocCua(prev)) setView('mac_dinh', o.first)
+  if (o.first) return
+  if (n !== 2 && lechGoc()) { await phiTo(PHI0, my); if (!M.alive(my)) return }   // rời bước 2 thì trả mặt phẳng về đúng góc của đề
+  if (n === 4) { if (prev === 5) return; await chieuTo(0, my); if (M.alive(my) && o.next) startPlay() }
+  else await chieuTo(n === 5 ? 1 : 0, my)
+}
+
+// ═══ 9. CHẠY + TỰ KIỂM ═══
+capNhat()
+M.start()
+// Diện tích thiết diện tính thẳng bằng tích phân trên mặt phẳng nghiêng phải bằng công thức hình chiếu: hình vẽ và lời giải nói cùng một chuyện.
+function kiem() {
+  const n = 4000, h = (R + D) / n; let s = 0
+  for (let i = 0; i < n; i++) { const x = -D + (i + 0.5) * h; s += 2 * Math.sqrt(R * R - x * x) * h / Math.cos(PHI0) }
+  const dapSo = (4 * Math.PI / 3 + Math.sqrt(3) / 2) * R * R, congThuc = hinhChieu(D, R) / Math.cos(PHI0)
+  return { tinh: s / (R * R), dapSo: dapSo / (R * R), congThuc: congThuc / (R * R), lech: Math.abs(s - dapSo) / (R * R) }
+}
+Object.assign(window.__dbg, { S, kiem })
+})()
+</script>
+</body>
+</html>

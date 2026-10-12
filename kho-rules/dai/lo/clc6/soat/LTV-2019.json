@@ -1,0 +1,29 @@
+{
+ "ma_de": "LTV-2019",
+ "so_cau": 20,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "LTV 2019 · 9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Sơ đồ chuyển động vẽ điểm D (chỗ người thứ nhất lúc 7 giờ 30 phút, nhãn 20 km / 140 km) nhưng dòng mô tả \"Ta có sơ đồ\" không nói D là gì. Đã thêm \"D là chỗ người thứ nhất đến lúc 7 giờ 30 phút\". Số liệu sơ đồ đúng (C ở 100 km: 40×2,5=100; 160−30×2=100).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2019 · 13",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng tổng nhảy bước: \"(2019+9)×202:2=2028×101=204828\" (không nói vì sao ra ×101). Đã tách: 2019+9=2028; rồi 2028×202:2=409656:2=204828 (tính lại: 2028×202=409656, nửa là 204828 đúng).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2019 · 18",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng \"bốn mặt bên của lỗ: 4×4×1=16\" dễ bị đọc nhầm thành đáy 4×4 nhân cao 1. Đã viết rõ: mỗi mặt rộng 4 cm, cao 1 cm, 4×(4×1)=16. Toán đúng (đếm bằng code: còn 120 khối nhỏ, diện tích mặt lộ ra 312).",
+   "da_sua": true
+  }
+ ]
+}

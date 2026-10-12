@@ -1,0 +1,182 @@
+[
+ {
+  "ma": "D3.9@p54",
+  "noi_dung": "Xác định giá trị của $m$ để phương trình sau nhận $x=5$ là nghiệm: $4x+m^2=22$."
+ },
+ {
+  "ma": "D3.10@p55",
+  "noi_dung": "Xác định giá trị của $m$ để phương trình $(m+7)x=2m-1$ vô nghiệm."
+ },
+ {
+  "ma": "D3.11@p55",
+  "noi_dung": "Giải phương trình (với $m$ là tham số): $(m-2)x=m-2$."
+ },
+ {
+  "ma": "D3.12@p55",
+  "noi_dung": "(Đề thi giải Lê Quý Đôn Toán lớp 8, báo Khăn Quàng Đỏ, TP. Hồ Chí Minh, năm học 2004 – 2005) Giải phương trình (với $a$ là tham số): $(a-3)x=a(a-3)$."
+ },
+ {
+  "ma": "D3.21@p57",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+1}{2009}+\\dfrac{x+2}{2008}+\\dfrac{x+17}{1993}+3=0$."
+ },
+ {
+  "ma": "D3.22@p58",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+3}{97}+\\dfrac{x+5}{95}+\\dfrac{x+9}{91}=\\dfrac{x+91}{9}+\\dfrac{x+92}{8}+\\dfrac{x+61}{39}$."
+ },
+ {
+  "ma": "D3.23a@p58",
+  "noi_dung": "Giải phương trình (với $a,b,c$ là tham số): $\\dfrac{x+a}{b+c}+\\dfrac{x+b}{c+a}+\\dfrac{x+c}{a+b}=-3$."
+ },
+ {
+  "ma": "D3.23b@p58",
+  "noi_dung": "Giải phương trình (với $a,b,c$ là tham số): $\\dfrac{x-a}{b+c}+\\dfrac{x-b}{c+a}+\\dfrac{x-c}{a+b}=3$."
+ },
+ {
+  "ma": "D3.24@p58",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – TP. Hồ Chí Minh, năm học 2002 – 2003) Giải phương trình: $\\dfrac{x-342}{15}+\\dfrac{x-323}{17}+\\dfrac{x-300}{19}+\\dfrac{x-273}{21}=10$."
+ },
+ {
+  "ma": "D3.25a@p59",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 6 – TP. Hồ Chí Minh, năm học 1990 – 1991) Giải phương trình (với $a,b,c$ là các tham số): $\\dfrac{a+b-x}{c}+\\dfrac{b+c-x}{a}+\\dfrac{c+a-x}{b}+\\dfrac{4x}{a+b+c}=1$."
+ },
+ {
+  "ma": "D3.25b@p59",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường chuyên Văn – Toán huyện Đức Phổ, tỉnh Quảng Ngãi, năm học 1988 – 1989) Giải phương trình (với $a,b,c$ là các tham số): $\\dfrac{1}{2}\\left(\\dfrac{x-a}{bc}+\\dfrac{x-b}{ca}+\\dfrac{x-c}{ab}\\right)=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$."
+ },
+ {
+  "ma": "D3.32a@p61",
+  "noi_dung": "Giải phương trình: $x^3+x^2-6x=0$."
+ },
+ {
+  "ma": "D3.32b@p61",
+  "noi_dung": "Giải phương trình: $2x^3+x^2-x+3=0$."
+ },
+ {
+  "ma": "D3.33@p61",
+  "noi_dung": "Giải phương trình: $(x+1)(x+2)(x+4)(x+5)=40$."
+ },
+ {
+  "ma": "D3.34@p62",
+  "noi_dung": "Giải phương trình: $(2x+1)(x+1)^2(2x+3)=18$."
+ },
+ {
+  "ma": "D3.35@p62",
+  "noi_dung": "Giải phương trình: $(x-3)(x-5)(x-6)(x-10)=24x^2$."
+ },
+ {
+  "ma": "D3.36@p63",
+  "noi_dung": "Giải phương trình: $(x-6)^4+(x-8)^4=272$."
+ },
+ {
+  "ma": "D3.37@p63",
+  "noi_dung": "Giải phương trình: $x^4-3x^3+2x^2-9x+9=0$."
+ },
+ {
+  "ma": "D3.44@p66",
+  "noi_dung": "Giải phương trình: $x^2-x-18+\\dfrac{72}{x^2-x}=0$."
+ },
+ {
+  "ma": "D3.45@p66",
+  "noi_dung": "Giải phương trình: $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}=\\dfrac{3}{10}$."
+ },
+ {
+  "ma": "D3.46@p67",
+  "noi_dung": "Giải phương trình: $\\dfrac{2}{x^2+4x+3}+\\dfrac{5}{x^2+11x+24}+\\dfrac{2}{x^2+18x+80}=\\dfrac{9}{52}$."
+ },
+ {
+  "ma": "D3.47@p67",
+  "noi_dung": "Giải phương trình: $x^2+\\dfrac{4x^2}{(x+2)^2}=12$."
+ },
+ {
+  "ma": "D3.48@p68",
+  "noi_dung": "Giải phương trình sau (với $m$ là tham số): $\\dfrac{x-2}{x-m}=\\dfrac{x-1}{x+2}$."
+ },
+ {
+  "ma": "D3.49a@p68",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 9 – TP. Hồ Chí Minh, năm học 2003 – 2004) Giải phương trình: $\\dfrac{1}{x-1}+\\dfrac{2x^2-5}{x^3-1}=\\dfrac{4}{x^2+x+1}$."
+ },
+ {
+  "ma": "D3.49b@p68",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 2003 – 2004) Giải phương trình: $x^2+\\left(\\dfrac{x}{x+1}\\right)^2=\\dfrac{5}{4}$."
+ },
+ {
+  "ma": "D3.59@p72",
+  "noi_dung": "Một người đi xe gắn máy từ thành phố A đến thành phố B cách nhau $200$ km. Cùng lúc đó có một người đi xe gắn máy khác từ B đến A. Sau $5$ giờ hai xe gặp nhau. Nếu sau khi đi được $1$ giờ $15$ phút mà người đi từ A dừng lại $40$ phút rồi mới đi tiếp thì phải sau $5$ giờ $22$ phút kể từ lúc khởi hành, hai người mới gặp nhau. Tính vận tốc của mỗi người?"
+ },
+ {
+  "ma": "D3.60@p73",
+  "noi_dung": "Năm ngoái, tổng số dân của hai tỉnh A và B là $4$ triệu người. Dân số tỉnh A năm nay tăng $1{,}2\\%$; còn tỉnh B tăng $1{,}1\\%$. Tổng số dân hai tỉnh năm nay là $4045000$ người. Tính số dân của mỗi tỉnh năm ngoái."
+ },
+ {
+  "ma": "D3.61@p73",
+  "noi_dung": "Trong một cái giỏ đựng một số táo. Đầu tiên người ta lấy ra một nửa số táo và bỏ lại $5$ quả, sau đó lấy thêm ra $\\dfrac{1}{3}$ số táo còn lại và lấy thêm $4$ quả. Cuối cùng trong giỏ còn lại $12$ quả. Hỏi trong giỏ lúc đầu có bao nhiêu quả?"
+ },
+ {
+  "ma": "D3.62@p74",
+  "noi_dung": "Một tổ học sinh được tặng một số kẹo. Số kẹo này được chia hết và chia đều cho mọi người trong tổ. Để đảm bảo nguyên tắc chia, tổ trưởng đã đề xuất cách nhận phần kẹo của mỗi người như sau: Bạn thứ nhất nhận $1$ cái kẹo và được lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Sau khi bạn thứ nhất đã lấy phần mình, bạn thứ hai nhận $2$ cái kẹo và được lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Cứ tiếp tục như thế đến bạn cuối cùng thứ $n$ nhận $n$ cái kẹo và lấy thêm $\\dfrac{1}{11}$ số kẹo còn lại. Hỏi tổ học sinh nói trên có bao nhiêu bạn và mỗi bạn được nhận bao nhiêu cái kẹo?"
+ },
+ {
+  "ma": "D3.63a@p75",
+  "noi_dung": "(Đề thi học sinh giỏi Lê Quý Đôn môn Toán lớp 8, báo Khăn Quàng Đỏ, TP. Hồ Chí Minh, năm học 2006 – 2007) Tìm một số tự nhiên có $5$ chữ số, biết rằng nếu thêm chữ số $1$ vào bên phải số ấy thì được một số gấp $3$ lần số được tạo nên khi ta thêm chữ số $1$ vào bên trái số đã cho."
+ },
+ {
+  "ma": "D3.63b@p75",
+  "noi_dung": "(Đề thi Tuyển sinh vào lớp 10, Trường Phổ thông Năng khiếu ĐHQG TP. Hồ Chí Minh, năm học 2008 – 2009) Một sinh viên suýt bị tai nạn tàu hoả kể chuyện với các bạn: \"Khi đang đi trên cây cầu sắt (sử dụng cho tàu hoả) dài $120$ m thì tôi thấy một chiếc xe lửa tốc hành đang lao đến. Thay vì chạy cùng chiều với xe lửa, tôi quyết định chạy nước rút ngược chiều xe lửa. Dù là vô địch chạy nước rút của trường, tôi cũng chỉ chạy được với vận tốc $18$ km/giờ vì đang mang ba lô trên lưng. May mắn thay, khi tôi chạy đến đầu cầu bên này thì $2$ giây sau xe lửa mới đến nên tôi đã kịp tránh sang bên. Khi hoàn hồn, tôi tính được rằng nếu tôi chạy cùng chiều với xe lửa thì ngay khi đến đầu cầu bên kia tôi sẽ bị xe lửa đụng. May thật!\" Biết xe lửa chạy với vận tốc $72$ km/giờ, em hãy tính xem khi thấy xe lửa, anh sinh viên đang ở cách đầu cầu bên này bao nhiêu mét?"
+ },
+ {
+  "ma": "D3.64@p76",
+  "noi_dung": "Giải phương trình: $4x-7=x+11$."
+ },
+ {
+  "ma": "D3.65a@p76",
+  "noi_dung": "Giải phương trình: $x^3-25x=0$."
+ },
+ {
+  "ma": "D3.65b@p76",
+  "noi_dung": "Giải phương trình: $4x^2-49+5(2x-7)=0$."
+ },
+ {
+  "ma": "D3.65c@p76",
+  "noi_dung": "Giải phương trình: $2x^4+7x^3-9x^2=0$."
+ },
+ {
+  "ma": "D3.66a@p77",
+  "noi_dung": "Giải phương trình: $\\dfrac{x+9}{2000}+\\dfrac{x+11}{1998}=\\dfrac{x+13}{1996}+\\dfrac{x+15}{1994}$."
+ },
+ {
+  "ma": "D3.66b@p77",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-10}{1999}+\\dfrac{x-20}{1989}=\\dfrac{x-50}{1959}+\\dfrac{x-80}{1929}$."
+ },
+ {
+  "ma": "D3.67@p77",
+  "noi_dung": "Giải phương trình: $\\dfrac{2x-5}{3}-\\dfrac{3}{4}=\\dfrac{x+3}{6}-\\dfrac{x-2}{2}$."
+ },
+ {
+  "ma": "D3.68@p78",
+  "noi_dung": "Giải phương trình: $\\dfrac{5x-9}{6}+\\dfrac{2x-3}{9}=\\dfrac{-4x-3}{2}-\\dfrac{-7x+3}{3}$."
+ },
+ {
+  "ma": "D3.69a@p78",
+  "noi_dung": "Cho phương trình $(m-5)x+4m^2=10$. Giải phương trình với $m=-1$."
+ },
+ {
+  "ma": "D3.69b@p78",
+  "noi_dung": "Cho phương trình $(m-5)x+4m^2=10$. Tìm các giá trị của $m$ để phương trình đã cho nhận $x=-2$ làm nghiệm."
+ },
+ {
+  "ma": "D3.70@p78",
+  "noi_dung": "Một ô tô đi nửa quãng đường $AB$ với vận tốc $60$ km/h và đi nửa quãng đường còn lại với vận tốc $90$ km/h. Tính vận tốc trung bình của ô tô trên cả quãng đường $AB$."
+ },
+ {
+  "ma": "D3.71@p79",
+  "noi_dung": "Một con cá voi có: đầu dài $3$ m; mình dài bằng ba lần đầu và nửa đuôi; đuôi dài bằng một đầu và nửa mình. Tìm chiều dài con cá voi."
+ },
+ {
+  "ma": "D3.72@p79",
+  "noi_dung": "Cho một lượng dung dịch chứa $10\\%$ muối. Nếu pha thêm $200$ gam nước thì được một dung dịch $6\\%$. Hỏi có bao nhiêu gam dung dịch đã cho?"
+ },
+ {
+  "ma": "D3.73@p80",
+  "noi_dung": "Một vật thể chuyển động từ $A$ đến $B$ theo cách sau: đi được $5$ m dừng lại $1$ giây, rồi đi tiếp $10$ m dừng lại $2$ giây, rồi đi tiếp $15$ m dừng $3$ giây, $\\dots$ Cứ như vậy đi từ $A$ đến $B$ kể cả dừng hết tất cả $551$ giây. Tính khoảng cách từ $A$ đến $B$. Biết rằng khi đi vật thể luôn có vận tốc là $2{,}5$ m/giây."
+ }
+]

@@ -169,7 +169,10 @@ function CaTestCard({ c, now, deList, onChanged, onInDe, onSua, onHuy }: { c: Ca
   }
 
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const f = e.target.files?.[0]; if (!f) return
+    const f = e.target.files?.[0]
+    // Reset input NGAY: thất bại rồi chọn LẠI CÙNG file thì onChange không bắn (giá trị không đổi) ⇒ Ops bấm mãi không thấy gì.
+    e.target.value = ''
+    if (!f) return
     setBusy(true); setErr(null)
     try { const url = await uploadCaTestBai(f); await ganBaiCaTest(c.id, url); setBaiUrl(url) }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }

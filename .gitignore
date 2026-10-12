@@ -89,3 +89,6 @@ design/bk-ui-src/nho-xinh/
 
 # build output game ĐẤU TỪ (như dist-sukien)
 dist-dautu/
+
+# Phiếu lương TA tháng 9 xuất ra từ script (chứa số lương — không commit)
+scripts/luong-ta-t9/_out/

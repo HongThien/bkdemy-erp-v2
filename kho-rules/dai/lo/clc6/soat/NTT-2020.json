@@ -1,0 +1,29 @@
+{
+ "ma_de": "NTT-2020",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2020 · P1.2",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt và Bước 3 viết sẵn \"gấp lên 2×2 lần\" / \"lấy 2 nhân với 2\" — gần như lộ phép tính cuối. Đã viết lại trung tính (tích thay đổi theo cả hai thừa số; tích các số lần gấp), Phần 2 giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2020 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ý b: khẳng định \"trong 28; 32; 36 chỉ có 36 chia hết cho 3\" mà chỉ thử 36 (nhảy bước). Đã thêm tổng chữ số của 28 và 32 (10 và 5, không chia hết cho 3).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2020 · P2.1",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "\"Số học sinh của câu lạc bộ\" có thể hiểu lúc đầu (50 nam + 22 nữ = 72, bản soạn chọn) hoặc sau khi thêm 16 nam (66 + 22 = 88). Toán các bước đúng (nữ 22, nam đầu 50, nam sau 66 = 3×22); bản soạn 72 trùng ba nguồn nên có vẻ là đáp án đề, nhưng đề mơ hồ — CEO nên chốt.",
+   "da_sua": false
+  }
+ ]
+}

@@ -33,6 +33,8 @@ kho-rules/
     k4T-mau-thu.md          ← lô giải thử đang/đã duyệt của 4T (lô 1: 13 câu)
     k5T.md · k5T-mau-thu.md ← khối 5T (v0 04/10; 08/10 thêm hồ sơ sách 31 CĐ + bản đồ hiện có + kế hoạch §7)
     k6.md … k12.md          ← mỗi khối một file khi tới lượt (chưa có)
+    k8T.md                  ← SPEC khối 8T (10/10): nguồn 7 quyển sách HSG **scan** — luật 3 tầng kiến thức, trạm chép đề từ ảnh, khung chuyên đề cho bản đồ
+    lo/k8T/ho-so/<MÃ>.md    ← hồ sơ từng quyển sách của 8T (mục lục theo trang PDF · dạng · đếm · bẫy đọc)
     so-do/                  ← mô tả JSON + SVG sơ đồ đoạn thẳng của các câu mẫu
     lo/                     ← LÔ đã ghi / sắp ghi của từng khối (sự thật về câu đã ghi vẫn là DB):
                                k<khối>-<lô>.json (lô qua cổng) · .soan.json (bản model soạn) · .sua.json (bản sửa của người soát —
@@ -110,7 +112,12 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
   - Mỗi bước = **một đoạn riêng** mở bằng `**Bước k.**` (k đánh liên tục từ 1). Nội dung bước gói trong đoạn đó (nhiều dòng thì
     xuống dòng đơn, không dòng trống giữa — dòng trống là ranh giới card). Các đoạn `**Bước k.**` liên tiếp = một chuỗi card nối mũi tên.
   - `**Mấu chốt:**` đứng **trước** chuỗi card, `**Chú ý:**` / `Thử lại:` đứng **sau** — không phải bước.
-  - Chỉ **≥ 2 bước** mới dùng card. Bài một bước (vd đọc số La Mã, câu TN nhận biết) ⇒ Mấu chốt + Chú ý, không đánh "Bước 1".
+  - ⭐ **MỌI bài 3–6 bước** (CEO 09/10 tối, chốt khi hỏi "card 2 bước có sửa không": *"Sửa luôn cũng được"* — thay dòng cũ
+    "chỉ ≥ 2 bước mới dùng card"). Bài ngắn (một phép, đọc/viết số) ⇒ tách đúng **thao tác thật** thành 3 bước (vd đổi → làm phép →
+    viết kết quả đúng cách), không bịa bước "Đọc kĩ đề". Bài dài ⇒ gộp các việc cùng mục đích. Mỗi bước ≥ 5 chữ ngoài công thức,
+    không bước là công thức trần ("$S_2=S-S_1$."), không bước cụt ("Nhân hai kết quả."). Không ghi đáp số cuối trong các bước.
+    Bộ kiểm hình thức: `scripts/kho/sach/kiem-p1-card.mjs` (5T đã áp toàn bộ 836 câu — `kho-rules/dai/k5T.md` §8b).
+  - Không ghi "(như VD 8.1 của sách)" trong lời giải — HS không có cuốn sách.
   - Bước là **bước nghĩ** (làm gì, vì sao), không chép lại từng dòng tính của Phần 2.
   - Hiển thị card + mũi tên trên app / màn duyệt / bản in: ✅ 09/10 (§4 #8) — chỉ nhận chuỗi `**Bước k.**` **bên trong Phần 1**.
 - **Tách ý (CEO 09/10 — áp mọi khối):** chỉ tách các bài **"Tính / thực hiện phép tính"** và **"Tìm $x$"** có nhiều ý a) b) c) — mỗi ý một câu.
@@ -151,7 +158,8 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 |---|---|---|---|---|---|
 | 4T | `dai/k4T.md` | **Bước 2** đang chạy · bước 3 chờ CEO xong bản đồ 4T | **v1 (08/10)** | lô 1: 13 câu, CEO sửa 2 chỗ · lô 2: 20 câu, chốt 2 luật gán dạng · lô 3: 20 câu, sửa sơ đồ (đúng tỉ lệ) + mọi câu 2 phần · **lô 4: 20 câu, không sửa ⇒ v1** · giải hàng loạt lô 5–8: số câu đã ghi + phần còn lại ở `k4T.md` §8 | Toán arc 4 quyển 1 (Archimedes 2023) |
 | 5T | `dai/k5T.md` | **Bước 2** (giải toàn bộ sách) · bước 3 chờ CEO làm bản đồ 5T | **v1 (09/10)** | 4 lô sách 101 câu = một lượt qua mọi dạng (CĐ1–31 + Ôn tập), CEO duyệt ⇒ v1 · công thức WMF đọc qua MTEF nhúng · sơ đồ chuyển động (máy mới) · tiến độ bước 2: `k5T.md` §8b | Sách "Tài liệu tham khảo Toán 5" (31 CĐ + Ôn tập, 750 bài) — `k5T.md` §5 |
-| 8 | `dai/k8.md` | **Bước 1, chỉ HÌNH** (Đại tạm dừng, CEO 09/10) — B1–B3 xong, kế tiếp lô H1 | v0 (09/10) — lõi là **luật kiến thức theo thứ tự bài** (§1) | — | Bộ Word theo bài KNTT (C1 Đa thức · C3 Tứ giác · C4 Thalès; thiếu C2) — `E:\BK ACADEMY\Tài liệu tham khảo\K8` |
+| 8 | `dai/k8.md` | **Bước 1, chỉ HÌNH** (Đại tạm dừng, CEO 09/10) — Chương III Tứ giác đủ bài, thêm HH00111 Ôn tập chương. **Bộ đề giữa kì 1: 39 đề · 697 câu đã lên Kho đề thi 10/10** (chưa bấm Duyệt đề; câu ở dạng chờ `T108000000` + `HH08000000`; 22 câu chưa chắc ở `dai/k8-chua-chac.md`). **Đề cương giữa kì I (Ngôi Sao Hoàng Mai): 59 câu lên Kho đề thi tab Đề cương 12/10** (10 câu chưa chắc ở `dai/lo/k8/de-cuong/chua-chac.md`; k8.md §12) | v0 (09/10) — lõi là **luật kiến thức theo thứ tự bài** (§1); luật riêng cho đề ở §10 | — | Bộ Word theo bài KNTT (C1 Đa thức · C3 Tứ giác · C4 Thalès; thiếu C2) — `E:\BK ACADEMY\Tài liệu tham khảo\K8` |
 | 9 · Hình học (đường tròn) | `hinh/k9.md` | **6 bài phần Học HH00105–HH00110 (CEO 09/10)** — giải toàn bộ tài liệu lên `hinh_hoc_cau_hoi` chờ duyệt; sổ tay 22 dạng §2 | v0 (09/10) | khuôn 2 phần Hình (k8 §1.6) · ~360 câu · brief `hinh/mau-brief-soan-k9.md` · tiến độ `k9.md` §10 | 4 tài liệu `K9/Đường tròn` — `k9.md` §5 |
-| 6 | `dai/k6.md` | **Bước 1** — B1 đang bóc 56 đề (Gemini gõ, Claude soát) · B3 luật nháp từ kho K6 cũ (đề không có lời giải) | v0 (09/10) | — | 56 đề GKI + CKI Hà Nội 2024–26 (PDF, không đáp án) — `k6.md` §5. **Hai output** câu + đề (`spec-de-thi.md`); Hình Ch IV–V ⇒ HGT |
+| 6 | `dai/k6.md` | **Bước 2 XONG cho bộ đề (10/10)** — 45 đề · 828 câu trên Kho đề thi, chờ CEO duyệt; bước 3 chờ bản đồ K6 | v0.1 (luật theo lý thuyết bản đồ; Ch III–V chưa có lý thuyết ⇒ theo SGK) | lô thử = đề GKI-01 (CEO duyệt 09/10) · 44 đề còn lại: Sonnet soạn + Opus soát mù · câu chưa chắc `dai/k6-chua-chac.md` | 56 đề GKI + CKI Hà Nội 2024–26 (PDF, không đáp án). **Hai output** câu + đề (`spec-de-thi.md`); Hình Ch IV–V ⇒ HGT. Dây chuyền + brief: `k6.md` §8 |
+| 8T | `dai/k8T.md` | **Bước 2 + 3 gộp** (CEO 10/10: duyệt bản đồ, cho nhập thẳng — không đi vòng lô thử → v1) · bản đồ đã lên DB (5 chủ đề · 15 chuyên đề · 44 nhóm bài, có chuyên đề dùng chung "Kiến thức cơ bản"; Hình 18 bài) · câu vào thẳng nhóm bài và **tự duyệt** (`tu-duyet.mjs`, CEO 10/10 — riêng 8T) · tiến độ + câu treo: `k8T.md` §8 | v0.2 (10/10) — CEO: nâng cao là chính, không bám khối 8; **sách dùng công cụ gì kho dùng nấy**; chỉ nhập quyển có lời giải; bản đồ thô hơn khối 8; lời giải "giải hẳn hoi" nhưng nhịp nhanh | lô 1–2: 143 câu (NĐT Đại I: hằng đẳng thức, phân tích nhân tử, chia đa thức, ôn tập) · có lọc trùng (`scripts/kho/sach/loc-trung.mjs`) · dây chuyền sách scan `k8T.md` §7 | 6 quyển sách HSG Toán 8 có lời giải (PDF scan 1.650 trang, ≈ 880 ví dụ + ≈ 2.700 bài tập); quyển thứ 7 không lời giải ⇒ không nhập — `E:\BK ACADEMY\Tài liệu tham khảo\8T\HSG`; hồ sơ `dai/lo/k8T/ho-so/` |
 | 7, 9 (Đại, Hình khác), 10–12 | — | chưa | — | — | chờ CEO đưa sách mẫu từng khối |

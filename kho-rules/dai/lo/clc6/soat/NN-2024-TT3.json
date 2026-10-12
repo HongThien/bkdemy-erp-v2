@@ -1,0 +1,29 @@
+{
+ "ma_de": "NN-2024-TT3",
+ "so_cau": 7,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2024-TT3 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 viết thẳng \"$2\times 2=4$\" cho hiệu hai vận tốc mà không nêu vì sao (xuôi dòng = vận tốc ca nô + vận tốc dòng, ngược dòng = ca nô − dòng); HS phải tự bù bước then chốt (ý này chỉ có ở Phần 1). Đã thêm một câu giải thích ngay trước dòng tính; đáp số và các dòng khác giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024-TT3 · P1.5",
+   "muc": "hoi",
+   "loai": "sơ đồ",
+   "mo_ta": "Bài chuyển động (hai xe ngược chiều gặp nhau) không có sơ đồ, vì đề không cho độ dài quãng đường nên máy vẽ chuyển động (cần vị trí thật) không dùng được; người soạn đã ghi ghi_chu_nghi. Luật 5T yêu cầu mọi bài chuyển động có quãng đường đều có sơ đồ — CEO quyết định có chấp nhận ngoại lệ \"quãng đường không cho số\" hay không. Lời giải (cách coi cả quãng đường là 1 đơn vị) và đáp số 2 giờ 55 phút đều đúng: 1/5+1/7=12/35; 1:12/35=35/12 giờ=2 giờ 55 phút.",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "NN 2024-TT3 · P2.1",
+   "muc": "hoi",
+   "loai": "cách chuẩn",
+   "mo_ta": "Ý b) toán đúng (đã giải độc lập: 250000 và 300000; thử lại: còn lại 150000 và 250000, hiệu 100000) nhưng cách \"tính ngược phân số, viết số tiền mang đi của hai bác theo số tiền còn lại của bác Minh\" khá dày đặc với HS lớp 5. Dạng \"hai phân số tiêu, biết hiệu số tiền còn lại\" chưa có cách chuẩn trong k5T §2b (người soạn đã ghi ghi_chu_nghi); không sửa vì chưa có cách chuẩn để so, cần CEO chốt.",
+   "da_sua": false
+  }
+ ]
+}

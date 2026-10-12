@@ -1,0 +1,29 @@
+{
+ "ma_de": "NN-2024-TT2",
+ "so_cau": 7,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2024-TT2 · P2.1",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Sơ đồ chia tổng số vở thành 6 phần (An 2, Toàn 1, Giao+Thông 3) nhưng Phần 2 chưa nói vì sao An là 2 phần (1/3 = 2/6) và Giao+Thông là 3 phần; HS phải tự bù bước. Đã thêm hai dòng: quy đồng 1/3 = 2/6 và 6-2-1 = 3 trước dòng \"Ta có sơ đồ:\". Số lần \"Ta có sơ đồ:\" và so_do_mo_ta không đổi.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024-TT2 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Đoạn chứng minh S_ACN/S_DCN = S_ACM/S_DCM (ý b) đúng nhưng câu chữ rối (\"cả bốn tam giác cùng có hai đường cao\"). Viết lại thành ba dòng: hai tam giác chung đáy CN có tỉ số diện tích bằng tỉ số hai đường cao hạ từ A, D xuống CN; tương tự cho đáy CM; suy ra hai tỉ số bằng nhau. Toán không đổi, đáp số 4/3 và 4/5 giữ nguyên (đã kiểm bằng toạ độ: AN:ND = 4:5).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024-TT2 · P1.5",
+   "muc": "hoi",
+   "loai": "cách chuẩn",
+   "mo_ta": "Đáp số 1,5 km đúng (d/10 - d/15 = d/30 = 50 m nên d = 1500 m). ghi_chu_nghi chỉ nêu hai cách \"yếu\" (phương trình, thử phương án) mà bỏ sót đối thủ thật của cách đã chọn: cách \"phân số của quãng đường\" (1 phút hàng ngày đi 1/15 quãng đường, sáng nay 1/10; hiệu 1/10 - 1/15 = 1/30 quãng đường ứng với 50 m nên quãng đường là 50 x 30 = 1500 m) — cũng bám quan hệ gốc s = v x t, không cần sơ đồ hiệu–tỉ, và hợp §2b dòng D (\"phân số ứng với\"). Cách đã viết (đảo tỉ số thời gian thành tỉ số vận tốc rồi hiệu–tỉ) cũng đúng và là cách phổ biến của CĐ28; để CEO chốt cách nào làm chuẩn cho dạng \"cùng quãng đường, hai vận tốc, biết hiệu vận tốc\". Không sửa.",
+   "da_sua": false
+  }
+ ]
+}

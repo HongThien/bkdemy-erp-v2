@@ -8,7 +8,7 @@
 > Khuôn đã chạy trọn ở 4T (`k4T.md` v1 — §1.5, §7); luật 4T áp cho 5T trừ chỗ ghi khác ở đây.
 >
 > **Bước 1 đã làm:** B1 đọc sách (công thức WMF ra LaTeX 1.031/1.031 — §5) · B2 tách bài (750 bài) · B3 rút khuôn từ 82 VÍ DỤ (§1 cho phép, §2b)
-> · B4 một lượt qua các dạng: 4 lô, 101 câu (cuối `k5T-mau-thu.md`). **Bước 2 XONG 09/10:** 830 câu từ sách vào dạng chờ, danh sách treo ở §8b. Hình đề hỏng (13 bài) vẽ lại bằng code (§1).
+> · B4 một lượt qua các dạng: 4 lô, 101 câu (cuối `k5T-mau-thu.md`). **Bước 2 XONG 09/10:** 836 câu từ sách vào dạng chờ, danh sách treo ở §8b. Hình đề hỏng (13 bài) vẽ lại bằng code (§1).
 > Bản đồ 5T mới phủ ~9/31 chuyên đề (§6) — bản đồ là việc của CEO.
 
 ## 0. Nguyên tắc gốc
@@ -58,7 +58,7 @@ phải hiểu được. Nếu một bước chỉ giải được bằng cách "
 
 ## 1.5 ⭐ Mỗi lời giải CHIA 2 PHẦN (CEO 04/10)
 
-> **⭐ Phần 1 nhiều bước ⇒ mỗi bước một CARD, mũi tên sang card kế (CEO 09/10, `kho-rules/README.md` §3):** mỗi bước là một đoạn riêng mở bằng `**Bước k.**`; `**Mấu chốt:**` đứng trước chuỗi bước, `**Chú ý:**` đứng sau; chỉ dùng khi ≥ 2 bước. **Tách ý** chỉ cho bài *Tính* và *Tìm $x$*; bài lời văn giữ chung một câu.
+> **⭐ Phần 1 nhiều bước ⇒ mỗi bước một CARD, mũi tên sang card kế (CEO 09/10, `kho-rules/README.md` §3):** mỗi bước là một đoạn riêng mở bằng `**Bước k.**`; `**Mấu chốt:**` đứng trước chuỗi bước, `**Chú ý:**` đứng sau; **mọi bài 3–6 bước**, mỗi bước một ý trọn vẹn (CEO 09/10 tối). **Tách ý** chỉ cho bài *Tính* và *Tìm $x$*; bài lời văn giữ chung một câu.
 
 HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái được viết vào bài thi* ⇒ tách hẳn:
 
@@ -123,6 +123,7 @@ HS đọc lời giải dễ lẫn giữa *giải thích cách nghĩ* và *cái �
 | F | Dãy phân số mẫu gấp đôi (lô 1 câu 11; sách 5T không có VD) | ① "$2\times B-B$" · ② viết mỗi số hạng thành hiệu hai phân số | ① | ✅ **①** |
 | G | Tìm $a\%$ của một số (CĐ14–17) | ① $200\times 25\%$ (Tóm tắt CĐ15, VD 15.2) · ② $200\times 25:100$ (VD 16.1–16.3) | ① — đồng bộ cả CĐ14–17; chiều ngược $M:b\%$ | ✅ **①** $M\times a\%$ · ngược $M:b\%$ |
 | — | Hai tỉ số (CĐ8) | phân số của đại lượng không đổi | — | ✅ CEO 08/10: không sơ đồ |
+| H | Một đại lượng = TÍCH hai đại lượng, đề cho **phần trăm thay đổi** (doanh thu = giá vé × số người; diện tích = dài × rộng; quãng đường = vận tốc × thời gian) — đề CLC LTV 2018 câu 4 | ① giả sử một số cụ thể ("lúc đầu có 100 khán giả") rồi tính từng đại lượng · ② tỉ số phần trăm của từng đại lượng so với lúc đầu rồi nhân/chia các tỉ số | ② | ✅ **②** (CEO 10/10): "Doanh thu sau so với ban đầu: $100\%+8\%=108\%$ · Khán giả sau so với ban đầu: $100\%+20\%=120\%$ · Giá vé so với ban đầu: $108\%:120\%=90\%$ · Giá vé sau: $40000\times 90\%=36000$". **Mấu chốt phải nêu công thức gốc** (Doanh thu = giá vé × số người) và ý "hai đại lượng trong phép tính thay đổi thì đại lượng còn lại thay đổi tương ứng". Nhân/chia hai tỉ số % viết thêm bước số thập phân ($108\%:120\%=1,08:1,2=0,9=90\%$) |
 
 ## 3. Định dạng (giữ quy ước kho Đại)
 
@@ -235,7 +236,7 @@ chuyên đề sách. Bảng này là **tư liệu cho CEO làm bản đồ**, kh
 | Bước | Ai | Việc của 5T | Trạng thái |
 |---|---|---|---|
 | **1. Rút luật giải** | Claude giải thử · CEO duyệt | B1 đọc sách ✅ → B2 hồ sơ + `tach-bai` ✅ → B3 nâng luật theo "Bài làm" ✅ (§1 cho phép) → B4 **giải một lượt qua MỌI dạng bài của sách** (31 CĐ, mỗi dạng ít nhất 1 câu; lập bảng dạng ↔ lô, ưu tiên CĐ chưa có trong kho: %, hình học, chuyển động, giả thiết tạm, khử…), chia lô 10–20 câu → CEO duyệt từng lô → ghi §9 → nâng luật → đủ dạng và lô cuối không bị sửa ⇒ **v1** | ✅ **v1 (09/10)** — 4 lô, 101 câu, một lượt qua mọi dạng; CEO duyệt |
-| **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu có hình đề: dùng đường hình đề của 4T (`kho-rules/dai/hinh-de/dung-hinh-de.ps1` + manifest `5T.json`, cột `anh_de` ở cổng ghi) — khoảng 60 bài hình sách dùng được; 13 bài hình hỏng vẽ lại bằng code (CEO 09/10) | ✅ Xong 09/10 — 830 câu, treo + việc nợ ở §8b |
+| **2. Giải toàn bộ tài liệu** | Claude (dây chuyền README §2b) | Giải **hết** sách — 31 chuyên đề **và** phần Ôn tập kiến thức trọng tâm — ghi `--chua-gan-dang` vào `T15T000000`, `da_duyet=false`. Câu có hình đề: dùng đường hình đề của 4T (`kho-rules/dai/hinh-de/dung-hinh-de.ps1` + manifest `5T.json`, cột `anh_de` ở cổng ghi) — khoảng 60 bài hình sách dùng được; 13 bài hình hỏng vẽ lại bằng code (CEO 09/10) | ✅ Xong 09/10 — 836 câu, Phần 1 card 3–6 bước, treo ở §8b |
 | **3. Xếp vào bản đồ** | **CEO làm bản đồ 5T** · Claude xếp · CEO duyệt | Khi CEO xong bản đồ 5T (ERP › Học thuật › Bản đồ mới) ⇒ Claude viết §8 (dấu hiệu nhận dạng theo bản đồ mới) rồi xếp mọi câu dạng chờ + câu 5T cũ vào bản đồ → CEO duyệt | Chờ bản đồ |
 
 **271 câu Số thập phân giải lại 04/10:** CEO 08/10 *"giải là duyệt luôn"* ⇒ duyệt ngay ở màn Duyệt lời giải AI › Lời giải mới từ Claude (câu đã có dạng T15T0202 nên bấm duyệt được), **không chờ bước 3**. 2 câu cờ `nghi` (T15T020205020 đề nghi sai số liệu · T15T020206068 đề mơ hồ) cần người xem kỹ. Bước 3 vẫn xếp lại chúng vào bản đồ mới như mọi câu.
@@ -257,26 +258,56 @@ Danh tính câu: `ten_de_goc = "Toán 5 TLTK · <mã bài>"` (mã của `tach-ba
 | 10A (09/10) | Ôn tập I–V | **43** (`T15T000000742`–`784`) | 9 sơ đồ Opus ký. Bỏ sơ đồ ON 20, 21 (nhãn tổng là kết quả suy ra sau — lộ đáp số, không giúp bước chia hết); ON 24 nhãn hiệu 300 ⇒ "số tròn trăm". Ghi nhận để CEO xem: ON 10 câu B mẫu gấp 3 dùng $3\times B-B$ (mở rộng dòng F §2b) · ON 11 câu P gọi tổng phân số là $T$ · ON 26 hai đáp số 62 và 83 (loại 20, 41 vì dư 6 không bé hơn số chia) |
 | 11C (09/10) | Ôn tập có hình (ON 90–102, 119–121) | **16** (`T15T000000785`–`800`) | Lô hình đầu tiên: đầu vào `dau-vao-soan --co-hinh`, Sonnet mở từng hình. Đáp số khớp; ON 97 không hàm (tỉ số = 1, kiểm tay). Sửa ON 99 (bước cộng diện tích ghi rõ $S_{ADC}$ thay $S_{DBC}$) · ON 102 câu giải thích hình 1/hình 2 · ON 91 chính tả đề ("thảng") ⇒ cờ nghi. Hiểu theo hình: ON 94 F là giao DE với BC kéo dài (đáp số b: BC = CF) · ON 97 F là giao AE với DC kéo dài · **ON 119 đếm 9 cách dựa trên hướng mũi tên bị che một phần — CEO xem** |
 | 11B (09/10) | CĐ20–24 có hình | **19** (`T15T000000801`–`819`) | Đáp số khớp (LT 20.16 so sánh, không hàm). Opus mở lại 4 hình có số đọc từ hình: LT 21.5 (8 cm = cạnh IH, 4 cm = FB ⇒ AB = 12) · LT 21.13 (3 cm là bán kính) · LT 21.14 (4 cung tâm ở đỉnh, bán kính 2) · LT 23.3 (9 × 6 × 5) — đều khớp. VD 20.1 hai hình thang giữ một câu (sách chỉ giải b). LT 21.11–21.13 dùng "Gọi $r$ là bán kính" để viết $r\times r$ như VD 21.2/21.3 của sách |
-| 11A (09/10) | CĐ18–19 có hình | **24** (`T15T000000820`–`843`) | Đáp số 30/30 khớp bộ kiểm; ghi 24. **Sửa đề VD 18.2**: sách in "AB = 36 … Trên AB lấy điểm M" (không giải được) và dính cả phần "Bài làm" của sách vào đề ⇒ đề kho "BC = 36 … Trên BC lấy điểm M" theo hình + lời giải mẫu (cờ nghi). Chính tả đề 6 câu (cờ nghi). LT 19.23 hình vẽ M gần trung điểm AC nhưng đề chữ AM = $\frac{2}{3}$MC ⇒ theo đề chữ. **Treo 6:** LT 19.7, 19.15 (đề chỉ là ô trống …/… theo 4 hình ghép, vài điểm không có chấm chia ⇒ phải đoán bằng mắt) · LT 19.27–19.30 (bản soạn tìm vị trí giao điểm bằng "hai tỉ số bằng nhau ⇒ tổng tử/tổng mẫu cùng tỉ số" — kiến thức lớp 7; chờ CEO chốt cách lớp 5). Bản soạn cả 6 câu còn trong `lo/k5T-lo11A.soan.json` |
+| 11A (09/10) | CĐ18–19 có hình | **24** (`T15T000000820`–`843`) | Đáp số 30/30 khớp bộ kiểm; ghi 24. **Sửa đề VD 18.2**: sách in "AB = 36 … Trên AB lấy điểm M" (không giải được) và dính cả phần "Bài làm" của sách vào đề ⇒ đề kho "BC = 36 … Trên BC lấy điểm M" theo hình + lời giải mẫu (cờ nghi). Chính tả đề 6 câu (cờ nghi). LT 19.23 hình vẽ M gần trung điểm AC nhưng đề chữ AM = $\frac{2}{3}$MC ⇒ theo đề chữ. **Treo 6:** LT 19.7, 19.15 (đề chỉ là ô trống …/… theo 4 hình ghép, vài điểm không có chấm chia ⇒ phải đoán bằng mắt) · LT 19.27–19.30 (bản soạn tìm vị trí giao điểm bằng "hai tỉ số bằng nhau ⇒ tổng tử/tổng mẫu cùng tỉ số" — kiến thức lớp 7; chờ CEO chốt cách lớp 5). Bản soạn cả 6 câu còn trong `lo/k5T-lo11A.soan.json` ⇒ **đã xử lý ở 11D** |
+| 11D (09/10 tối) | 6 câu treo của 11A | **6** (`T15T000000844`–`849`) | CEO chốt: LT 19.27–19.30 viết lại **cách lớp 5** — hai tam giác chung đáy thì tỉ số diện tích = tỉ số hai đường cao, chuyển sang cặp tam giác nhỏ cùng đáy, cùng hai đường cao (19.29 thành tổng – tỉ, 19.30 thành hiệu – tỉ qua hai tam giác lớn chung đỉnh E). LT 19.7, 19.15 **viết lại đề** nêu rõ dữ kiện từng ý (giữ hình ghép) ⇒ cờ nghi kiem-doc (đề lệch sách — cố ý); bộ kiểm 2 câu này nâng lên đủ mọi ý. Opus viết, đáp số khớp |
 
-**BƯỚC 2 XONG (09/10): 830 câu từ sách** (`T15T000000014`–`843`). Không câu nào bị sót: mỗi bài sách hoặc đã ghi, hoặc trùng câu kho cũ
+**BƯỚC 2 XONG (09/10): 836 câu từ sách** (`T15T000000014`–`849`). Không câu nào bị sót: mỗi bài sách hoặc đã ghi, hoặc trùng câu kho cũ
 (39 bài lọc ở đầu vào + 12 câu cổng ghi không chèn ở 7A + ON 64 ≡ LT 7.17), hoặc nằm trong danh sách treo dưới.
 **Treo (cần người):** 25 VD lời giải lẫn trong đề (VD 1.1–1.5, 4.1–4.2, 10.1–10.2, 11.1–11.3, 12.1–12.7, 13.1, 14.1–14.2, 15.1–15.3 — sách in đề và bài giải liền nhau) ·
 bảng đọc lộn LT 18.2, 18.3, 20.1, 21.1 (×2), 27.1, 27.2 · VD 29.2, 31.1, 31.2 · VD 25.1 (nhãn ý lặp) · LT 21.3a (số nghi in sai) · LT 10.6d (trùng VD 10.3) ·
-hình: LT 18.1 (bài vẽ), LT 21.10, LT 23.1 (khối đen che hình), VD 20.2 (đề lẫn lời giải), VD 23.1 (đề nói "như hình vẽ" mà sách không có hình) · LT 19.7, 19.15, 19.27–19.30 (dòng 11A).
-**Việc còn nợ:** lô 5 (CĐ1–6, 143 câu) viết Phần 1 trước luật card ⇒ phải chuyển sang `**Bước k.**`.
+hình: LT 18.1 (bài vẽ), LT 21.10, LT 23.1 (khối đen che hình), VD 20.2 (đề lẫn lời giải), VD 23.1 (đề nói "như hình vẽ" mà sách không có hình).
+**PHẦN 1 = CARD 3–6 BƯỚC CHO TOÀN BỘ 836 CÂU (09/10 tối, CEO "sửa luôn"):** đo 532 câu lệch khuôn (314 chưa có bước — lô thử + lô 5 +
+câu một bước; 180 card 2 bước; 1 card 8 bước; 37 câu có bước vụn) ⇒ 8 Sonnet viết lại CHỈ Phần 1 theo `scratchpad/card/brief-card.md`
+(giữ ý Mấu chốt/Chú ý cũ, bám thứ tự phép Phần 2, không ghi đáp số cuối), bộ kiểm `scripts/kho/sach/kiem-p1-card.mjs`, Opus đọc mẫu, bỏ 29
+chú thích "(như VD … của sách)"; ghi đè 1 transaction, mỗi câu `where loi_giai = bản đo` (Phần 2 giữ nguyên từng ký tự; trigger
+`trg_log_kho_sua` tự ghi vết nguồn `may`). Sau ghi: 836/836 đạt, phân bố {3: 595, 4: 226, 5: 14, 6: 1}.
+**Bản Phần 1 hiện hành nằm ở DB + `lo/k5T-card-3-6.json`** — Phần 1 trong các tệp `lo/k5T-lo*.json` cũ hơn, đừng ghi ngược lại.
 
 **Lệnh một lô (khuôn 5T):** lô thử: `soan-tu-mau-thu.mjs` (md → bản soạn, đáp án tay `lo/k5T-dap-an-tay.json`) · lô hàng loạt: `dau-vao-soan` → Sonnet soạn
 ⇒ rồi chung: `lo-tu-soan.mjs <soan> <bai.json> --khoi 5T --lo N --so-do-dir kho-rules/dai/so-do --hinh-de kho-rules/dai/hinh-de/5T.json` →
 bộ kiểm thêm hàm vào `lo/k5T-kiem.mjs` → Sonnet xem ảnh sơ đồ ký `kiem-hinh-b` → `ghi-lo.mjs … --sach "Toán 5 TLTK" --chua-gan-dang` chạy thử → `--ghi`.
 
 
-## 8. GÁN DẠNG — chưa viết
+## 8. GÁN DẠNG — làm theo từng chuyên đề, CEO xong bản đồ phần nào xếp phần đó (bắt đầu 11/10)
 
-Viết ở bước 3, khi CEO xong bản đồ 5T: bảng dấu hiệu nhận dạng theo chủ đề nhiều dạng + bảng chỗ bản đồ chưa có dạng, đúng khuôn `k4T.md` §5.
+Bảng dấu hiệu nhận dạng viết dần theo từng chuyên đề CEO làm xong, đúng khuôn `k4T.md` §5.
 Luật chung đã chốt ở 4T áp luôn: **phương pháp thắng chủ đề** (giải bằng tổng–hiệu ⇒ dạng tổng–hiệu dù câu nằm ở chuyên đề khác) ·
 không khớp ⇒ dạng chờ, không ép · bài nhiều ý độc lập tách rồi gán từng ý · CEO duyệt một câu vào dạng mà bảng thiếu đang liệt kê ⇒ xoá
 dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T) · kiểm bằng model khác gán MÙ.
+
+**Lệnh một lượt gán:** dựng `lo/k5T-gan-<tên>.json` (dạng trạm làm chọn + dạng trạm kiểm gán mù) → `node scripts/kho/sach/gan-dang.mjs <tệp>` (chạy thử, ROLLBACK)
+→ `--ghi`. Script chỉ gán câu HAI TRẠM RA CÙNG DẠNG; câu lệch ở lại dạng chờ và in ra cho CEO chốt. Chỉ đổi `dang_chinh` (bản đồ `dai_ban_do` — "kho cũ"),
+không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi dạng.
+
+### 8.1 Chuyên đề `T15T0301` Tỉ lệ thuận – Tỉ lệ nghịch (CEO tạo 11/10, 4 dạng, chưa có mô tả nhận biết) ↔ CĐ5 của sách + ON 66–71
+
+| Dạng | Dấu hiệu (theo phương pháp của lời giải đã ghi kho) | Câu đã gán 11/10 |
+|---|---|---|
+| `030101` Cơ bản về tỉ lệ thuận | hai đại lượng cùng tăng cùng giảm; rút về 1 đơn vị rồi nhân / chia | VD 5.1 · LT 5.1 · ON 66 |
+| `030102` Cơ bản về tỉ lệ nghịch | một đại lượng không đổi (cả công việc / số tiền / số gạo) = tích hai đại lượng kia; tính tích rồi chia | VD 5.2 · LT 5.6 · LT 5.7 · ON 67 |
+| `030103` Tỉ lệ kép | BA đại lượng cùng đổi (người – ngày – sản phẩm…); rút về "1 người trong 1 ngày" (§2b dòng C) | VD 5.3 · LT 5.13–5.21 · ON 70 · ON 71 |
+| `030104` Thay đổi số người | đề có SỰ KIỆN đổi số người (thêm người đến / bớt người đi), **hai loại, cùng một dạng**: ① đổi **từ đầu** (tính số người mới, hoặc tìm số người thêm / bớt) · ② đổi **giữa chừng** (làm / ăn được mấy ngày rồi mới đổi ⇒ xét phần việc / số gạo CÒN LẠI) | ① LT 5.2 · 5.3 · 5.4 · 5.5 · 5.8 · 5.9 · ② LT 5.10 · 5.11 · 5.12 · ON 68 · ON 69 |
+
+- **⭐ CEO chốt 11/10:** *"thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* ⇒ bài có thêm / bớt người vào `030104`
+  dù lời giải chỉ là một phép tỉ lệ cơ bản cộng một phép cộng / trừ, dù nền là tỉ lệ thuận (LT 5.2–5.5) hay tỉ lệ nghịch (LT 5.8, 5.9).
+  Ở đây **dấu hiệu đề thắng "phương pháp"** — ngoại lệ có chủ ý của luật "phương pháp thắng chủ đề". (Trước khi CEO chốt: Opus xếp 6 câu này vào dạng cơ bản, Sonnet gán mù xếp `030104`.)
+- **⏳ Còn hỏi CEO (3 câu đang ở dạng cơ bản, hai trạm cùng ý lúc chưa có luật trên):** ON 67 ("muốn xong trong 16 ngày thì cần **thêm** bao nhiêu người nữa") ·
+  LT 5.1 ("phải huy động **thêm** bao nhiêu xe") · LT 5.7 ("cần sử dụng **thêm** bao nhiêu máy bơm") — cùng khuôn với LT 5.4 / 5.8 (tìm lượng thêm), nhưng đề đổi MỤC TIÊU
+  (số ngày, số tấn, số giờ) chứ không kể sự kiện người đến / đi, và LT 5.1, 5.7 là xe / máy chứ không phải người.
+- **Không thuộc chuyên đề này, để nguyên dạng chờ** (tỉ lệ thuận chỉ là một bước của bài khác): LT 11.7 · LT 11.12 · LT 20.7 · LT 22.5 · LT 22.14
+  (diện tích rồi mới "cứ … thì …") · LT 17.12 · LT 17.13 (tỉ số %) · VD 28.1–28.2 · LT 28.4 · 28.6–28.9 (chuyển động: vận tốc – thời gian) — chờ bản đồ các chuyên đề ấy.
+- Dữ liệu lượt gán: `lo/k5T-gan-tile.json` (30 câu: 24 gán, 6 lệch) · `lo/k5T-gan-tile-2.json` (6 câu lệch, gán sau khi CEO chốt). Cả 30 câu đã vào bản đồ
+  (`030101`: 3 · `030102`: 4 · `030103`: 12 · `030104`: 11). Dạng chờ 5T còn 819 câu.
 
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
@@ -296,3 +327,4 @@ dòng thiếu ngay (nếu không luật tự mâu thuẫn — đã cắn ở 4T)
 | 09/10 | Lô sách 2 — 2 câu hỏi | *"1. Kiểu 1. 2. Có, viết thêm cho dễ hiểu."* | §2b dòng G chốt ①; §1: nhân hai tỉ số phần trăm viết thêm bước đổi số thập phân — đã sửa lô 2 câu 24, 26. |
 | 09/10 | Lô 3 + lô 4 — 4 câu hỏi | *"1. OK · 2. Câu đấy nên viết đầy đủ là Tam giác AMC và ABC có chung đường cao hạ từ … suy ra … · 3. Vẽ được sơ đồ minh hoạ là chuẩn. Bài chuyển động rất cần · 4. Bài thêm bớt chữ số bên trái bên phải là bài toán tỉ số, giải kiểu sơ đồ được. Còn bài đề cho cấu tạo số thì giải như cấu tạo số."* | §1: hình hỏng vẽ lại bằng code; tỉ số diện tích viết đầy đủ câu (sửa lô 3, 7 dòng); chuyển động bắt buộc sơ đồ minh hoạ — máy vẽ mới `so-do-chuyen-dong.mjs`, chèn 11 câu lô 4; cấu tạo số tách 2 loại. |
 | 09/10 | Cả 4 lô sách (101 câu) | *"OK rồi. Lên V1 thôi."* | **v1.** Sang bước 2: giải toàn bộ sách theo dây chuyền README §2b, ghi dạng chờ. |
+| 11/10 | Gán dạng chuyên đề Tỉ lệ thuận – nghịch: 6 câu thêm / bớt người từ đầu (LT 5.2–5.5, 5.8, 5.9) | *"Thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* | §8.1: `030104` gồm cả hai loại; ở dạng này dấu hiệu đề (có người đến / đi) thắng phương pháp. 6 câu đã gán `030104`. |

@@ -1,4 +1,4 @@
-import { Children, Fragment, useEffect, useRef, useState, type CSSProperties } from 'react'
+import { Children, Fragment, useContext, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
@@ -12,6 +12,7 @@ import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/u
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
+import { AnhMmCtx } from './anhMmCtx'
 
 // Bộ đếm render TOÀN CỤC → mỗi lần dựng trang có 1 class scope riêng (`pv-scope-N`) gắn lên container.
 // CSS chrome (::before/::after) prefix bằng class này ⇒ stylesheet paged.js chèn vào <head> chỉ khớp ĐÚNG
@@ -435,10 +436,16 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
   return out
 }
 
-function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: {
+type DocProps = {
   full: TaiLieuFull; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string
   perHS?: boolean; roster?: { id: string; ho_ten: string }[]; ngayNop?: string; lopTen?: string
-}) {
+}
+// Bọc context cỡ ảnh IN theo câu (cau_hinh.anhMmByCau — Thùy 12/10) để mọi <AnhDe> bên trong đọc được mà khỏi khoan prop.
+function Doc(props: DocProps) {
+  return <AnhMmCtx.Provider value={props.full.taiLieu.cau_hinh?.anhMmByCau ?? {}}><DocInner {...props} /></AnhMmCtx.Provider>
+}
+
+function DocInner({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: DocProps) {
   const { taiLieu, phans, ltChuyenDe, tenChuyenDe } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
@@ -446,7 +453,7 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
   const colByCau = ch.colByCau ?? {}
   // ⭐ 21/09 (CEO): 3 chế độ IN hình — chỉ áp cho nhánh 'hinh_hoc' (Hình học Bài). Nhánh khác → undefined
   //   → cauItemParts dùng default 'hien' (in ảnh nếu có), y hành vi cũ.
-  const hinhCheDoByCau: Record<string, CheDoHinh> | undefined = taiLieu.nhanh === 'hinh_hoc' ? (ch.hinhCheDoByCau ?? {}) : undefined
+  const hinhCheDoByCau: Record<string, CheDoHinh> | undefined = ch.hinhCheDoByCau ?? {} // 12/10 (Thùy): MỌI nhánh (Đại · Giải tích · Hình) đều chọn được hiện/ẩn hình từng câu
   const ngayRaw = (taiLieu as { ngay?: string | null }).ngay ?? ''
   const ngayPhat = ngayRaw ? ngayRaw.split('-').reverse().join('/') : ''
   let buois = buildBuois(phans)
@@ -715,9 +722,12 @@ function optCols(opts: string[]): number {
 }
 // Tách nhãn a)b)c)… (ý con) HOẶC A)B)C)D. (đáp án nhúng trong đề — câu lua_chon=null) → cho lên lưới cột.
 // Yêu cầu ≥2 nhãn LIÊN TỤC theo `seq` (chống bắt nhầm "a)"/"A." lẻ trong văn). Trả null nếu không phải.
+// ⭐ 10-11 (Thùy): câu có "a) ... b) ... c) ..." viết LIỀN 1 dòng (DB `noi_dung` thiếu `\n`) vẫn phải nhận
+//   ra ý con — không thì PDF in liền tù tì, lộn ý. Regex giờ chấp nhận ranh `^` / `\n` / **mọi khoảng
+//   trắng** trước nhãn (vẫn ép monotonic a→b→c + ≥2 nhãn, nên "ta có a) 1, b) 2" rơi vào yc là chủ ý).
 function splitLabeled(s: string, seq: string): { stem: string; parts: { lbl: string; body: string }[] } | null {
   const cls = seq[0] === 'A' ? 'A-Z' : 'a-l' // uppercase (đáp án) vs lowercase (ý con)
-  const re = new RegExp(`(?:^|\\n)[ \\t]*([${cls}])[ \\t]*[).][ \\t]+`, 'g')
+  const re = new RegExp(`(?:^|\\s)([${cls}])[ \\t]*[).][ \\t]+`, 'g')
   const marks: { idx: number; lbl: string; start: number }[] = []
   let m: RegExpExecArray | null
   while ((m = re.exec(s))) marks.push({ idx: m.index, lbl: m[1], start: re.lastIndex })
@@ -752,9 +762,14 @@ export function splitStem(c: CauHoi): { stem: string; grid: { lbl: string; body:
   return { stem: emb?.stem ?? yc?.stem ?? un?.stem ?? noiDung, grid: emb?.parts ?? yc?.parts ?? un?.parts ?? null, emb: !!emb }
 }
 // Lưới ý con (đáp án nhúng / ý con có/không nhãn). Không nhãn → chỉ hiện nội dung, không dấu ).
+// ⭐ 10-11 (Thùy): ý con LOWERCASE a)/b)/c)… LUÔN 1 cột — mỗi ý xuống dòng riêng, không ép bên cạnh dù
+//   ngắn (yêu cầu PDF "tự xuống dòng khi có các ý a,b,c"). Đáp án nhúng A/B/C/D (emb) + unlabeled (lbl='')
+//   giữ nguyên optCols — những dòng đó là đáp án ngắn song song, muốn gọn.
 export function OptGrid({ grid, emb }: { grid: { lbl: string; body: string }[]; emb: boolean }) {
+  const ycNho = !emb && !!grid[0]?.lbl // ý con có nhãn chữ thường
+  const cols = ycNho ? 1 : optCols(grid.map((p) => p.body))
   return (
-    <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${optCols(grid.map((p) => p.body))}, minmax(0,1fr))` }}>
+    <div className="pv-opts" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}>
       {grid.map((p, i) => <div key={i} className="pv-opt">{p.lbl ? <><b>{p.lbl}{emb ? '.' : ')'}</b> </> : null}<span className="pv-math"><MathText>{p.body}</MathText></span></div>)}
     </div>
   )
@@ -797,6 +812,13 @@ export function WriteLines({ n }: { n: number }) {
     </div>
   )
 }
+/** Ảnh đề của câu. Có cỡ IN riêng (cau_hinh.anhMmByCau) ⇒ width đúng mm, cao theo tỉ lệ, KHÔNG bị max-height 60mm / max-width cột
+ *  co lại (ảnh "cầm thước đo" phải in đúng cm). Không có ⇒ như cũ (.pv-img tự co). */
+function AnhDe({ ma, src }: { ma: string; src: string }) {
+  const mm = useContext(AnhMmCtx)[ma]
+  if (!(mm > 0)) return <img src={src} alt="" className="pv-img" />
+  return <img src={src} alt="" className="pv-img" style={{ width: `${mm}mm`, height: 'auto', maxWidth: 'none', maxHeight: 'none' }} />
+}
 // TÁCH 1 câu thành `content` (đề + hình + ý con + phương án/mệnh đề/lời giải GV — mọi thứ TRỪ dòng kẻ) và
 // `lines` (SỐ dòng kẻ viết tay, 0 nếu không có). Dòng kẻ tách riêng để CauColumns rải THÀNH TỪNG HÀNG lưới
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
@@ -813,8 +835,8 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; 
   const cd = cheDoHinh ?? 'hien'
   const anhBlock = cd === 'khong' ? null
     : cd === 'o_trong'
-      ? (gv && c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : <div className="pv-vebox" />)
-      : (c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : null)
+      ? (gv && c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : <div className="pv-vebox" />)
+      : (c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : null)
   return {
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
@@ -862,7 +884,7 @@ export function questionOnlyContent(no: number, c: CauHoi): React.ReactNode {
   return (<>
     <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
     {grid && <OptGrid grid={grid} emb={emb} />}
-    {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+    {c.anh_de && <AnhDe ma={c.ma_cau} src={c.anh_de} />}
   </>)
 }
 // Trả lời ngắn (Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG 2 cột thay dòng-kẻ-viết-tay.

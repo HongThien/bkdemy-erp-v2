@@ -10,6 +10,7 @@ import { listPhan, addPhan, getTaiLieuFull, khoCuaMon, renumberBuoiLop, type Tai
 import type { CauHoi, MenhDe } from './kho/api'
 
 export type DeThiMeta = {
+  kieu?: 'de_cuong'      // đề cương ôn tập (tab "Đề cương" của Kho đề thi); vắng = đề thi
   nguon: string          // trường/sở
   cap: string            // vd 'vao_10', 'thpt_qg' — free text, vocab tái dùng nếu có
   nam: number | null
@@ -70,6 +71,23 @@ export async function updateDeThiMeta(id: string, patch: Partial<DeThiMeta>): Pr
   if (error) throw error
 }
 export async function attachPdfGoc(id: string, url: string): Promise<void> { await updateDeThiMeta(id, { pdfGocUrl: url }) }
+
+// Số dòng kẻ để HS viết của câu TỰ LUẬN trên bản in — `cau_hinh.btvnLinesByCau` (key = ma_cau), CÙNG khoá với ET/MT/BTVN nên
+// DeThiPrintView đọc sẵn và bản chép cho lớp (fn gán đề chép nguyên cau_hinh) theo luôn. Chưa đặt ⇒ DONG_TU_LUAN_MAC_DINH.
+// Tự luận mặc định 4 dòng; TRẢ LỜI NGẮN mặc định 0 (như trước) nhưng ĐẶT ĐƯỢC — đề giấy hay xếp "Thực hiện phép tính" vào phần
+// Tự luận, kho lưu là trả lời ngắn (để app chấm được) mà trên giấy em vẫn cần chỗ trình bày. Trắc nghiệm / Đúng-Sai: không kẻ dòng.
+export const DONG_TU_LUAN_MAC_DINH = 4
+export const coDongKeDeThi = (loaiCau: string | null | undefined) => loaiCau === 'tu_luan' || loaiCau === 'tra_loi_ngan'
+export const dongMacDinhDeThi = (loaiCau: string | null | undefined) => (loaiCau === 'tu_luan' ? DONG_TU_LUAN_MAC_DINH : 0)
+export function soDongDeThi(d: Pick<DeThi, 'cau_hinh'>): Record<string, number> { return (d.cau_hinh?.btvnLinesByCau ?? {}) as Record<string, number> }
+export async function setSoDongDeThi(id: string, patch: Record<string, number>): Promise<void> {
+  const { data: cur, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
+  if (e0) throw e0
+  const ch = ((cur as { cau_hinh?: Record<string, unknown> }).cau_hinh ?? {}) as Record<string, unknown>
+  const cauHinh = { ...ch, btvnLinesByCau: { ...((ch.btvnLinesByCau as Record<string, number>) ?? {}), ...patch } }
+  const { error } = await supabase.from('tai_lieu').update({ cau_hinh: cauHinh, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
 
 // ── PHẦN (Phần I/II…) = tai_lieu_phan loai_phan='custom', mỗi phần giữ CÂU THEO THỨ TỰ GỐC ──
 export async function listPhanDeThi(taiLieuId: string): Promise<TaiLieuPhan[]> {
@@ -172,7 +190,8 @@ export async function suaCauDeThi(mon: string, kho: Kho, maCau: string, patch: S
 
 // ═══════════ KHO ĐỀ THI (spec-de-thi.md §10.5 K1, mig 202610011501) ═══════════
 // 3 tab SUY ĐỘNG ở DB: chờ duyệt (chưa có dấu duyệt) · sẵn sàng (đã duyệt) · đã giao (có bài test trỏ về đề).
-export type TabKhoDe = 'cho_duyet' | 'san_sang' | 'da_giao'
+// Tab thứ tư `de_cuong` (CEO 10/10, mig 202610102204): đề cương ôn tập = cau_hinh.deThi.kieu='de_cuong', TÁCH khỏi 3 tab trên.
+export type TabKhoDe = 'cho_duyet' | 'san_sang' | 'da_giao' | 'de_cuong'
 export type DeThiDong = {
   id: string; ten: string; khoi: string; mon: string; created_at: string; updated_at: string; duyet_at: string | null
   nguon: string | null; nam: number | null; co_de_goc: boolean

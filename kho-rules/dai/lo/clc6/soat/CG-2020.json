@@ -1,0 +1,15 @@
+{
+ "ma_de": "CG-2020",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "CG 2020 · 8",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 chuyển thẳng sang \"Tứ giác KQBC bằng số phần của tam giác ABC là 1 − 5/18\" mà không nói vì sao (KQBC = ABC bỏ AKQ); lý do chỉ có ở Phần 1, HS phải tự bù bước. Đã thêm vế \"là phần còn lại của tam giác ABC sau khi bỏ tam giác AKQ nên …\". Toán và đáp số không đổi.",
+   "da_sua": true
+  }
+ ]
+}

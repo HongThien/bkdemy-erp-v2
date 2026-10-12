@@ -1,0 +1,110 @@
+[
+ {
+  "ma_nguon": "LT 19.7",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác ABC có diện tích là $S$. Tính các tỉ số sau trong mỗi trường hợp (hình vẽ bên):\na) M nằm trên cạnh BC sao cho $BM=MC$; $S_{1}$ là diện tích tam giác ABM, $S_{2}$ là diện tích tam giác AMC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nb) M nằm trên cạnh AB sao cho $AM=2\\times MB$; $S_{1}$ là diện tích tam giác AMC, $S_{2}$ là diện tích tam giác MBC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nc) M nằm trên cạnh AC sao cho $AM=\\dfrac{2}{5}AC$; $S_{1}$ là diện tích tam giác BMC, $S_{2}$ là diện tích tam giác ABM. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nd) N nằm trên phần kéo dài của BC về phía C sao cho $CN=\\dfrac{1}{3}BC$; $S_{1}$ là diện tích tam giác ACN. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{ANB}}{S}$.",
+  "noi_dung_sach": "Xác định các tỉ số sau: (coi S là diện tích tam giác ABC)\na) \nb) \n$\\frac{S_{1}}{S}=\\frac{…}{…};\\text{ }\\frac{S_{2}}{S}=\\frac{…}{…}$\n$\\frac{S_{1}}{S}=\\frac{…}{…};\\text{ }\\frac{S_{2}}{S}=\\frac{…}{…}$\nc) \nd) \n$\\frac{S_{1}}{S}=\\frac{…}{…};\\text{ }\\frac{S_{2}}{S}=\\frac{…}{…}$\n$\\frac{S_{1}}{S}=\\frac{…}{…};\\text{ }\\frac{S_{ANB}}{S}=\\frac{…}{…}$",
+  "dap_an": "a) $\\dfrac{S_{1}}{S}=\\dfrac{1}{2}$, $\\dfrac{S_{2}}{S}=\\dfrac{1}{2}$; b) $\\dfrac{S_{1}}{S}=\\dfrac{2}{3}$, $\\dfrac{S_{2}}{S}=\\dfrac{1}{3}$; c) $\\dfrac{S_{1}}{S}=\\dfrac{3}{5}$, $\\dfrac{S_{2}}{S}=\\dfrac{2}{5}$; d) $\\dfrac{S_{1}}{S}=\\dfrac{1}{3}$, $\\dfrac{S_{ANB}}{S}=\\dfrac{4}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ở mỗi ý, tam giác cần tính và tam giác ABC có **chung một đỉnh** và hai đáy nằm trên cùng một đường thẳng ⇒ chung đường cao ⇒ tỉ số diện tích bằng tỉ số hai đáy.\n\n**Bước 1.** Đổi dữ kiện mỗi ý thành phân số của cả cạnh (vd $AM=2\\times MB$ thì AB có $3$ phần, AM chiếm $2$ phần).\n\n**Bước 2.** Chỉ ra đỉnh chung của tam giác cần tính và tam giác ABC, từ đó nói rõ đường cao chung hạ từ đỉnh đó.\n\n**Bước 3.** Viết tỉ số diện tích bằng tỉ số hai đáy cho từng tam giác $S_{1}$, $S_{2}$ (ý d là $S_{1}$ và tam giác ANB).\n\n**Chú ý:** ở ý d) N nằm ngoài đoạn BC nên đáy BN dài hơn BC, tam giác ANB lớn hơn tam giác ABC và tỉ số lớn hơn $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Vì $BM=MC$ nên $BM=MC=\\dfrac{1}{2}BC$.\n\nTam giác ABM và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{1}}{S}=\\dfrac{BM}{BC}=\\dfrac{1}{2}$\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{2}}{S}=\\dfrac{MC}{BC}=\\dfrac{1}{2}$\n\nb) Vì $AM=2\\times MB$ nên $AM=\\dfrac{2}{3}AB$ và $MB=\\dfrac{1}{3}AB$.\n\nTam giác AMC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{1}}{S}=\\dfrac{AM}{AB}=\\dfrac{2}{3}$\n\nTam giác MBC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{2}}{S}=\\dfrac{MB}{AB}=\\dfrac{1}{3}$\n\nc) Vì $AM=\\dfrac{2}{5}AC$ nên $MC=\\dfrac{3}{5}AC$.\n\nTam giác BMC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{1}}{S}=\\dfrac{MC}{AC}=\\dfrac{3}{5}$\n\nTam giác ABM và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{2}}{S}=\\dfrac{AM}{AC}=\\dfrac{2}{5}$\n\nd) Vì $CN=\\dfrac{1}{3}BC$ nên $BN=BC+CN=\\dfrac{4}{3}BC$.\n\nTam giác ACN và tam giác ABC có chung đường cao hạ từ A xuống BN, suy ra $\\dfrac{S_{1}}{S}=\\dfrac{CN}{BC}=\\dfrac{1}{3}$\n\nTam giác ANB và tam giác ABC có chung đường cao hạ từ A xuống BN, suy ra $\\dfrac{S_{ANB}}{S}=\\dfrac{BN}{BC}=\\dfrac{4}{3}$\n\nĐáp số: a) $\\dfrac{1}{2}$ và $\\dfrac{1}{2}$; b) $\\dfrac{2}{3}$ và $\\dfrac{1}{3}$; c) $\\dfrac{3}{5}$ và $\\dfrac{2}{5}$; d) $\\dfrac{1}{3}$ và $\\dfrac{4}{3}$",
+  "so_do": null,
+  "anh_sach": [
+   "image1096.png",
+   "image1090.png",
+   "image1077.png",
+   "image1092.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-7.png",
+  "hinh_de_ma": "LT 19.7"
+ },
+ {
+  "ma_nguon": "LT 19.15",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác ABC có diện tích là $S$. Tính các tỉ số sau trong mỗi trường hợp (hình vẽ bên):\na) M nằm trên cạnh AB sao cho $AM=MB$, N nằm trên cạnh AC sao cho $AN=\\dfrac{2}{3}AC$; $S_{1}$ là diện tích tam giác AMN, $S_{2}$ là diện tích tứ giác BMNC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nb) M nằm trên cạnh AC sao cho $CM=\\dfrac{1}{3}CA$, N nằm trên cạnh BC sao cho $BN=\\dfrac{2}{5}BC$; $S_{1}$ là diện tích tam giác CMN, $S_{2}$ là diện tích tứ giác ABNM. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nc) M nằm trên cạnh AB sao cho $BM=MA$, N nằm trên cạnh BC sao cho $BN=\\dfrac{3}{5}BC$; $S_{1}$ là diện tích tam giác BMN, $S_{2}$ là diện tích tứ giác AMNC. Tính $\\dfrac{S_{1}}{S}$ và $\\dfrac{S_{2}}{S}$.\nd) M nằm trên cạnh AB sao cho $AM=MB$, N nằm trên phần kéo dài của AC về phía C sao cho $CN=\\dfrac{1}{3}AC$. Tính $\\dfrac{S_{AMN}}{S}$.",
+  "noi_dung_sach": "Xác định các tỉ số sau: (coi S là diện tích tam giác ABC)\na) \nb) \n$\\frac{S_{1}}{S}=\\frac{…}{…}\\times\\frac{…}{…}=\\frac{…}{…};\\text{ }\\frac{S_{2}}{S}=\\frac{…}{…}$\n$\\frac{S_{1}}{S}=\\frac{…}{…}\\times\\frac{…}{…}=\\frac{…}{…};\\text{ }\\frac{S_{2}}{S}=\\frac{…}{…}$\nc) \nd) \n$\\frac{S_{1}}{S}=\\frac{…}{…}\\times\\frac{…}{…}=\\frac{…}{…};\\text{ }\\frac{S_{2}}{S}=\\frac{…}{…}$\n$\\frac{S_{AMN}}{S}=\\frac{…}{…}\\times\\frac{…}{…}=\\frac{…}{…}$",
+  "dap_an": "a) $\\dfrac{S_{1}}{S}=\\dfrac{1}{3}$, $\\dfrac{S_{2}}{S}=\\dfrac{2}{3}$; b) $\\dfrac{S_{1}}{S}=\\dfrac{1}{5}$, $\\dfrac{S_{2}}{S}=\\dfrac{4}{5}$; c) $\\dfrac{S_{1}}{S}=\\dfrac{3}{10}$, $\\dfrac{S_{2}}{S}=\\dfrac{7}{10}$; d) $\\dfrac{S_{AMN}}{S}=\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tam giác nhỏ và tam giác ABC chung một góc nhưng **cả hai cạnh đều bị cắt**, nên không so thẳng được. Nối thêm một đoạn để có **tam giác trung gian**, so hai lần (mỗi lần chung đường cao) rồi nhân hai tỉ số.\n\n**Bước 1.** Đổi dữ kiện mỗi ý thành phân số của cả cạnh, tính từ đỉnh chung của tam giác nhỏ (vd ý b tính từ C: $CM=\\dfrac{1}{3}CA$, $CN=\\dfrac{3}{5}CB$).\n\n**Bước 2.** Nối đỉnh còn lại của tam giác ABC với một điểm chia (vd nối B với N) để có tam giác trung gian; so tam giác nhỏ với tam giác trung gian, rồi tam giác trung gian với tam giác ABC, mỗi lần chỉ rõ đường cao chung.\n\n**Bước 3.** Nhân hai tỉ số vừa tìm được $\\dfrac{S_{1}}{S}$; phần còn lại là tứ giác nên lấy $1$ trừ $\\dfrac{S_{1}}{S}$ được $\\dfrac{S_{2}}{S}$.\n\n**Chú ý:** ở ý d) N nằm ngoài đoạn AC nên AN dài hơn AC, tỉ số $\\dfrac{AN}{AC}$ lớn hơn $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Vì $AM=MB$ nên $AM=\\dfrac{1}{2}AB$; theo đề $AN=\\dfrac{2}{3}AC$.\n\nNối B với N.\n\nTam giác AMN và tam giác ABN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{AMN}}{S_{ABN}}=\\dfrac{AM}{AB}=\\dfrac{1}{2}$\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{2}{3}$\n\n$\\dfrac{S_{1}}{S}=\\dfrac{S_{AMN}}{S_{ABN}}\\times\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{1}{2}\\times\\dfrac{2}{3}=\\dfrac{1}{3}$\n\n$\\dfrac{S_{2}}{S}=1-\\dfrac{1}{3}=\\dfrac{2}{3}$\n\nb) Vì $BN=\\dfrac{2}{5}BC$ nên $CN=\\dfrac{3}{5}CB$; theo đề $CM=\\dfrac{1}{3}CA$.\n\nNối B với M.\n\nTam giác CMN và tam giác CMB có chung đường cao hạ từ M xuống BC, suy ra $\\dfrac{S_{CMN}}{S_{CMB}}=\\dfrac{CN}{CB}=\\dfrac{3}{5}$\n\nTam giác CMB và tam giác CAB có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{CMB}}{S_{CAB}}=\\dfrac{CM}{CA}=\\dfrac{1}{3}$\n\n$\\dfrac{S_{1}}{S}=\\dfrac{S_{CMN}}{S_{CMB}}\\times\\dfrac{S_{CMB}}{S_{CAB}}=\\dfrac{3}{5}\\times\\dfrac{1}{3}=\\dfrac{1}{5}$\n\n$\\dfrac{S_{2}}{S}=1-\\dfrac{1}{5}=\\dfrac{4}{5}$\n\nc) Vì $BM=MA$ nên $BM=\\dfrac{1}{2}BA$; theo đề $BN=\\dfrac{3}{5}BC$.\n\nNối C với M.\n\nTam giác BMN và tam giác BMC có chung đường cao hạ từ M xuống BC, suy ra $\\dfrac{S_{BMN}}{S_{BMC}}=\\dfrac{BN}{BC}=\\dfrac{3}{5}$\n\nTam giác BMC và tam giác BAC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{BMC}}{S_{BAC}}=\\dfrac{BM}{BA}=\\dfrac{1}{2}$\n\n$\\dfrac{S_{1}}{S}=\\dfrac{S_{BMN}}{S_{BMC}}\\times\\dfrac{S_{BMC}}{S_{BAC}}=\\dfrac{3}{5}\\times\\dfrac{1}{2}=\\dfrac{3}{10}$\n\n$\\dfrac{S_{2}}{S}=1-\\dfrac{3}{10}=\\dfrac{7}{10}$\n\nd) Vì $AM=MB$ nên $AM=\\dfrac{1}{2}AB$.\n\nVì $CN=\\dfrac{1}{3}AC$ nên $AN=AC+CN=\\dfrac{4}{3}AC$.\n\nNối B với N.\n\nTam giác AMN và tam giác ABN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{AMN}}{S_{ABN}}=\\dfrac{AM}{AB}=\\dfrac{1}{2}$\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AN, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{4}{3}$\n\n$\\dfrac{S_{AMN}}{S}=\\dfrac{S_{AMN}}{S_{ABN}}\\times\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{1}{2}\\times\\dfrac{4}{3}=\\dfrac{2}{3}$\n\nĐáp số: a) $\\dfrac{1}{3}$ và $\\dfrac{2}{3}$; b) $\\dfrac{1}{5}$ và $\\dfrac{4}{5}$; c) $\\dfrac{3}{10}$ và $\\dfrac{7}{10}$; d) $\\dfrac{2}{3}$",
+  "so_do": null,
+  "anh_sach": [
+   "image1078.png",
+   "image1082.png",
+   "image1032.png",
+   "image909.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-15.png",
+  "hinh_de_ma": "LT 19.15"
+ },
+ {
+  "ma_nguon": "LT 19.27",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC, lấy điểm M là trung điểm cạnh BC, điểm N nằm trên cạnh AC sao cho $\\text{AN}=\\dfrac{1}{3}\\text{AC},\\text{AM}$ cắt BN tại O. Biết $S_{AON}=5\\ \\text{cm}^{2}$. Tính $S_{ABC}$.",
+  "noi_dung_sach": "Cho tam giác ABC, lấy điểm M là trung điểm cạnh BC, điểm N nằm trên cạnh AC sao cho $\\text{AN}=\\frac{1}{3}\\text{AC},\\text{AM}$ cắt BN tại O. Biết $S_{AON}=5\\ \\text{cm}^{2}$. Tính $S_{ABC}$.",
+  "dap_an": "$60\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đề cho diện tích mảnh nhỏ AON nên phải biết O chia AM thế nào. Hai tam giác ABN và MBN có **chung đáy BN**; nếu hai tam giác này có diện tích bằng nhau thì hai đường cao hạ từ A và từ M xuống BN bằng nhau. Hai đường cao đó cũng là đường cao của hai tam giác AON và MON (chung đáy ON), nên hai tam giác nhỏ này cũng có diện tích bằng nhau.\n\n**Bước 1.** Tính $S_{ABN}$ theo $S_{ABC}$ (chung đường cao hạ từ B xuống AC), rồi tính $S_{NBC}$ và lấy một nửa để được $S_{MBN}$.\n\n**Bước 2.** Thấy $S_{ABN}=S_{MBN}$, chung đáy BN nên hai đường cao hạ từ A và từ M xuống BN bằng nhau; suy ra $S_{MON}=S_{AON}$.\n\n**Bước 3.** Cộng $S_{AON}$ và $S_{MON}$ được $S_{AMN}$, rồi đi lên $S_{AMC}$ (chung đường cao hạ từ M xuống AC) và $S_{ABC}$ (chung đường cao hạ từ A xuống BC).\n\n**Chú ý:** hai tam giác chung đáy thì tỉ số diện tích bằng tỉ số hai đường cao; diện tích bằng nhau thì hai đường cao bằng nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì M là điểm chính giữa BC nên $BM=MC=\\dfrac{1}{2}BC$.\n\nVì $AN=\\dfrac{1}{3}AC$ nên $NC=\\dfrac{2}{3}AC$.\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{3}$\n\nTam giác NBC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{NBC}}{S_{ABC}}=\\dfrac{NC}{AC}=\\dfrac{2}{3}$\n\nTam giác NBM và tam giác NBC có chung đường cao hạ từ N xuống BC, suy ra $\\dfrac{S_{NBM}}{S_{NBC}}=\\dfrac{BM}{BC}=\\dfrac{1}{2}$\n\n$S_{NBM}=\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times S_{ABC}=\\dfrac{1}{3}\\times S_{ABC}$ nên $S_{ABN}=S_{MBN}$.\n\nTam giác ABN và tam giác MBN có chung đáy BN và có diện tích bằng nhau nên đường cao hạ từ A xuống BN bằng đường cao hạ từ M xuống BN.\n\nTam giác AON và tam giác MON có chung đáy ON, hai đường cao hạ từ A và từ M xuống ON chính là hai đường cao trên, nên $S_{MON}=S_{AON}=5\\ (\\text{cm}^2)$\n\n$S_{AMN}=S_{AON}+S_{MON}=5+5=10\\ (\\text{cm}^2)$\n\nTam giác AMC và tam giác AMN có chung đường cao hạ từ M xuống AC, suy ra $\\dfrac{S_{AMC}}{S_{AMN}}=\\dfrac{AC}{AN}=3$\n\n$S_{AMC}=3\\times 10=30\\ (\\text{cm}^2)$\n\nTam giác ABC và tam giác AMC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{ABC}}{S_{AMC}}=\\dfrac{BC}{MC}=2$\n\n$S_{ABC}=2\\times 30=60\\ (\\text{cm}^2)$\n\nĐáp số: $60\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1100.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-27.png",
+  "hinh_de_ma": "LT 19.27"
+ },
+ {
+  "ma_nguon": "LT 19.28",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC có AM = MB, CN = 2AN (như hình vẽ). BN cắt CM tại O. Biết $S_{OBC}=32\\ \\text{cm}^{2}$. Tính $S_{ABC}$.",
+  "noi_dung_sach": "Cho tam giác ABC có AM = MB, CN = 2AN (như hình vẽ). BN cắt CM tại O. Biết $S_{OBC}=32\\ \\text{cm}^{2}$. Tính $S_{ABC}$.",
+  "dap_an": "$80\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cần biết tam giác MBO bằng mấy phần tam giác CBO. Hai tam giác MBN và CBN có **chung đáy BN** nên tỉ số diện tích của chúng bằng tỉ số hai đường cao hạ từ M và từ C xuống BN. Hai đường cao đó cũng là đường cao của hai tam giác MBO và CBO (chung đáy BO), nên hai tam giác nhỏ có cùng tỉ số diện tích ấy.\n\n**Bước 1.** Tính $S_{ABN}$ theo $S_{ABC}$ (chung đường cao hạ từ B xuống AC), rồi lấy một nửa để được $S_{MBN}$ vì $MB=\\dfrac{1}{2}AB$.\n\n**Bước 2.** Tính $S_{CBN}$ theo $S_{ABC}$ rồi tìm tỉ số $S_{MBN}:S_{CBN}$; đó cũng là tỉ số hai đường cao hạ từ M và từ C xuống BN.\n\n**Bước 3.** Chuyển tỉ số đó sang hai tam giác MBO và CBO (chung đáy BO) để tính $S_{MBO}$ từ $S_{OBC}$, rồi cộng được $S_{MBC}$.\n\n**Bước 4.** Tam giác MBC và tam giác ABC chung đường cao hạ từ C xuống AB, $MB=\\dfrac{1}{2}AB$, từ đó tính $S_{ABC}$.\n\n**Chú ý:** O nằm trên MC nên $S_{MBC}=S_{MBO}+S_{OBC}$; đừng nhầm $S_{OBC}$ là diện tích tam giác MBC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM=MB$ nên $MB=\\dfrac{1}{2}AB$.\n\nVì $CN=2\\times AN$ nên $AN=\\dfrac{1}{3}AC$ và $NC=\\dfrac{2}{3}AC$.\n\nTam giác ABN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{ABN}}{S_{ABC}}=\\dfrac{AN}{AC}=\\dfrac{1}{3}$\n\nTam giác MBN và tam giác ABN có chung đường cao hạ từ N xuống AB, suy ra $\\dfrac{S_{MBN}}{S_{ABN}}=\\dfrac{MB}{AB}=\\dfrac{1}{2}$\n\n$S_{MBN}=\\dfrac{1}{2}\\times\\dfrac{1}{3}\\times S_{ABC}=\\dfrac{1}{6}\\times S_{ABC}$\n\nTam giác CBN và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{CBN}}{S_{ABC}}=\\dfrac{NC}{AC}=\\dfrac{2}{3}$\n\nTỉ số diện tích tam giác MBN và tam giác CBN là: $\\dfrac{1}{6}:\\dfrac{2}{3}=\\dfrac{1}{4}$\n\nTam giác MBN và tam giác CBN có chung đáy BN nên đường cao hạ từ M xuống BN bằng $\\dfrac{1}{4}$ đường cao hạ từ C xuống BN.\n\nTam giác MBO và tam giác CBO có chung đáy BO, hai đường cao hạ từ M và từ C xuống BO chính là hai đường cao trên, suy ra $S_{MBO}=\\dfrac{1}{4}\\times S_{CBO}=\\dfrac{1}{4}\\times 32=8\\ (\\text{cm}^2)$\n\nDiện tích tam giác MBC là: $8+32=40$ ($\\text{cm}^2$)\n\nTam giác ABC và tam giác MBC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{ABC}}{S_{MBC}}=\\dfrac{AB}{MB}=2$\n\n$S_{ABC}=2\\times 40=80\\ (\\text{cm}^2)$\n\nĐáp số: $80\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1108.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-28.png",
+  "hinh_de_ma": "LT 19.28"
+ },
+ {
+  "ma_nguon": "LT 19.29",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác ABC có diện tích là $280\\ \\text{cm}^{2}$. Lấy điểm M trên cạnh AB sao cho AM = MB, điểm N trên cạnh BC sao cho $\\text{BN}=\\dfrac{1}{3}\\text{NC},\\text{AN}$ cắt CM tại điểm I. Tính $S_{\\text{MBNI}}$.",
+  "noi_dung_sach": "Cho tam giác ABC có diện tích là $280\\ \\text{cm}^{2}$. Lấy điểm M trên cạnh AB sao cho AM = MB, điểm N trên cạnh BC sao cho $\\text{BN}=\\frac{1}{3}\\text{NC},\\text{AN}$ cắt CM tại điểm I. Tính $\\text{S}_{\\text{MBNI}}$.",
+  "dap_an": "$50\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tứ giác MBNI là tam giác MBC bỏ đi tam giác NIC. Hai tam giác NMC và AMC có **chung đáy MC** nên tỉ số diện tích bằng tỉ số hai đường cao hạ từ N và từ A xuống MC; hai đường cao đó cũng là đường cao của hai tam giác NIC và AIC (chung đáy IC). Biết tỉ số $S_{NIC}:S_{AIC}$ và tổng của chúng (chính là $S_{ANC}$) thì giải bài **tổng – tỉ**.\n\n**Bước 1.** Tính $S_{MBC}$ và $S_{AMC}$ (mỗi tam giác bằng một nửa tam giác ABC vì $AM=MB$), rồi tính $S_{NMC}$ từ $S_{MBC}$ vì $NC=\\dfrac{3}{4}BC$.\n\n**Bước 2.** Tìm tỉ số $S_{NMC}:S_{AMC}$; đó cũng là tỉ số hai đường cao hạ từ N và từ A xuống MC, nên cũng là tỉ số $S_{NIC}:S_{AIC}$.\n\n**Bước 3.** Tính $S_{ANC}$ (chung đường cao hạ từ A xuống BC), rồi chia $S_{ANC}$ theo tỉ số trên để được $S_{NIC}$.\n\n**Bước 4.** Lấy $S_{MBC}$ trừ $S_{NIC}$ được diện tích tứ giác MBNI.\n\n**Chú ý:** I nằm trên AN nên tam giác ANC gồm đúng hai tam giác AIC và NIC.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $AM=MB$ nên $MB=\\dfrac{1}{2}AB$.\n\nVì $BN=\\dfrac{1}{3}NC$ nên $NC=\\dfrac{3}{4}BC$.\n\nTam giác MBC và tam giác ABC có chung đường cao hạ từ C xuống AB, suy ra $\\dfrac{S_{MBC}}{S_{ABC}}=\\dfrac{MB}{AB}=\\dfrac{1}{2}$\n\n$S_{MBC}=\\dfrac{1}{2}\\times 280=140\\ (\\text{cm}^2)$\n\nDiện tích tam giác AMC là: $280-140=140$ ($\\text{cm}^2$)\n\nTam giác NMC và tam giác BMC có chung đường cao hạ từ M xuống BC, suy ra $\\dfrac{S_{NMC}}{S_{BMC}}=\\dfrac{NC}{BC}=\\dfrac{3}{4}$\n\n$S_{NMC}=\\dfrac{3}{4}\\times 140=105\\ (\\text{cm}^2)$\n\nTỉ số diện tích tam giác NMC và tam giác AMC là: $105:140=\\dfrac{3}{4}$\n\nTam giác NMC và tam giác AMC có chung đáy MC nên đường cao hạ từ N xuống MC bằng $\\dfrac{3}{4}$ đường cao hạ từ A xuống MC.\n\nTam giác NIC và tam giác AIC có chung đáy IC, hai đường cao hạ từ N và từ A xuống IC chính là hai đường cao trên, suy ra $S_{NIC}=\\dfrac{3}{4}\\times S_{AIC}$\n\nTam giác ANC và tam giác ABC có chung đường cao hạ từ A xuống BC, suy ra $\\dfrac{S_{ANC}}{S_{ABC}}=\\dfrac{NC}{BC}=\\dfrac{3}{4}$\n\n$S_{ANC}=\\dfrac{3}{4}\\times 280=210\\ (\\text{cm}^2)$\n\nTam giác ANC gồm tam giác AIC và tam giác NIC.\n\nCoi $S_{AIC}$ là $4$ phần thì $S_{NIC}$ là $3$ phần, tổng số phần bằng nhau là: $4+3=7$ (phần)\n\nDiện tích tam giác NIC là: $210:7\\times 3=90$ ($\\text{cm}^2$)\n\nDiện tích tứ giác MBNI là: $140-90=50$ ($\\text{cm}^2$)\n\nĐáp số: $50\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1102.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-29.png",
+  "hinh_de_ma": "LT 19.29"
+ },
+ {
+  "ma_nguon": "LT 19.30",
+  "lo": null,
+  "khoi": "5T",
+  "dang_chinh": "T15T000000",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vẽ bên. Biết $\\text{BM}=\\text{MC},\\text{CN}=3\\text{NA},\\text{MN}$ cắt BA tại E và $S_{ABC}=232\\ \\text{cm}^{2}$. Tính $S_{ANE}$.",
+  "noi_dung_sach": "Cho hình vẽ bên. Biết $\\text{BM}=\\text{MC},\\text{CN}=3\\text{NA},\\text{MN}$ cắt BA tại E và $S_{ABC}=232\\ \\text{cm}^{2}$. Tính $S_{ANE}$.",
+  "dap_an": "$29\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** E nằm ngoài tam giác ABC nên so hai tam giác lớn có chung đỉnh E là EBM và ECM: hai tam giác này **bằng nhau** (chung đường cao hạ từ E xuống BC, $BM=MC$). Tách mỗi tam giác lớn thành các mảnh: EBM gồm tam giác EAN và tứ giác ABMN; ECM gồm tam giác ECN và tam giác NMC. Còn tam giác ECN gấp $3$ lần tam giác EAN (chung đường cao hạ từ E xuống AC, $NC=3\\times AN$) ⇒ bài **hiệu – tỉ**.\n\n**Bước 1.** Tính $S_{NBC}$ theo $S_{ABC}$, lấy một nửa được $S_{NMC}$, rồi lấy $S_{ABC}$ trừ $S_{NMC}$ được diện tích tứ giác ABMN.\n\n**Bước 2.** Từ $S_{EBM}=S_{ECM}$ viết $S_{EAN}+S_{ABMN}=S_{ECN}+S_{NMC}$, suy ra tam giác ECN hơn tam giác EAN bao nhiêu xăng-ti-mét vuông.\n\n**Bước 3.** Tam giác ECN gấp $3$ lần tam giác EAN, biết hiệu của hai diện tích thì giải bài hiệu – tỉ để tìm $S_{ANE}$.\n\n**Chú ý:** theo hình, E nằm trên phần kéo dài của BA về phía A, và N nằm giữa E và M.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo hình vẽ, A nằm giữa B và E, N nằm giữa E và M.\n\nVì $CN=3\\times NA$ nên $NC=\\dfrac{3}{4}AC$.\n\nVì $BM=MC$ nên $MC=\\dfrac{1}{2}BC$.\n\nTam giác NBC và tam giác ABC có chung đường cao hạ từ B xuống AC, suy ra $\\dfrac{S_{NBC}}{S_{ABC}}=\\dfrac{NC}{AC}=\\dfrac{3}{4}$\n\n$S_{NBC}=\\dfrac{3}{4}\\times 232=174\\ (\\text{cm}^2)$\n\nTam giác NMC và tam giác NBC có chung đường cao hạ từ N xuống BC, suy ra $\\dfrac{S_{NMC}}{S_{NBC}}=\\dfrac{MC}{BC}=\\dfrac{1}{2}$\n\n$S_{NMC}=\\dfrac{1}{2}\\times 174=87\\ (\\text{cm}^2)$\n\nDiện tích tứ giác ABMN là: $232-87=145$ ($\\text{cm}^2$)\n\nTam giác EBM và tam giác ECM có chung đường cao hạ từ E xuống BC và $BM=MC$ nên $S_{EBM}=S_{ECM}$.\n\nMà $S_{EBM}=S_{EAN}+S_{ABMN}$ và $S_{ECM}=S_{ECN}+S_{NMC}$ nên $S_{EAN}+145=S_{ECN}+87$.\n\nDiện tích tam giác ECN hơn diện tích tam giác EAN là: $145-87=58$ ($\\text{cm}^2$)\n\nTam giác ECN và tam giác EAN có chung đường cao hạ từ E xuống AC, suy ra $\\dfrac{S_{ECN}}{S_{EAN}}=\\dfrac{NC}{AN}=3$, tức là $S_{ECN}$ gấp $3$ lần $S_{EAN}$.\n\nDiện tích tam giác ANE là: $58:(3-1)=29$ ($\\text{cm}^2$)\n\nĐáp số: $29\\ \\text{cm}^2$",
+  "so_do": null,
+  "anh_sach": [
+   "image1122.png"
+  ],
+  "anh_de_tep": "kho-rules/dai/hinh-de/5T-LT-19-30.png",
+  "hinh_de_ma": "LT 19.30"
+ }
+]

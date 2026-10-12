@@ -1,0 +1,29 @@
+{
+ "ma_de": "NS-2020",
+ "so_cau": 15,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "NS 2020 · 8",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Phần 1 lộ đáp số: Mấu chốt ghi \"nếu số lần khớp … thì tử số bằng mẫu số\" và Bước 4 ghi \"tử số và mẫu số bằng nhau thì thương bằng 1, từ đó tìm M\" ⇒ nói thẳng M = 1. Đã viết lại Mấu chốt (chỉ bảo đếm rồi so với mẫu số) và Bước 4 (nhận xét rồi suy ra giá trị phân số). Phần 2 và đáp số đúng (tính lại: tử = mẫu = 1375775540).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2020 · 12",
+   "muc": "sai",
+   "loai": "toán",
+   "mo_ta": "Lập luận chữ số tận cùng thiếu trường hợp: số quả còn lại (242 − giỏ bán) tận cùng 0 hoặc 5 thì giỏ bán tận cùng 2 HOẶC 7, bản soạn chỉ nêu 2 (\"giỏ đã bán phải có chữ số tận cùng là 2\") mà bỏ qua 7. Kết quả vẫn đúng vì không giỏ nào tận cùng 7, nhưng suy luận hỏng. Đã sửa cả Bước 2 (Phần 1) và dòng lập luận (Phần 2), nêu rõ không có giỏ nào tận cùng 7. Đáp số 42 đúng (còn lại 200 = 40 xoài + 160 cam = 36+39+41+44).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS 2020 · 7",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Bước 1 (Phần 1) và dòng đầu Phần 2 viết \"đường kính nằm trên đường thẳng chứa cạnh hình vuông, nên bán kính bằng cạnh hình vuông\" — không suy ra được như vậy. Đã mở ảnh: tâm B (C) là đỉnh hình vuông, một đầu mút đường kính trùng đỉnh kia của cạnh nên bán kính = cạnh = 21 cm. Đã viết lại cho đúng lý do ở cả hai phần. Đáp số 1825,74 cm² đúng (441 + 441 × 3,14).",
+   "da_sua": true
+  }
+ ]
+}

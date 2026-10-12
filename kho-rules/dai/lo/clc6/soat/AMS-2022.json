@@ -1,0 +1,22 @@
+{
+ "ma_de": "AMS-2022",
+ "so_cau": 15,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "AMS 2022 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Nhảy bước: \"thời gian đi như nhau nên quãng đường Minh đi gấp 3 lần\" — thiếu mắt xích: tổng quãng đường hai bạn cùng đi gấp 3 lần, vận tốc không đổi nên thời gian gấp 3 lần. Đã thêm câu nối.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "AMS 2022 · P2.3",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ý a) khẳng định \"DN không song song BM\" không nêu lí do (đề không có hình, không nêu đáy ABCD). Đã thêm: theo cách gọi tên thông thường ABCD có đáy AB, CD, BM cắt AB nên không song song CD; cập nhật Bước 1 Phần 1 và ghi_chu_nghi (nếu BM // CD thì N tuỳ ý, đề không xác định).",
+   "da_sua": true
+  }
+ ]
+}

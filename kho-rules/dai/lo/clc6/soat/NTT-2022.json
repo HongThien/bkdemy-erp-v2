@@ -1,0 +1,22 @@
+{
+ "ma_de": "NTT-2022",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "NTT 2022 · 10",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 1 (Mấu chốt + Bước 3) viết \"thời gian đi xuôi dòng bằng một phần số lần đó thời gian đi ngược dòng\" — khó hiểu với HS lớp 5. Đã viết lại: vận tốc nhỏ hơn bao nhiêu lần thì thời gian đi dài gấp bấy nhiêu lần; thời gian ngược gấp thời gian xuôi đúng số lần đó. Toán, Phần 2, sơ đồ, đáp số giữ nguyên; qua lại cổng kiemP1, $, KaTeX, máy vẽ sơ đồ.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT 2022 · 8",
+   "muc": "hoi",
+   "loai": "kiến thức",
+   "mo_ta": "Đáp số 72 cm² đúng (đã đối chiếu hình: ABCD đỉnh D trên, A dưới trái, B dưới phải; AEFG có E trên AD, G-A-B thẳng hàng, F đối đỉnh A; toạ độ cho S_BDF = 72 với mọi cạnh AEFG). Bước then chốt \"AF // BD vì cùng nghiêng 45° so với GB\" thực chất là hai góc đồng vị bằng nhau (kiến thức lớp 7), với HS lớp 5 chỉ chấp nhận được như nhận xét từ hình vẽ. Không có cách chứng minh song song thuần lớp 5 mà tôi chắc là tốt hơn (cách chia 3 tam giác nhỏ cần cạnh AEFG chưa biết và triệt tiêu, trái luật không đặt ẩn). Để CEO chốt: giữ cách này (có ghi_chu_nghi của người soạn) hay đổi.",
+   "da_sua": false
+  }
+ ]
+}

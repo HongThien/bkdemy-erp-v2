@@ -1,4 +1,4 @@
-/* Nông Trại BK — NHỊP NGÀY: GIAO DIỆN. HUD (cấp · ví xu + EXP · điểm chăm chỉ · mùa · lượt giúp/hái), bong bóng bám vật 3D,
+/* Nông Trại BK — NHỊP NGÀY: GIAO DIỆN. HUD (cấp · ví xu + EXP · điểm học tập · mùa · lượt giúp/hái), bong bóng bám vật 3D,
    các bảng (chợ, kho, bạn cùng lớp, hộp thư, lò bánh, lên cấp), sang vườn bạn, hướng dẫn.
    Mọi thay đổi state đi qua NT_ENGINE (hàm lam()). UI chỉ hiển thị & gọi hàm. */
 (function () {
@@ -6,6 +6,7 @@
 const D = NT_DATA, E = NT_ENGINE, S = NT_SCENE, M = NT_MODELS, AM = NT_AM, NV = NT_NV, L = D.LUAT;
 const $ = id => document.getElementById(id);
 let s = null, xem = null, neo = null, quet = null, bangMo = null, tDongBo = 0, tLuu = 0, tKiem = 0, tGiay = 9, ngayCu = null;
+const dht = () => !!(window.NT_CAU && window.NT_CAU.dang);   // chơi theo TÀI KHOẢN: mọi khoản mua trả bằng ĐIỂM HỌC TẬP (không còn EXP/xu để mua)
 let cachTra = 'diem';                                    // gieo trả bằng 'diem' | 'exp' — nhớ lựa chọn gần nhất
 // THANH DỤNG CỤ (kiểu Nông trại vui vẻ, CEO 30/09): cầm 1 dụng cụ rồi chạm / vuốt qua các ô. Tay = tự đoán việc cần làm.
 let dung = 'tay', hatChon = null, keyCu = '';
@@ -112,7 +113,7 @@ function goiY() {
   if (tts.some(t => t.tt === 'lon' && !t.tuoiHom)) return '💧 Ô có giọt nước là chưa tưới — chạm hoặc vuốt để tưới';
   for (const k in D.VAT) if (s.vat[k].con.some(c => E.vatTT(s, k, c) === 'xong')) return '🥚 Chuồng có đồ — chạm để nhặt';
   if (E.loTT(s).tt === 'xong') return '🍞 Bánh chín rồi — chạm lò bánh để lấy';
-  if (tts.some(t => t.tt === 'trong') && (s.diem >= 2 || s.vi.xu + s.vi.exp / 100 >= 0.05)) return '🌱 Ô trống — chạm để gieo 1 bịch hạt giống cho ngày mai';
+  if (tts.some(t => t.tt === 'trong') && (dht() ? s.diem >= 5 : (s.diem >= 2 || s.vi.xu + s.vi.exp / 100 >= 0.05))) return '🌱 Ô trống — chạm để gieo 1 bịch hạt giống cho ngày mai';
   if (s.hom.giup < L.giup || s.hom.trom < L.trom) { let co = 0; D.BAN_AO.forEach((_, k) => { const t = E.tomTatBan(s, k); co += (s.hom.giup < L.giup ? t.giup : 0) + (s.hom.trom < L.trom ? t.hai : 0); }); if (co) return '👫 Sang vườn bạn: còn ' + (L.giup - s.hom.giup) + ' lượt giúp, ' + (L.trom - s.hom.trom) + ' lượt hái'; }
   return '🌙 Xong việc hôm nay rồi! Mai ghé lại nhé';
 }
@@ -183,10 +184,11 @@ function datViTriBong() {
 function bongGieo(i) {
   return () => {
     const hs = E.hatHom(s);
+    if (dht()) cachTra = 'diem';
     const key = ['g', cachTra, s.diem, s.vi.xu, s.vi.exp, s.cap, s.tuan.xu].join('|');
     const gia = C => cachTra === 'diem' ? '📘' + C.diem : img('xp', 'mini') + C.hat;
     const html = `<h4>Gieo (1 bịch = 1 ô)</h4>
-      <div class="traBang"><button data-c="diem" class="${cachTra === 'diem' ? 'chon' : ''}">📘 Điểm chăm chỉ (${s.diem})</button><button data-c="exp" class="${cachTra === 'exp' ? 'chon' : ''}">${img('xu', 'mini')} Xu · EXP</button></div>
+      ${dht() ? `<div class="traBang"><button class="chon">📘 Điểm học tập (${s.diem})</button></div>` : `<div class="traBang"><button data-c="diem" class="${cachTra === 'diem' ? 'chon' : ''}">📘 Điểm học tập (${s.diem})</button><button data-c="exp" class="${cachTra === 'exp' ? 'chon' : ''}">${img('xu', 'mini')} Xu · EXP</button></div>`}
       <div class="phu">Giữ 1 bịch rồi kéo qua các ô trống · số góc trên = ngày chín · hôm nay còn mua ${s.oMo - (s.hom.mua || 0)} bịch</div>
       <div class="hatHang">${hs.map(C => C.cap > s.cap
         ? `<div class="hat het" title="${C.ten}">${img(C.id)}<span class="so">🔒${C.cap}</span></div>`
@@ -205,7 +207,7 @@ function bongO(i) {
     const tt = E.oTT(s, i);
     if (tt.tt === 'khoa') {
       if (!tt.ke) return null; const c = tt.cfg, du = s.cap >= c.cap && s.diem >= c.diem;
-      return { key: 'k' + s.cap + '|' + s.diem, html: `<h4>Mở ô ruộng mới</h4><div class="phu">Cần <b>cấp ${c.cap}</b> và <b>${c.diem} điểm chăm chỉ</b><br>Cháu đang có cấp ${s.cap} · ${s.diem} 📘${s.diem < c.diem ? '<br>Làm bài trên app để có thêm điểm nhé' : ''}</div>
+      return { key: 'k' + s.cap + '|' + s.diem, html: `<h4>Mở ô ruộng mới</h4><div class="phu">Cần <b>cấp ${c.cap}</b> và <b>${c.diem} điểm học tập</b><br>Cháu đang có cấp ${s.cap} · ${s.diem} 📘${s.diem < c.diem ? '<br>Làm bài trên app để có thêm điểm nhé' : ''}</div>
         <div class="dongNut"><button class="nut ${du ? 'vang' : 'xam'}" data-l="mo">📘 ${c.diem} · Mở ô</button></div>`,
         gan: el => el.querySelector('[data-l=mo]').onclick = () => { if (lam(E.moO(s), chon)) dongBong(); } };
     }
@@ -269,8 +271,9 @@ function chonCu(id) {
 function camCu(id, loi) { dongBong(); if (dung !== id) { dung = id; veThanhCu(); } if (loi || GOI_CU[id]) thongBao(loi || GOI_CU[id]); }   // cầm hẳn (không bật/tắt như chonCu)
 function moHat() { moBang('Chọn bịch hạt giống', veHat); }
 function veHat() {
+  if (dht()) cachTra = 'diem';
   const ds = E.bangLai(s), key = [cachTra, s.diem, s.vi.xu, s.vi.exp, s.cap, hatChon].join('|');
-  const html = `<div class="traBang"><button data-c="diem" class="${cachTra === 'diem' ? 'chon' : ''}">📘 Trả bằng điểm chăm chỉ (có ${s.diem})</button><button data-c="exp" class="${cachTra === 'exp' ? 'chon' : ''}">${img('xu', 'mini')} Trả bằng xu · EXP</button></div>
+  const html = (dht() ? `<div class="traBang"><button class="chon">📘 Điểm học tập (có ${s.diem})</button></div>` : `<div class="traBang"><button data-c="diem" class="${cachTra === 'diem' ? 'chon' : ''}">📘 Trả bằng điểm học tập (có ${s.diem})</button><button data-c="exp" class="${cachTra === 'exp' ? 'chon' : ''}">${img('xu', 'mini')} Trả bằng xu · EXP</button></div>`) + `
     <p class="nho" style="margin:4px 0 8px">Hôm nay còn mua được <b>${s.oMo - (s.hom.mua || 0)}/${s.oMo}</b> bịch (1 bịch = 1 ô). Chọn 1 loại rồi chạm (hoặc vuốt) qua các ô trống. Số thu là khi tưới đủ mỗi ngày${E.muaHom(s).bonus ? ', đã tính bonus mùa' : ''}.</p>
     <div class="luoi">${ds.map(r => r.cap > s.cap ? `<div class="the khoa">${img(r.id)}<b>${r.ten}</b><span class="nho">🔒 cấp ${r.cap}</span></div>`
       : `<div class="the duoc theHat ${hatChon === r.id ? 'chon' : ''}" data-hat="${r.id}">${img(r.id)}<b>${r.ten}</b><span class="nho">⏱ ${r.ngay} ngày · bịch <b>${cachTra === 'diem' ? r.diem + ' 📘' : r.hat + ' EXP'}</b></span><span class="nho">thu ~${r.tuoi % 1 ? Math.floor(r.tuoi) + '–' + Math.ceil(r.tuoi) : r.tuoi} quả × ${r.gia} EXP</span><span class="nho">${cachTra === 'diem' ? 'được <b>' + r.thuNgay + '</b> EXP/ngày' : 'lãi <b>' + r.laiNgay + '</b> EXP/ngày'}</span></div>`).join('')}</div>`;
@@ -297,7 +300,7 @@ function bongChuong(k) {
   const chon = { loai: 'chuong', id: k };
   return () => {
     const V = D.VAT[k], con = s.vat[k].con, max = E.toiDaVat(s, k), doi = con.filter(c => c.an == null).length, dang = con.filter(c => E.vatTT(s, k, c) === 'an').length;
-    const key = [con.length, doi, dang, max, JSON.stringify(s.kho), s.vi.xu, s.vi.exp].join('|');
+    const key = [con.length, doi, dang, max, JSON.stringify(s.kho), s.vi.xu, s.vi.exp, s.diem].join('|');
     let html = `<h4>${TEN_CHUONG[k]} · ${con.length}/${max} con</h4><div class="phu">`;
     if (!con.length) html += 'Chưa có con nào — mua 1 con nhé';
     else if (doi) html += doi + ' con đang đói · mỗi con ăn 1 bữa/ngày';
@@ -305,7 +308,7 @@ function bongChuong(k) {
     if (dang && doi) html += '<br>' + dang + ' con ăn rồi · sáng mai có ' + ten(V.ra).toLowerCase();
     html += '</div><div class="dongNut">';
     if (doi) for (const m of Object.keys(V.an)) html += `<button class="nut ${E.so(s, m) >= V.an[m] ? '' : 'xam'}" data-an="${m}">${img(m)} ${V.an[m]}/con (có ${E.so(s, m)})</button>`;
-    if (con.length < max) html += `<button class="nut vang" data-l="mua">+1 ${V.ten} · ${img('xp', 'mini')}${V.gia}</button>`;
+    if (con.length < max) html += `<button class="nut vang" data-l="mua">+1 ${V.ten} · ${dht() ? '📘' + V.diem : img('xp', 'mini') + V.gia}</button>`;
     html += '</div>';
     return { key, html, gan: el => {
       el.querySelectorAll('[data-an]').forEach(b => b.onclick = () => lam(E.choAn(s, k, b.dataset.an), chon));
@@ -339,8 +342,9 @@ function veLo() {
 const LOI_TC = { cho: tc => 'Đuổi trộm ' + Math.round(L.choDuoi[E.mocTc(tc)] * 100) + '%', meo: tc => 'Tha quà mỗi ngày ' + Math.round(L.meoQua(tc) * 100) + '%', chim: tc => tc >= L.chimBatSau ? 'Mỗi sáng bắt 1 con sâu' : 'Tới ' + L.chimBatSau + ' thiện cảm thì bắt sâu giúp' };
 function chamThu(k) {
   const T = D.THU[k], chon = { loai: 'thu', id: k };
-  if (T.cap > 30) return;
-  if (s.cap < T.cap) return thongBao(T.ten + ' đến ở cấp ' + T.cap);
+  if (dht() && !E.thuMo(s, k)) { if (T.capMua > 30) return; if (s.cap < T.capMua) return thongBao(T.ten + ' có bán ở cấp ' + T.capMua); dongBong(); return moCho('mua'); }
+  if (T.cap > 30 && !E.thuMo(s, k)) return;
+  if (!dht() && s.cap < T.cap) return thongBao(T.ten + ' đến ở cấp ' + T.cap);
   const kq = E.choiThu(s, k);
   if (kq.ok) lam(kq, chon); else if (!/rồi/.test(kq.loi)) { thongBao(kq.loi); AM.on('loi'); }
   moBong(chon, () => { const x = E.thuTT(s, k); return { key: 'tc' + x.tc + x.roi, html: `<h4>${T.ten} · 💗 ${x.tc}/100</h4><div class="thanhNho"><i style="width:${x.tc}%"></i></div><div class="phu">${LOI_TC[k](x.tc)}<br>${x.roi ? 'Hôm nay ' + T.viec.toLowerCase() + ' rồi — mai nhé' : T.viec + ' mỗi ngày 1 lần'}${T.an ? ' · tốn 1 ' + ten(T.an).toLowerCase() : ''}</div>` }; });
@@ -373,12 +377,14 @@ let choTab = 'ban';
 function moCho(tab) { if (typeof tab === 'string') choTab = tab; moBang('Chợ', veCho); }
 function viHtml() {
   const tran = E.tranThang(s), da = s.thang.ra - s.thang.vao;
+  if (dht()) return `<div class="viDong">📘 <b>${s.diem}</b> điểm học tập · ${img('xu')}<b>${s.vi.xu}</b> xu · ${img('xp')}<b>${s.vi.exp}</b> EXP <span class="nho">· 100 EXP = 1 xu</span></div>
+    <div class="nho viPhu">Mua mọi thứ bằng 📘 điểm học tập (có được khi em làm bài trên app). Bán nông sản được EXP, đủ 100 EXP đổi 1 xu. Xu chuyển vào <b>ví BK thật</b> (mỗi ngày em chơi tối đa ${(NT_CAU.xu && NT_CAU.xu.moiNgay) || 1} xu, tối đa ${(NT_CAU.xu && NT_CAU.xu.tran) || tran} xu mỗi tháng${NT_CAU.xu ? ' — đã vào ví tháng này: <b>' + NT_CAU.xu.daNhan + '/' + NT_CAU.xu.tran + '</b> xu' : ''}). Nông trại đã đổi <b>${Math.max(0, da)}/${tran}</b> xu · hôm nay đã mua <b>${s.hom.mua || 0}/${s.oMo}</b> bịch hạt giống (mỗi ngày tối đa bằng số ô)</div>`;
   return `<div class="viDong">${img('xu')}<b>${s.vi.xu}</b> xu · ${img('xp')}<b>${s.vi.exp}</b> EXP <span class="nho">· 100 EXP = 1 xu</span></div>
     <div class="nho viPhu">Tháng này nông trại đã trả <b>${Math.max(0, da)}/${tran}</b> xu${E.chamTran(s) ? ' — đã chạm trần, EXP dồn sang tháng sau' : ''} · hôm nay đã mua <b>${s.hom.mua || 0}/${s.oMo}</b> bịch hạt giống (mỗi ngày tối đa bằng số ô) · tháng này đã chi <b>${s.thang.chi || 0}/${L.tranXuTieuThang * 100}</b> EXP (= ${L.tranXuTieuThang} xu) để mua</div>`;
 }
 function veCho() {
   E.lamMoi(s);
-  const key = [choTab, JSON.stringify(s.kho), s.vi.xu, s.vi.exp, s.cap, s.tuan.xu, JSON.stringify(s.vat.ga.con.length), s.vat.bo.con.length].join('|');
+  const key = [choTab, JSON.stringify(s.kho), s.vi.xu, s.vi.exp, s.diem, s.cap, s.tuan.xu, JSON.stringify(s.vat.ga.con.length), s.vat.bo.con.length, JSON.stringify(s.thu)].join('|');
   let html = viHtml() + `<div class="tab"><button data-t="ban" class="${choTab === 'ban' ? 'chon' : ''}">💰 Bán</button><button data-t="mua" class="${choTab === 'mua' ? 'chon' : ''}">🛒 Mua</button><button data-t="lai" class="${choTab === 'lai' ? 'chon' : ''}">🧮 Bảng tính lãi</button></div>`;
   if (choTab === 'ban') {
     const ds = Object.keys(s.kho).filter(id => D.I[id] && D.I[id].gia > 0 && s.kho[id] > 0);
@@ -390,10 +396,18 @@ function veCho() {
     }
   }
   if (choTab === 'mua') {
-    html += `<div class="dongBan">${img('phan_bon')}<div class="giua"><b>Phân bón</b> <span class="nho">+25% sản lượng · ×3 cơ hội rơi đồ · ${L.giaPhan} EXP · có ${E.so(s, 'phan_bon')}</span></div><button class="nut vang" data-mua="phan" data-n="1">Mua 1</button><button class="nut vang" data-mua="phan" data-n="5">Mua 5</button></div>`;
+    html += `<div class="dongBan">${img('phan_bon')}<div class="giua"><b>Phân bón</b> <span class="nho">+25% sản lượng · ×3 cơ hội rơi đồ · ${dht() ? L.giaPhanDiem + ' 📘' : L.giaPhan + ' EXP'} · có ${E.so(s, 'phan_bon')}</span></div><button class="nut vang" data-mua="phan" data-n="1">Mua 1</button><button class="nut vang" data-mua="phan" data-n="5">Mua 5</button></div>`;
     for (const k in D.VAT) {
       const V = D.VAT[k], max = E.toiDaVat(s, k), co = s.vat[k].con.length;
-      html += `<div class="dongBan">${img('vat_' + k)}<div class="giua"><b>${V.ten}</b> <span class="nho">${s.cap < V.cap ? '🔒 cấp ' + V.cap : 'có ' + co + '/' + max + ' · ' + V.gia + ' EXP · cho ' + ten(V.ra).toLowerCase() + ' mỗi sáng'}</span></div>${s.cap >= V.cap && co < max ? `<button class="nut vang" data-mua="${k}">Mua</button>` : ''}</div>`;
+      html += `<div class="dongBan">${img('vat_' + k)}<div class="giua"><b>${V.ten}</b> <span class="nho">${s.cap < V.cap ? '🔒 cấp ' + V.cap : 'có ' + co + '/' + max + ' · ' + (dht() ? V.diem + ' 📘' : V.gia + ' EXP') + ' · cho ' + ten(V.ra).toLowerCase() + ' mỗi sáng'}</span></div>${s.cap >= V.cap && co < max ? `<button class="nut vang" data-mua="${k}">Mua</button>` : ''}</div>`;
+    }
+    if (dht()) {   // thú cưng mua bằng ĐIỂM HỌC TẬP (Thùy 12/10); pha 1 chỉ bán chó — mèo/chim mở ở pha sau
+      const IC = { cho: '🐶', meo: '🐱', chim: '🐦' }, MOTA = { cho: 'đuổi kẻ hái trộm', meo: 'tha quà về mỗi ngày', chim: 'bắt sâu giúp' };
+      for (const k in D.THU) {
+        const T = D.THU[k]; if (T.capMua > 30) continue;
+        const co = s.thu[k] && s.thu[k].mua;
+        html += `<div class="dongBan"><span style="font-size:34px;line-height:1">${IC[k]}</span><div class="giua"><b>${T.ten}</b> <span class="nho">${MOTA[k]} · ${co ? 'em đã có' : s.cap < T.capMua ? '🔒 cấp ' + T.capMua : T.diem + ' 📘'}</span></div>${!co && s.cap >= T.capMua ? `<button class="nut vang" data-muathu="${k}">Mua</button>` : ''}</div>`;
+      }
     }
     html += '<p class="nho">Hạt giống mua ngay lúc gieo: chạm vào ô đất trống.</p>';
   }
@@ -401,12 +415,13 @@ function veCho() {
     const ds = E.bangLai(s), m = E.muaHom(s);
     html += `<p class="nho">Cây mùa ${m.M.ten} + cây quanh năm. Giả sử cháu tưới đủ mỗi ngày${m.bonus ? ', có bonus mùa +' + Math.round(m.bonus * 100) + '%' : ''}. Lãi = tiền bán − tiền bịch (− tiền phân nếu bón), chia cho số ngày.</p>
       <div class="cuonNgang"><table class="bangLai"><tr><th>Cây</th><th>Ngày</th><th>Bịch</th><th>Thu (quả)</th><th>Giá/quả</th><th>Lãi/ngày</th><th>Có bón</th></tr>
-      ${ds.map(r => `<tr class="${r.cap > s.cap ? 'khoa' : ''}"><td>${img(r.id, 'nho')} ${r.ten}${r.cap > s.cap ? ' 🔒' + r.cap : ''}</td><td>${r.ngay}</td><td>${r.hat} EXP<br><span class="nho">hoặc ${r.diem}📘</span></td><td>${r.tuoi}<br><span class="nho">bón: ${r.bon}</span></td><td>${r.gia}</td><td><b>${r.laiNgay}</b></td><td>${r.laiNgayBon}</td></tr>`).join('')}</table></div>
-      <p class="nho">Mẹo: cây càng lâu ngày thì lãi mỗi ngày càng cao, nhưng phải ghé tưới đều. Trả bằng 📘 điểm chăm chỉ thì không tốn xu.</p>`;
+      ${ds.map(r => `<tr class="${r.cap > s.cap ? 'khoa' : ''}"><td>${img(r.id, 'nho')} ${r.ten}${r.cap > s.cap ? ' 🔒' + r.cap : ''}</td><td>${r.ngay}</td><td>${dht() ? r.diem + ' 📘' : r.hat + ' EXP<br><span class="nho">hoặc ' + r.diem + '📘</span>'}</td><td>${r.tuoi}<br><span class="nho">bón: ${r.bon}</span></td><td>${r.gia}</td><td><b>${r.laiNgay}</b></td><td>${r.laiNgayBon}</td></tr>`).join('')}</table></div>
+      <p class="nho">Mẹo: cây càng lâu ngày thì lãi mỗi ngày càng cao, nhưng phải ghé tưới đều. ${dht() ? 'Bịch tính bằng 📘 điểm học tập; tiền thu và lãi tính theo EXP bán nông sản.' : 'Trả bằng 📘 điểm học tập thì không tốn xu.'}</p>`;
   }
   return { key, html, gan: el => {
     el.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { choTab = b.dataset.t; veBang(true); });
     el.querySelectorAll('[data-ban]').forEach(b => b.onclick = () => lam(E.ban(s, b.dataset.ban, +b.dataset.n), { loai: 'sap' }));
+    el.querySelectorAll('[data-muathu]').forEach(b => b.onclick = () => lam(E.muaThu(s, b.dataset.muathu), { loai: 'sap' }));
     el.querySelectorAll('[data-mua]').forEach(b => b.onclick = () => { const x = b.dataset.mua; lam(x === 'phan' ? E.muaPhan(s, +b.dataset.n) : E.muaVat(s, x), x === 'phan' ? { loai: 'sap' } : { loai: 'chuong', id: x }); });
   } };
 }
@@ -486,10 +501,13 @@ function veThu() {
 }
 
 // ---------- ĐIỂM CHĂM CHỈ (bản thử: giả lập 1 lượt 10 câu) ----------
-function moDiem() { moBang('Điểm chăm chỉ', veDiem); }
+function moDiem() { moBang('Điểm học tập', veDiem); }
 function veDiem() {
   E.lamMoi(s);
   const key = s.diem + '|' + s.hom.diem;
+  if (dht()) return { key, html: `<p>📘 <b>Điểm học tập</b> có được khi em học và làm bài đạt trên app BK. Em dùng để <b>mua hạt giống, mở ô ruộng, phân bón, vật nuôi và thú cưng</b> cho nông trại.</p>
+    <p style="text-align:center;font-size:18px">📘 Em đang có <b>${s.diem}</b> điểm</p>
+    <p class="nho">Học càng đều thì nông trại càng lớn — điểm trừ ở đây là điểm thật của em trên app.</p>`, gan: () => {} };
   const html = `<p>Mỗi lượt <b>10 câu</b> (Tự luyện hoặc Thử thách) đúng <b>từ ${L.nguongDat} câu</b> ⇒ được điểm = số câu đúng. Hôm nay: <b>${s.hom.diem}/${L.tranDiemNgay}</b> điểm.</p>
     <p class="nho">Bản thử chưa nối app học — bấm để giả lập 1 lượt. Bản thật: tự cộng khi em làm bài trên app.</p>
     <div class="dongNut">${[6, 7, 8, 9, 10].map(n => `<button class="nut ${n < L.nguongDat ? 'xam' : 'vang'}" data-n="${n}">Đúng ${n}/10</button>`).join('')}</div>
@@ -518,8 +536,8 @@ function moLenCap(e) {
 // ---------- TUỲ CHỌN ----------
 function moMenu() {
   let hoi = false;
-  moBang('Tuỳ chọn', () => ({ key: 'm' + hoi, html: `<p><b>Bản thử NHỊP NGÀY.</b> Mỗi ngày ghé 1 lần: thu hoạch, chăm cây, sang vườn bạn, gieo cho ngày mai. Tiến độ lưu trên máy này; ví xu, điểm chăm chỉ và bạn bè đều là giả lập.</p>
-    <p>⏭ = sang ngày hôm sau (18 giờ) để thử nhanh · 📘 = giả lập làm 1 lượt bài.</p>
+  moBang('Tuỳ chọn', () => ({ key: 'm' + hoi, html: `${dht() ? `<p><b>Nông trại BK.</b> Mỗi ngày ghé 1 lần: thu hoạch, chăm cây, sang vườn bạn, gieo cho ngày mai. Tiến độ được lưu theo tài khoản của em; 📘 điểm học tập là điểm thật từ việc học trên app.</p>` : `<p><b>Bản thử NHỊP NGÀY.</b> Mỗi ngày ghé 1 lần: thu hoạch, chăm cây, sang vườn bạn, gieo cho ngày mai. Tiến độ lưu trên máy này; ví xu, điểm học tập và bạn bè đều là giả lập.</p>
+    <p>⏭ = sang ngày hôm sau (18 giờ) để thử nhanh · 📘 = giả lập làm 1 lượt bài.</p>`}
     ${dangApp() ? '' : '<div class="dongNut" style="justify-content:flex-start"><button class="nut vang" data-l="cai">📲 Cài như app</button><span class="nho">mở bằng 1 chạm, chơi toàn màn hình</span></div>'}
     <div class="dongNut" style="justify-content:flex-start"><button class="nut do" data-l="xoa">${hoi ? 'Chắc chắn? Bấm lần nữa để xoá hết' : 'Chơi lại từ đầu'}</button></div>`,
     gan: el => {
@@ -660,5 +678,10 @@ function batDau(state) {
   document.addEventListener('visibilitychange', () => { if (document.hidden) E.luu(s); });
 }
 
-window.NT_UI = { batDau, get s() { return s; }, get xem() { return xem; }, lam, thongBao, sangBan, veNha, _cb: cb, _moKho: moKho, _moCho: moCho, _moBanBe: moBanBe, _moThu: moThu };
+// Chơi theo tài khoản: bỏ nút giả lập ngày/điểm của bản thử; bấm ô điểm ⇒ mở giải thích
+function cheDoTaiKhoan() {
+  $('btnTua').style.display = 'none'; $('btnDiem').style.display = 'none';
+  $('diemBox').style.cursor = 'pointer'; $('diemBox').onclick = moDiem;
+}
+window.NT_UI = { batDau, capHud, cheDoTaiKhoan, get s() { return s; }, get xem() { return xem; }, lam, thongBao, sangBan, veNha, _cb: cb, _moKho: moKho, _moCho: moCho, _moBanBe: moBanBe, _moThu: moThu };
 })();

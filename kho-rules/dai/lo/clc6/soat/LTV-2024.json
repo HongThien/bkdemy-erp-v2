@@ -1,0 +1,36 @@
+{
+ "ma_de": "LTV-2024",
+ "so_cau": 18,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "LTV 2024 · 9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước: từ \"không chữ số chẵn, không chữ số 9\" suy ngay ra \"các chữ số còn lại có tích 105 là 3, 5, 7\" mà không nói vì sao phải có đủ cả ba chữ số. Đã bổ sung: các chữ số chỉ có thể là 1, 3, 5, 7; 105 chia hết cho 3, 5, 7 mà mỗi chữ số trong tập đó chỉ có một chữ số chia hết cho 3 (là 3), cho 5 (là 5), cho 7 (là 7) nên phải có đủ 3, 5, 7.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2024 · 13",
+   "muc": "nen_sua",
+   "loai": "kiến thức",
+   "mo_ta": "Dùng thuật ngữ \"hình quạt\" (không có trong chương trình lớp 5, mẫu đã duyệt LTV 2018 câu 13 nói \"một phần tư hình tròn\"). Đã thay bằng cách nói \"phần nằm trong đường tròn tâm Q/N có góc ở tâm vuông nên bằng một phần tư hình tròn\" ở Mấu chốt, Bước 3, 4 và Phần 2; số liệu không đổi (18 - 14,13 = 3,87).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2024 · 18",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng cuối chia số thập phân cho phân số (\"0,9 : 3/4 = 1,2\") nhảy bước, trái luật k5T §1.5 (mỗi bước đổi thập phân/phân số là một dòng riêng). Đã tách dòng \"Đổi: 3/4 = 0,75\" rồi \"0,9 : 0,75 = 1,2\"; Bước 4 Phần 1 sửa khớp.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "LTV 2024 · 14",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Không nghi dap_an (1275 trùng ba nguồn); chỉ nhắc: đáp số phụ thuộc \"50 số tự nhiên đầu tiên\" là 0..49 (tổng 1225 -> hiệu 1275) hay 1..50 (tổng 1275 -> hiệu 1225). Người soạn đã ghi ghi_chu_nghi đúng; cách hiểu có số 0 là cách hiểu tiểu học VN, giữ nguyên. Không sửa.",
+   "da_sua": false
+  }
+ ]
+}

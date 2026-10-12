@@ -35,6 +35,12 @@ const TABS: { key: TabKey; leaf: string | null; label: string; tone: OpsTone; Ic
   { key: 'dash', leaf: null, label: 'Của tôi', tone: 'pink', Ico: IcoChart },
 ]
 
+// Tên đầy đủ cho thanh điều hướng DỌC ở máy tính (thanh đáy điện thoại dùng `label` ngắn vì chật).
+const TEN_DAY_DU: Record<TabKey, string> = {
+  home: 'Hôm nay', diemdanh: 'Điểm danh buổi học', report: 'Report & Báo tan', prep: 'Chuẩn bị phòng',
+  test: 'Test đầu vào', tuqua: 'Tủ quà', dash: 'Của tôi',
+}
+
 const hhmm = (t: string | null) => (t ? t.slice(0, 5) : '—')
 
 export default function OpsHome({ profile, quyen, onAvatarChanged }: { profile: MyProfile; quyen: MyQuyen; onAvatarChanged?: (url: string) => void }) {
@@ -42,8 +48,37 @@ export default function OpsHome({ profile, quyen, onAvatarChanged }: { profile: 
   const coQuyen = (leaf: string | null) => !leaf || quyen.laAdmin || quyen.chucNang.includes(leaf)
   const tabs = TABS.filter((t) => coQuyen(t.leaf))
 
+  const tenDayDu = (profile.nhanSu.ho_ten ?? '').trim() || 'Nhân sự'
   return (
-    <div className="flex h-[100dvh] flex-col bg-[#F5F8FF]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
+    // ⭐ 2 BỐ CỤC (Thùy 10/10): điện thoại/iPad dọc = nội dung + thanh tab ĐÁY (như cũ); máy tính (lg ≥1024px) =
+    // thanh điều hướng DỌC bên trái + nội dung bên phải, thanh đáy ẩn. Cùng 1 cây màn, chỉ đổi khung.
+    <div className="flex h-[100dvh] flex-col bg-[#F5F8FF] lg:flex-row" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
+      <aside className="hidden w-[228px] shrink-0 flex-col border-r border-[#EAEFFB] bg-white px-3 py-4 lg:flex">
+        <div className="flex items-center gap-2.5 px-2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl text-[13px] font-extrabold text-white" style={{ background: OPS.green.grad }}>BK</span>
+          <div className="min-w-0 leading-tight">
+            <p className="text-[14.5px] font-extrabold text-[#16224D]">BK Vận hành</p>
+            <p className="truncate text-[11.5px] text-[#6B7AAE]">{tenDayDu}</p>
+          </div>
+        </div>
+        <nav className="mt-5 flex flex-1 flex-col gap-1">
+          {tabs.map((t) => {
+            const c = OPS[t.tone]; const active = tab === t.key
+            return (
+              <button key={t.key} onClick={() => setTab(t.key)}
+                className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition hover:bg-[#F5F8FF]"
+                style={active ? { background: c.chip } : undefined}>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: active ? '#fff' : c.chip, color: c.solid }}><t.Ico cls="h-[18px] w-[18px]" /></span>
+                <span className="text-[13.5px] font-bold" style={{ color: active ? c.text : '#4A5680' }}>{TEN_DAY_DU[t.key]}</span>
+              </button>
+            )
+          })}
+        </nav>
+        <button onClick={() => supabase.auth.signOut()} className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-left text-[#6B7AAE] hover:bg-[#F5F8FF]">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#F1F3FA]"><IcoPower cls="h-[17px] w-[17px]" /></span>
+          <span className="text-[13px] font-semibold">Đăng xuất</span>
+        </button>
+      </aside>
       <div className="min-h-0 flex-1 overflow-auto">
         {tab === 'home' && <HomTay profile={profile} onGo={setTab} coQuyen={coQuyen} onThoat={() => supabase.auth.signOut()} onAvatarChanged={onAvatarChanged} />}
         {tab === 'diemdanh' && <DiemDanhBuoi />}
@@ -55,7 +90,7 @@ export default function OpsHome({ profile, quyen, onAvatarChanged }: { profile: 
       </div>
 
       {/* bottom tab — icon tự vẽ (currentColor), active = pill màu theo tông, chừa safe-area iPhone */}
-      <div className="border-t border-[#EAEFFB] bg-white" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      <div className="border-t border-[#EAEFFB] bg-white lg:hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
         <div className="mx-auto flex max-w-[760px]">
           {tabs.map((t) => {
             const c = OPS[t.tone]; const active = tab === t.key
@@ -173,12 +208,13 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
 
   const nsAnh = profile.nhanSu.anh_url
   return (
-    <div>
+    <div className="lg:mx-auto lg:grid lg:max-w-[1240px] lg:grid-cols-[440px_minmax(0,1fr)] lg:items-start lg:gap-6 lg:p-6">
+      <div className="lg:sticky lg:top-6">
       {/* CEO 07/09: "header to quá mà hơi trống, bỏ 30% phía trên đi" → bg_ops_home.jpg đã crop bớt 30%
           chiều cao (giữ nguyên avatar/nhân vật/bảng gỗ ở nửa dưới ảnh gốc, chỉ bỏ dải trời trống phía
           trên). "Thứ 2, 07/09 cho vào header" → dời thanh ngày từ ngoài (nổi đè -mt-6) vào LUÔN bên
           trong hero, ghép chung 1 hàng với trạng thái việc cho gọn (hero giờ thấp hơn, không đủ chỗ 2 hàng riêng). */}
-      <OpsHero tone="green" title="" bgImage="/bk-ui/bg_ops_home.jpg" bgAspect={259 / 863} bgFill right={
+      <OpsHero tone="green" title="" bgImage="/bk-ui/bg_ops_home.jpg" bgAspect={259 / 863} bgFill khung="lg:rounded-3xl" right={
         <div className="flex shrink-0 items-center gap-1.5">
           <GopY route="home" />
           <button onClick={onThoat} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white active:bg-white/30" aria-label="Thoát"><IcoPower cls="h-[18px] w-[18px]" /></button>
@@ -209,16 +245,17 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
       {/* Ảnh đi chơi "kịch chiều ngang điện thoại" (CEO 07/09) — full-bleed, đặt NGOÀI khung px-3/max-w
           của nội dung bên dưới để tràn hết bề ngang màn hình thật, không bị viền/bo góc thu hẹp lại. */}
       {/* CEO: "2 cái ảnh cách nhau 1 tý chứ đừng liền nhau" — thêm khe hở giữa hero và banner đi chơi */}
-      <TripCountdownBanner bgImage="/bk-ui/bg_ops_goout2.jpg" aspect={1672 / 941} targetDate={NGAY_DI_CHOI} rect={RECT_DEM_NGUOC} className="mt-2 mb-3" />
+      <TripCountdownBanner bgImage="/bk-ui/bg_ops_goout2.jpg" aspect={1672 / 941} targetDate={NGAY_DI_CHOI} rect={RECT_DEM_NGUOC} className="mt-2 mb-3 lg:mb-0 lg:mt-4 lg:rounded-3xl" />
+      </div>
 
-      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3">
+      <div className="mx-auto max-w-[760px] px-3 pb-24 pt-3 lg:mx-0 lg:max-w-none lg:p-0">
         {/* lưới 6 module */}
         {!loading && (
-          <div className="grid grid-cols-2 gap-2.5">
+          <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-3 lg:gap-3">
             {MODULES.filter((m) => coQuyen(m.leaf)).map((m) => {
               const c = OPS[m.tone]
               return (
-                <button key={m.key} onClick={() => onGo(m.key)} className="rounded-2xl bg-white p-3 text-left shadow-sm active:bg-[#F7F9FF]">
+                <button key={m.key} onClick={() => onGo(m.key)} className="rounded-2xl bg-white p-3 text-left shadow-sm transition active:bg-[#F7F9FF] lg:p-4 lg:hover:shadow-md">
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl" style={{ background: c.chip, color: c.solid }}><m.Ico cls="h-6 w-6" /></span>
                   <p className="mt-2 text-[13.5px] font-extrabold leading-tight text-[#16224D]">{m.label}</p>
                   <p className="mt-0.5 text-[11px] leading-snug text-[#6B7AAE]">{m.sub}</p>
@@ -251,7 +288,7 @@ function HomTay({ profile, onGo, coQuyen, onThoat, onAvatarChanged }: { profile:
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1.5 lg:grid lg:grid-cols-2 lg:gap-2">
                 {viecHien.map((v) => (
                   <div key={v.key} className="flex items-center gap-2.5 rounded-2xl bg-white px-3 py-2.5 shadow-sm">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: OPS[v.tone].chip, color: OPS[v.tone].solid }}><v.Ico cls="h-[18px] w-[18px]" /></span>

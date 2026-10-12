@@ -1,0 +1,36 @@
+{
+ "ma_de": "NN-2024-TT1",
+ "so_cau": 7,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "NN 2024-TT1 · P1.1",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Sơ đồ tổng–hiệu ghi hiệu 80 hai lần (them \"80\" trên hàng Số lớn và nhãn hieu \"80\") — luật sơ đồ 5T: đã ghi hiệu bằng them thì không thêm hieu. Đã bỏ nhãn hieu.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024-TT1 · P1.3",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề \"chuyến xe đầu tiên sẽ đến nhà Hoa lúc 6h50\" mơ hồ. Cách hiểu của người soạn (xe tới bến gần nhà lúc 6:50, 7:05, 7:20, 7:35 ⇒ chọn 7:20 ⇒ xuất phát 7:15, đáp C) là tự nhiên nhất; nếu hiểu 6:50 là xe qua nhà rồi Hoa mới đi bộ 5 phút tới bến (xe tới bến 6:55, 7:10, 7:25) thì ra 7:20 (D). Tính lại cả hai đúng. ghi_chu_nghi đã nêu cả hai; không sửa, chờ người chốt.",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "NN 2024-TT1 · P1.5",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 1 bước 2 và Phần 2 viết \"đỉnh nằm trên đường tròn nên đường chéo = đường kính\" — nhảy bước (lớp 5 chưa suy được). Đã viết lại: theo hình vẽ hai đường chéo đi qua tâm nên là hai đường kính. Đáp số 28,5 cm² (B) đúng, đã đối chiếu hình.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NN 2024-TT1 · P2.2",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Sơ đồ có dấu \"?\" dưới hàng Ngày 3 trong khi đề hỏi độ dài cả khúc vải; hiệu 5 m không hiện trên sơ đồ. Đã bỏ dau_hoi, xếp Ngày 1 và Ngày 3 lên đầu và ghi hieu \"5 m\"; dòng mô tả trong Phần 2 sửa theo. Số liệu đã qua máy vẽ.",
+   "da_sua": true
+  }
+ ]
+}

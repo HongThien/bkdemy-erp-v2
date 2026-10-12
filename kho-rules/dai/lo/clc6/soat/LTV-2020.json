@@ -1,0 +1,15 @@
+{
+ "ma_de": "LTV-2020",
+ "so_cau": 20,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 1,
+ "van_de": [
+  {
+   "ma_nguon": "LTV 2020 · 14",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước: \"x0 chia hết cho 4, do đó x là chữ số chẵn\" không nêu lý do; và \"x chia hết cho 3\" thiếu lý do 9 chia hết cho 3. Đã viết lại hai dòng (liệt kê x0 = 0;10;...;90 chọn số chia hết cho 4; thêm \"mà 9 chia hết cho 3\"). dap_an giữ nguyên.",
+   "da_sua": true
+  }
+ ]
+}

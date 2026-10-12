@@ -1,0 +1,22 @@
+{
+ "ma_de": "NTL-2022",
+ "so_cau": 13,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NTL 2022 · P1.11",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Bước 2 của Phần 1 viết lủng củng (\"đếm các điểm gần M nhất bằng những điểm chỉ có mũi tên từ M đi vào\"), HS khó hiểu phải làm gì. Đã viết lại: điểm chỉ nhận mũi tên từ M thì có đúng 1 cách, ghi số cách bên cạnh trước. Không lộ đáp số.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTL 2022 · P2.2",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Ý c): một dòng Phần 2 dồn hai cặp tam giác + lập luận đường cao + kết quả, câu \"cả hai cặp đều có hai đường cao hạ từ D và từ C xuống BP\" rối. Đã tách thành 3 dòng (cặp NDP–NPC · cặp BDN–BNC · kết luận), toán không đổi.",
+   "da_sua": true
+  }
+ ]
+}

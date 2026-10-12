@@ -37,6 +37,7 @@ import ChamMTScreen from './ketqua/ChamMTScreen'
 import ReportPHScreen from './report/ReportPHScreen'
 import TraoGiaiScreen from './traogiai/TraoGiaiScreen'
 import TinhNangScreen from './gami/TinhNangScreen'
+import CauBaoLoiScreen from './kho/CauBaoLoiScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
@@ -726,6 +727,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'cham_mt' ? <ChamMTScreen />
       : staffLeaf === 'report_ph' ? <ReportPHScreen />
       : staffLeaf === 'tinh_nang' ? <TinhNangScreen />
+      : staffLeaf === 'cau_bao_loi' ? <CauBaoLoiScreen />
       : staffLeaf === 'traogiai' ? <TraoGiaiScreen />
       : staffLeaf === 'duyetcham' ? <DuyetChamScreen />
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />

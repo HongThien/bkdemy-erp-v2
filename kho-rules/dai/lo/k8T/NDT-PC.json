@@ -1,0 +1,1612 @@
+[
+ {
+  "ma_nguon": "C1.1c@p271",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^7+x^2+1$.",
+  "noi_dung_sach": "Phân tích đa thức sau thành nhân tử: $x^7+x^2+1$.",
+  "dap_an": "$(x^2+x+1)(x^5-x^4+x^2-x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số mũ $7,2,0$ chia cho $3$ dư $1,2,0$ — cùng dạng với $x+x^2+1$ — nên đa thức có nhân tử $x^2+x+1$ (vì $x^3-1$ chia hết cho $x^2+x+1$), ta thêm bớt các hạng tử để nhân tử đó lộ ra.\n\n**Bước 1.** Thêm bớt $x^6,x^5,x^4,x^3,x$ sao cho đa thức tách thành năm nhóm, mỗi nhóm gồm ba hạng tử liên tiếp có dạng $x^k+x^{k-1}+x^{k-2}$.\n\n**Bước 2.** Đặt nhân tử chung $x^k$ (kèm dấu) trong từng nhóm để mỗi nhóm trở thành tích của một luỹ thừa của $x$ với $x^2+x+1$.\n\n**Bước 3.** Đặt $x^2+x+1$ làm nhân tử chung cho cả năm nhóm rồi thu gọn thừa số còn lại.\n\n**Chú ý:** Có thể làm gọn hơn: $x^7+x^2+1=(x^7-x)+(x^2+x+1)=x(x^3-1)(x^3+1)+(x^2+x+1)$ rồi đặt $x^2+x+1$ ra ngoài — dấu hiệu \"luỹ thừa có số mũ lệch nhau $3$\" thường cho nhân tử $x^2+x+1$.\n\n**Phần 2. Trình bày**\n\n$x^7+x^2+1=(x^7+x^6+x^5)-(x^6+x^5+x^4)+(x^4+x^3+x^2)-(x^3+x^2+x)+(x^2+x+1)$\n\n$=x^5(x^2+x+1)-x^4(x^2+x+1)+x^2(x^2+x+1)-x(x^2+x+1)+(x^2+x+1)$\n\n$=(x^2+x+1)(x^5-x^4+x^2-x+1)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "nhân tử $x^2+x+1$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 271): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C1.2b@p271",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010102",
+  "nhom_soan": "T18T010102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $x,y,z$ biết: $2(x^2+y^2)+z^2=-2xy+2yz-4x-4$.",
+  "noi_dung_sach": "Tìm $x,y,z$ biết: $2(x^2+y^2)+z^2=-2xy+2yz-4x-4$.",
+  "dap_an": "$(x;y;z)=(-2;2;2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một phương trình ba ẩn chỉ giải được khi đưa về \"tổng các bình phương bằng $0$\"; dấu hiệu là các hạng tử bậc hai $2x^2{,}2y^2,z^2$ cùng các tích $2xy,-2yz$ và cặp $4x+4$ gợi ra $(x+y)^2$, $(y-z)^2$, $(x+2)^2$.\n\n**Bước 1.** Chuyển mọi hạng tử về vế trái để vế phải bằng $0$ và sắp xếp lại các hạng tử.\n\n**Bước 2.** Tách $2x^2=x^2+x^2$ và $2y^2=y^2+y^2$ rồi ghép các hạng tử thành ba nhóm là ba hằng đẳng thức bình phương của một tổng hoặc một hiệu.\n\n**Bước 3.** Vì tổng ba bình phương bằng $0$ nên từng bình phương phải bằng $0$; giải ba phương trình bậc nhất thu được để tìm $x,y,z$.\n\n**Chú ý:** Chỉ được kết luận \"mỗi bình phương bằng $0$\" khi vế còn lại đúng bằng $0$; nhớ kiểm tra lại bằng cách khai triển ba bình phương để chắc không sót hạng tử nào.\n\n**Phần 2. Trình bày**\n\n$2(x^2+y^2)+z^2=-2xy+2yz-4x-4$\n\n$\\Leftrightarrow2x^2+2y^2+z^2+2xy-2yz+4x+4=0$\n\n$\\Leftrightarrow(x^2+2xy+y^2)+(x^2+4x+4)+(y^2-2yz+z^2)=0$\n\n$\\Leftrightarrow(x+y)^2+(x+2)^2+(y-z)^2=0$\n\nVì ba bình phương đều không âm nên $x+y=0$, $x+2=0$, $y-z=0$, tức là $x=-2$, $y=2$, $z=2$.\n\nVậy $(x;y;z)=(-2;2;2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về tổng các bình phương bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 271): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 271, đề Đề 1 bài 2b: vế ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C1.3b@p271",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030203",
+  "nhom_soan": "T18T030203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $a^2+b^2+c^2=2$. Tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức $M=a+b+c-abc$.",
+  "noi_dung_sach": "Cho $a,b,c$ thỏa mãn $a^2+b^2+c^2=2$. Tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức $M=a+b+c-abc$.",
+  "dap_an": "$\\max M=2;\\ \\min M=-2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $M=(a+b)\\cdot1+c(1-ab)$ rồi dùng Bu-nhi-a-cốp-xki để chặn $M^2$; điều kiện $a^2+b^2+c^2=2$ làm thừa số thứ nhất rút gọn được thành $2+2ab$, và tích hai thừa số khai triển ra dạng dễ so sánh với $4$.\n\n**Bước 1.** Từ $a^2+b^2+c^2=2$ chứng tỏ $ab\\le1$, để biết trước dấu của $ab-1$ dùng ở bước sau.\n\n**Bước 2.** Viết $M$ thành tổng của hai tích rồi áp dụng bất đẳng thức Bu-nhi-a-cốp-xki để chặn $M^2$ bằng tích của hai tổng bình phương, thay $(a+b)^2+c^2=2+2ab$.\n\n**Bước 3.** Khai triển tích thành $2a^2b^2(ab-1)+4$, dùng $ab-1\\le0$ để suy ra $M^2\\le4$ và do đó $-2\\le M\\le2$.\n\n**Bước 4.** Tìm bộ $(a;b;c)$ thỏa điều kiện làm $M$ đạt từng giá trị biên để khẳng định đó là giá trị lớn nhất, nhỏ nhất.\n\n**Chú ý:** Chặn $M^2\\le4$ mới cho cả hai biên cùng lúc; đừng quên chỉ ra dấu \"=\" xảy ra thật, nếu không mới chỉ chứng minh được cận chứ chưa phải cực trị.\n\n**Phần 2. Trình bày**\n\nTa có $ab\\le\\dfrac{a^2+b^2}{2}\\le\\dfrac{a^2+b^2+c^2}{2}=1$ nên $ab-1\\le0$.\n\nTheo bất đẳng thức Bu-nhi-a-cốp-xki: $M^2=\\left[(a+b)\\cdot1+c(1-ab)\\right]^2\\le\\left[(a+b)^2+c^2\\right]\\left[1^2+(1-ab)^2\\right]$\n\n$=(a^2+b^2+c^2+2ab)(2-2ab+a^2b^2)$\n\n$=(2ab+2)(a^2b^2-2ab+2)$\n\n$=2a^3b^3-2a^2b^2+4$\n\n$=2a^2b^2(ab-1)+4\\le4$ (vì $a^2b^2\\ge0$ và $ab-1\\le0$).\n\nSuy ra $-2\\le M\\le2$.\n\nVới $a=b=1$, $c=0$ (thỏa $a^2+b^2+c^2=2$) ta có $M=2$; với $a=b=-1$, $c=0$ ta có $M=-2$.\n\nVậy giá trị lớn nhất của $M$ là $2$, giá trị nhỏ nhất của $M$ là $-2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki",
+   "$ab\\le\\dfrac{a^2+b^2}{2}$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 271): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C1.6b@p271",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050101",
+  "nhom_soan": "T18T050101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Trong một giải bóng đá có $12$ đội tham dự, thi đấu vòng tròn một lượt (hai đội bất kì thi đấu với nhau đúng một trận).\n\ni) Chứng minh rằng sau $4$ vòng đấu (mỗi đội đấu đúng $4$ trận) luôn tìm được ba đội bóng đôi một chưa thi đấu với nhau.\n\nii) Khẳng định trên còn đúng không, nếu mỗi đội đã thi đấu đúng $5$ trận?",
+  "noi_dung_sach": "Trong một giải bóng đá có $12$ đội tham dự, thi đấu vòng tròn một lượt (hai đội bất kì thi đấu với nhau đúng một trận).\n\ni) Chứng minh rằng sau $4$ vòng đấu (mỗi đội đấu đúng $4$ trận) luôn tìm được ba đội bóng đôi một chưa thi đấu với nhau.\n\nii) Khẳng định trên còn đúng không, nếu mỗi đội đã thi đấu đúng $5$ trận?",
+  "dap_an": "i) Chứng minh; ii) Không còn đúng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi đội chỉ mới gặp ít đối thủ nên chắc chắn còn đội chưa gặp; chọn hai đội chưa gặp nhau rồi đếm số đội mà một trong hai đã gặp để chứng tỏ còn đội thứ ba chưa gặp cả hai (ý i); với ý ii chỉ cần dựng một ví dụ cụ thể làm khẳng định sai.\n\n**Bước 1.** Mỗi đội mới đấu $4$ trận trong khi có $11$ đội khác, nên tồn tại hai đội chưa đấu với nhau; gọi là $A$ và $B$.\n\n**Bước 2.** Đếm trong $10$ đội còn lại số đội đã gặp $A$ hoặc gặp $B$; số này không vượt quá tổng số trận của hai đội, từ đó suy ra còn ít nhất hai đội chưa gặp cả $A$ lẫn $B$ và chọn một đội $C$ trong đó.\n\n**Bước 3.** Với ý ii, dựng cách tổ chức mà mỗi đội đấu đúng $5$ trận: chia $12$ đội thành hai nhóm $6$ đội và cho các đội cùng nhóm đấu với nhau.\n\n**Bước 4.** Dùng nguyên lí Đi-rích-lê cho ba đội bất kì và hai nhóm để thấy luôn có hai đội đã gặp nhau, tức khẳng định ở ý i không còn đúng.\n\n**Chú ý:** Vì $A$ và $B$ chưa gặp nhau nên danh sách đối thủ của $A$ hay của $B$ không chứa đội còn lại, mọi phép đếm chỉ diễn ra trong $10$ đội kia; ý ii chỉ cần một phản ví dụ.\n\n**Phần 2. Trình bày**\n\ni) Mỗi đội mới thi đấu $4$ trận trong khi có $11$ đội khác, nên tồn tại hai đội chưa thi đấu với nhau; gọi hai đội đó là $A$ và $B$.\n\nMỗi đội $A$, $B$ đã đấu đúng $4$ trận và hai đội này chưa gặp nhau, nên trong $10$ đội còn lại có nhiều nhất $4+4=8$ đội đã gặp $A$ hoặc $B$.\n\nDo đó có ít nhất $2$ đội chưa thi đấu với cả $A$ lẫn $B$; gọi một trong hai đội đó là $C$.\n\nVậy $A$, $B$, $C$ là ba đội đôi một chưa thi đấu với nhau.\n\nii) Khẳng định không còn đúng.\n\nThật vậy, chia $12$ đội thành hai nhóm, mỗi nhóm $6$ đội, và cho mỗi đội đấu với $5$ đội cùng nhóm; khi đó mỗi đội đã đấu đúng $5$ trận.\n\nVới ba đội bất kì, theo nguyên lí Đi-rích-lê có hai đội thuộc cùng một nhóm, và hai đội đó đã đấu với nhau.\n\nVậy không tồn tại ba đội đôi một chưa thi đấu với nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nguyên lí Đi-rích-lê",
+   "đếm số đội đã gặp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 271): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 271, đề Đề 1 bài 6b: sác) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C2.1a@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{2-x}{2013}-1=\\dfrac{1-x}{2014}-\\dfrac{x}{2015}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{2-x}{2013}-1=\\dfrac{1-x}{2014}-\\dfrac{x}{2015}$.",
+  "dap_an": "$S=\\{2015\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba mẫu $2013,2014,2015$ chỉ hơn kém nhau $1$ đơn vị còn tử đều là nhị thức bậc nhất; cộng thêm hằng số thích hợp vào từng phân thức làm cả ba tử cùng trở thành $2015-x$, khi đó đặt được nhân tử chung.\n\n**Bước 1.** Cộng $2$ vào hai vế và tách $2=1+1$ ở vế phải để mỗi phân thức được cộng đúng một đơn vị, nhờ vậy tử của cả ba phân thức đều thành $2015-x$.\n\n**Bước 2.** Chuyển các phân thức về cùng một vế rồi đặt $2015-x$ làm nhân tử chung.\n\n**Bước 3.** Chứng tỏ thừa số còn lại khác $0$ bằng cách so sánh hai phân số có tử bằng $1$, từ đó chỉ còn một nghiệm.\n\n**Chú ý:** Đừng quy đồng khử mẫu ngay — số quá lớn và làm mất cấu trúc; thấy tử là nhị thức cùng hệ số của $x$ thì nghĩ tới việc cộng bớt hằng số để tử trùng nhau.\n\n**Phần 2. Trình bày**\n\nCộng $2$ vào hai vế (ở vế phải viết $2=1+1$):\n\n$\\dfrac{2-x}{2013}-1=\\dfrac{1-x}{2014}-\\dfrac{x}{2015}\\Leftrightarrow\\dfrac{2-x}{2013}+1=\\left(\\dfrac{1-x}{2014}+1\\right)+\\left(\\dfrac{-x}{2015}+1\\right)$\n\n$\\Leftrightarrow\\dfrac{2015-x}{2013}=\\dfrac{2015-x}{2014}+\\dfrac{2015-x}{2015}$\n\n$\\Leftrightarrow(2015-x)\\left(\\dfrac{1}{2013}-\\dfrac{1}{2014}-\\dfrac{1}{2015}\\right)=0$\n\nVì $\\dfrac{1}{2013}-\\dfrac{1}{2014}=\\dfrac{1}{2013\\cdot2014}<\\dfrac{1}{2015}$ nên $\\dfrac{1}{2013}-\\dfrac{1}{2014}-\\dfrac{1}{2015}\\ne0$.\n\nDo đó $2015-x=0$, tức $x=2015$.\n\nVậy $S=\\{2015\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng cùng một số vào hai vế để tử đồng nhất",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C2.1b@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{1}{x^2+9x+20}+\\dfrac{1}{x^2+11x+30}+\\dfrac{1}{x^2+13x+42}=\\dfrac{1}{18}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{1}{x^2+9x+20}+\\dfrac{1}{x^2+11x+30}+\\dfrac{1}{x^2+13x+42}=\\dfrac{1}{18}$.",
+  "dap_an": "$S=\\{-13;2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba tam thức ở mẫu đều phân tích được thành tích hai nhị thức liên tiếp $(x+4)(x+5)$, $(x+5)(x+6)$, $(x+6)(x+7)$, nên mỗi phân thức tách được thành hiệu hai phân thức đơn giản và tổng ba phân thức khử liên tiếp gần hết.\n\n**Bước 1.** Phân tích ba mẫu thành nhân tử và nêu điều kiện xác định để các phân thức có nghĩa.\n\n**Bước 2.** Tách mỗi phân thức theo $\\dfrac{1}{(x+k)(x+k+1)}=\\dfrac{1}{x+k}-\\dfrac{1}{x+k+1}$ rồi cộng lại, các số hạng ở giữa triệt tiêu nhau.\n\n**Bước 3.** Quy đồng phương trình còn hai phân thức để đưa về phương trình bậc hai và phân tích vế trái thành tích.\n\n**Bước 4.** Giải từng nhân tử bằng $0$ rồi đối chiếu nghiệm với điều kiện xác định.\n\n**Chú ý:** Không quy đồng cả ba phân thức một lượt (bậc sáu, rất cồng kềnh); khi mẫu là tích hai nhị thức hơn kém nhau $1$ đơn vị thì luôn nghĩ tới tách thành hiệu.\n\n**Phần 2. Trình bày**\n\nĐKXĐ: $x\\ne-4$; $x\\ne-5$; $x\\ne-6$; $x\\ne-7$.\n\nVì $x^2+9x+20=(x+4)(x+5)$, $x^2+11x+30=(x+5)(x+6)$, $x^2+13x+42=(x+6)(x+7)$ nên phương trình tương đương\n\n$\\dfrac{1}{x+4}-\\dfrac{1}{x+5}+\\dfrac{1}{x+5}-\\dfrac{1}{x+6}+\\dfrac{1}{x+6}-\\dfrac{1}{x+7}=\\dfrac{1}{18}$\n\n$\\Leftrightarrow\\dfrac{1}{x+4}-\\dfrac{1}{x+7}=\\dfrac{1}{18}$\n\n$\\Leftrightarrow\\dfrac{3}{(x+4)(x+7)}=\\dfrac{1}{18}$\n\n$\\Leftrightarrow(x+4)(x+7)=54$\n\n$\\Leftrightarrow x^2+11x-26=0$\n\n$\\Leftrightarrow(x+13)(x-2)=0$\n\n$\\Leftrightarrow x=-13$ hoặc $x=2$ (thỏa ĐKXĐ).\n\nVậy $S=\\{-13;2\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích mẫu thành nhân tử",
+   "tách phân thức thành hiệu để khử liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C2.1c@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(x-1)^3+(2x+3)^3=27x^3+8$.",
+  "noi_dung_sach": "Giải phương trình: $(x-1)^3+(2x+3)^3=27x^3+8$.",
+  "dap_an": "$S=\\left\\{-\\dfrac{2}{3};-\\dfrac{1}{2};3\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là tổng hai lập phương có tổng hai cơ số $(x-1)+(2x+3)=3x+2$, và vế phải $27x^3+8=(3x)^3+2^3$ cũng là tổng hai lập phương có tổng cơ số $3x+2$; viết cả hai vế theo $a^3+b^3=(a+b)^3-3ab(a+b)$ thì $(3x+2)^3$ triệt tiêu và còn nhân tử chung $3x+2$.\n\n**Bước 1.** Đặt $a=x-1$, $b=2x+3$ rồi viết vế trái theo $(a+b)^3-3ab(a+b)$ với $a+b=3x+2$.\n\n**Bước 2.** Viết vế phải $(3x)^3+2^3$ theo cùng hằng đẳng thức với hai cơ số $3x$ và $2$, cũng có tổng $3x+2$.\n\n**Bước 3.** Chuyển vế để hai số hạng $(3x+2)^3$ triệt tiêu, rồi đặt $3x+2$ làm nhân tử chung.\n\n**Bước 4.** Phân tích tam thức bậc hai còn lại thành tích và giải ba phương trình bậc nhất.\n\n**Chú ý:** Đừng khai triển cả hai lập phương rồi thu gọn thành phương trình bậc ba tổng quát — mất công và khó nhẩm nghiệm; hãy nhìn tổng hai cơ số để nhận ra nhân tử chung.\n\n**Phần 2. Trình bày**\n\nĐặt $a=x-1$, $b=2x+3$ thì $a+b=3x+2$ và\n\n$(x-1)^3+(2x+3)^3=(a+b)^3-3ab(a+b)=(3x+2)^3-3(x-1)(2x+3)(3x+2)$.\n\nMặt khác $27x^3+8=(3x)^3+2^3=(3x+2)^3-3\\cdot3x\\cdot2\\cdot(3x+2)=(3x+2)^3-18x(3x+2)$.\n\nPhương trình tương đương $(3x+2)^3-3(x-1)(2x+3)(3x+2)=(3x+2)^3-18x(3x+2)$\n\n$\\Leftrightarrow(3x+2)\\left[(x-1)(2x+3)-6x\\right]=0$\n\n$\\Leftrightarrow(3x+2)(2x^2-5x-3)=0$\n\n$\\Leftrightarrow(3x+2)(x-3)(2x+1)=0$\n\n$\\Leftrightarrow x=-\\dfrac{2}{3}$ hoặc $x=3$ hoặc $x=-\\dfrac{1}{2}$.\n\nVậy $S=\\left\\{-\\dfrac{2}{3};-\\dfrac{1}{2};3\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "$a^3+b^3=(a+b)^3-3ab(a+b)$",
+   "đặt ẩn phụ",
+   "nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C2.2a@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $a,b$ thỏa mãn $\\dfrac{a}{b}+\\dfrac{b}{a}=\\dfrac{a^2}{b}+\\dfrac{b^2}{a}=\\dfrac{a^3}{b}+\\dfrac{b^3}{a}$. Tính giá trị của biểu thức $M=\\dfrac{a^9}{b}+\\dfrac{b^9}{a}$.",
+  "noi_dung_sach": "Cho $a,b$ thỏa mãn $\\dfrac{a}{b}+\\dfrac{b}{a}=\\dfrac{a^2}{b}+\\dfrac{b^2}{a}=\\dfrac{a^3}{b}+\\dfrac{b^3}{a}$. Tính giá trị của biểu thức $M=\\dfrac{a^9}{b}+\\dfrac{b^9}{a}$.",
+  "dap_an": "$2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng thì ba biểu thức đều có mẫu $ab$ và tử là $a^2+b^2$, $a^3+b^3$, $a^4+b^4$, nên ba tổng đó bằng nhau; ghép chúng thành $a^4+b^4-2(a^3+b^3)+(a^2+b^2)=0$ thì nhóm được thành hai bình phương, buộc $a=b=1$.\n\n**Bước 1.** Quy đồng từng biểu thức trong giả thiết (mẫu chung $ab$ với $a,b\\ne0$) để suy ra $a^2+b^2=a^3+b^3=a^4+b^4$.\n\n**Bước 2.** Vì ba tổng bằng nhau nên tổ hợp $a^4+b^4-2(a^3+b^3)+a^2+b^2$ bằng $0$; nhóm các hạng tử theo $a$ và theo $b$.\n\n**Bước 3.** Mỗi nhóm là một bình phương nên hai bình phương cùng bằng $0$; kết hợp với $a,b\\ne0$ để tìm $a$ và $b$.\n\n**Bước 4.** Thay giá trị tìm được vào biểu thức $M$.\n\n**Chú ý:** Phải dùng $a,b\\ne0$ (đã có từ mẫu số) để loại nghiệm $a=0$, $b=0$ của $a^2(a-1)^2=0$ và $b^2(b-1)^2=0$.\n\n**Phần 2. Trình bày**\n\nVì $a,b\\ne0$ nên nhân ba biểu thức của giả thiết với $ab$ ta được $a^2+b^2=a^3+b^3=a^4+b^4$.\n\nDo đó $a^4+b^4-2(a^3+b^3)+(a^2+b^2)=0$ (nếu đặt giá trị chung là $t$ thì $t-2t+t=0$)\n\n$\\Leftrightarrow(a^4-2a^3+a^2)+(b^4-2b^3+b^2)=0$\n\n$\\Leftrightarrow a^2(a-1)^2+b^2(b-1)^2=0$.\n\nHai số hạng đều không âm nên $a^2(a-1)^2=b^2(b-1)^2=0$; mà $a,b\\ne0$ nên $a=b=1$.\n\nVậy $M=\\dfrac{1^9}{1}+\\dfrac{1^9}{1}=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về tổng các bình phương bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 276, đề Đề 2 bài 2a: sác) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C2.2b@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010502",
+  "nhom_soan": "T18T010502",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng $S=\\dfrac{1^2}{1\\cdot3}+\\dfrac{2^2}{3\\cdot5}+\\dfrac{3^2}{5\\cdot7}+\\dots+\\dfrac{2016^2}{4031\\cdot4033}$.",
+  "noi_dung_sach": "Tính tổng $S=\\dfrac{1^2}{1\\cdot3}+\\dfrac{2^2}{3\\cdot5}+\\dfrac{3^2}{5\\cdot7}+\\dots+\\dfrac{2016^2}{4031\\cdot4033}$.",
+  "dap_an": "$504+\\dfrac{504}{4033}=\\dfrac{2033136}{4033}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số hạng thứ $n$ là $\\dfrac{n^2}{(2n-1)(2n+1)}$ có tử và mẫu cùng bậc hai nên tách riêng phần $\\dfrac14$; phần còn lại có tử bằng $1$ và mẫu là tích hai số lẻ liên tiếp, tách được thành hiệu để các số hạng khử nhau.\n\n**Bước 1.** Nhận ra số hạng tổng quát $\\dfrac{n^2}{(2n-1)(2n+1)}$ và đếm số số hạng: số hạng cuối có $2n-1=4031$ nên $n=2016$.\n\n**Bước 2.** Viết $n^2=\\dfrac{(4n^2-1)+1}{4}$ để tách mỗi số hạng thành $\\dfrac14$ cộng một phân thức có tử bằng $1$.\n\n**Bước 3.** Tách phân thức còn lại theo $\\dfrac{1}{(2n-1)(2n+1)}=\\dfrac12\\left(\\dfrac{1}{2n-1}-\\dfrac{1}{2n+1}\\right)$.\n\n**Bước 4.** Cộng $2016$ số hạng: phần $\\dfrac14$ lặp lại $2016$ lần, phần hiệu khử liên tiếp chỉ còn số hạng đầu và cuối.\n\n**Chú ý:** Nhiều bài tổng có quy luật có tử cùng bậc với mẫu — luôn tách phần nguyên (hằng số) trước rồi mới tách hiệu, nếu không sẽ không khử được.\n\n**Phần 2. Trình bày**\n\nSố hạng thứ $n$ của tổng là $\\dfrac{n^2}{(2n-1)(2n+1)}$ ($n=1{,}2,\\dots,2016$ vì $2\\cdot2016-1=4031$).\n\nTa có\n\n$\\dfrac{n^2}{(2n-1)(2n+1)}=\\dfrac{(4n^2-1)+1}{4(2n-1)(2n+1)}=\\dfrac14+\\dfrac{1}{4(2n-1)(2n+1)}=\\dfrac14+\\dfrac18\\left(\\dfrac{1}{2n-1}-\\dfrac{1}{2n+1}\\right)$.\n\nDo đó $S=2016\\cdot\\dfrac14+\\dfrac18\\left(\\dfrac11-\\dfrac13+\\dfrac13-\\dfrac15+\\dots+\\dfrac{1}{4031}-\\dfrac{1}{4033}\\right)$\n\n$=504+\\dfrac18\\left(1-\\dfrac{1}{4033}\\right)$\n\n$=504+\\dfrac18\\cdot\\dfrac{4032}{4033}$\n\n$=504+\\dfrac{504}{4033}=\\dfrac{2033136}{4033}$.\n\nVậy $S=504+\\dfrac{504}{4033}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phân thức thành hiệu để khử liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 276, đề Đề 2 bài 2b: sác) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C2.3a@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y,z>0$. Chứng minh rằng: $(x+y+z)\\left(\\dfrac1x+\\dfrac1y+\\dfrac1z\\right)\\ge9$.",
+  "noi_dung_sach": "Cho $x,y,z>0$. Chứng minh rằng: $(x+y+z)\\left(\\dfrac1x+\\dfrac1y+\\dfrac1z\\right)\\ge9$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khai triển tích sẽ có ba số $1$ và ba cặp nghịch đảo $\\dfrac uv+\\dfrac vu$; mỗi cặp bằng $2+\\dfrac{(u-v)^2}{uv}$ nên tích bằng $9$ cộng với tổng các số không âm — đúng kiểu xét hiệu.\n\n**Bước 1.** Nhân từng hạng tử của tổng thứ nhất với từng hạng tử của tổng thứ hai để được ba số $1$ và sáu phân thức.\n\n**Bước 2.** Gom sáu phân thức thành ba cặp nghịch đảo nhau và quy đồng mỗi cặp.\n\n**Bước 3.** Viết $x^2+y^2=(x-y)^2+2xy$ (tương tự cho hai cặp còn lại) để mỗi cặp bằng $2$ cộng một phân thức có tử là bình phương.\n\n**Bước 4.** Nhận xét ba phân thức có tử bình phương, mẫu dương nên không âm, từ đó so sánh tích với $9$.\n\n**Chú ý:** Dấu \"=\" xảy ra khi $x=y=z$; điều kiện $x,y,z>0$ là cần để các mẫu $xy,xz,yz$ dương, nếu bỏ thì phân thức có thể âm.\n\n**Phần 2. Trình bày**\n\n$(x+y+z)\\left(\\dfrac1x+\\dfrac1y+\\dfrac1z\\right)=3+\\left(\\dfrac xy+\\dfrac yx\\right)+\\left(\\dfrac xz+\\dfrac zx\\right)+\\left(\\dfrac yz+\\dfrac zy\\right)$\n\n$=3+\\dfrac{x^2+y^2}{xy}+\\dfrac{x^2+z^2}{xz}+\\dfrac{y^2+z^2}{yz}$\n\n$=9+\\dfrac{(x-y)^2}{xy}+\\dfrac{(x-z)^2}{xz}+\\dfrac{(y-z)^2}{yz}$.\n\nVì $x,y,z>0$ nên ba phân thức cuối đều không âm, suy ra $(x+y+z)\\left(\\dfrac1x+\\dfrac1y+\\dfrac1z\\right)\\ge9$.\n\nDấu \"=\" xảy ra khi $x=y=z$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét hiệu",
+   "$\\dfrac{x}{y}+\\dfrac{y}{x}=2+\\dfrac{(x-y)^2}{xy}$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 279, lời giải Đề 2 bài 3) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C2.3b@p276",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030102",
+  "nhom_soan": "T18T030102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ là độ dài các cạnh của một tam giác có chu vi bằng $1$. Chứng minh rằng $\\dfrac{1-2a^2}{(1-2a)^2}+\\dfrac{1-2b^2}{(1-2b)^2}+\\dfrac{1-2c^2}{(1-2c)^2}\\ge21$.",
+  "noi_dung_sach": "Cho $a,b,c$ là độ dài các cạnh của một tam giác có chu vi bằng $1$. Chứng minh rằng $\\dfrac{1-2a^2}{(1-2a)^2}+\\dfrac{1-2b^2}{(1-2b)^2}+\\dfrac{1-2c^2}{(1-2c)^2}\\ge21$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $(1-2a)^2$ gợi đánh giá từng số hạng bằng một biểu thức dạng $\\dfrac{4}{1-2a}-5$ (hiệu hai vế bằng $\\dfrac{2(3a-1)^2}{(1-2a)^2}\\ge0$, đạt dấu \"=\" ở $a=\\dfrac13$); sau khi cộng, còn lại tổng các nghịch đảo $\\dfrac1u+\\dfrac1v+\\dfrac1w$ với $u+v+w=1$ và tổng này luôn $\\ge9$.\n\n**Bước 1.** Dùng $a+b+c=1$ để viết $1-2a=b+c-a$ và dùng bất đẳng thức tam giác để chứng tỏ ba số $u=1-2a$, $v=1-2b$, $w=1-2c$ đều dương và có tổng bằng $1$.\n\n**Bước 2.** Xét hiệu giữa $\\dfrac{1-2a^2}{(1-2a)^2}$ và $\\dfrac{4}{1-2a}-5$ để chứng tỏ số hạng thứ nhất không nhỏ hơn biểu thức đó, rồi viết hai bất đẳng thức tương tự cho $b$ và $c$.\n\n**Bước 3.** Cộng ba bất đẳng thức để đưa vế trái cần chứng minh về không nhỏ hơn $4\\left(\\dfrac1u+\\dfrac1v+\\dfrac1w\\right)-15$.\n\n**Bước 4.** Chứng minh $\\dfrac1u+\\dfrac1v+\\dfrac1w\\ge9$ bằng cách khai triển $(u+v+w)\\left(\\dfrac1u+\\dfrac1v+\\dfrac1w\\right)$ và dùng $\\dfrac{p}{q}+\\dfrac{q}{p}\\ge2$, rồi thay vào để được kết quả cần chứng minh.\n\n**Chú ý:** Phải chỉ ra $1-2a>0$ trước khi chia hay dùng bất đẳng thức giữa các số dương; dấu \"=\" xảy ra khi $a=b=c=\\dfrac13$ (tam giác đều).\n\n**Phần 2. Trình bày**\n\nVì $a+b+c=1$ nên $1-2a=b+c-a$, và theo bất đẳng thức tam giác $b+c-a>0$.\n\nTương tự $1-2b>0$, $1-2c>0$.\n\nĐặt $u=1-2a$, $v=1-2b$, $w=1-2c$ thì $u,v,w>0$ và $u+v+w=3-2(a+b+c)=1$.\n\nXét hiệu $\\dfrac{1-2a^2}{(1-2a)^2}-\\left(\\dfrac{4}{1-2a}-5\\right)=\\dfrac{1-2a^2-4(1-2a)+5(1-2a)^2}{(1-2a)^2}=\\dfrac{2(3a-1)^2}{(1-2a)^2}\\ge0$\n\nnên $\\dfrac{1-2a^2}{(1-2a)^2}\\ge\\dfrac{4}{u}-5$.\n\nTương tự $\\dfrac{1-2b^2}{(1-2b)^2}\\ge\\dfrac{4}{v}-5$ và $\\dfrac{1-2c^2}{(1-2c)^2}\\ge\\dfrac{4}{w}-5$.\n\nCộng ba bất đẳng thức: vế trái $\\ge4\\left(\\dfrac1u+\\dfrac1v+\\dfrac1w\\right)-15$.\n\nMặt khác $(u+v+w)\\left(\\dfrac1u+\\dfrac1v+\\dfrac1w\\right)=3+\\left(\\dfrac uv+\\dfrac vu\\right)+\\left(\\dfrac uw+\\dfrac wu\\right)+\\left(\\dfrac vw+\\dfrac wv\\right)\\ge3+2+2+2=9$, mà $u+v+w=1$ nên $\\dfrac1u+\\dfrac1v+\\dfrac1w\\ge9$.\n\nSuy ra vế trái $\\ge4\\cdot9-15=21$.\n\nDấu \"=\" xảy ra khi $a=b=c=\\dfrac13$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đánh giá từng số hạng bằng xét hiệu",
+   "$\\dfrac1u+\\dfrac1v+\\dfrac1w\\ge\\dfrac{9}{u+v+w}$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 276): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C2.6a@p277",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Mẹ gửi $100\\,000\\,000$ đồng vào ngân hàng với lãi suất kì hạn $1$ năm. Sau $2$ năm mẹ nhận số tiền cả vốn lẫn lãi là $112\\,360\\,000$ đồng. Hỏi lãi suất ngân hàng đó là bao nhiêu phần trăm trong một năm? Biết rằng số tiền lãi của năm đầu được gộp vào với vốn để tính lãi cho năm sau.",
+  "noi_dung_sach": "Mẹ gửi $100\\,000\\,000$ đồng vào ngân hàng với lãi suất kì hạn $1$ năm. Sau $2$ năm mẹ nhận số tiền cả vốn lẫn lãi là $112\\,360\\,000$ đồng. Hỏi lãi suất ngân hàng đó là bao nhiêu phần trăm trong một năm? Biết rằng số tiền lãi của năm đầu được gộp vào với vốn để tính lãi cho năm sau.",
+  "dap_an": "$6\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lãi năm đầu được gộp vào vốn nên mỗi năm số tiền được nhân với $1+r$ (lãi kép); sau hai năm số tiền là vốn nhân $(1+r)^2$, từ đó lập phương trình bậc hai theo $r$.\n\n**Bước 1.** Gọi $r$ là lãi suất một năm viết dưới dạng số thập phân và tính số tiền cả vốn lẫn lãi sau năm thứ nhất.\n\n**Bước 2.** Coi số tiền đó là vốn mới để tính lãi năm thứ hai, rồi lập phương trình theo số tiền $112\\,360\\,000$ đồng nhận được sau hai năm.\n\n**Bước 3.** Chia hai vế cho vốn ban đầu và nhận ra vế phải là một bình phương để giải $(1+r)^2$ bằng cách khai căn, chọn nghiệm thỏa $r>0$.\n\n**Bước 4.** Đổi $r$ sang phần trăm và trả lời.\n\n**Chú ý:** Không tính lãi đơn $2r$ — đề nói rõ lãi năm đầu gộp vào vốn; và phương trình $(1+r)^2=1{,}06^2$ còn nghiệm $1+r=-1{,}06$ (khi đó $r<0$) phải loại.\n\n**Phần 2. Trình bày**\n\nGọi lãi suất là $r$ một năm (viết dưới dạng số thập phân, $r>0$).\n\nSau năm thứ nhất số tiền cả vốn lẫn lãi là $100\\,000\\,000(1+r)$ đồng.\n\nSau năm thứ hai là $100\\,000\\,000(1+r)+100\\,000\\,000(1+r)\\cdot r=100\\,000\\,000(1+r)^2$ đồng.\n\nTheo đề: $100\\,000\\,000(1+r)^2=112\\,360\\,000$\n\n$\\Leftrightarrow(1+r)^2=1{,}1236=1{,}06^2$.\n\nVì $1+r>0$ nên $1+r=1{,}06$, suy ra $r=0{,}06$.\n\nVậy lãi suất ngân hàng là $6\\%$ một năm.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "lãi kép",
+   "phương trình $(1+r)^2=1{,}06^2$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 277): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C2.6b@p277",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một đa giác lồi có mọi đường chéo bằng nhau. Đa giác này có mấy cạnh?",
+  "noi_dung_sach": "Một đa giác lồi có mọi đường chéo bằng nhau. Đa giác này có mấy cạnh?",
+  "dap_an": "$4$ hoặc $5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa giác có từ $6$ cạnh trở lên đủ đỉnh để chọn bốn đỉnh $A,B,D,E$ tạo tứ giác lồi mà cả hai đường chéo $AD,BE$ lẫn hai cạnh $AE,BD$ của tứ giác đều là đường chéo của đa giác; bất đẳng thức tam giác cho thấy hai cạnh đối này có tổng nhỏ hơn tổng hai đường chéo, nên không thể bằng nhau hết.\n\n**Bước 1.** Chỉ ra hai ví dụ: hình chữ nhật có hai đường chéo bằng nhau, ngũ giác đều có năm đường chéo bằng nhau; tam giác không có đường chéo nên không xét.\n\n**Bước 2.** Giả sử đa giác có $n\\ge6$ cạnh và mọi đường chéo bằng nhau; chọn bốn đỉnh $A,B,D,E$ theo thứ tự trên đa giác với $A,B$ kề nhau, $D$ cách $B$ một đỉnh và $E$ kề $D$, sao cho cả bốn đoạn $AE$, $BD$, $AD$, $BE$ đều không phải cạnh của đa giác.\n\n**Bước 3.** Gọi $O$ là giao điểm hai đường chéo $AD$ và $BE$ của tứ giác lồi $ABDE$, áp dụng bất đẳng thức tam giác cho hai tam giác $OAE$ và $OBD$ rồi cộng lại để so sánh $AE+BD$ với $AD+BE$.\n\n**Bước 4.** Nhận thấy kết quả mâu thuẫn với giả thiết các đường chéo bằng nhau, từ đó loại $n\\ge6$ và kết luận.\n\n**Chú ý:** Phải kiểm tra bốn đoạn kia đúng là đường chéo của đa giác (không phải cạnh), nếu không không được dùng giả thiết \"mọi đường chéo bằng nhau\" cho chúng.\n\n**Phần 2. Trình bày**\n\nVới $n=4$: hình chữ nhật có hai đường chéo bằng nhau.\n\nVới $n=5$: ngũ giác đều có mọi đường chéo bằng nhau.\n\nTam giác không có đường chéo nên không xét.\n\nGiả sử có đa giác lồi $n$ cạnh ($n\\ge6$) có mọi đường chéo bằng nhau, các đỉnh theo thứ tự là $A_1,A_2,\\dots,A_n$.\n\nLấy $A=A_1$, $B=A_2$, $D=A_4$, $E=A_5$.\n\nVì $n\\ge6$ nên $A_1A_5$, $A_2A_4$, $A_1A_4$, $A_2A_5$ đều là đường chéo của đa giác, nên $AE=BD=AD=BE$.\n\nTứ giác $ABDE$ lồi, hai đường chéo $AD$ và $BE$ cắt nhau tại $O$ nằm giữa $A,D$ và giữa $B,E$.\n\nTrong tam giác $OAE$: $AE<OA+OE$.\n\nTrong tam giác $OBD$: $BD<OB+OD$.\n\nCộng hai bất đẳng thức: $AE+BD<(OA+OD)+(OB+OE)=AD+BE$.\n\nĐiều này mâu thuẫn với $AE=BD=AD=BE$.\n\nVậy $n\\le5$, mà đa giác có đường chéo nên $n\\in\\{4;5\\}$.\n\nVậy đa giác có $4$ hoặc $5$ cạnh.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "bất đẳng thức tam giác",
+   "phản chứng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 277): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C3.1@p282",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho đa thức $P(x)=x^5-x$; $Q(x)=(x^2-4)(x^2-1)x$.\n\na) Hãy phân tích đa thức $P(x)-Q(x)$ thành tích các nhân tử.\n\nb) Chứng tỏ rằng nếu $x$ là số nguyên thì $P(x)$ luôn chia hết cho $5$.",
+  "noi_dung_sach": "Cho đa thức $P(x)=x^5-x$; $Q(x)=(x^2-4)(x^2-1)x$.\n\na) Hãy phân tích đa thức $P(x)-Q(x)$ thành tích các nhân tử.\n\nb) Chứng tỏ rằng nếu $x$ là số nguyên thì $P(x)$ luôn chia hết cho $5$.",
+  "dap_an": "a) $5x(x+1)(x-1)$; b) Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu $P-Q$ có hệ số chung $5$ nên chia hết cho $5$; còn $Q$ là tích đúng năm số nguyên liên tiếp nên cũng chia hết cho $5$, và $P$ chính là tổng của hai đa thức đó.\n\n**Bước 1.** Khai triển $Q(x)$ rồi trừ khỏi $P(x)$: các hạng tử bậc năm khử nhau, chỉ còn đa thức bậc ba có hệ số chung.\n\n**Bước 2.** Đặt nhân tử chung rồi dùng hằng đẳng thức hiệu hai bình phương để phân tích đến cùng thành tích các nhân tử bậc nhất.\n\n**Bước 3.** Viết $P(x)$ thành tổng của hiệu $P(x)-Q(x)$ và $Q(x)$, rồi xét từng số hạng có chia hết cho $5$ hay không.\n\n**Bước 4.** Phân tích $Q(x)$ thành tích của $x$ với bốn nhân tử bậc nhất để nhận ra năm số nguyên liên tiếp, rồi dùng tính chất về số dư khi chia cho $5$ của năm số liên tiếp.\n\n**Chú ý:** Chỉ cần một thừa số trong tích chia hết cho $5$ là cả tích chia hết cho $5$; năm số nguyên liên tiếp cho năm số dư khác nhau khi chia cho $5$ nên luôn có một số dư $0$.\n\n**Phần 2. Trình bày**\n\na) $P(x)-Q(x)=x^5-x-(x^4-5x^2+4)x$\n\n$=x^5-x-x^5+5x^3-4x$\n\n$=5x^3-5x$\n\n$=5x(x^2-1)$\n\n$=5x(x-1)(x+1)$\n\nb) Với $x\\in\\mathbb{Z}$, ta có $P(x)-Q(x)=5x(x-1)(x+1)\\vdots5$.\n\nMặt khác $Q(x)=(x^2-4)(x^2-1)x=(x-2)(x-1)x(x+1)(x+2)$ là tích của năm số nguyên liên tiếp.\n\nNăm số nguyên liên tiếp cho năm số dư khác nhau khi chia cho $5$, trong đó có số dư $0$, nên có một thừa số chia hết cho $5$, suy ra $Q(x)\\vdots5$.\n\nDo đó $P(x)=[P(x)-Q(x)]+Q(x)\\vdots5$ với mọi $x\\in\\mathbb{Z}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích nhân tử",
+   "tích năm số nguyên liên tiếp chia hết cho 5"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 282): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C3.2a@p282",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x_1,x_2\\in[0;1]$. Chứng minh rằng: $(1+x_1)^2\\ge4x_1^2$.",
+  "noi_dung_sach": "Cho $x_1,x_2\\in[0;1]$. Chứng minh rằng: $(1+x_1)^2\\ge4x_1^2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai vế đều là bình phương nên xét hiệu và dùng hằng đẳng thức hiệu hai bình phương; hiệu thành tích hai nhân tử, và điều kiện $x_1\\in[0;1]$ cho biết dấu của cả hai.\n\n**Bước 1.** Chuyển $4x_1^2$ sang vế trái để xét hiệu của hai bình phương $(1+x_1)^2$ và $(2x_1)^2$.\n\n**Bước 2.** Phân tích hiệu đó bằng hằng đẳng thức thành tích của hai nhân tử bậc nhất theo $x_1$.\n\n**Bước 3.** Từ $0\\le x_1\\le1$ suy ra dấu của từng nhân tử, rồi kết luận dấu của tích.\n\n**Chú ý:** Điều kiện $x_1\\ge0$ là cần thiết: với $x_1=-1$ thì $(1+x_1)^2=0<4x_1^2$. Dấu \"=\" xảy ra khi $x_1=1$.\n\n**Phần 2. Trình bày**\n\n$(1+x_1)^2-4x_1^2=(1+x_1-2x_1)(1+x_1+2x_1)$\n\n$=(1-x_1)(1+3x_1)$\n\nVì $0\\le x_1\\le1$ nên $1-x_1\\ge0$ và $1+3x_1>0$, do đó $(1-x_1)(1+3x_1)\\ge0$.\n\nVậy $(1+x_1)^2\\ge4x_1^2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai bình phương",
+   "xét dấu tích hai thừa số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 282): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 283, lời giải Đề 3 bài 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C3.2b@p282",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x_1,x_2\\in[0;1]$. Chứng minh rằng: $(1+x_1+x_2)^2\\ge4(x_1^2+x_2^2)$.",
+  "noi_dung_sach": "Cho $x_1,x_2\\in[0;1]$. Chứng minh rằng: $(1+x_1+x_2)^2\\ge4(x_1^2+x_2^2)$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với số $t\\in[0;1]$ thì $t^2\\le t$, nên có thể thay các bình phương ở vế phải bằng chính các số đó để chỉ còn tổng $x_1+x_2$; khi ấy hiệu hai vế là một bình phương.\n\n**Bước 1.** Dùng điều kiện $0\\le x_i\\le1$ để chứng tỏ $x_i^2\\le x_i$, từ đó chặn vế phải $4(x_1^2+x_2^2)$ bởi một biểu thức chỉ chứa tổng $x_1+x_2$.\n\n**Bước 2.** Đặt $s=x_1+x_2$ và quy bài toán về so sánh $(1+s)^2$ với $4s$ bằng cách xét hiệu của chúng.\n\n**Bước 3.** Khai triển hiệu đó rồi nhận ra bình phương của một biểu thức để kết luận hiệu không âm.\n\n**Chú ý:** Dấu \"=\" xảy ra khi cả hai bất đẳng thức dùng đều đạt dấu bằng, tức mỗi số $x_i$ bằng $0$ hoặc $1$ và $x_1+x_2=1$, chẳng hạn $(x_1;x_2)=(0;1)$.\n\n**Phần 2. Trình bày**\n\nVì $0\\le x_1\\le1$ nên $x_1^2\\le x_1$; tương tự $x_2^2\\le x_2$.\n\nSuy ra $4(x_1^2+x_2^2)\\le4(x_1+x_2)$.\n\nDo đó $(1+x_1+x_2)^2-4(x_1^2+x_2^2)\\ge(1+x_1+x_2)^2-4(x_1+x_2)$\n\n$=1+2(x_1+x_2)+(x_1+x_2)^2-4(x_1+x_2)$\n\n$=1-2(x_1+x_2)+(x_1+x_2)^2$\n\n$=(1-x_1-x_2)^2\\ge0$.\n\nVậy $(1+x_1+x_2)^2\\ge4(x_1^2+x_2^2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đánh giá bình phương không vượt quá chính số đó trên đoạn $[0;1]$",
+   "hằng đẳng thức bình phương của một hiệu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 282): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C3.6a@p282",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040102",
+  "nhom_soan": "T18T040102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $n\\in\\mathbb{N}$. Tìm số dư khi chia $2^{11n}$ cho $23$. Chứng minh rằng $2^a+29^b$ không chia hết cho $23$, với mọi $a,b\\in\\mathbb{N}$.",
+  "noi_dung_sach": "Cho $n\\in\\mathbb{N}$. Tìm số dư khi chia $2^{11n}$ cho $23$. Chứng minh rằng $2^a+29^b$ không chia hết cho $23$, với mọi $a,b\\in\\mathbb{N}$.",
+  "dap_an": "Số dư là $1$; Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $2^{11}=2048$ hơn $1$ một bội của $23$ nên luỹ thừa của $2$ có số dư khi chia cho $23$ lặp lại sau mỗi $11$ số mũ; còn $29^b$ nhân với $4^b$ thành $116^b$, cũng hơn $1$ một bội của $23$.\n\n**Bước 1.** Viết $2^{11n}=2048^n$ rồi dùng tính chất $A^n-1$ chia hết cho $A-1$ với $A=2048$ để tìm số dư khi chia cho $23$.\n\n**Bước 2.** Nhân $2^a+29^b$ với $4^b$ (số nguyên tố cùng nhau với $23$) để $29^b$ trở thành $116^b$, rồi tách tổng thành $(2^{a+2b}+1)$ cộng $(116^b-1)$.\n\n**Bước 3.** Chỉ ra $116^b-1$ chia hết cho $23$ nhờ $116-1=115=5\\cdot23$, nên bài toán quy về xét tính chia hết của $2^{a+2b}+1$ cho $23$.\n\n**Bước 4.** Viết $a+2b=11n+r$ với $0\\le r\\le10$, dùng kết quả của ý đầu để chuyển sang $2^r+1$ rồi kiểm tra từng giá trị của $r$.\n\n**Chú ý:** Phải có $4^b$ nguyên tố cùng nhau với $23$ thì mới suy ra được $2^a+29^b$ không chia hết cho $23$ từ việc $4^b(2^a+29^b)$ không chia hết cho $23$; gặp dạng \"$m^a+k^b$ không chia hết cho một số nguyên tố\" hãy tìm chu kì của luỹ thừa theo modulo đó trước.\n\n**Phần 2. Trình bày**\n\nTa có $2^{11n}=2048^n=(2048^n-1)+1$.\n\nVì $2048^n-1\\vdots2048-1=2047=23\\cdot89$ nên $2^{11n}$ chia cho $23$ dư $1$.\n\nĐặt $M=2^a+29^b$.\n\nTa có $4^bM=2^{a+2b}+116^b=(2^{a+2b}+1)+(116^b-1)$.\n\nVì $116^b-1\\vdots116-1=115=5\\cdot23$ nên $116^b-1\\vdots23$. (1)\n\nĐặt $a+2b=11n+r$ với $n\\in\\mathbb{N}$, $r\\in\\{0;1;\\dots;10\\}$.\n\nKhi đó $2^{a+2b}+1=2^r(2^{11n}-1)+(2^r+1)$.\n\nVì $2^{11n}-1\\vdots23$ (theo trên) nên $2^r(2^{11n}-1)\\vdots23$.\n\nVới $r=0;1;\\dots;10$ thì $2^r+1$ lần lượt bằng $2;3;5;9;17;33;65;129;257;513;1025$, chia cho $23$ lần lượt dư $2;3;5;9;17;10;19;14;4;7;13$, không số nào chia hết cho $23$.\n\nDo đó $2^{a+2b}+1\\not\\vdots23$. (2)\n\nTừ (1) và (2) suy ra $4^bM\\not\\vdots23$.\n\nNếu $M\\vdots23$ thì $4^bM\\vdots23$, vô lí; vậy $M\\not\\vdots23$.\n\nVậy số dư khi chia $2^{11n}$ cho $23$ là $1$, và $2^a+29^b$ không chia hết cho $23$ với mọi $a,b\\in\\mathbb{N}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai luỹ thừa cùng số mũ chia hết cho hiệu hai cơ số",
+   "xét số dư (mod 23)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 282): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 285, lời giải Đề 3 bài 6) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4.1a@p286",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $\\dfrac{a^2}{a+b}+\\dfrac{b^2}{b+c}+\\dfrac{c^2}{c+a}=\\dfrac{b^2}{a+b}+\\dfrac{c^2}{b+c}+\\dfrac{a^2}{c+a}$.",
+  "noi_dung_sach": "Chứng minh rằng $\\dfrac{a^2}{a+b}+\\dfrac{b^2}{b+c}+\\dfrac{c^2}{c+a}=\\dfrac{b^2}{a+b}+\\dfrac{c^2}{b+c}+\\dfrac{a^2}{c+a}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế dùng cùng các tử $a^2,b^2,c^2$ nhưng đổi chỗ trên các mẫu, nên xét hiệu hai vế rồi ghép các phân thức cùng mẫu: mỗi cặp có tử là hiệu hai bình phương và rút gọn được với mẫu.\n\n**Bước 1.** Lập hiệu của vế trái và vế phải rồi ghép các phân thức có cùng mẫu thành từng cặp.\n\n**Bước 2.** Phân tích tử của mỗi cặp bằng hằng đẳng thức hiệu hai bình phương để rút gọn cho mẫu tương ứng.\n\n**Bước 3.** Cộng ba kết quả rút gọn và xem các số hạng có triệt tiêu nhau hay không để kết luận.\n\n**Chú ý:** Chỉ được rút gọn khi mẫu khác $0$, nên bài ngầm yêu cầu $a+b$, $b+c$, $c+a$ đều khác $0$.\n\n**Phần 2. Trình bày**\n\nXét hiệu của vế trái và vế phải:\n\n$\\left(\\dfrac{a^2}{a+b}+\\dfrac{b^2}{b+c}+\\dfrac{c^2}{c+a}\\right)-\\left(\\dfrac{b^2}{a+b}+\\dfrac{c^2}{b+c}+\\dfrac{a^2}{c+a}\\right)$\n\n$=\\dfrac{a^2-b^2}{a+b}+\\dfrac{b^2-c^2}{b+c}+\\dfrac{c^2-a^2}{c+a}$\n\n$=\\dfrac{(a-b)(a+b)}{a+b}+\\dfrac{(b-c)(b+c)}{b+c}+\\dfrac{(c-a)(c+a)}{c+a}$\n\n$=(a-b)+(b-c)+(c-a)=0$.\n\nVậy hai vế bằng nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "ghép phân thức cùng mẫu",
+   "hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 286): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4.1b@p286",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$.\n\nTính giá trị biểu thức $M=\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}$.",
+  "noi_dung_sach": "Cho $a,b,c$ thỏa mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$.\n\nTính giá trị biểu thức $M=\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}$.",
+  "dap_an": "$0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện cho tổng ba phân thức bằng $0$, còn $M$ gồm đúng ba phân thức ấy chia thêm cho mẫu của chính nó; nên chuyển hai phân thức sang một vế rồi chia hai vế cho mẫu thích hợp sẽ cho từng số hạng của $M$ theo các phân thức còn lại.\n\n**Bước 1.** Chuyển hai phân thức sang vế phải rồi chia hai vế cho $b-c$ để vế trái xuất hiện đúng số hạng thứ nhất của $M$.\n\n**Bước 2.** Quy đồng vế phải về mẫu chung $(a-b)(b-c)(c-a)$ và rút gọn tử thành một đa thức theo $a,b,c$.\n\n**Bước 3.** Hoán vị vòng quanh $a\\to b\\to c\\to a$ để viết ngay hai số hạng còn lại của $M$ với cùng mẫu chung.\n\n**Bước 4.** Cộng ba kết quả cùng mẫu và xét xem các hạng tử ở tử có triệt tiêu nhau từng đôi hay không để tìm giá trị của $M$.\n\n**Chú ý:** Bài ngầm yêu cầu $a,b,c$ đôi một khác nhau để các mẫu có nghĩa; mẫu chung $(a-b)(b-c)(c-a)$ giữ nguyên dấu khi hoán vị vòng nên cộng tử được thẳng.\n\n**Phần 2. Trình bày**\n\nTừ điều kiện suy ra $\\dfrac{a}{b-c}=-\\dfrac{b}{c-a}-\\dfrac{c}{a-b}$.\n\nChia hai vế cho $b-c$: $\\dfrac{a}{(b-c)^2}=-\\dfrac{b}{(c-a)(b-c)}-\\dfrac{c}{(a-b)(b-c)}$\n\n$=\\dfrac{-b(a-b)-c(c-a)}{(a-b)(b-c)(c-a)}$\n\n$=\\dfrac{-ab+b^2-c^2+ca}{(a-b)(b-c)(c-a)}$.\n\nHoán vị vòng $a\\to b\\to c\\to a$: $\\dfrac{b}{(c-a)^2}=\\dfrac{-bc+c^2-a^2+ab}{(a-b)(b-c)(c-a)}$ và $\\dfrac{c}{(a-b)^2}=\\dfrac{-ca+a^2-b^2+bc}{(a-b)(b-c)(c-a)}$.\n\nCộng ba đẳng thức: $M=\\dfrac{(-ab+b^2-c^2+ca)+(-bc+c^2-a^2+ab)+(-ca+a^2-b^2+bc)}{(a-b)(b-c)(c-a)}$\n\n$=\\dfrac{0}{(a-b)(b-c)(c-a)}=0$.\n\nVậy $M=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hoán vị vòng",
+   "quy đồng mẫu thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 286): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4.2a@p286",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T030103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng: $a(a+b)(a^2+b^2)(a^4+b^4)+b(b+c)(b^2+c^2)(b^4+c^4)+c(c+a)(c^2+a^2)(c^4+a^4)\\ge0$",
+  "noi_dung_sach": "Chứng minh rằng: $a(a+b)(a^2+b^2)(a^4+b^4)+b(b+c)(b^2+c^2)(b^4+c^4)+c(c+a)(c^2+a^2)(c^4+a^4)\\ge0$",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng có dạng $a(a+b)$ nhân với $(a^2+b^2)(a^4+b^4)$; chặn $a(a+b)$ bởi $\\dfrac{a^2-b^2}{2}$ thì số hạng được chặn dưới bởi một hiệu hai luỹ thừa, và cộng ba số hạng vòng quanh các hiệu đó triệt tiêu nhau.\n\n**Bước 1.** Chứng minh $a(a+b)\\ge\\dfrac{a^2-b^2}{2}$ bằng cách xét hiệu hai vế và nhận ra một bình phương.\n\n**Bước 2.** Nhân hai vế với $(a^2+b^2)(a^4+b^4)$, vốn không âm nên bất đẳng thức giữ nguyên chiều, rồi dùng hiệu hai bình phương liên tiếp để gộp thành một hiệu hai luỹ thừa bậc tám.\n\n**Bước 3.** Viết hai bất đẳng thức tương tự cho hai số hạng còn lại bằng cách hoán vị vòng $a\\to b\\to c\\to a$.\n\n**Bước 4.** Cộng ba bất đẳng thức theo vế để các hiệu ở vế phải triệt tiêu nhau và rút ra kết luận.\n\n**Chú ý:** Đề không cho dấu của $a,b,c$ nên chỉ được nhân bất đẳng thức với biểu thức chắc chắn không âm với mọi $a,b$, ở đây là $(a^2+b^2)(a^4+b^4)$.\n\n**Phần 2. Trình bày**\n\nTa có $a(a+b)-\\dfrac{a^2-b^2}{2}=\\dfrac{2a^2+2ab-a^2+b^2}{2}=\\dfrac{(a+b)^2}{2}\\ge0$, nên $a(a+b)\\ge\\dfrac{a^2-b^2}{2}$.\n\nNhân hai vế với $(a^2+b^2)(a^4+b^4)\\ge0$:\n\n$a(a+b)(a^2+b^2)(a^4+b^4)\\ge\\dfrac{(a^2-b^2)(a^2+b^2)(a^4+b^4)}{2}=\\dfrac{a^8-b^8}{2}$.\n\nTương tự $b(b+c)(b^2+c^2)(b^4+c^4)\\ge\\dfrac{b^8-c^8}{2}$ và $c(c+a)(c^2+a^2)(c^4+a^4)\\ge\\dfrac{c^8-a^8}{2}$.\n\nCộng ba bất đẳng thức theo vế, vế trái của đề\n\n$\\ge\\dfrac{a^8-b^8+b^8-c^8+c^8-a^8}{2}=0$.\n\nVậy bất đẳng thức được chứng minh.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm trội từng số hạng",
+   "hiệu hai bình phương",
+   "triệt tiêu theo hoán vị vòng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 286): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 288, lời giải Đề 4 bài 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4.2b@p286",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030102",
+  "nhom_soan": "T18T030102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c,d,e\\ge0$ thỏa mãn $a+b+c+d+e=1$.\n\nChứng minh rằng $ab+bc+cd+de\\le\\dfrac{1}{4}$.",
+  "noi_dung_sach": "Cho $a,b,c,d,e\\ge0$ thỏa mãn $a+b+c+d+e=1$.\n\nChứng minh rằng $ab+bc+cd+de\\le\\dfrac{1}{4}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm vào vế trái hai tích không âm $ad$ và $be$ thì sáu tích gộp được thành $(a+c+e)(b+d)$; hai thừa số này có tổng bằng $1$ nên tích của chúng không vượt quá bình phương của nửa tổng.\n\n**Bước 1.** Nhận xét các tích $ad$ và $be$ không âm nên thêm chúng vào vế trái chỉ làm vế trái lớn lên hoặc giữ nguyên.\n\n**Bước 2.** Nhóm sáu tích sau khi thêm thành tích của hai tổng $(a+c+e)$ và $(b+d)$ bằng cách đặt nhân tử chung.\n\n**Bước 3.** Áp dụng bất đẳng thức $xy\\le\\left(\\dfrac{x+y}{2}\\right)^2$ cho hai thừa số không âm, rồi dùng điều kiện tổng bằng $1$.\n\n**Chú ý:** Dấu \"=\" xảy ra khi $ad=be=0$ và $a+c+e=b+d=\\dfrac{1}{2}$, chẳng hạn $a=e=0$, $b=d=\\dfrac{1}{4}$, $c=\\dfrac{1}{2}$.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c,d,e\\ge0$ nên $ad\\ge0$ và $be\\ge0$.\n\nDo đó\n\n$ab+bc+cd+de\\le ab+bc+cd+de+ad+be$\n\n$=(a+c+e)(b+d)$\n\n$\\le\\left(\\dfrac{(a+c+e)+(b+d)}{2}\\right)^2$ (vì $xy\\le\\left(\\dfrac{x+y}{2}\\right)^2$ với mọi $x,y$)\n\n$=\\left(\\dfrac{a+b+c+d+e}{2}\\right)^2=\\dfrac{1}{4}$.\n\nVậy $ab+bc+cd+de\\le\\dfrac{1}{4}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm hạng tử không âm",
+   "gộp thành tích hai tổng",
+   "bất đẳng thức Cô-si cho hai số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 286): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4.3b@p286",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình nghiệm nguyên dương: $x^4+x^3y+xy^3+y^4=(x+y)^3$.",
+  "noi_dung_sach": "Giải phương trình nghiệm nguyên dương: $x^4+x^3y+xy^3+y^4=(x+y)^3$.",
+  "dap_an": "$(x;y)\\in\\{(1;2);(2;1);(2;2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái nhóm được thành $(x+y)(x^3+y^3)$ nên phương trình chia được cho $(x+y)^2$ khác $0$; phương trình bậc hai hai ẩn còn lại đưa được về tổng ba bình phương bằng một số nhỏ, nên mỗi bình phương chỉ nhận vài giá trị.\n\n**Bước 1.** Nhóm các hạng tử ở vế trái thành hai nhóm có nhân tử chung $x+y$, rồi dùng hằng đẳng thức tổng hai lập phương để phân tích.\n\n**Bước 2.** Chia hai vế cho $(x+y)^2$, khác $0$ vì $x,y$ nguyên dương, để được phương trình bậc hai $x^2-xy+y^2=x+y$.\n\n**Bước 3.** Nhân hai vế với $2$ rồi chuyển vế để tách thành tổng của ba bình phương bằng một số nhỏ.\n\n**Bước 4.** Chặn $(x-1)^2$ bằng tổng ba bình phương để có ít giá trị của $x$, rồi với mỗi $x$ giải phương trình bậc hai theo $y$ và loại nghiệm không nguyên dương.\n\n**Chú ý:** Nhớ loại các giá trị $x=0$, $y=0$ vì đề yêu cầu nghiệm nguyên dương; có thể thử lại $(2;2)$: $16+16+16+16=64=4^3$.\n\n**Phần 2. Trình bày**\n\n$x^4+x^3y+xy^3+y^4=(x+y)^3$\n\n$\\Leftrightarrow x^3(x+y)+y^3(x+y)=(x+y)^3$\n\n$\\Leftrightarrow(x+y)(x^3+y^3)=(x+y)^3$\n\n$\\Leftrightarrow(x+y)^2(x^2-xy+y^2)=(x+y)^3$\n\nVì $x,y$ nguyên dương nên $(x+y)^2>0$; chia hai vế cho $(x+y)^2$ được $x^2-xy+y^2=x+y$\n\n$\\Leftrightarrow2x^2-2xy+2y^2-2x-2y=0$\n\n$\\Leftrightarrow(x-y)^2+(x-1)^2+(y-1)^2=2$.\n\nVì $(x-y)^2\\ge0$ và $(y-1)^2\\ge0$ nên $(x-1)^2\\le2$.\n\nMà $x$ nguyên dương nên $(x-1)^2\\in\\{0;1\\}$, tức $x=1$ hoặc $x=2$ (loại $x=0$).\n\nVới $x=1$: $1-y+y^2=1+y\\Leftrightarrow y(y-2)=0$, mà $y>0$ nên $y=2$.\n\nVới $x=2$: $4-2y+y^2=2+y\\Leftrightarrow y^2-3y+2=0\\Leftrightarrow(y-1)(y-2)=0$, nên $y=1$ hoặc $y=2$.\n\nVậy $(x;y)\\in\\{(1;2);(2;1);(2;2)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "hằng đẳng thức tổng hai lập phương",
+   "đưa về tổng ba bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 286): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4.6b@p287",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050102",
+  "nhom_soan": "T18T050102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tại mỗi đỉnh của đa giác đều $11$ cạnh ta ghi một số bất kì trong các số $31;32;61;62;91;92;331;361;332;362;961$ (mỗi số dùng đúng $1$ lần).\n\nChứng minh rằng tồn tại ba đỉnh của đa giác là ba đỉnh của một tam giác cân và tổng các số ghi trên các đỉnh là số chia hết cho $3$.",
+  "noi_dung_sach": "Tại mỗi đỉnh của đa giác đều $11$ cạnh ta ghi một số bất kì trong các số $31;32;61;62;91;92;331;361;332;362;961$ (mỗi số dùng đúng $1$ lần).\n\nChứng minh rằng tồn tại ba đỉnh của đa giác là ba đỉnh của một tam giác cân và tổng các số ghi trên các đỉnh là số chia hết cho $3$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba số cùng số dư khi chia cho $3$ có tổng chia hết cho $3$, nên tô hai màu theo số dư rồi tìm ba đỉnh cùng màu tạo thành tam giác cân; $11$ đỉnh là số lẻ buộc có hai đỉnh kề nhau cùng màu, và từ đó dựng được tam giác cân nhờ tính đối xứng của đa giác đều.\n\n**Bước 1.** Tính số dư khi chia cho $3$ của mười một số đã cho để thấy mỗi số dư $1$ hoặc $2$, rồi tô đỏ hoặc xanh các đỉnh theo số dư và quy bài toán về tìm ba đỉnh cùng màu tạo thành tam giác cân.\n\n**Bước 2.** Chứng minh tồn tại hai đỉnh kề nhau cùng màu bằng phản chứng: nếu hai đỉnh kề nào cũng khác màu thì màu phải xen kẽ dọc theo vòng $11$ đỉnh, điều này mâu thuẫn vì $11$ là số lẻ.\n\n**Bước 3.** Gọi hai đỉnh kề cùng màu là $A,B$ và $C$ là đỉnh nằm trên đường trung trực của $AB$, rồi xét trường hợp $C$ cùng màu với $A$ và $B$.\n\n**Bước 4.** Nếu $C$ khác màu thì xét hai đỉnh $D,E$ kề với $A,B$ về hai phía ngoài, và chia hai khả năng: có một đỉnh trong $D,E$ cùng màu với $A$, hoặc cả hai cùng màu với $C$.\n\n**Chú ý:** Dùng đúng hai điều: tổng ba số cùng số dư $r$ chia $3$ dư $3r$ nên chia hết cho $3$; và đa giác đều có số đỉnh lẻ thì đường trung trực của một cạnh đi qua đúng một đỉnh. Hai số dư khác nhau trong cùng một tam giác sẽ làm tổng không chia hết cho $3$ nên không được trộn màu.\n\n**Phần 2. Trình bày**\n\nSố dư khi chia cho $3$ của các số đã cho lần lượt là: $31\\to1$; $32\\to2$; $61\\to1$; $62\\to2$; $91\\to1$; $92\\to2$; $331\\to1$; $361\\to1$; $332\\to2$; $362\\to2$; $961\\to1$.\n\nVậy mỗi số chia cho $3$ dư $1$ hoặc dư $2$.\n\nTô đỏ các đỉnh ghi số chia $3$ dư $1$ và tô xanh các đỉnh ghi số chia $3$ dư $2$.\n\nTổng của ba số cùng số dư $r$ chia $3$ dư $3r$ nên chia hết cho $3$.\n\nVậy chỉ cần chứng minh tồn tại ba đỉnh cùng màu là ba đỉnh của một tam giác cân.\n\nNếu không có hai đỉnh kề nhau nào cùng màu thì các đỉnh phải tô xen kẽ đỏ, xanh dọc theo vòng, mà vòng có $11$ đỉnh (số lẻ) nên đỉnh đầu và đỉnh cuối, vốn kề nhau, sẽ cùng màu: mâu thuẫn.\n\nVậy tồn tại hai đỉnh kề nhau cùng màu; gọi chúng là $A$ và $B$.\n\nVì $11$ lẻ nên đường trung trực của cạnh $AB$ đi qua một đỉnh $C$ của đa giác, và $CA=CB$.\n\nTrường hợp 1: $C$ cùng màu với $A$ và $B$.\n\nKhi đó tam giác $ABC$ cân tại $C$ và ba đỉnh cùng màu.\n\nTrường hợp 2: $C$ khác màu với $A$ và $B$.\n\nGọi $D$ là đỉnh kề $A$ ($D\\ne B$) và $E$ là đỉnh kề $B$ ($E\\ne A$).\n\nNếu $D$ cùng màu với $A$ và $B$ thì tam giác $DAB$ có $AD=AB$ (hai cạnh của đa giác đều) nên cân tại $A$ và ba đỉnh cùng màu.\n\nNếu $E$ cùng màu với $A$ và $B$ thì tam giác $EAB$ cân tại $B$ ($BE=BA$) và ba đỉnh cùng màu.\n\nNếu cả $D$ và $E$ đều khác màu với $A$ và $B$ thì $D,E$ cùng màu với $C$.\n\nVì $D,E$ đối xứng nhau qua đường trung trực của $AB$, đường này đi qua $C$ nên $CD=CE$.\n\nVậy tam giác $CDE$ cân tại $C$ và ba đỉnh cùng màu.\n\nTrong mọi trường hợp, tồn tại ba đỉnh cùng màu là ba đỉnh của một tam giác cân; tổng ba số ghi ở các đỉnh đó chia hết cho $3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tô màu theo số dư khi chia cho 3",
+   "nguyên lí chẵn lẻ trên vòng 11 đỉnh",
+   "đối xứng qua đường trung trực"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 287): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5.1a@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-241}{17}+\\dfrac{x-220}{19}+\\dfrac{x-195}{21}+\\dfrac{x-166}{23}=10$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x-241}{17}+\\dfrac{x-220}{19}+\\dfrac{x-195}{21}+\\dfrac{x-166}{23}=10$.",
+  "dap_an": "$S=\\{258\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng tử với mẫu của bốn phân số đều cho cùng một số, nên trừ lần lượt $1;2;3;4$ (tổng đúng bằng $10$) vào từng phân số thì cả bốn tử trở thành cùng một biểu thức — nhân tử chung xuất hiện, không cần quy đồng.\n\n**Bước 1.** Tách $10=1+2+3+4$ rồi chuyển từng số sang vế trái, ghép số $1$ với phân số thứ nhất, số $2$ với phân số thứ hai, và cứ thế, vì khi đó mỗi tử được biến đổi về cùng một dạng.\n\n**Bước 2.** Gộp mỗi nhóm thành một phân số có tử chung, rồi đặt tử chung đó làm nhân tử chung của cả vế trái.\n\n**Bước 3.** Nhận xét thừa số còn lại là tổng bốn số dương nên khác $0$, từ đó cho tử chung bằng $0$ để tìm nghiệm.\n\n**Chú ý:** Không quy đồng mẫu $17\\cdot19\\cdot21\\cdot23$ — số rất lớn; phương trình mà mỗi phân số bị lệch với một số nguyên thì nên tách hằng số để các tử giống nhau.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-241}{17}+\\dfrac{x-220}{19}+\\dfrac{x-195}{21}+\\dfrac{x-166}{23}=10$\n\n$\\Leftrightarrow\\left(\\dfrac{x-241}{17}-1\\right)+\\left(\\dfrac{x-220}{19}-2\\right)+\\left(\\dfrac{x-195}{21}-3\\right)+\\left(\\dfrac{x-166}{23}-4\\right)=0$\n\n$\\Leftrightarrow\\dfrac{x-258}{17}+\\dfrac{x-258}{19}+\\dfrac{x-258}{21}+\\dfrac{x-258}{23}=0$\n\n$\\Leftrightarrow(x-258)\\left(\\dfrac{1}{17}+\\dfrac{1}{19}+\\dfrac{1}{21}+\\dfrac{1}{23}\\right)=0$\n\nVì $\\dfrac{1}{17}+\\dfrac{1}{19}+\\dfrac{1}{21}+\\dfrac{1}{23}>0$ nên $x-258=0$, tức $x=258$.\n\nVậy $S=\\{258\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hằng số để các tử trùng nhau",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C5.1b@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $(x^2-1)^2=4x+1$.",
+  "noi_dung_sach": "Giải phương trình: $(x^2-1)^2=4x+1$.",
+  "dap_an": "$S=\\{0;2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái khai triển ra $x^4-2x^2+1$ còn vế phải có $4x+1$; cộng thêm $4x^2$ vào hai vế thì cả hai vế cùng là bình phương của một biểu thức, và phương trình dạng $A^2=B^2$ tách được thành hai phương trình bậc hai.\n\n**Bước 1.** Khai triển $(x^2-1)^2$ rồi cộng $4x^2$ vào cả hai vế, vì khi đó vế trái trở thành $(x^2+1)^2$ và vế phải trở thành $(2x+1)^2$.\n\n**Bước 2.** Từ hai bình phương bằng nhau suy ra hai biểu thức bằng nhau hoặc đối nhau, rồi viết thành hai phương trình riêng.\n\n**Bước 3.** Giải từng phương trình: một phương trình đưa được về tích, phương trình kia vô nghiệm vì bình phương không âm.\n\n**Chú ý:** $A^2=B^2\\Leftrightarrow A=B$ hoặc $A=-B$ — đừng bỏ nhánh $A=-B$ dù nó thường vô nghiệm.\n\n**Phần 2. Trình bày**\n\n$(x^2-1)^2=4x+1$\n\n$\\Leftrightarrow x^4-2x^2+1+4x^2=4x^2+4x+1$\n\n$\\Leftrightarrow(x^2+1)^2=(2x+1)^2$\n\n$\\Leftrightarrow x^2+1=2x+1$ hoặc $x^2+1=-2x-1$\n\n$\\Leftrightarrow x(x-2)=0$ hoặc $(x+1)^2=-1$\n\nPhương trình $(x+1)^2=-1$ vô nghiệm vì $(x+1)^2\\ge0$; còn $x(x-2)=0$ cho $x=0$ hoặc $x=2$.\n\nVậy $S=\\{0;2\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "hai bình phương bằng nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C5.1c@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{5}{x^2+x-6}-\\dfrac{2}{x^2+4x+3}=\\dfrac{3}{4x-2}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{5}{x^2+x-6}-\\dfrac{2}{x^2+4x+3}=\\dfrac{3}{4x-2}$.",
+  "dap_an": "$S=\\{0;5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai mẫu đầu đều chứa $x+3$, và tử của mỗi phân thức đúng bằng hiệu hai nhân tử của mẫu, nên mỗi phân thức tách được thành hiệu hai phân thức tử $1$ — khi trừ nhau, các phân thức chứa $x+3$ triệt tiêu.\n\n**Bước 1.** Phân tích các mẫu thành nhân tử rồi tìm điều kiện xác định để biết những giá trị nào của $x$ phải loại.\n\n**Bước 2.** Tách từng phân thức ở vế trái thành hiệu hai phân thức có tử bằng $1$, vì tử bằng hiệu hai nhân tử của mẫu, rồi trừ cho nhau để các phân thức chứa $x+3$ mất đi.\n\n**Bước 3.** Quy đồng vế trái còn lại, so sánh với vế phải để khử mẫu và đưa về phương trình bậc hai.\n\n**Bước 4.** Giải phương trình bậc hai rồi đối chiếu từng nghiệm với điều kiện xác định.\n\n**Chú ý:** Khử mẫu bằng dấu suy ra $\\Rightarrow$ có thể sinh nghiệm ngoại lai, nên phải đối chiếu điều kiện xác định trước khi kết luận.\n\n**Phần 2. Trình bày**\n\nĐiều kiện xác định: $x\\ne2$, $x\\ne-3$, $x\\ne-1$, $x\\ne\\dfrac{1}{2}$.\n\n$\\dfrac{5}{x^2+x-6}-\\dfrac{2}{x^2+4x+3}=\\dfrac{3}{4x-2}$\n\n$\\Leftrightarrow\\dfrac{5}{(x-2)(x+3)}-\\dfrac{2}{(x+1)(x+3)}=\\dfrac{3}{2(2x-1)}$\n\n$\\Leftrightarrow\\left(\\dfrac{1}{x-2}-\\dfrac{1}{x+3}\\right)-\\left(\\dfrac{1}{x+1}-\\dfrac{1}{x+3}\\right)=\\dfrac{3}{2(2x-1)}$\n\n$\\Leftrightarrow\\dfrac{1}{x-2}-\\dfrac{1}{x+1}=\\dfrac{3}{2(2x-1)}$\n\n$\\Leftrightarrow\\dfrac{3}{(x-2)(x+1)}=\\dfrac{3}{4x-2}$\n\n$\\Leftrightarrow(x-2)(x+1)=4x-2$\n\n$\\Leftrightarrow x^2-5x=0\\Leftrightarrow x(x-5)=0$\n\nSuy ra $x=0$ hoặc $x=5$; cả hai giá trị đều thỏa mãn điều kiện xác định.\n\nVậy $S=\\{0;5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phân thức thành hiệu hai phân thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C5.2a@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn rồi tính giá trị của biểu thức $A=\\dfrac{x(x+5)+y(y+5)+2(xy-3)}{x(x+6)+y(y+6)+2xy}$ với $x+y=2016$.",
+  "noi_dung_sach": "Rút gọn rồi tính giá trị của biểu thức $A=\\dfrac{x(x+5)+y(y+5)+2(xy-3)}{x(x+6)+y(y+6)+2xy}$ với $x+y=2016$.",
+  "dap_an": "$\\dfrac{2015}{2016}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả tử lẫn mẫu đều chứa $x^2+y^2+2xy$ và các hạng tử bậc nhất $x,y$ cùng hệ số, nên gom được thành biểu thức chỉ chứa $x+y$ — đặt $s=x+y$ thì phân thức rút gọn được ngay.\n\n**Bước 1.** Khai triển tử và mẫu rồi ghép $x^2+y^2+2xy=(x+y)^2$ cùng các hạng tử bậc nhất cùng hệ số, để cả hai chỉ còn phụ thuộc $x+y$.\n\n**Bước 2.** Phân tích tử (tam thức bậc hai theo $s=x+y$) bằng cách tách hạng tử bậc nhất, và đặt nhân tử chung ở mẫu.\n\n**Bước 3.** Rút gọn nhân tử chung của tử và mẫu, rồi thay $x+y=2016$ để tính giá trị.\n\n**Chú ý:** Chỉ được rút gọn nhân tử $x+y+6$ khi nó khác $0$; với $x+y=2016$ thì $x+y$ và $x+y+6$ đều khác $0$.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{x(x+5)+y(y+5)+2(xy-3)}{x(x+6)+y(y+6)+2xy}$\n\n$=\\dfrac{x^2+5x+y^2+5y+2xy-6}{x^2+6x+y^2+6y+2xy}$\n\n$=\\dfrac{(x+y)^2+5(x+y)-6}{(x+y)^2+6(x+y)}$\n\n$=\\dfrac{(x+y-1)(x+y+6)}{(x+y)(x+y+6)}$ (vì $s^2+5s-6=(s-1)(s+6)$ với $s=x+y$)\n\n$=\\dfrac{x+y-1}{x+y}$\n\nVới $x+y=2016$ (khi đó $x+y\\ne0$ và $x+y+6\\ne0$): $A=\\dfrac{2016-1}{2016}=\\dfrac{2015}{2016}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về biểu thức theo tổng $x+y$",
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C5.2b@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho ba số $x,y,z$ thỏa mãn đồng thời $x+y+z=0$ và $xy+yz+zx=0$. Hãy tính giá trị của biểu thức $P=(x+1)^{20}+(y-1)^{11}+(z+1)^{2017}$.",
+  "noi_dung_sach": "Cho ba số $x,y,z$ thỏa mãn đồng thời $x+y+z=0$ và $xy+yz+zx=0$. Hãy tính giá trị của biểu thức $P=(x+1)^{20}+(y-1)^{11}+(z+1)^{2017}$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bình phương của tổng ba số nối hai điều kiện đã cho với tổng ba bình phương; tổng các bình phương bằng $0$ thì từng số bằng $0$, khi đó $P$ tính trực tiếp.\n\n**Bước 1.** Khai triển $(x+y+z)^2$ để thấy mối liên hệ giữa $x^2+y^2+z^2$ với hai điều kiện của đề.\n\n**Bước 2.** Thay hai điều kiện vào để tìm giá trị của $x^2+y^2+z^2$.\n\n**Bước 3.** Suy ra từng số bằng không nhờ bình phương không âm, rồi thay vào $P$ và tính các lũy thừa.\n\n**Chú ý:** Lũy thừa lẻ của $-1$ bằng $-1$, lũy thừa chẵn của $1$ vẫn là $1$ — cẩn thận dấu của số hạng thứ hai.\n\n**Phần 2. Trình bày**\n\n$(x+y+z)^2=x^2+y^2+z^2+2(xy+yz+zx)$\n\nThay $x+y+z=0$ và $xy+yz+zx=0$ ta được $0=x^2+y^2+z^2+0$, nên $x^2+y^2+z^2=0$.\n\nMà $x^2\\ge0$, $y^2\\ge0$, $z^2\\ge0$ nên $x=y=z=0$.\n\nKhi đó $P=(0+1)^{20}+(0-1)^{11}+(0+1)^{2017}=1-1+1=1$.\n\nVậy $P=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "bình phương của tổng ba số",
+   "tổng các số không âm bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 294, lời giải Đề 5 bài 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5.3a@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$.",
+  "noi_dung_sach": "Chứng minh rằng $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai vế cùng bậc hai, nên xét hiệu hai vế; hiệu đó thu gọn được thành một bình phương nhân với hệ số dương.\n\n**Bước 1.** Lập hiệu của vế trái trừ vế phải rồi khai triển $(x+y)^2$.\n\n**Bước 2.** Gộp các hạng tử đồng dạng để hiệu chỉ còn ba hạng tử.\n\n**Bước 3.** Nhận ra ba hạng tử đó là một bình phương nhân $\\dfrac{1}{2}$, mà bình phương không âm nên hiệu không âm.\n\n**Chú ý:** Dấu \"=\" xảy ra khi và chỉ khi $x=y$.\n\n**Phần 2. Trình bày**\n\n$x^2+y^2-\\dfrac{1}{2}(x+y)^2=x^2+y^2-\\dfrac{1}{2}x^2-xy-\\dfrac{1}{2}y^2$\n\n$=\\dfrac{1}{2}x^2-xy+\\dfrac{1}{2}y^2$\n\n$=\\dfrac{1}{2}(x-y)^2\\ge0$\n\nVậy $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$, dấu \"=\" xảy ra khi $x=y$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét hiệu",
+   "bình phương không âm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5.3b@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030203",
+  "nhom_soan": "T18T030203",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $a,b,c,d>0$ thỏa mãn $a+b+c+d\\ge2016$. Tìm giá trị nhỏ nhất của biểu thức\n$M=\\dfrac{a^4}{(a^2+b^2)(a+b)}+\\dfrac{b^4}{(b^2+c^2)(b+c)}+\\dfrac{c^4}{(c^2+d^2)(c+d)}+\\dfrac{d^4}{(d^2+a^2)(d+a)}$.",
+  "noi_dung_sach": "Cho $a,b,c,d>0$ thỏa mãn $a+b+c+d\\ge2016$. Tìm giá trị nhỏ nhất của biểu thức\n$M=\\dfrac{a^4}{(a^2+b^2)(a+b)}+\\dfrac{b^4}{(b^2+c^2)(b+c)}+\\dfrac{c^4}{(c^2+d^2)(c+d)}+\\dfrac{d^4}{(d^2+a^2)(d+a)}$.",
+  "dap_an": "$504$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi chỗ các tử $a^4,b^4,c^4,d^4$ theo vòng quanh được biểu thức $N$ mà $M-N$ rút gọn thành tổng $(a-b)+(b-c)+(c-d)+(d-a)=0$; vậy $M=N$ và $2M=M+N$ là tổng bốn phân thức đối xứng dạng $\\dfrac{a^4+b^4}{(a^2+b^2)(a+b)}$, dễ chặn dưới.\n\n**Bước 1.** Lập biểu thức $N$ bằng cách thay mỗi tử $a^4$ bằng tử của số hạng kế tiếp, rồi tính $M-N$: mỗi hiệu có tử $a^4-b^4=(a^2-b^2)(a^2+b^2)$ nên rút gọn được thành một hiệu hai biến.\n\n**Bước 2.** Cộng $M$ với $N$ để $2M$ thành tổng bốn phân thức có tử $a^4+b^4$, $b^4+c^4$, $c^4+d^4$, $d^4+a^4$.\n\n**Bước 3.** Chặn dưới từng phân thức: dùng $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$ hai lần (cho $a^4+b^4$ rồi cho $a^2+b^2$) để được phân thức không nhỏ hơn một phần tư tổng hai biến.\n\n**Bước 4.** Cộng bốn bất đẳng thức, dùng giả thiết $a+b+c+d\\ge2016$ để có cận dưới của $M$, rồi kiểm tra dấu \"=\" xảy ra được.\n\n**Chú ý:** Bất đẳng thức $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$ có hiệu hai vế bằng $\\dfrac{1}{2}(x-y)^2\\ge0$ nên đúng với mọi $x,y$. Giá trị nhỏ nhất chỉ đạt khi mọi bất đẳng thức đồng thời xảy ra dấu \"=\" — tức $a=b=c=d$ và $a+b+c+d=2016$.\n\n**Phần 2. Trình bày**\n\nĐặt $N=\\dfrac{b^4}{(a^2+b^2)(a+b)}+\\dfrac{c^4}{(b^2+c^2)(b+c)}+\\dfrac{d^4}{(c^2+d^2)(c+d)}+\\dfrac{a^4}{(d^2+a^2)(d+a)}$.\n\nVì $\\dfrac{a^4-b^4}{(a^2+b^2)(a+b)}=\\dfrac{(a^2+b^2)(a-b)(a+b)}{(a^2+b^2)(a+b)}=a-b$ và tương tự cho ba hiệu còn lại, nên\n\n$M-N=(a-b)+(b-c)+(c-d)+(d-a)=0$, suy ra $M=N$.\n\nDo đó $2M=M+N=\\dfrac{a^4+b^4}{(a^2+b^2)(a+b)}+\\dfrac{b^4+c^4}{(b^2+c^2)(b+c)}+\\dfrac{c^4+d^4}{(c^2+d^2)(c+d)}+\\dfrac{d^4+a^4}{(d^2+a^2)(d+a)}$.\n\nVới mọi $x,y$ ta có $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$ (vì hiệu hai vế bằng $\\dfrac{1}{2}(x-y)^2\\ge0$).\n\nÁp dụng hai lần:\n\n$a^4+b^4\\ge\\dfrac{1}{2}(a^2+b^2)^2=\\dfrac{1}{2}(a^2+b^2)(a^2+b^2)\\ge\\dfrac{1}{4}(a^2+b^2)(a+b)^2$\n\n$\\Rightarrow\\dfrac{a^4+b^4}{(a^2+b^2)(a+b)}\\ge\\dfrac{1}{4}(a+b)$.\n\nTương tự $\\dfrac{b^4+c^4}{(b^2+c^2)(b+c)}\\ge\\dfrac{1}{4}(b+c)$, $\\dfrac{c^4+d^4}{(c^2+d^2)(c+d)}\\ge\\dfrac{1}{4}(c+d)$, $\\dfrac{d^4+a^4}{(d^2+a^2)(d+a)}\\ge\\dfrac{1}{4}(d+a)$.\n\nCộng bốn bất đẳng thức: $2M\\ge\\dfrac{1}{4}\\left[(a+b)+(b+c)+(c+d)+(d+a)\\right]=\\dfrac{1}{2}(a+b+c+d)$\n\n$\\Rightarrow M\\ge\\dfrac{1}{4}(a+b+c+d)\\ge\\dfrac{1}{4}\\cdot2016=504$.\n\nDấu \"=\" xảy ra khi $a=b=c=d$ và $a+b+c+d=2016$, tức $a=b=c=d=504$.\n\nVậy giá trị nhỏ nhất của $M$ là $504$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cặp biểu thức hoán vị vòng quanh",
+   "bất đẳng thức $x^2+y^2\\ge\\dfrac{1}{2}(x+y)^2$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 295, lời giải Đề 5 bài 3) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5.6a@p292",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $n\\in\\mathbb N$. Chứng minh rằng $B=4^n+15n-1$ chia hết cho $9$.",
+  "noi_dung_sach": "Cho $n\\in\\mathbb N$. Chứng minh rằng $B=4^n+15n-1$ chia hết cho $9$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Theo $a^n-b^n\\vdots a-b$, hiệu $4^n-1$ chia hết cho $3$; tách $15n=-3n+18n$ để phần $4^n-1-3n$ viết được thành $3$ nhân với tổng các hiệu $4^k-1$ (mỗi hiệu lại chia hết cho $3$), còn $18n$ hiển nhiên chia hết cho $9$.\n\n**Bước 1.** Tách $B=(4^n-1-3n)+18n$ để phần thứ hai hiển nhiên chia hết cho $9$.\n\n**Bước 2.** Khai triển $4^n-1=(4-1)(4^{n-1}+4^{n-2}+\\dots+4+1)$ rồi đặt $3$ làm nhân tử chung của $4^n-1-3n$.\n\n**Bước 3.** Trong ngoặc còn lại có $n$ lũy thừa của $4$ trừ đi $n$; ghép mỗi lũy thừa với một số $-1$ để ngoặc thành tổng các hiệu $4^k-1$, mỗi hiệu chia hết cho $3$.\n\n**Bước 4.** Suy ra $4^n-1-3n$ chia hết cho $9$, rồi cộng với $18n$ để kết luận.\n\n**Chú ý:** Phép tách chỉ có nghĩa khi $n\\ge1$; riêng $n=0$ thì $B=0$ chia hết cho $9$.\n\n**Phần 2. Trình bày**\n\nVới $n=0$: $B=1+0-1=0$ chia hết cho $9$.\n\nXét $n\\ge1$.\n\n$B=4^n+15n-1=(4^n-1-3n)+18n$\n\nTa có $4^n-1-3n=(4-1)(4^{n-1}+4^{n-2}+\\dots+4+1)-3n$\n\n$=3(4^{n-1}+4^{n-2}+\\dots+4+1-n)$\n\n$=3\\left[(4^{n-1}-1)+(4^{n-2}-1)+\\dots+(4-1)+(1-1)\\right]$\n\nMỗi hiệu $4^k-1$ chia hết cho $4-1=3$ nên biểu thức trong ngoặc vuông chia hết cho $3$, do đó $4^n-1-3n\\vdots9$.\n\nMà $18n\\vdots9$.\n\nVậy $B=4^n+15n-1$ chia hết cho $9$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "$a^n-b^n$ chia hết cho $a-b$",
+   "tách $-1$ thành $n$ số $-1$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 292): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 293 và 297, Đề 5 bài 6a:) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5.6b@p293",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050102",
+  "nhom_soan": "T18T050102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $2016$ điểm $A_1,A_2,\\dots,A_{2015},A_{2016}$. Người ta tô đỏ tất cả các trung điểm của các đoạn thẳng nối các cặp điểm trong số $2016$ điểm này.\nGọi $T$ là số điểm tô đỏ đó.\nTìm giá trị lớn nhất, giá trị nhỏ nhất của $T$.",
+  "noi_dung_sach": "Cho $2016$ điểm $A_1,A_2,\\dots,A_{2015},A_{2016}$. Người ta tô đỏ tất cả các trung điểm của các đoạn thẳng nối các cặp điểm trong số $2016$ điểm này.\nGọi $T$ là số điểm tô đỏ đó.\nTìm giá trị lớn nhất, giá trị nhỏ nhất của $T$.",
+  "dap_an": "$\\max T=2031120$; $\\min T=4029$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi cặp điểm cho một trung điểm nên $T$ không vượt quá số cặp điểm, và đạt được khi hai cặp khác nhau không bao giờ chung trung điểm; còn để chặn dưới thì lấy đoạn thẳng dài nhất $AB$, đếm riêng trung điểm của các đoạn xuất phát từ $A$ và từ $B$ rồi chứng minh hai nhóm đó không trùng nhau.\n\n**Bước 1.** Đếm số cặp điểm (mỗi đoạn thẳng đếm một lần) để có cận trên của $T$.\n\n**Bước 2.** Chọn vị trí các điểm trên một trục số sao cho mọi trung điểm khác nhau, để chứng tỏ cận trên đạt được.\n\n**Bước 3.** Chọn đoạn thẳng $AB$ dài nhất trong các đoạn nối hai điểm, rồi đếm các trung điểm của các đoạn có một đầu là $A$ và của các đoạn có một đầu là $B$ (không kể đoạn $BA$ lần thứ hai); mỗi nhóm gồm các điểm phân biệt.\n\n**Bước 4.** Chứng minh bằng phản chứng rằng hai nhóm không có điểm chung, dùng bất đẳng thức tam giác và tính dài nhất của $AB$; từ đó cộng hai nhóm để có cận dưới của $T$.\n\n**Bước 5.** Chọn vị trí các điểm trên trục số sao cho số trung điểm đúng bằng cận dưới để kết luận.\n\n**Chú ý:** Hai đoạn thẳng cùng xuất phát từ một điểm và có cùng trung điểm thì đầu kia của chúng phải trùng nhau — đây là lí do mỗi nhóm đếm được gồm các điểm phân biệt.\n\n**Phần 2. Trình bày**\n\nGiả sử $2016$ điểm đã cho phân biệt.\n\n**Giá trị lớn nhất.** Số cặp điểm là $\\dfrac{2016\\cdot2015}{2}=2031120$, mỗi cặp cho một trung điểm nên $T\\le2031120$.\n\nĐặt $2016$ điểm trên trục số tại các tọa độ $2^0{,}2^1,\\dots,2^{2015}$.\n\nTrung điểm của đoạn nối hai điểm $2^i$ và $2^j$ ($i<j$) có tọa độ $\\dfrac{2^i+2^j}{2}$.\n\nVì $2^j<2^i+2^j<2^{j+1}$ nên tổng $2^i+2^j$ xác định được $j$ (lũy thừa lớn nhất của $2$ không vượt quá tổng), rồi xác định $2^i$.\n\nDo đó hai cặp khác nhau cho hai tổng khác nhau, tức hai trung điểm khác nhau; vậy $T=2031120$.\n\nVậy giá trị lớn nhất của $T$ là $2031120$.\n\n**Giá trị nhỏ nhất.** Chọn trong các đoạn thẳng nối hai điểm đã cho một đoạn dài nhất, gọi là $AB$.\n\nCác trung điểm của $AX$ ($X$ chạy trên $2015$ điểm khác $A$) là $2015$ điểm phân biệt: nếu $AX$ và $AX'$ có chung trung điểm $O$ thì $X$ và $X'$ cùng đối xứng với $A$ qua $O$ nên $X=X'$.\n\nTương tự, các trung điểm của $BY$ ($Y$ chạy trên $2014$ điểm khác $A$ và khác $B$) là $2014$ điểm phân biệt.\n\nHai nhóm không có điểm chung.\n\nThật vậy, giả sử $O$ vừa là trung điểm của $AX$ vừa là trung điểm của $BY$ với $Y\\ne A$, $Y\\ne B$.\n\nTheo bất đẳng thức tam giác, $AO+OB\\ge AB$ nên $AX+BY=2AO+2OB\\ge2AB$.\n\nMặt khác $AB$ là đoạn dài nhất nên $AX\\le AB$ và $BY\\le AB$.\n\nSuy ra $AX=BY=AB$ và $AO+OB=AB$, tức $O$ nằm trên đoạn $AB$ với $AO=\\dfrac{1}{2}AB$, vậy $O$ là trung điểm của $AB$.\n\nKhi đó $Y$ đối xứng với $B$ qua $O$ nên $Y=A$, trái với $Y\\ne A$.\n\nVậy $T\\ge2015+2014=4029$.\n\nĐặt $2016$ điểm trên trục số tại $1{,}2,\\dots,2016$.\n\nTrung điểm của đoạn nối hai điểm tại $i<j$ có tọa độ $\\dfrac{i+j}{2}$, mà tổng $i+j$ nhận mọi giá trị nguyên từ $3$ đến $4031$, nên có đúng $4031-3+1=4029$ trung điểm phân biệt; vậy $T=4029$ đạt được.\n\nVậy giá trị nhỏ nhất của $T$ là $4029$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đếm số cặp điểm",
+   "bất đẳng thức tam giác",
+   "chọn đoạn thẳng dài nhất (nguyên lí cực hạn)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 293): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.1a@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ là ba số khác $0$ thỏa mãn $3ab-2ca-bc=0$ và $a+2b-3c=0$. Chứng minh rằng $a=b=c$.",
+  "noi_dung_sach": "Cho $a,b,c$ là ba số khác $0$ thỏa mãn $3ab-2ca-bc=0$ và $a+2b-3c=0$. Chứng minh rằng $a=b=c$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện thứ hai là bậc nhất nên rút được $a$ theo $b,c$; thế vào điều kiện thứ nhất thì chỉ còn biểu thức hai biến $b,c$ là bội của bình phương một hiệu, bằng $0$ nên ép được $b=c$.\n\n**Bước 1.** Rút $a$ từ đẳng thức bậc nhất $a+2b-3c=0$ để biểu diễn qua $b$ và $c$.\n\n**Bước 2.** Thế $a$ vào vế trái của đẳng thức còn lại, khai triển rồi gộp các hạng tử đồng dạng.\n\n**Bước 3.** Nhận ra biểu thức thu được là một số khác $0$ nhân với bình phương của $b-c$, từ đó suy ra $b=c$, rồi tính $a$.\n\n**Chú ý:** Bình phương bằng $0$ thì biểu thức trong bình phương bằng $0$; sau khi có $b=c$ phải quay lại công thức của $a$ để kết luận $a$ cũng bằng chúng.\n\n**Phần 2. Trình bày**\n\nTừ $a+2b-3c=0$ ta có $a=3c-2b$.\n\nThế vào $3ab-2ca-bc$:\n\n$3ab-2ca-bc=3(3c-2b)b-2c(3c-2b)-bc$\n\n$=9bc-6b^2-6c^2+4bc-bc$\n\n$=-6b^2+12bc-6c^2$\n\n$=-6(b-c)^2$\n\nVì $3ab-2ca-bc=0$ nên $-6(b-c)^2=0$, suy ra $b=c$.\n\nKhi đó $a=3c-2b=3b-2b=b$.\n\nVậy $a=b=c$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phép thế",
+   "bình phương của một hiệu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 299, lời giải Đề 6 bài 1) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.1b@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y,z$ thỏa mãn $\\dfrac{x-y}{(z-x)(z-y)}+\\dfrac{y-z}{(x-y)(x-z)}+\\dfrac{z-x}{(y-z)(y-x)}=2017$. Tính giá trị của biểu thức $\\dfrac{1}{x-y}+\\dfrac{1}{y-z}+\\dfrac{1}{z-x}$.",
+  "noi_dung_sach": "Cho $x,y,z$ thỏa mãn $\\dfrac{x-y}{(z-x)(z-y)}+\\dfrac{y-z}{(x-y)(x-z)}+\\dfrac{z-x}{(y-z)(y-x)}=2017$. Tính giá trị của biểu thức $\\dfrac{1}{x-y}+\\dfrac{1}{y-z}+\\dfrac{1}{z-x}$.",
+  "dap_an": "$1008{,}5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi tử là hiệu hai biến và bằng tổng hai nhân tử của mẫu, nên mỗi phân thức tách thành hai phân thức có tử $1$; các phân thức tách ra chính là các số hạng của biểu thức cần tính (sai khác dấu của mẫu), và mỗi số hạng xuất hiện đúng hai lần.\n\n**Bước 1.** Viết tử của mỗi phân thức thành tổng của hai nhân tử có mặt ở mẫu, chẳng hạn $x-y=(x-z)+(z-y)$.\n\n**Bước 2.** Tách từng phân thức thành hiệu hoặc tổng hai phân thức tử $1$, rồi đổi dấu mẫu bằng $\\dfrac{-1}{u-v}=\\dfrac{1}{v-u}$ để các mẫu cùng dạng với biểu thức cần tính.\n\n**Bước 3.** Cộng ba kết quả, gom các số hạng giống nhau để vế trái bằng một bội của biểu thức cần tính, rồi chia cho hệ số.\n\n**Chú ý:** Chỉ cần nhìn mẫu của biểu thức cần tính ($x-y$, $y-z$, $z-x$) để biết nên đổi dấu mẫu nào cho khớp.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-y}{(z-x)(z-y)}=\\dfrac{(x-z)+(z-y)}{(z-x)(z-y)}=-\\dfrac{1}{z-y}+\\dfrac{1}{z-x}=\\dfrac{1}{y-z}+\\dfrac{1}{z-x}$\n\n$\\dfrac{y-z}{(x-y)(x-z)}=\\dfrac{(y-x)+(x-z)}{(x-y)(x-z)}=-\\dfrac{1}{x-z}+\\dfrac{1}{x-y}=\\dfrac{1}{z-x}+\\dfrac{1}{x-y}$\n\n$\\dfrac{z-x}{(y-z)(y-x)}=\\dfrac{(z-y)+(y-x)}{(y-z)(y-x)}=-\\dfrac{1}{y-x}+\\dfrac{1}{y-z}=\\dfrac{1}{x-y}+\\dfrac{1}{y-z}$\n\nCộng ba đẳng thức: vế trái của đề bằng $2\\left(\\dfrac{1}{x-y}+\\dfrac{1}{y-z}+\\dfrac{1}{z-x}\\right)$.\n\nDo đó $2\\left(\\dfrac{1}{x-y}+\\dfrac{1}{y-z}+\\dfrac{1}{z-x}\\right)=2017$, suy ra $\\dfrac{1}{x-y}+\\dfrac{1}{y-z}+\\dfrac{1}{z-x}=\\dfrac{2017}{2}=1008{,}5$.\n\nVậy giá trị cần tính là $1008{,}5$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách tử thành tổng hai nhân tử của mẫu",
+   "phân thức đối nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.2a@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $a^8+b^8\\ge a^7b+ab^7$.",
+  "noi_dung_sach": "Chứng minh rằng $a^8+b^8\\ge a^7b+ab^7$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển vế thì hiệu hai vế nhóm được thành $(a-b)(a^7-b^7)$; hai thừa số này luôn cùng dấu vì lũy thừa bậc lẻ giữ nguyên thứ tự của hai số.\n\n**Bước 1.** Lập hiệu của vế trái trừ vế phải rồi sắp xếp các hạng tử theo thứ tự thích hợp để nhóm được.\n\n**Bước 2.** Nhóm hạng tử thứ nhất với thứ hai, hạng tử thứ ba với thứ tư, rồi đặt $a-b$ làm nhân tử chung.\n\n**Bước 3.** Xét hai trường hợp $a\\ge b$ và $a<b$, dùng tính chất của lũy thừa bậc lẻ để chỉ ra hai thừa số luôn cùng dấu.\n\n**Chú ý:** Tính chất $a\\ge b\\Rightarrow a^7\\ge b^7$ đúng với mọi số thực nhờ số mũ lẻ; với số mũ chẵn thì không đúng khi các số âm.\n\n**Phần 2. Trình bày**\n\n$a^8+b^8-a^7b-ab^7=a^7(a-b)-b^7(a-b)$\n\n$=(a-b)(a^7-b^7)$\n\nNếu $a\\ge b$ thì $a^7\\ge b^7$ (lũy thừa bậc lẻ), nên $a-b\\ge0$ và $a^7-b^7\\ge0$, do đó tích $\\ge0$.\n\nNếu $a<b$ thì $a^7<b^7$, nên $a-b<0$ và $a^7-b^7<0$, do đó tích $>0$.\n\nVậy $a^8+b^8\\ge a^7b+ab^7$, dấu \"=\" xảy ra khi $a=b$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét hiệu",
+   "nhóm hạng tử",
+   "lũy thừa bậc lẻ giữ nguyên thứ tự"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.2b@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $(x+y)^6-6x^3y^3\\ge4x^2y^2(x^2+y^2)+xy(x^4+y^4)$.",
+  "noi_dung_sach": "Chứng minh rằng $(x+y)^6-6x^3y^3\\ge4x^2y^2(x^2+y^2)+xy(x^4+y^4)$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi biểu thức trong đề đều đối xứng theo $x,y$ nên viết được qua $a=(x+y)^2$ và $b=xy$ (với $x^2+y^2=a-2b$ và $x^4+y^4=(a-2b)^2-2b^2$); khi đó hiệu hai vế gọn lại thành $a^3-a^2b$.\n\n**Bước 1.** Chuyển vế để xét hiệu hai vế rồi đặt $a=(x+y)^2$, $b=xy$.\n\n**Bước 2.** Biểu diễn $x^2+y^2$ và $x^4+y^4$ qua $a,b$, thế vào và khai triển: các hạng tử chứa $b^3$ và $ab^2$ sẽ triệt tiêu nhau.\n\n**Bước 3.** Đưa hiệu về $a^2(a-b)$ rồi trả biến, chú ý $a-b=x^2+xy+y^2$.\n\n**Bước 4.** Viết $x^2+xy+y^2$ thành tổng của một bình phương và một số hạng không âm để kết luận hiệu không âm.\n\n**Chú ý:** Thừa số $(x+y)^4$ luôn không âm với mọi số thực $x,y$ (lũy thừa chẵn), nên chỉ cần thừa số còn lại không âm là đủ.\n\n**Phần 2. Trình bày**\n\nXét hiệu $D=(x+y)^6-6x^3y^3-4x^2y^2(x^2+y^2)-xy(x^4+y^4)$.\n\nĐặt $a=(x+y)^2$, $b=xy$.\n\nKhi đó $x^2+y^2=a-2b$ và $x^4+y^4=(x^2+y^2)^2-2x^2y^2=(a-2b)^2-2b^2$.\n\n$D=a^3-6b^3-4b^2(a-2b)-b\\left[(a-2b)^2-2b^2\\right]$\n\n$=a^3-6b^3-4ab^2+8b^3-a^2b+4ab^2-2b^3$\n\n$=a^3-a^2b=a^2(a-b)$\n\n$=(x+y)^4(x^2+xy+y^2)$\n\n$=(x+y)^4\\left[\\left(x+\\dfrac{y}{2}\\right)^2+\\dfrac{3}{4}y^2\\right]\\ge0$\n\nVậy $(x+y)^6-6x^3y^3\\ge4x^2y^2(x^2+y^2)+xy(x^4+y^4)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ theo tổng và tích",
+   "xét hiệu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 300, lời giải Đề 6 bài 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.3a@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số nguyên $a,b,c,d$ thỏa mãn $a^3=b^3-c^3+d^3$. Chứng minh rằng $a-b+c-d$ chia hết cho $6$.",
+  "noi_dung_sach": "Cho các số nguyên $a,b,c,d$ thỏa mãn $a^3=b^3-c^3+d^3$. Chứng minh rằng $a-b+c-d$ chia hết cho $6$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện đổi được thành $a^3-b^3+c^3-d^3=0$, có cùng cách xếp dấu với $a-b+c-d$; trừ hai biểu thức cho nhau thì mỗi biến đi kèm một hiệu $t^3-t$ — tích ba số nguyên liên tiếp.\n\n**Bước 1.** Chuyển vế điều kiện để có $a^3-b^3+c^3-d^3=0$, cùng dấu từng biến với biểu thức cần chứng minh.\n\n**Bước 2.** Trừ biểu thức $a-b+c-d$ cho đại lượng bằng $0$ này rồi nhóm các số hạng cùng biến thành $\\pm(t^3-t)$.\n\n**Bước 3.** Phân tích $t^3-t$ thành tích ba số nguyên liên tiếp, từ đó chỉ ra mỗi nhóm chia hết cho $2$ và cho $3$ nên chia hết cho $6$.\n\n**Chú ý:** Tích ba số nguyên liên tiếp chia hết cho $2$ và $3$, mà hai số này nguyên tố cùng nhau, nên chia hết cho $6$; cần nói rõ điều này.\n\n**Phần 2. Trình bày**\n\nTừ $a^3=b^3-c^3+d^3$ ta có $a^3-b^3+c^3-d^3=0$.\n\nDo đó $a-b+c-d=(a-b+c-d)-(a^3-b^3+c^3-d^3)$\n\n$=-(a^3-a)+(b^3-b)-(c^3-c)+(d^3-d)$\n\nVới mọi số nguyên $t$: $t^3-t=(t-1)t(t+1)$ là tích ba số nguyên liên tiếp nên chia hết cho $2$ và cho $3$; mà $2$ và $3$ nguyên tố cùng nhau nên $t^3-t\\vdots6$.\n\nVậy bốn hiệu trên đều chia hết cho $6$, suy ra $a-b+c-d\\vdots6$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tích ba số nguyên liên tiếp chia hết cho $6$",
+   "cộng thêm biểu thức bằng $0$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.3b@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040102",
+  "nhom_soan": "T18T040102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $n\\in\\mathbb Z$. Chứng minh rằng $n^3+2$ không chia hết cho $2016$.",
+  "noi_dung_sach": "Cho $n\\in\\mathbb Z$. Chứng minh rằng $n^3+2$ không chia hết cho $2016$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu $n^3+2$ chia hết cho $2016$ thì nó chia hết cho mọi ước của $2016$; chọn ước $4$ thì chỉ cần xét $n$ chẵn hay lẻ là chỉ ra được $n^3+2$ không chia hết.\n\n**Bước 1.** Nhận xét $2016$ chia hết cho $4$, nên chỉ cần chứng minh $n^3+2$ không chia hết cho $4$.\n\n**Bước 2.** Xét $n$ chẵn: viết $n=2k$ để thấy $n^3$ chia hết cho $4$, từ đó tìm số dư của $n^3+2$ khi chia cho $4$.\n\n**Bước 3.** Xét $n$ lẻ: lập luận $n^3+2$ là số lẻ nên không thể chia hết cho $4$.\n\n**Chú ý:** Cách khác là xét $n$ theo số dư khi chia cho $3$: khi đó $n^3+2$ chia cho $9$ dư $2$, $3$ hoặc $1$ chứ không bao giờ dư $0$, mà $9$ là ước của $2016$.\n\n**Phần 2. Trình bày**\n\nVì $2016=4\\cdot504$ nên nếu $n^3+2\\vdots2016$ thì $n^3+2\\vdots4$.\n\nTa chứng minh $n^3+2\\not\\vdots4$ với mọi số nguyên $n$.\n\nNếu $n$ chẵn, $n=2k$ thì $n^3=8k^3\\vdots4$, nên $n^3+2$ chia cho $4$ dư $2$.\n\nNếu $n$ lẻ thì $n^3$ lẻ, nên $n^3+2$ lẻ, không chia hết cho $2$, do đó không chia hết cho $4$.\n\nVậy $n^3+2\\not\\vdots4$ với mọi số nguyên $n$, suy ra $n^3+2\\not\\vdots2016$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét tính chẵn lẻ",
+   "số dư khi chia cho ước của $2016$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.6a@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020202",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cô Uyên gửi tiết kiệm vào ngân hàng với số tiền ban đầu là $150$ (triệu đồng) với lãi suất là $5\\%$/năm, kì hạn $6$ tháng, lãi kép (tiền lãi được nhập vào vốn ban đầu để tính lãi tiếp). Hỏi để cô Uyên có số tiền ít nhất là $192$ (triệu đồng) thì cô Uyên phải gửi bao nhiêu năm?",
+  "noi_dung_sach": "Cô Uyên gửi tiết kiệm vào ngân hàng với số tiền ban đầu là $150$ (triệu đồng) với lãi suất là $5\\%$/năm, kì hạn $6$ tháng, lãi kép (tiền lãi được nhập vào vốn ban đầu để tính lãi tiếp). Hỏi để cô Uyên có số tiền ít nhất là $192$ (triệu đồng) thì cô Uyên phải gửi bao nhiêu năm?",
+  "dap_an": "$5$ năm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với lãi kép, sau mỗi kì vốn được nhân với $(1+r)$ nên sau $n$ kì có $a(1+r)^n$; kì hạn là $6$ tháng nên lãi mỗi kì bằng một nửa lãi năm và số năm bằng một nửa số kì.\n\n**Bước 1.** Đổi lãi suất năm thành lãi suất mỗi kì $6$ tháng, vì tiền lãi chỉ được nhập vốn sau mỗi kì.\n\n**Bước 2.** Lập công thức số tiền sau $n$ kì bằng cách tính liên tiếp sau $1$ kì, $2$ kì, rồi tổng quát hóa.\n\n**Bước 3.** Lập bất phương trình cho số tiền cần có rồi đưa về so sánh một lũy thừa của $1{,}025$ với một số cố định.\n\n**Bước 4.** Tính các lũy thừa bằng máy tính để tìm số kì nguyên nhỏ nhất thỏa mãn, rồi đổi số kì sang số năm.\n\n**Chú ý:** Số kì phải là số nguyên vì tiền lãi chỉ được tính khi đủ kì $6$ tháng; đừng lấy $5\\%$ làm lãi suất mỗi kì.\n\n**Phần 2. Trình bày**\n\nLãi suất mỗi kì $6$ tháng là $5\\%:2=2{,}5\\%$, tức $r=0{,}025$.\n\nSố tiền sau kì $1$ là $150(1+r)$; sau kì $2$ là $150(1+r)(1+r)=150(1+r)^2$; cứ thế, sau $n$ kì là $T_n=150\\cdot1{,}025^n$ (triệu đồng).\n\nCần $T_n\\ge192$, tức $1{,}025^n\\ge\\dfrac{192}{150}=1{,}28$.\n\nBấm máy tính: $1{,}025^9\\approx1{,}2489<1{,}28$ và $1{,}025^{10}\\approx1{,}2801>1{,}28$.\n\nVì $1{,}025^n$ tăng theo $n$ nên $n\\ge10$.\n\nVậy cần ít nhất $10$ kì, tức $5$ năm.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "công thức lãi kép $T_n=a(1+r)^n$",
+   "tính lũy thừa bằng máy tính"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 302, lời giải Đề 6 bài 6) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C6.6b@p298",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050101",
+  "nhom_soan": "T18T050101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Có $100$ người dự hội nghị, mỗi người trong họ quen với ít nhất $50$ người khác.\nChứng tỏ rằng có thể chọn ra $4$ người và mời họ ngồi quanh một bàn tròn sao cho mỗi người ngồi giữa hai người quen nhau.",
+  "noi_dung_sach": "Có $100$ người dự hội nghị, mỗi người trong họ quen với ít nhất $50$ người khác.\nChứng tỏ rằng có thể chọn ra $4$ người và mời họ ngồi quanh một bàn tròn sao cho mỗi người ngồi giữa hai người quen nhau.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu có hai người không quen nhau thì mỗi người trong họ có ít nhất $50$ người quen nằm trong $98$ người còn lại; hai nhóm này lớn hơn một nửa của $98$ người nên phải chung nhau ít nhất hai người, và bốn người $A,C,B,D$ xếp xen kẽ quanh bàn sẽ thỏa yêu cầu.\n\n**Bước 1.** Xét hai trường hợp: mọi cặp người đều quen nhau (hiển nhiên chọn được), hoặc có hai người $A,B$ không quen nhau.\n\n**Bước 2.** Với $A,B$ không quen nhau, nhận xét mọi người quen của $A$ cũng như của $B$ đều nằm trong $98$ người còn lại, mỗi nhóm có ít nhất $50$ người.\n\n**Bước 3.** Đếm phần chung của hai nhóm bằng cách lấy tổng hai nhóm trừ đi số người của tập $98$ người để chỉ ra có ít nhất hai người quen cả $A$ lẫn $B$.\n\n**Bước 4.** Chọn hai người chung đó, xếp quanh bàn theo thứ tự $A$, người thứ nhất, $B$, người thứ hai rồi kiểm tra từng người trong bốn người đều ngồi giữa hai người quen mình.\n\n**Chú ý:** Quen nhau là quan hệ hai chiều; khi kiểm tra phải xét cả bốn người, không chỉ riêng $A$ và $B$.\n\n**Phần 2. Trình bày**\n\nTa hiểu yêu cầu là: mỗi người ngồi giữa hai người mà người ấy quen.\n\nQuen nhau là quan hệ hai chiều.\n\nNếu mọi cặp trong $100$ người đều quen nhau thì chọn $4$ người bất kì và xếp tùy ý là xong.\n\nNếu có hai người $A,B$ không quen nhau: $A$ quen ít nhất $50$ người và không quen $B$ nên cả $50$ người đó nằm trong $98$ người còn lại; tương tự, $B$ có ít nhất $50$ người quen cũng nằm trong $98$ người này.\n\nSố người quen cả $A$ lẫn $B$ không ít hơn $50+50-98=2$ (vì hai nhóm cùng nằm trong $98$ người, số người chung bằng tổng số người hai nhóm trừ số người của hợp hai nhóm, mà hợp không quá $98$ người).\n\nGọi $C,D$ là hai người quen cả $A$ lẫn $B$.\n\nMời $A,C,B,D$ ngồi quanh bàn tròn theo thứ tự đó (người cuối cùng $D$ ngồi kề $A$):\n\n$A$ ngồi giữa $D$ và $C$, đều quen $A$.\n\n$C$ ngồi giữa $A$ và $B$, đều quen $C$.\n\n$B$ ngồi giữa $C$ và $D$, đều quen $B$.\n\n$D$ ngồi giữa $B$ và $A$, đều quen $D$.\n\nVậy có thể chọn $4$ người và xếp quanh bàn tròn thỏa yêu cầu.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đếm phần chung của hai nhóm",
+   "xếp quanh bàn tròn"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 298): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 302, lời giải Đề 6 bài 6) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C7.1a@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x-15}{2000}+\\dfrac{x-14}{2001}+\\dfrac{x-13}{2002}=\\dfrac{x-12}{2003}+2$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x-15}{2000}+\\dfrac{x-14}{2001}+\\dfrac{x-13}{2002}=\\dfrac{x-12}{2003}+2$.",
+  "dap_an": "$S=\\{2015\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với mỗi phân số, tử trừ mẫu đều cho cùng một biểu thức, nên bớt $1$ ở từng phân số thì cả bốn tử số thành một biểu thức giống nhau — dấu hiệu để chuyển vế rồi đặt nhân tử chung, không cần quy đồng.\n\n**Bước 1.** Nhận ra rằng $(x-15)-2000$ và $(x-14)-2001$ cùng bằng một biểu thức (các phân số còn lại cũng vậy), nên bớt $1$ ở mỗi phân số thì tử số của chúng trùng nhau.\n\n**Bước 2.** Trừ hai vế đi $3$: ba phân số ở vế trái mỗi phân số bớt $1$, còn vế phải là $\\dfrac{x-12}{2003}-1$; cả bốn tử số đều thành $x-2015$.\n\n**Bước 3.** Chuyển vế phải sang trái và đặt $x-2015$ làm nhân tử chung, được tích hai thừa số bằng $0$.\n\n**Bước 4.** Chỉ ra thừa số trong ngoặc khác $0$ (so sánh hai phân số có cùng tử $1$) để chỉ còn một thừa số phải bằng $0$.\n\n**Chú ý:** Khi các phân số cùng dạng \"$x$ trừ một số, chia cho một số\", cộng hoặc trừ cùng một hằng số cho mỗi phân số thường tạo ra nhân tử chung; quy đồng bốn mẫu $2000,2001,2002,2003$ là con đường rất dài.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-15}{2000}+\\dfrac{x-14}{2001}+\\dfrac{x-13}{2002}=\\dfrac{x-12}{2003}+2$\n\n$\\Leftrightarrow\\left(\\dfrac{x-15}{2000}-1\\right)+\\left(\\dfrac{x-14}{2001}-1\\right)+\\left(\\dfrac{x-13}{2002}-1\\right)=\\dfrac{x-12}{2003}-1$\n\n$\\Leftrightarrow\\dfrac{x-2015}{2000}+\\dfrac{x-2015}{2001}+\\dfrac{x-2015}{2002}-\\dfrac{x-2015}{2003}=0$\n\n$\\Leftrightarrow(x-2015)\\left(\\dfrac{1}{2000}+\\dfrac{1}{2001}+\\dfrac{1}{2002}-\\dfrac{1}{2003}\\right)=0$\n\nVì $\\dfrac{1}{2000}>\\dfrac{1}{2003}$ nên thừa số trong ngoặc dương, do đó $x-2015=0$.\n\nVậy $S=\\{2015\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hằng số để các tử có nhân tử chung",
+   "đặt nhân tử chung"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C7.1b@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010102",
+  "nhom_soan": "T18T010102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình (ẩn $x,y,z$): $(x^2-6x+11)(y^2+2y+4)=2+4z-z^2$.",
+  "noi_dung_sach": "Giải phương trình (ẩn $x,y,z$): $(x^2-6x+11)(y^2+2y+4)=2+4z-z^2$.",
+  "dap_an": "$(x;y;z)=(3;-1;2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là tích hai tam thức bậc hai luôn dương có giá trị nhỏ nhất, vế phải là tam thức bậc hai có giá trị lớn nhất — đánh giá được hai vế về cùng một số thì phương trình chỉ xảy ra khi cả hai vế cùng đạt đúng số đó.\n\n**Bước 1.** Viết mỗi tam thức ở vế trái thành bình phương cộng một hằng số dương để tìm giá trị nhỏ nhất của từng thừa số, từ đó chặn dưới cả tích.\n\n**Bước 2.** Làm tương tự với vế phải: viết thành hằng số trừ một bình phương để chặn trên.\n\n**Bước 3.** Vế trái không nhỏ hơn một số, vế phải không lớn hơn đúng số ấy, nên hai vế bằng nhau khi và chỉ khi cả hai cùng bằng số đó.\n\n**Bước 4.** Cho các bình phương bằng $0$ ở từng chỗ dấu bằng xảy ra để tìm $x,y,z$.\n\n**Chú ý:** Trước khi nhân hai bất đẳng thức cùng chiều phải chắc cả hai thừa số đều dương; ở đây hai tam thức luôn lớn hơn hằng số dương nên nhân được.\n\n**Phần 2. Trình bày**\n\n$(x^2-6x+11)(y^2+2y+4)=[(x-3)^2+2][(y+1)^2+3]$\n\nVì $(x-3)^2+2\\ge2>0$ và $(y+1)^2+3\\ge3>0$ nên vế trái $\\ge2\\cdot3=6$, dấu bằng xảy ra khi $x=3$ và $y=-1$.\n\nVế phải: $2+4z-z^2=6-(z-2)^2\\le6$, dấu bằng xảy ra khi $z=2$.\n\nVậy phương trình xảy ra khi và chỉ khi hai vế cùng bằng $6$, tức là $x=3$; $y=-1$; $z=2$.\n\nVậy $(x;y;z)=(3;-1;2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về bình phương cộng hằng số",
+   "đánh giá hai vế"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C7.2a@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a^2+b^2=c^2+d^2=5$; $ad+bc=0$. Chứng minh rằng $a^{2017}b^{2017}+c^{2017}d^{2017}=0$.",
+  "noi_dung_sach": "Cho $a^2+b^2=c^2+d^2=5$; $ad+bc=0$. Chứng minh rằng $a^{2017}b^{2017}+c^{2017}d^{2017}=0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cần chứng tỏ $ab+cd=0$: nhân nó với $5$, viết $5$ bằng $c^2+d^2$ ở hạng tử này và $a^2+b^2$ ở hạng tử kia để khi nhóm lại lộ ra nhân tử $ad+bc=0$; có $ab=-cd$ thì nâng lên luỹ thừa lẻ $2017$ là xong.\n\n**Bước 1.** Viết $5(ab+cd)=5ab+5cd$ rồi thay $5$ lần lượt bằng $c^2+d^2$ và $a^2+b^2$ (cả hai đều bằng $5$ theo giả thiết).\n\n**Bước 2.** Khai triển, rồi nhóm bốn hạng tử thành hai nhóm sao cho mỗi nhóm đều chứa nhân tử $bc+ad$.\n\n**Bước 3.** Dùng $ad+bc=0$ để suy ra $ab+cd=0$, tức $ab=-cd$.\n\n**Bước 4.** Nâng hai vế lên luỹ thừa $2017$ (số mũ lẻ nên dấu trừ vẫn còn) rồi chuyển vế để được điều phải chứng minh.\n\n**Chú ý:** Chỉ luỹ thừa bậc lẻ mới giữ nguyên dấu: $(-cd)^{2017}=-(cd)^{2017}$; với số mũ chẵn thì hai vế sẽ bằng nhau chứ không đối nhau.\n\n**Phần 2. Trình bày**\n\n$5(ab+cd)=ab(c^2+d^2)+cd(a^2+b^2)$\n\n$=abc^2+abd^2+a^2cd+b^2cd$\n\n$=ac(bc+ad)+bd(ad+bc)$\n\n$=(ad+bc)(ac+bd)=0$\n\nSuy ra $ab+cd=0$, tức $ab=-cd$.\n\nDo đó $(ab)^{2017}=(-cd)^{2017}=-c^{2017}d^{2017}$, hay $a^{2017}b^{2017}+c^{2017}d^{2017}=0$.\n\nVậy $a^{2017}b^{2017}+c^{2017}d^{2017}=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử",
+   "luỹ thừa bậc lẻ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C7.2b@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=0$. Tính giá trị của biểu thức $A=\\dfrac{yz}{(x-y)(x-z)}+\\dfrac{zx}{(y-x)(y-z)}+\\dfrac{xy}{(z-x)(z-y)}$.",
+  "noi_dung_sach": "Cho $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=0$. Tính giá trị của biểu thức $A=\\dfrac{yz}{(x-y)(x-z)}+\\dfrac{zx}{(y-x)(y-z)}+\\dfrac{xy}{(z-x)(z-y)}$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba mẫu số chỉ khác nhau về dấu của các nhân tử $x-y$, $x-z$, $y-z$; đổi dấu cho cùng một dạng rồi quy đồng, tử số là đa thức hoán vị vòng nên phân tích được thành tích và rút gọn hết.\n\n**Bước 1.** Đổi dấu các nhân tử ở phân số thứ hai và thứ ba để cả ba mẫu cùng gồm các nhân tử $x-y$, $x-z$, $y-z$.\n\n**Bước 2.** Quy đồng ba phân số về mẫu chung $(x-y)(x-z)(y-z)$, giữ nguyên tử số dưới dạng tổng ba hạng tử.\n\n**Bước 3.** Tách $z-x=(z-y)+(y-x)$ trong tử số để nhóm các hạng tử thành hai cụm, mỗi cụm đều chứa nhân tử $(x-y)(y-z)$ sau khi đổi dấu hợp lí.\n\n**Bước 4.** Đặt $(x-y)(y-z)$ làm nhân tử chung ở tử số rồi rút gọn với mẫu.\n\n**Chú ý:** Phép rút gọn này đúng với mọi $x,y,z$ đôi một khác nhau; điều kiện $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=0$ chỉ bảo đảm ba số đều khác $0$ và không cần dùng đến khi biến đổi.\n\n**Phần 2. Trình bày**\n\n$A=\\dfrac{yz}{(x-y)(x-z)}-\\dfrac{zx}{(x-y)(y-z)}+\\dfrac{xy}{(x-z)(y-z)}$\n\n$=\\dfrac{yz(y-z)-zx(x-z)+xy(x-y)}{(x-y)(x-z)(y-z)}$\n\n$=\\dfrac{yz(y-z)+zx(z-y)+zx(y-x)+xy(x-y)}{(x-y)(x-z)(y-z)}$\n\n$=\\dfrac{z(y-z)(y-x)+x(x-y)(y-z)}{(x-y)(x-z)(y-z)}$\n\n$=\\dfrac{(x-y)(y-z)(x-z)}{(x-y)(x-z)(y-z)}$\n\n$=1$\n\nVậy $A=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "quy đồng mẫu",
+   "nhóm hạng tử đa thức hoán vị vòng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 305, lời giải Đề 7 bài 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C7.3a@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y,z$ là độ dài ba cạnh của một tam giác và $A=4x^2y^2-(x^2+y^2-z^2)^2$. Chứng minh rằng $A>0$.",
+  "noi_dung_sach": "Cho $x,y,z$ là độ dài ba cạnh của một tam giác và $A=4x^2y^2-(x^2+y^2-z^2)^2$. Chứng minh rằng $A>0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $A$ có dạng hiệu hai bình phương $(2xy)^2-(x^2+y^2-z^2)^2$, phân tích được thành tích bốn nhân tử bậc nhất mà mỗi nhân tử đều dương nhờ bất đẳng thức tam giác.\n\n**Bước 1.** Viết $4x^2y^2=(2xy)^2$ và dùng hiệu hai bình phương để tách $A$ thành tích hai thừa số.\n\n**Bước 2.** Nhận ra mỗi thừa số lại là hiệu hai bình phương: $2xy+x^2+y^2=(x+y)^2$ và $2xy-x^2-y^2=-(x-y)^2$, rồi phân tích tiếp thành bốn nhân tử bậc nhất.\n\n**Bước 3.** Dùng bất đẳng thức tam giác để xét dấu ba nhân tử có chứa $z$ trừ đi các cạnh kia, nhân tử còn lại là chu vi nên dương.\n\n**Chú ý:** Ba nhân tử $x+y-z$, $z+x-y$, $z-x+y$ dương chính là ba bất đẳng thức tam giác; đề cho độ dài cạnh nên không thể bỏ giả thiết này.\n\n**Phần 2. Trình bày**\n\n$A=(2xy)^2-(x^2+y^2-z^2)^2=(2xy+x^2+y^2-z^2)(2xy-x^2-y^2+z^2)$\n\n$=[(x+y)^2-z^2][z^2-(x-y)^2]$\n\n$=(x+y-z)(x+y+z)(z+x-y)(z-x+y)$\n\nVì $x,y,z$ là độ dài ba cạnh của một tam giác nên theo bất đẳng thức tam giác: $x+y-z>0$, $z+x-y>0$, $z-x+y>0$; ngoài ra $x+y+z>0$.\n\nVậy $A>0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai bình phương",
+   "bất đẳng thức tam giác"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 305, lời giải Đề 7 bài 3) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C7.3b@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y$ là hai số dương thỏa mãn $x+y=1$. Chứng minh rằng $3(3x-2)^2+\\dfrac{8x}{y}\\ge7$.",
+  "noi_dung_sach": "Cho $x,y$ là hai số dương thỏa mãn $x+y=1$. Chứng minh rằng $3(3x-2)^2+\\dfrac{8x}{y}\\ge7$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Có $x+y=1$ nên thay $y=1-x$ rồi khử mẫu bằng cách nhân với $1-x>0$, đưa bất đẳng thức về một đa thức bậc ba của $x$ không âm; đa thức này có nghiệm kép nên phân tích được thành bình phương nhân một nhân tử dương.\n\n**Bước 1.** Thay $y=1-x$, ghi lại điều kiện $0<x<1$, rồi nhân hai vế với $1-x>0$ để khử mẫu mà không đổi chiều bất đẳng thức.\n\n**Bước 2.** Khai triển và chuyển hết sang vế trái được một đa thức bậc ba $-27x^3+63x^2-33x+5\\ge0$.\n\n**Bước 3.** Nhẩm nghiệm $x=\\dfrac{1}{3}$ rồi tách hạng tử để đặt $1-3x$ làm nhân tử chung, phân tích tiếp tam thức bậc hai còn lại.\n\n**Bước 4.** Nhận ra tích có dạng (bình phương) nhân với một nhân tử dương nhờ $x<1$, từ đó kết luận và tìm dấu bằng.\n\n**Chú ý:** Nhân hai vế với một biểu thức chỉ được giữ chiều bất đẳng thức khi biểu thức đó dương; ở đây $1-x=y>0$.\n\n**Phần 2. Trình bày**\n\nVì $x,y>0$ và $x+y=1$ nên $y=1-x$ và $0<x<1$.\n\nBất đẳng thức cần chứng minh $\\Leftrightarrow3(9x^2-12x+4)+\\dfrac{8x}{1-x}\\ge7$\n\n$\\Leftrightarrow(27x^2-36x+12)(1-x)+8x\\ge7(1-x)$ (nhân hai vế với $1-x>0$)\n\n$\\Leftrightarrow-27x^3+63x^2-33x+5\\ge0$\n\n$\\Leftrightarrow9x^2(1-3x)-18x(1-3x)+5(1-3x)\\ge0$\n\n$\\Leftrightarrow(1-3x)(9x^2-18x+5)\\ge0$\n\n$\\Leftrightarrow(1-3x)(3x-1)(3x-5)\\ge0$\n\n$\\Leftrightarrow(1-3x)^2(5-3x)\\ge0$\n\nBất đẳng thức cuối đúng vì $(1-3x)^2\\ge0$ và $5-3x>0$ (do $x<1$).\n\nVậy $3(3x-2)^2+\\dfrac{8x}{y}\\ge7$.\n\nDấu \"=\" xảy ra khi $x=\\dfrac{1}{3}$, khi đó $y=\\dfrac{2}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thế biến",
+   "khử mẫu",
+   "phân tích đa thức bậc ba"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 305, lời giải Đề 7 bài 3) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C7.6a@p303",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tổng các chữ số của một số chính phương có thể là $2019$ được không? Hãy giải thích.",
+  "noi_dung_sach": "Tổng các chữ số của một số chính phương có thể là $2019$ được không? Hãy giải thích.",
+  "dap_an": "Không",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số và tổng các chữ số của nó cùng chia hết hoặc cùng không chia hết cho $3$ và cho $9$; số chính phương mà chia hết cho $3$ thì chia hết cho $9$, trong khi $2019$ chia hết cho $3$ nhưng không chia hết cho $9$.\n\n**Bước 1.** Giả sử có số chính phương $a^2$ với $a\\in\\mathbb N$ mà tổng các chữ số bằng $2019$, rồi tìm hệ quả của điều đó.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho $3$: tổng chữ số $2019$ chia hết cho $3$ nên $a^2$ chia hết cho $3$, rồi suy ra $a$ chia hết cho $3$ vì $3$ là số nguyên tố.\n\n**Bước 3.** Từ $a\\vdots3$ suy ra $a^2\\vdots9$, nên theo dấu hiệu chia hết cho $9$ tổng các chữ số của $a^2$ cũng chia hết cho $9$.\n\n**Bước 4.** Đối chiếu với $2019$ để thấy mâu thuẫn và kết luận.\n\n**Chú ý:** Với $p$ nguyên tố, $a^2\\vdots p$ thì $a\\vdots p$; với hợp số điều này không còn đúng (chẳng hạn $2^2\\vdots4$ nhưng $2\\not\\vdots4$).\n\n**Phần 2. Trình bày**\n\nGiả sử tồn tại số chính phương $a^2$ ($a\\in\\mathbb N$) có tổng các chữ số là $2019$.\n\nVì $2019\\vdots3$ nên $a^2\\vdots3$ (dấu hiệu chia hết cho $3$); do $3$ là số nguyên tố nên $a\\vdots3$.\n\nSuy ra $a^2\\vdots9$, nên tổng các chữ số của $a^2$ chia hết cho $9$ (dấu hiệu chia hết cho $9$).\n\nNhưng $2019=9\\cdot224+3$ nên $2019\\not\\vdots9$.\n\nMâu thuẫn với giả sử.\n\nVậy không tồn tại số chính phương nào có tổng các chữ số là $2019$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "dấu hiệu chia hết cho 3 và 9",
+   "số chính phương chia hết cho số nguyên tố"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 303): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C7.6b@p304",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số nguyên dương $x,y$ thỏa mãn phương trình: $(x+y)^5=120y+3$.",
+  "noi_dung_sach": "Tìm các số nguyên dương $x,y$ thỏa mãn phương trình: $(x+y)^5=120y+3$.",
+  "dap_an": "$(x;y)=(1;2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải $120y+3$ chỉ hơn $120y$ một chút nên bị chặn trên bởi $120(x+y)$; chia cho $x+y$ được một luỹ thừa bậc bốn bị chặn bởi $4^4$, cộng thêm tính lẻ của vế phải thì chỉ còn rất ít khả năng để thử.\n\n**Bước 1.** Dùng $x\\ge1$ để có $3<120x$, từ đó $(x+y)^5<120(x+y)$, rồi chia hai vế cho $x+y>0$ để hạ bậc xuống $(x+y)^4<120$.\n\n**Bước 2.** So sánh $120$ với $4^4=256$ để suy ra $x+y<4$, kết hợp $x,y\\ge1$ để thu hẹp tổng $x+y$ vào một khoảng nhỏ.\n\n**Bước 3.** Nhận xét vế phải $120y+3$ là số lẻ nên $x+y$ phải là số lẻ, từ đó cố định được giá trị của $x+y$.\n\n**Bước 4.** Liệt kê các cặp $(x;y)$ có tổng đó rồi thử lại vào phương trình, loại cặp không thỏa mãn.\n\n**Chú ý:** Các bước chặn chỉ cho điều kiện cần, nên cuối cùng bắt buộc thử lại từng cặp.\n\n**Phần 2. Trình bày**\n\nVì $x,y\\in\\mathbb N^*$ nên $(x+y)^5=120y+3<120y+120x=120(x+y)$.\n\nSuy ra $(x+y)^4<120<256=4^4$, do đó $x+y<4$.\n\nLại có $x+y\\ge2$.\n\nMặt khác $120y+3$ là số lẻ nên $(x+y)^5$ lẻ, suy ra $x+y$ là số lẻ.\n\nTừ $2\\le x+y<4$ và $x+y$ lẻ ta được $x+y=3$, nên $(x;y)=(2;1)$ hoặc $(x;y)=(1;2)$.\n\nThử lại: với $(2;1)$ có $3^5=243\\ne120\\cdot1+3=123$, loại; với $(1;2)$ có $3^5=243=120\\cdot2+3$, thỏa mãn.\n\nVậy $(x;y)=(1;2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chặn bằng bất đẳng thức",
+   "tính chẵn lẻ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 304): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C8.1a@p307",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010202",
+  "nhom_soan": "T18T010202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $3x^2-10x-8$.",
+  "noi_dung_sach": "Phân tích đa thức sau thành nhân tử: $3x^2-10x-8$.",
+  "dap_an": "$(x-4)(3x+2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam thức bậc hai có hệ số đầu khác $1$ nên phải tách hạng tử bậc nhất thành hai hạng tử có hệ số nhân với nhau bằng tích $3\\cdot(-8)$ của hệ số đầu và hệ số tự do.\n\n**Bước 1.** Tìm hai số có tích $-24$ và tổng $-10$, đó là $-12$ và $2$, rồi tách hạng tử bậc nhất theo hai số này.\n\n**Bước 2.** Nhóm hai cặp hạng tử và đặt nhân tử chung riêng ở từng cặp để lộ ra cùng một thừa số.\n\n**Bước 3.** Đặt thừa số chung ấy ra ngoài, được tích hai nhân tử bậc nhất không phân tích tiếp được.\n\n**Chú ý:** Nên nhân lại hai nhân tử để kiểm tra có trở về đa thức đề cho hay không.\n\n**Phần 2. Trình bày**\n\n$3x^2-10x-8=3x^2-12x+2x-8$\n\n$=3x(x-4)+2(x-4)$\n\n$=(x-4)(3x+2)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 307): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C8.1b@p307",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010201",
+  "nhom_soan": "T18T010201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Phân tích đa thức sau thành nhân tử: $18x^3-\\dfrac{8}{25}x$.",
+  "noi_dung_sach": "Phân tích đa thức sau thành nhân tử: $18x^3-\\dfrac{8}{25}x$.",
+  "dap_an": "$2x\\left(3x-\\dfrac{2}{5}\\right)\\left(3x+\\dfrac{2}{5}\\right)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai hạng tử cùng chứa $x$ và có hệ số $18=2\\cdot9$, $\\dfrac{8}{25}=2\\cdot\\dfrac{4}{25}$, nên đặt $2x$ ra ngoài thì trong ngoặc còn hiệu hai bình phương.\n\n**Bước 1.** Tìm nhân tử chung của hai hạng tử: cả hai cùng chứa $x$ và cùng chứa thừa số $2$ trong hệ số.\n\n**Bước 2.** Đặt $2x$ ra ngoài; trong ngoặc còn hai hạng tử mà hệ số đều là bình phương của một số.\n\n**Bước 3.** Viết mỗi hạng tử trong ngoặc thành bình phương rồi dùng hằng đẳng thức hiệu hai bình phương.\n\n**Chú ý:** Nên đặt nhân tử chung trước rồi mới nhìn hằng đẳng thức; có thể viết gọn hệ số phân số thành $\\dfrac{2}{25}x(15x-2)(15x+2)$, hai cách đều đúng.\n\n**Phần 2. Trình bày**\n\n$18x^3-\\dfrac{8}{25}x=2x\\left(9x^2-\\dfrac{4}{25}\\right)$\n\n$=2x\\left(3x-\\dfrac{2}{5}\\right)\\left(3x+\\dfrac{2}{5}\\right)$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 307): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C8.2a@p307",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010502",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng: $4n^3=n^2(n+1)^2-(n-1)^2n^2$.\n\nTừ đẳng thức trên tính tổng: $S=1^3+2^3+3^3+\\dots+100^3$",
+  "noi_dung_sach": "Chứng minh rằng: $4n^3=n^2(n+1)^2-(n-1)^2n^2$.\n\nTừ đẳng thức trên tính tổng: $S=1^3+2^3+3^3+\\dots+100^3$",
+  "dap_an": "$S=25502500$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải là hiệu của cùng một biểu thức $f(n)=n^2(n+1)^2$ tính tại $n$ và tại $n-1$, nên khi cộng các đẳng thức ứng với $n=1{,}2,\\dots,100$ thì các số hạng triệt tiêu từng đôi một.\n\n**Bước 1.** Đặt $n^2$ làm nhân tử chung ở vế phải rồi dùng hiệu hai bình phương (hoặc khai triển) trong ngoặc để chứng minh đẳng thức.\n\n**Bước 2.** Viết đẳng thức cho $n=1{,}2,\\dots,100$ và quan sát: số hạng bị trừ của lần $n$ chính là số hạng được cộng của lần $n-1$.\n\n**Bước 3.** Cộng vế theo vế: vế trái thành $4$ lần tổng cần tính, vế phải chỉ còn số hạng cuối của lần $n=100$ trừ số hạng đầu của lần $n=1$.\n\n**Bước 4.** Tính vế phải rồi chia cho $4$ để được $S$.\n\n**Chú ý:** Cách cộng triệt tiêu này cũng cho công thức tổng quát $1^3+2^3+\\dots+n^3=\\left[\\dfrac{n(n+1)}{2}\\right]^2$; số hạng $0^2\\cdot1^2$ của lần $n=1$ bằng $0$.\n\n**Phần 2. Trình bày**\n\n$n^2(n+1)^2-(n-1)^2n^2=n^2[(n+1)^2-(n-1)^2]$\n\n$=n^2(n^2+2n+1-n^2+2n-1)=n^2\\cdot4n=4n^3$\n\nVậy $4n^3=n^2(n+1)^2-(n-1)^2n^2$.\n\nÁp dụng với $n=1{,}2,\\dots,100$:\n\n$4\\cdot1^3=1^2\\cdot2^2-0^2\\cdot1^2$\n\n$4\\cdot2^3=2^2\\cdot3^2-1^2\\cdot2^2$\n\n$\\dots$\n\n$4\\cdot100^3=100^2\\cdot101^2-99^2\\cdot100^2$\n\nCộng vế theo vế, các số hạng ở giữa triệt tiêu từng đôi một và $0^2\\cdot1^2=0$, nên $4S=100^2\\cdot101^2$.\n\nDo đó $S=\\dfrac{100^2\\cdot101^2}{4}=5050^2=25502500$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai bình phương",
+   "cộng vế theo vế, các số hạng triệt tiêu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 307): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C8.2b@p308",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050101",
+  "nhom_soan": "T18T050101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $5$ số thỏa mãn điều kiện tổng của $2$ số bất kì trong chúng nhỏ hơn tổng $3$ số còn lại. Chứng minh rằng tích của $5$ số đã cho là một số dương.",
+  "noi_dung_sach": "Cho $5$ số thỏa mãn điều kiện tổng của $2$ số bất kì trong chúng nhỏ hơn tổng $3$ số còn lại. Chứng minh rằng tích của $5$ số đã cho là một số dương.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện giống nhau với mọi cặp số nên được sắp thứ tự năm số; chỉ cần dùng điều kiện cho hai số lớn nhất để chứng tỏ số nhỏ nhất đã dương, khi đó cả năm số dương.\n\n**Bước 1.** Gọi năm số là $a,b,c,d,e$ và sắp xếp $a\\ge b\\ge c\\ge d\\ge e$; việc này hợp lệ vì giả thiết không phụ thuộc thứ tự các số.\n\n**Bước 2.** Áp dụng giả thiết cho cặp hai số lớn nhất $a,b$: tổng của chúng nhỏ hơn tổng ba số còn lại.\n\n**Bước 3.** Chuyển vế để biểu diễn $e$ lớn hơn tổng hai hiệu $a-c$ và $b-d$, rồi dùng thứ tự để thấy tổng đó không âm, suy ra $e>0$.\n\n**Bước 4.** Vì $e$ là số nhỏ nhất nên cả năm số đều dương, từ đó tích dương.\n\n**Chú ý:** Đề không cho sẵn các số là dương; chính điều kiện về tổng buộc số nhỏ nhất phải dương.\n\n**Phần 2. Trình bày**\n\nGọi năm số là $a,b,c,d,e$.\n\nGiả thiết không đổi khi hoán vị các số nên có thể giả sử $a\\ge b\\ge c\\ge d\\ge e$.\n\nTheo giả thiết, tổng hai số $a,b$ nhỏ hơn tổng ba số còn lại: $a+b<c+d+e$.\n\nSuy ra $e>(a-c)+(b-d)$.\n\nVì $a\\ge c$ và $b\\ge d$ nên $(a-c)+(b-d)\\ge0$, do đó $e>0$.\n\nMà $e$ là số nhỏ nhất nên cả năm số $a,b,c,d,e$ đều dương, suy ra $abcde>0$.\n\nVậy tích của năm số đã cho là một số dương.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "sắp thứ tự (cực hạn)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 308): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C8.3a@p308",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040201",
+  "nhom_soan": "T18T040201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số nguyên dương $a,b,c$ sao cho $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$. Chứng minh rằng $a+b$ không thể là số nguyên tố.",
+  "noi_dung_sach": "Cho các số nguyên dương $a,b,c$ sao cho $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$. Chứng minh rằng $a+b$ không thể là số nguyên tố.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng đưa giả thiết về $ab=c(a+b)$ nên $a+b$ là ước của tích $ab$; nếu $a+b$ nguyên tố thì nó phải là ước của $a$ hoặc của $b$, nhưng $a+b$ lớn hơn cả $a$ lẫn $b$.\n\n**Bước 1.** Quy đồng vế trái rồi nhân chéo để được $ab=c(a+b)$, suy ra $ab$ chia hết cho $a+b$.\n\n**Bước 2.** Giả sử $a+b$ là số nguyên tố, rồi dùng tính chất của số nguyên tố để suy ra $a$ hoặc $b$ chia hết cho $a+b$.\n\n**Bước 3.** So sánh độ lớn: $a,b$ là số nguyên dương nên mỗi số nhỏ hơn $a+b$, mà một số nguyên dương nhỏ hơn $a+b$ không thể chia hết cho $a+b$; từ đó có mâu thuẫn.\n\n**Chú ý:** Tính chất dùng ở bước 2: nếu số nguyên tố $p$ chia hết tích $mn$ thì $p$ chia hết $m$ hoặc $p$ chia hết $n$.\n\n**Phần 2. Trình bày**\n\nTừ $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$ ta có $\\dfrac{a+b}{ab}=\\dfrac{1}{c}$, tức $ab=c(a+b)$.\n\nVậy $ab\\vdots(a+b)$.\n\nGiả sử $a+b$ là số nguyên tố.\n\nKhi đó $a\\vdots(a+b)$ hoặc $b\\vdots(a+b)$.\n\nNhưng $a,b$ là số nguyên dương nên $0<a<a+b$ và $0<b<a+b$, do đó $a\\not\\vdots(a+b)$ và $b\\not\\vdots(a+b)$.\n\nMâu thuẫn.\n\nVậy $a+b$ không thể là số nguyên tố.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chất số nguyên tố (p chia hết tích thì p chia hết một thừa số)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 308): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 310, lời giải Đề 8 bài 3) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C8.3b@p308",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040201",
+  "nhom_soan": "T18T040201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số nguyên dương $a,b,c$ sao cho $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$. Chứng minh rằng nếu $c>1$ thì $a+c$ và $b+c$ không thể đồng thời là số nguyên tố.",
+  "noi_dung_sach": "Cho các số nguyên dương $a,b,c$ sao cho $\\dfrac{1}{a}+\\dfrac{1}{b}=\\dfrac{1}{c}$. Chứng minh rằng nếu $c>1$ thì $a+c$ và $b+c$ không thể đồng thời là số nguyên tố.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ giả thiết $ab=c(a+b)$ tính được $(a+c)(b+c)$ là bội của $c$; nhưng nếu $a+c$ và $b+c$ đều nguyên tố thì các ước của tích chúng rất ít và không có ước nào nằm giữa $1$ và hai số đó, trong khi $1<c<a+c$ và $c<b+c$.\n\n**Bước 1.** Quy đồng giả thiết về $ab=c(a+b)$ để có $ab$ ở dạng bội của $c$.\n\n**Bước 2.** Khai triển $(a+c)(b+c)$, thay $ab=c(a+b)$ vào để chứng tỏ tích này chia hết cho $c$.\n\n**Bước 3.** Giả sử $a+c$ và $b+c$ đều là số nguyên tố, rồi liệt kê tất cả ước dương của tích hai số nguyên tố ấy.\n\n**Bước 4.** So sánh $c$ với các ước vừa liệt kê, thấy $c$ không trùng ước nào, từ đó mâu thuẫn với bước 2.\n\n**Chú ý:** Trường hợp hai số nguyên tố bằng nhau ($a=b$) các ước của tích là $1$, $p$ và $p^2$, vẫn không có ước nào lớn hơn $1$ mà nhỏ hơn $p$.\n\n**Phần 2. Trình bày**\n\nTừ giả thiết ta có $ab=c(a+b)$.\n\n$(a+c)(b+c)=ab+(a+b)c+c^2=c(a+b)+(a+b)c+c^2=c(2a+2b+c)$, nên $(a+c)(b+c)\\vdots c$. $(1)$\n\nGiả sử $a+c=p$ và $b+c=q$ đều là số nguyên tố.\n\nCác ước dương của $pq$ chỉ là $1$, $p$, $q$, $pq$ (nếu $p=q$ thì là $1$, $p$, $p^2$).\n\nMà $1<c<p$ và $c<q$ (vì $a,b>0$) nên $c$ không là ước nào trong các số đó, tức $pq\\not\\vdots c$. $(2)$\n\n$(1)$ và $(2)$ mâu thuẫn.\n\nVậy $a+c$ và $b+c$ không thể đồng thời là số nguyên tố.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chất ước của tích hai số nguyên tố"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 308): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 310, lời giải Đề 8 bài 3) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C8.6a@p308",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050101",
+  "nhom_soan": "T18T050101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Trong phòng có $100$ người mỗi người quen với ít nhất $67$ người khác. Chứng tỏ rằng trong phòng phải có $4$ người từng đôi một quen nhau.",
+  "noi_dung_sach": "Trong phòng có $100$ người mỗi người quen với ít nhất $67$ người khác. Chứng tỏ rằng trong phòng phải có $4$ người từng đôi một quen nhau.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chọn lần lượt từng người rồi \"mời ra ngoài\" những ai không quen người vừa chọn; mỗi người chỉ không quen nhiều nhất $100-1-67=32$ người nên sau ba lần loại vẫn còn ít nhất một người nữa, người đó quen cả ba người đã chọn.\n\n**Bước 1.** Chọn một người $A$ tùy ý và giữ lại $A$ cùng những người quen $A$; đếm số người còn lại bằng cách dùng giả thiết mỗi người quen ít nhất $67$ người.\n\n**Bước 2.** Chọn $B$ khác $A$ trong nhóm đó, loại những người không quen $B$ (không quá $32$ người), đếm số người còn lại.\n\n**Bước 3.** Chọn $C$ khác $A,B$ trong nhóm vừa còn lại, lại loại những người không quen $C$ rồi đếm tiếp.\n\n**Bước 4.** Chỉ ra nhóm cuối còn ít nhất một người $D$ khác $A,B,C$ và kiểm tra $D$ quen cả ba người kia, cũng như ba người đầu quen nhau từng đôi.\n\n**Chú ý:** Con số $32$ lấy từ $100-1-67$: mỗi người trừ bản thân và ít nhất $67$ người quen thì chỉ còn nhiều nhất $32$ người lạ; luôn nhớ trừ chính người được chọn khi đếm.\n\n**Phần 2. Trình bày**\n\nMỗi người trong phòng không quen với nhiều nhất $100-1-67=32$ người khác.\n\nChọn một người $A$ bất kì.\n\nGọi $N_1$ là nhóm gồm $A$ và những người quen $A$; nhóm này có ít nhất $1+67=68$ người.\n\nChọn $B\\in N_1$, $B\\ne A$ (khi đó $B$ quen $A$).\n\nLoại khỏi $N_1$ những người không quen $B$ (không quá $32$ người), ta được nhóm $N_2$ có ít nhất $68-32=36$ người, chứa $A,B$; mọi người trong $N_2$ khác $A$ đều quen $A$, mọi người khác $B$ đều quen $B$.\n\nChọn $C\\in N_2$, $C\\ne A,B$.\n\nLoại khỏi $N_2$ những người không quen $C$ (không quá $32$ người), ta được nhóm $N_3$ có ít nhất $36-32=4$ người, chứa $A,B,C$ và mọi người khác $C$ trong $N_3$ đều quen $C$.\n\nVì $N_3$ có ít nhất $4$ người nên tồn tại $D\\in N_3$, $D\\ne A,B,C$.\n\nNgười $D$ quen $A$, quen $B$ và quen $C$.\n\nNgoài ra $B$ quen $A$, còn $C$ quen cả $A$ và $B$.\n\nVậy bốn người $A,B,C,D$ đôi một quen nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "loại dần những người không quen"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 308): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C8.6b@p308",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050101",
+  "nhom_soan": "T18T050101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Trong một bảng có $4$ đội bóng đá thi đấu với nhau theo thể thức vòng tròn, đội thắng được $3$ điểm, đội hòa được $1$ điểm, đội thua được $0$ điểm. Kết thúc, kết quả của bảng như sau:\n\n1. Tổng số điểm của cả $4$ đội trong bảng là $16$.\n\n2. Đội nhất bảng là đội duy nhất được $6$ điểm.\n\nHỏi kết quả trận đấu giữa đội nhì bảng và cuối bảng?\n\nBiết rằng nếu hai đội có số điểm bằng nhau thì xét theo hiệu số bàn thắng thua và trường hợp này nếu vẫn chưa quyết định được thì bốc thăm để xếp thứ hạng.",
+  "noi_dung_sach": "Trong một bảng có $4$ đội bóng đá thi đấu với nhau theo thể thức vòng tròn, đội thắng được $3$ điểm, đội hòa được $1$ điểm, đội thua được $0$ điểm. Kết thúc, kết quả của bảng như sau:\n\n1. Tổng số điểm của cả $4$ đội trong bảng là $16$.\n\n2. Đội nhất bảng là đội duy nhất được $6$ điểm.\n\nHỏi kết quả trận đấu giữa đội nhì bảng và cuối bảng?\n\nBiết rằng nếu hai đội có số điểm bằng nhau thì xét theo hiệu số bàn thắng thua và trường hợp này nếu vẫn chưa quyết định được thì bốc thăm để xếp thứ hạng.",
+  "dap_an": "Hòa nhau",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số trận hòa tính được từ tổng điểm (mỗi trận có người thắng cộng $3$ điểm, mỗi trận hòa cộng $2$ điểm); đội nhất đúng $6$ điểm chỉ có thể thắng $2$ thua $1$, từ đó chia các trận còn lại thành ít trường hợp để tính điểm từng đội.\n\n**Bước 1.** Đếm số trận của bảng rồi gọi $d$ là số trận hòa, lập phương trình theo tổng điểm $16$ để tìm $d$.\n\n**Bước 2.** Giải $3w+h=6$ với $w+h\\le3$ (số trận thắng, hòa của đội nhất) để biết đội nhất thắng bao nhiêu, thua bao nhiêu, rồi đặt tên các đội để mô tả ba trận của nó.\n\n**Bước 3.** Hai trận hòa nằm trong ba trận không có đội nhất; chia ba trường hợp theo trận duy nhất có thắng thua, tính điểm từng đội.\n\n**Bước 4.** Loại trường hợp có đội vượt quá $6$ điểm (khi đó đội nhất không còn duy nhất), rồi đọc kết quả giữa đội nhì và đội cuối của các trường hợp còn lại.\n\n**Chú ý:** Khi hai đội cùng điểm cùng tranh nhì, cả hai đều có kết quả giống hệt nhau với đội cuối, nên quy tắc xét hiệu số hay bốc thăm không ảnh hưởng đến đáp án.\n\n**Phần 2. Trình bày**\n\nBảng có $\\dfrac{4\\cdot3}{2}=6$ trận.\n\nGọi $d$ là số trận hòa thì tổng điểm là $3(6-d)+2d=18-d=16$, nên $d=2$.\n\nGọi $A$ là đội nhất bảng, có đúng $6$ điểm.\n\nGọi $w$, $h$ là số trận thắng, hòa của $A$ thì $3w+h=6$ và $w+h\\le3$, nên $w=2$, $h=0$: đội $A$ thắng $2$ trận, thua $1$ trận, không hòa trận nào.\n\nGọi $B$ là đội thắng $A$, còn $C$, $D$ là hai đội thua $A$.\n\nKhi đó sau các trận với $A$: $A$ có $6$ điểm, $B$ có $3$ điểm, $C$ và $D$ có $0$ điểm.\n\nHai trận hòa thuộc ba trận $BC$, $BD$, $CD$, tức trong ba trận này có đúng một trận phân thắng thua.\n\nTrường hợp 1: $BC$ và $BD$ hòa, $CD$ phân thắng thua.\n\nGiả sử $C$ thắng $D$: $B$ có $3+1+1=5$ điểm, $C$ có $0+1+3=4$ điểm, $D$ có $0+1+0=1$ điểm.\n\nĐội nhì là $B$, đội cuối là $D$, trận $BD$ hòa. (Nếu $D$ thắng $C$ thì đội cuối là $C$ và trận $BC$ hòa.)\n\nTrường hợp 2: $CD$ hòa và $B$ hòa một trong hai đội $C$, $D$; giả sử $BD$ hòa và $BC$ phân thắng thua.\n\nNếu $B$ thắng $C$ thì $B$ có $3+3+1=7>6$ điểm, loại.\n\nVậy $C$ thắng $B$: $B$ có $3+0+1=4$ điểm, $C$ có $0+3+1=4$ điểm, $D$ có $0+1+1=2$ điểm.\n\nĐội cuối là $D$; đội nhì là $B$ hoặc $C$ (cùng $4$ điểm), và trận của đội nhì với $D$ ($BD$ hoặc $CD$) đều hòa. (Trường hợp $BC$ hòa và $BD$ phân thắng thua làm tương tự, đổi vai $C$ và $D$.)\n\nVậy trong mọi trường hợp, trận giữa đội nhì bảng và đội cuối bảng hòa nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đếm số trận hòa theo tổng điểm",
+   "xét các trường hợp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 308): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C9.1a@p313",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $x$ biết: $(x+1)(x+2)(x+3)(x+4)=24$.",
+  "noi_dung_sach": "Tìm $x$ biết: $(x+1)(x+2)(x+3)(x+4)=24$.",
+  "dap_an": "$S=\\{0;-5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn nhân tử bậc nhất có tổng hai số hạng tự do của các cặp $1+4$ và $2+3$ bằng nhau, nên ghép cặp sẽ cho hai nhân tử cùng chứa $x^2+5x$ và đặt ẩn phụ là xong.\n\n**Bước 1.** Ghép $(x+1)$ với $(x+4)$ và $(x+2)$ với $(x+3)$ rồi nhân từng cặp, để hai tích đều có dạng $x^2+5x$ cộng một hằng số.\n\n**Bước 2.** Đặt ẩn phụ là số hạng nằm chính giữa hai hằng số $4$ và $6$, khi đó hai nhân tử có dạng $t-1$ và $t+1$ nên tích là hiệu hai bình phương.\n\n**Bước 3.** Giải $t^2=25$ để tìm hai giá trị của $t$, rồi quay lại biến $x$ ở từng trường hợp.\n\n**Bước 4.** Với phương trình bậc hai không phân tích được, chứng tỏ vế trái luôn dương bằng cách đưa về bình phương cộng một số dương để kết luận vô nghiệm.\n\n**Chú ý:** Phương trình bậc bốn dạng tích của bốn nhân tử bậc nhất thì luôn thử ghép cặp sao cho tổng các số hạng tự do của hai cặp bằng nhau; đừng nhân hết ra bậc bốn.\n\n**Phần 2. Trình bày**\n\n$(x+1)(x+2)(x+3)(x+4)=24$\n\n$\\Leftrightarrow(x+1)(x+4)(x+2)(x+3)=24$\n\n$\\Leftrightarrow(x^2+5x+4)(x^2+5x+6)=24$\n\nĐặt $t=x^2+5x+5$, phương trình trở thành $(t-1)(t+1)=24\\Leftrightarrow t^2=25\\Leftrightarrow t=5$ hoặc $t=-5$.\n\nVới $t=5$: $x^2+5x=0\\Leftrightarrow x(x+5)=0\\Leftrightarrow x=0$ hoặc $x=-5$.\n\nVới $t=-5$: $x^2+5x+10=0$, mà $x^2+5x+10=\\left(x+\\dfrac{5}{2}\\right)^2+\\dfrac{15}{4}>0$ nên phương trình vô nghiệm.\n\nVậy $S=\\{0;-5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "ghép cặp nhân tử",
+   "đặt ẩn phụ",
+   "hằng đẳng thức hiệu hai bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 313): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 314, lời giải Đề 9 bài 1) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C9.1b@p313",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020103",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $x$ biết: $\\lvert x^2-1\\rvert+\\lvert a(x-1)\\rvert=0$.",
+  "noi_dung_sach": "Tìm $x$ biết: $\\lvert x^2-1\\rvert+\\lvert a(x-1)\\rvert=0$.",
+  "dap_an": "Nếu $a=0$ thì $S=\\{-1;1\\}$; nếu $a\\ne0$ thì $S=\\{1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi giá trị tuyệt đối đều không âm, nên tổng của hai giá trị tuyệt đối bằng $0$ chỉ khi cả hai cùng bằng $0$; còn thừa số $a$ quyết định điều kiện thứ hai có ràng buộc $x$ hay không.\n\n**Bước 1.** Nhận xét hai số hạng ở vế trái đều không âm để suy ra phương trình tương đương với việc cả hai số hạng đồng thời bằng $0$.\n\n**Bước 2.** Giải riêng điều kiện thứ nhất $x^2-1=0$ để có các giá trị của $x$ cần kiểm tra ở điều kiện còn lại.\n\n**Bước 3.** Chia hai trường hợp $a=0$ và $a\\ne0$, vì khi $a=0$ điều kiện thứ hai đúng với mọi $x$ còn khi $a\\ne0$ thì nó loại bớt giá trị của $x$.\n\n**Chú ý:** Khi đề có tham số, luôn tự hỏi tham số nhận giá trị nào thì một thừa số hoặc một hệ số bị triệt tiêu, rồi xét riêng trường hợp đó.\n\n**Phần 2. Trình bày**\n\nVì $\\lvert x^2-1\\rvert\\ge0$ và $\\lvert a(x-1)\\rvert\\ge0$ nên phương trình đã cho tương đương với $x^2-1=0$ và $a(x-1)=0$ đồng thời.\n\nTừ $x^2-1=0$ suy ra $x=1$ hoặc $x=-1$.\n\nNếu $a=0$: $a(x-1)=0$ đúng với mọi $x$, nên nghiệm là $x=1$ và $x=-1$.\n\nNếu $a\\ne0$: $a(x-1)=0\\Leftrightarrow x=1$.\n\nVới $x=-1$ thì $a(x-1)=-2a\\ne0$ nên bị loại; chỉ còn $x=1$.\n\nVậy nếu $a=0$ thì $S=\\{-1;1\\}$; nếu $a\\ne0$ thì $S=\\{1\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng hai số không âm bằng 0",
+   "xét trường hợp theo tham số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 313): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C9.2a@p313",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm số dư trong phép chia của biểu thức $(x+1)(x+3)(x+5)(x+7)+2017$ cho $x^2+8x+12$.",
+  "noi_dung_sach": "Tìm số dư trong phép chia của biểu thức $(x+1)(x+3)(x+5)(x+7)+2017$ cho $x^2+8x+12$.",
+  "dap_an": "Dư: $2002$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ghép các nhân tử thành hai cặp cùng chứa $x^2+8x$ thì đa thức chia $x^2+8x+12$ xuất hiện như một khối, nên viết được biểu thức dưới dạng \"khối nhân một biểu thức khác, cộng một hằng số\".\n\n**Bước 1.** Ghép $(x+1)(x+7)$ và $(x+3)(x+5)$ vì tổng hai số hạng tự do trong mỗi cặp đều bằng $8$, nhờ đó hai tích cùng có dạng $x^2+8x$ cộng một hằng số.\n\n**Bước 2.** Đặt $u=x^2+8x+12$ (chính là đa thức chia) rồi biểu diễn hai thừa số qua $u$ để đưa tích về một tam thức bậc hai theo $u$.\n\n**Bước 3.** Khai triển, cộng $2017$ và đặt $u$ ra ngoài để tách phần chia hết cho $u$ khỏi một hằng số.\n\n**Bước 4.** Kết luận hằng số còn lại là số dư vì nó có bậc nhỏ hơn bậc của đa thức chia.\n\n**Chú ý:** Đa thức chia $x^2+8x+12=(x+2)(x+6)$ nên cũng có thể giả sử dư là $ax+b$ rồi thay $x=-2$ và $x=-6$; cả hai lần đều cho $-2a+b=-6a+b=2002$, suy ra $a=0$ và $b=2002$.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=(x+1)(x+3)(x+5)(x+7)+2017$ và $u=x^2+8x+12$.\n\n$f(x)=(x+1)(x+7)(x+3)(x+5)+2017$\n\n$=(x^2+8x+7)(x^2+8x+15)+2017$\n\n$=(u-5)(u+3)+2017$\n\n$=u^2-2u-15+2017$\n\n$=u(u-2)+2002$\n\n$=(x^2+8x+12)(x^2+8x+10)+2002$\n\nVì $2002$ là đa thức bậc $0$, nhỏ hơn bậc $2$ của đa thức chia $x^2+8x+12$, nên số dư trong phép chia là $2002$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "ghép cặp nhân tử",
+   "đặt ẩn phụ",
+   "thay giá trị tại nghiệm của đa thức chia"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 313): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 315, lời giải Đề 9 bài 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C9.2b@p313",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040201",
+  "nhom_soan": "T18T040201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số nguyên dương $a,b,c,d$ thỏa mãn $ab=cd$. Chứng minh rằng $(a^{2016}+b^{2016})^2+(c^{2016}-d^{2016})^2$ là hợp số.",
+  "noi_dung_sach": "Cho các số nguyên dương $a,b,c,d$ thỏa mãn $ab=cd$. Chứng minh rằng $(a^{2016}+b^{2016})^2+(c^{2016}-d^{2016})^2$ là hợp số.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khai triển hai bình phương thì hai tích chéo triệt tiêu nhờ $ab=cd$, còn lại tổng bốn luỹ thừa bậc $4032$; tách $a,c$ theo ước chung lớn nhất để tổng đó phân tích được thành tích hai thừa số lớn hơn $1$.\n\n**Bước 1.** Khai triển hai bình phương rồi dùng $(ab)^{2016}=(cd)^{2016}$ để hai số hạng chứa tích chéo triệt tiêu nhau, còn lại $a^{4032}+b^{4032}+c^{4032}+d^{4032}$.\n\n**Bước 2.** Gọi $m$ là ước chung lớn nhất của $a$ và $c$, viết $a=mx$, $c=my$ với $x,y$ nguyên tố cùng nhau, rồi biến đổi $ab=cd$ thành $xb=yd$.\n\n**Bước 3.** Dùng tính chất nguyên tố cùng nhau để suy ra $y$ là ước của $b$, từ đó biểu diễn $b$ và $d$ theo $n,x,y$.\n\n**Bước 4.** Thay vào tổng bốn luỹ thừa, nhóm theo $m^{4032}$ và $n^{4032}$ để được tích hai tổng, mỗi tổng lớn hơn $1$ nên tích là hợp số.\n\n**Chú ý:** Muốn kết luận hợp số phải chỉ ra tích của hai số nguyên đều lớn hơn $1$; chỉ phân tích được thành tích thôi chưa đủ nếu một thừa số có thể bằng $1$.\n\n**Phần 2. Trình bày**\n\nVì $ab=cd$ nên $(ab)^{2016}=(cd)^{2016}$, tức $a^{2016}b^{2016}=c^{2016}d^{2016}$.\n\nDo đó $(a^{2016}+b^{2016})^2+(c^{2016}-d^{2016})^2=a^{4032}+b^{4032}+c^{4032}+d^{4032}+2a^{2016}b^{2016}-2c^{2016}d^{2016}$\n\n$=a^{4032}+b^{4032}+c^{4032}+d^{4032}\\quad(*)$\n\nGọi $m$ là ước chung lớn nhất của $a$ và $c$.\n\nĐặt $a=mx$, $c=my$ với $x,y\\in\\mathbb N^*$ và $x,y$ nguyên tố cùng nhau.\n\nTừ $ab=cd$ ta có $mxb=myd\\Rightarrow xb=yd$.\n\nSuy ra $xb\\vdots y$, mà $x,y$ nguyên tố cùng nhau nên $b\\vdots y$.\n\nĐặt $b=ny$ với $n\\in\\mathbb N^*$.\n\nThay vào $xb=yd$ được $xny=yd$, suy ra $d=nx$.\n\nThay $a=mx$, $b=ny$, $c=my$, $d=nx$ vào $(*)$:\n\n$m^{4032}x^{4032}+n^{4032}y^{4032}+m^{4032}y^{4032}+n^{4032}x^{4032}$\n\n$=(x^{4032}+y^{4032})(m^{4032}+n^{4032})$\n\nVì $x,y,m,n$ là các số nguyên dương nên $x^{4032}+y^{4032}\\ge2>1$ và $m^{4032}+n^{4032}\\ge2>1$.\n\nVậy biểu thức đã cho là tích của hai số nguyên lớn hơn $1$, nên là hợp số.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "ước chung lớn nhất",
+   "hai số nguyên tố cùng nhau",
+   "phân tích thành tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 313): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C9.3b@p313",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030103",
+  "nhom_soan": "T18T030103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $1\\le a\\le2$, $1\\le b\\le2$, $1\\le c\\le2$. Chứng minh rằng $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)\\le10$.",
+  "noi_dung_sach": "Cho $a,b,c$ thỏa mãn $1\\le a\\le2$, $1\\le b\\le2$, $1\\le c\\le2$. Chứng minh rằng $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)\\le10$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức đối xứng nên sắp thứ tự các biến; khi đó các phân số $\\dfrac{a}{b},\\dfrac{b}{c}$ không vượt quá $1$ còn $\\dfrac{b}{a},\\dfrac{c}{b}$ không nhỏ hơn $1$, cho phép dùng tích hai thừa số cùng dấu để chặn các tổng nghịch đảo.\n\n**Bước 1.** Giả sử $1\\le a\\le b\\le c\\le2$ (được phép vì biểu thức đối xứng) rồi so sánh từng phân số $\\dfrac{a}{b},\\dfrac{b}{c},\\dfrac{b}{a},\\dfrac{c}{b}$ với $1$.\n\n**Bước 2.** Nhân hai thừa số cùng dấu để có $\\left(1-\\dfrac{a}{b}\\right)\\left(1-\\dfrac{b}{c}\\right)\\ge0$ và $\\left(1-\\dfrac{b}{a}\\right)\\left(1-\\dfrac{c}{b}\\right)\\ge0$, rồi cộng hai bất đẳng thức để chặn tổng bốn phân số.\n\n**Bước 3.** Dùng $\\dfrac{1}{2}\\le\\dfrac{a}{c}\\le1$ để có tích $\\left(2-\\dfrac{a}{c}\\right)\\left(\\dfrac{1}{2}-\\dfrac{a}{c}\\right)\\le0$ và chặn tổng $\\dfrac{a}{c}+\\dfrac{c}{a}$.\n\n**Bước 4.** Khai triển vế trái thành $3$ cộng ba cặp nghịch đảo rồi thay hai đánh giá vừa có để được số $10$.\n\n**Chú ý:** Dấu \"=\" xảy ra, chẳng hạn, khi $a=b=1$, $c=2$.\n\n**Phần 2. Trình bày**\n\nBiểu thức đối xứng theo $a,b,c$ nên giả sử $1\\le a\\le b\\le c\\le2$.\n\nKhi đó $\\dfrac{a}{b}\\le1$, $\\dfrac{b}{c}\\le1$, $\\dfrac{b}{a}\\ge1$, $\\dfrac{c}{b}\\ge1$, nên\n\n$\\left(1-\\dfrac{a}{b}\\right)\\left(1-\\dfrac{b}{c}\\right)\\ge0$ và $\\left(1-\\dfrac{b}{a}\\right)\\left(1-\\dfrac{c}{b}\\right)\\ge0$.\n\nCộng hai bất đẳng thức, khai triển ta được $2-\\dfrac{a}{b}-\\dfrac{b}{c}+\\dfrac{a}{c}-\\dfrac{b}{a}-\\dfrac{c}{b}+\\dfrac{c}{a}\\ge0$, tức\n\n$\\dfrac{a}{b}+\\dfrac{b}{a}+\\dfrac{b}{c}+\\dfrac{c}{b}\\le2+\\dfrac{a}{c}+\\dfrac{c}{a}\\quad(1)$\n\nTừ $1\\le a\\le c\\le2$ suy ra $\\dfrac{1}{2}\\le\\dfrac{a}{c}\\le1<2$, nên $\\left(2-\\dfrac{a}{c}\\right)\\left(\\dfrac{1}{2}-\\dfrac{a}{c}\\right)\\le0$, tức $1-\\dfrac{5}{2}\\cdot\\dfrac{a}{c}+\\dfrac{a^2}{c^2}\\le0$.\n\nChia hai vế cho $\\dfrac{a}{c}>0$ được $\\dfrac{c}{a}-\\dfrac{5}{2}+\\dfrac{a}{c}\\le0$, tức\n\n$\\dfrac{a}{c}+\\dfrac{c}{a}\\le\\dfrac{5}{2}\\quad(2)$\n\nTừ $(1)$ và $(2)$:\n\n$(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)=3+\\left(\\dfrac{a}{b}+\\dfrac{b}{a}\\right)+\\left(\\dfrac{b}{c}+\\dfrac{c}{b}\\right)+\\left(\\dfrac{a}{c}+\\dfrac{c}{a}\\right)$\n\n$\\le3+2+2\\left(\\dfrac{a}{c}+\\dfrac{c}{a}\\right)\\le3+2+2\\cdot\\dfrac{5}{2}=10$.\n\nVậy $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)\\le10$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "sắp thứ tự các biến",
+   "xét tích hai thừa số cùng dấu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 313): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C9.6a@p314",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050101",
+  "nhom_soan": "T18T050101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Có $10$ bạn đi dạo phố bằng $5$ xe máy. Biết rằng trong $10$ bạn này cứ nhóm $3$ người nào cũng có $1$ người quen với $2$ người kia. Chứng tỏ rằng có thể xếp $10$ bạn đó đi dạo phố bằng $5$ xe máy, mỗi xe $2$ người quen nhau (biết rằng cả $10$ bạn đều biết lái xe máy).",
+  "noi_dung_sach": "Có $10$ bạn đi dạo phố bằng $5$ xe máy. Biết rằng trong $10$ bạn này cứ nhóm $3$ người nào cũng có $1$ người quen với $2$ người kia. Chứng tỏ rằng có thể xếp $10$ bạn đó đi dạo phố bằng $5$ xe máy, mỗi xe $2$ người quen nhau (biết rằng cả $10$ bạn đều biết lái xe máy).",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong ba người bất kì luôn có người quen hai người còn lại, nên luôn chọn được một cặp quen nhau; cứ nhặt dần từng cặp cho đến khi còn đúng bốn người, rồi xử lí riêng nhóm bốn người cuối.\n\n**Bước 1.** Từ giả thiết suy ra trong ba người bất kì có ít nhất một cặp quen nhau, để biết lúc nào cũng xếp được thêm một xe.\n\n**Bước 2.** Lấy ba người bất kì trong $10$ người, trong $8$ người còn lại rồi trong $6$ người còn lại, mỗi lần chọn một cặp quen nhau cho một xe, đến khi còn bốn người.\n\n**Bước 3.** Xét bốn người còn lại: nếu họ đôi một quen nhau thì ghép tuỳ ý, ngược lại tìm một cặp không quen nhau.\n\n**Bước 4.** Áp dụng giả thiết cho hai nhóm ba người chứa cặp không quen đó để chứng tỏ hai người còn lại quen cả hai người ấy, rồi ghép chéo.\n\n**Chú ý:** Khi hai người không quen nhau thì người \"quen hai người kia\" trong nhóm ba chứa họ buộc phải là người thứ ba; nhớ lập luận bằng cách loại hai người này.\n\n**Phần 2. Trình bày**\n\nTrong ba người bất kì có một người quen hai người còn lại, nên trong ba người bất kì có ít nhất một cặp quen nhau.\n\nLấy ba bạn bất kì trong $10$ bạn, chọn hai bạn quen nhau cho đi xe thứ nhất.\n\nLấy ba bạn bất kì trong $8$ bạn còn lại, chọn hai bạn quen nhau cho đi xe thứ hai.\n\nLấy ba bạn bất kì trong $6$ bạn còn lại, chọn hai bạn quen nhau cho đi xe thứ ba.\n\nCòn lại bốn bạn $A,B,C,D$.\n\nNếu bốn bạn $A,B,C,D$ đôi một quen nhau thì ghép tuỳ ý thành hai cặp cho hai xe còn lại.\n\nNếu có hai bạn không quen nhau, giả sử là $A$ và $B$: xét nhóm $A,B,C$, có một bạn quen hai bạn kia; bạn đó không thể là $A$ hay $B$ (vì $A,B$ không quen nhau) nên là $C$.\n\nVậy $C$ quen cả $A$ và $B$.\n\nTương tự, xét nhóm $A,B,D$ được $D$ quen cả $A$ và $B$.\n\nXếp $A$ đi với $C$ và $B$ đi với $D$ trên hai xe còn lại.\n\nVậy có thể xếp $10$ bạn đi bằng $5$ xe máy, mỗi xe hai người quen nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhặt dần từng cặp quen nhau",
+   "xét trường hợp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 314): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C9.6b@p314",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T050102",
+  "nhom_soan": "T18T050102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho một hình vuông và $17$ đường thẳng mỗi đường thẳng đều chia hình vuông thành hai tứ giác có tỉ số diện tích bằng $2:3$. Chứng minh rằng trong $17$ đường thẳng đó, có ít nhất $5$ đường thẳng cùng đi qua một điểm và xét các góc không có điểm trong chung của $5$ đường thẳng này, tồn tại hai góc lớn hơn hoặc bằng $36^\\circ$.",
+  "noi_dung_sach": "Cho một hình vuông và $17$ đường thẳng mỗi đường thẳng đều chia hình vuông thành hai tứ giác có tỉ số diện tích bằng $2:3$. Chứng minh rằng trong $17$ đường thẳng đó, có ít nhất $5$ đường thẳng cùng đi qua một điểm và xét các góc không có điểm trong chung của $5$ đường thẳng này, tồn tại hai góc lớn hơn hoặc bằng $36^\\circ$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đường thẳng chia hình vuông thành hai tứ giác diện tích $2:3$ buộc phải đi qua một trong bốn điểm cố định (hai điểm trên mỗi đường trung bình), nên $17$ đường thẳng rơi vào $4$ điểm là dấu hiệu dùng nguyên tắc Đi-rích-lê.\n\n**Bước 1.** Chỉ ra đường thẳng chia hình vuông thành hai tứ giác thì phải cắt hai cạnh đối diện tại điểm trong của các cạnh, vì các vị trí khác cho tam giác hoặc ngũ giác.\n\n**Bước 2.** Dùng đường trung bình của hình thang để suy ra tỉ số hai diện tích bằng tỉ số hai đoạn mà đường thẳng chia đường trung bình của hình vuông, từ đó xác định bốn điểm cố định.\n\n**Bước 3.** Áp dụng nguyên tắc Đi-rích-lê cho $17$ đường thẳng và $4$ điểm để có một điểm có ít nhất $5$ đường thẳng đi qua.\n\n**Bước 4.** Dùng tổng các góc quanh một điểm bằng $360^\\circ$ cho $10$ góc tạo bởi $5$ đường thẳng, rồi dùng tính chất hai góc đối đỉnh để được hai góc.\n\n**Chú ý:** Đừng quên loại các vị trí đường thẳng không cho hai tứ giác (qua đỉnh, cắt hai cạnh kề) trước khi nói \"đường thẳng đi qua điểm cố định\".\n\n**Phần 2. Trình bày**\n\nGọi hình vuông là $ABCD$; $E,F$ lần lượt là trung điểm của $AD,BC$; $P,Q$ lần lượt là trung điểm của $AB,CD$.\n\nKhi đó $EF\\parallel AB$ và $PQ\\parallel AD$ là hai đường trung bình của hình vuông.\n\nGọi $d$ là một trong $17$ đường thẳng.\n\nNếu $d$ qua một đỉnh hoặc cắt hai cạnh kề thì $d$ chia hình vuông thành tam giác và tứ giác hoặc tam giác và ngũ giác, hoặc thành hai tam giác, không thoả mãn.\n\nVậy $d$ cắt hai cạnh đối diện tại các điểm trong của hai cạnh đó.\n\nGiả sử $d$ cắt $AB,CD$ tại $M,N$ (trường hợp $d$ cắt $AD,BC$ làm tương tự với đường trung bình $PQ$).\n\nVì $AB\\parallel CD$ nên $AMND$ và $BMNC$ là hai hình thang.\n\n$EF$ song song và cách đều $AB,CD$ nên $EF$ cắt $MN$ tại trung điểm $I$ của $MN$.\n\nDo $E,I$ là trung điểm hai cạnh bên của hình thang $AMND$ nên $EI=\\dfrac{AM+DN}{2}$; tương tự $IF=\\dfrac{BM+CN}{2}$.\n\nSuy ra $S_{AMND}=\\dfrac{AM+DN}{2}\\cdot AD=EI\\cdot AD$ và $S_{BMNC}=IF\\cdot AD$, nên $S_{AMND}:S_{BMNC}=EI:IF$.\n\nVì tỉ số hai diện tích là $2:3$ (theo một thứ tự nào đó) nên $EI:IF=2:3$ hoặc $EI:IF=3:2$, tức $I$ là một trong hai điểm chia đoạn $EF$ theo tỉ số $2:3$.\n\nTương tự, nếu $d$ cắt $AD,BC$ thì $d$ đi qua một trong hai điểm chia $PQ$ theo tỉ số $2:3$.\n\nVậy mỗi đường thẳng trong $17$ đường đều đi qua một trong $4$ điểm cố định.\n\nVì $17=4\\cdot4+1$ nên theo nguyên tắc Đi-rích-lê tồn tại một điểm $O$ có ít nhất $5$ đường thẳng đi qua.\n\nNăm đường thẳng đó cắt nhau tại $O$ và chia mặt phẳng thành $10$ góc không có điểm trong chung, tổng các góc bằng $360^\\circ$.\n\nNếu cả $10$ góc đều nhỏ hơn $36^\\circ$ thì tổng nhỏ hơn $10\\cdot36^\\circ=360^\\circ$, vô lí.\n\nVậy có một góc lớn hơn hoặc bằng $36^\\circ$.\n\nGóc đó có một góc đối đỉnh (cũng là một trong $10$ góc) và hai góc đối đỉnh thì bằng nhau, nên có ít nhất hai góc lớn hơn hoặc bằng $36^\\circ$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nguyên tắc Đi-rích-lê",
+   "đường trung bình hình thang",
+   "tổng các góc quanh một điểm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 314): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C10.1a@p320",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020102",
+  "nhom_soan": "T18T020102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $-x^3+2x^2+x-2=0$.",
+  "noi_dung_sach": "Giải phương trình: $-x^3+2x^2+x-2=0$.",
+  "dap_an": "$S=\\{2;1;-1\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình bậc ba không có nhân tử chung nhưng hai hạng tử đầu và hai hạng tử cuối cùng chứa nhân tử $x-2$, nên nhóm hạng tử để đưa về phương trình tích.\n\n**Bước 1.** Nhóm hai hạng tử đầu và hai hạng tử cuối, đặt $-x^2$ ở nhóm đầu để cả hai nhóm cùng xuất hiện nhân tử $x-2$.\n\n**Bước 2.** Đặt nhân tử chung $x-2$ ra ngoài để vế trái thành tích của một nhị thức và một nhị thức bậc hai chưa phân tích hết.\n\n**Bước 3.** Phân tích tiếp thừa số $1-x^2$ bằng hằng đẳng thức hiệu hai bình phương rồi cho từng nhân tử bằng $0$.\n\n**Chú ý:** Đừng chia hai vế cho $x-2$ khi chưa xét $x=2$; luôn chuyển về dạng tích bằng $0$ để không mất nghiệm.\n\n**Phần 2. Trình bày**\n\n$-x^3+2x^2+x-2=0$\n\n$\\Leftrightarrow-x^2(x-2)+(x-2)=0$\n\n$\\Leftrightarrow(x-2)(1-x^2)=0$\n\n$\\Leftrightarrow(x-2)(1-x)(1+x)=0$\n\n$\\Leftrightarrow x=2$ hoặc $x=1$ hoặc $x=-1$.\n\nVậy $S=\\{2;1;-1\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử đưa về phương trình tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 320): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C10.1b@p320",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $\\dfrac{x}{x-1}-\\dfrac{2(x+3)}{x+1}=\\dfrac{2}{x^2-1}$.",
+  "noi_dung_sach": "Giải phương trình: $\\dfrac{x}{x-1}-\\dfrac{2(x+3)}{x+1}=\\dfrac{2}{x^2-1}$.",
+  "dap_an": "$S=\\{-4\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu thức $x^2-1=(x-1)(x+1)$ chính là mẫu chung của hai phân số ở vế trái, nên quy đồng được ngay rồi khử mẫu, nhưng phải đặt điều kiện xác định trước và đối chiếu nghiệm sau.\n\n**Bước 1.** Tìm điều kiện để các mẫu khác $0$ và nhận ra $x^2-1=(x-1)(x+1)$ để chọn mẫu chung.\n\n**Bước 2.** Quy đồng rồi nhân hai vế với mẫu chung để khử mẫu, được một phương trình đa thức.\n\n**Bước 3.** Khai triển, thu gọn thành phương trình bậc hai và phân tích vế trái thành tích hai nhị thức.\n\n**Bước 4.** Đối chiếu từng nghiệm tìm được với điều kiện xác định để loại nghiệm làm mẫu bằng $0$.\n\n**Chú ý:** Sau khi khử mẫu, nghiệm làm mẫu bằng $0$ là nghiệm ngoại lai và bắt buộc phải loại.\n\n**Phần 2. Trình bày**\n\nĐiều kiện xác định: $x\\ne1$ và $x\\ne-1$.\n\n$\\dfrac{x}{x-1}-\\dfrac{2(x+3)}{x+1}=\\dfrac{2}{(x-1)(x+1)}$\n\n$\\Rightarrow x(x+1)-2(x+3)(x-1)=2$\n\n$\\Leftrightarrow x^2+x-2x^2-4x+6=2$\n\n$\\Leftrightarrow-x^2-3x+4=0$\n\n$\\Leftrightarrow x^2+3x-4=0$\n\n$\\Leftrightarrow(x+4)(x-1)=0$\n\n$\\Leftrightarrow x=-4$ hoặc $x=1$.\n\nĐối chiếu điều kiện xác định: $x=1$ bị loại, $x=-4$ thỏa mãn.\n\nVậy $S=\\{-4\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "quy đồng khử mẫu",
+   "điều kiện xác định"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 320): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C10.1c@p320",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T020104",
+  "nhom_soan": "T18T020104",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình: $2\\lvert x+1\\rvert-3x=5$.",
+  "noi_dung_sach": "Giải phương trình: $2\\lvert x+1\\rvert-3x=5$.",
+  "dap_an": "$S=\\left\\{-\\dfrac{7}{5}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức trong giá trị tuyệt đối là $x+1$, nên chia hai trường hợp theo dấu của $x+1$ để bỏ dấu giá trị tuyệt đối, rồi nhớ đối chiếu nghiệm với điều kiện của từng trường hợp.\n\n**Bước 1.** Xác định mốc đổi dấu của biểu thức trong dấu giá trị tuyệt đối để chia thành hai khoảng của $x$.\n\n**Bước 2.** Ở khoảng $x\\ge-1$, bỏ dấu giá trị tuyệt đối giữ nguyên biểu thức rồi giải phương trình bậc nhất thu được.\n\n**Bước 3.** Ở khoảng $x<-1$, bỏ dấu giá trị tuyệt đối bằng cách đổi dấu biểu thức rồi giải phương trình bậc nhất thu được.\n\n**Bước 4.** So sánh từng nghiệm với điều kiện của khoảng tương ứng để giữ hay loại.\n\n**Chú ý:** Nghiệm tìm được trong một trường hợp chỉ nhận khi nó thỏa điều kiện của chính trường hợp đó.\n\n**Phần 2. Trình bày**\n\nNếu $x\\ge-1$ thì $\\lvert x+1\\rvert=x+1$, phương trình trở thành $2(x+1)-3x=5$.\n\n$\\Leftrightarrow-x+2=5\\Leftrightarrow x=-3$, không thỏa $x\\ge-1$ nên loại.\n\nNếu $x<-1$ thì $\\lvert x+1\\rvert=-(x+1)$, phương trình trở thành $-2(x+1)-3x=5$.\n\n$\\Leftrightarrow-5x-2=5\\Leftrightarrow x=-\\dfrac{7}{5}$, thỏa $x<-1$ nên nhận.\n\nVậy $S=\\left\\{-\\dfrac{7}{5}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phá dấu giá trị tuyệt đối theo từng khoảng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 320): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "C10.2a@p320",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T030202",
+  "nhom_soan": "T18T030202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $M=\\dfrac{x^2-2x+2016}{x^2}$ với $x\\ne0$.",
+  "noi_dung_sach": "Tìm giá trị nhỏ nhất của $M=\\dfrac{x^2-2x+2016}{x^2}$ với $x\\ne0$.",
+  "dap_an": "Giá trị nhỏ nhất là $\\dfrac{2015}{2016}$, đạt khi $x=2016$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm giá trị nhỏ nhất của phân thức có tử là tam thức bậc hai, tách tử thành \"bình phương của một hiệu cộng một phần của $x^2$\" để $M$ thành hằng số cộng một biểu thức không âm.\n\n**Bước 1.** Nhân cả tử và mẫu với $2016$ để hạng tử bậc nhất trở thành $-2\\cdot2016x$ và hệ số tự do thành $2016^2$, khớp với khai triển của $(x-2016)^2$.\n\n**Bước 2.** Tách $2016x^2=2015x^2+x^2$ để ghép $x^2$ với hai hạng tử còn lại thành bình phương của hiệu $x-2016$.\n\n**Bước 3.** Chia tử cho mẫu để $M$ bằng một hằng số cộng một phân thức có tử là bình phương, mẫu dương, rồi đánh giá phân thức đó không âm.\n\n**Bước 4.** Tìm giá trị của $x$ làm dấu \"=\" xảy ra và kiểm tra giá trị đó thỏa $x\\ne0$.\n\n**Chú ý:** Có thể đặt $t=\\dfrac{1}{x}$ để đưa về tam thức bậc hai $M=2016t^2-2t+1$ rồi tìm giá trị nhỏ nhất.\n\n**Phần 2. Trình bày**\n\n$M=\\dfrac{x^2-2x+2016}{x^2}=\\dfrac{2016x^2-2\\cdot2016x+2016^2}{2016x^2}$\n\n$=\\dfrac{2015x^2+(x^2-2\\cdot2016x+2016^2)}{2016x^2}$\n\n$=\\dfrac{2015}{2016}+\\dfrac{(x-2016)^2}{2016x^2}$\n\nVì $\\dfrac{(x-2016)^2}{2016x^2}\\ge0$ với mọi $x\\ne0$ nên $M\\ge\\dfrac{2015}{2016}$.\n\nDấu \"=\" xảy ra khi $x-2016=0$, tức $x=2016$ (thỏa $x\\ne0$).\n\nVậy giá trị nhỏ nhất của $M$ là $\\dfrac{2015}{2016}$, đạt khi $x=2016$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách thành hằng số cộng bình phương",
+   "nhân tử và mẫu với một số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 320): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 322, lời giải Đề 10 bài ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C10.2b@p320",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho ba số $a,b,c$ thỏa mãn $a+b+c=0$ và $a^2+b^2+c^2=2016$. Tính $A=a^4+b^4+c^4$.",
+  "noi_dung_sach": "Cho ba số $a,b,c$ thỏa mãn $a+b+c=0$ và $a^2+b^2+c^2=2016$. Tính $A=a^4+b^4+c^4$.",
+  "dap_an": "$2032128$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ $a+b+c=0$ tính được $ab+bc+ca$, rồi bình phương hai lần liên tiếp để từ tổng bình phương đi đến tổng luỹ thừa bậc bốn mà không cần tìm riêng $a,b,c$.\n\n**Bước 1.** Bình phương hai vế của $a+b+c=0$ rồi thay $a^2+b^2+c^2=2016$ để tính được $ab+bc+ca$.\n\n**Bước 2.** Bình phương $ab+bc+ca$ để liên hệ với $a^2b^2+b^2c^2+c^2a^2$; phần dư ra là $2abc(a+b+c)$ nên bằng $0$.\n\n**Bước 3.** Bình phương $a^2+b^2+c^2$ để xuất hiện $a^4+b^4+c^4$ cộng hai lần tổng $a^2b^2+b^2c^2+c^2a^2$ vừa tính.\n\n**Bước 4.** Rút $a^4+b^4+c^4$ rồi tính giá trị số, tận dụng $2016=2\\cdot1008$ cho gọn.\n\n**Chú ý:** Với $a+b+c=0$, nhớ rằng $(ab+bc+ca)^2=a^2b^2+b^2c^2+c^2a^2$ vì số hạng $2abc(a+b+c)$ bị triệt tiêu.\n\n**Phần 2. Trình bày**\n\nTừ $a+b+c=0$ suy ra $(a+b+c)^2=0$, tức $a^2+b^2+c^2+2(ab+bc+ca)=0$.\n\nThay $a^2+b^2+c^2=2016$ được $ab+bc+ca=-1008$.\n\nTa có $(ab+bc+ca)^2=a^2b^2+b^2c^2+c^2a^2+2abc(a+b+c)$.\n\nVì $a+b+c=0$ nên\n\n$a^2b^2+b^2c^2+c^2a^2=(-1008)^2=1008^2$.\n\nMặt khác $(a^2+b^2+c^2)^2=a^4+b^4+c^4+2(a^2b^2+b^2c^2+c^2a^2)$, nên\n\n$a^4+b^4+c^4=2016^2-2\\cdot1008^2=4\\cdot1008^2-2\\cdot1008^2=2\\cdot1008^2=2032128$.\n\nVậy $A=2032128$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "bình phương một tổng",
+   "biểu thức đối xứng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 320): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 322, lời giải Đề 10 bài ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C10.6a@p321",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các cặp số nguyên $(x;y)$ thỏa mãn phương trình $2015(x^2+y^2)-2014(2xy+1)=25$.",
+  "noi_dung_sach": "Tìm các cặp số nguyên $(x;y)$ thỏa mãn phương trình $2015(x^2+y^2)-2014(2xy+1)=25$.",
+  "dap_an": "$(x;y)\\in\\{(4;3);(-3;-4);(3;4);(-4;-3)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách $2015=1+2014$ để gom $2014(x^2-2xy+y^2)=2014(x-y)^2$; hệ số $2014$ rất lớn nên $(x-y)^2$ chỉ nhận được các giá trị rất nhỏ, từ đó chặn được $\\lvert x-y\\rvert$ và giải từng trường hợp.\n\n**Bước 1.** Tách hệ số $2015$ thành $1+2014$ và gộp phần có hệ số $2014$ thành $2014(x-y)^2$, đưa phương trình về dạng $x^2+y^2+2014(x-y)^2=2039$.\n\n**Bước 2.** Chặn $\\lvert x-y\\rvert$: nếu $\\lvert x-y\\rvert\\ge2$ thì vế trái vượt quá $2039$, nên $\\lvert x-y\\rvert$ chỉ có thể bằng $0$ hoặc $1$.\n\n**Bước 3.** Xét $x=y$ và dùng tính chẵn lẻ để chứng tỏ trường hợp này không có nghiệm nguyên.\n\n**Bước 4.** Xét $x-y=\\pm1$, thay vào được $x^2+y^2=25$ rồi giải phương trình bậc hai ở mỗi trường hợp để lấy các cặp nguyên.\n\n**Chú ý:** Khi một hệ số rất lớn đi cùng một bình phương của số nguyên, hãy nghĩ ngay đến việc chặn bình phương đó bằng $0$ hoặc $1$.\n\n**Phần 2. Trình bày**\n\n$2015(x^2+y^2)-2014(2xy+1)=25$\n\n$\\Leftrightarrow x^2+y^2+2014(x^2+y^2)-2014\\cdot2xy-2014=25$\n\n$\\Leftrightarrow x^2+y^2+2014(x-y)^2=2039\\quad(*)$\n\nVì $x,y\\in\\mathbb Z$ nên $\\lvert x-y\\rvert$ là số tự nhiên.\n\nNếu $\\lvert x-y\\rvert\\ge2$ thì $2014(x-y)^2\\ge2014\\cdot4=8056>2039$, mâu thuẫn với $(*)$.\n\nVậy $\\lvert x-y\\rvert\\in\\{0;1\\}$.\n\nTrường hợp $x=y$: $(*)$ thành $2x^2=2039$, vô nghiệm nguyên vì vế trái chẵn, vế phải lẻ.\n\nTrường hợp $\\lvert x-y\\rvert=1$: $(*)$ thành $x^2+y^2+2014=2039$, tức $x^2+y^2=25$.\n\nVới $y=x-1$: $x^2+(x-1)^2=25\\Leftrightarrow x^2-x-12=0\\Leftrightarrow(x-4)(x+3)=0$, được $x=4$ (khi đó $y=3$) hoặc $x=-3$ (khi đó $y=-4$).\n\nVới $y=x+1$: $x^2+(x+1)^2=25\\Leftrightarrow x^2+x-12=0\\Leftrightarrow(x-3)(x+4)=0$, được $x=3$ (khi đó $y=4$) hoặc $x=-4$ (khi đó $y=-3$).\n\nVậy $(x;y)\\in\\{(4;3);(-3;-4);(3;4);(-4;-3)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hệ số đưa về bình phương",
+   "đánh giá chặn",
+   "xét tính chẵn lẻ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 321): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C10.6b@p321",
+  "lo": 7,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T030103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $5$ số tự nhiên phân biệt sao cho tổng của ba số bất kì trong chúng lớn hơn tổng của hai số còn lại.\n\ni. Chứng minh rằng tất cả $5$ số đã cho đều không nhỏ hơn $5$.\n\nii. Tìm tất cả các bộ gồm $5$ số thỏa mãn đề bài mà tổng của chúng nhỏ hơn $40$.",
+  "noi_dung_sach": "Cho $5$ số tự nhiên phân biệt sao cho tổng của ba số bất kì trong chúng lớn hơn tổng của hai số còn lại.\n\ni. Chứng minh rằng tất cả $5$ số đã cho đều không nhỏ hơn $5$.\n\nii. Tìm tất cả các bộ gồm $5$ số thỏa mãn đề bài mà tổng của chúng nhỏ hơn $40$.",
+  "dap_an": "i. Chứng minh; ii. $(5;6;7;8;9)$ và $(5;7;8;9;10)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sắp xếp $5$ số theo thứ tự tăng thì điều kiện \"tổng ba số bất kì lớn hơn tổng hai số còn lại\" chỉ cần kiểm cho ba số nhỏ nhất và hai số lớn nhất, và vì các số phân biệt nên hiệu của hai số cách nhau một vị trí tối thiểu là $2$.\n\n**Bước 1.** Gọi các số là $a_1<a_2<a_3<a_4<a_5$ rồi suy ra $a_5-a_3\\ge2$ và $a_4-a_2\\ge2$ vì chúng là các số tự nhiên phân biệt.\n\n**Bước 2.** Dùng điều kiện cho nhóm ba số nhỏ nhất $a_1+a_2+a_3>a_4+a_5$ để đánh giá $a_1$ lớn hơn tổng hai hiệu trên, từ đó có $a_1\\ge5$.\n\n**Bước 3.** Ở ý ii, đánh giá tổng năm số từ dưới bằng dãy số liên tiếp bắt đầu từ $a_1$ để chặn $a_1$, rồi làm tương tự cho $a_2$.\n\n**Bước 4.** Với từng giá trị của $a_2$, dùng điều kiện $a_1+a_2+a_3>a_4+a_5$ để chặn $a_3$, sau đó chặn $a_4+a_5$ và kiểm tra lại bộ số tìm được.\n\n**Chú ý:** Điều kiện của đề với mọi nhóm ba số tương đương với điều kiện cho ba số nhỏ nhất, vì tổng ba số bất kì không nhỏ hơn $a_1+a_2+a_3$ và tổng hai số còn lại không lớn hơn $a_4+a_5$.\n\n**Phần 2. Trình bày**\n\nGọi $5$ số là $a_1<a_2<a_3<a_4<a_5$.\n\nTổng ba số bất kì không nhỏ hơn $a_1+a_2+a_3$, tổng hai số còn lại không lớn hơn $a_4+a_5$, nên điều kiện của đề tương đương với $a_1+a_2+a_3>a_4+a_5\\quad(1)$.\n\ni.\n\nVì các số tự nhiên phân biệt nên $a_5-a_3\\ge2$ và $a_4-a_2\\ge2$.\n\nTừ $(1)$:\n\n$a_1>(a_5-a_3)+(a_4-a_2)\\ge2+2=4$, suy ra $a_1\\ge5$.\n\nVậy $a_5>a_4>a_3>a_2>a_1\\ge5$, tức cả $5$ số đều không nhỏ hơn $5$.\n\nii.\n\nTa có $a_2\\ge a_1+1$, $a_3\\ge a_1+2$, $a_4\\ge a_1+3$, $a_5\\ge a_1+4$ nên tổng $\\ge5a_1+10$.\n\nTừ tổng nhỏ hơn $40$ suy ra $5a_1+10<40$, tức $a_1<6$.\n\nKết hợp $a_1\\ge5$ được $a_1=5$.\n\nKhi đó $a_2+a_3+a_4+a_5<35$ và $a_3\\ge a_2+1$, $a_4\\ge a_2+2$, $a_5\\ge a_2+3$ nên $4a_2+6<35$, tức $a_2<\\dfrac{29}{4}$, suy ra $a_2\\le7$.\n\nMà $a_2\\ge6$ nên $a_2=6$ hoặc $a_2=7$.\n\nTrường hợp $a_2=6$: từ $(1)$ có $11+a_3>a_4+a_5\\ge(a_3+1)+(a_3+2)=2a_3+3$, suy ra $a_3<8$.\n\nMà $a_3\\ge7$ nên $a_3=7$.\n\nKhi đó $a_4+a_5<18$ và $a_4\\ge8$, $a_5\\ge9$ nên $a_4+a_5=17$, tức $a_4=8$, $a_5=9$.\n\nBộ $(5;6;7;8;9)$ có tổng $35<40$ và $5+6+7=18>8+9=17$, thỏa mãn.\n\nTrường hợp $a_2=7$: từ $(1)$ có $12+a_3>a_4+a_5\\ge2a_3+3$, suy ra $a_3<9$.\n\nMà $a_3\\ge8$ nên $a_3=8$.\n\nKhi đó $a_4+a_5<20$ và $a_4\\ge9$, $a_5\\ge10$ nên $a_4+a_5=19$, tức $a_4=9$, $a_5=10$.\n\nBộ $(5;7;8;9;10)$ có tổng $39<40$ và $5+7+8=20>9+10=19$, thỏa mãn.\n\nVậy có hai bộ số thỏa mãn là $(5;6;7;8;9)$ và $(5;7;8;9;10)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "sắp thứ tự các số",
+   "làm trội",
+   "đánh giá tổng bằng dãy số liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 321): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ }
+]

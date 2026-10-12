@@ -33,11 +33,12 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
   chot_lai: { icon: '🔄', ten: 'Điều chỉnh xu' },
   cong_tay: { icon: '➕', ten: 'Thầy cô cộng xu' },
   tru_tay: { icon: '➖', ten: 'Thầy cô trừ xu' },
+  nong_trai: { icon: '🌾', ten: 'Nông trại BK' },   // mig 202610121655: xu thật từ game, gộp 1 dòng/tháng
 }
 
 // ── Card theo NHÓM nguồn (Thùy 27/09: "để hs theo dõi nguồn nào ít-nhiều") — bấm 1 card mới hiện
 // lịch sử chi tiết của nhóm đó (HoatDongRow), thay vì 1 danh sách phẳng lẫn lộn mọi nguồn.
-export type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
+export type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'nong_trai' | 'khac'
 const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu' }> = {
   et: { icon: '📋', ten: 'ET', donVi: 'exp' },
   btvn: { icon: '🏠', ten: 'BTVN', donVi: 'exp' },
@@ -51,15 +52,16 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
   cong_tay: { icon: '➕', ten: 'Thầy cô tặng', donVi: 'xu' },
   tru_tay: { icon: '➖', ten: 'Bị trừ (thầy cô)', donVi: 'xu' },
   chot_xu: { icon: '🪙', ten: 'Xu đổi từ EXP', donVi: 'xu' },
+  nong_trai: { icon: '🌾', ten: 'Nông trại BK', donVi: 'xu' },
   khac: { icon: '✨', ten: 'Khác', donVi: 'exp' },
 }
 // Thứ tự hiện card — khớp ví dụ Thùy đưa (ET, BTVN, thầy cô tặng, may mắn, hoạt động lớp...).
-export const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
+export const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu', 'nong_trai']
 const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   exp_et: 'et', exp_btvn: 'btvn', exp_btvn_thang: 'btvn',
   exp_nhiem_vu: 'nhiem_vu', exp_thanh_tuu: 'thanh_tuu', exp_huy_hieu: 'huy_hieu',
   attend_floor: 'attend_floor', may_man: 'may_man', exp_tren_lop: 'hoat_dong_lop',
-  cong_tay: 'cong_tay', tru_tay: 'tru_tay', chot_thang: 'chot_xu', chot_lai: 'chot_xu',
+  cong_tay: 'cong_tay', tru_tay: 'tru_tay', chot_thang: 'chot_xu', chot_lai: 'chot_xu', nong_trai: 'nong_trai',
   // Nguồn cũ/một-lần (exp_thang trước khi tách ET/BTVN, rank_et/rank_ingame/btvn — data lịch sử 06-08/2026)
   // không đủ căn cứ gán đúng ET hay BTVN ⇒ để "Khác", KHÔNG đoán bừa (§1.5 thà bỏ trống hơn đánh sai).
   exp_thang: 'khac', rank_et: 'khac', rank_ingame: 'khac', btvn: 'khac',

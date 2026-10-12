@@ -1,0 +1,72 @@
+{
+ "CG 2022 · P1.1": {
+  "de_lech": null,
+  "dap_so_sach": "Chọn B (= 1/2)",
+  "dap_so_tinh": "1/2 (B)",
+  "khop_sach": true,
+  "ghi_chu": null
+ },
+ "CG 2022 · P1.2": {
+  "de_lech": null,
+  "dap_so_sach": "Chọn C (200 : 25 = 8 lần)",
+  "dap_so_tinh": "8 (C)",
+  "khop_sach": true,
+  "ghi_chu": null
+ },
+ "CG 2022 · P1.3": {
+  "de_lech": null,
+  "dap_so_sach": "Chọn D (12 km)",
+  "dap_so_tinh": "12 km (D)",
+  "khop_sach": true,
+  "ghi_chu": null
+ },
+ "CG 2022 · P1.4": {
+  "de_lech": null,
+  "dap_so_sach": "Chọn A (7 cm)",
+  "dap_so_tinh": "7 cm (A)",
+  "khop_sach": true,
+  "ghi_chu": "Cạnh lập phương 9 cm (486:6=81), tổng 3 kích thước 27, cao 27-12-8=7."
+ },
+ "CG 2022 · P2.5": {
+  "de_lech": null,
+  "dap_so_sach": "x = 2,9",
+  "dap_so_tinh": "2,9",
+  "khop_sach": true,
+  "ghi_chu": null
+ },
+ "CG 2022 · P2.6": {
+  "de_lech": null,
+  "dap_so_sach": "225 học sinh",
+  "dap_so_tinh": "225 học sinh",
+  "khop_sach": true,
+  "ghi_chu": "Vét cạn 200–299: chỉ 225 vừa chia 10 dư 5 vừa chia hết 9."
+ },
+ "CG 2022 · P2.7": {
+  "de_lech": null,
+  "dap_so_sach": "10 tuổi",
+  "dap_so_tinh": "10 tuổi",
+  "khop_sach": true,
+  "ghi_chu": "Anh 5 phần, em 4 phần: 14 phần = 28, mỗi phần 2."
+ },
+ "CG 2022 · P2.8": {
+  "de_lech": "Word: không có hình, và cuối nội dung dính thừa chuỗi \"Phần 3: Tự luận\" (tiêu đề phần kế bị chép lẫn vào câu) / PDF: câu 8 có hình hình thang ABCD với hai đường chéo cắt nhau tại O (hình có ở cả đề và lời giải); số liệu 11 cm², 5 cm² khớp.",
+  "dap_so_sach": "51,2 cm²",
+  "dap_so_tinh": "51,2 cm²",
+  "khop_sach": true,
+  "ghi_chu": "S_OBC = S_OAD = 11; OCD đồng dạng OAB tỉ số 11/5 nên S_OCD = 5×(11/5)² = 24,2; tổng 5+11+11+24,2 = 51,2."
+ },
+ "CG 2022 · P3.1": {
+  "de_lech": null,
+  "dap_so_sach": "a) 12 học sinh; b) 55 học sinh",
+  "dap_so_tinh": "a) 12 học sinh; b) 55 học sinh",
+  "khop_sach": true,
+  "ghi_chu": "Nhì = 1/6 tổng = 20; ba + khuyến khích = 120-12-20 = 88, tỉ lệ 3:5 nên ba 33, KK 55 (đủ 12+20+33+55=120). Lưu ý cách đọc đề: 'ba giải còn lại' = nhất, ba, khuyến khích; sách đọc giống vậy."
+ },
+ "CG 2022 · P3.2": {
+  "de_lech": null,
+  "dap_so_sach": "Toán 332 học sinh; Tiếng Anh 240 học sinh",
+  "dap_so_tinh": "Toán 332 học sinh; Tiếng Anh 240 học sinh",
+  "khop_sach": true,
+  "ghi_chu": "E = 60/83 T nên T-E = 23/83 T là bội của 23; số có hai chữ số chia 5 và 9 đều dư 2 (≡2 mod 45): 47, 92; chỉ 92 chia hết 23 (92=4×23), T=332, E=240; kiểm 240/10=24=6/83×332. Chú ý: sách ghi một bước \"6/60 số HS giỏi TA\" thực ra là 1/10 = 6/60, đúng."
+ }
+}

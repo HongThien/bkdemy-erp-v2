@@ -1,0 +1,22 @@
+{
+ "ma_de": "NTT-MH1",
+ "so_cau": 10,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "NTT-MH1 · P2.1",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt ghi sẵn đáp số ý a) (\"hộp thứ hai chiếm 1/4 cả ba hộp\") — lộ đáp số ở Phần 1. Đã viết lại Mấu chốt chỉ nêu hướng làm (đổi mọi dữ kiện thành phân số của tổng; 1 phần – 3 phần), không nêu 1/4. Đồng thời sửa câu Phần 2 b) \"chiếm số phần số thú bông cả ba hộp\" thành \"bằng số phần của tổng số thú bông\".",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NTT-MH1 · P2.2",
+   "muc": "sai",
+   "loai": "sơ đồ",
+   "mo_ta": "Bài chuyển động có quãng đường nhưng chỉ có sơ đồ hiệu–tỉ, thiếu sơ đồ đường đi (cách chuẩn CEO: bài chuyển động PHẢI có sơ đồ đường đi, chuyển động có tỉ số vẽ THÊM sơ đồ đoạn thẳng). Đã thêm sơ đồ chuyển động (Nhà – Trường, hai mũi tên xe đạp 12 km/giờ và xe máy 40 km/giờ cùng một quãng đường, nhãn \"? km\") ngay sau \"Bài giải\"; giữ sơ đồ hiệu–tỉ phía sau. so_do_mo_ta thành mảng 2 phần tử, 2 dòng \"Ta có sơ đồ:\", máy vẽ chạy được.",
+   "da_sua": true
+  }
+ ]
+}

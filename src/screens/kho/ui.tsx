@@ -239,10 +239,16 @@ function html2Phan(raw: string): string | null {
   if (i1 < 0 || i2 < i1) return null
   const truoc = raw.slice(0, i1).trim()
   const p1 = raw.slice(i1, i2).replace(P1_RE, ''), p2 = raw.slice(i2).replace(P2_RE, '').replace(/^\s*\n/, '')
-  const dong2 = buildLines(p2)
-  return (truoc ? buildLines(truoc).map((l) => `<div class="mline">${l || '&nbsp;'}</div>`).join('') : '')
+  return (truoc ? htmlDongLienTiep(truoc) : '')
     + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${htmlPhan1(p1)}</div>`
-    + `<div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>` + dong2.map((l) => `<div class="mline">${l || '&nbsp;'}</div>`).join('')
+    + `<div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>` + htmlDongLienTiep(p2)
+}
+// Thùy 09/10 (nhắc lại luật 07/10): Phần 2 KHÔNG hiện kiểu "mỗi dòng cách 1 dòng trống". Dòng trống trong dữ liệu (luật viết
+// README §3) chỉ là ranh giới đoạn ⇒ hiện liền dòng; riêng dòng mở ý b) c) d)… thì chừa khoảng cách trước (lg-cach-y). Dữ liệu không đổi.
+const Y_HTML_RE = /^[a-h]\)/
+function htmlDongLienTiep(t: string): string {
+  return buildLines(t).filter((l) => l !== '').map((l, i) =>
+    `<div class="mline${i && Y_HTML_RE.test(l.replace(/<[^>]*>/g, '').trim()) ? ' lg-cach-y' : ''}">${l}</div>`).join('')
 }
 
 // `prefix` = HTML nhét vào ĐẦU dòng 1 (vd nhãn "Câu N.") → luôn cùng dòng với đề, kể cả đề nhiều dòng.

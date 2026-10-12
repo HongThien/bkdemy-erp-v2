@@ -1,0 +1,22 @@
+{
+ "ma_de": "ARC-2021-NC",
+ "so_cau": 14,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 2,
+ "van_de": [
+  {
+   "ma_nguon": "ARC 2021-NC · 1",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt/Bước 2 gọi tổng 60,12 + 16,88 (=77) là \"số tròn\" và \"số rất quen thuộc\" — 77 không tròn, mơ hồ; k5T §1.5 cấm gọi số không tròn là số tròn. Đã viết lại: tổng bằng đúng thừa số thứ nhất của số hạng đầu (không nêu số), phần thập phân 0,12 + 0,88 = 1.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2021-NC · 3",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 chỉ loại hàng trăm = 4, rồi kết luận hàng trăm = 3, bỏ sót hàng trăm 5–9 (nhảy bước). Đã sửa thành \"4 trở lên\" (số nhỏ nhất 2456 > 2401).",
+   "da_sua": true
+  }
+ ]
+}

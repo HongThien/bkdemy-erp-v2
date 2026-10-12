@@ -1,0 +1,29 @@
+{
+ "ma_de": "TX-2019",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "TX 2019 · 8",
+   "muc": "sai",
+   "loai": "trình bày",
+   "mo_ta": "Dòng \"Thử lại\" ở Phần 1 viết \"$overline{2019ab}$\" thiếu dấu gạch ngược nên hiển thị thành chữ \"overline\" thay vì gạch trên; đã sửa thành \\overline{2019ab}. Toán và đáp số (a=7; b=3) đúng, tìm lại bằng vét cạn chỉ có đúng một nghiệm.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2019 · 9",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy thẳng vào \"Tầng 2: 1+2=3 viên\" mà không nói vì sao tầng xếp thành hình tam giác; đã thêm một câu nêu lý do (không chỗ hổng nên tầng k gồm các hàng 1;2;...;k viên, hàng k viên là hàng ngoài cùng nhìn thấy). Đã xem hình: các hàng nhìn thấy 1..6 viên, mỗi bước xuống một hàng thì thấp đi một tầng, tức cột (i,j) cao 6-i-j; tổng 56 viên tính độc lập cũng ra 56 nên đáp số 448000 cm3 phù hợp với cách hiểu của người soạn.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2019 · 11",
+   "muc": "nen_sua",
+   "loai": "sơ đồ",
+   "mo_ta": "Nhãn sơ đồ chuyển động ghi sẵn \"112,5 km\" và \"45 km\" (hai quãng đường thành phần, là kết quả trung gian) nên HS cộng lại là ra đáp số ngay trên hình, trái luật nhãn sơ đồ không lộ kết quả; đã đổi thành \"Ô tô đi: ? km\", \"Xe máy đi: ? km\", \"AB: ? km\", toạ độ vẽ giữ nguyên (đúng tỉ lệ), máy vẽ chạy lại không lỗi.",
+   "da_sua": true
+  }
+ ]
+}

@@ -30,7 +30,7 @@ KHÔNG sửa tệp nào khác trong repo.
 
 **Phần 2. Trình bày**
 ```
-Mỗi bước một đoạn riêng mở bằng `**Bước k.**` (k liên tục từ 1; nhiều dòng thì xuống dòng đơn, KHÔNG dòng trống trong một bước). `**Mấu chốt:**` trước chuỗi bước, `**Chú ý:**` / `Thử lại:` sau. Chỉ ≥ 2 bước mới đánh "Bước"; bài một bước ⇒ Mấu chốt + Chú ý. Bước là **bước nghĩ** (làm gì, vì sao), không chép lại dòng tính của Phần 2.
+Mỗi bước một đoạn riêng mở bằng `**Bước k.**` (k liên tục từ 1; nhiều dòng thì xuống dòng đơn, KHÔNG dòng trống trong một bước). `**Mấu chốt:**` trước chuỗi bước, `**Chú ý:**` / `Thử lại:` sau. **MỌI bài 3–6 bước** (CEO 09/10 tối): bài ngắn tách đúng thao tác thật thành 3 bước, bài dài gộp việc cùng mục đích; mỗi bước ≥ 5 chữ ngoài công thức, không công thức trần, không bước cụt, không ghi đáp số cuối. Không ghi "(như VD … của sách)". Tự kiểm: `scripts/kho/sach/kiem-p1-card.mjs`. Bước là **bước nghĩ** (làm gì, vì sao), không chép lại dòng tính của Phần 2.
 
 **Luật trọng yếu (đã có trong k5T.md — nhắc lại vì hay vấp):**
 - Kiến thức tiểu học: không tự đặt ẩn rồi chuyển vế; không `⇒ ⇔ ∈ ≤ ≥` trong lời giải; không "ước/bội". Ngoại lệ sách cho: **phương pháp khử** được "Gọi giá … là $X$" và trừ hai dòng (k5T §1); **cấu tạo số "đề cho sẵn"** (vd $\overline{abcd}+\overline{abc}+…$) phân tích theo hàng có dấu nhân.

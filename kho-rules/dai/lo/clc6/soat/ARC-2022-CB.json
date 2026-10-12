@@ -1,0 +1,78 @@
+{
+ "ma_de": "ARC-2022-CB",
+ "so_cau": 50,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 9,
+ "van_de": [
+  {
+   "ma_nguon": "ARC 2022-CB · 7",
+   "muc": "nen_sua",
+   "loai": "phần 1",
+   "mo_ta": "Bước 2 ghi \"ba số có số thập phân thì nhân hai số tròn trước\" — sai thực tế: trong ba kích thước chỉ có 1,5 là số thập phân. Đã sửa câu chữ.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 16",
+   "muc": "hoi",
+   "loai": "sơ đồ",
+   "mo_ta": "Bài tổng–hiệu (tổng gấp 3 lần hiệu) không có sơ đồ; người soạn đã ghi ghi_chu_nghi (không có số thật để máy vẽ). Nhận xét: nếu vẽ sơ đồ số bé/số lớn thì chính hình lộ đáp số (tỉ lệ 1:2), nên bỏ là hợp lí; chỉ báo để CEO biết ngoại lệ so với luật \"tổng–hiệu bắt buộc có sơ đồ\". Toán và đáp số C đúng (tính lại: số bé 1 phần, số lớn 2 phần).",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 23",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi rõ số kẹo lúc đầu của anh (14) và của em (8) = đáp số cuối. Đã thay bằng câu thử lại không nêu số.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 33",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Dòng \"Thử lại\" ở Phần 1 ghi số hoa ban đầu của Mai (13), Hoa (15), Trang (20) = đáp số cuối. Đã thay bằng câu thử lại không nêu số.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 32",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Bài tính: Phần 2 không mở bằng dòng chép nguyên biểu thức đề mà đổi ngầm 6, 12, 20,..., 240 thành tích hai số liền nhau ngay dòng đầu. Đã thêm dòng chép đề và dòng \"Ta có: 6=2x3; ...; 240=15x16\".",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 44",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Phần 1 (Chú ý) lộ đáp số: nêu thẳng \"số 54 có xuất hiện nhưng chỉ là số trung gian\" — chính là phương án đúng B. Đã viết lại Chú ý không nêu số cụ thể.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 48",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 chỉ khẳng định \"bóng 150 luôn được giữ lại\" mà không giải thích vì sao (nhảy bước). Đã thêm: 128 là số chẵn nên bóng cuối vòng bị tắt, vòng sau lại bắt đầu bỏ cách bóng 150. Đáp số 150 đã mô phỏng lại bằng code, đúng.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 45",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước từ \"em gấp 3/2 lần anh\" sang \"anh bằng 2/5 tổng\" (và 2 lần -> 1/3). Đã thêm dòng nêu số phần (anh 2 phần, em 3 phần, tổng 5 phần; lúc đầu 1 + 2 = 3 phần).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 46",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Câu \"Số kem 5A nhường bằng số phần kem 5C ăn là\" lủng củng, và thiếu dòng nói rõ 800 000 đồng là tiền của 20/3 kg kem 5C ăn (do 5A, 5B nhường). Đã sửa câu chữ và thêm dòng đó. Đáp số B giữ nguyên (tự tính: 16/3 kg x 120 000 đ/kg = 640 000).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "ARC 2022-CB · 41",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Dòng \"17+17=34\" dễ lẫn vì hai số 17 khác nghĩa (hiệu mới / phần kém). Đã thêm lời nêu rõ nghĩa.",
+   "da_sua": true
+  }
+ ]
+}

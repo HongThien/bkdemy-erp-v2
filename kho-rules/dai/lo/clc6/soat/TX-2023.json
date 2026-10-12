@@ -1,0 +1,29 @@
+{
+ "ma_de": "TX-2023",
+ "so_cau": 16,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 3,
+ "van_de": [
+  {
+   "ma_nguon": "TX 2023 · 5",
+   "muc": "sai",
+   "loai": "sơ đồ",
+   "mo_ta": "Bài hiệu–tỉ (số thứ nhất lúc sau gấp 3 lần lúc đầu, hiệu = phần tổng tăng thêm 9,6) thuộc loại bắt buộc có sơ đồ nhưng bản soạn không có. Đã thêm sơ đồ 1 phần / 3 phần, hiệu 9,6 (máy vẽ qua); Phần 1 Bước 2 và Phần 2 viết lại theo sơ đồ. Đáp số 3,5 không đổi.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2023 · 6",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước khi chọn chuyến tàu 7 giờ (\"6 giờ, 6 giờ 10, 6 giờ 20, …\" rồi kết luận). Đã viết rõ: có chuyến 7 giờ, chuyến kế là 7 giờ 10 phút muộn hơn 7 giờ 5 phút.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "TX 2023 · 9",
+   "muc": "sai",
+   "loai": "phần 1",
+   "mo_ta": "Mấu chốt nói sai \"cả 5 khối cùng bằng mức trung bình\" (chỉ khối 5 và trung bình cộng 4 khối kia thay đổi, từng khối không bằng nhau); Bước 2 \"mỗi khối còn kém trung bình\" cũng sai ý; Phần 2 \"hơn trung bình ... mỗi khối được thêm\" nhảy bước, không nói rõ là trung bình cả 5 khối. Đã viết lại: khối 5 chuyển 20 quyển cho 4 khối kia thì khối 5 bằng trung bình cộng, trung bình cộng 4 khối kia tăng 20:4=5. Sơ đồ và đáp số 125 giữ nguyên.",
+   "da_sua": true
+  }
+ ]
+}

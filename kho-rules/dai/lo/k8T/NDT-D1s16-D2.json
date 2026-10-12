@@ -1,0 +1,2360 @@
+[
+ {
+  "ma_nguon": "D1.1a@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính nhân: $5x^2\\left(4x^3-7x+\\dfrac{1}{5}\\right)$.",
+  "noi_dung_sach": "Làm tính nhân: $5x^2\\left(4x^3-7x+\\dfrac{1}{5}\\right)$.",
+  "dap_an": "$20x^5-35x^3+x^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân một đơn thức với một đa thức thì nhân đơn thức lần lượt với từng hạng tử của đa thức rồi cộng các tích lại.\n\n**Bước 1.** Nhân $5x^2$ với hạng tử đầu tiên $4x^3$: nhân hệ số với hệ số, cộng số mũ của $x$.\n\n**Bước 2.** Nhân $5x^2$ với hai hạng tử còn lại trong ngoặc, giữ nguyên dấu của từng hạng tử.\n\n**Bước 3.** Viết tổng ba tích theo thứ tự số mũ của $x$ giảm dần, chú ý hạng tử cuối chứa phân số.\n\n**Phần 2. Trình bày**\n\n$5x^2\\left(4x^3-7x+\\dfrac{1}{5}\\right)=20x^5-35x^3+x^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 1)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.1b@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính nhân: $(8x^3-6xy+7)\\left(-\\dfrac{1}{2}xy\\right)$.",
+  "noi_dung_sach": "Làm tính nhân: $(8x^3-6xy+7)\\left(-\\dfrac{1}{2}xy\\right)$.",
+  "dap_an": "$-4x^4y+3x^2y^2-\\dfrac{7}{2}xy$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đơn thức $-\\dfrac{1}{2}xy$ ở sau đa thức, nhưng phép nhân giao hoán nên vẫn nhân nó lần lượt với từng hạng tử của đa thức.\n\n**Bước 1.** Nhân $-\\dfrac{1}{2}xy$ với $8x^3$, chú ý dấu âm của hệ số và cộng số mũ của $x$.\n\n**Bước 2.** Nhân $-\\dfrac{1}{2}xy$ với $-6xy$, hai dấu âm nhân nhau cho dấu dương và $x$, $y$ cùng lên bậc hai.\n\n**Bước 3.** Nhân $-\\dfrac{1}{2}xy$ với hạng tử tự do $7$ rồi cộng ba tích lại.\n\n**Phần 2. Trình bày**\n\n$(8x^3-6xy+7)\\left(-\\dfrac{1}{2}xy\\right)=-4x^4y+3x^2y^2-\\dfrac{7}{2}xy$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 1)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.1c@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính nhân: $(4x^2-6x+5)(2x+3)$.",
+  "noi_dung_sach": "Làm tính nhân: $(4x^2-6x+5)(2x+3)$.",
+  "dap_an": "$8x^3-8x+15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân đa thức với đa thức: mỗi hạng tử của đa thức này nhân với từng hạng tử của đa thức kia, rồi gộp các hạng tử đồng dạng.\n\n**Bước 1.** Nhân từng hạng tử của $4x^2-6x+5$ với $2x$ để được ba tích.\n\n**Bước 2.** Nhân tiếp từng hạng tử của $4x^2-6x+5$ với $3$ để được ba tích nữa.\n\n**Bước 3.** Cộng cả sáu tích rồi gộp các hạng tử đồng dạng, hai hạng tử bậc hai sẽ có hệ số đối nhau.\n\n**Phần 2. Trình bày**\n\n$(4x^2-6x+5)(2x+3)=8x^3+12x^2-12x^2-18x+10x+15$\n\n$=8x^3-8x+15$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 1)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.1d@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính nhân: $(4x^2+6xy+9y^2)(2x-3y)$.",
+  "noi_dung_sach": "Làm tính nhân: $(4x^2+6xy+9y^2)(2x-3y)$.",
+  "dap_an": "$8x^3-27y^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thừa số thứ nhất có dạng $a^2+ab+b^2$ với $a=2x$, $b=3y$, còn thừa số thứ hai là $a-b$, nên nhiều hạng tử sẽ triệt tiêu khi nhân.\n\n**Bước 1.** Nhân từng hạng tử của $4x^2+6xy+9y^2$ với $2x$, giữ nguyên dấu từng hạng tử.\n\n**Bước 2.** Nhân từng hạng tử của $4x^2+6xy+9y^2$ với $-3y$, chú ý dấu âm của thừa số này.\n\n**Bước 3.** Cộng sáu tích rồi gộp các hạng tử đồng dạng, các hạng tử chứa $x^2y$ và $xy^2$ đối nhau từng cặp.\n\n**Chú ý:** Kết quả chính là hằng đẳng thức hiệu hai lập phương $(a-b)(a^2+ab+b^2)=a^3-b^3$ với $a=2x$, $b=3y$.\n\n**Phần 2. Trình bày**\n\n$(4x^2+6xy+9y^2)(2x-3y)=8x^3-12x^2y+12x^2y-18xy^2+18xy^2-27y^3$\n\n$=8x^3-27y^3$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 1)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.2a@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=0$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=0$.",
+  "dap_an": "$-3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có hai tích nên rút gọn trước rồi mới thay số, vì các hạng tử bậc hai sẽ triệt tiêu và phép tính sau đó rất ngắn.\n\n**Bước 1.** Khai triển $(2x+3)(5x-1)$ và $5x(2x-7)$ bằng quy tắc nhân đa thức.\n\n**Bước 2.** Trừ hai kết quả (đổi dấu mọi hạng tử của tích thứ hai) rồi gộp các hạng tử đồng dạng.\n\n**Bước 3.** Thay $x=0$ vào biểu thức đã thu gọn và tính giá trị.\n\n**Phần 2. Trình bày**\n\n$(2x+3)(5x-1)-5x(2x-7)=10x^2-2x+15x-3-10x^2+35x$\n\n$=48x-3$\n\nThay $x=0$: $48\\cdot0-3=-3$.\n\nVậy biểu thức có giá trị $-3$ tại $x=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.2b@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=2$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=2$.",
+  "dap_an": "$93$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có hai tích nên rút gọn trước rồi mới thay số, vì các hạng tử bậc hai sẽ triệt tiêu và phép tính sau đó rất ngắn.\n\n**Bước 1.** Khai triển $(2x+3)(5x-1)$ và $5x(2x-7)$ bằng quy tắc nhân đa thức.\n\n**Bước 2.** Trừ hai kết quả (đổi dấu mọi hạng tử của tích thứ hai) rồi gộp các hạng tử đồng dạng.\n\n**Bước 3.** Thay $x=2$ vào biểu thức đã thu gọn và tính giá trị.\n\n**Phần 2. Trình bày**\n\n$(2x+3)(5x-1)-5x(2x-7)=10x^2-2x+15x-3-10x^2+35x$\n\n$=48x-3$\n\nThay $x=2$: $48\\cdot2-3=93$.\n\nVậy biểu thức có giá trị $93$ tại $x=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.2c@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=-1$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=-1$.",
+  "dap_an": "$-51$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có hai tích nên rút gọn trước rồi mới thay số, vì các hạng tử bậc hai sẽ triệt tiêu và phép tính sau đó rất ngắn.\n\n**Bước 1.** Khai triển $(2x+3)(5x-1)$ và $5x(2x-7)$ bằng quy tắc nhân đa thức.\n\n**Bước 2.** Trừ hai kết quả (đổi dấu mọi hạng tử của tích thứ hai) rồi gộp các hạng tử đồng dạng.\n\n**Bước 3.** Thay $x=-1$ vào biểu thức đã thu gọn, chú ý đặt số âm trong ngoặc khi tính.\n\n**Phần 2. Trình bày**\n\n$(2x+3)(5x-1)-5x(2x-7)=10x^2-2x+15x-3-10x^2+35x$\n\n$=48x-3$\n\nThay $x=-1$: $48\\cdot(-1)-3=-51$.\n\nVậy biểu thức có giá trị $-51$ tại $x=-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.2d@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=-50$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $(2x+3)(5x-1)-5x(2x-7)$ tại $x=-50$.",
+  "dap_an": "$-2403$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $x=-50$ mà thay thẳng vào biểu thức ban đầu thì phải bình phương số lớn rất dễ nhầm, nên rút gọn trước rồi mới thay số.\n\n**Bước 1.** Khai triển $(2x+3)(5x-1)$ và $5x(2x-7)$ bằng quy tắc nhân đa thức.\n\n**Bước 2.** Trừ hai kết quả (đổi dấu mọi hạng tử của tích thứ hai) rồi gộp các hạng tử đồng dạng.\n\n**Bước 3.** Thay $x=-50$ vào biểu thức đã thu gọn, chú ý đặt số âm trong ngoặc và tính cẩn thận dấu.\n\n**Phần 2. Trình bày**\n\n$(2x+3)(5x-1)-5x(2x-7)=10x^2-2x+15x-3-10x^2+35x$\n\n$=48x-3$\n\nThay $x=-50$: $48\\cdot(-50)-3=-2400-3=-2403$.\n\nVậy biểu thức có giá trị $-2403$ tại $x=-50$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.3a@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $2x(x-3y)+3y(2x-5y)$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $2x(x-3y)+3y(2x-5y)$.",
+  "dap_an": "$2x^2-15y^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút gọn là phá hết dấu ngoặc bằng phép nhân đơn thức với đa thức rồi gộp các hạng tử đồng dạng.\n\n**Bước 1.** Nhân $2x$ với từng hạng tử trong $(x-3y)$ để phá ngoặc thứ nhất.\n\n**Bước 2.** Nhân $3y$ với từng hạng tử trong $(2x-5y)$ để phá ngoặc thứ hai.\n\n**Bước 3.** Cộng hai kết quả và gộp các hạng tử đồng dạng, hai hạng tử chứa $xy$ có hệ số đối nhau.\n\n**Phần 2. Trình bày**\n\n$2x(x-3y)+3y(2x-5y)=2x^2-6xy+6xy-15y^2$\n\n$=2x^2-15y^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 3)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.3b@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn biểu thức: $(5x-3y)(2x+y)-x(10x-y)$.",
+  "noi_dung_sach": "Rút gọn biểu thức: $(5x-3y)(2x+y)-x(10x-y)$.",
+  "dap_an": "$-3y^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phá ngoặc bằng quy tắc nhân đa thức, nhớ dấu trừ đứng trước $x(10x-y)$ làm đổi dấu mọi hạng tử của tích đó.\n\n**Bước 1.** Nhân từng hạng tử của $(5x-3y)$ với từng hạng tử của $(2x+y)$ để khai triển tích đầu.\n\n**Bước 2.** Khai triển $x(10x-y)$ rồi trừ đi: đổi dấu mọi hạng tử của tích này khi bỏ ngoặc.\n\n**Bước 3.** Gộp các hạng tử đồng dạng, các hạng tử chứa $x^2$ và chứa $xy$ đều triệt tiêu hết.\n\n**Phần 2. Trình bày**\n\n$(5x-3y)(2x+y)-x(10x-y)=10x^2+5xy-6xy-3y^2-10x^2+xy$\n\n$=-3y^2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 3)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.4@p4",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng:\n\na) $(3x+2y)(5x-y)-y^2=15x^2+7xy-3y^2$;\n\nb) $(x+y)(x-y)-9y^2=(x-2y)(x+5y)-3xy$.",
+  "noi_dung_sach": "Chứng minh rằng:\n\na) $(3x+2y)(5x-y)-y^2=15x^2+7xy-3y^2$;\n\nb) $(x+y)(x-y)-9y^2=(x-2y)(x+5y)-3xy$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn chứng minh một đẳng thức, ta khai triển các tích ở vế phức tạp rồi thu gọn cho đến khi thành vế kia, hoặc đưa cả hai vế về cùng một biểu thức.\n\n**Bước 1.** Ở câu a), khai triển tích $(3x+2y)(5x-y)$ rồi trừ $y^2$ và gộp các hạng tử đồng dạng cho đến khi bằng vế phải.\n\n**Bước 2.** Ở câu b), vế trái chứa hiệu hai bình phương nên khai triển tích $(x+y)(x-y)$ rồi trừ $9y^2$ để thu gọn.\n\n**Bước 3.** Cũng ở câu b), khai triển tiếp vế phải $(x-2y)(x+5y)-3xy$ và thu gọn.\n\n**Bước 4.** So sánh hai biểu thức rút gọn ở câu b), nếu giống nhau thì đẳng thức được chứng minh.\n\n**Phần 2. Trình bày**\n\na) $(3x+2y)(5x-y)-y^2=15x^2-3xy+10xy-2y^2-y^2$\n\n$=15x^2+7xy-3y^2$ (đpcm).\n\nb) $(x+y)(x-y)-9y^2=x^2-y^2-9y^2=x^2-10y^2$ (1)\n\n$(x-2y)(x+5y)-3xy=x^2+5xy-2xy-10y^2-3xy=x^2-10y^2$ (2)\n\nTừ (1) và (2) suy ra $(x+y)(x-y)-9y^2=(x-2y)(x+5y)-3xy$ (đpcm).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 4): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 4)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.5@p5",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Các biểu thức sau, biểu thức nào có giá trị không phụ thuộc vào giá trị của biến?\n\na) $-5x(5x-2)+(5x+1)(5x-1)-10x$;\n\nb) $(x+8)(x-4)-x(x-12)+32$;\n\nc) $(2x+3)(3x-1)-6x(x-2)-19(x-5)$.",
+  "noi_dung_sach": "Các biểu thức sau, biểu thức nào có giá trị không phụ thuộc vào giá trị của biến?\n\na) $-5x(5x-2)+(5x+1)(5x-1)-10x$;\n\nb) $(x+8)(x-4)-x(x-12)+32$;\n\nc) $(2x+3)(3x-1)-6x(x-2)-19(x-5)$.",
+  "dap_an": "Biểu thức a) và c)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một biểu thức có giá trị không phụ thuộc vào biến khi sau khi rút gọn mọi hạng tử chứa biến đều triệt tiêu, nên phải rút gọn cả ba biểu thức rồi mới trả lời.\n\n**Bước 1.** Phá hết các dấu ngoặc của từng biểu thức bằng quy tắc nhân đơn thức với đa thức và nhân đa thức với đa thức, chú ý đổi dấu ở các tích đứng sau dấu trừ.\n\n**Bước 2.** Gộp các hạng tử đồng dạng của từng biểu thức để đưa mỗi biểu thức về dạng gọn nhất.\n\n**Bước 3.** Xem kết quả nào chỉ còn là một hằng số thì biểu thức đó không phụ thuộc vào biến, kết quả nào còn chứa $x$ thì biểu thức đó phụ thuộc vào biến.\n\n**Phần 2. Trình bày**\n\na) $-5x(5x-2)+(5x+1)(5x-1)-10x=-25x^2+10x+25x^2-1-10x$\n\n$=-1$\n\nb) $(x+8)(x-4)-x(x-12)+32=x^2-4x+8x-32-x^2+12x+32$\n\n$=16x$\n\nc) $(2x+3)(3x-1)-6x(x-2)-19(x-5)=6x^2-2x+9x-3-6x^2+12x-19x+95$\n\n$=92$\n\nVậy các biểu thức a) và c) có giá trị không phụ thuộc vào giá trị của biến; biểu thức b) có giá trị $16x$, phụ thuộc vào biến.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 5): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 5)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.6@p5",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T020202",
+  "loai_cau": "tu_luan",
+  "noi_dung": "a) Tìm ba số tự nhiên liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là $100$.\n\nb) Tìm ba số tự nhiên chẵn liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là $256$.\n\nc) Tìm ba số tự nhiên lẻ liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là $68$.",
+  "noi_dung_sach": "a) Tìm ba số tự nhiên liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là $100$.\n\nb) Tìm ba số tự nhiên chẵn liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là $256$.\n\nc) Tìm ba số tự nhiên lẻ liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là $68$.",
+  "dap_an": "a) $49;50;51$; b) $62;64;66$; c) $15;17;19$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt ba số liên tiếp theo một ẩn rồi lập phương trình từ hiệu hai tích, các hạng tử $n^2$ triệt tiêu nên chỉ còn phương trình bậc nhất.\n\n**Bước 1.** Gọi số nhỏ nhất là $n$, rồi biểu diễn hai số còn lại: liên tiếp thì hơn nhau $1$, chẵn hoặc lẻ liên tiếp thì hơn nhau $2$.\n\n**Bước 2.** Viết tích của hai số sau và tích của hai số đầu, lập phương trình hiệu hai tích bằng số đã cho.\n\n**Bước 3.** Khai triển, thu gọn thành phương trình bậc nhất đối với $n$ rồi giải.\n\n**Bước 4.** Đối chiếu $n$ với điều kiện (tự nhiên, chẵn hay lẻ) rồi suy ra ba số cần tìm.\n\n**Phần 2. Trình bày**\n\na) Gọi ba số tự nhiên liên tiếp là $n$, $n+1$, $n+2$ ($n\\in\\mathbb{N}$).\n\nTheo đề: $(n+1)(n+2)-n(n+1)=100$\n\n$n^2+3n+2-n^2-n=100$\n\n$2n+2=100$\n\n$n=49$\n\nVậy ba số cần tìm là $49$, $50$, $51$.\n\nb) Gọi ba số tự nhiên chẵn liên tiếp là $n$, $n+2$, $n+4$ ($n$ chẵn).\n\nTheo đề: $(n+2)(n+4)-n(n+2)=256$\n\n$n^2+6n+8-n^2-2n=256$\n\n$4n+8=256$\n\n$n=62$ (thoả mãn là số chẵn)\n\nVậy ba số cần tìm là $62$, $64$, $66$.\n\nc) Gọi ba số tự nhiên lẻ liên tiếp là $n$, $n+2$, $n+4$ ($n$ lẻ).\n\nTheo đề: $(n+2)(n+4)-n(n+2)=68$\n\n$n^2+6n+8-n^2-2n=68$\n\n$4n+8=68$\n\n$n=15$ (thoả mãn là số lẻ)\n\nVậy ba số cần tìm là $15$, $17$, $19$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 5): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.7a@p5",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị của biểu thức $x^4-2223x^3+2223x^2-2223x+2223$ tại $x=2222$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $x^4-2223x^3+2223x^2-2223x+2223$ tại $x=2222$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ số $2223$ chỉ hơn giá trị của $x$ đúng $1$ đơn vị, nên thay $2223$ bằng $x+1$ thì các hạng tử sẽ triệt tiêu nhau mà không cần tính luỹ thừa lớn.\n\n**Bước 1.** Nhận ra rằng tại $x=2222$ thì $2223=x+1$ để viết lại mọi hệ số $2223$ theo biến $x$.\n\n**Bước 2.** Thay vào biểu thức rồi phá ngoặc bằng phép nhân đơn thức với đa thức.\n\n**Bước 3.** Gộp các hạng tử đối nhau, phần còn lại là một hằng số chính là giá trị cần tìm.\n\n**Phần 2. Trình bày**\n\nVì $x=2222$ nên $2223=x+1$.\n\n$x^4-2223x^3+2223x^2-2223x+2223=x^4-(x+1)x^3+(x+1)x^2-(x+1)x+(x+1)$\n\n$=x^4-x^4-x^3+x^3+x^2-x^2-x+x+1$\n\n$=1$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thay hằng số bằng biểu thức theo biến"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 5): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.7b@p5",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị của biểu thức $x^{14}-2009x^{13}+2009x^{12}-2009x^{11}+\\dots+2009x^2-2009x+2009$ tại $x=2008$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $x^{14}-2009x^{13}+2009x^{12}-2009x^{11}+\\dots+2009x^2-2009x+2009$ tại $x=2008$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ số $2009$ hơn $x=2008$ đúng $1$ đơn vị, nên thay $2009$ bằng $x+1$ thì các hạng tử liền kề triệt tiêu từng cặp, giống câu có số mũ nhỏ.\n\n**Bước 1.** Nhận ra rằng tại $x=2008$ thì $2009=x+1$ và viết lại mọi hệ số $2009$ theo $x$.\n\n**Bước 2.** Phá ngoặc từng tích $(x+1)x^k$ thành $x^{k+1}+x^k$, các hạng tử có dấu xen kẽ nên chúng đối nhau.\n\n**Bước 3.** Ghép các hạng tử đối nhau thành từng cặp liên tiếp, phần còn lại là hằng số cần tìm.\n\n**Phần 2. Trình bày**\n\nVì $x=2008$ nên $2009=x+1$.\n\n$x^{14}-2009x^{13}+2009x^{12}-\\dots+2009x^2-2009x+2009$\n\n$=x^{14}-(x+1)x^{13}+(x+1)x^{12}-\\dots+(x+1)x^2-(x+1)x+(x+1)$\n\n$=x^{14}-x^{14}-x^{13}+x^{13}+x^{12}-x^{12}-\\dots+x^3+x^2-x^2-x+x+1$\n\n$=(x^{14}-x^{14})+(-x^{13}+x^{13})+(x^{12}-x^{12})+\\dots+(x^2-x^2)+(-x+x)+1$\n\n$=1$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thay hằng số bằng biểu thức theo biến"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 5): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.8@p5",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $A=123456\\cdot123457-123455\\cdot123458$\n\n$B=987654\\cdot987655-987653\\cdot987656$\n\nSo sánh $A$ và $B$.",
+  "noi_dung_sach": "Cho $A=123456\\cdot123457-123455\\cdot123458$\n\n$B=987654\\cdot987655-987653\\cdot987656$\n\nSo sánh $A$ và $B$.",
+  "dap_an": "$A=B$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn thừa số trong mỗi biểu thức là các số liền kề nhau, nên đặt số nhỏ nhất làm ẩn rồi biểu diễn các thừa số còn lại theo ẩn đó để so sánh mà không phải nhân số lớn.\n\n**Bước 1.** Đặt $x=123456$ rồi viết $123457$, $123455$, $123458$ theo $x$; làm tương tự với $y=987654$ cho $B$.\n\n**Bước 2.** Khai triển hai tích trong $A$ bằng phép nhân đa thức rồi trừ đi và gộp các hạng tử đồng dạng.\n\n**Bước 3.** Thực hiện y hệt cho $B$ với biến $y$.\n\n**Bước 4.** Đối chiếu hai kết quả để so sánh $A$ và $B$.\n\n**Phần 2. Trình bày**\n\nĐặt $x=123456$ thì $123457=x+1$, $123455=x-1$, $123458=x+2$.\n\n$A=x(x+1)-(x-1)(x+2)=x^2+x-(x^2+x-2)$\n\n$=2$\n\nĐặt $y=987654$ thì $987655=y+1$, $987653=y-1$, $987656=y+2$.\n\n$B=y(y+1)-(y-1)(y+2)=y^2+y-(y^2+y-2)$\n\n$=2$\n\nVậy $A=B$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 5): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.9@p6",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T030201",
+  "nhom_soan": "T18T030201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "a) Chứng minh rằng $(x-3)^2+65=x(x-6)+74$.\n\nb) Tìm giá trị nhỏ nhất của biểu thức $M=x(x-6)+74$.",
+  "noi_dung_sach": "a) Chứng minh rằng $(x-3)^2+65=x(x-6)+74$.\n\nb) Tìm giá trị nhỏ nhất của biểu thức $M=x(x-6)+74$.",
+  "dap_an": "a) Chứng minh; b) $M_{\\min}=65$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đẳng thức ở câu a) chính là cách viết $M$ thành bình phương cộng một hằng số, và bình phương luôn không âm nên cho ngay giá trị nhỏ nhất.\n\n**Bước 1.** Ở câu a), khai triển $(x-3)^2$ rồi cộng $65$ để thu gọn vế trái thành một đa thức bậc hai.\n\n**Bước 2.** Cũng ở câu a), khai triển vế phải $x(x-6)+74$ và đối chiếu với vế trái.\n\n**Bước 3.** Ở câu b), dùng đẳng thức câu a) để viết $M$ dưới dạng bình phương của một biểu thức cộng một hằng số.\n\n**Bước 4.** Dùng tính chất bình phương không âm để chặn dưới $M$, rồi tìm giá trị của $x$ làm dấu bằng xảy ra.\n\n**Phần 2. Trình bày**\n\na) $(x-3)^2+65=x^2-6x+9+65=x^2-6x+74$\n\n$x(x-6)+74=x^2-6x+74$\n\nVậy $(x-3)^2+65=x(x-6)+74$ (đpcm).\n\nb) $M=x(x-6)+74=(x-3)^2+65$\n\nVì $(x-3)^2\\ge0$ với mọi $x$ nên $M\\ge65$.\n\nDấu \"$=$\" xảy ra khi $x-3=0$, tức $x=3$.\n\nVậy giá trị nhỏ nhất của $M$ là $65$, đạt được khi $x=3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 6): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.10@p6",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định $a,b$ biết: $(x+a)(x+5)=x^2+3x+b$ với mọi $x$.",
+  "noi_dung_sach": "Xác định $a,b$ biết: $(x+a)(x+5)=x^2+3x+b$ với mọi $x$.",
+  "dap_an": "$a=-2;\\ b=-10$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai đa thức bằng nhau với mọi $x$ thì các hệ số của những hạng tử cùng bậc phải bằng nhau, nên khai triển rồi đồng nhất hệ số.\n\n**Bước 1.** Khai triển vế trái bằng phép nhân đa thức rồi gộp các hạng tử cùng bậc theo luỹ thừa của $x$.\n\n**Bước 2.** Đồng nhất hệ số của $x$ ở hai vế và hệ số tự do ở hai vế để lập hệ hai phương trình.\n\n**Bước 3.** Giải phương trình đầu để tìm $a$, rồi thay vào phương trình còn lại để tìm $b$.\n\n**Phần 2. Trình bày**\n\n$(x+a)(x+5)=x^2+5x+ax+5a=x^2+(a+5)x+5a$\n\nĐẳng thức $x^2+(a+5)x+5a=x^2+3x+b$ đúng với mọi $x$ nên hệ số của các hạng tử cùng bậc hai vế bằng nhau:\n\n$a+5=3$ và $5a=b$\n\nSuy ra $a=-2$ và $b=5\\cdot(-2)=-10$.\n\nVậy $a=-2$, $b=-10$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đồng nhất hệ số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 6): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.11a@p6",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T040102",
+  "nhom_soan": "T18T040102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a$, $b$ là hai số tự nhiên. Biết $a$ chia cho $5$ dư $3$, $b$ chia cho $5$ dư $4$. Chứng minh rằng $ab$ chia cho $5$ dư $2$.",
+  "noi_dung_sach": "Cho $a$, $b$ là hai số tự nhiên. Biết $a$ chia cho $5$ dư $3$, $b$ chia cho $5$ dư $4$. Chứng minh rằng $ab$ chia cho $5$ dư $2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia $5$ dư $r$ viết được dưới dạng $5k+r$, nên biểu diễn $a$ và $b$ như vậy rồi nhân ra để đọc số dư của tích.\n\n**Bước 1.** Viết $a$ và $b$ theo thương và số dư khi chia cho $5$ bằng hai số tự nhiên khác nhau.\n\n**Bước 2.** Nhân hai biểu thức bằng quy tắc nhân đa thức rồi gộp các hạng tử.\n\n**Bước 3.** Tách tích thành một bội của $5$ cộng với phần dư nhỏ hơn $5$ để kết luận.\n\n**Phần 2. Trình bày**\n\nVì $a$ chia $5$ dư $3$ và $b$ chia $5$ dư $4$ nên $a=5m+3$, $b=5n+4$ với $m,n\\in\\mathbb{N}$.\n\n$ab=(5m+3)(5n+4)=25mn+20m+15n+12$\n\n$=5(5mn+4m+3n+2)+2$\n\nVì $5(5mn+4m+3n+2)\\vdots5$ và $2<5$ nên $ab$ chia cho $5$ dư $2$ (đpcm).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "biểu diễn số theo số dư"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 6): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.11b@p6",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số tự nhiên $x$, $y$ sao cho $(5^x+3)(5^y+4)=516$.",
+  "noi_dung_sach": "Tìm các số tự nhiên $x$, $y$ sao cho $(5^x+3)(5^y+4)=516$.",
+  "dap_an": "$(x;y)=(0;3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $5^k$ chia hết cho $5$ khi $k\\ge1$ nhưng bằng $1$ khi $k=0$, nên chia trường hợp theo $x$, $y$ có bằng $0$ hay không rồi xét số dư của tích khi chia cho $5$.\n\n**Bước 1.** Xét $x=0$: thay vào phương trình, giải phương trình mũ đơn giản để tìm $y$.\n\n**Bước 2.** Xét $y=0$: đưa vế trái về một bội của $5$ và so sánh với số dư của $516$ khi chia cho $5$.\n\n**Bước 3.** Xét $x\\ge1$ và $y\\ge1$: tìm số dư của từng thừa số khi chia cho $5$ rồi suy ra số dư của tích.\n\n**Bước 4.** Đối chiếu số dư của tích với số dư của $516$ để loại các trường hợp vô nghiệm và kết luận.\n\n**Phần 2. Trình bày**\n\nTrường hợp 1: $x=0$.\n\nPhương trình trở thành $4(5^y+4)=516$\n\n$5^y+4=129$\n\n$5^y=125=5^3$\n\n$y=3$\n\nThử lại: $(5^0+3)(5^3+4)=4\\cdot129=516$ (thoả mãn).\n\nTrường hợp 2: $y=0$.\n\nPhương trình trở thành $5(5^x+3)=516$.\n\nVế trái chia hết cho $5$ còn $516\\not\\vdots5$ nên không có $x$ thoả mãn.\n\nTrường hợp 3: $x\\ge1$, $y\\ge1$.\n\nKhi đó $5^x\\vdots5$ nên $5^x+3$ chia $5$ dư $3$, và $5^y+4$ chia $5$ dư $4$.\n\nĐặt $5^x+3=5m+3$, $5^y+4=5n+4$ ($m,n\\in\\mathbb{N}^*$) thì $(5^x+3)(5^y+4)=25mn+20m+15n+12=5(5mn+4m+3n+2)+2$, tức tích chia $5$ dư $2$.\n\nTrong khi đó $516$ chia $5$ dư $1$ nên không có $x$, $y$ thoả mãn.\n\nVậy $(x;y)=(0;3)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét số dư khi chia cho 5"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 6): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.12@p6",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T040201",
+  "nhom_soan": "T18T040201",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $p$ là số nguyên tố, $p\\ge5$ thoả mãn $2p+1$ là số nguyên tố. Chứng minh rằng $p(p+5)+31$ là hợp số.",
+  "noi_dung_sach": "Cho $p$ là số nguyên tố, $p\\ge5$ thoả mãn $2p+1$ là số nguyên tố. Chứng minh rằng $p(p+5)+31$ là hợp số.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số nguyên tố lớn hơn $3$ không chia hết cho $3$ nên chỉ có hai dạng $3k+1$ hoặc $3k+2$; điều kiện $2p+1$ nguyên tố sẽ loại một dạng, dạng còn lại làm biểu thức chia hết cho $3$.\n\n**Bước 1.** Xét số dư của $p$ khi chia cho $3$ và loại số dư $0$ vì $p$ là số nguyên tố lớn hơn $3$.\n\n**Bước 2.** Thử dạng $p=3k+1$: tính $2p+1$, thấy nó chia hết cho $3$ và lớn hơn $3$ nên không là số nguyên tố, trái giả thiết.\n\n**Bước 3.** Với dạng còn lại, thay $p$ vào $p(p+5)+31$, khai triển và đặt nhân tử chung để thấy biểu thức chia hết cho $3$.\n\n**Bước 4.** Chỉ ra biểu thức lớn hơn $3$, từ đó kết luận nó là hợp số.\n\n**Phần 2. Trình bày**\n\nVì $p$ là số nguyên tố, $p\\ge5$ nên $p$ không chia hết cho $3$, do đó $p=3k+1$ hoặc $p=3k+2$ ($k\\in\\mathbb{N}^*$).\n\nNếu $p=3k+1$ thì $2p+1=6k+3=3(2k+1)\\vdots3$ và $2p+1>3$ nên $2p+1$ là hợp số, trái với giả thiết.\n\nVậy $p=3k+2$.\n\nKhi đó\n\n$p(p+5)+31=(3k+2)(3k+7)+31$\n\n$=9k^2+27k+14+31$\n\n$=9k^2+27k+45=9(k^2+3k+5)\\vdots3$\n\nMặt khác $p(p+5)+31\\ge5\\cdot10+31>3$.\n\nVậy $p(p+5)+31$ là hợp số.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét số dư khi chia cho 3"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 6): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.13a@p7",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 3 – Tp. Hồ Chí Minh, năm học 1995 – 1996) Rút gọn biểu thức: $A=75(4^{1993}+4^{1992}+\\dots+4^2+5)+25$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 3 – Tp. Hồ Chí Minh, năm học 1995 – 1996) Rút gọn biểu thức: $A=75(4^{1993}+4^{1992}+\\dots+4^2+5)+25$.",
+  "dap_an": "$25\\cdot4^{1994}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng trong ngoặc là các luỹ thừa liên tiếp của $4$ (vì $5=4+1$), và nhân tổng đó với $4-1$ thì các hạng tử triệt tiêu từng cặp, chỉ còn hai số hạng.\n\n**Bước 1.** Viết $5=4+1$ để tổng trong ngoặc có đủ các luỹ thừa của $4$ từ $4^{1993}$ xuống $4^0$.\n\n**Bước 2.** Viết $75=25\\cdot(4-1)$ rồi nhân $(4-1)$ vào tổng, các luỹ thừa trung gian triệt tiêu nhau.\n\n**Bước 3.** Thu gọn tích thành hiệu hai luỹ thừa của $4$, sau đó cộng với $25$ để rút gọn tiếp.\n\n**Phần 2. Trình bày**\n\n$A=75(4^{1993}+4^{1992}+\\dots+4^2+5)+25$\n\n$=75(4^{1993}+4^{1992}+\\dots+4^2+4+1)+25$\n\n$=25(4-1)(4^{1993}+4^{1992}+\\dots+4^2+4+1)+25$\n\n$=25(4^{1994}-1)+25$ (vì $(4-1)(4^{1993}+\\dots+4+1)=4^{1994}-1$, các luỹ thừa trung gian triệt tiêu)\n\n$=25\\cdot4^{1994}-25+25$\n\n$=25\\cdot4^{1994}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhân với $(a-1)$ để thu gọn tổng $1+a+\\dots+a^n$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 7): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.13b@p7",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y\\in\\mathbb{Z}$. Chứng minh rằng:\n\n1) Nếu $A=5x+y$ chia hết cho $19$ thì $B=4x-3y$ cũng chia hết cho $19$.\n\n2) Nếu $C=4x+3y$ chia hết cho $13$ thì $D=7x+2y$ cũng chia hết cho $13$.",
+  "noi_dung_sach": "Cho $x,y\\in\\mathbb{Z}$. Chứng minh rằng:\n\n1) Nếu $A=5x+y$ chia hết cho $19$ thì $B=4x-3y$ cũng chia hết cho $19$.\n\n2) Nếu $C=4x+3y$ chia hết cho $13$ thì $D=7x+2y$ cũng chia hết cho $13$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân biểu thức giả thiết với một số thích hợp để biểu thức cần chứng minh xuất hiện khi trừ đi một bội rõ ràng của số cho trước; hiệu của hai số cùng chia hết cho một số thì cũng chia hết cho số đó.\n\n**Bước 1.** Ở câu 1), nhân $A$ với $3$ để hệ số của $y$ trở thành $3$ giống trong $B$, được $3A$ chia hết cho $19$.\n\n**Bước 2.** Viết $3A$ thành tổng hoặc hiệu của $B$ với một bội của $19$ bằng cách so sánh hệ số của $x$.\n\n**Bước 3.** Suy ra $B$ bằng hiệu của hai số cùng chia hết cho $19$ để kết luận.\n\n**Bước 4.** Ở câu 2), làm tương tự: nhân $C$ với $5$ rồi tách $5C$ thành bội của $13$ cộng $D$.\n\n**Phần 2. Trình bày**\n\n1) Vì $A=5x+y\\vdots19$ nên $3A=15x+3y\\vdots19$.\n\nTa có $3A=15x+3y=19x-(4x-3y)=19x-B$\n\nnên $B=19x-3A$.\n\nVì $19x\\vdots19$ và $3A\\vdots19$ nên $B\\vdots19$ (đpcm).\n\n2) Vì $C=4x+3y\\vdots13$ nên $5C=20x+15y\\vdots13$.\n\nTa có $5C=20x+15y=13(x+y)+(7x+2y)=13(x+y)+D$\n\nnên $D=5C-13(x+y)$.\n\nVì $5C\\vdots13$ và $13(x+y)\\vdots13$ nên $D\\vdots13$ (đpcm).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhân thêm hệ số để ghép với bội của số cho trước"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 7): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.61a@p22",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính chia: $x^{24}:(-x)^{16}$.",
+  "noi_dung_sach": "Thực hiện phép tính chia: $x^{24}:(-x)^{16}$.",
+  "dap_an": "$x^8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia có cơ số là $-x$ nên phải đưa luỹ thừa của $-x$ về luỹ thừa của $x$ bằng cách xét số mũ chẵn hay lẻ, rồi mới áp dụng quy tắc chia hai luỹ thừa cùng cơ số.\n\n**Bước 1.** Xét số mũ của luỹ thừa trong số chia là số chẵn hay số lẻ để biết dấu của nó khi bỏ ngoặc.\n\n**Bước 2.** Viết lại số chia thành luỹ thừa của $x$ để hai luỹ thừa có cùng một cơ số.\n\n**Bước 3.** Chia hai luỹ thừa cùng cơ số bằng cách giữ nguyên cơ số và lấy số mũ của số bị chia trừ đi số mũ của số chia.\n\n**Phần 2. Trình bày**\n\n$x^{24}:(-x)^{16}=x^{24}:x^{16}$ (vì số mũ $16$ chẵn)\n\n$=x^{24-16}$\n\n$=x^8$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 22): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 61)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.61b@p22",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính chia: $x^{581}:(-x)^{469}$.",
+  "noi_dung_sach": "Thực hiện phép tính chia: $x^{581}:(-x)^{469}$.",
+  "dap_an": "$-x^{112}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số mũ của $(-x)$ ở số chia là số lẻ nên dấu trừ không mất đi khi bỏ ngoặc; phải giữ lại dấu trừ đó rồi mới chia hai luỹ thừa của $x$.\n\n**Bước 1.** Xét số mũ của luỹ thừa trong số chia là số chẵn hay số lẻ để biết dấu của nó khi bỏ ngoặc.\n\n**Bước 2.** Viết lại số chia thành một luỹ thừa của $x$ có kèm dấu trừ ở đằng trước.\n\n**Bước 3.** Chia hai luỹ thừa cùng cơ số bằng cách trừ hai số mũ, nhớ giữ dấu trừ của số chia ở kết quả.\n\n**Chú ý:** Số mũ chẵn thì $(-x)^{2k}=x^{2k}$, số mũ lẻ thì $(-x)^{2k+1}=-x^{2k+1}$; nhầm hai trường hợp này là lỗi dấu hay gặp nhất.\n\n**Phần 2. Trình bày**\n\n$x^{581}:(-x)^{469}=x^{581}:(-x^{469})$ (vì số mũ $469$ lẻ)\n\n$=-x^{581-469}$\n\n$=-x^{112}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 22): máy không đối chiếu được đề với kết quả sách (máy chưa đọc được: số mũ quá lớn) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 61)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.62a@p22",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính chia: $[7(x-y)^5+6(x-y)^4-3(x-y)^2]:(x-y)^2$.",
+  "noi_dung_sach": "Làm tính chia: $[7(x-y)^5+6(x-y)^4-3(x-y)^2]:(x-y)^2$.",
+  "dap_an": "$7(x-y)^3+6(x-y)^2-3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi hạng tử đều là hệ số nhân với luỹ thừa của cùng một nhị thức $x-y$, nên có thể coi $x-y$ như một biến và chia đa thức cho đơn thức theo từng hạng tử.\n\n**Bước 1.** Nhận ra mỗi hạng tử có dạng hệ số nhân luỹ thừa của $x-y$, rồi coi $x-y$ là một biến duy nhất.\n\n**Bước 2.** Chia từng hạng tử của đa thức cho số chia bằng cách chia hệ số và trừ số mũ của luỹ thừa $x-y$.\n\n**Bước 3.** Cộng các thương lại, chú ý hạng tử cuối có cùng số mũ với số chia nên thương của nó chỉ còn hệ số.\n\n**Phần 2. Trình bày**\n\n$[7(x-y)^5+6(x-y)^4-3(x-y)^2]:(x-y)^2=7(x-y)^{5-2}+6(x-y)^{4-2}-3(x-y)^{2-2}$\n\n$=7(x-y)^3+6(x-y)^2-3$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 22): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 62)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.62b@p22",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính chia: $[5(x-y)^4-3(x-y)^3+2(x-y)^2]:(y-x)^2$.",
+  "noi_dung_sach": "Làm tính chia: $[5(x-y)^4-3(x-y)^3+2(x-y)^2]:(y-x)^2$.",
+  "dap_an": "$5(x-y)^2-3(x-y)+2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia là $(y-x)^2$ có số mũ chẵn nên bằng $(x-y)^2$, nhờ đó số chia và số bị chia cùng cơ số $x-y$.\n\n**Bước 1.** Nhận xét số mũ của số chia là số chẵn nên đổi cơ số $y-x$ thành $x-y$ mà không làm đổi dấu.\n\n**Bước 2.** Chia từng hạng tử của đa thức cho luỹ thừa của $x-y$ vừa đổi, bằng cách chia hệ số và trừ số mũ.\n\n**Bước 3.** Cộng các thương lại và ghi kết quả theo luỹ thừa của $x-y$.\n\n**Chú ý:** Chỉ đổi $(y-x)^2=(x-y)^2$ được khi số mũ chẵn; ở ý c) số mũ lẻ nên phải thêm dấu trừ.\n\n**Phần 2. Trình bày**\n\n$[5(x-y)^4-3(x-y)^3+2(x-y)^2]:(y-x)^2=[5(x-y)^4-3(x-y)^3+2(x-y)^2]:(x-y)^2$ (vì $(y-x)^2=(x-y)^2$)\n\n$=5(x-y)^{4-2}-3(x-y)^{3-2}+2(x-y)^{2-2}$\n\n$=5(x-y)^2-3(x-y)+2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 22): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 62)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.62c@p22",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính chia: $[14(x-y)^6+4(x-y)^5-3(x-y)^3]:(y-x)^3$.",
+  "noi_dung_sach": "Làm tính chia: $[14(x-y)^6+4(x-y)^5-3(x-y)^3]:(y-x)^3$.",
+  "dap_an": "$-14(x-y)^3-4(x-y)^2+3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia là $(y-x)^3$ có số mũ lẻ nên bằng $-(x-y)^3$; phải mang dấu trừ này theo khi chia từng hạng tử.\n\n**Bước 1.** Nhận xét số mũ của số chia là số lẻ nên đổi cơ số $y-x$ thành $x-y$ thì phải thêm một dấu trừ.\n\n**Bước 2.** Chia từng hạng tử của đa thức cho $-(x-y)^3$ bằng cách chia hệ số, đổi dấu và trừ số mũ.\n\n**Bước 3.** Cộng các thương lại, chú ý hạng tử cuối có cùng số mũ với số chia nên thương của nó là một hằng số.\n\n**Phần 2. Trình bày**\n\n$[14(x-y)^6+4(x-y)^5-3(x-y)^3]:(y-x)^3=[14(x-y)^6+4(x-y)^5-3(x-y)^3]:[-(x-y)^3]$ (vì số mũ $3$ lẻ)\n\n$=-14(x-y)^{6-3}-4(x-y)^{5-3}+3(x-y)^{3-3}$\n\n$=-14(x-y)^3-4(x-y)^2+3$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 22): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 62)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.64@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giá trị của biểu thức $(-15x^6y^5):(3x^5y^4)$ tại $x=2$; $y=-9876$.",
+  "noi_dung_sach": "Tính giá trị của biểu thức $(-15x^6y^5):(3x^5y^4)$ tại $x=2$; $y=-9876$.",
+  "dap_an": "$98760$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phép chia hai đơn thức rút gọn được thành một đơn thức rất gọn, nên thu gọn thương trước rồi mới thay số cho đỡ tính toán.\n\n**Bước 1.** Chia hệ số của số bị chia cho hệ số của số chia, chú ý dấu của kết quả.\n\n**Bước 2.** Chia luỹ thừa của từng biến bằng cách lấy số mũ ở số bị chia trừ số mũ ở số chia.\n\n**Bước 3.** Thay giá trị đã cho của $x$ và $y$ vào đơn thức vừa thu gọn rồi thực hiện phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-15x^6y^5):(3x^5y^4)=-5x^{6-5}y^{5-4}$\n\n$=-5xy$\n\nVới $x=2$; $y=-9876$ ta có $-5xy=-5\\cdot 2\\cdot(-9876)=98760$.\n\nVậy giá trị của biểu thức bằng $98760$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 64)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.65@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm đa thức $M$, biết: $5x^3M=25x^6-30x^5+10x^3$.",
+  "noi_dung_sach": "Tìm đa thức $M$, biết: $5x^3M=25x^6-30x^5+10x^3$.",
+  "dap_an": "$5x^3-6x^2+2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $M$ là thừa số chưa biết của một tích, nên bằng tích đó chia cho thừa số đã biết; vì tích là đa thức nên chia từng hạng tử cho $5x^3$.\n\n**Bước 1.** Từ đẳng thức tích, biểu diễn $M$ bằng thương của vế phải cho thừa số đã biết $5x^3$.\n\n**Bước 2.** Chia từng hạng tử của đa thức ở vế phải cho $5x^3$ theo quy tắc chia hai đơn thức.\n\n**Bước 3.** Cộng các thương lại, rồi nhân ngược với $5x^3$ để kiểm tra có trở về vế phải của đề hay không.\n\n**Phần 2. Trình bày**\n\n$5x^3M=25x^6-30x^5+10x^3$\n\n$\\Rightarrow M=(25x^6-30x^5+10x^3):(5x^3)$\n\n$=25x^6:(5x^3)-30x^5:(5x^3)+10x^3:(5x^3)$\n\n$=5x^3-6x^2+2$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 65)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.66a@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính chia: $x^{n+19}:x^{14}$ ($n\\in\\mathbb{N}$).",
+  "noi_dung_sach": "Thực hiện phép tính chia: $x^{n+19}:x^{14}$ ($n\\in\\mathbb{N}$).",
+  "dap_an": "$x^{n+5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai luỹ thừa cùng cơ số $x$ nên chia bằng cách trừ số mũ; số mũ chứa chữ $n$ vẫn trừ như số thường, miễn là số mũ số bị chia không nhỏ hơn số mũ số chia.\n\n**Bước 1.** Nhận ra hai luỹ thừa có cùng cơ số $x$ nên dùng quy tắc chia hai luỹ thừa cùng cơ số.\n\n**Bước 2.** Kiểm tra số mũ của số bị chia không nhỏ hơn số mũ của số chia, điều này đúng nhờ $n$ là số tự nhiên.\n\n**Bước 3.** Lấy số mũ của số bị chia trừ số mũ của số chia rồi rút gọn biểu thức số mũ.\n\n**Phần 2. Trình bày**\n\n$x^{n+19}:x^{14}=x^{n+19-14}$\n\n$=x^{n+5}$\n\nVì $n\\in\\mathbb{N}$ nên $n+19>14$, phép chia thực hiện được.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): máy không đối chiếu được đề với kết quả sách (máy chưa đọc được: số mũ không nguyên) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.66b@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính chia: $x^{94}:x^{17}:x^{65}$.",
+  "noi_dung_sach": "Thực hiện phép tính chia: $x^{94}:x^{17}:x^{65}$.",
+  "dap_an": "$x^{12}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy phép chia liên tiếp thực hiện từ trái sang phải, mỗi lần là một phép chia hai luỹ thừa cùng cơ số nên chỉ cần trừ số mũ.\n\n**Bước 1.** Thực hiện phép chia đầu tiên từ trái sang phải, tức chia luỹ thừa thứ nhất cho luỹ thừa thứ hai bằng cách trừ số mũ.\n\n**Bước 2.** Lấy thương vừa tìm được chia tiếp cho luỹ thừa thứ ba cũng bằng cách trừ số mũ.\n\n**Bước 3.** Đối chiếu với cách trừ liên tiếp cả hai số mũ cùng lúc để chắc chắn kết quả không sai.\n\n**Phần 2. Trình bày**\n\n$x^{94}:x^{17}:x^{65}=x^{94-17}:x^{65}$\n\n$=x^{77}:x^{65}$\n\n$=x^{77-65}$\n\n$=x^{12}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.67a@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm đơn thức $A$, biết: $A(8x^4y)=-10x^5y^8$.",
+  "noi_dung_sach": "Tìm đơn thức $A$, biết: $A(8x^4y)=-10x^5y^8$.",
+  "dap_an": "$-\\dfrac{5}{4}xy^7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $A$ là thừa số chưa biết của một tích hai đơn thức, nên $A$ bằng tích chia cho thừa số đã biết.\n\n**Bước 1.** Từ đẳng thức tích, viết $A$ thành thương của vế phải cho đơn thức $8x^4y$ đã biết.\n\n**Bước 2.** Chia hệ số của số bị chia cho hệ số của số chia rồi rút gọn phân số về dạng tối giản.\n\n**Bước 3.** Chia luỹ thừa của từng biến bằng cách trừ số mũ rồi ghép các kết quả thành một đơn thức.\n\n**Phần 2. Trình bày**\n\n$A(8x^4y)=-10x^5y^8$\n\n$\\Rightarrow A=(-10x^5y^8):(8x^4y)$\n\n$=-\\dfrac{5}{4}x^{5-4}y^{8-1}$\n\n$=-\\dfrac{5}{4}xy^7$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.67b@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm đơn thức $A$, biết: $(-4x^2y^5)A=\\dfrac{1}{2}x^6y^{17}$.",
+  "noi_dung_sach": "Tìm đơn thức $A$, biết: $(-4x^2y^5)A=\\dfrac{1}{2}x^6y^{17}$.",
+  "dap_an": "$-\\dfrac{1}{8}x^4y^{12}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $A$ là thừa số chưa biết của một tích hai đơn thức, nên $A$ bằng tích chia cho thừa số đã biết, và hệ số phân số chia cho một số nguyên thì nhân với nghịch đảo của nó.\n\n**Bước 1.** Từ đẳng thức tích, viết $A$ thành thương của vế phải cho đơn thức $-4x^2y^5$ đã biết.\n\n**Bước 2.** Chia hệ số phân số của số bị chia cho hệ số $-4$ của số chia, chú ý dấu của kết quả.\n\n**Bước 3.** Chia luỹ thừa của từng biến bằng cách trừ số mũ rồi ghép các kết quả thành một đơn thức.\n\n**Phần 2. Trình bày**\n\n$(-4x^2y^5)A=\\dfrac{1}{2}x^6y^{17}$\n\n$\\Rightarrow A=\\left(\\dfrac{1}{2}x^6y^{17}\\right):(-4x^2y^5)$\n\n$=-\\dfrac{1}{8}x^{6-2}y^{17-5}$\n\n$=-\\dfrac{1}{8}x^4y^{12}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.68a@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm đa thức $B$, biết: $6x^4B=24x^9-30x^8+\\dfrac{1}{2}x^5$.",
+  "noi_dung_sach": "Tìm đa thức $B$, biết: $6x^4B=24x^9-30x^8+\\dfrac{1}{2}x^5$.",
+  "dap_an": "$4x^5-5x^4+\\dfrac{1}{12}x$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $B$ là thừa số chưa biết của một tích, nên bằng tích chia cho thừa số đã biết; vì tích là đa thức nên chia từng hạng tử cho $6x^4$.\n\n**Bước 1.** Từ đẳng thức tích, biểu diễn $B$ bằng thương của vế phải cho thừa số đã biết $6x^4$.\n\n**Bước 2.** Chia từng hạng tử của đa thức ở vế phải cho $6x^4$ bằng cách chia hệ số và trừ số mũ.\n\n**Bước 3.** Chú ý hệ số $\\dfrac{1}{2}$ ở hạng tử cuối, khi chia cho $6$ phải ra một phân số mới, rồi cộng các thương lại.\n\n**Phần 2. Trình bày**\n\n$6x^4B=24x^9-30x^8+\\dfrac{1}{2}x^5$\n\n$\\Rightarrow B=\\left(24x^9-30x^8+\\dfrac{1}{2}x^5\\right):(6x^4)$\n\n$=24x^9:(6x^4)-30x^8:(6x^4)+\\dfrac{1}{2}x^5:(6x^4)$\n\n$=4x^5-5x^4+\\dfrac{1}{12}x$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.68b@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm đa thức $B$, biết: $B(-2{,}5x^3y^2)=5x^6y^4+7{,}5x^5y^3-10x^3y^2$.",
+  "noi_dung_sach": "Tìm đa thức $B$, biết: $B(-2{,}5x^3y^2)=5x^6y^4+7{,}5x^5y^3-10x^3y^2$.",
+  "dap_an": "$-2x^3y^2-3x^2y+4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $B$ là thừa số chưa biết của một tích, nên bằng tích chia cho thừa số đã biết; vì tích là đa thức nên chia từng hạng tử cho đơn thức $-2{,}5x^3y^2$.\n\n**Bước 1.** Từ đẳng thức tích, biểu diễn $B$ bằng thương của vế phải cho thừa số đã biết.\n\n**Bước 2.** Chia hệ số của từng hạng tử cho $-2{,}5$, chú ý đổi dấu ở mỗi hạng tử vì số chia mang hệ số âm.\n\n**Bước 3.** Chia luỹ thừa của từng biến bằng cách trừ số mũ rồi cộng các thương lại.\n\n**Phần 2. Trình bày**\n\n$B(-2{,}5x^3y^2)=5x^6y^4+7{,}5x^5y^3-10x^3y^2$\n\n$\\Rightarrow B=(5x^6y^4+7{,}5x^5y^3-10x^3y^2):(-2{,}5x^3y^2)$\n\n$=5x^6y^4:(-2{,}5x^3y^2)+7{,}5x^5y^3:(-2{,}5x^3y^2)-10x^3y^2:(-2{,}5x^3y^2)$\n\n$=-2x^3y^2-3x^2y+4$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D1.69@p23",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010601",
+  "nhom_soan": "T18T010601",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng giá trị của biểu thức sau dương với mọi giá trị của biến $x,y$ ($x\\neq0$, $y>0$): $(7x^4y^3-6x^2y^6+2x^2y^3):(-2x^2y^3)+8(x+1)(x-1)+10$.",
+  "noi_dung_sach": "Chứng minh rằng giá trị của biểu thức sau dương với mọi giá trị của biến $x,y$ ($x\\neq0$, $y>0$): $(7x^4y^3-6x^2y^6+2x^2y^3):(-2x^2y^3)+8(x+1)(x-1)+10$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thu gọn biểu thức về dạng một đa thức đơn giản, rồi dùng điều kiện của biến để chỉ ra từng hạng tử không âm và còn dư một hằng số dương.\n\n**Bước 1.** Chia từng hạng tử của đa thức trong ngoặc cho đơn thức $-2x^2y^3$ để thu gọn phần thương.\n\n**Bước 2.** Khai triển tích $8(x+1)(x-1)$ bằng hằng đẳng thức hiệu hai bình phương rồi cộng các hạng tử đồng dạng.\n\n**Bước 3.** Chỉ ra từng hạng tử của biểu thức thu gọn không âm nhờ điều kiện của biến, đồng thời còn một hằng số dương.\n\n**Chú ý:** Muốn phép chia xác định phải có cả $x\\neq0$ và $y\\neq0$, vì số chia $-2x^2y^3$ phải khác $0$; điều kiện $y>0$ còn bảo đảm $y^3$ dương.\n\n**Phần 2. Trình bày**\n\n$(7x^4y^3-6x^2y^6+2x^2y^3):(-2x^2y^3)+8(x+1)(x-1)+10$\n\n$=-3{,}5x^2+3y^3-1+8(x^2-1)+10$\n\n$=-3{,}5x^2+3y^3-1+8x^2-8+10$\n\n$=4{,}5x^2+3y^3+1$\n\nVì $x\\neq0$ nên $x^2>0$ và $4{,}5x^2>0$; vì $y>0$ nên $y^3>0$ và $3y^3>0$.\n\nDo đó $4{,}5x^2+3y^3+1>1>0$.\n\nVậy giá trị của biểu thức luôn dương.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 23): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 23, bài 69: đề in điều k) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D1.70@p24",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – Tp. Hồ Chí Minh, năm học 1999 – 2000) Gọi $a,b,c$ là độ dài ba cạnh của tam giác $ABC$, biết rằng $\\left(1+\\dfrac{b}{a}\\right)\\left(1+\\dfrac{c}{b}\\right)\\left(1+\\dfrac{a}{c}\\right)=8$. Chứng minh rằng tam giác $ABC$ đều.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – Tp. Hồ Chí Minh, năm học 1999 – 2000) Gọi $a,b,c$ là độ dài ba cạnh của tam giác $ABC$, biết rằng $\\left(1+\\dfrac{b}{a}\\right)\\left(1+\\dfrac{c}{b}\\right)\\left(1+\\dfrac{a}{c}\\right)=8$. Chứng minh rằng tam giác $ABC$ đều.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khai triển tích ba nhân tử sẽ ra $2$ cộng ba cặp nghịch đảo $\\dfrac{x}{y}+\\dfrac{y}{x}$; mỗi cặp trừ $2$ thành $\\dfrac{(x-y)^2}{xy}$, không âm vì các cạnh dương, và tổng các số không âm bằng $0$ thì từng số bằng $0$.\n\n**Bước 1.** Nhân lần lượt ba nhân tử ở vế trái rồi rút gọn các tích có dạng phân số nhân nghịch đảo của nhau để được tổng gồm ba cặp nghịch đảo và một hằng số.\n\n**Bước 2.** Chuyển hằng số sang vế phải, tách số còn lại thành ba lần $2$ rồi ghép mỗi cặp nghịch đảo với một số $-2$.\n\n**Bước 3.** Quy đồng từng nhóm để mỗi nhóm trở thành bình phương của một hiệu chia cho tích hai cạnh.\n\n**Bước 4.** Vì $a,b,c$ là độ dài các cạnh nên đều dương, mỗi phân thức không âm; tổng ba số không âm bằng $0$ buộc cả ba cùng bằng $0$, từ đó suy ra ba cạnh bằng nhau.\n\n**Chú ý:** Không được kết luận \"tổng bằng $0$ nên từng số hạng bằng $0$\" khi chưa chỉ ra các số hạng không âm; chính điều kiện $a,b,c>0$ bảo đảm điều đó.\n\n**Phần 2. Trình bày**\n\n$\\left(1+\\dfrac{b}{a}\\right)\\left(1+\\dfrac{c}{b}\\right)\\left(1+\\dfrac{a}{c}\\right)=8$\n\n$\\Leftrightarrow\\left(1+\\dfrac{c}{b}+\\dfrac{b}{a}+\\dfrac{c}{a}\\right)\\left(1+\\dfrac{a}{c}\\right)=8$\n\n$\\Leftrightarrow 2+\\dfrac{c}{b}+\\dfrac{b}{c}+\\dfrac{b}{a}+\\dfrac{a}{b}+\\dfrac{c}{a}+\\dfrac{a}{c}=8$\n\n$\\Leftrightarrow\\left(\\dfrac{a}{b}+\\dfrac{b}{a}-2\\right)+\\left(\\dfrac{b}{c}+\\dfrac{c}{b}-2\\right)+\\left(\\dfrac{c}{a}+\\dfrac{a}{c}-2\\right)=0$\n\n$\\Leftrightarrow\\dfrac{(a-b)^2}{ab}+\\dfrac{(b-c)^2}{bc}+\\dfrac{(c-a)^2}{ca}=0$ $(*)$\n\nVì $a,b,c$ là độ dài ba cạnh của tam giác nên $a,b,c>0$, do đó cả ba phân thức ở vế trái của $(*)$ đều không âm.\n\nTổng của ba số không âm bằng $0$ nên cả ba số đều bằng $0$, suy ra $(a-b)^2=(b-c)^2=(c-a)^2=0$, tức $a=b=c$.\n\nVậy tam giác $ABC$ đều.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng các số không âm bằng 0"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 24): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.1@p31",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Dùng định nghĩa hai phân thức bằng nhau chứng tỏ rằng:\n\na) $\\dfrac{7x}{13}=\\dfrac{35xy^2}{65y^2}$;\n\nb) $\\dfrac{x^2-8x+7}{x-1}=\\dfrac{x^2-6x-7}{x+1}$.",
+  "noi_dung_sach": "Dùng định nghĩa hai phân thức bằng nhau chứng tỏ rằng:\n\na) $\\dfrac{7x}{13}=\\dfrac{35xy^2}{65y^2}$;\n\nb) $\\dfrac{x^2-8x+7}{x-1}=\\dfrac{x^2-6x-7}{x+1}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân thức $\\dfrac{A}{B}$ và $\\dfrac{C}{D}$ bằng nhau khi $AD=BC$, nên chỉ cần tính hai tích chéo của từng cặp rồi so sánh.\n\n**Bước 1.** Viết ra hai tích chéo của mỗi cặp phân thức, tức là tử của phân thức này nhân với mẫu của phân thức kia.\n\n**Bước 2.** Thực hiện phép nhân ở mỗi tích chéo rồi thu gọn các hạng tử đồng dạng để hai vế về dạng gọn nhất.\n\n**Bước 3.** So sánh hai tích đã tính và kết luận bằng định nghĩa hai phân thức bằng nhau.\n\n**Phần 2. Trình bày**\n\na) Ta có $7x\\cdot 65y^2=455xy^2$ và $13\\cdot 35xy^2=455xy^2$.\n\nDo đó $7x\\cdot 65y^2=13\\cdot 35xy^2$.\n\nVậy $\\dfrac{7x}{13}=\\dfrac{35xy^2}{65y^2}$.\n\nb) Ta có $(x^2-8x+7)(x+1)=x^3+x^2-8x^2-8x+7x+7=x^3-7x^2-x+7$.\n\nLại có $(x-1)(x^2-6x-7)=x^3-6x^2-7x-x^2+6x+7=x^3-7x^2-x+7$.\n\nDo đó $(x^2-8x+7)(x+1)=(x-1)(x^2-6x-7)$.\n\nVậy $\\dfrac{x^2-8x+7}{x-1}=\\dfrac{x^2-6x-7}{x+1}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 1)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.2@p31",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Ba phân thức sau có bằng nhau không?\n\n$\\dfrac{x^2+x-6}{x^2+3x}$; $\\dfrac{x-2}{x}$; $\\dfrac{x^2-4}{x^2+2x}$.",
+  "noi_dung_sach": "Ba phân thức sau có bằng nhau không?\n\n$\\dfrac{x^2+x-6}{x^2+3x}$; $\\dfrac{x-2}{x}$; $\\dfrac{x^2-4}{x^2+2x}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết ba phân thức có bằng nhau không thì so sánh từng cặp bằng định nghĩa $AD=BC$, và chỉ cần so hai cặp là đủ vì phân thức $\\dfrac{x-2}{x}$ nằm giữa.\n\n**Bước 1.** Chọn phân thức $\\dfrac{x-2}{x}$ làm mốc rồi lập hai tích chéo giữa nó và phân thức thứ nhất.\n\n**Bước 2.** Khai triển hai tích chéo đó và so sánh để biết phân thức thứ nhất có bằng phân thức mốc hay không.\n\n**Bước 3.** Làm tương tự giữa phân thức mốc và phân thức thứ ba, rồi kết luận cho cả ba nhờ tính chất bắc cầu.\n\n**Phần 2. Trình bày**\n\nTa có $(x^2+x-6)\\cdot x=x^3+x^2-6x$ và $(x^2+3x)(x-2)=x^3-2x^2+3x^2-6x=x^3+x^2-6x$.\n\nSuy ra $(x^2+x-6)\\cdot x=(x^2+3x)(x-2)$, nên $\\dfrac{x^2+x-6}{x^2+3x}=\\dfrac{x-2}{x}$ (1).\n\nLại có $(x-2)(x^2+2x)=x^3+2x^2-2x^2-4x=x^3-4x$ và $x(x^2-4)=x^3-4x$.\n\nSuy ra $(x-2)(x^2+2x)=x(x^2-4)$, nên $\\dfrac{x-2}{x}=\\dfrac{x^2-4}{x^2+2x}$ (2).\n\nTừ (1) và (2) suy ra $\\dfrac{x^2+x-6}{x^2+3x}=\\dfrac{x-2}{x}=\\dfrac{x^2-4}{x^2+2x}$.\n\nVậy ba phân thức đã cho bằng nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 31): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 2)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.3a@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{x^4-3x^3}{(x+3)(x-3)}=\\dfrac{\\ldots\\ldots}{x+3}$.",
+  "noi_dung_sach": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{x^4-3x^3}{(x+3)(x-3)}=\\dfrac{\\ldots\\ldots}{x+3}$.",
+  "dap_an": "$x^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu vế phải là mẫu vế trái bỏ đi nhân tử $x-3$, nên phải chia cả tử và mẫu của vế trái cho $x-3$ (tử phải chia hết cho $x-3$).\n\n**Bước 1.** So sánh hai mẫu để thấy vế trái đã bị rút đi nhân tử nào khi sang vế phải.\n\n**Bước 2.** Phân tích tử của vế trái thành nhân tử để thấy nhân tử đó xuất hiện trong tử.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung đó và đọc đa thức ở tử của vế phải.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^4-3x^3}{(x+3)(x-3)}=\\dfrac{x^3(x-3)}{(x+3)(x-3)}$\n\n$=\\dfrac{x^3}{x+3}$ (chia cả tử và mẫu cho $x-3\\ne0$)\n\nVậy chỗ trống là $x^3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 3)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.3b@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{7(x+y)}{4}=\\dfrac{7x^2-7y^2}{\\ldots\\ldots\\ldots}$.",
+  "noi_dung_sach": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{7(x+y)}{4}=\\dfrac{7x^2-7y^2}{\\ldots\\ldots\\ldots}$.",
+  "dap_an": "$4(x-y)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử vế phải $7x^2-7y^2=7(x+y)(x-y)$ hơn tử vế trái đúng một nhân tử $x-y$, nên phải nhân cả tử và mẫu của vế trái với $x-y$.\n\n**Bước 1.** Phân tích tử của vế phải thành nhân tử để tìm nhân tử mà vế trái còn thiếu.\n\n**Bước 2.** Nhân cả tử và mẫu của vế trái với nhân tử thiếu đó (khác $0$) theo tính chất cơ bản của phân thức.\n\n**Bước 3.** Đối chiếu tử mới với tử vế phải rồi đọc đa thức ở mẫu.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7(x+y)}{4}=\\dfrac{7(x+y)(x-y)}{4(x-y)}$ (nhân cả tử và mẫu với $x-y\\ne0$)\n\n$=\\dfrac{7(x^2-y^2)}{4(x-y)}=\\dfrac{7x^2-7y^2}{4(x-y)}$\n\nVậy chỗ trống là $4(x-y)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 3)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.4a@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{\\ldots\\ldots\\ldots}{4x^2-1}=\\dfrac{x+3}{2x-1}$.",
+  "noi_dung_sach": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{\\ldots\\ldots\\ldots}{4x^2-1}=\\dfrac{x+3}{2x-1}$.",
+  "dap_an": "$(x+3)(2x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu vế trái $4x^2-1=(2x-1)(2x+1)$ hơn mẫu vế phải đúng nhân tử $2x+1$, nên phải nhân cả tử và mẫu của vế phải với $2x+1$.\n\n**Bước 1.** Phân tích mẫu vế trái thành nhân tử và so với mẫu vế phải để tìm nhân tử còn thiếu.\n\n**Bước 2.** Nhân cả tử và mẫu của vế phải với nhân tử thiếu đó theo tính chất cơ bản của phân thức.\n\n**Bước 3.** Đối chiếu mẫu mới với $4x^2-1$ để đọc đa thức ở tử.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+3}{2x-1}=\\dfrac{(x+3)(2x+1)}{(2x-1)(2x+1)}$ (nhân cả tử và mẫu với $2x+1\\ne0$)\n\n$=\\dfrac{(x+3)(2x+1)}{4x^2-1}$\n\nVậy chỗ trống là $(x+3)(2x+1)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 4)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.4b@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{x^3-2x^2y+4xy^2}{\\ldots\\ldots\\ldots}=\\dfrac{x}{x+2y}$.",
+  "noi_dung_sach": "Điền đa thức thích hợp vào chỗ trống trong đẳng thức sau: $\\dfrac{x^3-2x^2y+4xy^2}{\\ldots\\ldots\\ldots}=\\dfrac{x}{x+2y}$.",
+  "dap_an": "$x^3+8y^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử vế trái $x^3-2x^2y+4xy^2=x(x^2-2xy+4y^2)$ hơn tử vế phải $x$ đúng nhân tử $x^2-2xy+4y^2$, nên nhân cả tử và mẫu của vế phải với nhân tử đó.\n\n**Bước 1.** Phân tích tử của vế trái thành nhân tử để tìm nhân tử mà vế phải còn thiếu.\n\n**Bước 2.** Nhân cả tử và mẫu của vế phải với nhân tử thiếu đó theo tính chất cơ bản của phân thức.\n\n**Bước 3.** Rút gọn mẫu mới bằng hằng đẳng thức tổng hai lập phương để đọc đa thức cần điền.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x}{x+2y}=\\dfrac{x(x^2-2xy+4y^2)}{(x+2y)(x^2-2xy+4y^2)}$ (nhân cả tử và mẫu với $x^2-2xy+4y^2\\ne0$)\n\n$=\\dfrac{x^3-2x^2y+4xy^2}{x^3+8y^3}$\n\nVậy chỗ trống là $x^3+8y^3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 4)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.5@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân thức: $\\dfrac{27x^4y^3}{36x^2y^3}$.",
+  "noi_dung_sach": "Rút gọn phân thức: $\\dfrac{27x^4y^3}{36x^2y^3}$.",
+  "dap_an": "$\\dfrac{3x^2}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đã là tích của hệ số với các lũy thừa, nên chỉ cần chia cả hai cho nhân tử chung gồm ƯCLN của hệ số và lũy thừa bé nhất của từng biến.\n\n**Bước 1.** Tìm ƯCLN của hai hệ số để biết chia cả tử và mẫu cho số nào.\n\n**Bước 2.** Với mỗi biến, chọn lũy thừa có số mũ nhỏ hơn trong hai lũy thừa ở tử và mẫu làm phần biến của nhân tử chung.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung đó rồi viết phân thức đã rút gọn.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{27x^4y^3}{36x^2y^3}=\\dfrac{9x^2y^3\\cdot 3x^2}{9x^2y^3\\cdot 4}$\n\n$=\\dfrac{3x^2}{4}$ (với $x\\ne0$, $y\\ne0$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 5)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.6a@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân thức: $\\dfrac{x^2-9}{x^2+6x+9}$.",
+  "noi_dung_sach": "Rút gọn phân thức: $\\dfrac{x^2-9}{x^2+6x+9}$.",
+  "dap_an": "$\\dfrac{x-3}{x+3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là hiệu hai bình phương và mẫu là bình phương của một tổng, nên cả hai phân tích được ngay bằng hằng đẳng thức rồi lộ ra nhân tử chung.\n\n**Bước 1.** Nhận ra tử là hiệu của hai bình phương và phân tích nó thành tích hai nhân tử.\n\n**Bước 2.** Nhận ra mẫu là bình phương của một tổng và viết nó dưới dạng lũy thừa bậc hai.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung, chú ý điều kiện để nhân tử đó khác $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2-9}{x^2+6x+9}=\\dfrac{(x+3)(x-3)}{(x+3)^2}$\n\n$=\\dfrac{x-3}{x+3}$ (với $x\\ne-3$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.6b@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân thức: $\\dfrac{x^2+10x+25}{2x^2+10x}$.",
+  "noi_dung_sach": "Rút gọn phân thức: $\\dfrac{x^2+10x+25}{2x^2+10x}$.",
+  "dap_an": "$\\dfrac{x+5}{2x}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là bình phương của một tổng còn mẫu có nhân tử chung $2x$, nên sau khi phân tích cả hai sẽ cùng chứa nhân tử $x+5$.\n\n**Bước 1.** Nhận ra tử là bình phương của một tổng và viết nó thành lũy thừa bậc hai.\n\n**Bước 2.** Đặt nhân tử chung ở mẫu để mẫu cũng trở thành một tích.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung của chúng, nhớ nêu điều kiện để mẫu khác $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2+10x+25}{2x^2+10x}=\\dfrac{(x+5)^2}{2x(x+5)}$\n\n$=\\dfrac{x+5}{2x}$ (với $x\\ne0$, $x\\ne-5$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 6)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.7@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Áp dụng quy tắc đổi dấu rồi rút gọn phân thức: $\\dfrac{(x-3)^3}{60-20x}$.",
+  "noi_dung_sach": "Áp dụng quy tắc đổi dấu rồi rút gọn phân thức: $\\dfrac{(x-3)^3}{60-20x}$.",
+  "dap_an": "$-\\dfrac{(x-3)^2}{20}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $60-20x$ có dạng ngược dấu với nhân tử $x-3$ ở tử, nên phải đổi dấu để thấy nhân tử chung.\n\n**Bước 1.** Đặt nhân tử chung ở mẫu để xem mẫu chứa nhân tử nào có dạng đối của $x-3$.\n\n**Bước 2.** Dùng quy tắc đổi dấu để đưa nhân tử ở mẫu về đúng dạng $x-3$, đồng thời đổi dấu cả phân thức cho phù hợp.\n\n**Bước 3.** Chia cả tử và mẫu cho $x-3$ rồi viết kết quả, chú ý điều kiện $x\\ne3$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{(x-3)^3}{60-20x}=\\dfrac{(x-3)^3}{-20(x-3)}$\n\n$=\\dfrac{-(x-3)^3}{20(x-3)}$\n\n$=-\\dfrac{(x-3)^2}{20}$ (với $x\\ne3$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 7)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.8@p32",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{x^2+7x+10}{x^2+9x+20}$.",
+  "noi_dung_sach": "Rút gọn phân thức sau: $\\dfrac{x^2+7x+10}{x^2+9x+20}$.",
+  "dap_an": "$\\dfrac{x+2}{x+4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều là tam thức bậc hai không có nhân tử chung và không là hằng đẳng thức, nên phải tách hạng tử bậc nhất để phân tích cả hai thành tích.\n\n**Bước 1.** Với mỗi tam thức, tìm hai số có tích bằng hệ số tự do và tổng bằng hệ số của $x$ rồi tách hạng tử bậc nhất.\n\n**Bước 2.** Nhóm các hạng tử và đặt nhân tử chung để phân tích tử và mẫu thành tích các nhị thức.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung của chúng và nêu điều kiện để mẫu khác $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2+7x+10}{x^2+9x+20}=\\dfrac{x^2+2x+5x+10}{x^2+4x+5x+20}$\n\n$=\\dfrac{x(x+2)+5(x+2)}{x(x+4)+5(x+4)}$\n\n$=\\dfrac{(x+2)(x+5)}{(x+4)(x+5)}$\n\n$=\\dfrac{x+2}{x+4}$ (với $x\\ne-4$, $x\\ne-5$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách hạng tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 32): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.9@p33",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn phân thức: $\\dfrac{2x^2y+2xy+2y}{x^5+x+1}$.",
+  "noi_dung_sach": "Rút gọn phân thức: $\\dfrac{2x^2y+2xy+2y}{x^5+x+1}$.",
+  "dap_an": "$\\dfrac{2y}{x^3-x^2+1}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có nhân tử chung $2y$ và bên trong là $x^2+x+1$; mẫu $x^5+x+1$ không tách được ngay, nhưng đoán nó chia hết cho $x^2+x+1$ nên thêm bớt hạng tử để lộ nhân tử này.\n\n**Bước 1.** Đặt nhân tử chung ở tử để thấy tử chứa đa thức $x^2+x+1$.\n\n**Bước 2.** Thêm bớt các hạng tử $x^4$, $x^3$, $x^2$ vào mẫu sao cho các nhóm hạng tử đều xuất hiện được dạng $x^2+x+1$.\n\n**Bước 3.** Đặt $x^2+x+1$ làm nhân tử chung của mẫu rồi chia cả tử và mẫu cho nhân tử đó.\n\n**Chú ý:** Đa thức $x^2+x+1=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ với mọi $x$ nên luôn được phép chia cả tử và mẫu cho nó.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2x^2y+2xy+2y}{x^5+x+1}=\\dfrac{2y(x^2+x+1)}{x^5+x+1}$\n\nTa có $x^5+x+1=x^5+x^4+x^3-x^4-x^3-x^2+x^2+x+1$\n\n$=x^3(x^2+x+1)-x^2(x^2+x+1)+(x^2+x+1)$\n\n$=(x^2+x+1)(x^3-x^2+1)$\n\nDo đó $\\dfrac{2x^2y+2xy+2y}{x^5+x+1}=\\dfrac{2y(x^2+x+1)}{(x^2+x+1)(x^3-x^2+1)}$\n\n$=\\dfrac{2y}{x^3-x^2+1}$ (với $x^3-x^2+1\\ne0$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt hạng tử",
+   "phân tích $x^5+x+1$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 33): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.10a@p33",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán, lớp 8, Quận 1 – TP. Hồ Chí Minh, năm học 2002 – 2003) Rút gọn phân thức $\\dfrac{x^3+y^3+z^3-3xyz}{(x-y)^2+(y-z)^2+(z-x)^2}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán, lớp 8, Quận 1 – TP. Hồ Chí Minh, năm học 2002 – 2003) Rút gọn phân thức $\\dfrac{x^3+y^3+z^3-3xyz}{(x-y)^2+(y-z)^2+(z-x)^2}$.",
+  "dap_an": "$\\dfrac{x+y+z}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là $x^3+y^3+z^3-3xyz$ và mẫu là tổng ba bình phương hiệu, cả hai đều quy về nhân tử $x^2+y^2+z^2-xy-yz-zx$ nên rút gọn được.\n\n**Bước 1.** Phân tích tử thành tích của $x+y+z$ với $x^2+y^2+z^2-xy-yz-zx$ bằng cách ghép $x^3+y^3$ thành lập phương của tổng.\n\n**Bước 2.** Khai triển ba bình phương ở mẫu rồi đặt nhân tử chung để mẫu cũng chứa $x^2+y^2+z^2-xy-yz-zx$.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung đó, chú ý điều kiện để mẫu khác $0$.\n\n**Chú ý:** Mẫu bằng $0$ khi và chỉ khi $x=y=z$, nên phép rút gọn chỉ áp dụng khi ba số không đồng thời bằng nhau.\n\n**Phần 2. Trình bày**\n\nTử số: $x^3+y^3+z^3-3xyz=(x+y)^3-3xy(x+y)+z^3-3xyz$\n\n$=\\left[(x+y)^3+z^3\\right]-3xy(x+y+z)$\n\n$=(x+y+z)\\left[(x+y)^2-(x+y)z+z^2\\right]-3xy(x+y+z)$\n\n$=(x+y+z)(x^2+2xy+y^2-xz-yz+z^2-3xy)$\n\n$=(x+y+z)(x^2+y^2+z^2-xy-yz-zx)$\n\nMẫu số: $(x-y)^2+(y-z)^2+(z-x)^2=2x^2+2y^2+2z^2-2xy-2yz-2zx$\n\n$=2(x^2+y^2+z^2-xy-yz-zx)$\n\nDo đó $\\dfrac{x^3+y^3+z^3-3xyz}{(x-y)^2+(y-z)^2+(z-x)^2}=\\dfrac{(x+y+z)(x^2+y^2+z^2-xy-yz-zx)}{2(x^2+y^2+z^2-xy-yz-zx)}$\n\n$=\\dfrac{x+y+z}{2}$ (với $x,y,z$ không đồng thời bằng nhau)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức mở rộng $a^3+b^3+c^3-3abc$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 33): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 33, lời giải bài 10a dòn) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.10b@p33",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận Tân Bình – TP. Hồ Chí Minh, năm học 1993 – 1994) Rút gọn phân thức $\\dfrac{x^4-2x^2+1}{x^3-3x-2}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận Tân Bình – TP. Hồ Chí Minh, năm học 1993 – 1994) Rút gọn phân thức $\\dfrac{x^4-2x^2+1}{x^3-3x-2}$.",
+  "dap_an": "$\\dfrac{(x-1)^2}{x-2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là một bình phương hoàn chỉnh còn mẫu là đa thức bậc ba, mà thử $x=-1$ cho mẫu bằng $0$ nên mẫu có nhân tử $x+1$ và sẽ chia được cho nhân tử này.\n\n**Bước 1.** Phân tích tử thành tích bằng hai lần hằng đẳng thức hiệu hai bình phương.\n\n**Bước 2.** Nhẩm nghiệm của mẫu để biết nhân tử $x+1$, rồi tách hạng tử để đặt nhân tử đó ra ngoài.\n\n**Bước 3.** Phân tích tiếp tam thức bậc hai còn lại của mẫu thành tích các nhị thức.\n\n**Bước 4.** Chia cả tử và mẫu cho nhân tử chung $(x+1)^2$ và nêu điều kiện để mẫu khác $0$.\n\n**Phần 2. Trình bày**\n\nTử số: $x^4-2x^2+1=(x^2-1)^2=(x+1)^2(x-1)^2$\n\nMẫu số: $x^3-3x-2=x^3+x^2-x^2-x-2x-2$\n\n$=x^2(x+1)-x(x+1)-2(x+1)$\n\n$=(x+1)(x^2-x-2)$\n\n$=(x+1)(x^2+x-2x-2)$\n\n$=(x+1)^2(x-2)$\n\nDo đó $\\dfrac{x^4-2x^2+1}{x^3-3x-2}=\\dfrac{(x+1)^2(x-1)^2}{(x+1)^2(x-2)}$\n\n$=\\dfrac{(x-1)^2}{x-2}$ (với $x\\ne-1$, $x\\ne2$)",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 33): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.11@p34",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 3 – TP. Hồ Chí Minh, năm học 1994 – 1995) Chứng minh rằng biểu thức sau không phụ thuộc vào $x$: $\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 3 – TP. Hồ Chí Minh, năm học 1994 – 1995) Chứng minh rằng biểu thức sau không phụ thuộc vào $x$: $\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn chứng minh biểu thức không phụ thuộc $x$ thì rút gọn nó đến khi không còn chữ $x$ nào, vì thế khai triển rồi nhóm theo lũy thừa của $x^2$ để lộ nhân tử chung.\n\n**Bước 1.** Khai triển các tích ở tử và ở mẫu rồi sắp xếp lại các hạng tử.\n\n**Bước 2.** Nhóm các hạng tử chứa $x^2$ với các hạng tử còn lại để đặt nhân tử chung ở cả tử lẫn mẫu.\n\n**Bước 3.** Chia cả tử và mẫu cho nhân tử chung $x^2+1$ rồi kết luận kết quả chỉ chứa $a$, sau khi kiểm tra mẫu luôn khác $0$.\n\n**Chú ý:** Mẫu luôn khác $0$ vì $x^2+1>0$ và $1-a+a^2=\\left(a-\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{(x^2+a)(1+a)+a^2x^2+1}{(x^2-a)(1-a)+a^2x^2+1}=\\dfrac{x^2+x^2a+a+a^2+a^2x^2+1}{x^2-x^2a-a+a^2+a^2x^2+1}$\n\n$=\\dfrac{x^2(1+a+a^2)+(1+a+a^2)}{x^2(1-a+a^2)+(1-a+a^2)}$\n\n$=\\dfrac{(x^2+1)(1+a+a^2)}{(x^2+1)(1-a+a^2)}$\n\n$=\\dfrac{1+a+a^2}{1-a+a^2}$\n\nKết quả chỉ chứa $a$ và không chứa $x$.\n\nVậy biểu thức không phụ thuộc vào $x$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 34): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.12@p34",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, trường THCS Ngô Quyền, Quận Tân Bình – TP. Hồ Chí Minh, năm học 2010 – 2011) Cho $x,y$ thoả $x>y>0$ và $x^2+3y^2=4xy$. Tính $A=\\dfrac{2x+5y}{x-2y}$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, trường THCS Ngô Quyền, Quận Tân Bình – TP. Hồ Chí Minh, năm học 2010 – 2011) Cho $x,y$ thoả $x>y>0$ và $x^2+3y^2=4xy$. Tính $A=\\dfrac{2x+5y}{x-2y}$.",
+  "dap_an": "$11$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $x^2+3y^2=4xy$ là một tam thức bậc hai thuần nhất theo $x,y$ nên phân tích được thành tích, từ đó suy ra quan hệ giữa $x$ và $y$ để thay vào $A$.\n\n**Bước 1.** Chuyển mọi hạng tử về một vế rồi tách hạng tử $-4xy$ để phân tích vế trái thành tích hai nhân tử.\n\n**Bước 2.** Từ phương trình tích suy ra hai khả năng về quan hệ giữa $x$ và $y$.\n\n**Bước 3.** Dùng điều kiện $x>y>0$ để loại một khả năng và giữ lại khả năng còn lại.\n\n**Bước 4.** Thay quan hệ còn lại vào biểu thức $A$, kiểm tra mẫu khác $0$ rồi rút gọn để ra giá trị.\n\n**Phần 2. Trình bày**\n\n$x^2+3y^2=4xy\\Leftrightarrow x^2-4xy+3y^2=0$\n\n$\\Leftrightarrow x^2-xy-3xy+3y^2=0$\n\n$\\Leftrightarrow x(x-y)-3y(x-y)=0$\n\n$\\Leftrightarrow (x-y)(x-3y)=0$\n\n$\\Rightarrow x=y$ hoặc $x=3y$.\n\nVì $x>y>0$ nên $x\\ne y$, do đó $x=3y$.\n\nKhi đó $x-2y=y>0$ nên $A$ xác định và\n\n$A=\\dfrac{2x+5y}{x-2y}=\\dfrac{2\\cdot 3y+5y}{3y-2y}=\\dfrac{11y}{y}=11$\n\nVậy $A=11$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 34): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.13@p36",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Quy đồng mẫu thức các phân thức sau: $\\dfrac{4}{x^4y^6}$ ; $\\dfrac{-5}{12x^6y^5}$.",
+  "noi_dung_sach": "Quy đồng mẫu thức các phân thức sau: $\\dfrac{4}{x^4y^6}$ ; $\\dfrac{-5}{12x^6y^5}$.",
+  "dap_an": "$\\dfrac{48x^2}{12x^6y^6}$ ; $\\dfrac{-5y}{12x^6y^6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai mẫu đều là đơn thức, nên mẫu thức chung gồm hệ số là bội chung nhỏ nhất của các hệ số và mỗi biến lấy với số mũ lớn nhất xuất hiện ở các mẫu.\n\n**Bước 1.** Lập mẫu thức chung: lấy bội chung nhỏ nhất của các hệ số, rồi với mỗi biến $x$, $y$ lấy số mũ lớn nhất trong hai mẫu.\n\n**Bước 2.** Chia mẫu thức chung cho mẫu của từng phân thức để tìm nhân tử phụ tương ứng.\n\n**Bước 3.** Nhân cả tử và mẫu của mỗi phân thức với nhân tử phụ của nó để đưa về cùng mẫu thức chung.\n\n**Chú ý:** Nhân tử phụ chỉ nhân vào tử và mẫu cùng lúc, nên giá trị của phân thức không đổi.\n\n**Phần 2. Trình bày**\n\nMẫu thức chung là $12x^6y^6$, nhân tử phụ của phân thức thứ nhất là $12x^2$, của phân thức thứ hai là $y$.\n\n$\\dfrac{4}{x^4y^6}=\\dfrac{4\\cdot12x^2}{x^4y^6\\cdot12x^2}=\\dfrac{48x^2}{12x^6y^6}$\n\n$\\dfrac{-5}{12x^6y^5}=\\dfrac{-5\\cdot y}{12x^6y^5\\cdot y}=\\dfrac{-5y}{12x^6y^6}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 36, lời giải bài 13: sác) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 13)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.14@p36",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Quy đồng mẫu thức các phân thức sau: $\\dfrac{4}{x^2-25}$ ; $\\dfrac{3}{4x-20}$.",
+  "noi_dung_sach": "Quy đồng mẫu thức các phân thức sau: $\\dfrac{4}{x^2-25}$ ; $\\dfrac{3}{4x-20}$.",
+  "dap_an": "$\\dfrac{16}{4(x+5)(x-5)}$ ; $\\dfrac{3x+15}{4(x+5)(x-5)}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các mẫu phân tích được thành nhân tử, nên mẫu thức chung phải lấy từ các nhân tử đã phân tích chứ không nhân thẳng hai mẫu với nhau.\n\n**Bước 1.** Phân tích từng mẫu thành nhân tử: một mẫu dùng hằng đẳng thức, mẫu kia đặt nhân tử chung.\n\n**Bước 2.** Lập mẫu thức chung từ mọi nhân tử xuất hiện, rồi tìm nhân tử phụ của từng phân thức bằng cách chia mẫu thức chung cho mẫu của nó.\n\n**Bước 3.** Nhân cả tử và mẫu của mỗi phân thức với nhân tử phụ tương ứng và thu gọn tử.\n\n**Chú ý:** Thiếu nhân tử $4$ ở mẫu thức chung là lỗi hay gặp, khiến mẫu chung không chia hết cho mẫu thứ hai.\n\n**Phần 2. Trình bày**\n\n$x^2-25=(x+5)(x-5)$ ; $4x-20=4(x-5)$\n\nMẫu thức chung là $4(x+5)(x-5)$, nhân tử phụ của phân thức thứ nhất là $4$, của phân thức thứ hai là $x+5$.\n\n$\\dfrac{4}{x^2-25}=\\dfrac{4\\cdot4}{4(x+5)(x-5)}=\\dfrac{16}{4(x+5)(x-5)}$\n\n$\\dfrac{3}{4x-20}=\\dfrac{3(x+5)}{4(x-5)(x+5)}=\\dfrac{3x+15}{4(x+5)(x-5)}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 36, lời giải bài 14 dòng) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 14)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.15@p36",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $\\dfrac{x+1}{x+7}+\\dfrac{3-x}{x+7}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $\\dfrac{x+1}{x+7}+\\dfrac{3-x}{x+7}$.",
+  "dap_an": "$\\dfrac{4}{x+7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân thức có cùng mẫu $x+7$, nên cộng thẳng các tử và giữ nguyên mẫu.\n\n**Bước 1.** Viết tổng hai tử trên cùng một mẫu thức chung của chúng.\n\n**Bước 2.** Thu gọn tử bằng cách triệt tiêu các hạng tử đối nhau.\n\n**Bước 3.** Kiểm tra tử và mẫu của kết quả còn nhân tử chung nào để rút gọn hay không.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+1}{x+7}+\\dfrac{3-x}{x+7}=\\dfrac{x+1+3-x}{x+7}$\n\n$=\\dfrac{4}{x+7}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 15)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.16a@p36",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $\\dfrac{x-5}{x^2+3x}+\\dfrac{6}{x+3}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $\\dfrac{x-5}{x^2+3x}+\\dfrac{6}{x+3}$.",
+  "dap_an": "$\\dfrac{7x-5}{x(x+3)}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu thứ nhất phân tích được thành $x(x+3)$ chứa luôn mẫu thứ hai, nên mẫu thức chung chính là mẫu thứ nhất đã phân tích.\n\n**Bước 1.** Phân tích mẫu của phân thức thứ nhất thành nhân tử để nhìn ra mẫu thức chung.\n\n**Bước 2.** Quy đồng phân thức thứ hai bằng cách nhân tử và mẫu với nhân tử phụ còn thiếu.\n\n**Bước 3.** Cộng hai tử trên mẫu thức chung rồi thu gọn, kiểm tra xem còn rút gọn được không.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-5}{x^2+3x}+\\dfrac{6}{x+3}=\\dfrac{x-5}{x(x+3)}+\\dfrac{6}{x+3}$\n\n$=\\dfrac{x-5}{x(x+3)}+\\dfrac{6x}{x(x+3)}$\n\n$=\\dfrac{x-5+6x}{x(x+3)}$\n\n$=\\dfrac{7x-5}{x(x+3)}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 16)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.16b@p36",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $x+2+\\dfrac{3}{x-2}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $x+2+\\dfrac{3}{x-2}$.",
+  "dap_an": "$\\dfrac{x^2-1}{x-2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức $x+2$ coi như phân thức có mẫu bằng $1$, nên mẫu thức chung là $x-2$.\n\n**Bước 1.** Viết $x+2$ thành phân thức có mẫu $x-2$ bằng cách nhân cả tử và mẫu với $x-2$.\n\n**Bước 2.** Cộng hai tử trên cùng mẫu $x-2$ rồi thu gọn tử.\n\n**Bước 3.** Xét xem tử có nhân tử chung với mẫu hay không để biết có rút gọn tiếp được không.\n\n**Phần 2. Trình bày**\n\n$x+2+\\dfrac{3}{x-2}=\\dfrac{(x+2)(x-2)}{x-2}+\\dfrac{3}{x-2}$\n\n$=\\dfrac{x^2-4+3}{x-2}$\n\n$=\\dfrac{x^2-1}{x-2}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 16)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.17@p36",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $\\dfrac{4-x}{x^2+x}+\\dfrac{3}{x}+\\dfrac{-2}{x+1}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $\\dfrac{4-x}{x^2+x}+\\dfrac{3}{x}+\\dfrac{-2}{x+1}$.",
+  "dap_an": "$\\dfrac{7}{x(x+1)}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $x^2+x$ phân tích được thành $x(x+1)$ và chia hết cho hai mẫu còn lại, nên đó chính là mẫu thức chung của cả ba phân thức.\n\n**Bước 1.** Phân tích mẫu thứ nhất thành nhân tử để xác định mẫu thức chung của ba phân thức.\n\n**Bước 2.** Quy đồng hai phân thức còn lại bằng cách nhân tử và mẫu với nhân tử phụ tương ứng.\n\n**Bước 3.** Cộng ba tử trên mẫu thức chung, thu gọn tử rồi kiểm tra khả năng rút gọn.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4-x}{x^2+x}+\\dfrac{3}{x}+\\dfrac{-2}{x+1}=\\dfrac{4-x}{x(x+1)}+\\dfrac{3}{x}+\\dfrac{-2}{x+1}$\n\n$=\\dfrac{4-x}{x(x+1)}+\\dfrac{3(x+1)}{x(x+1)}+\\dfrac{-2x}{x(x+1)}$\n\n$=\\dfrac{4-x+3x+3-2x}{x(x+1)}$\n\n$=\\dfrac{7}{x(x+1)}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 36): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 17)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.18@p37",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T020103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $x$: $x+\\dfrac{a}{a^2-b^2}=\\dfrac{1}{a+b}$ ($a$, $b$ là hằng số, $a\\neq b$).",
+  "noi_dung_sach": "Tìm $x$: $x+\\dfrac{a}{a^2-b^2}=\\dfrac{1}{a+b}$ ($a$, $b$ là hằng số, $a\\neq b$).",
+  "dap_an": "$S=\\left\\{\\dfrac{-b}{(a+b)(a-b)}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ẩn là $x$ còn $a$, $b$ là hằng số, nên đây là phương trình bậc nhất ẩn $x$: chuyển phân thức chứa $a$, $b$ sang vế phải rồi trừ hai phân thức.\n\n**Bước 1.** Chuyển hạng tử $\\dfrac{a}{a^2-b^2}$ sang vế phải để vế trái chỉ còn $x$.\n\n**Bước 2.** Phân tích $a^2-b^2$ thành nhân tử để tìm mẫu thức chung của hai phân thức ở vế phải.\n\n**Bước 3.** Quy đồng, trừ hai tử rồi thu gọn để được biểu thức của $x$.\n\n**Chú ý:** Phương trình chỉ có nghĩa khi $a\\neq b$ và $a\\neq -b$, vì khi đó các mẫu mới khác $0$.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $a\\neq b$ và $a\\neq -b$.\n\n$x+\\dfrac{a}{a^2-b^2}=\\dfrac{1}{a+b}$\n\n$\\Leftrightarrow x=\\dfrac{1}{a+b}-\\dfrac{a}{(a+b)(a-b)}$\n\n$\\Leftrightarrow x=\\dfrac{a-b-a}{(a+b)(a-b)}$\n\n$\\Leftrightarrow x=\\dfrac{-b}{(a+b)(a-b)}$\n\nVậy $S=\\left\\{\\dfrac{-b}{(a+b)(a-b)}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 18)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.19@p37",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thực hiện phép tính: $\\dfrac{x^2}{(x-y)(x-z)}+\\dfrac{y^2}{(y-x)(y-z)}+\\dfrac{z^2}{(z-x)(z-y)}$.",
+  "noi_dung_sach": "Thực hiện phép tính: $\\dfrac{x^2}{(x-y)(x-z)}+\\dfrac{y^2}{(y-x)(y-z)}+\\dfrac{z^2}{(z-x)(z-y)}$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba mẫu chỉ khác nhau về dấu của các nhân tử $x-y$, $x-z$, $y-z$, nên đổi dấu để có mẫu thức chung rồi phân tích tử, vốn là biểu thức hoán vị vòng, thành tích.\n\n**Bước 1.** Đổi dấu các nhân tử ở mẫu thứ hai và thứ ba sao cho cả ba mẫu chỉ chứa $x-y$, $x-z$, $y-z$, từ đó xác định mẫu thức chung.\n\n**Bước 2.** Quy đồng và gộp ba phân thức thành một phân thức có tử là tổng ba hạng tử.\n\n**Bước 3.** Tách $x-z$ thành tổng $(x-y)+(y-z)$ để nhóm các hạng tử, rồi dùng hằng đẳng thức hiệu hai bình phương.\n\n**Bước 4.** Đặt nhân tử chung trong tử và rút gọn cho mẫu thức chung.\n\n**Chú ý:** Phép tính chỉ có nghĩa khi $x$, $y$, $z$ đôi một khác nhau.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2}{(x-y)(x-z)}+\\dfrac{y^2}{(y-x)(y-z)}+\\dfrac{z^2}{(z-x)(z-y)}=\\dfrac{x^2}{(x-y)(x-z)}-\\dfrac{y^2}{(x-y)(y-z)}+\\dfrac{z^2}{(x-z)(y-z)}$\n\n$=\\dfrac{x^2(y-z)-y^2(x-z)+z^2(x-y)}{(x-y)(x-z)(y-z)}$\n\nXét tử, viết $x-z=(x-y)+(y-z)$:\n\n$x^2(y-z)-y^2(x-z)+z^2(x-y)=x^2(y-z)-y^2(y-z)-y^2(x-y)+z^2(x-y)$\n\n$=(y-z)(x^2-y^2)-(x-y)(y^2-z^2)$\n\n$=(x-y)(y-z)(x+y)-(x-y)(y-z)(y+z)$\n\n$=(x-y)(y-z)(x-z)$\n\nDo đó $\\dfrac{x^2}{(x-y)(x-z)}+\\dfrac{y^2}{(y-x)(y-z)}+\\dfrac{z^2}{(z-x)(z-y)}=\\dfrac{(x-y)(y-z)(x-z)}{(x-y)(x-z)(y-z)}=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đổi dấu nhân tử ở mẫu",
+   "phân tích tử thành nhân tử (biểu thức hoán vị vòng)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.20a@p37",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010502",
+  "nhom_soan": "T18T010502",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính: $\\dfrac{1}{1-x}+\\dfrac{1}{1+x}+\\dfrac{2}{1+x^2}+\\dfrac{4}{1+x^4}+\\dfrac{8}{1+x^8}$.",
+  "noi_dung_sach": "Thực hiện phép tính: $\\dfrac{1}{1-x}+\\dfrac{1}{1+x}+\\dfrac{2}{1+x^2}+\\dfrac{4}{1+x^4}+\\dfrac{8}{1+x^8}$.",
+  "dap_an": "$\\dfrac{16}{1-x^{16}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các mẫu $1-x$, $1+x$, $1+x^2$, $1+x^4$, $1+x^8$ nối tiếp nhau qua hằng đẳng thức $(1-t)(1+t)=1-t^2$, nên cộng dồn từng cặp từ trái sang phải.\n\n**Bước 1.** Cộng hai phân thức đầu có mẫu $1-x$ và $1+x$ bằng cách quy đồng với mẫu thức chung $(1-x)(1+x)$.\n\n**Bước 2.** Kết quả có mẫu $1-x^2$ lại đứng cạnh phân thức mẫu $1+x^2$ nên làm tương tự, mỗi lần số mũ của mẫu tăng gấp đôi.\n\n**Bước 3.** Lặp lại cho tới phân thức cuối cùng rồi viết kết quả theo $x^{16}$.\n\n**Chú ý:** Phép tính chỉ có nghĩa khi $x\\neq \\pm1$, vì $1+x^2$, $1+x^4$, $1+x^8$ luôn dương.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{1-x}+\\dfrac{1}{1+x}+\\dfrac{2}{1+x^2}+\\dfrac{4}{1+x^4}+\\dfrac{8}{1+x^8}=\\dfrac{2}{1-x^2}+\\dfrac{2}{1+x^2}+\\dfrac{4}{1+x^4}+\\dfrac{8}{1+x^8}$\n\n$=\\dfrac{4}{1-x^4}+\\dfrac{4}{1+x^4}+\\dfrac{8}{1+x^8}$\n\n$=\\dfrac{8}{1-x^8}+\\dfrac{8}{1+x^8}$\n\n$=\\dfrac{16}{1-x^{16}}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "ghép cặp liên tiếp, dùng (1-t)(1+t)=1-t^2"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.20b@p37",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010502",
+  "nhom_soan": "T18T010502",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính: $\\dfrac{1}{x^2+x}+\\dfrac{1}{x^2+3x+2}+\\dfrac{1}{x^2+5x+6}+\\dfrac{1}{x^2+7x+12}$.",
+  "noi_dung_sach": "Thực hiện phép tính: $\\dfrac{1}{x^2+x}+\\dfrac{1}{x^2+3x+2}+\\dfrac{1}{x^2+5x+6}+\\dfrac{1}{x^2+7x+12}$.",
+  "dap_an": "$\\dfrac{4}{x(x+4)}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi mẫu phân tích được thành tích hai nhị thức hơn kém nhau $1$ đơn vị, mà $\\dfrac{1}{m(m+1)}=\\dfrac{1}{m}-\\dfrac{1}{m+1}$, nên tổng khử liên tiếp được.\n\n**Bước 1.** Phân tích từng mẫu thành tích hai nhị thức bậc nhất để thấy các thừa số nối tiếp nhau.\n\n**Bước 2.** Viết mỗi phân thức thành hiệu hai phân thức, dựa vào việc hai nhị thức liền nhau hơn kém đúng $1$.\n\n**Bước 3.** Cộng các hiệu lại, các số hạng đối nhau ở giữa triệt tiêu từng đôi một.\n\n**Bước 4.** Trừ hai phân thức còn lại ở đầu và cuối để được kết quả.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{x^2+x}+\\dfrac{1}{x^2+3x+2}+\\dfrac{1}{x^2+5x+6}+\\dfrac{1}{x^2+7x+12}=\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}+\\dfrac{1}{(x+3)(x+4)}$\n\nVì $\\dfrac{1}{m(m+1)}=\\dfrac{1}{m}-\\dfrac{1}{m+1}$ nên\n\n$=\\left(\\dfrac{1}{x}-\\dfrac{1}{x+1}\\right)+\\left(\\dfrac{1}{x+1}-\\dfrac{1}{x+2}\\right)+\\left(\\dfrac{1}{x+2}-\\dfrac{1}{x+3}\\right)+\\left(\\dfrac{1}{x+3}-\\dfrac{1}{x+4}\\right)$\n\n$=\\dfrac{1}{x}-\\dfrac{1}{x+4}$\n\n$=\\dfrac{4}{x(x+4)}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phân thức thành hiệu hai phân thức, khử liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 37): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.21@p38",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho biết $\\dfrac{x^2}{x+y}+\\dfrac{y^2}{y+z}+\\dfrac{z^2}{z+x}=2009$. Tính $\\dfrac{y^2}{x+y}+\\dfrac{z^2}{y+z}+\\dfrac{x^2}{z+x}$.",
+  "noi_dung_sach": "Cho biết $\\dfrac{x^2}{x+y}+\\dfrac{y^2}{y+z}+\\dfrac{z^2}{z+x}=2009$. Tính $\\dfrac{y^2}{x+y}+\\dfrac{z^2}{y+z}+\\dfrac{x^2}{z+x}$.",
+  "dap_an": "$2009$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tổng có cùng ba mẫu, chỉ khác tử, nên xét hiệu của chúng: mỗi cặp cùng mẫu cho một hiệu hai bình phương chia hết cho mẫu.\n\n**Bước 1.** Gọi tổng đã biết là $A$ và tổng cần tính là $B$, rồi xét hiệu $A-B$.\n\n**Bước 2.** Ghép các phân thức có cùng mẫu thành từng cặp và gộp tử của mỗi cặp.\n\n**Bước 3.** Phân tích mỗi tử thành tích bằng hằng đẳng thức hiệu hai bình phương rồi rút gọn từng cặp.\n\n**Bước 4.** Cộng ba kết quả để thấy hiệu bằng $0$, từ đó suy ra giá trị của $B$.\n\n**Phần 2. Trình bày**\n\nĐặt $A=\\dfrac{x^2}{x+y}+\\dfrac{y^2}{y+z}+\\dfrac{z^2}{z+x}=2009$ và $B=\\dfrac{y^2}{x+y}+\\dfrac{z^2}{y+z}+\\dfrac{x^2}{z+x}$.\n\n$A-B=\\dfrac{x^2-y^2}{x+y}+\\dfrac{y^2-z^2}{y+z}+\\dfrac{z^2-x^2}{z+x}$\n\n$=(x-y)+(y-z)+(z-x)$\n\n$=0$\n\n$\\Rightarrow B=A=2009$\n\nVậy $\\dfrac{y^2}{x+y}+\\dfrac{z^2}{y+z}+\\dfrac{x^2}{z+x}=2009$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét hiệu hai tổng, ghép cặp cùng mẫu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 38): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.22@p38",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $\\dfrac{x}{y}+\\dfrac{y}{z}+\\dfrac{z}{x}=\\dfrac{y}{x}+\\dfrac{x}{z}+\\dfrac{z}{y}$. Chứng minh rằng trong ba số $x$, $y$, $z$ tồn tại hai số bằng nhau.",
+  "noi_dung_sach": "Cho $\\dfrac{x}{y}+\\dfrac{y}{z}+\\dfrac{z}{x}=\\dfrac{y}{x}+\\dfrac{x}{z}+\\dfrac{z}{y}$. Chứng minh rằng trong ba số $x$, $y$, $z$ tồn tại hai số bằng nhau.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn có hai số bằng nhau thì phải đưa giả thiết về một tích các hiệu bằng $0$; đẳng thức cho sẵn các mẫu $x$, $y$, $z$ nên nhân hai vế với $xyz$ để khử mẫu.\n\n**Bước 1.** Chuyển các phân thức về cùng một vế rồi nhóm những phân thức cùng mẫu để có ba hạng tử dạng hiệu chia cho một biến.\n\n**Bước 2.** Nhân hai vế với $xyz$ để khử mẫu, thu được một đa thức ba hạng tử bằng $0$.\n\n**Bước 3.** Phân tích đa thức đó thành tích ba nhị thức hiệu hai biến bằng cách tách $y-x$ theo $x-z$ và $y-z$ rồi nhóm.\n\n**Bước 4.** Từ tích bằng $0$ suy ra một nhân tử bằng $0$, tức là có hai số bằng nhau.\n\n**Chú ý:** Các phân thức trong đề chỉ có nghĩa khi $x$, $y$, $z$ đều khác $0$, nên phép nhân với $xyz$ là hợp lệ.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x,y,z\\neq0$.\n\n$\\dfrac{x}{y}+\\dfrac{y}{z}+\\dfrac{z}{x}=\\dfrac{y}{x}+\\dfrac{x}{z}+\\dfrac{z}{y}$\n\n$\\Rightarrow\\dfrac{x-z}{y}+\\dfrac{y-x}{z}+\\dfrac{z-y}{x}=0$\n\n$\\Rightarrow xz(x-z)+xy(y-x)+yz(z-y)=0$\n\n$\\Rightarrow xz(x-z)+xy[(y-z)-(x-z)]+yz(z-y)=0$\n\n$\\Rightarrow xz(x-z)-xy(x-z)+xy(y-z)-yz(y-z)=0$\n\n$\\Rightarrow x(x-z)(z-y)+y(y-z)(x-z)=0$\n\n$\\Rightarrow(x-z)\\left[x(z-y)-y(z-y)\\right]=0$\n\n$\\Rightarrow(x-z)(z-y)(x-y)=0$\n\n$\\Rightarrow x-z=0$ hoặc $z-y=0$ hoặc $x-y=0$\n\nVậy trong ba số $x$, $y$, $z$ tồn tại hai số bằng nhau.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhân hai vế với xyz để khử mẫu",
+   "phân tích đa thức hoán vị vòng thành tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 38): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.23@p39",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $\\dfrac{24x^6}{25y^3}\\cdot\\dfrac{50y^4}{x^8}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $\\dfrac{24x^6}{25y^3}\\cdot\\dfrac{50y^4}{x^8}$.",
+  "dap_an": "$\\dfrac{48y}{x^2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân thức đều là thương của các đơn thức, nên nhân tử với tử, mẫu với mẫu rồi giản ước hệ số và luỹ thừa cùng cơ số.\n\n**Bước 1.** Nhân tử thức với tử thức, mẫu thức với mẫu thức để được một phân thức duy nhất.\n\n**Bước 2.** Rút gọn phần hệ số bằng cách chia cả tử và mẫu cho ước chung lớn nhất của chúng.\n\n**Bước 3.** Rút gọn phần biến: với mỗi chữ, lấy hiệu hai số mũ rồi đặt luỹ thừa còn lại ở phía có số mũ lớn hơn.\n\n**Chú ý:** Phép tính xác định khi $x\\neq0$ và $y\\neq0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{24x^6}{25y^3}\\cdot\\dfrac{50y^4}{x^8}=\\dfrac{1200x^6y^4}{25x^8y^3}$\n\n$=\\dfrac{48y}{x^2}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 39): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 23)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.24@p39",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $\\dfrac{x^2+5x}{2x-10}\\cdot\\dfrac{x^2-10x+25}{3x+15}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $\\dfrac{x^2+5x}{2x-10}\\cdot\\dfrac{x^2-10x+25}{3x+15}$.",
+  "dap_an": "$\\dfrac{x(x-5)}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu của cả hai phân thức đều phân tích được thành nhân tử (đặt nhân tử chung, hằng đẳng thức bình phương) nên nhân xong là giản ước được ngay.\n\n**Bước 1.** Phân tích tử thức và mẫu thức của từng phân thức thành nhân tử bằng cách đặt nhân tử chung và dùng hằng đẳng thức.\n\n**Bước 2.** Viết tích thành một phân thức có tử là tích các tử, mẫu là tích các mẫu.\n\n**Bước 3.** Giản ước các nhân tử chung của tử và mẫu để được phân thức rút gọn.\n\n**Chú ý:** Phép tính xác định khi $x\\neq5$ và $x\\neq-5$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2+5x}{2x-10}\\cdot\\dfrac{x^2-10x+25}{3x+15}=\\dfrac{x(x+5)(x-5)^2}{2(x-5)\\cdot3(x+5)}$\n\n$=\\dfrac{x(x-5)}{6}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 39): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 24)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.25@p40",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện phép tính sau: $\\dfrac{7x+21}{5x-15}\\cdot\\dfrac{18-6x}{x+3}$.",
+  "noi_dung_sach": "Thực hiện phép tính sau: $\\dfrac{7x+21}{5x-15}\\cdot\\dfrac{18-6x}{x+3}$.",
+  "dap_an": "$-\\dfrac{42}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai nhân tử $3-x$ và $x-3$ là hai biểu thức đối nhau, nên đổi dấu một nhân tử thì mọi nhân tử chứa $x$ đều giản ước hết.\n\n**Bước 1.** Đặt nhân tử chung ở tử thức và mẫu thức của từng phân thức để lộ các nhân tử chứa $x$.\n\n**Bước 2.** Đổi dấu nhân tử $3-x$ thành $-(x-3)$ để nó cùng dạng với nhân tử ở mẫu.\n\n**Bước 3.** Giản ước các nhân tử $x+3$ và $x-3$ rồi rút gọn phần hệ số.\n\n**Chú ý:** Phép tính xác định khi $x\\neq3$ và $x\\neq-3$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7x+21}{5x-15}\\cdot\\dfrac{18-6x}{x+3}=\\dfrac{7(x+3)\\cdot6(3-x)}{5(x-3)(x+3)}$\n\n$=\\dfrac{-42(x+3)(x-3)}{5(x-3)(x+3)}$\n\n$=-\\dfrac{42}{5}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 40): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 25)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.26@p40",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Làm tính chia phân thức: $\\left(-\\dfrac{25x^4}{9y^6}\\right):\\dfrac{35x^6}{18y^{10}}$.",
+  "noi_dung_sach": "Làm tính chia phân thức: $\\left(-\\dfrac{25x^4}{9y^6}\\right):\\dfrac{35x^6}{18y^{10}}$.",
+  "dap_an": "$-\\dfrac{10y^4}{7x^2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho một phân thức khác 0 là nhân với phân thức nghịch đảo của nó, sau đó chỉ còn là giản ước đơn thức.\n\n**Bước 1.** Đổi phép chia thành phép nhân với phân thức nghịch đảo của số chia.\n\n**Bước 2.** Nhân tử với tử, mẫu với mẫu rồi rút gọn phần hệ số, giữ lại dấu trừ của phân thức đầu.\n\n**Bước 3.** Rút gọn phần biến bằng cách lấy hiệu hai số mũ của từng chữ.\n\n**Chú ý:** Phép tính xác định khi $x\\neq0$ và $y\\neq0$.\n\n**Phần 2. Trình bày**\n\n$\\left(-\\dfrac{25x^4}{9y^6}\\right):\\dfrac{35x^6}{18y^{10}}=-\\dfrac{25x^4}{9y^6}\\cdot\\dfrac{18y^{10}}{35x^6}$\n\n$=-\\dfrac{450x^4y^{10}}{315x^6y^6}$\n\n$=-\\dfrac{10y^4}{7x^2}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 40): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 26)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.27@p40",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm biểu thức $M$, biết rằng: $\\dfrac{x^2+5x}{x-3}\\cdot M=\\dfrac{x^2-25}{x^2-3x}$.",
+  "noi_dung_sach": "Tìm biểu thức $M$, biết rằng: $\\dfrac{x^2+5x}{x-3}\\cdot M=\\dfrac{x^2-25}{x^2-3x}$.",
+  "dap_an": "$M=\\dfrac{x-5}{x^2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một thừa số chưa biết của tích bằng tích chia cho thừa số đã biết, nên $M$ là thương của hai phân thức ở hai vế.\n\n**Bước 1.** Suy ra $M$ bằng vế phải chia cho phân thức đứng trước $M$ ở vế trái.\n\n**Bước 2.** Đổi phép chia thành phép nhân với nghịch đảo, đồng thời phân tích các tử và mẫu thành nhân tử.\n\n**Bước 3.** Giản ước các nhân tử chung của tử và mẫu để được $M$ ở dạng rút gọn.\n\n**Chú ý:** Các phân thức trong đề xác định khi $x\\neq0$, $x\\neq3$, $x\\neq-5$.\n\n**Phần 2. Trình bày**\n\nVì $\\dfrac{x^2+5x}{x-3}\\cdot M=\\dfrac{x^2-25}{x^2-3x}$ nên\n\n$M=\\dfrac{x^2-25}{x^2-3x}:\\dfrac{x^2+5x}{x-3}$\n\n$=\\dfrac{(x+5)(x-5)}{x(x-3)}\\cdot\\dfrac{x-3}{x(x+5)}$\n\n$=\\dfrac{x-5}{x^2}$\n\nVậy $M=\\dfrac{x-5}{x^2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 40): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 27)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.28@p40",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010502",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy điền vào chỗ trống của dãy phép nhân dưới đây những phân thức có mẫu thức bằng tử thức cộng với $1$: $\\dfrac{1}{x}\\cdot\\dfrac{x}{x+1}\\cdot\\dots=\\dfrac{1}{x+8}$.",
+  "noi_dung_sach": "Hãy điền vào chỗ trống của dãy phép nhân dưới đây những phân thức có mẫu thức bằng tử thức cộng với $1$: $\\dfrac{1}{x}\\cdot\\dfrac{x}{x+1}\\cdot\\dots=\\dfrac{1}{x+8}$.",
+  "dap_an": "$\\dfrac{x+1}{x+2}\\cdot\\dfrac{x+2}{x+3}\\cdot\\dfrac{x+3}{x+4}\\cdot\\dfrac{x+4}{x+5}\\cdot\\dfrac{x+5}{x+6}\\cdot\\dfrac{x+6}{x+7}\\cdot\\dfrac{x+7}{x+8}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi mẫu của mỗi thừa số bằng tử của thừa số kế tiếp thì cả dãy giản ước dây chuyền, nên các thừa số cần điền được xác định bằng cách đi từ tử $x+1$ lên mẫu $x+8$.\n\n**Bước 1.** Nhân hai thừa số đã cho để biết sau giản ước còn lại phân thức nào.\n\n**Bước 2.** Tìm phân thức mà tích các thừa số cần điền phải bằng, bằng cách chia vế phải cho kết quả vừa tìm.\n\n**Bước 3.** Viết liên tiếp các phân thức có mẫu bằng tử cộng $1$, bắt đầu từ tử $x+1$ và dừng khi mẫu là $x+8$.\n\n**Bước 4.** Kiểm tra bằng cách giản ước dây chuyền để thấy tích các thừa số vừa điền đúng bằng phân thức ở bước 2.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{x}\\cdot\\dfrac{x}{x+1}=\\dfrac{1}{x+1}$\n\nGọi $P$ là tích các thừa số cần điền, khi đó $\\dfrac{1}{x+1}\\cdot P=\\dfrac{1}{x+8}$ nên $P=\\dfrac{x+1}{x+8}$.\n\nTa điền các thừa số có mẫu bằng tử cộng $1$ đi từ tử $x+1$ đến mẫu $x+8$:\n\n$P=\\dfrac{x+1}{x+2}\\cdot\\dfrac{x+2}{x+3}\\cdot\\dfrac{x+3}{x+4}\\cdot\\dfrac{x+4}{x+5}\\cdot\\dfrac{x+5}{x+6}\\cdot\\dfrac{x+6}{x+7}\\cdot\\dfrac{x+7}{x+8}=\\dfrac{x+1}{x+8}$\n\nVậy dãy đầy đủ là $\\dfrac{1}{x}\\cdot\\dfrac{x}{x+1}\\cdot\\dfrac{x+1}{x+2}\\cdot\\dfrac{x+2}{x+3}\\cdot\\dfrac{x+3}{x+4}\\cdot\\dfrac{x+4}{x+5}\\cdot\\dfrac{x+5}{x+6}\\cdot\\dfrac{x+6}{x+7}\\cdot\\dfrac{x+7}{x+8}=\\dfrac{1}{x+8}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 40): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 28)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.29@p40",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010502",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hãy điền vào chỗ trống các dãy phép chia dưới đây những phân thức có tử thức bằng mẫu thức cộng với $1$: $\\dfrac{x}{x+1}:\\dfrac{x+2}{x+1}:\\dfrac{x+3}{x+2}:\\dots=\\dfrac{x}{x+8}$.",
+  "noi_dung_sach": "Hãy điền vào chỗ trống các dãy phép chia dưới đây những phân thức có tử thức bằng mẫu thức cộng với $1$: $\\dfrac{x}{x+1}:\\dfrac{x+2}{x+1}:\\dfrac{x+3}{x+2}:\\dots=\\dfrac{x}{x+8}$.",
+  "dap_an": "$\\dfrac{x+4}{x+3}:\\dfrac{x+5}{x+4}:\\dfrac{x+6}{x+5}:\\dfrac{x+7}{x+6}:\\dfrac{x+8}{x+7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho $\\dfrac{x+k+1}{x+k}$ là nhân với $\\dfrac{x+k}{x+k+1}$, nên mỗi lần chia cho một phân thức dạng đó thì kết quả $\\dfrac{x}{x+k}$ chỉ đổi thành $\\dfrac{x}{x+k+1}$.\n\n**Bước 1.** Thực hiện lần lượt các phép chia từ trái sang phải đối với ba phân thức đã cho để biết kết quả hiện có.\n\n**Bước 2.** So sánh mẫu thức của kết quả hiện có với mẫu thức của vế phải để biết cần tăng mẫu thêm bao nhiêu đơn vị.\n\n**Bước 3.** Mỗi lần chia tăng mẫu thêm $1$, nên viết liên tiếp các phân thức có tử bằng mẫu cộng $1$, mỗi mẫu bằng tử của phân thức đứng trước.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x}{x+1}:\\dfrac{x+2}{x+1}=\\dfrac{x}{x+1}\\cdot\\dfrac{x+1}{x+2}=\\dfrac{x}{x+2}$\n\n$\\dfrac{x}{x+2}:\\dfrac{x+3}{x+2}=\\dfrac{x}{x+3}$\n\nVới mỗi $k$, ta có $\\dfrac{x}{x+k}:\\dfrac{x+k+1}{x+k}=\\dfrac{x}{x+k+1}$.\n\nĐể thu được $\\dfrac{x}{x+8}$ từ $\\dfrac{x}{x+3}$ cần chia thêm lần lượt cho các phân thức ứng với $k=3;4;5;6;7$:\n\n$\\dfrac{x}{x+3}:\\dfrac{x+4}{x+3}:\\dfrac{x+5}{x+4}:\\dfrac{x+6}{x+5}:\\dfrac{x+7}{x+6}:\\dfrac{x+8}{x+7}=\\dfrac{x}{x+8}$\n\nVậy các phân thức cần điền là $\\dfrac{x+4}{x+3};\\ \\dfrac{x+5}{x+4};\\ \\dfrac{x+6}{x+5};\\ \\dfrac{x+7}{x+6};\\ \\dfrac{x+8}{x+7}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 40): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 29)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.30@p41",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Thực hiện các phép tính: $\\dfrac{x+5}{3x+2}\\cdot\\dfrac{2x-3}{5x+1}+\\dfrac{x+5}{3x+2}\\cdot\\dfrac{3x+4}{5x+1}$.",
+  "noi_dung_sach": "Thực hiện các phép tính: $\\dfrac{x+5}{3x+2}\\cdot\\dfrac{2x-3}{5x+1}+\\dfrac{x+5}{3x+2}\\cdot\\dfrac{3x+4}{5x+1}$.",
+  "dap_an": "$\\dfrac{x+5}{3x+2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số hạng cùng chứa thừa số $\\dfrac{x+5}{3x+2}$ và hai thừa số còn lại cùng mẫu, nên dùng tính chất phân phối của phép nhân đối với phép cộng thay vì nhân từng cặp.\n\n**Bước 1.** Đặt thừa số chung $\\dfrac{x+5}{3x+2}$ ra ngoài dấu ngoặc theo tính chất phân phối.\n\n**Bước 2.** Cộng hai phân thức trong ngoặc, hai phân thức này cùng mẫu nên chỉ cộng các tử.\n\n**Bước 3.** Nhận ra tử và mẫu của phân thức vừa tìm giống nhau rồi giản ước.\n\n**Chú ý:** Phép tính xác định khi $3x+2\\neq0$ và $5x+1\\neq0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x+5}{3x+2}\\cdot\\dfrac{2x-3}{5x+1}+\\dfrac{x+5}{3x+2}\\cdot\\dfrac{3x+4}{5x+1}=\\dfrac{x+5}{3x+2}\\left(\\dfrac{2x-3}{5x+1}+\\dfrac{3x+4}{5x+1}\\right)$\n\n$=\\dfrac{x+5}{3x+2}\\cdot\\dfrac{5x+1}{5x+1}$\n\n$=\\dfrac{x+5}{3x+2}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 41): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.31a@p41",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ thoả mãn $\\dfrac{a}{b+c}+\\dfrac{b}{c+a}+\\dfrac{c}{a+b}=1$. Chứng minh rằng $\\dfrac{a^2}{b+c}+\\dfrac{b^2}{c+a}+\\dfrac{c^2}{a+b}=0$.",
+  "noi_dung_sach": "Cho $a,b,c$ thoả mãn $\\dfrac{a}{b+c}+\\dfrac{b}{c+a}+\\dfrac{c}{a+b}=1$. Chứng minh rằng $\\dfrac{a^2}{b+c}+\\dfrac{b^2}{c+a}+\\dfrac{c^2}{a+b}=0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giả thiết có tử là $a,b,c$ còn kết luận có tử là $a^2,b^2,c^2$, nên nhân hai vế của giả thiết với $a+b+c$ để tử của mỗi phân thức được nhân thêm với chính biến của nó.\n\n**Bước 1.** Nhân cả hai vế của giả thiết với $a+b+c$.\n\n**Bước 2.** Tách $a+b+c=a+(b+c)$ ở phân thức thứ nhất để mẫu $b+c$ giản ước được với phần $b+c$, làm tương tự với hai phân thức còn lại.\n\n**Bước 3.** Chuyển các số hạng $a$, $b$, $c$ sang một vế để thu được đẳng thức cần chứng minh.\n\n**Phần 2. Trình bày**\n\nCác mẫu thức đều khác $0$ theo đề bài.\n\nNhân hai vế của giả thiết với $a+b+c$:\n\n$(a+b+c)\\left(\\dfrac{a}{b+c}+\\dfrac{b}{c+a}+\\dfrac{c}{a+b}\\right)=a+b+c$\n\nVì $(a+b+c)\\cdot\\dfrac{a}{b+c}=\\dfrac{a(b+c)+a^2}{b+c}=a+\\dfrac{a^2}{b+c}$ và tương tự cho hai số hạng còn lại nên\n\n$\\dfrac{a^2}{b+c}+a+\\dfrac{b^2}{c+a}+b+\\dfrac{c^2}{a+b}+c=a+b+c$\n\nVậy $\\dfrac{a^2}{b+c}+\\dfrac{b^2}{c+a}+\\dfrac{c^2}{a+b}=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 41): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.31b@p41",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ thoả mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$. Chứng minh rằng $\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}=0$.",
+  "noi_dung_sach": "Cho $a,b,c$ thoả mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$. Chứng minh rằng $\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}=0$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn có bình phương ở mẫu thì nhân giả thiết với $\\dfrac{1}{b-c}$ (rồi hoán vị vòng), vì thế đưa $\\dfrac{a}{b-c}$ về một vế để nhân cho gọn.\n\n**Bước 1.** Chuyển hai phân thức còn lại sang vế phải của giả thiết rồi nhân hai vế với $\\dfrac{1}{b-c}$ để vế trái thành $\\dfrac{a}{(b-c)^2}$.\n\n**Bước 2.** Quy đồng vế phải về mẫu chung $(a-b)(b-c)(c-a)$ và rút gọn tử thức.\n\n**Bước 3.** Hoán vị vòng $a\\to b\\to c\\to a$ để có hai đẳng thức tương tự cho $\\dfrac{b}{(c-a)^2}$ và $\\dfrac{c}{(a-b)^2}$.\n\n**Bước 4.** Cộng ba đẳng thức theo vế rồi chứng tỏ tổng các tử bằng $0$.\n\n**Phần 2. Trình bày**\n\nCác mẫu thức đều khác $0$ theo đề bài.\n\nTừ giả thiết:\n\n$\\dfrac{a}{b-c}=-\\dfrac{b}{c-a}-\\dfrac{c}{a-b}$\n\nNhân hai vế với $\\dfrac{1}{b-c}$:\n\n$\\dfrac{a}{(b-c)^2}=\\dfrac{-b(a-b)-c(c-a)}{(b-c)(c-a)(a-b)}=\\dfrac{b^2-ab+ac-c^2}{(a-b)(b-c)(c-a)}$ (1)\n\nHoán vị vòng $a\\to b\\to c\\to a$ ta được:\n\n$\\dfrac{b}{(c-a)^2}=\\dfrac{c^2-bc+ab-a^2}{(a-b)(b-c)(c-a)}$ (2)\n\n$\\dfrac{c}{(a-b)^2}=\\dfrac{a^2-ac+bc-b^2}{(a-b)(b-c)(c-a)}$ (3)\n\nCộng (1), (2), (3) theo vế, tổng các tử là $(b^2-ab+ac-c^2)+(c^2-bc+ab-a^2)+(a^2-ac+bc-b^2)=0$.\n\nVậy $\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 41): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.32a@p42",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, huyện An Lạc, tỉnh Vĩnh Phúc, năm học 2002 – 2003) Cho $a+b+c=1$ và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Tính $a^2+b^2+c^2$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, huyện An Lạc, tỉnh Vĩnh Phúc, năm học 2002 – 2003) Cho $a+b+c=1$ và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Tính $a^2+b^2+c^2$.",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng $a^2+b^2+c^2$ xuất hiện khi bình phương $a+b+c$, và tổng các nghịch đảo bằng $0$ cho biết giá trị của tổng các tích đôi một.\n\n**Bước 1.** Quy đồng vế trái của điều kiện thứ hai để suy ra giá trị của tổng $ab+bc+ca$.\n\n**Bước 2.** Bình phương hai vế của điều kiện $a+b+c=1$ và khai triển bình phương của tổng ba số.\n\n**Bước 3.** Thay giá trị của $ab+bc+ca$ vừa tìm vào đẳng thức khai triển để tính $a^2+b^2+c^2$.\n\n**Chú ý:** Điều kiện $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$ cho sẵn $a,b,c\\neq0$, vì vậy mới được phép nhân với $abc$.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c\\neq0$ nên $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0\\Leftrightarrow\\dfrac{ab+bc+ca}{abc}=0$\n\n$\\Rightarrow ab+bc+ca=0$\n\nTừ $a+b+c=1$ suy ra $(a+b+c)^2=1$\n\n$\\Rightarrow a^2+b^2+c^2+2(ab+bc+ca)=1$\n\n$\\Rightarrow a^2+b^2+c^2=1$\n\nVậy $a^2+b^2+c^2=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 42): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.32b@p42",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, huyện An Lạc, tỉnh Vĩnh Phúc, năm học 2002 – 2003) Cho $a,b,c$ đôi một khác nhau thoả mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$. Chứng minh rằng trong ba số $a,b,c$ phải có một số âm và một số dương.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, huyện An Lạc, tỉnh Vĩnh Phúc, năm học 2002 – 2003) Cho $a,b,c$ đôi một khác nhau thoả mãn $\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}=0$. Chứng minh rằng trong ba số $a,b,c$ phải có một số âm và một số dương.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biến giả thiết thành tổng $\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}=0$ rồi để ý mỗi số hạng cùng dấu với tử của nó, nên nếu ba số $a,b,c$ không trái dấu thì tổng không thể bằng $0$.\n\n**Bước 1.** Chuyển hai phân thức sang một vế rồi nhân hai vế với $\\dfrac{1}{b-c}$ để xuất hiện $\\dfrac{a}{(b-c)^2}$.\n\n**Bước 2.** Quy đồng vế phải về mẫu chung $(a-b)(b-c)(c-a)$, rồi hoán vị vòng để viết thêm hai đẳng thức tương tự.\n\n**Bước 3.** Cộng ba đẳng thức theo vế, các tử triệt tiêu nên tổng ba phân thức bằng $0$.\n\n**Bước 4.** Giả sử ba số không đồng thời có số âm và số dương, tức là chúng cùng không âm hoặc cùng không dương, rồi xét dấu từng số hạng của tổng để tìm mâu thuẫn.\n\n**Phần 2. Trình bày**\n\nTừ giả thiết: $\\dfrac{a}{b-c}=-\\dfrac{b}{c-a}-\\dfrac{c}{a-b}$.\n\nNhân hai vế với $\\dfrac{1}{b-c}$:\n\n$\\dfrac{a}{(b-c)^2}=\\dfrac{-b(a-b)-c(c-a)}{(b-c)(c-a)(a-b)}=\\dfrac{b^2-ab+ac-c^2}{(a-b)(b-c)(c-a)}$ (1)\n\nHoán vị vòng $a\\to b\\to c\\to a$:\n\n$\\dfrac{b}{(c-a)^2}=\\dfrac{c^2-bc+ab-a^2}{(a-b)(b-c)(c-a)}$ (2)\n\n$\\dfrac{c}{(a-b)^2}=\\dfrac{a^2-ca+bc-b^2}{(a-b)(b-c)(c-a)}$ (3)\n\nCộng (1), (2), (3) theo vế, tử của vế phải bằng $0$ nên\n\n$\\dfrac{a}{(b-c)^2}+\\dfrac{b}{(c-a)^2}+\\dfrac{c}{(a-b)^2}=0$ (4)\n\nGiả sử trong ba số $a,b,c$ không có đồng thời một số âm và một số dương.\n\nKhi đó $a,b,c$ cùng không âm hoặc cùng không dương.\n\nNếu $a,b,c\\geq0$: vì các mẫu $(b-c)^2$, $(c-a)^2$, $(a-b)^2$ đều dương nên mỗi số hạng ở (4) không âm; tổng bằng $0$ nên cả ba số hạng bằng $0$, tức $a=b=c=0$.\n\nĐiều này mâu thuẫn với $a,b,c$ đôi một khác nhau.\n\nNếu $a,b,c\\leq0$: mỗi số hạng ở (4) không dương, lập luận tương tự cũng được $a=b=c=0$, mâu thuẫn.\n\nVậy trong ba số $a,b,c$ phải có một số âm và một số dương.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 42): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 42, lời giải bài 32b dòn) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.33@p42",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 1 – TP. Hồ Chí Minh, năm học 1999 – 2000) Cho $\\dfrac{x}{a}+\\dfrac{y}{b}+\\dfrac{z}{c}=1$ và $\\dfrac{a}{x}+\\dfrac{b}{y}+\\dfrac{c}{z}=0$. Chứng minh rằng $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}+\\dfrac{z^2}{c^2}=1$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 1 – TP. Hồ Chí Minh, năm học 1999 – 2000) Cho $\\dfrac{x}{a}+\\dfrac{y}{b}+\\dfrac{z}{c}=1$ và $\\dfrac{a}{x}+\\dfrac{b}{y}+\\dfrac{c}{z}=0$. Chứng minh rằng $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}+\\dfrac{z^2}{c^2}=1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bình phương điều kiện thứ nhất thì xuất hiện đúng tổng cần chứng minh cộng với các tích chéo, và các tích chéo ấy đưa được về điều kiện thứ hai.\n\n**Bước 1.** Bình phương hai vế của điều kiện thứ nhất rồi khai triển bình phương của tổng ba phân thức.\n\n**Bước 2.** Đặt $\\dfrac{xyz}{abc}$ làm nhân tử chung của ba tích chéo để thấy trong ngoặc là tổng ở điều kiện thứ hai.\n\n**Bước 3.** Thay tổng trong ngoặc bằng $0$ để các tích chéo triệt tiêu và rút ra kết luận.\n\n**Chú ý:** Các biến $a,b,c,x,y,z$ đều khác $0$ vì chúng nằm ở mẫu của giả thiết.\n\n**Phần 2. Trình bày**\n\nCác biến đều khác $0$ vì chúng nằm ở mẫu của giả thiết.\n\nBình phương hai vế của điều kiện thứ nhất:\n\n$\\left(\\dfrac{x}{a}+\\dfrac{y}{b}+\\dfrac{z}{c}\\right)^2=1$\n\n$\\Rightarrow\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}+\\dfrac{z^2}{c^2}+2\\left(\\dfrac{xy}{ab}+\\dfrac{xz}{ac}+\\dfrac{yz}{bc}\\right)=1$\n\nVì $\\dfrac{xy}{ab}=\\dfrac{xyz}{abc}\\cdot\\dfrac{c}{z}$, $\\dfrac{xz}{ac}=\\dfrac{xyz}{abc}\\cdot\\dfrac{b}{y}$, $\\dfrac{yz}{bc}=\\dfrac{xyz}{abc}\\cdot\\dfrac{a}{x}$ nên\n\n$\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}+\\dfrac{z^2}{c^2}+2\\cdot\\dfrac{xyz}{abc}\\left(\\dfrac{a}{x}+\\dfrac{b}{y}+\\dfrac{c}{z}\\right)=1$\n\nTheo điều kiện thứ hai, tổng trong ngoặc bằng $0$, do đó\n\n$\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}+\\dfrac{z^2}{c^2}=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 42): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.34@p43",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 1998 – 1999) Cho $a,b,c$ là ba số đôi một khác nhau. a) Tính $S=\\dfrac{ab}{(b-c)(c-a)}+\\dfrac{bc}{(c-a)(a-b)}+\\dfrac{ac}{(a-b)(b-c)}$. b) Chứng minh rằng $\\dfrac{a^2}{(b-c)^2}+\\dfrac{b^2}{(c-a)^2}+\\dfrac{c^2}{(a-b)^2}\\geq2$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 1998 – 1999) Cho $a,b,c$ là ba số đôi một khác nhau. a) Tính $S=\\dfrac{ab}{(b-c)(c-a)}+\\dfrac{bc}{(c-a)(a-b)}+\\dfrac{ac}{(a-b)(b-c)}$. b) Chứng minh rằng $\\dfrac{a^2}{(b-c)^2}+\\dfrac{b^2}{(c-a)^2}+\\dfrac{c^2}{(a-b)^2}\\geq2$.",
+  "dap_an": "a) $S=-1$; b) Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba phân thức $\\dfrac{a}{b-c}$, $\\dfrac{b}{c-a}$, $\\dfrac{c}{a-b}$ xuất hiện cả ở ý a (qua các tích đôi một) lẫn ý b (qua các bình phương), nên đặt chúng là $x,y,z$ để dùng $S=xy+yz+zx$ cho cả hai ý.\n\n**Bước 1.** Đặt $x,y,z$ lần lượt bằng ba phân thức trên và nhận ra mỗi số hạng của $S$ là một tích hai trong ba số đó.\n\n**Bước 2.** Viết $x\\pm1$, $y\\pm1$, $z\\pm1$ thành phân thức rồi so sánh hai tích $(x+1)(y+1)(z+1)$ và $(x-1)(y-1)(z-1)$, hai tích này có cùng tử và cùng mẫu.\n\n**Bước 3.** Khai triển hai vế của đẳng thức vừa có để rút ra giá trị của $xy+yz+zx$, từ đó suy ra giá trị của $S$.\n\n**Bước 4.** Ở ý b, khai triển bình phương $(x+y+z)^2\\geq0$ và thay giá trị của $xy+yz+zx$ vừa tìm để đánh giá $x^2+y^2+z^2$.\n\n**Chú ý:** Cũng có thể quy đồng $S$ ở ý a rồi biến đổi tử thức thành tích $(a-b)(b-c)(c-a)$, nhưng cách đặt ẩn phụ ở trên tiện hơn vì dùng lại được cho ý b.\n\n**Phần 2. Trình bày**\n\na) Vì $a,b,c$ đôi một khác nhau nên các mẫu khác $0$.\n\nĐặt $x=\\dfrac{a}{b-c}$, $y=\\dfrac{b}{c-a}$, $z=\\dfrac{c}{a-b}$, khi đó $S=xy+yz+zx$.\n\nTa có $x+1=\\dfrac{a+b-c}{b-c}$, $y+1=\\dfrac{b+c-a}{c-a}$, $z+1=\\dfrac{c+a-b}{a-b}$\n\nvà $x-1=\\dfrac{a-b+c}{b-c}$, $y-1=\\dfrac{b-c+a}{c-a}$, $z-1=\\dfrac{c-a+b}{a-b}$.\n\nTử của hai tích $(x+1)(y+1)(z+1)$ và $(x-1)(y-1)(z-1)$ đều là tích ba thừa số $a+b-c$, $b+c-a$, $c+a-b$, còn mẫu đều là $(b-c)(c-a)(a-b)$, nên\n\n$(x+1)(y+1)(z+1)=(x-1)(y-1)(z-1)$\n\n$\\Leftrightarrow xyz+(xy+yz+zx)+(x+y+z)+1=xyz-(xy+yz+zx)+(x+y+z)-1$\n\n$\\Leftrightarrow2(xy+yz+zx)=-2$\n\n$\\Leftrightarrow xy+yz+zx=-1$\n\nVậy $S=-1$.\n\nb) Ta có $(x+y+z)^2\\geq0$\n\n$\\Rightarrow x^2+y^2+z^2\\geq-2(xy+yz+zx)$\n\nTheo câu a, $xy+yz+zx=-1$, suy ra $x^2+y^2+z^2\\geq2$.\n\nVậy $\\dfrac{a^2}{(b-c)^2}+\\dfrac{b^2}{(c-a)^2}+\\dfrac{c^2}{(a-b)^2}\\geq2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Đặt ẩn phụ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 43): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 43, lời giải bài 34: (x-) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.35a@p44",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Biến đổi biểu thức sau thành một phân thức đại số: $\\dfrac{1+\\dfrac{2}{x}}{1-\\dfrac{2}{x}}$.",
+  "noi_dung_sach": "Biến đổi biểu thức sau thành một phân thức đại số: $\\dfrac{1+\\dfrac{2}{x}}{1-\\dfrac{2}{x}}$.",
+  "dap_an": "$\\dfrac{x+2}{x-2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu của biểu thức đều còn chứa phân thức nhỏ $\\dfrac{2}{x}$, nên phải gộp riêng tử và mẫu thành từng phân thức trước rồi mới thực hiện phép chia.\n\n**Bước 1.** Quy đồng ở tử thức: viết số $1$ thành phân thức có mẫu $x$ rồi cộng với $\\dfrac{2}{x}$ để tử thức thành một phân thức.\n\n**Bước 2.** Làm tương tự ở mẫu thức: quy đồng $1-\\dfrac{2}{x}$ về một phân thức có mẫu $x$.\n\n**Bước 3.** Coi biểu thức là phép chia hai phân thức, đổi thành nhân với phân thức nghịch đảo rồi rút gọn nhân tử $x$ chung.\n\n**Chú ý:** Biểu thức chỉ có nghĩa khi $x\\ne0$ (vì có $\\dfrac{2}{x}$) và mẫu lớn khác $0$, tức $1-\\dfrac{2}{x}\\ne0$.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x\\ne0$ và $x\\ne2$.\n\n$\\dfrac{1+\\dfrac{2}{x}}{1-\\dfrac{2}{x}}=\\dfrac{\\dfrac{x+2}{x}}{\\dfrac{x-2}{x}}$\n\n$=\\dfrac{x+2}{x}\\cdot\\dfrac{x}{x-2}$\n\n$=\\dfrac{x+2}{x-2}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 44): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 35)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.35b@p44",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Biến đổi biểu thức sau thành một phân thức đại số: $\\dfrac{x+\\dfrac{1}{y}}{y+\\dfrac{1}{x}}$.",
+  "noi_dung_sach": "Biến đổi biểu thức sau thành một phân thức đại số: $\\dfrac{x+\\dfrac{1}{y}}{y+\\dfrac{1}{x}}$.",
+  "dap_an": "$\\dfrac{x}{y}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều là tổng của một biểu thức nguyên với một phân thức, nên quy đồng riêng từng phần sẽ thấy hai phân thức có cùng tử thức, khi chia cho nhau thì rút gọn được.\n\n**Bước 1.** Quy đồng ở tử thức: viết $x+\\dfrac{1}{y}$ thành một phân thức có mẫu $y$.\n\n**Bước 2.** Quy đồng ở mẫu thức: viết $y+\\dfrac{1}{x}$ thành một phân thức có mẫu $x$.\n\n**Bước 3.** Đổi phép chia hai phân thức thành phép nhân với phân thức nghịch đảo rồi rút gọn nhân tử chung ở tử và mẫu.\n\n**Chú ý:** Điều kiện để biểu thức có nghĩa là $x\\ne0$, $y\\ne0$ và mẫu lớn khác $0$, tức $xy+1\\ne0$.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x\\ne0$, $y\\ne0$, $xy\\ne-1$.\n\n$\\dfrac{x+\\dfrac{1}{y}}{y+\\dfrac{1}{x}}=\\dfrac{\\dfrac{xy+1}{y}}{\\dfrac{xy+1}{x}}$\n\n$=\\dfrac{xy+1}{y}\\cdot\\dfrac{x}{xy+1}$\n\n$=\\dfrac{x}{y}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 44): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 35)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.36a@p44",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Với giá trị nào của $x$ thì giá trị của phân thức $\\dfrac{7x}{5x-15}$ được xác định?",
+  "noi_dung_sach": "Với giá trị nào của $x$ thì giá trị của phân thức $\\dfrac{7x}{5x-15}$ được xác định?",
+  "dap_an": "$x\\ne3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giá trị của một phân thức chỉ được xác định khi mẫu thức khác $0$, nên việc cần làm là tìm giá trị của $x$ làm mẫu bằng $0$ để loại ra.\n\n**Bước 1.** Viết điều kiện mẫu thức của phân thức phải khác $0$.\n\n**Bước 2.** Chuyển hạng tử tự do sang vế phải rồi chia hai vế cho hệ số của $x$ để biết $x$ không được nhận giá trị nào.\n\n**Bước 3.** Kết luận phân thức xác định với mọi $x$ trừ giá trị vừa tìm.\n\n**Phần 2. Trình bày**\n\nPhân thức xác định khi $5x-15\\ne0$\n\n$\\Leftrightarrow 5x\\ne15$\n\n$\\Leftrightarrow x\\ne3$\n\nVậy phân thức xác định khi $x\\ne3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 44): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 36)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.36b@p44",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Với giá trị nào của $x$ thì giá trị của phân thức $\\dfrac{x+4}{x^2-9}$ được xác định?",
+  "noi_dung_sach": "Với giá trị nào của $x$ thì giá trị của phân thức $\\dfrac{x+4}{x^2-9}$ được xác định?",
+  "dap_an": "$x\\ne3$ và $x\\ne-3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức xác định khi mẫu khác $0$, mà mẫu $x^2-9$ là hiệu hai bình phương nên phân tích thành tích để tìm hết các giá trị làm mẫu bằng $0$.\n\n**Bước 1.** Viết điều kiện mẫu thức khác $0$.\n\n**Bước 2.** Phân tích mẫu thành nhân tử bằng hằng đẳng thức hiệu hai bình phương.\n\n**Bước 3.** Một tích khác $0$ khi và chỉ khi từng nhân tử khác $0$, từ đó suy ra các giá trị $x$ bị loại.\n\n**Phần 2. Trình bày**\n\nPhân thức xác định khi $x^2-9\\ne0$\n\n$\\Leftrightarrow (x-3)(x+3)\\ne0$\n\n$\\Leftrightarrow x\\ne3$ và $x\\ne-3$\n\nVậy phân thức xác định khi $x\\ne3$ và $x\\ne-3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 44): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 36)"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.37@p45",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho phân thức $\\dfrac{x^2-x}{x^2-1}$. Tính giá trị của phân thức tại $x=2009$.",
+  "noi_dung_sach": "Cho phân thức $\\dfrac{x^2-x}{x^2-1}$. Tính giá trị của phân thức tại $x=2009$.",
+  "dap_an": "$\\dfrac{2009}{2010}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với số lớn như $2009$ thì không nên thay thẳng vào phân thức, mà rút gọn trước rồi mới thay, miễn là giá trị đó nằm trong điều kiện xác định.\n\n**Bước 1.** Tìm điều kiện của $x$ để phân thức có nghĩa, rồi kiểm tra $x=2009$ có thoả mãn điều kiện đó không.\n\n**Bước 2.** Phân tích cả tử và mẫu thành nhân tử rồi rút gọn nhân tử chung.\n\n**Bước 3.** Thay $x=2009$ vào phân thức đã rút gọn để tính giá trị.\n\n**Chú ý:** Phân thức rút gọn và phân thức ban đầu chỉ có cùng giá trị tại những $x$ mà phân thức ban đầu xác định.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x^2-1\\ne0\\Leftrightarrow x\\ne\\pm1$.\n\nGiá trị $x=2009$ thoả mãn điều kiện.\n\nVới $x\\ne\\pm1$:\n\n$\\dfrac{x^2-x}{x^2-1}=\\dfrac{x(x-1)}{(x+1)(x-1)}$\n\n$=\\dfrac{x}{x+1}$\n\nTại $x=2009$: $\\dfrac{2009}{2009+1}=\\dfrac{2009}{2010}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 45): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 37)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.38a@p45",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của $x$ để phân thức $\\dfrac{x-4}{x+2}$ bằng $0$.",
+  "noi_dung_sach": "Tìm giá trị của $x$ để phân thức $\\dfrac{x-4}{x+2}$ bằng $0$.",
+  "dap_an": "$S=\\{4\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một phân thức bằng $0$ khi và chỉ khi tử thức bằng $0$ và mẫu thức khác $0$, chứ không chỉ cần tử bằng $0$.\n\n**Bước 1.** Cho tử thức bằng $0$ để tìm giá trị cần xét của $x$.\n\n**Bước 2.** Kiểm tra giá trị đó có làm mẫu thức bằng $0$ hay không.\n\n**Bước 3.** Chỉ giữ lại giá trị thoả mãn cả hai điều kiện rồi kết luận.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x-4}{x+2}=0\\Leftrightarrow x-4=0$ và $x+2\\ne0$\n\n$\\Leftrightarrow x=4$ và $x\\ne-2$\n\n$\\Leftrightarrow x=4$\n\nVậy $S=\\{4\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 45): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 38)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.38b@p45",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010604",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của $x$ để phân thức $\\dfrac{x^2+5x}{x^2-25}$ bằng $0$.",
+  "noi_dung_sach": "Tìm giá trị của $x$ để phân thức $\\dfrac{x^2+5x}{x^2-25}$ bằng $0$.",
+  "dap_an": "$S=\\{0\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức bằng $0$ khi tử bằng $0$ và mẫu khác $0$; ở đây tử và mẫu đều phân tích được, nên giá trị làm tử bằng $0$ có thể trùng với giá trị làm mẫu bằng $0$ và phải bị loại.\n\n**Bước 1.** Phân tích tử thức và mẫu thức thành nhân tử.\n\n**Bước 2.** Cho tử thức bằng $0$ để tìm các giá trị của $x$ làm tử triệt tiêu.\n\n**Bước 3.** Loại những giá trị làm mẫu thức bằng $0$ rồi kết luận.\n\n**Chú ý:** Nghiệm $x=-5$ của tử làm mẫu bằng $0$ nên bị loại; đây là chỗ học sinh hay quên.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2+5x}{x^2-25}=0\\Leftrightarrow x^2+5x=0$ và $x^2-25\\ne0$\n\n$\\Leftrightarrow x(x+5)=0$ và $(x+5)(x-5)\\ne0$\n\n$\\Leftrightarrow (x=0$ hoặc $x=-5)$ và $x\\ne-5$, $x\\ne5$\n\n$\\Leftrightarrow x=0$\n\nVậy $S=\\{0\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 45): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "kiem_dang": {
+   "ket_qua": "dat",
+   "ghi_chu": "luật máy (CEO 10/10): câu tầng \"Bài tập cơ bản\" của sách ⇒ nhóm Kiến thức cơ bản của bài học chứa nó (bài 38)"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.39@p45",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho biểu thức $\\left(-\\dfrac{-2x+10}{x}+\\dfrac{5x+50}{x^2+5x}+\\dfrac{x^2}{5x+25}\\right):\\dfrac{3x+15}{7}$.\n\na) Hãy tìm điều kiện của $x$ để giá trị của phân thức được xác định.\n\nb) Chứng minh rằng khi giá trị của biểu thức được xác định thì nó không phụ thuộc vào giá trị của biến $x$.",
+  "noi_dung_sach": "Cho biểu thức $\\left(-\\dfrac{-2x+10}{x}+\\dfrac{5x+50}{x^2+5x}+\\dfrac{x^2}{5x+25}\\right):\\dfrac{3x+15}{7}$.\n\na) Hãy tìm điều kiện của $x$ để giá trị của phân thức được xác định.\n\nb) Chứng minh rằng khi giá trị của biểu thức được xác định thì nó không phụ thuộc vào giá trị của biến $x$.",
+  "dap_an": "a) $x\\ne0$ và $x\\ne-5$; b) biểu thức luôn bằng $\\dfrac{7}{15}$, không phụ thuộc vào $x$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi mẫu thức đều phân tích được thành nhân tử chứa $x$ hoặc $x+5$, nên phân tích mẫu trước vừa cho điều kiện xác định, vừa cho mẫu chung để cộng các phân thức.\n\n**Bước 1.** Phân tích các mẫu thức và biểu thức số chia thành nhân tử, rồi cho từng nhân tử khác $0$ để tìm điều kiện của $x$ (nhớ rằng số chia cũng phải khác $0$).\n\n**Bước 2.** Đưa dấu trừ vào tử của phân thức đầu, quy đồng ba phân thức trong ngoặc về mẫu chung $5x(x+5)$ rồi cộng các tử thức.\n\n**Bước 3.** Phân tích tử thức vừa cộng được thành nhân tử, đổi phép chia thành phép nhân với phân thức nghịch đảo rồi rút gọn đến khi không còn biến.\n\n**Chú ý:** Điều kiện xác định phải được nêu trước khi rút gọn, vì khi rút gọn đã bỏ các nhân tử $x$ và $x+5$.\n\n**Phần 2. Trình bày**\n\na) Ta có $x^2+5x=x(x+5)$, $5x+25=5(x+5)$, $3x+15=3(x+5)$.\n\nBiểu thức xác định khi các mẫu và số chia khác $0$, tức $x\\ne0$ và $x+5\\ne0$.\n\nVậy điều kiện xác định: $x\\ne0$ và $x\\ne-5$.\n\nb) Với $x\\ne0$, $x\\ne-5$, gọi biểu thức là $P$:\n\n$P=\\left(\\dfrac{2x-10}{x}+\\dfrac{5x+50}{x(x+5)}+\\dfrac{x^2}{5(x+5)}\\right):\\dfrac{3(x+5)}{7}$\n\n$=\\dfrac{5(2x-10)(x+5)+5(5x+50)+x^3}{5x(x+5)}:\\dfrac{3(x+5)}{7}$\n\n$=\\dfrac{10x^2-250+25x+250+x^3}{5x(x+5)}:\\dfrac{3(x+5)}{7}$\n\n$=\\dfrac{x(x+5)^2}{5x(x+5)}\\cdot\\dfrac{7}{3(x+5)}$\n\n$=\\dfrac{7}{15}$\n\nVậy khi biểu thức xác định thì nó luôn bằng $\\dfrac{7}{15}$, không phụ thuộc vào giá trị của $x$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 45): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.40a@p46",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Viết phân thức sau dưới dạng tổng của một đa thức và một phân thức với tử thức là một hằng số, rồi tìm các giá trị nguyên của $x$ để giá trị của phân thức cũng là số nguyên: $\\dfrac{4x^2+25x-16}{x+7}$.",
+  "noi_dung_sach": "Viết phân thức sau dưới dạng tổng của một đa thức và một phân thức với tử thức là một hằng số, rồi tìm các giá trị nguyên của $x$ để giá trị của phân thức cũng là số nguyên: $\\dfrac{4x^2+25x-16}{x+7}$.",
+  "dap_an": "$4x-3+\\dfrac{5}{x+7}$; $S=\\{-12;-8;-6;-2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bậc của tử lớn hơn bậc của mẫu nên chia đa thức để tách phần đa thức ra, phần còn lại có tử là hằng số; khi đó $x$ nguyên thì phân thức nguyên chỉ khi mẫu là ước của hằng số đó.\n\n**Bước 1.** Chia tử cho mẫu (hoặc tách từng hạng tử của tử theo $x+7$) để tìm thương và số dư.\n\n**Bước 2.** Viết phân thức bằng thương cộng với số dư chia cho $x+7$, rồi nhận xét phần đa thức luôn nguyên khi $x$ nguyên.\n\n**Bước 3.** Cho $x+7$ là ước của số dư, liệt kê các ước, giải ra $x$ và đối chiếu điều kiện mẫu khác $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4x^2+25x-16}{x+7}=\\dfrac{4x(x+7)-3(x+7)+5}{x+7}$\n\n$=4x-3+\\dfrac{5}{x+7}$\n\nVới $x$ nguyên, $4x-3$ là số nguyên nên phân thức có giá trị nguyên $\\Leftrightarrow\\dfrac{5}{x+7}$ là số nguyên $\\Leftrightarrow x+7$ là ước của $5$.\n\n$x+7\\in\\{1;-1;5;-5\\}$\n\n$\\Leftrightarrow x\\in\\{-6;-8;-2;-12\\}$ (đều thoả mãn $x\\ne-7$)\n\nVậy $S=\\{-12;-8;-6;-2\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên của phân thức",
+   "ước của số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 46): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.40b@p46",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để giá trị của biểu thức $\\dfrac{18}{-x}\\left(\\dfrac{x^2+x}{5x^2-10x+5}:\\dfrac{3x+3}{5x-5}\\right)$ là số nguyên.",
+  "noi_dung_sach": "Tìm các giá trị nguyên của $x$ để giá trị của biểu thức $\\dfrac{18}{-x}\\left(\\dfrac{x^2+x}{5x^2-10x+5}:\\dfrac{3x+3}{5x-5}\\right)$ là số nguyên.",
+  "dap_an": "$\\dfrac{-6}{x-1}$; $S=\\{-5;-2;2;3;4;7\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức phức tạp phải rút gọn về dạng một phân thức có tử là hằng số, khi đó giá trị nguyên của $x$ làm phân thức nguyên chính là các giá trị làm mẫu là ước của hằng số.\n\n**Bước 1.** Tìm điều kiện xác định: mọi mẫu và số chia đều phải khác $0$.\n\n**Bước 2.** Phân tích tử và mẫu của hai phân thức trong ngoặc thành nhân tử, đổi phép chia thành phép nhân rồi rút gọn.\n\n**Bước 3.** Nhân với phân thức ngoài ngoặc để được phân thức có tử là hằng số.\n\n**Bước 4.** Cho mẫu là ước của hằng số, liệt kê, giải $x$ rồi loại các giá trị vi phạm điều kiện xác định.\n\n**Chú ý:** Phép chia trong ngoặc làm xuất hiện thêm điều kiện $x\\ne-1$ (số chia $\\dfrac{3x+3}{5x-5}$ phải khác $0$), nên giá trị $x=-1$ bị loại dù sau rút gọn không còn thấy.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $-x\\ne0$, $5x^2-10x+5=5(x-1)^2\\ne0$, $5x-5\\ne0$, $3x+3\\ne0$, tức $x\\ne0$, $x\\ne1$, $x\\ne-1$.\n\n$\\dfrac{18}{-x}\\left(\\dfrac{x^2+x}{5x^2-10x+5}:\\dfrac{3x+3}{5x-5}\\right)=\\dfrac{18}{-x}\\left[\\dfrac{x(x+1)}{5(x-1)^2}:\\dfrac{3(x+1)}{5(x-1)}\\right]$\n\n$=\\dfrac{18}{-x}\\cdot\\dfrac{x(x+1)}{5(x-1)^2}\\cdot\\dfrac{5(x-1)}{3(x+1)}$\n\n$=\\dfrac{18}{-x}\\cdot\\dfrac{x}{3(x-1)}$\n\n$=\\dfrac{-6}{x-1}$\n\nVới $x$ nguyên, biểu thức là số nguyên $\\Leftrightarrow x-1$ là ước của $6$\n\n$\\Leftrightarrow x-1\\in\\{\\pm1;\\pm2;\\pm3;\\pm6\\}$\n\n$\\Leftrightarrow x\\in\\{0;2;-1;3;-2;4;-5;7\\}$\n\nLoại $x=0$ và $x=-1$ (không thoả mãn điều kiện).\n\nVậy $S=\\{-5;-2;2;3;4;7\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "ước của số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 46): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.41@p46",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 3 – Tp. Hồ Chí Minh, năm học 1996 – 1997) Cho phân thức $M=\\dfrac{x^5-2x^4+2x^3-4x^2-3x+6}{x^2+2x-8}$.\n\na) Tìm tập xác định của $M$.\n\nb) Tìm các giá trị của $x$ để $M=0$.\n\nc) Rút gọn $M$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 3 – Tp. Hồ Chí Minh, năm học 1996 – 1997) Cho phân thức $M=\\dfrac{x^5-2x^4+2x^3-4x^2-3x+6}{x^2+2x-8}$.\n\na) Tìm tập xác định của $M$.\n\nb) Tìm các giá trị của $x$ để $M=0$.\n\nc) Rút gọn $M$.",
+  "dap_an": "a) $x\\ne2$, $x\\ne-4$; b) $S=\\{1;-1\\}$; c) $M=\\dfrac{(x^2+3)(x^2-1)}{x+4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu phân tích được thành $(x-2)(x+4)$ và tử nhóm hạng tử cũng cho nhân tử $x-2$, nên một lần phân tích vừa cho tập xác định, vừa cho nghiệm của tử, vừa cho phép rút gọn.\n\n**Bước 1.** Phân tích mẫu thức thành nhân tử rồi cho từng nhân tử khác $0$ để tìm tập xác định.\n\n**Bước 2.** Nhóm các hạng tử của tử thức theo luỹ thừa giảm dần của $x$ để đặt nhân tử chung $x-2$, rồi phân tích tiếp nhân tử bậc bốn bằng hiệu hai bình phương.\n\n**Bước 3.** Cho tử thức bằng $0$, giải từng nhân tử và loại các giá trị không thuộc tập xác định để trả lời ý b).\n\n**Bước 4.** Với $x$ thuộc tập xác định, rút gọn nhân tử $x-2$ chung của tử và mẫu để được dạng gọn của $M$.\n\n**Chú ý:** Nghiệm $x=2$ của tử làm mẫu bằng $0$ nên phải loại, không được tính vào đáp số của ý b).\n\n**Phần 2. Trình bày**\n\na) $M$ có nghĩa $\\Leftrightarrow x^2+2x-8\\ne0$\n\n$\\Leftrightarrow(x-2)(x+4)\\ne0$\n\n$\\Leftrightarrow x\\ne2$ và $x\\ne-4$\n\nVậy tập xác định của $M$ là $\\mathbb{R}\\setminus\\{2;-4\\}$.\n\nb) Điều kiện: $x\\ne2$, $x\\ne-4$.\n\nPhân tích tử thức:\n\n$x^5-2x^4+2x^3-4x^2-3x+6=x^4(x-2)+2x^2(x-2)-3(x-2)$\n\n$=(x-2)(x^4+2x^2-3)$\n\n$=(x-2)[(x^2+1)^2-4]$\n\n$=(x-2)(x^2+3)(x^2-1)$\n\n$M=0\\Leftrightarrow(x-2)(x^2+3)(x^2-1)=0$\n\n$\\Leftrightarrow x=2$ hoặc $x^2+3=0$ (vô nghiệm vì $x^2+3>0$) hoặc $x=\\pm1$\n\nLoại $x=2$ (không thuộc tập xác định).\n\nVậy $S=\\{1;-1\\}$.\n\nc) Với $x\\ne2$, $x\\ne-4$:\n\n$M=\\dfrac{(x-2)(x^2+3)(x^2-1)}{(x-2)(x+4)}$\n\n$=\\dfrac{(x^2+3)(x^2-1)}{x+4}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 46): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.42@p47",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Gia Thiều, Quận Tân Bình, TP. Hồ Chí Minh, năm học 2002 – 2003) Cho biểu thức $A=\\dfrac{(x^2+y)\\left(\\dfrac{1}{4}+y\\right)+x^2y^2+\\dfrac{3}{4}\\left(\\dfrac{1}{3}+y\\right)}{x^2y^2+1+(x^2-y)(1-y)}$.\n\na) Tìm tập xác định của $A$.\n\nb) Chứng minh rằng giá trị của $A$ không phụ thuộc vào $x$.\n\nc) Tìm giá trị nhỏ nhất của $A$ và giá trị tương ứng của $y$ (nếu có).",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Gia Thiều, Quận Tân Bình, TP. Hồ Chí Minh, năm học 2002 – 2003) Cho biểu thức $A=\\dfrac{(x^2+y)\\left(\\dfrac{1}{4}+y\\right)+x^2y^2+\\dfrac{3}{4}\\left(\\dfrac{1}{3}+y\\right)}{x^2y^2+1+(x^2-y)(1-y)}$.\n\na) Tìm tập xác định của $A$.\n\nb) Chứng minh rằng giá trị của $A$ không phụ thuộc vào $x$.\n\nc) Tìm giá trị nhỏ nhất của $A$ và giá trị tương ứng của $y$ (nếu có).",
+  "dap_an": "a) $x,y\\in\\mathbb{R}$; b) $A=\\dfrac{y^2+y+\\dfrac{1}{4}}{y^2-y+1}$ không phụ thuộc vào $x$; c) giá trị nhỏ nhất của $A$ là $0$ khi $y=-\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả tử lẫn mẫu sau khi khai triển và nhóm theo $x^2$ đều có nhân tử chung $x^2+1$, nên rút gọn xong thì $x$ biến mất và cả ba ý đều làm được trên dạng rút gọn.\n\n**Bước 1.** Khai triển mẫu thức, nhóm các hạng tử theo $x^2$ để phân tích thành tích, rồi chứng tỏ từng nhân tử luôn dương để kết luận tập xác định.\n\n**Bước 2.** Khai triển tử thức, nhóm theo $x^2$ để thấy nhân tử $x^2+1$ giống nhân tử ở mẫu rồi rút gọn nhân tử đó.\n\n**Bước 3.** Viết tử dưới dạng bình phương và mẫu dưới dạng bình phương cộng một số dương, rồi so sánh với $0$ để tìm giá trị nhỏ nhất và dấu bằng.\n\n**Chú ý:** Giá trị nhỏ nhất tìm được không phụ thuộc vào $x$ nên với mọi $x$ ta đều có $A\\ge0$.\n\n**Phần 2. Trình bày**\n\nGọi $T$ là tử thức và $D$ là mẫu thức của $A$.\n\na) $D=x^2y^2+1+x^2-x^2y-y+y^2$\n\n$=x^2y^2-x^2y+x^2+y^2-y+1$\n\n$=x^2(y^2-y+1)+(y^2-y+1)$\n\n$=(y^2-y+1)(x^2+1)$\n\nVì $y^2-y+1=\\left(y-\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ và $x^2+1>0$ nên $D>0$ với mọi $x,y$.\n\nVậy $A$ xác định với mọi $x,y\\in\\mathbb{R}$.\n\nb) $T=\\dfrac{1}{4}x^2+x^2y+\\dfrac{1}{4}y+y^2+x^2y^2+\\dfrac{1}{4}+\\dfrac{3}{4}y$\n\n$=x^2y^2+x^2y+\\dfrac{1}{4}x^2+y^2+y+\\dfrac{1}{4}$\n\n$=x^2\\left(y^2+y+\\dfrac{1}{4}\\right)+\\left(y^2+y+\\dfrac{1}{4}\\right)$\n\n$=\\left(y^2+y+\\dfrac{1}{4}\\right)(x^2+1)$\n\n$A=\\dfrac{\\left(y^2+y+\\dfrac{1}{4}\\right)(x^2+1)}{(y^2-y+1)(x^2+1)}$\n\n$=\\dfrac{y^2+y+\\dfrac{1}{4}}{y^2-y+1}$\n\nVậy giá trị của $A$ không phụ thuộc vào $x$.\n\nc) $A=\\dfrac{\\left(y+\\dfrac{1}{2}\\right)^2}{\\left(y-\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}}$\n\nTử $\\ge0$, mẫu $>0$ nên $A\\ge0$.\n\nDấu \"$=$\" xảy ra $\\Leftrightarrow y+\\dfrac{1}{2}=0\\Leftrightarrow y=-\\dfrac{1}{2}$.\n\nVậy giá trị nhỏ nhất của $A$ là $0$, đạt khi $y=-\\dfrac{1}{2}$ (với $x$ bất kì).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "bình phương không âm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 47): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.43@p48",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận Tân Bình – TP. Hồ Chí Minh, năm học 2001 – 2002) Cho các biểu thức sau: $A=\\dfrac{x^2+2x+1}{x^2-4x+5}$ và $B=\\dfrac{2x^2-8x+10}{x^3-x^2-5x-3}$.\n\na) Tìm điều kiện để $B$ có nghĩa.\n\nb) Tìm giá trị bé nhất của $A$ và giá trị tương ứng của $x$.\n\nc) Tìm giá trị của $x$ để $A\\cdot B<0$.",
+  "noi_dung_sach": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận Tân Bình – TP. Hồ Chí Minh, năm học 2001 – 2002) Cho các biểu thức sau: $A=\\dfrac{x^2+2x+1}{x^2-4x+5}$ và $B=\\dfrac{2x^2-8x+10}{x^3-x^2-5x-3}$.\n\na) Tìm điều kiện để $B$ có nghĩa.\n\nb) Tìm giá trị bé nhất của $A$ và giá trị tương ứng của $x$.\n\nc) Tìm giá trị của $x$ để $A\\cdot B<0$.",
+  "dap_an": "a) $x\\ne3$ và $x\\ne-1$; b) giá trị nhỏ nhất của $A$ là $0$ khi $x=-1$; c) $x<3$ và $x\\ne-1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu của $B$ là đa thức bậc ba nên phải phân tích thành nhân tử mới tìm được điều kiện; còn $A$ có tử là bình phương và mẫu đưa được về bình phương cộng $1$ nên so sánh với $0$ được ngay.\n\n**Bước 1.** Phân tích mẫu của $B$ thành nhân tử bằng cách tách hạng tử để nhóm, rồi cho từng nhân tử khác $0$ để tìm điều kiện có nghĩa.\n\n**Bước 2.** Viết mẫu của $A$ dưới dạng bình phương một biểu thức cộng một số dương, từ đó suy ra $A$ không âm và tìm dấu bằng.\n\n**Bước 3.** Nhân $A$ với $B$, phân tích tử và mẫu thành nhân tử rồi rút gọn để được một phân thức đơn giản, nhớ giữ điều kiện xác định của $B$.\n\n**Bước 4.** Phân thức tích âm khi tử và mẫu trái dấu; giải bất phương trình rồi kết hợp với điều kiện xác định.\n\n**Chú ý:** Khi giải ý c) phải giữ điều kiện $x\\ne-1$ và $x\\ne3$ của $B$, vì $x=-1$ làm mẫu của $B$ bằng $0$ dù sau rút gọn không còn thấy nhân tử $x+1$.\n\n**Phần 2. Trình bày**\n\na) $B$ có nghĩa $\\Leftrightarrow x^3-x^2-5x-3\\ne0$\n\nTa có $x^3-x^2-5x-3=x^3-3x^2+2x^2-6x+x-3$\n\n$=x^2(x-3)+2x(x-3)+(x-3)$\n\n$=(x-3)(x^2+2x+1)$\n\n$=(x-3)(x+1)^2$\n\nDo đó $B$ có nghĩa $\\Leftrightarrow(x-3)(x+1)^2\\ne0\\Leftrightarrow x\\ne3$ và $x\\ne-1$.\n\nb) $A=\\dfrac{(x+1)^2}{x^2-4x+4+1}$\n\n$=\\dfrac{(x+1)^2}{(x-2)^2+1}$\n\nVì $(x+1)^2\\ge0$ và $(x-2)^2+1\\ge1>0$ với mọi $x$ nên $A\\ge0$.\n\nDấu \"$=$\" xảy ra $\\Leftrightarrow x+1=0\\Leftrightarrow x=-1$.\n\nVậy giá trị nhỏ nhất của $A$ là $0$, đạt khi $x=-1$.\n\nc) Với $x\\ne3$, $x\\ne-1$:\n\n$A\\cdot B=\\dfrac{(x+1)^2}{x^2-4x+5}\\cdot\\dfrac{2(x^2-4x+5)}{(x-3)(x+1)^2}$\n\n$=\\dfrac{2}{x-3}$\n\n$A\\cdot B<0\\Leftrightarrow\\dfrac{2}{x-3}<0\\Leftrightarrow x-3<0\\Leftrightarrow x<3$\n\nKết hợp điều kiện $x\\ne-1$.\n\nVậy $A\\cdot B<0$ khi $x<3$ và $x\\ne-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 48): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.44@p48",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $A=\\left(\\dfrac{1-x^3}{1-x}+x\\right)\\left(\\dfrac{1+x^3}{1+x}-x\\right)$. a) Rút gọn $A$. b) Tìm $x$ để $A=64$.",
+  "noi_dung_sach": "Cho $A=\\left(\\dfrac{1-x^3}{1-x}+x\\right)\\left(\\dfrac{1+x^3}{1+x}-x\\right)$. a) Rút gọn $A$. b) Tìm $x$ để $A=64$.",
+  "dap_an": "a) $A=(1-x^2)^2$; b) $S=\\{3;-3\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử của mỗi phân thức trong ngoặc là hiệu hoặc tổng hai lập phương, chia được cho mẫu bằng hằng đẳng thức, nên mỗi ngoặc rút về một tam thức bậc hai viết được thành bình phương.\n\n**Bước 1.** Nêu điều kiện để các mẫu khác $0$, rồi rút gọn từng phân thức trong ngoặc bằng hằng đẳng thức hiệu và tổng hai lập phương.\n\n**Bước 2.** Cộng hoặc trừ $x$ để mỗi ngoặc thành một bình phương, rồi gộp hai bình phương cùng số mũ thành bình phương của một tích.\n\n**Bước 3.** Thay biểu thức rút gọn vào $A=64$, rồi tách thành hai trường hợp theo dấu của biểu thức nằm trong bình phương.\n\n**Bước 4.** Giải từng trường hợp, loại giá trị không thoả điều kiện xác định rồi kết luận tập nghiệm.\n\n**Chú ý:** Phải nêu điều kiện $x\\ne\\pm1$ trước khi rút gọn, và kiểm tra các nghiệm tìm được có thoả điều kiện đó.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $1-x\\ne0$ và $1+x\\ne0$, tức $x\\ne\\pm1$.\n\na) $A=\\left(\\dfrac{(1-x)(1+x+x^2)}{1-x}+x\\right)\\left(\\dfrac{(1+x)(1-x+x^2)}{1+x}-x\\right)$\n\n$=(1+x+x^2+x)(1-x+x^2-x)$\n\n$=(x+1)^2(x-1)^2=[(x+1)(x-1)]^2$\n\n$=(x^2-1)^2=(1-x^2)^2$\n\nb) $A=64\\Leftrightarrow(1-x^2)^2=64$\n\n$\\Leftrightarrow1-x^2=8$ hoặc $1-x^2=-8$\n\n$\\Leftrightarrow x^2=-7$ (loại vì $x^2\\ge0$) hoặc $x^2=9$\n\n$\\Leftrightarrow x=\\pm3$ (thoả điều kiện)\n\nVậy $S=\\{3;-3\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 48): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.45a@p49",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm điều kiện của $x$ để giá trị của phân thức sau được xác định: $\\left(\\dfrac{x+5}{x^2}+\\dfrac{4-x}{x^2-5x}\\right)\\cdot\\dfrac{x-2}{x^2+5x}$.",
+  "noi_dung_sach": "Tìm điều kiện của $x$ để giá trị của phân thức sau được xác định: $\\left(\\dfrac{x+5}{x^2}+\\dfrac{4-x}{x^2-5x}\\right)\\cdot\\dfrac{x-2}{x^2+5x}$.",
+  "dap_an": "$x\\ne0$, $x\\ne5$ và $x\\ne-5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức xác định khi mọi mẫu thức có mặt trong nó đều khác $0$; các mẫu dạng $x^2\\pm5x$ phải phân tích thành nhân tử mới thấy hết giá trị bị loại.\n\n**Bước 1.** Liệt kê mọi mẫu thức xuất hiện trong biểu thức, mỗi phân thức có một mẫu.\n\n**Bước 2.** Phân tích từng mẫu thành nhân tử bằng cách đặt nhân tử chung.\n\n**Bước 3.** Cho mỗi nhân tử khác $0$ rồi gộp mọi giá trị bị loại thành điều kiện chung của $x$.\n\n**Chú ý:** Chỉ xét các mẫu, không loại thêm giá trị làm tử bằng $0$ (chẳng hạn $x=2$ vẫn thoả điều kiện).\n\n**Phần 2. Trình bày**\n\nBiểu thức xác định khi $x^2\\ne0$, $x^2-5x\\ne0$ và $x^2+5x\\ne0$.\n\n$x^2\\ne0\\Leftrightarrow x\\ne0$\n\n$x^2-5x=x(x-5)\\ne0\\Leftrightarrow x\\ne0$ và $x\\ne5$\n\n$x^2+5x=x(x+5)\\ne0\\Leftrightarrow x\\ne0$ và $x\\ne-5$\n\nVậy điều kiện là $x\\ne0$, $x\\ne5$ và $x\\ne-5$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 49): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.45b@p49",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm điều kiện của $x$ để giá trị của phân thức sau được xác định: $\\left(\\dfrac{1}{x^2+5x+6}+x-1\\right):\\dfrac{x+1}{x-4}$.",
+  "noi_dung_sach": "Tìm điều kiện của $x$ để giá trị của phân thức sau được xác định: $\\left(\\dfrac{1}{x^2+5x+6}+x-1\\right):\\dfrac{x+1}{x-4}$.",
+  "dap_an": "$x\\ne-2$, $x\\ne-3$, $x\\ne-1$ và $x\\ne4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có phép chia nên ngoài các mẫu khác $0$ còn phải có số chia khác $0$; bỏ sót điều kiện của số chia là lỗi hay gặp.\n\n**Bước 1.** Với phân thức ở số bị chia, phân tích mẫu $x^2+5x+6$ thành nhân tử rồi cho từng nhân tử khác $0$.\n\n**Bước 2.** Với phân thức ở số chia, cho mẫu của nó khác $0$ để phân thức đó có nghĩa.\n\n**Bước 3.** Số chia phải khác $0$ nên tử của nó cũng khác $0$; gộp tất cả giá trị bị loại thành điều kiện chung.\n\n**Chú ý:** Phép chia $A:B$ chỉ xác định khi $B$ có nghĩa và $B\\ne0$, nên điều kiện của $B$ gồm cả mẫu lẫn tử.\n\n**Phần 2. Trình bày**\n\nBiểu thức xác định khi $x^2+5x+6\\ne0$, $x-4\\ne0$ và $\\dfrac{x+1}{x-4}\\ne0$.\n\n$x^2+5x+6=(x+2)(x+3)\\ne0\\Leftrightarrow x\\ne-2$ và $x\\ne-3$\n\n$x-4\\ne0\\Leftrightarrow x\\ne4$\n\n$\\dfrac{x+1}{x-4}\\ne0\\Leftrightarrow x+1\\ne0\\Leftrightarrow x\\ne-1$\n\nVậy điều kiện là $x\\ne-2$, $x\\ne-3$, $x\\ne-1$ và $x\\ne4$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 49): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.46@p49",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các giá trị của $x$ để giá trị của phân thức $\\dfrac{4x^2-25}{x-7}$ bằng $0$.",
+  "noi_dung_sach": "Tìm các giá trị của $x$ để giá trị của phân thức $\\dfrac{4x^2-25}{x-7}$ bằng $0$.",
+  "dap_an": "$S=\\left\\{\\dfrac{5}{2};-\\dfrac{5}{2}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức bằng $0$ khi tử bằng $0$ và mẫu khác $0$, nên giải phương trình của tử rồi loại những nghiệm làm mẫu bằng $0$.\n\n**Bước 1.** Viết điều kiện để phân thức bằng $0$: tử bằng $0$ và đồng thời mẫu khác $0$.\n\n**Bước 2.** Giải phương trình của tử bằng cách đưa về $x^2$ bằng một số rồi lấy căn hai vế.\n\n**Bước 3.** Đối chiếu các nghiệm tìm được với điều kiện mẫu khác $0$ rồi kết luận.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4x^2-25}{x-7}=0\\Leftrightarrow4x^2-25=0$ và $x-7\\ne0$\n\n$\\Leftrightarrow x^2=\\dfrac{25}{4}$ và $x\\ne7$\n\n$\\Leftrightarrow x=\\pm\\dfrac{5}{2}$ (thoả $x\\ne7$)\n\nVậy $S=\\left\\{\\dfrac{5}{2};-\\dfrac{5}{2}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 49): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.47@p49",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các giá trị của $x$ để giá trị của phân thức $\\dfrac{x^2-4}{x^5+x-34}$ bằng $0$.",
+  "noi_dung_sach": "Tìm các giá trị của $x$ để giá trị của phân thức $\\dfrac{x^2-4}{x^5+x-34}$ bằng $0$.",
+  "dap_an": "$S=\\{-2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử $x^2-4$ có hai nghiệm nhưng mẫu bậc năm không phân tích được, nên phải thay từng nghiệm của tử vào mẫu để loại giá trị nào làm mẫu bằng $0$.\n\n**Bước 1.** Cho tử bằng $0$ và tìm mọi giá trị của $x$ làm tử bằng $0$.\n\n**Bước 2.** Thay lần lượt từng giá trị đó vào mẫu $x^5+x-34$ để kiểm tra mẫu có khác $0$ hay không.\n\n**Bước 3.** Chỉ giữ lại các giá trị làm mẫu khác $0$ rồi kết luận tập nghiệm.\n\n**Chú ý:** Mẫu bậc năm khó giải điều kiện \"khác $0$\" trực tiếp, nên chỉ cần thử các giá trị ứng viên lấy từ tử.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2-4}{x^5+x-34}=0\\Leftrightarrow x^2-4=0$ và $x^5+x-34\\ne0$\n\n$x^2-4=0\\Leftrightarrow x=2$ hoặc $x=-2$\n\nVới $x=2$: $x^5+x-34=2^5+2-34=0$, loại.\n\nVới $x=-2$: $x^5+x-34=(-2)^5+(-2)-34=-68\\ne0$, nhận.\n\nVậy $S=\\{-2\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "dat",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 49): kết quả của sách — chép riêng — khớp đề đã chép khi máy thay số"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "D2.48@p49",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Rút gọn rồi tìm giá trị của $x$ để biểu thức $\\dfrac{x^2}{x-6}\\left(\\dfrac{x^2+36}{x}-12\\right)+2009$ có giá trị nhỏ nhất. Tìm giá trị nhỏ nhất đó.",
+  "noi_dung_sach": "Rút gọn rồi tìm giá trị của $x$ để biểu thức $\\dfrac{x^2}{x-6}\\left(\\dfrac{x^2+36}{x}-12\\right)+2009$ có giá trị nhỏ nhất. Tìm giá trị nhỏ nhất đó.",
+  "dap_an": "Rút gọn: $x(x-6)+2009$; giá trị nhỏ nhất là $2000$ khi $x=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng ngoặc được $\\dfrac{x^2-12x+36}{x}$ có tử là bình phương của một hiệu, nên phân thức rút gọn thành đa thức bậc hai; đa thức đó đưa được về bình phương cộng hằng số để đánh giá giá trị nhỏ nhất.\n\n**Bước 1.** Nêu điều kiện $x\\ne0$ và $x\\ne6$, rồi quy đồng biểu thức trong ngoặc và nhận ra tử là một hằng đẳng thức.\n\n**Bước 2.** Rút gọn các nhân tử chung của hai phân thức để biểu thức trở thành một đa thức bậc hai.\n\n**Bước 3.** Viết đa thức bậc hai thành bình phương của một nhị thức cộng một hằng số, rồi dùng tính chất bình phương không âm để đánh giá.\n\n**Bước 4.** Tìm $x$ làm bình phương bằng $0$ và kiểm tra giá trị đó có thoả điều kiện xác định hay không.\n\n**Chú ý:** Giá trị $x$ làm biểu thức nhỏ nhất bắt buộc phải thuộc tập xác định, nên phải đối chiếu với các giá trị bị loại.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x\\ne0$ và $x\\ne6$.\n\n$\\dfrac{x^2}{x-6}\\left(\\dfrac{x^2+36}{x}-12\\right)+2009=\\dfrac{x^2}{x-6}\\cdot\\dfrac{x^2-12x+36}{x}+2009$\n\n$=\\dfrac{x^2}{x-6}\\cdot\\dfrac{(x-6)^2}{x}+2009$\n\n$=x(x-6)+2009=x^2-6x+9+2000$\n\n$=(x-3)^2+2000$\n\nVì $(x-3)^2\\ge0$ nên biểu thức $\\ge2000$, dấu \"$=$\" xảy ra khi $x-3=0$, tức $x=3$ (thoả điều kiện).\n\nVậy biểu thức rút gọn là $x(x-6)+2009$; giá trị nhỏ nhất là $2000$ khi $x=3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 49): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.49@p50",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010501",
+  "nhom_soan": "T18T010501",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho biểu thức $M=\\left(1-\\dfrac{4}{x+1}\\right):\\dfrac{9-x^2}{x^2+2x+1}$. Tìm các giá trị nguyên của $x$ để giá trị của phân thức là số nguyên.",
+  "noi_dung_sach": "Cho biểu thức $M=\\left(1-\\dfrac{4}{x+1}\\right):\\dfrac{9-x^2}{x^2+2x+1}$. Tìm các giá trị nguyên của $x$ để giá trị của phân thức là số nguyên.",
+  "dap_an": "$S=\\{-2;-4;-5\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi rút gọn, $M$ là một phân thức có mẫu $x+3$; tách phần nguyên để $M$ bằng một số nguyên cộng một phân thức có tử là hằng số, khi đó chỉ cần xét $x+3$ là ước của hằng số đó.\n\n**Bước 1.** Nêu điều kiện xác định rồi quy đồng ngoặc, đổi phép chia thành phép nhân với phân thức nghịch đảo.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử rồi rút gọn để $M$ về một phân thức có tử và mẫu bậc nhất.\n\n**Bước 3.** Tách phần nguyên của phân thức đó để $M$ bằng một số nguyên cộng một phân thức có tử là hằng số.\n\n**Bước 4.** Với $x$ nguyên, $M$ nguyên khi $x+3$ là ước của hằng số ở tử; lập các trường hợp rồi loại giá trị không thoả điều kiện xác định.\n\n**Chú ý:** Sau khi tìm $x$ từ các ước phải đối chiếu với điều kiện xác định, vì một giá trị tìm được có thể bị loại.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x\\ne-1$, $x\\ne3$, $x\\ne-3$.\n\n$M=\\left(1-\\dfrac{4}{x+1}\\right):\\dfrac{9-x^2}{x^2+2x+1}=\\dfrac{x-3}{x+1}\\cdot\\dfrac{(x+1)^2}{-(x-3)(x+3)}$\n\n$=\\dfrac{-(x+1)}{x+3}=\\dfrac{-(x+3)+2}{x+3}=-1+\\dfrac{2}{x+3}$\n\nVới $x$ nguyên: $M$ nguyên $\\Leftrightarrow2\\vdots(x+3)$\n\n$\\Leftrightarrow x+3\\in\\{1;-1;2;-2\\}\\Leftrightarrow x\\in\\{-2;-4;-1;-5\\}$\n\nLoại $x=-1$ vì không thoả điều kiện xác định.\n\nVậy $S=\\{-2;-4;-5\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 50): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.50@p50",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y,z$ thoả mãn $x^2+y^2=(x+y-z)^2$. Chứng minh rằng $\\dfrac{x^2+(x-z)^2}{y^2+(y-z)^2}=\\dfrac{x-z}{y-z}$.",
+  "noi_dung_sach": "Cho $x,y,z$ thoả mãn $x^2+y^2=(x+y-z)^2$. Chứng minh rằng $\\dfrac{x^2+(x-z)^2}{y^2+(y-z)^2}=\\dfrac{x-z}{y-z}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giả thiết cho phép viết $x^2$ và $y^2$ thành hiệu hai bình phương, phân tích được thành tích chứa $x-z$ và $y-z$ — đúng các nhân tử xuất hiện ở kết luận.\n\n**Bước 1.** Từ giả thiết, chuyển vế để biểu diễn $x^2$ qua $(x+y-z)^2-y^2$ rồi phân tích thành tích; làm tương tự để biểu diễn $y^2$.\n\n**Bước 2.** Thay các biểu diễn đó vào tử và mẫu của vế trái, sao cho mỗi số hạng ở tử chứa $x-z$ và mỗi số hạng ở mẫu chứa $y-z$.\n\n**Bước 3.** Đặt $x-z$ ra ngoài ở tử, $y-z$ ra ngoài ở mẫu, rồi rút gọn nhân tử còn lại giống nhau ở cả tử lẫn mẫu để được vế phải.\n\n**Chú ý:** Nhân tử dùng để rút gọn phải khác $0$; điều này có được vì mẫu của vế trái khác $0$ (vế trái phải có nghĩa).\n\n**Phần 2. Trình bày**\n\nTừ giả thiết: $x^2=(x+y-z)^2-y^2=(x-z)(x+2y-z)$\n\n$y^2=(x+y-z)^2-x^2=(y-z)(2x+y-z)$\n\nVế trái $=\\dfrac{(x-z)(x+2y-z)+(x-z)^2}{(y-z)(2x+y-z)+(y-z)^2}$\n\n$=\\dfrac{(x-z)(2x+2y-2z)}{(y-z)(2x+2y-2z)}$\n\nMẫu của vế trái bằng $(y-z)(2x+2y-2z)\\ne0$ nên $y-z\\ne0$ và $2x+2y-2z\\ne0$; rút gọn nhân tử chung:\n\n$=\\dfrac{x-z}{y-z}$\n\nVậy $\\dfrac{x^2+(x-z)^2}{y^2+(y-z)^2}=\\dfrac{x-z}{y-z}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 50): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.51a@p50",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ thoả mãn $a+\\dfrac{1}{b}=b+\\dfrac{1}{c}=c+\\dfrac{1}{a}$. Chứng minh rằng $a=b=c$ hoặc $abc=\\pm1$.",
+  "noi_dung_sach": "Cho $a,b,c$ thoả mãn $a+\\dfrac{1}{b}=b+\\dfrac{1}{c}=c+\\dfrac{1}{a}$. Chứng minh rằng $a=b=c$ hoặc $abc=\\pm1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi đẳng thức như $a+\\dfrac{1}{b}=b+\\dfrac{1}{c}$ đưa được về dạng $a-b=\\dfrac{b-c}{bc}$, nên ba hiệu $a-b$, $b-c$, $c-a$ liên hệ vòng với nhau; nhân vế ba đẳng thức sẽ xuất hiện $(abc)^2$.\n\n**Bước 1.** Từ giả thiết, chuyển các số hạng sang cùng một vế để biểu diễn mỗi hiệu $a-b$, $b-c$, $c-a$ bằng một phân thức theo hiệu kế tiếp.\n\n**Bước 2.** Nhân ba đẳng thức theo vế để được một đẳng thức có tích ba hiệu ở cả hai vế.\n\n**Bước 3.** Xét hai trường hợp: tích ba hiệu khác $0$ thì chia hai vế để được $(abc)^2=1$; tích bằng $0$ thì có hai số bằng nhau, thay vào đẳng thức ở bước 1 để suy ra cả ba số bằng nhau.\n\n**Chú ý:** Không được chia hai vế cho tích $(a-b)(b-c)(c-a)$ trước khi biết nó khác $0$, nên bắt buộc phải tách hai trường hợp.\n\n**Phần 2. Trình bày**\n\nVì có mặt $\\dfrac{1}{a},\\dfrac{1}{b},\\dfrac{1}{c}$ nên $a,b,c\\ne0$.\n\nTừ giả thiết:\n\n$a-b=\\dfrac{1}{c}-\\dfrac{1}{b}=\\dfrac{b-c}{bc}$\n\n$b-c=\\dfrac{1}{a}-\\dfrac{1}{c}=\\dfrac{c-a}{ca}$\n\n$c-a=\\dfrac{1}{b}-\\dfrac{1}{a}=\\dfrac{a-b}{ab}$\n\nNhân ba đẳng thức theo vế:\n\n$(a-b)(b-c)(c-a)=\\dfrac{(b-c)(c-a)(a-b)}{a^2b^2c^2}\\quad(*)$\n\nTrường hợp 1: $(a-b)(b-c)(c-a)\\ne0$.\n\nChia hai vế của $(*)$ cho tích đó:\n\n$1=\\dfrac{1}{a^2b^2c^2}$, nên $(abc)^2=1$, suy ra $abc=\\pm1$.\n\nTrường hợp 2: $(a-b)(b-c)(c-a)=0$, tức có hai số bằng nhau.\n\nNếu $a=b$: từ $a-b=\\dfrac{b-c}{bc}$ ta có $\\dfrac{b-c}{bc}=0$, nên $b=c$.\n\nNếu $b=c$: từ $b-c=\\dfrac{c-a}{ca}$ ta có $\\dfrac{c-a}{ca}=0$, nên $c=a$.\n\nNếu $c=a$: từ $c-a=\\dfrac{a-b}{ab}$ ta có $\\dfrac{a-b}{ab}=0$, nên $a=b$.\n\nCả ba khả năng đều cho $a=b=c$.\n\nVậy $a=b=c$ hoặc $abc=\\pm1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 50): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.51b@p50",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,x,y$ thoả mãn $x^2+y^2=1$ và $\\dfrac{x^4}{a}+\\dfrac{y^4}{b}=\\dfrac{1}{a+b}$. Chứng minh rằng $\\dfrac{x^{2010}}{a^{1005}}+\\dfrac{y^{2010}}{b^{1005}}=\\dfrac{2}{(a+b)^{1005}}$.",
+  "noi_dung_sach": "Cho $a,b,x,y$ thoả mãn $x^2+y^2=1$ và $\\dfrac{x^4}{a}+\\dfrac{y^4}{b}=\\dfrac{1}{a+b}$. Chứng minh rằng $\\dfrac{x^{2010}}{a^{1005}}+\\dfrac{y^{2010}}{b^{1005}}=\\dfrac{2}{(a+b)^{1005}}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $1=(x^2+y^2)^2$ để vế phải của giả thiết thành $\\dfrac{(x^2+y^2)^2}{a+b}$; quy đồng và rút gọn sẽ ra một bình phương bằng $0$, từ đó hai tỉ số $\\dfrac{x^2}{a}$ và $\\dfrac{y^2}{b}$ bằng nhau.\n\n**Bước 1.** Viết vế phải của giả thiết dưới dạng $\\dfrac{(x^2+y^2)^2}{a+b}$ rồi nhân hai vế với mẫu chung để khử hết mẫu.\n\n**Bước 2.** Khai triển, chuyển vế và rút gọn để một vế thành bình phương của một biểu thức bằng $0$, từ đó suy ra $\\dfrac{x^2}{a}=\\dfrac{y^2}{b}$.\n\n**Bước 3.** Dùng tính chất dãy tỉ số bằng nhau cùng giả thiết $x^2+y^2=1$ để tính giá trị chung của hai tỉ số đó.\n\n**Bước 4.** Nâng cả ba tỉ số bằng nhau lên luỹ thừa $1005$ rồi cộng hai tỉ số đầu để được điều phải chứng minh.\n\n**Chú ý:** Phải có $a,b,a+b\\ne0$ để các phân thức có nghĩa trước khi nhân hai vế với mẫu chung.\n\n**Phần 2. Trình bày**\n\nTừ $x^2+y^2=1$ ta có $\\dfrac{x^4}{a}+\\dfrac{y^4}{b}=\\dfrac{1}{a+b}=\\dfrac{(x^2+y^2)^2}{a+b}$.\n\nNhân hai vế với $ab(a+b)\\ne0$:\n\n$b(a+b)x^4+a(a+b)y^4=ab(x^2+y^2)^2$\n\n$\\Leftrightarrow abx^4+b^2x^4+a^2y^4+aby^4=abx^4+2abx^2y^2+aby^4$\n\n$\\Leftrightarrow b^2x^4-2abx^2y^2+a^2y^4=0$\n\n$\\Leftrightarrow(bx^2-ay^2)^2=0\\Leftrightarrow bx^2=ay^2\\Leftrightarrow\\dfrac{x^2}{a}=\\dfrac{y^2}{b}$\n\nTheo tính chất dãy tỉ số bằng nhau (với $a+b\\ne0$):\n\n$\\dfrac{x^2}{a}=\\dfrac{y^2}{b}=\\dfrac{x^2+y^2}{a+b}=\\dfrac{1}{a+b}$\n\nNâng lên luỹ thừa $1005$:\n\n$\\dfrac{x^{2010}}{a^{1005}}=\\dfrac{y^{2010}}{b^{1005}}=\\dfrac{1}{(a+b)^{1005}}$\n\nVậy $\\dfrac{x^{2010}}{a^{1005}}+\\dfrac{y^{2010}}{b^{1005}}=\\dfrac{2}{(a+b)^{1005}}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chất dãy tỉ số bằng nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 50): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 51, lời giải bài 51b: sá) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.51c@p50",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c,d$ là các số nguyên dương đôi một khác nhau thoả mãn $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+d}+\\dfrac{d}{d+a}=2$. Chứng minh rằng $abcd$ là một số chính phương.",
+  "noi_dung_sach": "Cho $a,b,c,d$ là các số nguyên dương đôi một khác nhau thoả mãn $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+d}+\\dfrac{d}{d+a}=2$. Chứng minh rằng $abcd$ là một số chính phương.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng bốn phân thức bằng $2$ và mỗi phân thức có dạng $\\dfrac{a}{a+b}=1-\\dfrac{b}{a+b}$, nên đưa được về hiệu từng cặp phân thức cùng tử; khi quy đồng sẽ xuất hiện các nhân tử $c-a$ và $b-d$, mà chúng khác $0$ vì các số đôi một khác nhau.\n\n**Bước 1.** Chuyển số $2$ sang cùng vế với bốn phân thức để vế kia bằng $0$, rồi dùng $1-\\dfrac{a}{a+b}=\\dfrac{b}{a+b}$ để ghép các phân thức thành hiệu hai phân thức cùng tử $b$ và hiệu hai phân thức cùng tử $d$.\n\n**Bước 2.** Quy đồng từng hiệu: tử của mỗi hiệu có nhân tử $c-a$ hoặc $a-c$, rồi đặt $c-a$ làm nhân tử chung.\n\n**Bước 3.** Vì $c\\ne a$ nên chia bỏ nhân tử đó, khử mẫu và khai triển để được một đẳng thức theo $a,b,c,d$.\n\n**Bước 4.** Phân tích đẳng thức đó thành nhân tử, dùng $b\\ne d$ để suy ra $ac=bd$, rồi viết $abcd$ thành một bình phương.\n\n**Chú ý:** Điều kiện \"đôi một khác nhau\" được dùng ở hai chỗ chia — $c\\ne a$ và $b\\ne d$ — nên phải nêu rõ khi chia.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c,d$ là các số nguyên dương nên mọi mẫu đều khác $0$.\n\nTừ giả thiết:\n\n$2-\\dfrac{a}{a+b}-\\dfrac{b}{b+c}-\\dfrac{c}{c+d}-\\dfrac{d}{d+a}=0$\n\n$\\Leftrightarrow\\left(1-\\dfrac{a}{a+b}\\right)-\\dfrac{b}{b+c}+\\left(1-\\dfrac{c}{c+d}\\right)-\\dfrac{d}{d+a}=0$\n\n$\\Leftrightarrow\\dfrac{b}{a+b}-\\dfrac{b}{b+c}+\\dfrac{d}{c+d}-\\dfrac{d}{d+a}=0$\n\n$\\Leftrightarrow\\dfrac{b(c-a)}{(a+b)(b+c)}+\\dfrac{d(a-c)}{(c+d)(d+a)}=0$\n\n$\\Leftrightarrow(c-a)\\left[\\dfrac{b}{(a+b)(b+c)}-\\dfrac{d}{(c+d)(d+a)}\\right]=0$\n\nVì $c\\ne a$ nên $\\dfrac{b}{(a+b)(b+c)}=\\dfrac{d}{(c+d)(d+a)}$, tức $b(c+d)(d+a)=d(a+b)(b+c)$\n\n$\\Leftrightarrow abc+bcd+bd^2+abd=abd+acd+b^2d+bcd$\n\n$\\Leftrightarrow abc-acd+bd^2-b^2d=0$\n\n$\\Leftrightarrow ac(b-d)-bd(b-d)=0\\Leftrightarrow(b-d)(ac-bd)=0$\n\nVì $b\\ne d$ nên $ac=bd$.\n\nDo đó $abcd=(ac)(bd)=(ac)^2$, trong đó $ac$ là số nguyên dương.\n\nVậy $abcd$ là một số chính phương.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 50): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 51, lời giải bài 51c: sá) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "D2.52@p51",
+  "lo": 3,
+  "khoi": "8T",
+  "dang_chinh": "T18T010301",
+  "nhom_soan": "T18T010301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ khác $0$ thoả mãn $a+b+c=0$. Tính giá trị của biểu thức $\\dfrac{a^2}{a^2-b^2-c^2}+\\dfrac{b^2}{b^2-c^2-a^2}+\\dfrac{c^2}{c^2-a^2-b^2}$.",
+  "noi_dung_sach": "Cho $a,b,c$ khác $0$ thoả mãn $a+b+c=0$. Tính giá trị của biểu thức $\\dfrac{a^2}{a^2-b^2-c^2}+\\dfrac{b^2}{b^2-c^2-a^2}+\\dfrac{c^2}{c^2-a^2-b^2}$.",
+  "dap_an": "$\\dfrac{3}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $a+b+c=0$ cho $b+c=-a$; bình phương hai vế biến mỗi mẫu thành tích hai biến, còn lập phương hai vế biến tổng $a^3+b^3+c^3$ thành một biểu thức theo $abc$.\n\n**Bước 1.** Từ $b+c=-a$, bình phương hai vế để biểu diễn $a^2-b^2-c^2$ bằng một tích hai biến; làm tương tự cho hai mẫu còn lại.\n\n**Bước 2.** Thay vào biểu thức rồi quy đồng về mẫu chung $2abc$, khi đó tử là tổng ba lập phương $a^3+b^3+c^3$.\n\n**Bước 3.** Lập phương hai vế của $b+c=-a$ để thay tổng ba lập phương bằng một biểu thức theo $abc$, rồi rút gọn $abc\\ne0$.\n\n**Chú ý:** Cần $a,b,c\\ne0$ thì các mẫu $2bc$, $2ca$, $2ab$ mới khác $0$ và mới rút gọn được $abc$.\n\n**Phần 2. Trình bày**\n\nTừ $a+b+c=0$ có $b+c=-a$, nên $(b+c)^2=a^2$, tức $b^2+2bc+c^2=a^2$, suy ra $a^2-b^2-c^2=2bc$.\n\nTương tự $b^2-c^2-a^2=2ca$ và $c^2-a^2-b^2=2ab$.\n\nTừ $(b+c)^3=(-a)^3$ ta có $b^3+3bc(b+c)+c^3=-a^3$, nên $a^3+b^3+c^3=-3bc(b+c)=3abc$.\n\nVì $a,b,c\\ne0$ nên $2bc$, $2ca$, $2ab$ đều khác $0$, và\n\n$\\dfrac{a^2}{a^2-b^2-c^2}+\\dfrac{b^2}{b^2-c^2-a^2}+\\dfrac{c^2}{c^2-a^2-b^2}=\\dfrac{a^2}{2bc}+\\dfrac{b^2}{2ca}+\\dfrac{c^2}{2ab}$\n\n$=\\dfrac{a^3+b^3+c^3}{2abc}$\n\n$=\\dfrac{3abc}{2abc}=\\dfrac{3}{2}$",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức mở rộng"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 51): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ }
+]

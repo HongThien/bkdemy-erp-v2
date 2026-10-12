@@ -1,0 +1,99 @@
+{
+  "T2V1.1b@p18": {
+    "sach_in_sai": "trang PDF 18, §2 Dạng 1 ví dụ 1b: mép trang mất chữ đầu ở hai điều kiện (in \"n ≥ n\", \"n < n\"); đúng là m ≥ n và m < n theo biểu thức đi kèm."
+  },
+  "T2V3.1c@p19": {
+    "sach_in_sai": "trang PDF 19, §2 Dạng 3 ví dụ 1c: kết quả cuối in (2m + 3n)^2; đúng là (2m + 3n)^3 (dòng trên của sách là khai triển lập phương của một tổng)."
+  },
+  "T2V3.2d@p19": {
+    "sach_in_sai": "trang PDF 20, §2 Dạng 3 ví dụ 2d: thừa số đầu của lời giải in (4x - 3x - 18 + 4x^2 + 3x), thiếu mũ 2 ở 4x."
+  },
+  "T2V4b.1b@p23": {
+    "sach_in_sai": "trang PDF 23, §2 Dạng 4b ví dụ 1b: đề in a^4 + 4b^2; lời giải của sách ngay dưới giải a^4 + 4b^4 (thêm bớt 4a^2b^2) — với 4b^2 thì không phân tích được. Kho ghi a^4 + 4b^4. Dòng hai của lời giải in (a^2 + 2b^2) thiếu mũ 2."
+  },
+  "T2V5.1a@p25": {
+    "sach_in_sai": "trang PDF 25, §2 Dạng 5 ví dụ 1a: sách dừng ở a^2(a+1)(a^3 - a^2 + 2), chưa phân tích đến cùng (a = -1 còn là nghiệm của a^3 - a^2 + 2). Kho ghi a^2(a+1)^2(a^2 - 2a + 2)."
+  },
+  "T2V5.6@p27": {
+    "sach_in_sai": "trang PDF 27, §2 Dạng 5 ví dụ 6: sách dừng ở nhân tử x^2 - z^2, chưa tách (x - z)(x + z). Kho tách đến cùng."
+  },
+  "T2V7.3@p29": {
+    "sach_in_sai": "trang PDF 29, §2 Dạng 7 ví dụ 3a: dòng kết quả in A = a^4 - 6a^3 + 27a^2 - 54a + 3a, đúng là + 32."
+  },
+  "T2V7.9b@p31": {
+    "sach_in_sai": "trang PDF 32, §2 Dạng 7 ví dụ 9b: điều kiện (2) in -a + 6b^2 + b + 2 = 0, thiếu chữ b (dư ở dòng trên là -ab + 6b^2 + b + 2). Ý c của ví dụ 9 sách không in lời giải nên không nhập."
+  },
+  "T2V7.10@p32": {
+    "sach_in_sai": "trang PDF 32, §2 Dạng 7 ví dụ 10: đề in mờ dấu giữa x^3 và ax^2 (là dấu trừ, theo phương trình a + b + c = a của lời giải); lời giải viết \"với b = 0 ta trở về trường hợp 1\" trong nhánh ab = 1, mà ở nhánh đó b khác 0 — kho loại b = 0 bằng điều kiện này."
+  },
+  "T2V8.3a@p34": {
+    "sach_in_sai": "trang PDF 34, §2 Dạng 8 ví dụ 3a: cách 1 kết thúc bằng (x+1)(x+2)(x+3); đúng là (x+1)(x+2)(x-3) như cách 2 của sách. Cách 2 viết \"-1 là một ước của f(x)\", đúng là nghiệm.",
+    "bo": "máy lọc trùng: trùng cùng biểu thức với T18T000000003 (đã có trong kho)"
+  },
+  "T2V8.3b@p34": {
+    "sach_in_sai": "trang PDF 34, §2 Dạng 8 ví dụ 3b: cách 2 (định lí Bezout) nằm ở trang sách 32 — bản scan thiếu trang; kho chỉ có cách 1 của sách. Ví dụ 3c và các ví dụ sau của Dạng 8 mất lời giải vì thiếu trang nên không nhập."
+  },
+  "T2V4b.1a@p23": {
+    "bo": "trùng với T18T010202003 (NĐT chương I bài 53c: cùng đa thức, chỉ đổi tên biến x thành a)"
+  },
+  "T2B.24@p35": {
+    "bo": "trùng với T18T010202009 (NĐT chương I bài 55c: x^5+x+1, chỉ đổi tên biến)"
+  },
+  "T2B.25@p35": {
+    "bo": "trùng với T18T010202021 (NĐT phụ lục C Đề 1 bài 1c: x^7+x^2+1, chỉ đổi tên biến)"
+  },
+  "T2B.6@p35": {
+    "bo": "trùng với ví dụ 9 Dạng 5 cùng §2 (T2V5.9: cùng đa thức ab(a-b)+bc(b-c)+ca(c-a))"
+  },
+  "T2B.1@p35": {
+    "bo": "trùng với ví dụ 6a Dạng 7 cùng §2 (T2V7.6a: cùng đẳng thức, chỉ đổi thứ tự các số hạng, cùng kết luận x=y=z)"
+  },
+  "T2B.35@p36": {
+    "bo": "đề in x^7 + x^2 - 1 nhưng hướng dẫn và đáp số của sách là của x^7 + x^2 + 1 (đa thức in trong đề không phân tích được thành nhân tử hệ số nguyên); bản + 1 trùng với T18T010202021 đã có trong kho"
+  },
+  "T2B.43@p36": {
+    "bo": "trùng với T18T010102005 (NĐT chương I bài 35b: cùng giả thiết các số dương, a^4+b^4+c^4+d^4 = 4abcd, cùng kết luận a = b = c = d)"
+  },
+  "T2B.44@p36": {
+    "sach_in_sai": "trang PDF 36, đề bài tập 44 §2: vế phải in (a+b)^2(b+c)^2 + (c+a)^2 (thừa dấu cộng) và thừa số đầu in (an + bc); hướng dẫn của sách chứng minh am + bc = (a+b)(a+c)… tức vế phải là tích (a+b)^2(b+c)^2(c+a)^2. Kho ghi dạng tích."
+  },
+  "T2B.40@p36": {
+    "bo": "trùng với T18T010204001 (NĐT chương I bài 57b: a^2(b-c)+b^2(c-a)+c^2(a-b), chỉ đổi tên biến)"
+  },
+  "T2B.52@p37": {
+    "sach_in_sai": "trang PDF 48, hướng dẫn bài tập 52 §2: dòng kết luận in thiếu số mũ 2 ở x."
+  },
+  "T2V2.2d@p19": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010204001 (đã có trong kho)"
+  },
+  "T2V4b.2a@p23": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010202011 (đã có trong kho)"
+  },
+  "T2V4b.2b@p23": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010202020 (đã có trong kho)"
+  },
+  "T2V4b.2c@p23": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010202010 (đã có trong kho)"
+  },
+  "T2V4b.3b@p24": {
+    "bo": "máy lọc trùng: trùng cùng biểu thức với T2V4c.3@p24 (cùng lô — ví dụ và bài tập của chính chuyên đề lặp nhau)"
+  },
+  "T2V8.1@p33": {
+    "bo": "máy lọc trùng: trùng cùng biểu thức với T18T010203001 (đã có trong kho)"
+  },
+  "T2B.10@p35": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010204002 (đã có trong kho)"
+  },
+  "T2B.17@p35": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T2V4c.4@p25 (cùng lô — ví dụ và bài tập của chính chuyên đề lặp nhau)"
+  },
+  "T2B.22@p35": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T2V4a.5@p22 (cùng lô — ví dụ và bài tập của chính chuyên đề lặp nhau)"
+  },
+  "T2B.41c@p36": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010204004 (đã có trong kho)"
+  },
+  "T2B.41d@p36": {
+    "bo": "máy lọc trùng: trùng nguyên văn với T18T010204003 (đã có trong kho)"
+  }
+}

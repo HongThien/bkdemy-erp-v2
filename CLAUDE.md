@@ -280,6 +280,7 @@
 - **`spec-bo-tro.md` — ĐỌC BẮT BUỘC trước khi sửa luồng BỔ TRỢ (yếu · bù · đuổi).** Bản tổng hợp quyết định CEO + hiện trạng build (21/09):
   4 kênh phát hiện & ngưỡng · mức ưu tiên case · lịch trực khối+bậc, ca ≤3 em, không xếp lại · MCQ tuyệt đối · 2 chế độ ca 📱 app / 📄 giấy
   (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc: `PLAN-botro-yeu.md`, `PLAN-botro-yeu-ca.md`.
+- **`spec-lunar-cherry.md` — ĐỌC BẮT BUỘC trước khi sửa game gia đình Lunar Cherry** (BKGame/LunarCherry, repo riêng): Toán + Tiếng Anh (12 đảo, 6 chế độ theo kỹ năng, nói = máy nghe chấm rộng, kéo thả = nhìn rồi kéo, sticker, truyện, Thỏ Talking Tom), deploy Vercel, luật commit email.
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
 - **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
   (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng
@@ -293,9 +294,10 @@
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
   **CEO chốt 19/09: MỌI luồng bài làm trên app của BỔ TRỢ (yếu · bù · đuổi) chỉ dùng MCQ** — điều kiện chọn câu DUY NHẤT =
   `_kho_dk_mcq_sql(cautbl)` (kho_chuan + trắc nghiệm gốc | form_tn đã duyệt; `_kho_snapshot_cau` tự hiện form thành 4 đáp án).
-  Bổ trợ yếu đã áp (`_btyeu_chon_cau`) — **TUYỆT ĐỐI, KHÔNG nhánh lùi** (NGOẠI LỆ DUY NHẤT CEO 28/09: dạng mức độ 4–5 mà cả dạng 0 MCQ ⇒ trả lời ngắn — xem spec-bo-tro.md §4) (20/09: t từng để "dạng 0 MCQ thì tạm ra TLN", CEO bác:
-  luật là luật — dạng chưa có MCQ thì app báo rõ, em học dạng đó trên giấy, việc là SINH MCQ chứ không nới luật). Bù/đuổi chưa có
-  bài trên app — khi build PHẢI dùng hàm này, không viết điều kiện riêng.
+  **CEO chốt lại 10/10 (thay 20/09 "tuyệt đối" và 28/09 "chỉ mức 4–5"): MCQ TRƯỚC; cả dạng 0 MCQ ⇒ câu TRẢ LỜI NGẮN có đáp án (kho chuẩn),
+  mọi mức độ** — áp ở `_btyeu_chon_cau` (yếu: luyện · test · retest · phiếu giấy, TA chấm Đúng/Sai câu trả lời ngắn trên giấy) và
+  `tu_luyen_chu_de_sinh` loai `bu_luyen`/`bu_test` (bù). Dạng không có cả MCQ lẫn trả lời ngắn thì app báo rõ, em học trên giấy.
+  Luồng bổ trợ mới PHẢI đi qua 2 hàm này, không viết điều kiện chọn câu riêng (xem spec-bo-tro.md §4).
 - **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
   không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
   RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
@@ -308,6 +310,14 @@
 - **`spec-khtn-du-hanh.md` — ĐỌC trước khi sửa/làm bài KHTN dạng thế giới 3D** (thư mục `khtn-site/`, CEO chốt 29/09): 2 kiểu bài du hành / tương tác ·
   nhịp trạm (phim lời dẫn → giao việc quan sát → bay tự do → trả lời lúc nào cũng được) · trạm luyện tập bộ 6 câu + hoạt cảnh theo đáp án ·
   KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
+- **`spec-toan-du-hanh.md` — ĐỌC trước khi sửa/làm bài Toán dạng du hành** (thư mục `toan-site/`, Thùy chốt 09/10): 3D chỉ ở đoạn bay, hình phẳng
+  nằm trên tấm bảng, máy quay VUÔNG GÓC tấm bảng lúc HS so hình · tam giác lệch hẳn (cấm cân/gần cân) · ký hiệu 3 mức GV đổi được · học = cả lớp
+  nhìn TV, iPad chỉ cho mini game đội · trạm luyện = chuỗi câu trên cùng tấm bảng, có nút Đáp án (GV) · chưa đo, site riêng toan.bkacademy.edu.vn.
+  Đã có: bài Tam giác bằng nhau 10 trạm (định nghĩa · c.c.c · trình bày 5 dòng) + mini game đội TV–iPad `thi-doi.html` (5 phiên × 10 câu).
+- **`spec-day-hinh-3d.md` — ĐỌC trước khi dựng mô hình 3D cho BÀI TẬP Toán** (thư mục `toan-site/the-tich/`; Thùy mở 09/10, chốt 10/10): khác khuôn du hành (không trạm/bay) ·
+  **công thức chữ trước, thay số sau** · **cắt lát chỉ cho bài thiết diện; bài tròn xoay chia miền rồi lắp thẳng công thức** · **bài tròn xoay = MỘT trang chuyên đề `tron-xoay.html`,
+  thêm bài = thêm một mục dữ liệu vào `tron-xoay-bai.js`** (địa chỉ cố định `?bai=<id>`, `&nhung=1` để sau gắn vào bài giải trên app HS) · khung chung `khung.js` + `khung.css` ·
+  làm bài mới: đọc Phần A + Phần S (sổ tay, có phiếu cho các bài còn lại). Đã có những bài nào: `docs/hinh-3d/so-theo-doi.md`.
 - **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):

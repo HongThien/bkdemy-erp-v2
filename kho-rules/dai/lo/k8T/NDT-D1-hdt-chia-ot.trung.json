@@ -1,0 +1,18 @@
+{
+ "bo": [
+  {
+   "ma": "D1.17d@p8",
+   "kieu": "toan",
+   "voi": "D1.17b@p8",
+   "noi": "trong lô",
+   "de": "Viết biểu thức sau dưới dạng lập phương của một tổng hoặc một hiệu: $-x^3+6x^2-12x+8$."
+  }
+ ],
+ "nghi": [
+  {
+   "ma": "D1.84b@p28",
+   "voi": "T18T010204001",
+   "de": "Phân tích đa thức thành nhân tử: $(a+b)(a^2-b^2)+(b+c)(b^2-c^2)+(c+a)(c^2-a^2)$."
+  }
+ ]
+}

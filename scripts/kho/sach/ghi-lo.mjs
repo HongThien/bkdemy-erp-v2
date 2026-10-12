@@ -136,12 +136,15 @@ for (const c of lo) {
   const bam = bamNoiDung(cau)
   const kiem = []
   const bb = (tram, cach, kq, lan, model) => kiem.push({ tram, lan_chay: lan, cach, ...(model ? { model } : {}), ket_qua: kq.ket_qua, ghi_chu: kq.ghi_chu, bam_noi_dung: bam })
-  bb('kiem-doc', 'code', kiemDoc(c), LAN_KIEM_CODE)
+  // sách SCAN (lo-tu-chep.mjs): không có bản tách bằng máy để so chữ ⇒ lô mang sẵn kết quả kiểm chép (kết quả sách ↔ đề, máy thay số)
+  bb('kiem-doc', 'code', c.kiem_doc ?? kiemDoc(c), LAN_KIEM_CODE)
   bb('kiem-dap-so', 'code', kiemDapSo(c.ma_nguon, c.dap_an), LAN_KIEM_CODE)
   if (kiemA) bb('kiem-hinh-a', 'code', kiemA, LAN_KIEM_CODE)
   if (kiemDe) bb('kiem-hinh-de', 'code', kiemDe, LAN_KIEM_CODE)
   const n = ngoai?.cau?.[c.ma_nguon]
-  if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
+  // nhóm do LUẬT MÁY quyết (lo-tu-chep --co-ban: câu tầng cơ bản ⇒ nhóm Kiến thức cơ bản của bài học) — lô mang sẵn biên bản, không cần gán mù
+  if (c.kiem_dang && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'code', c.kiem_dang, LAN_KIEM_CODE)
+  else if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
     ? { ket_qua: 'dat', ghi_chu: `model khác gán mù ra cùng dạng (${n.dang})` }
     : { ket_qua: 'khong_dat', ghi_chu: `model khác gán mù ra ${n.dang}: ${String(n.ly_do ?? '').slice(0, 160)}` }, ngoai.lan_chay, ngoai.model)
   if (n && c.so_do && n.hinh_dung != null) bb('kiem-hinh-b', 'model_khac', n.hinh_dung

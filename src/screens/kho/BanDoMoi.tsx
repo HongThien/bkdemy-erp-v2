@@ -3,18 +3,19 @@
 // Việc của CEO: ① CHIA TẦNG + THỨ TỰ HỌC · ② dán LÝ THUYẾT (nhóm) / VÍ DỤ (dạng bài) · ③ viết MÔ TẢ nhận biết.
 // Bố cục (CEO 08/10):
 //   · mỗi màn 1 CHỦ ĐỀ (thanh chủ đề trên cùng) · thanh CHUYÊN ĐỀ trái→phải = thứ tự học, ◀ ▶ / phím ←→ để chuyển
-//   · chuyên đề là 1 box; NHÓM BÀI là box rẽ nhánh từ chuyên đề: học trước ở TRÊN, học sau ở DƯỚI, có mũi tên;
-//     nhóm độc lập = nhánh khác · DẠNG BÀI là card trong box nhóm, trên→dưới = thứ tự học
+//   · chuyên đề là 1 box; NHÓM BÀI là các box xếp theo SỐ THỨ TỰ (trái→phải, MỘT hàng, hết chỗ thì cuộn ngang — CEO 12/10) — CEO 11/10 bỏ nối
+//     tiền đề giữa các nhóm, "thứ tự là đủ"; kéo nhóm thả VÀO TRONG nhóm khác = hạ thành dạng bài (dạng bài con đi theo)
+//   · DẠNG BÀI là card trong box nhóm, trên→dưới = thứ tự học
 //   · số thứ tự cả 3 tầng do DB tự đánh (fn_bdm_cay / _bdm_so_nhom) và HIỆN trên từng box — sai là nhìn thấy
-// ⭐ Vị trí trên màn KHÔNG phải dữ liệu: tầng (trên/dưới) suy từ mũi tên tiền đề, cột suy từ số thứ tự. CEO đổi thứ
-//   tự bằng cách kéo (ghi thu_tu) và nối/gỡ mũi tên (ghi tiền đề) — không có ô nào "ngầm" mang nghĩa.
+// ⭐ Vị trí trên màn KHÔNG phải dữ liệu: box xếp theo số thứ tự (DB tính từ thu_tu). CEO đổi thứ tự bằng ◀▶ / ▲▼
+//   (ghi thu_tu) — không có ô nào "ngầm" mang nghĩa.
 // Kéo thả HTML5 thuần. Sau mỗi lần ghi: tải lại cây NỀN, không xoá màn (CLAUDE §2 React).
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
 import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
-  nangDangBai, haNhom, themTienDe, goTienDe, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
+  nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, BDM_NHANH, doiVungChuDe, type BdmNhanh,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
 import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
@@ -51,27 +52,6 @@ const chenTruoc = (ids: string[], id: string, truoc: string | null) => {
   return bo
 }
 const dangGo = (t: EventTarget | null) => !!t && ['INPUT', 'TEXTAREA', 'SELECT'].includes((t as HTMLElement).tagName)
-
-// Xếp box nhóm lên lưới để VẼ (chỉ hiển thị): hàng = tầng (DB tính), cột = nhánh.
-// Duyệt theo số thứ tự: con đầu tiên của 1 nhóm đứng thẳng dưới nhóm đó; con khác / nhóm gốc mở cột mới bên phải.
-function xepLuoi(nhom: BdmNhom[]) {
-  const theoSo = [...nhom].sort((a, b) => a.so - b.so)
-  const so = new Map(nhom.map((n) => [n.id, n.so]))
-  const cot = new Map<string, number>()
-  const daNhuongCot = new Set<string>()
-  const chiem = new Set<string>()
-  let maxCot = -1
-  for (const n of theoSo) {
-    let c = -1
-    for (const p of [...n.tien_de].sort((a, b) => (so.get(a) ?? 0) - (so.get(b) ?? 0))) {
-      const cp = cot.get(p)
-      if (cp !== undefined && !daNhuongCot.has(p) && !chiem.has(`${n.tang}:${cp}`)) { c = cp; daNhuongCot.add(p); break }
-    }
-    if (c < 0) { c = maxCot + 1; while (chiem.has(`${n.tang}:${c}`)) c++ }
-    cot.set(n.id, c); chiem.add(`${n.tang}:${c}`); maxCot = Math.max(maxCot, c)
-  }
-  return { cot, soCot: maxCot + 1, soHang: Math.max(0, ...nhom.map((n) => n.tang)) + 1 }
-}
 
 function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [cay, setCay] = useState<BdmCay | null>(null)
@@ -217,16 +197,25 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       {/* Đầu màn: khối · CHỦ ĐỀ (dropdown, mỗi màn 1 chủ đề) · bản đồ cũ · tiến độ */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-slate-200 bg-white px-4 py-2">
         <span className="text-[14px] font-semibold text-slate-900">🆕 Bản đồ mới</span>
-        <span className="rounded bg-amber-100 px-1.5 text-[11px] font-medium text-amber-800">nháp · Đại · chưa ảnh hưởng bản đồ đang chạy</span>
+        <span className="rounded bg-amber-100 px-1.5 text-[11px] font-medium text-amber-800">nháp · chưa ảnh hưởng bản đồ đang chạy</span>
         {dauMan}
         <span className="flex items-center gap-1.5">
           <span className="ml-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chủ đề</span>
           <select value={chuDe?.id ?? ''} onChange={(e) => chonChuDe(e.target.value)} disabled={!cay.chu_de.length}
             className={`${inp} w-auto max-w-[420px] py-1 text-[13px] font-medium`}>
             {!cay.chu_de.length && <option value="">— chưa có chủ đề —</option>}
-            {cay.chu_de.map((cd, i) => <option key={cd.id} value={cd.id}>{i + 1}. {cd.ten}</option>)}
+            {cay.chu_de.map((cd, i) => <option key={cd.id} value={cd.id}>{i + 1}. {cd.ten}{cd.nhanh !== 'toan' ? ` · ${BDM_NHANH.find((n) => n.id === cd.nhanh)?.nhan ?? cd.nhanh}` : ''}</option>)}
           </select>
         </span>
+        {chuDe && (
+          <label className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500" title="Vùng kiến thức của chủ đề này — đổi bất cứ lúc nào">
+            Vùng
+            <select value={chuDe.nhanh} onChange={(e) => void lam(() => doiVungChuDe(chuDe.id, e.target.value as BdmNhanh), 'Đã đổi vùng kiến thức')}
+              className={`${inp} w-auto py-1 text-[13px] font-medium normal-case tracking-normal text-slate-800`}>
+              {BDM_NHANH.map((n) => <option key={n.id} value={n.id}>{n.nhan}</option>)}
+            </select>
+          </label>
+        )}
         {chuDe && (
           <button onClick={() => setChon({ loai: 'chu_de' })} title="Sửa tên / thứ tự / xoá chủ đề"
             className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
@@ -347,7 +336,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// Sơ đồ 1 chuyên đề: box chuyên đề ở trên, nhóm bài rẽ nhánh xuống, mũi tên = tiền đề
+// Sơ đồ 1 chuyên đề: box chuyên đề ở trên, các nhóm bài xếp theo SỐ THỨ TỰ (trái → phải, MỘT hàng ngang — hết chỗ thì cuộn ngang).
+// CEO 11/10: bỏ nối tiền đề giữa các nhóm — "thứ tự là đủ". Kéo nhóm thả VÀO TRONG nhóm khác = hạ thành dạng bài.
 // ════════════════════════════════════════════════════════════════════════════
 function SoDoChuyenDe(p: {
   cd: BdmChuDe; o: BdmO; chon: Chon | null; hover: string | null; dangKeo: Keo['loai'] | null; sang: (k: string) => string
@@ -360,58 +350,13 @@ function SoDoChuyenDe(p: {
   moLyThuyet: (loai: LoaiNoiDung, id: string, ten: string) => void
 }) {
   const { cd, o, chon, sang, vung, lam } = p
-  const khung = useRef<HTMLDivElement>(null)
-  const goc = useRef<HTMLDivElement>(null)
-  const hop = useRef(new Map<string, HTMLDivElement>())
-  const [duong, setDuong] = useState<{ d: string; key: string }[]>([])
-  const [co, setCo] = useState({ w: 0, h: 0 })
-  const luoi = useMemo(() => xepLuoi(o.nhom), [o.nhom])
-  const soCuaNhom = new Map(o.nhom.map((n) => [n.id, n.so]))
-
-  // Vẽ mũi tên: đo vị trí box sau khi bố cục xong (chỉ hiển thị)
-  useLayoutEffect(() => {
-    const ve = () => {
-      const k = khung.current
-      if (!k) return
-      const kr = k.getBoundingClientRect()
-      const pos = (el: HTMLElement) => { const r = el.getBoundingClientRect(); return { x: r.left - kr.left + k.scrollLeft, y: r.top - kr.top + k.scrollTop, w: r.width, h: r.height } }
-      const cong = (a: { x: number; y: number; w: number; h: number }, b: { x: number; y: number; w: number }) => {
-        const x1 = a.x + a.w / 2, y1 = a.y + a.h, x2 = b.x + b.w / 2, y2 = b.y - 6
-        const m = (y1 + y2) / 2
-        return `M ${x1} ${y1} C ${x1} ${m}, ${x2} ${m}, ${x2} ${y2}`
-      }
-      const ds: { d: string; key: string }[] = []
-      const g = goc.current
-      for (const n of o.nhom) {
-        const b = hop.current.get(n.id)
-        if (!b) continue
-        if (n.tien_de.length === 0 && g) ds.push({ key: `goc>${n.id}`, d: cong(pos(g), pos(b)) })
-        for (const t of n.tien_de) { const a = hop.current.get(t); if (a) ds.push({ key: `${t}>${n.id}`, d: cong(pos(a), pos(b)) }) }
-      }
-      setDuong(ds)
-      setCo({ w: k.scrollWidth, h: k.scrollHeight })
-    }
-    ve()
-    const ro = new ResizeObserver(ve)
-    if (khung.current) { ro.observe(khung.current); for (const el of khung.current.querySelectorAll('[data-hop]')) ro.observe(el) }
-    return () => ro.disconnect()
-  }, [o])
-
   const dangChon = (c: Chon) => !!chon && JSON.stringify(chon) === JSON.stringify(c)
   return (
-    <div ref={khung} className="relative min-w-0 flex-1 overflow-auto bg-[#fafafb] p-8">
-      <svg className="pointer-events-none absolute left-0 top-0" width={co.w} height={co.h}>
-        <defs>
-          <marker id="bdm-mui" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
-          </marker>
-        </defs>
-        {duong.map((x) => <path key={x.key} d={x.d} fill="none" stroke="#94a3b8" strokeWidth={1.6} markerEnd="url(#bdm-mui)" />)}
-      </svg>
-
-      <div className="relative flex min-w-max flex-col items-center gap-14">
+    <div className="min-w-0 flex-1 overflow-auto bg-[#fafafb] p-6">
+      {/* min-w-max: khung rộng bằng hàng nhóm ⇒ hết chỗ thì KÉO THANH CUỘN NGANG của ô ngoài (không xuống dòng) */}
+      <div className="flex min-w-max flex-col items-center gap-6">
         {/* Box CHUYÊN ĐỀ */}
-        <div ref={goc} data-hop onClick={() => p.onChon({ loai: 'o' })}
+        <div onClick={() => p.onChon({ loai: 'o' })}
           {...vung(`goc:${o.chuyen_de_id}`, (k) => k.loai === 'dang_cu', p.ganVao({ chuDe: cd.id, chuyenDe: o.chuyen_de_id }, `chuyên đề «${o.ten}»`))}
           className={`w-[360px] cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm ${sang(`goc:${o.chuyen_de_id}`)} ${dangChon({ loai: 'o' }) ? 'border-amber-400 ring-2 ring-amber-300' : 'border-sky-200 hover:border-sky-400'}`}>
           <div className="flex items-center gap-2 bg-sky-600 px-4 py-2 text-white">
@@ -441,14 +386,13 @@ function SoDoChuyenDe(p: {
           )}
         </div>
 
-        {/* Lưới NHÓM BÀI: hàng = tầng (trên học trước), cột = nhánh */}
+        {/* Các NHÓM BÀI theo số thứ tự: trái → phải, MỘT HÀNG NGANG (Thùy 12/10: "hết chỗ thì kéo thanh bar") */}
         {o.nhom.length > 0 && (
-          <div className="grid gap-x-10 gap-y-14" style={{ gridTemplateColumns: `repeat(${luoi.soCot}, 280px)` }}>
+          <div className="flex flex-nowrap items-start gap-5">
             {o.nhom.map((n) => (
-              <div key={n.id} style={{ gridRow: n.tang + 1, gridColumn: (luoi.cot.get(n.id) ?? 0) + 1 }}>
+              <div key={n.id} className="w-[280px] shrink-0">
                 <BoxNhom n={n} cd={cd} o={o} chon={dangChon({ loai: 'nhom', id: n.id })} chonDangBai={chon?.loai === 'dang_bai' ? chon.id : null}
-                  dangKeo={p.dangKeo} sang={sang} soCuaNhom={soCuaNhom}
-                  refHop={(el) => { if (el) hop.current.set(n.id, el); else hop.current.delete(n.id) }}
+                  sapHa={p.hover === `n:${n.id}` && p.dangKeo === 'nhom'} sang={sang}
                   batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam}
                   ganVao={p.ganVao} moGan={() => p.moGan(o, n)} moLyThuyet={() => p.moLyThuyet('nhom', n.id, n.ten)} />
               </div>
@@ -456,16 +400,16 @@ function SoDoChuyenDe(p: {
           </div>
         )}
 
-        <ThemNhanh nhan="+ Nhóm bài (nhánh mới)" goiY="Tên nhóm bài…" rong onThem={(ten) => lam(() => themNhom(cd.id, o.chuyen_de_id, ten), 'Đã thêm nhóm bài')} />
+        <ThemNhanh nhan="+ Nhóm bài" goiY="Tên nhóm bài…" rong onThem={(ten) => lam(() => themNhom(cd.id, o.chuyen_de_id, ten), 'Đã thêm nhóm bài')} />
+        {o.nhom.length > 1 && <div className="text-[11px] text-slate-400">Kéo một nhóm thả vào TRONG nhóm khác = hạ nó thành dạng bài của nhóm đó · ◀ ▶ trên đầu box để đổi thứ tự</div>}
       </div>
     </div>
   )
 }
 
 function BoxNhom(p: {
-  n: BdmNhom; cd: BdmChuDe; o: BdmO; chon: boolean; chonDangBai: string | null; dangKeo: Keo['loai'] | null
-  sang: (k: string) => string; soCuaNhom: Map<string, number>
-  refHop: (el: HTMLDivElement | null) => void
+  n: BdmNhom; cd: BdmChuDe; o: BdmO; chon: boolean; chonDangBai: string | null; sapHa: boolean
+  sang: (k: string) => string
   batDauKeo: (e: DragEvent, k: Keo) => void; ketThucKeo: () => void
   vung: (key: string, nhan: (k: Keo) => boolean, tha: (k: Keo) => Promise<void> | void) => VungProps
   onChon: (c: Chon) => void
@@ -476,36 +420,42 @@ function BoxNhom(p: {
 }) {
   const { n, cd, o, sang, vung, lam } = p
   const cungO = (k: Keo) => k.loai === 'nhom' && k.chuDeId === cd.id && k.chuyenDeId === o.chuyen_de_id && k.id !== n.id
-  // Anh em = nhóm có CÙNG tập tiền đề (cùng rẽ ra từ 1 chỗ). Đổi thu_tu với anh em liền trước/sau ⇒ đổi trái/phải
-  // và đổi số thứ tự. Nhóm nối thẳng (không có anh em) ⇒ thứ tự do mũi tên quyết định, nút khoá.
-  const khoaTd = (x: BdmNhom) => [...x.tien_de].sort().join(',')
-  const anhEm = o.nhom.filter((x) => khoaTd(x) === khoaTd(n)).sort((a, b) => a.so - b.so)
-  const viTri = anhEm.findIndex((x) => x.id === n.id)
-  const doiCho = (khac: BdmNhom | undefined, nhan: string) => {
-    if (!khac) return
-    const ids = [...o.nhom].sort((a, b) => a.thu_tu - b.thu_tu || a.id.localeCompare(b.id)).map((x) => x.id)
-    const i = ids.indexOf(n.id), j = ids.indexOf(khac.id)
-    ;[ids[i], ids[j]] = [ids[j], ids[i]]
+  // ◀ ▶: đổi chỗ với nhóm liền trước / liền sau theo số thứ tự (không còn tiền đề ⇒ mọi nhóm trong chuyên đề là anh em)
+  const theoSo = [...o.nhom].sort((a, b) => a.so - b.so)
+  const viTri = theoSo.findIndex((x) => x.id === n.id)
+  const doiCho = (d: -1 | 1, nhan: string) => {
+    const ids = theoSo.map((x) => x.id)
+    if (viTri < 0 || viTri + d < 0 || viTri + d >= ids.length) return
+    ;[ids[viTri], ids[viTri + d]] = [ids[viTri + d], ids[viTri]]
     void lam(() => sapXep('nhom', ids), nhan)
   }
-  const goiYKhoa = anhEm.length <= 1 ? 'Nhóm này không có nhóm cùng nhánh rẽ để đổi chỗ — thứ tự do mũi tên tiền đề quyết định' : ''
+  // Thả 1 nhóm vào TRONG nhóm này = hạ nhóm kia thành dạng bài ở đây (dạng bài con của nó đi theo)
+  const haVaoDay = (k: Keo) => {
+    if (k.loai !== 'nhom') return
+    const a = o.nhom.find((x) => x.id === k.id)
+    if (!a) return
+    const con = a.dang_bai.length
+    if (!window.confirm(`Hạ «${a.ten}» thành dạng bài của «${n.ten}»?${con ? `\n\n${con} dạng bài đang ở trong «${a.ten}» cũng chuyển sang «${n.ten}».` : ''}\n\nLý thuyết của nhóm thành lý thuyết của dạng bài.`)) return
+    return lam(() => haNhom(a.id, n.id), `Đã hạ «${a.ten}» thành dạng bài`)
+  }
   return (
-    <div ref={p.refHop} data-hop draggable onDragStart={(e) => p.batDauKeo(e, { loai: 'nhom', id: n.id, chuDeId: cd.id, chuyenDeId: o.chuyen_de_id })} onDragEnd={p.ketThucKeo}
+    <div draggable onDragStart={(e) => p.batDauKeo(e, { loai: 'nhom', id: n.id, chuDeId: cd.id, chuyenDeId: o.chuyen_de_id })} onDragEnd={p.ketThucKeo}
+      data-hop
       {...vung(`n:${n.id}`, (k) => cungO(k) || (k.loai === 'dang_bai' && k.nhomId !== n.id) || k.loai === 'dang_cu', (k) => {
         if (k.loai === 'dang_cu') return p.ganVao({ nhom: n.id }, `nhóm «${n.ten}»`)(k)
-        if (k.loai === 'nhom') return lam(() => sapXep('nhom', chenTruoc(o.nhom.map((x) => x.id).sort((a, b) => (o.nhom.find((y) => y.id === a)!.thu_tu - o.nhom.find((y) => y.id === b)!.thu_tu)), k.id, n.id)), 'Đã đổi thứ tự (đặt bên trái)')
+        if (k.loai === 'nhom') return haVaoDay(k)
         if (k.loai === 'dang_bai') return lam(() => chuyenDangBai(k.id, n.id, null), 'Đã chuyển dạng bài')
       })}
       onClick={() => p.onChon({ loai: 'nhom', id: n.id })}
-      className={`group/nhom cursor-grab overflow-hidden rounded-xl border bg-white shadow-sm active:cursor-grabbing ${sang(`n:${n.id}`)} ${p.chon ? 'border-amber-400 ring-2 ring-amber-300' : 'border-slate-200 hover:border-indigo-300'}`}>
+      className={`group/nhom cursor-grab overflow-hidden rounded-xl border bg-white shadow-sm active:cursor-grabbing ${p.sapHa ? 'ring-2 ring-violet-500 ring-offset-2' : sang(`n:${n.id}`)} ${p.chon ? 'border-amber-400 ring-2 ring-amber-300' : 'border-slate-200 hover:border-indigo-300'}`}>
       <div className="flex items-start gap-2 bg-slate-700 px-3 py-2 text-white">
         <span className="mt-px rounded bg-white/20 px-1.5 text-[11px] font-bold">{n.so}</span>
         <span className="flex-1 text-[13px] font-semibold leading-snug"><MathText>{n.ten}</MathText></span>
         <span className="hidden shrink-0 gap-0.5 group-hover/nhom:flex">
-          <button onClick={(e) => { e.stopPropagation(); doiCho(anhEm[viTri - 1], 'Đã đưa lên trước') }} disabled={viTri <= 0}
-            title={goiYKhoa || 'Đổi chỗ với nhóm cùng nhánh bên trái (học trước)'} className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">◀</button>
-          <button onClick={(e) => { e.stopPropagation(); doiCho(anhEm[viTri + 1], 'Đã đưa ra sau') }} disabled={viTri < 0 || viTri >= anhEm.length - 1}
-            title={goiYKhoa || 'Đổi chỗ với nhóm cùng nhánh bên phải (học sau)'} className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">▶</button>
+          <button onClick={(e) => { e.stopPropagation(); doiCho(-1, 'Đã đưa lên trước') }} disabled={viTri <= 0}
+            title="Đổi chỗ với nhóm liền trước" className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">◀</button>
+          <button onClick={(e) => { e.stopPropagation(); doiCho(1, 'Đã đưa ra sau') }} disabled={viTri < 0 || viTri >= theoSo.length - 1}
+            title="Đổi chỗ với nhóm liền sau" className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">▶</button>
         </span>
         <button onClick={(e) => { e.stopPropagation(); p.moLyThuyet() }} draggable={false}
           title={n.co_ly_thuyet ? 'Xem / sửa lý thuyết' : 'Gán lý thuyết cho nhóm này'}
@@ -514,10 +464,8 @@ function BoxNhom(p: {
         </button>
         <DauTienDo moTa={!!n.mo_ta.trim()} noiDung={n.co_ly_thuyet} nhanNoiDung="lý thuyết" />
       </div>
+      {p.sapHa && <div className="bg-violet-600 px-3 py-1.5 text-center text-[11.5px] font-semibold text-white">⤵ Thả: hạ thành DẠNG BÀI của nhóm này</div>}
       <div className="flex flex-col gap-1.5 p-2.5">
-        {n.tien_de.length > 0 && (
-          <div className="text-[10.5px] text-slate-400">Học sau: {n.tien_de.map((t) => `#${p.soCuaNhom.get(t) ?? '?'}`).join(', ')}</div>
-        )}
         {HIEN_KHOP_CU && n.chua_gan > 0 && (
           <button onClick={(e) => { e.stopPropagation(); p.moGan() }} title="Câu của dạng cũ gắn vào nhóm này mà chưa thuộc dạng bài nào — bấm để gán"
             className="flex items-center gap-1 rounded-md bg-rose-50 px-2 py-1 text-left text-[11.5px] font-semibold text-rose-700 hover:bg-rose-100">
@@ -531,13 +479,6 @@ function BoxNhom(p: {
         ))}
         <ThemNhanh nhan="+ dạng bài" goiY="Tên dạng bài…" onThem={(ten) => lam(() => themDangBai(n.id, ten), 'Đã thêm dạng bài')} />
       </div>
-      {/* Vùng thả "học sau nhóm này" — chỉ hiện khi đang kéo 1 nhóm cùng chuyên đề */}
-      {p.dangKeo === 'nhom' && (
-        <div {...vung(`sau:${n.id}`, cungO, (k) => (k.loai === 'nhom' ? lam(() => themTienDe(k.id, n.id), 'Đã nối: học sau') : undefined))}
-          className={`border-t border-dashed border-indigo-300 bg-indigo-50 px-3 py-2 text-center text-[11.5px] font-medium text-indigo-700 ${sang(`sau:${n.id}`)}`}>
-          ⤓ Thả vào đây: học SAU nhóm này
-        </div>
-      )}
     </div>
   )
 }
@@ -637,7 +578,7 @@ function ThemChuyenDe({ cay, cd, onThem }: { cay: BdmCay; cd: BdmChuDe; onThem: 
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// Khung chi tiết (phải): tên · mô tả · lý thuyết/ví dụ · tiền đề · chuyển · nâng/hạ · gỡ/xoá
+// Khung chi tiết: tên · mô tả · lý thuyết/ví dụ · chuyển · nâng/hạ · gỡ/xoá
 // ════════════════════════════════════════════════════════════════════════════
 function ChiTiet(p: {
   chon: Chon; cay: BdmCay; cd: BdmChuDe; o: BdmO | null | undefined; khoi: string; onDong: () => void
@@ -682,7 +623,7 @@ function ChiTiet(p: {
         const soNhom = cd.o.reduce((t, x) => t + x.nhom.length, 0) // đếm thứ đang hiển thị — chỉ để hỏi xác nhận
         const soDb = cd.o.reduce((t, x) => t + x.nhom.reduce((u, n) => u + n.dang_bai.length, 0), 0)
         return (
-          <NutXoa nhan="Xoá chủ đề (kèm mọi thứ bên trong)" moTa={`Xoá luôn ${cd.o.length} chuyên đề · ${soNhom} nhóm · ${soDb} dạng bài bên trong (lý thuyết, ví dụ, mô tả, mũi tên mất theo). Chuyên đề nào đang dùng chung ở chủ đề khác thì vẫn giữ ở đó.`}
+          <NutXoa nhan="Xoá chủ đề (kèm mọi thứ bên trong)" moTa={`Xoá luôn ${cd.o.length} chuyên đề · ${soNhom} nhóm · ${soDb} dạng bài bên trong (lý thuyết, ví dụ, mô tả mất theo). Chuyên đề nào đang dùng chung ở chủ đề khác thì vẫn giữ ở đó.`}
             onXoa={() => { if (window.confirm(`Xoá chủ đề «${cd.ten}» cùng ${cd.o.length} chuyên đề, ${soNhom} nhóm, ${soDb} dạng bài bên trong?\n\nKhông hoàn tác được.`)) void lam(() => xoaChuDeTronGoi(cd.id), `Đã xoá chủ đề «${cd.ten}»`).then(p.onDaXoa) }} />
         )
       })()}
@@ -701,7 +642,7 @@ function ChiTiet(p: {
       <ChonDich nhan="⇄ Chuyển sang chủ đề khác" moTa="Chuyển cả chuyên đề cùng các nhóm bài. Chủ đề đích đã có chuyên đề này thì dồn vào."
         lua={cay.chu_de.filter((c) => c.id !== cd.id).map((c) => ({ id: c.id, nhan: c.ten }))}
         onChon={(id) => void lam(() => chuyenO(cd.id, o.chuyen_de_id, id), 'Đã chuyển chuyên đề').then(p.onDaXoa)} />
-      <ChonDich nhan="⧉ Gộp vào chuyên đề khác (dùng chung)" moTa="Chuyên đề này biến mất; mọi chủ đề đang dùng nó chuyển sang chuyên đề đích (chủ đề đã có đích thì dồn nhóm vào). Nhóm, mũi tên, dạng cũ gắn vào đi theo."
+      <ChonDich nhan="⧉ Gộp vào chuyên đề khác (dùng chung)" moTa="Chuyên đề này biến mất; mọi chủ đề đang dùng nó chuyển sang chuyên đề đích (chủ đề đã có đích thì dồn nhóm vào). Các nhóm bài đi theo."
         lua={cay.chuyen_de.filter((x) => x.id !== o.chuyen_de_id).map((x) => ({ id: x.id, nhan: `${x.ten}${x.so_chu_de ? ` · ở ${x.so_chu_de} chủ đề · K${x.khoi.join(',')}` : ''}` }))}
         onChon={(id) => { const ten = cay.chuyen_de.find((x) => x.id === id)?.ten ?? id; if (window.confirm(`Gộp «${o.ten}» vào «${ten}»? «${o.ten}» sẽ biến mất.`)) void lam(() => gopChuyenDe(o.chuyen_de_id, id), `Đã gộp vào «${ten}»`).then(p.onDaXoa) }} />
       {(() => {
@@ -719,8 +660,6 @@ function ChiTiet(p: {
   if (chon.loai === 'nhom') {
     const n = o.nhom.find((x) => x.id === chon.id)
     if (!n) return null
-    const ten = (id: string) => { const x = o.nhom.find((y) => y.id === id); return x ? `#${x.so} ${x.ten}` : id }
-    const coTheNoi = o.nhom.filter((x) => x.id !== n.id && !n.tien_de.includes(x.id))
     return khung('Nhóm bài (tầng 3)', 'bg-slate-700', <>
       <TruongTen key={n.id} gt={n.ten} onLuu={(t2) => lam(() => suaNhom(n.id, { ten: t2 }))} />
       <div className="text-[12px] text-slate-500"><MathText>{cd.ten}</MathText> › <MathText>{o.ten}</MathText> · thứ <b>{n.so}</b> · mã nháp <code>{n.id}</code></div>
@@ -733,27 +672,11 @@ function ChiTiet(p: {
 
       {HIEN_KHOP_CU && <DangCuChiTiet ds={n.dang_cu} chuaGan={n.chua_gan} truongHop="② câu phải gán vào 1 dạng bài của nhóm này"
         onGo={goCu({ nhom: n.id })} onGan={() => p.moGan(o, n)} />}
-      <div className="rounded-md border border-slate-200 p-2.5">
-        <div className="text-[12.5px] font-medium text-slate-700">↧ Học sau (tiền đề)</div>
-        {n.tien_de.length === 0 && <div className="mt-1 text-[11.5px] text-slate-400">Không có — nhóm này nối thẳng từ chuyên đề (đầu nhánh).</div>}
-        {n.tien_de.map((t) => (
-          <div key={t} className="mt-1 flex items-center gap-2 text-[12.5px]">
-            <span className="flex-1"><MathText>{ten(t)}</MathText></span>
-            <button onClick={() => void lam(() => goTienDe(n.id, t), 'Đã gỡ mũi tên')} className="text-[11.5px] text-rose-500 hover:text-rose-700">gỡ</button>
-          </div>
-        ))}
-        {coTheNoi.length > 0 && (
-          <ChonDich nhan="" moTa="" goiY="+ thêm: học sau nhóm…" lua={coTheNoi.map((x) => ({ id: x.id, nhan: `#${x.so} ${x.ten}` }))}
-            onChon={(id) => void lam(() => themTienDe(n.id, id), 'Đã nối: học sau')} gon />
-        )}
-        <div className="mt-1.5 text-[11px] text-slate-400">Hoặc kéo box này thả vào dải «học SAU nhóm này» dưới đáy box khác. Kéo box thả lên box khác = đặt sang bên trái.</div>
-      </div>
-
-      <ChonDich nhan="⇄ Chuyển sang chuyên đề khác" moTa="Phải gỡ hết mũi tên trước. Hoặc kéo box thả lên nút chuyên đề ở thanh trên."
+      <ChonDich nhan="⇄ Chuyển sang chuyên đề khác" moTa="Hoặc kéo box thả lên tên chuyên đề ở cột trái."
         lua={moiO.filter((x) => !(x.cd.id === cd.id && x.o.chuyen_de_id === o.chuyen_de_id)).map((x) => ({ id: oKey(x.cd.id, x.o.chuyen_de_id), nhan: `${x.cd.ten} › ${x.o.ten}` }))}
         onChon={(k) => { const [c, ch] = k.split('|'); void lam(() => chuyenNhom(n.id, c, ch, null), 'Đã chuyển nhóm bài').then(p.onDaXoa) }} />
       <HaNhom cay={cay} n={n} onHa={(dich) => void lam(() => haNhom(n.id, dich), 'Đã hạ thành dạng bài').then(p.onDaXoa)} />
-      <NutXoa nhan="Xoá nhóm bài (kèm dạng bài bên trong)" moTa={`Xoá luôn ${n.dang_bai.length} dạng bài bên trong. Lý thuyết, ví dụ, mô tả, mũi tên mất theo.`}
+      <NutXoa nhan="Xoá nhóm bài (kèm dạng bài bên trong)" moTa={`Xoá luôn ${n.dang_bai.length} dạng bài bên trong. Lý thuyết, ví dụ, mô tả mất theo.`}
         onXoa={() => { if (window.confirm(`Xoá nhóm bài «${n.ten}»${n.dang_bai.length ? ` cùng ${n.dang_bai.length} dạng bài bên trong` : ''}?\n\nKhông hoàn tác được.`)) void lam(() => xoaNhomTronGoi(n.id), 'Đã xoá nhóm bài').then(p.onDaXoa) }} />
     </>)
   }
@@ -814,7 +737,7 @@ function TruongMoTa({ gt, goiY, onLuu, nhan = 'Mô tả', chuThich }: { gt: stri
   )
 }
 
-// Chọn 1 đích trong danh sách rồi bấm — dùng cho chuyển / nối tiền đề
+// Chọn 1 đích trong danh sách rồi bấm — dùng cho chuyển / gộp / hạ
 function ChonDich({ nhan, moTa, lua, onChon, goiY = '— chọn —', gon }: { nhan: string; moTa: string; lua: { id: string; nhan: string }[]; onChon: (id: string) => void; goiY?: string; gon?: boolean }) {
   const [v, setV] = useState('')
   if (!lua.length && !gon) return null
@@ -839,17 +762,10 @@ function ChonDich({ nhan, moTa, lua, onChon, goiY = '— chọn —', gon }: { n
 
 function HaNhom({ cay, n, onHa }: { cay: BdmCay; n: BdmNhom; onHa: (dich: string) => void }) {
   const lua = cay.chu_de.flatMap((cd) => cd.o.flatMap((x) => x.nhom.filter((y) => y.id !== n.id).map((y) => ({ id: y.id, nhan: `${cd.ten} › ${x.ten} › #${y.so} ${y.ten}` }))))
-  if (n.dang_bai.length > 0 || n.tien_de.length > 0) return (
-    <div className="rounded-md border border-slate-200 p-2.5">
-      <div className="text-[12.5px] font-medium text-slate-700">⬇ Hạ thành dạng bài của nhóm khác</div>
-      <div className="mt-1 text-[11.5px] text-slate-400">
-        {n.dang_bai.length > 0 ? `Nhóm còn ${n.dang_bai.length} dạng bài — chuyển các dạng bài đi trước. ` : ''}
-        {n.tien_de.length > 0 ? 'Nhóm còn mũi tên tiền đề — gỡ trước.' : ''}
-      </div>
-    </div>
-  )
-  return <ChonDich nhan="⬇ Hạ thành dạng bài của nhóm khác" moTa="Lý thuyết của nhóm sẽ thành lý thuyết của dạng bài. (Nhóm khác đang trỏ mũi tên vào nhóm này thì DB chặn — gỡ trước.)"
-    lua={lua} onChon={(id) => { if (window.confirm(`Hạ «${n.ten}» thành dạng bài?`)) onHa(id) }} />
+  const con = n.dang_bai.length
+  return <ChonDich nhan="⬇ Hạ thành dạng bài của nhóm khác"
+    moTa={`Nhanh hơn: kéo box này thả vào TRONG box nhóm đích. Lý thuyết của nhóm thành lý thuyết của dạng bài.${con ? ` ${con} dạng bài bên trong cũng chuyển sang nhóm đích.` : ''}`}
+    lua={lua} onChon={(id) => { if (window.confirm(`Hạ «${n.ten}» thành dạng bài?${con ? `\n\n${con} dạng bài bên trong cũng chuyển sang nhóm đích.` : ''}`)) onHa(id) }} />
 }
 
 function NutXoa({ nhan, moTa, onXoa }: { nhan: string; moTa: string; onXoa: () => void }) {

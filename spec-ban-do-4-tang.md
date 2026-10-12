@@ -2,6 +2,8 @@
 
 > **Trạng thái (08/10):** CEO chốt **phương án "bản đồ mới trên ERP"** (§0). Đã build: bảng nháp + màn soạn (B1, mig `202610081147`, tab Kho › 🆕 Bản đồ mới).
 > Các bước B2–B5 chưa làm.
+> **⭐ Cập nhật 12/10 (CEO):** bản đồ mới **K12 chỉ chủ đề Nguyên hàm – Tích phân (`NCD00095`) là chuẩn**; các chủ đề K12 còn lại trong bản nháp CHƯA chuẩn.
+> ⇒ B5 Chuyển và việc dựng tài liệu/giáo trình/ET theo bản đồ mới của K12 chỉ áp **theo chủ đề NH-TP**, không theo cả khối; chủ đề khác giữ bản đồ cũ. Điều kiện "khối xong khi về 0" (§9.2) và "1 lần/khối" (§0, §11) hiểu là **theo chủ đề** cho K12.
 > **Phạm vi đợt này:** nhánh **Đại** (`dai_*`). HGT/KHTN cùng khuôn ⇒ áp sau qua registry. Hình (`hinh_*`) và Tiếng Anh tự cấu trúc riêng (§1.6 CLAUDE.md), không nằm trong spec này.
 > **Thay thế một phần:** `spec-cum-bai.md` (định nghĩa "cụm") và `spec-luong-kho.md` §2 (phân tầng Dạng / Cụm / Biến thể). Hai file đó vẫn đúng ở các phần khác.
 > Số liệu đo trên DB live 07/10 trong phiên read-only.
@@ -29,6 +31,13 @@
 > **Xếp bài** = `kho-rules/README.md` bước (3): CEO làm xong bản đồ khối nào ⇒ Claude ĐỌC bản đồ mới (mô tả · lý thuyết · ví dụ)
 > ⇒ (a) đề xuất gắn dạng cũ → bản mới ở mức dạng (học thuật xác nhận) · (b) gán từng câu gốc (bản sao theo gốc) ⇒ CEO/học thuật duyệt.
 > Vỏ đã chép (§9.3) CEO đang sửa tiếp (≈200 lần sửa trong buổi chiều 08/10) — KHÔNG xoá.
+
+> **⭐ Cập nhật 11/10 (CEO):** **BỎ nối tiền đề giữa các nhóm bài — "thứ tự là đủ".** Nhóm bài chỉ còn SỐ THỨ TỰ (vị trí `thu_tu`,
+> đổi bằng ◀ ▶); màn không còn mũi tên, không còn dải "học SAU", không còn mục tiền đề trong popup. §6.1 (tiền đề 3 tầng) vì thế
+> **không còn áp cho tầng nhóm bài** ở bản đồ mới; thứ tự học = thứ tự chuyên đề → thứ tự nhóm → thứ tự dạng bài.
+> Bảng `dai_bdm_nhom_tien_de` giữ nguyên (5 mũi tên K7 CEO nối 10/10 nằm yên, không tham gia tính số) — mig `202610110944`.
+> **Kéo nhóm A thả VÀO TRONG nhóm B = hạ A thành dạng bài của B** (CEO: "rất nhiều nhóm sẽ bị hạ"): A thành 1 dạng bài (tên · mô tả ·
+> lý thuyết), dạng bài con của A chuyển sang B ngay sau nó — không mất gì, câu đã gán (K12: 1.249 câu AI gán 10/10) đi theo nguyên vẹn.
 
 ## 1. Quyết định CEO (07/10)
 
@@ -363,6 +372,12 @@ create table dai_chuyen_de_tien_de (            -- MỚI
 ---
 
 ## 10. Mastery "đi theo câu" (Q10 — CEO 08/10: "câu đang thuộc dạng nào thì tính về dạng đó")
+
+> **⭐ ĐÃ BẬT 12/10 (mig `202610121610_do_nhom_di_theo_cau`, phiên bổ trợ — Thùy báo dạng yếu ở app HS lệch bản đồ).** `_do_nhom_cua_o(ma_cau, ma_dang_chep)` đã có,
+> đã nối vào `fn_mastery_cells` (phân giải theo CẶP câu–mã chép để không chậm) · `hs_dang_evals` · `fn_btyeu_dang_yeu_2_cua_so` · `fn_btyeu_de_xuat_dang_moi` · `fn_hs_bu_dang`.
+> Thêm so với luật dưới: mã chép đã **xoá cứng** (không còn dòng để mang `gop_vao`) mà `kho_doi_dang_log` chỉ ra đúng MỘT dạng nhận còn sống ⇒ tính về dạng đó.
+> **Chưa nối:** `_bxh_gia_tri` · `fn_hs_xep_hang_ti_le_dat` (đếm theo mã chép). `fn_thanh_tuu_thang` · `_troly_cc_hoc_tap_hoc_sinh` · `fn_btyeu_lich_su_hs` không đọc mã chép trực tiếp (qua `fn_mastery_cells` ⇒ đã theo).
+> Trước/sau 12/10: 14.673 → 14.384 ô, 50 ô đổi mức ở 37 HS, tổng lượt đo không đổi (DEVLOG 12/10). Phạm vi vẫn chỉ nhánh Đại.
 
 - **Hiện nay:** `fn_mastery_cells` lấy `ma_dang` từ **bản chép lưu trên dòng đo** (`gami_session_problems`, `bai_test_cau`, `bt_grades`).
 - **Luật phân giải nhóm của một lần đo** (một hàm duy nhất `_do_nhom_cua_o(ma_cau, ma_dang_chep)`):

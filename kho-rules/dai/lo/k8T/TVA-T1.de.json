@@ -1,0 +1,206 @@
+[
+ {
+  "ma": "T1V.1@p6",
+  "noi_dung": "Xác định hệ số $a$ để đa thức $x^3-3x+a$ chia hết cho $(x-1)^2$."
+ },
+ {
+  "ma": "T1V.2a@p7",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax^2+b$ chia hết cho $x^2-x+1$."
+ },
+ {
+  "ma": "T1V.2b@p7",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $ax^3+bx^2+5x-50$ chia hết cho $x^2+3x-10$."
+ },
+ {
+  "ma": "T1V.3@p7",
+  "noi_dung": "Tìm các hằng số $a$ và $b$ sao cho $x^3+ax+b$ chia cho $x+1$ thì dư $7$, chia cho $x-3$ thì dư $-5$."
+ },
+ {
+  "ma": "T1V.4@p7",
+  "noi_dung": "Tìm các hằng số $a,b,c$ sao cho $ax^3+bx^2+c$ chia hết cho $x+2$, chia cho $x^2-1$ thì dư $x+5$."
+ },
+ {
+  "ma": "T1V.5@p8",
+  "noi_dung": "Đa thức $P(x)$ chia cho $x-1$ được số dư bằng $4$, chia cho $x-3$ được số dư bằng $14$. Tìm số dư của phép chia $P(x)$ cho $(x-1)(x-3)$."
+ },
+ {
+  "ma": "T1V.6a@p8",
+  "noi_dung": "Chia đa thức: $(3x^4-8x^3-10x^2+8x-5):(3x^2-2x+1)$."
+ },
+ {
+  "ma": "T1V.6b@p8",
+  "noi_dung": "Chia đa thức: $(2x^3-9x^2+19x-15):(x^2-3x+5)$."
+ },
+ {
+  "ma": "T1V.6c@p8",
+  "noi_dung": "Chia đa thức: $(6x^5-3x^4y+2x^3y^2+4x^2y^3-5xy^4+2y^5):(3x^3-2xy^2+y^3)$."
+ },
+ {
+  "ma": "T1V.7@p10",
+  "noi_dung": "Chứng minh định lí \"Số dư trong phép chia đa thức $f(x)$ cho nhị thức $(x-a)$ bằng giá trị của đa thức ấy tại $x=a$\"."
+ },
+ {
+  "ma": "T1V.8a@p11",
+  "noi_dung": "Cho đa thức $f(x)=a_0x^4+a_1x^3+a_2x^2+a_3x+a_4$. Chứng minh rằng đa thức $f(x)$ chia hết cho $(x-1)$ nếu tổng các hệ số bằng $0$."
+ },
+ {
+  "ma": "T1V.8b@p11",
+  "noi_dung": "Cho đa thức $f(x)=a_0x^4+a_1x^3+a_2x^2+a_3x+a_4$. Chứng minh rằng đa thức $f(x)$ chia hết cho $(x+1)$ nếu tổng các hệ số của hạng tử bậc chẵn bằng tổng các hệ số của hạng tử bậc lẻ."
+ },
+ {
+  "ma": "T1V.9@p11",
+  "noi_dung": "Tìm các giá trị nguyên của $n$ để giá trị của biểu thức $2n^2+3n+3$ chia hết cho giá trị của biểu thức $2n-1$."
+ },
+ {
+  "ma": "T1B.1n1@p12",
+  "noi_dung": "Rút gọn biểu thức: $\\left(\\dfrac{3}{4}\\right)^{45}:\\left(\\dfrac{9}{16}\\right)^{10}$."
+ },
+ {
+  "ma": "T1B.1n2@p12",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{125^{100}\\cdot 2^{160}}{5^{298}\\cdot 4^{80}}$."
+ },
+ {
+  "ma": "T1B.1n3@p12",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{9^8\\cdot 5^3}{3^8\\cdot 27^3\\cdot 5^4}$."
+ },
+ {
+  "ma": "T1B.1n4@p12",
+  "noi_dung": "Rút gọn biểu thức: $(15\\cdot 3^{11}+4\\cdot 27^4):9^7$."
+ },
+ {
+  "ma": "T1B.1n5@p12",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{8(x+2y)^5}{2x+4y}$."
+ },
+ {
+  "ma": "T1B.2@p12",
+  "noi_dung": "Xác định hệ số $a$ để đa thức $x^4+ax^2+1$ chia hết cho $x^2+2x+1$."
+ },
+ {
+  "ma": "T1B.3@p12",
+  "noi_dung": "Xác định hệ số $a$ để phép chia $3x^2+ax+27$ cho $x+5$ có số dư bằng $2$."
+ },
+ {
+  "ma": "T1B.4@p12",
+  "noi_dung": "Tìm hệ số $a$ và $b$ để đa thức $x^4+ax^2+b$ chia hết cho $x^2+x+1$."
+ },
+ {
+  "ma": "T1B.5@p12",
+  "noi_dung": "Tìm hệ số $a$ và $b$ sao cho $ax^3+bx-24$ chia hết cho $(x+1)(x+3)$."
+ },
+ {
+  "ma": "T1B.6@p12",
+  "noi_dung": "Tìm hệ số $a$ và $b$ sao cho $x^4-x^3-3x^2+ax+b$ chia cho $x^2-x-2$ được dư là $2x-3$."
+ },
+ {
+  "ma": "T1B.7@p12",
+  "noi_dung": "Đa thức $2x^3+ax+b$ chia cho $x+1$ dư $-6$, đa thức ấy chia cho $x-2$ dư $21$. Xác định các hệ số $a$ và $b$."
+ },
+ {
+  "ma": "T1B.8@p12",
+  "noi_dung": "Chứng minh rằng không tồn tại số tự nhiên $n$ nào để giá trị của biểu thức $2n^3-3n^2+n+3$ chia hết cho giá trị của biểu thức $n^2-n$."
+ },
+ {
+  "ma": "T1B.9a@p12",
+  "noi_dung": "Không làm phép chia đa thức, hãy xác định xem đa thức $4x^3-7x^2-x-2$ có chia hết cho đa thức $x-2$ hay không."
+ },
+ {
+  "ma": "T1B.9b@p12",
+  "noi_dung": "Không làm phép chia đa thức, hãy xác định xem đa thức $4x^3-7x^2-x-2$ có chia hết cho đa thức $x+2$ hay không."
+ },
+ {
+  "ma": "T1B.10a@p12",
+  "noi_dung": "Cho đa thức $P(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$. Chứng minh $P(x)$ chia hết cho $x-1$ nếu tổng các hệ số bằng $0$."
+ },
+ {
+  "ma": "T1B.10b@p12",
+  "noi_dung": "Cho đa thức $P(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$. Chứng minh $P(x)$ chia hết cho $x+1$ nếu tổng các hệ số của luỹ thừa bậc lẻ đối với $x$ bằng tổng các hệ số của luỹ thừa bậc chẵn đối với $x$."
+ },
+ {
+  "ma": "T1B.11a@p12",
+  "noi_dung": "Xác định dư của phép chia đa thức $x+x^3+x^9+x^{27}+x^{81}$ cho $x-1$."
+ },
+ {
+  "ma": "T1B.11b@p12",
+  "noi_dung": "Xác định dư của phép chia đa thức $x+x^3+x^9+x^{27}+x^{81}$ cho $x^2-1$."
+ },
+ {
+  "ma": "T1B.12@p12",
+  "noi_dung": "Chứng minh rằng $(x^2+x-1)^{10}+(x^2-x+1)^{10}-2$ chia hết cho $x-1$."
+ },
+ {
+  "ma": "T1B.13@p13",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để số trị biểu thức $2x^2+x-7$ chia hết cho số trị biểu thức $x-2$."
+ },
+ {
+  "ma": "T1B.14@p13",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để số trị biểu thức $10x^2-7x-5$ chia hết cho số trị biểu thức $2x-3$."
+ },
+ {
+  "ma": "T1B.15@p13",
+  "noi_dung": "Xác định số tự nhiên $n$ để số trị biểu thức $25n^2-97n+11$ chia hết cho số trị biểu thức $n-4$."
+ },
+ {
+  "ma": "T1B.16@p13",
+  "noi_dung": "Tìm đa thức $P(x)$ biết rằng $P(x)$ chia cho $x+3$ thì dư $1$, chia cho $x-4$ thì dư $8$, chia cho $(x+3)(x-4)$ được thương là $3x$ và còn dư."
+ },
+ {
+  "ma": "T1B.17a@p13",
+  "noi_dung": "Xác định hằng số $a$ sao cho $4x^2-6x+a$ chia hết cho $x-3$."
+ },
+ {
+  "ma": "T1B.17b@p13",
+  "noi_dung": "Xác định hằng số $a$ sao cho $2x^2+x+a$ chia hết cho $x+3$."
+ },
+ {
+  "ma": "T1B.17c@p13",
+  "noi_dung": "Xác định hằng số $a$ sao cho $x^3+ax^2-4$ chia hết cho $x^2+4x+4$."
+ },
+ {
+  "ma": "T1B.18a@p13",
+  "noi_dung": "Xác định hằng số $a$ sao cho $10x^2-7x+a$ chia hết cho $2x-3$."
+ },
+ {
+  "ma": "T1B.18b@p13",
+  "noi_dung": "Xác định hằng số $a$ sao cho $2x^2+ax+1$ chia cho $x-3$ dư $4$."
+ },
+ {
+  "ma": "T1B.18c@p13",
+  "noi_dung": "Xác định hằng số $a$ sao cho $ax^5+5x^4-9$ chia hết cho $x-1$."
+ },
+ {
+  "ma": "T1B.19a@p13",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax+b$ chia hết cho $x^2-4$."
+ },
+ {
+  "ma": "T1B.19b@p13",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+ax^3+bx-1$ chia hết cho $x^2-1$."
+ },
+ {
+  "ma": "T1B.19c@p13",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^3+ax+b$ chia hết cho $x^2+2x-2$."
+ },
+ {
+  "ma": "T1B.20a@p13",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $ax^4+bx^3+1$ chia hết cho $(x-1)^2$."
+ },
+ {
+  "ma": "T1B.20b@p13",
+  "noi_dung": "Xác định các hằng số $a$ và $b$ sao cho $x^4+4$ chia hết cho $x^2+ax+b$."
+ },
+ {
+  "ma": "T1B.21a@p13",
+  "noi_dung": "Rút gọn biểu thức: $49^{12}:7^4$."
+ },
+ {
+  "ma": "T1B.21b@p13",
+  "noi_dung": "Rút gọn biểu thức: $\\left(\\dfrac{25}{16}\\right)^{25}:\\left(\\dfrac{5}{4}\\right)^{50}$."
+ },
+ {
+  "ma": "T1B.21c@p13",
+  "noi_dung": "Rút gọn biểu thức: $\\left(\\dfrac{3}{4}\\right)^{25}:\\left(\\dfrac{9}{16}\\right)^{10}$."
+ },
+ {
+  "ma": "T1B.22a@p13",
+  "noi_dung": "Xác định số $a$ sao cho $27x^2+a$ chia hết cho $3x+2$."
+ }
+]

@@ -101,6 +101,8 @@ export default function DuoiGiayTA({ buoiId, hocSinhId, mon, maDang, hoTen, onBa
                   <span className="mt-0.5 w-5 shrink-0 text-[12px] font-bold text-slate-400">{i + 1}</span>
                   <div className="min-w-0 flex-1">
                     <div className="text-[13px] leading-snug text-slate-800"><MathText>{c.noi_dung ?? ''}</MathText></div>
+                    {/* Thùy 12/10: câu có hình — trước đây phiếu đuổi không lấy anh_de nên thiếu hẳn hình */}
+                    {c.anh_de && <img src={c.anh_de} alt="hình của câu" className="my-1.5 max-h-[260px] max-w-full rounded border border-slate-200 bg-white" />}
                     {c.lua_chon && (
                       <ol className="mt-1 list-inside list-[upper-alpha] space-y-0.5 text-[12.5px] text-slate-500">
                         {c.lua_chon.map((x, j) => <li key={j}><MathText>{x}</MathText></li>)}

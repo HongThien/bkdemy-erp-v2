@@ -29,7 +29,7 @@ import TripCountdownBanner, { type CountdownRect } from '../../components/TripCo
 
 // Banner đếm ngược đi chơi Ba Vì (CEO 07/09, đã lắp cho OPS — "làm cái này cho ta app luôn") — ảnh + rect
 // giống hệt OpsHome.tsx (đo tay theo pixel ảnh gốc goout_2.png 1672×941, xem OpsHome.tsx để biết chi tiết đo).
-const NGAY_DI_CHOI = '2026-09-30'
+const NGAY_DI_CHOI = '2026-11-30'   // chuyến kế tiếp: 30/11 (đổi từ 30/09)
 const RECT_DEM_NGUOC: CountdownRect = { left: 554 / 1672, top: 396 / 941, width: 272 / 1672, height: 178 / 941 }
 
 // CEO 06/09: "app TA cũng cần push để không miss việc, giống app pt". Khuôn Y HỆT pt (tin

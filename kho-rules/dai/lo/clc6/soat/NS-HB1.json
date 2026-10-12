@@ -1,0 +1,57 @@
+{
+ "ma_de": "NS-HB1",
+ "so_cau": 12,
+ "ket_luan": "ĐẠT",
+ "cau_sua": 5,
+ "van_de": [
+  {
+   "ma_nguon": "NS-HB1 · P1.1",
+   "muc": "nen_sua",
+   "loai": "kiến thức",
+   "mo_ta": "Lập luận \"4 không chia hết cho 5 mà b×4 chia hết cho 5 nên b chia hết cho 5\" dùng tính chất nguyên tố cùng nhau (lớp 6), vượt quy định chỉ dùng dấu hiệu chia hết. Đã viết lại: b×4 chia hết cho 5 và chẵn nên tận cùng 0, b×4 từ 4 đến 36 nên là 10; 20; 30, chỉ 20 chia hết cho 4 (dấu hiệu chia hết cho 4). Phần 1 Bước 3 sửa theo. Đáp số giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS-HB1 · P1.1",
+   "muc": "hoi",
+   "loai": "hiểu đề",
+   "mo_ta": "Đề \"Tìm a, b\" không nói a, b khác 0: cặp a=b=0 cũng thoả (0,0=0). Người soạn đã loại và nêu trong ghi_chu_nghi; đáp số 4;5 khớp cách hiểu thông dụng. Nhờ CEO xác nhận a,b khác 0 (hoặc ghi cả a=b=0).",
+   "da_sua": false
+  },
+  {
+   "ma_nguon": "NS-HB1 · P1.3",
+   "muc": "sai",
+   "loai": "toán",
+   "mo_ta": "Phần 2 chứng minh \"số số hạng phải là bội của 5\" thiếu ca 6; 7; 8; 9 số hạng (chỉ xét 1–5 rồi nhảy sang từ 10 trở lên), nên chưa loại được các trường hợp này. Đã thêm câu: với 6; 7; 8; 9 số hạng thì tổng chữ số tận cùng 48; 56; 64; 72 đều không tận cùng 0. Đáp số 888+88+8+8+8=1000 (8 chữ số 8) đúng (đã duyệt bằng vét cạn: 111x+11y+z=125, nhỏ nhất 3x+2y+z=8).",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS-HB1 · P1.5",
+   "muc": "nen_sua",
+   "loai": "trình bày",
+   "mo_ta": "Phần 2 nhảy bước từ (1/8+8) sang 65/8 (HS phải tự đổi 8 = 64/8 ngầm). Đã thêm dòng y×(1/8+64/8)=195.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS-HB1 · P1.7",
+   "muc": "nen_sua",
+   "loai": "kiến thức",
+   "mo_ta": "Phần 2 viết \"chia hết cho cả 10 và 8 nên là một trong các số 40; 80; 120…\" mà không chứng minh mọi số chia hết cho cả hai đều là bội của 40 (kiến thức bội chung, lớp 6). Đã viết lại theo dấu hiệu chia hết: chia hết cho 10 và <50 là 10; 20; 30; 40, chỉ 40 chia hết cho 8. Phần 1 Bước 1–2 sửa theo. Đáp số 31 giữ nguyên.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS-HB1 · P1.10",
+   "muc": "nen_sua",
+   "loai": "hiểu đề",
+   "mo_ta": "Đọc hình (đã kiểm từng cạnh trên ảnh): lời giải và đáp số 196 cm² ĐÚNG. Chỉ có ghi_chu_nghi ghi sai kích thước hình chữ nhật 6 (\"6 x 8 cm\"); đúng là 6 x 10 cm (rộng = 14-8 = 6, cao = 14-4 = 10; tổng diện tích 4+16+16+36+64+60 = 196). Đã sửa ghi chú.",
+   "da_sua": true
+  },
+  {
+   "ma_nguon": "NS-HB1 · P2.1",
+   "muc": "hoi",
+   "loai": "đáp số",
+   "mo_ta": "Ý b ra 1683:560 = 3 3/560 giờ (≈3,005 giờ), không tròn; nếu vòi 561 lít/giờ thì đúng 3 giờ. Tôi tính lại độc lập: thể tích 2,244 m³, 75% = 1,683 m³ = 1683 lít, đúng như bản soạn. Nghi đề in sai số 560 (hoặc đáp án gốc làm tròn \"3 giờ\"). Không sửa dap_an; nhờ CEO / nguồn đối chiếu quyết định.",
+   "da_sua": false
+  }
+ ]
+}

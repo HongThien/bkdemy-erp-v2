@@ -1,0 +1,266 @@
+[
+ {
+  "ma": "D4.10a@p83",
+  "noi_dung": "Chứng minh rằng: $a^2+b^2\\ge2ab$."
+ },
+ {
+  "ma": "D4.10b@p83",
+  "noi_dung": "Chứng minh rằng: $(a+b)^2\\ge4ab$."
+ },
+ {
+  "ma": "D4.10c@p83",
+  "noi_dung": "Chứng minh rằng: $2(a^2+b^2)\\ge(a+b)^2$."
+ },
+ {
+  "ma": "D4.10d@p83",
+  "noi_dung": "Chứng minh rằng: $(ax+by)^2\\le(a^2+b^2)(x^2+y^2)$."
+ },
+ {
+  "ma": "D4.10e@p83",
+  "noi_dung": "Chứng minh rằng: $a^2+b^2+c^2+d^2+e^2\\ge a(b+c+d+e)$."
+ },
+ {
+  "ma": "D4.10f@p83",
+  "noi_dung": "Chứng minh rằng: $a^2+b^2+c^2\\ge ab+bc+ca$."
+ },
+ {
+  "ma": "D4.11a@p84",
+  "noi_dung": "Cho $a,b>0$. Chứng minh rằng: $\\dfrac{a}{b}+\\dfrac{b}{a}\\ge2$."
+ },
+ {
+  "ma": "D4.11b@p84",
+  "noi_dung": "Cho $a,b>0$. Chứng minh rằng: $a^3+b^3\\ge a^2b+ab^2$."
+ },
+ {
+  "ma": "D4.11c@p84",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{ab}{c}+\\dfrac{bc}{a}+\\dfrac{ca}{b}\\ge a+b+c$."
+ },
+ {
+  "ma": "D4.11d@p84",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{a^2}{b}+\\dfrac{b^2}{c}+\\dfrac{c^2}{a}\\ge a+b+c$."
+ },
+ {
+  "ma": "D4.11e@p84",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\ge\\dfrac{9}{a+b+c}$."
+ },
+ {
+  "ma": "D4.12a@p85",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $a^2+b^2+c^2<2(ab+bc+ca)$."
+ },
+ {
+  "ma": "D4.12b@p85",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $(a+b-c)(a-b+c)(-a+b+c)\\le abc$."
+ },
+ {
+  "ma": "D4.13a1@p85",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Hoa Lư, Quận 9 – TP. Hồ Chí Minh, năm học 2000 – 2001) Chứng minh bất đẳng thức sau: $(a^2+b^2)(a^2+1)\\ge4a^2b$, với mọi $a,b$."
+ },
+ {
+  "ma": "D4.13a2@p85",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Hoa Lư, Quận 9 – TP. Hồ Chí Minh, năm học 2000 – 2001) Chứng minh bất đẳng thức sau: $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$, với mọi $a,b>0$."
+ },
+ {
+  "ma": "D4.13a3@p85",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Hoa Lư, Quận 9 – TP. Hồ Chí Minh, năm học 2000 – 2001) Cho $a,b,c>0$. Chứng minh bất đẳng thức sau: $\\dfrac{1}{a+3b}+\\dfrac{1}{b+3c}+\\dfrac{1}{c+3a}\\ge\\dfrac{1}{a+2b+c}+\\dfrac{1}{b+2c+a}+\\dfrac{1}{c+2a+b}$."
+ },
+ {
+  "ma": "D4.13b1@p85",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 2001 – 2002) Chứng minh bất đẳng thức: $a^2+b^2+c^2\\ge ab+bc+ac$."
+ },
+ {
+  "ma": "D4.13b2@p85",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 2001 – 2002) Cho $a,b,c$ là ba số dương. Chứng minh rằng: $\\dfrac{a}{bc}+\\dfrac{b}{ac}+\\dfrac{c}{ab}\\ge\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$."
+ },
+ {
+  "ma": "D4.13c@p86",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 6 – TP. Hồ Chí Minh, năm học 1998 – 1999) Cho $a\\ge b\\ge c>0$. Chứng minh bất đẳng thức: $\\dfrac{a}{b}+\\dfrac{b}{c}+\\dfrac{c}{a}\\le\\dfrac{b}{a}+\\dfrac{a}{c}+\\dfrac{c}{b}$."
+ },
+ {
+  "ma": "D4.13d@p86",
+  "noi_dung": "(Đề thi chọn đội tuyển học sinh giỏi Toán lớp 9, Quận Tân Bình (Vòng 2), TP. Hồ Chí Minh, năm học 2010 – 2011) Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{1}{a^3+b^3+abc}+\\dfrac{1}{b^3+c^3+abc}+\\dfrac{1}{a^3+c^3+abc}\\le\\dfrac{1}{abc}$."
+ },
+ {
+  "ma": "D4.14a@p87",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 6 – TP. Hồ Chí Minh, năm học 1998 – 1999) Cho ba số $a,b,c$ sao cho $0\\le a\\le2$, $0\\le b\\le2$, $0\\le c\\le2$ và $a+b+c=3$. Chứng minh rằng $a^2+b^2+c^2\\le5$."
+ },
+ {
+  "ma": "D4.14b1@p87",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 9, Quận 1 – TP. Hồ Chí Minh, năm học 2004 – 2005) Cho $x,y$ là số dương thoả mãn $x^3+y^4\\le x^2+y^3$. Chứng minh rằng: $x^3+y^3\\le x^2+y^2$."
+ },
+ {
+  "ma": "D4.14b2@p87",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 9, Quận 1 – TP. Hồ Chí Minh, năm học 2004 – 2005) Cho $x,y$ là số dương thoả mãn $x^3+y^4\\le x^2+y^3$. Chứng minh rằng: $x^2+y^3\\le x+y^2$."
+ },
+ {
+  "ma": "D4.14c@p87",
+  "noi_dung": "(Đề thi tuyển sinh vào lớp 10 chuyên Toán, Trường THPT chuyên Lê Hồng Phong, TP. Hồ Chí Minh, năm học 2008 – 2009) Cho $a^3+b^3=2$. Chứng minh rằng $0<a+b\\le2$."
+ },
+ {
+  "ma": "D4.14d@p87",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 1, TP. Hồ Chí Minh, năm học 2009 – 2010)\n1) Chứng minh rằng: $\\lvert x+y\\rvert\\le\\lvert x\\rvert+\\lvert y\\rvert$ với mọi giá trị của $x;y$.\n2) Cho $\\lvert a\\rvert<1$, $\\lvert a-c\\rvert<1005$ và $\\lvert b-1\\rvert<1005$. Chứng minh rằng $\\lvert ab-c\\rvert<2010$."
+ },
+ {
+  "ma": "D4.24@p94",
+  "noi_dung": "Giải bất phương trình sau: $\\dfrac{x+1}{99}+\\dfrac{x+4}{96}+\\dfrac{x+5}{95}\\ge-3$."
+ },
+ {
+  "ma": "D4.25@p94",
+  "noi_dung": "Giải bất phương trình sau: $\\dfrac{x+4}{195}+\\dfrac{x+5}{194}+\\dfrac{x+6}{193}>\\dfrac{x+7}{192}+\\dfrac{x+8}{191}+\\dfrac{x+9}{190}$."
+ },
+ {
+  "ma": "D4.26@p95",
+  "noi_dung": "Giải và biện luận bất phương trình sau: $(m+2)x>(m+2)(m-5)$."
+ },
+ {
+  "ma": "D4.27@p95",
+  "noi_dung": "Hãy lập bất phương trình của bài toán sau: Quãng đường $AB$ dài $141$ km. Lúc $6$ giờ một mô tô khởi hành đi từ $A$ đến $B$, trong giờ thứ nhất mô tô đi với vận tốc $29$ km/giờ. Hỏi trong quãng đường còn lại mô tô phải đi với vận tốc là bao nhiêu để đến $B$ trước $10$ giờ $30$ phút?"
+ },
+ {
+  "ma": "D4.28a@p95",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Du, Quận 1 – TP. Hồ Chí Minh, năm học 2000 – 2001) Giải bất phương trình: $x^2-3x>0$."
+ },
+ {
+  "ma": "D4.28b@p95",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Nguyễn Gia Thiều, Quận Tân Bình – TP. Hồ Chí Minh, năm học 2000 – 2001) Giải bất phương trình: $\\dfrac{x-3}{x+2}>2$."
+ },
+ {
+  "ma": "D4.35a@p98",
+  "noi_dung": "Giải phương trình: $\\lvert x-1\\rvert-2\\lvert x\\rvert=-2$."
+ },
+ {
+  "ma": "D4.35b@p98",
+  "noi_dung": "Giải phương trình: $\\lvert x^3-x-8\\rvert=x^3+x+8$."
+ },
+ {
+  "ma": "D4.36a@p98",
+  "noi_dung": "Giải phương trình: $\\lvert2x-5\\rvert=\\lvert x+3\\rvert$."
+ },
+ {
+  "ma": "D4.36b@p98",
+  "noi_dung": "Giải phương trình: $\\lvert x-1\\rvert=\\lvert3x+10\\rvert$."
+ },
+ {
+  "ma": "D4.37@p99",
+  "noi_dung": "Giải phương trình: $\\lvert x-7\\rvert=x-7$."
+ },
+ {
+  "ma": "D4.38@p99",
+  "noi_dung": "Giải phương trình: $\\lvert x-5\\rvert+\\lvert x-2\\rvert=3$."
+ },
+ {
+  "ma": "D4.39@p99",
+  "noi_dung": "Giải phương trình: $\\lvert x+5\\rvert+\\lvert x+7\\rvert+\\lvert x+15\\rvert=4x$."
+ },
+ {
+  "ma": "D4.40@p99",
+  "noi_dung": "Giải phương trình: $\\lvert x-4\\rvert^{20}+\\lvert x-3\\rvert^{21}=1$."
+ },
+ {
+  "ma": "D4.41@p99",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Quận 1, TP. Hồ Chí Minh, năm học 2009 – 2010) Giải phương trình: $\\dfrac{x^2-1+\\lvert x+1\\rvert}{\\lvert x\\rvert(x-2)}=2$."
+ },
+ {
+  "ma": "D4.42@p100",
+  "noi_dung": "(Đề thi chọn học sinh giỏi Toán lớp 8, Trường THCS Hoa Lư, Quận 9 – TP. Hồ Chí Minh, năm học 2001 – 2002) Giải phương trình: $\\lvert2x-\\lvert2x-1\\rvert\\rvert=-m^2x$ (với $m$ là tham số)."
+ },
+ {
+  "ma": "D4.43a@p101",
+  "noi_dung": "Cho $a\\ge b$. Chứng minh: $a+68\\ge b+68$."
+ },
+ {
+  "ma": "D4.43b@p101",
+  "noi_dung": "Cho $a\\ge b$. Chứng minh: $-3a\\le-3b$."
+ },
+ {
+  "ma": "D4.43c@p101",
+  "noi_dung": "Cho $a\\ge b$. Chứng minh: $3a-7\\ge3b-7$."
+ },
+ {
+  "ma": "D4.43d@p101",
+  "noi_dung": "Cho $a\\ge b$. Chứng minh: $46-5a\\le46-5b$."
+ },
+ {
+  "ma": "D4.44a@p101",
+  "noi_dung": "So sánh $m$ và $n$ nếu: $m+79<n+79$."
+ },
+ {
+  "ma": "D4.44b@p101",
+  "noi_dung": "So sánh $m$ và $n$ nếu: $-460m>-460n$."
+ },
+ {
+  "ma": "D4.44c@p101",
+  "noi_dung": "So sánh $m$ và $n$ nếu: $30m-8\\le30n-8$."
+ },
+ {
+  "ma": "D4.44d@p101",
+  "noi_dung": "So sánh $m$ và $n$ nếu: $79-6m\\ge79-6n$."
+ },
+ {
+  "ma": "D4.45a@p101",
+  "noi_dung": "Chứng minh rằng: $x^2+y^2+z^2+3\\ge2(x+y+z)$."
+ },
+ {
+  "ma": "D4.45b@p101",
+  "noi_dung": "Chứng minh rằng: $x^2+y^2+z^2+14\\ge2x-4y+6z$."
+ },
+ {
+  "ma": "D4.45c@p101",
+  "noi_dung": "Chứng minh rằng: $4x^2+25y^2+9z^2\\ge4x-10y+12z-6$."
+ },
+ {
+  "ma": "D4.46a@p102",
+  "noi_dung": "Chứng minh rằng: $a^4+b^4\\ge a^3b+ab^3$."
+ },
+ {
+  "ma": "D4.46b@p102",
+  "noi_dung": "Chứng minh rằng: $a^{2010}+b^{2010}\\ge a^{1975}b^{35}+a^{35}b^{1975}$."
+ },
+ {
+  "ma": "D4.47@p102",
+  "noi_dung": "Cho $a,b>0$. Chứng minh rằng:\n\na) $\\dfrac{1}{ab}\\ge\\dfrac{4}{(a+b)^2}$;\n\nb) $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$;\n\nc) $\\dfrac{1}{a^2+b^2}+\\dfrac{1}{ab}\\ge\\dfrac{6}{(a+b)^2}$."
+ },
+ {
+  "ma": "D4.48a@p102",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $4a^2b^2-(a^2+b^2-c^2)^2>0$."
+ },
+ {
+  "ma": "D4.48b@p102",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $a(b-c)^2+b(c-a)^2+c(a+b)^2>a^3+b^3+c^3$."
+ },
+ {
+  "ma": "D4.49a@p103",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $\\dfrac{1}{a+b-c}+\\dfrac{1}{a-b+c}+\\dfrac{1}{-a+b+c}\\ge\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$."
+ },
+ {
+  "ma": "D4.49b@p103",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $\\dfrac{a}{b+c}+\\dfrac{b}{c+a}+\\dfrac{c}{a+b}<2$."
+ },
+ {
+  "ma": "D4.50a@p103",
+  "noi_dung": "Giải bất phương trình: $5(x-2)-3(x-1)>-17$."
+ },
+ {
+  "ma": "D4.50b@p103",
+  "noi_dung": "Giải bất phương trình: $2(x+1)-5(x-4)\\le-8$."
+ },
+ {
+  "ma": "D4.50c@p103",
+  "noi_dung": "Giải bất phương trình: $x-7(x-5)\\ge2x+51$."
+ },
+ {
+  "ma": "D4.51@p104",
+  "noi_dung": "Giải bất phương trình sau: $\\dfrac{x-1}{4}-2\\ge\\dfrac{3x+1}{2}$."
+ },
+ {
+  "ma": "D4.52a@p104",
+  "noi_dung": "Giải bất phương trình và biểu diễn tập nghiệm trên trục số: $\\dfrac{x+3}{5}-\\dfrac{2x-1}{3}\\le\\dfrac{x-2}{5}$."
+ },
+ {
+  "ma": "D4.52b@p104",
+  "noi_dung": "Giải bất phương trình và biểu diễn tập nghiệm trên trục số: $\\dfrac{x+1}{4}-\\dfrac{x-1}{5}>\\dfrac{x}{20}$."
+ },
+ {
+  "ma": "D4.52c@p104",
+  "noi_dung": "Giải bất phương trình và biểu diễn tập nghiệm trên trục số: $\\dfrac{x+3}{2}+\\dfrac{2x-1}{3}<\\dfrac{7x}{6}$."
+ }
+]
