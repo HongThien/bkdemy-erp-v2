@@ -37004,3 +37004,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai / sửa:** (a) tôi đọc nhầm Bài 13c "KH ⊥ AN" ở ảnh nhỏ — dựng toạ độ thấy $AN\perp HC$ sai, phóng to mới thấy "AB" ⇒ ảnh nhỏ phải phóng to trước khi gõ. (b) PIL hỏng (`unknown slot ID`) ⇒ cắt ảnh bằng puppeteer-core (`crop.mjs`).
   (c) Bài 23 không có lời giải sơ cấp đủ (Ramanujan–Nagell) — đã nói thẳng, không bịa.
 - **Treo, chờ Thùy (10 câu, `lo/k8/de-cuong/chua-chac.md`):** 7i · 7k (nghi in lỗi) · 10b · 12b · 14b, 15c, 16, 19 (đường trung bình — cùng câu hỏi với 5 đề Hà Nội GKI-17/21/22/29/33) · 17 · 23 (giữ / thay đề kinh điển $2^{2008}+2^{2011}+2^n$ / bỏ).
+
+
+### 12/10 (tiếp 4) — Bản đồ mới: nhóm bài trở lại MỘT HÀNG NGANG, hết chỗ thì cuộn (Thùy: "sao tự dưng xuống dòng… hết chỗ thì kéo thanh bar chứ")
+- **Nguyên nhân:** commit 648da666 (11/10, bỏ nối tiền đề) đổi lưới nhóm sang `flex-wrap` "hết hàng xuống hàng". Thùy không muốn. **Sửa:** `BanDoMoi.tsx` — hàng nhóm `flex-nowrap`, mỗi box `shrink-0`, khung ngoài `min-w-max` để ô `overflow-auto` hiện thanh cuộn ngang (không dùng `justify-center` trên hàng tràn — nửa trái sẽ không cuộn tới được). CHƯA mở bằng phiên đăng nhập thật; chỉ tsc.

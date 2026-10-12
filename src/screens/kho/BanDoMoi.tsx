@@ -3,7 +3,7 @@
 // Việc của CEO: ① CHIA TẦNG + THỨ TỰ HỌC · ② dán LÝ THUYẾT (nhóm) / VÍ DỤ (dạng bài) · ③ viết MÔ TẢ nhận biết.
 // Bố cục (CEO 08/10):
 //   · mỗi màn 1 CHỦ ĐỀ (thanh chủ đề trên cùng) · thanh CHUYÊN ĐỀ trái→phải = thứ tự học, ◀ ▶ / phím ←→ để chuyển
-//   · chuyên đề là 1 box; NHÓM BÀI là các box xếp theo SỐ THỨ TỰ (trái→phải, hết hàng xuống hàng) — CEO 11/10 bỏ nối
+//   · chuyên đề là 1 box; NHÓM BÀI là các box xếp theo SỐ THỨ TỰ (trái→phải, MỘT hàng, hết chỗ thì cuộn ngang — CEO 12/10) — CEO 11/10 bỏ nối
 //     tiền đề giữa các nhóm, "thứ tự là đủ"; kéo nhóm thả VÀO TRONG nhóm khác = hạ thành dạng bài (dạng bài con đi theo)
 //   · DẠNG BÀI là card trong box nhóm, trên→dưới = thứ tự học
 //   · số thứ tự cả 3 tầng do DB tự đánh (fn_bdm_cay / _bdm_so_nhom) và HIỆN trên từng box — sai là nhìn thấy
@@ -336,7 +336,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// Sơ đồ 1 chuyên đề: box chuyên đề ở trên, các nhóm bài xếp theo SỐ THỨ TỰ (trái → phải, hết hàng xuống hàng).
+// Sơ đồ 1 chuyên đề: box chuyên đề ở trên, các nhóm bài xếp theo SỐ THỨ TỰ (trái → phải, MỘT hàng ngang — hết chỗ thì cuộn ngang).
 // CEO 11/10: bỏ nối tiền đề giữa các nhóm — "thứ tự là đủ". Kéo nhóm thả VÀO TRONG nhóm khác = hạ thành dạng bài.
 // ════════════════════════════════════════════════════════════════════════════
 function SoDoChuyenDe(p: {
@@ -353,7 +353,8 @@ function SoDoChuyenDe(p: {
   const dangChon = (c: Chon) => !!chon && JSON.stringify(chon) === JSON.stringify(c)
   return (
     <div className="min-w-0 flex-1 overflow-auto bg-[#fafafb] p-6">
-      <div className="flex flex-col items-center gap-6">
+      {/* min-w-max: khung rộng bằng hàng nhóm ⇒ hết chỗ thì KÉO THANH CUỘN NGANG của ô ngoài (không xuống dòng) */}
+      <div className="flex min-w-max flex-col items-center gap-6">
         {/* Box CHUYÊN ĐỀ */}
         <div onClick={() => p.onChon({ loai: 'o' })}
           {...vung(`goc:${o.chuyen_de_id}`, (k) => k.loai === 'dang_cu', p.ganVao({ chuDe: cd.id, chuyenDe: o.chuyen_de_id }, `chuyên đề «${o.ten}»`))}
@@ -385,11 +386,11 @@ function SoDoChuyenDe(p: {
           )}
         </div>
 
-        {/* Các NHÓM BÀI theo số thứ tự: trái → phải, hết hàng thì xuống hàng */}
+        {/* Các NHÓM BÀI theo số thứ tự: trái → phải, MỘT HÀNG NGANG (Thùy 12/10: "hết chỗ thì kéo thanh bar") */}
         {o.nhom.length > 0 && (
-          <div className="flex w-full flex-wrap items-start justify-center gap-5">
+          <div className="flex flex-nowrap items-start gap-5">
             {o.nhom.map((n) => (
-              <div key={n.id} className="w-[280px]">
+              <div key={n.id} className="w-[280px] shrink-0">
                 <BoxNhom n={n} cd={cd} o={o} chon={dangChon({ loai: 'nhom', id: n.id })} chonDangBai={chon?.loai === 'dang_bai' ? chon.id : null}
                   sapHa={p.hover === `n:${n.id}` && p.dangKeo === 'nhom'} sang={sang}
                   batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam}
