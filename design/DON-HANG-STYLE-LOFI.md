@@ -35,13 +35,12 @@
 - **✅ Migration `202610120117_hs_giao_dien_skin_lofi.sql` ĐÃ ÁP 13/10 (Thùy)** — kiểm trên DB thật bằng role `claude_ro`: `hs_giao_dien_skin_check` = `toi_gian · dau_truong · y2k · soft · rpg · khoi · lofi`
   (CHECK `hinh_nen` là `^[a-z0-9_]{1,40}$` ⇒ `cua_so` / `mua` / `san_thuong` hợp lệ). Hết chặn deploy về phía DB.
   Còn 2 việc sổ sách: ① sổ `_migrations` CHƯA có dòng file này (áp tay qua SQL Editor) ⇒ `migrate --status` sẽ báo còn treo — chạy `npm run migrate` lần tới là tự áp lại
-  (file viết kiểu bỏ-rồi-tạo-lại nên chạy lại vô hại) hoặc `node scripts/migrate.mjs --baseline 202610120117_hs_giao_dien_skin_lofi.sql` · ② `schema.md` trên nhánh này CHƯA sinh lại
-  (nhánh chậm hơn `main` >130 commit — sinh lại bây giờ sẽ kéo cả thay đổi DB của các luồng khác vào và xung đột khi gộp) ⇒ `npm run schema` SAU khi gộp `main`.
+  (file viết kiểu bỏ-rồi-tạo-lại nên chạy lại vô hại) hoặc `node scripts/migrate.mjs --baseline 202610120117_hs_giao_dien_skin_lofi.sql` · ② ✅ `schema.md` đã sinh lại 13/10 sau khi gộp `main` (bằng role `claude_ro`; cột `skin` hiện đủ 7 giá trị).
 - **Soi không cần đăng nhập** (`npm run dev:hs`): `hs.html?xem=gami&skin=lofi&man=home` (theo sáng/tối của máy; `&nen=mua|san_thuong`; `&tt=2` = nhân vật nữ) ·
   `hs.html?xem=hoc_tap&skin=lofi&che_do=sang` · `hs.html?xem=phieu_luu&skin=lofi&che_do=sang` (+ `&tang=luc_dia&luc=C` · `&tang=chang&luc=C&vung=C1` · `&tang=dau&luc=C&vung=C1`).
 - **Đã soi bằng mắt 12/10 (bản dev, 1180×820 + 430×900):** màn chính ngang sáng + tối · màn chính dọc sáng · chọn nhân vật · cổng Học tập · Chinh phục BK · thế giới · lục địa · chặng · màn đấu.
-- **CHƯA làm / còn lại:** ① màn đấu còn 1 câu gõ cứng giọng game "chọn đúng để tung phép" (`HocSinhApp.tsx`, dùng chung MỌI style — chưa sửa vì `main` vừa đổi đúng đoạn đó,
-  sửa sau khi gộp `main`) · ② mưa rơi trên kính cho nền Ngày mưa, hơi trà, bụi nắng, đèn "thở" (mục 6) chưa làm — 5 hình hiệu ứng đã nén sẵn ở `song/fx_*.webp` ·
+- **✅ 13/10 sau khi gộp `main`:** câu gõ cứng "chọn đúng để tung phép" ở khung đấu đã thành khoá lời `goiYCau` (`skin/loi.ts`): formal "chọn đáp án đúng" · game giữ nguyên · Lo-fi "chọn đúng để gỡ một nút" (`HocSinhApp.tsx` `LamBai` + `XemDau.tsx`).
+- **CHƯA làm / còn lại:** ② mưa rơi trên kính cho nền Ngày mưa, hơi trà, bụi nắng, đèn "thở" (mục 6) chưa làm — 5 hình hiệu ứng đã nén sẵn ở `song/fx_*.webp` ·
   ③ 10 nền vùng nhiều chi tiết, điểm màn đấu đang theo bố cục đường chung (chưa khai `choMoc` từng vùng) · ④ chưa soi: màn chính dọc tối, 2 nền còn lại ở mọi khổ, sân Đấu trường,
   game nhúng `src/dautu`, các màn gamification trên nền sáng của Lo-fi, máy thật (iPad / điện thoại) · ⑤ boss riêng giáo viên, bộ khung màn trong: không có (vẽ bằng code).
 

@@ -18,6 +18,8 @@ export type LoiHS = {
   chieuChiTiet: (dung: number, tong: number, ten: string) => string
   /** nhãn cạnh 3 ô combo trên thanh trên cùng */
   nhanCombo: string
+  /** gợi ý cạnh số câu trong khung đấu: "Câu 3/10 · <gợi ý>" */
+  goiYCau: string
   /** tên nhóm đội hình (aria + tiêu đề) */
   doiHinh: string
   /** nhãn đối tượng cuối chặng (boss) · đối tượng thường */
@@ -42,6 +44,7 @@ export const LOI_FORMAL: LoiHS = {
   chieu: ['Chưa đạt mức nào', 'Mức 1/3', 'Mức 2/3', 'Hoàn thành tốt 3/3'],
   chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · tính ${dung} điểm` : ''} · ${ten}`,
   nhanCombo: 'Chuỗi',
+  goiYCau: 'chọn đáp án đúng',
   doiHinh: 'Các nhóm câu hỏi',
   nhanBoss: 'CUỐI CHẶNG',
   nhanThuong: (n, tong) => `NHÓM ${n}/${tong}`,
@@ -73,6 +76,7 @@ export const LOI_GAME: Partial<LoiHS> = {
   chieu: ['Chiêu xịt — quái đánh trả, hồi 1 máu', 'Chiêu nhẹ', 'Chiêu mạnh', 'TUYỆT KỸ!'],
   chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · −${dung} máu` : ''} · ${ten}`,
   nhanCombo: 'Chiêu',
+  goiYCau: 'chọn đúng để tung phép',
   doiHinh: 'Đội hình',
   nhanBoss: 'BOSS',
   nhanThuong: (n, tong) => `ELITE ${n}/${tong}`,
@@ -105,6 +109,7 @@ export const LOI_LOFI: Partial<LoiHS> = {
   chieu: ['Nút rối thắt thêm một chút', 'Gỡ được một nút', 'Gỡ được hai nút', 'Gỡ trọn cả ba'],
   chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · gỡ ${dung} nút` : ''} · ${ten}`,
   nhanCombo: 'Nhịp',
+  goiYCau: 'chọn đúng để gỡ một nút',
   doiHinh: 'Các bé đang rối',
   nhanBoss: 'CUỘN RỐI LỚN',
   nhanThuong: (n, tong) => `BÉ ${n}/${tong}`,
