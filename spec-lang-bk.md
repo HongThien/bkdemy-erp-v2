@@ -70,7 +70,7 @@
 - Bạn bè = đồ thị bạn bè đã có ở Thế giới BK (không dựng lại).
 - Tin "khoe" ở làng lấy từ nguồn Thế giới BK, không đẻ bảng bài đăng mới.
 
-## 7. Art — QUYẾT ĐỊNH (CEO 12/10): pixel · KHÔNG thuê freelance · AI + mua pack · chấp nhận bớt đẹp
+## 7. Art — KHÔNG thuê freelance · chấp nhận bớt đẹp. ⚠️ PHONG CÁCH ĐÃ ĐỔI: pixel 2D → **3D low-poly camera chếch cố định (phương án C, CEO chốt 12/10, xem D10c)**. Lớp "mua pack/AI/code" bên dưới áp cho bản 2D dự phòng (B)
 
 - **Phong cách:** pixel art 16×16 (phóng ×3), top-down. Lý do: chạy nhẹ iPad gen 7; HS đã quen kiểu Roblox/blocky.
 - **Ba lớp, theo thứ tự ưu tiên:**
@@ -317,3 +317,12 @@ Chữ "2.5D" gộp hai thứ khác nhau, nên tách ra:
 - Được: cảm giác "thế giới thật" nhất; nhìn nhà từ mọi phía (mặt tiền, sân sau).
 - Mất: điều khiển khó hơn với lớp 4–5 trên iPad (xoay + đi); mọi mặt nhà phải đẹp (không chỉ mặt tiền); che khuất (nhà to che nhà nhỏ); tải iPad gen 7 nặng hơn; biển phải đọc được từ nhiều hướng.
 - **Đề xuất trung gian:** làm C trước, camera **xoay 4 hướng + zoom** (nút xoay, không kéo tự do). Cùng asset ⇒ nâng lên D sau nếu em thích, không làm lại.
+
+## D10c. CEO CHỐT 12/10: phương án C — 3D low-poly, camera chếch cố định (+ xoay 4 hướng, zoom)
+
+- **Phong cách:** khối ghép low-poly/voxel kiểu Roblox, màu phẳng, nhà **ghép module bằng code** (tầng · gian · mái · cửa · biển · trang trí mặt tiền). Nhân vật khối đơn giản dựng bằng code. **Không thuê freelance, không pack pixel** (pack 3D chỉ để tham khảo/lấp chỗ nếu có giấy phép).
+- **Camera:** chếch ~45°, **nút xoay 4 hướng + zoom**, không kéo xoay tự do (giữ cho lớp 4–5 trên iPad). Nâng lên 3D đầy đủ (D10b) sau nếu cần — cùng asset.
+- **Engine:** three.js r186, cùng nền BK World ⇒ tái dùng thú, cây, ruộng, hoạ cảnh nở. Hai bản đồ hoạ **Đẹp + Nhẹ**; **Nhẹ phải chạy iPad gen 7**.
+- **Cổng go/no-go M0:** ~60 nhà + ~25 avatar + thú ≥ **30 FPS iPad gen 7 (bản Nhẹ)**, tải trang < vài giây. Trượt ⇒ lùi phương án B (2D mặt tiền ngang).
+- **Thay đổi kiến trúc §8:** client = three r186 (thay Phaser 3); server/DB giữ nguyên (Colyseus + Postgres `fn_tg_*`). Vẫn **nhúng app HS** (đề xuất, chưa gật) và dựng khung ngoài bằng `KhungHS`.
+- **Việc M0 (spike) — chưa làm:** (1) một con phố ~60 nhà sinh từ dữ liệu (kiểu × cỡ × màu × biển); (2) camera chếch + xoay 4 hướng + zoom; (3) đi chạm-để-đến + ~25 avatar giả (bot) di chuyển; (4) đo FPS iPad gen 7 + máy lớp; (5) biển đọc được ở khoảng cách xa/gần.
