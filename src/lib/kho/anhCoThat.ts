@@ -33,3 +33,20 @@ export function phanTichPng(b: Uint8Array): number | null {
   }
   return null
 }
+
+const cacheGoc = new Map<string, number | null>()
+/** Bề rộng GỐC của ảnh tính bằng mm: ảnh PNG mang DPI cỡ thật ⇒ theo DPI; còn lại ⇒ số pixel ở 96 dpi (đúng cách trình duyệt dựng). */
+export async function coGocMm(url: string): Promise<number | null> {
+  if (cacheGoc.has(url)) return cacheGoc.get(url) ?? null
+  let mm = await docCoThatMm(url)
+  if (!mm) {
+    mm = await new Promise<number | null>((res) => {
+      const im = new Image()
+      im.onload = () => res(im.naturalWidth ? Math.round((im.naturalWidth / 96) * 25.4 * 100) / 100 : null)
+      im.onerror = () => res(null)
+      im.src = url
+    })
+  }
+  cacheGoc.set(url, mm)
+  return mm
+}

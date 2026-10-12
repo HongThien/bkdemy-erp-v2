@@ -453,7 +453,7 @@ function DocInner({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roste
   const colByCau = ch.colByCau ?? {}
   // ⭐ 21/09 (CEO): 3 chế độ IN hình — chỉ áp cho nhánh 'hinh_hoc' (Hình học Bài). Nhánh khác → undefined
   //   → cauItemParts dùng default 'hien' (in ảnh nếu có), y hành vi cũ.
-  const hinhCheDoByCau: Record<string, CheDoHinh> | undefined = taiLieu.nhanh === 'hinh_hoc' ? (ch.hinhCheDoByCau ?? {}) : undefined
+  const hinhCheDoByCau: Record<string, CheDoHinh> | undefined = ch.hinhCheDoByCau ?? {} // 12/10 (Thùy): MỌI nhánh (Đại · Giải tích · Hình) đều chọn được hiện/ẩn hình từng câu
   const ngayRaw = (taiLieu as { ngay?: string | null }).ngay ?? ''
   const ngayPhat = ngayRaw ? ngayRaw.split('-').reverse().join('/') : ''
   let buois = buildBuois(phans)

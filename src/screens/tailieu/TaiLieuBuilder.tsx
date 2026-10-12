@@ -17,7 +17,7 @@ import { KhoPicker } from '../../components/KhoPicker'
 import OnTapConfirmScreen from './OnTapConfirmScreen'
 import PrintView from './PrintView'
 import { AnhMmEditCtx } from './anhMmCtx'
-import { docCoThatMm } from '../../lib/kho/anhCoThat'
+import { coGocMm } from '../../lib/kho/anhCoThat'
 import { useStore } from '../../store/useStore'
 
 export { KhoPicker } // re-export — ETScreen/MTScreen/BTScreen import KhoPicker từ đây (giữ nguyên, khỏi sửa 3 nơi)
@@ -101,10 +101,10 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   // Số cột khi in — RIÊNG TỪNG CÂU (cau_hinh.colByCau). Câu tag cột LIỀN NHAU tự xếp cạnh nhau (mỗi câu 1 cột).
   const onCol = (maCau: string, n: number) => saveCh({ colByCau: { ...(ch.colByCau ?? {}), [maCau]: n } })
   // Cỡ IN của ảnh đề từng câu (mm, bề rộng) — null = bỏ, về tự động. Thùy 12/10: ảnh tự phóng to rất xấu / ảnh cầm thước phải đúng cm.
-  const onAnhMm = (maCau: string, mm: number | null) => {
-    const next = { ...(ch.anhMmByCau ?? {}) }
-    if (mm && mm > 0) next[maCau] = mm; else delete next[maCau]
-    saveCh({ anhMmByCau: next })
+  const onAnhMm = (maCau: string, v: { pct: number; mm: number } | null) => {
+    const mm = { ...(ch.anhMmByCau ?? {}) }, pct = { ...(ch.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[maCau] = v.mm; pct[maCau] = v.pct } else { delete mm[maCau]; delete pct[maCau] }
+    saveCh({ anhMmByCau: mm, anhPctByCau: pct })
   }
   // Optimistic (không await reload() cả tài liệu — nặng, chỉ đổi 1 cờ boolean): tự sửa state tại chỗ,
   // lưu nền; sai thì lùi lại đúng ô đó (không kéo cả app về "Lỗi" vì 1 checkbox).
@@ -147,10 +147,10 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const nhanh = full.taiLieu.nhanh                 // nhánh TRONG Toán (null=Đại / 'hinh_gt'=Hình giải tích / 'hinh_hoc'=Hình học Bài)
   const cauTbl = khoCuaMon(mon, nhanh).cauTbl
   const hinhCheDoByCau = ch.hinhCheDoByCau ?? {}
-  const coCheDoHinh = nhanh === 'hinh_hoc'          // CEO 21/09: nút 3 chế độ CHỈ áp cho nhánh Hình học Bài
+  const coCheDoHinh = true                           // 12/10 (Thùy): MỌI nhánh đều có tuỳ chọn hình (hiện/ẩn + %); Hình học Bài có thêm 'ô trống' (CEO 21/09)
 
   return (
-    <AnhMmEditCtx.Provider value={{ map: ch.anhMmByCau ?? {}, set: onAnhMm }}>
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: nhanh === 'hinh_hoc' }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       {/* Thanh trên */}
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
@@ -342,7 +342,7 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
                 <button onClick={() => onApply(btvn.id, btvn.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
               </div>
               {/* ⭐ 16/09 (CEO): preview HÌNH đầy đủ ở builder (không chỉ ở KhoPicker) — câu có hình phải nhìn thấy hình khi soạn giáo trình, tránh chọn nhầm. */}
-              {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-1.5 block max-h-40 w-auto max-w-full rounded border border-slate-200" />}
+              {c.anh_de && <AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={hinhCheDoByCau[c.ma_cau] ?? 'hien'} />}
             </li>
           ))}</ol>
           : <div className="mt-2 text-[12px] italic text-slate-400">Chưa có câu BTVN — bấm “Gợi ý” hoặc “Chọn câu”.</div>)}
@@ -397,32 +397,53 @@ function CauRow({ no, c, col, onCol, onRemove, cheDo, onCheDo }: { no: number; c
       </div>
       {/* ⭐ 16/09 (CEO): preview hình đầy đủ khi câu có ảnh đề — không chỉ text truncate.
           ⭐ 21/09: preview KHÔNG bị `cheDo` ảnh hưởng (CEO chốt Q2: preview đủ, cheDo chỉ áp lúc IN). */}
-      {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-1.5 block max-h-40 w-auto max-w-full rounded border border-slate-200" />}
+      {c.anh_de && <AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={cheDo} />}
     </li>
   )
 }
 
-// ⭐ 12/10 (Thùy): chỉnh BỀ RỘNG ảnh đề khi IN (mm). Trống = tự động (cột/60mm như cũ). "Cỡ thật" đọc DPI trong PNG
-//   (ảnh cầm thước từ hinh-doan-thang-thuoc.mjs) rồi đặt đúng mm ⇒ in ra thước đo khớp. Ghi khi rời ô / Enter, không ghi từng phím.
+// Ảnh xem trước trong dòng câu: chưa đặt cỡ ⇒ thu nhỏ như cũ (max-h-40); đã đặt ⇒ hiện ĐÚNG bề rộng in (mm, 96 dpi) để thấy ngay
+//   tỉ lệ (bị cột builder cắt thì co theo khung — chỉ để xem). Câu đang ẩn hình khi in ⇒ mờ đi.
+function AnhXem({ ma, url, cheDo }: { ma: string; url: string; cheDo?: CheDoHinh }) {
+  const mm = useContext(AnhMmEditCtx).mm[ma]
+  const mo = cheDo === 'khong' ? ' opacity-30' : ''
+  return mm > 0
+    ? <img src={url} alt="" style={{ width: `${mm}mm`, height: 'auto' }} className={`mx-auto mt-1.5 block max-w-full rounded border border-violet-300${mo}`} />
+    : <img src={url} alt="" className={`mx-auto mt-1.5 block max-h-40 w-auto max-w-full rounded border border-slate-200${mo}`} />
+}
+
+// ⭐ 12/10 (Thùy): cỡ ảnh đề khi IN = % ẢNH GỐC (100% = cỡ gốc: PNG có DPI thì theo DPI, còn lại theo pixel 96 dpi).
+//   Để trống = tự động (vừa cột, tối đa 60mm — như cũ). Lưu cả % (hiển thị) lẫn mm (in, không phải đoán lúc dựng trang).
+//   Ảnh cầm thước (hinh-doan-thang-thuoc.mjs, 600 dpi) bấm 100% = ĐÚNG cm. Ghi khi rời ô / Enter, không ghi từng phím.
 function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
-  const { map, set } = useContext(AnhMmEditCtx)
-  const cur = map[ma]
-  const [txt, setTxt] = useState(cur ? String(cur) : '')
+  const { mm, pct, set } = useContext(AnhMmEditCtx)
+  const [goc, setGoc] = useState<number | null>(null)
+  const [txt, setTxt] = useState('')
   const [bao, setBao] = useState('')
-  useEffect(() => { setTxt(cur ? String(cur) : '') }, [cur])
-  const commit = () => { const n = parseFloat(txt.replace(',', '.')); if (!(n > 0)) { if (cur) set(ma, null); setTxt(''); return } if (n !== cur) set(ma, Math.min(n, 400)) }
-  async function coThat() {
-    setBao('…')
-    const mm = await docCoThatMm(url)
-    if (mm) { set(ma, mm); setBao('') } else setBao('ảnh không mang cỡ thật')
+  const mmHt = mm[ma]
+  useEffect(() => { let on = true; coGocMm(url).then((g) => { if (on) setGoc(g) }); return () => { on = false } }, [url])
+  const pctHt = pct[ma] ?? (mmHt && goc ? Math.round((mmHt / goc) * 100) : undefined)
+  useEffect(() => { setTxt(pctHt ? String(pctHt) : '') }, [pctHt])
+  async function dat(p: number) {
+    const g = goc ?? (await coGocMm(url))
+    if (!g) { setBao('không đọc được cỡ ảnh'); return }
+    setBao(''); setGoc(g)
+    set(ma, { pct: p, mm: Math.round(g * p) / 100 })
   }
+  const commit = () => {
+    const n = parseFloat(txt.replace(',', '.'))
+    if (!(n > 0)) { if (mmHt) set(ma, null); setTxt(''); return }
+    if (n !== pctHt) dat(Math.min(n, 400))
+  }
+  const nut = 'rounded border border-slate-200 bg-white px-1 py-0.5 text-[10px] font-medium text-slate-500 hover:border-violet-300 hover:text-violet-700'
   return (
-    <span className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Bề rộng ảnh khi in (mm). Để trống = tự động.">
-      ảnh
+    <span className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Cỡ ảnh khi in, tính theo % ảnh gốc (100% = cỡ gốc). Để trống = tự động.">
+      cỡ
       <input value={txt} onChange={(e) => setTxt(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()}
-        placeholder="auto" inputMode="decimal" className={`h-7 w-14 rounded border px-1 text-center text-[12px] ${cur ? 'border-violet-400 bg-violet-50' : 'border-slate-300'}`} />mm
-      <button onClick={coThat} className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-300 hover:text-violet-700" title="Đặt đúng kích thước thật của ảnh (từ DPI trong file PNG)">Cỡ thật</button>
-      {cur ? <button onClick={() => set(ma, null)} className="text-slate-400 hover:text-rose-600" title="Về tự động">↺</button> : null}
+        placeholder="auto" inputMode="decimal" className={`h-7 w-12 rounded border px-1 text-center text-[12px] ${mmHt ? 'border-violet-400 bg-violet-50' : 'border-slate-300'}`} />%
+      {[50, 75, 100].map((p) => <button key={p} onClick={() => dat(p)} className={nut}>{p}</button>)}
+      {mmHt ? <span className="text-slate-400" title="Bề rộng ảnh khi in">={mmHt}mm</span> : null}
+      {mmHt ? <button onClick={() => set(ma, null)} className="text-slate-400 hover:text-rose-600" title="Về tự động">↺</button> : null}
       {bao && <span className="text-rose-500">{bao}</span>}
     </span>
   )
@@ -431,9 +452,13 @@ function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
 // ⭐ 21/09 (CEO): nút xoay 3 chế độ IN hình (chỉ nhánh 'hinh_hoc', chỉ câu có anh_de).
 //   Xoay vòng: hien → o_trong → khong → hien (cheDoKe từ lib/kho/hinhGiaoTrinh — dùng chung với builder Hình Luyện).
 function CheDoHinhBtn({ cur, onChange }: { cur: CheDoHinh; onChange: (v: CheDoHinh) => void }) {
-  const info = CHE_DO_HINH.find((x) => x.ma === cur) ?? CHE_DO_HINH[0]
+  const { baChe } = useContext(AnhMmEditCtx)
+  // 12/10: nhánh khác Hình học Bài chỉ có hiện ↔ ẩn (không có 'ô trống' cho HS vẽ).
+  const ke = (c: CheDoHinh): CheDoHinh => (baChe ? cheDoKe(c) : c === 'khong' ? 'hien' : 'khong')
+  const cur2: CheDoHinh = !baChe && cur === 'o_trong' ? 'hien' : cur
+  const info = CHE_DO_HINH.find((x) => x.ma === cur2) ?? CHE_DO_HINH[0]
   return (
-    <button onClick={() => onChange(cheDoKe(cur))} title={`Chế độ IN hình: ${info.nhan}. ${info.goi}`}
+    <button onClick={() => onChange(ke(cur2))} title={`Chế độ IN hình: ${info.nhan}. ${baChe || cur2 === 'khong' ? info.goi : 'Đang IN hình. Bấm để bỏ hẳn hình khỏi bản in.'}`}
       className="shrink-0 rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-300 hover:text-violet-700">
       {info.icon} {info.nhan}
     </button>
