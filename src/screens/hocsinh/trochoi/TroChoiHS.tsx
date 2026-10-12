@@ -6,7 +6,7 @@
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, TheHS } from '../skin/KhungHS'
 import { DS_GAME, type GameHS } from './dsGame'
 import { useEffect, useRef } from 'react'
-import { ntLuuDoc, ntLuuGhi, ntNhip, type NtNhip } from '../../../lib/nt_luu'
+import { ntDhtDongBo, ntLuuDoc, ntLuuGhi, ntNhip, type NtNhip } from '../../../lib/nt_luu'
 
 function Anh({ g }: { g: GameHS }) {
   return g.anh
@@ -68,16 +68,23 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   useEffect(() => {
     const nghe = (e: MessageEvent) => {
       if (e.origin !== location.origin || e.source !== khung.current?.contentWindow) return
-      const d = e.data as { bk?: string; loai?: string; state?: Record<string, unknown> } | null
+      const d = e.data as { bk?: string; loai?: string; state?: Record<string, unknown>; tong?: number } | null
       if (!d || d.bk !== 'nt') return
       if (d.loai === 'san_sang') {
         // bản lưu + GIỜ SERVER + giờ chơi còn lại (nhịp đầu không cộng giờ). Không đọc được ⇒ game tự lùi về bản lưu trên máy.
         Promise.all([ntLuuDoc(), ntNhip()]).then(([r, h]) => {
           cap.current = r?.cap_nhat ?? null; sanSang.current = true
-          noi({ loai: 'nap', ok: true, state: r?.state ?? null, gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het })
+          noi({ loai: 'nap', ok: true, state: r?.state ?? null, gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het, dhtSoDu: h.dht_so_du, dhtDaTieu: h.dht_da_tieu })
         }).catch(() => noi({ loai: 'nap', ok: false }))
       } else if (d.loai === 'thoat') {
         onBack()
+      } else if (d.loai === 'tieu' && typeof d.tong === 'number') {
+        // game báo TỔNG điểm đã tiêu: lưu bản mới nhất TRƯỚC rồi mới trừ điểm (rớt giữa chừng ⇒ không mất điểm oan). Lỗi mạng ⇒ game gửi lại theo nhịp.
+        const tong = d.tong
+        void (async () => {
+          try { await xa.current(); const r = await ntDhtDongBo(tong); noi({ loai: 'dht', ok: r.ok, loi: r.loi, soDu: r.so_du, daTieu: r.da_tieu }) }
+          catch { noi({ loai: 'dht', ok: false, loi: 'mang' }) }
+        })()
       } else if (d.loai === 'luu' && d.state) {
         cho.current = d.state
         if (hen.current === undefined) hen.current = window.setTimeout(() => void xa.current(), 5000)
@@ -87,7 +94,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
     // NHỊP giờ chơi 30 giây/lần khi em đang nhìn màn (tab/app hiện) — server tự đo khoảng liên tục, client không khai số giây.
     const nhip = window.setInterval(() => {
       if (!sanSang.current || document.visibilityState !== 'visible') return
-      ntNhip().then((h: NtNhip) => noi({ loai: 'gio', gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het })).catch(() => {})
+      ntNhip().then((h: NtNhip) => noi({ loai: 'gio', gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het, dhtSoDu: h.dht_so_du, dhtDaTieu: h.dht_da_tieu })).catch(() => {})
     }, 30000)
     return () => { window.clearInterval(nhip); window.removeEventListener('message', nghe); window.clearTimeout(hen.current); void xa.current() }   // rời màn ⇒ đẩy nốt bản mới nhất
   }, [])

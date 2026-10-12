@@ -63,7 +63,7 @@ function hdMuc(s) { const B = hdBuoc(s); return B && B.muc ? B.muc(s) : null; }
 
 // mẹo lần đầu khi mở tính năng mới — cấp lấy từ bảng số liệu (tính năng pha sau có cấp SAU nên không bao giờ hiện)
 const MEO = [
-  { id: 'mo_o', cap: D.LUAT.oMo[0].cap, muc: s => ({ loai: 'ruong', i: s.oMo }), loi: 'Cháu mở được Ô RUỘNG MỚI rồi! Chạm vào ô đất có biển, trả bằng điểm chăm chỉ. Điểm có được khi làm bài trên app.' },
+  { id: 'mo_o', cap: D.LUAT.oMo[0].cap, muc: s => ({ loai: 'ruong', i: s.oMo }), loi: 'Cháu mở được Ô RUỘNG MỚI rồi! Chạm vào ô đất có biển, trả bằng điểm học tập. Điểm có được khi làm bài trên app.' },
   { id: 'ga', cap: D.VAT.ga.cap, muc: () => ({ loai: 'chuong', id: 'ga' }), loi: 'Có CHUỒNG GÀ rồi! Mua gà ở chuồng, cho gà ăn lúa mì hoặc ngô, sáng mai gà đẻ trứng — thỉnh thoảng có cả phân bón.' },
   { id: 'lo', cap: D.LO_CAP, muc: () => ({ loai: 'lo' }), loi: 'LÒ BÁNH mở rồi! Mỗi ngày nướng 1 mẻ, sáng mai lấy bánh. Bánh bán được giá hơn nông sản.' },
   { id: 'meo', cap: D.THU.meo.cap, muc: () => ({ loai: 'thu', id: 'meo' }), loi: 'Một bé MÈO đến ở nhà cháu! Vuốt ve mỗi ngày — mèo quý cháu thì thỉnh thoảng tha quà về.' },

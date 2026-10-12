@@ -800,7 +800,7 @@ function dongBo(st, me) {
     o.dau.visible = !id && coDo;
   });
   // thú cưng: chó ở mọi vườn; mèo, chim chỉ vườn mình (đã tới cấp) · tim = hôm nay chưa chơi cùng
-  const thuMo = k => st.cap >= D.THU[k].cap;
+  const thuMo = k => E.thuMo(st, k);
   if (meoO) meoO.userData.neo.visible = !ban && thuMo('meo');
   if (chimO) chimO.visible = !ban && thuMo('chim');
   const Dn = E.homNay(meS);

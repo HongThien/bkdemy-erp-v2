@@ -47,10 +47,10 @@ const bonusCua = (s, d0) => muaCua(s, d0).bonus;             // bonus mùa tính
 
 // ---------- tạo / lưu ----------
 function moi() {
-  const t = theoServer() ? window.NT_CAU.gioMs() : Date.now(), b = LUAT.batDau, d = ngayCua(t);
+  const sv = theoServer(), t = sv ? window.NT_CAU.gioMs() : Date.now(), b = LUAT.batDau, d = ngayCua(t);
   const s = {
     v: 2, taoLuc: t, hat: String(Math.floor(Math.random() * 1e9)), dongHo: { tocDo: 1, thuc: t, game: t }, ngay0: d,
-    vi: { xu: b.xu, exp: 0 }, diem: b.diem, nn: 0, cap: 1, kho: Object.assign({}, b.kho), oMo: LUAT.oDau, ruong: [], lo: null,
+    vi: { xu: sv ? 0 : b.xu, exp: 0 }, diem: sv ? 0 : b.diem, nn: 0, cap: 1, kho: Object.assign({}, b.kho), oMo: LUAT.oDau, ruong: [], lo: null,
     vat: {}, thu: {}, trangTri: [], hom: null, tuan: null, thang: null, thuTu: [], thuMoi: 0, ban: {}, xuLy: d, dem: {},
   };
   return chuanHoa(s);
@@ -116,16 +116,22 @@ function roiDo(s, k, tiLe, su) { // vật phẩm bất ngờ
 }
 
 // ---------- TIỀN: xu + EXP lẻ (100 EXP = 1 xu) ----------
-const tranThang = s => muaHom(s).dau ? LUAT.tranXuThangMuaDau : LUAT.tranXuThang;
+const tranThang = s => theoServer() ? LUAT.tranXuThangOnline : muaHom(s).dau ? LUAT.tranXuThangMuaDau : LUAT.tranXuThang;
+// ĐIỂM HỌC TẬP (ĐHT) khi chơi theo tài khoản: s.diem = số dư THẬT của app − phần đã tiêu mà server chưa ghi (dem.diemTieu − daTieu server).
+// daTieu = null (server chưa có mốc) ⇒ coi như đã khớp. Kẹp ≥ 0.
+function datDiem(s, soDu, daTieu) {
+  const tong = (s.dem && s.dem.diemTieu) || 0, da = daTieu == null ? tong : daTieu;
+  s.diem = Math.max(0, Math.floor(soDu) - Math.max(0, tong - da));
+}
 // kiểm trả được không (không đổi state) → null = được, chuỗi = lý do
 function kiemTra(s, gia) {
   lamMoi(s);
   // trần chi mỗi tháng tính MỌI khoản mua bằng tiền (EXP lẻ lẫn xu chẵn) — không thì tiền lẻ bán hàng quay vòng mua mãi
-  if (LUAT.tranXuTieuThang && s.thang.chi + gia > LUAT.tranXuTieuThang * 100) return 'Tháng này đã dùng đủ ' + LUAT.tranXuTieuThang + ' xu (' + LUAT.tranXuTieuThang * 100 + ' EXP) để mua — trả bằng điểm chăm chỉ hoặc chờ tháng sau';
+  if (LUAT.tranXuTieuThang && s.thang.chi + gia > LUAT.tranXuTieuThang * 100) return 'Tháng này đã dùng đủ ' + LUAT.tranXuTieuThang + ' xu (' + LUAT.tranXuTieuThang * 100 + ' EXP) để mua — trả bằng điểm học tập hoặc chờ tháng sau';
   const v = s.vi; if (v.exp >= gia) return null;
   const can = Math.ceil((gia - v.exp) / 100);
   if (v.xu < can) return 'Không đủ tiền — cần ' + gia + ' EXP';
-  if (LUAT.tranXuTuan && s.tuan.xu + can > LUAT.tranXuTuan) return 'Tuần này đã tiêu ' + s.tuan.xu + '/' + LUAT.tranXuTuan + ' xu — trả bằng điểm chăm chỉ hoặc chờ tuần sau';
+  if (LUAT.tranXuTuan && s.tuan.xu + can > LUAT.tranXuTuan) return 'Tuần này đã tiêu ' + s.tuan.xu + '/' + LUAT.tranXuTuan + ' xu — trả bằng điểm học tập hoặc chờ tuần sau';
   return null;
 }
 // trả gia EXP: trừ phần lẻ trước, thiếu thì đổi xu ra EXP (tính vào trần xu tiêu mỗi tuần)
@@ -199,7 +205,7 @@ function moO(s) {
   const i = s.oMo; if (i >= LUAT.oToiDa) return loi('Đã mở hết ô ruộng');
   const c = LUAT.oMo[i - LUAT.oDau];
   if (s.cap < c.cap) return loi('Ô tiếp theo mở ở cấp ' + c.cap);
-  if (s.diem < c.diem) return loi('Cần ' + c.diem + ' điểm chăm chỉ (đang có ' + s.diem + ') — làm bài để có điểm');
+  if (s.diem < c.diem) return loi('Cần ' + c.diem + ' điểm học tập (đang có ' + s.diem + ') — làm bài trên app để có điểm');
   s.diem -= c.diem; s.oMo++; dem(s, 'moO'); dem(s, 'diemTieu', c.diem);
   return xong([{ loai: 'diemTru', n: c.diem }, { loai: 'moO', i }]);
 }
@@ -210,8 +216,9 @@ function gieo(s, i, cay, cach) { // cach: 'diem' | 'exp'
   const m = muaHom(s); if (C.mua && C.mua !== m.M.so) return loi(C.ten + ' không phải cây mùa ' + m.M.ten);
   lamMoi(s); if (s.hom.mua >= s.oMo) return loi('Hôm nay đã mua đủ ' + s.oMo + ' bịch hạt giống (bằng số ô) — mai mua tiếp nhé');
   const su = [];
-  if (cach === 'diem') {
-    if (s.diem < C.diem) return loi('Không đủ điểm chăm chỉ — làm thêm 1 lượt bài để có điểm');
+  if (cach === 'diem' || theoServer()) {
+    cach = 'diem';
+    if (s.diem < C.diem) return loi('Không đủ điểm học tập — làm thêm bài trên app để có điểm');
     s.diem -= C.diem; dem(s, 'diemTieu', C.diem); su.push({ loai: 'diemTru', n: C.diem });
   } else { const e = tra(s, C.hat); if (e) return loi(e); su.push({ loai: 'expTru', n: C.hat }); }
   s.ruong[i] = { cay, d0: homNay(s), tuoi: [], bat: [], bon: false, trom: 0, cach }; s.hom.mua++;
@@ -231,7 +238,7 @@ function bon(s, i) {
   const tt = oTT(s, i);
   if (tt.tt !== 'lon') return loi('Chỉ bón cho cây đang lớn');
   if (tt.bon) return loi('Vụ này bón rồi');
-  if (so(s, 'phan_bon') < 1) return loi('Hết phân bón — mua ở chợ (' + LUAT.giaPhan + ' EXP) hoặc nhặt ở chuồng gà, bò');
+  if (so(s, 'phan_bon') < 1) return loi('Hết phân bón — mua ở chợ (' + (theoServer() ? LUAT.giaPhanDiem + ' điểm học tập' : LUAT.giaPhan + ' EXP') + ') hoặc nhặt ở chuồng gà, bò');
   them(s, 'phan_bon', -1); s.ruong[i].bon = true; dem(s, 'bon');
   return xong([{ loai: 'bon', i }]);
 }
@@ -258,6 +265,11 @@ function muaVat(s, k) {
   const V = VAT[k];
   if (s.cap < V.cap) return loi(V.ten + ' mở ở cấp ' + V.cap);
   if (s.vat[k].con.length >= toiDaVat(s, k)) return loi('Chuồng đầy — lên cấp để nuôi thêm');
+  if (theoServer()) {   // trả bằng ĐIỂM HỌC TẬP
+    if (s.diem < V.diem) return loi('Cần ' + V.diem + ' điểm học tập (đang có ' + s.diem + ') — làm bài trên app để có điểm');
+    s.diem -= V.diem; dem(s, 'diemTieu', V.diem); s.vat[k].con.push({ an: null }); dem(s, 'muaVat');
+    return xong([{ loai: 'diemTru', n: V.diem }, { loai: 'muaVat', vat: k }]);
+  }
   const e = tra(s, V.gia); if (e) return loi(e);
   s.vat[k].con.push({ an: null }); dem(s, 'muaVat');
   return xong([{ loai: 'expTru', n: V.gia }, { loai: 'muaVat', vat: k }]);
@@ -316,27 +328,47 @@ function ban(s, id, n) {
   return xong(su);
 }
 function muaPhan(s, n) {
-  n = n || 1; const e = tra(s, LUAT.giaPhan * n); if (e) return loi(e);
+  n = n || 1;
+  if (theoServer()) {
+    const g = LUAT.giaPhanDiem * n;
+    if (s.diem < g) return loi('Cần ' + g + ' điểm học tập (đang có ' + s.diem + ') — làm bài trên app để có điểm');
+    s.diem -= g; dem(s, 'diemTieu', g); them(s, 'phan_bon', n); dem(s, 'muaPhan', n);
+    return xong([{ loai: 'diemTru', n: g }, { loai: 'mon', id: 'phan_bon', n }]);
+  }
+  const e = tra(s, LUAT.giaPhan * n); if (e) return loi(e);
   them(s, 'phan_bon', n); dem(s, 'muaPhan', n);
   return xong([{ loai: 'expTru', n: LUAT.giaPhan * n }, { loai: 'mon', id: 'phan_bon', n }]);
 }
 
 // ---------- ĐIỂM CHĂM CHỈ (demo: giả lập 1 lượt 10 câu; bản online: hàm đọc lịch sử lượt Tự luyện/Thử thách) ----------
 function lamLuot(s, dung) {
+  if (theoServer()) return loi('Điểm học tập có được khi em làm bài trên app — không giả lập trong game.');
   lamMoi(s);
   if (dung < LUAT.nguongDat) return loi('Đúng ' + dung + '/10 — cần từ ' + LUAT.nguongDat + ' câu mới được điểm. Làm lại nhé!');
   const con = LUAT.tranDiemNgay - s.hom.diem;
-  if (con <= 0) return loi('Hôm nay đã đủ ' + LUAT.tranDiemNgay + ' điểm chăm chỉ — mai làm tiếp nhé');
+  if (con <= 0) return loi('Hôm nay đã đủ ' + LUAT.tranDiemNgay + ' điểm học tập — mai làm tiếp nhé');
   const n = Math.min(dung, con); s.diem += n; s.hom.diem += n; dem(s, 'diem', n);
   return xong([{ loai: 'diem', n }]);
 }
 
 // ---------- THÚ CƯNG (thiện cảm) ----------
 const mocTc = tc => LUAT.tcMoc.filter(m => tc >= m).length;
-function thuTT(s, k) { const x = s.thu[k]; return { mo: s.cap >= THU[k].cap, tc: x.tc, moc: mocTc(x.tc), roi: x.d === homNay(s) }; }
+// chơi theo tài khoản: thú cưng CÓ khi đã MUA bằng điểm học tập (s.thu[k].mua); bản thử: theo cấp như cũ
+const thuMo = (s, k) => theoServer() ? !!(s.thu[k] && s.thu[k].mua) : s.cap >= THU[k].cap;
+function thuTT(s, k) { const x = s.thu[k]; return { mo: thuMo(s, k), tc: x.tc, moc: mocTc(x.tc), roi: x.d === homNay(s) }; }
+function muaThu(s, k) {
+  const T = THU[k], x = s.thu[k];
+  if (!T || !theoServer()) return loi('');
+  if (x.mua) return loi('Em đã có ' + T.ten.toLowerCase() + ' rồi');
+  if (T.capMua > 30) return loi(T.ten + ' chưa có bán');
+  if (s.cap < T.capMua) return loi(T.ten + ' có bán ở cấp ' + T.capMua);
+  if (s.diem < T.diem) return loi('Cần ' + T.diem + ' điểm học tập (đang có ' + s.diem + ') — làm bài trên app để có điểm');
+  s.diem -= T.diem; dem(s, 'diemTieu', T.diem); x.mua = true; dem(s, 'muaThu'); dem(s, 'muaThu:' + k);
+  return xong([{ loai: 'diemTru', n: T.diem }, { loai: 'muaThu', thu: k }]);
+}
 function choiThu(s, k) {
   const T = THU[k], x = s.thu[k];
-  if (s.cap < T.cap) return loi(T.ten + ' đến ở cấp ' + T.cap);
+  if (!thuMo(s, k)) return loi(theoServer() ? 'Em chưa có ' + T.ten.toLowerCase() + ' — mua ở chợ nhé' : T.ten + ' đến ở cấp ' + T.cap);
   if (x.d === homNay(s)) return loi('Hôm nay chơi với ' + T.ten.toLowerCase() + ' rồi — mai nhé');
   if (T.an) { if (so(s, T.an) < 1) return loi('Cần 1 ' + ten(T.an).toLowerCase() + ' để cho chim ăn'); them(s, T.an, -1); }
   const m0 = mocTc(x.tc); x.tc = Math.min(100, x.tc + LUAT.tcMoi); x.d = homNay(s); dem(s, 'thuCung');
@@ -433,7 +465,7 @@ function viecHom(s) {
   viec('thu', 'Thu hoạch', '🧺', 0, tts.filter(t => t.tt === 'chin').length);
   // gieo: ô đã gieo hôm nay + ô trống còn gieo được (trần bịch/ngày = số ô, và trả nổi ít nhất 1 bịch bằng điểm hoặc tiền)
   const daGieo = s.ruong.slice(0, s.oMo).filter(r => r.cay && r.d0 === Dn).length, trong = tts.filter(t => t.tt === 'trong').length;
-  const traNoi = hatHom(s).some(C => C.cap <= s.cap && (s.diem >= C.diem || !kiemTra(s, C.hat)));
+  const traNoi = hatHom(s).some(C => C.cap <= s.cap && (s.diem >= C.diem || (!theoServer() && !kiemTra(s, C.hat))));
   viec('gieo', 'Gieo hạt', '🌱', daGieo, daGieo + (traNoi ? Math.min(trong, Math.max(0, s.oMo - (s.hom.mua || 0))) : 0));
   viec('tuoi', 'Tưới', '💧', lon.filter(t => t.tuoiHom).length, lon.length);
   viec('sau', 'Bắt sâu', '🐛', 0, lon.reduce((a, t) => a + t.sau, 0));   // sâu trên ô chín: thu hoạch tự bắt luôn
@@ -462,7 +494,7 @@ function capNhat(s) {
   if (s.xuLy >= Dn) return su;
   for (let d = s.xuLy + 1; d <= Dn; d++) {
     // chim (thiện cảm ≥ 50): mỗi sáng bắt 1 con sâu
-    if (s.cap >= THU.chim.cap && s.thu.chim.tc >= LUAT.chimBatSau) for (let i = 0; i < s.oMo; i++) {
+    if (thuMo(s, 'chim') && s.thu.chim.tc >= LUAT.chimBatSau) for (let i = 0; i < s.oMo; i++) {
       const r = s.ruong[i]; if (!r.cay) continue; const ds = sauCua(r, khoaO(s, i), d);
       if (ds.length) { r.bat.push(ds[0]); thuTin(s, d, 'chim', 'batSau', i); break; }
     }
@@ -487,7 +519,7 @@ function capNhat(s) {
       }
     });
     // mèo tha quà
-    if (s.cap >= THU.meo.cap && bam(s.hat + '|meo|' + d) < LUAT.meoQua(s.thu.meo.tc)) {
+    if (thuMo(s, 'meo') && bam(s.hat + '|meo|' + d) < LUAT.meoQua(s.thu.meo.tc)) {
       const tts = Object.keys(TRANG_TRI), id = bam(s.hat + '|meoL|' + d) < 0.7 ? 'phan_bon' : tts[Math.floor(bam(s.hat + '|meoT|' + d) * tts.length)];
       them(s, id, 1); thuTin(s, d, 'meo', 'qua', null, id, 1);
     }
@@ -501,6 +533,7 @@ window.NT_ENGINE = {
   NGAY, GIO, bam, gio, datTocDo, ngayCua, dauNgay, homNay, gioVN, ngayVN, sangNgayMoi, muaCua, muaHom, tranThang, chamTran,
   moi, chuanHoa, luu, nap, xoaLuu, lamMoi, so, them, dem, ten, nnCap, themNn, kiemTra, doiXu,
   oTT, ttO, sauCua, hatHom, bangLai, toiDaVat, vatTT, loTT, thuTT, mocTc, banTT, oBanTT, tomTatBan, viecHom,
+  datDiem, thuMo, muaThu,
   moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
 };
 })();

@@ -27,6 +27,15 @@
     if (!s) s = (tuServer ? null : NT_ENGINE.nap()) || NT_ENGINE.moi();
     NT_UI.batDau(s);
     if (tuServer) {
+      // ĐIỂM HỌC TẬP THẬT: s.diem do app cấp (số dư ĐHT − phần tiêu chưa ghi). Đã bỏ nút giả lập ⏭/📘 của bản thử.
+      let daNoiThieu = false;
+      NT_CAU.onDht = (d, loi) => {
+        NT_ENGINE.datDiem(s, d.soDu, d.daTieu); NT_UI.capHud();
+        if (loi === 'khong_du' && !daNoiThieu) { daNoiThieu = true; NT_UI.thongBao('📘 Điểm học tập không đủ cho khoản vừa mua — em làm thêm bài trên app nhé'); }
+      };
+      if (NT_CAU.dht) NT_ENGINE.datDiem(s, NT_CAU.dht.soDu, NT_CAU.dht.daTieu);
+      NT_UI.capHud();
+      NT_UI.cheDoTaiKhoan();
       NT_CAU.gui(s);
       // GIỚI HẠN GIỜ CHƠI mỗi ngày (B2): hết giờ ⇒ chặn màn; sắp hết (≤ 5 phút) ⇒ nhắc 1 lần.
       NT_CAU.onSapHet = (giay) => { try { NT_UI.thongBao('⏳ Còn ' + Math.max(1, Math.ceil(giay / 60)) + ' phút chơi hôm nay'); } catch (e) {} };
