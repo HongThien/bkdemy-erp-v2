@@ -36382,61 +36382,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Test (rollback, HS thật, dạng T110010202 mức ≤2):** lượt 1 → 10 câu (còn 10) · lượt 2 → 10 (còn 0) · lượt 3 → "Dạng này em đã luyện đủ 20 câu hôm nay rồi. Mai quay lại nhé, hoặc luyện dạng khác!" · dạng mức 4 → không giới hạn · tắt `bat` → không giới hạn · tu_luyen_sinh dạng đủ trần → chặn · Luyện dạng yếu vẫn sinh bài.
 - **Chưa làm:** app chưa hiện "còn N câu hôm nay" (có hàm sẵn) · màn admin đổi cấu hình (hiện chỉ qua RPC/SQL) · bản đồ phiêu lưu chưa làm mờ dạng dễ đã đủ trần (em bấm mới thấy thông báo).
 
-<<<<<<< HEAD
-## 09/10 (tối) — Soạn đơn ChatGPT style "Lo-fi chill" (design/DON-HANG-STYLE-LOFI.md)
-- **Thùy:** "tạo thêm 1 giao diện mới: lofi chill … cho học sinh thích kiểu học 1 mình, chill chill dễ chịu" + ảnh không khí (Lofi Girl) ⇒ lưu `design/handoff/hs-skin-lofi-v2/reference/khong_khi_lofi.webp`.
-- **Làm:** file đơn theo khuôn Khối vuông: §0 10 quyết định (Claude đề xuất) · PHONG CÁCH CHUNG (ĐƯỢC/CẤM — cấm chép Lofi Girl) · L1 màn chính + bộ hình (40 lượt) · L2 hoạt họa Home (27) · L3 khu Học tập (28) · L4 bản đồ "dạo phố" + bé tinh linh (62) · LOI_LOFI · cách dựng hoạt họa (ghép lớp + phông xanh + ghép vùng) · token + kế hoạch code · bảng đổi tên.
-- **Đề xuất chờ Thùy gật:** 2 chế độ cùng 1 phòng (chiều = sáng, đêm = tối) · giữ bản đồ nhưng đổi ẩn dụ "đánh quái" ⇒ "gỡ rối cho bé tinh linh" · trang phục 2 nhân vật.
-- **Phát hiện lỗ hợp đồng:** `theTiep`/`nenTen` chỉ 1 giá trị cho mọi chế độ — Lo-fi là style ẢNH đầu tiên có cả sáng lẫn tối ⇒ phải vá khi dựng.
-- Đánh dấu Đơn 3 v3 "Lo-fi đêm" (DON-HANG-SKIN-HS.md) là ĐÃ THAY; STYLE-HS.md trỏ sang đơn mới. Chưa đụng code.
-- **Thùy chốt (09/10 tối): "ok chốt cả 3"** — 2 chế độ chiều/đêm cùng 1 phòng · giữ bản đồ, đổi ẩn dụ "gỡ rối" · trang phục 2 nhân vật như đơn L1. Đơn Lo-fi gửi được ngay (L1 trước); ghi chốt vào §0 file đơn.
-
-## 11/10 — Soạn đơn ChatGPT style "Nhỏ xinh" (cảm hứng Chiikawa) — design/DON-HANG-STYLE-NHO-XINH.md
-- **Thùy:** "làm thêm 1 file md tương tự LOFI để làm giao diện phong cách chiikawa" + ảnh không khí ⇒ lưu `design/handoff/hs-skin-nho-xinh-v1/reference/khong_khi_chiikawa.webp`.
-- **Làm:** file đơn cùng khuôn Lo-fi/Khối: §0 11 quyết định (Claude đề xuất) · PHONG CÁCH CHUNG (ĐƯỢC/CẤM — cấm vẽ dàn nhân vật Chiikawa + linh vật hãng khác) · N1 màn chính + bộ hình (36 lượt) · N2 9 tư thế × 2 linh vật + 6 hiệu ứng (24) · N3 khu Học tập (28) · N4 bản đồ + quái tròn (62) · LOI_NHO_XINH · hoạt họa (line boil bằng code + nhún dẹt giãn + tư thế) · token + kế hoạch code · bảng đổi tên.
-- **Chờ Thùy gật:** tên "Nhỏ xinh" (id `nho_xinh`) · THAY style Thị trấn hay làm song song (trùng khách: dễ thương + linh vật + sáng; Thị trấn hình về 27/34, chưa dựng) · giữ giọng "đánh quái" · 2 linh vật cánh cụt + cừu.
-- Khác Lo-fi: chỉ chế độ sáng (không đụng lỗ `theTiep`/`nenTen`) · giữ LOI_GAME, đè vài câu. STYLE-HS.md trỏ sang đơn mới. Chưa đụng code.
-- Thấy 67 file "ChatGPT Image Oct 10…" mới ở gốc `design/bk-ui-src/` (chưa kiểm — chưa được giao).
-
-## 11/10 (tối) — Kiểm hàng Lo-fi chill: 157/157 hình về, 116 dùng được, 41 phải làm lại
-- **Thùy:** "kiểm tra folder design đi, tao đã thêm đủ ảnh giao diện lofi rồi". 157 PNG ở gốc `design/bk-ui-src/` (18 hình 10/10 13h + 49 hình 11/10 10h30 tên "ChatGPT Image…", 90 hình 11/10 22h tên mô tả tiếng Việt).
-- **Làm:** dựng tấm ghép (nền hồng cho PNG có alpha) soi BẰNG MẮT từng hình + đo alpha/cỡ ⇒ khớp đúng 40 + 27 + 28 + 62 của L1–L4, không trùng/lệch. Chuyển + đổi tên vào `design/bk-ui-src/lofi/{,hoat-hoa,hoc-tap,phieu-luu}` (sổ `_doi_ten.log.txt`), thêm `design/bk-ui-src/lofi/` vào `.gitignore` (326 MB).
-- **Kết quả:** L1 40/40 · L2 26/27 (nữ gật gù khác cỡ) · L3 7/28 (20 hình dính nền + 1 góc nhỏ dính nền, sai bố cục) · L4 43/62 (1 đảo + 8 bé đầu + 4 boss dính nền; 6 nền dạng không có mặt đường ngang ở 72–76%). Bảng + 3 đơn bổ sung ghi ở đầu `design/DON-HANG-STYLE-LOFI.md`.
-- **Đo:** khung hoạt họa vẽ lại lệch 8–27% điểm ảnh so với hình gốc, rải khắp hình ⇒ xác nhận phải ghép vùng. Bé tinh linh có 3 nét vẽ ⇒ lấy 8 bé mở rộng làm chuẩn. L4 ra cảnh phiêu lưu rực rỡ chứ không phải "khu phố" theo bảng ánh xạ — đề xuất nhận.
-- **Sai của t:** lần chạy script chuyển file đầu hỏng cú pháp (dấu gạch chéo ngược trong heredoc bash) — không file nào bị chuyển, nhưng lệnh sửa `.gitignore` nối sau vẫn chạy; chạy lại bản không dùng gạch chéo ngược, kiểm đủ 157 file. Bài học: lệnh ghi nối sau lệnh có thể hỏng thì tách riêng.
-- **Chờ Thùy:** chọn cách xử 33 hình dính nền (A vẽ lại / B cho cài `rembg` tách tại máy) · gửi đơn bổ sung · cất `lofi/` lên Drive. Chưa đụng code.
-- **Thùy (11/10 tối): "tạo thêm 1 file MD để bảo ChatGPT thiết kế bổ sung các ảnh chưa đạt"** ⇒ `design/DON-HANG-LOFI-BO-SUNG.md`: 41 hình mã BS01–BS41, 4 nhóm (A khu Học tập 21 · B đảo + bé tinh linh + boss 13 · C nền dạng 6 · D khung nữ gật gù 1), mỗi lượt đính kèm đúng hình cũ; nhóm C có 7 luật bố cục + mẫu bố cục lấy từ nền dạng Khối vuông. Hình về tải vào `lofi/bo-sung/`, đạt thì thêm bản `_v2`, hình cũ giữ nguyên. File đơn Lo-fi trỏ sang.
-
-## 11/10 (đêm) — Kiểm hàng Nhỏ xinh: 150 file về = 149 hình + 1 trùng; 130 dùng được, 19 vẽ lại, 1 thiếu
-- **Thùy:** "giờ đến đơn chiikawa, tao đã làm xong hết ảnh rồi, check lại xem cần bổ sung hay đã ok rồi". 150 PNG ở gốc `design/bk-ui-src/` (11/10 22:33–22:51).
-- **Làm:** tấm ghép soi BẰNG MẮT + đo alpha/cỡ/md5. Chuyển + đổi tên vào `design/bk-ui-src/nho-xinh/{,hoat-hoa,hoc-tap,phieu-luu}` (sổ `_doi_ten.log.txt`), file trùng (nền phố nhỏ ngang tải 2 lần) cất `_thua/`, thêm `design/bk-ui-src/nho-xinh/` vào `.gitignore` (183 MB).
-- **Kết quả:** N1 36/36 · N2 23/24 (THIẾU cánh cụt chớp mắt — số file vẫn 150 vì có 1 file trùng) · N3 28/28 · N4 43/62 (8 quái mở rộng + phượng hoàng + bạch tuộc nền kem đặc, nét khác 8 quái đầu; 9 nền dạng vẽ thành bản đồ nhìn chéo có đường ngoằn ngoèo). Tốt hơn Lo-fi rõ: mọi PNG có alpha đều trong suốt thật, nền vùng đúng y đơn.
-- **Soạn luôn** `design/DON-HANG-NHO-XINH-BO-SUNG.md` (NB01–NB20, 3 nhóm) + bảng kiểm ở đầu `DON-HANG-STYLE-NHO-XINH.md`.
-- **Bài học đơn:** cả 2 style đều hỏng "nền dạng" (Lo-fi 6/10, Nhỏ xinh 9/10) ⇒ mô tả chữ "đường thẳng ngang ở 74%" KHÔNG đủ, đơn sau phải đính kèm ảnh mẫu bố cục ngay từ đầu (đã làm trong 2 đơn bổ sung). Nhóm hình "mở rộng" ở cuối đơn dễ trôi nét ⇒ đơn sau nhắc lại ảnh mẫu trước nhóm cuối.
-- **Chờ Thùy:** gửi 20 hình bổ sung · chốt tên "Nhỏ xinh" + thay Thị trấn hay song song · cất `nho-xinh/` lên Drive. Chưa đụng code.
-- **Thùy chốt (11/10 đêm):** ① tên style trong app = **"Đáng yêu"** (id `dang_yeu`; "Nhỏ xinh" chỉ còn là tên làm việc trong khối đơn ChatGPT, tên file đơn, thư mục ảnh gốc `nho-xinh/`, tiền tố `nx_`) · ② **làm song song** với Thị trấn — bác đề xuất "thay Thị trấn" của t. Đã sửa mục 0 + token + kế hoạch code trong file đơn, STYLE-HS.md, file bổ sung.
-
-## 12/10 — Kiểm hàng BỔ SUNG Lo-fi: về 40/41, cả 40 đạt; còn thiếu boss golem
-- **Thùy:** "đã xong ảnh bổ sung của lofi rồi, check lại đi". 40 PNG ở gốc `design/bk-ui-src/` (12/10 00:11–00:52; chưa có thư mục `lofi/bo-sung/`).
-- **Làm:** tấm ghép soi BẰNG MẮT + đo alpha/cỡ/hộp nhìn thấy; nền dạng kẻ dải 72–76% để soi mặt đường; khung nữ gật gù so điểm ảnh với hình gốc.
-- **Kết quả:** A 21/21 (trong suốt thật; góc Giải Vô địch đã thành góc nhỏ lơ lửng; 7 tháp chủ đề về khung 1254² — tháp vẫn cao hết khung, chân chạm đáy) · B 12/13 (đảo đồng gió + 8 bé + rồng con + phượng hoàng + bạch tuộc, cùng nét 8 bé chuẩn; **THIẾU `boss_golem_pha_le`**) · C 6/6 (mặt đường phẳng liền mạch đúng dải — ảnh mẫu bố cục có tác dụng) · D 1/1 (đúng cỡ 1241×1268, lệch 7,7% điểm ảnh so với gốc như các khung khác ⇒ vẫn ghép vùng).
-- Thêm 40 bản `_v2` cạnh bản cũ (không ghi đè, không xoá), nối sổ `lofi/_doi_ten.log.txt`. Lo-fi giờ 156/157. Ghi kết quả vào đầu `DON-HANG-STYLE-LOFI.md` + `DON-HANG-LOFI-BO-SUNG.md`.
-- **Chờ Thùy:** vẽ nốt BS32 (không chặn dựng) · cất `lofi/` lên Drive · bật đèn xanh dựng code style Lo-fi.
-- **12/10 (lượt 2):** Thùy báo "có golem rồi" — 1 PNG ở gốc `bk-ui-src/` (00:59). Soi mắt + đo: 1254×1254 RGBA, 4 góc trong suốt, người đá cuội + pha lê + ôm sách + cuộn len, cùng nét rồng con `_v2` ⇒ ĐẠT, thêm `lofi/phieu-luu/l4_32_boss_golem_pha_le_v2.png`, nối sổ. **Lo-fi đủ 157/157** (116 gốc + 41 `_v2`), hết nợ hình.
-
-## 12/10 — Dựng code style Lo-fi chill (Thùy: "dựng code đi")
-- **Chỗ làm:** nhánh `claude/lofi-chill-interface-fe92b0` (worktree của phiên). Các mục 09–12/10 ở trên + 4 file đơn + 2 ảnh không khí vốn ghi ở clone `Desktop/BK_V2` (chưa commit, chậm hơn `main` ~140 commit) ⇒ chép sang nhánh này để 1 chỗ. Ảnh gốc 326 MB vẫn nằm ở `BK_V2/design/bk-ui-src/lofi/` (ngoài git) — script đọc qua `LOFI_SRC`.
-- **Làm:** `scripts/lofi-hinh.mjs` (nén 157 hình → `public/bk-ui/hs/skin/lofi/` ~19 MB; khoét phông xanh; ghép trời + phòng thành tranh tĩnh; bản đêm của góc học; cắt 16 mảnh hoạt họa có bù lệch; sinh `lofiHocTap.ts` + `lofiSong.ts`) · `styles/lofi.ts` · `lofiBanDo2d.ts` · `the3d/bangMauLofi.ts` · `LOI_LOFI` · `skin/HomeSong.tsx` (NenSong + NhanVatHome) · sửa `kieu.ts` / `registry.ts` / `HomeHS912.tsx` / `KhungHS.tsx` (`&che_do=`) · Nunito ở `hs.html` · migration `202610120117` (CHƯA áp — chờ Thùy).
-- **Sai rồi sửa:** ① ghép mảnh kiểu ĐÈ làm lộ đầu cũ ở khung "ngẩng đầu" (chỗ khung mới trong suốt vẫn thấy hình gốc) ⇒ đổi sang THAY vùng: xoá hình gốc theo độ mờ mép rồi cộng mảnh · ② bóng đổ mặc định quanh hình mép-mờ thành một quầng chữ nhật ở bản dọc ⇒ thêm `Skin.nhanVatLoc` · ③ nhân vật nằm tận đáy trang (phải cuộn mới thấy) ⇒ `nhanVatBoCuc.dinh` cho bám đáy khung nhìn · ④ đường dẫn `${A}/bg_${…}` trong style làm `check:style-hs` đọc nhầm thành file `bg_` ⇒ ghép chuỗi qua hằng `BG` · ⑤ tạo `.env.local` lúc đầu chép cả 7 biến `VITE_*` (có khoá API) — sửa ngay còn đúng 2 biến Supabase; file nằm trong `.gitignore`.
-- **Kiểm:** `tsc --noEmit` (chỉ còn lỗi có sẵn ở `src/lib/pdfRender.ts`) · `npm run check:style-hs` ✔ · soi trình duyệt bản dev (danh sách màn ở đầu `design/DON-HANG-STYLE-LOFI.md`).
-- **Không làm được:** gộp `main` vào nhánh — app chặn vì `main` đổi `.claude/launch.json` (cần Thùy xác nhận origin: Help → Troubleshooting → Review Pinned Git Origins). Vì vậy CHƯA sửa câu gõ cứng "chọn đúng để tung phép" ở `HocSinhApp.tsx` (`main` vừa đổi đúng đoạn đó).
-- **Bài học:** hình vẽ lại bằng AI không trùng điểm ảnh với hình gốc ⇒ hoạt họa phải cắt mảnh + bù lệch + thay vùng; "đè mảnh lên" chỉ đúng khi khung mới che kín khung cũ.
-
-## 13/10 — Lo-fi: migration nới CHECK skin đã áp (Thùy) — kiểm lại trên DB
-- **Thùy:** "áp xong migration rồi đấy". Kiểm CHỈ ĐỌC bằng `claude_ro` (chuỗi kết nối đọc lúc chạy từ `.env` clone gốc, không chép ra đĩa): `hs_giao_dien_skin_check` đã gồm `lofi`; đang lưu: rpg 130 · khoi 68 · toi_gian 26 · soft 3 · dau_truong 1 (chưa em nào chọn lofi — chưa deploy).
-- **Thấy thêm:** sổ `_migrations` không có dòng `202610120117…` ⇒ file được áp tay (SQL Editor), `migrate --status` sẽ báo còn treo; chạy lại vô hại (bỏ-rồi-tạo-lại ràng buộc) hoặc `--baseline`.
-- **Cố ý chưa làm:** `npm run schema` trên nhánh này — nhánh chậm hơn `main` >130 commit, sinh lại sẽ kéo thay đổi DB của luồng khác vào `schema.md` và xung đột khi gộp ⇒ sinh lại sau khi gộp `main`. (Luật §2.1 "sau migration: npm run schema, commit cùng" vẫn còn nợ tới lúc đó.)
-=======
 ## 09/10 (tối) — 5T: 6 câu treo ghi (11D, T15T000000844–849) + Phần 1 card 3–6 bước cho TOÀN BỘ 836 câu
 - **Thùy** trả lời 4 câu: (1) LT 19.27–19.30 dùng cách lớp 5 · (2) LT 19.7, 19.15 viết lại đề · (3) card 2 bước "sửa luôn cũng được" · (4) các cách hiểu đề: ok.
 - 11D (Opus viết): 19.27 chung đáy BN, diện tích bằng nhau ⇒ đường cao bằng nhau ⇒ S_MON = S_AON; 19.28 tỉ số đường cao 1/4 chuyển sang MBO/CBO; 19.29 thành tổng – tỉ (S_NIC : S_AIC = 3 : 4, tổng = S_ANC); 19.30 thành hiệu – tỉ qua S_EBM = S_ECM. 19.7/19.15 đề nêu rõ dữ kiện từng ý; bộ kiểm lô 11 nâng lên đủ ý.
@@ -37094,4 +37039,57 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Lệnh PowerShell có `Remove-Item` bị chặn (đúng luật xoá) ⇒ bỏ bước xoá; heredoc bash không quote làm shell nuốt `$`/backtick trong code ⇒ ghi file bằng công cụ Write rồi chạy.
 - **Số đo DB live (chỉ đọc):** buổi `thuong` T9 = 349, `nguoi_day_tg` null 349/349; `ta_vang` 0 dòng; 109/349 buổi chưa `hoan_tat`; `phan_cong_lop` tg 45 dòng / 22 người; `ca_bo_tro` T9 = 59 mở + 2 huỷ; bổ trợ yếu `nguoi_day` null 87/87.
 - **Treo (chờ Thùy / Trang):** xem HANDOFF.md ① đầu file.
->>>>>>> be596242532414215e963dfc1688f080902b4aeb
+
+## 09/10 (tối) — Soạn đơn ChatGPT style "Lo-fi chill" (design/DON-HANG-STYLE-LOFI.md)
+- **Thùy:** "tạo thêm 1 giao diện mới: lofi chill … cho học sinh thích kiểu học 1 mình, chill chill dễ chịu" + ảnh không khí (Lofi Girl) ⇒ lưu `design/handoff/hs-skin-lofi-v2/reference/khong_khi_lofi.webp`.
+- **Làm:** file đơn theo khuôn Khối vuông: §0 10 quyết định (Claude đề xuất) · PHONG CÁCH CHUNG (ĐƯỢC/CẤM — cấm chép Lofi Girl) · L1 màn chính + bộ hình (40 lượt) · L2 hoạt họa Home (27) · L3 khu Học tập (28) · L4 bản đồ "dạo phố" + bé tinh linh (62) · LOI_LOFI · cách dựng hoạt họa (ghép lớp + phông xanh + ghép vùng) · token + kế hoạch code · bảng đổi tên.
+- **Đề xuất chờ Thùy gật:** 2 chế độ cùng 1 phòng (chiều = sáng, đêm = tối) · giữ bản đồ nhưng đổi ẩn dụ "đánh quái" ⇒ "gỡ rối cho bé tinh linh" · trang phục 2 nhân vật.
+- **Phát hiện lỗ hợp đồng:** `theTiep`/`nenTen` chỉ 1 giá trị cho mọi chế độ — Lo-fi là style ẢNH đầu tiên có cả sáng lẫn tối ⇒ phải vá khi dựng.
+- Đánh dấu Đơn 3 v3 "Lo-fi đêm" (DON-HANG-SKIN-HS.md) là ĐÃ THAY; STYLE-HS.md trỏ sang đơn mới. Chưa đụng code.
+- **Thùy chốt (09/10 tối): "ok chốt cả 3"** — 2 chế độ chiều/đêm cùng 1 phòng · giữ bản đồ, đổi ẩn dụ "gỡ rối" · trang phục 2 nhân vật như đơn L1. Đơn Lo-fi gửi được ngay (L1 trước); ghi chốt vào §0 file đơn.
+
+## 11/10 — Soạn đơn ChatGPT style "Nhỏ xinh" (cảm hứng Chiikawa) — design/DON-HANG-STYLE-NHO-XINH.md
+- **Thùy:** "làm thêm 1 file md tương tự LOFI để làm giao diện phong cách chiikawa" + ảnh không khí ⇒ lưu `design/handoff/hs-skin-nho-xinh-v1/reference/khong_khi_chiikawa.webp`.
+- **Làm:** file đơn cùng khuôn Lo-fi/Khối: §0 11 quyết định (Claude đề xuất) · PHONG CÁCH CHUNG (ĐƯỢC/CẤM — cấm vẽ dàn nhân vật Chiikawa + linh vật hãng khác) · N1 màn chính + bộ hình (36 lượt) · N2 9 tư thế × 2 linh vật + 6 hiệu ứng (24) · N3 khu Học tập (28) · N4 bản đồ + quái tròn (62) · LOI_NHO_XINH · hoạt họa (line boil bằng code + nhún dẹt giãn + tư thế) · token + kế hoạch code · bảng đổi tên.
+- **Chờ Thùy gật:** tên "Nhỏ xinh" (id `nho_xinh`) · THAY style Thị trấn hay làm song song (trùng khách: dễ thương + linh vật + sáng; Thị trấn hình về 27/34, chưa dựng) · giữ giọng "đánh quái" · 2 linh vật cánh cụt + cừu.
+- Khác Lo-fi: chỉ chế độ sáng (không đụng lỗ `theTiep`/`nenTen`) · giữ LOI_GAME, đè vài câu. STYLE-HS.md trỏ sang đơn mới. Chưa đụng code.
+- Thấy 67 file "ChatGPT Image Oct 10…" mới ở gốc `design/bk-ui-src/` (chưa kiểm — chưa được giao).
+
+## 11/10 (tối) — Kiểm hàng Lo-fi chill: 157/157 hình về, 116 dùng được, 41 phải làm lại
+- **Thùy:** "kiểm tra folder design đi, tao đã thêm đủ ảnh giao diện lofi rồi". 157 PNG ở gốc `design/bk-ui-src/` (18 hình 10/10 13h + 49 hình 11/10 10h30 tên "ChatGPT Image…", 90 hình 11/10 22h tên mô tả tiếng Việt).
+- **Làm:** dựng tấm ghép (nền hồng cho PNG có alpha) soi BẰNG MẮT từng hình + đo alpha/cỡ ⇒ khớp đúng 40 + 27 + 28 + 62 của L1–L4, không trùng/lệch. Chuyển + đổi tên vào `design/bk-ui-src/lofi/{,hoat-hoa,hoc-tap,phieu-luu}` (sổ `_doi_ten.log.txt`), thêm `design/bk-ui-src/lofi/` vào `.gitignore` (326 MB).
+- **Kết quả:** L1 40/40 · L2 26/27 (nữ gật gù khác cỡ) · L3 7/28 (20 hình dính nền + 1 góc nhỏ dính nền, sai bố cục) · L4 43/62 (1 đảo + 8 bé đầu + 4 boss dính nền; 6 nền dạng không có mặt đường ngang ở 72–76%). Bảng + 3 đơn bổ sung ghi ở đầu `design/DON-HANG-STYLE-LOFI.md`.
+- **Đo:** khung hoạt họa vẽ lại lệch 8–27% điểm ảnh so với hình gốc, rải khắp hình ⇒ xác nhận phải ghép vùng. Bé tinh linh có 3 nét vẽ ⇒ lấy 8 bé mở rộng làm chuẩn. L4 ra cảnh phiêu lưu rực rỡ chứ không phải "khu phố" theo bảng ánh xạ — đề xuất nhận.
+- **Sai của t:** lần chạy script chuyển file đầu hỏng cú pháp (dấu gạch chéo ngược trong heredoc bash) — không file nào bị chuyển, nhưng lệnh sửa `.gitignore` nối sau vẫn chạy; chạy lại bản không dùng gạch chéo ngược, kiểm đủ 157 file. Bài học: lệnh ghi nối sau lệnh có thể hỏng thì tách riêng.
+- **Chờ Thùy:** chọn cách xử 33 hình dính nền (A vẽ lại / B cho cài `rembg` tách tại máy) · gửi đơn bổ sung · cất `lofi/` lên Drive. Chưa đụng code.
+- **Thùy (11/10 tối): "tạo thêm 1 file MD để bảo ChatGPT thiết kế bổ sung các ảnh chưa đạt"** ⇒ `design/DON-HANG-LOFI-BO-SUNG.md`: 41 hình mã BS01–BS41, 4 nhóm (A khu Học tập 21 · B đảo + bé tinh linh + boss 13 · C nền dạng 6 · D khung nữ gật gù 1), mỗi lượt đính kèm đúng hình cũ; nhóm C có 7 luật bố cục + mẫu bố cục lấy từ nền dạng Khối vuông. Hình về tải vào `lofi/bo-sung/`, đạt thì thêm bản `_v2`, hình cũ giữ nguyên. File đơn Lo-fi trỏ sang.
+
+## 11/10 (đêm) — Kiểm hàng Nhỏ xinh: 150 file về = 149 hình + 1 trùng; 130 dùng được, 19 vẽ lại, 1 thiếu
+- **Thùy:** "giờ đến đơn chiikawa, tao đã làm xong hết ảnh rồi, check lại xem cần bổ sung hay đã ok rồi". 150 PNG ở gốc `design/bk-ui-src/` (11/10 22:33–22:51).
+- **Làm:** tấm ghép soi BẰNG MẮT + đo alpha/cỡ/md5. Chuyển + đổi tên vào `design/bk-ui-src/nho-xinh/{,hoat-hoa,hoc-tap,phieu-luu}` (sổ `_doi_ten.log.txt`), file trùng (nền phố nhỏ ngang tải 2 lần) cất `_thua/`, thêm `design/bk-ui-src/nho-xinh/` vào `.gitignore` (183 MB).
+- **Kết quả:** N1 36/36 · N2 23/24 (THIẾU cánh cụt chớp mắt — số file vẫn 150 vì có 1 file trùng) · N3 28/28 · N4 43/62 (8 quái mở rộng + phượng hoàng + bạch tuộc nền kem đặc, nét khác 8 quái đầu; 9 nền dạng vẽ thành bản đồ nhìn chéo có đường ngoằn ngoèo). Tốt hơn Lo-fi rõ: mọi PNG có alpha đều trong suốt thật, nền vùng đúng y đơn.
+- **Soạn luôn** `design/DON-HANG-NHO-XINH-BO-SUNG.md` (NB01–NB20, 3 nhóm) + bảng kiểm ở đầu `DON-HANG-STYLE-NHO-XINH.md`.
+- **Bài học đơn:** cả 2 style đều hỏng "nền dạng" (Lo-fi 6/10, Nhỏ xinh 9/10) ⇒ mô tả chữ "đường thẳng ngang ở 74%" KHÔNG đủ, đơn sau phải đính kèm ảnh mẫu bố cục ngay từ đầu (đã làm trong 2 đơn bổ sung). Nhóm hình "mở rộng" ở cuối đơn dễ trôi nét ⇒ đơn sau nhắc lại ảnh mẫu trước nhóm cuối.
+- **Chờ Thùy:** gửi 20 hình bổ sung · chốt tên "Nhỏ xinh" + thay Thị trấn hay song song · cất `nho-xinh/` lên Drive. Chưa đụng code.
+- **Thùy chốt (11/10 đêm):** ① tên style trong app = **"Đáng yêu"** (id `dang_yeu`; "Nhỏ xinh" chỉ còn là tên làm việc trong khối đơn ChatGPT, tên file đơn, thư mục ảnh gốc `nho-xinh/`, tiền tố `nx_`) · ② **làm song song** với Thị trấn — bác đề xuất "thay Thị trấn" của t. Đã sửa mục 0 + token + kế hoạch code trong file đơn, STYLE-HS.md, file bổ sung.
+
+## 12/10 — Kiểm hàng BỔ SUNG Lo-fi: về 40/41, cả 40 đạt; còn thiếu boss golem
+- **Thùy:** "đã xong ảnh bổ sung của lofi rồi, check lại đi". 40 PNG ở gốc `design/bk-ui-src/` (12/10 00:11–00:52; chưa có thư mục `lofi/bo-sung/`).
+- **Làm:** tấm ghép soi BẰNG MẮT + đo alpha/cỡ/hộp nhìn thấy; nền dạng kẻ dải 72–76% để soi mặt đường; khung nữ gật gù so điểm ảnh với hình gốc.
+- **Kết quả:** A 21/21 (trong suốt thật; góc Giải Vô địch đã thành góc nhỏ lơ lửng; 7 tháp chủ đề về khung 1254² — tháp vẫn cao hết khung, chân chạm đáy) · B 12/13 (đảo đồng gió + 8 bé + rồng con + phượng hoàng + bạch tuộc, cùng nét 8 bé chuẩn; **THIẾU `boss_golem_pha_le`**) · C 6/6 (mặt đường phẳng liền mạch đúng dải — ảnh mẫu bố cục có tác dụng) · D 1/1 (đúng cỡ 1241×1268, lệch 7,7% điểm ảnh so với gốc như các khung khác ⇒ vẫn ghép vùng).
+- Thêm 40 bản `_v2` cạnh bản cũ (không ghi đè, không xoá), nối sổ `lofi/_doi_ten.log.txt`. Lo-fi giờ 156/157. Ghi kết quả vào đầu `DON-HANG-STYLE-LOFI.md` + `DON-HANG-LOFI-BO-SUNG.md`.
+- **Chờ Thùy:** vẽ nốt BS32 (không chặn dựng) · cất `lofi/` lên Drive · bật đèn xanh dựng code style Lo-fi.
+- **12/10 (lượt 2):** Thùy báo "có golem rồi" — 1 PNG ở gốc `bk-ui-src/` (00:59). Soi mắt + đo: 1254×1254 RGBA, 4 góc trong suốt, người đá cuội + pha lê + ôm sách + cuộn len, cùng nét rồng con `_v2` ⇒ ĐẠT, thêm `lofi/phieu-luu/l4_32_boss_golem_pha_le_v2.png`, nối sổ. **Lo-fi đủ 157/157** (116 gốc + 41 `_v2`), hết nợ hình.
+
+## 12/10 — Dựng code style Lo-fi chill (Thùy: "dựng code đi")
+- **Chỗ làm:** nhánh `claude/lofi-chill-interface-fe92b0` (worktree của phiên). Các mục 09–12/10 ở trên + 4 file đơn + 2 ảnh không khí vốn ghi ở clone `Desktop/BK_V2` (chưa commit, chậm hơn `main` ~140 commit) ⇒ chép sang nhánh này để 1 chỗ. Ảnh gốc 326 MB vẫn nằm ở `BK_V2/design/bk-ui-src/lofi/` (ngoài git) — script đọc qua `LOFI_SRC`.
+- **Làm:** `scripts/lofi-hinh.mjs` (nén 157 hình → `public/bk-ui/hs/skin/lofi/` ~19 MB; khoét phông xanh; ghép trời + phòng thành tranh tĩnh; bản đêm của góc học; cắt 16 mảnh hoạt họa có bù lệch; sinh `lofiHocTap.ts` + `lofiSong.ts`) · `styles/lofi.ts` · `lofiBanDo2d.ts` · `the3d/bangMauLofi.ts` · `LOI_LOFI` · `skin/HomeSong.tsx` (NenSong + NhanVatHome) · sửa `kieu.ts` / `registry.ts` / `HomeHS912.tsx` / `KhungHS.tsx` (`&che_do=`) · Nunito ở `hs.html` · migration `202610120117` (CHƯA áp — chờ Thùy).
+- **Sai rồi sửa:** ① ghép mảnh kiểu ĐÈ làm lộ đầu cũ ở khung "ngẩng đầu" (chỗ khung mới trong suốt vẫn thấy hình gốc) ⇒ đổi sang THAY vùng: xoá hình gốc theo độ mờ mép rồi cộng mảnh · ② bóng đổ mặc định quanh hình mép-mờ thành một quầng chữ nhật ở bản dọc ⇒ thêm `Skin.nhanVatLoc` · ③ nhân vật nằm tận đáy trang (phải cuộn mới thấy) ⇒ `nhanVatBoCuc.dinh` cho bám đáy khung nhìn · ④ đường dẫn `${A}/bg_${…}` trong style làm `check:style-hs` đọc nhầm thành file `bg_` ⇒ ghép chuỗi qua hằng `BG` · ⑤ tạo `.env.local` lúc đầu chép cả 7 biến `VITE_*` (có khoá API) — sửa ngay còn đúng 2 biến Supabase; file nằm trong `.gitignore`.
+- **Kiểm:** `tsc --noEmit` (chỉ còn lỗi có sẵn ở `src/lib/pdfRender.ts`) · `npm run check:style-hs` ✔ · soi trình duyệt bản dev (danh sách màn ở đầu `design/DON-HANG-STYLE-LOFI.md`).
+- **Không làm được:** gộp `main` vào nhánh — app chặn vì `main` đổi `.claude/launch.json` (cần Thùy xác nhận origin: Help → Troubleshooting → Review Pinned Git Origins). Vì vậy CHƯA sửa câu gõ cứng "chọn đúng để tung phép" ở `HocSinhApp.tsx` (`main` vừa đổi đúng đoạn đó).
+- **Bài học:** hình vẽ lại bằng AI không trùng điểm ảnh với hình gốc ⇒ hoạt họa phải cắt mảnh + bù lệch + thay vùng; "đè mảnh lên" chỉ đúng khi khung mới che kín khung cũ.
+
+## 13/10 — Lo-fi: migration nới CHECK skin đã áp (Thùy) — kiểm lại trên DB
+- **Thùy:** "áp xong migration rồi đấy". Kiểm CHỈ ĐỌC bằng `claude_ro` (chuỗi kết nối đọc lúc chạy từ `.env` clone gốc, không chép ra đĩa): `hs_giao_dien_skin_check` đã gồm `lofi`; đang lưu: rpg 130 · khoi 68 · toi_gian 26 · soft 3 · dau_truong 1 (chưa em nào chọn lofi — chưa deploy).
+- **Thấy thêm:** sổ `_migrations` không có dòng `202610120117…` ⇒ file được áp tay (SQL Editor), `migrate --status` sẽ báo còn treo; chạy lại vô hại (bỏ-rồi-tạo-lại ràng buộc) hoặc `--baseline`.
+- **Cố ý chưa làm:** `npm run schema` trên nhánh này — nhánh chậm hơn `main` >130 commit, sinh lại sẽ kéo thay đổi DB của luồng khác vào `schema.md` và xung đột khi gộp ⇒ sinh lại sau khi gộp `main`. (Luật §2.1 "sau migration: npm run schema, commit cùng" vẫn còn nợ tới lúc đó.)
