@@ -1,0 +1,39 @@
+@page { size: A4; margin: 11mm 12mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: "Segoe UI", "Be Vietnam Pro", Arial, sans-serif; font-size: 10.5pt; line-height: 1.45; color: #1a2238; background: #fff; }
+.head { background: #16286b; color: #fff; padding: 14px 20px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.eyebrow { font-size: 8.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffb27f; }
+.head h1 { margin: 2px 0 0; font-size: 20pt; font-weight: 800; line-height: 1.15; }
+.ky { font-size: 10.5pt; font-weight: 600; }
+.body { padding: 14px 4px 0; display: flex; flex-direction: column; gap: 16px; }
+.info { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; }
+.info dt { font-size: 8pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #5d6680; }
+.info dd { margin: 1px 0 0; font-weight: 600; }
+.total { display: flex; justify-content: space-between; align-items: baseline; border-top: 3px solid #16286b; border-bottom: 1px solid #d9dde8; padding: 10px 0; }
+.total .lbl { font-weight: 700; font-size: 12pt; }
+.total .num { font-size: 26pt; font-weight: 800; color: #e8590c; font-variant-numeric: tabular-nums; }
+.total .num small { font-size: 13pt; margin-left: 3px; }
+h2 { margin: 0 0 6px; font-size: 9.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #16286b; }
+h3 { margin: 10px 0 4px; font-size: 10pt; font-weight: 700; }
+p { margin: 0 0 4px; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 5px 7px; text-align: left; border-bottom: 1px solid #d9dde8; vertical-align: top; }
+th { font-size: 8pt; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #5d6680; background: #f4f6fb; }
+table.dense th, table.dense td { padding: 3px 6px; font-size: 9.5pt; }
+td.r, th.r { text-align: right; }
+td.n { white-space: nowrap; }
+tr { break-inside: avoid; }
+tr.sum td { font-weight: 700; border-top: 2px solid #16286b; background: #f4f6fb; }
+tr.excluded td { color: #5d6680; text-decoration: line-through; }
+tr.excluded td.sub { text-decoration: none; }
+.sub { color: #5d6680; font-size: 9pt; }
+.formula { background: #f4f6fb; border-left: 3px solid #e8590c; padding: 8px 12px; font-weight: 600; }
+.formula .step { display: block; }
+.formula .step + .step { margin-top: 3px; }
+.cols { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; align-items: start; }
+.rules { margin-top: 10px !important; }
+.notes, .rules { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
+.appendix { border-top: 3px solid #16286b; padding-top: 12px; break-inside: avoid; }
+.note { background: #fff4e5; color: #8a4b00; padding: 8px 12px; border-radius: 3px; font-size: 9.5pt; margin: 0; }
+section { break-inside: auto; }

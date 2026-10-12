@@ -1,0 +1,167 @@
+[
+ {
+  "ta": "CườngP",
+  "lop": "6S2",
+  "pkLop": 685714,
+  "boGio": 11,
+  "boTien": 660000,
+  "ttGio": 9,
+  "ttTien": 450000,
+  "dbTien": 0,
+  "tong": 1795714
+ },
+ {
+  "ta": "Duy",
+  "lop": "11B1",
+  "pkLop": 120000,
+  "boGio": 1,
+  "boTien": 60000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 180000
+ },
+ {
+  "ta": "Dương",
+  "lop": "4A1, 5A1, 5A2",
+  "pkLop": 1875556,
+  "boGio": 6,
+  "boTien": 360000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 2235556
+ },
+ {
+  "ta": "Hà Giang",
+  "lop": "7B2, 9B2",
+  "pkLop": 830000,
+  "boGio": 0,
+  "boTien": 0,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 830000
+ },
+ {
+  "ta": "Hằng",
+  "lop": "6S1",
+  "pkLop": 550000,
+  "boGio": 1,
+  "boTien": 50000,
+  "ttGio": 2,
+  "ttTien": 100000,
+  "dbTien": 0,
+  "tong": 700000
+ },
+ {
+  "ta": "Huyền",
+  "lop": "10A1, 10B1",
+  "pkLop": 800000,
+  "boGio": 10.5,
+  "boTien": 525000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 1325000
+ },
+ {
+  "ta": "Khánh",
+  "lop": "8A2, 8B1",
+  "pkLop": 600000,
+  "boGio": 17,
+  "boTien": 850000,
+  "ttGio": 5.5,
+  "ttTien": 275000,
+  "dbTien": 0,
+  "tong": 1725000
+ },
+ {
+  "ta": "Long",
+  "lop": "9A1, 9A2",
+  "pkLop": 1600000,
+  "boGio": 6,
+  "boTien": 420000,
+  "ttGio": 1.5,
+  "ttTien": 75000,
+  "dbTien": 0,
+  "tong": 2095000
+ },
+ {
+  "ta": "MinhP",
+  "lop": "11A1, 12A1",
+  "pkLop": 845714,
+  "boGio": 7,
+  "boTien": 420000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 1265714
+ },
+ {
+  "ta": "Ngân",
+  "lop": "3A1, 4T1, 5T1, 5T2",
+  "pkLop": 1800000,
+  "boGio": 7.5,
+  "boTien": 450000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 2250000
+ },
+ {
+  "ta": "Nguyên",
+  "lop": "7B1, 8A1, 8S1",
+  "pkLop": 2160000,
+  "boGio": 14.5,
+  "boTien": 1015000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 1050000,
+  "tong": 4225000
+ },
+ {
+  "ta": "Thùy Giang",
+  "lop": "9B1",
+  "pkLop": 770000,
+  "boGio": 7,
+  "boTien": 490000,
+  "ttGio": 4,
+  "ttTien": 200000,
+  "dbTien": 0,
+  "tong": 1460000
+ },
+ {
+  "ta": "TrangQ",
+  "lop": "7S2, 7S3, 8B1",
+  "pkLop": 1337143,
+  "boGio": 31.5,
+  "boTien": 1890000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 3227143
+ },
+ {
+  "ta": "Tùng",
+  "lop": "6A1",
+  "pkLop": 800000,
+  "boGio": 16,
+  "boTien": 1120000,
+  "ttGio": 5,
+  "ttTien": 250000,
+  "dbTien": 0,
+  "tong": 2170000
+ },
+ {
+  "ta": "Vân Anh",
+  "lop": "7A1, 9C1",
+  "pkLop": 800000,
+  "boGio": 13.5,
+  "boTien": 810000,
+  "ttGio": 0,
+  "ttTien": 0,
+  "dbTien": 0,
+  "tong": 1610000
+ }
+]

@@ -37019,3 +37019,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm trên màn thật** (app TA chạy máy, ca Tuệ Nhi 12/10 19:30): mục trả lời ngắn 3 câu ⇒ 3 hình hiện đủ (1 PNG 853×621, 2 SVG). Phiếu đuổi giấy: CHƯA mở được trên bài thật (cần sinh bài mới cho HS thật — không làm).
 - **Giả thuyết đã loại (có chụp):** 645 hình SVG dán từ Word không có viewBox — nghi bị cắt khi thu nhỏ; dựng lại trên Chrome thì co đủ, không cắt.
 - **Còn lại (dữ liệu kho, chưa sửa):** 31 câu kho chuẩn có ghi "[hình…]" trong đề nhưng CHƯA đính hình (Đại 13 · Hình GT 6 · Hình học 12) vẫn có thể rơi vào bài bổ trợ — cần học thuật đính hình, hoặc chặn chọn các câu này.
+
+## 12/10 — [Nhân sự · Lương TA] Chấm công + tính lương Trợ giảng tháng 9/2026 trên ERP (spec + migration CHƯA ÁP + 6 bản phiếu PDF)
+- **Yêu cầu Thùy:** tính lương TA tháng 9 từ file sheet (package: TG+ET 40% · BTVN 20% · bổ trợ 40% (8 giờ) + trông thi 50k/giờ); sau đó "làm hệ thống chấm công TA để lần sau không qua sheet, mọi dữ liệu trên ERP". Mỗi TA một PDF, đóng zip.
+- **Làm:**
+  1. Tính 15 TA qua 6 phiên bản (V1→V6, mỗi lần Thùy chỉnh luật/dữ liệu). Zip ở `C:\Users\WBPC\Downloads\Phieu-luong-TA-T9-2026-*.zip` (v1…v5, **V6 = bản cuối**, tổng 28.256.807đ).
+  2. `spec-cham-cong-ta.md` (bản nháp CEO duyệt, 10 quyết định ở §0).
+  3. Migration `supabase/migrations/202610122210_ta_cham_cong_va_luong.sql` — **ĐÃ TEST (BEGIN…ROLLBACK) NHƯNG CHƯA ÁP, CHƯA COMMIT**: `ta_don_gia` (append-only, hiệu lực theo ngày) · `ta_loai_viec` · `ta_cham_cong` · `ta_cong_viec` · `ta_cong_log` · `phan_cong_lop_log` (+trigger +backfill 31 dòng) · hàm `fn_ta_cham_cong_vao/ra`, `fn_ta_khai_viec`, `fn_ta_duyet_cong`, `fn_ta_dat_don_gia`, `fn_ta_hom_nay`, `fn_ta_cong_thang`, `fn_ta_bang_don_gia`, `fn_ta_luong_thang` (+ `_ta_luong_tinh` nội bộ).
+  4. Script kiểm chuẩn + xuất phiếu: `scripts/luong-ta-t9/` (README trong đó). `_out/` đã vào `.gitignore` (chứa số lương).
+- **Quyết định Thùy (12/10):** (1) TA PHẢI chấm công có mặt, đảo quyết định 07/09; (2) lương tính RIÊNG, không nhân hiệu suất, sai ⇒ gậy + phạt (`gay_chot_thang.tien_phat`, không trần); (3) 2 kênh, ERP là số 1; (4) đơn giá chỉ cho việc ngoài package, MỘT bảng đơn giá có lịch sử để Thùy xem lại; (5) chấm công = TA bấm trên app TA (iPad, KHÔNG quét QR), hệ thống tự khớp lịch + gợi ý việc, không khớp thì TA tự điền; hậu kiểm = Trang duyệt hằng ngày; (6) không trần %TG/%BTVN; (7) sĩ số = trung bình cả THÁNG theo ngày; (8) chỉ tiêu bổ trợ = 8 giờ × số lớp; (9) tiền TG đi theo NGƯỜI THỰC DẠY, theo bậc + số buổi của LỚP ĐƯỢC DẠY, lớp vẫn thuộc TA được phân công (giữ BTVN + chỉ tiêu bổ trợ); (10) BTVN tính theo buổi CHÍNH TA ĐÓ CHẤM (`gami_grades.graded_by` → `tai_khoan.nhan_su_id`) trong hạn (ngày 3 tháng sau), buổi MT/thi không có câu ⇒ không tính; (11) trông thi lớp mình nằm trong công TG, lớp khác 50k/giờ; (12) bổ trợ đặc biệt 150k/buổi tính riêng không vào 8 giờ; (13) tháng 9 CHỈ để tính lương, KHÔNG nạp vào DB thật; tháng 10 chuẩn hoá chấm công.
+- **Sai / sửa (bài học):**
+  - Suy "lớp phụ trách" từ SHEET (có BTVN hoặc ≥4 buổi TG) ⇒ Duy ra 0đ, Ngân mất 5T2. Đúng: lấy từ `phan_cong_lop`.
+  - Luật "TG và trông thi lớp mình tính MỘT lần" chỉ cài nửa (bỏ tiền, quên cộng TG) ⇒ Khánh 8A2 6/9, TrangQ 7S2 4/9 + 8B1 7/9, Vân Anh 7A1 4/9 thiếu 1 buổi TG. Test không lộ vì CườngP có cả hai dòng cùng ngày.
+  - Sĩ số lấy HIỆN TẠI ⇒ 5A1 thêm 1 HS làm Dương tự +111.111đ; đổi sang trung bình tháng theo ngày (`hoc_sinh_lop.ngay_vao/ngay_roi`).
+  - Chỉ tiêu bổ trợ 8 giờ/TA nhân bậc lớp chính ⇒ sai khi dạy ≥2 lớp (hiện 125% trong khi thực 62,5%); sửa thành 8 × số lớp, nhân Σ bậc.
+  - "Lớp chính" lấy theo cờ `la_chinh` ⇒ Khánh 8B1 (không TG) kéo bậc bổ trợ lệch +170.000đ; ưu tiên lớp TA THỰC SỰ có công.
+  - BTVN lấy theo "buổi đã đóng + có câu" ⇒ Duy 7/7 dù 11B1 là BTVN online chưa chấm; "đóng" khác "TA chấm". Đổi sang `graded_by`.
+  - `created_at` của `phan_cong_lop` là ngày NHẬP ERP, không phải ngày bắt đầu thật (Khánh TG 8A2 từ 6/9, phân 10/9). Đây là lý do chấm công mới là chân lý.
+  - Lệnh PowerShell có `Remove-Item` bị chặn (đúng luật xoá) ⇒ bỏ bước xoá; heredoc bash không quote làm shell nuốt `$`/backtick trong code ⇒ ghi file bằng công cụ Write rồi chạy.
+- **Số đo DB live (chỉ đọc):** buổi `thuong` T9 = 349, `nguoi_day_tg` null 349/349; `ta_vang` 0 dòng; 109/349 buổi chưa `hoan_tat`; `phan_cong_lop` tg 45 dòng / 22 người; `ca_bo_tro` T9 = 59 mở + 2 huỷ; bổ trợ yếu `nguoi_day` null 87/87.
+- **Treo (chờ Thùy / Trang):** xem HANDOFF.md ① đầu file.
