@@ -11,8 +11,22 @@
     const D = NT_DATA;
     NT_MODELS.taoIcon([...Object.keys(D.I), 'xu', 'xp', 'diem', 'vat_ga', 'vat_bo', 'lo_banh', 'sap', 'ruong', 'kho_barn', 'thu_meo', 'thu_chim']);
     $('taiDay').style.width = '100%';
-    const s = NT_ENGINE.nap() || NT_ENGINE.moi();
+    // Lưu THEO TÀI KHOẢN (js/cau.js): nhúng trong app HS ⇒ xin bản lưu của tài khoản; chưa có ⇒ nhận bản trên máy MỘT lần (chuyển sang server) rồi chỉ dùng server.
+    let s = null, tuServer = false;
+    if (window.NT_CAU && NT_CAU.nhung) {
+      const kq = await NT_CAU.hoi(4000);
+      if (kq && kq.ok) { tuServer = true; NT_CAU.dang = true; s = kq.state ? NT_ENGINE.chuanHoa(kq.state) : NT_ENGINE.nap(); }
+      NT_CAU.onXungDot = () => {
+        const d = document.createElement('div');
+        d.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.78);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:600 18px system-ui;text-align:center;padding:24px';
+        d.innerHTML = '<div>Nông trại của em vừa được lưu từ thiết bị khác.</div><div style="font-weight:400;font-size:15px;opacity:.85">Để không ghi đè mất tiến độ, em tải lại rồi chơi tiếp nhé.</div><button style="padding:12px 22px;border-radius:12px;border:0;font:700 17px system-ui;background:#ffd24a;color:#3a2a00">Tải lại</button>';
+        d.querySelector('button').onclick = () => location.reload();
+        document.body.appendChild(d);
+      };
+    }
+    if (!s) s = (tuServer ? null : NT_ENGINE.nap()) || NT_ENGINE.moi();
     NT_UI.batDau(s);
+    if (tuServer) NT_CAU.gui(s);   // tài khoản chưa có bản lưu ⇒ tạo ngay (kể cả bản chuyển từ máy)
     setTimeout(() => $('manTai').classList.add('xong'), 150);
   } catch (e) {
     console.error(e);

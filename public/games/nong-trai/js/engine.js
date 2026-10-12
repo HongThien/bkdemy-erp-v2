@@ -63,7 +63,11 @@ function chuanHoa(s) {
   if (!s.dem) s.dem = {};
   return s;
 }
-function luu(s) { try { localStorage.setItem(KHOA_LUU, JSON.stringify(s)) } catch (e) { /* bộ nhớ bị chặn — chơi tiếp, không lưu */ } }
+// Đang nhúng trong app HS và app đã nạp bản lưu theo TÀI KHOẢN (js/cau.js) ⇒ lưu LÊN SERVER qua app, KHÔNG ghi localStorage (máy dùng chung nhiều em không lẫn).
+function luu(s) {
+  if (window.NT_CAU && window.NT_CAU.dang) { window.NT_CAU.gui(s); return; }
+  try { localStorage.setItem(KHOA_LUU, JSON.stringify(s)) } catch (e) { /* bộ nhớ bị chặn — chơi tiếp, không lưu */ }
+}
 function nap() {
   try { const j = localStorage.getItem(KHOA_LUU); if (j) { const s = JSON.parse(j); if (s && s.v === 2) return chuanHoa(s) } } catch (e) {}
   return null;
