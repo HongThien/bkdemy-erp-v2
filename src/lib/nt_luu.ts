@@ -24,6 +24,13 @@ export async function ntLuuGhi(state: Record<string, unknown>, capNhat: string |
   if (error) throw error
   return data as NtLuuGhi
 }
+// Xu thật (mig 202610121655): game báo (tháng_k, ra) = xu đã đổi từ EXP trong tháng (tích luỹ); server cắt theo ngày chơi + trần tháng rồi ghi ví.
+export type NtXu = { ok: boolean; loi?: string; da_nhan?: number; nhan_them?: number; tran_thang?: number; xu_moi_ngay?: number; ngay_choi?: number; duoc_toi_nay?: number }
+export async function ntXuDongBo(thangK: number, ra: number): Promise<NtXu> {
+  const { data, error } = await supabase.rpc('fn_nt_xu_dong_bo', { p_thang_k: Math.floor(thangK), p_ra: Math.max(0, Math.floor(ra)) })
+  if (error) throw error
+  return data as NtXu
+}
 export async function ntDhtDongBo(tongTieu: number): Promise<NtDht> {
   const { data, error } = await supabase.rpc('fn_nt_dht_dong_bo', { p_tong_tieu: Math.max(0, Math.floor(tongTieu)) })
   if (error) throw error

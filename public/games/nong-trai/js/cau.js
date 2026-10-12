@@ -15,6 +15,9 @@
   //   C.dht = { soDu, daTieu } mới nhất từ app (số dư thật + mốc server đã ghi); C.onDht(d) để game cập nhật s.diem.
   let tongTieu = 0, daGuiTieu = null, daXacNhan = null;
   C.dht = null; C.onDht = null;
+  // XU THẬT (B3b): game báo (tháng_k, ra) = xu đã đổi từ EXP trong tháng (tích luỹ); server cắt theo ngày chơi + trần tháng rồi ghi ví BK.
+  let xuK = null, xuRa = 0, daGuiXu = null, daXacNhanXu = 0;
+  C.xu = null; C.onXu = null;
   let cho = null, hen = null, moiNhat = null, daGui = 0;
   const NGUON = location.origin;
   addEventListener('message', (e) => {
@@ -22,6 +25,10 @@
     const d = e.data; if (!d || d.bk !== 'nt') return;
     if (d.loai === 'nap' && cho) { C.docGio(d); cho(d); cho = null; }
     else if (d.loai === 'gio') C.docGio(d);
+    else if (d.loai === 'xu') {
+      if (d.ok) { daXacNhanXu = Math.max(daXacNhanXu, daGuiXu || 0); C.xu = { daNhan: d.daNhan, tran: d.tran, moiNgay: d.moiNgay, ngayChoi: d.ngayChoi, duocToiNay: d.duocToiNay }; if (C.onXu) C.onXu(C.xu, d.nhanThem || 0); }
+      else daGuiXu = null;   // lỗi mạng / lệch tháng: gửi lại ở nhịp sau
+    }
     else if (d.loai === 'dht') {
       if (d.ok || d.loi === 'khong_du') { if (d.ok) daXacNhan = d.daTieu; else daGuiTieu = null; C.nhanDht({ soDu: d.soDu, daTieu: d.daTieu }, d.loi); }
       else daGuiTieu = null;   // lỗi mạng: gửi lại ở nhịp sau
@@ -46,6 +53,10 @@
     daGuiTieu = tongTieu;
     try { window.parent.postMessage({ bk: 'nt', loai: 'tieu', tong: tongTieu }, NGUON); } catch (e) { /* bỏ */ }
   }
+  function baoXu() {
+    daGuiXu = xuRa;
+    try { window.parent.postMessage({ bk: 'nt', loai: 'xu', k: xuK, ra: xuRa }, NGUON); } catch (e) { /* bỏ */ }
+  }
   C.nhanDht = function (d, loi) {
     C.dht = d;
     if (C.onDht) C.onDht(d, loi);
@@ -54,6 +65,8 @@
     if (!C.dang || C.xungDot) return;
     moiNhat = s;
     tongTieu = (s.dem && s.dem.diemTieu) || 0;
+    if (s.thang && typeof s.thang.k === 'number') { if (s.thang.k !== xuK) { xuK = s.thang.k; daXacNhanXu = 0; daGuiXu = null; } xuRa = s.thang.ra || 0; }
+    if (xuRa > daXacNhanXu && xuRa !== daGuiXu) { xa(); baoXu(); }
     // có chi tiêu mới (hoặc lần đầu) ⇒ đẩy bản lưu NGAY rồi mới báo tiêu (app lưu trước, trừ điểm sau — lỡ rớt giữa chừng thì không mất điểm oan)
     if (tongTieu !== daXacNhan && tongTieu !== daGuiTieu) { xa(); baoTieu(); return; }
     const roi = Date.now() - daGui;
@@ -64,7 +77,8 @@
   C.gioMs = () => Date.now() + C.lech;
   C.docGio = function (d) {
     if (typeof d.dhtSoDu === 'number') C.nhanDht({ soDu: d.dhtSoDu, daTieu: d.dhtDaTieu == null ? null : d.dhtDaTieu });
-    if (C.dang && !C.xungDot && tongTieu !== daXacNhan && daGuiTieu === null) baoTieu();   // lần báo trước chưa tới nơi ⇒ gửi lại theo nhịp
+    if (C.dang && !C.xungDot && tongTieu !== daXacNhan && daGuiTieu === null) baoTieu();
+    if (C.dang && !C.xungDot && xuRa > daXacNhanXu && daGuiXu === null) baoXu();   // lần báo trước chưa tới nơi ⇒ gửi lại theo nhịp
     if (typeof d.gioMs === 'number') C.lech = d.gioMs - Date.now();
     if (typeof d.conLaiGiay === 'number' || d.conLaiGiay === null) C.conLai = d.conLaiGiay;
     if (d.het && !C.het) { C.het = true; if (C.onHet) C.onHet(); }

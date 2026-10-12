@@ -378,7 +378,7 @@ function moCho(tab) { if (typeof tab === 'string') choTab = tab; moBang('Chợ',
 function viHtml() {
   const tran = E.tranThang(s), da = s.thang.ra - s.thang.vao;
   if (dht()) return `<div class="viDong">📘 <b>${s.diem}</b> điểm học tập · ${img('xu')}<b>${s.vi.xu}</b> xu · ${img('xp')}<b>${s.vi.exp}</b> EXP <span class="nho">· 100 EXP = 1 xu</span></div>
-    <div class="nho viPhu">Mua mọi thứ bằng 📘 điểm học tập (có được khi em làm bài trên app). Bán nông sản được EXP, đủ 100 EXP đổi 1 xu. Tháng này nông trại đã trả <b>${Math.max(0, da)}/${tran}</b> xu · hôm nay đã mua <b>${s.hom.mua || 0}/${s.oMo}</b> bịch hạt giống (mỗi ngày tối đa bằng số ô)</div>`;
+    <div class="nho viPhu">Mua mọi thứ bằng 📘 điểm học tập (có được khi em làm bài trên app). Bán nông sản được EXP, đủ 100 EXP đổi 1 xu. Xu chuyển vào <b>ví BK thật</b> (mỗi ngày em chơi tối đa ${(NT_CAU.xu && NT_CAU.xu.moiNgay) || 1} xu, tối đa ${(NT_CAU.xu && NT_CAU.xu.tran) || tran} xu mỗi tháng${NT_CAU.xu ? ' — đã vào ví tháng này: <b>' + NT_CAU.xu.daNhan + '/' + NT_CAU.xu.tran + '</b> xu' : ''}). Nông trại đã đổi <b>${Math.max(0, da)}/${tran}</b> xu · hôm nay đã mua <b>${s.hom.mua || 0}/${s.oMo}</b> bịch hạt giống (mỗi ngày tối đa bằng số ô)</div>`;
   return `<div class="viDong">${img('xu')}<b>${s.vi.xu}</b> xu · ${img('xp')}<b>${s.vi.exp}</b> EXP <span class="nho">· 100 EXP = 1 xu</span></div>
     <div class="nho viPhu">Tháng này nông trại đã trả <b>${Math.max(0, da)}/${tran}</b> xu${E.chamTran(s) ? ' — đã chạm trần, EXP dồn sang tháng sau' : ''} · hôm nay đã mua <b>${s.hom.mua || 0}/${s.oMo}</b> bịch hạt giống (mỗi ngày tối đa bằng số ô) · tháng này đã chi <b>${s.thang.chi || 0}/${L.tranXuTieuThang * 100}</b> EXP (= ${L.tranXuTieuThang} xu) để mua</div>`;
 }

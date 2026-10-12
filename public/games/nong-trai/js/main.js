@@ -33,6 +33,7 @@
         NT_ENGINE.datDiem(s, d.soDu, d.daTieu); NT_UI.capHud();
         if (loi === 'khong_du' && !daNoiThieu) { daNoiThieu = true; NT_UI.thongBao('📘 Điểm học tập không đủ cho khoản vừa mua — em làm thêm bài trên app nhé'); }
       };
+      NT_CAU.onXu = (x, them) => { if (them > 0) { try { NT_UI.thongBao('💰 +' + them + ' xu đã vào ví BK của em!'); } catch (e) {} } };
       if (NT_CAU.dht) NT_ENGINE.datDiem(s, NT_CAU.dht.soDu, NT_CAU.dht.daTieu);
       NT_UI.capHud();
       NT_UI.cheDoTaiKhoan();
