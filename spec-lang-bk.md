@@ -312,3 +312,8 @@ Chữ "2.5D" gộp hai thứ khác nhau, nên tách ra:
 **Rủi ro cần đo TRƯỚC khi chốt (cổng go/no-go của M0):** cảnh ~60 nhà + ~25 avatar + thú phải chạy **≥30 FPS trên iPad gen 7** ở bản Nhẹ, và tải trang < vài giây. **Nếu trượt ⇒ lùi về B** (2D mặt tiền ngang, nhà ghép module sprite) — vẫn giữ đủ ý "phố có biển, nhà to nhỏ".
 
 **Không chọn A** vì vừa không rẻ như B vừa không tái dùng được như C.
+
+**D10b. Thêm lựa chọn D — "3D đầy đủ" (Thùy 12/10 "hoặc 3D"):** camera xoay tự do, góc nhìn người thứ ba như Roblox. Cùng bộ khối/asset với C, chỉ khác camera + điều khiển.
+- Được: cảm giác "thế giới thật" nhất; nhìn nhà từ mọi phía (mặt tiền, sân sau).
+- Mất: điều khiển khó hơn với lớp 4–5 trên iPad (xoay + đi); mọi mặt nhà phải đẹp (không chỉ mặt tiền); che khuất (nhà to che nhà nhỏ); tải iPad gen 7 nặng hơn; biển phải đọc được từ nhiều hướng.
+- **Đề xuất trung gian:** làm C trước, camera **xoay 4 hướng + zoom** (nút xoay, không kéo tự do). Cùng asset ⇒ nâng lên D sau nếu em thích, không làm lại.
