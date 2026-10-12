@@ -38,7 +38,7 @@ const md = iGhiChu >= 0 ? mdDu.slice(0, iGhiChu) : mdDu
 const loi = [], nhac = []
 // Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10).
 const NHAN_CHAM = String(KHOI) !== '8'
-const KHO_DUOC = String(KHOI) === '8' ? ['dai', 'hinh_hoc'] : ['dai', 'hgt']
+const KHO_DUOC = ['7', '8'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)
 if (!mTen) loi.push('thiếu dòng đầu "# ĐỀ | <tên đề>"')
 const meta = Object.fromEntries([...md.slice(0, md.search(/^## /m)).matchAll(/^([a-z_]+):\s*(.+)$/gm)].map((m) => [m[1], m[2].trim()]))
