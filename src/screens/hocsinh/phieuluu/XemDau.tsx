@@ -1,7 +1,7 @@
 // Màn đấu BẢN THỬ cho hs.html?xem=phieu_luu: câu hỏi mẫu (hệ phương trình, đáp án sinh từ nghiệm nên luôn đúng), không gọi DB.
 // Bản thật dùng LamBai (HocSinhApp) làm khu câu hỏi và gọi `api.tra(verdict === 'correct')` — cùng DauView.
 import { useMemo, useState } from 'react'
-import { MAU } from '../skin/KhungHS'
+import { MAU, useLoi } from '../skin/KhungHS'
 import { TheTran, DaiTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN, type TtTran } from '../skin/KhungTran'
 import type { BangMau3D } from '../skin/the3d/kieuMau'
 import type { ChangV, LucDiaV } from './kieu'
@@ -38,13 +38,14 @@ function sinhCau(i: number) {
 function Cau({ api, tong, onXong }: { api: ApiDau; tong: number; onXong: () => void }) {
   const [i, setI] = useState(0)
   const [chon, setChon] = useState<number | null>(null)
+  const loi = useLoi()
   const c = useMemo(() => sinhCau(i), [i])
   async function bam(k: number) { if (chon != null || api.ban) return; setChon(k); await api.tra(k === c.dung) }
   const ra = chon != null
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-3 p-3 md:p-4" style={{ fontFamily: FONT_TRAN }}>
       <TheTran className="p-5">
-        <DaiTran trai={`Câu ${i + 1}/${tong} · chọn đúng để tung phép`} />
+        <DaiTran trai={`Câu ${i + 1}/${tong} · ${loi.goiYCau}`} />
         <p className="text-[21px] font-semibold" style={{ color: MAU.ink }}>Cặp số (x; y) nào là nghiệm của hệ phương trình sau?</p>
         <div className="my-2 flex items-center gap-3 text-[28.5px] font-semibold" style={{ color: MAU.ink }}><span className="text-[77px] font-light leading-[0.8]" style={{ color: MAU.acc }}>{'{'}</span><div className="flex flex-col gap-1"><span>{c.l1}  (1)</span><span>{c.l2}  (2)</span></div></div>
         <div className="grid grid-cols-2 gap-3">
