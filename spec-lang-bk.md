@@ -48,7 +48,7 @@
 - Đồ nội thất/skin/đồ khoe: **bán giá cố định**; đồ hiếm chỉ có được nhờ chơi (câu được, sự kiện), **không bán bằng xu ngẫu nhiên** (không rương/trứng ngẫu nhiên — tránh cấu trúc cờ bạc).
 - Em nghỉ học lâu ⇒ đất đóng băng, sau N ngày thu hồi (**bàn sau**).
 
-## 5. Kinh tế xu — vòng khép kín kiếm ⇄ tiêu (CEO chốt 12/10)
+## 5. Kinh tế xu — TẠM GÁC, TÍNH SAU (CEO 12/10: "kinh tế tính sau, design game trước"). Giữ lại làm nháp; chiều xu: nông trại kiếm · nhà cửa tiêu
 
 > Thùy: *"Nông trại là kiếm xu, nhà cửa là tiêu xu, giúp cân bằng kinh tế BK qua việc học sinh mua đồ trong Làng BK."*
 
@@ -130,3 +130,136 @@ Postgres: tg_dat · tg_nha · tg_vat · tg_cay · tg_kho (sổ) · tg_sap · tg_
 2. **Cổng học:** mua hạt/năng lượng bằng điểm học tập (như BK World) hay V1 chưa cần?
 3. ~~Quan hệ với BK World~~ → **GỘP tất cả game vào Làng BK** (CEO chốt 12/10): nông trại, thú, ấp trứng là hoạt động bên trong Làng.
 4. Tên game.
+
+---
+
+# PHẦN D — THIẾT KẾ GAME (CTO đề xuất 12/10 · CEO chưa duyệt · KHÔNG gồm kinh tế/kỹ thuật/art)
+
+> Thùy 12/10: "kinh tế tính sau, cần design game trước". Phần này chỉ trả lời: **em chơi cái gì, cảm thấy gì, mỗi ngày làm gì**.
+
+## D1. Trải nghiệm cốt lõi
+
+**Một câu:** *"Làng nhỏ của lớp em — nhà em ở đó, bạn em ở đó, mỗi ngày ghé 10–15 phút để chăm nhà, câu cá, thăm bạn và khoe."*
+
+**Ba trụ cột (mọi tính năng phải phục vụ ≥1):**
+1. **Nhà của em — khoe được.** Em tự sắp, tự chọn; bạn thấy và khen.
+2. **Có bạn ở đó.** Thấy nhau đi lại, ngồi cạnh nhau, thăm nhà, cùng câu cá.
+3. **Mỗi ngày một ít.** Luôn có 3–4 việc nhỏ làm trong 10–15 phút; bỏ vài ngày không bị phạt.
+
+**Cảm giác:** ấm, thong thả (cozy). **Không có thua, không có "chết", không có áp lực đua.** Đua/thi đấu nằm ở một toà nhà riêng (Đấu trường), em muốn mới vào.
+
+**Khác Stardew:** không cốt truyện, không hang mỏ, không thể lực cứng; sự "sâu" đến từ bạn bè thật.
+**Khác Roblox (cái em yêu):** em *sắp đặt* nhà/phòng của mình (UGC nhẹ, không script), người khác vào xem được.
+
+## D2. Không gian
+
+```
+                    ┌───────────── QUẢNG TRƯỜNG (chung) ─────────────┐
+                    │ Bảng tin · Đài phun nước · Sân sự kiện · Cổng   │
+                    │ ĐẤU TRƯỜNG · Chợ phiên (cuối tuần)              │
+                    └───────┬─────────────────────────────┬──────────┘
+                            │                             │
+                  ┌─────────┴────────┐          ┌─────────┴─────────┐
+                  │ PHỐ NHỎ (K4–5)   │          │ PHỐ LỚN (K6–8)    │
+                  │ nhà HS · nhà lớp │          │ nhà HS · nhà lớp  │
+                  │ hồ nhỏ · công viên│          │ hồ lớn · công viên│
+                  └─────────┬────────┘          └─────────┬─────────┘
+                            └──────── RỪNG (khám phá, chung) ───────┘
+```
+
+| Nơi | Là gì | Làm gì ở đó |
+|---|---|---|
+| **Nhà em** (ngoài + trong) | Mảnh đất riêng: sân + ruộng nhỏ + chuồng; bên trong 1–2 phòng | Trồng, nuôi, sắp đồ, ấp trứng, mời bạn vào |
+| **Phố** | Đường có nhà bạn, tiệm tạp hoá, hồ, ghế đá | Đi dạo, thăm nhà, câu cá, ngồi cùng bạn |
+| **Nhà lớp** | Một ngôi nhà chung của lớp (mọi lớp có) | Xem thành tích lớp, trang trí chung, mục tiêu tuần |
+| **Quảng trường** | Nơi hai phố gặp nhau | Sự kiện, chợ phiên, bảng tin, vào Đấu trường |
+| **Rừng** | Khu hoang chung | Khám phá, bắt thú (gộp BK World) |
+
+Một khu **nhỏ vừa đủ thấy 15–25 người cùng lúc**, không rộng ra (vắng thì trông trống).
+
+## D3. Vòng chơi
+
+**Mỗi phiên (10–15 phút):**
+1. **Về nhà** (2–3'): thu hoạch, tưới, cho thú ăn, nhặt trứng.
+2. **Ra phố** (5'): thấy ai đang online, chào bằng emote, ghé nhà bạn, giúp tưới hộ, để lại lời nhắn soạn sẵn.
+3. **Một hoạt động chọn** (5'): câu cá · khám phá Rừng · trang trí nhà · làm nhiệm vụ làng.
+4. **Khoe** (1'): đặt cá hiếm/đồ mới lên "phòng khoe", hoặc lên bảng tin.
+
+**Mỗi tuần:** nhiệm vụ chung cả lớp → mở đồ cho nhà lớp · sự kiện cuối tuần ở quảng trường · lên bậc nhà.
+**Mỗi mùa:** đồ/cá/thú theo mùa mới, đổi trang phục làng.
+
+## D4. Các hệ thống (thiết kế, chưa số liệu)
+
+**1. Nhân vật & thấy nhau**
+- Chọn kiểu (tóc, áo, màu) lúc đầu, đổi được; tên luôn kèm lớp.
+- **Chạm là đi** (tự tìm đường). Thấy bạn đang *làm gì* (đang câu, đang tưới, đang ngồi).
+- **Emote bánh xe 8 ô** + câu soạn sẵn; không gõ chữ.
+- **Ngồi cùng nhau:** ghế đá/ghế nhà, hai người ngồi cạnh nhau hiện biểu tượng "bạn bè".
+- Thú đi cùng (1 con) — người khác nhìn thấy.
+
+**2. Nhà** *(trọng tâm của "khoe")*
+- Chế độ **Sắp đặt:** đặt, xoay, cất đồ trên lưới; đổi sàn/tường.
+- **Phòng khoe:** một bức tường/kệ trưng bày huy hiệu, cá hiếm, thú hiếm, ảnh thành tích.
+- **Sổ khách:** bạn ghé thăm để lại 1 lời chào soạn sẵn + icon; em xem "hôm nay ai ghé".
+- Khách **chỉ được ngồi/đứng/xem**, không đụng đồ.
+- Nhà lớn dần theo bậc (3 bậc); mỗi bậc thêm chỗ và phòng.
+
+**3. Ruộng & vật nuôi**
+- Gieo → tưới → thu, lớn theo ngày. Vài loại cây, 2–3 vật nuôi nhỏ.
+- **Giúp bạn:** sang nhà bạn tưới hộ (kết nối xã hội hơn là sản xuất).
+- Không héo chết (bỏ vài ngày chỉ "ngủ", không mất cây).
+
+**4. Câu cá** *(cảm giác "đã tay" chính)*
+- Chọn chỗ nước (hồ phố, hồ rừng, suối), thả phao, **chờ → cá cắn → bấm đúng nhịp**.
+- Cá theo giờ/mùa/nơi; có **cá khổng lồ** (kỷ lục lớp, hiện ở nhà lớp).
+- **Sổ cá** theo bộ (gần đủ thì muốn đủ).
+- Câu cạnh bạn: thấy phao của nhau; khoe cá lên bảng tin.
+
+**5. Thú & khám phá** *(gộp BK World)*
+- Rừng có thú hoang; bắt bằng bóng (cảm giác "ném" như bản thử), mang về nhà.
+- Lai hai thú → trứng → ấp trong nhà → nở thú mới (công thức, shiny/alpha như BK World).
+- Thú đi dạo quanh nhà em, và đi cùng em ra phố.
+
+**6. Sưu tầm**
+- 4 sổ: **cá · thú · đồ nhà · khách**. Mỗi sổ chia bộ nhỏ để thấy "gần đủ".
+- Mục tiêu: khoe bộ hoàn chỉnh.
+
+**7. Nhiệm vụ & sự kiện**
+- **Bác Hai (NPC bảng nhiệm vụ)**: 3 việc nhỏ mỗi ngày (câu 1 cá, tưới nhà bạn, ghé 2 nhà).
+- **Mục tiêu tuần của lớp:** cả lớp góp (số cá, số lượt ghé…) → mở đồ nhà lớp.
+- **Sự kiện hẹn giờ:** đêm câu cá, chợ phiên, lễ theo lịch.
+- **Đấu trường:** toà nhà ở quảng trường (chế độ học/đấu đã có).
+
+**8. Xã hội ngoài đời** *(lợi thế BK)*
+- GV chiếu **nhà lớp** lên TV đầu buổi.
+- GV "thả quà" xuống quảng trường cho cả lớp.
+- Thành tích học (Nhất buổi, chuỗi) thành **đồ trang trí** nhà lớp.
+
+## D5. Màn hình & điều khiển (iPad/PC ngang, khối 4–8)
+
+- **HUD gọn, icon trước chữ:** góc trái = avatar + tên + lớp · góc phải = thông báo · dưới = **túi 5 ô** + nút Emote + nút Về nhà + nút Bản đồ.
+- **Chạm vào vật → bong bóng hành động** (Tưới / Vào / Ngồi / Câu).
+- Ít chữ, mức đọc lớp 4; mọi hành động có icon + màu.
+- Có **nút Về nhà** luôn thấy.
+
+## D6. Người chơi mới — 10 phút đầu
+
+1. Chọn nhân vật → được **một mảnh đất + nhà bậc 1**.
+2. Bác Hai dẫn: **gieo 1 hạt → tưới → câu 1 con cá → đặt 1 món đồ vào nhà.**
+3. Tự động đưa **sang nhà một bạn cùng lớp** chào bằng emote.
+4. Cuối: "Mai quay lại thu hoạch nhé!" (hẹn ngày mai).
+Mục tiêu: trong 10 phút em **có nhà của mình + thấy một người thật**.
+
+## D7. Cố ý KHÔNG làm (V1)
+
+Cốt truyện dài · hẹn hò/NPC sâu · chiến đấu/boss · hang mỏ · chế tác nhiều tầng · chat gõ tự do · tặng đồ trực tiếp · đua xếp hạng trong làng (đã có ở Đấu trường) · thể lực cứng · cây chết/phạt khi vắng.
+
+## D8. Câu thiết kế còn mở (chờ CEO)
+
+1. **Ai thấy nhà ai?** Chỉ bạn bè + cùng lớp, hay cả khối, hay mọi người trong phố?
+2. **Thú đi theo có hiện cho mọi người không**, hay chỉ bạn bè?
+3. **Phòng khoe:** em tự chọn hiện gì, hay hệ thống chọn thứ hiếm nhất?
+4. **Nhiều phòng/tầng** ở bậc nhà cao, hay chỉ rộng ra một phòng?
+5. **Ngày/đêm theo giờ thật** hay theo chu kỳ riêng ngắn hơn?
+6. **Có "thời tiết"** (mưa, tuyết) ở V1 hay để sau?
+7. **Nhà lớp:** GV hay HS quyết định trang trí chung?
