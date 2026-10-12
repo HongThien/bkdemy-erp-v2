@@ -36930,3 +36930,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ### 12/10 — Thùy chốt phạm vi bản đồ mới K12
 - **Thùy:** "bản đồ 12 mới chỉ phần nguyên hàm tích phân là chuẩn thôi, các phần còn lại chưa chuẩn". Ghi vào spec-ban-do-4-tang.md (đầu file) + memory. Hệ quả: B5/tài liệu K12 theo CHỦ ĐỀ NH-TP (NCD00095), không theo khối; chủ đề khác giữ bản đồ cũ; NH-TP là ứng viên pilot B5 (0 tham chiếu từ đo lường/ET/tài liệu — đo 10/10). Chưa chạm DB.
+
+
+### 12/10 (tiếp) — Bản đồ mới: chọn nhánh Đại · Hình giải tích · Hình (Thùy: "Bản đồ mới chưa cho chọn phần Đại - Hình giải tích - Hình")
+- **Làm:** mig `202610121613` — cột `nhanh` (toan|hgt|hinh, mặc định toan) trên `dai_bdm_chu_de` + `dai_bdm_chuyen_de`; trigger `_bdm_o_cung_nhanh` chặn nối ô chủ đề ↔ chuyên đề khác nhánh; `fn_bdm_cay(p_khoi, p_nhanh default toan)` lọc theo nhánh, phần đếm dạng cũ/câu chỉ tính cho Đại (nhánh khác trả 0). Client: chip nhánh ở đầu màn Bản đồ mới (nhớ nhánh gần nhất), `getCay/themChuDe/themChuyenDeVaoChuDe` truyền nhánh; nhóm + dạng bài đi theo chủ đề nên tự thuộc nhánh.
+- **Kiểm (ROLLBACK):** Đại K12 vẫn 6 chủ đề y như trước; hgt/hinh rỗng; tạo chủ đề hgt không lẫn sang Đại; nối chéo nhánh bị chặn. tsc không thêm lỗi. CHƯA mở màn bằng phiên đăng nhập thật.
+- **Cố ý chưa làm:** gán câu / đối ứng dạng cũ / rổ chưa khớp cho hgt + hinh (phần đó dính bảng câu riêng từng nhánh — dai_cau_hoi/dai_ban_do; hgt_cau_hoi, hinh_hoc_*) — hiện nhánh hgt/hinh chỉ soạn cấu trúc 4 tầng + lý thuyết + ví dụ + mô tả. Tên bảng vẫn dai_bdm_* (lịch sử). "Hình học" (hinh_hoc, kho kiểu 1) không có trong chip — Thùy chỉ nêu 3 nhánh.

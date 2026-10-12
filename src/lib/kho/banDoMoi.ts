@@ -1,4 +1,5 @@
-// Bản đồ MỚI (nháp) — nhánh Đại. spec-ban-do-4-tang.md §0 + §9.0 · mig 202610081147.
+// Bản đồ MỚI (nháp) — 3 nhánh Toán: Đại · Hình giải tích · Hình (mig 202610121613). spec-ban-do-4-tang.md §0 + §9.0 · mig 202610081147.
+// Phần đụng CÂU (gán câu, đối ứng dạng cũ) hiện chỉ có cho Đại ('toan'); hgt/hinh soạn cấu trúc 4 tầng + lý thuyết/ví dụ.
 // CEO soạn 4 tầng trên bản nháp (chia tầng · lý thuyết · ví dụ · mô tả); bản đồ đang chạy KHÔNG bị đụng.
 // Cây đọc 1 lần qua RPC fn_bdm_cay (đếm/ghép ở DB, §2.0). Ghi = CRUD dòng đơn + RPC chuyển/sắp xếp/nâng/hạ.
 import { supabase } from '../supabase'
@@ -38,8 +39,13 @@ function loi(e: { code?: string; message?: string } | null): never {
   throw new Error(e?.message ?? 'Lỗi không rõ')
 }
 
-export async function getCay(khoi: string): Promise<BdmCay> {
-  const { data, error } = await supabase.rpc('fn_bdm_cay', { p_khoi: khoi })
+// Nhánh bản đồ mới — khoá khớp KhoNhanh (api.ts): toan = Đại.
+export type BdmNhanh = 'toan' | 'hgt' | 'hinh'
+export const BDM_NHANH: { id: BdmNhanh; nhan: string }[] = [
+  { id: 'toan', nhan: 'Đại' }, { id: 'hgt', nhan: 'Hình giải tích' }, { id: 'hinh', nhan: 'Hình' },
+]
+export async function getCay(khoi: string, nhanh: BdmNhanh = 'toan'): Promise<BdmCay> {
+  const { data, error } = await supabase.rpc('fn_bdm_cay', { p_khoi: khoi, p_nhanh: nhanh })
   if (error) loi(error)
   return data as BdmCay
 }
@@ -63,8 +69,8 @@ export async function xoaChuDeTronGoi(id: string): Promise<KqXoa> {
 }
 
 // ── Chủ đề ──
-export async function themChuDe(khoi: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() })
+export async function themChuDe(khoi: string, ten: string, nhanh: BdmNhanh = 'toan'): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim(), nhanh })
   if (error) loi(error)
 }
 export async function suaChuDe(id: string, ten: string): Promise<void> {
@@ -77,10 +83,10 @@ export async function xoaChuDe(id: string): Promise<void> {
 }
 
 // ── Chuyên đề (dùng chung) + ô ──
-export async function themChuyenDeVaoChuDe(chuDeId: string, a: { chuyenDeId?: string; tenMoi?: string }): Promise<void> {
+export async function themChuyenDeVaoChuDe(chuDeId: string, a: { chuyenDeId?: string; tenMoi?: string }, nhanh: BdmNhanh = 'toan'): Promise<void> {
   let id = a.chuyenDeId
   if (!id) {
-    const { data, error } = await supabase.from('dai_bdm_chuyen_de').insert({ ten: (a.tenMoi ?? '').trim() }).select('id').single()
+    const { data, error } = await supabase.from('dai_bdm_chuyen_de').insert({ ten: (a.tenMoi ?? '').trim(), nhanh }).select('id').single()
     if (error) loi(error)
     id = (data as { id: string }).id
   }

@@ -15,7 +15,7 @@ import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, BDM_NHANH, type BdmNhanh,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
 import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
@@ -53,12 +53,12 @@ const chenTruoc = (ids: string[], id: string, truoc: string | null) => {
 }
 const dangGo = (t: EventTarget | null) => !!t && ['INPUT', 'TEXTAREA', 'SELECT'].includes((t as HTMLElement).tagName)
 
-function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
+function BanDoMoi({ khoi, nhanh, dauMan }: { khoi: string; nhanh: BdmNhanh; dauMan?: ReactNode }) {
   const [cay, setCay] = useState<BdmCay | null>(null)
   const [loiTai, setLoiTai] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [bao, setBao] = useState<string | null>(null)
-  const [chuDeId, setChuDeId] = useState<string | null>(NHO.chuDe[khoi] ?? null)
+  const [chuDeId, setChuDeId] = useState<string | null>(NHO.chuDe[`${nhanh}:${khoi}`] ?? null)
   const [chuyenDeId, setChuyenDeId] = useState<string | null>(null)
   const [chon, setChon] = useState<Chon | null>(null)
   const [hover, setHover] = useState<string | null>(null)
@@ -73,10 +73,10 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   // Đổi KHỐI = đổi ngữ cảnh ⇒ reset + tải lại
   useEffect(() => {
     let song = true
-    setCay(null); setLoiTai(null); setChon(null); setChuDeId(NHO.chuDe[khoi] ?? null); setDangCu(null)
-    getCay(khoi).then((c) => { if (song) setCay(c) }).catch((e) => { if (song) setLoiTai(String(e.message ?? e)) })
+    setCay(null); setLoiTai(null); setChon(null); setChuDeId(NHO.chuDe[`${nhanh}:${khoi}`] ?? null); setDangCu(null)
+    getCay(khoi, nhanh).then((c) => { if (song) setCay(c) }).catch((e) => { if (song) setLoiTai(String(e.message ?? e)) })
     return () => { song = false }
-  }, [khoi])
+  }, [khoi, nhanh])
   // Ngăn bản đồ cũ: tải khi mở (và khi đổi khối lúc đang mở)
   useEffect(() => {
     NHO.nganCu = nganCu
@@ -88,7 +88,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 
   const chuDe = cay?.chu_de.find((c) => c.id === chuDeId) ?? cay?.chu_de[0] ?? null
   const o = chuDe ? (chuDe.o.find((x) => x.chuyen_de_id === (chuyenDeId ?? NHO.chuyenDe[chuDe.id])) ?? chuDe.o[0] ?? null) : null
-  useEffect(() => { if (chuDe) NHO.chuDe[khoi] = chuDe.id }, [chuDe?.id, khoi]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (chuDe) NHO.chuDe[`${nhanh}:${khoi}`] = chuDe.id }, [chuDe?.id, khoi, nhanh]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (chuDe && o) NHO.chuyenDe[chuDe.id] = o.chuyen_de_id }, [chuDe?.id, o?.chuyen_de_id]) // eslint-disable-line react-hooks/exhaustive-deps
   const chonChuDe = (id: string) => { setChuDeId(id); setChuyenDeId(null); setChon(null) }
   const chonChuyenDe = (id: string) => { setChuyenDeId(id); setChon(null) }
@@ -120,7 +120,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 
   // Tải lại NỀN (không xoá màn): cây + ngăn bản đồ cũ nếu đang mở
   const napLai = () => Promise.all([
-    getCay(khoi).then(setCay),
+    getCay(khoi, nhanh).then(setCay),
     nganCu ? getDangCu(khoi).then(setDangCu) : Promise.resolve(),
   ]).catch((e) => setLoi(String(e.message ?? e)))
   // Thả dạng cũ vào đích ① dạng bài · ② nhóm · ③ chuyên đề
@@ -211,7 +211,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           <button onClick={() => setChon({ loai: 'chu_de' })} title="Sửa tên / thứ tự / xoá chủ đề"
             className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
         )}
-        <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
+        <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten, nhanh), 'Đã thêm chủ đề')} />
         {HIEN_KHOP_CU && <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
           className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
           📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
@@ -245,7 +245,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           <div className="flex w-[260px] shrink-0 flex-col border-r border-slate-200 bg-white">
             <div className="flex items-center gap-2 border-b border-slate-100 px-3 py-2">
               <span className="flex-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chuyên đề ({chuDe.o.length})</span>
-              <ThemChuyenDe cay={cay} cd={chuDe} onThem={(a) => lam(() => themChuyenDeVaoChuDe(chuDe.id, a), 'Đã thêm chuyên đề')} />
+              <ThemChuyenDe cay={cay} cd={chuDe} onThem={(a) => lam(() => themChuyenDeVaoChuDe(chuDe.id, a, nhanh), 'Đã thêm chuyên đề')} />
             </div>
             <div className="min-h-0 flex-1 overflow-y-auto p-1.5">
               {!chuDe.o.length && <div className="p-2 text-[12px] text-slate-400">Chưa có — bấm «+ Chuyên đề».</div>}
@@ -978,6 +978,19 @@ const docKhoi = () => {
 export default function BanDoMoiScreen() {
   const [khoi, setKhoi] = useState<string>(docKhoi)
   useEffect(() => { try { localStorage.setItem('bdm.khoi', khoi) } catch { /* trình duyệt chặn lưu — bỏ qua */ } }, [khoi])
+  // Nhánh Toán: Đại · Hình giải tích · Hình (Thùy 12/10) — cũng nhớ nhánh gần nhất
+  const [nhanh, setNhanh] = useState<BdmNhanh>(() => {
+    try { const n = localStorage.getItem('bdm.nhanh'); return BDM_NHANH.some((x) => x.id === n) ? (n as BdmNhanh) : 'toan' } catch { return 'toan' }
+  })
+  useEffect(() => { try { localStorage.setItem('bdm.nhanh', nhanh) } catch { /* bỏ qua */ } }, [nhanh])
+  const chonNhanh = (
+    <span className="flex items-center gap-0.5 rounded-lg bg-slate-100 p-0.5">
+      {BDM_NHANH.map((n) => (
+        <button key={n.id} onClick={() => setNhanh(n.id)}
+          className={`rounded-md px-2.5 py-1 text-[12.5px] font-semibold transition ${nhanh === n.id ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{n.nhan}</button>
+      ))}
+    </span>
+  )
   const chonKhoi = (
     <span className="flex items-center gap-0.5">
       <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Khối</span>
@@ -989,7 +1002,12 @@ export default function BanDoMoiScreen() {
       ))}
     </span>
   )
-  return <div className="h-full min-h-0 bg-[#fafafb]"><BanDoMoi key={khoi} khoi={khoi} dauMan={chonKhoi} /></div>
+  return (
+    <div className="h-full min-h-0 bg-[#fafafb]">
+      <BanDoMoi key={`${nhanh}:${khoi}`} khoi={khoi} nhanh={nhanh}
+        dauMan={<span className="flex flex-wrap items-center gap-3">{chonNhanh}{chonKhoi}</span>} />
+    </div>
+  )
 }
 
 function ThuTuChuDe({ cay, cd, lam }: { cay: BdmCay; cd: BdmChuDe; lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void> }) {
