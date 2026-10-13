@@ -207,3 +207,25 @@ Theo CLAUDE.md §2: nhớ module-level **bộ lọc + cây đã vá + scrollTop 
 ## 9. Đứng trên vai ai (R7)
 
 *Rooted ordered tree* + *path-condition* (symbolic execution) cho giả thiết hiệu lực; *Reingold–Tilford* / tidy-tree layout cho "mỗi nhánh một hàng, nhánh con bậc dần"; *testlet* (Wainer & Kiely) cho bài nhiều ý — đã nêu ở spec-hinh-luyen §0.
+
+---
+
+## 10. Ba khuôn của Bản đồ kiến thức Toán (CEO chốt 14/10 tối)
+
+Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua MỘT bảng đăng ký "vùng → khuôn màn", không rải `if`.
+
+| Vùng | Cấu trúc | Đo (KP) ở | Bảng | Ghi chú |
+|---|---|---|---|---|
+| **Đại · Giải tích** | chủ đề → chuyên đề → nhóm → dạng | nhóm / dạng | `dai_bdm_*` | hai vùng cùng một logic |
+| **Hình – Học** | (chương) → **bài học** → bài tập — **3 tầng** | **bài học** | `hinh_hoc_bai` · `hinh_hoc_cum_bai` · `hinh_hoc_cau_hoi` (bảng RIÊNG, đã có) | logic đơn giản nhất; "giống Đại" chỉ là cách nói. KHÔNG có mô hình |
+| **Hình – Luyện** | chủ đề → mô hình → nhánh → bài; ý của bài kho gán vào bài | bài mô hình | `hinh_mo_hinh` · `hinh_baitoan` · `hinh_bai` · `hinh_y` | spec này §0–§9 |
+
+**Quyết định:**
+1. **Hình–Học đo ở BÀI HỌC, không đo ở bài tập** — bài tập hình gần như duy nhất, đánh giá ở mức bài tập không có nghĩa. (Đúng hiện trạng: `hinh_hoc_bai.ma_dang = ma_bai`.)
+2. **Đơn vị là BÀI HỌC (kiến thức), không phải BUỔI (vận hành).** Buổi nào dạy bài nào là việc của giáo trình.
+3. **Hình–Học là bảng riêng, 3 tầng** — không ép vào 4 tầng `dai_bdm_*`, không tầng chuyên đề giả (CLAUDE.md §1.6).
+4. **Bài tập phần Học và phần Luyện ĐỘC LẬP** ("học là học, luyện là luyện"). ⇒ KHÔNG làm dây "bài Luyện cần bài học nào"; KHÔNG kéo câu Học sang Luyện; kho Luyện (`hinh_bai`/`hinh_y`) nhập riêng từ đề thi. Hệ quả: 291 câu Học đang mang `mo_hinh_id` là nhãn mồ côi — không dùng, không xoá (chờ CEO nếu muốn dọn).
+
+**Vì sao tách (R7):** *blocked practice* (học theo khối — bài tập xoay quanh một bài) vs *interleaved practice* (thi tổng hợp) — Rohrer & Taylor.
+
+**Việc kéo theo (chưa làm):** nới CHECK `dai_bdm_chu_de.nhanh` `hinh` → `hinh_hoc` · `hinh_luyen` (kèm migration) · bảng đăng ký vùng → khuôn màn trong Bản đồ mới · màn Hình–Học tái dùng `KhoHinhHocScreen`.

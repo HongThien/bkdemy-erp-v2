@@ -37475,3 +37475,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Kiểm trên app dev (đăng nhập nhanh Admin):** khối 7 hiện 12 mô hình; MH.061 "Phân giác trong tam giác vuông" ra 24 bài số 1.1…1.24, popup có đề + hình vẽ lại + lời giải KaTeX; Tab Nhóm 24 dòng; 0 lỗi. Sửa thêm: bài `gt_thay_the` chỉ hiện "bài tự phát biểu", bỏ dấu chấm kép ở đề.
 - **CHƯA kiểm:** thao tác GHI trên dữ liệu thật (rẽ nhánh/chuyển bài) — không bấm thử vì tạo nhánh thật là để lại dòng trong DB (xoá phải theo luật xoá). Thùy bấm thử lần đầu.
 - **Lưu ý cho màn cũ:** nhánh inline (`la_mo_hinh=false`) cũng là dòng `hinh_mo_hinh` ⇒ `SoDo`/`Ho` chưa lọc; hiện chưa có dòng nào nên chưa lộ.
+
+## 14/10 (khuya, tiếp) — Sparring: ba khuôn của Bản đồ Toán; Hình–Học vs Hình–Luyện
+- **CEO:** làm lại mô hình Luyện từ đầu. Luồng: (1) Claude đẩy bài có đáp án chi tiết vào kho, tách ý thành chuỗi · (2) CEO dựa vào kho xây chuỗi mô hình rồi mới tạo nhóm · (3) xây tới đâu gán ý tới đó. "Chọn Hình thì toàn bộ UI đổi theo; Đại và Giải tích logic giống nhau; Hình luyện khác; Hình học đơn giản nhất."
+- **Đính chính của CTO:** Hình–Học ĐÃ có bảng (`hinh_hoc_*`, 1.826 câu); cái thiếu là VÙNG trong Bản đồ mới (`dai_bdm_chu_de.nhanh` chỉ có `hinh` chung, 0 dòng).
+- **Phản biện → CEO chốt:** (1) đơn vị là BÀI HỌC, không phải buổi ✅ · (2) đo ở bài học, không ở bài tập ✅ ("bài tập hình gần như duy nhất") · (3) Hình–Học bảng riêng, 3 tầng ✅ · (4) đề xuất dây "bài Luyện cần bài học nào" ❌ **CEO bác: Học và Luyện độc lập**. Ghi vào `spec-hinh-cay-nhanh.md` §10.
+- **Chỗ hở của luồng 3 bước (đã báo CEO):** màn Cây nhánh chưa tạo được mô hình/bài mới · chưa có đường nhập `hinh_bai`/`hinh_y` · lúc nhập chưa có mô hình để gắn nhãn (cần nhãn gom tạm) · khi xây cần thấy bài kho bên cạnh · màn gán ý chưa kiểm với cây mới · 1 ý chỉ gán 1 bài.
+- **Chờ CEO:** 41 mô hình + 366 bài cũ ẩn hay xoá · nguồn tài liệu/khối cho bước 1 · nhãn gom tạm theo gì.
