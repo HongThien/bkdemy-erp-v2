@@ -45,7 +45,18 @@ export default defineConfig({
       workbox: {
         // Dữ liệu vận hành (điểm danh/task) LUÔN phải mới — không cache API, chỉ cache asset tĩnh
         // (đủ điều kiện cài PWA + load nhanh lần sau). ERP và app là 2 đầu nhập cùng 1 DB (Thùy 29/08).
-        globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
+        // ⭐ 13/10 — CHỈ tải sẵn CODE + bộ icon của OPS. public/ dùng CHUNG mọi app nên glob cũ ('**/*.{…png,svg…}') kéo
+        // cả ảnh app Học sinh (bk-ui/hs 18MB), game, phiếu test, vinh danh… vào gói tải sẵn: đo trên bản đang chạy =
+        // 507 file / 36,5MB mỗi máy cài mới, tải lại mỗi khi bất kỳ ảnh nào trong đó đổi (kể cả ảnh OPS không hề dùng).
+        // Ảnh nền/tranh (bk-ui, ops-ui) chuyển sang lưu-khi-dùng (runtimeCaching): lần đầu tải qua mạng, các lần sau
+        // lấy từ máy và tự làm mới ngầm (StaleWhileRevalidate ⇒ đổi ảnh cùng tên không bị kẹt bản cũ).
+        globPatterns: ['**/*.{js,css,html,woff2}', 'ops-ui/**/*.svg', 'icon-ops-*.png'],
+        globIgnores: ['**/xem-thu-*.html', '**/games/**'],
+        runtimeCaching: [{
+          urlPattern: /\/(bk-ui|ops-ui)\/.+\.(png|jpe?g|svg|webp)$/,
+          handler: 'StaleWhileRevalidate',
+          options: { cacheName: 'ops-anh', expiration: { maxEntries: 300, maxAgeSeconds: 60 * 24 * 3600 } },
+        }],
         navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//],
         // Chunk SoanTaiLieu (đường in MT của Test đầu vào) ~2.5 MB do lib/detest.ts dynamic-import — chỉ tải
         // khi bấm in đề, không cần precache offline. Nới trần lên 5 MiB để build không chết vì nó.
