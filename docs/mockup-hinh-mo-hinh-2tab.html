@@ -97,7 +97,7 @@ h1{font-size:19px;margin:0 0 4px}
 
 <div class="crumb">Kho › Hình › Luyện › Họ <b>Tam giác vuông</b> › Mô hình <b>MH.09.012 — Phân giác trong tam giác vuông</b></div>
 <h1>Mô hình Hình: cây bài mọc XUỐNG — thẻ tối giản, bấm vào mới thấy đủ</h1>
-<p class="sub"><b>Thân</b> chạy ngang 1.1 → 1.2 → … chỉ chiếm một hàng. <b>Nhánh rẽ xuống theo cột dọc</b> ngay dưới bài mẹ (1.6 → 1.6.1 → 1.6.2). Nhánh con của một bài trong cột <b>chéo dần xuống phía dưới</b>, chỗ nào trống thì lấy. Chỗ <b>giả thiết thêm</b> là thẻ lục giác màu đặc, khác thẻ bài. <b>Bấm thẻ bài ⇒ popup</b> đề · hình · đáp án.
+<p class="sub"><b>Thân</b> chạy ngang 1.1 → 1.2 → … chỉ chiếm một hàng. <b>Nhánh rẽ xuống theo cột dọc</b> ngay dưới bài mẹ (1.6 → 1.6.1 → 1.6.2). Nhánh con của một bài trong cột <b>bậc dần sang phải rồi xuống</b> — chỉ hai hướng: xuống · sang phải, không bao giờ vòng sang trái. Chỗ <b>giả thiết thêm</b> là thẻ lục giác màu đặc, khác thẻ bài. <b>Bấm thẻ bài ⇒ popup</b> đề · hình · đáp án.
 Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p>
 
 <div class="bar">
@@ -116,8 +116,8 @@ Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p
 <ol>
  <li><b>Thân chỉ một hàng, không bao giờ bị đẩy.</b> Mọi nhánh mọc xuống từ bài mẹ; thân không giãn ra vì nhánh dưới nó.</li>
  <li><b>Dọc trước.</b> Nhánh của bài ở thân đi thẳng xuống đúng cột của bài mẹ: viên giả thiết thêm ngay dưới, rồi 1.6.1, 1.6.2 … xếp chồng xuống.</li>
- <li><b>Chéo sau.</b> Nhánh con của bài nằm trong cột dọc thì không còn chỗ thẳng dưới (đã có bài kế tiếp) ⇒ chéo xuống một bậc sang <u>phải</u>, rồi lại thẳng xuống.</li>
- <li><b>Vướng thì né theo thứ tự:</b> thẳng xuống → chéo phải → chéo trái → lùi xuống thêm một hàng và thử lại → xa thêm một cột. Chạy trong lúc xếp, không ai kéo tay. Ví dụ 1.7 vẫn có cột riêng ngay dưới nó dù 1.6 đã có nhiều nhánh: <i>nhánh nông giữ chỗ trước, nhánh sâu né</i> (xếp theo độ sâu).</li>
+ <li><b>Chỉ hai hướng: xuống · sang phải. Không vòng sang trái.</b> Nhánh con của bài nằm trong cột dọc không còn chỗ thẳng dưới (đã có bài kế tiếp) ⇒ nhảy sang <u>phải</u> một cột rồi lại thẳng xuống; dây nối đi xuống → rẽ phải → xuống.</li>
+ <li><b>Vướng thì né theo thứ tự:</b> thẳng xuống → sang phải 1 cột → 2 cột → … (hết 5 cột thì lùi xuống thêm một hàng và thử lại). Chạy trong lúc xếp, không ai kéo tay. Ví dụ 1.7 vẫn có cột riêng ngay dưới nó dù 1.6 đã có nhiều nhánh: <i>nhánh nông giữ chỗ trước, nhánh sâu né</i> (xếp theo độ sâu).</li>
  <li><b>Không cần rẽ lên trên:</b> không gian phía dưới luôn thừa, cây chỉ lớn xuống. (Rẽ lên trên chỉ nên làm khi có đồ thị phẳng khác — không đưa vào P1.)</li>
  <li><b>Gập từng nhánh</b> (bấm thẻ lục giác) ⇒ cột gập thành 1 ô “▸ N bài”, cờ ⚠ vẫn nổi. Mặc định gập nhánh sâu ≥ 3 hoặc &gt; 8 bài; bỏ chỗ trống của nhánh gập cho nhánh khác dùng.</li>
  <li><b>Chọn một bài</b> ⇒ ngoài đường gốc → bài và cây con của nhánh bài thì mờ, không ẩn không dịch chỗ. Dây tiền đề chỉ vẽ cho bài đang chọn và dây sai nhánh (đỏ).</li>
@@ -216,7 +216,7 @@ function drawChain(){
     all.filter(n=>depth(n.id)===d).sort((a,b)=>{const p=cell[a.neo],q=cell[b.neo];return p.c-q.c||p.r-q.r}).forEach(n=>{
       const a=cell[n.neo],len=1+(folded.has(n.id)?1:lane(n.id).length);
       let at=null;
-      for(let dy=0;dy<40&&!at;dy++)for(const dc of [0,1,-1,2,-2,3,-3]){
+      for(let dy=0;dy<40&&!at;dy++)for(const dc of [0,1,2,3,4,5]){
         if(free(a.c+dc,a.r+1+dy,len)){at={c:a.c+dc,r:a.r+1+dy};break}
       }
       take(at.c,at.r,len);layout[n.id]={...at,len};
@@ -253,7 +253,8 @@ function drawChain(){
   root.forEach((b,i)=>{const nx=i<root.length-1?root[i+1].id:'sub';sv+=line(box(b.id),nx==='sub'?{x:px(cell.sub.c),y:py(0),w:W,h:H}:box(nx),'#6b7686',1.8,'','a')});
   Object.keys(layout).forEach(id=>{
     const n=S.nhanh[id],op=focusSet&&!focusSet.has(id)?'opacity=".2"':'';
-    sv+=line(box(n.neo),box('p_'+id),'#6b7686',2.6,'','a',op);
+    {const p=box(n.neo),q=box('p_'+id),x1=p.x+p.w/2,y1=p.y+p.h,x2=q.x+q.w/2,y2=q.y,ym=p.y+p.h+(ROW-H)/2;
+      sv+=`<path ${op} d="${Math.abs(x1-x2)<2?`M${x1},${y1} V${y2}`:`M${x1},${y1} V${ym} H${x2} V${y2}`}" fill="none" stroke="#6b7686" stroke-width="2.6" marker-end="url(#a)"/>`}
     if(folded.has(id)){sv+=line(box('p_'+id),{x:px(cell['f_'+id].c),y:py(cell['f_'+id].r),w:W,h:H},'#6b7686',1.8,'','a',op);return}
     let prev='p_'+id;lane(id).forEach(b=>{sv+=line(box(prev),box(b.id),'#6b7686',1.8,'','a',op);prev=b.id});
   });
