@@ -193,9 +193,16 @@ function MpNhiemVu() {
       <Soi id="khoi_ngay" style={THE}>
         <div className="p-3">
           <p className="text-[13px] font-bold" style={mo}>HÔM NAY</p>
-          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 1 (+20 EXP · +20 ĐHT)" diem={20} xong />
-          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 2" diem={20} />
-          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 3" diem={20} />
+          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 1 (10 câu)" diem={40} xong />
+          <DongNv ma="N2" ten="Luyện dạng yếu · lượt 2 (10 câu)" diem={40} />
+          <p className="mt-1 text-[12.5px]" style={mo}>Mỗi lượt đạt +40 EXP · +40 điểm học tập</p>
+        </div>
+      </Soi>
+      <Soi id="xu_thang" style={THE}>
+        <div className="p-3">
+          <div className="flex justify-between text-[14px]"><span style={chu()}>Xu từ nhiệm vụ tháng này</span><b style={{ color: MAU.acc }}>6/20 xu</b></div>
+          <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-[30%] rounded-full" style={{ background: MAU.acc }} /></div>
+          <p className="mt-1 text-[12.5px]" style={mo}>100 EXP = 1 xu · làm đều mỗi ngày, cuối tháng tối đa 20 xu</p>
         </div>
       </Soi>
       <Soi id="quay" style={THE}>
@@ -591,7 +598,7 @@ function MpTroChoi() {
 const MAN: Record<ChuongTutorial['id'], () => JSX.Element> = {
   chuoi: MpChuoi, tro_choi: MpTroChoi,
   giao_dien: MpGiaoDien, hoc_tap: MpHocTap, chu_de: MpChuDe, tu_luyen: MpTuLuyen, luot_that: MpLuotThat, thu_thach: MpThuThach, dau_chinh_phuc: MpDauChinhPhuc,
-  nhiem_vu: MpNhiemVu, bxh: MpBxh, rank: MpRank, huy_hieu: MpHuyHieu, xu_may_man: MpXuMayMan, the_gioi: MpTheGioi,
+  nhiem_vu_ngay: MpNhiemVu, bxh: MpBxh, rank: MpRank, huy_hieu: MpHuyHieu, xu_may_man: MpXuMayMan, the_gioi: MpTheGioi,
 }
 
 export default function MoPhongTutorial({ chuong, soi }: { chuong: ChuongTutorial['id']; soi?: string }) {

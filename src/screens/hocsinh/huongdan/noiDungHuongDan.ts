@@ -278,13 +278,14 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     ],
   },
   {
-    id: 'nhiem_vu', nhom: 'thuong', ten: 'Nhiệm vụ', icon: { o: 'nhiem_vu', emoji: '📜' }, tutorial: 'nhiem_vu',
+    id: 'nhiem_vu', nhom: 'thuong', ten: 'Nhiệm vụ', icon: { o: 'nhiem_vu', emoji: '📜' }, tutorial: 'nhiem_vu_ngay',
     tomTat: 'Luyện dạng yếu mỗi ngày để nhận EXP và điểm học tập; có việc ngày, tuần và tháng.',
     game: { ten: 'Bảng nhiệm vụ', tomTat: 'Luyện mỗi ngày, gom EXP và điểm để chơi game.' },
     khoi: [
       { tieu: 'Một việc duy nhất: Luyện dạng yếu', loai: 'luat', y: [
         'Chỉ lượt Luyện dạng yếu mới được tính. Lượt đó phải là lượt học thật và em làm đúng từ 7 trên 10 câu thì mới là lượt đạt.',
-        'Mỗi lượt đạt được 40 EXP và 40 điểm học tập. Mỗi ngày tính tối đa 2 lượt đạt (2 lượt là 20 câu).',
+        'Mỗi lượt đạt được 40 EXP và 40 điểm học tập. Mỗi ngày tính tối đa 2 lượt đạt (2 lượt là 20 câu), tức là 80 EXP.',
+        'EXP đổi ra xu: 100 EXP là 1 xu. Làm đều mỗi ngày thì cả tháng nhận tối đa 20 xu từ nhiệm vụ.',
       ] },
       { tieu: 'Việc tuần và tháng', y: [
         'Một tháng chia 4 tuần (ngày 1 đến 7, 8 đến 14, 15 đến 21, 22 đến hết tháng).',

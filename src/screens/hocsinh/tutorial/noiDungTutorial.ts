@@ -10,7 +10,7 @@
 // ============================================================================
 
 export type BuocTutorial = { noi: string; soi?: string; loc?: string } // loc = động tác của Lộc ép cho câu này (mặc định: chỉ tay ở câu đầu chặng, giải thích ở các câu sau)
-export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'chuoi' | 'tro_choi' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
+export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'chuoi' | 'tro_choi' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu_ngay' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
 export type ChuongTutorial = {
   id: IdChuong
   ten: string
@@ -135,14 +135,14 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     ],
   },
   {
-    id: 'nhiem_vu', ten: 'Nhiệm vụ', phu: 'Việc ngày · tuần · tháng', icon: { gami: 'nhiem-vu/ruong_mo.png' },
-    kyNang: 'Nhiệm vụ — luyện dạng yếu mỗi ngày, nhận EXP và điểm học tập',
+    id: 'nhiem_vu_ngay', ten: 'Nhiệm vụ mỗi ngày', phu: 'Mỗi ngày 20 câu · cả tháng tối đa 20 xu', icon: { gami: 'nhiem-vu/ruong_mo.png' },
+    kyNang: 'Nhiệm vụ — mỗi ngày 20 câu luyện dạng yếu, cả tháng nhận tối đa 20 xu',
     buoc: [
-      { noi: 'Chặng 8: Nhiệm vụ. Ở khối Giải trí trên màn chính, chạm ô Nhiệm vụ. Hiện nhiệm vụ mở cho môn Toán.', soi: 'link_nhiem_vu' },
-      { noi: 'Nhiệm vụ chỉ có một việc: Luyện dạng yếu. Mỗi lượt em làm đúng từ 7 trên 10 câu là được 40 EXP và 40 điểm học tập. Mỗi ngày tính tối đa 2 lượt, tức là 20 câu.', soi: 'khoi_ngay' },
-      { noi: 'Có ít nhất 1 lượt đạt trong ngày là em được quay may mắn 1 lần. Vòng quay tự hiện ra khi em có lượt, không cần tìm ô riêng.', soi: 'quay' },
-      { noi: 'Việc tuần: có lượt đạt ở 5 ngày khác nhau, hoặc đủ 6 lượt đạt trong tuần, mỗi việc +100 EXP và +50 điểm. Việc tháng: có lượt đạt ở 20 ngày, +300 EXP và +200 điểm.', soi: 'khoi_tuan' },
-      { noi: 'Điểm học tập tích lại để em chơi game, kho chứa tối đa 6.000 điểm. EXP thì đổi ra xu ngay.', soi: 'chang' },
+      { noi: 'Chặng 8: Nhiệm vụ mỗi ngày. Việc của em chỉ có một: Luyện dạng yếu, mỗi ngày 2 lượt. Mỗi lượt 10 câu, vậy là 20 câu thôi.', soi: 'khoi_ngay' },
+      { noi: 'Mỗi lượt em làm đúng từ 7 câu trở lên là lượt đạt, được 40 EXP và 40 điểm học tập. Đủ 2 lượt là 80 EXP mỗi ngày.', soi: 'khoi_ngay' },
+      { noi: 'EXP đổi ra xu: cứ 100 EXP là 1 xu. Em làm đều mỗi ngày thì xu cộng dần, cả tháng nhận tối đa 20 xu từ nhiệm vụ.', soi: 'xu_thang' },
+      { noi: 'Ngày nào có lượt đạt, em còn được quay may mắn 1 lần. Làm đều cả tuần, cả tháng thì có thưởng thêm nữa.', soi: 'quay' },
+      { noi: 'Vậy mỗi ngày em vào làm 2 lượt, đừng bỏ ngày nào nhé. Chạm ô Nhiệm vụ ở màn chính để xem việc hôm nay. Bấm nút bên dưới để làm lượt đầu tiên ngay!', soi: 'link_nhiem_vu' },
     ],
   },
   {
@@ -212,20 +212,20 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
 /** Chương nào thuộc tính năng nào (mã `tinh_nang` ở DB). Không có mã ⇒ luôn có. Tính năng ĐÓNG ⇒ chương ẩn (Thùy 07/10: mở dần, HS đỡ ngợp). */
 export const TINH_NANG_CHUONG: Partial<Record<IdChuong, string>> = {
   hoc_tap: 'hoc_tap', chu_de: 'hoc_tap', tu_luyen: 'hoc_tap', luot_that: 'hoc_tap', dau_chinh_phuc: 'hoc_tap', thu_thach: 'rank', chuoi: 'chuoi',
-  nhiem_vu: 'nhiem_vu', bxh: 'xep_hang', rank: 'rank', huy_hieu: 'thanh_tuu', xu_may_man: 'vi_xu', tro_choi: 'tro_choi', the_gioi: 'the_gioi',
+  nhiem_vu_ngay: 'nhiem_vu', bxh: 'xep_hang', rank: 'rank', huy_hieu: 'thanh_tuu', xu_may_man: 'vi_xu', tro_choi: 'tro_choi', the_gioi: 'the_gioi',
 }
 /** Nút "Thử ngay" cuối chặng (học bằng làm): chặng → màn thật. App ánh xạ id này sang màn. */
 export type DichThu = 'hoc_tap' | 'luyen_yeu' | 'nhiem_vu' | 'xep_hang' | 'thanh_tuu' | 'vi_xu' | 'tro_choi' | 'rank' | 'the_gioi'
 export const THU_NGAY: Partial<Record<IdChuong, { dich: DichThu; nut: string }>> = {
   hoc_tap: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' }, chu_de: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' },
   tu_luyen: { dich: 'luyen_yeu', nut: 'Thử ngay: Luyện dạng yếu' }, chuoi: { dich: 'luyen_yeu', nut: 'Thử ngay: luyện 1 lượt giữ chuỗi' },
-  nhiem_vu: { dich: 'nhiem_vu', nut: 'Thử ngay: xem Nhiệm vụ' }, bxh: { dich: 'xep_hang', nut: 'Thử ngay: xem Bảng xếp hạng' },
+  nhiem_vu_ngay: { dich: 'luyen_yeu', nut: 'Làm lượt đầu tiên ngay' }, bxh: { dich: 'xep_hang', nut: 'Thử ngay: xem Bảng xếp hạng' },
   huy_hieu: { dich: 'thanh_tuu', nut: 'Thử ngay: xem Thành tựu' }, xu_may_man: { dich: 'vi_xu', nut: 'Thử ngay: mở Ví xu' },
   tro_choi: { dich: 'tro_choi', nut: 'Thử ngay: vào Trò chơi' }, dau_chinh_phuc: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' },
 }
 
 /** 5 CHẶNG LÕI cho LẦN ĐẦU (Thùy 08/10: 12 chặng một lúc hơi dài): Học tập · Luyện dạng yếu · Chuỗi · Nhiệm vụ · Thành tựu. Các chặng còn lại Lộc "kể dần" qua lời mời ở góc màn chính. */
-export const CHUONG_LOI: readonly IdChuong[] = ['hoc_tap', 'tu_luyen', 'chuoi', 'nhiem_vu', 'huy_hieu']
+export const CHUONG_LOI: readonly IdChuong[] = ['hoc_tap', 'tu_luyen', 'chuoi', 'nhiem_vu_ngay', 'huy_hieu']
 
 /** Các chặng của hành trình theo công tắc tính năng (`chiId`: chỉ các chặng này, đánh số lại trong tập đó): `mo(ma)` = tính năng ma đang MỞ cho em. Đánh số lại "Chặng N:"; thay {sr1}/{sr2} theo việc Chinh phục BK / Giải Vô địch BK đã mở chưa. */
 export function chuongMo(mo: (ma: string) => boolean, chiId?: readonly string[]): ChuongTutorial[] {
