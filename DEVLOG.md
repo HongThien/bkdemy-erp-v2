@@ -37245,3 +37245,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Chưa làm:** khối 11 (96 hình đề + 385 hình lời giải, hình không gian, đa số TikZ nét sạch) · `hinh_baitoan.anh_chuan` 127 + biến thể 78 (phần Luyện; `gan_hinh` chưa hỗ trợ hai bảng này) · `hgt_cau_hoi` 764. Chờ CEO nói có tính vào "toàn bộ" không.
 - **Đề/lời giải nghi sai do trạm bắt được (KHÔNG sửa):** ~45 câu, nặng nhất là HH00026 / HH00096 / HH00097 (đề bị dán câu dẫn của bài khác, hình dùng chung không đủ cho từng câu). Danh sách kèm ảnh cũ – mới: https://claude.ai/artifact/7uuhHuxmpeYmyEfzVy1Bbx
 - **Lưu ý quy trình:** một trạm tự tạo rồi tự xoá tệp tạm `_zoom_tmp.mjs` ở gốc repo (trái brief "không xoá gì"); đã kiểm `git status` — không tệp theo dõi nào bị xoá.
+
+## 13/10 — [Nhân sự · Chấm công TA] Chốt thiết kế hệ thống chấm công (viết lại `spec-cham-cong-ta.md`, CHƯA đụng code)
+- **Thùy:** "mọi hoạt động phải được track, cả hoạt động thay thế, ngoài quy trình chính… mọi thứ base trên việc TA chấm công cho các công việc mình định làm."
+- **Chốt 13/10:** (1) cái gì chắc chắn lấy được từ ERP thì KHÔNG chấm công (chấm BTVN, chấm ET); (2) check-in / check-out như đi làm, CẢ HAI đều phải duyệt, sau này có thể làm máy chấm công; (3) màn duyệt tách 2 trạng thái: việc có bằng chứng hiện "đã khớp", chưa có thì để trống; Trang đọc một lượt, bỏ chọn cái không duyệt, duyệt cả lô một lần; (4) khai bù trong 24 giờ, vẫn duyệt như thường.
+- **Thiết kế:** 3 lớp Có mặt – Việc – Bằng chứng (three-way match, duyệt theo ngoại lệ). Việc thay thế: TA chọn đúng lớp/ca, hệ thống TỰ SUY làm hộ ai. Bất biến: mỗi buổi lớp diễn ra phải có một phiếu công trợ giảng, thiếu thì hiện cờ.
+- **Làm:** viết lại sạch `spec-cham-cong-ta.md` (bỏ QR, bỏ "dạy thay vào lớp chính", công thức lương bản cuối, §8 liệt kê 8 chỗ migration `202610122210` cần chỉnh trước khi áp). Migration CHƯA sửa, CHƯA áp.
+- **Còn mở:** thiết bị (iPad chung hay máy riêng) · "Trang" là tài khoản nào · đơn giá chấm thi/họp/đào tạo · chấm ET chưa đo riêng trong 40%.

@@ -1,136 +1,175 @@
-# Chấm công & lương Trợ giảng — bản nháp để CEO duyệt (12/10/2026)
+# Chấm công & lương Trợ giảng (CEO chốt 12–13/10/2026)
 
-> Mục tiêu CEO: **lần sau tính lương KHÔNG qua file sheet** — toàn bộ dữ liệu nằm trên ERP và CEO nắm được hết.
-> Phạm vi v1: **TA part-time theo package chuẩn** (CEO chốt 12/10: "làm cho TA chuẩn trước"). Full-time / core team làm sau, logic giờ làm khác.
-> Nguồn công thức & số liệu kiểm chuẩn: bảng chấm công tháng 9/2026 + 14 phiếu lương đã tính tay (tổng 26.836.984đ).
+> **Đích:** lương TA tính hoàn toàn từ ERP, không qua file sheet; **mọi hoạt động của TA đều được ghi lại**, kể cả hoạt động thay thế và ngoài quy trình chính; CEO xem lại được mọi đơn giá.
+> **Phạm vi v1:** TA part-time theo package chuẩn. Full-time / core team làm sau (logic theo giờ làm, khác hẳn).
+> **Trạng thái:** thiết kế đã chốt phần lõi. Migration `202610122210_ta_cham_cong_va_luong.sql` **chưa áp**, cần chỉnh theo §8 trước khi áp. Tháng 9/2026 chỉ dùng tính lương (bản V6, 15 TA, 28.256.807đ), không nạp vào DB.
 
-## 0. Quyết định đã chốt (CEO 12/10/2026)
+## 0. Ý tưởng gốc
 
-| # | Quyết định | Hệ quả |
+**Chấm công là lời khai, ERP là bằng chứng, hệ thống tự đối chiếu, người duyệt chỉ nhìn chỗ lệch.**
+(Kế toán gọi là *three-way match*: kế hoạch – thực tế – duyệt; cách duyệt là *management by exception*.)
+
+Hai luật kéo theo:
+- **Cái gì chắc chắn lấy được từ ERP thì KHÔNG chấm công** (chấm BTVN, chấm ET). Khai thêm chỉ tạo hai nguồn cho một sự thật.
+- **Cái gì ERP không tự biết thì phải chấm công**: TA có mặt, và mọi việc cần có mặt.
+
+## 1. Quyết định đã chốt
+
+| Nhóm | # | Quyết định |
 |---|---|---|
-| 1 | **TA phải chấm công có mặt.** Đảo quyết định 07/09 ("mặc định có mặt, chỉ ghi vắng"). Có mặt là dữ liệu duy nhất ERP không tự biết, không chấm thì không kiểm được. Việc làm thì vẫn kiểm được từ ERP. | Thay `ta_vang` (cờ vắng) bằng bản ghi có mặt thật. |
-| 2 | **Lương tính riêng, không nhân hiệu suất.** Làm sai bị đánh **gậy** và **phạt tiền** qua hệ Gậy đã có. | Net = Gross package + ngoài package − `gay_chot_thang.tien_phat`. Hiệu suất chỉ hiển thị, không vào lương. |
-| 3 | **Hai kênh độc lập để đối chiếu; ERP là nguồn số 1.** Không có trong ERP mới dùng nguồn khác (TA khai). | Cờ lệch giữa hai kênh đưa cho người duyệt (§4). |
-| 4 | **Đơn giá chỉ áp cho việc ngoài package.** 3 phần chính (TG+ET, BTVN, bổ trợ) tính theo hệ số, không có đơn giá lẻ. | Danh mục việc có cột `nhom` (`package` / `ngoai_package`). |
-| 5 | **Dạy thay tính vào số buổi để ra tỉ lệ.** Bình thường 7/7, thêm 1 buổi dạy thay thành 8/7. | Tử số %TG gồm cả buổi dạy thay. Xem §3 về trần 100%. |
-| 6 | **Làm cho TA chuẩn trước.** | v1 không đụng full-time/core team. |
-| 7 | **Xác thực có mặt = QR check-in** tại trung tâm. Hậu kiểm bằng người duyệt hằng ngày. | Không cần định vị/wifi. Kiểm soát ở bước duyệt daily, không ở bước bấm. |
-| 8 | **Không trần** cho %TG và %BTVN: có tháng số buổi nhiều hơn mẫu số thì tỉ lệ vượt 100%. | Bỏ `LEAST(1, …)` ở hai tỉ lệ này. Số tháng 9 tính tay (đang chặn 100%) sẽ đổi ở các lớp ghi nhiều hơn mẫu số. |
-| 9 | **Trang duyệt** công. | Một người duyệt, hàng đợi daily. |
-| 10 | **Dạy thay cộng vào lớp chính** của TA. | %TG của lớp chính = (buổi lớp chính + buổi dạy thay) ÷ buổi lớp chính diễn ra. |
+| Nguyên tắc | 1 | TA **phải chấm công** (đảo quyết định 07/09 "mặc định có mặt, chỉ ghi vắng"). |
+| | 2 | Hai kênh, **ERP là nguồn số 1**; không có trong ERP mới dùng lời khai của TA. |
+| | 3 | Việc lấy chắc được từ ERP **không chấm công** (13/10). |
+| | 4 | Làm cho **TA chuẩn** trước. Không có TA online. |
+| Chấm công | 5 | **Check-in và check-out như đi làm**, bấm trên app TA, không quét QR. **Cả hai đều phải được duyệt.** Sau này có thể thay bằng máy chấm công (13/10). |
+| | 6 | Hệ thống **tự khớp lịch và gợi ý việc** của TA lúc đó; không khớp thì TA tự điền. |
+| | 7 | Trợ giảng phải ghi **lớp**, mặc định là lớp chính của TA. |
+| | 8 | **Trang duyệt hằng ngày.** Màn duyệt tách hai trạng thái: việc đã có bằng chứng hiện **"đã khớp"**, việc chưa có thì **để trống**. Trang đọc một lượt, bỏ chọn cái không duyệt, rồi **duyệt cả lô một lần** (13/10). |
+| | 9 | **Khai bù trong 24 giờ**, vẫn qua duyệt như thường (13/10). |
+| | 10 | Hạn chót duyệt/sửa của kỳ: **ngày 3 tháng sau**. |
+| Lương | 11 | Lương tính **riêng**, không nhân hiệu suất. Sai thì gậy + phạt (`gay_chot_thang.tien_phat`), **không trần phạt**. |
+| | 12 | **Không trần** %TG và %BTVN. |
+| | 13 | Sĩ số lớp = **trung bình cả tháng theo ngày**, xếp bậc theo số nguyên gần nhất. |
+| | 14 | **Tiền trợ giảng đi theo người thực sự dạy** từng buổi, tính theo bậc và số buổi của **lớp được dạy**. Lớp vẫn thuộc TA được phân công (giữ BTVN + chỉ tiêu bổ trợ). |
+| | 15 | **BTVN** tính theo buổi **chính TA đó chấm** trong hạn; buổi thi/MT không có BTVN thì không tính. |
+| | 16 | **Chỉ tiêu bổ trợ = 8 giờ × số lớp**; giờ bổ trợ dùng chung, không gắn riêng lớp nào. |
+| | 17 | Trông thi **lớp mình** nằm trong công trợ giảng; **lớp khác** 50.000đ/giờ. Bổ trợ đặc biệt (kèm riêng) 150.000đ/buổi, tính riêng. |
+| | 18 | Đơn giá chỉ áp cho việc ngoài package, nằm ở **một bảng đơn giá có lịch sử** để CEO xem lại. |
+| | 19 | Chỉ CEO và Trang xem lương toàn bộ; TA chỉ xem của mình. |
 
-## 1. Nguyên tắc thiết kế
+## 2. Mô hình: ba lớp
 
-1. **ERP tự điền những gì ERP đã biết, TA chỉ khai phần ERP không biết.** Mở app, TA thấy sẵn "hôm nay có": buổi lớp mình (từ lịch + `phan_cong_lop`), ca trực khối / ca bổ trợ đã xếp (`ca_bo_tro`). TA xác nhận có mặt và thêm việc ngoài lịch. Không bắt nhập lại cái hệ thống đã có.
-2. **Khoá bám khoá tự nhiên** (`buoi_hoc_id`, `ca_bo_tro_id`), không bám vị trí. Một việc không thể ghi hai lần vì cùng khoá.
-3. **Dòng chỉ ra đời khi có việc thật** (§1.5 CLAUDE.md). Không có "chờ điền".
-4. **Mọi con số lương tính ở Postgres** (`fn_ta_luong_*`), app chỉ gọi (§2.0 CLAUDE.md). Công thức đang sống ở script tạm ngoài repo phải chuyển vào đây, không để hai nơi.
-5. **Mọi đổi trạng thái có vết** (trigger ghi actor + ts + cũ/mới).
+| Lớp | Là gì | Nguồn | Ai xác nhận |
+|---|---|---|---|
+| **Có mặt** | Một ca: giờ vào, giờ ra thật | TA bấm (sau này: máy chấm công) | Trang duyệt, có thể chốt lại giờ |
+| **Việc** | Phiếu công: loại việc · lớp/ca/HS · khung giờ | Hệ thống gợi ý từ lịch, TA tick hoặc tự thêm | Trang duyệt |
+| **Bằng chứng** | Dấu vết việc đó trên ERP | ERP tự có | Máy đối chiếu |
 
-## 2. Hai kênh dữ liệu
+Vòng đời một ngày:
 
-| Kênh | Nội dung | Ai ghi |
-|---|---|---|
-| **K1 — ERP (số 1)** | Buổi diễn ra / huỷ, lớp, sĩ số, buổi đã đóng ET/BTVN, ca bổ trợ đã mở, HS có mặt, gậy | Hệ thống, OPS, GV |
-| **K2 — Chấm công TA** | TA có mặt (vào/ra), việc TA khai (nhất là việc K1 không có: trông thi, chấm thi, bổ trợ riêng, dạy thay) | TA |
+1. **Vào ca** — TA bấm check-in. Hệ thống hiện "việc của bạn lúc này" (khớp lịch ±30 phút) và cả ngày.
+2. **Khai việc** — tick việc định làm; việc ngoài lịch thì chọn từ danh mục và điền lớp / HS / giờ.
+3. **Ra ca** — bấm check-out; bỏ việc không làm, thêm việc phát sinh.
+4. **Đối chiếu** — máy gắn cho mỗi việc: *đã khớp* / *(trống)* / kèm cờ nếu mâu thuẫn.
+5. **Duyệt** — Trang duyệt cả lô.
+6. **Vào lương** — chỉ dòng đã duyệt.
 
-Quy tắc dùng:
-- Việc **có trong K1** → số liệu lấy K1. K2 dùng để **đối chiếu**.
-- Việc **không có trong K1** → K2 là nguồn, **phải qua duyệt** mới vào lương.
-- **Có mặt** chỉ có ở K2 → bắt buộc. Buổi lớp diễn ra mà TA phụ trách không có chấm công → hiện cờ "thiếu chấm công", người duyệt xử lý (TA quên bấm, hay TA không đến).
+Giờ tính lương (cho việc tính theo giờ: bổ trợ, trông thi) = khung giờ của việc. Việc nằm ngoài khoảng có mặt đã duyệt thì hiện cờ, không tự tính.
+Giờ TA bấm là dữ liệu gốc **không sửa**; nếu Trang chốt giờ khác thì lưu thành cột riêng (giờ chốt), giữ cả hai.
 
-## 3. Công thức lương (đã chạy tay đúng trên tháng 9)
+## 3. Danh mục hoạt động
+
+| Loại | Hoạt động | Chấm công? | "Đã khớp" khi ERP có |
+|---|---|---|---|
+| Chính | Trợ giảng lớp học | Có | Buổi `thuong` của lớp đó, ngày đó, không huỷ, khung giờ nằm trong ca có mặt |
+| | Trực bổ trợ khối (định kì) | Có | `ca_bo_tro` ngày đó có tên TA |
+| | Bổ trợ bù / yếu / đuổi / ôn thi | Có | Buổi bổ trợ loại tương ứng, có ≥1 HS có mặt |
+| | **Chấm BTVN** | **Không** | Lấy thẳng: `gami_grades.graded_by` → TA, trong hạn |
+| | **Chấm ET** | **Không** | Lấy thẳng từ dữ liệu chấm |
+| Thay thế | Trợ giảng hộ lớp khác | Có (chọn đúng lớp) | Như trợ giảng. Hệ thống **tự suy** là làm hộ ai; người được hộ không khai gì |
+| | Trực hộ ca bổ trợ | Có (chọn đúng ca) | Như trực bổ trợ |
+| | Chấm hộ BTVN | Không | Tự ra theo người chấm |
+| Ngoài quy trình | Trông thi, trông thi lại | Có | Buổi của lớp hôm đó là buổi thi (ERP chưa đủ dữ liệu, thường để trống) |
+| | Bổ trợ đặc biệt (kèm riêng) | Có | Không có → trống |
+| | Chữa bài, chấm thi, họp, đào tạo, việc khác | Có | Không có → trống |
+
+Việc chưa có đơn giá (chấm thi, họp, đào tạo, khác) **vẫn ghi**, trả 0đ và hiện cờ "chưa có đơn giá" cho tới khi CEO thêm giá.
+
+## 4. Kịch bản TA (app TA)
+
+1. Mở app, bấm **Chấm công vào**.
+2. Thấy danh sách việc hôm nay do hệ thống gợi ý; việc đang diễn ra nổi lên đầu. Tick việc định làm. Trợ giảng không chọn lớp thì lấy lớp chính.
+3. Việc không có trong gợi ý: bấm **Thêm việc**, chọn loại, điền lớp / học sinh / khung giờ / ghi chú.
+4. Bấm **Chấm công ra** khi về. Quên ra thì ca treo trạng thái "quên ra", Trang chốt giờ.
+5. **Khai bù:** trong 24 giờ kể từ khi việc diễn ra, TA tự khai được, dòng mang nhãn "khai bù". Quá 24 giờ chỉ Trang nhập hộ (có vết).
+6. Xem **Bảng công của tôi**: từng việc, trạng thái đã khớp / chờ duyệt / đã duyệt / từ chối kèm lý do.
+
+## 5. Màn duyệt của Trang (ERP desktop, hằng ngày)
+
+Một bảng theo ngày, mỗi dòng một ca hoặc một việc, mặc định **đã chọn sẵn**:
+
+| Cột | Nội dung |
+|---|---|
+| TA · ngày | |
+| Có mặt | Giờ vào – giờ ra (thật); nhãn "quên ra" / "khai bù" nếu có |
+| Việc | Loại · lớp/ca · khung giờ · học sinh |
+| Đối chiếu | **Đã khớp** hoặc **(trống)** |
+| Cờ | Mâu thuẫn nếu có (xem §6) |
+| Làm hộ | Tên TA được làm hộ, nếu là việc thay thế |
+
+Thao tác: đọc một lượt → bỏ chọn dòng không duyệt (bắt buộc ghi lý do) → **Duyệt tất cả dòng đang chọn**. Sửa giờ chốt ngay trên dòng khi cần.
+
+Thêm một khối riêng: **"Buổi không ai chấm công"** (§6).
+
+## 6. Bất biến và cờ
+
+Bất biến (thuần suy, không đẻ dòng chờ — CLAUDE.md §4):
+- **Mỗi buổi lớp diễn ra phải có một phiếu công trợ giảng.** Thiếu → cờ "buổi không ai chấm công", giao cho TA chính của lớp. Bắt được ca nhờ dạy hộ mà không ai khai.
+- **Mỗi ca trực bổ trợ đã xếp phải có phiếu công** của người được xếp hoặc người trực hộ.
+
+Cờ trên dòng việc:
+- Buổi/ca đã huỷ mà có khai · khung giờ việc nằm ngoài ca có mặt · hai việc trùng giờ · kết thúc ≤ bắt đầu · giờ ngoài 7h–22h30.
+- Hai TA cùng khai trợ giảng một buổi.
+- Bổ trợ không có HS nào có mặt (trực khối không có HS vẫn hợp lệ, chỉ hiện nhãn).
+- Giờ bổ trợ tháng vượt xa chỉ tiêu (tháng 9: TrangQ 31,5 giờ).
+- Lớp được phân công nhưng cả tháng không có hoạt động.
+- Việc chưa có đơn giá.
+
+## 7. Công thức lương
 
 ```
-Gross = Σ lớp [ Bậc(sĩ số lớp) × (0,4 × %TG + 0,2 × %BTVN) ]
-      + 0,4 × %BổTrợ × Bậc(lớp chính)
-      + Σ việc ngoài package (đơn giá × số lượng)
-Net   = Gross − tien_phat (gay_chot_thang của kỳ)
+Gross = Σ lớp [ bậc × (0,4 × %TG + 0,2 × %BTVN) ]
+      + 0,4 × giờ bổ trợ ÷ (8 × số lớp) × Σ bậc
+      + giờ trông thi lớp khác × 50.000 + buổi bổ trợ đặc biệt × 150.000
+Net   = Gross − tiền phạt gậy đã chốt của kỳ
 ```
 
-| Thành phần | Tỉ lệ | Chi tiết |
-|---|---|---|
-| %TG (TG + ET, 40%) | (buổi dạy lớp mình + buổi dạy thay) ÷ buổi lớp diễn ra | Mẫu số = buổi `thuong` không `huy` trong tháng. Dạy thay cộng vào tử số (CEO #5). |
-| %BTVN (20%) | số lần phát có chấm ÷ định mức | Định mức: lớp 8 buổi/tháng = 7 lần, lớp 4 buổi/tháng = 3 lần. Có chấm là tính đạt, chưa tính theo số bài. |
-| %BổTrợ (40%) | tổng giờ ÷ 8 | Gồm bù · yếu · đuổi · định kì (trực khối). Vượt 8 giờ thì nhân lên, không trần. Không gồm bổ trợ đặc biệt (tính riêng). |
-| Bậc lương lớp | 5–8 HS: 1.000.000 · 9–12: 1.200.000 · 13–15: 1.400.000 · 16–20: 1.600.000 · 21–25: 1.800.000 | Lớp dưới 5 HS lấy bậc thấp nhất. Sĩ số tại ngày chốt kỳ (từ `hoc_sinh_lop.ngay_vao/ngay_roi`, không dùng sĩ số hiện tại). |
-| Lớp chính | lớp có TG, bậc cao nhất | Dùng nhân phần bổ trợ. |
-| Lớp chỉ chấm BTVN, không TG | chỉ tính phần 0,2 × %BTVN | Không phạt phần TG. |
-| Trông thi lớp mình | nằm trong công TG, không tính riêng | |
-| Trông thi lớp khác | giờ × 50.000đ | Việc ngoài package, đã có đơn giá. |
-| Bổ trợ đặc biệt (kèm riêng) | 150.000đ / buổi | Tính riêng, không vào 8 giờ. |
+| Thành phần | Cách tính |
+|---|---|
+| %TG | Số buổi TA có phiếu công trợ giảng đã duyệt ở lớp đó (gồm cả trông thi lớp mình) ÷ số buổi `thuong` không huỷ của lớp trong tháng. Không trần. |
+| %BTVN | Số buổi của lớp mà chính TA chấm trong hạn ÷ định mức (lớp 8 buổi/tháng: 7; lớp 4 buổi/tháng: 3). Không trần. |
+| Lớp của TA | Lớp được phân công tới cuối kỳ (lớp chủ) **và** lớp TA có công trợ giảng trong kỳ (dạy hộ). |
+| Số lớp cho chỉ tiêu bổ trợ | Lớp chủ mà TA có hoạt động trong kỳ (có trợ giảng hoặc có chấm BTVN). Chưa có lớp chủ nào thì theo lớp có trợ giảng. |
+| Bậc | Sĩ số trung bình tháng, làm tròn: ≤8: 1.000.000 · 9–12: 1.200.000 · 13–15: 1.400.000 · 16–20: 1.600.000 · ≥21: 1.800.000. |
+| Kỳ | Theo ngày việc diễn ra, không theo ngày khai. |
 
-**Đã chốt (CEO 12/10):** %TG và %BTVN **không có trần** (§0 #8); dạy thay cộng vào lớp chính (§0 #10).
-Tác động lên số tính tay tháng 9: các lớp ghi nhiều hơn mẫu số được tính vượt 100% (vd Dương 5A2 TG 8/6, Dương 5A1 và Nguyên 7B1 BTVN 8/7). Phiếu tháng 9 đã gửi theo trần 100% sẽ lệch khi chạy bằng hàm ERP, ghi vào báo cáo kiểm chuẩn.
+Mọi con số tính ở Postgres (`fn_ta_luong_thang`), app chỉ gọi (CLAUDE.md §2.0). Hệ số và đơn giá đọc từ `ta_don_gia` theo ngày hiệu lực.
 
-## 4. Dữ liệu cần dựng
+## 8. Dữ liệu và hàm
 
-### 4.1 Danh mục & cấu hình (migration)
-- `ta_loai_viec`: `ma` · `ten` · `nhom` (`package`/`ngoai_package`) · `tinh_vao` (`tg`,`btvn`,`bo_tro`,`trong_thi`,`cham_thi`,`day_thay`,`khac`) · `don_vi` (`buoi`/`gio`) · `don_gia` (null cho package) · `can_lop` · `can_hs` · `nguon_erp` · `can_duyet`.
-  Khởi tạo từ file chấm công: Trợ giảng · Dạy thay · Bổ trợ bù / yếu / đuổi / định kì (trực khối) / ôn thi · Bổ trợ đặc biệt (150k/buổi) · Trông thi (50k/giờ) · Chấm thi (đơn giá chưa có) · Khác (bắt buộc ghi chú, qua duyệt).
-- `ta_luong_bac(si_tu, si_den, luong)`.
-- Mở rộng `ta_dinh_muc` (đã có `botro_gio`=8, `btvn`=7): thêm `btvn_lop_4_buoi`=3, `trong_thi_gia`=50000, `bo_tro_dac_biet_gia`=150000.
+**Đã viết trong migration `202610122210` (chưa áp, đã test rollback):** `ta_don_gia` (chỉ thêm dòng) · `ta_loai_viec` · `ta_cham_cong` · `ta_cong_viec` · `ta_cong_log` · `phan_cong_lop_log` + trigger · `fn_ta_cham_cong_vao/ra` · `fn_ta_khai_viec` · `fn_ta_duyet_cong` · `fn_ta_dat_don_gia` · `fn_ta_hom_nay` · `fn_ta_cong_thang` · `fn_ta_bang_don_gia` · `fn_ta_luong_thang`.
 
-### 4.2 Chấm công (dữ liệu mới)
-- `ta_cham_cong`: `id` · `nhan_su_id` · `ngay` (giờ VN) · `vao_at` · `ra_at` · `co_so` · `cach_xac_thuc` · `trang_thai` (`dang_lam`/`xong`/`quen_ra`).
-  Dòng ra đời khi TA bấm Vào. `ra_at` null chỉ hợp lệ khi `dang_lam`.
-- `ta_cong_viec`: `id` · `cham_cong_id` · `loai_viec` · `lop_id?` · `buoi_hoc_id?` · `ca_bo_tro_id?` · `gio_bat_dau` · `gio_ket_thuc` · `hoc_sinh_ids?` · `ghi_chu` · `nguon` (`he_thong`/`tu_khai`) · `trang_thai` (`cho_duyet`/`da_duyet`/`tu_choi`) · `duyet_boi` · `duyet_at`.
-  Unique theo khoá tự nhiên (một buổi / ca chỉ một dòng cho một TA).
-- Trigger ghi `ta_cong_log` (actor, ts, cũ/mới) cho mọi đổi trạng thái.
-- Bỏ dần `ta_vang` và `ChamCongTa.tsx` (box quản lý ghi vắng) khi chuyển xong.
+**Cần chỉnh trước khi áp (theo quyết định 13/10):**
+1. `ta_cham_cong`: thêm trạng thái duyệt (`cho_duyet`/`da_duyet`/`tu_choi`, người duyệt, lúc duyệt, lý do), giờ chốt (`vao_chot`, `ra_chot`), `khai_bu`, và nguồn `nguon` mở sẵn cho máy chấm công (`app`/`may_cham_cong`/`nhap_ho`).
+2. `ta_cong_viec`: thêm `khai_bu`; hàm khai chặn TA tự khai quá 24 giờ; nguồn thêm `nhap_ho`.
+3. `ta_loai_viec`: thêm chữa bài (tính vào bổ trợ), họp, đào tạo (ngoài package, chưa đơn giá).
+4. Hàm mới `fn_ta_doi_chieu(p_ngay)`: mỗi ca/việc kèm *đã khớp / trống*, cờ, "làm hộ ai" — **suy tại chỗ, không lưu**.
+5. Hàm mới `fn_ta_buoi_thieu_cong(p_tu, p_den)`: buổi lớp và ca trực không có phiếu công.
+6. `fn_ta_duyet_cong`: duyệt lô gồm cả ca có mặt và việc; từ chối bắt buộc lý do.
+7. `fn_ta_luong_thang`: chỉ tính việc thuộc ca có mặt đã duyệt.
+8. Chốt kỳ lương (`ta_luong_chot`, snapshot bất biến) + khoá sửa sau hạn ngày 3.
 
-### 4.3 Việc ERP chưa có thực thể
-- **Ca trông thi**: kỳ thi · lớp/phòng · khung giờ · người trông. Hiện `ky_thi` không có người trông.
-- **Chấm thi**: phân công + khối lượng (chưa có định nghĩa).
-- **Bổ trợ riêng / đặc biệt**: có loại việc nhưng cần danh sách HS được kèm.
+**Quyền:** hai chức năng mới `ta_cong_duyet` và `ta_luong`, gán cho CEO và Trang.
 
-### 4.4 Hàm Postgres (đặt tên theo quy ước)
-- `fn_ta_hom_nay(p_ns)` → danh sách "hôm nay có" (buổi, ca đã xếp) để TA xác nhận.
-- `fn_ta_cham_cong_vao / ra / khai_viec` (ghi, transaction).
-- `fn_ta_cong_thang(p_ns, p_ky)` → từng việc, nguồn K1/K2, cờ lệch.
-- `fn_ta_luong_thang(p_ky)` → bảng lương Gross/phạt/Net từng TA, kèm chi tiết cách ra số.
-- `fn_ta_chot_ky(p_ky)` → snapshot bất biến.
+## 9. Còn mở
 
-## 5. Kịch bản TA (app TA, mở rộng `TaHome`)
+1. **Thiết bị chấm công:** iPad chung của trung tâm hay máy riêng từng TA. iPad chung thì mỗi người phải đăng nhập riêng mới biết ai khai.
+2. **"Trang" là tài khoản nào** để gán quyền: Phạm Thị Thùy Trang (Trưởng khối THCS) hay Hoàng Thị Quỳnh Trang (QLHT, cũng là TA "TrangQ").
+3. **Đơn giá** chấm thi, họp, đào tạo, việc khác.
+4. **Chấm ET** nằm trong 40% "trợ giảng + ET" nhưng chưa đo riêng; hiện 40% chỉ theo số buổi trợ giảng.
+5. **Dữ liệu ERP cần dọn trước lần chạy thật:** thiếu phân công Ngân → 3A1; TrangQ có 7B1/7B2 phân công treo và đang dạy 7S3 (ERP ghi Vân Anh); buổi còn trạng thái "mở" làm lệch mẫu số (tháng 9: 109/349 buổi).
+6. **Máy chấm công** (ý tưởng): khi có thì chỉ thay nguồn của lớp "Có mặt", hai lớp còn lại giữ nguyên.
 
-1. Đến trung tâm, mở app → màn **Chấm công**, **quét QR** dán tại quầy để Vào ca. QR đổi định kỳ, `ta_cham_cong.cach_xac_thuc='qr'`.
-2. Màn hiện sẵn các việc hôm nay từ lịch; TA tick xác nhận, thêm việc khác từ danh sách (Dạy thay, Trông thi, Chấm thi, Bổ trợ riêng, Khác…), điền giờ + ghi chú / HS nếu cần.
-3. Rời trung tâm bấm **Ra ca**. Quên ra → hệ nhắc, trạng thái `quen_ra` chờ người duyệt chốt giờ.
-4. Cuối tuần/tháng TA xem **bảng công của mình** (đã duyệt / chờ duyệt / lệch) và sửa trong hạn.
+## 10. Thứ tự build
 
-## 6. Đối chiếu chéo & duyệt
+1. Chỉnh migration theo §8, test rollback, áp bằng `migrate.mjs --only`, `npm run schema`, commit.
+2. Đăng ký 2 chức năng + gán quyền.
+3. App TA: Chấm công vào/ra · việc hôm nay · thêm việc · khai bù · bảng công của tôi.
+4. ERP: màn duyệt của Trang (§5) + khối buổi thiếu công.
+5. ERP: màn Bảng đơn giá + màn Bảng lương.
+6. Chốt kỳ + phiếu lương TA xem trên app.
+7. Chạy song song với sheet một tháng; lệch về 0 thì tắt sheet. Khai tử `ta_vang` + `ChamCongTa.tsx`.
 
-Cờ tự động cho người duyệt (nguyên tắc triangulation §5 CLAUDE.md):
-- Buổi lớp diễn ra, TA phụ trách, **không có chấm công** · có chấm công nhưng **buổi bị huỷ**.
-- TA khai TG nhưng buổi không có ET/BTVN đóng · có đóng nhưng không chấm công.
-- Hai việc **trùng giờ** · giờ ngoài 7h–22h30 · kết thúc ≤ bắt đầu.
-- Số buổi TA khai ≠ số buổi ERP (vd Dương 5A2: file 8, ERP 6 vì 2 buổi huỷ).
-- Lớp có BTVN nhưng không có TG (kiểu Khánh 8B1, Ngân 3A1) · lớp có TG nhưng không BTVN.
-- Việc `ngoai_package` / `Khác` luôn qua duyệt, không tự vào lương.
-- Giờ bổ trợ vượt 8 giờ nhiều (vd >25 giờ) → cờ soát (tháng 9: TrangQ 31,5 giờ).
+## 11. Ngoài phạm vi v1
 
-Người duyệt: **Trang**, duyệt hằng ngày; có hạn chót khai/sửa trước khi chốt kỳ lương.
-
-## 7. Việc còn mở (cần CEO chốt)
-
-1. **Chi tiết QR**: một QR cho cả trung tâm hay mỗi cơ sở/phòng một QR; chu kỳ đổi mã (vd 5 phút / mỗi ngày); in hay hiển thị trên màn hình quầy.
-2. **Hạn chót sửa/duyệt** trước khi chốt kỳ (đề xuất: ngày 3 tháng sau).
-3. **Đơn giá chấm thi** và định nghĩa khối lượng (theo bài? theo giờ?).
-4. **Phạt gậy ra tiền**: `gay_chot_thang` đã có `don_gia` và `tien_phat` — xác nhận dùng nguyên, hay có trần phạt?
-5. **TA online / ET online**: không ở trung tâm thì chấm công thế nào (QR không áp dụng).
-6. **Tháng ngang kỳ**: ca đêm qua 0h, ca ngày 1–5 đầu tháng sau (file tháng 9 có dòng ngày 1–8/10; Long trông thi 4–5/10) thuộc kỳ nào. Đề xuất: theo ngày diễn ra, không theo ngày khai.
-
-Đã chốt 12/10: QR check-in, không trần, Trang duyệt, dạy thay vào lớp chính (§0 #7–#10).
-
-## 8. Thứ tự build & kiểm
-
-1. Migration §4.1 + §4.2 + RPC ghi (có smoke giả JWT, rollback).
-2. App TA: màn Chấm công (Vào/Ra, hôm nay có, khai việc, bảng công của tôi).
-3. Màn duyệt + danh sách cờ cho người duyệt (desktop ERP).
-4. `fn_ta_luong_thang` + màn bảng lương; **kiểm chuẩn**: chạy lại tháng 9 trên dữ liệu đã nhập, so 14 phiếu tính tay đến từng đồng; lệch → liệt kê nguyên nhân.
-5. Chốt kỳ + phiếu lương TA xem trên app (thay PDF làm tay) + khiếu nại có vết.
-6. **Chạy song song 1 tháng** (tháng 11): sheet và ERP cùng chạy, so từng TA; lệch về 0 thì tắt sheet.
-7. Thực thể trông thi / chấm thi (4.3) có thể làm sau bước 4, giữa lúc TA đã dùng được phần lõi.
-
-## 9. Ngoài phạm vi v1
-Full-time / core team theo giờ làm · tự nhận/giao việc ngoài danh mục · thông báo đẩy (ERP chưa có hạ tầng) · điều chỉnh lương theo hiệu suất (đã bỏ, CEO #2).
+Full-time / core team · thông báo đẩy · thực thể ca thi / phân công chấm thi (làm sau khi lõi chạy) · điều chỉnh lương theo hiệu suất (đã bỏ).
