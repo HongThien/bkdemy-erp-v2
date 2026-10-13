@@ -17,8 +17,9 @@ import KhoChinh from './KhoChinh'
 import Catalog from './Catalog'
 import TaiLieuChuan from './TaiLieuChuan'
 import SoanTaiLieu from './SoanTaiLieu'
+import DonMoHinh from './DonMoHinh'
 
-export type ManHinh = 'ho' | 'sodo' | 'khotam' | 'hangcho' | 'khochinh' | 'tlchuan' | 'soan' | 'dang' | 'bode'
+export type ManHinh = 'ho' | 'sodo' | 'don' | 'khotam' | 'hangcho' | 'khochinh' | 'tlchuan' | 'soan' | 'dang' | 'bode'
 
 /** Điều hướng có mang theo ngữ cảnh: M5 "Đặt node" → M2 với mô tả điền sẵn (§4 M5). */
 export type Nhay = { man: ManHinh; hoId?: string; moTaNode?: string; nodeId?: string; baiId?: string }
@@ -59,6 +60,7 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
     { nhom: 'Sơ đồ gốc · tham chiếu & giảng dạy', items: [
       { key: 'ho', icon: '◇', ten: 'Chọn họ mô hình', n: hoGoc.length },
       { key: 'sodo', icon: '◈', ten: 'Sơ đồ (2 view)', n: L.baiToan.length },
+      { key: 'don', icon: '🧹', ten: 'Dọn mô hình (Học/Luyện)' },
     ] },
     { nhom: 'Kho nhập · dùng để IN', items: [
       { key: 'khotam', icon: '▤', ten: 'Kho tạm & gán', n: dem.tam },
@@ -113,6 +115,7 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
       <div className="min-w-0 flex-1 overflow-y-auto bg-[#f6f7f9] px-6 py-5">
         {man === 'ho' && <Ho L={L} khoi={khoi} di={di} reload={load} />}
         {man === 'sodo' && <SoDo L={L} khoi={khoi} hoId={hoId} di={di} reload={load} moTaNode={ctx.moTaNode} nodeId={ctx.nodeId} />}
+        {man === 'don' && <DonMoHinh khoi={khoi} reload={load} />}
         {man === 'khotam' && <KhoTam L={L} khoi={khoi} di={di} reload={load} baiId={ctx.baiId} />}
         {man === 'hangcho' && <HangCho L={L} di={di} reload={load} />}
         {man === 'khochinh' && <KhoChinh L={L} khoi={khoi} di={di} />}

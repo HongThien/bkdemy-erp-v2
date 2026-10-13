@@ -15,6 +15,8 @@ export type MoHinh = {
   id: string; mon: string; ma: string; ten: string
   gia_thiet: string; gia_thiet_them: string | null; gt_thay_the: boolean; anh_cau_hinh: string | null
   la_goc_ho: boolean; cap_mo_hinh: number | null; khoi: string | null; ghi_chu: string | null
+  // Dọn (spec-hinh-luyen §6 B0.5): 'luyen' | 'hoc' | null = Thùy chưa xem. Lưới Hình luyện ẨN 'hoc' (xem loadLuoi).
+  phan: 'luyen' | 'hoc' | null
 }
 export type CanhMoHinh = { mo_hinh_id: string; cha_id: string }
 export type BaiToan = {
@@ -95,6 +97,20 @@ export async function loadLuoi(khoi?: string): Promise<Luoi> {
     q<{ cach_id: string; bo_de_id: string }>('hinh_cach_bo_de'),
   ])
   let [dang, boDe] = await Promise.all([q<DangHinh>('hinh_dang', 'thu_tu'), q<BoDe>('hinh_bo_de', 'thu_tu')])
+
+  // Mô hình Thùy đã phân là 'hoc' (phần Học mượn nhãn) KHÔNG thuộc lưới Hình luyện — ẩn luôn, kèm
+  // cascade bài toán/cách/tiền đề như cắt theo khối. NULL (chưa xem) vẫn hiện. Màn Dọn đọc fn_hl_don_mo_hinh, không qua đây.
+  {
+    const giu = new Set(moHinh.filter((m) => m.phan !== 'hoc').map((m) => m.id))
+    moHinh = moHinh.filter((m) => giu.has(m.id))
+    canh = canh.filter((c) => giu.has(c.mo_hinh_id) && giu.has(c.cha_id))
+    baiToan = baiToan.filter((b) => giu.has(b.mo_hinh_id))
+    const btIds = new Set(baiToan.map((b) => b.id))
+    cach = cach.filter((c) => btIds.has(c.baitoan_id))
+    const cachIds = new Set(cach.map((c) => c.id))
+    tienDe = tienDe.filter((t) => cachIds.has(t.cach_id) && btIds.has(t.tien_de_id))
+    cachBoDe = cachBoDe.filter((x) => cachIds.has(x.cach_id))
+  }
 
   if (khoi) {
     // Cắt lưới về đúng khối: giữ mô hình cùng khối, rồi cascade node → cách → tiền đề/bổ đề.
@@ -720,6 +736,69 @@ export function demTheoDangRollup(L: Luoi): Map<string, number> {
 
 // ══════════════════ ④ KHO BÀI VẬT LÝ (M3/M4/M5) ══════════════════
 export type BaiFull = Bai & { ys: Y[] }
+
+// ══════════════════ HÌNH LUYỆN — fn_hl_* (spec-hinh-luyen.md; mig 202610131535) ══════════════════
+// Mọi con số/khung in tính ở Postgres (CLAUDE.md §2.0). Client chỉ gọi + hiển thị.
+export type DonMoHinhRow = {
+  id: string; ma: string; ten: string; khoi: string | null; phan: 'luyen' | 'hoc' | null; la_goc_ho: boolean; gia_thiet: string
+  so_bai_mo_hinh: number; so_cau_hoc: number; so_bai_kho: number; so_con: number; so_luot_hs: number
+}
+const soHoa = <T extends Record<string, unknown>>(r: T): T => {
+  const o: Record<string, unknown> = { ...r }
+  for (const k of Object.keys(o)) if (k.startsWith('so_') && typeof o[k] === 'string') o[k] = Number(o[k])
+  return o as T
+}
+/** B0.5 — danh sách MỌI mô hình (kể cả 'hoc') kèm đếm, để Thùy phân loại / xoá. */
+export async function listDonMoHinh(khoi: string | null): Promise<DonMoHinhRow[]> {
+  const { data, error } = await supabase.rpc('fn_hl_don_mo_hinh', { p_khoi: khoi })
+  if (error) throw error
+  return ((data ?? []) as DonMoHinhRow[]).map(soHoa)
+}
+export async function datPhanMoHinh(id: string, phan: 'luyen' | 'hoc' | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_dat_phan', { p_id: id, p_phan: phan })
+  if (error) throw error
+}
+export type MoHinhSeMat = {
+  mo_hinh: { ma: string; ten: string; khoi: string | null } | null
+  mo_hinh_con: { ma: string; ten: string }[]; bai_mo_hinh: { ma: string; phat_bieu: string }[]
+  so_cach_giai: number; so_bien_the: number; tien_de_tu_ngoai: string[]
+  cau_hoc_mat_nhan: number; bai_kho_mat_nhan: number; y_mat_gan: number; chan_luot_hs: number; chan_form_dien: number
+}
+/** Chỉ đọc: liệt kê những gì sẽ mất nếu xoá mô hình — hiện cho Thùy TRƯỚC khi bấm xoá (luật xoá). */
+export async function moHinhSeMat(id: string): Promise<MoHinhSeMat> {
+  const { data, error } = await supabase.rpc('fn_hl_mo_hinh_se_mat', { p_id: id })
+  if (error) throw error
+  return data as MoHinhSeMat
+}
+/** Xoá THẬT lá → gốc trong 1 transaction; Postgres từ chối khi còn mô hình con / lịch sử đo. */
+export async function xoaMoHinhThat(id: string): Promise<MoHinhSeMat> {
+  const { data, error } = await supabase.rpc('fn_hl_xoa_mo_hinh', { p_id: id })
+  if (error) throw error
+  return data as MoHinhSeMat
+}
+export type TienDoHL = {
+  mo_hinh_id: string | null; ma: string | null; ten: string; phan: string | null
+  so_bai_kho: number; so_bai_chua_hinh: number; so_y: number; so_y_chua_duyet: number; so_y_chua_gan: number; so_bai_mo_hinh: number
+}
+export async function tienDoHL(khoi: string): Promise<TienDoHL[]> {
+  const { data, error } = await supabase.rpc('fn_hl_tien_do', { p_khoi: khoi })
+  if (error) throw error
+  return ((data ?? []) as TienDoHL[]).map(soHoa)
+}
+export type YHL = Y & { gia_thiet_them: string | null; anh_de: string | null; anh_hieu_luc: string | null; gia_thiet_hieu_luc: string }
+export type BaiFullHL = { bai: Bai & { gia_thiet_chung: string | null; mo_hinh_id: string | null }; ys: YHL[] }
+export async function baiFullHL(baiId: string): Promise<BaiFullHL | null> {
+  const { data, error } = await supabase.rpc('fn_hl_bai_full', { p_bai: baiId })
+  if (error) throw error
+  return (data ?? null) as BaiFullHL | null
+}
+/** Khung in khi chọn tập ý bất kỳ (CEO D3): ý bỏ chọn phía trước nở thành `buoc` của ý chọn kế tiếp. */
+export type ChonYHL = { bai: BaiFullHL['bai']; gia_thiet: string | null; anh: string | null; ys: (YHL & { buoc: Pick<YHL, 'id' | 'ma_y' | 'nhan_hien_thi' | 'thu_tu' | 'noi_dung' | 'dap_an' | 'loi_giai' | 'anh_loi_giai'>[] })[] }
+export async function chonYHL(baiId: string, yIds: string[]): Promise<ChonYHL | null> {
+  const { data, error } = await supabase.rpc('fn_hl_chon_y', { p_bai: baiId, p_y: yIds })
+  if (error) throw error
+  return (data ?? null) as ChonYHL | null
+}
 
 export async function listBai(trangThai?: 'tam' | 'chinh', khoi?: string): Promise<Bai[]> {
   let b = supabase.from('hinh_bai').select('*').order('created_at', { ascending: false }).limit(LIMIT)
