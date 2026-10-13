@@ -1,0 +1,45 @@
+{
+ "bo": [],
+ "nghi": [
+  {
+   "ma": "T3V3.7@p54",
+   "voi": "T18T010302004",
+   "de": "Cho $a^3+b^3+c^3=3abc$ và $a+b+c\\neq0$. Tính giá trị của biểu thức: $N=\\dfrac{a^2+b^2+c^2}{(a+b+c)^2}$."
+  },
+  {
+   "ma": "T3V4.3a@p55",
+   "voi": "T18T010301058",
+   "de": "Cho $a,b,c$ khác nhau đôi một và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Rút gọn biểu thức: $M=\\dfrac{1}{a^2+2bc}+\\dfrac{1}{b^2+2ac}+\\dfrac{1}{c^2+2ab}$."
+  },
+  {
+   "ma": "T3V4.3b@p55",
+   "voi": "T18T010301058",
+   "de": "Cho $a,b,c$ khác nhau đôi một và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Rút gọn biểu thức: $N=\\dfrac{bc}{a^2+2bc}+\\dfrac{ac}{b^2+2ac}+\\dfrac{ab}{c^2+2ab}$."
+  },
+  {
+   "ma": "T3V4.3c@p55",
+   "voi": "T18T010301058",
+   "de": "Cho $a,b,c$ khác nhau đôi một và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Rút gọn biểu thức: $P=\\dfrac{a^2}{a^2+2bc}+\\dfrac{b^2}{b^2+2ac}+\\dfrac{c^2}{c^2+2ab}$."
+  },
+  {
+   "ma": "T3V5.9@p59",
+   "voi": "T18T010301014",
+   "de": "Cho $(a+b+c)^2=a^2+b^2+c^2$ và $a,b,c$ khác $0$. Chứng minh rằng: $\\dfrac{1}{a^3}+\\dfrac{1}{b^3}+\\dfrac{1}{c^3}=\\dfrac{3}{abc}$."
+  },
+  {
+   "ma": "T3V7.4@p61",
+   "voi": "T18T010302004",
+   "de": "(Đề thi HSG lớp 9 tỉnh Phú Thọ năm 2003 – 2004) Cho các số $a,b,c$ khác $0$ và đôi một khác nhau, thoả mãn điều kiện $a^3+b^3+c^3=3abc$. Tính: $\\left(\\dfrac{b-c}{a}+\\dfrac{c-a}{b}+\\dfrac{a-b}{c}\\right)\\left(\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}\\right)$."
+  },
+  {
+   "ma": "T3B.12@p62",
+   "voi": "T18T010301058",
+   "de": "Cho $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Tính giá trị biểu thức: $N=\\dfrac{bc}{a^2}+\\dfrac{ca}{b^2}+\\dfrac{ab}{c^2}$."
+  },
+  {
+   "ma": "T3B.13@p62",
+   "voi": "T18T010302004",
+   "de": "Cho $a^3+b^3+c^3=3abc$ với $a,b,c\\neq0$. Tính giá trị biểu thức: $P=\\left(1+\\dfrac{a}{b}\\right)\\left(1+\\dfrac{b}{c}\\right)\\left(1+\\dfrac{c}{a}\\right)$."
+  }
+ ]
+}

@@ -1,0 +1,378 @@
+[
+ {
+  "ma": "T3V1.1a@p50",
+  "noi_dung": "Cho phân thức đại số $\\dfrac{9-4x^2}{36y^2-25}$.\n\n1. Tìm các giá trị thích hợp của các biến.\n\n2. Tìm các giá trị của biến $x$ để phân thức trên bằng $0$."
+ },
+ {
+  "ma": "T3V1.1b@p50",
+  "noi_dung": "Cho phân thức đại số $\\dfrac{x^2-1}{x^2+2x+1}$.\n\n1. Tìm các giá trị thích hợp của biến.\n\n2. Tìm các giá trị của biến $x$ để phân thức trên bằng $0$."
+ },
+ {
+  "ma": "T3V2.1@p50",
+  "noi_dung": "Phân tích phân thức sau đây: $\\dfrac{2x-1}{x^2-5x+6}$ thành tổng của hai phân thức mà mẫu thức là các nhị thức bậc nhất."
+ },
+ {
+  "ma": "T3V2.2@p51",
+  "noi_dung": "Xác định các số $a,b,c$ sao cho: $\\dfrac{1}{(x^2+1)(x-1)}=\\dfrac{ax+b}{x^2+1}+\\dfrac{c}{x-1}$ $(1)$."
+ },
+ {
+  "ma": "T3V3.1@p51",
+  "noi_dung": "Cho $4a^2+b^2=5ab$ với $2a>b>0$. Tính số trị của phân thức: $P=\\dfrac{ab}{4a^2-b^2}$."
+ },
+ {
+  "ma": "T3V3.2a@p52",
+  "noi_dung": "Tính giá trị biểu thức: $\\dfrac{(a-2)^2(2a+2a^2)}{(a+1)(4a-a^3)}$ với $a=-\\dfrac{1}{2}$."
+ },
+ {
+  "ma": "T3V3.2b@p52",
+  "noi_dung": "Tính giá trị biểu thức: $\\dfrac{x-xy+y-y^2}{y^3-3y^2+3y-1}$ với $x=-\\dfrac{3}{4}$; $y=\\dfrac{1}{2}$."
+ },
+ {
+  "ma": "T3V3.3a@p52",
+  "noi_dung": "Rút gọn biểu thức rồi tính giá trị: $\\dfrac{ax^2(a-x)-a^2x(x-a)}{3a^2-3x^2}$ với $a=\\dfrac{1}{2}$; $x=-3$."
+ },
+ {
+  "ma": "T3V3.3b@p52",
+  "noi_dung": "Rút gọn biểu thức rồi tính giá trị: $\\dfrac{(ab+bc+cd+da)abcd}{(c+d)(a+b)+(b-c)(a-d)}$ với $a=-3$; $c=2$; $b=-4$; $d=3$."
+ },
+ {
+  "ma": "T3V3.3c@p52",
+  "noi_dung": "Rút gọn biểu thức rồi tính giá trị: $\\dfrac{(x+12a)(x^2-4ax+4a^2)}{(x+5a)^2-49a^2}$ với $a=-\\dfrac{1}{2}$; $x=5$."
+ },
+ {
+  "ma": "T3V3.3d@p52",
+  "noi_dung": "Rút gọn biểu thức rồi tính giá trị: $\\dfrac{(8x^3-y^3)(4x^2-y^2)}{(2x+y)(4x^2-4xy+y^2)}$ với $x=2$; $y=-\\dfrac{1}{2}$."
+ },
+ {
+  "ma": "T3V3.4@p53",
+  "noi_dung": "Tính giá trị của biểu thức sau, biết rằng $a+b+c=0$: $A=\\left(\\dfrac{a-b}{c}+\\dfrac{b-c}{a}+\\dfrac{c-a}{b}\\right)\\left(\\dfrac{c}{a-b}+\\dfrac{a}{b-c}+\\dfrac{b}{c-a}\\right)$."
+ },
+ {
+  "ma": "T3V3.5@p53",
+  "noi_dung": "Cho $\\left(x^2-\\dfrac{1}{x^2}\\right):\\left(x^2+\\dfrac{1}{x^2}\\right)=a$. Tính giá trị của biểu thức: $M=\\left(x^4-\\dfrac{1}{x^4}\\right):\\left(x^4+\\dfrac{1}{x^4}\\right)$ theo $a$."
+ },
+ {
+  "ma": "T3V3.6@p54",
+  "noi_dung": "Cho các số $a,b,c$ khác nhau đôi một và $\\dfrac{a+b}{c}=\\dfrac{b+c}{a}=\\dfrac{c+a}{b}$. Tính giá trị của biểu thức: $M=\\left(1+\\dfrac{a}{b}\\right)\\left(1+\\dfrac{b}{c}\\right)\\left(1+\\dfrac{c}{a}\\right)$."
+ },
+ {
+  "ma": "T3V3.7@p54",
+  "noi_dung": "Cho $a^3+b^3+c^3=3abc$ và $a+b+c\\neq0$. Tính giá trị của biểu thức: $N=\\dfrac{a^2+b^2+c^2}{(a+b+c)^2}$."
+ },
+ {
+  "ma": "T3V4.1a@p54",
+  "noi_dung": "Rút gọn phân thức: $\\dfrac{(a+b)^2-c^2}{a+b+c}$."
+ },
+ {
+  "ma": "T3V4.1b@p54",
+  "noi_dung": "Rút gọn phân thức: $\\dfrac{a^2+b^2-c^2+2ab}{a^2-b^2+c^2+2ac}$."
+ },
+ {
+  "ma": "T3V4.2@p54",
+  "noi_dung": "Thực hiện phép tính: $\\dfrac{1}{(b-c)(a^2+ac-b^2-bc)}+\\dfrac{1}{(c-a)(b^2+ab-c^2-ac)}+\\dfrac{1}{(a-b)(c^2+bc-a^2-ab)}$."
+ },
+ {
+  "ma": "T3V4.3a@p55",
+  "noi_dung": "Cho $a,b,c$ khác nhau đôi một và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Rút gọn biểu thức: $M=\\dfrac{1}{a^2+2bc}+\\dfrac{1}{b^2+2ac}+\\dfrac{1}{c^2+2ab}$."
+ },
+ {
+  "ma": "T3V4.3b@p55",
+  "noi_dung": "Cho $a,b,c$ khác nhau đôi một và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Rút gọn biểu thức: $N=\\dfrac{bc}{a^2+2bc}+\\dfrac{ac}{b^2+2ac}+\\dfrac{ab}{c^2+2ab}$."
+ },
+ {
+  "ma": "T3V4.3c@p55",
+  "noi_dung": "Cho $a,b,c$ khác nhau đôi một và $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Rút gọn biểu thức: $P=\\dfrac{a^2}{a^2+2bc}+\\dfrac{b^2}{b^2+2ac}+\\dfrac{c^2}{c^2+2ab}$."
+ },
+ {
+  "ma": "T3V4.4@p55",
+  "noi_dung": "Rút gọn phân thức: $A=\\dfrac{(b-c)^3+(c-a)^3+(a-b)^3}{a^2(b-c)+b^2(c-a)+c^2(a-b)}$."
+ },
+ {
+  "ma": "T3V4.5@p56",
+  "noi_dung": "Cho biết $ax+by+cz=0$. Rút gọn: $A=\\dfrac{bc(y-z)^2+ca(z-x)^2+ab(x-y)^2}{ax^2+by^2+cz^2}$."
+ },
+ {
+  "ma": "T3V5.1a@p56",
+  "noi_dung": "Chứng minh đẳng thức $\\dfrac{3y}{4}=\\dfrac{6xy}{8x}$ ($x\\neq0$)."
+ },
+ {
+  "ma": "T3V5.1b@p56",
+  "noi_dung": "Chứng minh đẳng thức $\\dfrac{x+y}{3a}=\\dfrac{3a(x+y)^2}{9a^2(x+y)}$ với $a\\neq0$, $x\\neq-y$."
+ },
+ {
+  "ma": "T3V5.2@p56",
+  "noi_dung": "Cho $x>y>0$. Chứng minh rằng: $\\dfrac{x-y}{x+y}<\\dfrac{x^2-y^2}{x^2+y^2}$."
+ },
+ {
+  "ma": "T3V5.3@p57",
+  "noi_dung": "Chứng minh đẳng thức: $\\dfrac{1}{n(n+1)}=\\dfrac{1}{n}-\\dfrac{1}{n+1}$."
+ },
+ {
+  "ma": "T3V5.4@p57",
+  "noi_dung": "(Đề thi chọn học sinh giỏi toán lớp 8 năm 1982) Chứng minh rằng nếu $c^2+2(ab-ac-bc)=0$, $b\\neq c$, $a+b\\neq c$ thì $\\dfrac{a^2+(a-c)^2}{b^2+(b-c)^2}=\\dfrac{a-c}{b-c}$."
+ },
+ {
+  "ma": "T3V5.5@p57",
+  "noi_dung": "Cho đẳng thức: $\\dfrac{b^2+c^2-a^2}{2bc}+\\dfrac{c^2+a^2-b^2}{2ac}+\\dfrac{a^2+b^2-c^2}{2ab}=1$ (1)\n\nChứng minh rằng ba phân thức ở vế trái thì có hai phân thức bằng $+1$ và một phân thức bằng $-1$."
+ },
+ {
+  "ma": "T3V5.6@p58",
+  "noi_dung": "Giả sử $x=\\dfrac{a-b}{a+b}$; $y=\\dfrac{b-c}{b+c}$; $z=\\dfrac{c-a}{c+a}$. Chứng minh rằng $(1+x)(1+y)(1+z)=(1-x)(1-y)(1-z)$ (1)"
+ },
+ {
+  "ma": "T3V5.7@p58",
+  "noi_dung": "Chứng minh rằng: $\\dfrac{b+c+d}{(b-a)(c-a)(d-a)(x-a)}+\\dfrac{c+d+a}{(c-b)(d-b)(a-b)(x-b)}+\\dfrac{d+a+b}{(d-c)(a-c)(b-c)(x-c)}+\\dfrac{a+b+c}{(a-d)(b-d)(c-d)(x-d)}=\\dfrac{x-a-b-c-d}{(x-a)(x-b)(x-c)(x-d)}$"
+ },
+ {
+  "ma": "T3V5.8@p59",
+  "noi_dung": "Cho biết: $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=2$ và $\\dfrac{1}{a^2}+\\dfrac{1}{b^2}+\\dfrac{1}{c^2}=2$. Chứng minh rằng $a+b+c=abc$."
+ },
+ {
+  "ma": "T3V5.9@p59",
+  "noi_dung": "Cho $(a+b+c)^2=a^2+b^2+c^2$ và $a,b,c$ khác $0$. Chứng minh rằng: $\\dfrac{1}{a^3}+\\dfrac{1}{b^3}+\\dfrac{1}{c^3}=\\dfrac{3}{abc}$."
+ },
+ {
+  "ma": "T3V5.10@p59",
+  "noi_dung": "Cho $\\dfrac{a}{b}+\\dfrac{b}{c}+\\dfrac{c}{a}=\\dfrac{b}{a}+\\dfrac{a}{c}+\\dfrac{c}{b}$. Chứng minh rằng trong ba số $a,b,c$ tồn tại hai số giống nhau."
+ },
+ {
+  "ma": "T3V6.1a@p60",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để giá trị tương ứng của biểu thức sau đây cũng là số nguyên: $\\dfrac{x^3-x^2+2}{x-1}$."
+ },
+ {
+  "ma": "T3V6.1b@p60",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để giá trị tương ứng của biểu thức sau đây cũng là số nguyên: $\\dfrac{x^3-2x^2+4}{x-2}$."
+ },
+ {
+  "ma": "T3V7.1@p60",
+  "noi_dung": "Chứng minh rằng nếu $(a^2-bc)(b-abc)=(b^2-ac)(a-abc)$ và các số $a,b,c,a-b$ khác $0$ thì $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=a+b+c$."
+ },
+ {
+  "ma": "T3V7.2@p60",
+  "noi_dung": "Tính tổng: $S=\\dfrac{1}{1\\cdot2\\cdot3}+\\dfrac{1}{2\\cdot3\\cdot4}+\\dots+\\dfrac{1}{n(n+1)(n+2)}$."
+ },
+ {
+  "ma": "T3V7.3@p61",
+  "noi_dung": "Tính tổng: $S=\\dfrac{1}{1\\cdot3}+\\dfrac{1}{3\\cdot5}+\\dfrac{1}{5\\cdot7}+\\dots+\\dfrac{1}{(2n-1)(2n+1)}$."
+ },
+ {
+  "ma": "T3V7.4@p61",
+  "noi_dung": "(Đề thi HSG lớp 9 tỉnh Phú Thọ năm 2003 – 2004) Cho các số $a,b,c$ khác $0$ và đôi một khác nhau, thoả mãn điều kiện $a^3+b^3+c^3=3abc$. Tính: $\\left(\\dfrac{b-c}{a}+\\dfrac{c-a}{b}+\\dfrac{a-b}{c}\\right)\\left(\\dfrac{a}{b-c}+\\dfrac{b}{c-a}+\\dfrac{c}{a-b}\\right)$."
+ },
+ {
+  "ma": "T3B.1a@p62",
+  "noi_dung": "Tìm giá trị của $x$ để phân thức sau bằng $0$: $\\dfrac{2x^2+10x+12}{x^3-4x}$."
+ },
+ {
+  "ma": "T3B.1b@p62",
+  "noi_dung": "Tìm giá trị của $x$ để phân thức sau bằng $0$: $\\dfrac{x^3+x^2-x-1}{x^3+2x-5}$."
+ },
+ {
+  "ma": "T3B.2@p62",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{a^4-3a^2+1}{a^4-a^2-2a-1}$."
+ },
+ {
+  "ma": "T3B.3@p62",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{a^2(b-c)+b^2(c-a)+c^2(a-b)}{a^4(b^2-c^2)+b^4(c^2-a^2)+c^4(a^2-b^2)}$."
+ },
+ {
+  "ma": "T3B.4@p62",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{\\lvert x-1\\rvert+\\lvert x\\rvert+x}{3x^2-4x+1}$ với $x<0$."
+ },
+ {
+  "ma": "T3B.5@p62",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{16a^2-40ab}{8a^2-24ab}$ với $\\dfrac{a}{b}=\\dfrac{10}{3}$."
+ },
+ {
+  "ma": "T3B.6@p62",
+  "noi_dung": "Rút gọn phân thức sau: $\\dfrac{1}{a-b}+\\dfrac{1}{a+b}+\\dfrac{2a}{a^2+b^2}+\\dfrac{4a^3}{a^4+b^4}+\\dfrac{8a^7}{a^8+b^8}$."
+ },
+ {
+  "ma": "T3B.7@p62",
+  "noi_dung": "Tìm giá trị của $x$ để phân thức $\\dfrac{2x^2+10x+12}{x^3-4x}$ bằng $0$."
+ },
+ {
+  "ma": "T3B.8@p62",
+  "noi_dung": "Rút gọn phân thức sau: $M=a+\\dfrac{2a+b}{2-b}-\\dfrac{2a-b}{2+b}+\\dfrac{4a}{b^2-4}$ với $b=\\dfrac{a}{a+1}$."
+ },
+ {
+  "ma": "T3B.9@p62",
+  "noi_dung": "Rút gọn phân thức sau: $N=\\left(1+\\dfrac{1}{a+x}\\right):\\left(1-\\dfrac{1}{a+x}\\right)\\cdot\\left[1-\\dfrac{1-(a^2+x^2)}{2ax}\\right]$ với $x=\\dfrac{1}{a-1}$."
+ },
+ {
+  "ma": "T3B.10@p62",
+  "noi_dung": "Cho $3a^2+3b^2=10ab$ và $b>a>0$. Tìm giá trị biểu thức: $P=\\dfrac{a-b}{a+b}$."
+ },
+ {
+  "ma": "T3B.11@p62",
+  "noi_dung": "Cho $4a^2+b^2=5ab$ và $2a>b>0$. Tìm giá trị biểu thức: $M=\\dfrac{ab}{4a^2-b^2}$."
+ },
+ {
+  "ma": "T3B.12@p62",
+  "noi_dung": "Cho $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$. Tính giá trị biểu thức: $N=\\dfrac{bc}{a^2}+\\dfrac{ca}{b^2}+\\dfrac{ab}{c^2}$."
+ },
+ {
+  "ma": "T3B.13@p62",
+  "noi_dung": "Cho $a^3+b^3+c^3=3abc$ với $a,b,c\\neq0$. Tính giá trị biểu thức: $P=\\left(1+\\dfrac{a}{b}\\right)\\left(1+\\dfrac{b}{c}\\right)\\left(1+\\dfrac{c}{a}\\right)$."
+ },
+ {
+  "ma": "T3B.14@p62",
+  "noi_dung": "Tìm các số $a$ và $b$ sao cho phân thức $\\dfrac{x^2+5}{x^3-3x-2}$ viết được thành $\\dfrac{a}{x-2}+\\dfrac{b}{(x+1)^2}$."
+ },
+ {
+  "ma": "T3B.15@p63",
+  "noi_dung": "Viết phân thức $\\dfrac{10x-4}{x^3-4x}$ dưới dạng tổng ba phân thức mà mẫu số theo thứ tự bằng $x$, $x+2$, $x-2$, tử số là các hằng số."
+ },
+ {
+  "ma": "T3B.16@p63",
+  "noi_dung": "Xác định các số $a$, $b$, $c$ sao cho $\\dfrac{1}{(x-1)(x^2-x+1)}$ đồng nhất với $\\dfrac{a}{x-1}+\\dfrac{bx+c}{x^2-x+1}$."
+ },
+ {
+  "ma": "T3B.17@p63",
+  "noi_dung": "Cho $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{1}{a+b+c}$. Chứng minh rằng trong ba số $a$, $b$, $c$ có hai số đối nhau."
+ },
+ {
+  "ma": "T3B.18@p63",
+  "noi_dung": "Cho $\\dfrac{a^2+b^2-c^2}{2ab}+\\dfrac{b^2+c^2-a^2}{2bc}+\\dfrac{c^2+a^2-b^2}{2ac}=1$.\n\na) Chứng minh rằng trong ba số $a$, $b$, $c$ có một số bằng tổng hai số kia.\n\nb) Chứng minh rằng trong ba phân thức đã cho, có một phân thức bằng $-1$, hai phân thức còn lại bằng $1$."
+ },
+ {
+  "ma": "T3B.19@p63",
+  "noi_dung": "Chứng minh hằng đẳng thức:\n\n$(x^2-x+1)(x^4-x^2+1)(x^8-x^4+1)(x^{16}-x^8+1)(x^{32}-x^{16}+1)=\\dfrac{x^{64}+x^{32}+1}{x^2+x+1}$."
+ },
+ {
+  "ma": "T3B.20@p63",
+  "noi_dung": "Cho $\\dfrac{x}{a}=\\dfrac{y}{b}=\\dfrac{z}{c}\\neq0$. Rút gọn biểu thức: $\\dfrac{(x^2+y^2+z^2)(a^2+b^2+c^2)}{(ax+by+cz)^2}$."
+ },
+ {
+  "ma": "T3B.21@p63",
+  "noi_dung": "Cho $a+b+c=1$ (1); $a^2+b^2+c^2=1$ (2); $\\dfrac{x}{a}=\\dfrac{y}{b}=\\dfrac{z}{c}$ (3).\n\nChứng minh rằng: $xy+yz+zx=0$."
+ },
+ {
+  "ma": "T3B.22@p63",
+  "noi_dung": "Cho $\\dfrac{2y+2z-x}{a}=\\dfrac{2z+2x-y}{b}=\\dfrac{2x+2y-z}{c}$, trong đó $a$, $b$, $c$, $2b+2c-a$, $2c+2a-b$, $2a+2b-c\\neq0$. Chứng minh rằng:\n\n$\\dfrac{x}{2b+2c-a}=\\dfrac{y}{2c+2a-b}=\\dfrac{z}{2a+2b-c}$."
+ },
+ {
+  "ma": "T3B.23@p63",
+  "noi_dung": "Chứng minh rằng nếu ta có đẳng thức $a(b-c)x^2+b(c-a)xy+c(a-b)y^2=d(x-y)^2$ trong đó $a,b,c\\neq0$, đúng với mọi $x$ và $y$ thì $\\dfrac{1}{a}+\\dfrac{1}{c}=\\dfrac{2}{b}$."
+ },
+ {
+  "ma": "T3B.24@p64",
+  "noi_dung": "Rút gọn biểu thức với $n$ là số tự nhiên lớn hơn hoặc bằng $2$: $\\dfrac{2^2-1}{2^2}\\cdot\\dfrac{3^2-1}{3^2}\\cdot\\dfrac{4^2-1}{4^2}\\cdots\\dfrac{n^2-1}{n^2}$."
+ },
+ {
+  "ma": "T3B.25@p64",
+  "noi_dung": "Rút gọn biểu thức với $n$ là số tự nhiên: $\\left(1+\\dfrac{1}{3}\\right)\\left(1+\\dfrac{1}{8}\\right)\\left(1+\\dfrac{1}{15}\\right)\\cdots\\left(1+\\dfrac{1}{n^2+2n}\\right)$."
+ },
+ {
+  "ma": "T3B.26@p64",
+  "noi_dung": "Rút gọn biểu thức với $n$ là số tự nhiên: $\\left(1+\\dfrac{2}{4}\\right)\\left(1+\\dfrac{2}{10}\\right)\\left(1+\\dfrac{2}{18}\\right)\\cdots\\left(1+\\dfrac{2}{n^2+3n}\\right)$."
+ },
+ {
+  "ma": "T3B.27@p64",
+  "noi_dung": "Chứng minh hằng đẳng thức sau với $n$ là số tự nhiên, $n\\ge2$: $\\dfrac{1}{1\\cdot2}+\\dfrac{1}{2\\cdot3}+\\dfrac{1}{3\\cdot4}+\\cdots+\\dfrac{1}{(n-1)n}=\\dfrac{n-1}{n}$."
+ },
+ {
+  "ma": "T3B.28@p64",
+  "noi_dung": "Chứng minh hằng đẳng thức sau với $n$ là số tự nhiên: $\\dfrac{1}{1\\cdot3}+\\dfrac{1}{3\\cdot5}+\\dfrac{1}{5\\cdot7}+\\cdots+\\dfrac{1}{(2n-1)(2n+1)}=\\dfrac{n}{2n+1}$."
+ },
+ {
+  "ma": "T3B.29@p64",
+  "noi_dung": "Chứng minh hằng đẳng thức sau với $n$ là số tự nhiên, $n\\ge2$: $\\dfrac{1}{1\\cdot2\\cdot3}+\\dfrac{1}{2\\cdot3\\cdot4}+\\dfrac{1}{3\\cdot4\\cdot5}+\\cdots+\\dfrac{1}{(n-1)n(n+1)}=\\dfrac{(n-1)(n+2)}{4n(n+1)}$."
+ },
+ {
+  "ma": "T3B.30@p64",
+  "noi_dung": "Rút gọn biểu thức: $\\dfrac{1}{a^2+a}+\\dfrac{1}{a^2+3a+2}+\\dfrac{1}{a^2+5a+6}+\\dfrac{1}{a^2+7a+12}+\\dfrac{1}{a^2+9a+20}$."
+ },
+ {
+  "ma": "T3B.31@p64",
+  "noi_dung": "Tìm số tự nhiên $n$ để phân thức $\\dfrac{n^4-2n^3+5}{n-2}$ có giá trị là số nguyên."
+ },
+ {
+  "ma": "T3B.32@p64",
+  "noi_dung": "Rút gọn $\\dfrac{x^2+y^2+z^2}{(y-z)^2+(z-x)^2+(x-y)^2}$, biết rằng $x+y+z=0$."
+ },
+ {
+  "ma": "T3B.33@p64",
+  "noi_dung": "Tính giá trị của biểu thức $A=\\dfrac{x-y}{x+y}$, biết $x^2-2y^2=xy$ ($y\\ne0$; $x+y\\ne0$)."
+ },
+ {
+  "ma": "T3B.34@p64",
+  "noi_dung": "Tính giá trị của phân thức $A=\\dfrac{3x-2y}{3x+2y}$, biết rằng $9x^2+4y^2=20xy$ và $2y<3x<0$."
+ },
+ {
+  "ma": "T3B.35@p64",
+  "noi_dung": "Cho $3x-y=3z$ và $2x+y=7z$. Tính giá trị của biểu thức $M=\\dfrac{x^2-2xy}{x^2+y^2}$ ($x\\ne0$; $y\\ne0$)."
+ },
+ {
+  "ma": "T3B.36a@p65",
+  "noi_dung": "Tìm số nguyên $x$ để phân thức sau có giá trị là số nguyên: $\\dfrac{3}{2x-1}$."
+ },
+ {
+  "ma": "T3B.36b@p65",
+  "noi_dung": "Tìm số nguyên $x$ để phân thức sau có giá trị là số nguyên: $\\dfrac{5}{x^2+1}$."
+ },
+ {
+  "ma": "T3B.36c@p65",
+  "noi_dung": "Tìm số nguyên $x$ để phân thức sau có giá trị là số nguyên: $\\dfrac{7}{x^2-x+1}$."
+ },
+ {
+  "ma": "T3B.36d@p65",
+  "noi_dung": "Tìm số nguyên $x$ để phân thức sau có giá trị là số nguyên: $\\dfrac{x^2-59}{x+8}$."
+ },
+ {
+  "ma": "T3B.36e@p65",
+  "noi_dung": "Tìm số nguyên $x$ để phân thức sau có giá trị là số nguyên: $\\dfrac{x+2}{x^2+4}$."
+ },
+ {
+  "ma": "T3B.37@p65",
+  "noi_dung": "Tìm số hữu tỉ $x$ để phân thức $\\dfrac{10}{x^2+1}$ có giá trị nguyên."
+ },
+ {
+  "ma": "T3B.38@p65",
+  "noi_dung": "Cho $a+b+c=0$ và $a$, $b$, $c$ đều khác $0$. Rút gọn biểu thức: $A=\\dfrac{ab}{a^2+b^2-c^2}+\\dfrac{bc}{b^2+c^2-a^2}+\\dfrac{ca}{c^2+a^2-b^2}$."
+ },
+ {
+  "ma": "T3B.39@p65",
+  "noi_dung": "Cho $a$, $b$, $c$ là các số nguyên khác nhau đôi một. Chứng minh rằng biểu thức sau có giá trị là một số nguyên: $P=\\dfrac{a^3}{(a-b)(a-c)}+\\dfrac{b^3}{(b-a)(b-c)}+\\dfrac{c^3}{(c-a)(c-b)}$."
+ },
+ {
+  "ma": "T3B.40@p65",
+  "noi_dung": "Cho $3y-x=6$. Tính giá trị của biểu thức: $A=\\dfrac{x}{y-2}+\\dfrac{2x-3y}{x-6}$."
+ },
+ {
+  "ma": "T3B.41@p65",
+  "noi_dung": "Tìm $x$, $y$, $z$ biết rằng: $\\dfrac{x^2}{2}+\\dfrac{y^2}{3}+\\dfrac{z^2}{4}=\\dfrac{x^2+y^2+z^2}{5}$."
+ },
+ {
+  "ma": "T3B.42@p65",
+  "noi_dung": "Tìm $x$, $y$ biết rằng: $x^2+y^2+\\dfrac{1}{x^2}+\\dfrac{1}{y^2}=4$."
+ },
+ {
+  "ma": "T3B.43a@p65",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để phân thức sau có giá trị là số nguyên: $A=\\dfrac{2x^3-6x^2+x-8}{x-3}$."
+ },
+ {
+  "ma": "T3B.43b@p65",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để phân thức sau có giá trị là số nguyên: $B=\\dfrac{x^4-2x^3-3x^2+8x-1}{x^2-2x+1}$."
+ },
+ {
+  "ma": "T3B.43c@p65",
+  "noi_dung": "Tìm các giá trị nguyên của $x$ để phân thức sau có giá trị là số nguyên: $C=\\dfrac{x^4+3x^3+2x^2+6x-2}{x^2+2}$."
+ },
+ {
+  "ma": "T3B.44a@p65",
+  "noi_dung": "Chứng minh rằng với mọi số tự nhiên $n\\ge1$: $\\dfrac{1}{2^2}+\\dfrac{1}{4^2}+\\dfrac{1}{6^2}+\\cdots+\\dfrac{1}{(2n)^2}<\\dfrac{1}{2}$."
+ },
+ {
+  "ma": "T3B.44b@p65",
+  "noi_dung": "Chứng minh rằng với mọi số tự nhiên $n\\ge1$: $\\dfrac{1}{3^2}+\\dfrac{1}{5^2}+\\dfrac{1}{7^2}+\\cdots+\\dfrac{1}{(2n+1)^2}<\\dfrac{1}{4}$."
+ },
+ {
+  "ma": "T3B.45@p65",
+  "noi_dung": "Chứng minh rằng với mọi số tự nhiên $n\\ge2$: $A=\\dfrac{1}{2^2}+\\dfrac{1}{3^2}+\\dfrac{1}{4^2}+\\cdots+\\dfrac{1}{n^2}<\\dfrac{2}{3}$."
+ },
+ {
+  "ma": "T3B.46@p65",
+  "noi_dung": "Chứng minh rằng với số tự nhiên $n\\ge3$: $B=\\dfrac{1}{3^3}+\\dfrac{1}{4^3}+\\dfrac{1}{5^3}+\\cdots+\\dfrac{1}{n^3}<\\dfrac{1}{12}$."
+ }
+]

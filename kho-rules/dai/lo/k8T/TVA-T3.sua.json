@@ -1,0 +1,54 @@
+{
+  "T3V3.3d@p52": {
+    "sach_in_sai": "trang PDF 52, §3 Dạng 3 ví dụ 3d: đề in nhân tử đầu của mẫu là (2x - y) (mép trang mất dấu ngoặc mở); lời giải của sách (trang 53) viết mẫu là (2x + y)(4x^2 - 4xy + y^2) và ra 14 1/4. Với (2x - y) thì giá trị là 133/12. Kho ghi (2x + y)."
+  },
+  "T3V3.4@p53": {
+    "sach_in_sai": "trang PDF 53, §3 Dạng 3 ví dụ 4: lời giải viện dẫn \"xem bài 42\" cho a^3 + b^3 + c^3 = 3abc; kho nêu thẳng hằng đẳng thức."
+  },
+  "T3V4.2@p54": {
+    "bo": "trùng với T2B.54 đã có trong kho (bài tập 54 §2: cùng biểu thức, cùng yêu cầu \"Thực hiện phép tính\")"
+  },
+  "T3V5.4@p57": {
+    "bo": "trùng với T2B.51 đã có trong kho (bài tập 51 §2: cùng giả thiết, cùng đẳng thức phải chứng minh)"
+  },
+  "T3V5.7@p58": {
+    "sach_in_sai": "trang PDF 59, §3 Dạng 5 ví dụ 7: lời giải của sách chỉ ghi \"quy đồng mẫu thức và tính toán biểu thức trong [ ]\", không trình bày.",
+    "cho_quyet": "lời giải của sách bỏ lửng bước chính (cộng bốn phân thức mẫu bậc bốn); lời giải kho phải dựng một bổ đề tách phân thức chứng minh bằng quy nạp — nặng hơn mức một câu luyện lớp 8. Chờ CEO chọn: giữ câu với lời giải này, hay bỏ câu"
+  },
+  "T3V7.4@p61": {
+    "sach_in_sai": "trang PDF 61, §3 Dạng 7 ví dụ 4: tử số ở dòng hai in (a^2+b^2+c^2)(a+b+c) - 2(a^3+b^3+c^3), thiếu số hạng -3abc; kết quả -9abc ở cuối dòng và đáp số 9 của sách đúng."
+  },
+  "T3B.4@p62": {
+    "sach_in_sai": "trang PDF 66, hướng dẫn bài tập 4 §3: mẫu ở dòng giữa in (x+1)(3x-1), đúng là (x-1)(3x-1)."
+  },
+  "T3B.7@p62": {
+    "bo": "trùng nguyên văn với bài tập 1 ý a cùng §3 (sách in hai lần)"
+  },
+  "T3B.11@p62": {
+    "bo": "trùng với ví dụ 1 Dạng 3 cùng §3 (T3V3.1: cùng giả thiết 4a^2 + b^2 = 5ab, 2a > b > 0, cùng biểu thức phải tính)"
+  },
+  "T3B.17@p63": {
+    "bo": "trùng với T2V7.8 đã có trong kho (§2 Dạng 7 ví dụ 8: cùng giả thiết 1/a + 1/b + 1/c = 1/(a+b+c), cùng kết luận có hai số đối nhau)"
+  },
+  "T3B.18@p63": {
+    "sach_in_sai": "trang PDF 70, hướng dẫn bài tập 18 §3 dòng đầu: in (a+b-c)(c^2 - a^2 + 2ab - c^2), chữ cuối đúng là b^2."
+  },
+  "T3B.22@p63": {
+    "sach_in_sai": "trang PDF 70, hướng dẫn bài tập 22 §3: cuối chuỗi tỉ số in 9x/(2a + 2c - a), đúng là 9x/(2b + 2c - a)."
+  },
+  "T3B.30@p64": {
+    "sach_in_sai": "trang PDF 64, đề bài tập 30 §3: mẫu của phân thức đầu in mờ như \"a^2 - a\"; hướng dẫn của sách phân tích thành a(a+1) và đáp số 5/(a(a+5)) chỉ đúng với a^2 + a. Kho ghi a^2 + a."
+  },
+  "T3B.33@p64": {
+    "sach_in_sai": "trang PDF 72, hướng dẫn bài tập 33 §3 dòng đầu: in x^2 + xy - 2xy + 2y^2, đúng là - 2y^2."
+  },
+  "T3B.34@p64": {
+    "sach_in_sai": "trang PDF 64, đề bài tập 34 §3: điều kiện in \"2y . 3x < 0\" (dấu chấm thay cho dấu <); hướng dẫn của sách dùng 2y < 3x < 0, và với \"2y.3x < 0\" thì giả thiết 9x^2 + 4y^2 = 20xy không thể xảy ra. Kho ghi 2y < 3x < 0."
+  },
+  "T3V5.8@p59": {
+    "bo": "trùng nguyên đề với T18T010301044 đã có trong kho (cùng hai giả thiết, cùng kết luận a + b + c = abc)"
+  },
+  "T3V7.1@p60": {
+    "bo": "trùng nguyên đề với T18T010301047 đã có trong kho (cùng giả thiết, cùng kết luận 1/a + 1/b + 1/c = a + b + c)"
+  }
+}

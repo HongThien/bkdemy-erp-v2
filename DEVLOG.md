@@ -37186,3 +37186,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** "1 ngày có thể 10 phút. Không có trần 1 ngày do có cây trồng 3 ngày mới xong mà. Nhưng trung bình 1 tháng 20 xu là được." ⇒ xu về theo cục (cây 3 ngày), trần ngày cắt oan.
 - **DB (mig `202610131544`, ĐÃ ÁP):** `xu_toi_da_ngay = 0` = không giới hạn ngày (mặc định) · `fn_nt_xu_dong_bo` cấp `least(ra, 20) − đã cấp` nếu tháng đó có ≥ 1 ngày chơi ≥ `xu_phut_toi_thieu` (5 phút, server đo; ngày chơi 10 phút vẫn tính). Test rollback ✔: chưa chơi ⇒ 0 · 1 ngày 10 phút, ra=15 ⇒ 15 · ra=99 ⇒ 20 · gửi lại ⇒ +0.
 - **Game:** chợ bỏ câu "mỗi ngày tối đa 1 xu". Giới hạn GIỜ chơi 30 phút/ngày (B2) giữ nguyên.
+
+## 13/10 — 8T lô 10: TVA §3 Phân thức hữu tỉ (87 câu)
+- **Làm:** phiên riêng nhận phần dở của lô 10 (phiên gốc chuyển sang vẽ lại hình). Dựng lại lô với bản gán nhóm mù → `ghi-lo --ghi` 87 câu → `tu-duyet --ghi` 84 câu. Kho Đại 8T: **914 câu · 872 đã duyệt · 42 chưa** (40 dạng chờ + bài 48b chương IV + TVA §3 Dạng 5 ví dụ 7).
+- **Bỏ 7 câu trùng** (bỏ tay; máy chỉ báo "nghi" vì đề viết khác chữ): 2 ví dụ lặp bài tập §2, 2 ví dụ nguyên đề với câu cũ trong kho, 3 bài tập lặp ví dụ / lặp nhau. Biến thể khác form thì giữ (luật của Thùy).
+- **Đề sách in sai, ghi bản khớp lời giải của sách** (có nhân chứng là lời giải in ngay bên dưới ⇒ tự duyệt, đưa lên trang xem mục "đã làm"): Dạng 3 ví dụ 3d · bài tập 30 · bài tập 34.
+- **Chờ Thùy:** Dạng 5 ví dụ 7 — sách không trình bày bước quy đồng, lời giải kho phải dùng bổ đề quy nạp ⇒ `cho_quyet`, không tự duyệt.
+- **Sự cố:** lượt agent gán nhóm mù bị ngắt đúng lúc phiên gốc kết thúc, kết quả gọi công cụ không được ghi lại. Tệp `TVA-T3.mu.json` vẫn trọn vẹn (87/87 khoá khớp tệp đề) ⇒ kiểm tệp rồi dùng, không giao lại. **Bài học:** agent ghi tệp trước khi báo cáo thì khi phiên đứt chỉ cần kiểm tệp, không phải chạy lại.
+- Trang xem: 89 thẻ, 131 ảnh (Version 11). Chưa push.
