@@ -233,3 +233,15 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 5. **Thang đo Hình = 3 bài, không phải 5** (CEO 14/10: "số bài tập hình làm được thấp hơn Đại nhiều"). Áp cho CẢ Hình–Học (đo ở bài học) lẫn Hình–Luyện (đo ở bài mô hình); độ tin scale theo: cao ≥ 3 lần, trung bình 2, thấp 1. Đại / Hình giải tích giữ 5 (tin 5/3). Ngưỡng đạt 0,8 / cần luyện 0,5 và trọng số nguồn không đổi.
    - Hình–Luyện: đã 3 từ 21/08 (`fn_mastery_cells_hinh`). Hình–Học: **mig `202610140130`** — `fn_mastery_cells` dùng cửa sổ 3 cho dạng thuộc `hinh_hoc_bai`.
    - Bản JS (`gami/mastery.js` `cfgMastery`) lấy cờ `thangDo3` từ registry nhánh (`NHANH_CUA_MON`), không đoán theo tiền tố mã.
+
+---
+
+## 11. Luồng làm lại từ đầu (CEO chốt 14/10 khuya)
+
+1. **Claude đẩy bài có đáp án chi tiết vào kho Luyện** (`hinh_bai` + `hinh_y`), tách ý thành chuỗi đủ thông tin. **Nguồn: kho đề thi trên ERP, khối 7 trước.**
+2. **CEO dựng mô hình TRƯỚC** trên màn Cây nhánh: tạo mô hình → thêm bài vào thân → rẽ nhóm. Không cần nhãn gom tạm cho bài kho.
+3. **Xây tới đâu gán tới đó:** gán từng ý của bài kho vào bài mô hình.
+
+- **41 mô hình + 366 bài cũ: ẨN làm tham khảo, không dùng**; xoá hay không quyết sau khi làm xong. Cách ẩn: màn Cây nhánh chỉ đọc `phan = 'luyen'`; mô hình cũ đang `phan IS NULL` nên tự ẩn — **không sửa, không xoá dòng nào**. KHÔNG ẩn ở `loadLuoi` vì 507 lượt làm bài (`gami_session_problems`) và các tài liệu MT/ET cũ vẫn phải hiện được bài cũ.
+- **Tạo/sửa trên màn (mig `202610140141`):** `fn_hl_tao_mo_hinh` (sinh `phan='luyen'`) · `fn_hl_them_bai` · `fn_hl_sua_bai` (bài + cách giải mặc định + tiền đề trong 1 transaction; tiền đề phải cùng cây; mã không đổi).
+- **Hiện trạng nguồn (đo 14/10):** kho đề thi **khối 7 chỉ có 2 đề cương** (Ngôi Sao Hoàng Mai, Tây Mỗ) = **31 câu Hình**, đều có lời giải, đã gom 14 nhóm bài. Khối 6: 46 đề · khối 8: 42 · khối 9: 75. Câu Hình của đề thi hiện nằm ở kho Hình–Học (`hinh_hoc_cau_hoi`) ⇒ bước 1 là **chép sang kho Luyện thành bài + ý mới** (Học/Luyện độc lập, §10.4), không dời dòng cũ.

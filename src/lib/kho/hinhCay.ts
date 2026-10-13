@@ -158,3 +158,26 @@ export function xepCay(a: {
   bai.forEach((o) => xet(o)); nhanh.forEach((o) => xet(o, o.len)); gap.forEach((o) => xet(o))
   return { bai, nhanh, gap, conCu, soCot, soHang }
 }
+
+// ══════════════════ TẠO / SỬA (mig 202610140141) ══════════════════
+/** Mô hình GỐC mới cho Hình luyện — sinh ra với phan='luyen'. Trả id. */
+export async function taoMoHinhLuyen(khoi: string, ten: string, giaThiet: string, anh: string | null): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_hl_tao_mo_hinh', { p_khoi: khoi, p_ten: ten, p_gia_thiet: giaThiet, p_anh: anh })
+  if (error) throw error
+  return data as string
+}
+export type BaiNhap = { phatBieu: string; giaThietRieng: string | null; loiGiai: string | null; anh: string | null; tienDe: string[] }
+/** Thêm bài vào CUỐI một làn (thân hoặc nhánh) — bài + cách giải mặc định + tiền đề trong 1 transaction. */
+export async function themBaiCay(nhanhId: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
+  const { data, error } = await supabase.rpc('fn_hl_them_bai', {
+    p_nhanh: nhanhId, p_phat_bieu: b.phatBieu, p_gia_thiet_rieng: b.giaThietRieng, p_loi_giai: b.loiGiai, p_anh: b.anh, p_tien_de: b.tienDe })
+  if (error) throw error
+  return data as KetQuaCay & { bai_moi: string }
+}
+/** Sửa bài — mã KHÔNG đổi. */
+export async function suaBaiCay(baiId: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
+  const { data, error } = await supabase.rpc('fn_hl_sua_bai', {
+    p_bai: baiId, p_phat_bieu: b.phatBieu, p_gia_thiet_rieng: b.giaThietRieng, p_loi_giai: b.loiGiai, p_anh: b.anh, p_tien_de: b.tienDe })
+  if (error) throw error
+  return data as KetQuaCay & { bai_moi: string }
+}

@@ -8,7 +8,7 @@ import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi, MoHinh } from '../../../lib/kho/hinh'
 import type { BaiCay, KetQuaCay } from '../../../lib/kho/hinhCay'
 import { MathText } from '../ui'
-import { Btn, Empty, Fig, Ma, Note, Seg, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 
 type BaiX = BaiToan & { so: string }
 const NHO: { gocId: string | null; tab: 'chuoi' | 'nhom'; gap: Record<string, string[]>; mo: boolean; cuon: Record<string, [number, number]>; tim: string } =
@@ -29,7 +29,9 @@ const px = (c: number) => OX + c * COL, py = (r: number) => OY + r * ROW
 const soSanhSo = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true })
 
 export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promise<void> }) {
-  const goc = useMemo(() => api.gocCayCua(L), [L])
+  // CHỈ mô hình phan='luyen' (mô hình tạo ở đây sinh ra đã là 'luyen'). 41 mô hình cũ đang phan=NULL ⇒ tự ẩn —
+  // CEO 14/10: "ẩn làm tham khảo, không dùng"; vẫn xem được ở màn Sơ đồ. Không sửa/xoá dòng cũ nào.
+  const goc = useMemo(() => api.gocCayCua(L).filter((m) => m.phan === 'luyen'), [L])
   const [gocId, setGocIdRaw] = useState<string | null>(() => (NHO.gocId && goc.some((m) => m.id === NHO.gocId) ? NHO.gocId : null))
   const [tim, setTim] = useState(NHO.tim)
   const [tab, setTab] = useState(NHO.tab)
@@ -46,7 +48,9 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
   const [loi, setLoi] = useState<string | null>(null)
   const [thongBao, setThongBao] = useState<string | null>(null)
   const [hopRe, setHopRe] = useState<{ ten: string; gt: string } | null>(null)
-  const LRef = useRef(L); LRef.current = L
+  const [hopMH, setHopMH] = useState<{ id: string | null; ten: string; gt: string; anh: string | null } | null>(null)   // tạo / sửa mô hình gốc
+  const [hopBai, setHopBai] = useState<{ id: string | null; nhanh: string } | null>(null)                               // thêm / sửa bài
+  const soRef = useRef(new Map<string, string>())      // số hiển thị đang có (từ RPC) — giữ qua các lần lưới nạp lại
   const khung = useRef<HTMLDivElement>(null)
 
   const setGocId = (id: string | null) => { NHO.gocId = id; setGocIdRaw(id) }
@@ -56,25 +60,29 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
   useEffect(() => { if (gocId) NHO.gap[gocId] = [...gapLai] }, [gapLai, gocId])
   const bao = (s: string) => { setThongBao(s); window.setTimeout(() => setThongBao((x) => (x === s ? null : x)), 2600) }
 
-  // ── nạp cây khi ĐỔI gốc (đổi ngữ cảnh ⇒ reset là đúng) ──
+  // ── ĐỔI gốc (đổi ngữ cảnh ⇒ reset là đúng): lấy số hiển thị + cờ sai nhánh từ DB ──
   useEffect(() => {
-    setSel(new Set()); setCur(null); setPop(null); setLoi(null)
-    if (!gocId) { setNhanhs([]); setBais([]); setSai(new Map()); return }
-    const Lc = LRef.current
-    const ns = api.nhanhCuaCay(Lc.moHinh, Lc.baiToan, gocId)
-    const ids = new Set(ns.map((n) => n.id))
-    const bs = Lc.baiToan.filter((b) => ids.has(b.mo_hinh_id))
-    setNhanhs(ns); setBais(bs.map((b) => ({ ...b, so: '' }))); setGapLai(new Set(NHO.gap[gocId] ?? []))
+    setSel(new Set()); setCur(null); setPop(null); setLoi(null); soRef.current = new Map()
+    if (!gocId) { setSai(new Map()); return }
+    setGapLai(new Set(NHO.gap[gocId] ?? []))
     let huy = false
     setDangTai(true)
     Promise.all([api.soHienThiCay(gocId), api.saiNhanhCay(gocId)]).then(([so, s]) => {
       if (huy) return
-      const m = new Map(so.map((r) => [r.id, r.so]))
-      setBais((prev) => prev.map((b) => ({ ...b, so: m.get(b.id) ?? '' })))
+      soRef.current = new Map(so.map((r) => [r.id, r.so]))
+      setBais((prev) => prev.map((b) => ({ ...b, so: soRef.current.get(b.id) ?? '' })))
       setSai(gomSai(s))
     }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) }).finally(() => { if (!huy) setDangTai(false) })
     return () => { huy = true }
   }, [gocId])
+  // ── LƯỚI nạp lại (sau khi tạo/sửa) hoặc đổi gốc ⇒ dựng lại nhánh + bài, GIỮ số đang có, không trắng màn ──
+  useEffect(() => {
+    if (!gocId) { setNhanhs([]); setBais([]); return }
+    const ns = api.nhanhCuaCay(L.moHinh, L.baiToan, gocId)
+    const ids = new Set(ns.map((n) => n.id))
+    setNhanhs(ns)
+    setBais(L.baiToan.filter((b) => ids.has(b.mo_hinh_id)).map((b) => ({ ...b, so: soRef.current.get(b.id) ?? '' })))
+  }, [gocId, L])
 
   // ── suy cấu trúc để VẼ ──
   const baiById = useMemo(() => new Map(bais.map((b) => [b.id, b])), [bais])
@@ -111,15 +119,17 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
 
   // ── vá sau RPC ──
   const va = async (kq: KetQuaCay, nhanhDoi?: string) => {
-    const m = new Map<string, BaiCay>(kq.bai.map((r) => [r.id, r]))
-    setBais((prev) => prev.map((b) => { const r = m.get(b.id); return r ? { ...b, so: r.so, mo_hinh_id: r.mo_hinh_id, thu_tu: r.thu_tu } : b }))
+    for (const r of kq.bai) soRef.current.set(r.id, r.so)
+    // nhánh mới / nhánh đổi neo: lấy dòng TRƯỚC khi vá bài, để bài không rơi vào nhánh màn chưa biết
     const canLay = [kq.nhanh_moi, nhanhDoi].filter(Boolean) as string[]
     if (canLay.length) {
       const moi = (await Promise.all(canLay.map((id) => api.layMoHinh(id)))).filter(Boolean) as MoHinh[]
       setNhanhs((prev) => { const ids = new Set(moi.map((x) => x.id)); return [...prev.filter((n) => !ids.has(n.id)), ...moi] })
     }
+    const m = new Map<string, BaiCay>(kq.bai.map((r) => [r.id, r]))
+    setBais((prev) => prev.map((b) => { const r = m.get(b.id); return r ? { ...b, so: r.so, mo_hinh_id: r.mo_hinh_id, thu_tu: r.thu_tu } : b }))
     api.saiNhanhCay(kq.goc).then((s) => setSai(gomSai(s))).catch(() => {})   // nền — không xoá gì trong lúc chờ
-    void reload()                                                             // nền — cho các màn khác thấy lưới mới
+    await reload()                                                            // lưới mới (bài/nhánh/lời giải vừa tạo) — màn dựng lại từ L, giữ số
   }
   const chay = async (f: () => Promise<KetQuaCay>, xong: string, nhanhDoi?: string) => {
     if (ban) return
@@ -143,6 +153,33 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
       bao('Đã lưu nhánh'); void reload()
     } catch (e: any) { setLoi(e.message ?? String(e)) }
   }
+  const luuMoHinh = async () => {
+    if (!hopMH || ban) return
+    setBan(true); setLoi(null)
+    try {
+      if (hopMH.id) {
+        await api.updateMoHinh(hopMH.id, { ten: hopMH.ten.trim(), gia_thiet: hopMH.gt.trim(), anh_cau_hinh: hopMH.anh })
+        await reload(); bao('Đã lưu mô hình')
+      } else {
+        const id = await api.taoMoHinhLuyen(khoi, hopMH.ten, hopMH.gt, hopMH.anh)
+        await reload(); setGocId(id); bao('Đã tạo mô hình — bấm “＋ Thêm bài” để dựng thân')
+      }
+      setHopMH(null)
+    } catch (e: any) { setLoi(e.message ?? String(e)) }
+    finally { setBan(false) }
+  }
+  const luuBai = async (v: api.BaiNhap, nhanhId: string) => {
+    if (!hopBai || ban) return
+    const dangSua = hopBai.id
+    setBan(true); setLoi(null)
+    try {
+      const kq = dangSua ? await api.suaBaiCay(dangSua, v) : await api.themBaiCay(nhanhId, v)
+      await va(kq)
+      setCur(kq.bai_moi); setHopBai(null)
+      bao(dangSua ? 'Đã lưu bài — mã giữ nguyên' : 'Đã thêm bài ' + (kq.bai.find((b) => b.id === kq.bai_moi)?.so ?? ''))
+    } catch (e: any) { setLoi(e.message ?? String(e)) }
+    finally { setBan(false) }
+  }
   const batGap = (id: string) => setGapLai((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   // ── danh sách gốc cây (trái) ──
@@ -152,7 +189,10 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
   return (
     <div className="flex h-full min-h-0 gap-4">
       <aside className="w-[230px] shrink-0">
-        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình · khối {khoi}</div>
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình luyện · khối {khoi}</span>
+          <Btn kind="pri" className="!h-7 !px-2 !text-[12px]" onClick={() => setHopMH({ id: null, ten: '', gt: '', anh: null })}>＋ Mới</Btn>
+        </div>
         <input className={inpCls} placeholder="Tìm mô hình…" value={tim} onChange={(e) => setTim(e.target.value)} />
         <div className="mt-2 max-h-[calc(100vh-230px)] space-y-1 overflow-y-auto pr-1">
           {gocLoc.map((m) => (
@@ -163,16 +203,17 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
               <div className="truncate font-medium">{tron(m.ten)}</div>
             </button>
           ))}
-          {!gocLoc.length && <div className="px-2 py-4 text-[12px] text-slate-400">Không có mô hình nào.</div>}
+          {!gocLoc.length && <div className="px-2 py-4 text-[12px] leading-relaxed text-slate-400">Chưa có mô hình luyện nào ở khối {khoi}. Bấm <b>＋ Mới</b> để tạo.<br />Các mô hình cũ được ẩn làm tham khảo — xem ở “Sơ đồ (2 view)”.</div>}
         </div>
       </aside>
 
       <div className="min-w-0 flex-1">
-        {!gocMH ? <Empty icon="🌿">Chọn một mô hình ở bên trái để xem cây bài của nó.</Empty> : (
+        {!gocMH ? <Empty icon="🌿">Chọn một mô hình ở bên trái, hoặc bấm ＋ Mới để tạo mô hình đầu tiên.</Empty> : (
           <>
             <div className="mb-1 flex flex-wrap items-center gap-2">
               <h1 className="text-[18px] font-semibold text-slate-900">{tron(gocMH.ten)}</h1>
               <Ma>{gocMH.ma}</Ma>
+              <button className="text-[12px] text-blue-600 hover:underline" onClick={() => setHopMH({ id: gocMH.id, ten: gocMH.ten, gt: gocMH.gia_thiet ?? '', anh: gocMH.anh_cau_hinh ?? null })}>✎ sửa mô hình</button>
               <span className="text-[12px] text-slate-400">{bais.length} bài · {nhanhs.length - 1} nhánh{sai.size ? ` · ${sai.size} sai nhánh` : ''}{dangTai ? ' · đang tính số…' : ''}</span>
             </div>
             <div className="mb-3 rounded-lg px-2.5 py-1.5 text-[12.5px] text-white" style={{ background: MAU[0].dac }}>
@@ -181,7 +222,9 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
 
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <Seg value={tab} onChange={setTab} options={[{ v: 'chuoi', label: '① Chuỗi' }, { v: 'nhom', label: '② Nhóm' }]} />
-              <Btn kind="pri" disabled={!sel.size || ban} onClick={() => setHopRe({ ten: '', gt: '' })}
+              <Btn kind="pri" disabled={ban} onClick={() => setHopBai({ id: null, nhanh: (cur && baiById.get(cur)?.mo_hinh_id) || gocId! })}
+                title="Thêm bài vào cuối thân, hoặc cuối nhánh của bài đang chọn">＋ Thêm bài</Btn>
+              <Btn disabled={!sel.size || ban} onClick={() => setHopRe({ ten: '', gt: '' })}
                 title="Tạo nhánh mới neo vào bài đứng ngay trước bài đầu được chọn">⑂ Rẽ nhánh từ bài đứng trước ({sel.size})</Btn>
               {tab === 'chuoi' && <>
                 <Btn onClick={() => setGapLai(new Set(nhanhs.filter((n) => n.id !== gocId).map((n) => n.id)))}>▸ Gập hết</Btn>
@@ -213,6 +256,7 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
       {pop && baiById.get(pop) && (
         <PopupBai L={L} bai={baiById.get(pop)!} nhanhById={nhanhById} baiById={baiById} duong={duong} doSau={doSau}
           saiTienDe={sai.get(pop) ?? []} onDong={() => setPop(null)} onNhay={(id) => { setCur(id); setPop(id) }}
+          onSua={() => { const b = baiById.get(pop)!; setPop(null); setHopBai({ id: b.id, nhanh: b.mo_hinh_id }) }}
           onSuaSai={(nhanhId) => chuyen(pop, nhanhId)} />
       )}
       {hopRe && (
@@ -230,6 +274,30 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
             </div>
           </div>
         </div>
+      )}
+      {hopMH && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-5" onClick={() => setHopMH(null)}>
+          <div className="max-h-[92vh] w-full max-w-2xl overflow-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <h2 className="mb-3 text-[16px] font-semibold">{hopMH.id ? 'Sửa mô hình' : 'Mô hình luyện mới · khối ' + khoi}</h2>
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Tên mô hình</label>
+            <input autoFocus className={inpCls} value={hopMH.ten} onChange={(e) => setHopMH({ ...hopMH, ten: e.target.value })} placeholder="vd: Phân giác trong tam giác vuông" />
+            <div className="mb-1 mt-3 flex items-center justify-between">
+              <label className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Giả thiết của mô hình (gõ $…$ cho công thức)</label>
+              <OcrButton onText={(t) => setHopMH((p) => (p ? { ...p, gt: (p.gt ? p.gt + ' ' : '') + t } : p))} />
+            </div>
+            <textarea className={inpCls + ' h-24'} value={hopMH.gt} onChange={(e) => setHopMH({ ...hopMH, gt: e.target.value })} placeholder="vd: Cho tam giác ABC vuông tại A, AD là phân giác (D thuộc BC)." />
+            {hopMH.gt.trim() && <div className="mt-1 rounded-md bg-slate-50 px-2 py-1 text-[12.5px]"><MathText>{hopMH.gt}</MathText></div>}
+            <div className="mt-3 max-w-xs"><AnhInput value={hopMH.anh} onChange={(u) => setHopMH((p) => (p ? { ...p, anh: u } : p))} cap="Hình của mô hình" /></div>
+            <div className="mt-4 flex justify-end gap-2">
+              <Btn onClick={() => setHopMH(null)}>Huỷ</Btn>
+              <Btn kind="pri" disabled={ban || !hopMH.ten.trim()} onClick={luuMoHinh}>{hopMH.id ? 'Lưu' : 'Tạo mô hình'}</Btn>
+            </div>
+          </div>
+        </div>
+      )}
+      {hopBai && (
+        <FormBai L={L} sua={hopBai.id ? baiById.get(hopBai.id) ?? null : null} nhanhMacDinh={hopBai.nhanh} gocId={gocId!}
+          nhanhs={nhanhs} bais={bais} doSau={doSau} ban={ban} onDong={() => setHopBai(null)} onLuu={luuBai} />
       )}
       {thongBao && <div className="fixed bottom-5 left-1/2 z-[70] -translate-x-1/2 rounded-lg bg-slate-900 px-4 py-2 text-[13px] text-white shadow-lg">{thongBao}</div>}
     </div>
@@ -448,10 +516,10 @@ function TabNhom(p: ChungProps & {
 }
 
 // ══════════════════ POPUP BÀI ══════════════════
-function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong, onNhay, onSuaSai }: {
+function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong, onNhay, onSuaSai, onSua }: {
   L: Luoi; bai: BaiX; nhanhById: Map<string, MoHinh>; baiById: Map<string, BaiX>
   duong: (id: string) => string[]; doSau: (id: string) => number; saiTienDe: string[]
-  onDong: () => void; onNhay: (id: string) => void; onSuaSai: (nhanhId: string) => void
+  onDong: () => void; onNhay: (id: string) => void; onSuaSai: (nhanhId: string) => void; onSua: () => void
 }) {
   const [gt, setGt] = useState<string | null>(null)
   useEffect(() => {
@@ -478,7 +546,8 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
           <Ma big>{bai.ma}</Ma>
           <span className="rounded-full px-2 py-px text-[11.5px] font-semibold text-white" style={{ background: m.dac }}>{ds.length > 1 ? tron(ds[ds.length - 1].ten) : 'Thân'}</span>
           {!!saiTienDe.length && <span className="rounded border border-amber-400 bg-amber-50 px-1.5 text-[11px] font-bold text-amber-800">⚠ sai nhánh</span>}
-          <button className="ml-auto h-8 w-8 rounded-lg bg-slate-100 text-[16px]" onClick={onDong}>✕</button>
+          <Btn className="ml-auto" onClick={onSua}>✎ Sửa bài</Btn>
+          <button className="h-8 w-8 rounded-lg bg-slate-100 text-[16px]" onClick={onDong}>✕</button>
         </div>
         <div className="grid gap-5 px-5 py-4 md:grid-cols-[1fr_270px]">
           <div className="min-w-0 space-y-3.5">
@@ -515,6 +584,72 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
                   {x ? x.so : 'bài ngoài cây'}</button>) })}</div> : <span className="text-[12px] text-slate-400">— không —</span>}
             </Muc>
           </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+// ══════════════════ FORM THÊM / SỬA BÀI ══════════════════
+const NhanO = ({ children }: { children: React.ReactNode }) => <label className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">{children}</label>
+function FormBai({ L, sua, nhanhMacDinh, gocId, nhanhs, bais, doSau, ban, onDong, onLuu }: {
+  L: Luoi; sua: BaiX | null; nhanhMacDinh: string; gocId: string; nhanhs: MoHinh[]; bais: BaiX[]
+  doSau: (id: string) => number; ban: boolean; onDong: () => void; onLuu: (v: api.BaiNhap, nhanhId: string) => void
+}) {
+  const cach = sua ? api.cachMacDinh(L, sua.id) : null
+  const [nhanh, setNhanh] = useState(nhanhMacDinh)
+  const [pb, setPb] = useState(sua?.phat_bieu ?? '')
+  const [gt, setGt] = useState(sua?.gia_thiet_rieng ?? '')
+  const [lg, setLg] = useState(cach?.loi_giai ?? '')
+  const [anh, setAnh] = useState<string | null>(sua?.anh_chuan ?? null)
+  const [td, setTd] = useState<Set<string>>(new Set(sua ? api.tienDeCua(L, sua.id) : []))
+  const xep = [...bais].filter((b) => b.id !== sua?.id).sort((a, b) => soSanhSo(a.so, b.so))
+  const nhanhXep = [...nhanhs].sort((a, b) => doSau(a.id) - doSau(b.id) || a.ma.localeCompare(b.ma))
+  return (
+    <div className="fixed inset-0 z-[65] flex items-center justify-center bg-slate-900/45 p-5" onClick={onDong}>
+      <div className="max-h-[94vh] w-full max-w-[1100px] overflow-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-3 flex items-center gap-2.5">
+          <h2 className="text-[16px] font-semibold">{sua ? 'Sửa bài ' + sua.so : 'Thêm bài'}</h2>
+          {sua && <Ma big>{sua.ma}</Ma>}
+          {!sua && (
+            <select className={inpCls + ' ml-auto w-auto'} value={nhanh} onChange={(e) => setNhanh(e.target.value)} title="Thêm vào cuối làn nào">
+              {nhanhXep.map((n) => <option key={n.id} value={n.id}>{'— '.repeat(doSau(n.id))}{n.id === gocId ? 'Thân' : tron(n.ten)}</option>)}
+            </select>)}
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          <div className="space-y-3">
+            <div>
+              <div className="mb-1 flex items-center justify-between"><NhanO>Câu hỏi của bài</NhanO><OcrButton onText={(t) => setPb((p) => (p ? p + ' ' : '') + t)} /></div>
+              <textarea autoFocus className={inpCls + ' h-24'} value={pb} onChange={(e) => setPb(e.target.value)} placeholder="vd: Chứng minh tam giác ABK bằng tam giác EBK." />
+              {pb.trim() && <div className="mt-1 rounded-md bg-slate-50 px-2 py-1 text-[12.5px]"><MathText>{pb}</MathText></div>}
+            </div>
+            <div>
+              <div className="mb-1"><NhanO>Giả thiết riêng của bài (bỏ trống = chỉ dùng giả thiết mô hình + nhánh)</NhanO></div>
+              <textarea className={inpCls + ' h-16'} value={gt} onChange={(e) => setGt(e.target.value)} placeholder="vd: Cho AB = 3, AC = 4." />
+            </div>
+            <div className="max-w-xs"><AnhInput value={anh} onChange={setAnh} cap="Hình riêng của bài (bỏ trống = hình mô hình)" /></div>
+            <div>
+              <div className="mb-1"><NhanO>Tiền đề — bài phải giải trước ({td.size})</NhanO></div>
+              <div className="max-h-40 overflow-auto rounded-lg border border-slate-200 p-1.5">
+                {!xep.length && <div className="px-1 text-[12px] text-slate-400">Chưa có bài nào khác.</div>}
+                {xep.map((b) => (
+                  <label key={b.id} className="flex cursor-pointer items-center gap-2 rounded px-1.5 py-0.5 text-[12.5px] hover:bg-slate-50">
+                    <input type="checkbox" checked={td.has(b.id)} onChange={() => setTd((p) => { const n = new Set(p); n.has(b.id) ? n.delete(b.id) : n.add(b.id); return n })} />
+                    <b className="w-14 shrink-0">{b.so}</b><span className="truncate">{tron(b.phat_bieu)}</span>
+                  </label>))}
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="mb-1 flex items-center justify-between"><NhanO>Lời giải / đáp án</NhanO><OcrButton onText={(t) => setLg((p) => (p ? p + '\n' : '') + t)} /></div>
+            <textarea className={inpCls + ' h-56 font-mono text-[12.5px]'} value={lg} onChange={(e) => setLg(e.target.value)} placeholder="Lời giải chi tiết…" />
+            {lg.trim() && <div className="mt-1 max-h-64 overflow-auto rounded-md border border-emerald-200 bg-emerald-50/60 p-2 text-[13px]"><MathText>{lg}</MathText></div>}
+          </div>
+        </div>
+        <div className="mt-4 flex items-center justify-end gap-2">
+          <span className="mr-auto text-[11.5px] text-slate-400">{sua ? 'Sửa nội dung không đổi mã bài.' : 'Bài được thêm vào CUỐI làn đã chọn; muốn đổi chỗ thì sang tab Nhóm.'}</span>
+          <Btn onClick={onDong}>Huỷ</Btn>
+          <Btn kind="pri" disabled={ban || !pb.trim()}
+            onClick={() => onLuu({ phatBieu: pb.trim(), giaThietRieng: gt.trim() || null, loiGiai: lg.trim() || null, anh, tienDe: [...td] }, nhanh)}>{sua ? 'Lưu' : 'Thêm bài'}</Btn>
         </div>
       </div>
     </div>
