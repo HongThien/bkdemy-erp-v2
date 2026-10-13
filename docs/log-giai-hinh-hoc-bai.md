@@ -74,7 +74,7 @@ Thùy 13/10: *"Rất nhiều bài Hình trong kho là hình cắt từ sách ra.
 6. **Phần LUYỆN** (`hinh_baitoan.anh_chuan`, `hinh_baitoan_bien_the.anh` / `anh_loi_giai`): `ve_lai_xuat.mjs --bang baitoan|bienthe` (gói gom theo MÔ HÌNH: `BT-MH045-1`, `BV-MH045-1`; đề đầy đủ ghép như app: giả thiết bài cha / mô hình + giả thiết riêng + câu hỏi; biến thể mỗi dòng một hình, tên tệp = uuid) → trạm theo brief mục 3b → `gan_hinh.mjs <gói>/moi --bang baitoan|bienthe --thay --ghi` (bảng, cột khoá, cột ảnh khai trong `LUYEN`; đuôi `_lg` của biến thể = `anh_loi_giai`).
 7. **Luật soát chốt 13/10 (sau khi lượt trạm đầu mỗi trạm xử một kiểu):** ẢNH CŨ CÓ GÌ GIỮ NẤY — kể cả đường phụ của lời giải, điểm của bài sau trong chuỗi, nét đứt/cung của điều phải chứng minh — chỉ dựng lại cho đúng đề. Chỉ THÊM khi đề của chính bài nêu tên mà ảnh thiếu, và ô vuông góc cho góc vuông đề cho. Tên điểm/số đo vênh ⇒ theo đề. Ảnh cũ chỉ có cung thì không tô. Khi soát bằng lệnh, đừng nối `| head` sau tệp vẽ (script chết giữa chừng vì EPIPE, chỉ vài hình đầu được dựng lại).
 
-Đã chạy 13/10: khối 7, 8, 8T, 9 của phần Học (330 câu, 295 hình) · phần Luyện (127 hình bài toán + 82 hình biến thể, 0 hình giữ ảnh cũ). Chưa chạy: khối 11, `hgt_cau_hoi`, `hinh_mo_hinh.anh_cau_hinh` (33), `hinh_cach_giai.anh_loi_giai` (6).
+Đã chạy 13/10: khối 7, 8, 8T, 9 của phần Học (330 câu, 295 hình) · phần Luyện (127 hình bài toán + 82 hình biến thể, 0 hình giữ ảnh cũ). Cũng 13/10: `hinh_mo_hinh.anh_cau_hinh` (33) + `hinh_cach_giai.anh_loi_giai` (6) — 39 hình, 0 giữ ảnh cũ (`ve_lai_xuat.mjs --bang mohinh|cachgiai`, `gan_hinh.mjs --bang mohinh|cachgiai`, gói `MH-1…5` / `CG-1`, brief mục 3c). Chưa chạy: khối 11, `hgt_cau_hoi`.
 
 ---
 

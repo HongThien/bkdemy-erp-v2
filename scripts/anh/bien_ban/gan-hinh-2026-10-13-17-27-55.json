@@ -1,0 +1,16 @@
+[
+ {
+  "ma": "MH.064",
+  "bang": "hinh_mo_hinh",
+  "khoa": "ma",
+  "tep": "MH.064.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_cau_hinh"
+  ],
+  "cu": {
+   "anh_cau_hinh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/0ecfdfc9-6c07-47be-bc7b-f1a293b92503.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/MH.064-4c7b4f8f-3f63-4367-a3bd-139977a6f9ca.png"
+ }
+]
