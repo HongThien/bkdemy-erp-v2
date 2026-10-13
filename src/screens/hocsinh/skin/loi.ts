@@ -135,6 +135,20 @@ export const LOI_LOFI: Partial<LoiHS> = {
   },
 }
 
+/** Giọng ĐÁNG YÊU (design/DON-HANG-STYLE-NHO-XINH.md mục 5): vẫn là giọng game "đánh quái" — bé tí đi đánh quái to tròn — chỉ đổi vài câu cho dễ thương.
+ *  `layLoi` gộp NÔNG ⇒ đè `yeu` thì khai đủ cả nhóm (phần không đổi lấy lại từ LOI_GAME). */
+export const LOI_DANG_YEU: Partial<LoiHS> = {
+  ...LOI_GAME,
+  chieu: ['Hụt mất rồi — quái đánh trả, hồi 1 máu', 'Bốp nhẹ', 'Bốp mạnh', 'SIÊU BỐP!'],
+  nhanCombo: 'Bốp',
+  goiYCau: 'chọn đúng để bốp một phát',
+  moMan: (ten) => `${ten} nhảy ra kìa!`,
+  huongDan: (n) => `Mỗi ${n} câu bốp 1 phát — đúng cả ${n} là SIÊU BỐP`,
+  daXong: 'Đã chịu thua',
+  hetDoiHinh: 'Cả đám chịu thua rồi!',
+  yeu: { ...LOI_GAME.yeu!, hoi: 'Hơi run một chút… nhưng mình làm được, sẵn sàng chưa?', nut: 'Xông lên!' },
+}
+
 // ── style đang áp (cùng chỗ gắn biến --sk-* ở KhungHS.ganBien) ─────────────────────────────────────────────────────
 // Màn cần LỜI mà không cần biết style là gì ⇒ chỉ đọc qua useLoi(), không so sánh id style.
 let skinDangAp: SkinId | null = null

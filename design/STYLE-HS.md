@@ -4,7 +4,7 @@
 > tự cập nhật UI theo cái style này."* — Style đang dùng thật: **Anime RPG** (duy nhất). Đang làm: **Thị trấn** (`spec-giao-dien-hs.md` §9) ·
 > **Khối vuông** — cảm hứng Minecraft, style SÁNG, ĐÃ DỰNG 03/10 (`skin/styles/khoi.ts`, `spec-giao-dien-hs.md` §10, đơn `design/DON-HANG-STYLE-KHOI.md`).
 > **Lo-fi chill** — ĐÃ DỰNG 12/10 (`skin/styles/lofi.ts`): style cho em thích học một mình, có CẢ sáng (nắng chiều) lẫn tối (đêm, đèn bàn), màn chính "sống" (§2.7). Đơn + bảng kiểm hàng: `design/DON-HANG-STYLE-LOFI.md` · nén hình: `node scripts/lofi-hinh.mjs`.
-> **Đáng yêu** (id `dang_yeu`, cảm hứng Chiikawa; tên làm việc cũ "Nhỏ xinh") — linh vật tròn, viền nâu dày, pastel, chỉ chế độ sáng; **làm song song với Thị trấn** (Thùy 11/10). Đơn `design/DON-HANG-STYLE-NHO-XINH.md` — hình về 130/150 đạt, đơn bổ sung `DON-HANG-NHO-XINH-BO-SUNG.md`; chưa dựng code.
+> **Đáng yêu** (id `dang_yeu`, cảm hứng Chiikawa; tên làm việc cũ "Nhỏ xinh") — linh vật tròn, viền nâu dày, pastel, chỉ chế độ sáng; **làm song song với Thị trấn** (Thùy 11/10). Đơn `design/DON-HANG-STYLE-NHO-XINH.md` — hình đủ 150/150 · **ĐÃ DỰNG 13/10** (`skin/styles/dangYeu.ts`, màn chính "sống" kiểu linh vật — §2.7; nén hình: `node scripts/dang-yeu-hinh.mjs`); migration `202610131141` đã áp. Bộ tư thế ĐÁNH của linh vật chưa có (đơn `design/DON-HANG-NHO-XINH-DANH.md`) ⇒ màn đấu tạm dùng nhân vật anime chung.
 > Biến mới cho style vuông: `radiusPill` ⇒ `--sk-radius-pill` — thứ dáng tròn/viên thuốc trong màn MỚI dùng biến này, đừng gõ `rounded-full`/`999px`.
 > Đổi style = đổi **hết**: Home + mọi màn bên trong + popup + trạng thái rỗng/lỗi.
 
@@ -76,6 +76,10 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
   Style không khai ⇒ Home tĩnh. Luật: chuyển động chậm, biên độ nhỏ · máy bật "giảm chuyển động" ⇒ đứng yên · KHÔNG đặt hoạt họa ở màn làm bài.
 - Hình + số đo của `homeSong` do script của style sinh ra (Lo-fi: `scripts/lofi-hinh.mjs` → `styles/lofiSong.ts`) — đừng sửa tay; khung vẽ lại lệch 8–27% điểm ảnh
   so với hình gốc nên chỉ lấy MẢNH thay đổi, không thay cả hình (chi tiết: `design/DON-HANG-STYLE-LOFI.md` mục 6).
+- **Màn chính "sống" kiểu LINH VẬT** (Đáng yêu 13/10) = `homeSong.linhVat { nam, nu }` (`LinhVatSong`): nhân vật là MỘT con vật nguyên hình đổi tư thế (đứng · chớp mắt · vẫy ·
+  vui · lo · ngủ · ăn), mọi tư thế cùng một khung, cỏ dưới chân là lớp riêng. Khác `nv` (ghép vùng) ở chỗ thay CẢ hình ⇒ chỉ dùng khi mọi tư thế vẽ cùng khung và script đã canh thân
+  trùng nhau. Vẽ bởi `LinhVatHome`: nhịp vẫy / chớp / ăn / ngủ / giật mình dậy, nét rung tay, co giãn khi đổi tư thế. Bản đồ thế giới kiểu đảo rời: xếp cột so le CAO / THẤP,
+  đừng để 5 đảo cùng một tầm cao — tên dài (rộng tới 290px) sẽ đè lên nhau.
 - Soi trang xem thử ở chế độ sáng: thêm `&che_do=sang` (mặc định các trang `?xem=` gắn chế độ tối).
 
 ## 3. Thêm TÍNH NĂNG / MÀN mới (bắt buộc)

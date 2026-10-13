@@ -79,7 +79,7 @@ type HomeProps = {
 function nhanVatCua(skin: Skin, gioiTinh: HomeProps['gioiTinh'], toi: boolean) {
   if (!skin.nhanVat) return null
   const g = gioiTinh === 'nu' ? 'nu' : 'nam'
-  return { src: (toi && skin.nhanVatToi?.[g]) || skin.nhanVat[g], srcSang: skin.nhanVat[g], song: skin.homeSong?.nv?.[g] }
+  return { src: (toi && skin.nhanVatToi?.[g]) || skin.nhanVat[g], srcSang: skin.nhanVat[g], song: skin.homeSong?.nv?.[g], linhVat: skin.homeSong?.linhVat?.[g] }
 }
 
 // ── MÀN CHÍNH khổ DỌC (điện thoại · iPad dọc) — theo hàng dưới ảnh gốc style (RPG: Nền app HS cấp 3_11.png, Thùy 29/09):

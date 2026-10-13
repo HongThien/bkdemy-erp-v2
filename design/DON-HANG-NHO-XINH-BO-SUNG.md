@@ -1,5 +1,7 @@
 # Đơn BỔ SUNG ChatGPT — Nhỏ xinh: 20 hình (1 thiếu + 19 vẽ lại)
 
+> ✅✅ **XONG 13/10: đủ 20/20, tất cả ĐẠT** (NB01 thành `nho-xinh/hoat-hoa/nx_nam_chop_mat.png`; 19 hình còn lại là bản `_v2` cạnh bản cũ). File này không còn gì phải gửi.
+
 > Tên trong app Thùy chốt 11/10 = **"Đáng yêu"** (`dang_yeu`). "Nhỏ xinh" trong các khối đơn dưới là tên làm việc — GIỮ NGUYÊN khi dán
 > (context ChatGPT đã vẽ theo tên đó).
 

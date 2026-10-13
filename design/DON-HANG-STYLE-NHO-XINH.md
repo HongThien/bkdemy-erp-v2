@@ -23,6 +23,42 @@
 
 ---
 
+## ✅ ĐÃ DỰNG CODE 13/10 (Thùy: "dọn đi rồi dựng Đáng yêu") — nhánh `claude/dang-yeu-style`
+
+- **Style:** `skin/styles/dangYeu.ts` (id `dang_yeu`, hiện trong "Phong cách" sau Lo-fi; KHÔNG mặc định cho khối nào) · chỉ chế độ sáng · thẻ trắng sữa VIỀN NÂU 2,5px bo 22px, bóng cứng ·
+  chữ thường Baloo 2, tiêu đề **Mali** (thêm vào `hs.html`) · 3 nền (Đồng cỏ hoa mặc định · Phố nhỏ · Hoàng hôn) × 2 khổ · 23 icon ô · 2 banner · gạch ngang hoa · lời chữ `LOI_DANG_YEU`
+  (giữ "đánh quái", đổi vài câu: chiêu = "Bốp nhẹ / Bốp mạnh / SIÊU BỐP!", gợi ý câu = "chọn đúng để bốp một phát", quái thua = "Đã chịu thua").
+- **Màn chính "sống" kiểu LINH VẬT** (khác Lo-fi ghép vùng): cánh cụt (nam) / cừu (nữ) là chồng 9 tư thế nguyên hình, đổi bằng độ mờ — vừa vào thì vẫy, 3–6 giây chớp mắt,
+  20–40 giây ăn bánh, đứng yên 60 giây thì ngủ, chạm màn thì giật mình dậy, bấm vào linh vật thì vui. Nét viền "rung tay" (bộ lọc SVG đổi hạt), co giãn khi đổi tư thế, thở nhẹ.
+  Máy bật "giảm chuyển động" ⇒ hình tĩnh. Vẽ bởi `LinhVatHome` trong `skin/HomeSong.tsx`; hợp đồng thêm `HomeSong.linhVat` (`LinhVatSong` ở `kieu.ts`) — style khác không đổi gì.
+- **Khu Học tập:** cổng 5 gò cỏ · Chinh phục BK (tháp tổng + 8 tháp, đế, cầu) · sân Đấu trường · bản đồ phiêu lưu 2D (thế giới 10 đảo · 10 nền vùng · 10 nền dạng · 6 mốc · bệ · mây · cờ · la bàn) ·
+  16 quái + 4 boss · bảng màu 3D `the3d/bangMauDangYeu.ts` · hình game nhúng.
+- **Nén hình:** `node scripts/dang-yeu-hinh.mjs` (ảnh gốc ngoài git ⇒ đặt `DANG_YEU_SRC=<thư mục nho-xinh>` nếu không nằm ở `design/bk-ui-src/nho-xinh/`) → `public/bk-ui/hs/skin/dang_yeu/`
+  (147 file, ~7 MB) + sinh `styles/dangYeuHocTap.ts` · `styles/dangYeuSong.ts` (đừng sửa tay). Luôn ưu tiên bản `_v2`. Linh vật: script tách THÂN khỏi CỎ dưới chân (vùng liền nhau), canh thân
+  theo khung tư thế bằng hình chớp mắt ⇒ đổi tư thế không nhảy chỗ.
+- **✅ Migration `202610131141_hs_giao_dien_skin_dang_yeu.sql` ĐÃ ÁP 13/10 (Thùy)** — kiểm trên DB thật bằng role `claude_ro` (`npm run schema`): cột `hs_giao_dien.skin` nhận
+  `toi_gian · dau_truong · y2k · soft · rpg · khoi · lofi · dang_yeu`. `schema.md` đã sinh lại, commit cùng. Hết chặn deploy về phía DB.
+- **Soi không cần đăng nhập** (`npm run dev:hs`): `hs.html?xem=gami&skin=dang_yeu&man=home` (`&nen=pho_nho|hoang_hon`; `&tt=2` = cừu) · `hs.html?xem=hoc_tap&skin=dang_yeu` ·
+  `hs.html?xem=phieu_luu&skin=dang_yeu` (+ `&tang=luc_dia&luc=C` · `&tang=chang&luc=C&vung=C1` · `&tang=dau&luc=C&vung=C1`).
+- **Đã soi bằng mắt 13/10 (bản dev, 1180×820 + 430×900):** màn chính ngang (cánh cụt + cừu) · màn chính dọc · bấm linh vật ⇒ vui rồi về đứng · chọn nhân vật · cổng Học tập · Chinh phục BK ·
+  thế giới · lục địa · chặng · khung câu hỏi màn đấu. Kiểm máy: `tsc` (chỉ lỗi có sẵn `pdfRender.ts`) · `check:style-hs` ✔ · `build:hs` ✔.
+- **Sửa khi soi:** tên đảo ở màn thế giới đè lên nhau và bị mép màn cắt (nhãn rộng tới 290px, hai cột chỉ cách ~210px) ⇒ xếp so le thật: cột 1·3·5 cao, cột 2·4 thấp hơn 10%, cột ngoài lùi vào 14%.
+  Lo-fi dính y lỗi này ⇒ sửa cùng cách (`lofiBanDo2d.ts`). **Khối vuông cũng cùng bố cục cũ — chưa đụng, chờ Thùy bảo.**
+- **CHƯA làm / còn lại:** ① **trong màn đấu, người đánh vẫn là nhân vật ANIME chung** (đơn không đặt bộ chạy/đánh cho linh vật) ⇒ cánh cụt ở màn chính, vào trận lại là người — lệch nét thấy rõ nhất;
+  ⇒ **Thùy 13/10: đặt thêm — đơn N5 ở `design/DON-HANG-NHO-XINH-DANH.md`** (15 tư thế × 2 linh vật + 5 hiệu ứng, 36 lượt; chờ hình) · ② 6 hình hiệu ứng (`song/fx_*.webp`: tim, sao, giọt nước mắt…) đã nén nhưng chưa bật · ③ viền thẻ "run tay" (`khung_the.png` / `khung_nut.png`)
+  đã nén, thẻ đang dùng viền CSS thẳng · ④ hình góc thẻ là bụi cây đứng ⇒ không khai `trangTri.goc` (`bui_cay.png` để dành) · ⑤ chưa soi: 2 nền Phố nhỏ / Hoàng hôn ở mọi khổ, lúc sân đấu hiện
+  (phải trả lời câu mới thấy), game nhúng `src/dautu`, các màn gamification, giấc ngủ sau 60 giây, máy thật (iPad / điện thoại) · ⑥ boss riêng giáo viên, bộ khung màn trong: không có (vẽ bằng code).
+
+## ✅✅ KIỂM HÀNG BỔ SUNG 13/10 — về đủ 20/20, cả 20 ĐẠT ⇒ BỘ "ĐÁNG YÊU" ĐỦ 150/150 HÌNH DÙNG ĐƯỢC
+
+20 hình về 13/10 02:02–02:05 ở gốc `bk-ui-src/` (11 tên mô tả + 9 tên "ChatGPT Image…") ⇒ nhận diện bằng mắt, khớp đúng NB01–NB20, không trùng / lệch chỗ.
+- **NB01** `nx_nam_chop_mat` (hình mới): cánh cụt đứng yên, mắt nhắm, đúng khung 1122×1402, không cỏ dưới chân ⇒ `nho-xinh/hoat-hoa/nx_nam_chop_mat.png`. Cánh cụt giờ đủ 9 tư thế như cừu.
+- **NB02–NB11** 8 quái mở rộng + phượng hoàng + bạch tuộc: 1254² RGBA, 4 góc trong suốt thật, thân mochi to, viền nâu dày, mặt "dỗi" — cùng nét 8 quái đầu.
+- **NB12–NB20** 9 nền dạng (`bang` → `dong_gio`): 1672×941, nhìn ngang, nét phẳng pastel như nền vùng; ở dải 72–76% là mặt đất / dải đường phẳng liền từ trái sang phải,
+  không vật cản (đã kẻ dải lên từng hình để soi).
+- 19 hình vẽ lại thêm cạnh bản cũ với tên `<tên cũ>_v2.png` (bản cũ giữ nguyên) — **khi dựng code dùng bản `_v2` nếu có**. Sổ: `nho-xinh/_doi_ten.log.txt`.
+- Hết nợ hình ⇒ sẵn sàng dựng code (kế hoạch ở mục 7; làm song song với Thị trấn).
+
 ## ✅ KIỂM HÀNG 11/10 (tối) — về 150 file = 149 hình + 1 file trùng; **130 dùng được · 19 phải vẽ lại · 1 hình THIẾU**
 
 Hình về tên mặc định ở GỐC `bk-ui-src/` ⇒ Claude nhận diện bằng mắt (tấm ghép) + đổi tên, chuyển vào `design/bk-ui-src/nho-xinh/` (N1) ·

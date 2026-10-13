@@ -10,12 +10,14 @@ export const BAN_DO_LOFI: BanDo2D = {
   g: '/bk-ui/hs/skin/lofi/phieuluu2d',
   nenTheGioi: 'the_gioi.jpg',
   /** Đảo RỜI nổi trên biển mây hoàng hôn (như Khối vuông) ⇒ 2 hàng × 5 cột xếp so le theo thứ tự chủ đề; cùng thứ tự biome với RPG.
-   *  Đảo cắt sát rồi đặt giữa khung VUÔNG 640 (tlLucDia = 1). */
+   *  Đảo cắt sát rồi đặt giữa khung VUÔNG 640 (tlLucDia = 1).
+   *  Cột 1·3·5 CAO, cột 2·4 THẤP hơn 10% + cột ngoài cùng lùi vào 14% (sửa 13/10): nhãn tên rộng tới 290px mà hai cột chỉ cách ~210px ⇒
+   *  để cùng một tầm cao thì tên dài đè lên nhau và bị mép màn cắt (soi với khối 9). Cùng bố cục với Đáng yêu. */
   lucDia: [
-    { biome: 'rung', x: 11, y: 31, w: 14 }, { biome: 'anh_dao', x: 30.5, y: 69, w: 14 }, { biome: 'thanh_co', x: 50, y: 30, w: 14 },
-    { biome: 'dam_lay', x: 69.5, y: 69, w: 14 }, { biome: 'sa_mac', x: 89, y: 31, w: 14 }, { biome: 'bang', x: 11, y: 70, w: 14 },
-    { biome: 'nui_lua', x: 30.5, y: 29, w: 14 }, { biome: 'bien_dao', x: 50, y: 70, w: 14 }, { biome: 'troi_sao', x: 69.5, y: 29, w: 14 },
-    { biome: 'dong_gio', x: 89, y: 70, w: 14 },
+    { biome: 'rung', x: 14, y: 25, w: 14 }, { biome: 'anh_dao', x: 32, y: 72, w: 14 }, { biome: 'thanh_co', x: 50, y: 25, w: 14 },
+    { biome: 'dam_lay', x: 68, y: 72, w: 14 }, { biome: 'sa_mac', x: 86, y: 25, w: 14 }, { biome: 'bang', x: 14, y: 62, w: 14 },
+    { biome: 'nui_lua', x: 32, y: 35, w: 14 }, { biome: 'bien_dao', x: 50, y: 62, w: 14 }, { biome: 'troi_sao', x: 68, y: 35, w: 14 },
+    { biome: 'dong_gio', x: 86, y: 72, w: 14 },
   ],
   tienToLucDia: 'dao_',
   tlLucDia: 1,

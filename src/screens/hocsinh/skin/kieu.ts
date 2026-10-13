@@ -8,7 +8,7 @@ import type { LoiHS } from './loi'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
-export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi'
+export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi' | 'dang_yeu'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
 // hieu_ung_game: công tắc của em (mig 202610020037, mặc định bật) — tắt ⇒ không bản đồ phiêu lưu / màn đấu. Không có trường (bản cũ) = bật.
 export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string; hieu_ung_game?: boolean }
@@ -69,12 +69,21 @@ export type ManhSong = { src: string; hop: [number, number, number, number] }
 /** Nhân vật Home có hoạt họa ghép mảnh: viet = các khung của động tác chính lặp lại (hình gốc là khung 1) · nghi = các kiểu nghỉ giữa chừng ·
  *  duoi = khung vẫy đuôi của thú cưng · ngap = thú cưng ngáp · den = tâm đèn bàn (tỉ lệ khung) để phủ ánh đèn ở chế độ TỐI */
 export type NvSong = { rong: number; cao: number; den: [number, number]; viet: ManhSong[]; nghi: ManhSong[]; duoi: ManhSong[]; ngap?: ManhSong }
+/** LINH VẬT Home đổi CẢ TƯ THẾ (Đáng yêu 13/10): mọi hình cùng khung rong×cao, cùng chỗ đặt chân. co = lớp cỏ / hoa dưới chân (đứng yên) ·
+ *  dung = đứng · chopMat = chớp mắt · vay = các khung vẫy tay lúc mở màn · vui = khi em chạm vào · lo = giật mình lúc bị đánh thức · ngu = để yên lâu ·
+ *  an = các khung ăn vặt thỉnh thoảng · mungKhoc = dành cho thẻ kết quả (chưa màn nào dùng) · soi = đường viền "sôi" (line boil) bằng bộ lọc SVG */
+export type LinhVatSong = {
+  rong: number; cao: number; soi?: boolean; co?: string
+  dung: string; chopMat: string; vay: string[]; vui: string; lo: string; ngu: string; an: string[]; mungKhoc?: string
+}
 export type HomeSong = {
   /** khoá = id hình nền; mỗi nền khai từng chế độ × khổ màn có lớp mây trôi */
   nen?: Record<string, Partial<Record<'sang' | 'toi', { ngang?: LopNenSong; doc?: LopNenSong }>>>
   /** lớp phủ (CSS background) đặt trên các lớp nền sống — cùng lớp phủ với tranh tĩnh để chữ vẫn đọc được */
   phuNen?: { sang?: string; toi?: string }
   nv?: { nam: NvSong; nu: NvSong }
+  /** linh vật đổi tư thế (khác `nv` = ghép mảnh lên một hình người) — style khai MỘT trong hai */
+  linhVat?: { nam: LinhVatSong; nu: LinhVatSong }
 }
 /** Thẻ "Việc tiếp theo" (nền · chữ · viền) */
 export type TheTiep = { bg: string; ink: string; border: string }

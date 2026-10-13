@@ -9,6 +9,7 @@ import { RPG } from './styles/rpg'
 import { TOI_GIAN } from './styles/toiGian'
 import { KHOI } from './styles/khoi'
 import { LOFI } from './styles/lofi'
+import { DANG_YEU } from './styles/dangYeu'
 import { skinDangApId } from './loi'
 export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau, MauDoc } from './kieu'
 
@@ -21,7 +22,8 @@ export const KHOI_CHON_SKIN = new Set(['3', '4', '4T', '5', '5T', '6', '7', '8',
 // Thùy 02/10: dựng lại Tối giản (đơn sắc, nền trơn) cho em không thích rối mắt.
 // Thùy 03/10: thêm Khối vuông (cảm hứng Minecraft) làm lựa chọn — RPG vẫn là mặc định.
 // Thùy 12/10: thêm Lo-fi chill (góc học yên tĩnh, có cả sáng lẫn tối) — style "chọn vào", không mặc định cho khối nào.
-export const SKINS: Skin[] = [RPG, KHOI, LOFI, TOI_GIAN]
+// Thùy 13/10: thêm Đáng yêu (cảm hứng Chiikawa, linh vật tròn, chỉ sáng) — cũng là style "chọn vào".
+export const SKINS: Skin[] = [RPG, KHOI, LOFI, DANG_YEU, TOI_GIAN]
 
 export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 
