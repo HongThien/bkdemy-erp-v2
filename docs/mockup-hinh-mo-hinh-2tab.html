@@ -35,7 +35,7 @@ h1{font-size:19px;margin:0 0 4px}
 .k3{background:var(--c3b);color:#854f0b;border-color:var(--c3)}
 .warnchip{background:var(--wyb);color:#7a5a00;border:1px solid var(--wy);border-radius:6px;padding:1px 6px;font-size:10.5px;font-weight:700}
 .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
-.split{display:grid;grid-template-columns:1fr 320px;gap:14px;align-items:start}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
 @media(max-width:980px){.split{grid-template-columns:1fr}}
 .mono{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--ink3)}
 .m{font-style:italic;font-family:"Cambria Math",Cambria,Georgia,serif}
@@ -89,12 +89,23 @@ svg.edges{position:absolute;inset:0;z-index:3;pointer-events:none;width:100%;hei
 .note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--c3);border-radius:0 10px 10px 0;padding:10px 13px;font-size:12.5px;color:var(--ink2);margin-top:14px}
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2530;color:#fff;padding:9px 15px;border-radius:9px;font-size:13px;opacity:0;transition:opacity .2s;z-index:50;pointer-events:none}
 .toast.on{opacity:1}
+
+.chain{overflow:auto}
+.tree{position:relative}
+.lane{position:absolute;border-radius:12px;border:1.5px dashed}
+.lane.l0{background:#f3fbf8;border-color:#9fdcc6}.lane.l1{background:#f2f8ff;border-color:#a9cdf0}.lane.l2{background:#f7f6ff;border-color:#c3beef}.lane.l3{background:#fff8ec;border-color:#efc98a}
+.tree .nd{position:absolute;overflow:hidden;z-index:3}
+.tree .nd .tt{font-size:11.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tree svg.edges{position:absolute;left:0;top:0;z-index:2;pointer-events:none}
+.pill{position:absolute;z-index:3;border-radius:22px;border:2px solid;padding:5px 11px;font-size:11px;line-height:1.3;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:#fff}
+.pill b{font-size:12px}.pill span{color:var(--ink2)}
+.pill.k1{border-color:var(--c1)}.pill.k2{border-color:var(--c2)}.pill.k3{border-color:var(--c3)}
 </style></head>
 <body><div class="wrap">
 
 <div class="crumb">Kho › Hình › Luyện › Họ <b>Tam giác vuông</b> › Mô hình <b>MH.09.012 — Phân giác trong tam giác vuông</b></div>
 <h1>Mô hình Hình: hai tab của cùng một cây nhánh</h1>
-<p class="sub"><b>Tab Chuỗi</b> — nhìn toàn mô hình: cột = cấp (độ sâu theo tiền đề), mũi tên = tiền đề, khung nét đứt = nhánh. <b>Xây ở đây trước.</b>
+<p class="sub"><b>Tab Chuỗi</b> — nhìn toàn mô hình như một CÂY chuỗi: thân chạy ngang (bài nối bài), tới chỗ thêm giả thiết thì rẽ nhánh, nhánh lại rẽ tiếp. <b>Xây ở đây trước.</b>
 <b>Tab Nhóm</b> — card lồng nhau theo cây nhánh; bài chưa xếp nằm ở card đầu "bài trực tiếp của mô hình" (không có NULL). Hai tab đọc CÙNG dữ liệu: đổi nhóm ở tab này, tab kia đổi theo.
 Dữ liệu giả, chỉ để bấm thử.</p>
 
@@ -121,7 +132,8 @@ const SEED = () => ({
   nhanh:{
     root:{id:'root',cha:null,ten:'Mô hình gốc',gt:'(giả thiết của mô hình)',cls:'0'},
     n1:{id:'n1',cha:'root',ten:'Kẻ DE ⊥ AB',gt:'Kẻ DE ⊥ AB tại E.',cls:'1'},
-    n1a:{id:'n1a',cha:'n1',ten:'Kẻ thêm DF ⊥ AC',gt:'Kẻ thêm DF ⊥ AC tại F.',cls:'2'}
+    n1a:{id:'n1a',cha:'n1',ten:'Kẻ thêm DF ⊥ AC',gt:'Kẻ thêm DF ⊥ AC tại F.',cls:'2'},
+    n2:{id:'n2',cha:'root',ten:'M trung điểm BC',gt:'Gọi M là trung điểm của BC.',cls:'1'}
   },
   bai:[
     {id:'b1',stt:'1.1',ten:'Chứng minh DB/DC = AB/AC',nhanh:'root',tien:[],rieng:''},
@@ -131,7 +143,7 @@ const SEED = () => ({
     {id:'b5',stt:'1.5',ten:'Chứng minh AE = DE',nhanh:'n1',tien:['b3'],rieng:''},
     {id:'b6',stt:'1.6',ten:'Chứng minh AEDF là hình vuông',nhanh:'n1a',tien:['b3'],rieng:''},
     {id:'b7',stt:'1.7',ten:'DE = AB·AC / (AB + AC)',nhanh:'n1a',tien:['b6','b4'],rieng:''},
-    {id:'b8',stt:'1.8',ten:'Chứng minh BE/EA = BD/DC',nhanh:'root',tien:['b1'],rieng:''},
+    {id:'b8',stt:'1.8',ten:'Chứng minh AD ≤ AM',nhanh:'n2',tien:['b1'],rieng:''},
     {id:'b9',stt:'1.9',ten:'Tính diện tích AEDF theo AB, AC',nhanh:'root',tien:['b6'],rieng:''}
   ],
   sub:{ma:'MH.09.013',ten:'Phân giác + đường cao AH',gt:'Kẻ thêm AH ⊥ BC (H ∈ BC).',nBai:3}
@@ -155,54 +167,66 @@ function renderStat(){
   $('#gom').disabled = sel.size<2;
 }
 
-/* ---------- TAB 1 ---------- */
+/* ---------- TAB 1: cây chuỗi ---------- */
+const W=186,H=62,G=46,RH=92,PW=150;
 function drawChain(){
   const memo={}; S.bai.forEach(b=>level(b,memo));
-  const maxL = Math.max(...Object.values(memo));
-  let h = '<div class="chain" id="chain"><div class="frames" id="frames"></div><svg class="edges" id="edges"></svg><div class="cols">';
-  for(let L=1;L<=maxL;L++){
-    h += `<div class="col"><div class="colh">Cấp ${L}${L===1?' · không tiền đề':''}</div>`;
-    S.bai.filter(b=>memo[b.id]===L).forEach(b=>{
-      const w = sai(b).length>0, n=S.nhanh[b.nhanh];
-      h += `<div class="nd ${w?'bad':''} ${cur===b.id?'sel':''} ${sel.has(b.id)?'pick':''}" data-id="${b.id}" style="border-color:var(--c${n.cls})">
-        <div class="top"><span class="stt">${b.stt}</span><span class="chip k${n.cls}">${tenNhanh(n)}</span><input type="checkbox" data-pick="${b.id}" ${sel.has(b.id)?'checked':''} title="Chọn để gom nhóm"></div>
-        ${b.ten}${w?'<div style="margin-top:4px"><span class="warnchip">⚠ sai nhánh</span></div>':''}</div>`;
-    });
-    if(L===1) h += `<div class="nd submodel" data-sub="1"><div class="top"><span class="stt">▸</span><span class="chip k0">Mô hình con</span></div><b>${S.sub.ten}</b><div class="mono">${S.sub.ma} · ${S.sub.nBai} bài · bấm để đi vào</div></div>`;
-    h += '</div>';
+  const items=[], bands=[], links=[], pos={};
+  const kids = nid => Object.values(S.nhanh).filter(x=>x.cha===nid);
+  // đặt một "làn" = chuỗi bài của 1 nhánh; trả về số hàng chiếm
+  function place(nid,x,row,fromPt){
+    const n=S.nhanh[nid], own=S.bai.filter(b=>b.nhanh===nid).sort((a,b)=>memo[a.id]-memo[b.id]||a.stt.localeCompare(b.stt));
+    let cx=x, y=row*RH+14, first=null, last=null;
+    if(nid!=='root'){ const id='p_'+nid; items.push({k:'pill',id,n,x:cx,y:y+4}); pos[id]={x:cx,y:y+4,w:PW,h:H-8}; first=last=id; cx+=PW+G; }
+    own.forEach(b=>{ items.push({k:'bai',b,x:cx,y}); pos[b.id]={x:cx,y,w:W,h:H}; if(!first) first=b.id; if(last) links.push({a:last,b:b.id,t:'chain'}); last=b.id; cx+=W+G; });
+    if(fromPt && first) links.push({a:fromPt,b:first,t:'fork'});
+    const laneEnd = cx-G;
+    let used=0;
+    kids(nid).forEach(k=>{ used+=place(k.id,cx,row+used,last); });
+    if(nid==='root'){ // mô hình con = lá của cây, đi vào được
+      const id='sub', y2=(row+used)*RH+14;
+      items.push({k:'sub',id,x:cx,y:y2}); pos[id]={x:cx,y:y2,w:W+30,h:H}; if(last) links.push({a:last,b:id,t:'fork'}); used+=1;
+    }
+    used=Math.max(1,used);
+    bands.push({n,x:x-10,y:row*RH+4,w:Math.max(laneEnd,x+PW)-x+20,h:RH-8});
+    return used;
   }
-  h += '</div></div>';
-  h += `<div class="legend"><b>Nhánh:</b> ${Object.values(S.nhanh).map(n=>`<span class="chip k${n.cls}">${tenNhanh(n)}</span>`).join('')}
-        <span>· khung nét đứt = phạm vi một nhánh (gồm cả nhánh con) · nền vàng = sai nhánh · tick ≥2 bài rồi “Gom thành nhóm”</span></div>`;
-  $('#view').innerHTML = h;
-  requestAnimationFrame(layoutChain);
-}
-function layoutChain(){
-  const ch=$('#chain'); if(!ch) return;
-  const box = ch.getBoundingClientRect();
-  const R = el => {const r=el.getBoundingClientRect();return {x:r.left-box.left+ch.scrollLeft,y:r.top-box.top,w:r.width,h:r.height}};
-  const pos={}; ch.querySelectorAll('.nd[data-id]').forEach(e=>pos[e.dataset.id]=R(e));
-  // cạnh tiền đề
-  let sv='<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#7b8696" stroke-width="1.3"/></marker><marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.5"/></marker></defs>';
+  const rows=place('root',16,0,null);
+  let maxX=0; Object.values(pos).forEach(p=>maxX=Math.max(maxX,p.x+p.w));
+  const Wd=maxX+30, Ht=rows*RH+20;
+  let h=`<div class="chain"><div class="tree" style="width:${Wd}px;height:${Ht}px">`;
+  bands.forEach(b=>h+=`<div class="lane l${b.n.cls}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px"></div>`);
+  let sv=`<svg class="edges" width="${Wd}" height="${Ht}"><defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#6b7686" stroke-width="1.4"/></marker><marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.6"/></marker><marker id="t" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#a9b2bf" stroke-width="1.1"/></marker></defs>`;
+  const curve=(p,q,st,w,dash,mk)=>{const x1=p.x+p.w,y1=p.y+p.h/2,x2=q.x,y2=q.y+q.h/2,d=Math.max(14,(x2-x1)/2);
+    return `<path d="M${x1},${y1} C${x1+d},${y1} ${x2-d},${y2} ${x2-1},${y2}" fill="none" stroke="${st}" stroke-width="${w}" ${dash?`stroke-dasharray="${dash}"`:''} marker-end="url(#${mk})"/>`};
+  links.forEach(l=>{ const p=pos[l.a],q=pos[l.b]; if(!p||!q) return;
+    sv+= l.t==='fork' ? curve(p,q,'#6b7686',2.6,'','a') : curve(p,q,'#6b7686',1.8,'','a'); });
+  // tiền đề: chỉ vẽ khi không trùng đường chuỗi (xuyên làn / nhảy cóc) — nét mảnh; sai nhánh = đỏ đứt
   S.bai.forEach(b=>b.tien.forEach(t=>{
-    const p=pos[t], q=pos[b.id]; if(!p||!q) return;
-    const bad=!chua(b.nhanh, byId(t).nhanh);
-    const x1=p.x+p.w, y1=p.y+p.h/2, x2=q.x, y2=q.y+q.h/2, mx=(x1+x2)/2;
-    sv+=`<path d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2-1},${y2}" fill="none" stroke="${bad?'#c0392b':'#7b8696'}" stroke-width="${bad?2:1.3}" ${bad?'stroke-dasharray="5 3"':''} marker-end="url(#${bad?'r':'a'})"/>`;
+    const p=pos[t],q=pos[b.id]; if(!p||!q) return;
+    const bad=!chua(b.nhanh,byId(t).nhanh);
+    if(!bad && p.y===q.y && Math.abs((p.x+p.w+G)-q.x)<2) return;
+    if(p.x>=q.x){ // tiền đề nằm sau ⇒ đi vòng dưới
+      const x1=p.x+p.w/2,y1=p.y+p.h,x2=q.x+q.w/2,y2=q.y+q.h,yb=Math.max(y1,y2)+20;
+      sv+=`<path d="M${x1},${y1} C${x1},${yb} ${x2},${yb} ${x2},${y2+1}" fill="none" stroke="${bad?'#c0392b':'#a9b2bf'}" stroke-width="${bad?2:1.1}" stroke-dasharray="${bad?'5 3':'3 3'}" marker-end="url(#${bad?'r':'t'})"/>`;
+    } else sv+=curve(p,q,bad?'#c0392b':'#a9b2bf',bad?2:1.1,bad?'5 3':'3 3',bad?'r':'t');
   }));
-  $('#edges').innerHTML=sv; $('#edges').style.width=ch.scrollWidth+'px'; $('#edges').style.height=ch.scrollHeight+'px';
-  // khung nhánh (gồm cả con) — không vẽ cho gốc
-  let fh='';
-  Object.values(S.nhanh).filter(n=>n.id!=='root').forEach(n=>{
-    const ids = S.bai.filter(b=>duong(b.nhanh).some(x=>x.id===n.id)).map(b=>b.id);
-    const rs = ids.map(i=>pos[i]).filter(Boolean); if(!rs.length) return;
-    const pad = 8 + (n.cls==='2'?0:6);
-    const x=Math.min(...rs.map(r=>r.x))-pad, y=Math.min(...rs.map(r=>r.y))-pad-6;
-    const x2=Math.max(...rs.map(r=>r.x+r.w))+pad, y2=Math.max(...rs.map(r=>r.y+r.h))+pad;
-    fh+=`<div class="frame" style="left:${x}px;top:${y}px;width:${x2-x}px;height:${y2-y}px;border-color:var(--c${n.cls})"><span style="color:var(--c${n.cls})">${n.ten}</span></div>`;
+  sv+='</svg>';
+  h+=sv;
+  items.forEach(it=>{
+    if(it.k==='pill'){ const n=it.n;
+      h+=`<div class="pill k${n.cls}" style="left:${it.x}px;top:${it.y}px;width:${PW}px;height:${H-8}px" title="${n.gt}"><b>⑂ ${n.ten}</b><span>${n.gt}</span></div>`;
+    } else if(it.k==='sub'){
+      h+=`<div class="nd submodel" data-sub="1" style="left:${it.x}px;top:${it.y}px;width:${W+30}px;height:${H}px"><div class="top"><span class="chip k0">Mô hình con ▸</span></div><b>${S.sub.ten}</b><div class="mono">${S.sub.ma} · ${S.sub.nBai} bài</div></div>`;
+    } else { const b=it.b,n=S.nhanh[b.nhanh],w=sai(b).length>0;
+      h+=`<div class="nd ${w?'bad':''} ${cur===b.id?'sel':''} ${sel.has(b.id)?'pick':''}" data-id="${b.id}" style="left:${it.x}px;top:${it.y}px;width:${W}px;height:${H}px;border-color:var(--c${n.cls})">
+        <div class="top"><span class="stt">${b.stt}</span>${w?'<span class="warnchip">⚠ sai nhánh</span>':''}<input type="checkbox" data-pick="${b.id}" ${sel.has(b.id)?'checked':''} title="Chọn để gom nhóm"></div><div class="tt">${b.ten}</div></div>`; }
   });
-  $('#frames').innerHTML=fh; $('#frames').style.width=ch.scrollWidth+'px'; $('#frames').style.height=ch.scrollHeight+'px';
+  h+='</div></div>';
+  h+=`<div class="legend"><b>Cách đọc:</b> thân cây chạy trái → phải (mỗi ô = một bài, nối nhau thành chuỗi) · <b>⑂</b> = chỗ rẽ: thêm một giả thiết ⇒ mọc ra một làn mới · làn lồng làn = nhánh con · nét xám mảnh = tiền đề nhảy cóc / xuyên làn · đỏ đứt = sai nhánh · tick ≥2 bài ⇒ “Gom thành nhóm”.</div>`;
+  $('#view').innerHTML=h;
 }
+function layoutChain(){}
 
 /* ---------- TAB 2 ---------- */
 function opts(b){return Object.values(S.nhanh).map(n=>`<option value="${n.id}" ${n.id===b.nhanh?'selected':''}>${'— '.repeat(duong(n.id).length-1)}${tenNhanh(n)}</option>`).join('')}
