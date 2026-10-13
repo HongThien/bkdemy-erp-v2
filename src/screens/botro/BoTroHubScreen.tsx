@@ -12,9 +12,11 @@ import TrangThaiCaBoTroScreen from '../danhgia/TrangThaiCaBoTroScreen'
 import DanhGiaCaBoTroScreen from '../danhgia/DanhGiaCaBoTroScreen'
 import LichPhongScreen from './LichPhongScreen'
 import LichTrucScreen from './LichTrucScreen'
+import BoTroDashboardScreen from './BoTroDashboardScreen'
 
-export type BoTroTab = 'duoi' | 'bu' | 'yeu' | 'lichphong' | 'lichtruc'
+export type BoTroTab = 'dashboard' | 'duoi' | 'bu' | 'yeu' | 'lichphong' | 'lichtruc'
 const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
+  { k: 'dashboard', ten: 'Dashboard', mo_ta: 'Tiến độ theo tuần: chốt bao nhiêu ca, thực tế chạy được bao nhiêu — 3 tuần gần nhất' }, // Thùy 13/10
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
   { k: 'yeu', ten: 'Yếu', mo_ta: 'Trọn luồng bổ trợ yếu: duyệt → nội dung → xếp → trạng thái → đánh giá ca' },
@@ -64,7 +66,7 @@ export default function BoTroHubScreen({ mo }: { mo?: { tab: BoTroTab; yeu?: Yeu
         ))}
         <span className="ml-auto hidden text-[11.5px] text-slate-400 md:inline">{TABS.find((t) => t.k === tab)?.mo_ta}</span>
       </div>
-      {tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
+      {tab === 'dashboard' ? <BoTroDashboardScreen /> : tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
     </div>
   )
 }

@@ -321,3 +321,11 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   không có câu ⇒ theo mã lúc làm, mã đã bỏ thì theo dạng nhận (gop_vao, hoặc log gộp câu khi chỉ có đúng 1 dạng nhận). Không rõ ⇒ giữ mã cũ.
 - Áp cho: mastery (`fn_mastery_cells`) · màn Dạng yếu app HS (ẩn hẳn dạng không còn trong bản đồ) · dạng yếu 2 cửa sổ · đề xuất dạng mới · dạng của buổi bù.
 - Case yếu đang mở: dạng bị XOÁ MỀM ở bản đồ cũng tự đổi sang dạng nhận / đóng lại (trước chỉ bắt xoá cứng). Case đuổi: CHƯA áp.
+
+## 19. Cập nhật 13/10 — câu thiếu hình · Dashboard theo tuần
+
+- **Câu thiếu hình:** đề ghi "[hình…]" mà chưa đính hình ⇒ không chọn vào bất kỳ bài nào (luật chung `_kho_dk_du_hinh_sql`, nằm trong `_kho_dk_mcq_sql` và
+  `_kho_dk_tln_sql`). Câu vẫn ở kho; đính hình xong tự quay lại.
+- **Dashboard (tab đầu của hub Bổ trợ):** mỗi tuần (T2→CN) × Yếu · Bù · Đuổi: **đã chạy / chốt**, 3 tuần gần nhất, lùi/tới từng tuần.
+  Đơn vị = 1 lượt học sinh trong 1 ca. Chốt = mọi lượt đã xếp có ngày trong tuần (kể cả ca vắng / không diễn ra), trừ ca đã gỡ khỏi lịch.
+  Đã chạy = em có mặt. Mọi số + phân loại ở `fn_bo_tro_dashboard_tuan`; muốn đổi cách đếm thì sửa hàm này, không sửa màn.
