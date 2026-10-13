@@ -1,0 +1,47 @@
+[
+ {
+  "ma": "HHC000803",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC000803.png",
+  "kieu": "chung",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/58aa3094-5ae3-4ef0-b04d-da46bf07884d.png",
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC000803-5f66c64f-249c-46c9-8891-63ea260c1a0e.png"
+ },
+ {
+  "ma": "HHC000805",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC000805.png",
+  "kieu": "chung",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/cf51d176-e616-407a-aaa3-07daf3efe36c.png",
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC000805-b98453d1-36cd-45ed-9c94-24302a8fbc50.png"
+ },
+ {
+  "ma": "HHC000817",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC000817.png",
+  "kieu": "chung",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a1f3782d-f10f-45e7-9652-22d5d105e261.png",
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC000817-c0323afe-f076-4e35-9ce8-6ed299168539.png"
+ },
+ {
+  "ma": "HHC000818",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC000818.png",
+  "kieu": "chung",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/f3460ed3-0aaf-492f-8b59-184275329926.png",
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC000818-2688c6b6-353b-4f33-8577-74771a279ef0.png"
+ },
+ {
+  "ma": "HHC000819",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC000819.png",
+  "kieu": "chung",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/7ba09ea0-c508-468b-a7e0-abf1be1c0631.png",
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC000819-fa0e5f71-135e-4176-b8b4-891bfa3f51dd.png"
+ }
+]
