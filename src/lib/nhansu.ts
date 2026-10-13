@@ -7,7 +7,7 @@ import { reopenPhase, moLaiDanhGia } from './gami'
 const LIMIT = 10000
 
 // ── Types ─────────────────────────────────────────────────────────
-export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null }
+export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; erp_giao_dien?: { skin?: string; nen?: string | null; che_do?: 'sang' | 'toi' } | null }
 
 // Ảnh đại diện → bucket public 'avatars' (tạo qua Dashboard, migration 0020). DB lưu URL.
 export async function uploadAvatar(file: File): Promise<string> {
@@ -334,6 +334,11 @@ export async function updatePhimTatCongThuc(nhanSuId: string, map: Record<string
   if (error) throw error
 }
 
+// Giao diện vỏ ERP tôi chọn (mig 202610131824) — {skin, nen, che_do} theo style app HS. Ghi đè cả object.
+export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; nen?: string | null; che_do?: 'sang' | 'toi' }): Promise<void> {
+  const { error } = await supabase.from('nhan_su').update({ erp_giao_dien: gd, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
+  if (error) throw error
+}
 // Mục menu YÊU THÍCH của tôi (mig 202610131649) — mảng id mục theo thứ tự thêm. Ghi đè cả mảng.
 export async function updateMenuYeuThich(nhanSuId: string, ids: string[]): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ menu_yeu_thich: ids, updated_at: new Date().toISOString() }).eq('id', nhanSuId)

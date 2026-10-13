@@ -3,7 +3,7 @@ import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope } from '../store/useStore'
 import { LEAF_HOME, laHome } from '../lib/menu'
 import { useDieuHuong } from '../lib/useDieuHuong'
-import { BIEN_ERP } from '../lib/erpSkin'
+import { useSkinErp } from '../lib/erpSkin'
 import DuongDan from '../components/DuongDan'
 import HomeScreen from './HomeScreen'
 import { getMyScope, type MyScope } from '../lib/nhansu'
@@ -572,6 +572,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 export default function NhanSuHome({ user }: { user: User }) {
   const { staffLeaf: leafStore, setStaffLeaf, quyen, nhanLichSu, lopPhu, moLopPhu, backLeaf } = useStore()
   const dh = useDieuHuong()
+  const sk = useSkinErp()
   const [scope, setScope] = useState<MyScope | null>(null)
   const [loading, setLoading] = useState(true)
   const [openBuoi, setOpenBuoi] = useState<OpenBuoi | null>(null)
@@ -634,18 +635,18 @@ export default function NhanSuHome({ user }: { user: User }) {
           {/* Thanh điều hướng mobile (cùng màu thanh trên): ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ
               trên điện thoại). Thùy 07-06: "không có nút back khiến dùng mobile khá khó chịu" → 13/10: 🏠 về nhà + ← quay
               lại màn trước ở mọi màn + đường dẫn 2 cấp cuối (bấm tên cấp để về, bấm › để nhảy ngang) + ☆ ghim. */}
-          <div style={BIEN_ERP} className="relative z-[55] flex shrink-0 items-center gap-1.5 border-b border-[var(--e-line)] bg-[var(--e-bg)] px-2 py-1.5 text-[var(--e-ink)]">
+          <div style={sk.bien} className="relative z-[55] flex shrink-0 items-center gap-1.5 border-b border-[var(--sk-line)] bg-[var(--sk-bg)] px-2 py-1.5 text-[var(--sk-ink)]">
             {staffLeaf !== nha && (
-              <button onClick={() => setStaffLeaf(nha)} title="Về Trang chính" className="rounded-md border border-[var(--e-line)] px-2.5 py-2 text-[15px] leading-none active:bg-[var(--e-surface2)]">🏠</button>
+              <button onClick={() => setStaffLeaf(nha)} title="Về Trang chính" className="rounded-md border border-[var(--sk-line)] px-2.5 py-2 text-[15px] leading-none active:bg-[var(--sk-surface2)]">🏠</button>
             )}
             {staffLeaf !== nha && dh.coLui && (
-              <button onClick={dh.lui} title="Quay lại màn trước" className="rounded-md border border-[var(--e-line)] px-3 py-2 text-[15px] font-semibold leading-none text-[var(--e-acc)] active:bg-[var(--e-surface2)]">←</button>
+              <button onClick={dh.lui} title="Quay lại màn trước" className="rounded-md border border-[var(--sk-line)] px-3 py-2 text-[15px] font-semibold leading-none text-[var(--sk-acc)] active:bg-[var(--sk-surface2)]">←</button>
             )}
-            <button onClick={() => setNavOpen(true)} className="rounded-md border border-[var(--e-line)] px-3 py-2 text-[15px] leading-none text-[var(--e-ink)] active:bg-[var(--e-surface2)]">☰</button>
+            <button onClick={() => setNavOpen(true)} className="rounded-md border border-[var(--sk-line)] px-3 py-2 text-[15px] leading-none text-[var(--sk-ink)] active:bg-[var(--sk-surface2)]">☰</button>
             <div className="min-w-0 flex-1"><DuongDan duong={dh.duong} duoi={dh.duoi} onDi={setStaffLeaf} gon /></div>
             {dh.ghimDuoc && (
               <button onClick={dh.ghim} title={dh.daGhim ? 'Bỏ khỏi Yêu thích' : 'Thêm vào Yêu thích'}
-                className={`rounded-md px-2 py-1.5 text-[19px] leading-none ${dh.daGhim ? 'text-[var(--e-acc)]' : 'text-[var(--e-muted)]'}`}>{dh.daGhim ? '★' : '☆'}</button>
+                className={`rounded-md px-2 py-1.5 text-[19px] leading-none ${dh.daGhim ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)]'}`}>{dh.daGhim ? '★' : '☆'}</button>
             )}
           </div>
           {navOpen && (
@@ -671,8 +672,8 @@ export default function NhanSuHome({ user }: { user: User }) {
         ) : (
           <>
             {/* Dải mép trái: rê chuột vào để hiện cây */}
-            <div onMouseEnter={moNav} onMouseLeave={dongNav} title="Rê chuột vào để mở menu" style={BIEN_ERP}
-              className="flex min-h-0 cursor-pointer flex-col items-center border-r border-[var(--e-line)] bg-[var(--e-bg)] pt-3 text-[11px] text-[var(--e-muted)] hover:text-[var(--e-acc)]">
+            <div onMouseEnter={moNav} onMouseLeave={dongNav} title="Rê chuột vào để mở menu" style={sk.bien}
+              className="flex min-h-0 cursor-pointer flex-col items-center border-r border-[var(--sk-line)] bg-[var(--sk-bg)] pt-3 text-[11px] text-[var(--sk-muted)] hover:text-[var(--sk-acc)]">
               ☰
             </div>
             <aside onMouseEnter={moNav} onMouseLeave={dongNav}

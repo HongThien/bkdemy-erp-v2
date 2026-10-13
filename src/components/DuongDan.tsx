@@ -3,17 +3,17 @@
 // • Bấm TÊN một cấp  ⇒ nhảy về cấp đó.
 // • Bấm dấu › sau nó ⇒ xổ các mục NẰM TRONG cấp đó, chọn là sang thẳng (đi ngang, không phải lùi rồi tiến).
 // • Cấp là thư mục không có trang riêng (vd "Vận hành lớp học") ⇒ bấm tên cũng xổ mục con.
-// Màu đọc từ biến `--e-*` của khối cha (xem erpSkin.ts) — component không tự chọn màu.
+// Màu đọc từ biến `--sk-*` của khối cha (xem erpSkin.ts) — component không tự chọn màu.
 import { useEffect, useRef, useState } from 'react'
 import type { NutMenu } from '../lib/menu'
 
 function Dong({ n, dang, thut, onChon }: { n: NutMenu; dang: boolean; thut?: boolean; onChon: (id: string) => void }) {
   return (
     <button onClick={() => n.id && onChon(n.id)}
-      className={`flex w-full items-center gap-2 rounded-md py-1.5 pr-2 text-left text-[13px] ${thut ? 'pl-6' : 'pl-2'} ${dang ? 'bg-[var(--e-surface2)] font-semibold text-[var(--e-acc)]' : 'text-[var(--e-ink)] hover:bg-[var(--e-surface2)]'}`}>
+      className={`flex w-full items-center gap-2 rounded-md py-1.5 pr-2 text-left text-[13px] ${thut ? 'pl-6' : 'pl-2'} ${dang ? 'bg-[var(--sk-surface2)] font-semibold text-[var(--sk-acc)]' : 'text-[var(--sk-ink)] hover:bg-[var(--sk-surface2)]'}`}>
       <span className="w-5 shrink-0 text-center text-[14px] leading-none">{n.icon}</span>
       <span className="min-w-0 flex-1 truncate">{n.ten}</span>
-      {n.con?.length ? <span className="text-[var(--e-muted)]">›</span> : null}
+      {n.con?.length ? <span className="text-[var(--sk-muted)]">›</span> : null}
     </button>
   )
 }
@@ -56,23 +56,23 @@ export default function DuongDan({ duong, duoi, onDi, onDuoi, gon }: {
         return (
           <div key={i} className="relative flex min-w-0 items-center">
             <button onClick={bamTen} title={n.id ? `Về ${n.ten}` : n.ten}
-              className={`flex min-w-0 items-center gap-1 rounded px-1.5 py-1 hover:bg-[var(--e-surface2)] ${dangO ? 'font-semibold text-[var(--e-ink)]' : 'text-[var(--e-muted)] hover:text-[var(--e-ink)]'}`}>
+              className={`flex min-w-0 items-center gap-1 rounded px-1.5 py-1 hover:bg-[var(--sk-surface2)] ${dangO ? 'font-semibold text-[var(--sk-ink)]' : 'text-[var(--sk-muted)] hover:text-[var(--sk-ink)]'}`}>
               {i === 0 && <span className="text-[13px] leading-none">{n.icon}</span>}
               <span className="max-w-[200px] truncate">{n.ten}</span>
             </button>
             {coCon ? (
               <button onClick={() => setMo(mo === i ? null : i)} title={`Các mục trong ${n.ten}`}
-                className={`rounded px-1 py-1 leading-none hover:bg-[var(--e-surface2)] hover:text-[var(--e-acc)] ${mo === i ? 'bg-[var(--e-surface2)] text-[var(--e-acc)]' : 'text-[var(--e-muted)]'}`}>
+                className={`rounded px-1 py-1 leading-none hover:bg-[var(--sk-surface2)] hover:text-[var(--sk-acc)] ${mo === i ? 'bg-[var(--sk-surface2)] text-[var(--sk-acc)]' : 'text-[var(--sk-muted)]'}`}>
                 <span className={`inline-block transition-transform ${mo === i ? 'rotate-90' : ''}`}>›</span>
               </button>
-            ) : (i < cuoi || duoi) ? <span className="px-1 text-[var(--e-muted)]">›</span> : null}
+            ) : (i < cuoi || duoi) ? <span className="px-1 text-[var(--sk-muted)]">›</span> : null}
             {mo === i && coCon && (
-              <div className={`absolute top-full z-[70] mt-1.5 max-h-[70vh] w-[250px] overflow-auto rounded-lg border border-[var(--e-line)] bg-[var(--e-bg)] p-1 shadow-2xl ${gon ? 'right-0' : 'left-0'}`}>
+              <div className={`absolute top-full z-[70] mt-1.5 max-h-[70vh] w-[250px] overflow-auto rounded-lg border border-[var(--sk-line)] bg-[var(--sk-bg)] p-1 shadow-2xl ${gon ? 'right-0' : 'left-0'}`}>
                 {n.con!.map((c) => (c.id ? (
                   <Dong key={c.id} n={c} dang={duong[i + 1] === c} onChon={chon} />
                 ) : (
                   <div key={c.ten}>
-                    <div className="px-2 pb-0.5 pt-2 text-[10.5px] font-semibold uppercase tracking-wide text-[var(--e-muted)]">{c.ten}</div>
+                    <div className="px-2 pb-0.5 pt-2 text-[10.5px] font-semibold uppercase tracking-wide text-[var(--sk-muted)]">{c.ten}</div>
                     {c.con?.map((d) => <Dong key={d.id ?? d.ten} n={d} dang={duong[i + 2] === d} thut onChon={chon} />)}
                   </div>
                 )))}
@@ -81,7 +81,7 @@ export default function DuongDan({ duong, duoi, onDi, onDuoi, gon }: {
           </div>
         )
       })}
-      {duoi && <span className="truncate px-1.5 py-1 font-semibold text-[var(--e-ink)]">{duoi}</span>}
+      {duoi && <span className="truncate px-1.5 py-1 font-semibold text-[var(--sk-ink)]">{duoi}</span>}
     </div>
   )
 }
