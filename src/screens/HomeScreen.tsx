@@ -9,8 +9,8 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useStore } from '../store/useStore'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { useSkinErp, cheDoErp } from '../lib/erpSkin'
-import { SKINS, nenCua } from './hocsinh/skin/registry'
+import { useSkinErp, cheDoErp, SKINS_ERP } from '../lib/erpSkin'
+import { nenCua } from './hocsinh/skin/registry'
 import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
 const HEAD: CSSProperties = { fontFamily: 'var(--sk-font-head)', textTransform: 'var(--sk-head-case)' as CSSProperties['textTransform'], letterSpacing: 'var(--sk-head-track)' }
@@ -75,7 +75,8 @@ function NhomBox({ anh, matNa, chu, ten, phu, so, onClick }: { anh?: string; mat
   return (
     <button onClick={onClick} style={THE} className={`group relative flex aspect-[1/0.86] flex-col items-center justify-end px-2 pb-3 pt-2 text-center ${NOI}`}>
       <span className="flex min-h-0 w-full flex-1 items-center justify-center">
-        {anh ? <IconStyle src={anh} matNa={matNa} className={`transition group-hover:scale-110 ${matNa ? 'size-[42%]' : 'max-h-full max-w-[62%]'}`} /> : <span className="text-[44px]">{chu}</span>}
+        {anh ? <IconStyle src={anh} matNa={matNa} className={`transition group-hover:scale-110 ${matNa ? 'size-[42%]' : 'max-h-full max-w-[62%]'}`} />
+          : <span className="transition group-hover:scale-110"><HuyHieu chu={chu} co="size-[84px] text-[44px]" /></span>}
       </span>
       <span className="mt-1 block text-[17px] font-bold leading-tight text-[var(--sk-ink)]" style={HEAD}>{ten}</span>
       <span className="mt-0.5 block w-full truncate px-1 text-[12px] text-[var(--sk-muted)]">{phu}</span>
@@ -93,7 +94,7 @@ const Nhan = ({ children, className = '' }: { children: React.ReactNode; classNa
   </div>
 )
 
-// 🎨 CHỌN GIAO DIỆN — 5 style của app HS; style có nhiều hình nền / có cả sáng lẫn tối thì chọn tiếp ở dưới. Đổi là áp ngay.
+// 🎨 CHỌN GIAO DIỆN — Mặc định (ERP như cũ) + 4 style có tranh của app HS; style có nhiều hình nền / có cả sáng lẫn tối thì chọn tiếp ở dưới. Đổi là áp ngay.
 function ChonGiaoDien({ hep }: { hep: boolean }) {
   const sk = useSkinErp()
   const doi = useStore((s) => s.doiGiaoDienErp)
@@ -117,7 +118,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
         <div className={`z-40 mt-2 border border-[var(--sk-line)] bg-[var(--sk-bg)] p-3 text-[var(--sk-ink)] shadow-2xl ${hep ? 'fixed inset-x-3' : 'absolute right-0 w-[560px]'}`} style={{ borderRadius: 'var(--sk-radius)' }}>
           <div className={muc}>Giao diện</div>
           <div className={hep ? 'grid grid-cols-3 gap-2' : 'grid grid-cols-5 gap-2'}>
-            {SKINS.map((s) => (
+            {SKINS_ERP.map((s) => (
               <button key={s.id} title={s.moTa} onClick={() => doi({ skin: s.id, nen: null, che_do: undefined })} className={o(s.id === sk.skin.id)} style={{ borderRadius: 8 }}>
                 <span className="block h-[58px]" style={{ background: nenCua(s.hinhNen[0], cheDoErp(s, {}), false) }} />
                 <span className={ten}>{s.ten}</span>
@@ -179,7 +180,7 @@ export default function HomeScreen() {
       <section style={khung} className="min-h-0 overflow-auto text-[var(--sk-ink)]">
         <div className={`mx-auto max-w-[1500px] ${le}`}>
           <div className="mb-4 inline-flex items-center gap-3 py-2 pl-3 pr-5" style={tam}>
-            {anh ? <IconStyle src={anh} matNa={sk.iconMatNa} className="size-14" /> : <span className="text-[38px]">{nhomIcon(g.nhom)}</span>}
+            {anh ? <IconStyle src={anh} matNa={sk.iconMatNa} className="size-14" /> : <HuyHieu chu={nhomIcon(g.nhom)} co="size-14 text-[28px]" />}
             <div>
               <h2 className="text-[27px] font-bold leading-tight" style={HEAD}>{g.nhom}</h2>
               <p className="text-[12.5px] text-[var(--sk-muted)]">{NHOM_MO_TA[g.nhom ?? ''] ?? ''}{coSao ? ' — bấm ☆ ở mục hay dùng để ghim lên Trang chính' : ''}</p>
