@@ -181,3 +181,42 @@ export async function suaBaiCay(baiId: string, b: BaiNhap): Promise<KetQuaCay & 
   if (error) throw error
   return data as KetQuaCay & { bai_moi: string }
 }
+
+// ══════════════════ KHO LUYỆN · "CHƯA PHÂN MÔ HÌNH" (mig 202610140230) ══════════════════
+export type YKho = {
+  id: string; ma_y: string; thu_tu: number; nhan: string | null; noi_dung: string; gia_thiet_them: string | null
+  dap_an: string | null; loi_giai: string | null; anh_loi_giai: string | null; anh_de: string | null
+  da_duyet: boolean; baitoan_id: string | null
+}
+export type BaiKho = {
+  id: string; ma_bai: string; khoi: string | null; nguon: string | null; nguon_ma_cau: string | null
+  de_bai: string; gia_thiet_chung: string | null; huong_dan: string | null; anh_de: string | null; can_tach_tay: boolean
+  y: YKho[]
+}
+export type BaiMoHinhLuyen = {
+  baitoan_id: string; ma: string; so: string; phat_bieu: string
+  goc_id: string; goc_ma: string; goc_ten: string; nhanh_id: string; nhanh_ten: string
+}
+/** Bài kho còn ít nhất 1 ý chưa gán bài mô hình — hàng "chưa phân mô hình" của Duyệt kho. Phân trang ở DB. */
+export async function khoChuaPhanMoHinh(khoi: string, gioiHan = 30, boQua = 0): Promise<BaiKho[]> {
+  const { data, error } = await supabase.rpc('fn_hl_kho_chua_phan', { p_khoi: khoi, p_gioi_han: gioiHan, p_bo_qua: boQua })
+  if (error) throw error
+  return (data ?? []) as BaiKho[]
+}
+export async function demChuaPhanMoHinh(): Promise<{ khoi: string | null; so_bai: number; so_y: number }[]> {
+  const { data, error } = await supabase.rpc('fn_hl_dem_chua_phan')
+  if (error) throw error
+  return ((data ?? []) as { khoi: string | null; so_bai: number | string; so_y: number | string }[])
+    .map((r) => ({ khoi: r.khoi, so_bai: Number(r.so_bai), so_y: Number(r.so_y) }))
+}
+/** Mọi bài của các mô hình LUYỆN trong khối (kèm số hiển thị) — để chọn khi gán ý. */
+export async function baiMoHinhLuyen(khoi: string): Promise<BaiMoHinhLuyen[]> {
+  const { data, error } = await supabase.rpc('fn_hl_bai_mo_hinh_luyen', { p_khoi: khoi })
+  if (error) throw error
+  return (data ?? []) as BaiMoHinhLuyen[]
+}
+/** Gán ý vào bài mô hình (null = gỡ). DB chỉ nhận bài của mô hình luyện. */
+export async function ganYVaoBai(yId: string, baiToanId: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_gan_y', { p_y: yId, p_baitoan: baiToanId })
+  if (error) throw error
+}

@@ -37507,3 +37507,12 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ## 14/10 (rạng sáng, tiếp) — CEO: sau này chỉ còn Bản đồ mới
 - "Sau này chỉ còn bản đồ mới thôi. Khi nào ổn định bản đồ mới thì chuyển qua." ⇒ lối cũ Kho › Hình học giữ song song, KHÔNG gỡ bây giờ; tính năng Hình mới chỉ thêm ở Bản đồ mới. Ghi spec §10 mục 6.
+
+## 14/10 (sáng) — Hình–Luyện bước 1 cho LỚP 8: 88 bài / 223 ý vào kho + tab "chưa phân mô hình" ở Duyệt kho
+- **Thùy:** "Mày chạy lớp 8 thôi. Nếu không gán được mô hình nào thì để ở màn Duyệt kho — giống chưa phân dạng thì đây là chưa phân mô hình. Tao sẽ điền thủ công sau hoặc làm mô hình mới vào bảo mày duyệt lại."
+- **Khảo sát nguồn:** 42 đề thi khối 8, 238 câu Hình (230 khác nhau): 149 trắc nghiệm · 77 tự luận · 12 trả lời ngắn; 100% có lời giải; tất cả ở dạng chờ `HH08000000`, chưa duyệt. Bài nhiều ý đa số lưu MỘT dòng (đề chứa `a) b) c)`, lời giải chia "Phần 1. Hướng dẫn / Phần 2. Trình bày") — chỉ đề cương mới có `nhomBai`.
+- **Làm:** `scripts/hinh-luyen/nhap_tu_de_thi.mjs` (tách bằng máy, có `--thu` ghi-rồi-rollback) · mig `202610140230` (cột `nguon_ma_cau` unique · `huong_dan` · `can_tach_tay`; 4 hàm hàng chờ/đếm/danh sách bài mô hình luyện/gán ý) · `HinhLuyenChuaPhanTab.tsx` + tab mới ở `DuyetLoiGiaiScreen` (thẻ bài: giả thiết chung nền màu, hướng dẫn, từng ý + lời giải + hình, ô tìm–chọn bài mô hình, tick duyệt nội dung; vá tại chỗ, nhớ danh sách + cuộn theo khối, tải thêm 30).
+- **Kết quả ghi:** 88 bài · 223 ý. 67 bài nhiều ý · 19 một ý · 2 cờ `can_tach_tay` (Đúng/Sai). Chạy lại: "đã nhập từ trước: 88" (không trùng).
+- **Sai → sửa trong lúc làm:** (1) lần đầu máy tách 5 bài có "đoạn mở đầu" ở lời giải — soi ra 2 bài là câu Đúng/Sai (lời giải đảo thứ tự mệnh đề ⇒ tách ra ý nhận nhầm lời giải) ⇒ thêm luật nhận Đúng/Sai, không tách; (2) đề đánh số `1) 2) 3)` bị coi là 1 ý ⇒ thêm họ mốc số (chỉ nhận đầu dòng), họ nào mở đầu sớm hơn là tầng ngoài; (3) vá script bằng chuỗi lồng làm mất dấu `\` trong regex 2 lần ⇒ dùng `String.raw`.
+- **Kiểm trên app dev (Admin):** Duyệt kho › Toán › "Hình luyện · chưa phân mô hình" badge 223; khối 8 "88 bài / 223 ý"; hiện 30 thẻ đầu, thẻ 1 = HLB00095 gốc HHC002385; cảnh báo "khối 8 chưa có mô hình luyện". Chưa bấm gán (chưa có mô hình để gán).
+- **Chờ CEO:** 149 câu trắc nghiệm Hình có đưa vào kho Luyện không · `gia_thiet_them` từng ý để trống.

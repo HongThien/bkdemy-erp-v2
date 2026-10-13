@@ -247,3 +247,12 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 - **Hiện trạng nguồn (đo 14/10):** kho đề thi **khối 7 chỉ có 2 đề cương** (Ngôi Sao Hoàng Mai, Tây Mỗ) = **31 câu Hình**, đều có lời giải, đã gom 14 nhóm bài. Khối 6: 46 đề · khối 8: 42 · khối 9: 75. Câu Hình của đề thi hiện nằm ở kho Hình–Học (`hinh_hoc_cau_hoi`) ⇒ bước 1 là **chép sang kho Luyện thành bài + ý mới** (Học/Luyện độc lập, §10.4), không dời dòng cũ.
 
 6. **Lối vào: sau này CHỈ CÒN Bản đồ mới** (CEO 14/10). Lối cũ Kho › Hình học (nút Học | Luyện, rail Sơ đồ/Dọn/Kho tạm…) **giữ chạy song song cho tới khi Bản đồ mới ổn định**, rồi mới chuyển hẳn — chưa gỡ gì bây giờ. Tính năng Hình mới chỉ thêm ở Bản đồ mới; lối cũ không phát triển thêm.
+
+### 11.1 Bước 1 đã chạy cho LỚP 8 (14/10)
+
+- **Nguồn:** 42 đề thi khối 8 trong kho đề thi = 238 câu Hình (149 trắc nghiệm · 76 tự luận · 12 trả lời ngắn · 1 trùng), 100% có lời giải.
+- **Đã chép sang kho Luyện:** **88 bài (`hinh_bai`) · 223 ý (`hinh_y`)** — chỉ tự luận + trả lời ngắn. 67 bài nhiều ý (202 ý: 14 bài 2 ý · 40 bài 3 ý · 12 bài 4 ý · 1 bài 6 ý) · 19 bài một ý · **2 bài `can_tach_tay`** (câu Đúng/Sai nhiều mệnh đề, để nguyên 1 ý). Câu gốc ở kho Hình–Học KHÔNG bị đụng.
+- **Trắc nghiệm (149 câu) CHƯA lấy** — chờ CEO: có đưa câu trắc nghiệm 1 ý vào kho Luyện không.
+- **Công cụ:** `scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi <k>` (khô) · `--thu` (ghi rồi rollback) · `--ghi`. Chạy lại không nhập trùng (khoá `hinh_bai.nguon_ma_cau`). Biên bản tách: `scripts/hinh-luyen/nhap/k8-de-thi.json`.
+- **Luật tách (máy chỉ làm phần chắc):** mốc ý `a) b) c)` hoặc `1) 2) 3)` nối tiếp · trước mốc đầu = giả thiết chung · câu dẫn kết thúc bằng ":" chép vào đầu từng ý · "Phần 1. Hướng dẫn" → `hinh_bai.huong_dan` · "Phần 2. Trình bày" tách theo cùng mốc → `hinh_y.loi_giai` · số ý đề ≠ số đoạn lời giải hoặc câu Đúng/Sai ⇒ không tách, gắn cờ. **Chưa làm:** `gia_thiet_them` của ý để trống (ranh giới "dữ kiện mới" ↔ "câu hỏi" cần người); ý lồng (2a, 2b) nằm chung trong ý 2; hình đề chỉ 9/88 bài có (đề gốc không kèm hình), hình lời giải 78/88.
+- **Mô hình:** chưa gán ý nào (khối 8 chưa có mô hình luyện) ⇒ cả 223 ý ở **Duyệt kho › "Hình luyện · chưa phân mô hình"** (mig `202610140230`: `fn_hl_kho_chua_phan` · `fn_hl_dem_chua_phan` · `fn_hl_bai_mo_hinh_luyen` · `fn_hl_gan_y` — chỉ gán được vào bài của mô hình `phan='luyen'`). CEO gán tay, hoặc dựng mô hình rồi bảo Claude duyệt lại.
