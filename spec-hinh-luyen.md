@@ -73,6 +73,31 @@ alter table hinh_mo_hinh add column phan text check (phan in ('luyen','hoc'));
 
 Quan hệ ý–ý ở P1: **tuyến tính theo `thu_tu`** (ý sau được dùng kết quả mọi ý trước). Không thêm cột phụ thuộc; P2 phụ thuộc thật đến từ tiền đề của bài mô hình.
 
+### 2.5 Giả thiết CHUNG / RIÊNG — ba tầng, một luật chữ cái (CEO lưu ý 13/10)
+
+Các bài cùng mô hình có giả thiết gần giống nhau: phần chung (= mô hình) + phần riêng (của bài / của ý). Xử lý **ở ba tầng**, hai tầng trên đã có và đang chạy:
+
+| Tầng | Phần CHUNG | Phần RIÊNG | Derive |
+|---|---|---|---|
+| **Cành — mô hình ↔ mô hình cha** | `gia_thiet` của base (node tự phát biểu sâu nhất) | `gia_thiet_them` từng đời; `gt_thay_the` khi con là đặc-biệt-hoá có tên (HBH ⊃ hình thang) | `giaThietDayDu` (có) |
+| **Cành — bài mô hình ↔ mô hình** | GT của **bài cha** (tiền đề chính); không cha ⇒ GT mô hình | `gia_thiet_rieng` (cộng) · `gt_thay_the` (thay) · `gia_thiet_phu` (vẽ thêm; van `keo_gt_phu` per cạnh kéo lên đề) | `giaThietBaiToan` · `noDapAn` (có) |
+| **Lá — bài kho ↔ ý** | `hinh_bai.gia_thiet_chung` (phần đề trước ý a) | `hinh_y.gia_thiet_them` (dữ kiện xuất hiện lần đầu ở ý đó) | `fn_hl_bai_full`: GT hiệu lực của ý *i* = chung + ∪ thêm(*j* ≤ *i*) (mới) |
+
+**Luật 1 — lá lưu nguyên văn, KHÔNG tách "phần trùng mô hình" ra cột riêng.** Phần chung giữa lá và cành là thứ **suy ra lúc gán** (người so hai cột GT cạnh nhau ở M3), không lưu kép — lưu kép là hai chỗ nói một chuyện, lệch là không ai thấy (CLAUDE.md §2.0 "công thức một nơi"). Lá giữ chữ cái của đề gốc; cành giữ chữ cái chuẩn của họ (spec v3 §2.9); **không ánh xạ chữ** (§0.3).
+
+**Luật 2 — builder có HAI nguồn, không trộn trong một đề:**
+
+| Nguồn | Chọn gì | Giả thiết của đề in ra | Ghép được gì |
+|---|---|---|---|
+| **Cành** (đề chuẩn — có sẵn) | tick bài mô hình, nhiều node cùng họ | `giaThietBaiToan` của node sâu nhất + gt phụ theo van; ý ẩn nở thành bước | ghép **xuyên bài mô hình** cùng họ — được, vì cùng bộ chữ |
+| **Lá** (bài kho — mới) | tick ý của **một** bài kho | `gia_thiet_chung` + `gia_thiet_them` của mọi ý ≤ ý tick cao nhất; ý bỏ tick nở thành bước (D3) | chỉ ghép ý **trong cùng một bài kho**. Ghép ý của 2 bài kho khác nhau vào 1 đề = **cấm** (khác tên điểm, khác hình) |
+
+Muốn "lấy ý b của đề trường X ghép ý c của đề trường Y" ⇒ **đi qua cành**: hai ý đó đã gán vào bài mô hình nào thì tick hai bài mô hình đó, ra đề chuẩn. Đây chính là *lý do cành phải tồn tại*: lá nào cũng đứng riêng theo chữ của đề gốc, chỉ cành mới có bộ chữ chung để ghép. (Đề in từ lá vẫn giá trị: HS thi gặp đúng lời văn/hình thật.)
+
+**Luật 3 — gán ý → bài mô hình (P2) dùng chung/riêng làm gợi ý, không làm điều kiện cứng:** ý có `gia_thiet_them` ⇒ ứng viên là node ở **mô hình con** (có `gia_thiet_them` tương ứng) hoặc node có `gia_thiet_rieng`; ý không có ⇒ node của mô hình nhãn. Màn M3 hiện cạnh nhau *GT hiệu lực của ý* và *`giaThietBaiToan` của node* để người so; máy không so text. Lá có GT **thiếu** so với mô hình ⇒ gán lên mô hình **cha**; **thừa** ⇒ mô hình **con** — đúng luật "mô hình tối thiểu" (spec v3 §2.6), không sửa lá cho khớp.
+
+**Luật 4 — dựng cành từ lá (P2, Thùy):** đọc N lá cùng nhãn: dữ kiện lặp ở nhiều lá ⇒ `gia_thiet` mô hình; chỉ ở một vài lá ⇒ `gia_thiet_them` mô hình con hoặc `gia_thiet_rieng` bài mô hình. Hỗ trợ: màn M2 có ngăn "lá cùng nhãn" hiện `gia_thiet_chung` + `gia_thiet_them` các lá xếp cột cạnh nhau (chỉ xem). Không máy tự gom.
+
 Hàm Postgres (CLAUDE.md §2.0 — tính ở DB):
 - `fn_hl_bai_full(bai_id)` → jsonb bài + mảng ý, mỗi ý đã **resolve hình** (`anh_de` của ý ∨ ý trước ∨ bài) và **giả thiết hiệu lực** (`gia_thiet_chung` + mọi `gia_thiet_them` của ý ≤ nó).
 - `fn_hl_chon_y(bai_id, y_ids uuid[])` → khung in khi người dùng chọn tập ý: ý **không chọn** mà nằm trước ý chọn ⇒ nở thành **bước** trong ý chọn kế tiếp (đúng luật `noDapAn` hiện có, áp lên chuỗi tuyến tính). Chọn `{b}` của bài a,b,c ⇒ đề = giả thiết chung + gt thêm của a,b; lời giải b mở đầu bằng lời giải a dưới nhãn "bước".
