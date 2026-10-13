@@ -61,6 +61,20 @@ b) Vì $\triangle ABH=\triangle ACH$ (câu a) nên ...
 
 ---
 
+## Luồng VẼ LẠI hình đã có trong kho (CEO giao 13/10)
+
+Thùy 13/10: *"Rất nhiều bài Hình trong kho là hình cắt từ sách ra. Đọc đề và vẽ lại toàn bộ các hình đó."* — mọi ảnh không nằm ở `kho-anh/hinh_hoc/` đều thay bằng hình vẽ bằng code.
+
+1. `node scripts/anh/ve_lai_xuat.mjs --khoi <k>` (hoặc `--bai HH00023,…`) → gói việc ở `C:\Users\WBPC\bk-kho-lam-viec\ve-lai-hinh\<bài>-<n>\`: `viec.md` (đề, lời giải, **tên tệp ra**) + `cu/` (ảnh cũ).
+2. Trạm vẽ (subagent Sonnet) theo `docs/mau-brief-ve-lai-hinh.md` → `scripts/anh/ve_lai/<gói>.mjs` (dựng điểm bằng `mid/foot/inter/rot/bisector…`, `hinh()` + `xuatTat()`), PNG ra `<gói>/moi/`.
+3. `node scripts/anh/ve_lai_bang.mjs <gói>` → `bang-N.png` (trái = cũ, phải = mới). **Người soát mở từng bảng**, không tin báo cáo của trạm; lỗi hay gặp: khung quá rộng làm chữ bé, hình con xếp sát nhau làm nhãn chạm nhau, số đo đặt xa đỉnh.
+4. `node --env-file=.env scripts/anh/gan_hinh.mjs <gói>/moi --thay --ghi` — tên tệp không đuôi = gắn cả đề lẫn lời giải, `_de` = chỉ đề, `_lg` = chỉ lời giải. URL cũ ghi vào `scripts/anh/bien_ban/gan-hinh-<lúc>.json` trước khi UPDATE; ảnh cũ không bị xoá.
+5. Luật phân xử: hình theo **ĐỀ**; ảnh cũ vênh đề thì theo đề và ghi lại; không phân xử được thì KHÔNG vẽ (giữ ảnh cũ, báo CEO). Tranh minh hoạ → sơ đồ tối giản; câu hỏi cần chính bức ảnh (vd "mặt bàn này hình gì") thì giữ ảnh.
+
+Đã chạy 13/10: khối 7, 8, 8T, 9 (330 câu, 295 hình). Chưa chạy: khối 11, `hinh_baitoan`, `hgt_cau_hoi`.
+
+---
+
 ## Ghi chú typo trong đề (không phải rule, chỉ log)
 
 - **`HHC000850` câu c)** ghi "$\triangle MNP$ và $\triangle QPN$" nhưng hình không có tam giác $MNP$ (không có đường $MP$). Đọc là "$\triangle MNQ$ và $\triangle QPN$" (giống câu a) — CEO đã confirm 30/09.
