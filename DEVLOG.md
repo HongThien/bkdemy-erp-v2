@@ -37462,3 +37462,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **C1:** mig `202610140048_hinh_cay_nhanh_c1` — cột `chu_de_id`/`neo_baitoan_id`/`la_mo_hinh`/`thu_tu` · `unique(mo_hinh_id)` ở `hinh_mo_hinh_cha` · trigger mã bài CHỈ cấp ở INSERT, UPDATE ép về mã cũ, STT nối tiếp cả cây bám mô hình GỐC · trigger chặn vòng neo · `fn_hl_goc_mo_hinh` · `fn_hl_so_hien_thi` · `fn_hl_gia_thiet_hieu_luc` (luật mới; TS chưa gọi) · `fn_hl_sai_nhanh`. Test trong transaction + ROLLBACK **15/15** rồi áp bằng `--only`; sau áp: 0 bài thiếu `thu_tu`, sổ có 1 dòng. `schema.md` cập nhật.
 - **Sai / bài học:** (1) gõ `cat > /tmp/q.mjs` không nội dung ⇒ treo chờ stdin 120s; (2) CTE đệ quy không cho tham chiếu đệ quy trong subquery lateral/window ⇒ viết lại `fn_hl_so_hien_thi` bằng plpgsql lặp trước khi test.
 - **Kế tiếp:** C2 (RPC `re_nhanh`/`chuyen_bai`/`doi_thu_tu`/`doi_neo`) rồi C4 (màn); C3 chờ CEO duyệt chuyển hoá 120 bài.
+
+## 14/10 (đêm, tiếp) — C2: RPC sửa cây (mig 202610140054 ĐÃ ÁP, test 18/18)
+- **Làm:** `fn_hl_re_nhanh(bai_ids[], ten, gt_them)` · `fn_hl_chuyen_bai(bai, nhanh)` · `fn_hl_doi_thu_tu(bai, vi_tri)` · `fn_hl_doi_neo(nhanh, bai_moi)` + helper `_hl_dong_thu_tu`, `_hl_ket_qua`. SECURITY INVOKER (RLS như bảng gốc). Mỗi RPC trả `{goc, nhanh_moi, bai:[{id,ma,so,mo_hinh_id,thu_tu}]}` để client vá tại chỗ.
+- **Luật ép ở DB:** rẽ nhánh cùng một làn, không chọn bài đầu làn · chuyển bài chỉ trong CÙNG cây, cấm vào cây con của chính nó (vòng) · đổi neo chỉ cho nhánh, cùng cây, vòng bị trigger C1 chặn · mã không đổi qua mọi thao tác (test).
+- **Test** `scripts/_test_hl_cay_nhanh_c2.mjs` (transaction + ROLLBACK): 18/18. Lần đầu 1 ✘ là test sai kỳ vọng (sau khi 1.1 rời thân, nhánh rẽ từ 1.5 thành 1.4 ⇒ bài chuyển vào là 1.4.2 — đúng vì số suy).
+- **Kế tiếp:** C4 màn Tab Chuỗi/Nhóm + popup nối RPC thật (cần phiên đăng nhập thật để kiểm RLS); C3 chờ CEO duyệt chuyển hoá 120 bài.
