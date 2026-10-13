@@ -31,6 +31,24 @@ export async function ntXuDongBo(thangK: number, ra: number): Promise<NtXu> {
   if (error) throw error
   return data as NtXu
 }
+// Gọi hàm server cho game (bạn lớp thật — mig 202610131557). DANH SÁCH TRẮNG: game chỉ gọi được đúng các hàm này, với đúng kiểu tham số.
+export async function ntRpc(ten: string, tham: Record<string, unknown>): Promise<Record<string, unknown>> {
+  const uuid = (v: unknown): string => { if (typeof v !== 'string' || !/^[0-9a-f-]{36}$/i.test(v)) throw new Error('tham số không hợp lệ'); return v }
+  const so = (v: unknown): number => { if (typeof v !== 'number' || !Number.isFinite(v)) throw new Error('tham số không hợp lệ'); return Math.floor(v) }
+  let fn: string; let args: Record<string, unknown> | undefined
+  switch (ten) {
+    case 'ban_ds': fn = 'fn_nt_ban_ds'; break
+    case 'ban_vuon': fn = 'fn_nt_ban_vuon'; args = { p_ban: uuid(tham.ban) }; break
+    case 'ban_giup': fn = 'fn_nt_ban_giup'; args = { p_ban: uuid(tham.ban), p_o: so(tham.o) }; break
+    case 'ban_trom': fn = 'fn_nt_ban_trom'; args = { p_ban: uuid(tham.ban), p_o: so(tham.o) }; break
+    case 'viec_ve_toi': fn = 'fn_nt_viec_ve_toi'; args = { p_sau: so(tham.sau ?? 0) }; break
+    default: throw new Error('hàm không được phép')
+  }
+  const { data, error } = await supabase.rpc(fn, args)
+  if (error) throw error
+  const kq = (data ?? {}) as Record<string, unknown>
+  return fn === 'fn_nt_ban_ds' || fn === 'fn_nt_ban_vuon' || fn === 'fn_nt_viec_ve_toi' ? { ok: true, ...kq } : kq
+}
 export async function ntDhtDongBo(tongTieu: number): Promise<NtDht> {
   const { data, error } = await supabase.rpc('fn_nt_dht_dong_bo', { p_tong_tieu: Math.max(0, Math.floor(tongTieu)) })
   if (error) throw error

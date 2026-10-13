@@ -6,7 +6,7 @@
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, TheHS } from '../skin/KhungHS'
 import { DS_GAME, type GameHS } from './dsGame'
 import { useEffect, useRef } from 'react'
-import { ntDhtDongBo, ntLuuDoc, ntLuuGhi, ntNhip, ntXuDongBo, type NtNhip } from '../../../lib/nt_luu'
+import { ntDhtDongBo, ntLuuDoc, ntLuuGhi, ntNhip, ntRpc, ntXuDongBo, type NtNhip } from '../../../lib/nt_luu'
 
 function Anh({ g }: { g: GameHS }) {
   return g.anh
@@ -68,7 +68,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   useEffect(() => {
     const nghe = (e: MessageEvent) => {
       if (e.origin !== location.origin || e.source !== khung.current?.contentWindow) return
-      const d = e.data as { bk?: string; loai?: string; state?: Record<string, unknown>; tong?: number; k?: number; ra?: number } | null
+      const d = e.data as { bk?: string; loai?: string; state?: Record<string, unknown>; tong?: number; k?: number; ra?: number; id?: number; ten?: string; tham?: Record<string, unknown> } | null
       if (!d || d.bk !== 'nt') return
       if (d.loai === 'san_sang') {
         // bản lưu + GIỜ SERVER + giờ chơi còn lại (nhịp đầu không cộng giờ). Không đọc được ⇒ game tự lùi về bản lưu trên máy.
@@ -85,6 +85,10 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
           try { await xa.current(); const r = await ntDhtDongBo(tong); noi({ loai: 'dht', ok: r.ok, loi: r.loi, soDu: r.so_du, daTieu: r.da_tieu }) }
           catch { noi({ loai: 'dht', ok: false, loi: 'mang' }) }
         })()
+      } else if (d.loai === 'rpc' && typeof d.id === 'number' && typeof d.ten === 'string') {
+        // bạn lớp thật: game xin gọi hàm server (danh sách trắng ở ntRpc)
+        const id = d.id
+        void ntRpc(d.ten, d.tham ?? {}).then((kq) => noi({ loai: 'rpc', id, kq })).catch(() => noi({ loai: 'rpc', id, kq: { ok: false, loi: 'mang' } }))
       } else if (d.loai === 'xu' && typeof d.k === 'number' && typeof d.ra === 'number') {
         // game báo xu đã đổi trong tháng (tích luỹ): lưu bản mới nhất trước, rồi server cắt theo ngày chơi + trần tháng và ghi VÍ XU THẬT
         const k = d.k, ra = d.ra

@@ -38,6 +38,10 @@
       NT_UI.capHud();
       NT_UI.cheDoTaiKhoan();
       NT_CAU.gui(s);
+      // BẠN LỚP THẬT (B4): danh sách bạn + việc bạn đã làm lên vườn mình — nạp lúc vào rồi theo nhịp
+      NT_UI.napBan(); NT_UI.napViec();
+      setInterval(() => { if (document.visibilityState === 'visible') NT_UI.napViec(); }, 60000);
+      setInterval(() => { if (document.visibilityState === 'visible') NT_UI.napBan(); }, 120000);
       // GIỚI HẠN GIỜ CHƠI mỗi ngày (B2): hết giờ ⇒ chặn màn; sắp hết (≤ 5 phút) ⇒ nhắc 1 lần.
       NT_CAU.onSapHet = (giay) => { try { NT_UI.thongBao('⏳ Còn ' + Math.max(1, Math.ceil(giay / 60)) + ' phút chơi hôm nay'); } catch (e) {} };
       NT_CAU.onHet = () => {

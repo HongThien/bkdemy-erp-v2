@@ -168,10 +168,12 @@ function sanLuong(r, k, soSau, bonus, tuoiThem) {
   const n = Math.floor(y + 1e-9) + (bam(k + '|' + r.d0 + '|le') < y - Math.floor(y + 1e-9) ? 1 : 0);
   return { n, y, goc: C.goc, soTuoi, ngay: C.ngay, tuoi: heTuoi, bon: heBon, sau: soSau, bonus };
 }
+// quả đã mất = trộm do bạn ẢO (r.trom) + bạn THẬT (r.haiBan: {mã bạn: số quả} — gộp theo khoá nên nhận lại bao nhiêu lần cũng không đếm đôi)
+const tromCua = r => (r.trom || 0) + Object.values(r.haiBan || {}).reduce((a, n) => a + n, 0);
 function ttO(r, k, Dn, bonus) {
   if (!r || !r.cay) return { tt: 'trong' };
   const C = RUONG[r.cay], dr = r.d0 + C.ngay, sau = sauCua(r, k, Dn).length, sl = sanLuong(r, k, sau, bonus);
-  const trom = r.trom || 0, chung = { cay: r.cay, dr, sau, sl, bon: !!r.bon, trom, con: Math.max(0, sl.n - trom) };
+  const trom = tromCua(r), chung = { cay: r.cay, dr, sau, sl, bon: !!r.bon, trom, con: Math.max(0, sl.n - trom) };
   if (Dn < dr) {
     const tuoiHom = (r.tuoi || []).includes(Dn);
     const du = sanLuong(r, k, sau, bonus, (dr - Dn) - (tuoiHom ? 1 : 0)); // dự kiến nếu từ giờ tưới đủ mỗi ngày
@@ -216,7 +218,9 @@ function gieo(s, i, cay, cach) { // cach: 'diem' | 'exp'
   const m = muaHom(s); if (C.mua && C.mua !== m.M.so) return loi(C.ten + ' không phải cây mùa ' + m.M.ten);
   lamMoi(s); if (s.hom.mua >= s.oMo) return loi('Hôm nay đã mua đủ ' + s.oMo + ' bịch hạt giống (bằng số ô) — mai mua tiếp nhé');
   const su = [];
-  if (cach === 'diem' || theoServer()) {
+  if (theoServer() && s.hatTang > 0) {   // hạt TẶNG của bài hướng dẫn: không trừ điểm học tập thật
+    s.hatTang--; cach = 'tang';
+  } else if (cach === 'diem' || theoServer()) {
     cach = 'diem';
     if (s.diem < C.diem) return loi('Không đủ điểm học tập — làm thêm bài trên app để có điểm');
     s.diem -= C.diem; dem(s, 'diemTieu', C.diem); su.push({ loai: 'diemTru', n: C.diem });
@@ -386,10 +390,40 @@ function datTT(s, o, id) {
 }
 function goTT(s, o) { const cu = s.trangTri[o]; if (!cu) return loi(''); them(s, cu, 1); s.trangTri[o] = null; return xong([{ loai: 'goTT', o }]); }
 
+// ---------- BẠN THẬT (B4, 12–13/10): danh sách + vườn do SERVER trả (fn_nt_ban_ds / fn_nt_ban_vuon), engine chỉ giữ bản chụp để vẽ ----------
+// Mã bạn: k >= BAN_THAT_K0 ⇒ bạn thật thứ (k − BAN_THAT_K0) của BAN_THAT.ds; k nhỏ ⇒ bạn ảo BAN_AO (chỉ dùng cho bài hướng dẫn).
+// Luật giúp/hái do SERVER xét (fn_nt_ban_giup/trom) — engine chỉ áp KẾT QUẢ lên kho/lượt của em (ketQuaBanThat).
+const BAN_THAT_K0 = 1000;
+const BAN_THAT = { ds: [], vuon: {}, luot: null };
+const laBanThat = k => k >= BAN_THAT_K0;
+function datBanThatDs(r) { BAN_THAT.ds = (r && r.ban) || []; BAN_THAT.luot = r ? { giup: r.con_giup, trom: r.con_trom } : null; }
+function datVuonBan(id, v) {
+  // server trả r.trom = TỔNG quả đã mất (đã gộp bạn thật) ⇒ bỏ haiBan để ttO không cộng đôi
+  BAN_THAT.vuon[id] = Object.assign({}, v, { ruong: (v.ruong || []).map(o => o && o.cay ? Object.assign({}, o, { haiBan: undefined }) : { cay: null }) });
+  if (BAN_THAT.luot) BAN_THAT.luot = { giup: v.con_giup, trom: v.con_trom };
+}
+const banThatCua = k => BAN_THAT.ds[k - BAN_THAT_K0];
+// việc có thể làm ở tất cả bạn (cho thanh Việc hôm nay / số tờ giấy bảng tin): bạn thật lấy từ số server đã tính, ảo thì tự tính
+function banTong(s) {
+  if (theoServer()) return BAN_THAT.ds.reduce((a, b) => ({ giup: a.giup + (b.giup || 0), hai: a.hai + (b.hai || 0) }), { giup: 0, hai: 0 });
+  let giup = 0, hai = 0;
+  BAN_AO.forEach((_, k) => { const t = tomTatBan(s, k); giup += t.giup; hai += t.hai; });
+  return { giup, hai };
+}
+function soBanCoViec(s) {
+  if (theoServer()) return BAN_THAT.ds.filter(b => (b.giup || 0) + (b.hai || 0) > 0).length;
+  let n = 0; BAN_AO.forEach((_, k) => { const t = tomTatBan(s, k); if (t.giup + t.hai) n++; }); return n;
+}
+
 // ---------- VƯỜN BẠN (ảo ở demo) ----------
 // Suy vườn bạn k lúc này từ lịch vào vườn của bạn (chuky/lech/gio) + những gì MÌNH đã làm ở đó (s.ban[k]). Không lưu vườn bạn.
 function daVaoCua(B, Dn, g) { return v => (v + B.lech) % B.chuky === 0 && (v < Dn || g >= B.gio); }
 function banTT(s, k) {
+  if (laBanThat(k)) {
+    const F = banThatCua(k), V = F && BAN_THAT.vuon[F.id];
+    if (!V) return { k, ten: F ? F.ten : '?', cap: F ? F.cap : 1, hat: 'x', ngay0: s.ngay0, oMo: 0, ruong: [], vat: { ga: { con: [] }, bo: { con: [] } }, lo: null, trangTri: [], thu: { cho: { tc: 0, d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, laBan: true, that: true, id: F && F.id };
+    return { k, ten: V.ten, cap: V.cap, hat: V.hat, ngay0: V.ngay0, oMo: V.oMo, ruong: V.ruong, vat: V.vat, lo: null, trangTri: V.trangTri, thu: V.thu, laBan: true, that: true, id: V.id };
+  }
   const B = BAN_AO[k], t = gio(s), Dn = ngayCua(t), vao = daVaoCua(B, Dn, gioVN(t)), my = s.ban[k] || {}, hat = 'b' + k;
   const ruong = B.cay.map(() => ({ cay: null }));
   let lanCuoi = null;
@@ -416,7 +450,12 @@ function banTT(s, k) {
   const tts = Object.keys(TRANG_TRI), trangTri = Array.from({ length: LUAT.soChoTrangTri }, (_, o) => bam(hat + '|tt' + o) < 0.4 ? tts[Math.floor(bam(hat + '|ttl' + o) * tts.length)] : null);
   return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, laBan: true };
 }
-function oBanTT(s, st, j) { const r = st.ruong[j]; return ttO(r, st.hat + '|' + j, homNay(s), r.cay ? bonusCua(s, r.d0) : 0); }
+// bạn thật: khoá ô = hat|o{j} (khoaO của chủ vườn), bonus mùa theo ngày gieo + ngay0 của CHỦ — khớp hàm server _nt_o_tt
+function oBanTT(s, st, j) {
+  const r = st.ruong[j];
+  if (st.that) return ttO(r, st.hat + '|o' + j, homNay(s), r.cay ? muaCua({ ngay0: st.ngay0 }, r.d0).bonus : 0);
+  return ttO(r, st.hat + '|' + j, homNay(s), r.cay ? bonusCua(s, r.d0) : 0);
+}
 function tomTatBan(s, k) { // cho bảng tin lớp: số ô giúp được / hái được
   const st = banTT(s, k); let giup = 0, hai = 0;
   st.ruong.forEach((r, j) => { const tt = oBanTT(s, st, j); if (tt.tt === 'lon' && (!tt.tuoiHom || tt.sau)) giup++; else if (tt.tt === 'chin' && tt.sau) giup++; if (tt.tt === 'chin' && tt.quaHan && tt.tromDuoc > 0 && !r.daHai) hai++; });
@@ -437,6 +476,43 @@ function tromBan(s, k, j) {
   const n = Math.min(tt.tromDuoc, LUAT.tromMoiLan || (bam(kk + '|n') < 0.5 ? 1 : 2));
   my.trom[key] = n; them(s, r.cay, n); dem(s, 'trom'); dem(s, 'tromQua', n); dem(s, 'tromExp', n * (I[r.cay] ? I[r.cay].gia : 0));
   return xong([{ loai: 'trom', ban: k, j, n, cay: r.cay }, { loai: 'mon', id: r.cay, n }]);
+}
+// Áp KẾT QUẢ server (fn_nt_ban_giup / fn_nt_ban_trom) lên em: kho, lượt, điểm nhà nông, rơi đồ. Luật xét ở server — ở đây KHÔNG kiểm lại.
+function ketQuaBanThat(s, k, j, loaiViec, kq) {
+  lamMoi(s);
+  if (!kq || !kq.ok) return loi('');
+  if (typeof kq.con_giup === 'number') s.hom.giup = Math.max(0, LUAT.giup - kq.con_giup);
+  if (typeof kq.con_trom === 'number') s.hom.trom = Math.max(0, LUAT.trom - kq.con_trom);
+  const F = banThatCua(k), id = F ? F.id : String(k), su = [];
+  if (loaiViec === 'giup') {
+    dem(s, 'giup'); su.push({ loai: kq.loai === 'tuoi' ? 'giupTuoi' : 'giupBat', ban: k, j });
+    themNn(s, 1, su); roiDo(s, s.hat + '|giup|' + id + '|' + j + '|' + homNay(s) + '|' + s.hom.giup, LUAT.roiGiup, su);
+    return xong(su);
+  }
+  if (kq.loai === 'cho_duoi') { dem(s, 'biDuoi'); return xong([{ loai: 'choDuoi', ban: k, j }]); }
+  const n = kq.n || 0;
+  if (n > 0) { them(s, kq.cay, n); dem(s, 'trom'); dem(s, 'tromQua', n); dem(s, 'tromExp', n * (I[kq.cay] ? I[kq.cay].gia : 0)); su.push({ loai: 'trom', ban: k, j, n, cay: kq.cay }, { loai: 'mon', id: kq.cay, n }); }
+  return xong(su);
+}
+// Gộp việc BẠN đã làm lên vườn MÌNH (fn_nt_viec_ve_toi). Khoá tự nhiên (ô, ngày gieo d0) — chủ thu hoạch/gieo lại thì dòng cũ tự bỏ qua;
+// hợp tập theo khoá (tuoi/bat/haiBan[bạn]) nên nhận lại bao nhiêu lần cũng không đếm đôi; s.viecDa = id lớn nhất đã xử lý (chỉ để hộp thư không lặp).
+function apDungViec(s, viec) {
+  let moi = 0;
+  for (const v of viec || []) {
+    const r = s.ruong[v.o];
+    const khop = r && r.cay && r.d0 === v.d0;
+    if (khop) {
+      if (v.loai === 'tuoi') { if (!r.tuoi.includes(v.ngay)) r.tuoi.push(v.ngay); }
+      else if (v.loai === 'bat_sau') { for (const d of sauCua(r, khoaO(s, v.o), v.ngay)) if (!r.bat.includes(d)) r.bat.push(d); }
+      else if (v.loai === 'trom') { r.haiBan = r.haiBan || {}; r.haiBan[v.nguoi] = v.n; }
+    }
+    if (v.id > (s.viecDa || 0)) {
+      const viecThu = { tuoi: 'tuoi', bat_sau: 'batSau', trom: 'trom', cho_duoi: 'choDuoi' }[v.loai];
+      if (viecThu) { thuTin(s, v.ngay, v.ten || 'Một bạn', viecThu, v.o, khop ? r.cay : null, v.n); moi++; }
+      s.viecDa = v.id;
+    }
+  }
+  return moi;
 }
 function giupBan(s, k, j) {
   lamMoi(s);
@@ -472,16 +548,7 @@ function viecHom(s) {
   for (const k in VAT) { const con = s.vat[k].con; if (s.cap >= VAT[k].cap) viec('an_' + k, 'Cho ' + VAT[k].ten.toLowerCase() + ' ăn', IC_VIEC[k], con.filter(c => c.an === Dn).length, con.length); }
   for (const k in THU) { const x = thuTT(s, k); if (x.mo) viec('tc_' + k, TEN_THU[k] || THU[k].viec, IC_VIEC[k] || '💗', x.roi ? 1 : 0, 1); }
   // vườn bạn: cần = đã làm + còn làm được, chặn ở trần lượt/ngày
-  let giup = 0, hai = 0;
-  BAN_AO.forEach((_, k) => {
-    const st = banTT(s, k);
-    st.ruong.forEach((r, j) => {
-      const t = oBanTT(s, st, j);
-      if (t.tt === 'lon' && !t.tuoiHom) giup++;
-      if (t.sau) giup++;
-      if (t.tt === 'chin' && t.quaHan && t.tromDuoc > 0 && !r.daHai) hai++;
-    });
-  });
+  const tong = banTong(s), giup = tong.giup, hai = tong.hai;
   viec('giup', 'Giúp bạn', '🤝', s.hom.giup, Math.min(LUAT.giup, s.hom.giup + giup));
   viec('hai', 'Hái trộm', '🤫', s.hom.trom, Math.min(LUAT.trom, s.hom.trom + hai));
   return ds;
@@ -499,7 +566,7 @@ function capNhat(s) {
       if (ds.length) { r.bat.push(ds[0]); thuTin(s, d, 'chim', 'batSau', i); break; }
     }
     // bạn ghé tưới hộ (chỉ tính những ngày đã qua — hôm nay bạn chưa tới)
-    if (d < Dn) BAN_AO.forEach((B, k) => {
+    if (d < Dn && !theoServer()) BAN_AO.forEach((B, k) => {
       if (bam(s.hat + '|bg|' + k + '|' + d) >= B.giupTiLe) return;
       for (let i = 0; i < s.oMo; i++) {
         const r = s.ruong[i]; if (!r.cay) continue; const dr = r.d0 + RUONG[r.cay].ngay;
@@ -507,7 +574,7 @@ function capNhat(s) {
       }
     });
     // bạn ghé hái trộm ô chín từ hôm trước mà mình chưa hái
-    BAN_AO.forEach((B, k) => {
+    if (!theoServer()) BAN_AO.forEach((B, k) => {
       if (bam(s.hat + '|bt|' + k + '|' + d) >= B.tromTiLe) return;
       for (let i = 0; i < s.oMo; i++) {
         const r = s.ruong[i]; if (!r.cay) continue;
@@ -534,6 +601,7 @@ window.NT_ENGINE = {
   moi, chuanHoa, luu, nap, xoaLuu, lamMoi, so, them, dem, ten, nnCap, themNn, kiemTra, doiXu,
   oTT, ttO, sauCua, hatHom, bangLai, toiDaVat, vatTT, loTT, thuTT, mocTc, banTT, oBanTT, tomTatBan, viecHom,
   datDiem, thuMo, muaThu,
+  BAN_THAT_K0, BAN_THAT, laBanThat, datBanThatDs, datVuonBan, banThatCua, banTong, soBanCoViec, ketQuaBanThat, apDungViec, tromCua,
   moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
 };
 })();

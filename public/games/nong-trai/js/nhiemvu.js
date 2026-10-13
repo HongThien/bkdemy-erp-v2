@@ -10,9 +10,13 @@ const moi = (s, k) => (s.dem[k] || 0) - (s.hd.base[k] || 0);
 const ban = s => s.hd.ban == null ? 0 : s.hd.ban;
 const HD = [
   { id: 'chao', kieu: 'noi', loi: 'Chào cháu! Bác là Bác Hai. Nông trại này là của cháu. Mỗi ngày cháu ghé 1 lần: thu hoạch, chăm cây, sang vườn bạn, rồi gieo hạt cho ngày mai.' },
-  { id: 'gieo', kieu: 'lam', loi: 'Gieo cà rốt nhé! Chạm ô đất trống, chọn trả bằng 📘 ĐIỂM CHĂM CHỈ, rồi GIỮ bịch cà rốt và KÉO qua các ô. Mỗi ô 1 bịch hạt giống.',
+  { id: 'gieo', kieu: 'lam', loi: 'Gieo cà rốt nhé! Chạm ô đất trống, rồi GIỮ bịch cà rốt (bác tặng cháu hạt để học) và KÉO qua các ô. Mỗi ô 1 bịch hạt giống.',
     muc: s => ({ loai: 'ruong', i: Math.max(0, s.ruong.findIndex((r, i) => i < s.oMo && !r.cay)) }),
-    batDau: s => { const can = s.oMo * D.RUONG.ca_rot.diem; if (s.diem < can) s.diem = can; }, dem: ['gieo'], xong: s => moi(s, 'gieo') >= s.oMo || s.ruong.slice(0, s.oMo).every(r => r.cay) },
+    batDau: s => {
+      // bản thử: tặng điểm để gieo · chơi theo tài khoản: TẶNG HẠT (không đụng điểm học tập thật — số dư là của app)
+      if (window.NT_CAU && window.NT_CAU.dang) s.hatTang = s.oMo;
+      else { const can = s.oMo * D.RUONG.ca_rot.diem; if (s.diem < can) s.diem = can; }
+    }, dem: ['gieo'], xong: s => moi(s, 'gieo') >= s.oMo || s.ruong.slice(0, s.oMo).every(r => r.cay) },
   { id: 'tuoi', kieu: 'lam', loi: 'Cây khát nước rồi! Chạm vào ô có 💧 để TƯỚI (hoặc vuốt qua cả 3 ô). Tưới đủ thì được thêm ' + Math.round(D.LUAT.tuoiThem * 100) + '% sản lượng.',
     muc: s => { const i = s.ruong.findIndex((r, i) => { const t = E.oTT(s, i); return t.tt === 'lon' && !t.tuoiHom; }); return i >= 0 ? { loai: 'ruong', i } : null; },
     xong: s => s.ruong.every((r, i) => { const t = E.oTT(s, i); return t.tt !== 'lon' || t.tuoiHom; }) },
@@ -34,7 +38,7 @@ const HD = [
   { id: 've', kieu: 'lam', loi: 'Về nhà thôi! Bấm nút "⬅ Về nhà".', muc: () => '#nutVe', dem: ['veNha'], xong: s => moi(s, 'veNha') >= 1 },
   { id: 'cho', kieu: 'lam', loi: 'Xoa đầu chó của cháu nào! Mỗi ngày 1 lần. Chó quý cháu thì sẽ đuổi bạn đến hái trộm giúp cháu.',
     muc: () => ({ loai: 'thu', id: 'cho' }), dem: ['thuCung'], xong: s => moi(s, 'thuCung') >= 1 },
-  { id: 'ket', kieu: 'noi', loi: 'Giỏi lắm! Mỗi ngày cháu ghé 1 lần: thu hoạch, chăm cây, giúp bạn, rồi gieo cho ngày mai. Muốn có nhiều bịch hạt giống thì làm bài để có ĐIỂM CHĂM CHỈ nhé. Bác tặng cháu ít quà!',
+  { id: 'ket', kieu: 'noi', loi: 'Giỏi lắm! Mỗi ngày cháu ghé 1 lần: thu hoạch, chăm cây, giúp bạn, rồi gieo cho ngày mai. Muốn có nhiều bịch hạt giống thì làm bài trên app để có ĐIỂM HỌC TẬP nhé. Bác tặng cháu ít quà!',
     thuong: D.PHA >= 2 ? { phan_bon: 2, tt_hoa: 1 } : { phan_bon: 3 } },
 ];
 function hdKhoi(s) { if (!s.hd) s.hd = { b: 0, base: {}, xong: s.cap > 1 }; return s.hd; }

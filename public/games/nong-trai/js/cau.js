@@ -18,6 +18,17 @@
   // XU THẬT (B3b): game báo (tháng_k, ra) = xu đã đổi từ EXP trong tháng (tích luỹ); server cắt theo ngày chơi + trần tháng rồi ghi ví BK.
   let xuK = null, xuRa = 0, daGuiXu = null, daXacNhanXu = 0;
   C.xu = null; C.onXu = null;
+  // GỌI HÀM SERVER qua app (bạn lớp thật — B4): app có danh sách trắng tên hàm; game chỉ nhận {ok,...} về
+  let rpcId = 0; const rpcCho = {};
+  C.rpc = function (ten, tham, ms) {
+    return new Promise((res) => {
+      if (!C.dang) return res({ ok: false, loi: 'khong_online' });
+      const id = ++rpcId;
+      const t = setTimeout(() => { delete rpcCho[id]; res({ ok: false, loi: 'het_gio' }); }, ms || 10000);
+      rpcCho[id] = (d) => { clearTimeout(t); res(d); };
+      try { window.parent.postMessage({ bk: 'nt', loai: 'rpc', id, ten, tham: tham || {} }, NGUON); } catch (e) { clearTimeout(t); delete rpcCho[id]; res({ ok: false, loi: 'mang' }); }
+    });
+  };
   let cho = null, hen = null, moiNhat = null, daGui = 0;
   const NGUON = location.origin;
   addEventListener('message', (e) => {
@@ -25,6 +36,7 @@
     const d = e.data; if (!d || d.bk !== 'nt') return;
     if (d.loai === 'nap' && cho) { C.docGio(d); cho(d); cho = null; }
     else if (d.loai === 'gio') C.docGio(d);
+    else if (d.loai === 'rpc' && rpcCho[d.id]) { const f = rpcCho[d.id]; delete rpcCho[d.id]; f(d.kq || { ok: false, loi: 'mang' }); }
     else if (d.loai === 'xu') {
       if (d.ok) { daXacNhanXu = Math.max(daXacNhanXu, daGuiXu || 0); C.xu = { daNhan: d.daNhan, tran: d.tran, moiNgay: d.moiNgay, ngayChoi: d.ngayChoi, duocToiNay: d.duocToiNay }; if (C.onXu) C.onXu(C.xu, d.nhanThem || 0); }
       else daGuiXu = null;   // lỗi mạng / lệch tháng: gửi lại ở nhịp sau

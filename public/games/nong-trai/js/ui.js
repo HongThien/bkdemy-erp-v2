@@ -114,7 +114,7 @@ function goiY() {
   for (const k in D.VAT) if (s.vat[k].con.some(c => E.vatTT(s, k, c) === 'xong')) return '🥚 Chuồng có đồ — chạm để nhặt';
   if (E.loTT(s).tt === 'xong') return '🍞 Bánh chín rồi — chạm lò bánh để lấy';
   if (tts.some(t => t.tt === 'trong') && (dht() ? s.diem >= 5 : (s.diem >= 2 || s.vi.xu + s.vi.exp / 100 >= 0.05))) return '🌱 Ô trống — chạm để gieo 1 bịch hạt giống cho ngày mai';
-  if (s.hom.giup < L.giup || s.hom.trom < L.trom) { let co = 0; D.BAN_AO.forEach((_, k) => { const t = E.tomTatBan(s, k); co += (s.hom.giup < L.giup ? t.giup : 0) + (s.hom.trom < L.trom ? t.hai : 0); }); if (co) return '👫 Sang vườn bạn: còn ' + (L.giup - s.hom.giup) + ' lượt giúp, ' + (L.trom - s.hom.trom) + ' lượt hái'; }
+  if (s.hom.giup < L.giup || s.hom.trom < L.trom) { const tg = E.banTong(s), co = (s.hom.giup < L.giup ? tg.giup : 0) + (s.hom.trom < L.trom ? tg.hai : 0); if (co) return '👫 Sang vườn bạn: còn ' + (L.giup - s.hom.giup) + ' lượt giúp, ' + (L.trom - s.hom.trom) + ' lượt hái'; }
   return '🌙 Xong việc hôm nay rồi! Mai ghé lại nhé';
 }
 
@@ -443,20 +443,84 @@ function veKho() {
 }
 
 // ---------- BẠN CÙNG LỚP ----------
-function moBanBe() { moBang('Bạn cùng lớp', veBanBe); }
+// Bạn hiển thị: chơi theo tài khoản ⇒ BẠN CÙNG LỚP THẬT (server) + vài bạn ảo CHỈ trong bài hướng dẫn; bản thử ⇒ 6 bạn ảo.
+function dsBan() {
+  const ao = D.BAN_AO.map((B, k) => { const t = E.tomTatBan(s, k); return { k, ten: B.ten, cap: B.cap, giup: t.giup, hai: t.hai, ao: true }; });
+  if (!dht()) return ao;
+  const that = E.BAN_THAT.ds.map((b, i) => ({ k: E.BAN_THAT_K0 + i, ten: b.ten, cap: b.cap, giup: b.giup || 0, hai: b.hai || 0, ao: false }));
+  return that.concat(NV.hdBuoc(s) ? ao : []);
+}
+let banDangNap = false;
+// làm mới danh sách bạn + lượt còn lại từ server (nền, không xoá danh sách đang hiện)
+async function napBan() {
+  if (!dht() || banDangNap) return; banDangNap = true;
+  try {
+    const r = await NT_CAU.rpc('ban_ds');
+    if (r && Array.isArray(r.ban)) {
+      E.datBanThatDs(r); E.lamMoi(s);
+      if (typeof r.con_giup === 'number') s.hom.giup = Math.max(0, L.giup - r.con_giup);
+      if (typeof r.con_trom === 'number') s.hom.trom = Math.max(0, L.trom - r.con_trom);
+      if (bangMo) veBang(true);
+    }
+  } finally { banDangNap = false; }
+}
+// việc bạn đã làm lên vườn MÌNH (tưới hộ, bắt sâu, hái, chó đuổi) ⇒ gộp vào vườn + hộp thư
+async function napViec() {
+  if (!dht()) return;
+  const r = await NT_CAU.rpc('viec_ve_toi', { sau: s.viecDa || 0 });
+  if (r && Array.isArray(r.viec) && r.viec.length) {
+    const n = E.apDungViec(s, r.viec);
+    dongBo(); capHud(); E.luu(s); if (bangMo) veBang(true);
+    if (n) { thongBao('📬 Có ' + n + ' tin mới từ bạn bè'); AM.on('pop'); }
+  }
+}
+function moBanBe() { moBang('Bạn cùng lớp', veBanBe); void napBan(); }
 function veBanBe() {
   E.lamMoi(s);
-  const ds = D.BAN_AO.map((B, k) => ({ B, k, t: E.tomTatBan(s, k) }));
-  const key = JSON.stringify(ds.map(x => x.t)) + s.hom.giup + s.hom.trom;
+  const ds = dsBan().map(b => ({ B: b, k: b.k, t: { giup: b.giup, hai: b.hai } }));
+  const key = JSON.stringify(ds.map(x => [x.k, x.t])) + s.hom.giup + s.hom.trom;
   const html = `<p class="nho" style="margin-top:0">Hôm nay còn <b>${L.giup - s.hom.giup}</b> lượt giúp · <b>${L.trom - s.hom.trom}</b> lượt hái. Chỉ hái được cây chín từ hôm trước mà bạn chưa hái — mỗi ô 1–2 quả.</p>`
-    + ds.map(x => `<div class="banThe"><div class="banMat">${x.B.ten[0]}</div><div class="giua"><b>${x.B.ten}</b> <span class="nho">cấp ${x.B.cap}</span><div class="nho">${[x.t.giup ? '🤝 ' + x.t.giup + ' ô cần giúp' : '', x.t.hai ? '🧺 ' + x.t.hai + ' ô hái được' : ''].filter(Boolean).join(' · ') || 'Vườn gọn gàng'}</div></div><button class="nut vang" data-k="${x.k}">Sang chơi</button></div>`).join('')
-    + '<p class="nho">Bản thử: 6 bạn ảo. Bản online: bạn cùng lớp thật.</p>';
+    + ds.map(x => `<div class="banThe"><div class="banMat">${x.B.ten[0]}</div><div class="giua"><b>${x.B.ten}</b> <span class="nho">cấp ${x.B.cap}${x.B.ao ? ' · bạn tập' : ''}</span><div class="nho">${[x.t.giup ? '🤝 ' + x.t.giup + ' ô cần giúp' : '', x.t.hai ? '🧺 ' + x.t.hai + ' ô hái được' : ''].filter(Boolean).join(' · ') || 'Vườn gọn gàng'}</div></div><button class="nut vang" data-k="${x.k}">Sang chơi</button></div>`).join('')
+    + (dht() ? (ds.some(x => !x.B.ao) ? '' : '<p class="nho">Chưa có bạn cùng lớp nào mở nông trại — rủ các bạn chơi nhé!</p>') : '<p class="nho">Bản thử: 6 bạn ảo. Bản online: bạn cùng lớp thật.</p>');
   return { key, html, gan: el => el.querySelectorAll('[data-k]').forEach(b => b.onclick = () => sangBan(+b.dataset.k)) };
 }
-function sangBan(k) {
+async function sangBan(k) {
+  if (E.laBanThat(k)) {   // bạn THẬT: xin bản chụp vườn bạn từ server rồi mới sang
+    const F = E.banThatCua(k); if (!F) return;
+    thongBao('Đang sang vườn ' + F.ten + '…');
+    const r = await NT_CAU.rpc('ban_vuon', { ban: F.id });
+    if (!r || !r.ok) return thongBao(r && r.loi === 'chua_co_vuon' ? F.ten + ' chưa có vườn' : 'Chưa sang được — thử lại nhé');
+    E.datVuonBan(F.id, r);
+    return vaoVuonBan(k, r.ten, r.cap);
+  }
+  vaoVuonBan(k, D.BAN_AO[k].ten, D.BAN_AO[k].cap);
+}
+function vaoVuonBan(k, ten, cap) {
   xem = k; dongBang(); dongBong(); E.dem(s, 'tham');
-  $('banTen').textContent = D.BAN_AO[k].ten; $('banCap').textContent = D.BAN_AO[k].cap; $('banBanner').classList.remove('an'); document.body.classList.add('dangTham');
+  $('banTen').textContent = ten; $('banCap').textContent = cap; $('banBanner').classList.remove('an'); document.body.classList.add('dangTham');
   dongBo(); capHud(); AM.on('pop'); E.luu(s);
+}
+const LOI_BAN = { het_luot: 'Hôm nay hết lượt rồi — mai nhé', gio_vang_cua_chu: 'Hôm nay cây mới chín — là giờ vàng của chủ vườn. Mai bạn chưa hái thì mới hái được',
+  chua_chin: 'Cây chưa chín', da_hai: 'Em hái ô này rồi', het_phan: 'Ô này đã bị hái nhiều rồi — để phần cho bạn nhé', khong_can: 'Ô này không cần giúp nữa',
+  khong_cung_lop: 'Chỉ sang được vườn bạn cùng lớp', chua_co_vuon: 'Bạn chưa có vườn', het_gio: 'Mạng chậm — thử lại nhé', mang: 'Mạng chậm — thử lại nhé' };
+let banDangLam = false;
+// Giúp / hái ở vườn bạn THẬT: server xét luật (lớp, giờ vàng, lượt, chó đuổi) rồi trả kết quả; game áp kết quả lên kho/lượt của em
+async function banThatLam(viec, chon) {
+  if (banDangLam || xem == null || !E.laBanThat(xem)) return;
+  const k = xem, F = E.banThatCua(k); if (!F) return;
+  banDangLam = true;
+  try {
+    const kq = await NT_CAU.rpc(viec === 'giup' ? 'ban_giup' : 'ban_trom', { ban: F.id, o: chon.i });
+    E.lamMoi(s);
+    if (typeof kq.con_giup === 'number') s.hom.giup = Math.max(0, L.giup - kq.con_giup);
+    if (typeof kq.con_trom === 'number') s.hom.trom = Math.max(0, L.trom - kq.con_trom);
+    if (!kq.ok) { thongBao(LOI_BAN[kq.loi] || 'Chưa làm được — thử lại nhé'); AM.on('loi'); }
+    else { const res = E.ketQuaBanThat(s, k, chon.i, viec, kq); hieuUng(res.su, chon); }
+    const v = await NT_CAU.rpc('ban_vuon', { ban: F.id });          // làm mới vườn bạn (ô vừa tưới/hái đổi trạng thái)
+    if (v && v.ok) E.datVuonBan(F.id, v);
+    if (xem === k) dongBo();
+    capHud(); E.luu(s); if (bangMo) veBang(true); if (neo) veBong(true);
+  } finally { banDangLam = false; }
 }
 function veNha() {
   if (xem == null) return; xem = null; E.dem(s, 'veNha');
@@ -470,8 +534,8 @@ function chamVuonBan(chon) {
     const tt = E.oBanTT(s, st, chon.i), r = st.ruong[chon.i];
     // tay: giúp trước (việc tốt), hái sau · cầm giỏ 🧺 thì hái ngay
     const coHai = tt.tt === 'chin' && tt.quaHan && tt.tromDuoc > 0 && !r.daHai, coGiup = tt.sau || (tt.tt === 'lon' && !tt.tuoiHom);
-    if (coHai && (dung === 'thu' || !coGiup)) return lam(E.tromBan(s, xem, chon.i), chon);
-    if (coGiup) return lam(E.giupBan(s, xem, chon.i), chon);
+    if (coHai && (dung === 'thu' || !coGiup)) return E.laBanThat(xem) ? banThatLam('trom', chon) : lam(E.tromBan(s, xem, chon.i), chon);
+    if (coGiup) return E.laBanThat(xem) ? banThatLam('giup', chon) : lam(E.giupBan(s, xem, chon.i), chon);
     if (tt.tt === 'chin' && !tt.quaHan) return thongBao('Hôm nay cây mới chín — là ngày của ' + st.ten + '. Mai bạn chưa hái thì mới hái được');
     if (tt.tt === 'chin') return thongBao(r.daHai ? 'Em hái ô này rồi' : tt.trom ? 'Ô này bị hái nhiều rồi — để phần cho bạn nhé' : 'Ô này ít quả quá — để phần cho bạn nhé');
     if (tt.tt === 'lon') return thongBao(st.ten + ' chăm ô này rồi — chín sau ' + tt.conNgay + ' ngày');
@@ -647,7 +711,7 @@ const cb = {
       veHuongDan();
       dongBo(); capHud(); veThanhCu();
       veBong(); veBang();
-      if (tGiay >= 2) { tGiay = 0; let n = 0; if (xem == null) D.BAN_AO.forEach((_, k) => { const t = E.tomTatBan(s, k); if (t.giup + t.hai) n++; }); S.datGiay(n); const g = goiY(); if ($('goiY').textContent !== g) $('goiY').textContent = g; }
+      if (tGiay >= 2) { tGiay = 0; const n = xem == null ? E.soBanCoViec(s) : 0; S.datGiay(n); const g = goiY(); if ($('goiY').textContent !== g) $('goiY').textContent = g; }
     }
     if (tLuu >= 5) { tLuu = 0; E.luu(s); }
   },
@@ -683,5 +747,5 @@ function cheDoTaiKhoan() {
   $('btnTua').style.display = 'none'; $('btnDiem').style.display = 'none';
   $('diemBox').style.cursor = 'pointer'; $('diemBox').onclick = moDiem;
 }
-window.NT_UI = { batDau, capHud, cheDoTaiKhoan, get s() { return s; }, get xem() { return xem; }, lam, thongBao, sangBan, veNha, _cb: cb, _moKho: moKho, _moCho: moCho, _moBanBe: moBanBe, _moThu: moThu };
+window.NT_UI = { batDau, capHud, cheDoTaiKhoan, napBan, napViec, get s() { return s; }, get xem() { return xem; }, lam, thongBao, sangBan, veNha, _cb: cb, _moKho: moKho, _moCho: moCho, _moBanBe: moBanBe, _moThu: moThu };
 })();
