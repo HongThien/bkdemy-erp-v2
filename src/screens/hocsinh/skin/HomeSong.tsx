@@ -3,11 +3,12 @@
 // design/DON-HANG-STYLE-LOFI.md mục 6). Style không khai ⇒ Home tĩnh như cũ, 2 mảnh này không được vẽ.
 //  • NenSong     — tranh nền có MÂY TRÔI sau cửa sổ: lớp phòng (đã khoét trời) đặt trên dải trời lặp ngang, trôi rất chậm.
 //  • NhanVatHome — nhân vật Home: có mảnh hoạt họa thì vẽ lên canvas và GHÉP VÙNG (tay viết · ngẩng đầu / gật gù · mèo vẫy đuôi · mèo ngáp), không thì <img> thường.
+//  • LinhVatHome — linh vật ĐỔI CẢ TƯ THẾ (Đáng yêu 13/10): vẫy lúc mở màn · chớp mắt · ăn vặt · ngủ gật khi để yên · chạm vào thì mừng; viền "sôi" + nhún dẹt–giãn bằng code.
 // Nguyên tắc: chuyển động chậm, biên độ nhỏ · máy bật "giảm chuyển động" ⇒ đứng yên · tab ẩn ⇒ dừng đồng hồ · tính bằng hẹn giờ theo thời gian thật, không đếm khung.
 // Hình + số đo do scripts/lofi-hinh.mjs sinh (skin/styles/lofiSong.ts) — công thức mờ mép / ánh đèn ở đây phải KHỚP script đó.
 // ============================================================================
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import type { LopNenSong, ManhSong, NvSong } from './kieu'
+import type { LinhVatSong, LopNenSong, ManhSong, NvSong } from './kieu'
 
 const GIAM_DONG = () => typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
@@ -60,7 +61,12 @@ const napAnh = (src: string) => new Promise<HTMLImageElement>((ok, loi) => { con
 const ngau = (a: number, b: number) => a + Math.random() * (b - a)
 
 /** Nhân vật Home. `src` = hình tĩnh của chế độ đang vẽ · `srcSang` = hình gốc (ban ngày) để ghép mảnh · `song` có ⇒ có hoạt họa. */
-export function NhanVatHome({ src, srcSang, song, toi, className, style }: { src: string; srcSang?: string; song?: NvSong; toi: boolean; className?: string; style?: CSSProperties }) {
+export function NhanVatHome({ src, srcSang, song, linhVat, toi, className, style }: { src: string; srcSang?: string; song?: NvSong; linhVat?: LinhVatSong; toi: boolean; className?: string; style?: CSSProperties }) {
+  if (linhVat && !GIAM_DONG()) return <LinhVatHome lv={linhVat} className={className} style={style} />
+  return <NhanVatGhep src={src} srcSang={srcSang} song={song} toi={toi} className={className} style={style} />
+}
+
+function NhanVatGhep({ src, srcSang, song, toi, className, style }: { src: string; srcSang?: string; song?: NvSong; toi: boolean; className?: string; style?: CSSProperties }) {
   const cv = useRef<HTMLCanvasElement>(null)
   const [san, setSan] = useState(false)
   const dong = !!song && !!srcSang && !GIAM_DONG()
@@ -133,5 +139,74 @@ export function NhanVatHome({ src, srcSang, song, toi, className, style }: { src
       {!(dong && san) && <img src={src} alt="" className={className} style={style} draggable={false} />}
       {dong && song && <canvas ref={cv} width={song.rong} height={song.cao} aria-hidden className={className} style={{ ...style, display: san ? undefined : 'none' }} />}
     </>
+  )
+}
+
+// ── LINH VẬT: đổi cả tư thế ──────────────────────────────────────────────────────────────────────────────────────
+/** Mọi tư thế xếp chồng cùng khung (nạp sẵn, chỉ hiện 1) ⇒ đổi hình không nháy. Đổi tư thế kèm 1 nhịp DẸT–GIÃN (squash & stretch) nên không cần khung trung gian;
+ *  đường viền "sôi" = bộ lọc SVG xê dịch nhẹ, đổi hạt 3 lần / 0,5 giây (line boil của hoạt hình vẽ tay). Chớp mắt thì KHÔNG nhún. */
+function LinhVatHome({ lv, className, style }: { lv: LinhVatSong; className?: string; style?: CSSProperties }) {
+  const [hinh, setHinh] = useState(lv.dung)
+  const than = useRef<HTMLDivElement>(null)
+  const cham = useRef<() => void>(() => {})
+  const moi = [...new Set([lv.dung, lv.chopMat, ...lv.vay, lv.vui, lv.lo, lv.ngu, ...lv.an])]
+
+  useEffect(() => {
+    let song_ = true, ban = false, ngu = false, luc = performance.now()
+    const hen = new Set<number>()
+    const cho = (ms: number) => new Promise<void>((ok) => { const t = window.setTimeout(() => { hen.delete(t); ok() }, ms); hen.add(t) })
+    const doi = (src: string) => {
+      if (!song_) return
+      setHinh(src)
+      than.current?.animate?.([{ transform: 'scale(1.07, 0.92)' }, { transform: 'scale(0.96, 1.05)', offset: 0.55 }, { transform: 'scale(1, 1)' }], { duration: 240, easing: 'ease-out' })
+    }
+    /** diễn 1 chuỗi tư thế rồi về đứng; đang diễn thì bỏ qua yêu cầu mới (không chen ngang) */
+    const dien = async (buoc: [string, number][]) => {
+      if (ban || !song_) return
+      ban = true
+      for (const [src, ms] of buoc) { if (!song_) break; doi(src); await cho(ms) }
+      if (song_) doi(lv.dung)
+      ban = false
+    }
+    const thuc = () => { luc = performance.now(); if (ngu) { ngu = false; void dien([[lv.lo, 900]]) } }   // có động tĩnh trên trang ⇒ tỉnh dậy (giật mình)
+    cham.current = () => { if (ngu) thuc(); else { luc = performance.now(); void dien([[lv.vui, 1000]]) } }
+    window.addEventListener('pointerdown', thuc, { passive: true }); window.addEventListener('scroll', thuc, { passive: true })
+    void (async () => {
+      const [v1, v2 = v1] = lv.vay
+      await cho(500)
+      if (v1) await dien([[v1, 270], [v2, 270], [v1, 270], [v2, 270], [v1, 270]])                    // vẫy chào lúc mở màn
+      let anSau = performance.now() + ngau(20000, 40000)
+      while (song_) {
+        await cho(ngau(3000, 6000))
+        if (!song_) break
+        if (document.hidden || ban || ngu) continue
+        if (performance.now() - luc > 60000) { ngu = true; doi(lv.ngu); continue }                     // để yên 1 phút ⇒ ngủ gật
+        if (lv.an.length && performance.now() > anSau) { const [a1, a2 = a1] = lv.an; await dien([[a1, 800], [a2, 1100], [a1, 600]]); anSau = performance.now() + ngau(20000, 40000); continue }
+        setHinh(lv.chopMat); await cho(130)                                                           // chớp mắt
+        if (song_ && !ban && !ngu) setHinh(lv.dung)
+      }
+    })()
+    return () => { song_ = false; hen.forEach((t) => clearTimeout(t)); window.removeEventListener('pointerdown', thuc); window.removeEventListener('scroll', thuc) }
+  }, [lv])
+
+  return (
+    <div className={className} onClick={() => cham.current()} aria-hidden style={{ ...style, aspectRatio: `${lv.rong} / ${lv.cao}`, pointerEvents: 'auto', cursor: 'pointer' }}>
+      <style>{'@keyframes sk-lv-tho { from { transform: scale(1, 1) } to { transform: scale(1.012, 0.982) } }'}</style>
+      {lv.soi && (
+        <svg width="0" height="0" className="absolute" aria-hidden>
+          <filter id="sk-lv-soi" x="-4%" y="-4%" width="108%" height="108%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="1" seed="2" result="nhieu">
+              <animate attributeName="seed" values="2;9;17" dur="0.5s" calcMode="discrete" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="nhieu" scale="3" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
+      )}
+      {lv.co && <img src={lv.co} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} />}
+      {/* gốc biến đổi = chỗ đặt chân (89% chiều cao khung) ⇒ nhún / thở không làm chân trượt khỏi cỏ */}
+      <div ref={than} className="absolute inset-0" style={{ transformOrigin: '50% 89%', animation: 'sk-lv-tho 1.7s ease-in-out infinite alternate', filter: lv.soi ? 'url(#sk-lv-soi)' : undefined }}>
+        {moi.map((src) => <img key={src} src={src} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} style={{ opacity: src === hinh ? 1 : 0 }} />)}
+      </div>
+    </div>
   )
 }

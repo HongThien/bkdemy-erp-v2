@@ -209,4 +209,9 @@ pixel 16×16. **Thùy 01/10: giống Minecraft NHẤT CÓ THỂ (khung cảnh �
 
 Thùy 09/10: *"giao diện mới: lofi chill … cho những học sinh thích kiểu học 1 mình, chill chill dễ chịu"*. Quyết định thiết kế, đơn hình, bảng kiểm hàng, tình trạng dựng
 và việc còn lại: **`design/DON-HANG-STYLE-LOFI.md`** (1 nguồn — không chép lại ở đây). Luật mới cho style 2 chế độ + màn chính "sống": `design/STYLE-HS.md` §2.7.
-Style kế tiếp đã có hình (130/150 đạt, chưa dựng): **Đáng yêu** (cảm hứng Chiikawa) — `design/DON-HANG-STYLE-NHO-XINH.md`; làm song song với Thị trấn (§9).
+
+## 12. Style 5 — Đáng yêu (cảm hứng Chiikawa) · ĐÃ DỰNG 13/10
+
+Thùy 11/10: *"làm giao diện phong cách chiikawa"*; tên trong app **"Đáng yêu"** (id `dang_yeu`), làm **song song** với Thị trấn (§9), không thay. Quyết định thiết kế, đơn hình,
+bảng kiểm hàng, tình trạng dựng và việc còn lại: **`design/DON-HANG-STYLE-NHO-XINH.md`** (1 nguồn — không chép lại ở đây). Màn chính "sống" kiểu linh vật: `design/STYLE-HS.md` §2.7.
+Migration `202610131141_hs_giao_dien_skin_dang_yeu.sql` đã áp 13/10. Bổ sung sau: bộ tư thế đánh cho 2 linh vật (đơn `design/DON-HANG-NHO-XINH-DANH.md`).
