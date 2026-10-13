@@ -2,7 +2,8 @@
 // Dữ liệu nằm ở CA BÙ: lưới câu = BTVN buổi mẹ chép riêng cho em (fn_bu_btvn_seed), Đ/C/S → gami_grades, trạng thái nộp + thái độ →
 // btvn_ket_qua (em × ca bù) — đúng bảng BTVN thường ⇒ số liệu theo em × dạng tính chung được. XONG = đã chọn trạng thái nộp.
 import { useEffect, useState } from 'react'
-import { listProblems, listGrades, gradeET, deleteGrade, getBtvnKetQua, setBtvnKetQua, type Problem, type Grade, type ETResult, type BtvnKQ } from '../../lib/gami'
+import { listProblems, listGrades, gradeET, deleteGrade, getBtvnKetQua, setBtvnKetQua, listCanhBao, getDangTen, type Problem, type Grade, type ETResult, type BtvnKQ, type CanhBao } from '../../lib/gami'
+import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
 import { seedBtvnBu, type BtvnBu } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { ET_KQ } from './ChamBuoi'
@@ -20,16 +21,24 @@ export default function ChamBtvnBu({ v, onBack }: { v: BtvnBu; onBack: () => voi
   const [kq, setKq] = useState<BtvnKQ>({ trang_thai_nop: v.trang_thai_nop, thai_do: v.thai_do })
   const [loading, setLoading] = useState(true)
   const [loi, setLoi] = useState<string | null>(null)
+  const [cb, setCb] = useState<CanhBao[]>([]) // 🚨 báo động kém dạng — cùng chuông dùng chung với BTVN thường (nguon='btvn')
+  const [tenDangMap, setTenDangMap] = useState<Record<string, string>>({})
+  const dangTL = useDangTaiLieu(v.buoi_bu_id, 'btvn', v.mon)
+
+  async function napCanhBao() { setCb((await listCanhBao(v.buoi_bu_id)).filter((x) => x.hoc_sinh_id === v.hoc_sinh_id)) }
 
   async function napLuoi() {
     const [p, g] = await Promise.all([listProblems(v.buoi_bu_id, 'btvn'), listGrades(v.buoi_bu_id)])
     setProbs(p.filter((x) => x.hoc_sinh_id === v.hoc_sinh_id))
     setGrades(g.filter((x) => x.hoc_sinh_id === v.hoc_sinh_id))
+    const mds = [...new Set(p.filter((x) => x.hoc_sinh_id === v.hoc_sinh_id).map((x) => x.ma_dang).filter(Boolean))] as string[]
+    if (mds.length) getDangTen(mds, v.mon).then((m) => setTenDangMap((c) => ({ ...c, ...m }))).catch(() => { /* giữ mã */ })
   }
   useEffect(() => { (async () => {
     try {
       await seedBtvnBu(v.bhh_id)
       await napLuoi()
+      napCanhBao().catch(() => { /* chuông vẫn bấm được */ })
       const k = await getBtvnKetQua(v.buoi_bu_id)
       if (k[v.hoc_sinh_id]) setKq(k[v.hoc_sinh_id])
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setLoading(false) }
@@ -56,6 +65,7 @@ export default function ChamBtvnBu({ v, onBack }: { v: BtvnBu; onBack: () => voi
     try { await setBtvnKetQua(v.buoi_bu_id, v.hoc_sinh_id, patch) } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
 
+  const tenDang = (md: string | null) => (md ? tenDangMap[md] ?? md : '—')
   const daCham = probs.filter((p) => gradeOf(p.id)).length
   const chip = (on: boolean) => `rounded-full px-3 py-1.5 text-[12.5px] font-bold ${on ? 'bg-[#2F73F6] text-white' : 'border border-slate-200 bg-white text-slate-600'}`
   return (
@@ -97,6 +107,13 @@ export default function ChamBtvnBu({ v, onBack }: { v: BtvnBu; onBack: () => voi
                 })}
               </div>
             )}
+        </div>
+        {/* 🚨 chuông dùng chung: dạng = có trong phiếu BTVN (ca bù thường không có tài liệu riêng ⇒ lấy dạng của lưới câu em) */}
+        <div className="flex flex-wrap items-center gap-1.5 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-slate-200">
+          <ChuongBaoDong buoiId={v.buoi_bu_id} hsId={v.hoc_sinh_id} hsTen={v.ho_ten} nguon="btvn" mon={v.mon} nhan="Kém dạng"
+            className="min-h-[38px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50"
+            dangTaiLieu={hopDang(dangTL.dang, probs.map((p) => p.ma_dang), (md) => tenDang(md))} dangLoading={dangTL.loading} onSaved={() => { void napCanhBao() }} />
+          <ChipCanhBao cb={cb} tenDang={(md) => tenDang(md)} mon={v.mon} onChanged={() => { void napCanhBao() }} />
         </div>
         <button onClick={onBack} disabled={!kq.trang_thai_nop}
           className="h-11 rounded-2xl bg-[#2F73F6] text-[14px] font-extrabold text-white shadow-md disabled:opacity-40">{kq.trang_thai_nop ? 'Xong' : 'Chọn trạng thái nộp để hoàn tất'}</button>

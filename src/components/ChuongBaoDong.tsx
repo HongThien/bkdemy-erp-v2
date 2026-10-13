@@ -93,9 +93,11 @@ export function ChuongBaoDong({ buoiId, hsId, hsTen, nguon, khoi, mon, dangTaiLi
         🚨{nhan ? ` ${nhan}` : ''}
       </button>
       {/* Portal ra body: nút nằm trong ô sticky của bảng chấm (stacking context z-10) — render tại chỗ thì
-          cột "Học sinh"/thead (z-30) ĐÈ LÊN modal dù modal z-50 (đã dính khi verify 09/09). */}
+          cột "Học sinh"/thead (z-30) ĐÈ LÊN modal dù modal z-50 (đã dính khi verify 09/09).
+          z-[65]: màn chấm 1 HS của app TA (ChamBtvn) là fixed z-[60] — modal z-50 nằm DƯỚI nó nên bấm 🚨 không thấy gì;
+          picker kho (z-[70]) vẫn phải nằm trên modal. */}
       {mo && createPortal(
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMo(false)}>
+        <div className="fixed inset-0 z-[65] flex items-end justify-center bg-slate-900/40 p-3 sm:items-center" onClick={() => setMo(false)}>
           <div className="max-h-[92vh] w-full max-w-[520px] overflow-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-5" onClick={(e) => e.stopPropagation()}>
             <p className="mb-1 text-[14px] font-bold text-slate-900">🚨 Báo động: {hsTen} đang kém dạng</p>
             <p className="mb-3 text-[11.5px] text-slate-400">Chỗ bấm: <b className="text-slate-500">{tenNguon}</b>. Tín hiệu này KHÔNG vào điểm — để hệ thống xét bổ trợ cho HS.</p>
