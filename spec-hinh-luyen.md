@@ -16,6 +16,8 @@
 | **Ý** của bài kho | a) b) c) tách riêng: câu hỏi · giả thiết riêng · đáp án · lời giải · hình riêng | `hinh_y` |
 | "ý a là 1.1, ý b là 1.3, ý c là 1.11" | gán **ở tầng ý**: `hinh_y.baitoan_id` | cột có sẵn, nullable |
 
+**Bản chất (CEO 13/10): tầng mô hình = tầng THAM CHIẾU = cành cây; bài toán = lá.** Giống Đại (chủ đề → chuyên đề → nhóm bài → dạng = cành; câu = lá) về vai trò, khác ở độ phức tạp của cành: cành Hình là **bó giả thiết lồng nhau (DAG)**, không phải cây phẳng. Hệ quả: cành **luôn mở** để gắn lá — không có ngưỡng "đủ N lá mới được dựng cành"; cành dựng tới đâu, lá gắn tới đó, lá chưa có cành thì nằm ở kho (nhãn phỏng đoán) chờ.
+
 Hai luật giữ nguyên từ spec v3: **gán ở tầng ý** (§2.10) · **không tạo bài mô hình từ màn gán** (§2.2).
 
 **Đứng trên vai ai (R7):** cách làm "kho ví dụ trước, khung sau" là *exemplar-first / bottom-up ontology* (grounded theory); mỗi bài kho = *testlet* nhiều item phụ thuộc nhau (Wainer & Kiely, IRT); mô hình với các bài xoay quanh = "problem family" của Pólya. Không phát minh gì mới, chỉ gọi đúng tên.
@@ -139,9 +141,9 @@ Màn:
 
 ---
 
-## 5. Phase 2 — khi một mô hình "đủ logic"
+## 5. Phase 2 — dựng cành chi tiết, gắn lá
 
-Điều kiện mở P2 cho một mô hình (gợi ý, CEO chốt ngưỡng): ≥ ~20–30 bài kho đã duyệt gắn nhãn nó.
+**P2 mở sẵn, không ngưỡng** (CEO 13/10). "Phase" chỉ là thứ tự việc tự nhiên: có lá mới thấy cành cần mọc thế nào — nhưng Thùy dựng bài mô hình lúc nào cũng được, gán ý lúc nào cũng được. Hai việc chạy song song với nhập kho.
 1. Thùy/GV đọc N bài kho ⇒ dựng bài mô hình 1.1 … 1.k ở M2 (`SoDo.tsx`), mã tự sinh `BT.<khối>.<mh>.<stt>`.
 2. TA gán `hinh_y.baitoan_id` ở M3; thiếu node ⇒ hàng chờ ⇒ Thùy đặt node ⇒ gán tiếp (vòng bottom-up spec v3 §0.5).
 3. Gán tới đâu mastery theo bài mô hình hiện tới đó (`fn_hl_mastery`), lịch sử ý cũ **không mất**.
@@ -159,7 +161,7 @@ Màn:
 | B2 | màn Kho bài + Duyệt | Thùy duyệt 15 ý trên ERP, sửa 1 ý tại chỗ không reload list |
 | B3 | builder nguồn "Bài kho luyện" | in 1 phiếu chọn ý `{b}` ra đúng đề + bước a |
 | B4 | nhập hàng loạt K7 → mục tiêu 30 bài/mô hình cho 2 mô hình | `fn_hl_tien_do` hiện 2 mô hình ≥30 |
-| P2 | §5 — chỉ bắt đầu khi B4 chạm ngưỡng | mastery theo bài mô hình hiện cho 1 HS thật |
+| P2 | §5 — màn M2 (dựng bài mô hình) + M3 (gán ý) + M5 (hàng chờ) có sẵn, **mở ngay cùng B2**, chỉ kiểm lại chúng đọc đúng `hinh_y` mới + `phan='luyen'` | mastery theo bài mô hình hiện cho 1 HS thật |
 
 ---
 
@@ -184,4 +186,4 @@ Màn:
 | D1 | Giữ tên bảng `hinh_bai`/`hinh_y`, chỉ đổi tiền tố mã `HLB`/`HLY`? | **Giữ** (0 dòng nhưng code + hook đo đã trỏ vào; đổi tên = churn, không đổi gì về nghĩa) |
 | D2 ✅ | 366 bài mô hình + 41 mô hình đã xây top-down: giữ hay dọn? | **CEO 13/10: đang lẫn Học/Luyện (K8 toàn Học) ⇒ giữ nhưng phải có bước THỦ CÔNG để Thùy loại cái không phù hợp** → B0.5 + cột `phan` |
 | D3 ✅ | Chọn ý: bất kỳ tập hay chỉ tiền tố? | **CEO 13/10: bất kỳ** — ý bỏ chọn nở thành bước |
-| D4 | Ngưỡng mở P2 cho 1 mô hình: bao nhiêu bài kho? | ~**20–30** bài đã duyệt (con số Thùy nói 13/10) — CEO chốt |
+| D4 ✅ | Ngưỡng mở P2? | **CEO 13/10: không ngưỡng, mở sẵn.** Mô hình = tầng tham chiếu (cành), bài = lá; cành luôn có để gắn lá. Đề xuất ngưỡng của CTO là sai bản chất — bỏ |
