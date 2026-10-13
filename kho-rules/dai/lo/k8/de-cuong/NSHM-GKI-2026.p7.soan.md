@@ -12,7 +12,6 @@ kieu: de_cuong
 Một gia đình gồm $x$ người lớn và $y$ trẻ em cùng đi xem phim.
 a) Thiết lập đa thức tính tổng chi phí và tính số tiền gia đình đó phải trả nếu có 4 người lớn và 6 trẻ em.
 b) Rạp phim có chương trình khuyến mãi "Giảm 10% hóa đơn nếu mua từ 10 vé trở lên". Một gia đình có 600 000 đồng. Hỏi gia đình đó có thể mua được nhiều nhất bao nhiêu vé (bao gồm cả vé người lớn và vé trẻ em).
-**Chưa chắc:** đề hỏi "nhiều nhất bao nhiêu vé (bao gồm cả vé người lớn và vé trẻ em)" — lời giải hiểu là gia đình phải mua đủ cả hai loại vé (ít nhất 1 vé người lớn và 1 vé trẻ em). Nếu đề cho phép chỉ mua vé trẻ em thì đáp số là 13 vé (13 vé trẻ em, trả 585 000 đồng sau giảm).
 
 **Phần 1. Hướng dẫn**
 
@@ -132,7 +131,6 @@ Vậy lớp 8A cần mua 1 gói bánh dẻo, 1 gói bánh nướng và 16 chai n
 a) Lập đa thức biểu diễn tổng chi phí để sơn lại căn phòng. Áp dụng tính chi phí khi biết $x=5$ mét, $y=4$ mét, $z=3$ mét.
 b) Giả sử diện tích sàn nhà là $20\ \text{m}^2$ và thể tích của phòng là $60\ \text{m}^3$. Hãy tìm các kích thước của căn phòng để chi phí sơn là thấp nhất và tính chi phí đó.
 **Ghi chú:** đề không nói trừ diện tích cửa nên lời giải coi toàn bộ bốn bức tường và trần nhà đều được sơn.
-**Chưa chắc:** ý b không nói kích thước phải là số nguyên nên lời giải tìm trên số thực dương: sàn hình vuông cạnh $\sqrt{20}$ m, chi phí khoảng 8 839 876 đồng. Nếu đề ngầm hiểu kích thước là số nguyên (ví dụ 5 m, 4 m, 3 m như ý a) thì chi phí thấp nhất là 8 880 000 đồng, cao hơn.
 
 **Phần 1. Hướng dẫn**
 

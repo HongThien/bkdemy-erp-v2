@@ -228,6 +228,11 @@ export function canhBaoNhap(d: Pick<DeThi, 'cau_hinh'>): Record<string, string[]
   const v = (d.cau_hinh?.deThi as { canhBaoCau?: unknown } | undefined)?.canhBaoCau
   return v && typeof v === 'object' ? (v as Record<string, string[]>) : {}
 }
+/** Nhãn GỐC của câu trên đề (vd "Bài 2a", "Câu 5") — theo ma_cau, do ghi.mjs ghi vào cau_hinh.deThi.nhanCau. Để đối chiếu với đề gốc khi câu đã tách ý. */
+export function nhanGocCau(d: Pick<DeThi, 'cau_hinh'>): Record<string, string> {
+  const v = (d.cau_hinh?.deThi as { nhanCau?: unknown } | undefined)?.nhanCau
+  return v && typeof v === 'object' ? (v as Record<string, string>) : {}
+}
 export type FormTLN = { id: string; ma_cau: string; lua_chon: { text: string; dung: boolean; rule?: string | null }[]; dap_an: string; da_duyet: boolean }
 export async function listFormTLN(mon: string, kho: Kho, maCaus: string[]): Promise<FormTLN[]> {
   if (!maCaus.length) return []

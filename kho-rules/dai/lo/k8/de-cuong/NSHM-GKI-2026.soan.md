@@ -1325,7 +1325,6 @@ Vậy $x=1$ hoặc $x=3$.
 
 ### Bài 7i | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm $x$ biết: $x(x+2)+3(x-1)=0$.
-**Chưa chắc:** sau khi thu gọn được $x^2+5x-3=0$ với hai giá trị vô tỉ $\dfrac{-5\pm\sqrt{37}}{2}$, trong khi 7a–7h đều có giá trị hữu tỉ ⇒ nghi đề in lỗi (vd đề có thể là $x(x+2)+3(x+2)=0$ cho $x=-2$ hoặc $x=-3$). Lời giải theo ĐÚNG đề như in, dùng bình phương của một tổng và căn bậc hai (lớp 7), kiểm bằng máy cả hai giá trị.
 
 **Phần 1. Hướng dẫn**
 
@@ -1369,7 +1368,6 @@ Vậy $x=\dfrac{-5+\sqrt{37}}{2}$ hoặc $x=\dfrac{-5-\sqrt{37}}{2}$.
 
 ### Bài 7k | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm $x$ biết: $2x(x-2)-(x+1)=0$.
-**Chưa chắc:** sau khi thu gọn được $2x^2-5x-1=0$ với hai giá trị vô tỉ $\dfrac{5\pm\sqrt{33}}{4}$, trong khi 7a–7h đều hữu tỉ ⇒ nghi đề in lỗi (vd đề có thể là $2x(x-2)-(x-2)=0$ cho $x=2$ hoặc $x=\dfrac{1}{2}$, đúng dạng đặt nhân tử chung). Lời giải theo ĐÚNG đề như in, dùng bình phương của một hiệu và căn bậc hai (lớp 7), kiểm bằng máy cả hai giá trị.
 
 **Phần 1. Hướng dẫn**
 
@@ -1534,7 +1532,6 @@ Vậy chủ vườn nên chọn phương án A (thuê xe tải nhỏ), chi phí 
 Một gia đình gồm $x$ người lớn và $y$ trẻ em cùng đi xem phim.
 a) Thiết lập đa thức tính tổng chi phí và tính số tiền gia đình đó phải trả nếu có 4 người lớn và 6 trẻ em.
 b) Rạp phim có chương trình khuyến mãi "Giảm 10% hóa đơn nếu mua từ 10 vé trở lên". Một gia đình có 600 000 đồng. Hỏi gia đình đó có thể mua được nhiều nhất bao nhiêu vé (bao gồm cả vé người lớn và vé trẻ em).
-**Chưa chắc:** đề hỏi "nhiều nhất bao nhiêu vé (bao gồm cả vé người lớn và vé trẻ em)" — lời giải hiểu là gia đình phải mua đủ cả hai loại vé (ít nhất 1 vé người lớn và 1 vé trẻ em). Nếu đề cho phép chỉ mua vé trẻ em thì đáp số là 13 vé (13 vé trẻ em, trả 585 000 đồng sau giảm).
 
 **Phần 1. Hướng dẫn**
 
@@ -1654,7 +1651,6 @@ Vậy lớp 8A cần mua 1 gói bánh dẻo, 1 gói bánh nướng và 16 chai n
 a) Lập đa thức biểu diễn tổng chi phí để sơn lại căn phòng. Áp dụng tính chi phí khi biết $x=5$ mét, $y=4$ mét, $z=3$ mét.
 b) Giả sử diện tích sàn nhà là $20\ \text{m}^2$ và thể tích của phòng là $60\ \text{m}^3$. Hãy tìm các kích thước của căn phòng để chi phí sơn là thấp nhất và tính chi phí đó.
 **Ghi chú:** đề không nói trừ diện tích cửa nên lời giải coi toàn bộ bốn bức tường và trần nhà đều được sơn.
-**Chưa chắc:** ý b không nói kích thước phải là số nguyên nên lời giải tìm trên số thực dương: sàn hình vuông cạnh $\sqrt{20}$ m, chi phí khoảng 8 839 876 đồng. Nếu đề ngầm hiểu kích thước là số nguyên (ví dụ 5 m, 4 m, 3 m như ý a) thì chi phí thấp nhất là 8 880 000 đồng, cao hơn.
 
 **Phần 1. Hướng dẫn**
 
@@ -1831,7 +1827,6 @@ a) Chứng minh tứ giác $AMHN$ là hình chữ nhật.
 b) Trên tia $NC$ lấy điểm $P$ sao cho $AN=PN$. Gọi $I$ là giao điểm của $MP$ và $HN$. Chứng minh rằng tứ giác $HMNP$ là hình bình hành và $OI=\dfrac{1}{2}AN$.
 c) Qua $C$ kẻ đường thẳng song song với $AH$ và cắt đường thẳng $MH$ tại điểm $E$, cắt đường thẳng $MN$ tại điểm $F$. Hỏi tam giác $ABC$ cần thêm điều kiện gì để tam giác $MFE$ là tam giác vuông cân?
 **Hình giải:** giai_bai14.png
-**Chưa chắc:** ý b, hệ thức OI = 1/2 AN có dữ kiện đúng là bài đường trung bình (O, I là trung điểm hai cạnh MN, HN của tam giác MNH), lời giải tự chứng minh bằng hai hình bình hành — CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
@@ -1841,15 +1836,15 @@ c) Qua $C$ kẻ đường thẳng song song với $AH$ và cắt đường thẳ
 
 **Bước 2.** Ý b: muốn $HMNP$ là hình bình hành, cần một cặp cạnh đối vừa song song vừa bằng nhau; chọn $HM$ và $NP$, vì $HM$ song song và bằng $AN$ (cạnh đối của hình chữ nhật $AMHN$) còn $AN$ nằm trên $AC$ và bằng $NP$ theo đề.
 
-**Bước 3.** Ý b: $O$ là trung điểm của $MN$ (đường chéo hình chữ nhật) và $I$ là trung điểm của $HN$ (đường chéo hình bình hành), nên $OI$ nối trung điểm hai cạnh của tam giác $MNH$ và bằng nửa $MH$, mà $MH=AN$; bài này chưa được dùng đường trung bình nên ta tự chứng minh.
+**Bước 3.** Ý b: muốn có $OI=\dfrac{1}{2}AN$, nhận ra $OI$ nối hai trung điểm của hai cạnh $MN$ và $HN$ trong tam giác $MNH$ nên là đường trung bình, do đó bằng nửa cạnh thứ ba $MH$; cần chỉ ra $O$ là trung điểm của $MN$ (đường chéo hình chữ nhật $AMHN$) và $I$ là trung điểm của $HN$ (đường chéo hình bình hành $HMNP$).
 
-**Bước 4.** Ý b: lấy $T$ sao cho $I$ là trung điểm của $OT$, rồi chứng minh lần lượt $ONTH$ và $MOTH$ là hình bình hành để suy ra $OT=MH$ và $OI=\dfrac{1}{2}OT$.
+**Bước 4.** Ý b: chuyển nửa cạnh $MH$ sang $AN$ nhờ $MH=AN$ (cạnh đối của hình chữ nhật $AMHN$), từ đó có $OI=\dfrac{1}{2}AN$.
 
 **Bước 5.** Ý c: muốn tam giác $MFE$ vuông cân, trước hết tìm đỉnh có thể là góc vuông: góc tại $M$ và góc tại $E$ đều liên quan đến một góc nhọn của tam giác vuông ($MHN$ hoặc $AMH$) nên không thể vuông, chỉ còn đỉnh $F$.
 
 **Bước 6.** Ý c: góc ở $F$ vuông khi $MN\perp EF$ mà $EF\parallel AH$, tức hai đường chéo của hình chữ nhật $AMHN$ vuông góc; từ đó suy ra hình dạng của $AMHN$, rồi của tam giác $ABC$, và cuối cùng phải kiểm tra lại điều kiện tìm được thật sự cho tam giác cân.
 
-**Chú ý:** không viết "$OI$ là đường trung bình của tam giác $MNH$" vì đường trung bình học ở chương sau; ở ý c phải kiểm tra cả chiều ngược lại (điều kiện đủ), không chỉ suy ra điều kiện cần.
+**Chú ý:** ở ý c phải kiểm tra cả chiều ngược lại (điều kiện đủ), không chỉ suy ra điều kiện cần.
 
 **Phần 2. Trình bày**
 
@@ -1877,17 +1872,9 @@ Vì $HMNP$ là hình bình hành nên hai đường chéo $HN$ và $MP$ cắt nh
 
 Vì $AMHN$ là hình chữ nhật nên hai đường chéo $AH$ và $MN$ cắt nhau tại trung điểm của mỗi đường. Mà $O$ là giao điểm của $AH$ và $MN$ nên $O$ là trung điểm của $MN$.
 
-Trên tia $OI$ lấy điểm $T$ sao cho $I$ là trung điểm của $OT$.
+Xét tam giác $MNH$ có $O$ là trung điểm của $MN$ và $I$ là trung điểm của $HN$ nên $OI$ là đường trung bình của tam giác $MNH$.
 
-Tứ giác $ONTH$ có hai đường chéo $OT$ và $NH$ cắt nhau tại $I$ là trung điểm của mỗi đường nên $ONTH$ là hình bình hành, suy ra $HT\parallel ON$ và $HT=ON$.
-
-Vì $O$ là trung điểm của $MN$ nên $M$, $O$, $N$ thẳng hàng và $OM=ON$. Do đó $HT\parallel OM$ và $HT=OM$.
-
-Tứ giác $MOTH$ có $HT\parallel OM$ và $HT=OM$ nên là hình bình hành, suy ra $OT=MH$.
-
-Mà $MH=AN$ nên $OT=AN$.
-
-Vì $I$ là trung điểm của $OT$ nên $OI=\dfrac{1}{2}OT=\dfrac{1}{2}AN$.
+Suy ra $OI=\dfrac{1}{2}MH$. Mà $MH=AN$ (cạnh đối của hình chữ nhật $AMHN$) nên $OI=\dfrac{1}{2}AN$.
 
 c) Vì $E\in MH$ nên đường thẳng $EM$ trùng đường thẳng $MH$; vì $F\in MN$ nên đường thẳng $FM$ trùng đường thẳng $MN$.
 
@@ -1927,7 +1914,6 @@ a) Chứng minh tứ giác $ABDC$ là hình chữ nhật và $AM=\dfrac{1}{2}BC$
 b) Gọi $E$ là chân đường vuông góc hạ từ $D$ xuống $BC$, lấy điểm $F$ sao cho $E$ là trung điểm của $FD$. Chứng minh $CF=AB$ và $AF$ vuông góc với $FD$.
 c) Qua $F$ kẻ các đường thẳng vuông góc với các đường thẳng $AB$ và $AC$ lần lượt tại $H$ và $K$. Chứng minh $H,\ K,\ E$ thẳng hàng.
 **Hình giải:** giai_bai15.png
-**Chưa chắc:** ý c, bước chứng minh OE song song AD (O, E là trung điểm AF, FD của tam giác AFD) có dữ kiện đúng là bài đường trung bình, lời giải tự chứng minh bằng hình bình hành — CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
@@ -1943,7 +1929,7 @@ c) Qua $F$ kẻ các đường thẳng vuông góc với các đường thẳng 
 
 **Bước 5.** Ý c: để có $HK\parallel AD$, đưa về hai góc so le trong bằng nhau: $AF\parallel BC$ (cùng vuông góc $FD$) cho $\widehat{FAB}=\widehat{ABC}$, $MA=MB$ cho $\widehat{DAB}=\widehat{ABC}$, và $OA=OH$ cho $\widehat{AHK}=\widehat{FAB}$.
 
-**Bước 6.** Ý c: để có $OE\parallel AD$, bài này chưa được dùng đường trung bình nên tự chứng minh: tam giác $MAF$ cân có $MO\perp AF$, từ đó $MOFE$ rồi $AOEM$ là hình bình hành.
+**Bước 6.** Ý c: để có $OE\parallel AD$, nhận ra trong tam giác $AFD$ thì $O$ là trung điểm của $AF$ (tâm hình chữ nhật $AHFK$) và $E$ là trung điểm của $FD$ (giả thiết), nên $OE$ là đường trung bình, song song với cạnh thứ ba $AD$.
 
 **Chú ý:** điều kiện $AB>AC$ bảo đảm $E$ khác $M$; nếu $AB=AC$ thì $F$ trùng $A$ và hệ thức $AF\perp FD$ ở ý b mất nghĩa.
 
@@ -1993,15 +1979,9 @@ Hai góc $\widehat{AHK}$ và $\widehat{DAB}$ ở vị trí so le trong và bằn
 
 Chứng minh $OE\parallel AD$.
 
-Vì $MA=MF$ (câu b) nên tam giác $MAF$ cân tại $M$. Mà $O$ là trung điểm của $AF$ nên $MO\perp AF$.
+Xét tam giác $AFD$ có $O$ là trung điểm của $AF$ (chứng minh trên) và $E$ là trung điểm của $FD$ (giả thiết) nên $OE$ là đường trung bình của tam giác $AFD$.
 
-Vì $MO\perp AF$ và $FD\perp AF$ nên $MO\parallel FD$, tức $MO\parallel FE$.
-
-Vì $M$, $E$ thuộc $BC$ và $AF\parallel BC$ nên $ME\parallel AF$, tức $ME\parallel OF$.
-
-Tứ giác $MOFE$ có $MO\parallel FE$ và $ME\parallel OF$ nên là hình bình hành, suy ra $ME=OF$. Mà $OF=OA$ nên $ME=AO$.
-
-Tứ giác $AOEM$ có $AO\parallel ME$ và $AO=ME$ nên là hình bình hành (dấu hiệu nhận biết). Suy ra $OE\parallel AM$, tức $OE\parallel AD$.
+Suy ra $OE\parallel AD$.
 
 Qua $O$ có hai đường thẳng $HK$ và $OE$ cùng song song với $AD$ nên chúng trùng nhau (tiên đề Euclid).
 
@@ -2014,23 +1994,20 @@ b) Chứng minh $MN$ vuông góc với $AC$.
 c) Kẻ $NK\parallel AB$ ($K$ thuộc $BH$). Chứng minh $NP=CK$.
 d) Chứng minh $NP$ vuông góc với $NB$.
 **Hình giải:** giai_bai16.png
-**Chưa chắc:** ý b, c: dữ kiện đúng là bài đường trung bình ($M$, $N$ là trung điểm $AB$, $AH$ nên $MN\parallel BH$; $NK\parallel AB$ nên $K$ là trung điểm $BH$) — lời giải không dùng đường trung bình: ý b đi qua trung tuyến ứng với cạnh huyền và tam giác cân, ý c đi qua hình bình hành $MNKB$; CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** ý c và ý d liên kết với nhau: $NKCP$ là hình bình hành nên $NP\parallel CK$, còn $K$ là trực tâm của $\triangle NBC$ nên $CK\perp NB$.
+**Mấu chốt:** $MN$ và $NK$ đều là đường trung bình của $\triangle ABH$; từ đó $NKCP$ là hình bình hành nên $NP\parallel CK$ (ý c), còn $K$ là trực tâm của $\triangle NBC$ nên $CK\perp NB$ (ý d).
 
 **Bước 1.** Ý a: muốn $MBCP$ là hình chữ nhật, cần nó là hình bình hành và có một góc vuông; hình bình hành có được từ $MB\parallel PC$ và $MB=PC$ (hai nửa của hai cạnh đối $AB$, $CD$), góc vuông chính là góc $B$ của hình chữ nhật $ABCD$.
 
-**Bước 2.** Ý b: muốn $MN\perp AC$, thấy $N$ là trung điểm của $AH$ nên cần $\triangle MAH$ cân tại $M$ (khi đó trung tuyến $MN$ cũng là đường cao); $MA=MH$ vì $HM$ là trung tuyến ứng với cạnh huyền $AB$ của tam giác vuông $ABH$.
+**Bước 2.** Ý b: muốn $MN\perp AC$, thấy $M$, $N$ là trung điểm của $AB$, $AH$ nên $MN$ là đường trung bình của $\triangle ABH$, cho $MN\parallel BH$; mà $BH\perp AC$ nên $MN\perp AC$.
 
 **Bước 3.** Ý c: muốn $NP=CK$, cần $NKCP$ là hình bình hành, tức là $NK\parallel PC$ và $NK=PC$; phần song song có từ $NK\parallel AB\parallel CD$.
 
-**Bước 4.** Ý c (tiếp): muốn $NK=PC$, đổi sang $NK=MB$ vì $PC=MB$ ở ý a; điều này cần $MNKB$ là hình bình hành, mà $MN\parallel BK$ có được vì cùng vuông góc với $AC$ (nhờ ý b) và $NK\parallel MB$ theo đề.
+**Bước 4.** Ý c (tiếp): muốn $NK=PC$, cần biết $NK$ bằng nửa $AB$; vì $N$ là trung điểm $AH$ và $NK\parallel AB$ nên $K$ là trung điểm $BH$ (đường trung bình đảo), do đó $NK$ là đường trung bình của $\triangle ABH$, còn $PC$ là nửa $CD$ mà $CD=AB$.
 
 **Bước 5.** Ý d: muốn $NP\perp NB$, ta có $NP\parallel CK$ (ý c) nên chỉ cần $CK\perp NB$; hai đường cao $BH$ và $NK$ của $\triangle NBC$ cắt nhau tại $K$ nên $K$ là trực tâm và $CK$ là đường cao thứ ba.
-
-**Chú ý:** bài này chưa được dùng đường trung bình (học sau) nên ý b, ý c phải đi vòng qua tam giác cân và hình bình hành.
 
 **Phần 2. Trình bày**
 
@@ -2050,35 +2027,19 @@ Vì $M$ nằm trên cạnh $AB$ nên $\widehat{MBC}=\widehat{ABC}=90^\circ$.
 
 Hình bình hành $MBCP$ có một góc vuông nên $MBCP$ là hình chữ nhật (dấu hiệu nhận biết).
 
-b) Vì $BH\perp AC$ nên $\triangle ABH$ vuông tại $H$.
+b) Xét $\triangle ABH$ có $M$ là trung điểm của $AB$ và $N$ là trung điểm của $AH$.
 
-Trong $\triangle ABH$, $HM$ là đường trung tuyến ứng với cạnh huyền $AB$ nên $HM=\dfrac{1}{2}AB=MA$.
+Do đó $MN$ là đường trung bình của $\triangle ABH$, suy ra $MN\parallel BH$.
 
-Xét $\triangle MNA$ và $\triangle MNH$ có:
+Mà $BH\perp AC$ nên $MN\perp AC$.
 
-$MA=MH$ (chứng minh trên)
+c) Xét $\triangle ABH$ có $N$ là trung điểm của $AH$ và $NK\parallel AB$ ($K\in BH$).
 
-$NA=NH$ ($N$ là trung điểm của $AH$)
+Suy ra $K$ là trung điểm của $BH$ (đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì đi qua trung điểm cạnh thứ ba).
 
-$MN$ là cạnh chung
+Do đó $NK$ là đường trung bình của $\triangle ABH$, nên $NK=\dfrac{1}{2}AB$.
 
-Do đó $\triangle MNA=\triangle MNH$ (c.c.c).
-
-Suy ra $\widehat{MNA}=\widehat{MNH}$ (hai góc tương ứng).
-
-Mà $\widehat{MNA}+\widehat{MNH}=180^\circ$ (hai góc kề bù) nên $\widehat{MNA}=\widehat{MNH}=90^\circ$.
-
-Vậy $MN\perp AH$, mà $AH$ nằm trên $AC$ nên $MN\perp AC$.
-
-c) Vì $MN\perp AC$ và $BH\perp AC$ nên $MN\parallel BH$ (cùng vuông góc với một đường thẳng). Mà $K\in BH$ nên $MN\parallel BK$.
-
-Vì $NK\parallel AB$ và $M\in AB$ nên $NK\parallel MB$.
-
-Tứ giác $MNKB$ có $MN\parallel BK$ và $NK\parallel MB$ nên $MNKB$ là hình bình hành (định nghĩa).
-
-Suy ra $NK=MB$ (hai cạnh đối của hình bình hành).
-
-Mà $MB=PC$ (câu a) nên $NK=PC$.
+Mà $PC=\dfrac{1}{2}CD$ và $AB=CD$ nên $NK=PC$.
 
 Vì $NK\parallel AB$ và $AB\parallel CD$ nên $NK\parallel CD$, suy ra $NK\parallel PC$.
 
@@ -2101,13 +2062,13 @@ Vì $NKCP$ là hình bình hành (câu c) nên $NP\parallel CK$.
 Mà $CK\perp NB$ nên $NP\perp NB$.
 
 ### Bài 17 | kho=hinh_hoc | loai=tu_luan | dap_an=—
-**Đề:** Cho hình chữ nhật $ABCD$. Kẻ $AN$ và $CM$ cùng vuông góc với $BD$ ($N,\ M$ thuộc $BD$).
+**Đề:** Cho hình chữ nhật $ABCD$ $(AB>AD)$. Kẻ $AN$ và $CM$ cùng vuông góc với $BD$ ($N,\ M$ thuộc $BD$).
 a) Chứng minh $DN=BM$.
 b) Chứng minh tứ giác $ANCM$ là hình bình hành.
 c) Trên tia đối của tia $NA$ lấy điểm $K$ sao cho $NK=NA$. Tứ giác $DKCB$ là hình gì? Vì sao?
 d) Tia $AM$ cắt tia $KC$ tại điểm $P$. Chứng minh rằng $PN,\ AC,\ KM$ đồng quy.
 **Hình giải:** giai_bai17.png
-**Chưa chắc:** đề không cho $AB>AD$ và không loại trừ hình vuông. Đáp án ý c giữ là **hình thang cân (hai đáy $KC$, $DB$)** — đúng với mọi hình chữ nhật không vuông (trạm soát dựng toạ độ cả ba trường hợp): $AB>AD$ ⇒ $DKCB$ là tứ giác lồi, hai đường chéo $DC=KB$ (bằng $AB$) — đúng như lời giải và hình vẽ; $AB<AD$ ⇒ vẫn có $KC\parallel DB$ và bốn điểm vẫn là hình thang cân, nhưng gọi theo thứ tự $D,\ K,\ C,\ B$ thì tứ giác tự cắt, đúng tên phải là $DCKB$ (hai đường chéo $DK=CB$, bằng $AD$); hình vuông ⇒ $N\equiv M$, $K\equiv C$, ý b, c, d suy biến (phải loại). Chỉ cách gọi tên đỉnh phụ thuộc vào $AB>AD$ — CEO xem có thêm "$(AB>AD)$" vào đề cho khớp tên $DKCB$ không.
+**Ghi chú:** Đề cương không ghi $AB>AD$; đã thêm điều kiện này theo quyết định của CEO để tứ giác $DKCB$ có đúng thứ tự đỉnh.
 
 **Phần 1. Hướng dẫn**
 
@@ -2123,7 +2084,7 @@ d) Tia $AM$ cắt tia $KC$ tại điểm $P$. Chứng minh rằng $PN,\ AC,\ KM$
 
 **Bước 5.** Ý d (tiếp): muốn có hai trung điểm đó, dựng hình bình hành $NMPC$ (có $MP\parallel NC$ vì $AM\parallel NC$, và $CP\parallel NM$ vì $KC\parallel NM$), rồi so các cạnh bằng nhau với hai hình bình hành $ANCM$ và $NKCM$.
 
-**Chú ý:** $ANCM$ chỉ là tứ giác khi $N$ khác $M$, tức là $ABCD$ không phải hình vuông. Hình vẽ lấy $AB>AD$; nếu $AB<AD$ thì bốn điểm theo thứ tự $D,\ C,\ K,\ B$ mới là tứ giác, hai đường chéo là $DK$ và $CB$, cũng bằng nhau vì $DK=DA=CB$ ($DN$ vừa vuông góc với $AK$ vừa đi qua trung điểm $N$ của $AK$) — vẫn là hình thang cân.
+**Chú ý:** điều kiện $AB>AD$ để $ABCD$ không phải hình vuông (khi đó $N$, $M$ không trùng nhau) và để bốn điểm $D,\ K,\ C,\ B$ theo đúng thứ tự tạo thành tứ giác $DKCB$.
 
 **Phần 2. Trình bày**
 
@@ -2207,15 +2168,13 @@ d) Chứng minh $\widehat{IAD}=\widehat{IHD}$.
 
 **Bước 1.** Ý a: muốn $ADEH$ là hình chữ nhật, cần tứ giác có đủ bốn góc vuông; ba góc $A$, $D$, $H$ đã vuông theo đề, góc $E$ có được từ tổng các góc của tứ giác bằng $360^\circ$.
 
-**Bước 2.** Ý b: muốn $D$ là trung điểm của $AB$, cần $AD=DB$; vì $AD=HE$ (cạnh đối hình chữ nhật) nên chỉ cần $HE=DB$, tức là hai tam giác vuông $CHE$ và $EDB$ bằng nhau (cạnh huyền $EC=EB$, góc nhọn $\widehat{CEH}=\widehat{EBD}$ vì $EH\parallel AB$).
+**Bước 2.** Ý b: muốn $D$ là trung điểm của $AB$, dùng đường trung bình đảo trong $\triangle ABC$: $E$ là trung điểm của $BC$ nên chỉ cần đường thẳng $ED$ đi qua $E$ song song với $AC$; điều này có vì $ED$ và $AC$ cùng vuông góc với $AB$.
 
 **Bước 3.** Ý c: muốn $IH\perp ID$, cần $\triangle DIH$ vuông tại $I$, tức là trung tuyến $IO$ bằng nửa cạnh $DH$ ($O$ là tâm hình chữ nhật $ADEH$); điều đó có vì $IO$ cũng là trung tuyến ứng với cạnh huyền $AE$ của tam giác vuông $AIE$ và $AE=DH$.
 
 **Bước 4.** Ý d: muốn $\widehat{IAD}=\widehat{IHD}$, bắc cầu qua $\widehat{DAE}$ và $\widehat{EHD}$; trước hết $\widehat{IAD}=\widehat{DAE}$ vì $\triangle ADF=\triangle ADE$ và $I$ nằm trên tia $AF$ (điều kiện $AB>AC$ đảm bảo điều này).
 
 **Bước 5.** Ý d (tiếp): $\widehat{DAE}=\widehat{EHD}$ vì $\triangle ADE=\triangle HED$, và $\widehat{EHD}=\widehat{IHD}$ vì $\triangle DEH=\triangle DIH$ (có $DI=DE$, do $DI$ là trung tuyến ứng với cạnh huyền $EF$ của tam giác $EIF$ vuông tại $I$).
-
-**Chú ý:** bài này chưa được dùng đường trung bình (học sau) nên ý b phải tự chứng minh bằng hai tam giác bằng nhau.
 
 **Phần 2. Trình bày**
 
@@ -2231,23 +2190,11 @@ Suy ra $\widehat{DEH}=360^\circ-90^\circ-90^\circ-90^\circ=90^\circ$ (tổng cá
 
 Tứ giác $ADEH$ có bốn góc vuông nên $ADEH$ là hình chữ nhật.
 
-b) Vì $ADEH$ là hình chữ nhật (câu a) nên $EH\parallel AD$, tức là $EH\parallel AB$, và $AD=HE$.
+b) Vì $ED\perp AB$ và $AC\perp AB$ (tam giác $ABC$ vuông tại $A$) nên $ED\parallel AC$.
 
-Xét $\triangle CHE$ và $\triangle EDB$ có:
+Xét $\triangle ABC$ có $E$ là trung điểm của $BC$ và $ED\parallel AC$ ($D\in AB$).
 
-$\widehat{CHE}=\widehat{EDB}=90^\circ$ (vì $EH\perp AC$, $ED\perp AB$)
-
-$EC=BE$ ($E$ là trung điểm của $BC$)
-
-$\widehat{CEH}=\widehat{EBD}$ (hai góc đồng vị, vì $EH\parallel AB$)
-
-Do đó $\triangle CHE=\triangle EDB$ (cạnh huyền – góc nhọn).
-
-Suy ra $HE=DB$ (hai cạnh tương ứng).
-
-Mà $AD=HE$ nên $AD=DB$.
-
-Lại có $D$ nằm trên $AB$ nên $D$ là trung điểm của $AB$.
+Suy ra $D$ là trung điểm của $AB$ (đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì đi qua trung điểm cạnh thứ ba).
 
 c) Vì $ADEH$ là hình chữ nhật nên hai đường chéo $AE$ và $DH$ bằng nhau và cắt nhau tại trung điểm của mỗi đường.
 
@@ -2308,21 +2255,18 @@ b) Qua $A$ kẻ đường thẳng song song với $BC$ và cắt $NQ$ tại đi�
 c) Chứng minh tứ giác $INQM$ là hình thang cân.
 d) Chứng minh $MI$ vuông góc với $QI$.
 **Hình giải:** giai_bai19.png
-**Chưa chắc:** ý b, c dùng $MQ\parallel BC$ mà dữ kiện đúng là bài đường trung bình ($M$, $Q$ là trung điểm hai cạnh $AB$, $AC$); lời giải tự chứng minh bằng hình bình hành $AMQK$ — CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hình chữ nhật $AMNQ$ ở ý a là chìa khoá cho cả bài: nó cho các cặp cạnh đối song song và bằng nhau ($NQ\parallel AM$, $NQ=AM$, $MN=AQ$), cho hai đường chéo $AN$, $MQ$ bằng nhau và cắt nhau tại trung điểm $O$, và $O$ lại là trung điểm cạnh huyền của tam giác vuông $AIN$ ở ý d.
+**Mấu chốt:** hình chữ nhật $AMNQ$ ở ý a cho các cặp cạnh đối bằng nhau ($MN=AQ$) và hai đường chéo $AN$, $MQ$ bằng nhau, cắt nhau tại trung điểm $O$; còn $MQ$ là đường trung bình của tam giác $ABC$ nên song song $BC$ — hai điều này giải quyết ý b, c, d, và $O$ lại là trung điểm cạnh huyền của tam giác vuông $AIN$ ở ý d.
 
 **Bước 1.** Ý a: muốn $AMNQ$ là hình chữ nhật, cần nó có bốn góc vuông; góc $A$ đã vuông nên chỉ cần thêm hai góc vuông ở $M$ và $Q$ (góc thứ tư suy ra từ tổng bốn góc của tứ giác). Muốn $MN\perp AB$, cần $N$ cách đều $A$ và $B$ để tam giác $NAB$ cân có $M$ là trung điểm cạnh đáy; điều này có từ tính chất trung tuyến ứng với cạnh huyền của tam giác vuông $ABC$.
 
-**Bước 2.** Ý b: muốn $AK\parallel MQ$, ta tìm hình bình hành nhận $AK$ và $MQ$ làm hai cạnh đối, đó là $AMQK$; cần $KQ\parallel AM$ và $KQ=AM$. Vì $K$ nằm trên đường thẳng $NQ$ nên $KQ\parallel AM$ có ngay từ hình chữ nhật ở ý a, còn $KQ=AM$ cần $Q$ là trung điểm của $KN$, nghĩa là hai tam giác $QAK$ và $QCN$ bằng nhau theo trường hợp góc – cạnh – góc.
+**Bước 2.** Ý b: muốn $AK\parallel MQ$, ta thấy $AK$ được dựng song song với $BC$, nên chỉ cần $MQ$ cũng song song với $BC$. Điều này có ngay vì $M$, $Q$ là trung điểm hai cạnh $AB$, $AC$ của tam giác $ABC$, tức $MQ$ là đường trung bình ứng với cạnh $BC$.
 
-**Bước 3.** Bài này chưa được dùng đường trung bình nên ta không viết $MQ\parallel BC$ ngay: ta suy ra từ ý b, vì $AK\parallel MQ$ mà $AK\parallel BC$ nên $MQ\parallel BC$ và do đó $MQ\parallel IN$; kết quả này dùng cho cả ý c.
+**Bước 3.** Ý c: muốn $INQM$ là hình thang cân, trước hết cần nó là hình thang: $IN$ nằm trên $BC$ mà $MQ\parallel BC$ (ý b) nên $IN\parallel MQ$. Sau đó cần hai đường chéo $IQ$, $NM$ bằng nhau: $NM$ bằng $AQ$ vì là hai cạnh đối của hình chữ nhật $AMNQ$, còn $IQ$ bằng $AQ$ vì $IQ$ là trung tuyến ứng với cạnh huyền $AC$ của tam giác vuông $AIC$.
 
-**Bước 4.** Ý c: muốn $INQM$ là hình thang cân, cần nó là hình thang (đã có $IN\parallel MQ$) và có hai đường chéo $IQ$, $NM$ bằng nhau. Đường chéo $NM$ bằng $AQ$ vì là hai cạnh đối của hình chữ nhật, còn $IQ$ bằng $AQ$ vì $IQ$ là trung tuyến ứng với cạnh huyền $AC$ của tam giác vuông $AIC$.
-
-**Bước 5.** Ý d: muốn $MI\perp QI$, cần trung tuyến $IO$ của tam giác $MIQ$ bằng nửa cạnh $MQ$, trong đó $O$ là trung điểm $MQ$ và cũng là trung điểm đường chéo $AN$. Điều đó có được vì $IO$ là trung tuyến ứng với cạnh huyền $AN$ của tam giác vuông $AIN$ và $AN=MQ$.
+**Bước 4.** Ý d: muốn $MI\perp QI$, cần trung tuyến $IO$ của tam giác $MIQ$ bằng nửa cạnh $MQ$, trong đó $O$ là trung điểm $MQ$ và cũng là trung điểm đường chéo $AN$. Điều đó có được vì $IO$ là trung tuyến ứng với cạnh huyền $AN$ của tam giác vuông $AIN$ và $AN=MQ$.
 
 **Chú ý:** nhờ $AB<AC$ mà $I$ không trùng $N$, nên $AIN$ là một tam giác thật; nếu $AB=AC$ thì $I$ trùng $N$ và ý d phải xét riêng.
 
@@ -2350,29 +2294,13 @@ Suy ra $\widehat{MNQ}=360^\circ-3\cdot 90^\circ=90^\circ$ (tổng các góc củ
 
 Tứ giác $AMNQ$ có bốn góc vuông nên là hình chữ nhật.
 
-b) Vì $AMNQ$ là hình chữ nhật nên cũng là hình bình hành, do đó $NQ\parallel AM$ và $NQ=AM$.
+b) Xét $\triangle ABC$ có $M$ là trung điểm của $AB$ và $Q$ là trung điểm của $AC$ nên $MQ$ là đường trung bình của $\triangle ABC$.
 
-Vì $K$ thuộc đường thẳng $NQ$ nên $KQ\parallel AM$.
+Suy ra $MQ\parallel BC$.
 
-Xét $\triangle QAK$ và $\triangle QCN$ có:
+Mà $AK\parallel BC$ (giả thiết) nên $AK\parallel MQ$.
 
-$\widehat{QAK}=\widehat{QCN}$ (so le trong, vì $AK\parallel BC$)
-
-$QA=QC$ ($Q$ là trung điểm của $AC$)
-
-$\widehat{AQK}=\widehat{CQN}$ (đối đỉnh)
-
-Do đó $\triangle QAK=\triangle QCN$ (g.c.g), suy ra $QK=QN$.
-
-Mà $QN=AM$ nên $QK=AM$.
-
-Tứ giác $AMQK$ có $AM\parallel QK$ và $AM=QK$ nên là hình bình hành (dấu hiệu nhận biết).
-
-Suy ra $AK\parallel MQ$.
-
-c) Vì $AK\parallel MQ$ (câu b) và $AK\parallel BC$ nên $MQ\parallel BC$.
-
-Mà $I$, $N$ thuộc $BC$ ($I$ không trùng $N$ vì $AB<AC$) nên $MQ\parallel IN$, do đó $INQM$ là hình thang.
+c) Vì $MQ\parallel BC$ (câu b) mà $I$, $N$ thuộc $BC$ ($I$ không trùng $N$ vì $AB<AC$) nên $MQ\parallel IN$, do đó $INQM$ là hình thang.
 
 Vì $AMNQ$ là hình chữ nhật nên $MN=AQ$ (1).
 

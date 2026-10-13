@@ -12,21 +12,18 @@ b) Qua $A$ kẻ đường thẳng song song với $BC$ và cắt $NQ$ tại đi�
 c) Chứng minh tứ giác $INQM$ là hình thang cân.
 d) Chứng minh $MI$ vuông góc với $QI$.
 **Hình giải:** giai_bai19.png
-**Chưa chắc:** ý b, c dùng $MQ\parallel BC$ mà dữ kiện đúng là bài đường trung bình ($M$, $Q$ là trung điểm hai cạnh $AB$, $AC$); lời giải tự chứng minh bằng hình bình hành $AMQK$ — CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** hình chữ nhật $AMNQ$ ở ý a là chìa khoá cho cả bài: nó cho các cặp cạnh đối song song và bằng nhau ($NQ\parallel AM$, $NQ=AM$, $MN=AQ$), cho hai đường chéo $AN$, $MQ$ bằng nhau và cắt nhau tại trung điểm $O$, và $O$ lại là trung điểm cạnh huyền của tam giác vuông $AIN$ ở ý d.
+**Mấu chốt:** hình chữ nhật $AMNQ$ ở ý a cho các cặp cạnh đối bằng nhau ($MN=AQ$) và hai đường chéo $AN$, $MQ$ bằng nhau, cắt nhau tại trung điểm $O$; còn $MQ$ là đường trung bình của tam giác $ABC$ nên song song $BC$ — hai điều này giải quyết ý b, c, d, và $O$ lại là trung điểm cạnh huyền của tam giác vuông $AIN$ ở ý d.
 
 **Bước 1.** Ý a: muốn $AMNQ$ là hình chữ nhật, cần nó có bốn góc vuông; góc $A$ đã vuông nên chỉ cần thêm hai góc vuông ở $M$ và $Q$ (góc thứ tư suy ra từ tổng bốn góc của tứ giác). Muốn $MN\perp AB$, cần $N$ cách đều $A$ và $B$ để tam giác $NAB$ cân có $M$ là trung điểm cạnh đáy; điều này có từ tính chất trung tuyến ứng với cạnh huyền của tam giác vuông $ABC$.
 
-**Bước 2.** Ý b: muốn $AK\parallel MQ$, ta tìm hình bình hành nhận $AK$ và $MQ$ làm hai cạnh đối, đó là $AMQK$; cần $KQ\parallel AM$ và $KQ=AM$. Vì $K$ nằm trên đường thẳng $NQ$ nên $KQ\parallel AM$ có ngay từ hình chữ nhật ở ý a, còn $KQ=AM$ cần $Q$ là trung điểm của $KN$, nghĩa là hai tam giác $QAK$ và $QCN$ bằng nhau theo trường hợp góc – cạnh – góc.
+**Bước 2.** Ý b: muốn $AK\parallel MQ$, ta thấy $AK$ được dựng song song với $BC$, nên chỉ cần $MQ$ cũng song song với $BC$. Điều này có ngay vì $M$, $Q$ là trung điểm hai cạnh $AB$, $AC$ của tam giác $ABC$, tức $MQ$ là đường trung bình ứng với cạnh $BC$.
 
-**Bước 3.** Bài này chưa được dùng đường trung bình nên ta không viết $MQ\parallel BC$ ngay: ta suy ra từ ý b, vì $AK\parallel MQ$ mà $AK\parallel BC$ nên $MQ\parallel BC$ và do đó $MQ\parallel IN$; kết quả này dùng cho cả ý c.
+**Bước 3.** Ý c: muốn $INQM$ là hình thang cân, trước hết cần nó là hình thang: $IN$ nằm trên $BC$ mà $MQ\parallel BC$ (ý b) nên $IN\parallel MQ$. Sau đó cần hai đường chéo $IQ$, $NM$ bằng nhau: $NM$ bằng $AQ$ vì là hai cạnh đối của hình chữ nhật $AMNQ$, còn $IQ$ bằng $AQ$ vì $IQ$ là trung tuyến ứng với cạnh huyền $AC$ của tam giác vuông $AIC$.
 
-**Bước 4.** Ý c: muốn $INQM$ là hình thang cân, cần nó là hình thang (đã có $IN\parallel MQ$) và có hai đường chéo $IQ$, $NM$ bằng nhau. Đường chéo $NM$ bằng $AQ$ vì là hai cạnh đối của hình chữ nhật, còn $IQ$ bằng $AQ$ vì $IQ$ là trung tuyến ứng với cạnh huyền $AC$ của tam giác vuông $AIC$.
-
-**Bước 5.** Ý d: muốn $MI\perp QI$, cần trung tuyến $IO$ của tam giác $MIQ$ bằng nửa cạnh $MQ$, trong đó $O$ là trung điểm $MQ$ và cũng là trung điểm đường chéo $AN$. Điều đó có được vì $IO$ là trung tuyến ứng với cạnh huyền $AN$ của tam giác vuông $AIN$ và $AN=MQ$.
+**Bước 4.** Ý d: muốn $MI\perp QI$, cần trung tuyến $IO$ của tam giác $MIQ$ bằng nửa cạnh $MQ$, trong đó $O$ là trung điểm $MQ$ và cũng là trung điểm đường chéo $AN$. Điều đó có được vì $IO$ là trung tuyến ứng với cạnh huyền $AN$ của tam giác vuông $AIN$ và $AN=MQ$.
 
 **Chú ý:** nhờ $AB<AC$ mà $I$ không trùng $N$, nên $AIN$ là một tam giác thật; nếu $AB=AC$ thì $I$ trùng $N$ và ý d phải xét riêng.
 
@@ -54,29 +51,13 @@ Suy ra $\widehat{MNQ}=360^\circ-3\cdot 90^\circ=90^\circ$ (tổng các góc củ
 
 Tứ giác $AMNQ$ có bốn góc vuông nên là hình chữ nhật.
 
-b) Vì $AMNQ$ là hình chữ nhật nên cũng là hình bình hành, do đó $NQ\parallel AM$ và $NQ=AM$.
+b) Xét $\triangle ABC$ có $M$ là trung điểm của $AB$ và $Q$ là trung điểm của $AC$ nên $MQ$ là đường trung bình của $\triangle ABC$.
 
-Vì $K$ thuộc đường thẳng $NQ$ nên $KQ\parallel AM$.
+Suy ra $MQ\parallel BC$.
 
-Xét $\triangle QAK$ và $\triangle QCN$ có:
+Mà $AK\parallel BC$ (giả thiết) nên $AK\parallel MQ$.
 
-$\widehat{QAK}=\widehat{QCN}$ (so le trong, vì $AK\parallel BC$)
-
-$QA=QC$ ($Q$ là trung điểm của $AC$)
-
-$\widehat{AQK}=\widehat{CQN}$ (đối đỉnh)
-
-Do đó $\triangle QAK=\triangle QCN$ (g.c.g), suy ra $QK=QN$.
-
-Mà $QN=AM$ nên $QK=AM$.
-
-Tứ giác $AMQK$ có $AM\parallel QK$ và $AM=QK$ nên là hình bình hành (dấu hiệu nhận biết).
-
-Suy ra $AK\parallel MQ$.
-
-c) Vì $AK\parallel MQ$ (câu b) và $AK\parallel BC$ nên $MQ\parallel BC$.
-
-Mà $I$, $N$ thuộc $BC$ ($I$ không trùng $N$ vì $AB<AC$) nên $MQ\parallel IN$, do đó $INQM$ là hình thang.
+c) Vì $MQ\parallel BC$ (câu b) mà $I$, $N$ thuộc $BC$ ($I$ không trùng $N$ vì $AB<AC$) nên $MQ\parallel IN$, do đó $INQM$ là hình thang.
 
 Vì $AMNQ$ là hình chữ nhật nên $MN=AQ$ (1).
 
@@ -293,9 +274,9 @@ Vậy khi $D$ là trung điểm của $AM$ thì $BC=4EF$.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
-- Bài 19 (ý b, c): dữ kiện đúng là đường trung bình ($M$, $Q$ trung điểm $AB$, $AC$ nên $MQ\parallel BC$). Theo luật khối 8 lời giải tự chứng minh $MQ\parallel BC$ qua hình bình hành $AMQK$ (ý b) — CEO xem có cho dùng đường trung bình ở đề cương này không; nếu cho, ý b chỉ còn 2 dòng.
+- Bài 19 (ý b, c): dùng thẳng đường trung bình của tam giác ($M$, $Q$ trung điểm $AB$, $AC$ nên $MQ\parallel BC$) theo quyết định của CEO 13/10 cho đề cương này.
 - Bài 21 ý a: $OC=OD$ là kết quả quen thuộc của "đường trung bình hình thang" (KNTT 8 không có); lời giải tự chứng minh bằng hai tam giác bằng nhau (điểm $F$) rồi trung tuyến ứng với cạnh huyền.
 - Bài 21 ý c: nếu $N$ trùng $B$ thì $M$ trùng $A$ và tam giác $BKM$ suy biến thành $BKA$ — lời giải không xét riêng trường hợp này (đúng vẫn đúng theo ý b).
 - Bài 22: coi $D$ khác $A$ (nếu $D$ trùng $A$ thì $E$, $F$ cũng trùng $A$, không còn hình chữ nhật). Ý c đáp: $D$ là trung điểm $AM$.
-- Cả bốn bài đều dùng "trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền" và chiều đảo (có trong bài Hình chữ nhật), không dùng Pythagore, đồng dạng, Thalès, đường trung bình.
+- Cả bốn bài đều dùng "trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền" và chiều đảo (có trong bài Hình chữ nhật); không dùng Pythagore, đồng dạng, Thalès, đường trung bình hình thang. Chỉ Bài 19 (ý b, c) dùng đường trung bình của tam giác.
 - Hình giải (`giai_bai19` đến `giai_bai22`) vẽ bằng code, dựng đúng dữ kiện bằng toạ độ; điểm phụ $O$ (Bài 19, 20, 21, 22), $E$ (Bài 20), $F$ (Bài 21) có mặt trong hình vì lời giải dùng đến. Đã kiểm toạ độ số (200–400 hình ngẫu nhiên mỗi bài) mọi khẳng định song song, vuông góc, bằng nhau, thẳng hàng và điều kiện $BC=4EF$ khi và chỉ khi $D$ là trung điểm $AM$.

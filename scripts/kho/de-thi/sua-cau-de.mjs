@@ -18,7 +18,7 @@ import { bien, docEnv, GOC_REPO } from '../cau-hinh.mjs'
 const args = process.argv.slice(2)
 const lay = (k) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null }
 const dir = args.find((a, i) => !a.startsWith('--') && !['--nhan', '--de-cu', '--phan'].includes(args[i - 1]))
-const NHAN = lay('--nhan'), DE_CU = lay('--de-cu'), PHAN = lay('--phan'), GHI = args.includes('--ghi'), DOI_HINH = args.includes('--doi-hinh')
+const NHAN = lay('--nhan'), DE_CU = lay('--de-cu'), PHAN = lay('--phan'), GHI = args.includes('--ghi'), DOI_HINH = args.includes('--doi-hinh'), DOI_HINH_GIAI = args.includes('--doi-hinh-giai')
 if (!dir || !NHAN || !DE_CU) { console.error('Dùng: node scripts/kho/de-thi/sua-cau-de.mjs <thư mục> --nhan "Bài 2a" --de-cu "<nội dung cũ>" [--phan 2] [--doi-hinh] [--ghi]'); process.exit(2) }
 const de = JSON.parse(readFileSync(join(dir, 'de.json'), 'utf8'))
 const ung = de.cau.filter((q) => q.nhan === NHAN && (!PHAN || q.phan === Number(PHAN)))
@@ -58,6 +58,24 @@ try {
     }
     await c.query(`update ${tbl} set anh_de = $1 where ma_cau = $2`, [urlMoi, r.ma_cau])
     console.log(`  hình đề: ${h.anh_de ?? '—'}\n       ⇒ ${urlMoi}  (${f})`)
+  }
+  if (DOI_HINH_GIAI) { // `--doi-hinh-giai`: hình CỦA LỜI GIẢI (anh_dap_an) đã vẽ lại — tải tệp đầu của `anh_giai` trong de.json lên kho-anh (đường dẫn mới, tệp cũ giữ nguyên)
+    const f = (q.anh_giai ?? []).find((x) => /\.(png|jpe?g)$/i.test(x)), p = f && join(dir, 'img', f)
+    if (!f || !existsSync(p)) throw new Error(`--doi-hinh-giai: câu không khai hình giải hoặc thiếu tệp ${p ?? ''}`)
+    const { rows: [h] } = await c.query(`select anh_dap_an from ${tbl} where ma_cau = $1`, [r.ma_cau])
+    let urlMoi = `dry://kho-anh/${f}`
+    if (GHI) {
+      const env = docEnv(join(GOC_REPO, '.env.local'))
+      if (!env.VITE_SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE) throw new Error('thiếu VITE_SUPABASE_URL / SUPABASE_SERVICE_ROLE trong .env.local')
+      const sb = createClient(env.VITE_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE, { auth: { persistSession: false, autoRefreshToken: false } })
+      const d = new Date(), ext = f.split('.').pop().toLowerCase()
+      const duong = `nhap_kho/${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}/${randomUUID()}_${de.sha256.slice(0, 8)}_p${q.phan}c${q.so}g.${ext}`
+      const { error } = await sb.storage.from('kho-anh').upload(duong, readFileSync(p), { contentType: ext === 'png' ? 'image/png' : 'image/jpeg', upsert: false })
+      if (error) throw new Error(`upload ${duong}: ${error.message}`)
+      urlMoi = sb.storage.from('kho-anh').getPublicUrl(duong).data.publicUrl
+    }
+    await c.query(`update ${tbl} set anh_dap_an = $1 where ma_cau = $2`, [urlMoi, r.ma_cau])
+    console.log(`  hình giải: ${h.anh_dap_an ?? '—'}\n       ⇒ ${urlMoi}  (${f})`)
   }
   if (q.canh_bao?.length) await c.query(`update tai_lieu set cau_hinh = jsonb_set(cau_hinh, array['deThi','canhBaoCau',$2], $3::jsonb, true), updated_at = now() where id = $1`, [tl.id, r.ma_cau, JSON.stringify(q.canh_bao)])
   else await c.query(`update tai_lieu set cau_hinh = cau_hinh #- array['deThi','canhBaoCau',$2], updated_at = now() where id = $1`, [tl.id, r.ma_cau])

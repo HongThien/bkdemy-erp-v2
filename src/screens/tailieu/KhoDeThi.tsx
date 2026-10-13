@@ -12,7 +12,7 @@ import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import {
   getDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc, addPhanDeThi, listPhanDeThi,
-  deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap,
+  deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap, nhanGocCau,
   demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI, soDongDeThi, setSoDongDeThi, coDongKeDeThi, dongMacDinhDeThi,
   type DeThi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
@@ -304,6 +304,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   }, [id]) // eslint-disable-line
 
   const ghiChu = useMemo(() => (d ? canhBaoNhap(d) : {}), [d])
+  const nhanGoc = useMemo(() => (d ? nhanGocCau(d) : {}), [d])
   const loiCua = useMemo(() => new Map((thieu?.cau ?? []).map((x) => [x.ma_cau, x.loi])), [thieu])
   const quetLai = () => { deThiThieu(id).then(setThieu).catch(() => {}) }
   const va = (ma: string, patch: Partial<DeThiCau>) => setCaus((prev) => prev?.map((c) => (c.ma_cau === ma ? { ...c, ...patch } : c)) ?? prev)
@@ -450,7 +451,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                       return (
                         <div key={c.ma_cau}>
                           {moiNl && <NguLieuBlock nl={nl[maNl!]} />}
-                          <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []}
+                          <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []} nhan={nhanGoc[c.ma_cau]}
                             dau={i === 0} cuoi={i === cs.length - 1}
                             soDong={soDong[c.ma_cau] ?? dongMacDinhDeThi(c.loai_cau)} onSoDong={(n) => datSoDong({ [c.ma_cau]: n })}
                             onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
@@ -538,8 +539,8 @@ function DongCaPhan({ onDat }: { onDat: (n: number) => void }) {
     <ODong value="" onDat={onDat} title="Gõ số rồi Enter: đặt số dòng kẻ cho MỌI câu tự luận / trả lời ngắn của phần này (bản in)" /></label>
 }
 
-function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho }: {
-  c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; dau: boolean; cuoi: boolean
+function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho }: {
+  c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; nhan?: string; dau: boolean; cuoi: boolean
   soDong: number; onSoDong: (n: number) => void
   onChonDang: (md: number | null) => void
   onSua: (patch: SuaCauPatch, localNd?: Partial<NoiDungCau>) => Promise<boolean>
@@ -553,6 +554,7 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, dau, cuoi, soDong, onSoD
     <div className={`rounded-xl border bg-white p-4 ${vien}`}>
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-[13px] font-bold text-slate-700">Câu {so}</span>
+        {nhan && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[11px] font-semibold text-indigo-700" title="Nhãn của câu trên đề gốc">{nhan}</span>}
         <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{LOAI_TEN[c.loai_cau ?? ''] ?? c.loai_cau}</span>
         <span className="font-mono text-[10px] text-slate-400">{c.ma_cau}</span>
         <span className="text-[11px] text-slate-400">{c.diem} đ</span>

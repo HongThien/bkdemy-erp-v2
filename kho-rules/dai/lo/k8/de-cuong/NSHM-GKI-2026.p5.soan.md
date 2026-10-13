@@ -319,7 +319,6 @@ Vậy $x=1$ hoặc $x=3$.
 
 ### Bài 7i | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm $x$ biết: $x(x+2)+3(x-1)=0$.
-**Chưa chắc:** sau khi thu gọn được $x^2+5x-3=0$ với hai giá trị vô tỉ $\dfrac{-5\pm\sqrt{37}}{2}$, trong khi 7a–7h đều có giá trị hữu tỉ ⇒ nghi đề in lỗi (vd đề có thể là $x(x+2)+3(x+2)=0$ cho $x=-2$ hoặc $x=-3$). Lời giải theo ĐÚNG đề như in, dùng bình phương của một tổng và căn bậc hai (lớp 7), kiểm bằng máy cả hai giá trị.
 
 **Phần 1. Hướng dẫn**
 
@@ -363,7 +362,6 @@ Vậy $x=\dfrac{-5+\sqrt{37}}{2}$ hoặc $x=\dfrac{-5-\sqrt{37}}{2}$.
 
 ### Bài 7k | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Tìm $x$ biết: $2x(x-2)-(x+1)=0$.
-**Chưa chắc:** sau khi thu gọn được $2x^2-5x-1=0$ với hai giá trị vô tỉ $\dfrac{5\pm\sqrt{33}}{4}$, trong khi 7a–7h đều hữu tỉ ⇒ nghi đề in lỗi (vd đề có thể là $2x(x-2)-(x-2)=0$ cho $x=2$ hoặc $x=\dfrac{1}{2}$, đúng dạng đặt nhân tử chung). Lời giải theo ĐÚNG đề như in, dùng bình phương của một hiệu và căn bậc hai (lớp 7), kiểm bằng máy cả hai giá trị.
 
 **Phần 1. Hướng dẫn**
 

@@ -123,9 +123,10 @@ try {
   }
 
   // đề
-  const nhanhByCau = {}, canhBaoCau = {}
+  const nhanhByCau = {}, canhBaoCau = {}, nhanCau = {} // nhanCau: nhãn GỐC của câu trên đề (vd "Bài 2a") — để đối chiếu đề gốc khi câu đã tách ý
   for (const q of de.cau) {
     const m = maCua.get(q)
+    if (q.nhan && !nhanCau[m.ma_cau]) nhanCau[m.ma_cau] = q.nhan
     if (m.kho === 'hgt') nhanhByCau[m.ma_cau] = 'hinh_gt'
     else if (m.kho === 'hinh_hoc') nhanhByCau[m.ma_cau] = 'hinh_hoc'
     const cb = [...(q.canh_bao ?? []), ...(canhBaoThem.get(q) ?? [])]
@@ -136,7 +137,8 @@ try {
     deThi: { ...(de.kieu ? { kieu: de.kieu } : {}), nguon: de.nguon ?? 'le', nam: de.nam ?? null,
       thoiGianPhut: de.thoi_gian_phut === null ? null : (de.thoi_gian_phut ?? 90), thangDiem: de.thang_diem ?? 10,
       sha256: de.sha256, file: de.file, pdfGocUrl, phan: de.phan.map(({ thu_tu, ten, dang_thuc, diem_moi_cau }) => ({ thu_tu, ten, dang_thuc, diem_moi_cau })),
-      ...(Object.keys(canhBaoCau).length ? { canhBaoCau } : {}) },
+      ...(Object.keys(canhBaoCau).length ? { canhBaoCau } : {}),
+      ...(Object.keys(nhanCau).length ? { nhanCau } : {}) },
     ...(Object.keys(nhanhByCau).length ? { nhanhByCau } : {}),
   }
   const { rows: [tl] } = await c.query(

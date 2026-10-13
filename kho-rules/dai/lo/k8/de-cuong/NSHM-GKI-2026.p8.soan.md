@@ -108,7 +108,6 @@ a) Chứng minh tứ giác $AMHN$ là hình chữ nhật.
 b) Trên tia $NC$ lấy điểm $P$ sao cho $AN=PN$. Gọi $I$ là giao điểm của $MP$ và $HN$. Chứng minh rằng tứ giác $HMNP$ là hình bình hành và $OI=\dfrac{1}{2}AN$.
 c) Qua $C$ kẻ đường thẳng song song với $AH$ và cắt đường thẳng $MH$ tại điểm $E$, cắt đường thẳng $MN$ tại điểm $F$. Hỏi tam giác $ABC$ cần thêm điều kiện gì để tam giác $MFE$ là tam giác vuông cân?
 **Hình giải:** giai_bai14.png
-**Chưa chắc:** ý b, hệ thức OI = 1/2 AN có dữ kiện đúng là bài đường trung bình (O, I là trung điểm hai cạnh MN, HN của tam giác MNH), lời giải tự chứng minh bằng hai hình bình hành — CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
@@ -118,15 +117,15 @@ c) Qua $C$ kẻ đường thẳng song song với $AH$ và cắt đường thẳ
 
 **Bước 2.** Ý b: muốn $HMNP$ là hình bình hành, cần một cặp cạnh đối vừa song song vừa bằng nhau; chọn $HM$ và $NP$, vì $HM$ song song và bằng $AN$ (cạnh đối của hình chữ nhật $AMHN$) còn $AN$ nằm trên $AC$ và bằng $NP$ theo đề.
 
-**Bước 3.** Ý b: $O$ là trung điểm của $MN$ (đường chéo hình chữ nhật) và $I$ là trung điểm của $HN$ (đường chéo hình bình hành), nên $OI$ nối trung điểm hai cạnh của tam giác $MNH$ và bằng nửa $MH$, mà $MH=AN$; bài này chưa được dùng đường trung bình nên ta tự chứng minh.
+**Bước 3.** Ý b: muốn có $OI=\dfrac{1}{2}AN$, nhận ra $OI$ nối hai trung điểm của hai cạnh $MN$ và $HN$ trong tam giác $MNH$ nên là đường trung bình, do đó bằng nửa cạnh thứ ba $MH$; cần chỉ ra $O$ là trung điểm của $MN$ (đường chéo hình chữ nhật $AMHN$) và $I$ là trung điểm của $HN$ (đường chéo hình bình hành $HMNP$).
 
-**Bước 4.** Ý b: lấy $T$ sao cho $I$ là trung điểm của $OT$, rồi chứng minh lần lượt $ONTH$ và $MOTH$ là hình bình hành để suy ra $OT=MH$ và $OI=\dfrac{1}{2}OT$.
+**Bước 4.** Ý b: chuyển nửa cạnh $MH$ sang $AN$ nhờ $MH=AN$ (cạnh đối của hình chữ nhật $AMHN$), từ đó có $OI=\dfrac{1}{2}AN$.
 
 **Bước 5.** Ý c: muốn tam giác $MFE$ vuông cân, trước hết tìm đỉnh có thể là góc vuông: góc tại $M$ và góc tại $E$ đều liên quan đến một góc nhọn của tam giác vuông ($MHN$ hoặc $AMH$) nên không thể vuông, chỉ còn đỉnh $F$.
 
 **Bước 6.** Ý c: góc ở $F$ vuông khi $MN\perp EF$ mà $EF\parallel AH$, tức hai đường chéo của hình chữ nhật $AMHN$ vuông góc; từ đó suy ra hình dạng của $AMHN$, rồi của tam giác $ABC$, và cuối cùng phải kiểm tra lại điều kiện tìm được thật sự cho tam giác cân.
 
-**Chú ý:** không viết "$OI$ là đường trung bình của tam giác $MNH$" vì đường trung bình học ở chương sau; ở ý c phải kiểm tra cả chiều ngược lại (điều kiện đủ), không chỉ suy ra điều kiện cần.
+**Chú ý:** ở ý c phải kiểm tra cả chiều ngược lại (điều kiện đủ), không chỉ suy ra điều kiện cần.
 
 **Phần 2. Trình bày**
 
@@ -154,17 +153,9 @@ Vì $HMNP$ là hình bình hành nên hai đường chéo $HN$ và $MP$ cắt nh
 
 Vì $AMHN$ là hình chữ nhật nên hai đường chéo $AH$ và $MN$ cắt nhau tại trung điểm của mỗi đường. Mà $O$ là giao điểm của $AH$ và $MN$ nên $O$ là trung điểm của $MN$.
 
-Trên tia $OI$ lấy điểm $T$ sao cho $I$ là trung điểm của $OT$.
+Xét tam giác $MNH$ có $O$ là trung điểm của $MN$ và $I$ là trung điểm của $HN$ nên $OI$ là đường trung bình của tam giác $MNH$.
 
-Tứ giác $ONTH$ có hai đường chéo $OT$ và $NH$ cắt nhau tại $I$ là trung điểm của mỗi đường nên $ONTH$ là hình bình hành, suy ra $HT\parallel ON$ và $HT=ON$.
-
-Vì $O$ là trung điểm của $MN$ nên $M$, $O$, $N$ thẳng hàng và $OM=ON$. Do đó $HT\parallel OM$ và $HT=OM$.
-
-Tứ giác $MOTH$ có $HT\parallel OM$ và $HT=OM$ nên là hình bình hành, suy ra $OT=MH$.
-
-Mà $MH=AN$ nên $OT=AN$.
-
-Vì $I$ là trung điểm của $OT$ nên $OI=\dfrac{1}{2}OT=\dfrac{1}{2}AN$.
+Suy ra $OI=\dfrac{1}{2}MH$. Mà $MH=AN$ (cạnh đối của hình chữ nhật $AMHN$) nên $OI=\dfrac{1}{2}AN$.
 
 c) Vì $E\in MH$ nên đường thẳng $EM$ trùng đường thẳng $MH$; vì $F\in MN$ nên đường thẳng $FM$ trùng đường thẳng $MN$.
 
@@ -204,7 +195,6 @@ a) Chứng minh tứ giác $ABDC$ là hình chữ nhật và $AM=\dfrac{1}{2}BC$
 b) Gọi $E$ là chân đường vuông góc hạ từ $D$ xuống $BC$, lấy điểm $F$ sao cho $E$ là trung điểm của $FD$. Chứng minh $CF=AB$ và $AF$ vuông góc với $FD$.
 c) Qua $F$ kẻ các đường thẳng vuông góc với các đường thẳng $AB$ và $AC$ lần lượt tại $H$ và $K$. Chứng minh $H,\ K,\ E$ thẳng hàng.
 **Hình giải:** giai_bai15.png
-**Chưa chắc:** ý c, bước chứng minh OE song song AD (O, E là trung điểm AF, FD của tam giác AFD) có dữ kiện đúng là bài đường trung bình, lời giải tự chứng minh bằng hình bình hành — CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
@@ -220,7 +210,7 @@ c) Qua $F$ kẻ các đường thẳng vuông góc với các đường thẳng 
 
 **Bước 5.** Ý c: để có $HK\parallel AD$, đưa về hai góc so le trong bằng nhau: $AF\parallel BC$ (cùng vuông góc $FD$) cho $\widehat{FAB}=\widehat{ABC}$, $MA=MB$ cho $\widehat{DAB}=\widehat{ABC}$, và $OA=OH$ cho $\widehat{AHK}=\widehat{FAB}$.
 
-**Bước 6.** Ý c: để có $OE\parallel AD$, bài này chưa được dùng đường trung bình nên tự chứng minh: tam giác $MAF$ cân có $MO\perp AF$, từ đó $MOFE$ rồi $AOEM$ là hình bình hành.
+**Bước 6.** Ý c: để có $OE\parallel AD$, nhận ra trong tam giác $AFD$ thì $O$ là trung điểm của $AF$ (tâm hình chữ nhật $AHFK$) và $E$ là trung điểm của $FD$ (giả thiết), nên $OE$ là đường trung bình, song song với cạnh thứ ba $AD$.
 
 **Chú ý:** điều kiện $AB>AC$ bảo đảm $E$ khác $M$; nếu $AB=AC$ thì $F$ trùng $A$ và hệ thức $AF\perp FD$ ở ý b mất nghĩa.
 
@@ -270,15 +260,9 @@ Hai góc $\widehat{AHK}$ và $\widehat{DAB}$ ở vị trí so le trong và bằn
 
 Chứng minh $OE\parallel AD$.
 
-Vì $MA=MF$ (câu b) nên tam giác $MAF$ cân tại $M$. Mà $O$ là trung điểm của $AF$ nên $MO\perp AF$.
+Xét tam giác $AFD$ có $O$ là trung điểm của $AF$ (chứng minh trên) và $E$ là trung điểm của $FD$ (giả thiết) nên $OE$ là đường trung bình của tam giác $AFD$.
 
-Vì $MO\perp AF$ và $FD\perp AF$ nên $MO\parallel FD$, tức $MO\parallel FE$.
-
-Vì $M$, $E$ thuộc $BC$ và $AF\parallel BC$ nên $ME\parallel AF$, tức $ME\parallel OF$.
-
-Tứ giác $MOFE$ có $MO\parallel FE$ và $ME\parallel OF$ nên là hình bình hành, suy ra $ME=OF$. Mà $OF=OA$ nên $ME=AO$.
-
-Tứ giác $AOEM$ có $AO\parallel ME$ và $AO=ME$ nên là hình bình hành (dấu hiệu nhận biết). Suy ra $OE\parallel AM$, tức $OE\parallel AD$.
+Suy ra $OE\parallel AD$.
 
 Qua $O$ có hai đường thẳng $HK$ và $OE$ cùng song song với $AD$ nên chúng trùng nhau (tiên đề Euclid).
 
@@ -289,8 +273,8 @@ Vậy ba điểm $H$, $K$, $E$ thẳng hàng.
 - Phần này gồm 3 bài hình (Bài 13, 14, 15), cả ba là tự luận, không có câu trả lời ngắn. Khung đã đối chiếu ảnh đề cương (trang 3 và 4): chữ, số, kí hiệu khớp, không phải sửa đề.
 - Hình giải đã vẽ bằng code, dựng đúng dữ kiện bằng toạ độ, mỗi bài một tệp: giai_bai13.png, giai_bai14.png, giai_bai15.png. Không vẽ điều phải chứng minh (không đánh dấu vuông góc của AN và HC, không nối HK ở Bài 15).
 - Đã thử số (200 bộ ngẫu nhiên cho mỗi bài, kiểm bằng toạ độ) toàn bộ khẳng định trong lời giải: Bài 13 (K nằm sau C, PK = AB, AN vuông HC, các cặp góc bằng nhau), Bài 14 (HMNP bình hành, OI = 1/2 AN; ở ý c quét tỉ số AB/AC từ 0,05 đến 20 chỉ có AB = AC cho tam giác MFE vuông cân), Bài 15 (CF = AB, AF vuông FD, H, K, E thẳng hàng, HK song song AD, AOEM bình hành).
-- CẦN CEO XEM: Bài 14 ý b và Bài 15 ý c có dữ kiện đúng là bài đường trung bình (nối hai trung điểm hai cạnh của một tam giác). Lời giải đã tự chứng minh bằng hình bình hành (không gọi tên đường trung bình), dài hơn bản dùng đường trung bình.
+- Theo quyết định của CEO 13/10 (đề cương này được dùng đường trung bình của tam giác): Bài 14 ý b ($OI$ là đường trung bình của $\triangle MNH$) và Bài 15 ý c ($OE$ là đường trung bình của $\triangle AFD$) đã viết lại dùng thẳng đường trung bình.
 - Bài 13 ý b: để cộng đoạn thẳng PK = PC + CK, lời giải chứng minh trước K nằm ngoài đoạn DC (phản chứng bằng so sánh góc). Nhiều lời giải ngoài thường bỏ qua bước này.
 - Bài 15 ý c: vị trí các điểm (H nằm giữa A và B, K và D khác phía đối với AB) lời giải dùng theo hình vẽ, không chứng minh chặt — đúng mức thường gặp ở lớp 8. Trạm soát đã kiểm vị trí này luôn đúng khi AB > AC (F nằm trên đường qua A song song BC, về phía B và khác phía C đối với AB, AF = 2ME < BC), nên không còn là chỗ chưa chắc. Bài 13 ý c cũng dựa vào thứ tự K, H đã chứng minh ở ý b.
-- Hình giải (trạm soát bổ sung): Bài 14 thêm điểm phụ T (trung điểm PH) và đoạn OT, dời nhãn I khỏi đường MP; Bài 15 thêm tâm O của hình chữ nhật AHFK và đường chéo HK.
+- Hình giải: Bài 14 nối thêm đoạn OI (đã bỏ điểm phụ T và đoạn OT của lời giải cũ); Bài 15 có tâm O của hình chữ nhật AHFK và đường chéo HK (vẫn dùng ở lời giải mới).
 - Bài 14 ý c đáp: tam giác ABC vuông cân tại A (AB = AC); lời giải chứng minh cả điều kiện cần lẫn điều kiện đủ, và chỉ ra tam giác MFE không thể vuông tại M hay E.

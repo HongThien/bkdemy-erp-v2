@@ -12,23 +12,20 @@ b) Chứng minh $MN$ vuông góc với $AC$.
 c) Kẻ $NK\parallel AB$ ($K$ thuộc $BH$). Chứng minh $NP=CK$.
 d) Chứng minh $NP$ vuông góc với $NB$.
 **Hình giải:** giai_bai16.png
-**Chưa chắc:** ý b, c: dữ kiện đúng là bài đường trung bình ($M$, $N$ là trung điểm $AB$, $AH$ nên $MN\parallel BH$; $NK\parallel AB$ nên $K$ là trung điểm $BH$) — lời giải không dùng đường trung bình: ý b đi qua trung tuyến ứng với cạnh huyền và tam giác cân, ý c đi qua hình bình hành $MNKB$; CEO quyết có cho dùng đường trung bình ở đề cương này không.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** ý c và ý d liên kết với nhau: $NKCP$ là hình bình hành nên $NP\parallel CK$, còn $K$ là trực tâm của $\triangle NBC$ nên $CK\perp NB$.
+**Mấu chốt:** $MN$ và $NK$ đều là đường trung bình của $\triangle ABH$; từ đó $NKCP$ là hình bình hành nên $NP\parallel CK$ (ý c), còn $K$ là trực tâm của $\triangle NBC$ nên $CK\perp NB$ (ý d).
 
 **Bước 1.** Ý a: muốn $MBCP$ là hình chữ nhật, cần nó là hình bình hành và có một góc vuông; hình bình hành có được từ $MB\parallel PC$ và $MB=PC$ (hai nửa của hai cạnh đối $AB$, $CD$), góc vuông chính là góc $B$ của hình chữ nhật $ABCD$.
 
-**Bước 2.** Ý b: muốn $MN\perp AC$, thấy $N$ là trung điểm của $AH$ nên cần $\triangle MAH$ cân tại $M$ (khi đó trung tuyến $MN$ cũng là đường cao); $MA=MH$ vì $HM$ là trung tuyến ứng với cạnh huyền $AB$ của tam giác vuông $ABH$.
+**Bước 2.** Ý b: muốn $MN\perp AC$, thấy $M$, $N$ là trung điểm của $AB$, $AH$ nên $MN$ là đường trung bình của $\triangle ABH$, cho $MN\parallel BH$; mà $BH\perp AC$ nên $MN\perp AC$.
 
 **Bước 3.** Ý c: muốn $NP=CK$, cần $NKCP$ là hình bình hành, tức là $NK\parallel PC$ và $NK=PC$; phần song song có từ $NK\parallel AB\parallel CD$.
 
-**Bước 4.** Ý c (tiếp): muốn $NK=PC$, đổi sang $NK=MB$ vì $PC=MB$ ở ý a; điều này cần $MNKB$ là hình bình hành, mà $MN\parallel BK$ có được vì cùng vuông góc với $AC$ (nhờ ý b) và $NK\parallel MB$ theo đề.
+**Bước 4.** Ý c (tiếp): muốn $NK=PC$, cần biết $NK$ bằng nửa $AB$; vì $N$ là trung điểm $AH$ và $NK\parallel AB$ nên $K$ là trung điểm $BH$ (đường trung bình đảo), do đó $NK$ là đường trung bình của $\triangle ABH$, còn $PC$ là nửa $CD$ mà $CD=AB$.
 
 **Bước 5.** Ý d: muốn $NP\perp NB$, ta có $NP\parallel CK$ (ý c) nên chỉ cần $CK\perp NB$; hai đường cao $BH$ và $NK$ của $\triangle NBC$ cắt nhau tại $K$ nên $K$ là trực tâm và $CK$ là đường cao thứ ba.
-
-**Chú ý:** bài này chưa được dùng đường trung bình (học sau) nên ý b, ý c phải đi vòng qua tam giác cân và hình bình hành.
 
 **Phần 2. Trình bày**
 
@@ -48,35 +45,19 @@ Vì $M$ nằm trên cạnh $AB$ nên $\widehat{MBC}=\widehat{ABC}=90^\circ$.
 
 Hình bình hành $MBCP$ có một góc vuông nên $MBCP$ là hình chữ nhật (dấu hiệu nhận biết).
 
-b) Vì $BH\perp AC$ nên $\triangle ABH$ vuông tại $H$.
+b) Xét $\triangle ABH$ có $M$ là trung điểm của $AB$ và $N$ là trung điểm của $AH$.
 
-Trong $\triangle ABH$, $HM$ là đường trung tuyến ứng với cạnh huyền $AB$ nên $HM=\dfrac{1}{2}AB=MA$.
+Do đó $MN$ là đường trung bình của $\triangle ABH$, suy ra $MN\parallel BH$.
 
-Xét $\triangle MNA$ và $\triangle MNH$ có:
+Mà $BH\perp AC$ nên $MN\perp AC$.
 
-$MA=MH$ (chứng minh trên)
+c) Xét $\triangle ABH$ có $N$ là trung điểm của $AH$ và $NK\parallel AB$ ($K\in BH$).
 
-$NA=NH$ ($N$ là trung điểm của $AH$)
+Suy ra $K$ là trung điểm của $BH$ (đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì đi qua trung điểm cạnh thứ ba).
 
-$MN$ là cạnh chung
+Do đó $NK$ là đường trung bình của $\triangle ABH$, nên $NK=\dfrac{1}{2}AB$.
 
-Do đó $\triangle MNA=\triangle MNH$ (c.c.c).
-
-Suy ra $\widehat{MNA}=\widehat{MNH}$ (hai góc tương ứng).
-
-Mà $\widehat{MNA}+\widehat{MNH}=180^\circ$ (hai góc kề bù) nên $\widehat{MNA}=\widehat{MNH}=90^\circ$.
-
-Vậy $MN\perp AH$, mà $AH$ nằm trên $AC$ nên $MN\perp AC$.
-
-c) Vì $MN\perp AC$ và $BH\perp AC$ nên $MN\parallel BH$ (cùng vuông góc với một đường thẳng). Mà $K\in BH$ nên $MN\parallel BK$.
-
-Vì $NK\parallel AB$ và $M\in AB$ nên $NK\parallel MB$.
-
-Tứ giác $MNKB$ có $MN\parallel BK$ và $NK\parallel MB$ nên $MNKB$ là hình bình hành (định nghĩa).
-
-Suy ra $NK=MB$ (hai cạnh đối của hình bình hành).
-
-Mà $MB=PC$ (câu a) nên $NK=PC$.
+Mà $PC=\dfrac{1}{2}CD$ và $AB=CD$ nên $NK=PC$.
 
 Vì $NK\parallel AB$ và $AB\parallel CD$ nên $NK\parallel CD$, suy ra $NK\parallel PC$.
 
@@ -99,13 +80,13 @@ Vì $NKCP$ là hình bình hành (câu c) nên $NP\parallel CK$.
 Mà $CK\perp NB$ nên $NP\perp NB$.
 
 ### Bài 17 | kho=hinh_hoc | loai=tu_luan | dap_an=—
-**Đề:** Cho hình chữ nhật $ABCD$. Kẻ $AN$ và $CM$ cùng vuông góc với $BD$ ($N,\ M$ thuộc $BD$).
+**Đề:** Cho hình chữ nhật $ABCD$ $(AB>AD)$. Kẻ $AN$ và $CM$ cùng vuông góc với $BD$ ($N,\ M$ thuộc $BD$).
 a) Chứng minh $DN=BM$.
 b) Chứng minh tứ giác $ANCM$ là hình bình hành.
 c) Trên tia đối của tia $NA$ lấy điểm $K$ sao cho $NK=NA$. Tứ giác $DKCB$ là hình gì? Vì sao?
 d) Tia $AM$ cắt tia $KC$ tại điểm $P$. Chứng minh rằng $PN,\ AC,\ KM$ đồng quy.
 **Hình giải:** giai_bai17.png
-**Chưa chắc:** đề không cho $AB>AD$ và không loại trừ hình vuông. Đáp án ý c giữ là **hình thang cân (hai đáy $KC$, $DB$)** — đúng với mọi hình chữ nhật không vuông (trạm soát dựng toạ độ cả ba trường hợp): $AB>AD$ ⇒ $DKCB$ là tứ giác lồi, hai đường chéo $DC=KB$ (bằng $AB$) — đúng như lời giải và hình vẽ; $AB<AD$ ⇒ vẫn có $KC\parallel DB$ và bốn điểm vẫn là hình thang cân, nhưng gọi theo thứ tự $D,\ K,\ C,\ B$ thì tứ giác tự cắt, đúng tên phải là $DCKB$ (hai đường chéo $DK=CB$, bằng $AD$); hình vuông ⇒ $N\equiv M$, $K\equiv C$, ý b, c, d suy biến (phải loại). Chỉ cách gọi tên đỉnh phụ thuộc vào $AB>AD$ — CEO xem có thêm "$(AB>AD)$" vào đề cho khớp tên $DKCB$ không.
+**Ghi chú:** Đề cương không ghi $AB>AD$; đã thêm điều kiện này theo quyết định của CEO để tứ giác $DKCB$ có đúng thứ tự đỉnh.
 
 **Phần 1. Hướng dẫn**
 
@@ -121,7 +102,7 @@ d) Tia $AM$ cắt tia $KC$ tại điểm $P$. Chứng minh rằng $PN,\ AC,\ KM$
 
 **Bước 5.** Ý d (tiếp): muốn có hai trung điểm đó, dựng hình bình hành $NMPC$ (có $MP\parallel NC$ vì $AM\parallel NC$, và $CP\parallel NM$ vì $KC\parallel NM$), rồi so các cạnh bằng nhau với hai hình bình hành $ANCM$ và $NKCM$.
 
-**Chú ý:** $ANCM$ chỉ là tứ giác khi $N$ khác $M$, tức là $ABCD$ không phải hình vuông. Hình vẽ lấy $AB>AD$; nếu $AB<AD$ thì bốn điểm theo thứ tự $D,\ C,\ K,\ B$ mới là tứ giác, hai đường chéo là $DK$ và $CB$, cũng bằng nhau vì $DK=DA=CB$ ($DN$ vừa vuông góc với $AK$ vừa đi qua trung điểm $N$ của $AK$) — vẫn là hình thang cân.
+**Chú ý:** điều kiện $AB>AD$ để $ABCD$ không phải hình vuông (khi đó $N$, $M$ không trùng nhau) và để bốn điểm $D,\ K,\ C,\ B$ theo đúng thứ tự tạo thành tứ giác $DKCB$.
 
 **Phần 2. Trình bày**
 
@@ -205,15 +186,13 @@ d) Chứng minh $\widehat{IAD}=\widehat{IHD}$.
 
 **Bước 1.** Ý a: muốn $ADEH$ là hình chữ nhật, cần tứ giác có đủ bốn góc vuông; ba góc $A$, $D$, $H$ đã vuông theo đề, góc $E$ có được từ tổng các góc của tứ giác bằng $360^\circ$.
 
-**Bước 2.** Ý b: muốn $D$ là trung điểm của $AB$, cần $AD=DB$; vì $AD=HE$ (cạnh đối hình chữ nhật) nên chỉ cần $HE=DB$, tức là hai tam giác vuông $CHE$ và $EDB$ bằng nhau (cạnh huyền $EC=EB$, góc nhọn $\widehat{CEH}=\widehat{EBD}$ vì $EH\parallel AB$).
+**Bước 2.** Ý b: muốn $D$ là trung điểm của $AB$, dùng đường trung bình đảo trong $\triangle ABC$: $E$ là trung điểm của $BC$ nên chỉ cần đường thẳng $ED$ đi qua $E$ song song với $AC$; điều này có vì $ED$ và $AC$ cùng vuông góc với $AB$.
 
 **Bước 3.** Ý c: muốn $IH\perp ID$, cần $\triangle DIH$ vuông tại $I$, tức là trung tuyến $IO$ bằng nửa cạnh $DH$ ($O$ là tâm hình chữ nhật $ADEH$); điều đó có vì $IO$ cũng là trung tuyến ứng với cạnh huyền $AE$ của tam giác vuông $AIE$ và $AE=DH$.
 
 **Bước 4.** Ý d: muốn $\widehat{IAD}=\widehat{IHD}$, bắc cầu qua $\widehat{DAE}$ và $\widehat{EHD}$; trước hết $\widehat{IAD}=\widehat{DAE}$ vì $\triangle ADF=\triangle ADE$ và $I$ nằm trên tia $AF$ (điều kiện $AB>AC$ đảm bảo điều này).
 
 **Bước 5.** Ý d (tiếp): $\widehat{DAE}=\widehat{EHD}$ vì $\triangle ADE=\triangle HED$, và $\widehat{EHD}=\widehat{IHD}$ vì $\triangle DEH=\triangle DIH$ (có $DI=DE$, do $DI$ là trung tuyến ứng với cạnh huyền $EF$ của tam giác $EIF$ vuông tại $I$).
-
-**Chú ý:** bài này chưa được dùng đường trung bình (học sau) nên ý b phải tự chứng minh bằng hai tam giác bằng nhau.
 
 **Phần 2. Trình bày**
 
@@ -229,23 +208,11 @@ Suy ra $\widehat{DEH}=360^\circ-90^\circ-90^\circ-90^\circ=90^\circ$ (tổng cá
 
 Tứ giác $ADEH$ có bốn góc vuông nên $ADEH$ là hình chữ nhật.
 
-b) Vì $ADEH$ là hình chữ nhật (câu a) nên $EH\parallel AD$, tức là $EH\parallel AB$, và $AD=HE$.
+b) Vì $ED\perp AB$ và $AC\perp AB$ (tam giác $ABC$ vuông tại $A$) nên $ED\parallel AC$.
 
-Xét $\triangle CHE$ và $\triangle EDB$ có:
+Xét $\triangle ABC$ có $E$ là trung điểm của $BC$ và $ED\parallel AC$ ($D\in AB$).
 
-$\widehat{CHE}=\widehat{EDB}=90^\circ$ (vì $EH\perp AC$, $ED\perp AB$)
-
-$EC=BE$ ($E$ là trung điểm của $BC$)
-
-$\widehat{CEH}=\widehat{EBD}$ (hai góc đồng vị, vì $EH\parallel AB$)
-
-Do đó $\triangle CHE=\triangle EDB$ (cạnh huyền – góc nhọn).
-
-Suy ra $HE=DB$ (hai cạnh tương ứng).
-
-Mà $AD=HE$ nên $AD=DB$.
-
-Lại có $D$ nằm trên $AB$ nên $D$ là trung điểm của $AB$.
+Suy ra $D$ là trung điểm của $AB$ (đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì đi qua trung điểm cạnh thứ ba).
 
 c) Vì $ADEH$ là hình chữ nhật nên hai đường chéo $AE$ và $DH$ bằng nhau và cắt nhau tại trung điểm của mỗi đường.
 
@@ -302,7 +269,6 @@ Vậy $\widehat{IAD}=\widehat{DAE}=\widehat{EHD}=\widehat{IHD}$.
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Cả ba bài là bài hình chứng minh, không tách ý, nhập `tu_luan`; cả ba có hình giải vẽ bằng code (`giai_bai16.png`, `giai_bai17.png`, `giai_bai18.png`), chỉ hiện ở lời giải. Hình dựng bằng toạ độ và đã đối chiếu số các khẳng định chính (song song, vuông góc, hình bình hành, đồng quy, góc bằng nhau) trên nhiều bộ số.
-- Câu cần CEO xem: Bài 16 (ý b, c — dữ kiện là bài đường trung bình, lời giải đi vòng qua tam giác cân + hình bình hành; quyết định ở đây áp luôn cho Bài 18 ý b), Bài 17 (đáp án "hình thang cân" đúng với mọi hình chữ nhật không vuông, chỉ tên đỉnh $DKCB$ khớp khi $AB>AD$).
-- Bài 18 ý b là chiều đảo của đường trung bình nhưng lời giải tự chứng minh trọn vẹn bằng hai tam giác vuông bằng nhau (đúng dù CEO có cho dùng đường trung bình hay không) nên không gắn cờ riêng.
-- Kiến thức dùng: Chương III (hình bình hành, hình chữ nhật, hình thang cân, trung tuyến ứng với cạnh huyền và chiều đảo) cùng nền lớp 7 (tam giác bằng nhau, tam giác cân, ba đường cao đồng quy, ba đường trung tuyến đồng quy, quan hệ góc – cạnh đối diện). Không dùng đường trung bình, Thalès, đồng dạng, Pythagore.
+- Theo quyết định của CEO 13/10: Bài 16 ý b, c và Bài 18 ý b dùng thẳng đường trung bình của tam giác (định nghĩa, tính chất và chiều đảo); Bài 17 đã thêm điều kiện $AB>AD$ vào đề (có dòng `Ghi chú`). Không còn câu nào gắn cờ `Chưa chắc`.
+- Kiến thức dùng: đường trung bình của tam giác (cả chiều đảo), Chương III (hình bình hành, hình chữ nhật, hình thang cân, trung tuyến ứng với cạnh huyền) cùng nền lớp 7 (tam giác bằng nhau, ba đường cao đồng quy, ba đường trung tuyến đồng quy, quan hệ góc – cạnh đối diện). Không dùng đường trung bình của hình thang, Thalès, đồng dạng, Pythagore.
 - Bài 18 ý d có một đoạn chứng minh $I$ nằm trên tia $AF$ (dùng điều kiện $AB>AC$); đề cương không ghi mục đích của điều kiện này, đây là chỗ nó được dùng.
