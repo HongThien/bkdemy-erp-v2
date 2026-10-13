@@ -37067,3 +37067,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Nguyên nhân thật của "chỉ 1 ý":** DB đủ (Bài 2 = 4 câu #2–#5, Bài 3 = đủ a b c). App chỉ hiện "Câu 2, 3, 4, 5" — không còn "Bài 2a…", lời dẫn "mỗi đa thức" lặp ở từng câu ⇒ nhìn như thiếu. Đã sửa bằng nhãn gốc.
 - **Sai / sửa:** lúc đầu em chỉ kiểm DB bằng script, chưa mở đúng màn người dùng thấy — đáng lẽ phải xem UI ngay khi ghi (đã làm ở NSHM lần 1 nhưng không đọc nhãn).
 - **CEO chuẩn bị:** mô hình 10–30 bài sẽ chia cành nhỏ 3–4 lá (phân tầng như Đại), chưa cần ngay. Spec §2.6: đối chiếu tầng Đại↔Hình (cành nhỏ ↔ Nhóm bài, CHƯA có bảng); gợi ý tự nhiên = thành phần liên thông đồ thị tiền đề `hinh_cach_tien_de`; 3 cấm từ bây giờ (mã không mã hoá cành nhỏ · hàm đo nhận tập baitoan_id · UI không giả định 2 tầng); khi tới lúc 1 mig `hinh_mo_hinh_nhom` + `hinh_baitoan.nhom_id` nullable.
+
+### 13/10 (tối) — Đề giữ CẤU TRÚC GỐC (nhóm bài), kho mới tách câu
+- **CEO:** "Nên để đúng là bài 2 4 ý kiểu 2a 2b 2c 2d. Phải giữ được cấu trúc gốc của đề. Còn vào kho thì mới tách thành 4 bài khác nhau."
+- **Làm:** `scripts/kho/de-thi/nhom-bai.mjs` (tính nhóm bài + lời dẫn chung; nhãn "Bài 2a" / "Câu 9b" / "Bài 23 (B)") → `ghi.mjs` ghi `cau_hinh.deThi.nhomBai` cho đề mới; `ghi-nhan-cau.mjs` bù cho đề cũ (nhanCau + nhomBai, khớp bằng nội dung). `dethi.ts` (`nhomBaiCuaDe`, `boLoiDan`),
+  `KhoDeThi.tsx` (khối "Bài N · k ý" + lời dẫn một lần, ý a) b) …, bỏ lời dẫn lặp khi hiển thị — soạn nội dung vẫn là toàn văn câu kho), `DeThiPrintView.tsx` (gộp thành một bài khi in; `tienTo` 'Bài' cho đề cương) + `PrintView.tsx` (prop tuỳ chọn `tienTo`).
+- **Đo (UI dev, đăng nhập nhanh admin):** LTV: "Bài 2 · 4 ý · Thu gọn rồi xác định bậc của mỗi đa thức:" rồi a) A=… b) B=… c) d); bản in 30 "Câu/Bài" = 30 bài gốc. ĐTĐ: bản in 48 "Bài N." đúng 48 bài gốc, Bài 23 gộp B) D).
+  Nhóm: LTV 8 · ĐTĐ 21 · NSHM K8 3 (Bài 5, 6, 7) · NSHM K6 11.

@@ -12,7 +12,7 @@ import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import {
   getDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc, addPhanDeThi, listPhanDeThi,
-  deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap, nhanGocCau,
+  deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap, nhanGocCau, nhomBaiCuaDe, boLoiDan,
   demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI, soDongDeThi, setSoDongDeThi, coDongKeDeThi, dongMacDinhDeThi,
   type DeThi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
@@ -305,6 +305,12 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
 
   const ghiChu = useMemo(() => (d ? canhBaoNhap(d) : {}), [d])
   const nhanGoc = useMemo(() => (d ? nhanGocCau(d) : {}), [d])
+  // Nhóm BÀI: câu kho đã tách ý (2a–2d) hiện lại thành MỘT bài có 4 ý — đề giữ cấu trúc gốc, kho vẫn là câu riêng (CEO 13/10)
+  const nhomCua = useMemo(() => {
+    const m = new Map<string, { nhan: string; dan: string; y: string; n: number }>()
+    for (const g of d ? nhomBaiCuaDe(d) : []) g.cau.forEach((x) => m.set(x.ma_cau, { nhan: g.nhan, dan: g.dan, y: x.y, n: g.cau.length }))
+    return m
+  }, [d])
   const loiCua = useMemo(() => new Map((thieu?.cau ?? []).map((x) => [x.ma_cau, x.loi])), [thieu])
   const quetLai = () => { deThiThieu(id).then(setThieu).catch(() => {}) }
   const va = (ma: string, patch: Partial<DeThiCau>) => setCaus((prev) => prev?.map((c) => (c.ma_cau === ma ? { ...c, ...patch } : c)) ?? prev)
@@ -448,10 +454,21 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                       const i = cs.indexOf(c)
                       const maNl = nlCua(c)
                       const moiNl = maNl && nl[maNl] && (k === 0 || nlCua(hien[k - 1]) !== maNl)
+                      const gr = nhomCua.get(c.ma_cau)
+                      const dauBai = gr && (k === 0 || nhomCua.get(hien[k - 1].ma_cau)?.nhan !== gr.nhan)
                       return (
-                        <div key={c.ma_cau}>
+                        <div key={c.ma_cau} className={gr ? 'ml-3 border-l-2 border-indigo-200 pl-3' : ''}>
+                          {dauBai && (
+                            <div className="-ml-3 mb-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2.5">
+                              <div className="flex flex-wrap items-baseline gap-2">
+                                <span className="text-[14px] font-bold text-indigo-800">{gr!.nhan}</span>
+                                <span className="text-[11px] text-indigo-500">{gr!.n} ý — mỗi ý là một câu riêng trong kho</span>
+                              </div>
+                              <div className="mt-1 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={d.mon}>{gr!.dan}</ChuMon></div>
+                            </div>
+                          )}
                           {moiNl && <NguLieuBlock nl={nl[maNl!]} />}
-                          <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []} nhan={nhanGoc[c.ma_cau]}
+                          <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []} nhan={nhanGoc[c.ma_cau]} nhom={gr ? { y: gr.y, dan: gr.dan } : undefined}
                             dau={i === 0} cuoi={i === cs.length - 1}
                             soDong={soDong[c.ma_cau] ?? dongMacDinhDeThi(c.loai_cau)} onSoDong={(n) => datSoDong({ [c.ma_cau]: n })}
                             onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
@@ -539,8 +556,8 @@ function DongCaPhan({ onDat }: { onDat: (n: number) => void }) {
     <ODong value="" onDat={onDat} title="Gõ số rồi Enter: đặt số dòng kẻ cho MỌI câu tự luận / trả lời ngắn của phần này (bản in)" /></label>
 }
 
-function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho }: {
-  c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; nhan?: string; dau: boolean; cuoi: boolean
+function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho }: {
+  c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; nhan?: string; nhom?: { y: string; dan: string }; dau: boolean; cuoi: boolean
   soDong: number; onSoDong: (n: number) => void
   onChonDang: (md: number | null) => void
   onSua: (patch: SuaCauPatch, localNd?: Partial<NoiDungCau>) => Promise<boolean>
@@ -553,8 +570,10 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, dau, cuoi, soDong,
   return (
     <div className={`rounded-xl border bg-white p-4 ${vien}`}>
       <div className="mb-2 flex flex-wrap items-center gap-2">
-        <span className="text-[13px] font-bold text-slate-700">Câu {so}</span>
-        {nhan && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[11px] font-semibold text-indigo-700" title="Nhãn của câu trên đề gốc">{nhan}</span>}
+        {nhom
+          ? <span className="text-[13px] font-bold text-indigo-700" title={`Ý ${nhom.y} của ${nhan ?? ''}`}>{nhom.y})</span>
+          : <span className="text-[13px] font-bold text-slate-700">{nhan ?? `Câu ${so}`}</span>}
+        {(nhom || nhan) && <span className="text-[11px] text-slate-400">câu {so} của đề</span>}
         <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{LOAI_TEN[c.loai_cau ?? ''] ?? c.loai_cau}</span>
         <span className="font-mono text-[10px] text-slate-400">{c.ma_cau}</span>
         <span className="text-[11px] text-slate-400">{c.diem} đ</span>
@@ -589,7 +608,7 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, dau, cuoi, soDong,
             ? <SoanDungSai c={c} nd={nd} onHuy={() => setSoan(false)} onLuu={async (patch, localNd) => { if (await onSua(patch, localNd)) setSoan(false) }} />
             : <SoanCau c={c} nd={nd} onHuy={() => setSoan(false)} onLuu={async (patch, localNd) => { if (await onSua(patch, localNd)) setSoan(false) }} />)
         : (<>
-          {nd?.noi_dung && <div className="mb-2 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={mon}>{nd.noi_dung}</ChuMon></div>}
+          {nd?.noi_dung && <div className="mb-2 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={mon}>{nhom ? boLoiDan(nd.noi_dung, nhom.dan) : nd.noi_dung}</ChuMon></div>}
           {nd?.anh_de && <img src={nd.anh_de} alt="hình của đề" className="mb-2 max-h-72 rounded border border-slate-200" />}
 
           {c.loai_cau === 'trac_nghiem' && (

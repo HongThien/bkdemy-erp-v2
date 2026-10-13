@@ -10,6 +10,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import pg from 'pg'
 import { bien } from '../cau-hinh.mjs'
+import { tinhNhomBai } from './nhom-bai.mjs'
 
 const a = process.argv.slice(2)
 const dir = a.find((x) => !x.startsWith('--')), id = a.filter((x) => !x.startsWith('--'))[1], GHI = a.includes('--ghi')
@@ -36,7 +37,10 @@ try {
     else lech.push(`stt ${r.stt} ${r.ma_cau} ↔ ${q.nhan}`)
   })
   if (lech.length) throw new Error(`${lech.length} câu KHÔNG khớp nội dung ⇒ bỏ cả lượt:\n  ` + lech.slice(0, 8).join('\n  '))
-  await c.query(`update tai_lieu set cau_hinh = jsonb_set(cau_hinh, '{deThi,nhanCau}', $2::jsonb, true) where id = $1 and loai = 'de_thi'`, [id, JSON.stringify(map)])
+  const { nhomBai, canhBao } = tinhNhomBai(ds.map((r, i) => ({ nhan: de.cau[i].nhan, noi_dung: nd.get(r.ma_cau), ma_cau: r.ma_cau })))
+  canhBao.forEach((w) => console.log('  ⚠', w))
+  console.log(`${nhomBai.length} nhóm bài:`); nhomBai.forEach((g) => console.log(`  ${g.nhan} (${g.cau.map((x) => x.y).join('')}) · lời dẫn: ${g.dan.slice(0, 90)}`))
+  await c.query(`update tai_lieu set cau_hinh = jsonb_set(jsonb_set(cau_hinh, '{deThi,nhanCau}', $2::jsonb, true), '{deThi,nhomBai}', $3::jsonb, true) where id = $1 and loai = 'de_thi'`, [id, JSON.stringify(map), JSON.stringify(nhomBai)])
   console.log(`${Object.keys(map).length} câu có nhãn · ví dụ: ${Object.entries(map).slice(0, 3).map(([k, v]) => `${k}=${v}`).join(' · ')}`)
   if (GHI) { await c.query('commit'); console.log('✔ đã ghi') } else { await c.query('rollback'); console.log('ROLLBACK — thêm --ghi để ghi thật') }
 } catch (e) { try { await c.query('rollback') } catch {} console.error('✘', e.message); process.exitCode = 1 } finally { await c.end() }

@@ -19,6 +19,7 @@ import pg from 'pg'
 import { createClient } from '@supabase/supabase-js'
 import { insertCauBatch, laDangCho } from '../../_kho_insert.mjs'
 import { bien, docEnv, GOC_REPO } from '../cau-hinh.mjs'
+import { tinhNhomBai } from './nhom-bai.mjs'
 
 const args = process.argv.slice(2)
 const dir = args.find((a) => !a.startsWith('--'))
@@ -132,13 +133,17 @@ try {
     const cb = [...(q.canh_bao ?? []), ...(canhBaoThem.get(q) ?? [])]
     if (cb.length) canhBaoCau[m.ma_cau] = cb
   }
+  const { nhomBai, canhBao: cbNhom } = tinhNhomBai(de.cau.map((q) => ({ nhan: q.nhan, noi_dung: q.noi_dung, ma_cau: maCua.get(q).ma_cau })))
+  cbNhom.forEach((w) => console.log("  ⚠ " + w))
   const cauHinh = {
     // `kieu: 'de_cuong'` ⇒ tab "Đề cương" của Kho đề thi (không lẫn Chờ duyệt / Sẵn sàng / Đã giao); đề cương không có thời gian làm bài (null)
     deThi: { ...(de.kieu ? { kieu: de.kieu } : {}), nguon: de.nguon ?? 'le', nam: de.nam ?? null,
       thoiGianPhut: de.thoi_gian_phut === null ? null : (de.thoi_gian_phut ?? 90), thangDiem: de.thang_diem ?? 10,
       sha256: de.sha256, file: de.file, pdfGocUrl, phan: de.phan.map(({ thu_tu, ten, dang_thuc, diem_moi_cau }) => ({ thu_tu, ten, dang_thuc, diem_moi_cau })),
       ...(Object.keys(canhBaoCau).length ? { canhBaoCau } : {}),
-      ...(Object.keys(nhanCau).length ? { nhanCau } : {}) },
+      ...(Object.keys(nhanCau).length ? { nhanCau } : {}),
+      // nhomBai: các câu đã tách ý của CÙNG một bài đề gốc (Bài 2a–2d) — đề hiển thị / in giữ cấu trúc gốc, kho vẫn là câu riêng
+      ...(nhomBai.length ? { nhomBai } : {}) },
     ...(Object.keys(nhanhByCau).length ? { nhanhByCau } : {}),
   }
   const { rows: [tl] } = await c.query(

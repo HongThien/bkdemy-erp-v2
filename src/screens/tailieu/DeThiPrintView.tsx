@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, type TaiLieuFull } from '../../lib/tailieu'
-import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi } from '../../lib/dethi'
+import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, nhomBaiCuaDe, boLoiDan, type NhomBai } from '../../lib/dethi'
 import { CauItem, CauList, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
@@ -150,9 +150,28 @@ function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const dt = getMeta(full.taiLieu as any)
   const lines = ch.btvnLinesByCau ?? {}
+  const deCuong = ((ch as { deThi?: { kieu?: string } }).deThi)?.kieu === 'de_cuong' // đề cương in "Bài N." (đúng đề gốc), đề thi in "Câu N."
   const phans = full.phans.filter((p) => p.loai_phan === 'custom')
   let no = 0
   const next = () => ++no
+  // Nhóm BÀI: các câu kho đã tách ý (Bài 2a–2d) IN LẠI thành MỘT bài có đủ ý — đề giữ cấu trúc gốc (CEO 13/10); kho vẫn là câu riêng.
+  const nhomOf = new Map<string, { g: NhomBai; k: number }>()
+  for (const g of nhomBaiCuaDe(full.taiLieu as any)) g.cau.forEach((x, k) => nhomOf.set(x.ma_cau, { g, k }))
+  const gopBai = (caus: any[]): { c: any; lines: number }[] => {
+    const ra: { c: any; lines: number }[] = []
+    for (const c of caus) {
+      const r = nhomOf.get(c.ma_cau)
+      const dong = (x: any) => (!gv && coDongKeDeThi(x.loai_cau) ? (lines[x.ma_cau] ?? dongMacDinhDeThi(x.loai_cau)) : 0)
+      if (!r) { ra.push({ c, lines: dong(c) }); continue }
+      if (r.k > 0) continue // các ý sau đã gộp vào ý đầu
+      const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
+      if (mem.some((m) => !m)) { ra.push({ c, lines: dong(c) }); continue } // thiếu ý trong phần ⇒ để nguyên từng câu
+      const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].join('\n')
+      const loiGiai = mem.map((m, i) => (m.loi_giai ? `**${r.g.cau[i].y})**\n${m.loi_giai}` : '')).filter(Boolean).join('\n\n')
+      ra.push({ c: { ...mem[0], noi_dung: noiDung, loi_giai: loiGiai || null, loai_cau: 'tu_luan', dap_an: null, lua_chon: null, menh_de: null }, lines: mem.reduce((t: number, m: any) => t + dong(m), 0) })
+    }
+    return ra
+  }
   return (
     <div className="pv-dethi" style={{ '--pv-accent': ch.mau || '#2D9CDB' } as CSSProperties}>
       <div className="pv-bt-head">
@@ -180,8 +199,8 @@ function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
           <h2 className="pv-h-dang">{p.tieu_de}</h2>
           {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
             <CauList kieu={p.kieu}>
-              {p.caus.map((c) => (
-                <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} lines={!gv && coDongKeDeThi(c.loai_cau) ? (lines[c.ma_cau] ?? dongMacDinhDeThi(c.loai_cau)) : 0} />
+              {gopBai(p.caus).map(({ c, lines: nDong }) => (
+                <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} lines={nDong} tienTo={deCuong ? 'Bài' : 'Câu'} />
               ))}
             </CauList>
           )}

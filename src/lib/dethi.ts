@@ -233,6 +233,18 @@ export function nhanGocCau(d: Pick<DeThi, 'cau_hinh'>): Record<string, string> {
   const v = (d.cau_hinh?.deThi as { nhanCau?: unknown } | undefined)?.nhanCau
   return v && typeof v === 'object' ? (v as Record<string, string>) : {}
 }
+/** Nhóm BÀI của đề: nhiều câu kho (đã tách ý) thuộc MỘT bài của đề gốc (Bài 2a–2d ⇒ "Bài 2" có 4 ý). Đề giữ cấu trúc gốc, kho vẫn là câu riêng.
+ *  `dan` = lời dẫn chung đứng đầu bài; nội dung mỗi câu kho = `dan` + ý của nó (ghi bởi ghi.mjs / ghi-nhan-cau.mjs). */
+export type NhomBai = { nhan: string; dan: string; cau: { ma_cau: string; y: string }[] }
+export function nhomBaiCuaDe(d: Pick<DeThi, 'cau_hinh'>): NhomBai[] {
+  const v = (d.cau_hinh?.deThi as { nhomBai?: unknown } | undefined)?.nhomBai
+  return Array.isArray(v) ? (v as NhomBai[]).filter((g) => g && typeof g.dan === 'string' && Array.isArray(g.cau) && g.cau.length > 1) : []
+}
+/** Bỏ lời dẫn chung ở đầu nội dung câu (chỉ để HIỂN THỊ trong nhóm bài; dữ liệu kho giữ nguyên). */
+export function boLoiDan(noiDung: string | null | undefined, dan: string): string {
+  const s = noiDung ?? ''
+  return dan && s.startsWith(dan) ? s.slice(dan.length).trim() : s
+}
 export type FormTLN = { id: string; ma_cau: string; lua_chon: { text: string; dung: boolean; rule?: string | null }[]; dap_an: string; da_duyet: boolean }
 export async function listFormTLN(mon: string, kho: Kho, maCaus: string[]): Promise<FormTLN[]> {
   if (!maCaus.length) return []

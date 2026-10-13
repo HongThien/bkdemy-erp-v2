@@ -823,7 +823,7 @@ function AnhDe({ ma, src }: { ma: string; src: string }) {
 // `lines` (SỐ dòng kẻ viết tay, 0 nếu không có). Dòng kẻ tách riêng để CauColumns rải THÀNH TỪNG HÀNG lưới
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
 export type CauPart = { key: string; content: React.ReactNode; lines: number; hasImg: boolean }
-export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh }): { content: React.ReactNode; lines: number; hasImg: boolean } {
+export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu' }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh; tienTo?: string }): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
@@ -840,7 +840,7 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; 
   return {
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
-      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
+      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
       {anhBlock}
       {!md && grid && <OptGrid grid={grid} emb={emb} />}
       {md && (
@@ -874,7 +874,7 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; 
     hasImg: !!c.anh_de,
   }
 }
-export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: number }) {
+export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: number; tienTo?: string }) {
   const { content, lines } = cauItemParts(props)
   return <div className="pv-cau">{content}{lines > 0 && <WriteLines n={lines} />}</div>
 }
