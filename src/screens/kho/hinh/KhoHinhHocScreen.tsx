@@ -46,7 +46,9 @@ const baiToMapRow = (b: HinhHocBai): MapRow => ({
   leafTen: b.ten_bai, bac: b.bac_toi_thieu ?? '', mucDo: null,
 })
 
-export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
+// `chuDeId` (tuỳ chọn) — mở từ Bản đồ mới, vùng Hình–Học: chỉ hiện bài học của chủ đề đó + ngăn "chưa xếp chủ đề".
+// Không truyền = màn cũ ở Kho › Hình học › Học (mọi bài của khối), hành vi y nguyên.
+export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe }: { khoi: string; chuDeId?: string; tenChuDe?: string }) {
   const [bais, setBais] = useState<HinhHocBai[]>([])
   const [counts, setCounts] = useState<Record<string, number>>({})
   const [lyThuyets, setLyThuyets] = useState<Record<string, LyThuyet>>({})
@@ -69,7 +71,7 @@ export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
 
   async function taoBai() {
     const ten = taoMoi?.trim(); if (!ten) return
-    try { await createHinhHocBai({ khoi, ten_bai: ten, thu_tu: bais.length + 1 }); setTaoMoi(null); await reload() }
+    try { await createHinhHocBai({ khoi, ten_bai: ten, thu_tu: bais.length + 1, chu_de_id: chuDeId ?? null }); setTaoMoi(null); await reload() }
     catch (e: any) { alert(e.message ?? e) }
   }
   async function xoaBai(b: HinhHocBai) {
@@ -82,15 +84,23 @@ export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
     catch (e: any) { alert(e.message ?? e) }
   }
 
-  const tongCau = Object.values(counts).reduce((a, b) => a + b, 0)
+  const hien = chuDeId ? bais.filter((b) => b.chu_de_id === chuDeId) : bais
+  const chuaXep = chuDeId ? bais.filter((b) => !b.chu_de_id) : []
+  const tongCau = hien.reduce((a, b) => a + (counts[b.ma_bai] ?? 0), 0)
+  // xếp / gỡ bài khỏi chủ đề — vá đúng dòng, không nạp lại cả danh sách
+  async function xepChuDe(b: HinhHocBai, id: string | null) {
+    try { await updateHinhHocBai(b.ma_bai, { chu_de_id: id }); setBais((prev) => prev.map((x) => (x.ma_bai === b.ma_bai ? { ...x, chu_de_id: id } : x))) }
+    catch (e: any) { setErr(e.message ?? String(e)) }
+  }
 
   return (
     <div className="h-full overflow-auto p-6">
       <div className="mb-5 flex items-end justify-between gap-3">
         <div>
-          <h2 className="text-[20px] font-semibold tracking-tight text-slate-900">Hình học · Khối {khoi}</h2>
+          <h2 className="text-[20px] font-semibold tracking-tight text-slate-900">{chuDeId ? `Hình – Học · ${tenChuDe ?? 'chủ đề'}` : `Hình học · Khối ${khoi}`}</h2>
           <p className="mt-1 text-[13px] text-slate-500">
-            {bais.length} Bài · {tongCau} câu · {bais.filter((b) => b.da_duyet).length}/{bais.length} Bài đã duyệt
+            {hien.length} bài học · {tongCau} bài tập · {hien.filter((b) => b.da_duyet).length}/{hien.length} bài đã duyệt
+            {chuDeId && <span className="ml-2 text-slate-400">· đo ở BÀI HỌC (thang 3 bài), không đo ở từng bài tập</span>}
           </p>
         </div>
         <button onClick={() => setTaoMoi('')} className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">＋ Bài mới</button>
@@ -98,13 +108,13 @@ export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
 
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
         : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
-        : bais.length === 0 && taoMoi == null ? (
+        : hien.length === 0 && taoMoi == null ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-            Chưa có Bài nào cho khối {khoi}. Bấm <b>＋ Bài mới</b> để bắt đầu.
+            {chuDeId ? 'Chủ đề này chưa có bài học nào.' : `Chưa có Bài nào cho khối ${khoi}.`} Bấm <b>＋ Bài mới</b>{chuDeId && chuaXep.length ? ' hoặc đưa bài có sẵn ở dưới vào' : ''} để bắt đầu.
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {bais.map((b, i) => (
+            {hien.map((b, i) => (
               <BaiCard key={b.ma_bai} bai={b} thuTuHienThi={i + 1}
                 soCau={counts[b.ma_bai] ?? 0} coLyThuyet={!!(lyThuyets[b.ma_bai]?.noi_dung?.trim() || lyThuyets[b.ma_bai]?.file_url)}
                 onOpen={() => setOpenBai(b)} onLyThuyet={() => setLtBai(b)}
@@ -114,6 +124,27 @@ export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
           </div>
         )}
 
+      {chuDeId && !loading && !err && (
+        <div className="mt-6 rounded-xl border border-dashed border-slate-300 bg-white p-3">
+          <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Bài học khối {khoi} chưa xếp chủ đề · {chuaXep.length}</div>
+          {!chuaXep.length && <div className="text-[12.5px] text-slate-400">— không còn bài nào —</div>}
+          <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
+            {chuaXep.map((b) => (
+              <div key={b.ma_bai} className="flex items-center gap-2 rounded-md px-2 py-1 text-[13px] hover:bg-slate-50">
+                <Code>{b.ma_bai}</Code>
+                <span className="min-w-0 flex-1 truncate">{b.ten_bai}</span>
+                <span className="text-[11.5px] text-slate-400">{counts[b.ma_bai] ?? 0} câu</span>
+                <button onClick={() => xepChuDe(b, chuDeId)} className="rounded-md border border-indigo-200 px-2 py-0.5 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">＋ vào chủ đề này</button>
+              </div>))}
+          </div>
+          {!!hien.length && (
+            <div className="mt-3 border-t border-slate-100 pt-2 text-[12px] text-slate-500">
+              Gỡ khỏi chủ đề: {hien.map((b) => (
+                <button key={b.ma_bai} onClick={() => xepChuDe(b, null)} title="Đưa bài này về ngăn chưa xếp (không xoá gì)"
+                  className="mb-1 mr-1 rounded border border-slate-200 px-1.5 py-0.5 hover:border-rose-300 hover:text-rose-600">{b.ten_bai} ✕</button>))}
+            </div>)}
+        </div>
+      )}
       {taoMoi != null && (
         <TenBaiModal title="Bài mới" ten={taoMoi} onChange={setTaoMoi} onClose={() => setTaoMoi(null)} onSave={taoBai} />
       )}

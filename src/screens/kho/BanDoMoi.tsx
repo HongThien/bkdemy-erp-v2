@@ -10,14 +10,18 @@
 // ⭐ Vị trí trên màn KHÔNG phải dữ liệu: box xếp theo số thứ tự (DB tính từ thu_tu). CEO đổi thứ tự bằng ◀▶ / ▲▼
 //   (ghi thu_tu) — không có ô nào "ngầm" mang nghĩa.
 // Kéo thả HTML5 thuần. Sau mỗi lần ghi: tải lại cây NỀN, không xoá màn (CLAUDE §2 React).
-import { useEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
 import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, BDM_NHANH, doiVungChuDe, type BdmNhanh,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, BDM_NHANH, khuonCuaVung, doiVungChuDe, type BdmNhanh,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
+import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
+import CayNhanh from './hinh/CayNhanh'
+import { loadLuoi } from '../../lib/kho/api'
+import type { Luoi } from '../../lib/kho/hinh'
 import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
 import { MathText, inp } from './ui'
@@ -91,6 +95,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   useEffect(() => { if (chuDe) NHO.chuDe[khoi] = chuDe.id }, [chuDe?.id, khoi]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (chuDe && o) NHO.chuyenDe[chuDe.id] = o.chuyen_de_id }, [chuDe?.id, o?.chuyen_de_id]) // eslint-disable-line react-hooks/exhaustive-deps
   const chonChuDe = (id: string) => { setChuDeId(id); setChuyenDeId(null); setChon(null) }
+  // KHUÔN màn theo vùng của chủ đề (registry BDM_NHANH) — Đại/HGT 4 tầng · Hình–Học · Hình–Luyện · 'chon' = chưa tách
+  const khuon = chuDe ? khuonCuaVung(chuDe.nhanh) : 'bon_tang'
   const chonChuyenDe = (id: string) => { setChuyenDeId(id); setChon(null) }
   // Đổi thứ tự chuyên đề 1 bậc (▲▼ / Alt+↑↓) — không phải kéo, không lẫn với chuyển nhóm
   const doiThuTuCD = (chuyenDeId: string, d: -1 | 1) => {
@@ -212,7 +218,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             Vùng
             <select value={chuDe.nhanh} onChange={(e) => void lam(() => doiVungChuDe(chuDe.id, e.target.value as BdmNhanh), 'Đã đổi vùng kiến thức')}
               className={`${inp} w-auto py-1 text-[13px] font-medium normal-case tracking-normal text-slate-800`}>
-              {BDM_NHANH.map((n) => <option key={n.id} value={n.id}>{n.nhan}</option>)}
+              {BDM_NHANH.filter((n) => !n.an || n.id === chuDe.nhanh).map((n) => <option key={n.id} value={n.id}>{n.nhan}</option>)}
             </select>
           </label>
         )}
@@ -221,17 +227,17 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
         )}
         <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
-        {HIEN_KHOP_CU && <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
+        {HIEN_KHOP_CU && khuon === 'bon_tang' && <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
           className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
           📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
         </button>}
-        <span className="ml-auto flex gap-3 text-[11.5px] text-slate-500">
+        <span className={`ml-auto flex gap-3 text-[11.5px] text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
           <span>Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
           <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
         </span>
       </div>
       {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
-      {HIEN_KHOP_CU && <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-slate-50 px-4 py-1 text-[12px] text-slate-600">
+      {HIEN_KHOP_CU && khuon === 'bon_tang' && <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-slate-200 bg-slate-50 px-4 py-1 text-[12px] text-slate-600">
         <span className="font-semibold text-slate-700">Khớp bản đồ cũ:</span>
         <span className={cay.tong.dang_cu_chua_gan ? 'text-rose-600' : 'text-emerald-600'}>
           Dạng cũ chưa gắn <b>{cay.tong.dang_cu_chua_gan}</b>/{cay.tong.dang_cu}{cay.tong.dang_cu_chua_gan ? ` (${cay.tong.cau_dang_cu_chua_gan} câu)` : ' ✓'}
@@ -248,6 +254,39 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         </div>
       )}
 
+      {khuon !== 'bon_tang' && chuDe ? (
+        // ── HÌNH: khuôn riêng theo vùng (không có chuyên đề / nhóm / dạng bài) ──
+        <div className="flex min-h-0 flex-1">
+          <div className="min-w-0 flex-1 overflow-auto">
+            {khuon === 'chon' ? (
+              <div className="mx-auto mt-16 max-w-xl rounded-2xl border border-slate-200 bg-white p-6 text-center">
+                <div className="text-[15px] font-semibold text-slate-900">Chủ đề «{chuDe.ten}» là Hình — thuộc phần nào?</div>
+                <p className="mt-1 text-[12.5px] text-slate-500">Hai phần độc lập, giao diện khác nhau. Đổi lại được ở ô «Vùng» bất cứ lúc nào.</p>
+                <div className="mt-4 grid grid-cols-2 gap-3 text-left">
+                  <button onClick={() => void lam(() => doiVungChuDe(chuDe.id, 'hinh_hoc'), 'Đã đặt vùng Hình – Học')}
+                    className="rounded-xl border-2 border-indigo-200 p-4 hover:border-indigo-400 hover:bg-indigo-50">
+                    <b className="text-indigo-700">📖 Hình – Học</b>
+                    <div className="mt-1 text-[12px] text-slate-600">Học dần từng bài: chủ đề → bài học → bài tập. Đo ở bài học.</div>
+                  </button>
+                  <button onClick={() => void lam(() => doiVungChuDe(chuDe.id, 'hinh_luyen'), 'Đã đặt vùng Hình – Luyện')}
+                    className="rounded-xl border-2 border-teal-200 p-4 hover:border-teal-400 hover:bg-teal-50">
+                    <b className="text-teal-700">🌿 Hình – Luyện</b>
+                    <div className="mt-1 text-[12px] text-slate-600">Bài tổng hợp đi thi: chủ đề → mô hình → nhánh → bài (cây nhánh).</div>
+                  </button>
+                </div>
+              </div>
+            ) : khuon === 'hinh_hoc' ? (
+              <KhoHinhHocScreen key={chuDe.id} khoi={khoi} chuDeId={chuDe.id} tenChuDe={chuDe.ten} />
+            ) : (
+              <HinhLuyenTrongBanDo key={chuDe.id} khoi={khoi} chuDeId={chuDe.id} />
+            )}
+          </div>
+          {chon?.loai === 'chu_de' && (
+            <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o ?? chuDe.o[0]} khoi={khoi} onDong={() => setChon(null)}
+              lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
+          )}
+        </div>
+      ) : (
       <div className="flex min-h-0 flex-1">
         {/* Cột CHUYÊN ĐỀ — trên→dưới = thứ tự học; kéo để sắp; thả nhóm vào để chuyển */}
         {chuDe && (
@@ -318,6 +357,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
         )}
       </div>
+      )}
 
       {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
 
@@ -985,6 +1025,19 @@ function BangGanCau({ g, onDong, onDaGan }: { g: GanMo; onDong: () => void; onDa
 const docKhoi = () => {
   try { const k = localStorage.getItem('bdm.khoi'); return k && (KHOI_OPTIONS as readonly string[]).includes(k) ? k : DEFAULT_KHOI } catch { return DEFAULT_KHOI }
 }
+/** Vùng Hình–Luyện trong Bản đồ mới: nạp lưới Hình của khối rồi mở màn Cây nhánh, lọc theo chủ đề đang chọn. */
+function HinhLuyenTrongBanDo({ khoi, chuDeId }: { khoi: string; chuDeId: string }) {
+  const [L, setL] = useState<Luoi | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  const nap = useCallback(async () => {
+    try { setLoi(null); setL(await loadLuoi(khoi)) } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
+  }, [khoi])
+  useEffect(() => { void nap() }, [nap])
+  if (loi) return <div className="p-8 text-sm text-rose-600">Không tải được lưới Hình: {loi}</div>
+  if (!L) return <div className="flex h-full items-center justify-center text-sm text-slate-400">Đang tải mô hình…</div>
+  return <div className="h-full p-5"><CayNhanh L={L} khoi={khoi} reload={nap} chuDeId={chuDeId} /></div>
+}
+
 export default function BanDoMoiScreen() {
   const [khoi, setKhoi] = useState<string>(docKhoi)
   useEffect(() => { try { localStorage.setItem('bdm.khoi', khoi) } catch { /* trình duyệt chặn lưu — bỏ qua */ } }, [khoi])

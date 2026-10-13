@@ -41,10 +41,22 @@ function loi(e: { code?: string; message?: string } | null): never {
 }
 
 // Vùng kiến thức của chủ đề — khoá khớp KhoNhanh (api.ts): toan = Đại.
-export type BdmNhanh = 'toan' | 'hgt' | 'hinh'
-export const BDM_NHANH: { id: BdmNhanh; nhan: string }[] = [
-  { id: 'toan', nhan: 'Đại' }, { id: 'hgt', nhan: 'Hình giải tích' }, { id: 'hinh', nhan: 'Hình' },
+// ⭐ 14/10 (Thùy): 'hinh' tách thành hinh_hoc · hinh_luyen — mỗi vùng một KHUÔN màn (spec-hinh-cay-nhanh §10):
+//   bon_tang   = chủ đề → chuyên đề → nhóm → dạng bài (Đại, Hình giải tích — cùng logic)
+//   hinh_hoc   = chủ đề (chương) → bài học → bài tập; đo ở bài học; bảng riêng hinh_hoc_*
+//   hinh_luyen = chủ đề → mô hình → nhánh → bài (cây nhánh)
+//   chon       = 'hinh' cũ, chưa chọn Học/Luyện ⇒ màn hỏi người, KHÔNG tự đoán
+// Thêm vùng mới = thêm 1 dòng ở đây; màn BanDoMoi dispatch theo `khuon`, không `if (nhanh === …)` rải rác.
+export type BdmNhanh = 'toan' | 'hgt' | 'hinh' | 'hinh_hoc' | 'hinh_luyen'
+export type BdmKhuon = 'bon_tang' | 'hinh_hoc' | 'hinh_luyen' | 'chon'
+export const BDM_NHANH: { id: BdmNhanh; nhan: string; khuon: BdmKhuon; an?: boolean }[] = [
+  { id: 'toan', nhan: 'Đại', khuon: 'bon_tang' },
+  { id: 'hgt', nhan: 'Hình giải tích', khuon: 'bon_tang' },
+  { id: 'hinh_hoc', nhan: 'Hình – Học', khuon: 'hinh_hoc' },
+  { id: 'hinh_luyen', nhan: 'Hình – Luyện', khuon: 'hinh_luyen' },
+  { id: 'hinh', nhan: 'Hình (chưa chọn Học/Luyện)', khuon: 'chon', an: true },   // giá trị cũ — không cho chọn mới
 ]
+export const khuonCuaVung = (nhanh: BdmNhanh): BdmKhuon => BDM_NHANH.find((n) => n.id === nhanh)?.khuon ?? 'bon_tang'
 export async function getCay(khoi: string): Promise<BdmCay> {
   const { data, error } = await supabase.rpc('fn_bdm_cay', { p_khoi: khoi })
   if (error) loi(error)

@@ -25,8 +25,9 @@ export type HinhHocBai = {
   duyet_boi: string | null
   duyet_at: string | null
   created_at?: string
+  chu_de_id?: string | null                          // chủ đề (chương) trong Bản đồ mới — vùng hinh_hoc; null = chưa xếp
 }
-export type HinhHocBaiInput = { khoi: string; ten_bai: string; thu_tu?: number; bac_toi_thieu?: string | null; muc_do?: number | null }
+export type HinhHocBaiInput = { khoi: string; ten_bai: string; thu_tu?: number; bac_toi_thieu?: string | null; muc_do?: number | null; chu_de_id?: string | null }
 
 export async function listHinhHocBai(khoi: string): Promise<HinhHocBai[]> {
   const { data, error } = await supabase.from('hinh_hoc_bai')
@@ -42,7 +43,7 @@ export async function createHinhHocBai(input: HinhHocBaiInput): Promise<HinhHocB
     thu_tu = ((data?.[0] as { thu_tu?: number } | undefined)?.thu_tu ?? 0) + 1
   }
   const { data, error } = await supabase.from('hinh_hoc_bai')
-    .insert({ khoi: input.khoi, ten_bai: input.ten_bai, thu_tu, bac_toi_thieu: input.bac_toi_thieu ?? null, muc_do: input.muc_do ?? null }).select().single()
+    .insert({ khoi: input.khoi, ten_bai: input.ten_bai, thu_tu, bac_toi_thieu: input.bac_toi_thieu ?? null, muc_do: input.muc_do ?? null, chu_de_id: input.chu_de_id ?? null }).select().single()
   if (error) throw error
   return data as HinhHocBai
 }

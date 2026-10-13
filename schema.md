@@ -1062,7 +1062,7 @@
 | thu_tu | integer |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
-| nhanh | text |  | 'toan'::text |  | `toan` · `hgt` · `hinh` |
+| nhanh | text |  | 'toan'::text |  | `toan` · `hgt` · `hinh` · `hinh_hoc` · `hinh_luyen` |
 
 ## dai_bdm_chuyen_de
 
@@ -2530,6 +2530,7 @@ END |  |  |
 | muc_do | smallint | Y |  |  |  |
 | ma_chuyen_de | text | Y |  |  |  |
 | ten_chuyen_de | text | Y |  |  |  |
+| chu_de_id | text | Y |  | FK→dai_bdm_chu_de.id |  |
 
 ## hinh_hoc_bai_ly_thuyet
 
@@ -3189,7 +3190,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -4416,8 +4417,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |

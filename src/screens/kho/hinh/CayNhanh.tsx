@@ -28,10 +28,16 @@ const W = 156, H = 46, COL = 176, ROW = 64, PH = 38, OX = 14, OY = 10
 const px = (c: number) => OX + c * COL, py = (r: number) => OY + r * ROW
 const soSanhSo = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true })
 
-export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promise<void> }) {
+// `chuDeId` (tuỳ chọn) — mở từ Bản đồ mới, vùng Hình–Luyện: chỉ hiện mô hình của chủ đề đó + ngăn "chưa xếp chủ đề".
+export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: string; reload: () => Promise<void>; chuDeId?: string }) {
   // CHỈ mô hình phan='luyen' (mô hình tạo ở đây sinh ra đã là 'luyen'). 41 mô hình cũ đang phan=NULL ⇒ tự ẩn —
   // CEO 14/10: "ẩn làm tham khảo, không dùng"; vẫn xem được ở màn Sơ đồ. Không sửa/xoá dòng cũ nào.
-  const goc = useMemo(() => api.gocCayCua(L).filter((m) => m.phan === 'luyen'), [L])
+  const gocLuyen = useMemo(() => api.gocCayCua(L).filter((m) => m.phan === 'luyen'), [L])
+  const goc = useMemo(() => (chuDeId ? gocLuyen.filter((m) => m.chu_de_id === chuDeId) : gocLuyen), [gocLuyen, chuDeId])
+  const gocChuaXep = useMemo(() => (chuDeId ? gocLuyen.filter((m) => !m.chu_de_id) : []), [gocLuyen, chuDeId])
+  const xepChuDe = async (id: string, cd: string | null) => {
+    try { await api.updateMoHinh(id, { chu_de_id: cd }); await reload() } catch (e: any) { setLoi(e.message ?? String(e)) }
+  }
   const [gocId, setGocIdRaw] = useState<string | null>(() => (NHO.gocId && goc.some((m) => m.id === NHO.gocId) ? NHO.gocId : null))
   const [tim, setTim] = useState(NHO.tim)
   const [tab, setTab] = useState(NHO.tab)
@@ -162,6 +168,7 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
         await reload(); bao('Đã lưu mô hình')
       } else {
         const id = await api.taoMoHinhLuyen(khoi, hopMH.ten, hopMH.gt, hopMH.anh)
+        if (chuDeId) await api.updateMoHinh(id, { chu_de_id: chuDeId })
         await reload(); setGocId(id); bao('Đã tạo mô hình — bấm “＋ Thêm bài” để dựng thân')
       }
       setHopMH(null)
@@ -203,7 +210,16 @@ export default function CayNhanh({ L, khoi, reload }: { L: Luoi; khoi: string; r
               <div className="truncate font-medium">{tron(m.ten)}</div>
             </button>
           ))}
-          {!gocLoc.length && <div className="px-2 py-4 text-[12px] leading-relaxed text-slate-400">Chưa có mô hình luyện nào ở khối {khoi}. Bấm <b>＋ Mới</b> để tạo.<br />Các mô hình cũ được ẩn làm tham khảo — xem ở “Sơ đồ (2 view)”.</div>}
+          {!!gocChuaXep.length && (
+            <div className="mt-3 rounded-lg border border-dashed border-slate-300 p-1.5">
+              <div className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-wide text-slate-400">Chưa xếp chủ đề · {gocChuaXep.length}</div>
+              {gocChuaXep.map((m) => (
+                <div key={m.id} className="flex items-center gap-1 px-1 py-0.5 text-[12px]">
+                  <span className="min-w-0 flex-1 truncate" title={tron(m.ten)}>{tron(m.ten)}</span>
+                  <button onClick={() => xepChuDe(m.id, chuDeId!)} className="rounded border border-teal-300 px-1.5 text-teal-700 hover:bg-teal-50" title="Đưa mô hình vào chủ đề này">＋</button>
+                </div>))}
+            </div>)}
+          {!gocLoc.length && <div className="px-2 py-4 text-[12px] leading-relaxed text-slate-400">Chưa có mô hình luyện nào {chuDeId ? 'trong chủ đề này' : ''} ở khối {khoi}. Bấm <b>＋ Mới</b> để tạo.<br />Các mô hình cũ được ẩn làm tham khảo — xem ở “Sơ đồ (2 view)”.</div>}
         </div>
       </aside>
 
