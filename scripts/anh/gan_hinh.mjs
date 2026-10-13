@@ -3,18 +3,20 @@
 //   node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay]
 //
 // Tên file:  <ma_cau>[+<ma_cau2>…][_ghi_chu].png|jpg|jpeg      vd  HHC001914_2A.png  ·  HHC001924+HHC001935_11.png (2 câu dùng chung 1 hình)
+//            đuôi _lg = chỉ gắn hình lời giải (anh_dap_an) · đuôi _de = chỉ gắn hình đề (anh_de) · không đuôi = gắn cả hai
+// --thay (luồng vẽ lại hình 13/10): đè hình đã có; URL cũ ghi vào scripts/anh/bien_ban/gan-hinh-<lúc>.json TRƯỚC khi UPDATE, ảnh cũ không bị xoá khỏi bucket.
 // Tiền tố mã → bảng: xem BANG bên dưới (thêm dòng khi cần, KHÔNG đoán bảng từ tên).
 // Không có --ghi: CHẠY THỬ — kiểm từng mã (có/không, đã có hình chưa), không upload, không UPDATE.
 // Có --ghi: upload (1 lần/file) rồi UPDATE anh_de VÀ anh_dap_an (cùng 1 hình: hiện ở đề và ở lời giải — Thùy 07/10) của mọi câu
 // trong tên file, tất cả trong 1 transaction DB. Không đè hình đã có (anh_de hoặc anh_dap_an) trừ khi --thay. Ảnh chỉ là URL trong DB (không base64) — đúng convention uploadKhoImage (src/lib/kho/api.ts).
 // Khoá storage (SUPABASE_SERVICE_ROLE trong .env.local) chỉ dùng trong script này, KHÔNG in ra. Chuỗi DB lấy từ DATABASE_URL (.env).
 import pg from 'pg'
-import { readFileSync, readdirSync, existsSync } from 'node:fs'
+import { readFileSync, readdirSync, existsSync, writeFileSync, mkdirSync } from 'node:fs'
 import { join, extname } from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { createClient } from '@supabase/supabase-js'
 
-const BANG = { HHC: 'hinh_hoc_cau_hoi' }
+const BANG = { HHC: 'hinh_hoc_cau_hoi', HH: 'hinh_hoc_cau_hoi' } // HH… = mã câu kiểu cũ (HH00087012), cùng bảng
 const KIEU = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' }
 
 const argv = process.argv.slice(2)
@@ -39,7 +41,8 @@ for (const ten of readdirSync(dir).sort()) {
   const ma = ten.replace(/\.[^.]+$/, '').split('_')[0].split('+')
   const sai = ma.filter((m) => !/^[A-Z]+\d+$/.test(m) || !BANG[m.replace(/\d+$/, '')])
   if (sai.length) { console.error(`❌ ${ten}: mã không hợp lệ hoặc tiền tố chưa khai trong BANG: ${sai.join(', ')}`); process.exit(2) }
-  viec.push({ ten, kieu, ma, chiLG: /_lg\.[^.]+$/i.test(ten) }) // …_lg.png = hình là ĐÁP ÁN (câu "vẽ hình", "nêu cách dựng") ⇒ chỉ gắn anh_dap_an
+  // …_lg.png = hình của LỜI GIẢI ⇒ chỉ gắn anh_dap_an · …_de.png = hình ĐỀ của câu có hình lời giải riêng ⇒ chỉ gắn anh_de
+  viec.push({ ten, kieu, ma, chiLG: /_lg\.[^.]+$/i.test(ten), chiDE: /_de\.[^.]+$/i.test(ten) })
 }
 if (!viec.length) { console.error('Không có file ảnh trong thư mục.'); process.exit(2) }
 
@@ -54,14 +57,14 @@ for (const v of viec) {
     const bang = BANG[m.replace(/\d+$/, '')]
     const r = (await c.query(`select ma_cau, anh_de, anh_dap_an from ${bang} where ma_cau = $1 and xoa_at is null`, [m])).rows[0]
     if (!r) { console.error(`❌ ${v.ten}: không thấy câu ${m}`); loi++; continue }
-    const co = r.anh_de || r.anh_dap_an
+    const co = v.chiLG ? r.anh_dap_an : v.chiDE ? r.anh_de : (r.anh_de || r.anh_dap_an)
     if (co && !THAY) { console.error(`❌ ${v.ten}: ${m} đã có hình (${co.slice(-40)}) — thêm --thay nếu muốn đè`); loi++; continue }
-    v.dong.push({ bang, ma: m })
+    v.dong.push({ bang, ma: m, anh_de_cu: r.anh_de, anh_dap_an_cu: r.anh_dap_an })
   }
 }
 if (loi) { console.error(`\n${loi} lỗi — không làm gì cả.`); await c.end(); process.exit(1) }
 console.log(`Kiểm xong ${viec.length} file → ${viec.reduce((s, v) => s + v.dong.length, 0)} câu. ${GHI ? 'GHI THẬT' : 'CHẠY THỬ (thêm --ghi để ghi)'}`)
-for (const v of viec) console.log(`  ${v.ten}  →  ${v.ma.join(', ')}${v.chiLG ? '  (chỉ lời giải)' : ''}`)
+for (const v of viec) console.log(`  ${v.ten}  →  ${v.ma.join(', ')}${v.chiLG ? '  (chỉ lời giải)' : v.chiDE ? '  (chỉ đề)' : ''}`)
 if (!GHI) { await c.end(); process.exit(0) }
 
 // 3) Upload + UPDATE (1 transaction DB; upload xong mới UPDATE)
@@ -76,11 +79,18 @@ for (const v of viec) {
   if (error) { console.error(`❌ upload ${v.ten} lỗi: ${error.message} (đã up ${daUp.length} file, DB chưa đổi)`); await c.end(); process.exit(4) }
   daUp.push({ v, link: sb.storage.from('kho-anh').getPublicUrl(path).data.publicUrl })
 }
+// Biên bản TRƯỚC khi đổi DB: URL cũ của từng câu (để hoàn lại được — ảnh cũ vẫn nằm trong bucket, script không xoá gì)
+const luc = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Ho_Chi_Minh', dateStyle: 'short', timeStyle: 'medium' }).format(new Date()).replace(/[: ]/g, '-')
+mkdirSync('scripts/anh/bien_ban', { recursive: true })
+const tepBB = `scripts/anh/bien_ban/gan-hinh-${luc}.json`
+writeFileSync(tepBB, JSON.stringify(daUp.flatMap(({ v, link }) => v.dong.map((d) => ({ ma: d.ma, bang: d.bang, tep: v.ten, kieu: v.chiLG ? 'lg' : v.chiDE ? 'de' : 'chung', anh_de_cu: d.anh_de_cu, anh_dap_an_cu: d.anh_dap_an_cu, moi: link }))), null, 1))
+console.log(`Biên bản URL cũ → ${tepBB}`)
 await c.query('begin')
 try {
   for (const { v, link } of daUp) for (const d of v.dong) {
     const r = await c.query(v.chiLG
       ? `update ${d.bang} set anh_dap_an = $1 where ma_cau = $2 and xoa_at is null`
+      : v.chiDE ? `update ${d.bang} set anh_de = $1 where ma_cau = $2 and xoa_at is null`
       : `update ${d.bang} set anh_de = $1, anh_dap_an = $1 where ma_cau = $2 and xoa_at is null`, [link, d.ma])
     if (r.rowCount !== 1) throw new Error(`UPDATE ${d.ma} rowCount=${r.rowCount}`)
   }
