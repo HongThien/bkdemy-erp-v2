@@ -37049,3 +37049,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai / sửa:** (a) phạm vi kiến thức MỖI đề cương khác nhau (ĐTĐ chỉ Chương I; LTV tới lập phương, KHÔNG tổng / hiệu hai lập phương, KHÔNG phân tích nhân tử) ⇒ soát bắt 2 chỗ LTV dùng nhóm hạng tử (13a, 19) và viết lại; (b) trạm soạn gắn cờ "đường trung bình" thừa ở ĐTĐ 41, 43a, 45a và LTV 28b, 29c — trạm soát gỡ;
   (c) LTV Bài 22 soạn ghi tên tứ giác sai thứ tự đỉnh (DKBC → DBKC) — soát bắt bằng toạ độ.
 - **Treo, chờ Thùy (12 câu):** LTV 3c (điều kiện xác định: 4 hay 3 cặp), 7f / 7g / 7i (bậc hai — đề cố ý hay ngoài phạm vi), 20 / 21 / 25 (đường trung bình) · ĐTĐ 11b (đa thức không), 12 (mọi m ≠ 2), 38b (thiếu số mũ), 39 (hằng số −4 ≠ "luôn dương"), 48 (số liệu mâu thuẫn).
+
+## 13/10/2026 — Hình luyện: spec cấu trúc kho bài nhiều ý → mô hình (Planning)
+- **Làm:** CEO cập nhật khái niệm mô hình (bài 1.1…1.40 xoay quanh; thực tế phải xây KHO BÀI trước, mô hình chi tiết sau; ý tách riêng, chọn số ý khi dùng). Viết `spec-hinh-luyen.md`.
+- **Đo DB live:** hinh_mo_hinh 41 · hinh_baitoan 366 (K7 153/K8 107/K9 106) · **hinh_bai 0 · hinh_y 0** · hinh_hoc_cau_hoi 1.826 (291 có mo_hinh_id) · hinh_gt_bai 0.
+- **Quyết định CTO (đề xuất):** không bảng mới — `hinh_bai`=bài kho, `hinh_y`=ý, `hinh_baitoan`=bài mô hình (đã có từ spec v3 §1). Đảo thứ tự build spec v3 §5 (kho trước, lưới sau). Thêm cột `hinh_bai.gia_thiet_chung`, `hinh_y.gia_thiet_them`, `hinh_y.anh_de`; đổi tiền tố mã HLB/HLY (tránh nhầm HH phần Học — đã nhầm 27/09). P1 không đẻ slot bài mô hình (§1.5). Đo ở ý, KP = bài mô hình, mastery suy động sau gán. Pipeline tách ý = clone kho kiểu 1 (brief Sonnet + nhap_hl_tu_draft.mjs).
+- **Chờ CEO gật:** D1 giữ tên bảng · D2 giữ 366 bài mô hình cũ làm nháp · D3 chọn ý bất kỳ tập (ý bỏ chọn → bước) · D4 ngưỡng mở P2 ~20–30 bài/mô hình. Chưa code gì.
