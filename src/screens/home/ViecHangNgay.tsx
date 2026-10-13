@@ -7,6 +7,7 @@ import { useStore } from '../../store/useStore'
 import { getMyTasks, type MyTask } from '../../lib/gami'
 import { homNayVN } from '../../lib/tuan'
 import { listNhacViec, themNhacViec, xoaNhacViec, datXongHomNay, type NhacViec } from '../../lib/homeViec'
+import ModalFull from './ModalFull'
 import { HEAD, THE } from './khung'
 
 type Che = 'van_hanh' | 'nhac'
@@ -22,7 +23,7 @@ const Tick = ({ on, tuDong }: { on: boolean; tuDong?: boolean }) => (
     style={{ borderRadius: 5 }}>{on ? '✓' : ''}</span>
 )
 
-function VanHanh({ onMo }: { onMo: () => void }) {
+function VanHanh({ onMo, gioiHan }: { onMo: () => void; gioiHan?: number }) {
   const [tasks, setTasks] = useState<MyTask[] | null>(null)
   const [loi, setLoi] = useState(false)
   useEffect(() => { getMyTasks().then(setTasks).catch(() => { setLoi(true); setTasks([]) }) }, [])
@@ -45,9 +46,11 @@ function VanHanh({ onMo }: { onMo: () => void }) {
   if (tasks === null) return <p className="text-[12.5px] text-[var(--sk-muted)]">Đang tải…</p>
   if (loi) return <p className="text-[12.5px] text-[var(--sk-muted)]">Chưa tải được việc vận hành.</p>
   if (!nhom.length) return <p className="text-[12.5px] text-[var(--sk-muted)]">Hôm nay không có việc vận hành nào tới hạn. ✓</p>
+  const hien = gioiHan ? nhom.slice(0, gioiHan) : nhom
   return (
+    <>
     <ul className="space-y-1">
-      {nhom.map((g) => (
+      {hien.map((g) => (
         <li key={g.label}>
           <button onClick={onMo} className="flex w-full items-center gap-2.5 px-1 py-1 text-left hover:bg-[var(--sk-surface2)]" style={{ borderRadius: 8 }}>
             <Tick on={g.xong === g.tong} tuDong />
@@ -58,10 +61,12 @@ function VanHanh({ onMo }: { onMo: () => void }) {
         </li>
       ))}
     </ul>
+    {gioiHan && nhom.length > gioiHan && <p className="mt-1 px-1 text-[11.5px] text-[var(--sk-muted)]">… và {nhom.length - gioiHan} việc nữa</p>}
+    </>
   )
 }
 
-function NhacViecCuaToi() {
+function NhacViecCuaToi({ gioiHan, onMoRong }: { gioiHan?: number; onMoRong?: () => void }) {
   const nhanSuId = useStore((s) => s.me?.nhanSu.id)
   const [ds, setDs] = useState<NhacViec[] | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -95,7 +100,7 @@ function NhacViecCuaToi() {
       {loi && <p className="mb-1.5 text-[12px] text-rose-500">Chưa đọc được sổ nhắc việc ({loi}).</p>}
       {ds === null ? <p className="text-[12.5px] text-[var(--sk-muted)]">Đang tải…</p> : (
         <ul className="space-y-0.5">
-          {ds.map((v) => (
+          {(gioiHan ? ds.slice(0, gioiHan) : ds).map((v) => (
             <li key={v.id} className="group flex items-center gap-2.5 px-1 py-1 hover:bg-[var(--sk-surface2)]" style={{ borderRadius: 8 }}>
               <button onClick={() => tick(v)} className="flex min-w-0 flex-1 items-center gap-2.5 text-left">
                 <Tick on={v.xong} />
@@ -106,25 +111,35 @@ function NhacViecCuaToi() {
           ))}
         </ul>
       )}
+      {gioiHan ? (
+        <button onClick={onMoRong} className="mt-1.5 px-1 text-[12px] font-semibold text-[var(--sk-acc)] hover:underline">
+          {ds && ds.length > gioiHan ? `… và ${ds.length - gioiHan} việc nữa · ` : ''}＋ Thêm / xem tất cả ›
+        </button>
+      ) : (
       <form onSubmit={(e) => { e.preventDefault(); them() }} className="mt-2 flex gap-2">
         <input value={moi} onChange={(e) => setMoi(e.target.value)} maxLength={200} placeholder="Thêm việc nhắc mình… (lặp lại mỗi ngày)"
           className="min-w-0 flex-1 border border-[var(--sk-line)] bg-[var(--sk-surface2)] px-2.5 py-1.5 text-[13px] text-[var(--sk-ink)] outline-none focus:border-[var(--sk-acc)]" style={{ borderRadius: 8 }} />
         <button type="submit" disabled={!moi.trim()} className="shrink-0 bg-[var(--sk-acc)] px-3 text-[13px] font-bold text-[var(--sk-acc-ink)] disabled:opacity-40" style={{ borderRadius: 8 }}>Thêm</button>
       </form>
-      <p className="mt-1.5 text-[11px] text-[var(--sk-muted)]">Chỉ mình bạn thấy · ô tick tự về trống mỗi ngày mới.</p>
+      )}
+      {!gioiHan && <p className="mt-1.5 text-[11px] text-[var(--sk-muted)]">Chỉ mình bạn thấy · ô tick tự về trống mỗi ngày mới.</p>}
     </div>
   )
 }
 
-export default function ViecHangNgay({ onMoVietCuaToi }: { onMoVietCuaToi: () => void }) {
+// compact = bảng nhỏ ở góc trên trái Trang chính: chỉ 5 việc đầu; bấm vào ⇒ mở popup đầy đủ (chính component này, không thu gọn).
+const SO_DONG_NHO = 5
+
+export default function ViecHangNgay({ onMoVietCuaToi, compact = false }: { onMoVietCuaToi: () => void; compact?: boolean }) {
   const [che, setChe] = useState<Che>(docChe)
+  const [mo, setMo] = useState(false)
   const doi = (c: Che) => { setChe(c); try { localStorage.setItem(KHOA_CHE, c) } catch { /* không lưu được thì thôi */ } }
   const nut = (c: Che, ten: string) => (
     <button onClick={() => doi(c)}
       className={`px-3 py-1 text-[12.5px] font-bold ${che === c ? 'bg-[var(--sk-acc)] text-[var(--sk-acc-ink)]' : 'text-[var(--sk-muted)] hover:text-[var(--sk-ink)]'}`}
       style={{ borderRadius: 'var(--sk-radius-pill)' }}>{ten}</button>
   )
-  return (
+  const khung = (
     <div style={THE} className="p-3.5">
       <div className="mb-2.5 flex flex-wrap items-center gap-2">
         <h3 className="text-[15px] font-bold text-[var(--sk-ink)]" style={HEAD}>☑ Việc hôm nay</h3>
@@ -132,7 +147,23 @@ export default function ViecHangNgay({ onMoVietCuaToi }: { onMoVietCuaToi: () =>
           {nut('van_hanh', '⚙ Vận hành')}{nut('nhac', '📝 Nhắc việc')}
         </div>
       </div>
-      {che === 'van_hanh' ? <VanHanh onMo={onMoVietCuaToi} /> : <NhacViecCuaToi />}
+      {che === 'van_hanh'
+        ? <VanHanh onMo={compact ? () => setMo(true) : onMoVietCuaToi} gioiHan={compact ? SO_DONG_NHO : undefined} />
+        : <NhacViecCuaToi gioiHan={compact ? SO_DONG_NHO : undefined} onMoRong={() => setMo(true)} />}
+      {compact && (
+        <button onClick={() => setMo(true)} className="mt-2 w-full text-right text-[12px] font-semibold text-[var(--sk-acc)] hover:underline">Xem chi tiết ›</button>
+      )}
     </div>
+  )
+  if (!compact) return khung
+  return (
+    <>
+      {khung}
+      {mo && (
+        <ModalFull tieuDe="☑ Việc hôm nay" onDong={() => setMo(false)} cao="auto">
+          <div className="mx-auto max-w-[760px] p-5"><ViecHangNgay onMoVietCuaToi={() => { setMo(false); onMoVietCuaToi() }} /></div>
+        </ModalFull>
+      )}
+    </>
   )
 }

@@ -177,12 +177,12 @@ function ChiTiet({ t, meId, laAdmin, onDoi }: { t: TaskBang; meId: string; laAdm
   )
 }
 
-export default function BangTaskScreen({ nhung = false }: { nhung?: boolean }) {
+export default function BangTaskScreen({ nhung = false, macDinh = 'team' }: { nhung?: boolean; macDinh?: 'team' | 'toi' | 'giao' }) {
   const meId = useStore((s) => s.me?.nhanSu.id) ?? ''
   const laAdmin = !!useStore((s) => s.quyen)?.laAdmin
   const [rows, setRows] = useState<TaskBang[] | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
-  const [xem, setXem] = useState<'team' | 'toi' | 'giao'>('team')
+  const [xem, setXem] = useState<'team' | 'toi' | 'giao'>(macDinh)
   const [mo, setMo] = useState<string | null>(null)
   const [form, setForm] = useState(false)
   const [coCapDuoi, setCoCapDuoi] = useState(false)
