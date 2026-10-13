@@ -106,19 +106,21 @@ export { BUCKET_RANK }
 export function bucketOfScore(score) {
   return score >= MASTERY_CONFIG.DAT ? 'dat' : score >= MASTERY_CONFIG.CAN_LUYEN ? 'can_luyen' : 'yeu'
 }
-export function bucketTaiThoiDiem(evals, cutoffMs) {
+export function bucketTaiThoiDiem(evals, cutoffMs, cfg = MASTERY_CONFIG) {
   const tr = (evals ?? []).filter((e) => Date.parse(e.t) <= cutoffMs)
   if (!tr.length) return null
-  return masteryOfDang(tr, MASTERY_CONFIG)?.muc ?? null
+  return masteryOfDang(tr, cfg)?.muc ?? null
 }
 // evalsByDang = { ma_dang: [lần đo…] } — CHỈ các dạng thuộc chuyên đề đang xét.
 // Trả [{ ma_dang, tu, den }] cho dạng TỤT bucket giữa 2 cửa sổ (Đ→C, Đ→S, C→S).
-export function dangDoiBucketXau(evalsByDang, winTruoc, winSau) {
+// cfgCuaDang(ma) tuỳ chọn — thang đo theo nhánh của dạng (Hình = 3 bài); bỏ trống = thang Đại.
+export function dangDoiBucketXau(evalsByDang, winTruoc, winSau, cfgCuaDang) {
   const cutTruoc = cuoiCuaSo(winTruoc), cutSau = cuoiCuaSo(winSau)
   const out = []
   for (const ma of Object.keys(evalsByDang ?? {})) {
-    const a = bucketTaiThoiDiem(evalsByDang[ma], cutTruoc)
-    const b = bucketTaiThoiDiem(evalsByDang[ma], cutSau)
+    const cfg = cfgCuaDang ? cfgCuaDang(ma) : MASTERY_CONFIG
+    const a = bucketTaiThoiDiem(evalsByDang[ma], cutTruoc, cfg)
+    const b = bucketTaiThoiDiem(evalsByDang[ma], cutSau, cfg)
     if (!a || !b) continue // chưa-đo ở 1 trong 2 mốc → KHÔNG kết luận (không coi là tụt)
     if (BUCKET_RANK[b] < BUCKET_RANK[a]) out.push({ ma_dang: ma, tu: a, den: b })
   }

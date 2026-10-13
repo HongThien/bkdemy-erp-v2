@@ -37,7 +37,9 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
 // RIÊNG nhưng báo cáo gộp chung nhãn "Hình". Thiếu = 'dai' (cột mặc định; môn 1 nhánh như KHTN rơi vào đây).
 // `mucDoThieu` = độ khó dùng để CHIA cơ bản/nâng cao khi dạng chưa gán muc_do (Thùy 29/09: Bài Hình học
 // chưa bấm độ khó ⇒ tạm tính Cơ bản). Chỉ dùng để chia cột, KHÔNG hiển thị như độ khó thật.
-export type NhanhMon = { ma: string | null; ten: string; nhomBC?: 'dai' | 'hinh'; mucDoThieu?: number }
+// `thangDo3` = mastery của nhánh tính trên 3 lần đo gần nhất thay vì 5 (Thùy 14/10: bài tập Hình làm được ít hơn Đại nhiều).
+// Phải khớp fn_mastery_cells (mig 202610140130: dạng thuộc hinh_hoc_bai ⇒ cửa sổ 3). Hình giải tích = logic Đại ⇒ KHÔNG bật.
+export type NhanhMon = { ma: string | null; ten: string; nhomBC?: 'dai' | 'hinh'; mucDoThieu?: number; thangDo3?: boolean }
 const NHANH_CUA_MON: Record<string, NhanhMon[]> = {
   'Toán': [
     { ma: null, ten: 'Đại số' },
@@ -47,7 +49,7 @@ const NHANH_CUA_MON: Record<string, NhanhMon[]> = {
     // ⭐ 02/10 (Thùy): rename ten → "Hình · Học" cho rõ cặp với pill mô hình "Hình · Luyện" ở MT —
     //    trước đây label "Hình học" + "Hình" (mô hình) sát nhau trong DangPickerOne, CEO không
     //    phân biệt được, tưởng MT chỉ chọn được ở "luyện".
-    { ma: 'hinh_hoc', ten: 'Hình · Học', nhomBC: 'hinh', mucDoThieu: 1 },
+    { ma: 'hinh_hoc', ten: 'Hình · Học', nhomBC: 'hinh', mucDoThieu: 1, thangDo3: true },
   ],
 }
 export function nhanhCuaMon(mon?: string | null): NhanhMon[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }

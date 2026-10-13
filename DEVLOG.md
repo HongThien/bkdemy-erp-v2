@@ -37482,3 +37482,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Phản biện → CEO chốt:** (1) đơn vị là BÀI HỌC, không phải buổi ✅ · (2) đo ở bài học, không ở bài tập ✅ ("bài tập hình gần như duy nhất") · (3) Hình–Học bảng riêng, 3 tầng ✅ · (4) đề xuất dây "bài Luyện cần bài học nào" ❌ **CEO bác: Học và Luyện độc lập**. Ghi vào `spec-hinh-cay-nhanh.md` §10.
 - **Chỗ hở của luồng 3 bước (đã báo CEO):** màn Cây nhánh chưa tạo được mô hình/bài mới · chưa có đường nhập `hinh_bai`/`hinh_y` · lúc nhập chưa có mô hình để gắn nhãn (cần nhãn gom tạm) · khi xây cần thấy bài kho bên cạnh · màn gán ý chưa kiểm với cây mới · 1 ý chỉ gán 1 bài.
 - **Chờ CEO:** 41 mô hình + 366 bài cũ ẩn hay xoá · nguồn tài liệu/khối cho bước 1 · nhãn gom tạm theo gì.
+
+## 14/10 (khuya, tiếp 2) — Thang đo mastery Hình = 3 bài (mig 202610140130 ĐÃ ÁP)
+- **CEO:** "số lượng bài tập hình làm được thấp hơn đại nhiều, nên thang đo của Hình không phải 5 bài, giảm xuống còn 3 bài".
+- **Soát:** Hình–Luyện đã 3 từ 21/08 (`fn_mastery_cells_hinh`, `MASTERY_CONFIG_HINH`). Hình–HỌC đi chung `fn_mastery_cells` nên vẫn 5 ⇒ đây là chỗ phải sửa. Hình giải tích = logic Đại ⇒ giữ 5.
+- **Đo trước (`_do_mastery_hinh_hoc_3.mjs`):** 335 ô (HS × bài học, chỉ ET/MT); 165 ô 1 lần đo · 91 ô 2 lần · 49 ô 3 lần · chỉ 30 ô > 3 lần ⇒ đúng nhận định của CEO. Đổi 5 → 3: **7 ô đổi mức** (2 thành yếu, 4 mất đạt, 1 thành đạt), "tin thấp" 256 → 165, "tin cao" 22 → 79.
+- **Làm:** thân hàm lấy từ bản ĐANG CHẠY rồi thay đúng 4 chỗ (`_gen_mig_mastery_hinh_hoc.mjs`, lệch số lần khớp là dừng): `rk` left join `hinh_hoc_bai` ⇒ `cs/tc/tt` = `least(tham số, 3/3/2)` cho Hình–Học. Test trong transaction + ROLLBACK (`_test_mastery_hinh_hoc_3.mjs`, gộp cả BTVN): 15.070 ô; **14.679 ô không phải Hình y hệt cũ**, 391 ô Hình = đúng kết quả cửa sổ 3. Áp bằng `--only`.
+- **JS (bản sao công thức, nợ §2.0):** `cfgMastery(thangDo3)` + cờ `thangDo3` ở registry nhánh `hinh_hoc`; sửa `mastery.ts` (compPct), `danhgia.ts` (stat sheet, cột TRƯỚC, dạng tụt hạng), `gami/danhgia.js`. `verify_mastery.mjs` PASS, `tsc` sạch.
+- **Chưa kiểm:** các màn hiển thị (Kết quả học tập, Report PH, bổ trợ yếu) bằng mắt sau khi đổi — 2 ô mới thành "yếu" có thể sinh ca bổ trợ.

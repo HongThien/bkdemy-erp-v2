@@ -229,3 +229,7 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 **Vì sao tách (R7):** *blocked practice* (học theo khối — bài tập xoay quanh một bài) vs *interleaved practice* (thi tổng hợp) — Rohrer & Taylor.
 
 **Việc kéo theo (chưa làm):** nới CHECK `dai_bdm_chu_de.nhanh` `hinh` → `hinh_hoc` · `hinh_luyen` (kèm migration) · bảng đăng ký vùng → khuôn màn trong Bản đồ mới · màn Hình–Học tái dùng `KhoHinhHocScreen`.
+
+5. **Thang đo Hình = 3 bài, không phải 5** (CEO 14/10: "số bài tập hình làm được thấp hơn Đại nhiều"). Áp cho CẢ Hình–Học (đo ở bài học) lẫn Hình–Luyện (đo ở bài mô hình); độ tin scale theo: cao ≥ 3 lần, trung bình 2, thấp 1. Đại / Hình giải tích giữ 5 (tin 5/3). Ngưỡng đạt 0,8 / cần luyện 0,5 và trọng số nguồn không đổi.
+   - Hình–Luyện: đã 3 từ 21/08 (`fn_mastery_cells_hinh`). Hình–Học: **mig `202610140130`** — `fn_mastery_cells` dùng cửa sổ 3 cho dạng thuộc `hinh_hoc_bai`.
+   - Bản JS (`gami/mastery.js` `cfgMastery`) lấy cờ `thangDo3` từ registry nhánh (`NHANH_CUA_MON`), không đoán theo tiền tố mã.

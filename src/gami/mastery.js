@@ -30,6 +30,10 @@ export const MASTERY_CONFIG = {
 // (3/2, giữ ~60%/40% của 5/3 bên Đại) để không mọi node Hình mãi "tin thấp" — DAT/CAN_LUYEN/WEIGHT
 // giữ nguyên (chưa có lý do đổi ngưỡng đạt/nguồn riêng cho Hình).
 export const MASTERY_CONFIG_HINH = { ...MASTERY_CONFIG, WINDOW: 3, TIN_CAO: 3, TIN_TB: 2 }
+// ⭐ 14/10 (Thùy): thang 3 bài áp cho MỌI phần Hình — cả Hình–Học (KP = bài học, đi chung fn_mastery_cells) chứ
+// không riêng Hình–Luyện. `thangDo3` lấy từ registry nhánh (lib/tailieu.ts NHANH_CUA_MON), KHÔNG đoán theo tiền tố mã.
+// Nguồn công thức DUY NHẤT là Postgres (fn_mastery_cells, mig 202610140130) — bản JS này chỉ để vẽ timeline/xu hướng.
+export const cfgMastery = (thangDo3) => (thangDo3 ? MASTERY_CONFIG_HINH : MASTERY_CONFIG)
 
 // grade.result / đánh-giá → giá trị đo 0..1.
 export const RESULT_VALUE = { correct: 1, partial: 0.5, wrong: 0 }

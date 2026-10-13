@@ -12,7 +12,7 @@
 //  2. Buổi BÙ có `lop_id` NULL ⇒ MẤT nhãn môn (134 lần đo ET). Phải lùi về buổi GỐC qua
 //     `buoi_hoc_hs.bu_cho_buoi_id` mới lấy được môn. Bỏ qua = im lặng đánh rơi data thật.
 import { supabase } from './supabase'
-import { masteryOfDang, MASTERY_CONFIG, RESULT_VALUE } from '../gami/mastery.js'
+import { masteryOfDang, cfgMastery, RESULT_VALUE } from '../gami/mastery.js'
 import {
   DANHGIA_CONFIG, cuaSoCua, cuaSoTruoc, cuoiCuaSo, chuoiDiemChuyenDe, chamPha1, chamPha2,
   trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
@@ -167,9 +167,9 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
 // (dangInfoCuaMon). 29/09 (Thùy chốt bật bổ trợ yếu cho Hình): trước chỉ tra bảng gốc ⇒ Bài Hình học + dạng Hình
 // giải tích rơi khỏi kênh ② và khỏi bước đổ dạng vào case. Bài Hình học có ma_chuyen_de = null (không có tầng chuyên đề).
 async function napBanDo(mon: string, maDangs: string[]) {
-  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string; muc_do: number | null }>()
+  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string; muc_do: number | null; thangDo3: boolean }>()
   for (const [ma, d] of await dangInfoCuaMon(mon, maDangs)) {
-    info.set(ma, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do })
+    info.set(ma, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do, thangDo3: d.thangDo3 })
   }
   return info
 }
@@ -310,9 +310,10 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     if (h) {
       for (const [ma, evs] of h.dang) {
         const info = banDo.get(ma)!
-        const m = masteryOfDang(evs, MASTERY_CONFIG)
+        const cfgD = cfgMastery(info.thangDo3)   // Hình = thang 3 bài (khớp fn_mastery_cells)
+        const m = masteryOfDang(evs, cfgD)
         if (!m) continue
-        const mEtMt = h.dangEtMt.has(ma) ? masteryOfDang(h.dangEtMt.get(ma)!, MASTERY_CONFIG) : null
+        const mEtMt = h.dangEtMt.has(ma) ? masteryOfDang(h.dangEtMt.get(ma)!, cfgD) : null
         const moiNhat = evs.reduce((a, b) => (Date.parse(b.t) > Date.parse(a.t) ? b : a))
         const score = (m as any).score as number
         const n = (m as any).n as number
@@ -320,7 +321,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
         // "TRƯỚC": chạy lại engine trên các lần đo TỚI mốc cắt (bỏ lần đo sau). null = trước
         // mốc chưa có lần đo nào (dạng mới xuất hiện cửa sổ này) ⇒ UI hiện "mới", không so delta.
         const evTruoc = evs.filter((e) => Date.parse(e.t) <= cutTruoc)
-        const mTruoc = evTruoc.length ? masteryOfDang(evTruoc, MASTERY_CONFIG) : null
+        const mTruoc = evTruoc.length ? masteryOfDang(evTruoc, cfgD) : null
         // Thùy 23/09: "tất cả dạng bị Yếu trong 2 cửa sổ 15 ngày gần nhất" — cùng phạm vi recency với kênh ②. Dạng yếu
         // từ lâu không đo lại KHÔNG tự vào diện/case (người vẫn thêm tay được ở Nội dung).
         const wCuoi = cuaSoCua(moiNhat.t)
@@ -375,7 +376,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
       if (coDiem.length >= 2 && h) {
         const evalsCuaCd: Record<string, DoEval[]> = {}
         for (const [ma, evs] of h.dang) if (banDo.get(ma)?.ma_chuyen_de === cd) evalsCuaCd[ma] = evs
-        doiXau = dangDoiBucketXau(evalsCuaCd, coDiem[coDiem.length - 2].cuaSo, coDiem[coDiem.length - 1].cuaSo)
+        doiXau = dangDoiBucketXau(evalsCuaCd, coDiem[coDiem.length - 2].cuaSo, coDiem[coDiem.length - 1].cuaSo, (ma: string) => cfgMastery(banDo.get(ma)?.thangDo3))
       }
       chuyenDes.push({
         ma_chuyen_de: cd,

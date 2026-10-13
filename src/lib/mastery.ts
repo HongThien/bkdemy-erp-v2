@@ -6,7 +6,7 @@
 // đo khách quan per-câu như et/mt/btvn/bt. Trọng số — xem MASTERY_CONFIG.WEIGHT (gami/mastery.js): mt=3
 // (chuẩn nhất) · et=2 · btvn/bt=1 (tự luyện).
 import { supabase } from './supabase'
-import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG } from '../gami/mastery.js'
+import { masteryOfDang, RESULT_VALUE, cfgMastery } from '../gami/mastery.js'
 import { seasonOf, seasonStartUtc } from '../gami/season.js'
 import { khoCuaMon, nhanhCuaMon, tenNhanh, type NhanhMon } from './tailieu'
 
@@ -28,6 +28,7 @@ export type DangInfo = {
   mucDoBC: number | null   // độ khó dùng để CHIA cơ bản/nâng cao (muc_do ?? mucDoThieu của nhánh)
   nhanh: string | null
   nhomBC: 'dai' | 'hinh'
+  thangDo3: boolean        // thang đo 3 bài (Hình) thay vì 5 — từ registry nhánh
 }
 export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map<string, DangInfo>> {
   const out = new Map<string, DangInfo>()
@@ -51,6 +52,7 @@ export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map
         mucDoBC: r.muc_do ?? n.mucDoThieu ?? null,
         nhanh: n.ma,
         nhomBC: n.nhomBC ?? 'dai',
+        thangDo3: !!n.thangDo3,
       })
     }
   }
@@ -469,7 +471,7 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
       if (predMa && !predMa(ma)) continue
       const evs = predTime ? map[ma].filter((e) => predTime(Date.parse(e.t))) : map[ma]
       if (!evs.length) continue
-      const r = masteryOfDang(evs, MASTERY_CONFIG); if (!r) continue
+      const r = masteryOfDang(evs, cfgMastery(dangInfo.get(ma)?.thangDo3)); if (!r) continue
       t++; if (r.muc === 'dat') d++; else if (r.muc === 'can_luyen') c++; else y++
     }
     const pctRaw = t ? Math.round(((d + c * 0.5) / t) * 100) : null
