@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup — Trang chính ERP</title>
+<style>
+  :root{
+    --ink:#f4efe6; --muted:#b9b2c9; --acc:#f0b64a; --acc-ink:#2a1d05; --line:rgba(255,255,255,.16);
+    --surface:rgba(24,20,44,.78); --surface2:rgba(255,255,255,.08); --radius:14px;
+    --red:#ff7a7a; --green:#6ee7a8; --amber:#fbbf24; --blue:#7cc4ff;
+  }
+  *{box-sizing:border-box} html,body{margin:0;height:100%}
+  body{font:14px/1.45 "Be Vietnam Pro","Segoe UI",system-ui,sans-serif;color:var(--ink);
+    background:radial-gradient(1200px 500px at 70% 0,#5b3a7a 0,transparent 60%),radial-gradient(900px 600px at 10% 100%,#233a6b 0,transparent 60%),linear-gradient(180deg,#171434,#0e0c20);
+    overflow:hidden}
+  button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+  input,textarea{font:inherit;color:inherit}
+  .shell{height:100vh;display:flex;flex-direction:column}
+  /* thanh trên */
+  .top{display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(10,8,24,.85);border-bottom:1px solid var(--line)}
+  .brand{font-weight:800;color:var(--acc)} .brand small{color:var(--muted);font-weight:600;letter-spacing:.14em;font-size:10px}
+  .addr{flex:1;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:5px 10px;color:var(--muted);font-size:13px}
+  .persona{display:flex;gap:4px;align-items:center;font-size:12px;color:var(--muted)}
+  .persona button{padding:4px 10px;border:1px solid var(--line);border-radius:999px}
+  .persona button.on{background:var(--acc);color:var(--acc-ink);border-color:var(--acc);font-weight:700}
+  .bell{position:relative;font-size:18px;padding:2px 8px;border-radius:8px}
+  .bell:hover{background:var(--surface2)}
+  .bell b{position:absolute;right:-2px;top:-4px;background:#ef4444;color:#fff;border-radius:999px;font-size:10px;min-width:17px;height:17px;line-height:17px;text-align:center}
+  /* trang */
+  .page{flex:1;min-height:0;overflow:auto;padding:22px 30px}
+  .grid{max-width:1500px;margin:0 auto;display:flex;gap:22px;min-height:100%}
+  .colL{width:25%;min-width:300px;display:flex;flex-direction:column}
+  .colR{flex:1;min-width:0}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;backdrop-filter:blur(6px)}
+  .card h3{margin:0;font-size:15px}
+  .row{display:flex;align-items:center;gap:10px}
+  .grow{flex:1;min-width:0}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;gap:2px}
+  .seg button{padding:3px 12px;border-radius:999px;font-weight:700;font-size:12.5px;color:var(--muted)}
+  .seg button.on{background:var(--acc);color:var(--acc-ink)}
+  .link{color:var(--acc);font-weight:700;font-size:12.5px}
+  .link:hover{text-decoration:underline}
+  .muted{color:var(--muted)}
+  .chk{width:18px;height:18px;border:1.5px solid var(--line);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex:none;background:var(--surface2)}
+  .chk.on{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+  .li{display:flex;align-items:center;gap:9px;padding:5px 4px;border-radius:8px;width:100%;text-align:left}
+  .li:hover{background:var(--surface2)}
+  .red{color:var(--red)} .strike{text-decoration:line-through;color:var(--muted)}
+  .bar{height:8px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);overflow:hidden;position:relative}
+  .bar i{position:absolute;inset:0 auto 0 0;background:var(--acc);border-radius:999px}
+  .pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:11px;font-weight:800}
+  .p-dang{background:#312e81;color:#c7d2fe} .p-cho{background:#78350f;color:#fde68a} .p-xong{background:#064e3b;color:#a7f3d0}
+  .p-huy{background:#374151;color:#d1d5db} .p-moi{background:#0c4a6e;color:#bae6fd} .p-ban{background:#78350f;color:#fde68a}
+  .p-tc{background:#7f1d1d;color:#fecaca}
+  /* hàng đầu */
+  .greet{padding:10px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+  .greet h2{margin:0;font-size:30px}
+  .head{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+  .tag{display:inline-block;background:var(--surface);border:1px solid var(--line);padding:3px 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+  .favs{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:12px;margin-bottom:18px}
+  .fav{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0 12px;height:62px;text-align:left}
+  .fav:hover,.tile:hover{filter:brightness(1.15);transform:translateY(-2px)}
+  .fav .ic{width:38px;height:38px;border-radius:999px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:19px}
+  .all{display:flex;gap:16px;align-items:flex-start}
+  .tiles{display:grid;gap:12px;flex:1;min-width:0}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;position:relative;transition:.15s;width:100%}
+  .tile .ic{font-size:40px;line-height:1;margin-bottom:6px}
+  .tile .n{position:absolute;right:8px;top:8px;font-size:10.5px;border:1px solid var(--line);background:var(--surface2);border-radius:999px;padding:0 8px;color:var(--acc);font-weight:700}
+  .tile b{font-size:15px}
+  .tile.vuong{aspect-ratio:1/.86}.tile.cao{aspect-ratio:1/1.25}
+  .tile.tron{aspect-ratio:1/1;border-radius:999px;justify-content:center}
+  .tile.ngang{flex-direction:row;height:84px;justify-content:flex-start;gap:12px;text-align:left}.tile.ngang .ic{font-size:34px;margin:0}
+  .tile.gon{flex-direction:row;height:50px;justify-content:flex-start;gap:10px;text-align:left}.tile.gon .ic{font-size:22px;margin:0}
+  /* nhân vật */
+  .hero{margin-top:auto;position:sticky;bottom:0;padding-top:12px;display:flex;flex-direction:column;align-items:center}
+  .bubble{background:rgba(255,255,255,.95);color:#334155;border-radius:16px;padding:8px 12px;font-size:12.5px;max-width:220px;align-self:flex-end;margin:0 8px 8px 0;position:relative}
+  .hero svg{width:78%;max-height:46vh;filter:drop-shadow(0 12px 18px rgba(0,0,0,.5))}
+  /* popup */
+  .ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:50;padding:24px}
+  .modal{background:#f5f5f7;color:#1e293b;border-radius:16px;width:min(1100px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .modal.sm{width:min(720px,96vw)}
+  .mh{display:flex;align-items:center;gap:8px;background:#fff;border-bottom:1px solid #e2e8f0;padding:10px 18px}
+  .mh h3{margin:0;font-size:15px}.mh .x{margin-left:auto;font-size:18px;color:#94a3b8;padding:2px 8px;border-radius:6px}
+  .mh .x:hover{background:#f1f5f9}
+  .mb{padding:18px;overflow:auto}
+  .light .muted{color:#64748b}
+  .tabs{display:flex;gap:6px;align-items:center;background:#fff;border-bottom:1px solid #e2e8f0;padding:8px 18px}
+  .tabs button{padding:4px 12px;border-radius:7px;font-size:12px;font-weight:700;color:#64748b}
+  .tabs button.on{background:#4f46e5;color:#fff}
+  .btn{padding:6px 14px;border-radius:9px;font-weight:700;font-size:13px}
+  .btn.pri{background:#4f46e5;color:#fff}.btn.ok{background:#059669;color:#fff}.btn.no{background:#e11d48;color:#fff}
+  .btn.gh{border:1px solid #cbd5e1;color:#475569}.btn:disabled{opacity:.4;cursor:default}
+  .sec{background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 1px 3px rgba(15,23,42,.08);margin-bottom:14px}
+  .sec h4{margin:0 0 4px;font-size:14px}
+  .task{border-bottom:1px solid #f1f5f9;padding:9px 0}.task:last-child{border:0}
+  .task .t{font-weight:700;font-size:13.5px}.task .s{font-size:12px;color:#94a3b8}
+  .tbar{width:110px;height:8px;background:#f1f5f9;border-radius:999px;position:relative;overflow:hidden;flex:none}
+  .tbar i{position:absolute;inset:0 auto 0 0;background:#6366f1;border-radius:999px}
+  .eval{margin-top:8px;background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:12px}
+  .eval input[type=text],.eval input[type=date],.f input,.f textarea,.f select{border:1px solid #cbd5e1;border-radius:8px;padding:6px 9px;background:#fff;color:#1e293b;width:100%}
+  .f{display:grid;gap:8px}
+  .log{font-size:12px;color:#64748b;margin:6px 0}.log b{color:#334155}
+  .warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:8px 10px;font-size:12.5px}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:10px;font-size:13px;z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  /* hòm thư */
+  .inbox{position:absolute;right:14px;top:46px;width:400px;max-height:70vh;overflow:auto;background:#14102b;border:1px solid var(--line);border-radius:14px;z-index:60;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .inbox .it{display:flex;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;width:100%}
+  .inbox .it:hover{background:var(--surface2)}
+  .inbox .it.un{background:rgba(255,255,255,.05)}
+  .inbox .dot{width:8px;height:8px;border-radius:99px;background:var(--acc);margin-top:7px;flex:none}
+  .pop{position:absolute;z-index:40;background:#14102b;border:1px solid var(--line);border-radius:14px;padding:12px;width:300px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .hint{position:fixed;left:14px;bottom:10px;font-size:11.5px;color:var(--muted);z-index:5}
+</style>
+</head>
+<body>
+<div class="shell" id="app"></div>
+<div class="hint">Mockup — dữ liệu giả. Đổi VAI ở thanh trên để xem từng phía (người giao / người làm).</div>
+
+<script>
+/* ═══════ DỮ LIỆU GIẢ ═══════ */
+const HOM_NAY = '2026-10-14';
+const P = {
+  thuy: { ten: 'Thùy', day: 'Thùy (CEO)', admin: true },
+  trang: { ten: 'Trang', day: 'Phạm Thị Thùy Trang', cha: 'thuy' },
+  loc:   { ten: 'Lộc', day: 'Lộc', cha: 'thuy' },
+  mai:   { ten: 'Mai', day: 'Quỳnh Mai', cha: 'trang' },
+  tra:   { ten: 'Trà', day: 'Thu Trà', cha: 'trang' },
+};
+const capDuoi = (id) => P[id].admin ? Object.keys(P).filter((k) => k !== id)
+  : Object.keys(P).filter((k) => { let c = P[k].cha; while (c) { if (c === id) return true; c = P[c].cha } return false });
+
+let S = {
+  me: 'thuy', modal: null, taskTab: 'toi', openTask: null, orderTab: 'toi', openOrder: null, inbox: false,
+  viecNgayTab: 'vh', dang: 'vuong', an: [], tuyChinh: false, toast: null, formGiao: false, formOrder: false,
+  vh: { // việc vận hành tự đo (khâu → xong/tổng, quá hạn)
+    thuy: [['Chấm bài trên lớp', 0, 11, 11], ['Chấm BTVN', 0, 6, 6], ['Chấm ET', 2, 6, 4], ['Duyệt báo sai', 0, 1, 1], ['Đánh giá sau buổi', 5, 20, 12], ['Điều hành ca bổ trợ', 0, 2, 2], ['Đánh giá buổi bù', 2, 2, 0]],
+    mai: [['Chấm BTVN', 3, 5, 0], ['Chấm ET', 1, 4, 1]], trang: [['Duyệt báo sai', 0, 3, 2]], loc: [], tra: [['Chấm BTVN', 4, 4, 0]],
+  },
+  nhac: {
+    thuy: [{ t: 'Xem báo cáo cuối ngày của trợ lý', x: false }, { t: 'Kiểm tra sổ thu chi', x: true }, { t: 'Nhắn lại phụ huynh 7B1', x: false }],
+    mai: [{ t: 'Kiểm lại phiếu điểm danh', x: false }, { t: 'Gửi Trang báo cáo tuần', x: false }], trang: [], loc: [], tra: [],
+  },
+  tasks: [
+    { id: 1, ten: 'Chốt bộ MCQ Đại 8 — chương 3', mota: '≥ 120 câu đã duyệt, đủ 4 mức. Ưu tiên dạng hay sai.', giao: 'thuy', lam: 'trang', han: '2026-10-12', tt: 'dang', pct: 60, gh: 0, log: [['thuy', 'Giao task · hạn 12/10', '12/10 09:00'], ['trang', 'Cập nhật 60% — còn 2 dạng', '13/10 17:20']] },
+    { id: 2, ten: 'Dựng màn Hòm thư', mota: 'Chuông + số chưa đọc, đủ nguồn order / gậy / task.', giao: 'thuy', lam: 'loc', han: '2026-10-14', tt: 'cho', pct: 90, gh: 0, log: [['thuy', 'Giao task · hạn 14/10', '10/10 14:00'], ['loc', 'Cập nhật 90%', '13/10 21:00'], ['loc', 'Báo xong — đã đẩy lên main', '14/10 08:10']] },
+    { id: 3, ten: 'Soạn đề cương Toán 7 giữa kì 1', mota: '', giao: 'thuy', lam: 'trang', han: '2026-10-17', tt: 'dang', pct: 35, gh: 0, log: [['thuy', 'Giao task · hạn 17/10', '13/10 08:00']] },
+    { id: 4, ten: 'Nhập 200 câu Hình 9 vào kho', mota: 'Theo luồng kho kiểu 1.', giao: 'trang', lam: 'mai', han: '2026-10-13', tt: 'dang', pct: 20, gh: 1, log: [['trang', 'Giao task · hạn 08/10', '03/10 08:30'], ['trang', 'Gia hạn 08/10 → 13/10 · không đánh cờ — HS nghỉ lễ', '08/10 16:00'], ['mai', 'Cập nhật 20%', '12/10 10:00']] },
+    { id: 5, ten: 'Chuẩn bị phiếu BTVN tuần 7', mota: '', giao: 'trang', lam: 'tra', han: '2026-10-16', tt: 'dang', pct: 70, gh: 0, log: [['trang', 'Giao task · hạn 16/10', '12/10 09:00']] },
+    { id: 6, ten: 'Báo cáo học phí tháng 9', mota: '', giao: 'thuy', lam: 'loc', han: '2026-10-09', tt: 'xong', pct: 100, ket: 95, gh: 0, log: [['thuy', 'Giao task · hạn 09/10', '02/10'], ['thuy', 'Cấp trên duyệt: 95%', '10/10']] },
+  ],
+  orders: [
+    { id: 1, dat: 'thuy', nhan: 'mai', nd: 'Em xuất giúp chị danh sách HS vắng ≥3 buổi tháng 9 theo lớp.', han: '2026-10-15', tt: 'moi', log: [['thuy', 'moi', '', '14/10 09:05']] },
+    { id: 2, dat: 'loc', nhan: 'thuy', nd: 'Chị duyệt giúp em quyền xem Sơ đồ tổ chức cho Trà.', han: null, tt: 'dang', log: [['loc', 'moi', '', '13/10'], ['thuy', 'dang', 'Chị xem chiều nay nhé', '13/10']] },
+    { id: 3, dat: 'thuy', nhan: 'tra', nd: 'Nhờ Trà gom feedback phụ huynh khối 4.', han: '2026-10-18', tt: 'ban', log: [['thuy', 'moi', '', '12/10'], ['tra', 'ban', 'Tuần này em kín lịch, thứ 2 em làm được ạ', '12/10']] },
+    { id: 4, dat: 'trang', nhan: 'thuy', nd: 'Mình cần chốt thang lương 14+ HS.', han: null, tt: 'xong', log: [['trang', 'moi', '', '09/10'], ['thuy', 'xong', 'Đã chốt, xem spec §3.1b', '10/10']] },
+  ],
+  thu: [
+    { id: 1, loai: '📋', tieu: 'Quỳnh Mai nhắn về order', nd: 'Em xuất xong, anh/chị xem file nhé', to: 'thuy', un: true, t: '5 phút trước' },
+    { id: 2, loai: '🚀', tieu: 'Lộc báo xong task', nd: 'Dựng màn Hòm thư', to: 'thuy', un: true, t: '1 giờ trước' },
+    { id: 3, loai: '📋', tieu: 'Trang giao order cho bạn', nd: 'Mình cần chốt thang lương 14+ HS.', to: 'thuy', un: false, t: 'hôm qua' },
+    { id: 4, loai: '📋', tieu: 'Thùy đặt order cho bạn', nd: 'Em xuất giúp chị danh sách HS vắng ≥3 buổi…', to: 'mai', un: true, t: 'vừa xong' },
+    { id: 5, loai: '🚀', tieu: 'Trang giao task cho bạn', nd: 'Nhập 200 câu Hình 9 vào kho\nHạn: 13/10', to: 'mai', un: true, t: '10 ngày trước' },
+    { id: 6, loai: '🏑', tieu: 'Bạn bị ghi 1 gậy', nd: 'Trễ deadline task: …', to: 'mai', un: false, t: '3 ngày trước' },
+  ],
+};
+const STT = { moi: 'Mới đặt', ban: 'Bận, chưa làm được', dang: 'Đang làm', xong: 'Đã xong', tu_choi: 'Không làm được', huy: 'Đã huỷ' };
+const PCLS = { moi: 'p-moi', ban: 'p-ban', dang: 'p-dang', xong: 'p-xong', tu_choi: 'p-tc', huy: 'p-huy' };
+const TASKTT = { dang: ['Đang làm', 'p-dang'], cho: ['Chờ duyệt', 'p-cho'], xong: ['Đã duyệt', 'p-xong'], huy: ['Đã huỷ', 'p-huy'] };
+const ddmm = (s) => s ? s.slice(8, 10) + '/' + s.slice(5, 7) : '';
+const open = (t) => t.tt === 'dang' || t.tt === 'cho';
+const quaHan = (t) => open(t) && t.han < HOM_NAY;
+const denHan = (t) => open(t) && t.han <= HOM_NAY;
+const diem = (t) => quaHan(t) ? 3 : denHan(t) ? 2 : t.tt === 'cho' ? 1 : 0;
+const toast = (m) => { S.toast = m; render(); setTimeout(() => { S.toast = null; render() }, 2200) };
+const ten = (id) => P[id].day;
+const hide = (id) => S.an.includes(id);
+
+/* ═══════ RENDER ═══════ */
+function viecNgayCompact(full) {
+  const lim = full ? 99 : 5;
+  let body;
+  if (S.viecNgayTab === 'vh') {
+    const rows = S.vh[S.me] || [];
+    body = rows.length ? rows.slice(0, lim).map(([k, x, t, q]) => `<button class="li" data-a="${full ? 'toViec' : 'mo:ngay'}"><span class="chk ${x === t ? 'on' : ''}">${x === t ? '✓' : ''}</span><span class="grow ${x === t ? 'strike' : ''}">${k}</span>${q ? `<span class="red" style="font-size:11px;font-weight:800">${q} quá hạn</span>` : ''}<span class="muted" style="font-weight:800">${x}/${t}</span></button>`).join('')
+      + (!full && rows.length > lim ? `<div class="muted" style="font-size:11.5px;padding:2px 4px">… và ${rows.length - lim} việc nữa</div>` : '')
+      : `<div class="muted">Hôm nay không có việc vận hành nào tới hạn. ✓</div>`;
+  } else {
+    const rows = S.nhac[S.me] || [];
+    body = rows.slice(0, lim).map((r, i) => `<button class="li" data-a="nhacTick:${i}"><span class="chk ${r.x ? 'on' : ''}">${r.x ? '✓' : ''}</span><span class="grow ${r.x ? 'strike' : ''}">${r.t}</span></button>`).join('')
+      + (full ? `<div class="row" style="margin-top:8px"><input id="nhacIn" placeholder="Thêm việc nhắc mình… (lặp lại mỗi ngày)" style="flex:1;border:1px solid var(--line);background:var(--surface2);border-radius:8px;padding:6px 9px"><button class="btn" style="background:var(--acc);color:var(--acc-ink)" data-a="nhacThem">Thêm</button></div><div class="muted" style="font-size:11px;margin-top:6px">Chỉ mình bạn thấy · ô tick tự về trống mỗi ngày mới.</div>`
+        : `<button class="link" data-a="mo:ngay" style="margin-top:4px">＋ Thêm / xem tất cả ›</button>`);
+  }
+  return `<div class="card"><div class="row" style="margin-bottom:8px;flex-wrap:wrap"><h3>☑ Việc hôm nay</h3>
+    <span class="seg" style="margin-left:auto"><button class="${S.viecNgayTab === 'vh' ? 'on' : ''}" data-a="vnTab:vh">⚙ Vận hành</button><button class="${S.viecNgayTab === 'nhac' ? 'on' : ''}" data-a="vnTab:nhac">📝 Nhắc việc</button></span></div>${body}
+    ${full ? `<div style="margin-top:10px"><button class="link" data-a="toViec">Mở Việc của tôi ›</button></div>` : `<div style="text-align:right;margin-top:4px"><button class="link" data-a="mo:ngay">Xem chi tiết ›</button></div>`}</div>`;
+}
+
+function tienDo() {
+  const mine = S.tasks.filter((t) => open(t) && (t.lam === S.me || t.giao === S.me));
+  const pool = mine.length ? mine : S.tasks.filter(open);
+  const top = [...pool].sort((a, b) => diem(b) - diem(a) || a.han.localeCompare(b.han)).slice(0, 3);
+  const nBao = S.tasks.filter((t) => open(t) && diem(t) >= 2).length;
+  return `<div class="card" style="cursor:pointer" data-a="mo:pt"><div class="row" style="margin-bottom:8px"><h3>🚀 Việc phát triển</h3>
+    <span class="muted" style="font-size:11.5px">${mine.length ? 'của bạn' : 'cả team'}${nBao ? ' · ' + nBao + ' cần chú ý' : ''}</span><span class="link" style="margin-left:auto">Mở đầy đủ ›</span></div>
+    ${top.length ? top.map((t) => `<div class="row" style="margin:5px 0"><span style="width:16px;text-align:center">${quaHan(t) ? '⚠' : denHan(t) ? '●' : t.tt === 'cho' ? '⏳' : ''}</span>
+      <span class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;font-size:13px">${t.ten}${t.lam !== S.me ? `<span class="muted" style="font-weight:400"> · ${P[t.lam].ten}</span>` : ''}</span>
+      <span class="bar" style="width:100px;flex:none"><i style="width:${t.pct}%"></i></span><b style="width:36px;text-align:right;font-size:12.5px">${t.pct}%</b></div>`).join('') : '<div class="muted">Không có task nào đang mở. ✓</div>'}</div>`;
+}
+
+function orderBox() {
+  const mine = S.orders.filter((o) => (S.orderTab === 'toi' ? o.nhan === S.me : o.dat === S.me));
+  const mo = mine.filter((o) => !['xong', 'tu_choi', 'huy'].includes(o.tt));
+  const dong = mine.filter((o) => ['xong', 'tu_choi', 'huy'].includes(o.tt));
+  const nT = S.orders.filter((o) => o.nhan === S.me && !['xong', 'tu_choi', 'huy'].includes(o.tt)).length;
+  const nD = S.orders.filter((o) => o.dat === S.me && !['xong', 'tu_choi', 'huy'].includes(o.tt)).length;
+  const row = (o) => {
+    const isOpen = S.openOrder === o.id, laNhan = o.nhan === S.me;
+    return `<div style="border-bottom:1px solid var(--line);padding:8px 0">
+      <button class="row" style="width:100%;text-align:left;align-items:flex-start" data-a="oOpen:${o.id}">
+        <span class="pill ${PCLS[o.tt]}" style="margin-top:2px">${STT[o.tt]}</span>
+        <span class="grow"><b style="font-size:13.5px;display:block;${isOpen ? '' : 'display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'}">${o.nd}</b>
+        <span class="muted" style="font-size:12px">${laNhan ? 'Từ ' + P[o.dat].day : 'Cho ' + P[o.nhan].day}${o.han ? ' · hạn ' + ddmm(o.han) : ''}</span></span><span class="muted">${isOpen ? '▾' : '▸'}</span></button>
+      ${isOpen ? `<div style="margin-top:8px">${o.log.map(([w, s, g, at]) => `<div class="muted" style="font-size:12px"><b style="color:var(--ink)">${P[w].day}</b> · ${STT[s]} · ${at}${g ? `<div style="color:var(--ink);padding-left:10px">💬 ${g}</div>` : ''}</div>`).join('')}
+        <input id="oNote" placeholder="Lời nhắn kèm theo (không bắt buộc)…" style="width:100%;margin:8px 0;border:1px solid var(--line);background:var(--surface2);border-radius:8px;padding:6px 9px">
+        <div class="row" style="flex-wrap:wrap;gap:6px">${laNhan
+          ? ['ban', 'dang', 'xong', 'tu_choi'].map((s) => `<button class="btn" style="border:1px solid var(--line);${o.tt === s ? 'background:var(--acc);color:var(--acc-ink)' : ''}" data-a="oSet:${o.id}:${s}">${STT[s]}</button>`).join('')
+          : (open2(o) ? `<button class="btn" style="border:1px solid var(--line)" data-a="oSet:${o.id}:huy">Huỷ order</button>` : `<button class="btn" style="border:1px solid var(--line)" data-a="oSet:${o.id}:moi">Mở lại</button>`)}
+          <button class="link" style="margin-left:auto" data-a="oSet:${o.id}:${o.tt}">Chỉ gửi lời nhắn</button></div></div>` : ''}</div>`;
+  };
+  const open2 = (o) => !['xong', 'tu_choi', 'huy'].includes(o.tt);
+  return `<div class="card"><div class="row" style="margin-bottom:8px;flex-wrap:wrap"><h3>📋 Bảng Order</h3>
+    <span class="seg"><button class="${S.orderTab === 'toi' ? 'on' : ''}" data-a="oTab:toi">📥 Gửi tôi${nT ? ' (' + nT + ')' : ''}</button><button class="${S.orderTab === 'dat' ? 'on' : ''}" data-a="oTab:dat">📤 Tôi đặt${nD ? ' (' + nD + ')' : ''}</button></span>
+    <button class="btn" style="margin-left:auto;background:var(--acc);color:var(--acc-ink);padding:4px 12px" data-a="oForm">＋ Đặt order</button></div>
+    ${S.formOrder ? `<div class="card" style="background:var(--surface2);margin-bottom:10px"><div style="display:grid;gap:8px">
+      <select id="oWho" style="background:#14102b;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px">${Object.keys(P).filter((k) => k !== S.me).map((k) => `<option value="${k}">${P[k].day}</option>`).join('')}</select>
+      <textarea id="oNd" rows="2" placeholder="Nhờ làm việc gì? (ghi rõ để người nhận khỏi phải hỏi lại)" style="background:#14102b;border:1px solid var(--line);border-radius:8px;padding:6px"></textarea>
+      <div class="row"><span class="muted" style="font-size:12px">Order: mọi chiều (lên / ngang / xuống) đều được</span><span style="margin-left:auto" class="row"><button class="btn" data-a="oForm">Thôi</button><button class="btn" style="background:var(--acc);color:var(--acc-ink)" data-a="oGui">Gửi order</button></span></div></div></div>` : ''}
+    ${mo.length ? mo.map(row).join('') : `<div class="muted">${S.orderTab === 'toi' ? 'Chưa có ai nhờ bạn việc gì. ✓' : 'Bạn chưa có order nào đang chờ.'}</div>`}
+    ${dong.length ? `<div class="muted" style="margin-top:8px;font-size:12px">▸ Đã đóng (${dong.length})</div>` : ''}</div>`;
+}
+
+const TILES = [['🗂', 'Việc của tôi', 'Việc cần làm trong tuần', null], ['🛠', 'Vận hành', 'Buổi học · học sinh · bổ trợ', 13], ['🏆', 'Gamification', 'Điểm · thành tích · huy hiệu', 9],
+  ['📚', 'Học thuật', 'Kho kiến thức · soạn tài liệu', 12], ['🎯', 'Quản lý chất lượng', 'Kết quả · duyệt · báo cáo', 7], ['👥', 'Core team', 'Nhân sự · học phí · phân công', 11], ['📊', 'Dashboard', 'Số liệu để ra quyết định', 6]];
+const COLS = { vuong: 3, ngang: 2, cao: 3, tron: 3, gon: 2 };
+function tiles() {
+  return TILES.filter((t) => !hide('nhom:' + t[1])).map(([ic, n, p, c]) => {
+    const d = S.dang;
+    const inner = d === 'ngang' ? `<span class="ic">${ic}</span><span style="flex:1"><b>${n}</b><br><span class="muted" style="font-size:12px">${p}</span></span>${c ? `<span class="pill" style="background:var(--surface2);color:var(--acc)">${c} mục</span>` : ''}`
+      : d === 'gon' ? `<span class="ic">${ic}</span><b style="flex:1;font-size:14px">${n}</b>${c ? `<span class="pill" style="background:var(--surface2);color:var(--acc)">${c}</span>` : ''}`
+      : d === 'tron' ? `<span class="ic" style="font-size:30px">${ic}</span><b style="font-size:13px;line-height:1.15">${n}</b>${c ? `<span style="font-size:11px;color:var(--acc)">${c} mục</span>` : ''}`
+      : `${c ? `<span class="n">${c} mục</span>` : ''}<span class="ic">${ic}</span><b>${n}</b><span class="muted" style="font-size:12px">${p}</span>`;
+    return `<button class="tile ${d}" data-a="tile">${inner}</button>`;
+  }).join('');
+}
+
+function main() {
+  const conOrder = !hide('order');
+  const fav = [['📅', 'Buổi học', 'Vận hành › Vận hành lớp học'], ['📝', 'ET', 'Học thuật › Làm tài liệu'], ['🗺', 'Bản đồ kiến thức (Kho)', 'Học thuật'], ['📘', 'Giáo trình', 'Học thuật › Làm tài liệu']];
+  return `<div class="grid">
+    <div class="colL">
+      ${hide('viec_ngay') ? '' : viecNgayCompact(false)}
+      <div class="hero"><div class="bubble">Mục hay dùng nằm ngay hàng ★ Yêu thích — bấm là vào thẳng.</div>
+        <svg viewBox="0 0 200 260"><ellipse cx="100" cy="248" rx="70" ry="8" fill="#000" opacity=".35"/><path d="M45 245 Q40 150 100 140 Q160 150 155 245Z" fill="#2c2a5a" stroke="#f0b64a" stroke-width="2"/><circle cx="100" cy="95" r="45" fill="#f3d9c0"/><path d="M52 90 Q60 35 100 38 Q145 38 150 92 Q130 60 100 62 Q70 60 52 90Z" fill="#1b1330"/><circle cx="85" cy="100" r="5" fill="#2a1d05"/><circle cx="115" cy="100" r="5" fill="#2a1d05"/><path d="M90 118 Q100 126 110 118" stroke="#8a4b3b" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="100" cy="190" r="14" fill="#f0b64a" opacity=".9"/></svg>
+        <div class="muted" style="font-size:11px">(chỗ nhân vật — giữ nguyên)</div></div>
+    </div>
+    <div class="colR">
+      <div class="head">
+        <div class="greet"><h2><span style="color:var(--acc)">✦</span> Chào ${P[S.me].ten}!</h2><div class="muted" style="font-size:12.5px">Thứ Tư, 14/10</div></div>
+        ${hide('tien_do') ? '' : `<div style="flex:1;min-width:330px;max-width:620px">${tienDo()}</div>`}
+        <div class="row" style="margin-left:auto;position:relative">
+          <button class="card" style="padding:6px 12px;font-size:12.5px;font-weight:700" data-a="tuy">⚙ Tuỳ chỉnh${S.an.length ? ` <span class="muted">(${S.an.length} ẩn)</span>` : ''}</button>
+          <button class="card" style="padding:6px 12px;font-size:12.5px;font-weight:700" data-a="gd">🎨 Giao diện</button>
+          ${S.tuyChinh ? tuyChinh() : ''}
+        </div>
+      </div>
+      ${hide('yeu_thich') ? '' : `<span class="tag">★ Yêu thích</span><div class="favs">${fav.map(([i, n, s]) => `<button class="fav" data-a="tile"><span class="ic">${i}</span><span class="grow"><b style="display:block">${n}</b><span class="muted" style="font-size:12px">${s}</span></span><span style="color:var(--acc)">★</span></button>`).join('')}</div>`}
+      <span class="tag">Tất cả</span>
+      <div class="all">
+        ${conOrder ? `<div style="width:50%;min-width:320px;flex:none">${orderBox()}</div>` : ''}
+        <div class="tiles" style="grid-template-columns:repeat(${conOrder ? COLS[S.dang] : COLS[S.dang] + 1},minmax(0,1fr))">${tiles()}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function tuyChinh() {
+  const boxes = [['viec_ngay', '☑ Việc hôm nay (góc trái)'], ['tien_do', '🚀 Việc phát triển (cạnh lời chào)'], ['yeu_thich', '★ Yêu thích'], ['order', '📋 Bảng Order'], ...TILES.map((t) => ['nhom:' + t[1], t[0] + ' ' + t[1]])];
+  return `<div class="pop" style="right:0;top:44px"><div class="muted" style="font-size:11px;font-weight:800;letter-spacing:.12em;margin-bottom:6px">HIỆN TRÊN TRANG CHÍNH</div>
+    <div style="max-height:260px;overflow:auto">${boxes.map(([id, n]) => `<button class="li" data-a="an:${id}"><span class="chk ${hide(id) ? '' : 'on'}">${hide(id) ? '' : '✓'}</span><span class="${hide(id) ? 'muted' : ''}">${n}</span></button>`).join('')}</div>
+    <div class="muted" style="font-size:11px;font-weight:800;letter-spacing:.12em;margin:10px 0 6px">DÁNG CARD (NHÓM)</div>
+    <div class="row" style="gap:4px">${[['vuong', 'Vuông'], ['ngang', 'Ngang'], ['cao', 'Cao'], ['tron', 'Tròn'], ['gon', 'Gọn']].map(([k, n]) => `<button style="flex:1;border:2px solid ${S.dang === k ? 'var(--acc)' : 'transparent'};border-radius:8px;padding:4px 0;font-size:11px;font-weight:700" data-a="dang:${k}"><div style="margin:0 auto 3px;border:1px solid var(--ink);opacity:.7;border-radius:${k === 'tron' ? 99 : 3}px;width:${k === 'ngang' || k === 'gon' ? 30 : k === 'cao' ? 18 : 24}px;height:${k === 'ngang' ? 18 : k === 'gon' ? 11 : k === 'cao' ? 28 : 22}px"></div>${n}</button>`).join('')}</div>
+    <div class="muted" style="font-size:11px;margin-top:8px">Kéo thả để đổi chỗ các box nhóm (chỉ nửa phải).</div></div>`;
+}
+
+/* ── popup Việc phát triển ── */
+function popupPT() {
+  const cd = capDuoi(S.me);
+  const lọc = S.tasks.filter((t) => (open(t) || t.tt === 'xong') && (S.taskTab === 'team' ? true : S.taskTab === 'toi' ? t.lam === S.me : t.giao === S.me));
+  const grp = {}; lọc.forEach((t) => (grp[t.lam] = grp[t.lam] || []).push(t));
+  const canEval = S.tasks.filter((t) => t.giao === S.me && (denHan(t) || t.tt === 'cho')).length;
+  const line = (t) => {
+    const [tn, tc] = TASKTT[t.tt]; const p = t.tt === 'xong' ? t.ket : t.pct;
+    const toi = t.giao === S.me || P[S.me].admin; const can = toi && (denHan(t) || t.tt === 'cho');
+    const isOpen = S.openTask === t.id;
+    return `<div class="task"><button class="row" style="width:100%;text-align:left" data-a="tOpen:${t.id}">
+      <span class="pill ${tc}">${tn}</span><span class="grow"><span class="t" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${t.ten}</span>
+      <span class="s">${S.taskTab !== 'giao' ? 'Giao bởi ' + P[t.giao].day + ' · ' : ''}<span style="${quaHan(t) ? 'color:#e11d48;font-weight:800' : ''}">hạn ${ddmm(t.han)}${quaHan(t) ? ' (quá hạn)' : denHan(t) && open(t) ? ' (hôm nay)' : ''}</span>${t.gh ? ' · gia hạn ' + t.gh + ' lần' : ''}</span></span>
+      ${can ? '<span class="pill" style="background:#ffe4e6;color:#be123c">Cần đánh giá</span>' : ''}
+      <span class="tbar"><i style="width:${p}%"></i></span><b style="width:38px;text-align:right;font-size:12.5px;color:#475569">${p}%</b></button>
+      ${isOpen ? taskDetail(t) : ''}</div>`;
+  };
+  return `<div class="ov" data-a="close"><div class="modal light" data-stop>
+    <div class="mh"><h3>🚀 Việc phát triển</h3><button class="x" data-a="close">✕</button></div>
+    <div class="tabs"><b style="margin-right:8px;font-size:13px">Task phát triển</b>
+      ${[['team', 'Cả team'], ['toi', 'Của tôi'], ['giao', 'Tôi giao']].map(([k, n]) => `<button class="${S.taskTab === k ? 'on' : ''}" data-a="tTab:${k}">${n}${k === 'giao' && canEval ? ` <span style="background:#f43f5e;color:#fff;border-radius:99px;padding:0 6px;font-size:10px">${canEval}</span>` : ''}</button>`).join('')}
+      ${cd.length ? `<button class="btn pri" style="margin-left:auto;padding:4px 12px;font-size:12px" data-a="gForm">＋ Giao task</button>` : ''}</div>
+    <div class="mb">
+      ${S.formGiao ? formGiao(cd) : ''}
+      ${Object.keys(grp).length ? Object.keys(grp).sort((a, b) => (a === S.me ? -1 : b === S.me ? 1 : 0)).map((k) => `<div class="sec"><h4>${P[k].day}${k === S.me ? ' <span style="color:#4f46e5;font-size:11px">(bạn)</span>' : ''} <span style="font-weight:400;color:#94a3b8">· ${grp[k].length} task</span></h4>${grp[k].map(line).join('')}</div>`).join('')
+        : `<div style="color:#94a3b8">${S.taskTab === 'toi' ? 'Bạn chưa có task nào. ✓' : S.taskTab === 'giao' ? 'Bạn chưa giao task nào.' : 'Chưa có task nào.'}</div>`}
+    </div></div></div>`;
+}
+function formGiao(cd) {
+  return `<div class="sec f" style="border:1px solid #c7d2fe"><b style="font-size:13px">Giao task mới <span style="font-weight:400;color:#94a3b8">— chỉ giao được cho cấp dưới của bạn</span></b>
+    ${cd.length ? `<select id="gWho">${cd.map((k) => `<option value="${k}">${P[k].day}</option>`).join('')}</select>
+    <input id="gTen" placeholder="Tên task (ngắn, làm gì)"><textarea id="gMo" rows="2" placeholder="Kết quả mong muốn (không bắt buộc)"></textarea>
+    <div class="row"><label style="font-size:13px;color:#64748b">Hạn <b style="color:#e11d48">*</b> <input id="gHan" type="date" value="2026-10-21" style="width:auto"></label>
+      <span class="grow"></span><button class="btn gh" data-a="gForm">Thôi</button><button class="btn pri" data-a="gGui">Giao task</button></div>
+    <div class="warn">Thử đổi VAI sang <b>Mai</b>: Mai không có cấp dưới nên không thấy nút “Giao task” — muốn nhờ người ngang cấp hoặc cấp trên phải đặt Order. DB từ chối giao ngang/lên.</div>`
+    : `<div class="warn">Bạn chưa có cấp dưới trong sơ đồ tổ chức — hãy đặt Order.</div>`}</div>`;
+}
+function taskDetail(t) {
+  const laLam = t.lam === S.me, laGiao = t.giao === S.me || P[S.me].admin, mo = open(t);
+  return `<div style="border-top:1px solid #f1f5f9;margin-top:8px;padding-top:8px">
+    ${t.mota ? `<p style="margin:0 0 6px;font-size:13px">${t.mota}</p>` : ''}
+    ${t.log.map(([w, s, at]) => `<div class="log"><span>${at}</span> · <b>${P[w].day}</b> · ${s}</div>`).join('')}
+    ${laLam && mo ? `<div class="row" style="margin:8px 0;gap:6px"><input id="cnNote" placeholder="Cập nhật tiến độ / ghi chú…" style="flex:1;border:1px solid #cbd5e1;border-radius:8px;padding:6px 9px">
+      <input id="cnPct" placeholder="%" style="width:56px;border:1px solid #cbd5e1;border-radius:8px;padding:6px;text-align:center">
+      <button class="btn gh" data-a="cn:${t.id}">Gửi cập nhật</button>${t.tt === 'dang' ? `<button class="btn ok" data-a="baoXong:${t.id}">✓ Báo xong</button>` : ''}</div>` : ''}
+    ${laGiao && mo ? danhGia(t) : ''}</div>`;
+}
+function danhGia(t) {
+  const m = S.evalMode?.[t.id] || (t.tt === 'cho' ? 'duyet' : 'gia_han');
+  const tab = (k, n) => `<button class="btn ${m === k ? 'pri' : 'gh'}" style="padding:3px 12px;font-size:12.5px" data-a="evMode:${t.id}:${k}">${n}</button>`;
+  return `<div class="eval"><b style="font-size:12.5px;color:#3730a3">Đánh giá task${denHan(t) ? ' — đã đến hạn' : ''}</b>
+    <div class="row" style="margin:8px 0;gap:6px">${tab('duyet', '✓ Xong — duyệt')}${tab('gia_han', '⏳ Chưa xong — gia hạn')}${tab('huy', '✕ Huỷ task')}</div>
+    ${m === 'duyet' ? `<div class="f"><label style="font-size:13px">Kết quả task đạt <input id="evPct" value="90" style="width:64px;display:inline;text-align:center"> %</label>
+      <input id="evTxt" type="text" placeholder="Nhận xét (không bắt buộc)"><div><button class="btn ok" data-a="duyet:${t.id}">Duyệt task</button></div></div>`
+      : `<div class="f">${m === 'gia_han' ? `<label style="font-size:13px">Hạn mới <input id="evHan" type="date" value="2026-10-21" style="width:auto;display:inline"></label>` : ''}
+      <input id="evTxt" type="text" placeholder="${m === 'gia_han' ? 'Lý do gia hạn (bắt buộc)' : 'Lý do huỷ (bắt buộc)'}">
+      <label style="font-size:13px"><input type="checkbox" id="evCo"> 🏴 Đánh cờ <b>trễ deadline</b> cho ${P[t.lam].day} <span style="color:#94a3b8">(= 1 gậy — cấp trên quyết, tuỳ lý do)</span></label>
+      <div><button class="btn ${m === 'huy' ? 'no' : 'pri'}" data-a="${m === 'gia_han' ? 'giaHan' : 'huyTask'}:${t.id}">${m === 'gia_han' ? 'Gia hạn' : 'Huỷ task'}</button></div></div>`}</div>`;
+}
+
+function popupNgay() {
+  return `<div class="ov" data-a="close"><div class="modal sm" data-stop><div class="mh"><h3>☑ Việc hôm nay</h3><button class="x" data-a="close">✕</button></div>
+    <div class="mb" style="background:#14102b;color:var(--ink)">${viecNgayCompact(true)}</div></div></div>`;
+}
+function hopThu() {
+  const mine = S.thu.filter((t) => t.to === S.me);
+  return `<div class="inbox"><div class="row" style="padding:10px 12px;border-bottom:1px solid var(--line)"><b>Hòm thư</b><button class="link" style="margin-left:auto" data-a="docHet">Đánh dấu đã đọc hết</button></div>
+    ${mine.length ? mine.map((t) => `<button class="it ${t.un ? 'un' : ''}" data-a="docThu:${t.id}"><span style="font-size:18px">${t.loai}</span><span class="grow"><b style="display:block;font-size:13.5px;${t.un ? '' : 'font-weight:500;color:var(--muted)'}">${t.tieu}</b><span class="muted" style="font-size:12.5px;white-space:pre-line">${t.nd}</span><div class="muted" style="font-size:11px">${t.t}</div></span>${t.un ? '<span class="dot"></span>' : ''}</button>`).join('') : '<div class="muted" style="padding:20px;text-align:center">Hòm thư trống.</div>'}</div>`;
+}
+
+function render() {
+  const un = S.thu.filter((t) => t.to === S.me && t.un).length;
+  document.getElementById('app').innerHTML = `
+    <div class="top"><div class="brand">BKdemy <small>ERP</small></div><div class="addr">🏠 Trang chính ›</div>
+      <div class="persona">Vai:${Object.keys(P).map((k) => `<button class="${S.me === k ? 'on' : ''}" data-a="me:${k}">${P[k].ten}</button>`).join('')}</div>
+      <button class="bell" data-a="inbox">🔔${un ? `<b>${un}</b>` : ''}</button></div>
+    <div class="page">${main()}</div>
+    ${S.inbox ? hopThu() : ''}${S.modal === 'pt' ? popupPT() : ''}${S.modal === 'ngay' ? popupNgay() : ''}
+    ${S.toast ? `<div class="toast">${S.toast}</div>` : ''}`;
+}
+
+/* ═══════ HÀNH ĐỘNG ═══════ */
+const val = (id) => (document.getElementById(id) || {}).value || '';
+document.addEventListener('click', (e) => {
+  const stop = e.target.closest('[data-stop]');
+  const el = e.target.closest('[data-a]');
+  if (!el) { if (S.inbox && !e.target.closest('.inbox')) { S.inbox = false; render() } return; }
+  if (el.classList.contains('ov') && stop) return;   // bấm vùng trống TRONG popup ⇒ không đóng
+  const [a, x, y] = el.dataset.a.split(':');
+  const task = (id) => S.tasks.find((t) => t.id == id);
+  switch (a) {
+    case 'me': S.me = x; S.inbox = false; S.modal = null; S.taskTab = capDuoi(x).length ? 'toi' : 'toi'; break;
+    case 'inbox': S.inbox = !S.inbox; break;
+    case 'docThu': { const t = S.thu.find((z) => z.id == x); if (t) t.un = false; break; }
+    case 'docHet': S.thu.filter((t) => t.to === S.me).forEach((t) => (t.un = false)); break;
+    case 'mo': S.modal = x; S.taskTab = capDuoi(S.me).length ? 'giao' : 'toi'; S.openTask = null; break;
+    case 'close': S.modal = null; S.formGiao = false; break;
+    case 'toViec': S.modal = null; toast('→ mở màn “Việc của tôi”'); return;
+    case 'tile': toast('→ mở màn tương ứng'); return;
+    case 'gd': toast('🎨 Chọn giao diện + hình nền (mặc định / 4 style / ảnh của tôi)'); return;
+    case 'vnTab': S.viecNgayTab = x; break;
+    case 'nhacTick': { const r = S.nhac[S.me][x]; r.x = !r.x; break; }
+    case 'nhacThem': { const v = val('nhacIn').trim(); if (v) S.nhac[S.me].push({ t: v, x: false }); break; }
+    case 'tuy': S.tuyChinh = !S.tuyChinh; break;
+    case 'an': S.an = hide(x + (y ? ':' + y : '')) ? S.an.filter((i) => i !== x + (y ? ':' + y : '')) : [...S.an, x + (y ? ':' + y : '')]; break;
+    case 'dang': S.dang = x; break;
+    case 'oTab': S.orderTab = x; S.openOrder = null; break;
+    case 'oOpen': S.openOrder = S.openOrder == x ? null : +x; break;
+    case 'oForm': S.formOrder = !S.formOrder; break;
+    case 'oGui': { const nd = val('oNd').trim(); if (!nd) return; S.orders.unshift({ id: Date.now(), dat: S.me, nhan: val('oWho'), nd, han: null, tt: 'moi', log: [[S.me, 'moi', '', 'vừa xong']] });
+      S.thu.unshift({ id: Date.now(), loai: '📋', tieu: P[S.me].day + ' đặt order cho bạn', nd, to: val('oWho'), un: true, t: 'vừa xong' }); S.formOrder = false; S.orderTab = 'dat'; toast('Đã gửi order — người nhận thấy trong hòm thư'); return render(); }
+    case 'oSet': { const o = S.orders.find((z) => z.id == x), note = val('oNote').trim(); if (!o) break;
+      const doi = o.tt !== y; if (!doi && !note) break; o.tt = y; o.log.push([S.me, y, note, 'vừa xong']);
+      const other = S.me === o.nhan ? o.dat : o.nhan;
+      S.thu.unshift({ id: Date.now(), loai: '📋', tieu: P[S.me].day + (doi ? ': ' + STT[y].toLowerCase() : ' nhắn về order'), nd: o.nd + (note ? '\n💬 ' + note : ''), to: other, un: true, t: 'vừa xong' });
+      toast('Đã phản hồi — ' + P[other].day + ' nhận thư'); return render(); }
+    case 'tTab': S.taskTab = x; S.openTask = null; break;
+    case 'tOpen': S.openTask = S.openTask == x ? null : +x; break;
+    case 'gForm': S.formGiao = !S.formGiao; break;
+    case 'gGui': { const ten2 = val('gTen').trim(); if (!ten2) return; S.tasks.unshift({ id: Date.now(), ten: ten2, mota: val('gMo'), giao: S.me, lam: val('gWho'), han: val('gHan'), tt: 'dang', pct: 0, gh: 0, log: [[S.me, 'Giao task · hạn ' + ddmm(val('gHan')), 'vừa xong']] });
+      S.thu.unshift({ id: Date.now(), loai: '🚀', tieu: P[S.me].day + ' giao task cho bạn', nd: ten2 + '\nHạn: ' + ddmm(val('gHan')), to: val('gWho'), un: true, t: 'vừa xong' });
+      S.formGiao = false; S.taskTab = 'giao'; toast('Đã giao — ' + P[val('gWho')].day + ' nhận thư'); return render(); }
+    case 'cn': { const t = task(x), n = val('cnNote').trim(), p = parseInt(val('cnPct')); if (!n && isNaN(p)) return; if (!isNaN(p)) t.pct = Math.min(100, p); t.log.push([S.me, 'Cập nhật' + (isNaN(p) ? '' : ' ' + t.pct + '%') + (n ? ' — ' + n : ''), 'vừa xong']); break; }
+    case 'baoXong': { const t = task(x); t.tt = 'cho'; t.log.push([S.me, 'Báo xong', 'vừa xong']);
+      S.thu.unshift({ id: Date.now(), loai: '🚀', tieu: P[S.me].day + ' báo xong task', nd: t.ten, to: t.giao, un: true, t: 'vừa xong' }); toast('Đã báo xong — ' + P[t.giao].day + ' nhận thư'); return render(); }
+    case 'evMode': S.evalMode = S.evalMode || {}; S.evalMode[x] = y; break;
+    case 'duyet': { const t = task(x), p = Math.min(100, parseInt(val('evPct')) || 0); t.tt = 'xong'; t.ket = p; t.log.push([S.me, 'Cấp trên duyệt: ' + p + '%' + (val('evTxt') ? ' — ' + val('evTxt') : ''), 'vừa xong']);
+      S.thu.unshift({ id: Date.now(), loai: '💬', tieu: 'Task của bạn đã được duyệt: ' + p + '%', nd: t.ten, to: t.lam, un: true, t: 'vừa xong' }); toast('Đã duyệt ' + p + '%'); return render(); }
+    case 'giaHan': { const t = task(x), ly = val('evTxt').trim(); if (!ly) { toast('Gia hạn phải ghi lý do'); return } const co = document.getElementById('evCo').checked;
+      t.log.push([S.me, 'Gia hạn ' + ddmm(t.han) + ' → ' + ddmm(val('evHan')) + (co ? ' · 🏴 đánh cờ trễ deadline' : ' · không đánh cờ') + ' — ' + ly, 'vừa xong']);
+      t.han = val('evHan'); t.gh++; t.tt = 'dang';
+      S.thu.unshift({ id: Date.now(), loai: '🚀', tieu: 'Task của bạn được gia hạn đến ' + ddmm(t.han), nd: t.ten + '\n💬 ' + ly + (co ? '\n🏴 Bị đánh cờ trễ deadline' : ''), to: t.lam, un: true, t: 'vừa xong' });
+      if (co) S.thu.unshift({ id: Date.now() + 1, loai: '🏑', tieu: 'Bạn bị ghi 1 gậy', nd: 'Trễ deadline task: ' + ly, to: t.lam, un: true, t: 'vừa xong' });
+      toast(co ? 'Đã gia hạn + đánh cờ (1 gậy)' : 'Đã gia hạn, không đánh cờ'); return render(); }
+    case 'huyTask': { const t = task(x), ly = val('evTxt').trim(); if (!ly) { toast('Huỷ phải ghi lý do'); return } const co = document.getElementById('evCo').checked;
+      t.tt = 'huy'; t.log.push([S.me, 'Huỷ task' + (co ? ' · 🏴 đánh cờ' : '') + ' — ' + ly, 'vừa xong']); S.tasks = S.tasks.filter((z) => z.id !== t.id);
+      S.thu.unshift({ id: Date.now(), loai: '🚀', tieu: 'Task của bạn bị huỷ', nd: t.ten + '\n💬 ' + ly, to: t.lam, un: true, t: 'vừa xong' }); toast('Đã huỷ task'); return render(); }
+  }
+  render();
+});
+render();
+</script>
+</body>
+</html>
