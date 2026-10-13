@@ -32,7 +32,7 @@ bài kho nhập vào, gắn NHÃN mô hình phỏng đoán   gán từng ý → 
 ```
 
 - **P1 không đẻ slot.** "Bài 1.1 … 1.40 để trống" = **không có dòng** `hinh_baitoan` (CLAUDE.md §1.5), chỉ hiện số đếm "mô hình này đã có N bài kho". Bài mô hình chỉ ra đời ở P2 khi "đã đủ logic".
-- **366 bài mô hình đang có** (xây top-down trước) = **nháp lưới**, giữ nguyên, P2 gán vào hoặc sửa; không xoá, không tạo thêm trước P2.
+- **41 mô hình + 366 bài mô hình đang có** (xây top-down trước) **đang LẪN Học và Luyện** (CEO 13/10: K8 26 mô hình đều là Học; K7 nhiều mô hình có câu phần Học trỏ vào). ⇒ **Bước DỌN thủ công của Thùy** (§6 B0.5) trước khi Hình luyện dùng: phân loại từng mô hình `luyen` / `hoc`; cái không thuộc đâu thì xoá thật theo luật xoá. Không tạo thêm bài mô hình trước P2.
 - **Đo ở ý, KP = bài mô hình.** Mọi lần làm bài ghi `hinh_y_id` (hook có sẵn ở `gami_session_problems`/`canh_bao_yeu`). P1 chỉ có lịch sử theo ý; P2 gán xong thì mastery theo bài mô hình **tự có** từ lịch sử cũ (không chấm lại). Giống Q10 bản đồ Đại: lịch sử đi theo câu.
 - **Một ý dùng được ở P1** khi: có câu hỏi + đáp án/lời giải + `da_duyet`. **Không** cần `baitoan_id`. (= "cổng 1" spec v3 nới: cổng vào kho chính P1 là *duyệt*, không phải *gán đủ*.)
 
@@ -59,6 +59,14 @@ alter table hinh_y
   add column anh_de text;                   -- hình RIÊNG của ý; NULL = dùng hình gần nhất phía trước (ý trước có hình → hình bài)
 -- có sẵn, giữ nghĩa: thu_tu · nhan_hien_thi · noi_dung (= CÂU HỎI của ý, nguyên văn) · dap_an · loi_giai · anh_loi_giai
 --                    da_duyet · baitoan_id (NULL = chưa gán, P2) · co_thieu_node/mo_ta_thieu (hàng chờ P2) · ma_y
+```
+
+```sql
+-- hinh_mo_hinh — phân loại để DỌN (B0.5). NULL = Thùy chưa xem.
+alter table hinh_mo_hinh add column phan text check (phan in ('luyen','hoc'));
+-- Hình luyện (màn + fn_hl_*) CHỈ đọc phan='luyen'. Phần Học không đổi gì (câu Học vẫn giữ mo_hinh_id).
+-- Xoá thật một mô hình = RPC fn_hl_xoa_mo_hinh(id): liệt kê trước (bài mô hình · cách giải · biến thể · câu Học/bài kho sẽ mất nhãn)
+-- rồi xoá lá → gốc trong 1 transaction. Chỉ Thùy bấm, từng cái, không xoá hàng loạt.
 ```
 
 Quan hệ ý–ý ở P1: **tuyến tính theo `thu_tu`** (ý sau được dùng kết quả mọi ý trước). Không thêm cột phụ thuộc; P2 phụ thuộc thật đến từ tiền đề của bài mô hình.
@@ -146,6 +154,7 @@ Màn:
 | Bước | Việc | Xong khi |
 |---|---|---|
 | B0 | migration §2 + 3 hàm `fn_hl_*` P1 + comment bảng | `npm run schema` sạch; `fn_hl_chon_y` đúng với bài 3 ý chọn `{b}`, `{a,c}`, `{a,b,c}` |
+| **B0.5** | **Màn "Dọn mô hình" — Thùy làm tay.** Lọc theo khối; mỗi dòng: mã · tên · số bài mô hình · số câu phần Học trỏ vào · số bài kho; 3 nút **Luyện / Học / Xoá** (Xoá hiện danh sách sẽ mất rồi mới xác nhận). Nút "Cả khối → Học" cho ca K8 nhưng vẫn ghi từng dòng | 41 mô hình không còn `phan` NULL; Hình luyện chỉ còn thấy mô hình `luyen` |
 | B1 | brief tách + `nhap_hl_tu_draft.mjs` + mở rộng `gan_hinh.mjs` | nhập thật **1 đề 5 bài** của K7 (mô hình Trực tâm hoặc Hai tiếp tuyến) — 5 `hinh_bai`, ~15 `hinh_y`, hình ý b/c vẽ code đúng dữ kiện, `da_duyet=false` |
 | B2 | màn Kho bài + Duyệt | Thùy duyệt 15 ý trên ERP, sửa 1 ý tại chỗ không reload list |
 | B3 | builder nguồn "Bài kho luyện" | in 1 phiếu chọn ý `{b}` ra đúng đề + bước a |
@@ -173,6 +182,6 @@ Màn:
 | # | Câu hỏi | CTO đề xuất |
 |---|---|---|
 | D1 | Giữ tên bảng `hinh_bai`/`hinh_y`, chỉ đổi tiền tố mã `HLB`/`HLY`? | **Giữ** (0 dòng nhưng code + hook đo đã trỏ vào; đổi tên = churn, không đổi gì về nghĩa) |
-| D2 | 366 bài mô hình + 41 mô hình đã xây top-down: giữ làm nháp lưới hay dọn? | **Giữ nguyên, không tạo thêm trước P2**; P2 gán vào, cái nào không bài kho nào trỏ tới thì xét sau |
-| D3 | Chọn ý: cho chọn **bất kỳ tập** (ý bỏ chọn nở thành bước) hay chỉ **tiền tố** a / a+b / a+b+c? | **Bất kỳ tập** — builder cũ đã có đúng luật này, HS thi thật hay gặp "chỉ hỏi b)" |
+| D2 ✅ | 366 bài mô hình + 41 mô hình đã xây top-down: giữ hay dọn? | **CEO 13/10: đang lẫn Học/Luyện (K8 toàn Học) ⇒ giữ nhưng phải có bước THỦ CÔNG để Thùy loại cái không phù hợp** → B0.5 + cột `phan` |
+| D3 ✅ | Chọn ý: bất kỳ tập hay chỉ tiền tố? | **CEO 13/10: bất kỳ** — ý bỏ chọn nở thành bước |
 | D4 | Ngưỡng mở P2 cho 1 mô hình: bao nhiêu bài kho? | ~**20–30** bài đã duyệt (con số Thùy nói 13/10) — CEO chốt |
