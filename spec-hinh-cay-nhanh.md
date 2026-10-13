@@ -178,8 +178,8 @@ Theo CLAUDE.md §2: nhớ module-level **bộ lọc + cây đã vá + scrollTop 
 
 | # | Việc | Xong khi |
 |---|---|---|
-| **C0** | `scripts/_hl_do_ke_thua.mjs` (đo, chỉ đọc) — bao nhiêu bài đang dựa luật 17/08 | có số; CEO duyệt cách chuyển hoá |
-| **C1** | Migration: 4 cột §1.1 + `unique(mo_hinh_id)` ở `hinh_mo_hinh_cha` + sửa trigger mã (§1.2) + `fn_hl_so_hien_thi` + `fn_hl_sai_nhanh` + `fn_hl_gia_thiet_hieu_luc` | `npm run schema` sạch; test ROLLBACK: chuyển bài giữ mã, số đổi; bài sai nhánh bị báo |
+| **C0** ✅ 14/10 | `scripts/_hl_do_ke_thua.mjs` (đo, chỉ đọc) → `reports/hl-c0-ke-thua-17-08.md`: **120/366 bài** đổi giả thiết, 34 đổi hình khi bỏ luật 17/08 | CEO duyệt cách chuyển hoá (§5) |
+| **C1** ✅ 14/10 (mig `202610140048` ĐÃ ÁP, test 15/15, `scripts/_test_hl_cay_nhanh_c1.mjs`) | Migration: 4 cột §1.1 + `unique(mo_hinh_id)` ở `hinh_mo_hinh_cha` + sửa trigger mã (§1.2) + `fn_hl_so_hien_thi` + `fn_hl_sai_nhanh` + `fn_hl_gia_thiet_hieu_luc` | `npm run schema` sạch; test ROLLBACK: chuyển bài giữ mã, số đổi; bài sai nhánh bị báo |
 | **C2** | RPC §2 (`re_nhanh`, `chuyen_bai`, `doi_thu_tu`, `doi_neo`) + test vòng | test: chuyển vào cây con của chính nó bị từ chối |
 | **C3** | `giaThietBaiToan` / `noDapAn` đọc `fn_hl_gia_thiet_hieu_luc`; builder từ chối bài sai nhánh | in 1 đề có bài sai nhánh ⇒ bị chặn, có lý do |
 | **C4** | Tab ① Chuỗi (thuật toán §4.2) + Tab ② Nhóm + popup, nối RPC thật | mở mô hình thật K7: 0 thẻ chồng, số khớp mockup |
