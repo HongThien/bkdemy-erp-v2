@@ -97,7 +97,7 @@ h1{font-size:19px;margin:0 0 4px}
 
 <div class="crumb">Kho › Hình › Luyện › Họ <b>Tam giác vuông</b> › Mô hình <b>MH.09.012 — Phân giác trong tam giác vuông</b></div>
 <h1>Mô hình Hình: cây bài mọc XUỐNG — thẻ tối giản, bấm vào mới thấy đủ</h1>
-<p class="sub"><b>Thân</b> chạy ngang 1.1 → 1.2 → … chỉ chiếm một hàng. <b>Nhánh rẽ xuống theo cột dọc</b> ngay dưới bài mẹ (1.6 → 1.6.1 → 1.6.2). Nhánh con của một bài trong cột <b>bậc dần sang phải rồi xuống</b> — chỉ hai hướng: xuống · sang phải, không bao giờ vòng sang trái. Chỗ <b>giả thiết thêm</b> là thẻ lục giác màu đặc, khác thẻ bài. <b>Bấm thẻ bài ⇒ popup</b> đề · hình · đáp án.
+<p class="sub"><b>Thân</b> chạy ngang 1.1 → 1.2 → … chỉ chiếm một hàng. Mỗi <b>nhánh là một hàng ngang</b> bắt đầu ngay dưới bài mẹ và chạy <b>sang phải</b> (1.7 → 1.7.1 → 1.7.2 …); nhánh phía sau được ưu tiên hàng sát thân, nhánh phía trước xuống hàng dưới. Chỉ hai hướng: <b>xuống · sang phải</b>. Chỗ <b>giả thiết thêm</b> là thẻ lục giác màu đặc, khác thẻ bài. <b>Bấm thẻ bài ⇒ popup</b> đề · hình · đáp án. Dữ liệu giả, chỉ để bấm thử.</p>
 Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p>
 
 <div class="bar">
@@ -114,10 +114,10 @@ Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p
 
 <div class="rules"><b>Luật xếp chỗ khi rậm</b> (đang chạy trong mockup — thử: gom thêm nhánh, chuyển bài, gập):
 <ol>
- <li><b>Thân chỉ một hàng, không bao giờ bị đẩy.</b> Mọi nhánh mọc xuống từ bài mẹ; thân không giãn ra vì nhánh dưới nó.</li>
- <li><b>Dọc trước.</b> Nhánh của bài ở thân đi thẳng xuống đúng cột của bài mẹ: viên giả thiết thêm ngay dưới, rồi 1.6.1, 1.6.2 … xếp chồng xuống.</li>
- <li><b>Chỉ hai hướng: xuống · sang phải. Không vòng sang trái.</b> Nhánh con của bài nằm trong cột dọc không còn chỗ thẳng dưới (đã có bài kế tiếp) ⇒ nhảy sang <u>phải</u> một cột rồi lại thẳng xuống; dây nối đi xuống → rẽ phải → xuống.</li>
- <li><b>Vướng thì né theo thứ tự:</b> thẳng xuống → sang phải 1 cột → 2 cột → … (hết 5 cột thì lùi xuống thêm một hàng và thử lại). Chạy trong lúc xếp, không ai kéo tay. Ví dụ 1.7 vẫn có cột riêng ngay dưới nó dù 1.6 đã có nhiều nhánh: <i>nhánh nông giữ chỗ trước, nhánh sâu né</i> (xếp theo độ sâu).</li>
+ <li><b>Thân chỉ một hàng, không bao giờ bị đẩy.</b> Mọi nhánh mọc từ bài mẹ xuống; thân không giãn ra vì nhánh dưới nó.</li>
+ <li><b>Ưu tiên 1 — càng ở phía sau càng gần hàng 1.</b> Xếp từ nhánh nằm xa bên phải nhất trước: nó lấy hàng sát thân (hàng 1). Ví dụ 1.7 có hàng 1: <i>⑂ → 1.7.1 → 1.7.2</i>.</li>
+ <li><b>Ưu tiên 2 — nhánh phía trước không đè nhánh phía sau.</b> 1.6 cũng muốn hàng 1 nhưng bị 1.7.1 chắn ⇒ <b>lùi xuống hàng 2</b>, dây xuống thẳng từ 1.6 qua hàng trống. Nhánh con của 1.6.x lại xuống hàng 3, 4… theo cùng luật: bài mẹ nằm càng phải càng được hàng gần.</li>
+ <li><b>Chỉ hai hướng: xuống · sang phải. Không vòng sang trái.</b> Nhánh nào cũng đi từ cột bài mẹ sang phải. Nếu hành lang thẳng xuống bị chặn thì dời cả làn sang phải một cột (dây: xuống → rẽ phải → xuống), thử tối đa 8 cột.</li>
  <li><b>Không cần rẽ lên trên:</b> không gian phía dưới luôn thừa, cây chỉ lớn xuống. (Rẽ lên trên chỉ nên làm khi có đồ thị phẳng khác — không đưa vào P1.)</li>
  <li><b>Gập từng nhánh</b> (bấm thẻ lục giác) ⇒ cột gập thành 1 ô “▸ N bài”, cờ ⚠ vẫn nổi. Mặc định gập nhánh sâu ≥ 3 hoặc &gt; 8 bài; bỏ chỗ trống của nhánh gập cho nhánh khác dùng.</li>
  <li><b>Chọn một bài</b> ⇒ ngoài đường gốc → bài và cây con của nhánh bài thì mờ, không ẩn không dịch chỗ. Dây tiền đề chỉ vẽ cho bài đang chọn và dây sai nhánh (đỏ).</li>
@@ -208,21 +208,26 @@ function drawChain(){
   // thân
   const root=lane('root');root.forEach((b,i)=>{cell[b.id]={c:i,r:0};occ.add(k2(i,0))});
   cell.sub={c:root.length,r:0};occ.add(k2(root.length,0));
-  // các nhánh, theo độ sâu rồi theo vị trí bài mẹ
+  // các nhánh: làn NGANG, bắt đầu ngay dưới bài mẹ, chạy sang phải. Ưu tiên: nhánh ở càng PHÍA SAU càng gần hàng 1;
+  // nhánh phía trước không bao giờ đè nhánh phía sau (nó phải xuống hàng dưới).
   const all=Object.values(S.nhanh).filter(n=>n.id!=='root'&&!anFold(n.id));
   const layout={};
-  all.sort((a,b)=>depth(a.id)-depth(b.id));
   for(let d=1;d<=Math.max(1,...all.map(n=>depth(n.id)));d++){
-    all.filter(n=>depth(n.id)===d).sort((a,b)=>{const p=cell[a.neo],q=cell[b.neo];return p.c-q.c||p.r-q.r}).forEach(n=>{
+    all.filter(n=>depth(n.id)===d).sort((a,b)=>{const p=cell[a.neo],q=cell[b.neo];return q.c-p.c||q.r-p.r}).forEach(n=>{
       const a=cell[n.neo],len=1+(folded.has(n.id)?1:lane(n.id).length);
       let at=null;
-      for(let dy=0;dy<40&&!at;dy++)for(const dc of [0,1,2,3,4,5]){
-        if(free(a.c+dc,a.r+1+dy,len)){at={c:a.c+dc,r:a.r+1+dy};break}
+      const row1=(col,r)=>{for(let i=0;i<len;i++)if(occ.has(k2(col+i,r)))return false;return true};
+      const corr=(col,r)=>{for(let y=a.r+1;y<r;y++)if(occ.has(k2(col,y)))return false;return true};
+      for(let dc=0;dc<=8&&!at;dc++)for(let r=a.r+1;r<a.r+80;r++){
+        if(!corr(a.c+dc,r))break;                       // hành lang xuống bị chặn ⇒ thử cột bên phải
+        if(row1(a.c+dc,r)){at={c:a.c+dc,r};break}
       }
-      take(at.c,at.r,len);layout[n.id]={...at,len};
+      for(let y=a.r+1;y<at.r;y++)occ.add(k2(at.c,y));    // giữ hành lang
+      for(let i=0;i<len;i++)occ.add(k2(at.c+i,at.r));
+      layout[n.id]={...at,len};
       cell['p_'+n.id]={c:at.c,r:at.r};
-      if(!folded.has(n.id))lane(n.id).forEach((b,i)=>cell[b.id]={c:at.c,r:at.r+1+i});
-      else cell['f_'+n.id]={c:at.c,r:at.r+1};
+      if(!folded.has(n.id))lane(n.id).forEach((b,i)=>cell[b.id]={c:at.c+1+i,r:at.r});
+      else cell['f_'+n.id]={c:at.c+1,r:at.r};
     });
   }
   let focusSet=null;
@@ -236,13 +241,13 @@ function drawChain(){
   // dải màu từng làn
   h+=`<div class="lane l0${dim('root')}" style="left:${px(0)-8}px;top:${py(0)-6}px;width:${(root.length+1)*COL-COL+W+16}px;height:${H+12}px"></div>`;
   Object.entries(layout).forEach(([id,L])=>{const n=S.nhanh[id];
-    h+=`<div class="lane l${n.cls}${dim(id)}" style="left:${px(L.c)-8}px;top:${py(L.r)-4}px;width:${W+16}px;height:${(L.len-1)*ROW+PH+H-ROW+16}px"></div>`});
+    h+=`<div class="lane l${n.cls}${dim(id)}" style="left:${px(L.c)-8}px;top:${py(L.r)-5}px;width:${(L.len-1)*COL+W+16}px;height:${H+10}px"></div>`});
   // dây
   let sv=`<svg class="edges" width="${Wd}" height="${Ht}"><defs>
    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#6b7686" stroke-width="1.4"/></marker>
    <marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.6"/></marker>
    <marker id="t" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#378add" stroke-width="1.3"/></marker></defs>`;
-  const box=id=>{const p=cell[id];if(!p)return null;const isP=id.startsWith('p_');return {x:px(p.c),y:py(p.r)+(isP?0:0),w:W,h:isP?PH:H}};
+  const box=id=>{const p=cell[id];if(!p)return null;const isP=id.startsWith('p_');return {x:px(p.c),y:py(p.r)+(isP?(H-PH)/2:0),w:W,h:isP?PH:H}};
   const line=(p,q,col,w,dash,mk,op)=>{
     // đi từ mép gần nhất: ngang nếu cùng hàng, còn lại từ đáy → đỉnh
     let x1,y1,x2,y2;
@@ -272,7 +277,7 @@ function drawChain(){
   sv+='</svg>';h+=sv;
   // thẻ
   Object.entries(layout).forEach(([id,L])=>{const n=S.nhanh[id],fo=folded.has(id);
-    h+=`<div class="gtc k${n.cls}${dim(id)}" data-fold="${id}" style="left:${px(L.c)}px;top:${py(L.r)}px;width:${W}px;height:${PH}px" title="${n.gt} — bấm để ${fo?'mở':'gập'}"><b>${fo?'▸':'▾'} ${n.ten}</b><span>+ giả thiết · rẽ từ ${stt(byId(n.neo))}</span></div>`;
+    h+=`<div class="gtc k${n.cls}${dim(id)}" data-fold="${id}" style="left:${px(L.c)}px;top:${py(L.r)+(H-PH)/2}px;width:${W}px;height:${PH}px" title="${n.gt} — bấm để ${fo?'mở':'gập'}"><b>${fo?'▸':'▾'} ${n.ten}</b><span>+ giả thiết · rẽ từ ${stt(byId(n.neo))}</span></div>`;
     if(fo){const c=tongBai(id),w=coSai(id);
       h+=`<div class="nd fold${dim(id)}" data-fold="${id}" style="left:${px(cell['f_'+id].c)}px;top:${py(cell['f_'+id].r)}px;width:${W}px;height:${H}px">▸ <b>${c} bài</b> đang gập ${w?'<span class="warnchip">⚠</span>':''}</div>`}
   });

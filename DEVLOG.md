@@ -37439,3 +37439,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 14/10 (chiều, tiếp) — Mockup: CHỈ 2 hướng đi nhánh — xuống và sang phải, cấm vòng sang trái
 - **Thùy:** "ko được vòng sang trái — chỉ có 2 chiều để đi nhánh là xuống dưới và sang phải."
 - **Sửa:** bỏ ứng viên cột −1/−2; thứ tự né = thẳng xuống → sang phải 1…5 cột → lùi xuống thêm hàng. Dây nối nhánh đổi thành đường vuông góc **xuống → rẽ phải → xuống** (qua khe giữa hai hàng, không cắt thẻ). Đo: 1.6.1.1 nhảy +2 cột sang phải (cột 1.7.x đã kín), 3 nhánh còn lại thẳng xuống; 0 thẻ chồng.
+
+## 14/10 (chiều, tiếp 2) — Mockup: nhánh = HÀNG NGANG, ưu tiên theo vị trí (càng sau càng gần hàng 1, trước không đè sau)
+- **Thùy:** "1.7.2 ở bên trái 1.7.1 [hiểu là bên phải — chuỗi chạy sang phải, hỏi lại nếu đúng là trái]; 1.6.1 lùi xuống 1 hàng thành hàng ngang dưới 1.7.1; 1.6.2.1 dưới 1 hàng nữa. Mày không có ưu tiên à — (1) chuỗi càng ở phía sau càng ưu tiên hàng 1, (2) chuỗi phía trước không đè lên chuỗi phía sau."
+- **Sửa:** bỏ cột dọc. Nhánh = một HÀNG ngang bắt đầu ngay dưới bài mẹ (thẻ lục giác ở cột bài mẹ, bài chạy sang phải). Xếp theo độ sâu, trong cùng độ sâu **từ bài mẹ xa bên phải nhất trước** ⇒ lấy hàng nhỏ nhất còn trống (hàng 1); nhánh phía trước vướng thì LÙI XUỐNG hàng dưới, dây đi thẳng xuống qua ô trống (hành lang được giữ chỗ). Hành lang bị chặn mới dời sang phải 1…8 cột.
+- **Đo trên mẫu:** 1.7: hàng 1 (⑂, 1.7.1, 1.7.2) · 1.6: hàng 2 (⑂, 1.6.1, 1.6.2) ngay dưới 1.7.1 · 1.6.2.x hàng 3 · 1.6.1.x hàng 4 · 0 thẻ chồng.
