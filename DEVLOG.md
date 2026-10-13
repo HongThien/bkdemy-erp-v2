@@ -37100,6 +37100,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sau gộp:** thêm khoá lời `goiYCau` (formal "chọn đáp án đúng" · game "chọn đúng để tung phép" · Lo-fi "chọn đúng để gỡ một nút") thay câu gõ cứng ở `LamBai` (khung đấu) + `XemDau`; `npm run schema` bằng `claude_ro` (tạo `.env` tạm chỉ 1 dòng `DATABASE_URL_RO`, chạy xong xoá) — diff: cột `skin` thêm `lofi` + dòng đầu "điểm mù" đổi theo role (bản trên main sinh bằng `claude_build`: 17 bảng · `claude_ro`: 1 bảng `thong_bao_ph`).
 - **Kiểm:** `tsc` (chỉ còn lỗi có sẵn `pdfRender.ts`) · `check:style-hs` ✔ (81 file) · `build:hs` ✔ · soi bản dev sau gộp: màn chính Lo-fi chạy, khung đấu Lo-fi hiện "gỡ một nút", Khối vẫn "tung phép".
 
+## 13/10 — [Kho · Bổ trợ] Câu ghi "[hình…]" mà chưa đính hình ⇒ không đưa vào bài (mig 202610131130 ĐÃ ÁP)
+- **Thùy 13/10:** "OK. bỏ các câu này đi" (trả lời đề nghị 12/10: chặn bổ trợ chọn 31 câu kho chuẩn thiếu hình). Hiểu = KHÔNG CHỌN, không xoá câu khỏi kho.
+- **Làm:** luật chung `_kho_dk_du_hinh_sql()` = đề có "[hình" mà anh_de trống thì loại; gắn vào điều kiện duy nhất `_kho_dk_mcq_sql` (bổ trợ yếu/bù/đuổi, tự luyện, phiêu lưu, đấu… cùng đọc) + nhánh trả lời ngắn (gom 3 chỗ chép tay về `_kho_dk_tln_sql()`: _btyeu_chon_cau · tu_luyen_chu_de_sinh · fn_hs_bu_dang) + `_htd_chon_cau_bat_ky` (phiếu giấy đuổi).
+- **Đo trước/sau:** MCQ Đại 15.115 → 15.102 · Hình GT 793 → 791 · Hình học 467 → 459 (số dạng có câu không đổi: 443 · 31 · 11); KHTN không đổi. 9 dạng có câu thiếu hình: chọn thử 40 lần/dạng ⇒ 0 câu lọt, không dạng nào hết câu.
+- **Không đụng:** câu trong kho (đính hình xong tự quay lại); bài đã sinh trước đó.
+
+## 13/10 — [Bổ trợ · ERP] Tab Dashboard: tiến độ thực hiện theo tuần (mig 202610131134 + 202610131136 ĐÃ ÁP)
+- **Thùy:** "Trong tab bổ trợ muốn có 1 tab dạng Dashboard: thể hiện cycle thực hiện theo từng tuần. Ví dụ tuần 30 chốt 50 ca bổ trợ yếu, thực tế mới đang chạy được 23/50 — để người quản trị nắm được tình hình cụ thể. Hiện 3 tuần gần nhất."
+- **Cách đếm (t tự chốt theo dữ liệu, chờ Thùy xác nhận):** đơn vị = 1 lượt HS trong 1 ca (buoi_hoc_hs) của buổi yếu · bù · đuổi có NGÀY trong tuần (T2→CN). **Chốt** = mọi lượt đã xếp, kể cả ca sau đó vắng / tự huỷ vì không diễn ra (yếu qua ngày không điểm danh là hệ tự đổi sang 'huy' ⇒ nếu chỉ đếm buổi còn mở thì mẫu số tự co lại, tỉ lệ đẹp giả). **Không tính** ca "OPS gỡ ở Lịch phòng" (đổi lịch) — ghi riêng. **Đã chạy** = em có mặt (Hoàn tất + Đang dở). Còn lại: Vắng · Không diễn ra · Quá ngày chưa điểm danh · Chưa tới. HS test không tính.
+- **Làm:** `fn_bo_tro_dashboard_tuan(p_den, p_so_tuan)` — phân loại + đếm + tổng ở DB (§2.0), trả kèm danh sách từng lượt. Màn `BoTroDashboardScreen` (tab đầu của hub Bổ trợ): mỗi tuần 1 thẻ, 3 dòng Yếu · Bù · Đuổi "đã chạy / chốt" + thanh tiến độ + ô trạng thái (bấm ô = danh sách HS · lớp · ngày giờ · người dạy · lý do); ◀ ▶ lùi/tới từng tuần, nhớ chỗ khi rời màn.
+- **Số đo 13/10 (đối chiếu đếm thẳng từ bảng — khớp):** Tuần 16 (12–18/10, đang chạy) Yếu 1/22 · Bù 0/12 · Đuổi 3/13 — Tuần 15 Yếu 26/34 · Bù 14/16 · Đuổi 7/9 — Tuần 14 Yếu 27/37 · Bù 44/54 · Đuổi 19/21.
+- **Kiểm trên ERP chạy máy (đăng nhập Admin dev):** 3 thẻ tuần hiện đúng số trên; bấm ô "Không diễn ra 2" ra bảng 2 em; ◀ Tuần trước ⇒ Tuần 15·14·13, "Tuần này" quay lại; RPC trả 200.
+- **Chưa làm:** không có "mục tiêu tuần" đặt tay (chốt = số ca đã xếp); chưa tách theo trợ giảng / theo môn.
+
 ## 13/10 (tiếp) — PR Lo-fi đã gộp, đẩy nhánh thử · kiểm hàng bổ sung "Đáng yêu" 20/20
 - **Lo-fi:** không mở được PR bằng máy (không có `gh`, trình duyệt trong app chưa đăng nhập GitHub) ⇒ gửi Thùy link điền sẵn; Thùy mở PR #38 và bấm Merge (`567f6291`). Thùy: "deploy thử lên bản preview" ⇒ đẩy `thu-nghiem` fast-forward lên `main` (11 commit, không ép); `vercel.json` tắt tự deploy + máy không đăng nhập Vercel ⇒ bước Create Deployment (nhánh `thu-nghiem`) là của Thùy. Chưa có kết quả thử trên máy thật.
 - **Đáng yêu:** Thùy thả 20 hình bổ sung ⇒ soi bằng mắt + đo: NB01–NB20 đều đạt (chi tiết ở đầu `design/DON-HANG-STYLE-NHO-XINH.md`); chuyển vào `BK_V2/design/bk-ui-src/nho-xinh/` (NB01 hình mới, 19 bản `_v2`), nối sổ. Bộ hình đủ 150/150.
