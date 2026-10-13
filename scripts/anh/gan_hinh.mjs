@@ -1,6 +1,6 @@
 // gan_hinh.mjs — LUỒNG GẮN HÌNH ĐỀ: thư mục ảnh đặt tên theo mã câu → upload bucket 'kho-anh' → UPDATE anh_de.
 //
-//   node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe]
+//   node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe|mohinh|cachgiai]
 //
 // Tên file:  <ma_cau>[+<ma_cau2>…][_ghi_chu].png|jpg|jpeg      vd  HHC001914_2A.png  ·  HHC001924+HHC001935_11.png (2 câu dùng chung 1 hình)
 //            đuôi _lg = chỉ gắn hình lời giải (anh_dap_an) · đuôi _de = chỉ gắn hình đề (anh_de) · không đuôi = gắn cả hai
@@ -10,6 +10,8 @@
 //     --bang baitoan   tên tệp = <ma bài toán>.png     (BT.07.045.01.png)  → hinh_baitoan.anh_chuan
 //     --bang bienthe   tên tệp = <id biến thể>.png     (uuid)              → hinh_baitoan_bien_the.anh
 //                      tên tệp = <id biến thể>_lg.png                      → hinh_baitoan_bien_the.anh_loi_giai
+//     --bang mohinh    tên tệp = <ma mô hình>.png          (MH.045.png)        → hinh_mo_hinh.anh_cau_hinh   (khoá ma)
+//     --bang cachgiai  tên tệp = <id cách giải>.png        (uuid)              → hinh_cach_giai.anh_loi_giai (khoá id)
 //   Chỉ ghi ĐÚNG cột khai cho kiểu đó (không tự điền thêm cột ảnh khác), bump updated_at như app. Tên tệp không khớp mẫu khoá ⇒ dừng, không làm gì.
 // Không có --ghi: CHẠY THỬ — kiểm từng mã (có/không, đã có hình chưa), không upload, không UPDATE.
 // Có --ghi: upload (1 lần/file) rồi UPDATE anh_de VÀ anh_dap_an (cùng 1 hình: hiện ở đề và ở lời giải — Thùy 07/10) của mọi câu
@@ -28,6 +30,8 @@ const HOC = { khoa: 'ma_cau', song: ' and xoa_at is null', cot: { chung: ['anh_d
 const LUYEN = {
   baitoan: { bang: 'hinh_baitoan', khoa: 'ma', mau: /^BT\.\d+\.\d+\.\d+$/, song: '', cot: { chung: ['anh_chuan'] }, bump: ', updated_at = now()' },
   bienthe: { bang: 'hinh_baitoan_bien_the', khoa: 'id', mau: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/, song: '', cot: { chung: ['anh'], lg: ['anh_loi_giai'] }, bump: ', updated_at = now()' },
+  mohinh: { bang: 'hinh_mo_hinh', khoa: 'ma', mau: /^MH\.\d+$/, song: '', cot: { chung: ['anh_cau_hinh'] }, bump: ', updated_at = now()' },
+  cachgiai: { bang: 'hinh_cach_giai', khoa: 'id', mau: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/, song: '', cot: { chung: ['anh_loi_giai'] }, bump: ', updated_at = now()' },
 }
 const KIEU = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' }
 
@@ -36,7 +40,7 @@ const iBang = argv.indexOf('--bang'), TEN_BANG = iBang >= 0 ? argv[iBang + 1] : 
 const dir = argv.find((a, i) => !a.startsWith('--') && !(iBang >= 0 && i === iBang + 1))
 const GHI = argv.includes('--ghi'), THAY = argv.includes('--thay')
 if (iBang >= 0 && !LUYEN[TEN_BANG]) { console.error(`--bang chỉ nhận: ${Object.keys(LUYEN).join(' | ')}`); process.exit(2) }
-if (!dir || !existsSync(dir)) { console.error('Dùng: node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe]'); process.exit(2) }
+if (!dir || !existsSync(dir)) { console.error('Dùng: node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe|mohinh|cachgiai]'); process.exit(2) }
 // cach(mã) → cách gắn của mã đó; null = mã không hợp lệ với bảng đang gắn
 const cach = TEN_BANG
   ? (m) => (LUYEN[TEN_BANG].mau.test(m) ? LUYEN[TEN_BANG] : null)

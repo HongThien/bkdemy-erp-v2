@@ -43,6 +43,19 @@ Phần Luyện của kho Hình xếp theo **mô hình** (một cấu hình hình
 6. **Biến thể (`BV-…`):** vẽ theo ĐỀ CỦA BIẾN THỂ (tên điểm, số đo của biến thể), không theo bài gốc. Ảnh cũ của biến thể đôi khi chính là ảnh bài gốc (viec.md có dòng ⚠) nên tên điểm/số trên ảnh cũ có thể không khớp — theo đề, ghi báo cáo. Tên tệp ra của biến thể là một chuỗi uuid dài: **chép nguyên từ `viec.md`**, đừng gõ lại.
 7. **"Cho hình vẽ" mà số đo chỉ có trên ảnh:** ảnh cũ là nguồn duy nhất của các số đo/nhãn đó ⇒ đọc kỹ ảnh, giữ đủ từng số, từng nhãn, từng ký hiệu (góc đánh số 1-2-3, ô vuông góc, dấu song song).
 
+## 3c. Gói `MH-n` (hình CẤU HÌNH của mô hình) và `CG-n` (hình LỜI GIẢI của cách giải) — đọc thêm khi nhận gói tên như vậy
+
+Hai kiểu hình còn lại của phần Luyện. Mọi luật mục 3 + 3b vẫn áp; thêm:
+
+**Gói `MH-n`** (cột `hinh_mo_hinh.anh_cau_hinh`, tên tệp ra = mã mô hình, vd `MH.045`):
+1. **Đề = "Giả thiết đầy đủ của mô hình"** trong `viec.md` (đã leo cây mô hình). Không có "câu hỏi". Hình này hiện ở trang của mô hình, và là hình mà các **bài toán không có ảnh riêng đang MƯỢN** (mục "Các bài toán đang MƯỢN hình này": hình không được mâu thuẫn với đề các bài đó — vd mô hình có điểm D, bài mượn nhắc điểm E thì ảnh cũ phải có E mới được vẽ E).
+2. **Dùng CHUNG bộ điểm gốc với hình bài toán đã vẽ lại của CÙNG mô hình.** `viec.md` liệt kê các tệp `scripts/anh/ve_lai/BT-<MH>-*.mjs` đã vẽ: mở ra, chép hàm dựng chung (cùng tam giác/tứ giác, cùng tỉ lệ, cùng hướng, cùng cách đặt nhãn) sang tệp gói của bạn. Hình cấu hình của mô hình = hình ảnh cũ có gì vẽ nấy; đừng thêm điểm của bài toán nào không có trên ảnh cũ.
+3. **Ảnh cũ có gì giữ nấy** (đường phụ, điểm của bài sau, nét đứt, cung/gạch bằng nhau, số đo ghi sẵn) — chỉ dựng lại cho đúng đề của mô hình; chỉ THÊM điểm khi giả thiết mô hình nêu tên mà ảnh thiếu, và ô vuông góc cho góc vuông giả thiết cho sẵn. Mọi thứ thêm hoặc khác ảnh cũ ghi vào báo cáo.
+4. **Mô hình là hình TỔNG QUÁT** (tam giác thường, tứ giác thường…): không vẽ đặc biệt thêm; mô hình đặc biệt (cân, vuông, bình hành, thang cân) thì dựng đúng loại đó, không hơn. Số đo/độ dài ghi sẵn trên ảnh cũ thì giữ.
+5. Một mô hình có hai tên điểm đề với ảnh vênh ⇒ theo đề, ghi báo cáo; không phân xử được ⇒ KHÔNG vẽ hình đó, báo cáo.
+
+**Gói `CG-n`** (cột `hinh_cach_giai.anh_loi_giai`, tên tệp ra = uuid của cách giải): vẽ theo ĐỀ của bài toán + hướng của lời giải cách đó. Hình lời giải = hình đề + đường phụ/điểm phụ mà ảnh cũ có (luật "ảnh cũ có gì giữ nấy"). Dùng chung bộ điểm gốc với hình đề đã vẽ lại. Ảnh cũ là ảnh chụp bài giải viết tay (không phải hình hình học) ⇒ KHÔNG vẽ, báo cáo.
+
 ## 4. Báo cáo cuối (ngắn, đúng sự thật)
 
 Một bảng, mỗi hình một dòng: `tên tệp` · **đạt** / **khác ảnh cũ có chủ ý** (nói rõ khác gì, vì sao) / **không vẽ** (vì sao). Sau bảng: mọi chỗ bạn nghi **đề hoặc lời giải trong kho sai** (mã câu + sai gì) — chỉ báo, không sửa. Đừng viết "đã kiểm tra kỹ" — người soát sẽ mở bảng đối chiếu ra xem từng hình.

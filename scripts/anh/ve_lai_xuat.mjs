@@ -2,6 +2,7 @@
 //
 //   node scripts/anh/ve_lai_xuat.mjs --khoi 7 [--bai HH00023,HH00024] [--moi-goi 8] [--ra <thu_muc>]        phần HỌC (hinh_hoc_cau_hoi)
 //   node scripts/anh/ve_lai_xuat.mjs --bang baitoan|bienthe [--khoi 7] [--mo-hinh MH.045,MH.046] [--moi-goi 8]  phần LUYỆN (xem dưới)
+//   node scripts/anh/ve_lai_xuat.mjs --bang mohinh|cachgiai [--khoi 7] [--mo-hinh MH.045,MH.046] [--moi-goi 8]  phần LUYỆN: hình cấu hình của mô hình / hình lời giải của cách giải
 //
 // CHỈ ĐỌC DB. Với mỗi bài (hinh_hoc_bai) có câu mang ảnh CŨ (URL không nằm trong kho-anh/hinh_hoc/ = chưa vẽ bằng code):
 //   <ra>/<ma_bai>-<n>/viec.md      đề + đáp án + lời giải của từng hình phải vẽ, kèm tên tệp ra
@@ -14,6 +15,10 @@
 //   baitoan  hinh_baitoan.anh_chuan             tên tệp = <ma bài toán>          vd BT.07.045.01.png
 //   bienthe  hinh_baitoan_bien_the.anh          tên tệp = <id biến thể (uuid)>   mỗi DÒNG một hình (đề biến thể khác số / khác tên điểm)
 //            hinh_baitoan_bien_the.anh_loi_giai tên tệp = <id>_lg
+//   mohinh   hinh_mo_hinh.anh_cau_hinh          tên tệp = <ma mô hình>           vd MH.045.png (cột khoá ma) — gói MH-1, MH-2… xếp theo mã
+//            đề = giả thiết ĐẦY ĐỦ của mô hình (giaThietDayDu: leo cây mô hình, gt_thay_the) + các bài toán đang MƯỢN hình này + các tệp
+//            scripts/anh/ve_lai/BT-<MH>-*.mjs đã vẽ lại hình bài toán của mô hình (để dùng CHUNG bộ điểm gốc)
+//   cachgiai hinh_cach_giai.anh_loi_giai        tên tệp = <id cách giải (uuid)>  đề của bài toán + lời giải của cách đó — gói CG-1, CG-2…
 //   Đề đầy đủ của bài toán KHÔNG nằm ở một cột: ghép như app (src/lib/kho/hinh.ts → giaThietBaiToan) = giả thiết của bài CHA (tiền đề của
 //   cách giải mặc định, đệ quy) hoặc của mô hình (leo cây mô hình, gt_thay_the) + gia_thiet_rieng; rồi tới phat_bieu.
 import fs from 'node:fs'
@@ -26,8 +31,8 @@ const opt = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] :
 const KHOI = opt('--khoi'), BAI = opt('--bai')?.split(','), MOI_GOI = +opt('--moi-goi', 8)
 const BANG = opt('--bang'), MO_HINH = opt('--mo-hinh')?.split(',')
 const RA = opt('--ra', 'C:/Users/WBPC/bk-kho-lam-viec/ve-lai-hinh')
-if (BANG && !['baitoan', 'bienthe'].includes(BANG)) { console.error('--bang chỉ nhận: baitoan | bienthe'); process.exit(2) }
-if (!BANG && !KHOI && !BAI) { console.error('Dùng: node scripts/anh/ve_lai_xuat.mjs --khoi 7 | --bai HH00023,HH00024 | --bang baitoan|bienthe [--khoi 7] [--mo-hinh MH.045]  [--moi-goi 8] [--ra <thu_muc>]'); process.exit(2) }
+if (BANG && !['baitoan', 'bienthe', 'mohinh', 'cachgiai'].includes(BANG)) { console.error('--bang chỉ nhận: baitoan | bienthe | mohinh | cachgiai'); process.exit(2) }
+if (!BANG && !KHOI && !BAI) { console.error('Dùng: node scripts/anh/ve_lai_xuat.mjs --khoi 7 | --bai HH00023,HH00024 | --bang baitoan|bienthe|mohinh|cachgiai [--khoi 7] [--mo-hinh MH.045]  [--moi-goi 8] [--ra <thu_muc>]'); process.exit(2) }
 
 const env = Object.fromEntries(fs.readFileSync('.env', 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#'))
   .map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
@@ -82,10 +87,10 @@ async function nhomHoc() {
 // ───────── Phần LUYỆN: hinh_baitoan / hinh_baitoan_bien_the ─────────
 async function nhomLuyen() {
   const q = async (s) => (await db.query(s)).rows
-  const moHinh = await q(`select id, ma, ten, khoi, gia_thiet, gia_thiet_them, gt_thay_the, anh_cau_hinh from hinh_mo_hinh`)
+  const moHinh = await q(`select id, ma, ten, khoi, cap_mo_hinh, gia_thiet, gia_thiet_them, gt_thay_the, anh_cau_hinh from hinh_mo_hinh`)
   const canh = await q(`select c.mo_hinh_id, c.cha_id from hinh_mo_hinh_cha c join hinh_mo_hinh m on m.id = c.cha_id order by m.ma`)
   const baiToan = await q(`select id, ma, phat_bieu, mo_hinh_id, cap, de_bai_chuan, anh_chuan, gia_thiet_phu, gia_thiet_rieng, gt_thay_the from hinh_baitoan`)
-  const cach = await q(`select id, baitoan_id, la_mac_dinh, thu_tu, loi_giai, giai_method, da_duyet from hinh_cach_giai`)
+  const cach = await q(`select id, baitoan_id, ten, la_mac_dinh, thu_tu, loi_giai, anh_loi_giai, giai_method, da_duyet from hinh_cach_giai`)
   const tienDe = await q(`select cach_id, tien_de_id from hinh_cach_tien_de`)
   const bienThe = await q(`select id, baitoan_id, kieu, de_bai, anh, loi_giai, anh_loi_giai, da_duyet, created_at from hinh_baitoan_bien_the order by created_at, id`)
   const mh = new Map(moHinh.map((m) => [m.id, m])), bt = new Map(baiToan.map((b) => [b.id, b]))
@@ -141,7 +146,50 @@ async function nhomLuyen() {
     return nhom.get(m.ma).hinh
   }
   const theoMa = (a, b) => a.ma.localeCompare(b.ma)
-  if (BANG === 'baitoan') {
+  // mohinh / cachgiai: MỘT nhóm chung (gói MH-1…, CG-1…) — mỗi hình tự nêu mô hình của nó; xếp theo mã nên các mô hình kề nhau cùng gói
+  const nhomChung = (ma, tieu_de) => { if (!nhom.has(ma)) nhom.set(ma, { ma, tieu_de, them: { bang: BANG, khoi: KHOI ?? null }, hinh: [] }); return nhom.get(ma).hinh }
+  // các tệp đã vẽ lại ở phần Luyện (BT-/BV-…): trạm dùng CHUNG bộ điểm gốc của chúng
+  const TEP_DIR = 'scripts/anh/ve_lai'
+  const tepVe = fs.existsSync(TEP_DIR) ? fs.readdirSync(TEP_DIR).filter((f) => /^B[TV]-MH\d+-\d+\.mjs$/.test(f)).sort() : []
+  const noiDungTep = new Map(tepVe.map((f) => [f, fs.readFileSync(path.join(TEP_DIR, f), 'utf8')]))
+  const tepCua = (m) => tepVe.filter((f) => f.startsWith(`BT-${m.ma.replace('.', '')}-`) || f.startsWith(`BV-${m.ma.replace('.', '')}-`))
+  const maTrongTep = (f) => [...new Set(noiDungTep.get(f).match(/BT\.\d+\.\d+\.\d+/g) ?? [])].sort()
+  const dsTep = (ds) => ds.map((f) => `- \`${TEP_DIR}/${f}\`${f.startsWith('BT-') ? ` — đã vẽ: ${maTrongTep(f).join(', ') || '(không thấy mã BT)'}` : ' — hình biến thể'}`).join('\n')
+  if (BANG === 'mohinh') {
+    const ds = nhomChung('MH', `Hình CẤU HÌNH của mô hình (Luyện · hinh_mo_hinh.anh_cau_hinh${KHOI ? ` · khối ${KHOI}` : ''})`)
+    for (const m of moHinh.filter((m) => laCu(m.anh_cau_hinh) && chon(m)).sort(theoMa)) {
+      let md = `\n### ${m.ma} ${m.ten.trim()} · Hình ${m.khoi} · cấp mô hình ${m.cap_mo_hinh ?? '?'}\n\n**Giả thiết đầy đủ của mô hình** (leo cây mô hình; \`gt_thay_the\` cắt nhánh trên):\n\n${gtMoHinh(m.id) || '*(trống)*'}\n`
+      const cha = duongToTien(m.id).slice(0, -1).map((x) => mh.get(x)).filter(Boolean)
+      if (cha.length) md += `\n- Tổ tiên (xa → gần): ${cha.map((c) => `${c.ma} ${c.ten.trim()}`).join(' → ')}\n`
+      // bài toán KHÔNG có ảnh riêng đang MƯỢN hình cấu hình này (luật kế thừa của app) ⇒ hình mới không được mâu thuẫn với đề các bài đó
+      const muon = baiToan.filter((x) => !x.anh_chuan && anhBaiToan(x.id) === m.anh_cau_hinh).sort(theoMa)
+      md += muon.length
+        ? `\n**Các bài toán đang MƯỢN hình này** (${muon.length} bài; hình không được mâu thuẫn với đề của các bài này, và CHỈ vẽ những gì ảnh cũ có):\n\n${muon.map((x) => `- \`${x.ma}\` (cấp ${x.cap}): ${motDong(deDayDu(x))}`).join('\n')}\n`
+        : `\n*(Không bài toán nào đang mượn hình này — hình cấu hình chỉ hiện ở mô hình.)*\n`
+      const tep = tepCua(m)
+      md += tep.length
+        ? `\n**Hình bài toán của mô hình ĐÃ vẽ lại bằng code** — mở các tệp này, dùng CHUNG bộ điểm gốc (cùng tam giác/tứ giác, cùng tỉ lệ, cùng hướng; chép hàm dựng chung sang tệp gói của bạn):\n\n${dsTep(tep)}\n`
+        : `\n*(Mô hình này chưa có hình bài toán vẽ lại bằng code — tự dựng bộ điểm gốc theo giả thiết và ảnh cũ.)*\n`
+      ds.push({ ten: m.ma, kieu: 'chung', nhan_kieu: 'hình CẤU HÌNH của mô hình (cột anh_cau_hinh)', url: m.anh_cau_hinh,
+        cau: [{ ma_cau: m.ma, id: m.id, noi_dung: gtMoHinh(m.id), muon: muon.map((x) => x.ma), tep_da_ve: tep }], md })
+    }
+  } else if (BANG === 'cachgiai') {
+    const ds = nhomChung('CG', `Hình LỜI GIẢI của cách giải (Luyện · hinh_cach_giai.anh_loi_giai${KHOI ? ` · khối ${KHOI}` : ''})`)
+    const theoBai = (a, b) => (bt.get(a.baitoan_id)?.ma ?? '').localeCompare(bt.get(b.baitoan_id)?.ma ?? '') || a.thu_tu - b.thu_tu
+    for (const c of cach.filter((c) => laCu(c.anh_loi_giai) && chon(mh.get(bt.get(c.baitoan_id)?.mo_hinh_id))).sort(theoBai)) {
+      const b = bt.get(c.baitoan_id), m = mh.get(b.mo_hinh_id)
+      let md = `\n### Cách giải của ${b.ma} · ${c.ten ?? '(không tên)'}${c.la_mac_dinh ? ' · mặc định' : ''}${c.da_duyet ? ' · đã duyệt' : ''} · mô hình ${m.ma} ${m.ten.trim()}\n${mdBaiToan(b)}`
+      md += `\n**Lời giải của CÁCH NÀY** (cột \`loi_giai\`; hình lời giải vẽ theo cách này — có thể thêm đường phụ, điểm phụ mà lời giải dùng, như ảnh cũ):\n\n${c.loi_giai ?? '*(trống)*'}\n`
+      const anh = anhBaiToan(b.id)
+      if (anh) md += `\n- Hình ĐỀ hiện hành của bài toán: ${anh}${laCu(anh) ? ' (CÒN LÀ ẢNH CŨ)' : ' (đã vẽ bằng code)'}\n`
+      const tep = tepVe.filter((f) => noiDungTep.get(f).includes(`'${b.ma}'`))
+      md += tep.length
+        ? `\n**Hình đề của bài này ĐÃ vẽ lại bằng code** — hình lời giải phải dùng CHUNG bộ điểm gốc với hình đề, rồi thêm đường phụ/điểm phụ:\n\n${dsTep(tep)}\n`
+        : `\n*(Hình đề của bài này chưa vẽ lại bằng tệp BT-/BV- nào — dựng bộ điểm gốc theo đề; bài toán mượn hình mô hình thì xem tệp BT-${m.ma.replace('.', '')}-*.mjs nếu có.)*\n`
+      ds.push({ ten: c.id, kieu: 'lg', nhan_kieu: 'hình LỜI GIẢI của cách giải (cột anh_loi_giai; có thể có đường phụ, điểm phụ của lời giải; nếu là ảnh chụp bài giải viết tay thì KHÔNG vẽ, báo cáo)', url: c.anh_loi_giai,
+        cau: [{ ma_cau: `${b.ma} · cách giải`, id: c.id, bai_goc: b.ma, noi_dung: deDayDu(b), loi_giai: c.loi_giai }], md })
+    }
+  } else if (BANG === 'baitoan') {
     for (const b of baiToan.filter((b) => laCu(b.anh_chuan) && chon(mh.get(b.mo_hinh_id))).sort(theoMa)) {
       const m = mh.get(b.mo_hinh_id)
       let md = `\n### ${b.ma} · cấp ${b.cap} · mô hình ${m.ma} ${m.ten.trim()}\n${mdBaiToan(b)}`
