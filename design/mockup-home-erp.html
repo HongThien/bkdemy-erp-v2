@@ -110,6 +110,13 @@
   .inbox .it.un{background:rgba(255,255,255,.05)}
   .inbox .dot{width:8px;height:8px;border-radius:99px;background:var(--acc);margin-top:7px;flex:none}
   .pop{position:absolute;z-index:40;background:#14102b;border:1px solid var(--line);border-radius:14px;padding:12px;width:300px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .kbox{position:relative}
+  .tb{position:absolute;top:-12px;right:12px;display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:#14102b;opacity:0;transition:.15s;z-index:20;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+  .kbox:hover>.tb{opacity:1}
+  .tb span{cursor:grab;padding:1px 9px;font-size:13px;user-select:none;color:var(--muted)}.tb span:hover{color:var(--acc)}
+  .tb button{padding:1px 9px;font-size:12px;border-left:1px solid var(--line);color:var(--muted)}.tb button:hover{color:#ff7a7a}
+  .kbox.over::after{content:'';position:absolute;inset:0;border:2px dashed var(--acc);border-radius:14px;pointer-events:none;z-index:15}
+  .kbox.dragging{opacity:.4}
   .hint{position:fixed;left:14px;bottom:10px;font-size:11.5px;color:var(--muted);z-index:5}
 </style>
 </head>
@@ -132,7 +139,7 @@ const capDuoi = (id) => P[id].admin ? Object.keys(P).filter((k) => k !== id)
 
 let S = {
   me: 'thuy', modal: null, taskTab: 'toi', openTask: null, orderTab: 'toi', openOrder: null, inbox: false,
-  viecNgayTab: 'vh', dang: 'vuong', an: [], tuyChinh: false, toast: null, formGiao: false, formOrder: false,
+  viecNgayTab: 'vh', dang: 'vuong', lon: ['viec_ngay', 'tien_do', 'yeu_thich', 'order'], tileOrder: ['Việc của tôi', 'Vận hành', 'Gamification', 'Học thuật', 'Quản lý chất lượng', 'Core team', 'Dashboard'], an: [], tuyChinh: false, toast: null, formGiao: false, formOrder: false,
   vh: { // việc vận hành tự đo (khâu → xong/tổng, quá hạn)
     thuy: [['Chấm bài trên lớp', 0, 11, 11], ['Chấm BTVN', 0, 6, 6], ['Chấm ET', 2, 6, 4], ['Duyệt báo sai', 0, 1, 1], ['Đánh giá sau buổi', 5, 20, 12], ['Điều hành ca bổ trợ', 0, 2, 2], ['Đánh giá buổi bù', 2, 2, 0]],
     mai: [['Chấm BTVN', 3, 5, 0], ['Chấm ET', 1, 4, 1]], trang: [['Duyệt báo sai', 0, 3, 2]], loc: [], tra: [['Chấm BTVN', 4, 4, 0]],
@@ -243,43 +250,54 @@ function orderBox() {
 const TILES = [['🗂', 'Việc của tôi', 'Việc cần làm trong tuần', null], ['🛠', 'Vận hành', 'Buổi học · học sinh · bổ trợ', 13], ['🏆', 'Gamification', 'Điểm · thành tích · huy hiệu', 9],
   ['📚', 'Học thuật', 'Kho kiến thức · soạn tài liệu', 12], ['🎯', 'Quản lý chất lượng', 'Kết quả · duyệt · báo cáo', 7], ['👥', 'Core team', 'Nhân sự · học phí · phân công', 11], ['📊', 'Dashboard', 'Số liệu để ra quyết định', 6]];
 const COLS = { vuong: 3, ngang: 2, cao: 3, tron: 3, gon: 2 };
+const kb = (id, html) => `<div class="kbox" data-box="${id}"><div class="tb"><span draggable="true" data-drag="${id}" title="Kéo để đổi chỗ">⠿</span><button data-a="an:${id}" title="Ẩn box này (bật lại ở ⚙ Tuỳ chỉnh)">✕</button></div>${html}</div>`;
+
 function tiles() {
-  return TILES.filter((t) => !hide('nhom:' + t[1])).map(([ic, n, p, c]) => {
+  return S.tileOrder.filter((n) => !hide('nhom:' + n)).map((n) => {
+    const [ic, , p, c] = TILES.find((t) => t[1] === n);
     const d = S.dang;
     const inner = d === 'ngang' ? `<span class="ic">${ic}</span><span style="flex:1"><b>${n}</b><br><span class="muted" style="font-size:12px">${p}</span></span>${c ? `<span class="pill" style="background:var(--surface2);color:var(--acc)">${c} mục</span>` : ''}`
       : d === 'gon' ? `<span class="ic">${ic}</span><b style="flex:1;font-size:14px">${n}</b>${c ? `<span class="pill" style="background:var(--surface2);color:var(--acc)">${c}</span>` : ''}`
       : d === 'tron' ? `<span class="ic" style="font-size:30px">${ic}</span><b style="font-size:13px;line-height:1.15">${n}</b>${c ? `<span style="font-size:11px;color:var(--acc)">${c} mục</span>` : ''}`
       : `${c ? `<span class="n">${c} mục</span>` : ''}<span class="ic">${ic}</span><b>${n}</b><span class="muted" style="font-size:12px">${p}</span>`;
-    return `<button class="tile ${d}" data-a="tile">${inner}</button>`;
+    return kb('nhom:' + n, `<button class="tile ${d}" data-a="tile">${inner}</button>`);
   }).join('');
 }
 
-function main() {
-  const conOrder = !hide('order');
+function favBox() {
   const fav = [['📅', 'Buổi học', 'Vận hành › Vận hành lớp học'], ['📝', 'ET', 'Học thuật › Làm tài liệu'], ['🗺', 'Bản đồ kiến thức (Kho)', 'Học thuật'], ['📘', 'Giáo trình', 'Học thuật › Làm tài liệu']];
+  return `<span class="tag">★ Yêu thích</span><div class="favs" style="margin-bottom:0">${fav.map(([i, n, s]) => `<button class="fav" data-a="tile"><span class="ic">${i}</span><span class="grow"><b style="display:block">${n}</b><span class="muted" style="font-size:12px">${s}</span></span><span style="color:var(--acc)">★</span></button>`).join('')}</div>`;
+}
+const THAN = { viec_ngay: () => viecNgayCompact(false), tien_do: () => tienDo(), yeu_thich: () => favBox(), order: () => orderBox() };
+const lonO = (i) => (hide(S.lon[i]) ? '' : kb(S.lon[i], THAN[S.lon[i]]()));
+
+function main() {
+  const coNuaTrai = !hide(S.lon[3]);
+  const nTile = S.tileOrder.filter((n) => !hide('nhom:' + n)).length;
   return `<div class="grid">
     <div class="colL">
-      ${hide('viec_ngay') ? '' : viecNgayCompact(false)}
+      ${hide(S.lon[0]) ? '' : `<div style="padding-top:12px">${lonO(0)}</div>`}
       <div class="hero"><div class="bubble">Mục hay dùng nằm ngay hàng ★ Yêu thích — bấm là vào thẳng.</div>
         <svg viewBox="0 0 200 260"><ellipse cx="100" cy="248" rx="70" ry="8" fill="#000" opacity=".35"/><path d="M45 245 Q40 150 100 140 Q160 150 155 245Z" fill="#2c2a5a" stroke="#f0b64a" stroke-width="2"/><circle cx="100" cy="95" r="45" fill="#f3d9c0"/><path d="M52 90 Q60 35 100 38 Q145 38 150 92 Q130 60 100 62 Q70 60 52 90Z" fill="#1b1330"/><circle cx="85" cy="100" r="5" fill="#2a1d05"/><circle cx="115" cy="100" r="5" fill="#2a1d05"/><path d="M90 118 Q100 126 110 118" stroke="#8a4b3b" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="100" cy="190" r="14" fill="#f0b64a" opacity=".9"/></svg>
         <div class="muted" style="font-size:11px">(chỗ nhân vật — giữ nguyên)</div></div>
     </div>
     <div class="colR">
-      <div class="head">
+      <div class="head" style="padding-top:12px">
         <div class="greet"><h2><span style="color:var(--acc)">✦</span> Chào ${P[S.me].ten}!</h2><div class="muted" style="font-size:12.5px">Thứ Tư, 14/10</div></div>
-        ${hide('tien_do') ? '' : `<div style="flex:1;min-width:330px;max-width:620px">${tienDo()}</div>`}
+        ${hide(S.lon[1]) ? '' : `<div style="flex:1;min-width:330px;max-width:620px">${lonO(1)}</div>`}
         <div class="row" style="margin-left:auto;position:relative">
           <button class="card" style="padding:6px 12px;font-size:12.5px;font-weight:700" data-a="tuy">⚙ Tuỳ chỉnh${S.an.length ? ` <span class="muted">(${S.an.length} ẩn)</span>` : ''}</button>
           <button class="card" style="padding:6px 12px;font-size:12.5px;font-weight:700" data-a="gd">🎨 Giao diện</button>
           ${S.tuyChinh ? tuyChinh() : ''}
         </div>
       </div>
-      ${hide('yeu_thich') ? '' : `<span class="tag">★ Yêu thích</span><div class="favs">${fav.map(([i, n, s]) => `<button class="fav" data-a="tile"><span class="ic">${i}</span><span class="grow"><b style="display:block">${n}</b><span class="muted" style="font-size:12px">${s}</span></span><span style="color:var(--acc)">★</span></button>`).join('')}</div>`}
-      <span class="tag">Tất cả</span>
-      <div class="all">
-        ${conOrder ? `<div style="width:50%;min-width:320px;flex:none">${orderBox()}</div>` : ''}
-        <div class="tiles" style="grid-template-columns:repeat(${conOrder ? COLS[S.dang] : COLS[S.dang] + 1},minmax(0,1fr))">${tiles()}</div>
-      </div>
+      ${hide(S.lon[2]) ? '' : `<div style="margin-bottom:18px;padding-top:12px">${lonO(2)}</div>`}
+      ${coNuaTrai || nTile ? `<span class="tag">Tất cả</span>
+      <div class="all" style="padding-top:12px">
+        ${coNuaTrai ? `<div style="width:${nTile ? '50%' : '100%'};min-width:320px;flex:none">${lonO(3)}</div>` : ''}
+        ${nTile ? `<div class="tiles" style="grid-template-columns:repeat(${coNuaTrai ? COLS[S.dang] : COLS[S.dang] + 1},minmax(0,1fr))">${tiles()}</div>` : ''}
+      </div>` : ''}
+      ${S.an.length ? `<p class="muted" style="font-size:12px;margin-top:22px">Đang ẩn ${S.an.length} box — bật lại ở ⚙ Tuỳ chỉnh.</p>` : ''}
     </div>
   </div>`;
 }
@@ -433,6 +451,20 @@ document.addEventListener('click', (e) => {
   }
   render();
 });
+/* ── KÉO THẢ: 4 box lớn HOÁN vị trí · box nhóm chèn vào chỗ mới (chỉ đổi chỗ trong cùng khu) ── */
+let drag = null;
+const khu = (id) => (id.startsWith('nhom:') ? 'luoi' : 'lon');
+document.addEventListener('dragstart', (e) => { const g = e.target.closest && e.target.closest('[data-drag]'); if (!g) return; drag = g.dataset.drag;
+  e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', drag); const b = g.closest('.kbox'); if (b) { e.dataTransfer.setDragImage(b, 16, 16); setTimeout(() => b.classList.add('dragging'), 0) } });
+document.addEventListener('dragover', (e) => { const b = e.target.closest && e.target.closest('.kbox'); if (!drag || !b) return;
+  const id = b.dataset.box; if (id === drag || khu(id) !== khu(drag)) return; e.preventDefault();
+  document.querySelectorAll('.kbox.over').forEach((n) => n !== b && n.classList.remove('over')); b.classList.add('over'); });
+document.addEventListener('drop', (e) => { const b = e.target.closest && e.target.closest('.kbox'); if (!drag || !b) return;
+  const id = b.dataset.box; if (id === drag || khu(id) !== khu(drag)) return; e.preventDefault();
+  if (khu(drag) === 'lon') { const i = S.lon.indexOf(drag), j = S.lon.indexOf(id); [S.lon[i], S.lon[j]] = [S.lon[j], S.lon[i]]; toast('Đã hoán đổi vị trí 2 box'); }
+  else { const a = drag.slice(5), z = id.slice(5); const arr = S.tileOrder; arr.splice(arr.indexOf(z), 0, arr.splice(arr.indexOf(a), 1)[0]); }
+  drag = null; render(); });
+document.addEventListener('dragend', () => { drag = null; render(); });
 render();
 </script>
 </body>

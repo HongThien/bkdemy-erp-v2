@@ -216,25 +216,31 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
   )
 }
 
-// KÉO THẢ đổi vị trí box (desktop, HTML5 drag — không cần thư viện). Chỉ đổi chỗ TRONG cùng một khu:
-// Chỉ các box NHÓM (nửa phải khu Tất cả) kéo đổi chỗ được; box lớn (Việc hôm nay · Việc phát triển · Order) có vị trí cố định.
-// Thứ tự lưu ở nhan_su.home_bo_cuc.thu_tu (mảng id).
+// Mỗi box có THANH CÔNG CỤ nhỏ đậu trên mép trên (hiện khi rê chuột): ⠿ kéo để đổi chỗ · ✕ ẩn box.
+// Hai khu kéo thả, chỉ đổi chỗ TRONG cùng khu:
+//   'lon'  = 4 box lớn (Việc hôm nay · Việc phát triển · Yêu thích · Bảng Order) — kéo box này lên box kia ⇒ HOÁN VỊ trí.
+//   'luoi' = các box nhóm (nửa phải khu Tất cả) — kéo thả chèn vào chỗ mới.
+// Thứ tự lưu ở nhan_su.home_bo_cuc.thu_tu (mảng id). Ẩn lưu ở home_bo_cuc.an; bật lại ở ⚙ Tuỳ chỉnh.
+const KHU_LON = ['viec_ngay', 'tien_do', 'yeu_thich', 'order']
+const khuCua = (id: string) => (id.startsWith('nhom:') ? 'luoi' : 'lon')
 
-function KeoBox({ id, keo, dich, setKeo, setDich, tha, children }: {
+function KeoBox({ id, keo, dich, setKeo, setDich, tha, onAn, children }: {
   id: string; keo: string | null; dich: string | null; setKeo: (v: string | null) => void; setDich: (v: string | null) => void
-  tha: (keo: string, dich: string) => void; children: ReactNode
+  tha: (keo: string, dich: string) => void; onAn: () => void; children: ReactNode
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const chap = keo !== null && keo !== id
+  const chap = keo !== null && keo !== id && khuCua(keo) === khuCua(id)
   return (
     <div ref={ref} className="group/keo relative"
       onDragOver={(e) => { if (chap) { e.preventDefault(); if (dich !== id) setDich(id) } }}
       onDrop={(e) => { if (chap) { e.preventDefault(); tha(keo!, id) } setKeo(null); setDich(null) }}>
-      <span draggable title="Kéo để đổi vị trí"
-        onDragStart={(e) => { setKeo(id); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', id); if (ref.current) e.dataTransfer.setDragImage(ref.current, 16, 16) }}
-        onDragEnd={() => { setKeo(null); setDich(null) }}
-        className="absolute left-1.5 top-1.5 z-10 cursor-grab select-none rounded px-1 text-[15px] leading-none text-[var(--sk-muted)] opacity-0 transition group-hover/keo:opacity-70 hover:!opacity-100 active:cursor-grabbing"
-        style={{ background: 'var(--sk-surface)' }}>⠿</span>
+      <div className="absolute -top-3 right-3 z-20 flex items-center overflow-hidden border border-[var(--sk-line)] bg-[var(--sk-bg)] text-[var(--sk-muted)] opacity-0 shadow transition group-hover/keo:opacity-100" style={{ borderRadius: 999 }}>
+        <span draggable title="Kéo để đổi chỗ"
+          onDragStart={(e) => { setKeo(id); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', id); if (ref.current) e.dataTransfer.setDragImage(ref.current, 16, 16) }}
+          onDragEnd={() => { setKeo(null); setDich(null) }}
+          className="cursor-grab select-none px-2 py-0.5 text-[13px] leading-none hover:text-[var(--sk-acc)] active:cursor-grabbing">⠿</span>
+        <button onClick={onAn} title="Ẩn box này (bật lại ở ⚙ Tuỳ chỉnh)" className="border-l border-[var(--sk-line)] px-2 py-0.5 text-[12px] leading-none hover:text-rose-500">✕</button>
+      </div>
       <div className={keo === id ? 'opacity-40' : ''}>{children}</div>
       {chap && dich === id && <span className="pointer-events-none absolute inset-0 border-2 border-dashed border-[var(--sk-acc)]" style={{ borderRadius: 'var(--sk-radius)' }} />}
     </div>
@@ -354,31 +360,66 @@ export default function HomeScreen() {
   const xep = (ids: string[]) => ids.map((id, i) => ({ id, k: thuTu.indexOf(id) >= 0 ? thuTu.indexOf(id) : 1e6 + i })).sort((a, b) => a.k - b.k).map((x) => x.id)
   const khuLuoi = ['nhom:viec', ...dh.adminNav.map((x) => `nhom:${x.nhom ?? ''}`)]
   const tha = (a: string, b: string) => {
+    if (khuCua(a) === 'lon') {
+      // 4 box lớn: HOÁN vị trí (vị trí = chỗ trong bố cục: góc trái · cạnh lời chào · hàng rộng · nửa trái Tất cả)
+      const ids = xep(KHU_LON)
+      const tu = ids.indexOf(a), den = ids.indexOf(b)
+      if (tu < 0 || den < 0) return
+      ;[ids[tu], ids[den]] = [ids[den], ids[tu]]
+      dh.doiHomeThuTu([...ids, ...thuTu.filter((x) => !ids.includes(x))])
+      return
+    }
     const ids = xep(khuLuoi)
     const tu = ids.indexOf(a), den = ids.indexOf(b)
     if (tu < 0 || den < 0) return
     ids.splice(den, 0, ids.splice(tu, 1)[0])
     dh.doiHomeThuTu([...ids, ...thuTu.filter((x) => !ids.includes(x))])
   }
-  const keoBox = (id: string, node: ReactNode) => <KeoBox key={id} id={id} keo={keo} dich={dich} setKeo={setKeo} setDich={setDich} tha={tha}>{node}</KeoBox>
+  const keoBox = (id: string, node: ReactNode) => <KeoBox key={id} id={id} keo={keo} dich={dich} setKeo={setKeo} setDich={setDich} tha={tha} onAn={() => dh.doiHomeAn(id)}>{node}</KeoBox>
   const cacBox = [
-    { id: 'viec_ngay', ten: '☑ Việc hôm nay (góc trái)' }, { id: 'tien_do', ten: '🚀 Việc phát triển (cạnh lời chào)' },
+    { id: 'viec_ngay', ten: '☑ Việc hôm nay' }, { id: 'tien_do', ten: '🚀 Việc phát triển' },
     { id: 'yeu_thich', ten: '★ Yêu thích' }, { id: 'order', ten: '📋 Bảng Order' },
     { id: 'nhom:viec', ten: `${MUC_VIEC.icon} ${MUC_VIEC.ten}` },
     ...dh.adminNav.map((x) => ({ id: `nhom:${x.nhom ?? ''}`, ten: `${nhomIcon(x.nhom)} ${x.nhom ?? ''}` })),
   ]
-  const conOrder = hienBox('order')
   const dsNhom = xep(khuLuoi).filter(hienBox)
   const lenViec = () => dh.di(LEAF_VIEC)
-  // Việc hôm nay (bảng nhỏ, 5 việc): có cột nhân vật ⇒ nằm GÓC TRÊN TRÁI của cột đó (phía trên chỗ nhân vật ngồi, giữ nguyên chỗ
-  // nhân vật); không có cột nhân vật (style không có / màn hẹp) ⇒ đứng đầu hàng lời chào.
-  const viecNgay = hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} /> : null
+
+  // ── 4 BOX LỚN: thân từng box + 4 VỊ TRÍ (hoán đổi được) ──
+  const thanLon = (id: string): ReactNode => {
+    if (id === 'viec_ngay') return <ViecHangNgay compact onMoVietCuaToi={lenViec} />
+    if (id === 'tien_do') return <TienDoViec />
+    if (id === 'order') return <BangOrder />
+    return (
+      <div>
+        <Nhan>★ Yêu thích</Nhan>
+        {dsYeuThich.length === 0 ? (
+          <div className="border border-dashed border-[var(--sk-line)] px-4 py-3 text-[13px] text-[var(--sk-muted)]" style={tam}>
+            {coSao ? 'Chưa có mục nào. Mở một nhóm bên dưới rồi bấm ☆ ở mục hay dùng — nó sẽ nằm ở đây, bấm là vào thẳng.'
+              : 'Tài khoản chưa gắn hồ sơ nhân sự nên chưa lưu được mục Yêu thích.'}
+          </div>
+        ) : (
+          <div className={isMobile ? 'grid gap-2' : 'grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(235px,1fr))]'}>
+            {dsYeuThich.map((m) => (
+              <MucNgang key={m.id} m={m} phu={[m.nhom, m.cha].filter(Boolean).join(' › ') || undefined} coSao={coSao}
+                onMo={() => dh.di(m.id)} onSao={() => dh.doiYeuThich(m.id)} />
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
+  const lon = xep(KHU_LON)
+  const oVitri = (i: number): ReactNode => (hienBox(lon[i]) ? keoBox(lon[i], thanLon(lon[i])) : null)
+  const coTrai = hienBox(lon[0]), coCanh = hienBox(lon[1]), coRong = hienBox(lon[2]), coNuaTrai = hienBox(lon[3])
+  const soAn = an.length
+
   return (
     <section style={khung} className="min-h-0 overflow-auto text-[var(--sk-ink)]">
       <div className={`mx-auto flex min-h-full max-w-[1500px] gap-5 ${le}`}>
         {coNv && (
           <div className="flex w-[25%] shrink-0 flex-col self-stretch">
-            {viecNgay && <div className="shrink-0">{viecNgay}</div>}
+            {coTrai && <div className="shrink-0 pt-3">{oVitri(0)}</div>}
             <div className="sticky bottom-0 mt-auto flex flex-col items-center justify-end pt-3">
               <div className="relative mb-2 ml-auto mr-2 max-w-[220px] rounded-2xl bg-white/95 px-3.5 py-2.5 text-[12.5px] font-medium leading-snug text-slate-700 shadow-lg">
                 {dsYeuThich.length ? 'Mục hay dùng nằm ngay hàng ★ Yêu thích — bấm là vào thẳng.' : 'Mở một nhóm rồi bấm ☆ ở mục hay dùng, mình sẽ để sẵn ở hàng Yêu thích.'}
@@ -390,49 +431,32 @@ export default function HomeScreen() {
           </div>
         )}
         <div className="min-w-0 flex-1">
-          {/* HÀNG ĐẦU: lời chào · Việc phát triển (3 task báo động nhất, ngang lời chào) · nút Tuỳ chỉnh / Giao diện */}
-          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4'}>
-            {!coNv && viecNgay && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{viecNgay}</div>}
+          {/* HÀNG ĐẦU: lời chào · vị trí 2 (cạnh lời chào) · nút Tuỳ chỉnh / Giao diện */}
+          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'}>
+            {!coNv && coTrai && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{oVitri(0)}</div>}
             <div className="shrink-0 px-4 py-2.5" style={tam}>
               <h2 className={isMobile ? 'text-[23px] font-bold leading-tight' : 'text-[32px] font-bold leading-[1.12]'} style={HEAD}>
                 <span className="text-[var(--sk-acc)]">✦</span> {tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}
               </h2>
               <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
             </div>
-            {hienBox('tien_do') && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}><TienDoViec /></div>}
+            {coCanh && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}>{oVitri(1)}</div>}
             <div className="ml-auto flex flex-wrap items-start gap-2">
               {coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} />}
               <ChonGiaoDien hep={isMobile} />
             </div>
           </div>
 
-          {hienBox('yeu_thich') && (
-            <div className="mb-5">
-              <Nhan>★ Yêu thích</Nhan>
-              {dsYeuThich.length === 0 ? (
-                <div className="border border-dashed border-[var(--sk-line)] px-4 py-3 text-[13px] text-[var(--sk-muted)]" style={tam}>
-                  {coSao ? 'Chưa có mục nào. Mở một nhóm bên dưới rồi bấm ☆ ở mục hay dùng — nó sẽ nằm ở đây, bấm là vào thẳng.'
-                    : 'Tài khoản chưa gắn hồ sơ nhân sự nên chưa lưu được mục Yêu thích.'}
-                </div>
-              ) : (
-                <div className={isMobile ? 'grid gap-2' : 'grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(235px,1fr))]'}>
-                  {dsYeuThich.map((m) => (
-                    <MucNgang key={m.id} m={m} phu={[m.nhom, m.cha].filter(Boolean).join(' › ') || undefined} coSao={coSao}
-                      onMo={() => dh.di(m.id)} onSao={() => dh.doiYeuThich(m.id)} />
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+          {coRong && <div className="mb-5 pt-3">{oVitri(2)}</div>}
 
-          {/* TẤT CẢ: nửa TRÁI = Bảng Order · nửa PHẢI = các box nhóm (ít dùng — đã có Yêu thích) */}
-          {(conOrder || dsNhom.length > 0) && (
+          {/* TẤT CẢ: nửa TRÁI = vị trí 4 (mặc định Bảng Order) · nửa PHẢI = các box nhóm (ít dùng — đã có Yêu thích) */}
+          {(coNuaTrai || dsNhom.length > 0) && (
             <>
               <Nhan>Tất cả</Nhan>
-              <div className={isMobile ? 'space-y-4' : 'flex items-start gap-4'}>
-                {conOrder && <div className={isMobile ? '' : `min-w-[320px] ${dsNhom.length ? 'w-1/2 shrink-0' : 'flex-1'}`}><BangOrder /></div>}
+              <div className={isMobile ? 'space-y-4' : 'flex items-start gap-4 pt-3'}>
+                {coNuaTrai && <div className={isMobile ? '' : `min-w-[320px] ${dsNhom.length ? 'w-1/2 shrink-0' : 'flex-1'}`}>{oVitri(3)}</div>}
                 {dsNhom.length > 0 && (
-                  <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid min-w-0 flex-1 ${conOrder ? luoiHep : luoiRong} gap-3`}>
+                  <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid min-w-0 flex-1 ${coNuaTrai ? luoiHep : luoiRong} gap-3`}>
                     {dsNhom.map((id) => {
                       if (id === 'nhom:viec') return keoBox(id, <NhomBox dang={isMobile ? 'vuong' : dangCard} anh={sk.anhNhom.viec} matNa={sk.iconMatNa} chu={MUC_VIEC.icon} ten={MUC_VIEC.ten} phu={VIEC_MO_TA} onClick={lenViec} />)
                       const x = dh.adminNav.find((n) => `nhom:${n.nhom ?? ''}` === id)
@@ -445,6 +469,7 @@ export default function HomeScreen() {
               </div>
             </>
           )}
+          {soAn > 0 && coSao && <p className="mt-6 text-[12px] text-[var(--sk-muted)]">Đang ẩn {soAn} box — bật lại ở ⚙ Tuỳ chỉnh.</p>}
         </div>
       </div>
     </section>
