@@ -49,7 +49,7 @@ try {
     const kv=(await q("select fn_ta_khai_viec('tro_giang',(now() at time zone 'Asia/Ho_Chi_Minh')::date) id"))[0].id;
     const row=(await q('select lop_id, nguon, trang_thai from ta_cong_viec where id=$1',[kv]))[0];
     console.log('✔ khai TG không chọn lớp → lớp mặc định:',(await q('select ten_lop from lop where id=$1',[row.lop_id]))[0]?.ten_lop,'| nguon',row.nguon,'| trạng thái',row.trang_thai);
-    try{ await c.query('savepoint b'); await q("select fn_ta_duyet_cong(array[$1::uuid],'da_duyet')",[kv]); console.log('✘ TA tự duyệt được!'); }
+    try{ await c.query('savepoint b'); await q("select fn_ta_duyet_cong('{}', array[$1::uuid], 'da_duyet')",[kv]); console.log('✘ TA tự duyệt được!'); }
     catch(e){ await c.query('rollback to savepoint b'); console.log('✔ TA không tự duyệt được:',e.message); }
     await q('select fn_ta_cham_cong_ra()'); console.log('✔ ra ca');
     try{ await c.query('savepoint c'); await q("select * from fn_ta_luong_thang('2026-09-01',$1)",[map['Duy']]); console.log('✘ TA xem được lương người khác!'); }

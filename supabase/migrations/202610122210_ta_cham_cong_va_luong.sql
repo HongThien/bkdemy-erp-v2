@@ -121,11 +121,14 @@ insert into ta_loai_viec (ma, ten, nhom, tinh_vao, don_vi, can_lop, can_hs, thu_
   ('bo_tro_bu',       'Bổ trợ bù',                         'package',       'bo_tro',          'gio',  true,  true,  30),
   ('bo_tro_yeu',      'Bổ trợ yếu',                        'package',       'bo_tro',          'gio',  true,  true,  31),
   ('bo_tro_duoi',     'Bổ trợ đuổi',                       'package',       'bo_tro',          'gio',  true,  true,  32),
-  ('bo_tro_dinh_ki',  'Bổ trợ định kì (trực bổ trợ khối)', 'package',       'bo_tro',          'gio',  true,  false, 33),
+  ('bo_tro_dinh_ki',  'Bổ trợ định kì (trực bổ trợ khối)', 'package',       'bo_tro',          'gio',  false, false, 33),  -- ca trực theo KHỐI, không gắn lớp
   ('bo_tro_on_thi',   'Bổ trợ ôn thi',                     'package',       'bo_tro',          'gio',  true,  true,  34),
+  ('bo_tro_chua_bai', 'Chữa bài cho học sinh',             'package',       'bo_tro',          'gio',  true,  true,  35),
   ('bo_tro_dac_biet', 'Bổ trợ đặc biệt (kèm riêng)',       'ngoai_package', 'bo_tro_dac_biet', 'buoi', false, true,  70),
   ('trong_thi',       'Trông thi',                         'ngoai_package', 'trong_thi',       'gio',  true,  false, 80),
   ('cham_thi',        'Chấm thi',                          'ngoai_package', 'cham_thi',        'gio',  false, false, 90),
+  ('hop',             'Họp',                               'ngoai_package', 'khac',            'gio',  false, false, 91),
+  ('dao_tao',         'Đào tạo',                           'ngoai_package', 'khac',            'gio',  false, false, 92),
   ('khac',            'Việc khác (bắt buộc ghi chú)',      'ngoai_package', 'khac',            'gio',  false, false, 99);
 
 -- ── 3. Chấm công có mặt (K2) + việc trong ngày ──────────────────────────────────
@@ -133,16 +136,27 @@ create table ta_cham_cong (
   id            uuid primary key default gen_random_uuid(),
   nhan_su_id    uuid not null references nhan_su(id),
   ngay          date not null,                    -- ngày giờ VN
-  vao_at        timestamptz not null default now(),
-  ra_at         timestamptz,
+  vao_at        timestamptz not null default now(),  -- giờ GỐC (TA bấm / máy ghi / khai bù): KHÔNG sửa
+  ra_at         timestamptz,                      -- NULL = chưa ra; sang ngày sau mà vẫn NULL = quên ra (suy, không lưu cờ)
+  vao_chot      timestamptz,                      -- giờ người duyệt chốt lại; NULL = không chỉnh, dùng giờ gốc
+  ra_chot       timestamptz,
   co_so         text,
-  cach_xac_thuc text not null default 'app' check (cach_xac_thuc in ('app', 'tay_duyet')),
-  trang_thai    text not null default 'dang_lam' check (trang_thai in ('dang_lam', 'xong', 'quen_ra')),
+  nguon         text not null default 'app' check (nguon in ('app', 'may_cham_cong', 'nhap_ho')),
+  khai_bu       boolean not null default false,
+  trang_thai    text not null default 'dang_lam' check (trang_thai in ('dang_lam', 'xong')),
+  duyet         text not null default 'cho_duyet' check (duyet in ('cho_duyet', 'da_duyet', 'tu_choi')),
+  duyet_boi     uuid references nhan_su(id),
+  duyet_at      timestamptz,
+  ly_do_duyet   text,
+  created_by    uuid references nhan_su(id),
   created_at    timestamptz not null default now(),
-  check (ra_at is null or ra_at >= vao_at)
+  check (ra_at is null or ra_at >= vao_at),
+  check (vao_chot is null or ra_chot is null or ra_chot >= vao_chot)
 );
-create unique index ta_cham_cong_mot_ca_mo on ta_cham_cong (nhan_su_id) where ra_at is null and trang_thai = 'dang_lam';
+comment on table ta_cham_cong is 'Ca có mặt của TA. Giờ gốc (vao_at/ra_at) bất biến; người duyệt chỉnh thì ghi vao_chot/ra_chot. Nguồn mở sẵn cho máy chấm công.';
+create unique index ta_cham_cong_mot_ca_mo on ta_cham_cong (nhan_su_id, ngay) where ra_at is null;
 create index ta_cham_cong_ns_ngay on ta_cham_cong (nhan_su_id, ngay);
+create index ta_cham_cong_cho_duyet on ta_cham_cong (ngay) where duyet = 'cho_duyet';
 
 create table ta_cong_viec (
   id           uuid primary key default gen_random_uuid(),
@@ -158,7 +172,8 @@ create table ta_cong_viec (
   gio_ket_thuc time,
   hoc_sinh     text,
   ghi_chu      text not null default '',
-  nguon        text not null check (nguon in ('he_thong', 'tu_khai', 'import_sheet')),
+  nguon        text not null check (nguon in ('he_thong', 'tu_khai', 'nhap_ho', 'import_sheet')),
+  khai_bu      boolean not null default false,     -- TA khai SAU ngày việc diễn ra (trong 24 giờ)
   trang_thai   text not null default 'cho_duyet' check (trang_thai in ('cho_duyet', 'da_duyet', 'tu_choi')),
   duyet_boi    uuid references nhan_su(id),
   duyet_at     timestamptz,
@@ -231,59 +246,141 @@ create policy ta_cong_log_doc  on ta_cong_log  for select to authenticated
 create or replace function fn_ta_cham_cong_vao(p_co_so text default null) returns uuid
 language plpgsql security definer set search_path = public as $$
 declare v_ns uuid := public.current_nhan_su_id(); v_id uuid;
+        v_ngay date := (now() at time zone 'Asia/Ho_Chi_Minh')::date;
 begin
   if v_ns is null then raise exception 'Chưa đăng nhập'; end if;
-  select id into v_id from ta_cham_cong where nhan_su_id = v_ns and ra_at is null and trang_thai = 'dang_lam';
-  if v_id is not null then return v_id; end if;   -- idempotent
-  insert into ta_cham_cong (nhan_su_id, ngay, co_so)
-  values (v_ns, (now() at time zone 'Asia/Ho_Chi_Minh')::date, p_co_so) returning id into v_id;
+  select id into v_id from ta_cham_cong where nhan_su_id = v_ns and ngay = v_ngay and ra_at is null;
+  if v_id is not null then return v_id; end if;   -- idempotent: đang trong ca hôm nay thì trả ca đó
+  insert into ta_cham_cong (nhan_su_id, ngay, co_so, created_by) values (v_ns, v_ngay, p_co_so, v_ns) returning id into v_id;
   return v_id;
 end $$;
 
 create or replace function fn_ta_cham_cong_ra() returns uuid
 language plpgsql security definer set search_path = public as $$
 declare v_ns uuid := public.current_nhan_su_id(); v_id uuid;
+        v_ngay date := (now() at time zone 'Asia/Ho_Chi_Minh')::date;
 begin
   if v_ns is null then raise exception 'Chưa đăng nhập'; end if;
   update ta_cham_cong set ra_at = now(), trang_thai = 'xong'
-   where nhan_su_id = v_ns and ra_at is null and trang_thai = 'dang_lam' returning id into v_id;
-  if v_id is null then raise exception 'Chưa vào ca'; end if;
+   where nhan_su_id = v_ns and ngay = v_ngay and ra_at is null returning id into v_id;
+  if v_id is null then raise exception 'Chưa vào ca hôm nay'; end if;
   return v_id;
 end $$;
 
--- Khai việc. Trợ giảng không chọn lớp ⇒ mặc định LỚP CHÍNH của TA (CEO 12/10). Có buổi/ca khớp ERP ⇒ nguon='he_thong'.
+-- Khai bù ca có mặt trong 24 giờ (quên bấm vào, hoặc quên bấm ra). Vẫn qua duyệt như thường.
+create or replace function fn_ta_cham_cong_khai_bu(p_vao timestamptz, p_ra timestamptz, p_co_so text default null) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare v_ns uuid := public.current_nhan_su_id(); v_id uuid;
+        v_ngay date := (p_vao at time zone 'Asia/Ho_Chi_Minh')::date;
+begin
+  if v_ns is null then raise exception 'Chưa đăng nhập'; end if;
+  if p_ra <= p_vao then raise exception 'Giờ ra phải sau giờ vào'; end if;
+  if p_ra > now() then raise exception 'Không khai bù cho giờ chưa tới'; end if;
+  if now() > p_ra + interval '24 hours' then raise exception 'Đã quá 24 giờ — nhờ quản lý nhập hộ'; end if;
+  -- quên bấm RA: ca hôm đó còn mở ⇒ điền giờ ra cho chính ca đó (giữ giờ vào gốc)
+  update ta_cham_cong set ra_at = p_ra, trang_thai = 'xong', khai_bu = true
+   where nhan_su_id = v_ns and ngay = v_ngay and ra_at is null and p_ra >= vao_at returning id into v_id;
+  if v_id is not null then return v_id; end if;
+  insert into ta_cham_cong (nhan_su_id, ngay, vao_at, ra_at, co_so, khai_bu, trang_thai, created_by)
+  values (v_ns, v_ngay, p_vao, p_ra, p_co_so, true, 'xong', v_ns) returning id into v_id;
+  return v_id;
+end $$;
+
+-- Quản lý nhập hộ ca có mặt (TA quá hạn 24 giờ). Người nhập chịu trách nhiệm ⇒ ghi là đã duyệt, bắt buộc lý do.
+create or replace function fn_ta_cham_cong_nhap_ho(p_ns uuid, p_vao timestamptz, p_ra timestamptz, p_ly_do text) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare v_me uuid := public.current_nhan_su_id(); v_id uuid;
+begin
+  if not public.co_quyen_ghi('ta_cong_duyet') then raise exception 'Không có quyền nhập hộ công'; end if;
+  if p_ra <= p_vao then raise exception 'Giờ ra phải sau giờ vào'; end if;
+  if btrim(coalesce(p_ly_do, '')) = '' then raise exception 'Nhập hộ phải ghi lý do'; end if;
+  insert into ta_cham_cong (nhan_su_id, ngay, vao_at, ra_at, nguon, trang_thai, duyet, duyet_boi, duyet_at, ly_do_duyet, created_by)
+  values (p_ns, (p_vao at time zone 'Asia/Ho_Chi_Minh')::date, p_vao, p_ra, 'nhap_ho', 'xong', 'da_duyet', v_me, now(), p_ly_do, v_me)
+  returning id into v_id;
+  return v_id;
+end $$;
+
+-- Người duyệt chốt lại giờ (vd TA quên ra). Giờ gốc giữ nguyên.
+create or replace function fn_ta_chot_gio(p_id uuid, p_vao timestamptz, p_ra timestamptz) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.co_quyen_ghi('ta_cong_duyet') then raise exception 'Không có quyền chốt giờ'; end if;
+  if p_ra <= p_vao then raise exception 'Giờ ra phải sau giờ vào'; end if;
+  update ta_cham_cong set vao_chot = p_vao, ra_chot = p_ra, trang_thai = 'xong' where id = p_id;
+  if not found then raise exception 'Không thấy ca'; end if;
+end $$;
+
+-- TA khai việc. Trợ giảng không chọn lớp ⇒ mặc định LỚP CHÍNH. Có buổi/ca khớp ERP ⇒ nguon='he_thong'.
+-- Khai được cho hôm nay (kể cả việc sắp làm) và khai BÙ trong 24 giờ sau khi việc kết thúc.
 create or replace function fn_ta_khai_viec(p_loai text, p_ngay date, p_lop uuid default null, p_buoi uuid default null,
   p_ca uuid default null, p_bat time default null, p_ket time default null, p_hs text default null, p_ghi_chu text default '')
 returns uuid language plpgsql security definer set search_path = public as $$
 declare v_ns uuid := public.current_nhan_su_id(); v_cc uuid; v_id uuid; v_lop uuid := p_lop;
+        v_homnay date := (now() at time zone 'Asia/Ho_Chi_Minh')::date;
+        v_het timestamptz := ((p_ngay + coalesce(p_ket, time '23:59'))::timestamp at time zone 'Asia/Ho_Chi_Minh');
 begin
   if v_ns is null then raise exception 'Chưa đăng nhập'; end if;
-  select id into v_cc from ta_cham_cong where nhan_su_id = v_ns and ngay = p_ngay order by vao_at desc limit 1;
-  if v_cc is null then raise exception 'Chưa chấm công có mặt ngày %', p_ngay; end if;
+  if p_ngay > v_homnay then raise exception 'Không khai trước cho ngày chưa tới'; end if;
+  if now() > v_het + interval '24 hours' then raise exception 'Đã quá 24 giờ kể từ khi việc diễn ra — nhờ quản lý nhập hộ'; end if;
+  select id into v_cc from ta_cham_cong where nhan_su_id = v_ns and ngay = p_ngay and duyet <> 'tu_choi' order by vao_at desc limit 1;
+  if v_cc is null then raise exception 'Chưa chấm công có mặt ngày %', to_char(p_ngay, 'DD/MM'); end if;
   if v_lop is null and p_buoi is not null then select b.lop_id into v_lop from buoi_hoc b where b.id = p_buoi; end if;
   if v_lop is null and p_loai = 'tro_giang' then
     select pc.lop_id into v_lop from phan_cong_lop pc
      where pc.nhan_su_id = v_ns and pc.vai_tro = 'tg' order by pc.la_chinh desc, pc.created_at limit 1;
   end if;
   insert into ta_cong_viec (nhan_su_id, cham_cong_id, ngay, loai_viec, lop_id, buoi_hoc_id, ca_bo_tro_id,
-                            gio_bat_dau, gio_ket_thuc, hoc_sinh, ghi_chu, nguon, created_by)
+                            gio_bat_dau, gio_ket_thuc, hoc_sinh, ghi_chu, nguon, khai_bu, created_by)
   values (v_ns, v_cc, p_ngay, p_loai, v_lop, p_buoi, p_ca, p_bat, p_ket, p_hs, coalesce(p_ghi_chu, ''),
-          case when p_buoi is not null or p_ca is not null then 'he_thong' else 'tu_khai' end, v_ns)
+          case when p_buoi is not null or p_ca is not null then 'he_thong' else 'tu_khai' end, p_ngay < v_homnay, v_ns)
   returning id into v_id;
   return v_id;
 end $$;
 
-create or replace function fn_ta_duyet_cong(p_ids uuid[], p_ket_qua text, p_ly_do text default null) returns integer
+-- TA bỏ một việc mình đã khai mà chưa được duyệt (khai nhầm / không làm): đánh dấu từ chối bởi chính mình, giữ vết.
+create or replace function fn_ta_bo_viec(p_id uuid, p_ly_do text default 'TA tự bỏ') returns void
 language plpgsql security definer set search_path = public as $$
-declare v_n integer;
+declare v_ns uuid := public.current_nhan_su_id();
+begin
+  update ta_cong_viec set trang_thai = 'tu_choi', duyet_boi = v_ns, duyet_at = now(), ly_do_duyet = coalesce(nullif(btrim(p_ly_do), ''), 'TA tự bỏ')
+   where id = p_id and nhan_su_id = v_ns and trang_thai = 'cho_duyet';
+  if not found then raise exception 'Chỉ bỏ được việc của mình khi còn chờ duyệt'; end if;
+end $$;
+
+-- Quản lý nhập hộ việc (quá hạn 24 giờ, hoặc TA không tự khai được).
+create or replace function fn_ta_nhap_ho_viec(p_ns uuid, p_loai text, p_ngay date, p_lop uuid default null, p_buoi uuid default null,
+  p_ca uuid default null, p_bat time default null, p_ket time default null, p_hs text default null, p_ly_do text default '')
+returns uuid language plpgsql security definer set search_path = public as $$
+declare v_me uuid := public.current_nhan_su_id(); v_cc uuid; v_id uuid;
+begin
+  if not public.co_quyen_ghi('ta_cong_duyet') then raise exception 'Không có quyền nhập hộ công'; end if;
+  if btrim(coalesce(p_ly_do, '')) = '' then raise exception 'Nhập hộ phải ghi lý do'; end if;
+  select id into v_cc from ta_cham_cong where nhan_su_id = p_ns and ngay = p_ngay and duyet <> 'tu_choi' order by vao_at desc limit 1;
+  insert into ta_cong_viec (nhan_su_id, cham_cong_id, ngay, loai_viec, lop_id, buoi_hoc_id, ca_bo_tro_id, gio_bat_dau, gio_ket_thuc,
+                            hoc_sinh, ghi_chu, nguon, trang_thai, duyet_boi, duyet_at, ly_do_duyet, created_by)
+  values (p_ns, v_cc, p_ngay, p_loai, p_lop, p_buoi, p_ca, p_bat, p_ket, p_hs, p_ly_do, 'nhap_ho', 'da_duyet', v_me, now(), p_ly_do, v_me)
+  returning id into v_id;
+  return v_id;
+end $$;
+
+-- Duyệt CẢ LÔ: ca có mặt + việc. Từ chối bắt buộc lý do. Ca chưa có giờ ra thì phải chốt giờ trước.
+create or replace function fn_ta_duyet_cong(p_ca uuid[], p_viec uuid[], p_ket_qua text, p_ly_do text default null) returns integer
+language plpgsql security definer set search_path = public as $$
+declare v_me uuid := public.current_nhan_su_id(); v_n integer; v_m integer;
 begin
   if not public.co_quyen_ghi('ta_cong_duyet') then raise exception 'Không có quyền duyệt công'; end if;
   if p_ket_qua not in ('da_duyet', 'tu_choi') then raise exception 'Kết quả duyệt không hợp lệ'; end if;
   if p_ket_qua = 'tu_choi' and btrim(coalesce(p_ly_do, '')) = '' then raise exception 'Từ chối phải có lý do'; end if;
-  update ta_cong_viec set trang_thai = p_ket_qua, duyet_boi = public.current_nhan_su_id(), duyet_at = now(), ly_do_duyet = p_ly_do
-   where id = any(p_ids) and trang_thai <> p_ket_qua;
+  if p_ket_qua = 'da_duyet' and exists (select 1 from ta_cham_cong where id = any(coalesce(p_ca, '{}')) and ra_at is null and ra_chot is null) then
+    raise exception 'Có ca chưa có giờ ra — chốt giờ trước khi duyệt';
+  end if;
+  update ta_cham_cong set duyet = p_ket_qua, duyet_boi = v_me, duyet_at = now(), ly_do_duyet = p_ly_do
+   where id = any(coalesce(p_ca, '{}')) and duyet <> p_ket_qua;
   get diagnostics v_n = row_count;
-  return v_n;
+  update ta_cong_viec set trang_thai = p_ket_qua, duyet_boi = v_me, duyet_at = now(), ly_do_duyet = p_ly_do
+   where id = any(coalesce(p_viec, '{}')) and trang_thai <> p_ket_qua;
+  get diagnostics v_m = row_count;
+  return v_n + v_m;
 end $$;
 
 -- CEO đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định
@@ -360,6 +457,126 @@ begin
    order by cv.ngay, cv.gio_bat_dau nulls last;
 end $$;
 
+-- ĐỐI CHIẾU cho màn duyệt: mỗi ca / mỗi việc kèm "đã khớp" (ERP có bằng chứng) hay để trống, cờ mâu thuẫn, làm hộ ai.
+-- Suy tại chỗ, KHÔNG lưu (CLAUDE.md §4 pure-derive).
+create or replace function fn_ta_doi_chieu(p_tu date, p_den date default null)
+returns table(loai_dong text, id uuid, cham_cong_id uuid, nhan_su_id uuid, ho_ten text, ngay date,
+              vao_at timestamptz, ra_at timestamptz, vao_chot timestamptz, ra_chot timestamptz, quen_ra boolean,
+              khai_bu boolean, nguon text, loai_viec text, ten_loai text, lop_id uuid, ten_lop text,
+              gio_bat_dau time, gio_ket_thuc time, hoc_sinh text, ghi_chu text,
+              khop boolean, co text[], lam_ho text, duyet text, ly_do_duyet text)
+language plpgsql stable security definer set search_path = public as $$
+#variable_conflict use_column
+declare v_den date := coalesce(p_den, p_tu);
+        v_homnay date := (now() at time zone 'Asia/Ho_Chi_Minh')::date;
+begin
+  if not public.co_chuc_nang('ta_cong_duyet') then raise exception 'Không có quyền xem đối chiếu công'; end if;
+  return query
+  -- CA CÓ MẶT
+  select 'ca'::text, cc.id, cc.id, cc.nhan_su_id, ns.ho_ten, cc.ngay, cc.vao_at, cc.ra_at, cc.vao_chot, cc.ra_chot,
+         (cc.ra_at is null and cc.ra_chot is null and cc.ngay < v_homnay),
+         cc.khai_bu, cc.nguon, null::text, null::text, null::uuid, null::text, null::time, null::time, null::text, ''::text,
+         null::boolean,   -- có mặt không có bằng chứng ERP để khớp: không áp dụng
+         array_remove(array[
+           case when cc.ra_at is null and cc.ra_chot is null and cc.ngay < v_homnay then 'quen_ra' end,
+           case when cc.khai_bu then 'khai_bu' end,
+           case when cc.nguon = 'nhap_ho' then 'nhap_ho' end,
+           case when not exists (select 1 from ta_cong_viec v where v.cham_cong_id = cc.id and v.trang_thai <> 'tu_choi') then 'ca_khong_viec' end
+         ], null),
+         null::text, cc.duyet, cc.ly_do_duyet
+    from ta_cham_cong cc join nhan_su ns on ns.id = cc.nhan_su_id
+   where cc.ngay between p_tu and v_den
+  union all
+  -- VIỆC
+  select 'viec'::text, cv.id, cv.cham_cong_id, cv.nhan_su_id, ns.ho_ten, cv.ngay, cc.vao_at, cc.ra_at, cc.vao_chot, cc.ra_chot,
+         false, cv.khai_bu, cv.nguon, cv.loai_viec, lv.ten, cv.lop_id, l.ten_lop, cv.gio_bat_dau, cv.gio_ket_thuc, cv.hoc_sinh, cv.ghi_chu,
+         kq.khop,
+         array_remove(array[
+           case when lv.tinh_vao = 'tg' and not kq.khop and exists (select 1 from buoi_hoc b where b.lop_id = cv.lop_id and b.ngay = cv.ngay
+                        and b.loai = 'thuong' and b.trang_thai = 'huy') then 'buoi_huy' end,
+           case when lv.tinh_vao = 'tg' and not exists (select 1 from buoi_hoc b where b.lop_id = cv.lop_id and b.ngay = cv.ngay
+                        and b.loai = 'thuong') then 'khong_co_buoi' end,
+           case when lv.tinh_vao = 'tg' and exists (select 1 from ta_cong_viec o join ta_loai_viec lo on lo.ma = o.loai_viec
+                        where o.lop_id = cv.lop_id and o.ngay = cv.ngay and lo.tinh_vao = 'tg' and o.trang_thai <> 'tu_choi'
+                          and o.nhan_su_id <> cv.nhan_su_id) then 'hai_ta_cung_buoi' end,
+           case when cc.id is not null and cv.gio_bat_dau is not null
+                     and cv.gio_bat_dau < (coalesce(cc.vao_chot, cc.vao_at) at time zone 'Asia/Ho_Chi_Minh')::time - interval '15 minutes' then 'truoc_gio_vao' end,
+           case when cc.id is not null and cv.gio_ket_thuc is not null and coalesce(cc.ra_chot, cc.ra_at) is not null
+                     and cv.gio_ket_thuc > (coalesce(cc.ra_chot, cc.ra_at) at time zone 'Asia/Ho_Chi_Minh')::time + interval '15 minutes' then 'sau_gio_ra' end,
+           case when cv.gio_bat_dau is not null and cv.gio_ket_thuc is not null and exists (select 1 from ta_cong_viec o
+                        where o.nhan_su_id = cv.nhan_su_id and o.ngay = cv.ngay and o.id <> cv.id and o.trang_thai <> 'tu_choi'
+                          and o.gio_bat_dau < cv.gio_ket_thuc and o.gio_ket_thuc > cv.gio_bat_dau) then 'trung_gio' end,
+           case when cv.gio_bat_dau < time '07:00' or cv.gio_ket_thuc > time '22:30' then 'ngoai_gio' end,
+           case when lv.don_vi = 'gio' and (cv.gio_bat_dau is null or cv.gio_ket_thuc is null) then 'thieu_gio' end,
+           case when lv.nhom = 'ngoai_package' and not exists (select 1 from ta_don_gia d where d.ma = 'gia_' || lv.ma and d.hieu_luc_tu <= cv.ngay) then 'chua_don_gia' end,
+           case when cv.khai_bu then 'khai_bu' end,
+           case when cv.nguon = 'nhap_ho' then 'nhap_ho' end,
+           case when cc.id is not null and cc.duyet = 'tu_choi' then 'ca_bi_tu_choi' end
+         ], null),
+         case when lv.tinh_vao = 'tg' and not exists (select 1 from phan_cong_lop pc where pc.lop_id = cv.lop_id and pc.nhan_su_id = cv.nhan_su_id and pc.vai_tro = 'tg')
+                then (select n2.ho_ten from phan_cong_lop pc join nhan_su n2 on n2.id = pc.nhan_su_id
+                       where pc.lop_id = cv.lop_id and pc.vai_tro = 'tg' order by pc.la_chinh desc, pc.created_at limit 1)
+              when cv.ca_bo_tro_id is not null and not exists (select 1 from ca_bo_tro c where c.id = cv.ca_bo_tro_id and cv.nhan_su_id in (c.nhan_su_id, c.nhan_su_2_id))
+                then (select n2.ho_ten from ca_bo_tro c join nhan_su n2 on n2.id = c.nhan_su_id where c.id = cv.ca_bo_tro_id)
+         end,
+         cv.trang_thai, cv.ly_do_duyet
+    from ta_cong_viec cv
+    join ta_loai_viec lv on lv.ma = cv.loai_viec
+    join nhan_su ns on ns.id = cv.nhan_su_id
+    left join lop l on l.id = cv.lop_id
+    left join ta_cham_cong cc on cc.id = cv.cham_cong_id
+    cross join lateral (select case
+        when lv.tinh_vao = 'tg' then exists (select 1 from buoi_hoc b where b.lop_id = cv.lop_id and b.ngay = cv.ngay
+                                              and b.loai = 'thuong' and b.trang_thai <> 'huy')
+        when cv.loai_viec = 'bo_tro_dinh_ki' then exists (select 1 from ca_bo_tro c where c.ngay = cv.ngay and c.trang_thai = 'mo'
+                                              and (c.id = cv.ca_bo_tro_id or cv.nhan_su_id in (c.nhan_su_id, c.nhan_su_2_id)))
+        when cv.loai_viec in ('bo_tro_bu', 'bo_tro_yeu', 'bo_tro_duoi') then exists (
+              select 1 from buoi_hoc b
+               where b.ngay = cv.ngay and b.trang_thai <> 'huy'
+                 and b.loai = case cv.loai_viec when 'bo_tro_bu' then 'bu' when 'bo_tro_yeu' then 'bo_tro_yeu' else 'bo_tro_duoi' end
+                 and (b.id = cv.buoi_hoc_id or b.nguoi_day = cv.nhan_su_id
+                      or exists (select 1 from ca_bo_tro c where c.id = b.ca_bo_tro_id and cv.nhan_su_id in (c.nhan_su_id, c.nhan_su_2_id)))
+                 and exists (select 1 from buoi_hoc_hs h where h.buoi_hoc_id = b.id and h.diem_danh = 'co_mat'))
+        when lv.tinh_vao = 'trong_thi' then exists (select 1 from buoi_hoc b join ky_thi kt on kt.buoi_hoc_id = b.id
+                                              where b.lop_id = cv.lop_id and b.ngay = cv.ngay)
+        else false end as khop) kq
+   where cv.ngay between p_tu and v_den
+   order by 6, 5, 1, 18 nulls first;
+end $$;
+
+-- BẤT BIẾN: mỗi buổi lớp diễn ra phải có một phiếu công trợ giảng; mỗi ca trực đã xếp phải có phiếu công.
+-- Trả về chỗ THIẾU (bắt ca nhờ dạy hộ mà không ai khai). Thuần suy, không đẻ dòng chờ.
+create or replace function fn_ta_buoi_thieu_cong(p_tu date, p_den date default null)
+returns table(loai text, ngay date, lop_id uuid, ten text, gio_bat_dau time, gio_ket_thuc time,
+              buoi_hoc_id uuid, ca_bo_tro_id uuid, nguoi_phu_trach text)
+language plpgsql stable security definer set search_path = public as $$
+#variable_conflict use_column
+declare v_homnay date := (now() at time zone 'Asia/Ho_Chi_Minh')::date;
+        v_gio time := (now() at time zone 'Asia/Ho_Chi_Minh')::time;
+        v_den date := least(coalesce(p_den, p_tu), v_homnay);
+begin
+  if not public.co_chuc_nang('ta_cong_duyet') then raise exception 'Không có quyền xem đối chiếu công'; end if;
+  return query
+  select 'buoi'::text, b.ngay, b.lop_id, l.ten_lop, b.gio_bat_dau, b.gio_ket_thuc, b.id, null::uuid,
+         (select n.ho_ten from phan_cong_lop pc join nhan_su n on n.id = pc.nhan_su_id
+           where pc.lop_id = b.lop_id and pc.vai_tro = 'tg' order by pc.la_chinh desc, pc.created_at limit 1)
+    from buoi_hoc b join lop l on l.id = b.lop_id
+   where b.loai = 'thuong' and b.trang_thai <> 'huy' and b.ngay between p_tu and v_den
+     and (b.ngay < v_homnay or b.gio_ket_thuc <= v_gio)   -- chỉ buổi ĐÃ kết thúc; buổi hôm nay chưa diễn ra không tính là thiếu
+     and not exists (select 1 from ta_cong_viec cv join ta_loai_viec lv on lv.ma = cv.loai_viec
+                      where cv.lop_id = b.lop_id and cv.ngay = b.ngay and lv.tinh_vao in ('tg', 'trong_thi') and cv.trang_thai <> 'tu_choi')
+  union all
+  select 'ca'::text, c.ngay, null::uuid, concat_ws(' ', 'Trực bổ trợ', c.mon, c.khoi), c.gio_bat_dau, c.gio_ket_thuc, null::uuid, c.id,
+         (select n.ho_ten from nhan_su n where n.id = c.nhan_su_id)
+    from ca_bo_tro c
+   where c.trang_thai = 'mo' and c.ngay between p_tu and v_den
+     and (c.ngay < v_homnay or c.gio_ket_thuc <= v_gio)
+     and not exists (select 1 from ta_cong_viec cv
+                      where cv.trang_thai <> 'tu_choi' and cv.ngay = c.ngay
+                        and (cv.ca_bo_tro_id = c.id or (cv.loai_viec = 'bo_tro_dinh_ki' and cv.nhan_su_id in (c.nhan_su_id, c.nhan_su_2_id))))
+   order by 2, 5 nulls last;
+end $$;
+
 -- Bảng đơn giá để CEO xem lại: dòng đang hiệu lực + lịch sử đổi
 create or replace function fn_ta_bang_don_gia(p_ngay date default null)
 returns table(ma text, ten text, si_tu integer, si_den integer, gia_tri numeric, don_vi text,
@@ -390,6 +607,12 @@ k as (
   select date_trunc('month', p_ky)::date as tu,
          (date_trunc('month', p_ky)::date + interval '1 month' - interval '1 day')::date as den
 ),
+cv_ok as (   -- việc được tính lương: đã duyệt VÀ ca có mặt của nó đã duyệt (việc nhập hộ / nạp cũ không gắn ca: chỉ cần việc đã duyệt)
+  select cv.* from ta_cong_viec cv, k
+   where cv.ky = k.tu and cv.trang_thai = 'da_duyet'
+     and (cv.cham_cong_id is null
+          or exists (select 1 from ta_cham_cong cc where cc.id = cv.cham_cong_id and cc.duyet = 'da_duyet'))
+),
 dg as (   -- đơn giá đang hiệu lực tại đầu kỳ (dòng mới nhất có hieu_luc_tu <= đầu kỳ)
   select distinct on (d.ma, coalesce(d.si_tu, -1)) d.ma, d.si_tu, d.si_den, d.gia_tri
     from ta_don_gia d, k where d.hieu_luc_tu <= k.tu
@@ -407,7 +630,7 @@ ta_sel as (
   select x.nhan_su_id from (
     select pc.nhan_su_id from phan_cong_lop pc where pc.vai_tro = 'tg'
     union
-    select cv.nhan_su_id from ta_cong_viec cv, k where cv.ky = k.tu and cv.trang_thai = 'da_duyet'
+    select cv.nhan_su_id from cv_ok cv
   ) x where p_ns is null or x.nhan_su_id = p_ns
 ),
 lop_cua as (
@@ -422,10 +645,10 @@ lop_cua as (
          and (pc.created_at at time zone 'Asia/Ho_Chi_Minh')::date <= k.den
       union all
       select cv.nhan_su_id, cv.lop_id, false, false
-        from ta_cong_viec cv
+        from cv_ok cv
         join ta_loai_viec lv on lv.ma = cv.loai_viec
-        join ta_sel s on s.nhan_su_id = cv.nhan_su_id, k
-       where cv.ky = k.tu and cv.trang_thai = 'da_duyet' and lv.tinh_vao = 'tg' and cv.lop_id is not null
+        join ta_sel s on s.nhan_su_id = cv.nhan_su_id
+       where lv.tinh_vao = 'tg' and cv.lop_id is not null
     ) x
    group by x.nhan_su_id, x.lop_id
 ),
@@ -453,10 +676,10 @@ lop_stat as (
                     and (h.ngay_roi is null or h.ngay_roi > d.d::date)) x) as si_tb,
     -- TG: từ CHẤM CÔNG đã duyệt (K2), theo ngày. Trông thi ở LỚP MÌNH nằm trong công TG: cùng ngày chỉ tính
     -- một lần vào TG (không trả tiền trông thi riêng — xem ngoai_dong), kể cả khi hôm đó chỉ có dòng trông thi.
-    (select count(distinct cv.ngay) from ta_cong_viec cv
-        join ta_loai_viec lv on lv.ma = cv.loai_viec, k
-      where cv.nhan_su_id = lc.nhan_su_id and cv.lop_id = lc.lop_id and cv.ky = k.tu
-        and cv.trang_thai = 'da_duyet' and lv.tinh_vao in ('tg', 'trong_thi'))::int as tg_lam
+    (select count(distinct cv.ngay) from cv_ok cv
+        join ta_loai_viec lv on lv.ma = cv.loai_viec
+      where cv.nhan_su_id = lc.nhan_su_id and cv.lop_id = lc.lop_id
+        and lv.tinh_vao in ('tg', 'trong_thi'))::int as tg_lam
     from lop_cua lc join lop l on l.id = lc.lop_id
 ),
 lop_bac as (
@@ -507,8 +730,8 @@ lop_tong as (
 bo as (
   select cv.nhan_su_id,
          sum(extract(epoch from (cv.gio_ket_thuc - cv.gio_bat_dau)) / 3600.0)::numeric as gio
-    from ta_cong_viec cv join ta_loai_viec lv on lv.ma = cv.loai_viec, k
-   where cv.ky = k.tu and cv.trang_thai = 'da_duyet' and lv.tinh_vao = 'bo_tro'
+    from cv_ok cv join ta_loai_viec lv on lv.ma = cv.loai_viec
+   where lv.tinh_vao = 'bo_tro'
      and cv.gio_bat_dau is not null and cv.gio_ket_thuc is not null
    group by cv.nhan_su_id
 ),
@@ -517,10 +740,10 @@ ngoai_dong as (
          case lv.don_vi when 'gio' then coalesce(extract(epoch from (cv.gio_ket_thuc - cv.gio_bat_dau)) / 3600.0, 0)
                         else 1 end as so_luong,
          (select gia_tri from dg where dg.ma = 'gia_' || lv.ma) as don_gia
-    from ta_cong_viec cv
+    from cv_ok cv
     join ta_loai_viec lv on lv.ma = cv.loai_viec
-    left join lop l on l.id = cv.lop_id, k
-   where cv.ky = k.tu and cv.trang_thai = 'da_duyet' and lv.nhom = 'ngoai_package'
+    left join lop l on l.id = cv.lop_id
+   where lv.nhom = 'ngoai_package'
      -- trông thi lớp mình nằm trong công TG, không tính riêng
      and not (lv.tinh_vao = 'trong_thi' and exists (
             select 1 from lop_cua lc where lc.nhan_su_id = cv.nhan_su_id and lc.lop_id = cv.lop_id))
@@ -587,13 +810,21 @@ end $$;
 
 -- ── 8. Quyền thực thi (SQL Editor cấp anon tường minh — revoke cả anon) ───────
 revoke execute on function _ta_luong_tinh(date, uuid) from public, anon, authenticated;
-revoke execute on function fn_ta_cham_cong_vao(text), fn_ta_cham_cong_ra(),
-  fn_ta_khai_viec(text, date, uuid, uuid, uuid, time, time, text, text),
-  fn_ta_duyet_cong(uuid[], text, text), fn_ta_dat_don_gia(text, numeric, date, text, integer, integer, text),
-  fn_ta_hom_nay(timestamptz), fn_ta_cong_thang(uuid, date), fn_ta_bang_don_gia(date), fn_ta_luong_thang(date, uuid)
+revoke execute on function
+  fn_ta_cham_cong_vao(text), fn_ta_cham_cong_ra(), fn_ta_cham_cong_khai_bu(timestamptz, timestamptz, text),
+  fn_ta_cham_cong_nhap_ho(uuid, timestamptz, timestamptz, text), fn_ta_chot_gio(uuid, timestamptz, timestamptz),
+  fn_ta_khai_viec(text, date, uuid, uuid, uuid, time, time, text, text), fn_ta_bo_viec(uuid, text),
+  fn_ta_nhap_ho_viec(uuid, text, date, uuid, uuid, uuid, time, time, text, text),
+  fn_ta_duyet_cong(uuid[], uuid[], text, text), fn_ta_dat_don_gia(text, numeric, date, text, integer, integer, text),
+  fn_ta_hom_nay(timestamptz), fn_ta_cong_thang(uuid, date), fn_ta_doi_chieu(date, date), fn_ta_buoi_thieu_cong(date, date),
+  fn_ta_bang_don_gia(date), fn_ta_luong_thang(date, uuid)
   from public, anon;
-grant execute on function fn_ta_cham_cong_vao(text), fn_ta_cham_cong_ra(),
-  fn_ta_khai_viec(text, date, uuid, uuid, uuid, time, time, text, text),
-  fn_ta_duyet_cong(uuid[], text, text), fn_ta_dat_don_gia(text, numeric, date, text, integer, integer, text),
-  fn_ta_hom_nay(timestamptz), fn_ta_cong_thang(uuid, date), fn_ta_bang_don_gia(date), fn_ta_luong_thang(date, uuid)
+grant execute on function
+  fn_ta_cham_cong_vao(text), fn_ta_cham_cong_ra(), fn_ta_cham_cong_khai_bu(timestamptz, timestamptz, text),
+  fn_ta_cham_cong_nhap_ho(uuid, timestamptz, timestamptz, text), fn_ta_chot_gio(uuid, timestamptz, timestamptz),
+  fn_ta_khai_viec(text, date, uuid, uuid, uuid, time, time, text, text), fn_ta_bo_viec(uuid, text),
+  fn_ta_nhap_ho_viec(uuid, text, date, uuid, uuid, uuid, time, time, text, text),
+  fn_ta_duyet_cong(uuid[], uuid[], text, text), fn_ta_dat_don_gia(text, numeric, date, text, integer, integer, text),
+  fn_ta_hom_nay(timestamptz), fn_ta_cong_thang(uuid, date), fn_ta_doi_chieu(date, date), fn_ta_buoi_thieu_cong(date, date),
+  fn_ta_bang_don_gia(date), fn_ta_luong_thang(date, uuid)
   to authenticated;

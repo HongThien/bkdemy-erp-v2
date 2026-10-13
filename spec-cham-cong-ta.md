@@ -2,7 +2,7 @@
 
 > **Đích:** lương TA tính hoàn toàn từ ERP, không qua file sheet; **mọi hoạt động của TA đều được ghi lại**, kể cả hoạt động thay thế và ngoài quy trình chính; CEO xem lại được mọi đơn giá.
 > **Phạm vi v1:** TA part-time theo package chuẩn. Full-time / core team làm sau (logic theo giờ làm, khác hẳn).
-> **Trạng thái:** thiết kế đã chốt phần lõi. Migration `202610122210_ta_cham_cong_va_luong.sql` **chưa áp**, cần chỉnh theo §8 trước khi áp. Tháng 9/2026 chỉ dùng tính lương (bản V6, 15 TA, 28.256.807đ), không nạp vào DB.
+> **Trạng thái:** thiết kế đã chốt phần lõi. Migration `202610122210_ta_cham_cong_va_luong.sql` đã chỉnh theo §8 và test rollback, **chưa áp**. Mockup để test: §9b. Tháng 9/2026 chỉ dùng tính lương (bản V6, 15 TA, 28.256.807đ), không nạp vào DB.
 
 ## 0. Ý tưởng gốc
 
@@ -36,6 +36,7 @@ Hai luật kéo theo:
 | | 17 | Trông thi **lớp mình** nằm trong công trợ giảng; **lớp khác** 50.000đ/giờ. Bổ trợ đặc biệt (kèm riêng) 150.000đ/buổi, tính riêng. |
 | | 18 | Đơn giá chỉ áp cho việc ngoài package, nằm ở **một bảng đơn giá có lịch sử** để CEO xem lại. |
 | | 19 | Chỉ CEO và Trang xem lương toàn bộ; TA chỉ xem của mình. |
+| | 20 | Chấm công **theo tài khoản** của từng TA (thiết bị nào cũng được). Người duyệt là **Phạm Thị Thùy Trang** (13/10). |
 
 ## 2. Mô hình: ba lớp
 
@@ -139,30 +140,32 @@ Mọi con số tính ở Postgres (`fn_ta_luong_thang`), app chỉ gọi (CLAUDE
 
 **Đã viết trong migration `202610122210` (chưa áp, đã test rollback):** `ta_don_gia` (chỉ thêm dòng) · `ta_loai_viec` · `ta_cham_cong` · `ta_cong_viec` · `ta_cong_log` · `phan_cong_lop_log` + trigger · `fn_ta_cham_cong_vao/ra` · `fn_ta_khai_viec` · `fn_ta_duyet_cong` · `fn_ta_dat_don_gia` · `fn_ta_hom_nay` · `fn_ta_cong_thang` · `fn_ta_bang_don_gia` · `fn_ta_luong_thang`.
 
-**Cần chỉnh trước khi áp (theo quyết định 13/10):**
-1. `ta_cham_cong`: thêm trạng thái duyệt (`cho_duyet`/`da_duyet`/`tu_choi`, người duyệt, lúc duyệt, lý do), giờ chốt (`vao_chot`, `ra_chot`), `khai_bu`, và nguồn `nguon` mở sẵn cho máy chấm công (`app`/`may_cham_cong`/`nhap_ho`).
-2. `ta_cong_viec`: thêm `khai_bu`; hàm khai chặn TA tự khai quá 24 giờ; nguồn thêm `nhap_ho`.
-3. `ta_loai_viec`: thêm chữa bài (tính vào bổ trợ), họp, đào tạo (ngoài package, chưa đơn giá).
-4. Hàm mới `fn_ta_doi_chieu(p_ngay)`: mỗi ca/việc kèm *đã khớp / trống*, cờ, "làm hộ ai" — **suy tại chỗ, không lưu**.
-5. Hàm mới `fn_ta_buoi_thieu_cong(p_tu, p_den)`: buổi lớp và ca trực không có phiếu công.
-6. `fn_ta_duyet_cong`: duyệt lô gồm cả ca có mặt và việc; từ chối bắt buộc lý do.
-7. `fn_ta_luong_thang`: chỉ tính việc thuộc ca có mặt đã duyệt.
-8. Chốt kỳ lương (`ta_luong_chot`, snapshot bất biến) + khoá sửa sau hạn ngày 3.
+**Đã chỉnh theo quyết định 13/10 (vẫn chưa áp; `scripts/luong-ta-t9/test_chamcong.mjs` = 31 ca test, chạy trong rollback):**
+1. `ta_cham_cong`: trạng thái duyệt riêng cho ca, giờ chốt (`vao_chot`, `ra_chot`) tách khỏi giờ gốc, `khai_bu`, `nguon` (`app`/`may_cham_cong`/`nhap_ho`). "Quên ra" là trạng thái suy (chưa có giờ ra mà đã sang ngày khác), không lưu cờ.
+2. `ta_cong_viec`: `khai_bu`, nguồn `nhap_ho`. `fn_ta_khai_viec` chặn khai trước cho ngày chưa tới và chặn quá 24 giờ.
+3. `ta_loai_viec`: thêm chữa bài (vào bổ trợ), họp, đào tạo. Trực bổ trợ khối không bắt chọn lớp.
+4. Hàm mới: `fn_ta_cham_cong_khai_bu` · `fn_ta_cham_cong_nhap_ho` · `fn_ta_chot_gio` · `fn_ta_bo_viec` · `fn_ta_nhap_ho_viec` · `fn_ta_doi_chieu` (đã khớp / trống, cờ, làm hộ ai — suy tại chỗ) · `fn_ta_buoi_thieu_cong` (chỉ buổi/ca đã kết thúc).
+5. `fn_ta_duyet_cong(p_ca, p_viec, kết quả, lý do)`: duyệt lô cả ca lẫn việc; ca chưa có giờ ra phải chốt giờ trước.
+6. `fn_ta_luong_thang`: chỉ tính việc đã duyệt thuộc ca có mặt đã duyệt.
+
+**Chưa làm:** chốt kỳ lương (`ta_luong_chot`, snapshot bất biến) + khoá sửa sau hạn ngày 3.
 
 **Quyền:** hai chức năng mới `ta_cong_duyet` và `ta_luong`, gán cho CEO và Trang.
 
 ## 9. Còn mở
 
-1. **Thiết bị chấm công:** iPad chung của trung tâm hay máy riêng từng TA. iPad chung thì mỗi người phải đăng nhập riêng mới biết ai khai.
-2. **"Trang" là tài khoản nào** để gán quyền: Phạm Thị Thùy Trang (Trưởng khối THCS) hay Hoàng Thị Quỳnh Trang (QLHT, cũng là TA "TrangQ").
-3. **Đơn giá** chấm thi, họp, đào tạo, việc khác.
-4. **Chấm ET** nằm trong 40% "trợ giảng + ET" nhưng chưa đo riêng; hiện 40% chỉ theo số buổi trợ giảng.
-5. **Dữ liệu ERP cần dọn trước lần chạy thật:** thiếu phân công Ngân → 3A1; TrangQ có 7B1/7B2 phân công treo và đang dạy 7S3 (ERP ghi Vân Anh); buổi còn trạng thái "mở" làm lệch mẫu số (tháng 9: 109/349 buổi).
-6. **Máy chấm công** (ý tưởng): khi có thì chỉ thay nguồn của lớp "Có mặt", hai lớp còn lại giữ nguyên.
+1. **Đơn giá** chấm thi, họp, đào tạo, việc khác.
+2. **Chấm ET** nằm trong 40% "trợ giảng + ET" nhưng chưa đo riêng; hiện 40% chỉ theo số buổi trợ giảng.
+3. **Dữ liệu ERP cần dọn trước lần chạy thật:** thiếu phân công Ngân → 3A1; TrangQ có 7B1/7B2 phân công treo và đang dạy 7S3 (ERP ghi Vân Anh); buổi còn trạng thái "mở" làm lệch mẫu số (tháng 9: 109/349 buổi).
+4. **Máy chấm công** (ý tưởng): khi có thì chỉ thay nguồn của lớp "Có mặt", hai lớp còn lại giữ nguyên.
+
+## 9b. Mockup để test
+
+`design/mockup-cham-cong-ta.html` (bản bấm được, dữ liệu giả, đã đưa lên Artifact). Gồm app TA (chấm công, việc hôm nay, thêm việc, khai bù, bảng công, lương tạm tính) và màn quản lý (duyệt công, thiếu công, bảng lương, đơn giá), kèm **12 kịch bản test** có các bước và kết quả mong đợi. Luật trong mockup chép từ hàm Postgres; khi luật đổi phải sửa cả hai.
 
 ## 10. Thứ tự build
 
-1. Chỉnh migration theo §8, test rollback, áp bằng `migrate.mjs --only`, `npm run schema`, commit.
+1. CEO và Trang test mockup (§9b), chốt giao diện. Áp migration bằng `migrate.mjs --only`, `npm run schema`, commit.
 2. Đăng ký 2 chức năng + gán quyền.
 3. App TA: Chấm công vào/ra · việc hôm nay · thêm việc · khai bù · bảng công của tôi.
 4. ERP: màn duyệt của Trang (§5) + khối buổi thiếu công.
