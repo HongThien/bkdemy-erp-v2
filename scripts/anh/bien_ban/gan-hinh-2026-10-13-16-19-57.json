@@ -1,0 +1,74 @@
+[
+ {
+  "ma": "HH00065001",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065001_de.png",
+  "kieu": "de",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e893889f-1d31-4544-9fd1-a7c8eb0b3525.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/25f313b5-cd4c-4825-81f0-68837e61c757.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065001-d186252e-0f17-4b96-8418-c56717b266a9.png"
+ },
+ {
+  "ma": "HH00065001",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065001_lg.png",
+  "kieu": "lg",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e893889f-1d31-4544-9fd1-a7c8eb0b3525.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/25f313b5-cd4c-4825-81f0-68837e61c757.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065001-c85c79ca-b562-4ff8-aa12-ae4b404887cb.png"
+ },
+ {
+  "ma": "HH00065002",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065002_de.png",
+  "kieu": "de",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/0c1154a9-0044-48b0-87f9-797d7f825e39.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/506ef227-fa95-4ae6-a54d-60b4baa2d529.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065002-3b37ad94-18d6-409f-ad5e-efed5bef4464.png"
+ },
+ {
+  "ma": "HH00065002",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065002_lg.png",
+  "kieu": "lg",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/0c1154a9-0044-48b0-87f9-797d7f825e39.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/506ef227-fa95-4ae6-a54d-60b4baa2d529.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065002-d942fccb-780c-48e3-9d0e-4330cac25c89.png"
+ },
+ {
+  "ma": "HH00065003",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065003_de.png",
+  "kieu": "de",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/aae33b7e-c9cc-4802-9fbf-e42c27e3c5fe.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/d2128569-c7a9-49fa-957d-76df00939ee0.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065003-efe48c77-c15e-4e02-9c97-4f3f1363c594.png"
+ },
+ {
+  "ma": "HH00065003",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065003_lg.png",
+  "kieu": "lg",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/aae33b7e-c9cc-4802-9fbf-e42c27e3c5fe.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/d2128569-c7a9-49fa-957d-76df00939ee0.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065003-554ef867-ce04-420a-8657-24449da7b5bc.png"
+ },
+ {
+  "ma": "HH00065004",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065004_de.png",
+  "kieu": "de",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/759d9b5d-be7f-4e7f-ac7b-a22ff1ce74cc.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/6e64b66c-825f-475f-8149-45db83b94dbf.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065004-3a9bd1d4-488c-4652-a3f6-0bf2e0792c55.png"
+ },
+ {
+  "ma": "HH00065004",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HH00065004_lg.png",
+  "kieu": "lg",
+  "anh_de_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/759d9b5d-be7f-4e7f-ac7b-a22ff1ce74cc.png",
+  "anh_dap_an_cu": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/6e64b66c-825f-475f-8149-45db83b94dbf.png",
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HH00065004-bc8c0591-2646-4a1f-aa9c-875cce8b3ded.png"
+ }
+]
