@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup — Mô hình Hình: Tab Chuỗi + Tab Nhóm</title>
+<style>
+:root{
+  --ink:#1f2530;--ink2:#5b6472;--ink3:#8a93a3;--line:#e6e8ee;--line2:#d3d7e0;--bg:#f5f6f9;
+  --c0:#1d9e75;--c0b:#e1f5ee;   /* gốc */
+  --c1:#378add;--c1b:#e6f1fb;   /* nhánh 1 */
+  --c2:#7f77dd;--c2b:#eeedfe;   /* nhánh con */
+  --c3:#ba7517;--c3b:#faeeda;   /* nhóm mới */
+  --wr:#c0392b;--wrb:#fdecec;--wy:#e0a100;--wyb:#fff6d6;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto;padding:18px 20px 80px}
+h1{font-size:19px;margin:0 0 4px}
+.sub{color:var(--ink2);font-size:12.5px;margin:0 0 14px;max-width:920px}
+.crumb{font-size:12.5px;color:var(--ink2);margin-bottom:8px}
+.crumb b{color:var(--ink)}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden;background:#fff}
+.seg button{border:none;background:#fff;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink2);border-right:1px solid var(--line)}
+.seg button:last-child{border-right:none}
+.seg button.on{background:#185fa5;color:#fff}
+.btn{height:34px;border:1px solid var(--line2);background:#fff;border-radius:8px;padding:0 12px;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink);white-space:nowrap}
+.btn:hover{background:#f2f4f8}
+.btn.pri{background:#185fa5;border-color:#185fa5;color:#fff}
+.btn.pri:disabled{background:#c9d3dd;border-color:#c9d3dd;cursor:not-allowed}
+.btn.sm{height:26px;font-size:11.5px;padding:0 8px}
+.chip{display:inline-flex;align-items:center;gap:5px;border-radius:14px;padding:2px 9px;font-size:11.5px;font-weight:600;border:1px solid transparent}
+.k0{background:var(--c0b);color:#0f6e56;border-color:var(--c0)}
+.k1{background:var(--c1b);color:#185fa5;border-color:var(--c1)}
+.k2{background:var(--c2b);color:#3c3489;border-color:var(--c2)}
+.k3{background:var(--c3b);color:#854f0b;border-color:var(--c3)}
+.warnchip{background:var(--wyb);color:#7a5a00;border:1px solid var(--wy);border-radius:6px;padding:1px 6px;font-size:10.5px;font-weight:700}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.split{display:grid;grid-template-columns:1fr 320px;gap:14px;align-items:start}
+@media(max-width:980px){.split{grid-template-columns:1fr}}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--ink3)}
+.m{font-style:italic;font-family:"Cambria Math",Cambria,Georgia,serif}
+
+/* ===== TAB 1: chuỗi ===== */
+.chain{position:relative;overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 18px}
+.cols{display:flex;gap:56px;position:relative;z-index:2;min-width:max-content}
+.col{width:210px;display:flex;flex-direction:column;gap:14px}
+.colh{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:700;text-align:center;background:#f4f6fa;border-radius:6px;padding:4px 0}
+.nd{border:1.5px solid var(--line2);background:#fff;border-radius:9px;padding:6px 9px 7px;font-size:11.8px;line-height:1.35;cursor:pointer;position:relative}
+.nd:hover{box-shadow:0 2px 8px rgba(20,30,50,.12)}
+.nd.sel{box-shadow:0 0 0 3px rgba(24,95,165,.25)}
+.nd.pick{outline:2px solid #185fa5}
+.nd .top{display:flex;gap:6px;align-items:center;margin-bottom:3px}
+.nd .stt{font-weight:800;font-size:12px}
+.nd input{margin:0 0 0 auto}
+.nd.bad{background:var(--wyb);border-color:var(--wy)}
+.nd.submodel{border-style:dashed;border-width:2px;background:var(--c0b);border-color:var(--c0)}
+.frames{position:absolute;inset:0;z-index:1;pointer-events:none}
+.frame{position:absolute;border:2px dashed;border-radius:12px}
+.frame span{position:absolute;top:-10px;left:12px;font-size:10.5px;font-weight:700;background:#fff;padding:0 6px;border-radius:5px}
+svg.edges{position:absolute;inset:0;z-index:3;pointer-events:none;width:100%;height:100%}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0;font-size:11.5px;color:var(--ink2);align-items:center}
+
+/* ===== TAB 2: nhóm ===== */
+.box{border:2px solid;border-radius:13px;padding:10px 12px 12px;margin:10px 0;background:#fff}
+.box.b0{border-color:var(--c0);background:#f7fdfa}
+.box.b1{border-color:var(--c1);background:#f6faff}
+.box.b2{border-color:var(--c2);background:#faf9ff}
+.box.b3{border-color:var(--c3);background:#fffaf1}
+.bhead{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+.bhead .t{font-weight:700}
+.gt{font-size:12px;background:rgba(0,0,0,.04);border-radius:6px;padding:5px 8px;margin:4px 0 8px;color:var(--ink2)}
+.gt b{color:var(--ink)}
+.direct{border:1.5px dashed var(--line2);border-radius:10px;padding:8px 10px;background:#fff;margin-bottom:6px}
+.direct .dl{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:700;margin-bottom:5px}
+.brow{display:flex;gap:8px;align-items:center;padding:5px 7px;border-radius:7px;font-size:12.5px;cursor:pointer}
+.brow:hover{background:#f2f6fb}
+.brow.sel{background:#e6f1fb}
+.brow .st{font-weight:800;min-width:30px}
+.brow .tx{flex:1;min-width:0}
+.brow select{font-size:11.5px;border:1px solid var(--line2);border-radius:6px;padding:2px 4px;background:#fff;max-width:150px}
+.subcard{border:2px dashed var(--c0);background:var(--c0b);border-radius:12px;padding:10px 12px;margin:10px 0;display:flex;gap:10px;align-items:center}
+
+/* ===== bên phải: chi tiết ===== */
+.side h3{font-size:13px;margin:0 0 6px}
+.kv{font-size:12.5px;margin:0 0 8px}
+.kv .k{color:var(--ink3);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;display:block}
+.path{font-size:12px;border-left:3px solid var(--c0);padding-left:9px;margin:2px 0 8px}
+.path .step{margin:3px 0}
+.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--c3);border-radius:0 10px 10px 0;padding:10px 13px;font-size:12.5px;color:var(--ink2);margin-top:14px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2530;color:#fff;padding:9px 15px;border-radius:9px;font-size:13px;opacity:0;transition:opacity .2s;z-index:50;pointer-events:none}
+.toast.on{opacity:1}
+</style></head>
+<body><div class="wrap">
+
+<div class="crumb">Kho › Hình › Luyện › Họ <b>Tam giác vuông</b> › Mô hình <b>MH.09.012 — Phân giác trong tam giác vuông</b></div>
+<h1>Mô hình Hình: hai tab của cùng một cây nhánh</h1>
+<p class="sub"><b>Tab Chuỗi</b> — nhìn toàn mô hình: cột = cấp (độ sâu theo tiền đề), mũi tên = tiền đề, khung nét đứt = nhánh. <b>Xây ở đây trước.</b>
+<b>Tab Nhóm</b> — card lồng nhau theo cây nhánh; bài chưa xếp nằm ở card đầu "bài trực tiếp của mô hình" (không có NULL). Hai tab đọc CÙNG dữ liệu: đổi nhóm ở tab này, tab kia đổi theo.
+Dữ liệu giả, chỉ để bấm thử.</p>
+
+<div class="bar">
+  <div class="seg"><button id="t1" class="on">① Chuỗi</button><button id="t2">② Nhóm</button></div>
+  <button class="btn pri" id="gom" disabled>Gom thành nhóm (<span id="nsel">0</span>)</button>
+  <button class="btn" id="reset">↺ Khôi phục dữ liệu mẫu</button>
+  <span class="mono" id="stat"></span>
+</div>
+
+<div class="split">
+  <div id="view"></div>
+  <div class="panel side" id="side"></div>
+</div>
+
+<div class="note"><b>Luật bất biến đang minh hoạ:</b> nhánh của bài phải <b>chứa</b> nhánh của mọi tiền đề (bài dùng được giả thiết mà tiền đề đã dùng). Vi phạm ⇒ <span class="warnchip">⚠ sai nhánh</span> + nút chuyển nhanh; <u>không chặn lưu</u>, nhưng builder từ chối in đề có bài sai nhánh. Thử: bài <b>1.9</b> đang ở gốc mà tiền đề là 1.6 (nhánh <i>DF ⊥ AC</i>).
+<br><b>Giả thiết hiệu lực</b> của bài = giả thiết mô hình gốc + giả thiết thêm của từng nhánh trên đường gốc → nhánh của bài + giả thiết riêng của bài. Anh em không thấy giả thiết của nhau; con thấy cha.</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SEED = () => ({
+  mo_hinh:{ma:'MH.09.012',ten:'Phân giác trong tam giác vuông',gt:'△ABC vuông tại A; AD là phân giác góc A (D ∈ BC).'},
+  nhanh:{
+    root:{id:'root',cha:null,ten:'Mô hình gốc',gt:'(giả thiết của mô hình)',cls:'0'},
+    n1:{id:'n1',cha:'root',ten:'Kẻ DE ⊥ AB',gt:'Kẻ DE ⊥ AB tại E.',cls:'1'},
+    n1a:{id:'n1a',cha:'n1',ten:'Kẻ thêm DF ⊥ AC',gt:'Kẻ thêm DF ⊥ AC tại F.',cls:'2'}
+  },
+  bai:[
+    {id:'b1',stt:'1.1',ten:'Chứng minh DB/DC = AB/AC',nhanh:'root',tien:[],rieng:''},
+    {id:'b2',stt:'1.2',ten:'Cho AB=3, AC=4. Tính AD',nhanh:'root',tien:['b1'],rieng:'AB = 3, AC = 4.'},
+    {id:'b3',stt:'1.3',ten:'Chứng minh △AED vuông cân tại E',nhanh:'n1',tien:[],rieng:''},
+    {id:'b4',stt:'1.4',ten:'Tính DE theo AB, AC',nhanh:'n1',tien:['b3','b1'],rieng:''},
+    {id:'b5',stt:'1.5',ten:'Chứng minh AE = DE',nhanh:'n1',tien:['b3'],rieng:''},
+    {id:'b6',stt:'1.6',ten:'Chứng minh AEDF là hình vuông',nhanh:'n1a',tien:['b3'],rieng:''},
+    {id:'b7',stt:'1.7',ten:'DE = AB·AC / (AB + AC)',nhanh:'n1a',tien:['b6','b4'],rieng:''},
+    {id:'b8',stt:'1.8',ten:'Chứng minh BE/EA = BD/DC',nhanh:'root',tien:['b1'],rieng:''},
+    {id:'b9',stt:'1.9',ten:'Tính diện tích AEDF theo AB, AC',nhanh:'root',tien:['b6'],rieng:''}
+  ],
+  sub:{ma:'MH.09.013',ten:'Phân giác + đường cao AH',gt:'Kẻ thêm AH ⊥ BC (H ∈ BC).',nBai:3}
+});
+let S = SEED();
+let tab = 1, sel = new Set(), cur = null, dem = 0;
+const $ = s => document.querySelector(s);
+const toast = m => {const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),1900)};
+const byId = id => S.bai.find(b=>b.id===id);
+const duong = nid => {const a=[];for(let n=S.nhanh[nid];n;n=n.cha?S.nhanh[n.cha]:null)a.unshift(n);return a};
+const chua = (nBai, nTien) => duong(nBai).some(n=>n.id===nTien);        // nhánh bài ⊒ nhánh tiền đề
+const sai = b => b.tien.filter(t=>!chua(b.nhanh, byId(t).nhanh));
+const level = (b, memo={}) => memo[b.id] ??= 1 + Math.max(0, ...b.tien.map(t=>level(byId(t),memo)));
+const clsOf = nid => S.nhanh[nid].cls;
+const tenNhanh = n => n.id==='root' ? 'Gốc' : n.ten;
+
+function renderStat(){
+  const nSai = S.bai.filter(b=>sai(b).length).length;
+  $('#stat').textContent = `${S.bai.length} bài · ${Object.keys(S.nhanh).length-1} nhánh · 1 mô hình con · ${nSai} bài sai nhánh`;
+  $('#nsel').textContent = sel.size;
+  $('#gom').disabled = sel.size<2;
+}
+
+/* ---------- TAB 1 ---------- */
+function drawChain(){
+  const memo={}; S.bai.forEach(b=>level(b,memo));
+  const maxL = Math.max(...Object.values(memo));
+  let h = '<div class="chain" id="chain"><div class="frames" id="frames"></div><svg class="edges" id="edges"></svg><div class="cols">';
+  for(let L=1;L<=maxL;L++){
+    h += `<div class="col"><div class="colh">Cấp ${L}${L===1?' · không tiền đề':''}</div>`;
+    S.bai.filter(b=>memo[b.id]===L).forEach(b=>{
+      const w = sai(b).length>0, n=S.nhanh[b.nhanh];
+      h += `<div class="nd ${w?'bad':''} ${cur===b.id?'sel':''} ${sel.has(b.id)?'pick':''}" data-id="${b.id}" style="border-color:var(--c${n.cls})">
+        <div class="top"><span class="stt">${b.stt}</span><span class="chip k${n.cls}">${tenNhanh(n)}</span><input type="checkbox" data-pick="${b.id}" ${sel.has(b.id)?'checked':''} title="Chọn để gom nhóm"></div>
+        ${b.ten}${w?'<div style="margin-top:4px"><span class="warnchip">⚠ sai nhánh</span></div>':''}</div>`;
+    });
+    if(L===1) h += `<div class="nd submodel" data-sub="1"><div class="top"><span class="stt">▸</span><span class="chip k0">Mô hình con</span></div><b>${S.sub.ten}</b><div class="mono">${S.sub.ma} · ${S.sub.nBai} bài · bấm để đi vào</div></div>`;
+    h += '</div>';
+  }
+  h += '</div></div>';
+  h += `<div class="legend"><b>Nhánh:</b> ${Object.values(S.nhanh).map(n=>`<span class="chip k${n.cls}">${tenNhanh(n)}</span>`).join('')}
+        <span>· khung nét đứt = phạm vi một nhánh (gồm cả nhánh con) · nền vàng = sai nhánh · tick ≥2 bài rồi “Gom thành nhóm”</span></div>`;
+  $('#view').innerHTML = h;
+  requestAnimationFrame(layoutChain);
+}
+function layoutChain(){
+  const ch=$('#chain'); if(!ch) return;
+  const box = ch.getBoundingClientRect();
+  const R = el => {const r=el.getBoundingClientRect();return {x:r.left-box.left+ch.scrollLeft,y:r.top-box.top,w:r.width,h:r.height}};
+  const pos={}; ch.querySelectorAll('.nd[data-id]').forEach(e=>pos[e.dataset.id]=R(e));
+  // cạnh tiền đề
+  let sv='<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#7b8696" stroke-width="1.3"/></marker><marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.5"/></marker></defs>';
+  S.bai.forEach(b=>b.tien.forEach(t=>{
+    const p=pos[t], q=pos[b.id]; if(!p||!q) return;
+    const bad=!chua(b.nhanh, byId(t).nhanh);
+    const x1=p.x+p.w, y1=p.y+p.h/2, x2=q.x, y2=q.y+q.h/2, mx=(x1+x2)/2;
+    sv+=`<path d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2-1},${y2}" fill="none" stroke="${bad?'#c0392b':'#7b8696'}" stroke-width="${bad?2:1.3}" ${bad?'stroke-dasharray="5 3"':''} marker-end="url(#${bad?'r':'a'})"/>`;
+  }));
+  $('#edges').innerHTML=sv; $('#edges').style.width=ch.scrollWidth+'px'; $('#edges').style.height=ch.scrollHeight+'px';
+  // khung nhánh (gồm cả con) — không vẽ cho gốc
+  let fh='';
+  Object.values(S.nhanh).filter(n=>n.id!=='root').forEach(n=>{
+    const ids = S.bai.filter(b=>duong(b.nhanh).some(x=>x.id===n.id)).map(b=>b.id);
+    const rs = ids.map(i=>pos[i]).filter(Boolean); if(!rs.length) return;
+    const pad = 8 + (n.cls==='2'?0:6);
+    const x=Math.min(...rs.map(r=>r.x))-pad, y=Math.min(...rs.map(r=>r.y))-pad-6;
+    const x2=Math.max(...rs.map(r=>r.x+r.w))+pad, y2=Math.max(...rs.map(r=>r.y+r.h))+pad;
+    fh+=`<div class="frame" style="left:${x}px;top:${y}px;width:${x2-x}px;height:${y2-y}px;border-color:var(--c${n.cls})"><span style="color:var(--c${n.cls})">${n.ten}</span></div>`;
+  });
+  $('#frames').innerHTML=fh; $('#frames').style.width=ch.scrollWidth+'px'; $('#frames').style.height=ch.scrollHeight+'px';
+}
+
+/* ---------- TAB 2 ---------- */
+function opts(b){return Object.values(S.nhanh).map(n=>`<option value="${n.id}" ${n.id===b.nhanh?'selected':''}>${'— '.repeat(duong(n.id).length-1)}${tenNhanh(n)}</option>`).join('')}
+function rowBai(b){
+  const w=sai(b).length>0;
+  return `<div class="brow ${cur===b.id?'sel':''}" data-id="${b.id}"><span class="st">${b.stt}</span><span class="tx">${b.ten}</span>${w?'<span class="warnchip">⚠ sai nhánh</span>':''}<select data-move="${b.id}" title="Chuyển sang nhóm…">${opts(b)}</select></div>`;
+}
+function boxNhanh(nid){
+  const n=S.nhanh[nid], kids=Object.values(S.nhanh).filter(x=>x.cha===nid), own=S.bai.filter(b=>b.nhanh===nid);
+  const dem=S.bai.filter(b=>duong(b.nhanh).some(x=>x.id===nid)).length;
+  let h=`<div class="box b${n.cls}"><div class="bhead"><span class="t">${nid==='root'?S.mo_hinh.ten:n.ten}</span><span class="chip k${n.cls}">${nid==='root'?'Mô hình':'Nhóm / nhánh'}</span><span class="mono">${dem} bài (cả nhánh con)</span>
+    ${nid==='root'?`<span class="mono">${S.mo_hinh.ma}</span>`:''}</div>
+    <div class="gt"><b>Giả thiết${nid==='root'?'':' thêm'}:</b> ${nid==='root'?S.mo_hinh.gt:n.gt}</div>`;
+  h+=`<div class="direct"><div class="dl">Bài trực tiếp của ${nid==='root'?'mô hình':'nhóm này'} · ${own.length}</div>${own.map(rowBai).join('')||'<div class="mono">— chưa có —</div>'}</div>`;
+  kids.forEach(k=>h+=boxNhanh(k.id));
+  if(nid==='root') h+=`<div class="subcard"><span class="chip k0">Mô hình con</span><div><b>${S.sub.ten}</b><div class="mono">${S.sub.ma} · ${S.sub.nBai} bài · giả thiết thêm: ${S.sub.gt}</div></div><button class="btn sm" data-sub="1">Đi vào ▸</button></div>`;
+  return h+'</div>';
+}
+function drawGroups(){ $('#view').innerHTML=boxNhanh('root'); }
+
+/* ---------- chi tiết bên phải ---------- */
+function drawSide(){
+  const b=cur&&byId(cur);
+  if(!b){ $('#side').innerHTML='<h3>Chi tiết bài</h3><div class="mono">Bấm một bài ở bất kỳ tab nào.</div>'; return; }
+  const ds=duong(b.nhanh), ws=sai(b);
+  $('#side').innerHTML=`<h3>Bài ${b.stt}</h3>
+    <div class="kv"><span class="k">Phát biểu</span>${b.ten}</div>
+    <div class="kv"><span class="k">Nhóm</span><span class="chip k${clsOf(b.nhanh)}">${tenNhanh(S.nhanh[b.nhanh])}</span></div>
+    <div class="kv"><span class="k">Giả thiết hiệu lực (gốc → nhánh → riêng)</span>
+      <div class="path"><div class="step"><b>Gốc:</b> ${S.mo_hinh.gt}</div>
+      ${ds.filter(n=>n.id!=='root').map(n=>`<div class="step"><b>+ ${n.ten}:</b> ${n.gt}</div>`).join('')}
+      ${b.rieng?`<div class="step"><b>+ Riêng bài:</b> ${b.rieng}</div>`:''}</div></div>
+    <div class="kv"><span class="k">Tiền đề</span>${b.tien.length?b.tien.map(t=>`<span class="chip k${clsOf(byId(t).nhanh)}" style="cursor:pointer" data-go="${t}">${byId(t).stt}</span>`).join(' '):'— không —'}</div>
+    ${ws.length?`<div class="kv" style="background:var(--wyb);border:1px solid var(--wy);border-radius:8px;padding:8px"><b>⚠ Sai nhánh.</b> Tiền đề ${ws.map(t=>byId(t).stt).join(', ')} nằm trong nhánh sâu hơn nhánh của bài này, nên bài không có đủ giả thiết để dùng nó.
+      <div style="margin-top:6px"><button class="btn sm" data-fix="${b.id}">Chuyển bài sang “${tenNhanh(S.nhanh[byId(ws[0]).nhanh])}”</button></div></div>`:''}
+    <div class="mono">Đổi nhóm = 1 UPDATE cột nhóm; không đụng tiền đề, không đổi mã ${b.id.replace('b','BT.09.012.0')}.</div>`;
+}
+
+/* ---------- vòng vẽ + sự kiện ---------- */
+function render(){ renderStat(); (tab===1?drawChain:drawGroups)(); drawSide(); $('#t1').classList.toggle('on',tab===1); $('#t2').classList.toggle('on',tab===2); }
+$('#t1').onclick=()=>{tab=1;render()}; $('#t2').onclick=()=>{tab=2;render()};
+$('#reset').onclick=()=>{S=SEED();sel.clear();cur=null;dem=0;render();toast('Đã khôi phục dữ liệu mẫu')};
+$('#gom').onclick=()=>{
+  dem++; const id='moi'+dem, ids=[...sel], cha=byId(ids[0]).nhanh;
+  S.nhanh[id]={id,cha,ten:'Nhóm mới '+dem,gt:'(đặt giả thiết thêm cho nhóm — bỏ trống nếu chỉ gom hiển thị)',cls:'3'};
+  ids.forEach(i=>byId(i).nhanh=id); sel.clear(); render();
+  toast(`Đã gom ${ids.length} bài vào “Nhóm mới ${dem}” — chuyển sang tab Nhóm để đặt tên`);
+};
+$('#view').addEventListener('click',e=>{
+  const pick=e.target.closest('[data-pick]'); if(pick){ pick.checked?sel.add(pick.dataset.pick):sel.delete(pick.dataset.pick); render(); e.stopPropagation(); return; }
+  if(e.target.closest('select')) return;
+  if(e.target.closest('[data-sub]')){ toast(`Đi vào mô hình con ${S.sub.ma} (màn riêng, cùng khuôn 2 tab)`); return; }
+  const n=e.target.closest('[data-id]'); if(n){ cur=n.dataset.id; render(); }
+});
+$('#view').addEventListener('change',e=>{
+  const s=e.target.closest('[data-move]'); if(!s) return;
+  const b=byId(s.dataset.move); b.nhanh=s.value; render();
+  toast(`${b.stt} → “${tenNhanh(S.nhanh[b.nhanh])}”`+(sai(b).length?' · ⚠ sai nhánh':''));
+});
+$('#side').addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]'); if(g){cur=g.dataset.go;render();return}
+  const f=e.target.closest('[data-fix]'); if(f){ const b=byId(f.dataset.fix); const t=sai(b)[0]; b.nhanh=byId(t).nhanh; render(); toast(`${b.stt} chuyển sang “${tenNhanh(S.nhanh[b.nhanh])}”`); }
+});
+window.addEventListener('resize',()=>tab===1&&layoutChain());
+render();
+</script></body></html>
