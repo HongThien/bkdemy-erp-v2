@@ -36,8 +36,9 @@ const mdDu = readFileSync(tep, 'utf8').replace(/\r\n/g, '\n')
 const iGhiChu = mdDu.search(/^## GHI CHÚ/m)
 const md = iGhiChu >= 0 ? mdDu.slice(0, iGhiChu) : mdDu
 const loi = [], nhac = []
-// Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10).
-const NHAN_CHAM = String(KHOI) !== '8'
+// Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10)
+// · khối 9 dấu nhân \cdot (k9.md §3), hệ thức lượng vào HGT (hgt/k9.md).
+const NHAN_CHAM = !['8', '9'].includes(String(KHOI))
 const KHO_DUOC = ['7', '8'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)
 if (!mTen) loi.push('thiếu dòng đầu "# ĐỀ | <tên đề>"')
