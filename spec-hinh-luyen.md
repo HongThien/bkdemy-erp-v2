@@ -98,6 +98,36 @@ Muốn "lấy ý b của đề trường X ghép ý c của đề trường Y" �
 
 **Luật 4 — dựng cành từ lá (P2, Thùy):** đọc N lá cùng nhãn: dữ kiện lặp ở nhiều lá ⇒ `gia_thiet` mô hình; chỉ ở một vài lá ⇒ `gia_thiet_them` mô hình con hoặc `gia_thiet_rieng` bài mô hình. Hỗ trợ: màn M2 có ngăn "lá cùng nhãn" hiện `gia_thiet_chung` + `gia_thiet_them` các lá xếp cột cạnh nhau (chỉ xem). Không máy tự gom.
 
+### 2.6 Chuẩn bị tầng CÀNH NHỎ trong mô hình (CEO 13/10 — "sau này chắc chắn có, chưa cần ngay")
+
+Mô hình có 10–30 bài mô hình nhưng không phải lá nào cũng thông nhau: cành chia thành **cành nhỏ 3–4 lá**. Bản chất = phân tầng như Đại:
+
+| Đại (spec-ban-do-4-tang) | Hình luyện | Bảng | Trạng thái |
+|---|---|---|---|
+| Chủ đề | Họ mô hình (gốc `la_goc_ho`) | `hinh_mo_hinh` | có |
+| Chuyên đề | Mô hình (bó giả thiết, DAG cha–con) | `hinh_mo_hinh` + `_cha` | có |
+| **Nhóm bài** (KP, mastery) | **Cành nhỏ** — cụm 3–4 bài mô hình thông nhau | `hinh_mo_hinh_nhom` | **CHƯA — để dành** |
+| Dạng bài | Bài mô hình | `hinh_baitoan` | có |
+| Câu | Ý của bài kho | `hinh_y` | spec này |
+
+Khác Đại ở một điểm: cành nhỏ **không mang giả thiết mới** (nếu mang ⇒ đó là mô hình con, đã có DAG). Cành nhỏ chỉ là *gom + đặt tên + thứ tự* — như "Nhóm bài" Đại sau khi CEO bỏ nối tiền đề 11/10.
+
+**Dữ liệu gợi ý đã có:** đồ thị tiền đề `hinh_cach_tien_de` trong một mô hình ⇒ **thành phần liên thông** (`chuoiKetNoi`) ≈ cành nhỏ tự nhiên. Khi dựng tầng này, M2 gợi ý "cụm thông nhau" từ đồ thị, Thùy đặt tên/sửa — máy gợi, người quyết.
+
+**Chuẩn bị NGAY (0 migration, chỉ quy ước) — ba điều CẤM để sau không phải phá:**
+1. **Mã bài mô hình KHÔNG mã hoá cành nhỏ.** Giữ `BT.<khối>.<mh>.<stt>`; cấm mở rộng thành `BT.k.mh.nhom.stt` (chuyển bài sang cành khác sẽ phải cấp mã lại — policy 1a đã đủ đau ở tầng mô hình).
+2. **Mọi hàm đo/rollup nhận TẬP `baitoan_id`**, không nhận `mo_hinh_id`: `fn_hl_mastery(hs, baitoan_id)` là nguyên tử; rollup = gọi trên tập — tập của cành nhỏ / mô hình / họ dùng **cùng một hàm**. Không viết `fn_..._theo_mo_hinh` riêng.
+3. **UI M2/M3/builder không giả định 2 tầng** (mô hình → bài). Danh sách bài trong mô hình render từ một hàm "nhóm bài theo …" — nay trả 1 nhóm, mai trả N nhóm, màn không đổi.
+
+**Khi tới lúc (1 migration, ~1 ngày):**
+```sql
+create table hinh_mo_hinh_nhom (id uuid pk, mo_hinh_id uuid not null references hinh_mo_hinh(id), mon text not null default 'Toán',
+  ten text not null, thu_tu int not null default 0, ghi_chu text, created_at timestamptz default now());
+alter table hinh_baitoan add column nhom_id uuid references hinh_mo_hinh_nhom(id) on delete set null;  -- NULL = chưa xếp (như ma_cum Đại)
+-- bất biến: nhom.mo_hinh_id = baitoan.mo_hinh_id (trigger kiểm) · KP đo có thể dời từ bài mô hình lên cành nhỏ bằng rollup, lịch sử ý không đổi
+```
++ M2 thêm swimlane cành nhỏ (kéo thả bài vào, như BanDoMoi) · builder nguồn cành: tick cả cành nhỏ = tick mọi bài trong nó.
+
 Hàm Postgres (CLAUDE.md §2.0 — tính ở DB):
 - `fn_hl_bai_full(bai_id)` → jsonb bài + mảng ý, mỗi ý đã **resolve hình** (`anh_de` của ý ∨ ý trước ∨ bài) và **giả thiết hiệu lực** (`gia_thiet_chung` + mọi `gia_thiet_them` của ý ≤ nó).
 - `fn_hl_chon_y(bai_id, y_ids uuid[])` → khung in khi người dùng chọn tập ý: ý **không chọn** mà nằm trước ý chọn ⇒ nở thành **bước** trong ý chọn kế tiếp (đúng luật `noDapAn` hiện có, áp lên chuỗi tuyến tính). Chọn `{b}` của bài a,b,c ⇒ đề = giả thiết chung + gt thêm của a,b; lời giải b mở đầu bằng lời giải a dưới nhãn "bước".
