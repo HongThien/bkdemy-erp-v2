@@ -370,36 +370,40 @@ export default function HomeScreen() {
   const conOrder = hienBox('order')
   const dsNhom = xep(khuLuoi).filter(hienBox)
   const lenViec = () => dh.di(LEAF_VIEC)
+  // Việc hôm nay (bảng nhỏ, 5 việc): có cột nhân vật ⇒ nằm GÓC TRÊN TRÁI của cột đó (phía trên chỗ nhân vật ngồi, giữ nguyên chỗ
+  // nhân vật); không có cột nhân vật (style không có / màn hẹp) ⇒ đứng đầu hàng lời chào.
+  const viecNgay = hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} /> : null
   return (
     <section style={khung} className="min-h-0 overflow-auto text-[var(--sk-ink)]">
       <div className={`mx-auto flex min-h-full max-w-[1500px] gap-5 ${le}`}>
         {coNv && (
-          <div className="sticky bottom-0 flex w-[22%] shrink-0 flex-col items-center justify-end self-end">
-            <div className="relative mb-2 ml-auto mr-2 max-w-[220px] rounded-2xl bg-white/95 px-3.5 py-2.5 text-[12.5px] font-medium leading-snug text-slate-700 shadow-lg">
-              {dsYeuThich.length ? 'Mục hay dùng nằm ngay hàng ★ Yêu thích — bấm là vào thẳng.' : 'Mở một nhóm rồi bấm ☆ ở mục hay dùng, mình sẽ để sẵn ở hàng Yêu thích.'}
-              <span className="absolute -bottom-1.5 left-8 size-3 rotate-45 bg-white/95" />
+          <div className="flex w-[25%] shrink-0 flex-col self-stretch">
+            {viecNgay && <div className="shrink-0">{viecNgay}</div>}
+            <div className="sticky bottom-0 mt-auto flex flex-col items-center justify-end pt-3">
+              <div className="relative mb-2 ml-auto mr-2 max-w-[220px] rounded-2xl bg-white/95 px-3.5 py-2.5 text-[12.5px] font-medium leading-snug text-slate-700 shadow-lg">
+                {dsYeuThich.length ? 'Mục hay dùng nằm ngay hàng ★ Yêu thích — bấm là vào thẳng.' : 'Mở một nhóm rồi bấm ☆ ở mục hay dùng, mình sẽ để sẵn ở hàng Yêu thích.'}
+                <span className="absolute -bottom-1.5 left-8 size-3 rotate-45 bg-white/95" />
+              </div>
+              <img src={sk.nhanVat} alt="" draggable={false} className="max-h-[56vh] w-full object-contain object-bottom"
+                style={{ filter: sk.nhanVatLoc ?? 'drop-shadow(0 14px 22px rgba(0,0,0,.5))' }} />
             </div>
-            <img src={sk.nhanVat} alt="" draggable={false} className="max-h-[56vh] w-full object-contain object-bottom"
-              style={{ filter: sk.nhanVatLoc ?? 'drop-shadow(0 14px 22px rgba(0,0,0,.5))' }} />
           </div>
         )}
         <div className="min-w-0 flex-1">
-          {/* HÀNG ĐẦU: Việc hôm nay (góc trái, 5 việc) · Lời chào · Việc phát triển (3 task báo động nhất) */}
-          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-stretch gap-4'}>
-            {hienBox('viec_ngay') && <div className={isMobile ? '' : 'w-[340px] shrink-0'}><ViecHangNgay compact onMoVietCuaToi={lenViec} /></div>}
-            <div className={isMobile ? '' : 'flex min-w-[230px] flex-1 flex-col gap-3'}>
-              <div className="self-start px-4 py-2.5" style={tam}>
-                <h2 className={isMobile ? 'text-[23px] font-bold leading-tight' : 'text-[30px] font-bold leading-[1.12]'} style={HEAD}>
-                  <span className="text-[var(--sk-acc)]">✦</span> {tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}
-                </h2>
-                <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
-              </div>
-              <div className="flex flex-wrap items-start gap-2">
-                {coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} />}
-                <ChonGiaoDien hep={isMobile} />
-              </div>
+          {/* HÀNG ĐẦU: lời chào · Việc phát triển (3 task báo động nhất, ngang lời chào) · nút Tuỳ chỉnh / Giao diện */}
+          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4'}>
+            {!coNv && viecNgay && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{viecNgay}</div>}
+            <div className="shrink-0 px-4 py-2.5" style={tam}>
+              <h2 className={isMobile ? 'text-[23px] font-bold leading-tight' : 'text-[32px] font-bold leading-[1.12]'} style={HEAD}>
+                <span className="text-[var(--sk-acc)]">✦</span> {tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}
+              </h2>
+              <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
             </div>
-            {hienBox('tien_do') && <div className={isMobile ? '' : 'w-[440px] shrink-0'}><TienDoViec /></div>}
+            {hienBox('tien_do') && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}><TienDoViec /></div>}
+            <div className="ml-auto flex flex-wrap items-start gap-2">
+              {coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} />}
+              <ChonGiaoDien hep={isMobile} />
+            </div>
           </div>
 
           {hienBox('yeu_thich') && (
@@ -426,7 +430,7 @@ export default function HomeScreen() {
             <>
               <Nhan>Tất cả</Nhan>
               <div className={isMobile ? 'space-y-4' : 'flex items-start gap-4'}>
-                {conOrder && <div className={isMobile ? '' : `min-w-[320px] ${dsNhom.length ? 'w-[44%] shrink-0' : 'flex-1'}`}><BangOrder /></div>}
+                {conOrder && <div className={isMobile ? '' : `min-w-[320px] ${dsNhom.length ? 'w-1/2 shrink-0' : 'flex-1'}`}><BangOrder /></div>}
                 {dsNhom.length > 0 && (
                   <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid min-w-0 flex-1 ${conOrder ? luoiHep : luoiRong} gap-3`}>
                     {dsNhom.map((id) => {
