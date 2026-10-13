@@ -57,7 +57,9 @@ export default defineConfig({
         globIgnores: ['**/bk-ui/hs/gami/huy-hieu/**', '**/bk-ui/hs/gami/rank/**', '**/games/**'],
         // /dautu.html = khung game nhúng bằng <iframe> trong app HS (khu Học tập). Service worker trả index.html (app HS) cho MỌI điều hướng không khớp bộ lưu sẵn — mà `dautu.html?nhung=1&…` có query nên
         // KHÔNG khớp ⇒ khung game hiện lại màn chính app HS = "bấm Đấu trường BK là về Home" (Thùy 03/10; chỉ lộ ở bản có SW/PWA — dev server không có SW nên không tái hiện). Loại ra để đi thẳng mạng.
-        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//, /^\/dautu\.html/],
+        // /games/ = game nhúng bằng <iframe> (Nông trại BK: /games/nong-trai/index.html?nhung=1) — cùng lỗi như dautu.html: không nằm trong bộ lưu sẵn nên service worker trả index.html (app HS) vào khung
+        // ⇒ khung game hiện lại app HS = "không vào được trò chơi" (Thùy 13/10, TEST07; chỉ lộ ở bản production có SW). Loại ra để đi thẳng mạng.
+        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//, /^\/dautu\.html/, /^\/games\//],
       },
     }),
     renameToIndex(),

@@ -37252,3 +37252,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thiết kế:** 3 lớp Có mặt – Việc – Bằng chứng (three-way match, duyệt theo ngoại lệ). Việc thay thế: TA chọn đúng lớp/ca, hệ thống TỰ SUY làm hộ ai. Bất biến: mỗi buổi lớp diễn ra phải có một phiếu công trợ giảng, thiếu thì hiện cờ.
 - **Làm:** viết lại sạch `spec-cham-cong-ta.md` (bỏ QR, bỏ "dạy thay vào lớp chính", công thức lương bản cuối, §8 liệt kê 8 chỗ migration `202610122210` cần chỉnh trước khi áp). Migration CHƯA sửa, CHƯA áp.
 - **Còn mở:** thiết bị (iPad chung hay máy riêng) · "Trang" là tài khoản nào · đơn giá chấm thi/họp/đào tạo · chấm ET chưa đo riêng trong 40%.
+
+## 13/10 — Nông trại: "TEST07 không vào được trò chơi" — service worker trả app HS vào khung game
+- **Triệu chứng (Thùy):** TEST07 không vào được Trò chơi. DB đã kiểm đúng: `fn_hs_tinh_nang_mo()` của TEST06/TEST07 trả cả `tro_choi` + `nong_trai`; `fn_nt_luu_doc/nhip/ban_ds` chạy bình thường.
+- **Nguyên nhân (suy ra, chưa tái hiện được vì Browser pane không đăng ký được service worker):** `vite.config.hs.ts` — Workbox `navigateFallback` trả `index.html` (app HS) cho MỌI điều hướng không có trong bộ lưu sẵn; `games/**` cố ý KHÔNG vào bộ lưu sẵn ⇒ khung `<iframe src="/games/nong-trai/index.html?nhung=1">` nhận lại chính app HS. Cùng lỗi từng sửa cho `/dautu.html` (03/10, commit b8edcec0) — chỉ lộ ở bản production có SW/PWA, dev server không có SW nên mọi lần kiểm bằng harness đều "đúng".
+- **Sửa:** thêm `/^\/games\//` vào `navigateFallbackDenylist`; build lại `dist-hs/sw.js` xác nhận denylist có `/^\/games\//`.
+- **Sau deploy:** SW mới tự cập nhật (autoUpdate) — máy đã cài PWA có thể cần mở lại app 1–2 lần.
