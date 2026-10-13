@@ -37227,3 +37227,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm (harness, tài khoản mới 0 ĐHT):** chạy tự động cả 11 bước hướng dẫn ⇒ xong, cấp 2, 0 khoản bị từ chối, +1 xu EXP từ bán cà rốt.
 - **Mở (mig `202610131627`, ĐÃ ÁP):** `tinh_nang_lop` mo=true cho `tro_choi` + `nong_trai` chỉ ở lớp **"TEST · Toán 9"** (TEST06, TEST07). Toàn hệ thống VẪN đóng (mo_tu NULL): kiểm `fn_hs_tinh_nang_mo` — 2 tài khoản test thấy cả hai, 1 HS lớp thật 9C1 không thấy. Hoàn tác: `delete from tinh_nang_lop where lop_id = '8030bf93-…' and ma in ('tro_choi','nong_trai')`.
 - **Chờ Thùy:** (1) chơi thử bằng TEST06 + TEST07 (thăm/giúp/hái nhau, điểm học tập, xu vào ví, giờ chơi); (2) người dẫn truyện thay "Bác Hai"; (3) lớp/ngày mở cho HS thật.
+
+## 13/10 — Nông trại: LỘC làm người dẫn truyện (thay "Bác Hai")
+- **Thùy:** "Dùng Lộc làm người dẫn truyện đi."
+- **Cách làm:** game (cùng origin trong app) đọc thẳng khung webp ĐÃ NÉN của Lộc ở `/bk-ui/hs/skin/rpg/loc/<dong>_<NN>.webp` (120 file, đã nằm trong git, scripts/anime-loc.mjs). Player nhỏ trong `ui.js` (`locChoi`): 8 khung/giây, động tác lặp (idle/talking/explaining/reading) hay "một lần" giữ ở khung đỉnh (thinking/winking/laughing 5, surprised 4, goodbye 5 — khung cuối của chúng không còn đúng động tác). Không tải được ảnh (mở game đứng riêng) ⇒ hình 🧚 dự phòng.
+- **Động tác theo bước:** chào=greeting · gieo=explaining · tưới=point_up · phép=winking · thu=cheering · bán=open_book · sang vườn=point_right · giúp=talking · hái=winking · về=point_left · chó=laughing · kết=goodbye; mẹo lần đầu=explaining.
+- **Giọng:** Lộc xưng "mình", gọi "em" (bỏ "bác/cháu"); toàn bộ chữ "cháu" còn lại trong game đổi thành "em".
+- **Kiểm:** harness — hộp hướng dẫn hiện Lộc + chữ đúng, `greeting_08.webp` 363px, không lỗi; `test-engine` vẫn "Tất cả luật đúng".

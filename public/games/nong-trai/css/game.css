@@ -56,6 +56,10 @@ img { -webkit-user-drag: none; }
 /* hướng dẫn: Bác Hai + mũi tên */
 #hdHop { position: fixed; left: 50%; bottom: calc(max(12px, env(safe-area-inset-bottom)) + 96px); transform: translateX(-50%); z-index: 45; width: min(94vw, 520px); display: flex; gap: 10px; align-items: flex-end; pointer-events: none; }
 #hdHop .hdMat { flex: none; width: 76px; height: 76px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff7d6, #ffd98a); border: 4px solid #fff; box-shadow: 0 4px 12px var(--bong); display: grid; place-items: center; font-size: 46px; animation: nhun 2.4s ease-in-out infinite; }
+#hdHop .hdLoc { flex: none; width: 92px; height: 98px; display: grid; place-items: end center; filter: drop-shadow(0 4px 6px var(--bong)); margin-bottom: -6px; }
+#hdHop .hdLoc img { width: 100%; height: auto; display: block; pointer-events: none; user-select: none; }
+#hdHop .hdLoc.du { font-size: 56px; align-items: end; }
+@media (max-height: 460px) { #hdHop .hdLoc { width: 66px; height: 70px; } }
 #hdHop .hdNoi { position: relative; flex: 1; padding: 10px 14px; border-radius: 20px; background: #fffdf5; border: 3px solid var(--go); box-shadow: 0 6px 16px var(--bong); pointer-events: auto; }
 #hdHop .hdNoi::before { content: ''; position: absolute; left: -14px; bottom: 18px; border: 8px solid transparent; border-right: 8px solid var(--go); }
 #hdHop .hdNoi b { color: var(--go-dam); font-size: 15px; }

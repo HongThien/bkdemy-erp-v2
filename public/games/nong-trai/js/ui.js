@@ -47,12 +47,12 @@ function hieuUng(su, chon) {
     else if (e.loai === 'nuong') { S.hat(chon, 'khoi', 3); S.nay(chon, 0.12); AM.on('pop'); }
     else if (e.loai === 'moO') { const o = { loai: 'ruong', i: e.i }; S.hat(o, 'dat', 12); S.hat(o, 'sao', 8); AM.on('xay'); }
     else if (e.loai === 'thuCung') { S.hat(chon, 'tim', 6); S.nay(chon, 0.2); AM.on('tim'); }
-    else if (e.loai === 'tcMoc') { const T = D.THU[e.thu], loi = { cho: ['chó bắt đầu đuổi trộm giúp cháu', 'chó đuổi trộm giỏi hơn', 'chó thành vệ sĩ số 1'], meo: ['mèo bắt đầu tha quà về', 'mèo tha quà nhiều hơn', 'mèo tha quà nhiều nhất'], chim: ['chim quen cháu rồi', 'chim bắt sâu giúp mỗi sáng', 'chim là bạn thân'] }[e.thu]; thongBao('💗 ' + T.ten + ' quý cháu hơn rồi — ' + loi[e.moc - 1]); hoaGiay(); }
+    else if (e.loai === 'tcMoc') { const T = D.THU[e.thu], loi = { cho: ['chó bắt đầu đuổi trộm giúp em', 'chó đuổi trộm giỏi hơn', 'chó thành vệ sĩ số 1'], meo: ['mèo bắt đầu tha quà về', 'mèo tha quà nhiều hơn', 'mèo tha quà nhiều nhất'], chim: ['chim quen em rồi', 'chim bắt sâu giúp mỗi sáng', 'chim là bạn thân'] }[e.thu]; thongBao('💗 ' + T.ten + ' quý em hơn rồi — ' + loi[e.moc - 1]); hoaGiay(); }
     else if (e.loai === 'trangTri') { S.hat({ loai: 'tt', o: e.o }, 'sao', 8); AM.on('pop'); }
     else if (e.loai === 'trom') { S.hat({ loai: 'ruong', i: e.j }, 'la', 6); AM.on('soat'); }
     else if (e.loai === 'choDuoi') { thongBao('🐶 Gâu gâu! Chó nhà bạn đuổi em chạy mất rồi — mất 1 lượt'); AM.on('loi'); }
     else if (e.loai === 'ban') AM.on('xu');
-    else if (e.loai === 'hdXong') { thongBao('🎉 Cháu đã học xong! Mai nhớ ghé thăm nông trại nhé'); hoaGiay(); }
+    else if (e.loai === 'hdXong') { thongBao('🎉 Em đã học xong! Mai nhớ ghé thăm nông trại nhé'); hoaGiay(); }
     else if (e.loai === 'lenCap') { setTimeout(() => { AM.on('lenCap'); hoaGiay(); }, 700); hangLenCap.push(e); if (hangLenCap.length === 1) setTimeout(() => moLenCap(hangLenCap[0]), 900); }
   }
 }
@@ -207,7 +207,7 @@ function bongO(i) {
     const tt = E.oTT(s, i);
     if (tt.tt === 'khoa') {
       if (!tt.ke) return null; const c = tt.cfg, du = s.cap >= c.cap && s.diem >= c.diem;
-      return { key: 'k' + s.cap + '|' + s.diem, html: `<h4>Mở ô ruộng mới</h4><div class="phu">Cần <b>cấp ${c.cap}</b> và <b>${c.diem} điểm học tập</b><br>Cháu đang có cấp ${s.cap} · ${s.diem} 📘${s.diem < c.diem ? '<br>Làm bài trên app để có thêm điểm nhé' : ''}</div>
+      return { key: 'k' + s.cap + '|' + s.diem, html: `<h4>Mở ô ruộng mới</h4><div class="phu">Cần <b>cấp ${c.cap}</b> và <b>${c.diem} điểm học tập</b><br>Em đang có cấp ${s.cap} · ${s.diem} 📘${s.diem < c.diem ? '<br>Làm bài trên app để có thêm điểm nhé' : ''}</div>
         <div class="dongNut"><button class="nut ${du ? 'vang' : 'xam'}" data-l="mo">📘 ${c.diem} · Mở ô</button></div>`,
         gan: el => el.querySelector('[data-l=mo]').onclick = () => { if (lam(E.moO(s), chon)) dongBong(); } };
     }
@@ -413,7 +413,7 @@ function veCho() {
   }
   if (choTab === 'lai') {
     const ds = E.bangLai(s), m = E.muaHom(s);
-    html += `<p class="nho">Cây mùa ${m.M.ten} + cây quanh năm. Giả sử cháu tưới đủ mỗi ngày${m.bonus ? ', có bonus mùa +' + Math.round(m.bonus * 100) + '%' : ''}. Lãi = tiền bán − tiền bịch (− tiền phân nếu bón), chia cho số ngày.</p>
+    html += `<p class="nho">Cây mùa ${m.M.ten} + cây quanh năm. Giả sử em tưới đủ mỗi ngày${m.bonus ? ', có bonus mùa +' + Math.round(m.bonus * 100) + '%' : ''}. Lãi = tiền bán − tiền bịch (− tiền phân nếu bón), chia cho số ngày.</p>
       <div class="cuonNgang"><table class="bangLai"><tr><th>Cây</th><th>Ngày</th><th>Bịch</th><th>Thu (quả)</th><th>Giá/quả</th><th>Lãi/ngày</th><th>Có bón</th></tr>
       ${ds.map(r => `<tr class="${r.cap > s.cap ? 'khoa' : ''}"><td>${img(r.id, 'nho')} ${r.ten}${r.cap > s.cap ? ' 🔒' + r.cap : ''}</td><td>${r.ngay}</td><td>${dht() ? r.diem + ' 📘' : r.hat + ' EXP<br><span class="nho">hoặc ' + r.diem + '📘</span>'}</td><td>${r.tuoi}<br><span class="nho">bón: ${r.bon}</span></td><td>${r.gia}</td><td><b>${r.laiNgay}</b></td><td>${r.laiNgayBon}</td></tr>`).join('')}</table></div>
       <p class="nho">Mẹo: cây càng lâu ngày thì lãi mỗi ngày càng cao, nhưng phải ghé tưới đều. ${dht() ? 'Bịch tính bằng 📘 điểm học tập; tiền thu và lãi tính theo EXP bán nông sản.' : 'Trả bằng 📘 điểm học tập thì không tốn xu.'}</p>`;
@@ -630,19 +630,37 @@ function moCai() {
   });
 }
 
-// ---------- HƯỚNG DẪN (Bác Hai nói + mũi tên chỉ chỗ bấm) ----------
+// ---------- HƯỚNG DẪN (Lộc nói + mũi tên chỉ chỗ bấm) ----------
+// Lộc: 15 động tác × 8 khung webp đã nén sẵn ở app (cùng origin). Phát 8 khung/giây; động tác "một lần" giữ ở khung đỉnh (khung cuối của vài động tác không còn đúng — xem memory loc-narrator-tutorial).
+const LOC_URL = '/bk-ui/hs/skin/rpg/loc';
+const LOC_LAP = { idle: 1, talking: 1, explaining: 1, reading: 1 }, LOC_GIU = { thinking: 5, winking: 5, laughing: 5, surprised: 4, goodbye: 5 };
+let locHen = null;
+function locDung() { if (locHen) { clearInterval(locHen); locHen = null; } }
+function locChoi(box, dong) {
+  locDung();
+  const img = box && box.querySelector('img'); if (!img) return;
+  const lap = !!LOC_LAP[dong], giu = LOC_GIU[dong] || 8, khung = n => LOC_URL + '/' + dong + '_' + String(n).padStart(2, '0') + '.webp';
+  img.onerror = () => { img.onerror = null; locDung(); box.classList.add('du'); box.textContent = NV.NGUOI_HD.mat; };   // không tải được (vd mở game đứng riêng) ⇒ hình emoji
+  for (let n = 2; n <= 8; n++) { const p = new Image(); p.src = khung(n); }
+  let i = 1; img.src = khung(1);
+  locHen = setInterval(() => {
+    if (i < (lap ? 8 : giu)) i++; else if (lap) i = 1; else { locDung(); return; }
+    img.src = khung(i);
+  }, 125);
+}
 let hdKey = '', hdMuc = null;
 function veHuongDan() {
   const B = NV.hdBuoc(s), m = !B && NV.meoKe(s), hop = $('hdHop');
-  if (!B && !m) { if (hdKey) { hop.classList.add('an'); hdKey = ''; } hdMuc = null; return; }
+  if (!B && !m) { if (hdKey) { hop.classList.add('an'); hdKey = ''; locDung(); } hdMuc = null; return; }
   hdMuc = B ? NV.hdMuc(s) : m.muc;
   const key = B ? 'b' + s.hd.b : 'm' + m.id; if (key === hdKey) return; hdKey = key;
   const NH = NV.NGUOI_HD;
-  hop.innerHTML = `<div class="hdMat">${NH.mat}</div><div class="hdNoi"><b>${NH.ten}</b><p>${B ? B.loi : m.loi}</p><div class="hdNut">`
+  hop.innerHTML = `<div class="hdLoc"><img alt="${NH.ten}" draggable="false"></div><div class="hdNoi"><b>${NH.ten}</b><p>${B ? B.loi : m.loi}</p><div class="hdNut">`
     + (B ? '<button class="boQua" data-l="bo">Bỏ qua hướng dẫn</button>' : '')
     + (B && B.kieu === 'noi' ? '<button class="nut vang" data-l="tiep">Tiếp ›</button>' : '')
     + (!B ? '<button class="nut vang" data-l="hieu">Hiểu rồi!</button>' : '') + '</div></div>';
   hop.classList.remove('an'); AM.on('bam');
+  locChoi(hop.querySelector('.hdLoc'), B ? (B.dong || 'talking') : 'explaining');
   const b = l => hop.querySelector(`[data-l=${l}]`);
   if (b('tiep')) b('tiep').onclick = () => lam(NV.hdTiep(s), null);
   if (b('bo')) b('bo').onclick = () => { if (b('bo').dataset.hoi) { NV.hdBoQua(s); E.luu(s); veHuongDan(); } else { b('bo').dataset.hoi = 1; b('bo').textContent = 'Chắc chưa? Bấm lần nữa'; } };
@@ -683,7 +701,7 @@ const cb = {
     if (chon.loai === 'sap') { dongBong(); return moCho(); }
     if (chon.loai === 'hopThu') { dongBong(); return moThu(); }
     if (chon.loai === 'kho') { dongBong(); return moKho(); }
-    if (chon.loai === 'nha') { dongBong(); return thongBao('🏡 Nhà của cháu'); }
+    if (chon.loai === 'nha') { dongBong(); return thongBao('🏡 Nhà của em'); }
   },
   batDauVuot(i) {
     if (xem != null) return false;
