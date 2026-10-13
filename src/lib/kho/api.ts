@@ -2547,6 +2547,7 @@ export async function deleteHgtChuyenDeLyThuyet(ma_chuyen_de: string): Promise<v
 // ── HÌNH v3 (spec-kho-hinh-v3): lưới mô hình + lưới bài toán nhỏ + kho bài vật lý ──
 // Ở FILE RIÊNG `hinh.ts` cho dễ đọc; re-export tại đây để UI chỉ cần 1 cửa `kho/api`.
 export * from './hinh'
+export * from './hinhCay'
 export * from './hinhConfig'
 
 // ── MCQ FORM — phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu, spec-mcq-form.md (CEO chốt 08/09) ──

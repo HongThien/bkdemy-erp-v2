@@ -17,6 +17,9 @@ export type MoHinh = {
   la_goc_ho: boolean; cap_mo_hinh: number | null; khoi: string | null; ghi_chu: string | null
   // Dọn (spec-hinh-luyen §6 B0.5): 'luyen' | 'hoc' | null = Thùy chưa xem. Lưới Hình luyện ẨN 'hoc' (xem loadLuoi).
   phan: 'luyen' | 'hoc' | null
+  // CÂY NHÁNH (spec-hinh-cay-nhanh.md, mig 202610140048). `neo_baitoan_id` = bài mẹ nơi nhánh rẽ ra (null = gốc cây /
+  // mô hình con kiểu cũ); cha của nhánh SUY từ neo, không lưu. `la_mo_hinh=false` = nhánh inline.
+  neo_baitoan_id?: string | null; la_mo_hinh?: boolean; chu_de_id?: string | null; thu_tu?: number | null
 }
 export type CanhMoHinh = { mo_hinh_id: string; cha_id: string }
 export type BaiToan = {
@@ -29,6 +32,7 @@ export type BaiToan = {
   // kiện lẻ lan theo van tiền đề, cơ chế riêng).
   gia_thiet_rieng: string | null
   gt_thay_the: boolean
+  thu_tu?: number | null   // thứ tự trong làn (nhánh/thân) — số hiển thị 1.k suy từ đây ở DB; KHÔNG phải mã
 }
 /** Biến thể của một node = cùng bài toán, ĐỔI SỐ / ĐỔI ĐỈNH. Treo dưới node (không đẻ node mới, không
  *  phân mảnh mastery). Đề + hình + đáp án riêng, soạn tay. Cùng KP/logic với node gốc. */
