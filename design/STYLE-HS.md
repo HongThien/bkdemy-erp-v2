@@ -52,6 +52,9 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
      `KhoiDocHS` (`cong_thuc` · `vi_du` · `nham` · `luu_y` · `hinh` · `thuong`) · `TrongDocHS`. Màu đọc từ `--sk-doc-*` (registry
      `DOC_MAC_DINH`, style muốn khác thì khai `Skin.doc`); **màu nhấn theo MÔN/phân môn** truyền vào `mau={mauDocMon(mon, phanMon)}` —
      không tự chọn màu theo môn trong màn. Mẫu dùng: `DocMuc` / `DocDang` trong `SoTayHS.tsx`.
+- **Vỏ ERP nhân sự cũng đọc style RPG** (13/10): thanh trên cùng + Trang chính + trang nhóm của ERP lấy màu, font, tranh nền Lâu đài, nhân vật, icon ô
+  (`nhiem_vu` · `giao_trinh` · `thanh_tuu` · `tu_luyen` · `rank` · `thong_tin` · `anhNv.icon.luyenYeu`), khung `anhBxh.khungChon`, gạch trang trí — qua `src/lib/erpSkin.ts`.
+  Đổi / bỏ các khoá này trong `rpg.ts` thì mở ERP soi lại Trang chính (thiếu hình ⇒ ERP rơi về emoji, không vỡ).
 - Màn đăng nhập (`src/auth/Login.tsx`, dùng chung mọi app) tự khoá `colorScheme: 'light'` — skin tối gắn lên `<html>` từ lúc khởi động
   từng làm chữ ô nhập thành trắng trên nền trắng (29/09).
 

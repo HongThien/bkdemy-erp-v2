@@ -53,6 +53,10 @@ interface UiState {
   staffLeaf: string
   // Số bước đã đi kể từ lúc mở app (= vị trí trong lịch sử trình duyệt). >0 ⇒ còn màn trước để Quay lại.
   navIdx: number
+  // Vị trí xa nhất đã tới trong phiên này ⇒ navIdx < navMax là còn màn để Tiến (→).
+  navMax: number
+  // Cấp PHỤ đang mở đè lên màn hiện tại (vd "Chi tiết buổi") — có mục lịch sử riêng nên ← đóng đúng nó, không nhảy màn.
+  lopPhu: string | null
   adminLeaf: string
   // ── Danh tính + quyền THẬT (từ tài khoản đăng nhập). null = chưa load ──
   quyen: MyQuyen | null
@@ -62,6 +66,9 @@ interface UiState {
   setStaffLeaf: (id: string) => void
   // Quay lại màn trước (nút ‹ trong app). Hết lịch sử thì về Home.
   backLeaf: () => void
+  tienLeaf: () => void
+  // Mở 1 cấp phụ trên màn hiện tại: đẩy 1 mục lịch sử (cùng leaf) + nhớ tên để thanh địa chỉ hiện thêm 1 cấp.
+  moLopPhu: (ten: string) => void
   // Trình duyệt vừa lùi/tiến (popstate) → nhận lại màn của mục lịch sử đó, KHÔNG đẻ mục mới.
   nhanLichSu: (st: unknown) => void
   // Ghim / bỏ ghim 1 mục menu lên Home (nhan_su.menu_yeu_thich) — vá store ngay, DB ghi nền, lỗi thì trả lại.
@@ -134,6 +141,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   // Mở app = Home. F5 thì đứng nguyên màn đang xem (đọc lại từ history.state — sống qua reload, mất khi mở tab mới).
   staffLeaf: lichSuDau().leaf,
   navIdx: lichSuDau().idx,
+  navMax: lichSuDau().idx,
+  lopPhu: null,
   adminLeaf: 'db_tongquan',
   quyen: null,
   me: null,
@@ -145,7 +154,13 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     if (id === get().staffLeaf) return
     const idx = get().navIdx + 1
     try { window.history.pushState({ bkLeaf: id, bkIdx: idx }, '') } catch { /* trình duyệt chặn history: vẫn đổi màn */ }
-    set({ staffLeaf: id, navIdx: idx })
+    set({ staffLeaf: id, navIdx: idx, navMax: idx, lopPhu: null })
+  },
+  tienLeaf: () => { if (get().navIdx < get().navMax) window.history.forward() },
+  moLopPhu: (ten) => {
+    const idx = get().navIdx + 1
+    try { window.history.pushState({ bkLeaf: get().staffLeaf, bkIdx: idx, bkPhu: ten }, '') } catch { /* bỏ qua */ }
+    set({ navIdx: idx, navMax: idx, lopPhu: ten })
   },
   backLeaf: () => {
     if (get().navIdx > 0) window.history.back()
@@ -153,7 +168,10 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   },
   nhanLichSu: (st) => {
     const s = (st ?? {}) as { bkLeaf?: unknown; bkIdx?: unknown }
-    set({ staffLeaf: typeof s.bkLeaf === 'string' ? s.bkLeaf : 'home', navIdx: typeof s.bkIdx === 'number' ? s.bkIdx : 0 })
+    const idx = typeof s.bkIdx === 'number' ? s.bkIdx : 0
+    // lopPhu luôn về null: lùi ra khỏi cấp phụ là đóng nó; tiến LẠI vào mục lịch sử của cấp phụ thì nội dung chi tiết
+    // đã không còn (state cục bộ của màn) ⇒ chỉ hiện màn nền, không giả vờ còn chi tiết.
+    set({ staffLeaf: typeof s.bkLeaf === 'string' ? s.bkLeaf : 'home', navIdx: idx, navMax: Math.max(get().navMax, idx), lopPhu: null })
   },
   doiYeuThich: (id) => {
     const me = get().me
@@ -173,7 +191,7 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   clearQuyen: () => {
     if (get().quyen === null && get().me === null) return
     try { if (window.history.state?.bkLeaf) window.history.replaceState(null, '') } catch { /* bỏ qua */ }
-    set({ quyen: null, me: null, staffLeaf: 'home', navIdx: 0 })
+    set({ quyen: null, me: null, staffLeaf: 'home', navIdx: 0, navMax: 0, lopPhu: null })
   },
   setPhimTatCongThuc: (m) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, phim_tat_cong_thuc: m } } } : {})),
   hocPhiTab: 'theomon',

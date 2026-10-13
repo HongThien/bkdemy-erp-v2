@@ -1,21 +1,62 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { useStore } from '../store/useStore'
+import { useDieuHuong } from '../lib/useDieuHuong'
+import { BIEN_ERP } from '../lib/erpSkin'
+import { useIsMobile } from '../hooks/useIsMobile'
 import HoSoModal from '../screens/nhansu/HoSoModal'
 import ReportButton from './ReportButton'
+import DuongDan from './DuongDan'
 
-// 1 màn duy nhất (spec) → TopBar không còn tab Nhân sự/Admin. Chỉ tên app + hồ sơ + đăng xuất.
+// Nút mũi tên của thanh địa chỉ (← → ↑) — mờ đi khi không còn chỗ để đi.
+function NutMuiTen({ kyHieu, title, bat, onClick }: { kyHieu: string; title: string; bat: boolean; onClick: () => void }) {
+  return (
+    <button onClick={onClick} disabled={!bat} title={title}
+      className="flex size-7 shrink-0 items-center justify-center rounded-md text-[15px] leading-none text-[var(--e-acc)] hover:bg-[var(--e-surface2)] disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent">
+      {kyHieu}
+    </button>
+  )
+}
+
+// THANH TRÊN CÙNG = thanh địa chỉ kiểu Windows Explorer (Thùy 13/10), màu theo style app Học sinh (erpSkin.ts):
+//   tên app (bấm = về Trang chính) · ← lùi · → tiến · ↑ lên một cấp · [ 🏠 Trang chính › Nhóm › Mục        ☆ ] · báo lỗi · hồ sơ · đăng xuất
+// Một hàng duy nhất — thanh "‹ Việc của tôi" riêng bên dưới (07-19) đã gộp vào đây, trả lại 1 hàng chiều cao cho mọi màn.
+// Điện thoại không đủ bề ngang: hàng này chỉ còn tên app + hồ sơ; ← 🏠 ☰ và đường dẫn nằm ở thanh mobile của NhanSuHome.
 export default function TopBar({ email }: { email: string }) {
   const [hoSo, setHoSo] = useState(false)
-  const setStaffLeaf = useStore((s) => s.setStaffLeaf)
+  const dh = useDieuHuong()
+  const isMobile = useIsMobile()
   return (
-    <header className="flex shrink-0 items-center gap-4 border-b bg-white px-6 py-2.5">
-      {/* Tên app = nút về Trang chính (quy ước chung của web: bấm logo là về nhà). */}
-      <h1 className="text-sm font-semibold"><button onClick={() => setStaffLeaf('home')} title="Về Trang chính" className="hover:text-indigo-600">BKdemy ERP v2</button></h1>
-      <div className="ml-auto flex items-center gap-2 text-xs">
+    <header style={BIEN_ERP}
+      className="relative z-[60] flex shrink-0 items-center gap-2 border-b border-[var(--e-line)] bg-[var(--e-bg)] px-3 py-1.5 text-[var(--e-ink)]">
+      <h1 className="shrink-0">
+        <button onClick={() => dh.di(dh.nha)} title="Về Trang chính"
+          className="flex items-baseline gap-1 rounded px-1 text-[16px] font-bold tracking-wide text-[var(--e-acc)] hover:brightness-125" style={{ fontFamily: 'var(--e-font-head)' }}>
+          BKdemy <span className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[var(--e-muted)]">ERP</span>
+        </button>
+      </h1>
+      {!isMobile && (
+        <>
+          <div className="flex shrink-0 items-center">
+            <NutMuiTen kyHieu="←" title="Quay lại màn trước" bat={dh.coLui} onClick={dh.lui} />
+            <NutMuiTen kyHieu="→" title="Tiến tới màn vừa lùi khỏi" bat={dh.coTien} onClick={dh.tien} />
+            <NutMuiTen kyHieu="↑" title="Lên một cấp" bat={dh.coLen} onClick={dh.len} />
+          </div>
+          <div className="flex h-8 min-w-0 flex-1 items-center rounded-md border border-[var(--e-line)] bg-white/[0.06] px-1">
+            <DuongDan duong={dh.duong} duoi={dh.duoi} onDi={dh.di} onDuoi={dh.lopPhu ? dh.lui : undefined} />
+            {dh.ghimDuoc && (
+              <button onClick={dh.ghim} title={dh.daGhim ? 'Bỏ khỏi Yêu thích' : 'Ghim màn này lên Trang chính'}
+                className={`ml-auto shrink-0 rounded px-2 py-1 text-[12px] font-medium hover:bg-[var(--e-surface2)] ${dh.daGhim ? 'text-[var(--e-acc)]' : 'text-[var(--e-muted)] hover:text-[var(--e-acc)]'}`}>
+                {dh.daGhim ? '★ Đã ghim' : '☆ Ghim'}
+              </button>
+            )}
+          </div>
+        </>
+      )}
+      {/* Nút Báo lỗi tự mang màu nền sáng (dùng chung nhiều nơi) — trên thanh tối thì nhuộm lại cho đọc được. */}
+      <div className="ml-auto flex shrink-0 items-center gap-2 text-xs [&>button:first-child]:border-rose-300/50 [&>button:first-child]:text-rose-300 [&>button:first-child:hover]:bg-rose-400/15">
         <ReportButton />
-        <button onClick={() => setHoSo(true)} title="Hồ sơ của tôi" className="text-slate-500 hover:text-indigo-600">👤 {email}</button>
-        <button onClick={() => supabase.auth.signOut()} className="rounded border px-2 py-1 text-slate-500 hover:bg-slate-100 hover:text-rose-600">Đăng xuất</button>
+        <button onClick={() => setHoSo(true)} title={`Hồ sơ của tôi — ${email}`} className="max-w-[190px] truncate text-[var(--e-muted)] hover:text-[var(--e-acc)]">👤{isMobile ? '' : ` ${email}`}</button>
+        <button onClick={() => supabase.auth.signOut()} className="rounded border border-[var(--e-line)] px-2 py-1 text-[var(--e-muted)] hover:bg-[var(--e-surface2)] hover:text-rose-300">Đăng xuất</button>
       </div>
       {hoSo && <HoSoModal onClose={() => setHoSo(false)} />}
     </header>

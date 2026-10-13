@@ -1,6 +1,7 @@
-// Menu ERP nhìn theo kiểu HOME (Thùy 13/10): mỗi NHÓM lớn = 1 box, bấm mới mở các mục con; có mục
-// Yêu thích do từng người tự chọn. File này chỉ giữ phần TRÌNH BÀY (icon, màu, cách tra một mục) —
-// danh mục mục nào tồn tại / ai được thấy vẫn ở `adminLeaves` + `adminNavFromQuyen` (store), không lặp lại ở đây.
+// Menu ERP nhìn theo kiểu HOME + ĐƯỜNG DẪN (Thùy 13/10): mỗi NHÓM lớn = 1 box, bấm mới mở các mục con; có mục
+// Yêu thích do từng người tự chọn; thanh địa chỉ kiểu Windows Explorer nhảy về bất cứ cấp nào.
+// File này chỉ giữ phần TRÌNH BÀY (icon, mô tả, cây để đi lại) — mục nào tồn tại / ai được thấy vẫn ở
+// `adminLeaves` + `adminNavFromQuyen` (store), không lặp lại ở đây. Màu + hình: `erpSkin.ts`.
 import type { NavGroup, NavLeaf } from '../types'
 
 export const LEAF_HOME = 'home'
@@ -10,31 +11,21 @@ export const leafNhom = (nhom: string) => `${LEAF_HOME}:${nhom}`
 export const laHome = (leaf: string) => leaf === LEAF_HOME || leaf.startsWith(`${LEAF_HOME}:`)
 export const nhomCuaLeafHome = (leaf: string): string | null => (leaf.startsWith(`${LEAF_HOME}:`) ? leaf.slice(LEAF_HOME.length + 1) : null)
 
-// Màu của box — đúng "kiểu 2" (CLAUDE.md §6): nền pastel nhạt + icon trong khối bo tròn riêng.
-export type Tone = { bg: string; ill: string; chu: string; vien: string }
-const TONE: Record<string, Tone> = {
-  indigo:  { bg: 'bg-indigo-50',  ill: 'bg-indigo-100',  chu: 'text-indigo-700',  vien: 'hover:border-indigo-300' },
-  sky:     { bg: 'bg-sky-50',     ill: 'bg-sky-100',     chu: 'text-sky-700',     vien: 'hover:border-sky-300' },
-  amber:   { bg: 'bg-amber-50',   ill: 'bg-amber-100',   chu: 'text-amber-700',   vien: 'hover:border-amber-300' },
-  violet:  { bg: 'bg-violet-50',  ill: 'bg-violet-100',  chu: 'text-violet-700',  vien: 'hover:border-violet-300' },
-  emerald: { bg: 'bg-emerald-50', ill: 'bg-emerald-100', chu: 'text-emerald-700', vien: 'hover:border-emerald-300' },
-  rose:    { bg: 'bg-rose-50',    ill: 'bg-rose-100',    chu: 'text-rose-700',    vien: 'hover:border-rose-300' },
-  teal:    { bg: 'bg-teal-50',    ill: 'bg-teal-100',    chu: 'text-teal-700',    vien: 'hover:border-teal-300' },
-  slate:   { bg: 'bg-slate-100',  ill: 'bg-slate-200',   chu: 'text-slate-700',   vien: 'hover:border-slate-300' },
+// Icon chữ (emoji) của nhóm — dùng ở chỗ NHỎ (thanh địa chỉ, menu thả). Box to trên Home dùng hình vẽ (`ANH_NHOM`).
+const NHOM_ICON: Record<string, string> = {
+  'Vận hành': '🛠', 'Gamification': '🏆', 'Học thuật': '📚', 'Quản lý chất lượng': '🎯', 'Core team': '👥', 'Dashboard': '📊',
 }
-const NHOM_META: Record<string, { icon: string; tone: keyof typeof TONE }> = {
-  'Vận hành': { icon: '🛠', tone: 'sky' },
-  'Gamification': { icon: '🏆', tone: 'amber' },
-  'Học thuật': { icon: '📚', tone: 'violet' },
-  'Quản lý chất lượng': { icon: '🎯', tone: 'emerald' },
-  'Core team': { icon: '👥', tone: 'rose' },
-  'Dashboard': { icon: '📊', tone: 'teal' },
+export const nhomIcon = (nhom: string | null) => (nhom && NHOM_ICON[nhom]) || '📁'
+// Một dòng nói nhóm này để làm gì (dòng phụ trên box — như "Luyện theo dạng yếu" ở Home app HS).
+export const NHOM_MO_TA: Record<string, string> = {
+  'Vận hành': 'Buổi học · học sinh · bổ trợ',
+  'Gamification': 'Điểm · thành tích · huy hiệu',
+  'Học thuật': 'Kho kiến thức · soạn tài liệu',
+  'Quản lý chất lượng': 'Kết quả · duyệt · báo cáo',
+  'Core team': 'Nhân sự · học phí · phân công',
+  'Dashboard': 'Số liệu để ra quyết định',
 }
-export const VIEC_META = { icon: '✅', tone: TONE.indigo }
-export const nhomMeta = (nhom: string | null): { icon: string; tone: Tone } => {
-  const m = nhom ? NHOM_META[nhom] : undefined
-  return m ? { icon: m.icon, tone: TONE[m.tone] } : { icon: '📁', tone: TONE.slate }
-}
+export const VIEC_MO_TA = 'Việc cần làm trong tuần'
 
 // Icon từng mục — chỉ để quét mắt cho nhanh; mục chưa có icon dùng icon của nhóm.
 const LEAF_ICON: Record<string, string> = {
@@ -55,19 +46,46 @@ const LEAF_ICON: Record<string, string> = {
   db_tongquan: '🌐', db_taichinh: '💹', db_chatluong: '⚙️', db_phdangnhap: '🔑', db_xemapp: '👀', db_thongbao: '📢',
 }
 
-export type MucMenu = { id: string; ten: string; nhom: string | null; cha: string | null; icon: string; tone: Tone }
+export type MucMenu = { id: string; ten: string; nhom: string | null; cha: string | null; icon: string }
 
 // Trải cây nav thành danh sách MỤC MỞ ĐƯỢC (bỏ các cha chỉ là thư mục), giữ nhóm + tên thư mục cha.
 export function traiMuc(groups: NavGroup[]): MucMenu[] {
   const out: MucMenu[] = []
   for (const g of groups) {
-    const meta = nhomMeta(g.nhom)
     const di = (l: NavLeaf, cha: string | null) => {
       if (l.children?.length) { l.children.forEach((c) => di(c, l.ten)); return }
-      const tone = l.id === LEAF_VIEC ? VIEC_META.tone : meta.tone
-      out.push({ id: l.id, ten: l.ten, nhom: g.nhom, cha, icon: LEAF_ICON[l.id] ?? meta.icon, tone })
+      out.push({ id: l.id, ten: l.ten, nhom: g.nhom, cha, icon: LEAF_ICON[l.id] ?? nhomIcon(g.nhom) })
     }
     g.leaves.forEach((l) => di(l, null))
   }
   return out
+}
+export const MUC_VIEC: MucMenu = { id: LEAF_VIEC, ten: 'Việc của tôi', nhom: null, cha: null, icon: LEAF_ICON.viec }
+
+// ── CÂY để đi lại (thanh địa chỉ) ─────────────────────────────────────────────
+// id = leaf sẽ mở khi bấm; id null = THƯ MỤC không có trang riêng (vd "Vận hành lớp học") — bấm thì xổ các mục con.
+export type NutMenu = { id: string | null; ten: string; icon: string; con?: NutMenu[] }
+
+// `coHome` = người này có Trang chính (được cấp ≥1 màn ngoài "Việc của tôi"). Không có thì gốc cây = Việc của tôi.
+export function cayMenu(adminNav: NavGroup[], coHome: boolean): NutMenu {
+  const viec: NutMenu = { id: LEAF_VIEC, ten: MUC_VIEC.ten, icon: MUC_VIEC.icon }
+  if (!coHome) return viec
+  const nut = (l: NavLeaf, nhom: string | null): NutMenu => (l.children?.length
+    ? { id: null, ten: l.ten, icon: LEAF_ICON[l.id] ?? '📁', con: l.children.map((c) => nut(c, nhom)) }
+    : { id: l.id, ten: l.ten, icon: LEAF_ICON[l.id] ?? nhomIcon(nhom) })
+  return {
+    id: LEAF_HOME, ten: 'Trang chính', icon: '🏠',
+    con: [viec, ...adminNav.map((g): NutMenu => ({ id: leafNhom(g.nhom ?? ''), ten: g.nhom ?? '', icon: nhomIcon(g.nhom), con: g.leaves.map((l) => nut(l, g.nhom)) }))],
+  }
+}
+
+// Đường từ gốc tới màn đang mở. Màn không nằm trong cây (vào bằng card việc, vd "Scan bài đã chấm") ⇒ chỉ có gốc.
+export function duongDan(cay: NutMenu, leaf: string): NutMenu[] {
+  const tim = (n: NutMenu, truoc: NutMenu[]): NutMenu[] | null => {
+    const day = [...truoc, n]
+    if (n.id === leaf) return day
+    for (const c of n.con ?? []) { const r = tim(c, day); if (r) return r }
+    return null
+  }
+  return tim(cay, []) ?? [cay]
 }

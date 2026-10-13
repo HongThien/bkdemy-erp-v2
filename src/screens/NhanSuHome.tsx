@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import type { User, NavGroup } from '../types'
-import { useStore, useYeuThich, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
-import { LEAF_HOME, LEAF_VIEC, laHome, leafNhom, nhomCuaLeafHome, traiMuc } from '../lib/menu'
+import { useStore, staffNavFromScope } from '../store/useStore'
+import { LEAF_HOME, laHome } from '../lib/menu'
+import { useDieuHuong } from '../lib/useDieuHuong'
+import { BIEN_ERP } from '../lib/erpSkin'
+import DuongDan from '../components/DuongDan'
 import HomeScreen from './HomeScreen'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
@@ -561,23 +564,14 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   )
 }
 
-// Tìm nhãn hiển thị của leaf đang chọn (kể cả con lamtailieu:*) — dùng cho tiêu đề top bar mobile.
-function tenLeafDangChon(groups: NavGroup[], selected: string): string {
-  for (const g of groups) for (const l of g.leaves) {
-    if (l.id === selected) return l.ten
-    const c = l.children?.find((x) => x.id === selected)
-    if (c) return c.ten
-  }
-  return 'BKdemy ERP'
-}
-
 // MÀN DUY NHẤT (theo spec): 1 cây nav = Việc của tôi (vận hành) + các màn role cấp (phát triển).
 // KHÔNG còn 2 tab Nhân sự/Admin.
-// ⭐ Thùy 13/10 — điều hướng 3 lối, cùng một nguồn (`staffLeaf` trong store):
-//   🏠 Trang chính (HomeScreen: Yêu thích + mỗi nhóm 1 box) · ‹ Quay lại (lịch sử trình duyệt) · cây trái tự ẩn như cũ.
+// ⭐ Thùy 13/10 — điều hướng 3 lối, cùng một nguồn (`staffLeaf` trong store, tính ở `useDieuHuong`):
+//   🏠 Trang chính (HomeScreen: Yêu thích + mỗi nhóm 1 box) · thanh địa chỉ kiểu Explorer trên TopBar (← → ↑ + đường dẫn
+//   bấm được từng cấp) · cây trái tự ẩn như cũ. Desktop: thanh địa chỉ nằm ở TopBar; mobile: thanh riêng ngay dưới đây.
 export default function NhanSuHome({ user }: { user: User }) {
-  const { staffLeaf: leafStore, setStaffLeaf, quyen, navIdx, backLeaf, nhanLichSu, doiYeuThich, me } = useStore()
-  const yeuThich = useYeuThich()
+  const { staffLeaf: leafStore, setStaffLeaf, quyen, nhanLichSu, lopPhu, moLopPhu, backLeaf } = useStore()
+  const dh = useDieuHuong()
   const [scope, setScope] = useState<MyScope | null>(null)
   const [loading, setLoading] = useState(true)
   const [openBuoi, setOpenBuoi] = useState<OpenBuoi | null>(null)
@@ -599,7 +593,12 @@ export default function NhanSuHome({ user }: { user: User }) {
     window.addEventListener('popstate', on)
     return () => window.removeEventListener('popstate', on)
   }, [nhanLichSu])
-  // Đổi màn trong lúc đang mở chi tiết buổi (bấm logo, Back trình duyệt) ⇒ đóng chi tiết, không để nó che màn mới.
+  // Chi tiết buổi = 1 CẤP PHỤ có mục lịch sử riêng (`lopPhu`): mở thì đẩy lịch sử, đóng = lùi 1 bước ⇒ nút ← trên
+  // thanh địa chỉ, Back trình duyệt và nút Đóng của chính màn chi tiết đều về đúng màn vừa đứng, không nhảy màn khác.
+  const moBuoi = (o: OpenBuoi) => { setOpenBuoi(o); moLopPhu('Chi tiết buổi') }
+  const dongBuoi = () => backLeaf()
+  useEffect(() => { if (!lopPhu) setOpenBuoi(null) }, [lopPhu])
+  // Đổi hẳn màn trong lúc đang mở chi tiết (bấm 1 cấp trên đường dẫn, bấm tên app) ⇒ đóng chi tiết, không để nó che màn mới.
   useEffect(() => { setOpenBuoi(null) }, [leafStore])
 
   // ⚠ bo_tro_yeu CHƯA có detail riêng (khác bù/đuổi) — rơi vào nhánh BuoiDetail chung tạm thời.
@@ -608,31 +607,21 @@ export default function NhanSuHome({ user }: { user: User }) {
   // (hiện tiến độ dạng chỉ-xem, giống BuoiDuoiDetail sau Phase 2 19/09 — không tick tay nữa) trước khi
   // đưa vào vận hành thật.
   if (openBuoi) return openBuoi.loai === 'bu'
-    ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
+    ? <BuoiBuDetail buoiId={openBuoi.id} onClose={dongBuoi} />
     : openBuoi.loai === 'bo_tro_duoi'
-    ? <BuoiDuoiDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
-    : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={() => setOpenBuoi(null)} />
+    ? <BuoiDuoiDetail buoiId={openBuoi.id} onClose={dongBuoi} />
+    : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={dongBuoi} />
 
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)
-  const adminNav = adminNavFromQuyen(quyen)
-  // Người CHỈ có "Việc của tôi" (không được cấp màn nào khác) thì Home chỉ còn đúng 1 box — vô nghĩa,
-  // thêm 1 cú bấm mỗi lần mở app. Với họ "nhà" = Việc của tôi như trước giờ.
-  const coHome = adminNav.length > 0
-  const nha = coHome ? LEAF_HOME : LEAF_VIEC
-  const staffLeaf = !coHome && laHome(leafStore) ? LEAF_VIEC : leafStore
-  const mucs = traiMuc([...staffNavFromScope(scope), ...adminNav])
-  const mucHienTai = mucs.find((m) => m.id === staffLeaf)
-  const dsYeuThich = coHome ? yeuThich.map((id) => mucs.find((m) => m.id === id)).filter((m) => !!m).map((m) => ({ id: m.id, ten: m.ten })) : []
+  const { coHome, nha, adminNav } = dh
+  const staffLeaf = dh.leaf   // người không có Trang chính: 'home' được đổi sẵn thành 'viec' (xem useDieuHuong)
+  const dsYeuThich = coHome ? dh.yeuThich.map((id) => dh.mucs.find((m) => m.id === id)).filter((m) => !!m).map((m) => ({ id: m.id, ten: m.ten })) : []
   const groups: NavGroup[] = [
     { nhom: null, leaves: [...(coHome ? [{ id: LEAF_HOME, ten: '🏠 Trang chính' }] : []), ...staffNavFromScope(scope).flatMap((g) => g.leaves)] },
     ...(dsYeuThich.length ? [{ nhom: '⭐ Yêu thích', leaves: dsYeuThich }] : []),
     ...adminNav,
   ]
   const leafTrenCay = laHome(staffLeaf) ? LEAF_HOME : staffLeaf   // trang nhóm của Home vẫn tô "Trang chính" trên cây
-  const tieuDe = staffLeaf === LEAF_HOME ? 'Trang chính' : nhomCuaLeafHome(staffLeaf) ?? mucHienTai?.ten ?? tenLeafDangChon(groups, staffLeaf)
-  // ☆ ghim màn đang mở: chỉ khi có Home để ghim lên + màn này là 1 mục trong menu + có hồ sơ nhân sự để lưu.
-  const ghimDuoc = coHome && !!mucHienTai && !!me
-  const daGhim = yeuThich.includes(staffLeaf)
   // "Chỉ xem" (RBAC ①, xem lib/supabase.ts): banner cảnh báo — chặn THẬT nằm ở seam, đây chỉ để người dùng hiểu vì sao lưu/sửa báo lỗi.
   const chiXemManHinh = quyen && !quyen.laAdmin && quyen.chiXem.includes(staffLeaf.split(':')[0])
   const chonLeaf = (id: string) => { setStaffLeaf(id); setNavOpen(false) } // mobile: chọn xong tự đóng drawer
@@ -642,25 +631,25 @@ export default function NhanSuHome({ user }: { user: User }) {
       : `relative grid h-full min-h-0 ${navGhim ? 'grid-cols-[240px_1fr]' : 'grid-cols-[14px_1fr]'} grid-rows-[minmax(0,1fr)] overflow-hidden`}>
       {isMobile ? (
         <>
-          {/* Top bar mobile: ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ trên điện thoại).
-              Thùy 07-06: "không có nút back khiến dùng mobile khá khó chịu" → 13/10: 🏠 về nhà + ‹ quay lại
-              màn trước, có ở mọi màn (trừ khi đang ở nhà). */}
-          <div className="flex shrink-0 items-center gap-1.5 border-b border-slate-200 bg-white px-2.5 py-2">
+          {/* Thanh điều hướng mobile (cùng màu thanh trên): ☰ mở drawer nav thay sidebar cố định (240px không đủ chỗ
+              trên điện thoại). Thùy 07-06: "không có nút back khiến dùng mobile khá khó chịu" → 13/10: 🏠 về nhà + ← quay
+              lại màn trước ở mọi màn + đường dẫn 2 cấp cuối (bấm tên cấp để về, bấm › để nhảy ngang) + ☆ ghim. */}
+          <div style={BIEN_ERP} className="relative z-[55] flex shrink-0 items-center gap-1.5 border-b border-[var(--e-line)] bg-[var(--e-bg)] px-2 py-1.5 text-[var(--e-ink)]">
             {staffLeaf !== nha && (
-              <button onClick={() => setStaffLeaf(nha)} title="Về Trang chính" className="rounded-md border border-slate-200 px-2.5 py-2 text-[15px] leading-none active:bg-indigo-50">🏠</button>
+              <button onClick={() => setStaffLeaf(nha)} title="Về Trang chính" className="rounded-md border border-[var(--e-line)] px-2.5 py-2 text-[15px] leading-none active:bg-[var(--e-surface2)]">🏠</button>
             )}
-            {staffLeaf !== nha && navIdx > 0 && (
-              <button onClick={backLeaf} title="Quay lại màn trước" className="rounded-md border border-slate-200 px-3 py-2 text-[15px] font-semibold leading-none text-indigo-600 active:bg-indigo-50">‹</button>
+            {staffLeaf !== nha && dh.coLui && (
+              <button onClick={dh.lui} title="Quay lại màn trước" className="rounded-md border border-[var(--e-line)] px-3 py-2 text-[15px] font-semibold leading-none text-[var(--e-acc)] active:bg-[var(--e-surface2)]">←</button>
             )}
-            <button onClick={() => setNavOpen(true)} className="rounded-md border border-slate-200 px-3 py-2 text-[15px] leading-none text-slate-600 active:bg-slate-100">☰</button>
-            <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-slate-800">{tieuDe}</span>
-            {ghimDuoc && (
-              <button onClick={() => doiYeuThich(staffLeaf)} title={daGhim ? 'Bỏ khỏi Yêu thích' : 'Thêm vào Yêu thích'}
-                className={`rounded-md px-2 py-1.5 text-[19px] leading-none ${daGhim ? 'text-amber-400' : 'text-slate-300'}`}>{daGhim ? '★' : '☆'}</button>
+            <button onClick={() => setNavOpen(true)} className="rounded-md border border-[var(--e-line)] px-3 py-2 text-[15px] leading-none text-[var(--e-ink)] active:bg-[var(--e-surface2)]">☰</button>
+            <div className="min-w-0 flex-1"><DuongDan duong={dh.duong} duoi={dh.duoi} onDi={setStaffLeaf} gon /></div>
+            {dh.ghimDuoc && (
+              <button onClick={dh.ghim} title={dh.daGhim ? 'Bỏ khỏi Yêu thích' : 'Thêm vào Yêu thích'}
+                className={`rounded-md px-2 py-1.5 text-[19px] leading-none ${dh.daGhim ? 'text-[var(--e-acc)]' : 'text-[var(--e-muted)]'}`}>{dh.daGhim ? '★' : '☆'}</button>
             )}
           </div>
           {navOpen && (
-            <div className="fixed inset-0 z-50 flex">
+            <div className="fixed inset-0 z-[80] flex">
               <div className="h-full w-[82vw] max-w-[300px] overflow-auto bg-white p-3 shadow-2xl">
                 <PersonalCard user={user} />
                 <NavTree groups={groups} selected={leafTrenCay} onSelect={chonLeaf} />
@@ -682,8 +671,8 @@ export default function NhanSuHome({ user }: { user: User }) {
         ) : (
           <>
             {/* Dải mép trái: rê chuột vào để hiện cây */}
-            <div onMouseEnter={moNav} onMouseLeave={dongNav} title="Rê chuột vào để mở menu"
-              className="flex min-h-0 cursor-pointer flex-col items-center border-r border-slate-200 bg-slate-100 pt-3 text-[11px] text-slate-400 hover:bg-indigo-100 hover:text-indigo-600">
+            <div onMouseEnter={moNav} onMouseLeave={dongNav} title="Rê chuột vào để mở menu" style={BIEN_ERP}
+              className="flex min-h-0 cursor-pointer flex-col items-center border-r border-[var(--e-line)] bg-[var(--e-bg)] pt-3 text-[11px] text-[var(--e-muted)] hover:text-[var(--e-acc)]">
               ☰
             </div>
             <aside onMouseEnter={moNav} onMouseLeave={dongNav}
@@ -700,29 +689,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       )}
       {/* Khung phải: min-w-0 để bảng rộng (vd chấm bài nhiều bài) CUỘN trong khung thay vì bung cột → tràn layout. */}
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-      {/* Thanh điều hướng desktop (Thùy 13/10) — có ở MỌI màn trừ chính Trang chính: 🏠 về nhà · ‹ quay lại màn
-          trước · đang ở đâu (nhóm › mục, bấm tên nhóm để mở lại nhóm) · ☆ ghim màn này lên Yêu thích. */}
-      {!isMobile && staffLeaf !== nha && (
-        <div className="flex shrink-0 items-center gap-1 border-b border-slate-200 bg-white px-3 py-1.5 text-[13px]">
-          <button onClick={() => setStaffLeaf(nha)} title="Về Trang chính" className="rounded-md px-2 py-1 font-medium text-indigo-600 hover:bg-indigo-50">🏠 {coHome ? 'Trang chính' : 'Việc của tôi'}</button>
-          {navIdx > 0 && (
-            <button onClick={backLeaf} title="Quay lại màn trước" className="rounded-md px-2 py-1 font-medium text-indigo-600 hover:bg-indigo-50">‹ Quay lại</button>
-          )}
-          <span className="mx-1.5 h-4 w-px bg-slate-200" />
-          {coHome && mucHienTai?.nhom && (
-            <>
-              <button onClick={() => setStaffLeaf(leafNhom(mucHienTai.nhom!))} className="rounded px-1 text-slate-500 hover:bg-slate-100 hover:text-indigo-600">{mucHienTai.nhom}</button>
-              <span className="text-slate-300">›</span>
-            </>
-          )}
-          {mucHienTai?.cha && (<><span className="px-1 text-slate-500">{mucHienTai.cha}</span><span className="text-slate-300">›</span></>)}
-          <span className="px-1 font-semibold text-slate-700">{tieuDe}</span>
-          {ghimDuoc && (
-            <button onClick={() => doiYeuThich(staffLeaf)} title={daGhim ? 'Bỏ khỏi Yêu thích' : 'Ghim màn này lên Trang chính'}
-              className={`ml-auto rounded-md px-2 py-1 font-medium hover:bg-amber-50 ${daGhim ? 'text-amber-500' : 'text-slate-400 hover:text-amber-500'}`}>{daGhim ? '★ Đã ghim' : '☆ Ghim Yêu thích'}</button>
-          )}
-        </div>
-      )}
       {chiXemManHinh && (
         <div className="shrink-0 flex items-center gap-1.5 border-b border-amber-200 bg-amber-50 px-4 py-1.5 text-[12px] font-medium text-amber-700">
           🔒 Bạn chỉ có quyền XEM ở màn này — thao tác lưu/sửa/xoá sẽ bị chặn.
@@ -736,9 +702,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : laHome(staffLeaf) ? (
-        <HomeScreen leaf={staffLeaf} groups={adminNav} coViec />
+        <HomeScreen />
       ) : staffLeaf === 'viec' ? (
-        <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={setOpenBuoi} /></section>
+        <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={moBuoi} /></section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
       : staffLeaf === 'bdm' ? <BanDoMoiScreen />
       : staffLeaf === 'sotay' ? <SoTayCongThucScreen />

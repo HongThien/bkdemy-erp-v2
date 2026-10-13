@@ -19,6 +19,9 @@ useStore.setState({
   me: { nhanSu: { id: '00000000-0000-0000-0000-000000000000', ho_ten: 'Nguyễn Xem Thử', anh_url: null, menu_yeu_thich: ['buoihoc', 'lamtailieu:et'] }, teams: [], viTris: [], phanCong: [], mons: [], hocThuatMons: [] } as any,
 })
 
+// Cho trang xem thử gọi thẳng store từ console (thử cấp phụ, lùi/tiến) — chỉ có ở trang dev này.
+;(window as any).__store = useStore
+
 function Vo() {
   const isMobile = useIsMobile()
   const user = getUser(useStore((s) => s.currentUserId))
