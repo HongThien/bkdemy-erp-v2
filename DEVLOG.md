@@ -37039,3 +37039,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Lệnh PowerShell có `Remove-Item` bị chặn (đúng luật xoá) ⇒ bỏ bước xoá; heredoc bash không quote làm shell nuốt `$`/backtick trong code ⇒ ghi file bằng công cụ Write rồi chạy.
 - **Số đo DB live (chỉ đọc):** buổi `thuong` T9 = 349, `nguoi_day_tg` null 349/349; `ta_vang` 0 dòng; 109/349 buổi chưa `hoan_tat`; `phan_cong_lop` tg 45 dòng / 22 người; `ca_bo_tro` T9 = 59 mở + 2 huỷ; bổ trợ yếu `nguoi_day` null 87/87.
 - **Treo (chờ Thùy / Trang):** xem HANDOFF.md ① đầu file.
+
+### 13/10 — Kho K8: hai đề cương giữa kì I Hà Nội (Lương Thế Vinh 57 câu + Đoàn Thị Điểm 84 câu)
+- **Yêu cầu Thùy:** "Tiếp tục hoàn thành Đề cương hai trường này" + 2 PDF trong Downloads (de-cuong-giua-hoc-ky-1-toan-8-…-luong-the-vinh-ha-noi.pdf · …-truong-thcs-doan-thi-diem-ha-noi.pdf).
+- **Làm:** đọc 12 trang (LTV là bản SCAN; ĐTĐ có lớp chữ nhưng công thức hỏng) → `lo/k8/de-cuong/{LTV,DTD}-GKI-2026.build.mjs` + `dc-lib.mjs` (gõ → de.json + khung) → 14 trạm soạn (Sonnet, `brief-soan.md` + `brief-bo-sung-LTV-DTD.md`) → 14 trạm soát (Opus giải MÙ) →
+  `ghep-chung.mjs` (ghép + cổng `--khoi 8`) → `ghi.mjs --ghi` mỗi đề một lần. Hình có sẵn trong đề cắt từ PDF (`pdftoppm -r 200`).
+- **Số đo (DB live, chỉ đọc):** LTV `1e022582-…`: 57 câu = Đại 46 + Hình 11 · 9 TLN + 48 tự luận · hình đề 2 · hình giải 11 · 0 duyệt · 100% lời giải 2 phần. DTD `5f2c5086-…`: 84 câu = Đại 76 + Hình 8 · 21 TLN + 63 tự luận · hình đề 3 · hình giải 7 · 0 duyệt · 100% hai phần.
+  `fn_de_thi_dem('Toán','8')` → de_cuong 3. Giải mù khớp bản soạn 141/141 đáp số; soát sửa lập luận / phạm vi kiến thức / hình ở 12/14 phần, không đổi đáp số nào.
+- **Sai / sửa:** (a) phạm vi kiến thức MỖI đề cương khác nhau (ĐTĐ chỉ Chương I; LTV tới lập phương, KHÔNG tổng / hiệu hai lập phương, KHÔNG phân tích nhân tử) ⇒ soát bắt 2 chỗ LTV dùng nhóm hạng tử (13a, 19) và viết lại; (b) trạm soạn gắn cờ "đường trung bình" thừa ở ĐTĐ 41, 43a, 45a và LTV 28b, 29c — trạm soát gỡ;
+  (c) LTV Bài 22 soạn ghi tên tứ giác sai thứ tự đỉnh (DKBC → DBKC) — soát bắt bằng toạ độ.
+- **Treo, chờ Thùy (12 câu):** LTV 3c (điều kiện xác định: 4 hay 3 cặp), 7f / 7g / 7i (bậc hai — đề cố ý hay ngoài phạm vi), 20 / 21 / 25 (đường trung bình) · ĐTĐ 11b (đa thức không), 12 (mọi m ≠ 2), 38b (thiếu số mũ), 39 (hằng số −4 ≠ "luôn dương"), 48 (số liệu mâu thuẫn).
