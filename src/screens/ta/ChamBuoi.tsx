@@ -6,11 +6,12 @@ import { useEffect, useRef, useState } from 'react'
 import {
   getBuoi, getRoster, getDangTen, listProblems, listGrades, addProblem, setProblemDang,
   ensureProblems, gradeMuc, gradeET, gradeETBulk, deleteGrade, closePhase, reopenPhase,
-  loadETForBuoi, syncDocProblems, loadHinhForBuoiPhase, syncHinhProblems, xepLuoiTheoDe,
-  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult, type LuoiSync,
+  loadETForBuoi, syncDocProblems, loadHinhForBuoiPhase, syncHinhProblems, xepLuoiTheoDe, listCanhBao,
+  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult, type LuoiSync, type CanhBao,
 } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import DangPickerOne from '../../components/DangPickerOne'
+import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
 import ChamBtvn from './ChamBtvn'
 import type { BuoiView } from './TaHome'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -212,6 +213,10 @@ function EtPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
   const dong = !!buoi.et_dong_at
   const causRef = useRef<{ ma_cau: string }[]>([])
+  const [cb, setCb] = useState<CanhBao[]>([]) // 🚨 báo động kém dạng (nguon='et') — cùng chuông dùng chung với ERP
+  const dangTL = useDangTaiLieu(buoiId, 'et', buoi.lop?.mon)
+  const napCanhBao = async () => setCb(await listCanhBao(buoiId).catch(() => [] as CanhBao[]))
+  useEffect(() => { void napCanhBao() }, [buoiId]) // eslint-disable-line
 
   async function reloadP() {
     const [p, g] = await Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)])
@@ -311,6 +316,12 @@ function EtPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
                         className={`h-7 w-7 rounded-lg border text-[11.5px] font-bold ${k.idle} disabled:opacity-40`}>{k.lbl}</button>
                     ))}
                   </div>
+                  <div className="mt-1 flex items-center gap-1">
+                    <ChuongBaoDong buoiId={buoiId} hsId={r.hoc_sinh_id} hsTen={r.hoc_sinh?.ho_ten ?? '?'} nguon="et" khoi={buoi.lop?.khoi} mon={buoi.lop?.mon} nhan="Kém dạng"
+                      className="min-h-[30px] rounded-lg border border-rose-200 px-2 text-[11.5px] font-semibold text-rose-600 active:bg-rose-50"
+                      dangTaiLieu={hopDang(dangTL.dang, probs.map((p) => p.ma_dang), tenDang)} dangLoading={dangTL.loading} onSaved={() => { void napCanhBao() }} />
+                  </div>
+                  <ChipCanhBao cb={cb.filter((x) => x.hoc_sinh_id === r.hoc_sinh_id)} tenDang={tenDang} mon={buoi.lop?.mon} onChanged={() => { void napCanhBao() }} />
                 </td>
                 {probs.map((p) => {
                   const g = gradeOf(p.id, r.hoc_sinh_id)
