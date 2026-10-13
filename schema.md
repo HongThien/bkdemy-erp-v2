@@ -2982,7 +2982,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
-| skin | text |  |  |  | `toi_gian` · `dau_truong` · `y2k` · `soft` · `rpg` · `khoi` · `lofi` |
+| skin | text |  |  |  | `toi_gian` · `dau_truong` · `y2k` · `soft` · `rpg` · `khoi` · `lofi` · `dang_yeu` |
 | che_do | text |  | 'he_thong'::text |  | `sang` · `toi` · `he_thong` |
 | hinh_nen | text |  | 'mac_dinh'::text |  |  |
 | huong_dan_xong_at | timestamp with time zone |  | now() |  |  |

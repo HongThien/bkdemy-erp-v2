@@ -37113,3 +37113,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Số đo 13/10 (đối chiếu đếm thẳng từ bảng — khớp):** Tuần 16 (12–18/10, đang chạy) Yếu 1/22 · Bù 0/12 · Đuổi 3/13 — Tuần 15 Yếu 26/34 · Bù 14/16 · Đuổi 7/9 — Tuần 14 Yếu 27/37 · Bù 44/54 · Đuổi 19/21.
 - **Kiểm trên ERP chạy máy (đăng nhập Admin dev):** 3 thẻ tuần hiện đúng số trên; bấm ô "Không diễn ra 2" ra bảng 2 em; ◀ Tuần trước ⇒ Tuần 15·14·13, "Tuần này" quay lại; RPC trả 200.
 - **Chưa làm:** không có "mục tiêu tuần" đặt tay (chốt = số ca đã xếp); chưa tách theo trợ giảng / theo môn.
+
+## 13/10 — [Bổ trợ · Lịch phòng] Nhãn dòng em yếu gây hiểu nhầm "12/12 dạng" (mig 202610131207 ĐÃ ÁP)
+- **Thùy (ảnh ca Tuệ Nhi 12/10 19:30):** nhân sự đọc "Hoàn tất · 12/12" cạnh "1 dạng cần dạy" thành "lúc chốt có 12 dạng, giờ còn 1" — "UI khó hiểu, giải thích đi".
+- **Sự thật (đo trên case Tuệ Nhi):** case có 4 dạng. 12/12 = số CÂU luyện đúng / đã làm trong ca (3 + 3 + 6 câu ở 3 dạng), không phải số dạng. Ca dạy 3 dạng, dạng thứ 4 (Toán thực tế BC/BCNN) chưa luyện câu nào ⇒ "1 dạng cần dạy" = số dạng CÒN LẠI của case lúc này. Test cuối ca 4/4.
+- **Lỗi của t:** ô trạng thái in trơ "12/12" không đơn vị (đơn vị chỉ nằm trong tooltip); dòng chi tiết in "1 dạng cần dạy" không có mẫu số, trong khi màn Xếp bổ trợ in "1/4 dạng cần dạy" ⇒ hai màn hai kiểu, người dùng tự ghép thành nghĩa sai.
+- **Sửa:** ô trạng thái ⇒ "Hoàn tất · đúng 12/12 câu"; dòng chi tiết (fn_ca_bo_tro_ngay, dựng từ bản đang chạy) ⇒ "yếu L1 · ca này dạy 3 dạng · còn 1/4 dạng cần dạy" (ca chưa xong thì chỉ "còn x/y dạng cần dạy").
+- **Kiểm:** ERP chạy máy, Lịch phòng ngày 12/10, dòng Tuệ Nhi hiện đúng chữ mới.
