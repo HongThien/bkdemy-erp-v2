@@ -7,7 +7,6 @@ import { useStore } from '../../store/useStore'
 import { getMyTasks, type MyTask } from '../../lib/gami'
 import { homNayVN } from '../../lib/tuan'
 import { listNhacViec, themNhacViec, xoaNhacViec, datXongHomNay, type NhacViec } from '../../lib/homeViec'
-import ModalFull from './ModalFull'
 import { HEAD, THE } from './khung'
 
 type Che = 'van_hanh' | 'nhac'
@@ -113,7 +112,7 @@ function NhacViecCuaToi({ gioiHan, onMoRong }: { gioiHan?: number; onMoRong?: ()
       )}
       {gioiHan ? (
         <button onClick={onMoRong} className="mt-1.5 px-1 text-[12px] font-semibold text-[var(--sk-acc)] hover:underline">
-          {ds && ds.length > gioiHan ? `… và ${ds.length - gioiHan} việc nữa · ` : ''}＋ Thêm / xem tất cả ›
+          {ds && ds.length > gioiHan ? `… và ${ds.length - gioiHan} việc nữa · ` : ''}＋ Thêm / hiện tất cả ▾
         </button>
       ) : (
       <form onSubmit={(e) => { e.preventDefault(); them() }} className="mt-2 flex gap-2">
@@ -127,12 +126,12 @@ function NhacViecCuaToi({ gioiHan, onMoRong }: { gioiHan?: number; onMoRong?: ()
   )
 }
 
-// compact = bảng nhỏ ở góc trên trái Trang chính: chỉ 5 việc đầu; bấm vào ⇒ mở popup đầy đủ (chính component này, không thu gọn).
+// compact = bảng nhỏ ở góc trên trái Trang chính: mặc định chỉ 5 việc đầu; bấm "Hiện tất cả" ⇒ xổ đủ danh sách NGAY TẠI CHỖ, bấm "Thu gọn" ⇒ về 5 việc.
 const SO_DONG_NHO = 5
 
 export default function ViecHangNgay({ onMoVietCuaToi, compact = false }: { onMoVietCuaToi: () => void; compact?: boolean }) {
   const [che, setChe] = useState<Che>(docChe)
-  const [mo, setMo] = useState(false)
+  const [rong, setRong] = useState(false)
   const doi = (c: Che) => { setChe(c); try { localStorage.setItem(KHOA_CHE, c) } catch { /* không lưu được thì thôi */ } }
   const nut = (c: Che, ten: string) => (
     <button onClick={() => doi(c)}
@@ -148,22 +147,12 @@ export default function ViecHangNgay({ onMoVietCuaToi, compact = false }: { onMo
         </div>
       </div>
       {che === 'van_hanh'
-        ? <VanHanh onMo={compact ? () => setMo(true) : onMoVietCuaToi} gioiHan={compact ? SO_DONG_NHO : undefined} />
-        : <NhacViecCuaToi gioiHan={compact ? SO_DONG_NHO : undefined} onMoRong={() => setMo(true)} />}
+        ? <VanHanh onMo={onMoVietCuaToi} gioiHan={compact && !rong ? SO_DONG_NHO : undefined} />
+        : <NhacViecCuaToi gioiHan={compact && !rong ? SO_DONG_NHO : undefined} onMoRong={() => setRong(true)} />}
       {compact && (
-        <button onClick={() => setMo(true)} className="mt-2 w-full text-right text-[12px] font-semibold text-[var(--sk-acc)] hover:underline">Xem chi tiết ›</button>
+        <button onClick={() => setRong(!rong)} className="mt-2 w-full text-right text-[12px] font-semibold text-[var(--sk-acc)] hover:underline">{rong ? '▴ Thu gọn' : 'Hiện tất cả ▾'}</button>
       )}
     </div>
   )
-  if (!compact) return khung
-  return (
-    <>
-      {khung}
-      {mo && (
-        <ModalFull tieuDe="☑ Việc hôm nay" onDong={() => setMo(false)} cao="auto">
-          <div className="mx-auto max-w-[760px] p-5"><ViecHangNgay onMoVietCuaToi={() => { setMo(false); onMoVietCuaToi() }} /></div>
-        </ModalFull>
-      )}
-    </>
-  )
+  return khung
 }

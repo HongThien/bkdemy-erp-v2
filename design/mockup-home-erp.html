@@ -139,7 +139,7 @@ const capDuoi = (id) => P[id].admin ? Object.keys(P).filter((k) => k !== id)
 
 let S = {
   me: 'thuy', modal: null, taskTab: 'toi', openTask: null, orderTab: 'toi', openOrder: null, inbox: false,
-  viecNgayTab: 'vh', dang: 'vuong', lon: ['viec_ngay', 'tien_do', 'yeu_thich', 'order'], tileOrder: ['Việc của tôi', 'Vận hành', 'Gamification', 'Học thuật', 'Quản lý chất lượng', 'Core team', 'Dashboard'], an: [], tuyChinh: false, toast: null, formGiao: false, formOrder: false,
+  viecNgayTab: 'vh', vnRong: false, dang: 'vuong', lon: ['viec_ngay', 'tien_do', 'yeu_thich', 'order'], tileOrder: ['Việc của tôi', 'Vận hành', 'Gamification', 'Học thuật', 'Quản lý chất lượng', 'Core team', 'Dashboard'], an: [], tuyChinh: false, toast: null, formGiao: false, formOrder: false,
   vh: { // việc vận hành tự đo (khâu → xong/tổng, quá hạn)
     thuy: [['Chấm bài trên lớp', 0, 11, 11], ['Chấm BTVN', 0, 6, 6], ['Chấm ET', 2, 6, 4], ['Duyệt báo sai', 0, 1, 1], ['Đánh giá sau buổi', 5, 20, 12], ['Điều hành ca bổ trợ', 0, 2, 2], ['Đánh giá buổi bù', 2, 2, 0]],
     mai: [['Chấm BTVN', 3, 5, 0], ['Chấm ET', 1, 4, 1]], trang: [['Duyệt báo sai', 0, 3, 2]], loc: [], tra: [['Chấm BTVN', 4, 4, 0]],
@@ -184,23 +184,23 @@ const ten = (id) => P[id].day;
 const hide = (id) => S.an.includes(id);
 
 /* ═══════ RENDER ═══════ */
-function viecNgayCompact(full) {
-  const lim = full ? 99 : 5;
+function viecNgayCompact() {
+  const full = S.vnRong, lim = full ? 99 : 5;
   let body;
   if (S.viecNgayTab === 'vh') {
     const rows = S.vh[S.me] || [];
-    body = rows.length ? rows.slice(0, lim).map(([k, x, t, q]) => `<button class="li" data-a="${full ? 'toViec' : 'mo:ngay'}"><span class="chk ${x === t ? 'on' : ''}">${x === t ? '✓' : ''}</span><span class="grow ${x === t ? 'strike' : ''}">${k}</span>${q ? `<span class="red" style="font-size:11px;font-weight:800">${q} quá hạn</span>` : ''}<span class="muted" style="font-weight:800">${x}/${t}</span></button>`).join('')
+    body = rows.length ? rows.slice(0, lim).map(([k, x, t, q]) => `<button class="li" data-a="toViec"><span class="chk ${x === t ? 'on' : ''}">${x === t ? '✓' : ''}</span><span class="grow ${x === t ? 'strike' : ''}">${k}</span>${q ? `<span class="red" style="font-size:11px;font-weight:800">${q} quá hạn</span>` : ''}<span class="muted" style="font-weight:800">${x}/${t}</span></button>`).join('')
       + (!full && rows.length > lim ? `<div class="muted" style="font-size:11.5px;padding:2px 4px">… và ${rows.length - lim} việc nữa</div>` : '')
       : `<div class="muted">Hôm nay không có việc vận hành nào tới hạn. ✓</div>`;
   } else {
     const rows = S.nhac[S.me] || [];
     body = rows.slice(0, lim).map((r, i) => `<button class="li" data-a="nhacTick:${i}"><span class="chk ${r.x ? 'on' : ''}">${r.x ? '✓' : ''}</span><span class="grow ${r.x ? 'strike' : ''}">${r.t}</span></button>`).join('')
       + (full ? `<div class="row" style="margin-top:8px"><input id="nhacIn" placeholder="Thêm việc nhắc mình… (lặp lại mỗi ngày)" style="flex:1;border:1px solid var(--line);background:var(--surface2);border-radius:8px;padding:6px 9px"><button class="btn" style="background:var(--acc);color:var(--acc-ink)" data-a="nhacThem">Thêm</button></div><div class="muted" style="font-size:11px;margin-top:6px">Chỉ mình bạn thấy · ô tick tự về trống mỗi ngày mới.</div>`
-        : `<button class="link" data-a="mo:ngay" style="margin-top:4px">＋ Thêm / xem tất cả ›</button>`);
+        : `<button class="link" data-a="vnRong" style="margin-top:4px">＋ Thêm / hiện tất cả ▾</button>`);
   }
   return `<div class="card"><div class="row" style="margin-bottom:8px;flex-wrap:wrap"><h3>☑ Việc hôm nay</h3>
     <span class="seg" style="margin-left:auto"><button class="${S.viecNgayTab === 'vh' ? 'on' : ''}" data-a="vnTab:vh">⚙ Vận hành</button><button class="${S.viecNgayTab === 'nhac' ? 'on' : ''}" data-a="vnTab:nhac">📝 Nhắc việc</button></span></div>${body}
-    ${full ? `<div style="margin-top:10px"><button class="link" data-a="toViec">Mở Việc của tôi ›</button></div>` : `<div style="text-align:right;margin-top:4px"><button class="link" data-a="mo:ngay">Xem chi tiết ›</button></div>`}</div>`;
+    <div style="text-align:right;margin-top:6px"><button class="link" data-a="vnRong">${full ? '▴ Thu gọn' : 'Hiện tất cả ▾'}</button></div></div>`;
 }
 
 function tienDo() {
@@ -268,7 +268,7 @@ function favBox() {
   const fav = [['📅', 'Buổi học', 'Vận hành › Vận hành lớp học'], ['📝', 'ET', 'Học thuật › Làm tài liệu'], ['🗺', 'Bản đồ kiến thức (Kho)', 'Học thuật'], ['📘', 'Giáo trình', 'Học thuật › Làm tài liệu']];
   return `<span class="tag">★ Yêu thích</span><div class="favs" style="margin-bottom:0">${fav.map(([i, n, s]) => `<button class="fav" data-a="tile"><span class="ic">${i}</span><span class="grow"><b style="display:block">${n}</b><span class="muted" style="font-size:12px">${s}</span></span><span style="color:var(--acc)">★</span></button>`).join('')}</div>`;
 }
-const THAN = { viec_ngay: () => viecNgayCompact(false), tien_do: () => tienDo(), yeu_thich: () => favBox(), order: () => orderBox() };
+const THAN = { viec_ngay: () => viecNgayCompact(), tien_do: () => tienDo(), yeu_thich: () => favBox(), order: () => orderBox() };
 const lonO = (i) => (hide(S.lon[i]) ? '' : kb(S.lon[i], THAN[S.lon[i]]()));
 
 function main() {
@@ -412,6 +412,7 @@ document.addEventListener('click', (e) => {
     case 'tile': toast('→ mở màn tương ứng'); return;
     case 'gd': toast('🎨 Chọn giao diện + hình nền (mặc định / 4 style / ảnh của tôi)'); return;
     case 'vnTab': S.viecNgayTab = x; break;
+    case 'vnRong': S.vnRong = !S.vnRong; break;
     case 'nhacTick': { const r = S.nhac[S.me][x]; r.x = !r.x; break; }
     case 'nhacThem': { const v = val('nhacIn').trim(); if (v) S.nhac[S.me].push({ t: v, x: false }); break; }
     case 'tuy': S.tuyChinh = !S.tuyChinh; break;
