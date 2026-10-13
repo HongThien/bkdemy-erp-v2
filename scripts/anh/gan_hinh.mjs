@@ -103,7 +103,8 @@ for (const v of viec) {
 // Biên bản TRƯỚC khi đổi DB: URL cũ của từng câu (để hoàn lại được — ảnh cũ vẫn nằm trong bucket, script không xoá gì)
 const luc = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Ho_Chi_Minh', dateStyle: 'short', timeStyle: 'medium' }).format(new Date()).replace(/[: ]/g, '-')
 mkdirSync('scripts/anh/bien_ban', { recursive: true })
-const tepBB = `scripts/anh/bien_ban/gan-hinh-${luc}.json`
+let tepBB = `scripts/anh/bien_ban/gan-hinh-${luc}.json`
+for (let i = 2; existsSync(tepBB); i++) tepBB = `scripts/anh/bien_ban/gan-hinh-${luc}-${i}.json` // chạy nhiều gói liền nhau trong cùng một giây: không đè biên bản trước
 // phần Học giữ khuôn cũ (anh_de_cu, anh_dap_an_cu); phần Luyện ghi khoa + cot (các cột bị đổi) + cu (giá trị cũ của MỌI cột ảnh của dòng)
 writeFileSync(tepBB, JSON.stringify(daUp.flatMap(({ v, link }) => v.dong.map((d) => (TEN_BANG
   ? { ma: d.ma, bang: d.bang, khoa: d.khoa, tep: v.ten, kieu: v.kg, cot: d.cot, cu: d.cu, moi: link }

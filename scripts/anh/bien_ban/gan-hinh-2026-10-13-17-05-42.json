@@ -1,0 +1,92 @@
+[
+ {
+  "ma": "0a644cca-8840-492f-9a00-8e0bbce15a0e",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "0a644cca-8840-492f-9a00-8e0bbce15a0e.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/b7d4809f-eb30-4e90-a904-e2994279c6f6.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/0a644cca-8840-492f-9a00-8e0bbce15a0e-57fbf94e-6114-438e-80a3-8e681f1e4da1.png"
+ },
+ {
+  "ma": "18bf2098-c12c-4adc-846c-0022f6942425",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "18bf2098-c12c-4adc-846c-0022f6942425.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/2499a3b6-5c5b-4579-a3f2-29c9727708b7.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/18bf2098-c12c-4adc-846c-0022f6942425-794d46b2-ee5c-4896-8399-e3517dbefbb8.png"
+ },
+ {
+  "ma": "8a46ad82-6b15-4d39-b92c-6a0539102c46",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "8a46ad82-6b15-4d39-b92c-6a0539102c46.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a6993901-e166-4776-a912-28fa47f70295.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/8a46ad82-6b15-4d39-b92c-6a0539102c46-c4b4f6e4-8e2b-4c0c-ad22-01ca0598dbb7.png"
+ },
+ {
+  "ma": "d477e26d-5b1f-4638-8e76-df6b267a0496",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "d477e26d-5b1f-4638-8e76-df6b267a0496.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/ab63c1d0-10e1-4d6d-8a2d-630ae43f664f.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/d477e26d-5b1f-4638-8e76-df6b267a0496-d5327f7b-818c-46f8-9630-fe68e30678f7.png"
+ },
+ {
+  "ma": "e93b0e43-6043-448b-933c-8d990f666970",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "e93b0e43-6043-448b-933c-8d990f666970.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c88cd5f0-4771-4363-8d31-06539084df95.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/e93b0e43-6043-448b-933c-8d990f666970-342a3ac7-234a-4580-907a-a8bb64b122d1.png"
+ },
+ {
+  "ma": "ea72cfdd-d344-4128-a879-6beccbb4ecd6",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "ea72cfdd-d344-4128-a879-6beccbb4ecd6.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/68675e42-ef29-4c0c-8189-63e47aee3168.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/ea72cfdd-d344-4128-a879-6beccbb4ecd6-d86dd877-e720-474d-9766-fb533483ff92.png"
+ }
+]

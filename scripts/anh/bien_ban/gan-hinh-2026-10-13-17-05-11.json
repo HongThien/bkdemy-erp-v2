@@ -1,0 +1,58 @@
+[
+ {
+  "ma": "BT.08.043.02",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.043.02.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/15bafb0e-7595-44d7-a6a2-a78f775c4f32.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.043.02-7a40ddb5-dbb9-4e5f-b2c1-390cc0aabe89.png"
+ },
+ {
+  "ma": "BT.08.043.04",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.043.04.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/0234399d-7426-47f5-bc11-d2fcf6013cb4.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.043.04-57467c08-4b79-461b-968a-3bbf604e7be5.png"
+ },
+ {
+  "ma": "BT.08.043.06",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.043.06.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/2d5f74d8-7ce1-4648-bad9-d238379d1288.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.043.06-8fc5986c-0c59-424a-b373-36b539a830c2.png"
+ },
+ {
+  "ma": "BT.08.043.07",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.043.07.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/00429451-14b7-43d5-9f76-75d7ede898d4.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.043.07-5043fc6e-c55c-48f3-87b6-fdae2bd7aaa0.png"
+ }
+]

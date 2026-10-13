@@ -1,0 +1,122 @@
+[
+ {
+  "ma": "0a91adb8-abac-4331-99e1-5b446dc7769b",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "0a91adb8-abac-4331-99e1-5b446dc7769b.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c024ddf4-eb65-41b4-b867-e692346d843d.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/0a91adb8-abac-4331-99e1-5b446dc7769b-94fc9eb6-1b8f-442b-aefc-fc54d6d77fac.png"
+ },
+ {
+  "ma": "4c49cac0-4aa0-45c5-824b-2450e170866f",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "4c49cac0-4aa0-45c5-824b-2450e170866f.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/25698760-2228-4efd-b346-8531f97d1a45.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/4c49cac0-4aa0-45c5-824b-2450e170866f-d0108904-feae-4d02-9a51-8dec0d9e92c4.png"
+ },
+ {
+  "ma": "7b12152f-e767-4ae7-be40-9ec8e0559310",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "7b12152f-e767-4ae7-be40-9ec8e0559310.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/2a43b267-8e1a-44c3-9c51-bf2c270fa54c.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/7b12152f-e767-4ae7-be40-9ec8e0559310-ee132f32-06de-4209-913d-ea63738d672a.png"
+ },
+ {
+  "ma": "80ba272f-d252-4617-8664-e4aa7070d258",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "80ba272f-d252-4617-8664-e4aa7070d258.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/de6965ad-4066-43b0-8400-9bb70c329efa.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/80ba272f-d252-4617-8664-e4aa7070d258-3d1be344-34bd-4011-8854-caf784127565.png"
+ },
+ {
+  "ma": "8d7376cd-fd87-4532-a082-a0f9e4076d82",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "8d7376cd-fd87-4532-a082-a0f9e4076d82.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/3db4754f-ce8f-48fb-bd78-d73743fc73f8.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/8d7376cd-fd87-4532-a082-a0f9e4076d82-bf36449c-45d9-4d46-88d8-064c3ad16f6a.png"
+ },
+ {
+  "ma": "9d02e594-aea4-4354-af2a-9fc2c8dc9775",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "9d02e594-aea4-4354-af2a-9fc2c8dc9775.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/fc16db17-1f7b-43b3-ad39-5703e21cd589.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/9d02e594-aea4-4354-af2a-9fc2c8dc9775-6990362a-5f9e-4458-a017-afc02af18d73.png"
+ },
+ {
+  "ma": "a18e0f2c-eb8c-4c2e-96c6-f11a26edc220",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "a18e0f2c-eb8c-4c2e-96c6-f11a26edc220.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/233712e5-e71d-41c4-b698-6cebf4d9c7dc.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/a18e0f2c-eb8c-4c2e-96c6-f11a26edc220-90b2c762-a80e-4dff-ae10-2bf0260ef29a.png"
+ },
+ {
+  "ma": "ccb5cbda-e801-4d55-afb0-8be6f03fcc91",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "ccb5cbda-e801-4d55-afb0-8be6f03fcc91.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/cf74db22-82ce-45b8-834b-17597c3ccfcf.png",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/ccb5cbda-e801-4d55-afb0-8be6f03fcc91-75e3ad66-c42b-444e-92ee-1ed13fb13eaf.png"
+ }
+]

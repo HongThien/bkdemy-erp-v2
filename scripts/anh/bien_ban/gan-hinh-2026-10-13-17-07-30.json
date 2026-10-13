@@ -1,0 +1,16 @@
+[
+ {
+  "ma": "BT.08.053.01",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.053.01.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/829b81da-0321-4e8a-be6c-bc43fec0fbca.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.053.01-8a082a63-4565-432d-859c-4ed9e1322ada.png"
+ }
+]

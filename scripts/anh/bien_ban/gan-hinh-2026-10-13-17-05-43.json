@@ -1,0 +1,17 @@
+[
+ {
+  "ma": "81b5870c-c497-4028-8516-582f1fff3db9",
+  "bang": "hinh_baitoan_bien_the",
+  "khoa": "id",
+  "tep": "81b5870c-c497-4028-8516-582f1fff3db9.png",
+  "kieu": "chung",
+  "cot": [
+   "anh"
+  ],
+  "cu": {
+   "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/13773048-b739-4958-a308-85c1c51da419.svgxml",
+   "anh_loi_giai": null
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/81b5870c-c497-4028-8516-582f1fff3db9-c9e23572-95ed-47b3-a03a-399d4fd6ae8f.png"
+ }
+]

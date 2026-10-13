@@ -1,0 +1,72 @@
+[
+ {
+  "ma": "BT.08.044.01",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.044.01.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/04ce5b5a-4115-4bc6-9eeb-53f37d666384.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.044.01-d6172a5c-15b8-4cc9-b510-0891bfa7c709.png"
+ },
+ {
+  "ma": "BT.08.044.02",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.044.02.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/f80fe90e-478f-48d1-8178-42e3245de5a0.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.044.02-65a85b76-7290-4685-b0a3-42a57b9bf268.png"
+ },
+ {
+  "ma": "BT.08.044.03",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.044.03.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/24d791fe-ad44-486f-a621-6f50994f1637.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.044.03-6dd9cc8b-a4b7-485e-9ae3-7bca1dc1221d.png"
+ },
+ {
+  "ma": "BT.08.044.04",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.044.04.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a584f46a-b68e-4257-b1e2-e17965f13758.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.044.04-45168612-5fa6-48d1-9f22-8a6ae641cf7e.png"
+ },
+ {
+  "ma": "BT.08.044.05",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.08.044.05.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/ab75d728-6544-431e-a752-20ecb078a461.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.08.044.05-602c0697-96e6-455d-b24c-5b693f6b2a1a.png"
+ }
+]

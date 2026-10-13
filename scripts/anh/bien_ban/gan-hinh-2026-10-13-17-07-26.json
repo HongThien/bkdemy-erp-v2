@@ -1,0 +1,30 @@
+[
+ {
+  "ma": "BT.07.045.27",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.07.045.27.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/fd52c497-4029-4fc3-8b5a-3be8c95d221b.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.045.27-64c07e3d-1fde-4745-b298-b91a952197d2.png"
+ },
+ {
+  "ma": "BT.07.045.28",
+  "bang": "hinh_baitoan",
+  "khoa": "ma",
+  "tep": "BT.07.045.28.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_chuan"
+  ],
+  "cu": {
+   "anh_chuan": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/8d15a7af-32f7-4d74-a00b-3f8778de2790.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.045.28-e556e4bc-7c69-4f7a-a490-c41de59cf051.png"
+ }
+]
