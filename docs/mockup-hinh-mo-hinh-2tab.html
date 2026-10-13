@@ -6,13 +6,13 @@
 :root{
   --ink:#1f2530;--ink2:#5b6472;--ink3:#8a93a3;--line:#e6e8ee;--line2:#d3d7e0;--bg:#f5f6f9;
   --c0:#1d9e75;--c0b:#e1f5ee;--c1:#378add;--c1b:#e6f1fb;--c2:#7f77dd;--c2b:#eeedfe;--c3:#ba7517;--c3b:#faeeda;
-  --wr:#c0392b;--wyb:#fff6d6;--wy:#e0a100;
+  --wyb:#fff6d6;--wy:#e0a100;
 }
 *{box-sizing:border-box}html,body{margin:0}
 body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.5}
 .wrap{max-width:1240px;margin:0 auto;padding:18px 20px 80px}
 h1{font-size:19px;margin:0 0 4px}
-.sub{color:var(--ink2);font-size:12.5px;margin:0 0 14px;max-width:960px}
+.sub{color:var(--ink2);font-size:12.5px;margin:0 0 14px;max-width:980px}
 .crumb{font-size:12.5px;color:var(--ink2);margin-bottom:8px}.crumb b{color:var(--ink)}
 .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
 .seg{display:inline-flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden;background:#fff}
@@ -24,121 +24,160 @@ h1{font-size:19px;margin:0 0 4px}
 .chip{display:inline-flex;align-items:center;gap:5px;border-radius:14px;padding:2px 9px;font-size:11.5px;font-weight:600;border:1px solid transparent}
 .k0{background:var(--c0b);color:#0f6e56;border-color:var(--c0)}.k1{background:var(--c1b);color:#185fa5;border-color:var(--c1)}
 .k2{background:var(--c2b);color:#3c3489;border-color:var(--c2)}.k3{background:var(--c3b);color:#854f0b;border-color:var(--c3)}
-.warnchip{background:var(--wyb);color:#7a5a00;border:1px solid var(--wy);border-radius:6px;padding:1px 6px;font-size:10.5px;font-weight:700}
-.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
-.split{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.warnchip{background:var(--wyb);color:#7a5a00;border:1px solid var(--wy);border-radius:6px;padding:0 5px;font-size:10px;font-weight:700}
 .mono{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--ink3)}
 .chk{font-size:12.5px;color:var(--ink2);display:inline-flex;gap:5px;align-items:center;cursor:pointer}
 
-/* TAB 1 — cây */
-.chain{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:560px}
+/* TAB 1 — cây dọc */
+.chain{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:600px}
 .tree{position:relative}
 .lane{position:absolute;border-radius:12px;border:1.5px dashed;transition:opacity .15s}
 .lane.l0{background:#f3fbf8;border-color:#9fdcc6}.lane.l1{background:#f2f8ff;border-color:#a9cdf0}
 .lane.l2{background:#f7f6ff;border-color:#c3beef}.lane.l3{background:#fff8ec;border-color:#efc98a}
 .tree svg.edges{position:absolute;left:0;top:0;z-index:2;pointer-events:none}
-.nd{position:absolute;z-index:3;border:1.5px solid var(--line2);background:#fff;border-radius:9px;padding:5px 9px;font-size:11.8px;line-height:1.3;cursor:pointer;overflow:hidden;transition:opacity .15s}
-.nd:hover{box-shadow:0 2px 8px rgba(20,30,50,.12)}.nd.sel{box-shadow:0 0 0 3px rgba(24,95,165,.25)}.nd.pick{outline:2px solid #185fa5}
-.nd .top{display:flex;gap:6px;align-items:center;margin-bottom:2px}.nd .stt{font-weight:800;font-size:12.5px}
-.nd input{margin:0 0 0 auto}
-.nd .tt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nd{position:absolute;z-index:3;border:1.5px solid var(--line2);background:#fff;border-radius:8px;padding:3px 8px;font-size:11.5px;line-height:1.25;cursor:pointer;overflow:hidden;transition:opacity .15s}
+.nd:hover{box-shadow:0 2px 8px rgba(20,30,50,.15)}.nd.sel{box-shadow:0 0 0 3px rgba(24,95,165,.28)}.nd.pick{outline:2px solid #185fa5}
+.nd .top{display:flex;gap:5px;align-items:center}.nd .stt{font-weight:800;font-size:12.5px}
+.nd .top input{margin:0 0 0 auto;width:13px;height:13px}
+.nd .tt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)}
 .nd.bad{background:var(--wyb);border-color:var(--wy)}
 .nd.submodel{border-style:dashed;border-width:2px;background:var(--c0b);border-color:var(--c0)}
-.nd.fold{border-style:dotted;border-width:2px;background:#fafbfd;color:var(--ink2);display:flex;align-items:center;gap:8px}
-.pill{position:absolute;z-index:3;border-radius:22px;border:2px solid;padding:4px 11px;font-size:11px;line-height:1.25;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:#fff;cursor:pointer;transition:opacity .15s}
-.pill b{font-size:12px}.pill span{color:var(--ink2)}
-.pill.k1{border-color:var(--c1)}.pill.k2{border-color:var(--c2)}.pill.k3{border-color:var(--c3)}
-.dim{opacity:.22}
+.nd.fold{border-style:dotted;border-width:2px;background:#fafbfd;color:var(--ink2);display:flex;align-items:center;gap:6px}
+/* thẻ GIẢ THIẾT THÊM (khởi tạo nhánh): khối màu đặc, hình lục giác — khác hẳn thẻ bài trắng bo góc */
+.gtc{position:absolute;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:0 20px;color:#fff;cursor:pointer;
+  clip-path:polygon(9% 0,91% 0,100% 50%,91% 100%,9% 100%,0 50%);transition:opacity .15s}
+.gtc b{font-size:11.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gtc span{font-size:9.5px;opacity:.85;white-space:nowrap}
+.gtc.k1{background:var(--c1)}.gtc.k2{background:var(--c2)}.gtc.k3{background:var(--c3)}
+.gtc:hover{filter:brightness(1.1)}
+.dim{opacity:.2}
 .legend{font-size:11.5px;color:var(--ink2);margin-top:10px}
+.legend .ex{display:inline-block;width:46px;height:14px;vertical-align:middle;margin:0 4px;clip-path:polygon(9% 0,91% 0,100% 50%,91% 100%,9% 100%,0 50%);background:var(--c1)}
+.legend .ex2{display:inline-block;width:34px;height:14px;vertical-align:middle;margin:0 4px;border:1.5px solid var(--line2);border-radius:5px;background:#fff}
 
 /* TAB 2 — nhóm */
 .box{border:2px solid;border-radius:13px;padding:10px 12px 12px;margin:10px 0;background:#fff}
 .box.b0{border-color:var(--c0);background:#f7fdfa}.box.b1{border-color:var(--c1);background:#f6faff}
 .box.b2{border-color:var(--c2);background:#faf9ff}.box.b3{border-color:var(--c3);background:#fffaf1}
 .bhead{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.bhead .t{font-weight:700}
-.gt{font-size:12px;background:rgba(0,0,0,.04);border-radius:6px;padding:5px 8px;margin:4px 0 8px;color:var(--ink2)}.gt b{color:var(--ink)}
+.gt{font-size:12px;border-radius:6px;padding:5px 8px;margin:4px 0 8px;color:#fff}
+.box.b1>.gt{background:var(--c1)}.box.b2>.gt{background:var(--c2)}.box.b3>.gt{background:var(--c3)}.box.b0>.gt{background:var(--c0)}
 .direct{border:1.5px dashed var(--line2);border-radius:10px;padding:8px 10px;background:#fff;margin-bottom:6px}
 .direct .dl{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:700;margin-bottom:5px}
 .brow{display:flex;gap:8px;align-items:center;padding:5px 7px;border-radius:7px;font-size:12.5px;cursor:pointer}
 .brow:hover{background:#f2f6fb}.brow.sel{background:#e6f1fb}
-.brow .st{font-weight:800;min-width:46px}.brow .tx{flex:1;min-width:0}
+.brow .st{font-weight:800;min-width:50px}.brow .tx{flex:1;min-width:0}
 .brow select{font-size:11.5px;border:1px solid var(--line2);border-radius:6px;padding:2px 4px;background:#fff;max-width:170px}
 .subcard{border:2px dashed var(--c0);background:var(--c0b);border-radius:12px;padding:10px 12px;margin:10px 0;display:flex;gap:10px;align-items:center}
 
-.side h3{font-size:13px;margin:0 0 6px}
-.kv{font-size:12.5px;margin:0 0 8px}
-.kv .k{color:var(--ink3);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;display:block}
-.path{font-size:12px;border-left:3px solid var(--c0);padding-left:9px;margin:2px 0 8px}.path .step{margin:3px 0}
-.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--c3);border-radius:0 10px 10px 0;padding:10px 13px;font-size:12.5px;color:var(--ink2);margin-top:14px}
+/* popup bài */
+.ov{position:fixed;inset:0;background:rgba(20,28,40,.45);z-index:60;display:none;align-items:center;justify-content:center;padding:20px}
+.ov.on{display:flex}
+.pop{background:#fff;border-radius:14px;width:min(860px,100%);max-height:92vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.28)}
+.pop .ph{display:flex;gap:10px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:1}
+.pop .ph h2{font-size:17px;margin:0}
+.pop .x{margin-left:auto;border:none;background:#f2f4f8;border-radius:8px;width:32px;height:32px;font-size:17px;cursor:pointer}
+.pop .pb{display:grid;grid-template-columns:1fr 250px;gap:18px;padding:16px 18px 20px}
+@media(max-width:760px){.pop .pb{grid-template-columns:1fr}}
+.sec{margin-bottom:14px}
+.sec .k{color:var(--ink3);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;display:block;margin-bottom:3px}
+.sec .v{font-size:14px}
+.fig{border:1px solid var(--line);border-radius:10px;background:#fbfcfe;padding:6px}
+.fig svg{width:100%;display:block}
+.path{font-size:12px;border-left:3px solid var(--c0);padding-left:9px}.path .step{margin:3px 0}
+.dapan{background:#f2fbf7;border:1px solid #bfe6d6;border-radius:8px;padding:8px 10px;font-weight:600}
+.ans{background:#fafbfd;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--ink2)}
 .rules{background:#fff;border:1px solid var(--line);border-left:3px solid var(--c1);border-radius:0 10px 10px 0;padding:10px 13px;font-size:12.5px;color:var(--ink2);margin-top:14px}
 .rules ol{margin:6px 0 0;padding-left:20px}.rules li{margin:3px 0}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2530;color:#fff;padding:9px 15px;border-radius:9px;font-size:13px;opacity:0;transition:opacity .2s;z-index:50;pointer-events:none}
+.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--c3);border-radius:0 10px 10px 0;padding:10px 13px;font-size:12.5px;color:var(--ink2);margin-top:14px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2530;color:#fff;padding:9px 15px;border-radius:9px;font-size:13px;opacity:0;transition:opacity .2s;z-index:80;pointer-events:none}
 .toast.on{opacity:1}
 </style></head>
 <body><div class="wrap">
 
 <div class="crumb">Kho › Hình › Luyện › Họ <b>Tam giác vuông</b> › Mô hình <b>MH.09.012 — Phân giác trong tam giác vuông</b></div>
-<h1>Mô hình Hình: một cây bài — số bài cho biết bài rẽ từ đâu</h1>
-<p class="sub"><b>Tab Chuỗi</b> — thân chạy ngang: <b>1.1 → 1.2 → 1.3</b>. Từ một bài có thể <b>rẽ nhánh</b> bằng cách thêm giả thiết; bài đầu tiên của nhánh mang số của bài mẹ: rẽ từ 1.1 ⇒ <b>1.1.1 → 1.1.2 → …</b>, rẽ tiếp từ 1.1.1 ⇒ <b>1.1.1.1 …</b>.
-<b>Tab Nhóm</b> — cùng cây ấy dạng card lồng nhau. Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p>
+<h1>Mô hình Hình: cây bài mọc XUỐNG — thẻ tối giản, bấm vào mới thấy đủ</h1>
+<p class="sub"><b>Thân</b> chạy ngang 1.1 → 1.2 → … chỉ chiếm một hàng. <b>Nhánh rẽ xuống theo cột dọc</b> ngay dưới bài mẹ (1.6 → 1.6.1 → 1.6.2). Nhánh con của một bài trong cột <b>chéo dần xuống phía dưới</b>, chỗ nào trống thì lấy. Chỗ <b>giả thiết thêm</b> là thẻ lục giác màu đặc, khác thẻ bài. <b>Bấm thẻ bài ⇒ popup</b> đề · hình · đáp án.
+Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p>
 
 <div class="bar">
   <div class="seg"><button id="t1" class="on">① Chuỗi</button><button id="t2">② Nhóm</button></div>
   <button class="btn pri" id="gom" disabled>Rẽ nhánh từ bài đứng trước (<span id="nsel">0</span>)</button>
   <button class="btn" id="gap">▸ Gập nhánh sâu (≥ 2)</button>
   <button class="btn" id="mo">▾ Mở hết</button>
-  <label class="chk"><input type="checkbox" id="focus" checked> Tập trung đường đi của bài đang chọn</label>
+  <label class="chk"><input type="checkbox" id="focus" checked> Mờ phần ngoài đường đi của bài chọn</label>
   <button class="btn" id="reset">↺ Mẫu gốc</button>
   <span class="mono" id="stat"></span>
 </div>
 
-<div class="split">
-  <div id="view"></div>
-  <div class="panel side" id="side"></div>
-</div>
+<div id="view"></div>
 
-<div class="rules"><b>Luật hiển thị khi cây rậm</b> (đã bật trong mockup — thử: bấm “Gập nhánh sâu”, bấm viên thuốc ⑂, chọn một bài):
+<div class="rules"><b>Luật xếp chỗ khi rậm</b> (đang chạy trong mockup — thử: gom thêm nhánh, chuyển bài, gập):
 <ol>
- <li><b>Không bao giờ chồng:</b> mỗi làn một hàng riêng; nhánh con xếp <u>ngay dưới làn mẹ</u>, theo thứ tự bài mẹ từ trái sang phải; làn con thụt vào đúng 1 bước so với bài mẹ. Thêm nhánh = thêm hàng, không đẩy bài khác sang ngang.</li>
- <li><b>Làn dài không xuống dòng</b> (xuống dòng làm mất thứ tự đọc 1.1 → 1.2 → …) — khung cuộn ngang/dọc, giữ nguyên bố cục.</li>
- <li><b>Gập được từng nhánh:</b> bấm viên thuốc ⑂ ⇒ cả nhánh (kể cả nhánh con) gập thành 1 ô “▸ N bài”, vẫn thấy cờ ⚠ bên trong. Mặc định gập nhánh sâu ≥ 3 hoặc nhánh &gt; 8 bài; người dùng mở lại thì nhớ.</li>
- <li><b>Tập trung đường đi:</b> chọn một bài ⇒ mọi thứ ngoài <i>đường gốc → bài</i> và <i>cây con của nhánh bài</i> mờ đi; không ẩn, không dịch chỗ.</li>
- <li><b>Tiền đề xuyên làn chỉ vẽ khi cần:</b> chỉ vẽ dây của bài đang chọn và dây sai nhánh (đỏ). Mặc định không vẽ — tránh rừng dây; danh sách tiền đề luôn có ở panel chi tiết.</li>
- <li><b>Cờ ⚠ nổi lên mọi mức gập</b> — gập nhánh không được làm bài sai nhánh biến mất.</li>
- <li><b>&gt; ~40 bài / mô hình:</b> chuyển sang Tab Nhóm làm khung chính (card lồng + danh sách có phân trang), Tab Chuỗi chỉ hiện nhánh đang mở.</li>
+ <li><b>Thân chỉ một hàng, không bao giờ bị đẩy.</b> Mọi nhánh mọc xuống từ bài mẹ; thân không giãn ra vì nhánh dưới nó.</li>
+ <li><b>Dọc trước.</b> Nhánh của bài ở thân đi thẳng xuống đúng cột của bài mẹ: viên giả thiết thêm ngay dưới, rồi 1.6.1, 1.6.2 … xếp chồng xuống.</li>
+ <li><b>Chéo sau.</b> Nhánh con của bài nằm trong cột dọc thì không còn chỗ thẳng dưới (đã có bài kế tiếp) ⇒ chéo xuống một bậc sang <u>phải</u>, rồi lại thẳng xuống.</li>
+ <li><b>Vướng thì né theo thứ tự:</b> thẳng xuống → chéo phải → chéo trái → lùi xuống thêm một hàng và thử lại → xa thêm một cột. Chạy trong lúc xếp, không ai kéo tay. Ví dụ 1.7 vẫn có cột riêng ngay dưới nó dù 1.6 đã có nhiều nhánh: <i>nhánh nông giữ chỗ trước, nhánh sâu né</i> (xếp theo độ sâu).</li>
+ <li><b>Không cần rẽ lên trên:</b> không gian phía dưới luôn thừa, cây chỉ lớn xuống. (Rẽ lên trên chỉ nên làm khi có đồ thị phẳng khác — không đưa vào P1.)</li>
+ <li><b>Gập từng nhánh</b> (bấm thẻ lục giác) ⇒ cột gập thành 1 ô “▸ N bài”, cờ ⚠ vẫn nổi. Mặc định gập nhánh sâu ≥ 3 hoặc &gt; 8 bài; bỏ chỗ trống của nhánh gập cho nhánh khác dùng.</li>
+ <li><b>Chọn một bài</b> ⇒ ngoài đường gốc → bài và cây con của nhánh bài thì mờ, không ẩn không dịch chỗ. Dây tiền đề chỉ vẽ cho bài đang chọn và dây sai nhánh (đỏ).</li>
+ <li>&gt; ~40 bài / mô hình ⇒ Tab Nhóm làm khung chính.</li>
 </ol></div>
 
-<div class="note"><b>Số hiển thị ≠ mã.</b> Số 1.1.2 là <u>vị trí trên cây</u>, máy tự tính lại khi kéo bài sang nhánh khác. Mã bài (<span class="mono">BT.09.012.xx</span>) cấp một lần, không đổi — lịch sử đo bám theo mã.
-<br><b>Luật bất biến:</b> nhánh của bài phải <b>chứa</b> nhánh của mọi tiền đề. Vi phạm ⇒ <span class="warnchip">⚠ sai nhánh</span> + nút chuyển nhanh; không chặn lưu, nhưng builder từ chối in. Thử: bài <b>1.3</b> ở thân mà tiền đề là 1.1.1.1 (nhánh con sâu).
-<br><b>Giả thiết hiệu lực</b> = giả thiết mô hình + giả thiết thêm của từng nhánh trên đường gốc → nhánh của bài + giả thiết riêng. Anh em không thấy giả thiết nhau; con thấy cha.</div>
+<div class="note"><b>Số hiển thị ≠ mã.</b> 1.6.1 là <u>vị trí trên cây</u>, máy tính lại khi chuyển bài. Mã (<span class="mono">BT.09.012.xx</span>) cấp một lần, không đổi — lịch sử đo bám theo mã.
+<br><b>Luật bất biến:</b> nhánh của bài phải <b>chứa</b> nhánh của mọi tiền đề. Vi phạm ⇒ <span class="warnchip">⚠ sai nhánh</span> + nút chuyển nhanh trong popup; không chặn lưu, builder từ chối in. Thử: bài <b>1.5</b> (ở thân) có tiền đề 1.6.1.1 (nhánh sâu).</div>
 </div>
+
+<div class="ov" id="ov"><div class="pop" id="pop"></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
 const SEED=()=>({
   mo_hinh:{ma:'MH.09.012',ten:'Phân giác trong tam giác vuông',gt:'△ABC vuông tại A; AD là phân giác góc A (D ∈ BC).'},
-  nhanh:{   // neo = bài mà nhánh rẽ ra; root không neo
-    root:{id:'root',neo:null,ten:'Thân (mô hình gốc)',gt:'(giả thiết của mô hình)',cls:'0'},
-    n1:{id:'n1',neo:'b1',ten:'Kẻ DE ⊥ AB',gt:'Kẻ DE ⊥ AB tại E.',cls:'1'},
-    n1a:{id:'n1a',neo:'b3',ten:'Kẻ thêm DF ⊥ AC',gt:'Kẻ thêm DF ⊥ AC tại F.',cls:'2'},
-    n2:{id:'n2',neo:'b2',ten:'M trung điểm BC',gt:'Gọi M là trung điểm của BC.',cls:'1'}
+  nhanh:{   // neo = bài mà nhánh rẽ ra
+    root:{id:'root',neo:null,ten:'Thân',gt:'(giả thiết của mô hình)',cls:'0'},
+    n1:{id:'n1',neo:'t6',ten:'Kẻ DE ⊥ AB',gt:'Kẻ DE ⊥ AB tại E.',cls:'1'},
+    n1a:{id:'n1a',neo:'a1',ten:'Kẻ thêm DF ⊥ AC',gt:'Kẻ thêm DF ⊥ AC tại F.',cls:'2'},
+    n1b:{id:'n1b',neo:'a2',ten:'K là hình chiếu của E lên BC',gt:'Gọi K là hình chiếu của E trên BC.',cls:'2'},
+    n2:{id:'n2',neo:'t7',ten:'M trung điểm BC',gt:'Gọi M là trung điểm của BC.',cls:'1'}
   },
   bai:[   // thứ tự mảng = thứ tự trong làn
-    {id:'b1',ma:'BT.09.012.01',ten:'Chứng minh DB/DC = AB/AC',nhanh:'root',tien:[],rieng:''},
-    {id:'b2',ma:'BT.09.012.02',ten:'Cho AB=3, AC=4. Tính AD',nhanh:'root',tien:['b1'],rieng:'AB = 3, AC = 4.'},
-    {id:'b9',ma:'BT.09.012.09',ten:'Tính diện tích AEDF theo AB, AC',nhanh:'root',tien:['b6'],rieng:''},
-    {id:'b3',ma:'BT.09.012.03',ten:'Chứng minh △AED vuông cân tại E',nhanh:'n1',tien:[],rieng:''},
-    {id:'b4',ma:'BT.09.012.04',ten:'Tính DE theo AB, AC',nhanh:'n1',tien:['b3','b1'],rieng:''},
-    {id:'b5',ma:'BT.09.012.05',ten:'Chứng minh AE = DE',nhanh:'n1',tien:['b3'],rieng:''},
-    {id:'b6',ma:'BT.09.012.06',ten:'Chứng minh AEDF là hình vuông',nhanh:'n1a',tien:['b3'],rieng:''},
-    {id:'b7',ma:'BT.09.012.07',ten:'DE = AB·AC / (AB + AC)',nhanh:'n1a',tien:['b6','b4'],rieng:''},
-    {id:'b8',ma:'BT.09.012.08',ten:'Chứng minh AD ≤ AM',nhanh:'n2',tien:['b1'],rieng:''}
+    {id:'t1',ma:'BT.09.012.01',ten:'Chứng minh DB/DC = AB/AC',nhanh:'root',tien:[],rieng:'',
+      de:'Chứng minh rằng DB/DC = AB/AC.',dap:'Tính chất đường phân giác trong.',gi:'Qua C kẻ đường song song với AD cắt tia BA tại E; △ACE cân ⇒ AE = AC; Thales ⇒ DB/DC = AB/AE = AB/AC.'},
+    {id:'t2',ma:'BT.09.012.02',ten:'Cho AB=3, AC=4. Tính AD',nhanh:'root',tien:['t1'],rieng:'AB = 3, AC = 4.',
+      de:'Cho AB = 3, AC = 4. Tính độ dài AD.',dap:'AD = 12√2 / 7',gi:'BC = 5; BD = 15/7, DC = 20/7; dùng AD² = AB·AC − BD·DC ⇒ AD² = 12 − 300/49 = 288/49.'},
+    {id:'t3',ma:'BT.09.012.03',ten:'AD² = AB·AC − DB·DC',nhanh:'root',tien:['t1'],rieng:'',
+      de:'Chứng minh AD² = AB·AC − DB·DC.',dap:'Hệ thức Stewart cho phân giác.',gi:'Gọi (O) ngoại tiếp △ABC, AD cắt (O) tại P; △ABD ∼ △APC ⇒ AB·AC = AD·AP; AD·DP = DB·DC.'},
+    {id:'t4',ma:'BT.09.012.04',ten:'Tính diện tích △ABD',nhanh:'root',tien:['t2'],rieng:'',
+      de:'Với AB = 3, AC = 4, tính diện tích tam giác ABD.',dap:'S = 18/7',gi:'S(ABC) = 6; S(ABD)/S(ABC) = BD/BC = 3/7 ⇒ S(ABD) = 18/7.'},
+    {id:'t5',ma:'BT.09.012.05',ten:'Tính diện tích AEDF',nhanh:'root',tien:['a3'],rieng:'',
+      de:'Tính diện tích tứ giác AEDF theo AB, AC.',dap:'S = (AB·AC/(AB+AC))²',gi:'AEDF là hình vuông cạnh DE = AB·AC/(AB+AC).'},
+    {id:'t6',ma:'BT.09.012.06',ten:'Cho AB=6, AC=8. Tính BD, CD',nhanh:'root',tien:['t1'],rieng:'AB = 6, AC = 8.',
+      de:'Cho AB = 6, AC = 8. Tính BD và CD.',dap:'BD = 30/7, CD = 40/7',gi:'BC = 10; BD/DC = 6/8 = 3/4 ⇒ BD = 30/7, CD = 40/7.'},
+    {id:'t7',ma:'BT.09.012.07',ten:'So sánh AD với trung tuyến AM',nhanh:'root',tien:['t1'],rieng:'',
+      de:'Gọi M là trung điểm BC. So sánh AD với AM.',dap:'AD ≤ AM',gi:'Trong △AMD vuông hoặc nhọn tại D: AM ≥ AD vì AD là đoạn đi từ A xuống BC ngắn hơn trung tuyến.'},
+    {id:'a1',ma:'BT.09.012.08',ten:'△AED vuông cân tại E',nhanh:'n1',tien:[],rieng:'',
+      de:'Chứng minh tam giác AED vuông cân tại E.',dap:'Có ∠EAD = 45°, ∠AED = 90°.',gi:'AD là phân giác ⇒ ∠EAD = 45°; DE ⊥ AB ⇒ ∠AED = 90° ⇒ △AED vuông cân tại E.'},
+    {id:'a2',ma:'BT.09.012.09',ten:'Tính DE theo AB, AC',nhanh:'n1',tien:['a1','t1'],rieng:'',
+      de:'Tính DE theo AB và AC.',dap:'DE = AB·AC/(AB+AC)',gi:'DE ∥ AC ⇒ DE/AC = BD/BC = AB/(AB+AC) ⇒ DE = AB·AC/(AB+AC).'},
+    {id:'a3',ma:'BT.09.012.10',ten:'AEDF là hình vuông',nhanh:'n1a',tien:['a1'],rieng:'',
+      de:'Chứng minh tứ giác AEDF là hình vuông.',dap:'AEDF có 3 góc vuông và AE = ED.',gi:'∠A = ∠E = ∠F = 90° ⇒ AEDF là hình chữ nhật; AE = ED (△AED vuông cân) ⇒ hình vuông.'},
+    {id:'a4',ma:'BT.09.012.11',ten:'DE = AB·AC/(AB+AC)',nhanh:'n1a',tien:['a3','a2'],rieng:'',
+      de:'Chứng minh DE = AB·AC/(AB+AC) bằng diện tích.',dap:'S(ABC) = S(ABD) + S(ACD).',gi:'½·AB·AC = ½·AB·DE + ½·AC·DF với DE = DF ⇒ DE = AB·AC/(AB+AC).'},
+    {id:'a5',ma:'BT.09.012.12',ten:'Tính EK',nhanh:'n1b',tien:['a2'],rieng:'',
+      de:'Tính độ dài EK theo AB, AC.',dap:'EK = DE·sinB',gi:'△EKB vuông tại K; EB = AB − AE; EK = EB·sinB.'},
+    {id:'a6',ma:'BT.09.012.13',ten:'EK ∥ AD',nhanh:'n1b',tien:['a5'],rieng:'',
+      de:'Chứng minh EK ∥ AD.',dap:'Cùng vuông góc với DB? — xem lời giải.',gi:'(Nháp) tính góc EKB và ADB.'},
+    {id:'c1',ma:'BT.09.012.14',ten:'Chứng minh AD ≤ AM',nhanh:'n2',tien:['t1'],rieng:'',
+      de:'Chứng minh AD ≤ AM.',dap:'AD ≤ AM.',gi:'M là tâm đường tròn ngoại tiếp (△ABC vuông tại A) ⇒ MA = MB = MC = BC/2; AD là đoạn đi từ A tới BC nên AD ≤ AM.'},
+    {id:'c2',ma:'BT.09.012.15',ten:'Dấu “=” khi nào?',nhanh:'n2',tien:['c1'],rieng:'',
+      de:'Dấu “=” trong AD ≤ AM xảy ra khi nào?',dap:'AB = AC.',gi:'AD = AM ⇔ D ≡ M ⇔ DB = DC ⇔ AB = AC.'}
   ],
   sub:{ma:'MH.09.013',ten:'Phân giác + đường cao AH',gt:'Kẻ thêm AH ⊥ BC (H ∈ BC).',nBai:3}
 });
-let S=SEED(),tab=1,sel=new Set(),cur=null,dem=0,folded=new Set();
+let S=SEED(),tab=1,sel=new Set(),cur=null,dem=0,folded=new Set(),popId=null;
 const $=s=>document.querySelector(s);
-const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2300)};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)};
 const byId=id=>S.bai.find(b=>b.id===id);
 const lane=nid=>S.bai.filter(b=>b.nhanh===nid);
 const chaN=n=>n.neo?S.nhanh[byId(n.neo).nhanh]:null;
@@ -151,101 +190,108 @@ function num(b){const k=lane(b.nhanh).indexOf(b)+1,n=S.nhanh[b.nhanh];return (n.
 const stt=num;
 const tongBai=nid=>lane(nid).length+kids(nid).reduce((s,k)=>s+tongBai(k.id),0);
 const coSai=nid=>lane(nid).some(b=>sai(b).length)||kids(nid).some(k=>coSai(k.id));
-function mauGap(){ // luật mặc định: sâu ≥ 3 hoặc > 8 bài
-  folded=new Set(Object.keys(S.nhanh).filter(id=>id!=='root'&&(depth(id)>=3||tongBai(id)>8)));
-}
-
+const anFold=nid=>duong(nid).slice(1,-1).some(n=>folded.has(n.id)); // tổ tiên đang gập ⇒ ẩn
+function mauGap(){folded=new Set(Object.keys(S.nhanh).filter(id=>id!=='root'&&(depth(id)>=3||tongBai(id)>8)))}
 function renderStat(){
   const nSai=S.bai.filter(b=>sai(b).length).length;
   $('#stat').textContent=`${S.bai.length} bài · ${Object.keys(S.nhanh).length-1} nhánh · ${folded.size} gập · ${nSai} sai nhánh`;
   $('#nsel').textContent=sel.size;$('#gom').disabled=sel.size<1;
 }
 
-/* ---------- TAB 1: cây ---------- */
-const W=190,H=58,G=44,RH=84,PW=158;
+/* ---------- TAB 1: cây mọc xuống ---------- */
+const W=150,H=44,COL=170,ROW=62,PH=38,OX=14,OY=10;
+const px=c=>OX+c*COL, py=r=>OY+r*ROW;
 function drawChain(){
-  const items=[],bands=[],links=[],pos={};
-  // tập "đang quan tâm" cho chế độ tập trung
+  const occ=new Set(),cell={},bandC=[];
+  const k2=(c,r)=>c+','+r, free=(c,r,n)=>{if(c<0)return false;for(let i=0;i<n;i++)if(occ.has(k2(c,r+i)))return false;return true};
+  const take=(c,r,n)=>{for(let i=0;i<n;i++)occ.add(k2(c,r+i))};
+  // thân
+  const root=lane('root');root.forEach((b,i)=>{cell[b.id]={c:i,r:0};occ.add(k2(i,0))});
+  cell.sub={c:root.length,r:0};occ.add(k2(root.length,0));
+  // các nhánh, theo độ sâu rồi theo vị trí bài mẹ
+  const all=Object.values(S.nhanh).filter(n=>n.id!=='root'&&!anFold(n.id));
+  const layout={};
+  all.sort((a,b)=>depth(a.id)-depth(b.id));
+  for(let d=1;d<=Math.max(1,...all.map(n=>depth(n.id)));d++){
+    all.filter(n=>depth(n.id)===d).sort((a,b)=>{const p=cell[a.neo],q=cell[b.neo];return p.c-q.c||p.r-q.r}).forEach(n=>{
+      const a=cell[n.neo],len=1+(folded.has(n.id)?1:lane(n.id).length);
+      let at=null;
+      for(let dy=0;dy<40&&!at;dy++)for(const dc of [0,1,-1,2,-2,3,-3]){
+        if(free(a.c+dc,a.r+1+dy,len)){at={c:a.c+dc,r:a.r+1+dy};break}
+      }
+      take(at.c,at.r,len);layout[n.id]={...at,len};
+      cell['p_'+n.id]={c:at.c,r:at.r};
+      if(!folded.has(n.id))lane(n.id).forEach((b,i)=>cell[b.id]={c:at.c,r:at.r+1+i});
+      else cell['f_'+n.id]={c:at.c,r:at.r+1};
+    });
+  }
   let focusSet=null;
   if($('#focus').checked&&cur){focusSet=new Set();
     duong(byId(cur).nhanh).forEach(n=>focusSet.add(n.id));
-    const down=id=>{focusSet.add(id);kids(id).forEach(k=>down(k.id))};down(byId(cur).nhanh);}
-  const dimOf=nid=>focusSet&&!focusSet.has(nid)?' dim':'';
-  function place(nid,x,row){
-    const n=S.nhanh[nid],own=lane(nid),y=row*RH+12;
-    let cx=x,prev=null;
-    if(nid!=='root'){items.push({k:'pill',n,x:cx,y:y+3,fold:folded.has(nid)});pos['p_'+nid]={x:cx,y:y+3,w:PW,h:H-6};prev='p_'+nid;cx+=PW+G}
-    if(nid!=='root'&&folded.has(nid)){ // gập: một ô tóm tắt
-      const id='f_'+nid;items.push({k:'fold',nid,x:cx,y});pos[id]={x:cx,y,w:W,h:H};links.push({a:prev,b:id,t:'chain'});
-      bands.push({n,x:x-10,y:row*RH+3,w:PW+G+W+20,h:RH-6,nid});
-      return 1;
-    }
-    own.forEach(b=>{items.push({k:'bai',b,x:cx,y});pos[b.id]={x:cx,y,w:W,h:H};if(prev)links.push({a:prev,b:b.id,t:'chain'});prev=b.id;cx+=W+G});
-    let end=cx-G;
-    if(nid==='root'){items.push({k:'sub',x:cx,y});pos.sub={x:cx,y,w:W+30,h:H};links.push({a:prev,b:'sub',t:'chain'});end=cx+W+30}
-    let used=1;
-    own.forEach(b=>{
-      kids(nid).filter(k=>k.neo===b.id).forEach(k=>{
-        const u=place(k.id,pos[b.id].x+46,row+used);
-        links.push({a:b.id,b:'p_'+k.id,t:'drop',nid:k.id});
-        used+=u;
-      });
-    });
-    bands.push({n,x:x-10,y:row*RH+3,w:Math.max(end,x+PW)-x+20,h:RH-6,nid});
-    return used;
-  }
-  const rows=place('root',16,0);
-  let maxX=0;Object.values(pos).forEach(p=>maxX=Math.max(maxX,p.x+p.w));
-  const Wd=maxX+30,Ht=rows*RH+16;
+    const down=id=>{focusSet.add(id);kids(id).forEach(k=>down(k.id))};down(byId(cur).nhanh)}
+  const dim=nid=>focusSet&&!focusSet.has(nid)?' dim':'';
+  let maxC=0,maxR=0;Object.values(cell).forEach(p=>{maxC=Math.max(maxC,p.c);maxR=Math.max(maxR,p.r)});
+  const Wd=px(maxC)+W+20,Ht=py(maxR)+H+20;
   let h=`<div class="chain"><div class="tree" style="width:${Wd}px;height:${Ht}px">`;
-  bands.forEach(b=>h+=`<div class="lane l${b.n.cls}${dimOf(b.nid)}" style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px"></div>`);
+  // dải màu từng làn
+  h+=`<div class="lane l0${dim('root')}" style="left:${px(0)-8}px;top:${py(0)-6}px;width:${(root.length+1)*COL-COL+W+16}px;height:${H+12}px"></div>`;
+  Object.entries(layout).forEach(([id,L])=>{const n=S.nhanh[id];
+    h+=`<div class="lane l${n.cls}${dim(id)}" style="left:${px(L.c)-8}px;top:${py(L.r)-4}px;width:${W+16}px;height:${(L.len-1)*ROW+PH+H-ROW+16}px"></div>`});
+  // dây
   let sv=`<svg class="edges" width="${Wd}" height="${Ht}"><defs>
    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#6b7686" stroke-width="1.4"/></marker>
    <marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.6"/></marker>
    <marker id="t" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6" fill="none" stroke="#378add" stroke-width="1.3"/></marker></defs>`;
-  const curve=(p,q,st,w,dash,mk)=>{const x1=p.x+p.w,y1=p.y+p.h/2,x2=q.x,y2=q.y+q.h/2,d=Math.max(14,Math.abs(x2-x1)/2);
-    return `<path d="M${x1},${y1} C${x1+d},${y1} ${x2-d},${y2} ${x2-1},${y2}" fill="none" stroke="${st}" stroke-width="${w}" ${dash?`stroke-dasharray="${dash}"`:''} marker-end="url(#${mk})"/>`};
-  links.forEach(l=>{const p=pos[l.a],q=pos[l.b];if(!p||!q)return;
-    const op=focusSet&&l.nid&&!focusSet.has(l.nid)?' opacity=".22"':'';
-    if(l.t==='chain')sv+=curve(p,q,'#6b7686',1.8,'','a');
-    else{const x1=p.x+34,y1=p.y+p.h,x2=q.x,y2=q.y+q.h/2;
-      sv+=`<path${op} d="M${x1},${y1} L${x1},${y2-8} Q${x1},${y2} ${x1+8},${y2} L${x2-1},${y2}" fill="none" stroke="#6b7686" stroke-width="2.6" marker-end="url(#a)"/>`}});
-  const nextOf={};links.filter(l=>l.t==='chain').forEach(l=>nextOf[l.a+'>'+l.b]=1);
-  S.bai.forEach(b=>b.tien.forEach(t=>{
-    const p=pos[t],q=pos[b.id];if(!p||!q)return;                       // đầu mút nằm trong nhánh gập ⇒ không vẽ
-    const bad=!chua(b.nhanh,byId(t).nhanh),mine=cur&&(b.id===cur||t===cur);
-    if(nextOf[t+'>'+b.id])return;
-    if(!bad&&!mine)return;                                              // luật 5: chỉ vẽ khi cần
-    const col=bad?'#c0392b':'#378add',w=bad?2:1.6,dash=bad?'5 3':'',mk=bad?'r':'t';
-    if(p.x>=q.x||p.y>q.y){const x1=p.x+p.w/2,y1=p.y+p.h,x2=q.x+q.w/2,y2=q.y+q.h,yb=Math.max(y1,y2)+18;
-      sv+=`<path d="M${x1},${y1} C${x1},${yb} ${x2},${yb} ${x2},${y2+1}" fill="none" stroke="${col}" stroke-width="${w}" ${dash?`stroke-dasharray="${dash}"`:''} marker-end="url(#${mk})"/>`;
-    }else sv+=curve(p,q,col,w,dash,mk);
-  }));
-  h+=sv+'</svg>';
-  items.forEach(it=>{
-    if(it.k==='pill'){const n=it.n;
-      h+=`<div class="pill k${n.cls}${dimOf(n.id)}" data-fold="${n.id}" style="left:${it.x}px;top:${it.y}px;width:${PW}px;height:${H-6}px" title="Bấm để ${it.fold?'mở':'gập'} nhánh"><b>${it.fold?'▸':'▾'} ⑂ ${n.ten}</b><span>${n.gt}</span></div>`;
-    }else if(it.k==='fold'){const c=tongBai(it.nid),w=coSai(it.nid);
-      h+=`<div class="nd fold${dimOf(it.nid)}" data-fold="${it.nid}" style="left:${it.x}px;top:${it.y}px;width:${W}px;height:${H}px">▸ <b>${c} bài</b> đang gập ${w?'<span class="warnchip">⚠</span>':''}</div>`;
-    }else if(it.k==='sub'){
-      h+=`<div class="nd submodel" data-sub="1" style="left:${it.x}px;top:${it.y}px;width:${W+30}px;height:${H}px"><div class="top"><span class="chip k0">Mô hình con ▸</span></div><b>${S.sub.ten}</b><div class="mono">${S.sub.ma} · ${S.sub.nBai} bài</div></div>`;
-    }else{const b=it.b,n=S.nhanh[b.nhanh],w=sai(b).length>0;
-      h+=`<div class="nd ${w?'bad':''} ${cur===b.id?'sel':''} ${sel.has(b.id)?'pick':''}${dimOf(b.nhanh)}" data-id="${b.id}" style="left:${it.x}px;top:${it.y}px;width:${W}px;height:${H}px;border-color:var(--c${n.cls})">
-        <div class="top"><span class="stt">${stt(b)}</span>${w?'<span class="warnchip">⚠ sai nhánh</span>':''}<input type="checkbox" data-pick="${b.id}" ${sel.has(b.id)?'checked':''} title="Chọn"></div><div class="tt">${b.ten}</div></div>`}
+  const box=id=>{const p=cell[id];if(!p)return null;const isP=id.startsWith('p_');return {x:px(p.c),y:py(p.r)+(isP?0:0),w:W,h:isP?PH:H}};
+  const line=(p,q,col,w,dash,mk,op)=>{
+    // đi từ mép gần nhất: ngang nếu cùng hàng, còn lại từ đáy → đỉnh
+    let x1,y1,x2,y2;
+    if(Math.abs(p.y-q.y)<4){x1=p.x+p.w;y1=p.y+p.h/2;x2=q.x;y2=q.y+q.h/2}
+    else{x1=p.x+p.w/2;y1=p.y+p.h;x2=q.x+q.w/2;y2=q.y;if(q.y<p.y){y1=p.y;y2=q.y+q.h}}
+    return `<path ${op||''} d="M${x1},${y1} L${x2},${y2}" stroke="${col}" stroke-width="${w}" ${dash?`stroke-dasharray="${dash}"`:''} marker-end="url(#${mk})"/>`};
+  // chuỗi thân
+  root.forEach((b,i)=>{const nx=i<root.length-1?root[i+1].id:'sub';sv+=line(box(b.id),nx==='sub'?{x:px(cell.sub.c),y:py(0),w:W,h:H}:box(nx),'#6b7686',1.8,'','a')});
+  Object.keys(layout).forEach(id=>{
+    const n=S.nhanh[id],op=focusSet&&!focusSet.has(id)?'opacity=".2"':'';
+    sv+=line(box(n.neo),box('p_'+id),'#6b7686',2.6,'','a',op);
+    if(folded.has(id)){sv+=line(box('p_'+id),{x:px(cell['f_'+id].c),y:py(cell['f_'+id].r),w:W,h:H},'#6b7686',1.8,'','a',op);return}
+    let prev='p_'+id;lane(id).forEach(b=>{sv+=line(box(prev),box(b.id),'#6b7686',1.8,'','a',op);prev=b.id});
   });
+  const nextOf=new Set();root.forEach((b,i)=>i<root.length-1&&nextOf.add(b.id+'>'+root[i+1].id));
+  Object.keys(layout).forEach(id=>{let p=null;lane(id).forEach(b=>{if(p)nextOf.add(p+'>'+b.id);p=b.id})});
+  S.bai.forEach(b=>b.tien.forEach(t=>{
+    const p=box(t),q=box(b.id);if(!p||!q)return;
+    const bad=!chua(b.nhanh,byId(t).nhanh),mine=cur&&(b.id===cur||t===cur);
+    if(nextOf.has(t+'>'+b.id)||(!bad&&!mine))return;
+    const col=bad?'#c0392b':'#378add';
+    // dây tiền đề: cong, tách khỏi cột
+    const x1=p.x+p.w,y1=p.y+p.h/2,x2=q.x+q.w,y2=q.y+q.h/2,bx=Math.max(x1,x2)+26;
+    sv+=`<path d="M${x1},${y1} C${bx},${y1} ${bx},${y2} ${x2+1},${y2}" fill="none" stroke="${col}" stroke-width="${bad?2:1.6}" ${bad?'stroke-dasharray="5 3"':''} marker-end="url(#${bad?'r':'t'})"/>`;
+  }));
+  sv+='</svg>';h+=sv;
+  // thẻ
+  Object.entries(layout).forEach(([id,L])=>{const n=S.nhanh[id],fo=folded.has(id);
+    h+=`<div class="gtc k${n.cls}${dim(id)}" data-fold="${id}" style="left:${px(L.c)}px;top:${py(L.r)}px;width:${W}px;height:${PH}px" title="${n.gt} — bấm để ${fo?'mở':'gập'}"><b>${fo?'▸':'▾'} ${n.ten}</b><span>+ giả thiết · rẽ từ ${stt(byId(n.neo))}</span></div>`;
+    if(fo){const c=tongBai(id),w=coSai(id);
+      h+=`<div class="nd fold${dim(id)}" data-fold="${id}" style="left:${px(cell['f_'+id].c)}px;top:${py(cell['f_'+id].r)}px;width:${W}px;height:${H}px">▸ <b>${c} bài</b> đang gập ${w?'<span class="warnchip">⚠</span>':''}</div>`}
+  });
+  S.bai.forEach(b=>{const p=cell[b.id];if(!p)return;const n=S.nhanh[b.nhanh],w=sai(b).length>0;
+    h+=`<div class="nd ${w?'bad':''} ${cur===b.id?'sel':''} ${sel.has(b.id)?'pick':''}${dim(b.nhanh)}" data-id="${b.id}" style="left:${px(p.c)}px;top:${py(p.r)+(b.nhanh==='root'?0:0)}px;width:${W}px;height:${H}px;border-color:var(--c${n.cls})" title="${b.ten}">
+      <div class="top"><span class="stt">${stt(b)}</span>${w?'<span class="warnchip">⚠</span>':''}<input type="checkbox" data-pick="${b.id}" ${sel.has(b.id)?'checked':''} title="Chọn để rẽ nhánh"></div><div class="tt">${b.ten}</div></div>`});
+  h+=`<div class="nd submodel" data-sub="1" style="left:${px(cell.sub.c)}px;top:${py(0)}px;width:${W}px;height:${H}px"><div class="top"><span class="chip k0" style="padding:0 7px">Mô hình con ▸</span></div><div class="tt" style="color:var(--ink)">${S.sub.ten}</div></div>`;
   h+='</div></div>';
-  h+=`<div class="legend"><b>Cách đọc:</b> thân ngang 1.1 → 1.2 → 1.3 · <b>⑂</b> = rẽ từ bài mẹ ngay phía trên, thêm một giả thiết; bài đầu nhánh mang số mẹ + .1 · bấm viên thuốc để gập/mở · dây xanh = tiền đề của bài đang chọn · đỏ đứt = sai nhánh.</div>`;
+  h+=`<div class="legend"><b>Đọc:</b> <span class="ex2"></span> thẻ bài (số + tên rút gọn, bấm ⇒ popup đầy đủ) · <span class="ex"></span> thẻ <b>giả thiết thêm</b> khởi tạo nhánh (bấm ⇒ gập/mở) · dải màu = một nhánh · dây xanh = tiền đề của bài đang chọn · đỏ đứt = sai nhánh.</div>`;
   $('#view').innerHTML=h;
 }
 
-/* ---------- TAB 2: nhóm ---------- */
+/* ---------- TAB 2 ---------- */
 const opts=b=>Object.values(S.nhanh).map(n=>`<option value="${n.id}" ${n.id===b.nhanh?'selected':''}>${'— '.repeat(depth(n.id))}${n.id==='root'?'Thân':n.ten}</option>`).join('');
 const rowBai=b=>{const w=sai(b).length>0;
   return `<div class="brow ${cur===b.id?'sel':''}" data-id="${b.id}"><span class="st">${stt(b)}</span><span class="tx">${b.ten}</span>${w?'<span class="warnchip">⚠ sai nhánh</span>':''}<select data-move="${b.id}" title="Chuyển sang nhánh…">${opts(b)}</select></div>`};
 function boxNhanh(nid){
   const n=S.nhanh[nid],own=lane(nid);
   let h=`<div class="box b${n.cls}"><div class="bhead"><span class="t">${nid==='root'?S.mo_hinh.ten:n.ten}</span><span class="chip k${n.cls}">${nid==='root'?'Mô hình':'⑂ rẽ từ '+stt(byId(n.neo))}</span><span class="mono">${tongBai(nid)} bài (cả nhánh con)</span>${nid==='root'?`<span class="mono">${S.mo_hinh.ma}</span>`:''}</div>
-    <div class="gt"><b>Giả thiết${nid==='root'?'':' thêm'}:</b> ${nid==='root'?S.mo_hinh.gt:n.gt}</div>`;
+    <div class="gt"><b>${nid==='root'?'Giả thiết mô hình':'+ Giả thiết thêm'}:</b> ${nid==='root'?S.mo_hinh.gt:n.gt}</div>`;
   h+=`<div class="direct"><div class="dl">Bài của ${nid==='root'?'thân':'nhánh này'} · ${own.length}</div>${own.map(rowBai).join('')||'<div class="mono">— chưa có —</div>'}</div>`;
   kids(nid).forEach(k=>h+=boxNhanh(k.id));
   if(nid==='root')h+=`<div class="subcard"><span class="chip k0">Mô hình con</span><div><b>${S.sub.ten}</b><div class="mono">${S.sub.ma} · ${S.sub.nBai} bài · giả thiết thêm: ${S.sub.gt}</div></div><button class="btn sm" data-sub="1">Đi vào ▸</button></div>`;
@@ -253,26 +299,46 @@ function boxNhanh(nid){
 }
 const drawGroups=()=>{$('#view').innerHTML=boxNhanh('root')};
 
-/* ---------- chi tiết ---------- */
-function drawSide(){
-  const b=cur&&byId(cur);
-  if(!b){$('#side').innerHTML='<h3>Chi tiết bài</h3><div class="mono">Bấm một bài ở bất kỳ tab nào.</div>';return}
-  const ds=duong(b.nhanh),ws=sai(b);
-  $('#side').innerHTML=`<h3>Bài ${stt(b)} <span class="mono">${b.ma}</span></h3>
-    <div class="kv"><span class="k">Phát biểu</span>${b.ten}</div>
-    <div class="kv"><span class="k">Nhánh</span><span class="chip k${S.nhanh[b.nhanh].cls}">${b.nhanh==='root'?'Thân':S.nhanh[b.nhanh].ten}</span></div>
-    <div class="kv"><span class="k">Giả thiết hiệu lực (gốc → nhánh → riêng)</span>
-      <div class="path"><div class="step"><b>Gốc:</b> ${S.mo_hinh.gt}</div>
+/* ---------- popup: đề · hình · đáp án ---------- */
+function hinhSVG(b){
+  const ds=duong(b.nhanh).map(n=>n.id);
+  const A=[40,118],B=[40,22],C=[200,118],D=[40+160*.375,22+96*.375],E=[40,D[1]],F=[D[0],118],M=[(B[0]+C[0])/2,(B[1]+C[1])/2];
+  let s=`<svg viewBox="0 0 250 150"><g stroke="#334155" stroke-width="1.6" fill="none"><path d="M${A}L${B}L${C}Z"/></g>
+   <g stroke="#1d9e75" stroke-width="1.5"><line x1="${A[0]}" y1="${A[1]}" x2="${D[0]}" y2="${D[1]}"/></g>
+   <path d="M${A[0]},${A[1]-10} h10 v10" stroke="#334155" fill="none" stroke-width="1"/>`;
+  if(ds.includes('n1'))s+=`<line x1="${D[0]}" y1="${D[1]}" x2="${E[0]}" y2="${E[1]}" stroke="#378add" stroke-width="1.5"/><circle cx="${E[0]}" cy="${E[1]}" r="2.4" fill="#378add"/>`;
+  if(ds.includes('n1a'))s+=`<line x1="${D[0]}" y1="${D[1]}" x2="${F[0]}" y2="${F[1]}" stroke="#7f77dd" stroke-width="1.5"/><circle cx="${F[0]}" cy="${F[1]}" r="2.4" fill="#7f77dd"/>`;
+  if(ds.includes('n1b')){const t=((E[0]-B[0])*(C[0]-B[0])+(E[1]-B[1])*(C[1]-B[1]))/((C[0]-B[0])**2+(C[1]-B[1])**2);const K=[B[0]+t*(C[0]-B[0]),B[1]+t*(C[1]-B[1])];
+    s+=`<line x1="${E[0]}" y1="${E[1]}" x2="${K[0]}" y2="${K[1]}" stroke="#7f77dd" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="${K[0]}" cy="${K[1]}" r="2.4" fill="#7f77dd"/><text x="${K[0]+4}" y="${K[1]-4}" font-size="11" font-style="italic">K</text>`}
+  if(ds.includes('n2'))s+=`<line x1="${A[0]}" y1="${A[1]}" x2="${M[0]}" y2="${M[1]}" stroke="#ba7517" stroke-width="1.5"/><circle cx="${M[0]}" cy="${M[1]}" r="2.4" fill="#ba7517"/><text x="${M[0]+5}" y="${M[1]+2}" font-size="11" font-style="italic">M</text>`;
+  s+=`<g font-size="11.5" font-style="italic" font-family="Cambria,Georgia,serif" fill="#1f2530">
+   <text x="${A[0]-14}" y="${A[1]+10}">A</text><text x="${B[0]-6}" y="${B[1]-5}">B</text><text x="${C[0]+5}" y="${C[1]+4}">C</text><text x="${D[0]+4}" y="${D[1]-5}">D</text>
+   ${ds.includes('n1')?`<text x="${E[0]-14}" y="${E[1]+4}">E</text>`:''}${ds.includes('n1a')?`<text x="${F[0]-3}" y="${F[1]+13}">F</text>`:''}</g></svg>`;
+  return s;
+}
+function openPop(id){
+  popId=id;cur=id;const b=byId(id),ds=duong(b.nhanh),ws=sai(b);
+  $('#pop').innerHTML=`<div class="ph"><h2>Bài ${stt(b)}</h2><span class="mono">${b.ma}</span><span class="chip k${S.nhanh[b.nhanh].cls}">${b.nhanh==='root'?'Thân':S.nhanh[b.nhanh].ten}</span>${ws.length?'<span class="warnchip">⚠ sai nhánh</span>':''}<button class="x" data-close>✕</button></div>
+  <div class="pb"><div>
+    <div class="sec"><span class="k">Đề bài</span><div class="v">${b.de}</div></div>
+    <div class="sec"><span class="k">Đáp án</span><div class="dapan">${b.dap}</div></div>
+    <div class="sec"><span class="k">Lời giải</span><div class="ans">${b.gi}</div></div>
+    ${ws.length?`<div class="sec" style="background:var(--wyb);border:1px solid var(--wy);border-radius:8px;padding:8px"><b>⚠ Sai nhánh.</b> Tiền đề ${ws.map(t=>stt(byId(t))).join(', ')} nằm ở nhánh sâu hơn nhánh của bài ⇒ bài không có đủ giả thiết để dùng nó.
+      <div style="margin-top:6px"><button class="btn sm" data-fix="${b.id}">Chuyển bài sang nhánh “${S.nhanh[byId(ws[0]).nhanh].ten}”</button></div></div>`:''}
+  </div><div>
+    <div class="sec"><span class="k">Hình (vẽ theo giả thiết hiệu lực)</span><div class="fig">${hinhSVG(b)}</div></div>
+    <div class="sec"><span class="k">Giả thiết hiệu lực</span><div class="path"><div class="step"><b>Gốc:</b> ${S.mo_hinh.gt}</div>
       ${ds.filter(n=>n.id!=='root').map(n=>`<div class="step"><b>+ ${n.ten}:</b> ${n.gt}</div>`).join('')}
       ${b.rieng?`<div class="step"><b>+ Riêng bài:</b> ${b.rieng}</div>`:''}</div></div>
-    <div class="kv"><span class="k">Tiền đề</span>${b.tien.length?b.tien.map(t=>`<span class="chip k${S.nhanh[byId(t).nhanh].cls}" style="cursor:pointer" data-go="${t}">${stt(byId(t))}</span>`).join(' '):'— không —'}</div>
-    ${ws.length?`<div class="kv" style="background:var(--wyb);border:1px solid var(--wy);border-radius:8px;padding:8px"><b>⚠ Sai nhánh.</b> Tiền đề ${ws.map(t=>stt(byId(t))).join(', ')} nằm ở nhánh sâu hơn nhánh của bài này ⇒ bài không có đủ giả thiết để dùng nó.
-      <div style="margin-top:6px"><button class="btn sm" data-fix="${b.id}">Chuyển bài sang nhánh “${S.nhanh[byId(ws[0]).nhanh].ten}”</button></div></div>`:''}
-    <div class="mono">Đổi nhánh = 1 UPDATE; số hiển thị tự đổi, mã ${b.ma} giữ nguyên.</div>`;
+    <div class="sec"><span class="k">Tiền đề</span>${b.tien.length?b.tien.map(t=>`<span class="chip k${S.nhanh[byId(t).nhanh].cls}" style="cursor:pointer;margin-right:4px" data-go="${t}">${stt(byId(t))}</span>`).join(''):'<span class="mono">— không —</span>'}</div>
+  </div></div>`;
+  $('#ov').classList.add('on');render();
 }
+const closePop=()=>{$('#ov').classList.remove('on');popId=null};
 
-function render(){renderStat();(tab===1?drawChain:drawGroups)();drawSide();$('#t1').classList.toggle('on',tab===1);$('#t2').classList.toggle('on',tab===2)}
-function chuyen(b,nid){ // chuyển bài sang nhánh nid (nối cuối làn); chặn vòng
+/* ---------- vòng ---------- */
+function render(){renderStat();(tab===1?drawChain:drawGroups)();$('#t1').classList.toggle('on',tab===1);$('#t2').classList.toggle('on',tab===2)}
+function chuyen(b,nid){
   for(let n=S.nhanh[nid];n;n=chaN(n))if(n.neo===b.id){toast(`Không chuyển được: nhánh đích đang rẽ ra từ chính bài ${stt(b)}`);return false}
   S.bai.splice(S.bai.indexOf(b),1);b.nhanh=nid;
   const ix=S.bai.map((x,i)=>x.nhanh===nid?i:-1).filter(i=>i>=0);S.bai.splice((ix.length?Math.max(...ix):S.bai.length-1)+1,0,b);
@@ -280,8 +346,8 @@ function chuyen(b,nid){ // chuyển bài sang nhánh nid (nối cuối làn); ch
 }
 $('#t1').onclick=()=>{tab=1;render()};$('#t2').onclick=()=>{tab=2;render()};
 $('#focus').onchange=render;
-$('#reset').onclick=()=>{S=SEED();sel.clear();cur=null;dem=0;folded=new Set();render();toast('Đã khôi phục dữ liệu mẫu')};
-$('#gap').onclick=()=>{folded=new Set(Object.keys(S.nhanh).filter(id=>id!=='root'&&depth(id)>=2));tab=1;render();toast(`Gập ${folded.size} nhánh sâu ≥ 2 — cờ ⚠ vẫn nổi trên ô gập`)};
+$('#reset').onclick=()=>{S=SEED();sel.clear();cur=null;dem=0;folded=new Set();closePop();render();toast('Đã khôi phục dữ liệu mẫu')};
+$('#gap').onclick=()=>{folded=new Set(Object.keys(S.nhanh).filter(id=>id!=='root'&&depth(id)>=2));tab=1;render();toast(`Gập ${folded.size} nhánh sâu ≥ 2`)};
 $('#mo').onclick=()=>{folded=new Set();render()};
 $('#gom').onclick=()=>{
   const ids=[...sel].map(byId),nid=ids[0].nhanh;
@@ -289,17 +355,17 @@ $('#gom').onclick=()=>{
   const L=lane(nid),ix=ids.map(b=>L.indexOf(b)).sort((a,b)=>a-b);
   if(ix[0]===0)return toast('Bài đầu làn không có bài đứng trước để rẽ ra — chọn từ bài thứ 2 trở đi');
   const mother=L[ix[0]-1];dem++;
-  const id='moi'+dem;S.nhanh[id]={id,neo:mother.id,ten:'Nhánh mới '+dem,gt:'(đặt giả thiết thêm — bỏ trống nếu chỉ gom hiển thị)',cls:'3'};
+  const id='moi'+dem;S.nhanh[id]={id,neo:mother.id,ten:'Nhánh mới '+dem,gt:'(đặt giả thiết thêm cho nhánh)',cls:'3'};
   ids.sort((a,b)=>L.indexOf(a)-L.indexOf(b)).forEach(b=>chuyen(b,id));
   const nb=ids[0];sel.clear();cur=nb.id;render();
-  toast(`Đã rẽ ${ids.length} bài từ ${stt(mother)} — bài đầu nhánh giờ là ${stt(nb)}`);
+  toast(`Rẽ ${ids.length} bài từ ${stt(mother)} — bài đầu nhánh giờ là ${stt(nb)}`);
 };
 $('#view').addEventListener('click',e=>{
   const pk=e.target.closest('[data-pick]');if(pk){pk.checked?sel.add(pk.dataset.pick):sel.delete(pk.dataset.pick);render();return}
   if(e.target.closest('select'))return;
   const fo=e.target.closest('[data-fold]');if(fo){const id=fo.dataset.fold;folded.has(id)?folded.delete(id):folded.add(id);render();return}
   if(e.target.closest('[data-sub]')){toast(`Đi vào mô hình con ${S.sub.ma} (màn riêng, cùng khuôn 2 tab)`);return}
-  const n=e.target.closest('[data-id]');if(n){cur=n.dataset.id;render()}
+  const n=e.target.closest('[data-id]');if(n)openPop(n.dataset.id);
 });
 $('#view').addEventListener('change',e=>{
   const s=e.target.closest('[data-move]');if(!s)return;
@@ -307,9 +373,11 @@ $('#view').addEventListener('change',e=>{
   if(!chuyen(b,s.value)){render();return}
   render();toast(`→ “${b.nhanh==='root'?'Thân':S.nhanh[b.nhanh].ten}” · giờ là ${stt(b)}`+(sai(b).length?' · ⚠ sai nhánh':''));
 });
-$('#side').addEventListener('click',e=>{
-  const g=e.target.closest('[data-go]');if(g){cur=g.dataset.go;render();return}
-  const f=e.target.closest('[data-fix]');if(f){const b=byId(f.dataset.fix),t=sai(b)[0];if(chuyen(b,byId(t).nhanh)){render();toast(`Chuyển sang “${S.nhanh[b.nhanh].ten}” — giờ là ${stt(b)}`)}}
+$('#ov').addEventListener('click',e=>{
+  if(e.target.id==='ov'||e.target.closest('[data-close]')){closePop();return}
+  const g=e.target.closest('[data-go]');if(g){openPop(g.dataset.go);return}
+  const f=e.target.closest('[data-fix]');if(f){const b=byId(f.dataset.fix),t=sai(b)[0];if(chuyen(b,byId(t).nhanh)){openPop(b.id);toast(`Chuyển sang “${S.nhanh[b.nhanh].ten}” — giờ là ${stt(b)}`)}}
 });
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePop()});
 mauGap();render();
 </script></body></html>
