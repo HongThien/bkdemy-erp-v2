@@ -1,6 +1,6 @@
 // ============================================================================
 // NhiemVuHS — màn NHIỆM VỤ của HS theo môn (Thùy chốt 06/10; spec-kinh-te-nhiem-vu.md §1–§9, mig 202610061915).
-// Một điều kiện duy nhất: lượt LUYỆN DẠNG YẾU đạt (đúng ≥70%). Hôm nay (tối đa 4 lượt) · Tuần (2 nhiệm vụ) · Tháng (1 nhiệm vụ) · vòng quay.
+// Một điều kiện duy nhất: lượt LUYỆN DẠNG YẾU đạt (đúng ≥70%). Hôm nay (tối đa 2 lượt) · Tuần (2 nhiệm vụ) · Tháng (1 nhiệm vụ) · vòng quay.
 // Mọi con số lấy nguyên từ fn_hs_nhiem_vu_cua_toi — ở đây chỉ trình bày. Chữ gốc FORMAL (không câu game cố định trong màn).
 // Tách VIEW (NhiemVuView — chỉ vẽ từ 1 object) khỏi container để hs.html?xem=gami vẽ mọi trạng thái bằng dữ liệu giả.
 // ============================================================================

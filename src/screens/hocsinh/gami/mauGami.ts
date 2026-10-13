@@ -11,7 +11,7 @@ import { BAC } from './hinh'
 
 // ── Nhiệm vụ (hệ mới 06/10: lượt Luyện dạng yếu đạt · ĐHT) ─────────────────────
 const CAU_HINH = {
-  dat_ti_le: 0.7, lan_ngay: 4, exp_luot: 20, dht_luot: 20, w1_ngay: 5, w1_exp: 100, w1_dht: 50, w2_luot: 12, w2_exp: 100, w2_dht: 50,
+  dat_ti_le: 0.7, lan_ngay: 2, exp_luot: 40, dht_luot: 40, w1_ngay: 5, w1_exp: 100, w1_dht: 50, w2_luot: 6, w2_exp: 100, w2_dht: 50,
   m1_ngay: 20, m1_exp: 300, m1_dht: 200, tran_exp: 2000, dht_so_du_max: 6000,
 }
 export const NV_GIUA_THANG: NhiemVuCuaToi = {

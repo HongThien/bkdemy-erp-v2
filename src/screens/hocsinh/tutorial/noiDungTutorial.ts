@@ -139,9 +139,9 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     kyNang: 'Nhiệm vụ — luyện dạng yếu mỗi ngày, nhận EXP và điểm học tập',
     buoc: [
       { noi: 'Chặng 8: Nhiệm vụ. Ở khối Giải trí trên màn chính, chạm ô Nhiệm vụ. Hiện nhiệm vụ mở cho môn Toán.', soi: 'link_nhiem_vu' },
-      { noi: 'Nhiệm vụ chỉ có một việc: Luyện dạng yếu. Mỗi lượt em làm đúng từ 7 trên 10 câu là được 20 EXP và 20 điểm học tập. Mỗi ngày tính tối đa 4 lượt.', soi: 'khoi_ngay' },
+      { noi: 'Nhiệm vụ chỉ có một việc: Luyện dạng yếu. Mỗi lượt em làm đúng từ 7 trên 10 câu là được 40 EXP và 40 điểm học tập. Mỗi ngày tính tối đa 2 lượt, tức là 20 câu.', soi: 'khoi_ngay' },
       { noi: 'Có ít nhất 1 lượt đạt trong ngày là em được quay may mắn 1 lần. Vòng quay tự hiện ra khi em có lượt, không cần tìm ô riêng.', soi: 'quay' },
-      { noi: 'Việc tuần: có lượt đạt ở 5 ngày khác nhau, hoặc đủ 12 lượt đạt trong tuần, mỗi việc +100 EXP và +50 điểm. Việc tháng: có lượt đạt ở 20 ngày, +300 EXP và +200 điểm.', soi: 'khoi_tuan' },
+      { noi: 'Việc tuần: có lượt đạt ở 5 ngày khác nhau, hoặc đủ 6 lượt đạt trong tuần, mỗi việc +100 EXP và +50 điểm. Việc tháng: có lượt đạt ở 20 ngày, +300 EXP và +200 điểm.', soi: 'khoi_tuan' },
       { noi: 'Điểm học tập tích lại để em chơi game, kho chứa tối đa 6.000 điểm. EXP thì đổi ra xu ngay.', soi: 'chang' },
     ],
   },

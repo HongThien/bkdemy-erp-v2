@@ -1,0 +1,12 @@
+-- ============================================================================
+-- nhiem_vu_ngay_2_luot — NHIỆM VỤ NGÀY: 4 lượt → 2 lượt, GIỮ NGUYÊN TỔNG EXP (Thùy 13/10)
+-- ----------------------------------------------------------------------------
+-- Thùy: "Nhiệm vụ daily: giữ nguyên số lượng EXP nhưng giảm số lượng câu xuống 20 (40 câu tôi sợ hơi nhiều). Hiện là 4 lượt luyện yếu, giờ cần 2 lượt thôi."
+--   Mỗi lượt Luyện dạng yếu = 10 câu ⇒ 4 lượt = 40 câu → 2 lượt = 20 câu.
+--   · lan_ngay 4 → 2 (số lượt/ngày được thưởng)
+--   · exp_luot 20 → 40, dht_luot 20 → 40: tổng/ngày vẫn 80 EXP + 80 ĐHT (ĐHT giữ nguyên để kinh tế game không đổi)
+--   · w2_luot 12 → 6: "Luyện nhiều" của tuần đếm lượt đạt đã cắt theo lan_ngay; giữ 12 thì cần 6/7 ngày làm đủ lượt (trước đó 3 ngày) ⇒ 8 em tháng 10 MẤT 100 EXP. Với 6 vẫn 3 ngày.
+-- Mọi thứ SUY từ lượt (không lưu) nên đổi cấu hình có hiệu lực cả phần đã làm trong THÁNG NÀY: đo trước khi áp (Toán 10/2026): EXP app +2.940 (62 HS), −0.
+-- Không đổi: ngưỡng đạt 7/10, W1 (5 ngày), M1 (20 ngày), trần EXP nhiệm vụ 2.000/tháng. Không xoá gì — chỉ UPDATE 1 dòng/môn của nhiem_vu_cau_hinh.
+-- ============================================================================
+update public.nhiem_vu_cau_hinh set lan_ngay = 2, exp_luot = 40, dht_luot = 40, w2_luot = 6;

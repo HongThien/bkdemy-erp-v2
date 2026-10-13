@@ -37372,3 +37372,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sửa (chỉ DB — app đang chạy đọc được, không cần deploy):** màn ca của em chỉ liệt kê cụm CÓ bài dùng được (đúng điều kiện chọn câu bổ trợ, kể cả luật câu thiếu hình); không cụm nào có bài ⇒ trả danh sách rỗng ⇒ app hiện ô "Cả dạng"; có cụm có bài mà còn bài ngoài cụm ⇒ thêm mục "Cả dạng (gồm bài chưa chia cụm)". Điều kiện chọn câu của một dạng gom về `_btyeu_dk_dang_sql` (`_btyeu_chon_cau` dùng lại).
 - **Kiểm trên bản thật sau khi áp:** đóng vai Thắng Tùng gọi đúng hàm app gọi ⇒ 3 dạng trên chuyển sang "Cả dạng"; sinh lô luyện thử (transaction rollback) được 3 câu mỗi dạng. T107010511 chỉ ra 1 câu (dạng ít bài).
 - **Gốc ở kho, chưa sửa:** học thuật tạo cụm nhưng chưa gán bài vào cụm. Chưa soi luồng khác có đọc cụm (Học theo chủ đề / bản đồ phiêu lưu).
+
+## 13/10 — Nhiệm vụ ngày: 4 lượt → 2 lượt (20 câu), giữ nguyên EXP
+- **Thùy:** "Nhiệm vụ daily: giữ nguyên EXP nhưng giảm số câu xuống 20 (40 câu tôi sợ hơi nhiều). Hiện là 4 lượt luyện yếu, giờ cần 2 lượt thôi."
+- **DB (mig `202610132025`, ĐÃ ÁP, mọi môn):** `lan_ngay 4→2` · `exp_luot 20→40` · `dht_luot 20→40` (tổng/ngày vẫn 80 EXP + 80 ĐHT) · **`w2_luot 12→6`** (việc tuần "Luyện nhiều" đếm lượt đã cắt theo lan_ngay — giữ 12 thì 8 em tháng 10 MẤT 100 EXP vì phải làm đủ 2 lượt 6/7 ngày; với 6 vẫn 3 ngày).
+- **Đo trước khi áp (Toán 10/2026, rollback):** w2=12 ⇒ +2.240 EXP (56 HS), −600 (8 HS) · w2=6 ⇒ **+2.940 EXP (62 HS), −0**. EXP/ĐHT suy từ lượt nên đổi cấu hình tính lại cả phần đã làm trong THÁNG NÀY (em chỉ làm 1 lượt/ngày được +20; ~+29 xu tổng).
+- **Chữ:** hướng dẫn app (noiDungHuongDan), tutorial Lộc (noiDungTutorial), mẫu gami, ghi chú NhiemVuHS, spec-kinh-te-nhiem-vu.md. Các màn nhiệm vụ đọc số từ cấu hình nên tự đúng (xác nhận `fn_hs_nhiem_vu_cua_toi` trả lan_ngay 2 / exp_luot 40 / w2_luot 6).

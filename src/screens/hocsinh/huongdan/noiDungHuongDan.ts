@@ -284,12 +284,12 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     khoi: [
       { tieu: 'Một việc duy nhất: Luyện dạng yếu', loai: 'luat', y: [
         'Chỉ lượt Luyện dạng yếu mới được tính. Lượt đó phải là lượt học thật và em làm đúng từ 7 trên 10 câu thì mới là lượt đạt.',
-        'Mỗi lượt đạt được 20 EXP và 20 điểm học tập. Mỗi ngày tính tối đa 4 lượt đạt.',
+        'Mỗi lượt đạt được 40 EXP và 40 điểm học tập. Mỗi ngày tính tối đa 2 lượt đạt (2 lượt là 20 câu).',
       ] },
       { tieu: 'Việc tuần và tháng', y: [
         'Một tháng chia 4 tuần (ngày 1 đến 7, 8 đến 14, 15 đến 21, 22 đến hết tháng).',
         'Việc tuần 1: có lượt đạt ở 5 ngày khác nhau trong tuần, thưởng 100 EXP và 50 điểm học tập.',
-        'Việc tuần 2: đủ 12 lượt đạt trong tuần, thưởng 100 EXP và 50 điểm học tập.',
+        'Việc tuần 2: đủ 6 lượt đạt trong tuần, thưởng 100 EXP và 50 điểm học tập.',
         'Việc tháng: có lượt đạt ở 20 ngày trong tháng, thưởng 300 EXP và 200 điểm học tập.',
       ] },
       { tieu: 'Điểm học tập', y: [

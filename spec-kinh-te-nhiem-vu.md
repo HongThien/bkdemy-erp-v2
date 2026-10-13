@@ -278,3 +278,9 @@ Hệ quả thiết kế [CTO]:
 2. Tháp tháng **thay** Vô tận Hard (quá giống) hay đứng **cạnh**? [ĐỀ XUẤT: thay]
 3. Còn bảng xếp hạng tháp (hiển thị "tầng cao nhất") không, dù Nike không cần?
 4. Giới hạn thời gian/câu: theo môn (45/30/12s) gật không?
+
+---
+## Cập nhật 13/10 (Thùy): NGÀY 4 lượt → 2 lượt, giữ nguyên EXP
+Nhiệm vụ ngày: **2 lượt/ngày × 40 EXP + 40 ĐHT** (trước: 4 × 20 + 20) — tổng/ngày không đổi (80 EXP + 80 ĐHT), nhưng chỉ cần 20 câu thay vì 40.
+Việc tuần 2 "Luyện nhiều": **12 → 6 lượt** để vẫn đạt được trong 3 ngày. Các con số cũ ở trên (4 lượt × 20 × 30 ngày…) đọc theo hệ cũ: tổng/tháng không đổi.
+Cấu hình: `nhiem_vu_cau_hinh.lan_ngay / exp_luot / dht_luot / w2_luot` (mig `nhiem_vu_ngay_2_luot`).
