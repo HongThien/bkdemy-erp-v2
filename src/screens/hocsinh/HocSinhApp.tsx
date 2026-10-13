@@ -56,7 +56,7 @@ import BaiTraHS, { ngayNgan } from './BaiTraHS'
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
 import { KHOI_CHON_SKIN, laySkin, skinMacDinhTheoKhoi, type GiaoDien } from './skin/registry'
-import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD, useMedia } from './skin/KhungHS'
+import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD, useMedia, useLoi } from './skin/KhungHS'
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
@@ -952,6 +952,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   /** NHÚNG trong khung đấu 3D (phieuluu/DauView): ẩn thanh tiến độ + màn kết quả cũ, báo kết quả từng câu ra ngoài. */
   nhung?: NhungDau
 }) {
+  const loi = useLoi() // lời chữ theo style (skin/loi.ts) — không gõ giọng game thẳng trong màn
   const [full, setFull] = useState<BaiTestFull | null>(null)
   const [baiLamId, setBaiLamId] = useState<string | null>(null)
   const [idx, setIdx] = useState(0)
@@ -1101,7 +1102,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
         <KhungCau nhung={!!nhung} cls={desktop ? 'p-8 lg:p-10' : 'p-4'}>
           <div className="mb-2 flex items-center justify-between">
             {nhung
-              ? <span className="flex items-center gap-2 text-[17.5px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc }}><span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={{ background: MAU.acc }} />Câu {idx + 1}/{total} · chọn đúng để tung phép</span>
+              ? <span className="flex items-center gap-2 text-[17.5px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc }}><span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={{ background: MAU.acc }} />Câu {idx + 1}/{total} · {loi.goiYCau}</span>
               : <p className="text-[17.5px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>}
             <span className="flex items-center gap-2">
             <NutBaoLoiCau baiTestCauId={cau.id} />

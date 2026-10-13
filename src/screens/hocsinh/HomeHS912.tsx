@@ -28,6 +28,7 @@ import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
 import { BieuTuongBac, SaoBac } from './gami/HinhGami'
+import { NenSong, NhanVatHome } from './skin/HomeSong'
 
 const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 'mac_dinh' }
 
@@ -74,15 +75,22 @@ type HomeProps = {
   rank?: { bac: number; ten: string; sao: number } | null; onRank?: () => void // bậc Rank của MÔN đang chọn — huy hiệu cạnh tên (Thùy 01/10)
 }
 
+/** Nhân vật Home của style theo giới tính + chế độ: hình tĩnh đang vẽ (bản đêm nếu style có) · hình gốc ban ngày + mảnh hoạt họa (nếu style khai homeSong). */
+function nhanVatCua(skin: Skin, gioiTinh: HomeProps['gioiTinh'], toi: boolean) {
+  if (!skin.nhanVat) return null
+  const g = gioiTinh === 'nu' ? 'nu' : 'nam'
+  return { src: (toi && skin.nhanVatToi?.[g]) || skin.nhanVat[g], srcSang: skin.nhanVat[g], song: skin.homeSong?.nv?.[g], linhVat: skin.homeSong?.linhVat?.[g] }
+}
+
 // ── MÀN CHÍNH khổ DỌC (điện thoại · iPad dọc) — theo hàng dưới ảnh gốc style (RPG: Nền app HS cấp 3_11.png, Thùy 29/09):
 // avatar + cụm nút → "Chào tên!" → nhân vật + bong bóng thoại → banner việc / kiểm tra lại → lưới 4 cột ô nhỏ (icon giữa ô).
 // Style không có nhân vật ⇒ bỏ khối nhân vật, còn lại giữ nguyên.
-function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
+function ManChinh({ p, skin, toi, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; toi: boolean; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const tenNgan = p.hoTen.trim().split(/\s+/).slice(-2).join(' ')
   const { hoc, choi } = tachO(p)
   const viec = viecTiepTheo(p.lich, hoc, p.onLich)
   const widgets = tomTat(p)
-  const nv = skin.nhanVat ? (p.gioiTinh === 'nu' ? skin.nhanVat.nu : skin.nhanVat.nam) : null
+  const nv = nhanVatCua(skin, p.gioiTinh, toi)
   const bong = '0 2px 12px var(--sk-bg), 0 0 3px var(--sk-bg)'
   return (
     <div className="relative mx-auto flex min-h-[100dvh] max-w-[430px] flex-col gap-3 px-4 pb-[calc(20px+env(safe-area-inset-bottom))] pt-[calc(12px+env(safe-area-inset-top))] md:max-w-[820px] md:gap-4 md:px-8">
@@ -117,8 +125,8 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
 
       {nv && (
         <div className="relative -mt-1 h-[230px] md:h-[380px]">
-          <img src={nv} alt="" className="pointer-events-none absolute bottom-0 left-0 h-full max-w-none select-none object-contain md:left-[6%]"
-            style={{ filter: 'drop-shadow(0 10px 22px var(--sk-bg))', WebkitMaskImage: 'linear-gradient(180deg, black 78%, transparent)', maskImage: 'linear-gradient(180deg, black 78%, transparent)' }} />
+          <NhanVatHome {...nv} toi={toi} className="pointer-events-none absolute bottom-0 left-0 h-full max-w-none select-none object-contain md:left-[6%]"
+            style={{ filter: skin.nhanVatLoc ?? 'drop-shadow(0 10px 22px var(--sk-bg))', WebkitMaskImage: 'linear-gradient(180deg, black 78%, transparent)', maskImage: 'linear-gradient(180deg, black 78%, transparent)' }} />
           <div className="absolute right-0 top-[14%] max-w-[52%] rounded-[20px] px-3.5 py-2.5 text-[15px] font-semibold leading-snug shadow-2xl md:right-[6%] md:max-w-[300px] md:px-5 md:py-3.5 md:text-[17.5px]"
             style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)' }}>
             {loiNhanVat(viec)}
@@ -341,12 +349,14 @@ function loiNhanVat(v: Viec): string {
 // ── MÀN CHÍNH khổ NGANG (PC / iPad ngang) — theo ảnh gốc style (RPG: design/bk-ui-src/Nền app HS cấp 3_11.png, Thùy 29/09):
 // đầu trang (avatar + tên · nút) → nửa TRÁI nhân vật đứng + bong bóng thoại · nửa PHẢI "Chào …!" + số liệu → banner việc/kiểm tra lại
 // → lưới ô 4 cột (icon to giữa ô). Style không có nhân vật ⇒ cột trái bỏ, nội dung trải hết bề ngang.
-function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
+function ManNgang({ p, skin, toi, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; toi: boolean; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const tenNgan = p.hoTen.trim().split(/\s+/).slice(-2).join(' ')
   const { hoc, choi } = tachO(p)
   const viec = viecTiepTheo(p.lich, hoc, p.onLich)
   const widgets = tomTat(p)
-  const nv = skin.nhanVat ? (p.gioiTinh === 'nu' ? skin.nhanVat.nu : skin.nhanVat.nam) : null
+  const nv = nhanVatCua(skin, p.gioiTinh, toi)
+  const bc = skin.nhanVatBoCuc // hình rộng hơn một người đứng (cả góc học) ⇒ style tự khai cột / chiều cao / độ lệch
+  const caoNv = bc?.cao ?? 'min(80vh, 780px)'
   const bong = '0 2px 14px var(--sk-bg), 0 0 3px var(--sk-bg)'
   return (
     <div className="relative mx-auto flex min-h-[100dvh] max-w-[1440px] flex-col px-8 pb-8 pt-5 xl:px-12">
@@ -363,15 +373,18 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         <CumNut p={p} onHinhNen={onHinhNen} nutRef={nutRef} />
       </div>
 
-      <div className={`mt-2 grid flex-1 gap-8 ${nv ? 'grid-cols-[minmax(280px,32%)_1fr]' : 'grid-cols-1'}`}>
+      <div className={`mt-2 grid flex-1 gap-8 ${nv ? 'grid-cols-[minmax(280px,32%)_1fr]' : 'grid-cols-1'}`} style={nv && bc ? { gridTemplateColumns: `${bc.cot} 1fr` } : undefined}>
         {nv && (
-          <div className="relative min-h-[520px]">
-            <img src={nv} alt="" className="pointer-events-none absolute bottom-0 left-1/2 h-[min(80vh,780px)] max-w-none -translate-x-1/2 select-none object-contain"
-              style={{ filter: 'drop-shadow(0 12px 28px var(--sk-bg))' }} />
-            <div className="absolute left-0 max-w-[220px] rounded-[22px] px-4 py-3 text-[16px] font-semibold leading-snug shadow-2xl"
-              style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)', bottom: 'calc(min(80vh, 780px) * 0.8)' }}>
-              {loiNhanVat(viec)}
-              <span className="absolute -bottom-2 right-8 h-4 w-4 rotate-45" style={{ background: 'var(--sk-ink)' }} />
+          <div className={`relative min-h-[520px] ${bc?.dinh ? 'flex flex-col justify-end' : ''}`}>
+            {/* bc.dinh: khối nhân vật BÁM ĐÁY khung nhìn khi cuộn (sticky) — không thì nằm ở đáy cột như cũ ('contents' = không sinh khối riêng) */}
+            <div className={bc?.dinh ? 'sticky bottom-0' : 'contents'} style={bc?.dinh ? { height: caoNv } : undefined}>
+              <NhanVatHome {...nv} toi={toi} className="pointer-events-none absolute bottom-0 left-1/2 max-w-none -translate-x-1/2 select-none object-contain"
+                style={{ height: caoNv, left: bc ? `calc(50% + ${bc.lech})` : undefined, filter: skin.nhanVatLoc ?? 'drop-shadow(0 12px 28px var(--sk-bg))' }} />
+              <div className="absolute left-0 max-w-[220px] rounded-[22px] px-4 py-3 text-[16px] font-semibold leading-snug shadow-2xl"
+                style={{ background: 'var(--sk-ink)', color: 'var(--sk-bg)', bottom: `calc(${caoNv} * ${bc?.bong ?? 0.8})` }}>
+                {loiNhanVat(viec)}
+                <span className="absolute -bottom-2 right-8 h-4 w-4 rotate-45" style={{ background: 'var(--sk-ink)' }} />
+              </div>
             </div>
           </div>
         )}
@@ -585,7 +598,10 @@ export default function HomeHS912({ giaoDien, onDaLuu, macDinh, ...p }: HomeProp
   const nutRef = useRef<HTMLButtonElement>(null)
 
   const skin = laySkin(xem.skin)
-  const v = bienCss(skin, cheDoThat(skin, xem.che_do, heThongToi), xem.hinh_nen, manDoc) as CSSProperties
+  const cd = cheDoThat(skin, xem.che_do, heThongToi)
+  const v = bienCss(skin, cd, xem.hinh_nen, manDoc) as CSSProperties
+  // nền "sống" (mây trôi sau cửa sổ) — chỉ khi style khai cho đúng hình nền × chế độ × khổ màn đang vẽ
+  const lopNen = skin.homeSong?.nen?.[layHinhNen(skin, xem.hinh_nen).id]?.[cd]?.[manDoc ? 'doc' : 'ngang']
 
   async function luu(sau: () => void) {
     setDangLuu(true); setLoi(null)
@@ -596,9 +612,10 @@ export default function HomeHS912({ giaoDien, onDaLuu, macDinh, ...p }: HomeProp
 
   return (
     <div className="min-h-[100dvh]" style={{ ...v, background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
+      {lopNen && <NenSong key={lopNen.phong} lop={lopNen} phu={skin.homeSong?.phuNen?.[cd]} />}
       {ngang
-        ? <ManNgang p={p} skin={skin} nutRef={nutRef} onHinhNen={() => { setXem(daLuu); setLoi(null); setMo(true) }} />
-        : <ManChinh p={p} skin={skin} nutRef={nutRef} onHinhNen={() => { setXem(daLuu); setLoi(null); setMo(true) }} />}
+        ? <ManNgang p={p} skin={skin} toi={cd === 'toi'} nutRef={nutRef} onHinhNen={() => { setXem(daLuu); setLoi(null); setMo(true) }} />
+        : <ManChinh p={p} skin={skin} toi={cd === 'toi'} nutRef={nutRef} onHinhNen={() => { setXem(daLuu); setLoi(null); setMo(true) }} />}
 
       {mo && !buoc && (
         <ChonGiaoDien gd={xem} setGd={setXem} heThongToi={heThongToi} nutChinh="Lưu" dangLuu={dangLuu} loi={loi}

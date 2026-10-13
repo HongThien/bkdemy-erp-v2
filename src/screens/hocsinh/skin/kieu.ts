@@ -8,7 +8,7 @@ import type { LoiHS } from './loi'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
-export type SkinId = 'rpg' | 'toi_gian' | 'khoi'
+export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi' | 'dang_yeu'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
 // hieu_ung_game: công tắc của em (mig 202610020037, mặc định bật) — tắt ⇒ không bản đồ phiêu lưu / màn đấu. Không có trường (bản cũ) = bật.
 export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string; hieu_ung_game?: boolean }
@@ -60,6 +60,33 @@ export type MoHinhChibi = {
   hao: string; haoGian: string
 }
 import type { AnhNv, AnhTt, NguoiDanAnh } from './anhGiaoDien'
+
+// MÀN CHÍNH "SỐNG" (Lo-fi chill 12/10 — design/DON-HANG-STYLE-LOFI.md mục 6): style nào khai thì Home có chuyển động nhẹ, không khai ⇒ Home tĩnh như cũ.
+/** 1 nền có mây trôi: lớp PHÒNG (đã khoét trời) đặt trên dải TRỜI lặp ngang. hopTroi = hộp vùng trời trong khung phòng · tl = rộng/cao khung phòng · tlTroi = rộng/cao dải trời */
+export type LopNenSong = { phong: string; troi: string; hopTroi: { x0: number; y0: number; x1: number; y1: number }; tl: number; tlTroi: number }
+/** 1 MẢNH hoạt họa cắt từ khung vẽ lại — hop = [x0, y0, x1, y1] theo tỉ lệ khung nhân vật; lúc chạy THAY vùng đó trên hình gốc (skin/GocHocSong.tsx) */
+export type ManhSong = { src: string; hop: [number, number, number, number] }
+/** Nhân vật Home có hoạt họa ghép mảnh: viet = các khung của động tác chính lặp lại (hình gốc là khung 1) · nghi = các kiểu nghỉ giữa chừng ·
+ *  duoi = khung vẫy đuôi của thú cưng · ngap = thú cưng ngáp · den = tâm đèn bàn (tỉ lệ khung) để phủ ánh đèn ở chế độ TỐI */
+export type NvSong = { rong: number; cao: number; den: [number, number]; viet: ManhSong[]; nghi: ManhSong[]; duoi: ManhSong[]; ngap?: ManhSong }
+/** LINH VẬT Home đổi CẢ TƯ THẾ (Đáng yêu 13/10): mọi hình cùng khung rong×cao, cùng chỗ đặt chân. co = lớp cỏ / hoa dưới chân (đứng yên) ·
+ *  dung = đứng · chopMat = chớp mắt · vay = các khung vẫy tay lúc mở màn · vui = khi em chạm vào · lo = giật mình lúc bị đánh thức · ngu = để yên lâu ·
+ *  an = các khung ăn vặt thỉnh thoảng · mungKhoc = dành cho thẻ kết quả (chưa màn nào dùng) · soi = đường viền "sôi" (line boil) bằng bộ lọc SVG */
+export type LinhVatSong = {
+  rong: number; cao: number; soi?: boolean; co?: string
+  dung: string; chopMat: string; vay: string[]; vui: string; lo: string; ngu: string; an: string[]; mungKhoc?: string
+}
+export type HomeSong = {
+  /** khoá = id hình nền; mỗi nền khai từng chế độ × khổ màn có lớp mây trôi */
+  nen?: Record<string, Partial<Record<'sang' | 'toi', { ngang?: LopNenSong; doc?: LopNenSong }>>>
+  /** lớp phủ (CSS background) đặt trên các lớp nền sống — cùng lớp phủ với tranh tĩnh để chữ vẫn đọc được */
+  phuNen?: { sang?: string; toi?: string }
+  nv?: { nam: NvSong; nu: NvSong }
+  /** linh vật đổi tư thế (khác `nv` = ghép mảnh lên một hình người) — style khai MỘT trong hai */
+  linhVat?: { nam: LinhVatSong; nu: LinhVatSong }
+}
+/** Thẻ "Việc tiếp theo" (nền · chữ · viền) */
+export type TheTiep = { bg: string; ink: string; border: string }
 export type NenManId = 'bxh' | 'nhiem_vu' | 'thanh_tuu'
 /** Khung 9-slice: cat = độ dày góc (px trên ảnh GỐC w×h; 4 cạnh bằng nhau theo file .slice.json của kit) */
 export type Khung9 = { src: string; w: number; h: number; cat: number }
@@ -177,12 +204,25 @@ export type Skin = {
   trangTri?: { goc?: string; gach?: string } // hoa văn góc thẻ "Tiếp theo" + gạch phân cách dưới đầu trang
   anhBanner?: { lich?: string; kiemTraLai?: string } // ảnh vẽ riêng cho thẻ ca bổ trợ + banner bài kiểm tra lại
   // Thẻ "Việc tiếp theo": mặc định tô đặc màu nhấn. Skin nền tối sang (RPG) tô đặc thì thành mảng vàng thô — dùng kiểu riêng.
-  theTiep?: { bg: string; ink: string; border: string }
+  // Style có CẢ sáng lẫn tối (Lo-fi 12/10) khai riêng từng chế độ: { sang, toi } — style 1 chế độ giữ kiểu cũ.
+  theTiep?: TheTiep | { sang: TheTiep; toi: TheTiep }
   // Tấm mờ sau tên HS — skin nền ẢNH cần (tên đè lên tia sáng/lâu đài thì không đọc được). Có nenTen + chế độ TỐI ⇒ bật luôn bóng chữ toàn trang.
-  nenTen?: string
+  nenTen?: string | { sang: string; toi: string }
   // Nhân vật cắt nền (PNG trong suốt) đứng nửa trái Home khổ NGANG (PC/iPad) kèm bong bóng thoại — như ảnh gốc style
   // (RPG: design/bk-ui-src/Nền app HS cấp 3_11.png). Chọn theo giới tính HS; chưa biết ⇒ `nam`. Không có ⇒ Home ngang không vẽ nhân vật.
   nhanVat?: { nam: string; nu: string }
+  // Bản nhân vật cho chế độ TỐI (cùng khung, đã phủ ánh đèn) — không khai ⇒ dùng `nhanVat` ở cả 2 chế độ.
+  nhanVatToi?: { nam: string; nu: string }
+  // Bộ lọc CSS (filter) của hình nhân vật ở Home. Không khai ⇒ bóng đổ màu nền quanh người (tách người khỏi tranh). Hình có mép MỜ DẦN
+  // (góc học Lo-fi) khai 'none' — bóng đổ quanh mép mờ thành một quầng chữ nhật.
+  nhanVatLoc?: string
+  // Bố cục nhân vật ở Home khổ NGANG khi hình RỘNG hơn một người đứng (Lo-fi: cả góc học gần vuông): cot = bề rộng cột trái (grid) ·
+  // cao = chiều cao hình · lech = dịch tâm hình so với tâm cột (âm = sang trái, cho mép bàn tràn ra ngoài màn) · bong = đáy bong bóng thoại ở
+  // bao nhiêu × chiều cao hình (mặc định 0,8 — ngang vai người đứng) · dinh = true ⇒ nhân vật BÁM ĐÁY khung nhìn khi em cuộn trang (luôn "ngồi học
+  // cùng em") thay vì nằm ở đáy trang. Không khai ⇒ người đứng giữa cột, ở đáy cột.
+  nhanVatBoCuc?: { cot: string; cao: string; lech: string; bong?: number; dinh?: boolean }
+  // Màn chính "sống" (mây trôi sau cửa sổ + nhân vật cử động) — xem `HomeSong`. Không khai ⇒ Home tĩnh.
+  homeSong?: HomeSong
   // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).
   the3d?: BangMau3D
   // Sổ hình bản đồ phiêu lưu 2D (xem `BanDo2D`). Không khai ⇒ mọi tầng vẽ hình tạm theo màu `the3d`.

@@ -196,7 +196,7 @@ function CaCard({ c, live, now, onMo, onGo, onHuy }: { c: CaBoTro; live: Map<str
           <div key={h.bhh_id} className={`mt-1.5 flex flex-wrap items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-[12.5px] ${LOAI_ROW[h.loai]}`}>
             <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_CLS[h.loai]}`}>{LOAI_TEN[h.loai]} · {h.don_vi}</span>
             <span className="font-semibold text-slate-800">{h.ho_ten}</span><span className="text-slate-500">{h.lop ?? ''} · {h.chi_tiet}{h.nguoi_day_ten ? ` · dạy: ${h.nguoi_day_ten}` : ''}</span>
-            {lv && tt && tt !== 'chua_dd' && <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${TT[tt].cls}`} title={`đã làm ${lv.so_dung}/${lv.so_cau} câu đúng`}>{TT[tt].ten} · {lv.so_dung}/{lv.so_cau}</span>}
+            {lv && tt && tt !== 'chua_dd' && <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${TT[tt].cls}`} title="Số CÂU luyện em làm đúng / số câu đã làm trong ca (không phải số dạng)">{TT[tt].ten}{lv.so_cau > 0 ? ` · đúng ${lv.so_dung}/${lv.so_cau} câu` : ''}</span>}
             {h.diem_danh ? <span className="ml-auto rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-slate-600">{h.diem_danh === 'co_mat' ? 'có mặt' : 'vắng'}</span> : <span className="ml-auto" />}
             {!h.diem_danh && <button onClick={() => onGo(h)} title="Gỡ khỏi ca" className="text-slate-400 hover:text-rose-600">✕</button>}
           </div>

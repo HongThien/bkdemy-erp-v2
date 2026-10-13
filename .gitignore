@@ -81,6 +81,8 @@ dist-sukien/
 design/bk-ui-src/gami/
 # Ảnh gốc ChatGPT style Khối vuông (DON-HANG-STYLE-KHOI.md) — cùng luật bộ gami, cất Drive
 design/bk-ui-src/khoi/
+design/bk-ui-src/lofi/
+design/bk-ui-src/nho-xinh/
 
 # Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
 *.tsbuildinfo
