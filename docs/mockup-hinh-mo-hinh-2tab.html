@@ -119,9 +119,8 @@ Hai tab đọc CÙNG dữ liệu. Dữ liệu giả, chỉ để bấm thử.</p
  <li><b>Ưu tiên 2 — nhánh phía trước không đè nhánh phía sau.</b> 1.6 cũng muốn hàng 1 nhưng bị 1.7.1 chắn ⇒ <b>lùi xuống hàng 2</b>, dây xuống thẳng từ 1.6 qua hàng trống. Nhánh con của 1.6.x lại xuống hàng 3, 4… theo cùng luật: bài mẹ nằm càng phải càng được hàng gần.</li>
  <li><b>Chỉ hai hướng: xuống · sang phải. Không vòng sang trái.</b> Nhánh nào cũng đi từ cột bài mẹ sang phải. Nếu hành lang thẳng xuống bị chặn thì dời cả làn sang phải một cột (dây: xuống → rẽ phải → xuống), thử tối đa 8 cột.</li>
  <li><b>Không cần rẽ lên trên:</b> không gian phía dưới luôn thừa, cây chỉ lớn xuống. (Rẽ lên trên chỉ nên làm khi có đồ thị phẳng khác — không đưa vào P1.)</li>
- <li><b>Gập từng nhánh</b> (bấm thẻ lục giác) ⇒ cột gập thành 1 ô “▸ N bài”, cờ ⚠ vẫn nổi. Mặc định gập nhánh sâu ≥ 3 hoặc &gt; 8 bài; bỏ chỗ trống của nhánh gập cho nhánh khác dùng.</li>
+ <li><b>Gập từng nhánh do NGƯỜI DÙNG quyết</b> (bấm thẻ lục giác) ⇒ cột gập thành 1 ô “▸ N bài”, cờ ⚠ vẫn nổi. Hệ thống không tự gập, không có ngưỡng.</li>
  <li><b>Chọn một bài</b> ⇒ ngoài đường gốc → bài và cây con của nhánh bài thì mờ, không ẩn không dịch chỗ. Dây tiền đề chỉ vẽ cho bài đang chọn và dây sai nhánh (đỏ).</li>
- <li>&gt; ~40 bài / mô hình ⇒ Tab Nhóm làm khung chính.</li>
 </ol></div>
 
 <div class="note"><b>Số hiển thị ≠ mã.</b> 1.6.1 là <u>vị trí trên cây</u>, máy tính lại khi chuyển bài. Mã (<span class="mono">BT.09.012.xx</span>) cấp một lần, không đổi — lịch sử đo bám theo mã.
@@ -191,7 +190,6 @@ const stt=num;
 const tongBai=nid=>lane(nid).length+kids(nid).reduce((s,k)=>s+tongBai(k.id),0);
 const coSai=nid=>lane(nid).some(b=>sai(b).length)||kids(nid).some(k=>coSai(k.id));
 const anFold=nid=>duong(nid).slice(1,-1).some(n=>folded.has(n.id)); // tổ tiên đang gập ⇒ ẩn
-function mauGap(){folded=new Set(Object.keys(S.nhanh).filter(id=>id!=='root'&&(depth(id)>=3||tongBai(id)>8)))}
 function renderStat(){
   const nSai=S.bai.filter(b=>sai(b).length).length;
   $('#stat').textContent=`${S.bai.length} bài · ${Object.keys(S.nhanh).length-1} nhánh · ${folded.size} gập · ${nSai} sai nhánh`;
@@ -385,5 +383,5 @@ $('#ov').addEventListener('click',e=>{
   const f=e.target.closest('[data-fix]');if(f){const b=byId(f.dataset.fix),t=sai(b)[0];if(chuyen(b,byId(t).nhanh)){openPop(b.id);toast(`Chuyển sang “${S.nhanh[b.nhanh].ten}” — giờ là ${stt(b)}`)}}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePop()});
-mauGap();render();
+render();
 </script></body></html>

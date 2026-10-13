@@ -37450,3 +37450,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Rút lại:** spec-hinh-luyen §2.6 (`hinh_mo_hinh_nhom`). Đánh dấu đầu `spec-hinh-luyen.md`; thêm dòng ĐỌC BẮT BUỘC vào CLAUDE.md §7.
 - **Chờ CEO:** (1) hiểu "1.7.2 bên trái 1.7.1" là bên phải? (2) chấp nhận số đổi khi chèn bài giữa thân (mã giữ) (3) ngưỡng gập/40 bài.
 - **Chưa đụng code/DB.** Việc đầu: C0 đo bao nhiêu bài đang dựa luật 17/08.
+
+## 14/10 (tối, tiếp) — CEO chốt 3 điểm mở của spec cây nhánh + LUẬT TOÀN CỤC "mã gốc bất biến"
+- **CEO:** (1) bên phải đúng · (2) số đổi OK; "bất kỳ đối tượng nào sinh ra có 1 mã gốc, KHÔNG BAO GIỜ đổi dưới bất kỳ hoạt động nào, là tham chiếu gốc; số đếm hiển thị trên bản đồ chỉ để dễ hiểu — ghi thẳng 1 rule vào md" · (3) không cần ngưỡng, CEO tự quyết gập.
+- **Làm:** `CLAUDE.md` §2 thêm luật **⭐⭐ MÃ GỐC BẤT BIẾN** (cấp 1 lần lúc sinh; mọi tham chiếu bám mã gốc; số hiển thị suy ra, không làm khoá; cấm trigger/RPC cấp lại mã khi UPDATE; mã không mã hoá vị trí đổi được; câu hỏi bắt buộc khi thiết kế bảng; dò hidden trigger). `spec-hinh-cay-nhanh.md` §1.2 trích luật + §8 đánh dấu 3 điểm đã chốt; bỏ ngưỡng gập/40 bài (spec + mockup, hệ thống không tự gập).
+- **Việc kéo theo (CHƯA làm):** audit mọi trigger/hàm cấp mã có đường UPDATE ghi đè — ngoài `hinh_baitoan_gen_ma_trg` đã biết, chưa quét các bảng khác (`pg_trigger` + `pg_proc.prosrc`). Đề xuất làm trước C1.

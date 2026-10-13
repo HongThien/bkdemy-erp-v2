@@ -93,6 +93,17 @@
   ⇒ màn "làm việc theo hàng đợi" nhớ **filter + list đã vá + scrollTop + khối đang mở** ở module-level
   (`const NHO = {...}` sống tới F5), mount lại thì dùng cache, bỏ qua fetch đầu; có nút ↻ ép quét lại.
   Mẫu: `DuyetBoTroYeuScreen.tsx` / `DashboardHocTapScreen.tsx`.
+- **⭐⭐ MÃ GỐC BẤT BIẾN — mọi đối tượng sinh ra có ĐÚNG MỘT mã gốc, không bao giờ đổi (CEO chốt 14/10).**
+  Mã gốc là *tham chiếu gốc* của đối tượng: cấp **một lần lúc sinh**, bất biến dưới **mọi** hoạt động
+  (chuyển nhóm/nhánh/lớp/khối, đổi tên, đổi thứ tự, đổi cha, sửa nội dung, gộp/tách hiển thị, đổi bản đồ…). Hệ quả bắt buộc:
+  - **Mọi tham chiếu** (FK, `ma_*` lưu text, lịch sử đo, mastery, log, builder, in ấn) bám **mã gốc**, không bám số hiển thị / vị trí / tên.
+  - **Số đếm, số thứ tự, nhãn trên bản đồ/màn/phiếu in (1.6.1.1, "Câu 3", "Bài 2a", STT…) CHỈ để dễ hiểu** — là *kết quả suy ra* lúc hiển thị
+    (hàm DB `fn_*_so_hien_thi` hoặc render), **không lưu làm khoá**, không FK vào nó, không đưa vào logic nghiệp vụ.
+  - **Cấm trigger/RPC "cấp lại mã" khi UPDATE** (kể cả `UPDATE OF <cột cha/nhóm>`). Mã sinh ở INSERT (hoặc khi `ma IS NULL`); sau đó
+    chỉ đọc. Mã cũ đã xoá **không cấp lại** cho đối tượng mới (xem "kho rác" bên dưới).
+  - Mã **không mã hoá vị trí/phân cấp** có thể đổi (cành, nhóm, lớp, nhánh) — nếu cần đọc phân cấp từ mã thì phân cấp đó phải là thứ BẤT BIẾN.
+  - Thiết kế bảng/hàm mới: câu hỏi bắt buộc *"đối tượng này mã gốc là cột nào, ai cấp, lúc nào, có đường nào ghi đè không?"*. Dò đường ghi đè
+    bằng `pg_trigger` + `pg_proc.prosrc` (trigger là hidden code). Bảng đang vi phạm (vd `hinh_baitoan_gen_ma_trg` chạy cả `UPDATE OF mo_hinh_id`) ⇒ sửa trước khi thêm tính năng cho phép chuyển nhóm.
 - **⭐ DANH TÍNH bám KHOÁ TỰ NHIÊN, KHÔNG bám VỊ TRÍ.** Nối 2 tập bằng "phần tử thứ i ↔ phần tử thứ i"
   là **sai ngay khi một bên thêm/bớt ở giữa** — và hỏng ÂM THẦM (không lỗi, chỉ gắn nhầm). Lưu thẳng
   khoá của bên kia (`ma_cau`, `ma_dang`…), vị trí chỉ để HIỂN THỊ. *(Đã dính: ô chấm ET ↔ câu trong đề

@@ -1,6 +1,6 @@
 # SPEC — Bản đồ Hình = CÂY NHÁNH BÀI (Chủ đề → Mô hình → Nhánh → Bài)
 
-> **Trạng thái 14/10/2026:** CEO đã duyệt mockup (`docs/mockup-hinh-mo-hinh-2tab.html`, bấm được). **Chưa build.**
+> **Trạng thái 14/10/2026:** CEO đã duyệt mockup + chốt 3 điểm mở (§8) (`docs/mockup-hinh-mo-hinh-2tab.html`, bấm được). **Chưa build.**
 > **Phạm vi:** Hình học Toán, phần LUYỆN (`hinh_mo_hinh` / `hinh_baitoan` / `hinh_bai` / `hinh_y`). Phần Học (`hinh_hoc_*`) không đụng.
 > **Quan hệ spec cũ:** file này **thay** `spec-hinh-luyen.md` §0 (bảng khái niệm) · §2.5 luật 1 phần "bài kế thừa giả thiết bài cha" · **§2.6 (cành nhỏ `hinh_mo_hinh_nhom` — RÚT LẠI, không build)**.
 > Phần *kho bài nhiều ý → tách ý* (§1 phase, §3 pipeline nhập, §4 màn Kho bài/Duyệt) của `spec-hinh-luyen.md` **vẫn đúng**.
@@ -45,7 +45,11 @@ alter table hinh_baitoan
 - **Cha của nhánh KHÔNG lưu riêng** (một nguồn): `cha(nhánh) = hinh_baitoan[neo_baitoan_id].mo_hinh_id`. `hinh_mo_hinh_cha` chỉ còn dùng cho mô hình con kiểu cũ (neo NULL) — cạnh cha–con; siết **`unique(mo_hinh_id)`** (đo 14/10: 20 cạnh, 0 mô hình có 2 cha, sâu ≤ 1).
 - Một mô hình thuộc **đúng một** chủ đề (D5) — bỏ khái niệm "ô".
 
-### 1.2 Số hiển thị ≠ mã
+### 1.2 Số hiển thị ≠ mã — áp LUẬT TOÀN CỤC "mã gốc bất biến" (CLAUDE.md §2, CEO 14/10)
+
+> **Mọi đối tượng sinh ra có đúng một mã gốc, không bao giờ đổi dưới bất kỳ hoạt động nào; đó là tham chiếu gốc. Số đếm hiển thị trên bản đồ chỉ để dễ hiểu, suy ra lúc hiển thị, không bao giờ làm khoá.**
+> Với cây nhánh: *rẽ nhánh, chuyển bài, đổi thứ tự, đổi bài mẹ, gập/mở, chuyển chủ đề* đều **không được** đổi mã bài / mã nhánh / mã mô hình.
+
 
 | | Số hiển thị `1.6.1.1` | Mã `BT.<khối>.<mh>.<stt>` |
 |---|---|---|
@@ -142,7 +146,7 @@ Ví dụ chuẩn (đã kiểm): 1.7 → hàng 1 (⑂, 1.7.1, 1.7.2) · 1.6 vư�
 ### 4.4 Gập / mở
 
 - Bấm thẻ giả thiết thêm ⇒ cả nhánh (kể cả nhánh con) gập thành "▸ N bài"; nhánh khác được dùng chỗ trống.
-- **Mặc định gập:** nhánh sâu ≥ 3 hoặc > 8 bài. Trạng thái gập **nhớ theo người dùng** (không phải dữ liệu mô hình).
+- **Không có ngưỡng tự gập** (CEO 14/10): hệ thống không bao giờ tự gập; **người dùng tự quyết** gập hay mở. Mặc định mở hết. Trạng thái gập **nhớ theo người dùng** (không phải dữ liệu mô hình).
 
 ### 4.5 Tập trung
 
@@ -150,7 +154,7 @@ Chọn một bài ⇒ phần ngoài *đường gốc → bài* và *cây con c�
 
 ### 4.6 Tab ② NHÓM
 
-Card lồng nhau theo cây nhánh. Card đầu mỗi nhánh = "bài trực tiếp của nhánh" (không có NULL). Mỗi dòng bài: số · tên · cờ · select **Chuyển nhánh** (vá tại chỗ). Dòng giả thiết thêm dùng cùng màu đặc của thẻ lục giác. Khi cây > ~40 bài/mô hình, tab này là khung chính.
+Card lồng nhau theo cây nhánh. Card đầu mỗi nhánh = "bài trực tiếp của nhánh" (không có NULL). Mỗi dòng bài: số · tên · cờ · select **Chuyển nhánh** (vá tại chỗ). Dòng giả thiết thêm dùng cùng màu đặc của thẻ lục giác. Tab này luôn có sẵn như một cách nhìn khác; không có ngưỡng tự chuyển.
 
 ### 4.7 Giữ trạng thái màn
 
@@ -195,9 +199,9 @@ Theo CLAUDE.md §2: nhớ module-level **bộ lọc + cây đã vá + scrollTop 
 
 ## 8. Còn mở (CTO sẽ không tự quyết)
 
-1. **Bài đứng ở "bên trái 1.7.1"?** — CEO nhắc "1.7.2 ở bên trái 1.7.1"; spec này theo luật 2 hướng (xuống · phải) nên hiểu là bên **phải**. Nếu CEO thật sự muốn một làn có chiều khác ⇒ sửa §4.2.
-2. **Số hiển thị khi bài chen giữa** (thêm 1.4 mới vào thân ⇒ 1.4→1.5 … và mọi `1.5.x` đổi theo). Đề xuất: chấp nhận (số = vị trí), mã giữ chuỗi định danh; in đề luôn in số + mã nhỏ. CEO duyệt.
-3. **Ngưỡng gập mặc định** (sâu ≥ 3 / > 8 bài) và **ngưỡng ~40 bài** chuyển Tab ② là đề xuất, chỉnh sau khi có dữ liệu thật.
+1. ~~Bài đứng ở "bên trái 1.7.1"?~~ ✅ **CEO 14/10: bên PHẢI.** Chỉ hai hướng xuống · sang phải.
+2. ~~Số hiển thị khi bài chen giữa~~ ✅ **CEO 14/10: OK** — số suy ra, đổi tự do; **mã gốc không đổi** (luật toàn cục ở §1.2).
+3. ~~Ngưỡng gập / ngưỡng 40 bài~~ ✅ **CEO 14/10: không cần ngưỡng** — người dùng tự gập, không có chế độ tự chuyển tab.
 4. Hình popup: bản thật cần `anh_de` đã vẽ lại (xong 13/10 cho 330 + 209 + 39 hình); bài chưa có hình hiện khung "chưa có hình" — không chặn.
 
 ## 9. Đứng trên vai ai (R7)
