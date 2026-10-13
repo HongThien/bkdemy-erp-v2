@@ -768,8 +768,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       if (!nhom912 || nvHome === null) return null
       if (nvHome === undefined) return { sub: '…', subMau: 'xam', onClick: moTuHome('nhiem_vu') }
       if (!nvHome.mo) return { sub: `Mở từ ${nvHome.bat_dau.split('-').reverse().slice(0, 2).join('/')}`, subMau: 'xam', onClick: moTuHome('nhiem_vu') }
-      const conLai = nvHome.ngay.con_lai
-      return { sub: conLai > 0 ? `Hôm nay còn ${conLai} lượt thưởng` : 'Đủ thưởng hôm nay!', subMau: conLai > 0 ? 'ton' : 'xanh', badge: nvHome.ngay.luot_hom_nay === 0 ? 1 : 0, onClick: moTuHome('nhiem_vu') }
+      const conLai = nvHome.ngay.con_lai, lan = nvHome.cau_hinh.lan_ngay
+      // Thùy 13/10: ô Nhiệm vụ nói thẳng việc hôm nay — "0/2 lượt · còn 20 câu" (mỗi lượt 10 câu) để em biết còn thiếu bao nhiêu
+      return { sub: conLai > 0 ? `Hôm nay ${lan - conLai}/${lan} lượt · còn ${conLai * 10} câu` : `Đủ ${lan}/${lan} lượt hôm nay!`, subMau: conLai > 0 ? 'ton' : 'xanh', badge: nvHome.ngay.luot_hom_nay === 0 ? 1 : 0, onClick: moTuHome('nhiem_vu') }
     }
     if (id === 'thanh_tuu') return ttCho > 0 ? { sub: `${ttCho} quà chờ nhận!`, subMau: 'ton', badge: ttCho } : { sub: 'Xem thành tựu của em', subMau: 'xam' }
     if (id === 'rank') {
