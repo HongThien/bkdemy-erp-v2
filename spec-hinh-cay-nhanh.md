@@ -1,0 +1,205 @@
+# SPEC — Bản đồ Hình = CÂY NHÁNH BÀI (Chủ đề → Mô hình → Nhánh → Bài)
+
+> **Trạng thái 14/10/2026:** CEO đã duyệt mockup (`docs/mockup-hinh-mo-hinh-2tab.html`, bấm được). **Chưa build.**
+> **Phạm vi:** Hình học Toán, phần LUYỆN (`hinh_mo_hinh` / `hinh_baitoan` / `hinh_bai` / `hinh_y`). Phần Học (`hinh_hoc_*`) không đụng.
+> **Quan hệ spec cũ:** file này **thay** `spec-hinh-luyen.md` §0 (bảng khái niệm) · §2.5 luật 1 phần "bài kế thừa giả thiết bài cha" · **§2.6 (cành nhỏ `hinh_mo_hinh_nhom` — RÚT LẠI, không build)**.
+> Phần *kho bài nhiều ý → tách ý* (§1 phase, §3 pipeline nhập, §4 màn Kho bài/Duyệt) của `spec-hinh-luyen.md` **vẫn đúng**.
+> Nguồn quyết định: sparring CEO 13/10 chiều (D5–D8) + 4 vòng chỉnh mockup 14/10 (DEVLOG 14/10).
+
+---
+
+## 0. Đích & khái niệm
+
+**Một mô hình Hình = một cây.** Thân là chuỗi bài 1.1 → 1.2 → …; mỗi lần **thêm một giả thiết** thì rẽ ra một **nhánh** từ một bài mẹ; nhánh lại rẽ tiếp. Số bài cho biết bài rẽ từ đâu (1.6.1 rẽ từ 1.6; 1.6.1.1 rẽ từ 1.6.1).
+
+| Khái niệm | Nghĩa | DB |
+|---|---|---|
+| **Chủ đề** | nhóm mô hình cùng chủ đề (như Đại) | `dai_bdm_chu_de` (cột `nhanh='hinh'`, đã có, 0 dòng) |
+| **Mô hình (gốc cây)** | bó giả thiết gốc + hình; thân = các bài của nó | `hinh_mo_hinh` với `neo_baitoan_id IS NULL` và không có cha |
+| **Nhánh** | một giả thiết THÊM, rẽ ra từ một bài mẹ; chứa chuỗi bài của nó + nhánh con | `hinh_mo_hinh` với `neo_baitoan_id` ≠ NULL, `la_mo_hinh=false` |
+| **Mô hình con** | nhánh đủ lớn để "đi vào" (màn riêng, mã bài riêng) | `hinh_mo_hinh` với `la_mo_hinh=true` (20 cạnh cha–con đang có trong `hinh_mo_hinh_cha`) |
+| **Bài** | lá; thuộc đúng 1 nhánh | `hinh_baitoan` (`mo_hinh_id` = nhánh chứa nó) |
+
+**Bản chất (R7):** *rooted ordered tree*; giả thiết hiệu lực = *path-condition* từ gốc (như symbolic execution: mỗi lần rẽ thêm một điều kiện). Cây thay đồ thị DAG tiền đề cũ ở tầng hiển thị: DAG vẫn còn ở tầng tiền đề (xem §3).
+
+**Mastery:** KP = bài (`hinh_baitoan`); rollup lên nhánh / mô hình bằng cùng một hàm nhận **tập `baitoan_id`** (spec-hinh-luyen §2.6 điều cấm 2 vẫn giữ). Gán ý → bài, lịch sử ý không đổi.
+
+---
+
+## 1. Dữ liệu
+
+### 1.1 Cột thêm (không bảng mới)
+
+```sql
+alter table hinh_mo_hinh
+  add column chu_de_id        text references dai_bdm_chu_de(id),      -- chỉ gốc cây; nhánh = NULL (suy từ gốc)
+  add column neo_baitoan_id   uuid references hinh_baitoan(id) on delete restrict,  -- bài mẹ nơi nhánh rẽ ra; NULL = gốc cây HOẶC mô hình con kiểu cũ
+  add column la_mo_hinh       boolean not null default true,           -- true = mô hình/mô hình con (đi vào được); false = nhánh inline
+  add column thu_tu           int;                                      -- thứ tự anh em cùng neo
+
+alter table hinh_baitoan
+  add column thu_tu           int;                                      -- thứ tự trong làn (nhánh); NULL tạm = theo ma
+```
+
+- `la_mo_hinh` mặc định **true** để 41 mô hình đang có giữ nghĩa cũ; nhánh inline tạo mới đặt `false`.
+- **Cha của nhánh KHÔNG lưu riêng** (một nguồn): `cha(nhánh) = hinh_baitoan[neo_baitoan_id].mo_hinh_id`. `hinh_mo_hinh_cha` chỉ còn dùng cho mô hình con kiểu cũ (neo NULL) — cạnh cha–con; siết **`unique(mo_hinh_id)`** (đo 14/10: 20 cạnh, 0 mô hình có 2 cha, sâu ≤ 1).
+- Một mô hình thuộc **đúng một** chủ đề (D5) — bỏ khái niệm "ô".
+
+### 1.2 Số hiển thị ≠ mã
+
+| | Số hiển thị `1.6.1.1` | Mã `BT.<khối>.<mh>.<stt>` |
+|---|---|---|
+| Là gì | **vị trí trên cây** | định danh bất biến |
+| Đổi khi chuyển bài / đổi neo | **có**, tự tính lại | **không** |
+| Lưu | **không** — suy bằng `fn_hl_so_hien_thi(goc_id)` | cột `ma` |
+| Dùng cho | màn, in, nói chuyện | mọi FK, lịch sử đo, gán ý |
+
+- Luật số: thân `1.k` (k = thứ tự trong làn); nhánh rẽ từ bài có số *X* ⇒ bài thứ k của nhánh là `X.k`.
+- **Mã bám MÔ HÌNH GỐC của cây, không bám nhánh** (`<mh>` = mã gốc). Hệ quả bắt buộc sửa: trigger `hinh_baitoan_gen_ma_trg` hiện chạy cả `UPDATE OF mo_hinh_id` ⇒ chuyển bài sang nhánh khác sẽ **cấp lại mã** (vi phạm bất biến). Sửa: chỉ cấp mã khi INSERT (hoặc khi `ma IS NULL`), `<mh>` lấy từ gốc cây; chuyển bài trong cùng cây không động mã. *(Chuyển bài sang cây KHÁC = ngoài phạm vi, cấm ở RPC.)*
+
+### 1.3 Giả thiết hiệu lực — thay luật 17/08
+
+> **Giả thiết hiệu lực của bài = `gia_thiet` mô hình gốc + `gia_thiet_them` của từng nhánh trên đường gốc → nhánh của bài + `gia_thiet_rieng` của bài.**
+
+- **BỎ** luật 17/08 "bài kế thừa giả thiết bài cha (tiền đề chính)". Nhánh thay vai: con thấy cha, **anh em không thấy giả thiết nhau**.
+- `gt_thay_the` (nhánh là đặc-biệt-hoá có tên, thay thế thay vì cộng) giữ nguyên nghĩa.
+- Cập nhật `src/lib/kho/hinh.ts` (`giaThietBaiToan`, `noDapAn`) **và** `fn_hl_*`: tính ở DB (CLAUDE.md §2.0), TS chỉ gọi RPC / render.
+- Giả thiết của **lá** (bài kho / ý) vẫn theo `spec-hinh-luyen.md` §2.5: lưu nguyên văn, builder hai nguồn không trộn.
+
+---
+
+## 2. Thao tác (RPC transactional, ghi `updated_at` cha)
+
+| RPC | Làm gì | Ràng buộc |
+|---|---|---|
+| `fn_hl_re_nhanh(bai_ids[], ten, gia_thiet_them)` | tạo nhánh mới neo vào **bài đứng ngay trước bài đầu được chọn trong làn**, chuyển các bài chọn vào | cùng một làn; không chọn bài đầu làn (không có bài đứng trước để neo); giữ thứ tự |
+| `fn_hl_chuyen_bai(bai_id, nhanh_id)` | chuyển bài sang nhánh khác, **xếp cuối làn** | cùng cây; **cấm vòng**: nhánh đích không được nằm trong cây con rẽ ra từ chính bài đó; nhánh con neo vào bài này đi theo bài |
+| `fn_hl_doi_thu_tu(bai_id, vi_tri)` | sắp lại trong làn | — |
+| `fn_hl_doi_neo(nhanh_id, bai_moi)` | dời nhánh sang bài mẹ khác | bài mới thuộc cây; không vòng |
+| `fn_hl_gap…` | **không có** — gập là trạng thái hiển thị, lưu người dùng (§4.6) | — |
+
+Mọi RPC trả danh sách `{bai_id, so_hien_thi, nhanh_id, thu_tu}` vừa đổi để client vá tại chỗ (CLAUDE.md §2 "sau mutation không reload cả danh sách").
+
+**Xoá** nhánh / bài: theo luật xoá — liệt kê trước (bài, nhánh con, ý đã gán, lượt HS) rồi mới xoá; `on delete restrict` ở `neo_baitoan_id`.
+
+---
+
+## 3. Bất biến "nhánh chứa tiền đề" + cờ sai nhánh
+
+- Tiền đề giữa bài **giữ nguyên** (builder cần): lấy từ cách giải mặc định (`hinh_cach_tien_de`).
+- **Bất biến:** với mọi tiền đề *t* của bài *b*: nhánh(*b*) nằm trong **cây con của nhánh(*t*)** (hay: đường gốc→nhánh(*b*) đi qua nhánh(*t*)) — bài dùng được mọi giả thiết mà tiền đề đã dùng.
+- Vi phạm ⇒ **cờ vàng "⚠ sai nhánh"** + nút "Chuyển bài sang nhánh *…*" (popup). **Không chặn lưu**; nhưng:
+  - builder / in đề **từ chối** bài sai nhánh;
+  - `fn_hl_sai_nhanh(goc_id)` trả danh sách để Thùy dọn.
+- Cờ **nổi ở mọi mức gập** (ô gập hiện ⚠ nếu bên trong có bài sai).
+
+---
+
+## 4. Hiển thị — hai tab, một dữ liệu
+
+> Mọi quy tắc dưới đây đã chạy trong mockup; số liệu kiểm: mẫu 15 bài, **0 thẻ chồng nhau**.
+
+### 4.1 Thẻ
+
+| Thẻ | Hình | Nội dung tối giản |
+|---|---|---|
+| **Bài** | trắng, bo góc, viền theo màu nhánh | số hiển thị + tên rút gọn **1 dòng**; cờ ⚠; ô tick (để rẽ nhánh) |
+| **Giả thiết thêm** (khởi tạo nhánh) | **lục giác màu đặc** (xanh / tím / cam theo nhánh) — khác hẳn thẻ bài | tên nhánh + "+ giả thiết · rẽ từ x.y"; bấm = gập/mở |
+| **Mô hình con** | viền đứt xanh lá | tên + mã; bấm = đi vào (màn riêng cùng khuôn 2 tab) |
+| **Ô gập** | viền chấm | "▸ N bài" + ⚠ nếu có |
+
+**Popup (bấm thẻ bài)**: đề · đáp án · lời giải · **hình** (vẽ theo giả thiết hiệu lực: hình gốc + từng nhánh trên đường) · giả thiết hiệu lực (gốc → nhánh → riêng) · tiền đề (bấm nhảy) · cờ sai nhánh + nút chuyển. Hình bản thật = `anh_de` của bài/ý, resolve như `fn_hl_bai_full` (ý ∨ ý trước ∨ bài).
+
+### 4.2 Tab ① CHUỖI — thuật toán xếp chỗ (thuần hiển thị, chạy ở client)
+
+**Chỉ hai hướng đi: XUỐNG và SANG PHẢI. Không bao giờ vòng sang trái, không rẽ lên trên.**
+
+- **Thân:** một hàng (hàng 0), bài nối nhau từ trái sang phải; mô hình con ở cuối hàng. Thân **không bao giờ bị đẩy**.
+- **Nhánh = một HÀNG NGANG:** thẻ giả thiết thêm ở **cột của bài mẹ**, rồi các bài của nhánh chạy sang phải.
+- **Ưu tiên 1 — càng ở phía sau càng gần hàng 1.** Trong cùng độ sâu, xếp từ nhánh có bài mẹ **xa bên phải nhất** trước; nó lấy hàng nhỏ nhất còn trống.
+- **Ưu tiên 2 — nhánh phía trước không đè nhánh phía sau.** Nhánh sớm hơn vướng thì **lùi xuống hàng dưới**; dây đi thẳng xuống qua các ô trống (hành lang được giữ chỗ).
+- **Hành lang thẳng xuống bị chặn** thì dời cả hàng sang phải 1…8 cột (dây: xuống → rẽ phải → xuống).
+- Xếp theo **độ sâu** (nhánh nông trước), nhánh con luôn ở hàng > hàng của bài mẹ.
+
+```text
+cho mỗi nhánh n theo (depth tăng, cột bài mẹ GIẢM, hàng bài mẹ GIẢM):
+  a = ô của bài mẹ;  len = 1 (thẻ giả thiết) + số bài (hoặc 1 nếu đang gập)
+  với dc = 0..8:                                  # ưu tiên đi thẳng xuống
+    với r = a.hàng+1 ...:
+      nếu hành lang (a.cột+dc, a.hàng+1 .. r-1) có ô bị chiếm: break      # thử cột kế
+      nếu ô (a.cột+dc .. +len-1, r) đều trống: đặt tại (a.cột+dc, r); xong
+  giữ chỗ cả hành lang + các ô vừa đặt
+```
+
+Ví dụ chuẩn (đã kiểm): 1.7 → hàng 1 (⑂, 1.7.1, 1.7.2) · 1.6 vướng 1.7.1 ⇒ **hàng 2** (⑂, 1.6.1, 1.6.2) · 1.6.2.x **hàng 3** · 1.6.1.x **hàng 4**.
+
+### 4.3 Dải màu & dây
+
+- Mỗi nhánh một **dải nền nhạt** cùng tông thẻ giả thiết (nhìn là biết bài thuộc nhánh nào dù nhánh nhảy sang phải).
+- Dây **chuỗi** xám; dây **rẽ nhánh** đậm, vuông góc.
+- Dây **tiền đề** xuyên làn: **mặc định không vẽ**; chỉ vẽ cho bài đang chọn (xanh) và dây sai nhánh (đỏ đứt). Danh sách tiền đề luôn có trong popup.
+
+### 4.4 Gập / mở
+
+- Bấm thẻ giả thiết thêm ⇒ cả nhánh (kể cả nhánh con) gập thành "▸ N bài"; nhánh khác được dùng chỗ trống.
+- **Mặc định gập:** nhánh sâu ≥ 3 hoặc > 8 bài. Trạng thái gập **nhớ theo người dùng** (không phải dữ liệu mô hình).
+
+### 4.5 Tập trung
+
+Chọn một bài ⇒ phần ngoài *đường gốc → bài* và *cây con của nhánh bài* **mờ đi** (không ẩn, không dịch chỗ). Bật/tắt được.
+
+### 4.6 Tab ② NHÓM
+
+Card lồng nhau theo cây nhánh. Card đầu mỗi nhánh = "bài trực tiếp của nhánh" (không có NULL). Mỗi dòng bài: số · tên · cờ · select **Chuyển nhánh** (vá tại chỗ). Dòng giả thiết thêm dùng cùng màu đặc của thẻ lục giác. Khi cây > ~40 bài/mô hình, tab này là khung chính.
+
+### 4.7 Giữ trạng thái màn
+
+Theo CLAUDE.md §2: nhớ module-level **bộ lọc + cây đã vá + scrollTop + nhánh đang gập + bài đang chọn**; mutation vá đúng phần tử, không `setRows([])`.
+
+---
+
+## 5. Tương thích với dữ liệu đang có
+
+| Hiện trạng (14/10) | Xử lý |
+|---|---|
+| 41 mô hình · 366 `hinh_baitoan` (K7 153 / K8 107 / K9 106) | mô hình giữ `la_mo_hinh=true`; `chu_de_id` do CEO gán (B0.5 màn Dọn thêm cột chọn chủ đề) |
+| 20 cạnh `hinh_mo_hinh_cha`, 0 mô hình 2 cha, sâu ≤ 1 | giữ làm "mô hình con kiểu cũ" (neo NULL, hiện ở cuối thân cha); siết `unique(mo_hinh_id)` |
+| Bài đang kế thừa giả thiết bài cha (luật 17/08) | **phải đo trước khi bỏ luật**: bài nào có `gia_thiet` cha dùng mà nhánh không chứa ⇒ chuyển hoá thành `gia_thiet_rieng` hoặc tạo nhánh; script `scripts/_hl_do_ke_thua.mjs` liệt kê — **không tự ghi** |
+| `phan` = luyen/hoc (B0.5) | giữ; chỉ cây `phan='luyen'` hiện ở Hình luyện |
+| Mã `BT.k.mh.stt` | không đổi; trigger sửa như §1.2 |
+
+---
+
+## 6. Thứ tự build
+
+| # | Việc | Xong khi |
+|---|---|---|
+| **C0** | `scripts/_hl_do_ke_thua.mjs` (đo, chỉ đọc) — bao nhiêu bài đang dựa luật 17/08 | có số; CEO duyệt cách chuyển hoá |
+| **C1** | Migration: 4 cột §1.1 + `unique(mo_hinh_id)` ở `hinh_mo_hinh_cha` + sửa trigger mã (§1.2) + `fn_hl_so_hien_thi` + `fn_hl_sai_nhanh` + `fn_hl_gia_thiet_hieu_luc` | `npm run schema` sạch; test ROLLBACK: chuyển bài giữ mã, số đổi; bài sai nhánh bị báo |
+| **C2** | RPC §2 (`re_nhanh`, `chuyen_bai`, `doi_thu_tu`, `doi_neo`) + test vòng | test: chuyển vào cây con của chính nó bị từ chối |
+| **C3** | `giaThietBaiToan` / `noDapAn` đọc `fn_hl_gia_thiet_hieu_luc`; builder từ chối bài sai nhánh | in 1 đề có bài sai nhánh ⇒ bị chặn, có lý do |
+| **C4** | Tab ① Chuỗi (thuật toán §4.2) + Tab ② Nhóm + popup, nối RPC thật | mở mô hình thật K7: 0 thẻ chồng, số khớp mockup |
+| **C5** | Màn Dọn: chọn chủ đề cho mô hình gốc; chủ đề `nhanh='hinh'` hiện ở bản đồ | 41 mô hình có chủ đề |
+
+*Kiểm UI bằng phiên đăng nhập thật* (RLS + giới hạn 8 giây của script không thấy) — CLAUDE.md §0 bài học troly.
+
+---
+
+## 7. Không làm đợt này
+
+- Rẽ lên trên / vòng sang trái (đã cấm; không gian dưới luôn thừa).
+- Tự đề xuất cây từ lá (AI gom ý → nhánh); chỉ "máy gợi, người quyết".
+- Kéo-thả sắp xếp trực tiếp trên Tab ① (P1 dùng RPC + select ở Tab ②).
+- Chuyển bài giữa hai cây khác nhau (đổi mã) — chưa có nhu cầu.
+- Bảng `hinh_mo_hinh_nhom` (cành nhỏ) — **rút**, nhánh đã thay.
+
+## 8. Còn mở (CTO sẽ không tự quyết)
+
+1. **Bài đứng ở "bên trái 1.7.1"?** — CEO nhắc "1.7.2 ở bên trái 1.7.1"; spec này theo luật 2 hướng (xuống · phải) nên hiểu là bên **phải**. Nếu CEO thật sự muốn một làn có chiều khác ⇒ sửa §4.2.
+2. **Số hiển thị khi bài chen giữa** (thêm 1.4 mới vào thân ⇒ 1.4→1.5 … và mọi `1.5.x` đổi theo). Đề xuất: chấp nhận (số = vị trí), mã giữ chuỗi định danh; in đề luôn in số + mã nhỏ. CEO duyệt.
+3. **Ngưỡng gập mặc định** (sâu ≥ 3 / > 8 bài) và **ngưỡng ~40 bài** chuyển Tab ② là đề xuất, chỉnh sau khi có dữ liệu thật.
+4. Hình popup: bản thật cần `anh_de` đã vẽ lại (xong 13/10 cho 330 + 209 + 39 hình); bài chưa có hình hiện khung "chưa có hình" — không chặn.
+
+## 9. Đứng trên vai ai (R7)
+
+*Rooted ordered tree* + *path-condition* (symbolic execution) cho giả thiết hiệu lực; *Reingold–Tilford* / tidy-tree layout cho "mỗi nhánh một hàng, nhánh con bậc dần"; *testlet* (Wainer & Kiely) cho bài nhiều ý — đã nêu ở spec-hinh-luyen §0.

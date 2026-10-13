@@ -1,5 +1,6 @@
 # SPEC — Bản đồ kiến thức HÌNH · phần LUYỆN (kho bài nhiều ý → mô hình)
 
+> **⚠ 14/10: tầng MÔ HÌNH/NHÁNH/BÀI + cách hiển thị đã chuyển sang `spec-hinh-cay-nhanh.md` (CEO duyệt mockup). Trong file này: §0 bảng khái niệm, §2.5 luật 1 phần "bài kế thừa GT bài cha", §2.6 (cành nhỏ `hinh_mo_hinh_nhom`) đã BỊ THAY — đọc spec mới. Phần kho bài/ý/pipeline nhập (§1, §3, §4) vẫn đúng.**
 > **Trạng thái 13/10/2026:** bản đề xuất CTO theo cập nhật khái niệm *mô hình* của CEO ngày 13/10. **Chưa build.** Bốn chỗ cần CEO gật ở §9.
 > **Quan hệ với spec cũ:** `spec-kho-hinh-v3.md` vẫn đúng về *mô hình* (§0.2 ①②③④) và *schema* `hinh_bai`/`hinh_y` (§1). File này **đảo thứ tự xây** (§5 cũ "lưới trước, gán sau" ⇒ nay "kho trước, lưới sau") và bổ sung phần *tách ý tự động*. Phần Học (`hinh_hoc_*`, `docs/luong-kho-kieu-1-hinh-hoc.md`) không đụng.
 > Số liệu DB live 13/10: 41 mô hình · 366 bài-trong-mô-hình (`hinh_baitoan`) · `hinh_bai`/`hinh_y` **0 dòng** · 1.826 câu phần Học (291 có nhãn mô hình).
