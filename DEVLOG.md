@@ -37348,3 +37348,12 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
   21^15<27^5.49^8 · 5^300<3^453 · 2^255<3^180 · 10^26>26^17 · 17^15>31^10.
 - **Sai / sửa:** khoá tra `ten_de_goc` sai ('BT' thay vì 'BTVN') ⇒ 6 câu null — đã UPDATE 6 dòng + sửa script.
 - **Treo:** câu chờ người duyệt; chưa xếp vào bản đồ mới (dạng chưa có ở `dai_bdm_*`). Kết quả là dấu < > — không viết được trong 4 ô trả lời ngắn nên để tự luận; muốn lên app (bổ trợ chỉ MCQ / trả lời ngắn) cần sinh MCQ từ các câu này.
+
+## 13/10 (tiếp) — Kho K6: 13 câu "Tìm chữ số tận cùng của lũy thừa" (dạng T106020802)
+- **Yêu cầu Thùy:** ảnh "Bài toán 1: Tìm chữ số tận cùng của các số a) 7^99 b) 14^1414 c) 4^567" + hướng dẫn giải; "tương tự … đưa vào tận cùng của lũy thừa. Clone thêm 10 bài".
+- **Làm:** ảnh sao chép MẤT cấp số mũ nhỏ — lời giải mẫu dùng $9^9-1$, $14^{14}=4k$, $5^{67}-1$ ⇒ đề đúng là lũy thừa CHỒNG $7^{9^9}$, $14^{14^{14}}$, $4^{5^{67}}$ (ghi `Ghi chú` trên 3 câu).
+  Dạng đích: bản đồ cũ `dai_ban_do` **T106020802** (cùng chuyên đề T1060208 với T106020801, 0 câu trước đó). 3 mẫu + 10 clone (đổi cơ số / số mũ, phủ 4 trường hợp số dư của số mũ khi chia cho 4, cả lũy thừa chồng lẫn $2^{2022}$).
+  `tan-cung-luy-thua/tao-soan.mjs` dựng TCLT.soan.md (mọi số trong lời giải tính bằng BigInt) → cổng `dung-de-tu-soan.mjs` ✔ → `nhap-kho.mjs` (nhân chứng độc lập: lũy thừa mô-đun BigInt từ ĐỀ, số mũ chồng tính thật, so `dap_an` + dòng "Vậy…" + số dư trong lời giải; 13/13 khớp) → `insertCauBatch` + `parent_ma_cau`/`clone_method='clone_doi_so'` cho clone.
+- **Phương pháp lớp 6 (không đồng dư):** số dư của số mũ cho 4 tìm bằng tích các số dư ($(4a+1)(4b+1)$ dư 1; $y$ chẵn ⇒ $y^2$ chia hết 4; $y\equiv3$: $y^2$ dư 1); $x^4$ tận cùng 0/1/5/6 rồi nâng lên lũy thừa $k$ giữ nguyên.
+- **Số đo (DB live):** T106020802001…013, `tra_loi_ngan` (đáp số 1 chữ số), `da_duyet=false`, `nguon='le'` (3 mẫu) / `'clone'` (10), `nguon_giai='ai'`, đủ lời giải 2 phần. Đáp số mẫu 7 · 6 · 4.
+- **Sai / sửa:** cổng bắt lỗi mẫu `$` thừa sau chữ số (82 lỗi → sửa template, 0 lỗi). Nhân chứng: chỉ ĐỀ cho máy tính — chưa có người thứ hai giải độc lập (bài ngắn, công thức; nếu muốn chạy trạm soát Opus như đề cương thì nói).
