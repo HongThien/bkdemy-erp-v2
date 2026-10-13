@@ -37221,3 +37221,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bài học:** đề cương của trường thường chép bài từ sách phổ biến ⇒ gặp chỗ in thiếu / nghi sai thì TÌM BẢN GỐC trong các sách cùng khối đã có (grep bản soạn kho) TRƯỚC khi quyết cách nhập, đừng đợi ghi xong. Trạm soát mù không bắt được loại lỗi này vì cả hai lượt cùng giải theo một bản đã gõ.
 - **Kiểm:** đọc lại DB (cấu trúc phần – bài – ý khớp đề gốc) + mở màn Kho đề thi › Đề cương trên app (89 câu, 3 phần, 11 nhóm bài, 13 hình). Trang xem cho CEO: `kho-rules/dai/k9-de-cuong-NS-can-xem.html` (15 thẻ, 18 ảnh) — đã đăng Artifact.
 - **Chờ Thùy:** vế thiếu của 2a, 8b · cho sửa 6b và Bài 12 theo bản gốc · 6h/6i/6j (nghi sai số mũ) · 4b · 20 · B 2b · làm tròn B 3, B 9 · B 10 (lời văn hay hình) · C 1, C 2. Kho K9 từ sách (142/162 nhóm đã kiểm) vẫn CHƯA ghi DB.
+
+## 13/10 — Nông trại B5: hướng dẫn chạy được theo tài khoản + MỞ CHO 1 LỚP TEST
+- **Lỗi tìm ra khi chạy trọn bài hướng dẫn ở chế độ tài khoản (0 điểm học tập):** bước "xoa đầu chó" không hoàn thành được vì chó nay phải MUA (B3a) ⇒ bước `cho` TẶNG chú chó (`s.thu.cho.mua = true` ở `batDau`). Các bước còn lại ổn: gieo bằng HẠT TẶNG (B4), không có khoản tiêu nào bị server từ chối.
+- **Kiểm (harness, tài khoản mới 0 ĐHT):** chạy tự động cả 11 bước hướng dẫn ⇒ xong, cấp 2, 0 khoản bị từ chối, +1 xu EXP từ bán cà rốt.
+- **Mở (mig `202610131627`, ĐÃ ÁP):** `tinh_nang_lop` mo=true cho `tro_choi` + `nong_trai` chỉ ở lớp **"TEST · Toán 9"** (TEST06, TEST07). Toàn hệ thống VẪN đóng (mo_tu NULL): kiểm `fn_hs_tinh_nang_mo` — 2 tài khoản test thấy cả hai, 1 HS lớp thật 9C1 không thấy. Hoàn tác: `delete from tinh_nang_lop where lop_id = '8030bf93-…' and ma in ('tro_choi','nong_trai')`.
+- **Chờ Thùy:** (1) chơi thử bằng TEST06 + TEST07 (thăm/giúp/hái nhau, điểm học tập, xu vào ví, giờ chơi); (2) người dẫn truyện thay "Bác Hai"; (3) lớp/ngày mở cho HS thật.

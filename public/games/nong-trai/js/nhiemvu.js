@@ -37,6 +37,7 @@ const HD = [
     dem: ['trom', 'biDuoi'], xong: s => moi(s, 'trom') + moi(s, 'biDuoi') >= 1 || E.tomTatBan(s, ban(s)).hai === 0 },
   { id: 've', kieu: 'lam', loi: 'Về nhà thôi! Bấm nút "⬅ Về nhà".', muc: () => '#nutVe', dem: ['veNha'], xong: s => moi(s, 'veNha') >= 1 },
   { id: 'cho', kieu: 'lam', loi: 'Xoa đầu chó của cháu nào! Mỗi ngày 1 lần. Chó quý cháu thì sẽ đuổi bạn đến hái trộm giúp cháu.',
+    batDau: s => { if (window.NT_CAU && window.NT_CAU.dang && s.thu && s.thu.cho) s.thu.cho.mua = true; },   // chơi theo tài khoản: chó phải MUA — bài hướng dẫn TẶNG 1 chú
     muc: () => ({ loai: 'thu', id: 'cho' }), dem: ['thuCung'], xong: s => moi(s, 'thuCung') >= 1 },
   { id: 'ket', kieu: 'noi', loi: 'Giỏi lắm! Mỗi ngày cháu ghé 1 lần: thu hoạch, chăm cây, giúp bạn, rồi gieo cho ngày mai. Muốn có nhiều bịch hạt giống thì làm bài trên app để có ĐIỂM HỌC TẬP nhé. Bác tặng cháu ít quà!',
     thuong: D.PHA >= 2 ? { phan_bon: 2, tt_hoa: 1 } : { phan_bon: 3 } },
