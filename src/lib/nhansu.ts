@@ -7,13 +7,41 @@ import { reopenPhase, moLaiDanhGia } from './gami'
 const LIMIT = 10000
 
 // ── Types ─────────────────────────────────────────────────────────
-export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; erp_giao_dien?: { skin?: string; nen?: string | null; che_do?: 'sang' | 'toi' } | null }
+/** Bố cục Trang chính: id box người này ẨN. `thu_tu` chừa cho kéo thả (chưa dùng). */
+/** Dáng card của lưới nhóm trên Trang chính. */
+export type DangCard = 'vuong' | 'ngang' | 'cao' | 'tron' | 'gon'
+export type HomeBoCuc = { an?: string[]; thu_tu?: string[]; dang_card?: DangCard }
+export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; home_bo_cuc?: HomeBoCuc | null; erp_giao_dien?: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi' } | null }
+
+// Ai là "tôi" (nhân sự đang đăng nhập). Ném lỗi nếu tài khoản chưa gắn hồ sơ nhân sự.
+export async function myNhanSuId(): Promise<string> {
+  const { data: au } = await supabase.auth.getUser()
+  const { data: tk } = await supabase.from('tai_khoan').select('nhan_su_id').eq('id', au.user?.id ?? '').maybeSingle()
+  const id = (tk as { nhan_su_id: string | null } | null)?.nhan_su_id
+  if (!id) throw new Error('Tài khoản chưa link nhân sự — không xác định được người thao tác.')
+  return id
+}
 
 // Ảnh đại diện → bucket public 'avatars' (tạo qua Dashboard, migration 0020). DB lưu URL.
 export async function uploadAvatar(file: File): Promise<string> {
   const ext = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '') || 'png'
   const path = `${crypto.randomUUID()}.${ext}`
   const { error } = await supabase.storage.from('avatars').upload(path, file, { contentType: file.type || 'image/png', upsert: false })
+  if (error) throw error
+  return supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl
+}
+// HÌNH NỀN TỰ CHỌN của vỏ ERP: thu nhỏ ở máy (cạnh dài ≤1920, JPEG) rồi đưa lên bucket public 'avatars' (thư mục erp-nen/).
+// DB chỉ lưu URL (nhan_su.erp_giao_dien.nen_url). Ảnh cũ để nguyên trong bucket — Luật xoá: không tự xoá file.
+export async function uploadNenErp(file: File): Promise<string> {
+  if (!file.type.startsWith('image/')) throw new Error('Chọn một file ảnh (JPG, PNG, WebP).')
+  const bmp = await createImageBitmap(file)
+  const k = Math.min(1, 1920 / Math.max(bmp.width, bmp.height))
+  const cv = document.createElement('canvas')
+  cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k)
+  cv.getContext('2d')!.drawImage(bmp, 0, 0, cv.width, cv.height)
+  const blob = await new Promise<Blob>((ok, no) => cv.toBlob((b) => (b ? ok(b) : no(new Error('Không xử lý được ảnh.'))), 'image/jpeg', 0.85))
+  const path = `erp-nen/${crypto.randomUUID()}.jpg`
+  const { error } = await supabase.storage.from('avatars').upload(path, blob, { contentType: 'image/jpeg', upsert: false })
   if (error) throw error
   return supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl
 }
@@ -335,13 +363,19 @@ export async function updatePhimTatCongThuc(nhanSuId: string, map: Record<string
 }
 
 // Giao diện vỏ ERP tôi chọn (mig 202610131824) — {skin, nen, che_do} theo style app HS. Ghi đè cả object.
-export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; nen?: string | null; che_do?: 'sang' | 'toi' }): Promise<void> {
+export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi' }): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ erp_giao_dien: gd, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 // Mục menu YÊU THÍCH của tôi (mig 202610131649) — mảng id mục theo thứ tự thêm. Ghi đè cả mảng.
 export async function updateMenuYeuThich(nhanSuId: string, ids: string[]): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ menu_yeu_thich: ids, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
+  if (error) throw error
+}
+
+// Bố cục Trang chính của tôi (mig 202610140032) — {an:[id box ẩn]}. Ghi đè cả object.
+export async function updateHomeBoCuc(nhanSuId: string, bc: HomeBoCuc): Promise<void> {
+  const { error } = await supabase.from('nhan_su').update({ home_bo_cuc: bc, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 

@@ -6,6 +6,7 @@ import { useIsMobile } from '../hooks/useIsMobile'
 import HoSoModal from '../screens/nhansu/HoSoModal'
 import ReportButton from './ReportButton'
 import DuongDan from './DuongDan'
+import HomThu from './HomThu'
 
 // Nút mũi tên của thanh địa chỉ (← → ↑) — mờ đi khi không còn chỗ để đi.
 function NutMuiTen({ kyHieu, title, bat, onClick }: { kyHieu: string; title: string; bat: boolean; onClick: () => void }) {
@@ -56,6 +57,7 @@ export default function TopBar({ email }: { email: string }) {
       {/* Nút Báo lỗi tự mang màu nền sáng (dùng chung nhiều nơi) — trên thanh tối thì nhuộm lại cho đọc được. */}
       <div className={`ml-auto flex shrink-0 items-center gap-2 text-xs ${sk.cd === 'toi' ? '[&>button:first-child]:border-rose-300/50 [&>button:first-child]:text-rose-300 [&>button:first-child:hover]:bg-rose-400/15' : ''}`}>
         <ReportButton />
+        <HomThu di={dh.di} duocDi={(id) => id === 'home' || dh.mucs.some((m) => m.id === id)} />
         <button onClick={() => setHoSo(true)} title={`Hồ sơ của tôi — ${email}`} className="max-w-[190px] truncate text-[var(--sk-muted)] hover:text-[var(--sk-acc)]">👤{isMobile ? '' : ` ${email}`}</button>
         <button onClick={() => supabase.auth.signOut()} className="rounded border border-[var(--sk-line)] px-2 py-1 text-[var(--sk-muted)] hover:bg-[var(--sk-surface2)] hover:text-rose-500">Đăng xuất</button>
       </div>

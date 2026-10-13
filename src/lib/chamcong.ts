@@ -2,7 +2,7 @@
 // xin phép). Không check-in, không duyệt. Dòng ta_vang chỉ ra đời khi vắng thật (§1.5); bỏ dấu
 // vắng = xoá dòng (đây là cờ, không phải ledger tiền). Tiến trình trừ buổi vắng.
 import { supabase } from './supabase'
-import { myNhanSuId } from './giaoviec'
+import { myNhanSuId } from './nhansu'
 
 export type BuoiChamCong = { buoi_id: string; ten_lop: string; ngay: string; gio_bat_dau: string | null; vang: boolean; ly_do: string | null }
 

@@ -5,20 +5,19 @@
 //   leaf 'home:<nhóm>'  → các mục con của nhóm, mỗi mục 1 card TO (có ☆ để ghim lên Trang chính)
 // Màu chỉ đọc biến `--sk-*` (bienCss của app HS); hình chỉ lấy qua useSkinErp — không gõ mã màu hay đường dẫn ảnh ở đây,
 // không `if (skin === …)`.
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { useStore } from '../store/useStore'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { useSkinErp, cheDoErp, SKINS_ERP } from '../lib/erpSkin'
+import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON } from '../lib/erpSkin'
+import { uploadNenErp } from '../lib/nhansu'
 import { nenCua } from './hocsinh/skin/registry'
+import { HEAD, THE } from './home/khung'
+import TienDoViec from './home/TienDoViec'
+import ViecHangNgay from './home/ViecHangNgay'
+import BangOrder from './home/BangOrder'
 import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
-const HEAD: CSSProperties = { fontFamily: 'var(--sk-font-head)', textTransform: 'var(--sk-head-case)' as CSSProperties['textTransform'], letterSpacing: 'var(--sk-head-track)' }
-// Dáng THẺ của style (nền · viền · bo góc · bóng · mờ sau thẻ) — cùng bộ biến mà thẻ trong app HS dùng.
-const THE: CSSProperties = {
-  background: 'var(--sk-surface)', border: 'var(--sk-card-border)', borderRadius: 'var(--sk-radius)', boxShadow: 'var(--sk-card-shadow)',
-  backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)',
-}
 const NOI = 'transition hover:-translate-y-1 hover:brightness-110 hover:[outline:2px_solid_var(--sk-acc)]'   // thẻ bấm được: nhấc lên + viền màu nhấn
 
 // Icon của style: ảnh thường, hoặc MẶT NẠ tô màu chữ khi style đơn sắc (Tối giản — 1 bộ icon đúng cả sáng lẫn tối).
@@ -70,19 +69,57 @@ function MucNgang({ m, phu, coSao, onMo, onSao }: { m: MucMenu; phu?: string; co
   )
 }
 
-// BOX NHÓM lớn — đúng dáng ô chức năng trên Home app HS: hình vẽ ở trên, tên + 1 dòng phụ ở dưới, gần vuông.
-function NhomBox({ anh, matNa, chu, ten, phu, so, onClick }: { anh?: string; matNa: boolean; chu: string; ten: string; phu: string; so?: number; onClick: () => void }) {
+// BOX NHÓM lớn — 5 DÁNG do người dùng chọn (⚙ Tuỳ chỉnh › Dáng card): vuông (như ô chức năng Home app HS) · ngang · cao · tròn · gọn.
+type DangCard = 'vuong' | 'ngang' | 'cao' | 'tron' | 'gon'
+const DANG_CARD: { id: DangCard; ten: string; luoi: string }[] = [
+  { id: 'vuong', ten: 'Vuông', luoi: 'grid-cols-4' },
+  { id: 'ngang', ten: 'Ngang', luoi: 'grid-cols-3' },
+  { id: 'cao', ten: 'Cao', luoi: 'grid-cols-5' },
+  { id: 'tron', ten: 'Tròn', luoi: 'grid-cols-5' },
+  { id: 'gon', ten: 'Gọn', luoi: 'grid-cols-4' },
+]
+function NhomBox({ dang = 'vuong', anh, matNa, chu, ten, phu, so, onClick }: { dang?: DangCard; anh?: string; matNa: boolean; chu: string; ten: string; phu: string; so?: number; onClick: () => void }) {
+  const hinh = (cs: string, tt: string) => (anh ? <IconStyle src={anh} matNa={matNa} className={cs} /> : <HuyHieu chu={chu} co={tt} />)
+  const soNho = so != null && (
+    <span className="shrink-0 border border-[var(--sk-line)] bg-[var(--sk-surface2)] px-2 py-0.5 text-[10.5px] font-semibold text-[var(--sk-acc)]" style={{ borderRadius: 'var(--sk-radius-pill)' }}>{so} mục</span>
+  )
+  const soGoc = so != null && (
+    <span className="absolute right-2 top-2 border border-[var(--sk-line)] bg-[var(--sk-surface2)] px-2 py-0.5 text-[10.5px] font-semibold text-[var(--sk-acc)]" style={{ borderRadius: 'var(--sk-radius-pill)' }}>{so} mục</span>
+  )
+  if (dang === 'ngang') return (
+    <button onClick={onClick} style={THE} className={`group relative flex h-[92px] items-center gap-3 px-3.5 text-left ${NOI}`}>
+      <span className="flex size-[60px] shrink-0 items-center justify-center transition group-hover:scale-110">{hinh('size-[60px]', 'size-[56px] text-[30px]')}</span>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-[17px] font-bold leading-tight text-[var(--sk-ink)]" style={HEAD}>{ten}</span>
+        <span className="mt-0.5 block truncate text-[12px] text-[var(--sk-muted)]">{phu}</span>
+      </span>
+      {soNho}
+    </button>
+  )
+  if (dang === 'gon') return (
+    <button onClick={onClick} style={THE} className={`group flex h-[54px] items-center gap-2.5 px-3 text-left ${NOI}`}>
+      <span className="flex size-[34px] shrink-0 items-center justify-center">{hinh('size-[34px]', 'size-[34px] text-[18px]')}</span>
+      <span className="min-w-0 flex-1 truncate text-[15px] font-bold text-[var(--sk-ink)]" style={HEAD}>{ten}</span>
+      {soNho}
+    </button>
+  )
+  if (dang === 'tron') return (
+    <button onClick={onClick} style={{ ...THE, borderRadius: '9999px' }} className={`group relative flex aspect-square w-full min-w-0 self-start flex-col items-center justify-center gap-0.5 overflow-hidden px-3 text-center ${NOI}`}>
+      <span className="flex items-center justify-center transition group-hover:scale-110">{hinh('size-[40%] min-w-[40px]', 'size-[48px] text-[26px]')}</span>
+      <span className="line-clamp-2 text-[13.5px] font-bold leading-tight text-[var(--sk-ink)]" style={HEAD}>{ten}</span>
+      {so != null && <span className="text-[11px] font-semibold text-[var(--sk-acc)]">{so} mục</span>}
+    </button>
+  )
+  const cao = dang === 'cao'
   return (
-    <button onClick={onClick} style={THE} className={`group relative flex aspect-[1/0.86] flex-col items-center justify-end px-2 pb-3 pt-2 text-center ${NOI}`}>
+    <button onClick={onClick} style={THE} className={`group relative flex ${cao ? 'aspect-[1/1.25]' : 'aspect-[1/0.86]'} flex-col items-center justify-end px-2 pb-3 pt-2 text-center ${NOI}`}>
       <span className="flex min-h-0 w-full flex-1 items-center justify-center">
         {anh ? <IconStyle src={anh} matNa={matNa} className={`transition group-hover:scale-110 ${matNa ? 'size-[42%]' : 'max-h-full max-w-[62%]'}`} />
-          : <span className="transition group-hover:scale-110"><HuyHieu chu={chu} co="size-[84px] text-[44px]" /></span>}
+          : <span className="transition group-hover:scale-110"><HuyHieu chu={chu} co={cao ? 'size-[96px] text-[50px]' : 'size-[84px] text-[44px]'} /></span>}
       </span>
       <span className="mt-1 block text-[17px] font-bold leading-tight text-[var(--sk-ink)]" style={HEAD}>{ten}</span>
       <span className="mt-0.5 block w-full truncate px-1 text-[12px] text-[var(--sk-muted)]">{phu}</span>
-      {so != null && (
-        <span className="absolute right-2 top-2 border border-[var(--sk-line)] bg-[var(--sk-surface2)] px-2 py-0.5 text-[10.5px] font-semibold text-[var(--sk-acc)]" style={{ borderRadius: 'var(--sk-radius-pill)' }}>{so} mục</span>
-      )}
+      {soGoc}
     </button>
   )
 }
@@ -97,7 +134,18 @@ const Nhan = ({ children, className = '' }: { children: React.ReactNode; classNa
 // 🎨 CHỌN GIAO DIỆN — Mặc định (ERP như cũ) + 4 style có tranh của app HS; style có nhiều hình nền / có cả sáng lẫn tối thì chọn tiếp ở dưới. Đổi là áp ngay.
 function ChonGiaoDien({ hep }: { hep: boolean }) {
   const sk = useSkinErp()
+  const tep = useRef<HTMLInputElement>(null)
+  const [dangTai, setDangTai] = useState(false)
+  const [loiNen, setLoiNen] = useState<string | null>(null)
+  const chonAnh = async (f: File | undefined) => {
+    if (!f) return
+    setDangTai(true); setLoiNen(null)
+    try { const url = await uploadNenErp(f); doi({ nen: NEN_TU_CHON, nen_url: url }) }
+    catch (e: any) { setLoiNen(e?.message ?? String(e)) }
+    finally { setDangTai(false); if (tep.current) tep.current.value = '' }
+  }
   const doi = useStore((s) => s.doiGiaoDienErp)
+  const gdNenUrl = useStore((s) => s.erpGiaoDien.nen_url)
   const [mo, setMo] = useState(false)
   const khung = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -125,7 +173,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
               </button>
             ))}
           </div>
-          {sk.skin.hinhNen.length > 1 && (
+          {(
             <>
               <div className={`mt-3 ${muc}`}>Hình nền</div>
               <div className={hep ? 'grid grid-cols-3 gap-2' : 'grid grid-cols-5 gap-2'}>
@@ -135,7 +183,20 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
                     <span className={ten}>{h.ten}</span>
                   </button>
                 ))}
+                {/* Ảnh người dùng tự đưa lên — nằm cạnh kho hình nền có sẵn của style */}
+                {gdNenUrl && (
+                  <button onClick={() => doi({ nen: NEN_TU_CHON })} className={o(sk.nenId === NEN_TU_CHON)} style={{ borderRadius: 8 }} title="Ảnh của bạn (đã tải lên)">
+                    <span className="block h-[58px]" style={{ background: `url("${gdNenUrl}") center / cover no-repeat` }} />
+                    <span className={ten}>Ảnh của tôi</span>
+                  </button>
+                )}
+                <button onClick={() => tep.current?.click()} disabled={dangTai} className={o(false)} style={{ borderRadius: 8 }} title="Chọn ảnh từ máy làm hình nền">
+                  <span className="flex h-[58px] items-center justify-center bg-[var(--sk-surface2)] text-[22px] text-[var(--sk-muted)]">{dangTai ? '…' : '＋'}</span>
+                  <span className={ten}>{dangTai ? 'Đang tải…' : gdNenUrl ? 'Đổi ảnh' : 'Ảnh của tôi'}</span>
+                </button>
               </div>
+              <input ref={tep} type="file" accept="image/*" className="hidden" onChange={(e) => chonAnh(e.target.files?.[0])} />
+              {loiNen && <p className="mt-1.5 text-[12px] text-rose-500">Chưa tải được ảnh: {loiNen}</p>}
             </>
           )}
           {sk.skin.cheDo.length > 1 && (
@@ -154,9 +215,91 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
   )
 }
 
+// KÉO THẢ đổi vị trí box (desktop, HTML5 drag — không cần thư viện). Chỉ đổi chỗ TRONG cùng một khu:
+// 'tren' = 3 box rộng đầu trang · 'luoi' = lưới nhóm. Thứ tự lưu ở nhan_su.home_bo_cuc.thu_tu (mảng id, mọi khu chung 1 mảng).
+const KHU_TREN = ['tien_do', 'viec_ngay', 'order', 'yeu_thich']
+const khuCua = (id: string) => (id.startsWith('nhom:') ? 'luoi' : 'tren')
+
+function KeoBox({ id, keo, dich, setKeo, setDich, tha, children }: {
+  id: string; keo: string | null; dich: string | null; setKeo: (v: string | null) => void; setDich: (v: string | null) => void
+  tha: (keo: string, dich: string) => void; children: ReactNode
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const chap = keo !== null && keo !== id && khuCua(keo) === khuCua(id)
+  return (
+    <div ref={ref} className="group/keo relative"
+      onDragOver={(e) => { if (chap) { e.preventDefault(); if (dich !== id) setDich(id) } }}
+      onDrop={(e) => { if (chap) { e.preventDefault(); tha(keo!, id) } setKeo(null); setDich(null) }}>
+      <span draggable title="Kéo để đổi vị trí"
+        onDragStart={(e) => { setKeo(id); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', id); if (ref.current) e.dataTransfer.setDragImage(ref.current, 16, 16) }}
+        onDragEnd={() => { setKeo(null); setDich(null) }}
+        className="absolute left-1.5 top-1.5 z-10 cursor-grab select-none rounded px-1 text-[15px] leading-none text-[var(--sk-muted)] opacity-0 transition group-hover/keo:opacity-70 hover:!opacity-100 active:cursor-grabbing"
+        style={{ background: 'var(--sk-surface)' }}>⠿</span>
+      <div className={keo === id ? 'opacity-40' : ''}>{children}</div>
+      {chap && dich === id && <span className="pointer-events-none absolute inset-0 border-2 border-dashed border-[var(--sk-acc)]" style={{ borderRadius: 'var(--sk-radius)' }} />}
+    </div>
+  )
+}
+
+// ⚙ TUỲ CHỈNH — mỗi người tự ẩn / hiện từng box trên Trang chính (nhan_su.home_bo_cuc.an). Box ẩn chỉ không vẽ;
+// danh sách ở đây luôn đủ để bật lại.
+function TuyChinh({ cacBox, an, doi, hep, dang, doiDang }: { cacBox: { id: string; ten: string }[]; an: string[]; doi: (id: string) => void; hep: boolean; dang: DangCard; doiDang: (d: DangCard) => void }) {
+  const [mo, setMo] = useState(false)
+  const khung = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!mo) return
+    const ngoai = (e: MouseEvent) => { if (!khung.current?.contains(e.target as Node)) setMo(false) }
+    const phim = (e: KeyboardEvent) => { if (e.key === 'Escape') setMo(false) }
+    document.addEventListener('mousedown', ngoai)
+    document.addEventListener('keydown', phim)
+    return () => { document.removeEventListener('mousedown', ngoai); document.removeEventListener('keydown', phim) }
+  }, [mo])
+  return (
+    <div ref={khung} className="relative shrink-0">
+      <button onClick={() => setMo(!mo)} style={THE} className="px-3 py-1.5 text-[12.5px] font-semibold text-[var(--sk-ink)] hover:brightness-110">
+        ⚙ Tuỳ chỉnh{an.length > 0 && <span className="ml-1 text-[var(--sk-muted)]">({an.length} ẩn)</span>}
+      </button>
+      {mo && (
+        <div className={`z-40 mt-2 border border-[var(--sk-line)] bg-[var(--sk-bg)] p-3 text-[var(--sk-ink)] shadow-2xl ${hep ? 'fixed inset-x-3' : 'absolute right-0 w-[300px]'}`} style={{ borderRadius: 'var(--sk-radius)' }}>
+          <div className="mb-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sk-muted)]">Hiện trên Trang chính</div>
+          <ul className="max-h-[44vh] space-y-0.5 overflow-auto">
+            {cacBox.map((b) => {
+              const hien = !an.includes(b.id)
+              return (
+                <li key={b.id}>
+                  <button onClick={() => doi(b.id)} className="flex w-full items-center gap-2.5 px-1.5 py-1.5 text-left text-[13.5px] hover:bg-[var(--sk-surface2)]" style={{ borderRadius: 8 }}>
+                    <span aria-hidden className={`flex size-[18px] shrink-0 items-center justify-center border text-[12px] font-black leading-none ${hien ? 'border-[var(--sk-acc)] bg-[var(--sk-acc)] text-[var(--sk-acc-ink)]' : 'border-[var(--sk-line)]'}`} style={{ borderRadius: 5 }}>{hien ? '✓' : ''}</span>
+                    <span className={hien ? 'font-semibold' : 'text-[var(--sk-muted)]'}>{b.ten}</span>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+          <div className="mb-1.5 mt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sk-muted)]">Dáng card (lưới nhóm)</div>
+          <div className="grid grid-cols-5 gap-1.5">
+            {DANG_CARD.map((d) => (
+              <button key={d.id} onClick={() => doiDang(d.id)} title={d.ten}
+                className={`flex flex-col items-center gap-1 border-2 px-1 py-1.5 ${d.id === dang ? 'border-[var(--sk-acc)]' : 'border-transparent hover:border-[var(--sk-line)]'}`} style={{ borderRadius: 8 }}>
+                <span className="block border border-[var(--sk-ink)] opacity-70" style={{
+                  borderRadius: d.id === 'tron' ? 9999 : 4,
+                  width: d.id === 'ngang' || d.id === 'gon' ? 34 : d.id === 'cao' ? 20 : 26,
+                  height: d.id === 'ngang' ? 20 : d.id === 'gon' ? 12 : d.id === 'cao' ? 30 : d.id === 'tron' ? 26 : 22,
+                }} />
+                <span className="text-[11px] font-semibold">{d.ten}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function HomeScreen() {
   const dh = useDieuHuong()
   const sk = useSkinErp()
+  const [keo, setKeo] = useState<string | null>(null)   // box đang kéo
+  const [dich, setDich] = useState<string | null>(null)  // box đang bị rê lên
   const isMobile = useIsMobile()
   const hep = useIsMobile(1180)   // dưới ~1180px không đủ chỗ cho cột nhân vật
   const coSao = !!dh.me           // tài khoản chưa gắn hồ sơ nhân sự thì không có chỗ lưu → ẩn ☆ thay vì cho bấm rồi mất
@@ -200,6 +343,28 @@ export default function HomeScreen() {
   const tenGoi = dh.me?.nhanSu.ho_ten?.trim().split(/\s+/).pop()
   const homNay = new Date().toLocaleDateString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
   const coNv = !hep && !!sk.nhanVat
+  // Box ẩn theo từng người. Id: 'tien_do' · 'viec_ngay' · 'yeu_thich' · 'nhom:<tên nhóm>' ('nhom:viec' = Việc của tôi).
+  const an = dh.me?.nhanSu.home_bo_cuc?.an ?? []
+  const dangCard: DangCard = DANG_CARD.find((d) => d.id === dh.me?.nhanSu.home_bo_cuc?.dang_card)?.id ?? 'vuong'
+  const luoiCls = DANG_CARD.find((d) => d.id === dangCard)!.luoi
+  const hienBox = (id: string) => !an.includes(id)
+  const thuTu = dh.me?.nhanSu.home_bo_cuc?.thu_tu ?? []
+  // Sắp theo thứ tự người dùng đã kéo; id chưa từng kéo giữ nguyên thứ tự mặc định, đứng sau.
+  const xep = (ids: string[]) => ids.map((id, i) => ({ id, k: thuTu.indexOf(id) >= 0 ? thuTu.indexOf(id) : 1e6 + i })).sort((a, b) => a.k - b.k).map((x) => x.id)
+  const khuLuoi = ['nhom:viec', ...dh.adminNav.map((x) => `nhom:${x.nhom ?? ''}`)]
+  const tha = (a: string, b: string) => {
+    const ids = xep(khuCua(a) === 'tren' ? KHU_TREN : khuLuoi)
+    const tu = ids.indexOf(a), den = ids.indexOf(b)
+    if (tu < 0 || den < 0) return
+    ids.splice(den, 0, ids.splice(tu, 1)[0])
+    dh.doiHomeThuTu([...ids, ...thuTu.filter((x) => !ids.includes(x))])
+  }
+  const keoBox = (id: string, node: ReactNode) => <KeoBox key={id} id={id} keo={keo} dich={dich} setKeo={setKeo} setDich={setDich} tha={tha}>{node}</KeoBox>
+  const cacBox = [
+    { id: 'tien_do', ten: '🚀 Tiến độ công việc' }, { id: 'viec_ngay', ten: '☑ Việc hôm nay' }, { id: 'order', ten: '📋 Bảng Order' }, { id: 'yeu_thich', ten: '★ Yêu thích' },
+    { id: 'nhom:viec', ten: `${MUC_VIEC.icon} ${MUC_VIEC.ten}` },
+    ...dh.adminNav.map((x) => ({ id: `nhom:${x.nhom ?? ''}`, ten: `${nhomIcon(x.nhom)} ${x.nhom ?? ''}` })),
+  ]
   return (
     <section style={khung} className="min-h-0 overflow-auto text-[var(--sk-ink)]">
       <div className={`mx-auto flex min-h-full max-w-[1500px] gap-5 ${le}`}>
@@ -221,9 +386,16 @@ export default function HomeScreen() {
               </h2>
               <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
             </div>
-            <div className="ml-auto"><ChonGiaoDien hep={isMobile} /></div>
+            <div className="ml-auto flex items-start gap-2">{coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} />}<ChonGiaoDien hep={isMobile} /></div>
           </div>
 
+          <div className="space-y-5">
+            {xep(KHU_TREN).filter(hienBox).map((id) => keoBox(id,
+              id === 'tien_do' ? <TienDoViec onMoBang={() => dh.di(mucs.some((m) => m.id === 'giaoviec') ? 'giaoviec' : LEAF_VIEC)} />
+              : id === 'viec_ngay' ? <ViecHangNgay onMoVietCuaToi={() => dh.di(LEAF_VIEC)} />
+              : id === 'order' ? <BangOrder />
+              : (
+          <div>
           <Nhan>★ Yêu thích</Nhan>
           {dsYeuThich.length === 0 ? (
             <div className="border border-dashed border-[var(--sk-line)] px-4 py-3 text-[13px] text-[var(--sk-muted)]" style={tam}>
@@ -238,15 +410,20 @@ export default function HomeScreen() {
               ))}
             </div>
           )}
+          </div>
+              )))}
+          </div>
 
           <Nhan className="mt-6">Tất cả</Nhan>
           {/* Style không có nhân vật (Tối giản) hoặc màn hẹp: lưới trải hết bề ngang thì box quá khổ, tràn xuống dưới ⇒ chặn bề rộng. */}
-          <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid grid-cols-4 gap-3.5 ${coNv ? '' : 'max-w-[1060px]'}`}>
-            <NhomBox anh={sk.anhNhom.viec} matNa={sk.iconMatNa} chu={MUC_VIEC.icon} ten={MUC_VIEC.ten} phu={VIEC_MO_TA} onClick={() => dh.di(LEAF_VIEC)} />
-            {dh.adminNav.map((x) => (
-              <NhomBox key={x.nhom ?? '_'} anh={sk.anhNhom[x.nhom ?? '']} matNa={sk.iconMatNa} chu={nhomIcon(x.nhom)} ten={x.nhom ?? ''} phu={NHOM_MO_TA[x.nhom ?? ''] ?? ''}
-                so={mucs.filter((m) => m.nhom === x.nhom).length} onClick={() => dh.di(leafNhom(x.nhom ?? ''))} />
-            ))}
+          <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid ${luoiCls} gap-3.5 ${coNv ? '' : 'max-w-[1060px]'}`}>
+            {xep(khuLuoi).filter(hienBox).map((id) => {
+              if (id === 'nhom:viec') return keoBox(id, <NhomBox dang={isMobile ? 'vuong' : dangCard} anh={sk.anhNhom.viec} matNa={sk.iconMatNa} chu={MUC_VIEC.icon} ten={MUC_VIEC.ten} phu={VIEC_MO_TA} onClick={() => dh.di(LEAF_VIEC)} />)
+              const x = dh.adminNav.find((n) => `nhom:${n.nhom ?? ''}` === id)
+              if (!x) return null
+              return keoBox(id, <NhomBox dang={isMobile ? 'vuong' : dangCard} anh={sk.anhNhom[x.nhom ?? '']} matNa={sk.iconMatNa} chu={nhomIcon(x.nhom)} ten={x.nhom ?? ''} phu={NHOM_MO_TA[x.nhom ?? ''] ?? ''}
+                so={mucs.filter((m) => m.nhom === x.nhom).length} onClick={() => dh.di(leafNhom(x.nhom ?? ''))} />)
+            })}
           </div>
         </div>
       </div>

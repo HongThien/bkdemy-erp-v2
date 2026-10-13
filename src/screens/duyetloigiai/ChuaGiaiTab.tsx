@@ -13,7 +13,7 @@ import { listCauChuaGiaiTab, datClaudeGiai, huyYeuCauGiai, luuLoiGiaiNguoi, LOAI
 import { listHinhChuaGiai, datClaudeGiaiHinh, huyYeuCauGiaiHinh, luuLoiGiaiNguoiHinh, type HinhChuaGiai, type HinhLoaiBai } from '../../lib/kho/hinh'
 import { MathText } from '../kho/ui'
 import { SolutionField, ImageSlot } from '../kho/DangHub'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 type Nhanh = KhoNhanh
 const LOAI_LABEL = Object.fromEntries(LOAI_CAU.map((x) => [x.value, x.label])) as Record<string, string>

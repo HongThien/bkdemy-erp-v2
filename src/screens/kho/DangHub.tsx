@@ -15,7 +15,7 @@ import TienDeBox from './TienDeBox'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 const SAMPLE_TEXT = `Câu 1.
 Đề bài: Tìm số tự nhiên nhỏ nhất chia hết cho cả 3 và 5.

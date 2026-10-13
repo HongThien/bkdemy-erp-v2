@@ -11,7 +11,7 @@ import { nhanhCuaMon, NHANH_LABEL, listHangDuyetDs, duyetMenhDe, duyetCauDs, tuC
 import { MathText, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 type Row = CauDungSaiDuyet & { mon: KhoMon }
 const NHANH_HGT = 'hinh_gt'

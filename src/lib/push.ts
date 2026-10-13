@@ -12,7 +12,7 @@
 // Vercel env (PUSH_VAPID_PRIVATE), gửi bởi api/pt-nhac-viec.mjs hoặc api/ta-nhac-viec.mjs.
 // ============================================================================
 import { supabase } from './supabase'
-import { myNhanSuId } from './giaoviec'
+import { myNhanSuId } from './nhansu'
 
 export type PushApp = 'pt' | 'ta'
 

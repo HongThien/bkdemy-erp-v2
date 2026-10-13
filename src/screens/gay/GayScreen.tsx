@@ -11,7 +11,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { getMyScope, listNhanSu, type MyScope, type NhanSu } from '../../lib/nhansu'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 import {
   GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, MA_LOI_KHONG_DAT_CHUAN, kyHienTai, nhanKy,
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,

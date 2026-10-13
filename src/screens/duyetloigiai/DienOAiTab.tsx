@@ -6,7 +6,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { listFormDienChoDuyet, duyetFormDien, tuChoiFormDien, listHinhLyDo, type FormDienChoDuyet, type HinhLyDo } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 const CHU = ['A', 'B', 'C', 'D']
 const BATCH_SIZE = 20

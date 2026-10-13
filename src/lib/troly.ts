@@ -26,11 +26,11 @@ import { getMyTasks, buoiAoCuaNgay, diemDanhTienDo, TASKS_BY_VAI, type VaiViec }
 import { getMyProfile, getMyScope } from './nhansu'
 import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL, laNguoiDuyetOps, listOpsDuyetTheoNgay } from './opsvanhanh'
 import { listCanScanDaCham } from './detest'
-import { listViecCuaToi, listViecToiGiao, type ViecFull, type TrangThaiViec } from './giaoviec'
+import { listTaskBang, type TaskBang } from './taskPt'
 import { anhChupBoTroBu, NGAY_AP_HAN_48H, type AnhChupBu } from './botro'
 import { ngayCuaTs, congNgay } from './tuan'
 import { supabase } from './supabase'
-import { todayVN, soNgayLech } from './giaoviec-config'
+import { todayVN, soNgayLech } from './ngayVN'
 
 // ── NGƯỠNG: rút từ hành vi THẬT, không bịa ───────────────────────────────────
 // Ngưỡng "bao nhiêu ngày là bất thường" KHÔNG được đặt tay. Đo phân phối thời gian
@@ -523,21 +523,6 @@ export async function nhanDinhHeThong(bu?: AnhChupBu | null): Promise<NhanDinh[]
     })
   }
 
-  // ④ Việc giao đứng im: có giao, chưa từng chạy hết một vòng đời.
-  const soMoiGiao = await dem('viec', (q: any) => q.eq('trang_thai', 'moi_giao'))
-  const soDaXong = await dem('viec', (q: any) => q.eq('trang_thai', 'dat'))
-  if (soMoiGiao > 0 && soDaXong === 0) {
-    const { data: v } = await supabase.from('viec').select('created_at').eq('trang_thai', 'moi_giao').order('created_at').limit(1)
-    ra.push({
-      ma: 'viec_chua_chay_vong_nao',
-      tieuDe: 'Module giao việc chưa chạy hết một vòng nào',
-      so: `${soMoiGiao} việc đứng ở "mới giao"${v?.[0] ? `, cũ nhất ${soNgayLech(ngayVN((v[0] as any).created_at), homNay)} ngày` : ''} · 0 việc từng được nghiệm thu`,
-      dienGiai: 'Việc được giao nhưng chưa có việc nào đi hết vòng đời. Chưa rõ là chưa tới lượt dùng hay luồng có chỗ tắc.',
-      goiY: 'Chạy thử trọn một việc từ giao đến nghiệm thu để xem tắc ở đâu, hoặc gác module này lại cho tới khi cần thật.',
-      quyetDinh: null, gacDen: null,
-    })
-  }
-
   // Trừ đi cái người đã tắt / đang gác. Ngưỡng ở trên đã lo phần "không có gì thì im".
   const { data: qd } = await supabase.from('troly_nhan_dinh').select('ma, quyet_dinh, gac_den').limit(500)
   const m = new Map(((qd ?? []) as any[]).map((r) => [r.ma, r]))
@@ -736,12 +721,8 @@ export type NhomViec = 'buoi' | 'diemdanh' | 'report_tan' | 'prep' | 'duyet_duoi
 const TEN_NHOM: Record<NhomViec, string> = {
   buoi: 'Buổi học', diemdanh: 'Điểm danh', report_tan: 'Report / Báo tan',
   prep: 'Chuẩn bị phòng', duyet_duoi: 'Bổ trợ đuổi', scan_test: 'Test đầu vào',
-  giao_viec: 'Phát triển', nghiem_thu: 'Chờ bạn nghiệm thu', duyet_ops: 'Duyệt việc OPS',
+  giao_viec: 'Phát triển', nghiem_thu: 'Chờ bạn đánh giá', duyet_ops: 'Duyệt việc OPS',
 }
-// Trạng thái việc phát triển còn ĐANG MỞ với người làm. 'cho_nghiem_thu' KHÔNG nằm đây —
-// nộp rồi thì bóng sang sân người giao, để nguyên trong danh sách người làm là nhắc nhầm người.
-const VIEC_DANG_MO: TrangThaiViec[] = ['moi_giao', 'dang_lam', 'tra_lai']
-
 export type ViecGom = {
   khoa: string              // ổn định — key React + khoá gắn quyết định 3 nút
   nhom: NhomViec; nhomTen: string
@@ -947,38 +928,32 @@ export async function viecHomNay(): Promise<BangHomNay> {
   // `viec.deadline` là NGÀY ('YYYY-MM-DD'), không phải mốc mili-giây như OpsTask ⇒ so theo
   // ngày, KHÔNG dựng giờ giả để nhét cho vừa khuôn (giờ bịa sẽ hiện ra màn như thật).
   const myId = prof?.nhanSu.id
-  const [viecToiLam, viecToiGiao] = myId
-    ? await Promise.all([
-        anToan('việc phát triển của bạn', listViecCuaToi(myId), [] as ViecFull[]),
-        anToan('việc chờ bạn nghiệm thu', listViecToiGiao(myId), [] as ViecFull[]),
-      ])
-    : [[] as ViecFull[], [] as ViecFull[]]
+  // Task phát triển (hệ mới 14/10): việc tôi LÀM còn đang làm (bóng sang sân cấp trên khi đã báo xong) +
+  // việc tôi GIAO cần TÔI đánh giá (người làm báo xong, hoặc đã ĐẾN HẠN mà chưa đóng).
+  const taskTat: TaskBang[] = myId ? await anToan('task phát triển', listTaskBang(), [] as TaskBang[]) : []
+  const viecToiLam = taskTat.filter((v) => v.nguoi_lam_id === myId && v.trang_thai === 'dang_lam')
+  const viecToiGiao = taskTat.filter((v) => v.nguoi_giao_id === myId && (v.trang_thai === 'cho_duyet' || (v.trang_thai === 'dang_lam' && v.den_han)))
   for (const v of viecToiLam) {
-    if (!VIEC_DANG_MO.includes(v.trang_thai)) continue
     gom.push({
-      khoa: `viec:${v.id}`, nhom: 'giao_viec', nhomTen: TEN_NHOM.giao_viec,
+      khoa: `task:${v.id}`, nhom: 'giao_viec', nhomTen: TEN_NHOM.giao_viec,
       nhan: v.tieu_de,
-      boiCanh: [v.loai_viec_ten, v.trang_thai === 'tra_lai' ? 'bị trả lại' : null, v.nguoi_giao_ten ? `giao bởi ${v.nguoi_giao_ten}` : null].filter(Boolean).join(' · ') || 'Việc phát triển',
-      ngay: v.deadline ?? ngayVN(v.created_at),
+      boiCanh: [v.so_lan_gia_han > 0 ? `gia hạn ${v.so_lan_gia_han} lần` : null, `giao bởi ${v.nguoi_giao_ten}`].filter(Boolean).join(' · '),
+      ngay: v.han,
       hanLuc: null,
-      coHan: !!v.deadline,
-      soNgay: v.deadline ? Math.max(0, soNgayLech(v.deadline, homNay)) : soNgayLech(ngayVN(v.created_at), homNay),
-      quaGio: false, dangDo: v.trang_thai === 'dang_lam', buoiId: null, tab: null,
+      coHan: true,
+      soNgay: Math.max(0, soNgayLech(v.han, homNay)),
+      quaGio: false, dangDo: true, buoiId: null, tab: null,
     })
   }
   for (const v of viecToiGiao) {
-    if (v.trang_thai !== 'cho_nghiem_thu') continue
     gom.push({
-      khoa: `nt:${v.id}`, nhom: 'nghiem_thu', nhomTen: TEN_NHOM.nghiem_thu,
-      nhan: `Nghiệm thu: ${v.tieu_de}`,
-      boiCanh: [v.nguoi_lam_ten ? `${v.nguoi_lam_ten} đã nộp` : 'đã nộp', v.ngay_nop ? `ngày ${v.ngay_nop.slice(5)}` : null].filter(Boolean).join(' · '),
-      ngay: v.ngay_nop ?? v.deadline ?? ngayVN(v.created_at),
+      khoa: `dg:${v.id}`, nhom: 'nghiem_thu', nhomTen: TEN_NHOM.nghiem_thu,
+      nhan: `Đánh giá: ${v.tieu_de}`,
+      boiCanh: [v.trang_thai === 'cho_duyet' ? `${v.nguoi_lam_ten} báo xong` : `${v.nguoi_lam_ten} — đến hạn`, 'duyệt hoặc gia hạn / huỷ'].join(' · '),
+      ngay: v.han,
       hanLuc: null,
-      // Nghiệm thu KHÔNG có hạn riêng trong hệ. Đếm tuổi từ NGÀY NỘP: nộp xong nằm im
-      // chính là lỗ đen đã đo được (housekeeping tự xả sau 7 ngày rồi ghi 'dat' — việc
-      // chưa ai xem thành việc đạt). Để tuổi hiện ra thì người còn kịp duyệt trước mốc đó.
-      coHan: false,
-      soNgay: v.ngay_nop ? Math.max(0, soNgayLech(v.ngay_nop.slice(0, 10), homNay)) : 0,
+      coHan: true,
+      soNgay: Math.max(0, soNgayLech(v.han, homNay)),
       quaGio: false, dangDo: false, buoiId: null, tab: null,
     })
   }

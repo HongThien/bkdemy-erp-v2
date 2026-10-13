@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { listCloneChoDuyet, duyetCloneChoDuyet, tuChoiCloneChoDuyet, tenDangTheoMa, type CloneChoDuyet } from '../../lib/kho/api'
 import { MathText } from './ui'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 const XEM_TRUOC = 3 // mỗi dạng mở sẵn mấy câu (bấm "xem cả" để mở hết)
 

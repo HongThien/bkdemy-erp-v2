@@ -46,9 +46,7 @@ import CauBaoLoiScreen from './kho/CauBaoLoiScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
-import GiaoViecScreen from './giaoviec/GiaoViecScreen'
-import VietCuaToiTab from './giaoviec/VietCuaToiTab'
-import CongKhaiTab from './giaoviec/CongKhaiTab'
+import BangTaskScreen from './giaoviec/BangTaskScreen'
 import TroLyTab from './troly/TroLyTab'
 import HoiDapTab from './hoidap/HoiDapTab'
 import SuKienScreen from './sukien/SuKienScreen'
@@ -249,9 +247,6 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat' | 'hoidap'>('vanhanh')
   const [duocHoiDap, setDuocHoiDap] = useState(false)
   useEffect(() => { hoiDapDuocDung().then(setDuocHoiDap).catch(() => setDuocHoiDap(false)) }, [])
-  // Phát triển: mặc định CẢ TEAM (kế hoạch tuần công khai — Thùy chốt 08-13: team bé, làm
-  // gương, không có rủi ro tâm lý) — option bên cạnh để thu hẹp về chỉ việc của mình.
-  const [phatTrienXem, setPhatTrienXem] = useState<'team' | 'toi'>('team')
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
@@ -540,7 +535,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         /* HỎI HỆ THỐNG — bot Claude Code (máy local) trả lời "vì sao/quy trình" (xem đầu HoiDapTab.tsx). */
         <HoiDapTab />
       ) : (
-        /* PHÁT TRIỂN — view riêng, full width (task THẬT viec/task mẹ-con, không reset theo tuần) */
+        /* PHÁT TRIỂN — bảng task phát triển (hệ mới 14/10): giao xuống cấp dưới, đến hạn cấp trên đánh giá */
         <div>
           {/* Team học thuật: đợt bổ trợ đuổi chờ chốt dạng (derive theo hocThuatMons) — Thùy 07-15 */}
           {choDuyetDuoi > 0 && (
@@ -549,15 +544,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
             </button>
           )}
-          <div className="mx-auto mb-3 flex max-w-[960px] items-center justify-end">
-            <div className="inline-flex rounded-full bg-slate-100 p-0.5">
-              {([['team', '👥 Cả team'], ['toi', '🙋 Chỉ tôi']] as const).map(([k, ten]) => (
-                <button key={k} onClick={() => setPhatTrienXem(k)}
-                  className={`rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold transition ${phatTrienXem === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
-              ))}
-            </div>
-          </div>
-          {phatTrienXem === 'team' ? <CongKhaiTab /> : (scope && <VietCuaToiTab nhanSuId={scope.nhanSu.id} />)}
+          <div className="-mx-8 -mb-8 h-[calc(100vh-190px)] min-h-[420px] overflow-hidden rounded-2xl border border-slate-200"><BangTaskScreen nhung /></div>
         </div>
       )}
     </div>
@@ -718,7 +705,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'khodethi' ? <KhoDeThiScreen />
       : staffLeaf === 'lamtailieu:bo_tro' ? <BTScreen />
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
-      : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
+      : staffLeaf === 'giaoviec' ? <BangTaskScreen />
       : staffLeaf === 'gay' ? <GayScreen />
       : staffLeaf === 'thuchi' ? <ThuChiScreen />
       : staffLeaf === 'db_chatluong' ? <HieuSuatTAScreen />

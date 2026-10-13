@@ -2,7 +2,7 @@
 // đã thu hồi) + đề xuất ĐANG CHỜ duyệt (để nhân sự thấy sớm và giải trình trong 48h SLA).
 // Chỉ đọc dòng thô của CHÍNH MÌNH để render — không cộng/tính ở đây (tổng gậy/tiền đã có fn_gay_bang).
 import { supabase } from './supabase'
-import { myNhanSuId } from './giaoviec'
+import { myNhanSuId } from './nhansu'
 import { listGayLoi, listGayHoatDong, type GayLedger, type GayDeXuat } from './gay'
 
 const LIMIT = 500

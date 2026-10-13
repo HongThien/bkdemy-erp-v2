@@ -138,12 +138,11 @@ function KetQuaView({ k }: { k: KetQuaCongCu }) {
         <div key={thang} className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-[12.5px]">
           <div className="font-semibold text-slate-800">{k.hoTen} · tháng {thang}</div>
           <div className="mt-1.5 grid grid-cols-2 gap-x-4 gap-y-1 text-slate-600">
-            <div>Hiệu suất: <b className="text-slate-800">{d.hieuSuat != null ? `${d.hieuSuat}%` : 'chưa có việc nào'}</b></div>
-            <div>Sản lượng: {d.sanLuong}</div>
-            <div>Việc đạt: {d.soViecDat}</div>
-            <div>Việc trả lại: {d.soViecTraLai}</div>
-            {d.trungBinhTienDo != null && <div>TB tiến độ: {d.trungBinhTienDo}</div>}
-            {d.trungBinhChatLuong != null && <div>TB chất lượng: {d.trungBinhChatLuong}</div>}
+            <div>Kết quả TB (cấp trên chấm): <b className="text-slate-800">{d.ketQuaTB != null ? `${d.ketQuaTB}%` : 'chưa có task nào được duyệt'}</b></div>
+            <div>Task có hạn trong tháng: {d.soTask}</div>
+            <div>Đã duyệt: {d.soDuyet}</div>
+            <div>Lần gia hạn: {d.soGiaHan}</div>
+            <div>Cờ trễ deadline: {d.soCoTre}</div>
           </div>
         </div>
       ))}

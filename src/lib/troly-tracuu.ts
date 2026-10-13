@@ -12,7 +12,7 @@ import { supabase } from './supabase'
 import { TROLY_TOOLS } from './troly-tools.mjs'
 import { getTongQuanHS, getClassMatrix, type TongQuanHS, type ClassMatrix, type MatrixPhase } from './mastery'
 import { getPhieuAo, type PhieuAo } from './hocphi'
-import { tinhHieuSuatThang, type HieuSuatKy } from './giaoviec'
+import { ketQuaThang, type KetQuaThang } from './taskPt'
 
 export { TROLY_TOOLS }
 
@@ -45,7 +45,7 @@ export type KetQuaCongCu =
   | { loai: 'hoc_tap'; hoTen: string; maHs: string | null; mon: string; thang: string | null; data: TongQuanHS }
   | { loai: 'btvn_mt'; tenLop: string; phase: MatrixPhase; daCat: boolean; data: { thang: string; matrix: ClassMatrix }[] }
   | { loai: 'hoc_phi'; hoTen: string; daCat: boolean; data: { thang: string; phieu: PhieuAo }[] }
-  | { loai: 'nhan_vien'; hoTen: string; daCat: boolean; data: { thang: string; hieuSuat: HieuSuatKy }[] }
+  | { loai: 'nhan_vien'; hoTen: string; daCat: boolean; data: { thang: string; hieuSuat: KetQuaThang }[] }
 
 // ── Tìm theo tên — trùng tên thì BẮT chọn lại, không tự đoán ────────────────
 async function timHocSinhTheoTen(ten: string) {
@@ -144,7 +144,7 @@ export async function chayCongCu(tenCongCu: string, thamSo: any): Promise<KetQua
     if (ds.length > 1) return loiTrungTen('nhân viên', ten, ds.map((n) => ({ ho_ten: n.ho_ten, phu: n.ma_ns })))
     const nv = ds[0]
     const { thangs, daCat } = thangTrongKhoang(thamSo)
-    const data = await Promise.all(thangs.map(async (thang) => ({ thang, hieuSuat: await tinhHieuSuatThang(nv.id, thang) })))
+    const data = await Promise.all(thangs.map(async (thang) => ({ thang, hieuSuat: await ketQuaThang(nv.id, thang) })))
     return { loai: 'nhan_vien', hoTen: nv.ho_ten, daCat, data }
   }
 

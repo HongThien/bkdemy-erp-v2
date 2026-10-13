@@ -8,7 +8,7 @@
 // CumBaiTab, LyThuyetModal) qua param `cauTbl='hinh_hoc_cau_hoi'` + CUM_TBL đã map (xem api.ts).
 // Schema `hinh_hoc_cau_hoi` đã đổi cột `ma_bai → dang_chinh` + thêm 7 cột compat (mig 202609161648).
 import { supabase } from '../supabase'
-import { myNhanSuId } from '../giaoviec'
+import { myNhanSuId } from '../nhansu'
 import type { LyThuyet, MapRow } from './api'
 
 const LIMIT = 10000

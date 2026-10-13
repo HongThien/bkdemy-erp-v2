@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocDang, ChonDang } from './LocDang'
 import { nhanhCuaMon, NHANH_LABEL, listFormTnChoDuyet, duyetFormTn, duyetFormTnBatch, tuChoiFormTn, listMcqRule, mcqMetric, type FormTnChoDuyet, type LuaChonTn, type KhoMon, type McqRule, type McqMetric } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 const CHU = ['A', 'B', 'C', 'D']
 const PAGE_SIZE_OPTIONS = [20, 50]

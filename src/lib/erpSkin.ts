@@ -54,18 +54,22 @@ function anhNhom(skin: SkinErp): Record<string, string | undefined> {
   }
 }
 
+// id hình nền đặc biệt: ảnh người dùng tự chọn (URL ở gd.nen_url).
+export const NEN_TU_CHON = 'tu_chon'
+
 export function useSkinErp() {
   const gd = useStore((s) => s.erpGiaoDien)
   const doc = useIsMobile()
   return useMemo(() => {
     const skin = skinErp(gd.skin)
+    const tuChon = gd.nen === NEN_TU_CHON && !!gd.nen_url   // ảnh nền người dùng tự đưa lên, đè hình nền của style
     const cd = cheDoErp(skin, gd)
     const nv = (cd === 'toi' ? skin.nhanVatToi : undefined) ?? skin.nhanVat
     return {
       skin, cd, gd,
-      nenId: layHinhNen(skin as Skin, gd.nen).id,
+      nenId: tuChon ? NEN_TU_CHON : layHinhNen(skin as Skin, gd.nen).id,
       // Gắn lên khối gốc (thanh trên / trang chính): bên trong chỉ dùng `var(--sk-*)`.
-      bien: bienCss(skin as Skin, cd, gd.nen, doc) as CSSProperties,
+      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${gd.nen_url}") center / cover no-repeat` } : {}) } as CSSProperties,
       anhNhom: anhNhom(skin),
       iconMatNa: !!skin.anhOMask,   // style đơn sắc: icon là mặt nạ, tô bằng màu chữ
       nhanVat: nv?.nam,

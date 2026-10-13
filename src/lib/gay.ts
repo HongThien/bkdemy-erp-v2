@@ -13,10 +13,10 @@
 // UI KHÔNG gọi supabase trực tiếp — mọi thứ qua file này.
 // ============================================================================
 import { supabase } from './supabase'
-import { myNhanSuId } from './giaoviec'
+import { myNhanSuId } from './nhansu'
 import { listAllStaffTasks } from './gami'
 import { listAllOpsTaskNhom } from './opsvanhanh'
-import { homNayVN, congNgay, vnInstant, ddmmVN, ngayCuaTs } from './tuan'
+import { homNayVN, congNgay, vnInstant, ddmmVN } from './tuan'
 
 const LIMIT = 5000
 
@@ -215,31 +215,8 @@ export async function quetGayTuDong(): Promise<number> {
     })
   }
 
-  // ── (b) Việc GIAO TAY (bảng viec) — deadline là NGÀY: trễ = nộp/quét SAU ngày
-  // deadline (deadline hiện hành, tức đã tính gia hạn được duyệt). hold/huy/chuyen bỏ.
-  const { data: viecs, error } = await supabase.from('viec')
-    .select('id, tieu_de, nguoi_lam_id, deadline, ngay_nop, hoan_thanh_at, trang_thai')
-    .not('deadline', 'is', null).gte('deadline', monthStart).gte('deadline', GAY_MOC_LICH_SU.slice(0, 10))
-    .in('trang_thai', ['moi_giao', 'dang_lam', 'cho_nghiem_thu', 'tra_lai', 'dat'])
-    .limit(LIMIT)
-  if (error) throw error
-  for (const v of (viecs ?? []) as any[]) {
-    if (!v.nguoi_lam_id) continue // chưa gán ai (hoặc đã chuyển) — không có chủ để đánh gậy
-    if (mien.has(v.nguoi_lam_id)) continue
-    // ngày nộp thật: ngay_nop (đã duyệt đạt) hoặc ngày VN của hoan_thanh_at (đang chờ nghiệm thu)
-    const nop: string | null = v.ngay_nop ?? (v.hoan_thanh_at ? new Date(new Date(v.hoan_thanh_at).getTime() + 7 * 3600000).toISOString().slice(0, 10) : null)
-    let treNgay = 0
-    if (nop) treNgay = Math.max(0, Math.round((vnInstant(nop, '00:00') - vnInstant(v.deadline, '00:00')) / 86400000))
-    else if (today > v.deadline) treNgay = Math.round((vnInstant(today, '00:00') - vnInstant(v.deadline, '00:00')) / 86400000)
-    if (treNgay <= 0) continue
-    props.push({
-      nhan_su_id: v.nguoi_lam_id, nguon: 'giaoviec',
-      ref_key: `viec:${v.id}`,
-      mo_ta: `${v.tieu_de}${nop ? '' : ' (chưa nộp)'}`,
-      deadline_at: new Date(vnInstant(v.deadline, '23:59')).toISOString(),
-      tre_phut: treNgay * 1440,
-    })
-  }
+  // Việc GIAO TAY (task phát triển): KHÔNG còn máy tự đề xuất gậy trễ deadline (14/10). Đến hạn, CẤP TRÊN đánh giá
+  // và tự quyết đánh cờ trễ deadline (fn_task_gia_han / fn_task_huy) — gậy đi thẳng vào gay_ledger, không qua đề xuất.
 
   if (props.length) {
     // ignoreDuplicates: dòng đã tồn tại (kể cả đã chốt/bỏ qua) GIỮ NGUYÊN — không đè quyết định của người.
@@ -341,8 +318,8 @@ export async function danhGayThuCong(p: {
 export async function listTaskCuaNhanSu(nhanSuId: string, k: KhoangNgay): Promise<TaskCuaNhanSu[]> {
   const [vh, { data: viecs, error }, { data: gayRows, error: eG }] = await Promise.all([
     listAllStaffTasks(k.tu, k.den),
-    supabase.from('viec').select('id, tieu_de, trang_thai, deadline, ky_tuan, created_at, ngay_nop, task_me_id')
-      .eq('nguoi_lam_id', nhanSuId).not('trang_thai', 'in', '("huy","chuyen")')
+    supabase.from('task_phat_trien').select('id, tieu_de, trang_thai, han, created_at, ket_qua_pct')
+      .eq('nguoi_lam_id', nhanSuId).neq('trang_thai', 'huy')
       .order('created_at', { ascending: false }).limit(LIMIT),
     supabase.rpc('fn_gay_theo_task', { p_nhan_su_id: nhanSuId }),
   ])
@@ -361,22 +338,20 @@ export async function listTaskCuaNhanSu(nhanSuId: string, k: KhoangNgay): Promis
   }
   const trong = (d: string | null | undefined) => !!d && d >= k.tu && d <= k.den
   for (const v of (viecs ?? []) as any[]) {
-    const ngayTao = ngayCuaTs(new Date(v.created_at).getTime())
-    // thuộc khoảng khi deadline HOẶC tuần plan rơi vào; việc không có cả hai thì theo ngày giao
-    if (!(trong(v.deadline) || trong(v.ky_tuan) || (!v.deadline && !v.ky_tuan && trong(ngayTao)))) continue
-    const key = `viec:${v.id}`
+    if (!trong(v.han)) continue
+    const key = `task:${v.id}`
     out.push({
       key, nguon: 'giaoviec', ten: v.tieu_de,
-      phu: `Giao việc${v.deadline ? ` · hạn ${ddmmVN(v.deadline)}` : ''}${v.ngay_nop ? ` · nộp ${ddmmVN(v.ngay_nop)}` : ''}`,
-      ngay: v.deadline ?? v.ky_tuan ?? ngayTao,
-      deadline_at: v.deadline ? new Date(vnInstant(v.deadline, '23:59')).toISOString() : null,
-      xong: v.trang_thai === 'dat', trangThai: NHAN_TRANG_THAI_VIEC[v.trang_thai] ?? v.trang_thai, soGay: gayMap.get(key) ?? 0,
+      phu: `Task phát triển · hạn ${ddmmVN(v.han)}${v.ket_qua_pct != null ? ` · kết quả ${Math.round(Number(v.ket_qua_pct))}%` : ''}`,
+      ngay: v.han,
+      deadline_at: new Date(vnInstant(v.han, '23:59')).toISOString(),
+      xong: v.trang_thai === 'da_duyet', trangThai: NHAN_TRANG_THAI_VIEC[v.trang_thai] ?? v.trang_thai, soGay: gayMap.get(key) ?? 0,
     })
   }
   return out.sort((a, b) => (b.ngay < a.ngay ? -1 : b.ngay > a.ngay ? 1 : a.ten.localeCompare(b.ten)))
 }
 const NHAN_TRANG_THAI_VIEC: Record<string, string> = {
-  moi_giao: 'Mới giao', dang_lam: 'Đang làm', cho_nghiem_thu: 'Chờ nghiệm thu', dat: 'Đạt', tra_lai: 'Trả lại', hold: 'Hold',
+  dang_lam: 'Đang làm', cho_duyet: 'Chờ duyệt', da_duyet: 'Đã duyệt', huy: 'Huỷ',
 }
 export async function goGay(p: { nhanSuId: string; hoatDongId: string; soGay: number; lyDo?: string }): Promise<void> {
   if (p.soGay < 1) throw new Error('Số gậy gỡ phải ≥ 1.')

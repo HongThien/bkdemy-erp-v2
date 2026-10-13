@@ -24,7 +24,7 @@ import DienOAiTab from './DienOAiTab'
 import { listBienTheChoDuyetLoiGiai, duyetLoiGiaiBienThe, type BienTheChoDuyetLoiGiai, listCachGiaiChoDuyetLoiGiai, duyetLoiGiaiCachGiai, type CachGiaiChoDuyetLoiGiai } from '../../lib/kho/hinh'
 import { MathText } from '../kho/ui'
 import { coKhoHinh } from '../../lib/tailieu'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 import { useMonScope } from '../../hooks/useMonScope'
 import { useStore } from '../../store/useStore'
 

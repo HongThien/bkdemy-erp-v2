@@ -3,12 +3,12 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
-import { getMyProfile, updateMenuYeuThich, updateErpGiaoDien, type MyProfile, type MyScope } from '../lib/nhansu'
+import { getMyProfile, updateMenuYeuThich, updateErpGiaoDien, updateHomeBoCuc, type DangCard, type MyProfile, type MyScope } from '../lib/nhansu'
 import { enqueueLinkGenJob } from '../lib/linkgen'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 // Kiểu + bản nhớ trên máy của giao diện ERP: 2 hàm thuần, KHÔNG import registry style ở đây (store được nhiều bundle dùng).
-export type GiaoDienErp = { skin?: string; nen?: string | null; che_do?: 'sang' | 'toi' }
+export type GiaoDienErp = { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi' }
 const KHOA_GD_MAY = 'erp.giaoDien'
 function docGiaoDienMay(): GiaoDienErp {
   try { const v = JSON.parse(localStorage.getItem(KHOA_GD_MAY) ?? '{}'); return v && typeof v === 'object' ? v : {} } catch { return {} }
@@ -81,6 +81,12 @@ interface UiState {
   nhanLichSu: (st: unknown) => void
   // Ghim / bỏ ghim 1 mục menu lên Home (nhan_su.menu_yeu_thich) — vá store ngay, DB ghi nền, lỗi thì trả lại.
   doiYeuThich: (id: string) => void
+  // Ẩn / hiện 1 box trên Trang chính (nhan_su.home_bo_cuc.an) — vá store ngay, DB ghi nền, lỗi thì trả lại.
+  doiHomeAn: (id: string) => void
+  // Lưu thứ tự box sau khi kéo thả (nhan_su.home_bo_cuc.thu_tu) — vá store ngay, DB ghi nền.
+  doiHomeThuTu: (ids: string[]) => void
+  // Đổi dáng card lưới nhóm (nhan_su.home_bo_cuc.dang_card).
+  doiHomeDangCard: (d: DangCard) => void
   // Giao diện vỏ ERP đang áp (style + hình nền + sáng/tối — xem lib/erpSkin.ts). Khởi động = bản nhớ trên máy; hồ sơ tải xong
   // mà DB có lựa chọn thì DB đè. Đổi: vá ngay + nhớ trên máy + ghi DB nền (nhan_su.erp_giao_dien).
   erpGiaoDien: GiaoDienErp
@@ -201,6 +207,34 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     const va = (ds: string[]) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: ds } } } : {}))
     va(moi)
     updateMenuYeuThich(me.nhanSu.id, moi).catch((e) => { va(cu); alert(`Chưa lưu được mục Yêu thích: ${e?.message ?? e}`) })
+  },
+  doiHomeAn: (id) => {
+    const me = get().me
+    if (!me) return
+    const cu = me.nhanSu.home_bo_cuc ?? {}
+    const an = cu.an ?? []
+    const moi = { ...cu, an: an.includes(id) ? an.filter((x) => x !== id) : [...an, id] }
+    const va = (bc: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, home_bo_cuc: bc } } } : {}))
+    va(moi)
+    updateHomeBoCuc(me.nhanSu.id, moi).catch((e) => { va(cu); alert(`Chưa lưu được bố cục Trang chính: ${e?.message ?? e}`) })
+  },
+  doiHomeThuTu: (ids) => {
+    const me = get().me
+    if (!me) return
+    const cu = me.nhanSu.home_bo_cuc ?? {}
+    const moi = { ...cu, thu_tu: ids }
+    const va = (bc: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, home_bo_cuc: bc } } } : {}))
+    va(moi)
+    updateHomeBoCuc(me.nhanSu.id, moi).catch((e) => { va(cu); alert("Chưa lưu được thứ tự box: " + (e?.message ?? e)) })
+  },
+  doiHomeDangCard: (d) => {
+    const me = get().me
+    if (!me) return
+    const cu = me.nhanSu.home_bo_cuc ?? {}
+    const moi = { ...cu, dang_card: d }
+    const va = (bc: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, home_bo_cuc: bc } } } : {}))
+    va(moi)
+    updateHomeBoCuc(me.nhanSu.id, moi).catch((e) => { va(cu); alert('Chưa lưu được dáng card: ' + (e?.message ?? e)) })
   },
   setAdminLeaf: (id) => set({ adminLeaf: id }),
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [], chiXem: [] } }) } },

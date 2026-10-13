@@ -18,7 +18,7 @@ import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, t
 import { MathText, TextAnh, NguLieuBlock, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
-import { myNhanSuId } from '../../lib/giaoviec'
+import { myNhanSuId } from '../../lib/nhansu'
 
 type Row = CauHangDuyet & { mon: KhoMon }
 // Phần riêng câu Tiếng Anh (ngữ liệu dùng chung + dạng đề + unit) — RPC hàng duyệt dùng chung không trả các cột này.
