@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
-import { getMyProfile, type MyProfile, type MyScope } from '../lib/nhansu'
+import { getMyProfile, updateMenuYeuThich, type MyProfile, type MyScope } from '../lib/nhansu'
 import { enqueueLinkGenJob } from '../lib/linkgen'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
@@ -51,6 +51,8 @@ interface UiState {
   currentUserId: string
   screen: 'nhansu' | 'admin'
   staffLeaf: string
+  // Số bước đã đi kể từ lúc mở app (= vị trí trong lịch sử trình duyệt). >0 ⇒ còn màn trước để Quay lại.
+  navIdx: number
   adminLeaf: string
   // ── Danh tính + quyền THẬT (từ tài khoản đăng nhập). null = chưa load ──
   quyen: MyQuyen | null
@@ -58,6 +60,12 @@ interface UiState {
   setCurrentUser: (id: string) => void
   setScreen: (s: 'nhansu' | 'admin') => void
   setStaffLeaf: (id: string) => void
+  // Quay lại màn trước (nút ‹ trong app). Hết lịch sử thì về Home.
+  backLeaf: () => void
+  // Trình duyệt vừa lùi/tiến (popstate) → nhận lại màn của mục lịch sử đó, KHÔNG đẻ mục mới.
+  nhanLichSu: (st: unknown) => void
+  // Ghim / bỏ ghim 1 mục menu lên Home (nhan_su.menu_yeu_thich) — vá store ngay, DB ghi nền, lỗi thì trả lại.
+  doiYeuThich: (id: string) => void
   setAdminLeaf: (id: string) => void
   loadQuyen: () => Promise<void>
   loadMe: () => Promise<void>
@@ -111,20 +119,62 @@ interface UiState {
   timeoutLinkGenActive: (id: string) => void
 }
 
+// Màn + vị trí lịch sử lúc khởi động: history.state còn nguyên sau F5 nên đọc lại được màn đang xem.
+function lichSuDau(): { leaf: string; idx: number } {
+  try {
+    const st = window.history.state as { bkLeaf?: unknown; bkIdx?: unknown } | null
+    if (st && typeof st.bkLeaf === 'string') return { leaf: st.bkLeaf, idx: typeof st.bkIdx === 'number' ? st.bkIdx : 0 }
+  } catch { /* không có window (script) */ }
+  return { leaf: 'home', idx: 0 }
+}
+
 export const useStore = create<UiState>()(persist((set, get) => ({
   currentUserId: users[0].id,
   screen: 'nhansu',
-  staffLeaf: 'viec',
+  // Mở app = Home. F5 thì đứng nguyên màn đang xem (đọc lại từ history.state — sống qua reload, mất khi mở tab mới).
+  staffLeaf: lichSuDau().leaf,
+  navIdx: lichSuDau().idx,
   adminLeaf: 'db_tongquan',
   quyen: null,
   me: null,
-  setCurrentUser: (id) => set({ currentUserId: id, screen: 'nhansu', staffLeaf: 'viec' }),
+  setCurrentUser: (id) => set({ currentUserId: id, screen: 'nhansu', staffLeaf: 'home' }),
   setScreen: (s) => set({ screen: s }),
-  setStaffLeaf: (id) => set({ staffLeaf: id }),
+  // Mỗi lần đổi màn = 1 mục lịch sử trình duyệt ⇒ nút ‹ trong app, nút Back của trình duyệt, nút bên hông
+  // chuột và vuốt-lùi trên điện thoại đều quay về đúng màn trước. Không đổi URL (chỉ gắn state).
+  setStaffLeaf: (id) => {
+    if (id === get().staffLeaf) return
+    const idx = get().navIdx + 1
+    try { window.history.pushState({ bkLeaf: id, bkIdx: idx }, '') } catch { /* trình duyệt chặn history: vẫn đổi màn */ }
+    set({ staffLeaf: id, navIdx: idx })
+  },
+  backLeaf: () => {
+    if (get().navIdx > 0) window.history.back()
+    else get().setStaffLeaf('home')
+  },
+  nhanLichSu: (st) => {
+    const s = (st ?? {}) as { bkLeaf?: unknown; bkIdx?: unknown }
+    set({ staffLeaf: typeof s.bkLeaf === 'string' ? s.bkLeaf : 'home', navIdx: typeof s.bkIdx === 'number' ? s.bkIdx : 0 })
+  },
+  doiYeuThich: (id) => {
+    const me = get().me
+    if (!me) return
+    const cu = me.nhanSu.menu_yeu_thich ?? []
+    const moi = cu.includes(id) ? cu.filter((x) => x !== id) : [...cu, id]
+    const va = (ds: string[]) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: ds } } } : {}))
+    va(moi)
+    updateMenuYeuThich(me.nhanSu.id, moi).catch((e) => { va(cu); alert(`Chưa lưu được mục Yêu thích: ${e?.message ?? e}`) })
+  },
   setAdminLeaf: (id) => set({ adminLeaf: id }),
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [], chiXem: [] } }) } },
   loadMe: async () => { try { set({ me: await getMyProfile() }) } catch { set({ me: null }) } },
-  clearQuyen: () => set({ quyen: null, me: null }),
+  // Đăng xuất: bỏ luôn màn đang đứng — người đăng nhập kế tiếp trên cùng tab bắt đầu từ Home, không thừa hưởng màn của người trước.
+  // ⚠ App gọi hàm này cả lúc MỚI TẢI TRANG (session chưa resolve) — khi đó `quyen` còn null, KHÔNG được đụng màn
+  // đang đứng, nếu không F5 sẽ luôn rơi về Home. Chỉ dọn khi vừa có người đăng nhập thật (quyen khác null).
+  clearQuyen: () => {
+    if (get().quyen === null && get().me === null) return
+    try { if (window.history.state?.bkLeaf) window.history.replaceState(null, '') } catch { /* bỏ qua */ }
+    set({ quyen: null, me: null, staffLeaf: 'home', navIdx: 0 })
+  },
   setPhimTatCongThuc: (m) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, phim_tat_cong_thuc: m } } } : {})),
   hocPhiTab: 'theomon',
   hocPhiKy: '',
@@ -319,5 +369,9 @@ export const staffNavForUser = (u: User): NavGroup[] => {
 
 // Phím tắt công thức của NGƯỜI ĐANG ĐĂNG NHẬP (từ nhan_su.phim_tat_cong_thuc, load cùng `me`). Không persist
 // localStorage → 2 người dùng chung máy mỗi người thấy đúng bộ phím của mình. EMPTY cố định để selector ổn định.
+// Mục menu YÊU THÍCH của người đang đăng nhập (nhan_su.menu_yeu_thich). EMPTY cố định để selector ổn định.
+const YEU_THICH_EMPTY: string[] = []
+export const useYeuThich = () => useStore((s) => s.me?.nhanSu.menu_yeu_thich ?? YEU_THICH_EMPTY)
+
 const PHIM_TAT_EMPTY: Record<string, string> = {}
 export const usePhimTat = () => useStore((s) => s.me?.nhanSu.phim_tat_cong_thuc ?? PHIM_TAT_EMPTY)

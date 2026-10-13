@@ -3706,6 +3706,7 @@ END |  |  |
 | bank_stk | text | Y |  |  |  |
 | bank_chu_tk | text | Y |  |  |  |
 | phim_tat_cong_thuc | jsonb |  | '{}'::jsonb |  |  |
+| menu_yeu_thich | jsonb |  | '[]'::jsonb |  |  |
 
 ## nhan_su_mon
 

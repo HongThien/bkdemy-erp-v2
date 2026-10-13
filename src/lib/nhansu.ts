@@ -7,7 +7,7 @@ import { reopenPhase, moLaiDanhGia } from './gami'
 const LIMIT = 10000
 
 // ── Types ─────────────────────────────────────────────────────────
-export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null }
+export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null }
 
 // Ảnh đại diện → bucket public 'avatars' (tạo qua Dashboard, migration 0020). DB lưu URL.
 export async function uploadAvatar(file: File): Promise<string> {
@@ -331,6 +331,12 @@ export async function updateMyProfile(nhanSuId: string, p: { so_dien_thoai?: str
 // Phím tắt CÁ NHÂN cho mẫu công thức (mig 202609030144) — { templateId: 'Ctrl+Alt+F' }. Ghi đè cả map.
 export async function updatePhimTatCongThuc(nhanSuId: string, map: Record<string, string>): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ phim_tat_cong_thuc: map, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
+  if (error) throw error
+}
+
+// Mục menu YÊU THÍCH của tôi (mig 202610131649) — mảng id mục theo thứ tự thêm. Ghi đè cả mảng.
+export async function updateMenuYeuThich(nhanSuId: string, ids: string[]): Promise<void> {
+  const { error } = await supabase.from('nhan_su').update({ menu_yeu_thich: ids, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 
