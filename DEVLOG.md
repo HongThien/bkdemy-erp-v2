@@ -37338,3 +37338,13 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sửa:** `erpSkin.ts` khai `NHU_CU` (id `mac_dinh`) như MỘT style — thanh trên trắng, nền trang #f5f5f7, thẻ trắng viền mảnh, màu nhấn chàm, font của ERP, không tranh, không nhân vật, icon box là emoji trong huy hiệu tròn — để đi chung đường `bienCss` / `--sk-*`, không rẽ nhánh `if` trong màn. `SKINS_ERP = [NHU_CU, RPG, Khối vuông, Lo-fi, Đáng yêu]`; **chưa chọn gì ⇒ Mặc định**. Tối giản của HS không đưa vào bảng chọn ERP (cũng nền trơn, trùng vai với Mặc định).
 - **Bài học (R1):** "mặc định" có 2 nghĩa khả dĩ (mặc định của app HS / cái ERP đang có) — lượt 3 Claude tự chọn 1 nghĩa rồi chỉ ghi chú ở cuối báo cáo. Lẽ ra phải đọc theo nghĩa GẦN NGƯỜI NÓI nhất: người đang dùng ERP nói "mặc định" là nói cái họ đang thấy hằng ngày.
 - **Kiểm (`/xem-thu-erp.html`, 1440px):** xoá lựa chọn ⇒ lên giao diện Mặc định (thanh trắng, thẻ trắng); bảng chọn liệt kê đúng 5: Mặc định · Anime RPG · Khối vuông · Lo-fi chill · Đáng yêu. `tsc` sạch ở file đụng tới.
+
+## 13/10 — Kho K6: 10 câu "So sánh lũy thừa" (dạng T106020801)
+- **Yêu cầu Thùy:** giải 4 mục ảnh (Bài 8, Bài 9: ví dụ + chữa BTVN) và đưa vào Kho lớp 6 dạng so sánh lũy thừa, "giải theo phương pháp lớp 6".
+- **Làm:** dạng có sẵn ở bản đồ cũ `dai_ban_do`: **T106020801 "So sánh biểu thức lũy thừa"** (K6, chuyên đề T1060208 "Các bài toán nâng cao về lũy thừa", 0 câu; bản đồ mới `dai_bdm_*` chưa có nhóm tương ứng — việc của CEO).
+  10 ý ⇒ 10 câu riêng (các ý so sánh độc lập). Phương pháp: cùng cơ số (so số mũ) · cùng số mũ (so cơ số) · số trung gian · tách thừa số; KHÔNG dùng $(a^m)^n$ như quy tắc — viết ra tích các thừa số giống nhau rồi nhóm (k6.md §1 luật 4).
+  `kho-rules/dai/lo/k6/so-sanh-luy-thua/SSLT.soan.md` (cổng `dung-de-tu-soan.mjs` ✔) → `nhap-kho.mjs` (nhân chứng độc lập: BigInt tính lại từng cặp từ ĐỀ, so dấu với dòng "Vậy…", 10/10 khớp) → `insertCauBatch`.
+- **Số đo (DB live):** T106020801001…010, `tu_luan`, `da_duyet=false`, `nguon='le'`, `nguon_giai='ai'`, đủ lời giải 2 phần. Kết quả: 27^11>81^8 · 625^5<125^7 · 8^29<16^22 · 27^50<81^38 · 625^55>125^73 ·
+  21^15<27^5.49^8 · 5^300<3^453 · 2^255<3^180 · 10^26>26^17 · 17^15>31^10.
+- **Sai / sửa:** khoá tra `ten_de_goc` sai ('BT' thay vì 'BTVN') ⇒ 6 câu null — đã UPDATE 6 dòng + sửa script.
+- **Treo:** câu chờ người duyệt; chưa xếp vào bản đồ mới (dạng chưa có ở `dai_bdm_*`). Kết quả là dấu < > — không viết được trong 4 ô trả lời ngắn nên để tự luận; muốn lên app (bổ trợ chỉ MCQ / trả lời ngắn) cần sinh MCQ từ các câu này.
