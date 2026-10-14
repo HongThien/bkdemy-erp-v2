@@ -53,7 +53,7 @@ export default function DuyetLoiGiaiScreen() {
   const [mon, setMon] = useState<string>(readMon)
   const [nguon, setNguon] = useState<'kho' | 'hinh'>('kho') // tab lời giải: câu kho (DuyetCauTab) hay Hình (list dưới)
   const [dem, setDem] = useState<DemChuaGiai[]>([]) // số bài chưa có lời giải theo khối — của MÔN đang chọn, tính ở DB
-  const [demHL, setDemHL] = useState<{ khoi: string | null; so_bai: number; so_y: number }[]>([]) // ý Hình–Luyện chưa phân mô hình, theo khối — tính ở DB
+  const [demHL, setDemHL] = useState<{ khoi: string | null; so_bai: number; so_y: number }[]>([]) // bài Hình–Luyện chưa có mô hình, theo khối — tính ở DB
   const [demHD, setDemHD] = useState<DemHangDuyet[]>([]) // số câu mỗi bộ lọc × khối (khoi null = tổng) — tính ở DB
   const [rows, setRows] = useState<Row[]>([]) // CHỈ Hình
   const [loading, setLoading] = useState(false)
@@ -163,7 +163,7 @@ export default function DuyetLoiGiaiScreen() {
           {tabLoc.map((l) => tabBtn(l, HANG_DUYET_LABEL[l], demLoc(l)))}
           {!chiDuyetCau && tabBtn('tn', 'Trắc nghiệm AI')}
           {coKhoHinh(mon) && tabBtn('dien', 'Điền ô AI')}
-          {coKhoHinh(mon) && tabBtn('hl', 'Hình luyện · chưa phân mô hình', demHL.reduce((a, d) => a + d.so_y, 0))}
+          {coKhoHinh(mon) && tabBtn('hl', 'Hình luyện · chưa phân mô hình', demHL.reduce((a, d) => a + d.so_bai, 0))}
         </div>
         <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className="ml-3 rounded-md border border-slate-200 px-2 py-1 text-[13px]">
           {KHOI_OPTIONS.map((k) => {

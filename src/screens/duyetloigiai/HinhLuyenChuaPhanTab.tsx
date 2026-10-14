@@ -6,7 +6,7 @@
 // Hàng đợi + đếm tính ở DB. Sau mỗi thao tác VÁ TẠI CHỖ; nhớ danh sách + bài đang xem theo khối tới khi F5.
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as api from '../../lib/kho/api'
-import type { BaiKho, BaiMoHinhLuyen, MoHinhLuyen, YKho } from '../../lib/kho/hinhCay'
+import type { BaiKho, MoHinhLuyen, YKho } from '../../lib/kho/hinhCay'
 import { MathText } from '../kho/ui'
 
 const TRANG = 30
@@ -16,7 +16,6 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
   const [bai, setBai] = useState<BaiKho[]>(() => NHO[khoi]?.bai ?? [])
   const [het, setHet] = useState(() => NHO[khoi]?.het ?? false)
   const [vt, setVt] = useState(() => NHO[khoi]?.vt ?? 0)                // bài đang xem (chỉ số trong danh sách đã nạp)
-  const [chon, setChon] = useState<BaiMoHinhLuyen[]>([])
   const [moHinhs, setMoHinhs] = useState<MoHinhLuyen[]>([])              // mô hình luyện của khối — gán cho CẢ BÀI
   const [tong, setTong] = useState<{ so_bai: number; so_y: number } | null>(null)
   const [dangTai, setDangTai] = useState(false)
@@ -40,7 +39,6 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
   useEffect(() => {
     const n = NHO[khoi]
     if (n) { setBai(n.bai); setHet(n.het); setVt(n.vt) } else { setBai([]); setHet(false); setVt(0); void nap([]) }
-    api.baiMoHinhLuyen(khoi).then(setChon).catch(() => setChon([]))
     api.moHinhLuyenCuaKhoi(khoi).then(setMoHinhs).catch(() => setMoHinhs([]))
     api.demChuaPhanMoHinh().then((d) => { const x = d.find((r) => r.khoi === khoi); setTong(x ? { so_bai: x.so_bai, so_y: x.so_y } : { so_bai: 0, so_y: 0 }) }).catch(() => setTong(null))
   }, [khoi]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -70,17 +68,10 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
 
   const vaBai = (id: string, f: (x: BaiKho) => BaiKho) => setBai((prev) => prev.map((x) => (x.id === id ? f(x) : x)))
   const vaY = (baiId: string, yId: string, v: Partial<YKho>) => vaBai(baiId, (x) => ({ ...x, y: x.y.map((y) => (y.id === yId ? { ...y, ...v } : y)) }))
-  const gan = async (y: YKho, baiToanId: string | null) => {
-    if (!b) return
-    setBan(y.id); setLoi(null)
-    try { await api.ganYVaoBai(y.id, baiToanId); vaY(b.id, y.id, { baitoan_id: baiToanId }); onChanged?.() }
-    catch (e: any) { setLoi(e.message ?? String(e)) }
-    finally { setBan(null) }
-  }
   const ganBai = async (moHinhId: string | null) => {
     if (!b) return
     setBan('mh'); setLoi(null)
-    try { await api.ganBaiVaoMoHinh(b.id, moHinhId); vaBai(b.id, (x) => ({ ...x, mo_hinh_id: moHinhId })) }
+    try { await api.ganBaiVaoMoHinh(b.id, moHinhId); vaBai(b.id, (x) => ({ ...x, mo_hinh_id: moHinhId })); onChanged?.() }
     catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setBan(null) }
   }
@@ -120,7 +111,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
           {bai.length ? vt + 1 : 0} <span className="font-normal text-slate-400">/ {tong?.so_bai ?? bai.length} bài</span>
         </span>
         <button disabled={dangTai || (het && vt >= bai.length - 1)} onClick={() => void den(vt + 1)} className="h-8 rounded-lg border border-slate-300 px-3 text-[13px] font-medium disabled:opacity-30" title="Bài sau (→)">Sau ›</button>
-        <span className="ml-2 text-[12px] text-slate-500">đã duyệt nội dung <b className="text-slate-800">{soDaDuyet}</b>/{bai.length} bài đang nạp{tong ? ` · còn ${tong.so_y} ý chưa phân mô hình` : ''}</span>
+        <span className="ml-2 text-[12px] text-slate-500">đã duyệt nội dung <b className="text-slate-800">{soDaDuyet}</b>/{bai.length} bài đang nạp{tong ? ` · còn ${tong.so_bai} bài chưa có mô hình` : ''}</span>
         <button onClick={() => { setVt(0); void nap([]) }} className="rounded-md border border-slate-200 px-2 py-0.5 text-[12px] text-slate-500 hover:bg-slate-50" title="Quét lại từ đầu">↻</button>
         {b && (
           <button onClick={duyetBai} disabled={!!ban}
@@ -132,7 +123,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
 
       {!b ? (
         <div className="flex flex-1 items-center justify-center text-sm text-slate-400">
-          {dangTai ? 'Đang tải…' : `Khối ${khoi} không còn ý nào chưa phân mô hình.`}
+          {dangTai ? 'Đang tải…' : `Khối ${khoi} không còn bài nào chưa có mô hình.`}
         </div>
       ) : (
         // ⭐ CEO 14/10: HÌNH ĐI THEO Ý — mỗi hàng = (chữ | hình của chính nó). Hình ý = hình riêng của ý (hinh_y.anh_de);
@@ -156,7 +147,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
                 <button disabled={ban === 'mh'} onClick={() => void ganBai(null)} className="text-[12px] text-rose-600 hover:underline disabled:opacity-40">gỡ</button>
               </>) : (
               <ChonMoHinh moHinhs={moHinhs} disabled={ban === 'mh'} nhan="＋ Gán mô hình" chinh onChon={(id) => void ganBai(id)} />) })()}
-            <span className="ml-auto text-[11.5px] text-slate-500">Gán mô hình cho cả bài trước; gán từng ý vào bài của mô hình ở dưới.</span>
+            <span className="ml-auto text-[11.5px] text-slate-500">Gán mô hình là đủ để bài vào kho — xem ở Bản đồ mới › Hình – Luyện › ③ Kho bài.</span>
           </div>
 
           {/* đề chung | hình bài. Bài MỘT Ý: hình bài đứng cạnh chính ý đó (bên dưới), hàng đề không lặp lại hình (CEO 14/10). */}
@@ -184,7 +175,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
                 : b.anh_de ? 'Không dựng thêm — dùng hình bài ở trên' : 'Chưa có hình'
               return (
                 <Hang key={y.id} hinh={hinhY} chuThich={chuThich} rieng={!!y.anh_de} gon={!motY && !y.anh_de && !!(truoc || b.anh_de)} goc={y.anh_loi_giai} onPhong={setPhong}>
-                  <div className={`rounded-xl border bg-white p-3.5 ${y.baitoan_id ? 'border-emerald-300' : 'border-slate-200'}`}>
+                  <div className={`rounded-xl border bg-white p-3.5 ${y.da_duyet ? 'border-emerald-300' : 'border-slate-200'}`}>
                     <div className="flex items-start gap-2 text-[15px] leading-relaxed">
                       <b className="mt-px shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>
                       <div className="min-w-0 flex-1 font-medium text-slate-900"><MathText>{y.noi_dung}</MathText></div>
@@ -195,20 +186,6 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
                       ? <div className="mt-2 rounded-lg border border-emerald-200 bg-emerald-50/50 p-3 text-[14px] leading-relaxed"><MathText>{y.loi_giai}</MathText></div>
                       : <div className="mt-2 text-[12px] text-rose-500">chưa có lời giải</div>}
                     <div className="mt-2.5 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-2.5">
-                      {y.baitoan_id ? (() => { const c = chon.find((x) => x.baitoan_id === y.baitoan_id); return (
-                        <>
-                          <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[12px] font-semibold text-white">{c ? `${c.goc_ten} · ${c.so}` : 'đã gán'}</span>
-                          {c && <span className="min-w-0 flex-1 truncate text-[12px] text-slate-500">{c.phat_bieu.replace(/\$/g, '')}</span>}
-                          <button disabled={ban === y.id} onClick={() => void gan(y, null)} className="text-[12px] text-rose-600 hover:underline disabled:opacity-40">gỡ gán</button>
-                        </>) })() : (
-                        <>
-                          <span className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[12px] font-semibold text-amber-800">chưa phân mô hình</span>
-                          {(() => {
-                            const trongMH = b.mo_hinh_id ? chon.filter((c) => c.goc_id === b.mo_hinh_id) : chon
-                            if (b.mo_hinh_id && !trongMH.length) return <span className="text-[12px] text-slate-500">Mô hình này chưa có bài — thêm bài ở <b>Bản đồ mới › Hình – Luyện</b> rồi gán ý vào.</span>
-                            return <ChonBaiMoHinh chon={trongMH} disabled={ban === y.id} onChon={(id) => void gan(y, id)} />
-                          })()}
-                        </>)}
                       <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-600" title="Câu hỏi + lời giải của ý này đã đúng">
                         <input type="checkbox" checked={y.da_duyet} disabled={ban === y.id} onChange={() => void duyetY(y)} /> duyệt ý này
                       </label>
@@ -293,36 +270,6 @@ function ChonMoHinh({ moHinhs, disabled, nhan, chinh, onChon }: {
                 <span className="shrink-0 text-[11px] text-slate-400">{m.so_bai} bài</span>
               </button>))}
           </div>
-        </div>)}
-    </div>
-  )
-}
-
-/** Ô tìm–chọn bài mô hình (gõ là lọc; không dùng dropdown dài). */
-function ChonBaiMoHinh({ chon, disabled, onChon }: { chon: BaiMoHinhLuyen[]; disabled: boolean; onChon: (id: string) => void }) {
-  const [tu, setTu] = useState('')
-  const [mo, setMo] = useState(false)
-  const loc = useMemo(() => {
-    const k = tu.trim().toLowerCase()
-    const ds = k ? chon.filter((c) => `${c.goc_ten} ${c.nhanh_ten} ${c.so} ${c.ma} ${c.phat_bieu}`.toLowerCase().includes(k)) : chon
-    return ds.slice(0, 40)
-  }, [tu, chon])
-  if (!chon.length) return <span className="text-[12px] text-slate-400">— chưa có mô hình luyện để gán —</span>
-  return (
-    <div className="relative min-w-[280px] flex-1">
-      <input value={tu} disabled={disabled} onChange={(e) => { setTu(e.target.value); setMo(true) }} onFocus={() => setMo(true)}
-        onBlur={() => window.setTimeout(() => setMo(false), 150)} placeholder="Gõ tên mô hình / số bài / nội dung để gán…"
-        className="w-full rounded-md border border-slate-300 px-2 py-1 text-[12.5px] outline-none focus:border-blue-500" />
-      {mo && (
-        <div className="absolute bottom-full left-0 right-0 z-20 mb-1 max-h-64 overflow-auto rounded-lg border border-slate-200 bg-white shadow-lg">
-          {!loc.length && <div className="px-2 py-1.5 text-[12px] text-slate-400">Không khớp bài nào.</div>}
-          {loc.map((c) => (
-            <button key={c.baitoan_id} onMouseDown={(e) => e.preventDefault()} onClick={() => { onChon(c.baitoan_id); setTu(''); setMo(false) }}
-              className="flex w-full items-baseline gap-2 px-2 py-1 text-left text-[12.5px] hover:bg-blue-50">
-              <b className="shrink-0 text-slate-900">{c.so}</b>
-              <span className="shrink-0 text-teal-700">{c.goc_ten}{c.nhanh_id !== c.goc_id ? ` › ${c.nhanh_ten}` : ''}</span>
-              <span className="min-w-0 flex-1 truncate text-slate-500">{c.phat_bieu.replace(/\$/g, '')}</span>
-            </button>))}
         </div>)}
     </div>
   )

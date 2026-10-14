@@ -240,7 +240,9 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 
 1. **Claude đẩy bài có đáp án chi tiết vào kho Luyện** (`hinh_bai` + `hinh_y`), tách ý thành chuỗi đủ thông tin. **Nguồn: kho đề thi trên ERP, khối 7 trước.**
 2. **CEO dựng mô hình TRƯỚC** trên màn Cây nhánh: tạo mô hình → thêm bài vào thân → rẽ nhóm. Không cần nhãn gom tạm cho bài kho.
-3. **Xây tới đâu gán tới đó:** gán từng ý của bài kho vào bài mô hình.
+3. **Xây tới đâu gán tới đó:** gán **cả bài kho vào MÔ HÌNH** — vậy là đủ để bài vào kho của mô hình (CEO 14/10: "thêm bài vào kho mô hình chỉ cần mô hình thôi"). Gán từng ý vào một bài cụ thể của mô hình **không** phải điều kiện vào kho.
+   - "Chưa phân mô hình" (Duyệt kho) = bài chưa có `hinh_bai.mo_hinh_id` và không ý nào đã gán bài mô hình (mig `202610141248`).
+   - Kho của mô hình = **tab ③ Kho bài** trên màn Cây nhánh, mỗi chuỗi (bài kho, ý a → b → c) một dòng (mig `202610141242`).
 
 - **41 mô hình + 366 bài cũ: ẨN làm tham khảo, không dùng**; xoá hay không quyết sau khi làm xong. Cách ẩn: màn Cây nhánh chỉ đọc `phan = 'luyen'`; mô hình cũ đang `phan IS NULL` nên tự ẩn — **không sửa, không xoá dòng nào**. KHÔNG ẩn ở `loadLuoi` vì 507 lượt làm bài (`gami_session_problems`) và các tài liệu MT/ET cũ vẫn phải hiện được bài cũ.
 - **Tạo/sửa trên màn (mig `202610140141`):** `fn_hl_tao_mo_hinh` (sinh `phan='luyen'`) · `fn_hl_them_bai` · `fn_hl_sua_bai` (bài + cách giải mặc định + tiền đề trong 1 transaction; tiền đề phải cùng cây; mã không đổi).

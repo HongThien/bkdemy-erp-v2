@@ -37565,3 +37565,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy:** "kho bài của mỗi nhóm bài hình đâu? cần chỗ truy cập nhanh. Kho là các chuỗi bài — mỗi chuỗi 1 dòng".
 - **Làm:** mig `202610141242` (áp `--only`): `fn_hl_kho_cua_mo_hinh(p_mo_hinh)` — kho = bài kho gán cả bài vào mô hình HOẶC có ý gán vào bài thuộc cây; mỗi ý kèm số hiển thị bài mô hình (suy, khoá vẫn baitoan_id) · `fn_hl_dem_kho_mo_hinh(p_khoi)` (badge). UI `CayNhanh.tsx`: danh sách mô hình hiện "kho n chuỗi · x/y ý đã gán"; tab thứ 3 "③ Kho bài · n": mỗi chuỗi một dòng (hình nhỏ · mã bài · đề 1 dòng · chuỗi ý a → b → c, ý đã gán = chip số bài mô hình bấm mở popup bài, chưa gán = chip vàng, gán sang mô hình khác = tím); bấm dòng mở đề + lời giải + hình từng ý; ô tìm + lọc "còn ý chưa gán".
 - **Kiểm:** query RO: MH.074 1 chuỗi (HLB00095 → 1.1), MH.073 1 chuỗi 2 ý chưa gán; dev hiện đúng. tsc chỉ còn lỗi ở `CongTA.tsx` của phiên khác.
+
+### 14/10 — Vào kho Hình luyện CHỈ cần gán mô hình
+- **Thùy:** "Sao thêm bài vào kho lại phải gán bài gì. Thêm bài vào kho mô hình chỉ cần mô hình thôi".
+- **Sai (của tôi):** hàng đợi "chưa phân mô hình" vẫn định nghĩa theo ý chưa gán BÀI mô hình (`hinh_y.baitoan_id`), và màn duyệt vẫn để ô gán ý + chip vàng "chưa phân mô hình" dưới mỗi ý ⇒ gán mô hình xong trông như chưa xong.
+- **Sửa:** mig `202610141248` (áp `--only`, thân lấy từ bản đang chạy): `fn_hl_kho_chua_phan` / `fn_hl_dem_chua_phan` = bài chưa có `mo_hinh_id` và không ý nào đã gán bài mô hình. Màn duyệt: bỏ ô gán ý + `ChonBaiMoHinh`; đếm theo BÀI (thanh trên + nhãn tab). Tab Kho bài: chip ý trung tính, bỏ "chỉ ý gán", badge "kho n chuỗi · y ý". Spec §11 bước 3 ghi lại.
+- **Kiểm:** RO: khối 8 còn 86/88 bài chờ (1 gán mô hình + HLB00095 có ý gán); dev hiện 86 bài, không còn ô gán ý; tsc sạch.

@@ -211,7 +211,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
               <Ma>{m.ma}</Ma>
               <div className="truncate font-medium">{tron(m.ten)}</div>
               {(() => { const d = demKho.get(m.id); return d?.so_chuoi
-                ? <div className="mt-0.5 text-[10.5px] text-slate-500">kho {d.so_chuoi} chuỗi · {d.so_y_da_gan}/{d.so_y} ý đã gán</div>
+                ? <div className="mt-0.5 text-[10.5px] text-slate-500">kho {d.so_chuoi} chuỗi · {d.so_y} ý</div>
                 : <div className="mt-0.5 text-[10.5px] text-slate-300">kho trống</div> })()}
             </button>
           ))}
@@ -366,7 +366,6 @@ function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => 
                 : <div className="h-11 w-14 shrink-0 rounded border border-dashed border-slate-200" />}
               <div className="w-[88px] shrink-0">
                 <div className="font-mono text-[11.5px] font-semibold text-teal-700">{c.ma_bai}</div>
-                {!c.gan_ca_bai && <div className="text-[10px] text-amber-700" title="Bài chưa gán cả bài vào mô hình — có ý gán vào bài của mô hình">chỉ ý gán</div>}
               </div>
               <div className="min-w-0 flex-1 truncate text-[13px] text-slate-700" title={de.replace(/\$/g, '')}><MathText className="inline">{de}</MathText></div>
               <div className="flex shrink-0 items-center gap-1">
@@ -377,8 +376,7 @@ function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => 
                       ? <button onClick={(e) => { e.stopPropagation(); if (y.baitoan_id && coBai(y.baitoan_id)) onMo(y.baitoan_id) }}
                           className="rounded-full bg-teal-600 px-2 py-0.5 text-[11.5px] font-semibold text-white hover:bg-teal-500" title={`Ý ${y.nhan ?? ''} gán vào bài ${y.so} (${y.ma_bai_mh}) — bấm để mở`}>
                           {y.nhan ? `${y.nhan}` : '•'} {y.so}</button>
-                      : <span className={`rounded-full border px-2 py-0.5 text-[11.5px] ${y.ngoai_mo_hinh ? 'border-violet-300 bg-violet-50 text-violet-700' : 'border-amber-300 bg-amber-50 text-amber-800'}`}
-                          title={y.ngoai_mo_hinh ? 'Ý này gán vào bài của mô hình KHÁC' : 'Ý chưa gán'}>{y.nhan ?? '•'} {y.ngoai_mo_hinh ? 'MH khác' : '—'}</span>}
+                      : <span className="rounded-full border border-slate-300 bg-white px-2 py-0.5 text-[11.5px] font-semibold text-slate-600" title={`Ý ${y.nhan ?? ''}`}>{y.nhan ?? '•'}</span>}
                   </span>))}
               </div>
               <span className="shrink-0 text-[11px] text-slate-400">{dangMo ? '▾' : '▸'}</span>
