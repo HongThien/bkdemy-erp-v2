@@ -12,7 +12,7 @@ import { MON_LUYEN_CHUNG_MINH } from '../../lib/mon'
 import { LamDienO } from './DienOCau'
 import { KeoThaCau } from './KeoThaCau'
 import {
-  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
+  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, chamLamLai, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
@@ -736,7 +736,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
     return THI_LOAI.has(active.loai)
       ? <LamET test={active} hocSinhId={hocSinhId} onXong={back} />
-      : <LamBai baiTestId={active.id} hocSinhId={hocSinhId} onXong={back} />
+      : <LamBai baiTestId={active.id} hocSinhId={hocSinhId} onXong={back} choLamLaiSai={active.loai === 'giao_trinh' && !cap1 && !cap2} />
   }
 
   const xongCua = (t: BaiTestCuaHS) => t.bai_lam?.trang_thai === 'da_nop'
@@ -947,8 +947,10 @@ function KhungCau({ nhung, cls, children }: { nhung: boolean; cls: string; child
   return nhung ? <TheTran className={cls}>{children}</TheTran> : <div className={cls} style={THE}>{children}</div>
 }
 
-export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung }: {
+export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung, choLamLaiSai }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
+  /** Cấp 3, bài trên lớp: màn kết quả có nút "Làm lại câu sai" (vòng luyện, KHÔNG ghi đè lượt đầu). */
+  choLamLaiSai?: boolean
   doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
   /** NHÚNG trong khung đấu 3D (phieuluu/DauView): ẩn thanh tiến độ + màn kết quả cũ, báo kết quả từng câu ra ngoài. */
   nhung?: NhungDau
@@ -964,6 +966,8 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   // Trong trận (nhung): khung câu hỏi chỉ còn nửa dưới màn ⇒ chấm xong tự cuộn tới ô kết quả + lời giải (Thùy 02/10: "chưa hiện đáp án chi tiết"
   // — lời giải có nhưng nằm dưới mép khung). Nhớ câu đã cuộn để không giật lại mỗi lần vẽ lại.
   const daCuon = useRef<string | null>(null)
+  // Vòng LÀM LẠI câu sai: id các câu đang làm lại (null = lượt đầu). Kết quả vòng này chỉ nằm ở state, không ghi DB.
+  const [vongLai, setVongLai] = useState<string[] | null>(null)
 
   useEffect(() => {
     (async () => {
@@ -1003,7 +1007,8 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   // order by thu_tu = đúng thứ tự tài liệu in); A/B/C/D và a/b/c/d = đúng thứ tự gốc của câu.
   // Trước đây xáo chống liếc bài (05/07 → 29/09), chỉ giáo trình được khoá (22/08). ĐỪNG bật lại xáo
   // ở tầng hiển thị: số câu/chữ cái trên app phải khớp phiếu giấy em đang cầm.
-  const caus = full?.caus ?? []
+  const causGoc = full?.caus ?? []
+  const caus = vongLai ? causGoc.filter((c) => vongLai.includes(c.id)) : causGoc
   // Chữ của câu hiện theo MÔN của bài (registry MON_CHU_THUONG — Tiếng Anh: giữ gạch chân, không công thức)
   const monBai = full?.baiTest.mon
 
@@ -1048,7 +1053,9 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
     if (!cau || !baiLamId || !cs || !daDu) return
     setBusy(true)
     try {
-      const kq = await traLoiCau(baiLamId, cau, cs.chon)
+      const kq = vongLai
+        ? { ...(await chamLamLai(cau, cs.chon)), baiLamCauId: '' }
+        : await traLoiCau(baiLamId, cau, cs.chon)
       setSt((s) => ({ ...s, [cau.id]: { chon: cs.chon, kq: { verdict: kq.verdict, key: kq.key, baiLamCauId: kq.baiLamCauId } } }))
       nhung?.onCau({ verdict: kq.verdict as 'correct' | 'partial' | 'wrong', idx, tong: caus.length })
     } finally { setBusy(false) }
@@ -1070,6 +1077,11 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   // Màn kết quả cuối
   if (idx >= total) {
     const dung = caus.filter((c) => st[c.id]?.kq?.verdict === 'correct').length
+    const conSai = caus.filter((c) => st[c.id]?.kq?.verdict !== 'correct').map((c) => c.id)
+    const batDauLamLai = () => {
+      setSt((s) => { const n = { ...s }; for (const id of conSai) delete n[id]; return n })
+      setVongLai(conSai); setIdx(0)
+    }
     if (nhung) return <NhungHet dung={dung} tong={total} baiLamId={baiLamId} cb={nhung.onHet} />
     return (
       <ManGiua>
@@ -1077,7 +1089,13 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
         <p className={`mt-4 font-bold tracking-tight ${desktop ? 'text-[33px]' : 'text-[26.5px]'}`} style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{dung} / {total} đúng</p>
         <p className="mt-1 text-[17.5px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
         {/* lượt luyện thêm: báo có tính vào chuỗi/nhiệm vụ không (BTVN, giáo trình… tự ẩn) */}
-        <BaoLuotHS baiLamId={baiLamId} className={`mt-4 ${desktop ? 'max-w-sm' : ''}`} />
+        {!vongLai && <BaoLuotHS baiLamId={baiLamId} className={`mt-4 ${desktop ? 'max-w-sm' : ''}`} />}
+        {choLamLaiSai && conSai.length > 0 && (
+          <button onClick={batDauLamLai} className={`mt-4 font-bold ${desktop ? 'px-8 py-3.5 text-[21px]' : 'px-6 py-3 text-[20px]'}`} style={NUT_PHU}>
+            ↻ Làm lại {conSai.length} câu sai
+          </button>
+        )}
+        {vongLai && <p className="mt-3 text-[16.5px]" style={{ color: MAU.muted }}>Vòng làm lại để luyện — không đổi kết quả lượt đầu.</p>}
         <button onClick={onXong} className={`mt-6 font-bold ${desktop ? 'px-8 py-3.5 text-[21px]' : 'px-6 py-3 text-[20px]'}`} style={NUT_CHINH}>Về danh sách</button>
         {doneExtra}
       </ManGiua>
@@ -1206,7 +1224,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
-              {(cau.loai_cau === 'tra_loi_ngan' || baoSaiDe) && vd !== 'correct' && (
+              {!vongLai && (cau.loai_cau === 'tra_loi_ngan' || baoSaiDe) && vd !== 'correct' && (
                 cs!.baoRoi
                   ? <p className="mt-2 text-[16.5px]" style={{ color: MAU.muted }}>✓ Đã gửi ý kiến cho thầy cô.</p>
                   : <button onClick={guiBaoSai} className="mt-2 px-3 py-1.5 text-[16.5px]" style={{ ...NUT_PHU, borderRadius: R_TRONG, color: MAU.muted }}>

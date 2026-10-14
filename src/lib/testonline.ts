@@ -429,7 +429,9 @@ export type ChamKetQua = { verdict: string; cham_boi: string; key: unknown; baiL
 
 // HS xác nhận 1 câu → auto-chấm exact + lưu (upsert). BTVN reveal ngay → trả cả key + id (để báo sai).
 // TLN sai theo key → tầng CACHE (đáp án người-đã-duyệt, rpc — HS không SELECT được bảng cache).
-export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unknown): Promise<ChamKetQua> {
+// Chấm 1 câu (key + cache) — KHÔNG ghi DB. Dùng chung traLoiCau (ghi) và vòng "làm lại câu sai" (không ghi,
+// để không đè kết quả lượt đầu đã vào đo lường).
+async function chamCau(cau: BaiTestCau, dapAnHs: unknown): Promise<{ verdict: string; cham_boi: string }> {
   let g: { verdict: string; cham_boi: string } = cau.loai_cau === 'trac_nghiem'
     ? gradeTracNghiem(dapAnHs as number, cau.dap_an_key as string)
     : cau.loai_cau === 'dung_sai'
@@ -441,6 +443,17 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
     const { data: hit } = await supabase.rpc('tln_cache_check', { p_ma_cau: cau.ma_cau, p_norm: smartNormalize(dapAnHs as string) })
     if (hit === true) g = { verdict: 'correct', cham_boi: 'cache' }
   }
+  return g
+}
+
+/** Vòng LÀM LẠI câu sai (giáo trình cấp 3): chấm tại chỗ, không ghi `bai_lam_cau` — lượt đầu mới là số đo. */
+export async function chamLamLai(cau: BaiTestCau, dapAnHs: unknown): Promise<{ verdict: string; key: unknown }> {
+  const g = await chamCau(cau, dapAnHs)
+  return { verdict: g.verdict, key: cau.dap_an_key }
+}
+
+export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unknown): Promise<ChamKetQua> {
+  const g = await chamCau(cau, dapAnHs)
   // dung_sai: lưu điểm thô THPT (0/0.1/0.25/0.5/1); loại khác: theo verdict × trọng số câu.
   const diem = 'diemTho' in g ? (g as any).diemTho * cau.diem
     : g.verdict === 'correct' ? cau.diem : g.verdict === 'partial' ? cau.diem * 0.5 : 0
