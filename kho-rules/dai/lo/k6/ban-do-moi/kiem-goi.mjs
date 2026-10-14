@@ -40,7 +40,8 @@ for (const [ma, vd] of Object.entries(out.vi_du ?? {})) {
   for (const dong of s.split('\n')) if (/^##/.test(dong) && !TAGS.test(dong)) loi.push(`${ma}: tag lạ «${dong.slice(0, 30)}»`)
   kiemCongThuc(`${ma} ${d.ten}`, s)
 }
-for (const d of Object.values(dangs)) if (!(out.vi_du ?? {})[d.id] && !(d.vi_du_hien_co || '').trim()) loi.push(`${d.id} ${d.ten}: THIẾU ví dụ`)
+if (!(Object.keys(out.ly_thuyet_dang ?? {}).length && !Object.keys(out.vi_du ?? {}).length)) // đợt "lý thuyết dạng" không viết ví dụ
+  for (const d of Object.values(dangs)) if (!(out.vi_du ?? {})[d.id] && !(d.vi_du_hien_co || '').trim()) loi.push(`${d.id} ${d.ten}: THIẾU ví dụ`)
 
 for (const [ma, lt] of Object.entries(out.ly_thuyet ?? {})) {
   const n = nhoms[ma]
@@ -55,8 +56,25 @@ for (const [ma, lt] of Object.entries(out.ly_thuyet ?? {})) {
 for (const n of goi.nhom) if (n.can_ly_thuyet && !(out.ly_thuyet ?? {})[n.id]) loi.push(`${n.id} ${n.ten}: THIẾU lý thuyết`)
 for (const n of goi.nhom) if (n.khong_co_dang && n.can_ly_thuyet && !/^##VD\b/m.test((out.ly_thuyet ?? {})[n.id] ?? '')) loi.push(`${n.id} ${n.ten}: nhóm KHÔNG có dạng bài — lý thuyết phải kèm ≥1 ##VD`)
 
-const nVi = Object.keys(out.vi_du ?? {}).length, nLt = Object.keys(out.ly_thuyet ?? {}).length
-console.log(`${fOut}: ví dụ ${nVi} dạng · lý thuyết ${nLt} nhóm · ghi chú ${(out.ghi_chu ?? []).length}`)
+// lý thuyết CẤP DẠNG BÀI (Thùy 14/10: "sao các dạng lớp 6 m ko điền lý thuyết") — khoá out.ly_thuyet_dang
+for (const [ma, lt] of Object.entries(out.ly_thuyet_dang ?? {})) {
+  const d = dangs[ma]
+  if (!d) { loi.push(`ly_thuyet_dang.${ma}: không thuộc gói`); continue }
+  if ((d.ly_thuyet_dang_hien_co || '').trim()) loi.push(`${ma} ${d.ten}: dạng ĐÃ có lý thuyết — không ghi đè`)
+  const s = String(lt)
+  const nTag = (s.match(/^##(ĐN|DN|ĐL|DL|TC|CY|PP|NX)\b/gim) || []).length
+  if (nTag < 1) loi.push(`${ma} ${d.ten}: lý thuyết dạng chưa có tag ##…`)
+  if (/^##VD\b/m.test(s)) loi.push(`${ma} ${d.ten}: ví dụ nằm ở trường vi_du, không đặt ##VD trong lý thuyết dạng`)
+  if (s.trim().length < 80) loi.push(`${ma} ${d.ten}: lý thuyết quá ngắn`)
+  for (const dong of s.split('\n')) if (/^##/.test(dong) && !TAGS.test(dong)) loi.push(`${ma}: tag lạ «${dong.slice(0, 30)}»`)
+  kiemCongThuc(`${ma} ${d.ten}`, s)
+}
+if (fOut.includes('out-ld') || Object.keys(out.ly_thuyet_dang ?? {}).length) {
+  for (const d of Object.values(dangs)) if (!(d.ly_thuyet_dang_hien_co || '').trim() && !(out.ly_thuyet_dang ?? {})[d.id]) loi.push(`${d.id} ${d.ten}: THIẾU lý thuyết dạng`)
+}
+
+const nVi = Object.keys(out.vi_du ?? {}).length, nLt = Object.keys(out.ly_thuyet ?? {}).length, nLd = Object.keys(out.ly_thuyet_dang ?? {}).length
+console.log(`${fOut}: ví dụ ${nVi} dạng · lý thuyết ${nLt} nhóm · lý thuyết dạng ${nLd} · ghi chú ${(out.ghi_chu ?? []).length}`)
 for (const x of nhac) console.log('  ⚠', x)
 if (loi.length) { console.error(`❌ ${loi.length} lỗi:\n  ` + loi.join('\n  ')); process.exit(1) }
 console.log('✔ đạt cổng')

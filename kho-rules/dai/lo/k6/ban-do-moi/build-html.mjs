@@ -30,15 +30,21 @@ function khoi(text) {
 }
 
 let nNhom = 0, nDang = 0, nLtMoi = 0, nVdMoi = 0, nVdCo = 0, nLtCo = 0
+const outLd = {}, ketLd = {}
+if (existsSync(join(DIR, 'out-ld'))) for (const f of readdirSync(join(DIR, 'out-ld'))) {
+  const m = f.match(/^out-(d+).json$/); if (m) { const o = JSON.parse(readFileSync(join(DIR, 'out-ld', f), 'utf8')); Object.assign(outLd, o.ly_thuyet_dang ?? {}); ketLd[m[1]] = o.ghi_chu ?? [] }
+}
+let nLdMoi = 0
 const toc = [], body = [], ghiChu = []
 for (const gf of goiFiles) {
   const so = gf.match(/\d+/)[0]
-  const goi = JSON.parse(readFileSync(join(DIR, 'goi', gf), 'utf8'))
+  const goi = JSON.parse(readFileSync(join(DIR, existsSync(join(DIR, 'goi-ld', gf)) ? 'goi-ld' : 'goi', gf), 'utf8'))
   const outP = join(DIR, 'out', `out-${so}.json`)
   const out = existsSync(outP) ? JSON.parse(readFileSync(outP, 'utf8')) : { vi_du: {}, ly_thuyet: {}, ghi_chu: [] }
   const soatP = join(DIR, 'out', `soat-${so}.md`)
   const ket = existsSync(soatP) ? ((readFileSync(soatP, 'utf8').match(/KẾT LUẬN:[^\n]*/) || [''])[0].replace(/\*\*/g, '')) : 'chưa soát'
   for (const g of out.ghi_chu ?? []) ghiChu.push(`Gói ${so}: ${g}`)
+  for (const g of ketLd[so] ?? []) ghiChu.push(`Gói ${so} (lý thuyết dạng): ${g}`)
   body.push(`<h2 id="g${so}">Gói ${so} — ${esc(goi.ten)} <span class="ket">${esc(ket)}</span></h2>`)
   toc.push(`<li><a href="#g${so}">Gói ${so}: ${esc(goi.ten)}</a></li>`)
   for (const n of goi.nhom) {
@@ -51,7 +57,10 @@ for (const gf of goiFiles) {
       const moi = out.vi_du?.[d.id]
       const co = (d.vi_du_hien_co || '').trim()
       if (moi) nVdMoi++; else if (co) nVdCo++
-      const noiDung = [co ? `<div class="mini">có sẵn</div>${khoi(co)}` : '', moi ? `<div class="mini moi">${co ? 'bổ sung mới' : 'MỚI'}</div>${khoi(moi)}` : ''].join('')
+      const ltd = outLd[d.id], ltCo = (d.ly_thuyet_dang_hien_co || '').trim()
+      if (ltd) nLdMoi++
+      const khoiLt = ltd ? `<div class="ltd"><div class="mini moi">Lý thuyết dạng — MỚI</div>${khoi(ltd)}</div>` : ltCo ? `<div class="ltd"><div class="mini">Lý thuyết dạng — có sẵn</div>${khoi(ltCo)}</div>` : '<div class="thieu">⚠ chưa có lý thuyết dạng</div>'
+      const noiDung = [khoiLt, co ? `<div class="mini">có sẵn</div>${khoi(co)}` : '', moi ? `<div class="mini moi">${co ? 'bổ sung mới' : 'MỚI'}</div>${khoi(moi)}` : ''].join('')
       return `<div class="dang"><div class="dt"><b>${esc(d.id)}</b> ${esc(d.ten)}</div>${d.mo_ta ? `<div class="mt">Nhận biết: ${fmt(d.mo_ta)}</div>` : ''}${noiDung || '<div class="thieu">⚠ chưa có ví dụ</div>'}</div>`
     }).join('')
     body.push(`<section class="nhom" id="${n.id}"><h3>${esc(n.id)} · ${esc(n.ten)} <small>${esc(n.chuyen_de ?? '')}</small></h3>
@@ -73,10 +82,10 @@ h1{font-size:22px}h2{margin-top:32px;padding:8px 12px;background:#4c6fff;color:#
 .giai{text-align:center;text-decoration:underline;font-weight:700;margin:6px 0}.txt{margin:6px 0}
 .moi{background:#e6f7ea;color:#1b7a36;border-radius:4px;padding:0 6px;font-size:11px;font-weight:700}.co{background:#eee;color:#666;border-radius:4px;padding:0 6px;font-size:11px}
 .mini{font-size:11px;color:#999;margin-top:6px}.mini.moi{background:none;color:#1b7a36;font-weight:700}.thieu{color:#c0392b;font-weight:600}
-.sum{background:#fff;border:1px solid #dde;border-radius:10px;padding:10px 16px}.gc li{margin:4px 0;font-size:14px}
+.ltd{border-left:4px solid #2D9CDB;background:#f2f9fe;padding:4px 10px;margin:6px 0;border-radius:0 8px 8px 0}.sum{background:#fff;border:1px solid #dde;border-radius:10px;padding:10px 16px}.gc li{margin:4px 0;font-size:14px}
 </style></head><body>
 <h1>Bản đồ mới Toán 6 — lý thuyết + ví dụ (14/10)</h1>
-<div class="sum"><b>${nNhom}</b> nhóm · <b>${nDang}</b> dạng bài · lý thuyết MỚI <b>${nLtMoi}</b> (có sẵn ${nLtCo}) · ví dụ MỚI <b>${nVdMoi}</b> (dạng đã có sẵn ${nVdCo}).
+<div class="sum"><b>${nNhom}</b> nhóm · <b>${nDang}</b> dạng bài · lý thuyết MỚI <b>${nLtMoi}</b> (có sẵn ${nLtCo}) · ví dụ MỚI <b>${nVdMoi}</b> (dạng đã có sẵn ${nVdCo}) · lý thuyết DẠNG mới <b>${nLdMoi}</b>.
 <ul>${toc.join('')}</ul></div>
 ${ghiChu.length ? `<h2>Điểm trạm soạn / soát còn nghi — cần Thùy xem</h2><ul class="gc">${ghiChu.map((g) => `<li>${fmt(g)}</li>`).join('')}</ul>` : ''}
 ${body.join('\n')}

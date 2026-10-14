@@ -33,7 +33,7 @@ try {
     const nhoms = await q(`select n.id, n.ten, n.mo_ta, n.ly_thuyet, ch.ten chuyen_de from dai_bdm_nhom n left join dai_bdm_chuyen_de ch on ch.id = n.chuyen_de_id where n.id = any($1) order by array_position($1::text[], n.id)`, [g.nhom])
     const goi = { goi: g.so, ten: g.ten, nhom: [] }
     for (const n of nhoms) {
-      const dangs = await q(`select id, ten, mo_ta, vi_du from dai_bdm_dang_bai where nhom_id = $1 order by thu_tu, id`, [n.id])
+      const dangs = await q(`select id, ten, mo_ta, vi_du, ly_thuyet from dai_bdm_dang_bai where nhom_id = $1 order by thu_tu, id`, [n.id])
       const cuDang = (await q(`select ma_dang_cu from dai_bdm_doi_ung where dich_nhom = $1`, [n.id])).map((r) => r.ma_dang_cu)
       const cums = cuDang.length ? await q(`select ma_cum, ten from dai_cum_bai where ma_dang = any($1) order by thu_tu`, [cuDang]) : []
       const nh = { id: n.id, ten: n.ten, mo_ta: n.mo_ta || '', chuyen_de: n.chuyen_de, ly_thuyet_hien_co: n.ly_thuyet || '', can_ly_thuyet: !(n.ly_thuyet || '').trim(), khong_co_dang: dangs.length === 0, dang: [] }
@@ -41,14 +41,14 @@ try {
       for (const d of dangs) {
         let cum = cums.find((x) => norm(x.ten) === norm(d.ten)) ?? cums.find((x) => norm(x.ten).includes(norm(d.ten)) || norm(d.ten).includes(norm(x.ten)))
         if (!cum && cums.length === 1) cum = cums[0]
-        const uv = cum ? await q(
+        const uv = (cum && !process.argv.includes('--khong-ung-vien')) ? await q(
           `select ma_cau, loai_cau, noi_dung, dap_an, left(loi_giai, 1400) loi_giai, nguon
              from dai_cau_hoi
             where ma_cum = $1 and xoa_at is null and da_duyet and anh_de is null and length(coalesce(loi_giai, '')) > 20 and length(noi_dung) < 700
             order by (loai_cau = 'trac_nghiem'), (nguon in ('le', 'de_thi')) desc, length(noi_dung), ma_cau
             limit 8`, [cum.ma_cum]) : []
         tong.dang++; tong.ungVien += uv.length; if (!uv.length) tong.dangKhongUngVien.push(`${d.id} ${d.ten}`)
-        nh.dang.push({ id: d.id, ten: d.ten, mo_ta: d.mo_ta || '', vi_du_hien_co: d.vi_du || '', cum_cu: cum ? `${cum.ma_cum} ${cum.ten}` : null, ung_vien: uv })
+        nh.dang.push({ id: d.id, ten: d.ten, mo_ta: d.mo_ta || '', vi_du_hien_co: d.vi_du || '', ly_thuyet_dang_hien_co: d.ly_thuyet || '', cum_cu: cum ? `${cum.ma_cum} ${cum.ten}` : null, ung_vien: uv })
       }
       goi.nhom.push(nh)
     }
