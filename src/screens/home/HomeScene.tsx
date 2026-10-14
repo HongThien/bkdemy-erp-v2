@@ -6,7 +6,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type 
 import type { Art, Canh, Rect } from '../../lib/canhErp'
 
 export type MucCanh = { id: string; ten: string; onMo: () => void; onSao?: () => void }
-export type NhomCanh = { khoa: string; ten: string; so?: number; onMo: () => void }
+export type NhomCanh = { khoa: string; ten: string; so?: number; icon?: string; onMo: () => void }
 
 // ── LUẬT CHỮ (Thùy 14/10: "chữ lệch khỏi ảnh — phải có rule điều chỉnh") ──
 // R1. Chữ chỉ nằm TRONG text_box / label_box của ảnh — không tràn ra ngoài khung vẽ.
@@ -92,7 +92,8 @@ export default function HomeScene({ canh, today, dev, order, profile, tuyChinh, 
 
   // ── các lớp, xếp theo z ──
   const lop: { z: number; k: string; node: ReactNode }[] = []
-  for (const a of canh.tinh) lop.push({ z: a.z, k: a.id, node: <img key={a.id} src={a.file} alt="" draggable={false} style={{ ...px(a.place), zIndex: a.z }} /> })
+  // Cảnh LIỀN không có lớp ảnh nào (đồ vật nằm sẵn trong tranh) — Art ẢO có file rỗng thì không vẽ <img>.
+  for (const a of canh.tinh) if (a.file) lop.push({ z: a.z, k: a.id, node: <img key={a.id} src={a.file} alt="" draggable={false} style={{ ...px(a.place), zIndex: a.z }} /> })
 
   // ô yêu thích: ô có mục = hình ô i + nhãn + ★; ô chưa dùng = favorite-empty (nếu cảnh có)
   const lopYeuThich: ReactNode[] = []
@@ -104,7 +105,7 @@ export default function HomeScene({ canh, today, dev, order, profile, tuyChinh, 
     const dw = art.w * k, dh = art.h * k
     const dx = o[0] + (o[2] - dw) / 2, dy = o[1] + (o[3] - dh)   // contain: giữa ngang, sát đáy ô
     const r: Rect = [dx, dy, dw, dh]
-    lop.push({ z: 30, k: `fav-${i}`, node: <img key={`fav-${i}`} src={art.file} alt="" draggable={false} style={{ ...px(r), zIndex: 30, opacity: muc ? 1 : 0.32 }} /> })
+    if (art.file) lop.push({ z: 30, k: `fav-${i}`, node: <img key={`fav-${i}`} src={art.file} alt="" draggable={false} style={{ ...px(r), zIndex: 30, opacity: muc ? 1 : 0.32 }} /> })
     if (!muc) return
     const lb = art.labelBox
     lopYeuThich.push(
@@ -126,19 +127,26 @@ export default function HomeScene({ canh, today, dev, order, profile, tuyChinh, 
   const lopNhom: ReactNode[] = []
   nhom.slice(0, canh.nhomO.length).forEach((g, i) => {
     const o = canh.nhomO[i]
-    const art = canh.nhomArt[g.khoa] ?? Object.values(canh.nhomArt)[0]
+    // cảnh liền: ô thứ i của tranh (mang sẵn chỗ nhãn / icon / số); cảnh ghép: hình theo khoá nhóm
+    const art = canh.nhomSlot?.[i] ?? canh.nhomArt[g.khoa] ?? Object.values(canh.nhomArt)[0]
     if (!art) return
     const k = Math.min(o[2] / art.w, o[3] / art.h)
     const dw = art.w * k, dh = art.h * k
     const dx = o[0] + (o[2] - dw) / 2, dy = o[1] + (o[3] - dh)
     const r: Rect = [dx, dy, dw, dh]
-    lop.push({ z: 30, k: `nh-${i}`, node: <img key={`nh-${i}`} src={art.file} alt="" draggable={false} style={{ ...px(r), zIndex: 30 }} /> })
+    if (art.file) lop.push({ z: 30, k: `nh-${i}`, node: <img key={`nh-${i}`} src={art.file} alt="" draggable={false} style={{ ...px(r), zIndex: 30 }} /> })
     const lb = art.labelBox
+    const ib = art.iconBox
     lopNhom.push(
       <div key={`ng-${i}`}>
         <button onClick={g.onMo} title={g.ten} className="scene-hit" style={{ ...px(r), zIndex: 110, background: 'none', border: 0, cursor: 'pointer' }} />
+        {/* icon DẸT của nhóm trên ô trống chung (cảnh liền) — nhãn dán phẳng, không bóng đổ để khỏi lệch ánh sáng của tranh */}
+        {ib && g.icon && (
+          <span style={{ ...px([dx + ib[0] * k, dy + ib[1] * k, ib[2] * k, ib[3] * k]), zIndex: 111, pointerEvents: 'none', fontSize: Math.min(ib[2], ib[3]) * k * 0.82, lineHeight: 1 }}
+            className="flex items-center justify-center">{g.icon}</span>
+        )}
         {lb && (
-          <NhanVua r={[dx + lb[0] * k, dy + lb[1] * k, lb[2] * k, lb[3] * k]} style={{ zIndex: 111, pointerEvents: 'none', color: T.ink }}>{g.ten}</NhanVua>
+          <NhanVua r={[dx + lb[0] * k, dy + lb[1] * k, lb[2] * k, lb[3] * k]} style={{ zIndex: 111, pointerEvents: 'none', color: art.ink ?? T.ink }}>{g.ten}</NhanVua>
         )}
         {g.so != null && art.badge && (
           <span style={{ position: 'absolute', left: dx + art.badge[0] * k - 24, top: dy + art.badge[1] * k - 10, zIndex: 112, background: '#fff', color: T.acc, borderRadius: 999, padding: '0 8px', fontSize: 12, fontWeight: 800, lineHeight: '20px', boxShadow: '0 1px 3px rgba(0,0,0,.25)', pointerEvents: 'none' }}>{g.so} mục</span>

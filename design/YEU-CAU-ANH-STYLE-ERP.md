@@ -1,4 +1,102 @@
-# YÊU CẦU KỸ THUẬT — BỘ ẢNH STYLE CHO TRANG CHÍNH ERP BKdemy
+# YÊU CẦU KỸ THUẬT — TRANH TRANG CHÍNH ERP BKdemy (bản 2: TRANH LIỀN + Ô TRỐNG)
+
+> **Dán nguyên mục A cho ChatGPT khi đặt một tranh mới.** Phiên bản 14/10/2026 tối — thay khuôn "ghép lớp" (phụ lục B).
+> Lý do đổi (Thùy 14/10): tách đồ vật khỏi nền rồi ghép lại làm mất bóng đổ và ánh sáng tương tác — tranh trông giả.
+> Cách mới: **giữ nguyên MỘT bức tranh**, trong tranh vẽ sẵn các **ô trống** (bảng trống, thẻ trống, biển trống); app chỉ in
+> chữ / số / nút thật lên đúng các ô đó. Không có file đồ vật rời.
+
+---
+
+## A. ĐẶT VẼ (gửi ChatGPT)
+
+### A1. Cần vẽ gì
+
+Vẽ **một bức tranh hoàn chỉnh** cho màn hình chính của phần mềm quản lý trung tâm học thêm (người dùng là giáo viên,
+trợ giảng, vận hành). Tranh là một không gian làm việc ấm áp (phòng học, góc làm việc, bảng ghim…), cùng phong cách,
+ánh sáng, bóng đổ liền một mạch. Trong tranh có **các ô TRỐNG** dưới đây để phần mềm in chữ lên. **Tranh không được có
+bất kỳ chữ, số, ký hiệu, chữ giả nào** — kể cả trên giấy, bìa sách, biển hiệu.
+
+| # | Ô trống phải có | Hình dạng gợi ý | Phần mềm sẽ in lên | Cỡ tối thiểu (trên khổ 1672×941) |
+|---|---|---|---|---|
+| 1 | **Bảng "Việc hôm nay"** | bảng gỗ / bảng ghim / tờ giấy lớn ghim tường | 1 tiêu đề + 5 dòng việc (ô tick · tên · hạn) | 400 × 300 |
+| 2 | **Bảng "Việc phát triển"** | bảng / tờ giấy ngang | 1 tiêu đề + 3 dòng có thanh % | 480 × 180 |
+| 3 | **Bảng Order** | bảng nhỏ / sổ mở / tấm bìa | 1 tiêu đề + 3 dòng | 380 × 240 |
+| 4 | **Thẻ hồ sơ** | thẻ / khung ảnh / bảng tên | ảnh đại diện tròn Ø60 bên trái + "Chào <tên>!" + ngày + biểu tượng thư nhỏ | 340 × 130 |
+| 5 | **8 ô Yêu thích** | 8 thẻ treo / ngăn kéo / hộp hồ sơ **cùng một họ** | tên một màn (≤ 24 ký tự, 2 dòng) + ★ nhỏ ở góc trên phải | mỗi ô 200 × 120 |
+| 6 | **4 ô nhóm** (có thể 6) | 4 ô **GIỐNG NHAU** (hộp, ngăn, khung) — **không gợi ý nội dung riêng của ô nào** | 1 icon phẳng ở giữa-trên + tên nhóm ở dưới + "n mục" ở góc | mỗi ô 200 × 130 |
+| 7 | **2 nút nhỏ** | 2 thẻ treo / nhãn nhỏ cạnh nhau | "Tuỳ chỉnh" · "Giao diện" | mỗi nút 110 × 44 |
+| 8 | *(tuỳ chọn)* biển "Yêu thích" | một biển nhỏ trên cụm 8 ô | "★ Yêu thích" | 200 × 40 |
+
+- **Ô yêu thích phải "đẹp khi trống"**: người mới dùng chưa ghim gì thì 8 ô vẫn nằm đó — trông phải tự nhiên (móc treo
+  có thẻ trắng, ngăn kéo có nhãn trống…), không như chỗ bị thiếu đồ.
+- **Ô nhóm là ô CHUNG**: người dùng tự chọn nhóm nào nằm ô nào (Vận hành, Học thuật, Dashboard…), nên ô không được vẽ
+  cúp, sách, máy tính… gợi ý một nhóm cụ thể. Phần mềm tự in icon phẳng lên.
+- Nhân vật, thú cưng, cây, đèn, đồ trang trí: **vẽ thẳng vào tranh** (không cần tách lớp), đặt ở chỗ không đè lên ô nào.
+
+### A2. Quy tắc để chữ in lên đọc được
+
+1. **Mặt ô phẳng, nhìn gần chính diện** (không nghiêng phối cảnh quá 10°) — chữ in là chữ thẳng, ô nghiêng nhiều thì chữ trông lệch.
+2. **Mặt ô một màu đều**, không vân rối, không hoạ tiết dưới vùng chữ. Ô sáng → chữ đậm; ô tối → chữ sáng. Tương phản ≥ 4.5 : 1.
+3. **Không vật gì đè lên mặt ô** (lá cây, dây leo, tay nhân vật, đèn…). Viền ô có thể có lá rủ, mặt ô thì sạch.
+4. **Ô gần hình chữ nhật**, lề trong ≥ 12 px giữa mép ô và vùng để chữ.
+5. Mọi ô nằm trong vùng an toàn cách mép tranh ≥ 40 px (màn khác tỉ lệ sẽ cắt bớt mép).
+6. Ánh sáng, độ bão hoà đồng nhất cả tranh; ô không bị chói sáng/đổ bóng đậm đúng chỗ in chữ.
+
+### A3. Gửi lại những file nào
+
+```
+<ten-tranh>/                 chữ thường, gạch ngang, không dấu — vd phong-hoc-nang-chieu
+├── scene.jpg                tranh 1672 × 941 px (16:9), JPEG chất lượng ≈ 82, ≤ 450 KB, KHÔNG có chữ
+├── scene-4x3.jpg            (khuyến nghị) cùng tranh khổ 1440 × 1080 cho màn vuông / iPad ngang
+├── preview-demo.jpg         CÙNG tranh + chữ mẫu tiếng Việt đặt vào các ô — chỉ để duyệt bằng mắt
+└── ghi-chu.md               (tuỳ chọn) ô nào ở đâu, màu chữ nên dùng (đậm/sáng), font gợi ý có tiếng Việt
+```
+
+Không cần gửi toạ độ chính xác — BKdemy tự khoanh ô trên ảnh (mục C). Nếu gửi kèm toạ độ ước lượng thì càng tốt.
+
+---
+
+## C. Phía BKdemy: từ tranh → Trang chính (làm trong ~10 phút)
+
+1. Chép `scene.jpg` vào `public/bk-ui/erp/canh/<ten-tranh>/`.
+2. Mở trang dev **`/xem-thu-canh.html?anh=/bk-ui/erp/canh/<ten-tranh>/scene.jpg`** (`src/_xem_canh.tsx`): chọn ô ở cột trái →
+   kéo chuột khoanh trên tranh (★ và "n mục" thì bấm 1 điểm) → tự sang ô kế → **👁 Xem thử** để thấy chữ thật trên tranh →
+   chỉnh màu chữ / font trong JSON (`tokens`) → **⬇ Tải manifest.json** bỏ cạnh ảnh.
+3. Thêm 1 dòng vào `CANH_ERP` (`src/lib/canhErp.ts`) — cảnh hiện trong 🎨 Giao diện của mọi người.
+4. Soi bằng mắt ở 3 khổ (16:9 · 16:10 · 4:3) với tên dài tiếng Việt; chữ tràn thì luật R1–R4 trong `HomeScene` tự co,
+   vẫn không vừa thì khoanh lại ô rộng hơn hoặc thêm `inset`.
+
+**Khuôn `manifest.json` của tranh liền** (trang đánh dấu ô sinh ra; toạ độ = px trên ảnh gốc):
+
+```json
+{
+  "kieu": "lien",
+  "style_id": "phong-hoc-nang-chieu", "ten": "Phòng học nắng chiều",
+  "canvas": { "width": 1672, "height": 941 }, "tone": "sang",
+  "background": { "file": "scene.jpg" },
+  "tokens": { "ink": "#3b2a1e", "muted": "#7a6450", "acc": "#c2410c", "acc_ink": "#ffffff", "surface": "#fffaf2",
+              "surface2": "#f6ead8", "line": "#e2cfb2", "radius": 14, "font_head": "Baloo 2", "font_body": "Be Vietnam Pro" },
+  "zones": {
+    "today": [640, 590, 430, 300],
+    "development": { "box": [1090, 30, 520, 190], "inset": [16, 12, 16, 12], "ink": "#2b1d12" },
+    "order": [ … ], "greeting": [ … ], "favorites_title": [ … ], "toolbar_primary": [ … ], "toolbar_secondary": [ … ]
+  },
+  "favorite_slots": [ { "box": [640, 262, 214, 128], "label": [648, 332, 198, 50], "star": [836, 280] } ],
+  "group_slots":    [ { "box": [1100, 600, 225, 130], "label": [1110, 682, 205, 40], "icon": [1180, 610, 65, 65], "badge": [1290, 616] } ]
+}
+```
+
+- `zones.*`: `[x, y, w, h]` hoặc `{ box, inset?, ink? }` — `inset` = lề trong [trái, trên, phải, dưới], `ink` = màu chữ riêng ô đó.
+- `favorite_slots`: tối đa 8, theo thứ tự yêu thích 1 → 8. `group_slots`: 4 hoặc 6 — số ô nhóm Trang chính hiện = số ô ở đây.
+- Thiếu `label`/`icon` thì app tự lấy phần dưới / giữa-trên của ô. Ô yêu thích chưa ghim: app không in gì, tranh tự đứng.
+- Code đọc: `canhLien()` trong `src/lib/canhErp.ts` → `HomeScene` (luật chữ R1–R4 dùng chung với khuôn cũ).
+
+---
+
+# PHỤ LỤC B — Khuôn CŨ "ghép lớp" (nền + đồ vật PNG rời + toạ độ) — ĐÃ BỎ cho tranh mới từ 14/10
+
+> Giữ nguyên văn để tham khảo: 3 cảnh đang chạy (`ke-hoc-thuat`, `pegboard`, `lang-bk`) vẫn theo khuôn này và code đọc
+> nó (`tai()` trong `canhErp.ts`) chưa gỡ. **Không đặt tranh MỚI theo khuôn này.** Các số mục bên dưới là của bản cũ.
 
 > Dán nguyên file này cho ChatGPT khi đặt một style mới. Mục tiêu: ChatGPT trả về **một bộ file đủ để code ghép cảnh tự động**
 > (nền + đồ vật đặt đúng toạ độ + chữ thật do HTML vẽ) mà không phải đoán gì. Thiếu `manifest.json` đúng khuôn = bộ ảnh CHƯA đạt.

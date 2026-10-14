@@ -453,9 +453,9 @@ export default function HomeScreen() {
   if (canh && !hep) {
     const ngan = canh.nhomO.length   // 6 hoặc 4 — theo từng cảnh
     const nhomCanh = nhomHienTatCa.slice(0, ngan).map((id) => {
-      if (id === 'nhom:viec') return { khoa: KHOA_NHOM[id], ten: MUC_VIEC.ten, onMo: lenViec }
+      if (id === 'nhom:viec') return { khoa: KHOA_NHOM[id], ten: MUC_VIEC.ten, icon: MUC_VIEC.icon, onMo: lenViec }
       const x = dh.adminNav.find((n) => `nhom:${n.nhom ?? ''}` === id)
-      return { khoa: KHOA_NHOM[id] ?? 'group-viec-cua-toi', ten: x?.nhom ?? '', so: mucs.filter((m) => m.nhom === x?.nhom).length, onMo: () => dh.di(leafNhom(x?.nhom ?? '')) }
+      return { khoa: KHOA_NHOM[id] ?? 'group-viec-cua-toi', ten: x?.nhom ?? '', icon: nhomIcon(x?.nhom ?? null), so: mucs.filter((m) => m.nhom === x?.nhom).length, onMo: () => dh.di(leafNhom(x?.nhom ?? '')) }
     })
     return (
       <section style={khung} className="h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
