@@ -8,6 +8,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { mayManHSCuaToi, mayManHSQuay, type MayManHSCuaToi, type MayManHSKetQua } from '../../lib/maymai_hs'
 import { ManHS, DauTrangHS, NutHS, NhomHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
+import { danhDauDaQuayHomNay } from './MoiQuayMayMan'
 
 // Thùy 29/09: khung/màu theo STYLE (skin) em chọn — bỏ nền mây, chồng sách, khẩu hiệu, màu theo giới tính.
 // Màu các ô vòng quay là màu GAME (cố định mọi skin) ⇒ chữ trên ô luôn tối để đọc được.
@@ -83,7 +84,7 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
 
   const O_LIST = d?.che_do === 'nhiem_vu' ? O_MOI : O_CU
   const oCua = (exp: number) => O_LIST.findIndex((o) => o.exp === exp)
-  const load = () => mayManHSCuaToi().then(setD).catch((e) => setErr(e?.message ?? String(e)))
+  const load = () => mayManHSCuaToi().then((x) => { if (x.hom_nay) danhDauDaQuayHomNay(); setD(x) }).catch((e) => setErr(e?.message ?? String(e)))
   useEffect(() => { load() }, [])
 
   async function quay() {
@@ -91,6 +92,7 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
     setDangQuay(true); setErr(null)
     try {
       const r = await mayManHSQuay()
+      danhDauDaQuayHomNay()   // 1 lượt/ngày (DB: unique hoc_sinh_id+ngay) — tắt lời mời quay ngay, khỏi nháy lại khi về màn chính
       const idx = Math.max(0, oCua(r.exp))
       vong.current += 5
       setGoc(vong.current * 360 - idx * (360 / O_LIST.length))  // ô i ở góc i·g → xoay -i·g để kim trỏ vào ô i

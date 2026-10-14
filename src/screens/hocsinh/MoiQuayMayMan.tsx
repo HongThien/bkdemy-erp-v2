@@ -9,6 +9,9 @@ const homNay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho
 const KHOA = () => `bk_moi_quay_${homNay()}`
 const daHoan = () => { try { return sessionStorage.getItem(KHOA()) === '1' } catch { return false } }
 
+/** Em ĐÃ quay hôm nay (hoặc vừa quay xong) ⇒ tắt lời mời cả ngày. MayManHS gọi khi quay xong / khi thấy `hom_nay` đã có — để lời mời không nháy lại lúc Home còn giữ số cũ. */
+export function danhDauDaQuayHomNay() { try { sessionStorage.setItem(KHOA(), '1') } catch { /* không có sessionStorage: bỏ qua */ } }
+
 export default function MoiQuayMayMan({ coLuot, onQuay }: { coLuot: boolean; onQuay: () => void }) {
   const [hoan, setHoan] = useState(daHoan)
   if (!coLuot || hoan) return null
