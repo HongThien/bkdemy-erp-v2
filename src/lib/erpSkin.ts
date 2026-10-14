@@ -69,12 +69,13 @@ export function useSkinErp() {
       skin, cd, gd,
       nenId: tuChon ? NEN_TU_CHON : layHinhNen(skin as Skin, gd.nen).id,
       // Gắn lên khối gốc (thanh trên / trang chính): bên trong chỉ dùng `var(--sk-*)`.
-      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${gd.nen_url}") center / cover no-repeat` } : {}) } as CSSProperties,
+      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${gd.nen_url}") center / cover no-repeat`, '--sk-goc': 'none' } : {}) } as CSSProperties,
       anhNhom: anhNhom(skin),
       iconMatNa: !!skin.anhOMask,   // style đơn sắc: icon là mặt nạ, tô bằng màu chữ
-      nhanVat: nv?.nam,
+      // Nền ảnh cá nhân ⇒ BỎ các asset trang trí của style (nhân vật, hoạ tiết góc, gạch) — ảnh của người dùng là chính.
+      nhanVat: tuChon ? undefined : nv?.nam,
       nhanVatLoc: skin.nhanVatLoc,
-      gach: skin.trangTri?.gach,
+      gach: tuChon ? undefined : skin.trangTri?.gach,
     }
   }, [gd, doc])
 }
