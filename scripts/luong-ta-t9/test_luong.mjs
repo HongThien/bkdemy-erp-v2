@@ -1,13 +1,14 @@
 import pg from 'pg'; import fs from 'fs';
 const SP = 'scripts/luong-ta-t9/'; // chạy từ GỐC repo: cat scripts/luong-ta-t9/test_luong.mjs | node --input-type=module
-const sql=fs.readFileSync('supabase/migrations/202610122210_ta_cham_cong_va_luong.sql','utf8');
+import { pathToFileURL } from 'url';
+const { apMigration } = await import(pathToFileURL('scripts/luong-ta-t9/_mig.mjs').href); // chạy từ GỐC repo
 const {cc}=JSON.parse(fs.readFileSync(SP+'sheet4.json','utf8'));
 const env=fs.readFileSync('.env','utf8').match(/^DATABASE_URL=(.*)$/m)[1].replace(/^['"]|['"]$/g,'');
 const c=new pg.Client({connectionString:env,ssl:{rejectUnauthorized:false}});await c.connect();
 const q=async(s,p)=>(await c.query(s,p)).rows;
 await c.query('begin');
 try {
-  await c.query(sql);
+  await apMigration(c);
   console.log('✔ migration chạy được');
   const idOf=async n=>(await q('select id from nhan_su where ho_ten=$1 limit 1',[n]))[0].id;
   const map={'CườngP':await idOf('Phong Ngọc Cường'),'Duy':await idOf('Nguyễn Ngọc Duy'),'Nguyên':await idOf('Trần Thị Thảo Nguyên')};

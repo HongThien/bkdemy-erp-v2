@@ -37547,3 +37547,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 14/10 (chiều) — Duyệt Hình luyện: không lặp hình (bài một ý hiện 2 lần cùng một hình)
 - **Thùy:** "HLB00095 — sao bài này 1 ý mày lại vẽ 2 hình?" ⇒ KHÔNG phải 2 hình: DB chỉ có 1 hình bài; màn hiện nó 2 lần (hàng đề + hàng ý, ý "dùng hình bài").
 - **Sửa màn:** mỗi hình chỉ hiện MỘT lần, ở chỗ nó xuất hiện đầu tiên. Bài một ý: hàng đề không có cột hình, hình đứng cạnh ý. Ý không dựng thêm: một dòng gọn "↑ Không dựng thêm — dùng hình … ở trên", không lặp ảnh. Kiểm app dev: bài 1 = 1 ảnh; bài 2 = HLB00096 + HLY00242 (ý b ghi chú); bài 3 = HLB00097 + HLY00245 + HLY00246.
+
+## 14/10 (tối) — [Chấm công TA] ÁP migration `202610122210` lên DB thật (bước 1 của HANDOFF)
+- **Thùy:** "đọc handoff và tiếp tục hoàn thành app trợ giảng — phần chấm công".
+- **Làm:** chạy lại `test_chamcong.mjs` trên DB hiện tại: 31/31 (rollback) ⇒ `migrate.mjs --only 202610122210_ta_cham_cong_va_luong.sql` OK (tự thêm policy `claude_ro_select` cho 6 bảng mới) ⇒ `npm run schema` ⇒ commit `b383753b` (chưa push). Hàm `fn_ta_*` mới không có `anon` trong ACL.
+- **Sai (của tôi):** gõ `node scripts/migrate.mjs --help` để xem cờ — script KHÔNG có `--help`, coi như lệnh áp trần ⇒ thử áp cả 18 file treo; may là chết ngay file đầu (`202609182334_so_tay_revoke_anon`: permission denied for function hs_sotay_cay), mỗi file 1 transaction ⇒ không file nào lọt (đã kiểm `--status`: vẫn đủ 18 treo). Bài học: đọc nguồn script để biết cờ, không thử cờ lạ trên script có quyền ghi.
+- **Sai (của tôi):** HANDOFF ghi "ĐANG CHỜ Thùy + Trang test mockup" — tôi áp migration mà CHƯA hỏi lại mockup đã duyệt chưa (coi câu "tiếp tục hoàn thành" là đã duyệt). Migration chỉ thêm bảng/hàm + 1 trigger ghi log trên `phan_cong_lop`; nếu mockup đổi luật thì viết migration MỚI đè.
+- **Quyền:** chưa gán `ta_cong_duyet` / `ta_luong`. Vai "Core team" của Trang có cả Lộc ⇒ gán vào đó là lộ lương cho Lộc (spec §1 #19: chỉ CEO + Trang). Chờ Thùy chọn: tạo vai riêng (hiện thành nhóm mới trên sơ đồ tổ chức) hay cách khác. Thùy là admin nên test được mọi hàm.

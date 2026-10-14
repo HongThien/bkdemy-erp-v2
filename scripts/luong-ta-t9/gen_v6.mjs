@@ -2,7 +2,8 @@ import pg from 'pg'; import fs from 'fs';
 const SP = 'scripts/luong-ta-t9/'; // chạy từ GỐC repo: cat scripts/luong-ta-t9/gen_v6.mjs | node --input-type=module
 const OUT = SP + '_out/phieu6/';
 fs.mkdirSync(OUT, { recursive: true });
-const sql = fs.readFileSync('supabase/migrations/202610122210_ta_cham_cong_va_luong.sql', 'utf8');
+import { pathToFileURL } from 'url';
+const { apMigration } = await import(pathToFileURL('scripts/luong-ta-t9/_mig.mjs').href); // chạy từ GỐC repo
 const { cc } = JSON.parse(fs.readFileSync(SP + 'sheet4.json', 'utf8'));
 const CSS = fs.readFileSync(SP + 'phieu.css', 'utf8');
 const NAME = { 'CườngP': 'Phong Ngọc Cường', 'Duy': 'Nguyễn Ngọc Duy', 'Dương': 'Lộ Thị Dương', 'Hà Giang': 'Nguyễn Hà Giang', 'Hằng': 'Nguyễn Thị Mỹ Hằng', 'Huyền': 'Ngô Ngọc Huyền', 'Khánh': 'Lê Văn Quang Khánh', 'Long': 'Trần Nhật Long', 'MinhP': 'Phạm Quang Minh', 'Ngân': 'Phạm Bảo Ngân', 'Nguyên': 'Trần Thị Thảo Nguyên', 'Thùy Giang': 'Lê Thuỳ Giang', 'TrangQ': 'Hoàng Thị Quỳnh Trang', 'Tùng': 'Tạ Quang Tùng', 'Vân Anh': 'Trần Thị Vân Anh' };
@@ -22,7 +23,7 @@ const q = async (s, p) => (await c.query(s, p)).rows;
 await c.query('begin');
 const summary = [];
 try {
-  await c.query(sql);
+  await apMigration(c);
   await c.query('alter table ta_cong_viec disable trigger ta_cong_viec_kiem');
   const id = {}; for (const [k, n] of Object.entries(NAME)) id[k] = (await q('select id from nhan_su where ho_ten=$1 limit 1', [n]))[0].id;
   const lop = {}; for (const r of await q('select id,ten_lop from lop')) lop[r.ten_lop] = r.id;

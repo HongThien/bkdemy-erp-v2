@@ -2,7 +2,8 @@
 //   cat scripts/luong-ta-t9/test_chamcong.mjs | node --input-type=module
 // Mọi thứ trong BEGIN … ROLLBACK — DB không đổi.
 import pg from 'pg'; import fs from 'fs';
-const sql = fs.readFileSync('supabase/migrations/202610122210_ta_cham_cong_va_luong.sql', 'utf8');
+import { pathToFileURL } from 'url';
+const { apMigration } = await import(pathToFileURL('scripts/luong-ta-t9/_mig.mjs').href); // chạy từ GỐC repo
 const env = fs.readFileSync('.env', 'utf8').match(/^DATABASE_URL=(.*)$/m)[1].replace(/^['"]|['"]$/g, '');
 const c = new pg.Client({ connectionString: env, ssl: { rejectUnauthorized: false } });
 await c.connect();
@@ -19,7 +20,7 @@ const tkCua = async (ten) => (await q("select tk.id, ns.email, ns.id ns from tai
 
 await c.query('begin');
 try {
-  await c.query(sql); ok('migration chạy được', true);
+  ok('migration chạy được', true, (await apMigration(c)).join(', ') || 'đã có sẵn trên DB');
   const ta = await tkCua('Phong Ngọc Cường'), ta2 = await tkCua('Nguyễn Thị Mỹ Hằng');
   const adm = (await q("select tk.id, ns.email, ns.id ns from tai_khoan tk join nhan_su ns on ns.id=tk.nhan_su_id where ns.la_admin_he_thong limit 1"))[0];
   const lop = Object.fromEntries((await q("select ten_lop, id from lop where ten_lop in ('6S2','6S1')")).map(r => [r.ten_lop, r.id]));
@@ -27,7 +28,7 @@ try {
 
   // ── TA: vào ca, khai việc, ra ca ──
   await dongVai(ta);
-  await phaiLoi('chưa vào ca thì không khai được việc', () => q("select fn_ta_khai_viec('tro_giang',$1::date)", [homNay]), 'Chưa chấm công');
+  await phaiLoi('chưa vào ca thì không khai được việc', () => q("select fn_ta_khai_viec('tro_giang',$1::date)", [homNay]), 'Chưa checkin');
   const ca = (await q("select fn_ta_cham_cong_vao('Cơ sở 1') id"))[0].id;
   ok('vào ca', !!ca);
   ok('vào ca lần 2 trả đúng ca cũ (không đẻ ca trùng)', (await q("select fn_ta_cham_cong_vao() id"))[0].id === ca);
@@ -40,7 +41,7 @@ try {
   await phaiLoi('việc "khác" không ghi chú bị chặn', () => q("select fn_ta_khai_viec('khac',$1::date,null,null,null,'10:00','11:00')", [homNay]), 'ghi chú');
   await phaiLoi('bổ trợ không chọn lớp bị chặn', () => q("select fn_ta_khai_viec('bo_tro_bu',$1::date,null,null,null,'10:00','11:00')", [homNay]), 'cần chọn lớp');
   await phaiLoi('không khai trước cho ngày mai', () => q("select fn_ta_khai_viec('tro_giang',($1::date + 1))", [homNay]), 'chưa tới');
-  await phaiLoi('khai việc cách đây 3 ngày bị chặn (quá 24 giờ)', () => q("select fn_ta_khai_viec('tro_giang',($1::date - 3))", [homNay]), '24 giờ');
+  await phaiLoi('khai việc ngày 20/9 (ngoài đợt khai bù tháng 10) bị chặn', () => q("select fn_ta_khai_viec('tro_giang','2026-09-20'::date)"), '24 giờ');
   await q('select fn_ta_bo_viec($1)', [v4]);
   ok('TA tự bỏ việc còn chờ duyệt (giữ vết)', (await q('select trang_thai from ta_cong_viec where id=$1', [v4]))[0].trang_thai === 'tu_choi');
   await phaiLoi('TA không tự duyệt được', () => q("select fn_ta_duyet_cong(array[$1::uuid], array[$2::uuid], 'da_duyet')", [ca, v1]), 'Không có quyền');
@@ -50,7 +51,7 @@ try {
   // ── khai bù ──
   const caBu = (await q("select fn_ta_cham_cong_khai_bu(now() - interval '20 hours', now() - interval '17 hours') id"))[0].id;
   ok('khai bù ca trong 24 giờ', (await q('select khai_bu, duyet from ta_cham_cong where id=$1', [caBu]))[0].khai_bu === true);
-  await phaiLoi('khai bù ca quá 24 giờ bị chặn', () => q("select fn_ta_cham_cong_khai_bu(now() - interval '50 hours', now() - interval '47 hours')"), '24 giờ');
+  await phaiLoi('khai bù ca ngày 20/9 (ngoài đợt, quá 24 giờ) bị chặn', () => q("select fn_ta_cham_cong_khai_bu('2026-09-20 17:00+07', '2026-09-20 19:00+07')"), '24 giờ');
 
   // ── TA khác quên ra từ hôm qua ──
   await dongVai(adm);
@@ -78,8 +79,11 @@ try {
   await q("select fn_ta_duyet_cong('{}', array[$1::uuid], 'tu_choi', 'Không có lịch thi hôm đó')", [v3]);
 
   // ── buổi thiếu công ──
-  const thieu = await q("select * from fn_ta_buoi_thieu_cong('2026-09-22'::date, '2026-09-24'::date)");
-  ok('có danh sách buổi / ca không ai chấm công', thieu.length > 0, `${thieu.filter(r => r.loai === 'buoi').length} buổi + ${thieu.filter(r => r.loai === 'ca').length} ca trong 22–24/9`);
+  const thieu9 = await q("select * from fn_ta_buoi_thieu_cong('2026-09-22'::date, '2026-09-24'::date)");
+  ok('trước mốc chấm công (01/10) không có "thiếu công"', thieu9.length === 0, thieu9.length + ' dòng trong 22–24/9');
+  const thieu = await q("select ngay::text, loai from fn_ta_buoi_thieu_cong('2026-09-28'::date, '2026-10-03'::date)");
+  ok('thiếu công tính từ 01/10', thieu.length > 0 && thieu.every(r => r.ngay >= '2026-10-01'),
+     `${thieu.filter(r => r.loai === 'buoi').length} buổi + ${thieu.filter(r => r.loai === 'ca').length} ca trong 28/9–03/10, sớm nhất ${thieu[0]?.ngay}`);
 
   // ── nhập hộ ──
   const caHo = (await q("select fn_ta_cham_cong_nhap_ho($1, now() - interval '5 days', now() - interval '5 days' + interval '3 hours', 'TA báo quên, đã xác minh với GV') id", [ta2.ns]))[0].id;
