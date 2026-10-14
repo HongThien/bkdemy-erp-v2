@@ -76,6 +76,8 @@ const caMo = () => dong.find((r) => r.loai_dong === 'ca' && r.ngay === HN && !r.
   switch (fn) {
     case 'fn_ta_cong_cua_toi': return ok(dong.filter((r) => r.ngay >= a.p_tu && r.ngay <= (a.p_den ?? a.p_tu)))
     case 'fn_ta_hom_nay': return ok(goiY)
+    case 'fn_tg_lien_ket_cua_toi': return ok(new URLSearchParams(location.search).get('tg') === '1' ? [{ tg_username: 'tg_demo', ten_tg: 'Demo', tu_at: ts(gio) }] : [])
+    case 'fn_tg_ma_lien_ket': return loi('Trang xem thử: không mở Telegram thật')
     case 'fn_ta_khai_bu_cho_phep': return ok([{ tu: homQua, den: HN, han: null, ghi_chu: 'Trong 24 giờ' }, { tu: '2026-10-01', den: HN, han: '2026-11-03T16:59:59Z', ghi_chu: 'Khai lùi tháng 10' }])
     case 'fn_ta_cham_cong_vao': { if (!caMo()) dong.push(moi({ loai_dong: 'ca', vao_at: ts(gio), co: ['ca_khong_viec'] })); return ok('ca') }
     case 'fn_ta_cham_cong_ra': { const c = caMo(); if (!c) return loi('Hôm nay chưa checkin'); c.ra_at = ts(gio); return ok(c.id) }

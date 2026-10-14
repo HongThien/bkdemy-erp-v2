@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from 'react'
 import SearchSelect from '../../components/SearchSelect'
 import { BKTabHeader, BKSegmented } from '../../components/bk/BKUI'
 import HuongDanCong, { daXemHuongDanCong, ghiDaXemHuongDanCong } from './HuongDanCong'
+import { lienKetTgCuaToi, linkKetNoiTg, type LienKetTg } from '../../lib/telegram'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay, ngayCuaTs, soNgayGiua } from '../../lib/tuan'
 import {
   checkin, checkout, khaiBuCa, goiYViec, congCuaToi, khaiBuChoPhep, boViec, ghiCong, dsLoaiViec, dsLop, luongCuaToi,
@@ -77,6 +78,44 @@ function HomNay({ onDoi, onKhaiBu }: { onDoi?: () => void; onKhaiBu: () => void 
             : <p className="rounded-xl bg-[#F4F7FE] px-3 py-2 text-[12.5px] text-[#63709A]">Tự khai bù được trong 24 giờ. Quá 24 giờ thì nhờ quản lý nhập hộ.</p>}
         </div>
       </button>
+      <TheTelegram />
+    </div>
+  )
+}
+
+// ── Nối Telegram (spec-bot-telegram-ta.md): bot đăng việc tồn mỗi sáng 8:00 trong nhóm và tag đúng người. Chưa nối ⇒ card kiểu 1
+// có nút; đã nối ⇒ 1 dòng nhỏ. Quay lại app (sau khi bấm Start trong Telegram) ⇒ tự kiểm lại.
+function TheTelegram() {
+  const [lk, setLk] = useState<LienKetTg | null | undefined>(undefined)
+  const [dang, setDang] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const tai = () => { lienKetTgCuaToi().then(setLk).catch(() => setLk(undefined)) }
+  useEffect(() => {
+    tai()
+    const h = () => { if (document.visibilityState === 'visible') tai() }
+    document.addEventListener('visibilitychange', h)
+    return () => document.removeEventListener('visibilitychange', h)
+  }, [])
+  if (lk === undefined) return null
+  if (lk) return <p className="rounded-2xl bg-white/80 px-3 py-2 text-[12.5px] text-[#63709A]">✈️ Telegram đã kết nối{lk.tg_username ? ` · @${lk.tg_username}` : lk.ten_tg ? ` · ${lk.ten_tg}` : ''}</p>
+  const moi = async () => {
+    setDang(true); setLoi(null)
+    try { window.location.href = await linkKetNoiTg() } catch (e) { setLoi(loiCua(e)) } finally { setDang(false) }
+  }
+  return (
+    <div className="overflow-hidden rounded-[22px] bg-white shadow-sm">
+      <div className="flex items-center gap-3 bg-[#2AABEE] px-4 py-3">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/90 text-[24px]">✈️</span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="font-bubble text-[18px] font-extrabold text-white">Kết nối Telegram</p>
+          <p className="text-[12.5px] text-white/85">Để bot báo đúng việc của bạn mỗi sáng</p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 px-4 py-3.5">
+        <p className="text-[13.5px] text-[#16224D]">Bấm nút bên dưới → Telegram mở chat với bot → bấm <b>Start</b>. Xong quay lại app là được.</p>
+        {loi && <p className="rounded-xl bg-[#FFE4EA] px-3 py-2 text-[12.5px] font-semibold text-[#C0355A]">{loi}</p>}
+        <button onClick={moi} disabled={dang} className="rounded-2xl bg-[#2AABEE] py-3 text-[15px] font-bold text-white active:scale-[.99] disabled:opacity-60">{dang ? 'Đang mở…' : 'Kết nối Telegram'}</button>
+      </div>
     </div>
   )
 }
