@@ -1559,6 +1559,17 @@ Khung hỏi nằm CUỐI trang.
 `--bao-cao [ngày]` · `--lay` · `--tuan [ngày]` · `--thu <file.sql>` áp THỬ migration trước khi gọi. ⚠ Script nối bằng role chủ bảng ⇒
 **không kiểm được RLS và trần 8 giây** — hai thứ đó chỉ kiểm được trên app với phiên đăng nhập thật.
 
+**⭐ TRỢ LÝ CÁ NHÂN theo KHỐI QUẢN LÝ (CEO 14/10) — mở cho ai có khối trên sơ đồ tổ chức, KHÔNG chỉ 3 người ở trên:**
+- **Nguồn khối = `vi_tri.khoi_quan_ly text[]`** (+ `chi_xem bool`) — một nguồn với sơ đồ tổ chức; sơ đồ đúng thì trợ lý đúng. KHÔNG dùng `phan_cong_khoi` (lệch danh sách CEO, phục vụ quyền/bổ trợ).
+  `troly_ca_nhan_khoi()` = hợp khối ở mọi ghế của `current_nhan_su_id()` · `troly_ca_nhan_duoc_dung()` · `fn_troly_ca_nhan_lay(p_so_ngay)` (mig `202610142140`, ĐÃ ÁP).
+- **Cách tính:** KHÔNG định nghĩa lại luật đếm — đọc bản báo cáo trung tâm đã lưu (`fn_troly_bao_cao_lay`, mở cổng bằng `troly.noi_bo`) rồi lọc việc theo lớp thuộc khối, tính lại số gộp + `theo_nguoi` + tỉ lệ nộp BTVN (`_troly_ca_nhan_loc_nop`). Client không truyền người (worker bypass RLS ⇒ chặn ở hàm).
+  **Hạn chế đã biết:** cảnh báo bất thường chung không lọc theo khối nên bản cá nhân không hiện; danh sách việc trung tâm cắt 200/mục (`da_cat`) ⇒ khối nhỏ có thể thấy ít hơn thật; không có nút "tính lại" (chưa có bản hôm nay thì hàm tự tính 1 lần).
+- **Màn:** `troly/BaoCaoCaNhan.tsx` (tái dùng `BanBaoCao`), gắn ở `NhanSuHome`: người thuộc whitelist 3 giữ `TroLyTab`, người chỉ có khối thấy `BaoCaoCaNhan`.
+- **Sơ đồ trợ giảng (đã áp 14/10, `scripts/so-do-tro-giang.mjs` — `--ap` áp, mặc định dry-run, KHÔNG xoá):** Quản lý trợ giảng (Phạm Trang) → trưởng khối (Giang 6 · Cường 7 · Trang 8 · Hải 9 · Ngân 4T5T · Dương 3-4-5 · Đạt 10-11-12) → TA suy từ `phan_cong_lop` (TA 2 khối có ghế ở CẢ 2).
+  **Phó khối** (Quỳnh Trang→7, Thảo Nguyên→8) là ghế `chi_xem` NGANG HÀNG TA, cùng cha là trưởng khối — cố ý KHÔNG làm cấp trên TA vì cây `cha_id` quyết định ai giao việc + ai duyệt cờ trễ thành gậy; gậy vẫn ở trưởng khối. Muốn đổi khối/người: sửa mảng đầu script rồi chạy lại.
+  Ghế để nguyên chờ CEO: TA_Test · Nguyễn Mai Trang (Anh) · Nguyễn Thuỳ Dương (0 lớp) · 2 ghế rỗng tên của Hải, Linh Uyên. Team "Học thuật" còn ghế "Trưởng khối" CŨ sai người (7 = Quỳnh Trang, 8 = Thảo Nguyên) — chưa sửa.
+- **CHƯA làm:** tổng kết tuần cá nhân (thường đạt của chính mình, mẫu nhỏ ⇒ ghi "chưa đủ mẫu" dưới 4 tuần) · nhắc việc sáng (Telegram mới nối cho TA; Học thuật chưa có `tg_user_id`) · **chưa kiểm trên app bằng phiên đăng nhập thật** (chỉ kiểm JWT giả trong ROLLBACK: Giang 6/5 lớp · Cường & Quỳnh Trang 7/13 · Nguyên 8/13 · Dương 3-4-5/9 · Hải 9/14).
+
 **KHUNG HỎI + CÁC TAB CŨ (12–19/08) — còn chạy, gần như không ai dùng:**
 - Đo 29/09: tab Trợ lý 21 câu cả đời, 3 nút Làm/Huỷ/Gác không ai bấm từ 12/08. Trong 14 câu hỏi thật, ~11 câu không ra thứ người hỏi cần:
   khung hỏi mù với các tab ngay dưới nó · danh mục thiếu ET · kết quả công cụ không quay về model · bảng sạch phình 10k → 42k token/câu.
