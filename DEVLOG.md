@@ -37644,3 +37644,17 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 15/10/2026 — Hình luyện: tab ③ Kho bài phóng to
 - **Thùy:** "view kho bài bé quá, mỗi chuỗi phải to gấp 2–3 lần mới đọc được, hình hơi bé". Hàng cũ = 1 dòng mỏng (thumbnail 56×44, đề cắt 1 dòng, ý = chip).
 - **Làm (`CayNhanh.tsx` TabKho):** mỗi chuỗi = CARD: hình 256×192 (~4,5×) bên trái, giả thiết chung dải teal 15px, từng ý a/b/c nguyên văn 15px kèm chip bài mô hình (vàng = chưa gán), nút "Lời giải + hình từng ý" mới mở lời giải/hình ý. Bỏ trạng thái gập 1 dòng. Verify DOM + ảnh trên dev (admin, MH.073 K8). Chưa deploy.
+
+## 14/10 — Kho K6: điền LÝ THUYẾT (nhóm) + VÍ DỤ (dạng bài) cho bản đồ MỚI K6
+- **Yêu cầu Thùy:** "bản đồ lớp 6 mới đã xong dạng bài và mô tả. M điền lý thuyết và ví dụ nhé. Tham khảo từ bản đồ cũ và các quyển sách mà t gửi."
+- **Cấu trúc (spec-ban-do-4-tang.md Q3):** nhóm bài = lý thuyết CHUNG (`dai_bdm_nhom.ly_thuyet`); dạng bài = VÍ DỤ (`dai_bdm_dang_bai.vi_du`). Bản đồ K6 có 44 nhóm / 85 dạng; 34 nhóm đã có lý thuyết (chép từ bản đồ cũ), 5 dạng đã có ví dụ.
+- **Làm:** `kho-rules/dai/lo/k6/ban-do-moi/`: `tao-goi.mjs` (8 gói: nhóm + dạng + mô tả + ứng viên = câu ĐÃ DUYỆT của cụm cũ cùng tên, 629 câu; 85/85 dạng ghép được cụm cũ) → 8 trạm soạn Sonnet (`brief-soan.md`;
+  sách: SGK KNTT 6 + "Phân dạng & bài tập" + tài liệu CEO ở `E:\BK ACADEMY\Kho dạng bài\K6`) → 8 trạm soát Opus giải lại từng ví dụ + vét cạn máy (`brief-soat.md`) → cổng `kiem-goi.mjs` (KaTeX, dấu chấm, tag, không chuyển vế)
+  → `ghi-db.mjs --ghi` (chỉ ghi chỗ RỖNG; dạng đã có ví dụ thì nối ví dụ mới; guard `where … = <bản đã đọc>`; trigger tự ghi `dai_bdm_log`).
+- **Số đo (DB live):** lý thuyết MỚI 10 nhóm (NNB00910, 914, 915, 927–933) · ví dụ MỚI 80 dạng + nối thêm 4 dạng ⇒ 0 nhóm K6 thiếu lý thuyết, 0 dạng thiếu ví dụ; 171 khối ##VD. Soát: 8/8 ĐẠT; đáp số 100% khớp máy; sửa theo soát: dạng trượt anh em (NDB00347, 00815),
+  kiến thức Ch III lọt vào (NDB00367, 00342, 00383), đề mơ hồ (NDB00410/411/403/382/383), lý thuyết nâng cao thiếu điều kiện "khác 0"/"khi và chỉ khi" (NNB00928/932/933/929/927).
+- **Sửa nội dung CÓ SẴN của Thùy (1 chỗ):** NDB00340 ví dụ "43+28=61" → 71 (lỗi số học, guard theo bản đã đọc).
+- **KHÔNG ghi (nhóm đã có chữ, chờ Thùy):** lý thuyết NNB00917 là BẢN SAO của NNB00916 (sai tên nhóm) — bản đề xuất đúng nằm ở `ket-qua/out-6.json` › `de_xuat_ly_thuyet`; lý thuyết cũ lệch chuẩn (`\cdot`/`\times`, `\n` thô, "UCLN" không `\text`, tag `##tc`…) ở NNB00889–893, 895, 898, 899, 900, 904, 909, 920, 923–925.
+- **Trang duyệt:** `ban-do-moi/ban-do-k6-ly-thuyet-vi-du.html` (KaTeX CDN). Kết quả từng gói + biên bản soát: `ban-do-moi/ket-qua/`.
+- **Treo, chờ Thùy:** mô tả trống NDB00338, 00382, 00383, NNB00910, 914, 915, 917 · tên thừa "biết biết" (NDB00416, NNB00928), "tròn chăm" (NDB00342), tên NNB00902 còn "cùng dấu" dù có Đan dấu · cụm cũ đang trỏ nhầm (NDB00343–347, 356, 361) ·
+  ranh giới 346/347, 417/418, NNB00899 trường hợp 3 ↔ NDB00362 · Ch III (ước của số nguyên) ở NNB00914–915 chưa có lý thuyết trên bản đồ.
