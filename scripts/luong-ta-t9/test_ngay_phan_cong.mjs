@@ -79,6 +79,14 @@ try {
   const v2 = (await q("select fn_ta_khai_viec('tro_giang',$1::date) id", [L.d2]))[0].id;
   ok(`ngày ${L.d2} trợ giảng không chọn lớp ⇒ lớp chính TẠI NGÀY ĐÓ = ${L.ten_lop}`, (await q('select lop_id from ta_cong_viec where id=$1', [v2]))[0].lop_id === L.id);
 
+  // ── 3b. App TA đọc công của CHÍNH MÌNH (cùng công thức đối chiếu với màn duyệt) ──
+  const cua = await q('select * from fn_ta_cong_cua_toi($1::date, $2::date)', [L.d1, L.d2]);
+  ok('TA xem công của mình: chỉ dòng của mình (2 ca + 2 việc)', cua.length === 4 && cua.every(r => r.nhan_su_id === X.ns), cua.length + ' dòng');
+  ok('TA thấy việc ngày trước phân công là "làm hộ" TA cũ', cua.find(r => r.id === v1)?.lam_ho === Y.ho_ten);
+  await phaiLoi('TA vẫn không gọi được màn duyệt', () => q('select * from fn_ta_doi_chieu($1::date)', [L.d1]), 'Không có quyền');
+  const cp = await q('select tu::text, den::text from fn_ta_khai_bu_cho_phep()');
+  ok('ngày được khai bù hôm nay: có đợt tháng 10 (01/10 → hôm nay)', cp.some(r => r.tu === '2026-10-01'), cp.map(r => r.tu + '→' + r.den).join(' · '));
+
   // ── 4. Màn duyệt: làm hộ ai theo NGÀY ──
   await dongVai(adm);
   const dc = await q('select * from fn_ta_doi_chieu($1::date, $2::date)', [L.d1, L.d2]);
