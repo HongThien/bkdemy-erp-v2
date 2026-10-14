@@ -204,15 +204,16 @@ function viecNgayCompact() {
 }
 
 function tienDo() {
-  const mine = S.tasks.filter((t) => open(t) && (t.lam === S.me || t.giao === S.me));
-  const pool = mine.length ? mine : S.tasks.filter(open);
-  const top = [...pool].sort((a, b) => diem(b) - diem(a) || a.han.localeCompare(b.han)).slice(0, 3);
-  const nBao = S.tasks.filter((t) => open(t) && diem(t) >= 2).length;
+  // Dashboard CHỈ hiện task CỦA MÌNH (tôi làm). Task tôi giao cần tôi đánh giá chỉ ĐẾM; bảng cả team nằm trong popup.
+  const mine = S.tasks.filter((t) => open(t) && t.lam === S.me);
+  const top = [...mine].sort((a, b) => diem(b) - diem(a) || a.han.localeCompare(b.han)).slice(0, 3);
+  const nBao = mine.filter((t) => diem(t) >= 2).length;
+  const nDg = S.tasks.filter((t) => open(t) && t.giao === S.me && (denHan(t) || t.tt === 'cho')).length;
   return `<div class="card" style="cursor:pointer" data-a="mo:pt"><div class="row" style="margin-bottom:8px"><h3>🚀 Việc phát triển</h3>
-    <span class="muted" style="font-size:11.5px">${mine.length ? 'của bạn' : 'cả team'}${nBao ? ' · ' + nBao + ' cần chú ý' : ''}</span><span class="link" style="margin-left:auto">Mở đầy đủ ›</span></div>
+    <span class="muted" style="font-size:11.5px">của bạn${nBao ? ' · ' + nBao + ' cần chú ý' : ''}</span>${nDg ? `<span class="pill" style="background:#ef4444;color:#fff">${nDg} cần bạn đánh giá</span>` : ''}<span class="link" style="margin-left:auto">Mở đầy đủ ›</span></div>
     ${top.length ? top.map((t) => `<div class="row" style="margin:5px 0"><span style="width:16px;text-align:center">${quaHan(t) ? '⚠' : denHan(t) ? '●' : t.tt === 'cho' ? '⏳' : ''}</span>
       <span class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;font-size:13px">${t.ten}${t.lam !== S.me ? `<span class="muted" style="font-weight:400"> · ${P[t.lam].ten}</span>` : ''}</span>
-      <span class="bar" style="width:100px;flex:none"><i style="width:${t.pct}%"></i></span><b style="width:36px;text-align:right;font-size:12.5px">${t.pct}%</b></div>`).join('') : '<div class="muted">Không có task nào đang mở. ✓</div>'}</div>`;
+      <span class="bar" style="width:100px;flex:none"><i style="width:${t.pct}%"></i></span><b style="width:36px;text-align:right;font-size:12.5px">${t.pct}%</b></div>`).join('') : '<div class="muted">Bạn không có task phát triển nào đang mở. ✓ <span style="color:var(--acc)">Bấm để xem bảng cả team.</span></div>'}</div>`;
 }
 
 function orderBox() {
@@ -406,7 +407,7 @@ document.addEventListener('click', (e) => {
     case 'inbox': S.inbox = !S.inbox; break;
     case 'docThu': { const t = S.thu.find((z) => z.id == x); if (t) t.un = false; break; }
     case 'docHet': S.thu.filter((t) => t.to === S.me).forEach((t) => (t.un = false)); break;
-    case 'mo': S.modal = x; S.taskTab = capDuoi(S.me).length ? 'giao' : 'toi'; S.openTask = null; break;
+    case 'mo': S.modal = x; S.taskTab = 'team'; S.openTask = null; break;
     case 'close': S.modal = null; S.formGiao = false; break;
     case 'toViec': S.modal = null; toast('→ mở màn “Việc của tôi”'); return;
     case 'tile': toast('→ mở màn tương ứng'); return;

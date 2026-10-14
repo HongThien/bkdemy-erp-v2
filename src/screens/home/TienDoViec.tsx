@@ -1,6 +1,6 @@
-// BOX "Tiến độ công việc" (Trang chính, ngang chỗ lời chào): task phát triển — CHỈ 3 task BÁO ĐỘNG NHẤT.
-// Báo động = quá hạn › đến hạn hôm nay › chờ cấp trên duyệt, rồi hạn gần nhất. Ưu tiên task liên quan tới tôi
-// (tôi làm / tôi giao); không có thì lấy của cả team. Bấm box ⇒ popup đầy đủ (Cả team / Của tôi / Tôi giao + giao task…).
+// BOX "Việc phát triển" (Trang chính, ngang chỗ lời chào): CHỈ task CỦA MÌNH (tôi làm) — 3 task BÁO ĐỘNG NHẤT.
+// Báo động = quá hạn › đến hạn hôm nay › chờ cấp trên duyệt, rồi hạn gần nhất. Bấm box ⇒ popup BẢNG TO toàn team
+// (Cả team / Của tôi / Tôi giao + giao task, đánh giá…).
 // Nguồn = fn_task_bang (DB đã tính cờ den_han / qua_han) — client chỉ xếp hạng để hiện 3 dòng.
 import { useEffect, useState } from 'react'
 import { useStore } from '../../store/useStore'
@@ -23,10 +23,11 @@ export default function TienDoViec() {
   const dong = () => { setMo(false); nap() }
 
   const dangMoDs = (rows ?? []).filter((t) => dangMoTask(t.trang_thai))
-  const lienQuan = dangMoDs.filter((t) => t.nguoi_lam_id === meId || t.nguoi_giao_id === meId)
-  const cuaToi = lienQuan.length > 0
-  const hien = [...(cuaToi ? lienQuan : dangMoDs)].sort((a, b) => diemBaoDong(b) - diemBaoDong(a) || a.han.localeCompare(b.han)).slice(0, SO_DONG)
-  const baoDong = dangMoDs.filter((t) => diemBaoDong(t) >= 2).length
+  // Dashboard CHỈ hiện task CỦA MÌNH (tôi làm). Task tôi giao cần tôi đánh giá thì chỉ ĐẾM (danh sách ở popup).
+  const cuaToiDs = dangMoDs.filter((t) => t.nguoi_lam_id === meId)
+  const hien = [...cuaToiDs].sort((a, b) => diemBaoDong(b) - diemBaoDong(a) || a.han.localeCompare(b.han)).slice(0, SO_DONG)
+  const baoDong = cuaToiDs.filter((t) => diemBaoDong(t) >= 2).length
+  const canDanhGia = dangMoDs.filter((t) => t.nguoi_giao_id === meId && (t.den_han || t.trang_thai === 'cho_duyet')).length
 
   return (
     <>
@@ -34,12 +35,13 @@ export default function TienDoViec() {
         onKeyDown={(e) => { if (e.key === 'Enter') setMo(true) }}>
         <div className="mb-2 flex items-center gap-2">
           <h3 className="text-[15px] font-bold text-[var(--sk-ink)]" style={HEAD}>🚀 Việc phát triển</h3>
-          <span className="text-[11.5px] text-[var(--sk-muted)]">{cuaToi ? 'của bạn' : 'cả team'}{baoDong > 0 ? ` · ${baoDong} cần chú ý` : ''}</span>
+          <span className="text-[11.5px] text-[var(--sk-muted)]">của bạn{baoDong > 0 ? ` · ${baoDong} cần chú ý` : ''}</span>
+          {canDanhGia > 0 && <span className="rounded-full bg-rose-500 px-2 py-0.5 text-[10.5px] font-bold text-white" title="Task bạn giao đang chờ bạn đánh giá">{canDanhGia} cần bạn đánh giá</span>}
           <span className="ml-auto text-[12px] font-semibold text-[var(--sk-acc)]">Mở đầy đủ ›</span>
         </div>
         {rows === null ? <p className="text-[12.5px] text-[var(--sk-muted)]">Đang tải…</p>
           : loi ? <p className="text-[12.5px] text-[var(--sk-muted)]">Chưa tải được danh sách task.</p>
-          : hien.length === 0 ? <p className="text-[12.5px] text-[var(--sk-muted)]">Không có task nào đang mở. ✓</p>
+          : hien.length === 0 ? <p className="text-[12.5px] text-[var(--sk-muted)]">Bạn không có task phát triển nào đang mở. ✓ <span className="text-[var(--sk-acc)]">Bấm để xem bảng cả team.</span></p>
           : (
             <ul className="space-y-1.5">
               {hien.map((t) => {
@@ -63,7 +65,7 @@ export default function TienDoViec() {
             </ul>
           )}
       </div>
-      {mo && <ModalFull tieuDe="🚀 Việc phát triển" onDong={dong} cao="86vh"><BangTaskScreen nhung macDinh={cuaToi ? 'toi' : 'team'} /></ModalFull>}
+      {mo && <ModalFull tieuDe="🚀 Việc phát triển" onDong={dong} cao="86vh"><BangTaskScreen nhung macDinh="team" /></ModalFull>}
     </>
   )
 }
