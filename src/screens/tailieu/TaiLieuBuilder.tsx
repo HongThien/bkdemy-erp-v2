@@ -328,19 +328,26 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
         {btvn && (btvn.caus.length > 0
           ? <ol className="mt-2 space-y-1">{btvn.caus.map((c, i) => (
             <li key={c.ma_cau} className="rounded-md border border-slate-100 bg-white/70 px-2.5 py-1.5">
+              {/* ⭐ 10-14 (Thùy "BTVN đề bị hình che khuất trong builder") — tách 3 KHỐI dọc, không ép
+                  đề vào flex row với controls + truncate (MathText render <div> cho câu multi-line làm
+                  truncate chết, đề wrap 4 dòng chen giữa controls, hình ở dưới trông như che text).
+                  Giờ: Hàng 1 = header (số + mã + loại) + controls (dòng/cột/chế độ/mm/✕) đẩy phải. Hàng
+                  2 = đề đầy đủ (wrap tự nhiên). Hàng 3 = ảnh (nếu có). */}
               <div className="flex items-center gap-2">
                 <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
                 <MaCau ma={c.ma_cau} />
-                <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
                 <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
-                <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-                  <input type="number" min={0} max={50} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
-                </label>
-                <ColSel value={colByCau[c.ma_cau] ?? 1} onChange={(n) => onCol(c.ma_cau, n)} />
-                {coCheDoHinh && c.anh_de && <CheDoHinhBtn cur={hinhCheDoByCau[c.ma_cau] ?? 'hien'} onChange={(v) => onHinhCheDo(c.ma_cau, v)} />}
-                {c.anh_de && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
-                <button onClick={() => onApply(btvn.id, btvn.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+                <span className="ml-auto flex flex-wrap items-center justify-end gap-2">
+                  <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
+                    <input type="number" min={0} max={50} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                  </label>
+                  <ColSel value={colByCau[c.ma_cau] ?? 1} onChange={(n) => onCol(c.ma_cau, n)} />
+                  {coCheDoHinh && c.anh_de && <CheDoHinhBtn cur={hinhCheDoByCau[c.ma_cau] ?? 'hien'} onChange={(v) => onHinhCheDo(c.ma_cau, v)} />}
+                  {c.anh_de && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
+                  <button onClick={() => onApply(btvn.id, btvn.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+                </span>
               </div>
+              <div className="mt-1.5 text-[13px] leading-relaxed text-slate-700"><MathText>{c.noi_dung}</MathText></div>
               {/* ⭐ 16/09 (CEO): preview HÌNH đầy đủ ở builder (không chỉ ở KhoPicker) — câu có hình phải nhìn thấy hình khi soạn giáo trình, tránh chọn nhầm. */}
               {c.anh_de && <AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={hinhCheDoByCau[c.ma_cau] ?? 'hien'} />}
             </li>
@@ -385,16 +392,20 @@ function MaCau({ ma }: { ma: string }) {
 function CauRow({ no, c, col, onCol, onRemove, cheDo, onCheDo }: { no: number; c: CauHoi; col: number; onCol: (n: number) => void; onRemove: () => void; cheDo?: CheDoHinh; onCheDo?: (v: CheDoHinh) => void }) {
   return (
     <li className="rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
-      <div className="flex items-start gap-2">
+      {/* ⭐ 10-14 (Thùy): tách 3 KHỐI dọc như BTVN — truncate chết khi MathText render <div> cho câu
+          multi-line (câu có a/b/c), đề chen giữa controls trông loạn. Header + text + ảnh mỗi khối riêng. */}
+      <div className="flex items-center gap-2">
         <span className="text-[12px] font-bold text-slate-400">{no}.</span>
         <MaCau ma={c.ma_cau} />
-        <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
-        <ColSel value={col} onChange={onCol} />
-        {onCheDo && c.anh_de && <CheDoHinhBtn cur={cheDo ?? 'hien'} onChange={onCheDo} />}
-        {c.anh_de && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
-        <button onClick={onRemove} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+        <span className="ml-auto flex flex-wrap items-center justify-end gap-2">
+          <ColSel value={col} onChange={onCol} />
+          {onCheDo && c.anh_de && <CheDoHinhBtn cur={cheDo ?? 'hien'} onChange={onCheDo} />}
+          {c.anh_de && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
+          <button onClick={onRemove} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+        </span>
       </div>
+      <div className="mt-1.5 text-[13px] leading-relaxed text-slate-700"><MathText>{c.noi_dung}</MathText></div>
       {/* ⭐ 16/09 (CEO): preview hình đầy đủ khi câu có ảnh đề — không chỉ text truncate.
           ⭐ 21/09: preview KHÔNG bị `cheDo` ảnh hưởng (CEO chốt Q2: preview đủ, cheDo chỉ áp lúc IN). */}
       {c.anh_de && <AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={cheDo} />}
