@@ -89,6 +89,7 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 
 ## 3. Luật CHUNG mọi khối (file khối không lặp lại)
 
+- ⭐⭐⭐ **MỖI LÔ CẦN CEO DUYỆT PHẢI KÈM MỘT FILE HTML XEM ĐƯỢC** (Thùy 14/10, *"nói bao lần rồi. Muốn duyệt gì thì t phải xem được"* — áp MỌI khối): mục "Cần quyết" (ảnh NGUYÊN câu từ đề/sách gốc + vấn đề một câu) ở đầu, rồi toàn bộ đề + hình + đáp số + lời giải. Dựng ngay khi báo lô, không chờ bị hỏi; báo cáo cuối nêu đường dẫn file. Khuôn: `lo/k7/CKI-7-duyet.html`, dựng bằng `scripts/kho/de-thi/build-duyet-html.mjs`. Chi tiết: HANDOFF.md ② "LUẬT DUYỆT".
 - **Hai phần** `**Phần 1. Hướng dẫn**` (mấu chốt · vì sao nghĩ ra · các bước theo mạch nghĩ · chú ý bẫy) và `**Phần 2. Trình bày**`
   (đúng cái HS viết vào bài thi). CEO 04/10, giữ cho mọi khối. Phần 1 là phần quan trọng nhất. **Mọi câu** đủ 2 phần, kể cả câu
   trắc nghiệm mà sách chỉ đòi ghi đáp số (CEO 08/10).
