@@ -329,3 +329,10 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Dashboard (tab đầu của hub Bổ trợ):** mỗi tuần (T2→CN) × Yếu · Bù · Đuổi: **đã chạy / chốt**, 3 tuần gần nhất, lùi/tới từng tuần.
   Đơn vị = 1 lượt học sinh trong 1 ca. Chốt = mọi lượt đã xếp có ngày trong tuần (kể cả ca vắng / không diễn ra), trừ ca đã gỡ khỏi lịch.
   Đã chạy = em có mặt. Mọi số + phân loại ở `fn_bo_tro_dashboard_tuan`; muốn đổi cách đếm thì sửa hàm này, không sửa màn.
+
+## 20. Cập nhật 14/10 — Hình yếu theo mô hình (bước 1)
+
+- Bổ trợ yếu theo dạng KHÔNG thấy Hình theo mô hình (số đo ở `fn_mastery_cells_hinh`, theo `hinh_baitoan_id`). Bước 1 = DANH SÁCH, chưa vào case:
+  ERP hub Bổ trợ › Yếu › "Hình yếu" · app TA hộp "Hình yếu theo mô hình" (chỉ lớp mình). Trợ giảng dạy trên giấy rồi bấm "Đã dạy" (ghi vết `hinh_yeu_da_day`);
+  đo lại sau ngày dạy mà vẫn yếu ⇒ cờ "dạy rồi vẫn yếu". Hàm: `fn_hinh_yeu_theo_mo_hinh` · `fn_hinh_yeu_danh_dau_day`.
+- Bước 2 (chờ Thùy): đưa mô hình vào case, luyện/test/retest, cách chấm bài chứng minh.

@@ -8,6 +8,7 @@ import BoTroScreen from './BoTroScreen'
 import XepLichBoTroYeuScreen from '../danhgia/XepLichBoTroYeuScreen'
 import DuyetBoTroYeuScreen from '../danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from '../danhgia/NoiDungBoTroYeuScreen'
+import HinhYeuScreen from './HinhYeuScreen'
 import TrangThaiCaBoTroScreen from '../danhgia/TrangThaiCaBoTroScreen'
 import DanhGiaCaBoTroScreen from '../danhgia/DanhGiaCaBoTroScreen'
 import LichPhongScreen from './LichPhongScreen'
@@ -25,8 +26,8 @@ const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
 ]
 // Thùy 24/09: CẢ folder "Bổ trợ yếu" ở Quản lý chất lượng (Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) chuyển vào đây, cùng Xếp bổ trợ —
 // thanh toggle theo đúng thứ tự luồng: Duyệt → Nội dung → Xếp → Trạng thái ca → Đánh giá ca.
-export type YeuSub = 'duyet' | 'noidung' | 'xep' | 'trangthai' | 'danhgia'
-const YEU_SUB: [YeuSub, string][] = [['duyet', 'Duyệt bổ trợ'], ['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca']]
+export type YeuSub = 'duyet' | 'noidung' | 'xep' | 'trangthai' | 'danhgia' | 'hinh'
+const YEU_SUB: [YeuSub, string][] = [['duyet', 'Duyệt bổ trợ'], ['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca'], ['hinh', 'Hình yếu']] // Thùy 14/10: Hình theo mô hình — bổ trợ theo dạng chưa thấy
 const NHO: { tab: BoTroTab; yeu: YeuSub } = { tab: 'lichphong', yeu: 'xep' }
 let capNhat: ((t: BoTroTab) => void) | null = null
 // Nhảy tới đúng tab từ nơi khác (Việc của tôi, Trợ lý…): gọi TRƯỚC hoặc SAU setStaffLeaf('botro') đều được.
@@ -44,7 +45,7 @@ function YeuTab() {
           ))}
         </div>
       </div>
-      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : <XepLichBoTroYeuScreen />}
+      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : sub === 'hinh' ? <HinhYeuScreen /> : <XepLichBoTroYeuScreen />}
     </div>
   )
 }
