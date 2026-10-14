@@ -11,7 +11,7 @@ const LIMIT = 10000
 /** Dáng card của lưới nhóm trên Trang chính. */
 export type DangCard = 'vuong' | 'ngang' | 'cao' | 'tron' | 'gon'
 export type HomeBoCuc = { an?: string[]; thu_tu?: string[]; dang_card?: DangCard }
-export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; home_bo_cuc?: HomeBoCuc | null; erp_giao_dien?: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi' } | null }
+export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; home_bo_cuc?: HomeBoCuc | null; erp_giao_dien?: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null } | null }
 
 // Ai là "tôi" (nhân sự đang đăng nhập). Ném lỗi nếu tài khoản chưa gắn hồ sơ nhân sự.
 export async function myNhanSuId(): Promise<string> {
@@ -363,7 +363,7 @@ export async function updatePhimTatCongThuc(nhanSuId: string, map: Record<string
 }
 
 // Giao diện vỏ ERP tôi chọn (mig 202610131824) — {skin, nen, che_do} theo style app HS. Ghi đè cả object.
-export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi' }): Promise<void> {
+export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null }): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ erp_giao_dien: gd, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }

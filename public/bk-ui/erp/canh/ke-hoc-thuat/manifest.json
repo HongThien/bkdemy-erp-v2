@@ -1,0 +1,797 @@
+{
+  "style_id": "ke-hoc-thuat",
+  "ten": "Kệ học thuật — theo ảnh đã chốt",
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "tone": "sang",
+  "background": {
+    "file": "background.jpg",
+    "width": 1672,
+    "height": 941,
+    "an_toan": [
+      0,
+      12,
+      1672,
+      917
+    ],
+    "tam": [
+      836,
+      470
+    ]
+  },
+  "background_4x3": {
+    "file": "background-4x3.jpg",
+    "width": 1440,
+    "height": 1080
+  },
+  "tokens": {
+    "ink": "#403128",
+    "muted": "#806c58",
+    "acc": "#b8552d",
+    "acc_ink": "#ffffff",
+    "surface": "#fff5e7",
+    "surface2": "#efe0cc",
+    "line": "#d2b99b",
+    "radius": 16,
+    "font_head": "Baloo 2",
+    "font_body": "Be Vietnam Pro"
+  },
+  "regions": {
+    "today": [
+      33,
+      57,
+      550,
+      481
+    ],
+    "greeting": [
+      609,
+      12,
+      267,
+      160
+    ],
+    "development": [
+      883,
+      12,
+      575,
+      211
+    ],
+    "toolbar": [
+      1470,
+      12,
+      185,
+      101
+    ],
+    "favorites": [
+      609,
+      195,
+      1028,
+      377
+    ],
+    "order": [
+      602,
+      597,
+      454,
+      285
+    ],
+    "groups": [
+      1078,
+      588,
+      581,
+      319
+    ],
+    "character": [
+      12,
+      495,
+      435,
+      305
+    ]
+  },
+  "objects": [
+    {
+      "id": "panel-today",
+      "file": "objects/panel-today.png",
+      "width": 574,
+      "height": 505,
+      "place": [
+        21,
+        45,
+        574,
+        505
+      ],
+      "z": 20,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false,
+      "text_box": [
+        85,
+        97,
+        441,
+        349
+      ]
+    },
+    {
+      "id": "panel-greeting",
+      "file": "objects/panel-greeting.png",
+      "width": 291,
+      "height": 184,
+      "place": [
+        597,
+        0,
+        291,
+        184
+      ],
+      "z": 20,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false,
+      "text_box": [
+        34,
+        67,
+        217,
+        77
+      ]
+    },
+    {
+      "id": "panel-development",
+      "file": "objects/panel-development.png",
+      "width": 599,
+      "height": 235,
+      "place": [
+        871,
+        0,
+        599,
+        235
+      ],
+      "z": 20,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false,
+      "text_box": [
+        35,
+        59,
+        526,
+        134
+      ]
+    },
+    {
+      "id": "panel-order",
+      "file": "objects/panel-order.png",
+      "width": 478,
+      "height": 309,
+      "place": [
+        590,
+        585,
+        478,
+        309
+      ],
+      "z": 20,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false,
+      "text_box": [
+        51,
+        35,
+        371,
+        227
+      ]
+    },
+    {
+      "id": "decoration-favorites-sign",
+      "file": "objects/decoration-favorites-sign.png",
+      "width": 206,
+      "height": 75,
+      "place": [
+        597,
+        183,
+        206,
+        75
+      ],
+      "z": 20,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false,
+      "text_box": [
+        33,
+        24,
+        142,
+        29
+      ]
+    },
+    {
+      "id": "btn-primary",
+      "file": "objects/btn-primary.png",
+      "width": 108,
+      "height": 125,
+      "place": [
+        1458,
+        0,
+        108,
+        125
+      ],
+      "z": 40,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": true,
+      "text_box": [
+        24,
+        38,
+        60,
+        65
+      ],
+      "hit_box": [
+        12,
+        12,
+        84,
+        101
+      ],
+      "slice": [
+        24,
+        24,
+        24,
+        24
+      ]
+    },
+    {
+      "id": "btn-secondary",
+      "file": "objects/btn-secondary.png",
+      "width": 112,
+      "height": 125,
+      "place": [
+        1555,
+        0,
+        112,
+        125
+      ],
+      "z": 40,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": true,
+      "text_box": [
+        24,
+        38,
+        64,
+        65
+      ],
+      "hit_box": [
+        12,
+        12,
+        88,
+        101
+      ],
+      "slice": [
+        24,
+        24,
+        24,
+        24
+      ]
+    },
+    {
+      "id": "favorite-slot-1",
+      "file": "objects/favorite-slot-1.png",
+      "width": 203,
+      "height": 181,
+      "place": [
+        626,
+        240,
+        203,
+        181
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        175,
+        151
+      ],
+      "interactive": true,
+      "label_box": [
+        32,
+        135,
+        129,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        179,
+        157
+      ]
+    },
+    {
+      "id": "favorite-slot-2",
+      "file": "objects/favorite-slot-2.png",
+      "width": 286,
+      "height": 182,
+      "place": [
+        810,
+        239,
+        286,
+        182
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        258,
+        152
+      ],
+      "interactive": true,
+      "label_box": [
+        46,
+        136,
+        190,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        262,
+        158
+      ]
+    },
+    {
+      "id": "favorite-slot-3",
+      "file": "objects/favorite-slot-3.png",
+      "width": 222,
+      "height": 189,
+      "place": [
+        1095,
+        232,
+        222,
+        189
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        194,
+        159
+      ],
+      "interactive": true,
+      "label_box": [
+        27,
+        143,
+        165,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        198,
+        165
+      ]
+    },
+    {
+      "id": "favorite-slot-4",
+      "file": "objects/favorite-slot-4.png",
+      "width": 306,
+      "height": 174,
+      "place": [
+        1303,
+        248,
+        306,
+        174
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        278,
+        144
+      ],
+      "interactive": true,
+      "label_box": [
+        99,
+        87,
+        121,
+        43
+      ],
+      "hit_box": [
+        12,
+        12,
+        282,
+        150
+      ]
+    },
+    {
+      "id": "favorite-slot-5",
+      "file": "objects/favorite-slot-5.png",
+      "width": 277,
+      "height": 156,
+      "place": [
+        604,
+        427,
+        277,
+        156
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        249,
+        126
+      ],
+      "interactive": true,
+      "label_box": [
+        71,
+        112,
+        152,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        253,
+        132
+      ]
+    },
+    {
+      "id": "favorite-slot-6",
+      "file": "objects/favorite-slot-6.png",
+      "width": 240,
+      "height": 169,
+      "place": [
+        870,
+        414,
+        240,
+        169
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        212,
+        139
+      ],
+      "interactive": true,
+      "label_box": [
+        42,
+        125,
+        153,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        216,
+        145
+      ]
+    },
+    {
+      "id": "favorite-slot-7",
+      "file": "objects/favorite-slot-7.png",
+      "width": 290,
+      "height": 174,
+      "place": [
+        1105,
+        410,
+        290,
+        174
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        262,
+        144
+      ],
+      "interactive": true,
+      "label_box": [
+        48,
+        129,
+        151,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        266,
+        150
+      ]
+    },
+    {
+      "id": "favorite-slot-8",
+      "file": "objects/favorite-slot-8.png",
+      "width": 270,
+      "height": 156,
+      "place": [
+        1379,
+        428,
+        270,
+        156
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        242,
+        126
+      ],
+      "interactive": true,
+      "label_box": [
+        37,
+        111,
+        163,
+        25
+      ],
+      "hit_box": [
+        12,
+        12,
+        246,
+        132
+      ]
+    },
+    {
+      "id": "group-viec-cua-toi",
+      "file": "objects/group-viec-cua-toi.png",
+      "width": 188,
+      "height": 160,
+      "place": [
+        1080,
+        590,
+        188,
+        160
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        158,
+        27
+      ],
+      "interactive": true,
+      "label_box": [
+        30,
+        118,
+        132,
+        23
+      ],
+      "hit_box": [
+        12,
+        12,
+        164,
+        136
+      ]
+    },
+    {
+      "id": "group-van-hanh",
+      "file": "objects/group-van-hanh.png",
+      "width": 195,
+      "height": 160,
+      "place": [
+        1256,
+        590,
+        195,
+        160
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        165,
+        27
+      ],
+      "interactive": true,
+      "label_box": [
+        34,
+        118,
+        137,
+        23
+      ],
+      "hit_box": [
+        12,
+        12,
+        171,
+        136
+      ]
+    },
+    {
+      "id": "group-gamification",
+      "file": "objects/group-gamification.png",
+      "width": 203,
+      "height": 160,
+      "place": [
+        1448,
+        590,
+        203,
+        160
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        173,
+        27
+      ],
+      "interactive": true,
+      "label_box": [
+        32,
+        118,
+        144,
+        23
+      ],
+      "hit_box": [
+        12,
+        12,
+        179,
+        136
+      ]
+    },
+    {
+      "id": "group-hoc-thuat",
+      "file": "objects/group-hoc-thuat.png",
+      "width": 190,
+      "height": 158,
+      "place": [
+        1078,
+        744,
+        190,
+        158
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        160,
+        27
+      ],
+      "interactive": true,
+      "label_box": [
+        32,
+        116,
+        131,
+        23
+      ],
+      "hit_box": [
+        12,
+        12,
+        166,
+        134
+      ]
+    },
+    {
+      "id": "group-quan-ly-chat-luong",
+      "file": "objects/group-quan-ly-chat-luong.png",
+      "width": 210,
+      "height": 166,
+      "place": [
+        1253,
+        736,
+        210,
+        166
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        180,
+        27
+      ],
+      "interactive": true,
+      "label_box": [
+        30,
+        125,
+        151,
+        23
+      ],
+      "hit_box": [
+        12,
+        12,
+        186,
+        142
+      ]
+    },
+    {
+      "id": "group-core-team",
+      "file": "objects/group-core-team.png",
+      "width": 195,
+      "height": 168,
+      "place": [
+        1457,
+        735,
+        195,
+        168
+      ],
+      "z": 30,
+      "ink": "#403128",
+      "badge_anchor": [
+        165,
+        27
+      ],
+      "interactive": true,
+      "label_box": [
+        33,
+        126,
+        136,
+        23
+      ],
+      "hit_box": [
+        12,
+        12,
+        171,
+        144
+      ]
+    },
+    {
+      "id": "decoration-note",
+      "file": "objects/decoration-note.png",
+      "width": 122,
+      "height": 131,
+      "place": [
+        114,
+        446,
+        122,
+        131
+      ],
+      "z": 42,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false
+    },
+    {
+      "id": "decoration-desk-books",
+      "file": "objects/decoration-desk-books.png",
+      "width": 798,
+      "height": 169,
+      "place": [
+        0,
+        784,
+        798,
+        169
+      ],
+      "z": 42,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false
+    },
+    {
+      "id": "decoration-desk-cup",
+      "file": "objects/decoration-desk-cup.png",
+      "width": 103,
+      "height": 105,
+      "place": [
+        437,
+        704,
+        103,
+        105
+      ],
+      "z": 42,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false
+    },
+    {
+      "id": "decoration-desk-flowers",
+      "file": "objects/decoration-desk-flowers.png",
+      "width": 103,
+      "height": 206,
+      "place": [
+        522,
+        598,
+        103,
+        206
+      ],
+      "z": 42,
+      "ink": "#403128",
+      "badge_anchor": null,
+      "interactive": false
+    }
+  ],
+  "characters": [
+    {
+      "id": "character",
+      "file": "characters/character.png",
+      "width": 288,
+      "height": 329,
+      "place": [
+        171,
+        483,
+        288,
+        329
+      ],
+      "z": 45
+    },
+    {
+      "id": "pet",
+      "file": "characters/pet.png",
+      "width": 230,
+      "height": 125,
+      "place": [
+        0,
+        680,
+        230,
+        125
+      ],
+      "z": 45
+    }
+  ]
+}

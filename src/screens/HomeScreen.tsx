@@ -10,6 +10,8 @@ import { useStore } from '../store/useStore'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, NEN_ERP } from '../lib/erpSkin'
+import { napCanh, CANH_ERP, duongDanCanh, KHOA_NHOM, type Canh } from '../lib/canhErp'
+import HomeScene from './home/HomeScene'
 import { uploadNenErp } from '../lib/nhansu'
 import { nenCua } from './hocsinh/skin/registry'
 import { HEAD, THE } from './home/khung'
@@ -149,6 +151,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
   }
   const doi = useStore((s) => s.doiGiaoDienErp)
   const gdNenUrl = useStore((s) => s.erpGiaoDien.nen_url)
+  const canhDangDung = useStore((s) => s.erpGiaoDien.canh) ?? null
   const [mo, setMo] = useState(false)
   const khung = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -209,6 +212,20 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
               {loiNen && <p className="mt-1.5 text-[12px] text-rose-500">Chưa tải được ảnh: {loiNen}</p>}
             </>
           )}
+          {/* CẢNH "Phòng học": nền + đồ vật ghép sẵn (bộ ChatGPT). Chỉ máy tính; màn hẹp tự về bố cục thường. */}
+          <div className={`mt-3 ${muc}`}>Phòng học (cảnh có đồ vật)</div>
+          <div className={hep ? 'grid grid-cols-3 gap-2' : 'grid grid-cols-5 gap-2'}>
+            <button onClick={() => doi({ canh: null })} className={o(!canhDangDung)} style={{ borderRadius: 8 }}>
+              <span className="flex h-[58px] items-center justify-center bg-[var(--sk-surface2)] text-[12px] text-[var(--sk-muted)]">Không dùng</span>
+              <span className={ten}>Bố cục thường</span>
+            </button>
+            {CANH_ERP.map((c) => (
+              <button key={c.id} title={c.moTa} onClick={() => doi({ canh: c.id })} className={o(canhDangDung === c.id)} style={{ borderRadius: 8 }}>
+                <span className="block h-[58px]" style={{ background: `url("${duongDanCanh(c.id)}/background.jpg") center / cover no-repeat` }} />
+                <span className={ten}>{c.ten}</span>
+              </button>
+            ))}
+          </div>
           {sk.skin.cheDo.length > 1 && (
             <div className="mt-3 flex items-center gap-2">
               <span className={muc.replace('mb-1.5 ', '')}>Chế độ</span>
@@ -313,6 +330,14 @@ function TuyChinh({ cacBox, an, doi, hep, dang, doiDang }: { cacBox: { id: strin
 export default function HomeScreen() {
   const dh = useDieuHuong()
   const sk = useSkinErp()
+  const canhId = useStore((s) => s.erpGiaoDien.canh) ?? null
+  const [canh, setCanh] = useState<Canh | null>(null)
+  useEffect(() => {
+    if (!canhId) { setCanh(null); return }
+    let con = true
+    napCanh(canhId).then((c) => { if (con) setCanh(c) }).catch(() => { if (con) setCanh(null) })
+    return () => { con = false }
+  }, [canhId])
   const [keo, setKeo] = useState<string | null>(null)   // box đang kéo
   const [dich, setDich] = useState<string | null>(null)  // box đang bị rê lên
   const isMobile = useIsMobile()
@@ -423,6 +448,43 @@ export default function HomeScreen() {
     )
   }
   const lon = xep(KHU_LON)
+
+  // ── CẢNH "Phòng học": thay cả bố cục thường (chỉ màn rộng; cảnh chưa tải xong thì hiện bố cục thường) ──
+  if (canh && !hep) {
+    const ngan = canh.nhomO.length   // 6 hoặc 4 — theo từng cảnh
+    const nhomCanh = nhomHienTatCa.slice(0, ngan).map((id) => {
+      if (id === 'nhom:viec') return { khoa: KHOA_NHOM[id], ten: MUC_VIEC.ten, onMo: lenViec }
+      const x = dh.adminNav.find((n) => `nhom:${n.nhom ?? ''}` === id)
+      return { khoa: KHOA_NHOM[id] ?? 'group-viec-cua-toi', ten: x?.nhom ?? '', so: mucs.filter((m) => m.nhom === x?.nhom).length, onMo: () => dh.di(leafNhom(x?.nhom ?? '')) }
+    })
+    return (
+      <section style={khung} className="h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
+        <HomeScene canh={canh}
+          today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} /> : null}
+          dev={hienBox('tien_do') ? <TienDoViec /> : null}
+          order={hienBox('order') ? <BangOrder /> : null}
+          profile={(
+            <div className="flex w-full items-center gap-2">
+              {dh.me && (
+                <AvatarEditButton nhanSuId={dh.me.nhanSu.id} anhUrl={dh.me.nhanSu.anh_url} initial={(tenGoi ?? '?').charAt(0).toUpperCase()} size={52}
+                  ring="var(--sk-line)" badge="var(--sk-acc)"
+                  onChanged={(url) => useStore.setState((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, anh_url: url } } } : {}))} />
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="truncate text-[17px] font-extrabold leading-tight" style={HEAD}>{tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}</div>
+                <div className="text-[11px] capitalize text-[var(--sk-muted)]">{homNay}</div>
+              </div>
+              {coSao && <HomThu di={dh.di} duocDi={(id) => id === 'home' || mucs.some((m) => m.id === id)} />}
+            </div>
+          )}
+          tuyChinh={coSao ? <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={false} dang={dangCard} doiDang={dh.doiHomeDangCard} /> : null}
+          giaoDien={<ChonGiaoDien hep={false} />}
+          yeuThich={dsYeuThich.slice(0, 8).map((m) => ({ id: m.id, ten: m.ten, onMo: () => dh.di(m.id), onSao: coSao ? () => dh.doiYeuThich(m.id) : undefined }))}
+          nhom={nhomCanh}
+        />
+      </section>
+    )
+  }
   const oVitri = (i: number): ReactNode => (hienBox(lon[i]) ? keoBox(lon[i], thanLon(lon[i])) : null)
   const coTrai = hienBox(lon[0]), coCanh = hienBox(lon[1]), coRong = hienBox(lon[2]), coNuaTrai = hienBox(lon[3])
   const soAn = an.length

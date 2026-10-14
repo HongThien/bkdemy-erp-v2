@@ -1,0 +1,1191 @@
+{
+  "style_id": "pegboard",
+  "ten": "Studio pegboard",
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "tone": "sang",
+  "background": {
+    "file": "background.jpg",
+    "width": 1672,
+    "height": 941,
+    "an_toan": [
+      0,
+      12,
+      1672,
+      917
+    ],
+    "tam": [
+      836,
+      470
+    ]
+  },
+  "background_4x3": {
+    "file": "background-4x3.jpg",
+    "width": 1440,
+    "height": 1080
+  },
+  "tokens": {
+    "ink": "#243c50",
+    "muted": "#796b5d",
+    "acc": "#286285",
+    "acc_ink": "#ffffff",
+    "surface": "#fff7ec",
+    "surface2": "#ecdfcb",
+    "line": "#cfbaa0",
+    "radius": 16,
+    "font_head": "Baloo 2",
+    "font_body": "Be Vietnam Pro",
+    "font_fallback": "Arial, sans-serif"
+  },
+  "regions": {
+    "today": [
+      150,
+      40,
+      410,
+      460
+    ],
+    "greeting": [
+      576,
+      25,
+      285,
+      150
+    ],
+    "development": [
+      880,
+      35,
+      530,
+      185
+    ],
+    "toolbar": [
+      1426,
+      12,
+      230,
+      54
+    ],
+    "mail": [
+      590,
+      195,
+      150,
+      49
+    ],
+    "favorites": [
+      590,
+      260,
+      1000,
+      330
+    ],
+    "order": [
+      600,
+      610,
+      430,
+      295
+    ],
+    "groups": [
+      1046,
+      610,
+      590,
+      295
+    ],
+    "character": [
+      0,
+      430,
+      574,
+      511
+    ]
+  },
+  "group_slots": [
+    [
+      1080,
+      610,
+      200,
+      140
+    ],
+    [
+      1380,
+      610,
+      200,
+      140
+    ],
+    [
+      1080,
+      765,
+      200,
+      140
+    ],
+    [
+      1380,
+      765,
+      200,
+      140
+    ]
+  ],
+  "favorite_slots": [
+    [
+      590,
+      282,
+      235,
+      149
+    ],
+    [
+      840,
+      282,
+      235,
+      149
+    ],
+    [
+      1090,
+      282,
+      235,
+      149
+    ],
+    [
+      1340,
+      282,
+      235,
+      149
+    ],
+    [
+      590,
+      447,
+      235,
+      149
+    ],
+    [
+      840,
+      447,
+      235,
+      149
+    ],
+    [
+      1090,
+      447,
+      235,
+      149
+    ],
+    [
+      1340,
+      447,
+      235,
+      149
+    ]
+  ],
+  "objects": [
+    {
+      "id": "panel-today",
+      "file": "objects/panel-today.png",
+      "width": 434,
+      "height": 484,
+      "place": [
+        138,
+        28,
+        434,
+        484
+      ],
+      "z": 20,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": true,
+      "text_box": [
+        52,
+        122,
+        330,
+        280
+      ]
+    },
+    {
+      "id": "panel-greeting",
+      "file": "objects/panel-greeting.png",
+      "width": 309,
+      "height": 174,
+      "place": [
+        564,
+        13,
+        309,
+        174
+      ],
+      "z": 20,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": true,
+      "text_box": [
+        40,
+        80,
+        229,
+        70
+      ]
+    },
+    {
+      "id": "panel-development",
+      "file": "objects/panel-development.png",
+      "width": 554,
+      "height": 209,
+      "place": [
+        868,
+        23,
+        554,
+        209
+      ],
+      "z": 20,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": true,
+      "text_box": [
+        55,
+        65,
+        444,
+        121
+      ]
+    },
+    {
+      "id": "panel-order",
+      "file": "objects/panel-order.png",
+      "width": 454,
+      "height": 319,
+      "place": [
+        588,
+        598,
+        454,
+        319
+      ],
+      "z": 20,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": true,
+      "text_box": [
+        55,
+        85,
+        344,
+        192
+      ]
+    },
+    {
+      "id": "favorite-slot-1",
+      "file": "objects/favorite-slot-1.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        590,
+        282,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-2",
+      "file": "objects/favorite-slot-2.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        840,
+        282,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-3",
+      "file": "objects/favorite-slot-3.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        1090,
+        282,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-4",
+      "file": "objects/favorite-slot-4.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        1340,
+        282,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-5",
+      "file": "objects/favorite-slot-5.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        590,
+        447,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-6",
+      "file": "objects/favorite-slot-6.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        840,
+        447,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-7",
+      "file": "objects/favorite-slot-7.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        1090,
+        447,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-slot-8",
+      "file": "objects/favorite-slot-8.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        1340,
+        447,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "favorite-empty",
+      "file": "objects/favorite-empty.png",
+      "width": 235,
+      "height": 149,
+      "place": [
+        1340,
+        447,
+        235,
+        149
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        210,
+        24
+      ],
+      "interactive": true,
+      "render": false,
+      "label_box": [
+        38,
+        105,
+        159,
+        30
+      ],
+      "hit_box": [
+        12,
+        12,
+        211,
+        125
+      ]
+    },
+    {
+      "id": "group-viec-cua-toi",
+      "file": "objects/group-viec-cua-toi.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1080,
+        610,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 0
+    },
+    {
+      "id": "group-van-hanh",
+      "file": "objects/group-van-hanh.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1380,
+        610,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 1
+    },
+    {
+      "id": "group-gamification",
+      "file": "objects/group-gamification.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1080,
+        765,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 2
+    },
+    {
+      "id": "group-hoc-thuat",
+      "file": "objects/group-hoc-thuat.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1380,
+        765,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": true,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 3
+    },
+    {
+      "id": "group-quan-ly-chat-luong",
+      "file": "objects/group-quan-ly-chat-luong.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1080,
+        610,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": false,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 0
+    },
+    {
+      "id": "group-core-team",
+      "file": "objects/group-core-team.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1380,
+        610,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": false,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 1
+    },
+    {
+      "id": "group-dashboard",
+      "file": "objects/group-dashboard.png",
+      "width": 200,
+      "height": 140,
+      "place": [
+        1080,
+        765,
+        200,
+        140
+      ],
+      "z": 30,
+      "ink": "#243c50",
+      "badge_anchor": [
+        170,
+        20
+      ],
+      "interactive": true,
+      "render": false,
+      "label_box": [
+        28,
+        106,
+        144,
+        20
+      ],
+      "hit_box": [
+        12,
+        12,
+        176,
+        116
+      ],
+      "group_slot": 2
+    },
+    {
+      "id": "mail-empty",
+      "file": "objects/mail-empty.png",
+      "width": 104,
+      "height": 63,
+      "place": [
+        590,
+        183,
+        104,
+        68
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": [
+        90,
+        26
+      ],
+      "interactive": true,
+      "render": false,
+      "hit_box": [
+        12,
+        12,
+        80,
+        39
+      ]
+    },
+    {
+      "id": "mail-unread",
+      "file": "objects/mail-unread.png",
+      "width": 104,
+      "height": 80,
+      "place": [
+        590,
+        183,
+        104,
+        68
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": [
+        90,
+        26
+      ],
+      "interactive": true,
+      "render": true,
+      "hit_box": [
+        12,
+        12,
+        80,
+        56
+      ]
+    },
+    {
+      "id": "btn-primary",
+      "file": "objects/btn-primary.png",
+      "width": 164,
+      "height": 60,
+      "place": [
+        1420,
+        7,
+        113,
+        60
+      ],
+      "z": 40,
+      "ink": "#ffffff",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": true,
+      "text_box": [
+        25,
+        17,
+        114,
+        26
+      ],
+      "hit_box": [
+        12,
+        12,
+        140,
+        36
+      ],
+      "slice": [
+        28,
+        28,
+        28,
+        28
+      ]
+    },
+    {
+      "id": "btn-secondary",
+      "file": "objects/btn-secondary.png",
+      "width": 164,
+      "height": 60,
+      "place": [
+        1549,
+        7,
+        113,
+        60
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": true,
+      "text_box": [
+        25,
+        17,
+        114,
+        26
+      ],
+      "hit_box": [
+        12,
+        12,
+        140,
+        36
+      ],
+      "slice": [
+        28,
+        28,
+        28,
+        28
+      ]
+    },
+    {
+      "id": "avatar-frame",
+      "file": "objects/avatar-frame.png",
+      "width": 88,
+      "height": 88,
+      "place": [
+        590,
+        84,
+        88,
+        88
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": true,
+      "avatar_circle": [
+        16,
+        16,
+        56
+      ]
+    },
+    {
+      "id": "checkbox-off",
+      "file": "objects/checkbox-off.png",
+      "width": 48,
+      "height": 48,
+      "place": [
+        900,
+        400,
+        48,
+        48
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": false,
+      "hit_box": [
+        12,
+        12,
+        24,
+        24
+      ]
+    },
+    {
+      "id": "checkbox-on",
+      "file": "objects/checkbox-on.png",
+      "width": 48,
+      "height": 48,
+      "place": [
+        900,
+        400,
+        48,
+        48
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": false,
+      "hit_box": [
+        12,
+        12,
+        24,
+        24
+      ]
+    },
+    {
+      "id": "progress-track",
+      "file": "objects/progress-track.png",
+      "width": 124,
+      "height": 36,
+      "place": [
+        900,
+        400,
+        124,
+        36
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": false,
+      "slice": [
+        18,
+        12,
+        18,
+        12
+      ]
+    },
+    {
+      "id": "progress-fill",
+      "file": "objects/progress-fill.png",
+      "width": 124,
+      "height": 36,
+      "place": [
+        900,
+        400,
+        124,
+        36
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": false,
+      "slice": [
+        18,
+        12,
+        18,
+        12
+      ]
+    },
+    {
+      "id": "popup-frame",
+      "file": "objects/popup-frame.png",
+      "width": 536,
+      "height": 384,
+      "place": [
+        900,
+        400,
+        536,
+        384
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": false,
+      "text_box": [
+        40,
+        40,
+        456,
+        304
+      ],
+      "hit_box": [
+        12,
+        12,
+        512,
+        360
+      ],
+      "slice": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "content_box": [
+        40,
+        40,
+        456,
+        304
+      ]
+    },
+    {
+      "id": "tab-on",
+      "file": "objects/tab-on.png",
+      "width": 124,
+      "height": 60,
+      "place": [
+        900,
+        400,
+        124,
+        60
+      ],
+      "z": 40,
+      "ink": "#ffffff",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": false,
+      "text_box": [
+        25,
+        17,
+        74,
+        26
+      ],
+      "hit_box": [
+        12,
+        12,
+        100,
+        36
+      ],
+      "slice": [
+        28,
+        28,
+        28,
+        28
+      ]
+    },
+    {
+      "id": "tab-off",
+      "file": "objects/tab-off.png",
+      "width": 124,
+      "height": 60,
+      "place": [
+        900,
+        400,
+        124,
+        60
+      ],
+      "z": 40,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": true,
+      "render": false,
+      "text_box": [
+        25,
+        17,
+        74,
+        26
+      ],
+      "hit_box": [
+        12,
+        12,
+        100,
+        36
+      ],
+      "slice": [
+        28,
+        28,
+        28,
+        28
+      ]
+    },
+    {
+      "id": "decoration-favorites-sign",
+      "file": "objects/decoration-favorites-sign.png",
+      "width": 224,
+      "height": 56,
+      "place": [
+        584,
+        246,
+        224,
+        40
+      ],
+      "z": 22,
+      "ink": "#243c50",
+      "badge_anchor": null,
+      "interactive": false,
+      "render": true,
+      "text_box": [
+        22,
+        16,
+        180,
+        24
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "character",
+      "file": "characters/character.png",
+      "width": 380,
+      "height": 270,
+      "place": [
+        175,
+        514,
+        380,
+        270
+      ],
+      "z": 10,
+      "render": true
+    },
+    {
+      "id": "pet",
+      "file": "characters/pet.png",
+      "width": 175,
+      "height": 115,
+      "place": [
+        5,
+        654,
+        175,
+        115
+      ],
+      "z": 10,
+      "render": true
+    }
+  ],
+  "schema_extensions": {
+    "render": "Only entries with render=true are drawn; false entries are library alternatives, as approved.",
+    "group_slots": "Four interchangeable target boxes."
+  }
+}

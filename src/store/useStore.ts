@@ -8,7 +8,7 @@ import { enqueueLinkGenJob } from '../lib/linkgen'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 // Kiểu + bản nhớ trên máy của giao diện ERP: 2 hàm thuần, KHÔNG import registry style ở đây (store được nhiều bundle dùng).
-export type GiaoDienErp = { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi' }
+export type GiaoDienErp = { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null }
 const KHOA_GD_MAY = 'erp.giaoDien'
 function docGiaoDienMay(): GiaoDienErp {
   try { const v = JSON.parse(localStorage.getItem(KHOA_GD_MAY) ?? '{}'); return v && typeof v === 'object' ? v : {} } catch { return {} }

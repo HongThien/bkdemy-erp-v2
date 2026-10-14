@@ -1,0 +1,331 @@
+[
+  {
+    "id": "favorite-empty",
+    "file": "library/favorite-empty.png",
+    "width": 235,
+    "height": 149,
+    "place": [
+      1340,
+      447,
+      235,
+      149
+    ],
+    "z": 30,
+    "ink": "#3b2b21",
+    "badge_anchor": [
+      210,
+      24
+    ],
+    "interactive": true,
+    "label_box": [
+      38,
+      105,
+      159,
+      30
+    ],
+    "hit_box": [
+      12,
+      12,
+      211,
+      125
+    ]
+  },
+  {
+    "id": "group-dashboard",
+    "file": "library/group-dashboard.png",
+    "width": 200,
+    "height": 140,
+    "place": [
+      1080,
+      765,
+      200,
+      140
+    ],
+    "z": 30,
+    "ink": "#3b2b21",
+    "badge_anchor": [
+      170,
+      20
+    ],
+    "interactive": true,
+    "label_box": [
+      28,
+      106,
+      144,
+      20
+    ],
+    "hit_box": [
+      12,
+      12,
+      176,
+      116
+    ]
+  },
+  {
+    "id": "mail-empty",
+    "file": "library/mail-empty.png",
+    "width": 104,
+    "height": 63,
+    "place": [
+      590,
+      183,
+      104,
+      68
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": [
+      90,
+      26
+    ],
+    "interactive": true,
+    "hit_box": [
+      12,
+      12,
+      80,
+      39
+    ]
+  },
+  {
+    "id": "mail-unread",
+    "file": "library/mail-unread.png",
+    "width": 104,
+    "height": 80,
+    "place": [
+      590,
+      183,
+      104,
+      68
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": [
+      90,
+      26
+    ],
+    "interactive": true,
+    "hit_box": [
+      12,
+      12,
+      80,
+      56
+    ]
+  },
+  {
+    "id": "avatar-frame",
+    "file": "library/avatar-frame.png",
+    "width": 88,
+    "height": 88,
+    "place": [
+      590,
+      84,
+      88,
+      88
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": false,
+    "avatar_circle": [
+      16,
+      16,
+      56
+    ]
+  },
+  {
+    "id": "checkbox-off",
+    "file": "library/checkbox-off.png",
+    "width": 48,
+    "height": 48,
+    "place": [
+      900,
+      400,
+      48,
+      48
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": true,
+    "hit_box": [
+      12,
+      12,
+      24,
+      24
+    ]
+  },
+  {
+    "id": "checkbox-on",
+    "file": "library/checkbox-on.png",
+    "width": 48,
+    "height": 48,
+    "place": [
+      900,
+      400,
+      48,
+      48
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": true,
+    "hit_box": [
+      12,
+      12,
+      24,
+      24
+    ]
+  },
+  {
+    "id": "progress-track",
+    "file": "library/progress-track.png",
+    "width": 124,
+    "height": 36,
+    "place": [
+      900,
+      400,
+      124,
+      36
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": false,
+    "slice": [
+      18,
+      12,
+      18,
+      12
+    ]
+  },
+  {
+    "id": "progress-fill",
+    "file": "library/progress-fill.png",
+    "width": 124,
+    "height": 36,
+    "place": [
+      900,
+      400,
+      124,
+      36
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": false,
+    "slice": [
+      18,
+      12,
+      18,
+      12
+    ]
+  },
+  {
+    "id": "popup-frame",
+    "file": "library/popup-frame.png",
+    "width": 536,
+    "height": 384,
+    "place": [
+      900,
+      400,
+      536,
+      384
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": true,
+    "text_box": [
+      40,
+      40,
+      456,
+      304
+    ],
+    "hit_box": [
+      12,
+      12,
+      512,
+      360
+    ],
+    "slice": [
+      32,
+      32,
+      32,
+      32
+    ],
+    "content_box": [
+      40,
+      40,
+      456,
+      304
+    ]
+  },
+  {
+    "id": "tab-on",
+    "file": "library/tab-on.png",
+    "width": 124,
+    "height": 60,
+    "place": [
+      900,
+      400,
+      124,
+      60
+    ],
+    "z": 40,
+    "ink": "#ffffff",
+    "badge_anchor": null,
+    "interactive": true,
+    "text_box": [
+      25,
+      17,
+      74,
+      26
+    ],
+    "hit_box": [
+      12,
+      12,
+      100,
+      36
+    ],
+    "slice": [
+      28,
+      28,
+      28,
+      28
+    ]
+  },
+  {
+    "id": "tab-off",
+    "file": "library/tab-off.png",
+    "width": 124,
+    "height": 60,
+    "place": [
+      900,
+      400,
+      124,
+      60
+    ],
+    "z": 40,
+    "ink": "#3b2b21",
+    "badge_anchor": null,
+    "interactive": true,
+    "text_box": [
+      25,
+      17,
+      74,
+      26
+    ],
+    "hit_box": [
+      12,
+      12,
+      100,
+      36
+    ],
+    "slice": [
+      28,
+      28,
+      28,
+      28
+    ]
+  }
+]
