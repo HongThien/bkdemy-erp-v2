@@ -80,3 +80,29 @@ export async function dsLop(): Promise<{ id: string; ten_lop: string; mon: strin
   if (error) throw error
   return data ?? []
 }
+
+// ── PHÍA QUẢN LÝ (ERP: lá ta_cong_duyet · ta_luong) — quyền chặn ở DB (co_quyen_ghi / co_chuc_nang) ──
+export type ThieuCong = { loai: 'buoi' | 'ca'; ngay: string; lop_id: string | null; ten: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; buoi_hoc_id: string | null; ca_bo_tro_id: string | null; nguoi_phu_trach: string | null }
+export type DonGia = { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
+
+export const doiChieu = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_doi_chieu', { p_tu: tu, p_den: den })
+export const thieuCong = (tu: string, den: string) => rpc<ThieuCong[]>('fn_ta_buoi_thieu_cong', { p_tu: tu, p_den: den })
+export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu_choi', lyDo?: string) =>
+  rpc<number>('fn_ta_duyet_cong', { p_ca: ca, p_viec: viec, p_ket_qua: ketQua, p_ly_do: lyDo ?? null })
+export const chotGio = (id: string, ngay: string, vao: string, ra: string) => rpc<null>('fn_ta_chot_gio', { p_id: id, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra) })
+export const nhapHoCa = (ns: string, ngay: string, vao: string, ra: string, lyDo: string) =>
+  rpc<string>('fn_ta_cham_cong_nhap_ho', { p_ns: ns, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra), p_ly_do: lyDo })
+export const nhapHoViec = (ns: string, v: KhaiViec, lyDo: string) => rpc<string>('fn_ta_nhap_ho_viec', {
+  p_ns: ns, p_loai: v.loai, p_ngay: v.ngay, p_lop: v.lop ?? null, p_buoi: v.buoi ?? null, p_ca: v.ca ?? null,
+  p_bat: v.bat || null, p_ket: v.ket || null, p_hs: v.hs?.trim() || null, p_ly_do: lyDo,
+})
+export const bangDonGia = () => rpc<DonGia[]>('fn_ta_bang_don_gia')
+// Đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định (bảng chỉ-thêm). Bậc lương phải kèm khoảng sĩ số của bậc đó.
+export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>
+  rpc<string>('fn_ta_dat_don_gia', { p_ma: ma, p_gia: gia, p_hieu_luc_tu: tu, p_ten: o.ten ?? null, p_si_tu: o.siTu ?? null, p_si_den: o.siDen ?? null, p_ghi_chu: o.ghiChu ?? '' })
+export const luongThang = (ky: string) => rpc<LuongThang[]>('fn_ta_luong_thang', { p_ky: ky })
+export async function dsNhanSuDangLam(): Promise<{ id: string; ho_ten: string; anh_url: string | null }[]> {
+  const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, anh_url').eq('trang_thai', 'dang_lam').order('ho_ten').limit(500)
+  if (error) throw error
+  return data ?? []
+}

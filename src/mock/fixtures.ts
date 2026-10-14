@@ -144,6 +144,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'giaoviec',    nhom: 'Core team', ten: 'Task phát triển',  founderOnly: false },
   { id: 'gay',         nhom: 'Core team', ten: 'Gậy của BK',                  founderOnly: false }, // hệ phạt: gậy tự động (chậm deadline ERP, máy đề xuất) + thủ công; công khai toàn công ty
   { id: 'thuchi',      nhom: 'Core team', ten: 'Thu chi',                      founderOnly: false }, // hoàn ứng chi tiêu NS: duyệt/ghi sổ/chốt kỳ gửi Ngân (PLAN-thu-chi.md, Thùy 09-02)
+  { id: 'ta_cong_duyet', nhom: 'Core team', ten: 'Duyệt công trợ giảng',       founderOnly: false }, // spec-cham-cong-ta.md §5: duyệt lô · chốt giờ · thiếu công · nhập hộ — DB chặn bằng co_quyen_ghi('ta_cong_duyet')
+  { id: 'ta_luong',    nhom: 'Core team', ten: 'Lương trợ giảng',               founderOnly: false }, // spec-cham-cong-ta.md §7: bảng lương tháng + bảng đơn giá có lịch sử — chỉ CEO + Core team (Thùy 14/10)
 
 
   // ── DASHBOARD: chỉ phục vụ CEO ra quyết định (analytics, không phải màn thao tác) ──

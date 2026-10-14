@@ -41,7 +41,7 @@ const LEAF_ICON: Record<string, string> = {
   // Quản lý chất lượng
   ketqua: '📊', cham_mt: '✏️', duyetcham: '✔️', duyetloigiai: '🔎', db_hoctap: '🧠', db_theodoi_app: '📱', report_ph: '💌',
   // Core team
-  hocphi: '💰', ns: '🪪', orgchart: '🌳', phancong: '📌', tkb: '⏰', phanquyen: '🔐', baoloi: '🐞', db_tuyendung: '🧲', giaoviec: '🚀', gay: '🏑', thuchi: '🧾',
+  hocphi: '💰', ns: '🪪', orgchart: '🌳', phancong: '📌', tkb: '⏰', phanquyen: '🔐', baoloi: '🐞', db_tuyendung: '🧲', giaoviec: '🚀', gay: '🏑', thuchi: '🧾', ta_cong_duyet: '🕘', ta_luong: '💵',
   // Dashboard
   db_tongquan: '🌐', db_taichinh: '💹', db_chatluong: '⚙️', db_phdangnhap: '🔑', db_xemapp: '👀', db_thongbao: '📢',
 }

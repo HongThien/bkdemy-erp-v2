@@ -5,6 +5,7 @@ const DS = [
   ['202610122210_ta_cham_cong_va_luong.sql', 'ta_cham_cong'],
   ['202610141233_ta_cham_cong_theo_ngay_phan_cong.sql', 'ta_dot_khai_bu'],
   ['202610141240_ta_cong_cua_toi.sql', null],   // chỉ hàm: dò bằng sổ _migrations
+  ['202610141303_ta_luong_nhanh_btvn.sql', null],
 ];
 export async function apMigration(c) {
   const da = (await c.query('select ten from _migrations')).rows.map((r) => r.ten);

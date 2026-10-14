@@ -77,6 +77,8 @@ import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
 import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
 import GayScreen from './gay/GayScreen'
+import DuyetCongScreen from './tacong/DuyetCongScreen'
+import LuongTaScreen from './tacong/LuongTaScreen'
 import ThuChiScreen from './thuchi/ThuChiScreen'
 
 // tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
@@ -719,6 +721,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
       : staffLeaf === 'giaoviec' ? <BangTaskScreen />
       : staffLeaf === 'gay' ? <GayScreen />
+      : staffLeaf === 'ta_cong_duyet' ? <DuyetCongScreen />
+      : staffLeaf === 'ta_luong' ? <LuongTaScreen />
       : staffLeaf === 'thuchi' ? <ThuChiScreen />
       : staffLeaf === 'db_chatluong' ? <HieuSuatTAScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
