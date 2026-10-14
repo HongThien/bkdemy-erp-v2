@@ -2,7 +2,7 @@
 
 > **Đích:** lương TA tính hoàn toàn từ ERP, không qua file sheet; **mọi hoạt động của TA đều được ghi lại**, kể cả hoạt động thay thế và ngoài quy trình chính; CEO xem lại được mọi đơn giá.
 > **Phạm vi v1:** TA part-time theo package chuẩn. Full-time / core team làm sau (logic theo giờ làm, khác hẳn).
-> **Trạng thái:** thiết kế đã chốt phần lõi. Migration `202610122210_ta_cham_cong_va_luong.sql` đã chỉnh theo §8 và test rollback, **chưa áp**. Mockup để test: §9b. Tháng 9/2026 chỉ dùng tính lương (bản V6, 15 TA, 28.256.807đ), không nạp vào DB.
+> **Trạng thái (14/10):** Thùy duyệt mockup. **ĐÃ ÁP** 4 migration: `202610122210` (lõi) · `202610141233` (dữ liệu theo ngày phân công + đợt khai lùi tháng 10 + quyền) · `202610141240` (công của tôi cho app TA) · `202610141303` (bảng lương nhanh). App TA + 2 màn ERP đã build (§10). Mockup: §9b. Tháng 9/2026 chỉ dùng tính lương (bản V6, 15 TA, 28.256.807đ), không nạp vào DB.
 
 ## 0. Ý tưởng gốc
 
@@ -37,6 +37,11 @@ Hai luật kéo theo:
 | | 18 | Đơn giá chỉ áp cho việc ngoài package, nằm ở **một bảng đơn giá có lịch sử** để CEO xem lại. |
 | | 19 | Chỉ CEO và Trang xem lương toàn bộ; TA chỉ xem của mình. |
 | | 20 | Chấm công **theo tài khoản** của từng TA (thiết bị nào cũng được). Người duyệt là **Phạm Thị Thùy Trang** (13/10). |
+| Thời gian | 21 | **Dữ liệu tính TỪ NGÀY PHÂN CÔNG, không đẻ dữ liệu phía trước** (14/10): TA phân lớp ngày 12/10 thì trước 12/10 lớp đó không phải lớp của TA — gợi ý việc, lớp mặc định khi khai, "làm hộ ai", người phụ trách buổi thiếu công đều đọc phân công **tại ngày đó** (`phan_cong_lop_log`). TA bị rút giữa tháng vẫn giữ lớp cho tháng đó. |
+| | 22 | TA vào giữa tháng: **%TG = buổi TA làm ÷ số buổi CẢ THÁNG** của lớp (phân 12/10, đi đủ 4/8 buổi ⇒ 50%) (14/10). |
+| | 23 | **Khai lùi tháng 10**: hệ thống mở giữa tháng nên TA tự khai ca + việc cho mọi ngày 01–31/10 tới hết 03/11; ngoài đợt vẫn luật 24 giờ. "Thiếu công" tính từ 01/10 (14/10). Bảng `ta_dot_khai_bu`. |
+| Quyền | 24 | `ta_cong_duyet` + `ta_luong` gán vai **Core team** (Thùy, Trang, Lộc) — Thùy chấp nhận Lộc cũng xem lương (14/10, thay #19). |
+| Chữ | 25 | Trên app: **Checkin / Checkout** (không "chấm công vào/ra"); việc theo lịch bấm **"Ghi công"**, đã ghi hiện **"Đã ghi công"** (14/10). |
 
 ## 2. Mô hình: ba lớp
 
@@ -148,6 +153,9 @@ Mọi con số tính ở Postgres (`fn_ta_luong_thang`), app chỉ gọi (CLAUDE
 5. `fn_ta_duyet_cong(p_ca, p_viec, kết quả, lý do)`: duyệt lô cả ca lẫn việc; ca chưa có giờ ra phải chốt giờ trước.
 6. `fn_ta_luong_thang`: chỉ tính việc đã duyệt thuộc ca có mặt đã duyệt.
 
+**Thêm 14/10 (đã áp):** `_ta_pc_khoang` / `_ta_tg_tai(ngày, lớp, TA)` = phân công tại một ngày từ log · `ta_dot_khai_bu` + `_ta_duoc_khai_bu` + `_ta_moc_cham_cong` · `_ta_doi_chieu(tu, den, ns)` dùng chung cho `fn_ta_doi_chieu` (người duyệt) và `fn_ta_cong_cua_toi` (TA) · `fn_ta_khai_bu_cho_phep` · khai trợ giảng/trông thi tự gắn buổi của lớp hôm đó (trùng ⇒ "Việc này đã ghi công rồi").
+**Test (rollback, DB thật):** `scripts/luong-ta-t9/test_chamcong.mjs` 32/32 · `test_ngay_phan_cong.mjs` 26/26 · `kiemchuan.mjs` T9 = 28.256.807đ · mockup `smoke_mockup.mjs` 35/35. Tốc độ (DB thật + tải giả nửa tháng): bảng lương 0,2s · duyệt 14 ngày 0,23s · thiếu công 0,07s.
+
 **Chưa làm:** chốt kỳ lương (`ta_luong_chot`, snapshot bất biến) + khoá sửa sau hạn ngày 3.
 
 **Quyền:** hai chức năng mới `ta_cong_duyet` và `ta_luong`, gán cho CEO và Trang.
@@ -165,11 +173,11 @@ Mọi con số tính ở Postgres (`fn_ta_luong_thang`), app chỉ gọi (CLAUDE
 
 ## 10. Thứ tự build
 
-1. CEO và Trang test mockup (§9b), chốt giao diện. Áp migration bằng `migrate.mjs --only`, `npm run schema`, commit.
-2. Đăng ký 2 chức năng + gán quyền.
-3. App TA: Chấm công vào/ra · việc hôm nay · thêm việc · khai bù · bảng công của tôi.
-4. ERP: màn duyệt của Trang (§5) + khối buổi thiếu công.
-5. ERP: màn Bảng đơn giá + màn Bảng lương.
+1. ✅ (14/10) Mockup duyệt · migration áp · schema.
+2. ✅ (14/10) Đăng ký 2 chức năng + gán Core team.
+3. ✅ (14/10) App TA: ô **Chấm công** ở màn chính (Checkin/Checkout tại chỗ) + màn `ta/CongTA.tsx` (Hôm nay · Bảng công · Lương tạm tính; khai bù ngày khác). Seam `lib/tacong.ts`.
+4. ✅ (14/10) ERP lá `ta_cong_duyet` → `tacong/DuyetCongScreen.tsx` (duyệt lô · chốt giờ · từ chối · thiếu công · nhập hộ).
+5. ✅ (14/10) ERP lá `ta_luong` → `tacong/LuongTaScreen.tsx` (bảng lương tháng · đơn giá). Soi không cần đăng nhập: `/xem-thu-cong-ta.html` (`?man=duyet` | `?man=luong`).
 6. Chốt kỳ + phiếu lương TA xem trên app.
 7. Chạy song song với sheet một tháng; lệch về 0 thì tắt sheet. Khai tử `ta_vang` + `ChamCongTa.tsx`.
 
