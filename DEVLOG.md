@@ -37571,3 +37571,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sai (của tôi):** hàng đợi "chưa phân mô hình" vẫn định nghĩa theo ý chưa gán BÀI mô hình (`hinh_y.baitoan_id`), và màn duyệt vẫn để ô gán ý + chip vàng "chưa phân mô hình" dưới mỗi ý ⇒ gán mô hình xong trông như chưa xong.
 - **Sửa:** mig `202610141248` (áp `--only`, thân lấy từ bản đang chạy): `fn_hl_kho_chua_phan` / `fn_hl_dem_chua_phan` = bài chưa có `mo_hinh_id` và không ý nào đã gán bài mô hình. Màn duyệt: bỏ ô gán ý + `ChonBaiMoHinh`; đếm theo BÀI (thanh trên + nhãn tab). Tab Kho bài: chip ý trung tính, bỏ "chỉ ý gán", badge "kho n chuỗi · y ý". Spec §11 bước 3 ghi lại.
 - **Kiểm:** RO: khối 8 còn 86/88 bài chờ (1 gán mô hình + HLB00095 có ý gán); dev hiện 86 bài, không còn ô gán ý; tsc sạch.
+
+### 14/10 — Duyệt kho Hình luyện: hết khoảng trắng giữa đề và ý
+- **Thùy:** (ảnh) thu gọn "Hướng dẫn" thì ý a phải nằm ngay dưới, không cách xa.
+- **Nguyên nhân:** mỗi hàng là một grid riêng (chữ | hình) ⇒ hàng đề cao bằng hình (~300px), chữ ngắn thì hở cả khoảng.
+- **Sửa:** cả bài là MỘT lưới 2 cột: cột trái chữ xếp sát (đề → ý a → ý b…), cột phải mỗi hình đặt ở hàng đầu dùng nó và `row-span` tới hàng kế có hình riêng, dính khi cuộn; chú thích hình ghi "dùng tiếp cho ý …"; ý không dựng thêm ghi "dùng hình bên cạnh". Bỏ component `Hang`. Đo dev: hở 12px (trước ~400px).

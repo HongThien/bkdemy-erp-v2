@@ -150,31 +150,34 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
             <span className="ml-auto text-[11.5px] text-slate-500">Gán mô hình là đủ để bài vào kho — xem ở Bản đồ mới › Hình – Luyện › ③ Kho bài.</span>
           </div>
 
-          {/* đề chung | hình bài. Bài MỘT Ý: hình bài đứng cạnh chính ý đó (bên dưới), hàng đề không lặp lại hình (CEO 14/10). */}
-          <Hang hinh={motY ? null : b.anh_de} chuThich={motY ? '' : b.anh_de ? 'Hình bài · giả thiết chung' : 'Chưa có hình bài'} an={motY} onPhong={setPhong}>
-            <Muc ten="Đề bài">
-              {b.gia_thiet_chung
-                ? <div className="rounded-lg bg-teal-600 px-3.5 py-2.5 text-[15px] leading-relaxed text-white"><MathText>{b.gia_thiet_chung}</MathText></div>
-                : <div className="text-[12px] text-slate-400">Bài một ý — đề nằm trọn trong ý bên dưới.</div>}
-            </Muc>
-            {b.huong_dan && (
-              <details className="rounded-lg border border-slate-200 bg-white px-3.5 py-2">
-                <summary className="cursor-pointer text-[12px] font-semibold uppercase tracking-wide text-slate-500">Hướng dẫn / mấu chốt chung của bài</summary>
-                <div className="mt-2 text-[14px] leading-relaxed"><MathText>{b.huong_dan}</MathText></div>
-              </details>)}
-          </Hang>
-
-          <div className="mt-3 space-y-3">
-            {b.y.map((y, i) => {
-              // Mỗi hình chỉ hiện MỘT lần, ở chỗ nó xuất hiện đầu tiên. Ý không dựng thêm ⇒ ghi chú gọn "dùng hình … ở trên", không lặp ảnh.
-              const truoc = [...b.y.slice(0, i)].reverse().find((z) => z.anh_de)
-              const hinhY = motY ? (y.anh_de ?? b.anh_de) : y.anh_de
-              const chuThich = motY ? (hinhY ? 'Hình của bài' : 'Chưa có hình')
-                : y.anh_de ? `Hình riêng của ý ${y.nhan ?? ''}`.trim()
-                : truoc ? `Không dựng thêm — dùng hình ý ${truoc.nhan ?? ''} ở trên`
-                : b.anh_de ? 'Không dựng thêm — dùng hình bài ở trên' : 'Chưa có hình'
-              return (
-                <Hang key={y.id} hinh={hinhY} chuThich={chuThich} rieng={!!y.anh_de} gon={!motY && !y.anh_de && !!(truoc || b.anh_de)} goc={y.anh_loi_giai} onPhong={setPhong}>
+          {/* ⭐ Bố cục 2 cột MỘT lưới (CEO 14/10: "thu gọn vào thì lời giải phải ở ngay dưới, không cách ra"):
+               cột trái = chữ xếp SÁT nhau (đề → ý a → ý b…), cột phải = mỗi hình đứng cạnh hàng đầu tiên dùng nó và
+               KÉO DÀI (row-span) qua các ý không dựng thêm — hàng chữ không còn bị kéo cao bằng hình. Hình dính khi cuộn.
+               Bài MỘT Ý: hình bài đứng cạnh chính ý đó, hàng đề không có hình. Mỗi hình chỉ hiện một lần. */}
+          {(() => {
+            const hang: { key: string; trai: React.ReactNode; hinh?: { url: string | null; chuThich: string; rieng: boolean; goc?: string | null } }[] = []
+            hang.push({
+              key: 'de',
+              trai: (
+                <div className="min-w-0 space-y-3">
+                  <Muc ten="Đề bài">
+                    {b.gia_thiet_chung
+                      ? <div className="rounded-lg bg-teal-600 px-3.5 py-2.5 text-[15px] leading-relaxed text-white"><MathText>{b.gia_thiet_chung}</MathText></div>
+                      : <div className="text-[12px] text-slate-400">Bài một ý — đề nằm trọn trong ý bên dưới.</div>}
+                  </Muc>
+                  {b.huong_dan && (
+                    <details className="rounded-lg border border-slate-200 bg-white px-3.5 py-2">
+                      <summary className="cursor-pointer text-[12px] font-semibold uppercase tracking-wide text-slate-500">Hướng dẫn / mấu chốt chung của bài</summary>
+                      <div className="mt-2 text-[14px] leading-relaxed"><MathText>{b.huong_dan}</MathText></div>
+                    </details>)}
+                </div>),
+              hinh: motY ? undefined : { url: b.anh_de, chuThich: b.anh_de ? 'Hình bài · giả thiết chung' : 'Chưa có hình bài', rieng: false },
+            })
+            b.y.forEach((y) => {
+              const url = motY ? (y.anh_de ?? b.anh_de) : y.anh_de
+              hang.push({
+                key: y.id,
+                trai: (
                   <div className={`rounded-xl border bg-white p-3.5 ${y.da_duyet ? 'border-emerald-300' : 'border-slate-200'}`}>
                     <div className="flex items-start gap-2 text-[15px] leading-relaxed">
                       <b className="mt-px shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>
@@ -186,14 +189,42 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
                       ? <div className="mt-2 rounded-lg border border-emerald-200 bg-emerald-50/50 p-3 text-[14px] leading-relaxed"><MathText>{y.loi_giai}</MathText></div>
                       : <div className="mt-2 text-[12px] text-rose-500">chưa có lời giải</div>}
                     <div className="mt-2.5 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-2.5">
+                      {!motY && !y.anh_de && <span className="text-[11.5px] text-slate-400">không dựng thêm — dùng hình bên cạnh</span>}
                       <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-600" title="Câu hỏi + lời giải của ý này đã đúng">
                         <input type="checkbox" checked={y.da_duyet} disabled={ban === y.id} onChange={() => void duyetY(y)} /> duyệt ý này
                       </label>
                     </div>
-                  </div>
-                </Hang>)
-            })}
-          </div>
+                  </div>),
+                hinh: url || motY ? { url, chuThich: motY ? (url ? 'Hình của bài' : 'Chưa có hình') : `Hình riêng của ý ${y.nhan ?? ''}`.trim(), rieng: !!y.anh_de, goc: y.anh_loi_giai } : undefined,
+              })
+            })
+            // hình kéo dài tới hàng kế tiếp có hình riêng; ghi rõ những ý dùng chung hình đó
+            const chu = hang.map((h, i) => (h.hinh ? i : -1)).filter((i) => i >= 0)
+            return (
+              <div className="space-y-3 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(300px,38%)] lg:gap-x-4 lg:gap-y-3 lg:space-y-0">
+                {hang.map((h, i) => {
+                  const k = chu.indexOf(i)
+                  const den = k >= 0 ? (chu[k + 1] ?? hang.length) : i + 1
+                  const dung = hang.slice(i + 1, den).map((_, j) => b.y[i + j]?.nhan).filter(Boolean)
+                  return [
+                    <div key={h.key} className="min-w-0" style={{ gridColumn: 1, gridRow: i + 1 }}>{h.trai}</div>,
+                    h.hinh && (
+                      <div key={h.key + ':h'} style={{ gridColumn: 2, gridRow: `${i + 1} / span ${den - i}` }}>
+                        <div className="lg:sticky lg:top-0">
+                          {h.hinh.url
+                            ? <figure className={`overflow-hidden rounded-xl border bg-white ${h.hinh.rieng ? 'border-violet-300' : 'border-slate-200'}`}>
+                                <img src={h.hinh.url} alt={h.hinh.chuThich} onClick={() => setPhong(h.hinh!.url)} className="max-h-[46vh] w-full cursor-zoom-in object-contain" />
+                                <figcaption className={`border-t px-2.5 py-1 text-[11.5px] ${h.hinh.rieng ? 'border-violet-100 bg-violet-50 text-violet-700' : 'border-slate-100 bg-slate-50 text-slate-500'}`}>
+                                  {h.hinh.chuThich}{dung.length ? ` · dùng tiếp cho ý ${dung.join(', ')}` : ''}</figcaption>
+                              </figure>
+                            : <div className="rounded-xl border border-dashed border-slate-300 px-4 py-8 text-center text-[12.5px] text-slate-400">{h.hinh.chuThich}</div>}
+                          {h.hinh.goc && h.hinh.goc !== h.hinh.url && <button onClick={() => setPhong(h.hinh!.goc!)} className="mt-1 text-[11px] text-slate-400 underline hover:text-slate-600">xem hình lời giải gốc</button>}
+                        </div>
+                      </div>),
+                  ]
+                })}
+              </div>)
+          })()}
           {!moHinhs.length && (
             <div className="mt-3 rounded-md border border-amber-300 bg-amber-50 px-3 py-1.5 text-[12px] text-amber-800">
               Khối {khoi} chưa có mô hình luyện nào — dựng ở <b>Bản đồ mới › chủ đề vùng Hình – Luyện</b>, rồi quay lại đây gán. Duyệt nội dung không cần chờ mô hình.
@@ -205,36 +236,6 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
         <div className="fixed inset-0 z-[80] flex cursor-zoom-out items-center justify-center bg-slate-900/80 p-6" onClick={() => setPhong(null)}>
           <img src={phong} alt="" className="max-h-full max-w-full rounded-lg bg-white object-contain" />
         </div>)}
-    </div>
-  )
-}
-
-/** Một hàng của bài: chữ (trái) | hình của chính hàng đó (phải, dính khi cuộn qua hàng dài). */
-function Hang({ hinh, chuThich, rieng, goc, gon, an, onPhong, children }: {
-  hinh: string | null | undefined; chuThich: string; rieng?: boolean; goc?: string | null
-  gon?: boolean    // không có hình riêng, đã có hình phía trên ⇒ chỉ một dòng ghi chú, không lặp ảnh
-  an?: boolean     // không có cột hình (hàng đề của bài một ý)
-  onPhong: (u: string) => void; children: React.ReactNode
-}) {
-  if (an) return <div className="min-w-0 space-y-3">{children}</div>
-  if (gon) return (
-    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(300px,38%)]">
-      <div className="min-w-0 space-y-3">{children}</div>
-      <div className="self-start rounded-lg border border-dashed border-slate-200 px-3 py-2 text-[12px] text-slate-400">↑ {chuThich}</div>
-    </div>
-  )
-  return (
-    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(300px,38%)]">
-      <div className="min-w-0 space-y-3">{children}</div>
-      <div className="lg:sticky lg:top-0 lg:self-start">
-        {hinh
-          ? <figure className={`overflow-hidden rounded-xl border bg-white ${rieng ? 'border-violet-300' : 'border-slate-200'}`}>
-              <img src={hinh} alt={chuThich} onClick={() => onPhong(hinh)} className="max-h-[46vh] w-full cursor-zoom-in object-contain" />
-              <figcaption className={`border-t px-2.5 py-1 text-[11.5px] ${rieng ? 'border-violet-100 bg-violet-50 text-violet-700' : 'border-slate-100 bg-slate-50 text-slate-500'}`}>{chuThich}</figcaption>
-            </figure>
-          : <div className="rounded-xl border border-dashed border-slate-300 px-4 py-8 text-center text-[12.5px] text-slate-400">{chuThich}</div>}
-        {goc && goc !== hinh && <button onClick={() => onPhong(goc)} className="mt-1 text-[11px] text-slate-400 underline hover:text-slate-600">xem hình lời giải gốc</button>}
-      </div>
     </div>
   )
 }
