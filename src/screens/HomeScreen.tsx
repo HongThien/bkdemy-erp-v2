@@ -391,7 +391,11 @@ export default function HomeScreen() {
     { id: 'nhom:viec', ten: `${MUC_VIEC.icon} ${MUC_VIEC.ten}` },
     ...dh.adminNav.map((x) => ({ id: `nhom:${x.nhom ?? ''}`, ten: `${nhomIcon(x.nhom)} ${x.nhom ?? ''}` })),
   ]
-  const dsNhom = xep(khuLuoi).filter(hienBox)
+  // Thiết kế chung (Thùy 14/10): góc dưới Trang chính chỉ để TỐI ĐA 4 box nhóm (theo thứ tự người dùng đã xếp);
+  // các nhóm còn lại mở bằng ☰ menu / thanh địa chỉ — muốn đổi 4 box nào hiện thì ẩn (✕) hoặc kéo lên đầu.
+  const nhomHienTatCa = xep(khuLuoi).filter(hienBox)
+  const dsNhom = nhomHienTatCa.slice(0, 4)
+  const nhomThua = nhomHienTatCa.length - dsNhom.length
   const lenViec = () => dh.di(LEAF_VIEC)
 
   // ── 4 BOX LỚN: thân từng box + 4 VỊ TRÍ (hoán đổi được) ──
@@ -488,6 +492,7 @@ export default function HomeScreen() {
               </div>
             </>
           )}
+          {nhomThua > 0 && <p className="mt-4 text-[12px] text-[var(--sk-muted)]">Còn {nhomThua} nhóm khác — mở ở ☰ menu bên trái hoặc thanh địa chỉ. (Trang chính chỉ hiện tối đa 4 nhóm: kéo nhóm cần dùng lên đầu hoặc ẩn bớt.)</p>}
           {soAn > 0 && coSao && <p className="mt-6 text-[12px] text-[var(--sk-muted)]">Đang ẩn {soAn} box — bật lại ở ⚙ Tuỳ chỉnh.</p>}
         </div>
       </div>

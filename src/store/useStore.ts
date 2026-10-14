@@ -208,6 +208,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     const me = get().me
     if (!me) return
     const cu = me.nhanSu.menu_yeu_thich ?? []
+    // Thiết kế chung (Thùy 14/10): Yêu thích tối đa 8 mục — đúng 8 ô trên Trang chính ở mọi style.
+    if (!cu.includes(id) && cu.length >= 8) { alert('Yêu thích tối đa 8 mục. Bỏ ★ một mục trước rồi ghim mục mới.'); return }
     const moi = cu.includes(id) ? cu.filter((x) => x !== id) : [...cu, id]
     const va = (ds: string[]) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: ds } } } : {}))
     va(moi)
