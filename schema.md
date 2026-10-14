@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-378 bảng · 20 view · 0 enum · 173 trigger · 1024 function
+384 bảng · 20 view · 0 enum · 176 trigger · 1029 function
 
 ## _app_secrets
 
@@ -2546,6 +2546,27 @@ END |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
 | ma_dang | text | Y | ma_bai |  |  |
 
+## hinh_hoc_cau_form_tn
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→hinh_hoc_cau_hoi.ma_cau |  |
+| lua_chon | jsonb |  |  |  |  |
+| dap_an | text |  |  |  | `A` · `B` · `C` · `D` |
+| key_gia_tri | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| sinh_at | timestamp with time zone |  | now() |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| sua_truoc_duyet | boolean |  | false |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## hinh_hoc_cau_hoi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2628,6 +2649,20 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma_cum | text |  |  | PK FK→hinh_hoc_cum_bai.ma_cum |  |
 | tien_de_ma_cum | text |  |  | PK FK→hinh_hoc_cum_bai.ma_cum |  |
+
+## hinh_hoc_mcq_rule
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| vi_du | text | Y |  |  |  |
+| nhom | text |  |  |  | `khai_niem` · `tinh` |
+| ap_dung | text[] |  | '{}'::text[] |  |  |
+| du_phong | boolean |  | false |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_linkgen_jobs
 
@@ -3193,7 +3228,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -3334,6 +3369,27 @@ END |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
+
+## khtn_cau_form_tn
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→khtn_cau_hoi.ma_cau |  |
+| lua_chon | jsonb |  |  |  |  |
+| dap_an | text |  |  |  | `A` · `B` · `C` · `D` |
+| key_gia_tri | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| sinh_at | timestamp with time zone |  | now() |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| sua_truoc_duyet | boolean |  | false |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## khtn_cau_hoi
 
@@ -3488,6 +3544,20 @@ END |  |  |
 | so_cau_doi | integer |  | 0 |  |  |
 | nguoi | uuid |  |  | FK→nhan_su.id |  |
 | quyet_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_mcq_rule
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| vi_du | text | Y |  |  |  |
+| nhom | text |  |  |  | `khai_niem` · `tinh` |
+| ap_dung | text[] |  | '{}'::text[] |  |  |
+| du_phong | boolean |  | false |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## ky_thi
 
@@ -4433,8 +4503,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -5206,6 +5276,27 @@ END |  |  |
 | file_goc | text | Y |  |  |  |
 | thu_tu | smallint | Y |  |  |  |
 
+## tsa_cau_form_tn
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→tsa_cau_hoi.ma_cau |  |
+| lua_chon | jsonb |  |  |  |  |
+| dap_an | text |  |  |  | `A` · `B` · `C` · `D` |
+| key_gia_tri | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| sinh_at | timestamp with time zone |  | now() |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| sua_truoc_duyet | boolean |  | false |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## tsa_cau_hoi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5322,6 +5413,20 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma_dang | text |  |  | PK FK→tsa_ban_do.ma_dang |  |
 | tien_de_ma_dang | text |  |  | PK FK→tsa_ban_do.ma_dang |  |
+
+## tsa_mcq_rule
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| vi_du | text | Y |  |  |  |
+| nhom | text |  |  |  | `khai_niem` · `tinh` |
+| ap_dung | text[] |  | '{}'::text[] |  |  |
+| du_phong | boolean |  | false |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## tu_luyen_dang_lan
 
@@ -7036,6 +7141,7 @@ WITH luot AS (
 | hinh_cach_giai | hinh_cach_giai_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
 | hinh_form_dien | hinh_form_dien_kiem | BEFORE | INSERT/UPDATE | hinh_form_dien_kiem |
 | hinh_hoc_ban_do | trg_hinh_hoc_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| hinh_hoc_cau_form_tn | hinh_hoc_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | hinh_hoc_cau_form_tn_kiem |
 | hinh_hoc_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hinh_hoc_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
 | hinh_mo_hinh | hinh_mo_hinh_neo_chk_trg | BEFORE | INSERT/UPDATE | hinh_mo_hinh_neo_chk |
@@ -7051,6 +7157,7 @@ WITH luot AS (
 | kho_doi_dang_log | trg_kho_doi_dang_log_dong_bo_btyeu | AFTER | INSERT | _trg_btyeu_dong_bo_dang_ban_do |
 | khtn_ban_do | trg_khtn_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | khtn_ban_do | trg_khtn_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| khtn_cau_form_tn | khtn_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | khtn_cau_form_tn_kiem |
 | khtn_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | khtn_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
 | khtn_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
@@ -7094,6 +7201,7 @@ WITH luot AS (
 | tinh_nang | tinh_nang_vet | BEFORE | UPDATE | _tinh_nang_ghi_vet |
 | tinh_nang_lop | tinh_nang_lop_vet | BEFORE | INSERT/DELETE/UPDATE | _tinh_nang_ghi_vet |
 | tsa_ban_do | trg_tsa_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
+| tsa_cau_form_tn | tsa_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | tsa_cau_form_tn_kiem |
 | tsa_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | tsa_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
 | tsa_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
@@ -7149,6 +7257,7 @@ WITH luot AS (
 - `_ca_bo_tro_trong_so_bhh(p_bhh uuid)` → numeric
 - `_chi_ky_json(p_ky uuid)` → jsonb
 - `_chuoi_cua(p_hs uuid)` → jsonb
+- `_dang_da_hoc_ok(p_hs uuid, p_mon text, p_ma_dang text)` → boolean
 - `_de_thi_da_giao(p_de uuid)` → boolean
 - `_de_thi_hop_le_4o(p text)` → boolean
 - `_de_thi_kho(p_cau_hinh jsonb, p_nhanh text, p_mon text, p_ma_cau text)` → text
@@ -7183,6 +7292,7 @@ WITH luot AS (
 - `_hom_thu_gui(p_nhan uuid, p_loai text, p_tieu_de text, p_noi_dung text, p_lien_ket text, p_tu uuid)` → void
 - `_hom_thu_tg_gay()` → trigger
 - `_hs_cau_lan_gap(p_hs uuid)` → TABLE(ma_cau text, lan_cuoi timestamp with time zone)
+- `_hs_dang_da_hoc(p_hs uuid, p_mon text)` → text[]
 - `_hs_giao_dien_ghi_log()` → trigger
 - `_hs_hien(p_hs uuid)` → boolean
 - `_hs_khoe_json(p_hs uuid, p_mon text)` → jsonb
@@ -7737,8 +7847,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -8028,6 +8138,7 @@ WITH luot AS (
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_form_dien_kiem()` → trigger
 - `hinh_form_dien_thu_hoi()` → trigger
+- `hinh_hoc_cau_form_tn_kiem()` → trigger
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_neo_chk()` → trigger
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
@@ -8069,6 +8180,7 @@ WITH luot AS (
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
+- `khtn_cau_form_tn_kiem()` → trigger
 - `khtn_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `khtn_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `khtn_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
@@ -8123,11 +8235,12 @@ WITH luot AS (
 - `trg_htd_test_nop()` → trigger
 - `trg_thu_thach_nop()` → trigger
 - `troly_duoc_dung()` → boolean
+- `tsa_cau_form_tn_kiem()` → trigger
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
