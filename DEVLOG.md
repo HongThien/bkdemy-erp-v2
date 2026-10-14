@@ -37640,3 +37640,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 14/10/2026 (tiếp) — Bản đồ mới K8: điền ví dụ 42 dạng
 - **Làm:** Thùy "làm full ví dụ nữa". 42 dạng có mô tả mà `vi_du` trống ⇒ 3 agent Sonnet soạn 2 ví dụ/dạng (theo chương), 1 agent Opus soát sympy từng dòng (84/84 đúng toán), tôi vá theo soát: thêm ví dụ cấp 2 cho NDB00680/00681, đổi chéo ví dụ 970/972 theo tên, thêm bước tìm `b` ở NDB00699, thêm bước nhân ở NDB00682. Ghi 1 transaction, guard `vi_du` đang trống (riêng NDB00671 nối sau câu lý thuyết có sẵn). K8 Toán: 55/55 dạng có mô tả đều có ví dụ + lý thuyết.
 - **Ghi chú:** chi tiết + lỗi dữ liệu cũ (NDB00697 ví dụ 4 `+17`→`+7`, NDB00695/696 nhầm GTNN/GTLN, NDB00692/693 thiếu `$`) ở mục F của `kho-rules/dai/ban-do-moi-k8-ghi-chu.md`.
+
+## 15/10/2026 — Hình luyện: tab ③ Kho bài phóng to
+- **Thùy:** "view kho bài bé quá, mỗi chuỗi phải to gấp 2–3 lần mới đọc được, hình hơi bé". Hàng cũ = 1 dòng mỏng (thumbnail 56×44, đề cắt 1 dòng, ý = chip).
+- **Làm (`CayNhanh.tsx` TabKho):** mỗi chuỗi = CARD: hình 256×192 (~4,5×) bên trái, giả thiết chung dải teal 15px, từng ý a/b/c nguyên văn 15px kèm chip bài mô hình (vàng = chưa gán), nút "Lời giải + hình từng ý" mới mở lời giải/hình ý. Bỏ trạng thái gập 1 dòng. Verify DOM + ảnh trên dev (admin, MH.073 K8). Chưa deploy.

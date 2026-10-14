@@ -358,47 +358,49 @@ function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => 
         </label>
         <span className="text-[12px] text-slate-400">{hien.length}/{rows.length} chuỗi</span>
       </div>
-      <div className="divide-y divide-slate-100 overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {hien.map((c) => { const dangMo = mo === c.id; const de = c.gia_thiet_chung || c.y[0]?.noi_dung || ''; return (
-          <div key={c.id}>
-            <div onClick={() => setMo(dangMo ? null : c.id)} className={`flex cursor-pointer items-center gap-3 px-3 py-2 hover:bg-slate-50 ${dangMo ? 'bg-teal-50/50' : ''}`}>
-              {c.anh_de ? <img src={c.anh_de} alt="" className="h-11 w-14 shrink-0 rounded border border-slate-200 bg-white object-contain" />
-                : <div className="h-11 w-14 shrink-0 rounded border border-dashed border-slate-200" />}
-              <div className="w-[88px] shrink-0">
-                <div className="font-mono text-[11.5px] font-semibold text-teal-700">{c.ma_bai}</div>
-              </div>
-              <div className="min-w-0 flex-1 truncate text-[13px] text-slate-700" title={de.replace(/\$/g, '')}><MathText className="inline">{de}</MathText></div>
-              <div className="flex shrink-0 items-center gap-1">
+      {/* Thùy 15/10: "view bé quá, mỗi chuỗi phải to gấp 2–3 lần mới đọc được" ⇒ mỗi chuỗi = một CARD đọc được ngay:
+          hình to bên trái, đề + từng ý nguyên văn cỡ 15px bên phải, chip bài mô hình cạnh ý. Bấm "Lời giải" mới mở
+          lời giải + hình riêng của ý — không còn trạng thái "hàng gập 1 dòng". */}
+      <div className="space-y-3">
+        {hien.map((c) => { const dangMo = mo === c.id; return (
+          <div key={c.id} className={`rounded-xl border bg-white p-4 ${dangMo ? 'border-teal-300 shadow-sm' : 'border-slate-200'}`}>
+            <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="font-mono text-[13px] font-semibold text-teal-700">{c.ma_bai}</span>
+              <span className="text-[12px] text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}{c.nguon_ma_cau ? ` · gốc ${c.nguon_ma_cau}` : ''}</span>
+              <span className="ml-auto flex items-center gap-1">
                 {c.y.map((y, i) => (
                   <span key={y.id} className="flex items-center gap-1">
                     {i > 0 && <span className="text-slate-300">→</span>}
                     {y.so
-                      ? <button onClick={(e) => { e.stopPropagation(); if (y.baitoan_id && coBai(y.baitoan_id)) onMo(y.baitoan_id) }}
-                          className="rounded-full bg-teal-600 px-2 py-0.5 text-[11.5px] font-semibold text-white hover:bg-teal-500" title={`Ý ${y.nhan ?? ''} gán vào bài ${y.so} (${y.ma_bai_mh}) — bấm để mở`}>
-                          {y.nhan ? `${y.nhan}` : '•'} {y.so}</button>
-                      : <span className="rounded-full border border-slate-300 bg-white px-2 py-0.5 text-[11.5px] font-semibold text-slate-600" title={`Ý ${y.nhan ?? ''}`}>{y.nhan ?? '•'}</span>}
+                      ? <button onClick={() => { if (y.baitoan_id && coBai(y.baitoan_id)) onMo(y.baitoan_id) }}
+                          className="rounded-full bg-teal-600 px-2 py-0.5 text-[12px] font-semibold text-white hover:bg-teal-500" title={`Ý ${y.nhan ?? ''} gán vào bài ${y.so} (${y.ma_bai_mh}) — bấm để mở`}>
+                          {y.nhan ?? '•'} {y.so}</button>
+                      : <span className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[12px] font-semibold text-amber-700" title={`Ý ${y.nhan ?? ''} chưa gán bài mô hình`}>{y.nhan ?? '•'}</span>}
                   </span>))}
-              </div>
-              <span className="shrink-0 text-[11px] text-slate-400">{dangMo ? '▾' : '▸'}</span>
+              </span>
             </div>
-            {dangMo && (
-              <div className="space-y-2 border-t border-slate-100 bg-slate-50/60 px-4 py-3">
-                <div className="text-[11.5px] text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}{c.nguon_ma_cau ? ` · gốc ${c.nguon_ma_cau}` : ''}</div>
-                <div className="flex gap-4">
-                  <div className="min-w-0 flex-1 space-y-2">
-                    {c.gia_thiet_chung && <div className="rounded-lg bg-teal-600 px-3 py-2 text-[14px] text-white"><MathText>{c.gia_thiet_chung}</MathText></div>}
-                    {c.y.map((y) => (
-                      <div key={y.id} className="rounded-lg border border-slate-200 bg-white p-2.5">
-                        <div className="flex gap-2 text-[14px]"><b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b><div className="min-w-0 flex-1"><MathText>{y.noi_dung}</MathText></div>
-                          {y.so && <span className="shrink-0 font-mono text-[11px] text-teal-700">→ {y.so}</span>}</div>
-                        {y.loi_giai && <details className="mt-1"><summary className="cursor-pointer text-[11.5px] text-slate-500">Lời giải</summary>
-                          <div className="mt-1 text-[13.5px]"><MathText>{y.loi_giai}</MathText></div></details>}
-                        {y.anh_de && <img src={y.anh_de} alt="" className="mt-1 max-h-48 rounded border border-violet-200 object-contain" />}
-                      </div>))}
-                  </div>
-                  {c.anh_de && <img src={c.anh_de} alt="" className="max-h-64 w-[34%] shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain" />}
-                </div>
-              </div>)}
+            <div className="flex gap-5">
+              {c.anh_de
+                ? <img src={c.anh_de} alt="" className="h-48 w-64 shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain" />
+                : <div className="flex h-48 w-64 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-200 text-[12px] text-slate-300">chưa có hình</div>}
+              <div className="min-w-0 flex-1 space-y-2">
+                {c.gia_thiet_chung && <div className="rounded-lg bg-teal-600 px-3.5 py-2.5 text-[15px] leading-relaxed text-white"><MathText>{c.gia_thiet_chung}</MathText></div>}
+                {c.y.map((y) => (
+                  <div key={y.id} className="rounded-lg border border-slate-200 bg-slate-50/50 px-3 py-2">
+                    <div className="flex gap-2.5 text-[15px] leading-relaxed text-slate-800">
+                      <b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>
+                      <div className="min-w-0 flex-1"><MathText>{y.noi_dung}</MathText></div>
+                      {y.so && <span className="shrink-0 self-start font-mono text-[12px] text-teal-700">→ {y.so}</span>}
+                    </div>
+                    {dangMo && y.loi_giai && (
+                      <div className="mt-2 border-t border-slate-200 pt-2 text-[14px] leading-relaxed text-slate-700"><MathText>{y.loi_giai}</MathText></div>)}
+                    {dangMo && y.anh_de && <img src={y.anh_de} alt="" className="mt-2 max-h-64 rounded border border-violet-200 bg-white object-contain" />}
+                  </div>))}
+                <button onClick={() => setMo(dangMo ? null : c.id)} className="text-[12.5px] font-medium text-teal-700 hover:underline">
+                  {dangMo ? '▾ Ẩn lời giải' : '▸ Lời giải + hình từng ý'}
+                </button>
+              </div>
+            </div>
           </div>) })}
       </div>
     </div>
