@@ -211,7 +211,6 @@ export default function BangTaskScreen({ nhung = false, macDinh = 'team' }: { nh
   return (
     <div className={`flex min-h-0 flex-col bg-[#f5f5f7] ${nhung ? 'h-full' : 'h-full'}`}>
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="mr-2 text-sm font-semibold text-slate-900">Task phát triển</span>
         {tab('team', 'Cả team')}{tab('toi', 'Của tôi')}{tab('giao', 'Tôi giao', canDanhGia)}
         {(coCapDuoi || laAdmin) && <button onClick={() => setForm(!form)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">＋ Giao task</button>}
       </div>

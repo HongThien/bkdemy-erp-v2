@@ -108,3 +108,6 @@ math-field.mf-input::part(placeholder) { color: #94a3b8; }
 .mf-lg math-field.mf-input { font-size: 28px; min-height: 76px; padding: 8px 12px; }
 .mt-f { cursor: pointer; border-radius: 3px; transition: background 0.12s; }
 .mt-f:hover { background: #e0e7ff; outline: 1px solid #a5b4fc; }
+
+/* Tiêu đề màn chỉ nhắc lại tên màn đã hiện ở thanh địa chỉ — ẩn (lib/useAnTieuDeTrung.ts) */
+[data-trung-thanh-dia-chi] { display: none !important; }

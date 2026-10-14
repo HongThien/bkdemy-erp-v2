@@ -5,6 +5,7 @@ import { LEAF_HOME, laHome } from '../lib/menu'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useSkinErp } from '../lib/erpSkin'
 import DuongDan from '../components/DuongDan'
+import { useAnTieuDeTrung } from '../lib/useAnTieuDeTrung'
 import HomeScreen from './HomeScreen'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
@@ -559,6 +560,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 export default function NhanSuHome({ user }: { user: User }) {
   const { staffLeaf: leafStore, setStaffLeaf, quyen, nhanLichSu, lopPhu, moLopPhu, backLeaf } = useStore()
   const dh = useDieuHuong()
+  // Thanh địa chỉ đã là tiêu đề màn ⇒ ẩn tiêu đề đầu màn nào chỉ nhắc lại đúng tên màn (xem lib/useAnTieuDeTrung.ts).
+  const manRef = useRef<HTMLDivElement>(null)
+  useAnTieuDeTrung(manRef, dh.mucHienTai?.ten, dh.leaf)
   const sk = useSkinErp()
   const [scope, setScope] = useState<MyScope | null>(null)
   const [loading, setLoading] = useState(true)
@@ -686,7 +690,7 @@ export default function NhanSuHome({ user }: { user: User }) {
           (theo nội dung) ép phình. Thiếu track này thì màn có nội dung rộng (org chart, ma trận phân quyền,
           bảng học phí…) tự nong ra rồi bị overflow-hidden của shell CẮT CỤT không cuộn tới được. Có track,
           root co về đúng bề rộng, phần thân overflow-auto tự cuộn ngang. */}
-      <div className="grid min-h-0 min-w-0 flex-1 grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden">
+      <div ref={manRef} className="grid min-h-0 min-w-0 flex-1 grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden">
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : laHome(staffLeaf) ? (
