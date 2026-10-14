@@ -155,15 +155,18 @@ const giaTai = (ma,ngay) => { const r=S.gia.filter(g=>g.ma===ma&&g.tu<=ngay).sor
 const bac = si => { const n=Math.round(si); return n>=21?1800000:n>=16?1600000:n>=13?1400000:n>=9?1200000:1000000; };
 
 /* ============ LUẬT (giống hàm Postgres trong migration) ============ */
+// Đợt khai lùi tháng 10 (Thùy 14/10, mig 202610141233): khai bù mọi ngày 01–31/10 tới hết 03/11; ngoài đợt chỉ 24 giờ
+const DOT = { tu:'2026-10-01', den:'2026-10-31', han:new Date(2026,10,3,23,59,59) };
+const duocKhaiBu = ngay => ngay>=DOT.tu && ngay<=DOT.den && S.now<=DOT.han;
 function caMo(ns){ return S.cas.find(c=>c.ns===ns&&c.ngay===homNay()&&!c.ra); }
 function caCua(ns,ngay){ return S.cas.filter(c=>c.ns===ns&&c.ngay===ngay&&c.duyet!=='tuchoi').sort((a,b)=>b.vao-a.vao)[0]; }
 function vaoCa(ns){ if(caMo(ns)) return caMo(ns); const c={id:nid('ca'),ns,ngay:homNay(),vao:new Date(S.now),ra:null,nguon:'app',khaiBu:false,duyet:'cho'}; S.cas.push(c); return c; }
-function raCa(ns){ const c=caMo(ns); if(!c) throw 'Chưa vào ca hôm nay'; c.ra=new Date(S.now); }
+function raCa(ns){ const c=caMo(ns); if(!c) throw 'Hôm nay chưa checkin'; c.ra=new Date(S.now); }
 function khaiBuCa(ns,ngay,vao,ra){
   const v=dt(ngay,vao), r=dt(ngay,ra);
   if(r<=v) throw 'Giờ ra phải sau giờ vào';
   if(r>S.now) throw 'Không khai bù cho giờ chưa tới';
-  if(S.now-r>24*3600e3) throw 'Đã quá 24 giờ — nhờ quản lý nhập hộ';
+  if(S.now-r>24*3600e3 && !duocKhaiBu(ngay)) throw 'Đã quá 24 giờ — nhờ quản lý nhập hộ';
   const mo=S.cas.find(c=>c.ns===ns&&c.ngay===ngay&&!c.ra);
   if(mo){ mo.ra=r; mo.khaiBu=true; return mo; }
   const c={id:nid('ca'),ns,ngay,vao:v,ra:r,nguon:'app',khaiBu:true,duyet:'cho'}; S.cas.push(c); return c;
@@ -172,8 +175,8 @@ function khaiViec(ns,o){   // o: {loai, ngay, lop, bat, ket, hs, ghichu, ref}
   const L=loai(o.loai), ngay=o.ngay||homNay();
   if(ngay>homNay()) throw 'Không khai trước cho ngày chưa tới';
   const het=dt(ngay,o.ket||'23:59');
-  if(S.now-het>24*3600e3) throw 'Đã quá 24 giờ kể từ khi việc diễn ra — nhờ quản lý nhập hộ';
-  const ca=caCua(ns,ngay); if(!ca) throw 'Chưa chấm công có mặt ngày '+dm(ngay);
+  if(S.now-het>24*3600e3 && !duocKhaiBu(ngay)) throw 'Đã quá 24 giờ kể từ khi việc diễn ra — nhờ quản lý nhập hộ';
+  const ca=caCua(ns,ngay); if(!ca) throw 'Chưa checkin ngày '+dm(ngay);
   let lop=o.lop||null;
   if(!lop&&o.loai==='tro_giang') lop=Object.keys(LOP).find(k=>LOP[k].chu===ns)||null;
   if(L.canLop&&!lop) throw 'Loại việc "'+L.ten+'" cần chọn lớp';
@@ -210,8 +213,8 @@ function doiChieu(v){
   }
   const ca=S.cas.find(c=>c.id===v.ca);
   if(ca){ const vm=(ca.vaoChot||ca.vao), rm=(ca.raChot||ca.ra);
-    if(v.bat&&toMin(v.bat)<vm.getHours()*60+vm.getMinutes()-15) co.push('Trước giờ vào ca');
-    if(v.ket&&rm&&toMin(v.ket)>rm.getHours()*60+rm.getMinutes()+15) co.push('Sau giờ ra ca');
+    if(v.bat&&toMin(v.bat)<vm.getHours()*60+vm.getMinutes()-15) co.push('Trước giờ checkin');
+    if(v.ket&&rm&&toMin(v.ket)>rm.getHours()*60+rm.getMinutes()+15) co.push('Sau giờ checkout');
     if(ca.duyet==='tuchoi') co.push('Ca bị từ chối'); }
   if(v.bat&&v.ket&&S.viecs.some(o=>o.id!==v.id&&o.ns===v.ns&&o.ngay===v.ngay&&o.tt!=='tuchoi'&&o.bat&&o.ket&&toMin(o.bat)<toMin(v.ket)&&toMin(o.ket)>toMin(v.bat))) co.push('Trùng giờ việc khác');
   if((v.bat&&toMin(v.bat)<420)||(v.ket&&toMin(v.ket)>1350)) co.push('Ngoài 7h–22h30');
@@ -220,7 +223,7 @@ function doiChieu(v){
   if(v.khaiBu) co.push('Khai bù'); if(v.nguon==='nhap_ho') co.push('Nhập hộ');
   return {khop,co,ho,ghi};
 }
-function coCa(c){ const co=[]; if(!c.ra&&!c.raChot&&c.ngay<homNay()) co.push('Quên ra ca'); if(c.khaiBu) co.push('Khai bù'); if(c.nguon==='nhap_ho') co.push('Nhập hộ');
+function coCa(c){ const co=[]; if(!c.ra&&!c.raChot&&c.ngay<homNay()) co.push('Quên checkout'); if(c.khaiBu) co.push('Khai bù'); if(c.nguon==='nhap_ho') co.push('Nhập hộ');
   if(!S.viecs.some(v=>v.ca===c.id&&v.tt!=='tuchoi')) co.push('Ca chưa có việc'); return co; }
 function thieuCong(){
   const t=[], hn=homNay();
@@ -259,25 +262,25 @@ function luong(ns){
 function them(ns,ngay,vao,ra,opt){ const c={id:nid('ca'),ns,ngay,vao:dt(ngay,vao),ra:ra?dt(ngay,ra):null,nguon:'app',khaiBu:false,duyet:'cho',...(opt||{})}; S.cas.push(c); return c; }
 function tv(c,o){ const v={id:nid('v'),ca:c.id,ns:c.ns,ngay:c.ngay,hs:'',ghichu:'',ref:null,nguon:o.ref?'he_thong':'tu_khai',khaiBu:false,tt:'cho',bat:null,ket:null,lop:null,...o}; S.viecs.push(v); return v; }
 const KB = [
- {id:'kb1',ten:'1. Ngày bình thường',vai:'an',buoc:['Bấm <b>Chấm công vào</b>.','Tick 3 việc hệ thống gợi ý (trực khối 17h, trợ giảng 6S2, bổ trợ bù).','Ở giờ giả lập bấm “+3 giờ” rồi “+1 giờ” (thành 20:55), sau đó bấm <b>Chấm công ra</b>.','Đổi vai sang <b>Trang</b>, mở Duyệt công.'],
+ {id:'kb1',ten:'1. Ngày bình thường',vai:'an',buoc:['Bấm <b>Checkin</b>.','Tick 3 việc hệ thống gợi ý (trực khối 17h, trợ giảng 6S2, bổ trợ bù).','Ở giờ giả lập bấm “+3 giờ” rồi “+1 giờ” (thành 20:55), sau đó bấm <b>Checkout</b>.','Đổi vai sang <b>Trang</b>, mở Duyệt công.'],
   want:'Cả 3 việc hiện “Đã khớp”, không cờ. Trang bấm một nút là duyệt hết.'},
  {id:'kb2',ten:'2. Dạy hộ lớp khác',vai:'an',setup(){ S.now=new Date(2026,9,15,17,40); them('an',D(0),'17:35',null); },
   buoc:['An đang trong ca. Bấm <b>Thêm việc</b>.','Chọn Trợ giảng lớp học, lớp <b>6S1</b>, 18:00–19:30, lưu.','Đổi vai sang Trang → Duyệt công → duyệt.','Về vai An, mở tab Lương tạm tính.'],
   want:'Dòng việc ghi “Làm hộ: Bình”. Lương An có thêm lớp 6S1 (dạy hộ), tính theo bậc và số buổi của 6S1.'},
  {id:'kb3',ten:'3. Trông thi lớp mình và lớp khác',vai:'dung',setup(){ S.now=new Date(2026,9,15,19,20); them('dung',D(0),'16:50',null); them('an',D(0),'17:35',null); },
-  buoc:['Vai Dũng (chủ lớp 9A1, hôm nay 9A1 thi): tick gợi ý <b>Trông thi lớp 9A1</b>.','Đổi vai An: Thêm việc → Trông thi, lớp 9A1, 19:30–21:30.','+3 giờ, cả hai ra ca. Trang duyệt.','Xem Lương của Dũng và của An.'],
+  buoc:['Vai Dũng (chủ lớp 9A1, hôm nay 9A1 thi): tick gợi ý <b>Trông thi lớp 9A1</b>.','Đổi vai An: Thêm việc → Trông thi, lớp 9A1, 19:30–21:30.','+3 giờ, cả hai checkout. Trang duyệt.','Xem Lương của Dũng và của An.'],
   want:'Dũng: “Lớp mình: tính vào trợ giảng”, +1 buổi TG, 0đ trông thi. An: trông thi lớp khác 2 giờ × 50.000 = 100.000đ.'},
  {id:'kb4',ten:'4. Việc ngoài quy trình',vai:'an',setup(){ S.now=new Date(2026,9,15,16,40); them('an',D(0),'13:50',null); },
   buoc:['Thêm việc: <b>Bổ trợ đặc biệt</b>, học sinh “Đức Nam”, 14:00–15:30.','Thêm việc: <b>Họp</b>, 15:30–16:30.','Thêm việc: <b>Việc khác</b>, để trống ghi chú → bấm lưu.','Trang duyệt 2 việc đầu, xem Lương An.'],
   want:'Việc khác không ghi chú bị chặn. Bổ trợ đặc biệt 150.000đ. Họp có cờ “Chưa có đơn giá”, vẫn ghi lại, 0đ. Cả hai đều “(trống)” vì ERP không có bằng chứng.'},
- {id:'kb5',ten:'5. Quên ra ca',vai:'trang',tab:'duyet',setup(){ S.now=new Date(2026,9,15,9,0); const c=them('binh',D(-1),'16:20',null); tv(c,{loai:'bo_tro_duoi',lop:'6S1',bat:'16:30',ket:'18:00',ref:'t2',hs:'Bảo Anh'}); tv(c,{loai:'tro_giang',lop:'6S1',bat:'18:00',ket:'19:30',ref:'b3'}); },
-  buoc:['Vai Trang, Duyệt công: ca của Bình hôm qua có cờ “Quên ra ca”.','Bấm <b>Duyệt</b> ngay → bị chặn.','Bấm <b>Chốt giờ</b> trên dòng ca, điền giờ ra 19:35, lưu.','Bấm Duyệt lại.'],
+ {id:'kb5',ten:'5. Quên checkout',vai:'trang',tab:'duyet',setup(){ S.now=new Date(2026,9,15,9,0); const c=them('binh',D(-1),'16:20',null); tv(c,{loai:'bo_tro_duoi',lop:'6S1',bat:'16:30',ket:'18:00',ref:'t2',hs:'Bảo Anh'}); tv(c,{loai:'tro_giang',lop:'6S1',bat:'18:00',ket:'19:30',ref:'b3'}); },
+  buoc:['Vai Trang, Duyệt công: ca của Bình hôm qua có cờ “Quên checkout”.','Bấm <b>Duyệt</b> ngay → bị chặn.','Bấm <b>Chốt giờ</b> trên dòng ca, điền giờ ra 19:35, lưu.','Bấm Duyệt lại.'],
   want:'Chưa có giờ ra thì không duyệt được. Sau khi chốt, giờ gốc vẫn giữ (ra: —), giờ chốt hiện riêng, duyệt được.'},
  {id:'kb6',ten:'6. Khai bù trong 24 giờ',vai:'an',setup(){ S.now=new Date(2026,9,16,10,0); },
   buoc:['Giờ giả lập đang là sáng 16/10. Hôm qua An quên chấm công.','Bấm <b>Khai bù</b>: ngày 15/10, vào 17:00, ra 19:35.','Trong khối khai bù, thêm việc Trợ giảng 6S2 ngày 15/10, 18:00–19:30.','Đổi vai Trang.'],
   want:'Khai được. Ca và việc đều mang nhãn “Khai bù”, vẫn nằm trong danh sách chờ duyệt như thường.'},
- {id:'kb7',ten:'7. Quá 24 giờ → Trang nhập hộ',vai:'an',setup(){ S.now=new Date(2026,9,17,20,0); },
-  buoc:['Giờ giả lập là tối 17/10. An bấm <b>Khai bù</b> cho ngày 15/10, 17:00–19:35.','Hệ thống chặn.','Đổi vai Trang → <b>Nhập hộ</b>: An, 15/10, Trợ giảng 6S2, có lý do.'],
+ {id:'kb7',ten:'7. Quá 24 giờ → Trang nhập hộ',vai:'an',setup(){ S.now=new Date(2026,10,5,20,0); },
+  buoc:['Giờ giả lập là tối 05/11 (đợt khai lùi tháng 10 đã đóng hôm 03/11). An bấm <b>Khai bù</b> cho ngày 03/11, 17:00–19:35.','Hệ thống chặn.','Đổi vai Trang → <b>Nhập hộ</b>: An, 03/11, Trợ giảng 6S2, có lý do.'],
   want:'TA bị chặn với thông báo quá 24 giờ. Trang nhập hộ được (bắt buộc lý do), dòng mang nhãn “Nhập hộ” và ở trạng thái đã duyệt.'},
  {id:'kb8',ten:'8. Buổi không ai chấm công',vai:'trang',tab:'thieu',setup(){ S.now=new Date(2026,9,15,9,0); const c=them('dung',D(-1),'19:20','21:35'); tv(c,{loai:'tro_giang',lop:'9A1',bat:'19:30',ket:'21:30',ref:'b4'}); },
   buoc:['Vai Trang, tab <b>Thiếu công</b>.','Hôm qua (14/10) chỉ có Dũng chấm công lớp 9A1.'],
@@ -287,7 +290,7 @@ const KB = [
     const c2=them('an',D(0),'17:55','19:35'); tv(c2,{loai:'tro_giang',lop:'6S1',bat:'18:00',ket:'19:30'}); tv(c2,{loai:'bo_tro_dinh_ki',bat:'17:00',ket:'18:00',ref:'c1'}); tv(c2,{loai:'bo_tro_chua_bai',lop:'6S2',bat:'18:30',ket:'19:30',hs:'Tuệ An'});
     const c3=them('binh',D(0),'17:50','19:40'); tv(c3,{loai:'tro_giang',lop:'6S1',bat:'18:00',ket:'19:30',ref:'b7'}); },
   buoc:['Vai Trang, Duyệt công, bộ lọc “Tất cả chờ duyệt”.','Đọc cột Cờ của từng dòng.'],
-  want:'Chi 7A1 14/10: “Buổi đã huỷ”. An và Bình cùng khai 6S1: “Hai TA cùng buổi”. Trực khối 17h của An: “Trước giờ vào ca” (vào 17:55). Trợ giảng 6S1 và chữa bài 18:30 của An: “Trùng giờ việc khác”.'},
+  want:'Chi 7A1 14/10: “Buổi đã huỷ”. An và Bình cùng khai 6S1: “Hai TA cùng buổi”. Trực khối 17h của An: “Trước giờ checkin” (vào 17:55). Trợ giảng 6S1 và chữa bài 18:30 của An: “Trùng giờ việc khác”.'},
  {id:'kb10',ten:'10. Từ chối một dòng, duyệt cả lô',vai:'trang',tab:'duyet',setup(){ S.now=new Date(2026,9,15,22,0);
     const c=them('an',D(0),'16:55','20:35'); tv(c,{loai:'bo_tro_dinh_ki',bat:'17:00',ket:'18:00',ref:'c1'}); tv(c,{loai:'tro_giang',lop:'6S2',bat:'18:00',ket:'19:30',ref:'b6'}); tv(c,{loai:'bo_tro_bu',lop:'6S2',bat:'19:30',ket:'20:30',ref:'t1',hs:'Minh Trí'}); tv(c,{loai:'cham_thi',bat:'20:30',ket:'22:00',ghichu:'Chấm bài thi 9A1'});
     const c2=them('dung',D(0),'16:50','21:35'); tv(c2,{loai:'bo_tro_dinh_ki',bat:'17:00',ket:'18:00',ref:'c3'}); tv(c2,{loai:'trong_thi',lop:'9A1',bat:'19:30',ket:'21:30',ref:'b10'}); },
@@ -301,6 +304,9 @@ const KB = [
  {id:'kb12',ten:'12. Đổi đơn giá, có lịch sử',vai:'ceo',tab:'gia',setup(){ S.now=new Date(2026,9,15,22,0); const c=them('an',D(0),'19:20','21:35',{duyet:'duyet'}); tv(c,{loai:'trong_thi',lop:'9A1',bat:'19:30',ket:'21:30',tt:'duyet'}); },
   buoc:['Vai CEO, tab Đơn giá.','Thêm giá mới: Trông thi lớp khác = 60.000, hiệu lực 01/11/2026.','Thêm giá cho <b>Họp</b> = 30.000, hiệu lực 01/10/2026.','Mở Bảng lương xem An.'],
   want:'Dòng cũ không mất, dòng mới nằm trên, ghi rõ ngày hiệu lực. Lương tháng 10 của An vẫn tính trông thi 50.000đ/giờ vì giá 60.000 chỉ có hiệu lực từ tháng 11.'},
+ {id:'kb13',ten:'13. Khai lùi tháng 10 (quá 24 giờ vẫn được)',vai:'an',setup(){ S.now=new Date(2026,9,15,10,0); },
+  buoc:['Giờ giả lập sáng 15/10. Hệ thống mới mở, An chưa từng chấm công đầu tháng.','Bấm <b>Khai bù</b>: ngày 05/10, checkin 17:00, checkout 19:35.','Trong khối khai bù, thêm việc Trợ giảng 6S2 ngày 05/10, 18:00–19:30.','Đổi vai Trang.'],
+  want:'Khai được dù đã quá 24 giờ (đợt khai lùi tháng 10 mở tới hết 03/11). Ca và việc mang nhãn “Khai bù”, chờ Trang duyệt như thường. Lịch giả chỉ có buổi 13–15/10 nên việc 05/10 hiện cờ “Không có buổi trên lịch” (trên ERP thật sẽ khớp buổi 05/10).'},
 ];
 function chayKB(id){ const k=KB.find(x=>x.id===id); reset(); S.kb=id; if(k.setup) k.setup(); S.vai=k.vai; S.tab=k.tab||(NS[k.vai].vai==='ta'?'cc':'duyet'); S.loc='cho'; ve(); }
 
@@ -332,16 +338,16 @@ function veTA(){
     h+=`<div class="phone">${veMsg()}
      <div class="card">
        <h2>Hôm nay · ${thu(hn)} ${dm(hn)}</h2>
-       ${ca?`<p>Đang trong ca từ <b>${hm(ca.vao)}</b></p><button class="big out" data-act="ra">Chấm công ra</button>`
-           :`<p class="sub">${caHn.length?'Đã ra ca lúc '+hm(caHn[caHn.length-1].ra)+'. Có thể vào ca mới.':'Chưa vào ca.'}</p><button class="big in" data-act="vao">Chấm công vào</button>`}
+       ${ca?`<p>Đang trong ca từ <b>${hm(ca.vao)}</b></p><button class="big out" data-act="ra">Checkout</button>`
+           :`<p class="sub">${caHn.length?'Đã checkout lúc '+hm(caHn[caHn.length-1].ra)+'. Có thể checkin ca mới.':'Chưa checkin.'}</p><button class="big in" data-act="vao">Checkin</button>`}
        <div class="row" style="margin-top:8px"><button class="btn sm" data-act="mo" data-k="bu">Khai bù (trong 24 giờ)</button></div>
        ${S.mo.bu?veKhaiBu():''}
      </div>
      <div class="card"><h2>Việc hôm nay theo lịch</h2>
        ${gy.length?gy.map(x=>`<div class="item ${x.dang?'now':''}" style="margin-bottom:6px"><div class="grow"><b>${esc(x.ten)}</b><div class="sub">${x.bat}–${x.ket} ${x.dang?pill('Đang diễn ra','warn'):''}</div></div>
-          ${x.da?pill('Đã khai','ok'):`<button class="btn sm pri" data-act="tick" data-ref="${x.ref}" ${caCua(ns,hn)?'':'disabled'}>Tôi làm việc này</button>`}</div>`).join('')
+          ${x.da?pill('Đã ghi công','ok'):`<button class="btn sm pri" data-act="tick" data-ref="${x.ref}" ${caCua(ns,hn)?'':'disabled'}>Ghi công</button>`}</div>`).join('')
         :'<p class="sub">Lịch hôm nay không có việc nào của bạn. Có việc thì bấm Thêm việc.</p>'}
-       ${caCua(ns,hn)?'':'<p class="sub">Cần chấm công vào trước khi khai việc.</p>'}
+       ${caCua(ns,hn)?'':'<p class="sub">Cần checkin trước khi ghi công.</p>'}
      </div>
      <div class="card"><h2>Việc tôi đã khai hôm nay</h2>
        ${viecHn.length?viecHn.map(v=>veViecTA(v)).join(''):'<p class="sub">Chưa khai việc nào.</p>'}
@@ -369,9 +375,9 @@ function veForm(ngay,pre){ pre=pre||'';
     <label>Từ<input id="${pre}f_bat" type="time" value="18:00"></label><label>Đến<input id="${pre}f_ket" type="time" value="19:30"></label>
     <label>Học sinh<input id="${pre}f_hs" placeholder="tên học sinh"></label><label>Ghi chú<input id="${pre}f_gc" placeholder="bắt buộc với Việc khác"></label>
   </div><div class="row" style="margin-top:8px"><button class="btn pri" data-act="luu" data-ngay="${ngay}" data-pre="${pre}">Lưu việc</button><span class="sub">Trợ giảng không chọn lớp sẽ lấy lớp chính.</span></div></div>`; }
-function veKhaiBu(){ const hq=ymd(new Date(S.now.getTime()-864e5)), hk=ymd(new Date(S.now.getTime()-2*864e5));
+function veKhaiBu(){ const hq=ymd(new Date(S.now.getTime()-864e5));
   return `<div class="card" style="margin-top:8px;background:var(--soft)"><div class="form">
-    <label>Ngày<select id="b_ngay">${[homNay(),hq,hk].map(d=>`<option value="${d}">${thu(d)} ${dm(d)}</option>`).join('')}</select></label>
+    <label>Ngày<input id="b_ngay" type="date" value="${hq}" max="${homNay()}"></label>
     <label>Giờ vào<input id="b_vao" type="time" value="17:00"></label><label>Giờ ra<input id="b_ra" type="time" value="19:35"></label>
   </div><div class="row" style="margin-top:8px"><button class="btn pri" data-act="bu">Khai bù ca có mặt</button></div>
   <p class="sub" style="margin:8px 0 0">Khai bù xong thì thêm việc cho ngày đó ở dưới.</p>${veFormBu()}</div>`; }
@@ -387,7 +393,7 @@ function veDuyet(){
   cas.forEach(c=>{ const co=coCa(c);
     dong.push(`<tr class="ca"><td>${chk(c.id,c.duyet)}</td><td class="n">${esc(nguoi(c.ns))}<div class="sub">${thu(c.ngay)} ${dm(c.ngay)}</div></td>
       <td class="n">Có mặt ${hm(c.vao)} – ${hm(c.ra)}${c.vaoChot||c.raChot?`<div class="sub">chốt: ${hm(c.vaoChot||c.vao)} – ${hm(c.raChot||c.ra)}</div>`:''}</td><td></td><td class="sub">không áp dụng</td>
-      <td>${co.map(x=>pill(x,x==='Quên ra ca'?'bad':'info')).join(' ')}</td><td></td><td>${ttPill(c.duyet)}${c.lydo?`<div class="sub">${esc(c.lydo)}</div>`:''}</td>
+      <td>${co.map(x=>pill(x,x==='Quên checkout'?'bad':'info')).join(' ')}</td><td></td><td>${ttPill(c.duyet)}${c.lydo?`<div class="sub">${esc(c.lydo)}</div>`:''}</td>
       <td class="act"><button class="btn sm" data-act="mo" data-k="chot_${c.id}">Chốt giờ</button>${c.duyet==='cho'?`<button class="btn sm bad" data-act="mo" data-k="tc_${c.id}">Từ chối</button>`:''}</td></tr>`);
     if(S.mo['chot_'+c.id]) dong.push(`<tr><td></td><td colspan="8"><div class="row"><span class="sub">Giờ gốc giữ nguyên, giờ chốt lưu riêng.</span> Vào <input class="inp" style="width:110px" type="time" id="cv_${c.id}" value="${hm(c.vaoChot||c.vao)}"> Ra <input class="inp" style="width:110px" type="time" id="cr_${c.id}" value="${c.ra||c.raChot?hm(c.raChot||c.ra):'19:35'}"> <button class="btn sm pri" data-act="chot" data-id="${c.id}">Lưu giờ chốt</button></div></td></tr>`);
     if(S.mo['tc_'+c.id]) dong.push(veTuChoi(c.id,'ca'));
@@ -462,7 +468,7 @@ document.addEventListener('click',e=>{
   else if(a==='mo') S.mo[b.dataset.k]=!S.mo[b.dataset.k];
   else if(a==='vao') thu_(()=>vaoCa(ns),'Đã chấm công vào lúc '+hm(S.now));
   else if(a==='ra') thu_(()=>raCa(ns),'Đã chấm công ra lúc '+hm(S.now));
-  else if(a==='tick'){ const x=goiY(ns).find(g=>g.ref===b.dataset.ref); thu_(()=>khaiViec(ns,{loai:x.loai,lop:x.lop,bat:x.bat,ket:x.ket,hs:x.hs,ref:x.ref}),'Đã khai: '+x.ten); }
+  else if(a==='tick'){ const x=goiY(ns).find(g=>g.ref===b.dataset.ref); thu_(()=>khaiViec(ns,{loai:x.loai,lop:x.lop,bat:x.bat,ket:x.ket,hs:x.hs,ref:x.ref}),'Đã ghi công: '+x.ten); }
   else if(a==='luu'){ const p=b.dataset.pre||''; thu_(()=>{ khaiViec(ns,{loai:val(p+'f_loai'),ngay:b.dataset.ngay,lop:val(p+'f_lop'),bat:val(p+'f_bat'),ket:val(p+'f_ket'),hs:val(p+'f_hs'),ghichu:val(p+'f_gc')}); if(!p) S.mo.them=false; },'Đã lưu việc'); }
   else if(a==='bo'){ const v=S.viecs.find(x=>x.id===b.dataset.id); v.tt='tuchoi'; v.lydo='TA tự bỏ'; }
   else if(a==='bu'){ const ngay=val('b_ngay'); thu_(()=>{ khaiBuCa(ns,ngay,val('b_vao'),val('b_ra')); S.mo.buNgay=ngay; },'Đã khai bù ca ngày '+dm(ngay)+'. Thêm việc của ngày đó bên dưới.'); }

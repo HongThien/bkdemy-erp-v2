@@ -39,20 +39,23 @@ ok('KB4: việc khác không ghi chú bị chặn', /ghi chú/.test(loi(() => _.
 ok('KB4: họp có cờ chưa có đơn giá, không khớp', _.doiChieu(d2).co.includes('Chưa có đơn giá') && !_.doiChieu(d2).khop);
 gio(200); _.raCa('an'); _.duyet(_.S.cas.map(c => c.id), [d1.id, d2.id], 'duyet'); ok('KB4: bổ trợ đặc biệt 150.000 + họp 0đ', _.luong('an').tNgoai === 150000);
 // KB5
-_.chayKB('kb5'); const c5 = _.S.cas[0]; ok('KB5: cờ quên ra ca', _.coCa(c5).includes('Quên ra ca'));
+_.chayKB('kb5'); const c5 = _.S.cas[0]; ok('KB5: cờ quên ra ca', _.coCa(c5).includes('Quên checkout'));
 ok('KB5: duyệt bị chặn khi chưa có giờ ra', /chưa có giờ ra/.test(loi(() => _.duyet([c5.id], [], 'duyet')) || ''));
 c5.raChot = _.dt(c5.ngay, '19:35'); ok('KB5: chốt giờ xong duyệt được, giờ gốc giữ nguyên', !loi(() => _.duyet([c5.id], _.S.viecs.map(v => v.id), 'duyet')) && c5.ra === null);
 // KB6
 _.chayKB('kb6'); const c6 = _.khaiBuCa('an', _.D(0), '17:00', '19:35'); const v6 = _.khaiViec('an', { loai: 'tro_giang', ngay: _.D(0), bat: '18:00', ket: '19:30' });
 ok('KB6: khai bù trong 24 giờ được, có nhãn', c6.khaiBu && v6.khaiBu && _.doiChieu(v6).co.includes('Khai bù') && v6.tt === 'cho');
 // KB7
-_.chayKB('kb7'); ok('KB7: khai bù quá 24 giờ bị chặn', /24 giờ/.test(loi(() => _.khaiBuCa('an', _.D(0), '17:00', '19:35')) || ''));
+_.chayKB('kb7'); ok('KB7: hết đợt tháng 10, khai bù quá 24 giờ bị chặn', /24 giờ/.test(loi(() => _.khaiBuCa('an', '2026-11-03', '17:00', '19:35')) || ''));
+// KB13
+_.chayKB('kb13'); const c13 = _.khaiBuCa('an', '2026-10-05', '17:00', '19:35'); const v13 = _.khaiViec('an', { loai: 'tro_giang', ngay: '2026-10-05', bat: '18:00', ket: '19:30' });
+ok('KB13: khai lùi 05/10 trong đợt tháng 10 được, có nhãn khai bù', c13.khaiBu && v13.khaiBu && v13.tt === 'cho');
 // KB8
 _.chayKB('kb8'); const t8 = _.thieuCong().map(x => x.d.slice(8) + ' ' + x.ten);
 ok('KB8: thiếu công đúng 4 dòng (13/10: 6S2, 8B1 · 14/10: ca trực K6, 6S1)', t8.length === 4 && !t8.some(x => /9A1|7A1/.test(x)), t8.join(' | '));
 // KB9
 _.chayKB('kb9'); const co9 = _.S.viecs.map(v => _.NS[v.ns].ten + ' ' + v.loai + (v.lop || '') + ': ' + _.doiChieu(v).co.join('+'));
-ok('KB9: đủ 4 loại cờ', ['Buổi đã huỷ', 'Hai TA cùng buổi', 'Trước giờ vào ca', 'Trùng giờ việc khác'].every(c => co9.some(x => x.includes(c))), '\n     ' + co9.join('\n     '));
+ok('KB9: đủ 4 loại cờ', ['Buổi đã huỷ', 'Hai TA cùng buổi', 'Trước giờ checkin', 'Trùng giờ việc khác'].every(c => co9.some(x => x.includes(c))), '\n     ' + co9.join('\n     '));
 // KB10
 _.chayKB('kb10'); const ct = _.S.viecs.find(v => v.loai === 'cham_thi');
 ok('KB10: từ chối không lý do bị chặn', /lý do/.test(loi(() => _.duyet([], [ct.id], 'tuchoi', '')) || ''));
