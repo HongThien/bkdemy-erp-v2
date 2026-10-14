@@ -1,7 +1,8 @@
 // CongTA — CHẤM CÔNG của TA trên app (spec-cham-cong-ta.md §4, mockup design/mockup-cham-cong-ta.html, Thùy duyệt 14/10).
 // 3 tab: Hôm nay (Checkin/Checkout · việc theo lịch → "Ghi công" · việc đã ghi · thêm việc ngoài lịch · card to "Khai bù ngày trước"
 //        → màn Khai bù: lịch chọn ngày dd/mm/yyyy rồi khai ca + ghi công ngày đó)
-//        · Bảng công (theo tháng, đối chiếu + trạng thái duyệt) · Lương tạm tính (chỉ phần đã duyệt).
+//        · Bảng công (theo tháng, đối chiếu + trạng thái duyệt) · Lương (tháng đã chốt ⇒ phiếu chính thức từ bản chốt;
+//        chưa chốt ⇒ tạm tính, chỉ phần đã duyệt).
 // Mọi luật ở DB (lib/tacong.ts): lớp mặc định theo phân công TẠI NGÀY, 24 giờ / đợt khai lùi tháng 10, khớp lịch, làm hộ ai.
 // Sau mỗi thao tác: quét lại NỀN, giữ nguyên danh sách đang hiện (không trắng màn — CLAUDE.md §2 React).
 import { useEffect, useMemo, useState } from 'react'
@@ -27,9 +28,9 @@ export default function CongTA({ nsId, onBack, onDoi }: { nsId: string; onBack: 
   const [khaiBu, setKhaiBu] = useState(false)   // màn Khai bù (mở từ card trong tab Hôm nay)
   return (
     <div>
-      <BKTabHeader icon={A('pr_calendar')} title="Chấm công" sub="Checkin · ghi công · bảng công · lương tạm tính" onBack={onBack} />
+      <BKTabHeader icon={A('pr_calendar')} title="Chấm công" sub="Checkin · ghi công · bảng công · lương" onBack={onBack} />
       <div className="mx-auto flex max-w-[640px] flex-col gap-2 px-2 pb-6">
-        <BKSegmented value={tab} onChange={(t) => { setTab(t); setKhaiBu(false) }} items={[{ key: 'nay', label: 'Hôm nay' }, { key: 'bang', label: 'Bảng công' }, { key: 'luong', label: 'Lương tạm tính' }]} />
+        <BKSegmented value={tab} onChange={(t) => { setTab(t); setKhaiBu(false) }} items={[{ key: 'nay', label: 'Hôm nay' }, { key: 'bang', label: 'Bảng công' }, { key: 'luong', label: 'Lương' }]} />
         {tab === 'nay' && (khaiBu ? <KhaiBu onDoi={onDoi} onBack={() => setKhaiBu(false)} /> : <HomNay onDoi={onDoi} onKhaiBu={() => setKhaiBu(true)} />)}
         {tab === 'bang' && <BangCong />}
         {tab === 'luong' && <Luong nsId={nsId} />}
@@ -376,7 +377,7 @@ function ChonThang({ ky, setKy }: { ky: string; setKy: (k: string) => void }) {
   )
 }
 
-// ── TAB LƯƠNG TẠM TÍNH (fn_ta_luong_thang — chỉ việc đã duyệt thuộc ca đã duyệt) ──
+// ── TAB LƯƠNG (fn_ta_luong_ky: tháng đã chốt ⇒ bản chốt bất biến; chưa chốt ⇒ tạm tính, chỉ việc đã duyệt thuộc ca đã duyệt) ──
 function Luong({ nsId }: { nsId: string }) {
   const [ky, setKy] = useState(dauThang(homNayVN()))
   const [l, setL] = useState<LuongThang | null | undefined>(undefined)
@@ -392,7 +393,10 @@ function Luong({ nsId }: { nsId: string }) {
       {l === undefined && !loi ? <p className="px-1 text-[13px] text-[#63709A]">Đang tải…</p> : l === null ? <p className="rounded-[20px] bg-white/90 px-3 py-4 text-center text-[13px] text-[#63709A]">Chưa có dữ liệu lương tháng này.</p> : l && (
         <div className="rounded-[22px] bg-white/90 p-3">
           <div className="flex items-baseline justify-between gap-2">
-            <p className="font-bubble text-[16px] font-extrabold text-[#16224D]">Tạm tính</p>
+            <div>
+              <p className="font-bubble text-[16px] font-extrabold text-[#16224D]">{l.da_chot ? 'Phiếu lương chính thức' : 'Tạm tính'}</p>
+              {l.da_chot && <p className="text-[11.5px] font-semibold text-[#2E8B57]">Đã chốt {l.chot_at ? ngayDu(ngayCuaTs(new Date(l.chot_at).getTime())) : ''}{l.lan && l.lan > 1 ? ` · lần ${l.lan}` : ''}</p>}
+            </div>
             <p className="font-bubble text-[26px] font-extrabold text-[#F57C2B]">{tien(l.net)}đ</p>
           </div>
           <div className="mt-2 flex flex-col gap-1.5">
@@ -420,7 +424,7 @@ function Luong({ nsId }: { nsId: string }) {
             {l.chi_tiet.ngoai_package.length > 0 && <div className="flex justify-between px-3 text-[13px] font-bold text-[#16224D]"><span>Ngoài package</span><span>{tien(l.ngoai_package)}</span></div>}
             {Number(l.tien_phat) > 0 && <div className="flex justify-between rounded-2xl bg-[#FFE4EA] px-3 py-2 text-[13px] font-bold text-[#C0355A]"><span>Phạt (gậy đã chốt)</span><span>−{tien(l.tien_phat)}</span></div>}
           </div>
-          <p className="mt-2 text-[11.5px] text-[#63709A]">Chỉ tính việc đã duyệt thuộc ca đã duyệt. BTVN lấy thẳng từ bài bạn đã chấm trên ERP, không cần ghi công.</p>
+          <p className="mt-2 text-[11.5px] text-[#63709A]">{l.da_chot ? 'Tháng này đã chốt: số liệu cố định, công của tháng không sửa được nữa. Thấy sai thì báo quản lý để mở lại kỳ.' : 'Chỉ tính việc đã duyệt thuộc ca đã duyệt. Số có thể còn thay đổi tới khi quản lý chốt kỳ (sau ngày 3 tháng sau).'} BTVN lấy thẳng từ bài bạn đã chấm trên ERP, không cần ghi công.</p>
         </div>
       )}
     </div>

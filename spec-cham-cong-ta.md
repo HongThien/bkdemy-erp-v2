@@ -156,7 +156,9 @@ Mọi con số tính ở Postgres (`fn_ta_luong_thang`), app chỉ gọi (CLAUDE
 **Thêm 14/10 (đã áp):** `_ta_pc_khoang` / `_ta_tg_tai(ngày, lớp, TA)` = phân công tại một ngày từ log · `ta_dot_khai_bu` + `_ta_duoc_khai_bu` + `_ta_moc_cham_cong` · `_ta_doi_chieu(tu, den, ns)` dùng chung cho `fn_ta_doi_chieu` (người duyệt) và `fn_ta_cong_cua_toi` (TA) · `fn_ta_khai_bu_cho_phep` · khai trợ giảng/trông thi tự gắn buổi của lớp hôm đó (trùng ⇒ "Việc này đã ghi công rồi").
 **Test (rollback, DB thật):** `scripts/luong-ta-t9/test_chamcong.mjs` 32/32 · `test_ngay_phan_cong.mjs` 26/26 · `kiemchuan.mjs` T9 = 28.256.807đ · mockup `smoke_mockup.mjs` 35/35. Tốc độ (DB thật + tải giả nửa tháng): bảng lương 0,2s · duyệt 14 ngày 0,23s · thiếu công 0,07s.
 
-**Chưa làm:** chốt kỳ lương (`ta_luong_chot`, snapshot bất biến) + khoá sửa sau hạn ngày 3.
+**Chốt kỳ (14/10, mig `202610141527` ĐÃ ÁP; test `scripts/luong-ta-t9/test_chot_ky.mjs` 30/30):** `ta_luong_ky` (mỗi lần chốt một dòng, mở lại = ghi `mo_lai_*` một lần, chốt lại = lần mới) + `ta_luong_ky_dong` (bản chụp từng TA, bất biến). `fn_ta_ky_trang_thai` · `fn_ta_chot_ky` · `fn_ta_mo_lai_ky` (bắt lý do) · `fn_ta_luong_ky` (đã chốt ⇒ bản chốt, chưa ⇒ tạm tính; thay `fn_ta_luong_thang` ở cả màn ERP và app TA).
+Điều kiện chốt: sau hạn duyệt (ngày `han_duyet_ngay` tháng sau, hoặc hạn đợt khai lùi nếu muộn hơn), không còn ca/việc chờ duyệt, không còn ca quên checkout, và tháng **không nằm trước mốc chấm công ERP** (tháng 9 tính ngoài ERP — chốt trên ERP sẽ ra 6,06 triệu thay vì 28,26 triệu).
+Kỳ đã chốt ⇒ trigger khoá thêm/sửa/xoá `ta_cham_cong`, `ta_cong_viec` của tháng đó và chặn thêm đơn giá có hiệu lực ≤ đầu tháng đó.
 
 **Quyền:** hai chức năng mới `ta_cong_duyet` và `ta_luong`, gán cho CEO và Trang.
 
@@ -178,7 +180,7 @@ Mọi con số tính ở Postgres (`fn_ta_luong_thang`), app chỉ gọi (CLAUDE
 3. ✅ (14/10) App TA: ô **Chấm công** ở màn chính (Checkin/Checkout tại chỗ) + màn `ta/CongTA.tsx` (Hôm nay · Bảng công · Lương tạm tính; khai bù ngày khác). Seam `lib/tacong.ts`.
 4. ✅ (14/10) ERP lá `ta_cong_duyet` → `tacong/DuyetCongScreen.tsx` (duyệt lô · chốt giờ · từ chối · thiếu công · nhập hộ).
 5. ✅ (14/10) ERP lá `ta_luong` → `tacong/LuongTaScreen.tsx` (bảng lương tháng · đơn giá). Soi không cần đăng nhập: `/xem-thu-cong-ta.html` (`?man=duyet` | `?man=luong`).
-6. Chốt kỳ + phiếu lương TA xem trên app.
+6. ✅ (14/10) Chốt kỳ: khối chốt trên màn Lương trợ giảng (trạng thái · điều kiện còn thiếu · xác nhận ngay trên màn · mở lại bắt lý do · lịch sử lần chốt); app TA tab **Lương** hiện "Phiếu lương chính thức" khi tháng đã chốt. Xem thử: `/xem-thu-cong-ta.html?man=luong&chot=1`.
 7. Chạy song song với sheet một tháng; lệch về 0 thì tắt sheet. Khai tử `ta_vang` + `ChamCongTa.tsx`.
 
 ## 11. Ngoài phạm vi v1

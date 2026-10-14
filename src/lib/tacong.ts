@@ -27,6 +27,15 @@ export type LuongThang = {
     ngoai_package: { loai: string; ngay: string; lop: string | null; so_luong: number; don_gia: number | null; thieu_don_gia: boolean }[]
     day_thay: number; tien_phat: number
   }
+  // fn_ta_luong_ky (mig 202610141527): kỳ đã chốt ⇒ dòng bản chốt (da_chot, lần, lúc chốt); chưa chốt ⇒ tạm tính.
+  da_chot?: boolean; lan?: number | null; chot_at?: string | null
+}
+// Tình trạng chốt kỳ lương (fn_ta_ky_trang_thai) — mọi điều kiện tính ở DB.
+export type LichSuChot = { lan: number; chot_at: string; chot_boi: string | null; tong_net: number; so_ta: number; ghi_chu: string; mo_lai_at: string | null; mo_lai_boi: string | null; ly_do_mo_lai: string | null }
+export type KyTrangThai = {
+  ky: string; da_chot: boolean; lan: number | null; chot_at: string | null; chot_boi: string | null; so_ta: number | null; tong_net: number | null
+  mo_chot_tu: string; cho_duyet_ca: number; cho_duyet_viec: number; quen_checkout: number
+  moc_cham_cong: string; truoc_moc: boolean; co_the_chot: boolean; lich_su: LichSuChot[]
 }
 
 // Nhãn cờ (mã cờ do _ta_doi_chieu trả) — 'nhe' = thông tin, không phải mâu thuẫn.
@@ -62,7 +71,8 @@ export const goiYViec = () => rpc<GoiY[]>('fn_ta_hom_nay')
 export const congCuaToi = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_cong_cua_toi', { p_tu: tu, p_den: den })
 export const khaiBuChoPhep = () => rpc<KhoangKhaiBu[]>('fn_ta_khai_bu_cho_phep')
 export const boViec = (id: string) => rpc<null>('fn_ta_bo_viec', { p_id: id })
-export const luongCuaToi = async (ky: string, ns: string) => (await rpc<LuongThang[]>('fn_ta_luong_thang', { p_ky: ky, p_ns: ns }))[0] ?? null
+// Phiếu lương của tôi: kỳ đã chốt ⇒ bản chốt bất biến; chưa chốt ⇒ tạm tính (fn_ta_luong_ky).
+export const luongCuaToi = async (ky: string, ns: string) => (await rpc<LuongThang[]>('fn_ta_luong_ky', { p_ky: ky, p_ns: ns }))[0] ?? null
 
 export type KhaiViec = { loai: string; ngay: string; lop?: string | null; buoi?: string | null; ca?: string | null; bat?: string | null; ket?: string | null; hs?: string | null; ghiChu?: string }
 export const ghiCong = (v: KhaiViec) => rpc<string>('fn_ta_khai_viec', {
@@ -100,7 +110,11 @@ export const bangDonGia = () => rpc<DonGia[]>('fn_ta_bang_don_gia')
 // Đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định (bảng chỉ-thêm). Bậc lương phải kèm khoảng sĩ số của bậc đó.
 export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>
   rpc<string>('fn_ta_dat_don_gia', { p_ma: ma, p_gia: gia, p_hieu_luc_tu: tu, p_ten: o.ten ?? null, p_si_tu: o.siTu ?? null, p_si_den: o.siDen ?? null, p_ghi_chu: o.ghiChu ?? '' })
-export const luongThang = (ky: string) => rpc<LuongThang[]>('fn_ta_luong_thang', { p_ky: ky })
+export const luongThang = (ky: string) => rpc<LuongThang[]>('fn_ta_luong_ky', { p_ky: ky })
+// Chốt kỳ (bản chụp bất biến; khoá sửa công + đơn giá lùi về tháng đó) · mở lại (bắt buộc lý do, bản cũ giữ trong lịch sử).
+export const kyTrangThai = (ky: string) => rpc<KyTrangThai>('fn_ta_ky_trang_thai', { p_ky: ky })
+export const chotKy = (ky: string, ghiChu = '') => rpc<number>('fn_ta_chot_ky', { p_ky: ky, p_ghi_chu: ghiChu })
+export const moLaiKy = (ky: string, lyDo: string) => rpc<null>('fn_ta_mo_lai_ky', { p_ky: ky, p_ly_do: lyDo })
 export async function dsNhanSuDangLam(): Promise<{ id: string; ho_ten: string; anh_url: string | null }[]> {
   const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, anh_url').eq('trang_thai', 'dang_lam').order('ho_ten').limit(500)
   if (error) throw error

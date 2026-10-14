@@ -2,6 +2,7 @@
 // supabase.rpc / supabase.from bị thay bằng dữ liệu giả trong RAM (KHÔNG chạm DB). Luật thật nằm ở Postgres và đã
 // test riêng (scripts/luong-ta-t9/test_*.mjs) — trang này chỉ để nhìn. Chỉ chạy ở dev: /xem-thu-cong-ta.html
 // ?man=duyet → màn ERP Duyệt công (Trang) · ?man=luong → màn ERP Lương trợ giảng · mặc định = app TA.
+// &chot=1 → giả như tháng hiện tại đã qua hạn duyệt để bấm thử Chốt / Mở lại (bản chốt giả trong RAM).
 import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { supabase } from './lib/supabase'
@@ -56,6 +57,17 @@ const KHAC: DongCong[] = []
 const caB = moi({ loai_dong: 'ca', nhan_su_id: 'b', ho_ten: 'Trần Bình', ngay: homQua, vao_at: ts('16:20', homQua), quen_ra: true, co: ['quen_ra'] })
 KHAC.push(caB, moi({ nhan_su_id: 'b', ho_ten: 'Trần Bình', cham_cong_id: caB.id, ngay: homQua, loai_viec: 'bo_tro_duoi', ten_loai: 'Bổ trợ đuổi', ten_lop: '6S1', gio_bat_dau: '16:30:00', gio_ket_thuc: '18:00:00', hoc_sinh: 'Bảo Anh', khop: true }),
   moi({ nhan_su_id: 'b', ho_ten: 'Trần Bình', cham_cong_id: caB.id, ngay: homQua, loai_viec: 'tro_giang', ten_loai: 'Trợ giảng lớp học', ten_lop: '6S2', gio_bat_dau: '18:00:00', gio_ket_thuc: '19:30:00', khop: true, co: ['hai_ta_cung_buoi'], lam_ho: 'Nguyễn Xem Thử' }))
+// Chốt kỳ giả (RAM): mỗi kỳ một danh sách lần chốt; tháng trước 10/2026 là "trước mốc chấm công".
+const CHOT: Record<string, { lan: number; chot_at: string; chot_boi: string; tong_net: number; so_ta: number; ghi_chu: string; mo_lai_at: string | null; mo_lai_boi: string | null; ly_do_mo_lai: string | null }[]> = {}
+const QUA_HAN = new URLSearchParams(location.search).get('chot') === '1'
+const dangChot = (ky: string) => (CHOT[ky] ?? []).find((h) => !h.mo_lai_at)
+const kyTT = (ky: string) => {
+  const h = dangChot(ky), truoc = ky < '2026-10-01', sau = congNgay(ky.slice(0, 8) + '28', 7).slice(0, 8) + '04'
+  return { ky, da_chot: !!h, lan: h?.lan ?? null, chot_at: h?.chot_at ?? null, chot_boi: h?.chot_boi ?? null, so_ta: h?.so_ta ?? null, tong_net: h?.tong_net ?? null,
+    mo_chot_tu: QUA_HAN ? '2026-01-01T00:00:00+07:00' : sau + 'T00:00:00+07:00', cho_duyet_ca: 0, cho_duyet_viec: 0, quen_checkout: 0,
+    moc_cham_cong: '2026-10-01', truoc_moc: truoc, co_the_chot: !h && !truoc && QUA_HAN, lich_su: [...(CHOT[ky] ?? [])].reverse() }
+}
+const BANG = () => [LUONG_AN, { ...LUONG_AN, nhan_su_id: 'b', ho_ten: 'Trần Bình', package_lop: 480000, bo_tro_tien: 120000, ngoai_package: 0, gross: 600000, net: 550000, tien_phat: 50000, chi_tiet: { ...LUONG_AN.chi_tiet, lop: [LUONG_AN.chi_tiet.lop[1]], ngoai_package: [] } }]
 const ok = (data: unknown) => Promise.resolve({ data, error: null })
 const loi = (m: string) => Promise.resolve({ data: null, error: { message: m } })
 const caMo = () => dong.find((r) => r.loai_dong === 'ca' && r.ngay === HN && !r.ra_at)
@@ -96,8 +108,15 @@ const caMo = () => dong.find((r) => r.loai_dong === 'ca' && r.ngay === HN && !r.
     case 'fn_ta_cham_cong_nhap_ho': case 'fn_ta_nhap_ho_viec': return ok('nh')
     case 'fn_ta_bang_don_gia': return ok(GIA)
     case 'fn_ta_dat_don_gia': { GIA.unshift({ ma: a.p_ma, ten: a.p_ten ?? a.p_ma, si_tu: a.p_si_tu, si_den: a.p_si_den, gia_tri: a.p_gia, don_vi: 'đ/giờ', hieu_luc_tu: a.p_hieu_luc_tu, dang_hieu_luc: a.p_hieu_luc_tu <= HN, ghi_chu: a.p_ghi_chu, nguoi_dat: 'Nguyễn Xem Thử', dat_at: '' }); return ok('g') }
-    case 'fn_ta_luong_thang': if (!a.p_ns) return ok([LUONG_AN, { ...LUONG_AN, nhan_su_id: 'b', ho_ten: 'Trần Bình', package_lop: 480000, bo_tro_tien: 120000, ngoai_package: 0, gross: 600000, net: 550000, tien_phat: 50000, chi_tiet: { ...LUONG_AN.chi_tiet, lop: [LUONG_AN.chi_tiet.lop[1]], ngoai_package: [] } }])
-      return ok([LUONG_AN])
+    case 'fn_ta_luong_ky': { const ky = a.p_ky.slice(0, 8) + '01', h = dangChot(ky), them = { da_chot: !!h, lan: h?.lan ?? null, chot_at: h?.chot_at ?? null }
+      return ok((a.p_ns ? [LUONG_AN] : BANG()).map((r) => ({ ...r, ...them }))) }
+    case 'fn_ta_ky_trang_thai': return ok(kyTT(a.p_ky.slice(0, 8) + '01'))
+    case 'fn_ta_chot_ky': { const ky = a.p_ky.slice(0, 8) + '01', t = kyTT(ky)
+      if (t.da_chot) return loi('Tháng đã chốt'); if (!t.co_the_chot) return loi('Chưa đủ điều kiện chốt (xem thử: thêm &chot=1)')
+      const ds = (CHOT[ky] ??= []); ds.push({ lan: ds.length + 1, chot_at: new Date().toISOString(), chot_boi: 'Nguyễn Xem Thử', tong_net: 1792000, so_ta: 2, ghi_chu: a.p_ghi_chu ?? '', mo_lai_at: null, mo_lai_boi: null, ly_do_mo_lai: null })
+      return ok(ds.length) }
+    case 'fn_ta_mo_lai_ky': { const h = dangChot(a.p_ky.slice(0, 8) + '01'); if (!h) return loi('Tháng chưa chốt'); if (!String(a.p_ly_do ?? '').trim()) return loi('Mở lại kỳ phải ghi lý do')
+      h.mo_lai_at = new Date().toISOString(); h.mo_lai_boi = 'Nguyễn Xem Thử'; h.ly_do_mo_lai = a.p_ly_do; return ok(null) }
     default: return loi('xem thử: chưa giả lập ' + fn)
   }
 }
