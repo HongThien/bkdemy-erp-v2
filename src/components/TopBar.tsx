@@ -58,7 +58,12 @@ export default function TopBar({ email }: { email: string }) {
       <div className={`ml-auto flex shrink-0 items-center gap-2 text-xs ${sk.cd === 'toi' ? '[&>button:first-child]:border-rose-300/50 [&>button:first-child]:text-rose-300 [&>button:first-child:hover]:bg-rose-400/15' : ''}`}>
         <ReportButton />
         <HomThu di={dh.di} duocDi={(id) => id === 'home' || dh.mucs.some((m) => m.id === id)} />
-        <button onClick={() => setHoSo(true)} title={`Hồ sơ của tôi — ${email}`} className="max-w-[190px] truncate text-[var(--sk-muted)] hover:text-[var(--sk-acc)]">👤{isMobile ? '' : ` ${email}`}</button>
+        <button onClick={() => setHoSo(true)} title={`Hồ sơ của tôi (đổi ảnh đại diện) — ${email}`} className="flex max-w-[210px] items-center gap-1.5 text-[var(--sk-muted)] hover:text-[var(--sk-acc)]">
+          {dh.me?.nhanSu.anh_url
+            ? <img src={dh.me.nhanSu.anh_url} alt="" className="size-7 shrink-0 rounded-full object-cover ring-2 ring-[var(--sk-line)]" />
+            : <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[var(--sk-surface2)] text-[13px] font-bold text-[var(--sk-acc)] ring-2 ring-[var(--sk-line)]">{(dh.me?.nhanSu.ho_ten ?? email).trim().split(/s+/).pop()?.charAt(0).toUpperCase() || '?'}</span>}
+          {!isMobile && <span className="truncate">{email}</span>}
+        </button>
         <button onClick={() => supabase.auth.signOut()} className="rounded border border-[var(--sk-line)] px-2 py-1 text-[var(--sk-muted)] hover:bg-[var(--sk-surface2)] hover:text-rose-500">Đăng xuất</button>
       </div>
       {hoSo && <HoSoModal onClose={() => setHoSo(false)} />}

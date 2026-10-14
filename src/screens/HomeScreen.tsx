@@ -15,6 +15,8 @@ import { nenCua } from './hocsinh/skin/registry'
 import { HEAD, THE } from './home/khung'
 import TienDoViec from './home/TienDoViec'
 import ViecHangNgay from './home/ViecHangNgay'
+import HomThu from '../components/HomThu'
+import AvatarEditButton from '../components/AvatarEditButton'
 import BangOrder from './home/BangOrder'
 import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
@@ -434,11 +436,21 @@ export default function HomeScreen() {
           {/* HÀNG ĐẦU: lời chào · vị trí 2 (cạnh lời chào) · nút Tuỳ chỉnh / Giao diện */}
           <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'}>
             {!coNv && coTrai && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{oVitri(0)}</div>}
-            <div className="shrink-0 px-4 py-2.5" style={tam}>
-              <h2 className={isMobile ? 'text-[23px] font-bold leading-tight' : 'text-[32px] font-bold leading-[1.12]'} style={HEAD}>
-                <span className="text-[var(--sk-acc)]">✦</span> {tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}
-              </h2>
-              <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
+            <div className="flex shrink-0 flex-col items-start gap-2">
+            <div className="flex items-center gap-3 px-4 py-2.5" style={tam}>
+              {dh.me && (
+                <AvatarEditButton nhanSuId={dh.me.nhanSu.id} anhUrl={dh.me.nhanSu.anh_url} initial={(tenGoi ?? '?').charAt(0).toUpperCase()} size={isMobile ? 48 : 60}
+                  ring="var(--sk-line)" badge="var(--sk-acc)"
+                  onChanged={(url) => useStore.setState((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, anh_url: url } } } : {}))} />
+              )}
+              <div>
+                <h2 className={isMobile ? 'text-[23px] font-bold leading-tight' : 'text-[32px] font-bold leading-[1.12]'} style={HEAD}>
+                  <span className="text-[var(--sk-acc)]">✦</span> {tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}
+                </h2>
+                <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
+              </div>
+            </div>
+            {coSao && <HomThu noiBat di={dh.di} duocDi={(id) => id === 'home' || mucs.some((m) => m.id === id)} />}
             </div>
             {coCanh && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}>{oVitri(1)}</div>}
             <div className="ml-auto flex flex-wrap items-start gap-2">

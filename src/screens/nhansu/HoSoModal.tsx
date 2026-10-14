@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { getMyProfile, getMyScope, updateMyProfile, uploadAvatar, type MyProfile, type MyScope } from '../../lib/nhansu'
 import { Shell, Field, inp } from '../kho/ui'
+import { useStore } from '../../store/useStore'
 import PhimTatModal from '../../components/math/PhimTatModal'
 
 const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
@@ -36,6 +37,7 @@ export default function HoSoModal({ onClose }: { onClose: () => void }) {
     setBusy(true); setError(null); setSaved(false)
     try {
       await updateMyProfile(profile.nhanSu.id, { so_dien_thoai: sdt.trim() || null, email: email.trim() || null, anh_url: anhUrl || null })
+      useStore.setState((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, anh_url: anhUrl || null, so_dien_thoai: sdt.trim() || null, email: email.trim() || null } } } : {}))
       setSaved(true); setTimeout(() => setSaved(false), 2000)
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }

@@ -13,7 +13,7 @@ const tuongDoi = (iso: string) => {
   return new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
 }
 
-export default function HomThu({ di, duocDi }: { di: (leaf: string) => void; duocDi: (leaf: string) => boolean }) {
+export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: string) => void; duocDi: (leaf: string) => boolean; noiBat?: boolean }) {
   const coHoSo = useStore((s) => !!s.me)
   const [so, setSo] = useState(0)
   const [mo, setMo] = useState(false)
@@ -68,14 +68,26 @@ export default function HomThu({ di, duocDi }: { di: (leaf: string) => void; duo
 
   return (
     <div ref={khung} className="relative shrink-0">
-      <button onClick={() => setMo(!mo)} title="Hòm thư" className="relative flex size-8 items-center justify-center rounded-md text-[17px] hover:bg-[var(--sk-surface2)]">
-        🔔
+      {noiBat ? (
+        // NỔI BẬT (dưới lời chào): HÌNH PHONG THƯ to + số chưa đọc ĐỎ ở góc.
+        <button onClick={() => setMo(!mo)} title={so > 0 ? `Hòm thư — ${so} thư chưa đọc` : 'Hòm thư — order, task, gậy, nhận xét liên quan tới bạn'}
+          className="relative flex h-11 items-center gap-2 border border-[var(--sk-line)] bg-[var(--sk-surface)] pl-3 pr-4 text-[13.5px] font-bold text-[var(--sk-ink)] shadow-sm transition hover:brightness-110"
+          style={{ borderRadius: 999, backdropFilter: 'var(--sk-blur)' }}>
+          <span className="relative text-[24px] leading-none">✉️
+            {so > 0 && <span className="absolute -right-2.5 -top-2 min-w-[20px] rounded-full bg-rose-600 px-1 text-center text-[11.5px] font-extrabold leading-[20px] text-white ring-2 ring-white">{so > 99 ? '99+' : so}</span>}
+          </span>
+          <span className={so > 0 ? 'pl-1.5' : ''}>Hòm thư</span>
+        </button>
+      ) : (
+      <button onClick={() => setMo(!mo)} title="Hòm thư" className="relative flex size-8 items-center justify-center rounded-md text-[18px] hover:bg-[var(--sk-surface2)]">
+        ✉️
         {so > 0 && (
-          <span className="absolute -right-0.5 -top-0.5 min-w-[17px] rounded-full bg-rose-500 px-1 text-center text-[10.5px] font-bold leading-[17px] text-white">{so > 99 ? '99+' : so}</span>
+          <span className="absolute -right-1 -top-1 min-w-[17px] rounded-full bg-rose-600 px-1 text-center text-[10.5px] font-bold leading-[17px] text-white">{so > 99 ? '99+' : so}</span>
         )}
       </button>
+      )}
       {mo && (
-        <div className="absolute right-0 top-full z-[70] mt-2 flex max-h-[min(70vh,560px)] w-[400px] flex-col border border-[var(--sk-line)] bg-[var(--sk-bg)] text-[var(--sk-ink)] shadow-2xl" style={{ borderRadius: 'var(--sk-radius)' }}>
+        <div className={`absolute top-full z-[70] mt-2 ${noiBat ? 'left-0' : 'right-0'} flex max-h-[min(70vh,560px)] w-[400px] flex-col border border-[var(--sk-line)] bg-[var(--sk-bg)] text-[var(--sk-ink)] shadow-2xl`} style={{ borderRadius: 'var(--sk-radius)' }}>
           <div className="flex items-center gap-2 border-b border-[var(--sk-line)] px-3 py-2">
             <span className="text-[14px] font-bold">Hòm thư</span>
             <label className="ml-2 flex cursor-pointer items-center gap-1 text-[12px] text-[var(--sk-muted)]">
