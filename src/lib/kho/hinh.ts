@@ -1166,7 +1166,7 @@ export const hinhMoHinhLyThuyet = {
 // KHÔNG xử lý bài toán chưa có cách giải nào (không có mẫu để bám — bài toán khác, khó hơn, để riêng).
 export type BienTheChuaGiai = { id: string; baitoan_id: string; de_bai: string; kieu: string }
 export async function listBienTheChuaGiai(khoi?: string): Promise<BienTheChuaGiai[]> {
-  let q = supabase.from('hinh_baitoan_bien_the').select('id, baitoan_id, de_bai, kieu, hinh_baitoan!inner(mo_hinh_id, hinh_mo_hinh!inner(khoi))').is('loi_giai', null).limit(LIMIT)
+  let q = supabase.from('hinh_baitoan_bien_the').select('id, baitoan_id, de_bai, kieu, hinh_baitoan!inner(mo_hinh_id, hinh_mo_hinh!mo_hinh_id!inner(khoi))').is('loi_giai', null).limit(LIMIT)
   if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
   const { data, error } = await q
   if (error) throw error
@@ -1222,7 +1222,7 @@ export async function luuLoiGiaiNguoiHinh(loai: HinhLoaiBai, id: string, a: { lo
 export type BienTheChoDuyetLoiGiai = { id: string; khoi: string; deBai: string; loiGiai: string }
 export async function listBienTheChoDuyetLoiGiai(khoi?: string, chiMoi?: boolean): Promise<BienTheChoDuyetLoiGiai[]> {
   let q = supabase.from('hinh_baitoan_bien_the')
-    .select('id, de_bai, loi_giai, hinh_baitoan!inner(hinh_mo_hinh!inner(khoi))')
+    .select('id, de_bai, loi_giai, hinh_baitoan!inner(hinh_mo_hinh!mo_hinh_id!inner(khoi))')
     .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
   q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
   if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
@@ -1239,7 +1239,7 @@ export async function duyetLoiGiaiBienThe(id: string, nguoiDuyet: string): Promi
 export type CachGiaiChoDuyetLoiGiai = { id: string; khoi: string; deBai: string; loiGiai: string }
 export async function listCachGiaiChoDuyetLoiGiai(khoi?: string, chiMoi?: boolean): Promise<CachGiaiChoDuyetLoiGiai[]> {
   let q = supabase.from('hinh_cach_giai')
-    .select('id, loi_giai, hinh_baitoan!baitoan_id!inner(phat_bieu, hinh_mo_hinh!inner(khoi))')
+    .select('id, loi_giai, hinh_baitoan!baitoan_id!inner(phat_bieu, hinh_mo_hinh!mo_hinh_id!inner(khoi))')
     .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
   q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
   if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)

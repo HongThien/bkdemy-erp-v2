@@ -37516,3 +37516,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sai → sửa trong lúc làm:** (1) lần đầu máy tách 5 bài có "đoạn mở đầu" ở lời giải — soi ra 2 bài là câu Đúng/Sai (lời giải đảo thứ tự mệnh đề ⇒ tách ra ý nhận nhầm lời giải) ⇒ thêm luật nhận Đúng/Sai, không tách; (2) đề đánh số `1) 2) 3)` bị coi là 1 ý ⇒ thêm họ mốc số (chỉ nhận đầu dòng), họ nào mở đầu sớm hơn là tầng ngoài; (3) vá script bằng chuỗi lồng làm mất dấu `\` trong regex 2 lần ⇒ dùng `String.raw`.
 - **Kiểm trên app dev (Admin):** Duyệt kho › Toán › "Hình luyện · chưa phân mô hình" badge 223; khối 8 "88 bài / 223 ý"; hiện 30 thẻ đầu, thẻ 1 = HLB00095 gốc HHC002385; cảnh báo "khối 8 chưa có mô hình luyện". Chưa bấm gán (chưa có mô hình để gán).
 - **Chờ CEO:** 149 câu trắc nghiệm Hình có đưa vào kho Luyện không · `gia_thiet_them` từng ý để trống.
+
+## 14/10 (sáng) — LỖI DO TÔI: Duyệt kho Hình báo "Could not embed because more than one relationship was found for 'hinh_baitoan' and 'hinh_mo_hinh'"
+- **Thùy:** gặp lỗi lúc vào Duyệt kho › Hình.
+- **Nguyên nhân:** mig C1 (`202610140048`) thêm FK thứ hai giữa hai bảng: `hinh_mo_hinh.neo_baitoan_id → hinh_baitoan` (bên cạnh `hinh_baitoan.mo_hinh_id → hinh_mo_hinh` có sẵn). PostgREST thấy 2 quan hệ ⇒ mọi câu embed `hinh_baitoan(... hinh_mo_hinh!inner(khoi))` KHÔNG ghi rõ FK trở thành mơ hồ (PGRST201, HTTP 300). 3 câu trong `src/lib/kho/hinh.ts` dính: biến thể chưa có lời giải (dòng 1169) · biến thể chờ duyệt lời giải (1225) · cách giải chờ duyệt (1242) — đúng phần Hình của Duyệt kho.
+- **Sửa:** ghi rõ FK `hinh_mo_hinh!mo_hinh_id!inner(khoi)` ở cả 3. Gọi thẳng PostgREST: câu cũ → 300 PGRST201 (tái hiện đúng lỗi), 3 câu mới → 200.
+- **Vì sao lọt:** test C1 chỉ chạy SQL thuần (không qua PostgREST) và tôi chỉ mở màn Cây nhánh, không mở lại Duyệt kho › Hình. Lỗi tồn tại trên prod từ lúc áp C1 tới khi sửa.
+- **Bài học:** thêm FK giữa hai bảng ĐÃ có quan hệ ⇒ trước khi áp phải grep mọi embed PostgREST giữa hai bảng đó (`bảng_a(…bảng_b…)`) và thêm `!tên_cột_fk`. Thuộc mục "sau migrate: grep toàn repo" của CLAUDE.md §2 — tôi đã không làm.
