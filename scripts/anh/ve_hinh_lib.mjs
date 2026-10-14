@@ -15,17 +15,35 @@ const f = (n) => Math.round(n * 100) / 100
 export const P = (x, y) => ({ x, y })
 export const seg = (a, b) => `<line x1="${f(a.x)}" y1="${f(a.y)}" x2="${f(b.x)}" y2="${f(b.y)}"/>`
 
-/** n gạch bằng nhau tại vị trí t (0..1) dọc đoạn a→b */
+/** Ký hiệu nhóm đoạn bằng nhau số n tại vị trí t (0..1) dọc đoạn a→b.
+ *  ⭐ CEO 14/10: KHÔNG dùng 4–5 gạch (xấu, khó đếm). Tối đa 3 gạch; từ nhóm thứ 4 trở đi dùng dấu "x" kết hợp gạch:
+ *    n = 1 | 2 | 3   →  1 | 2 | 3 gạch
+ *    n = 4           →  ×
+ *    n = 5 | 6       →  × kèm 1 | 2 gạch
+ *  Nhiều hơn 6 nhóm trong một hình = hình quá rậm ⇒ tách hình (mỗi ý một hình), đừng thêm ký hiệu. */
 export function tick(a, b, n = 1, t = 0.5) {
   const d = unit(sub(b, a)); const nr = { x: -d.y, y: d.x }
   const m = { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }
-  let s = ''
-  for (let i = 0; i < n; i++) {
-    const off = (i - (n - 1) / 2) * 7
-    const c = { x: m.x + d.x * off, y: m.y + d.y * off }
-    s += `<line x1="${f(c.x - nr.x * 7)}" y1="${f(c.y - nr.y * 7)}" x2="${f(c.x + nr.x * 7)}" y2="${f(c.y + nr.y * 7)}"/>`
+  const gach = (c) => `<line x1="${f(c.x - nr.x * 7)}" y1="${f(c.y - nr.y * 7)}" x2="${f(c.x + nr.x * 7)}" y2="${f(c.y + nr.y * 7)}"/>`
+  const dichDoc = (off) => ({ x: m.x + d.x * off, y: m.y + d.y * off })
+  if (n <= 3) {
+    let s = ''
+    for (let i = 0; i < n; i++) s += gach(dichDoc((i - (n - 1) / 2) * 7))
+    return s
   }
+  if (n > 6) throw new Error(`tick: nhóm ${n} — quá 6 nhóm đoạn bằng nhau trong một hình, hãy tách hình theo ý`)
+  const soGach = n - 4                                    // 0 | 1 | 2 gạch đi kèm dấu x
+  const tong = 1 + soGach                                 // dấu x chiếm 1 ô, mỗi gạch 1 ô, cách nhau 9px
+  let s = cross(dichDoc((0 - (tong - 1) / 2) * 9), d)
+  for (let i = 1; i < tong; i++) s += gach(dichDoc((i - (tong - 1) / 2) * 9))
   return s
+}
+/** Dấu "x" đặt tại c, hai nét nghiêng ±45° so với hướng đoạn d (đơn vị). Dùng qua tick(n≥4). */
+export function cross(c, d, r = 6) {
+  const u = { x: (d.x - d.y) / Math.SQRT2, y: (d.y + d.x) / Math.SQRT2 }   // d xoay +45°
+  const v = { x: (d.x + d.y) / Math.SQRT2, y: (d.y - d.x) / Math.SQRT2 }   // d xoay −45°
+  return `<line x1="${f(c.x - u.x * r)}" y1="${f(c.y - u.y * r)}" x2="${f(c.x + u.x * r)}" y2="${f(c.y + u.y * r)}"/>`
+    + `<line x1="${f(c.x - v.x * r)}" y1="${f(c.y - v.y * r)}" x2="${f(c.x + v.x * r)}" y2="${f(c.y + v.y * r)}"/>`
 }
 
 /** n cung đánh dấu góc bằng nhau tại v, giữa tia v→p và v→q (cung ngắn). Hai góc kề nhau: dùng 2 bán kính KHÁC nhau. */

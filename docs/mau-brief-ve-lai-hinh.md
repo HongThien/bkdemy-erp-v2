@@ -59,3 +59,23 @@ Hai kiểu hình còn lại của phần Luyện. Mọi luật mục 3 + 3b vẫ
 ## 4. Báo cáo cuối (ngắn, đúng sự thật)
 
 Một bảng, mỗi hình một dòng: `tên tệp` · **đạt** / **khác ảnh cũ có chủ ý** (nói rõ khác gì, vì sao) / **không vẽ** (vì sao). Sau bảng: mọi chỗ bạn nghi **đề hoặc lời giải trong kho sai** (mã câu + sai gì) — chỉ báo, không sửa. Đừng viết "đã kiểm tra kỹ" — người soát sẽ mở bảng đối chiếu ra xem từng hình.
+
+## 4. Ký hiệu đoạn thẳng bằng nhau (CEO 14/10 — áp cho MỌI hình)
+
+- Tối đa **3 gạch**. Không bao giờ vẽ 4–5 gạch (xấu, khó đếm).
+- Nhóm thứ 4 trở đi dùng **dấu "x"** kết hợp gạch: nhóm 4 = `×` · nhóm 5 = `×` + 1 gạch · nhóm 6 = `×` + 2 gạch.
+- Chỉ cần gọi `tick(a, b, n)` như cũ — thư viện tự đổi sang dấu x khi `n ≥ 4`. `n > 6` thì thư viện báo lỗi: hình quá rậm, tách hình theo ý.
+- Thứ tự gán nhóm: nhóm xuất hiện nhiều nhất / quan trọng nhất của đề dùng số nhỏ (1 gạch).
+
+## 5. Hình theo Ý — kho Hình LUYỆN (`hinh_bai` / `hinh_y`, CEO 14/10)
+
+Trong một bài nhiều ý, các ý sau thường **thêm giả thiết** (lấy thêm điểm, kẻ thêm đường) ⇒ hình phải đi theo ý.
+
+- **Hình bài** `HLB…png` (→ `hinh_bai.anh_de`): CHỈ giả thiết chung (phần đề trước ý a).
+- **Hình ý** `HLY…png` (→ `hinh_y.anh_de`): hình bài **+ mọi thứ dựng thêm ở các ý trước + ý này** (cộng dồn — ý sau được dùng kết quả ý trước).
+  Ý **không** thêm điểm/đường nào ⇒ KHÔNG vẽ tệp; màn tự dùng hình gần nhất phía trước (ý trước → hình bài).
+- Vẽ đủ các đoạn/điểm mà **câu hỏi của ý nhắc tới** (để đọc được câu hỏi: "tứ giác AECK" thì nối AECK), nhưng **không đánh dấu điều phải chứng minh**
+  (không gạch bằng nhau / ký hiệu song song / ô vuông cho cái ý đó bắt chứng minh). Điều đã chứng minh ở ý TRƯỚC thì được đánh dấu ở hình ý SAU.
+- Số đo / gạch bằng nhau / góc vuông mà **đề cho** thì đánh dấu ngay từ hình bài.
+- Dựng đúng dữ kiện (trung điểm = `mid`, chân đường vuông góc = `foot`, giao = `inter`…), không ước mắt. Hình đề gốc (nếu có) là tham chiếu bố cục.
+- Gắn: `node --env-file=.env scripts/anh/gan_hinh.mjs <thư mục> --bang hlbai` (tệp HLB…) và `--bang hly` (tệp HLY…).
