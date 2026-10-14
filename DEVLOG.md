@@ -37594,3 +37594,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - (2) Không checkin từ màn chính: ô Chấm công ở TaHome chỉ báo trạng thái, bấm vào màn CongTA mới checkin (để làm luôn các việc khác).
 - (3) Khai bù là chức năng riêng: card to kiểu 1 (dải tím + thân trắng) cuối tab Hôm nay → màn Khai bù (lịch → ca của ngày → việc đã ghi + thêm việc). Ngày đã có ca thì ô khai ca gập thành nút "+ Khai thêm một ca nữa trong ngày".
 - Tách `NgayCong(ngay)` dùng chung cho hôm nay và ngày khai bù. Soi trên /xem-thu-cong-ta.html (khung điện thoại): lịch T10/2026 đúng (01/10 = T5), khai ca + ghi công ngày 05/10 chạy.
+
+### 14/10 (chiều–tối) — [ERP Home] Hòm thư Gmail + luật chữ cảnh + ĐỔI HƯỚNG cảnh
+- **Làm:** hòm thư popup lớn kiểu Gmail (`3e3107e1`); luật chữ R1–R4 cho `HomeScene` (`03dd46fa`): nhãn tự co, bảng tự giảm zoom, lề trong, `text_inset` manifest, CSS bỏ "…" trong cảnh.
+- **Sai (của tôi):** coi "chữ lệch ảnh" là lỗi toạ độ nên thêm luật vừa khung; gốc rễ là cả hướng ghép đồ vật tách lớp.
+- **Quyết định (Thùy):** ghép asset tách khỏi nền là KHÔNG ỔN — tranh có đổ bóng/tương tác ánh sáng, tách ra mất tự nhiên. Hướng đúng: giữ ảnh gốc nguyên vẹn, chỉ chừa ô trống điền chữ. Chưa sửa code; chờ bàn tiếp. Code ghép lớp giữ nguyên chưa xoá.
+- **Bài học:** hỏi "ảnh này dùng kiểu nào (tranh liền hay lớp rời)" TRƯỚC khi viết composer; đừng tối ưu chi tiết trên hướng chưa chốt.
