@@ -240,3 +240,26 @@ export async function ganBaiVaoMoHinh(baiId: string, moHinhId: string | null): P
   const { error } = await supabase.rpc('fn_hl_gan_bai_mo_hinh', { p_bai: baiId, p_mo_hinh: moHinhId })
   if (error) throw error
 }
+
+// ── Kho (các CHUỖI) của một mô hình luyện — CEO 14/10 "kho là các chuỗi bài, mỗi chuỗi 1 dòng" ──
+export type YChuoi = {
+  id: string; ma_y: string; nhan: string | null; noi_dung: string; dap_an: string | null; loi_giai: string | null
+  anh_de: string | null; da_duyet: boolean; baitoan_id: string | null; so: string | null; ma_bai_mh: string | null; ngoai_mo_hinh: boolean
+}
+export type ChuoiKho = {
+  id: string; ma_bai: string; nguon: string | null; nguon_ma_cau: string | null; de_bai: string | null
+  gia_thiet_chung: string | null; anh_de: string | null; gan_ca_bai: boolean; y: YChuoi[]
+}
+/** Bài kho thuộc mô hình: gán cả bài vào mô hình, hoặc có ý gán vào một bài của cây. */
+export async function khoCuaMoHinh(moHinhId: string): Promise<ChuoiKho[]> {
+  const { data, error } = await supabase.rpc('fn_hl_kho_cua_mo_hinh', { p_mo_hinh: moHinhId, p_gioi_han: 200 })
+  if (error) throw error
+  return (data ?? []) as ChuoiKho[]
+}
+export type DemKho = { so_chuoi: number; so_y: number; so_y_da_gan: number }
+export async function demKhoMoHinh(khoi: string): Promise<Map<string, DemKho>> {
+  const { data, error } = await supabase.rpc('fn_hl_dem_kho_mo_hinh', { p_khoi: khoi })
+  if (error) throw error
+  return new Map(((data ?? []) as { mo_hinh_id: string; so_chuoi: number | string; so_y: number | string; so_y_da_gan: number | string }[])
+    .map((r) => [r.mo_hinh_id, { so_chuoi: Number(r.so_chuoi), so_y: Number(r.so_y), so_y_da_gan: Number(r.so_y_da_gan) }]))
+}

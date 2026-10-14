@@ -6,12 +6,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi, MoHinh } from '../../../lib/kho/hinh'
-import type { BaiCay, KetQuaCay } from '../../../lib/kho/hinhCay'
+import type { BaiCay, ChuoiKho, DemKho, KetQuaCay } from '../../../lib/kho/hinhCay'
 import { MathText } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 
 type BaiX = BaiToan & { so: string }
-const NHO: { gocId: string | null; tab: 'chuoi' | 'nhom'; gap: Record<string, string[]>; mo: boolean; cuon: Record<string, [number, number]>; tim: string } =
+const NHO: { gocId: string | null; tab: 'chuoi' | 'nhom' | 'kho'; gap: Record<string, string[]>; mo: boolean; cuon: Record<string, [number, number]>; tim: string } =
   { gocId: null, tab: 'chuoi', gap: {}, mo: true, cuon: {}, tim: '' }
 
 // màu theo độ sâu nhánh (0 = thân). Thẻ giả thiết thêm = khối màu ĐẶC; dải làn + viền thẻ bài = tông nhạt.
@@ -42,6 +42,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const [tim, setTim] = useState(NHO.tim)
   const [tab, setTab] = useState(NHO.tab)
   const [nhanhs, setNhanhs] = useState<MoHinh[]>([])
+  const [demKho, setDemKho] = useState<Map<string, DemKho>>(new Map())   // số chuỗi kho theo mô hình (badge)
   const [bais, setBais] = useState<BaiX[]>([])
   const [sai, setSai] = useState<Map<string, string[]>>(new Map())      // bài → các tiền đề sai nhánh
   const [gapLai, setGapLai] = useState<Set<string>>(new Set())
@@ -60,6 +61,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const khung = useRef<HTMLDivElement>(null)
 
   const setGocId = (id: string | null) => { NHO.gocId = id; setGocIdRaw(id) }
+  useEffect(() => { api.demKhoMoHinh(khoi).then(setDemKho).catch(() => {}) }, [khoi])
   useEffect(() => { NHO.tab = tab }, [tab])
   useEffect(() => { NHO.mo = mo }, [mo])
   useEffect(() => { NHO.tim = tim }, [tim])
@@ -208,6 +210,9 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
                 gocId === m.id ? 'border-teal-400 bg-teal-50 text-teal-800' : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'}`}>
               <Ma>{m.ma}</Ma>
               <div className="truncate font-medium">{tron(m.ten)}</div>
+              {(() => { const d = demKho.get(m.id); return d?.so_chuoi
+                ? <div className="mt-0.5 text-[10.5px] text-slate-500">kho {d.so_chuoi} chuỗi · {d.so_y_da_gan}/{d.so_y} ý đã gán</div>
+                : <div className="mt-0.5 text-[10.5px] text-slate-300">kho trống</div> })()}
             </button>
           ))}
           {!!gocChuaXep.length && (
@@ -237,7 +242,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             </div>
 
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              <Seg value={tab} onChange={setTab} options={[{ v: 'chuoi', label: '① Chuỗi' }, { v: 'nhom', label: '② Nhóm' }]} />
+              <Seg value={tab} onChange={setTab} options={[{ v: 'chuoi', label: '① Chuỗi' }, { v: 'nhom', label: '② Nhóm' }, { v: 'kho', label: `③ Kho bài · ${demKho.get(gocId!)?.so_chuoi ?? 0}` }]} />
               <Btn kind="pri" disabled={ban} onClick={() => setHopBai({ id: null, nhanh: (cur && baiById.get(cur)?.mo_hinh_id) || gocId! })}
                 title="Thêm bài vào cuối thân, hoặc cuối nhánh của bài đang chọn">＋ Thêm bài</Btn>
               <Btn disabled={!sel.size || ban} onClick={() => setHopRe({ ten: '', gt: '' })}
@@ -253,7 +258,9 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             </div>
             {loi && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi} <button className="ml-2 underline" onClick={() => setLoi(null)}>đóng</button></div>}
 
-            {tab === 'chuoi'
+            {tab === 'kho'
+              ? <TabKho gocId={gocId!} coBai={(id) => baiById.has(id)} onMo={(id) => { setCur(id); setPop(id) }} />
+              : tab === 'chuoi'
               ? <TabChuoi {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, gapLai, conCu, sai, sel, cur, mo, duong, doSau, baiCaNhanh, coSai, conCuaNhanh, khung, L }}
                   onTick={(id) => setSel((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n })}
                   onMo={(id) => { setCur(id); setPop(id) }} onGap={batGap} onVaoCon={(id) => setGocId(id)} />
@@ -316,6 +323,86 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
           nhanhs={nhanhs} bais={bais} doSau={doSau} ban={ban} onDong={() => setHopBai(null)} onLuu={luuBai} />
       )}
       {thongBao && <div className="fixed bottom-5 left-1/2 z-[70] -translate-x-1/2 rounded-lg bg-slate-900 px-4 py-2 text-[13px] text-white shadow-lg">{thongBao}</div>}
+    </div>
+  )
+}
+
+/** ③ KHO BÀI của mô hình — CEO 14/10: "kho là các chuỗi bài, mỗi chuỗi 1 dòng".
+ *  Một chuỗi = một bài kho với các ý a → b → c; mỗi ý hiện số bài mô hình nó gán (bấm để mở bài đó). Bấm dòng để xem đề + lời giải. */
+function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => boolean; onMo: (baitoanId: string) => void }) {
+  const [rows, setRows] = useState<ChuoiKho[] | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [mo, setMo] = useState<string | null>(null)
+  const [tim, setTim] = useState('')
+  const [conThieu, setConThieu] = useState(false)
+  useEffect(() => {
+    let huy = false
+    setRows(null); setLoi(null); setMo(null)
+    api.khoCuaMoHinh(gocId).then((r) => { if (!huy) setRows(r) }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) })
+    return () => { huy = true }
+  }, [gocId])
+  const hien = useMemo(() => {
+    const k = tim.trim().toLowerCase()
+    return (rows ?? []).filter((c) => (!conThieu || c.y.some((y) => !y.so))
+      && (!k || `${c.ma_bai} ${c.nguon ?? ''} ${c.gia_thiet_chung ?? ''} ${c.y.map((y) => y.noi_dung).join(' ')}`.toLowerCase().includes(k)))
+  }, [rows, tim, conThieu])
+  if (loi) return <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi}</div>
+  if (!rows) return <div className="py-8 text-center text-[13px] text-slate-400">Đang tải kho…</div>
+  if (!rows.length) return <Empty icon="📚">Kho của mô hình này chưa có chuỗi nào. Gán bài ở <b>Duyệt kho › Hình luyện · chưa phân mô hình</b> (nút “＋ Gán mô hình”).</Empty>
+  return (
+    <div>
+      <div className="mb-2 flex flex-wrap items-center gap-3">
+        <input className={inpCls + ' !w-64'} placeholder="Tìm trong kho (mã, nguồn, đề)…" value={tim} onChange={(e) => setTim(e.target.value)} />
+        <label className="flex cursor-pointer items-center gap-1.5 text-[12.5px] text-slate-600">
+          <input type="checkbox" checked={conThieu} onChange={(e) => setConThieu(e.target.checked)} /> chỉ chuỗi còn ý chưa gán
+        </label>
+        <span className="text-[12px] text-slate-400">{hien.length}/{rows.length} chuỗi</span>
+      </div>
+      <div className="divide-y divide-slate-100 overflow-hidden rounded-xl border border-slate-200 bg-white">
+        {hien.map((c) => { const dangMo = mo === c.id; const de = c.gia_thiet_chung || c.y[0]?.noi_dung || ''; return (
+          <div key={c.id}>
+            <div onClick={() => setMo(dangMo ? null : c.id)} className={`flex cursor-pointer items-center gap-3 px-3 py-2 hover:bg-slate-50 ${dangMo ? 'bg-teal-50/50' : ''}`}>
+              {c.anh_de ? <img src={c.anh_de} alt="" className="h-11 w-14 shrink-0 rounded border border-slate-200 bg-white object-contain" />
+                : <div className="h-11 w-14 shrink-0 rounded border border-dashed border-slate-200" />}
+              <div className="w-[88px] shrink-0">
+                <div className="font-mono text-[11.5px] font-semibold text-teal-700">{c.ma_bai}</div>
+                {!c.gan_ca_bai && <div className="text-[10px] text-amber-700" title="Bài chưa gán cả bài vào mô hình — có ý gán vào bài của mô hình">chỉ ý gán</div>}
+              </div>
+              <div className="min-w-0 flex-1 truncate text-[13px] text-slate-700" title={de.replace(/\$/g, '')}><MathText className="inline">{de}</MathText></div>
+              <div className="flex shrink-0 items-center gap-1">
+                {c.y.map((y, i) => (
+                  <span key={y.id} className="flex items-center gap-1">
+                    {i > 0 && <span className="text-slate-300">→</span>}
+                    {y.so
+                      ? <button onClick={(e) => { e.stopPropagation(); if (y.baitoan_id && coBai(y.baitoan_id)) onMo(y.baitoan_id) }}
+                          className="rounded-full bg-teal-600 px-2 py-0.5 text-[11.5px] font-semibold text-white hover:bg-teal-500" title={`Ý ${y.nhan ?? ''} gán vào bài ${y.so} (${y.ma_bai_mh}) — bấm để mở`}>
+                          {y.nhan ? `${y.nhan}` : '•'} {y.so}</button>
+                      : <span className={`rounded-full border px-2 py-0.5 text-[11.5px] ${y.ngoai_mo_hinh ? 'border-violet-300 bg-violet-50 text-violet-700' : 'border-amber-300 bg-amber-50 text-amber-800'}`}
+                          title={y.ngoai_mo_hinh ? 'Ý này gán vào bài của mô hình KHÁC' : 'Ý chưa gán'}>{y.nhan ?? '•'} {y.ngoai_mo_hinh ? 'MH khác' : '—'}</span>}
+                  </span>))}
+              </div>
+              <span className="shrink-0 text-[11px] text-slate-400">{dangMo ? '▾' : '▸'}</span>
+            </div>
+            {dangMo && (
+              <div className="space-y-2 border-t border-slate-100 bg-slate-50/60 px-4 py-3">
+                <div className="text-[11.5px] text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}{c.nguon_ma_cau ? ` · gốc ${c.nguon_ma_cau}` : ''}</div>
+                <div className="flex gap-4">
+                  <div className="min-w-0 flex-1 space-y-2">
+                    {c.gia_thiet_chung && <div className="rounded-lg bg-teal-600 px-3 py-2 text-[14px] text-white"><MathText>{c.gia_thiet_chung}</MathText></div>}
+                    {c.y.map((y) => (
+                      <div key={y.id} className="rounded-lg border border-slate-200 bg-white p-2.5">
+                        <div className="flex gap-2 text-[14px]"><b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b><div className="min-w-0 flex-1"><MathText>{y.noi_dung}</MathText></div>
+                          {y.so && <span className="shrink-0 font-mono text-[11px] text-teal-700">→ {y.so}</span>}</div>
+                        {y.loi_giai && <details className="mt-1"><summary className="cursor-pointer text-[11.5px] text-slate-500">Lời giải</summary>
+                          <div className="mt-1 text-[13.5px]"><MathText>{y.loi_giai}</MathText></div></details>}
+                        {y.anh_de && <img src={y.anh_de} alt="" className="mt-1 max-h-48 rounded border border-violet-200 object-contain" />}
+                      </div>))}
+                  </div>
+                  {c.anh_de && <img src={c.anh_de} alt="" className="max-h-64 w-[34%] shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain" />}
+                </div>
+              </div>)}
+          </div>) })}
+      </div>
     </div>
   )
 }
