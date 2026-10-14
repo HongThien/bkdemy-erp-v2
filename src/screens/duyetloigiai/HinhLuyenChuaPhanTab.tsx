@@ -99,6 +99,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
     finally { setBan(null) }
   }
 
+  const motY = !!b && !b.gia_thiet_chung && b.y.length === 1   // bài một ý: đề nằm trong ý
   const soDaDuyet = bai.filter(daDuyet).length                              // đếm thứ đang nạp
 
   return (
@@ -136,8 +137,8 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
             {daDuyet(b) && <span className="rounded bg-emerald-100 px-1.5 font-semibold text-emerald-800">✓ đã duyệt nội dung</span>}
           </div>
 
-          {/* đề chung | hình bài */}
-          <Hang hinh={b.anh_de} chuThich={b.anh_de ? 'Hình bài · giả thiết chung' : 'Chưa có hình bài'} onPhong={setPhong}>
+          {/* đề chung | hình bài. Bài MỘT Ý: hình bài đứng cạnh chính ý đó (bên dưới), hàng đề không lặp lại hình (CEO 14/10). */}
+          <Hang hinh={motY ? null : b.anh_de} chuThich={motY ? '' : b.anh_de ? 'Hình bài · giả thiết chung' : 'Chưa có hình bài'} an={motY} onPhong={setPhong}>
             <Muc ten="Đề bài">
               {b.gia_thiet_chung
                 ? <div className="rounded-lg bg-teal-600 px-3.5 py-2.5 text-[15px] leading-relaxed text-white"><MathText>{b.gia_thiet_chung}</MathText></div>
@@ -152,13 +153,15 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
 
           <div className="mt-3 space-y-3">
             {b.y.map((y, i) => {
+              // Mỗi hình chỉ hiện MỘT lần, ở chỗ nó xuất hiện đầu tiên. Ý không dựng thêm ⇒ ghi chú gọn "dùng hình … ở trên", không lặp ảnh.
               const truoc = [...b.y.slice(0, i)].reverse().find((z) => z.anh_de)
-              const hinhY = y.anh_de ?? truoc?.anh_de ?? b.anh_de
-              const chuThich = y.anh_de ? `Hình riêng của ý ${y.nhan ?? ''}`.trim()
-                : truoc ? `Ý này không dựng thêm — dùng hình ý ${truoc.nhan ?? ''}`
-                : b.anh_de ? 'Ý này không dựng thêm — dùng hình bài' : 'Chưa có hình'
+              const hinhY = motY ? (y.anh_de ?? b.anh_de) : y.anh_de
+              const chuThich = motY ? (hinhY ? 'Hình của bài' : 'Chưa có hình')
+                : y.anh_de ? `Hình riêng của ý ${y.nhan ?? ''}`.trim()
+                : truoc ? `Không dựng thêm — dùng hình ý ${truoc.nhan ?? ''} ở trên`
+                : b.anh_de ? 'Không dựng thêm — dùng hình bài ở trên' : 'Chưa có hình'
               return (
-                <Hang key={y.id} hinh={hinhY} chuThich={chuThich} rieng={!!y.anh_de} goc={y.anh_loi_giai} onPhong={setPhong}>
+                <Hang key={y.id} hinh={hinhY} chuThich={chuThich} rieng={!!y.anh_de} gon={!motY && !y.anh_de && !!(truoc || b.anh_de)} goc={y.anh_loi_giai} onPhong={setPhong}>
                   <div className={`rounded-xl border bg-white p-3.5 ${y.baitoan_id ? 'border-emerald-300' : 'border-slate-200'}`}>
                     <div className="flex items-start gap-2 text-[15px] leading-relaxed">
                       <b className="mt-px shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>
@@ -204,9 +207,19 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
 }
 
 /** Một hàng của bài: chữ (trái) | hình của chính hàng đó (phải, dính khi cuộn qua hàng dài). */
-function Hang({ hinh, chuThich, rieng, goc, onPhong, children }: {
-  hinh: string | null | undefined; chuThich: string; rieng?: boolean; goc?: string | null; onPhong: (u: string) => void; children: React.ReactNode
+function Hang({ hinh, chuThich, rieng, goc, gon, an, onPhong, children }: {
+  hinh: string | null | undefined; chuThich: string; rieng?: boolean; goc?: string | null
+  gon?: boolean    // không có hình riêng, đã có hình phía trên ⇒ chỉ một dòng ghi chú, không lặp ảnh
+  an?: boolean     // không có cột hình (hàng đề của bài một ý)
+  onPhong: (u: string) => void; children: React.ReactNode
 }) {
+  if (an) return <div className="min-w-0 space-y-3">{children}</div>
+  if (gon) return (
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(300px,38%)]">
+      <div className="min-w-0 space-y-3">{children}</div>
+      <div className="self-start rounded-lg border border-dashed border-slate-200 px-3 py-2 text-[12px] text-slate-400">↑ {chuThich}</div>
+    </div>
+  )
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(300px,38%)]">
       <div className="min-w-0 space-y-3">{children}</div>

@@ -37543,3 +37543,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **3 bài không có hình (cố ý):** HLB00117, HLB00127 (câu lý thuyết, đề không có hình) · **HLB00171** (thửa ruộng hình thang cân: đáy 26 & 34, cao 20 ⇒ cạnh bên phải ≈ 20,4 m nhưng đề cho 30 m — số liệu MÂU THUẪN, không dựng được; lời giải kho vẫn tính theo 30).
 - **Kiểm trên app dev:** Duyệt kho › Hình luyện, bài 1–3: mỗi ý hiện đúng hình (HLB00096 ý a = HLY00242, ý b "dùng hình ý a"; HLB00097 ý b, c hình riêng).
 - **Trạm nêu, cần CEO xem:** HLB00115 (EF=8, FG=6, EG=10 ⇒ hình chữ nhật, hình tự lộ đáp án) · HLB00113 vẽ 2 hình "Hình 1/2" (thang cân + bình hành, đề cho cả hai khả năng) · HLY00393 ba đường đồng quy nhìn thấy điểm chung (vẽ đủ 3 đường câu hỏi nhắc) · thư viện chưa có ký hiệu song song (∥ đề cho chỉ thể hiện bằng dựng đúng).
+
+## 14/10 (chiều) — Duyệt Hình luyện: không lặp hình (bài một ý hiện 2 lần cùng một hình)
+- **Thùy:** "HLB00095 — sao bài này 1 ý mày lại vẽ 2 hình?" ⇒ KHÔNG phải 2 hình: DB chỉ có 1 hình bài; màn hiện nó 2 lần (hàng đề + hàng ý, ý "dùng hình bài").
+- **Sửa màn:** mỗi hình chỉ hiện MỘT lần, ở chỗ nó xuất hiện đầu tiên. Bài một ý: hàng đề không có cột hình, hình đứng cạnh ý. Ý không dựng thêm: một dòng gọn "↑ Không dựng thêm — dùng hình … ở trên", không lặp ảnh. Kiểm app dev: bài 1 = 1 ảnh; bài 2 = HLB00096 + HLY00242 (ý b ghi chú); bài 3 = HLB00097 + HLY00245 + HLY00246.
