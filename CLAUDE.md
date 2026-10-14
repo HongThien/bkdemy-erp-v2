@@ -344,6 +344,8 @@
 - **`spec-che-do-game.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ chế độ game học nào (mọi môn)** (Thùy chốt 03/10): 6 chế độ giữ nguyên, chỉ đổi content ·
   Luyện tập = Tự luyện · Thử thách = Tournament với bot (giữ luật, có Rank) · Tháp tổng + tháp chủ đề × Sinh tồn / Vô tận Normal / Hard (xếp hạng thuần) ·
   sai = khoá cả câu · phạm vi = dạng em đã học · câu nhanh/dài đo bằng thời gian làm thật · câu trả lời game ghi lại nhưng CHƯA tính mastery.
+- **`spec-bot-telegram-ta.md` — ĐỌC BẮT BUỘC trước khi đụng bot Telegram của TA** (Thùy chốt 14/10): bản tin 08:00 việc tồn từ ERP (mỗi TA 1 tin, tag phụ trách khối) ·
+  webhook ghi mọi tin ngay (Telegram chỉ giữ 24h) · 24:00 Claude tổng kết theo `ref_key` → Trang duyệt → gậy + bản tin hôm sau · danh tính = `tg_user_id` nối mã 1 lần.
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
   Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
   Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·

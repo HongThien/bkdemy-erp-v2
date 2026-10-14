@@ -37701,3 +37701,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Làm:** gõ lại 55 câu (`TM-GKI-2024.build.mjs`, dùng `dc-lib.mjs` khối 9) → 9 trạm soạn Sonnet → 9 trạm soát Opus giải mù → ghép → cổng `--khoi 9` → `ghi.mjs --ghi`. 55/55 đáp số khớp ngay; không nhập Bài 1a (in hỏng).
 - **Soát bắt được:** Bài 19 trục căn thức ở mẫu (chương III cấm), Bài 25 tính góc từ số đã làm tròn + cặp đồng dạng sai, Bài 27 nhảy bước phân tích bậc ba, vài chỗ dồn nhiều phép biến đổi một dòng.
 - **Quyết định:** nhãn con "Bài 4.1/4.2" (không khớp RE_Y của nhom-bai ⇒ không gộp nhóm, đúng ý: hai bài con độc lập); "Bài V" ⇒ nhãn "Bài 5". Việc CEO cần quyết: xem `kho-rules/dai/k9.md` §10 mục Tây Mỗ.
+### 14/10 (tối) — [Bot Telegram TA] Spec vòng lặp hằng ngày: bản tin 08:00 → trao đổi → tổng kết 24:00 → Trang duyệt → gậy
+- **Thùy:** TA đã dùng Telegram; bot đăng việc chưa xong mỗi ngày, TA phản hồi, phụ trách vào trao đổi, hết ngày Claude đọc đưa Trang duyệt. Chốt: 08:00 / 24:00 · 1 nhóm chung · phụ trách theo khối · kết quả duyệt dùng cho gậy + bản tin hôm sau · mọi việc.
+- **Làm:** `spec-bot-telegram-ta.md` (chưa code). Quyết định kỹ thuật chính: webhook ghi tin ngay (Telegram giữ update 24h, bot không đọc lại lịch sử nhóm) · privacy mode tắt TRƯỚC khi vào nhóm · danh tính bằng mã nối 1 lần, không theo tên · danh sách việc = 1 hàm DB `fn_tg_viec_ton`, khoá `ref_key` trùng `gay_de_xuat.ref_key` · gậy đi qua đường quyết định đang có.
+- **Phát hiện khi dò:** người phụ trách khối đã có ở `phan_cong_khoi` (khối 3–12 Toán) · "duyệt HS báo sai" vẫn tính ở client (`gami.ts`) ⇒ phải đưa xuống DB trước khi gom vào bản tin.
+- **Chờ Thùy:** tạo bot @BotFather, tắt privacy, thêm vào nhóm làm admin, token vào `.env.local` + Vercel project TA; nên có nhóm test.
