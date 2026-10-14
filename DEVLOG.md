@@ -37636,3 +37636,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Soát:** 1 agent Opus soát toán độc lập ⇒ đã sửa: định nghĩa chia hết đơn thức (NDB00679, thiếu biến chỉ có ở B), bỏ "bất phương trình" (lớp 9), điều kiện ghép cặp dạng `ax+b` (NDB00978), thứ tự bước NDB00699, NDB00977 lấn dạng + thiếu gom `C²−(A±B)²`, nhiều chỗ CY.
 - **Sai/lệch dữ liệu thấy:** mô tả NDB00970 ↔ NDB00972 bị tráo so với tên (lý thuyết ghi đủ 4 HĐT bậc ba cho cả hai); NDB00974/975 trùng tên; NDB00679 `vi_du` lời giải thay `y^m`→`y^5`; NDB00681 mô tả ghi "một biến". Đầy đủ + việc cần Thùy quyết: `kho-rules/dai/ban-do-moi-k8-ghi-chu.md`.
 - **Quyết định:** "note ở đây" = ghi chú trong chat + file trên, KHÔNG chèn vào chữ lý thuyết HS thấy. Ít chắc nhất: NDB00699 (tự suy), nhẩm nghiệm/đặt ẩn phụ (ngoài SGK K8).
+
+## 14/10/2026 (tiếp) — Bản đồ mới K8: điền ví dụ 42 dạng
+- **Làm:** Thùy "làm full ví dụ nữa". 42 dạng có mô tả mà `vi_du` trống ⇒ 3 agent Sonnet soạn 2 ví dụ/dạng (theo chương), 1 agent Opus soát sympy từng dòng (84/84 đúng toán), tôi vá theo soát: thêm ví dụ cấp 2 cho NDB00680/00681, đổi chéo ví dụ 970/972 theo tên, thêm bước tìm `b` ở NDB00699, thêm bước nhân ở NDB00682. Ghi 1 transaction, guard `vi_du` đang trống (riêng NDB00671 nối sau câu lý thuyết có sẵn). K8 Toán: 55/55 dạng có mô tả đều có ví dụ + lý thuyết.
+- **Ghi chú:** chi tiết + lỗi dữ liệu cũ (NDB00697 ví dụ 4 `+17`→`+7`, NDB00695/696 nhầm GTNN/GTLN, NDB00692/693 thiếu `$`) ở mục F của `kho-rules/dai/ban-do-moi-k8-ghi-chu.md`.

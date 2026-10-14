@@ -39,3 +39,22 @@ Soát toán độc lập bằng 1 agent (đã sửa các lỗi nó nêu: định
 
 ### E. Việc **không** làm vì chưa có mô tả (theo yêu cầu)
 NDB00466, NDB00467, NDB00468 (Hằng đẳng thức › Bình phương của các biểu thức đặc biệt: dạng phân thức, mũ 4, cụm a=b=c), NDB00469 (Hằng đẳng thức $a^3+b^3+c^3$), NDB00698, NDB00700 (GTLN–GTNN dùng bình phương 3 số, dạng 2 và 3). Ở nhóm cấp trên cũng chưa có mô tả nên không điền lý thuyết nhóm.
+
+## F. Ví dụ (`vi_du`) — điền thêm cùng ngày, 42 dạng
+
+**Làm:** mọi dạng có mô tả mà `vi_du` đang trống (42 dạng) được soạn 2 ví dụ có lời giải (cơ bản + khó hơn một bậc), khuôn `##VD` đề → `Bài giải:` → lời giải liền dòng. 3 agent Sonnet soạn theo chương, 1 agent Opus soát bằng sympy từng dòng biến đổi (84/84 đúng toán). Riêng NDB00680/00681 thêm ví dụ thứ 3 (cấp "nhân đơn thức với đa thức" mô tả yêu cầu). Dòng nào đã có ví dụ thì không đụng; NDB00671 `vi_du` chỉ có 1 câu lý thuyết nên ví dụ **nối vào sau** câu đó. Bản nháp: `C:\Users\WBPC\bk-kho-lam-viec\bdm\vd-ra-{dt,hdt,pt}.txt`.
+
+**Cần Thùy xem:**
+- **NDB00970 ↔ NDB00972:** ví dụ bám theo **TÊN** (970 = lập phương của tổng/hiệu, 972 = tổng/hiệu hai lập phương), ngược với mô tả đang bị tráo. Nếu chị chốt theo mô tả thì đổi chỗ ví dụ của hai dạng.
+- **NDB00978, NDB00983 (đặt ẩn phụ):** mô tả không nói đề có cộng thêm hằng số hay bằng hằng số; em soạn $x(x+1)(x+2)(x+3)+1$, $(x+1)(x+3)(x+5)(x+7)+15$ (phân tích) và tích bốn nhân tử $=$ hằng số (tìm x, nghiệm đẹp). Nếu ý khác thì sửa.
+- **NDB00977:** ví dụ 1 gom 3-1, ví dụ 2 gom 2-2 (theo cách em hiểu ở mục B.3).
+- **NDB00980, NDB00982 (Tìm x):** có ví dụ ra 3 nghiệm, không chỉ "2 trường hợp" như mô tả.
+- **NDB00691:** tên "biến đổi tổng thành tích" nhưng mô tả "yêu cầu khai triển" — ví dụ soạn theo hướng phân tích thành tích.
+- **NDB00682:** ví dụ nằm ở chương đơn thức–đa thức nên có bước nhân $(x+2)(x-2)$ trực tiếp, chưa dùng hằng đẳng thức.
+- Quy ước nhân: nhóm hằng đẳng thức dùng dấu chấm `.`, nhóm đơn thức/phân tích dùng `\cdot` (đồng nhất với lý thuyết cũ từng nhóm). Muốn đồng nhất thì báo.
+
+**Lỗi trong dữ liệu CŨ của Thùy (Opus phát hiện, chưa sửa):**
+- NDB00697 lý thuyết, ví dụ 4: ghi "$+17$", đúng là $+7$ ($15-4-4$), GTNN $=7$; thiếu dòng "Vậy…".
+- NDB00695 ví dụ 2: "Vậy **GTNN** của B" phải là **GTLN**.
+- NDB00696 ví dụ 2: "Vậy GTLN của **A**" phải là của **B**.
+- NDB00692, NDB00693 (ví dụ 5): thiếu dấu `$` đóng.
