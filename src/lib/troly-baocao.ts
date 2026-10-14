@@ -66,6 +66,7 @@ export type BaoCaoTroLy = {
   // Mỗi người quản một mảng thì có một BỘ báo cáo riêng (CEO 29/09: Trang = Sư phạm, Lộc = Vận hành).
   // Hiện mới có bộ 'su_pham'.
   bo: string; ten: string; ghi_chu_bo: string
+  khoi?: string[]; so_lop?: number   // chỉ bản cá nhân (bo = 'ca_nhan')
   tu: string; den: string; so_ngay: number; tao_luc: string
   tong: { cham: number; miss: number; xong_muon: number; hs_khong_den: number; canh_bao: number }
   muc: MucBaoCao[]
@@ -86,6 +87,19 @@ export type BaoCaoTroLy = {
 //   ("statement timeout", đã dính 29/09) — quyền gọi thẳng cũng đã bị thu ở DB.
 export async function getBaoCao(soNgay: number, tinhLai = false): Promise<BaoCaoTroLy> {
   const { data, error } = await supabase.rpc('fn_troly_bao_cao_lay', { p_so_ngay: soNgay, p_tinh_lai: tinhLai })
+  if (error) throw error
+  return data as BaoCaoTroLy
+}
+
+// Trợ lý CÁ NHÂN theo khối quản lý (CEO 14/10): khối lấy từ sơ đồ tổ chức (vi_tri.khoi_quan_ly) ở DB,
+// client KHÔNG truyền người. Là bản lọc của báo cáo trung tâm đã lưu — không có nút "tính lại".
+export async function trolyCaNhanDuocDung(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('troly_ca_nhan_duoc_dung')
+  if (error) return false
+  return data === true
+}
+export async function getBaoCaoCaNhan(soNgay: number): Promise<BaoCaoTroLy> {
+  const { data, error } = await supabase.rpc('fn_troly_ca_nhan_lay', { p_so_ngay: soNgay })
   if (error) throw error
   return data as BaoCaoTroLy
 }

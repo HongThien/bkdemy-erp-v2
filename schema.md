@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-389 bảng · 20 view · 0 enum · 177 trigger · 1039 function
+389 bảng · 20 view · 0 enum · 177 trigger · 1043 function
 
 ## _app_secrets
 
@@ -4516,7 +4516,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -5606,6 +5606,8 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | vai_tro_id | uuid | Y |  | FK→vai_tro.id |  |
 | mon | text | Y |  |  |  |
+| khoi_quan_ly | text[] |  | '{}'::text[] |  |  |
+| chi_xem | boolean |  | false |  |  |
 
 ## viec_van_hanh_duyet
 
@@ -7524,6 +7526,7 @@ WITH luot AS (
 - `_troly_bc_viec_bu(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
 - `_troly_bc_viec_buoi(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
 - `_troly_bc_viec_yeu(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
+- `_troly_ca_nhan_loc_nop(p jsonb, p_lops text[])` → jsonb
 - `_troly_ca_yeu_goc(p_tu date, p_den date)` → TABLE(case_id uuid, case_mo_luc timestamp with time zone, xep_luc timestamp with time zone, ngay date, gio time without time zone, mon text, nguoi_day text, ho_ten text, ten_lop text, ket_qua text, ly_do_huy text, khoa_ca text)
 - `_troly_cb_so(p_cb jsonb, p_ma text)` → integer
 - `_troly_cc_bo_tro(p jsonb)` → jsonb
@@ -8166,6 +8169,7 @@ WITH luot AS (
 - `fn_traogiai_xac_nhan(p_ym text, p_lop uuid, p_hs uuid, p_loai text)` → uuid
 - `fn_troly_bao_cao(p_den date DEFAULT NULL::date, p_so_ngay integer DEFAULT 14)` → jsonb
 - `fn_troly_bao_cao_lay(p_so_ngay integer DEFAULT 14, p_tinh_lai boolean DEFAULT false)` → jsonb
+- `fn_troly_ca_nhan_lay(p_so_ngay integer DEFAULT 14)` → jsonb
 - `fn_troly_danh_muc()` → jsonb
 - `fn_troly_goi(p_cong_cu text, p_tham_so jsonb DEFAULT '{}'::jsonb)` → jsonb
 - `fn_troly_tuan(p_tuan date)` → jsonb
@@ -8248,8 +8252,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -8310,6 +8314,8 @@ WITH luot AS (
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `trg_thu_thach_nop()` → trigger
+- `troly_ca_nhan_duoc_dung()` → boolean
+- `troly_ca_nhan_khoi()` → text[]
 - `troly_duoc_dung()` → boolean
 - `tsa_cau_form_tn_kiem()` → trigger
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
