@@ -74,6 +74,7 @@ Trong một bài nhiều ý, các ý sau thường **thêm giả thiết** (lấ
 - **Hình bài** `HLB…png` (→ `hinh_bai.anh_de`): CHỈ giả thiết chung (phần đề trước ý a).
 - **Hình ý** `HLY…png` (→ `hinh_y.anh_de`): hình bài **+ mọi thứ dựng thêm ở các ý trước + ý này** (cộng dồn — ý sau được dùng kết quả ý trước).
   Ý **không** thêm điểm/đường nào ⇒ KHÔNG vẽ tệp; màn tự dùng hình gần nhất phía trước (ý trước → hình bài).
+  **Ngoại lệ cộng dồn (CEO 14/10):** điểm/đường của ý TRƯỚC mà câu hỏi lẫn lời giải của ý NÀY không dùng tới ⇒ BỎ khỏi hình ý này cho gọn.
 - Vẽ đủ các đoạn/điểm mà **câu hỏi của ý nhắc tới** (để đọc được câu hỏi: "tứ giác AECK" thì nối AECK), nhưng **không đánh dấu điều phải chứng minh**
   (không gạch bằng nhau / ký hiệu song song / ô vuông cho cái ý đó bắt chứng minh). Điều đã chứng minh ở ý TRƯỚC thì được đánh dấu ở hình ý SAU.
 - Số đo / gạch bằng nhau / góc vuông mà **đề cho** thì đánh dấu ngay từ hình bài.
