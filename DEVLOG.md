@@ -37658,3 +37658,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Trang duyệt:** `ban-do-moi/ban-do-k6-ly-thuyet-vi-du.html` (KaTeX CDN). Kết quả từng gói + biên bản soát: `ban-do-moi/ket-qua/`.
 - **Treo, chờ Thùy:** mô tả trống NDB00338, 00382, 00383, NNB00910, 914, 915, 917 · tên thừa "biết biết" (NDB00416, NNB00928), "tròn chăm" (NDB00342), tên NNB00902 còn "cùng dấu" dù có Đan dấu · cụm cũ đang trỏ nhầm (NDB00343–347, 356, 361) ·
   ranh giới 346/347, 417/418, NNB00899 trường hợp 3 ↔ NDB00362 · Ch III (ước của số nguyên) ở NNB00914–915 chưa có lý thuyết trên bản đồ.
+
+## 14/10/2026 (tiếp) — Bản đồ mới K9: điền lý thuyết + ví dụ 75 dạng
+- **Làm:** Thùy "bản đồ lớp 9 mới đã xong dạng bài và mô tả. M điền lý thuyết và ví dụ nhé". 75 dạng có mô tả (bỏ NDB00512–514 chưa mô tả) ⇒ 8 lượt Sonnet soạn → 8 lượt Opus soát (kiểm từng dòng bằng máy) → `kiem.mjs` lỗi 0 → `ghi.mjs --ghi` (chỉ ô trống). DB: lý thuyết mới 61 dạng, ví dụ 75 dạng (150 ví dụ); 75/75 đủ.
+- **Sai được bắt ở soát:** NDB00733 ví dụ 2 thiếu dữ kiện (2 đáp án), NDB00716 "trừ" người thiếu chỗ, `\mathbb{N}^{ast}`, lối tổng–tích ở NDB00499/500/817 (ngoài phạm vi), NDB00834 ví dụ 2 đổi đề.
+- **Quyết định:** mô tả của Thùy thắng luật `k9.md` v0 (NDB00707–709 dùng tỉ số hệ số) — ghi vào mục cần Thùy xác nhận. Lỗi lý thuyết có sẵn (NDB00723 $x\ne-5$, 731, 717, 705, nhóm NNB01070…) KHÔNG sửa đè.
+- **Tệp:** `kho-rules/dai/lo/k9/ban-do/` (brief-soan/soat, kiem, duyet, ghi) · `kho-rules/dai/ban-do-moi-k9-ghi-chu.md` · `kho-rules/dai/k9-ban-do-moi-duyet.html`.
