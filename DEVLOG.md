@@ -37523,3 +37523,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sửa:** ghi rõ FK `hinh_mo_hinh!mo_hinh_id!inner(khoi)` ở cả 3. Gọi thẳng PostgREST: câu cũ → 300 PGRST201 (tái hiện đúng lỗi), 3 câu mới → 200.
 - **Vì sao lọt:** test C1 chỉ chạy SQL thuần (không qua PostgREST) và tôi chỉ mở màn Cây nhánh, không mở lại Duyệt kho › Hình. Lỗi tồn tại trên prod từ lúc áp C1 tới khi sửa.
 - **Bài học:** thêm FK giữa hai bảng ĐÃ có quan hệ ⇒ trước khi áp phải grep mọi embed PostgREST giữa hai bảng đó (`bảng_a(…bảng_b…)`) và thêm `!tên_cột_fk`. Thuộc mục "sau migrate: grep toàn repo" của CLAUDE.md §2 — tôi đã không làm.
+
+## 14/10 (trưa) — Duyệt Hình luyện: mỗi lần MỘT bài, trọn màn (mig 202610141115 ĐÃ ÁP)
+- **Thùy:** "giao diện phần duyệt hình hơi bất tiện. Để duyệt được Hình thì phải có đề – đáp án chi tiết – hình vẽ. Chỗ duyệt hình full màn hình chỉ cần hiển thị 1 câu thôi; duyệt xong 1 câu mới qua câu khác vì số lượng bài hình ít."
+- **Làm:** viết lại `HinhLuyenChuaPhanTab.tsx` — bỏ danh sách thẻ cuộn. Thanh trên: ‹ Trước · "k / N bài" · Sau › (phím ← →) · **✓ Duyệt bài → bài kế**. Thân 2 cột: trái = đề (giả thiết chung nền màu) + từng ý + lời giải MỞ SẴN + gán mô hình + tick duyệt từng ý; phải = hình to, cuộn riêng nên đứng yên khi đọc lời giải, bấm phóng to. Hình lời giải dùng chung giữa các ý chỉ hiện 1 lần. Hết phần đã nạp thì tự nạp thêm 30. Nhớ bài đang xem theo khối.
+- **DB:** `fn_hl_duyet_bai(p_bai, p_duyet)` — duyệt/bỏ duyệt mọi ý của bài trong 1 lần ghi + `duyet_boi`/`duyet_at` trên bài.
+- **Kiểm trên app dev (Admin):** "1 / 88 bài", sang bài 2 (2 ý, 1 hình); bấm Duyệt bài ⇒ nhảy sang bài 3, đếm 1/30; quay lại bấm Bỏ duyệt ⇒ về 0/30 (đã trả đúng trạng thái cũ của bài thử). Không lỗi.

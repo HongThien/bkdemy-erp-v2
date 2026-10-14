@@ -220,3 +220,8 @@ export async function ganYVaoBai(yId: string, baiToanId: string | null): Promise
   const { error } = await supabase.rpc('fn_hl_gan_y', { p_y: yId, p_baitoan: baiToanId })
   if (error) throw error
 }
+/** Duyệt (hoặc bỏ duyệt) MỌI ý của một bài kho trong 1 lần ghi + ghi vết người duyệt trên bài (mig 202610141115). */
+export async function duyetBaiKho(baiId: string, duyet: boolean): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_duyet_bai', { p_bai: baiId, p_duyet: duyet })
+  if (error) throw error
+}
