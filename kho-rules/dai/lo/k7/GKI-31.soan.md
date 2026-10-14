@@ -208,7 +208,7 @@ $3^2=9>0$.
 
 Chọn B.
 
-### Câu 8 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 8 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Cho $\widehat{mAn}=50^\circ$, $\widehat{xBy}=130^\circ$ thì:
 A. $\widehat{mAn}$ và $\widehat{xBy}$ kề nhau.
 B. $\widehat{mAn}$ và $\widehat{xBy}$ kề bù.
@@ -237,7 +237,7 @@ Do đó $\widehat{mAn}$ và $\widehat{xBy}$ là hai góc bù nhau.
 
 Chọn C.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Tia $Oc$ là tia phân giác của $\widehat{aOb}$ khi:
 A. $\widehat{aOc}+\widehat{cOb}=\widehat{aOb}$
 B. $\widehat{aOc}+\widehat{cOb}=\widehat{aOb}$; $\widehat{aOc}\ne\widehat{cOb}$
@@ -613,7 +613,7 @@ Vì $15^2=225$ và $15>0$ nên $a=\sqrt{225}=15$.
 
 Vậy cạnh của mảnh đất dài $15$ m.
 
-### Câu 17 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 17 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Hãy vẽ lại hình sau đây. Biết $\widehat{xBc}=45^\circ$, $\widehat{aAy}=135^\circ$, $cd\perp mn$ tại $C$.
 a) Gọi tên góc đối đỉnh với $\widehat{xAa}$.
 b) Chứng minh $ab\parallel cd$.

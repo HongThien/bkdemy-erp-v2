@@ -69,7 +69,7 @@ $=(1,2)^{11}$
 
 Chọn D.
 
-### Câu 3 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 3 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Cho hình bên. Biết rằng: tia $Oa$ và tia $Ob$ là hai tia đối nhau; tia $On$ là tia phân giác của góc $\widehat{mOb}$ và $\widehat{nOb}=30^\circ$. Trên hình, góc $\widehat{aOm}$ có số đo $(5x+20)^\circ$. Giá trị của $x$ bằng:
 A. 15
 B. 120
@@ -364,7 +364,7 @@ $62700000:150=418000$ (đồng)
 
 Vậy mỗi suất quà có giá trị $418000$ đồng.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** a) Vẽ hình theo các diễn đạt sau:
 + Vẽ góc $\widehat{xOy}$ có số đo bằng $60^\circ$. Lấy điểm $A$ thuộc tia $Ox$.
 + Vẽ đường thẳng $m$ đi qua điểm $A$ và song song với tia $Oy$.
@@ -402,7 +402,7 @@ Mà một đường thẳng vuông góc với một trong hai đường thẳng 
 
 Vậy $d\perp m$.
 
-### Bài 5 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 5 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình bên.
 a) Biết góc $\widehat{aAm}=90^\circ$ và góc $\widehat{bBA}=90^\circ$. Chứng minh đường thẳng $a$ song song với đường thẳng $b$.
 b) Biết góc $\widehat{aMN}=120^\circ$. Tính số đo góc $\widehat{MNB}$ và góc $\widehat{MNb}$.

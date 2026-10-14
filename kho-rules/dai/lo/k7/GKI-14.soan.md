@@ -175,7 +175,7 @@ Vậy $a\approx1,73$.
 
 Chọn C.
 
-### Câu 7 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 7 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho $\widehat{xOy}=70^\circ$, $Ot$ là tia phân giác của $\widehat{xOy}$. Số đo $\widehat{xOt}$ bằng
 A. $35^\circ$
 B. $30^\circ$
@@ -202,7 +202,7 @@ Do đó $\widehat{xOt}=70^\circ:2=35^\circ$.
 
 Chọn A.
 
-### Câu 8 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 8 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho $\widehat{xOy}$ và $\widehat{x'Oy'}$ là hai góc đối đỉnh, biết $\widehat{xOy}=50^\circ$ khi đó $\widehat{x'Oy'}$ bằng
 A. $50^\circ$
 B. $90^\circ$
@@ -229,7 +229,7 @@ Do đó $\widehat{x'Oy'}=50^\circ$.
 
 Chọn A.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Nếu một đường thẳng cắt 2 đường thẳng song song thì
 A. hai góc so le trong bù nhau.
 B. hai góc so le trong kề nhau.
@@ -254,7 +254,7 @@ Nếu một đường thẳng cắt hai đường thẳng song song thì hai gó
 
 Chọn C.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho điểm $A$ nằm ngoài đường thẳng $d$. Có bao nhiêu đường thẳng đi qua điểm $A$ và song song với đường thẳng $d$?
 A. vô số.
 B. 3.
@@ -279,7 +279,7 @@ Vậy có 1 đường thẳng đi qua $A$ và song song với $d$.
 
 Chọn D.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho tam giác $ABC$. Nhận xét nào dưới đây là đúng?
 A. $\widehat{A}+\widehat{B}+\widehat{C}=108^\circ$
 B. $\widehat{A}+\widehat{B}+\widehat{C}=180^\circ$
@@ -304,7 +304,7 @@ Theo định lí tổng ba góc của một tam giác, trong tam giác $ABC$ ta 
 
 Chọn B.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho tam giác $MHK$ vuông tại $H$, thì:
 A. $\widehat{M}+\widehat{K}>90^\circ$
 B. $\widehat{M}+\widehat{K}=180^\circ$
@@ -409,7 +409,7 @@ $x=\dfrac{-2}{2}$
 
 $x=-1$
 
-### Bài 3 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 3 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho định lí: "Một đường thẳng vuông góc với một trong hai đường thẳng song song thì nó cũng vuông góc với đường thẳng còn lại"
 a) Vẽ hình minh họa nội dung định lí trên.
 b) Chỉ ra giả thiết, kết luận của định lí trên.
@@ -441,7 +441,7 @@ Giả thiết (GT): $a\parallel b$; $c\perp a$.
 
 Kết luận (KL): $c\perp b$.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình bên, biết $AB=AC$ và $MB=MC$ (các cạnh có cùng kí hiệu trên hình thì bằng nhau).
 a) Chứng minh $\triangle ABM=\triangle ACM$.
 b) Chứng minh $\widehat{ABM}=\widehat{ACM}$.

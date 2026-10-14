@@ -127,7 +127,7 @@ $x^m.x^n=x^{m+n}$ (nhân hai luỹ thừa cùng cơ số: cộng hai số mũ), 
 
 Chọn B.
 
-### Câu 5 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 5 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cây cầu nào có chứa hình ảnh hai góc đối đỉnh trong các cây cầu sau?
 A. Cầu 1.
 B. Cầu 2.
@@ -155,7 +155,7 @@ Cầu 2 chỉ có các sợi dây nối nhau thành hình chữ V (gặp nhau �
 
 Chọn A.
 
-### Câu 6 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 6 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Qua một điểm ở ngoài một đường thẳng, có bao nhiêu đường thẳng song song với đường thẳng đó?
 A. Không có
 B. Có vô số
@@ -178,7 +178,7 @@ Theo tiên đề Euclid: qua một điểm nằm ngoài một đường thẳng,
 
 Chọn D.
 
-### Câu 7 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 7 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Chứng minh định lí là:
 A. Dùng lập luận để từ giả thiết suy ra kết luận
 B. Dùng hình vẽ để từ giả thiết suy ra kết luận
@@ -205,7 +205,7 @@ Hình vẽ và đo đạc chỉ có tính minh hoạ, không phải là chứng 
 
 Chọn A.
 
-### Câu 8 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 8 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Tính số đo $\widehat{C}$ của tam giác $ABC$ biết $\widehat{A}=50^\circ$ và $\widehat{B}=80^\circ$
 A. $30^\circ$
 B. $50^\circ$
@@ -464,7 +464,7 @@ $100-32,4=67,6$ (đô la)
 
 Vậy người bán hàng phải trả lại cho Ben $67,6$ đô la.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình bên, biết $a\perp c$, $b\perp c$ và $\widehat{BAb}=55^\circ$.
 a) Chứng minh: $a\parallel b$;
 b) Tính số đo góc $\widehat{B_2}$; $\widehat{B_3}$.

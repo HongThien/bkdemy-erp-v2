@@ -281,7 +281,7 @@ $A=\dfrac{35}{99}$
 
 Chọn A.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Nếu tia $Oz$ là tia phân giác của góc $xOy$ thì:
 A. $\widehat{xOz}>\widehat{zOy}$
 B. $\widehat{xOz}<\widehat{zOy}$
@@ -306,7 +306,7 @@ Mà $\widehat{xOz}+\widehat{zOy}=\widehat{xOy}$ nên $\widehat{xOz}=\widehat{zOy
 
 Chọn C.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Chọn câu sai. Nếu đường thẳng $c$ cắt hai đường thẳng $a,b$ và trong các góc tạo thành
 A. có một cặp góc so le trong bằng nhau thì $a\parallel b$.
 B. có một cặp góc đồng vị bằng nhau thì $a\parallel b$.
@@ -338,7 +338,7 @@ Phương án C sai vì hai góc trong cùng phía bằng nhau chưa chắc có t
 
 Chọn C.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho $\triangle ABC$ vuông tại $A$, biết $\widehat{B}=30^\circ$. Tia phân giác của $\widehat{C}$ cắt $AB$ tại $D$. Số đo của $\widehat{BCD}$ là
 A. $120^\circ$
 B. $90^\circ$
@@ -409,7 +409,7 @@ d) $\left|x\right|=4$ thì $x=4$ hoặc $x=-4$. Vậy khẳng định d) sai.
 
 Kết luận: a) đúng, b) sai, c) đúng, d) sai.
 
-### Câu 14 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 14 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Trong hình sau: Cho $Ax\perp c$ và $By\perp c$, $\widehat{CAx}=40^\circ$, $\widehat{CBy}=30^\circ$. Theo hình vẽ: điểm $C$ nằm giữa hai đường thẳng $Ax$ và $By$, ba điểm $A,B,C$ cùng nằm về một phía của đường thẳng $c$.
 a) Cho điểm $C$ nằm ngoài đường thẳng $x$. Đường thẳng đi qua $C$ và song song với đường thẳng $x$ là duy nhất;
 b) $Ax\perp By$ (vì $Ax\perp c$ và $By\perp c$);
@@ -525,7 +525,7 @@ $0,212121\ldots=0,(21)$ là số thập phân vô hạn tuần hoàn (chu kì $2
 
 Vậy có 4 số viết được dưới dạng số thập phân vô hạn tuần hoàn.
 
-### Câu 18 | kho=hgt | loai=tra_loi_ngan | dap_an=50
+### Câu 18 | kho=hinh_hoc | loai=tra_loi_ngan | dap_an=50
 **Đề:** Cho hình vẽ, biết $AB\parallel CD\parallel OE$, $\widehat{A}=40^\circ$; $AO$ vuông góc với $OC$. Hỏi số đo của góc $\widehat{OCD}$ bằng bao nhiêu độ?
 Theo hình vẽ: $\widehat{A}=\widehat{BAO}$; $B$ nằm bên phải $A$, $E$ nằm bên trái $O$ và $D$ nằm bên phải $C$; tia $OE$ nằm giữa hai tia $OA$ và $OC$.
 **Hình:** p2c18.png
@@ -619,7 +619,7 @@ $x=\dfrac{4}{5}$
 
 $x=0,8$
 
-### Câu 20 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 20 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho $\triangle ABC$ có $\widehat{B}=80^\circ$, $\widehat{C}=30^\circ$. Tia phân giác của góc $A$ cắt $BC$ tại $D$. Tính $\widehat{ADC}$, $\widehat{ADB}$.
 
 **Phần 1. Hướng dẫn**

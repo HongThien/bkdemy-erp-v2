@@ -206,7 +206,7 @@ Vì $-3,5<0$ nên $\left|-3,5\right|=-(-3,5)=3,5$.
 
 Chọn C.
 
-### Câu 8 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 8 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Khẳng định nào sau đây là đúng?
 A. Hai góc đối đỉnh thì bù nhau.
 B. Hai góc đối đỉnh thì kề nhau.
@@ -235,7 +235,7 @@ Hai góc bằng nhau chưa chắc đối đỉnh nên C sai.
 
 Chọn D.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Trong hình vẽ bên, các tia phân giác là
 Theo hình vẽ: $D$ nằm trên cạnh $BC$, $E$ nằm trên cạnh $AC$; $\widehat{BAD}=\widehat{DAC}$ và $\widehat{ABE}=\widehat{EBC}$.
 A. $AD, BE$.
@@ -267,7 +267,7 @@ Các tia $AB$, $BC$ là cạnh của tam giác, không chia đôi góc nào.
 
 Chọn A.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho điểm $B$ nằm ngoài đường thẳng $d$. Có bao nhiêu đường thẳng đi qua điểm $B$ và song song với đường thẳng $d$.
 A. $0$
 B. $1$
@@ -294,7 +294,7 @@ Vậy có $1$ đường thẳng đi qua $B$ và song song với $d$.
 
 Chọn B.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Chọn câu trả lời đúng.
 Trong định lí: "Nếu một đường thẳng vuông góc với một trong hai đường thẳng song song thì nó cũng vuông góc với đường thẳng kia." Ta có giả thiết là
 A. "nếu một đường thẳng vuông góc".
@@ -324,7 +324,7 @@ Kết luận $B$ là: "nó cũng vuông góc với đường thẳng kia".
 
 Chọn C.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho hình vẽ, biết $x\parallel y$ và $\widehat{M_1}=55^\circ$. Số đo góc $N_1$ là
 Theo hình vẽ: đường thẳng $z$ cắt $x$ tại $M$, cắt $y$ tại $N$; $\widehat{M_1}$ nằm phía trên $x$, bên phải $z$; $\widehat{M_2}$ nằm phía trên $x$, bên trái $z$; $\widehat{N_1}$ nằm phía trên $y$, bên trái $z$.
 A. $35^\circ$
@@ -486,7 +486,7 @@ $x=\dfrac{-2}{15}+\dfrac{9}{15}$
 
 $x=\dfrac{7}{15}$
 
-### Câu 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ sau, hãy chỉ ra:
 a) Các cặp góc kề bù.
 b) Các cặp góc đối đỉnh.
@@ -519,7 +519,7 @@ Tại $G$: $GA$ và $GD$ là hai tia đối nhau, $GF$ và $GC$ là hai tia đ�
 
 b) Hai đường thẳng $AD$ và $FC$ cắt nhau tại $G$ nên các cặp góc đối đỉnh là: $\widehat{AGF}$ và $\widehat{CGD}$; $\widehat{AGC}$ và $\widehat{FGD}$.
 
-### Câu 5 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 5 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho $\triangle ABC$ có $\widehat{ABC}=70^\circ$, $\widehat{ACB}=40^\circ$. Vẽ tia $Cx$ là tia đối của tia $CB$. Vẽ tia $Cy$ là tia phân giác của $\widehat{ACx}$.
 a) Tính $\widehat{ACx}$, $\widehat{xCy}$.
 b) Chứng minh rằng $AB\parallel Cy$.

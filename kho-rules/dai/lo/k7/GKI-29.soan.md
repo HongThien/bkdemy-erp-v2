@@ -28,7 +28,7 @@ Theo định nghĩa, căn bậc hai số học của số $a$ không âm là s�
 
 Chọn A.
 
-### Câu 2 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 2 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Khi $Ot$ là tia phân giác của góc $xOy$ thì
 A. $\widehat{xOy}=\dfrac{1}{2}\widehat{xOt}$
 B. $\widehat{xOy}=\dfrac{1}{2}\widehat{yOt}$
@@ -108,7 +108,7 @@ Tập hợp số thực kí hiệu là $\mathbb{R}$.
 
 Chọn C.
 
-### Câu 5 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 5 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Cho hình vẽ. Khẳng định nào sau đây không đúng?
 A. $\widehat{A_1}$ và $\widehat{B_1}$ là hai góc đồng vị
 B. $\widehat{B_1}$ và $\widehat{B_3}$ là hai góc đối đỉnh
@@ -499,7 +499,7 @@ $50.38990=1949500$ (đồng)
 
 Vậy số tiền cửa hàng bán được trong hai ngày, làm tròn đến hàng nghìn, là $1950000$ đồng.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ. Biết $\widehat{ABC}=120^\circ$, $\widehat{xAz}=110^\circ$, $\widehat{ADC}=70^\circ$.
 a) Tính số đo góc $\widehat{tBA}$.
 b) Giải thích tại sao $xx'\parallel yy'$.

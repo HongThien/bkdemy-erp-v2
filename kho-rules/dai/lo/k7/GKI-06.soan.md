@@ -186,7 +186,7 @@ Suy ra $x=5$.
 
 Chọn A.
 
-### Câu 7 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 7 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho ba đường thẳng phân biệt $a,b$ và $c$. Biết $a\parallel b$ và $a\perp c$. Kết luận nào đúng:
 A. $b\parallel c$
 B. $b\perp c$
@@ -211,7 +211,7 @@ Các phương án A, C, D sai.
 
 Chọn B.
 
-### Câu 8 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 8 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Nếu đường thẳng $c$ cắt hai đường thẳng phân biệt $a$, $b$ và trong các góc tạo thành có một cặp góc đồng vị bằng nhau thì:
 A. $a\parallel b$
 B. $a\parallel c$
@@ -236,7 +236,7 @@ D. $a\perp b$
 
 Chọn A.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Hình vẽ dưới đây cho biết $\widehat{H_3}=\widehat{K_1}=120^\circ$. Trong các khẳng định sau, khẳng định nào sai?
 A. $\widehat{H_4}=\widehat{K_2}=60^\circ$
 B. $\widehat{H_2}=\widehat{K_4}=60^\circ$
@@ -277,7 +277,7 @@ Còn $\widehat{H_1}=120^\circ$ và $\widehat{K_4}=60^\circ$ nên $\widehat{H_1}\
 
 Chọn D.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Trong định lí điều đã cho biết gọi là gì?
 A. Định lí
 B. Tính chất
@@ -302,7 +302,7 @@ Phần sau chữ "nếu" là điều đã cho biết, gọi là giả thiết; p
 
 Chọn C.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho hình vẽ, biết $a\parallel b$ và $\widehat{B_1}-\widehat{A_1}=50^\circ$. Số đo góc $A_1$ là:
 A. $\widehat{A_1}=65^\circ$
 B. $\widehat{A_1}=115^\circ$
@@ -339,7 +339,7 @@ $\widehat{A_1}=65^\circ$
 
 Chọn A.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Khẳng định nào sau đây đúng?
 A. Hai đường thẳng cắt nhau thì vuông góc.
 B. Hai đường thẳng vuông góc chỉ tạo thành một góc vuông.
@@ -565,7 +565,7 @@ $160000-120000=40000$ (đồng)
 
 Vậy cửa hàng phải trả lại bạn An $40000$ đồng.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ, biết hai đường thẳng $xy$ và $zt$ cắt nhau tại $O$, $\widehat{xOt}=60^\circ$.
 a) Tính số đo góc $\widehat{zOy}$?
 b) Tính số đo góc $\widehat{xOz}$?
@@ -603,7 +603,7 @@ Vì $Ox$ và $Oy$ là hai tia đối nhau nên $\widehat{xOm}$ và $\widehat{mOy
 
 Do đó $\widehat{mOy}=180^\circ-\widehat{xOm}=180^\circ-60^\circ=120^\circ$.
 
-### Bài 5 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 5 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ, biết $AB\perp xy$ tại $A$, $AB\perp mn$ tại $B$, đường thẳng $EF$ cắt $xy$ tại $C$ và cắt $mn$ tại $D$, $\widehat{xCE}=80^\circ$. Vẽ hình và viết giả thiết, kết luận của bài toán, sau đó:
 a) Chứng minh: $xy\parallel mn$.
 b) Tính số đo góc $\widehat{CDB}$?

@@ -577,7 +577,7 @@ $90000+69000=159000$ (đồng)
 
 Vậy bác Hoa phải trả $159000$ đồng.
 
-### Câu 16 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 16 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hai đường thẳng $xy$ và $ab$ cắt nhau tại $E$, biết $\widehat{xEa}=60^\circ$ (học sinh vẽ hình vào giấy làm bài).
 a) Tính số đo các góc: $\widehat{xEb}$ và $\widehat{yEb}$?
 b) Vẽ tia $Em$ là tia phân giác của $\widehat{xEb}$. Tính số đo góc $\widehat{mEy}$?

@@ -88,7 +88,7 @@ $x<\dfrac23$
 
 Chọn A.
 
-### Câu 4 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 4 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Nếu $m\perp n$ và ….. thì $n\perp p$. Nội dung cần điền vào chỗ (…) là:
 A. $m\perp p$
 B. $m$ cắt $p$
@@ -196,7 +196,7 @@ Trường hợp 2: $x-1=-\dfrac34$ nên $x=-\dfrac34+1=\dfrac14$.
 
 Vậy $x\in\left\{\dfrac74;\dfrac14\right\}$.
 
-### Câu 4 | kho=hgt | loai=tra_loi_ngan | dap_an=60
+### Câu 4 | kho=hinh_hoc | loai=tra_loi_ngan | dap_an=60
 **Đề:** Tìm số đo $x$ của góc $ABC$ ở hình vẽ bên. (Theo hình: hai đường thẳng nằm ngang cùng vuông góc với đường thẳng đứng đi qua $C$; đường thẳng $AB$ cắt đường nằm ngang phía trên tại $A$ và đường nằm ngang phía dưới tại $B$, điểm $C$ nằm trên đường nằm ngang phía dưới, bên trái $B$; góc ở $A$ nằm phía trên đường nằm ngang, giữa phần đường thẳng $AB$ kéo dài lên phía trên và phần đường nằm ngang bên phải $A$, có số đo $120^\circ$; $x$ là số đo góc $ABC$.)
 **Hình:** p1tl4.png
 **Ghi chú:** Phần trong ngoặc ở đề là dữ kiện đọc từ hình (đề gốc chỉ in "Tìm số đo $x$ của góc $ABC$ ở hình vẽ bên."), đã chép vào đề để đề tự đủ dữ kiện.
@@ -453,7 +453,7 @@ $5100:(100\%-15\%)=6000$ (đồng)
 
 Vậy giá niêm yết của một chiếc bút bi là 6000 đồng.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Vẽ lại hình vào bài kiểm tra, viết GT – KL rồi làm bài tập sau:
 Cho hình vẽ có $xx'\parallel yy'$, $\widehat{xAC}=50^\circ$, $\widehat{AHy'}=\widehat{AKt'}=90^\circ$. (Theo hình: $A$ nằm trên $xx'$; $B$ và $H$ nằm trên $yy'$; $C$ và $K$ nằm trên $tt'$; ba điểm $A,H,K$ thẳng hàng; ba điểm $A,B,C$ thẳng hàng, $B$ nằm giữa $A$ và $C$, tia $Cz'$ là tia đối của tia $CA$.)
 a) Chứng tỏ $yy'\parallel tt'$.

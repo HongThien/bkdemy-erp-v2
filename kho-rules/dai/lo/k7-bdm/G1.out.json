@@ -1,0 +1,50 @@
+[
+  {
+    "dang_id": "NDB00793",
+    "ly_thuyet": "##TC\nVới hai số hữu tỉ $a, b$ bất kì, ta luôn có hoặc $a = b$ hoặc $a < b$ hoặc $a > b$. Cho ba số hữu tỉ $a, b, c$. Nếu $a < b$ và $b < c$ thì $a < c$ (tính chất bắc cầu).\nSố hữu tỉ lớn hơn $0$ gọi là số hữu tỉ dương; số hữu tỉ nhỏ hơn $0$ gọi là số hữu tỉ âm; số hữu tỉ $0$ không là số hữu tỉ dương cũng không là số hữu tỉ âm.\nSố hữu tỉ $\\dfrac{a}{b}$ là số hữu tỉ dương nếu $a$ và $b$ cùng dấu, là số hữu tỉ âm nếu $a$, $b$ khác dấu, bằng $0$ nếu $a = 0$.\nTrên trục số, nếu $a < b$ thì điểm $a$ nằm trước điểm $b$.\n\n##PP Để sắp xếp các số hữu tỉ theo thứ tự tăng dần (giảm dần), ta làm như sau:\nBước 1. Chia các số thành số hữu tỉ âm (nhỏ hơn $0$), số $0$ và số hữu tỉ dương (lớn hơn $0$); số âm nhỏ hơn số $0$, số $0$ nhỏ hơn số dương.\nBước 2. Trong mỗi nhóm, viết các số dưới dạng phân số có mẫu dương, quy đồng mẫu rồi so sánh tử của các phân số đã quy đồng.\nBước 3. Sắp xếp các số theo thứ tự yêu cầu.",
+    "vi_du": "",
+    "nguon_ly_thuyet": "pdf-kntt tr.2 (thứ tự trong Q, số âm/dương) + pdf-lmk tr.4-5, tr.276-277 (so sánh→đưa về cùng mẫu rồi sắp xếp) + pdf-ndt tr.9 (PP so sánh)",
+    "nguon_vi_du": "",
+    "ghi_chu": "bang_cu của nhóm NNB00935 chỉ có LT so sánh + VD tìm x,y, không có LT riêng cho sắp xếp. ##TC chép từ KNTT tr.2 (đối chiếu ảnh). ##PP là tổng hợp các bước từ lời giải mẫu LMK tr.277 + PP so sánh NDT tr.9 (không có PP sắp xếp nguyên văn trong nguồn) — điều phối nên cân nhắc giữ hay bỏ ##PP."
+  },
+  {
+    "dang_id": "NDB00794",
+    "ly_thuyet": "##TC\nViết $x, y$ dưới dạng hai phân số cùng mẫu dương $x = \\dfrac{a}{m}$, $y = \\dfrac{b}{m}$ ($m > 0$).\n- Nếu $a < b$ thì $x < y$;\n- Nếu $a > b$ thì $x > y$;\n- Nếu $a = b$ thì $x = y$.\n\n##PP\nBước 1. Quy đồng mẫu các phân số trong dãy bất đẳng thức (đưa về cùng mẫu dương).\nBước 2. So sánh tử: dãy bất đẳng thức giữa các phân số trở thành dãy bất đẳng thức giữa các tử.\nBước 3. Tìm các số nguyên $x, y$ thoả mãn dãy bất đẳng thức giữa các tử, rồi kết luận.",
+    "vi_du": "",
+    "nguon_ly_thuyet": "pdf-kntt tr.4 (Dạng 3, đối chiếu ảnh) + cu:T107010103 (PP so sánh: quy đồng mẫu, so sánh tử; lời giải VD2, VD3)",
+    "nguon_vi_du": "",
+    "ghi_chu": "Không có nguồn nào có LT riêng cho \"tìm x, y thoả mãn điều kiện\". ##TC chép KNTT tr.4. ##PP là tóm tắt các bước lặp lại trong lời giải VD2/VD3 của bản đồ cũ T107010103 (quy đồng → so sánh tử → tìm x, y) — điều phối nên cân nhắc giữ hay bỏ."
+  },
+  {
+    "dang_id": "NDB00791",
+    "ly_thuyet": "##TC\nĐối với một tích có nhiều thừa số, ta có thể áp dụng các tính chất giao hoán, kết hợp để thực hiện phép tính hợp lí nhất.\nChú ý vận dụng các tính chất giao hoán, kết hợp, phân phối của phép nhân với phép cộng trong trường hợp có thể: $a \\cdot b \\pm a \\cdot c = a \\cdot (b \\pm c)$.",
+    "vi_du": "",
+    "nguon_ly_thuyet": "pdf-kntt tr.9-10 (Dạng 2 và Dạng 3 mục Cộng trừ nhân chia) + cu:T107010207 (công thức đặt thừa số chung)",
+    "nguon_vi_du": "",
+    "ghi_chu": "Nguồn KHÔNG có kỹ thuật \"đảo / tách để làm xuất hiện thừa số chung\" (đổi chỗ tử số giữa hai phân số) — chỉ có LT chung về giao hoán/kết hợp/phân phối. PP đặt thừa số chung (Bước 1-4) đã nằm ở dạng NDB00423 nên không lặp lại. Độ chắc: trung bình, có thể để trống nếu muốn chặt."
+  },
+  {
+    "dang_id": "NDB00883",
+    "ly_thuyet": "##TC\n1. Luỹ thừa bậc $n$ của một số hữu tỉ\nLuỹ thừa bậc $n$ của một số hữu tỉ $\\dfrac{a}{b}$, kí hiệu là $\\left(\\dfrac{a}{b}\\right)^n$, là tích của $n$ thừa số $\\dfrac{a}{b}$ ($n$ là số tự nhiên lớn hơn 1):\n$$\\left(\\dfrac{a}{b}\\right)^n = \\underbrace{\\dfrac{a}{b} \\cdot \\dfrac{a}{b} \\cdot \\ldots \\cdot \\dfrac{a}{b}}_{n\\text{ thừa số}} \\quad \\left(\\dfrac{a}{b} \\in \\mathbb{Q}, n \\in \\mathbb{N}, n > 1\\right)$$\n2. Quy ước\n$$\\left(\\dfrac{a}{b}\\right)^0 = 1 \\quad \\left(\\dfrac{a}{b} \\neq 0\\right)$$\n$$\\left(\\dfrac{a}{b}\\right)^1 = \\dfrac{a}{b}$$\n3. Tích và thương các luỹ thừa cùng cơ số\nNhân hai luỹ thừa cùng cơ số:\n$$\\left(\\dfrac{a}{b}\\right)^m \\cdot \\left(\\dfrac{a}{b}\\right)^n = \\left(\\dfrac{a}{b}\\right)^{m+n}$$\nChia hai luỹ thừa cùng cơ số:\n$$\\left(\\dfrac{a}{b}\\right)^m : \\left(\\dfrac{a}{b}\\right)^n = \\left(\\dfrac{a}{b}\\right)^{m-n} \\quad \\left(\\dfrac{a}{b} \\neq 0, m \\ge n\\right)$$\n4. Luỹ thừa của luỹ thừa\n$$\\left[\\left(\\dfrac{a}{b}\\right)^m\\right]^n = \\left(\\dfrac{a}{b}\\right)^{m \\cdot n}$$\n5. Luỹ thừa của một tích và một thương\nLuỹ thừa của một tích:\n$$\\left(\\dfrac{a}{b} \\cdot \\dfrac{c}{d}\\right)^n = \\left(\\dfrac{a}{b}\\right)^n \\cdot \\left(\\dfrac{c}{d}\\right)^n$$\nLuỹ thừa của một thương:\n$$\\left(\\dfrac{a}{b} : \\dfrac{c}{d}\\right)^n = \\left(\\dfrac{a}{b}\\right)^n : \\left(\\dfrac{c}{d}\\right)^n \\quad \\left(\\dfrac{c}{d} \\neq 0\\right)$$",
+    "vi_du": "",
+    "nguon_ly_thuyet": "nhom:NNB00939 (nhom_ly_thuyet_ban_do_moi; nhóm chỉ có 1 dạng) + đối chiếu pdf-kntt tr.16-17, pdf-ndt tr.44",
+    "nguon_vi_du": "",
+    "ghi_chu": "Nhóm NNB00939 chỉ gồm dạng NDB00883 nên chép nguyên LT nhóm của CEO. Đã đối chiếu 5 mục với KNTT tr.16-17 và NDT tr.44: khớp. bang_cu T107010301/302 không có LT."
+  },
+  {
+    "dang_id": "NDB00799",
+    "ly_thuyet": "##TC\n- Với các biểu thức chỉ có phép cộng và phép trừ hoặc chỉ có phép nhân và phép chia, ta thực hiện các phép tính **từ trái sang phải**.\n- Với các biểu thức không có dấu ngoặc, ta thực hiện theo thứ tự:\n**Lũy thừa** $\\rightarrow$ **Nhân và chia** $\\rightarrow$ **Cộng và trừ.**\n- Với biểu thức có dấu ngoặc, ta thực hiện **trong ngoặc trước, ngoài ngoặc sau**.",
+    "vi_du": "",
+    "nguon_ly_thuyet": "nhom:NNB00943 (nhom_ly_thuyet_ban_do_moi) + đối chiếu pdf-kntt tr.23",
+    "nguon_vi_du": "",
+    "ghi_chu": "Chép LT thứ tự thực hiện phép tính của nhóm (CEO), khớp KNTT tr.23 (Bài 4, mục 1)."
+  },
+  {
+    "dang_id": "NDB00800",
+    "ly_thuyet": "##TC\n- Với các biểu thức chỉ có phép cộng và phép trừ hoặc chỉ có phép nhân và phép chia, ta thực hiện các phép tính **từ trái sang phải**.\n- Với các biểu thức không có dấu ngoặc, ta thực hiện theo thứ tự:\n**Lũy thừa** $\\rightarrow$ **Nhân và chia** $\\rightarrow$ **Cộng và trừ.**\n- Với biểu thức có dấu ngoặc, ta thực hiện **trong ngoặc trước, ngoài ngoặc sau**, theo thứ tự: ngoặc tròn $( \\ )$ $\\rightarrow$ ngoặc vuông $[ \\ ]$ $\\rightarrow$ ngoặc nhọn $\\{ \\ \\}$.\n\n##CY\nTa thường áp dụng các tính chất của phép tính để làm cho nhanh gọn hơn. Khi biểu thức có luỹ thừa của một tích hoặc một thương, có thể dùng:\n$$\\left(\\dfrac{a}{b} \\cdot \\dfrac{c}{d}\\right)^n = \\left(\\dfrac{a}{b}\\right)^n \\cdot \\left(\\dfrac{c}{d}\\right)^n \\qquad \\left(\\dfrac{a}{b} : \\dfrac{c}{d}\\right)^n = \\left(\\dfrac{a}{b}\\right)^n : \\left(\\dfrac{c}{d}\\right)^n \\quad \\left(\\dfrac{c}{d} \\neq 0\\right)$$",
+    "vi_du": "",
+    "nguon_ly_thuyet": "nhom:NNB00943 (3 gạch đầu dòng đầu) + pdf-kntt tr.23 (thứ tự ngoặc tròn→vuông→nhọn; \"áp dụng các tính chất của phép tính để làm nhanh gọn\") + nhom:NNB00939 mục 5 / pdf-kntt tr.16 (luỹ thừa của tích, thương)",
+    "nguon_vi_du": "",
+    "ghi_chu": "Khác 799 ở chỗ có thêm thứ tự 3 loại ngoặc (mô tả dạng: \"nhiều loại ngoặc Tròn + Vuông + Nhọn\") và ##CY luỹ thừa của tích/thương (VD 3 của dạng dùng (-18)^4 : 9^4). Chuỗi dùng $$...$$ giống LT nhóm NNB00939 của CEO."
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "dang_id": "NDB00443",
+    "ly_thuyet": "##TC\nKhi thực hiện phép chia mà phép chia không bao giờ dừng lại và trong thương có chữ số hoặc cụm chữ số sau dấu phẩy lặp đi lặp lại thì kết quả là số thập phân vô hạn tuần hoàn.\n- Chữ số hoặc cụm chữ số (sau dấu phẩy) lặp đi lặp lại gọi là **chu kì** của số thập phân vô hạn tuần hoàn, và có thể viết gọn trong dấu ngoặc ( ).\nVí dụ: $0,2777\\ldots = 0,2(7)$ có chu kì là $7$; $-1,545454\\ldots = -1,(54)$ có chu kì là $54$.",
+    "vi_du": "##VD\nVí dụ 1: Cho số thập phân vô hạn tuần hoàn $0,2777\\ldots$ Hãy xác định chu kì và viết gọn số đó.\n**Hướng dẫn giải:**\nSau dấu phẩy, chữ số $7$ được lặp lại mãi nên chu kì là $7$.\nViết gọn: $0,2777\\ldots = 0,2(7)$.\n\n##VD\nVí dụ 2: Cho số thập phân vô hạn tuần hoàn $-1,545454\\ldots$ Hãy xác định chu kì và viết gọn số đó.\n**Hướng dẫn giải:**\nSau dấu phẩy, cụm chữ số $54$ được lặp lại mãi nên chu kì là $54$.\nViết gọn: $-1,545454\\ldots = -1,(54)$.\n\n##VD\nVí dụ 3: Cho số thập phân vô hạn tuần hoàn $0,31818\\ldots$ Hãy xác định chu kì và viết gọn số đó.\n**Hướng dẫn giải:**\nChữ số $3$ chỉ xuất hiện một lần, cụm chữ số $18$ được lặp lại mãi nên chu kì là $18$.\nViết gọn: $0,31818\\ldots = 0,3(18)$.",
+    "nguon_ly_thuyet": "cu:T107020101 + pdf-kntt tr.37 (SGK Toán 7 KNTT bài 5: 0,2(7); -1,(54))",
+    "nguon_vi_du": "pdf-kntt tr.37 (0,2777...; -1,545454...) + pdf-lmk tr.371 (7/22 = 0,31818... = 0,3(18), chu kì 18)",
+    "ghi_chu": "VD chỉ có kết luận (chu kì + viết gọn) trong nguồn; lời giải 1-2 dòng viết lại từ chính câu giải thích của SGK (không thêm số mới). Nguồn có sẵn ví dụ dạng \"cho phân số, thực hiện chia\" (LMK tr.371) — không dùng vì lệch mô tả dạng (cho STP vô hạn tuần hoàn). KNTT Ví dụ 2 (0,010101...) chỉ có đề, không có lời giải nên bỏ."
+  },
+  {
+    "dang_id": "NDB00801",
+    "ly_thuyet": "##TC\nĐể làm tròn số thập phân đến một hàng đã cho, ta làm theo quy tắc:\n- Giữ nguyên chữ số hàng làm tròn nếu chữ số ngay bên phải nhỏ hơn 5; tăng chữ số hàng làm tròn lên 1 đơn vị nếu chữ số ngay bên phải lớn hơn hoặc bằng 5.\n- Các chữ số sau hàng làm tròn: bỏ đi nếu ở phần thập phân; thay bởi các chữ số 0 nếu ở phần số nguyên.",
+    "vi_du": "##VD\nVí dụ: Làm tròn số $55,21736$ đến chữ số thập phân thứ ba.\n**Hướng dẫn giải:**\nĐể làm tròn số $55,21736$ đến chữ số thập phân thứ ba, ta so sánh chữ số thập phân thứ bốn với $5$.\nVì $3<5$ nên ta giữ nguyên chữ số thập phân thứ ba và bỏ các chữ số sau nó, được số sau khi làm tròn là: $55,217$.",
+    "nguon_ly_thuyet": "cu:T107020102 (bullet 1)",
+    "nguon_vi_du": "cu:T107020102 (Ví dụ 1)",
+    "ghi_chu": "Chỉ 1 ví dụ có lời giải trong nguồn cho dạng \"theo hàng\". Ví dụ lấy nguyên văn, chỉ thêm vế \"giữ nguyên ... bỏ các chữ số sau nó\" cho đủ bước."
+  },
+  {
+    "dang_id": "NDB00802",
+    "ly_thuyet": "##TC\nKhi làm tròn số đến một hàng nào đó, kết quả làm tròn có độ chính xác bằng một nửa đơn vị hàng làm tròn. Bảng đổi giữa độ chính xác và hàng làm tròn:\n- Độ chính xác $50$: làm tròn đến hàng trăm.\n- Độ chính xác $5$: làm tròn đến hàng chục.\n- Độ chính xác $0,5$: làm tròn đến hàng đơn vị.\n- Độ chính xác $0,05$: làm tròn đến hàng phần mười.\n- Độ chính xác $0,005$: làm tròn đến hàng phần trăm.\n\n##PP\nĐể làm tròn số thập phân với độ chính xác đã cho, ta thực hiện theo các bước sau:\nBước 1. Xác định hàng làm tròn dựa vào độ chính xác (theo bảng trên).\nBước 2. Làm tròn theo cách làm tròn số thập phân đến một hàng đã cho.",
+    "vi_du": "##VD\nVí dụ 1: Làm tròn số $3,14159$ với độ chính xác $0,005$.\n**Hướng dẫn giải:**\nĐể kết quả làm tròn có độ chính xác $0,005$, ta cần làm tròn số đến hàng phần trăm.\nChữ số ở hàng phần trăm của số $3,14159$ là $4$. Chữ số ngay sau nó là $1$, vì $1<5$ nên ta giữ nguyên chữ số hàng phần trăm và bỏ các chữ số phía sau.\nKết quả: $3,14159 \\approx 3,14$.\n\n##VD\nVí dụ 2: Làm tròn số $523,(56)$ với độ chính xác $0,05$.\n**Hướng dẫn giải:**\nĐể kết quả làm tròn có độ chính xác $0,05$ ta làm tròn đến hàng phần mười.\nChữ số hàng phần trăm là $6>5$ nên ta tăng chữ số hàng phần mười lên 1 đơn vị, được số sau khi làm tròn là: $523,6$.\n\n##VD\nVí dụ 3: Làm tròn số $12\\,591,27$ với độ chính xác: a) $50$; b) $0,05$.\n**Hướng dẫn giải:**\na) Để kết quả làm tròn có độ chính xác là $50$, ta làm tròn số đến hàng trăm. Áp dụng quy tắc làm tròn số ta được $12\\,591,27 \\approx 12\\,600$.\nb) Để kết quả làm tròn có độ chính xác là $0,05$, ta làm tròn số đến hàng phần mười, được kết quả là: $12\\,591,27 \\approx 12\\,591,3$.",
+    "nguon_ly_thuyet": "cu:T107020102 (bullet 2: 2 bước) + pdf-kntt tr.37 (bảng hàng làm tròn - độ chính xác; bảng ở bản đồ cũ là ảnh)",
+    "nguon_vi_du": "pdf-lmk tr.371-372 (VD 12 591,27; Luyện tập 1: 3,14159) + cu:T107020102 (Ví dụ 2: 523,(56))",
+    "ghi_chu": "Số 12 591,27 ở VD3 không in trong đề của LMK (nằm trong lời giải) — lấy từ chính lời giải. Cu VD2 giữ nguyên, câu \"6>5\" đúng (6 >= 5)."
+  },
+  {
+    "dang_id": "NDB00803",
+    "ly_thuyet": "##PP\nĐể chuyển số thập phân vô hạn tuần hoàn về phân số tối giản ta làm như sau:\n- TH1: Nếu chu kì của số thập phân bắt đầu ngay sau dấu phẩy, ta nhân số đó với một số tròn chục, tròn trăm,... tương ứng với số chữ số của chu kì. Sau đó lấy số mới trừ đi số ban đầu để triệt tiêu hết phần chu kì.\n- TH2: Nếu chu kì của số thập phân không bắt đầu ngay sau dấu phẩy, ta nhân số đó với một số tròn chục, tròn trăm,... thích hợp để đưa chu kì về ngay sau dấu phẩy. Từ đó thực hiện lại TH1.",
+    "vi_du": "##VD\nVí dụ 1: Viết số thập phân vô hạn tuần hoàn $3,(63)$ dưới dạng phân số tối giản.\n**Hướng dẫn giải:**\nĐặt $A = 3,(63)$.\nVì chu kì của $A$ có hai chữ số nên ta nhân $A$ với $100$.\n$100A = 363,(63)$.\n$100A - A = 363,(63) - 3,(63)$.\n$99A = 360$\n$A = \\dfrac{360}{99} = \\dfrac{40}{11}$\n\n##VD\nVí dụ 2: Viết số thập phân vô hạn tuần hoàn $1,4(67)$ dưới dạng phân số tối giản.\n**Hướng dẫn giải:**\nĐặt $A = 1,4(67)$.\nVì sau dấu phẩy còn cách 1 chữ số mới đến chu kì nên ta nhân số đó với $10$.\n$10A = 14,(67)$.\n$10A$ có chu kì là hai chữ số nên ta nhân tiếp với $100$ được:\n$1000A = 1467,(67)$\n$1000A - 10A = 1467,(67) - 14,(67)$\n$990A = 1453$\n$A = \\dfrac{1453}{990}$",
+    "nguon_ly_thuyet": "cu:T107020103",
+    "nguon_vi_du": "cu:T107020103 (Ví dụ 1, Ví dụ 2)",
+    "ghi_chu": "Đã tính lại: 3,(63) = 40/11; 1,4(67) = 1453/990 (tối giản). Chỉ sửa chính tả \"phảy\" -> \"phẩy\", dấu gạch."
+  },
+  {
+    "dang_id": "NDB00449",
+    "ly_thuyet": "##PP\nPhương pháp giải:\n- Số hữu tỉ: gồm các số thập phân hữu hạn, số thập phân vô hạn tuần hoàn.\n- Số vô tỉ: là số thập phân vô hạn không tuần hoàn (thường là căn bậc hai của một số không khai căn được).",
+    "vi_du": "##VD\nVí dụ: Trong các số $\\sqrt{3}$; $\\sqrt{4}$; $\\pi$, số nào là số hữu tỉ, số nào là số vô tỉ?\n**Hướng dẫn giải:**\n- $\\sqrt{3}$ là một số vô tỉ.\n- $\\sqrt{4}$ là số hữu tỉ vì $\\sqrt{4}=2$.\n- $\\pi$ là một số vô tỉ.",
+    "nguon_ly_thuyet": "cu:T107020201",
+    "nguon_vi_du": "cu:T107020201 (Ví dụ - 3 ý)",
+    "ghi_chu": "Bản đồ cũ chỉ có 3 ý minh hoạ có lý do (\"vì sqrt(4)=2\"), không có đề nguyên câu: tôi thêm dòng đề \"Trong các số ... \" để đủ khuôn VD; nội dung 3 ý giữ nguyên. Chỉ 1 ví dụ (KNTT/NDT chỉ có đề, không lời giải)."
+  },
+  {
+    "dang_id": "NDB00455",
+    "ly_thuyet": "##PP\nPhương pháp giải:\n- Muốn so sánh hai căn bậc hai số học, ta dùng tính chất sau: Nếu $a$, $b$ là hai số không âm và $a<b$ thì $\\sqrt{a} <\\sqrt{b}$.\nCăn bậc hai số học là một số không âm. Nó luôn lớn hơn số âm.\n- Muốn so sánh một căn bậc hai số học với một số $a$ không âm đã cho, ta viết $a = \\sqrt{a^2}$ rồi so sánh căn bậc hai số học đã cho với $\\sqrt{a^2}$.",
+    "vi_du": "##VD\nVí dụ 1: So sánh $\\sqrt{15}$ và $4$.\n**Hướng dẫn giải:**\nTa có: $4 = \\sqrt{16}$.\nVì $\\sqrt{15} <\\sqrt{16}$ nên $\\sqrt{15} <4$.\n\n##VD\nVí dụ 2: So sánh $-\\sqrt{10}$ và $-3$.\n**Hướng dẫn giải:**\nTa có: $3 = \\sqrt{9}$.\nVì $-\\sqrt{10} <-\\sqrt{9}$ nên $-\\sqrt{10} < -3$.\n\n##VD\nVí dụ 3: Sắp xếp các số $3; \\sqrt{12}; -4,5; \\dfrac{22}{7}; \\sqrt{44}$ theo giá trị từ bé đến lớn.\n**Hướng dẫn giải:**\nTa có:\n$-4,5 <3$.\n$3=\\dfrac{21}{7} <\\dfrac{22}{7}$.\n$\\dfrac{22}{7} =\\sqrt{\\dfrac{484}{49}} <\\sqrt{12}$\nMà $12 < 44$ nên $\\sqrt{12} < \\sqrt{44}$.\nVậy ta sắp xếp: $-4,5;3;\\dfrac{22}{7}; \\sqrt{12}; \\sqrt{44}$.",
+    "nguon_ly_thuyet": "cu:T107020301",
+    "nguon_vi_du": "cu:T107020301 (Ví dụ 1, 2, 4)",
+    "ghi_chu": "Đã tính lại cả 3 VD đều đúng. Bỏ VD3 cũ (sqrt24 vs 2sqrt4) cho gọn. Nguồn gốc cu đánh số lại 1-2-3."
+  },
+  {
+    "dang_id": "NDB00933",
+    "ly_thuyet": "##TC\nCăn bậc hai số học của một số $a$ không âm, kí hiệu $\\sqrt{a}$, là số $x$ không âm sao cho $x^2 = a$.\n\n##PP\nLưu ý thứ tự thực hiện phép tính:\nTrong ngoặc – Khai căn và Luỹ thừa – Nhân chia – Cộng trừ.\nNếu có thể thì vận dụng tính chất của các phép toán.",
+    "vi_du": "##VD\nVí dụ 1: Tính $\\sqrt{64}$.\n**Hướng dẫn giải:**\nVì $8^2 = 64$ và $8 > 0$ nên $\\sqrt{64} = 8$.\n\n##VD\nVí dụ 2: Tính $\\sqrt{4^2}$.\n**Hướng dẫn giải:**\nVì $4>0$ nên $\\sqrt{4^2} = 4$.\n\n##VD\nVí dụ 3: Tính $M = \\left( \\sqrt{\\dfrac{1}{9}} + \\sqrt{\\dfrac{25}{36}} - \\sqrt{\\dfrac{49}{81}} \\right) : \\sqrt{\\dfrac{441}{324}}$.\n**Hướng dẫn giải:**\n$M = \\left( \\sqrt{\\dfrac{1}{9}} + \\sqrt{\\dfrac{25}{36}} - \\sqrt{\\dfrac{49}{81}} \\right) : \\sqrt{\\dfrac{441}{324}}$\n$= \\left( \\dfrac{1}{3} + \\dfrac{5}{6} - \\dfrac{7}{9} \\right) : \\dfrac{21}{18}$\n$= \\left( \\dfrac{6}{18} + \\dfrac{15}{18} - \\dfrac{14}{18} \\right) : \\dfrac{21}{18}$\n$= \\dfrac{7}{18} : \\dfrac{21}{18}$\n$= \\dfrac{1}{3}$.",
+    "nguon_ly_thuyet": "cu:T107020202 (thứ tự phép tính) + pdf-kntt tr.42 (định nghĩa căn bậc hai số học) + pdf-kntt tr.43 (Dạng 3: phối hợp phép tính, vận dụng tính chất)",
+    "nguon_vi_du": "cu:T107020202 (3 ví dụ)",
+    "ghi_chu": "Đã tính lại M = 1/3. Cu ghi \"Lời giải\" đổi thành \"Hướng dẫn giải\" theo khuôn."
+  },
+  {
+    "dang_id": "NDB00934",
+    "ly_thuyet": "##TC\nVới $a \\ge 0$ thì $|a|=a$, với $a<0$ thì $|a|=-a$.\n\n##PP\nLưu ý thứ tự thực hiện phép tính:\nTrong ngoặc –> Phá dấu giá trị tuyệt đối –> Khai căn và Luỹ thừa –> Nhân chia –> Cộng trừ.",
+    "vi_du": "##VD\nVí dụ 1: Tính $\\dfrac{-6}{25}+\\left|\\dfrac{-4}{5}\\right|-\\left |\\dfrac{2}{25} \\right |$.\n**Hướng dẫn giải:**\n$\\dfrac{-6}{25}+\\left|\\dfrac{-4}{5}\\right|-\\left |\\dfrac{2}{25} \\right |$\n$= \\dfrac{-6}{25}+\\dfrac{4}{5}-\\dfrac{2}{25}$\n$= \\dfrac{-6}{25}+\\dfrac{20}{25}-\\dfrac{2}{25}$\n$= \\dfrac{12}{25}$.\n\n##VD\nVí dụ 2: Tính: $\\sqrt{\\dfrac{4}{25}}+\\left|\\dfrac{-4}{5}\\right|-\\dfrac{9}{5}\\cdot\\left(\\dfrac{-1}{3}\\right)^2-0,75$.\n**Hướng dẫn giải:**\n$\\sqrt{\\dfrac{4}{25}}+\\left|\\dfrac{-4}{5}\\right|-\\dfrac{9}{5}\\cdot\\left(\\dfrac{-1}{3}\\right)^2-0,75$\n$=\\dfrac{2}{5}+\\dfrac{4}{5}-\\dfrac{9}{5}\\cdot\\dfrac{1}{9}-\\dfrac{3}{4}$\n$=\\dfrac{6}{5}-\\dfrac{1}{5}-\\dfrac{3}{4}$\n$=1-\\dfrac{3}{4}$\n$=\\dfrac{1}{4}$.",
+    "nguon_ly_thuyet": "cu:T107020302",
+    "nguon_vi_du": "cu:T107020302 (Ví dụ 1, Ví dụ 2)",
+    "ghi_chu": "Đã tính lại: 12/25 và 1/4 đều đúng."
+  },
+  {
+    "dang_id": "NDB00935",
+    "ly_thuyet": "##TC\n- Với $a \\ge 0$ thì $|a|=a$, với $a<0$ thì $|a|=-a$. Giá trị tuyệt đối của một số luôn không âm.\n- Mỗi số $a$ không âm đã cho là giá trị tuyệt đối của hai số thực $a$ và $-a$, ngoài hai số này không còn số thực nào khác cũng có giá trị tuyệt đối bằng $a$.\n\n##PP\nBước 1. Chuyển vế, rút gọn để đưa về dạng $|A| = a$ (với $a \\ge 0$).\nBước 2. Xét hai trường hợp: TH1: $A = a$; TH2: $A = -a$.\nBước 3. Giải từng trường hợp rồi kết luận.",
+    "vi_du": "##VD\nVí dụ 1: Tìm $x$ biết: $|x| = \\dfrac{1}{2}$.\n**Hướng dẫn giải:**\n$|x| = \\dfrac{1}{2}$\nTH1: $x = \\dfrac{1}{2}$\nTH2: $x = -\\dfrac{1}{2}$\nVậy $x \\in \\left\\{\\dfrac{1}{2}; -\\dfrac{1}{2}\\right\\}$.\n\n##VD\nVí dụ 2: Tìm $x$ biết: $3|x| - 5 = 0$.\n**Hướng dẫn giải:**\n$3|x| - 5 = 0$\n$3|x| = 5$\n$|x| = \\dfrac{5}{3}$\nTH1: $x = \\dfrac{5}{3}$\nTH2: $x = -\\dfrac{5}{3}$\nVậy $x \\in \\left\\{\\dfrac{5}{3}; -\\dfrac{5}{3}\\right\\}$.\n\n##VD\nVí dụ 3: Tìm $x$ biết: $\\dfrac{8}{9} - 2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{3}$.\n**Hướng dẫn giải:**\n$\\dfrac{8}{9} - 2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{3}$\n$2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{8}{9} - \\dfrac{2}{3}$\n$2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{9}$\n$\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{9} : 2$\n$\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{1}{9}$\nTH1: $\\dfrac{1}{2} - 3x = \\dfrac{1}{9}$\n$3x = \\dfrac{1}{2} - \\dfrac{1}{9}$\n$3x = \\dfrac{7}{18}$\n$x = \\dfrac{7}{54}$\nTH2: $\\dfrac{1}{2} - 3x = -\\dfrac{1}{9}$\n$3x = \\dfrac{1}{2} - \\left(-\\dfrac{1}{9}\\right)$\n$3x = \\dfrac{11}{18}$\n$x = \\dfrac{11}{54}$\nVậy $x \\in \\left\\{\\dfrac{7}{54}; \\dfrac{11}{54}\\right\\}$.",
+    "nguon_ly_thuyet": "TC: pdf-ndt tr.122 (Dạng 4 Giá trị tuyệt đối của một số thực) | PP: cu:T107020303 (cách chia TH1/TH2 trong các ví dụ)",
+    "nguon_vi_du": "cu:T107020303 (Ví dụ 1, 2, 4)",
+    "ghi_chu": "BẢN ĐỒ CŨ SAI: Ví dụ 3 cu (|x-1/2|-3 = -1/2) tính ra |x-1/2| = 7/2 và x in {4;-3}, nhưng -1/2+3 = 5/2 (x = 3 hoặc -2) => KHÔNG đưa. Ba VD còn lại đã tính lại đúng. Khối PP là rút lại cách trình bày TH1/TH2 của chính các ví dụ cu (nguồn không có câu PP viết sẵn)."
+  },
+  {
+    "dang_id": "NDB00461",
+    "ly_thuyet": "##TC\n- Giá trị tuyệt đối của một số luôn không âm: $|A| \\ge 0$.\n- Căn bậc hai số học của một số là một số không âm: $\\sqrt{A} \\ge 0$.\n- Bình phương của một biểu thức luôn không âm: $A^2 \\ge 0$.\n\n##PP\nBước 1. Đánh giá biểu thức chứa $|A|$ (hoặc $\\sqrt{A}$, $A^2$) rồi cộng, trừ thêm hằng số vào hai vế để suy ra biểu thức đã cho $\\ge$ hoặc $\\le$ một số.\nBước 2. Tìm $x$ để dấu bằng xảy ra: cho biểu thức trong giá trị tuyệt đối (hoặc trong căn, trong bình phương) bằng 0.\nBước 3. Kết luận GTNN (hoặc GTLN) của biểu thức và giá trị của $x$ tương ứng.",
+    "vi_du": "##VD\nVí dụ 1: Tìm GTNN của biểu thức: $A = |2x-3|+2025$.\n**Hướng dẫn giải:**\nTa có: $|2x-3|\\ge 0$\n$\\Rightarrow |2x-3|+2025\\ge 0 + 2025$\n$\\Rightarrow A \\ge 2025$\nDấu bằng xảy ra khi $|2x-3|=0 \\Rightarrow 2x-3=0 \\Rightarrow x=\\dfrac{3}{2}$.\nVậy GTNN của biểu thức $A$ là $2025$ khi $x=\\dfrac{3}{2}$.\n\n##VD\nVí dụ 2: Tìm GTLN của biểu thức: $A =19-\\sqrt{2x-1}$.\n**Hướng dẫn giải:**\nTa có: $\\sqrt{2x-1}\\ge 0$\n$\\Rightarrow -\\sqrt{2x-1}\\le 0$\n$\\Rightarrow 19-\\sqrt{2x-1}\\le 19-0$\n$\\Rightarrow A\\le 19$\nDấu bằng xảy ra khi $\\sqrt{2x-1}=0\\Rightarrow 2x-1=0\\Rightarrow x=\\dfrac{1}{2}$.\nVậy GTLN của biểu thức $A$ là $19$ khi $x=\\dfrac{1}{2}$.",
+    "nguon_ly_thuyet": "TC: pdf-ndt tr.122 (|a| không âm) + pdf-kntt tr.42 (căn bậc hai số học là số không âm) + cu:T107020401 (A^2 >= 0 dùng trong VD4) | PP: rút từ cách giải các VD của cu:T107020401",
+    "nguon_vi_du": "cu:T107020401 (Ví dụ 1, Ví dụ 2)",
+    "ghi_chu": "Bản đồ cũ không có lý thuyết cho dạng này (chỉ có ví dụ); \"A^2 >= 0\" không có phát biểu riêng trong PDF, lấy từ lập luận trong VD cu => CEO soát. Khối PP chỉ tóm lại cấu trúc lời giải của các VD, không thêm kiến thức."
+  },
+  {
+    "dang_id": "NDB00462",
+    "ly_thuyet": "##TC\nGiá trị tuyệt đối, căn bậc hai số học và bình phương đều không âm: $|A| \\ge 0$; $\\sqrt{A} \\ge 0$; $A^2 \\ge 0$.\n\n##PP\nBước 1. Đánh giá mẫu số (dựa vào $|A| \\ge 0$, $\\sqrt{A} \\ge 0$ hoặc $A^2 \\ge 0$).\nBước 2. Từ đánh giá của mẫu số suy ra đánh giá của cả phân thức (lấy tử số chia cho hai vế, chú ý chiều bất đẳng thức đổi chiều).\nBước 3. Tìm $x$ để dấu bằng xảy ra rồi kết luận GTLN (hoặc GTNN).",
+    "vi_du": "##VD\nVí dụ: Tìm GTLN của biểu thức $A = \\dfrac{4}{|x-3|+1}$.\n**Hướng dẫn giải:**\nTa có: $|x-3|\\ge 0$\n$\\Rightarrow |x-3|+1\\ge 1$\n$\\Rightarrow \\dfrac{4}{|x-3|+1} \\le \\dfrac{4}{1}$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $|x-3|=0\\Rightarrow x-3=0\\Rightarrow x=3$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x=3$.",
+    "nguon_ly_thuyet": "TC: pdf-ndt tr.122 + pdf-kntt tr.42 + cu:T107020401 | PP: rút từ VD3 của cu:T107020401",
+    "nguon_vi_du": "cu:T107020401 (Ví dụ 3)",
+    "ghi_chu": "Chỉ có 1 ví dụ phân thức trong nguồn. Khối PP là cách trình bày VD3 viết thành bước, chưa có bản đồ cũ nói thành lời => CEO soát."
+  },
+  {
+    "dang_id": "NDB00808",
+    "ly_thuyet": "##TC\nGiá trị tuyệt đối, căn bậc hai số học và bình phương đều không âm: $|A| \\ge 0$; $\\sqrt{A} \\ge 0$; $A^2 \\ge 0$.\n\n##PP\nBước 1. Đánh giá từng số hạng chứa giá trị tuyệt đối, căn bậc hai hoặc bình phương (mỗi số hạng $\\ge 0$), từ đó đánh giá cả biểu thức.\nBước 2. Dấu bằng xảy ra khi đồng thời mọi số hạng đó bằng 0; giải hệ để tìm $x$, $y$.\nBước 3. Kết luận GTNN (hoặc GTLN) và các giá trị $x$, $y$ tương ứng.",
+    "vi_du": "##VD\nVí dụ 1: Tìm GTNN của biểu thức: $B = \\sqrt{3x+8,4}+(y-2)^2 -14,2$.\n**Hướng dẫn giải:**\nTa có: $\\sqrt{3x+8,4} \\ge 0$; $(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 - 14,2 \\ge 0-14,2$\n$\\Rightarrow B\\ge -14,2$\nDấu bằng xảy ra khi $\\begin{cases} \\sqrt{3x+8,4} = 0 \\\\ (y-2)^2 = 0 \\end{cases} \\Rightarrow \\begin{cases} 3x+8,4 = 0 \\\\ y-2=0 \\end{cases} \\Rightarrow \\begin{cases} x = -2,8 \\\\ y = 2 \\end{cases}$.\nVậy GTNN của biểu thức $B$ là $-14,2$ khi $x = -2,8$ và $y = 2$.\n\n##VD\nVí dụ 2: Tìm GTLN của biểu thức: $A =4-|5x-2|-|3y+12|$.\n**Hướng dẫn giải:**\nTa có: $|5x-2|\\ge 0$; $|3y+12|\\ge 0$\n$\\Rightarrow -|5x-2|-|3y+12|\\le 0$\n$\\Rightarrow 4-|5x-2|-|3y+12|\\le 4$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $\\begin{cases} |5x-2|=0 \\\\ |3y+12|=0 \\end{cases} \\Rightarrow \\begin{cases} 5x-2=0 \\\\ 3y+12=0 \\end{cases} \\Rightarrow \\begin{cases} x = \\dfrac{2}{5} \\\\ y = -4 \\end{cases}$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x = \\dfrac{2}{5}$ và $y = -4$.",
+    "nguon_ly_thuyet": "TC: pdf-ndt tr.122 + pdf-kntt tr.42 + cu:T107020401 | PP: rút từ VD4, VD5 của cu:T107020401",
+    "nguon_vi_du": "cu:T107020401 (Ví dụ 4, Ví dụ 5)",
+    "ghi_chu": "Cả 2 VD cu có 2 ẩn x,y, đúng mô tả \"tổng hiệu nhiều loại\". Đã tính lại: x=-2,8; y=2 và x=2/5; y=-4 đúng."
+  },
+  {
+    "dang_id": "NDB00809",
+    "ly_thuyet": "##TC\nGiá trị tuyệt đối, căn bậc hai số học và bình phương đều không âm: $|A| \\ge 0$; $\\sqrt{A} \\ge 0$; $A^2 \\ge 0$.\n\n##PP\nBước 1. Nhận xét mỗi số hạng của tổng đều $\\ge 0$ nên tổng $\\ge 0$.\nBước 2. Khi tổng bằng 0 thì dấu bằng xảy ra: từng số hạng đều bằng 0. Giải từng điều kiện để tìm $x$, $y$.\nBước 3. Thay $x$, $y$ vừa tìm được vào biểu thức cần tính (nếu đề yêu cầu).",
+    "vi_du": "##VD\nVí dụ: Cho $|x-1|+(y+1)^{2022} = 0$. Tính giá trị của biểu thức $A = x^{2025} + y^{2025}$.\n**Hướng dẫn giải:**\nTa có: $|x-1| \\ge 0$; $(y+1)^{2022} \\ge 0$.\n$\\Rightarrow |x-1|+(y+1)^{2022} \\ge 0$.\nDấu bằng xảy ra khi $\\begin{cases} |x-1|=0 \\\\ (y+1)^{2022}=0 \\end{cases} \\Rightarrow \\begin{cases} x-1=0 \\\\ y+1=0 \\end{cases} \\Rightarrow \\begin{cases} x=1 \\\\ y=-1 \\end{cases}$.\nThay $x = 1$; $y = -1$ vào $A = x^{2025} + y^{2025}$:\n$A=1^{2025} + (-1)^{2025}$\n$A=1+(-1)$\n$A=0$.",
+    "nguon_ly_thuyet": "TC: pdf-ndt tr.122 + pdf-kntt tr.42 + cu:T107020402 | PP: rút từ VD1 của cu:T107020402",
+    "nguon_vi_du": "cu:T107020402 (Ví dụ 1)",
+    "ghi_chu": "VD lấy ở dạng cu T107020402 (\"Tính giá trị biểu thức ứng dụng GTLN-GTNN\"): đề cho tổng = 0, tìm x,y rồi mới tính A — đúng \"tìm x y khi tổng bằng 0\". Đã tính lại A = 0. Có KNTT Câu 4 NC cùng kiểu nhưng chỉ có đề."
+  },
+  {
+    "dang_id": "NDB00810",
+    "ly_thuyet": "##TC\nGiá trị tuyệt đối, căn bậc hai số học và bình phương đều không âm: $|A| \\ge 0$; $\\sqrt{A} \\ge 0$; $A^2 \\ge 0$.\n\n##PP\nBước 1. Đánh giá riêng từng vế: vế chứa giá trị tuyệt đối, căn, bình phương cộng hằng số thì $\\ge$ một số; vế là phân thức có mẫu $\\ge$ một số dương thì $\\le$ một số.\nBước 2. Nếu hai vế bằng nhau thì cả hai vế cùng bằng số chung của hai đánh giá; từ đó tìm $x$, $y$.",
+    "vi_du": "##VD\nVí dụ: Tìm số nguyên $x, y$ biết: $|y-3|+5=\\dfrac{10}{(2x-6)^2 +2}$.\n**Hướng dẫn giải:**\nXét $|y-3|+5$:\nTa có: $|y-3|\\ge 0$\n$\\Rightarrow |y-3|+5\\ge 5$.\nXét $\\dfrac{10}{(2x-6)^2+2}$:\nTa có: $(2x-6)^2 \\ge 0$\n$(2x-6)^2+2 \\ge 2$\n$\\Rightarrow \\dfrac{10}{(2x-6)^2+2} \\le \\dfrac{10}{2}$\n$\\Rightarrow \\dfrac{10}{(2x-6)^2+2} \\le 5$\nMà $|y-3|+5=\\dfrac{10}{(2x-6)^2+2}$.\n$\\Rightarrow |y-3|+5=\\dfrac{10}{(2x-6)^2+2}=5$\n+ $|y-3|+5 = 5 \\Rightarrow y = 3$.\n+ $\\dfrac{10}{(2x-6)^2+2}=5 \\Rightarrow x=3$.\nVậy $x = 3$ và $y = 3$.",
+    "nguon_ly_thuyet": "TC: pdf-ndt tr.122 + pdf-kntt tr.42 + cu:T107020402 | PP: rút từ VD2 của cu:T107020402",
+    "nguon_vi_du": "cu:T107020402 (Ví dụ 2)",
+    "ghi_chu": "VD khớp mô tả (trái: GTTĐ + hằng; phải: phân thức mẫu có bình phương). Đã tính lại x=3,y=3 thoả. Chỉ 1 ví dụ trong nguồn."
+  },
+  {
+    "dang_id": "NDB00463",
+    "ly_thuyet": "",
+    "vi_du": "",
+    "nguon_ly_thuyet": "",
+    "nguon_vi_du": "",
+    "ghi_chu": "Để trống: bản đồ cũ T107020403 chỉ có tên, không nội dung. KNTT/LMK không có bất đẳng thức |a|+|b| >= |a+b| kèm lời giải; NDT chỉ có đề (Câu 44 B=|x-1|+|x-3|, Câu 45 |x+y|<=|x|+|y|), ô lời giải trống. 2 PDF bộ đề GKI/CKI là bản quét ảnh (không có text) chưa đọc."
+  },
+  {
+    "dang_id": "NDB00465",
+    "ly_thuyet": "",
+    "vi_du": "",
+    "nguon_ly_thuyet": "",
+    "nguon_vi_du": "",
+    "ghi_chu": "Để trống: cùng lý do NDB00463 — không nguồn có lời giải cho dạng ứng dụng BĐT GTTĐ."
+  }
+]

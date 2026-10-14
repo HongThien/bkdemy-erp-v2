@@ -1,0 +1,256 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB00934",
+   "nhom": "Nhận biết và Biểu diễn Số hữu tỉ trên trục số",
+   "nhom_mo_ta": "Xác định Số thuộc/không thuộc tập hợp Số hữu tỉ, Biểu diễn số hữu tỉ trên trục số",
+   "nhom_ly_thuyet_ban_do_moi": "##TC\nĐể kiểm tra một số có phải là số hữu tỉ hay không, ta tìm cách đưa số đó về dạng phân số $\\dfrac{a}{b}$ ($a, b \\in \\mathbb{Z}$, $b \\neq 0$).\n- Nếu đưa được về dạng $\\dfrac{a}{b}$, ta kết luận số đó thuộc $\\mathbb{Q}$ (Kí hiệu: $\\in \\mathbb{Q}$). \n- Nếu phân số có mẫu số bằng 0, biểu thức đó không có nghĩa, do đó không phải là số hữu tỉ (Kí hiệu: $\\notin \\mathbb{Q}$).\n\n##CYLưu ý các trường hợp đặc biệt:\n- Số 0 là số hữu tỉ (vì $0 = \\dfrac{0}{1} = \\dfrac{0}{2} = ...$).\n- Hỗn số $a\\dfrac{b}{c} = \\dfrac{a \\cdot c + b}{c}$ là số hữu tỉ.\n- Số thập phân là số hữu tỉ.\n\n##tc\nKhi biểu diễn số hữu tỉ trên trục số, ta viết số đó về dạng phân số có mẫu dương, tối giản. Khi đó, mẫu của phân số đó cho ta biết đoạn thẳng đơn vị được chia thành bao nhiêu phần bằng nhau.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010101",
+     "ten_cu": "Nhận biết và Biểu diễn Số hữu tỉ trên trục số",
+     "noi_dung_cu": "##TC\nĐể kiểm tra một số có phải là số hữu tỉ hay không, ta tìm cách đưa số đó về dạng phân số $\\dfrac{a}{b}$ ($a, b \\in \\mathbb{Z}$, $b \\neq 0$).\n- Nếu đưa được về dạng $\\dfrac{a}{b}$, ta kết luận số đó thuộc $\\mathbb{Q}$ (Kí hiệu: $\\in \\mathbb{Q}$). \n- Nếu phân số có mẫu số bằng 0, biểu thức đó không có nghĩa, do đó không phải là số hữu tỉ (Kí hiệu: $\\notin \\mathbb{Q}$).\n\n##CYLưu ý các trường hợp đặc biệt:\n- Số 0 là số hữu tỉ (vì $0 = \\dfrac{0}{1} = \\dfrac{0}{2} = ...$).\n- Hỗn số $a\\dfrac{b}{c} = \\dfrac{a \\cdot c + b}{c}$ là số hữu tỉ.\n- Số thập phân là số hữu tỉ.\n\n##VD\nVí dụ:\n$\\dfrac{2}{3}$ là số hữu tỉ\n$0,25 = \\dfrac{1}{4}$ suy ra $0,25$ là số hữu tỉ\n$1\\dfrac{1}{5} = \\dfrac{6}{5}$ suy ra $1\\dfrac{1}{5}$ là số hữu tỉ.\n\n##tc\nKhi biểu diễn số hữu tỉ trên trục số, ta viết số đó về dạng phân số có mẫu dương, tối giản. Khi đó, mẫu của phân số đó cho ta biết đoạn thẳng đơn vị được chia thành bao nhiêu phần bằng nhau.\n\n##VD\nVí dụ:\nĐiểm M biểu diễn số hữu tỉ $\\dfrac{3}{2}$\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c43bea36-904c-42ad-b0e6-be6611d24b91.png)"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00935",
+   "nhom": "So sánh số hữu tỉ",
+   "nhom_mo_ta": "So sánh các Số hữu tỉ lớn hơn bé hơn bằng. Sắp xếp nhiều số hữu tỉ. Tìm các chữ số x y thoả mãn điều kiện lớn hơn bé hơn bằng của Số hữu tỉ",
+   "nhom_ly_thuyet_ban_do_moi": "##PP Để so sánh hai số hữu tỉ, ta thường làm như sau:\nBước 1. Viết số hữu tỉ dưới dạng phân số có mẫu dương;\nBước 2. Quy đồng mẫu các phân số.\nBước 3. So sánh tử của các phân số đã quy đồng ở bước 2.\nBước 4. Kết luận.\n\n##CY Lưu ý: \nNgoài phương pháp so sánh hai phân số theo cách trên, ta có thể sử dụng linh hoạt các phương pháp: so sánh trung gian, so sánh phần bù, so sánh hai phân số có cùng tử số (dương),...\n\n##VD\nVí dụ 1: So sánh các số hữu tỉ: $\\dfrac{-3}{4}$ và $\\dfrac{-2}{3}$;\n**Hướng dẫn giải:**\nTa có: $\\dfrac{-3}{4} = \\dfrac{-9}{12}$; $\\dfrac{-2}{3} = \\dfrac{-8}{12}$, mà $\\dfrac{-9}{12} < \\dfrac{-8}{12} \\Rightarrow \\dfrac{-3}{4} < \\dfrac{-2}{3}$.\n\n##VD\nVí dụ 2: Tìm số nguyên x,y biết: $\\dfrac{-8}{15} < \\dfrac{x}{15} < \\dfrac{y}{15} < \\dfrac{-1}{3}$\n**Hướng dẫn giải:**\nTa có:\n$\\dfrac{-8}{15} < \\dfrac{x}{15} < \\dfrac{y}{15} < \\dfrac{-1}{3}$\n$\\dfrac{-8}{15} < \\dfrac{x}{15} < \\dfrac{y}{15} < \\dfrac{-5}{15}$\n$-8 < x < y < -5$\nVậy $x = -7$; $y = -6$.\n\n##VD\nVí dụ 3 :Tìm số nguyên x, y biết: $\\dfrac{1}{2} > \\dfrac{x}{3} > \\dfrac{y}{5} > \\dfrac{1}{10}$\n**Hướng dẫn giải:**\nTa có:\n$\\dfrac{1}{2} > \\dfrac{x}{3} > \\dfrac{y}{5} > \\dfrac{1}{10}$\n$\\dfrac{15}{30} > \\dfrac{10x}{30} > \\dfrac{6y}{30} > \\dfrac{3}{30}$\n$15 > 10x > 6y > 3$\nVậy chỉ có $x = y = 1$ thỏa mãn.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010103",
+     "ten_cu": "So sánh số hữu tỉ",
+     "noi_dung_cu": "##PP Để so sánh hai số hữu tỉ, ta thường làm như sau:\nBước 1. Viết số hữu tỉ dưới dạng phân số có mẫu dương;\nBước 2. Quy đồng mẫu các phân số.\nBước 3. So sánh tử của các phân số đã quy đồng ở bước 2.\nBước 4. Kết luận.\n\n##CY Lưu ý: \nNgoài phương pháp so sánh hai phân số theo cách trên, ta có thể sử dụng linh hoạt các phương pháp: so sánh trung gian, so sánh phần bù, so sánh hai phân số có cùng tử số (dương),...\n\n##VD\nVí dụ 1: So sánh các số hữu tỉ: $\\dfrac{-3}{4}$ và $\\dfrac{-2}{3}$;\n**Hướng dẫn giải:**\nTa có: $\\dfrac{-3}{4} = \\dfrac{-9}{12}$; $\\dfrac{-2}{3} = \\dfrac{-8}{12}$, mà $\\dfrac{-9}{12} < \\dfrac{-8}{12} \\Rightarrow \\dfrac{-3}{4} < \\dfrac{-2}{3}$.\n\n##VD\nVí dụ 2: Tìm số nguyên x,y biết: $\\dfrac{-8}{15} < \\dfrac{x}{15} < \\dfrac{y}{15} < \\dfrac{-1}{3}$\n**Hướng dẫn giải:**\nTa có:\n$\\dfrac{-8}{15} < \\dfrac{x}{15} < \\dfrac{y}{15} < \\dfrac{-1}{3}$\n$\\dfrac{-8}{15} < \\dfrac{x}{15} < \\dfrac{y}{15} < \\dfrac{-5}{15}$\n$-8 < x < y < -5$\nVậy $x = -7$; $y = -6$.\n\n##VD\nVí dụ 3 :Tìm số nguyên x, y biết: $\\dfrac{1}{2} > \\dfrac{x}{3} > \\dfrac{y}{5} > \\dfrac{1}{10}$\n**Hướng dẫn giải:**\nTa có:\n$\\dfrac{1}{2} > \\dfrac{x}{3} > \\dfrac{y}{5} > \\dfrac{1}{10}$\n$\\dfrac{15}{30} > \\dfrac{10x}{30} > \\dfrac{6y}{30} > \\dfrac{3}{30}$\n$15 > 10x > 6y > 3$\nVậy chỉ có $x = y = 1$ thỏa mãn."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00936",
+   "nhom": "Tính toán với Số hữu tỉ",
+   "nhom_mo_ta": "Thực hiện các phép tính Cộng, trừ, nhân, chia của Số hữu tỉ",
+   "nhom_ly_thuyet_ban_do_moi": "PHÉP CỘNG - TRỪ SỐ HỮU TỈ\n\n##PP Để cộng, trừ các số hữu tỉ, ta làm như sau:\nBước 1. Viết các số hữu tỉ dưới dạng phân số cùng mẫu dương.\nBước 2. Cộng, trừ các tử và giữ nguyên mẫu.\nBước 3. Rút gọn kết quả (nếu có thể).\n\n\nPHÉP NHÂN - CHIA SỐ HỮU TỈ\n\n##PP Để nhân, chia các số hữu tỉ, ta làm như sau:\nBước 1. Viết các số hữu tỉ dưới dạng phân số.\nBước 2. Áp dụng quy tắc nhân, chia phân số.\nBước 3. Rút gọn kết quả (nếu có thể).",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010201",
+     "ten_cu": "Tính toán với Số hữu tỉ",
+     "noi_dung_cu": "PHÉP CỘNG - TRỪ SỐ HỮU TỈ\n\n##PP Để cộng, trừ các số hữu tỉ, ta làm như sau:\nBước 1. Viết các số hữu tỉ dưới dạng phân số cùng mẫu dương.\nBước 2. Cộng, trừ các tử và giữ nguyên mẫu.\nBước 3. Rút gọn kết quả (nếu có thể).\n\n##CYChú ý: Có thể sử dụng các tính chất của phép cộng số hữu tỉ để tính nhanh, tính hợp lý (nếu có thể).\n\n##VD\nVí dụ: Tính: $\\dfrac{3}{-21}+\\dfrac{-2}{7}$;\nHướng dẫn giải:\n \\dfrac{3}{-21} + \\dfrac{-2}{7} = \\dfrac{-1}{7} + \\dfrac{-2}{7} = \\dfrac{-3}{7}\n\n\nPHÉP NHÂN - CHIA SỐ HỮU TỈ\n\n##PP Để nhân, chia các số hữu tỉ, ta làm như sau:\nBước 1. Viết các số hữu tỉ dưới dạng phân số.\nBước 2. Áp dụng quy tắc nhân, chia phân số.\nBước 3. Rút gọn kết quả (nếu có thể).\n\n\n##CYChú ý: Có thể sử dụng các tính chất của phép nhân số hữu tỉ để tính nhanh, tính hợp lý (nếu có thể).\n\n##VD\nVí dụ: Tính:$-2,5.\\left(-\\dfrac{3}{25}\\right)$\nHướng dẫn giải:\n $-2,5.\\left(-\\dfrac{3}{25}\\right)=\\dfrac{-25}{10}\\cdot\\dfrac{-3}{25}=\\dfrac{3}{10}$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00937",
+   "nhom": "Cộng trừ thuận tiện Số hữu tỉ",
+   "nhom_mo_ta": "Ghép các số hạng chung mẫu để tạo ra Tổng là các số đẹp",
+   "nhom_ly_thuyet_ban_do_moi": "##PPPhương pháp giải:\n **Quy tắc dấu ngoặc:** Nếu có dấu ngoặc, hãy ưu tiên phá ngoặc theo quy tắc: Trước ngoặc có dấu trừ \"-\" thì phải đổi dấu toàn bộ các số hạng bên trong; trước ngoặc có dấu cộng \"+\" thì giữ nguyên dấu.\n**Tính chất giao hoán và kết hợp:** Sau khi mở ngoặc, tiến hành đổi chỗ và nhóm các số hạng có đặc điểm chung lại với nhau.\n**Cách nhóm:** Các phân số có cùng mẫu số, các cặp số đối nhau (có tổng bằng 0), hoặc các số thập phân có phần đuôi cộng lại ra số tròn chục/tròn đơn vị.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010206",
+     "ten_cu": "Cộng trừ số hữu tỉ (Thuận tiện)",
+     "noi_dung_cu": "**Phương pháp giải:**\n*   **Quy tắc dấu ngoặc:** Nếu có dấu ngoặc, hãy ưu tiên phá ngoặc theo quy tắc: Trước ngoặc có dấu trừ \"-\" thì phải đổi dấu toàn bộ các số hạng bên trong; trước ngoặc có dấu cộng \"+\" thì giữ nguyên dấu.\n*   **Tính chất giao hoán và kết hợp:** Sau khi mở ngoặc, tiến hành đổi chỗ và nhóm các số hạng có đặc điểm chung lại với nhau.\n*   **Cách nhóm:** Các phân số có cùng mẫu số, các cặp số đối nhau (có tổng bằng 0), hoặc các số thập phân có phần đuôi cộng lại ra số tròn chục/tròn đơn vị.\n**Ví dụ minh họa:** Tính hợp lý biểu thức sau:$$A = \\dfrac{4}{9} - \\left( \\dfrac{1}{6} - \\dfrac{5}{9} \\right)$$\n\nHướng dẫn giải:\n$$A = \\dfrac{4}{9} - \\dfrac{1}{6} + \\dfrac{5}{9}$$\n$$A = \\left( \\dfrac{4}{9} + \\dfrac{5}{9} \\right) - \\dfrac{1}{6}$$\n$$A = \\dfrac{9}{9} - \\dfrac{1}{6}$$\n$$A = 1 - \\dfrac{1}{6} = \\dfrac{5}{6}$$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00938",
+   "nhom": "Nhân chia thuận tiện Số hữu tỉ",
+   "nhom_mo_ta": "Rút nhân tử chung, Sử dụng tính chất phân phối của Phép nhân với Phép cộng,...",
+   "nhom_ly_thuyet_ban_do_moi": "##PP\n**Bước 1:** Quan sát biểu thức để tìm thừa số chung.\n**Bước 2:** Đặt thừa số chung ra ngoài dấu ngoặc. Công thức: $a \\cdot b \\pm a \\cdot c = a \\cdot (b \\pm c)$.\n**Bước 3:** Tính phần biểu thức bên trong dấu ngoặc trước (thường có kết quả là $1$, $-1$ hoặc $0$).\n**Bước 4:** Thực hiện nốt phép tính còn lại.\n\n##CY\nNếu có phép chia cho một phân số, hãy lập tức chuyển thành phép nhân với phân số nghịch đảo đó để dễ dàng tìm ra thừa số chung.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010207",
+     "ten_cu": "Nhân chia số hữu tỉ (Thuận tiện)",
+     "noi_dung_cu": "**Phương pháp giải:**\n**Bước 1:** Quan sát biểu thức để tìm thừa số chung.\n**Bước 2:** Đặt thừa số chung ra ngoài dấu ngoặc. Công thức: $a \\cdot b \\pm a \\cdot c = a \\cdot (b \\pm c)$.\n**Bước 3:** Tính phần biểu thức bên trong dấu ngoặc trước (thường có kết quả là $1$, $-1$ hoặc $0$).\n**Bước 4:** Thực hiện nốt phép tính còn lại\n**Lưu ý:** Nếu có phép chia cho một phân số, hãy lập tức chuyển thành phép nhân với phân số nghịch đảo đó để dễ dàng tìm ra thừa số chung.\n\n**Ví dụ minh họa:**Tính hợp lý biểu thức sau:\n$$B = \\dfrac{-5}{11} \\cdot \\dfrac{4}{13} + \\dfrac{-5}{11} \\cdot \\dfrac{9}{13} + 1 \\dfrac{5}{11}$$\n$$B = \\dfrac{-5}{11} \\cdot \\dfrac{4}{13} + \\dfrac{-5}{11} \\cdot \\dfrac{9}{13} + \\dfrac{16}{11}$$\n$$B = \\dfrac{-5}{11} \\cdot \\left( \\dfrac{4}{13} + \\dfrac{9}{13} \\right) + \\dfrac{16}{11}$$\n$$B = \\dfrac{-5}{11} \\cdot \\left( \\dfrac{13}{13} \\right) + \\dfrac{16}{11}$$\n$$B = \\dfrac{-5}{11} \\cdot 1 + \\dfrac{16}{11}$$\n$$B = \\dfrac{-5}{11} + \\dfrac{16}{11} = \\dfrac{11}{11} = 1$$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00939",
+   "nhom": "Tính toán Luỹ thừa Số hữu tỉ",
+   "nhom_mo_ta": "Tính toán biểu thức Luỹ thừa của các số Hữu tỉ hoặc Luỹ thừa của một Tổng - Hiệu. Biểu thức không quá 3 bước tính Cộng, trừ, nhân, chia và Luỹ thừa.",
+   "nhom_ly_thuyet_ban_do_moi": "##TC\n1. Luỹ thừa bậc $n$ của một số hữu tỉ\nLuỹ thừa bậc $n$ của một số hữu tỉ $\\dfrac{a}{b}$, kí hiệu là $\\left(\\dfrac{a}{b}\\right)^n$, là tích của $n$ thừa số $\\dfrac{a}{b}$ ($n$ là số tự nhiên lớn hơn 1):\n$$\\left(\\dfrac{a}{b}\\right)^n = \\underbrace{\\dfrac{a}{b} \\cdot \\dfrac{a}{b} \\cdot \\ldots \\cdot \\dfrac{a}{b}}_{n\\text{ thừa số}} \\quad \\left(\\dfrac{a}{b} \\in \\mathbb{Q}, n \\in \\mathbb{N}, n > 1\\right)$$\n2. Quy ước\n$$\\left(\\dfrac{a}{b}\\right)^0 = 1 \\quad \\left(\\dfrac{a}{b} \\neq 0\\right)$$\n$$\\left(\\dfrac{a}{b}\\right)^1 = \\dfrac{a}{b}$$\n3. Tích và thương các luỹ thừa cùng cơ số\nNhân hai luỹ thừa cùng cơ số:\n$$\\left(\\dfrac{a}{b}\\right)^m \\cdot \\left(\\dfrac{a}{b}\\right)^n = \\left(\\dfrac{a}{b}\\right)^{m+n}$$\nChia hai luỹ thừa cùng cơ số:\n$$\\left(\\dfrac{a}{b}\\right)^m : \\left(\\dfrac{a}{b}\\right)^n = \\left(\\dfrac{a}{b}\\right)^{m-n} \\quad \\left(\\dfrac{a}{b} \\neq 0, m \\ge n\\right)$$\n4. Luỹ thừa của luỹ thừa\n$$\\left[\\left(\\dfrac{a}{b}\\right)^m\\right]^n = \\left(\\dfrac{a}{b}\\right)^{m \\cdot n}$$\n5. Luỹ thừa của một tích và một thương\nLuỹ thừa của một tích:\n$$\\left(\\dfrac{a}{b} \\cdot \\dfrac{c}{d}\\right)^n = \\left(\\dfrac{a}{b}\\right)^n \\cdot \\left(\\dfrac{c}{d}\\right)^n$$\nLuỹ thừa của một thương:\n$$\\left(\\dfrac{a}{b} : \\dfrac{c}{d}\\right)^n = \\left(\\dfrac{a}{b}\\right)^n : \\left(\\dfrac{c}{d}\\right)^n \\quad \\left(\\dfrac{c}{d} \\neq 0\\right)$$",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010301",
+     "ten_cu": "Tính toán biểu thức luỹ thừa",
+     "noi_dung_cu": "**Ví dụ:** Tính:$3-\\left(\\dfrac{1}{3}\\right)^3+\\dfrac{1}{27}+\\left(\\dfrac{-2025}{2026}\\right)^0$\nBài giải:\n$3-\\left(\\dfrac{1}{3}\\right)^3+\\dfrac{1}{27}+\\left(\\dfrac{-2025}{2026}\\right)^0$\n$=3-\\dfrac{1}{27}+\\dfrac{1}{27}+1$\n$=3+1$\n$=4$"
+    },
+    {
+     "ma_dang_cu": "T107010302",
+     "ten_cu": "Rút gọn biểu thức luỹ thừa (cùng cơ số)",
+     "noi_dung_cu": ""
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00943",
+   "nhom": "Tính toán biểu thức tổng hợp",
+   "nhom_mo_ta": "Biểu thức chứa tổng hợp các phép tính Cộng, trừ, nhân, chia, nâng lên Luỹ thừa, chứa nhiều ngoặc của Số hữu tỉ. Để giải cần thực hiện từ 3 bước tính trở lên",
+   "nhom_ly_thuyet_ban_do_moi": "##TC\n- Với các biểu thức chỉ có phép cộng và phép trừ hoặc chỉ có phép nhân và phép chia, ta thực hiện các phép tính **từ trái sang phải**.\n- Với các biểu thức không có dấu ngoặc, ta thực hiện theo thứ tự:\n**Lũy thừa** $\\rightarrow$ **Nhân và chia** $\\rightarrow$ **Cộng và trừ.**\n- Với biểu thức có dấu ngoặc, ta thực hiện **trong ngoặc trước, ngoài ngoặc sau**.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107010401",
+     "ten_cu": "Tính toán biểu thức theo thứ tự",
+     "noi_dung_cu": "**Ví dụ:** $\\left[\\dfrac{2}{3} + \\left(-\\dfrac{1}{4}\\right) - (-2)^2 \\cdot \\dfrac{3}{4}\\right] - 1$\nBài giải:\n$\\left[\\dfrac{2}{3} + \\left(-\\dfrac{1}{4}\\right) - (-2)^2 \\cdot \\dfrac{3}{4}\\right] - 1$\n$= \\left[\\dfrac{2}{3} - \\dfrac{1}{4} - 4 \\cdot \\dfrac{3}{4}\\right] - 1$\n$= \\left[\\dfrac{8}{12} - \\dfrac{3}{12} - 3\\right] - 1$\n$= \\left[\\dfrac{5}{12} - \\dfrac{36}{12}\\right] - 1$\n$= \\dfrac{-31}{12} - 1$\n$= \\dfrac{-31}{12} - \\dfrac{12}{12}$\n$= \\dfrac{-43}{12}$"
+    }
+   ]
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB00789",
+   "nhom_id": "NNB00934",
+   "chuyen_de": "Tính chất Số hữu tỉ",
+   "dang": "Nhận biết Số hữu tỉ",
+   "mo_ta": "Điền kí hiệu \\in, \\notin vào chỗ trống. Xác định số nào là Số hữu tỉ, số nào không là số hữu tỉ,....",
+   "ly_thuyet_hien_co": "##TC\nĐể kiểm tra một số có phải là số hữu tỉ hay không, ta tìm cách đưa số đó về dạng phân số $\\dfrac{a}{b}$ ($a, b \\in \\mathbb{Z}$, $b \\neq 0$).\n- Nếu đưa được về dạng $\\dfrac{a}{b}$, ta kết luận số đó thuộc $\\mathbb{Q}$ (Kí hiệu: $\\in \\mathbb{Q}$). \n- Nếu phân số có mẫu số bằng 0, biểu thức đó không có nghĩa, do đó không phải là số hữu tỉ (Kí hiệu: $\\notin \\mathbb{Q}$).",
+   "vi_du_hien_co": "##VD\n$2 \\in \\mathbb{Q}; -1\\in \\mathbb{Q}; 0,25 = \\dfrac{1}{4} \\in \\mathbb{Q}$\n\n##VD\nVí dụ:\n$\\dfrac{2}{3}$ là số hữu tỉ\n$0,25 = \\dfrac{1}{4}$ suy ra $0,25$ là số hữu tỉ\n$1\\dfrac{1}{5} = \\dfrac{6}{5}$ suy ra $1\\dfrac{1}{5}$ là số hữu tỉ.\n$\\dfrac{1}{0}$ không phải số hữu tỉ",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00790",
+   "nhom_id": "NNB00934",
+   "chuyen_de": "Tính chất Số hữu tỉ",
+   "dang": "Biểu diễn Số hữu tỉ trên trục số",
+   "mo_ta": "Cho hình vẽ Trục số và yêu cầu biểu diễn các số Hữu tỉ cho trước trên trục số đó, Xác định các điểm biểu diễn trên trục số của Số hữu tỉ",
+   "ly_thuyet_hien_co": "##tc\nKhi biểu diễn số hữu tỉ trên trục số, ta viết số đó về dạng phân số có mẫu dương, tối giản. Khi đó, mẫu của phân số đó cho ta biết đoạn thẳng đơn vị được chia thành bao nhiêu phần bằng nhau.",
+   "vi_du_hien_co": "##VD\nVí dụ:\nĐiểm M biểu diễn số hữu tỉ $\\dfrac{3}{2}$\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c43bea36-904c-42ad-b0e6-be6611d24b91.png)",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00792",
+   "nhom_id": "NNB00935",
+   "chuyen_de": "Tính chất Số hữu tỉ",
+   "dang": "So sánh Số hữu tỉ",
+   "mo_ta": "Yêu cầu so sánh Hai số hữu tỉ, cần quy đồng mẫu số để so sánh",
+   "ly_thuyet_hien_co": "##PP Để so sánh hai số hữu tỉ, ta thường làm như sau:\nBước 1. Viết số hữu tỉ dưới dạng phân số có mẫu dương;\nBước 2. Quy đồng mẫu các phân số.\nBước 3. So sánh tử của các phân số đã quy đồng ở bước 2.\nBước 4. Kết luận.\n\n##CY Lưu ý: \nNgoài phương pháp so sánh hai phân số theo cách trên, ta có thể sử dụng linh hoạt các phương pháp: so sánh trung gian, so sánh phần bù, so sánh hai phân số có cùng tử số (dương),...",
+   "vi_du_hien_co": "##VD\nVí dụ 1: So sánh các số hữu tỉ: $\\dfrac{-3}{4}$ và $\\dfrac{-2}{3}$;\n**Hướng dẫn giải:**\nTa có: $\\dfrac{-3}{4} = \\dfrac{-9}{12}$; $\\dfrac{-2}{3} = \\dfrac{-8}{12}$, mà $\\dfrac{-9}{12} < \\dfrac{-8}{12} \\Rightarrow \\dfrac{-3}{4} < \\dfrac{-2}{3}$.",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00793",
+   "nhom_id": "NNB00935",
+   "chuyen_de": "Tính chất Số hữu tỉ",
+   "dang": "Sắp xếp các Số hữu tỉ",
+   "mo_ta": "Sắp xếp nhiều số hữu tỉ theo thứ tự từ bé đến lớn hoặc từ lớn đến bé. Để sắp xếp được cần phối hợp nhiều phương pháp: So sánh với 0, so sánh quy đồng mẫu,....",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nSắp xếp các số hữu tỉ theo thứ tự tăng dần:\\dfrac{-6}{7}; \\dfrac{7}{5}; \\dfrac{-7}{5}; 0; \\dfrac{2}{3}.\n**Hướng dẫn giải:**\nNhận thấy $\\dfrac{-6}{7}$; $\\dfrac{-7}{5}$ là các số hữu tỉ âm nên nhỏ hơn $0$, $\\dfrac{7}{5}$; $\\dfrac{2}{3}$ là các số hữu tỉ dương nên lớn hơn $0$.\nTa có: $\\dfrac{-6}{7} = \\dfrac{-30}{35}$; $\\dfrac{-7}{5} = \\dfrac{-49}{35}$\nVì $\\dfrac{-30}{35} > \\dfrac{-49}{35}$ nên $\\dfrac{-6}{7} > \\dfrac{-7}{5}$\nTa có: $\\dfrac{7}{5} = \\dfrac{21}{15}$; $\\dfrac{2}{3} = \\dfrac{10}{15}$\nVì $\\dfrac{21}{15} > \\dfrac{10}{15}$ nên $\\dfrac{7}{5} > \\dfrac{2}{3}$\nSuy ra: $\\dfrac{-7}{5} < \\dfrac{-6}{7} < 0 < \\dfrac{2}{3} < \\dfrac{7}{5}$.",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00794",
+   "nhom_id": "NNB00935",
+   "chuyen_de": "Tính chất Số hữu tỉ",
+   "dang": "Tìm x y thoả mãn điều kiện",
+   "mo_ta": "Yêu cầu tìm các số x, y thoả mãn điều kiện lớn hơn, bé hơn các Số hữu tỉ cho trước, có thể cần phải Quy đồng mẫu số hoặc không cần.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nTìm số nguyên x,y biết: $\\dfrac{1}{2} > \\dfrac{x}{4} > \\dfrac{y}{8} > \\dfrac{1}{24}$.\n**Hướng dẫn giải:**\nTa có:\n$\\dfrac{1}{2} > \\dfrac{x}{4} > \\dfrac{y}{8} > \\dfrac{1}{24}$\n$\\dfrac{12}{24} > \\dfrac{6x}{24} > \\dfrac{3y}{24} > \\dfrac{1}{24}$\n$12 > 6x > 3y > 1$\nVậy chỉ có $x = y = 1$ thỏa mãn",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00419",
+   "nhom_id": "NNB00936",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Cộng trừ Số hữu tỉ",
+   "mo_ta": "Thực hiện Phép tính Cộng Trừ hai Số hữu tỉ",
+   "ly_thuyet_hien_co": "PHÉP CỘNG - TRỪ SỐ HỮU TỈ\n\n##PP Để cộng, trừ các số hữu tỉ, ta làm như sau:\nBước 1. Viết các số hữu tỉ dưới dạng phân số cùng mẫu dương.\nBước 2. Cộng, trừ các tử và giữ nguyên mẫu.\nBước 3. Rút gọn kết quả (nếu có thể).\n\n##CYChú ý: Có thể sử dụng các tính chất của phép cộng số hữu tỉ để tính nhanh, tính hợp lý (nếu có thể).",
+   "vi_du_hien_co": "##VD\nTính: $\\dfrac{3}{-21} + \\dfrac{-2}{7}$.\nHướng dẫn giải:\n$\\dfrac{3}{-21} + \\dfrac{-2}{7}$\n$= \\dfrac{-3}{21} + \\dfrac{-2}{7}$\n$= \\dfrac{-1}{7} + \\dfrac{-2}{7}$\n$= \\dfrac{-3}{7}$\n\n##VD\nTính: $\\dfrac{-2}{3} - \\dfrac{-6}{5}$\n$= \\dfrac{-2}{3} + \\dfrac{6}{5}$\n$= \\dfrac{-10}{15} + \\dfrac{18}{15}$\n$= \\dfrac{8}{15}$",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00420",
+   "nhom_id": "NNB00936",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Nhân chia Số hữu tỉ",
+   "mo_ta": "Thực hiện phép tính Nhân - Chia hai Số hữu tỉ",
+   "ly_thuyet_hien_co": "##PP Để nhân, chia các số hữu tỉ, ta làm như sau:\nBước 1. Viết các số hữu tỉ dưới dạng phân số.\nBước 2. Áp dụng quy tắc nhân, chia phân số.\nBước 3. Rút gọn kết quả (nếu có thể).\n\n\n##CYChú ý: Có thể sử dụng các tính chất của phép nhân số hữu tỉ để tính nhanh, tính hợp lý (nếu có thể).",
+   "vi_du_hien_co": "##VD\nTính: $-2,5 \\cdot \\left( -\\dfrac{3}{25} \\right)$\n$= -\\dfrac{25}{10} \\cdot \\left( -\\dfrac{3}{25} \\right)$\n$= \\dfrac{3}{10}$\n\n##VD\nTính: $\\dfrac{-6}{13} : \\dfrac{9}{-26}$\n$= \\dfrac{-6}{13} \\cdot \\dfrac{-26}{9}$\n$= \\dfrac{4}{3}$",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00421",
+   "nhom_id": "NNB00937",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Ghép cặp cơ bản",
+   "mo_ta": "Chỉ cần ghép các cặp Số hữu tỉ cùng mẫu, số thập phân tạo thành các số nguyên, số tròn chục, tròn đơn vị, ...",
+   "ly_thuyet_hien_co": "##PPPhương pháp giải:\n **Quy tắc dấu ngoặc:** Nếu có dấu ngoặc, hãy ưu tiên phá ngoặc theo quy tắc: Trước ngoặc có dấu trừ \"-\" thì phải đổi dấu toàn bộ các số hạng bên trong; trước ngoặc có dấu cộng \"+\" thì giữ nguyên dấu.\n**Tính chất giao hoán và kết hợp:** Sau khi mở ngoặc, tiến hành đổi chỗ và nhóm các số hạng có đặc điểm chung lại với nhau.\n**Cách nhóm:** Các phân số có cùng mẫu số, các cặp số đối nhau (có tổng bằng 0), hoặc các số thập phân có phần đuôi cộng lại ra số tròn chục/tròn đơn vị.",
+   "vi_du_hien_co": "##VD\nTính thuận tiện: $\\dfrac{25}{17} + \\dfrac{-5}{11} + \\dfrac{43}{17} - \\dfrac{6}{11}$.\n$= (\\dfrac{25}{17} + \\dfrac{43}{17}) + (\\dfrac{-5}{11} - \\dfrac{6}{11})$\n$= \\dfrac{68}{17} + (\\dfrac{-11}{11})$\n$= 4 - 1 $\n$= 3$.\n\n##VD\nTính thuận tiện: $1\\dfrac{3}{5} - 3,64 + 9\\dfrac{2}{5} - 2,36$.\n$= 1\\dfrac{3}{5} - 3,64 + 9\\dfrac{2}{5} - 2,36$\\n$= (1\\dfrac{3}{5} + 9\\dfrac{2}{5}) - (3.64 + 2.36)$\\n$= 11 - 6$\\n$= 5$",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00422",
+   "nhom_id": "NNB00937",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Cần phá ngoặc để ghép cặp",
+   "mo_ta": "Cần phá ngoặc đổi dấu rồi mới ghép cặp cùng mẫu tạo thành Tổng nguyên hoặc tròn chục,...",
+   "ly_thuyet_hien_co": "##TC\nNếu có dấu ngoặc, hãy ưu tiên phá ngoặc theo quy tắc: Trước ngoặc có dấu trừ \"-\" thì phải đổi dấu toàn bộ các số hạng bên trong; trước ngoặc có dấu cộng \"+\" thì giữ nguyên dấu. Sau đó thực hiện nhóm các phân số có cùng mẫu số, các cặp số đối nhau (có tổng bằng 0), hoặc các số thập phân có phần đuôi cộng lại ra số tròn chục/tròn đơn vị.",
+   "vi_du_hien_co": "##VD\nTính thuận tiện: $4 - \\left(- \\dfrac{7}{13} + \\dfrac{4}{7}\\right) + \\left(\\dfrac{19}{13} - \\dfrac{3}{7}\\right)$.\n$= 4 + \\dfrac{7}{13} - \\dfrac{4}{7} + \\dfrac{19}{13} - \\dfrac{3}{7}$\n$= 4 + \\left(\\dfrac{7}{13} + \\dfrac{19}{13}\\right) - \\left(\\dfrac{4}{7} + \\dfrac{3}{7}\\right)$\n$= 4 + \\dfrac{26}{13} - \\dfrac{7}{7}$\n$= 4 + 2 - 1 $\n$= 5$.",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00423",
+   "nhom_id": "NNB00938",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Có sẵn Nhân tử chung",
+   "mo_ta": "Đã có sẵn nhân tử chung, chỉ cần rút Nhân tử chung ra ngoài, áp dụng luôn tính chất phân phối",
+   "ly_thuyet_hien_co": "##PP\n**Bước 1:** Quan sát biểu thức để tìm thừa số chung.\n**Bước 2:** Đặt thừa số chung ra ngoài dấu ngoặc. Công thức: $a \\cdot b \\pm a \\cdot c = a \\cdot (b \\pm c)$.\n**Bước 3:** Tính phần biểu thức bên trong dấu ngoặc trước (thường có kết quả là $1$, $-1$ hoặc $0$).\n**Bước 4:** Thực hiện nốt phép tính còn lại.\n\n##CY\nNếu có phép chia cho một phân số, hãy lập tức chuyển thành phép nhân với phân số nghịch đảo đó để dễ dàng tìm ra thừa số chung.",
+   "vi_du_hien_co": "##VD\nTính nhanh:$\\dfrac{-5}{17} \\cdot \\dfrac{31}{33} + \\dfrac{-5}{17} \\cdot \\dfrac{2}{33}$.\n$=\\dfrac{-5}{17} \\cdot \\left(\\dfrac{31}{33} + \\dfrac{2}{33}\\right)$\n$=\\dfrac{-5}{17} \\cdot \\left(\\dfrac{33}{33}\\right)$\n$=\\dfrac{-5}{17} \\cdot 1$\n$=\\dfrac{-5}{17}$.\n\n##VD\nTính: $2\\dfrac{1}{4} : \\dfrac{5}{7} - 5\\dfrac{1}{4} \\cdot \\dfrac{7}{5} + \\dfrac{14}{3} \\cdot \\dfrac{7}{5}$.\n$=2\\dfrac{1}{4} \\cdot \\dfrac{7}{5} - 5\\dfrac{1}{4} \\cdot \\dfrac{7}{5} + \\dfrac{14}{3} \\cdot \\dfrac{7}{5}$\n$= (2\\dfrac{1}{4} - 5\\dfrac{1}{4} + \\dfrac{14}{3}) \\cdot \\dfrac{7}{5}$\n$= (-3 + \\dfrac{14}{3}) \\cdot \\dfrac{7}{5}$\n$= \\dfrac{5}{3} \\cdot \\dfrac{7}{5}$\n$= \\dfrac{7}{3}$.",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00791",
+   "nhom_id": "NNB00938",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Đảo số để làm xuất hiện thừa số chung",
+   "mo_ta": "Chưa có sẵn Nhân tử chung, cần biến đổi đảo, tách, thêm bớt để làm xuất hiện Nhân tử chung",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nTính giá trị biểu thức sau (một cách hợp lí): $\\dfrac{21}{7} \\cdot \\dfrac{-3}{13} + \\dfrac{8}{13} \\cdot \\dfrac{3}{7} - 1\\dfrac{2}{7}$.\n$= \\dfrac{-21}{13} \\cdot \\dfrac{3}{7} + \\dfrac{8}{13} \\cdot \\dfrac{3}{7} - \\dfrac{9}{7}$\n$= \\dfrac{3}{7} \\left( \\dfrac{-21}{13} + \\dfrac{8}{13} \\right) - \\dfrac{9}{7}$\n$= \\dfrac{3}{7} \\cdot \\left( \\dfrac{-21 + 8}{13} \\right) - \\dfrac{9}{7}$\n$= \\dfrac{3}{7} \\cdot \\dfrac{-13}{13} - \\dfrac{9}{7}$\n$= \\dfrac{3}{7} \\cdot (-1) - \\dfrac{9}{7}$\n$= \\dfrac{-3}{7} - \\dfrac{9}{7}$\n$= \\dfrac{-12}{7}$.",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00883",
+   "nhom_id": "NNB00939",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Tính toán Luỹ thừa Số hữu tỉ",
+   "mo_ta": "Tính toán biểu thức Luỹ thừa của các số Hữu tỉ hoặc Luỹ thừa của một Tổng - Hiệu. Biểu thức không quá 3 bước tính Cộng, trừ, nhân, chia và Luỹ thừa.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nTính: $\\left(\\dfrac{2}{9} + \\dfrac{2}{3}\\right)^2$.\n$ =\\left (\\dfrac{2}{9} + \\dfrac{6}{9}\\right)^2$\n$ =\\left  (\\dfrac{8}{9}\\right)^2$\n$ = \\dfrac{64}{81}$.\n\n##VD\nTính: $12 : \\left(\\dfrac{1}{3} - \\dfrac{1}{6}\\right)^2$.\n$= 12 : \\left(\\dfrac{2}{6} - \\dfrac{1}{6}\\right)^2$\n$= 12 : \\left(\\dfrac{1}{6}\\right)^2$\n$= 12 : \\dfrac{1}{36}$\n$= 12 \\cdot 36 $\n$= 432$",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00799",
+   "nhom_id": "NNB00943",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Biểu thức đơn giản",
+   "mo_ta": "Biểu thức chứa tổng hợp các phép tính Cộng, trừ, nhân, chia, nâng lên Luỹ thừa, chứa ngoặc tròn hoặc vuông của Số hữu tỉ. Để giải cần thực hiện từ 3 đến 4 bước tính",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nTính: $4 \\cdot \\left(-\\dfrac{1}{2}\\right)^3 + \\dfrac{1}{2}$\nHướng dẫn giải:\n$= 4 \\cdot \\left(-\\dfrac{1}{8}\\right) + \\dfrac{1}{2}$\n$= -\\dfrac{4}{8} + \\dfrac{1}{2}$\n$= -\\dfrac{1}{2} + \\dfrac{1}{2}$\n$= 0$\n\n##VD\nTính: $0,25 - \\left(-\\dfrac{1}{4}\\right)^2 + \\dfrac{2}{4} : 4$.\nHướng dẫn giải:\n$0,25 - \\left(-\\dfrac{1}{4}\\right)^2 + \\dfrac{2}{4} : 4$\\n$= \\dfrac{1}{4} - \\dfrac{1}{16} + \\dfrac{2}{4} \\cdot \\dfrac{1}{4}$\\n$= \\dfrac{4}{16} - \\dfrac{1}{16} + \\dfrac{2}{16}$\\n$= \\dfrac{5}{16}$.\n\n##VD\nTính: $ (\\dfrac{2}{3} - \\dfrac{1}{2})^{2} : \\dfrac{15}{6} + (\\dfrac{2024}{2025})^{0}. $\nHướng dẫn giải:\n$ (\\dfrac{2}{3} - \\dfrac{1}{2})^{2} : \\dfrac{15}{6} + (\\dfrac{2024}{2025})^{0} $\n$ = (\\dfrac{1}{6})^{2} \\cdot \\dfrac{6}{15} + 1 $\n$ = \\dfrac{1}{36} \\cdot \\dfrac{6}{15} + 1 $\n$ = \\dfrac{1}{90} + 1 $\n$ = \\dfrac{91}{90} $",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB00800",
+   "nhom_id": "NNB00943",
+   "chuyen_de": "Thực hiện phép tính Số hữu tỉ",
+   "dang": "Biểu thức phức tạp",
+   "mo_ta": "Biểu thức chứa tổng hợp các phép tính Cộng, trừ, nhân, chia, nâng lên Luỹ thừa, chứa nhiều loại ngoặc (Tròn + Vuông + Nhọn) của Số hữu tỉ. Để giải cần thực hiện nhiều bước tính (từ 5 bước trở lên).",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nTính:  $[\\dfrac{2}{3} + (-\\dfrac{1}{4}) - (-2)^2 \\cdot \\dfrac{3}{4}] - 1$.\n**Hướng dẫn giải:**\n$[\\dfrac{2}{3} + (-\\dfrac{1}{4}) - (-2)^2 \\cdot \\dfrac{3}{4}] - 1$\n$= [\\dfrac{8}{12} - \\dfrac{3}{12} - 4 \\cdot \\dfrac{3}{4}] - 1$\n$= [\\dfrac{5}{12} - 3] - 1$\n$= [\\dfrac{5}{12} - \\dfrac{36}{12}] - 1$\n$= -\\dfrac{31}{12} - \\dfrac{12}{12}$\n$= -\\dfrac{43}{12}$.\n\n##VD\nTính: $\\left(-\\dfrac{2}{7}\\right)^2 \\cdot 49 - \\dfrac{7}{12} : \\left(\\dfrac{1}{3} - \\dfrac{1}{8}\\right)$.\n**Hướng dẫn giải:**\n$\\left(-\\dfrac{2}{7}\\right)^2 \\cdot 49 - \\dfrac{7}{12} : \\left(\\dfrac{1}{3} - \\dfrac{1}{8}\\right)$\n$= \\dfrac{4}{49} \\cdot 49 - \\dfrac{7}{12} : \\left(\\dfrac{8}{24} - \\dfrac{3}{24}\\right)$\n$= 4 - \\dfrac{7}{12} : \\dfrac{5}{24}$\n$= 4 - \\dfrac{7}{12} \\cdot \\dfrac{24}{5}$\n$= 4 - \\dfrac{14}{5}$\n$= \\dfrac{20}{5} - \\dfrac{14}{5}$\n$= \\dfrac{6}{5}$.\n\n##VD\nTính: $(-18)^4 : 9^4 + \\left( -\\dfrac{1}{2} \\right)^3 - (-2025)^0 + 3\\dfrac{1}{8}$.\n**Hướng dẫn giải:**\n$(-18)^4 : 9^4 + \\left( -\\dfrac{1}{2} \\right)^3 - (-2025)^0 + 3\\dfrac{1}{8}$\n$= \\left( \\dfrac{-18}{9} \\right)^4 + \\left( \\dfrac{-1}{8} \\right) - 1 + 3\\dfrac{1}{8}$\n$= (-2)^4 - 1 + \\left( 3\\dfrac{1}{8} + \\dfrac{-1}{8} \\right)$\n$= 16 - 1 + 3$\n$= 18.",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  }
+ ]
+}

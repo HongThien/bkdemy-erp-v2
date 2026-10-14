@@ -1,0 +1,301 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB00962",
+   "nhom": "Nhận biết STP hữu hạn, STP vô hạn tuần hoàn",
+   "nhom_mo_ta": "Xác định đâu là số thập phân vô hạn tuần hoàn, chu kì của số thập phân vô hạn tuần hoàn, làm tròn số,........ các nội dung về Số thập phân vô hạn tuần hoàn",
+   "nhom_ly_thuyet_ban_do_moi": "##TC\nKhi viết một số hữu tỉ $\\dfrac{a}{b}$ dưới dạng số thập phân, ta lấy tử số chia cho mẫu số. Có thể xảy ra một trong hai trường hợp sau:\n+ **Trường hợp 1**: Sau một số bước thực hiện phép chia được số dư bằng 0, kết quả thu được của phép chia đó là một số thập phân có hữu hạn chữ số sau dấu phẩy. Ta cũng nói kết quả là một số thập phân hữu hạn.\n      Ví dụ: $\\dfrac{2}{5} = 0,4$\n+ **Trường hợp 2**: Phép chia không bao giờ dừng lại và trong thương có chữ số hoặc cụm chữ số sau dấu phẩy lặp đi lặp lại.\nVí dụ: $\\dfrac{2}{3} = 0,6666666666.....$; $\\dfrac{11}{6} = 1,8333333333....$\n- Chữ số hoặc cụm chữ số (sau dấu phẩy) lặp đi lặp lại gọi là **chu kỳ** của số thập phân vô hạn tuần hoàn, và có thể viết gọn trong dấu ngoặc ().\n\n##CY\n+ Nếu một phân số tối giản với mẫu dương mà mẫu không có ước nguyên tố khác 2 và 5, thì phân số đó được viết dưới dạng số thập phân hữu hạn.\n+ Nếu một phân số tối giản với mẫu dương mà mẫu có ước nguyên tố khác 2 và 5 thì phân số đó viết được dưới dạng số thập phân vô hạn tuần hoàn.\n+ Mỗi số thập phân vô hạn tuần hoàn biểu diễn một số hữu tỉ.\n+ Các Số thập phân đã học: 0,125; 0,5;.... còn được gọi là **Số thập phân hữu hạn**.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020101",
+     "ten_cu": "Nhận biết STP hữu hạn, STP vô hạn tuần hoàn",
+     "noi_dung_cu": "##TC\nKhi viết một số hữu tỉ $\\dfrac{a}{b}$ dưới dạng số thập phân, ta lấy tử số chia cho mẫu số. Có thể xảy ra một trong hai trường hợp sau:\n+ **Trường hợp 1**: Sau một số bước thực hiện phép chia được số dư bằng 0, kết quả thu được của phép chia đó là một số thập phân có hữu hạn chữ số sau dấu phẩy. Ta cũng nói kết quả là một số thập phân hữu hạn.\n      Ví dụ: $\\dfrac{2}{5} = 0,4$\n+ **Trường hợp 2**: Phép chia không bao giờ dừng lại và trong thương có chữ số hoặc cụm chữ số sau dấu phẩy lặp đi lặp lại.\nVí dụ: $\\dfrac{2}{3} = 0,6666666666.....$; $\\dfrac{11}{6} = 1,8333333333....$\n- Chữ số hoặc cụm chữ số (sau dấu phẩy) lặp đi lặp lại gọi là **chu kỳ** của số thập phân vô hạn tuần hoàn, và có thể viết gọn trong dấu ngoặc ().\n\n##VD\nVí dụ: $\\dfrac{2}{3}=0,(6)$; $\\dfrac{11}{6}=1,8(3)$.\n\n##CY\n+ Nếu một phân số tối giản với mẫu dương mà mẫu không có ước nguyên tố khác 2 và 5, thì phân số đó được viết dưới dạng số thập phân hữu hạn.\n+ Nếu một phân số tối giản với mẫu dương mà mẫu có ước nguyên tố khác 2 và 5 thì phân số đó viết được dưới dạng số thập phân vô hạn tuần hoàn.\n+ Mỗi số thập phân vô hạn tuần hoàn biểu diễn một số hữu tỉ.\n+ Các Số thập phân đã học: 0,125; 0,5;.... còn được gọi là **Số thập phân hữu hạn**."
+    },
+    {
+     "ma_dang_cu": "T107020102",
+     "ten_cu": "Làm tròn STP",
+     "noi_dung_cu": "##TC\n+ Để làm tròn số thập phân đến một hàng đã cho, ta thực hiện làm tròn theo quy tắc sau: Giữ nguyên nếu chữ số ngay bên phải nhỏ hơn 5, tăng lên 1 đơn vị nếu chữ số ngay bên phải lớn hơn hoặc bằng 5. Đối với các chữ số sau hàng làm tròn, ta bỏ đi các chữ số ở phần thập phân và thay bởi các chữ số 0 phần số nguyên bằng các chữ số 0.\n+ Để làm tròn số thập phân với độ chính xác đã cho, ta thực hiện theo các bước sau:\n* Bước 1. Xác định hàng làm tròn dựa vào độ chính xác.\n* Bước 2. Làm tròn theo cách làm tròn số thập phân đến một hàng đã cho.\n**Cách xác định hàng làm tròn dựa vào độ chính xác:**\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/94b3ff7b-66ba-4743-9da5-332194daf969.png)\n=> Làm tròn với độ chính xác 0,05 là ta làm tròn đến hàng phần mười.\n\n##VD\n**Ví dụ: Làm tròn số 55,21736 đến chữ số thập phân thứ ba.**\nHướng dẫn giải:\nĐể làm tròn số 55,21736 đến chữ số thập phân thứ ba, ta so sánh chữ số thập phân thứ\nbốn với 5.\nVì $3<5$ nên ta được số sau khi làm tròn là: 55,217.\n\n##VD\n**Ví dụ: Làm tròn số 523,(56) với độ chính xác 0,05.**\nHướng dẫn giải:\nĐể kết quả làm tròn có độ chính xác 0,05 ta làm tròn đến hàng phần mười.\nChữ số hàng phần trăm là $6>5$ nên ta được số sau khi làm tròn là: 523,6."
+    },
+    {
+     "ma_dang_cu": "T107020103",
+     "ten_cu": "Viết STP vô hạn tuần hoàn thành Phân số tối giản",
+     "noi_dung_cu": "Để chuyển STP vô hạn tuần hoàn về phân số tối giản ta làm như sau:\n- TH1: Nếu chu kì của STP bắt đầu ngay sau dấu phảy, ta nhân STP với một số tròn chục, tròn trăm,.... tương ứng với số chữ số của chu kì. Sau đó lấy số mới trừ đi số ban đầu để triệt tiêu hết phần chu kì của STP.\n- TH2: Nếu chu kì của STP không bắt đầu ngay sau dấu phảy, ta nhân STP với một số tròn chục, tròn trăm,.... thích hợp để đưa chu kì về sau dấu phảy. Từ đó thực hiện lại TH1.\n\n**Ví dụ 1:** Viết STP vô hạn tuần hoàn 3,(63) dưới dạng phân số tối giản:\nHướng dẫn giải:\nĐặt $A = 3,(63)$.\nVì chu kì của A có hai chữ số nên ta nhân A với 100.\n$100A = 363,(63)$.\n$100A – A = 363,(63) – 3,(63)$.\n$99A = 360$\n$A = \\dfrac{360}{99} = \\dfrac{40}{11}$\n\n**Ví dụ 2:** Viết STP vô hạn tuần hoàn 1,4(67) dưới dạng phân số tối giản:\nHướng dẫn giải:\nĐặt $A = 1,4(67)$.\nVì sau dấu phảy còn cách 1 chữ số mới đến chu kì nên ta nhân số đó với 10.\n$10A = 14,(67)$.\n$10A$ có chu kì có hai chữ số nên ta nhân tiếp với 100 được.\n$1000A = 1467,(67)$\n$1000A - 10A = 1467,(67) - 14,(67)$\n$990A = 1453$\n$A = \\dfrac{1453}{990}$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00965",
+   "nhom": "Nhận biết Số vô tỉ, Căn bậc hai số học",
+   "nhom_mo_ta": "Xác định đâu là các số hữu tỉ, số vô tỉ trong nhóm các số cho trước",
+   "nhom_ly_thuyet_ban_do_moi": "##TC\n- Số hữu tỉ: Gồm các số thập phân hữu hạn, số thập phân vô hạn tuần hoàn.\n- Số vô tỉ: Là số thập phân vô hạn không tuần hoàn (thường là căn bậc hai của một số không khai căn được).",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020201",
+     "ten_cu": "Nhận biết số vô tỉ, căn bậc hai số học",
+     "noi_dung_cu": "**Phương pháp giải:**\n- Số hữu tỉ: Gồm các số thập phân hữu hạn, số thập phân vô hạn tuần hoàn.\n- Số vô tỉ: Là số thập phân vô hạn không tuần hoàn (thường là căn bậc hai của một số không khai căn được).\n**Ví dụ**:\n- $\\sqrt{3}$ là một số vô tỉ.\n- $\\sqrt{4}$ lại là số hữu tỉ vì $\\sqrt{4}=2$.\n- $\\pi$ là một số vô tỉ."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00968",
+   "nhom": "So sánh, sắp xếp Số thực",
+   "nhom_mo_ta": "So sánh, sắp xếp thứ tự của các Số thực",
+   "nhom_ly_thuyet_ban_do_moi": "**Phương pháp giải:**\n- Muốn so sánh hai căn bậc hai số học, ta dùng tính chất sau: Nếu $a$, $b$ là hai số không âm và $a<b$ thì $\\sqrt{a} <\\sqrt{b}$.\nCăn bậc hai số học là một số không âm. Nó luôn lớn hơn số âm.\n- Muốn so sánh một căn bậc hai số học với một số $a$ không âm đã cho, ta viết $a = \\sqrt{a^2}$ rồi so sánh căn bậc hai số học đã cho với $\\sqrt{a^2}$.\n\n**Ví dụ 1:** So sánh $\\sqrt{15}$ và $4$.\nHướng dẫn giải:\nTa có: $4 = \\sqrt{16}$.\nVì $\\sqrt{15} <\\sqrt{16}$ nên $\\sqrt{15} <4$.\n\n**Ví dụ 2:** So sánh $-\\sqrt{10}$ và $-3$\nHướng dẫn giải:\nTa có: $3 = \\sqrt{9}$.\nVì $-\\sqrt{10} <-\\sqrt{9}$ nên $-\\sqrt{10} < -3$.\n\n**Ví dụ 3:** So sánh: $\\sqrt{24}$ và $2\\sqrt{4}$.\nHướng dẫn giải:\nTa có:\n$2\\sqrt{4}=2\\cdot2 = 4 = \\sqrt{16}$\nVì $\\sqrt{16} < \\sqrt{24}$ nên $2\\sqrt{4} < \\sqrt{24}$.\n\n**Ví dụ 4:** Sắp xếp các số $3; \\sqrt{12}; -4,5; \\dfrac{22}{7}; \\sqrt{44}$ theo giá trị từ bé đến lớn.\nHướng dẫn giải:\nTa có:\n$-4,5 <3$.\n$3=\\dfrac{21}{7} <\\dfrac{22}{7}$.\n$\\dfrac{22}{7} =\\sqrt{\\dfrac{484}{49}} <\\sqrt{12}$\nMà $12 < 44$ nên $\\sqrt{12} < \\sqrt{44}$.\nVậy ta sắp xếp: $-4,5;3;\\dfrac{22}{7}; \\sqrt{12}; \\sqrt{44}$.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020301",
+     "ten_cu": "So sánh, sắp xếp Số thực",
+     "noi_dung_cu": "**Phương pháp giải:**\n- Muốn so sánh hai căn bậc hai số học, ta dùng tính chất sau: Nếu $a$, $b$ là hai số không âm và $a<b$ thì $\\sqrt{a} <\\sqrt{b}$.\nCăn bậc hai số học là một số không âm. Nó luôn lớn hơn số âm.\n- Muốn so sánh một căn bậc hai số học với một số $a$ không âm đã cho, ta viết $a = \\sqrt{a^2}$ rồi so sánh căn bậc hai số học đã cho với $\\sqrt{a^2}$.\n\n**Ví dụ 1:** So sánh $\\sqrt{15}$ và $4$.\nHướng dẫn giải:\nTa có: $4 = \\sqrt{16}$.\nVì $\\sqrt{15} <\\sqrt{16}$ nên $\\sqrt{15} <4$.\n\n**Ví dụ 2:** So sánh $-\\sqrt{10}$ và $-3$\nHướng dẫn giải:\nTa có: $3 = \\sqrt{9}$.\nVì $-\\sqrt{10} <-\\sqrt{9}$ nên $-\\sqrt{10} < -3$.\n\n**Ví dụ 3:** So sánh: $\\sqrt{24}$ và $2\\sqrt{4}$.\nHướng dẫn giải:\nTa có:\n$2\\sqrt{4}=2\\cdot2 = 4 = \\sqrt{16}$\nVì $\\sqrt{16} < \\sqrt{24}$ nên $2\\sqrt{4} < \\sqrt{24}$.\n\n**Ví dụ 4:** Sắp xếp các số $3; \\sqrt{12}; -4,5; \\dfrac{22}{7}; \\sqrt{44}$ theo giá trị từ bé đến lớn.\nHướng dẫn giải:\nTa có:\n$-4,5 <3$.\n$3=\\dfrac{21}{7} <\\dfrac{22}{7}$.\n$\\dfrac{22}{7} =\\sqrt{\\dfrac{484}{49}} <\\sqrt{12}$\nMà $12 < 44$ nên $\\sqrt{12} < \\sqrt{44}$.\nVậy ta sắp xếp: $-4,5;3;\\dfrac{22}{7}; \\sqrt{12}; \\sqrt{44}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01501",
+   "nhom": "Thực hiện phép tính Căn bậc hai",
+   "nhom_mo_ta": "Thực hiện phép tính trong đó có chứa Căn bậc hai của Số thực",
+   "nhom_ly_thuyet_ban_do_moi": "",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020202",
+     "ten_cu": "Thực hiện phép tính liên quan đến Căn bậc hai",
+     "noi_dung_cu": "Phương pháp giải:\nLưu ý thứ tự thực hiện phép tính:\nTrong ngoặc – Khai căn và Luỹ thừa – Nhân chia – Cộng trừ.\n\n**Ví dụ:** Tính $\\sqrt{64}$.\nLời giải:\nVì $8^2 = 64$ và $8 > 0$ nên $\\sqrt{64} = 8$.\n\n**Ví dụ:** Tính: $\\sqrt{4^2}$.\nLời giải:\nVì $4>0$ nên $\\sqrt{4^2} = 4$.\n\n**Ví dụ:** Tính: $M = \\left( \\sqrt{\\dfrac{1}{9}} + \\sqrt{\\dfrac{25}{36}} - \\sqrt{\\dfrac{49}{81}} \\right) : \\sqrt{\\dfrac{441}{324}}$.\nLời giải:\n$M = \\left( \\sqrt{\\dfrac{1}{9}} + \\sqrt{\\dfrac{25}{36}} - \\sqrt{\\dfrac{49}{81}} \\right) : \\sqrt{\\dfrac{441}{324}}$\n$= \\left( \\dfrac{1}{3} + \\dfrac{5}{6} - \\dfrac{7}{9} \\right) : \\dfrac{21}{18}$\n$= \\left( \\dfrac{6}{18} + \\dfrac{15}{18} - \\dfrac{14}{18} \\right) : \\dfrac{21}{18}$\n$= \\dfrac{7}{18} : \\dfrac{21}{18}$\n$= \\dfrac{1}{3}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01502",
+   "nhom": "Thực hiện phép tính Giá trị tuyệt đối",
+   "nhom_mo_ta": "Thực hiện phép tính trong đó có Giá trị tuyệt đối của Số thực",
+   "nhom_ly_thuyet_ban_do_moi": "",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020302",
+     "ten_cu": "Thực hiện phép tính liên quan đến Giá trị tuyệt đối",
+     "noi_dung_cu": "**Phương pháp giải:**\n- Với $a \\ge 0$ thì $|a|=a$, với $a<0$ thì $|a|=-a$.\n- Lưu ý thứ tự thực hiện phép tính:\n**Trong ngoặc –> Phá dấu Giá trị tuyệt đối –> Khai căn và Luỹ thừa –> Nhân chia –> Cộng trừ**\n\n**Ví dụ 1:** Tính $\\dfrac{-6}{25}+\\left|\\dfrac{-4}{5}\\right|-\\left |\\dfrac{2}{25} \\right |$.\nHướng dẫn giải:\n$\\dfrac{-6}{25}+\\left|\\dfrac{-4}{5}\\right|-\\left |\\dfrac{2}{25} \\right |$\n$= \\dfrac{-6}{25}+\\dfrac{4}{5}-\\dfrac{2}{25}$\n$= \\dfrac{-6}{25}+\\dfrac{20}{25}-\\dfrac{2}{25}$\n$= \\dfrac{12}{25}$.\n\nVí dụ 2: Tính: $\\sqrt{\\dfrac{4}{25}}+\\left|\\dfrac{-4}{5}\\right|-\\dfrac{9}{5}\\cdot\\left(\\dfrac{-1}{3}\\right)^2-0,75$.\nHướng dẫn giải:\n$\\sqrt{\\dfrac{4}{25}}+\\left|\\dfrac{-4}{5}\\right|-\\dfrac{9}{5}\\cdot\\left(\\dfrac{-1}{3}\\right)^2-0,75$\n$=\\dfrac{2}{5}+\\dfrac{4}{5}-\\dfrac{9}{5}\\cdot\\dfrac{1}{9}-\\dfrac{3}{4}$\n$=\\dfrac{6}{5}-\\dfrac{1}{5}-\\dfrac{3}{4}$\n$=1-\\dfrac{3}{4}$\n$=\\dfrac{1}{4}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01505",
+   "nhom": "Tìm x GTTĐ",
+   "nhom_mo_ta": "Tìm x với biểu thức chứa x nằm trong Giá trị tuyệt đối",
+   "nhom_ly_thuyet_ban_do_moi": "",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020303",
+     "ten_cu": "Tìm x liên quan đến Giá trị tuyệt đối",
+     "noi_dung_cu": "**Ví dụ 1:** Tìm x biết: $|x| = \\dfrac{1}{2}$\nHướng dẫn giải:\n$|x| = \\dfrac{1}{2}$\nTH1: $x = \\dfrac{1}{2}$\nTH2: $x = -\\dfrac{1}{2}$\nVậy $x \\in \\left\\{\\dfrac{1}{2}; -\\dfrac{1}{2}\\right\\}$\n\n**Ví dụ 2:** Tìm x biết: $3|x| - 5 = 0$.\nHướng dẫn giải:\n$3|x| - 5 = 0$\n$3|x| = 5$\n$|x| = \\dfrac{5}{3}$\nTH1: $x = \\dfrac{5}{3}$\nTH2: $x = -\\dfrac{5}{3}$\nVậy $x \\in \\left\\{\\dfrac{5}{3}; -\\dfrac{5}{3}\\right\\}$\n\n**Ví dụ 3:** Tìm x biết: $\\left|x - \\dfrac{1}{2}\\right| - 3 = -\\dfrac{1}{2}$\nHướng dẫn giải:\n$\\left|x - \\dfrac{1}{2}\\right| - 3 = -\\dfrac{1}{2}$\n$\\left|x - \\dfrac{1}{2}\\right| = -\\dfrac{1}{2} + 3$\n$\\left|x - \\dfrac{1}{2}\\right| = \\dfrac{7}{2}$\nTH1: $x - \\dfrac{1}{2} = \\dfrac{7}{2}$\n$x = \\dfrac{7}{2} + \\dfrac{1}{2}$\n$x = 4$\nTH2: $x - \\dfrac{1}{2} = -\\dfrac{7}{2}$\n$x = -\\dfrac{7}{2} + \\dfrac{1}{2}$\n$x = -3$\nVậy $x \\in \\{4; -3\\}$.\n\n**Ví dụ 4:** Tìm x biết: $\\dfrac{8}{9} - 2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{3}$\nHướng dẫn giải:\n$\\dfrac{8}{9} - 2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{3}$\n$2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{8}{9} - \\dfrac{2}{3}$\n$2\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{9}$\n$\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{2}{9} : 2$\n$\\left|\\dfrac{1}{2} - 3x\\right| = \\dfrac{1}{9}$\nTH1: $\\dfrac{1}{2} - 3x = \\dfrac{1}{9}$\n$3x = \\dfrac{1}{2} - \\dfrac{1}{9}$\n$3x = \\dfrac{7}{18}$\n$x = \\dfrac{7}{54}$\nTH2: $\\dfrac{1}{2} - 3x = -\\dfrac{1}{9}$\n$3x = \\dfrac{1}{2} - \\left(-\\dfrac{1}{9}\\right)$\n$3x = \\dfrac{11}{18}$\n$x = \\dfrac{11}{54}$\nVậy $x \\in \\left\\{\\dfrac{7}{54}; \\dfrac{11}{54}\\right\\}$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00971",
+   "nhom": "Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ",
+   "nhom_mo_ta": "Tìm GTLN - GTNN của các biểu thức trong đó có chứa Tổng hiệu các Căn bậc hai, Bình phương, Giá trị tuyệt đối hoặc tìm x y khi Tổng hiệu các Căn bậc hai, Bình phương, Giá trị tuyệt đối bằng 0",
+   "nhom_ly_thuyet_ban_do_moi": "**Ví dụ 1:** Tìm GTNN của biểu thức: $A = |2x-3|+2025$.\nHướng dẫn giải:\nTa có: $|2x-3|\\ge 0$\n$\\Rightarrow |2x-3|+2025\\ge 0 + 2025$\n$\\Rightarrow A \\ge 2025$\nDấu bằng xảy ra khi $|2x-3|=0 \\Rightarrow 2x-3=0 \\Rightarrow x=\\dfrac{3}{2}$.\nVậy GTNN của biểu thức $A$ là $2025$ khi $x=\\dfrac{3}{2}$.\n\n**Ví dụ 2:** Tìm GTLN của biểu thức: $A =19-\\sqrt{2x-1}$\nHướng dẫn giải:\nTa có: $\\sqrt{2x-1}\\ge 0$\n$\\Rightarrow -\\sqrt{2x-1}\\le 0$\n$\\Rightarrow 19-\\sqrt{2x-1}\\le 19-0$\n$\\Rightarrow A\\le 19$\nDấu bằng xảy ra khi $\\sqrt{2x-1}=0\\Rightarrow 2x-1=0\\Rightarrow x=\\dfrac{1}{2}$.\nVậy GTLN của biểu thức $A$ là $19$ khi $x=\\dfrac{1}{2}$.\n\n**Ví dụ 3:** Tìm GTLN của biểu thức $A = \\dfrac{4}{|x-3|+1}$\nHướng dẫn giải:\nTa có: $|x-3|\\ge 0$\n$\\Rightarrow |x-3|+1\\ge 1$\n$\\Rightarrow \\dfrac{4}{|x-3|+1} \\le \\dfrac{4}{1}$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $|x-3|=0\\Rightarrow x-3=0\\Rightarrow x=3$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x=3$.\n\n**Ví dụ 4:** Tìm GTNN của biểu thức: $B = \\sqrt{3x+8,4}+(y-2)^2 -14,2$.\nHướng dẫn giải:\nTa có: $\\sqrt{3x+8,4} \\ge 0$; $(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 - 14,2 \\ge 0-14,2$\n$\\Rightarrow B\\ge -14,2$\nDấu bằng xảy ra khi $\\begin{cases} \\sqrt{3x+8,4} = 0 \\\\ (y-2)^2 = 0 \\end{cases} \\Rightarrow \\begin{cases} 3x+8,4 = 0 \\\\ y-2=0 \\end{cases} \\Rightarrow \\begin{cases} x = -2,8 \\\\ y = 2 \\end{cases}$.\nVậy GTNN của biểu thức $B$ là $-14,2$ khi $x = -2,8$ và $y = 2$.\n\n**Ví dụ 5:** Tìm GTLN của biểu thức: $A =4-|5x-2|-|3y+12|$.\nHướng dẫn giải:\nTa có: $|5x-2|\\ge 0$; $|3y+12|\\ge 0$\n$\\Rightarrow -|5x-2|-|3y+12|\\le 0$\n$\\Rightarrow 4-|5x-2|-|3y+12|\\le 4$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $\\begin{cases} |5x-2|=0 \\\\ |3y+12|=0 \\end{cases} \\Rightarrow \\begin{cases} 5x-2=0 \\\\ 3y+12=0 \\end{cases} \\Rightarrow \\begin{cases} x = \\dfrac{2}{5} \\\\ y = -4 \\end{cases}$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x = \\dfrac{2}{5}$ và $y = -4$.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020401",
+     "ten_cu": "Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ",
+     "noi_dung_cu": "**Ví dụ 1:** Tìm GTNN của biểu thức: $A = |2x-3|+2025$.\nHướng dẫn giải:\nTa có: $|2x-3|\\ge 0$\n$\\Rightarrow |2x-3|+2025\\ge 0 + 2025$\n$\\Rightarrow A \\ge 2025$\nDấu bằng xảy ra khi $|2x-3|=0 \\Rightarrow 2x-3=0 \\Rightarrow x=\\dfrac{3}{2}$.\nVậy GTNN của biểu thức $A$ là $2025$ khi $x=\\dfrac{3}{2}$.\n\n**Ví dụ 2:** Tìm GTLN của biểu thức: $A =19-\\sqrt{2x-1}$\nHướng dẫn giải:\nTa có: $\\sqrt{2x-1}\\ge 0$\n$\\Rightarrow -\\sqrt{2x-1}\\le 0$\n$\\Rightarrow 19-\\sqrt{2x-1}\\le 19-0$\n$\\Rightarrow A\\le 19$\nDấu bằng xảy ra khi $\\sqrt{2x-1}=0\\Rightarrow 2x-1=0\\Rightarrow x=\\dfrac{1}{2}$.\nVậy GTLN của biểu thức $A$ là $19$ khi $x=\\dfrac{1}{2}$.\n\n**Ví dụ 3:** Tìm GTLN của biểu thức $A = \\dfrac{4}{|x-3|+1}$\nHướng dẫn giải:\nTa có: $|x-3|\\ge 0$\n$\\Rightarrow |x-3|+1\\ge 1$\n$\\Rightarrow \\dfrac{4}{|x-3|+1} \\le \\dfrac{4}{1}$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $|x-3|=0\\Rightarrow x-3=0\\Rightarrow x=3$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x=3$.\n\n**Ví dụ 4:** Tìm GTNN của biểu thức: $B = \\sqrt{3x+8,4}+(y-2)^2 -14,2$.\nHướng dẫn giải:\nTa có: $\\sqrt{3x+8,4} \\ge 0$; $(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 - 14,2 \\ge 0-14,2$\n$\\Rightarrow B\\ge -14,2$\nDấu bằng xảy ra khi $\\begin{cases} \\sqrt{3x+8,4} = 0 \\\\ (y-2)^2 = 0 \\end{cases} \\Rightarrow \\begin{cases} 3x+8,4 = 0 \\\\ y-2=0 \\end{cases} \\Rightarrow \\begin{cases} x = -2,8 \\\\ y = 2 \\end{cases}$.\nVậy GTNN của biểu thức $B$ là $-14,2$ khi $x = -2,8$ và $y = 2$.\n\n**Ví dụ 5:** Tìm GTLN của biểu thức: $A =4-|5x-2|-|3y+12|$.\nHướng dẫn giải:\nTa có: $|5x-2|\\ge 0$; $|3y+12|\\ge 0$\n$\\Rightarrow -|5x-2|-|3y+12|\\le 0$\n$\\Rightarrow 4-|5x-2|-|3y+12|\\le 4$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $\\begin{cases} |5x-2|=0 \\\\ |3y+12|=0 \\end{cases} \\Rightarrow \\begin{cases} 5x-2=0 \\\\ 3y+12=0 \\end{cases} \\Rightarrow \\begin{cases} x = \\dfrac{2}{5} \\\\ y = -4 \\end{cases}$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x = \\dfrac{2}{5}$ và $y = -4$."
+    },
+    {
+     "ma_dang_cu": "T107020402",
+     "ten_cu": "Tính Giá trị biểu thức ứng dụng GTLN-GTNN của biểu thức Căn bậc hai và GTTĐ",
+     "noi_dung_cu": "**Ví dụ 1:** Cho $|x-1|+(y+1)^{2022} = 0$. Tính giá trị của biểu thức $A = x^{2025} + y^{2025}$.\nHướng dẫn giải:\nTa có: $|x-1| \\ge 0$; $(y+1)^{2022} \\ge 0$.\n$\\Rightarrow |x-1|+(y+1)^{2022} \\ge 0$.\nDấu bằng xảy ra khi $\\begin{cases} |x-1|=0 \\\\ (y+1)^{2022}=0 \\end{cases} \\Rightarrow \\begin{cases} x-1=0 \\\\ y+1=0 \\end{cases} \\Rightarrow \\begin{cases} x=1 \\\\ y=-1 \\end{cases}$.\nThay $x = 1$; $y = -1$ vào $A = x^{2025} + y^{2025}$ :\n$A=1^{2025} + (-1)^{2025}$\n$A=1+(-1)$\n$A=0$\n\n**Ví dụ 2:** Tìm số nguyên x, y biết: $|y-3|+5=\\dfrac{10}{(2x-6)^2 +2}$\nHướng dẫn giải:\nXét $|y-3|+5$:\nTa có: $|y-3|\\ge 0$\n$\\Rightarrow |y-3|+5\\ge 5$.\nXét $\\dfrac{10}{(2x-6)^2+2}$:\nTa có: $(2x-6)^2 \\ge 0$\n$(2x-6)^2+2 \\ge 2$\n$\\Rightarrow \\dfrac{10}{(2x-6)^2+2} \\le \\dfrac{10}{2}$\n$\\Rightarrow \\dfrac{10}{(2x-6)^2+2} \\le 5$\nMà $|y-3|+5=\\dfrac{10}{(2x-6)^2+2}$.\n$\\Rightarrow |y-3|+5=\\dfrac{10}{(2x-6)^2+2}=5$\n+ $|y-3|+5 = 5 \\Rightarrow y = 3$.\n+ $\\dfrac{10}{(2x-6)^2+2}=5 \\Rightarrow x=3$.\nVậy $x = 3$ và $y = 3$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00973",
+   "nhom": "Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ.",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_ban_do_moi": "",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020403",
+     "ten_cu": "Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ.",
+     "noi_dung_cu": ""
+    }
+   ]
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB00443",
+   "nhom_id": "NNB00962",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn",
+   "mo_ta": "Cho số thập phân Vô hạn tuần hoàn. Yêu cầu xác định chu kì của số thập phân vô hạn tuần hoàn và viết gọn lại.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00801",
+   "nhom_id": "NNB00962",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Làm tròn STP (theo hàng)",
+   "mo_ta": "Làm tròn số A đến hàng chục, trăm, nghìn, hàng phần mười, hàng phần trăm, hai chữ số sau dấu phẩy,.........",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00802",
+   "nhom_id": "NNB00962",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Làm tròn STP (theo độ chính xác)",
+   "mo_ta": "Làm tròn số A với độ chính xác 0,5; 0,05; 5; ....................",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00803",
+   "nhom_id": "NNB00962",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Viết STP vô hạn tuần hoàn thành PS tối giản",
+   "mo_ta": "Viết số thập phân vô hạn tuần hoàn A thành Phân số tối giản",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00449",
+   "nhom_id": "NNB00965",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Nhận biết Số vô tỉ, Căn bậc hai",
+   "mo_ta": "Xác định đâu là các số hữu tỉ, số vô tỉ trong nhóm các số cho trước",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00455",
+   "nhom_id": "NNB00968",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "So sánh, sắp xếp Số thực",
+   "mo_ta": "So sánh, sắp xếp thứ tự của các Số thực",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00933",
+   "nhom_id": "NNB01501",
+   "chuyen_de": "Thực hiện phép tính Số thực",
+   "dang": "Thực hiện phép tính Căn bậc hai",
+   "mo_ta": "Thực hiện phép tính trong đó có chứa Căn bậc hai của Số thực",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00934",
+   "nhom_id": "NNB01502",
+   "chuyen_de": "Thực hiện phép tính Số thực",
+   "dang": "Thực hiện phép tính Giá trị tuyệt đối",
+   "mo_ta": "Thực hiện phép tính trong đó có Giá trị tuyệt đối của Số thực",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00935",
+   "nhom_id": "NNB01505",
+   "chuyen_de": "Tìm x Số thực",
+   "dang": "Tìm x GTTĐ",
+   "mo_ta": "Tìm x với biểu thức chứa x nằm trong Giá trị tuyệt đối",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00461",
+   "nhom_id": "NNB00971",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Cơ bản 1 biểu thức",
+   "mo_ta": "Tìm GTLN-GTNN mà Biểu thức chỉ chứa 1 loại hoặc Căn bậc hai hoặc Bình phương hoặc Giá trị tuyệt đối.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00462",
+   "nhom_id": "NNB00971",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Phân thức",
+   "mo_ta": "Tìm GTLN-GTNN mà Biểu thức là Phân thức: Mẫu số chỉ chứa 1 loại hoặc Căn bậc hai hoặc Bình phương hoặc Giá trị tuyệt đối.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00808",
+   "nhom_id": "NNB00971",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Tổng hiệu nhiều biểu thức",
+   "mo_ta": "Tìm GTLN-GTNN mà Biểu thức chứa tổng hợp nhiều loại Căn bậc hai, Bình phương, Giá trị tuyệt đối.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00809",
+   "nhom_id": "NNB00971",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Tìm x y ứng dụng GTLN - GTNN",
+   "mo_ta": "Tìm x y khi biểu thức Tổng hiệu các Căn bậc hai, Bình phương, Giá trị tuyệt đối bằng 0",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00810",
+   "nhom_id": "NNB00971",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Tìm x y ứng dụng GTLN - GTNN Phân thức",
+   "mo_ta": "Tìm x y khi Hai biểu thức bằng nhau: Bên trái thường là Tổng hiệu của Căn bậc hai, Bình phương, Giá trị tuyệt đối, Bên phải là Phân thức có Mẫu là Tổng hiệu của Căn bậc hai, Bình phương, Giá trị tuyệt đối",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00463",
+   "nhom_id": "NNB00973",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Tìm GTNN của biểu thức",
+   "mo_ta": "Tìm GTNN của biểu thức có Tổng 2 giá trị tuyệt đối. Ứng dụng Bất đẳng thức Giá trị tuyệt đối $|a| + |b| \\ge |a+b|$",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB00465",
+   "nhom_id": "NNB00973",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Tìm x ứng dụng BĐT GTTĐ",
+   "mo_ta": "Tìm x khi hai biểu thức bằng nhau: Bên trái là biểu thức có Tổng 2 giá trị tuyệt đối. Bên phải là Phân thức với Mẫu chứa Tổng hiệu các biểu thức Căn bậc hai, Bình phương, Giá trị tuyệt đối",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  }
+ ]
+}

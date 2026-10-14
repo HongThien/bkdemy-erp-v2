@@ -189,7 +189,7 @@ D. $\dfrac{2}{3}$
 
 Chọn D.
 
-### Câu 8 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 8 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho hình vẽ dưới đây (ba điểm $A$, $B$, $C$ thẳng hàng; $A$ nối với $H$, $B$ nối với $E$), $\widehat{BAH}$ và $\widehat{CBE}$ là một cặp góc
 A. đồng vị
 B. trong cùng phía
@@ -217,7 +217,7 @@ Do đó $\widehat{BAH}$ và $\widehat{CBE}$ là một cặp góc đồng vị.
 
 Chọn A.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Chọn câu phát biểu đúng?
 A. Hai đường thẳng không có điểm chung gọi là hai đường thẳng song song với nhau.
 B. Hai đường thẳng không song song là hai đường thẳng không có điểm chung.
@@ -246,7 +246,7 @@ Hai đường thẳng phân biệt không song song thì cắt nhau, tức là c
 
 Chọn A.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho hình vẽ, biết $\widehat{xOy}=30^\circ$, $Oy$ là tia phân giác của góc $\widehat{xOz}$. Khi đó số đo $\widehat{yOz}$ bằng
 A. $20^\circ$
 B. $140^\circ$
@@ -272,7 +272,7 @@ Mà $\widehat{xOy}=30^\circ$ nên $\widehat{yOz}=30^\circ$.
 
 Chọn D.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho ba đường thẳng $a$, $b$ và $c$ phân biệt. Biết $a\perp c$, $b\perp c$ ta suy ra
 A. $a\perp b$
 B. $a\parallel b$
@@ -299,7 +299,7 @@ Hai góc đồng vị bằng nhau (cùng bằng $90^\circ$) nên $a\parallel b$.
 
 Chọn B.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Chứng minh định lí là
 A. dùng đo đạc trực tiếp để suy ra kết luận.
 B. dùng lập luận để từ giả thiết suy ra kết luận.
@@ -457,7 +457,7 @@ Vì $-3>-4$ nên $\dfrac{-3}{6}>\dfrac{-4}{6}$.
 
 Vậy $-\dfrac{1}{2}>-\dfrac{2}{3}$.
 
-### Bài 4 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 4 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ bên (đường thẳng $c$ vuông góc với cả $a$ và $b$ theo kí hiệu góc vuông trên hình; một đường thẳng cắt $a$ tại $A$ và cắt $b$ tại $B$; $\widehat{B_1}=75^\circ$).
 a) Vì sao $a\parallel b$?
 b) Tính số đo của $\widehat{A_3}$; $\widehat{A_4}$; $\widehat{A_1}$.

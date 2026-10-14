@@ -225,7 +225,7 @@ $=\dfrac{-1}{4}$
 
 Chọn C.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Góc $\widehat{xOz}$ dưới đây có số đo là:
 (Hình vẽ: $Ox$ và $Oy$ là hai tia đối nhau (cùng nằm trên đường thẳng $xy$); tia $Oz$ nằm phía trên đường thẳng $xy$; $\widehat{yOz}=50^\circ$.)
 A. $160^\circ$
@@ -254,7 +254,7 @@ $\widehat{xOz}=180^\circ-50^\circ=130^\circ$.
 
 Chọn C.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho hình vẽ sau, góc đối đỉnh với $\widehat{AOD}$ là?
 (Hình vẽ: $ABCD$ là hình chữ nhật, hai đường chéo $AC$ và $BD$ cắt nhau tại $O$.)
 A. $\widehat{AOB}$
@@ -285,7 +285,7 @@ Do đó $\widehat{BOC}$ và $\widehat{AOD}$ là hai góc đối đỉnh.
 
 Chọn D.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho hình vẽ sau, biết tia $Oz$ là tia phân giác của $\widehat{xOy}$. Số đo của $\widehat{xOy}$ là:
 (Hình vẽ: $\widehat{xOz}=32^\circ$.)
 A. $32^\circ$
@@ -314,7 +314,7 @@ $\widehat{xOy}=2.32^\circ=64^\circ$.
 
 Chọn B.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho hình vẽ biết $AB\parallel CD$. Số đo $x,y$ là:
 (Hình vẽ: $x=\widehat{DBC}$, $y=\widehat{BDC}$; $\widehat{ABD}=70^\circ$, $\widehat{BCD}=75^\circ$.)
 A. $x=35^\circ,y=70^\circ$.
@@ -552,7 +552,7 @@ $210000-70000-42000=98000$ (đồng)
 
 Vậy An còn lại $98000$ đồng.
 
-### Bài IV | kho=hgt | loai=tu_luan | dap_an=—
+### Bài IV | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ dưới đây, biết $a\perp d$, $b\perp d$ và $\widehat{ACD}=70^\circ$, $\widehat{DEF}=110^\circ$.
 (Hình vẽ: đường thẳng $d$ cắt $a$, $b$, $c$ lần lượt tại $A$, $B$, $F$; đường thẳng $e$ cắt $a$, $b$, $c$ lần lượt tại $C$, $D$, $E$; $\widehat{D_1}=\widehat{BDC}$, $\widehat{D_2}$ là góc tạo bởi tia $DC$ và tia đối của tia $DB$.)
 a) Chứng tỏ $a\parallel b$.

@@ -290,7 +290,7 @@ Vậy số hữu tỉ nhỏ nhất là $\dfrac{-5}{2}$.
 
 Chọn C.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho đường thẳng $c$ cắt hai đường thẳng $a,b$ và trong các góc tạo thành có một cặp góc so le trong bằng nhau thì:
 A. $c\perp b$
 B. $a\parallel b$
@@ -317,7 +317,7 @@ Do đó $a\parallel b$ (dấu hiệu nhận biết hai đường thẳng song so
 
 Chọn B.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho Hình 3, góc đối đỉnh với $\widehat{xAb}$ là
 A. $\widehat{aAy}$.
 B. $\widehat{aAx}$.
@@ -348,7 +348,7 @@ Do đó góc đối đỉnh với $\widehat{xAb}$ là $\widehat{yAa}$, hay $\wid
 
 Chọn A.
 
-### Câu 13 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 13 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho $\triangle ABC$ có $\widehat{A}=50^\circ$, $\widehat{B}=60^\circ$, số đo góc $C$ là
 A. $50^\circ$.
 B. $70^\circ$.
@@ -376,7 +376,7 @@ Suy ra $\widehat{C}=180^\circ-50^\circ-60^\circ=70^\circ$.
 
 Chọn B.
 
-### Câu 14 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 14 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho $AD$ là tia phân giác của $\widehat{BAC}$ và $\widehat{CAD}=35^\circ$. Khi đó $\widehat{BAC}$ có số đo bằng?
 A. $70^\circ$.
 B. $35^\circ$.
@@ -404,7 +404,7 @@ Do đó $\widehat{BAC}=2.\widehat{CAD}=2.35^\circ=70^\circ$.
 
 Chọn A.
 
-### Câu 15 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 15 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Cho hình vẽ bên, biết $a\parallel b$, đường thẳng $AB$ cắt $a$ tại $A$, cắt $b$ tại $B$ và góc tại $B$ đánh dấu trên hình có số đo $45^\circ$. Số đo $x$ là
 A. $45^\circ$.
 B. $60^\circ$
@@ -432,7 +432,7 @@ Vì $a\parallel b$ nên $x=45^\circ$ (hai góc so le trong).
 
 Chọn A.
 
-### Câu 16 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 16 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho $\triangle ABC=\triangle DEF$ có góc $\widehat{B}=40^\circ$, khẳng định nào là đúng:
 A. $\widehat{D}=40^\circ$
 B. $\widehat{A}=40^\circ$
@@ -610,7 +610,7 @@ $x=\dfrac{3}{4}.\dfrac{20}{3}$
 
 $x=5$
 
-### Câu 19 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 19 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ. Biết $MN=PQ$; $MQ=NP$. Trong hình, $E$ nằm trên $MN$ và $PE\perp MN$ tại $E$; $M$ nằm giữa $Q$ và $F$; $E$ nằm giữa $F$ và $P$.
 a) Chứng minh $\triangle MNP=\triangle PQM$.
 b) Chứng minh $MN\parallel PQ$.

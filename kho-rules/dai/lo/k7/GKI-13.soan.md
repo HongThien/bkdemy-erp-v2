@@ -236,7 +236,7 @@ Khẳng định D sai, vì $-1\in\mathbb{Z}$ nhưng $-1\notin\mathbb{N}$.
 
 Chọn A.
 
-### Câu 9 | kho=hgt | loai=trac_nghiem | dap_an=C
+### Câu 9 | kho=hinh_hoc | loai=trac_nghiem | dap_an=C
 **Đề:** Quan sát hình vẽ (hai đường thẳng $xy$ và $mn$ cắt nhau tại $E$). Góc đối đỉnh với $\widehat{xEm}$ là
 A. $\widehat{mEy}$
 B. $\widehat{mEx}$
@@ -267,7 +267,7 @@ Do đó góc đối đỉnh với $\widehat{xEm}$ là $\widehat{yEn}$, viết l�
 
 Chọn C.
 
-### Câu 10 | kho=hgt | loai=trac_nghiem | dap_an=B
+### Câu 10 | kho=hinh_hoc | loai=trac_nghiem | dap_an=B
 **Đề:** Cho hình vẽ bên (theo hình: tia $Oy$ nằm giữa hai tia $Ox$ và $Oz$), chọn phát biểu đúng.
 A. $\widehat{xOz}+\widehat{yOz}=\widehat{xOy}$
 B. $\widehat{xOy}+\widehat{yOz}=\widehat{xOz}$
@@ -294,7 +294,7 @@ Nên $\widehat{xOy}+\widehat{yOz}=\widehat{xOz}$.
 
 Chọn B.
 
-### Câu 11 | kho=hgt | loai=trac_nghiem | dap_an=D
+### Câu 11 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
 **Đề:** Cho đường thẳng $c$ cắt hai đường thẳng $a$ và $b$ phân biệt và trong các góc tạo thành có một cặp góc so le trong bằng nhau thì
 A. $a$ vuông góc với $b$.
 B. $a$ cắt $b$.
@@ -320,7 +320,7 @@ Theo dấu hiệu nhận biết hai đường thẳng song song thì $a\parallel
 
 Chọn D.
 
-### Câu 12 | kho=hgt | loai=trac_nghiem | dap_an=A
+### Câu 12 | kho=hinh_hoc | loai=trac_nghiem | dap_an=A
 **Đề:** Phát biểu đúng về tiên đề Euclid là
 A. Qua một điểm ở ngoài một đường thẳng, chỉ có một đường thẳng song song với đường thẳng đó.
 B. Qua một điểm ở ngoài một đường thẳng, có vô số đường thẳng song song với đường thẳng đó.
@@ -383,7 +383,7 @@ Vì $0,76>0,75$ nên mệnh đề c) sai.
 
 d) Tổng khối lượng đậu xanh, gạo và thịt là $0,76$ kg, mà $0,76:0,04=19$ nên tổng đó gấp 19 lần khối lượng lá dong. Mệnh đề d) đúng.
 
-### Câu 14 | kho=hgt | loai=tu_luan | dap_an=—
+### Câu 14 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ ($A$ nằm trên đường thẳng $xy$), biết $\widehat{xAB}=70^\circ$, $\widehat{ACB}=55^\circ$; $\widehat{yAC}=55^\circ$. Xét tính đúng sai của các khẳng định dưới đây:
 a) $\widehat{xAB}$ và $\widehat{CAB}$ là hai góc kề bù.
 b) $\widehat{BAC}=60^\circ$.
@@ -513,7 +513,7 @@ $x=1-\dfrac{3}{4}$
 
 $x=\dfrac{1}{4}=0,25$
 
-### Câu 18 | kho=hgt | loai=tra_loi_ngan | dap_an=45
+### Câu 18 | kho=hinh_hoc | loai=tra_loi_ngan | dap_an=45
 **Đề:** Cho hình vẽ, biết $MN\perp MP$; $MN\perp NQ$; $\widehat{MPQ}=135^\circ$. Hỏi số đo $\widehat{NQP}$ bằng bao nhiêu độ?
 **Hình:** p2c18.png
 
@@ -603,7 +603,7 @@ $=\dfrac{72}{36}$
 
 $=2$
 
-### Bài 2 | kho=hgt | loai=tu_luan | dap_an=—
+### Bài 2 | kho=hinh_hoc | loai=tu_luan | dap_an=—
 **Đề:** Cho hình vẽ bên, biết $Ay$ là phân giác của $\widehat{xAC}$; $\widehat{BAC}=100^\circ$; $\widehat{ABC}=40^\circ$ (theo hình: $B$, $A$, $x$ thẳng hàng, $Ax$ là tia đối của tia $AB$).
 a) Tính góc $\widehat{xAC}$ và $\widehat{xAy}$. Từ đó chứng minh $Ay\parallel BC$.
 b) Kẻ tia $Az$ nằm trong $\widehat{BAC}$ sao cho $\widehat{zAy}=90^\circ$. Chứng minh tia $Az$ là phân giác của $\widehat{BAC}$.
