@@ -447,21 +447,20 @@ export default function HomeScreen() {
           {/* HÀNG ĐẦU: lời chào · vị trí 2 (cạnh lời chào) · nút Tuỳ chỉnh / Giao diện */}
           <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'}>
             {!coNv && coTrai && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{oVitri(0)}</div>}
-            <div className="flex shrink-0 flex-col items-start gap-2">
-            <div className="flex items-center gap-3 px-4 py-2.5" style={tam}>
+            {/* MỘT BOX HỒ SƠ: avatar to (bấm để đổi ảnh) · lời chào · Hòm thư nằm TRONG box */}
+            <div className={`flex shrink-0 items-center gap-4 ${isMobile ? 'px-3 py-3' : 'px-5 py-4'}`} style={tam}>
               {dh.me && (
-                <AvatarEditButton nhanSuId={dh.me.nhanSu.id} anhUrl={dh.me.nhanSu.anh_url} initial={(tenGoi ?? '?').charAt(0).toUpperCase()} size={isMobile ? 48 : 60}
+                <AvatarEditButton nhanSuId={dh.me.nhanSu.id} anhUrl={dh.me.nhanSu.anh_url} initial={(tenGoi ?? '?').charAt(0).toUpperCase()} size={isMobile ? 72 : 104}
                   ring="var(--sk-line)" badge="var(--sk-acc)"
                   onChanged={(url) => useStore.setState((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, anh_url: url } } } : {}))} />
               )}
-              <div>
+              <div className="min-w-0">
                 <h2 className={isMobile ? 'text-[23px] font-bold leading-tight' : 'text-[32px] font-bold leading-[1.12]'} style={HEAD}>
                   <span className="text-[var(--sk-acc)]">✦</span> {tenGoi ? `Chào ${tenGoi}!` : 'Trang chính'}
                 </h2>
-                <p className="mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
+                <p className="mb-2.5 mt-0.5 text-[12.5px] capitalize text-[var(--sk-muted)]">{homNay}</p>
+                {coSao && <HomThu noiBat di={dh.di} duocDi={(id) => id === 'home' || mucs.some((m) => m.id === id)} />}
               </div>
-            </div>
-            {coSao && <HomThu noiBat di={dh.di} duocDi={(id) => id === 'home' || mucs.some((m) => m.id === id)} />}
             </div>
             {coCanh && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}>{oVitri(1)}</div>}
             <div className="ml-auto flex flex-wrap items-start gap-2">
