@@ -43,6 +43,9 @@ async function kiem(thuMuc) {
   // 1. đủ id
   const dsObj = m.objects ?? []
   const co = new Map(dsObj.map((o) => [o.id, o]))
+  // Đồ DỰ PHÒNG không ghép lên cảnh nằm ở library/ + library-assets.json (bản v3) — vẫn là "có", nhưng không tính vào cảnh.
+  const libF = path.join(thuMuc, 'library-assets.json')
+  if (fs.existsSync(libF)) { try { for (const o of JSON.parse(fs.readFileSync(libF, 'utf8').replace(/^﻿/, ''))) if (!co.has(o.id)) { co.set(o.id, o); dsObj.push({ ...o, render: false }) } } catch { W('library-assets.json không đọc được') } }
   const thieu = IDS_BAT_BUOC.filter((i) => !co.has(i))
   if (thieu.length) E(`thiếu ${thieu.length} id bắt buộc: ${thieu.join(', ')}`)
   else ok.push(`đủ ${IDS_BAT_BUOC.length} id bắt buộc (+${dsObj.length - IDS_BAT_BUOC.length} id thêm)`)
@@ -87,8 +90,8 @@ async function kiem(thuMuc) {
   const fav = dsObj.filter((o) => o.id.startsWith('favorite-slot-') && render(o))
   const grp = dsObj.filter((o) => o.id.startsWith('group-') && render(o))
   if (fav.length > 8) E(`yêu thích đang ghép ${fav.length} ô > 8`)
-  if (grp.length > 4) E(`box nhóm đang ghép ${grp.length} > 4 (phần dư phải render=false hoặc không ghép)`)
-  ok.push(`ô yêu thích ghép ${fav.length}/8 · box nhóm ghép ${grp.length}/4`)
+  if (grp.length > TOI_DA_NHOM) E(`box nhóm đang ghép ${grp.length} > ${TOI_DA_NHOM} (phần dư phải ở library hoặc render=false)`)
+  ok.push(`ô yêu thích ghép ${fav.length}/8 · box nhóm ghép ${grp.length}/${TOI_DA_NHOM}`)
   if (!Array.isArray(m.favorite_slots) || m.favorite_slots.length !== 8) W('favorite_slots không đủ 8 vị trí')
   if (!Array.isArray(m.group_slots) || m.group_slots.length !== 4) W('group_slots không đủ 4 vị trí')
 
@@ -154,7 +157,8 @@ async function kiem(thuMuc) {
   return { loi, canh, ok }
 }
 
-const dsThuMuc = process.argv.slice(2)
+const TOI_DA_NHOM = Number((process.argv.find((a) => a.startsWith('--toi-da-nhom=')) ?? '--toi-da-nhom=4').split('=')[1])
+const dsThuMuc = process.argv.slice(2).filter((a) => !a.startsWith('--'))
 if (!dsThuMuc.length) { console.error('Dùng: node scripts/check-style-erp.mjs <thư-mục-style> […]'); process.exit(2) }
 let hong = 0
 for (const t of dsThuMuc) {
