@@ -32,3 +32,10 @@ export async function danhDauDoc(ids: string[]): Promise<void> {
   const { error } = await supabase.from('hom_thu').update({ da_doc: true }).in('id', ids)
   if (error) throw error
 }
+
+/** Đánh dấu CHƯA đọc lại (như Gmail) — chính chủ được đổi cờ da_doc ở cả 2 chiều (grant update(da_doc)). */
+export async function danhDauChuaDoc(ids: string[]): Promise<void> {
+  if (!ids.length) return
+  const { error } = await supabase.from('hom_thu').update({ da_doc: false }).in('id', ids)
+  if (error) throw error
+}
