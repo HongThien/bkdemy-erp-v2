@@ -111,3 +111,6 @@ math-field.mf-input::part(placeholder) { color: #94a3b8; }
 
 /* Tiêu đề màn chỉ nhắc lại tên màn đã hiện ở thanh địa chỉ — ẩn (lib/useAnTieuDeTrung.ts) */
 [data-trung-thanh-dia-chi] { display: none !important; }
+
+/* Nút quay về riêng của màn — ẩn, ← ↑ trên thanh địa chỉ bấm thay (lib/useNutQuayVe.ts) */
+[data-nut-ve] { display: none !important; }

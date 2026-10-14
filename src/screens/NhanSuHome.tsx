@@ -6,6 +6,7 @@ import { useDieuHuong } from '../lib/useDieuHuong'
 import { useSkinErp } from '../lib/erpSkin'
 import DuongDan from '../components/DuongDan'
 import { useAnTieuDeTrung } from '../lib/useAnTieuDeTrung'
+import { useNutQuayVe } from '../lib/useNutQuayVe'
 import HomeScreen from './HomeScreen'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
@@ -562,11 +563,14 @@ export default function NhanSuHome({ user }: { user: User }) {
   const dh = useDieuHuong()
   // Thanh địa chỉ đã là tiêu đề màn ⇒ ẩn tiêu đề đầu màn nào chỉ nhắc lại đúng tên màn (xem lib/useAnTieuDeTrung.ts).
   const manRef = useRef<HTMLDivElement>(null)
-  useAnTieuDeTrung(manRef, dh.mucHienTai?.ten, dh.leaf)
   const sk = useSkinErp()
   const [scope, setScope] = useState<MyScope | null>(null)
   const [loading, setLoading] = useState(true)
   const [openBuoi, setOpenBuoi] = useState<OpenBuoi | null>(null)
+  // Nút quay về riêng của màn ⇒ ẩn, ← ↑ trên thanh địa chỉ bấm thay (lib/useNutQuayVe.ts). Khoá làm mới: màn + buổi đang mở.
+  const khoaMan = `${dh.leaf}|${openBuoi ? openBuoi.id : ''}`
+  useNutQuayVe(manRef, khoaMan)
+  useAnTieuDeTrung(manRef, dh.mucHienTai?.ten, khoaMan)
   const isMobile = useIsMobile()
   const [navOpen, setNavOpen] = useState(false)
   // Cây trái DESKTOP tự ẩn (CEO 08/10: "chỉ chuột vào mới hiện — nhiều không gian hiển thị hơn"): dải mỏng mép trái,
@@ -598,11 +602,15 @@ export default function NhanSuHome({ user }: { user: User }) {
   // (1 buổi = 1 HS, không gắn lớp) nên CHƯA CHẮC render đúng — cần 1 BuoiBoTroYeuDetail riêng
   // (hiện tiến độ dạng chỉ-xem, giống BuoiDuoiDetail sau Phase 2 19/09 — không tick tay nữa) trước khi
   // đưa vào vận hành thật.
-  if (openBuoi) return openBuoi.loai === 'bu'
-    ? <BuoiBuDetail buoiId={openBuoi.id} onClose={dongBuoi} />
-    : openBuoi.loai === 'bo_tro_duoi'
-    ? <BuoiDuoiDetail buoiId={openBuoi.id} onClose={dongBuoi} />
-    : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={dongBuoi} />
+  if (openBuoi) return (
+    <div ref={manRef} className="h-full min-h-0">
+      {openBuoi.loai === 'bu'
+        ? <BuoiBuDetail buoiId={openBuoi.id} onClose={dongBuoi} />
+        : openBuoi.loai === 'bo_tro_duoi'
+        ? <BuoiDuoiDetail buoiId={openBuoi.id} onClose={dongBuoi} />
+        : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={dongBuoi} />}
+    </div>
+  )
 
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)
   const { coHome, nha, adminNav } = dh

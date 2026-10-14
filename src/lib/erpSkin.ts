@@ -57,19 +57,30 @@ function anhNhom(skin: SkinErp): Record<string, string | undefined> {
 // id hình nền đặc biệt: ảnh người dùng tự chọn (URL ở gd.nen_url).
 export const NEN_TU_CHON = 'tu_chon'
 
+// HÌNH NỀN DÙNG CHUNG của vỏ ERP (mọi style đều chọn được) — "phòng học" do ChatGPT vẽ, bộ bk-erp-home-objects-v1
+// (script nén: scripts/erp-nen-hinh.mjs). Ảnh đã có sẵn nhân vật / mèo / bàn học trong tranh ⇒ khi chọn, các asset
+// trang trí của style (nhân vật góc trái, bong bóng, hoạ tiết) tự bỏ — y như ảnh cá nhân.
+export const NEN_ERP: { id: string; ten: string; url: string }[] = [
+  { id: 'erp_ke_hoc_thuat', ten: 'Kệ học thuật', url: '/bk-ui/erp/nen/ke_hoc_thuat.jpg' },
+  { id: 'erp_pegboard', ten: 'Bảng đục lỗ', url: '/bk-ui/erp/nen/pegboard.jpg' },
+  { id: 'erp_lang_bk', ten: 'Làng BK', url: '/bk-ui/erp/nen/lang_bk.jpg' },
+]
+
 export function useSkinErp() {
   const gd = useStore((s) => s.erpGiaoDien)
   const doc = useIsMobile()
   return useMemo(() => {
     const skin = skinErp(gd.skin)
-    const tuChon = gd.nen === NEN_TU_CHON && !!gd.nen_url   // ảnh nền người dùng tự đưa lên, đè hình nền của style
+    // Ảnh nền ĐÈ hình nền của style: ảnh người dùng tự đưa lên, hoặc 1 trong NEN_ERP.
+    const nenUrl = gd.nen === NEN_TU_CHON ? (gd.nen_url ?? null) : (NEN_ERP.find((n) => n.id === gd.nen)?.url ?? null)
+    const tuChon = !!nenUrl
     const cd = cheDoErp(skin, gd)
     const nv = (cd === 'toi' ? skin.nhanVatToi : undefined) ?? skin.nhanVat
     return {
       skin, cd, gd,
-      nenId: tuChon ? NEN_TU_CHON : layHinhNen(skin as Skin, gd.nen).id,
+      nenId: tuChon ? (gd.nen as string) : layHinhNen(skin as Skin, gd.nen).id,
       // Gắn lên khối gốc (thanh trên / trang chính): bên trong chỉ dùng `var(--sk-*)`.
-      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${gd.nen_url}") center / cover no-repeat`, '--sk-goc': 'none' } : {}) } as CSSProperties,
+      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${nenUrl}") center / cover no-repeat`, '--sk-goc': 'none' } : {}) } as CSSProperties,
       anhNhom: anhNhom(skin),
       iconMatNa: !!skin.anhOMask,   // style đơn sắc: icon là mặt nạ, tô bằng màu chữ
       // Nền ảnh cá nhân ⇒ BỎ các asset trang trí của style (nhân vật, hoạ tiết góc, gạch) — ảnh của người dùng là chính.

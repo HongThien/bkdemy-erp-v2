@@ -65,6 +65,9 @@ interface UiState {
   navMax: number
   // Cấp PHỤ đang mở đè lên màn hiện tại (vd "Chi tiết buổi") — có mục lịch sử riêng nên ← đóng đúng nó, không nhảy màn.
   lopPhu: string | null
+  // Nút quay về do CHÍNH MÀN đang mở vẽ ("← Buổi học"…): hook useNutQuayVe ẩn nó và đăng ký ở đây để ← / ↑ trên thanh địa chỉ bấm thay.
+  capPhuEl: { ten: string; dong: () => void } | null
+  setCapPhuEl: (v: { ten: string; dong: () => void } | null) => void
   adminLeaf: string
   // ── Danh tính + quyền THẬT (từ tài khoản đăng nhập). null = chưa load ──
   quyen: MyQuyen | null
@@ -161,6 +164,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   navIdx: lichSuDau().idx,
   navMax: lichSuDau().idx,
   lopPhu: null,
+  capPhuEl: null,
+  setCapPhuEl: (v) => set({ capPhuEl: v }),
   adminLeaf: 'db_tongquan',
   quyen: null,
   me: null,

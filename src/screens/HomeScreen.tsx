@@ -9,7 +9,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { useStore } from '../store/useStore'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON } from '../lib/erpSkin'
+import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, NEN_ERP } from '../lib/erpSkin'
 import { uploadNenErp } from '../lib/nhansu'
 import { nenCua } from './hocsinh/skin/registry'
 import { HEAD, THE } from './home/khung'
@@ -184,6 +184,13 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
                   <button key={h.id} onClick={() => doi({ nen: h.id })} className={o(h.id === sk.nenId)} style={{ borderRadius: 8 }}>
                     <span className="block h-[58px]" style={{ background: nenCua(h, sk.cd, false) }} />
                     <span className={ten}>{h.ten}</span>
+                  </button>
+                ))}
+                {/* Hình nền "phòng học" dùng chung mọi style (bộ ChatGPT) */}
+                {NEN_ERP.map((n) => (
+                  <button key={n.id} onClick={() => doi({ nen: n.id })} className={o(sk.nenId === n.id)} style={{ borderRadius: 8 }}>
+                    <span className="block h-[58px]" style={{ background: `url("${n.url}") center / cover no-repeat` }} />
+                    <span className={ten}>{n.ten}</span>
                   </button>
                 ))}
                 {/* Ảnh người dùng tự đưa lên — nằm cạnh kho hình nền có sẵn của style */}
