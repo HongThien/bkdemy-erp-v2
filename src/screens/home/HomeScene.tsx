@@ -2,27 +2,72 @@
 // Sân khấu cố định W×H của cảnh (vd 1672×941), co đều theo khung chứa (không méo, có viền thừa). Lớp từ dưới lên:
 //   nền → đồ vật tĩnh (bảng, biển, trang trí) / ô yêu thích / box nhóm theo z → nhân vật → CHỮ + SỐ + NÚT thật (HTML).
 // Số ô yêu thích = 8; số box nhóm = số ngăn của CẢNH (6 hoặc 4). Không có logic dữ liệu ở đây — nhận node đã dựng từ HomeScreen.
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import type { Art, Canh, Rect } from '../../lib/canhErp'
 
 export type MucCanh = { id: string; ten: string; onMo: () => void; onSao?: () => void }
 export type NhomCanh = { khoa: string; ten: string; so?: number; onMo: () => void }
 
-const ZOOM_CHU = 1.2   // chữ của các bảng to hơn 20% so với màn thường (sân khấu thường bị thu nhỏ ~0,8)
+// ── LUẬT CHỮ (Thùy 14/10: "chữ lệch khỏi ảnh — phải có rule điều chỉnh") ──
+// R1. Chữ chỉ nằm TRONG text_box / label_box của ảnh — không tràn ra ngoài khung vẽ.
+// R2. Nhãn (yêu thích / nhóm): bắt đầu NHAN_MAX, tối đa 2 dòng, tràn thì co từng nấc tới NHAN_MIN; hết nấc vẫn tràn thì cắt, không đè ra ngoài.
+// R3. Bảng nội dung: phóng ZOOM_CHU; nội dung tràn NGANG (hoặc tràn dọc với ô canh giữa) thì giảm zoom từng nấc tới ZOOM_MIN. Ô cuộn được thì tràn dọc cứ cuộn.
+// R4. Lề trong: lùi vào so với text_box LE_NGANG × rộng, LE_DOC × cao (đệm khung gỗ/viền); manifest có thể khai `text_inset` [trái, trên, phải, dưới] (px của ảnh) để ghi đè.
+const ZOOM_CHU = 1.2, ZOOM_MIN = 0.78, ZOOM_NAC = 0.04
+const NHAN_MAX = 15, NHAN_MIN = 9
+const LE_NGANG = 0.035, LE_DOC = 0.03
 
 const vung = (a: Art, tb: Rect): Rect => {
   const sx = a.place[2] / a.w, sy = a.place[3] / a.h
   return [a.place[0] + tb[0] * sx, a.place[1] + tb[1] * sy, tb[2] * sx, tb[3] * sy]
 }
+/** text_box → vùng chữ thật sau khi trừ lề trong (R4). */
+const vungChu = (a: Art, tb: Rect): Rect => {
+  const r = vung(a, tb)
+  const sx = a.place[2] / a.w, sy = a.place[3] / a.h
+  const [l, t, rr, b] = a.textInset
+    ? [a.textInset[0] * sx, a.textInset[1] * sy, a.textInset[2] * sx, a.textInset[3] * sy]
+    : [r[2] * LE_NGANG, r[3] * LE_DOC, r[2] * LE_NGANG, r[3] * LE_DOC]
+  return [r[0] + l, r[1] + t, Math.max(10, r[2] - l - rr), Math.max(10, r[3] - t - b)]
+}
 const px = (r: Rect): CSSProperties => ({ position: 'absolute', left: r[0], top: r[1], width: r[2], height: r[3] })
 
-/** Nơi nội dung HTML nằm trong 1 text_box: phóng chữ ZOOM_CHU, cuộn dọc nếu dài. */
+/** R3 — nơi nội dung HTML nằm trong 1 text_box: phóng chữ, tràn thì tự giảm zoom. */
 function NoiDung({ r, children, canGiua = false }: { r: Rect; children: ReactNode; canGiua?: boolean }) {
+  const [z, setZ] = useState(ZOOM_CHU)
+  const trong = useRef<HTMLDivElement>(null)
+  const dang = `${Math.round(r[2])}x${Math.round(r[3])}`
+  useEffect(() => { setZ(ZOOM_CHU) }, [dang])
+  useLayoutEffect(() => {
+    const el = trong.current
+    if (!el || z <= ZOOM_MIN) return
+    const tranNgang = el.scrollWidth > el.clientWidth + 1
+    const tranDoc = canGiua && el.scrollHeight > el.clientHeight + 1
+    if (tranNgang || tranDoc) setZ((v) => Math.max(ZOOM_MIN, +(v - ZOOM_NAC).toFixed(2)))
+  })
   return (
     <div style={{ ...px(r), zIndex: 100, overflow: 'hidden' }} className="scene-bare">
-      <div style={{ width: r[2] / ZOOM_CHU, height: r[3] / ZOOM_CHU, zoom: ZOOM_CHU, overflowY: 'auto', overflowX: 'hidden', display: canGiua ? 'flex' : 'block', alignItems: 'center' }}>
+      <div ref={trong} style={{ width: r[2] / z, height: r[3] / z, zoom: z, overflowY: 'auto', overflowX: 'hidden', display: canGiua ? 'flex' : 'block', alignItems: 'center' }}>
         {children}
       </div>
+    </div>
+  )
+}
+
+/** R2 — nhãn vừa khung: tối đa 2 dòng, tràn thì co cỡ chữ từng nấc. */
+function NhanVua({ r, children, style }: { r: Rect; children: string; style?: CSSProperties }) {
+  const [fs, setFs] = useState(NHAN_MAX)
+  const el = useRef<HTMLDivElement>(null)
+  useEffect(() => { setFs(NHAN_MAX) }, [children, r[2], r[3]])
+  useLayoutEffect(() => {
+    const e = el.current
+    if (!e || fs <= NHAN_MIN) return
+    if (e.scrollWidth > e.clientWidth + 1 || e.scrollHeight > e.clientHeight + 1) setFs((v) => Math.max(NHAN_MIN, v - 1))
+  })
+  return (
+    <div ref={el} style={{ ...px(r), ...style, fontSize: fs, lineHeight: 1.1, overflow: 'hidden', wordBreak: 'break-word' }}
+      className="flex items-center justify-center text-center font-bold">
+      <span style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 2, overflow: 'hidden' }}>{children}</span>
     </div>
   )
 }
@@ -66,10 +111,8 @@ export default function HomeScene({ canh, today, dev, order, profile, tuyChinh, 
       <div key={`fv-${i}`}>
         <button onClick={muc.onMo} title={muc.ten} className="scene-hit" style={{ ...px(r), zIndex: 110, background: 'none', border: 0, cursor: 'pointer' }} />
         {lb && (
-          <div style={{ ...px([dx + lb[0] * k, dy + lb[1] * k, lb[2] * k, lb[3] * k]), zIndex: 111, pointerEvents: 'none', color: T.ink, fontFamily: `'${T.font_body ?? 'Be Vietnam Pro'}', sans-serif` }}
-            className="flex items-center justify-center overflow-hidden text-center text-[15px] font-bold leading-tight">
-            <span className="line-clamp-2">{muc.ten}</span>
-          </div>
+          <NhanVua r={[dx + lb[0] * k, dy + lb[1] * k, lb[2] * k, lb[3] * k]}
+            style={{ zIndex: 111, pointerEvents: 'none', color: T.ink, fontFamily: `'${T.font_body ?? 'Be Vietnam Pro'}', sans-serif` }}>{muc.ten}</NhanVua>
         )}
         {muc.onSao && art.badge && (
           <button onClick={muc.onSao} title="Bỏ khỏi Yêu thích"
@@ -95,8 +138,7 @@ export default function HomeScene({ canh, today, dev, order, profile, tuyChinh, 
       <div key={`ng-${i}`}>
         <button onClick={g.onMo} title={g.ten} className="scene-hit" style={{ ...px(r), zIndex: 110, background: 'none', border: 0, cursor: 'pointer' }} />
         {lb && (
-          <div style={{ ...px([dx + lb[0] * k, dy + lb[1] * k, lb[2] * k, lb[3] * k]), zIndex: 111, pointerEvents: 'none', color: T.ink }}
-            className="flex items-center justify-center overflow-hidden whitespace-nowrap text-center text-[15px] font-bold">{g.ten}</div>
+          <NhanVua r={[dx + lb[0] * k, dy + lb[1] * k, lb[2] * k, lb[3] * k]} style={{ zIndex: 111, pointerEvents: 'none', color: T.ink }}>{g.ten}</NhanVua>
         )}
         {g.so != null && art.badge && (
           <span style={{ position: 'absolute', left: dx + art.badge[0] * k - 24, top: dy + art.badge[1] * k - 10, zIndex: 112, background: '#fff', color: T.acc, borderRadius: 999, padding: '0 8px', fontSize: 12, fontWeight: 800, lineHeight: '20px', boxShadow: '0 1px 3px rgba(0,0,0,.25)', pointerEvents: 'none' }}>{g.so} mục</span>
@@ -126,10 +168,10 @@ export default function HomeScene({ canh, today, dev, order, profile, tuyChinh, 
           {lop.map((l) => l.node)}
 
           {/* chữ + số + nút thật */}
-          {bang.today?.textBox && today && <NoiDung r={vung(bang.today, bang.today.textBox)}>{today}</NoiDung>}
-          {bang.development?.textBox && dev && <NoiDung r={vung(bang.development, bang.development.textBox)}>{dev}</NoiDung>}
-          {bang.order?.textBox && order && <NoiDung r={vung(bang.order, bang.order.textBox)}>{order}</NoiDung>}
-          {bang.greeting?.textBox && profile && <NoiDung r={vung(bang.greeting, bang.greeting.textBox)} canGiua>{profile}</NoiDung>}
+          {bang.today?.textBox && today && <NoiDung r={vungChu(bang.today, bang.today.textBox)}>{today}</NoiDung>}
+          {bang.development?.textBox && dev && <NoiDung r={vungChu(bang.development, bang.development.textBox)}>{dev}</NoiDung>}
+          {bang.order?.textBox && order && <NoiDung r={vungChu(bang.order, bang.order.textBox)}>{order}</NoiDung>}
+          {bang.greeting?.textBox && profile && <NoiDung r={vungChu(bang.greeting, bang.greeting.textBox)} canGiua>{profile}</NoiDung>}
           {bienYT?.textBox && (
             <div style={{ ...px(vung(bienYT, bienYT.textBox)), zIndex: 100, color: T.ink, fontFamily: `'${T.font_head ?? 'Baloo 2'}', sans-serif` }}
               className="flex items-center justify-center whitespace-nowrap text-[22px] font-extrabold">★ Yêu thích</div>

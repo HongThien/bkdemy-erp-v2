@@ -16,6 +16,7 @@ export type Art = {
   place: Rect; z: number
   textBox?: Rect; labelBox?: Rect; badge?: [number, number]; ink?: string
   avatarCircle?: [number, number, number]
+  textInset?: Rect   // lề trong của text_box [trái, trên, phải, dưới] px ảnh; không khai = lề mặc định theo tỉ lệ (HomeScene R4)
 }
 export type Canh = {
   id: string; base: string; W: number; H: number
@@ -38,6 +39,7 @@ type Tho = Record<string, any>
 const ra = (o: Tho, base: string): Art => ({
   id: o.id, file: `${base}/${o.file}`, w: o.width, h: o.height, place: o.place as Rect, z: o.z ?? 0,
   textBox: o.text_box ?? o.content_box, labelBox: o.label_box, badge: o.badge_anchor ?? undefined, ink: o.ink, avatarCircle: o.avatar_circle,
+  textInset: Array.isArray(o.text_inset) && o.text_inset.length === 4 ? o.text_inset as Rect : undefined,
 })
 // Đồ vật VẼ ĐỘNG (HomeScene tự đặt theo dữ liệu); btn-* là 2 thẻ treo (Tuỳ chỉnh / Giao diện) — vẫn là lớp tĩnh, chữ đè lên.
 const LA_DONG = /^(group-|favorite-|mail-|avatar-frame|checkbox-|progress-|popup-frame|tab-)/

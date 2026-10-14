@@ -117,5 +117,7 @@ math-field.mf-input::part(placeholder) { color: #94a3b8; }
 
 /* CẢNH "Phòng học" (screens/home/HomeScene.tsx): bảng chức năng nằm TRÊN ảnh đồ vật ⇒ bỏ nền/viền/bóng của thẻ gốc */
 .scene-bare > div > div:first-child, .scene-bare > div > div > div:first-child { background: transparent !important; border: 0 !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; }
+/* Luật chữ R3: trong cảnh, chữ KHÔNG bị cắt "…" — để tràn thì HomeScene tự giảm zoom cho vừa khung */
+.scene-bare .truncate { text-overflow: clip; overflow: visible; }
 .scene-bare-btn > div > button { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; font-weight: 700; font-size: 12px; line-height: 1.15; color: inherit; }
 .scene-hit:hover { filter: brightness(1.12) drop-shadow(0 4px 8px rgba(0,0,0,.25)); }
