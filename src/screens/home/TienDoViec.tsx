@@ -4,7 +4,7 @@
 // Nguồn = fn_task_bang (DB đã tính cờ den_han / qua_han) — client chỉ xếp hạng để hiện 3 dòng.
 import { useEffect, useState } from 'react'
 import { useStore } from '../../store/useStore'
-import { listTaskBang, dangMoTask, type TaskBang } from '../../lib/taskPt'
+import { listTaskBang, tienDoTeam, dangMoTask, type TaskBang, type TienDoTeam } from '../../lib/taskPt'
 import BangTaskScreen from '../giaoviec/BangTaskScreen'
 import ModalFull from './ModalFull'
 import { HEAD, THE } from './khung'
@@ -16,8 +16,12 @@ export default function TienDoViec() {
   const meId = useStore((s) => s.me?.nhanSu.id)
   const [rows, setRows] = useState<TaskBang[] | null>(null)
   const [loi, setLoi] = useState(false)
+  const [team, setTeam] = useState<TienDoTeam | null>(null)   // null = chưa có (hàm DB chưa áp / lỗi) ⇒ ẩn thanh, không báo lỗi
   const [mo, setMo] = useState(false)
-  const nap = () => listTaskBang().then((r) => { setRows(r); setLoi(false) }).catch(() => { setLoi(true); setRows((c) => c ?? []) })
+  const nap = () => {
+    listTaskBang().then((r) => { setRows(r); setLoi(false) }).catch(() => { setLoi(true); setRows((c) => c ?? []) })
+    tienDoTeam().then(setTeam).catch(() => { /* chưa có hàm ⇒ không vẽ thanh */ })
+  }
   useEffect(() => { nap() }, [])
   // Đóng popup ⇒ nạp nền lại (task có thể vừa được giao / duyệt trong popup).
   const dong = () => { setMo(false); nap() }
@@ -39,6 +43,19 @@ export default function TienDoViec() {
           {canDanhGia > 0 && <span className="rounded-full bg-rose-500 px-2 py-0.5 text-[10.5px] font-bold text-white" title="Task bạn giao đang chờ bạn đánh giá">{canDanhGia} cần bạn đánh giá</span>}
           <span className="ml-auto text-[12px] font-semibold text-[var(--sk-acc)]">Mở đầy đủ ›</span>
         </div>
+        {/* THANH % TOÀN TEAM — trung bình % của mọi task đang mở (tự báo) + đã duyệt gần đây (cấp trên chấm); số do DB tính */}
+        {team && team.soTask > 0 && (
+          <div className="mb-3" title={`${team.soTask} task · ${team.soDangMo} đang mở · ${team.soDaDuyet} đã duyệt${team.soQuaHan ? ` · ${team.soQuaHan} quá hạn` : ''}`}>
+            <div className="mb-1 flex items-center gap-2 text-[12px]">
+              <span className="font-bold text-[var(--sk-ink)]">Toàn team</span>
+              <span className="text-[var(--sk-muted)]">{team.soDangMo} đang mở · {team.soDaDuyet} đã duyệt{team.soQuaHan > 0 && <span className="font-semibold text-rose-500"> · {team.soQuaHan} quá hạn</span>}</span>
+              <span className="ml-auto text-[14px] font-extrabold tabular-nums text-[var(--sk-ink)]">{team.pct}%</span>
+            </div>
+            <div className="relative h-3 overflow-hidden bg-[var(--sk-surface2)] ring-1 ring-[var(--sk-line)]" style={{ borderRadius: 'var(--sk-radius-pill)' }}>
+              <span className="absolute inset-y-0 left-0 bg-[var(--sk-acc)] transition-all" style={{ width: `${Math.max(0, Math.min(100, team.pct))}%`, borderRadius: 'var(--sk-radius-pill)' }} />
+            </div>
+          </div>
+        )}
         {rows === null ? <p className="text-[12.5px] text-[var(--sk-muted)]">Đang tải…</p>
           : loi ? <p className="text-[12.5px] text-[var(--sk-muted)]">Chưa tải được danh sách task.</p>
           : hien.length === 0 ? <p className="text-[12.5px] text-[var(--sk-muted)]">Bạn không có task phát triển nào đang mở. ✓ <span className="text-[var(--sk-acc)]">Bấm để xem bảng cả team.</span></p>

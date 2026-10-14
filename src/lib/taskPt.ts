@@ -67,3 +67,12 @@ export async function ketQuaThang(nhanSuId: string, thang: string): Promise<KetQ
   const r = (Array.isArray(data) ? data[0] : data) as { so_task: number; so_duyet: number; ket_qua_tb: number | null; so_gia_han: number; so_co_tre: number } | undefined
   return { soTask: r?.so_task ?? 0, soDuyet: r?.so_duyet ?? 0, ketQuaTB: r?.ket_qua_tb != null ? Number(r.ket_qua_tb) : null, soGiaHan: r?.so_gia_han ?? 0, soCoTre: r?.so_co_tre ?? 0 }
 }
+
+// Thanh % TOÀN TEAM trên dashboard Việc phát triển (mig 202610141231). Công thức ở DB — client chỉ vẽ.
+export type TienDoTeam = { soTask: number; soDangMo: number; soDaDuyet: number; soQuaHan: number; pct: number }
+export async function tienDoTeam(): Promise<TienDoTeam> {
+  const { data, error } = await supabase.rpc('fn_task_tien_do_team')
+  if (error) throw error
+  const r = (Array.isArray(data) ? data[0] : data) as { so_task: number; so_dang_mo: number; so_da_duyet: number; so_qua_han: number; pct: number } | undefined
+  return { soTask: r?.so_task ?? 0, soDangMo: r?.so_dang_mo ?? 0, soDaDuyet: r?.so_da_duyet ?? 0, soQuaHan: r?.so_qua_han ?? 0, pct: r?.pct ?? 0 }
+}
