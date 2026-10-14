@@ -387,10 +387,9 @@ Làm tròn với độ chính xác $0,5$ (đến hàng đơn vị): chữ số h
 Làm tròn với độ chính xác $0,005$ (đến hàng phần trăm): chữ số hàng phần nghìn là $5$ nên $\sqrt{2021}\approx44,96$ (chữ số hàng phần trăm $5$ tăng thêm $1$).
 
 ### Bài 3 | kho=hinh_hoc | loai=tu_luan | dap_an=—
-**Đề:** Cho hình vẽ bên (tam giác $ABC$, điểm $D$ nằm trên cạnh $AC$, nối $BD$). Nêu tên một góc kề bù với góc $ADB$, tên một tia phân giác của góc $ABC$?
+**Đề:** Cho hình vẽ bên (tam giác $ABC$, điểm $D$ nằm trên cạnh $AC$, nối $BD$; $BD$ là tia phân giác của góc $ABC$). Nêu tên một góc kề bù với góc $ADB$, tên một tia phân giác của góc $ABC$?
 **Hình:** p2b3.png
-**Ghi chú:** đề gốc không in điểm $D$ nằm trên $AC$ và $BD$ là tia nằm trong góc $ABC$; đọc từ hình và chép vào đề.
-**Chưa chắc:** đề không nói $BD$ là tia phân giác; kí hiệu cung ở đỉnh $B$ trên hình (phóng to 1000 dpi) là hai cung lồng nhau, không rõ là kí hiệu hai góc $\widehat{ABD}$, $\widehat{DBC}$ bằng nhau. Đáp án "tia $BD$" dựa vào việc $BD$ là tia duy nhất nằm trong góc $ABC$ trên hình (đo trên hình: $\widehat{ABD}\approx35^\circ$, $\widehat{DBC}\approx32^\circ$). Nên bổ sung vào đề "$BD$ là tia phân giác của góc $ABC$" hoặc đổi câu hỏi.
+**Ghi chú:** đề gốc không in điểm $D$ nằm trên $AC$ và $BD$ là tia nằm trong góc $ABC$; đọc từ hình và chép vào đề; câu "$BD$ là tia phân giác của góc $ABC$" do CEO bổ sung vào đề (14/10) để đề tự đủ dữ kiện.
 
 **Phần 1. Hướng dẫn**
 
@@ -408,7 +407,7 @@ Vì $D$ nằm giữa $A$ và $C$ nên hai tia $DA$ và $DC$ đối nhau.
 
 Hai góc $\widehat{ADB}$ và $\widehat{BDC}$ có chung cạnh $DB$, hai cạnh còn lại là hai tia đối nhau nên $\widehat{BDC}$ kề bù với $\widehat{ADB}$.
 
-Tia $BD$ nằm trong góc $ABC$ và chia góc này thành hai góc $\widehat{ABD}$, $\widehat{DBC}$ bằng nhau (theo hình vẽ) nên $BD$ là tia phân giác của góc $ABC$.
+Tia $BD$ nằm trong góc $ABC$ và chia góc này thành hai góc $\widehat{ABD}$, $\widehat{DBC}$ bằng nhau (theo giả thiết) nên $BD$ là tia phân giác của góc $ABC$.
 
 ### Bài 4 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Sau một năm thực hiện đề án phổ cập bơi, người ta tiến hành thu thập dữ liệu về kĩ năng bơi của học sinh Trung học cơ sở ở một huyện, được kết quả như sau:

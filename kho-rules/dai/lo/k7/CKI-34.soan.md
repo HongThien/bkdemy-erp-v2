@@ -5,40 +5,41 @@ thoi_gian_phut: 90
 
 ## PHẦN 1 | Trắc nghiệm lựa chọn | trac_nghiem
 
-### Câu 1 | kho=dai | loai=trac_nghiem | dap_an=A
-**Đề:** Trong các cách viết sau, cách viết nào cho ta số hữu tỉ?
+### Câu 1 | kho=dai | loai=trac_nghiem | dap_an=B
+**Đề:** Trong các cách viết sau, cách viết nào KHÔNG cho ta số hữu tỉ?
 A. $\dfrac{-3}{5}$
 B. $\dfrac{5}{0}$
 C. $\dfrac{1,5}{2}$
 D. $-\dfrac{3}{1,6}$
-**Ghi chú:** Đề gốc in "cách viết nào nào" (thừa một chữ "nào"), đã sửa thành "cách viết nào".
-**Chưa chắc:** Về GIÁ TRỊ, C ($\dfrac{1,5}{2}=\dfrac{3}{4}$) và D ($-\dfrac{3}{1,6}=-\dfrac{15}{8}$) cũng là số hữu tỉ; chọn A vì đề hỏi "cách viết", chỉ A đúng dạng $\dfrac{a}{b}$ với $a,b\in\mathbb{Z}$, $b\ne0$.
+**Ghi chú:** Đề gốc in "cách viết nào nào" (thừa một chữ "nào") và hỏi "cách viết nào cho ta số hữu tỉ"; CEO chốt đổi thành "KHÔNG cho ta số hữu tỉ" (14/10) để chỉ có một đáp án.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** số hữu tỉ là số viết được dưới dạng phân số $\dfrac{a}{b}$ với $a,b$ là số nguyên và $b\ne0$.
+**Mấu chốt:** số hữu tỉ là số viết được dưới dạng phân số $\dfrac{a}{b}$ với $a,b$ là số nguyên và $b\ne0$; đề hỏi cách viết nào KHÔNG cho ra số hữu tỉ.
 
-**Bước 1.** Nhớ định nghĩa: tử và mẫu đều phải là số nguyên, mẫu phải khác 0.
+**Bước 1.** Nhớ định nghĩa số hữu tỉ rồi xét từng phương án xem nó có cho ra một số hữu tỉ hay không.
 
-**Bước 2.** Loại phương án có mẫu bằng 0 vì phân số không có nghĩa.
+**Bước 2.** Phương án có mẫu bằng $0$ thì phân số không có nghĩa, không cho ra số nào cả.
 
-**Bước 3.** Loại các phương án có tử hoặc mẫu là số thập phân vì chúng chưa theo dạng $\dfrac{a}{b}$ với $a,b$ nguyên.
+**Bước 3.** Phương án có tử hoặc mẫu là số thập phân vẫn đổi được về phân số có tử, mẫu nguyên nên vẫn cho ra số hữu tỉ.
 
-**Bước 4.** Chọn phương án còn lại có tử và mẫu đều là số nguyên, mẫu khác 0.
+**Bước 4.** Chọn phương án duy nhất không cho ra số hữu tỉ.
 
-**Chú ý:** đề hỏi về CÁCH VIẾT; hai phương án có số thập phân vẫn bằng một số hữu tỉ sau khi đổi ra phân số, nhưng cách viết đó chưa đúng dạng $\dfrac{a}{b}$.
+**Chú ý:** phân số có tử hoặc mẫu là số thập phân (nhân cả tử và mẫu với $10$) vẫn bằng một phân số có tử và mẫu nguyên.
 
 **Phần 2. Trình bày**
 
 Số hữu tỉ là số viết được dưới dạng $\dfrac{a}{b}$ với $a,b\in\mathbb{Z}$, $b\ne0$.
 
-$\dfrac{5}{0}$ có mẫu bằng 0 nên không phải số hữu tỉ.
+$\dfrac{-3}{5}$ có tử, mẫu là số nguyên, mẫu khác $0$ nên là số hữu tỉ.
 
-$\dfrac{1,5}{2}$ có tử $1,5$ và $-\dfrac{3}{1,6}$ có mẫu $1,6$ không phải số nguyên nên chưa theo dạng $\dfrac{a}{b}$ với $a,b\in\mathbb{Z}$.
+$\dfrac{1,5}{2}=\dfrac{15}{20}=\dfrac{3}{4}$ là số hữu tỉ.
 
-$\dfrac{-3}{5}$ có $-3\in\mathbb{Z}$, $5\in\mathbb{Z}$, $5\ne0$ nên là số hữu tỉ.
+$-\dfrac{3}{1,6}=-\dfrac{30}{16}=-\dfrac{15}{8}$ là số hữu tỉ.
 
-Chọn A.
+$\dfrac{5}{0}$ có mẫu bằng $0$ nên không có nghĩa, không cho ta số hữu tỉ.
+
+Chọn B.
 
 ### Câu 2 | kho=dai | loai=trac_nghiem | dap_an=D
 **Đề:** Số đối của số hữu tỉ $\dfrac{-3}{5}$ là
@@ -95,12 +96,11 @@ $-\left|-0,25\right|=-0,25\ne0,25$ nên C sai.
 Chọn D.
 
 ### Câu 4 | kho=hinh_hoc | loai=trac_nghiem | dap_an=D
-**Đề:** Cho đoạn thẳng $MN$, đường thẳng $d$ là trung trực của $MN$ thì:
+**Đề:** Cho đoạn thẳng $MN$, đường thẳng $d$ là trung trực của $MN$. Khẳng định nào sau đây là đầy đủ nhất?
 A. $d$ đi qua trung điểm của $MN$.
 B. $d$ vuông góc $MN$.
 C. $d$ cắt đường thẳng $MN$.
 D. $d$ đi qua trung điểm $MN$ và $d\perp MN$.
-**Chưa chắc:** A, B, C đều là khẳng định ĐÚNG về đường trung trực (mỗi cái nêu một phần); chọn D vì là phương án duy nhất nêu đủ định nghĩa. Đề không có đáp án để đối chiếu.
 
 **Phần 1. Hướng dẫn**
 
@@ -112,7 +112,7 @@ D. $d$ đi qua trung điểm $MN$ và $d\perp MN$.
 
 **Bước 3.** Chọn phương án nêu đầy đủ hai điều kiện.
 
-**Chú ý:** các phương án chỉ nêu một điều kiện (đi qua trung điểm, hoặc vuông góc, hoặc cắt $MN$) không sai nhưng chưa đầy đủ; đề chờ phương án nêu trọn định nghĩa.
+**Chú ý:** các phương án chỉ nêu một điều kiện (đi qua trung điểm, hoặc vuông góc, hoặc cắt $MN$) không sai nhưng chưa đầy đủ; đề hỏi khẳng định đầy đủ nhất nên chọn phương án nêu trọn định nghĩa.
 
 **Phần 2. Trình bày**
 

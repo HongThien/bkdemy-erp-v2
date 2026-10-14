@@ -261,11 +261,11 @@ Vậy $x=\dfrac{3}{2}$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** khử mẫu bằng cách nhân cả hai vế với cùng một số khác $0$ là $7.(x-4)$, từ đó đưa về dạng tìm $x$ quen thuộc.
+**Mấu chốt:** hai phân số bằng nhau thì tích chéo bằng nhau; nhân chéo để bỏ mẫu rồi đưa về dạng tìm $x$ quen thuộc.
 
-**Bước 1.** Nhận ra mẫu $x-4$ khác $0$ (vì $x\ne4$) nên được nhân cả hai vế với $7.(x-4)$ mà đẳng thức vẫn đúng.
+**Bước 1.** Nhận ra đề cho hai phân số bằng nhau và mẫu $x-4$ khác $0$ (vì $x\ne4$), nên được nhân chéo.
 
-**Bước 2.** Nhân hai vế với $7.(x-4)$ để mất mẫu, rồi phá ngoặc để có hai vế chứa $x$.
+**Bước 2.** Nhân chéo (tử vế này nhân mẫu vế kia) để mất mẫu, rồi phá ngoặc để có hai vế chứa $x$.
 
 **Bước 3.** Chuyển các số hạng chứa $x$ về một vế, số hạng tự do về vế còn lại rồi tìm $x$.
 
@@ -275,7 +275,7 @@ Vậy $x=\dfrac{3}{2}$.
 
 $\dfrac{x+3}{x-4}=\dfrac{5}{7}$ với $x\ne4$
 
-Nhân hai vế với $7.(x-4)$ (khác $0$ vì $x\ne4$) ta được:
+Nhân chéo (mẫu $x-4$ và $7$ đều khác $0$) ta được:
 
 $7.(x+3)=5.(x-4)$
 
