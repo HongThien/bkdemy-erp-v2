@@ -37717,3 +37717,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Làm:** `_tg_viec_ton(p_ngay)` gom 7 nguồn — buổi thường (fn_viec_buoi_thuong, vai tg, ingame/et/btvn) · bù ET+đánh giá / đuổi đánh giá (chép luật gami.ts getMyTasks) · ca bổ trợ yếu · retest · BTVN bù · HS báo sai (chép luật gami.ts) · chấm công (buổi/ca chưa ghi công + quên checkout). "Tồn" = chưa xong, ngày gốc < p_ngay. `fn_tg_viec_ton` = bản có quyền `ta_cong_duyet`. Tách lõi `_ta_buoi_thieu_cong` (thêm nhan_su_id), `fn_ta_buoi_thieu_cong` gọi lõi — cùng chữ ký.
 - **Kiểm (rollback rồi áp):** 22 TA, 602 việc tồn hôm nay; 24/24 đề xuất gậy đang chờ của việc TA còn mở khớp đúng `ref_key` (11 không khớp = việc của GV, đúng). Chấm công chiếm 243 dòng vì tháng 10 TA chưa khai (đợt khai lùi tới 03/11) ⇒ bản tin B3 phải GOM dòng chấm công thành 1 dòng/TA, không liệt kê từng buổi.
 - **Nợ:** luật bù/đuổi/báo sai nay có 2 bản (gami.ts + SQL) — app TA nên chuyển sang đọc `_tg_viec_ton` (§2.0). Báo sai có dòng từ 19/08 chưa ai duyệt.
+
+## 14/10/2026 (tiếp) — Đề cương K9 Tây Mỗ (TM-GKI-2024) vào Kho đề thi
+- **Yêu cầu Thùy:** "Giải tiếp đề cương Tây Mỗ nhé" (PDF scan 6 trang). Tên tệp ghi "giữa kì II" nhưng nội dung = giữa kì I ⇒ mã `TM-GKI-2024`.
+- **Làm:** gõ lại 55 câu (`TM-GKI-2024.build.mjs`, dùng `dc-lib.mjs` khối 9) → 9 trạm soạn Sonnet → 9 trạm soát Opus giải mù → ghép → cổng `--khoi 9` → `ghi.mjs --ghi`. 55/55 đáp số khớp ngay; không nhập Bài 1a (in hỏng).
+- **Soát bắt được:** Bài 19 trục căn thức ở mẫu (chương III cấm), Bài 25 tính góc từ số đã làm tròn + cặp đồng dạng sai, Bài 27 nhảy bước phân tích bậc ba, vài chỗ dồn nhiều phép biến đổi một dòng.
+- **Quyết định:** nhãn con "Bài 4.1/4.2" (không khớp RE_Y của nhom-bai ⇒ không gộp nhóm, đúng ý: hai bài con độc lập); "Bài V" ⇒ nhãn "Bài 5". Việc CEO cần quyết: xem `kho-rules/dai/k9.md` §10 mục Tây Mỗ.
