@@ -37588,3 +37588,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sai / sửa:** client tự nhân đơn giá × số lượng ở dòng ngoài package (vi phạm §2.0) ⇒ bỏ, chỉ hiện số DB · hạn đợt cắt ngày từ chuỗi UTC ⇒ quy về ngày VN · mockup còn luật "chỉ 24 giờ" (KB7 sai với DB) ⇒ thêm đợt tháng 10 + KB13, smoke 35/35.
 - **Dữ liệu thật (đọc, rollback):** thiếu công 01–14/10 = 264 dòng (chưa ai chấm công); nhiều buổi "chưa phân TA" trước ngày phân công (vd 7S3 03/10 — TrangQ dạy nhưng ERP chỉ có Vân Anh từ 12/10). Theo luật mới, TA khai lùi buổi đó sẽ hiện "làm hộ"/"lớp hôm đó chưa phân TA".
 - **Chưa làm:** chốt kỳ (`ta_luong_chot`); deploy (Thùy bấm); verify bằng tài khoản TA thật sau deploy; Artifact mockup cũ chưa cập nhật chữ mới (file repo đã đổi).
+
+### 14/10 (tối, tiếp 2) — [Chấm công TA] Thùy góp ý giao diện app TA: 3 sửa
+- (1) Ngày khai bù phải dd/mm/yyyy — ô date của trình duyệt hiện mm/dd/yyyy theo máy ⇒ bỏ hẳn, thay bằng LỊCH chọn ngày trong màn khai bù (tuần bắt đầu T2, chỉ bấm được ngày trong khoảng cho phép, chấm xanh = ngày đã có checkin); mọi ngày trong khai bù hiện dd/mm/yyyy.
+- (2) Không checkin từ màn chính: ô Chấm công ở TaHome chỉ báo trạng thái, bấm vào màn CongTA mới checkin (để làm luôn các việc khác).
+- (3) Khai bù là chức năng riêng: card to kiểu 1 (dải tím + thân trắng) cuối tab Hôm nay → màn Khai bù (lịch → ca của ngày → việc đã ghi + thêm việc). Ngày đã có ca thì ô khai ca gập thành nút "+ Khai thêm một ca nữa trong ngày".
+- Tách `NgayCong(ngay)` dùng chung cho hôm nay và ngày khai bù. Soi trên /xem-thu-cong-ta.html (khung điện thoại): lịch T10/2026 đúng (01/10 = T5), khai ca + ghi công ngày 05/10 chạy.

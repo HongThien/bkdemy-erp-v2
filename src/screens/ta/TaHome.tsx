@@ -27,7 +27,7 @@ import DuoiCaTA from './DuoiCaTA'
 import ChamBtvnBu from './ChamBtvnBu'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 import CongTA from './CongTA'
-import { congCuaToi, goiYViec, checkin, checkout, gioVN, type DongCong, type GoiY } from '../../lib/tacong'
+import { congCuaToi, goiYViec, gioVN, type DongCong, type GoiY } from '../../lib/tacong'
 
 // Banner đếm ngược đi chơi Ba Vì (CEO 07/09, đã lắp cho OPS — "làm cái này cho ta app luôn") — ảnh + rect
 // giống hệt OpsHome.tsx (đo tay theo pixel ảnh gốc goout_2.png 1672×941, xem OpsHome.tsx để biết chi tiết đo).
@@ -151,7 +151,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
       <div className="min-h-0 flex-1 overflow-auto">
         {loiTai && <p className="mx-2 mt-2 rounded-xl bg-rose-50 px-3 py-2 text-[12px] font-semibold text-rose-700 ring-1 ring-rose-200">⚠ Lỗi tải: {loiTai} — chụp màn hình gửi quản lý</p>}
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} caDuoi={caDuoi} btvnBu={btvnBu} onAvatarChanged={onAvatarChanged} congHn={congHn} onDoiCong={taiCong} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} caDuoi={caDuoi} btvnBu={btvnBu} onAvatarChanged={onAvatarChanged} congHn={congHn} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
         {tab === 'cong' && <CongTA nsId={profile.nhanSu.id} onBack={() => setTab('home')} onDoi={taiCong} />}
@@ -187,8 +187,8 @@ function TabBtn({ active, icon, label, no, onClick }: { active: boolean; icon: s
 
 // ── TRANG CHỦ: 1 thẻ hồ sơ (avatar · Chào X · ngày · nợ · chuông/góp ý/thoát) + box tháng + box bổ trợ + 3 box
 //    nghiệp vụ (bubble nợ ở góc icon). CEO 07/09: gộp thanh trên + hero, bỏ dòng tên/"BK Trợ giảng" lặp. ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, caDuoi, btvnBu, onAvatarChanged, congHn, onDoiCong }: {
-  caBu: CaBu[]; caDuoi: CaBu[]; btvnBu: BtvnBu[]; congHn: { dong: DongCong[]; goiY: GoiY[] } | null; onDoiCong: () => void
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, caDuoi, btvnBu, onAvatarChanged, congHn }: {
+  caBu: CaBu[]; caDuoi: CaBu[]; btvnBu: BtvnBu[]; congHn: { dong: DongCong[]; goiY: GoiY[] } | null
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void; onOpenBuoi: (v: BuoiView) => void
   dashTom: TaDash | null; boTro: ViecBoTro; onAvatarChanged?: (url: string) => void
@@ -269,8 +269,8 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
           </div>
         )}
 
-        {/* BOX CHẤM CÔNG (Thùy 14/10) — đứng đầu: Checkin/Checkout bấm ngay tại ô, chạm ô mở màn chi tiết */}
-        <BoxChamCong cong={congHn} onGo={() => onGo('cong')} onDoi={onDoiCong} />
+        {/* BOX CHẤM CÔNG (Thùy 14/10) — đứng đầu, chỉ báo trạng thái; bấm vào mới checkin (màn CongTA) */}
+        <BoxChamCong cong={congHn} onGo={() => onGo('cong')} />
 
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08) */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
@@ -317,35 +317,27 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
   )
 }
 
-// Box "Chấm công" — trạng thái ca hôm nay + số việc theo lịch chưa ghi công. Nút Checkin/Checkout gọi thẳng RPC
-// (luật ở DB); <div> ngoài + nút thật bên trong (tránh nested button).
-function BoxChamCong({ cong, onGo, onDoi }: { cong: { dong: DongCong[]; goiY: GoiY[] } | null; onGo: () => void; onDoi: () => void }) {
-  const [ban, setBan] = useState(false)
-  const [loi, setLoi] = useState<string | null>(null)
+// Box "Chấm công" — CHỈ báo trạng thái (Thùy 14/10: không checkin từ màn chính; bấm vào màn Chấm công rồi mới
+// checkin, để làm luôn các việc khác: ghi công việc theo lịch, thêm việc, khai bù).
+function BoxChamCong({ cong, onGo }: { cong: { dong: DongCong[]; goiY: GoiY[] } | null; onGo: () => void }) {
   const cas = (cong?.dong ?? []).filter((r) => r.loai_dong === 'ca' && r.duyet !== 'tu_choi')
   const caMo = cas.find((c) => !c.ra_at)
   const caCuoi = cas[cas.length - 1]
   const chuaGhi = (cong?.goiY ?? []).filter((g) => !g.da_khai).length
   const daGhi = (cong?.dong ?? []).filter((r) => r.loai_dong === 'viec' && r.duyet !== 'tu_choi').length
-  const bam = async (fn: () => Promise<unknown>) => { setBan(true); setLoi(null); try { await fn(); onDoi() } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBan(false) } }
+  const trangThai = cong === null ? 'Đang tải…' : caMo ? `Đang trong ca từ ${gioVN(caMo.vao_at)}` : caCuoi ? `Đã checkout lúc ${gioVN(caCuoi.ra_at)}` : 'Chưa checkin hôm nay'
   return (
-    <div onClick={onGo} role="button" className="cursor-pointer rounded-[22px] bg-[#DDF6E4] p-3 active:scale-[.99]">
+    <button onClick={onGo} className="rounded-[22px] bg-[#DDF6E4] p-3 text-left active:scale-[.99]">
       <div className="flex items-center gap-2.5">
-        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_calendar')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={cas.length ? chuaGhi : 0} /></span>
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_calendar')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={chuaGhi} /></span>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Chấm công</p>
-          <p className="text-[12.5px] text-[#63709A]">
-            {cong === null ? 'Đang tải…' : caMo ? `Đang trong ca từ ${gioVN(caMo.vao_at)}` : caCuoi ? `Đã checkout lúc ${gioVN(caCuoi.ra_at)}` : 'Chưa checkin hôm nay'}
-            {daGhi > 0 && ` · đã ghi ${daGhi} việc`}
-          </p>
-          {cas.length > 0 && chuaGhi > 0 && <p className="text-[12px] font-bold text-[#C27A00]">{chuaGhi} việc theo lịch chưa ghi công</p>}
-          {loi && <p className="text-[12px] font-semibold text-[#C0355A]">{loi}</p>}
+          <p className={`text-[12.5px] ${cong !== null && !caMo && !caCuoi ? 'font-bold text-[#C27A00]' : 'text-[#63709A]'}`}>{trangThai}{daGhi > 0 && ` · đã ghi ${daGhi} việc`}</p>
+          {chuaGhi > 0 && <p className="text-[12px] font-bold text-[#C27A00]">{chuaGhi} việc theo lịch chưa ghi công</p>}
         </div>
-        {cong !== null && (caMo
-          ? <button disabled={ban} onClick={(e) => { e.stopPropagation(); bam(checkout) }} className="shrink-0 rounded-2xl bg-[#F57C2B] px-4 py-2.5 text-[14px] font-extrabold text-white disabled:opacity-50">Checkout</button>
-          : <button disabled={ban} onClick={(e) => { e.stopPropagation(); bam(checkin) }} className="shrink-0 rounded-2xl bg-[#1E9E5A] px-4 py-2.5 text-[14px] font-extrabold text-white disabled:opacity-50">Checkin</button>)}
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1E9E5A] text-[15px] font-bold text-white">›</span>
       </div>
-    </div>
+    </button>
   )
 }
 

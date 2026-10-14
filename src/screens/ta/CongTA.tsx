@@ -1,12 +1,13 @@
 // CongTA — CHẤM CÔNG của TA trên app (spec-cham-cong-ta.md §4, mockup design/mockup-cham-cong-ta.html, Thùy duyệt 14/10).
-// 3 tab: Hôm nay (Checkin/Checkout · việc theo lịch → "Ghi công" · việc đã ghi · thêm việc ngoài lịch · khai bù ngày khác)
+// 3 tab: Hôm nay (Checkin/Checkout · việc theo lịch → "Ghi công" · việc đã ghi · thêm việc ngoài lịch · card to "Khai bù ngày trước"
+//        → màn Khai bù: lịch chọn ngày dd/mm/yyyy rồi khai ca + ghi công ngày đó)
 //        · Bảng công (theo tháng, đối chiếu + trạng thái duyệt) · Lương tạm tính (chỉ phần đã duyệt).
 // Mọi luật ở DB (lib/tacong.ts): lớp mặc định theo phân công TẠI NGÀY, 24 giờ / đợt khai lùi tháng 10, khớp lịch, làm hộ ai.
 // Sau mỗi thao tác: quét lại NỀN, giữ nguyên danh sách đang hiện (không trắng màn — CLAUDE.md §2 React).
 import { useEffect, useMemo, useState } from 'react'
 import SearchSelect from '../../components/SearchSelect'
 import { BKTabHeader, BKSegmented } from '../../components/bk/BKUI'
-import { homNayVN, congNgay, ddmmVN, thuCuaNgay, ngayCuaTs } from '../../lib/tuan'
+import { homNayVN, congNgay, ddmmVN, thuCuaNgay, ngayCuaTs, soNgayGiua } from '../../lib/tuan'
 import {
   checkin, checkout, khaiBuCa, goiYViec, congCuaToi, khaiBuChoPhep, boViec, ghiCong, dsLoaiViec, dsLop, luongCuaToi,
   gioVN, hm, nhanCo, type GoiY, type DongCong, type KhoangKhaiBu, type LoaiViec, type LuongThang,
@@ -19,15 +20,17 @@ const tien = (n: number) => Math.round(Number(n) || 0).toLocaleString('vi-VN')
 const so = (n: number) => (Math.round((Number(n) || 0) * 100) / 100).toLocaleString('vi-VN')
 const dauThang = (ngay: string) => ngay.slice(0, 8) + '01'
 const cuoiThang = (ky: string) => congNgay(dauThang(congNgay(ky, 32)), -1)
+const ngayDu = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4)}`   // dd/mm/yyyy (Thùy 14/10)
 
 export default function CongTA({ nsId, onBack, onDoi }: { nsId: string; onBack: () => void; onDoi?: () => void }) {
   const [tab, setTab] = useState<Tab>('nay')
+  const [khaiBu, setKhaiBu] = useState(false)   // màn Khai bù (mở từ card trong tab Hôm nay)
   return (
     <div>
       <BKTabHeader icon={A('pr_calendar')} title="Chấm công" sub="Checkin · ghi công · bảng công · lương tạm tính" onBack={onBack} />
       <div className="mx-auto flex max-w-[640px] flex-col gap-2 px-2 pb-6">
-        <BKSegmented value={tab} onChange={setTab} items={[{ key: 'nay', label: 'Hôm nay' }, { key: 'bang', label: 'Bảng công' }, { key: 'luong', label: 'Lương tạm tính' }]} />
-        {tab === 'nay' && <HomNay onDoi={onDoi} />}
+        <BKSegmented value={tab} onChange={(t) => { setTab(t); setKhaiBu(false) }} items={[{ key: 'nay', label: 'Hôm nay' }, { key: 'bang', label: 'Bảng công' }, { key: 'luong', label: 'Lương tạm tính' }]} />
+        {tab === 'nay' && (khaiBu ? <KhaiBu onDoi={onDoi} onBack={() => setKhaiBu(false)} /> : <HomNay onDoi={onDoi} onKhaiBu={() => setKhaiBu(true)} />)}
         {tab === 'bang' && <BangCong />}
         {tab === 'luong' && <Luong nsId={nsId} />}
       </div>
@@ -43,29 +46,126 @@ function useThongBao() {
   return { setTb, el }
 }
 
-// ── TAB HÔM NAY (+ khai bù ngày khác) ──
-function HomNay({ onDoi }: { onDoi?: () => void }) {
+// ── TAB HÔM NAY: công hôm nay + CARD "Khai bù ngày trước" (Thùy 14/10: khai bù là một chức năng riêng, card to) ──
+function HomNay({ onDoi, onKhaiBu }: { onDoi?: () => void; onKhaiBu: () => void }) {
+  const [khoang, setKhoang] = useState<KhoangKhaiBu[]>([])
+  useEffect(() => { khaiBuChoPhep().then(setKhoang).catch(() => {}) }, [])
+  const dot = khoang.find((k) => k.han)
+  return (
+    <div className="flex flex-col gap-2">
+      <NgayCong ngay={homNayVN()} onDoi={onDoi} />
+      {/* Card khai bù — kiểu 1 (dải màu trên + thân trắng), bấm cả card để mở màn khai bù */}
+      <button onClick={onKhaiBu} className="overflow-hidden rounded-[22px] bg-white text-left shadow-sm active:scale-[.99]">
+        <div className="flex items-center gap-3 bg-[#8B6BEF] px-4 py-3">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/90"><img src={A('pr_calendar')} alt="" className="h-9 w-9 object-contain" draggable={false} /></span>
+          <div className="min-w-0 flex-1 leading-tight">
+            <p className="font-bubble text-[19px] font-extrabold text-white">Khai bù ngày trước</p>
+            <p className="text-[12.5px] text-white/85">Quên checkin · quên checkout · quên ghi công</p>
+          </div>
+          <span className="text-[26px] font-bold text-white">›</span>
+        </div>
+        <div className="flex flex-col gap-1.5 px-4 py-3.5">
+          <p className="text-[13.5px] text-[#16224D]">Chọn ngày trên lịch, khai giờ checkin / checkout thật của ngày đó, rồi ghi công các việc đã làm. Quản lý vẫn duyệt như thường.</p>
+          {dot?.han
+            ? <p className="rounded-xl bg-[#F1ECFF] px-3 py-2 text-[12.5px] font-semibold text-[#5B3FC4]">Đang mở khai lùi: từ ngày {ngayDu(dot.tu)} đến hôm qua, hạn {gioVN(dot.han)} ngày {ngayDu(ngayCuaTs(new Date(dot.han).getTime()))}</p>
+            : <p className="rounded-xl bg-[#F4F7FE] px-3 py-2 text-[12.5px] text-[#63709A]">Tự khai bù được trong 24 giờ. Quá 24 giờ thì nhờ quản lý nhập hộ.</p>}
+        </div>
+      </button>
+    </div>
+  )
+}
+
+// ── MÀN KHAI BÙ: lịch chọn ngày (dd/mm/yyyy) → công của ngày đó ──
+function KhaiBu({ onDoi, onBack }: { onDoi?: () => void; onBack: () => void }) {
+  const homNay = homNayVN(), homQua = congNgay(homNay, -1)
+  const [khoang, setKhoang] = useState<KhoangKhaiBu[] | null>(null)
+  const [daCo, setDaCo] = useState<Set<string>>(new Set())     // ngày đã có checkin (chấm xanh trên lịch)
+  const [ngay, setNgay] = useState<string | null>(null)
+  const tu = (khoang ?? []).reduce((m, k) => (k.tu < m ? k.tu : m), homQua)
+  const taiDaCo = () => { congCuaToi(tu, homQua).then((ds) => setDaCo(new Set(ds.filter((r) => r.loai_dong === 'ca' && r.duyet !== 'tu_choi').map((r) => r.ngay)))).catch(() => {}) }
+  useEffect(() => { khaiBuChoPhep().then(setKhoang).catch(() => setKhoang([])) }, [])
+  useEffect(() => { if (khoang) taiDaCo() }, [khoang]) // eslint-disable-line
+  const dot = (khoang ?? []).find((k) => k.han)
+  return (
+    <div className="flex flex-col gap-2">
+      <button onClick={onBack} className="self-start rounded-full bg-white/90 px-3 py-1.5 text-[13px] font-bold text-[#2F73F6]">‹ Về hôm nay</button>
+      <div className="overflow-hidden rounded-[22px] bg-white shadow-sm">
+        <div className="bg-[#8B6BEF] px-4 py-3">
+          <p className="font-bubble text-[19px] font-extrabold text-white">Khai bù ngày trước</p>
+          <p className="text-[12.5px] text-white/85">{dot?.han ? `Chọn ngày từ ${ngayDu(tu)} đến ${ngayDu(homQua)} · hạn ${gioVN(dot.han)} ngày ${ngayDu(ngayCuaTs(new Date(dot.han).getTime()))}` : `Chỉ khai bù được ngày ${ngayDu(homQua)} (trong 24 giờ)`}</p>
+        </div>
+        <div className="px-3 py-3">
+          {khoang === null ? <p className="text-[13px] text-[#63709A]">Đang tải…</p>
+            : <LichChonNgay tu={tu} den={homQua} chon={ngay} daCo={daCo} onChon={setNgay} />}
+          <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px] text-[#63709A]">
+            <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full bg-[#1E9E5A]" /> đã có checkin</span>
+            <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full bg-[#8B6BEF]" /> đang chọn</span>
+          </p>
+        </div>
+      </div>
+      {ngay
+        ? <NgayCong key={ngay} ngay={ngay} onDoi={() => { taiDaCo(); onDoi?.() }} />
+        : <p className="rounded-[20px] bg-white/80 px-3 py-4 text-center text-[13px] text-[#63709A]">Chọn một ngày trên lịch để khai bù.</p>}
+    </div>
+  )
+}
+
+// Lịch tháng, tuần bắt đầu Thứ 2; chỉ bấm được ngày trong [tu, den]. Ngày = chuỗi 'YYYY-MM-DD', tính bằng lib/tuan (không qua Date local).
+const THU_LICH = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']
+function LichChonNgay({ tu, den, chon, daCo, onChon }: { tu: string; den: string; chon: string | null; daCo: Set<string>; onChon: (d: string) => void }) {
+  const thang: string[] = []
+  for (let m = dauThang(tu); m <= dauThang(den); m = dauThang(congNgay(m, 32))) thang.push(m)
+  return (
+    <div className="flex flex-col gap-3">
+      {thang.map((m) => {
+        const lech = ((soNgayGiua('2026-01-05', m) % 7) + 7) % 7   // 05/01/2026 là Thứ 2 ⇒ số ô trống đầu tháng
+        const ngays: (string | null)[] = Array(lech).fill(null)
+        for (let d = m; d <= cuoiThang(m); d = congNgay(d, 1)) ngays.push(d)
+        return (
+          <div key={m}>
+            <p className="mb-1 text-[13px] font-bold text-[#16224D]">Tháng {Number(m.slice(5, 7))}/{m.slice(0, 4)}</p>
+            <div className="grid grid-cols-7 gap-1">
+              {THU_LICH.map((t) => <span key={t} className="text-center text-[11px] font-semibold text-[#9AA5C4]">{t}</span>)}
+              {ngays.map((d, i) => {
+                if (!d) return <span key={'x' + i} />
+                const duoc = d >= tu && d <= den, laChon = d === chon, co = daCo.has(d)
+                return (
+                  <button key={d} disabled={!duoc} onClick={() => onChon(d)}
+                    className={`relative flex h-11 items-center justify-center rounded-xl text-[14px] font-bold transition ${laChon ? 'bg-[#8B6BEF] text-white' : duoc ? 'bg-[#F4F7FE] text-[#16224D] active:bg-[#E6DDFF]' : 'text-[#C9D0E3]'}`}>
+                    {Number(d.slice(8, 10))}
+                    {co && <span className={`absolute bottom-1 h-1.5 w-1.5 rounded-full ${laChon ? 'bg-white' : 'bg-[#1E9E5A]'}`} />}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+// ── CÔNG CỦA MỘT NGÀY (hôm nay hoặc ngày khai bù): ca có mặt · việc theo lịch (chỉ hôm nay) · việc đã ghi · thêm việc ──
+function NgayCong({ ngay, onDoi }: { ngay: string; onDoi?: () => void }) {
   const homNay = homNayVN()
-  const [ngay, setNgay] = useState(homNay)          // ngày đang xem/ghi: hôm nay, hoặc ngày khai bù
   const laHomNay = ngay === homNay
   const [dong, setDong] = useState<DongCong[] | null>(null)
   const [goiY, setGoiY] = useState<GoiY[]>([])
-  const [khoang, setKhoang] = useState<KhoangKhaiBu[]>([])
   const [loai, setLoai] = useState<LoaiViec[]>([])
   const [lop, setLop] = useState<{ id: string; ten_lop: string; mon: string }[]>([])
   const [ban, setBan] = useState<string | null>(null)   // thao tác đang chạy
   const [moThem, setMoThem] = useState(false)
   const { setTb, el: thongBao } = useThongBao()
 
-  const tai = async (d = ngay) => {
-    const [c, g] = await Promise.all([congCuaToi(d, d), d === homNay ? goiYViec() : Promise.resolve([] as GoiY[])])
+  // quét nền: giữ list cũ tới khi có list mới (không trắng màn). Đổi ngày = component mới (key) nên không cần dọn.
+  const tai = async () => {
+    const [c, g] = await Promise.all([congCuaToi(ngay, ngay), laHomNay ? goiYViec() : Promise.resolve([] as GoiY[])])
     setDong(c); setGoiY(g)
   }
   useEffect(() => {
-    dsLoaiViec().then(setLoai).catch(() => {}); dsLop().then(setLop).catch(() => {}); khaiBuChoPhep().then(setKhoang).catch(() => {})
-  }, [])
-  // đổi NGÀY = đổi ngữ cảnh ⇒ xoá + tải lại; thao tác trong ngày ⇒ quét nền (tai) giữ list cũ
-  useEffect(() => { setDong(null); setGoiY([]); setMoThem(false); tai(ngay).catch((e) => setTb({ ok: false, t: loiCua(e) })) }, [ngay]) // eslint-disable-line
+    dsLoaiViec().then(setLoai).catch(() => {}); dsLop().then(setLop).catch(() => {})
+    tai().catch((e) => { setTb({ ok: false, t: loiCua(e) }); setDong([]) })
+  }, []) // eslint-disable-line
 
   const chay = async (ma: string, fn: () => Promise<unknown>, ok: string) => {
     setBan(ma); setTb(null)
@@ -78,32 +178,19 @@ function HomNay({ onDoi }: { onDoi?: () => void }) {
   const viecs = (dong ?? []).filter((r) => r.loai_dong === 'viec')
   const caMo = laHomNay ? cas.find((c) => !c.ra_at) : undefined
   const coCa = cas.length > 0
-  const ngayMin = khoang.reduce((m, k) => (k.tu < m ? k.tu : m), congNgay(homNay, -1))
-  const dot = khoang.find((k) => k.han)
 
   return (
     <div className="flex flex-col gap-2">
       {thongBao}
-      {/* chọn ngày: hôm nay / khai bù */}
-      <div className="flex flex-wrap items-center gap-2 rounded-[20px] bg-white/90 px-3 py-2">
-        <button onClick={() => setNgay(homNay)} className={`rounded-full px-3 py-1 text-[12.5px] font-bold ${laHomNay ? 'bg-[#2F73F6] text-white' : 'bg-[#EEF3FF] text-[#2F73F6]'}`}>Hôm nay</button>
-        <label className="flex items-center gap-1.5 text-[12.5px] font-semibold text-[#63709A]">
-          Khai bù ngày
-          <input type="date" value={laHomNay ? '' : ngay} min={ngayMin} max={congNgay(homNay, -1)}
-            onChange={(e) => e.target.value && setNgay(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1 text-[12.5px] text-[#16224D]" />
-        </label>
-        {dot?.han && <span className="text-[11px] text-[#63709A]">Đang mở khai lùi {ddmmVN(dot.tu)}–{ddmmVN(dot.den)}, hạn {gioVN(dot.han)} {ddmmVN(ngayCuaTs(new Date(dot.han).getTime()))}</span>}
-      </div>
-
       {/* CA CÓ MẶT */}
       <div className="rounded-[22px] bg-white/90 p-3">
-        <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">{laHomNay ? 'Hôm nay' : 'Khai bù'} · {thuCuaNgay(ngay)} {ddmmVN(ngay)}</p>
+        <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">{laHomNay ? 'Hôm nay' : 'Ngày'} · {thuCuaNgay(ngay)} {ngayDu(ngay)}</p>
         {dong === null ? <p className="py-2 text-[13px] text-[#63709A]">Đang tải…</p> : <>
           {cas.map((c) => <DongCa key={c.id} c={c} />)}
           {laHomNay && (caMo
             ? <button disabled={!!ban} onClick={() => chay('out', checkout, 'Đã checkout')} className="mt-2 w-full rounded-2xl bg-[#F57C2B] py-3.5 text-[17px] font-extrabold text-white active:scale-[.99] disabled:opacity-50">Checkout</button>
             : <button disabled={!!ban} onClick={() => chay('in', checkin, 'Đã checkin')} className="mt-2 w-full rounded-2xl bg-[#1E9E5A] py-3.5 text-[17px] font-extrabold text-white active:scale-[.99] disabled:opacity-50">{coCa ? 'Checkin ca mới' : 'Checkin'}</button>)}
-          {!laHomNay && <KhaiBuCa coCaMo={cas.some((c) => !c.ra_at)} ban={!!ban} onLuu={(v, r) => chay('bu', () => khaiBuCa(ngay, v, r), `Đã khai bù ca ngày ${ddmmVN(ngay)}`)} />}
+          {!laHomNay && <KhaiBuCa coCaMo={cas.some((c) => !c.ra_at)} coCa={coCa} ban={!!ban} onLuu={(v, r) => chay('bu', () => khaiBuCa(ngay, v, r), `Đã khai bù ca ngày ${ngayDu(ngay)}`)} />}
         </>}
       </div>
 
@@ -137,7 +224,7 @@ function HomNay({ onDoi }: { onDoi?: () => void }) {
       {/* VIỆC ĐÃ GHI + THÊM VIỆC */}
       {dong !== null && (
         <div className="rounded-[22px] bg-white/90 p-3">
-          <p className="font-bubble text-[16px] font-extrabold text-[#16224D]">Việc đã ghi công {laHomNay ? 'hôm nay' : 'ngày ' + ddmmVN(ngay)}</p>
+          <p className="font-bubble text-[16px] font-extrabold text-[#16224D]">Việc đã ghi công {laHomNay ? 'hôm nay' : 'ngày ' + ngayDu(ngay)}</p>
           {viecs.length === 0 ? <p className="pt-1 text-[12.5px] text-[#63709A]">Chưa ghi công việc nào.</p>
             : <div className="mt-1.5 flex flex-col gap-1.5">{viecs.map((v) => <DongViec key={v.id} v={v} ban={ban === 'b' + v.id} onBo={() => chay('b' + v.id, () => boViec(v.id), 'Đã bỏ việc')} />)}</div>}
           {!moThem
@@ -198,12 +285,14 @@ function DongViec({ v, ban, onBo }: { v: DongCong; ban?: boolean; onBo?: () => v
   )
 }
 
-function KhaiBuCa({ coCaMo, ban, onLuu }: { coCaMo: boolean; ban: boolean; onLuu: (vao: string, ra: string) => void }) {
+function KhaiBuCa({ coCaMo, coCa, ban, onLuu }: { coCaMo: boolean; coCa: boolean; ban: boolean; onLuu: (vao: string, ra: string) => void }) {
   const [vao, setVao] = useState('17:00')
   const [ra, setRa] = useState('21:00')
+  const [moThem, setMoThem] = useState(false)
+  if (coCa && !coCaMo && !moThem) return <button onClick={() => setMoThem(true)} className="mt-2 rounded-full bg-[#EEF3FF] px-3 py-1.5 text-[12.5px] font-bold text-[#2F73F6]">+ Khai thêm một ca nữa trong ngày</button>
   return (
     <div className="mt-2 rounded-2xl bg-[#F4F7FE] p-2.5">
-      <p className="text-[12.5px] font-semibold text-[#63709A]">{coCaMo ? 'Ca ngày này chưa checkout — điền giờ checkout (giờ checkin giữ nguyên).' : 'Quên checkin/checkout ngày này? Khai giờ thật, quản lý sẽ duyệt như thường.'}</p>
+      <p className="text-[12.5px] font-semibold text-[#63709A]">{coCaMo ? 'Ca ngày này chưa checkout — điền giờ checkout (giờ checkin giữ nguyên).' : 'Khai giờ checkin / checkout thật của ngày này, quản lý sẽ duyệt như thường.'}</p>
       <div className="mt-1.5 flex flex-wrap items-end gap-2">
         <label className="flex flex-col text-[11.5px] font-semibold text-[#63709A]">Checkin<input type="time" value={vao} onChange={(e) => setVao(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1 text-[13px] text-[#16224D]" /></label>
         <label className="flex flex-col text-[11.5px] font-semibold text-[#63709A]">Checkout<input type="time" value={ra} onChange={(e) => setRa(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1 text-[13px] text-[#16224D]" /></label>
