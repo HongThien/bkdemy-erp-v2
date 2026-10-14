@@ -191,6 +191,7 @@ export type YKho = {
 export type BaiKho = {
   id: string; ma_bai: string; khoi: string | null; nguon: string | null; nguon_ma_cau: string | null
   de_bai: string; gia_thiet_chung: string | null; huong_dan: string | null; anh_de: string | null; can_tach_tay: boolean
+  mo_hinh_id: string | null   // mô hình luyện đã gán cho CẢ BÀI (null = chưa)
   y: YKho[]
 }
 export type BaiMoHinhLuyen = {
@@ -223,5 +224,19 @@ export async function ganYVaoBai(yId: string, baiToanId: string | null): Promise
 /** Duyệt (hoặc bỏ duyệt) MỌI ý của một bài kho trong 1 lần ghi + ghi vết người duyệt trên bài (mig 202610141115). */
 export async function duyetBaiKho(baiId: string, duyet: boolean): Promise<void> {
   const { error } = await supabase.rpc('fn_hl_duyet_bai', { p_bai: baiId, p_duyet: duyet })
+  if (error) throw error
+}
+
+// ══════════════════ GÁN BÀI KHO → MÔ HÌNH (mig 202610141237) ══════════════════
+export type MoHinhLuyen = { id: string; ma: string; ten: string; chu_de_id: string | null; so_bai: number }
+/** Mô hình LUYỆN gốc của một khối (kèm số bài cả cây) — để gán bài kho, kể cả mô hình chưa có bài. */
+export async function moHinhLuyenCuaKhoi(khoi: string): Promise<MoHinhLuyen[]> {
+  const { data, error } = await supabase.rpc('fn_hl_mo_hinh_luyen', { p_khoi: khoi })
+  if (error) throw error
+  return ((data ?? []) as (MoHinhLuyen & { so_bai: number | string })[]).map((r) => ({ ...r, so_bai: Number(r.so_bai) }))
+}
+/** Gán (null = gỡ) bài kho vào một mô hình luyện. */
+export async function ganBaiVaoMoHinh(baiId: string, moHinhId: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_gan_bai_mo_hinh', { p_bai: baiId, p_mo_hinh: moHinhId })
   if (error) throw error
 }

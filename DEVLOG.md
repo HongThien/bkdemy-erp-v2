@@ -37554,3 +37554,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sai (của tôi):** gõ `node scripts/migrate.mjs --help` để xem cờ — script KHÔNG có `--help`, coi như lệnh áp trần ⇒ thử áp cả 18 file treo; may là chết ngay file đầu (`202609182334_so_tay_revoke_anon`: permission denied for function hs_sotay_cay), mỗi file 1 transaction ⇒ không file nào lọt (đã kiểm `--status`: vẫn đủ 18 treo). Bài học: đọc nguồn script để biết cờ, không thử cờ lạ trên script có quyền ghi.
 - **Sai (của tôi):** HANDOFF ghi "ĐANG CHỜ Thùy + Trang test mockup" — tôi áp migration mà CHƯA hỏi lại mockup đã duyệt chưa (coi câu "tiếp tục hoàn thành" là đã duyệt). Migration chỉ thêm bảng/hàm + 1 trigger ghi log trên `phan_cong_lop`; nếu mockup đổi luật thì viết migration MỚI đè.
 - **Quyền:** chưa gán `ta_cong_duyet` / `ta_luong`. Vai "Core team" của Trang có cả Lộc ⇒ gán vào đó là lộ lương cho Lộc (spec §1 #19: chỉ CEO + Trang). Chờ Thùy chọn: tạo vai riêng (hiện thành nhóm mới trên sơ đồ tổ chức) hay cách khác. Thùy là admin nên test được mọi hàm.
+
+### 14/10 — Duyệt kho Hình luyện: nút GÁN MÔ HÌNH cho cả bài
+- **Thùy:** "Chưa thấy nút nào để gán mô hình cho bài cần duyệt".
+- **Nguyên nhân:** màn chỉ cho gán Ý → BÀI của mô hình (ô gõ nhỏ dưới mỗi ý); MH.072/MH.073 khối 8 chưa có bài ⇒ không có gì để chọn, trông như không có nút.
+- **Sửa:** mig `202610141237` (áp `--only`): `fn_hl_kho_chua_phan` trả thêm `mo_hinh_id` (thân lấy từ bản đang chạy) · `fn_hl_mo_hinh_luyen(p_khoi)` · `fn_hl_gan_bai_mo_hinh(p_bai, p_mo_hinh)` (chỉ nhận mô hình luyện gốc cây; NULL = gỡ) · grant authenticated, revoke anon. UI: khối "Mô hình của bài" ngay dưới mã bài, nút teal "＋ Gán mô hình" mở ô tìm–chọn (mã · tên · số bài), đã gán thì chip + Đổi + gỡ; vá tại chỗ. Ô gán ý lọc theo bài của mô hình đã gán, mô hình 0 bài thì nhắc thêm bài ở Bản đồ mới.
+- **Kiểm:** tsc sạch; dev (Admin) mở tab, danh sách hiện MH.072/073/074 — không bấm gán thật để khỏi đụng dữ liệu CEO.

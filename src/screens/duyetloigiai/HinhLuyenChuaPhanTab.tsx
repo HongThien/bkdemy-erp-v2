@@ -6,7 +6,7 @@
 // Hàng đợi + đếm tính ở DB. Sau mỗi thao tác VÁ TẠI CHỖ; nhớ danh sách + bài đang xem theo khối tới khi F5.
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as api from '../../lib/kho/api'
-import type { BaiKho, BaiMoHinhLuyen, YKho } from '../../lib/kho/hinhCay'
+import type { BaiKho, BaiMoHinhLuyen, MoHinhLuyen, YKho } from '../../lib/kho/hinhCay'
 import { MathText } from '../kho/ui'
 
 const TRANG = 30
@@ -17,6 +17,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
   const [het, setHet] = useState(() => NHO[khoi]?.het ?? false)
   const [vt, setVt] = useState(() => NHO[khoi]?.vt ?? 0)                // bài đang xem (chỉ số trong danh sách đã nạp)
   const [chon, setChon] = useState<BaiMoHinhLuyen[]>([])
+  const [moHinhs, setMoHinhs] = useState<MoHinhLuyen[]>([])              // mô hình luyện của khối — gán cho CẢ BÀI
   const [tong, setTong] = useState<{ so_bai: number; so_y: number } | null>(null)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
@@ -40,6 +41,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
     const n = NHO[khoi]
     if (n) { setBai(n.bai); setHet(n.het); setVt(n.vt) } else { setBai([]); setHet(false); setVt(0); void nap([]) }
     api.baiMoHinhLuyen(khoi).then(setChon).catch(() => setChon([]))
+    api.moHinhLuyenCuaKhoi(khoi).then(setMoHinhs).catch(() => setMoHinhs([]))
     api.demChuaPhanMoHinh().then((d) => { const x = d.find((r) => r.khoi === khoi); setTong(x ? { so_bai: x.so_bai, so_y: x.so_y } : { so_bai: 0, so_y: 0 }) }).catch(() => setTong(null))
   }, [khoi]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { NHO[khoi] = { bai, het, vt } }, [bai, het, vt, khoi])
@@ -72,6 +74,13 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
     if (!b) return
     setBan(y.id); setLoi(null)
     try { await api.ganYVaoBai(y.id, baiToanId); vaY(b.id, y.id, { baitoan_id: baiToanId }); onChanged?.() }
+    catch (e: any) { setLoi(e.message ?? String(e)) }
+    finally { setBan(null) }
+  }
+  const ganBai = async (moHinhId: string | null) => {
+    if (!b) return
+    setBan('mh'); setLoi(null)
+    try { await api.ganBaiVaoMoHinh(b.id, moHinhId); vaBai(b.id, (x) => ({ ...x, mo_hinh_id: moHinhId })) }
     catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setBan(null) }
   }
@@ -136,6 +145,19 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
             {b.can_tach_tay && <span className="rounded border border-amber-400 bg-amber-50 px-1.5 font-semibold text-amber-800" title="Máy không tách được ý — bài đang là 1 ý">⚠ cần tách ý tay</span>}
             {daDuyet(b) && <span className="rounded bg-emerald-100 px-1.5 font-semibold text-emerald-800">✓ đã duyệt nội dung</span>}
           </div>
+          {/* ⭐ GÁN MÔ HÌNH cho cả bài (CEO 14/10 "chưa thấy nút nào để gán mô hình") — làm được cả khi mô hình chưa có bài */}
+          <div className="mb-3 flex flex-wrap items-center gap-2 rounded-xl border border-teal-200 bg-teal-50/60 px-3 py-2">
+            <span className="text-[12px] font-semibold uppercase tracking-wide text-teal-800">Mô hình của bài</span>
+            {(() => { const m = moHinhs.find((x) => x.id === b.mo_hinh_id); return b.mo_hinh_id ? (
+              <>
+                <span className="rounded-full bg-teal-600 px-2.5 py-0.5 text-[13px] font-semibold text-white">{m ? `${m.ma} · ${m.ten}` : 'mô hình đã gán'}</span>
+                {m && <span className="text-[12px] text-teal-700">{m.so_bai} bài trong mô hình</span>}
+                <ChonMoHinh moHinhs={moHinhs} disabled={ban === 'mh'} nhan="Đổi" onChon={(id) => void ganBai(id)} />
+                <button disabled={ban === 'mh'} onClick={() => void ganBai(null)} className="text-[12px] text-rose-600 hover:underline disabled:opacity-40">gỡ</button>
+              </>) : (
+              <ChonMoHinh moHinhs={moHinhs} disabled={ban === 'mh'} nhan="＋ Gán mô hình" chinh onChon={(id) => void ganBai(id)} />) })()}
+            <span className="ml-auto text-[11.5px] text-slate-500">Gán mô hình cho cả bài trước; gán từng ý vào bài của mô hình ở dưới.</span>
+          </div>
 
           {/* đề chung | hình bài. Bài MỘT Ý: hình bài đứng cạnh chính ý đó (bên dưới), hàng đề không lặp lại hình (CEO 14/10). */}
           <Hang hinh={motY ? null : b.anh_de} chuThich={motY ? '' : b.anh_de ? 'Hình bài · giả thiết chung' : 'Chưa có hình bài'} an={motY} onPhong={setPhong}>
@@ -181,7 +203,11 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
                         </>) })() : (
                         <>
                           <span className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[12px] font-semibold text-amber-800">chưa phân mô hình</span>
-                          <ChonBaiMoHinh chon={chon} disabled={ban === y.id} onChon={(id) => void gan(y, id)} />
+                          {(() => {
+                            const trongMH = b.mo_hinh_id ? chon.filter((c) => c.goc_id === b.mo_hinh_id) : chon
+                            if (b.mo_hinh_id && !trongMH.length) return <span className="text-[12px] text-slate-500">Mô hình này chưa có bài — thêm bài ở <b>Bản đồ mới › Hình – Luyện</b> rồi gán ý vào.</span>
+                            return <ChonBaiMoHinh chon={trongMH} disabled={ban === y.id} onChon={(id) => void gan(y, id)} />
+                          })()}
                         </>)}
                       <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-600" title="Câu hỏi + lời giải của ý này đã đúng">
                         <input type="checkbox" checked={y.da_duyet} disabled={ban === y.id} onChange={() => void duyetY(y)} /> duyệt ý này
@@ -191,7 +217,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
                 </Hang>)
             })}
           </div>
-          {!chon.length && (
+          {!moHinhs.length && (
             <div className="mt-3 rounded-md border border-amber-300 bg-amber-50 px-3 py-1.5 text-[12px] text-amber-800">
               Khối {khoi} chưa có mô hình luyện nào — dựng ở <b>Bản đồ mới › chủ đề vùng Hình – Luyện</b>, rồi quay lại đây gán. Duyệt nội dung không cần chờ mô hình.
             </div>)}
@@ -239,6 +265,38 @@ function Hang({ hinh, chuThich, rieng, goc, gon, an, onPhong, children }: {
 const Muc = ({ ten, children }: { ten: string; children: React.ReactNode }) => (
   <div className="mb-4"><div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">{ten}</div>{children}</div>
 )
+
+/** Nút + ô tìm–chọn MÔ HÌNH luyện (gán cho cả bài). Mô hình chưa có bài vẫn chọn được. */
+function ChonMoHinh({ moHinhs, disabled, nhan, chinh, onChon }: {
+  moHinhs: MoHinhLuyen[]; disabled: boolean; nhan: string; chinh?: boolean; onChon: (id: string) => void
+}) {
+  const [mo, setMo] = useState(false)
+  const [tu, setTu] = useState('')
+  const loc = useMemo(() => { const k = tu.trim().toLowerCase(); return k ? moHinhs.filter((m) => `${m.ma} ${m.ten}`.toLowerCase().includes(k)) : moHinhs }, [tu, moHinhs])
+  if (!moHinhs.length) return <span className="text-[12px] text-amber-700">Khối này chưa có mô hình luyện — tạo ở Bản đồ mới › Hình – Luyện.</span>
+  return (
+    <div className="relative">
+      <button disabled={disabled} onClick={() => setMo(!mo)}
+        className={chinh ? 'h-8 rounded-lg bg-teal-600 px-3 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-500 disabled:opacity-50'
+          : 'rounded-md border border-teal-300 px-2 py-0.5 text-[12px] text-teal-700 hover:bg-teal-50 disabled:opacity-50'}>{nhan}</button>
+      {mo && (
+        <div className="absolute left-0 top-full z-30 mt-1 w-[380px] rounded-lg border border-slate-200 bg-white p-1.5 shadow-lg">
+          <input autoFocus value={tu} onChange={(e) => setTu(e.target.value)} placeholder="Tìm mô hình…"
+            className="mb-1 w-full rounded-md border border-slate-300 px-2 py-1 text-[12.5px] outline-none focus:border-teal-500" />
+          <div className="max-h-64 overflow-auto">
+            {!loc.length && <div className="px-2 py-1.5 text-[12px] text-slate-400">Không khớp mô hình nào.</div>}
+            {loc.map((m) => (
+              <button key={m.id} onClick={() => { onChon(m.id); setMo(false); setTu('') }}
+                className="flex w-full items-baseline gap-2 rounded px-2 py-1 text-left text-[12.5px] hover:bg-teal-50">
+                <span className="shrink-0 font-mono text-[11px] text-slate-400">{m.ma}</span>
+                <span className="min-w-0 flex-1 truncate text-slate-800">{m.ten}</span>
+                <span className="shrink-0 text-[11px] text-slate-400">{m.so_bai} bài</span>
+              </button>))}
+          </div>
+        </div>)}
+    </div>
+  )
+}
 
 /** Ô tìm–chọn bài mô hình (gõ là lọc; không dùng dropdown dài). */
 function ChonBaiMoHinh({ chon, disabled, onChon }: { chon: BaiMoHinhLuyen[]; disabled: boolean; onChon: (id: string) => void }) {
