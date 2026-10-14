@@ -8,6 +8,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import SearchSelect from '../../components/SearchSelect'
 import { BKTabHeader, BKSegmented } from '../../components/bk/BKUI'
+import HuongDanCong, { daXemHuongDanCong, ghiDaXemHuongDanCong } from './HuongDanCong'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay, ngayCuaTs, soNgayGiua } from '../../lib/tuan'
 import {
   checkin, checkout, khaiBuCa, goiYViec, congCuaToi, khaiBuChoPhep, boViec, ghiCong, dsLoaiViec, dsLop, luongCuaToi,
@@ -26,9 +27,13 @@ const ngayDu = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4
 export default function CongTA({ nsId, onBack, onDoi }: { nsId: string; onBack: () => void; onDoi?: () => void }) {
   const [tab, setTab] = useState<Tab>('nay')
   const [khaiBu, setKhaiBu] = useState(false)   // màn Khai bù (mở từ card trong tab Hôm nay)
+  // Tutorial (Thùy 14/10): tự hiện lần đầu TA mở Chấm công; nút "Hướng dẫn" để xem lại. ?hd=1 ép hiện (trang xem thử).
+  const [hd, setHd] = useState(() => !daXemHuongDanCong(nsId) || new URLSearchParams(location.search).get('hd') === '1')
   return (
     <div>
-      <BKTabHeader icon={A('pr_calendar')} title="Chấm công" sub="Checkin · ghi công · bảng công · lương" onBack={onBack} />
+      <BKTabHeader icon={A('pr_calendar')} title="Chấm công" sub="Checkin · ghi công · bảng công · lương" onBack={onBack}
+        right={<button onClick={() => setHd(true)} className="shrink-0 rounded-full bg-[#EEF3FF] px-3 py-1.5 text-[12.5px] font-bold text-[#3B62C4] active:scale-95">Hướng dẫn</button>} />
+      {hd && <HuongDanCong onXong={() => { ghiDaXemHuongDanCong(nsId); setHd(false) }} />}
       <div className="mx-auto flex max-w-[640px] flex-col gap-2 px-2 pb-6">
         <BKSegmented value={tab} onChange={(t) => { setTab(t); setKhaiBu(false) }} items={[{ key: 'nay', label: 'Hôm nay' }, { key: 'bang', label: 'Bảng công' }, { key: 'luong', label: 'Lương' }]} />
         {tab === 'nay' && (khaiBu ? <KhaiBu onDoi={onDoi} onBack={() => setKhaiBu(false)} /> : <HomNay onDoi={onDoi} onKhaiBu={() => setKhaiBu(true)} />)}
