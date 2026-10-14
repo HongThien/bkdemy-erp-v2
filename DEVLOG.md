@@ -37706,3 +37706,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Làm:** `spec-bot-telegram-ta.md` (chưa code). Quyết định kỹ thuật chính: webhook ghi tin ngay (Telegram giữ update 24h, bot không đọc lại lịch sử nhóm) · privacy mode tắt TRƯỚC khi vào nhóm · danh tính bằng mã nối 1 lần, không theo tên · danh sách việc = 1 hàm DB `fn_tg_viec_ton`, khoá `ref_key` trùng `gay_de_xuat.ref_key` · gậy đi qua đường quyết định đang có.
 - **Phát hiện khi dò:** người phụ trách khối đã có ở `phan_cong_khoi` (khối 3–12 Toán) · "duyệt HS báo sai" vẫn tính ở client (`gami.ts`) ⇒ phải đưa xuống DB trước khi gom vào bản tin.
 - **Chờ Thùy:** tạo bot @BotFather, tắt privacy, thêm vào nhóm làm admin, token vào `.env.local` + Vercel project TA; nên có nhóm test.
+
+## 14/10 — Vòng quay may mắn: "mỗi ngày chỉ quay 1 lần"
+- **Thùy:** "Chỗ quay vòng quay, mỗi ngày chỉ được quay 1 lần thôi."
+- **Kiểm (không phải đoán):** luật ĐÃ nằm ở 3 lớp — `fn_may_man_hs_quay` (kiểm `exists` + advisory lock), `UNIQUE (hoc_sinh_id, ngay)` trên `may_man_hs_luot` (thử chèn tay lần 2 ⇒ DB từ chối), và bảng không có policy INSERT cho học sinh. Dữ liệu 7 ngày gần đây: số lượt = số học sinh mỗi ngày (14/10: 13/13), 0 dòng trùng. Không tái hiện được việc quay 2 lần.
+- **Chỗ có thể trông giống "quay lại được":** lời mời "Em có 1 lượt quay may mắn!" ở màn chính có thể NHÁY LẠI khi em về từ màn quay (Home còn giữ số cũ tới khi tải xong), nhất là khi vào quay từ màn Nhiệm vụ (không qua lời mời). Sửa: `MayManHS` đánh dấu "đã quay hôm nay" (sessionStorage, cùng khoá lời mời) ngay khi quay xong và khi thấy `hom_nay` đã có.
+- **Chưa rõ:** nếu Thùy thấy 1 em quay 2 lần thật (tài khoản/ngày) thì cần mã em đó — vòng quay SỰ KIỆN (fn_sk_quay, `toi_da_luot` theo cấu hình) và vòng quay tiền "May mắn" (fn_may_man_quay) là hai hệ khác, không phải vòng quay HS này.
