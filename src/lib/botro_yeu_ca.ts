@@ -77,6 +77,7 @@ export async function viecBoTroCuaToi(): Promise<{ ca: ViecCaBoTro[]; retest: Vi
 export type CumTienDo = { ma_cum: string | null; ten: string; so_cau: number; so_dung: number; so_goi_y: number; cau_cuoi_at: string | null }
 export type DangCaTA = {
   ma_dang: string; ten_dang: string; ten_chuyen_de: string
+  la_hinh_mh?: boolean // bài mô hình Hình (bước 2, 14/10): dạy + chấm trên GIẤY, không luyện trên app
   day_at: string | null; day_buoi_id: string | null; dong_at: string | null; diem_luc_mo: number | null
   retest_diem: number | null; retest_at: string | null; dat: boolean | null
   so_cau: number; so_dung: number; so_goi_y: number; cau_cuoi_at: string | null; cums: CumTienDo[]
@@ -170,6 +171,7 @@ export async function caTheoDoi(ngay?: string): Promise<CaTheoDoi[]> {
 }
 export type CauInGiay = {
   id: string; thu_tu: number; ma_cau: string | null; ma_dang: string | null; ten_dang: string
+  la_hinh_mh?: boolean
   noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; dap_an_key: unknown; loi_giai: string | null
   chon: number | null; verdict: 'correct' | 'wrong' | null // câu trả lời ngắn (lua_chon rỗng): TA chấm 1 = đúng · 0 = sai (Thùy 10/10)
 }
@@ -180,6 +182,12 @@ export type BaiInGiay = {
 }
 export async function inSinhBaiGiay(buoiId: string, soCauMoiDang = 5): Promise<{ bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }> {
   const { data, error } = await supabase.rpc('fn_btyeu_in_sinh', { p_buoi: buoiId, p_so_cau: soCauMoiDang })
+  if (error) throw error
+  return data as { bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }
+}
+// Ca 📱 app mà có dạng Hình mô hình: chỉ in RIÊNG các dạng Hình (dạng thường em làm trên iPad). Đã có phiếu rồi thì in thêm được.
+export async function inSinhHinhGiay(buoiId: string, soCauMoiDang = 2): Promise<{ bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_in_sinh_hinh', { p_buoi: buoiId, p_so_cau: soCauMoiDang })
   if (error) throw error
   return data as { bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }
 }

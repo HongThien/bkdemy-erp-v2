@@ -2,7 +2,7 @@
 // Bổ trợ yếu theo dạng không thấy Hình mô hình ⇒ danh sách này để TA biết em nào yếu mô hình nào; dạy trên giấy rồi bấm "Đã dạy".
 // KHÔNG import màn ERP desktop (luật app TA). Số + trạng thái ở DB (fn_hinh_yeu_theo_mo_hinh). Class màu literal (Tailwind JIT).
 import { useEffect, useMemo, useState } from 'react'
-import { hinhYeuTheoMoHinh, danhDauDaDay, TIN_TEN, type HinhYeuRow } from '../../lib/botro_hinh_yeu'
+import { hinhYeuTheoMoHinh, danhDauDaDay, duaVaoCase, TIN_TEN, type HinhYeuRow } from '../../lib/botro_hinh_yeu'
 import { ddmmVN } from '../../lib/tuan'
 
 const SO_HS_DAU = 6 // gọn: hiện 6 em đầu, còn lại bấm xem hết
@@ -25,6 +25,16 @@ export default function HinhYeuTA() {
   }, [loc])
   const soChua = (rows ?? []).filter((r) => !r.da_day || r.yeu_sau_day).length
   const hienThi = het ? theoHs : theoHs.slice(0, SO_HS_DAU)
+
+  async function duaCase(r: HinhYeuRow) {
+    const key = r.hoc_sinh_id + r.hinh_baitoan_id
+    setBusy(key); setLoi(null)
+    try {
+      const kq = await duaVaoCase(r.hoc_sinh_id, r.hinh_baitoan_id)
+      if (!kq.ok) { setLoi(`${r.ho_ten} chưa có case bổ trợ yếu đang mở — nhờ OPS duyệt em ở Duyệt bổ trợ.`); return }
+      setRows((prev) => (prev ?? []).map((x) => x.hoc_sinh_id === r.hoc_sinh_id && x.hinh_baitoan_id === r.hinh_baitoan_id ? { ...x, trong_case: true } : x))
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
 
   async function danhDau(r: HinhYeuRow, daDay: boolean) {
     const key = r.hoc_sinh_id + r.hinh_baitoan_id
@@ -69,6 +79,9 @@ export default function HinhYeuTA() {
                         <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                           <span className="rounded-full bg-[#FFE3EA] px-2 py-0.5 text-[10.5px] font-bold text-[#C0355A]">{Math.round(r.score * 100)}%</span>
                           <span className="rounded-full bg-white px-2 py-0.5 text-[10.5px] text-[#63709A] ring-1 ring-[#DCE6FF]">{r.n} lần · {TIN_TEN[r.tin]}{r.cuoi_do ? ` · ${ddmmVN(r.cuoi_do)}` : ''}</span>
+                          {r.trong_case
+                            ? <span className="rounded-full bg-[#EEF3FF] px-2 py-0.5 text-[10.5px] font-bold text-[#2F73F6]">trong case bổ trợ</span>
+                            : r.co_case_yeu && <button disabled={busy === key} onClick={() => duaCase(r)} className="rounded-full bg-[#8B6BEF] px-2.5 py-1 text-[11px] font-bold text-white disabled:opacity-50">{busy === key ? '…' : '+ Đưa vào case'}</button>}
                           {r.yeu_sau_day && <span className="rounded-full bg-[#FFE3EA] px-2 py-0.5 text-[10.5px] font-bold text-[#C0355A]">dạy rồi vẫn yếu</span>}
                           {r.da_day ? (
                             <button disabled={busy === key} onClick={() => danhDau(r, false)} className="ml-auto rounded-full bg-[#E4F8EC] px-2.5 py-1 text-[11px] font-bold text-[#1E8A52] disabled:opacity-50" title="Bấm để bỏ đánh dấu">
