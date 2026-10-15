@@ -37806,3 +37806,6 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy (xem bản thử):** "chưa khớp deadline — chỉ thông báo việc đã trễ" · "đã trễ + chưa làm".
 - **Làm:** `_tg_viec_ton` có hạn cho mọi loại trong bản tin: ET/BTVN = `fn_han_viec` (cùng hạn gậy) · ET bù 12:00 hôm sau · BTVN bù = `_bu_btvn_han` (tách từ `fn_bu_btvn_viec_cua_toi`, hết ngày hạn) · chấm công + quên checkout = 24 giờ sau khi kết thúc. Bản tin lọc `han < 08:00` ngày bản tin, mỗi mục kèm "trễ N ngày". Tiêu đề "BẢN TIN VIỆC TRỄ".
 - **Nợ:** công thức hạn BTVN bù ở 2 nơi (`fn_bu_btvn_viec_cua_toi` + `_bu_btvn_han`).
+
+### 15/10 — [Bot Telegram TA] Chấm công = "Cần hoàn thành", không gọi trễ (mig 202610151359 ĐÃ ÁP)
+- **Thùy:** "Trễ chỉ tính cho BTVN, ET… Riêng chấm công để là Cần hoàn thành" (chấm công vừa ra hôm qua). ⇒ bản tin: ET/BTVN chưa làm + đã trễ; chấm công = mọi buổi/ca chưa ghi công tới hết hôm qua, dòng "⏳ Cần hoàn thành chấm công"; số "việc trễ" chỉ đếm ET/BTVN; tiêu đề "BẢN TIN CÔNG VIỆC TRỢ GIẢNG". Script `--chi "<họ tên>"` gửi đúng 1 tin mẫu.

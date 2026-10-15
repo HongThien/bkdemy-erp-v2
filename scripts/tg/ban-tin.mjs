@@ -1,6 +1,7 @@
 // Bản tin 08:00 — xem / gửi thử (spec-bot-telegram-ta.md §3.1). Chạy từ gốc repo:
 //   node scripts/tg/ban-tin.mjs --xem [YYYY-MM-DD]                 → in chữ bản tin ra màn hình (không gửi)
 //   node scripts/tg/ban-tin.mjs --gui-rieng "Đào Xuân Thùy"        → gửi CẢ bản tin vào chat riêng của người đó (đã nối Telegram), KHÔNG ghi tg_ban_tin
+//        thêm --chi "<họ tên TA>": chỉ gửi đúng tin của TA đó (xem mẫu)
 //   node scripts/tg/ban-tin.mjs --dang                             → đăng thật vào các nhóm đã bật (= cron 08:00)
 //   thêm --mig <file.sql>: áp migration trong transaction rồi ROLLBACK (thử trước khi áp thật; không dùng với --dang)
 import fs from 'fs';
@@ -27,8 +28,11 @@ try {
       const r = (await c.query("select l.tg_user_id from tg_lien_ket l join nhan_su n on n.id = l.nhan_su_id where l.den_at is null and n.ho_ten = $1", [ai])).rows[0];
       if (!r) throw new Error(`${ai} chưa nối Telegram`);
       await tg('sendMessage', { chat_id: r.tg_user_id, text: '🧪 <b>BẢN XEM TRƯỚC</b> — bản tin 08:00 sẽ đăng vào nhóm như dưới đây (chưa đăng thật).', parse_mode: 'HTML' });
-      for (const t of [dau, ...tin.map((x) => x.text)]) { await tg('sendMessage', { chat_id: r.tg_user_id, text: t, parse_mode: 'HTML', disable_web_page_preview: true }); await new Promise((s) => setTimeout(s, 400)); }
-      console.log(`Đã gửi ${1 + tin.length} tin vào chat riêng của ${ai}.`);
+      const chi = lay('--chi');
+      let ds = [dau, ...tin.map((x) => x.text)];
+      if (chi) { const ns = (d.ta ?? []).find((t) => t.ho_ten === chi)?.nhan_su_id; const x = tin.find((t) => t.nhan_su_id === ns); if (!x) throw new Error(`${chi} không có tin hôm nay`); ds = [x.text]; }
+      for (const t of ds) { await tg('sendMessage', { chat_id: r.tg_user_id, text: t, parse_mode: 'HTML', disable_web_page_preview: true }); await new Promise((s) => setTimeout(s, 400)); }
+      console.log(`Đã gửi ${ds.length + 1} tin vào chat riêng của ${ai}.`);
     } else {
       console.log(dau.replace(/<[^>]+>/g, '')); for (const t of tin) console.log('\n' + t.text.replace(/<[^>]+>/g, ''));
       console.log(`\n— ${tin.length} TA · tin dài nhất ${Math.max(...tin.map((t) => t.text.length))} ký tự (giới hạn 4096)`);
