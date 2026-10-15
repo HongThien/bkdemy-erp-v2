@@ -116,6 +116,9 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   useEffect(() => {
     const f = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && !lt && !ganMo && chon) { setChon(null); return }
+      if (chon?.loai === 'dang_bai' && !lt && !ganMo && !dangGo(e.target) && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+        e.preventDefault(); denDangBai(viTriDb + (e.key === 'ArrowRight' ? 1 : -1)); return
+      }
       if (dangGo(e.target) || lt || ganMo || chon?.loai === 'nhom' || chon?.loai === 'dang_bai') return
       if (e.key === 'ArrowUp') { e.preventDefault(); if (e.altKey && o) doiThuTuCD(o.chuyen_de_id, -1); else buocChuyenDe(-1) }
       if (e.key === 'ArrowDown') { e.preventDefault(); if (e.altKey && o) doiThuTuCD(o.chuyen_de_id, 1); else buocChuyenDe(1) }
@@ -186,7 +189,19 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   // thứ tự = thứ tự hiển thị chuyên đề → nhóm → dạng bài. Hết chuyên đề thì sang chuyên đề kế.
   const chuoiDb = useMemo(() => (chuDe ? chuDe.o.flatMap((x) => x.nhom.flatMap((n) => n.dang_bai.map((d) => ({ d, n, o: x })))) : []), [chuDe])
   const buocLt = lt && lt.loai !== 'nhom' ? (() => { const i = chuoiDb.findIndex((c) => c.d.id === lt.id); return i < 0 ? -1 : i * 2 + (lt.loai === 'db_vd' ? 1 : 0) })() : -1
-  const diBuoc = (b: number) => { const c = chuoiDb[Math.floor(b / 2)]; if (c) void moLyThuyet(b % 2 ? 'db_vd' : 'db_lt', c.d.id, c.d.ten) }
+  const diBuoc = (b: number) => {
+    const c = chuoiDb[Math.floor(b / 2)]; if (!c) return
+    void moLyThuyet(b % 2 ? 'db_vd' : 'db_lt', c.d.id, c.d.ten)
+    if (chon?.loai === 'dang_bai') denDangBai(Math.floor(b / 2)) // đóng khung LT/VD là về đúng popup dạng đang xem
+  }
+  // Popup dạng bài: ‹ › sang dạng trước/sau theo cùng chuỗi (CEO 15/10) — qua chuyên đề khác thì đổi chuyên đề theo
+  const viTriDb = chon?.loai === 'dang_bai' ? chuoiDb.findIndex((c) => c.d.id === chon.id) : -1
+  const denDangBai = (i: number) => { const c = chuoiDb[i]; if (!c) return; setChuyenDeId(c.o.chuyen_de_id); setChon({ loai: 'dang_bai', id: c.d.id }) }
+  const dieuHuongDb = viTriDb < 0 ? undefined : {
+    truoc: viTriDb > 0 ? () => denDangBai(viTriDb - 1) : null,
+    sau: viTriDb < chuoiDb.length - 1 ? () => denDangBai(viTriDb + 1) : null,
+    nhan: `dạng bài ${viTriDb + 1}/${chuoiDb.length}`,
+  }
 
   // Tiến độ soạn của khối — đếm thứ đang hiển thị (badge)
   const tienDo = useMemo(() => {
@@ -288,7 +303,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           </div>
           {chon?.loai === 'chu_de' && (
             <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o ?? chuDe.o[0]} khoi={khoi} onDong={() => setChon(null)}
-              lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
+              lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} dieuHuong={dieuHuongDb} />
           )}
         </div>
       ) : (
@@ -359,7 +374,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 
         {chon && chuDe && (chon.loai === 'chu_de' || o) && (
           <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o ?? chuDe.o[0]} khoi={khoi} onDong={() => setChon(null)}
-            lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} />
+            lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} dieuHuong={dieuHuongDb} />
         )}
       </div>
       )}
@@ -622,6 +637,19 @@ function ThanhDuyetDangBai({ chuoi, buoc, roiDuoc, onDi, onLuuMoTa }: {
   )
 }
 
+// Nút tròn lớn hai bên popup dạng bài (ngoài hộp): sang dạng trước/sau mà không phải đóng–mở lại.
+// mouseDown giữ mặc định ⇒ ô mô tả/tên đang gõ blur trước ⇒ lưu cho đúng dạng cũ rồi mới chuyển.
+function NutChuyenDang({ huong, onBam }: { huong: 'truoc' | 'sau'; onBam: (() => void) | null }) {
+  return (
+    <button onClick={(e) => { e.stopPropagation(); onBam?.() }} disabled={!onBam}
+      title={huong === 'truoc' ? 'Dạng bài trước (phím ←)' : 'Dạng bài sau (phím →)'}
+      className="flex shrink-0 flex-col items-center gap-1 text-white disabled:invisible">
+      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-3xl font-bold text-violet-700 shadow-xl ring-4 ring-white/30 hover:bg-violet-50">{huong === 'truoc' ? '‹' : '›'}</span>
+      <span className="text-[12px] font-semibold drop-shadow">{huong === 'truoc' ? 'Dạng trước' : 'Dạng sau'}</span>
+    </button>
+  )
+}
+
 function DauTienDo({ moTa, noiDung, nhanNoiDung, noiDung2, nhanNoiDung2 }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string; noiDung2?: boolean; nhanNoiDung2?: string }) {
   return (
     <span className="flex shrink-0 gap-0.5 pt-1">
@@ -693,21 +721,25 @@ function ChiTiet(p: {
   moLyThuyet: (loai: LoaiNoiDung, id: string, ten: string) => void
   onDaXoa: () => void
   moGan: (o: BdmO, n: BdmNhom | null) => void
+  dieuHuong?: { truoc: (() => void) | null; sau: (() => void) | null; nhan: string }
 }) {
   const { chon, cay, cd, o, lam } = p
   const goCu = (dich: BdmDich) => (ma: string, ten: string) => void lam(() => goDoiUngTheoDich(ma, dich), `Đã gỡ gắn «${ten}»`)
   // Nhóm bài / dạng bài: POPUP GIỮA MÀN (CEO 08/10). Chủ đề / chuyên đề: khung phải như cũ.
   const giuaMan = chon.loai === 'nhom' || chon.loai === 'dang_bai'
   const khung = (tieuDe: string, mau: string, noiDung: ReactNode) => giuaMan ? (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/40 p-6" onClick={p.onDong}>
+    <div className="fixed inset-0 z-40 flex items-center justify-center gap-5 bg-slate-900/40 p-6" onClick={p.onDong}>
+      {chon.loai === 'dang_bai' && p.dieuHuong && <NutChuyenDang huong="truoc" onBam={p.dieuHuong.truoc} />}
       <div className="flex max-h-full w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className={`flex items-center gap-2 px-5 py-3 text-white ${mau}`}>
           <span className="flex-1 text-[14px] font-semibold">{tieuDe}</span>
-          <span className="text-[11px] text-white/60">Esc để đóng</span>
+          {chon.loai === 'dang_bai' && p.dieuHuong && <span className="rounded-full bg-white/20 px-2 py-0.5 text-[11.5px] font-medium">{p.dieuHuong.nhan}</span>}
+          <span className="text-[11px] text-white/60">{chon.loai === 'dang_bai' && p.dieuHuong ? '← → chuyển dạng · Esc để đóng' : 'Esc để đóng'}</span>
           <button onClick={p.onDong} className="text-white/70 hover:text-white">✕</button>
         </div>
         <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-5">{noiDung}</div>
       </div>
+      {chon.loai === 'dang_bai' && p.dieuHuong && <NutChuyenDang huong="sau" onBam={p.dieuHuong.sau} />}
     </div>
   ) : (
     <div className="flex w-[380px] shrink-0 flex-col border-l border-slate-200 bg-white">
