@@ -37819,3 +37819,6 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ### 15/10 — [Bot Telegram TA] Bản tin tag TRƯỞNG khối cho mọi TA (mig 202610151412 ĐÃ ÁP)
 - **Thùy:** "TA là Phó khối thì ghi Trưởng khối, đỡ 2 bạn quản lẫn nhau" → "chuyển tất cả phụ trách ở đây là Trưởng khối". `_khoi_nguoi_theo_doi(mon, khoi, ta)` = Trưởng của khối có việc, không tag chính mình. Chấm MT không đổi (Phó, không có ⇒ Trưởng).
+
+### 15/10 ~14:30 — [Bot Telegram TA] ĐĂNG bản tin đầu tiên vào nhóm thật (Thùy: "đăng vào nhóm cho mọi người xem thử")
+- Bật `tg_nhom.ban_tin_bat` cho nhóm "Trợ giảng BK_Vận hành Chat"; `ban-tin.mjs --dang` gửi 22 tin (1 tiêu đề + 21 TA), ghi `tg_ban_tin` ngày 15/10. Từ đây cron 08:00 tự đăng (khi project TA đã deploy bản có `api/tg-ban-tin.mjs` + vercel.json cron).
