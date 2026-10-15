@@ -91,7 +91,7 @@ const thuOf = (ngay: string): number => { const d = new Date(ngay + 'T00:00:00')
 const toMin = (t: string): number => { const [h, m] = t.slice(0, 5).split(':').map(Number); return h * 60 + m }
 const LOAI_BOTRO_NHAN: Record<string, string> = { bu: 'bù', bo_tro_yeu: 'bổ trợ yếu', bo_tro_duoi: 'bổ trợ đuổi' }
 
-export type NguonPhong = 'chinh_khoa' | 'bo_tro' | 'phat_sinh'
+export type NguonPhong = 'chinh_khoa' | 'bo_tro' | 'phat_sinh' | 'test'
 export type KhoiBanPhong = {
   nguon: NguonPhong
   phong_ma: string
@@ -112,7 +112,7 @@ export async function lichPhongNgay(ngay: string): Promise<KhoiBanPhong[]> {
   const maSet = new Set(phongs.map((p) => p.ma_phong))
   const thu = thuOf(ngay)
 
-  const [buoiRes, tkbRes, hdRes] = await Promise.all([
+  const [buoiRes, tkbRes, hdRes, testRes] = await Promise.all([
     supabase.from('buoi_hoc')
       .select('id, lop_id, phong, gio_bat_dau, gio_ket_thuc, loai, lop:lop_id(ten_lop,mon), nguoi_day:nguoi_day(ho_ten), nguoi_day_tg:nguoi_day_tg(ho_ten)')
       .eq('ngay', ngay).in('loai', ['thuong', 'bu', 'bo_tro_yeu', 'bo_tro_duoi']).neq('trang_thai', 'huy').limit(LIMIT),
@@ -122,10 +122,13 @@ export async function lichPhongNgay(ngay: string): Promise<KhoiBanPhong[]> {
     supabase.from('hoat_dong_phong')
       .select('id, gio_bat_dau, gio_ket_thuc, loai, tieu_de, phong:phong_id(ma_phong), nhan_su:nguoi_tao_id(ho_ten)')
       .eq('ngay', ngay).eq('trang_thai', 'xac_nhan').limit(LIMIT),
+    // Nguồn 4 (15/10): khung TEST ĐẦU VÀO giữ trọn khung (mig 202610151730) — buổi đã đóng thì không có
+    supabase.rpc('fn_phong_lich_test_ngay', { p_ngay: ngay }),
   ])
   if (buoiRes.error) throw buoiRes.error
   if (tkbRes.error) throw tkbRes.error
   if (hdRes.error) throw hdRes.error
+  if (testRes.error) throw testRes.error
 
   const out: KhoiBanPhong[] = []
   const lopIdsDaMo = new Set<string>() // lớp đã có buổi 'thuong' mở thật cho ngày này — TKB của lớp này bỏ qua, tránh đếm đôi
@@ -162,6 +165,14 @@ export async function lichPhongNgay(ngay: string): Promise<KhoiBanPhong[]> {
       nguon: 'phat_sinh', phong_ma: phongMa, gio_bat_dau: h.gio_bat_dau, gio_ket_thuc: h.gio_ket_thuc,
       tieu_de: h.tieu_de, phu_trach: h.nhan_su?.ho_ten ?? null, ref_id: h.id,
       loai_phat_sinh: h.loai, phong_khong_khop_danh_muc: !phongMa,
+    })
+  }
+
+  for (const t of (testRes.data ?? []) as any[]) {
+    out.push({
+      nguon: 'test', phong_ma: t.ma_phong, gio_bat_dau: t.gio_bat_dau, gio_ket_thuc: t.gio_ket_thuc,
+      tieu_de: `Test đầu vào${t.so_hen ? ` · ${t.so_hen} hẹn` : ''}`, phu_trach: null, ref_id: `test-${t.khung_id}`,
+      phong_khong_khop_danh_muc: !maSet.has(t.ma_phong),
     })
   }
 

@@ -14,8 +14,9 @@ function shiftNgay(ngay: string, delta: number): string {
 const hhmm = (t: string) => t.slice(0, 5)
 const thuLabel = (ngay: string) => ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'][new Date(ngay + 'T00:00:00').getDay()]
 
-const NGUON_TONE: Record<'chinh_khoa' | 'bo_tro', string> = {
+const NGUON_TONE: Record<'chinh_khoa' | 'bo_tro' | 'test', string> = {
   chinh_khoa: 'border-l-4 border-indigo-400 bg-indigo-50/70 text-indigo-900',
+  test: 'border-l-4 border-sky-400 bg-sky-50/70 text-sky-900',
   bo_tro: 'border-l-4 border-amber-400 bg-amber-50/70 text-amber-900',
 }
 const PHAT_SINH_TONE: Record<LoaiHoatDong, string> = {
@@ -23,7 +24,7 @@ const PHAT_SINH_TONE: Record<LoaiHoatDong, string> = {
   hoc_tap_ngoai_lich: 'border-l-4 border-emerald-400 bg-emerald-50/70 text-emerald-900',
   viec_khac: 'border-l-4 border-rose-400 bg-rose-50/70 text-rose-900',
 }
-const NGUON_NHAN: Record<'chinh_khoa' | 'bo_tro', string> = { chinh_khoa: 'Chính khóa', bo_tro: 'Bổ trợ' }
+const NGUON_NHAN: Record<'chinh_khoa' | 'bo_tro' | 'test', string> = { chinh_khoa: 'Chính khóa', bo_tro: 'Bổ trợ', test: 'Tuyển sinh' }
 
 function toneOf(k: KhoiBanPhong): string {
   if (k.nguon === 'phat_sinh') return PHAT_SINH_TONE[k.loai_phat_sinh ?? 'viec_khac']

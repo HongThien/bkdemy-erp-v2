@@ -6,9 +6,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   getTongQuan, getFormDangKy, doiLichHen, huyHen, listKhung, themKhung, boKhung, dongBuoi, moBuoi, datThoiLuong,
-  listTruong, themTruong, anTruong, THU_TEN, THU_NGAN, KENH_TEN, THOI_LUONG_TEST,
-  type TongQuan, type Hen, type Khung, type Truong, type Cap, type FormData, type DangKyKetQua,
+  listTruong, themTruong, anTruong, khungTrungPhong, THU_TEN, THU_NGAN, KENH_TEN, THOI_LUONG_TEST,
+  type TongQuan, type Hen, type Khung, type Truong, type Cap, type FormData, type DangKyKetQua, type TrungPhong,
 } from '../../lib/dangKyTest'
+import { listPhong, type Phong } from '../../lib/phong'
 import DangKyTestForm, { LichMon } from './DangKyTestForm'
 
 const ddmm = (ymd: string) => `${ymd.slice(8, 10)}/${ymd.slice(5, 7)}`
@@ -114,7 +115,7 @@ export default function LichTestScreen() {
                 <div key={b.khung_id + b.ngay} className={`rounded-2xl border bg-white shadow-sm ${b.dong ? 'border-slate-200 opacity-70' : 'border-slate-200'}`}>
                   <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-2.5">
                     <div className="text-[15px] font-semibold text-slate-800">{THU_NGAN[b.thu]} {ddmm(b.ngay)}</div>
-                    <div className="text-[13px] text-slate-500">{b.tu}–{b.den}</div>
+                    <div className="text-[13px] text-slate-500">{b.tu}–{b.den}{b.phong && ` · ${b.phong}`}</div>
                     {b.hen.length > 0 && <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[12px] font-semibold text-indigo-700">{b.hen.length} hẹn</span>}
                     {b.dong && <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[12px] text-slate-600">Đã đóng</span>}
                     {b.khung_da_xoa && <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[12px] text-slate-600">Khung đã bỏ</span>}
@@ -238,7 +239,18 @@ function CaiDat({ tq, onDoi }: { tq: TongQuan; onDoi: () => void }) {
   const [tenTruong, setTenTruong] = useState('')
   const [capTruong, setCapTruong] = useState<Cap[]>(['thcs'])
   const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { listKhung().then(setKhung).catch(() => {}); listTruong().then(setTruong).catch(() => {}) }, [])
+  const [phongs, setPhongs] = useState<Phong[]>([])
+  const [phongId, setPhongId] = useState<string>('')
+  const [trung, setTrung] = useState<TrungPhong[]>([])
+  useEffect(() => { listKhung().then(setKhung).catch(() => {}); listTruong().then(setTruong).catch(() => {}); listPhong().then(setPhongs).catch(() => {}) }, [])
+  // Báo trùng phòng ngay khi chọn (DB cũng chặn lúc lưu)
+  useEffect(() => {
+    if (!phongId || !(den > tu)) { setTrung([]); return }
+    let alive = true
+    khungTrungPhong(phongId, thu, tu, den).then((r) => { if (alive) setTrung(r) }).catch(() => { if (alive) setTrung([]) })
+    return () => { alive = false }
+  }, [phongId, thu, tu, den])
+  const biChan = trung.some((t) => t.muc === 'chan')
   useEffect(() => { setTl(tq.mon_theo_lop) }, [tq])
 
   const lops = useMemo(() => [...new Set(tl.map((x) => x.lop))], [tl])
@@ -253,12 +265,12 @@ function CaiDat({ tq, onDoi }: { tq: TongQuan; onDoi: () => void }) {
       <div className="grid gap-4 lg:grid-cols-2">
         <div className={box}>
           <div className="mb-1 text-[15px] font-semibold text-slate-800">Khung lịch test cố định (lặp mỗi tuần)</div>
-          <div className="mb-3 text-[12px] text-slate-400">PH chọn giờ bắt đầu trong khung, bước 15 phút; bài phải xong trước giờ kết thúc khung. Áp cho mọi môn.</div>
+          <div className="mb-3 text-[12px] text-slate-400">Mỗi khung 1 phòng, giữ trọn khung trên Lịch phòng. PH chọn giờ bắt đầu trong khung, bước 15 phút; bài phải xong trước giờ kết thúc khung. Áp cho mọi môn.</div>
           <div className="mb-3 space-y-1.5">
             {khung.length === 0 && <div className="text-[13px] text-slate-300">Chưa có khung nào</div>}
             {khung.map((k) => (
               <div key={k.id} className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-2 text-[14px]">
-                <b className="w-[80px] text-slate-700">{THU_TEN[k.thu]}</b><span className="text-slate-600">{hm(k.gio_bat_dau)}–{hm(k.gio_ket_thuc)}</span>
+                <b className="w-[80px] text-slate-700">{THU_TEN[k.thu]}</b><span className="text-slate-600">{hm(k.gio_bat_dau)}–{hm(k.gio_ket_thuc)}</span><span className="rounded-md bg-sky-100 px-1.5 py-0.5 text-[12px] font-medium text-sky-700">{k.phong?.ten_phong ?? '?'}</span>
                 <button onClick={() => { if (confirm(`Bỏ khung ${THU_TEN[k.thu]} ${hm(k.gio_bat_dau)}–${hm(k.gio_ket_thuc)}? Hẹn đã đặt vẫn giữ nguyên.`)) run(async () => { await boKhung(k.id); setKhung((p) => p.filter((x) => x.id !== k.id)); onDoi() }) }}
                   className="ml-auto text-[12px] text-slate-400 hover:text-rose-600">Bỏ khung</button>
               </div>
@@ -269,9 +281,23 @@ function CaiDat({ tq, onDoi }: { tq: TongQuan; onDoi: () => void }) {
             <input type="time" step={900} className={inp} value={tu} onChange={(e) => setTu(e.target.value)} />
             <span className="text-slate-400">→</span>
             <input type="time" step={900} className={inp} value={den} onChange={(e) => setDen(e.target.value)} />
-            <button onClick={() => run(async () => { const k = await themKhung(thu, tu, den); setKhung((p) => [...p, k].sort((a, b) => a.thu - b.thu || a.gio_bat_dau.localeCompare(b.gio_bat_dau))); onDoi() })}
-              className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[14px] font-medium text-white">+ Thêm khung</button>
+            <select className={inp} value={phongId} onChange={(e) => setPhongId(e.target.value)}>
+              <option value="">— Phòng —</option>
+              {phongs.map((p) => <option key={p.id} value={p.id}>{p.ten_phong}{p.ten_phong !== p.ma_phong ? ` (${p.ma_phong})` : ''}</option>)}
+            </select>
+            <button disabled={!phongId || biChan} onClick={() => run(async () => { const k = await themKhung(thu, tu, den, phongId); setKhung((p) => [...p, k].sort((a, b) => a.thu - b.thu || a.gio_bat_dau.localeCompare(b.gio_bat_dau))); setTrung([]); onDoi() })}
+              className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[14px] font-medium text-white disabled:bg-slate-200 disabled:text-slate-400">+ Thêm khung</button>
           </div>
+          {trung.length > 0 && (
+            <div className="mt-2 space-y-1 text-[12px]">
+              {biChan && <div className="font-medium text-rose-700">Phòng đã có lịch cố định trùng giờ — chọn phòng hoặc giờ khác:</div>}
+              {trung.map((t, i) => (
+                <div key={i} className={`rounded-lg px-2.5 py-1 ${t.muc === 'chan' ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-800'}`}>
+                  {t.muc === 'chan' ? '⛔' : '⚠'} {t.mo_ta}{t.muc === 'canh_bao' && ' — buổi lẻ, vẫn lưu được, nhớ dời'}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className={box}>

@@ -48,7 +48,7 @@ export type Hen = {
   lop: string | null; truong: string | null; mon: string; khung_id: string; ngay: string; gio_bat_dau: string; gio_xong: string
   thoi_luong_phut: number; nguon: 'web' | 'nhap_thay'; kenh: Kenh | null; truong_tu_go: boolean; created_at: string; tinh_trang: TinhTrangHen
 }
-export type BuoiTQ = { khung_id: string; ngay: string; thu: number; tu: string; den: string; dong: boolean; khung_da_xoa: boolean; hen: Hen[] }
+export type BuoiTQ = { khung_id: string; ngay: string; thu: number; tu: string; den: string; dong: boolean; khung_da_xoa: boolean; phong: string | null; hen: Hen[] }
 export type TongQuan = {
   tu: string; den: string; buoi: BuoiTQ[]; lo_hen: Hen[]
   truong_tu_go: { ten: string; so_hen: number }[]
@@ -75,19 +75,27 @@ export async function henCuaUngVien(ungVienId: string): Promise<{ ngay: string; 
   return (data ?? null) as any
 }
 
-// Khung tuần
-export type Khung = { id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string }
+// Khung tuần — mỗi khung 1 phòng, giữ trọn khung trên Lịch phòng (mig 202610151730)
+export type Khung = { id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong_id: string; phong: { ten_phong: string } | null }
+const KHUNG_SELECT = 'id, thu, gio_bat_dau, gio_ket_thuc, phong_id, phong:phong_id(ten_phong)'
 export async function listKhung(): Promise<Khung[]> {
-  const { data, error } = await supabase.from('lich_test_khung').select('id, thu, gio_bat_dau, gio_ket_thuc').is('xoa_at', null).order('thu').order('gio_bat_dau').limit(200)
+  const { data, error } = await supabase.from('lich_test_khung').select(KHUNG_SELECT).is('xoa_at', null).order('thu').order('gio_bat_dau').limit(200)
   if (error) throw error
-  return (data ?? []) as Khung[]
+  return (data ?? []) as unknown as Khung[]
 }
-export async function themKhung(thu: number, tu: string, den: string): Promise<Khung> {
+export async function themKhung(thu: number, tu: string, den: string, phongId: string): Promise<Khung> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('lich_test_khung').insert({ thu, gio_bat_dau: tu, gio_ket_thuc: den, created_by: user?.id ?? null })
-    .select('id, thu, gio_bat_dau, gio_ket_thuc').single()
-  if (error) throw new Error(/check/i.test(error.message) ? 'Giờ phải tròn 15 phút và giờ kết thúc sau giờ bắt đầu' : error.message)
-  return data as Khung
+  const { data, error } = await supabase.from('lich_test_khung').insert({ thu, gio_bat_dau: tu, gio_ket_thuc: den, phong_id: phongId, created_by: user?.id ?? null })
+    .select(KHUNG_SELECT).single()
+  if (error) throw new Error(/check constraint/i.test(error.message) ? 'Giờ phải tròn 15 phút và giờ kết thúc sau giờ bắt đầu' : error.message)
+  return data as unknown as Khung
+}
+// Trùng phòng của khung định lưu: 'chan' = TKB/khung test khác (DB chặn) · 'canh_bao' = buổi lẻ 60 ngày tới
+export type TrungPhong = { muc: 'chan' | 'canh_bao'; nguon: string; mo_ta: string }
+export async function khungTrungPhong(phongId: string, thu: number, tu: string, den: string): Promise<TrungPhong[]> {
+  const { data, error } = await supabase.rpc('fn_ts_khung_trung_phong', { p_phong: phongId, p_thu: thu, p_tu: tu, p_den: den })
+  if (error) throw error
+  return (data ?? []) as TrungPhong[]
 }
 // Bỏ khung = đưa vào kho rác (hẹn cũ vẫn trỏ được)
 export async function boKhung(id: string): Promise<void> {

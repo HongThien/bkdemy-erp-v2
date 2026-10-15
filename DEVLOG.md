@@ -37830,3 +37830,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 15/10 — [Lương TA] GV kiêm TA KHÔNG nhận lương TA, không chấm công (mig 202610151427 ĐÃ ÁP)
 - **Thùy:** "KO" (GV kiêm TA không nhận lương TA). `_ta_luong_tinh` bỏ `_la_gv_kiem_ta` cho kỳ ≥ `_ta_moc_cham_cong()` (T9 giữ nguyên: kiemchuan ERP 28.079.307 không đổi, T9 vẫn 7 GV kiêm TA có lương). `_ta_buoi_thieu_cong` bỏ buổi/ca/buổi bổ trợ của GV kiêm TA (14 ngày đầu T10: 297 ⇒ 141). Test chấm công/chốt kỳ/ngày phân công/gợi ý bổ trợ đều đạt.
 - Lương T10 tạm tính về 0 cho: Quỳnh Trang 133k, Dương 427k, Hải 80k, Hà Giang 320k, Anh Ngọc 227k, Thảo Nguyên 507k (chưa chốt kỳ nào). Xác định theo phân công GV HIỆN TẠI.
+
+### 15/10 — [Tuyển sinh] Lịch test gắn phòng, thông Quản lý phòng học (mig 202610151730 ĐÃ ÁP)
+- **Thùy:** "Lịch test phải có phòng, phải thông với Quản lý phòng học". Chốt: giữ trọn khung · không giới hạn theo sức chứa · 1 khung = 1 phòng · trùng TKB thì chặn.
+- **Làm:** `lich_test_khung.phong_id` NOT NULL (bảng đang 0 dòng); trigger chặn trùng TKB/khung test khác; `fn_ts_khung_trung_phong` (chặn + cảnh báo buổi lẻ 60 ngày); `fn_phong_lich_test_ngay` = nguồn thứ 4 của `lichPhongNgay` (Lịch phòng, Tổng quan tuần, kiểm trùng của Phát sinh/Xếp lịch bổ trợ). Màn Cài đặt chọn phòng + báo trùng tức thì; buổi hiện tên phòng.
+- **Kiểm:** ROLLBACK: CN 16–18 P201 bị chặn bởi 9K2 KHTN; khung chồng khung bị chặn; khung hợp lệ hiện ở lịch phòng + tổng quan. UI local: chọn P201 CN 16–18 ⇒ ⛔ + nút Thêm khung khoá; Lịch phòng tải bình thường.
+- **Chưa:** chiều ngược (sửa TKB vào phòng đang là khung test) chưa chặn.

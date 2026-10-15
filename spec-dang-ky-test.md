@@ -32,6 +32,14 @@
 - `ung_vien.nguon` = `web` (PH tự đăng ký) hoặc nguồn Lộc chọn; kênh nhập thay (Zalo/ĐT/Trực tiếp/Khác) ở `dang_ky_test.kenh`.
 - Hòm thư dùng loại `viec` sẵn có, liên kết màn `tuyensinh`.
 
+### Phòng (Thùy 15/10, mig `202610151730_lich_test_gan_phong.sql`)
+- Mỗi khung test = **1 phòng** (`lich_test_khung.phong_id`). Cần thêm phòng ⇒ tạo thêm khung cùng giờ ở phòng khác.
+- **Giữ trọn khung** trên Quản lý phòng học (Lịch phòng / Tổng quan tuần): nguồn thứ 4 "Tuyển sinh · Test đầu vào" (`fn_phong_lich_test_ngay`), kèm số hẹn. Đóng buổi test ⇒ phòng tự trả lại.
+- **Không giới hạn** số em theo sức chứa phòng.
+- Dựng khung trùng **TKB** hoặc **khung test khác** cùng phòng ⇒ **DB chặn** (trigger `_ts_khung_chan_trung`). Buổi lẻ (bù/bổ trợ/phát sinh) 60 ngày tới ⇒ chỉ cảnh báo (`fn_ts_khung_trung_phong`).
+- Phát sinh / xếp lịch bổ trợ đặt trùng khung test ⇒ `kiemTraTrungPhong` tự cảnh báo (vì khung đã nằm trong lịch phòng).
+- Chưa chặn chiều ngược: sửa TKB sang phòng/giờ đang là khung test thì không bị chặn (chỉ thấy chồng trên Lịch phòng).
+
 ## 3. Hàm
 - `fn_ts_dk_form(so_ngay, som_phut)` — dữ liệu form: lớp→môn→thời lượng, trường, buổi mở kèm **danh sách giờ bắt đầu + giờ xong theo từng thời lượng** (tính ở DB).
 - `fn_ts_dang_ky_test_web(p, ip)` — chỉ `service_role` (Edge Function). Web: 14 ngày tới, giờ bắt đầu cách bây giờ ≥ 60'.
