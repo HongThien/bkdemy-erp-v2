@@ -37826,3 +37826,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 15/10 — [Bot Telegram TA] Bỏ admin khỏi bản tin + GV kiêm TA không bị đòi chấm công (mig 202610151425 ĐÃ ÁP)
 - **Thùy:** "Bỏ Thùy ra khỏi danh sách · GV kiêm TA không cần chấm công." `_tg_ds_ta` bỏ `la_admin_he_thong`. `_la_gv_kiem_ta(ns)` = có phân công GV ở ≥1 lớp (hôm nay 9 người) ⇒ bản tin không hiện dòng chấm công của họ (ET/BTVN vẫn báo).
 - **Chưa đổi, chờ Thùy:** màn Thiếu công của Trang vẫn liệt kê buổi của GV kiêm TA; lương TA của họ tính phần TG từ công đã ghi ⇒ không chấm công = TG 0%.
+
+### 15/10 — [Lương TA] GV kiêm TA KHÔNG nhận lương TA, không chấm công (mig 202610151427 ĐÃ ÁP)
+- **Thùy:** "KO" (GV kiêm TA không nhận lương TA). `_ta_luong_tinh` bỏ `_la_gv_kiem_ta` cho kỳ ≥ `_ta_moc_cham_cong()` (T9 giữ nguyên: kiemchuan ERP 28.079.307 không đổi, T9 vẫn 7 GV kiêm TA có lương). `_ta_buoi_thieu_cong` bỏ buổi/ca/buổi bổ trợ của GV kiêm TA (14 ngày đầu T10: 297 ⇒ 141). Test chấm công/chốt kỳ/ngày phân công/gợi ý bổ trợ đều đạt.
+- Lương T10 tạm tính về 0 cho: Quỳnh Trang 133k, Dương 427k, Hải 80k, Hà Giang 320k, Anh Ngọc 227k, Thảo Nguyên 507k (chưa chốt kỳ nào). Xác định theo phân công GV HIỆN TẠI.
