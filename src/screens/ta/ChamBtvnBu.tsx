@@ -7,6 +7,7 @@ import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../compo
 import { seedBtvnBu, type BtvnBu } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { ET_KQ } from './ChamBuoi'
+import { MaHS } from '../../components/bk/BKUI'
 
 const NOP: { v: string; l: string }[] = [
   { v: 'nop_dung_han', l: 'Nộp đúng hạn' }, { v: 'nop_muon', l: 'Nộp muộn' }, { v: 'xin_phep', l: 'Đã xin phép' }, { v: 'khong_lam', l: 'Không làm bài' },
@@ -73,7 +74,7 @@ export default function ChamBtvnBu({ v, onBack }: { v: BtvnBu; onBack: () => voi
       <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-slate-200 bg-white px-3 py-2.5">
         <button onClick={onBack} className="h-9 w-9 rounded-full text-[20px] text-slate-500 active:bg-slate-100">‹</button>
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="truncate text-[15px] font-extrabold text-[#16224D]">BTVN bù · {v.ho_ten}</p>
+          <p className="truncate text-[15px] font-extrabold text-[#16224D]">BTVN bù · {v.ho_ten} <MaHS ma={v.ma_hs} className="ml-1 align-middle" /></p>
           <p className="truncate text-[11.5px] text-[#63709A]">{v.ten_lop} · bài buổi {ddmmVN(v.ngay_me)} · học bù {thuCuaNgay(v.ngay_bu)} {ddmmVN(v.ngay_bu)}{v.nguoi_day_bu ? ` (${v.nguoi_day_bu})` : ''} · hạn {ddmmVN(v.han)}</p>
         </div>
         {kq.trang_thai_nop && <span className="rounded-full bg-[#E4F8EC] px-2 py-0.5 text-[11px] font-bold text-[#1E8A52]">✓ đã ghi</span>}

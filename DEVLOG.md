@@ -37848,3 +37848,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Gốc lỗi (1):** trạm Sonnet G2 ghi tệp JSON qua chuỗi JS/shell ⇒ left→left, dfrac→dfrac, ight→CR+ight (DB lưu LF+ight). Cổng kiểm 14/10 chỉ đếm $ chẵn + JSON hợp lệ nên lọt; KaTeX cũng KHÔNG báo lỗi vì left(dfrac{1}{3}) là chữ thường hợp lệ. 4/65 trường dính: NDB00795 (LT+VD), NDB00798 (VD), NDB00796 (LT: ge thiếu ).
 - **Sửa:** vá deterministic (ký tự điều khiển + lệnh LaTeX trần trong $…$, bỏ qua 	ext{}) → 4 trường ghi lại, kiểm sau: 0 từ trần còn sót (trừ cases trong egin{cases}). NDB00796 VD viết lại TH1:/TH2: từng dòng, đúng quy ước các ví dụ đã có (TH1: …).
 - **Bài học:** kiểm công thức do trạm sinh phải có BƯỚC "từ ASCII ≥2 chữ trần trong $…$ (ngoài 	ext) = lệnh mất \" — KaTeX parse không bắt được; và ký tự điều khiển [ -]. Heredoc bash cũng ăn  khi viết chính script kiểm — viết script bằng Write tool.
+
+## 15/10 — [App TA · bổ trợ] Hiện MÃ HS ở mọi việc bổ trợ (yếu · bù · đuổi) để đăng nhập iPad cho em quên mã (mig 202610151745 ĐÃ ÁP)
+- **Thùy:** "Tất cả task bổ trợ của học sinh (cả 3 loại) hiển thị trên app TA thì hiển thị mã HS để đăng nhập iPad — nhiều em không nhớ mã."
+- **Hiện trạng:** yếu đã có ma_hs trong dữ liệu nhưng KHÔNG vẽ; bù + đuổi (fn_bu_ca_cua_toi / fn_duoi_ca_cua_toi) chỉ trả tên + lớp; trong ca bù/đuổi mã có nhưng chữ 11px xám nhạt.
+- **Làm:** 2 RPC thêm khoá ma_hs (app cũ bỏ qua khoá lạ); chip dùng chung `MaHS` (BKUI — chữ đậm, mono, chọn-copy được); gắn vào: ô Bổ trợ yếu · Bổ trợ bù · Bổ trợ đuổi ở Hôm nay, danh sách ca + retest yếu, header chi tiết ca yếu, BTVN bù (hàng + header), roster ca bù/đuổi (chữ to + nền), tiêu đề màn chấm giấy đuổi.
+- **Kiểm:** app TA chạy máy (Admin dev): 19 mã hiện ở 3 ô; header ca "Nguyễn Nam Hải · HS0327 · Toán · K8"; 31 BTVN bù đều có mã.

@@ -72,7 +72,8 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
   }
 
   if (giayPanel) {
-    const hoTen = roster.find((r) => r.hoc_sinh_id === giayPanel.hocSinhId)?.hoc_sinh?.ho_ten
+    const hs = roster.find((r) => r.hoc_sinh_id === giayPanel.hocSinhId)?.hoc_sinh
+    const hoTen = hs ? `${hs.ho_ten}${hs.ma_hs ? ` · ${hs.ma_hs}` : ''}` : undefined
     return (
       <DuoiGiayTA buoiId={buoiId} hocSinhId={giayPanel.hocSinhId} mon={giayPanel.mon} maDang={giayPanel.maDang} hoTen={hoTen}
         onBack={() => setGiayPanel(null)} onXong={() => { setGiayPanel(null); reload() }} />
@@ -110,7 +111,7 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
             <div key={r.id} className="mb-3 rounded-2xl bg-white p-3.5 shadow-sm ring-1 ring-slate-200/70">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-[14.5px] font-bold text-slate-800">{tenHT[i]}</span>
-                {r.hoc_sinh?.ma_hs && <span className="font-mono text-[11px] text-slate-400">{r.hoc_sinh.ma_hs}</span>}
+                {r.hoc_sinh?.ma_hs && <span title="Mã đăng nhập của em" className="select-all rounded-md bg-indigo-50 px-1.5 py-px font-mono text-[12.5px] font-extrabold tracking-wide text-indigo-700">{r.hoc_sinh.ma_hs}</span>}
                 {lopDuoiCua(r.hoc_sinh_id) && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">đuổi {lopDuoiCua(r.hoc_sinh_id)}{monDuoiCua(r.hoc_sinh_id) ? ` · ${monDuoiCua(r.hoc_sinh_id)}` : ''}</span>}
                 {!dgXong && <button onClick={() => onXoaHS(r)} title="Gỡ khỏi buổi" className="ml-auto rounded px-1.5 py-0.5 text-[12px] text-slate-300">✕</button>}
               </div>

@@ -16,7 +16,7 @@ import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
 import { setAppBadgeCount } from '../../lib/appBadge'
 import { NhacViecNutHeader } from '../../components/NhacViecCaiDat'
-import { BK_TROI, BKTabHeader, BKRowCard } from '../../components/bk/BKUI'
+import { BK_TROI, BKTabHeader, BKRowCard, MaHS } from '../../components/bk/BKUI'
 import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
@@ -302,7 +302,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
                   {buCho.slice(0, 3).map((x) => (
                     <span key={x.bhh_id} className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-1.5">
                       <span className="rounded-full bg-[#FFE9C7] px-1.5 py-px text-[10.5px] font-bold text-[#C27A00]">bù</span>
-                      <span className="min-w-0 flex-1 truncate text-[12.5px] font-bold text-[#16224D]">{x.ho_ten} · {x.ten_lop}</span>
+                      <span className="min-w-0 flex-1 truncate text-[12.5px] font-bold text-[#16224D]">{x.ho_ten} · {x.ten_lop}</span><MaHS ma={x.ma_hs} />
                       <span className="shrink-0 text-[10.5px] text-[#63709A]">bài {ddmmVN(x.ngay_me)}</span>
                     </span>
                   ))}
@@ -364,7 +364,7 @@ function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () 
         <div className="mt-2 flex flex-col gap-1">
           {homNayCa.map((c) => ( /* ca hôm nay KHÔNG cắt (luật 30/09) */
             <div key={c.buoi_id} className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2">
-              <span className="text-[13.5px] font-bold text-[#16224D]">{c.ho_ten}</span>
+              <span className="text-[13.5px] font-bold text-[#16224D]">{c.ho_ten}</span><MaHS ma={c.ma_hs} />
               <span className="min-w-0 truncate text-[11.5px] text-[#63709A]">{c.mon}{c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
               <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${c.danh_gia_xong_at ? 'bg-[#E4F8EC] text-[#1E8A52]' : c.diem_danh === 'co_mat' ? 'bg-[#EEF3FF] text-[#2F73F6]' : 'bg-[#F1F3F9] text-[#63709A]'}`}>
                 {c.danh_gia_xong_at ? 'xong' : c.co_test ? (c.test_da_nop ? 'chờ nhận xét' : 'chờ test') : c.diem_danh === 'co_mat' ? 'đang luyện' : 'chờ em'}
@@ -410,7 +410,7 @@ function BoxBu({ ca, homNay, onOpen, loai = 'bu' }: { ca: CaBu[]; homNay: string
                 <span className="text-[13.5px] font-bold text-[#16224D]">{c.ngay === homNay ? 'Hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`} · {hhmm(c.gio_bat_dau)}–{hhmm(c.gio_ket_thuc)}{c.phong ? ` · ${c.phong}` : ''}</span>
                 <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${c.danh_gia_xong_at ? 'bg-[#E4F8EC] text-[#1E8A52]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{c.danh_gia_xong_at ? 'xong' : 'mở ca'}</span>
               </span>
-              <span className="truncate text-[11.5px] text-[#63709A]">{(c.hs ?? []).map((h) => `${h.ho_ten}${h.lop ? ` (${h.lop})` : ''}`).join(', ') || 'chưa có em'}{c.cua_toi ? '' : ` · TA: ${c.nguoi_day_ten ?? '?'}`}</span>
+              <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11.5px] text-[#63709A]">{(c.hs ?? []).length === 0 ? 'chưa có em' : (c.hs ?? []).map((h, i) => <span key={i} className="inline-flex items-center gap-1"><span>{h.ho_ten}{h.lop ? ` (${h.lop})` : ''}</span><MaHS ma={h.ma_hs} /></span>)}{c.cua_toi ? '' : <span>{` · TA: ${c.nguoi_day_ten ?? '?'}`}</span>}</span>
             </button>
           ))}
           {ds.length > hien.length && <button onClick={() => setMoHet(true)} className="rounded-xl bg-white/60 px-3 py-1.5 text-left text-[12px] font-bold text-[#2F73F6]">+ {ds.length - hien.length} ca nữa — bấm xem hết</button>}
@@ -432,7 +432,7 @@ function DsBtvnBu({ ds, homNay, onMo }: { ds: BtvnBu[]; homNay: string; onMo: (x
           className={`flex w-full items-center gap-2 rounded-2xl px-3 py-2 text-left active:scale-[.99] ${x.xong ? 'bg-white/60' : 'bg-white ring-1 ring-[#F5C77A]'}`}>
           <span className="rounded-full bg-[#FFE9C7] px-1.5 py-px text-[10.5px] font-bold text-[#C27A00]">bù</span>
           <span className="min-w-0 flex-1 leading-tight">
-            <span className="block truncate text-[13.5px] font-bold text-[#16224D]">{x.ho_ten} · {x.ten_lop}</span>
+            <span className="block truncate text-[13.5px] font-bold text-[#16224D]">{x.ho_ten} · {x.ten_lop} <MaHS ma={x.ma_hs} className="ml-1" /></span>
             <span className="block truncate text-[11px] text-[#63709A]">bài {ddmmVN(x.ngay_me)} · học bù {ddmmVN(x.ngay_bu)}{x.nguoi_day_bu ? ` (${x.nguoi_day_bu})` : ''} · {x.so_cau} câu{x.da_cham ? ` · đã chấm ${x.da_cham}` : ''}</span>
           </span>
           <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${x.xong ? 'bg-[#E4F8EC] text-[#1E8A52]' : x.han < homNay ? 'bg-[#FFE4EA] text-[#C0355A]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{x.xong ? 'xong' : x.han < homNay ? '⚠ quá hạn' : `hạn ${ddmmVN(x.han)}`}</span>
