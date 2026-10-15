@@ -37857,3 +37857,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Hiện trạng:** yếu đã có ma_hs trong dữ liệu nhưng KHÔNG vẽ; bù + đuổi (fn_bu_ca_cua_toi / fn_duoi_ca_cua_toi) chỉ trả tên + lớp; trong ca bù/đuổi mã có nhưng chữ 11px xám nhạt.
 - **Làm:** 2 RPC thêm khoá ma_hs (app cũ bỏ qua khoá lạ); chip dùng chung `MaHS` (BKUI — chữ đậm, mono, chọn-copy được); gắn vào: ô Bổ trợ yếu · Bổ trợ bù · Bổ trợ đuổi ở Hôm nay, danh sách ca + retest yếu, header chi tiết ca yếu, BTVN bù (hàng + header), roster ca bù/đuổi (chữ to + nền), tiêu đề màn chấm giấy đuổi.
 - **Kiểm:** app TA chạy máy (Admin dev): 19 mã hiện ở 3 ô; header ca "Nguyễn Nam Hải · HS0327 · Toán · K8"; 31 BTVN bù đều có mã.
+
+### 15/10 — [Tuyển sinh] Thời lượng test + "Lớp 4 CLC / 5 CLC" (mig 202610151933 ĐÃ ÁP)
+- **Thùy:** cấp 2–3 = 90', khối 3–4–5 = 60', 4T/5T = 75'; thêm lựa chọn riêng nhưng HIỆN "Lớp 4 CLC", "Lớp 5 CLC" (4T/5T là cách gọi nội bộ BK).
+- **Làm:** nhập thời lượng lớp 3–12 (data, không migration); mig 1933: `_ts_lop_cua_khoi` giữ '4T'/'5T' (8T vẫn gộp lớp 8), `_ts_lop_hop_le`, `_ts_ten_lop` (DB đặt tên hiển thị), `_ts_lop_thu_tu`; nới CHECK `test_dau_vao_thoi_luong.khoi` (Thùy gật — drop + add, không mất dòng); 4 hàm form/ghi/tổng quan sinh lại từ thân đã áp, chỉ đổi chỗ lớp; seed CLC 75'. Web + ERP hiện `ten` từ DB.
+- **Kiểm:** ROLLBACK: form trả Lớp 3 · 4 · 4 CLC · 5 · 5 CLC · 6…; đăng ký 4T Toán 08:00 → xong 09:15; hòm thư "(Lớp 4 CLC)".

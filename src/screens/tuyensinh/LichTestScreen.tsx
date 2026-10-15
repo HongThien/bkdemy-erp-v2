@@ -140,7 +140,7 @@ export default function LichTestScreen() {
         <Modal title={vuaDk ? 'Đã đăng ký' : 'Đăng ký test thay phụ huynh'} onClose={() => setMoForm(false)} maxW="max-w-[720px]">
           {vuaDk ? (
             <div>
-              <div className="mb-3 text-[15px] text-slate-700"><b>{vuaDk.ho_ten_hs}</b> · lớp {vuaDk.lop}</div>
+              <div className="mb-3 text-[15px] text-slate-700"><b>{vuaDk.ho_ten_hs}</b> · {vuaDk.ten_lop}</div>
               {vuaDk.mon.map((m) => (
                 <div key={m.mon} className="mb-1.5 rounded-xl bg-emerald-50 px-3 py-2 text-[14px] text-emerald-800">
                   {m.mon}: {THU_NGAN[m.thu]} {ddmm(m.ngay)} · {m.gio_bat_dau} → xong dự kiến <b>{m.gio_xong}</b>{m.dang_ky_lai && ' (đăng ký lại — lịch cũ đã huỷ)'}
@@ -169,7 +169,7 @@ function DongHen({ h, hienNgay, onDoi, onHuy }: { h: Hen; hienNgay?: boolean; on
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-slate-100 bg-white px-3 py-2">
       <div className="w-[96px] text-[13px] font-semibold text-slate-700">{hienNgay && `${ddmm(h.ngay)} · `}{h.gio_bat_dau}–{h.gio_xong}</div>
       <div className="min-w-[160px] flex-1">
-        <div className="text-[14px] font-medium text-slate-800">{h.ho_ten_hs} <span className="text-[12px] font-normal text-slate-400">{h.ma_uv} · lớp {h.lop}</span></div>
+        <div className="text-[14px] font-medium text-slate-800">{h.ho_ten_hs} <span className="text-[12px] font-normal text-slate-400">{h.ma_uv} · {h.ten_lop}</span></div>
         <div className="text-[12px] text-slate-500">{h.mon} · {h.sdt_ph} · {h.truong}{h.truong_tu_go && ' ✎'} · {h.nguon === 'web' ? 'Web' : `Nhập thay (${KENH_TEN[h.kenh ?? 'khac']})`}</div>
       </div>
       <span className={`rounded-full px-2 py-0.5 text-[12px] font-medium ${TT[h.tinh_trang].cls}`}>{TT[h.tinh_trang].ten}</span>
@@ -254,6 +254,7 @@ function CaiDat({ tq, onDoi }: { tq: TongQuan; onDoi: () => void }) {
   useEffect(() => { setTl(tq.mon_theo_lop) }, [tq])
 
   const lops = useMemo(() => [...new Set(tl.map((x) => x.lop))], [tl])
+  const tenLop = (l: string) => tl.find((x) => x.lop === l)?.ten ?? l
   const mons = useMemo(() => [...new Set(tl.map((x) => x.mon))].sort(), [tl])
   const run = async (f: () => Promise<void>) => { setLoi(null); try { await f() } catch (e: any) { setLoi(e.message ?? String(e)) } }
 
@@ -309,7 +310,7 @@ function CaiDat({ tq, onDoi }: { tq: TongQuan; onDoi: () => void }) {
               <tbody>
                 {lops.map((l) => (
                   <tr key={l} className="border-t border-slate-100">
-                    <td className="py-1.5 pr-2 font-semibold text-slate-700">{l}</td>
+                    <td className="whitespace-nowrap py-1.5 pr-2 font-semibold text-slate-700">{tenLop(l)}</td>
                     {mons.map((m) => {
                       const o = tl.find((x) => x.lop === l && x.mon === m)
                       if (!o) return <td key={m} className="px-1 text-slate-200">—</td>

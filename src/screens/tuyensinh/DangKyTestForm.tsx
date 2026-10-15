@@ -106,7 +106,7 @@ export default function DangKyTestForm({ onXong, onHuy }: { onXong: (kq: DangKyK
       <Muc so={2} ten="Lớp đang học ở trường">
         {fd.lop.length === 0 ? <div className="text-[13px] text-amber-600">Chưa lớp nào mở test — khai thời lượng bài test ở mục Cài đặt.</div> : (
           <div className="flex flex-wrap gap-1.5">
-            {fd.lop.map((l) => <button key={l.lop} type="button" onClick={() => chonLop(l.lop)} className={`${chip(lop === l.lop)} min-w-[52px]`}>Lớp {l.lop}</button>)}
+            {fd.lop.map((l) => <button key={l.lop} type="button" onClick={() => chonLop(l.lop)} className={`${chip(lop === l.lop)} min-w-[52px]`}>{l.ten}</button>)}
           </div>
         )}
       </Muc>

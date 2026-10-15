@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-398 bảng · 25 view · 0 enum · 188 trigger · 1083 function
+398 bảng · 25 view · 0 enum · 188 trigger · 1086 function
 
 ## _app_secrets
 
@@ -7853,9 +7853,12 @@ WITH luot AS (
 - `_ts_khung_chan_trung()` → trigger
 - `_ts_kiem_slot(p_khung uuid, p_ngay date, p_bd time without time zone, p_tl integer, p_som timestamp without time zone, p_max_ngay integer)` → text
 - `_ts_lop_cua_khoi(p_khoi text)` → text
+- `_ts_lop_hop_le(p_lop text)` → boolean
+- `_ts_lop_thu_tu(p_lop text)` → numeric
 - `_ts_mon_theo_lop()` → TABLE(lop text, mon text, thoi_luong_phut integer)
 - `_ts_sdt_chuan(p text)` → text
 - `_ts_ten_chuan(p text)` → text
+- `_ts_ten_lop(p_lop text)` → text
 - `_ts_thu_tkb(p_thu_iso integer)` → integer
 - `_tsa_keo_tha_key(p_dap_an text, p_noi_dung text, p_lua_chon jsonb)` → jsonb
 - `_tt_cho_nhan(p_hs uuid)` → integer
@@ -8626,9 +8629,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -8865,7 +8868,7 @@ WITH luot AS (
 | task_phat_trien | task_phat_trien_check1 | `CHECK (((trang_thai = 'da_duyet'::text) = (ket_qua_pct IS NOT NULL)))` |
 | task_phat_trien | task_phat_trien_ket_qua_pct_check | `CHECK (((ket_qua_pct >= (0)::numeric) AND (ket_qua_pct <= (100)::numeric)))` |
 | task_phat_trien | task_phat_trien_tieu_de_check | `CHECK (((length(btrim(tieu_de)) >= 1) AND (length(btrim(tieu_de)) <= 200)))` |
-| test_dau_vao_thoi_luong | test_dau_vao_thoi_luong_khoi_check | `CHECK ((khoi ~ '^(1[0-2]\|[1-9])$'::text))` |
+| test_dau_vao_thoi_luong | test_dau_vao_thoi_luong_khoi_check | `CHECK (_ts_lop_hop_le(khoi))` |
 | test_dau_vao_thoi_luong | test_dau_vao_thoi_luong_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | tg_lien_ket | tg_lien_ket_check | `CHECK (((den_at IS NULL) OR (den_at >= tu_at)))` |
 | the_gioi_bai_khoe | the_gioi_bai_khoe_tin_khoa_check | `CHECK ((tin_khoa ~ '^[a-z_]+:'::text))` |

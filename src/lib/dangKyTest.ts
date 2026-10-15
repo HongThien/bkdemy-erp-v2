@@ -14,7 +14,7 @@ export type GioOpt = { bat_dau: string; xong: string }
 export type BuoiMo = { khung_id: string; ngay: string; thu: number; tu: string; den: string; gio: Record<string, GioOpt[]> }
 export type FormData = {
   hom_nay: string
-  lop: { lop: string; mon: { mon: string; thoi_luong_phut: number }[] }[]
+  lop: { lop: string; ten: string; mon: { mon: string; thoi_luong_phut: number }[] }[] // lop = mã ('7', '4T'), ten = 'Lớp 7' / 'Lớp 4 CLC' (DB đặt)
   thieu_thoi_luong: { lop: string; mon: string }[]
   truong: { ten: string; cap: Cap[] }[]
   lich: BuoiMo[]
@@ -24,7 +24,7 @@ export async function getFormDangKy(soNgay = 60): Promise<FormData> {
   if (error) throw error
   return data as FormData
 }
-export function capCuaLop(lop: string): Cap { const n = Number(lop); return n <= 5 ? 'tieu_hoc' : n <= 9 ? 'thcs' : 'thpt' }
+export function capCuaLop(lop: string): Cap { const n = parseInt(lop, 10); return n <= 5 ? 'tieu_hoc' : n <= 9 ? 'thcs' : 'thpt' }
 
 export type DangKyInput = {
   ho_ten_hs: string; sdt_ph: string; lop: string; truong: string; truong_tu_go: boolean
@@ -32,7 +32,7 @@ export type DangKyInput = {
   mon: { mon: string; khung_id: string; ngay: string; gio_bat_dau: string }[]
 }
 export type DangKyKetQua = {
-  lan_dk_id: string; ho_ten_hs: string; lop: string
+  lan_dk_id: string; ho_ten_hs: string; lop: string; ten_lop: string
   mon: { mon: string; ngay: string; thu: number; gio_bat_dau: string; gio_xong: string; thoi_luong_phut: number; dang_ky_lai: boolean }[]
 }
 export async function dangKyThay(input: DangKyInput, kenh: Kenh): Promise<DangKyKetQua> {
@@ -45,7 +45,7 @@ export async function dangKyThay(input: DangKyInput, kenh: Kenh): Promise<DangKy
 export type TinhTrangHen = 'cho' | 'da_den' | 'lo_hen'
 export type Hen = {
   id: string; lan_dk_id: string; ung_vien_id: string; ma_uv: string | null; ho_ten_hs: string; sdt_ph: string | null
-  lop: string | null; truong: string | null; mon: string; khung_id: string; ngay: string; gio_bat_dau: string; gio_xong: string
+  lop: string | null; ten_lop: string | null; truong: string | null; mon: string; khung_id: string; ngay: string; gio_bat_dau: string; gio_xong: string
   thoi_luong_phut: number; nguon: 'web' | 'nhap_thay'; kenh: Kenh | null; truong_tu_go: boolean; created_at: string; tinh_trang: TinhTrangHen
 }
 export type BuoiTQ = { khung_id: string; ngay: string; thu: number; tu: string; den: string; dong: boolean; khung_da_xoa: boolean; phong: string | null; hen: Hen[] }
@@ -53,7 +53,7 @@ export type TongQuan = {
   tu: string; den: string; buoi: BuoiTQ[]; lo_hen: Hen[]
   truong_tu_go: { ten: string; so_hen: number }[]
   thieu_thoi_luong: { lop: string; mon: string }[]
-  mon_theo_lop: { lop: string; mon: string; thoi_luong_phut: number | null }[]
+  mon_theo_lop: { lop: string; ten: string; mon: string; thoi_luong_phut: number | null }[]
 }
 export async function getTongQuan(soNgay = 14): Promise<TongQuan> {
   const { data, error } = await supabase.rpc('fn_ts_lich_test_tong_quan', { p_so_ngay: soNgay })
