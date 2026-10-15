@@ -12,6 +12,7 @@ import { listLop, type Lop } from '../../lib/nhansu'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
+import LichTestScreen from './LichTestScreen'
 
 type Tab = UngVienLevel | 'L8' | 'loai'
 const TABS: Tab[] = [...LEVELS, 'L8', 'loai']
@@ -20,7 +21,12 @@ const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px
 const readMon = () => { const m = localStorage.getItem('ts.mon'); return (MON_OPTIONS as readonly string[]).includes(m ?? '') ? (m as MonTS) : 'Toán' }
 const readSoNgayMoi = () => { const n = Number(localStorage.getItem('ts.songaymoi')); return (KHOANG_NGAY_MOI as readonly number[]).includes(n) ? n : 14 }
 
+// ⭐ 15/10 (Thùy): mục "Lịch test" — Lộc dựng khung lịch, xem hẹn PH đăng ký qua web, nhập thay PH (spec-dang-ky-test.md)
+let VIEW_NHO: 'pheu' | 'lich' = 'pheu'
+
 export default function TuyenSinhScreen() {
+  const [view, setViewState] = useState<'pheu' | 'lich'>(VIEW_NHO)
+  const setView = (v: 'pheu' | 'lich') => { VIEW_NHO = v; setViewState(v) }
   const [mon, setMon] = useState<MonTS>(readMon)
   const [tab, setTab] = useState<Tab>('L5')
   const [soNgayMoi, setSoNgayMoi] = useState<number>(readSoNgayMoi)
@@ -72,8 +78,15 @@ export default function TuyenSinhScreen() {
             <h2 className="text-[22px] font-semibold text-slate-800">Tuyển sinh</h2>
             <p className="text-[13px] text-slate-500">Phễu Test đầu vào · L5 đăng ký → L6 test → L7 học thử → L8 chính thức</p>
           </div>
-          <button onClick={() => setForm('new')} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Thêm ứng viên</button>
+          <div className="flex gap-1 rounded-xl bg-slate-200/70 p-1">
+            {([['pheu', 'Phễu L5–L8'], ['lich', '📅 Lịch test']] as const).map(([v, l]) => (
+              <button key={v} onClick={() => setView(v)} className={`rounded-lg px-4 py-1.5 text-[14px] font-semibold transition ${view === v ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{l}</button>
+            ))}
+          </div>
+          {view === 'pheu' && <button onClick={() => setForm('new')} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Thêm ứng viên</button>}
         </div>
+
+        {view === 'lich' ? <LichTestScreen /> : <>
 
         {/* Toggle bar MÔN — phễu riêng từng môn */}
         <div className="mb-3 flex w-fit flex-wrap gap-1 rounded-xl bg-slate-200/70 p-1">
@@ -173,6 +186,7 @@ export default function TuyenSinhScreen() {
               </table>
             </div>
           )}
+        </>}
       </div>
 
       {form && <UvFormModal uv={form === 'new' ? null : form} defaultMon={mon} onClose={() => setForm(null)} onDone={async () => { setForm(null); await refresh() }} />}

@@ -16,6 +16,7 @@ import {
 import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, gopDeTrung, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
+import { henCuaUngVien } from '../../lib/dangKyTest'
 import SearchSelect from '../../components/SearchSelect'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import MTPrintView from '../tailieu/MTPrintView'
@@ -290,6 +291,9 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: (inN
     try {
       const uv = await getUngVien(id)
       setF((s) => ({ ...s, hoTenHs: uv.ho_ten_hs, mon: uv.mon as MonTS, khoi: uv.khoi ?? s.khoi, ngaySinh: uv.ngay_sinh ?? '', hoTenPh: uv.ho_ten_ph ?? '', sdtPh: uv.sdt_ph ?? '', truongHoc: uv.truong_hoc ?? '' }))
+      // Em có hẹn (PH đăng ký web / Lộc nhập thay — mig 202610151355): điền sẵn thời lượng; giờ chỉ khi hẹn đúng hôm nay
+      const hen = await henCuaUngVien(id)
+      if (hen) setF((s) => ({ ...s, thoiLuongPhut: hen.thoi_luong_phut, ...(hen.ngay === s.ngay ? { gioBatDau: hen.gio_bat_dau } : {}) }))
     } catch (e: any) { setErr(e.message ?? String(e)) }
   }
 

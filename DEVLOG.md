@@ -37809,3 +37809,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ### 15/10 — [Bot Telegram TA] Chấm công = "Cần hoàn thành", không gọi trễ (mig 202610151359 ĐÃ ÁP)
 - **Thùy:** "Trễ chỉ tính cho BTVN, ET… Riêng chấm công để là Cần hoàn thành" (chấm công vừa ra hôm qua). ⇒ bản tin: ET/BTVN chưa làm + đã trễ; chấm công = mọi buổi/ca chưa ghi công tới hết hôm qua, dòng "⏳ Cần hoàn thành chấm công"; số "việc trễ" chỉ đếm ET/BTVN; tiêu đề "BẢN TIN CÔNG VIỆC TRỢ GIẢNG". Script `--chi "<họ tên>"` gửi đúng 1 tin mẫu.
+
+### 15/10 — [Tuyển sinh] Đăng ký lịch test: PH tự chọn giờ trên web + Lộc nhập thay (mig 202610151355 ĐÃ ÁP)
+- **Thùy:** Lộc setup lịch test cố định; PH vào web chọn lớp/trường/môn (tích), mỗi môn 1 ca riêng, chọn giờ bắt đầu ⇒ hệ báo giờ xong dự kiến để đón con; không giới hạn chỗ; môn theo lớp đang có; chỉ gõ tên HS + SĐT; "Trường khác"; đăng ký vào Tuyển sinh + hòm thư; PH báo thẳng thì Lộc nhập thay; đổi lịch qua Zalo, Lộc sửa. Spec: `spec-dang-ky-test.md`.
+- **Làm:** bảng khung tuần / đóng buổi / thời lượng (lớp×môn) / danh mục trường / hẹn `dang_ky_test` / người nhận báo / sổ chống spam / log; RPC form + ghi chung `_ts_dang_ky_test` (web qua Edge Function `dang-ky-test`, service_role); màn Tuyển sinh → 📅 Lịch test; Điểm danh test tự điền thời lượng/giờ từ hẹn; web `bkdemy-web` trang `/dang-ky-test` + nút ở landing + proxy cho phép.
+- **Quyết định:** hẹn là bảng riêng, KHÔNG tạo `ca_test` lúc đăng ký (ca_test = em có mặt, §1.5); đã đến / lỡ hẹn suy ra. Thời lượng KHÔNG seed (lịch sử ca_test mỗi khối 2–3 thời lượng). Hòm thư dùng loai `viec` (không nới CHECK). Lịch đọc qua Edge Function, không sync sang bkdemy-ph.
+- **Kiểm:** RPC trong transaction ROLLBACK (đúng/sai SĐT, chồng giờ, giờ lẻ, môn chưa mở, đăng ký lại, hòm thư, quyền anon=0). Web chạy thật trên shim gọi RPC trong ROLLBACK (mobile: điền → khoá giờ chồng → màn thành công). Màn Lộc mở được trên ERP local (dữ liệu thật đang trống).
+- **Chưa:** deploy Edge Function + env Vercel web (web commit chưa push); Lộc khai khung + thời lượng.
