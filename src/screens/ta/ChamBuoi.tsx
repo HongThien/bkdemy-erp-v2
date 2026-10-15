@@ -34,7 +34,8 @@ const MUC: { v: number; sel: string }[] = [
 
 type TabKey = 'ingame' | 'et' | 'btvn'
 const TABS: { key: TabKey; label: string }[] = [
-  { key: 'ingame', label: 'Bài trên lớp' }, { key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' },
+  // Thùy 15/10: bỏ tab "Bài trên lớp" — chấm bài trên lớp là việc của GV, không còn của TA.
+  { key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' },
 ]
 
 export type BuoiFull = BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi: string | null }; gv_chinh_id: string | null }

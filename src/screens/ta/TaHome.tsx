@@ -46,7 +46,6 @@ type ViecBoTro = { ca: ViecCaBoTro[]; retest: ViecRetest[] }
 const A = (n: string) => `/bk-ui/${n}.png`
 // icon PNG + màu pastel/accent theo nghiệp vụ (bộ icon CEO 07/09; màu hex inline — không ghép class Tailwind động)
 export const NGHIEP_VU: { key: NvKey; icon: string; label: string; bg: string; accent: string }[] = [
-  { key: 'ingame', icon: A('pr_nguoi'), label: 'Bài trên lớp', bg: '#CFE5FF', accent: '#2F73F6' },
   { key: 'et', icon: A('pr_et'), label: 'Chấm ET', bg: '#E6DDFF', accent: '#8B6BEF' },
   { key: 'btvn', icon: A('pr_btvn'), label: 'Chấm BTVN', bg: '#DDF6E4', accent: '#4DC47A' },
 ]
@@ -106,7 +105,8 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
       // belongsToNv). Trước đây filter cứng tab ∈ {ingame,et,btvn} khiến task 'danhgia' buổi
       // bù/đuổi mất tiêu → buổi đuổi vô hình hoàn toàn trên app TA (không có 'et'), buổi bù thì
       // ET còn hiện nhưng đánh giá không có đường vào (bug Tạ Tùng báo 17-09).
-      const t = all.filter((x) => x.tab === 'ingame' || x.tab === 'et' || x.tab === 'btvn' || (x.tab === 'danhgia' && belongsToBoTro(x)))
+      // Thùy 15/10: "Chấm bài trên lớp" không còn là việc của TA (DB fn_viec_buoi_thuong không giao từ 01/10) — bỏ khỏi app TA.
+      const t = all.filter((x) => x.tab === 'et' || x.tab === 'btvn' || (x.tab === 'danhgia' && belongsToBoTro(x)))
       setTasks(t)
       const btvnBuois = [...new Set(t.filter((x) => x.tab === 'btvn').map((x) => x.buoiId))]
       setNopCount(btvnBuois.length ? await demNopTheoBuois(btvnBuois).catch(() => ({})) : {})

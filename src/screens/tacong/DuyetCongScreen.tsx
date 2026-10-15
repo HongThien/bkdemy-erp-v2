@@ -260,13 +260,13 @@ function TabThieu({ coGhi, bao, onNhapHo }: { coGhi: boolean; bao: (t: string, o
                 <td className="px-3 py-2 text-slate-800">{r.loai === 'buoi' ? 'Buổi lớp ' : ''}<b>{r.ten}</b></td>
                 <td className="whitespace-nowrap px-3 py-2 text-slate-700">{hm(r.gio_bat_dau)}–{hm(r.gio_ket_thuc)}</td>
                 <td className="px-3 py-2 text-slate-700">{r.nguoi_phu_trach ?? <span className="text-amber-700">chưa phân TA</span>}</td>
-                <td className="px-3 py-2">{coGhi && <button className={btnGhost} onClick={() => onNhapHo({ ngay: r.ngay, loai: r.loai === 'buoi' ? 'tro_giang' : 'bo_tro_dinh_ki', lop_id: r.lop_id, bat: hm(r.gio_bat_dau), ket: hm(r.gio_ket_thuc), ten_ta: r.nguoi_phu_trach })}>Nhập hộ…</button>}</td>
+                <td className="px-3 py-2">{coGhi && <button className={btnGhost} onClick={() => onNhapHo({ ngay: r.ngay, loai: r.loai === 'buoi' ? 'tro_giang' : r.loai === 'ca' ? 'bo_tro_dinh_ki' : r.loai, lop_id: r.lop_id, bat: hm(r.gio_bat_dau), ket: hm(r.gio_ket_thuc), ten_ta: r.nguoi_phu_trach })}>Nhập hộ…</button>}</td>
               </tr>
             )))}
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-slate-500">Mỗi buổi lớp đã diễn ra phải có một phiếu công trợ giảng; mỗi ca trực bổ trợ đã xếp phải có phiếu công. Buổi huỷ không tính, buổi chưa kết thúc không tính, trước 01/10 không tính. Danh sách tự suy từ lịch — TA khai (kể cả khai lùi tháng 10) là dòng tự biến mất. TA phụ trách = người được phân công lớp ĐÚNG NGÀY đó.</p>
+      <p className="text-xs text-slate-500">Mỗi buổi lớp đã diễn ra phải có một phiếu công trợ giảng; mỗi ca trực bổ trợ đã xếp phải có phiếu công; mỗi buổi bù / yếu / đuổi có em đến (không nằm trong ca trực của chính người đứng lớp) cũng phải có phiếu công. Buổi huỷ không tính, buổi chưa kết thúc không tính, trước 01/10 không tính. Danh sách tự suy từ lịch — TA khai (kể cả khai lùi tháng 10) là dòng tự biến mất. TA phụ trách = người được phân công lớp ĐÚNG NGÀY đó.</p>
     </div>
   )
 }

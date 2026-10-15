@@ -96,7 +96,7 @@ try {
   ok('hai việc đều "đã khớp" buổi trên lịch', d1?.khop === true && d2?.khop === true);
 
   // ── 5. Thiếu công: người phụ trách theo NGÀY ──
-  const th = await q("select ngay::text, nguoi_phu_trach from fn_ta_buoi_thieu_cong('2026-10-01'::date, '2026-10-13'::date) where lop_id=$1", [L.id]);
+  const th = await q("select ngay::text, nguoi_phu_trach from fn_ta_buoi_thieu_cong('2026-10-01'::date, '2026-10-13'::date) where lop_id=$1 and loai='buoi'", [L.id]);   // từ 15/10 thiếu công có cả buổi bổ trợ (lớp suy từ HS) — test này chỉ về buổi lớp
   ok(`buổi ${L.d1}, ${L.d2} đã ghi công ⇒ không còn trong "thiếu công"`, !th.some(r => r.ngay === L.d1 || r.ngay === L.d2));
   const sai = th.filter(r => (r.ngay < NGAY_PC ? Y.ho_ten : X.ho_ten) !== r.nguoi_phu_trach);
   ok(`các buổi còn thiếu của ${L.ten_lop}: trước 12/10 giao TA cũ, từ 12/10 giao TA mới`, sai.length === 0,

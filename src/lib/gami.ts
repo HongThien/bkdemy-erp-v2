@@ -1117,7 +1117,7 @@ const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
 // hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
 export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
-  tg: [{ tab: 'ingame', label: 'Chấm bài trên lớp' }, { tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],
+  tg: [{ tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],   // Thùy 15/10: chấm bài trên lớp không còn của TA
 }
 export async function getMyTasks(): Promise<MyTask[]> {
   const prof = await getMyProfile()

@@ -13,13 +13,13 @@ export function dungBanTin(d) {
   const ds = d.ta ?? []
   const dau = [
     `📋 <b>BẢN TIN VIỆC TỒN — ${thu(d.ngay)} ${ddmm(d.ngay)}/${d.ngay.slice(0, 4)}</b>`,
-    `Tính đến hết hôm qua · <b>${ds.length}</b> TA còn việc`,
+    `ET · BTVN · chấm công, từ 01/10 đến hết hôm qua · <b>${ds.length}</b> TA cần chú ý`,
     d.sach?.length ? `✅ Sạch việc: ${d.sach.map(esc).join(', ')}` : null,
     d.chua_noi?.length ? `⚠️ Chưa kết nối Telegram (bot không tag được): ${d.chua_noi.map(esc).join(', ')} — vào app TA → Chấm công → <b>Kết nối Telegram</b>` : null,
     `Mỗi bạn trả lời <b>ngay dưới tin của mình</b>: việc nào đã xong · lý do chưa xong · hẹn ngày nào xong.`,
   ].filter(Boolean).join('\n')
   const tin = ds.map((t) => {
-    const dong = [`👤 ${ten(t)} — <b>${t.so_viec}</b> việc`]
+    const dong = [`👤 ${ten(t)}${t.so_viec ? ` — <b>${t.so_viec}</b> việc tồn` : ''}`]
     for (const n of t.nhom ?? []) {
       const muc = n.muc.slice(0, MAX_MUC).map((m) => `${esc(m.ten_lop ?? '')} ${ddmm(m.ngay_goc)}${m.so_luong > 1 ? ` (${m.so_luong})` : ''}`.trim())
       const them = n.muc.length > MAX_MUC ? ` +${n.muc.length - MAX_MUC}` : ''
@@ -27,9 +27,13 @@ export function dungBanTin(d) {
     }
     const c = t.cong
     if (c) {
-      const phan = [c.so_buoi ? `${c.so_buoi} buổi` : null, c.so_ca ? `${c.so_ca} ca trực` : null].filter(Boolean).join(' + ')
+      const phan = [c.so_buoi ? `${c.so_buoi} buổi lớp` : null, c.so_ca ? `${c.so_ca} ca trực` : null, c.so_bo_tro ? `${c.so_bo_tro} buổi bổ trợ` : null].filter(Boolean).join(' + ')
       const qc = c.quen_checkout ? `quên checkout ${c.quen_checkout} lần` : null
       dong.push(`• Chấm công: ${[phan ? `${phan} chưa ghi công` : null, qc].filter(Boolean).join(' · ')} (${ddmm(c.tu)}${c.tu !== c.den ? `–${ddmm(c.den)}` : ''})`)
+    }
+    if (t.canh_bao?.length) {
+      dong.push('⚠️ <b>BTVN cần nhắc em:</b>')
+      for (const b of t.canh_bao) dong.push(`   – ${esc(b.ho_ten)} (${esc(b.ten_lop)}): ${b.loai === 'khong_lam' ? 'không làm' : 'nộp muộn'} 2 bài liên tiếp (${b.ngays.map(ddmm).join(', ')})`)
     }
     if (t.phu_trach?.length) dong.push(`Phụ trách: ${t.phu_trach.map(ten).join(', ')}`)
     return { nhan_su_id: t.nhan_su_id, text: dong.join('\n'), viec: t.viec }

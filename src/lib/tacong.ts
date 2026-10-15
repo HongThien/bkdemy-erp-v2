@@ -92,7 +92,7 @@ export async function dsLop(): Promise<{ id: string; ten_lop: string; mon: strin
 }
 
 // ── PHÍA QUẢN LÝ (ERP: lá ta_cong_duyet · ta_luong) — quyền chặn ở DB (co_quyen_ghi / co_chuc_nang) ──
-export type ThieuCong = { loai: 'buoi' | 'ca'; ngay: string; lop_id: string | null; ten: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; buoi_hoc_id: string | null; ca_bo_tro_id: string | null; nguoi_phu_trach: string | null }
+export type ThieuCong = { loai: 'buoi' | 'ca' | 'bo_tro_bu' | 'bo_tro_yeu' | 'bo_tro_duoi'; ngay: string; lop_id: string | null; ten: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; buoi_hoc_id: string | null; ca_bo_tro_id: string | null; nguoi_phu_trach: string | null }
 export type DonGia = { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
 
 export const doiChieu = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_doi_chieu', { p_tu: tu, p_den: den })
