@@ -22,7 +22,8 @@ export function dungBanTin(d) {
     const dong = [`👤 ${ten(t)}${t.so_tre ? ` — <b>${t.so_tre}</b> việc trễ` : ''}`]
     for (const n of t.nhom ?? []) {
       const muc = n.muc.slice(0, MAX_MUC).map((m) => {
-        const kem = [m.so_luong > 1 ? `×${m.so_luong}` : null, m.tre_ngay >= 1 ? `trễ ${m.tre_ngay} ngày` : null].filter(Boolean).join(', ')
+        // so_luong > 1: BTVN bù = số em chưa chấm ở buổi đó; báo sai cũ = số câu
+        const kem = [m.so_luong > 1 ? `${m.so_luong} em` : null, m.tre_ngay >= 1 ? `trễ ${m.tre_ngay} ngày` : null].filter(Boolean).join(', ')
         return `${esc(m.ten_lop ?? '')} ${ddmm(m.ngay_goc)}${kem ? ` (${kem})` : ''}`.trim()
       })
       const them = n.muc.length > MAX_MUC ? ` +${n.muc.length - MAX_MUC}` : ''
