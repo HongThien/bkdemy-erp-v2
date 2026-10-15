@@ -37822,3 +37822,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ### 15/10 ~14:30 — [Bot Telegram TA] ĐĂNG bản tin đầu tiên vào nhóm thật (Thùy: "đăng vào nhóm cho mọi người xem thử")
 - Bật `tg_nhom.ban_tin_bat` cho nhóm "Trợ giảng BK_Vận hành Chat"; `ban-tin.mjs --dang` gửi 22 tin (1 tiêu đề + 21 TA), ghi `tg_ban_tin` ngày 15/10. Từ đây cron 08:00 tự đăng (khi project TA đã deploy bản có `api/tg-ban-tin.mjs` + vercel.json cron).
+
+### 15/10 — [Bot Telegram TA] Bỏ admin khỏi bản tin + GV kiêm TA không bị đòi chấm công (mig 202610151425 ĐÃ ÁP)
+- **Thùy:** "Bỏ Thùy ra khỏi danh sách · GV kiêm TA không cần chấm công." `_tg_ds_ta` bỏ `la_admin_he_thong`. `_la_gv_kiem_ta(ns)` = có phân công GV ở ≥1 lớp (hôm nay 9 người) ⇒ bản tin không hiện dòng chấm công của họ (ET/BTVN vẫn báo).
+- **Chưa đổi, chờ Thùy:** màn Thiếu công của Trang vẫn liệt kê buổi của GV kiêm TA; lương TA của họ tính phần TG từ công đã ghi ⇒ không chấm công = TG 0%.
