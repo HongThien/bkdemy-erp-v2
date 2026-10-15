@@ -47,7 +47,9 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
                   {(k.lua_chon ?? []).map((lc, i) => <div key={i}><b>{CHU[i]}.</b> <MathText>{lc}</MathText></div>)}
                 </div>
                 {/* Thùy 10/10: dạng không có trắc nghiệm ⇒ câu trả lời ngắn — em ghi đáp số */}
-                {!(k.lua_chon ?? []).length && <div className="mt-2 pl-4">Đáp số: ...............................................</div>}
+                {!(k.lua_chon ?? []).length && (k.la_hinh_mh
+                  ? <div className="mt-2 pl-4 text-slate-500">Trình bày lời giải:{Array.from({ length: 6 }).map((_, i) => <div key={i} className="mt-3 border-b border-dotted border-slate-400" />)}</div>
+                  : <div className="mt-2 pl-4">Đáp số: ...............................................</div>)}
               </div>
             ))}
           </div>
@@ -61,6 +63,17 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
           <p className="mt-3 text-[11.5px] italic text-slate-600">Chấm xong: ERP → Xếp bổ trợ yếu → Đang diễn ra → "Nhập KQ" của phiếu này, bấm lại đáp án em đã khoanh — máy tự chấm và tính vào tiến độ ca.</p>
         </div>
       </div>
+    </div>
+  )
+}
+
+// Lời giải mẫu của bài Hình (dài) — gấp gọn, bấm xem; TA đối chiếu rồi bấm Đúng / Sai.
+function LoiGiaiMau({ text }: { text: string }) {
+  const [mo, setMo] = useState(false)
+  return (
+    <div className="basis-full text-[12px] text-slate-600">
+      <button onClick={() => setMo((v) => !v)} className="font-semibold text-indigo-700">{mo ? '▾ Ẩn lời giải mẫu' : '▸ Xem lời giải mẫu để đối chiếu'}</button>
+      {mo && <div className="mt-1 whitespace-pre-wrap rounded-lg bg-slate-50 px-3 py-2 leading-relaxed"><MathText>{text}</MathText></div>}
     </div>
   )
 }
@@ -109,7 +122,9 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
                   return <button key={v} disabled={busy === k.id || daNop} onClick={() => chon(k.id, dangChon ? null : v)}
                     className={`h-8 rounded-lg px-3 text-[13px] font-bold ${dangChon ? `${mau} text-white` : 'border border-slate-300 bg-white text-slate-600 hover:border-indigo-300'}`}>{ten}</button>
                 })}
-                {!(k.lua_chon ?? []).length && <span className="text-[12px] text-slate-600">Đáp án: <b><MathText>{String(k.dap_an_key ?? '—')}</MathText></b></span>}
+                {!(k.lua_chon ?? []).length && (k.la_hinh_mh
+                  ? <LoiGiaiMau text={String(k.dap_an_key ?? '—')} />
+                  : <span className="text-[12px] text-slate-600">Đáp án: <b><MathText>{String(k.dap_an_key ?? '—')}</MathText></b></span>)}
                 {(k.lua_chon ?? []).map((_, i) => {
                   const dangChon = k.chon === i
                   return <button key={i} disabled={busy === k.id || daNop} onClick={() => chon(k.id, dangChon ? null : i)}

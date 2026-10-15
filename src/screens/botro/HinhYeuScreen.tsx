@@ -3,7 +3,7 @@
 // Chưa luyện trên app: trợ giảng dạy trên giấy rồi bấm "đã dạy"; đo lại sau đó mà vẫn yếu thì hiện cờ.
 // Số + trạng thái tính ở DB (fn_hinh_yeu_theo_mo_hinh); màn chỉ nhóm theo học sinh và lọc theo lựa chọn đang mở.
 import { useEffect, useMemo, useState } from 'react'
-import { hinhYeuTheoMoHinh, danhDauDaDay, TIN_TEN, type HinhYeuRow } from '../../lib/botro_hinh_yeu'
+import { hinhYeuTheoMoHinh, danhDauDaDay, duaVaoCase, TIN_TEN, type HinhYeuRow } from '../../lib/botro_hinh_yeu'
 import { ddmmVN } from '../../lib/tuan'
 
 // Rời màn rồi quay lại = đúng chỗ cũ (CLAUDE.md §2): nhớ bộ lọc + danh sách đã vá.
@@ -44,6 +44,17 @@ export default function HinhYeuScreen() {
   }, [loc])
   const soChuaDay = loc.filter((r) => !r.da_day).length
   const soSauDay = (rows ?? []).filter((r) => r.yeu_sau_day).length
+
+  // Bước 2: đưa bài vào case bổ trợ yếu đang mở của em (dạng học/chấm trên giấy). Vá đúng dòng đó tại chỗ.
+  async function duaCase(r: HinhYeuRow) {
+    const key = r.hoc_sinh_id + r.hinh_baitoan_id
+    setBusy(key); setLoi(null)
+    try {
+      const kq = await duaVaoCase(r.hoc_sinh_id, r.hinh_baitoan_id)
+      if (!kq.ok) { setLoi(`${r.ho_ten} chưa có case bổ trợ yếu đang mở — duyệt em ở "Duyệt bổ trợ" trước (trần 70 em / 20 Cao).`); return }
+      setRows((prev) => { const n = (prev ?? []).map((x) => x.hoc_sinh_id === r.hoc_sinh_id && x.hinh_baitoan_id === r.hinh_baitoan_id ? { ...x, trong_case: true } : x); NHO.rows = n; return n })
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
 
   async function danhDau(r: HinhYeuRow, daDay: boolean) {
     const key = r.hoc_sinh_id + r.hinh_baitoan_id
@@ -115,6 +126,12 @@ export default function HinhYeuScreen() {
                         <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-[12.5px] font-semibold text-rose-700" title="Điểm trung bình các lần đo gần nhất (0–100%)">{Math.round(r.score * 100)}%</span>
                         <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[12.5px] text-slate-600" title="Số lần đo · độ tin">{r.n} lần · {TIN_TEN[r.tin]}</span>
                         {r.cuoi_do && <span className="text-[12px] text-slate-400">đo {ddmmVN(r.cuoi_do)}</span>}
+                        {r.trong_case
+                          ? <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 text-[12.5px] font-semibold text-indigo-700" title="Đang là một dạng của case bổ trợ yếu — in phiếu và chấm ở ca">trong case bổ trợ</span>
+                          : r.co_case_yeu && (
+                            <button disabled={busy === key} onClick={() => duaCase(r)} title="Thêm bài này vào case bổ trợ yếu đang mở của em — dạy và chấm trên giấy ở ca"
+                              className="rounded-full border border-indigo-200 bg-indigo-600 px-3 py-0.5 text-[12.5px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-50">{busy === key ? '…' : '+ Đưa vào case'}</button>
+                          )}
                         {r.yeu_sau_day && <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-[12px] font-semibold text-rose-700" title="Đã dạy rồi, đo lại sau đó vẫn yếu">dạy rồi vẫn yếu</span>}
                         {r.da_day ? (
                           <button disabled={busy === key} onClick={() => danhDau(r, false)} title="Bấm để bỏ đánh dấu"

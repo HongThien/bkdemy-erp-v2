@@ -10,6 +10,7 @@ export type HinhYeuRow = {
   score: number; n: number; tin: 'cao' | 'tb' | 'thap'; cuoi_do: string | null
   da_day: boolean; da_day_at: string | null; da_day_boi: string | null
   yeu_sau_day: boolean // đã dạy rồi, SAU đó đo lại vẫn yếu
+  trong_case: boolean  // bài này đã là một dạng của case bổ trợ yếu đang mở (bước 2, 14/10)
 }
 
 // chiCuaToi = chỉ HS thuộc lớp mình được phân công (app TA); mặc định cả trường (quản trị).
@@ -24,6 +25,14 @@ export async function danhDauDaDay(hocSinhId: string, baitoanId: string, daDay: 
   const { data, error } = await supabase.rpc('fn_hinh_yeu_danh_dau_day', { p_hoc_sinh: hocSinhId, p_baitoan: baitoanId, p_da_day: daDay })
   if (error) throw error
   return data as KetQuaDanhDau
+}
+
+// Bước 2 (14/10): đưa bài vào case bổ trợ yếu ĐANG MỞ của em — dạng này học/chấm trên GIẤY. Em chưa có case ⇒ phải duyệt ở "Duyệt bổ trợ" (trần 70/20).
+export type KetQuaDuaVaoCase = { ok: boolean; ly_do?: 'chua_co_case'; moi?: boolean; case_id?: string }
+export async function duaVaoCase(hocSinhId: string, baitoanId: string): Promise<KetQuaDuaVaoCase> {
+  const { data, error } = await supabase.rpc('fn_hinh_yeu_dua_vao_case', { p_hoc_sinh: hocSinhId, p_baitoan: baitoanId })
+  if (error) throw error
+  return data as KetQuaDuaVaoCase
 }
 
 export const TIN_TEN: Record<HinhYeuRow['tin'], string> = { cao: 'đo nhiều', tb: 'đo vừa', thap: 'mới đo ít' }

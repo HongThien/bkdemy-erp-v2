@@ -18,7 +18,7 @@ import {
   trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
   bucketOfScore, BUCKET_RANK,
 } from '../gami/danhgia.js'
-import { khoCuaMon, nhanhCuaMon } from './tailieu'
+import { khoCuaMon, nhanhCuaMon, coKhoHinh } from './tailieu'
 import { dangInfoCuaMon } from './mastery'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
@@ -109,7 +109,7 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
   // định (không có order thì `.range()` trên UUID PK có thể lặp/thiếu dòng giữa các trang).
   const rows = await fetchAllRows<any>((from, to) => supabase
     .from('gami_grades')
-    .select('hoc_sinh_id, result, graded_at, buoi_hoc_id, prob:problem_id(phase, ma_dang)')
+    .select('hoc_sinh_id, result, graded_at, buoi_hoc_id, prob:problem_id(phase, ma_dang, hinh_baitoan_id)')
     .in('hoc_sinh_id', hsIds)
     .order('graded_at', { ascending: true })
     .order('id', { ascending: true })
@@ -144,10 +144,23 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     }
   }
 
+  // Thùy 14/10 (bước 2 Hình mô hình): lần đo của BÀI MÔ HÌNH nằm ở hinh_baitoan_id (ma_dang trống). Dạng của case = hinh_baitoan.ma
+  // (mã gốc bất biến) ⇒ đổi sang mã đó để cả engine (diện · kênh ② · case) dùng chung đường với dạng thường. Thang 3 bài (khớp fn_mastery_cells_hinh).
+  const maCuaBai = new Map<string, string>()
+  if (coKhoHinh(mon)) {
+    const ids = [...new Set(rows.filter((r) => r.prob && !r.prob.ma_dang && r.prob.hinh_baitoan_id).map((r) => r.prob.hinh_baitoan_id as string))]
+    for (let i = 0; i < ids.length; i += 200) {
+      const { data: bs, error: eB } = await supabase.from('hinh_baitoan').select('id, ma').in('id', ids.slice(i, i + 200)).limit(LIMIT)
+      if (eB) throw eB
+      for (const b of (bs ?? []) as { id: string; ma: string }[]) maCuaBai.set(b.id, b.ma)
+    }
+  }
+
   const out: DoRow[] = []
   for (const r of rows) {
     const p = r.prob
-    if (!p?.ma_dang) continue
+    const maDang: string | null = p?.ma_dang ?? (p?.hinh_baitoan_id ? maCuaBai.get(p.hinh_baitoan_id) ?? null : null)
+    if (!p || !maDang) continue
     // Chỉ nguồn có trọng số > 0 (et/mt/btvn — spec §9). ingame/dg/bt weight 0 → loại tại đây,
     // KHÔNG để lọt xuống engine rồi mới rụng (lọt xuống thì `n` đếm sai độ tin).
     if (!(DANHGIA_CONFIG.WEIGHT as any)[p.phase]) continue
@@ -158,7 +171,7 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     // Timeline neo NGÀY BUỔI (ngayCuaBuoi), fallback graded_at chỉ khi buoi_hoc_id null (không xảy ra
      // theo schema; phòng thủ) hoặc buổi lookup không có ngày (không xảy ra — buoi_hoc.ngay NOT NULL).
     const tBuoi = r.buoi_hoc_id ? ngayCuaBuoi.get(r.buoi_hoc_id) ?? null : null
-    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: tBuoi ?? r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
+    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: maDang, value, t: tBuoi ?? r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
   }
   return out
 }
@@ -170,6 +183,18 @@ async function napBanDo(mon: string, maDangs: string[]) {
   const info = new Map<string, { ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string; muc_do: number | null; thangDo3: boolean }>()
   for (const [ma, d] of await dangInfoCuaMon(mon, maDangs)) {
     info.set(ma, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do, thangDo3: d.thangDo3 })
+  }
+  // Bài MÔ HÌNH Hình (14/10): tra view hmh_ban_do (DB gom tên "Mô hình · bài N"). Không có tầng chuyên đề (ma_chuyen_de = null) ⇒ đứng ngoài kênh ①
+  // như Bài Hình học; thang 3 bài. CHỈ ở engine đánh giá — báo cáo Kết quả học tập (dangInfoCuaMon) KHÔNG đổi.
+  if (coKhoHinh(mon)) {
+    const thieu = maDangs.filter((m) => !info.has(m))
+    for (let i = 0; i < thieu.length; i += 200) {
+      const { data, error } = await supabase.from('hmh_ban_do').select('ma_dang, ten_dang, ten_chuyen_de, muc_do').in('ma_dang', thieu.slice(i, i + 200)).limit(LIMIT)
+      if (error) throw error
+      for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ten_chuyen_de: string | null; muc_do: number | null }[]) {
+        info.set(r.ma_dang, { ten_dang: r.ten_dang, ma_chuyen_de: null, ten_chuyen_de: r.ten_chuyen_de ?? '', muc_do: r.muc_do ?? null, thangDo3: true })
+      }
+    }
   }
   return info
 }

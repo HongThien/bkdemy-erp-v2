@@ -4,7 +4,7 @@
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
-import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
+import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inSinhHinhGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
 import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
@@ -150,6 +150,15 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
       setPhieuIn(await inLayBaiGiay(r.bai_test_id)); taiPhieu()
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
   }
+  // Ca 📱 app có dạng Hình mô hình: in RIÊNG phiếu Hình (Thùy 14/10 bước 2).
+  async function inPhieuHinh() {
+    setBusy('in'); setLoi(null); setOk(null)
+    try {
+      const r = await inSinhHinhGiay(buoiId, 2)
+      setOk(`Đã tạo phiếu Hình ${r.so_cau} câu — in ra cho em, dạy và chấm trên giấy rồi bấm "Nhập kết quả".`)
+      setPhieuIn(await inLayBaiGiay(r.bai_test_id)); taiPhieu()
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
   async function moPhieu(id: string, che: 'in' | 'nhap') {
     setBusy(id); setLoi(null)
     try { const b = await inLayBaiGiay(id); if (che === 'in') setPhieuIn(b); else setPhieuNhap(b) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
@@ -183,6 +192,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   if (!ca) return <div className="p-6"><button onClick={onBack} className="text-[13px] text-indigo-600">‹ Quay lại</button><p className="mt-3 text-[13px] text-rose-600">{loi ?? 'Không thấy ca.'}</p></div>
 
   const coMat = ca.diem_danh === 'co_mat'
+  const coHinh = ca.dangs.some((d) => d.la_hinh_mh && !d.dong_at) // có bài Hình mô hình ĐANG MỞ trong ca
   const vang = ca.diem_danh === 'vang' || ca.diem_danh === 'vang_phep'
   const daDong = !!ca.test
   const testDaNop = !!ca.test?.da_nop
@@ -256,7 +266,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                 <div key={d.ma_dang} className="rounded-xl bg-slate-50 px-3 py-2">
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <p className="truncate text-[13.5px] font-semibold text-slate-800">{d.ten_dang}</p>
+                      <p className="truncate text-[13.5px] font-semibold text-slate-800">{d.la_hinh_mh && <span className="mr-1.5 rounded bg-violet-100 px-1.5 py-px text-[10.5px] font-bold text-violet-700">📐 Hình · giấy</span>}{d.ten_dang}</p>
                       <p className="truncate text-[11.5px] text-slate-400">{d.ten_chuyen_de}{d.day_at && d.day_buoi_id !== ca.buoi_id ? ' · đã học ca trước' : ''}{d.dong_at ? ' · ✓ đã đóng dạng' : ''}</p>
                     </div>
                     <TiLe dung={d.so_dung} tong={d.so_cau} />
@@ -277,11 +287,14 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
         </Khoi>
 
         {/* 2a. PHIẾU GIẤY — in khi thiếu iPad + nhập kết quả (hiện khi em có mặt và ca chưa đóng, hoặc đã có phiếu) */}
-        {(phieu.length > 0 || (coMat && !daDong && cheDo === 'giay')) && (
+        {(phieu.length > 0 || (coMat && !daDong && (cheDo === 'giay' || coHinh))) && (
           <div className="mb-3 rounded-2xl bg-white p-3 ring-1 ring-slate-200">
             <div className="flex flex-wrap items-center gap-2">
               <p className="text-[13.5px] font-bold text-slate-800">📄 Phiếu giấy</p>
-              <span className="text-[11.5px] text-slate-500">thiếu iPad thì in — cùng bộ câu app sẽ đưa, né câu em đã gặp</span>
+              <span className="text-[11.5px] text-slate-500">{cheDo !== 'giay' && coHinh ? 'bài Hình theo mô hình học trên giấy — in riêng cho em, TA dạy rồi nhập Đúng/Sai' : 'thiếu iPad thì in — cùng bộ câu app sẽ đưa, né câu em đã gặp'}</span>
+              {coMat && !daDong && cheDo !== 'giay' && coHinh && (
+                <button disabled={!!busy} onClick={inPhieuHinh} className="ml-auto rounded-lg bg-violet-600 px-3 py-1.5 text-[12.5px] font-semibold text-white disabled:opacity-50">{busy === 'in' ? 'Đang chọn bài…' : '🖨 In phiếu Hình'}</button>
+              )}
               {coMat && !daDong && cheDo === 'giay' && (
                 <span className="ml-auto flex items-center gap-1.5">
                   <select value={soCauIn} onChange={(e) => setSoCauIn(Number(e.target.value))} className="rounded-md border border-slate-300 px-1.5 py-1 text-[12px]">{[3, 5, 8, 10].map((n) => <option key={n} value={n}>{n} câu/dạng</option>)}</select>

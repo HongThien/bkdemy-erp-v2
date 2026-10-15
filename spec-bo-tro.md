@@ -336,3 +336,10 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   ERP hub Bổ trợ › Yếu › "Hình yếu" · app TA hộp "Hình yếu theo mô hình" (chỉ lớp mình). Trợ giảng dạy trên giấy rồi bấm "Đã dạy" (ghi vết `hinh_yeu_da_day`);
   đo lại sau ngày dạy mà vẫn yếu ⇒ cờ "dạy rồi vẫn yếu". Hàm: `fn_hinh_yeu_theo_mo_hinh` · `fn_hinh_yeu_danh_dau_day`.
 - Bước 2 (chờ Thùy): đưa mô hình vào case, luyện/test/retest, cách chấm bài chứng minh.
+
+## 21. Cập nhật 15/10 — bước 2: Hình theo mô hình vào case
+
+- **Dạng của case = 1 bài mô hình** (`ma_dang = hinh_baitoan.ma`). Kho câu = bài + biến thể của nó ("kho mỏng" — Thùy chấp nhận 14/10). Nhánh registry `hinh_mo_hinh` → view `hmh_ban_do/cau_hoi/dang_ly_thuyet/cum_bai/cum_tien_de`.
+- **Luôn dạy + chấm trên GIẤY** (bài chứng minh): luyện trên app báo "học trên giấy"; TA in phiếu (ca giấy: phiếu thường; ca app: "🖨 In phiếu Hình"), dạy, nhập Đúng/Sai; lời giải mẫu để đối chiếu.
+- **Vào case:** đề xuất tự động (`fn_btyeu_de_xuat_dang_moi`: yếu + có đo sau khi mở case) · engine Duyệt · nút "+ Đưa vào case" ở màn Hình yếu (chỉ case đang mở; không phá trần 70/20).
+- **Đo:** kết quả bổ trợ của bài mô hình vào `fn_mastery_cells_hinh` (test cuối ca = ET), không vào `fn_mastery_cells`.
