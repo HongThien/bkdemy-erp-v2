@@ -23,7 +23,7 @@ export function dungBanTin(d) {
     for (const n of t.nhom ?? []) {
       const muc = n.muc.slice(0, MAX_MUC).map((m) => {
         // so_luong > 1: BTVN bù = số em chưa chấm ở buổi đó; báo sai cũ = số câu
-        const kem = [m.so_luong > 1 ? `${m.so_luong} em` : null, m.tre_ngay >= 1 ? `trễ ${m.tre_ngay} ngày` : null].filter(Boolean).join(', ')
+        const kem = [m.so_luong > 1 ? `${m.so_luong} học sinh` : null, m.tre_ngay >= 1 ? `trễ ${m.tre_ngay} ngày` : null].filter(Boolean).join(', ')
         return `${esc(m.ten_lop ?? '')} ${ddmm(m.ngay_goc)}${kem ? ` (${kem})` : ''}`.trim()
       })
       const them = n.muc.length > MAX_MUC ? ` +${n.muc.length - MAX_MUC}` : ''
