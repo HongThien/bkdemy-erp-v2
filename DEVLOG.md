@@ -37836,3 +37836,15 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Làm:** `lich_test_khung.phong_id` NOT NULL (bảng đang 0 dòng); trigger chặn trùng TKB/khung test khác; `fn_ts_khung_trung_phong` (chặn + cảnh báo buổi lẻ 60 ngày); `fn_phong_lich_test_ngay` = nguồn thứ 4 của `lichPhongNgay` (Lịch phòng, Tổng quan tuần, kiểm trùng của Phát sinh/Xếp lịch bổ trợ). Màn Cài đặt chọn phòng + báo trùng tức thì; buổi hiện tên phòng.
 - **Kiểm:** ROLLBACK: CN 16–18 P201 bị chặn bởi 9K2 KHTN; khung chồng khung bị chặn; khung hợp lệ hiện ở lịch phòng + tổng quan. UI local: chọn P201 CN 16–18 ⇒ ⛔ + nút Thêm khung khoá; Lịch phòng tải bình thường.
 - **Chưa:** chiều ngược (sửa TKB vào phòng đang là khung test) chưa chặn.
+
+## 15/10 — K10 bản đồ mới: bổ sung HÌNH + ví dụ còn thiếu (Thùy gửi "Các lỗi cần sửa trong lý thuyết ví dụ lớp 10.docx")
+- Nhận xét của Thùy: (1) ví dụ các phép toán tập hợp thiếu trục số; (2) lý thuyết "tìm m" thiếu hình từng trường hợp; (3) miền nghiệm BPT/hệ BPT thiếu hình; (4) dạng "xác định BPT dựa vào miền nghiệm" chưa có ví dụ (đề + 4 đáp án cần hình).
+- Làm: máy vẽ `scripts/kho/k10-hinh.mjs` (trục số kiểu gạch/tô đậm · miền nghiệm = giao nửa mặt phẳng, nét liền/đứt) → `kho-rules/dai/lo/k10-bdm/hinh/{figs,ve,ghi,vd-moi}.mjs` → PNG lên bucket `kho-anh` → chèn `![](url)` vào `dai_bdm_dang_bai.ly_thuyet/vi_du`. 40 hình, 18 dạng cập nhật (NDB00519/520/521/522/524/829/535/536/537/538/539/884/546/886/887/888 + ví dụ mới cho NDB00540, NDB00544).
+- NDB00540/544: ví dụ SOẠN MỚI (2 ví dụ/dạng) theo khuôn nguồn, hình dựng đúng theo đáp án — không phải ví dụ chép từ sách (hình gốc của sách không lấy được). Cần Thùy soát.
+- Lỗi: template literal JS trong heredoc bash làm mất `\` (\begin → backspace, \ge → ge) ⇒ ví dụ 540/544 hỏng lần đầu, đã ghi lại bằng `String.raw` (vd-moi.mjs). Bài học: không đưa LaTeX qua heredoc bash — dùng Write tool + String.raw, rồi quét ký tự điều khiển + KaTeX trên giá trị đọc lại từ DB.
+
+### 15/10 — [Bản đồ Đại 7] 4 trường LT/VD vỡ LaTeX + ví dụ Luỹ thừa mũ chẵn thiếu TH1/TH2 (Thùy gửi Lỗi-Bản-đồ-mới.pdf)
+- **Thùy:** PDF 2 lỗi — (1) NDB00795 "Luỹ thừa mũ Lẻ" hiện thô "left(dfrac13…"; (2) NDB00796 "Luỹ thừa mũ Chẵn" thiếu TH1/TH2.
+- **Gốc lỗi (1):** trạm Sonnet G2 ghi tệp JSON qua chuỗi JS/shell ⇒ left→left, dfrac→dfrac, ight→CR+ight (DB lưu LF+ight). Cổng kiểm 14/10 chỉ đếm $ chẵn + JSON hợp lệ nên lọt; KaTeX cũng KHÔNG báo lỗi vì left(dfrac{1}{3}) là chữ thường hợp lệ. 4/65 trường dính: NDB00795 (LT+VD), NDB00798 (VD), NDB00796 (LT: ge thiếu ).
+- **Sửa:** vá deterministic (ký tự điều khiển + lệnh LaTeX trần trong $…$, bỏ qua 	ext{}) → 4 trường ghi lại, kiểm sau: 0 từ trần còn sót (trừ cases trong egin{cases}). NDB00796 VD viết lại TH1:/TH2: từng dòng, đúng quy ước các ví dụ đã có (TH1: …).
+- **Bài học:** kiểm công thức do trạm sinh phải có BƯỚC "từ ASCII ≥2 chữ trần trong $…$ (ngoài 	ext) = lệnh mất \" — KaTeX parse không bắt được; và ký tự điều khiển [ -]. Heredoc bash cũng ăn  khi viết chính script kiểm — viết script bằng Write tool.
