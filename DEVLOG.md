@@ -37851,3 +37851,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ### 15/10 tối — [Sơ đồ tổ chức] Hà Giang Trưởng khối 6·7, Tạ Quốc Cường Trưởng khối 8, Hải giữ khối 9 (mig 202610151915 ĐÃ ÁP)
 - Ô "Trưởng khối 6" ⇒ "6 7"; ô con của Trưởng khối 7 chuyển sang (ô TA của chính Hà Giang ⇒ dưới Quản lý trợ giảng); ô Trưởng khối 8 đổi người Thùy Trang ⇒ Cường (+ vai trò Trợ giảng). Ô "Trưởng khối 7" cũ để TRỐNG, chưa xoá — chờ Thùy gật. Bản tin: khối 7 tag Hà Giang, khối 8 tag Cường.
+
+## 15/10 — [App TA · bổ trợ] Hiện MÃ HS ở mọi việc bổ trợ (yếu · bù · đuổi) để đăng nhập iPad cho em quên mã (mig 202610151745 ĐÃ ÁP)
+- **Thùy:** "Tất cả task bổ trợ của học sinh (cả 3 loại) hiển thị trên app TA thì hiển thị mã HS để đăng nhập iPad — nhiều em không nhớ mã."
+- **Hiện trạng:** yếu đã có ma_hs trong dữ liệu nhưng KHÔNG vẽ; bù + đuổi (fn_bu_ca_cua_toi / fn_duoi_ca_cua_toi) chỉ trả tên + lớp; trong ca bù/đuổi mã có nhưng chữ 11px xám nhạt.
+- **Làm:** 2 RPC thêm khoá ma_hs (app cũ bỏ qua khoá lạ); chip dùng chung `MaHS` (BKUI — chữ đậm, mono, chọn-copy được); gắn vào: ô Bổ trợ yếu · Bổ trợ bù · Bổ trợ đuổi ở Hôm nay, danh sách ca + retest yếu, header chi tiết ca yếu, BTVN bù (hàng + header), roster ca bù/đuổi (chữ to + nền), tiêu đề màn chấm giấy đuổi.
+- **Kiểm:** app TA chạy máy (Admin dev): 19 mã hiện ở 3 ô; header ca "Nguyễn Nam Hải · HS0327 · Toán · K8"; 31 BTVN bù đều có mã.

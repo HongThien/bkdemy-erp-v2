@@ -247,7 +247,7 @@ export async function boTroTrongNgay(ngay?: string): Promise<{ bu: BuoiNgay[]; d
 export type CaBu = {
   buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day_ten: string | null; cua_toi: boolean; et_dong_at: string | null; danh_gia_xong_at: string | null
-  hs: { ho_ten: string; lop: string | null; diem_danh: string | null }[] | null
+  hs: { ho_ten: string; ma_hs?: string | null; lop: string | null; diem_danh: string | null }[] | null
 }
 export async function caBuCuaToi(): Promise<CaBu[]> {
   const { data, error } = await supabase.rpc('fn_bu_ca_cua_toi')

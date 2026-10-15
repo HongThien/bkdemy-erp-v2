@@ -15,6 +15,12 @@ export const BK = {
 export const BK_TROI = 'linear-gradient(180deg, #CCE7FE 0%, #E3EEFC 55%, #EEF3FC 100%)'
 
 // Thanh đầu tab nghiệp vụ / màn con ngoài khu tranh: icon PNG + tiêu đề bong bóng + dòng phụ + slot phải.
+// MÃ HS (Thùy 15/10): nhiều em không nhớ mã để đăng nhập iPad ⇒ mọi việc bổ trợ trên app TA hiện mã to, dễ đọc, chọn-copy được.
+export function MaHS({ ma, className = '' }: { ma: string | null | undefined; className?: string }) {
+  if (!ma) return null
+  return <span title="Mã đăng nhập của em" className={`select-all rounded-md bg-white px-1.5 py-px font-mono text-[11.5px] font-extrabold tracking-wide text-[#2F73F6] ring-1 ring-[#DCE6FF] ${className}`}>{ma}</span>
+}
+
 export function BKTabHeader({ icon, title, sub, right, onBack }: { icon?: string; title: string; sub?: string; right?: ReactNode; onBack?: () => void }) {
   return (
     <div className="px-2 pb-1" style={{ paddingTop: 'max(0.5rem, env(safe-area-inset-top))' }}>

@@ -582,7 +582,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
               <div key={r.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-[15px] font-semibold text-slate-800">{tenHT[i]}</span>
-                  {(r.hoc_sinh?.ma_hs || info?.ma_hs) && <span className="font-mono text-[11px] text-slate-400">{r.hoc_sinh?.ma_hs ?? info?.ma_hs}</span>}
+                  {(r.hoc_sinh?.ma_hs || info?.ma_hs) && <span title="Mã đăng nhập của em" className="select-all rounded-md bg-indigo-50 px-1.5 py-px font-mono text-[12.5px] font-extrabold tracking-wide text-indigo-700">{r.hoc_sinh?.ma_hs ?? info?.ma_hs}</span>}
                   {info?.lop_bu && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">{info.lop_bu}{info.mon ? ` (${info.mon})` : ''}</span>}
                   {info?.bu_cho && <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] text-violet-600" title="Buổi HS đang bù cho">Bù cho: {info.bu_cho}</span>}
                   <div className="ml-auto flex items-center gap-1">

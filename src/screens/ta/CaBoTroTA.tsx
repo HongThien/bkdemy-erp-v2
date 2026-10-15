@@ -10,7 +10,7 @@ import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
-import { BKTabHeader, BKRowCard } from '../../components/bk/BKUI'
+import { BKTabHeader, BKRowCard, MaHS } from '../../components/bk/BKUI'
 
 const POLL_MS = 10000
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
@@ -59,7 +59,7 @@ export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; 
             <p className="px-1 pt-1 text-[11px] font-bold uppercase tracking-wide text-[#6A4BD6]">Retest đến hạn · đưa iPad cho em sau ET</p>
             {viec.retest.map((r) => (
               <BKRowCard key={r.bai_test_id} icon="/bk-ui/pr_et.png" bg="#E6DDFF" accent="#8B6BEF"
-                title={<>{r.ho_ten} <span className="font-normal text-[#63709A]">· {r.ten_lop}</span></>}
+                title={<>{r.ho_ten} <MaHS ma={r.ma_hs} className="ml-1" /> <span className="font-normal text-[#63709A]">· {r.ten_lop}</span></>}
                 sub={<span>{r.so_cau} câu · {r.mon}{r.ngay < homNay ? ` · ⚠ hạn ${ddmmVN(r.ngay)} (em vắng?)` : ' · hôm nay'}{r.buoi_bo_tro_ngay ? ` · ca ${ddmmVN(r.buoi_bo_tro_ngay)}` : ''}</span>}
                 right={<span className="shrink-0 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-bold text-[#63709A]">em tự làm trên iPad</span>} />
             ))}
@@ -85,7 +85,7 @@ function Nhom({ tieuDe, cls, items, homNay, onMo, rong }: { tieuDe: string; cls:
         const tt = TT_NHAN[trangThaiCa(c, homNay)]
         return (
           <BKRowCard key={c.buoi_id} icon="/bk-ui/pr_tai_nghe.png" bg="#E6DDFF" accent="#8B6BEF" onClick={() => onMo(c.buoi_id)}
-            title={<>{c.ho_ten} <span className="font-normal text-[#63709A]">· {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span></>}
+            title={<>{c.ho_ten} <MaHS ma={c.ma_hs} className="ml-1" /> <span className="font-normal text-[#63709A]">· {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span></>}
             sub={<>
               <span>{c.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`}{c.gio_bat_dau ? ` · ${hhmm(c.gio_bat_dau)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
               <span className="rounded-full bg-white/80 px-1.5 py-px font-semibold">{MUC_TEN[c.level ?? 1] ?? `L${c.level}`}</span>
@@ -204,7 +204,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
 
   return (
     <div>
-      <BKTabHeader onBack={onBack} icon="/bk-ui/pr_tai_nghe.png" title={`${ca.hs.ho_ten} · ${ca.mon}${ca.hs.khoi ? ` · K${ca.hs.khoi}` : ''}`}
+      <BKTabHeader onBack={onBack} icon="/bk-ui/pr_tai_nghe.png" title={`${ca.hs.ho_ten}${ca.hs.ma_hs ? ` · ${ca.hs.ma_hs}` : ''} · ${ca.mon}${ca.hs.khoi ? ` · K${ca.hs.khoi}` : ''}`}
         sub={`${thuCuaNgay(ca.ngay)} ${ddmmVN(ca.ngay)} · ${MUC_TEN[ca.hs.level ?? 1] ?? `L${ca.hs.level}`} · ${ca.dangs.length} dạng${ca.so_lan_huy ? ` · đã huỷ ${ca.so_lan_huy} lần` : ''}`} />
 
       <div className="mx-auto max-w-[1000px] px-2 pb-8 pt-1">
