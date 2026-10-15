@@ -343,3 +343,10 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Luôn dạy + chấm trên GIẤY** (bài chứng minh): luyện trên app báo "học trên giấy"; TA in phiếu (ca giấy: phiếu thường; ca app: "🖨 In phiếu Hình"), dạy, nhập Đúng/Sai; lời giải mẫu để đối chiếu.
 - **Vào case:** đề xuất tự động (`fn_btyeu_de_xuat_dang_moi`: yếu + có đo sau khi mở case) · engine Duyệt · nút "+ Đưa vào case" ở màn Hình yếu (chỉ case đang mở; không phá trần 70/20).
 - **Đo:** kết quả bổ trợ của bài mô hình vào `fn_mastery_cells_hinh` (test cuối ca = ET), không vào `fn_mastery_cells`.
+
+## 22. Cập nhật 15/10 — Bổ trợ Đuổi thống nhất (thay "Học từ đầu")
+
+- **Một sản phẩm:** mục tiêu = đúng các dạng giáo viên chọn (`bo_tro_duoi_dang`); HS tự hoàn thành ở nhà trên app (đọc lý thuyết → luyện → test, từ 50% đúng là xong dạng); đến buổi TA làm cùng phần còn dở.
+- **Một nguồn tiến trình:** `fn_duoi_tien_trinh(hs)` — HS (app), TA (ca đuổi), ERP cùng đọc. Mỗi dạng có trạng thái xong · đang học · tới lượt · khoá · trên giấy, và nơi làm (ở nhà / tại ca).
+- **Khoá tuần tự** theo độ khó trong chuyên đề của MỤC TIÊU; TA mở tay được (`fn_duoi_mo_dang`). Dạng ngoài mục tiêu KHÔNG hiện — học thêm thì ra phần Học tập.
+- **Đóng đợt** vẫn do giáo viên/TA xác nhận (hệ chỉ đề xuất khi đủ dạng / đủ buổi).

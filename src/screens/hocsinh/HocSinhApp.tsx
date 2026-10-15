@@ -45,8 +45,9 @@ const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 const LuyenYeuDau = lazy(() => import('./luyen/LuyenYeuDau')) // khung đấu chung (kéo theo chunk PhieuLuuHS) — chỉ tải khi vào Luyện dạng yếu có hiệu ứng game
 import { ManCho as ManChoChuyen, napPhieuLuu } from './phieuluu/chuyenCanh'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
-import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
-import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, LoTrinhDuoiHS, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
+import { htdCoMo, htdSinh, htdCauBaiTest, duoiTienTrinh, type CauHTD } from '../../lib/hoctudau'
+import BoTroDuoiHS from './BoTroDuoiHS'
+import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS, CaBuHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, RETEST_BAT, type LichBoTro, type RetestCuaToi } from '../../lib/botro_yeu_ca'
@@ -416,6 +417,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // lại môn đã dùng để check, để gọi RPC htd_* sau này khỏi phải monCuaHS() lại.
   const [htdMo, setHtdMo] = useState(false)
   const [htdMon, setHtdMon] = useState<string | null>(null)
+  const [duoiTT, setDuoiTT] = useState<{ xong: number; tong: number } | null>(null) // tiến trình Bổ trợ Đuổi hiện trên thẻ ngoài (15/10)
   const [htdChuDe, setHtdChuDe] = useState<ChuDeNhom | null>(null)
   const [htdChuyenDe, setHtdChuyenDe] = useState<ChuyenDeNhom | null>(null)
   const [htdDang, setHtdDang] = useState<{ ma_dang: string; ten_dang: string; xong: boolean } | null>(null)
@@ -560,7 +562,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thùy 24/09: TRƯỚC chỉ kiểm 1 lần lúc mở app ⇒ học thuật chốt dạng đuổi SAU lúc em mở app (vụ Mạnh Duy 24/09 18:17) thì card
   // 'Học từ đầu' không hiện tới khi mở lại app. Giờ kiểm lại MỖI LẦN về màn chính (direct/khu = null) + khi app quay lại từ nền.
   // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
-  const kiemHTD = () => monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m) }).then((mo) => { if (mo !== undefined) setHtdMo(!!mo) }).catch(() => {})
+  const kiemHTD = () => monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m).then((mo) => ({ m, mo })) }).then((r) => {
+    if (!r) return
+    setHtdMo(!!r.mo)
+    if (r.mo) duoiTienTrinh().then((ds) => { const d = ds.filter((x) => x.mon === r.m); setDuoiTT(d.length ? { xong: d.reduce((a, x) => a + x.xong, 0), tong: d.reduce((a, x) => a + x.tong, 0) } : null) }).catch(() => {})
+  }).catch(() => {})
   useEffect(() => { if (!direct && !khu) datMonTam(null) }, [direct, khu]) // TRƯỚC kiemHTD: về màn chính là về môn đã chọn
   useEffect(() => { if (!direct && !khu) kiemHTD() }, [direct, khu])
   function doiMon(m: string) {
@@ -718,8 +724,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={manRong} gioiTinh={gt} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'bu_ca' && buCa) return <CaBuHS buoiId={buCa} onBack={() => { setBuCa(null); setDirect('lich_bo_tro') }}
     onPickDang={(d, mon) => { setHtdMon(mon); setHtdChuyenDe(null); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: false }); setDirect('htd_dang') }} />
-  if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <LoTrinhDuoiHS mon={duoiLoTrinhMon} gioiTinh={gt}
-    onPickDang={(d, cde) => { setHtdMon(duoiLoTrinhMon); setHtdChuyenDe(cde); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
+  if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <BoTroDuoiHS
+    onPickDang={(d, mon, cung) => { setHtdMon(mon); setHtdChuyenDe({ ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, dangs: cung } as any); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
     onBack={() => setDirect(null)} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={lichMon} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
@@ -822,9 +828,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }))
   const chenRieng = (ds: HomeCard[]) => { const i = ds.findIndex((c) => c.id === 'tu_luyen'); return i < 0 ? [...theCardRieng, ...ds] : [...ds.slice(0, i + 1), ...theCardRieng, ...ds.slice(i + 1)] }
   const theCardHTD: HomeCard[] = htdMo
-    ? [{ id: 'hoc_tu_dau', ten: 'Học từ đầu', sub: 'Bổ trợ đuổi — học tuần tự từng dạng', subMau: 'ton',
+    ? [{ id: 'hoc_tu_dau', ten: 'Bổ trợ Đuổi', sub: duoiTT ? `Đã xong ${duoiTT.xong}/${duoiTT.tong} dạng — xem tiến trình` : 'Mục tiêu thầy cô đặt — em tự học ở nhà', subMau: 'ton',
         ill: 'self_practice_target', emoji: '🚀', icon: '🚀', doodle: 'Từng bước một!', tone: 'purple',
-        onClick: () => setDirect('htd_chu_de') }]
+        onClick: () => { setDuoiLoTrinhMon(htdMon); setBuCa(null); setDirect('duoi_lo_trinh') } }]
     : []
   if (!khu) {
     const cards: HomeCard[] = chenRieng(cap2 || cap1

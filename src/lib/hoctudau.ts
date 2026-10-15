@@ -15,6 +15,32 @@ export type DangHTD = {
   tong_cau: number; doc_ly_thuyet: boolean; xong: boolean; mo: boolean
 }
 
+// ── BỔ TRỢ ĐUỔI thống nhất (Thùy 15/10) — một nguồn tiến trình cho HS, TA, ERP. Mọi số + trạng thái tính ở DB (fn_duoi_tien_trinh). ──
+export type DangDuoiHS = DangHTD & {
+  luyen_cau: number; luyen_dung: number; test_lan: number; test_gan_nhat: number | null
+  xong_at: string | null; noi_lam: 'nha' | 'ca' | null; mo_tay: boolean
+  trang_thai: 'xong' | 'dang_hoc' | 'toi_luot' | 'khoa' | 'giay'
+  tren_app: boolean // false = dạng không nằm trong lộ trình app (vd Bài Hình học) ⇒ học + chấm trên giấy với TA
+  ma_chuyen_de: string; ten_chuyen_de: string
+}
+export type BuoiDuoiHS = { buoi_id: string; ngay: string; gio_bat_dau: string | null; trang_thai: string; diem_danh: string | null; xong: boolean }
+export type DotDuoiHS = {
+  bo_tro_duoi_id: string; mon: string; lop: string | null; so_buoi_du_kien: number | null; created_at: string
+  dangs: DangDuoiHS[]; buoi: BuoiDuoiHS[]
+  tong: number; xong: number; dang_hoc: number; tai_nha: number; tai_ca: number; giay: number; so_buoi_xong: number
+}
+// Không tham số = đợt của CHÍNH em (app HS). Nhân sự truyền hocSinhId để xem tiến trình của em đó (app TA / ERP).
+export async function duoiTienTrinh(hocSinhId?: string | null): Promise<DotDuoiHS[]> {
+  const { data, error } = await supabase.rpc('fn_duoi_tien_trinh', { p_hoc_sinh: hocSinhId ?? null })
+  if (error) throw error
+  return (data ?? []) as DotDuoiHS[]
+}
+// TA mở tay dạng đang khoá tuần tự (chỉ nhân sự, chỉ dạng thuộc mục tiêu đuổi đang mở của em).
+export async function moTayDangDuoi(hocSinhId: string, mon: string, maDang: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_duoi_mo_dang', { p_hoc_sinh: hocSinhId, p_mon: mon, p_ma_dang: maDang })
+  if (error) throw error
+}
+
 export async function htdCoMo(mon: string): Promise<boolean> {
   const { data, error } = await supabase.rpc('htd_co_mo', { p_mon: mon })
   if (error) throw error
