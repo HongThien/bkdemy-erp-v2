@@ -69,7 +69,7 @@ export const NEN_ERP: NenErp[] = [
   { id: 'erp_lang_bk', ten: 'Làng BK', url: '/bk-ui/erp/nen/lang_bk.jpg' },
   // Hình riêng theo order — thêm 1 dòng/ảnh (nén bằng `node scripts/erp-nen-ca-nhan.mjs`)
   { id: 'erp_cn_ns002', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns002.jpg', rieng_cho: ['NS002'] },
-  { id: 'erp_cn_ns009', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
+  { id: 'erp_cn_ns009', ten: 'Nền của Quỳnh Trang', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
 ]
 // Hình nền người này được thấy (dùng chung + hình riêng của đúng mã nhân sự).
 export const nenErpCho = (maNs: string | null | undefined): NenErp[] =>
