@@ -37816,3 +37816,6 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Quyết định:** hẹn là bảng riêng, KHÔNG tạo `ca_test` lúc đăng ký (ca_test = em có mặt, §1.5); đã đến / lỡ hẹn suy ra. Thời lượng KHÔNG seed (lịch sử ca_test mỗi khối 2–3 thời lượng). Hòm thư dùng loai `viec` (không nới CHECK). Lịch đọc qua Edge Function, không sync sang bkdemy-ph.
 - **Kiểm:** RPC trong transaction ROLLBACK (đúng/sai SĐT, chồng giờ, giờ lẻ, môn chưa mở, đăng ký lại, hòm thư, quyền anon=0). Web chạy thật trên shim gọi RPC trong ROLLBACK (mobile: điền → khoá giờ chồng → màn thành công). Màn Lộc mở được trên ERP local (dữ liệu thật đang trống).
 - **Chưa:** deploy Edge Function + env Vercel web (web commit chưa push); Lộc khai khung + thời lượng.
+
+### 15/10 — [Bot Telegram TA] Bản tin tag TRƯỞNG khối cho mọi TA (mig 202610151412 ĐÃ ÁP)
+- **Thùy:** "TA là Phó khối thì ghi Trưởng khối, đỡ 2 bạn quản lẫn nhau" → "chuyển tất cả phụ trách ở đây là Trưởng khối". `_khoi_nguoi_theo_doi(mon, khoi, ta)` = Trưởng của khối có việc, không tag chính mình. Chấm MT không đổi (Phó, không có ⇒ Trưởng).
