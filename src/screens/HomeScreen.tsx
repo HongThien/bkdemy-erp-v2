@@ -9,7 +9,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { useStore } from '../store/useStore'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, NEN_ERP } from '../lib/erpSkin'
+import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, nenErpCho } from '../lib/erpSkin'
 import { napCanh, CANH_ERP, duongDanCanh, KHOA_NHOM, type Canh } from '../lib/canhErp'
 import HomeScene from './home/HomeScene'
 import { uploadNenErp } from '../lib/nhansu'
@@ -150,6 +150,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
     finally { setDangTai(false); if (tep.current) tep.current.value = '' }
   }
   const doi = useStore((s) => s.doiGiaoDienErp)
+  const maNs = useStore((s) => s.me?.nhanSu.ma_ns)
   const gdNenUrl = useStore((s) => s.erpGiaoDien.nen_url)
   const canhDangDung = useStore((s) => s.erpGiaoDien.canh) ?? null
   const [mo, setMo] = useState(false)
@@ -190,7 +191,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
                   </button>
                 ))}
                 {/* Hình nền "phòng học" dùng chung mọi style (bộ ChatGPT) */}
-                {NEN_ERP.map((n) => (
+                {nenErpCho(maNs).map((n) => (
                   <button key={n.id} onClick={() => doi({ nen: n.id })} className={o(sk.nenId === n.id)} style={{ borderRadius: 8 }}>
                     <span className="block h-[58px]" style={{ background: `url("${n.url}") center / cover no-repeat` }} />
                     <span className={ten}>{n.ten}</span>

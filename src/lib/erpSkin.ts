@@ -60,11 +60,20 @@ export const NEN_TU_CHON = 'tu_chon'
 // HÌNH NỀN DÙNG CHUNG của vỏ ERP (mọi style đều chọn được) — "phòng học" do ChatGPT vẽ, bộ bk-erp-home-objects-v1
 // (script nén: scripts/erp-nen-hinh.mjs). Ảnh đã có sẵn nhân vật / mèo / bàn học trong tranh ⇒ khi chọn, các asset
 // trang trí của style (nhân vật góc trái, bong bóng, hoạ tiết) tự bỏ — y như ảnh cá nhân.
-export const NEN_ERP: { id: string; ten: string; url: string }[] = [
+// `rieng_cho` = danh sách mã nhân sự (ma_ns) được thấy hình đó trong bảng chọn; bỏ trống = ai cũng thấy.
+// Hình thiết kế riêng theo order: file gốc ở design/bk-ui-src/erp-ca-nhan/, bản nén ở public/bk-ui/erp/nen/ca-nhan/.
+export type NenErp = { id: string; ten: string; url: string; rieng_cho?: string[] }
+export const NEN_ERP: NenErp[] = [
   { id: 'erp_ke_hoc_thuat', ten: 'Kệ học thuật', url: '/bk-ui/erp/nen/ke_hoc_thuat.jpg' },
   { id: 'erp_pegboard', ten: 'Bảng đục lỗ', url: '/bk-ui/erp/nen/pegboard.jpg' },
   { id: 'erp_lang_bk', ten: 'Làng BK', url: '/bk-ui/erp/nen/lang_bk.jpg' },
+  // Hình riêng theo order — thêm 1 dòng/ảnh (nén bằng `node scripts/erp-nen-ca-nhan.mjs`)
+  { id: 'erp_cn_ns002', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns002.jpg', rieng_cho: ['NS002'] },
+  { id: 'erp_cn_ns009', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
 ]
+// Hình nền người này được thấy (dùng chung + hình riêng của đúng mã nhân sự).
+export const nenErpCho = (maNs: string | null | undefined): NenErp[] =>
+  NEN_ERP.filter((n) => !n.rieng_cho || (!!maNs && n.rieng_cho.includes(maNs)))
 
 export function useSkinErp() {
   const gd = useStore((s) => s.erpGiaoDien)
