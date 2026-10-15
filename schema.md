@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-398 bảng · 25 view · 0 enum · 188 trigger · 1086 function
+398 bảng · 25 view · 0 enum · 188 trigger · 1090 function
 
 ## _app_secrets
 
@@ -7730,6 +7730,7 @@ WITH luot AS (
 - `_sotay_nhom(p_muc_do smallint)` → text
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
 - `_ta_buoi_thieu_cong(p_tu date, p_den date)` → TABLE(loai text, ngay date, lop_id uuid, ten text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, buoi_hoc_id uuid, ca_bo_tro_id uuid, nhan_su_id uuid, nguoi_phu_trach text)
+- `_ta_con_han_tu_khai(p_ngay date, p_ket timestamp with time zone)` → boolean
 - `_ta_cong_ghi_log()` → trigger
 - `_ta_cong_viec_kiem()` → trigger
 - `_ta_cua_lop(p_lop uuid)` → uuid
@@ -8391,6 +8392,7 @@ WITH luot AS (
 - `fn_ta_doi_chieu(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(loai_dong text, id uuid, cham_cong_id uuid, nhan_su_id uuid, ho_ten text, ngay date, vao_at timestamp with time zone, ra_at timestamp with time zone, vao_chot timestamp with time zone, ra_chot timestamp with time zone, quen_ra boolean, khai_bu boolean, nguon text, loai_viec text, ten_loai text, lop_id uuid, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, hoc_sinh text, ghi_chu text, khop boolean, co text[], lam_ho text, duyet text, ly_do_duyet text)
 - `fn_ta_duyet_cong(p_ca uuid[], p_viec uuid[], p_ket_qua text, p_ly_do text DEFAULT NULL::text)` → integer
 - `fn_ta_hom_nay(p_at timestamp with time zone DEFAULT now())` → TABLE(nguon text, loai_viec text, lop_id uuid, ten_lop text, buoi_hoc_id uuid, ca_bo_tro_id uuid, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, dang_dien_ra boolean, da_khai boolean)
+- `fn_ta_huy_ca(p_id uuid, p_ly_do text DEFAULT 'TA tự huỷ'::text)` → integer
 - `fn_ta_khai_bu_cho_phep()` → TABLE(tu date, den date, han timestamp with time zone, ghi_chu text)
 - `fn_ta_khai_viec(p_loai text, p_ngay date, p_lop uuid DEFAULT NULL::uuid, p_buoi uuid DEFAULT NULL::uuid, p_ca uuid DEFAULT NULL::uuid, p_bat time without time zone DEFAULT NULL::time without time zone, p_ket time without time zone DEFAULT NULL::time without time zone, p_hs text DEFAULT NULL::text, p_ghi_chu text DEFAULT ''::text)` → uuid
 - `fn_ta_ky_trang_thai(p_ky date)` → jsonb
@@ -8400,6 +8402,8 @@ WITH luot AS (
 - `fn_ta_nhap_ho_viec(p_ns uuid, p_loai text, p_ngay date, p_lop uuid DEFAULT NULL::uuid, p_buoi uuid DEFAULT NULL::uuid, p_ca uuid DEFAULT NULL::uuid, p_bat time without time zone DEFAULT NULL::time without time zone, p_ket time without time zone DEFAULT NULL::time without time zone, p_hs text DEFAULT NULL::text, p_ly_do text DEFAULT ''::text)` → uuid
 - `fn_ta_push_dem(p_secret text)` → TABLE(nhan_su_id uuid, so_viec integer)
 - `fn_ta_push_dem_1(p_secret text, p_ns uuid)` → integer
+- `fn_ta_sua_ca(p_id uuid, p_vao timestamp with time zone, p_ra timestamp with time zone)` → void
+- `fn_ta_sua_viec(p_id uuid, p_loai text, p_lop uuid DEFAULT NULL::uuid, p_bat time without time zone DEFAULT NULL::time without time zone, p_ket time without time zone DEFAULT NULL::time without time zone, p_hs text DEFAULT NULL::text, p_ghi_chu text DEFAULT ''::text)` → void
 - `fn_ta_tien_trinh(p_ym text)` → jsonb
 - `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
 - `fn_tai_lieu_facets()` → TABLE(loai text, mon text)
@@ -8560,8 +8564,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -8630,8 +8634,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

@@ -37862,3 +37862,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy:** cấp 2–3 = 90', khối 3–4–5 = 60', 4T/5T = 75'; thêm lựa chọn riêng nhưng HIỆN "Lớp 4 CLC", "Lớp 5 CLC" (4T/5T là cách gọi nội bộ BK).
 - **Làm:** nhập thời lượng lớp 3–12 (data, không migration); mig 1933: `_ts_lop_cua_khoi` giữ '4T'/'5T' (8T vẫn gộp lớp 8), `_ts_lop_hop_le`, `_ts_ten_lop` (DB đặt tên hiển thị), `_ts_lop_thu_tu`; nới CHECK `test_dau_vao_thoi_luong.khoi` (Thùy gật — drop + add, không mất dòng); 4 hàm form/ghi/tổng quan sinh lại từ thân đã áp, chỉ đổi chỗ lớp; seed CLC 75'. Web + ERP hiện `ten` từ DB.
 - **Kiểm:** ROLLBACK: form trả Lớp 3 · 4 · 4 CLC · 5 · 5 CLC · 6…; đăng ký 4T Toán 08:00 → xong 09:15; hòm thư "(Lớp 4 CLC)".
+
+### 15/10 tối — [Chấm công TA] TA tự SỬA công đang chờ duyệt (mig 202610151938 ĐÃ ÁP)
+- **Thùy:** "khai bù TA chưa quen nhầm lẫn — cần sửa lại cái đã chấm công, phải có list để sửa."
+- **Làm:** `fn_ta_sua_ca` (giờ ca KHAI BÙ, cùng ngày; ca bằng app = giờ máy ⇒ không sửa giờ) · `fn_ta_huy_ca` (ca + việc trong ca ⇒ từ chối "TA tự huỷ", không xoá dòng; ca đang mở được đóng để checkin lại được) · `fn_ta_sua_viec` (loại/lớp/giờ/HS/ghi chú; buổi gắn lại theo luật khai việc). Chỉ mục của mình, còn chờ duyệt, còn hạn tự khai (24h / đợt khai lùi); trigger log ghi cũ/mới, khoá kỳ chặn tháng đã chốt. App TA: tab **Bảng công** = list để sửa (nút Sửa trên mục Chờ duyệt) + cùng nút ở màn ngày (Hôm nay / Khai bù); huỷ ca xác nhận ngay trên dòng. Tutorial thêm 1 câu.
+- **Kiểm:** `test_sua_cong.mjs` 16/16 (rollback) · trang xem thử: sửa việc / sửa giờ ca khai bù / huỷ ca (việc trong ca huỷ theo) chạy đúng.

@@ -71,6 +71,12 @@ export const goiYViec = () => rpc<GoiY[]>('fn_ta_hom_nay')
 export const congCuaToi = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_cong_cua_toi', { p_tu: tu, p_den: den })
 export const khaiBuChoPhep = () => rpc<KhoangKhaiBu[]>('fn_ta_khai_bu_cho_phep')
 export const boViec = (id: string) => rpc<null>('fn_ta_bo_viec', { p_id: id })
+// TA tự sửa công đang chờ duyệt (Thùy 15/10, mig 202610151938): giờ ca khai bù · huỷ ca (kèm việc trong ca) · sửa việc.
+export const suaCa = (id: string, ngay: string, vao: string, ra: string) => rpc<null>('fn_ta_sua_ca', { p_id: id, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra) })
+export const huyCa = (id: string, lyDo: string) => rpc<number>('fn_ta_huy_ca', { p_id: id, p_ly_do: lyDo })
+export const suaViec = (id: string, v: Omit<KhaiViec, 'ngay' | 'buoi' | 'ca'>) => rpc<null>('fn_ta_sua_viec', {
+  p_id: id, p_loai: v.loai, p_lop: v.lop ?? null, p_bat: v.bat || null, p_ket: v.ket || null, p_hs: v.hs?.trim() || null, p_ghi_chu: v.ghiChu ?? '',
+})
 // Phiếu lương của tôi: kỳ đã chốt ⇒ bản chốt bất biến; chưa chốt ⇒ tạm tính (fn_ta_luong_ky).
 export const luongCuaToi = async (ky: string, ns: string) => (await rpc<LuongThang[]>('fn_ta_luong_ky', { p_ky: ky, p_ns: ns }))[0] ?? null
 

@@ -12,7 +12,7 @@ import HuongDanCong, { daXemHuongDanCong, ghiDaXemHuongDanCong } from './HuongDa
 import { lienKetTgCuaToi, linkKetNoiTg, type LienKetTg } from '../../lib/telegram'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay, ngayCuaTs, soNgayGiua } from '../../lib/tuan'
 import {
-  checkin, checkout, khaiBuCa, goiYViec, congCuaToi, khaiBuChoPhep, boViec, ghiCong, dsLoaiViec, dsLop, luongCuaToi,
+  checkin, checkout, khaiBuCa, goiYViec, congCuaToi, khaiBuChoPhep, boViec, ghiCong, dsLoaiViec, dsLop, luongCuaToi, suaCa, huyCa, suaViec,
   gioVN, hm, nhanCo, type GoiY, type DongCong, type KhoangKhaiBu, type LoaiViec, type LuongThang,
 } from '../../lib/tacong'
 
@@ -219,6 +219,7 @@ function NgayCong({ ngay, onDoi }: { ngay: string; onDoi?: () => void }) {
     finally { setBan(null) }
   }
 
+  const xongSua = async (t: string) => { setTb({ ok: true, t }); await tai().catch(() => {}); onDoi?.() }
   const cas = (dong ?? []).filter((r) => r.loai_dong === 'ca' && r.duyet !== 'tu_choi')
   const viecs = (dong ?? []).filter((r) => r.loai_dong === 'viec')
   const caMo = laHomNay ? cas.find((c) => !c.ra_at) : undefined
@@ -231,7 +232,7 @@ function NgayCong({ ngay, onDoi }: { ngay: string; onDoi?: () => void }) {
       <div className="rounded-[22px] bg-white/90 p-3">
         <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">{laHomNay ? 'Hôm nay' : 'Ngày'} · {thuCuaNgay(ngay)} {ngayDu(ngay)}</p>
         {dong === null ? <p className="py-2 text-[13px] text-[#63709A]">Đang tải…</p> : <>
-          {cas.map((c) => <DongCa key={c.id} c={c} />)}
+          {cas.map((c) => <DongSua key={c.id} r={c} loai={loai} lop={lop} onXong={xongSua} />)}
           {laHomNay && (caMo
             ? <button disabled={!!ban} onClick={() => chay('out', checkout, 'Đã checkout')} className="mt-2 w-full rounded-2xl bg-[#F57C2B] py-3.5 text-[17px] font-extrabold text-white active:scale-[.99] disabled:opacity-50">Checkout</button>
             : <button disabled={!!ban} onClick={() => chay('in', checkin, 'Đã checkin')} className="mt-2 w-full rounded-2xl bg-[#1E9E5A] py-3.5 text-[17px] font-extrabold text-white active:scale-[.99] disabled:opacity-50">{coCa ? 'Checkin ca mới' : 'Checkin'}</button>)}
@@ -271,7 +272,7 @@ function NgayCong({ ngay, onDoi }: { ngay: string; onDoi?: () => void }) {
         <div className="rounded-[22px] bg-white/90 p-3">
           <p className="font-bubble text-[16px] font-extrabold text-[#16224D]">Việc đã ghi công {laHomNay ? 'hôm nay' : 'ngày ' + ngayDu(ngay)}</p>
           {viecs.length === 0 ? <p className="pt-1 text-[12.5px] text-[#63709A]">Chưa ghi công việc nào.</p>
-            : <div className="mt-1.5 flex flex-col gap-1.5">{viecs.map((v) => <DongViec key={v.id} v={v} ban={ban === 'b' + v.id} onBo={() => chay('b' + v.id, () => boViec(v.id), 'Đã bỏ việc')} />)}</div>}
+            : <div className="mt-1.5 flex flex-col gap-1.5">{viecs.map((v) => <DongSua key={v.id} r={v} loai={loai} lop={lop} onXong={xongSua} />)}</div>}
           {!moThem
             ? <button onClick={() => setMoThem(true)} disabled={!coCa} className="mt-2 rounded-full bg-[#EEF3FF] px-3 py-1.5 text-[13px] font-bold text-[#2F73F6] disabled:opacity-40">+ Thêm việc ngoài lịch</button>
             : <FormViec ngay={ngay} loai={loai} lop={lop} ban={!!ban} onHuy={() => setMoThem(false)}
@@ -308,7 +309,7 @@ function DongCa({ c }: { c: DongCong }) {
   )
 }
 
-function DongViec({ v, ban, onBo }: { v: DongCong; ban?: boolean; onBo?: () => void }) {
+function DongViec({ v, ban, onBo, onSua }: { v: DongCong; ban?: boolean; onBo?: () => void; onSua?: () => void }) {
   const coManh = v.co.filter((x) => !nhanCo(x).nhe)
   return (
     <div className={`flex items-start gap-2 rounded-2xl bg-white px-3 py-2 ring-1 ${v.duyet === 'tu_choi' ? 'opacity-70 ring-[#F5C2CF]' : 'ring-[#E3E9F6]'}`}>
@@ -325,7 +326,12 @@ function DongViec({ v, ban, onBo }: { v: DongCong; ban?: boolean; onBo?: () => v
         </div>
         {v.duyet === 'tu_choi' && v.ly_do_duyet && <p className="mt-1 text-[11.5px] text-[#C0355A]">Lý do: {v.ly_do_duyet}</p>}
       </div>
-      {onBo && v.duyet === 'cho_duyet' && <button disabled={ban} onClick={onBo} className="shrink-0 rounded-full px-2.5 py-1 text-[12px] font-bold text-[#C0355A] ring-1 ring-[#F5C2CF] disabled:opacity-40">Bỏ</button>}
+      {v.duyet === 'cho_duyet' && (onSua || onBo) && (
+        <div className="flex shrink-0 flex-col gap-1">
+          {onSua && <button disabled={ban} onClick={onSua} className="rounded-full px-2.5 py-1 text-[12px] font-bold text-[#2F73F6] ring-1 ring-[#C9D8F5] disabled:opacity-40">Sửa</button>}
+          {onBo && <button disabled={ban} onClick={onBo} className="rounded-full px-2.5 py-1 text-[12px] font-bold text-[#C0355A] ring-1 ring-[#F5C2CF] disabled:opacity-40">Bỏ</button>}
+        </div>
+      )}
     </div>
   )
 }
@@ -347,16 +353,17 @@ function KhaiBuCa({ coCaMo, coCa, ban, onLuu }: { coCaMo: boolean; coCa: boolean
   )
 }
 
-function FormViec({ ngay, loai, lop, ban, onHuy, onLuu }: {
+function FormViec({ ngay, loai, lop, ban, onHuy, onLuu, dau, nut = 'Ghi công' }: {
   ngay: string; loai: LoaiViec[]; lop: { id: string; ten_lop: string; mon: string }[]; ban: boolean
   onHuy: () => void; onLuu: (v: Parameters<typeof ghiCong>[0]) => void
+  dau?: DongCong; nut?: string   // dau = việc đang sửa (điền sẵn)
 }) {
-  const [ma, setMa] = useState('tro_giang')
-  const [lopId, setLopId] = useState<string | null>(null)
-  const [bat, setBat] = useState('18:00')
-  const [ket, setKet] = useState('19:30')
-  const [hs, setHs] = useState('')
-  const [gc, setGc] = useState('')
+  const [ma, setMa] = useState(dau?.loai_viec ?? 'tro_giang')
+  const [lopId, setLopId] = useState<string | null>(dau?.lop_id ?? null)
+  const [bat, setBat] = useState(dau?.gio_bat_dau ? hm(dau.gio_bat_dau) : '18:00')
+  const [ket, setKet] = useState(dau?.gio_ket_thuc ? hm(dau.gio_ket_thuc) : '19:30')
+  const [hs, setHs] = useState(dau?.hoc_sinh ?? '')
+  const [gc, setGc] = useState(dau?.ghi_chu ?? '')
   const L = loai.find((l) => l.ma === ma)
   const optLop = useMemo(() => lop.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.mon })), [lop])
   const thieu = (L?.can_lop && !lopId && ma !== 'tro_giang') || (ma === 'khac' && !gc.trim()) || (L?.don_vi === 'gio' && (!bat || !ket))
@@ -379,31 +386,96 @@ function FormViec({ ngay, loai, lop, ban, onHuy, onLuu }: {
       {L?.can_hs && <label className="flex flex-col gap-0.5 text-[11.5px] font-semibold text-[#63709A]">Học sinh<input value={hs} onChange={(e) => setHs(e.target.value)} placeholder="Tên học sinh" className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1.5 text-[13px] text-[#16224D]" /></label>}
       <label className="flex flex-col gap-0.5 text-[11.5px] font-semibold text-[#63709A]">Ghi chú{ma === 'khac' ? ' (bắt buộc)' : ''}<input value={gc} onChange={(e) => setGc(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1.5 text-[13px] text-[#16224D]" /></label>
       <div className="flex items-center gap-2">
-        <button disabled={ban || !!thieu} onClick={() => onLuu({ loai: ma, ngay, lop: lopId, bat, ket, hs, ghiChu: gc })} className="rounded-full bg-[#2F73F6] px-4 py-1.5 text-[13px] font-bold text-white disabled:opacity-40">Ghi công</button>
+        <button disabled={ban || !!thieu} onClick={() => onLuu({ loai: ma, ngay, lop: lopId, bat, ket, hs, ghiChu: gc })} className="rounded-full bg-[#2F73F6] px-4 py-1.5 text-[13px] font-bold text-white disabled:opacity-40">{nut}</button>
         <button onClick={onHuy} className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-[#63709A]">Huỷ</button>
       </div>
     </div>
   )
 }
 
-// ── TAB BẢNG CÔNG (theo tháng) ──
+// ── SỬA CÔNG CỦA TÔI (Thùy 15/10: "TA chưa quen nhầm lẫn — phải có list để sửa"). Chỉ mục còn CHỜ DUYỆT. Ca khai bù ⇒ sửa giờ;
+// ca checkin bằng app = giờ máy ghi ⇒ chỉ huỷ. Huỷ ca ⇒ các việc trong ca huỷ theo (DB fn_ta_huy_ca). Việc ⇒ sửa như form ghi công / bỏ.
+// Không xoá gì: huỷ = chuyển "từ chối" kèm lý do; mọi lần sửa DB tự ghi vết. Xác nhận huỷ ngay trên dòng (không confirm()).
+function DongSua({ r, loai, lop, onXong }: {
+  r: DongCong; loai: LoaiViec[]; lop: { id: string; ten_lop: string; mon: string }[]; onXong: (t: string) => Promise<void> | void
+}) {
+  const [mo, setMo] = useState(false)
+  const [ban, setBan] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [hoiHuy, setHoiHuy] = useState(false)
+  const [vao, setVao] = useState(gioVN(r.vao_at))
+  const [ra, setRa] = useState(r.ra_at ? gioVN(r.ra_at) : '')
+  const sua = r.duyet === 'cho_duyet'
+  const chay = async (fn: () => Promise<unknown>, t: string) => {
+    setBan(true); setLoi(null)
+    try { await fn(); setMo(false); setHoiHuy(false); await onXong(t) } catch (e) { setLoi(loiCua(e)) } finally { setBan(false) }
+  }
+  const loiEl = loi && <p className="mt-1.5 rounded-xl bg-[#FFE4EA] px-3 py-1.5 text-[12.5px] font-semibold text-[#C0355A]">{loi}</p>
+  if (r.loai_dong === 'viec') return (
+    <div>
+      <DongViec v={r} ban={ban} onSua={sua && !mo ? () => setMo(true) : undefined} onBo={sua ? () => chay(() => boViec(r.id), 'Đã bỏ việc') : undefined} />
+      {mo && <FormViec ngay={r.ngay} loai={loai} lop={lop} ban={ban} dau={r} nut="Lưu sửa" onHuy={() => { setMo(false); setLoi(null) }}
+        onLuu={(v) => chay(() => suaViec(r.id, v), 'Đã sửa việc')} />}
+      {loiEl}
+    </div>
+  )
+  return (
+    <div>
+      <DongCa c={r} />
+      {sua && !mo && <button onClick={() => setMo(true)} className="mt-1 rounded-full px-2.5 py-1 text-[12px] font-bold text-[#2F73F6] ring-1 ring-[#C9D8F5]">Sửa ca</button>}
+      {mo && (
+        <div className="mt-1.5 flex flex-col gap-2 rounded-2xl bg-[#F4F7FE] p-2.5">
+          {r.khai_bu
+            ? <div className="flex flex-wrap items-end gap-2">
+                <label className="flex flex-col text-[11.5px] font-semibold text-[#63709A]">Checkin<input type="time" value={vao} onChange={(e) => setVao(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1 text-[13px] text-[#16224D]" /></label>
+                <label className="flex flex-col text-[11.5px] font-semibold text-[#63709A]">Checkout<input type="time" value={ra} onChange={(e) => setRa(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1 text-[13px] text-[#16224D]" /></label>
+                <button disabled={ban || !vao || !ra} onClick={() => chay(() => suaCa(r.id, r.ngay, vao, ra), 'Đã sửa giờ ca')} className="rounded-full bg-[#2F73F6] px-3 py-1.5 text-[13px] font-bold text-white disabled:opacity-40">Lưu giờ</button>
+              </div>
+            : <p className="text-[12.5px] text-[#63709A]">Ca checkin bằng app là giờ máy ghi nên không sửa giờ được. Bấm nhầm thì huỷ ca này; giờ sai thì nhờ quản lý chốt giờ.</p>}
+          <p className="text-[12px] text-[#63709A]">Khai nhầm ngày? Huỷ ca này rồi vào “Khai bù ngày trước” khai lại đúng ngày.</p>
+          <div className="flex flex-wrap items-center gap-2">
+            {!hoiHuy
+              ? <button disabled={ban} onClick={() => setHoiHuy(true)} className="rounded-full px-3 py-1.5 text-[12.5px] font-bold text-[#C0355A] ring-1 ring-[#F5C2CF] disabled:opacity-40">Huỷ ca này</button>
+              : <>
+                  <span className="text-[12.5px] font-semibold text-[#C0355A]">Huỷ ca và mọi việc đã ghi trong ca?</span>
+                  <button disabled={ban} onClick={() => chay(() => huyCa(r.id, 'TA tự huỷ'), 'Đã huỷ ca')} className="rounded-full bg-[#C0355A] px-3 py-1.5 text-[12.5px] font-bold text-white disabled:opacity-40">Huỷ ca</button>
+                  <button onClick={() => setHoiHuy(false)} className="rounded-full px-2 py-1.5 text-[12.5px] font-semibold text-[#63709A]">Thôi</button>
+                </>}
+            <button onClick={() => { setMo(false); setHoiHuy(false); setLoi(null) }} className="ml-auto rounded-full px-3 py-1.5 text-[12.5px] font-semibold text-[#63709A]">Đóng</button>
+          </div>
+        </div>
+      )}
+      {loiEl}
+    </div>
+  )
+}
+
+// ── TAB BẢNG CÔNG (theo tháng) — cũng là LIST ĐỂ SỬA: mục còn chờ duyệt có nút Sửa ──
 function BangCong() {
   const [ky, setKy] = useState(dauThang(homNayVN()))
   const [dong, setDong] = useState<DongCong[] | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
+  const [loai, setLoai] = useState<LoaiViec[]>([])
+  const [lop, setLop] = useState<{ id: string; ten_lop: string; mon: string }[]>([])
+  const { setTb, el: thongBao } = useThongBao()
+  useEffect(() => { dsLoaiViec().then(setLoai).catch(() => {}); dsLop().then(setLop).catch(() => {}) }, [])
   useEffect(() => { setDong(null); setLoi(null); congCuaToi(ky, cuoiThang(ky)).then(setDong).catch((e) => setLoi(loiCua(e))) }, [ky])
+  // sau khi sửa: quét NỀN cùng tháng, giữ list đang hiện (không trắng, không nhảy về đầu)
+  const xongSua = async (t: string) => { setTb({ ok: true, t }); await congCuaToi(ky, cuoiThang(ky)).then(setDong).catch(() => {}) }
   const ngays = [...new Set((dong ?? []).map((r) => r.ngay))].sort().reverse()
   return (
     <div className="flex flex-col gap-2">
       <ChonThang ky={ky} setKy={setKy} />
+      <p className="px-1 text-[12px] text-[#63709A]">Mục còn <b>Chờ duyệt</b> có nút <b>Sửa</b> — khai nhầm thì sửa ngay ở đây. Đã duyệt thì nhờ quản lý.</p>
+      {thongBao}
       {loi && <p className="rounded-2xl bg-[#FFE4EA] px-3 py-2 text-[13px] font-semibold text-[#C0355A]">{loi}</p>}
       {dong === null && !loi ? <p className="px-1 text-[13px] text-[#63709A]">Đang tải…</p>
         : ngays.length === 0 ? <p className="rounded-[20px] bg-white/90 px-3 py-4 text-center text-[13px] text-[#63709A]">Tháng này chưa có công nào.</p>
         : ngays.map((d) => (
           <div key={d} className="rounded-[22px] bg-white/90 p-3">
             <p className="font-bubble text-[15px] font-extrabold text-[#16224D]">{thuCuaNgay(d)} {ddmmVN(d)}</p>
-            {dong!.filter((r) => r.ngay === d && r.loai_dong === 'ca').map((c) => <DongCa key={c.id} c={c} />)}
-            <div className="mt-1.5 flex flex-col gap-1.5">{dong!.filter((r) => r.ngay === d && r.loai_dong === 'viec').map((v) => <DongViec key={v.id} v={v} />)}</div>
+            {dong!.filter((r) => r.ngay === d && r.loai_dong === 'ca').map((c) => <DongSua key={c.id} r={c} loai={loai} lop={lop} onXong={xongSua} />)}
+            <div className="mt-1.5 flex flex-col gap-1.5">{dong!.filter((r) => r.ngay === d && r.loai_dong === 'viec').map((v) => <DongSua key={v.id} r={v} loai={loai} lop={lop} onXong={xongSua} />)}</div>
           </div>
         ))}
     </div>

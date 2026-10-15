@@ -118,7 +118,7 @@ const BUOC: Buoc[] = [
       </Khung>
     ),
     y: [
-      <>Tab <b>Bảng công</b>: mỗi việc hiện trạng thái. <b>Đã khớp lịch</b> nghĩa là hệ thống thấy việc đó trên lịch; <b>Từ chối</b> luôn kèm lý do của Trang.</>,
+      <>Tab <b>Bảng công</b>: mỗi việc hiện trạng thái. <b>Đã khớp lịch</b> nghĩa là hệ thống thấy việc đó trên lịch; <b>Từ chối</b> luôn kèm lý do của Trang. Khai nhầm thì bấm <b>Sửa</b> ngay trên dòng đó (khi còn Chờ duyệt).</>,
       <>Tab <b>Lương</b>: tạm tính, chỉ gồm phần đã duyệt. Sau ngày 3 tháng sau quản lý chốt kỳ, tab hiện <b>Phiếu lương chính thức</b> và công tháng đó không sửa được nữa.</>,
       <>Thấy sai thì báo Trang sớm, trước khi chốt kỳ.</>,
     ],

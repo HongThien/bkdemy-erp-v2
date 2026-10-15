@@ -96,6 +96,10 @@ const caMo = () => dong.find((r) => r.loai_dong === 'ca' && r.ngay === HN && !r.
       return ok('v')
     }
     case 'fn_ta_bo_viec': { const v = dong.find((r) => r.id === a.p_id); if (v) { v.duyet = 'tu_choi'; v.ly_do_duyet = 'TA tự bỏ' } return ok(null) }
+    case 'fn_ta_sua_ca': { const c = dong.find((r) => r.id === a.p_id); if (!c) return loi('Không thấy ca'); if (!c.khai_bu) return loi('Ca checkin bằng app là giờ máy ghi — không sửa giờ được; khai nhầm thì bấm Huỷ ca'); if (a.p_ra <= a.p_vao) return loi('Giờ checkout phải sau giờ checkin'); c.vao_at = a.p_vao; c.ra_at = a.p_ra; return ok(null) }
+    case 'fn_ta_huy_ca': { const c = dong.find((r) => r.id === a.p_id); if (!c) return loi('Không thấy ca'); c.duyet = 'tu_choi'; c.ly_do_duyet = a.p_ly_do; let n = 0; for (const v of dong) if (v.loai_dong === 'viec' && v.ngay === c.ngay && v.duyet === 'cho_duyet') { v.duyet = 'tu_choi'; v.ly_do_duyet = a.p_ly_do + ' (huỷ ca)'; n++ } return ok(n) }
+    case 'fn_ta_sua_viec': { const v = dong.find((r) => r.id === a.p_id); if (!v) return loi('Không thấy việc'); const L = LOAI.find((l) => l.ma === a.p_loai)!; const lop = LOP.find((l) => l.id === a.p_lop);
+      if (L.can_lop && !lop && a.p_loai !== 'tro_giang') return loi('Loại việc "' + L.ten + '" cần chọn lớp'); Object.assign(v, { loai_viec: a.p_loai, ten_loai: L.ten, lop_id: lop?.id ?? null, ten_lop: lop?.ten_lop ?? v.ten_lop, gio_bat_dau: a.p_bat, gio_ket_thuc: a.p_ket, hoc_sinh: a.p_hs, ghi_chu: a.p_ghi_chu }); return ok(null) }
     case 'fn_ta_doi_chieu': return ok(dong.concat(KHAC).filter((r) => r.ngay >= a.p_tu && r.ngay <= (a.p_den ?? a.p_tu)))
     case 'fn_ta_buoi_thieu_cong': return ok([
       { loai: 'buoi', ngay: congNgay(HN, -2), lop_id: 'l9a1', ten: '9A1', gio_bat_dau: '19:30:00', gio_ket_thuc: '21:30:00', buoi_hoc_id: 'bt1', ca_bo_tro_id: null, nguoi_phu_trach: 'Lê Dũng' },
