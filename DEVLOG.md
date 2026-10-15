@@ -37848,3 +37848,6 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Gốc lỗi (1):** trạm Sonnet G2 ghi tệp JSON qua chuỗi JS/shell ⇒ left→left, dfrac→dfrac, ight→CR+ight (DB lưu LF+ight). Cổng kiểm 14/10 chỉ đếm $ chẵn + JSON hợp lệ nên lọt; KaTeX cũng KHÔNG báo lỗi vì left(dfrac{1}{3}) là chữ thường hợp lệ. 4/65 trường dính: NDB00795 (LT+VD), NDB00798 (VD), NDB00796 (LT: ge thiếu ).
 - **Sửa:** vá deterministic (ký tự điều khiển + lệnh LaTeX trần trong $…$, bỏ qua 	ext{}) → 4 trường ghi lại, kiểm sau: 0 từ trần còn sót (trừ cases trong egin{cases}). NDB00796 VD viết lại TH1:/TH2: từng dòng, đúng quy ước các ví dụ đã có (TH1: …).
 - **Bài học:** kiểm công thức do trạm sinh phải có BƯỚC "từ ASCII ≥2 chữ trần trong $…$ (ngoài 	ext) = lệnh mất \" — KaTeX parse không bắt được; và ký tự điều khiển [ -]. Heredoc bash cũng ăn  khi viết chính script kiểm — viết script bằng Write tool.
+
+### 15/10 tối — [Sơ đồ tổ chức] Hà Giang Trưởng khối 6·7, Tạ Quốc Cường Trưởng khối 8, Hải giữ khối 9 (mig 202610151915 ĐÃ ÁP)
+- Ô "Trưởng khối 6" ⇒ "6 7"; ô con của Trưởng khối 7 chuyển sang (ô TA của chính Hà Giang ⇒ dưới Quản lý trợ giảng); ô Trưởng khối 8 đổi người Thùy Trang ⇒ Cường (+ vai trò Trợ giảng). Ô "Trưởng khối 7" cũ để TRỐNG, chưa xoá — chờ Thùy gật. Bản tin: khối 7 tag Hà Giang, khối 8 tag Cường.
