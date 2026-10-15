@@ -516,9 +516,12 @@ type LtFile = { name: string; mimeType: string; dataBase64: string; isImage: boo
 function ltToBase64(f: File): Promise<string> {
   return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => { const s = String(r.result); res(s.slice(s.indexOf(',') + 1)) }; r.onerror = rej; r.readAsDataURL(f) })
 }
-export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved }: {
+// dauTrang (tuỳ chọn): thanh điều hướng đặt trên cùng khung — vd Bản đồ mới duyệt nối tiếp LT/VD các dạng bài.
+// Nhận `roiDuoc()`: hỏi xác nhận nếu đang có sửa chưa lưu, trả false nếu người dùng muốn ở lại.
+export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, onSaved, dauTrang }: {
   ma: string; ten: string; current?: LyThuyet; allowKhongCan?: boolean
   api: LyThuyetApi; onClose: () => void; onSaved: () => void
+  dauTrang?: (roiDuoc: () => boolean) => ReactNode
 }) {
   const [khongCan, setKhongCan] = useState(!!current?.khong_can)
   const [noiDung, setNoiDung] = useState(current?.noi_dung ?? '')
@@ -538,6 +541,8 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
   const attachRef = useRef<HTMLInputElement>(null)
   const taRef = useRef<HTMLTextAreaElement>(null)
   const hasContent = !!noiDung.trim() || !!url.trim()
+  const dangSua = noiDung !== (current?.noi_dung ?? '') || url !== (current?.file_url ?? '') || khongCan !== !!current?.khong_can
+  const roiDuoc = () => !dangSua || confirm('Có thay đổi CHƯA LƯU — bỏ thay đổi và chuyển?')
 
   // Cắt hình từ PDF/ảnh → upload → chèn markdown ![](url) vào vị trí con trỏ trong code lý thuyết.
   async function insertImg(file: File) {
@@ -617,10 +622,11 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
   return (
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        {dauTrang?.(roiDuoc)}
         {/* Header: hàng tiêu đề + hàng công cụ AI (tách 2 hàng cho khỏi chen) */}
         <div className="border-b border-slate-200 px-6 py-3">
           <div className="flex items-center gap-3">
-            <h3 className="text-base font-semibold text-slate-900">Lý thuyết · {ten}</h3>
+            <h3 className="text-base font-semibold text-slate-900">{dauTrang ? ten : `Lý thuyết · ${ten}`}</h3>
             <span className="hidden text-[12px] text-slate-400 lg:inline">soạn tay, hoặc upload ảnh/PDF → AI bóc LaTeX</span>
             {allowKhongCan && (
               <label className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-slate-300">

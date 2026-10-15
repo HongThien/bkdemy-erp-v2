@@ -67,7 +67,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [chon, setChon] = useState<Chon | null>(null)
   const [hover, setHover] = useState<string | null>(null)
   const [dangKeo, setDangKeo] = useState<Keo['loai'] | null>(null)
-  const [lt, setLt] = useState<{ loai: LoaiNoiDung; id: string; ten: string; current: LyThuyet } | null>(null)
+  const [lt, setLt] = useState<{ loai: LoaiNoiDung; id: string; ten: string; current: LyThuyet; lan: number } | null>(null)
   const [nganCu, setNganCu] = useState(NHO.nganCu)
   const [dangCu, setDangCu] = useState<BdmDangCu[] | null>(null)
   const [ganMo, setGanMo] = useState<GanMo | null>(null)
@@ -179,9 +179,14 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 
   async function moLyThuyet(loai: LoaiNoiDung, id: string, ten: string) {
     setLoi(null)
-    try { setLt({ loai, id, ten, current: loai === 'nhom' ? await getLyThuyetNhom(id) : loai === 'db_lt' ? await getLyThuyetDangBai(id) : await getViDuDangBai(id) }) }
+    try { setLt({ loai, id, ten, current: loai === 'nhom' ? await getLyThuyetNhom(id) : loai === 'db_lt' ? await getLyThuyetDangBai(id) : await getViDuDangBai(id), lan: Date.now() }) }
     catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
   }
+  // Duyệt nối tiếp LT/VD mọi dạng bài của CHỦ ĐỀ đang mở (CEO 15/10): bước 2i = lý thuyết dạng i, 2i+1 = ví dụ dạng i;
+  // thứ tự = thứ tự hiển thị chuyên đề → nhóm → dạng bài. Hết chuyên đề thì sang chuyên đề kế.
+  const chuoiDb = useMemo(() => (chuDe ? chuDe.o.flatMap((x) => x.nhom.flatMap((n) => n.dang_bai.map((d) => ({ d, n, o: x })))) : []), [chuDe])
+  const buocLt = lt && lt.loai !== 'nhom' ? (() => { const i = chuoiDb.findIndex((c) => c.d.id === lt.id); return i < 0 ? -1 : i * 2 + (lt.loai === 'db_vd' ? 1 : 0) })() : -1
+  const diBuoc = (b: number) => { const c = chuoiDb[Math.floor(b / 2)]; if (c) void moLyThuyet(b % 2 ? 'db_vd' : 'db_lt', c.d.id, c.d.ten) }
 
   // Tiến độ soạn của khối — đếm thứ đang hiển thị (badge)
   const tienDo = useMemo(() => {
@@ -366,10 +371,17 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       )}
 
       {lt && (
-        <LyThuyetModal ma={lt.id} ten={`${lt.loai === 'db_vd' ? 'Ví dụ' : 'Lý thuyết'} — ${lt.ten}`} current={lt.current}
+        <LyThuyetModal key={`${lt.loai}:${lt.id}:${lt.lan}`} ma={lt.id} ten={`${lt.loai === 'db_vd' ? 'Ví dụ' : 'Lý thuyết'} — ${lt.ten}`} current={lt.current}
           api={lt.loai === 'nhom' ? lyThuyetNhomApi : lt.loai === 'db_lt' ? lyThuyetDangBaiApi : viDuDangBaiApi}
           onClose={() => setLt(null)}
-          onSaved={() => { setLt(null); thongBao('Đã lưu'); void napLai() }} />
+          onSaved={buocLt < 0
+            ? () => { setLt(null); thongBao('Đã lưu'); void napLai() }
+            // đang duyệt nối tiếp ⇒ ở lại đúng bước, nạp lại nội dung vừa lưu (bấm Sau ▶ khi xong)
+            : () => { thongBao('Đã lưu'); void napLai(); void moLyThuyet(lt.loai, lt.id, lt.ten) }}
+          dauTrang={buocLt < 0 ? undefined : (roiDuoc) => (
+            <ThanhDuyetDangBai chuoi={chuoiDb} buoc={buocLt} roiDuoc={roiDuoc} onDi={diBuoc}
+              onLuuMoTa={(id, m) => lam(() => suaDangBai(id, { mo_ta: m }))} />
+          )} />
       )}
     </div>
   )
@@ -555,6 +567,61 @@ function CardDangBai(p: {
 }
 
 // Chấm tiến độ: mô tả · lý thuyết/ví dụ — xám = chưa có
+// ════════════════════════════════════════════════════════════════════════════
+// Thanh duyệt nối tiếp trong khung soạn LT/VD dạng bài (CEO 15/10): ◀ Trước · [Lý thuyết | Ví dụ] · Sau ▶,
+// kèm ô mô tả + 3 chấm của dạng đang xem. Phím ← → chuyển bước khi con trỏ KHÔNG nằm trong ô soạn.
+function ThanhDuyetDangBai({ chuoi, buoc, roiDuoc, onDi, onLuuMoTa }: {
+  chuoi: { d: BdmDangBai; n: BdmNhom; o: BdmO }[]; buoc: number; roiDuoc: () => boolean
+  onDi: (b: number) => void; onLuuMoTa: (id: string, m: string) => void
+}) {
+  const c = chuoi[Math.floor(buoc / 2)]
+  const laVd = buoc % 2 === 1
+  const tong = chuoi.length * 2
+  const di = (b: number) => { if (b >= 0 && b < tong && b !== buoc && roiDuoc()) onDi(b) }
+  const [moTa, setMoTa] = useState(c.d.mo_ta)
+  useEffect(() => { setMoTa(c.d.mo_ta) }, [c.d.id, c.d.mo_ta])
+  useEffect(() => {
+    const k = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null
+      if (t && (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.isContentEditable)) return
+      if (e.key === 'ArrowRight') { e.preventDefault(); di(buoc + 1) }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); di(buoc - 1) }
+    }
+    window.addEventListener('keydown', k)
+    return () => window.removeEventListener('keydown', k)
+  })
+  const cham = (co: boolean, nhan: string) => (
+    <span className={`flex items-center gap-1 text-[11.5px] ${co ? 'text-emerald-700' : 'text-slate-400'}`}>
+      <span className={`h-2 w-2 rounded-full ${co ? 'bg-emerald-500' : 'bg-slate-300'}`} />{nhan}
+    </span>
+  )
+  const nut = 'flex h-9 shrink-0 items-center gap-1 rounded-md border px-3 text-[13px] font-semibold disabled:opacity-30'
+  return (
+    <div className="border-b border-indigo-200 bg-indigo-50/70 px-6 py-2.5">
+      <div className="flex flex-wrap items-center gap-2">
+        <button onClick={() => di(buoc - 1)} disabled={buoc === 0} title="Bước trước (phím ←)" className={`${nut} border-slate-300 bg-white text-slate-600 hover:border-indigo-400`}>◀ Trước</button>
+        <div className="flex shrink-0 overflow-hidden rounded-md border border-indigo-300 bg-white">
+          <button onClick={() => di(buoc - (laVd ? 1 : 0))} className={`h-9 px-4 text-[13px] font-semibold ${!laVd ? 'bg-indigo-600 text-white' : 'text-indigo-700 hover:bg-indigo-50'}`}>📖 Lý thuyết</button>
+          <button onClick={() => di(buoc + (laVd ? 0 : 1))} className={`h-9 px-4 text-[13px] font-semibold ${laVd ? 'bg-indigo-600 text-white' : 'text-indigo-700 hover:bg-indigo-50'}`}>📝 Ví dụ</button>
+        </div>
+        <button onClick={() => di(buoc + 1)} disabled={buoc >= tong - 1} title="Bước sau (phím →)" className={`${nut} border-indigo-400 bg-indigo-600 text-white hover:bg-indigo-500`}>Sau ▶</button>
+        <div className="min-w-0 flex-1 truncate pl-2 text-[12.5px] text-slate-600">
+          <span className="text-slate-400"><MathText>{c.o.ten}</MathText> › </span><span className="text-slate-500">#{c.n.so} <MathText>{c.n.ten}</MathText> › </span>
+          <b className="text-slate-800">{c.n.so}.{c.d.so} <MathText>{c.d.ten}</MathText></b>
+        </div>
+        <span className="shrink-0 text-[12px] text-slate-500">dạng bài {Math.floor(buoc / 2) + 1}/{chuoi.length}</span>
+      </div>
+      <div className="mt-2 flex items-center gap-3">
+        <span className="shrink-0 text-[11.5px] font-semibold uppercase tracking-wide text-slate-500">Mô tả</span>
+        <input value={moTa} onChange={(e) => setMoTa(e.target.value)} onBlur={() => { if (moTa.trim() !== c.d.mo_ta.trim()) onLuuMoTa(c.d.id, moTa.trim()) }}
+          placeholder="— chưa có mô tả nhận biết (gõ để thêm, rời ô là lưu)"
+          className={`${inp} h-8 min-w-0 flex-1 text-[13px] ${c.d.mo_ta.trim() ? '' : 'border-amber-300 bg-amber-50'}`} />
+        <div className="flex shrink-0 gap-3">{cham(!!c.d.mo_ta.trim(), 'mô tả')}{cham(c.d.co_ly_thuyet, 'lý thuyết')}{cham(c.d.co_vi_du, 'ví dụ')}</div>
+      </div>
+    </div>
+  )
+}
+
 function DauTienDo({ moTa, noiDung, nhanNoiDung, noiDung2, nhanNoiDung2 }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string; noiDung2?: boolean; nhanNoiDung2?: string }) {
   return (
     <span className="flex shrink-0 gap-0.5 pt-1">
