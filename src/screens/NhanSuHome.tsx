@@ -50,6 +50,8 @@ import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
 import BangTaskScreen from './giaoviec/BangTaskScreen'
 import TroLyTab from './troly/TroLyTab'
+import BaoCaoCaNhan from './troly/BaoCaoCaNhan'
+import { trolyCaNhanDuocDung } from '../lib/troly-baocao'
 import HoiDapTab from './hoidap/HoiDapTab'
 import SuKienScreen from './sukien/SuKienScreen'
 import { hoiDapDuocDung } from '../lib/hoidap'
@@ -251,6 +253,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat' | 'hoidap'>('vanhanh')
   const [duocHoiDap, setDuocHoiDap] = useState(false)
   useEffect(() => { hoiDapDuocDung().then(setDuocHoiDap).catch(() => setDuocHoiDap(false)) }, [])
+  // Trợ lý CÁ NHÂN theo khối quản lý (CEO 14/10): ai có khối trên sơ đồ tổ chức đều thấy tab 🤖, chỉ phần báo cáo của khối mình.
+  const [duocCaNhan, setDuocCaNhan] = useState(false)
+  useEffect(() => { trolyCaNhanDuocDung().then(setDuocCaNhan).catch(() => setDuocCaNhan(false)) }, [])
   const [doneShown, setDoneShown] = useState(20)
   const [now, setNow] = useState(() => Date.now())
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
@@ -384,7 +389,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {/* TOGGLE Vận hành / Phát triển — thay cho filter loại việc (CEO chốt 07-31). Số task trực quan,
             không cần lọc; Phát triển tách hẳn sang view riêng cho rộng rãi. */}
         <div className="inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ...(duocHoiDap ? [['rasoat', '🤖 Trợ lý'], ['hoidap', '💬 Hỏi hệ thống']] : [])] as ['vanhanh' | 'phattrien' | 'rasoat' | 'hoidap', string][]).map(([k, ten]) => (
+          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ...(duocHoiDap ? [['rasoat', '🤖 Trợ lý'], ['hoidap', '💬 Hỏi hệ thống']] : duocCaNhan ? [['rasoat', '🤖 Trợ lý']] : [])] as ['vanhanh' | 'phattrien' | 'rasoat' | 'hoidap', string][]).map(([k, ten]) => (
             <button key={k} onClick={() => setView(k)}
               className={`rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${view === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
           ))}
@@ -534,7 +539,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         </>
       ) : view === 'rasoat' ? (
         /* TRỢ LÝ — nhắc việc hàng ngày, 3 nút Làm/Huỷ/Gác. KHÔNG gọi model (xem đầu TroLyTab.tsx). */
-        <TroLyTab />
+        duocHoiDap ? <TroLyTab /> : <BaoCaoCaNhan />
       ) : view === 'hoidap' ? (
         /* HỎI HỆ THỐNG — bot Claude Code (máy local) trả lời "vì sao/quy trình" (xem đầu HoiDapTab.tsx). */
         <HoiDapTab />
