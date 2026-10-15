@@ -221,7 +221,7 @@ export type MyProfile = {
   phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
   mons: string[]                                  // môn được phân (scope④ — gate kho/tài liệu theo môn)
   hocThuatMons: string[]                          // môn NS là team học thuật (ghế hoc_thuat) — quyền chốt/duyệt kế hoạch (vd duyệt dạng đuổi)
-  khoiPhuTrach: { khoi: string; mon: string }[]   // (khối × môn) làm Trưởng khối (phan_cong_khoi) — rà soát dữ liệu + nhận Chấm MT — chỉ xem ở đây
+  khoiPhuTrach: { khoi: string; mon: string }[]   // (khối × môn) là Phó khối trở lên trên sơ đồ tổ chức team Trợ giảng (fn_khoi_cua_toi) — quyền chấm mọi lớp cùng khối
 }
 export async function getMyProfile(): Promise<MyProfile | null> {
   const { data: au } = await supabase.auth.getUser()
@@ -249,7 +249,8 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     supabase.from('phan_cong_lop').select('*, lop(*)').eq('nhan_su_id', nsId).limit(LIMIT),
     listMonOfNhanSu(nsId),
     listMonHocThuatCuaToi(nsId),
-    supabase.from('phan_cong_khoi').select('khoi, mon').eq('nhan_su_id', nsId).limit(LIMIT),
+    // Phó khối trở lên trên SƠ ĐỒ TỔ CHỨC team Trợ giảng (Thùy 15/10 — thay phan_cong_khoi) ⇒ chấm được mọi lớp cùng khối + môn
+    supabase.rpc('fn_khoi_cua_toi'),
   ])
   if (nsRes.error) throw nsRes.error
   const tmById = new Map(teamAll.map((t) => [t.id, t]))
@@ -531,19 +532,13 @@ export async function removePhanCong(id: string): Promise<void> {
   if (error) throw error
 }
 
-// ── Trưởng khối theo (khối × môn) — rà soát dữ liệu + nhận Chấm MT, độc lập phan_cong_lop ──
-export async function listPhanCongKhoi(): Promise<PhanCongKhoi[]> {
-  const { data, error } = await supabase.from('phan_cong_khoi').select('*').limit(LIMIT)
+// ── Trưởng / Phó khối: đọc từ SƠ ĐỒ TỔ CHỨC team Trợ giảng (Thùy 15/10: "phân công là phạm vi, chức danh về sơ đồ
+// tổ chức"). Bảng phan_cong_khoi cũ (bản chất là Phó) KHÔNG còn đọc/ghi — sửa Trưởng/Phó ở màn Sơ đồ tổ chức.
+export type KhoiQuanLy = { mon: string; khoi: string; nhan_su_id: string; ho_ten: string; cap: 'truong' | 'pho' }
+export async function listKhoiQuanLy(): Promise<KhoiQuanLy[]> {
+  const { data, error } = await supabase.rpc('fn_khoi_quan_ly_ds').limit(LIMIT)
   if (error) throw error
-  return (data ?? []) as PhanCongKhoi[]
-}
-export async function addTruongKhoi(nhanSuId: string, khoi: string, mon: string): Promise<void> {
-  const { error } = await supabase.from('phan_cong_khoi').insert({ nhan_su_id: nhanSuId, khoi, mon })
-  if (error) throw error
-}
-export async function removeTruongKhoi(id: string): Promise<void> {
-  const { error } = await supabase.from('phan_cong_khoi').delete().eq('id', id)
-  if (error) throw error
+  return (data ?? []) as KhoiQuanLy[]
 }
 
 // ── Học sinh ──────────────────────────────────────────────────────
