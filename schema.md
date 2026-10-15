@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-390 bảng · 25 view · 0 enum · 178 trigger · 1054 function
+390 bảng · 25 view · 0 enum · 178 trigger · 1058 function
 
 ## _app_secrets
 
@@ -3011,6 +3011,8 @@ END |  |  |
 | test_bai_test_id | uuid | Y |  |  |  |
 | test_nop_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mo_tay_at | timestamp with time zone | Y |  |  |  |
+| mo_tay_boi | uuid | Y |  | FK→nhan_su.id |  |
 
 ## hoi_dap_bot
 
@@ -4515,8 +4517,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -7501,6 +7503,8 @@ WITH luot AS (
 - `_dtv_kho_cau_mot(p_mon text, p_ma_cau text)` → jsonb
 - `_dtv_kiem_de_thap(p_che_do text)` → void
 - `_dtv_kiem_uid(p_uid text)` → void
+- `_duoi_lo_trinh(p_hs uuid, p_mon text)` → jsonb
+- `_duoi_tien_do_dang(p_hs uuid, p_mon text, p_dangs text[])` → TABLE(ma_dang text, doc_lt boolean, luyen_cau integer, luyen_dung integer, test_lan integer, test_gan_nhat numeric, xong boolean, xong_at timestamp with time zone, noi_lam text, mo_tay boolean)
 - `_et_cham(p_bai_lam uuid)` → void
 - `_et_diem_buoi(p_tu date, p_den date)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, ngay date, mon text, lop_id uuid, so_cau integer, ti_le numeric, cham_at timestamp with time zone)
 - `_game_bxh_ten(p text)` → text
@@ -7973,6 +7977,8 @@ WITH luot AS (
 - `fn_duoi_ca_cua_toi()` → jsonb
 - `fn_duoi_dang_trang_thai(p_buoi uuid)` → jsonb
 - `fn_duoi_giay_sinh(p_buoi uuid, p_hoc_sinh uuid, p_mon text, p_ma_dang text, p_loai text, p_so_cau integer DEFAULT 5)` → jsonb
+- `fn_duoi_mo_dang(p_hoc_sinh uuid, p_mon text, p_ma_dang text)` → jsonb
+- `fn_duoi_tien_trinh(p_hoc_sinh uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_et_online_dong_bo(p_buoi uuid)` → jsonb
 - `fn_exp_app_thang(p_ym text, p_hs uuid DEFAULT NULL::uuid, p_mon text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, mon text, exp_nhiem_vu integer, exp_may_man integer, exp_app integer, exp_thanh_tuu integer)
 - `fn_exp_btvn_bai(p_trang_thai text, p_thai_do text)` → numeric
@@ -8086,8 +8092,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -8489,9 +8495,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
