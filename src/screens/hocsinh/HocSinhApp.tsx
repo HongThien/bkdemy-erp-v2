@@ -75,6 +75,8 @@ import RankHS from './RankHS'
 import NhiemVuHS from './NhiemVuHS'
 import ThuVienHS from './ThuVienHS'
 import OnThiHS from './OnThiHS'
+import AnhTuLuanHS from './AnhTuLuanHS'
+import { onThiDiem, listAnhTuLuan, kyAnhTuLuan, type AnhTuLuan, type DiemThiThu } from '../../lib/onthi'
 import HuongDanHS from './huongdan/HuongDanHS'
 import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
 import { rankBat } from './phieuluu/coBat'
@@ -1750,11 +1752,18 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   const [conLai, setConLai] = useState<number | null>(null) // giây
   const [loi, setLoi] = useState<string | null>(null)
   const [diem, setDiem] = useState<DiemCuaToi | null>(null)
+  const [diemTT, setDiemTT] = useState<DiemThiThu | null>(null) // Thi thử còn tự luận chờ chấm: chỉ lộ phần trắc nghiệm
+  const [anhTL, setAnhTL] = useState<AnhTuLuan[]>([]) // ảnh bài tự luận (Thi thử)
+  const [urlTL, setUrlTL] = useState<Record<string, string>>({})
   const nopRef = useRef(false)
 
   function nhanReveal(rev: ETReveal[]) {
     setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r])))
-    if (laDeThi && !rev.some((r) => r.khoa)) diemDeThiCuaToi(test.id).then(setDiem).catch(() => {})
+    if (test.loai === 'thi_thu') onThiDiem(test.id).then((d) => {
+      if (!d) return
+      if (d.dang_cham) setDiemTT(d); else setDiem({ diem: d.diem ?? 0, toi_da: d.toi_da, diem_10: d.diem_10, phan: d.phan })
+    }).catch(() => {})
+    else if (laDeThi && !rev.some((r) => r.khoa)) diemDeThiCuaToi(test.id).then(setDiem).catch(() => {})
   }
   useEffect(() => {
     (async () => {
@@ -1763,6 +1772,10 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
       const bl = await moBaiLam(test.id, hocSinhId)
       const d = await getETDe(test.id)
       setDe(d); setBaiLamId(bl.id)
+      if (test.loai === 'thi_thu') {
+        const ds = await listAnhTuLuan(bl.id).catch(() => [] as AnhTuLuan[])
+        setAnhTL(ds); setUrlTL(await kyAnhTuLuan(ds.map((a) => a.path)).catch(() => ({})))
+      }
       if (bl.bat_dau_at) setBatDau(new Date(bl.bat_dau_at).getTime())
       setAns(await getETDapAnDaLuu(bl.id) as Record<string, Chon>)
       if (bl.trang_thai === 'da_nop') { nopRef.current = true; nhanReveal(await nopET(bl.id)) }
@@ -1789,7 +1802,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
 
   if (!de) return <ManCho>Đang tải đề…</ManCho>
   const total = caus.length
-  const daTraLoi = caus.filter((c) => ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
+  const coAnh = (id: string) => anhTL.some((a) => a.bai_test_cau_id === id)
+  const soTLThieuAnh = caus.filter((c) => c.loai_cau === 'tu_luan' && !coAnh(c.id)).length
+  const daTraLoi = caus.filter((c) => c.loai_cau === 'tu_luan' ? coAnh(c.id) : ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
 
   async function luu(cauId: string, v: Chon) {
     if (daNop || !baiLamId) return
@@ -1857,6 +1872,13 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
       </div>
       {!daNop && <p className="px-4 pb-1 text-center text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
       {loi && <p className="mx-4 mb-1 px-3 py-1.5 text-center text-[13px]" style={{ background: `linear-gradient(${NEN_SAI}, ${NEN_SAI}), var(--sk-surface)`, color: MAU.sai, borderRadius: R_TRONG }}>{loi}</p>}
+      {daNop && diemTT && (
+        <div className="mx-4 mb-2 p-3 text-center" style={THE}>
+          <p className="text-[13px]" style={{ color: MAU.muted }}>Phần trắc nghiệm và trả lời ngắn</p>
+          <p className="text-[31px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{diemTT.tn_diem}<span className="text-[16.5px]" style={{ color: MAU.muted }}>/{diemTT.tn_toi_da}</span></p>
+          <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Còn {diemTT.so_cho_cham} câu tự luận chờ thầy cô chấm. Điểm tổng và xếp hạng sẽ có sau khi chấm xong.</p>
+        </div>
+      )}
       {daNop && diem && (
         <div className="mx-4 mb-2 p-3 text-center" style={THE}>
           <p className="text-[13px]" style={{ color: MAU.muted }}>Điểm bài thi</p>
@@ -1919,6 +1941,10 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 )
               })}
             </div>
+          ) : cau.loai_cau === 'tu_luan' && baiLamId ? (
+            <AnhTuLuanHS hocSinhId={hocSinhId} baiLamId={baiLamId} cauId={cau.id} anh={anhTL.filter((a) => a.bai_test_cau_id === cau.id)} url={urlTL} khoa={daNop}
+              onThem={(a) => { setAnhTL((l) => [...l, a]); kyAnhTuLuan([a.path]).then((u) => setUrlTL((m) => ({ ...m, ...u }))).catch(() => {}) }}
+              onXoa={(id) => setAnhTL((l) => l.filter((a) => a.id !== id))} />
           ) : cau.kieu_nhap === 'phieu_4o' ? (
             <ONhap4O value={(ans[cau.id] as string) ?? ''} onChange={(v) => luu(cau.id, v)} disabled={daNop} co={15} />
           ) : (
@@ -1926,7 +1952,14 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
               placeholder="Nhập đáp án…" className={`${O_NHAP_CLS} text-[16.5px]`} style={O_NHAP} />
           )}
 
-          {daNop && (
+          {daNop && cau.loai_cau === 'tu_luan' && !rv?.verdict && (
+            <div className="mt-4 p-3" style={{ background: NEN_CB, borderRadius: R_TRONG }}>
+              <p className="text-[16.5px] font-semibold" style={{ color: MAU.canhBao }}>⏳ Đã nộp ảnh — chờ thầy cô chấm</p>
+              {rv?.loi_giai && <div className="mt-2 pt-2 text-[15.5px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}><p className="mb-1 text-[13px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải tham khảo</p><ChuMon mon={test.mon}>{rv.loi_giai as string}</ChuMon></div>}
+              {rv?.anh_dap_an && <img src={rv.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
+            </div>
+          )}
+          {daNop && !(cau.loai_cau === 'tu_luan' && !rv?.verdict) && (
             <div className="mt-4 p-3" style={{ background: vd === 'correct' ? NEN_DUNG : vd === 'partial' ? NEN_CB : NEN_SAI, borderRadius: R_TRONG }}>
               <p className="text-[16.5px] font-semibold" style={{ color: vd === 'correct' ? MAU.dung : vd === 'partial' ? MAU.canhBao : MAU.sai }}>{vd === 'correct' ? '🎉 Đúng' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}</p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(rv?.dap_an_key)}</b></p>}
@@ -1951,6 +1984,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
           <div className="w-full max-w-md p-5" style={THE_TRON} onClick={(e) => e.stopPropagation()}>
             <p className="text-[16.5px] font-semibold" style={{ ...HEAD, color: MAU.ink }}>Nộp bài thi?</p>
             <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Đã trả lời {daTraLoi}/{total} câu. Nộp xong sẽ chấm và <b style={{ color: MAU.ink }}>không sửa được</b> nữa.</p>
+            {soTLThieuAnh > 0 && <p className="mt-2 text-[14.5px] font-medium" style={{ color: MAU.canhBao }}>⚠ Còn {soTLThieuAnh} câu tự luận chưa nộp ảnh.</p>}
             <div className="mt-4 flex gap-2">
               <button onClick={() => setConfNop(false)} className="flex-1 py-3 text-[15.5px]" style={{ ...NUT_PHU, color: MAU.muted }}>Để xem lại</button>
               <button onClick={doNop} disabled={busy} className="flex-1 py-3 text-[15.5px] font-medium disabled:opacity-40" style={NUT_NOP}>{busy ? 'Đang nộp…' : 'Nộp bài'}</button>

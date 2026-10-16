@@ -38,3 +38,46 @@ export async function onThiBatDau(deId: string): Promise<{ baiTestId: string; la
   const d = data as { bai_test_id: string; lai: boolean }
   return { baiTestId: d.bai_test_id, lai: d.lai }
 }
+
+// ── Điểm Thi thử (pha 3): còn câu tự luận chưa chấm ⇒ dang_cham, chỉ lộ phần trắc nghiệm ──
+export type DiemThiThu = {
+  dang_cham: boolean; so_cho_cham: number; tn_diem: number; tn_toi_da: number; toi_da: number
+  diem: number | null; diem_10: number | null; phan: { phan: string; toi_da: number; diem: number }[]
+}
+export async function onThiDiem(baiTestId: string): Promise<DiemThiThu | null> {
+  const { data, error } = await supabase.rpc('fn_hs_thi_thu_diem', { p_bai_test: baiTestId })
+  if (error) throw error
+  return (data ?? null) as DiemThiThu | null
+}
+
+// ── Ảnh tự luận (bucket PRIVATE 'thi-thu-anh', scripts/sql_thi_thu_anh_storage.sql) ──
+export const ANH_TL_BUCKET = 'thi-thu-anh'
+export const ANH_TL_TOI_DA = 8 // khớp policy thi_thu_anh_hs_insert
+export type AnhTuLuan = { id: string; bai_test_cau_id: string; path: string; thu_tu: number }
+
+export async function listAnhTuLuan(baiLamId: string): Promise<AnhTuLuan[]> {
+  const { data, error } = await supabase.from('thi_thu_anh').select('id,bai_test_cau_id,path,thu_tu').eq('bai_lam_id', baiLamId).order('thu_tu').limit(200)
+  if (error) throw error
+  return (data ?? []) as AnhTuLuan[]
+}
+export async function kyAnhTuLuan(paths: string[]): Promise<Record<string, string>> {
+  if (!paths.length) return {}
+  const { data, error } = await supabase.storage.from(ANH_TL_BUCKET).createSignedUrls(paths, 3600)
+  if (error) throw error
+  const out: Record<string, string> = {}
+  for (const r of data ?? []) if (r.signedUrl && r.path) out[r.path] = r.signedUrl
+  return out
+}
+// Upload file (đã thu nhỏ) rồi ghi dòng: dòng CHỈ có khi ảnh đã lên thật. Ảnh mồ côi (insert hỏng sau upload) vô hại — bucket private.
+export async function nopAnhTuLuan(hocSinhId: string, baiLamId: string, cauId: string, blob: Blob, thuTu: number): Promise<AnhTuLuan> {
+  const path = `${hocSinhId}/${baiLamId}/${crypto.randomUUID()}.jpg`
+  const { error } = await supabase.storage.from(ANH_TL_BUCKET).upload(path, blob, { contentType: 'image/jpeg', upsert: false })
+  if (error) throw error
+  const { data, error: e2 } = await supabase.from('thi_thu_anh').insert({ bai_lam_id: baiLamId, bai_test_cau_id: cauId, path, thu_tu: thuTu }).select('id,bai_test_cau_id,path,thu_tu').single()
+  if (e2) throw e2
+  return data as AnhTuLuan
+}
+export async function xoaAnhTuLuan(id: string): Promise<void> {
+  const { error } = await supabase.from('thi_thu_anh').delete().eq('id', id)
+  if (error) throw error
+}

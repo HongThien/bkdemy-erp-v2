@@ -8,9 +8,15 @@ import { MathText } from '../kho/ui'
 import { onThiDs, onThiXem, onThiLuyenSinh, onThiBatDau, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, TrongHS, MAU, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
 import { mauDocMon } from './skin/registry'
+import HuongDanThiThuHS from './HuongDanThiThuHS'
 
 // Nhớ tab đang xem khi rời màn (vd vào Luyện tập rồi quay lại) — sống tới F5 (CLAUDE §2 "rời màn quay lại = đúng chỗ cũ").
 const NHO: { tab: TabOnThi } = { tab: 'de_cuong' }
+
+// Hướng dẫn Thi thử: tự hiện LẦN ĐẦU (nhớ ở trình duyệt — chỉ là tiện lợi của riêng em, mất cũng chỉ hiện lại).
+const KHOA_HD = 'bk_hd_thi_thu_da_xem'
+const daXemHD = () => { try { return localStorage.getItem(KHOA_HD) === '1' } catch { return true } }
+const ghiDaXemHD = () => { try { localStorage.setItem(KHOA_HD, '1') } catch { /* bỏ qua */ } }
 
 const TAB: { id: TabOnThi; ten: string; trong: string }[] = [
   { id: 'de_cuong', ten: 'Đề cương', trong: 'Chưa có đề cương giữa kì I cho khối của em.' },
@@ -24,6 +30,7 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
   const [busy, setBusy] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [hoiThi, setHoiThi] = useState<DeOnThi | null>(null) // popup xác nhận trước khi vào Thi thử
+  const [xemHD, setXemHD] = useState(false) // đang xem hướng dẫn (lần đầu tự bật; xem lại bằng nút)
 
   async function luyen(d: DeOnThi) {
     setBusy(d.id); setLoi(null)
@@ -74,7 +81,7 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
                 </span>
                 <span className="mt-1 flex gap-2">
                   {d.tab === 'de_cuong' && <NutHS onClick={() => luyen(d)} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : 'Luyện tập'}</NutHS>}
-                  {d.tab === 'de_thi' && <NutHS onClick={() => (d.bai_thi_id ? thi(d) : setHoiThi(d))} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : d.da_nop ? 'Xem lại bài thi' : d.bai_thi_id ? 'Làm tiếp' : 'Thi thử'}</NutHS>}
+                  {d.tab === 'de_thi' && <NutHS onClick={() => (d.bai_thi_id ? thi(d) : (setXemHD(!daXemHD()), setHoiThi(d)))} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : d.da_nop ? 'Xem lại bài thi' : d.bai_thi_id ? 'Làm tiếp' : 'Thi thử'}</NutHS>}
                   {/* Đề thi: KHÔNG có "Xem đề" — xem trước đáp án thì điểm xếp hạng mất ý nghĩa. */}
                   {d.tab === 'de_cuong' && <NutHS phu onClick={() => setMo(d)} className="flex-1">Xem đề</NutHS>}
                 </span>
@@ -84,6 +91,7 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
       {hoiThi && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4" style={{ background: 'rgba(0,0,0,0.55)' }} onClick={() => setHoiThi(null)}>
           <TheHS className="flex w-full max-w-md flex-col gap-3 p-5">
+            {xemHD ? <span onClick={(e) => e.stopPropagation()}><HuongDanThiThuHS onXong={() => { ghiDaXemHD(); setXemHD(false) }} /></span> :
             <span onClick={(e) => e.stopPropagation()} className="flex flex-col gap-3">
               <span className="text-[20px] font-bold leading-snug" style={HEAD}>Sẵn sàng thi thử?</span>
               <span className="text-[16px] leading-relaxed" style={{ color: MAU.ink }}>Làm đề thi sẽ mất <b>{hoiThi.thoi_gian_phut} phút</b>. Điểm thi sẽ dùng xếp hạng và nhận quà. Em đã sẵn sàng chưa?</span>
@@ -91,7 +99,8 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
                 <NutHS phu onClick={() => setHoiThi(null)} className="flex-1">Để sau</NutHS>
                 <NutHS onClick={() => thi(hoiThi)} className="flex-1">Sẵn sàng</NutHS>
               </span>
-            </span>
+              <button onClick={() => setXemHD(true)} className="text-[14.5px] underline" style={{ color: MAU.muted }}>Xem hướng dẫn làm bài</button>
+            </span>}
           </TheHS>
         </div>
       )}
