@@ -96,10 +96,10 @@ type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗ
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean; boQua?: boolean }
 type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
 
-const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi', bo_tro: 'Bổ trợ', bo_tro_test: 'Kiểm tra cuối buổi', retest: 'Kiểm tra lại' }
+const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi', bo_tro: 'Bổ trợ', bo_tro_test: 'Kiểm tra cuối buổi', retest: 'Kiểm tra lại', thi_thu: 'Thi thử' }
 // Chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu) — ET, đề thi trường/sở, và 2 bài của
 // ca bổ trợ yếu (test cuối ca · retest) — PLAN-botro-yeu-ca.md.
-const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
+const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest', 'thi_thu'])
 
 // ── MÀN CHÍNH = 6 Ô VUÔNG (Thùy chốt 17/08) ─────────────────────────────────
 // 3 ô đầu nối THẲNG với tài liệu trên lớp: mỗi ô = 1 loại doc phát hành từ Kho
@@ -407,7 +407,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [tutChuong, setTutChuong] = useState<string | null | undefined>(undefined) // Hướng dẫn chơi → tutorial: id chặng · null = cả hành trình · undefined = không mở
-  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tutorial' | 'gop_y' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | 'on_thi' | 'on_thi_luyen' | null>(null)
+  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tutorial' | 'gop_y' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | 'on_thi' | 'on_thi_luyen' | 'on_thi_thi' | null>(null)
   const [yeuVao, setYeuVao] = useState(false) // Luyện dạng yếu: đã qua màn giới thiệu chưa (reset mỗi lần thoát)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [tuThuVien, setTuThuVien] = useState(false) // Rank mở từ Thư viện BK ⇒ "Quay lại" về Thư viện (03/10)
@@ -648,7 +648,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // ÔN THI GIỮA KÌ I (Thùy 16/10): 2 tab Đề cương · Đề thi các trường — chỉ xem, đề đã duyệt đúng khối.
   if (direct === 'on_thi_luyen' && onThiBt) return <LamBai key={onThiBt} baiTestId={onThiBt} hocSinhId={hocSinhId} desktop={manRong} choBoQua
     doneCaption="Luyện tập đề cương — không tính vào mastery." onXong={() => { setOnThiBt(null); setDirect('on_thi') }} />
-  if (direct === 'on_thi' && monChon) return <OnThiHS mon={monChon} onBack={() => setDirect(null)} onLuyen={(id) => { setOnThiBt(id); setDirect('on_thi_luyen') }} />
+  if (direct === 'on_thi_thi' && onThiBt) return <LamThiThu key={onThiBt} baiTestId={onThiBt} hocSinhId={hocSinhId} onXong={() => { setOnThiBt(null); setDirect('on_thi') }} />
+  if (direct === 'on_thi' && monChon) return <OnThiHS mon={monChon} onBack={() => setDirect(null)} onLuyen={(id) => { setOnThiBt(id); setDirect('on_thi_luyen') }} onThi={(id) => { setOnThiBt(id); setDirect('on_thi_thi') }} />
   if (direct === 'thu_vien') {
     const r = rankHome?.toi
     return <ThuVienHS onBack={() => { setTuThuVien(false); setDirect(null) }} the={[{
@@ -1744,7 +1745,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   // ĐỀ THI (spec-de-thi §9.4): giữ bố cục giấy (không xáo câu/ý, có tiêu đề phần) · đồng hồ đếm ngược
   // từ bai_lam.bat_dau_at (server đóng dấu, trigger trg_bai_lam_thi — HS không sửa được) · đáp án có thể
   // KHOÁ tới khi thầy/cô mở (et_nop trả {khoa:true}). Luật giờ/nộp thật sự nằm ở trigger DB; ở đây chỉ hiển thị.
-  const laDeThi = test.loai === 'de_thi'
+  const laDeThi = test.loai === 'de_thi' || test.loai === 'thi_thu'
   const [batDau, setBatDau] = useState<number | null>(null)
   const [conLai, setConLai] = useState<number | null>(null) // giây
   const [loi, setLoi] = useState<string | null>(null)
@@ -1960,6 +1961,18 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     </div>
     </div>
   )
+}
+
+// THI THỬ (Ôn thi giữa kì I): nạp dòng bai_test của em rồi đi đường LamET (đồng hồ, nộp 1 lần, chấm server).
+function LamThiThu({ baiTestId, hocSinhId, onXong }: { baiTestId: string; hocSinhId: string; onXong: () => void }) {
+  const [test, setTest] = useState<BaiTestCuaHS | null | 'loi'>(null)
+  useEffect(() => {
+    supabase.from('bai_test').select('*').eq('id', baiTestId).single()
+      .then(({ data, error }) => setTest(error || !data ? 'loi' : ({ ...data, lop_ten: '', bai_lam: null, so_cau: data.so_cau } as BaiTestCuaHS)))
+  }, [baiTestId])
+  if (test === null) return <ManCho>Đang tải đề…</ManCho>
+  if (test === 'loi') return <ManCho>Không mở được bài thi.</ManCho>
+  return <LamET test={test} hocSinhId={hocSinhId} onXong={onXong} />
 }
 
 function fmtNgay(d: string): string { const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}` }

@@ -5,26 +5,38 @@
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { MathText } from '../kho/ui'
-import { onThiDs, onThiXem, onThiLuyenSinh, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
+import { onThiDs, onThiXem, onThiLuyenSinh, onThiBatDau, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, TrongHS, MAU, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
 import { mauDocMon } from './skin/registry'
+
+// Nhớ tab đang xem khi rời màn (vd vào Luyện tập rồi quay lại) — sống tới F5 (CLAUDE §2 "rời màn quay lại = đúng chỗ cũ").
+const NHO: { tab: TabOnThi } = { tab: 'de_cuong' }
 
 const TAB: { id: TabOnThi; ten: string; trong: string }[] = [
   { id: 'de_cuong', ten: 'Đề cương', trong: 'Chưa có đề cương giữa kì I cho khối của em.' },
   { id: 'de_thi', ten: 'Đề thi các trường', trong: 'Chưa có đề thi các trường cho khối của em.' },
 ]
 
-export default function OnThiHS({ mon, onBack, onLuyen }: { mon: string; onBack: () => void; onLuyen: (baiTestId: string) => void }) {
+export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; onBack: () => void; onLuyen: (baiTestId: string) => void; onThi: (baiTestId: string) => void }) {
   const [ds, setDs] = useState<DeOnThi[] | null | 'loi'>(null)
-  const [tab, setTab] = useState<TabOnThi>('de_cuong')
+  const [tab, setTab] = useState<TabOnThi>(NHO.tab)
   const [mo, setMo] = useState<DeOnThi | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
+  const [hoiThi, setHoiThi] = useState<DeOnThi | null>(null) // popup xác nhận trước khi vào Thi thử
 
   async function luyen(d: DeOnThi) {
     setBusy(d.id); setLoi(null)
     try { onLuyen((await onThiLuyenSinh(d.id)).baiTestId) }
     catch (e: any) { setLoi(e?.message ?? 'Không mở được bài luyện.'); setBusy(null) }
+  }
+
+  useEffect(() => { NHO.tab = tab }, [tab])
+
+  async function thi(d: DeOnThi) {
+    setBusy(d.id); setLoi(null); setHoiThi(null)
+    try { onThi((await onThiBatDau(d.id)).baiTestId) }
+    catch (e: any) { setLoi(e?.message ?? 'Không mở được bài thi.'); setBusy(null) }
   }
 
   useEffect(() => {
@@ -62,11 +74,27 @@ export default function OnThiHS({ mon, onBack, onLuyen }: { mon: string; onBack:
                 </span>
                 <span className="mt-1 flex gap-2">
                   {d.tab === 'de_cuong' && <NutHS onClick={() => luyen(d)} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : 'Luyện tập'}</NutHS>}
-                  <NutHS phu onClick={() => setMo(d)} className="flex-1">Xem đề</NutHS>
+                  {d.tab === 'de_thi' && <NutHS onClick={() => (d.bai_thi_id ? thi(d) : setHoiThi(d))} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : d.da_nop ? 'Xem lại bài thi' : d.bai_thi_id ? 'Làm tiếp' : 'Thi thử'}</NutHS>}
+                  {/* Đề thi: KHÔNG có "Xem đề" — xem trước đáp án thì điểm xếp hạng mất ý nghĩa. */}
+                  {d.tab === 'de_cuong' && <NutHS phu onClick={() => setMo(d)} className="flex-1">Xem đề</NutHS>}
                 </span>
               </TheHS>
             ))}
           </div>}
+      {hoiThi && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4" style={{ background: 'rgba(0,0,0,0.55)' }} onClick={() => setHoiThi(null)}>
+          <TheHS className="flex w-full max-w-md flex-col gap-3 p-5">
+            <span onClick={(e) => e.stopPropagation()} className="flex flex-col gap-3">
+              <span className="text-[20px] font-bold leading-snug" style={HEAD}>Sẵn sàng thi thử?</span>
+              <span className="text-[16px] leading-relaxed" style={{ color: MAU.ink }}>Làm đề thi sẽ mất <b>{hoiThi.thoi_gian_phut} phút</b>. Điểm thi sẽ dùng xếp hạng và nhận quà. Em đã sẵn sàng chưa?</span>
+              <span className="flex gap-2">
+                <NutHS phu onClick={() => setHoiThi(null)} className="flex-1">Để sau</NutHS>
+                <NutHS onClick={() => thi(hoiThi)} className="flex-1">Sẵn sàng</NutHS>
+              </span>
+            </span>
+          </TheHS>
+        </div>
+      )}
     </ManHS>
   )
 }

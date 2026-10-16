@@ -16,7 +16,7 @@ const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan', 'keo_tha']
 
 // bo_tro (lô luyện trong ca bổ trợ yếu) · bo_tro_test (test cuối ca) · retest (bài riêng sau ET buổi thường) —
 // migration 202609030307, PLAN-botro-yeu-ca.md. Thêm giá trị = PHẢI nới CHECK bai_test_loai_check (§2.1).
-export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi' | 'tu_luyen' | 'bo_tro' | 'bo_tro_test' | 'retest'
+export type TestLoai = 'et' | 'btvn' | 'giao_trinh' | 'de_thi' | 'tu_luyen' | 'bo_tro' | 'bo_tro_test' | 'retest' | 'thi_thu'
 export type BaiTest = {
   id: string; nguon_tai_lieu_id: string | null; lop_id: string; hoc_sinh_id: string | null; ngay: string
   loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number

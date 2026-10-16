@@ -3,7 +3,8 @@ import { supabase } from './supabase'
 import type { MenhDe } from './kho/api'
 
 export type TabOnThi = 'de_cuong' | 'de_thi'
-export type DeOnThi = { id: string; ten: string; tab: TabOnThi; nguon: string | null; nam: number | null; so_cau: number }
+export type DeOnThi = { id: string; ten: string; tab: TabOnThi; nguon: string | null; nam: number | null; so_cau: number
+  thoi_gian_phut: number; bai_thi_id: string | null; da_nop: boolean }
 export type CauOnThi = {
   stt: number; ma_cau: string; loai_cau: string | null; noi_dung: string | null
   lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; loi_giai: string | null
@@ -28,4 +29,12 @@ export async function onThiLuyenSinh(deId: string): Promise<{ baiTestId: string;
   if (error) throw error
   const d = data as { bai_test_id: string; so_cau: number; so_bo_qua: number }
   return { baiTestId: d.bai_test_id, soCau: d.so_cau, soBoQua: d.so_bo_qua }
+}
+
+// Thi thử đề trường (pha 2): sinh / trả lại lượt thi duy nhất của em cho đề (loai 'thi_thu', không ghi mastery).
+export async function onThiBatDau(deId: string): Promise<{ baiTestId: string; lai: boolean }> {
+  const { data, error } = await supabase.rpc('fn_hs_thi_thu_bat_dau', { p_de: deId })
+  if (error) throw error
+  const d = data as { bai_test_id: string; lai: boolean }
+  return { baiTestId: d.bai_test_id, lai: d.lai }
 }
