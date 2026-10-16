@@ -444,3 +444,14 @@ Theo phương án §0 (08/10). Cột "Nhân sự" = có phải dừng không.
 - **Faceted classification** (Ranganathan): chủ đề (mảng nội dung) × chuyên đề (kiểu bài) là hai trục, nhóm bài nằm ở giao điểm. Đó là lý do không có "cha chính".
 - **Knowledge Space Theory** (Doignon–Falmagne; ALEKS): tiền đề là DAG, "sẵn sàng học" = mọi tiền đề đã nắm (*outer fringe*), thứ tự giáo trình là một *linear extension*.
 - **Expand–contract / parallel change** (Fowler): dựng cái mới song song, chuyển bên dùng, rồi mới gỡ cái cũ.
+
+---
+
+## 13. B4 Duyệt khớp — ĐÃ BUILD 16/10 (Thùy chốt cùng ngày) — mig `202610161046`
+
+- **Luật:** mức AI "cao" = đã gán (`dai_bdm_gan_cau`, `nguon='ai'`), chấp nhận ~1,3% sai, **hậu kiểm** bằng KIỂM MẪU ~10% (cố định theo hash mã câu) ⇒ độ chính xác đo thật (`fn_bdm_khop_dem`). Mức "chưa chắc" và câu chưa có dạng ở lại **KHO TẠM** (= KHÔNG có dòng ở `dai_bdm_gan_cau`; vẫn nằm dạng chờ `…000000` ở bản đồ cũ); đủ thông tin thì **chuyển đi** = gán (`fn_bdm_khop_quyet 'gan'`, `nguon='nguoi'`).
+- **Bảng (thiếu = không có dòng, không cột NULL "chưa duyệt"):** `dai_bdm_de_xuat` (đề xuất chưa chắc) · `dai_bdm_cau_thieu_dang` (báo bản đồ thiếu dạng + lý do) · `dai_bdm_kiem_mau` (chỉ có dòng khi người đã xem câu mức cao: giữ/đổi, kèm dạng AI gán gốc) · `dai_bdm_duyet_pham_vi` (khối + chủ đề; `chu_de_id NULL` = phần còn lại của khối + câu chưa có chỗ; unique ⇒ KHÔNG TRÙNG).
+- **Màn:** Quản lý chất lượng › Duyệt kho › tab **Khớp bản đồ mới** (`KhopBanDoMoiTab.tsx`, seam `lib/kho/bdmKhop.ts`) — 4 hàng: Chưa chắc · Chưa có dạng · Thiếu dạng · Kiểm mẫu; người duyệt chỉ thấy phạm vi của mình, admin thấy hết + giao/gỡ phạm vi. Vá tại chỗ sau mỗi quyết định.
+- **Quyền ở DB:** `_bdm_duyet_duoc(khoi, chu_de)` (chủ của chủ đề X = dòng (K,X) nếu có, không thì (K,NULL); admin qua `my_quyen()`); `fn_bdm_khop_quyet` chặn câu ngoài phạm vi.
+- **Quy trình mỗi khối:** B3 máy khớp (lô 70 câu, giấu 90 câu đã người gán để đo precision) → ghi mức cao (`scripts/bdm-b3-ghi-de-xuat.mjs`) → nạp phần còn lại (`scripts/bdm-b3-nap-de-xuat.mjs`) → giao phạm vi → duyệt/kiểm mẫu → khối "xong" khi cả 4 hàng về 0 → B5.
+- **K8 (thí điểm):** 478 câu gốc mức cao đã gán (+680 bản sao theo gốc) · 109 chưa chắc · 232 thiếu dạng · precision mẫu 94,3% (cao 98,7%). Chưa giao phạm vi cho ai.
