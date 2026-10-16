@@ -76,6 +76,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const setDuyet = (v: boolean) => { NHO.duyet = v; setDuyetRaw(v) }
   const [canDuyet, setCanDuyet] = useState<number | null>(null)
   const [soi, setSoi] = useState<string | null>(null)   // dạng bài vừa bấm "Xem trên bản đồ" — sáng lên vài giây
+  // Duyệt kho mở TOÀN MÀN (Thùy 16/10). "Xem trên bản đồ" chỉ ẨN màn duyệt (không gỡ) ⇒ quay lại đúng câu đang duyệt.
+  const [xemBanDo, setXemBanDo] = useState(false)
   const [dangCu, setDangCu] = useState<BdmDangCu[] | null>(null)
   const [ganMo, setGanMo] = useState<GanMo | null>(null)
   const keoRef = useRef<Keo | null>(null)
@@ -135,6 +137,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   // Phím ← → chuyển chuyên đề (trừ khi đang gõ)
   useEffect(() => {
     const f = (e: KeyboardEvent) => {
+      if (duyet && !xemBanDo) { if (e.key === 'Escape' && !dangGo(e.target)) setDuyet(false); return } // màn duyệt toàn màn đang che bản đồ
       if (e.key === 'Escape' && !lt && !ganMo && chon) { setChon(null); return }
       if (chon?.loai === 'dang_bai' && !lt && !ganMo && !dangGo(e.target) && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
         e.preventDefault(); denDangBai(viTriDb + (e.key === 'ArrowRight' ? 1 : -1)); return
@@ -272,7 +275,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
         </button>}
         {khuon === 'bon_tang' && chuDe && (
-          <button onClick={() => setDuyet(!duyet)} title="Duyệt câu AI đã xếp vào dạng bài (kho tạm · phạm vi người duyệt · kiểm mẫu) — vừa duyệt vừa nhìn bản đồ"
+          <button onClick={() => { if (duyet && xemBanDo) setXemBanDo(false); else { setDuyet(!duyet); setXemBanDo(false) } }} title="Duyệt câu AI đã xếp vào dạng bài (kho tạm · phạm vi người duyệt · kiểm mẫu) — mở toàn màn"
             className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${duyet ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : 'border-slate-200 text-slate-600 hover:border-emerald-400'}`}>
             ✅ Duyệt kho{canDuyet ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{canDuyet}</span> : null}
           </button>
@@ -402,15 +405,30 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o ?? chuDe.o[0]} khoi={khoi} onDong={() => setChon(null)}
             lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} dieuHuong={dieuHuongDb} />
         )}
-        {duyet && chuDe && (
-          <aside className="flex w-[min(560px,46%)] shrink-0 flex-col border-l border-slate-300 bg-white">
-            <KhopBanDoMoiTab key={khoi} khoi={khoi} chuDeId={chuDe.id} onXem={xemDangBai} onChanged={napCanDuyet} />
-          </aside>
-        )}
       </div>
       )}
 
-      {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
+      {/* ── DUYỆT KHO toàn màn (che cả thanh trên + menu trái của ERP) ── */}
+      {duyet && chuDe && khuon === 'bon_tang' && (
+        <div className={`fixed inset-0 z-[65] flex flex-col bg-slate-50 ${xemBanDo ? 'hidden' : ''}`}>
+          <div className="flex shrink-0 items-center gap-3 border-b border-emerald-700 bg-emerald-600 px-5 py-2.5 text-white">
+            <span className="text-[15px] font-semibold">✅ Duyệt kho</span>
+            <span className="text-[13px] text-white/80">Khối {khoi} · <MathText>{chuDe.ten}</MathText></span>
+            {canDuyet ? <span className="rounded-full bg-white/20 px-2 py-0.5 text-[12px] font-medium">{canDuyet} câu cần xử lý</span> : null}
+            <button onClick={() => setDuyet(false)} className="ml-auto rounded-md bg-white/15 px-3 py-1.5 text-[13px] font-semibold hover:bg-white/25">✕ Về bản đồ</button>
+          </div>
+          <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col bg-white shadow-sm">
+            <KhopBanDoMoiTab key={khoi} khoi={khoi} chuDeId={chuDe.id} onChanged={napCanDuyet}
+              onXem={(id) => { setXemBanDo(true); xemDangBai(id) }} />
+          </div>
+        </div>
+      )}
+      {duyet && xemBanDo && (
+        <button onClick={() => setXemBanDo(false)}
+          className="fixed bottom-6 right-6 z-30 rounded-full bg-emerald-600 px-5 py-3 text-[14px] font-semibold text-white shadow-xl hover:bg-emerald-500">↩ Quay lại Duyệt kho</button>
+      )}
+
+      {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-[70] -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
 
       {HIEN_KHOP_CU && ganMo && (
         <BangGanCau g={ganMo} onDong={() => setGanMo(null)} onDaGan={(n) => { thongBao(n); void napLai() }} />

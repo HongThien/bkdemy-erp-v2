@@ -37891,3 +37891,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - SAI tìm ra: dòng 'Đóng hồ sơ buổi bù' của `_troly_bc_viec_bu` có `doi_tuong` = tên HS không kèm lớp ⇒ bộ lọc khối (so tên lớp) làm rơi dòng này khỏi báo cáo mọi trưởng khối. Buổi bù luôn `lop_id` null (491/491) ⇒ lấy lớp từ buổi gốc (`bu_cho_buoi_id`→`lop_id`).
 - Sửa: mig 202610161358 (áp bằng `--only`, vì còn 22 file treo của phiên khác). Chỉ đổi nhãn `doi_tuong` thành 'họ tên · lớp'; 11 dòng trước/sau giống hệt ngoài nhãn. Sau tính lại: Giang thấy thêm 'Quách Thị Ngọc Liên · 7B2'. Bản lưu hôm nay còn nhãn cũ tới khi bấm ↻ Tính lại hoặc sang ngày mới.
 - Còn hở, CHƯA làm: khối 8T (lớp 8S0, 4 việc chậm) chưa có Trưởng/Phó nên không ai thấy; cảnh báo bất thường chung (9 cái) không lọc được theo khối nên bản cá nhân luôn 0; 2 dòng test 'Test 04/05' không thuộc khối nào.
+
+## 16/10 — Bản đồ mới: Duyệt kho mở TOÀN MÀN (Thùy 16/10)
+- **Thùy:** "khi bấm vào duyệt kho từ chỗ bản đồ mới ấy, giao diện duyệt kho phải full màn" (sáng nay commit 9e1a9b35 làm chia đôi bản đồ | hàng đợi).
+- **Làm (`BanDoMoi.tsx`):** bỏ cột `aside` chia đôi; ✅ Duyệt kho mở lớp `fixed inset-0 z-[65]` (trên thanh trên ERP `z-[60]`), dải xanh "✅ Duyệt kho · Khối · chủ đề · N câu cần xử lý · ✕ Về bản đồ", hàng đợi `KhopBanDoMoiTab` giữa màn `max-w-6xl`. "↗ Xem trên bản đồ" chỉ ẨN màn duyệt (không gỡ) + nhảy/làm sáng dạng bài, nút nổi "↩ Quay lại Duyệt kho" ⇒ về đúng câu + vị trí cuộn. Esc (không đang gõ) đóng màn duyệt; phím ↑↓ của bản đồ không chạy khi màn duyệt đang che. Toast "✓" nâng `z-[70]`.
+- **Kiểm (app local, admin, K8 — 381 câu cần xử lý):** phủ 1500×900; Xem trên bản đồ → ẩn + nút quay lại; quay lại giữ scrollTop 300; Esc đóng. Không bấm duyệt câu nào.
