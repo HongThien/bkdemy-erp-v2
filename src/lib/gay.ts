@@ -431,6 +431,17 @@ export async function listChotThang(ky: string): Promise<GayChotThangFull[]> {
     .sort((a, b) => b.so_gay_chot - a.so_gay_chot)
 }
 
+// ── QUYỀN GẬY THEO KHỐI (Thùy 16/10, mig 202610161605/1606) — trục thứ hai bên cạnh cây vị trí.
+// Cấu hình ở bảng gay_quyen_khoi; phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
+export type PhamViKhoi = { toanQuyen: boolean; khoi: string[]; nsIds: Set<string>; deXuatIds: Set<string> }
+export const PHAM_VI_KHOI_RONG: PhamViKhoi = { toanQuyen: false, khoi: [], nsIds: new Set(), deXuatIds: new Set() }
+export async function phamViKhoi(): Promise<PhamViKhoi> {
+  const { data, error } = await supabase.rpc('fn_gay_pham_vi_khoi')
+  if (error) throw error
+  const j = (data ?? {}) as { toan_quyen?: boolean; khoi?: string[]; ns_ids?: string[]; de_xuat_ids?: string[] }
+  return { toanQuyen: !!j.toan_quyen, khoi: j.khoi ?? [], nsIds: new Set(j.ns_ids ?? []), deXuatIds: new Set(j.de_xuat_ids ?? []) }
+}
+
 // ── MIỄN GẬY TỰ ĐỘNG (nhan_su.mien_gay) — CEO bật/tắt qua UI Danh mục ────────
 export type NsMienGay = { id: string; ho_ten: string; ma_ns: string | null }
 export async function listMienGay(): Promise<NsMienGay[]> {

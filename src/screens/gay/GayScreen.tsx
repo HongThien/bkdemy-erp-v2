@@ -4,7 +4,8 @@
 //   · ĐÁNH/GỠ (thủ công) · DANH MỤC (lỗi + hoạt động gỡ) · CHỐT THÁNG.
 // Quyền: AI CŨNG XEM được bảng gậy (minh bạch — Thùy chốt 08-29); hành động
 // (chốt đề xuất/đánh/gỡ/thu hồi/chốt tháng) chỉ leader theo cây tổ chức
-// (getMyScope.laQuanLy, đúng phạm vi người dưới quyền) hoặc admin hệ thống.
+// (getMyScope.laQuanLy, đúng phạm vi người dưới quyền) hoặc admin hệ thống,
+// CỘNG quyền theo khối của lớp (bảng gay_quyen_khoi, Thùy 16/10 — toàn quyền = như admin).
 // Style: tông Apple sáng như các màn khác (card trắng + bóng mềm, pill mềm —
 // Thùy 08-29: KHÔNG dùng style scifi HUD).
 // ============================================================================
@@ -17,6 +18,7 @@ import {
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
   danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, tienDoTask,
+  phamViKhoi, PHAM_VI_KHOI_RONG, type PhamViKhoi,
   type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
   type KhoangNgay, type TaskCuaNhanSu, type TienDoTask,
 } from '../../lib/gay'
@@ -90,13 +92,17 @@ export default function GayScreen() {
   const [hds, setHds] = useState<GayHoatDong[]>([])
   const [thongBao, setThongBao] = useState<{ ok: boolean; msg: string } | null>(null)
 
-  const laAdmin = !!quyen?.laAdmin
-  const canAct = laAdmin || !!scope?.laQuanLy
-  // phạm vi người tôi được đánh/chốt: admin = mọi người; leader = người dưới trong cây
-  const scopeIds = useMemo(() => new Set([...(scope?.giamSatTrucTiep ?? []), ...(scope?.giamSatSau ?? [])].map((r) => r.nhan_su_id)), [scope])
+  // Quyền khối (Thùy 16/10): gay_quyen_khoi — toàn quyền = như admin trong màn này; khối = thêm người/đề xuất của lớp khối đó.
+  const [pvKhoi, setPvKhoi] = useState<PhamViKhoi>(PHAM_VI_KHOI_RONG)
+  const laAdmin = !!quyen?.laAdmin || pvKhoi.toanQuyen
+  const canAct = laAdmin || !!scope?.laQuanLy || pvKhoi.khoi.length > 0
+  // phạm vi người tôi được đánh/chốt: admin = mọi người; leader = người dưới trong cây ∪ người có phân công lớp khối của tôi
+  const treeIds = useMemo(() => new Set([...(scope?.giamSatTrucTiep ?? []), ...(scope?.giamSatSau ?? [])].map((r) => r.nhan_su_id)), [scope])
+  const scopeIds = useMemo(() => new Set([...treeIds, ...pvKhoi.nsIds]), [treeIds, pvKhoi])
   const trongPhamVi = (nsId: string) => laAdmin || scopeIds.has(nsId)
 
   useEffect(() => {
+    phamViKhoi().then(setPvKhoi).catch(() => setPvKhoi(PHAM_VI_KHOI_RONG))
     getMyScope().then(setScope).catch(() => setScope(null))
     myNhanSuId().then(setMeId).catch(() => setMeId(''))
     listGayLoi().then(setLois).catch(() => setLois([]))
@@ -149,7 +155,7 @@ export default function GayScreen() {
         )}
 
         {tab === 'bang' && <BangGayTab k={khoang} canAct={canAct} trongPhamVi={trongPhamVi} onBao={bao} />}
-        {tab === 'dexuat' && <DeXuatTab lois={lois} canAct={canAct} laAdmin={laAdmin} scopeIds={scopeIds} meId={meId} onBao={bao} />}
+        {tab === 'dexuat' && <DeXuatTab lois={lois} canAct={canAct} laAdmin={laAdmin} scopeIds={treeIds} meId={meId} onBao={bao} />}
         {tab === 'danhgo' && canAct && <DanhGoTab k={khoang} nhanKhoang={nhanKhoang} lois={lois} hds={hds} laAdmin={laAdmin} scopeIds={scopeIds} onBao={bao} />}
         {tab === 'danhmuc' && canAct && <DanhMucTab lois={lois} hds={hds} reload={async () => { setLois(await listGayLoi()); setHds(await listGayHoatDong()) }} onBao={bao} />}
         {tab === 'chot' && canAct && <ChotThangTab ky={kyChot} theoTuan={che === 'tuan'} onBao={bao} />}
@@ -284,12 +290,15 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   const [tdMap, setTdMap] = useState<Map<string, TienDoTask>>(new Map()) // ghi chú đóng task theo ref_key
   useEffect(() => { if (!dxs.length) return; tienDoTask(dxs.map((d) => d.ref_key)).then(setTdMap).catch(() => {}) }, [dxs])
   const loiChamDeadline = lois.find((l) => l.ma === MA_LOI_CHAM_DEADLINE)?.id ?? lois[0]?.id ?? ''
+  // Đề xuất thuộc lớp khối của tôi (quyền khối, Thùy 16/10) — lấy SAU lượt quét để có cả đề xuất vừa sinh.
+  const [dxKhoi, setDxKhoi] = useState<Set<string>>(new Set())
 
   const load = async () => {
     setLoading(true)
     try {
       await quetGayTuDong() // quét lazy — idempotent nhờ ref_key unique
-      setDxs(await listDeXuat('cho'))
+      const [ds, pv] = await Promise.all([listDeXuat('cho'), phamViKhoi().catch(() => PHAM_VI_KHOI_RONG)])
+      setDxs(ds); setDxKhoi(pv.deXuatIds)
     } catch (e: any) { onBao(false, String(e.message ?? e)) }
     setLoading(false)
   }
@@ -342,7 +351,7 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
         <p className="text-sm text-slate-400">Không có đề xuất nào chờ xử lý.</p>
       ) : nhomHien.map((n) => {
         const mo = moNs === n.nsId
-        const duocLam = canAct && (laAdmin || scopeIds.has(n.nsId))
+        const duocLamCaNguoi = canAct && (laAdmin || scopeIds.has(n.nsId))
         const soQua48h = n.items.filter((d) => qua48h(d.created_at)).length
         return (
           <div key={n.nsId} className="mt-2 overflow-hidden rounded-xl border border-slate-100 shadow-sm">
@@ -370,7 +379,7 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
                       {tdMap.has(d.ref_key) && <div className="mt-0.5"><GhiChuDong td={tdMap.get(d.ref_key)} /></div>}
                       {lichSuId === d.id && <div className="mt-2"><LichSuTask refKey={d.ref_key} /></div>}
                     </div>
-                    {duocLam ? (
+                    {duocLamCaNguoi || dxKhoi.has(d.id) ? (
                       boQuaId === d.id ? (
                         <div className="flex items-center gap-1.5">
                           <input className={inputCls + ' !py-1 !text-xs'} style={{ width: 190 }} placeholder="lý do bỏ qua (bắt buộc)…" value={boQuaLyDo} onChange={(e) => setBoQuaLyDo(e.target.value)} autoFocus />
