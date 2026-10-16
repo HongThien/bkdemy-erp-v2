@@ -132,3 +132,9 @@ Một lớp trang trí GẮN vào card, có chuyển động nhẹ, khai theo m�
 - **Chỉnh vị trí** bằng số trong `MEO_NGU`: `phai` (âm = thò ra ngoài mép phải card, đuôi buông xuống dọc mép), `chim` (thân lún xuống mặt card), `rong`, `duoiCao`, `duoiX/duoiY` (gốc đuôi trong thân).
 - Vẽ lớp này sẽ **đẩy hàng đầu trang chủ xuống** đúng bằng chiều cao mèo (để mèo không bị cắt).
 - Đơn ChatGPT mèo: giữ lại câu "KHÔNG vẽ đuôi" cho thân, và "gốc đuôi sát mép trên khung" cho đuôi.
+
+### 8b. Vịt đi lại trên mép card (NS008) — bộ dáng
+
+- Ảnh: `NS008_vit_dung.png` + `NS008_vit_buoc_1.png` + `NS008_vit_buoc_2.png` (quay mặt PHẢI, nền trong suốt, cùng cỡ). Script nén **cắt CHUNG 1 khung cho cả bộ** (cắt riêng từng hình sẽ làm thân nhảy chỗ khi đổi dáng).
+- `VIT_DI` trong `erpSkin.ts` + `components/VitDi.tsx`. Vòng 24s thuần CSS: đi sang phải (2 dáng bước đổi nhau + nhún) → đứng nghỉ → lật ngang quay đầu → đi sang trái → đứng nghỉ. Quãng đường = bề ngang card (tính theo %, không cần đo bằng JS).
+- Chỉnh: `cao` (chiều cao vịt px), `chim` (chân lún xuống mặt card). Máy bật "giảm chuyển động" ⇒ vịt đứng yên.

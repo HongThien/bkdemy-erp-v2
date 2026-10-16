@@ -110,6 +110,12 @@ export type MeoNguCfg = { than: string; duoi: string; tiLeThan: number; tiLeDuoi
 export const MEO_NGU: Record<string, MeoNguCfg> = {
   NS004: { than: '/bk-ui/erp/nen/ca-nhan/ns004_meo_than.webp', duoi: '/bk-ui/erp/nen/ca-nhan/ns004_meo_duoi.webp', tiLeThan: 2.41, tiLeDuoi: 0.232, rong: 150, phai: -8, chim: 10, duoiCao: 76, duoiX: 0.965, duoiY: 0.5 },
 }
+// VỊT ĐI LẠI trên mép card "Chào …" (components/VitDi.tsx): 3 dáng cắt chung 1 khung (ĐỨNG · BƯỚC 1 · BƯỚC 2), mặt quay PHẢI (code tự lật khi quay đầu).
+//   cao: chiều cao vịt (px) · chim: chân lún xuống mặt card bấy nhiêu px · tiLe: rộng÷cao của file đã nén (script in ra)
+export type VitDiCfg = { dung: string; buoc1: string; buoc2: string; tiLe: number; cao: number; chim: number }
+export const VIT_DI: Record<string, VitDiCfg> = {
+  NS008: { dung: '/bk-ui/erp/nen/ca-nhan/ns008_vit_dung.webp', buoc1: '/bk-ui/erp/nen/ca-nhan/ns008_vit_buoc_1.webp', buoc2: '/bk-ui/erp/nen/ca-nhan/ns008_vit_buoc_2.webp', tiLe: 0.778, cao: 78, chim: 6 },
+}
 
 const BIEN_RIENG: Record<keyof DangRieng, string> = {
   surface: '--sk-surface', surface2: '--sk-surface2', ink: '--sk-ink', muted: '--sk-muted', line: '--sk-line', acc: '--sk-acc', accInk: '--sk-acc-ink',
