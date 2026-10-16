@@ -90,6 +90,8 @@ interface UiState {
   doiHomeThuTu: (ids: string[]) => void
   // Đổi dáng card lưới nhóm (nhan_su.home_bo_cuc.dang_card).
   doiHomeDangCard: (d: DangCard) => void
+  // Chọn tab nào hiện trong box Notice Board + thứ tự (nhan_su.home_bo_cuc.notice).
+  doiNoticeTab: (ids: string[]) => void
   // Giao diện vỏ ERP đang áp (style + hình nền + sáng/tối — xem lib/erpSkin.ts). Khởi động = bản nhớ trên máy; hồ sơ tải xong
   // mà DB có lựa chọn thì DB đè. Đổi: vá ngay + nhớ trên máy + ghi DB nền (nhan_su.erp_giao_dien).
   erpGiaoDien: GiaoDienErp
@@ -242,6 +244,15 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     const va = (bc: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, home_bo_cuc: bc } } } : {}))
     va(moi)
     updateHomeBoCuc(me.nhanSu.id, moi).catch((e) => { va(cu); alert('Chưa lưu được dáng card: ' + (e?.message ?? e)) })
+  },
+  doiNoticeTab: (ids) => {
+    const me = get().me
+    if (!me || ids.length === 0) return   // Notice Board luôn còn ít nhất 1 tab
+    const cu = me.nhanSu.home_bo_cuc ?? {}
+    const moi = { ...cu, notice: ids }
+    const va = (bc: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, home_bo_cuc: bc } } } : {}))
+    va(moi)
+    updateHomeBoCuc(me.nhanSu.id, moi).catch((e) => { va(cu); alert('Chưa lưu được tab Notice Board: ' + (e?.message ?? e)) })
   },
   setAdminLeaf: (id) => set({ adminLeaf: id }),
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [], chiXem: [] } }) } },

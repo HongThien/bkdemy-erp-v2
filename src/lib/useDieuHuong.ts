@@ -9,7 +9,7 @@ import { LEAF_HOME, LEAF_VIEC, MUC_PLAN, MUC_VIEC, cayMenu, duongDan, laHome, tr
 const TEN_NGOAI_MENU: Record<string, string> = { test_dau_vao_scan: 'Scan bài đã chấm' }
 
 export function useDieuHuong() {
-  const { staffLeaf: leafStore, quyen, navIdx, navMax, lopPhu, capPhuEl, me, setStaffLeaf, backLeaf, tienLeaf, doiYeuThich, doiHomeAn, doiHomeThuTu, doiHomeDangCard } = useStore()
+  const { staffLeaf: leafStore, quyen, navIdx, navMax, lopPhu, capPhuEl, me, setStaffLeaf, backLeaf, tienLeaf, doiYeuThich, doiHomeAn, doiHomeThuTu, doiHomeDangCard, doiNoticeTab } = useStore()
   const yeuThich = useYeuThich()
   const adminNav = useMemo(() => adminNavFromQuyen(quyen), [quyen])
   // Người CHỈ có "Việc của tôi" (không được cấp màn nào khác) thì Trang chính chỉ còn đúng 1 box — vô nghĩa,
@@ -37,6 +37,6 @@ export function useDieuHuong() {
     leaf, nha, coHome, adminNav, mucs, mucHienTai, duong, duoi, lopPhu,
     coLui: navIdx > 0 || !!capPhuEl, coTien: navIdx < navMax, coLen: !!capPhuEl || !!lopPhu || !trongCay || duong.length > 1,
     lui: () => (capPhuEl ? capPhuEl.dong() : backLeaf()), tien: tienLeaf, len, di: setStaffLeaf,
-    ghimDuoc, daGhim: yeuThich.includes(leaf), ghim: () => doiYeuThich(leaf), yeuThich, doiYeuThich, doiHomeAn, doiHomeThuTu, doiHomeDangCard, me,
+    ghimDuoc, daGhim: yeuThich.includes(leaf), ghim: () => doiYeuThich(leaf), yeuThich, doiYeuThich, doiHomeAn, doiHomeThuTu, doiHomeDangCard, doiNoticeTab, me,
   }
 }

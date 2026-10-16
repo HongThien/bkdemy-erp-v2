@@ -14,7 +14,7 @@ document.documentElement.style.setProperty('--app-unz', '1')
 
 type Khoa = { k: string; nhan: string; diem?: boolean }
 const BANG: Khoa[] = [
-  { k: 'today', nhan: 'Bảng Việc hôm nay' }, { k: 'development', nhan: 'Bảng Việc phát triển' }, { k: 'order', nhan: 'Bảng Order' },
+  { k: 'today', nhan: 'Bảng Notice Board (góc trái trên)' }, { k: 'development', nhan: 'Bảng Việc phát triển' }, { k: 'order', nhan: 'Bảng Order' },
   { k: 'greeting', nhan: 'Hồ sơ (avatar · lời chào · hòm thư)' }, { k: 'favorites_title', nhan: 'Biển "Yêu thích" (tuỳ chọn)' },
   { k: 'toolbar_primary', nhan: 'Nút Tuỳ chỉnh' }, { k: 'toolbar_secondary', nhan: 'Nút Giao diện' },
 ]
@@ -59,7 +59,7 @@ function napManifest(m: any): { v: Gia; soNhom: number } {
 const Dong = ({ t, phu }: { t: string; phu?: string }) => (
   <div className="flex items-center gap-2 border-b border-black/10 py-1 text-[13px]"><span className="size-3.5 shrink-0 rounded border border-current opacity-60" /><span className="min-w-0 flex-1 truncate">{t}</span>{phu && <span className="text-[11px] opacity-60">{phu}</span>}</div>
 )
-const MAU_TODAY = <div><div className="mb-1 text-[15px] font-extrabold">☑ Việc hôm nay</div><Dong t="Điểm danh · 8A1" phu="0/18" /><Dong t="Chấm ET · 7A2" phu="2 quá hạn" /><Dong t="Report & Báo tan · 9A1" /><Dong t="Chuẩn bị phòng 204 · Tối" /><Dong t="Nhắc: gọi phụ huynh em Minh" /></div>
+const MAU_TODAY = <div><div className="mb-1 text-[15px] font-extrabold">📌 Notice Board</div><Dong t="Điểm danh · 8A1" phu="0/18" /><Dong t="Chấm ET · 7A2" phu="2 quá hạn" /><Dong t="Report & Báo tan · 9A1" /><Dong t="Chuẩn bị phòng 204 · Tối" /><Dong t="Nhắc: gọi phụ huynh em Minh" /></div>
 const MAU_DEV = <div><div className="mb-1 text-[15px] font-extrabold">🚀 Việc phát triển</div><Dong t="⚠ Bản đồ kiến thức lớp 8 — chia dạng" phu="60%" /><Dong t="● Soạn ET tuần 6 khối 9" phu="30%" /><Dong t="● Kiểm lời giải Hình lớp 7" phu="0%" /></div>
 const MAU_ORDER = <div><div className="mb-1 text-[15px] font-extrabold">📋 Bảng Order</div><Dong t="In 30 phiếu ET 8A1" phu="Lộc" /><Dong t="Mua bút dạ bảng" phu="Trang" /><Dong t="Sửa máy chiếu P204" /></div>
 const MAU_HOSO = <div className="flex w-full items-center gap-2"><span className="flex size-[52px] shrink-0 items-center justify-center rounded-full bg-indigo-500 text-[22px] font-bold text-white">T</span><div className="min-w-0 flex-1"><div className="truncate text-[17px] font-extrabold">Chào Thùy!</div><div className="text-[11px] opacity-70">Thứ Tư, 14/10</div></div><span className="text-[18px]">✉️<sup className="text-[10px] font-bold text-red-600">3</sup></span></div>

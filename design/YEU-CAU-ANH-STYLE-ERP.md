@@ -18,7 +18,7 @@ bất kỳ chữ, số, ký hiệu, chữ giả nào** — kể cả trên giấ
 
 | # | Ô trống phải có | Hình dạng gợi ý | Phần mềm sẽ in lên | Cỡ tối thiểu (trên khổ 1672×941) |
 |---|---|---|---|---|
-| 1 | **Bảng "Việc hôm nay"** | bảng gỗ / bảng ghim / tờ giấy lớn ghim tường | 1 tiêu đề + 5 dòng việc (ô tick · tên · hạn) | 400 × 300 |
+| 1 | **Bảng Notice Board** (trước gọi "Việc hôm nay") — bảng NỔI BẬT nhất tranh | bảng gỗ / bảng ghim / tờ giấy lớn ghim tường | 1 tiêu đề + hàng tab nhỏ + 5 dòng (ô tick · tên · hạn) | 400 × 300 |
 | 2 | **Bảng "Việc phát triển"** | bảng / tờ giấy ngang | 1 tiêu đề + 3 dòng có thanh % | 480 × 180 |
 | 3 | **Bảng Order** | bảng nhỏ / sổ mở / tấm bìa | 1 tiêu đề + 3 dòng | 380 × 240 |
 | 4 | **Thẻ hồ sơ** | thẻ / khung ảnh / bảng tên | ảnh đại diện tròn Ø60 bên trái + "Chào <tên>!" + ngày + biểu tượng thư nhỏ | 340 × 130 |

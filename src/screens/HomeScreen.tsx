@@ -16,7 +16,7 @@ import { uploadNenErp } from '../lib/nhansu'
 import { nenCua } from './hocsinh/skin/registry'
 import { HEAD, THE } from './home/khung'
 import TienDoViec from './home/TienDoViec'
-import ViecHangNgay from './home/ViecHangNgay'
+import ViecHangNgay, { NOTICE_TAB, noticeTabCua } from './home/ViecHangNgay'
 import HomThu from '../components/HomThu'
 import AvatarEditButton from '../components/AvatarEditButton'
 import BangOrder from './home/BangOrder'
@@ -245,7 +245,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
 
 // Mỗi box có THANH CÔNG CỤ nhỏ đậu trên mép trên (hiện khi rê chuột): ⠿ kéo để đổi chỗ · ✕ ẩn box.
 // Hai khu kéo thả, chỉ đổi chỗ TRONG cùng khu:
-//   'lon'  = 4 box lớn (Việc hôm nay · Việc phát triển · Yêu thích · Bảng Order) — kéo box này lên box kia ⇒ HOÁN VỊ trí.
+//   'lon'  = 4 box lớn (Notice Board · Việc phát triển · Yêu thích · Bảng Order) — kéo box này lên box kia ⇒ HOÁN VỊ trí.
 //   'luoi' = các box nhóm (nửa phải khu Tất cả) — kéo thả chèn vào chỗ mới.
 // Thứ tự lưu ở nhan_su.home_bo_cuc.thu_tu (mảng id). Ẩn lưu ở home_bo_cuc.an; bật lại ở ⚙ Tuỳ chỉnh.
 const KHU_LON = ['viec_ngay', 'tien_do', 'yeu_thich', 'order']
@@ -276,7 +276,23 @@ function KeoBox({ id, keo, dich, setKeo, setDich, tha, onAn, children }: {
 
 // ⚙ TUỲ CHỈNH — mỗi người tự ẩn / hiện từng box trên Trang chính (nhan_su.home_bo_cuc.an). Box ẩn chỉ không vẽ;
 // danh sách ở đây luôn đủ để bật lại.
-function TuyChinh({ cacBox, an, doi, hep, dang, doiDang }: { cacBox: { id: string; ten: string }[]; an: string[]; doi: (id: string) => void; hep: boolean; dang: DangCard; doiDang: (d: DangCard) => void }) {
+function TuyChinh({ cacBox, an, doi, hep, dang, doiDang, notice, doiNotice }: {
+  cacBox: { id: string; ten: string }[]; an: string[]; doi: (id: string) => void; hep: boolean; dang: DangCard; doiDang: (d: DangCard) => void
+  notice?: string[]; doiNotice: (ids: string[]) => void
+}) {
+  // Notice Board: tab đang bật theo thứ tự người dùng chọn + các tab chưa bật xếp sau (để bật thêm). Luôn giữ ≥ 1 tab.
+  const batNotice = noticeTabCua(notice)
+  const dsNotice = [...batNotice, ...NOTICE_TAB.map((t) => t.id).filter((id) => !batNotice.includes(id))]
+  const batTat = (id: string) => (batNotice.includes(id as never)
+    ? (batNotice.length > 1 ? doiNotice(batNotice.filter((x) => x !== id)) : undefined)
+    : doiNotice([...batNotice, id]))
+  const doiCho = (id: string, buoc: -1 | 1) => {
+    const ds = [...batNotice] as string[]
+    const i = ds.indexOf(id), j = i + buoc
+    if (i < 0 || j < 0 || j >= ds.length) return
+    ;[ds[i], ds[j]] = [ds[j], ds[i]]
+    doiNotice(ds)
+  }
   const [mo, setMo] = useState(false)
   const khung = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -304,6 +320,33 @@ function TuyChinh({ cacBox, an, doi, hep, dang, doiDang }: { cacBox: { id: strin
                     <span aria-hidden className={`flex size-[18px] shrink-0 items-center justify-center border text-[12px] font-black leading-none ${hien ? 'border-[var(--sk-acc)] bg-[var(--sk-acc)] text-[var(--sk-acc-ink)]' : 'border-[var(--sk-line)]'}`} style={{ borderRadius: 5 }}>{hien ? '✓' : ''}</span>
                     <span className={hien ? 'font-semibold' : 'text-[var(--sk-muted)]'}>{b.ten}</span>
                   </button>
+                </li>
+              )
+            })}
+          </ul>
+          <div className="mb-1 mt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sk-muted)]">📌 Notice Board — hiện tab nào</div>
+          <p className="mb-1 text-[11px] text-[var(--sk-muted)]">Box góc trái trên. Bật tab bạn cần, ↑↓ để đổi thứ tự (tab đầu mở sẵn).</p>
+          <ul className="space-y-0.5">
+            {dsNotice.map((id) => {
+              const t = NOTICE_TAB.find((x) => x.id === id)!
+              const on = batNotice.includes(id)
+              const i = batNotice.indexOf(id)
+              return (
+                <li key={id} className="flex items-center gap-1">
+                  <button onClick={() => batTat(id)} disabled={on && batNotice.length === 1} title={on && batNotice.length === 1 ? 'Notice Board cần ít nhất 1 tab' : t.moTa}
+                    className="flex min-w-0 flex-1 items-center gap-2.5 px-1.5 py-1.5 text-left text-[13.5px] hover:bg-[var(--sk-surface2)] disabled:cursor-not-allowed" style={{ borderRadius: 8 }}>
+                    <span aria-hidden className={`flex size-[18px] shrink-0 items-center justify-center border text-[12px] font-black leading-none ${on ? 'border-[var(--sk-acc)] bg-[var(--sk-acc)] text-[var(--sk-acc-ink)]' : 'border-[var(--sk-line)]'}`} style={{ borderRadius: 5 }}>{on ? '✓' : ''}</span>
+                    <span className="min-w-0">
+                      <span className={`block ${on ? 'font-semibold' : 'text-[var(--sk-muted)]'}`}>{t.ten}</span>
+                      <span className="block truncate text-[11px] text-[var(--sk-muted)]">{t.moTa}</span>
+                    </span>
+                  </button>
+                  {on && batNotice.length > 1 && (
+                    <span className="flex shrink-0 flex-col">
+                      <button onClick={() => doiCho(id, -1)} disabled={i === 0} title="Lên trước" className="px-1 text-[11px] leading-none text-[var(--sk-muted)] hover:text-[var(--sk-ink)] disabled:opacity-25">▲</button>
+                      <button onClick={() => doiCho(id, 1)} disabled={i === batNotice.length - 1} title="Ra sau" className="px-1 text-[11px] leading-none text-[var(--sk-muted)] hover:text-[var(--sk-ink)] disabled:opacity-25">▼</button>
+                    </span>
+                  )}
                 </li>
               )
             })}
@@ -390,6 +433,7 @@ export default function HomeScreen() {
   const luoiHep = DANG_CARD.find((d) => d.id === dangCard)!.luoi
   const luoiRong = DANG_CARD.find((d) => d.id === dangCard)!.rong
   const hienBox = (id: string) => !an.includes(id)
+  const noticeTabs = dh.me?.nhanSu.home_bo_cuc?.notice
   const thuTu = dh.me?.nhanSu.home_bo_cuc?.thu_tu ?? []
   // Sắp theo thứ tự người dùng đã kéo; id chưa từng kéo giữ nguyên thứ tự mặc định, đứng sau.
   const xep = (ids: string[]) => ids.map((id, i) => ({ id, k: thuTu.indexOf(id) >= 0 ? thuTu.indexOf(id) : 1e6 + i })).sort((a, b) => a.k - b.k).map((x) => x.id)
@@ -412,7 +456,7 @@ export default function HomeScreen() {
   }
   const keoBox = (id: string, node: ReactNode) => <KeoBox key={id} id={id} keo={keo} dich={dich} setKeo={setKeo} setDich={setDich} tha={tha} onAn={() => dh.doiHomeAn(id)}>{node}</KeoBox>
   const cacBox = [
-    { id: 'viec_ngay', ten: '☑ Việc hôm nay' }, { id: 'tien_do', ten: '🚀 Việc phát triển' },
+    { id: 'viec_ngay', ten: '📌 Notice Board' }, { id: 'tien_do', ten: '🚀 Việc phát triển' },
     { id: 'yeu_thich', ten: '★ Yêu thích' }, { id: 'order', ten: '📋 Bảng Order' },
     { id: 'nhom:viec', ten: `${MUC_VIEC.icon} ${MUC_VIEC.ten}` },
     ...dh.adminNav.map((x) => ({ id: `nhom:${x.nhom ?? ''}`, ten: `${nhomIcon(x.nhom)} ${x.nhom ?? ''}` })),
@@ -426,7 +470,7 @@ export default function HomeScreen() {
 
   // ── 4 BOX LỚN: thân từng box + 4 VỊ TRÍ (hoán đổi được) ──
   const thanLon = (id: string): ReactNode => {
-    if (id === 'viec_ngay') return <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} />
+    if (id === 'viec_ngay') return <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} tabs={noticeTabs} />
     if (id === 'tien_do') return <TienDoViec />
     if (id === 'order') return <BangOrder />
     return (
@@ -461,7 +505,7 @@ export default function HomeScreen() {
     return (
       <section style={khung} className="h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
         <HomeScene canh={canh}
-          today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} /> : null}
+          today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} tabs={noticeTabs} /> : null}
           dev={hienBox('tien_do') ? <TienDoViec /> : null}
           order={hienBox('order') ? <BangOrder /> : null}
           profile={(
@@ -478,7 +522,7 @@ export default function HomeScreen() {
               {coSao && <HomThu di={dh.di} duocDi={(id) => id === 'home' || mucs.some((m) => m.id === id)} />}
             </div>
           )}
-          tuyChinh={coSao ? <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={false} dang={dangCard} doiDang={dh.doiHomeDangCard} /> : null}
+          tuyChinh={coSao ? <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={false} dang={dangCard} doiDang={dh.doiHomeDangCard} notice={noticeTabs} doiNotice={dh.doiNoticeTab} /> : null}
           giaoDien={<ChonGiaoDien hep={false} />}
           yeuThich={dsYeuThich.slice(0, 8).map((m) => ({ id: m.id, ten: m.ten, onMo: () => dh.di(m.id), onSao: coSao ? () => dh.doiYeuThich(m.id) : undefined }))}
           nhom={nhomCanh}
@@ -527,7 +571,7 @@ export default function HomeScreen() {
             </div>
             {coCanh && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}>{oVitri(1)}</div>}
             <div className="ml-auto flex flex-wrap items-start gap-2">
-              {coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} />}
+              {coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} notice={noticeTabs} doiNotice={dh.doiNoticeTab} />}
               <ChonGiaoDien hep={isMobile} />
             </div>
           </div>

@@ -10,7 +10,8 @@ const LIMIT = 10000
 /** Bố cục Trang chính: id box người này ẨN. `thu_tu` chừa cho kéo thả (chưa dùng). */
 /** Dáng card của lưới nhóm trên Trang chính. */
 export type DangCard = 'vuong' | 'ngang' | 'cao' | 'tron' | 'gon'
-export type HomeBoCuc = { an?: string[]; thu_tu?: string[]; dang_card?: DangCard }
+// notice = các tab của box Notice Board (góc trái trên) người này BẬT, theo thứ tự hiện (Thùy 16/10). Không khai ⇒ đủ mọi tab.
+export type HomeBoCuc = { an?: string[]; thu_tu?: string[]; dang_card?: DangCard; notice?: string[] }
 export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; home_bo_cuc?: HomeBoCuc | null; erp_giao_dien?: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null } | null }
 
 // Ai là "tôi" (nhân sự đang đăng nhập). Ném lỗi nếu tài khoản chưa gắn hồ sơ nhân sự.

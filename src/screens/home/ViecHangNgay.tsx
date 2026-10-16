@@ -1,4 +1,6 @@
-// BOX "Việc hôm nay" (Trang chính) — 3 chế độ, nút chuyển qua lại:
+// BOX "NOTICE BOARD" (Trang chính, góc trái trên — trước 16/10 tên "Việc hôm nay"). Box nổi bật nhất nên là chỗ ghim thông báo;
+// MỖI NGƯỜI TỰ CHỌN tab nào hiện + thứ tự (⚙ Tuỳ chỉnh → nhan_su.home_bo_cuc.notice — Thùy 16/10). Thêm loại tab mới = thêm 1 dòng
+// vào NOTICE_TAB + 1 nhánh render bên dưới. Các tab hiện có:
 //   ⚙ Vận hành  — việc ERP tự đo (chấm BTVN, ET, đánh giá…): là SHORTCUT sang "Việc của tôi". Ô tick do HỆ THỐNG
 //                 đánh (hết việc của khâu đó = xong), người dùng không tick tay được.
 //   📝 Nhắc việc — việc tôi TỰ GHI cho mình, tick tay, không liên quan hệ thống, reset mỗi ngày (lib/homeViec.ts).
@@ -13,8 +15,19 @@ import { listPlan, themThePlan, suaThePlan, type ThePlan } from '../../lib/myPla
 import { HEAD, THE } from './khung'
 
 type Che = 'van_hanh' | 'nhac' | 'ke_hoach'
+// Danh mục tab của Notice Board (thứ tự = mặc định khi người dùng chưa chỉnh). Id lưu vào home_bo_cuc.notice — đổi id = mất lựa chọn đã lưu.
+export const NOTICE_TAB: { id: Che; ten: string; moTa: string }[] = [
+  { id: 'van_hanh', ten: '⚙ Vận hành', moTa: 'Việc ERP tự sinh: chấm bài, ET, điểm danh, đánh giá…' },
+  { id: 'nhac', ten: '📝 Nhắc việc', moTa: 'Việc tự ghi cho mình, lặp lại mỗi ngày' },
+  { id: 'ke_hoach', ten: '🗂 Kế hoạch', moTa: 'Thẻ Kế hoạch của tôi: đang làm, sắp tới hạn' },
+]
+/** Tab đang bật của 1 người, đúng thứ tự họ chọn. Id lạ (tab đã bỏ) thì lờ đi; không còn gì ⇒ mặc định đủ tab. */
+export function noticeTabCua(chon: string[] | null | undefined): Che[] {
+  const ds = (chon ?? []).filter((id): id is Che => NOTICE_TAB.some((t) => t.id === id))
+  return ds.length ? ds : NOTICE_TAB.map((t) => t.id)
+}
 const KHOA_CHE = 'erp.home.viecHomNay'
-const docChe = (): Che => { try { const v = localStorage.getItem(KHOA_CHE); return v === 'nhac' || v === 'ke_hoach' ? v : 'van_hanh' } catch { return 'van_hanh' } }
+const docChe = (): Che | null => { try { const v = localStorage.getItem(KHOA_CHE); return NOTICE_TAB.some((t) => t.id === v) ? v as Che : null } catch { return null } }
 
 const ngayVN = (ts: number) => new Date(ts).toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 // BTVN tính theo NGÀY HẠN (hạn nằm ở buổi kế), còn lại theo ngày buổi — cùng luật màn "Việc của tôi".
@@ -195,8 +208,10 @@ function KeHoachNho({ gioiHan, onMoRong, onMoKeHoach }: { gioiHan?: number; onMo
 // compact = bảng nhỏ ở góc trên trái Trang chính: mặc định chỉ 5 việc đầu; bấm "Hiện tất cả" ⇒ xổ đủ danh sách NGAY TẠI CHỖ, bấm "Thu gọn" ⇒ về 5 việc.
 const SO_DONG_NHO = 5
 
-export default function ViecHangNgay({ onMoVietCuaToi, onMoKeHoach, compact = false }: { onMoVietCuaToi: () => void; onMoKeHoach?: () => void; compact?: boolean }) {
-  const [che, setChe] = useState<Che>(docChe)
+export default function ViecHangNgay({ onMoVietCuaToi, onMoKeHoach, compact = false, tabs }: { onMoVietCuaToi: () => void; onMoKeHoach?: () => void; compact?: boolean; tabs?: string[] }) {
+  const bat = noticeTabCua(tabs)
+  const [cheNho, setChe] = useState<Che | null>(docChe)
+  const che: Che = cheNho && bat.includes(cheNho) ? cheNho : bat[0]   // tab nhớ trên máy đã bị tắt ⇒ về tab đầu
   const [rong, setRong] = useState(false)
   const doi = (c: Che) => { setChe(c); try { localStorage.setItem(KHOA_CHE, c) } catch { /* không lưu được thì thôi */ } }
   const nut = (c: Che, ten: string) => (
@@ -207,10 +222,12 @@ export default function ViecHangNgay({ onMoVietCuaToi, onMoKeHoach, compact = fa
   const khung = (
     <div style={THE} className="p-3.5">
       <div className="mb-2.5 flex flex-wrap items-center gap-2">
-        <h3 className="text-[15px] font-bold text-[var(--sk-ink)]" style={HEAD}>☑ Việc hôm nay</h3>
-        <div className="ml-auto inline-flex gap-0.5 border border-[var(--sk-line)] p-0.5" style={{ borderRadius: 'var(--sk-radius-pill)' }}>
-          {nut('van_hanh', '⚙ Vận hành')}{nut('nhac', '📝 Nhắc việc')}{nut('ke_hoach', '🗂 Kế hoạch')}
-        </div>
+        <h3 className="text-[15px] font-bold text-[var(--sk-ink)]" style={HEAD}>📌 Notice Board{bat.length === 1 ? ` · ${NOTICE_TAB.find((t) => t.id === bat[0])!.ten.replace(/^\S+\s/, '')}` : ''}</h3>
+        {bat.length > 1 && (
+          <div className="ml-auto inline-flex gap-0.5 border border-[var(--sk-line)] p-0.5" style={{ borderRadius: 'var(--sk-radius-pill)' }}>
+            {bat.map((id) => <span key={id}>{nut(id, NOTICE_TAB.find((t) => t.id === id)!.ten)}</span>)}
+          </div>
+        )}
       </div>
       {che === 'van_hanh'
         ? <VanHanh onMo={onMoVietCuaToi} gioiHan={compact && !rong ? SO_DONG_NHO : undefined} />
