@@ -93,7 +93,7 @@ import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { anhBac } from './gami/hinh'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
-type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
+type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean; boQua?: boolean }
 type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
 
 const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi', bo_tro: 'Bổ trợ', bo_tro_test: 'Kiểm tra cuối buổi', retest: 'Kiểm tra lại' }
@@ -407,7 +407,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [tutChuong, setTutChuong] = useState<string | null | undefined>(undefined) // Hướng dẫn chơi → tutorial: id chặng · null = cả hành trình · undefined = không mở
-  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tutorial' | 'gop_y' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | 'on_thi' | null>(null)
+  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tutorial' | 'gop_y' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | 'on_thi' | 'on_thi_luyen' | null>(null)
   const [yeuVao, setYeuVao] = useState(false) // Luyện dạng yếu: đã qua màn giới thiệu chưa (reset mỗi lần thoát)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [tuThuVien, setTuThuVien] = useState(false) // Rank mở từ Thư viện BK ⇒ "Quay lại" về Thư viện (03/10)
@@ -456,6 +456,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Lỗi mạng ⇒ danh sách rỗng ⇒ không vẽ thanh chọn, màn con tự báo lỗi của nó như trước.
   const [lopMons, setLopMons] = useState<LopMonHS[]>([])
   const [monChon, setMonChon] = useState<string | null>(null)
+  const [onThiBt, setOnThiBt] = useState<string | null>(null) // lượt Luyện tập đề cương đang mở
   useEffect(() => { lopMonCuaHS().then((ds) => { setLopMons(ds); setMonChon(monDangChon(ds)) }).catch(() => {}) }, [])
   // Môn mở cho CẢ KHỐI (TSA khối 12, Thùy 03/10: "tự luyện TSA thành 1 mục riêng") — mỗi môn 1 ô riêng ở khối Học tập.
   // Bấm ô ⇒ đặt MÔN TẠM (màn con chạy theo môn đó, thanh chọn môn giữ nguyên); về màn chính ⇒ bỏ môn tạm.
@@ -645,7 +646,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : tuThuVien ? 'thu_vien' : tuHome ? null : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
   // THƯ VIỆN BK (Thùy 03/10): "nơi tìm hiểu mọi thông tin trên app" — thẻ con: Rank (của môn đang chọn).
   // ÔN THI GIỮA KÌ I (Thùy 16/10): 2 tab Đề cương · Đề thi các trường — chỉ xem, đề đã duyệt đúng khối.
-  if (direct === 'on_thi' && monChon) return <OnThiHS mon={monChon} onBack={() => setDirect(null)} />
+  if (direct === 'on_thi_luyen' && onThiBt) return <LamBai key={onThiBt} baiTestId={onThiBt} hocSinhId={hocSinhId} desktop={manRong} choBoQua
+    doneCaption="Luyện tập đề cương — không tính vào mastery." onXong={() => { setOnThiBt(null); setDirect('on_thi') }} />
+  if (direct === 'on_thi' && monChon) return <OnThiHS mon={monChon} onBack={() => setDirect(null)} onLuyen={(id) => { setOnThiBt(id); setDirect('on_thi_luyen') }} />
   if (direct === 'thu_vien') {
     const r = rankHome?.toi
     return <ThuVienHS onBack={() => { setTuThuVien(false); setDirect(null) }} the={[{
@@ -961,10 +964,12 @@ function KhungCau({ nhung, cls, children }: { nhung: boolean; cls: string; child
   return nhung ? <TheTran className={cls}>{children}</TheTran> : <div className={cls} style={THE}>{children}</div>
 }
 
-export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung, choLamLaiSai }: {
+export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung, choLamLaiSai, choBoQua }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
   /** Cấp 3, bài trên lớp: màn kết quả có nút "Làm lại câu sai" (vòng luyện, KHÔNG ghi đè lượt đầu). */
   choLamLaiSai?: boolean
+  /** Ôn thi (đề cương): thêm nút "Bỏ qua, xem đáp án" — câu bỏ qua KHÔNG ghi bai_lam_cau (không verdict, không mastery). */
+  choBoQua?: boolean
   doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
   /** NHÚNG trong khung đấu 3D (phieuluu/DauView): ẩn thanh tiến độ + màn kết quả cũ, báo kết quả từng câu ra ngoài. */
   nhung?: NhungDau
@@ -1013,7 +1018,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   // Làm xong HẾT câu → đánh dấu HOÀN THÀNH (bai_lam da_nop). Idempotent (claim atomic).
   useEffect(() => {
     if (!full || !baiLamId || nopped) return
-    if (full.caus.length > 0 && full.caus.every((c) => st[c.id]?.kq)) { setNopped(true); nopBai(baiLamId).catch(() => {}) }
+    if (full.caus.length > 0 && full.caus.every((c) => st[c.id]?.kq || st[c.id]?.boQua)) { setNopped(true); nopBai(baiLamId).catch(() => {}) }
   }, [st, full, baiLamId, nopped])
 
   // ⭐ KHÔNG XÁO GÌ CẢ — Thùy 29/09: "tất cả mọi tài liệu phải giống giữa giấy và app, ko xáo đáp án
@@ -1028,10 +1033,12 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
 
   if (!full) return <ManCho>Đang tải bài…</ManCho>
   const total = caus.length
-  const daXongHet = caus.every((c) => st[c.id]?.kq)
+  const daXongHet = caus.every((c) => st[c.id]?.kq || st[c.id]?.boQua)
   const cau = caus[idx]
   const cs = cau ? st[cau.id] : undefined
   const daCham = !!cs?.kq
+  const boQua = !!cs?.boQua && !daCham
+  const daLo = daCham || boQua // đã lộ đáp án (chấm xong hoặc bỏ qua)
   const laTN = cau?.loai_cau === 'trac_nghiem'
   const laDS = cau?.loai_cau === 'dung_sai'
   const laKT = cau?.loai_cau === 'keo_tha'   // KÉO THẢ (TSA) — KeoThaCau.tsx
@@ -1044,7 +1051,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   // ở trên). orig = chỉ số GỐC dùng ghi state/so đáp án đúng; dispI = vị trí hiển thị (đặt nhãn A/B/C/D ·
   // a/b/c/d) — giờ trùng nhau, giữ cặp để khối render không phải đổi.
   const optsShown = laTN && cau ? (cau.lua_chon ?? []).map((item, orig) => ({ item, orig })) : []
-  const correctOrigTN = laTN && daCham && cau ? chiSoCuaChu(cau.dap_an_key) : -1
+  const correctOrigTN = laTN && daLo && cau ? chiSoCuaChu(cau.dap_an_key) : -1
   const menhOrder = laDS && cau ? menhDe.map((item, orig) => ({ item, orig })) : []
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
@@ -1053,11 +1060,11 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
     : (typeof cs?.chon === 'string' && cs.chon.trim() !== '')
 
   function setChon(v: Chon) {
-    if (!cau || daCham) return
+    if (!cau || daLo) return
     setSt((s) => ({ ...s, [cau.id]: { chon: v, kq: null } }))
   }
   function setDS(i: number, v: 'D' | 'S') {
-    if (!cau || daCham) return
+    if (!cau || daLo) return
     const cur = (st[cau.id]?.chon as (string | null)[]) ?? menhDe.map(() => null)
     const next = [...cur]; next[i] = v
     setSt((s) => ({ ...s, [cau.id]: { chon: next, kq: null } }))
@@ -1170,11 +1177,11 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
             <div className="flex flex-col gap-2.5">
               {optsShown.map(({ item: opt, orig }, dispI) => {
                 const chon = cs?.chon === orig
-                const laDapAn = daCham && orig === correctOrigTN
+                const laDapAn = daLo && orig === correctOrigTN
                 const chonSai = daCham && chon && !laDapAn
                 const tt: TtO = laDapAn ? 'dung' : chonSai ? 'sai' : chon ? 'chon' : 'thuong'
                 return (
-                  <button key={orig} onClick={() => setChon(orig)} disabled={daCham}
+                  <button key={orig} onClick={() => setChon(orig)} disabled={daLo}
                     className={nhung ? `flex items-center gap-3 px-3 py-2.5 text-left text-[22px] ${CLS_PHIEN(tt)}` : 'flex items-start gap-3 p-3 text-left text-[21px] transition'} style={nhung ? PHIEN(tt) : O_DAP_AN(tt)}>
                     {nhung ? <NgocChu t={tt} chu={chuCaiChon(dispI)} />
                       : <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[17.5px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>}
@@ -1197,30 +1204,45 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
                         const on = pick === v
-                        const dungChoi = daCham && v === key       // đáp án đúng của ý
+                        const dungChoi = daLo && v === key       // đáp án đúng của ý
                         const saiChoi = daCham && on && v !== key   // HS chọn sai
                         const tt: TtO = dungChoi ? 'dung' : saiChoi ? 'sai' : on ? 'chon' : 'thuong'
                         return (
-                          <button key={v} onClick={() => setDS(orig, v)} disabled={daCham}
+                          <button key={v} onClick={() => setDS(orig, v)} disabled={daLo}
                             className="flex-1 py-1.5 text-[17.5px] font-medium transition" style={NUT_DS(tt)}>
                             {v === 'D' ? 'Đúng' : 'Sai'}
                           </button>
                         )
                       })}
                     </div>
-                    {daCham && m.loi_giai && <div className="mt-2 pt-1.5 text-[17.5px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><ChuMon mon={monBai}>{m.loi_giai}</ChuMon></div>}
+                    {daLo && m.loi_giai && <div className="mt-2 pt-1.5 text-[17.5px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><ChuMon mon={monBai}>{m.loi_giai}</ChuMon></div>}
                   </div>
                 )
               })}
             </div>
           ) : cau.kieu_nhap === 'phieu_4o' ? (
-            <ONhap4O value={(cs?.chon as string) ?? ''} onChange={setChon} disabled={daCham} co={19} />
+            <ONhap4O value={(cs?.chon as string) ?? ''} onChange={setChon} disabled={daLo} co={19} />
           ) : (
-            <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daCham}
+            <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daLo}
               placeholder="Nhập đáp án…" inputMode="text"
               className={`${O_NHAP_CLS} text-[21px]`} style={O_NHAP} />
           )}
 
+          {boQua && (
+            <div className="mt-4 p-3" style={{ background: NEN_CB, borderRadius: R_TRONG }}>
+              <p className="text-[21px] font-semibold" style={{ color: MAU.canhBao }}>⏭ Đã bỏ qua — đây là đáp án</p>
+              {laTN && correctOrigTN >= 0 && <p className="mt-1 text-[19px]" style={{ color: MAU.ink }}>Đáp án đúng: <b>{chuCaiChon(correctOrigTN)}</b></p>}
+              {laDS && <p className="mt-1 text-[19px]" style={{ color: MAU.ink }}>Đáp án: {keyDS.map((k, i) => `${'abcd'[i] ?? i + 1}) ${String(k).toUpperCase() === 'D' ? 'Đúng' : 'Sai'}`).join(' · ')}</p>}
+              {!laTN && !laDS && !laKT && <p className="mt-1 text-[19px]" style={{ color: MAU.ink }}>Đáp án đúng: <b>{String(cau.dap_an_key)}</b></p>}
+              {cau.loi_giai && (
+                <div className="mt-2 pt-2 text-[20px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
+                  <p className="mb-1 text-[16.5px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p>
+                  <ChuMon mon={monBai}>{cau.loi_giai}</ChuMon>
+                </div>
+              )}
+              {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
+            </div>
+          )}
           {daCham && (
             <div className="mt-4 p-3" style={nhung ? HOP_LOI_GIAI(vd === 'correct' ? true : vd === 'partial' ? null : false) : { background: boxNen, borderRadius: R_TRONG }}
               ref={(el) => { if (el && nhung && daCuon.current !== cau.id) { daCuon.current = cau.id; requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' })) } }}>
@@ -1258,11 +1280,14 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
             {desktop ? '‹ Câu trước' : '‹'}
           </button>
         )}
-        {!daCham ? (
+        {!daLo ? (
+          <>
+          {choBoQua && <button onClick={() => cau && setSt((s) => ({ ...s, [cau.id]: { chon: s[cau.id]?.chon ?? null, kq: null, boQua: true } }))} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium' : 'px-3 py-3 text-[16.5px]'} style={NUT_PHU}>Bỏ qua, xem đáp án</button>}
           <button onClick={xacNhan} disabled={busy || !daDu}
             className={`flex-1 font-semibold disabled:opacity-40 ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[21px]' : 'py-3 text-[20px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
             {busy ? (nhung ? 'Đang niệm phép…' : 'Đang chấm…') : nhung ? '⚔ Tung phép' : 'Xác nhận'}
           </button>
+          </>
         ) : (
           <button onClick={() => setIdx((i) => i + 1)} disabled={!!nhung?.ban}
             className={`flex-1 font-semibold ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[21px]' : 'py-3 text-[20px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>

@@ -21,3 +21,11 @@ export async function onThiXem(deId: string): Promise<DeOnThiXem | null> {
   if (error) throw error
   return (data ?? null) as DeOnThiXem | null
 }
+
+// Luyện tập đề cương (pha 1): sinh 1 lượt bai_test loai 'on_thi_luyen' — không ghi mastery.
+export async function onThiLuyenSinh(deId: string): Promise<{ baiTestId: string; soCau: number; soBoQua: number }> {
+  const { data, error } = await supabase.rpc('fn_hs_on_thi_luyen_sinh', { p_de: deId })
+  if (error) throw error
+  const d = data as { bai_test_id: string; so_cau: number; so_bo_qua: number }
+  return { baiTestId: d.bai_test_id, soCau: d.so_cau, soBoQua: d.so_bo_qua }
+}

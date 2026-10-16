@@ -5,7 +5,7 @@
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { MathText } from '../kho/ui'
-import { onThiDs, onThiXem, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
+import { onThiDs, onThiXem, onThiLuyenSinh, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, TrongHS, MAU, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
 import { mauDocMon } from './skin/registry'
 
@@ -14,10 +14,18 @@ const TAB: { id: TabOnThi; ten: string; trong: string }[] = [
   { id: 'de_thi', ten: 'Đề thi các trường', trong: 'Chưa có đề thi các trường cho khối của em.' },
 ]
 
-export default function OnThiHS({ mon, onBack }: { mon: string; onBack: () => void }) {
+export default function OnThiHS({ mon, onBack, onLuyen }: { mon: string; onBack: () => void; onLuyen: (baiTestId: string) => void }) {
   const [ds, setDs] = useState<DeOnThi[] | null | 'loi'>(null)
   const [tab, setTab] = useState<TabOnThi>('de_cuong')
   const [mo, setMo] = useState<DeOnThi | null>(null)
+  const [busy, setBusy] = useState<string | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+
+  async function luyen(d: DeOnThi) {
+    setBusy(d.id); setLoi(null)
+    try { onLuyen((await onThiLuyenSinh(d.id)).baiTestId) }
+    catch (e: any) { setLoi(e?.message ?? 'Không mở được bài luyện.'); setBusy(null) }
+  }
 
   useEffect(() => {
     let bo = false
@@ -39,17 +47,22 @@ export default function OnThiHS({ mon, onBack }: { mon: string; onBack: () => vo
           </NutHS>
         ))}
       </div>
+      {loi && <TrongHS>{loi}</TrongHS>}
       {ds === null ? <TrongHS>Đang tải…</TrongHS>
         : ds === 'loi' ? <TrongHS>Không tải được. Em thử lại sau nhé.</TrongHS>
         : hien.length === 0 ? <TrongHS>{TAB.find((t) => t.id === tab)!.trong}</TrongHS>
         : <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {hien.map((d) => (
-              <TheHS key={d.id} onClick={() => setMo(d)} className="flex flex-col gap-2 p-4">
+              <TheHS key={d.id} className="flex flex-col gap-2 p-4">
                 <span className="text-[18px] font-bold leading-snug" style={HEAD}>{d.ten}</span>
                 <span className="flex flex-wrap items-center gap-1.5">
                   {d.nguon && d.nguon !== 'le' && <NhanHS>{d.nguon}</NhanHS>}
                   {d.nam && <NhanHS mau={MAU.muted}>{d.nam}</NhanHS>}
                   <NhanHS mau={MAU.muted}>{d.so_cau} câu</NhanHS>
+                </span>
+                <span className="mt-1 flex gap-2">
+                  {d.tab === 'de_cuong' && <NutHS onClick={() => luyen(d)} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : 'Luyện tập'}</NutHS>}
+                  <NutHS phu onClick={() => setMo(d)} className="flex-1">Xem đề</NutHS>
                 </span>
               </TheHS>
             ))}
