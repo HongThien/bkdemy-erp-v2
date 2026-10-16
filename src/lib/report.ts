@@ -52,6 +52,11 @@ export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string
   const { data: kq } = await supabase.from('btvn_ket_qua').select('buoi_hoc_id, trang_thai_nop, thai_do').eq('hoc_sinh_id', hocSinhId).in('buoi_hoc_id', ids).limit(LIMIT)
   for (const r of (kq ?? []) as any[]) kqMap.set(r.buoi_hoc_id, { tt: r.trang_thai_nop, td: r.thai_do })
 
+  // Câu BTVN bỏ trống = SAI (Thùy 16/10): vào mẫu số, 0 điểm. Luật "câu nào tính bỏ trống" nằm ở DB (fn_btvn_bo_trong_theo_buoi).
+  const { data: trong } = await supabase.rpc('fn_btvn_bo_trong_theo_buoi', { p_hs: hocSinhId, p_buoi: ids })
+  for (const r of (trong ?? []) as { buoi_hoc_id: string; so_bo_trong: number }[]) {
+    const a = btAgg.get(r.buoi_hoc_id) ?? { pts: 0, n: 0 }; a.n += r.so_bo_trong; btAgg.set(r.buoi_hoc_id, a)
+  }
   const pct = (m: Map<string, { pts: number; n: number }>, id: string) => { const a = m.get(id); return pctFromAgg(a?.pts ?? 0, a?.n ?? 0) }
   return buois.map((b) => ({
     buoiId: b.id, ngay: b.ngay, maBuoi: b.ma_buoi,

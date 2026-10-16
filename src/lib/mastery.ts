@@ -349,12 +349,13 @@ export type TongQuanHS = {
   }
 }
 export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
-  const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
+  const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }, { data: boTrong }] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, diem_thi_lai, diem_thi_lai_co_ban, diem_thi_lai_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, khung_co_ban, khung_nang_cao, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
     supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single(),
+    supabase.rpc('fn_btvn_cau_bo_trong', { p_hs: hocSinhId }),
   ])
   const cap1 = laCap1(hsRow?.khoi)
   const now = Date.now(), D30 = 30 * 86400_000, cut1 = now - D30, cut2 = now - 2 * D30
@@ -507,12 +508,18 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
     return rp != null && pp != null ? rp - pp : null
   }
   const etCB = actBucket(etRowsCur, undefined, laCoBan), etNC = actBucket(etRowsCur, undefined, laNangCao)
-  const btvnCB = actBucket(btvnRowsCur, undefined, laCoBan), btvnNC = actBucket(btvnRowsCur, undefined, laNangCao)
+  // % BTVN HIỂN THỊ: câu bỏ trống = SAI (Thùy 16/10) → thêm dòng value 0. CHỈ cho 3 nguồn % này — KHÔNG đẩy vào
+  // btvnRows/byDang* (mastery giữ nguyên: "chưa đo" ≠ "yếu", §5). Luật câu-nào-bỏ-trống ở DB (fn_btvn_cau_bo_trong).
+  const btvnTrong: Raw[] = ((boTrong ?? []) as { ngay: string; ma_dang: string | null }[]).map((r) => ({ ma: r.ma_dang, value: 0, t: r.ngay, bd: r.ngay }))
+  const btvnPctRows = [...btvnRows, ...btvnTrong]
+  const btvnPctRowsCur = btvnRowsCur === btvnRows ? btvnPctRows
+    : [...btvnRowsCur, ...btvnTrong.filter((r) => r.bd! >= monthFromDate && r.bd! < monthToDate)]
+  const btvnCB = actBucket(btvnPctRowsCur, undefined, laCoBan), btvnNC = actBucket(btvnPctRowsCur, undefined, laNangCao)
   const mtCB = actBucket(mtRowsCur, undefined, laCoBan), mtNC = actBucket(mtRowsCur, undefined, laNangCao)
   const etCBr = actBucket(etRows, inRecent, laCoBan), etCBp = actBucket(etRows, inPrior, laCoBan)
   const etNCr = actBucket(etRows, inRecent, laNangCao), etNCp = actBucket(etRows, inPrior, laNangCao)
-  const btvnCBr = actBucket(btvnRows, inRecent, laCoBan), btvnCBp = actBucket(btvnRows, inPrior, laCoBan)
-  const btvnNCr = actBucket(btvnRows, inRecent, laNangCao), btvnNCp = actBucket(btvnRows, inPrior, laNangCao)
+  const btvnCBr = actBucket(btvnPctRows, inRecent, laCoBan), btvnCBp = actBucket(btvnPctRows, inPrior, laCoBan)
+  const btvnNCr = actBucket(btvnPctRows, inRecent, laNangCao), btvnNCp = actBucket(btvnPctRows, inPrior, laNangCao)
   const mtCBr = actBucket(mtRows, inRecent, laCoBan), mtCBp = actBucket(mtRows, inPrior, laCoBan)
   const mtNCr = actBucket(mtRows, inRecent, laNangCao), mtNCp = actBucket(mtRows, inPrior, laNangCao)
 
