@@ -37896,3 +37896,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy:** "khi bấm vào duyệt kho từ chỗ bản đồ mới ấy, giao diện duyệt kho phải full màn" (sáng nay commit 9e1a9b35 làm chia đôi bản đồ | hàng đợi).
 - **Làm (`BanDoMoi.tsx`):** bỏ cột `aside` chia đôi; ✅ Duyệt kho mở lớp `fixed inset-0 z-[65]` (trên thanh trên ERP `z-[60]`), dải xanh "✅ Duyệt kho · Khối · chủ đề · N câu cần xử lý · ✕ Về bản đồ", hàng đợi `KhopBanDoMoiTab` giữa màn `max-w-6xl`. "↗ Xem trên bản đồ" chỉ ẨN màn duyệt (không gỡ) + nhảy/làm sáng dạng bài, nút nổi "↩ Quay lại Duyệt kho" ⇒ về đúng câu + vị trí cuộn. Esc (không đang gõ) đóng màn duyệt; phím ↑↓ của bản đồ không chạy khi màn duyệt đang che. Toast "✓" nâng `z-[70]`.
 - **Kiểm (app local, admin, K8 — 381 câu cần xử lý):** phủ 1500×900; Xem trên bản đồ → ẩn + nút quay lại; quay lại giữ scrollTop 300; Esc đóng. Không bấm duyệt câu nào.
+
+## 16/10 — Web: dựng thật theo mockup 3.9 (Thùy "OK được rồi. Làm đi")
+- Sáng: mockup 3.8 (GV = header "Hệ thống giáo viên Trẻ trung và Tâm lý" + 15 card; "Các hoạt động học tập ở BK" cây 3 nhánh học chính · bổ trợ · khảo sát tháng — gộp mục Bổ trợ/Ôn thi trùng) · 3.9 bố cục bản máy tính (5 ô 1 hàng, hero 2 cột).
+- Build: `scripts/web/xuat-cho-web.mjs` (ERP) xuất thong-ke/teachers/vinh-danh/tai-lieu-danh-sach.json sang ../bkdemy-web/content/data (348 HS · 49 lớp · 15 GV · 30 TA · 60 giải 09/2026 · 120 đề K6–9). Web: trang chủ 5 ô + 5 trang nấc 2 + 7 trang nấc 3, nav 5 mục, Zalo cá nhân, redirect route cũ (không xoá file). tsc + build sạch, mọi trang 200, push 1 commit (web `master`).
+- Phiên khác đã dựng `/dang-ky-test` (Edge Function, spec-dang-ky-test.md) → trang Đăng ký trỏ vào đó thay vì form riêng.
+- Chưa: trang từng đề Tài liệu (hub mới có danh sách "sắp có") · cẩm nang PDF 91 MB chưa đưa lên (link ẩn) · ảnh theo phiếu · gỡ proxy.ts · xoá route cũ (chờ Thùy gật).
