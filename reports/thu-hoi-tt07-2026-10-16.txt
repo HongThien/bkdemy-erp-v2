@@ -1,0 +1,47 @@
+TT07: trước 89 dòng (39 em) → sau 57 dòng (31 em); thu hồi 32 dòng
+Theo mốc sau: [ { bac: 1, n: '31' }, { bac: 2, n: '19' }, { bac: 3, n: '7' } ]
+
+Ví xu: 32 em đổi · tổng -141 xu · cộng 21 · trừ -162
+Ví ÂM sau thu hồi: []
+
+Chi tiết từng em:
+Nguyễn Hữu Thăng         K9	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Nam An                   K7	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Nguyễn Khôi Nguyên       K9	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Đoàn Hữu Minh Đức        K6	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Trần Đăng Nhật           K7	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Vũ Minh Khôi             K4T	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Nguyễn Anh Văn           K5T	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Phạm Nguyên Khôi         K7	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Nguyễn Gia Lộc           K8	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Vũ Phan Gia Bảo          K5T	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Nguyễn Minh Nhật         K7	-10 xu	mất TT07 mốc 3 (1000 EXP)
+Trần Mạnh Tiến           K9	-3 xu	mất TT07 mốc 2 (300 EXP)
+Nguyễn Đăng Đức          K7	-3 xu	mất TT07 mốc 2 (300 EXP)
+Lê Nguyễn Tuệ Nhi        K7	-3 xu	mất TT07 mốc 2 (300 EXP)
+Trần Ngọc Hà Anh         K4	-3 xu	mất TT07 mốc 2 (300 EXP)
+Vũ Khắc Triệu            K11	-3 xu	mất TT07 mốc 2 (300 EXP)
+Lê Trí Sơn               K6	-3 xu	mất TT07 mốc 2 (300 EXP)
+Phạm Gia Linh            K8	-3 xu	mất TT07 mốc 2 (300 EXP)
+Khuất Hải Anh            K7	-3 xu	mất TT07 mốc 2 (300 EXP)
+Lê Kim Anh               K9	-3 xu	mất TT07 mốc 2 (300 EXP)
+Trần Nguyễn Hoài An      K8	-3 xu	mất TT07 mốc 2 (300 EXP)
+Bùi Tuấn Phong           K4T	-3 xu	mất TT07 mốc 2 (300 EXP)
+Nguyễn Quyền Minh Trí    K6	-3 xu	mất TT07 mốc 2 (300 EXP)
+Nguyễn Minh Đức          K7	-2 xu	mất TT07 mốc 1 (200 EXP)
+Nguyễn Đặng An Nhiên     K5T	-2 xu	mất TT07 mốc 1 (200 EXP)
+Phạm Khánh Huy           K6	-2 xu	mất TT07 mốc 1 (200 EXP)
+Lê Trọng Duy             K10	-2 xu	mất TT07 mốc 1 (200 EXP)
+Bùi Duy Khoa             K7	-2 xu	mất TT07 mốc 1 (200 EXP)
+Trần Minh Quang          K5T	-2 xu	mất TT07 mốc 1 (200 EXP)
+Lê Hải Đăng              K7	-2 xu	mất TT07 mốc 1 (200 EXP)
+Nguyễn Khánh Ngọc        K9	-2 xu	mất TT07 mốc 1 (200 EXP)
+Đào Đức Minh Hiếu        K5T	+21 xu	mất TT07 mốc 3 (1000 EXP)
+
+Sổ xu ghi mới: [
+  { thang: '2026-08', loai: 'chot_lai', n: '9', xu: '62' },
+  { thang: '2026-09', loai: 'chot_lai', n: '25', xu: '128' },
+  { thang: '2026-09', loai: 'chot_thang', n: '1', xu: '7' },
+  { thang: '2026-10', loai: 'chot_lai', n: '47', xu: '-369' },
+  { thang: null, loai: 'cong_tay', n: '1', xu: '31' }
+]
