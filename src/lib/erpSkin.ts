@@ -99,7 +99,7 @@ export const DANG_RIENG: Record<string, DangRieng> = {
 //   tiLeThan / tiLeDuoi: rộng÷cao của 2 file đã nén (script in ra khi chạy erp-nen-ca-nhan.mjs)
 export type MeoNguCfg = { than: string; duoi: string; tiLeThan: number; tiLeDuoi: number; rong: number; phai: number; chim: number; duoiCao: number; duoiX: number; duoiY: number }
 export const MEO_NGU: Record<string, MeoNguCfg> = {
-  NS004: { than: '/bk-ui/erp/nen/ca-nhan/ns004_meo_than.webp', duoi: '/bk-ui/erp/nen/ca-nhan/ns004_meo_duoi.webp', tiLeThan: 2.41, tiLeDuoi: 0.232, rong: 150, phai: -8, chim: 10, duoiCao: 76, duoiX: 0.9, duoiY: 0.5 },
+  NS004: { than: '/bk-ui/erp/nen/ca-nhan/ns004_meo_than.webp', duoi: '/bk-ui/erp/nen/ca-nhan/ns004_meo_duoi.webp', tiLeThan: 2.41, tiLeDuoi: 0.232, rong: 150, phai: -8, chim: 10, duoiCao: 76, duoiX: 0.965, duoiY: 0.5 },
 }
 
 const BIEN_RIENG: Record<keyof DangRieng, string> = {
