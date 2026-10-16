@@ -74,6 +74,7 @@ import { theGioiHome, type TheGioiHome } from '../../lib/thegioi'
 import RankHS from './RankHS'
 import NhiemVuHS from './NhiemVuHS'
 import ThuVienHS from './ThuVienHS'
+import OnThiHS from './OnThiHS'
 import HuongDanHS from './huongdan/HuongDanHS'
 import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
 import { rankBat } from './phieuluu/coBat'
@@ -406,7 +407,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [tutChuong, setTutChuong] = useState<string | null | undefined>(undefined) // Hướng dẫn chơi → tutorial: id chặng · null = cả hành trình · undefined = không mở
-  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tutorial' | 'gop_y' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tutorial' | 'gop_y' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | 'on_thi' | null>(null)
   const [yeuVao, setYeuVao] = useState(false) // Luyện dạng yếu: đã qua màn giới thiệu chưa (reset mỗi lần thoát)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [tuThuVien, setTuThuVien] = useState(false) // Rank mở từ Thư viện BK ⇒ "Quay lại" về Thư viện (03/10)
@@ -643,6 +644,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onXong={() => setDirect('tu_luyen_chon')} onRank={rankMo() ? () => { setTuHoSo(false); setDirect('rank') } : undefined} />
   if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : tuThuVien ? 'thu_vien' : tuHome ? null : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
   // THƯ VIỆN BK (Thùy 03/10): "nơi tìm hiểu mọi thông tin trên app" — thẻ con: Rank (của môn đang chọn).
+  // ÔN THI GIỮA KÌ I (Thùy 16/10): 2 tab Đề cương · Đề thi các trường — chỉ xem, đề đã duyệt đúng khối.
+  if (direct === 'on_thi' && monChon) return <OnThiHS mon={monChon} onBack={() => setDirect(null)} />
   if (direct === 'thu_vien') {
     const r = rankHome?.toi
     return <ThuVienHS onBack={() => { setTuThuVien(false); setDirect(null) }} the={[{
@@ -832,6 +835,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
         ill: 'self_practice_target', emoji: '🚀', icon: '🚀', doodle: 'Từng bước một!', tone: 'purple',
         onClick: () => { setDuoiLoTrinhMon(htdMon); setBuCa(null); setDirect('duoi_lo_trinh') } }]
     : []
+  const theCardOnThi: HomeCard[] = monChon
+    ? [{ id: 'on_thi_gk1', ten: 'Ôn thi giữa kì I', nhom: 'hoc' as const, sub: 'Đề cương · Đề thi các trường', subMau: 'xam' as const,
+        ill: 'orange_documents', emoji: '📝', icon: '📝', doodle: 'Ôn kĩ, thi vững!', tone: 'orange' as const,
+        onClick: () => setDirect('on_thi') }]
+    : []
   if (!khu) {
     const cards: HomeCard[] = chenRieng(cap2 || cap1
       ? [...KHU_CAP2.filter((k) => !anO.has(k.id)).map((k) => {
@@ -858,7 +866,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),
           } satisfies HomeCard
-        }), ...theCardHTD]
+        }), ...theCardHTD, ...theCardOnThi]
       : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id) && !anO.has(k.id)).map((k) => {
           const sapCo = !k.loai && !k.direct
           const ds = k.loai ? cuaKhu(k.id) : []
@@ -877,7 +885,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),
           } satisfies HomeCard
-        }), ...theCardHTD])
+        }), ...theCardHTD, ...theCardOnThi])
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
     if (nhom912 && giaoDien !== undefined) return <>{moiQuay}<MungMocChuoi c={moTN('chuoi') ? chuoi : null} hsId={hocSinhId} /><HomeHS912 giaoDien={giaoDien} macDinh={gdMacDinh} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}

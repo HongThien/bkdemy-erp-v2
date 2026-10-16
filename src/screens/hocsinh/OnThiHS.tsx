@@ -1,0 +1,112 @@
+// ============================================================================
+// OnThiHS — Box "Ôn thi giữa kì I" (Thùy 16/10): 2 tab ĐỀ CƯƠNG · ĐỀ THI CÁC TRƯỜNG.
+// Chỉ XEM (đọc đề + đáp án + lời giải), không chấm, không đo mastery. Dữ liệu = Kho đề thi, chỉ đề ĐÃ DUYỆT đúng khối em
+// (RPC fn_hs_on_thi_ds / fn_hs_on_thi_xem). Danh sách = menu (ManHS); bấm 1 đề ⇒ màn đọc riêng (ManDocHS) — STYLE-HS §2.
+// ============================================================================
+import { useEffect, useState } from 'react'
+import { MathText } from '../kho/ui'
+import { onThiDs, onThiXem, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
+import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, TrongHS, MAU, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
+import { mauDocMon } from './skin/registry'
+
+const TAB: { id: TabOnThi; ten: string; trong: string }[] = [
+  { id: 'de_cuong', ten: 'Đề cương', trong: 'Chưa có đề cương giữa kì I cho khối của em.' },
+  { id: 'de_thi', ten: 'Đề thi các trường', trong: 'Chưa có đề thi các trường cho khối của em.' },
+]
+
+export default function OnThiHS({ mon, onBack }: { mon: string; onBack: () => void }) {
+  const [ds, setDs] = useState<DeOnThi[] | null | 'loi'>(null)
+  const [tab, setTab] = useState<TabOnThi>('de_cuong')
+  const [mo, setMo] = useState<DeOnThi | null>(null)
+
+  useEffect(() => {
+    let bo = false
+    setDs(null)
+    onThiDs(mon).then((r) => { if (!bo) setDs(r) }).catch(() => { if (!bo) setDs('loi') })
+    return () => { bo = true }
+  }, [mon])
+
+  if (mo) return <DocDe de={mo} mon={mon} onBack={() => setMo(null)} />
+
+  const hien = Array.isArray(ds) ? ds.filter((d) => d.tab === tab) : []
+  return (
+    <ManHS>
+      <DauTrangHS tieuDe="Ôn thi giữa kì I" phu={`Môn ${mon}`} onBack={onBack} />
+      <div className="flex gap-2">
+        {TAB.map((t) => (
+          <NutHS key={t.id} phu={tab !== t.id} onClick={() => setTab(t.id)} className="flex-1">
+            {t.ten}{Array.isArray(ds) ? ` (${ds.filter((d) => d.tab === t.id).length})` : ''}
+          </NutHS>
+        ))}
+      </div>
+      {ds === null ? <TrongHS>Đang tải…</TrongHS>
+        : ds === 'loi' ? <TrongHS>Không tải được. Em thử lại sau nhé.</TrongHS>
+        : hien.length === 0 ? <TrongHS>{TAB.find((t) => t.id === tab)!.trong}</TrongHS>
+        : <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {hien.map((d) => (
+              <TheHS key={d.id} onClick={() => setMo(d)} className="flex flex-col gap-2 p-4">
+                <span className="text-[18px] font-bold leading-snug" style={HEAD}>{d.ten}</span>
+                <span className="flex flex-wrap items-center gap-1.5">
+                  {d.nguon && d.nguon !== 'le' && <NhanHS>{d.nguon}</NhanHS>}
+                  {d.nam && <NhanHS mau={MAU.muted}>{d.nam}</NhanHS>}
+                  <NhanHS mau={MAU.muted}>{d.so_cau} câu</NhanHS>
+                </span>
+              </TheHS>
+            ))}
+          </div>}
+    </ManHS>
+  )
+}
+
+function DocDe({ de, mon, onBack }: { de: DeOnThi; mon: string; onBack: () => void }) {
+  const [x, setX] = useState<DeOnThiXem | null | 'loi' | undefined>(undefined)
+  useEffect(() => {
+    let bo = false
+    onThiXem(de.id).then((r) => { if (!bo) setX(r) }).catch(() => { if (!bo) setX('loi') })
+    return () => { bo = true }
+  }, [de.id])
+  return (
+    <ManDocHS onBack={onBack} mau={mauDocMon(mon)} duong={`Ôn thi giữa kì I › ${de.tab === 'de_cuong' ? 'Đề cương' : 'Đề thi các trường'}`}>
+      {x === undefined ? <TrongDocHS icon="⏳" tieuDe="Đang tải đề…" />
+        : x === 'loi' ? <TrongDocHS icon="⚠️" tieuDe="Không tải được đề" moTa="Em thử lại sau nhé." />
+        : x === null ? <TrongDocHS icon="🔒" tieuDe="Đề này chưa mở cho em" />
+        : <>
+            <TheDocHS chip={<><ChipDocHS dac>{de.tab === 'de_cuong' ? 'Đề cương' : 'Đề thi'}</ChipDocHS>{de.nam && <ChipDocHS>{de.nam}</ChipDocHS>}</>} tieuDe={x.ten}
+              tomTat={<span>{de.so_cau} câu · có đáp án và lời giải để em tự đối chiếu.</span>} />
+            {x.phans.map((p, i) => (
+              <TheDocHS key={i} tieuDe={p.tieu_de || `Phần ${i + 1}`}>
+                {p.cau.map((c) => <CauDoc key={c.ma_cau} c={c} />)}
+              </TheDocHS>
+            ))}
+          </>}
+    </ManDocHS>
+  )
+}
+
+const chu = (i: number) => 'ABCDEFGH'[i] ?? String(i + 1)
+
+function CauDoc({ c }: { c: CauOnThi }) {
+  const [hien, setHien] = useState(false)
+  const tn = c.loai_cau === 'trac_nghiem' && c.lua_chon?.length
+  const ds = c.loai_cau === 'dung_sai' && c.menh_de?.length
+  return (
+    <KhoiDocHS nhan={`Câu ${c.stt}`} kieu="vi_du">
+      {c.noi_dung && <MathText>{c.noi_dung}</MathText>}
+      {c.anh_de && <img src={c.anh_de} alt="hình đề" className="my-2 max-h-72 rounded-lg bg-white" />}
+      {tn ? <ul className="mt-2 flex flex-col gap-1">{c.lua_chon!.map((o, i) => <li key={i} className="flex gap-2"><b>{chu(i)}.</b><MathText>{o.replace(/^[A-H][.)]\s*/, '')}</MathText></li>)}</ul> : null}
+      {ds ? <ul className="mt-2 flex flex-col gap-1">{c.menh_de!.map((m, i) => <li key={i} className="flex gap-2"><b>{'abcd'[i] ?? i + 1})</b><MathText>{m.noi_dung}</MathText></li>)}</ul> : null}
+      <button onClick={() => setHien((v) => !v)} className="mt-3 rounded-full px-3 py-1 text-[14px] font-bold" style={{ background: 'var(--doc-nhat)', color: 'var(--doc-acc)' }}>
+        {hien ? 'Ẩn đáp án' : 'Xem đáp án'}
+      </button>
+      {hien && (
+        <div className="mt-2 flex flex-col gap-2">
+          {ds
+            ? <p><b>Đáp án:</b> {c.menh_de!.map((m, i) => `${'abcd'[i] ?? i + 1}) ${m.dap_an === 'D' ? 'Đúng' : 'Sai'}`).join(' · ')}</p>
+            : c.dap_an ? <p><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></p> : <p style={{ color: 'var(--sk-doc-muted)' }}>Câu này chưa có đáp án.</p>}
+          {c.loi_giai && <div><b>Lời giải:</b><MathText>{c.loi_giai}</MathText></div>}
+          {c.anh_dap_an && <img src={c.anh_dap_an} alt="hình lời giải" className="max-h-72 rounded-lg bg-white" />}
+        </div>
+      )}
+    </KhoiDocHS>
+  )
+}
