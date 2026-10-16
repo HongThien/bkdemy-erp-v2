@@ -5,7 +5,7 @@
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { MathText } from '../kho/ui'
-import { onThiDs, onThiXem, onThiLuyenSinh, onThiBatDau, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
+import { onThiDs, onThiXem, onThiLuyenSinh, onThiBatDau, onThiDiem, onThiBxh, type BxhThiThu, type DeOnThi, type DeOnThiXem, type CauOnThi, type TabOnThi } from '../../lib/onthi'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, TrongHS, MAU, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
 import { mauDocMon } from './skin/registry'
 import HuongDanThiThuHS from './HuongDanThiThuHS'
@@ -31,6 +31,9 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
   const [loi, setLoi] = useState<string | null>(null)
   const [hoiThi, setHoiThi] = useState<DeOnThi | null>(null) // popup xác nhận trước khi vào Thi thử
   const [xemHD, setXemHD] = useState(false) // đang xem hướng dẫn (lần đầu tự bật; xem lại bằng nút)
+  const [bxhDe, setBxhDe] = useState<DeOnThi | null>(null) // đang xem BXH của 1 đề
+  // Đề đã nộp: đã chấm xong chưa (DB trả dang_cham) ⇒ hiện nút "Xem xếp hạng" hay dòng chờ chấm. Thiếu khoá = chưa biết (không hiện gì).
+  const [dangCham, setDangCham] = useState<Record<string, boolean>>({})
 
   async function luyen(d: DeOnThi) {
     setBusy(d.id); setLoi(null)
@@ -49,11 +52,19 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
   useEffect(() => {
     let bo = false
     setDs(null)
-    onThiDs(mon).then((r) => { if (!bo) setDs(r) }).catch(() => { if (!bo) setDs('loi') })
+    onThiDs(mon).then((r) => {
+      if (bo) return
+      setDs(r)
+      for (const d of r) if (d.tab === 'de_thi' && d.da_nop && d.bai_thi_id) {
+        const bt = d.bai_thi_id
+        onThiDiem(bt).then((x) => { if (!bo && x) setDangCham((m) => ({ ...m, [bt]: x.dang_cham })) }).catch(() => { /* không biết ⇒ không hiện */ })
+      }
+    }).catch(() => { if (!bo) setDs('loi') })
     return () => { bo = true }
   }, [mon])
 
   if (mo) return <DocDe de={mo} mon={mon} onBack={() => setMo(null)} />
+  if (bxhDe) return <BxhDe de={bxhDe} onBack={() => setBxhDe(null)} />
 
   const hien = Array.isArray(ds) ? ds.filter((d) => d.tab === tab) : []
   return (
@@ -84,7 +95,10 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
                   {d.tab === 'de_thi' && <NutHS onClick={() => (d.bai_thi_id ? thi(d) : (setXemHD(!daXemHD()), setHoiThi(d)))} tat={busy !== null} className="flex-1">{busy === d.id ? 'Đang mở…' : d.da_nop ? 'Xem lại bài thi' : d.bai_thi_id ? 'Làm tiếp' : 'Thi thử'}</NutHS>}
                   {/* Đề thi: KHÔNG có "Xem đề" — xem trước đáp án thì điểm xếp hạng mất ý nghĩa. */}
                   {d.tab === 'de_cuong' && <NutHS phu onClick={() => setMo(d)} className="flex-1">Xem đề</NutHS>}
+                  {d.tab === 'de_thi' && d.da_nop && d.bai_thi_id && dangCham[d.bai_thi_id] === false && <NutHS phu onClick={() => setBxhDe(d)} className="flex-1">Xem xếp hạng</NutHS>}
                 </span>
+                {d.tab === 'de_thi' && d.da_nop && d.bai_thi_id && dangCham[d.bai_thi_id] === true &&
+                  <span className="text-[14.5px]" style={{ color: MAU.muted }}>Điểm và hạng sẽ có khi thầy cô chấm xong.</span>}
               </TheHS>
             ))}
           </div>}
@@ -104,6 +118,42 @@ export default function OnThiHS({ mon, onBack, onLuyen, onThi }: { mon: string; 
           </TheHS>
         </div>
       )}
+    </ManHS>
+  )
+}
+
+// BXH riêng theo đề (pha 4) — mọi số do fn_hs_thi_thu_bxh tính; chỉ có khi bài của em đã chấm xong. Quà: bàn sau.
+function BxhDe({ de, onBack }: { de: DeOnThi; onBack: () => void }) {
+  const [x, setX] = useState<BxhThiThu | null | 'loi' | undefined>(undefined)
+  useEffect(() => {
+    let bo = false
+    onThiBxh(de.id).then((r) => { if (!bo) setX(r) }).catch(() => { if (!bo) setX('loi') })
+    return () => { bo = true }
+  }, [de.id])
+  return (
+    <ManHS rong="hep">
+      <DauTrangHS tieuDe="Xếp hạng" phu={de.ten} onBack={onBack} />
+      {x === undefined ? <TrongHS>Đang tải…</TrongHS>
+        : x === 'loi' ? <TrongHS>Không tải được. Em thử lại sau nhé.</TrongHS>
+        : x === null ? <TrongHS>Em chưa nộp bài thi này nên chưa có xếp hạng.</TrongHS>
+        : x.dang_cham ? <TrongHS>Điểm và hạng sẽ có khi thầy cô chấm xong.</TrongHS>
+        : <>
+            <TheHS className="flex flex-col gap-1 p-4">
+              <span className="text-[14.5px]" style={{ color: MAU.muted }}>Hạng của em</span>
+              <span className="text-[26px] font-bold" style={HEAD}>{x.toi ? `Hạng ${x.toi.hang} / ${x.tong}` : '—'}</span>
+              {x.toi && <span className="text-[16px]" style={{ color: MAU.ink }}>Điểm: <b>{x.toi.diem_10}</b> / 10</span>}
+            </TheHS>
+            <div className="flex flex-col gap-2">
+              {(x.top ?? []).map((r) => (
+                <TheHS key={r.hang} className="flex items-center gap-3 px-4 py-3" style={r.la_toi ? { borderColor: MAU.acc } : undefined}>
+                  <span className="w-8 shrink-0 text-center text-[18px] font-bold" style={HEAD}>{r.hang <= 3 ? ['🥇', '🥈', '🥉'][r.hang - 1] : r.hang}</span>
+                  <span className="min-w-0 flex-1 truncate text-[16px]" style={{ color: MAU.ink, fontWeight: r.la_toi ? 700 : 500 }}>{r.ho_ten}{r.la_toi ? ' (em)' : ''}</span>
+                  <span className="shrink-0 text-[16px] font-bold" style={HEAD}>{r.diem_10}</span>
+                </TheHS>
+              ))}
+            </div>
+            <span className="text-center text-[13.5px]" style={{ color: MAU.muted }}>Chỉ gồm các bạn đã được chấm xong · hoà điểm thì bạn nộp sớm hơn xếp trên.</span>
+          </>}
     </ManHS>
   )
 }

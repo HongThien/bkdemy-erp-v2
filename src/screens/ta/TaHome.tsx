@@ -26,6 +26,8 @@ import { viecBoTroCuaToi, caBuCuaToi, caDuoiCuaToi, btvnBuCuaToi, type ViecCaBoT
 import { BuoiBuDetail } from '../botro/BoTroScreen'
 import DuoiCaTA from './DuoiCaTA'
 import ChamBtvnBu from './ChamBtvnBu'
+import ChamThiThu from './ChamThiThu'
+import { listBaiChoCham, type BaiChoCham } from '../../lib/thithucham'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 import CongTA from './CongTA'
 import { congCuaToi, goiYViec, gioVN, type DongCong, type GoiY } from '../../lib/tacong'
@@ -90,6 +92,10 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // BTVN BÙ (Thùy 29/09): em học bù xong làm BTVN buổi đã nghỉ — TA LỚP chấm, nằm trong "Chấm BTVN" (mục riêng đầu danh sách).
   const [btvnBu, setBtvnBu] = useState<BtvnBu[]>([])
   const [moBtvnBu, setMoBtvnBu] = useState<BtvnBu | null>(null)
+  // THI THỬ (Ôn thi GK1 pha 4): bài đã nộp còn câu tự luận chưa chấm — hàng đợi derive ở DB; TaHome giữ list, màn chấm vá tại chỗ.
+  const [thiThu, setThiThu] = useState<BaiChoCham[]>([])
+  const [moThiThu, setMoThiThu] = useState(false)
+  const taiThiThu = () => listBaiChoCham().then(setThiThu).catch((e) => setLoiTai(`Thi thử: ${e?.message ?? e}`))
   // Chấm công hôm nay cho ô ở màn chính (best-effort, lỗi thì ô vẫn hiện nút Checkin)
   const [congHn, setCongHn] = useState<{ dong: DongCong[]; goiY: GoiY[] } | null>(null)
   const taiCong = () => { Promise.all([congCuaToi(homNay, homNay), goiYViec()]).then(([dong, goiY]) => setCongHn({ dong, goiY })).catch(() => setCongHn({ dong: [], goiY: [] })) }
@@ -114,14 +120,15 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
     taDashboard(homNay.slice(0, 7)).then(setDashTom).catch(() => setDashTom(null)) // best-effort, không chặn trang chủ
     taiBoTro()
     taiCong()
+    taiThiThu()
   }
   useEffect(() => { reload() }, []) // eslint-disable-line
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 60000); return () => clearInterval(id) }, [])
   useEffect(() => {
-    const h = () => { if (document.visibilityState === 'visible' && !view) reload(true) }
+    const h = () => { if (document.visibilityState === 'visible' && !view && !moThiThu) reload(true) }
     document.addEventListener('visibilitychange', h)
     return () => document.removeEventListener('visibilitychange', h)
-  }, [view]) // eslint-disable-line
+  }, [view, moThiThu]) // eslint-disable-line
 
   const canLam = tasks.filter((t) => !t.done)
   const noBtvnBu = btvnBu.filter((x) => !x.xong).length
@@ -140,6 +147,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // thường (bám đề theo lop×ngày), sẽ trắng dữ liệu với buổi bù (lop_id null, ET không có ở lop×ngày).
   // Buổi đuổi (Thùy 22/09: "UI m phải làm cho dt"): DuoiCaTA — trang cuộn bình thường như ChamBuoi/
   // DuoiGiayTA, KHÔNG bọc 100dvh (khác buổi bù, không phải flex h-full).
+  if (moThiThu) return <ChamThiThu ds={thiThu} setDs={setThiThu} onBack={() => setMoThiThu(false)} onQuet={taiThiThu} />
   if (moBtvnBu) return <ChamBtvnBu v={moBtvnBu} onBack={() => { setMoBtvnBu(null); taiBoTro() }} />
   if (view) {
     const onBack = () => { setView(null); reload(true) }
@@ -152,7 +160,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
       <div className="min-h-0 flex-1 overflow-auto">
         {loiTai && <p className="mx-2 mt-2 rounded-xl bg-rose-50 px-3 py-2 text-[12px] font-semibold text-rose-700 ring-1 ring-rose-200">⚠ Lỗi tải: {loiTai} — chụp màn hình gửi quản lý</p>}
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} caDuoi={caDuoi} btvnBu={btvnBu} onAvatarChanged={onAvatarChanged} congHn={congHn} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} caDuoi={caDuoi} btvnBu={btvnBu} onAvatarChanged={onAvatarChanged} congHn={congHn} thiThu={thiThu} onMoThiThu={() => setMoThiThu(true)} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <><CaBoTroTA viec={boTro} onDoi={taiBoTro} /><HinhYeuTA /></>}
         {tab === 'cong' && <CongTA nsId={profile.nhanSu.id} onBack={() => setTab('home')} onDoi={taiCong} />}
@@ -188,7 +196,8 @@ function TabBtn({ active, icon, label, no, onClick }: { active: boolean; icon: s
 
 // ── TRANG CHỦ: 1 thẻ hồ sơ (avatar · Chào X · ngày · nợ · chuông/góp ý/thoát) + box tháng + box bổ trợ + 3 box
 //    nghiệp vụ (bubble nợ ở góc icon). CEO 07/09: gộp thanh trên + hero, bỏ dòng tên/"BK Trợ giảng" lặp. ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, caDuoi, btvnBu, onAvatarChanged, congHn }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, caDuoi, btvnBu, onAvatarChanged, congHn, thiThu, onMoThiThu }: {
+  thiThu: BaiChoCham[]; onMoThiThu: () => void
   caBu: CaBu[]; caDuoi: CaBu[]; btvnBu: BtvnBu[]; congHn: { dong: DongCong[]; goiY: GoiY[] } | null
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void; onOpenBuoi: (v: BuoiView) => void
@@ -279,6 +288,8 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {!loading && coQuyen && <BoxBu ca={caBu} homNay={homNay} onOpen={onOpenBuoi} />}
         {!loading && coQuyen && <BoxBu ca={caDuoi} homNay={homNay} onOpen={onOpenBuoi} loai="bo_tro_duoi" />}
 
+        {!loading && coQuyen && <BoxThiThu ds={thiThu} onGo={onMoThiThu} />}
+
         {!loading && coQuyen && NGHIEP_VU.map((n) => {
           const cua = canLam.filter((t) => belongsToNv(t, n.key))
           const xong = tasks.filter((t) => belongsToNv(t, n.key) && t.done).length
@@ -315,6 +326,23 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         })}
       </div>
     </div>
+  )
+}
+
+// Box "Chấm Thi thử" (Ôn thi GK1 pha 4) — số bài chờ chấm tự luận; bấm vào mở màn chấm từ ảnh HS nộp.
+function BoxThiThu({ ds, onGo }: { ds: BaiChoCham[]; onGo: () => void }) {
+  const cau = ds.reduce((n, b) => n + b.so_cau_cho, 0) // chỉ đếm items đang render (badge) — số chấm thật do DB
+  return (
+    <button onClick={onGo} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: '#E6DDFF' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_et')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={ds.length} /></span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Chấm Thi thử</p>
+          <p className="text-[12.5px] text-[#63709A]">{ds.length === 0 ? 'Không có bài chờ chấm' : `${ds.length} bài · ${cau} câu tự luận chờ chấm`}</p>
+        </div>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B6BEF] text-[15px] font-bold text-white">›</span>
+      </div>
+    </button>
   )
 }
 

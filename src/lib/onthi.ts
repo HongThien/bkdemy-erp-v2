@@ -81,3 +81,12 @@ export async function xoaAnhTuLuan(id: string): Promise<void> {
   const { error } = await supabase.from('thi_thu_anh').delete().eq('id', id)
   if (error) throw error
 }
+
+// ── BXH theo đề (pha 4): chỉ gồm bài đã chấm xong; bài của em chưa chấm xong ⇒ dang_cham (không lộ gì). null = không có lượt thi nộp. ──
+export type BxhThiThuDong = { hang: number; ma_hs: string; ho_ten: string; diem_10: number; la_toi: boolean }
+export type BxhThiThu = { de_id: string; de_ten: string; dang_cham: boolean; tong?: number; toi?: { hang: number; diem_10: number } | null; top?: BxhThiThuDong[] }
+export async function onThiBxh(deId: string, top = 20): Promise<BxhThiThu | null> {
+  const { data, error } = await supabase.rpc('fn_hs_thi_thu_bxh', { p_de: deId, p_top: top })
+  if (error) throw error
+  return (data ?? null) as BxhThiThu | null
+}
