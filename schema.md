@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-402 bảng · 25 view · 0 enum · 188 trigger · 1103 function
+405 bảng · 25 view · 0 enum · 190 trigger · 1110 function
 
 ## _app_secrets
 
@@ -3314,7 +3314,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -3964,6 +3964,44 @@ END |  |  |
 | trang_thai | text |  |  |  |  |
 | ghi_chu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## nhan_su_plan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  | current_nhan_su_id() | FK→nhan_su.id |  |
+| noi_dung | text |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| trang_thai | text |  | 'y_tuong'::text |  | `y_tuong` · `se_lam` · `dang_lam` · `xong` · `bo` |
+| han | date | Y |  |  |  |
+| thu_tu | double precision |  | 0 |  |  |
+| xong_at | timestamp with time zone | Y |  |  |  |
+| chuyen_thanh | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## nhan_su_plan_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| plan_id | uuid |  |  | FK→nhan_su_plan.id |  |
+| nguoi_id | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai_cu | text | Y |  |  |  |
+| trang_thai_moi | text | Y |  |  |  |
+| han_cu | date | Y |  |  |  |
+| han_moi | date | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## nhan_su_plan_nhac
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| plan_id | uuid |  |  | PK FK→nhan_su_plan.id |  |
+| moc | text |  |  | PK | `truoc_1_ngay` · `qua_han` |
+| han | date |  |  | PK |  |
+| gui_at | timestamp with time zone |  | now() |  |  |
 
 ## nhan_su_team
 
@@ -4626,7 +4664,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -7533,6 +7571,8 @@ WITH luot AS (
 | lich_test_khung | trg_lich_test_khung_chan_trung | BEFORE | INSERT/UPDATE | _ts_khung_chan_trung |
 | lich_test_khung | trg_log_lich_test_khung | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | lich_test_khung | trg_updated_lich_test_khung | BEFORE | UPDATE | _lich_test_cham_updated |
+| nhan_su_plan | nhan_su_plan_log_trg | AFTER | INSERT/UPDATE | _nhan_su_plan_ghi_log |
+| nhan_su_plan | nhan_su_plan_truoc_trg | BEFORE | INSERT/UPDATE | _nhan_su_plan_truoc |
 | phan_cong_lop | phan_cong_lop_log_trg | AFTER | INSERT/DELETE/UPDATE | _phan_cong_lop_ghi_log |
 | qlht_doi_qua | trg_log_qlht_doi_qua | AFTER | INSERT/UPDATE | log_qlht |
 | qlht_qua | trg_log_qlht_qua | AFTER | INSERT/UPDATE | log_qlht |
@@ -7731,6 +7771,9 @@ WITH luot AS (
 - `_mt_khung_tinh(p_buoi uuid)` → TABLE(id uuid, moi numeric, nc boolean, ngoai boolean, tl uuid, dbc jsonb)
 - `_mt_ky_thi(p_buoi uuid)` → uuid
 - `_mt_phan_nang_cao(p_phan uuid)` → boolean
+- `_nhac_han_hang_ngay()` → integer
+- `_nhan_su_plan_ghi_log()` → trigger
+- `_nhan_su_plan_truoc()` → trigger
 - `_nt_bam(p_k text)` → double precision
 - `_nt_bonus_mua(p_ngay0 integer, p_d0 integer)` → double precision
 - `_nt_cung_lop(p_a uuid, p_b uuid)` → boolean
@@ -7749,6 +7792,7 @@ WITH luot AS (
 - `_phan_cong_lop_ghi_log()` → trigger
 - `_phase_log_ghi(p_buoi uuid, p_phase text, p_cu timestamp with time zone, p_moi timestamp with time zone, p_actor uuid)` → void
 - `_phieu_luu_bo()` → jsonb
+- `_plan_nhac_han()` → integer
 - `_push_bao_cap_nhat(p_ns uuid, p_app text)` → void
 - `_rank_len_bac_ghi(p_mon text, p_hs uuid[] DEFAULT NULL::uuid[])` → integer
 - `_sk_can(p_su_kien uuid, p_vai text[])` → void
@@ -8389,6 +8433,8 @@ WITH luot AS (
 - `fn_order_phan_hoi(p_order uuid, p_trang_thai text, p_ghi_chu text DEFAULT NULL::text)` → void
 - `fn_order_tao(p_nguoi_nhan uuid, p_noi_dung text, p_han date DEFAULT NULL::date)` → uuid
 - `fn_phong_lich_test_ngay(p_ngay date)` → TABLE(khung_id uuid, ma_phong text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, so_hen integer)
+- `fn_plan_dat_order(p_plan uuid, p_nguoi_nhan uuid, p_han date DEFAULT NULL::date)` → uuid
+- `fn_plan_giao_task(p_plan uuid, p_nguoi_lam uuid, p_han date)` → uuid
 - `fn_pt_push_danh_sach(p_secret text, p_app text DEFAULT 'pt'::text)` → TABLE(id uuid, endpoint text, p256dh text, auth text, nhan_su_id uuid)
 - `fn_pt_push_dem(p_secret text)` → TABLE(nhan_su_id uuid, so_viec integer)
 - `fn_pt_push_dem_1(p_secret text, p_ns uuid)` → integer
@@ -8433,6 +8479,7 @@ WITH luot AS (
 - `fn_ta_bo_viec(p_id uuid, p_ly_do text DEFAULT 'TA tự bỏ'::text)` → void
 - `fn_ta_buoi_thang(p_ns uuid, p_ym text)` → TABLE(buoi_id uuid, ten_lop text, ngay date, gio_bat_dau time without time zone, vang boolean, ly_do text)
 - `fn_ta_buoi_thieu_cong(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(loai text, ngay date, lop_id uuid, ten text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, buoi_hoc_id uuid, ca_bo_tro_id uuid, nguoi_phu_trach text)
+- `fn_ta_cau_cua_em(p_hoc_sinh uuid, p_buoi uuid DEFAULT NULL::uuid, p_so_ngay integer DEFAULT 0, p_gioi_han integer DEFAULT 40)` → jsonb
 - `fn_ta_cham_cong_khai_bu(p_vao timestamp with time zone, p_ra timestamp with time zone, p_co_so text DEFAULT NULL::text)` → uuid
 - `fn_ta_cham_cong_nhap_ho(p_ns uuid, p_vao timestamp with time zone, p_ra timestamp with time zone, p_ly_do text)` → uuid
 - `fn_ta_cham_cong_ra()` → uuid
@@ -8618,8 +8665,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -8687,8 +8734,8 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
@@ -8875,6 +8922,9 @@ WITH luot AS (
 | nhan_su_nhac_viec | nhan_su_nhac_viec_noi_dung_check | `CHECK (((length(btrim(noi_dung)) >= 1) AND (length(btrim(noi_dung)) <= 200)))` |
 | nhan_su_order | nhan_su_order_check | `CHECK ((nguoi_dat_id <> nguoi_nhan_id))` |
 | nhan_su_order | nhan_su_order_noi_dung_check | `CHECK (((length(btrim(noi_dung)) >= 1) AND (length(btrim(noi_dung)) <= 1000)))` |
+| nhan_su_plan | nhan_su_plan_chuyen_thanh_check | `CHECK (((chuyen_thanh IS NULL) OR (chuyen_thanh ~ '^(task\|order):[0-9a-f-]{36}$'::text)))` |
+| nhan_su_plan | nhan_su_plan_ghi_chu_check | `CHECK (((ghi_chu IS NULL) OR (length(ghi_chu) <= 4000)))` |
+| nhan_su_plan | nhan_su_plan_noi_dung_check | `CHECK (((length(btrim(noi_dung)) >= 1) AND (length(btrim(noi_dung)) <= 500)))` |
 | nt_ban_viec | nt_ban_viec_check | `CHECK ((chu <> nguoi))` |
 | nt_ban_viec | nt_ban_viec_n_check | `CHECK ((n >= 0))` |
 | nt_ban_viec | nt_ban_viec_o_check | `CHECK (((o >= 0) AND (o < 12)))` |
