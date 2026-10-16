@@ -6,7 +6,7 @@
 
 ## Mục lục (số dòng trong file này)
 
-- dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
 - dòng 47 — Bài học 10→15/10 — Bổ trợ (đừng đạp lại)
 - dòng 59 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
 - dòng 137 — Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
@@ -65,6 +65,9 @@
 - **Vá file có regex/LaTeX/backtick: để nội dung trong file riêng (viết bằng Write) rồi script đọc vào, không nhét vào heredoc / `node -e` / template literal** — dấu `\` bị nuốt, backtick cắt chuỗi (14/10 dính 3 lần).
 - **Dev server dùng chung với phiên song song tự tải lại liên tục** ⇒ kiểm UI bằng `javascript_tool` đo DOM (vd khoảng cách giữa 2 phần tử) + gọi RPC trực tiếp bằng script RO, đừng chờ ảnh chụp.
 
+- **[Bot TA · 16/10] Biến môi trường của cron phải có trên ĐÚNG project chạy cron.** Code đúng, deploy đúng, thiếu `CRON_SECRET` trên project TA ⇒ im lặng không đăng (nhắc việc 23:30 hỏng từ đầu không ai biết). Sau mỗi lần thêm cron: `curl` endpoint không kèm secret — 401 là đủ biến, 500 "Thiếu …" là thiếu.
+- **[Gami · 16/10] Thưởng theo thành tích phải ghi vào THỜI ĐIỂM ĐẠT, không phải lúc hệ thống phát hiện / em bấm nhận** — mở tính năng muộn thì quét bù cả mùa dồn vào tháng hiện tại. Sửa luật đã phát thưởng: chạy thử trong rollback, liệt kê từng em mất gì + ví có âm không, rồi mới xoá (Luật xoá) và chốt lại xu.
+- **[Kỹ thuật · 16/10] JS `String.replace(a, b)` biến `$$` trong `b` thành `$`** ⇒ chèn khối SQL có `$$` bằng replace là hỏng thân hàm. Dùng `s.split(a).join(b)`.
 - **[Bot TA · 15/10] Bản tin để CEO duyệt: gửi bản xem trước vào chat RIÊNG của Thùy (`ban-tin.mjs --gui-rieng`), mẫu 1 TA thì `--chi`; chỉ đăng nhóm khi được bảo "đăng".** Chữ trên tin phải đọc được không cần giải thích ("×2" bị chê ⇒ "2 học sinh"); từ "trễ" chỉ dùng khi thật sự có hạn đã qua mà người dùng đã có cách làm (chấm công hệ thống mới ra ⇒ "cần hoàn thành").
 - **[Sơ đồ tổ chức · 15/10] Hai bảng cùng trả lời một câu hỏi ("ai phụ trách khối") = chồng chéo chắc chắn sẽ lệch.** Gộp về một nguồn, chuyển hàm đọc sang nguồn đó và KIỂM TRÙNG KẾT QUẢ trước/sau (md5 danh sách người nhận việc) trước khi áp; bảng cũ giữ, không xoá.
 - **[Chấm công TA · 14/10 tối] Test phải đi ĐÚNG đường người dùng bấm, không phải đường người viết test nghĩ ra.** Test cũ khai bổ trợ qua "Thêm việc ngoài lịch" (tự chọn lớp) nên xanh hết, trong khi ô gợi ý — đường TA thật bấm — chết với MỌI buổi bổ trợ (buổi bổ trợ không có `lop_id`). Cách: lấy dữ liệu thật của hôm nay, đóng vai từng người, gọi ĐÚNG hàm mà nút đó gọi với ĐÚNG tham số màn truyền (`test_goi_y_bo_tro.mjs`).

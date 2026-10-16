@@ -70,8 +70,12 @@
   - **Đã chạy thật (14/10):** bot **@bk_trogiang_bot** (privacy tắt) trong nhóm "Trợ giảng BK_Vận hành Chat" (`tg_nhom` chat_id -1003764094483, vai `ta_chung`). Webhook `https://ta.bkacademy.edu.vn/api/tg-webhook` → `fn_tg_nhan` ghi MỌI tin vào `tg_tin` (bất biến) — đã thấy tin nhóm thật vào DB. Nối tài khoản: app TA → Chấm công → card "Kết nối Telegram" → `/start <mã>`; đã nối: Thùy, Huyền. Token: `TG_BOT_TOKEN` trong `.env.local` (máy công ty) + Vercel project TA. Secret webhook ở `he_thong_bi_mat 'tg_webhook'` (không ở git/Vercel).
   - **Đã build:** B1 `_tg_viec_ton(p_ngay)` (việc tồn mọi TA, có `han` từng loại; KHÔNG còn "báo sai" — việc team học thuật) · B2 nhận tin + nối tài khoản · **B3 bản tin (15/10, ĐÃ ĐĂNG bản đầu vào nhóm thật lúc 14:23)**: `_tg_ban_tin_du_lieu` → `api/_tg_lib.mjs` (dựng chữ HTML) → cron `api/tg-ban-tin.mjs` (vercel.json `0 1 * * *` = 08:00 VN, chỉ nhóm `tg_nhom.ban_tin_bat` — nhóm TA ĐÃ BẬT) · bất biến `tg_ban_tin` 1 dòng/(ngày, nhóm, TA) ⇒ chạy lại không trùng. Script `scripts/tg/ban-tin.mjs` (`--xem` · `--gui-rieng "Đào Xuân Thùy" [--chi "<TA>"]` = xem trước vào chat riêng · `--dang` · `--mig` thử trong rollback) · `dat-webhook.mjs --xem`.
   - **⭐ Luật bản tin (Thùy chốt 15/10 sau nhiều vòng xem thử):** chỉ **ET · BTVN (kể cả bù)** CHƯA LÀM + ĐÃ TRỄ tới 08:00 (hạn = `fn_han_viec` / ET bù 12:00 hôm sau / BTVN bù `_bu_btvn_han`), mỗi mục "trễ N ngày", cùng lớp+ngày gộp "(N học sinh)" — **KHÔNG** "×N" · **chấm công = "⏳ Cần hoàn thành chấm công"**, KHÔNG gọi trễ (hệ thống mới), gom 1 dòng/TA · chỉ việc từ 01/10 · cảnh báo "BTVN cần nhắc em": 2 kết quả gần nhất liên tiếp cùng không làm / cùng nộp muộn (xin phép bỏ qua), bài gần nhất trong 7 ngày · **"Phụ trách:" = TRƯỞNG khối** của khối có việc (không tag Phó, không tag chính mình) · bỏ admin (Thùy) · GV kiêm TA không có dòng chấm công · tiêu đề "BẢN TIN CÔNG VIỆC TRỢ GIẢNG". Thùy xem thử ⇒ gửi vào chat riêng của Thùy trước, KHÔNG đăng nhóm khi chưa được bảo.
-  - **VIỆC TIẾP THEO:** Thùy deploy app TA để cron 08:00 chạy (chưa deploy thì đăng tay `--dang`). **B4 tổng kết 24:00** (Claude API đọc trao đổi dưới từng tin, tóm theo `ref_key`, cờ lệch ERP) — dữ liệu thật bắt đầu từ 15/10. Rồi B5 màn duyệt Trang + nối gậy · B6 bản tin dùng tổng kết hôm trước. 17/21 TA chưa Kết nối Telegram (15/10).
+  - **⚠️ 16/10: cron 08:00 KHÔNG chạy** — project app TA trên Vercel **thiếu `CRON_SECRET`** (gọi /api/tg-ban-tin và /api/ta-nhac-viec đều 500 "Thiếu CRON_SECRET" ⇒ nhắc việc 23:30 của app TA cũng CHƯA TỪNG chạy). Vercel ẩn biến nhạy cảm ⇒ đã ghi giá trị `he_thong_bi_mat 'push_cron'` ra `C:\Users\WBPC\Desktop\CRON_SECRET-cho-Vercel.txt` (máy công ty) để Thùy dán + redeploy. **Kiểm lại:** `curl https://ta.bkacademy.edu.vn/api/tg-ban-tin` phải ra 401 (không còn 500). App TA ĐÃ deploy bản 15/10 (có nút Sửa).
+  - **Đọc nhóm chat 15–16/10 (Thùy: "tạm thời m tự đọc"):** TA hầu như KHÔNG reply dưới tin bản tin (chỉ Tùng) ⇒ B4 phải gắn tin theo NGƯỜI GỬI + người được tag. Quản lý (Trang "TrangPTT"/"Phạm Trang", Tạ Quốc Cường, Lộc) + Minh CHƯA nối Telegram — nút nối chỉ có trong app TA ⇒ cần nút trên ERP (Thùy OK), KHÔNG nối tay theo tên hiển thị. TA vẫn gõ tay "Báo cáo BTVN" ⇒ Thùy: **bot phải tự tổng hợp**. Bộ quy tắc nhắn tin (hashtag #doica/#suco…) Thùy: "cần nghiên cứu và training" — CHƯA áp.
+  - **16/10 đã đăng tay 1 tin "TỔNG KẾT CÔNG VIỆC TRỢ GIẢNG"** (message_id 230, sửa bằng `editMessageText`): bảng `<pre>` TA | Trễ ET·BTVN | Chưa ghi công + đã chốt / còn chờ / báo cáo BTVN đã nhận = mẫu đích của B4. **Định dạng:** danh sách người + số PHẢI là bảng thẳng cột hoặc mỗi ý 1 dòng (Thùy: "đọc lòi mắt").
+  - **VIỆC TIẾP THEO:** ① Thùy thêm `CRON_SECRET` vào project TA + redeploy. ② **B4 tổng kết** đọc TỰ DO: gom tin trong ngày theo từng TA, đối chiếu ERP, ra tin như mẫu 16/10 → Trang duyệt. ③ Nút "Kết nối Telegram" trên ERP. ④ Bot tự đăng báo cáo BTVN khi TA đóng BTVN. Chờ Thùy: em CHUYỂN LỚP thì BTVN bù tính cho TA lớp nào (Vân Anh đang bị giao BTVN bù lớp cũ).
   - **Nợ:** luật bù/đuổi giờ có 2 bản (gami.ts getMyTasks + `_tg_viec_ton`) · công thức hạn BTVN bù 2 nơi (`fn_bu_btvn_viec_cua_toi` + `_bu_btvn_han`) · 93 báo sai chờ duyệt từ 19/08 (team học thuật).
+- **⭐ GAMI — THÀNH TỰU + XU (Thùy 16/10, mig `202610161746` ĐÃ ÁP).** Thành tựu ghi EXP vào **THÁNG ĐẠT** (`dat_at`), không phải tháng bấm nhận (`_tt_chot_hs` / `fn_thanh_tuu_nhan`) — mở tính năng 09/10 từng dồn 56 thành tựu T8–T9 vào T10. **TT07 "Luyện yếu đạt liên tiếp" = 5 / 10 / 20 lượt** liên tiếp đúng ≥70% (7/10), thưởng 200 / 300 / 1.000 EXP (cũ 3/5/10 quá dễ). Đã thu hồi 32 mốc + chốt lại xu: 32 em đổi ví (−162 / +21), Minh Hiếu bù về 0, 0 ví âm — `reports/thu-hoi-tt07-2026-10-16.txt`. **Xu tháng 08 ĐÓNG BĂNG** (`_xu_dong_bo` chỉ tự chạy từ 2026-09; chốt tay 6.950 xu; đồng bộ lại cả tháng 8 trả thêm ~1.300 xu không liên quan) ⇒ đụng xu tháng 8 chỉ ghi đúng phần chênh của việc mình sửa. **Chờ Thùy:** `fn_xu_tu_exp` LÀM TRÒN LÊN (99 EXP = 1 xu, 250 = 3) — cố ý hay lỗi? EXP lớp (`gami_exp_ledger`) soát 16/10: bình thường; 3 lỗi nhỏ CHƯA sửa (chuyên cần cộng 2 lần 3 em +750 · buổi huỷ còn EXP 4 dòng +765 · có điểm mà điểm danh vắng: Lê Quốc Khánh 9B1 15/09, Trịnh Đắc Dũng 7S2 14/09 ⇒ nghi điểm danh sai).
 - **⭐⭐ SƠ ĐỒ TỔ CHỨC = nguồn duy nhất Trưởng/Phó khối (Thùy 15/10: "phân công là PHẠM VI, chức danh về SƠ ĐỒ TỔ CHỨC").** vi_tri team `ta` (cap + khoi_quan_ly + mon): Quản lý trợ giảng Phạm Thị Thùy Trang → Trưởng (GV): 3·4·5 Dương · 4T·5T Ngân · **6·7 Hà Giang** · **8 Tạ Quốc Cường** · 9 Hải · 10·11·12 Đạt; Phó (TA tốt, `chi_xem`): 3·4·5 Ngân · 7 Quỳnh Trang · 8 Thảo Nguyên. TA có 1 ô dưới Trưởng của MỖI khối mình có lớp (TA nhiều khối = nhiều ô, đúng). `_khoi_quan_ly()` · `_khoi_van_hanh` (Phó, không có ⇒ Trưởng) = người nhận **Chấm MT**; Phó trở lên chấm được mọi lớp cùng khối (`fn_khoi_cua_toi`); màn Phân công CHỈ XEM (`fn_khoi_quan_ly_ds`). **`phan_cong_khoi` KHÔNG còn ai đọc/ghi** (bảng giữ nguyên). Phó KHÔNG giao việc được vì quyền giao việc đi theo cây (`fn_task_cap_duoi`, không xét chi_xem) ⇒ TA treo dưới Trưởng, không dưới Phó. Lớp 8S0 = khối **8T** (chưa có Trưởng/Phó 8T ⇒ MT về GV lớp).
   - **Bẫy:** `phan_cong_lop.created_at` = ngày nhập ERP. `gami_grades.graded_by` là id `tai_khoan`. Luật trong mockup là bản chép tay từ hàm Postgres — đổi luật phải sửa CẢ HAI (14/10 đã sửa đợt khai lùi). Test giả lập phân công bằng INSERT thì trigger ghi log ts = now() ⇒ phải lùi `phan_cong_lop_log.ts` cho đúng ngày (xem `kiemchuan.mjs`).
 
@@ -182,7 +186,7 @@
 - Đã build thêm (06-12)
 - Đã build (GAMI GĐ A — buổi học, 06-15)
 - Đã build (RBAC + 1 MÀN + GAMI mở rộng + ET — 06-15→16)
-- Đã build (06-16 — phiên 2: khép ET, chấm 5-mức/Đ-C-S, mốc hoàn thành, Elo per-môn, màn Điểm s�
+- Đã build (06-16 — phiên 2: khép ET, chấm 5-mức/Đ-C-S, mốc hoàn thành, Elo per-môn, màn Điểm s�
 - Đã build (BẢNG THÀNH TÍCH + 3 hệ điểm + fix kho tài liệu — 06-17)
 - Đã build (06-17 phiên 3 — mobile chấm bài, profile fit+ghim, fix tài liệu, clone Phase 0)
 - Đã build (06-20→22 — sửa loạt lỗi release)
@@ -192,7 +196,7 @@
 - Đã build (06-26 — Bổ trợ ĐUỔI luồng · Kho Đúng/Sai · CRUD/gộp buổi bổ trợ · fix BTVN/ET)
 - Đã build (06-29 — Tìm câu · mã khi soạn · HS toggle/sort · reorder dạng · CHIỀU MÔN: nhân sự +
 - Đã build (06-29 phiên 2 — dọn KHO câu · BẢN IN thông minh · BLOCK model P1 · lý thuyết setting)
-- Đã build (07-01 — fix nhân đôi trang lý thuyết · MASTERY engine+service (dashboard kết quả học t�
+- Đã build (07-01 — fix nhân đôi trang lý thuyết · MASTERY engine+service (dashboard kết quả học t�
 - Đã build (07-01/02 — MÀN KẾT QUẢ HỌC TẬP đầy đủ: 4 view + Tổng quan + fix khoá-UI)
 - Đã build (07-02 — fix vụn: mã HS ở lớp · chống trùng câu giáo trình · "Câu N." cùng dòng · %
 - Đã build (07-03 — ⭐ LUỒNG NHẬP KHO ingest-first: bóc PDF → gán dạng → đẩy kho)
@@ -204,10 +208,10 @@
 - Đã build (26/09 — ⭐ HỆ SỰ KIỆN: Trung thu 26/09 + các sự kiện sau) — ĐỌC `spec-su-kien.md` §
 - Game `games-site/` — trạng thái sau Trung thu (26–27/09) — bản SỰ KIỆN (luật: `luat-choi-game.md`,
 - Đã build (27–28/09 — ⭐ GAME TRONG BUỔI HỌC: xếp hạng buổi + game bản lớp) — ĐỌC `spec-ga
-- Đã build (24–27/09 — ⭐ FORMAT NỘI DUNG LÝ THUYẾT + khung "Bài tập tự luyện" trong PDF) — Đ�
+- Đã build (24–27/09 — ⭐ FORMAT NỘI DUNG LÝ THUYẾT + khung "Bài tập tự luyện" trong PDF) — Đ�
 - ⭐ GIAO DIỆN APP HS — STYLE (cập nhật 29/09) — ĐỌC `design/STYLE-HS.md` + `spec-giao-dien-hs.md` (§ 
 - ⭐ THẾ GIỚI BK — mạng xã hội KHOE nội bộ của HS — ĐÃ BUILD 29/09: DB đã áp hết · app đ
-- ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB �
+- ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB �
 - ✅ PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — ĐÃ BUILD (09→28/09), khác thiết kế 25/07 ở vài 
 - Chưa làm
 - 🐞 BUG MỞ (chưa sửa)
@@ -238,7 +242,7 @@
 - Đã build (⭐ KHO HÌNH — SOẠN TÀI LIỆU nâng cao: nở đáp án + giả thiết phụ/van + popup chọn
 - Đã build (⭐ KHO HÌNH "CHUYỂN NHÀ" — đúc lại giáo trình theo khuôn Đại 100%, dời nav lên hub 
 - Đã build (⭐ NHÁNH MỚI "HÌNH GIẢI TÍCH" — Phase 1: kho + soạn tài liệu — 08-08 tiếp)
-- ⭐⭐ TRỢ LÝ (tab 🤖 trong *Việc của tôi*) — trạng thái 29/09 · ĐỌC `SPEC-troly-nhansu.md` §6�
+- ⭐⭐ TRỢ LÝ (tab 🤖 trong *Việc của tôi*) — trạng thái 29/09 · ĐỌC `SPEC-troly-nhansu.md` §6�
 - Chuỗi đã dò xong #1 — TEST ĐẦU VÀO (12/08, chờ 1 câu để kích hoạt)
 - ⭐ CÁCH LÀM ĐỂ HOÀN THIỆN DỮ LIỆU — chốt 12/08 (tối ưu THỜI GIAN CỦA CEO)
 - 08-14 — Test đầu vào: assign người chấm/trả bài dự kiến (đã merge main)
@@ -253,9 +257,9 @@
 - ⭐ TOOL GIẢI BÀI kho chung `giaibai.bkacademy.edu.vn` (06/09, nhánh `feat/giaibai`, worktree `wt-giaibai`) —
 - ⭐ KHO CHUẨN — cửa 1 đã BẬT (08/09, nhánh `worktree-kho-chuan` e2e9d41, spec `spec-kho-chuan.md`) — b
 - ⭐ KHẢO SÁT "Bạn của con ở BK" — PWA iPad riêng + tab ERP (08–09/09) — ĐÃ PUSH main `299b044`, V
-- ⭐ 08–09/09 — FORM CÂU (TN AI · ĐIỀN Ô chứng minh) + KHO CHUẨN (spec) + NHẬP KHO TỪ FILE — Đ�
+- ⭐ 08–09/09 — FORM CÂU (TN AI · ĐIỀN Ô chứng minh) + KHO CHUẨN (spec) + NHẬP KHO TỪ FILE — Đ�
 - ⭐ TEST ĐẦU VÀO — trạng thái 13/09 (đã push main `8e4aa83`; supersede mục 09/09)
-- ⭐ 10/09 (tối) — NHẬP CÂU HGT QUA CLAUDE: 25 câu Phần A Toán Tứ Tâm PT mặt phẳng vào chờ-duy�
+- ⭐ 10/09 (tối) — NHẬP CÂU HGT QUA CLAUDE: 25 câu Phần A Toán Tứ Tâm PT mặt phẳng vào chờ-duy�
 - ⭐ 12-13/09 — TRẮC NGHIỆM TỪNG PHẦN (Điền Ô Phase 2 Đại) — kiến trúc ĐÃ XÂY, worktree `mc
 - Đã build (18/09 — Chuẩn hoá mã bản đồ Đại + UI chuyển/gộp/xoá)
 - Đã build (18–20/09 — SỔ TAY KIẾN THỨC cho app HS: kho tra cứu lý thuyết)
