@@ -71,6 +71,7 @@ export const NEN_ERP: NenErp[] = [
   { id: 'erp_cn_ns002', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns002.jpg', rieng_cho: ['NS002'] },
   { id: 'erp_cn_ns009', ten: 'Nền của Quỳnh Trang', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
   { id: 'erp_cn_ns004', ten: 'Sân thượng sau mưa', url: '/bk-ui/erp/nen/ca-nhan/ns004.jpg', rieng_cho: ['NS004'] },
+  { id: 'erp_cn_ns008', ten: 'Vịt vàng', url: '/bk-ui/erp/nen/ca-nhan/ns008.jpg', rieng_cho: ['NS008'] },
 ]
 // Hình nền người này được thấy (dùng chung + hình riêng của đúng mã nhân sự).
 export const nenErpCho = (maNs: string | null | undefined): NenErp[] =>
@@ -91,6 +92,14 @@ export const DANG_RIENG: Record<string, DangRieng> = {
     acc: '#cf4a2a', accInk: '#ffffff', badge: '#cf4a2a', badgeInk: '#ffffff',
     cardBorder: '1px solid rgba(255,255,255,0.75)', cardShadow: '0 10px 30px rgba(14,48,110,0.28), inset 0 1px 0 rgba(255,255,255,0.9)',
     radius: '20px', blur: 'blur(14px) saturate(1.25)',
+  },
+  // NS008 — "Vịt vàng cute": thẻ kem sữa viền nâu đậm dày (như nét viền của vịt), bo tròn mềm, bóng CỨNG lệch xuống (không blur),
+  // chữ nâu ấm; nhấn san hô như hình trái tim/má hồng trong tranh. Thẻ kem + viền nâu tách khỏi nền vàng pastel nên vẫn dễ nhìn.
+  NS008: {
+    surface: '#fffdf3', surface2: '#ffefb8', ink: '#4a3b32', muted: '#86705f', line: 'rgba(74,59,50,0.22)',
+    acc: '#d4553a', accInk: '#ffffff', badge: '#d4553a', badgeInk: '#ffffff',
+    cardBorder: '2.5px solid #4a3b32', cardShadow: '0 4px 0 rgba(74,59,50,0.28)',
+    radius: '22px', blur: 'none',
   },
 }
 // MÈO NGỦ trên card "Chào …" (components/MeoNgu.tsx). Đơn vị px trừ khi ghi "tỉ lệ".

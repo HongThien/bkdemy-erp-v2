@@ -75,6 +75,7 @@ Thêm 1 khoá trong `DANG_RIENG` (trường nào bỏ trống = giữ của styl
 |---|---|---|
 | NS002 | Corgi sân vườn (`ns002.jpg`) | mặc định theo style |
 | NS004 | **Sân thượng sau mưa** — ChatGPT vẽ theo phong cách Weathering With You (`ns004.jpg`); tranh gốc phim để ở `_tham-khao/`, không dùng | kính mờ trắng-xanh, chữ navy `#14305c`, nhấn cam torii `#cf4a2a`, bo 20px, blur 14px |
+| NS008 | **Vịt vàng** — nền vàng pastel, vịt cute (`ns008.jpg`) | kem sữa `#fffdf3`, viền nâu `2.5px #4a3b32`, bo 22px, bóng cứng lệch xuống, nhấn san hô `#d4553a` (không blur) |
 | NS009 | Nền của Quỳnh Trang — 2 bé ăn bánh (`ns009.jpg`) | mặc định theo style |
 
 ## 5. Lưu ý bản quyền
