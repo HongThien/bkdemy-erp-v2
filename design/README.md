@@ -6,3 +6,5 @@ Quy ước (CEO 07/09): file gốc → để đây, đừng để trong public/ 
 **Bổ sung 01/10 (Thùy chốt):** ảnh gốc ChatGPT bộ LỚN (vd `bk-ui-src/gami/` ~140 MB) để trên đĩa nhưng KHÔNG lên git (`.gitignore`) — cất bản
 chính lên Google Drive cho mọi máy (bộ gami: https://drive.google.com/drive/folders/1SuezN0GRVndmnU25MaDfcR1r12ha3aYA · bộ Khối vuông `bk-ui-src/khoi/`: https://drive.google.com/drive/folders/1eZN5eRK8SxtcTjl6LXxSiuWhlp1qPjnE). Repo đã ~260 MB (riêng `design/` 183 MB), mỗi lần clone + mỗi lần Vercel build (5 project) đều kéo.
 Repo giữ: hình app dùng (`public/`) + ảnh toàn cảnh tham chiếu bản JPG (`design/handoff/<kit>/reference/`).
+
+**Nền + dáng thẻ RIÊNG từng nhân sự (Trang chính ERP):** đọc `design/ERP-NEN-VA-THE-RIENG.md` — Thùy mô tả phong cách, Claude làm theo quy ước đó.

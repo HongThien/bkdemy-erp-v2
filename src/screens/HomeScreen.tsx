@@ -9,7 +9,8 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { useStore } from '../store/useStore'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, nenErpCho } from '../lib/erpSkin'
+import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, nenErpCho, MEO_NGU } from '../lib/erpSkin'
+import MeoNgu, { meoCao } from '../components/MeoNgu'
 import { napCanh, CANH_ERP, duongDanCanh, KHOA_NHOM, type Canh } from '../lib/canhErp'
 import HomeScene from './home/HomeScene'
 import { uploadNenErp } from '../lib/nhansu'
@@ -425,6 +426,7 @@ export default function HomeScreen() {
 
   // ── Trang chính ──
   const tenGoi = dh.me?.nhanSu.ho_ten?.trim().split(/\s+/).pop()
+  const meo = MEO_NGU[dh.me?.nhanSu.ma_ns ?? '']   // trang trí riêng theo mã nhân sự (mèo ngủ trên card Chào…)
   const homNay = new Date().toLocaleDateString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
   const coNv = !hep && !!sk.nhanVat
   // Box ẩn theo từng người. Id: 'tien_do' · 'viec_ngay' · 'yeu_thich' · 'nhom:<tên nhóm>' ('nhom:viec' = Việc của tôi).
@@ -552,10 +554,11 @@ export default function HomeScreen() {
         )}
         <div className="min-w-0 flex-1">
           {/* HÀNG ĐẦU: lời chào · vị trí 2 (cạnh lời chào) · nút Tuỳ chỉnh / Giao diện */}
-          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'}>
+          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'} style={meo && !isMobile ? { paddingTop: Math.max(12, meoCao(meo) - meo.chim + 4) } : undefined}>
             {!coNv && coTrai && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{oVitri(0)}</div>}
             {/* MỘT BOX HỒ SƠ: avatar to (bấm để đổi ảnh) · lời chào · Hòm thư nằm TRONG box */}
-            <div className={`flex shrink-0 items-center gap-4 ${isMobile ? 'px-3 py-3' : 'px-5 py-4'}`} style={tam}>
+            <div className={`relative flex shrink-0 items-center gap-4 ${isMobile ? 'px-3 py-3' : 'px-5 py-4'}`} style={tam}>
+              {meo && !isMobile && <MeoNgu cfg={meo} />}
               {dh.me && (
                 <AvatarEditButton nhanSuId={dh.me.nhanSu.id} anhUrl={dh.me.nhanSu.anh_url} initial={(tenGoi ?? '?').charAt(0).toUpperCase()} size={isMobile ? 72 : 104}
                   ring="var(--sk-line)" badge="var(--sk-acc)"

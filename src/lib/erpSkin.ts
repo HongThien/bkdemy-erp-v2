@@ -70,13 +70,53 @@ export const NEN_ERP: NenErp[] = [
   // Hình riêng theo order — thêm 1 dòng/ảnh (nén bằng `node scripts/erp-nen-ca-nhan.mjs`)
   { id: 'erp_cn_ns002', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns002.jpg', rieng_cho: ['NS002'] },
   { id: 'erp_cn_ns009', ten: 'Nền của Quỳnh Trang', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
+  { id: 'erp_cn_ns004', ten: 'Sân thượng sau mưa', url: '/bk-ui/erp/nen/ca-nhan/ns004.jpg', rieng_cho: ['NS004'] },
 ]
 // Hình nền người này được thấy (dùng chung + hình riêng của đúng mã nhân sự).
 export const nenErpCho = (maNs: string | null | undefined): NenErp[] =>
   NEN_ERP.filter((n) => !n.rieng_cho || (!!maNs && n.rieng_cho.includes(maNs)))
 
+// DÁNG THẺ RIÊNG theo mã nhân sự: ghi đè từng biến `--sk-*` của style đang chọn, chỉ cho đúng người đó — mọi màn đọc
+// `var(--sk-*)` nên tự theo, không rẽ nhánh `if` trong màn. Trường nào bỏ trống = giữ nguyên của style.
+// Giá trị là CSS thô, ví dụ { acc: '#2f6f5e', cardBorder: '2px solid #4a342a', radius: '22px', fontHead: "'Mali', cursive" }.
+export type DangRieng = Partial<{
+  surface: string; surface2: string; ink: string; muted: string; line: string; acc: string; accInk: string
+  badge: string; badgeInk: string; cardBorder: string; cardShadow: string; radius: string; fontHead: string; blur: string
+}>
+export const DANG_RIENG: Record<string, DangRieng> = {
+  // Bảng quy ước + công thức phong cách: design/ERP-NEN-VA-THE-RIENG.md
+  // NS004 — "Weathering": kính mờ trắng-xanh (đọc rõ trên trời xanh), chữ xanh navy, nhấn cam đỏ như cổng torii trong tranh.
+  NS004: {
+    surface: 'rgba(255,255,255,0.84)', surface2: 'rgba(214,232,250,0.72)', ink: '#14305c', muted: '#4a6a9a', line: 'rgba(90,130,190,0.32)',
+    acc: '#cf4a2a', accInk: '#ffffff', badge: '#cf4a2a', badgeInk: '#ffffff',
+    cardBorder: '1px solid rgba(255,255,255,0.75)', cardShadow: '0 10px 30px rgba(14,48,110,0.28), inset 0 1px 0 rgba(255,255,255,0.9)',
+    radius: '20px', blur: 'blur(14px) saturate(1.25)',
+  },
+}
+// MÈO NGỦ trên card "Chào …" (components/MeoNgu.tsx). Đơn vị px trừ khi ghi "tỉ lệ".
+//   rong: bề ngang thân · phai: cách mép PHẢI card · chim: thân lún xuống mặt card bấy nhiêu px
+//   duoiCao: chiều cao hình đuôi · duoiX / duoiY: chỗ gốc đuôi trong thân (tỉ lệ 0–1, từ trái / từ trên)
+//   tiLeThan / tiLeDuoi: rộng÷cao của 2 file đã nén (script in ra khi chạy erp-nen-ca-nhan.mjs)
+export type MeoNguCfg = { than: string; duoi: string; tiLeThan: number; tiLeDuoi: number; rong: number; phai: number; chim: number; duoiCao: number; duoiX: number; duoiY: number }
+export const MEO_NGU: Record<string, MeoNguCfg> = {
+  NS004: { than: '/bk-ui/erp/nen/ca-nhan/ns004_meo_than.webp', duoi: '/bk-ui/erp/nen/ca-nhan/ns004_meo_duoi.webp', tiLeThan: 2.41, tiLeDuoi: 0.232, rong: 150, phai: -8, chim: 10, duoiCao: 76, duoiX: 0.9, duoiY: 0.5 },
+}
+
+const BIEN_RIENG: Record<keyof DangRieng, string> = {
+  surface: '--sk-surface', surface2: '--sk-surface2', ink: '--sk-ink', muted: '--sk-muted', line: '--sk-line', acc: '--sk-acc', accInk: '--sk-acc-ink',
+  badge: '--sk-badge', badgeInk: '--sk-badge-ink', cardBorder: '--sk-card-border', cardShadow: '--sk-card-shadow', radius: '--sk-radius',
+  fontHead: '--sk-font-head', blur: '--sk-blur',
+}
+export function bienRieng(maNs: string | null | undefined): Record<string, string> {
+  const d = maNs ? DANG_RIENG[maNs] : undefined
+  const o: Record<string, string> = {}
+  if (d) for (const k of Object.keys(d) as (keyof DangRieng)[]) if (d[k]) o[BIEN_RIENG[k]] = d[k]!
+  return o
+}
+
 export function useSkinErp() {
   const gd = useStore((s) => s.erpGiaoDien)
+  const maNs = useStore((s) => s.me?.nhanSu.ma_ns)
   const doc = useIsMobile()
   return useMemo(() => {
     const skin = skinErp(gd.skin)
@@ -89,7 +129,7 @@ export function useSkinErp() {
       skin, cd, gd,
       nenId: tuChon ? (gd.nen as string) : layHinhNen(skin as Skin, gd.nen).id,
       // Gắn lên khối gốc (thanh trên / trang chính): bên trong chỉ dùng `var(--sk-*)`.
-      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${nenUrl}") center / cover no-repeat`, '--sk-goc': 'none' } : {}) } as CSSProperties,
+      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${nenUrl}") center / cover no-repeat`, '--sk-goc': 'none' } : {}), ...bienRieng(maNs) } as CSSProperties,
       anhNhom: anhNhom(skin),
       iconMatNa: !!skin.anhOMask,   // style đơn sắc: icon là mặt nạ, tô bằng màu chữ
       // Nền ảnh cá nhân ⇒ BỎ các asset trang trí của style (nhân vật, hoạ tiết góc, gạch) — ảnh của người dùng là chính.
@@ -97,5 +137,5 @@ export function useSkinErp() {
       nhanVatLoc: skin.nhanVatLoc,
       gach: tuChon ? undefined : skin.trangTri?.gach,
     }
-  }, [gd, doc])
+  }, [gd, doc, maNs])
 }
