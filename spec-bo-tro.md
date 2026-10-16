@@ -350,3 +350,10 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Một nguồn tiến trình:** `fn_duoi_tien_trinh(hs)` — HS (app), TA (ca đuổi), ERP cùng đọc. Mỗi dạng có trạng thái xong · đang học · tới lượt · khoá · trên giấy, và nơi làm (ở nhà / tại ca).
 - **Khoá tuần tự** theo độ khó trong chuyên đề của MỤC TIÊU; TA mở tay được (`fn_duoi_mo_dang`). Dạng ngoài mục tiêu KHÔNG hiện — học thêm thì ra phần Học tập.
 - **Đóng đợt** vẫn do giáo viên/TA xác nhận (hệ chỉ đề xuất khi đủ dạng / đủ buổi).
+
+## 23. Cập nhật 16/10 — TA xem câu em đang làm + lời giải chi tiết
+
+- **Nhu cầu (Thùy):** app HS hiện câu nào thì app TA có chỗ nhìn đúng câu đó, kèm đáp án chi tiết, để TA giảng không cần nháp.
+- **Một nguồn:** `fn_ta_cau_cua_em(hs, buoi, so_ngay, gioi_han)` (chỉ nhân sự) đọc bản chụp `bai_test_cau` — đúng đề/hình/lựa chọn/ngữ liệu em thấy — cộng bài làm của em (chọn gì, đúng/sai). Phủ 7 loại bài: luyện · test cuối ca · retest · đuổi luyện/test · bù luyện/test.
+- **Màn:** khối "👁 Câu em đang làm" (`CauCuaEmTA`) trong ca yếu · ca đuổi (mỗi em có mặt) · ca bù. Câu em đang đứng tự mở; đáp án đúng + lời giải chi tiết (+ ảnh lời giải) chỉ hiện khi TA bấm hoặc em đã trả lời. Mặc định lấy bài của ngày buổi; nút "Xem 7 ngày gần nhất".
+- **Giới hạn biết trước:** câu chưa có lời giải trong kho hiện nút "(chưa có)"; "đang làm" suy từ câu chưa trả lời đầu tiên (HS có thể đang ở câu khác nếu làm nhảy cóc); dạng Hình theo mô hình học trên giấy nên không có câu app.

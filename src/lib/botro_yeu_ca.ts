@@ -152,6 +152,28 @@ export async function suaKetQuaTln(baiLamCauId: string, dung: boolean, lyDo?: st
   return data as { verdict: 'correct' | 'wrong'; doi: boolean }
 }
 
+// ── TA XEM CÂU EM ĐANG LÀM (Thùy 16/10) — đúng câu em thấy trên app (yếu · đuổi · bù): đề + hình + lựa chọn + đáp án + LỜI GIẢI chi tiết,
+// để TA giảng không cần nháp. Staff-only; mới nhất trước. p_buoi = ca đang mở; p_so_ngay = lùi thêm bao nhiêu ngày (đuổi/bù không gắn buổi).
+export type LoaiBaiCauEm = 'bo_tro' | 'bo_tro_test' | 'retest' | 'htd_luyen' | 'htd_test' | 'bu_luyen' | 'bu_test'
+export type CauCuaEm = {
+  bai_test_id: string; loai_bai: LoaiBaiCauEm; tao_luc: string; da_nop: boolean
+  bai_test_cau_id: string; thu_tu: number; ma_cau: string | null; ma_dang: string | null; ten_dang: string
+  loai_cau: 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan' | string
+  noi_dung: string | null; lua_chon: string[] | null; menh_de: unknown; anh_de: string | null; ngu_lieu: string | null
+  dap_an_key: unknown; loi_giai: string | null; anh_dap_an: string | null
+  dap_an_hs: unknown; verdict: 'correct' | 'partial' | 'wrong' | null
+  dang_lam: boolean // câu em chưa trả lời đầu tiên của bài chưa nộp = câu em đang đứng trên app
+}
+export const LOAI_BAI_CAU_EM: Record<LoaiBaiCauEm, string> = {
+  bo_tro: 'Luyện', bo_tro_test: 'Test cuối ca', retest: 'Retest',
+  htd_luyen: 'Đuổi · luyện', htd_test: 'Đuổi · test', bu_luyen: 'Bù · luyện', bu_test: 'Bù · test',
+}
+export async function cauCuaEm(hocSinhId: string, buoiId: string | null, soNgay = 0, gioiHan = 40): Promise<CauCuaEm[]> {
+  const { data, error } = await supabase.rpc('fn_ta_cau_cua_em', { p_hoc_sinh: hocSinhId, p_buoi: buoiId, p_so_ngay: soNgay, p_gioi_han: gioiHan })
+  if (error) throw error
+  return (data as CauCuaEm[]) ?? []
+}
+
 // ── THEO DÕI CA TRONG NGÀY + IN TÀI LIỆU GIẤY (Thùy 21/09) — migration 202609211729. In = CÙNG logic đưa câu của app (MCQ tuyệt đối,
 // né câu đã gặp); bài in là bai_test loai 'bo_tro' có in_giay_at nên tiến độ/test cuối ca thấy như bài app. Kết quả giấy: nhân sự bấm đáp án
 // em khoanh, MÁY chấm theo key.
