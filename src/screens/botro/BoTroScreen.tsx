@@ -15,6 +15,7 @@ import { listPhong, type Phong } from '../../lib/phong'
 import { homNayVN } from '../../lib/tuan'
 import SearchSelect, { norm } from '../../components/SearchSelect'
 import { tenNganHS, tenHienThiDs } from '../../lib/hoten'
+import { CauCuaEmTA } from '../ta/CauCuaEmTA'
 
 type Tab = 'canbu' | 'daxep' | 'xong' | 'khongbu'
 const TABS: { k: Tab; ten: string }[] = [{ k: 'canbu', ten: 'Cần bù' }, { k: 'daxep', ten: 'Đã xếp' }, { k: 'xong', ten: 'Hoàn thành' }, { k: 'khongbu', ten: 'Không bù' }]
@@ -627,6 +628,8 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
                       )}
                     </div>
                     </div>
+                    {/* Câu em đang làm (luyện/test bù) + đáp án + lời giải chi tiết — TA giảng không cần nháp (Thùy 16/10) */}
+                    <CauCuaEmTA hocSinhId={r.hoc_sinh_id} buoiId={buoiId} mon={info?.mon || 'Toán'} tenHS={tenHT[i]} />
                     <div>
                       <div className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Nhận xét của GV</div>
                       <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={readOnly} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}

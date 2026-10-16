@@ -15,6 +15,7 @@ import { duoiTienTrinh, moTayDangDuoi, type DotDuoiHS, type DangDuoiHS } from '.
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { BKTabHeader } from '../../components/bk/BKUI'
+import { CauCuaEmTA } from './CauCuaEmTA'
 
 export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose: () => void }) {
   const [roster, setRoster] = useState<BuoiHocHS[]>([])
@@ -193,6 +194,9 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
                   </div>
                 )
               })()}
+
+              {/* Câu em đang làm + đáp án + lời giải chi tiết (Thùy 16/10) — TA giảng không cần nháp */}
+              {r.diem_danh === 'co_mat' && <div className="mt-2.5"><CauCuaEmTA hocSinhId={r.hoc_sinh_id} buoiId={buoiId} mon={monDuoiCua(r.hoc_sinh_id) || 'Toán'} tenHS={tenHT[i]} giay={coThietBi === false} /></div>}
 
               <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={dgXong} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}
                 placeholder="Nhận xét sau buổi (tiến độ bắt kịp, điểm cần lưu ý…)" rows={2}

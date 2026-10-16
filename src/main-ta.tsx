@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
 import AppTa from './AppTa'
 import './index.css'
+import 'katex/dist/katex.min.css' // công thức (MathText): thiếu CSS này ⇒ số mũ/phân số hiện "x2" — lỗi cũ ở khối "Câu trả lời ngắn", lộ ra khi thêm viewer câu (16/10)
 import { initErrorBuffer } from './lib/errorBuffer'
 import { initAppBadgeBridge } from './lib/appBadge'
 

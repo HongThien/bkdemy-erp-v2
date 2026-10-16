@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-402 bảng · 25 view · 0 enum · 188 trigger · 1103 function
+402 bảng · 25 view · 0 enum · 188 trigger · 1104 function
 
 ## _app_secrets
 
@@ -8433,6 +8433,7 @@ WITH luot AS (
 - `fn_ta_bo_viec(p_id uuid, p_ly_do text DEFAULT 'TA tự bỏ'::text)` → void
 - `fn_ta_buoi_thang(p_ns uuid, p_ym text)` → TABLE(buoi_id uuid, ten_lop text, ngay date, gio_bat_dau time without time zone, vang boolean, ly_do text)
 - `fn_ta_buoi_thieu_cong(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(loai text, ngay date, lop_id uuid, ten text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, buoi_hoc_id uuid, ca_bo_tro_id uuid, nguoi_phu_trach text)
+- `fn_ta_cau_cua_em(p_hoc_sinh uuid, p_buoi uuid DEFAULT NULL::uuid, p_so_ngay integer DEFAULT 0, p_gioi_han integer DEFAULT 40)` → jsonb
 - `fn_ta_cham_cong_khai_bu(p_vao timestamp with time zone, p_ra timestamp with time zone, p_co_so text DEFAULT NULL::text)` → uuid
 - `fn_ta_cham_cong_nhap_ho(p_ns uuid, p_vao timestamp with time zone, p_ra timestamp with time zone, p_ly_do text)` → uuid
 - `fn_ta_cham_cong_ra()` → uuid
@@ -8687,9 +8688,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

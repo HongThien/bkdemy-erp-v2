@@ -7,6 +7,7 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inSinhHinhGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
 import { MathText } from '../kho/ui'
+import { CauCuaEmTA } from './CauCuaEmTA'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -285,6 +286,9 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
             </div>
           )}
         </Khoi>
+
+        {/* 2‑. TA xem đúng câu em đang làm + đáp án + lời giải chi tiết (Thùy 16/10) — cả ca giấy: phiếu in không kèm lời giải để TA giảng */}
+        {coMat && <CauCuaEmTA hocSinhId={ca.hs.id} buoiId={ca.buoi_id} mon={ca.mon} giay={cheDo === 'giay'} />}
 
         {/* 2a. PHIẾU GIẤY — in khi thiếu iPad + nhập kết quả (hiện khi em có mặt và ca chưa đóng, hoặc đã có phiếu) */}
         {(phieu.length > 0 || (coMat && !daDong && (cheDo === 'giay' || coHinh))) && (
