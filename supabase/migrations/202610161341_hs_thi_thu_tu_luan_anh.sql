@@ -130,9 +130,10 @@ returns jsonb language sql stable security definer set search_path to 'public' a
                     then round((select tong from tk) / (select sum(diem) from cau) * 10, 2) end,
     'phan', case when (select cho from tk) = 0 then
               (select coalesce(jsonb_agg(jsonb_build_object('phan', p.phan, 'toi_da', p.toi_da, 'diem', p.diem) order by p.tt), '[]'::jsonb)
-                 from (select coalesce(c.phan, '') phan, sum(c.diem) toi_da, min(c.thu_tu) tt,
-                              (select coalesce(sum(d.diem), 0) from dat d where d.phan = coalesce(c.phan, '')) diem
-                         from cau c group by coalesce(c.phan, '')) p)
+                 from (select g.phan, g.toi_da, g.tt,
+                              (select coalesce(sum(d.diem), 0) from dat d where d.phan = g.phan) diem
+                         from (select coalesce(c.phan, '') phan, sum(c.diem) toi_da, min(c.thu_tu) tt
+                                 from cau c group by 1) g) p)
             else '[]'::jsonb end
   ) end
 $$;

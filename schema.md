@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-406 bảng · 25 view · 0 enum · 190 trigger · 1111 function
+407 bảng · 25 view · 0 enum · 190 trigger · 1118 function
 
 ## _app_secrets
 
@@ -200,7 +200,7 @@
 | nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
-| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` · `htd_luyen` · `htd_test` · `bu_luyen` · `bu_test` |
+| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` · `htd_luyen` · `htd_test` · `bu_luyen` · `bu_test` · `on_thi_luyen` · `thi_thu` |
 | mon | text |  | 'Toán'::text |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
@@ -4675,8 +4675,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -5285,6 +5285,17 @@ END |  |  |
 | at | timestamp with time zone |  | now() |  |  |
 | cu | jsonb | Y |  |  |  |
 | moi | jsonb | Y |  |  |  |
+
+## thi_thu_anh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bai_lam_id | uuid |  |  | FK→bai_lam.id |  |
+| bai_test_cau_id | uuid |  |  | FK→bai_test_cau.id |  |
+| path | text |  |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## thoi_khoa_bieu
 
@@ -7731,6 +7742,7 @@ WITH luot AS (
 - `_hs_la_test(p_hs uuid)` → boolean
 - `_hs_lop_tu_luyen(p_hs uuid, p_mon text)` → uuid
 - `_hs_nhan_vat_chinh_ghi_log()` → trigger
+- `_hs_on_thi_khoi(p_mon text)` → text
 - `_hsta_chi_tieu_gio_bo_tro()` → numeric
 - `_hsta_chot_ghi_log()` → trigger
 - `_hsta_ti_trong(p_dau_viec text)` → numeric
@@ -8336,8 +8348,13 @@ WITH luot AS (
 - `fn_hs_mo_app()` → void
 - `fn_hs_nhan_vat_cua_toi()` → text
 - `fn_hs_nhiem_vu_cua_toi(p_mon text)` → jsonb
+- `fn_hs_on_thi_ds(p_mon text)` → jsonb
+- `fn_hs_on_thi_luyen_sinh(p_de uuid)` → jsonb
+- `fn_hs_on_thi_xem(p_de uuid)` → jsonb
 - `fn_hs_rank_cua_toi(p_mon text)` → jsonb
 - `fn_hs_thanh_tuu_cua_toi()` → jsonb
+- `fn_hs_thi_thu_bat_dau(p_de uuid)` → jsonb
+- `fn_hs_thi_thu_diem(p_bai_test uuid)` → jsonb
 - `fn_hs_thu_thach_ket_qua(p_bai_test uuid)` → jsonb
 - `fn_hs_tinh_nang_mo()` → text[]
 - `fn_hs_tutorial_cua_toi()` → text[]
@@ -8728,6 +8745,7 @@ WITH luot AS (
 - `tbph_updated_at()` → trigger
 - `tg_ban_do_sync_ca_test_cau()` → trigger
 - `tg_ung_vien_doi_khoi_phan_cong()` → trigger
+- `thi_thu_anh_ghi_duoc(p_bai_lam uuid, p_cau uuid)` → boolean
 - `thu_thach_luot_do(p_mon text)` → uuid
 - `thu_thach_sinh(p_mon text, p_dangs jsonb)` → jsonb
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
@@ -8746,9 +8764,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
