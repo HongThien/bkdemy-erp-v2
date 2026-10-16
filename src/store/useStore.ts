@@ -425,7 +425,8 @@ export const adminNavForUser = (u: User): NavGroup[] => {
 // Cây Nhân sự THẬT (từ getMyScope): chỉ "Việc của tôi" (vận hành). Mọi tra-cứu/sửa làm NGAY trong màn Việc-của-tôi
 // (bấm card đã làm để sửa) → đã BỎ nhóm "Tra cứu & sửa" (placeholder, không link đâu). `scope` giữ cho tương lai.
 export const staffNavFromScope = (_scope: MyScope | null): NavGroup[] => {
-  return [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }] }]
+  // 'myplan' = Kế hoạch của tôi (Thùy 16/10) — mọi nhân sự đều có, không cần quyền (sổ riêng, RLS chỉ chính chủ).
+  return [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }, { id: 'myplan', ten: 'Kế hoạch của tôi' }] }]
 }
 
 // (cũ — mock) Cây Nhân sự 2 tầng derive theo role mock. Giữ tạm cho tham chiếu.

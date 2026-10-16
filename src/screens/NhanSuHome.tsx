@@ -8,6 +8,7 @@ import DuongDan from '../components/DuongDan'
 import { useAnTieuDeTrung } from '../lib/useAnTieuDeTrung'
 import { useNutQuayVe } from '../lib/useNutQuayVe'
 import HomeScreen from './HomeScreen'
+import MyPlanScreen from './myplan/MyPlanScreen'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
@@ -710,7 +711,8 @@ export default function NhanSuHome({ user }: { user: User }) {
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : laHome(staffLeaf) ? (
         <HomeScreen />
-      ) : staffLeaf === 'viec' ? (
+      ) : staffLeaf === 'myplan' ? <MyPlanScreen />
+      : staffLeaf === 'viec' ? (
         <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={moBuoi} /></section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
       : staffLeaf === 'bdm' ? <BanDoMoiScreen />

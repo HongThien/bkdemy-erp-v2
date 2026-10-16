@@ -6,6 +6,7 @@ import type { NavGroup, NavLeaf } from '../types'
 
 export const LEAF_HOME = 'home'
 export const LEAF_VIEC = 'viec'
+export const LEAF_PLAN = 'myplan'   // Kế hoạch của tôi (MyPlan, Thùy 16/10) — mọi nhân sự đều có
 // Trang của một nhóm trên Home = leaf 'home:<tên nhóm>' → Back quay đúng về trang nhóm vừa mở.
 export const leafNhom = (nhom: string) => `${LEAF_HOME}:${nhom}`
 export const laHome = (leaf: string) => leaf === LEAF_HOME || leaf.startsWith(`${LEAF_HOME}:`)
@@ -29,7 +30,7 @@ export const VIEC_MO_TA = 'Việc cần làm trong tuần'
 
 // Icon từng mục — chỉ để quét mắt cho nhanh; mục chưa có icon dùng icon của nhóm.
 const LEAF_ICON: Record<string, string> = {
-  viec: '✅',
+  viec: '✅', myplan: '🗂',
   // Vận hành
   buoihoc: '🗓', ops_report: '📣', prep: '🧹', phancong_ops: '🧑‍🤝‍🧑', hs: '🎒', lop: '🏫', tuyensinh: '🎚', test_dau_vao: '📝',
   botro: '🩹', phong_hoc: '🚪', tu_qua: '🎁', khaosat: '🕸', su_kien: '🎉',
@@ -61,6 +62,7 @@ export function traiMuc(groups: NavGroup[]): MucMenu[] {
   return out
 }
 export const MUC_VIEC: MucMenu = { id: LEAF_VIEC, ten: 'Việc của tôi', nhom: null, cha: null, icon: LEAF_ICON.viec }
+export const MUC_PLAN: MucMenu = { id: LEAF_PLAN, ten: 'Kế hoạch của tôi', nhom: null, cha: null, icon: LEAF_ICON.myplan }
 
 // ── CÂY để đi lại (thanh địa chỉ) ─────────────────────────────────────────────
 // id = leaf sẽ mở khi bấm; id null = THƯ MỤC không có trang riêng (vd "Vận hành lớp học") — bấm thì xổ các mục con.
@@ -69,13 +71,15 @@ export type NutMenu = { id: string | null; ten: string; icon: string; con?: NutM
 // `coHome` = người này có Trang chính (được cấp ≥1 màn ngoài "Việc của tôi"). Không có thì gốc cây = Việc của tôi.
 export function cayMenu(adminNav: NavGroup[], coHome: boolean): NutMenu {
   const viec: NutMenu = { id: LEAF_VIEC, ten: MUC_VIEC.ten, icon: MUC_VIEC.icon }
-  if (!coHome) return viec
+  const plan: NutMenu = { id: LEAF_PLAN, ten: MUC_PLAN.ten, icon: MUC_PLAN.icon }
+  // Người không có Trang chính: gốc = Việc của tôi, Kế hoạch của tôi nằm ngay dưới (đường dẫn "Việc của tôi › Kế hoạch của tôi").
+  if (!coHome) return { ...viec, con: [plan] }
   const nut = (l: NavLeaf, nhom: string | null): NutMenu => (l.children?.length
     ? { id: null, ten: l.ten, icon: LEAF_ICON[l.id] ?? '📁', con: l.children.map((c) => nut(c, nhom)) }
     : { id: l.id, ten: l.ten, icon: LEAF_ICON[l.id] ?? nhomIcon(nhom) })
   return {
     id: LEAF_HOME, ten: 'Trang chính', icon: '🏠',
-    con: [viec, ...adminNav.map((g): NutMenu => ({ id: leafNhom(g.nhom ?? ''), ten: g.nhom ?? '', icon: nhomIcon(g.nhom), con: g.leaves.map((l) => nut(l, g.nhom)) }))],
+    con: [viec, plan, ...adminNav.map((g): NutMenu => ({ id: leafNhom(g.nhom ?? ''), ten: g.nhom ?? '', icon: nhomIcon(g.nhom), con: g.leaves.map((l) => nut(l, g.nhom)) }))],
   }
 }
 

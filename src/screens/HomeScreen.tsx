@@ -426,7 +426,7 @@ export default function HomeScreen() {
 
   // ── 4 BOX LỚN: thân từng box + 4 VỊ TRÍ (hoán đổi được) ──
   const thanLon = (id: string): ReactNode => {
-    if (id === 'viec_ngay') return <ViecHangNgay compact onMoVietCuaToi={lenViec} />
+    if (id === 'viec_ngay') return <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} />
     if (id === 'tien_do') return <TienDoViec />
     if (id === 'order') return <BangOrder />
     return (
@@ -461,7 +461,7 @@ export default function HomeScreen() {
     return (
       <section style={khung} className="h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
         <HomeScene canh={canh}
-          today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} /> : null}
+          today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} /> : null}
           dev={hienBox('tien_do') ? <TienDoViec /> : null}
           order={hienBox('order') ? <BangOrder /> : null}
           profile={(
