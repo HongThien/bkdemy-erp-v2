@@ -7958,11 +7958,11 @@ WITH luot AS (
 - `fn_bdm_gan_cum(p_ma_cum text, p_dang_bai text)` → void
 - `fn_bdm_gop_chuyen_de(p_tu text, p_vao text)` → void
 - `fn_bdm_ha_nhom(p_id text, p_nhom_dich text)` → text
-- `fn_bdm_khop_dem(p_khoi text)` → jsonb
+- `fn_bdm_khop_dem(p_khoi text, p_chu_de text DEFAULT NULL::text)` → jsonb
 - `fn_bdm_khop_dich(p_khoi text)` → jsonb
 - `fn_bdm_khop_giao(p_tai_khoan uuid, p_khoi text, p_chu_de text DEFAULT NULL::text)` → bigint
 - `fn_bdm_khop_go(p_id bigint)` → void
-- `fn_bdm_khop_hang(p_khoi text, p_hang text, p_limit integer DEFAULT 30, p_offset integer DEFAULT 0)` → jsonb
+- `fn_bdm_khop_hang(p_khoi text, p_hang text, p_limit integer DEFAULT 30, p_offset integer DEFAULT 0, p_chu_de text DEFAULT NULL::text)` → jsonb
 - `fn_bdm_khop_pham_vi()` → jsonb
 - `fn_bdm_khop_quyet(p_ma_cau text, p_hanh_dong text, p_dang_bai text DEFAULT NULL::text, p_ly_do text DEFAULT NULL::text)` → jsonb
 - `fn_bdm_khop_ung_vien()` → jsonb

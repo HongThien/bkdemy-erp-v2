@@ -22,7 +22,6 @@ import DuyetCauTab from './DuyetCauTab'
 import DuyetDungSaiTab from './DuyetDungSaiTab'
 import DienOAiTab from './DienOAiTab'
 import HinhLuyenChuaPhanTab from './HinhLuyenChuaPhanTab'
-import KhopBanDoMoiTab from './KhopBanDoMoiTab'
 import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
 import { listBienTheChoDuyetLoiGiai, duyetLoiGiaiBienThe, type BienTheChoDuyetLoiGiai, listCachGiaiChoDuyetLoiGiai, duyetLoiGiaiCachGiai, type CachGiaiChoDuyetLoiGiai } from '../../lib/kho/hinh'
 import { MathText } from '../kho/ui'
@@ -39,7 +38,7 @@ type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: s
 // 'dung_sai' (CEO 12/09): câu Đúng/Sai là LOẠI RIÊNG — bộ lọc riêng trên thanh tab, UI duyệt theo từng mệnh đề (DuyetDungSaiTab).
 // Đếm vẫn qua fn_kho_dem_hang_duyet như các bộ lọc khác (DB chỉ đếm nhánh có bảng con mệnh đề: Đại/HGT; KHTN hold).
 // 'hl' = "Chưa phân mô hình" (CEO 14/10): bài Hình–Luyện đã vào kho nhưng ý chưa gán bài mô hình — như 'chua_dang' của Đại. Sống ở HinhLuyenChuaPhanTab.tsx.
-type Tab = 'chua' | HangDuyetLoc | 'tn' | 'dien' | 'hl' | 'khop'
+type Tab = 'chua' | HangDuyetLoc | 'tn' | 'dien' | 'hl'
 // 'chua_dang' (CEO 13/09): câu nhập kho không xác định được dạng — nằm ở dạng chờ, DB chặn duyệt tới khi chọn dạng thật.
 const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong', 'chua_dang', 'dung_sai']
 // Môn chỉ có luồng DUYỆT CÂU (Tiếng Anh — 02/10): đáp án đến từ tài liệu GV + 2 bên kiểm độc lập, không có giải bài AI,
@@ -165,13 +164,11 @@ export default function DuyetLoiGiaiScreen() {
           {!chiDuyetCau && tabBtn('tn', 'Trắc nghiệm AI')}
           {coKhoHinh(mon) && tabBtn('dien', 'Điền ô AI')}
           {coKhoHinh(mon) && tabBtn('hl', 'Hình luyện · chưa phân mô hình', demHL.reduce((a, d) => a + d.so_bai, 0))}
-          {coKhoHinh(mon) && tabBtn('khop', 'Khớp bản đồ mới')}
         </div>
         <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className="ml-3 rounded-md border border-slate-200 px-2 py-1 text-[13px]">
           {KHOI_OPTIONS.map((k) => {
             const d = dem.find((x) => x.khoi === k)
             const n = laLoc ? demLoc(tab as HangDuyetLoc, k) : 0
-            if (tab === 'khop') return <option key={k} value={k}>Khối {k}</option>
             if (tab === 'hl') { const h = demHL.find((x) => x.khoi === k); return <option key={k} value={k}>Khối {k}{h ? ` · ${h.so_bai} bài / ${h.so_y} ý` : ''}</option> }
             return <option key={k} value={k}>Khối {k}{laLoc ? ` · ${n} câu` : d ? ` · ${d.so_cau} chưa giải${d.so_cho_giai ? ` (${d.so_cho_giai} đã đặt)` : ''}` : ''}</option>
           })}
@@ -198,7 +195,6 @@ export default function DuyetLoiGiaiScreen() {
       : !monOk ? <p className="px-6 py-4 text-sm text-slate-400">Bạn chưa được phân môn nào (nhan_su_mon) — không có kho để duyệt.</p>
       : tab === 'chua' ? <ChuaGiaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />
       : tab === 'hl' ? <HinhLuyenChuaPhanTab khoi={khoi} onChanged={reloadDem} />
-      : tab === 'khop' ? <KhopBanDoMoiTab khoi={khoi} />
       : tab === 'tn' ? <TracNghiemAiTab mon={mon} khoi={khoi} />
       : tab === 'dien' ? <DienOAiTab mon={mon} khoi={khoi} />
       : tab === 'dung_sai' ? <DuyetDungSaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />

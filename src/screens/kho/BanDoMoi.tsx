@@ -25,6 +25,8 @@ import type { Luoi } from '../../lib/kho/hinh'
 import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
 import { MathText, inp } from './ui'
+import KhopBanDoMoiTab from '../duyetloigiai/KhopBanDoMoiTab'
+import { khopDem } from '../../lib/kho/bdmKhop'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
 // (ngăn 📦, nhãn dạng cũ, ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB vẫn giữ: tới bước XẾP BÀI
@@ -32,7 +34,7 @@ import { MathText, inp } from './ui'
 const HIEN_KHOP_CU = false
 
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
-const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false }
+const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean; duyet: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false, duyet: false }
 
 // Đích của bảng gán câu: câu chưa gán của 1 nhóm (②) hoặc 1 chuyên đề trong chủ đề (③)
 type GanMo = { nhan: string; dich: { nhom: string } | { chuDe: string; chuyenDe: string }; lua: { id: string; nhan: string }[] }
@@ -69,6 +71,11 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [dangKeo, setDangKeo] = useState<Keo['loai'] | null>(null)
   const [lt, setLt] = useState<{ loai: LoaiNoiDung; id: string; ten: string; current: LyThuyet; lan: number } | null>(null)
   const [nganCu, setNganCu] = useState(NHO.nganCu)
+  // B4 Duyệt khớp (Thùy 16/10): chế độ chia đôi — bản đồ bên trái, hàng đợi duyệt bên phải; số câu cần xem tính ở DB (fn_bdm_khop_dem)
+  const [duyet, setDuyetRaw] = useState(NHO.duyet)
+  const setDuyet = (v: boolean) => { NHO.duyet = v; setDuyetRaw(v) }
+  const [canDuyet, setCanDuyet] = useState<number | null>(null)
+  const [soi, setSoi] = useState<string | null>(null)   // dạng bài vừa bấm "Xem trên bản đồ" — sáng lên vài giây
   const [dangCu, setDangCu] = useState<BdmDangCu[] | null>(null)
   const [ganMo, setGanMo] = useState<GanMo | null>(null)
   const keoRef = useRef<Keo | null>(null)
@@ -95,6 +102,19 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   useEffect(() => { if (chuDe) NHO.chuDe[khoi] = chuDe.id }, [chuDe?.id, khoi]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (chuDe && o) NHO.chuyenDe[chuDe.id] = o.chuyen_de_id }, [chuDe?.id, o?.chuyen_de_id]) // eslint-disable-line react-hooks/exhaustive-deps
   const chonChuDe = (id: string) => { setChuDeId(id); setChuyenDeId(null); setChon(null) }
+  const napCanDuyet = useCallback(() => {
+    khopDem(khoi).then((d) => setCanDuyet(d.de_xuat + d.trong + d.thieu + d.mau)).catch(() => setCanDuyet(null))
+  }, [khoi])
+  useEffect(() => { napCanDuyet() }, [napCanDuyet])
+  // "Xem trên bản đồ": nhảy tới chủ đề › chuyên đề chứa dạng bài và làm sáng nó ~4 giây (không mở popup, không đổi dữ liệu)
+  const xemDangBai = (id: string) => {
+    if (!cay) return
+    for (const cd of cay.chu_de) for (const oo of cd.o) for (const n of oo.nhom) if (n.dang_bai.some((d) => d.id === id)) {
+      setChuDeId(cd.id); setChuyenDeId(oo.chuyen_de_id); setChon(null); setSoi(`d:${id}`)
+      window.setTimeout(() => setSoi((x) => (x === `d:${id}` ? null : x)), 4000)
+      return
+    }
+  }
   // KHUÔN màn theo vùng của chủ đề (registry BDM_NHANH) — Đại/HGT 4 tầng · Hình–Học · Hình–Luyện · 'chon' = chưa tách
   const khuon = chuDe ? khuonCuaVung(chuDe.nhanh) : 'bon_tang'
   const chonChuyenDe = (id: string) => { setChuyenDeId(id); setChon(null) }
@@ -216,7 +236,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   if (loiTai) return <div className="p-8 text-sm text-rose-600">Không tải được bản đồ mới: {loiTai}</div>
   if (!cay) return <div className="flex h-full items-center justify-center text-sm text-slate-400">Đang tải bản đồ mới…</div>
 
-  const sang = (k: string) => (hover === k ? 'ring-2 ring-indigo-400 ring-offset-1' : '')
+  const sang = (k: string) => (hover === k ? 'ring-2 ring-indigo-400 ring-offset-1' : soi === k ? 'ring-4 ring-emerald-400 ring-offset-2' : '')
 
   return (
     <div className="flex h-full min-h-0 flex-col">
@@ -251,6 +271,12 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
           📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
         </button>}
+        {khuon === 'bon_tang' && chuDe && (
+          <button onClick={() => setDuyet(!duyet)} title="Duyệt câu AI đã xếp vào dạng bài (kho tạm · phạm vi người duyệt · kiểm mẫu) — vừa duyệt vừa nhìn bản đồ"
+            className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${duyet ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : 'border-slate-200 text-slate-600 hover:border-emerald-400'}`}>
+            ✅ Duyệt kho{canDuyet ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{canDuyet}</span> : null}
+          </button>
+        )}
         <span className={`ml-auto flex gap-3 text-[11.5px] text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
           <span>Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
           <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
@@ -375,6 +401,11 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         {chon && chuDe && (chon.loai === 'chu_de' || o) && (
           <ChiTiet chon={chon} cay={cay} cd={chuDe} o={o ?? chuDe.o[0]} khoi={khoi} onDong={() => setChon(null)}
             lam={lam} moLyThuyet={moLyThuyet} onDaXoa={() => setChon(null)} moGan={moGan} dieuHuong={dieuHuongDb} />
+        )}
+        {duyet && chuDe && (
+          <aside className="flex w-[min(560px,46%)] shrink-0 flex-col border-l border-slate-300 bg-white">
+            <KhopBanDoMoiTab key={khoi} khoi={khoi} chuDeId={chuDe.id} onXem={xemDangBai} onChanged={napCanDuyet} />
+          </aside>
         )}
       </div>
       )}

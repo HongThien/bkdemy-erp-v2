@@ -20,7 +20,7 @@ export type KhopCau = {
   dang_bai_id: string | null; dang_bai: string | null; nhom: string | null; chu_de: string | null; chuyen_de: string | null
   dang_cu: string | null; chuyen_de_cu: string | null
 }
-export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; chuyen_de: string; chu_de: string; chu_de_id: string }
+export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; nhom_id: string; chuyen_de: string; chuyen_de_id: string; chu_de: string; chu_de_id: string }
 export type KhopPhamVi = { id: number; tai_khoan_id: string; khoi: string; chu_de_id: string | null; chu_de: string | null; nguoi: string; cua_toi: boolean }
 export type KhopHanhDong = 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi'
 
@@ -30,9 +30,9 @@ const go = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> => 
   return data as T
 }
 
-export const khopDem = (khoi: string) => go<KhopDem>('fn_bdm_khop_dem', { p_khoi: khoi })
-export const khopHang = (khoi: string, hang: KhopHang, limit = 30, offset = 0) =>
-  go<{ tong: number; rows: KhopCau[] }>('fn_bdm_khop_hang', { p_khoi: khoi, p_hang: hang, p_limit: limit, p_offset: offset })
+export const khopDem = (khoi: string, chuDe?: string | null) => go<KhopDem>('fn_bdm_khop_dem', { p_khoi: khoi, p_chu_de: chuDe ?? null })
+export const khopHang = (khoi: string, hang: KhopHang, limit = 30, offset = 0, chuDe?: string | null) =>
+  go<{ tong: number; rows: KhopCau[] }>('fn_bdm_khop_hang', { p_khoi: khoi, p_hang: hang, p_limit: limit, p_offset: offset, p_chu_de: chuDe ?? null })
 export const khopDich = (khoi: string) => go<KhopDich[]>('fn_bdm_khop_dich', { p_khoi: khoi })
 export const khopQuyet = (maCau: string, hanhDong: KhopHanhDong, dangBai?: string | null, lyDo?: string | null) =>
   go<{ ok: boolean }>('fn_bdm_khop_quyet', { p_ma_cau: maCau, p_hanh_dong: hanhDong, p_dang_bai: dangBai ?? null, p_ly_do: lyDo ?? null })

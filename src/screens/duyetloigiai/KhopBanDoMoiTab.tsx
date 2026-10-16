@@ -16,7 +16,7 @@ const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
 const NHO: { hang: KhopHang } = { hang: 'de_xuat' }
 
-export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onChanged?: () => void }) {
+export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { khoi: string; chuDeId?: string | null; onXem?: (dangBaiId: string) => void; onChanged?: () => void }) {
   const [hang, setHangRaw] = useState<KhopHang>(NHO.hang)
   const [dem, setDem] = useState<KhopDem | null>(null)
   const [rows, setRows] = useState<KhopCau[]>([])
@@ -27,23 +27,25 @@ export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onC
   const [laAdmin, setLaAdmin] = useState(false)
   const [phamVi, setPhamVi] = useState<KhopPhamVi[]>([])
   const [hienPhamVi, setHienPhamVi] = useState(false)
+  const [locCD, setLocCD] = useState(true)   // chỉ câu thuộc CHỦ ĐỀ đang xem trên bản đồ (khi nhúng trong Bản đồ mới)
+  const cd = chuDeId && locCD ? chuDeId : null
   const req = useRef(0)
 
   const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h) }
 
   const napDem = useCallback(async () => {
-    try { setDem(await khopDem(khoi)) } catch (e: any) { setErr(e.message ?? String(e)) }
-  }, [khoi])
+    try { setDem(await khopDem(khoi, cd)) } catch (e: any) { setErr(e.message ?? String(e)) }
+  }, [khoi, cd])
 
   // Đổi NGỮ CẢNH (khối/hàng) ⇒ reset + nạp lại. Mutation trong cùng ngữ cảnh ⇒ vá tại chỗ (xem quyet()).
   useEffect(() => {
     const my = ++req.current
     setRows([]); setTong(0); setLoading(true); setErr(null)
-    khopHang(khoi, hang, TRANG, 0)
+    khopHang(khoi, hang, TRANG, 0, cd)
       .then((r) => { if (my === req.current) { setRows(r.rows); setTong(r.tong) } })
       .catch((e) => { if (my === req.current) setErr(e.message ?? String(e)) })
       .finally(() => { if (my === req.current) setLoading(false) })
-  }, [khoi, hang])
+  }, [khoi, hang, cd])
   useEffect(() => { void napDem() }, [napDem])
   useEffect(() => { khopDich(khoi).then(setDich).catch(() => setDich([])) }, [khoi])
   const napPhamVi = useCallback(async () => {
@@ -55,12 +57,12 @@ export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onC
   const buThem = useCallback(async () => {
     const my = req.current
     try {
-      const r = await khopHang(khoi, hang, TRANG, 0)
+      const r = await khopHang(khoi, hang, TRANG, 0, cd)
       if (my !== req.current) return
       setRows((prev) => { const co = new Set(prev.map((x) => x.ma_cau)); return [...prev, ...r.rows.filter((x) => !co.has(x.ma_cau))] })
       setTong(r.tong)
     } catch { /* nền — bỏ qua */ }
-  }, [khoi, hang])
+  }, [khoi, hang, cd])
 
   async function quyet(c: KhopCau, hd: Parameters<typeof khopQuyet>[1], dangBai?: string | null, lyDo?: string | null) {
     await khopQuyet(c.ma_cau, hd, dangBai, lyDo)
@@ -84,6 +86,11 @@ export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onC
             </button>
           ))}
         </div>
+        {chuDeId && (
+          <label className="flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-600" title="Chỉ hiện câu thuộc chủ đề đang mở trên bản đồ. Câu chưa có chủ đề luôn hiện.">
+            <input type="checkbox" checked={locCD} onChange={(e) => setLocCD(e.target.checked)} /> Chỉ chủ đề đang xem
+          </label>
+        )}
         {chinhXac !== null && (
           <span className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium ${chinhXac >= 98 ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-800'}`}
             title="Trong các câu AI gán mức chắc đã kiểm mẫu: tỉ lệ giữ nguyên. Dưới ngưỡng thì cả khối cần xem lại.">
@@ -91,7 +98,7 @@ export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onC
           </span>
         )}
         <button onClick={() => setHienPhamVi((v) => !v)} className="ml-auto rounded-md border border-slate-300 px-3 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50">
-          {laAdmin ? 'Phạm vi người duyệt' : 'Phạm vi của tôi'}
+          {laAdmin ? 'Phạm vi' : 'Phạm vi của tôi'}
         </button>
       </div>
       {hienPhamVi && <PhamViPanel khoi={khoi} dich={dich} laAdmin={laAdmin} rows={phamVi} onDoi={napPhamVi} />}
@@ -108,7 +115,7 @@ export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onC
             </p>
           ) : (
             <ul className="space-y-3">
-              {rows.map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} />)}
+              {rows.map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem} />)}
               {tong > rows.length && <li className="py-2 text-center text-[12px] text-slate-400">… còn {tong - rows.length} câu, xong câu trên sẽ tự nạp thêm</li>}
             </ul>
           )}
@@ -117,8 +124,8 @@ export default function KhopBanDoMoiTab({ khoi, onChanged }: { khoi: string; onC
   )
 }
 
-function CauCard({ c, hang, dich, onQuyet }: {
-  c: KhopCau; hang: KhopHang; dich: KhopDich[]
+function CauCard({ c, hang, dich, onQuyet, onXem }: {
+  c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void
   onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi', dangBai?: string | null, lyDo?: string | null) => Promise<void>
 }) {
   const [chon, setChon] = useState<string | null>(null)
@@ -139,7 +146,7 @@ function CauCard({ c, hang, dich, onQuyet }: {
         <span className="font-mono text-slate-400">{c.ma_cau}</span>
         {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
       </div>
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)]">
+      <div className="grid gap-3">
         <div className="min-w-0 text-[14px] text-slate-800">
           <MathText>{c.noi_dung}</MathText>
           {c.anh_de && <img src={c.anh_de} alt="" loading="lazy" className="mt-2 max-h-48 rounded border border-slate-200" />}
@@ -153,6 +160,7 @@ function CauCard({ c, hang, dich, onQuyet }: {
             <div>
               <div className="text-[11px] font-medium uppercase tracking-wide text-slate-400">{hang === 'mau' ? 'AI đã gán' : 'AI đề xuất'}</div>
               <div className="font-semibold text-slate-800">{c.dang_bai}</div>
+              {onXem && <button onClick={() => onXem(c.dang_bai_id!)} className="text-[12px] text-indigo-600 hover:underline">↗ Xem trên bản đồ</button>}
               <div className="text-[12px] text-slate-500">{c.chu_de} › {c.chuyen_de} › {c.nhom}</div>
             </div>
           )}
