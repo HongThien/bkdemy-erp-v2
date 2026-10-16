@@ -553,7 +553,7 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0 }
         {daXong.length > 0 && (
           <div className="mt-1">
             <button onClick={() => setXemXong(!xemXong)} className="px-1 text-[12px] font-bold text-[#63709A]">
-              {xemXong ? '▾' : '▸'} Đã xong ({daXong.length})
+              {xemXong ? '▾' : '▸'} Đã xong ({daXong.length}) <span className="font-medium text-[#9AA5C4]">· bấm vào buổi để xem, cần sửa thì ↩ Mở lại</span>
             </button>
             {xemXong && (
               <div className="mt-1 flex flex-col gap-1">

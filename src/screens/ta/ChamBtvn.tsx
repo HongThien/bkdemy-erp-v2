@@ -122,6 +122,11 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
     try { const r = await closeBTVN(buoiId); if (r.already) alert('BTVN đã đóng.'); else { alert(`Đã đóng BTVN — thưởng EXP cho ${r.thuong} HS.`); onChange() } }
     catch (e: any) { alert(e?.message ?? String(e)) } finally { setClosing(false) }
   }
+  // Mở lại BTVN đã đóng để sửa (dùng cả ở thanh đầu danh sách và trong màn chấm từng em).
+  async function moLai_() {
+    if (!confirm('Mở lại BTVN? EXP đã thưởng sẽ tính lại khi đóng.')) return
+    try { await reopenBTVN(buoiId); onChange(); await napLuoi(false) } catch (e: any) { alert(e?.message ?? String(e)) }
+  }
   async function traBai_(hsId: string) {
     try { await traBai(buoiId, hsId); await reloadNop() } catch (e: any) { alert(e.message ?? String(e)) }
   }
@@ -153,7 +158,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
     <div>
       <div className="mb-2.5 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu · {dsHS.length} HS{soNop > 0 && <> · <b className="text-teal-700">📱 {soNop} nộp app</b></>}</span>
-        <div className="ml-auto"><DongBar dong={dong} dongLbl="Đóng BTVN" onDong={dong_} onMoLai={async () => { if (!confirm('Mở lại BTVN? EXP đã thưởng sẽ tính lại khi đóng.')) return; await reopenBTVN(buoiId); onChange(); await napLuoi(false) }} closing={closing} /></div>
+        <div className="ml-auto"><DongBar dong={dong} dongLbl="Đóng BTVN" onDong={dong_} onMoLai={moLai_} closing={closing} /></div>
       </div>
       {/* Lưới KHÔNG khớp phiếu BTVN — báo rõ như tab ET (trước 23/09 màn này nuốt kết quả sync, đứng im không lý do). */}
       {sync?.doiCauTruc && <CanhBaoLuoi mau="amber" text="Phiếu BTVN của buổi đã đổi sau khi đóng — lưới giữ theo lúc chấm. Muốn bám phiếu mới: ↩ Mở lại, hệ tự đồng bộ (ô cũ còn điểm giữ lại, đánh dấu Ngoài phiếu)." />}
@@ -197,7 +202,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
         <ChamMotHS key={rMo.hoc_sinh_id} r={rMo} ten={tenHT[iMo]} buoi={buoi} n={nop[rMo.hoc_sinh_id]} dx={deXuat[rMo.hoc_sinh_id]}
           v={kq[rMo.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }} probs={probs} gradeOf={gradeOf} dong={dong} moCoiIds={new Set((sync?.moCoi ?? []).map((m) => m.problem.id))}
           urls={urls} nxMau={nxMau} dangTaiLieu={hopDang(dangTL.dang, dangBuoi, tenDang)} dangLoading={dangTL.loading} tenDang={tenDang} cb={cb.filter((x) => x.hoc_sinh_id === rMo.hoc_sinh_id)}
-          onClose={() => setHsMo(null)} pickKQ={pickKQ} bulkRow={bulkRow} setKQField={setKQField} traBai={traBai_}
+          onClose={() => setHsMo(null)} moLai={moLai_} pickKQ={pickKQ} bulkRow={bulkRow} setKQField={setKQField} traBai={traBai_}
           xacNhan={xacNhan_} chuyen={chuyen_} toggleNhanXet={toggleNhanXet} reloadNop={reloadNop}
           onCanhBaoChanged={async () => setCb(await listCanhBao(buoiId))} />
       )}
@@ -208,11 +213,11 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
 // ── MÀN CHẤM 1 HS — full-screen. Landscape: ảnh+tool 70% trái · form 30% phải. Portrait: ảnh trên, form dưới.
 // HS không có ảnh (chấm giấy) → chỉ form.
 function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, moCoiIds, urls, nxMau, dangTaiLieu, dangLoading, tenDang, cb,
-  onClose, pickKQ, bulkRow, setKQField, traBai, xacNhan, chuyen, toggleNhanXet, reloadNop, onCanhBaoChanged }: {
+  onClose, moLai, pickKQ, bulkRow, setKQField, traBai, xacNhan, chuyen, toggleNhanXet, reloadNop, onCanhBaoChanged }: {
   r: BuoiHocHS; ten: string; buoi: BuoiFull; n?: BtvnNop; dx?: DeXuat; v: BtvnKQ; probs: Problem[]
   gradeOf: (pid: string, hsId: string) => Grade | undefined; dong: boolean; moCoiIds: Set<string>; urls: Record<string, string>
   nxMau: NhanXetMau[]; dangTaiLieu: DangTaiLieu[]; dangLoading: boolean; tenDang: (md: string | null) => string; cb: CanhBao[]
-  onClose: () => void; pickKQ: (pid: string, hsId: string, result: ETResult) => void; bulkRow: (hsId: string, result: ETResult) => void
+  onClose: () => void; moLai: () => void; pickKQ: (pid: string, hsId: string, result: ETResult) => void; bulkRow: (hsId: string, result: ETResult) => void
   setKQField: (hsId: string, patch: Partial<BtvnKQ>) => void; traBai: (hsId: string) => void; xacNhan: (hsId: string) => void
   chuyen: (hsId: string, buoiMoi: string) => void; toggleNhanXet: (hsId: string, ma: string) => void
   reloadNop: () => Promise<void>; onCanhBaoChanged: () => Promise<void>
@@ -241,6 +246,13 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, moCoiIds, url
           </div>
         )}
         <div className="min-h-0 flex-1 overflow-y-auto bg-white px-3 py-2.5">
+          {/* BTVN đã đóng ⇒ mọi nút Đ/C/S + trạng thái bị khoá; nói rõ lý do + cho mở lại NGAY TẠI ĐÂY (TA báo 16/10: bấm hoàn thành xong không sửa lại được). */}
+          {dong && (
+            <div className="mb-2.5 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 p-2.5">
+              <p className="min-w-0 flex-1 text-[12px] font-medium text-amber-800">🔒 BTVN buổi này đã đóng nên chưa sửa được. Muốn chấm thêm / sửa: bấm <b>Mở lại</b>, sửa xong nhớ đóng lại.</p>
+              <button onClick={moLai} className="min-h-[36px] shrink-0 rounded-lg bg-amber-600 px-3 text-[12.5px] font-bold text-white active:bg-amber-500">↩ Mở lại</button>
+            </div>
+          )}
           {n && !n.buoi_xac_nhan_at && !dong && (
             <ChotBuoiBanner lopId={buoi.lop_id ?? ''} buoiNgay={buoi.ngay} onDungBuoi={() => xacNhan(hsId)} onChuyen={(bm) => chuyen(hsId, bm)} />
           )}
