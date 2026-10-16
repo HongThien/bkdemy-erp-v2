@@ -37940,3 +37940,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy chốt:** backdate về tháng đạt · TT07 = 5 / 10 / 20 lượt liên tiếp đúng ≥70% (7/10), thưởng giữ 200/300/1.000 · "thu hồi xu và chốt lại cho công bằng" · Đào Đức Minh Hiếu (đã tiêu xu, ví -31) "về 0".
 - **Làm:** `thang` = tháng của `dat_at` (dòng cũ + 2 hàm ghi). TT07 tính lại theo `_tt_dat_duoc`: 89 → 57 dòng, xoá 32 dòng không còn đạt (Thùy gật). Xu: tháng 08 ĐÓNG BĂNG (chốt tay 6.950; đồng bộ cả tháng sẽ trả thêm ~1.300 xu không liên quan) ⇒ chỉ ghi phần xu thành tựu tháng 8; tháng 09+10 `_xu_dong_bo`. Minh Hiếu: 1 dòng cong_tay bù đúng phần âm. Kết quả: 32 em đổi ví, -162 / +21 xu, 0 ví âm. Danh sách từng em: `reports/thu-hoi-tt07-2026-10-16.txt`.
 - **Còn ngỏ:** `fn_xu_tu_exp` LÀM TRÒN LÊN (99 EXP = 1 xu, 250 = 3) — hỏi Thùy chưa trả lời.
+
+### 16/10 — [Kho K7] Vẽ lại hình đề giữa kì I Nguyễn Trường Tộ (GKI-16)
+- **Thùy:** "Vẽ lại hình đề thi giữa kì I Nguyễn Trường Tộ". Có 2 đề trùng tên (Toán 7 GKI-16 và Toán 8 GKI-25); chỉ đề Toán 7 có hình đề (Toán 8 không có hình trong đề) ⇒ làm Toán 7.
+- **Làm:** scripts/anh/ve_lai/DT-GKI-16-K7.mjs dựng 2 hình bằng ve_hinh_lib (Câu 4 HHC002810: 120° ở A, x = 60°; Bài 4 HHC002811: xAC = 50°, ô vuông H, K), tên tệp _de ⇒ gan_hinh --thay --ghi chỉ đè anh_de; URL cũ ở scripts/anh/bien_ban/gan-hinh-2026-10-16-18-57-29.json. Hình cũ trong thư mục làm việc đổi đuôi .cu.png. HTML so sánh cũ/mới: kho-rules/dai/lo/k7/GKI-16-hinh-moi.html.
