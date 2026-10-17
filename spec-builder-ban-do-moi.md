@@ -124,7 +124,7 @@ BTVN (phiếu riêng như cũ): theo nhóm, câu xếp theo dạng bài
 ### B6. Thứ tự làm
 | Bước | Việc | Xong khi |
 |---|---|---|
-| 1 | Migration: 2 cột `tai_lieu` + hàm B3 (trừ chuyển đổi) + test ROLLBACK | `npm run schema` sạch, test đủ |
+| 1 🟡 17/10 | Migration: 2 cột `tai_lieu` + hàm B3 (trừ chuyển đổi) + test ROLLBACK — **viết xong, test ROLLBACK 41/41 (`scripts/_test_builder_bdm_b1.mjs`), CHƯA ÁP** mig `202610172312` | `npm run schema` sạch, test đủ |
 | 2 | Bộ chọn + thẻ nhóm/dạng bài + tự lưu | soạn 1 buổi K7 thật trên app local, có cả nhóm trọn và dạng bài lẻ từ 2 nhóm |
 | 3 | In/preview A3 | PDF buổi K7 đúng LT nhóm → LT dạng bài → ví dụ → luyện, không có chuyên đề |
 | 4 | Trích xuất + ôn tập + đánh giá + test online (B4) | gán 1 lớp thử, app GV hiện đủ câu, ôn tập ra đúng nhóm |
