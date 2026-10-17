@@ -47,7 +47,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
       const [lists, rl, mt] = await Promise.all([
         Promise.all(kho.map((k) => listFormTnChoDuyet(k, khoi))),
         kho.length ? listMcqRule(kho[0]) : Promise.resolve([] as McqRule[]),
-        // metric chỉ là số đo phụ — fn_mcq_metric ~5s, qua phiên thật hay chạm trần 8s ⇒ lỗi KHÔNG được chặn danh sách (17/10)
+        // metric chỉ là số đo phụ ⇒ lỗi KHÔNG được chặn danh sách (17/10: từng timeout 8s vì RLS từng dòng; mig 202610171150 còn ~0,2s)
         kho.length ? mcqMetric(kho[0]).catch(() => null) : Promise.resolve(null),
       ])
       if (my !== reqId.current) return
