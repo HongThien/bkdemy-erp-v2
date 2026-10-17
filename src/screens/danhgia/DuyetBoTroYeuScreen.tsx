@@ -21,7 +21,9 @@ const MAU: Record<MauET, { cls: string; ten: string }> = {
   xanh_nhat: { cls: 'bg-green-100 text-green-800 border-green-200', ten: 'Xanh nhạt' },
   xanh: { cls: 'bg-green-600 text-white', ten: 'Xanh' },
 }
-const ISO_NGAY = (s: string) => ddmmVN(s.slice(0, 10))
+const ISO_NGAY = (s: string) => ddmmVN(s.slice(0, 10)) // cột kiểu DATE (buổi) — không phải timestamptz
+// timestamptz → ngày theo GIỜ VN (CLAUDE.md §2: cấm cắt chuỗi UTC cho ngày local)
+const ngayVN = (iso: string) => ddmmVN(new Date(iso).toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }))
 const sao = (x: number | null | undefined) => (x == null ? '—' : `${Math.round(x * 100)}%`)
 
 function KhoiET({ et }: { et: BuoiET[] }) {
@@ -219,7 +221,7 @@ export default function DuyetBoTroYeuScreen() {
           {tab === 'bd'
             ? <><span className="rounded-full bg-green-100 px-2 py-0.5 text-[11.5px] font-bold text-green-800">● LIVE</span><span><b>Báo động</b> hiện ngay khi GV/TA bấm chuông — không chờ chốt tuần.</span></>
             : <><span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[11.5px] font-bold text-indigo-800">❄ ẢNH CHỤP TUẦN</span>
-              {chotTuanBtn ? <span>Chốt <b>{ddmmVN(chotTuanBtn.chot_at.slice(0, 10))}</b> · {new Date(chotTuanBtn.chot_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}{chotTuanBtn.chot_ten ? ` · bởi ${chotTuanBtn.chot_ten}` : ''} — cả tuần mọi người xem cùng một bộ số liệu.</span>
+              {chotTuanBtn ? <span>Chốt <b>{ngayVN(chotTuanBtn.chot_at)}</b> · {new Date(chotTuanBtn.chot_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}{chotTuanBtn.chot_ten ? ` · bởi ${chotTuanBtn.chot_ten}` : ''} — cả tuần mọi người xem cùng một bộ số liệu.</span>
                 : <b className="text-amber-700">Chưa chốt tuần nào cho môn {mon} — bấm “Chốt tuần” để quét (chỉ làm thứ 2).</b>}</>}
           <span className="ml-auto flex items-center gap-2">
             {chot && <span className="text-[12px] text-slate-500">Đang quét lớp {chot.xong}/{chot.tong}…</span>}
@@ -258,11 +260,11 @@ export default function DuyetBoTroYeuScreen() {
                       {tab === 'dt' && (e as UngVienDiemThap).kenh.map((k) => TAG_KENH[k] && <span key={k} className={`rounded-full px-2.5 py-0.5 ${TAG_KENH[k][1]}`}>{TAG_KENH[k][0]}</span>)}
                       {tab === 'dt' && (e as UngVienDiemThap).cung_bao_dong && <span className="rounded-full border border-dashed border-rose-300 bg-rose-50 px-2.5 py-0.5 text-rose-700">cũng ở tab 🚨 Báo động</span>}
                       {tab === 'bd' && (e as BaoDong).cung_diem_thap && <span className="rounded-full border border-dashed border-orange-300 bg-orange-50 px-2.5 py-0.5 text-orange-700">cũng ở tab 📉 Điểm thấp</span>}
-                      {tab === 'td' && <span className="rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-800">👁 theo dõi từ {ddmmVN((e as DangTheoDoi).vao_at.slice(0, 10))}{(e as DangTheoDoi).vao_ten ? ` · ${(e as DangTheoDoi).vao_ten}` : ''}{(e as DangTheoDoi).ghi_chu ? ` — “${(e as DangTheoDoi).ghi_chu}”` : ''}</span>}
+                      {tab === 'td' && <span className="rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-800">👁 theo dõi từ {ngayVN((e as DangTheoDoi).vao_at)}{(e as DangTheoDoi).vao_ten ? ` · ${(e as DangTheoDoi).vao_ten}` : ''}{(e as DangTheoDoi).ghi_chu ? ` — “${(e as DangTheoDoi).ghi_chu}”` : ''}</span>}
                     </div>
                   </DauEm>
                   {tab === 'dt' && (e as UngVienDiemThap).ly_do.length > 0 && <div className="mb-2 space-y-0.5 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 text-[12px] text-slate-600">{(e as UngVienDiemThap).ly_do.map((l, k) => <div key={k}>· {l}</div>)}</div>}
-                  {tab === 'bd' && <div className="mb-2 space-y-1 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-900">{(e as BaoDong).bao_dong.map((b, k) => <div key={k}>🚨 <b>{b.nguon}</b> · {ddmmVN(b.at.slice(0, 10))}{b.ai ? ` · ${b.ai}` : ''}{b.ghi_chu ? ` — “${b.ghi_chu}”` : ''}</div>)}</div>}
+                  {tab === 'bd' && <div className="mb-2 space-y-1 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-900">{(e as BaoDong).bao_dong.map((b, k) => <div key={k}>🚨 <b>{b.nguon}</b> · {ngayVN(b.at)}{b.ai ? ` · ${b.ai}` : ''}{b.ghi_chu ? ` — “${b.ghi_chu}”` : ''}</div>)}</div>}
 
                   <Sec t="ET 4 buổi gần nhất" ghi="so với cả lớp">{etBtvn ? <KhoiET et={etBtvn.et} /> : null}</Sec>
                   <Sec t="BTVN 4 buổi gần nhất" ghi="Đ = đúng · C = chưa trọn · S = sai">{etBtvn ? <KhoiBTVN bt={etBtvn.btvn} /> : null}</Sec>
@@ -302,7 +304,7 @@ function SoVoiLucVao({ e }: { e: DangTheoDoi }) {
   const [a1, a2, b1, b2] = [tb(vao?.et), tb(nay?.et), pc(vao?.btvn), pc(nay?.btvn)]
   return (
     <div className="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 px-3.5 py-2 text-[12.5px] text-indigo-900">
-      <b>Từ lúc vào theo dõi ({ddmmVN(e.vao_at.slice(0, 10))}) đến lần chốt gần nhất:</b> ET TB 4 buổi <b>{a1 ?? '—'}% → {a2 ?? '—'}%</b> · BTVN đúng <b>{b1 ?? '—'}% → {b2 ?? '—'}%</b>
+      <b>Từ lúc vào theo dõi ({ngayVN(e.vao_at)}) đến lần chốt gần nhất:</b> ET TB 4 buổi <b>{a1 ?? '—'}% → {a2 ?? '—'}%</b> · BTVN đúng <b>{b1 ?? '—'}% → {b2 ?? '—'}%</b>
       {a1 != null && a2 != null && b1 != null && b2 != null ? ` · ${a2 - a1 + (b2 - b1) > 0 ? 'có nhích lên' : 'chưa cải thiện'}` : ''}
       {!e.co_anh_chup && <span className="ml-2 text-amber-700">(chưa có ảnh chụp tuần nào cho em này — số "nay" tính ngay lúc mở)</span>}
     </div>

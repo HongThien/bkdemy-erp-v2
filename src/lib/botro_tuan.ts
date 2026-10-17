@@ -81,14 +81,18 @@ export async function chotTuan(mon: string, onTienDo?: (xong: number, tong: numb
   const giu = { hsIds: new Set(dangTheoDoi.ds.map((x) => x.hoc_sinh_id)), out: new Map<string, ChuyenDeStat[]>() }
   const ungVien: any[] = []
   let xong = 0
-  for (const l of ls) { // tuần tự theo nhóm nhỏ: engine nạp nhiều bảng cho cả lớp, chạy song song hết dễ nghẽn
-    const cs: Candidate[] = await listCandidatesLop(l.id, giu).catch(() => [])
-    for (const c of cs) {
-      const coDiemThap = c.kenh.some((k) => KENH_DIEM_THAP.has(k)) || c.resetDuyetLai
-      if (!coDiemThap || c.sheet.levelKienThuc > 0) continue
-      ungVien.push({ hoc_sinh_id: c.hoc_sinh_id, lop: l.ten_lop, khoi: l.khoi, ly_do: c.lyDo, kenh: c.kenh, uu_tien: c.uuTien, chuyen_de: anhChuyenDe(c.sheet.chuyenDes) })
+  const NHOM = 4 // quét 4 lớp song song (đo 17/10: tuần tự 39 lớp ≈ 2,5 phút)
+  for (let i = 0; i < ls.length; i += NHOM) {
+    const nhom = ls.slice(i, i + NHOM)
+    const kq = await Promise.all(nhom.map(async (l) => ({ l, cs: await listCandidatesLop(l.id, giu).catch(() => [] as Candidate[]) })))
+    for (const { l, cs } of kq) {
+      for (const c of cs) {
+        const coDiemThap = c.kenh.some((k) => KENH_DIEM_THAP.has(k)) || c.resetDuyetLai
+        if (!coDiemThap || c.sheet.levelKienThuc > 0) continue
+        ungVien.push({ hoc_sinh_id: c.hoc_sinh_id, lop: l.ten_lop, khoi: l.khoi, ly_do: c.lyDo, kenh: c.kenh, uu_tien: c.uuTien, chuyen_de: anhChuyenDe(c.sheet.chuyenDes) })
+      }
     }
-    onTienDo?.(++xong, ls.length)
+    xong += nhom.length; onTienDo?.(xong, ls.length)
   }
   const theoDoiCd = [...giu.out.entries()].map(([hs, cds]) => ({ hoc_sinh_id: hs, chuyen_de: anhChuyenDe(cds) }))
   const { data, error: e2 } = await supabase.rpc('fn_botro_chot_tuan', { p_mon: mon, p_ung_vien: ungVien, p_theo_doi_cd: theoDoiCd })
