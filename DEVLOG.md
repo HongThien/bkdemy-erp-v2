@@ -38019,3 +38019,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Kiểm (rollback, đóng vai HS + Admin, 3 ca yếu thật chưa diễn ra, em luyện 14 lượt × 5 câu mỗi dạng ≈ 60–70 câu/dạng):** hàm CŨ → 14/18 câu test trùng; hàm MỚI → 0/18 (trùng mã 0, trùng đề 0), `test_lap_cau=false`. Ca dở dang lúc deploy (luyện bằng logic cũ rồi áp migration, đóng ca): 0 trùng nhưng test chỉ 2–4 câu (kho đã bị luyện hết). **Chưa kiểm** bằng em thật trên iPad; đường phiếu giấy (`fn_btyeu_in_sinh`) chỉ đổi 1 dòng, chưa chạy riêng.
 - **Đánh đổi:** dạng chỉ có ≤2 câu đủ điều kiện (đo: 9/232 cặp) không luyện được trên app nữa (trước đây luyện rồi test ĐÚNG câu đó); báo "học trên giấy". Luyện hết câu mới thì lặp lại câu cũ trong ca thay vì câu chừa.
 - **Còn hở, CHƯA sửa:** bù (`tu_luyen_chu_de_sinh` bu_luyen/bu_test) và đuổi (htd_luyen/htd_test) chưa đo/chưa sửa trùng luyện-test — Thùy chỉ nói ca yếu.
+
+## 17/10 — Builder giáo trình theo Bản đồ mới: đọc 2 phía + đề xuất thiết kế (CHƯA build)
+- **Thùy:** "đọc cấu trúc bản đồ kiến thức mới và builder bản cũ rồi đưa ra phương án thiết kế builder mới".
+- **Đọc:** `TaiLieuBuilder.tsx` + `tailieu.ts` (buổi → dạng → luyện/BTVN, `ref_ma = ma_dang`, gợi ý câu xếp hạng ở client) · `spec-ban-do-4-tang.md` + `banDoMoi.ts` + DB live (chỉ đọc): dạng bài có LT + ví dụ, chuyên đề KHÔNG có ô LT, `_bdm_cau_giai` chỉ đọc `dai_cau_hoi`, B5 chưa làm. Bên dùng `loai_phan`: tailieu/PrintView/ontap/gami:825/testonline.
+- **Đề xuất:** `spec-builder-ban-do-moi.md` — chọn NHÓM rồi tick dạng bài · luyện theo dạng bài, BTVN theo nhóm · in LT nhóm → (LT + ví dụ + luyện) từng dạng bài · giáo trình cũ để nguyên, cột `tai_lieu.ban_do` · 3 loại phần mới · 5 hàm DB (gợi ý câu xuống DB).
+- **Phát hiện:** B5 "nhóm mới nhận lại mã nhóm cũ" trái luật mã gốc 14/10 — builder mới trỏ id `NNB`/`NDB` sẽ mồ côi. Đề xuất B5 giữ id, đối ứng KP ở cột riêng. **Chờ Thùy chốt A1–A4 + B2.**
