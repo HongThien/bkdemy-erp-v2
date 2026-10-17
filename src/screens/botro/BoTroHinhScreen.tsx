@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { danhSachHinh, moCaHinh, doiCaHinh, dongCaHinh, lichSuCaHinh, taiLieuCuaBuoi, ganTaiLieu, timTaiLieu,
   UU_TIEN_HINH_TEN, MUC_HINH_TEN, KET_QUA_HINH_TEN, type CaseHinh, type DanhSachHinh, type UuTienHinh, type TaiLieuHinh, type LogHinh } from '../../lib/botro_hinh'
 import { timHocSinhBT } from '../../lib/bt'
+import { lichTrucCuaHS, type SlotTruc } from '../../lib/botro_yeu'
 import { ddmmVN } from '../../lib/tuan'
 
 type Tab = 'can_xep' | 'da_xep' | 'hoan_thanh'
@@ -92,7 +93,7 @@ export default function BoTroHinhScreen() {
                   <button onClick={() => dong(c)} className="ml-auto rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] text-slate-500 hover:text-rose-600">Đóng ca</button>
                 </div>
               ) : <p className="mt-2 text-[12px] text-slate-600">Kết quả: <b>{c.ket_qua ? KET_QUA_HINH_TEN[c.ket_qua] : '?'}</b>{c.ghi_chu_dong ? ` · ${c.ghi_chu_dong}` : ''}{c.hoan_thanh_at ? ` · ${ddmmVN(c.hoan_thanh_at.slice(0, 10))}` : ''}</p>}
-              {c.giai_doan === 'can_xep' && <p className="mt-2 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-800">Chưa có buổi — vào <b>Lịch phòng</b> → ca trực → “+ Xếp” → tab Hình.</p>}
+              {c.giai_doan === 'can_xep' && <GoiYCaTruc c={c} />}
               {c.buoi_cho && (
                 <div className="mt-2 flex flex-wrap items-center gap-1.5 rounded-lg bg-slate-50 px-2.5 py-1.5 text-[12px] text-slate-700">
                   <span>📅 {ddmmVN(c.buoi_cho.ngay)} {hhmm(c.buoi_cho.gio_bat_dau)}{c.buoi_cho.phong ? ` · ${c.buoi_cho.phong}` : ''} · {c.buoi_cho.nguoi_day_ten ?? '?'}</span>
@@ -105,6 +106,20 @@ export default function BoTroHinhScreen() {
       {tlCase?.buoi_cho && <TaiLieuModal ca={tlCase} onDong={() => setTlCase(null)} onDoi={(n) => va(tlCase.id, (x) => x.buoi_cho ? { ...x, buoi_cho: { ...x.buoi_cho, so_tai_lieu: n } } : x)} />}
       {lsCase && <LichSuModal ca={lsCase} onDong={() => setLsCase(null)} />}
     </section>
+  )
+}
+
+// Gợi ý ca trực PHÙ HỢP khối + bậc (cùng hàm Yếu dùng: ca bậc cao nhận HS bậc thấp hơn, không ngược lại). Xếp thật ở Lịch phòng.
+const THU_TEN: Record<number, string> = { 2: 'T2', 3: 'T3', 4: 'T4', 5: 'T5', 6: 'T6', 7: 'T7', 8: 'CN' }
+function GoiYCaTruc({ c }: { c: CaseHinh }) {
+  const [slots, setSlots] = useState<SlotTruc[] | null>(null)
+  useEffect(() => { lichTrucCuaHS(c.hoc_sinh_id, 'Toán').then(setSlots).catch(() => setSlots([])) }, [c.hoc_sinh_id])
+  return (
+    <div className="mt-2 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-800">
+      Chưa có buổi — vào <b>Lịch phòng</b> → ca trực → “+ Xếp” → tab Hình. Ca trực phù hợp khối{c.khoi ? ` ${c.khoi}` : ''} + bậc:
+      {slots === null ? ' …' : slots.length === 0 ? <b> chưa có ca trực nào khớp (thêm ở tab Lịch trực)</b>
+        : <span className="ml-1 inline-flex flex-wrap gap-1">{slots.map((t) => <span key={t.id} className="rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-amber-900 ring-1 ring-amber-200">{THU_TEN[t.thu] ?? t.thu} {t.gio_bat_dau.slice(0, 5)} · K{t.khoi}{t.bac}{t.nhan_su_ten ? ` · ${t.nhan_su_ten}` : ''}</span>)}</span>}
+    </div>
   )
 }
 
