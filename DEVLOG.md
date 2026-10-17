@@ -37989,3 +37989,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Gốc:** ô chọn chủ đề `w-auto` giãn theo tên chủ đề DÀI NHẤT của khối (K6 dài hơn K7) + thanh `flex-wrap` ⇒ K6 gãy dòng, nút ✅ Duyệt kho rơi xuống dòng 2.
 - **Sửa (`BanDoMoi.tsx`):** bỏ nhãn "nháp · chưa ảnh hưởng bản đồ đang chạy" · ô chủ đề rộng CỐ ĐỊNH 240px (tên dài cắt "…", rê chuột thấy đủ) · thanh `flex-nowrap`, nút giữ cỡ; khi hẹp thì dòng tiến độ (2 dòng nhỏ) co/cắt trước, dãy nút khối co sau cùng (cuộn ngang, thanh cuộn mảnh).
 - **Kiểm (app local, 1920px ghim menu):** K6 · K7 · K12 cùng cao 57px, không tràn, dãy khối đủ, tiến độ hiện đủ. Ở 1500px + ghim menu: dãy khối phải cuộn (thiếu chỗ thật) — bỏ ghim menu thì vừa.
+
+## 17/10/2026 — Hình học: gán câu hình đề cương + đề giữa kì I vào bài "Ôn thi giữa kì I" (K7, K8)
+- **Làm:** mig `202610171740` đổi `dang_chinh`+`thu_tu` của câu HHC đã bóc từ Kho đề thi (đề cương + đề tên có "giữa") từ "Chưa phân dạng — Hình học 7/8" sang HH00138 (K7: 103 câu) và HH00139 (K8: 230 câu). Đề cương xếp trước, rồi đề thi. `ma_cau` giữ nguyên. Chưa duyệt câu nào (da_duyet=false), chưa viết lý thuyết cho 3 bài Ôn thi.
+- **Chưa làm — K9 (HH00140 còn 0 câu):** câu hình của 2 đề cương Toán 9 (hệ thức lượng/tỉ số lượng giác, 33 câu `T309…`) nằm ở `hgt_cau_hoi`, không phải `hinh_hoc_cau_hoi`; chuyển bảng = đổi mã gốc, copy = nhân đôi. Chờ Thùy chọn.
