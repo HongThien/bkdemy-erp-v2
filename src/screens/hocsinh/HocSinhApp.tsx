@@ -52,6 +52,8 @@ import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS, CaBuHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, RETEST_BAT, type LichBoTro, type RetestCuaToi } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
+import { listTinMoiHS, docTinMoi, type TinMoiHS } from '../../lib/tinmoi_hs'
+import TinMoiKhung from './TinMoiHS'
 import { listBaiTraCuaToi, demBaiTraChuaXem, type BaiTraHS as BaiTraRow } from '../../lib/btvntra'
 import BaiTraHS, { ngayNgan } from './BaiTraHS'
 import HomeHS, { type HomeCard } from './HomeHS'
@@ -451,7 +453,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const taiChuaDoc = () => Promise.all([
     listThongBaoHS().then((ds) => ds.filter((d) => !d.doc_at).length).catch(() => 0),
     demBaiTraChuaXem().catch(() => 0),
-  ]).then(([tb, btvn]) => setChuaDoc(tb + btvn))
+    listTinMoiHS().then((ds) => ds.filter((d) => !d.doc_at).length).catch(() => 0),   // tin mới (giải thưởng, thành tựu…) chưa đọc
+  ]).then(([tb, btvn, tm]) => setChuaDoc(tb + btvn + tm))
 
   // MÔN (28/09 vụ Gia Khiêm; 01/10 thành trục ngoài cùng): chọn môn ở màn chính ⇒ cả góc học tập (bài trên lớp/ET/BTVN,
   // bổ trợ, tự luyện, thông tin học tập, sổ tay, học từ đầu…) chạy theo môn đó; màn con đọc môn qua monCuaHS()/useMonHS().
@@ -809,7 +812,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = moTN('nhiem_vu') && (maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay))
-  const moiQuay = <><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
+  const moiQuay = <><TinMoiKhung lamMoi={direct} /><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
     {tutXong && tutXong.size > 0 && <LocMoi n={chuongMoi.length} ten={NGUOI_DAN_LOC} onMo={() => { tutLanDau.current = false; setTutDs(chuongMoi.map((c) => c.id)); setDirect('tutorial') }} />}</>
   // Cấp 1 DÙNG CHUNG màn chính với cấp 2 (Thùy 11/10): HomeCap1 chỉ còn là đường lùi khi không xác định được khối để chọn style.
   if (!khu && cap1 && !nhom912) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
@@ -1682,6 +1685,7 @@ export function BangXepHang({ onXong }: { onXong: () => void }) {
 export function HopThuHS({ onXong }: { onXong: () => void }) {
   const [items, setItems] = useState<ThongBaoHS[] | null>(null)
   const [baiTra, setBaiTra] = useState<BaiTraRow[] | null>(null)
+  const [tinMoi, setTinMoi] = useState<TinMoiHS[] | null>(null)
   const [mo, setMo] = useState<string | null>(null)
   const cuonRef = useRef(0)
   useEffect(() => {
@@ -1690,16 +1694,20 @@ export function HopThuHS({ onXong }: { onXong: () => void }) {
       if (ds.some((d) => !d.doc_at)) docTatCaThongBao().catch(() => {})
     }).catch(() => setItems([]))
     listBaiTraCuaToi().then(setBaiTra).catch(() => setBaiTra([]))
+    // Tin mới (giải thưởng, thành tựu…): mở hòm thư là đọc hết như thong_bao_hs; giữ cờ chưa đọc trong list để viền nhấn hiện đúng lần này
+    listTinMoiHS().then((ds) => { setTinMoi(ds); const chua = ds.filter((d) => !d.doc_at).map((d) => d.id); if (chua.length) docTinMoi(chua).catch(() => {}) }).catch(() => setTinMoi([]))
   }, [])
   useEffect(() => { window.scrollTo(0, mo ? 0 : cuonRef.current) }, [mo])
   if (mo) return (
     <BaiTraHS buoiHocId={mo} onXong={() => setMo(null)}
       onDaXem={(id) => setBaiTra((prev) => prev && prev.map((b) => (b.buoi_hoc_id === id ? { ...b, da_xem: true } : b)))} />
   )
-  const dangTai = items === null || baiTra === null
-  const thu: ({ at: string; tb: ThongBaoHS; b?: undefined } | { at: string; b: BaiTraRow; tb?: undefined })[] = dangTai ? [] : [
+  const dangTai = items === null || baiTra === null || tinMoi === null
+  type Thu = { at: string; tb?: ThongBaoHS; b?: BaiTraRow; tm?: TinMoiHS }
+  const thu: Thu[] = dangTai ? [] : [
     ...items.map((tb) => ({ at: tb.created_at, tb })),
     ...baiTra.map((b) => ({ at: b.tra_at, b })),
+    ...tinMoi.map((tm) => ({ at: tm.created_at, tm })),
   ].sort((x, y) => y.at.localeCompare(x.at))
   // Thư chưa đọc: viền nhấn skin (thay ring brand cũ).
   const vienChuaDoc = { outline: `2px solid ${MAU.acc}`, outlineOffset: '-2px' }
@@ -1714,9 +1722,15 @@ export function HopThuHS({ onXong }: { onXong: () => void }) {
         </TheHS>
       )}
       <div className="flex flex-col gap-3">
-        {thu.map((x) => x.b ? (
+        {thu.map((x) => x.tm ? (
+          <TheHS key={`tm:${x.tm.id}`} className="p-4" style={!x.tm.doc_at ? vienChuaDoc : undefined}>
+            <p className="text-[15.5px] font-semibold leading-snug" style={{ color: MAU.ink }}>{x.tm.bieu_tuong ?? '🔔'} {x.tm.tieu_de}</p>
+            <p className="mt-1 text-[14.5px] leading-snug" style={{ color: MAU.muted }}>{x.tm.noi_dung}</p>
+            <p className="mt-1.5 text-[12px]" style={{ color: MAU.muted }}>{fmtShort(x.tm.created_at)}</p>
+          </TheHS>
+        ) : x.b ? (
           <TheHS key={`btvn:${x.b.buoi_hoc_id}`} className="p-4" style={!x.b.da_xem ? vienChuaDoc : undefined}
-            onClick={() => { cuonRef.current = window.scrollY; setMo(x.b.buoi_hoc_id) }}>
+            onClick={() => { cuonRef.current = window.scrollY; setMo(x.b!.buoi_hoc_id) }}>
             <p className="text-[15.5px] font-semibold leading-snug" style={{ color: MAU.ink }}>📝 Bài tập về nhà buổi {ngayNgan(x.b.ngay)} đã được chấm</p>
             <p className="mt-1 text-[14.5px] leading-snug" style={{ color: MAU.muted }}>
               {x.b.so_cau > 0 ? `Đúng ${x.b.so_dung}/${x.b.so_cau} câu · ` : ''}Bấm để xem bài chấm và nhận xét ›
@@ -1724,9 +1738,9 @@ export function HopThuHS({ onXong }: { onXong: () => void }) {
             <p className="mt-1.5 text-[12px]" style={{ color: MAU.muted }}>{[x.b.mon, x.b.ten_lop, fmtShort(x.b.tra_at)].filter(Boolean).join(' · ')}</p>
           </TheHS>
         ) : (
-          <TheHS key={x.tb.id} className="p-4" style={!x.tb.doc_at ? vienChuaDoc : undefined}>
-            <p className="text-[15.5px] leading-snug" style={{ color: MAU.ink }}>{x.tb.noi_dung}</p>
-            <p className="mt-1.5 text-[12px]" style={{ color: MAU.muted }}>{fmtShort(x.tb.created_at)}</p>
+          <TheHS key={x.tb!.id} className="p-4" style={!x.tb!.doc_at ? vienChuaDoc : undefined}>
+            <p className="text-[15.5px] leading-snug" style={{ color: MAU.ink }}>{x.tb!.noi_dung}</p>
+            <p className="mt-1.5 text-[12px]" style={{ color: MAU.muted }}>{fmtShort(x.tb!.created_at)}</p>
           </TheHS>
         ))}
       </div>

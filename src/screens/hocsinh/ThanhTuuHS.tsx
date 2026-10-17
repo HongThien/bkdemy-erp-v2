@@ -83,6 +83,7 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
                         <span className="inline-block rounded-full px-2.5 py-0.5 text-[16.5px] font-extrabold leading-tight" style={{ background: mau.nen, color: mau.chu, border: `1px solid ${mau.vien}` }}>Giải {LOAI_GIAI_TEN[it.loai_giai]}</span>
                         <p className="mt-1 text-[14px] font-semibold" style={{ color: MAU.ink, opacity: .85 }}>{it.mon}{it.ten_lop ? ` · ${it.ten_lop}` : ''}</p>
                         <p className="mt-0.5 text-[12px]" style={{ color: MAU.muted }}>Công bố {new Date(it.cong_bo_at).toLocaleDateString('vi-VN')}</p>
+                        {!!it.xu && <p className="mt-0.5 text-[13px] font-bold" style={{ color: MAU.dung }}>+{it.xu} xu đã vào ví</p>}
                       </div>
                     </div>
                   )

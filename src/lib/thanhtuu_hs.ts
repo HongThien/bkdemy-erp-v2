@@ -13,6 +13,7 @@ export type ThanhTuuHS = {
   ten_lop: string | null
   mon: string
   cong_bo_at: string
+  xu?: number        // xu đã nhận cho giải này (khối 3–7: 30; khối 8–12 trao tiền mặt ⇒ 0)
 }
 
 export async function thanhTuuCuaToi(): Promise<ThanhTuuHS[]> {

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-412 bảng · 25 view · 0 enum · 193 trigger · 1135 function
+415 bảng · 25 view · 0 enum · 193 trigger · 1137 function
 
 ## _app_secrets
 
@@ -2086,6 +2086,15 @@ END |  |  |
 | duyet_at | timestamp with time zone |  | now() |  |  |
 | cong_bo_at | timestamp with time zone | Y |  |  |  |
 
+## giai_thuong_gia_tri
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| khoi_tu | integer |  |  | PK |  |
+| khoi_den | integer |  |  | PK |  |
+| xu | integer |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+
 ## giai_thuong_lop_giai
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3181,6 +3190,21 @@ END |  |  |
 | da_doc | boolean |  | false |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## hs_giai_thuong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| giai_thuong_id | uuid |  |  | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| lop_id | uuid | Y |  | FK→lop.id |  |
+| thang | date |  |  |  |  |
+| mon | text |  |  |  |  |
+| loai_giai | text |  |  |  | `xuat_sac` · `tien_bo` · `cham_chi` |
+| khoi | text | Y |  |  |  |
+| xu | integer |  | 0 |  |  |
+| xu_ghi | text |  |  |  | `tu_dong` · `da_cong_tay` · `khong_xu` · `cho_xac_nhan` |
+| cong_bo_at | timestamp with time zone |  | now() |  |  |
+
 ## hs_giao_dien
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3302,6 +3326,20 @@ END |  |  |
 | chot_at | timestamp with time zone |  | now() |  |  |
 | chot_boi | uuid | Y |  | FK→nhan_su.id |  |
 
+## hs_tin_moi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| loai | text |  |  |  |  |
+| tieu_de | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| bieu_tuong | text | Y |  |  |  |
+| ref | text |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| doc_at | timestamp with time zone | Y |  |  |  |
+
 ## hs_tutorial
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3370,7 +3408,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -4443,10 +4481,10 @@ END |  |  |
 | id | uuid |  | gen_random_uuid() | PK |  |
 | hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
 | amount | integer |  |  |  |  |
-| loai | text |  |  |  | `cong_tay` · `tru_tay` · `doi_qua` · `hoan` · `chot_thang` · `chot_lai` · `nong_trai` |
+| loai | text |  |  |  | `cong_tay` · `tru_tay` · `doi_qua` · `hoan` · `chot_thang` · `chot_lai` · `nong_trai` · `giai_thuong` |
 | ly_do | text | Y |  |  |  |
 | ref_id | uuid | Y |  |  |  |
-| ref_loai | text | Y |  |  | `doi_qua` · `order` |
+| ref_loai | text | Y |  |  | `doi_qua` · `order` · `giai_thuong` |
 | nguoi_tao | uuid | Y |  | FK→nhan_su.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mon | text | Y |  |  |  |
@@ -5232,7 +5270,7 @@ END |  |  |
 | mon | text |  |  | PK |  |
 | key | text |  |  | PK |  |
 | ten | text |  |  |  |  |
-| loai_chi_so | text |  |  |  | `diem_danh_du` · `btvn_dung_han_du` · `tu_luyen_cau_dung` · `thu_thach_ngay_pass` · `thu_thach_luot_full` · `et_ti_le_bai` · `mt_top_pct` · `btvn_ti_le_tb` · `mt_hon_moc` · `lap_lo` · `dua_thang_top_pct` |
+| loai_chi_so | text |  |  |  | `diem_danh_du` · `btvn_dung_han_du` · `tu_luyen_cau_dung` · `thu_thach_ngay_pass` · `thu_thach_luot_full` · `et_ti_le_bai` · `mt_top_pct` · `btvn_ti_le_tb` · `mt_hon_moc` · `lap_lo` · `dua_thang_top_pct` · `giai_thuong` |
 | tham_so | jsonb |  | '{}'::jsonb |  |  |
 | mo_tu | date | Y |  |  |  |
 | active | boolean |  | true |  |  |
@@ -7802,6 +7840,8 @@ WITH luot AS (
 - `_gami_exp_buoi_huy_dong_bo(p_buoi uuid)` → integer
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
+- `_giai_ghi_nhan(p_giai uuid, p_hs uuid, p_lop uuid, p_thang date, p_mon text, p_loai text, p_xu_cach text DEFAULT 'tu_dong'::text, p_bao boolean DEFAULT true)` → jsonb
+- `_giai_xu(p_khoi text)` → integer
 - `_hl_cha_mo_hinh(p_mh uuid)` → uuid
 - `_hl_dong_thu_tu(p_mh uuid)` → void
 - `_hl_duong_mo_hinh(p_mh uuid)` → uuid[]
@@ -8990,6 +9030,8 @@ WITH luot AS (
 | gay_ledger | gay_ledger_go_co_hoat_dong | `CHECK (((loai <> 'go'::text) OR (hoat_dong_id IS NOT NULL)))` |
 | gay_ledger | gay_ledger_so_gay_check | `CHECK ((so_gay <> 0))` |
 | gay_loi | gay_loi_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| giai_thuong_gia_tri | giai_thuong_gia_tri_check | `CHECK ((khoi_tu <= khoi_den))` |
+| giai_thuong_gia_tri | giai_thuong_gia_tri_xu_check | `CHECK ((xu >= 0))` |
 | giai_thuong_slot | giai_thuong_slot_cham_chi_check | `CHECK (((cham_chi >= 0) AND (cham_chi <= 6)))` |
 | giai_thuong_slot | giai_thuong_slot_tien_bo_check | `CHECK (((tien_bo >= 0) AND (tien_bo <= 6)))` |
 | giai_thuong_slot | giai_thuong_slot_tong | `CHECK (((((xuat_sac + tien_bo) + cham_chi) >= 1) AND (((xuat_sac + tien_bo) + cham_chi) <= 6)))` |
@@ -9004,6 +9046,7 @@ WITH luot AS (
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
 | hoi_dap_bot | hoi_dap_bot_id_check | `CHECK ((id = 1))` |
+| hs_giai_thuong | hs_giai_thuong_xu_check | `CHECK ((xu >= 0))` |
 | hs_giao_dien | hs_giao_dien_hinh_nen_check | `CHECK ((hinh_nen ~ '^[a-z0-9_]{1,40}$'::text))` |
 | hs_huy_hieu_dat | hs_huy_hieu_dat_lan_check | `CHECK ((lan >= 1))` |
 | hs_huy_hieu_dat | hs_huy_hieu_dat_sao_check | `CHECK (((sao >= 1) AND (sao <= 5)))` |
@@ -9072,7 +9115,7 @@ WITH luot AS (
 | qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
-| qlht_xu_ledger | qlht_xu_ledger_nguoi_tao_may | `CHECK (((nguoi_tao IS NOT NULL) OR (loai = ANY (ARRAY['chot_thang'::text, 'chot_lai'::text, 'nong_trai'::text]))))` |
+| qlht_xu_ledger | qlht_xu_ledger_nguoi_tao_may | `CHECK (((nguoi_tao IS NOT NULL) OR (loai = ANY (ARRAY['chot_thang'::text, 'chot_lai'::text, 'nong_trai'::text, 'giai_thuong'::text]))))` |
 | rank_bac | rank_bac_bac_check | `CHECK (((bac >= 1) AND (bac <= 10)))` |
 | rank_len_bac | rank_len_bac_bac_check | `CHECK (((bac >= 2) AND (bac <= 10)))` |
 | rank_thang_mat_et | rank_thang_mat_et_thang_check | `CHECK ((thang ~ '^\d{4}-\d{2}$'::text))` |
