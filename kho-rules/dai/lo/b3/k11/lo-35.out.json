@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111040101343",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản dạng cos(ax+b)=cosα."
+ },
+ {
+  "ma_cau": "T111000000087",
+  "dang_bai_id": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kì của hàm số y=sin(2x/3)."
+ },
+ {
+  "ma_cau": "T111040101355",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản tanx=√3."
+ },
+ {
+  "ma_cau": "T111040101107",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản cosx=-1/2."
+ },
+ {
+  "ma_cau": "T111040101375",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản dạng sin(ax+b)=sinα."
+ },
+ {
+  "ma_cau": "T111010110011",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Đơn giản biểu thức dùng công thức cung phụ."
+ },
+ {
+  "ma_cau": "T111000000244",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xét dấu sin, cos khi a thuộc (π/2;π)."
+ },
+ {
+  "ma_cau": "T111010501006",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Đơn giản biểu thức dùng cung phụ và cung hơn kém π/2."
+ },
+ {
+  "ma_cau": "T111000000129",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (trung vị mẫu số liệu ghép nhóm), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111030102082",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm phân thức có mẫu cosx+1."
+ },
+ {
+  "ma_cau": "T111010502045",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức phân thức lượng giác bằng biến đổi đại số tự do."
+ },
+ {
+  "ma_cau": "T111040202025",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Dùng công thức nhân đôi đưa về cos cơ bản; có thể xếp 01007."
+ },
+ {
+  "ma_cau": "T111000000078",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: giải tam giác vuông bằng tỉ số lượng giác của góc, bài thực tế bóng đổ."
+ },
+ {
+  "ma_cau": "T111010501026",
+  "dang_bai_id": "NDB00954",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác không chứa biến, các góc có quan hệ đặc biệt."
+ },
+ {
+  "ma_cau": "T111060304099",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Thực tế cấp số nhân tính tổng lương tăng 5% mỗi tháng; có thể xếp 00617."
+ },
+ {
+  "ma_cau": "T111000000168",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (số trung bình mẫu số liệu ghép nhóm), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111000000006",
+  "dang_bai_id": "NDB01030",
+  "chac": "vua",
+  "ly_do": "Tổng 1+3+3²+...+3^2018 là cấp số nhân liệt kê; có thể xếp 01029."
+ },
+ {
+  "ma_cau": "T111040101274",
+  "dang_bai_id": "NDB00575",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn: số nghiệm trong khoảng, nghiệm dương nhỏ nhất, họ nghiệm của 2sinx=√2."
+ },
+ {
+  "ma_cau": "T111060304006",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Bài toán tăng trưởng 15% mỗi năm, tìm năm đầu vượt 2 tỷ."
+ },
+ {
+  "ma_cau": "T111060202122",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và u2, tính u5."
+ },
+ {
+  "ma_cau": "T111010110019",
+  "dang_bai_id": "NDB00949",
+  "chac": "vua",
+  "ly_do": "Cho sinx tính P=sin²x+5cos²x; không có dạng riêng, gần 00949."
+ },
+ {
+  "ma_cau": "T111060202204",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và d, tính u10."
+ },
+ {
+  "ma_cau": "T111040202004",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Dùng công thức nhân đôi đưa về cos cơ bản; có thể xếp 01007."
+ },
+ {
+  "ma_cau": "T111010110022",
+  "dang_bai_id": "NDB00953",
+  "chac": "cao",
+  "ly_do": "Cho tanx tính biểu thức bậc nhất trên bậc nhất của sin và cos."
+ },
+ {
+  "ma_cau": "T111030502056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc tập giá trị của hàm số từ đồ thị: bản đồ thiếu dạng xác định yếu tố cơ bản từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030101120",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm cơ bản y=cotx."
+ },
+ {
+  "ma_cau": "T111010101086",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi số đo góc từ độ sang radian."
+ },
+ {
+  "ma_cau": "T111060104055",
+  "dang_bai_id": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng giảm của dãy số hữu hạn cho bằng liệt kê."
+ },
+ {
+  "ma_cau": "T111060304005",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi kép, tìm số năm để tiền gấp đôi."
+ },
+ {
+  "ma_cau": "T111030101103",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm cơ bản y=cotx."
+ },
+ {
+  "ma_cau": "T111060101121",
+  "dang_bai_id": "NDB01032",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn: u8, tính tăng giảm, u2, nhận diện cấp số nhân của dãy truy hồi."
+ },
+ {
+  "ma_cau": "T111030101095",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn: TXĐ, chu kì, tập giá trị, chẵn lẻ của y=4cos2x+3."
+ },
+ {
+  "ma_cau": "T111010602052",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Nhận ra biểu thức sinxcosy-cosxsiny bằng công thức cộng; có thể xếp 00984."
+ },
+ {
+  "ma_cau": "T111030201105",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm giá trị lớn nhất của hàm y=3sinx-7."
+ },
+ {
+  "ma_cau": "T111030105011",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Thực tế tìm khoảng cách lớn nhất h=|3,5cos(...)|; có thể xếp 00995."
+ },
+ {
+  "ma_cau": "T111060302055",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho hai số hạng liên tiếp u2, u3, tìm công bội."
+ },
+ {
+  "ma_cau": "T111060205047",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1=25, d=3, 30 dãy ghế."
+ },
+ {
+  "ma_cau": "T111000000352",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho sinα và khoảng của α, xét các giá trị lượng giác còn lại."
+ },
+ {
+  "ma_cau": "T111010602082",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho sin a, cos b và khoảng, tính sin(a+b) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111040102107",
+  "dang_bai_id": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Đếm số nghiệm sin2x=-1 trên đoạn, phương trình một họ nghiệm."
+ },
+ {
+  "ma_cau": "T111040102082",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Tìm nghiệm dương nhỏ nhất của phương trình sin(u)=sin(v)."
+ },
+ {
+  "ma_cau": "T111000000117",
+  "dang_bai_id": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Rút gọn tích hai sin bằng công thức tích thành tổng."
+ },
+ {
+  "ma_cau": "T111000000340",
+  "dang_bai_id": "NDB00951",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng về hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T111040101158",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản 2sinx-1=0."
+ },
+ {
+  "ma_cau": "T111060202109",
+  "dang_bai_id": "NDB00607",
+  "chac": "vua",
+  "ly_do": "Viết hệ thức truy hồi của cấp số cộng cho u1 và d; chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T111030601001",
+  "dang_bai_id": "NDB00995",
+  "chac": "cao",
+  "ly_do": "Tính huyết áp tại thời điểm cho trước từ công thức B(t)."
+ },
+ {
+  "ma_cau": "T111030103012",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét tính chẵn lẻ của hàm mở rộng f(x)=x sin3x."
+ },
+ {
+  "ma_cau": "T111060105028",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Tìm số chặn trên của dãy u_n=(2n-1)/(2n+1)."
+ },
+ {
+  "ma_cau": "T111060101117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Khái niệm dãy số hữu hạn/vô hạn: bản đồ thiếu dạng lý thuyết về khái niệm dãy số."
+ },
+ {
+  "ma_cau": "T111040101262",
+  "dang_bai_id": "NDB00575",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn: tương đương, họ nghiệm, nghiệm âm lớn nhất, số nghiệm trong khoảng của sinx=-1/2."
+ },
+ {
+  "ma_cau": "T111060205026",
+  "dang_bai_id": "NDB00616",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1, d, tìm n nhỏ nhất để tổng đạt 1500."
+ },
+ {
+  "ma_cau": "T111010101058",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi số đo góc từ độ sang radian."
+ },
+ {
+  "ma_cau": "T111060202152",
+  "dang_bai_id": "NDB00607",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn về cấp số cộng cho u1 và d: thứ tự, tổng S58, u11, u4+u6."
+ },
+ {
+  "ma_cau": "T111040204044",
+  "dang_bai_id": "NDB01017",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc hai theo cosx sau khi dùng nhân đôi."
+ },
+ {
+  "ma_cau": "T111060302002",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho u1 và q, viết bốn số hạng đầu."
+ },
+ {
+  "ma_cau": "T111060105052",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Chọn dãy số bị chặn trong 4 dãy cho bởi công thức."
+ },
+ {
+  "ma_cau": "T111000000164",
+  "dang_bai_id": "NDB00948",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản đúng."
+ },
+ {
+  "ma_cau": "T111040101360",
+  "dang_bai_id": "NDB01008",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn quanh tham số m để sin(x+π/6)=m+1 có nghiệm, cùng nghiệm cơ bản."
+ },
+ {
+  "ma_cau": "T111040101225",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Công thức nghiệm của phương trình sinx=sinα."
+ },
+ {
+  "ma_cau": "T111040201049",
+  "dang_bai_id": "NDB01007",
+  "chac": "cao",
+  "ly_do": "Giải phương trình sin(ax+b)=sin(cx+d)."
+ },
+ {
+  "ma_cau": "T111030201093",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tập giá trị của hàm cơ bản y=cosx."
+ },
+ {
+  "ma_cau": "T111060202119",
+  "dang_bai_id": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và tổng 40 số hạng đầu, tìm công sai."
+ },
+ {
+  "ma_cau": "T111060304046",
+  "dang_bai_id": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Bài toán gửi tiết kiệm định kỳ có lãi kép hàng tháng."
+ },
+ {
+  "ma_cau": "T111040101212",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản cosx=1/2."
+ },
+ {
+  "ma_cau": "T111000000393",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác khi a thuộc (π/2;π)."
+ },
+ {
+  "ma_cau": "T111010602069",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Chọn công thức sai trộn công thức cộng, nhân đôi, tổng thành tích."
+ },
+ {
+  "ma_cau": "T111040203016",
+  "dang_bai_id": "NDB01016",
+  "chac": "cao",
+  "ly_do": "Phương trình dạng Asinx+Bcosx=C."
+ },
+ {
+  "ma_cau": "T111020101083",
+  "dang_bai_id": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức cộng sin(a+b)."
+ },
+ {
+  "ma_cau": "T111020102023",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho cos a và khoảng, tính sin(a+π/3) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111060202223",
+  "dang_bai_id": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hệ phương trình quan hệ các số hạng, tìm u100."
+ }
+]

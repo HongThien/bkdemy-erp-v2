@@ -1,0 +1,233 @@
+[
+ {
+  "ma_cau": "T111060302087",
+  "loai": "trac_nghiem",
+  "de": "Tìm số hạng đầu $u_{1}$ và công bội $q$ của cấp số nhân $\\left(u_{n}\\right)$, biết $\\begin{cases} u_{6}=192 \\\\ u_{7}=384 \\end{cases}$.",
+  "lua_chon": [
+   "$\\begin{cases} u_{1}=6 \\\\ q=2 \\end{cases}$.",
+   "$\\begin{cases} u_{1}=6 \\\\ q=3 \\end{cases}$.",
+   "$\\begin{cases} u_{1}=5 \\\\ q=3 \\end{cases}$.",
+   "$\\begin{cases} u_{1}=5 \\\\ q=2 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\left(u_{n}\\right)$ là cấp số nhân nên ta có mối liên hệ giữa hai số hạng liên tiếp:\n$u_{7}=u_{6}\\cdot q\\Rightarrow q=\\dfrac{u_{7}}{u_{6}}=\\dfrac{384}{192}=2.$\nMặt khác, theo công thức số hạng tổng quát $u_{6}=u_{1}\\cdot q^{5}$, ta có\n$192=u_{1}\\cdot 2^{5}\\Leftrightarrow 32u_{1}=192\\Leftrightarrow u_{1}=6.$\nVậy $\\begin{cases} u_{1}=6 \\\\ q=2. \\end{cases}$",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111050401001",
+  "loai": "trac_nghiem",
+  "de": "Từ các chữ số 1; 2; 3; 4; 5; 6 có thể lập được bao nhiêu số tự nhiên có bốn chữ số khác nhau?",
+  "lua_chon": [
+   "480",
+   "120",
+   "360",
+   "256"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Lập số tự nhiên có bốn chữ số khác nhau từ 6 chữ số 1; 2; 3; 4; 5; 6 là chỉnh hợp chập 4 của 6 phần tử.\nTa có: $\\mathrm{A}_{6}^{4} = \\dfrac{6!}{(6-4)!} = \\dfrac{6!}{2!} = \\dfrac{720}{2} = 360$ (số).\nVậy có 360 số tự nhiên có bốn chữ số khác nhau.",
+  "nhan_cu": "Đại số tổ hợp và xác suất › Các quy tắc đếm, hoán vị, tổ hợp, chỉnh hợp"
+ },
+ {
+  "ma_cau": "T111000000131",
+  "loai": "trac_nghiem",
+  "de": "Với $k$ là số nguyên dương, mệnh đề nào sau đây ĐÚNG?",
+  "lua_chon": [
+   "$\\lim \\dfrac{1}{n^{k}}=0$.",
+   "$\\lim \\dfrac{1}{n^{k}}=+\\infty$.",
+   "$\\lim \\dfrac{1}{n^{k}}=-\\infty$.",
+   "$\\lim \\dfrac{1}{n^{k}}=k$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Với $k$ là số nguyên dương, theo định lí về giới hạn cơ bản của dãy số, ta có\n$\\lim \\dfrac{1}{n^{k}}=0.$\nVậy khẳng định đúng là $\\lim \\dfrac{1}{n^{k}}=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060105051",
+  "loai": "trac_nghiem",
+  "de": "Xét tính bị chặn của các dãy số sau: $u_{n}=1-2n$",
+  "lua_chon": [
+   "Không bị chặn trên.",
+   "Bị chặn dưới.",
+   "Bị chặn trên.",
+   "Bị chặn."
+  ],
+  "loi_giai": "Với mọi $n\\in \\mathbb{N}^{∗}$, ta có $n\\ge 1\\Rightarrow 2n\\ge 2\\Rightarrow 1-2n\\le -1$.\nDo đó $u_{n}\\le -1$ với mọi $n\\in \\mathbb{N}^{∗}$, suy ra dãy số $\\left(u_{n}\\right)$ bị chặn trên bởi $-1$.\nMặt khác, khi $n$ càng lớn thì $u_{n}$ càng nhỏ và giảm vô hạn, do đó dãy số không bị chặn dưới.\nVậy dãy số $\\left(u_{n}\\right)$ bị chặn trên.",
+  "nhan_cu": "Dãy số › Xét tính bị chặn của dãy số"
+ },
+ {
+  "ma_cau": "T111010602018",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định nào đúng?",
+  "lua_chon": [
+   "$\\sin \\left(a-b\\right)=\\sin a\\cos b-\\sin b\\cos a$.",
+   "$\\sin \\left(a-b\\right)=\\cos a\\sin b+\\sin a\\cos b$.",
+   "$\\sin \\left(a-b\\right)=\\sin a\\cos a-\\cos b\\sin b$.",
+   "$\\sin \\left(a-b\\right)=\\cos a\\cos b-\\sin a\\sin b$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức cộng đối với hàm số sin, với mọi cung $a$ và $b$ ta có\n$\\sin \\left(a-b\\right)=\\sin a\\cos b-\\cos a\\sin b=\\sin a\\cos b-\\sin b\\cos a.$\nVậy khẳng định đúng là $\\sin \\left(a-b\\right)=\\sin a\\cos b-\\sin b\\cos a$.",
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức lượng giác sử dụng công thức cộng"
+ },
+ {
+  "ma_cau": "T111000000017",
+  "loai": "trac_nghiem",
+  "de": "Viết thêm bốn số vào giữa hai số $160$ và $5$ để được một cấp số nhân. Tổng các số hạng của cấp số nhân đó là",
+  "lua_chon": [
+   "$A. 215.$",
+   "$B. 315.$",
+   "$C. 415.$",
+   "$D. 515.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Từ giả thiết ta có $\\begin{cases}u_1=160\\\\u_6=5\\end{cases}\\Rightarrow q=\\sqrt[5]{\\dfrac{u_6}{u_1}}=\\dfrac{1}{2}.$\nSuy ra tổng các số hạng của cấp số nhân đó là: $S=\\dfrac{u_1\\left(1-q^6\\right)}{1-q}=\\dfrac{160\\left(1-\\left(\\frac{1}{2}\\right)^6\\right)}{\\frac{1}{2}}=315.$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060104081",
+  "loai": "trac_nghiem",
+  "de": "Xét tính tăng giảm của dãy số $\\left(u_{n}\\right)$ biết $u_{n}=1-3n$?",
+  "lua_chon": [
+   "Dãy số không tăng, không giảm.",
+   "Dãy số tăng.",
+   "Dãy số giảm.",
+   "Dãy số vừa tăng, vừa giảm."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Với mọi $n\\in \\mathbb{N}^{∗}$, ta có\n$u_{n+1}-u_{n}=[1-3\\left(n+1\\right)]-\\left(1-3n\\right)=1-3n-3-1+3n=-3<0.$\nSuy ra $u_{n+1}<u_{n}$ với mọi $n\\in \\mathbb{N}^{∗}$.\nVậy dãy số $\\left(u_{n}\\right)$ là dãy số giảm.",
+  "nhan_cu": "Dãy số › Xác định tính tăng giảm của dãy số"
+ },
+ {
+  "ma_cau": "T111020102003",
+  "loai": "tu_luan",
+  "de": "Tính giá trị của biểu thức sau:\n$A=\\sin(x+14^\\circ)\\sin(x+74^\\circ)+\\sin(x-76^\\circ)\\sin(x-16^\\circ)$",
+  "dap_an": "\\dfrac{1}{2}",
+  "loi_giai": "a) Ta có $A = \\sin(14^\\circ + x)\\cos(16^\\circ - x) + \\sin(76^\\circ - x)\\sin(16^\\circ - x)$ (đây có lẽ là lỗi đánh máy, cần sửa lại đề)\nNếu đề là $A = \\sin(14^\\circ + x)\\sin(74^\\circ + x) + \\sin(x - 76^\\circ)\\sin(x - 16^\\circ)$ (thực tế thì đề cho biểu thức $A$ đã sai từ đầu, không thể ra kết quả $\\frac{1}{2}$)\nCoi lời giải được cung cấp:\n$= \\sin(14^\\circ + x)\\cos(16^\\circ - x) + \\cos(14^\\circ + x)\\sin(16^\\circ - x) = \\sin(14^\\circ + 16^\\circ + x - x) = \\sin 30^\\circ = \\dfrac{1}{2}$",
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức lượng giác sử dụng công thức cộng"
+ },
+ {
+  "ma_cau": "T111030105046",
+  "loai": "tra_loi_ngan",
+  "de": "Chiều cao $h \\left(m\\right)$ của một cabin trên vòng quay vào thời điểm $t$ giây sau khi bắt đầu chuyển động được cho bởi công thức $h\\left(t\\right)=30+20\\sin \\left(\\dfrac{\\pi }{25}t+\\dfrac{\\pi }{3}\\right)$. Cabin đạt độ cao tối đa là bao nhiêu?",
+  "dap_an": "50",
+  "loi_giai": "Với mọi $t\\ge 0$, ta luôn có\n$-1\\le \\sin \\left(\\dfrac{\\pi }{25}t+\\dfrac{\\pi }{3}\\right)\\le 1.$\nSuy ra\n$h\\left(t\\right)=30+20\\sin \\left(\\dfrac{\\pi }{25}t+\\dfrac{\\pi }{3}\\right)\\le 30+20\\cdot 1=50 \\left(m\\right).$\nĐộ cao tối đa đạt được khi $\\sin \\left(\\dfrac{\\pi }{25}t+\\dfrac{\\pi }{3}\\right)=1$, chẳng hạn tại thời điểm $t=\\dfrac{25}{6} \\left(s\\right)$.\nVậy cabin đạt độ cao tối đa là $50 \\left(m\\right)$.",
+  "nhan_cu": "Hàm số lượng giác › Xác định giá trị của 1 đại lượng tại 1 thời điểm"
+ },
+ {
+  "ma_cau": "T111010602076",
+  "loai": "dung_sai",
+  "de": "Cho $\\sin a=\\dfrac{3}{5}$ và $\\dfrac{\\pi }{2}<a<\\pi$.",
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T111000000",
+    "loi_giai": "Do hàm số tang có chu kì $\\pi$ nên $\\tan \\left(a+2025\\pi \\right)=\\tan a=-\\dfrac{3}{4}\\ne -12$.",
+    "noi_dung": "$\\tan \\left(a+2025\\pi \\right)=-12$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Áp dụng công thức cộng:\n\n$\\cos \\left(a+\\dfrac{\\pi }{3}\\right)=\\cos a\\cos \\dfrac{\\pi }{3}-\\sin a\\sin \\dfrac{\\pi }{3}=\\left(-\\dfrac{4}{5}\\right)\\cdot \\dfrac{1}{2}-\\dfrac{3}{5}\\cdot \\dfrac{\\sqrt{3}}{2}=-\\dfrac{4+3\\sqrt{3}}{10}.$",
+    "noi_dung": "$\\cos \\left(a+\\dfrac{\\pi }{3}\\right)=-\\dfrac{4+3\\sqrt{3}}{10}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Ta có $\\sin 2a=2\\sin a\\cos a=2\\cdot \\dfrac{3}{5}\\cdot \\left(-\\dfrac{4}{5}\\right)=-\\dfrac{24}{25}<0$.",
+    "noi_dung": "$\\sin 2a<0$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Vì $\\dfrac{\\pi }{2}<a<\\pi$ nên $\\cos a=-\\dfrac{4}{5}$.",
+    "noi_dung": "$\\cos a=-\\dfrac{4}{5}$"
+   }
+  ],
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức lượng giác sử dụng công thức cộng"
+ },
+ {
+  "ma_cau": "T111010602099",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định nào đúng?",
+  "lua_chon": [
+   "Qua $2$ điểm phân biệt có duy nhất một mặt phẳng.",
+   "Qua $3$ điểm phân biệt bất kì có duy nhất một mặt phẳng.",
+   "Qua $4$ điểm phân biệt bất kì có duy nhất một mặt phẳng.",
+   "Qua $3$ điểm không thẳng hàng có duy nhất một mặt phẳng."
+  ],
+  "loi_giai": "Theo tính chất thừa nhận trong hình học không gian, qua ba điểm không thẳng hàng có một và chỉ một mặt phẳng duy nhất.\nCác khẳng định còn lại sai vì:\n- Qua hai điểm phân biệt có vô số mặt phẳng.\n- Qua ba điểm phân biệt thẳng hàng có vô số mặt phẳng.\n- Qua bốn điểm phân biệt bất kì không đồng phẳng thì không tồn tại mặt phẳng nào đi qua cả bốn điểm.",
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức lượng giác sử dụng công thức cộng"
+ },
+ {
+  "ma_cau": "T111060201060",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số $\\left(u_{n}\\right)$ với số hạng tổng quát sau, dãy số nào là cấp số cộng?",
+  "lua_chon": [
+   "$u_{n}=2^{n}+3$.",
+   "$u_{n}=3\\cdot 2^{n}$.",
+   "$u_{n}=3-2n$.",
+   "$u_{n}=2+n^{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét dãy số $u_{n}=3-2n$, ta có\n$u_{n+1}-u_{n}=[3-2\\left(n+1\\right)]-\\left(3-2n\\right)=\\left(1-2n\\right)-\\left(3-2n\\right)=-2\\left(\\text{hang so voi moi }n\\in\\mathbb{N}^{∗}\\right).$\nVậy dãy số $u_{n}=3-2n$ là một cấp số cộng có số hạng đầu $u_{1}=1$ và công sai $d=-2$.",
+  "nhan_cu": "Cấp số cộng › Nhận diện cấp số cộng"
+ },
+ {
+  "ma_cau": "T111030502063",
+  "loai": "trac_nghiem",
+  "de": "Chu kì của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$4\\pi$",
+   "$\\pi$",
+   "$2\\pi$",
+   "$\\dfrac{\\pi}{2}$"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060101169",
+  "loai": "tra_loi_ngan",
+  "de": "Với mỗi số nguyên dương $n$, lấy $n+6$ điểm cách đều nhau trên đường tròn. Nối mỗi điểm với điểm cách nó hai điểm trên đường tròn đó để tạo thành các ngôi sao như Hình 1. Gọi $u_{n}$ là số đo góc ở đỉnh tính theo đơn vị độ của mỗi ngôi sao thì ta được dãy số $\\left(u_{n}\\right)$. Tính $u_{12}$?",
+  "dap_an": "120",
+  "loi_giai": "Với mỗi số nguyên dương $n$, trên đường tròn lấy $p=n+6$ điểm cách đều nhau $P_{1},P_{2},\\dots,P_{p}$.\nĐường tròn được chia thành $p$ cung tròn bằng nhau, mỗi cung nhỏ có số đo là $\\dfrac{360^\\circ}{p}$.\nNgôi sao được tạo thành bằng cách nối mỗi điểm $P_{i}$ với điểm cách nó hai điểm trên đường tròn, tức là nối $P_{i}$ với $P_{i+3}$.\nTại mỗi đỉnh $P_{k}$ của ngôi sao, góc ở đỉnh là góc nội tiếp $\\widehat{P_{k-3}P_{k}P_{k+3}}$ chắn cung không chứa đỉnh $P_{k}$.\nCung bị chắn này gồm $p-6$ cung nhỏ, nên có số đo là $\\left(p-6\\right)\\cdot \\dfrac{360^\\circ}{p}$.\nDo đó, số đo góc ở đỉnh của ngôi sao là:\n$u_{n}=\\dfrac{1}{2}\\cdot \\left(p-6\\right)\\cdot \\dfrac{360^\\circ}{p}=\\dfrac{p-6}{p}\\cdot 180^\\ci …",
+  "co_hinh": true,
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111030503068",
+  "loai": "trac_nghiem",
+  "de": "Hàm số có đồ thị như hình trên nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(\\dfrac{\\pi}{2};\\dfrac{3\\pi}{2})$",
+   "$(-\\dfrac{\\pi}{8};\\dfrac{\\pi}{8})$",
+   "$(\\pi;\\dfrac{3\\pi}{2})$",
+   "$(-\\pi;-\\dfrac{\\pi}{4})$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+ },
+ {
+  "ma_cau": "T111010110009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho góc lượng giác $x$ thỏa mãn $\\tan x=1$. Tính giá trị biểu thức $P=\\dfrac{2\\cos x+5\\sin x}{\\cos x-3\\sin x}$ (kết quả làm tròn đến hàng phần mười).",
+  "dap_an": "-3.5",
+  "loi_giai": "Vì $\\tan x=1$ nên $\\cos x\\ne 0$.\nChia cả tử và mẫu của biểu thức $P$ cho $\\cos x$, ta được:\n$P=\\dfrac{2+5\\tan x}{1-3\\tan x}.$\nThay $\\tan x=1$ vào biểu thức trên:\n$P=\\dfrac{2+5\\cdot 1}{1-3\\cdot 1}=\\dfrac{7}{-2}=-3,5.$\nVậy giá trị của biểu thức $P$ bằng $-3,5$.",
+  "nhan_cu": "Góc lượng giác - Đường tròn lượng giác › Cho một giá trị lượng giác, tính giá trị của biểu thức lượng giác"
+ },
+ {
+  "ma_cau": "T111030503072",
+  "loai": "trac_nghiem",
+  "de": "Hàm số có đồ thị như hình trên nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(-\\dfrac{3\\pi}{4}; -\\dfrac{\\pi}{4})$",
+   "$(-\\pi; \\pi)$",
+   "$(\\dfrac{\\pi}{2}; \\pi)$",
+   "$(-\\dfrac{3\\pi}{2}; -\\pi)$"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+ }
+]

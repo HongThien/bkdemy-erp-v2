@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111040201016",
+  "dang_bai_id": "NDB01014",
+  "chac": "cao",
+  "ly_do": "Phương trình cos u + sin v = 0, đảo pha về cơ bản."
+ },
+ {
+  "ma_cau": "T111030102080",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm phân thức lượng giác."
+ },
+ {
+  "ma_cau": "T111000000029",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tháp 11 tầng diện tích giảm một nửa: cấp số nhân, tìm số hạng thứ n."
+ },
+ {
+  "ma_cau": "T111060101153",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính các số hạng của dãy cho bởi công thức, tìm mệnh đề sai."
+ },
+ {
+  "ma_cau": "T111010110024",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Đơn giản biểu thức lượng giác bằng hệ thức cơ bản."
+ },
+ {
+  "ma_cau": "T111040203020",
+  "dang_bai_id": "NDB01016",
+  "chac": "cao",
+  "ly_do": "Phương trình dạng a sin + b cos = c, chia cho căn(a^2+b^2)."
+ },
+ {
+  "ma_cau": "T111000000023",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tổng cấp số nhân lùi vô hạn: bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111040202009",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Dùng 2cos^2 x - 1 = cos2x rồi giải cos u = cos v; có thể là NDB01007."
+ },
+ {
+  "ma_cau": "T111030301035",
+  "dang_bai_id": "NDB00990",
+  "chac": "cao",
+  "ly_do": "Xét tính chẵn lẻ của y = tan(x+pi/4)."
+ },
+ {
+  "ma_cau": "T111040101326",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Nghiệm của cos x = -1/2."
+ },
+ {
+  "ma_cau": "T111040201012",
+  "dang_bai_id": "NDB01014",
+  "chac": "cao",
+  "ly_do": "Phương trình cos u + sin v = 0, đảo pha về cơ bản."
+ },
+ {
+  "ma_cau": "T111010602024",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi của cos, tìm khẳng định sai."
+ },
+ {
+  "ma_cau": "T111030504108",
+  "dang_bai_id": "NDB01006",
+  "chac": "cao",
+  "ly_do": "Hàm nào nghịch biến trên một khoảng, cho công thức."
+ },
+ {
+  "ma_cau": "T111030502040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình): bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111030502093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình): bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111000000287",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: tứ phân vị mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111060101115",
+  "dang_bai_id": "NDB00592",
+  "chac": "vua",
+  "ly_do": "Dãy truy hồi u_{n+1}=4u_n+9 với bốn mệnh đề: SHTQ, u2, tổng, tăng giảm."
+ },
+ {
+  "ma_cau": "T111040101325",
+  "dang_bai_id": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Cho sin a tính sin2a nhưng các ý còn có GTLN, tích sin cos."
+ },
+ {
+  "ma_cau": "T111010603002",
+  "dang_bai_id": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn (1-2sin^2 x)/(2 sin x cos x) bằng công thức nhân đôi."
+ },
+ {
+  "ma_cau": "T111030503052",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Nghịch biến trên khoảng nào dựa vào đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111040102067",
+  "dang_bai_id": "NDB00577",
+  "chac": "vua",
+  "ly_do": "Giải cos(sin x)=1 rồi tính trên đoạn; dạng lồng, gần phương trình cơ bản trên đoạn."
+ },
+ {
+  "ma_cau": "T111060302100",
+  "dang_bai_id": "NDB01029",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân cho u1, q; bốn mệnh đề về SHTQ, vị trí số hạng, tổng."
+ },
+ {
+  "ma_cau": "T111040101383",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải 2sin2x - căn3 = 0, dạng sin(ax+b)=sin a."
+ },
+ {
+  "ma_cau": "T111000000025",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tổng dạng 4+44+444+...: bản đồ thiếu dạng tính tổng dãy đặc biệt."
+ },
+ {
+  "ma_cau": "T111000000389",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học không gian: hai đường thẳng chéo nhau."
+ },
+ {
+  "ma_cau": "T111010102062",
+  "dang_bai_id": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung tròn biết bán kính và số đo rad."
+ },
+ {
+  "ma_cau": "T111040302036",
+  "dang_bai_id": "NDB01012",
+  "chac": "cao",
+  "ly_do": "Đếm số lần huyết áp bằng 100 mmHg trong 10 giây."
+ },
+ {
+  "ma_cau": "T111000000344",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi của cos."
+ },
+ {
+  "ma_cau": "T111040102087",
+  "dang_bai_id": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Tổng các nghiệm của sin x = 1 trên đoạn, một họ nghiệm."
+ },
+ {
+  "ma_cau": "T111060201074",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Chọn dãy liệt kê không phải cấp số cộng."
+ },
+ {
+  "ma_cau": "T111060205018",
+  "dang_bai_id": "NDB00615",
+  "chac": "vua",
+  "ly_do": "Bậc thang cao dần, tìm bậc thứ n; bậc hai khác công sai nên hơi lệch."
+ },
+ {
+  "ma_cau": "T111030101072",
+  "dang_bai_id": "NDB00987",
+  "chac": "vua",
+  "ly_do": "Bốn mệnh đề về y = tan x + 2: chẵn lẻ, TXĐ, giá trị, GTLN."
+ },
+ {
+  "ma_cau": "T111030502123",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Tìm chu kì của hàm số từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111010108019",
+  "dang_bai_id": "NDB00949",
+  "chac": "vua",
+  "ly_do": "Cho cos a, các ý gồm cos2a, sin a, dấu, tan a; cùng nhóm cho một giá trị tính còn lại."
+ },
+ {
+  "ma_cau": "T111000000191",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: mốt của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111000000336",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xác định dấu sin, cos khi a thuộc khoảng (pi/2; pi)."
+ },
+ {
+  "ma_cau": "T111030102028",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Điều kiện xác định của hàm phân thức 1/(sin x - cos x)."
+ },
+ {
+  "ma_cau": "T111010602080",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức cộng của sin(x-y)."
+ },
+ {
+  "ma_cau": "T111000000478",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học không gian: ba điểm xác định mặt phẳng."
+ },
+ {
+  "ma_cau": "T111040202008",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Dùng 1-2sin^2(x/2)=cos x rồi giải cos u = cos v; có thể là NDB01007."
+ },
+ {
+  "ma_cau": "T111020101062",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Thu gọn sin a cos b + cos a sin b; có thể là NDB00984."
+ },
+ {
+  "ma_cau": "T111060202208",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1, u2, tìm công sai và các yếu tố khác."
+ },
+ {
+  "ma_cau": "T111060101082",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Viết năm số hạng đầu của dãy truy hồi."
+ },
+ {
+  "ma_cau": "T111030504107",
+  "dang_bai_id": "NDB01006",
+  "chac": "cao",
+  "ly_do": "Hàm nào đồng biến trên khoảng (pi/2; pi), cho công thức."
+ },
+ {
+  "ma_cau": "T111000000358",
+  "dang_bai_id": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung tròn biết bán kính và số đo rad."
+ },
+ {
+  "ma_cau": "T111060202239",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và d, các ý tính tổng, vị trí, SHTQ."
+ },
+ {
+  "ma_cau": "T111030102060",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm phân thức (2-cos x)/(1+cos x)."
+ },
+ {
+  "ma_cau": "T111060301038",
+  "dang_bai_id": "NDB01026",
+  "chac": "cao",
+  "ly_do": "Chọn dãy hữu hạn không phải cấp số nhân."
+ },
+ {
+  "ma_cau": "T111020102010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tính tan 105 độ bằng công thức cộng: bản đồ thiếu dạng tính GTLG góc không đặc biệt."
+ },
+ {
+  "ma_cau": "T111000000413",
+  "dang_bai_id": "NDB00569",
+  "chac": "vua",
+  "ly_do": "Từ góc 120 độ tìm hoành độ điểm biểu diễn trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111000000201",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho sin a và khoảng của a, tìm các giá trị lượng giác còn lại."
+ },
+ {
+  "ma_cau": "T111000000082",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: điểm thi ghép nhóm, đếm số thí sinh."
+ },
+ {
+  "ma_cau": "T111030105049",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm thời điểm mực nước cao nhất."
+ },
+ {
+  "ma_cau": "T111040101230",
+  "dang_bai_id": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có tập nghiệm là hai điểm trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111000000425",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học không gian: hai đường thẳng chéo nhau."
+ },
+ {
+  "ma_cau": "T111040101211",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải sin2x = căn3/2."
+ },
+ {
+  "ma_cau": "T111010602053",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng của sin(x - pi/6) theo công thức cộng."
+ },
+ {
+  "ma_cau": "T111040102084",
+  "dang_bai_id": "NDB00576",
+  "chac": "vua",
+  "ly_do": "Bốn mệnh đề về cùng một phương trình cos(x+pi/4): số nghiệm, nghiệm, tổng nghiệm."
+ },
+ {
+  "ma_cau": "T111030201101",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tập giá trị của y = 2sin x + 3."
+ },
+ {
+  "ma_cau": "T111040101280",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Nghiệm của cos x = -căn3/2."
+ },
+ {
+  "ma_cau": "T111000000149",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xác định dấu các giá trị lượng giác khi 0<a<pi/2."
+ },
+ {
+  "ma_cau": "T111000000154",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: mốt của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111010108003",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho tan x, tính cot x."
+ },
+ {
+  "ma_cau": "T111060205027",
+  "dang_bai_id": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng u1=1, d=1, tổng 3003, tìm số hàng n."
+ },
+ {
+  "ma_cau": "T111000000476",
+  "dang_bai_id": "NDB00951",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức hai góc bù nhau sin(180-a)."
+ },
+ {
+  "ma_cau": "T111000000049",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tổng quãng đường bóng nảy (cấp số nhân lùi vô hạn): bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111040101315",
+  "dang_bai_id": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Cho sin a tính cos2a, thêm sin5a+sin3a và TXĐ hàm tan: trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T111000000299",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: giá trị đại diện của nhóm."
+ },
+ {
+  "ma_cau": "T111030502133",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình): bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111030201102",
+  "dang_bai_id": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Đưa f(x) về cơ bản bằng tổng thành tích rồi tìm GTLN."
+ }
+]

@@ -1,0 +1,7508 @@
+[
+ {
+  "ma_cau": "07702220320320303021",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x có biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000475",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'số đối / số nghịch đảo của số hữu tỉ'."
+ },
+ {
+  "ma_cau": "07702202202040",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai của phân số cùng luỹ thừa, cần khai căn."
+ },
+ {
+  "ma_cau": "T107000000272",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x cộng trừ, hệ số x bằng 1."
+ },
+ {
+  "ma_cau": "T107000000356",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Cô lập x^2 rồi tìm x với luỹ thừa mũ chẵn."
+ },
+ {
+  "ma_cau": "0770201102050",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn STP với độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000332",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, nhân, cộng khoảng 4 bước; cũng gần dạng tính luỹ thừa NDB00883."
+ },
+ {
+  "ma_cau": "07702220320320303016",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022220401082",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN của tổng hiệu bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000363",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: phân loại dãy dữ liệu, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000092",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Tính hợp lý, phải phá ngoặc đổi dấu rồi ghép cặp cùng mẫu."
+ },
+ {
+  "ma_cau": "07702011103002",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000073",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi điểm trên trục số (có hình, đề mô tả đủ)."
+ },
+ {
+  "ma_cau": "T107000000257",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi điểm B trên trục số."
+ },
+ {
+  "ma_cau": "077022220401079",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức có căn bậc hai và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022220401062",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức có bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000262",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Nhận biết số thập phân vô hạn tuần hoàn; dạng hiện có là xác định chu kì, khớp gần."
+ },
+ {
+  "ma_cau": "07702220320302007",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, gần như trùng ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "07702220320320303019",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202021",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai số học của 225."
+ },
+ {
+  "ma_cau": "T107010206013",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Tính thuận tiện bằng ghép cặp cùng mẫu, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107010207001",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -5/17, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000236",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x cộng trừ, hệ số x bằng 1."
+ },
+ {
+  "ma_cau": "077022220401083",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN của tổng hiệu bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107020501005",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000433",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Căn bậc hai số học của 1,21; gần cả dạng nhận biết căn bậc hai NDB00449."
+ },
+ {
+  "ma_cau": "T107000000405",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'nhận biết phân số bằng nhau cùng biểu diễn một số hữu tỉ'."
+ },
+ {
+  "ma_cau": "07702202202017",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai số học của 81."
+ },
+ {
+  "ma_cau": "077020101030",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "0770201102011",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "T107020501001",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010202031",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Phép tính chia rồi cộng hai bước; có thể là nhân chia hoặc cộng trừ cơ bản."
+ },
+ {
+  "ma_cau": "T107000000329",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Tính giá trị tuyệt đối của số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702220320302066",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000373",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính giá trị căn bậc hai số học của 9."
+ },
+ {
+  "ma_cau": "T107000000255",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế có lời văn dùng phân số và vận tốc."
+ },
+ {
+  "ma_cau": "0770220201003",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước."
+ },
+ {
+  "ma_cau": "077020101050",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'viết phân số thành số thập phân hữu hạn/vô hạn tuần hoàn'."
+ },
+ {
+  "ma_cau": "T107000000471",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x từ tích bằng 0 chứa mũ x và căn'."
+ },
+ {
+  "ma_cau": "T107010202047",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước có ngoặc; ranh giới giữa biểu thức đơn giản và phức tạp."
+ },
+ {
+  "ma_cau": "T107010205051",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế phần trăm số bánh mì."
+ },
+ {
+  "ma_cau": "077022220401081",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức có căn bậc hai và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320302064",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của phân số."
+ },
+ {
+  "ma_cau": "T107010205025",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế bán hàng, giảm giá."
+ },
+ {
+  "ma_cau": "T107000000185",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước có luỹ thừa, GTTĐ, căn; cũng gần NDB00800."
+ },
+ {
+  "ma_cau": "T107000000283",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Vị trí điểm biểu diễn trên trục số theo dấu, không có hình; gần dạng trục số."
+ },
+ {
+  "ma_cau": "T107010504001",
+  "dang_bai_id": "NDB00908",
+  "chac": "cao",
+  "ly_do": "Dãy 1/21..1/40 mẫu liên tiếp, chia nhóm bằng nhau để đánh giá."
+ },
+ {
+  "ma_cau": "T10770330201007",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế lãi suất ngân hàng."
+ },
+ {
+  "ma_cau": "T107010404025",
+  "dang_bai_id": "NDB00796",
+  "chac": "vua",
+  "ly_do": "Tìm x chứa bình phương biểu thức, cần chuyển vế; gần NDB00798."
+ },
+ {
+  "ma_cau": "077022220401007",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107010205029",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế bán đường theo phần trăm và phân số."
+ },
+ {
+  "ma_cau": "077022022203040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "077022022203003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "T107000000235",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đếm số viết được dạng STP vô hạn tuần hoàn; nhận biết loại số, khớp gần."
+ },
+ {
+  "ma_cau": "07702220320302012",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, căn và luỹ thừa 0."
+ },
+ {
+  "ma_cau": "077022022203024",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "T107000000061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'chứng minh số vô tỉ (căn lồng nhau)'."
+ },
+ {
+  "ma_cau": "T107010510007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'dãy phân số bình phương'."
+ },
+ {
+  "ma_cau": "07702202202063",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Phép tính có căn bậc hai của phân số và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000495",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x cộng trừ, hệ số x bằng 1."
+ },
+ {
+  "ma_cau": "07702220320302060",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000032",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều ngoặc, 5+ bước có STP tuần hoàn và căn; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "07702220320320303007",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320302010",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, gần như trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107010301033",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức toàn luỹ thừa của số."
+ },
+ {
+  "ma_cau": "T107000000038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'dãy căn thức, trục căn thức ở mẫu'."
+ },
+ {
+  "ma_cau": "T107000000348",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'kí hiệu / khái niệm các tập hợp số'."
+ },
+ {
+  "ma_cau": "T107000000323",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'lý thuyết khái niệm số hữu tỉ (đúng sai phát biểu)'."
+ },
+ {
+  "ma_cau": "T107020501023",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107010404063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x,y nguyên từ tổng bình phương'."
+ },
+ {
+  "ma_cau": "T107010301039",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa, nhiều ngoặc, 5+ bước; cũng gần NDB00883 và NDB00799."
+ },
+ {
+  "ma_cau": "07702202202048",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai của phân số cần khai căn."
+ },
+ {
+  "ma_cau": "T107010206039",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Tính thuận tiện, ghép cặp số thập phân và phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "077022220401037",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000199",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm điều kiện của x để biểu thức âm/dương'."
+ },
+ {
+  "ma_cau": "077022220401052",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức có bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000021",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 7/12, rút ra ngoài."
+ },
+ {
+  "ma_cau": "0770201102039",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn STP với độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "077022022203036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "T107010401076",
+  "dang_bai_id": "NDB00462",
+  "chac": "vua",
+  "ly_do": "Biểu thức phân thức có mẫu là bình phương, nhưng đề hỏi GTNN mà thực chất chỉ có GTLN."
+ },
+ {
+  "ma_cau": "07702220320302040",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000266",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107010206035",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Tính thuận tiện ghép cặp, trùng ví dụ NDB00421."
+ },
+ {
+  "ma_cau": "T107010202001",
+  "dang_bai_id": "NDB00420",
+  "chac": "cao",
+  "ly_do": "Phép nhân hai số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000490",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ đoạn thẳng, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107010202013",
+  "dang_bai_id": "NDB00420",
+  "chac": "cao",
+  "ly_do": "Phép chia hai số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107010505027",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 3 với tử không đổi."
+ },
+ {
+  "ma_cau": "077020101048",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'viết phân số thành số thập phân hữu hạn/vô hạn tuần hoàn'."
+ },
+ {
+  "ma_cau": "T107000000426",
+  "dang_bai_id": "NDB00419",
+  "chac": "vua",
+  "ly_do": "Cộng hỗn số với số thập phân, hai số hạng; đề ghi 'hợp lí' nên cũng gần NDB00421."
+ },
+ {
+  "ma_cau": "077022220401085",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN của tổng hiệu bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010103007",
+  "dang_bai_id": "NDB00792",
+  "chac": "cao",
+  "ly_do": "So sánh hai số hữu tỉ bằng quy đồng."
+ },
+ {
+  "ma_cau": "T107000000170",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế mua hàng giảm giá."
+ },
+ {
+  "ma_cau": "07702220320320303030",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000051",
+  "dang_bai_id": "NDB00434",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+1)) dạng hiệu-tích chuẩn, tìm x."
+ },
+ {
+  "ma_cau": "T107010511001",
+  "dang_bai_id": "NDB00437",
+  "chac": "cao",
+  "ly_do": "Dãy hiệu-tích bất quy tắc, tử không đều nhau."
+ },
+ {
+  "ma_cau": "T107010505033",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 2 với tử không đổi."
+ },
+ {
+  "ma_cau": "077020101049",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'viết phân số thành số thập phân hữu hạn/vô hạn tuần hoàn'."
+ },
+ {
+  "ma_cau": "T107010207036",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Đổi chia thành nhân để có nhân tử chung 7/5, trùng ví dụ."
+ },
+ {
+  "ma_cau": "077022220401011",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010205009",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế gửi ngân hàng lãi suất."
+ },
+ {
+  "ma_cau": "T107000000098",
+  "dang_bai_id": "NDB00791",
+  "chac": "vua",
+  "ly_do": "Cần biến đổi để lộ nhân tử chung 12/17; cũng gần NDB00423."
+ },
+ {
+  "ma_cau": "T107010507005",
+  "dang_bai_id": "NDB00911",
+  "chac": "cao",
+  "ly_do": "Tử và mẫu có tổng không đổi, tách thành các số 1 (form 2)."
+ },
+ {
+  "ma_cau": "T107000000166",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -7/11 trong hai số hạng đầu."
+ },
+ {
+  "ma_cau": "T107000000059",
+  "dang_bai_id": "NDB00932",
+  "chac": "vua",
+  "ly_do": "Tích dãy ngoặc (1+1/(n(n+2))) nhưng đề là tìm x có căn, trộn hai dạng."
+ },
+ {
+  "ma_cau": "077022022203042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "07702011103013",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "0770201102009",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107010401001",
+  "dang_bai_id": "NDB00800",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ biểu thức nhiều ngoặc 5+ bước của NDB00800."
+ },
+ {
+  "ma_cau": "T107010509011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x nguyên để phân thức nhận giá trị nguyên'."
+ },
+ {
+  "ma_cau": "T107020501038",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Hai vế bằng nhau: tổng hai GTTĐ và phân thức, đánh giá BĐT."
+ },
+ {
+  "ma_cau": "T107000000070",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp triệt tiêu."
+ },
+ {
+  "ma_cau": "077022220401046",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa bình phương."
+ },
+ {
+  "ma_cau": "T107010404064",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tìm x,y khi tổng hai luỹ thừa chẵn bằng 0."
+ },
+ {
+  "ma_cau": "T107010203055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'chứng minh đẳng thức giữa hai số hữu tỉ'."
+ },
+ {
+  "ma_cau": "T107010510003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'dãy phân số bình phương'."
+ },
+ {
+  "ma_cau": "T107000000179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'quan hệ giữa các tập số N, Z, Q, R'."
+ },
+ {
+  "ma_cau": "077022022203008",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "T107010501033",
+  "dang_bai_id": "NDB00434",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+1)) dạng hiệu-tích chuẩn, tìm x."
+ },
+ {
+  "ma_cau": "T107000000316",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi điểm N trên trục số."
+ },
+ {
+  "ma_cau": "07702220301013",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực theo thứ tự."
+ },
+ {
+  "ma_cau": "T107010101026",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Viết số thập phân thành phân số, gần dạng nhận biết số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000412",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Chọn số vô tỉ trong nhóm số cho trước."
+ },
+ {
+  "ma_cau": "T107000000135",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'lý thuyết quy tắc luỹ thừa của số hữu tỉ'."
+ },
+ {
+  "ma_cau": "T107010404062",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tìm x,y khi tổng hai luỹ thừa chẵn bằng 0."
+ },
+ {
+  "ma_cau": "07702220320320303014",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000282",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'nhận biết dấu / giá trị của biểu thức luỹ thừa'."
+ },
+ {
+  "ma_cau": "T107000000117",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế giảm giá hai lần."
+ },
+ {
+  "ma_cau": "T107000000207",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x có hệ số 2 và phải chuyển vế, vế phải là luỹ thừa; gần NDB00429."
+ },
+ {
+  "ma_cau": "T107000000447",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Tính giá trị tuyệt đối của số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000396",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Tìm điểm biểu diễn số hữu tỉ -3/2 trên trục số."
+ },
+ {
+  "ma_cau": "07702220320302062",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của phân số."
+ },
+ {
+  "ma_cau": "T107000000066",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'phần nguyên của căn bậc hai, tính tổng dãy'."
+ },
+ {
+  "ma_cau": "T107010401070",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tính tổng dãy bình phương'."
+ },
+ {
+  "ma_cau": "T10770330201004",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 7/15 trong hai số hạng đầu."
+ },
+ {
+  "ma_cau": "07702220320302055",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa."
+ },
+ {
+  "ma_cau": "07702220320320303050",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010203056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'chứng minh đẳng thức giữa hai số hữu tỉ'."
+ },
+ {
+  "ma_cau": "T107010501050",
+  "dang_bai_id": "NDB00436",
+  "chac": "vua",
+  "ly_do": "Hiệu-tích, tử 5 mẫu cách 4 cần nhân và chia tử; cũng gần NDB00435."
+ },
+ {
+  "ma_cau": "T107010101001",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Điền kí hiệu thuộc / không thuộc vào tập số."
+ },
+ {
+  "ma_cau": "T107000000312",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'lý thuyết quy tắc luỹ thừa của số hữu tỉ'."
+ },
+ {
+  "ma_cau": "07702011103031",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "077022022203033",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "07702220301014",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực theo thứ tự."
+ },
+ {
+  "ma_cau": "T107000000052",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 3 với tử không đổi, tìm số mũ cuối."
+ },
+ {
+  "ma_cau": "07702220320302005",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của phân số."
+ },
+ {
+  "ma_cau": "T107000000381",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010203037",
+  "dang_bai_id": "NDB00798",
+  "chac": "cao",
+  "ly_do": "Tìm x phải chuyển vế các số hạng số sang một bên."
+ },
+ {
+  "ma_cau": "07702202202056",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai cần khai căn."
+ },
+ {
+  "ma_cau": "07702220320320303038",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320320303051",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x| là ẩn cần cô lập."
+ },
+ {
+  "ma_cau": "07702220320320303060",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x+2| là ẩn cần cô lập."
+ },
+ {
+  "ma_cau": "T107000000425",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ hình quạt, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107010403001",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x trong ngoặc dạng (x+0,4), không có ngoặc khác."
+ },
+ {
+  "ma_cau": "077022220401057",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức có bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202058",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai cần khai căn."
+ },
+ {
+  "ma_cau": "T107000000369",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x hệ số -2 và phải chuyển vế; cũng gần NDB00429."
+ },
+ {
+  "ma_cau": "T107000000005",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng hai số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000091",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 2,1, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107010505013",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 17 với tử không đổi."
+ },
+ {
+  "ma_cau": "077022220401055",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức có luỹ thừa chẵn và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000365",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ hình quạt, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "07702202202052",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai cần khai căn."
+ },
+ {
+  "ma_cau": "T107000000465",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 5/11, rút ra ngoài."
+ },
+ {
+  "ma_cau": "07702220320320303008",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010401072",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa bình phương."
+ },
+ {
+  "ma_cau": "07702202202016",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai số học của 64."
+ },
+ {
+  "ma_cau": "077022022203031",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "077020101047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'viết phân số thành số thập phân hữu hạn/vô hạn tuần hoàn'."
+ },
+ {
+  "ma_cau": "T107010102011",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Biểu diễn các số hữu tỉ cho trước trên trục số."
+ },
+ {
+  "ma_cau": "07702011103038",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107010505034",
+  "dang_bai_id": "NDB00439",
+  "chac": "vua",
+  "ly_do": "Dãy luỹ thừa chứng minh bất đẳng thức nhưng số hạng đầu 1/2^2 lệch quy luật."
+ },
+ {
+  "ma_cau": "T107000000459",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x từ tích các thừa số bằng 0'."
+ },
+ {
+  "ma_cau": "T107000000324",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số nào không là số hữu tỉ (mẫu bằng 0)."
+ },
+ {
+  "ma_cau": "T107010203057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm số hữu tỉ từ hệ điều kiện a+b=ab=a/b'."
+ },
+ {
+  "ma_cau": "T107010404043",
+  "dang_bai_id": "NDB00795",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa mũ 3 của biểu thức chứa x nhưng cần chuyển vế; cũng gần NDB00798."
+ },
+ {
+  "ma_cau": "T107000000099",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa số hữu tỉ kèm rút gọn luỹ thừa cơ số 2,3; cũng gần NDB00800."
+ },
+ {
+  "ma_cau": "T107000000456",
+  "dang_bai_id": "NDB00420",
+  "chac": "vua",
+  "ly_do": "Chia rồi cộng hai bước; có thể là nhân chia hoặc cộng trừ cơ bản."
+ },
+ {
+  "ma_cau": "T107010206019",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp, trùng ví dụ."
+ },
+ {
+  "ma_cau": "07702220320302063",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của phân số."
+ },
+ {
+  "ma_cau": "T107000000007",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế diện tích, chu vi hình vuông, cần khai căn; nửa hình học."
+ },
+ {
+  "ma_cau": "T107000000297",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'số đối / số nghịch đảo của số hữu tỉ'."
+ },
+ {
+  "ma_cau": "T107000000114",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với bình phương của biểu thức chứa x, hai trường hợp."
+ },
+ {
+  "ma_cau": "07702202202018",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai số học của 121."
+ },
+ {
+  "ma_cau": "T107000000036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'dãy căn thức, trục căn thức ở mẫu'."
+ },
+ {
+  "ma_cau": "T107010102007",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi các điểm trên trục số (có hình)."
+ },
+ {
+  "ma_cau": "T107000000294",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế tìm cạnh hình vuông từ diện tích, dùng căn bậc hai."
+ },
+ {
+  "ma_cau": "07702220320302009",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010501049",
+  "dang_bai_id": "NDB00434",
+  "chac": "vua",
+  "ly_do": "Tìm x trên dãy hiệu-tích chuẩn nhưng còn thêm số hạng -1/x."
+ },
+ {
+  "ma_cau": "T107010203031",
+  "dang_bai_id": "NDB00429",
+  "chac": "cao",
+  "ly_do": "Tìm x nhân chia, x : (-5/3) = 0,2, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T10770333330501009",
+  "dang_bai_id": "NDB00910",
+  "chac": "vua",
+  "ly_do": "Dãy 1/(1.2)+1/(3.4)+... chứng minh bị chặn, gần dạng gom nhóm lẻ-chẵn."
+ },
+ {
+  "ma_cau": "07702011103035",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000209",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế mua sách giảm giá."
+ },
+ {
+  "ma_cau": "T107020501049",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Hai vế bằng nhau: tổng hai GTTĐ và phân thức, đánh giá BĐT."
+ },
+ {
+  "ma_cau": "T107703330301002",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức 3 bước có ngoặc và luỹ thừa 2^0; cũng gần NDB00883."
+ },
+ {
+  "ma_cau": "T107020501044",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Hai vế bằng nhau: tổng hai GTTĐ và phân thức, đánh giá BĐT."
+ },
+ {
+  "ma_cau": "07702220320320303039",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022220401058",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức có bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702011103001",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000469",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x có hệ số 4/5 và phải chuyển vế; cũng gần NDB00429."
+ },
+ {
+  "ma_cau": "T107000000351",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: phân loại dữ liệu, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000023",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -5/18, rút ra ngoài."
+ },
+ {
+  "ma_cau": "07702220301024",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực theo thứ tự."
+ },
+ {
+  "ma_cau": "T10770330201002",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x cộng trừ, hệ số x bằng 1."
+ },
+ {
+  "ma_cau": "T107000000178",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Căn bậc hai số học của 16; gần cả dạng nhận biết căn bậc hai NDB00449."
+ },
+ {
+  "ma_cau": "07702202202044",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai của phân số và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000196",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế mua sách giảm giá, tính tiền trả lại."
+ },
+ {
+  "ma_cau": "T107000000214",
+  "dang_bai_id": "NDB00419",
+  "chac": "vua",
+  "ly_do": "Nhân rồi cộng hai bước; ranh giới giữa cộng trừ, nhân chia và biểu thức đơn giản."
+ },
+ {
+  "ma_cau": "07702220320302079",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa 0."
+ },
+ {
+  "ma_cau": "077022220401042",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức có luỹ thừa chẵn và bình phương."
+ },
+ {
+  "ma_cau": "0770201102041",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn STP với độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000030",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước có STP tuần hoàn và căn; cũng gần NDB00800."
+ },
+ {
+  "ma_cau": "T107000000230",
+  "dang_bai_id": "NDB00420",
+  "chac": "vua",
+  "ly_do": "Chia cho một ngoặc hai bước; có thể là nhân chia hoặc biểu thức đơn giản."
+ },
+ {
+  "ma_cau": "077022220401026",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức có căn bậc hai và bình phương."
+ },
+ {
+  "ma_cau": "T107010205057",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế khuyến mại giảm giá hai lần."
+ },
+ {
+  "ma_cau": "T107000000250",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x nhân với luỹ thừa số hữu tỉ; cũng gần dạng luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010102015",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Biểu diễn các số hữu tỉ cho trước trên trục số."
+ },
+ {
+  "ma_cau": "T107000000383",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Hai vế bằng nhau: tổng hai GTTĐ và phân thức, đánh giá BĐT."
+ },
+ {
+  "ma_cau": "T107000000336",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'số đối / số nghịch đảo của số hữu tỉ'."
+ },
+ {
+  "ma_cau": "T107000000095",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Đổi chia thành nhân để lộ nhân tử chung 3/4, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000353",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Có giá trị tuyệt đối và chia hai luỹ thừa cùng cơ số; cũng gần NDB00883."
+ },
+ {
+  "ma_cau": "T107010508009",
+  "dang_bai_id": "NDB00932",
+  "chac": "cao",
+  "ly_do": "Tích các ngoặc (1/n^2 - 1), so sánh kết quả."
+ },
+ {
+  "ma_cau": "T107000000229",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x có hệ số 5/2 và phải chuyển vế; cũng gần NDB00429."
+ },
+ {
+  "ma_cau": "T107010509001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x nguyên để phân thức nhận giá trị nguyên'."
+ },
+ {
+  "ma_cau": "0770201102012",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "07702220320320303003",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x| bằng một số."
+ },
+ {
+  "ma_cau": "T107000000492",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép cặp các số hạng cùng mẫu triệt tiêu."
+ },
+ {
+  "ma_cau": "T107010403074",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x tách thêm bớt 1 vào từng phân thức'."
+ },
+ {
+  "ma_cau": "T107000000192",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn STP với độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000293",
+  "dang_bai_id": "NDB00792",
+  "chac": "vua",
+  "ly_do": "So sánh STP vô hạn tuần hoàn với STP hữu hạn; cũng gần NDB00455."
+ },
+ {
+  "ma_cau": "T107000000029",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có STP tuần hoàn, ngoặc và luỹ thừa 3 bước; ranh giới với NDB00800."
+ },
+ {
+  "ma_cau": "T107010205068",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế so sánh hai gói cước."
+ },
+ {
+  "ma_cau": "07702220320302050",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Có giá trị tuyệt đối nhưng bản chất là nhân tử chung 4/5; cũng gần NDB00423."
+ },
+ {
+  "ma_cau": "T107000000107",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x chia cho luỹ thừa 1,7^2; cũng gần dạng luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010102016",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi các điểm trên trục số (có hình)."
+ },
+ {
+  "ma_cau": "077020101034",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "0770201102065",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 5."
+ },
+ {
+  "ma_cau": "T107010207019",
+  "dang_bai_id": "NDB00791",
+  "chac": "cao",
+  "ly_do": "Đảo số 21/7 để xuất hiện thừa số chung 3/7, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107020501047",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Hai vế bằng nhau: tổng hai GTTĐ và phân thức, đánh giá BĐT."
+ },
+ {
+  "ma_cau": "T107010509006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm điều kiện để biểu thức nhận giá trị nguyên'."
+ },
+ {
+  "ma_cau": "T107000000452",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa."
+ },
+ {
+  "ma_cau": "07702220320320303025",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320302011",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối cùng căn và luỹ thừa 0."
+ },
+ {
+  "ma_cau": "07702220301019",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực theo thứ tự."
+ },
+ {
+  "ma_cau": "077022220401072",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức có bình phương và căn bậc hai."
+ },
+ {
+  "ma_cau": "077022220401014",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa giá trị tuyệt đối, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107010509009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x nguyên để phân thức nhận giá trị nguyên'."
+ },
+ {
+  "ma_cau": "07702220320320303061",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202028",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính tổng hai căn bậc hai số học."
+ },
+ {
+  "ma_cau": "T107020501002",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T1077033330401003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tính số đo góc theo hình vẽ."
+ },
+ {
+  "ma_cau": "T107010205069",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế giảm giá phần trăm hai lần."
+ },
+ {
+  "ma_cau": "07702202202043",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai của phân số và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010205001",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế giảm giá, tính tiền trả lại."
+ },
+ {
+  "ma_cau": "07702202202020",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai số học của 169."
+ },
+ {
+  "ma_cau": "T107000000048",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x trong ngoặc dạng (-2x + 1/4)."
+ },
+ {
+  "ma_cau": "07702011103009",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702202202065",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức nhiều căn bậc hai cần khai căn."
+ },
+ {
+  "ma_cau": "T107010403007",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x trong ngoặc dạng (x - 3/5)."
+ },
+ {
+  "ma_cau": "07702202202072",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn và luỹ thừa 4+ bước; cũng gần NDB00800."
+ },
+ {
+  "ma_cau": "T107010203058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x,y tự nhiên từ phương trình mũ'."
+ },
+ {
+  "ma_cau": "T107000000451",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép cặp hai số hạng 3/7 và -3/7 triệt tiêu."
+ },
+ {
+  "ma_cau": "T107000000208",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x có x ở số mũ'."
+ },
+ {
+  "ma_cau": "0770201102043",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn STP với độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "077022220401015",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T1077033330401007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tính số đo góc theo hình vẽ."
+ },
+ {
+  "ma_cau": "07702220320320303020",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022022203018",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x từ tích các thừa số bằng 0'."
+ },
+ {
+  "ma_cau": "T107010504018",
+  "dang_bai_id": "NDB00910",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức S, P rồi tính (S-P)^n, gom nhóm lẻ-chẵn."
+ },
+ {
+  "ma_cau": "07702220320302043",
+  "dang_bai_id": "NDB00423",
+  "chac": "vua",
+  "ly_do": "Nhân tử chung 3/4 (chia 4/3) và có GTTĐ; cũng gần NDB00934."
+ },
+ {
+  "ma_cau": "077022022203019",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'tìm x liên quan căn bậc hai'."
+ },
+ {
+  "ma_cau": "077022220401077",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức có căn bậc hai và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320302025",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000281",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Nhận biết phân số viết được thành STP vô hạn tuần hoàn; khớp gần."
+ },
+ {
+  "ma_cau": "T107000000150",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "T107010203013",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x ở mẫu của phép chia và phải chuyển vế; cũng gần NDB00429."
+ },
+ {
+  "ma_cau": "T107010505025",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 5 với tử không đổi."
+ },
+ {
+  "ma_cau": "T107000000401",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: phân loại dãy dữ liệu, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000368",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, gần như trùng ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "T107020501046",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Hai vế bằng nhau: tổng hai GTTĐ và phân thức, đánh giá BĐT."
+ },
+ {
+  "ma_cau": "T107000000097",
+  "dang_bai_id": "NDB00419",
+  "chac": "vua",
+  "ly_do": "Cộng trừ ba hỗn số/phân số, đề có vẻ thiếu vế kết quả."
+ },
+ {
+  "ma_cau": "T107000000269",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc có dấu trừ rồi ghép các phân số cùng mẫu 27 và 23; thêm (2025)^0 chỉ là một số hạng."
+ },
+ {
+  "ma_cau": "T107000000267",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa của luỹ thừa cơ số nguyên; gần nhất với tính toán luỹ thừa số hữu tỉ nhưng bảng chưa có dạng quy tắc luỹ thừa."
+ },
+ {
+  "ma_cau": "07702011103004",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 8,(3) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220301029",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn, giá trị tuyệt đối và số thập phân."
+ },
+ {
+  "ma_cau": "0770201102032",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 148,(27) theo độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "07702220301009",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn, phân số và số âm."
+ },
+ {
+  "ma_cau": "077022220401069",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN của phân thức có mẫu chứa giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000342",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung (-1/2)^2, rút ra ngoài rồi cộng hai phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "07702011103032",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 0,7(2) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000116",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x ở số mũ' (đặt 3^x làm thừa số chung, đưa về cùng cơ số)."
+ },
+ {
+  "ma_cau": "07702202202066",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa nhiều căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000259",
+  "dang_bai_id": "NDB00793",
+  "chac": "cao",
+  "ly_do": "Sắp xếp bốn số hữu tỉ cùng mẫu theo thứ tự giảm dần."
+ },
+ {
+  "ma_cau": "T107000000219",
+  "dang_bai_id": "NDB00798",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc và chuyển vế các số hạng chứa x về một bên."
+ },
+ {
+  "ma_cau": "07702011103025",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 2,(63) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107010403066",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "x là số chia trong phép chia nhưng còn phải chuyển vế số hạng cộng; cũng có thể xếp chuyển vế."
+ },
+ {
+  "ma_cau": "T107000000284",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chọn biểu thức có kết quả 5^15 bằng quy tắc luỹ thừa; bảng chưa có dạng quy tắc luỹ thừa riêng."
+ },
+ {
+  "ma_cau": "T107000000001",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Chọn số vô tỉ trong bốn số cho trước."
+ },
+ {
+  "ma_cau": "07702220320302024",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa giá trị tuyệt đối của các phân số."
+ },
+ {
+  "ma_cau": "0770220201002",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Phân loại số hữu tỉ, số vô tỉ trong nhóm số cho trước (có căn)."
+ },
+ {
+  "ma_cau": "T107000000333",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 202,5, rút ra ngoài rồi cộng các số trong ngoặc."
+ },
+ {
+  "ma_cau": "T107000000103",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "x là số chia trong phép chia 1/7 : x, còn phải chuyển số hạng cộng; có thể xếp chuyển vế."
+ },
+ {
+  "ma_cau": "T107000000439",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức chia rồi cộng, ít bước (khoảng 3); ranh giới với cộng trừ, nhân chia cơ bản."
+ },
+ {
+  "ma_cau": "T107010501001",
+  "dang_bai_id": "NDB00434",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+1)) tử đều bằng 1 là hiệu hai thừa số mẫu, dạng chuẩn."
+ },
+ {
+  "ma_cau": "T107010403031",
+  "dang_bai_id": "NDB00798",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc rồi chuyển vế các số hạng chứa x."
+ },
+ {
+  "ma_cau": "T107000000131",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Phân số tử tổng 1/k lẻ chia mẫu 1/(k(100-k))' (tách tổng hai phân số, quy về tử)."
+ },
+ {
+  "ma_cau": "T107010102018",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định điểm biểu diễn trên trục số nhưng đề phụ thuộc hình vẽ không thấy được."
+ },
+ {
+  "ma_cau": "07702011103008",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 3,(45) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000168",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Vế phải là thương hai luỹ thừa cùng cơ số, vế trái 3x+1 cần chuyển vế; cũng gần dạng tìm x cộng trừ."
+ },
+ {
+  "ma_cau": "T10770333330501007",
+  "dang_bai_id": "NDB00792",
+  "chac": "vua",
+  "ly_do": "So sánh hai phân số nhưng cơ số luỹ thừa lớn, đặt ẩn phụ rồi nhân chéo; mức nâng cao hơn dạng so sánh cơ bản."
+ },
+ {
+  "ma_cau": "T107020501016",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối dùng bất đẳng thức |a|+|b|>=|a+b|."
+ },
+ {
+  "ma_cau": "077020101039",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Viết phân số dưới dạng số thập phân (hữu hạn / vô hạn tuần hoàn)'."
+ },
+ {
+  "ma_cau": "T107000000079",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế tính tổng tiền mua rau với số thập phân; dữ kiện bảng đã có đủ trong đề."
+ },
+ {
+  "ma_cau": "T107000000215",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có giá trị tuyệt đối, luỹ thừa, chia số thập phân; cũng có thể xếp biểu thức tổng hợp."
+ },
+ {
+  "ma_cau": "T107010101022",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Đổi hỗn số âm ra phân số biểu diễn số hữu tỉ; sát nhận biết số hữu tỉ nhưng không hẳn khớp mô tả."
+ },
+ {
+  "ma_cau": "T107000000304",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung (-2/3)^2, rút ra ngoài rồi cộng hai phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "T107010301013",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, ngoặc vuông, nhiều bước; ranh giới giữa đơn giản và phức tạp."
+ },
+ {
+  "ma_cau": "0770201102048",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 12,(995) theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000489",
+  "dang_bai_id": "NDB00420",
+  "chac": "vua",
+  "ly_do": "Tích bốn phân số rút gọn bằng cách nhóm cặp; gần nhân chia số hữu tỉ hơn nhân tử chung."
+ },
+ {
+  "ma_cau": "07702202202070",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức có căn bậc hai, luỹ thừa của số hữu tỉ và số thập phân."
+ },
+ {
+  "ma_cau": "T107000000286",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Phá ngoặc nhiều tầng (tròn trong vuông) rồi cộng trừ phân số; có thể xếp phá ngoặc."
+ },
+ {
+  "ma_cau": "T107020501024",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối dùng bất đẳng thức |a|+|b|>=|a+b|."
+ },
+ {
+  "ma_cau": "T107010401031",
+  "dang_bai_id": "NDB00800",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ của biểu thức phức tạp: luỹ thừa, phép chia, ngoặc, nhiều bước."
+ },
+ {
+  "ma_cau": "T107010401065",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước gồm luỹ thừa, hỗn số, số 0 mũ; có thể xếp biểu thức đơn giản."
+ },
+ {
+  "ma_cau": "T107000000047",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "x nằm trong ngoặc tròn đứng sau dấu trừ, không có ngoặc khác."
+ },
+ {
+  "ma_cau": "07702220320302058",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tính biểu thức gồm căn, luỹ thừa và giá trị tuyệt đối; cũng có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000006",
+  "dang_bai_id": "NDB00420",
+  "chac": "cao",
+  "ly_do": "Phép chia hai số thập phân, đổi ra phân số rồi nhân nghịch đảo."
+ },
+ {
+  "ma_cau": "T1077033330401008",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: chứng minh hai tia phân giác vuông góc với nhau, dùng song song và góc."
+ },
+ {
+  "ma_cau": "T1077030101003",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Viết số thập phân thành phân số; gần nhận biết số hữu tỉ nhưng không đúng mô tả."
+ },
+ {
+  "ma_cau": "0770222204220402015",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng luỹ thừa chẵn và căn bằng 0, tìm x và y."
+ },
+ {
+  "ma_cau": "07702220301007",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn, phân số và số âm."
+ },
+ {
+  "ma_cau": "07702220320320303022",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320320303004",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x| bằng một phân số."
+ },
+ {
+  "ma_cau": "T107000000146",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi điểm N trên trục số nhưng đề phụ thuộc hình vẽ không thấy được."
+ },
+ {
+  "ma_cau": "07702220301011",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn, phân số và số âm."
+ },
+ {
+  "ma_cau": "T107010201013",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Phép trừ hai số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000247",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 15,6736 theo độ chính xác 0,0005."
+ },
+ {
+  "ma_cau": "07702220320320303017",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "T107010501007",
+  "dang_bai_id": "NDB00435",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+2)) cần nhân thêm 2 vào tử để thành hiệu hai thừa số mẫu."
+ },
+ {
+  "ma_cau": "T107000000053",
+  "dang_bai_id": "NDB00437",
+  "chac": "vua",
+  "ly_do": "Mẫu là tổng 1+2+...+n phải biến đổi thành n(n+1)/2 rồi mới tách hiệu; dạng bất quy tắc nhưng không khớp hẳn."
+ },
+ {
+  "ma_cau": "T107000000065",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Căn của tích bốn số tự nhiên liên tiếp cộng 1' (đưa về bình phương rồi tính tổng dãy)."
+ },
+ {
+  "ma_cau": "T107000000443",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: vẽ biểu đồ đoạn thẳng và so sánh doanh thu, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "07702202202024",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương một số âm."
+ },
+ {
+  "ma_cau": "077022220401035",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN của biểu thức chỉ chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000163",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai về luỹ thừa số hữu tỉ; bảng chưa có dạng quy tắc luỹ thừa riêng."
+ },
+ {
+  "ma_cau": "07702202202073",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức có căn bậc hai, luỹ thừa của số hữu tỉ và số thập phân."
+ },
+ {
+  "ma_cau": "07702011103036",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 1,2(5) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107010102009",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Biểu diễn các số hữu tỉ cho trước trên trục số."
+ },
+ {
+  "ma_cau": "T107000000313",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số nào không phải số hữu tỉ (mẫu bằng 0)."
+ },
+ {
+  "ma_cau": "T107000000319",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép trừ với hệ số của x bằng 1."
+ },
+ {
+  "ma_cau": "07702220320320303026",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000264",
+  "dang_bai_id": "NDB00449",
+  "chac": "vua",
+  "ly_do": "Hỏi căn bậc hai số học của 4; gần nhận biết căn bậc hai nhưng cũng có thể xếp phép tính căn."
+ },
+ {
+  "ma_cau": "T107010206031",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc có dấu trừ đổi dấu rồi ghép các phân số cùng mẫu 23 và 33."
+ },
+ {
+  "ma_cau": "07702220301005",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn, phân số và số âm."
+ },
+ {
+  "ma_cau": "T1070204011089",
+  "dang_bai_id": "NDB00462",
+  "chac": "vua",
+  "ly_do": "GTLN của phân thức có mẫu chứa cả bình phương và giá trị tuyệt đối; khác mô tả 1 loại, gần dạng tổng hiệu."
+ },
+ {
+  "ma_cau": "0770201102015",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "0770201102016",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000143",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về giá bánh, giảm giá 20% và tiền trả lại."
+ },
+ {
+  "ma_cau": "07702220320320303023",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220320320303036",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107020501032",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Vế trái tổng hai giá trị tuyệt đối, vế phải phân thức mẫu bình phương cộng 1."
+ },
+ {
+  "ma_cau": "T107010403042",
+  "dang_bai_id": "NDB00893",
+  "chac": "vua",
+  "ly_do": "x nằm trong ngoặc (x-4/7) rồi chia cho phân số; cũng có thể xếp tìm x nhân chia."
+ },
+ {
+  "ma_cau": "T107000000473",
+  "dang_bai_id": "NDB00808",
+  "chac": "vua",
+  "ly_do": "Chứng tỏ A<=2025 và tìm x,y để dấu bằng, dùng bình phương và giá trị tuyệt đối; cần biến đổi thêm."
+ },
+ {
+  "ma_cau": "07702220320302067",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối và luỹ thừa; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T10770333330501001",
+  "dang_bai_id": "NDB00435",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+2)) cần nhân thêm 2 vào tử để thành hiệu hai thừa số mẫu."
+ },
+ {
+  "ma_cau": "T107000000011",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 6,(4) theo độ chính xác 0,5."
+ },
+ {
+  "ma_cau": "T107010404021",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với bình phương của biểu thức chứa x, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "0770201102061",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 347,62 theo độ chính xác 5."
+ },
+ {
+  "ma_cau": "T107000000325",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107000000397",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Dựa vào chu kì để tìm chữ số thập phân thứ năm; gần dạng xác định chu kì nhưng không trùng mô tả."
+ },
+ {
+  "ma_cau": "0770201102049",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 246,1(26) theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107010301057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Chứng minh chia hết với luỹ thừa' (đặt thừa số chung 5^n)."
+ },
+ {
+  "ma_cau": "07702220320302021",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa giá trị tuyệt đối của các phân số."
+ },
+ {
+  "ma_cau": "077022220401002",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN của biểu thức chỉ chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000460",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về vận tốc, quãng đường, thời gian với phân số."
+ },
+ {
+  "ma_cau": "T107000000155",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các phân số cùng mẫu 32 và cùng mẫu 17 thành số nguyên."
+ },
+ {
+  "ma_cau": "077022220401018",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN của phân thức có mẫu chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000354",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn, số thập phân và luỹ thừa 0; có thể xếp biểu thức tổng hợp."
+ },
+ {
+  "ma_cau": "07702220301018",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022022203002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (căn x bằng một số)."
+ },
+ {
+  "ma_cau": "T107000000161",
+  "dang_bai_id": "NDB00420",
+  "chac": "cao",
+  "ly_do": "Nhân hai số hữu tỉ."
+ },
+ {
+  "ma_cau": "077022220401017",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN của phân thức có mẫu chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107020501034",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Vế trái tổng hai giá trị tuyệt đối, vế phải phân thức mẫu bình phương cộng 1."
+ },
+ {
+  "ma_cau": "T107000000470",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối sau khi cô lập."
+ },
+ {
+  "ma_cau": "T107000000358",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ đoạn thẳng, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107010401073",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN của phân thức có mẫu là bình phương cộng 3."
+ },
+ {
+  "ma_cau": "T107010509004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x nguyên để phân thức nhận giá trị nguyên' (dùng ước)."
+ },
+ {
+  "ma_cau": "T107000000326",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Tính luỹ thừa cùng cơ số nhân với phân số; bảng chưa có dạng quy tắc luỹ thừa riêng."
+ },
+ {
+  "ma_cau": "0770222204220402007",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng giá trị tuyệt đối và luỹ thừa chẵn bằng 0, tìm x y rồi tính biểu thức."
+ },
+ {
+  "ma_cau": "0770222204220402010",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi |..|+2 bằng phân thức có mẫu bình phương cộng 4."
+ },
+ {
+  "ma_cau": "07702202202059",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000074",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức chia rồi trừ, ít bước; ranh giới với cộng trừ, nhân chia cơ bản."
+ },
+ {
+  "ma_cau": "T107000000057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x tổng phân số, trừ 1 vào mỗi phân số để có nhân tử chung' (có căn x)."
+ },
+ {
+  "ma_cau": "T107000000321",
+  "dang_bai_id": "NDB00792",
+  "chac": "cao",
+  "ly_do": "So sánh hai số hữu tỉ bằng quy đồng mẫu số."
+ },
+ {
+  "ma_cau": "077020101040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Viết phân số dưới dạng số thập phân (hữu hạn / vô hạn tuần hoàn)'."
+ },
+ {
+  "ma_cau": "T107000000056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x tổng nghịch đảo, vế phải tử tăng mẫu giảm' (cộng 1 vào mỗi số hạng)."
+ },
+ {
+  "ma_cau": "T1077030101002",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến hàng đơn vị."
+ },
+ {
+  "ma_cau": "T1077033330401005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: vẽ hình theo yêu cầu (góc, trung điểm, giao điểm)."
+ },
+ {
+  "ma_cau": "07702220320302076",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có giá trị tuyệt đối, căn, chia số thập phân và luỹ thừa 0; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000478",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: biểu đồ hình quạt tròn, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107010404057",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với bình phương của biểu thức chứa x, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "T107020501043",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Vế trái tổng hai giá trị tuyệt đối, vế phải phân thức mẫu bình phương cộng 1."
+ },
+ {
+  "ma_cau": "T107000000096",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều ngoặc cần đặt nhân tử chung và phá ngoặc; có thể xếp dạng nhân tử chung."
+ },
+ {
+  "ma_cau": "T107000000189",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Số đối, số nghịch đảo của số hữu tỉ' (khái niệm)."
+ },
+ {
+  "ma_cau": "T107010501029",
+  "dang_bai_id": "NDB00435",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+2)) cần nhân thêm 2 vào tử để thành hiệu hai thừa số mẫu."
+ },
+ {
+  "ma_cau": "T107000000400",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực căn 2, 0 và số đối."
+ },
+ {
+  "ma_cau": "T107010506007",
+  "dang_bai_id": "NDB00441",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa 3 có tử cách đều 2 đơn vị, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "T107000000292",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 0,07248 theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "07702011103027",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 0,2(4) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320320303055",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x| sau khi cô lập từ biểu thức có căn số."
+ },
+ {
+  "ma_cau": "077022022203023",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (a căn x = b)."
+ },
+ {
+  "ma_cau": "T107000000139",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa 0, bình phương, hỗn số rồi cộng trừ; ranh giới với dạng luỹ thừa số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000390",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc bảng tỉ lệ phần trăm, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107010509008",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x nguyên để phân thức nhận giá trị nguyên' (dùng ước)."
+ },
+ {
+  "ma_cau": "T107020501039",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Vế trái tổng hai giá trị tuyệt đối, vế phải phân thức mẫu bình phương cộng 1, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107010401023",
+  "dang_bai_id": "NDB00799",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ của biểu thức đơn giản: luỹ thừa rồi nhân và cộng."
+ },
+ {
+  "ma_cau": "T107000000477",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ đoạn thẳng, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107010203025",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép trừ với x là số trừ, hệ số 1."
+ },
+ {
+  "ma_cau": "07702220320302069",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối và luỹ thừa; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010301051",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'So sánh luỹ thừa' (đưa về cùng số mũ)."
+ },
+ {
+  "ma_cau": "07702220320320303042",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702220301017",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107020501022",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối dùng bất đẳng thức |a|+|b|>=|a+b|."
+ },
+ {
+  "ma_cau": "T107000000399",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế tính quãng đường từ vận tốc và thời gian số thập phân."
+ },
+ {
+  "ma_cau": "07702220320302002",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa giá trị tuyệt đối của các phân số."
+ },
+ {
+  "ma_cau": "07702220301004",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn, phân số và số âm."
+ },
+ {
+  "ma_cau": "T107010202025",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức chia rồi cộng, ít bước; ranh giới với cộng trừ, nhân chia cơ bản."
+ },
+ {
+  "ma_cau": "T107000000442",
+  "dang_bai_id": "NDB00802",
+  "chac": "vua",
+  "ly_do": "Dùng máy tính tính căn rồi làm tròn theo độ chính xác 0,05; có thể xếp phép tính căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010206001",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các phân số cùng mẫu 13 và 15 thành số nguyên."
+ },
+ {
+  "ma_cau": "T107000000227",
+  "dang_bai_id": "NDB00792",
+  "chac": "vua",
+  "ly_do": "So sánh số thập phân vô hạn tuần hoàn với số thập phân hữu hạn; mô tả so sánh quy đồng không khớp hẳn."
+ },
+ {
+  "ma_cau": "T107000000317",
+  "dang_bai_id": "NDB00422",
+  "chac": "vua",
+  "ly_do": "Phá ngoặc (dấu cộng) rồi ghép hai phân số cùng mẫu 23; dấu cộng nên không phải đổi dấu."
+ },
+ {
+  "ma_cau": "T107703330301001",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Tính luỹ thừa của một số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107010509005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x nguyên để phân thức nhận giá trị nguyên' (dùng ước)."
+ },
+ {
+  "ma_cau": "T107010205041",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về phân số và phần trăm của số tiền."
+ },
+ {
+  "ma_cau": "0770201102006",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107020501028",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối dùng bất đẳng thức |a|+|b|>=|a+b|."
+ },
+ {
+  "ma_cau": "T107000000487",
+  "dang_bai_id": "NDB00801",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra số thập phân rồi làm tròn đến hàng phần trăm; có thể xếp dạng viết phân số thành số thập phân."
+ },
+ {
+  "ma_cau": "T107010101008",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định cách viết nào không biểu diễn số hữu tỉ (mẫu bằng 0)."
+ },
+ {
+  "ma_cau": "0770222204220402027",
+  "dang_bai_id": "NDB00809",
+  "chac": "vua",
+  "ly_do": "Tìm x y để A=2027 phải biến đổi hiệu hai bình phương về dạng tổng không dương bằng 0."
+ },
+ {
+  "ma_cau": "T107000000340",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 3,(5) thành phân số."
+ },
+ {
+  "ma_cau": "T107000000458",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x với hệ số 2 của x và cần chuyển vế; cũng có thể xếp tìm x cộng trừ hoặc chuyển vế."
+ },
+ {
+  "ma_cau": "T107000000234",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương một số dương."
+ },
+ {
+  "ma_cau": "077022022203029",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (tích bằng 0 chứa căn x)."
+ },
+ {
+  "ma_cau": "T107000000080",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về mua bánh và phiếu giảm giá số thập phân."
+ },
+ {
+  "ma_cau": "077022220401028",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN của biểu thức chứa hai giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000450",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép cộng với hệ số của x bằng 1."
+ },
+ {
+  "ma_cau": "T107000000149",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Quy tắc nhân hai luỹ thừa cùng cơ số; bảng chưa có dạng quy tắc luỹ thừa riêng."
+ },
+ {
+  "ma_cau": "T107010205046",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về giảm giá phần trăm."
+ },
+ {
+  "ma_cau": "T107000000486",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077020101025",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107010505029",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 7 tử không đổi, nhân 7^2 rồi cộng vế."
+ },
+ {
+  "ma_cau": "T107000000160",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 5 tử không đổi, nhân 5 rồi trừ vế."
+ },
+ {
+  "ma_cau": "T107000000366",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức chia rồi cộng, ít bước; ranh giới với cộng trừ, nhân chia cơ bản."
+ },
+ {
+  "ma_cau": "T1070204011092",
+  "dang_bai_id": "NDB00462",
+  "chac": "vua",
+  "ly_do": "GTLN của phân thức có mẫu chứa cả bình phương và giá trị tuyệt đối; khác mô tả 1 loại, gần dạng tổng hiệu."
+ },
+ {
+  "ma_cau": "T107000000164",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x ở số mũ' (đưa hai vế về cùng cơ số)."
+ },
+ {
+  "ma_cau": "T107000000016",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc có dấu trừ đổi dấu rồi quy đồng cộng trừ các phân số."
+ },
+ {
+  "ma_cau": "07702220320320303048",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010207030",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung -11/15, rút ra ngoài."
+ },
+ {
+  "ma_cau": "07702220320302038",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, luỹ thừa và giá trị tuyệt đối; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022022203022",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (a căn x = b)."
+ },
+ {
+  "ma_cau": "07702220301025",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107020501025",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối dùng bất đẳng thức |a|+|b|>=|a+b|."
+ },
+ {
+  "ma_cau": "077022220401001",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN của biểu thức chỉ chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077020101056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Viết phân số dưới dạng số thập phân (hữu hạn / vô hạn tuần hoàn)'."
+ },
+ {
+  "ma_cau": "T107000000194",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Viết luỹ thừa dưới dạng luỹ thừa cơ số 1/2; gần luỹ thừa số hữu tỉ nhưng bảng chưa có dạng này."
+ },
+ {
+  "ma_cau": "T107010509010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm n nguyên để phân thức nhận giá trị nguyên' (dùng ước)."
+ },
+ {
+  "ma_cau": "T107000000141",
+  "dang_bai_id": "NDB00798",
+  "chac": "cao",
+  "ly_do": "x ở cả hai vế, cần chuyển vế gom x về một bên."
+ },
+ {
+  "ma_cau": "07702220320320303040",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000182",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Nhận biết phân số viết được thành STP hữu hạn hay vô hạn tuần hoàn' (xét mẫu)."
+ },
+ {
+  "ma_cau": "07702220320302032",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối và luỹ thừa; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000279",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 9,2356 theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000110",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x tích hai thừa số bằng 0' (tách hai trường hợp)."
+ },
+ {
+  "ma_cau": "T107000000300",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chọn phép tính không bằng x^12 bằng quy tắc luỹ thừa; bảng chưa có dạng quy tắc luỹ thừa riêng."
+ },
+ {
+  "ma_cau": "077022220401080",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN của biểu thức chứa căn và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T1070204011091",
+  "dang_bai_id": "NDB00462",
+  "chac": "vua",
+  "ly_do": "GTLN của phân thức có mẫu chứa cả bình phương và giá trị tuyệt đối; khác mô tả 1 loại, gần dạng tổng hiệu."
+ },
+ {
+  "ma_cau": "07702220320320303059",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000118",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về số tiền mua vở và giá đã giảm."
+ },
+ {
+  "ma_cau": "T107000000211",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định đúng về quan hệ các tập số N Z Q R; gần nhận biết số hữu tỉ nhưng rộng hơn."
+ },
+ {
+  "ma_cau": "T107010509013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm n nguyên để phân thức đạt GTNN' (tách phần nguyên)."
+ },
+ {
+  "ma_cau": "0770222204220402025",
+  "dang_bai_id": "NDB00809",
+  "chac": "vua",
+  "ly_do": "Tìm x y để A=2026 phải biến đổi hiệu hai bình phương về dạng tổng không dương bằng 0."
+ },
+ {
+  "ma_cau": "07702220320320303064",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010505032",
+  "dang_bai_id": "NDB00440",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa của 7 có tử liên tiếp 1,2,3,...; nhân 7 rồi trừ vế."
+ },
+ {
+  "ma_cau": "T107000000414",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ đường theo năm, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "077022220401033",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN của biểu thức chỉ chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010406003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x ở số mũ' (đặt luỹ thừa chung, đưa về cùng cơ số)."
+ },
+ {
+  "ma_cau": "T107000000083",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có nhân số thập phân rồi cộng trừ, ít bước; ranh giới với cộng trừ, nhân chia cơ bản."
+ },
+ {
+  "ma_cau": "0770222204220402012",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi |..|+5 bằng phân thức có mẫu bình phương cộng 5."
+ },
+ {
+  "ma_cau": "T107000000480",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: xét Đúng Sai về biểu đồ đoạn thẳng, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T1077033330401002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: góc kề bù theo hình vẽ."
+ },
+ {
+  "ma_cau": "07702220320302013",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có giá trị tuyệt đối, căn, chia số thập phân và luỹ thừa 0; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "0770222204220402019",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng luỹ thừa chẵn và căn bằng 0, tìm x và y."
+ },
+ {
+  "ma_cau": "T107010203049",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x tích hai biểu thức bằng 0' (có luỹ thừa chứa x ở số mũ)."
+ },
+ {
+  "ma_cau": "T107010403036",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x với số hạng chứa x có hệ số 7/10 và số hạng cộng; cũng có thể xếp chuyển vế."
+ },
+ {
+  "ma_cau": "T107000000307",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với bình phương biểu thức chứa x, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "07702220320302033",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối và luỹ thừa; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010207024",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 11/12, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000018",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các phân số cùng mẫu 20 và 18 thành số nguyên."
+ },
+ {
+  "ma_cau": "077022220401087",
+  "dang_bai_id": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTLN cần biến đổi hiệu hai bình phương về -8(..)^2 rồi dùng giá trị tuyệt đối; cũng xếp tìm x y."
+ },
+ {
+  "ma_cau": "0770220201009",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Phân loại số hữu tỉ, số vô tỉ trong nhóm số cho trước (có căn)."
+ },
+ {
+  "ma_cau": "077022022203010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (căn của biểu thức chứa x)."
+ },
+ {
+  "ma_cau": "077022220401047",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN của phân thức có mẫu là luỹ thừa chẵn cộng hằng số."
+ },
+ {
+  "ma_cau": "07702220320320303032",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202023",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương một số dương."
+ },
+ {
+  "ma_cau": "077022022203032",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (căn của biểu thức chứa x)."
+ },
+ {
+  "ma_cau": "077020101026",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107000000370",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tính luỹ thừa rồi chuyển vế cô lập số hạng chứa x; cũng gần tìm x nhân chia."
+ },
+ {
+  "ma_cau": "T1077033330401004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tính góc bằng tia phân giác."
+ },
+ {
+  "ma_cau": "07702011103016",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 2,(36) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702202202038",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai và phép chia."
+ },
+ {
+  "ma_cau": "T107000000311",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Số đối, số nghịch đảo của số hữu tỉ' (khái niệm)."
+ },
+ {
+  "ma_cau": "07702220320302071",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có giá trị tuyệt đối và chia hai luỹ thừa cùng cơ số; cũng có thể xếp luỹ thừa."
+ },
+ {
+  "ma_cau": "07702011103029",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn 0,4(6) thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320302048",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có giá trị tuyệt đối nhân phân số rồi cộng; cũng có thể xếp biểu thức tổng hợp."
+ },
+ {
+  "ma_cau": "07702220320302019",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, giá trị tuyệt đối, căn và luỹ thừa 0; cũng có thể xếp phép tính căn bậc hai."
+ },
+ {
+  "ma_cau": "07702220320302049",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có giá trị tuyệt đối nhân phân số rồi cộng; cũng có thể xếp biểu thức tổng hợp."
+ },
+ {
+  "ma_cau": "T107000000488",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chọn phép tính sai trong luỹ thừa, căn và giá trị tuyệt đối; bảng chưa có dạng này."
+ },
+ {
+  "ma_cau": "T107000000446",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Nhận biết số thập phân vô hạn tuần hoàn trong bốn số; gần dạng chu kì nhưng không trùng mô tả."
+ },
+ {
+  "ma_cau": "T107000000431",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định điểm biểu diễn 3/5 trên trục số, đề mô tả hình bằng chữ nhưng phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T107010205072",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế chọn phương án nhưng cần tính tổng dãy luỹ thừa của 3."
+ },
+ {
+  "ma_cau": "T107010510001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Dãy phân số bình phương' (đánh giá 1/n^2 < 1/((n-1)n))."
+ },
+ {
+  "ma_cau": "T107000000084",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa và số thập phân rồi cộng trừ, ít bước; ranh giới với luỹ thừa số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000287",
+  "dang_bai_id": "NDB00791",
+  "chac": "vua",
+  "ly_do": "Tách (-4/3)^3 thành tích để xuất hiện thừa số chung; cũng có thể xếp luỹ thừa số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107010501052",
+  "dang_bai_id": "NDB00436",
+  "chac": "vua",
+  "ly_do": "Tử 25 so với hiệu 5 của mẫu nên nhân chia để về hiệu tích; cũng có thể xếp dạng nhân thêm."
+ },
+ {
+  "ma_cau": "0770201102014",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "0770201102040",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn 154,8(12) theo độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107000000265",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Tính giá trị tuyệt đối của số âm cho trước; mô tả dạng phép tính nhưng đây là nhận biết đơn giản."
+ },
+ {
+  "ma_cau": "077022220401071",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN của biểu thức chứa bình phương và căn bậc hai."
+ },
+ {
+  "ma_cau": "T10770333330501006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tỉ số hai dãy phân số' (tách 50/k - 1 để quy về cùng dãy)."
+ },
+ {
+  "ma_cau": "077022220401084",
+  "dang_bai_id": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTLN cần biến đổi hiệu hai bình phương về -3(..)^2 rồi dùng giá trị tuyệt đối; cũng xếp tìm x y."
+ },
+ {
+  "ma_cau": "T107000000407",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm hai số hữu tỉ x y từ đẳng thức nhiều biểu thức'."
+ },
+ {
+  "ma_cau": "07702220320320303047",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000331",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc có dấu trừ đổi dấu rồi ghép hai phân số đối nhau."
+ },
+ {
+  "ma_cau": "T1077030101001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Số đối, số nghịch đảo của số hữu tỉ' (khái niệm)."
+ },
+ {
+  "ma_cau": "0770222204220402011",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi |..|+6 bằng phân thức có mẫu bình phương cộng 3."
+ },
+ {
+  "ma_cau": "T107000000249",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Liệt kê phần tử tập hợp số nguyên có |x| <= a'."
+ },
+ {
+  "ma_cau": "T107000000256",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định cách viết nào biểu diễn số hữu tỉ (tử mẫu nguyên, mẫu khác 0)."
+ },
+ {
+  "ma_cau": "T107000000008",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế lát gạch phòng hình vuông, dùng căn bậc hai của diện tích."
+ },
+ {
+  "ma_cau": "07702220320302053",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn và giá trị tuyệt đối; có thể xếp phép tính giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022220401068",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN của phân thức có mẫu chứa một giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202053",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000203",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 5/2, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000202",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với bình phương biểu thức chứa x, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "T107020501027",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai giá trị tuyệt đối dùng bất đẳng thức |a|+|b|>=|a+b|."
+ },
+ {
+  "ma_cau": "T107000000346",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: biểu đồ hình quạt tròn và bảng thống kê, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000132",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định đúng về quan hệ các tập số N Z Q; gần nhận biết số hữu tỉ nhưng rộng hơn."
+ },
+ {
+  "ma_cau": "T107000000233",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chia hai luỹ thừa khác cơ số cần đưa về cơ số 2; bảng chưa có dạng quy tắc luỹ thừa riêng."
+ },
+ {
+  "ma_cau": "T107010508008",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Dãy phân số tách thành 2/n + 2/(n+1) rồi triệt tiêu' (mẫu n(n+1)/2)."
+ },
+ {
+  "ma_cau": "07702220301021",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000350",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (căn x bằng một số)."
+ },
+ {
+  "ma_cau": "07702202202064",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000288",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Biểu thức luỹ thừa, chia và trừ, không quá 3 bước."
+ },
+ {
+  "ma_cau": "T107000000476",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Chọn cách viết đúng về giá trị tuyệt đối của số âm; mô tả dạng phép tính nhưng là nhận biết đơn giản."
+ },
+ {
+  "ma_cau": "077022022203030",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng 'Tìm x chứa căn bậc hai' (tích bằng 0 chứa căn x)."
+ },
+ {
+  "ma_cau": "T107000000010",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tìm x từ x^2=81 rồi tính căn của x; chủ yếu khái niệm căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000263",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 50."
+ },
+ {
+  "ma_cau": "0770201102005",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "0770201102026",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000197",
+  "dang_bai_id": "NDB00449",
+  "chac": "vua",
+  "ly_do": "Hỏi căn bậc hai số học của 4; gần nhận biết căn bậc hai nhưng cũng có thể xếp phép tính căn."
+ },
+ {
+  "ma_cau": "0770201102063",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 5."
+ },
+ {
+  "ma_cau": "T107000000033",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước gồm STP vô hạn tuần hoàn, ngoặc, luỹ thừa, căn; có thể xếp phép tính căn."
+ },
+ {
+  "ma_cau": "077022220401078",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN của biểu thức chứa căn bậc hai và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010504017",
+  "dang_bai_id": "NDB00910",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức S (đan dấu) và P (mẫu liên tiếp), tính (S-P)^n bằng gom nhóm lẻ-chẵn."
+ },
+ {
+  "ma_cau": "T107000000181",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x dạng ax+b=c; có thể coi là nhân chia hoặc cần chuyển vế (NDB00798)."
+ },
+ {
+  "ma_cau": "T107000000109",
+  "dang_bai_id": "NDB00893",
+  "chac": "vua",
+  "ly_do": "x nằm trong ngoặc có hệ số nhân ngoài; cũng có thể xếp vào chuyển vế nhiều bước (NDB00798)."
+ },
+ {
+  "ma_cau": "T107000000388",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Hỏi kí hiệu tập số thực; gần nhất với nhận biết tập số nhưng không khớp hẳn."
+ },
+ {
+  "ma_cau": "T107010102013",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Biểu diễn hai số hữu tỉ cho trước lên trục số."
+ },
+ {
+  "ma_cau": "0770222204220402018",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng bình phương và căn bằng 0, tìm x y theo dấu bằng xảy ra."
+ },
+ {
+  "ma_cau": "077022022203006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x liên quan đến căn bậc hai (√x = a)."
+ },
+ {
+  "ma_cau": "T107000000277",
+  "dang_bai_id": "NDB00449",
+  "chac": "vua",
+  "ly_do": "Chọn số không phải hữu tỉ trong nhóm có √3; cũng gần NDB00789."
+ },
+ {
+  "ma_cau": "T107000000068",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xét khẳng định đúng sai về số thuộc/không thuộc N, Z, Q bằng kí hiệu ∈, ∉."
+ },
+ {
+  "ma_cau": "T107000000330",
+  "dang_bai_id": "NDB00792",
+  "chac": "cao",
+  "ly_do": "So sánh hai số hữu tỉ khác mẫu bằng quy đồng."
+ },
+ {
+  "ma_cau": "T107010505001",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy phân số mẫu là luỹ thừa của 3, tử đều bằng 1, nhân cơ số rồi trừ vế."
+ },
+ {
+  "ma_cau": "T107000000357",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "0770222204220402014",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y nguyên khi |..|+4 bằng phân thức mẫu bình phương cộng hằng."
+ },
+ {
+  "ma_cau": "077022220401048",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN của phân thức có mẫu là bình phương cộng 1."
+ },
+ {
+  "ma_cau": "T107000000432",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x+a=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000355",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng a+x=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000491",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán giảm giá liên tiếp có lời văn."
+ },
+ {
+  "ma_cau": "077022022203007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x liên quan đến căn bậc hai (√(x+4)=a)."
+ },
+ {
+  "ma_cau": "T107000000444",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế giảm giá liên tiếp, tính tiền thừa."
+ },
+ {
+  "ma_cau": "077022220401059",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN biểu thức tổng của bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000389",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Xét khẳng định so sánh các số thực chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "077022220401060",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN tổng bình phương và giá trị tuyệt đối của hai biến."
+ },
+ {
+  "ma_cau": "07702220320320303057",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x+1| sau khi tính phần số, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "T107020501042",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x khi tổng hai giá trị tuyệt đối bằng phân thức."
+ },
+ {
+  "ma_cau": "T107000000482",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn bậc hai, giá trị tuyệt đối và luỹ thừa 0; cũng hợp NDB00934."
+ },
+ {
+  "ma_cau": "07702220320302020",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ, căn bậc hai và luỹ thừa; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "T107000000124",
+  "dang_bai_id": "NDB00910",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức C (đan dấu) và D (mẫu liên tiếp), tính (C-D)^n bằng gom nhóm lẻ-chẵn."
+ },
+ {
+  "ma_cau": "T107000000022",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn thừa số chung 5/14 ở hai tích, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107010203060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x y nguyên thoả mãn phương trình (dùng ước/chia hết)."
+ },
+ {
+  "ma_cau": "077020101037",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107020501013",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN tổng hai giá trị tuyệt đối bằng bất đẳng thức |a|+|b|≥|a+b|."
+ },
+ {
+  "ma_cau": "T107000000082",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn về cộng trừ phân số, các ý đều bám một tình huống."
+ },
+ {
+  "ma_cau": "T107020501048",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x khi tổng hai giá trị tuyệt đối bằng phân thức."
+ },
+ {
+  "ma_cau": "T107000000434",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn số thập phân đến hàng phần trăm."
+ },
+ {
+  "ma_cau": "T107010205017",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán giảm giá khuyến mãi sách, lời văn thực tế."
+ },
+ {
+  "ma_cau": "T107000000291",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn số đến hàng chục."
+ },
+ {
+  "ma_cau": "T107010404065",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng bình phương và luỹ thừa chẵn bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "07702011103026",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000270",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 2/5, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107020501021",
+  "dang_bai_id": "NDB00463",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN tổng hai giá trị tuyệt đối bằng bất đẳng thức giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107020501031",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x khi tổng hai giá trị tuyệt đối bằng phân thức."
+ },
+ {
+  "ma_cau": "T107000000464",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức hai phép tính chia rồi cộng; có thể là NDB00419/NDB00420, ít hơn 3 bước."
+ },
+ {
+  "ma_cau": "T107000000481",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính cộng có giá trị tuyệt đối của số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107020501050",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x khi tổng hai giá trị tuyệt đối bằng phân thức."
+ },
+ {
+  "ma_cau": "077020101057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Viết phân số dưới dạng số thập phân (hữu hạn/tuần hoàn)."
+ },
+ {
+  "ma_cau": "T107010509012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x nguyên để biểu thức phân số nhận giá trị nguyên."
+ },
+ {
+  "ma_cau": "0770222204220402005",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng giá trị tuyệt đối và luỹ thừa chẵn bằng 0, tìm x y rồi tính A."
+ },
+ {
+  "ma_cau": "0770201102037",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn số thập phân tuần hoàn theo độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107000000260",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Tính luỹ thừa của luỹ thừa nhân luỹ thừa cùng cơ số; không rõ là luỹ thừa số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000158",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x dạng ax+b=c; có thể coi là nhân chia hoặc cần chuyển vế (NDB00798)."
+ },
+ {
+  "ma_cau": "T107010202053",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức hỗn hợp chia, trừ, cộng với một ngoặc; có thể là NDB00800 nếu tính đủ bước."
+ },
+ {
+  "ma_cau": "07702220320320303002",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x| bằng một số."
+ },
+ {
+  "ma_cau": "T107000000423",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Đúng/Sai gồm căn bậc hai, giá trị tuyệt đối, làm tròn: các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "077022220401056",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN biểu thức tổng bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077020101051",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Viết phân số dưới dạng số thập phân (hữu hạn/tuần hoàn)."
+ },
+ {
+  "ma_cau": "07702220320302037",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, GTTĐ và luỹ thừa; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "T107010401075",
+  "dang_bai_id": "NDB00461",
+  "chac": "vua",
+  "ly_do": "Biểu thức một loại bình phương, nhưng đề hỏi GTNN trong khi biểu thức chỉ có GTLN (đề lỗi)."
+ },
+ {
+  "ma_cau": "077022220401030",
+  "dang_bai_id": "NDB00808",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN biểu thức nhiều giá trị tuyệt đối của hai biến."
+ },
+ {
+  "ma_cau": "0770220201008",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ và số vô tỉ trong nhóm số cho trước."
+ },
+ {
+  "ma_cau": "0770222204220402016",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng luỹ thừa chẵn và căn bậc hai bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "T107000000315",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về số thuộc tập hợp N, Z, Q bằng kí hiệu ∈, ∉."
+ },
+ {
+  "ma_cau": "T107000000278",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Tính hiệu hai luỹ thừa; có thể là NDB00799."
+ },
+ {
+  "ma_cau": "T107000000226",
+  "dang_bai_id": "NDB00793",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số hữu tỉ theo thứ tự tăng dần."
+ },
+ {
+  "ma_cau": "T107000000352",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép hai phân số cùng mẫu 13 để tính thuận tiện."
+ },
+ {
+  "ma_cau": "0770222204220402020",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng luỹ thừa chẵn và căn bậc hai bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "T107000000188",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số không phải số hữu tỉ vì mẫu bằng 0."
+ },
+ {
+  "ma_cau": "077022220401045",
+  "dang_bai_id": "NDB00462",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN của phân thức có mẫu là luỹ thừa chẵn cộng hằng."
+ },
+ {
+  "ma_cau": "T107010102022",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Đề dựa trục số có hình, nội dung phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T107000000328",
+  "dang_bai_id": "NDB00449",
+  "chac": "vua",
+  "ly_do": "Xác định √7 vô tỉ thuộc tập số nào; cũng gần NDB00789."
+ },
+ {
+  "ma_cau": "T107000000483",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x+a=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000086",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp cùng mẫu, 3/8 và -3/8 triệt tiêu."
+ },
+ {
+  "ma_cau": "07702220320302027",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối, luỹ thừa giống ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "07702220320320303054",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x mà |x| nằm trong ngoặc cùng căn là hằng số, tách hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000045",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong ngoặc dạng (2/5+x), ngoặc tròn duy nhất."
+ },
+ {
+  "ma_cau": "T107000000172",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn cách viết là số hữu tỉ theo định nghĩa a/b với b khác 0."
+ },
+ {
+  "ma_cau": "07702220320320303005",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |x| bằng một số."
+ },
+ {
+  "ma_cau": "T107000000240",
+  "dang_bai_id": "NDB00449",
+  "chac": "vua",
+  "ly_do": "Chọn số hữu tỉ trong nhóm có căn và π; cũng gần NDB00789."
+ },
+ {
+  "ma_cau": "07702220320302026",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối, luỹ thừa giống ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "077022022203015",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x tích bằng 0 có mũ ẩn và căn."
+ },
+ {
+  "ma_cau": "07702011103022",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000430",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202026",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương một số âm."
+ },
+ {
+  "ma_cau": "T107000000493",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 5/12, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107010401013",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa có ngoặc tròn và vuông; ranh giới NDB00799 với NDB00800."
+ },
+ {
+  "ma_cau": "077020101028",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "07702011103014",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320320303033",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010202037",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức chia, nhân, trừ ba bước; có thể xếp NDB00420 hoặc NDB00799."
+ },
+ {
+  "ma_cau": "T107010505007",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy phân số mẫu luỹ thừa của 2, tử bằng nhau, nhân cơ số rồi trừ vế."
+ },
+ {
+  "ma_cau": "T107000000014",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các cặp số đối nhau để triệt tiêu."
+ },
+ {
+  "ma_cau": "07702220320302068",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa 0, căn, giá trị tuyệt đối; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "T107000000258",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Số đối, số nghịch đảo của một số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702220320302070",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa 0, căn, giá trị tuyệt đối; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "T107000000154",
+  "dang_bai_id": "NDB00793",
+  "chac": "vua",
+  "ly_do": "Tìm số hữu tỉ nhỏ nhất trong nhóm số, gần sắp xếp hoặc so sánh."
+ },
+ {
+  "ma_cau": "T107010504012",
+  "dang_bai_id": "NDB00908",
+  "chac": "cao",
+  "ly_do": "Chứng minh a<A<b với mẫu liên tiếp, chia nhóm số lượng bằng nhau."
+ },
+ {
+  "ma_cau": "T107010102021",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Đề dựa trục số có hình, nội dung phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T107000000147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Số đối, số nghịch đảo của một số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702220320302054",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn và giá trị tuyệt đối; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "T107000000206",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong ngoặc (x+0,4), ngoặc tròn duy nhất."
+ },
+ {
+  "ma_cau": "T107010404031",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với luỹ thừa mũ 2 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "T107010301025",
+  "dang_bai_id": "NDB00799",
+  "chac": "cao",
+  "ly_do": "Biểu thức luỹ thừa, trừ, chia 3 đến 4 bước, giống ví dụ NDB00799."
+ },
+ {
+  "ma_cau": "07702202202025",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương một số dương."
+ },
+ {
+  "ma_cau": "07702220320320303028",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000339",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Hỏi căn bậc hai số học của 9; câu định nghĩa, gần dạng tính căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010207042",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung -5/7, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "07702220320320303010",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối sau khi cô lập |x|."
+ },
+ {
+  "ma_cau": "0770201102046",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000467",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn, giá trị tuyệt đối, luỹ thừa giống ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "T107000000151",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm n từ n^3=27, luỹ thừa mũ 3."
+ },
+ {
+  "ma_cau": "T1070204011090",
+  "dang_bai_id": "NDB00462",
+  "chac": "vua",
+  "ly_do": "GTLN của phân thức mà mẫu có hai loại bình phương và giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010508007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Dãy tổng các tích k(n-k) hoặc k(k+1), phân số tử/mẫu hai dãy."
+ },
+ {
+  "ma_cau": "T107000000441",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x dạng ax-b=c với vế phải cần tính; có thể xếp chuyển vế NDB00798."
+ },
+ {
+  "ma_cau": "T107000000064",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x để biểu thức chứa căn nhận giá trị nguyên."
+ },
+ {
+  "ma_cau": "T107010103019",
+  "dang_bai_id": "NDB00794",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên x y thoả mãn chuỗi bất đẳng thức các phân số."
+ },
+ {
+  "ma_cau": "T107000000387",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Nhận biết số thập phân hữu hạn hay vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "0770201102021",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ nhất."
+ },
+ {
+  "ma_cau": "T107703330301004",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với luỹ thừa mũ 2 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "T107010403054",
+  "dang_bai_id": "NDB00798",
+  "chac": "cao",
+  "ly_do": "Tìm x có x ở hai vế, chuyển vế các hạng tử chứa x về một bên."
+ },
+ {
+  "ma_cau": "0770201102044",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "0770201102025",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ tư."
+ },
+ {
+  "ma_cau": "T107010501018",
+  "dang_bai_id": "NDB00435",
+  "chac": "cao",
+  "ly_do": "Mẫu cách nhau 3 đơn vị, tử 1 cần nhân 3 để tử bằng hiệu."
+ },
+ {
+  "ma_cau": "T107000000144",
+  "dang_bai_id": "NDB00910",
+  "chac": "cao",
+  "ly_do": "S đan dấu và P mẫu liên tiếp, tính (S-P)^n bằng gom nhóm lẻ-chẵn."
+ },
+ {
+  "ma_cau": "T107010401054",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có ngoặc, luỹ thừa, chia, cộng 4 bước; ranh giới NDB00883 và NDB00799."
+ },
+ {
+  "ma_cau": "T107000000183",
+  "dang_bai_id": "NDB00893",
+  "chac": "vua",
+  "ly_do": "Tìm x trong ngoặc có hệ số nhân là căn hằng số; cũng gần NDB00429."
+ },
+ {
+  "ma_cau": "T107000000468",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x-a=b với hệ số x là 1."
+ },
+ {
+  "ma_cau": "07702220320320303045",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "0770201102035",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107010207013",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung -7/11, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107000000251",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Phép trừ hai số hữu tỉ bằng cách cộng số đối."
+ },
+ {
+  "ma_cau": "T107000000379",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x-a=b với hệ số x là 1."
+ },
+ {
+  "ma_cau": "07702202202037",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai của phân số."
+ },
+ {
+  "ma_cau": "07702202202075",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn, luỹ thừa và chia; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "T107010403072",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x tổng nhiều phân số, cộng thêm 1 vào mỗi số hạng."
+ },
+ {
+  "ma_cau": "T107010102014",
+  "dang_bai_id": "NDB00790",
+  "chac": "cao",
+  "ly_do": "Biểu diễn các số hữu tỉ cho trước trên trục số."
+ },
+ {
+  "ma_cau": "T107010103001",
+  "dang_bai_id": "NDB00792",
+  "chac": "cao",
+  "ly_do": "So sánh hai số hữu tỉ bằng quy đồng mẫu."
+ },
+ {
+  "ma_cau": "0770201102045",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000162",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Nhận biết phân số viết được thành số thập phân hữu hạn hay tuần hoàn."
+ },
+ {
+  "ma_cau": "0770201102007",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ tư."
+ },
+ {
+  "ma_cau": "T107000000438",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Đề dựa biểu đồ hình quạt có hình; bản chất tính phần trăm của một số."
+ },
+ {
+  "ma_cau": "07702220320302042",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có thừa số chung 3/2 và giá trị tuyệt đối; cũng hợp NDB00423."
+ },
+ {
+  "ma_cau": "T107010102020",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Đề dựa trục số có hình, so sánh vị trí a và b phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T107000000398",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Đọc biểu đồ hình quạt (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "T107000000081",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Đúng/Sai về quy tắc luỹ thừa cùng cơ số; nằm ngoài dạng tính luỹ thừa số hữu tỉ chuẩn."
+ },
+ {
+  "ma_cau": "T107000000420",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 3/5, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107010404017",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với luỹ thừa mũ 2 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "T107000000126",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x y nguyên thoả mãn phương trình (xét ước)."
+ },
+ {
+  "ma_cau": "T107000000159",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x ở mẫu của phép chia; có thể xếp chuyển vế NDB00798."
+ },
+ {
+  "ma_cau": "07702220320320303015",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000377",
+  "dang_bai_id": "NDB00791",
+  "chac": "cao",
+  "ly_do": "Cần đảo 5/11·8/7 thành 5/7·8/11 để xuất hiện thừa số chung 5/7."
+ },
+ {
+  "ma_cau": "07702011103010",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000455",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi suất ngân hàng có lời văn."
+ },
+ {
+  "ma_cau": "T107000000298",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số không phải số hữu tỉ vì mẫu bằng 0."
+ },
+ {
+  "ma_cau": "T107000000301",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa của luỹ thừa số hữu tỉ; chỉ một bước, ngoài dạng tính chuẩn."
+ },
+ {
+  "ma_cau": "T107010403019",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số chia, cần chuyển vế; cũng gần NDB00429."
+ },
+ {
+  "ma_cau": "T107000000338",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Đọc biểu đồ đoạn thẳng Đúng/Sai (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "T107010206007",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp cùng mẫu."
+ },
+ {
+  "ma_cau": "T107010201007",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng hai số hữu tỉ khác mẫu."
+ },
+ {
+  "ma_cau": "T107000000374",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số vô tỉ trong nhóm số cho trước."
+ },
+ {
+  "ma_cau": "T107000000087",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 11/5, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107000000344",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x+a=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000062",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm số hữu tỉ x y thoả mãn đẳng thức chứa số vô tỉ."
+ },
+ {
+  "ma_cau": "T107010404001",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x với x^2 sau khi cô lập, hai trường hợp ±."
+ },
+ {
+  "ma_cau": "T107010203061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Dãy tỉ số bằng nhau (tính chất tỉ lệ thức), khối 7."
+ },
+ {
+  "ma_cau": "T107010202007",
+  "dang_bai_id": "NDB00420",
+  "chac": "cao",
+  "ly_do": "Nhân hai số hữu tỉ, đổi hỗn số."
+ },
+ {
+  "ma_cau": "T107000000243",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai về giá trị tuyệt đối; dạng câu lý thuyết, không phải tính toán."
+ },
+ {
+  "ma_cau": "07702202202022",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương một số dương."
+ },
+ {
+  "ma_cau": "T107000000411",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Viết phân số dưới dạng số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107010205035",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn về phần của số gạo."
+ },
+ {
+  "ma_cau": "07702220320302046",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức chứa giá trị tuyệt đối và thừa số chung; cũng hợp NDB00423."
+ },
+ {
+  "ma_cau": "T107000000012",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 5."
+ },
+ {
+  "ma_cau": "T107000000042",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x+a=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "07702011103021",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702202202069",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức gồm luỹ thừa, căn, luỹ thừa 0; cũng hợp NDB00800."
+ },
+ {
+  "ma_cau": "T107010403013",
+  "dang_bai_id": "NDB00428",
+  "chac": "vua",
+  "ly_do": "Tìm x dạng x-a=b, a là ngoặc số cần tính; cũng gần NDB00893."
+ },
+ {
+  "ma_cau": "T107000000138",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 6/7, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "07702202202077",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức gồm luỹ thừa, căn, luỹ thừa 0; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "T107000000413",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Tìm giá trị tuyệt đối của một số, dạng câu cơ bản."
+ },
+ {
+  "ma_cau": "T107000000305",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc có dấu trừ rồi ghép các phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "0770222204220402023",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Biểu thức bằng 2024 quy về tổng bình phương và GTTĐ bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "T107000000360",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba phân số quy đồng."
+ },
+ {
+  "ma_cau": "077022022203041",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x tích bằng 0 chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000205",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn, luỹ thừa 0; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "T107010102017",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Đề dựa trục số có hình, xác định số biểu diễn các điểm."
+ },
+ {
+  "ma_cau": "T107000000140",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x-a=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "0770222204220402017",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng luỹ thừa chẵn và căn bậc hai bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "T107010301045",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa nhiều bước; ranh giới NDB00799 với NDB00800."
+ },
+ {
+  "ma_cau": "07702202202067",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000440",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều loại ngoặc, luỹ thừa, căn; ranh giới NDB00799 với NDB00800."
+ },
+ {
+  "ma_cau": "T107000000128",
+  "dang_bai_id": "NDB00437",
+  "chac": "cao",
+  "ly_do": "Tử 2k+1 bằng hiệu các thừa số ở mẫu, tách thành hiệu rồi triệt tiêu."
+ },
+ {
+  "ma_cau": "T107000000031",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều loại ngoặc, căn, luỹ thừa và số thập phân tuần hoàn."
+ },
+ {
+  "ma_cau": "T107000000054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x trong tổng các luỹ thừa của 2 (số mũ liên tiếp)."
+ },
+ {
+  "ma_cau": "T107000000195",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng a-x=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "07702220320302015",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức chứa GTTĐ, căn và luỹ thừa 0; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "077020101054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Viết phân số dưới dạng số thập phân (hữu hạn/tuần hoàn)."
+ },
+ {
+  "ma_cau": "07702220320320303024",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077022022203026",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x tích bằng 0 chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000184",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung 4/3, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "0770222204220402024",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Biểu thức bằng 1000 quy về tổng bình phương và GTTĐ bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "077022022203012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x liên quan đến căn bậc hai (√(x+16)=20)."
+ },
+ {
+  "ma_cau": "T107000000310",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Hỏi kí hiệu tập số hữu tỉ; gần dạng nhận biết số hữu tỉ."
+ },
+ {
+  "ma_cau": "T10770330201005",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong ngoặc dạng (x-3/4), ngoặc tròn duy nhất."
+ },
+ {
+  "ma_cau": "T107000000448",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn số đến hàng triệu."
+ },
+ {
+  "ma_cau": "T107000000035",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tổng căn của các số chính phương chuyển thành tổng số tự nhiên; không chuẩn dạng tính căn."
+ },
+ {
+  "ma_cau": "T107000000474",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn cách viết không cho số hữu tỉ vì mẫu bằng 0."
+ },
+ {
+  "ma_cau": "T107000000408",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xét khẳng định sai về số thuộc/không thuộc Q bằng kí hiệu ∈, ∉."
+ },
+ {
+  "ma_cau": "T107000000445",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số vô tỉ trong nhóm số cho trước."
+ },
+ {
+  "ma_cau": "T107000000120",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn gửi ngân hàng, lãi suất, rút một phần."
+ },
+ {
+  "ma_cau": "07702220320302061",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính cộng trừ có giá trị tuyệt đối của số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702220320320303063",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với |3-x| sau khi cô lập, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000040",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng x+a=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000494",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ, căn, luỹ thừa 0 và nhiều ngoặc; cũng hợp NDB00800."
+ },
+ {
+  "ma_cau": "0770222204220402006",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng GTTĐ và luỹ thừa chẵn bằng 0, tìm x y rồi tính A."
+ },
+ {
+  "ma_cau": "T107000000424",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Đọc biểu đồ hình quạt Đúng/Sai (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "T10770330201006",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn về phần trăm và phân số của số táo."
+ },
+ {
+  "ma_cau": "07702220320302051",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn và GTTĐ; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "07702202202062",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000289",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x dạng ax-b=c; có thể coi là nhân chia hoặc cần chuyển vế (NDB00798)."
+ },
+ {
+  "ma_cau": "T107000000094",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ, chia luỹ thừa và luỹ thừa 0; cũng hợp NDB00883."
+ },
+ {
+  "ma_cau": "07702220320320303006",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối sau khi cô lập |x|."
+ },
+ {
+  "ma_cau": "07702011103019",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702202202030",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính tổng hai căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000457",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ, luỹ thừa, căn và thừa số chung; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "T107000000204",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp cùng mẫu, giống ví dụ NDB00422."
+ },
+ {
+  "ma_cau": "0770201102033",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107000000176",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107000000237",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số chia cần chuyển vế; cũng gần NDB00798."
+ },
+ {
+  "ma_cau": "T107000000026",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Hai tích có sẵn thừa số chung -8/15, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T107010502001",
+  "dang_bai_id": "NDB00437",
+  "chac": "cao",
+  "ly_do": "Mẫu dạng k.(2k+2), tử bằng 1, nhân chia linh hoạt để tử bằng hiệu thừa số."
+ },
+ {
+  "ma_cau": "07702011103003",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000376",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn bậc hai, luỹ thừa và hỗn số; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "T107000000076",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Tính luỹ thừa của một số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702202202074",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn và luỹ thừa 0; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "T107000000137",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp cùng mẫu 12 và 13."
+ },
+ {
+  "ma_cau": "07702011103020",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000193",
+  "dang_bai_id": "NDB00793",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số hữu tỉ theo thứ tự giảm dần."
+ },
+ {
+  "ma_cau": "07702220320302014",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ, căn, chia và luỹ thừa 0; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "077020101001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Nhận biết số thập phân hữu hạn hay vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107000000496",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm x với luỹ thừa mũ 3 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "0770201102062",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 5."
+ },
+ {
+  "ma_cau": "T107010404061",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng ba luỹ thừa chẵn bằng 0, tìm x y z."
+ },
+ {
+  "ma_cau": "07702220320302016",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, GTTĐ, căn; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "07702220320302008",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn, GTTĐ, luỹ thừa giống ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "T107010507007",
+  "dang_bai_id": "NDB00911",
+  "chac": "cao",
+  "ly_do": "Tổng 1/2+...+1/17 chia nhóm theo luỹ thừa của 2 để đánh giá."
+ },
+ {
+  "ma_cau": "T107000000156",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức chia luỹ thừa cùng cơ số, nhân, luỹ thừa 0; ranh giới NDB00883 và NDB00799."
+ },
+ {
+  "ma_cau": "07702220320320303009",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối sau khi cô lập |x|."
+ },
+ {
+  "ma_cau": "T107000000043",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x dạng a+x=b, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000334",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong ngoặc (x-3/5) bị chia."
+ },
+ {
+  "ma_cau": "T107000000133",
+  "dang_bai_id": "NDB00789",
+  "chac": "vua",
+  "ly_do": "Đếm số hữu tỉ dương trong nhóm số; gần nhận biết số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000371",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Đọc bảng số liệu và biểu đồ đoạn thẳng (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "T107010406004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x ở số mũ (luỹ thừa cùng cơ số)."
+ },
+ {
+  "ma_cau": "0770222204220402013",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y nguyên khi |y+3|+7 bằng phân thức có mẫu bình phương cộng hằng."
+ },
+ {
+  "ma_cau": "T107000000058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x tổng nhiều phân số, cộng thêm 1 vào mỗi số hạng."
+ },
+ {
+  "ma_cau": "T107010403060",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số bị chia, cần chuyển vế; cũng gần NDB00798."
+ },
+ {
+  "ma_cau": "T107010205070",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn bán hàng lãi lỗ theo phần trăm."
+ },
+ {
+  "ma_cau": "T107000000462",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Vẽ và đọc biểu đồ đoạn thẳng (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "07702202202019",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của một số chính phương."
+ },
+ {
+  "ma_cau": "T107010206074",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp triệt tiêu."
+ },
+ {
+  "ma_cau": "T107000000347",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh biểu thức phân thức không nguyên (kẹp giữa hai số nguyên)."
+ },
+ {
+  "ma_cau": "077022022203027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x liên quan đến căn bậc hai (tích bằng 0)."
+ },
+ {
+  "ma_cau": "T107000000372",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi |y-3|+5 bằng phân thức mẫu bình phương cộng hằng."
+ },
+ {
+  "ma_cau": "T107010403025",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong ngoặc (x-3), giống ví dụ NDB00893."
+ },
+ {
+  "ma_cau": "T107000000173",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Đề dựa trục số có hình, xác định số biểu diễn điểm B."
+ },
+ {
+  "ma_cau": "T107000000415",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Đọc biểu đồ đường (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "07702220320302073",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ và chia luỹ thừa; cũng hợp NDB00883."
+ },
+ {
+  "ma_cau": "0770201102019",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "T107000000027",
+  "dang_bai_id": "NDB00791",
+  "chac": "cao",
+  "ly_do": "Phải viết 7/10 thành (-7/10)(-1) để xuất hiện thừa số chung."
+ },
+ {
+  "ma_cau": "07702202202036",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chỉ gồm các căn bậc hai của phân số."
+ },
+ {
+  "ma_cau": "07702011103033",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000034",
+  "dang_bai_id": "NDB00800",
+  "chac": "cao",
+  "ly_do": "Biểu thức nhiều loại ngoặc tròn, vuông, nhọn, nhiều bước."
+ },
+ {
+  "ma_cau": "077022022203011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x liên quan đến căn bậc hai (√(x+5)=9)."
+ },
+ {
+  "ma_cau": "07702202202045",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức có căn và luỹ thừa; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "07702220320302031",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn, GTTĐ, luỹ thừa giống ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "0770201102042",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn theo độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000216",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa, căn, GTTĐ và hỗn số; cũng hợp NDB00799."
+ },
+ {
+  "ma_cau": "07702202202032",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính tổng hai căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000499",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh biểu thức phân thức không nguyên (kẹp giữa hai số nguyên)."
+ },
+ {
+  "ma_cau": "T107000000089",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba phân số quy đồng."
+ },
+ {
+  "ma_cau": "T107010401043",
+  "dang_bai_id": "NDB00800",
+  "chac": "cao",
+  "ly_do": "Biểu thức nhiều bước chứa luỹ thừa, ngoặc tròn và vuông."
+ },
+ {
+  "ma_cau": "07702220320302078",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Biểu thức có GTTĐ, căn, chia và luỹ thừa 0; cũng hợp NDB00933."
+ },
+ {
+  "ma_cau": "07702220320302029",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn, GTTĐ, luỹ thừa giống ví dụ NDB00934."
+ },
+ {
+  "ma_cau": "T107000000362",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Tính luỹ thừa của phân số rồi chia hai luỹ thừa, ít bước."
+ },
+ {
+  "ma_cau": "T107010509003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số nguyên n để phân thức nguyên (chia hết)."
+ },
+ {
+  "ma_cau": "T107000000009",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tính căn bậc hai số học của 225, cũng gần định nghĩa căn bậc hai (NDB00449)."
+ },
+ {
+  "ma_cau": "T107010205071",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Bài thực tế nhưng lõi là tính tổng dãy luỹ thừa của 2, bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "077022022203005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x liên quan căn bậc hai (√x = a)."
+ },
+ {
+  "ma_cau": "T107000000186",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán có lời văn về phân số của cuốn sách."
+ },
+ {
+  "ma_cau": "T107010301053",
+  "dang_bai_id": "NDB00792",
+  "chac": "vua",
+  "ly_do": "So sánh hai phân số có luỹ thừa 10 bằng đặt ẩn, không phải quy đồng thường."
+ },
+ {
+  "ma_cau": "07702220320302074",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000427",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các cặp phân số cùng mẫu triệt tiêu, cộng thuận tiện."
+ },
+ {
+  "ma_cau": "T107000000349",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn số thập phân đến hàng phần mười."
+ },
+ {
+  "ma_cau": "T107000000322",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn chia bánh bằng phân số."
+ },
+ {
+  "ma_cau": "07702202202050",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức chứa căn bậc hai của phân số rồi tính."
+ },
+ {
+  "ma_cau": "T107000000060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh một số là số vô tỉ (căn lồng nhau)."
+ },
+ {
+  "ma_cau": "T107000000253",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "07702220320320303011",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702202202046",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức chứa căn bậc hai của phân số rồi tính."
+ },
+ {
+  "ma_cau": "0770201102038",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107010404037",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x trong luỹ thừa mũ 2, hai trường hợp."
+ },
+ {
+  "ma_cau": "0770201102013",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ nhất."
+ },
+ {
+  "ma_cau": "0770222204220402003",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng GTTĐ và luỹ thừa chẵn bằng 0, tìm x y rồi tính A."
+ },
+ {
+  "ma_cau": "T107010501053",
+  "dang_bai_id": "NDB00434",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+1)) dạng chuẩn rồi tìm x."
+ },
+ {
+  "ma_cau": "0770222204220402001",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng GTTĐ và luỹ thừa chẵn bằng 0, tìm x y rồi tính A."
+ },
+ {
+  "ma_cau": "077022022203013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa căn bậc hai và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000212",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Viết dưới dạng một luỹ thừa (quy tắc luỹ thừa), không hẳn là tính toán."
+ },
+ {
+  "ma_cau": "07702220320320303056",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, sau khi tính GTTĐ số."
+ },
+ {
+  "ma_cau": "T107000000402",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa, 3 bước, ranh giới với biểu thức đơn giản NDB00799."
+ },
+ {
+  "ma_cau": "T107010203059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x y nguyên thoả phương trình chứa phân số."
+ },
+ {
+  "ma_cau": "T107010403048",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x có x trong ngoặc, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T107000000125",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa tử không đổi, nhân rồi cộng triệt tiêu."
+ },
+ {
+  "ma_cau": "077020101046",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Viết phân số thành STP và viết gọn chu kì; bản đồ thiếu dạng đổi phân số sang STP."
+ },
+ {
+  "ma_cau": "T107010103025",
+  "dang_bai_id": "NDB00794",
+  "chac": "cao",
+  "ly_do": "Tìm x y thoả chuỗi bất đẳng thức, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "07702011103017",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000435",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số vô tỉ trong các số cho."
+ },
+ {
+  "ma_cau": "077022022203001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x liên quan căn bậc hai (√x = a)."
+ },
+ {
+  "ma_cau": "07702202202055",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000112",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x có x hai vế, cần chuyển vế; cũng có thể xem là tỉ lệ thức."
+ },
+ {
+  "ma_cau": "T107000000391",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (đọc biểu đồ hình quạt), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: số đối, số nghịch đảo của một số."
+ },
+ {
+  "ma_cau": "07702202202027",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính căn bậc hai của bình phương, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T1070204011088",
+  "dang_bai_id": "NDB00462",
+  "chac": "vua",
+  "ly_do": "GTLN phân thức nhưng mẫu chứa cả bình phương và GTTĐ."
+ },
+ {
+  "ma_cau": "T107010301029",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức có luỹ thừa 4 số hạng, gần NDB00883 và NDB00421."
+ },
+ {
+  "ma_cau": "07702220320302035",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có căn, GTTĐ và luỹ thừa; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "T10770333330501003",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa tử không đổi xen dấu, chứng minh bất đẳng thức."
+ },
+ {
+  "ma_cau": "07702202202031",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính tổng các căn bậc hai."
+ },
+ {
+  "ma_cau": "07702011103006",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320320303049",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000248",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Viết luỹ thừa với cơ số khác (quy tắc luỹ thừa), không hẳn là tính toán."
+ },
+ {
+  "ma_cau": "07702011103034",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "0770222204220402009",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y nguyên khi vế trái GTTĐ bằng phân thức mẫu bình phương."
+ },
+ {
+  "ma_cau": "07702202202035",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức nhiều căn bậc hai của phân số, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T107000000049",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x có x trong ngoặc, trừ cả ngoặc."
+ },
+ {
+  "ma_cau": "T107010504019",
+  "dang_bai_id": "NDB00908",
+  "chac": "vua",
+  "ly_do": "Dãy mẫu liên tiếp, chứng minh chặn hai phía; gần NDB00910 (tách thành dãy 1/51+...)."
+ },
+ {
+  "ma_cau": "07702202202033",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính tổng các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000123",
+  "dang_bai_id": "NDB00910",
+  "chac": "vua",
+  "ly_do": "So sánh hai tổng mẫu lẻ và mẫu chẵn; gần dạng gom nhóm lẻ-chẵn."
+ },
+ {
+  "ma_cau": "T107000000485",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (biểu đồ hình quạt, lập bảng), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000148",
+  "dang_bai_id": "NDB00422",
+  "chac": "vua",
+  "ly_do": "Quy tắc bỏ ngoặc đổi dấu với chữ cái, không phải tính thuận tiện số."
+ },
+ {
+  "ma_cau": "T107000000252",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -8/13, rút ra rồi cộng."
+ },
+ {
+  "ma_cau": "T107000000254",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn bán khoai bằng phân số, làm tròn tiền."
+ },
+ {
+  "ma_cau": "T107010301021",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Luỹ thừa của hiệu rồi chia, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T107010301007",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa 3 bước, ranh giới với biểu thức đơn giản NDB00799."
+ },
+ {
+  "ma_cau": "07702202202049",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức chứa căn bậc hai của phân số rồi tính."
+ },
+ {
+  "ma_cau": "T107000000180",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế khối lượng nguyên liệu bánh chưng, số thập phân."
+ },
+ {
+  "ma_cau": "07702220320320303027",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000223",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Nhận biết cách viết nào biểu diễn số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702011103039",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "0770201102036",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107000000169",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x trong bình phương, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000217",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối sau khi cô lập |x|."
+ },
+ {
+  "ma_cau": "077022022203004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x liên quan căn bậc hai (√x = a)."
+ },
+ {
+  "ma_cau": "T107000000385",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: số đối, số nghịch đảo của một số."
+ },
+ {
+  "ma_cau": "077022022203009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x liên quan căn bậc hai (√(x+a) = b)."
+ },
+ {
+  "ma_cau": "T107010501051",
+  "dang_bai_id": "NDB00435",
+  "chac": "vua",
+  "ly_do": "Dãy hiệu-tích mẫu cách 5 cần nhân tử, nhân thêm tổng số lẻ; hai phần khác nhau."
+ },
+ {
+  "ma_cau": "T107000000003",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Tìm chữ số thập phân thứ n dựa vào chu kì; gần dạng xác định chu kì, chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "07702220320302059",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có căn, luỹ thừa và GTTĐ; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "07702011103011",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320302022",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính nhiều giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010510004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy phân số bình phương (n²-1)/n², chứng minh không nguyên."
+ },
+ {
+  "ma_cau": "07702220320302004",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của phân số."
+ },
+ {
+  "ma_cau": "07702202202039",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức nhiều căn bậc hai của phân số."
+ },
+ {
+  "ma_cau": "T107000000498",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (biểu đồ hình quạt), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000093",
+  "dang_bai_id": "NDB00423",
+  "chac": "vua",
+  "ly_do": "Hai số hạng đầu cùng chia 5/3 (đặt nhân tử chung), thêm luỹ thừa; trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T107000000395",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (dãy số liệu, dữ liệu đại diện), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000106",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x trong bình phương, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000122",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn giảm giá, tiền trả lại."
+ },
+ {
+  "ma_cau": "T10770330201003",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép các phân số cùng mẫu triệt tiêu."
+ },
+ {
+  "ma_cau": "T107000000416",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010207007",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 7/24, rút ra ngoài."
+ },
+ {
+  "ma_cau": "07702220320302047",
+  "dang_bai_id": "NDB00423",
+  "chac": "vua",
+  "ly_do": "Có GTTĐ số rồi đặt nhân tử chung 3/4; cũng gần NDB00934."
+ },
+ {
+  "ma_cau": "T107000000436",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết tính chất giá trị tuyệt đối (khẳng định đúng/sai)."
+ },
+ {
+  "ma_cau": "077022022203014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa căn bậc hai và mũ x."
+ },
+ {
+  "ma_cau": "07702220320302077",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có GTTĐ, căn bậc hai, luỹ thừa 0; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "0770222204220402002",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng GTTĐ và luỹ thừa chẵn bằng 0, tìm x y rồi tính A."
+ },
+ {
+  "ma_cau": "07702011103012",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320320303053",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x chứa |x|, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107010401048",
+  "dang_bai_id": "NDB00799",
+  "chac": "cao",
+  "ly_do": "Biểu thức tổng hợp 3-4 bước, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "07702220320320303058",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000375",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các cặp phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "T107000000392",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng hai phân số khác mẫu."
+ },
+ {
+  "ma_cau": "T107000000273",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "07702220320320303029",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "07702011103040",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "0770201102004",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "077022022203025",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010501039",
+  "dang_bai_id": "NDB00434",
+  "chac": "cao",
+  "ly_do": "Dãy hiệu-tích dạng chuẩn, đặt x làm nhân tử chung."
+ },
+ {
+  "ma_cau": "T107000000121",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn hai vòi nước, cộng phân số."
+ },
+ {
+  "ma_cau": "T107000000429",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Bài thực tế dùng căn và làm tròn theo độ chính xác; cũng gần NDB00802."
+ },
+ {
+  "ma_cau": "0770222204220402022",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng hiệu bình phương và GTTĐ bằng 0, tìm x y."
+ },
+ {
+  "ma_cau": "T107000000409",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: số đối, số nghịch đảo của một số."
+ },
+ {
+  "ma_cau": "077020101045",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Viết phân số thành STP; bản đồ thiếu dạng đổi phân số sang STP."
+ },
+ {
+  "ma_cau": "T107010401027",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Luỹ thừa của hiệu rồi chia, 3 bước."
+ },
+ {
+  "ma_cau": "07702202202042",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Có căn, luỹ thừa của số hữu tỉ; cũng gần NDB00883."
+ },
+ {
+  "ma_cau": "T1077030101004",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Nhận biết số nào không phải số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000111",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm x trong luỹ thừa mũ 3, một trường hợp."
+ },
+ {
+  "ma_cau": "T107010101014",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn kí hiệu thuộc/không thuộc tập số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107010507001",
+  "dang_bai_id": "NDB00911",
+  "chac": "cao",
+  "ly_do": "Dãy mẫu liên tiếp, nhóm theo luỹ thừa của 2, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "07702011103007",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000020",
+  "dang_bai_id": "NDB00421",
+  "chac": "vua",
+  "ly_do": "Ghép cặp cùng mẫu 2026, 2027 nhưng cần tách 2026 = 2.1013."
+ },
+ {
+  "ma_cau": "T107000000019",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các cặp phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "T107000000299",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Nhân hai luỹ thừa cùng cơ số (quy tắc luỹ thừa), không hẳn là tính toán."
+ },
+ {
+  "ma_cau": "07702011103024",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000343",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có luỹ thừa, GTTĐ, căn bậc hai, luỹ thừa 0; trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T107000000152",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi triệt tiêu."
+ },
+ {
+  "ma_cau": "07702220320320303052",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x chứa |x|, hai trường hợp."
+ },
+ {
+  "ma_cau": "07702220320302056",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có căn, luỹ thừa và GTTĐ; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "T107000000063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x y hữu tỉ thoả đẳng thức chứa số vô tỉ √3."
+ },
+ {
+  "ma_cau": "T107000000231",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số."
+ },
+ {
+  "ma_cau": "T107000000271",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có luỹ thừa, GTTĐ và căn bậc hai; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "07702220320320303041",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T1077033330401001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: góc đối đỉnh, có hình vẽ."
+ },
+ {
+  "ma_cau": "T107010509002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số nguyên n để phân thức nguyên."
+ },
+ {
+  "ma_cau": "07702220320320303018",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "07702220320320303013",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "077020101044",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Viết phân số thành STP; bản đồ thiếu dạng đổi phân số sang STP."
+ },
+ {
+  "ma_cau": "T107000000225",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Nhân hai luỹ thừa cùng cơ số (quy tắc luỹ thừa), không hẳn là tính toán."
+ },
+ {
+  "ma_cau": "077022022203028",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "07702202202047",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức chứa căn bậc hai của phân số rồi tính."
+ },
+ {
+  "ma_cau": "0770201102029",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000472",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (biểu đồ hình quạt), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000417",
+  "dang_bai_id": "NDB00802",
+  "chac": "vua",
+  "ly_do": "Dùng máy tính lấy căn rồi làm tròn theo độ chính xác; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "07702202202060",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000187",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Điền kí hiệu thuộc/không thuộc tập số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107703330301003",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức tổng hợp có luỹ thừa 3-4 bước; cũng gần NDB00883."
+ },
+ {
+  "ma_cau": "0770201102027",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ tư."
+ },
+ {
+  "ma_cau": "T107000000198",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,5."
+ },
+ {
+  "ma_cau": "0770222204220402004",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tổng GTTĐ và luỹ thừa chẵn bằng 0, tìm x y rồi tính A."
+ },
+ {
+  "ma_cau": "T107000000239",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết định nghĩa căn bậc hai số học."
+ },
+ {
+  "ma_cau": "T10770333330501002",
+  "dang_bai_id": "NDB00435",
+  "chac": "cao",
+  "ly_do": "Dãy 1/(n(n+2)) cần nhân 2 để đủ dạng hiệu-tích, rồi tìm x."
+ },
+ {
+  "ma_cau": "07702202202051",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000039",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x phép cộng, hệ số của x là 1."
+ },
+ {
+  "ma_cau": "T107010511003",
+  "dang_bai_id": "NDB00437",
+  "chac": "cao",
+  "ly_do": "Dãy hiệu-tích bất quy tắc, tử khác nhau."
+ },
+ {
+  "ma_cau": "T107000000345",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000302",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng hai số hữu tỉ (số thập phân và phân số)."
+ },
+ {
+  "ma_cau": "T107000000285",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Nhận biết cách viết nào là số hữu tỉ."
+ },
+ {
+  "ma_cau": "0770201102047",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,005."
+ },
+ {
+  "ma_cau": "T107000000275",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn tăng giảm phần trăm giá."
+ },
+ {
+  "ma_cau": "T107000000306",
+  "dang_bai_id": "NDB00798",
+  "chac": "vua",
+  "ly_do": "Tìm x phải chuyển vế rồi chia hệ số; gần NDB00429."
+ },
+ {
+  "ma_cau": "07702202202078",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước có căn, luỹ thừa, luỹ thừa 0; trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T107000000190",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Dựa vào hình trục số để so sánh a, b; đề có hình tôi không thấy."
+ },
+ {
+  "ma_cau": "T107000000177",
+  "dang_bai_id": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số vô tỉ trong các số cho."
+ },
+ {
+  "ma_cau": "T107000000245",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về so sánh các số thực."
+ },
+ {
+  "ma_cau": "T107000000075",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các cặp phân số cùng mẫu, rút gọn phân số."
+ },
+ {
+  "ma_cau": "07702011103028",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320302003",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của phân số."
+ },
+ {
+  "ma_cau": "07702220320302006",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có căn, GTTĐ, luỹ thừa; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "07702220320302041",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Có nhân tử chung 2/5 và GTTĐ; cũng gần NDB00423."
+ },
+ {
+  "ma_cau": "07702220320320303012",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000246",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chia hai luỹ thừa cùng cơ số (quy tắc luỹ thừa), không hẳn là tính toán."
+ },
+ {
+  "ma_cau": "T107000000406",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (lập bảng từ biểu đồ), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T107000000232",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Đúng/Sai nhiều ý rải ra luỹ thừa và GTTĐ, trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "077020101043",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Viết phân số thành STP; bản đồ thiếu dạng đổi phân số sang STP."
+ },
+ {
+  "ma_cau": "07702220320320303043",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000071",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định số biểu diễn của điểm trên trục số; đề có hình."
+ },
+ {
+  "ma_cau": "T107000000466",
+  "dang_bai_id": "NDB00422",
+  "chac": "vua",
+  "ly_do": "Bỏ dấu trừ trước phân số âm rồi ghép cặp cùng mẫu; gần NDB00421."
+ },
+ {
+  "ma_cau": "07702220320302080",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có GTTĐ, căn bậc hai, luỹ thừa 0; cũng gần NDB00933."
+ },
+ {
+  "ma_cau": "T107010202041",
+  "dang_bai_id": "NDB00420",
+  "chac": "vua",
+  "ly_do": "Chia rồi cộng hai số hạng, 2 bước; gần NDB00883 và NDB00419."
+ },
+ {
+  "ma_cau": "T107010401071",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN của biểu thức chứa một bình phương."
+ },
+ {
+  "ma_cau": "077022022203034",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x liên quan căn bậc hai (√(x+a)+b = c)."
+ },
+ {
+  "ma_cau": "T107000000145",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về kí hiệu thuộc các tập số."
+ },
+ {
+  "ma_cau": "T107000000274",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x trong số mũ (luỹ thừa chứa x ở mũ)."
+ },
+ {
+  "ma_cau": "0770201102020",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ tư."
+ },
+ {
+  "ma_cau": "T107000000130",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x nguyên để phân thức đạt GTNN (tách phần nguyên)."
+ },
+ {
+  "ma_cau": "07702202202029",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Tính tổng các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000276",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: số đối, số nghịch đảo của một số."
+ },
+ {
+  "ma_cau": "077022022203039",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010506001",
+  "dang_bai_id": "NDB00440",
+  "chac": "cao",
+  "ly_do": "Dãy luỹ thừa có tử thay đổi liên tiếp, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T107000000222",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x nguyên để luỹ thừa bằng 1 (đề tiếng Anh)."
+ },
+ {
+  "ma_cau": "T107000000142",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm x trong luỹ thừa mũ 3, một trường hợp."
+ },
+ {
+  "ma_cau": "07702220320320303035",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107010206045",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp cùng mẫu, trùng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T107010102019",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định số hữu tỉ do điểm trên trục số biểu diễn; đề có hình."
+ },
+ {
+  "ma_cau": "T107000000213",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Nhận biết phân số viết được thành STP vô hạn tuần hoàn; gần dạng nhận biết STP."
+ },
+ {
+  "ma_cau": "T107000000497",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa căn và GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000359",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn phần trăm khối lượng cặp sách."
+ },
+ {
+  "ma_cau": "T107000000165",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa 4 số hạng có triệt tiêu; gần NDB00883 và NDB00421."
+ },
+ {
+  "ma_cau": "07702220320302075",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối và luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000041",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x phép cộng, hệ số của x là 1."
+ },
+ {
+  "ma_cau": "T107010101018",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về kí hiệu thuộc các tập số."
+ },
+ {
+  "ma_cau": "T107000000295",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Chọn câu đúng về kí hiệu thuộc các tập số."
+ },
+ {
+  "ma_cau": "T107010508001",
+  "dang_bai_id": "NDB00932",
+  "chac": "cao",
+  "ly_do": "Tích các ngoặc dạng (1 - 1/a), rút gọn."
+ },
+ {
+  "ma_cau": "07702011103023",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết STP vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "077020101041",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Viết phân số thành STP; bản đồ thiếu dạng đổi phân số sang STP."
+ },
+ {
+  "ma_cau": "T107010205005",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn giảm giá phần trăm."
+ },
+ {
+  "ma_cau": "07702220320320303034",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107010401037",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước có luỹ thừa, ngoặc; ranh giới NDB00799 và NDB00800."
+ },
+ {
+  "ma_cau": "07702202202041",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Có căn và luỹ thừa của số hữu tỉ; cũng gần NDB00883."
+ },
+ {
+  "ma_cau": "T107010511002",
+  "dang_bai_id": "NDB00437",
+  "chac": "cao",
+  "ly_do": "Dãy hiệu-tích bất quy tắc, tử khác nhau, so sánh."
+ },
+ {
+  "ma_cau": "07702220320320303031",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với giá trị tuyệt đối, hai trường hợp."
+ },
+ {
+  "ma_cau": "0770201102023",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000308",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn phân số và phần trăm của số tiền."
+ },
+ {
+  "ma_cau": "T10770333330501005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy phân số mẫu bình phương, chứng minh không là số tự nhiên."
+ },
+ {
+  "ma_cau": "T107010510008",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy phân số mẫu bình phương, làm trội về hiệu tích để so sánh với 1."
+ },
+ {
+  "ma_cau": "T107000000044",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép cộng, hệ số x là 1, không cần chuyển vế."
+ },
+ {
+  "ma_cau": "T107000000241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết kí hiệu các tập hợp số (N, Z, Q, R)."
+ },
+ {
+  "ma_cau": "0770201102002",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn số thập phân đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107010505018",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy mẫu luỹ thừa của 3, tử đều bằng 1, nhân 3 rồi trừ vế với vế."
+ },
+ {
+  "ma_cau": "T107010401074",
+  "dang_bai_id": "NDB00461",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN biểu thức chỉ chứa một bình phương cộng hằng số."
+ },
+ {
+  "ma_cau": "T10770333330501010",
+  "dang_bai_id": "NDB00932",
+  "chac": "cao",
+  "ly_do": "Tích các ngoặc (1 - 1/n) có quy luật, rút gọn dãy tích."
+ },
+ {
+  "ma_cau": "T107000000296",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định số hữu tỉ biểu diễn bởi điểm trên trục số, nhưng đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "077022022203021",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x có chứa căn bậc hai của x."
+ },
+ {
+  "ma_cau": "T107010509007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: điều kiện để số hữu tỉ bằng 0, dương, âm."
+ },
+ {
+  "ma_cau": "077022022203037",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 có chứa căn bậc hai và bình phương."
+ },
+ {
+  "ma_cau": "T107000000378",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối của số hữu tỉ kèm đổi phần trăm."
+ },
+ {
+  "ma_cau": "T107010201001",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng hai số hữu tỉ, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "077022022203017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa luỹ thừa mũ x và căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000175",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lý thuyết quy tắc chuyển vế (chọn phát biểu đúng), không có phép giải."
+ },
+ {
+  "ma_cau": "T107000000002",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Nhận biết số thập phân hữu hạn hay tuần hoàn, dạng gần nhất nhưng đề không hỏi chu kì."
+ },
+ {
+  "ma_cau": "0770201102030",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ nhất."
+ },
+ {
+  "ma_cau": "T107010203001",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép trừ, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "T107010301052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh luỹ thừa bằng đưa về cùng cơ số."
+ },
+ {
+  "ma_cau": "07702220320302030",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có căn, giá trị tuyệt đối, bình phương, giống ví dụ 2 của dạng."
+ },
+ {
+  "ma_cau": "T107000000380",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x trong hai phân thức bằng nhau (nhân chéo)."
+ },
+ {
+  "ma_cau": "T107000000463",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: số chính phương với tổng các luỹ thừa của 2."
+ },
+ {
+  "ma_cau": "T107000000017",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi ghép các phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "T107010404051",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm x luỹ thừa mũ 3 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "T107000000037",
+  "dang_bai_id": "NDB00434",
+  "chac": "vua",
+  "ly_do": "Khai căn từng số hạng rồi dùng hiệu-tích, có bước phụ khai căn."
+ },
+ {
+  "ma_cau": "T107010403075",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tổng phân số, cộng thêm 1 vào mỗi số hạng để xuất hiện thừa số chung."
+ },
+ {
+  "ma_cau": "T107000000015",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các phân số cùng mẫu thành số nguyên."
+ },
+ {
+  "ma_cau": "T107000000067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết kí hiệu các tập hợp số."
+ },
+ {
+  "ma_cau": "07702220320320303062",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010401019",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa 3 đến 4 bước, ranh giới với dạng luỹ thừa số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107010401007",
+  "dang_bai_id": "NDB00800",
+  "chac": "cao",
+  "ly_do": "Biểu thức nhiều bước chứa ngoặc tròn và vuông, trùng ví dụ của dạng phức tạp."
+ },
+ {
+  "ma_cau": "T107000000046",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x nằm trong ngoặc, có số trừ là cả ngoặc."
+ },
+ {
+  "ma_cau": "T107000000280",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tìm căn bậc hai số học của 169, dạng căn bậc hai nhưng dạng nhận biết cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107010301055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh tỉ số tổng luỹ thừa cơ số khác nhau."
+ },
+ {
+  "ma_cau": "T107000000244",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi triệt tiêu các số hạng."
+ },
+ {
+  "ma_cau": "07702202202071",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Phép tính trộn căn, luỹ thừa, số mũ 0; có thể là biểu thức tổng hợp."
+ },
+ {
+  "ma_cau": "0770201102064",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 5."
+ },
+ {
+  "ma_cau": "07702011103015",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107010301001",
+  "dang_bai_id": "NDB00883",
+  "chac": "cao",
+  "ly_do": "Luỹ thừa của một tổng, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "T107000000384",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số nào không là số hữu tỉ (mẫu bằng 0)."
+ },
+ {
+  "ma_cau": "T107010403073",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tổng phân số, cộng thêm số nguyên vào mỗi số hạng để xuất hiện thừa số chung."
+ },
+ {
+  "ma_cau": "T107010205013",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi suất có lời văn."
+ },
+ {
+  "ma_cau": "T107010203019",
+  "dang_bai_id": "NDB00429",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép nhân, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "07702011103037",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320302057",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Phép tính trộn căn, giá trị tuyệt đối, bình phương; dạng giá trị tuyệt đối cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000100",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép cộng, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107000000320",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm x luỹ thừa mũ 3 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "T107000000453",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thống kê: phân loại dữ liệu và tính tỉ lệ phần trăm từ bảng."
+ },
+ {
+  "ma_cau": "T107000000115",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số mũ x trong phương trình luỹ thừa cùng cơ số."
+ },
+ {
+  "ma_cau": "T107000000174",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lý thuyết các tính chất luỹ thừa (chọn khẳng định sai)."
+ },
+ {
+  "ma_cau": "T107000000134",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chia hai luỹ thừa cùng cơ số, dạng gần nhất nhưng thiếu dạng quy tắc luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010301056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh hai phân số có tử mẫu là luỹ thừa lớn bằng đặt ẩn."
+ },
+ {
+  "ma_cau": "T1077030101005",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Xác định phân số biểu diễn bởi điểm A trên trục số, đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "0770201102003",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ nhất."
+ },
+ {
+  "ma_cau": "T107000000386",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tìm căn bậc hai số học của 9, dạng căn bậc hai nhưng dạng nhận biết cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000119",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế có lời văn về phần trăm và ước lượng."
+ },
+ {
+  "ma_cau": "T107000000224",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số đối của một số hữu tỉ."
+ },
+ {
+  "ma_cau": "07702220320302072",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính chứa giá trị tuyệt đối kèm chia luỹ thừa."
+ },
+ {
+  "ma_cau": "T1077033330401006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Đường thẳng song song: chứng minh hai đường thẳng song song theo hình."
+ },
+ {
+  "ma_cau": "0770222204220402026",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi tổng bình phương và giá trị tuyệt đối bằng 0."
+ },
+ {
+  "ma_cau": "T107010103013",
+  "dang_bai_id": "NDB00793",
+  "chac": "cao",
+  "ly_do": "Sắp xếp nhiều số hữu tỉ, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "T107000000127",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy phân số 1 - 1/n^2, làm trội về hiệu tích để chứng minh bất đẳng thức."
+ },
+ {
+  "ma_cau": "T107010501048",
+  "dang_bai_id": "NDB00434",
+  "chac": "vua",
+  "ly_do": "Tìm x kèm dãy hiệu-tích dạng chuẩn, dạng tìm x cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000078",
+  "dang_bai_id": "NDB00798",
+  "chac": "cao",
+  "ly_do": "Tìm x có x ở hai vế, cần chuyển vế."
+ },
+ {
+  "ma_cau": "T107000000437",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thống kê: đọc biểu đồ hình quạt."
+ },
+ {
+  "ma_cau": "T107010404013",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x luỹ thừa mũ 2 của biểu thức chứa x, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000421",
+  "dang_bai_id": "NDB00449",
+  "chac": "vua",
+  "ly_do": "Xác định số không là số hữu tỉ có √2, dạng nhận biết số hữu tỉ cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107010206025",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép phân số và số thập phân thành số nguyên."
+ },
+ {
+  "ma_cau": "T107000000418",
+  "dang_bai_id": "NDB00802",
+  "chac": "vua",
+  "ly_do": "Làm tròn căn bậc hai theo độ chính xác, kèm bấm máy tính."
+ },
+ {
+  "ma_cau": "T107000000454",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi suất ngân hàng có lời văn."
+ },
+ {
+  "ma_cau": "077022022203038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 có chứa căn bậc hai và bình phương."
+ },
+ {
+  "ma_cau": "T107000000404",
+  "dang_bai_id": "NDB00891",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế có lời văn, nhưng đề có hình minh họa và dùng căn bậc hai, diện tích."
+ },
+ {
+  "ma_cau": "0770222204220402008",
+  "dang_bai_id": "NDB00810",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi vế trái giá trị tuyệt đối bằng phân thức có mẫu bình phương, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107000000337",
+  "dang_bai_id": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp thứ tự các số thực -√3, 0, √3."
+ },
+ {
+  "ma_cau": "T10770330201001",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Trừ hai số hữu tỉ khác mẫu."
+ },
+ {
+  "ma_cau": "T107010205021",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về giảm giá phần trăm có lời văn."
+ },
+ {
+  "ma_cau": "T107000000238",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế về hai lần giảm giá phần trăm."
+ },
+ {
+  "ma_cau": "T107010504020",
+  "dang_bai_id": "NDB00910",
+  "chac": "cao",
+  "ly_do": "Chứng minh A = B, tách A thành hiệu rồi gom nhóm mẫu lẻ chẵn, trùng ví dụ."
+ },
+ {
+  "ma_cau": "07702202202068",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Phép tính chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "07702220320320303037",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "077020101055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết phân số thành số thập phân (hữu hạn hoặc vô hạn tuần hoàn)."
+ },
+ {
+  "ma_cau": "0770201102022",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000419",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thống kê: vẽ biểu đồ hình quạt tròn."
+ },
+ {
+  "ma_cau": "T107000000410",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tìm căn bậc hai số học của 25, dạng căn bậc hai nhưng dạng nhận biết cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000090",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các số thập phân thành tổng nguyên."
+ },
+ {
+  "ma_cau": "T107000000228",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định các số là số hữu tỉ (loại số có mẫu bằng 0)."
+ },
+ {
+  "ma_cau": "T107000000171",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tìm x y z khi tổng các luỹ thừa số mũ chẵn bằng 0."
+ },
+ {
+  "ma_cau": "07702220320302052",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, căn, bình phương, giống ví dụ 2."
+ },
+ {
+  "ma_cau": "07702220320320303065",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010401059",
+  "dang_bai_id": "NDB00800",
+  "chac": "vua",
+  "ly_do": "Biểu thức 5 bước, ngoặc tròn và vuông; ranh giới với biểu thức đơn giản."
+ },
+ {
+  "ma_cau": "07702202202057",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Phép tính chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T10770333330501004",
+  "dang_bai_id": "NDB00908",
+  "chac": "cao",
+  "ly_do": "Mẫu liên tiếp, chia hai nhóm bằng nhau để đánh giá hai phía."
+ },
+ {
+  "ma_cau": "T107000000341",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Trừ hai phân số khác mẫu."
+ },
+ {
+  "ma_cau": "T107010202019",
+  "dang_bai_id": "NDB00420",
+  "chac": "cao",
+  "ly_do": "Chia hai hỗn số âm."
+ },
+ {
+  "ma_cau": "0770201102008",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000428",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức trộn luỹ thừa và căn, dạng căn bậc hai cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000013",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép các phân số cùng mẫu thành số nguyên."
+ },
+ {
+  "ma_cau": "T107000000393",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức trộn luỹ thừa, căn, số mũ 0; dạng căn bậc hai cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000191",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107010505024",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy mẫu luỹ thừa của 3, tử bằng 1, nhân 3 rồi trừ vế với vế."
+ },
+ {
+  "ma_cau": "T107000000261",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép cộng, hệ số x là 1."
+ },
+ {
+  "ma_cau": "T107010301017",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Luỹ thừa của tổng nhân một ngoặc, hơn 3 bước nên có thể là biểu thức đơn giản."
+ },
+ {
+  "ma_cau": "T107000000105",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "07702011103030",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107010505026",
+  "dang_bai_id": "NDB00439",
+  "chac": "cao",
+  "ly_do": "Dãy mẫu luỹ thừa của 17, tử bằng 1, nhân 17 rồi trừ vế với vế."
+ },
+ {
+  "ma_cau": "T107000000335",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế có lời văn về hỗn số."
+ },
+ {
+  "ma_cau": "T107000000069",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số nào không là số hữu tỉ (mẫu bằng 0)."
+ },
+ {
+  "ma_cau": "T107000000088",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhiều bước chứa luỹ thừa phân số, số mũ 3, chia; có thể là dạng phức tạp."
+ },
+ {
+  "ma_cau": "T107000000461",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thống kê: đọc biểu đồ hình quạt."
+ },
+ {
+  "ma_cau": "T107000000157",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 3/17, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000422",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lý thuyết các quy tắc luỹ thừa (chọn khẳng định đúng)."
+ },
+ {
+  "ma_cau": "T107010201019",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Trừ số nguyên cho số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107010102001",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Biểu diễn các số bằng nhau trên trục số, nhưng đề không có hình và cũng giống nhận biết số hữu tỉ."
+ },
+ {
+  "ma_cau": "077020101042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết phân số thành số thập phân (hữu hạn hoặc vô hạn tuần hoàn)."
+ },
+ {
+  "ma_cau": "T107000000364",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thống kê: đọc biểu đồ đoạn thẳng."
+ },
+ {
+  "ma_cau": "07702220320302036",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, căn, luỹ thừa, giống ví dụ 2."
+ },
+ {
+  "ma_cau": "07702220320302028",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, căn, bình phương, giống ví dụ 2."
+ },
+ {
+  "ma_cau": "0770201102034",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "T107000000268",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng hai phân số khác mẫu."
+ },
+ {
+  "ma_cau": "T107000000318",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 11/25, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x trong tổng các luỹ thừa cách đều số mũ."
+ },
+ {
+  "ma_cau": "T107000000201",
+  "dang_bai_id": "NDB00420",
+  "chac": "vua",
+  "ly_do": "Tích nhiều thừa số, ghép cặp rút gọn; có thể thuộc nhân tử chung."
+ },
+ {
+  "ma_cau": "T107000000004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm chữ số thập phân thứ n của số thập phân vô hạn tuần hoàn."
+ },
+ {
+  "ma_cau": "T107000000200",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Chia hai luỹ thừa, dạng gần nhất nhưng thiếu dạng quy tắc luỹ thừa."
+ },
+ {
+  "ma_cau": "077020101052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết phân số thành số thập phân (hữu hạn hoặc vô hạn tuần hoàn)."
+ },
+ {
+  "ma_cau": "T107010301058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh biểu thức luỹ thừa chia hết cho một số."
+ },
+ {
+  "ma_cau": "T107000000449",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Nhân hai luỹ thừa cùng cơ số, dạng gần nhất nhưng thiếu dạng quy tắc luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010205062",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế có lời văn về vườn hình chữ nhật và phần trăm."
+ },
+ {
+  "ma_cau": "077022022203035",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x có chứa căn bậc hai của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "T107000000314",
+  "dang_bai_id": "NDB00883",
+  "chac": "vua",
+  "ly_do": "Nhân hai luỹ thừa cùng cơ số, dạng gần nhất nhưng thiếu dạng quy tắc luỹ thừa."
+ },
+ {
+  "ma_cau": "T107010510006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy phân số mẫu bình phương, làm trội về hiệu tích."
+ },
+ {
+  "ma_cau": "T107000000108",
+  "dang_bai_id": "NDB00429",
+  "chac": "vua",
+  "ly_do": "Tìm x là số chia trong phép chia, kèm bước chuyển vế số hạng."
+ },
+ {
+  "ma_cau": "07702220320302065",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính chứa giá trị tuyệt đối của số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000218",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 có chứa luỹ thừa bậc 3 và căn bậc hai."
+ },
+ {
+  "ma_cau": "07702220320320303046",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000210",
+  "dang_bai_id": "NDB00437",
+  "chac": "vua",
+  "ly_do": "Dãy hiệu-tích mẫu cách 3, tử không đều, kèm bước tìm x."
+ },
+ {
+  "ma_cau": "T107000000050",
+  "dang_bai_id": "NDB00893",
+  "chac": "cao",
+  "ly_do": "Tìm x nằm trong ngoặc, cả ngoặc là số trừ."
+ },
+ {
+  "ma_cau": "T107000000367",
+  "dang_bai_id": "NDB00421",
+  "chac": "cao",
+  "ly_do": "Ghép hỗn số và số thập phân thành tổng nguyên, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T107000000220",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi suất ngân hàng có lời văn."
+ },
+ {
+  "ma_cau": "T107010406002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x y ở số mũ qua hệ phương trình luỹ thừa."
+ },
+ {
+  "ma_cau": "0770201102017",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ tư."
+ },
+ {
+  "ma_cau": "T107000000394",
+  "dang_bai_id": "NDB00802",
+  "chac": "vua",
+  "ly_do": "Làm tròn theo độ chính xác 0,05, nhưng có đổi đơn vị inch sang cm theo lời văn."
+ },
+ {
+  "ma_cau": "07702220320302034",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, căn, bình phương, giống ví dụ 2."
+ },
+ {
+  "ma_cau": "T107010102012",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Biểu diễn các số hữu tỉ trên trục số, nhưng đề phụ thuộc hình trục số."
+ },
+ {
+  "ma_cau": "T107000000382",
+  "dang_bai_id": "NDB00891",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế có lời văn về giá điện bậc thang và thuế phần trăm."
+ },
+ {
+  "ma_cau": "T107000000024",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 9/14 trong ngoặc, sau đó rút tiếp 23/18."
+ },
+ {
+  "ma_cau": "07702220320302045",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có giá trị tuyệt đối, nhưng hai số hạng chia chung 3/2 nên dạng nhân tử chung cũng hợp lý."
+ },
+ {
+  "ma_cau": "07702220320302039",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính có giá trị tuyệt đối, căn, luỹ thừa, giống ví dụ 2."
+ },
+ {
+  "ma_cau": "07702011103018",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "T107000000102",
+  "dang_bai_id": "NDB00893",
+  "chac": "vua",
+  "ly_do": "x nằm trong ngoặc là số bị chia, dạng tìm x nhân chia cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000077",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số mũ n trong phương trình luỹ thừa cùng cơ số."
+ },
+ {
+  "ma_cau": "077020101058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết phân số thành số thập phân (hữu hạn hoặc vô hạn tuần hoàn)."
+ },
+ {
+  "ma_cau": "0770201102060",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,5."
+ },
+ {
+  "ma_cau": "T107010510005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy 1 - 1/n^2, làm trội về hiệu tích để chứng minh không nguyên."
+ },
+ {
+  "ma_cau": "T107000000290",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010203007",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép trừ, hệ số x là 1."
+ },
+ {
+  "ma_cau": "077020101053",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết phân số thành số thập phân (hữu hạn hoặc vô hạn tuần hoàn)."
+ },
+ {
+  "ma_cau": "07702220320302001",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính chứa giá trị tuyệt đối, trùng ví dụ 1."
+ },
+ {
+  "ma_cau": "07702202202054",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Phép tính chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "0770201102001",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "07702220320302023",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Phép tính chứa giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000484",
+  "dang_bai_id": "NDB00796",
+  "chac": "cao",
+  "ly_do": "Tìm x luỹ thừa mũ 2 của biểu thức chứa x, hai trường hợp."
+ },
+ {
+  "ma_cau": "T107000000113",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x trong hai phân thức bằng nhau (nhân chéo)."
+ },
+ {
+  "ma_cau": "T107000000403",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính trộn căn, giá trị tuyệt đối, hỗn số, số mũ 0; dạng căn bậc hai cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000309",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x y ở số mũ qua hệ phương trình luỹ thừa."
+ },
+ {
+  "ma_cau": "T107000000221",
+  "dang_bai_id": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Vế trái tổng hai giá trị tuyệt đối, vế phải phân thức có mẫu chứa bình phương và căn."
+ },
+ {
+  "ma_cau": "07702220320320303044",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107010404007",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "Tìm x luỹ thừa mũ 3 của biểu thức chứa x."
+ },
+ {
+  "ma_cau": "0770201102010",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ tư."
+ },
+ {
+  "ma_cau": "077022022203020",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x có chứa căn bậc hai của x."
+ },
+ {
+  "ma_cau": "T107000000479",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thống kê: đọc biểu đồ đoạn thẳng."
+ },
+ {
+  "ma_cau": "0770201102018",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ ba."
+ },
+ {
+  "ma_cau": "T107000000327",
+  "dang_bai_id": "NDB00933",
+  "chac": "vua",
+  "ly_do": "Tìm căn bậc hai số học của 36, dạng căn bậc hai nhưng dạng nhận biết cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107000000072",
+  "dang_bai_id": "NDB00790",
+  "chac": "vua",
+  "ly_do": "Chọn hình biểu diễn đúng số hữu tỉ trên trục số, đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "077022022203016",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x tích bằng 0 chứa luỹ thừa mũ x và căn bậc hai."
+ },
+ {
+  "ma_cau": "T107010406001",
+  "dang_bai_id": "NDB00439",
+  "chac": "vua",
+  "ly_do": "Tìm x vế phải là dãy luỹ thừa tử không đổi, rồi mũ chẵn; trộn hai dạng."
+ },
+ {
+  "ma_cau": "T107000000361",
+  "dang_bai_id": "NDB00455",
+  "chac": "vua",
+  "ly_do": "Sắp xếp số có căn và hỗn số, dạng sắp xếp số hữu tỉ cũng hợp lý."
+ },
+ {
+  "ma_cau": "T107010510002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dãy phân số mẫu bình phương, làm trội về hiệu tích."
+ },
+ {
+  "ma_cau": "0770201102059",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,5."
+ },
+ {
+  "ma_cau": "T107000000303",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức nhân rồi cộng ba bước, ranh giới với cộng trừ và nhân chia số hữu tỉ."
+ },
+ {
+  "ma_cau": "T107000000085",
+  "dang_bai_id": "NDB00422",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đổi dấu rồi triệt tiêu các số đối nhau."
+ },
+ {
+  "ma_cau": "0770201102024",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "T107010507008",
+  "dang_bai_id": "NDB00911",
+  "chac": "vua",
+  "ly_do": "Các phân số có tổng tử mẫu không đổi, cộng 1 vào mỗi số hạng; khớp form 2 nhưng là tính tỉ số."
+ },
+ {
+  "ma_cau": "T107010301054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh hai phân số có tử mẫu là luỹ thừa lớn bằng đặt ẩn."
+ },
+ {
+  "ma_cau": "T107000000153",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lý thuyết các quy tắc luỹ thừa (chọn khẳng định đúng)."
+ },
+ {
+  "ma_cau": "T107000000104",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với biểu thức chứa x nằm trong giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T107000000167",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x trong phép trừ, hệ số x là 1."
+ },
+ {
+  "ma_cau": "0770222204220402021",
+  "dang_bai_id": "NDB00809",
+  "chac": "cao",
+  "ly_do": "Tìm x y khi tổng luỹ thừa mũ chẵn và căn bằng 0."
+ },
+ {
+  "ma_cau": "T107010101005",
+  "dang_bai_id": "NDB00789",
+  "chac": "cao",
+  "ly_do": "Xác định số nào là số hữu tỉ, giải thích bằng định nghĩa."
+ },
+ {
+  "ma_cau": "T107000000028",
+  "dang_bai_id": "NDB00799",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa, chia phân số, số mũ 0; số bước có thể nhiều hơn dạng đơn giản."
+ },
+ {
+  "ma_cau": "T107000000129",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTNN từ chuỗi bất đẳng thức của ba số."
+ },
+ {
+  "ma_cau": "0770201102031",
+  "dang_bai_id": "NDB00802",
+  "chac": "cao",
+  "ly_do": "Làm tròn với độ chính xác 0,05."
+ },
+ {
+  "ma_cau": "07702011103005",
+  "dang_bai_id": "NDB00803",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân vô hạn tuần hoàn thành phân số tối giản."
+ },
+ {
+  "ma_cau": "07702220320320303001",
+  "dang_bai_id": "NDB00935",
+  "chac": "cao",
+  "ly_do": "Tìm x với x nằm trong giá trị tuyệt đối, trùng ví dụ 1."
+ },
+ {
+  "ma_cau": "T107000000101",
+  "dang_bai_id": "NDB00428",
+  "chac": "cao",
+  "ly_do": "Tìm x là số trừ trong phép trừ, hệ số x là 1."
+ },
+ {
+  "ma_cau": "07702202202061",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Phép tính chỉ gồm các căn bậc hai."
+ },
+ {
+  "ma_cau": "T107000000025",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung 0,125, rút ra ngoài."
+ },
+ {
+  "ma_cau": "T107000000136",
+  "dang_bai_id": "NDB00419",
+  "chac": "cao",
+  "ly_do": "Cộng số thập phân với phân số."
+ },
+ {
+  "ma_cau": "0770201102028",
+  "dang_bai_id": "NDB00801",
+  "chac": "cao",
+  "ly_do": "Làm tròn đến chữ số thập phân thứ hai."
+ },
+ {
+  "ma_cau": "T10770333330501008",
+  "dang_bai_id": "NDB00441",
+  "chac": "cao",
+  "ly_do": "Dãy mẫu luỹ thừa của 3, tử cách đều 2 đơn vị, chứng minh bất đẳng thức."
+ },
+ {
+  "ma_cau": "07702220320302044",
+  "dang_bai_id": "NDB00934",
+  "chac": "vua",
+  "ly_do": "Phép tính có giá trị tuyệt đối, nhưng hai số hạng chia chung 5/4 nên dạng nhân tử chung cũng hợp lý."
+ }
+]

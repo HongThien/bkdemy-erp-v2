@@ -1,0 +1,958 @@
+[
+ {
+  "ma_cau": "T111060303041",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n)$, biết $u_1 = 5$, $u_2 = 10$, tổng $S_n = u_1 + u_2 + \\dots + u_n = 155$. Tìm $n$.",
+  "lua_chon": [
+   "$n=5$",
+   "$n=6$",
+   "$n=4$",
+   "$n=7$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $u_2 = u_1q$.\n$5q = 10 \\Rightarrow q = 2$.\n$S_n = 5 \\dfrac{1 - 2^n}{1 - 2} = 155 \\Rightarrow n = 5$.\nChọn A.",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111030101125",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $y=\\cos x$",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Hàm số $y=\\cos x$ xác định với mọi $x\\in \\mathbb{R}$, nên tập xác định là $D=\\mathbb{R}$.",
+    "noi_dung": "Hàm số có tập xác định $\\mathbb{R}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T111000000",
+    "loi_giai": "Ta có $y\\left(2024\\pi \\right)=\\cos \\left(2024\\pi \\right)=\\cos \\left(1012\\cdot2\\pi \\right)=1\\ne -1$.",
+    "noi_dung": "$y\\left(2024\\pi \\right)=-1$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T111000000",
+    "loi_giai": "Hàm số $y=\\cos x$ tuần hoàn với chu kì $T=2\\pi$.",
+    "noi_dung": "Hàm số tuần hoàn với chu kì $\\dfrac{\\pi }{2}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Vì $-1 \\le \\cos x \\le 1$ với mọi $x\\in \\mathbb{R}$ nên tập giá trị của hàm số là $\\left[-1;1\\right]$.",
+    "noi_dung": "Hàm số có tập giá trị là $\\left[-1;1\\right]$"
+   }
+  ],
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040101226",
+  "loai": "dung_sai",
+  "de": "Cho các hàm số sau $f\\left(x\\right)=\\sin x$ và $g\\left(x\\right)=\\cos 2x$. Khi đó, các mệnh đề sau đúng hay sai?",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Hàm số $g\\left(x\\right)=\\cos 2x$ có tập xác định $D=\\mathbb{R}$.\n\nVới mọi $x\\in \\mathbb{R}$, ta có $-x\\in \\mathbb{R}$ và $g\\left(-x\\right)=\\cos (2\\left(-x\\right))=\\cos \\left(-2x\\right)=\\cos 2x=g\\left(x\\right)$.\n\nDo đó $g\\left(x\\right)$ là hàm số chẵn, nên đồ thị của hàm số nhận trục tung làm trục đối xứng.",
+    "noi_dung": "Hàm số $g\\left(x\\right)=\\cos 2x$ có đồ thị nhận trục tung làm trục đối xứng"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Theo tính chất của hàm số lượng giác, hàm số $f\\left(x\\right)=\\sin x$ đồng biến trên mỗi khoảng $\\left(-\\dfrac{\\pi }{2}+k2\\pi;\\dfrac{\\pi }{2}+k2\\pi \\right)$ với $k\\in \\mathbb{Z}$.\n\nVới $k=0$, hàm số $f\\left(x\\right)=\\sin x$ đồng biến trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$.",
+    "noi_dung": "Hàm số $f\\left(x\\right)=\\sin x$ đồng biến trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Phương trình hoành độ giao điểm của hai đồ thị:\n\n$\\sin x=\\cos 2x\\Leftrightarrow 1-2\\sin ^{2}x=\\sin x\\Leftrightarrow 2\\sin ^{2}x+\\sin x-1=0\\Leftrightarrow \\left[\\begin{array}{l} \\sin x=\\dfrac{1}{2} \\\\ \\sin x=-1. \\end{array}\\right.$\n\n- Với $\\sin x=\\dfrac{1}{2}$, trên khoảng $\\left(0;\\pi \\right)$ phương trình có hai nghiệm phân biệt là $x=\\dfrac{\\pi }{6}$ và $x=\\dfrac{5\\pi }{6}$.\n\n- Với $\\sin x=-1$, phương trình không có nghiệm thuộc khoảng $\\left(0;\\pi \\right)$ (vì $\\sin x>0$ với mọi $x\\in \\left(0;\\pi \\right)$).\n\nVậy trên khoảng $\\left(0;\\pi \\right)$, đồ thị hai hàm số cắt nhau tại đúng hai điểm phân biệt có hoành độ là $x=\\dfrac{\\pi }{6}$ và $x=\\dfrac{5\\pi }{6}$.",
+    "noi_dung": "Đồ thị hai hàm số $f\\left(x\\right)=\\sin x$ và $g\\left(x\\right)=\\cos 2x$ cắt nhau tại hai điểm phân biệt có hoành độ thuộc khoảng $\\left(0;\\pi \\right)$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T111000000",
+    "loi_giai": "Giải phương trình $f\\left(x\\right)=g\\left(x\\right)$:\n\n$\\left[\\begin{array}{l} \\sin x=\\dfrac{1}{2}\\Leftrightarrow \\left[\\begin{array}{l} x=\\dfrac{\\pi }{6}+k2\\pi \\\\ x=\\dfrac{5\\pi }{6}+k2\\pi \\end{array}\\right.\\left(k\\in\\mathbb{Z}\\right) \\\\ \\sin x=-1\\Leftrightarrow x=-\\dfrac{\\pi }{2}+k2\\pi \\left(k\\in\\mathbb{Z}\\right). \\end{array}\\right.$\n\n- Nghiệm dương nhỏ nhất của phương trình là $x_{1}=\\dfrac{\\pi }{6}$ (ứng với họ $x=\\dfrac{\\pi }{6}+k2\\pi$ khi $k=0$).\n\n- Nghiệm âm lớn nhất của phương trình là $x_{2}=-\\dfrac{\\pi }{2}$ (ứng với họ $x=-\\dfrac{\\pi }{2}+k2\\pi$ khi $k=0$).\n\nTổng hai nghiệm này là\n\n$x_{1}+x_{2}=\\dfrac{\\pi }{6}+\\left(-\\dfrac{\\pi }{2}\\right)=-\\dfrac{\\pi }{3}\\ne -\\dfrac{\\pi }{6}.$",
+    "noi_dung": "Tổng nghiệm dương nhỏ nhất và nghiệm âm lớn nhất của phương trình $f\\left(x\\right)=g\\left(x\\right)$ là $\\dfrac{-\\pi }{6}$"
+   }
+  ],
+  "dap_an": "Đ Đ Đ S",
+  "loi_giai": "a) Đúng: Hàm số $g\\left(x\\right)=\\cos 2x$ có tập xác định $D=\\mathbb{R}$.\nVới mọi $x\\in \\mathbb{R}$, ta có $-x\\in \\mathbb{R}$ và $g\\left(-x\\right)=\\cos (2\\left(-x\\right))=\\cos \\left(-2x\\right)=\\cos 2x=g\\left(x\\right)$.\nDo đó $g\\left(x\\right)$ là hàm số chẵn, nên đồ thị của hàm số nhận trục tung làm trục đối xứng\nb) Đúng: Theo tính chất của hàm số lượng giác, hàm số $f\\left(x\\right)=\\sin x$ đồng biến trên mỗi khoảng $\\left(-\\dfrac{\\pi }{2}+k2\\pi;\\dfrac{\\pi }{2}+k2\\pi \\right)$ với $k\\in \\mathbb{Z}$.\nVới $k=0$, hàm số $f\\left(x\\right)=\\sin x$ đồng biến trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$\nc) Đúng: Phương trình hoành độ giao điểm của hai đồ thị:\n$\\sin x=\\cos 2x\\Leftrightar …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111030101099",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\cos x$ là",
+  "lua_chon": [
+   "$D=\\left[0;1\\right]$.",
+   "$D=\\left[-1;1\\right]$.",
+   "$D=\\mathbb{R}$.",
+   "$D=\\mathbb{R}\\setminus \\left\\{\\dfrac{\\pi }{2}+k\\pi,k\\in \\mathbb{Z}\\right\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hàm số $y=\\cos x$ xác định với mọi $x\\in \\mathbb{R}$.\nDo đó, tập xác định của hàm số là $D=\\mathbb{R}$.",
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111030103023",
+  "loai": "trac_nghiem",
+  "de": "Trong các hàm số sau: $y=\\sin x,y=\\cos x,y=\\tan x,y=\\cot x$, có bao nhiêu hàm số lẻ trên tập xác định của nó?",
+  "lua_chon": [
+   "$4$.",
+   "$2$.",
+   "$3$.",
+   "$1$."
+  ],
+  "loi_giai": "Xét bốn hàm số đã cho trên tập xác định của chúng:\n• Hàm số $y=\\sin x$ có tập xác định $D=\\mathbb{R}$ là tập đối xứng và $\\sin \\left(-x\\right)=-\\sin x$, nên đây là hàm số lẻ.\n• Hàm số $y=\\cos x$ có tập xác định $D=\\mathbb{R}$ là tập đối xứng và $\\cos \\left(-x\\right)=\\cos x$, nên đây là hàm số chẵn.\n• Hàm số $y=\\tan x$ có tập xác định $D=\\mathbb{R}\\setminus \\left\\{\\dfrac{\\pi }{2}+k\\pi |k\\in \\mathbb{Z}\\right\\}$ là tập đối xứng và $\\tan \\left(-x\\right)=-\\tan x$, nên đây là hàm số lẻ.\n• Hàm số $y=\\cot x$ có tập xác định $D=\\mathbb{R}\\setminus \\{k\\pi |k\\in \\mathbb{Z}\\}$ là tập đối xứng và $\\cot \\left(-x\\right)=-\\cot x$, nên đây là hàm số lẻ.\nNhư vậy, có $3$ hàm số lẻ là $y=\\sin x$, $y=\\tan x$ và  …",
+  "nhan_cu": "Hàm số lượng giác › Xét tính chẵn lẻ của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060205043",
+  "loai": "trac_nghiem",
+  "de": "Có bao nhiêu hàng ghế trong một góc khán đài của một sân vận động, biết rằng góc khán đài đó có $2040$ chỗ ngồi, hàng ghế đầu tiên có $10$ chỗ ngồi và mỗi hàng ghế sau có thêm $4$ chỗ ngồi so với hàng ghế trước đó?",
+  "lua_chon": [
+   "$30$ hàng ghế.",
+   "$12$ hàng ghế.",
+   "$24$ hàng ghế.",
+   "$45$ hàng ghế."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Số chỗ ngồi ở mỗi hàng ghế lập thành một cấp số cộng $\\left(u_{n}\\right)$ có số hạng đầu $u_{1}=10$ và công sai $d=4$.\nGọi $n$ ($n\\in \\mathbb{N}^{∗}$) là số hàng ghế của góc khán đài.\nTổng số chỗ ngồi của $n$ hàng ghế là $S_{n}=2040$.\nÁp dụng công thức tính tổng $n$ số hạng đầu của cấp số cộng, ta có\n$S_{n}=\\dfrac{n[2u_{1}+\\left(n-1\\right)d]}{2}=\\dfrac{n[20+4\\left(n-1\\right)]}{2}=2n^{2}+8n.$\nTheo giả thiết:\n$2n^{2}+8n=2040\\Leftrightarrow n^{2}+4n-1020=0.$\nGiải phương trình trên ta được\n$\\left[\\begin{array}{l} n=30\\left(\\text{thoa man }n\\in\\mathbb{N}^{∗}\\right) \\\\ n=-34\\left(loai\\right). \\end{array}\\right.$\nVậy góc khán đài đó có $30$ hàng ghế.",
+  "nhan_cu": "Cấp số cộng › Toán thực tế cấp số cộng"
+ },
+ {
+  "ma_cau": "T111040204052",
+  "loai": "tra_loi_ngan",
+  "de": "Phương trình $4 \\cos^2(2x) - 3 = 0$ có bao nhiêu nghiệm trên khoảng $(0; \\pi)$?",
+  "dap_an": "4",
+  "loi_giai": "Phương trình $\\Leftrightarrow \\cos^2(2x) = \\dfrac{3}{4} \\Leftrightarrow \\left[\\begin{array}{l}\\cos(2x) = \\dfrac{\\sqrt{3}}{2}\\\\\\\\cos(2x) = -\\dfrac{\\sqrt{3}}{2}\\end{array}\\right.$\nVì $x \\in (0; \\pi) \\Rightarrow 2x \\in (0; 2\\pi)$.\nTrên $(0; 2\\pi)$, phương trình $\\cos(2x) = \\pm \\dfrac{\\sqrt{3}}{2}$ có 4 điểm biểu diễn tương ứng là $2x \\in \\left\\{\\dfrac{\\pi}{6}; \\dfrac{5\\pi}{6}; \\dfrac{7\\pi}{6}; \\dfrac{11\\pi}{6}\\right\\}$, cho ra 4 nghiệm $x$.\nTrả lời: 4",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác bậc 2"
+ },
+ {
+  "ma_cau": "T111000000330",
+  "loai": "dung_sai",
+  "de": "Cho góc lượng giác $\\alpha$ thỏa mãn $\\tan \\alpha =3$.",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Từ hằng đẳng thức lượng giác cơ bản $\\tan \\alpha \\cdot \\cot \\alpha =1$, ta có\n\n$\\cot \\alpha =\\dfrac{1}{\\tan \\alpha }=\\dfrac{1}{3}.$",
+    "noi_dung": "$\\cot \\alpha =\\dfrac{1}{3}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Hàm số tang tuần hoàn với chu kì $\\pi$, do đó với mọi số nguyên $k$ ta có $\\tan \\left(\\alpha +k\\pi \\right)=\\tan \\alpha$.\n\nSuy ra $\\tan \\left(\\alpha +3\\pi \\right)=\\tan \\alpha =3$.",
+    "noi_dung": "$\\tan \\left(\\alpha +3\\pi \\right)=3$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Theo công thức góc đối nhau, ta có\n\n$\\tan \\left(-\\alpha \\right)=-\\tan \\alpha =-3.$",
+    "noi_dung": "$\\tan \\left(-\\alpha \\right)=-3$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Áp dụng công thức nhân đôi đối với hàm số tang, ta có\n\n$\\tan 2\\alpha =\\dfrac{2\\tan \\alpha }{1-\\tan ^{2}\\alpha }=\\dfrac{2\\cdot 3}{1-3^{2}}=\\dfrac{6}{-8}=-\\dfrac{3}{4}.$\n\nSuy ra\n\n$\\cot 2\\alpha =\\dfrac{1}{\\tan 2\\alpha }=\\dfrac{1}{-\\dfrac{3}{4}}=-\\dfrac{4}{3}.$",
+    "noi_dung": "$\\cot 2\\alpha =-\\dfrac{4}{3}$"
+   }
+  ],
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111030503041",
+  "loai": "trac_nghiem",
+  "de": "Hàm số có đồ thị như hình trên đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(\\dfrac{\\pi}{4};\\dfrac{3\\pi}{4})$",
+   "$(\\dfrac{\\pi}{4};\\pi)$",
+   "$(\\pi;2\\pi)$",
+   "$(-\\dfrac{\\pi}{4};\\dfrac{\\pi}{4})$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+ },
+ {
+  "ma_cau": "T111060202176",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $\\left(u_{n}\\right)$ có số hạng đầu $u_{1}$ và công sai $d$, $n\\ge 2$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$u_{n}=u_{1}n-d$.",
+   "$u_{n}=u_{1}+\\left(n+1\\right)d$.",
+   "$u_{n}=u_{1}+\\left(n-1\\right)d$.",
+   "$u_{n}=u_{n-1}+\\left(n-1\\right)d$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa và công thức số hạng tổng quát của cấp số cộng, ta có\n$u_{n}=u_{1}+\\left(n-1\\right)d\\left(n\\ge2\\right).$\nVậy khẳng định đúng là $u_{n}=u_{1}+\\left(n-1\\right)d$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111010502016",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức $M = (\\sin x + \\cos x)^2 + (\\sin x - \\cos x)^2$.",
+  "lua_chon": [
+   "$M = 1$",
+   "M = 2.",
+   "M = 4.",
+   "M = 4sin x.cos x."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có\n$\\{(\\sin x + \\cos x)^2 = \\sin^2 x + \\cos^2 x + 2\\sin x.\\cos x = 1 + 2\\sin x.\\cos x$\n$\\{(\\sin x - \\cos x)^2 = \\sin^2 x + \\cos^2 x - 2\\sin x.\\cos x = 1 - 2\\sin x.\\cos x$\nSuy ra $M = 2$.",
+  "nhan_cu": "Rút gọn biểu thức lượng giác › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng công thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040101257",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\cos x=-1$ là",
+  "lua_chon": [
+   "$x=\\dfrac{\\pi }{2}+k2\\pi,k\\in \\mathbb{Z}$.",
+   "$x=\\pi +k2\\pi,k\\in \\mathbb{Z}$.",
+   "$x=k2\\pi,k\\in \\mathbb{Z}$.",
+   "$x=\\pi +k\\pi,k\\in \\mathbb{Z}$."
+  ],
+  "loi_giai": "Ta có phương trình lượng giác cơ bản\n$\\cos x=-1\\Leftrightarrow x=\\pi +k2\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVậy nghiệm của phương trình là $x=\\pi +k2\\pi \\left(k\\in\\mathbb{Z}\\right)$.",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040101322",
+  "loai": "tu_luan",
+  "de": "Giải các phương trình sau: a) $\\cos x=\\cos \\dfrac{\\pi }{8}$ \\quad b) $\\sqrt{3}\\tan 2x-3=0$. \\quad c) $\\sin 3x-\\cos 2x=0$.",
+  "loi_giai": "a) Giải phương trình $\\cos x=\\cos \\dfrac{\\pi }{8}$:\nPhương trình xác định với mọi $x\\in \\mathbb{R}$.\nTa có:\n$\\cos x=\\cos \\dfrac{\\pi }{8}\\Leftrightarrow x=\\pm \\dfrac{\\pi }{8}+k2\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVậy phương trình có các họ nghiệm là $x=\\dfrac{\\pi }{8}+k2\\pi$ và $x=-\\dfrac{\\pi }{8}+k2\\pi$ ($k\\in \\mathbb{Z}$).\nb) Giải phương trình $\\sqrt{3}\\tan 2x-3=0$:\nĐiều kiện xác định: $\\cos 2x\\ne 0\\Leftrightarrow 2x\\ne \\dfrac{\\pi }{2}+k\\pi \\Leftrightarrow x\\ne \\dfrac{\\pi }{4}+\\dfrac{k\\pi }{2}$ ($k\\in \\mathbb{Z}$).\nPhương trình tương đương:\n$\\sqrt{3}\\tan 2x=3\\Leftrightarrow \\tan 2x=\\sqrt{3}\\Leftrightarrow \\tan 2x=\\tan \\dfrac{\\pi }{3}.$\n$\\Leftrightarrow 2x=\\dfrac{\\pi }{3}+k\\pi \\Leftrightarrow  …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111010502075",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức $P = (\\sin \\alpha + \\cos \\alpha)^2 + (\\sin \\alpha - \\cos \\alpha)^2$.",
+  "lua_chon": [
+   "$P = 1$",
+   "$P = 2$",
+   "$P = 4$",
+   "$P = 4 \\sin \\alpha \\cos \\alpha$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có\n$(\\sin \\alpha + \\cos \\alpha)^2 = \\sin^2 \\alpha + \\cos^2 \\alpha + 2 \\sin \\alpha \\cos \\alpha = 1 + 2 \\sin \\alpha \\cos \\alpha$\n$(\\sin \\alpha - \\cos \\alpha)^2 = \\sin^2 \\alpha + \\cos^2 \\alpha - 2 \\sin \\alpha \\cos \\alpha = 1 - 2 \\sin \\alpha \\cos \\alpha$\nSuy ra $P = 2$.",
+  "nhan_cu": "Rút gọn biểu thức lượng giác › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng công thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111030502082",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị hàm số đi qua điểm nào dưới đây?",
+  "lua_chon": [
+   "A. $(\\dfrac{\\pi}{4};1)$",
+   "B. $(0;0)$",
+   "C. $(0;0.5)$",
+   "D. $(\\pi;1)$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030102039",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\dfrac{\\cot x}{\\cos x-1}$ là",
+  "lua_chon": [
+   "$\\mathbb{R} \\setminus \\left\\{k\\dfrac{\\pi}{2}, k \\in \\mathbb{Z}\\right\\}$",
+   "$\\mathbb{R} \\setminus \\left\\{k\\dfrac{\\pi}{2}+k\\pi, k \\in \\mathbb{Z}\\right\\}$",
+   "$\\mathbb{R} \\setminus \\{k\\pi, k \\in \\mathbb{Z}\\}$",
+   "$\\mathbb{R} \\setminus \\{k2\\pi, k \\in \\mathbb{Z}\\}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Điều kiện xác định của hàm số là $\\begin{cases}\\sin x \\neq 0 \\\\ \\cos x \\neq 1 \\end{cases} \\Leftrightarrow \\begin{cases}x \\neq k\\pi \\\\ x \\neq l2\\pi \\end{cases} (k,l \\in \\mathbb{Z}) \\Rightarrow x \\neq k\\pi, k \\in \\mathbb{Z}$.\nVậy, tập xác định của hàm số $y=\\dfrac{\\cot x}{\\cos x-1}$ là $\\mathbb{R} \\setminus \\{k\\pi, k \\in \\mathbb{Z}\\}$",
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số chứa phân thức"
+ },
+ {
+  "ma_cau": "T111060202147",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $\\left(u_{n}\\right)$ có số hạng đầu $u_{1}=-5$ và công sai $d=3$. Số $100$ là số hạng thứ mấy của cấp số cộng?",
+  "lua_chon": [
+   "$15$.",
+   "$20$.",
+   "$35$.",
+   "$36$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Số hạng tổng quát của cấp số cộng $\\left(u_{n}\\right)$ là $u_{n}=u_{1}+\\left(n-1\\right)d$.\nVới $u_{1}=-5$, $d=3$ và $u_{n}=100$, ta có:\n$-5+\\left(n-1\\right)\\cdot 3=100\\Leftrightarrow 3\\left(n-1\\right)=105\\Leftrightarrow n-1=35\\Leftrightarrow n=36.$\nVậy số $100$ là số hạng thứ $36$ của cấp số cộng.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111030101001",
+  "loai": "tu_luan",
+  "de": "Tìm tập xác định của hàm số: $y = \\tan \\left( 2x + \\dfrac{\\pi}{3} \\right)$",
+  "dap_an": "$D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{12} + k\\dfrac{\\pi}{2}, k \\in \\mathbb{Z} \\right\\}$",
+  "loi_giai": "Hàm số $y = \\tan \\left( 2x + \\dfrac{\\pi}{3} \\right)$ xác định khi và chỉ khi\n$\\cos \\left( 2x + \\dfrac{\\pi}{3} \\right) \\neq 0 \\Leftrightarrow 2x + \\dfrac{\\pi}{3} \\neq \\dfrac{\\pi}{2} + k\\pi \\Leftrightarrow x \\neq \\dfrac{\\pi}{12} + k\\dfrac{\\pi}{2}(k \\in \\mathbb{Z}).$\n$\\Rightarrow$ TXĐ: $D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{12} + k\\dfrac{\\pi}{2}, k \\in \\mathbb{Z} \\right\\}$",
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111010302001",
+  "loai": "tu_luan",
+  "de": "Cho $0^{\\circ} < \\alpha < 90^{\\circ}$. Xét dấu của các biểu thức sau:\na) $A = \\sin(\\alpha + 90^{\\circ})$.\nb) $B = \\cos(\\alpha - 45^{\\circ})$.",
+  "dap_an": "a) $A > 0$\nb) $B > 0$",
+  "loi_giai": "a) Ta có: $0^{\\circ} < \\alpha < 90^{\\circ} \\Leftrightarrow 0^{\\circ} + 90^{\\circ} < \\alpha + 90^{\\circ} < 90^{\\circ} + 90^{\\circ} \\Leftrightarrow 90^{\\circ} < \\alpha + 90^{\\circ} < 180^{\\circ}$\nSuy ra $A = \\sin(\\alpha + 90^{\\circ}) > 0$.\nb) Ta có: $0^{\\circ} < \\alpha < 90^{\\circ} \\Leftrightarrow 0^{\\circ} - 45^{\\circ} < \\alpha - 45^{\\circ} < 90^{\\circ} - 45^{\\circ} \\Leftrightarrow -45^{\\circ} < \\alpha - 45^{\\circ} < 45^{\\circ}$\nSuy ra $B = \\cos(\\alpha - 45^{\\circ}) > 0$.",
+  "nhan_cu": "Góc lượng giác - Đường tròn lượng giác › Xác định dấu của giá trị lượng giác"
+ },
+ {
+  "ma_cau": "T111030102077",
+  "loai": "tu_luan",
+  "de": "Tìm tập xác định của hàm số $y=\\tan \\left(x-\\dfrac{\\pi }{4}\\right)$.",
+  "loi_giai": "Hàm số $y=\\tan \\left(x-\\dfrac{\\pi }{4}\\right)$ xác định khi và chỉ khi\n$x-\\dfrac{\\pi }{4}\\ne \\dfrac{\\pi }{2}+k\\pi \\Leftrightarrow x\\ne \\dfrac{3\\pi }{4}+k\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\left\\{\\dfrac{3\\pi }{4}+k\\pi | k\\in \\mathbb{Z}\\right\\}$.",
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số chứa phân thức"
+ },
+ {
+  "ma_cau": "T111030201066",
+  "loai": "trac_nghiem",
+  "de": "Giá trị nhỏ nhất của hàm số $y=2\\sin 3x$ bằng",
+  "lua_chon": [
+   "-6.",
+   "B. -1.",
+   "C. -3.",
+   "D. -2."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $-1\\le \\sin 3x \\le 1,\\forall x \\in \\mathbb{R}\\Rightarrow -2\\le 2\\sin 3x \\le 2,\\forall x \\in \\mathbb{R}$.\nSuy ra giá trị nhỏ nhất của hàm số $y=2\\sin 3x$ là $-2$, xảy ra khi $\\sin 3x=-1$\n$\\sin 3x=-1\\Leftrightarrow x=-\\dfrac{\\pi}{6}+\\dfrac{k2\\pi}{3}(k \\in \\mathbb{Z})$.",
+  "nhan_cu": "Tập giá trị và min max của hàm số lượng giác › Tìm tập giá trị hoặc min max của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111060302134",
+  "loai": "tra_loi_ngan",
+  "de": "Cho cấp số nhân $\\left(u_{n}\\right)$ có $u_{1}=1,u_{2}=2$. Tổng của $10$ số hạng đầu của cấp số nhân đã cho bằng bao nhiêu?",
+  "dap_an": "1023",
+  "loi_giai": "Công bội của cấp số nhân $\\left(u_{n}\\right)$ là\n$q=\\dfrac{u_{2}}{u_{1}}=\\dfrac{2}{1}=2.$\nVì $q=2\\ne 1$ nên tổng của $10$ số hạng đầu của cấp số nhân là\n$S_{10}=\\dfrac{u_{1}\\left(1-q^{10}\\right)}{1-q}=\\dfrac{1\\cdot \\left(1-2^{10}\\right)}{1-2}=\\dfrac{1-1024}{-1}=1023.$\nVậy $S_{10}=1023$.",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111040201047",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\sin(3x) + \\sin \\left(x + \\dfrac{\\pi}{4}\\right) = 0$ là:",
+  "lua_chon": [
+   "$x = - \\dfrac{\\pi}{16} + \\dfrac{k\\pi}{2}$ và $x = \\dfrac{5\\pi}{8} + k\\pi \\enspace (k \\in \\mathbb{Z})$",
+   "$x = - \\dfrac{\\pi}{16} + \\dfrac{k\\pi}{2}$ và $x = - \\dfrac{5\\pi}{8} + k2\\pi \\enspace (k \\in \\mathbb{Z})$",
+   "$x = - \\dfrac{\\pi}{8} + k\\pi$ và $x = \\dfrac{5\\pi}{2} + k2\\pi \\enspace (k \\in \\mathbb{Z})$",
+   "$x = - \\dfrac{\\pi}{8} + k\\pi$ và $x = \\dfrac{5\\pi}{8} + \\dfrac{k\\pi}{2} \\enspace (k \\in \\mathbb{Z})$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Phương trình đã cho tương đương với:\n$\\sin 3x = - \\sin \\left(x + \\dfrac{\\pi}{4}\\right)$\n$\\Leftrightarrow \\sin 3x = \\sin \\left(-x - \\dfrac{\\pi}{4}\\right)$\n$\\Leftrightarrow \\begin{cases} 3x = -x - \\dfrac{\\pi}{4} + k2\\pi \\\\ 3x = \\pi - \\left(-x - \\dfrac{\\pi}{4}\\right) + k2\\pi \\end{cases} (k \\in \\mathbb{Z})$\n$\\Leftrightarrow \\begin{cases} 4x = - \\dfrac{\\pi}{4} + k2\\pi \\\\ 2x = \\dfrac{5\\pi}{4} + k2\\pi \\end{cases}$\n$\\Leftrightarrow \\begin{cases} x = - \\dfrac{\\pi}{16} + \\dfrac{k\\pi}{2} \\\\ x = \\dfrac{5\\pi}{8} + k\\pi \\end{cases}$\nChọn A.",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác dạng sin + cos = 0"
+ },
+ {
+  "ma_cau": "T111000000481",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thoả mãn $90^\\circ<\\alpha <180^\\circ$. Trong các khẳng định sau, khẳng định nào đúng?",
+  "lua_chon": [
+   "$\\cot \\alpha >0$.",
+   "$\\tan \\alpha <0$.",
+   "$\\sin \\alpha <0$.",
+   "$\\cos \\alpha >0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $90^\\circ<\\alpha <180^\\circ$ nên điểm biểu diễn $M$ của góc $\\alpha$ trên đường tròn lượng giác thuộc góc phần tư thứ hai.\nDo đó ta có $\\cos \\alpha <0$ và $\\sin \\alpha >0$.\nSuy ra:\n$\\tan \\alpha =\\dfrac{\\sin \\alpha }{\\cos \\alpha }<0$\nvà\n$\\cot \\alpha =\\dfrac{\\cos \\alpha }{\\sin \\alpha }<0.$\nVậy khẳng định đúng là $\\tan \\alpha <0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060105030",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$, biết $u_n = \\dfrac{3n-2}{n+1}$. Dãy số $(u_n)$ bị chặn trên bởi số nào dưới đây?",
+  "lua_chon": [
+   "$2$",
+   "$1$",
+   "$3$",
+   "$\\dfrac{1}{2}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $u_n = \\dfrac{3n+3-5}{n+1} = 3 - \\dfrac{5}{n+1}$.\nVì $n \\ge 1 \\Rightarrow \\dfrac{5}{n+1} > 0 \\Rightarrow u_n < 3, \\forall n \\in \\mathbb{N}^*$. Dãy số bị chặn trên bởi $3$.\nTa có $u_1 = \\dfrac{1}{2} = 0.5, u_4 = \\dfrac{10}{5} = 2$. Do $2 \\ge 2, 2 > 1, 2 > 0.5$ và dãy tiếp tục tăng nên $2, 1, \\dfrac{1}{2}$ không là chặn trên.\nChọn C.",
+  "nhan_cu": "Dãy số › Xét tính bị chặn của dãy số"
+ },
+ {
+  "ma_cau": "T111010502019",
+  "loai": "trac_nghiem",
+  "de": "Biểu thức $B = \\dfrac{\\cos^2 x - \\sin^2 y}{\\sin^2 x.\\sin^2 y} - \\cot^2 x.\\cot^2 y$ không phụ thuộc vào $x, y$ và bằng",
+  "lua_chon": [
+   "2.",
+   "-2.",
+   "1.",
+   "-1."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có $B = \\dfrac{\\cos^2 x - \\sin^2 y}{\\sin^2 x.\\sin^2 y} - \\cot^2 x.\\cot^2 y = \\dfrac{\\cos^2 x - \\sin^2 y}{\\sin^2 x.\\sin^2 y} - \\dfrac{\\cos^2 x.\\cos^2 y}{\\sin^2 x.\\sin^2 y}$\n$= \\dfrac{\\cos^2 x - \\sin^2 y - \\cos^2 x.\\cos^2 y}{\\sin^2 x.\\sin^2 y}$\n$= \\dfrac{\\cos^2 x(1 - \\cos^2 y) - \\sin^2 y}{\\sin^2 x.\\sin^2 y} = \\dfrac{\\cos^2 x.\\sin^2 y - \\sin^2 y}{\\sin^2 x.\\sin^2 y}$\n$= \\dfrac{\\sin^2 y(\\cos^2 x - 1)}{\\sin^2 x.\\sin^2 y} = \\dfrac{-(1 - \\cos^2 x)}{\\sin^2 x} = \\dfrac{-\\sin^2 x}{\\sin^2 x} = -1$.",
+  "nhan_cu": "Rút gọn biểu thức lượng giác › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng công thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111000000125",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thỏa mãn $\\cos 2\\alpha =\\dfrac{7}{25}$. Tính $P=\\sin \\left(\\alpha +\\dfrac{\\pi }{6}\\right)\\cdot \\sin \\left(\\alpha -\\dfrac{\\pi }{6}\\right)$.",
+  "lua_chon": [
+   "$P=\\dfrac{11}{100}$.",
+   "$P=-\\dfrac{11}{100}$.",
+   "$P=\\dfrac{10}{11}$.",
+   "$P=\\dfrac{7}{25}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Áp dụng công thức biến đổi tích thành tổng:\n$\\sin a\\sin b=\\dfrac{1}{2}[\\cos \\left(a-b\\right)-\\cos \\left(a+b\\right)].$\nVới $a=\\alpha +\\dfrac{\\pi }{6}$ và $b=\\alpha -\\dfrac{\\pi }{6}$, ta có\n$a-b=\\left(\\alpha +\\dfrac{\\pi }{6}\\right)-\\left(\\alpha -\\dfrac{\\pi }{6}\\right)=\\dfrac{\\pi }{3},$\n$a+b=\\left(\\alpha +\\dfrac{\\pi }{6}\\right)+\\left(\\alpha -\\dfrac{\\pi }{6}\\right)=2\\alpha.$\nDo đó\n$P=\\sin \\left(\\alpha +\\dfrac{\\pi }{6}\\right)\\cdot \\sin \\left(\\alpha -\\dfrac{\\pi }{6}\\right)=\\dfrac{1}{2}\\left(\\cos \\dfrac{\\pi }{3}-\\cos 2\\alpha \\right).$\nThay $\\cos \\dfrac{\\pi }{3}=\\dfrac{1}{2}$ và $\\cos 2\\alpha =\\dfrac{7}{25}$ vào biểu thức, ta được\n$P=\\dfrac{1}{2}\\left(\\dfrac{1}{2}-\\dfrac{7}{25}\\right)=\\dfrac{1}{2}\\c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000126",
+  "loai": "trac_nghiem",
+  "de": "Một đường tròn có bán kính $R=3 cm$. Tính độ dài $ℓ$ của cung trên đường tròn đó có số đo bằng $60^\\circ$.",
+  "lua_chon": [
+   "$ℓ=\\pi cm$.",
+   "$ℓ=\\dfrac{\\pi }{2} cm$.",
+   "$ℓ=\\dfrac{\\pi }{4} cm$.",
+   "$ℓ=2\\pi cm$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đổi số đo cung từ độ sang radian:\n$\\alpha =60^\\circ=60\\cdot \\dfrac{\\pi }{180}=\\dfrac{\\pi }{3} \\left(rad\\right).$\nĐộ dài cung tròn có bán kính $R=3 cm$ và số đo $\\alpha =\\dfrac{\\pi }{3} rad$ là\n$ℓ=R\\cdot \\alpha =3\\cdot \\dfrac{\\pi }{3}=\\pi \\left(cm\\right).$\nVậy $ℓ=\\pi cm$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000200",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau đây là SAI?",
+  "lua_chon": [
+   "$\\tan \\alpha =\\dfrac{\\sin \\alpha }{\\cos \\alpha }\\left(\\cos \\alpha \\ne 0\\right)$.",
+   "$\\cot \\alpha =\\dfrac{\\cos \\alpha }{\\sin \\alpha }\\left(\\sin \\alpha \\ne 0\\right)$.",
+   "$\\sin \\left(2018\\alpha \\right)^{2}+\\cos \\left(2018\\alpha \\right)^{2}=1$.",
+   "$-1\\le \\sin \\alpha \\le 1$; $-1\\le \\cos \\alpha \\le 1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét các mệnh đề:\n- Ta có $\\tan \\alpha =\\dfrac{\\sin \\alpha }{\\cos \\alpha }\\left(\\cos \\alpha \\ne 0\\right)$ và $\\cot \\alpha =\\dfrac{\\cos \\alpha }{\\sin \\alpha }\\left(\\sin \\alpha \\ne 0\\right)$ là các công thức đúng theo định nghĩa.\n- Với mọi góc $\\alpha$, ta luôn có $-1\\le \\sin \\alpha \\le 1$ và $-1\\le \\cos \\alpha \\le 1$ là mệnh đề đúng.\n- Hằng đẳng thức lượng giác cơ bản là $\\sin ^{2}\\left(2018\\alpha \\right)+\\cos ^{2}\\left(2018\\alpha \\right)=1$. Mệnh đề $\\sin \\left(2018\\alpha \\right)^{2}+\\cos \\left(2018\\alpha \\right)^{2}=1$ là sai vì biểu thức $\\sin \\left(2018\\alpha \\right)^{2}+\\cos \\left(2018\\alpha \\right)^{2}=\\sin [\\left(2018\\alpha \\right)^{2}]+\\cos [\\left(2018\\alpha \\right)^{2}]$ không luôn bằ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000496",
+  "loai": "tu_luan",
+  "de": "a) Giải phương trình $2\\sin \\left(x-\\dfrac{\\pi }{6}\\right)+2=0$.\nb) Tìm tất cả các nghiệm của phương trình $\\cos 3x+\\sin x=0$ thuộc đoạn $\\left[-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right]$.",
+  "loi_giai": "a) Ta có\n$2\\sin \\left(x-\\dfrac{\\pi }{6}\\right)+2=0\\Leftrightarrow \\sin \\left(x-\\dfrac{\\pi }{6}\\right)=-1.$\nSuy ra\n$x-\\dfrac{\\pi }{6}=-\\dfrac{\\pi }{2}+k2\\pi \\Leftrightarrow x=-\\dfrac{\\pi }{3}+k2\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVậy phương trình có họ nghiệm là $x=-\\dfrac{\\pi }{3}+k2\\pi \\left(k\\in\\mathbb{Z}\\right)$.\nb) Phương trình đã cho tương đương với\n$\\cos 3x=-\\sin x\\Leftrightarrow \\cos 3x=\\sin \\left(-x\\right)\\Leftrightarrow \\cos 3x=\\cos \\left(x+\\dfrac{\\pi }{2}\\right).$\nSuy ra\n$\\left[\\begin{array}{l} 3x=x+\\dfrac{\\pi }{2}+k2\\pi \\\\ 3x=-\\left(x+\\dfrac{\\pi }{2}\\right)+k2\\pi \\end{array}\\right.$\n$\\Leftrightarrow \\left[\\begin{array}{l} 2x=\\dfrac{\\pi }{2}+k2\\pi \\\\ 4x=-\\dfrac{\\pi }{2}+k2\\pi \\end{ar …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060105026",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số $u_n$ cho bởi công thức của số hạng tổng quát $u_n$ dưới đây, dãy số nào là dãy số bị chặn?",
+  "lua_chon": [
+   "$u_n = n^2 + \\sin n$.",
+   "$u_n = \\dfrac{6n-1}{3n+2}$.",
+   "$u_n = -5^n + 1$.",
+   "$u_n = n^3 - 2n^2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: Ta có $u_n \\ge n^2 - 1$. Biểu thức $n^2 - 1$ lớn tùy ý nên dãy không bị chặn trên. Loại A.\nXét B: Ta có $u_n = 2 - \\dfrac{5}{3n+2}$. Suy ra $1 \\le u_n < 2, \\forall n \\ge 1$. Dãy bị chặn. Chọn B.\nXét C: Giá trị $-5^n + 1$ nhỏ tùy ý, không bị chặn dưới. Loại C.\nXét D: Ta có $u_n = n^2(n - 2) \\ge n^2$ với $n \\ge 3$, giá trị lớn tùy ý, không bị chặn trên. Loại D.\nChọn B.",
+  "nhan_cu": "Dãy số › Xét tính bị chặn của dãy số"
+ },
+ {
+  "ma_cau": "T111060301040",
+  "loai": "trac_nghiem",
+  "de": "Dãy nào sau đây là một cấp số nhân?",
+  "lua_chon": [
+   "$1;2;3;4;\\dots$.",
+   "$1;3;5;7;\\dots$.",
+   "$2;4;8;16;\\dots$.",
+   "$2;4;6;8;\\dots$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dãy số $2;4;8;16;\\dots$ là một cấp số nhân có số hạng đầu $u_{1}=2$ và công bội $q=2$ vì\n$\\dfrac{4}{2}=\\dfrac{8}{4}=\\dfrac{16}{8}=2.$\nCác dãy số còn lại đều là các cấp số cộng.",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ },
+ {
+  "ma_cau": "T111000000384",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là góc lượng giác, trong các khẳng định sau khẳng định nào đúng?",
+  "lua_chon": [
+   "$\\sin \\left(\\pi -\\alpha \\right)=\\cos \\alpha$.",
+   "$\\sin \\left(\\pi -\\alpha \\right)=-\\sin \\alpha$.",
+   "$\\sin \\left(\\pi -\\alpha \\right)=-\\cos \\alpha$.",
+   "$\\sin \\left(\\pi -\\alpha \\right)=\\sin \\alpha$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo công thức giá trị lượng giác của hai góc bù nhau, ta có\n$\\sin \\left(\\pi -\\alpha \\right)=\\sin \\alpha.$\nDo đó, khẳng định $\\sin \\left(\\pi -\\alpha \\right)=\\sin \\alpha$ là đúng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111040204060",
+  "loai": "tra_loi_ngan",
+  "de": "Phương trình $\\sin^2 x - \\cos 2x - 2 \\sin x = 0$ có bao nhiêu nghiệm trên khoảng $(0; 2\\pi)$?",
+  "dap_an": "3",
+  "loi_giai": "Phương trình $\\Leftrightarrow \\sin^2 x - (1 - 2 \\sin^2 x) - 2 \\sin x = 0 \\Leftrightarrow 3 \\sin^2 x - 2 \\sin x - 1 = 0 \\Leftrightarrow \\begin{cases} \\sin x = 1 \\\\ \\sin x = -\\dfrac{1}{3} \\end{cases}$\nTrên $(0; 2\\pi)$:\n* $\\sin x = 1 \\Rightarrow x = \\dfrac{\\pi}{2}$ (1 nghiệm).\n* $\\sin x = -\\dfrac{1}{3} < 0 \\Rightarrow$ đường thẳng $y = -\\dfrac{1}{3}$ cắt đồ thị $y = \\sin x$ tại 2 điểm phân biệt thuộc nửa dưới vòng tròn lượng giác.\nTổng cộng có 3 nghiệm.\nTrả lời: 3",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác bậc 2"
+ },
+ {
+  "ma_cau": "T111060202013",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng có $u_1 = 4$, công sai $d = 3$. Khi đó $u_5$ bằng",
+  "lua_chon": [
+   "16.",
+   " 19.",
+   " 13.",
+   " -8."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$u_5 = u_1 + 4d = 4 + 4 \\cdot 3 = 16$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111060201048",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào không phải là cấp số cộng?",
+  "lua_chon": [
+   "$-8;-6;-4;-2;0;\\dots$.",
+   "$3;1;-1;-2;-4$.",
+   "$1;1;1;1;1;\\dots$.",
+   "$\\dfrac{1}{2};\\dfrac{3}{2};\\dfrac{5}{2};\\dfrac{7}{2};\\dfrac{9}{2};\\dots$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét từng dãy số:\n- Dãy $-8;-6;-4;-2;0;\\dots$ là cấp số cộng với số hạng đầu $u_{1}=-8$ và công sai $d=2$.\n- Dãy $3;1;-1;-2;-4$ có $1-3=-2$, $-1-1=-2$ nhưng $-2-\\left(-1\\right)=-1\\ne -2$, do đó không phải là cấp số cộng.\n- Dãy $1;1;1;1;1;\\dots$ là cấp số cộng với số hạng đầu $u_{1}=1$ và công sai $d=0$.\n- Dãy $\\dfrac{1}{2};\\dfrac{3}{2};\\dfrac{5}{2};\\dfrac{7}{2};\\dfrac{9}{2};\\dots$ là cấp số cộng với số hạng đầu $u_{1}=\\dfrac{1}{2}$ và công sai $d=1$.\nVậy dãy số không phải là cấp số cộng là $3;1;-1;-2;-4$.",
+  "nhan_cu": "Cấp số cộng › Nhận diện cấp số cộng"
+ },
+ {
+  "ma_cau": "T111000000042",
+  "loai": "tra_loi_ngan",
+  "de": "Mặt sàn tầng một (tầng trệt) của một ngôi nhà cao hơn mặt sân $0,5$ m. Cầu thang đi từ tầng một lên tầng hai gồm $25$ bậc, mỗi bậc cao $16$ cm. Viết công thức để tìm độ cao của bậc cầu thang thứ $n$ so với mặt sân và tính độ cao của sàn tầng hai so với mặt sân.",
+  "dap_an": "$h_n=(0,5+0,16n)$ (m); độ cao sàn tầng 2 là $4,5$ m",
+  "loi_giai": "Mỗi bậc thang cao $16$ cm $=0,16$ m $\\Rightarrow n$ bậc thang cao $0,16n\\ (m)$\nVì mặt bằng sàn cao hơn mặt sân $0,5$ m nên công thức tính độ cao của bậc $n$ so với mặt sân sẽ là: $h_n=(0,5+0,16n)\\ (m).$\nKhi đó độ cao của sàn tầng hai so với mặt sân ứng với $n=25$ là: $h_{25}=0,5+0,16.25=4,5\\ (m)$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111040101323",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\cos 5x=-1$ là:",
+  "lua_chon": [
+   "$x=\\dfrac{\\pi }{5}+\\dfrac{k2\\pi }{5},\\left(k\\in\\mathbb{Z}\\right)$.",
+   "$x=\\pi +k\\pi,\\left(k\\in\\mathbb{Z}\\right)$.",
+   "$x=\\dfrac{\\pi }{5}+k2\\pi,\\left(k\\in\\mathbb{Z}\\right)$.",
+   "$x=\\pi +k2\\pi,\\left(k\\in\\mathbb{Z}\\right)$."
+  ],
+  "loi_giai": "Phương trình xác định với mọi $x\\in \\mathbb{R}$.\nTa có\n$\\cos 5x=-1\\Leftrightarrow 5x=\\pi +k2\\pi \\Leftrightarrow x=\\dfrac{\\pi }{5}+\\dfrac{k2\\pi }{5} \\left(k\\in\\mathbb{Z}\\right).$\nVậy nghiệm của phương trình là $x=\\dfrac{\\pi }{5}+\\dfrac{k2\\pi }{5} \\left(k\\in\\mathbb{Z}\\right)$.",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111060302025",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n);u_1=1,q=2$. Hỏi số $1024$ là số hạng thứ mấy?",
+  "lua_chon": [
+   "$A. 11.$",
+   "$B. 9.$",
+   "$C. 8.$",
+   "$D. 10.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $u_n=u_1.q^{n-1}\\Leftrightarrow 1.2^{n-1}=1024\\Leftrightarrow 2^{n-1}=2^{10}\\Leftrightarrow n-1=10\\Leftrightarrow n=11.$",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060303050",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n)$ có số hạng đầu $u_1=5$ và công bội $q=3$. Số hạng $1215$ là số hạng thứ mấy của cấp số nhân?",
+  "lua_chon": [
+   "Thứ 5",
+   "Thứ 7",
+   "Thứ 6",
+   "Thứ 8"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Lời giải:\n$5.3^{n-1}=1215 \\Rightarrow n=6$.\nChọn C.",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060301043",
+  "loai": "trac_nghiem",
+  "de": "Tìm tất cả các giá trị $x$ để $3$ số $3;x-2;27$ theo thứ tự lập thành một cấp số nhân.",
+  "lua_chon": [
+   "$x\\in \\{15;-15\\}$.",
+   "$x\\in \\{15\\}$.",
+   "$x\\in \\{-7;11\\}$.",
+   "$x\\in \\{7;-11\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ba số $3;x-2;27$ theo thứ tự lập thành một cấp số nhân khi và chỉ khi\n$\\left(x-2\\right)^{2}=3\\cdot 27=81.$\nSuy ra\n$\\left[\\begin{array}{l} x-2=9 \\\\ x-2=-9 \\end{array}\\right.$\n$\\Leftrightarrow \\left[\\begin{array}{l} x=11 \\\\ x=-7. \\end{array}\\right.$\nVậy $x\\in \\{-7;11\\}$.",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ },
+ {
+  "ma_cau": "T111010501013",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức $A = \\cos(\\pi - \\alpha) + \\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) + \\tan\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) \\cdot \\sin(2\\pi - \\alpha)$ ta được",
+  "lua_chon": [
+   "$A = \\cos\\alpha$.",
+   "$A = -\\cos\\alpha$.",
+   "$A = \\sin\\alpha$.",
+   "$A = 3\\cos\\alpha$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có :\n$\\begin{cases}\n\\cos(\\pi - \\alpha) = -\\cos\\alpha\\\\\n\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha\\\\\n\\tan\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\tan\\left[\\pi + \\left(\\dfrac{\\pi}{2} - \\alpha\\right)\\right] = \\tan\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cot\\alpha\\\\\n\\sin(2\\pi - \\alpha) = -\\sin\\alpha\n\\end{cases}$\n$\\Rightarrow A = -\\cot\\alpha\\cdot\\sin\\alpha = -\\cos\\alpha$",
+  "nhan_cu": "Rút gọn biểu thức lượng giác › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng mối quan hệ lượng giác của các góc có liên quan đặc biệt"
+ },
+ {
+  "ma_cau": "T111060302119",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $\\left(u_{n}\\right)$ với $u_{1}=1$ và $u_{2}=2$. Công bội của cấp số nhân đã cho là",
+  "lua_chon": [
+   "$q=-\\dfrac{1}{2}$.",
+   "$q=2$.",
+   "$q=\\dfrac{1}{2}$.",
+   "$q=-2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $\\left(u_{n}\\right)$ là cấp số nhân nên ta có $u_{2}=u_{1}\\cdot q$.\nSuy ra công bội\n$q=\\dfrac{u_{2}}{u_{1}}=\\dfrac{2}{1}=2.$\nVậy công bội của cấp số nhân là $q=2$.",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111030102041",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\dfrac{1-\\cos x}{\\sin x-1}$ là:",
+  "lua_chon": [
+   "$\\mathbb{R}\\backslash \\left\\{\\dfrac{\\pi }{2}+k\\pi \\right\\}$",
+   "$\\mathbb{R}\\backslash \\left\\{k\\pi \\right\\}$",
+   "$\\mathbb{R}\\backslash \\left\\{k2\\pi \\right\\}$",
+   "$\\mathbb{R}\\backslash \\left\\{\\dfrac{\\pi }{2}+k2\\pi \\right\\}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Điều kiện xác định của hàm số $y=\\dfrac{1-\\cos x}{\\sin x-1}$ là\n$\\sin x-1\\neq 0\\Leftrightarrow \\sin x\\neq 1\\Leftrightarrow x\\neq \\dfrac{\\pi }{2}+k2\\pi (k\\in \\mathbb{Z})$.\nVậy tập xác định của hàm số là $\\mathbb{R}\\backslash \\left\\{\\dfrac{\\pi }{2}+k2\\pi \\right\\}$.",
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số chứa phân thức"
+ },
+ {
+  "ma_cau": "T111060202005",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng với $u_1 = -5$ và công sai $d = 7$. Tìm số hạng thứ 12 của cấp số cộng",
+  "lua_chon": [
+   "$u_{12} = -420$.",
+   "$u_{12} = 72$.",
+   "$u_{12} = 79$.",
+   "$u_{12} = -385$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$u_{12} = u_1 + 11d = -5 + 11\\cdot 7 = 72$.\nChọn B.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111000000359",
+  "loai": "trac_nghiem",
+  "de": "Trong các công thức sau, công thức nào sai?",
+  "lua_chon": [
+   "$\\sin a\\cos b=\\dfrac{1}{2}[\\sin \\left(a-b\\right)-\\cos \\left(a+b\\right)]$.",
+   "$\\cos a\\cos b=\\dfrac{1}{2}[\\cos \\left(a-b\\right)+\\cos \\left(a+b\\right)]$.",
+   "$\\sin a\\cos b=\\dfrac{1}{2}[\\sin \\left(a-b\\right)+\\sin \\left(a+b\\right)]$.",
+   "$\\sin a\\sin b=\\dfrac{1}{2}[\\cos \\left(a-b\\right)-\\cos \\left(a+b\\right)]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức biến đổi tích thành tổng, ta có:\n$\\sin a\\cos b=\\dfrac{1}{2}[\\sin \\left(a+b\\right)+\\sin \\left(a-b\\right)].$\nDo đó, công thức ở phương án A: $\\sin a\\cos b=\\dfrac{1}{2}[\\sin \\left(a-b\\right)-\\cos \\left(a+b\\right)]$ là công thức sai.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000312",
+  "loai": "tu_luan",
+  "de": "Cho tam giác $ABC$, chứng minh: $\\cos \\left(A+B+2C\\right)=-\\cos C$",
+  "loi_giai": "Trong tam giác $ABC$, ta có $A+B+C=\\pi \\Rightarrow A+B=\\pi -C$.\nKhi đó:\n$A+B+2C=\\left(A+B+C\\right)+C=\\pi +C.$\nBiến đổi vế trái của đẳng thức, ta có\n$VT=\\cos \\left(A+B+2C\\right)=\\cos \\left(\\pi +C\\right).$\nÁp dụng công thức cung liên kết hơn kém $\\pi$ ($\\cos \\left(\\pi +\\alpha \\right)=-\\cos \\alpha$), ta được\n$\\cos \\left(\\pi +C\\right)=-\\cos C=VP.$\nVậy $\\cos \\left(A+B+2C\\right)=-\\cos C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111010101097",
+  "loai": "trac_nghiem",
+  "de": "Góc có số đo $108^\\circ$ đổi ra radian là:",
+  "lua_chon": [
+   "$\\dfrac{\\pi }{4}$.",
+   "$\\dfrac{3\\pi }{2}$.",
+   "$\\dfrac{3\\pi }{5}$.",
+   "$\\dfrac{\\pi }{10}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Công thức đổi số đo góc từ độ sang radian là\n$\\alpha =a^\\circ\\cdot \\dfrac{\\pi }{180^\\circ}.$\nÁp dụng với $a=108^\\circ$, ta có\n$108^\\circ=108\\cdot \\dfrac{\\pi }{180}=\\dfrac{3\\pi }{5} (rad).$\nVậy góc có số đo $108^\\circ$ đổi ra radian là $\\dfrac{3\\pi }{5}$.",
+  "nhan_cu": "Góc lượng giác - Đường tròn lượng giác › Đổi đơn vị đo góc"
+ },
+ {
+  "ma_cau": "T111060302045",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $u_{n}$ có $u_{1}=-3$ và $q=\\dfrac{1}{3}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$u_{6}=81$.",
+   "$u_{6}=-\\dfrac{1}{81}$.",
+   "$u_{6}=\\dfrac{1}{81}$.",
+   "$u_{6}=-81$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Số hạng thứ sáu của cấp số nhân là\n$u_{6}=u_{1}\\cdot q^{5}=-3\\cdot \\left(\\dfrac{1}{3}\\right)^{5}=-3\\cdot \\dfrac{1}{243}=-\\dfrac{1}{81}.$\nVậy mệnh đề đúng là $u_{6}=-\\dfrac{1}{81}$.",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111060202022",
+  "loai": "trac_nghiem",
+  "de": "Cấp số cộng $(u_n)$ có số hạng thứ nhất là $u_1 = 1$ và công sai $d = 2$. Giá trị của tổng 10 số hạng đầu tiên của cấp số cộng này bằng bao nhiêu?",
+  "lua_chon": [
+   "100.",
+   "110.",
+   "90.",
+   "200."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$S_{10} = \\dfrac{10}{2}[2u_1 + 9d] = 5[2(1) + 9 \\cdot 2] = 5 \\cdot 20 = 100$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111040101381",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\sin x\\cdot \\cos x=\\dfrac{1}{2}$ là",
+  "lua_chon": [
+   "$x=\\dfrac{\\pi }{4}+k\\pi$; $k\\in \\mathbb{Z}$",
+   "$x=k2\\pi$; $k\\in \\mathbb{Z}$",
+   "$x=\\dfrac{3\\pi }{4}+k\\pi$; $k\\in \\mathbb{Z}$",
+   "$x=k\\pi$; $k\\in \\mathbb{Z}$"
+  ],
+  "loi_giai": "Ta có:\n$\\sin x\\cdot \\cos x=\\dfrac{1}{2}\\Leftrightarrow 2\\sin x\\cos x=1\\Leftrightarrow \\sin 2x=1.$\nPhương trình tương đương với:\n$2x=\\dfrac{\\pi }{2}+k2\\pi \\Leftrightarrow x=\\dfrac{\\pi }{4}+k\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVậy nghiệm của phương trình đã cho là $x=\\dfrac{\\pi }{4}+k\\pi$ ($k\\in \\mathbb{Z}$).",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111030201001",
+  "loai": "tu_luan",
+  "de": "Tìm tập giá trị của hàm số: $y = 2\\sin \\left( x-\\dfrac{\\pi}{4} \\right)-1$",
+  "dap_an": "[-3;1]",
+  "loi_giai": "Ta có: $-1 \\le \\sin \\left( x-\\dfrac{\\pi}{4} \\right) \\le 1$ với mọi $x \\in \\mathbb{R}$\n$\\Leftrightarrow -2 \\le 2\\sin \\left( x-\\dfrac{\\pi}{4} \\right) \\le 2 \\forall x \\in \\mathbb{R}$\n$\\Leftrightarrow -2-1 \\le 2\\sin \\left( x-\\dfrac{\\pi}{4} \\right)-1 \\le 2-1 \\forall x \\in \\mathbb{R} \\Leftrightarrow -3 \\le 2\\sin \\left( x-\\dfrac{\\pi}{4} \\right)-1 \\le 1 \\forall x \\in \\mathbb{R}$\n$\\Leftrightarrow -3 \\le y \\le 1 \\forall x \\in \\mathbb{R}$.\nVậy tập giá trị của hàm số $y = 2\\sin \\left( x-\\dfrac{\\pi}{4} \\right)-1$ là $[-3;1]$.",
+  "nhan_cu": "Tập giá trị và min max của hàm số lượng giác › Tìm tập giá trị hoặc min max của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040204008",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $\\sqrt{2}\\cos^2 x + (1 - \\sqrt{2})\\cos x - 1 = 0$",
+  "dap_an": "$x = k2\\pi$; $x = \\pm \\dfrac{3\\pi}{4} + k2\\pi$",
+  "loi_giai": "Đặt $t = \\cos x$, điều kiện $-1 \\le t \\le 1$.\nPhương trình trở thành:\n$\\sqrt{2}t^2 + (1 - \\sqrt{2})t - 1 = 0 \\Leftrightarrow \\begin{cases} t = 1 \\\\ t = -\\dfrac{\\sqrt{2}}{2} \\end{cases}$ (thỏa mãn).\nVới $t = 1 \\Rightarrow \\cos x = 1 \\Leftrightarrow x = k2\\pi \\quad (k \\in \\mathbb{Z})$.\nVới $t = -\\dfrac{\\sqrt{2}}{2} \\Rightarrow \\cos x = -\\dfrac{\\sqrt{2}}{2} \\Leftrightarrow x = \\pm \\dfrac{3\\pi}{4} + k2\\pi \\quad (k \\in \\mathbb{Z})$.\nVậy họ nghiệm là: $x = k2\\pi$; $x = \\pm \\dfrac{3\\pi}{4} + k2\\pi \\quad (k \\in \\mathbb{Z})$.",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác bậc 2"
+ },
+ {
+  "ma_cau": "T111030101110",
+  "loai": "trac_nghiem",
+  "de": "Tìm tập xác định $D$ của hàm số $y=\\cot x+\\sin 5x+\\cos x$.",
+  "lua_chon": [
+   "$D=\\mathbb{R}\\setminus \\left\\{\\dfrac{\\pi }{2}+k\\pi,k\\in \\mathbb{Z}\\right\\}$.",
+   "$D=\\mathbb{R}\\setminus \\left\\{\\dfrac{\\pi }{2}+k2\\pi,k\\in \\mathbb{Z}\\right\\}$.",
+   "$D=\\mathbb{R}\\setminus \\{k\\pi,k\\in \\mathbb{Z}\\}$.",
+   "$D=\\mathbb{R}\\setminus \\{k2\\pi,k\\in \\mathbb{Z}\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hàm số $y=\\cot x+\\sin 5x+\\cos x$ xác định khi và chỉ khi $\\sin x\\ne 0\\Leftrightarrow x\\ne k\\pi$ ($k\\in \\mathbb{Z}$).\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{k\\pi,k\\in \\mathbb{Z}\\}$.",
+  "nhan_cu": "Hàm số lượng giác › Tập xác định của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040202032",
+  "loai": "trac_nghiem",
+  "de": "Giải phương trình $2 \\cos^2(2x) - 1 = \\cos \\left(\\dfrac{\\pi}{3} - x\\right)$. Nghiệm của phương trình là:",
+  "lua_chon": [
+   "$x = \\dfrac{\\pi}{15} + \\dfrac{k2\\pi}{5}$ và $x = \\dfrac{\\pi}{9} + \\dfrac{k2\\pi}{3}$ $(k \\in \\mathbb{Z})$",
+   "$x = -\\dfrac{\\pi}{15} + \\dfrac{k2\\pi}{5}$ và $x = \\dfrac{\\pi}{9} + \\dfrac{k2\\pi}{3}$ $(k \\in \\mathbb{Z})$",
+   "$x = \\dfrac{\\pi}{15} + \\dfrac{k2\\pi}{5}$ và $x = -\\dfrac{\\pi}{9} + \\dfrac{k2\\pi}{3}$ $(k \\in \\mathbb{Z})$",
+   "$x = -\\dfrac{\\pi}{15} + k2\\pi$ và $x = -\\dfrac{\\pi}{9} + k2\\pi$ $(k \\in \\mathbb{Z})$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có: $2 \\cos^2(2x) - 1 = \\cos \\left(\\dfrac{\\pi}{3} - x\\right) \\Leftrightarrow \\cos(4x) = \\cos \\left(\\dfrac{\\pi}{3} - x\\right)$\n$\\Leftrightarrow \\left[\\begin{array}{l}4x = \\dfrac{\\pi}{3} - x + k2\\pi\\\\4x = -\\left(\\dfrac{\\pi}{3} - x\\right) + k2\\pi\\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l}5x = \\dfrac{\\pi}{3} + k2\\pi\\\\3x = -\\dfrac{\\pi}{3} + k2\\pi\\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l}x = \\dfrac{\\pi}{15} + \\dfrac{k2\\pi}{5}\\\\x = -\\dfrac{\\pi}{9} + \\dfrac{k2\\pi}{3}\\end{array}\\right. (k \\in \\mathbb{Z})$. Chọn C.",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác bậc 2 sử dụng công thức hạ bậc để đưa về phương trình cơ bản"
+ },
+ {
+  "ma_cau": "T111060301042",
+  "loai": "trac_nghiem",
+  "de": "Tìm $x$ để ba số $1+x$; $9+x$; $33+x$ theo thứ tự đó lập thành một cấp số nhân.",
+  "lua_chon": [
+   "$x=7$.",
+   "$x=1$.",
+   "$x=3$.",
+   "$x=3$; $x=7$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ba số $1+x$; $9+x$; $33+x$ theo thứ tự lập thành một cấp số nhân khi và chỉ khi\n$\\left(9+x\\right)^{2}=\\left(1+x\\right)\\left(33+x\\right).$\nBiến đổi phương trình:\n$81+18x+x^{2}=33+34x+x^{2}$\n$\\Leftrightarrow 16x=48$\n$\\Leftrightarrow x=3.$\nVới $x=3$, ba số đã cho là $4;12;36$, lập thành một cấp số nhân có công bội $q=3$.\nVậy $x=3$.",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060302083",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $\\left(u_{n}\\right)$ có số hạng đầu $u_{1}=-1$ và số hạng thứ hai $u_{2}=2024$ thì công bội $q$ bằng",
+  "lua_chon": [
+   "$q=\\dfrac{-1}{2024}$.",
+   "$q=2024$.",
+   "$q=\\dfrac{1}{2024}$.",
+   "$q=-2024$."
+  ],
+  "loi_giai": "Vì $\\left(u_{n}\\right)$ là cấp số nhân nên ta có\n$u_{2}=u_{1}\\cdot q\\Rightarrow q=\\dfrac{u_{2}}{u_{1}}=\\dfrac{2024}{-1}=-2024.$\nVậy công bội $q$ của cấp số nhân bằng $-2024$.",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111040201054",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\cos \\left(4x+\\dfrac{\\pi }{3}\\right)+\\cos \\left(2x-\\dfrac{\\pi }{6}\\right)=0$ là:",
+  "lua_chon": [
+   "$x=\\dfrac{5\\pi }{36}+\\dfrac{k\\pi }{3}$ và $x=-\\dfrac{3\\pi }{4}+k\\pi \\left(k \\in \\mathbb{Z}\\right)$",
+   "$x=\\dfrac{5\\pi }{36}+k\\pi $ và $x=\\dfrac{3\\pi }{4}+k\\pi \\left(k \\in \\mathbb{Z}\\right)$",
+   "$x=\\dfrac{\\pi }{36}+\\dfrac{k\\pi }{3}$ và $x=-\\dfrac{\\pi }{4}+k\\pi \\left(k \\in \\mathbb{Z}\\right)$",
+   "$x=\\dfrac{5\\pi }{18}+\\dfrac{k\\pi }{3}$ và $x=\\dfrac{3\\pi }{4}+k2\\pi \\left(k \\in \\mathbb{Z}\\right)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Phương trình đã cho tương đương với:\n$\\cos \\left(4x+\\dfrac{\\pi }{3}\\right)=-\\cos \\left(2x-\\dfrac{\\pi }{6}\\right)$\n$\\Leftrightarrow \\cos \\left(4x+\\dfrac{\\pi }{3}\\right)=\\cos \\left[\\pi -\\left(2x-\\dfrac{\\pi }{6}\\right)\\right]$\n$\\Leftrightarrow \\cos \\left(4x+\\dfrac{\\pi }{3}\\right)=\\cos \\left(\\dfrac{7\\pi }{6}-2x\\right)$\n$\\Leftrightarrow \\left[\\begin{array}{l}4x+\\dfrac{\\pi }{3}=\\dfrac{7\\pi }{6}-2x+k2\\pi \\\\4x+\\dfrac{\\pi }{3}=-\\left(\\dfrac{7\\pi }{6}-2x\\right)+k2\\pi \\end{array}\\right. (k \\in \\mathbb{Z})$\n$\\Leftrightarrow \\left[\\begin{array}{l}6x=\\dfrac{5\\pi }{6}+k2\\pi \\\\2x=-\\dfrac{9\\pi }{6}+k2\\pi \\end{array}\\right.$\n$\\Leftrightarrow \\left[\\begin{array}{l}x=\\dfrac{5\\pi }{36}+\\dfrac{k\\pi }{3}\\\\x=-\\dfra …",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác dạng sin + cos = 0"
+ },
+ {
+  "ma_cau": "T111040101324",
+  "loai": "trac_nghiem",
+  "de": "Tập nghiệm của phương trình $\\sin x=-1$ là",
+  "lua_chon": [
+   "$S=\\left\\{-\\dfrac{\\pi }{4}+k2\\pi |k\\in \\mathbb{Z}\\right\\}$.",
+   "$S=\\left\\{-\\dfrac{\\pi }{2}+k\\pi |k\\in \\mathbb{Z}\\right\\}$.",
+   "$S=\\left\\{-\\dfrac{\\pi }{2}+k2\\pi |k\\in \\mathbb{Z}\\right\\}$.",
+   "$S=\\left\\{-\\dfrac{\\pi }{4}+k\\dfrac{\\pi }{2}|k\\in \\mathbb{Z}\\right\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có:\n$\\sin x=-1\\Leftrightarrow x=-\\dfrac{\\pi }{2}+k2\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVậy tập nghiệm của phương trình là $S=\\left\\{-\\dfrac{\\pi }{2}+k2\\pi |k\\in \\mathbb{Z}\\right\\}$.",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111020101006",
+  "loai": "trac_nghiem",
+  "de": "Trong các công thức sau, công thức nào đúng?",
+  "lua_chon": [
+   "$\\tan(a-b)=\\dfrac{\\tan a+\\tan b}{1-\\tan a\\tan b}$",
+   "$\\tan(a-b)=\\tan a-\\tan b$",
+   "$\\tan(a+b)=\\dfrac{\\tan a+\\tan b}{1-\\tan a\\tan b}$",
+   "$\\tan(a+b)=\\tan a+\\tan b$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\tan(a+b)=\\dfrac{\\tan a+\\tan b}{1-\\tan a\\tan b}$",
+  "nhan_cu": "Công thức lượng giác › Nhận dạng công thức cộng"
+ },
+ {
+  "ma_cau": "T111030503015",
+  "loai": "trac_nghiem",
+  "de": "Hàm số có đồ thị như hình trên đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(-\\dfrac{\\pi}{6}; \\dfrac{\\pi}{6}\\right)$",
+   "$(0;\\pi)$",
+   "$(\\pi;2\\pi)$",
+   "$\\left(\\dfrac{3\\pi}{8}; \\dfrac{5\\pi}{8}\\right)$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+ },
+ {
+  "ma_cau": "T111060104071",
+  "loai": "trac_nghiem",
+  "de": "Dãy số hữu hạn nào dưới đây là dãy số tăng?",
+  "lua_chon": [
+   "$3,3,3$.",
+   "$\\dfrac{1}{4},\\dfrac{1}{3},\\dfrac{1}{2}$.",
+   "$\\dfrac{1}{2},\\dfrac{1}{3},\\dfrac{1}{4}$.",
+   "$2,4,3$."
+  ],
+  "loi_giai": "Dãy số hữu hạn $\\left(u_{n}\\right)$ được gọi là dãy số tăng nếu mỗi số hạng (kể từ số hạng thứ hai) đều lớn hơn số hạng đứng ngay trước nó.\nXét dãy số $\\dfrac{1}{4},\\dfrac{1}{3},\\dfrac{1}{2}$, ta có $\\dfrac{1}{4}<\\dfrac{1}{3}<\\dfrac{1}{2}$ nên đây là dãy số tăng.\nCác phương án còn lại: - Dãy $3,3,3$ là dãy số không đổi.\n- Dãy $\\dfrac{1}{2},\\dfrac{1}{3},\\dfrac{1}{4}$ là dãy số giảm vì $\\dfrac{1}{2}>\\dfrac{1}{3}>\\dfrac{1}{4}$.\n- Dãy $2,4,3$ không tăng không giảm vì $2<4$ nhưng $4>3$.",
+  "nhan_cu": "Dãy số › Xác định tính tăng giảm của dãy số"
+ },
+ {
+  "ma_cau": "T111040102080",
+  "loai": "tra_loi_ngan",
+  "de": "Gọi $S$ là tổng các nghiệm thuộc đoạn $\\left[0;2025\\pi \\right]$ của phương trình $\\sin \\left(x+\\dfrac{\\pi }{4}\\right)=0$. Khi đó $\\dfrac{4S}{2025\\pi }$ bằng.",
+  "dap_an": "4051",
+  "loi_giai": "Ta có\n$\\sin \\left(x+\\dfrac{\\pi }{4}\\right)=0\\Leftrightarrow x+\\dfrac{\\pi }{4}=k\\pi \\Leftrightarrow x=-\\dfrac{\\pi }{4}+k\\pi \\left(k\\in\\mathbb{Z}\\right).$\nVì các nghiệm thuộc đoạn $\\left[0;2025\\pi \\right]$ nên\n$0\\le -\\dfrac{\\pi }{4}+k\\pi \\le 2025\\pi \\Leftrightarrow \\dfrac{1}{4}\\le k\\le 2025+\\dfrac{1}{4}.$\nDo $k\\in \\mathbb{Z}$ nên $k\\in \\{1;2;3;\\dots;2025\\}$.\nTập hợp các nghiệm này lập thành một cấp số cộng có $2025$ số hạng với số hạng đầu $x_{1}=\\dfrac{3\\pi }{4}$ và số hạng cuối $x_{2025}=-\\dfrac{\\pi }{4}+2025\\pi =\\dfrac{8099\\pi }{4}$.\nTổng các nghiệm là\n$S=\\dfrac{2025\\left(x_{1}+x_{2025}\\right)}{2}=\\dfrac{2025\\left(\\dfrac{3\\pi }{4}+\\dfrac{8099\\pi }{4}\\right)}{2}=\\dfrac{2025\\pi \\cdot 4051}{4} …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Tìm nghiệm của phương trình lượng giác trên khoảng/đoạn"
+ },
+ {
+  "ma_cau": "T111000000097",
+  "loai": "trac_nghiem",
+  "de": "Cho góc hình học $\\widehat{uOv}=40^\\circ$. Số đo của góc lượng giác $\\left(Ou,Ov\\right)$ như hình vẽ bên dưới bằng",
+  "lua_chon": [
+   "$-40^\\circ$.",
+   "$-140^\\circ$.",
+   "$40^\\circ$.",
+   "$140^\\circ$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Góc lượng giác $\\left(Ou,Ov\\right)$ có tia đầu là tia $Ou$ và tia cuối là tia $Ov$.\nQuan sát hình vẽ, chiều quay từ tia $Ou$ đến tia $Ov$ cùng chiều quay của kim đồng hồ nên mang dấu âm.\nVì góc hình học $\\widehat{uOv}=40^\\circ$ nên số đo của góc lượng giác $\\left(Ou,Ov\\right)$ là $-40^\\circ$.\nDo đó ta chọn phương án A.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060202125",
+  "loai": "dung_sai",
+  "de": "Cho cấp số cộng $\\left(u_{n}\\right)$ có tổng $n$ số hạng đầu tiên là $S_{n}=n^{2}+3n$.",
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T111000000",
+    "loi_giai": "Với công thức $S_{n}=n^{2}+3n$, ta có\n\n$S_{1}=1^{2}+3\\cdot 1=4,S_{2}=2^{2}+3\\cdot 2=10\\ne 8.$",
+    "noi_dung": "$S_{1}=4;S_{2}=8$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Ta có $u_{1}=S_{1}=4$ và $u_{2}=S_{2}-S_{1}=10-4=6$.\n\nCông sai của cấp số cộng là $d=u_{2}-u_{1}=6-4=2$.",
+    "noi_dung": "Cấp số cộng $\\left(u_{n}\\right)$ có $u_{1}=4$ và công sai $d=2$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T111000000",
+    "loi_giai": "Số hạng tổng quát của cấp số cộng là\n\n$u_{n}=u_{1}+\\left(n-1\\right)d=4+\\left(n-1\\right)\\cdot 2=2+2n.$",
+    "noi_dung": "Số hạng tổng quát của cấp số cộng là $u_{n}=2+2n$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T111000000",
+    "loi_giai": "Số hạng thứ $20$ của cấp số cộng là $u_{20}=2+2\\cdot 20=42\\ne 46$.\n\nPhương trình $u_{n}=46\\Leftrightarrow 2+2n=46\\Leftrightarrow n=22$, do đó $46$ là số hạng thứ $22$.",
+    "noi_dung": "Số $46$ là số hạng thứ $20$ của cấp số cộng"
+   }
+  ],
+  "loi_giai": "a) Sai: Với công thức $S_{n}=n^{2}+3n$, ta có\n$S_{1}=1^{2}+3\\cdot 1=4,S_{2}=2^{2}+3\\cdot 2=10\\ne 8.$\nb) Đúng: Ta có $u_{1}=S_{1}=4$ và $u_{2}=S_{2}-S_{1}=10-4=6$.\nCông sai của cấp số cộng là $d=u_{2}-u_{1}=6-4=2$.\nc) Đúng: Số hạng tổng quát của cấp số cộng là\n$u_{n}=u_{1}+\\left(n-1\\right)d=4+\\left(n-1\\right)\\cdot 2=2+2n.$\nd) Sai: Số hạng thứ $20$ của cấp số cộng là $u_{20}=2+2\\cdot 20=42\\ne 46$.\nPhương trình $u_{n}=46\\Leftrightarrow 2+2n=46\\Leftrightarrow n=22$, do đó $46$ là số hạng thứ $22$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111000000102",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu ghép nhóm về thống kê thời gian (phút) hoàn thành một bài kiểm tra trực tuyến của nhóm học sinh, ta có bảng số liệu sau:\n$\\begin{array}{|c|c|c|c|c|c|c|} \\hline \\text{Thời gian (phút)} & [33;35) & [35;37) & [37;39) & [39;41) & [41;43) & [43;45) \\\\ \\hline \\text{Số học sinh} & 4 & 13 & 38 & 27 & 14 & 4 \\\\ \\hline \\end{array}$\nThời gian trung bình để nhóm học sinh đó hoàn thành bài kiểm tra là",
+  "lua_chon": [
+   "$38,29$ phút.",
+   "$39,82$ phút.",
+   "$38,92$ phút.",
+   "$39,28$ phút."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Bảng thống kê giá trị đại diện và các tích tương ứng như sau:\n$\\begin{array}{|c|c|c|c|c|c|c|c|} \\hline \\text{Thời gian (phút)} & [33;35) & [35;37) & [37;39) & [39;41) & [41;43) & [43;45) & \\text{Tổng} \\\\ \\hline \\text{Giá trị đại diện} c_{i} & 34 & 36 & 38 & 40 & 42 & 44 & \\\\ \\hline \\text{Số học sinh} n_{i} & 4 & 13 & 38 & 27 & 14 & 4 & 100 \\\\ \\hline n_{i}c_{i} & 136 & 468 & 1444 & 1080 & 588 & 176 & 3892 \\\\ \\hline \\end{array}$\nCỡ mẫu là $n=4+13+38+27+14+4=100$.\nThời gian trung bình để nhóm học sinh hoàn thành bài kiểm tra là\n$\\hat{x}=\\dfrac{1}{100}\\left(4\\cdot 34+13\\cdot 36+38\\cdot 38+27\\cdot 40+14\\cdot 42+4\\cdot 44\\right)=\\dfrac{3892}{100}=38,92$\n(phút)\n$.$\nVậy thời gian trung bình là $38,9 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000519",
+  "loai": "tra_loi_ngan",
+  "de": "Bảng 9 biểu diễn mẫu số liệu ghép nhóm về nhiệt độ không khí trung bình các tháng năm 2011 tại Hà Nội (đơn vị: độ C) (Nguồn: Niên giám Thống kê 2021, NXB Thống kê, 2022). Số trung bình cộng của mẫu số liệu đó bằng bao nhiêu (làm tròn kết quả đến hàng phần mười)?\n$\\begin{array}{|c|c|} \\hline \\text{Nhóm} & \\text{Tần số} \\\\ \\hline [16,8;19,8) & \\text{2} \\\\ \\hline [19,8;22,8) & \\text{3} \\\\ \\hline [22,8;25,8) & \\text{2} \\\\ \\hline [25,8;28,8) & \\text{1} \\\\ \\hline [28,8;31,8) & \\text{4} \\\\ \\hline & n=12 \\\\ \\hline \\end{array}$",
+  "dap_an": "24.8",
+  "loi_giai": "Bảng giá trị đại diện và tính toán của mẫu số liệu:\n$\\begin{array}{|c|c|c|c|} \\hline \\text{Nhóm} & \\text{Giá trị đại diện} c_{i} & \\text{Tần số} n_{i} & n_{i}c_{i} \\\\ \\hline [16,8;19,8) & 18,3 & 2 & 36,6 \\\\ \\hline [19,8;22,8) & 21,3 & 3 & 63,9 \\\\ \\hline [22,8;25,8) & 24,3 & 2 & 48,6 \\\\ \\hline [25,8;28,8) & 27,3 & 1 & 27,3 \\\\ \\hline [28,8;31,8) & 30,3 & 4 & 121,2 \\\\ \\hline \\text{Tổng} & & n=12 & 297,6 \\\\ \\hline \\end{array}$\nSố trung bình cộng của mẫu số liệu ghép nhóm là\n$\\hat{x}=\\dfrac{1}{n}\\sum n_{i}c_{i}=\\dfrac{297,6}{12}=24,8 \\left(^\\circC\\right).$\nVậy nhiệt độ không khí trung bình là $24,8^\\circC$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060305011",
+  "loai": "tra_loi_ngan",
+  "de": "Cho cấp số nhân $(u_n)$ có công bội $q$ và thỏa $\\begin{cases}u_1+u_2+u_3=26\\\\u_1^2+u_2^2+u_3^2=364\\end{cases}$. Tìm $q$ biết rằng $q>1$.",
+  "dap_an": "3",
+  "loi_giai": "Ta có $\\begin{cases}u_1+u_2+u_3=26\\\\u_1^2+u_2^2+u_3^2=364\\end{cases}\\Leftrightarrow \\begin{cases}u_1(1+q+q^2)=26\\\\u_1^2(1+q^2+q^4)=364\\end{cases}\\Leftrightarrow \\begin{cases}u_1^2(1+q+q^2)^2=26^2\\ (1)\\\\u_1^2(1+q^2+q^4)=364\\ (2)\\end{cases}.$\nLấy $(1)$ chia $(2)$, ta được: $\\dfrac{(1+q+q^2)^2}{1+q^2+q^4}=\\dfrac{26^2}{364}\\Leftrightarrow 3q^4-7q^3-4q^2-7q+3=0\\Leftrightarrow 3\\left(q^2+\\dfrac{1}{q^2}\\right)-7\\left(q+\\dfrac{1}{q}\\right)-4=0.$\nĐặt $t=q+\\dfrac{1}{q}$, $|t|\\ge2$. Phương trình trở thành $3t^2-7t-10=0\\Leftrightarrow \\begin{bmatrix}t=-1\\ (loại)\\\\t=-\\dfrac{10}{3}\\end{bmatrix}$.\nVới $t=-\\dfrac{10}{3}$, suy ra $q+\\dfrac{1}{q}=-\\dfrac{10}{3}\\Leftrightarrow 3q^2-10q+3=0\\Leftrightarrow q=3$  …",
+  "nhan_cu": "Cấp số nhân › Một số bài toán khác về cấp số nhân (tham khảo)"
+ },
+ {
+  "ma_cau": "T111000000278",
+  "loai": "trac_nghiem",
+  "de": "Trên đường tròn lượng giác gốc $A$, biết góc lượng giác $\\left(OA,OM\\right)$ có số đo bằng $-250^\\circ$, điểm $M$ nằm ở góc phần tư thứ mấy?",
+  "lua_chon": [
+   "$I$.",
+   "$III$.",
+   "$II$.",
+   "$IV$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $-250^\\circ=-360^\\circ+110^\\circ$.\nVì $90^\\circ<110^\\circ<180^\\circ$ nên điểm $M$ biểu diễn góc $-250^\\circ$ nằm ở góc phần tư thứ $II$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000306",
+  "loai": "trac_nghiem",
+  "de": "Trong các công thức sau, công thức nào đúng?",
+  "lua_chon": [
+   "$\\sin \\left(a-b\\right)=\\sin a\\cos b-\\cos a\\sin b$.",
+   "$\\sin \\left(a+b\\right)=\\sin a\\cos b-\\cos a\\sin b$.",
+   "$\\cos \\left(a+b\\right)=\\cos a\\cos b+\\sin a\\sin b$.",
+   "$\\cos \\left(a-b\\right)=\\cos a\\sin b+\\sin a\\cos b$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo các công thức cộng lượng giác cơ bản, ta có\n$\\sin \\left(a-b\\right)=\\sin a\\cos b-\\cos a\\sin b$\n$\\sin \\left(a+b\\right)=\\sin a\\cos b+\\cos a\\sin b$\n$\\cos \\left(a+b\\right)=\\cos a\\cos b-\\sin a\\sin b$\n$\\cos \\left(a-b\\right)=\\cos a\\cos b+\\sin a\\sin b.$\nDo đó, công thức đúng là $\\sin \\left(a-b\\right)=\\sin a\\cos b-\\cos a\\sin b$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

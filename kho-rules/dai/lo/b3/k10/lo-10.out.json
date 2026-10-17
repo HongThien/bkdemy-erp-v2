@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110000000063",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Kí hiệu √5 không thuộc ℚ; liên quan phần tử thuộc tập hợp nhưng không đúng hẳn 828."
+ },
+ {
+  "ma_cau": "T110010101105",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Chọn câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110000000319",
+  "dang_bai_id": "NDB00538",
+  "chac": "vua",
+  "ly_do": "Các ý về bất phương trình 3x−2y≥12: nghiệm, đường thẳng, miền nghiệm trộn 538 và 539."
+ },
+ {
+  "ma_cau": "T110020201074",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000278",
+  "dang_bai_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Tam giác đều cạnh 2, tính diện tích rồi biểu thức P."
+ },
+ {
+  "ma_cau": "T110000000236",
+  "dang_bai_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Ý a tính BC bằng định lí cos, ý b tính đường cao qua diện tích; hai dạng."
+ },
+ {
+  "ma_cau": "T110000000364",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Biết ba cạnh, tính diện tích bằng công thức Heron; cũng gần dạng giải tam giác khi biết ba cạnh."
+ },
+ {
+  "ma_cau": "T110010103058",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định của mệnh đề chứa ∀."
+ },
+ {
+  "ma_cau": "T110010202113",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp của hai tập liệt kê rồi đếm số phần tử."
+ },
+ {
+  "ma_cau": "T110030203083",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Chiều cao tòa nhà qua hai góc nâng, dùng định lí sin; đề có hình."
+ },
+ {
+  "ma_cau": "T110020201070",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010205033",
+  "dang_bai_id": "NDB00533",
+  "chac": "cao",
+  "ly_do": "Ba tập hợp bò, tìm số bò mắc cả ba tình trạng."
+ },
+ {
+  "ma_cau": "T110000000067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: định nghĩa hai vectơ bằng nhau."
+ },
+ {
+  "ma_cau": "T110030203070",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Cột tiện ích và bóng trên sườn dốc, giải tam giác bằng định lí sin; đề có hình."
+ },
+ {
+  "ma_cau": "T110020201081",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010201055",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về quan hệ tập con."
+ },
+ {
+  "ma_cau": "T110030203076",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Hai tàu đến đảo C, dùng định lí sin trong tam giác ABC; đề có hình."
+ },
+ {
+  "ma_cau": "T110020101065",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Điều kiện của b để bất phương trình là bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000224",
+  "dang_bai_id": "NDB00765",
+  "chac": "cao",
+  "ly_do": "Biết hai cạnh a, c và góc B xen giữa, tính b."
+ },
+ {
+  "ma_cau": "T110000000434",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Hai vận động viên chạy theo hai hướng, khoảng cách bằng định lí cos."
+ },
+ {
+  "ma_cau": "T110010101133",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu bằng lời mệnh đề viết bằng kí hiệu ∃."
+ },
+ {
+  "ma_cau": "T110000000022",
+  "dang_bai_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Biết hai cạnh và góc xen giữa, tính a rồi bán kính ngoại tiếp bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110010101101",
+  "dang_bai_id": "NDB00769",
+  "chac": "vua",
+  "ly_do": "Bốn ý về giải tam giác: bán kính ngoại tiếp, cạnh, cos, diện tích; trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T110030203080",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Chiều cao tháp qua hai góc nhìn, dùng định lí sin; đề có hình."
+ },
+ {
+  "ma_cau": "T110010101121",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Xét tính đúng sai của mệnh đề chứa biến tại giá trị cụ thể."
+ },
+ {
+  "ma_cau": "T110010206034",
+  "dang_bai_id": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để A là tập con của B."
+ },
+ {
+  "ma_cau": "T110030202022",
+  "dang_bai_id": "NDB00766",
+  "chac": "cao",
+  "ly_do": "Biết ba cạnh, tính cos B."
+ },
+ {
+  "ma_cau": "T110010102064",
+  "dang_bai_id": "NDB00820",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề có mệnh đề đảo đúng."
+ },
+ {
+  "ma_cau": "T110030201006",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức định lí sin a/sinA=2R."
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc nhánh khác: hàm số, bảng biến thiên, tính đơn điệu; bản đồ thiếu chủ đề Hàm số."
+ },
+ {
+  "ma_cau": "T110030204023",
+  "dang_bai_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Biết hai cạnh và góc xen giữa, tính diện tích."
+ },
+ {
+  "ma_cau": "T110010202025",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp của hai tập liệt kê."
+ },
+ {
+  "ma_cau": "T110000000444",
+  "dang_bai_id": "NDB00765",
+  "chac": "cao",
+  "ly_do": "Biết hai cạnh AB, BC và góc B xen giữa, tính AC."
+ },
+ {
+  "ma_cau": "T110020101012",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110030201030",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức định lí cos đúng."
+ },
+ {
+  "ma_cau": "T110000000253",
+  "dang_bai_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Đường gấp khúc ABC đo đường hầm bằng định lí cos; đề có hình."
+ },
+ {
+  "ma_cau": "T110010203095",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết lại tập {x|-2≤x<1} dạng nửa khoảng; thiếu dạng riêng khoảng, đoạn."
+ },
+ {
+  "ma_cau": "T110030204008",
+  "dang_bai_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Biết hai cạnh và góc xen giữa, tính diện tích."
+ },
+ {
+  "ma_cau": "T110010206040",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m để A giao B khác rỗng."
+ },
+ {
+  "ma_cau": "T110030202026",
+  "dang_bai_id": "NDB00766",
+  "chac": "cao",
+  "ly_do": "Biết ba cạnh, tính góc B."
+ },
+ {
+  "ma_cau": "T110010203111",
+  "dang_bai_id": "NDB00519",
+  "chac": "vua",
+  "ly_do": "Giải bất phương trình trị tuyệt đối rồi giao, hợp và đếm số nguyên; nhiều phép toán."
+ },
+ {
+  "ma_cau": "T110010101084",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Chọn câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110010102075",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Các cách phát biểu mệnh đề kéo theo P⇒Q."
+ },
+ {
+  "ma_cau": "T110010101080",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Chọn câu là mệnh đề toán học."
+ },
+ {
+  "ma_cau": "T110000000146",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Cos A cho trước, tìm a rồi diện tích, bán kính nội tiếp; nhiều bước."
+ },
+ {
+  "ma_cau": "T110010203145",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết lại tập {x|1<x≤2} dạng nửa khoảng; thiếu dạng riêng khoảng, đoạn."
+ },
+ {
+  "ma_cau": "T110020102070",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Chọn hình biểu diễn miền nghiệm của bất phương trình x−y<3."
+ },
+ {
+  "ma_cau": "T110000000300",
+  "dang_bai_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Cho S và hai cạnh, tìm góc C rồi dùng cos tính AB; hai bước; đề có hình."
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng: bài toán thực tế tính cước theo khoảng (hàm số cho bởi nhiều công thức)."
+ },
+ {
+  "ma_cau": "T110030201041",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Tìm công thức sai trong nhóm diện tích, cos, sin."
+ },
+ {
+  "ma_cau": "T110000000025",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Chọn công thức đúng của định lí cos."
+ },
+ {
+  "ma_cau": "T110020204020",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Hai kênh quảng cáo, lập hệ bất phương trình tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020201089",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010203113",
+  "dang_bai_id": "NDB00519",
+  "chac": "vua",
+  "ly_do": "Ba tập khoảng: giao, hợp, phần bù, hiệu; nhiều phép toán."
+ },
+ {
+  "ma_cau": "T110010201043",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Chọn tập hợp là tập con của A."
+ },
+ {
+  "ma_cau": "T110020204010",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Hai máy, hai loại sản phẩm, tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000357",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Xác định tập hợp X nghiệm nguyên của phương trình, liệt kê phần tử."
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng: hàm số bậc hai, vẽ parabol."
+ },
+ {
+  "ma_cau": "T110030104001",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức dùng đảo pha sin, cos của hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110030201049",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Chọn công thức diện tích tam giác sai."
+ },
+ {
+  "ma_cau": "T110030204025",
+  "dang_bai_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Biết hai cạnh và góc xen giữa, tính diện tích."
+ },
+ {
+  "ma_cau": "T110010201081",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Đếm số phần tử của tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110020202063",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ có miền nghiệm theo hình, đáp án khác hệ số nên phải lập đường thẳng; đề có hình."
+ },
+ {
+  "ma_cau": "T110000000418",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Công thức sin(180°−α), hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110000000426",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử của tập {x∈ℕ|x≤4}."
+ },
+ {
+  "ma_cau": "T110000000198",
+  "dang_bai_id": "NDB00766",
+  "chac": "cao",
+  "ly_do": "Biết ba cạnh, tính góc A."
+ },
+ {
+  "ma_cau": "T110020101076",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010203156",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao của hai tập khoảng."
+ },
+ {
+  "ma_cau": "T110020102067",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110010203136",
+  "dang_bai_id": "NDB00519",
+  "chac": "vua",
+  "ly_do": "Hai khoảng, đáp án trộn giao, hiệu, hợp."
+ }
+]

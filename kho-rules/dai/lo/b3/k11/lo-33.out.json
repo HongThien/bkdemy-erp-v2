@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111060101103",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u5 từ công thức số hạng tổng quát cho sẵn."
+ },
+ {
+  "ma_cau": "T111040101241",
+  "dang_bai_id": "NDB01008",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên m để phương trình cos3x = biểu thức theo m có nghiệm."
+ },
+ {
+  "ma_cau": "T111010602021",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận dạng công thức cộng đúng."
+ },
+ {
+  "ma_cau": "T111040102075",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Phương trình cos=cos có 2 họ nghiệm, tìm nghiệm trong khoảng (-π;π)."
+ },
+ {
+  "ma_cau": "T111030101135",
+  "dang_bai_id": "NDB00997",
+  "chac": "vua",
+  "ly_do": "Mệnh đề rải nhiều ý: TXĐ, chu kỳ, đối xứng, max của y=sinx+√3cosx+1."
+ },
+ {
+  "ma_cau": "T111060103018",
+  "dang_bai_id": "NDB01019",
+  "chac": "cao",
+  "ly_do": "Tìm số hạng tổng quát dãy số mô tả bằng lời (chia hết cho 10)."
+ },
+ {
+  "ma_cau": "T111040203014",
+  "dang_bai_id": "NDB01016",
+  "chac": "cao",
+  "ly_do": "Phương trình dạng Asin+Bcos=C, chia hai vế cho căn(A²+B²)."
+ },
+ {
+  "ma_cau": "T111040101166",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản cosx=-1."
+ },
+ {
+  "ma_cau": "T111040201027",
+  "dang_bai_id": "NDB01007",
+  "chac": "cao",
+  "ly_do": "Chuyển vế về sin(ax+b)=sin(cx+d) rồi giải hai họ nghiệm."
+ },
+ {
+  "ma_cau": "T111030502073",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc giá trị lớn nhất của hàm số từ đồ thị: bản đồ thiếu dạng \"xác định yếu tố cơ bản (max, min) từ đồ thị\"."
+ },
+ {
+  "ma_cau": "T111060101167",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Thay các giá trị n vào công thức số hạng tổng quát để chọn đáp án đúng."
+ },
+ {
+  "ma_cau": "T111060101106",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính ba số hạng đầu của dãy cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T111060202186",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng 3 và 13 (liệt kê), tìm các số hạng xen giữa."
+ },
+ {
+  "ma_cau": "T111060202197",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức số hạng tổng quát của cấp số cộng, tìm công sai."
+ },
+ {
+  "ma_cau": "T111000000274",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (mốt của mẫu số liệu ghép nhóm), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111000000094",
+  "dang_bai_id": "NDB00990",
+  "chac": "cao",
+  "ly_do": "Nhận biết tính chẵn lẻ của bốn hàm lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T111040102074",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Tìm nghiệm âm lớn nhất và nghiệm dương nhỏ nhất của phương trình lượng giác."
+ },
+ {
+  "ma_cau": "T111000000509",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho cot α và khoảng của α, tính sin α."
+ },
+ {
+  "ma_cau": "T111060104085",
+  "dang_bai_id": "NDB00600",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn: số hạng, tăng giảm, bị chặn, tổng các số hạng của dãy u_n=3n-4."
+ },
+ {
+  "ma_cau": "T111060101101",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính hai số hạng đầu từ công thức số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111030105051",
+  "dang_bai_id": "NDB00995",
+  "chac": "vua",
+  "ly_do": "Bài thực tế P(t): giá trị ban đầu, min, miền giá trị, thời điểm chạm mức; nhiều ý."
+ },
+ {
+  "ma_cau": "T111030102043",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tìm tập xác định hàm phân thức chứa tan2x và cosx ở mẫu."
+ },
+ {
+  "ma_cau": "T111060302123",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân biết u1 và q, tìm số hạng thứ mấy."
+ },
+ {
+  "ma_cau": "T111010101061",
+  "dang_bai_id": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Cung có độ dài bằng 4 lần bán kính, tìm số đo radian (l=Rα)."
+ },
+ {
+  "ma_cau": "T111060304007",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi kép, tìm vốn ban đầu."
+ },
+ {
+  "ma_cau": "T111000000180",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận dạng công thức cộng đúng."
+ },
+ {
+  "ma_cau": "T111060101090",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T111040403050",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Hỏi nghiệm lớn nhất của phương trình sin2x=1/2 trên đoạn [0;π]."
+ },
+ {
+  "ma_cau": "T111010110021",
+  "dang_bai_id": "NDB00952",
+  "chac": "vua",
+  "ly_do": "Tính biểu thức dùng cung đối, phụ rồi cần tính cos, tan từ cot; có thể thuộc 00949."
+ },
+ {
+  "ma_cau": "T111040101376",
+  "dang_bai_id": "NDB01023",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình lượng giác vô nghiệm trong 4 phương trình."
+ },
+ {
+  "ma_cau": "T111060302006",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "Tìm số hạng tổng quát từ các số hạng đầu liệt kê; có thể xem là cấp số nhân."
+ },
+ {
+  "ma_cau": "T111030103003",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Chọn hàm chẵn gồm cả hàm cơ bản và hàm mở rộng (cosx+5, tanx+cotx); có thể là 00990."
+ },
+ {
+  "ma_cau": "T111000000011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Cấp số nhân cho hệ phương trình quan hệ các số hạng, tính S21: bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111010101060",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi số đo góc từ radian sang độ."
+ },
+ {
+  "ma_cau": "T111040204041",
+  "dang_bai_id": "NDB01017",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc hai theo cosx sau khi dùng nhân đôi, đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T111040101154",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản sinx=1."
+ },
+ {
+  "ma_cau": "T111030503049",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Từ đồ thị xác định khoảng đồng biến của hàm số."
+ },
+ {
+  "ma_cau": "T111040101332",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cơ bản cos2x=1 với góc ax."
+ },
+ {
+  "ma_cau": "T111040101285",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Dùng công thức nhân đôi đưa về phương trình cos cơ bản; có thể xếp 01007."
+ },
+ {
+  "ma_cau": "T111000000506",
+  "dang_bai_id": "NDB00951",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng về góc đối, phụ, bù, hơn kém π."
+ },
+ {
+  "ma_cau": "T111000000230",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xét dấu sin, cos khi α thuộc khoảng (π/2;π)."
+ },
+ {
+  "ma_cau": "T111000000091",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (mẫu số liệu ghép nhóm), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111010101081",
+  "dang_bai_id": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính số đo radian khi biết độ dài cung và bán kính."
+ },
+ {
+  "ma_cau": "T111030101035",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tìm tập xác định tổng các hàm cot2x, cos3x, sinx."
+ },
+ {
+  "ma_cau": "T111010603001",
+  "dang_bai_id": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức cộng sin(x-y)."
+ },
+ {
+  "ma_cau": "T111060101140",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính ba số hạng đầu của dãy cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T111040301017",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Bài thực tế tìm thời điểm công suất đạt lớn nhất."
+ },
+ {
+  "ma_cau": "T111030101076",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Giới hạn (lim dãy số, hàm số), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111060305015",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Bài toán khác về cấp số nhân (4 góc tứ giác); chưa có dạng đúng tên."
+ },
+ {
+  "ma_cau": "T111030301041",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Tính chẵn lẻ y=2sinx+3 là hàm mở rộng, có thể là 00990."
+ },
+ {
+  "ma_cau": "T111060302051",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho u1, u2, tìm công bội và u6."
+ },
+ {
+  "ma_cau": "T111040101379",
+  "dang_bai_id": "NDB01008",
+  "chac": "cao",
+  "ly_do": "Tìm m để phương trình sin2x+2=m có nghiệm."
+ },
+ {
+  "ma_cau": "T111060202141",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và công sai d, viết số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111060201075",
+  "dang_bai_id": "NDB00604",
+  "chac": "vua",
+  "ly_do": "Mệnh đề trộn: tổng S24, nhận diện cấp số cộng, khai triển, u1 của u_n=2n+1."
+ },
+ {
+  "ma_cau": "T111030102091",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm phân thức có mẫu sinx-cosx."
+ },
+ {
+  "ma_cau": "T111040102101",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm số nghiệm phương trình sinx=√3/2 trong (0;2π), hai họ nghiệm."
+ },
+ {
+  "ma_cau": "T111000000385",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác khi x thuộc (π/2;π)."
+ },
+ {
+  "ma_cau": "T111000000348",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (mẫu số liệu ghép nhóm, đếm số nhóm), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111030502131",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của hàm số lượng giác từ đồ thị."
+ },
+ {
+  "ma_cau": "T111060202174",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và d, tính u20."
+ },
+ {
+  "ma_cau": "T111030102076",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm phân thức có mẫu sin(x-π/2)."
+ },
+ {
+  "ma_cau": "T111030101119",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: min, max, chẵn lẻ, đếm nghiệm; ý trọng tâm min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111040301018",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Bài thực tế tìm thời điểm đầu tiên mực nước thấp nhất."
+ },
+ {
+  "ma_cau": "T111060104082",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Chọn dãy giảm trong các dãy cho bởi công thức số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111000000206",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Giới hạn dãy số, bản đồ không có."
+ },
+ {
+  "ma_cau": "T111000000095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê (mẫu số liệu ghép nhóm), bản đồ không có."
+ },
+ {
+  "ma_cau": "T111030101094",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm cơ bản y=cot x."
+ },
+ {
+  "ma_cau": "T111060205022",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Bài thực tế cấp số cộng cho u1=20, d=4, n=20."
+ },
+ {
+  "ma_cau": "T111040202015",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Dùng công thức nhân đôi đưa về cos cơ bản; có thể xếp 01007."
+ },
+ {
+  "ma_cau": "T111040101286",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình sin(ax+b)=0 cơ bản."
+ }
+]

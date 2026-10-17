@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111040403004",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Tìm nghiệm âm lớn nhất của phương trình cot."
+ },
+ {
+  "ma_cau": "T111060304092",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Số điều ước mỗi ngày gấp đôi, tính tổng 30 ngày; tình huống lạ so với ví dụ."
+ },
+ {
+  "ma_cau": "T111040301057",
+  "dang_bai_id": "NDB01012",
+  "chac": "cao",
+  "ly_do": "Đếm số thời điểm s=4,3 trong 2 giây đầu bằng phương trình cos; hình chỉ minh hoạ."
+ },
+ {
+  "ma_cau": "T111060101070",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng lý thuyết khái niệm dãy số hữu hạn, vô hạn."
+ },
+ {
+  "ma_cau": "T111060303051",
+  "dang_bai_id": "NDB01029",
+  "chac": "vua",
+  "ly_do": "CSN cho u1, q, tìm thứ tự n; bản đồ thiếu dạng thứ tự cho CSN."
+ },
+ {
+  "ma_cau": "T111010103019",
+  "dang_bai_id": "NDB00567",
+  "chac": "cao",
+  "ly_do": "Bánh xe 72 răng, tính góc quay khi di chuyển 10 răng."
+ },
+ {
+  "ma_cau": "T111000000105",
+  "dang_bai_id": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Tìm số đo góc có cùng điểm biểu diễn với 14π/3."
+ },
+ {
+  "ma_cau": "T111060202049",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u_n và u_{n+1} của CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111030501023",
+  "dang_bai_id": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (2sin2x, sin x-1...); đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111040101273",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos x=-1/2."
+ },
+ {
+  "ma_cau": "T111000000113",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng Thống kê: số trung bình của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111060201047",
+  "dang_bai_id": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Chọn dãy cho bởi công thức số hạng tổng quát là CSC."
+ },
+ {
+  "ma_cau": "T111010602108",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho cos α, tính cos(α-π/3) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111000000169",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng Thống kê: số trung vị của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111010602039",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho sin α, tính cos(α+π/3) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111060303040",
+  "dang_bai_id": "NDB01030",
+  "chac": "vua",
+  "ly_do": "CSN cho u1, u4 rồi tìm n để Sn=120; bản đồ thiếu dạng tìm n cho CSN."
+ },
+ {
+  "ma_cau": "T111010501011",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức có góc liên quan đặc biệt (17π/4, 7π/2-x, 7π-x)."
+ },
+ {
+  "ma_cau": "T111000000004",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Cho u3, u5 của CSN và công bội âm, tính tổng 7 số hạng."
+ },
+ {
+  "ma_cau": "T111060205010",
+  "dang_bai_id": "NDB00616",
+  "chac": "cao",
+  "ly_do": "Cho u1, d, tìm số tháng ít nhất để tổng đạt giá trị."
+ },
+ {
+  "ma_cau": "T111040101209",
+  "dang_bai_id": "NDB01014",
+  "chac": "vua",
+  "ly_do": "Giải cos2x=sin x bằng đảo pha; cũng giải được bằng bậc 2 theo sin x (NDB01017)."
+ },
+ {
+  "ma_cau": "T111040101308",
+  "dang_bai_id": "NDB00606",
+  "chac": "vua",
+  "ly_do": "Đúng/sai trộn nhiều ý về CSC: u5, số hạng thứ 15, đếm số hạng, tổng từ Sn."
+ },
+ {
+  "ma_cau": "T111060205037",
+  "dang_bai_id": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Cho u1, d và tổng Sn, tìm số tầng n."
+ },
+ {
+  "ma_cau": "T111040102096",
+  "dang_bai_id": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm của tan x=√3 trên khoảng, phương trình có 1 họ nghiệm."
+ },
+ {
+  "ma_cau": "T111000000227",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Chọn công thức nhân đôi sin2x đúng."
+ },
+ {
+  "ma_cau": "T111060104004",
+  "dang_bai_id": "NDB00598",
+  "chac": "cao",
+  "ly_do": "Lý thuyết về điều kiện dãy tăng qua thương u_{n+1}/u_n."
+ },
+ {
+  "ma_cau": "T111000000315",
+  "dang_bai_id": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho cos(a+b), cos(a-b), tính sin a·sin b bằng tích thành tổng."
+ },
+ {
+  "ma_cau": "T111060202137",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u3, u7 của CSC, tính tổng 15 số hạng đầu."
+ },
+ {
+  "ma_cau": "T111030502039",
+  "dang_bai_id": "NDB01004",
+  "chac": "vua",
+  "ly_do": "Xác định chu kỳ từ đồ thị; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111060202180",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u1 và công sai, xét số hạng tổng quát, tổng 4 số hạng, u2, số hạng -25."
+ },
+ {
+  "ma_cau": "T111060205028",
+  "dang_bai_id": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Cho u1, d và tổng Sn quyên góp, tìm số ngày n."
+ },
+ {
+  "ma_cau": "T111030501046",
+  "dang_bai_id": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (cot x+1, sin2x...); đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111030101145",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đúng/sai rải chẵn lẻ, giao trục hoành, tập xác định, max của y=5sin x+14."
+ },
+ {
+  "ma_cau": "T111040201057",
+  "dang_bai_id": "NDB01007",
+  "chac": "vua",
+  "ly_do": "cos3x=cos(x+π/4) dạng cos(ax+b)=cos(bx+c); cũng gần NDB01014."
+ },
+ {
+  "ma_cau": "T111060103010",
+  "dang_bai_id": "NDB01019",
+  "chac": "cao",
+  "ly_do": "Tìm số hạng tổng quát của dãy số tự nhiên chia 5 dư 1."
+ },
+ {
+  "ma_cau": "T111040102061",
+  "dang_bai_id": "NDB01009",
+  "chac": "vua",
+  "ly_do": "Phương trình phân thức có điều kiện loại nghiệm, đếm nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111040203012",
+  "dang_bai_id": "NDB01016",
+  "chac": "cao",
+  "ly_do": "Phương trình dạng a sin x + b cos x = c."
+ },
+ {
+  "ma_cau": "T111060101130",
+  "dang_bai_id": "NDB00593",
+  "chac": "vua",
+  "ly_do": "Cho u_n, đếm số hạng nguyên của dãy; không đúng hẳn dạng tính số hạng."
+ },
+ {
+  "ma_cau": "T111030501016",
+  "dang_bai_id": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (sin2x+1, cos2x...); đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111060102021",
+  "dang_bai_id": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị một số hạng, tìm thứ tự."
+ },
+ {
+  "ma_cau": "T111060304101",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Giá xây tăng 3% mỗi tầng, tính tổng tiền 40 tầng theo CSN."
+ },
+ {
+  "ma_cau": "T111030201094",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm max, min của y=2cos(x+π/15)."
+ },
+ {
+  "ma_cau": "T111060304055",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Vi khuẩn phân đôi mỗi 20 phút, tính số lượng sau 2 giờ."
+ },
+ {
+  "ma_cau": "T111060204038",
+  "dang_bai_id": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Cho u1+S3 và S6-u5 của CSC, tìm u1 và d."
+ },
+ {
+  "ma_cau": "T111060104060",
+  "dang_bai_id": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Chọn dãy liệt kê là dãy tăng."
+ },
+ {
+  "ma_cau": "T111020102021",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho cos a, tính sin(a-π/4) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111020302034",
+  "dang_bai_id": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho sin2x, tính tích hai cos bằng tích thành tổng."
+ },
+ {
+  "ma_cau": "T111040102091",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng phương trình lượng giác đưa về tích (nhân tử) rồi tính tổng nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111030502024",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị; đề phụ thuộc hình, bản đồ thiếu dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111060302031",
+  "dang_bai_id": "NDB01033",
+  "chac": "cao",
+  "ly_do": "Cho u1 và tỉ số u3/u8 của CSN, tìm u9."
+ },
+ {
+  "ma_cau": "T111040302041",
+  "dang_bai_id": "NDB01012",
+  "chac": "cao",
+  "ly_do": "Đếm số lần con lắc qua vị trí cân bằng trong 30 giây; hình chỉ minh hoạ."
+ },
+ {
+  "ma_cau": "T111030201107",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm tập giá trị của y=sin(x-π/10)."
+ },
+ {
+  "ma_cau": "T111030502100",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị; đề phụ thuộc hình, bản đồ thiếu dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111040403058",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Tìm nghiệm nhỏ nhất của cot2x=√3 trên đoạn."
+ },
+ {
+  "ma_cau": "T111030101046",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm y=tan2x."
+ },
+ {
+  "ma_cau": "T111060102041",
+  "dang_bai_id": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị một số hạng, tìm thứ tự."
+ },
+ {
+  "ma_cau": "T111060301031",
+  "dang_bai_id": "NDB01026",
+  "chac": "cao",
+  "ly_do": "Chọn dãy liệt kê là cấp số nhân."
+ },
+ {
+  "ma_cau": "T111060302132",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Cho các số hạng đầu của CSN, tìm số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111060202096",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho các số hạng đầu của CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111060105012",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Xét tính bị chặn của dãy u_n=n³-2."
+ },
+ {
+  "ma_cau": "T111000000416",
+  "dang_bai_id": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho sin2x, tính tích sin·cos bằng tích thành tổng."
+ },
+ {
+  "ma_cau": "T111000000386",
+  "dang_bai_id": "NDB00951",
+  "chac": "cao",
+  "ly_do": "Chọn công thức đúng về hai góc đối, phụ, bù."
+ },
+ {
+  "ma_cau": "T111060202038",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u3 của CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111060302060",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba số vừa CSC vừa CSN sau biến đổi, tìm P; gần dạng ba số lập CSN."
+ },
+ {
+  "ma_cau": "T111000000455",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Chọn công thức nhân đôi, hạ bậc sai."
+ },
+ {
+  "ma_cau": "T111000000280",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Chọn công thức cộng sai."
+ },
+ {
+  "ma_cau": "T111000000207",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng Giới hạn - hàm số liên tục: xét tính liên tục của hàm tại một điểm."
+ },
+ {
+  "ma_cau": "T111060105025",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Chọn dãy bị chặn trong các dãy cho bởi công thức."
+ },
+ {
+  "ma_cau": "T111060101108",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "Tìm số hạng tổng quát từ các số hạng đầu 1/3^n; không phải mô tả bằng lời."
+ },
+ {
+  "ma_cau": "T111040204009",
+  "dang_bai_id": "NDB01017",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc 2 theo sin x, đặt ẩn phụ t."
+ },
+ {
+  "ma_cau": "T111000000360",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Rút gọn tỉ số các tổng sin, cos bằng tổng thành tích."
+ }
+]

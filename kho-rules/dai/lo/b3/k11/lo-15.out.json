@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111040102110",
+  "dang_bai_id": "NDB00577",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm sin x = 0 trên đoạn, đề có hình đồ thị."
+ },
+ {
+  "ma_cau": "T111010108013",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho cos a và khoảng của a, tính tan a."
+ },
+ {
+  "ma_cau": "T111000000031",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tổng quãng đường bóng nảy (cấp số nhân lùi vô hạn): bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111030503027",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đồng biến trên khoảng nào dựa vào đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111000000304",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xác định dấu sin, cos khi a thuộc khoảng (pi/2; pi)."
+ },
+ {
+  "ma_cau": "T111060101072",
+  "dang_bai_id": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho SHTQ và một giá trị, tìm thứ tự của số hạng."
+ },
+ {
+  "ma_cau": "T111010101093",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 150 độ sang rađian."
+ },
+ {
+  "ma_cau": "T111060103015",
+  "dang_bai_id": "NDB01019",
+  "chac": "cao",
+  "ly_do": "Số hạng tổng quát của dãy mô tả bằng lời (số nguyên âm chẵn)."
+ },
+ {
+  "ma_cau": "T111030105009",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm nhiệt độ thấp nhất và thời điểm xảy ra trong ngày."
+ },
+ {
+  "ma_cau": "T111000000265",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: tần số nhóm của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111000000419",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Số đo tổng quát của góc lượng giác cùng tia đầu, tia cuối; không có hình."
+ },
+ {
+  "ma_cau": "T111060202214",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho u1 và d, tính u4."
+ },
+ {
+  "ma_cau": "T111030201103",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tập giá trị của y = 2cos2024x - 1."
+ },
+ {
+  "ma_cau": "T111060301003",
+  "dang_bai_id": "NDB01026",
+  "chac": "cao",
+  "ly_do": "Chọn dãy liệt kê không phải cấp số nhân."
+ },
+ {
+  "ma_cau": "T111060301036",
+  "dang_bai_id": "NDB01027",
+  "chac": "cao",
+  "ly_do": "Chọn dãy cho bởi SHTQ là cấp số nhân (tên dạng ghi nhầm cấp số cộng nhưng ví dụ là cấp số nhân)."
+ },
+ {
+  "ma_cau": "T111040101287",
+  "dang_bai_id": "NDB01008",
+  "chac": "cao",
+  "ly_do": "Tìm số giá trị nguyên của m để phương trình sin có nghiệm."
+ },
+ {
+  "ma_cau": "T111010101083",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 108 độ sang rađian."
+ },
+ {
+  "ma_cau": "T111060101142",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính ba số hạng đầu của dãy cho bởi công thức."
+ },
+ {
+  "ma_cau": "T111000000112",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi của cos, tìm công thức sai."
+ },
+ {
+  "ma_cau": "T111000000241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: trung vị của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111030103008",
+  "dang_bai_id": "NDB00990",
+  "chac": "vua",
+  "ly_do": "Chọn hàm lẻ trong các hàm cho bởi công thức, có cả x^3+1."
+ },
+ {
+  "ma_cau": "T111030101088",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tập xác định của y = cot x."
+ },
+ {
+  "ma_cau": "T111030502076",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình): bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111030105030",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm các thời điểm cabin đạt độ cao 40 m."
+ },
+ {
+  "ma_cau": "T111060104077",
+  "dang_bai_id": "NDB00593",
+  "chac": "vua",
+  "ly_do": "Dãy u_n=(2n+1)/(n+2), bốn mệnh đề: giá trị, vị trí, tăng, bị chặn."
+ },
+ {
+  "ma_cau": "T111060105031",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Xét tính bị chặn trên của dãy cho bởi công thức."
+ },
+ {
+  "ma_cau": "T111060302090",
+  "dang_bai_id": "NDB01033",
+  "chac": "cao",
+  "ly_do": "Bốn góc là cấp số nhân, cho tỉ số u4/u1 và tổng bằng 360."
+ },
+ {
+  "ma_cau": "T111010501001",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Đơn giản cos(a - pi/2) bằng công thức góc phụ."
+ },
+ {
+  "ma_cau": "T111000000388",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Chọn khai triển đúng của cos(x - pi/3)."
+ },
+ {
+  "ma_cau": "T111030201106",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN của y = 3sin3x + 12."
+ },
+ {
+  "ma_cau": "T111030101127",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "Tập xác định của y = tan2x."
+ },
+ {
+  "ma_cau": "T111040101365",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Chọn giá trị là nghiệm của tan x = căn3."
+ },
+ {
+  "ma_cau": "T111000000477",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 7pi/4 rad sang độ."
+ },
+ {
+  "ma_cau": "T111010101084",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 132 độ sang rađian."
+ },
+ {
+  "ma_cau": "T111000000253",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: số trung bình mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111060302068",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho u1 và q, tính tổng 5 số hạng đầu."
+ },
+ {
+  "ma_cau": "T111000000213",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: mốt của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111020101019",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Khai triển cos(a - 2b) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111010202042",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Tìm số đo trong [0; 2pi] của góc cùng tia đầu, tia cuối; gần dạng số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T111030503053",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đồng biến trên khoảng nào dựa vào đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111040204010",
+  "dang_bai_id": "NDB01017",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc hai theo cos x, đặt t = cos x."
+ },
+ {
+  "ma_cau": "T111000000061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: mốt của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111060302115",
+  "dang_bai_id": "NDB01032",
+  "chac": "cao",
+  "ly_do": "Dãy truy hồi u_{n+1}=2u_n, tìm số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111010110010",
+  "dang_bai_id": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Cho sin a + cos a, tính sin^3 a + cos^3 a."
+ },
+ {
+  "ma_cau": "T111000000285",
+  "dang_bai_id": "NDB00961",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức tích thành tổng."
+ },
+ {
+  "ma_cau": "T111010101059",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 80 độ sang rađian."
+ },
+ {
+  "ma_cau": "T111040403001",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Tìm nghiệm âm lớn nhất của phương trình sin(2x - pi/3) = 1."
+ },
+ {
+  "ma_cau": "T111040201024",
+  "dang_bai_id": "NDB01007",
+  "chac": "cao",
+  "ly_do": "Phương trình sin(ax+b) - sin(cx+d) = 0."
+ },
+ {
+  "ma_cau": "T111060205029",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Lương tăng đều 25 triệu mỗi năm, tính tổng sau 6 năm."
+ },
+ {
+  "ma_cau": "T111030503054",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Nghịch biến trên khoảng nào dựa vào đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111040101222",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải cos(x+30 độ) = -1/2, dạng cos(ax+b)=cos a."
+ },
+ {
+  "ma_cau": "T111040301027",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm thời điểm đầu tiên điện áp đạt giá trị cho trước."
+ },
+ {
+  "ma_cau": "T111010502013",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Đơn giản biểu thức lượng giác bằng biến đổi đại số."
+ },
+ {
+  "ma_cau": "T111060101100",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Dãy truy hồi u_{n+1}=u_n+n, tính u3."
+ },
+ {
+  "ma_cau": "T111030502047",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Tìm chu kì của hàm số từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030502030",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111000000453",
+  "dang_bai_id": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Xác định dấu các giá trị lượng giác khi a thuộc (pi/2; pi)."
+ },
+ {
+  "ma_cau": "T111000000160",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tính giá trị lượng giác của góc đặc biệt: bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111040101185",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Chọn một nghiệm của cos x = -1/2."
+ },
+ {
+  "ma_cau": "T111030504109",
+  "dang_bai_id": "NDB01006",
+  "chac": "cao",
+  "ly_do": "Hàm nào đồng biến trên một khoảng, cho công thức."
+ },
+ {
+  "ma_cau": "T111060303042",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho u1, u4 và S_n, tìm n."
+ },
+ {
+  "ma_cau": "T111030105005",
+  "dang_bai_id": "NDB00996",
+  "chac": "vua",
+  "ly_do": "Đưa cos(pi/2 - u) về sin rồi tìm tập giá trị trên đoạn t."
+ },
+ {
+  "ma_cau": "T111060104068",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Chọn dãy cho bởi SHTQ là dãy tăng."
+ },
+ {
+  "ma_cau": "T111010602084",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi, hạ bậc, tìm đẳng thức sai."
+ },
+ {
+  "ma_cau": "T111010108018",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho cos a và khoảng của a, tính sin a."
+ },
+ {
+  "ma_cau": "T111000000457",
+  "dang_bai_id": "NDB00569",
+  "chac": "vua",
+  "ly_do": "Tìm góc có cùng điểm cuối với góc cho trước; gần dạng số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T111030102067",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định của hàm phân thức 2024/(sin x - cos x)."
+ },
+ {
+  "ma_cau": "T111040101252",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải cos(x/3) = 0, dạng cos(ax+b)=cos a."
+ },
+ {
+  "ma_cau": "T111030504113",
+  "dang_bai_id": "NDB01006",
+  "chac": "cao",
+  "ly_do": "Hàm nào đồng biến trên một khoảng, cho công thức."
+ },
+ {
+  "ma_cau": "T111000000020",
+  "dang_bai_id": "NDB01032",
+  "chac": "cao",
+  "ly_do": "Dãy truy hồi cấp số nhân a_{n+1}=-2a_n, tính tổng 10 số hạng đầu."
+ }
+]

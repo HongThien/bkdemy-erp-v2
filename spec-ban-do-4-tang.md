@@ -455,3 +455,13 @@ Theo phương án §0 (08/10). Cột "Nhân sự" = có phải dừng không.
 - **Quyền ở DB:** `_bdm_duyet_duoc(khoi, chu_de)` (chủ của chủ đề X = dòng (K,X) nếu có, không thì (K,NULL); admin qua `my_quyen()`); `fn_bdm_khop_quyet` chặn câu ngoài phạm vi.
 - **Quy trình mỗi khối:** B3 máy khớp (lô 70 câu, giấu 90 câu đã người gán để đo precision) → ghi mức cao (`scripts/bdm-b3-ghi-de-xuat.mjs`) → nạp phần còn lại (`scripts/bdm-b3-nap-de-xuat.mjs`) → giao phạm vi → duyệt/kiểm mẫu → khối "xong" khi cả 4 hàng về 0 → B5.
 - **K8 (thí điểm):** 478 câu gốc mức cao đã gán (+680 bản sao theo gốc) · 109 chưa chắc · 232 thiếu dạng · precision mẫu 94,3% (cao 98,7%). Chưa giao phạm vi cho ai.
+- **K6 · K7 · K9 · K10 · K11 (17/10, Thùy: "độ tin cao đẩy thẳng DB, chưa chắc đưa ra duyệt"):** đã ghi. Dây chuyền: `scripts/bdm-b3-xuat-lo.mjs` (xuất lô ≤70 câu gốc chưa có dạng bài + trộn 90 câu MẪU, chỉ đọc DB) → agent Sonnet theo `kho-rules/dai/lo/b3/brief.md` → `bdm-b3-gop-lo.mjs` (kiểm + đo) → `bdm-b3-lech-mau.mjs` (PHÂN XỬ từng câu mẫu lệch) → ngưỡng ≥97% mức cao thật ⇒ `bdm-b3-ghi-de-xuat.mjs` + `bdm-b3-nap-de-xuat.mjs` (chạy thử ROLLBACK rồi `--ghi`).
+  | Khối | ghi thẳng (cao) | chưa chắc | thiếu dạng | mức cao đúng trên mẫu (sau phân xử) |
+  |---|---|---|---|---|
+  | 6 | 426 | 171 | 192 | 89/89 |
+  | 7 | 662 | 278 | 221 | 86/88 (97,7%) |
+  | 9 | 431 | 102 | 61 | 77/77 |
+  | 10 | 960 | 436 | 43 | 80/80 |
+  | 11 | 1.882 | 691 | 294 | 65/66 (98,5%) |
+  **Nhãn mẫu = đối ứng CỤM cũ → dạng bài, THÔ:** đo thô ra 69–95%, phân xử từng câu thì gần hết là máy đúng (vd "P < 0" bị gắn "P < biểu thức"; "P nguyên lớn nhất" bị gắn "P nguyên cơ bản"). Hệ quả: các câu đã có dạng bài qua đối ứng cụm (K6 1.007 · K7 191 · K9 685 · K10 445 · K11 768 câu gốc) **có lẫn câu sai dạng** — chờ CEO quyết có chạy B3 kiểm lại phần này không.
+  **Bài học:** câu MẪU (đáp án) phải để NGOÀI thư mục agent đọc (`b3/_mau/`) — 17/10 hai agent mở `mau.json` và chỉnh cả câu thật theo nhãn cụm thô ⇒ 8 lô phải chạy lại (bản cũ giữ ở `*.nhin-mau.json`).

@@ -1,0 +1,44 @@
+[
+ {
+  "ma_cau": "T111040102019",
+  "may": "NDB01009",
+  "nguoi": "NDB00577",
+  "phan_xu": "may",
+  "boi": "Claude Opus 17/10"
+ },
+ {
+  "ma_cau": "T111060304041",
+  "may": "NDB00618",
+  "nguoi": "NDB00617",
+  "phan_xu": "nguoi",
+  "boi": "Claude Opus 17/10"
+ },
+ {
+  "ma_cau": "T111010103019",
+  "may": "NDB00567",
+  "nguoi": "NDB00568",
+  "phan_xu": "may",
+  "boi": "Claude Opus 17/10"
+ },
+ {
+  "ma_cau": "T111030501048",
+  "may": "NDB01005",
+  "nguoi": "NDB01022",
+  "phan_xu": "may",
+  "boi": "Claude Opus 17/10"
+ },
+ {
+  "ma_cau": "T111030204039",
+  "may": "NDB00996",
+  "nguoi": "NDB00997",
+  "phan_xu": "may",
+  "boi": "Claude Opus 17/10"
+ },
+ {
+  "ma_cau": "T111010605016",
+  "may": "NDB00968",
+  "nguoi": "NDB00959",
+  "phan_xu": "may",
+  "boi": "Claude Opus 17/10"
+ }
+]

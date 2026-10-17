@@ -1,0 +1,19 @@
+[
+{"ma_cau":"T111060302087","dang_bai_id":"NDB01030","chac":"cao","ly_do":"Cho hai số hạng liên tiếp u6, u7 của cấp số nhân, tìm u1 và q."},
+{"ma_cau":"T111050401001","dang_bai_id":null,"chac":null,"ly_do":"Thuộc Tổ hợp: chỉnh hợp, đếm số tự nhiên; bản đồ chưa có dạng này."},
+{"ma_cau":"T111000000131","dang_bai_id":null,"chac":null,"ly_do":"Thuộc Giới hạn dãy số: giới hạn cơ bản của 1/n^k; bản đồ chưa có dạng này."},
+{"ma_cau":"T111060105051","dang_bai_id":"NDB01020","chac":"cao","ly_do":"Xét tính bị chặn của dãy u_n = 1 - 2n."},
+{"ma_cau":"T111010602018","dang_bai_id":"NDB00967","chac":"cao","ly_do":"Nhận dạng công thức cộng của sin(a-b)."},
+{"ma_cau":"T111000000017","dang_bai_id":"NDB01030","chac":"cao","ly_do":"Cho hai số hạng đầu và cuối của cấp số nhân, tìm công bội và tổng."},
+{"ma_cau":"T111060104081","dang_bai_id":"NDB00600","chac":"cao","ly_do":"Xét tính tăng giảm của dãy cho bởi số hạng tổng quát."},
+{"ma_cau":"T111020102003","dang_bai_id":"NDB00984","chac":"vua","ly_do":"Đề có dấu hiệu lỗi đánh máy; biểu thức tính bằng công thức cộng/tích thành tổng."},
+{"ma_cau":"T111030105046","dang_bai_id":"NDB00998","chac":"vua","ly_do":"Tìm độ cao tối đa của cabin từ công thức, thực chất là max hàm sin, nhưng ngữ cảnh thực tế."},
+{"ma_cau":"T111010602076","dang_bai_id":"NDB00968","chac":"vua","ly_do":"Bốn ý rải: tan(a+2025π), cos(a+π/3), dấu sin2a, giá trị cos a."},
+{"ma_cau":"T111010602099","dang_bai_id":null,"chac":null,"ly_do":"Thuộc Hình học không gian: cách xác định mặt phẳng."},
+{"ma_cau":"T111060201060","dang_bai_id":"NDB00604","chac":"cao","ly_do":"Nhận diện cấp số cộng qua số hạng tổng quát."},
+{"ma_cau":"T111030502063","dang_bai_id":"NDB01004","chac":"vua","ly_do":"Chu kì từ đồ thị nhưng đề có hình."},
+{"ma_cau":"T111060101169","dang_bai_id":null,"chac":null,"ly_do":"Lập công thức số hạng từ hình học (ngôi sao nội tiếp) rồi tính u12; bản đồ thiếu dạng dãy số hình học."},
+{"ma_cau":"T111030503068","dang_bai_id":"NDB01003","chac":"vua","ly_do":"Tính đơn điệu từ đồ thị nhưng đề có hình."},
+{"ma_cau":"T111010110009","dang_bai_id":"NDB00953","chac":"cao","ly_do":"Cho tan x, tính biểu thức bậc nhất trên bậc nhất của sin và cos."},
+{"ma_cau":"T111030503072","dang_bai_id":"NDB01003","chac":"vua","ly_do":"Tính đơn điệu từ đồ thị nhưng đề có hình."}
+]

@@ -1,0 +1,554 @@
+[
+ {
+  "ma_cau": "T109080105012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A = 4x + \\dfrac{9}{x}$ ($x>0$)",
+  "dap_an": "12",
+  "loi_giai": "Nhận xét : Dấu '=' của bài toán này xảy ra khi $4x = \\dfrac{9}{x} \\Rightarrow x^2 = \\dfrac{9}{4} \\Rightarrow x = \\dfrac{3}{2}$\nKhi $x = \\dfrac{3}{2} \\Rightarrow A = 12$\nVậy ta trình bày bài như sau :\nXét $A - 12 = 4x + \\dfrac{9}{x} - 12 = \\dfrac{4x^2+9-12x}{x} = \\dfrac{(2x-3)^2}{x}$\nVì $x > 0$; $(2x-3)^2 \\ge 0 \\Rightarrow \\dfrac{(2x-3)^2}{x} \\ge 0 \\Rightarrow A-12 \\ge 0 \\Rightarrow A \\ge 12$\nDấu '=' xảy ra khi $x = \\dfrac{3}{2}$\nVậy GTNN của A là $12$ khi $x = \\dfrac{3}{2}$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức dạng phân thức ứng dụng Cauchy 2 số"
+ },
+ {
+  "ma_cau": "T109030203023",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{x+36}{x-36} + \\dfrac{6}{\\sqrt{x}+6}$ với $x \\ge 0; x \\ne 36$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-6}$",
+  "loi_giai": "$B = \\dfrac{x+36}{x-36} + \\dfrac{6}{\\sqrt{x}+6}$\n$B = \\dfrac{x+36}{(\\sqrt{x}-6)(\\sqrt{x}+6)} + \\dfrac{6(\\sqrt{x}-6)}{(\\sqrt{x}-6)(\\sqrt{x}+6)}$\n$B = \\dfrac{x+36+6\\sqrt{x}-36}{(\\sqrt{x}-6)(\\sqrt{x}+6)}$\n$B = \\dfrac{x+6\\sqrt{x}}{(\\sqrt{x}-6)(\\sqrt{x}+6)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}+6)}{(\\sqrt{x}-6)(\\sqrt{x}+6)}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-6}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030203020",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{x+4}{x-4} + \\dfrac{2}{\\sqrt{x}+2}$ với $x \\ge 0; x \\ne 4$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-2}$",
+  "loi_giai": "$B = \\dfrac{x+4}{x-4} + \\dfrac{2}{\\sqrt{x}+2}$\n$B = \\dfrac{x+4}{(\\sqrt{x}-2)(\\sqrt{x}+2)} + \\dfrac{2(\\sqrt{x}-2)}{(\\sqrt{x}-2)(\\sqrt{x}+2)}$\n$B = \\dfrac{x+4+2\\sqrt{x}-4}{(\\sqrt{x}-2)(\\sqrt{x}+2)}$\n$B = \\dfrac{x+2\\sqrt{x}}{(\\sqrt{x}-2)(\\sqrt{x}+2)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}+2)}{(\\sqrt{x}-2)(\\sqrt{x}+2)}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-2}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109020301016",
+  "loai": "tra_loi_ngan",
+  "de": "Một người thợ mộc dự định đóng 80 chiếc ghế trong thời gian nhất định. Nhưng thực tế người đó phải đóng 105 chiếc ghế. Vì vậy mặc dù người đó đã đóng mỗi giờ thêm 10 chiếc ghế, song thời gian hoàn thành công việc vẫn chậm hơn so với dự định là 6 phút. Hỏi theo dự định, mỗi giờ người thợ mộc đó đóng bao nhiêu chiếc ghế? Biết rằng khả năng của người đó đóng được không quá 60 chiếc ghế mỗi giờ.",
+  "dap_an": "40",
+  "loi_giai": "Đổi 6 phút là $\\dfrac{1}{10}$ giờ.\nGọi số chiếc ghế người thợ mộc đóng mỗi giờ theo dự định là $x$ (chiếc ghế, $0 < x \\le 60$).\nDo mỗi giờ người đó đóng thêm 10 chiếc ghế nên số chiếc ghế người thợ mộc đóng mỗi giờ thực tế là:\n$x + 10$ (chiếc ghế).\nThời gian đóng 80 chiếc ghế theo dự định là: $\\dfrac{80}{x}$ (giờ).\nThời gian đóng 105 chiếc ghế thực tế là: $\\dfrac{105}{x+10}$ (giờ).\nVì thời gian thực tế chậm hơn so với dự định 6 phút nên ta có PT:\n$\\dfrac{105}{x+10} - \\dfrac{80}{x} = \\dfrac{1}{10}$\n$\\dfrac{105x - 80(x+10)}{x(x+10)} = \\dfrac{1}{10}$\n$\\dfrac{105x - 80x - 800}{x(x+10)} = \\dfrac{1}{10}$\n$\\dfrac{25x - 800}{x(x+10)} = \\dfrac{1}{10}$\n$10(25x - 800) = x(x+10)$\n$250x - 8000 = x^2 + 10 …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Năng suất"
+ },
+ {
+  "ma_cau": "T109020306013",
+  "loai": "tra_loi_ngan",
+  "de": "Để kịp giao 60 tấn bánh kẹo cho dịp Tết Bính Ngọ, một công ty vận tải dự định điều động một số xe tải cùng loại, mỗi xe chở khối lượng hàng như nhau. Tuy nhiên, trước ngày xuất phát, có 5 xe tải được điều động đi làm việc khác. Để kịp tiến độ giao hàng, mỗi xe tải còn lại phải chở nhiều hơn dự định ban đầu 2 tấn hàng (mà vẫn đảm bảo quy định về tải trọng). Hỏi theo kế hoạch ban đầu, công ty dự định sử dụng bao nhiêu xe tải để vận chuyển hết 60 tấn bánh kẹo này?",
+  "dap_an": "15",
+  "loi_giai": "Gọi số xe tải dự định ban đầu là $x$ (xe, $x \\in \\mathbb{N}^*$).\nSố tấn hàng mỗi xe tải dự định chở ban đầu là $\\dfrac{60}{x}$ (tấn/xe).\nSố xe tải còn lại sau khi điều đi 5 xe là $x-5$ (xe).\nSố tấn hàng mỗi xe tải sau đó phải chở là $\\dfrac{60}{x-5}$ (tấn/xe).\nVì mỗi xe tải còn lại phải chở nhiều hơn dự định ban đầu 2 tấn hàng nên ta có PT:\n$\\dfrac{60}{x-5} - \\dfrac{60}{x} = 2$\n$\\dfrac{60x - 60(x-5)}{x(x-5)} = 2$\n$\\dfrac{60x - 60x + 300}{x(x-5)} = 2$\n$\\dfrac{300}{x(x-5)} = 2$\n$\\dfrac{300}{x^2 - 5x} = 2$\n$2(x^2 - 5x) = 300$\n$2x^2 - 10x - 300 = 0$\n$x^2 - 5x - 150 = 0$\n$(x-15)(x+10) = 0$\nTH1: $x - 15 = 0$\n$x = 15$ (TMĐK)\nTH2: $x + 10 = 0$\n$x = -10$ (KTMĐK)\nVậy theo kế hoạch ban đầu, công ty dự  …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Hai đại lượng"
+ },
+ {
+  "ma_cau": "T109000000082",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\dfrac{5}{x+2}+\\dfrac{3}{x-1}=\\dfrac{3x+4}{(x+2)(x-1)}$.",
+  "dap_an": "0,6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu chung của cả ba phân thức là $(x+2)(x-1)$, nên quy đồng rồi khử mẫu, nhưng phải đặt điều kiện để mẫu khác $0$ trước.\n**Bước 1.** Tìm điều kiện xác định bằng cách cho từng nhân tử ở các mẫu khác $0$.\n**Bước 2.** Quy đồng mẫu hai phân thức ở vế trái về mẫu chung $(x+2)(x-1)$ rồi khử mẫu của cả hai vế.\n**Bước 3.** Giải phương trình bậc nhất nhận được sau khi thu gọn.\n**Bước 4.** Đối chiếu giá trị tìm được với điều kiện xác định trước khi kết luận.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne-2$ và $x\\ne1$.\nQuy đồng mẫu hai vế của phương trình, ta có:\n$\\dfrac{5(x-1)+3(x+2)}{(x+2)(x-1)}=\\dfrac{3x+4}{(x+2)(x-1)}$.\nSuy ra $5(x-1)+3(x+2)=3x+4$.\nDo đó $5x-5+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030201041",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{1}{\\sqrt{x-11}-2}$.",
+  "dap_an": "$x\\ge11$ và $x\\ne15$.",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x-11\\ge0\\\\\\sqrt{x-11}\\ne2\\end{cases}\\Rightarrow\\begin{cases}x\\ge11\\\\x-11\\ne4\\end{cases}\\Rightarrow\\begin{cases}x\\ge11\\\\x\\ne15\\end{cases}$\nVậy $x\\ge11$ và $x\\ne15$.",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109030203050",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{1}{\\sqrt{x}+8} - \\dfrac{\\sqrt{x}}{\\sqrt{x}-8} - \\dfrac{2x-\\sqrt{x}+8}{64-x}$ với $x \\ge 0; x\n\\neq 64$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}}{\\sqrt{x}+8}$",
+  "loi_giai": "$B = \\dfrac{1}{\\sqrt{x}+8} - \\dfrac{\\sqrt{x}}{\\sqrt{x}-8} - \\dfrac{2x-\\sqrt{x}+8}{64-x}$\n$B = \\dfrac{1}{\\sqrt{x}+8} - \\dfrac{\\sqrt{x}}{\\sqrt{x}-8} + \\dfrac{2x-\\sqrt{x}+8}{x-64}$\n$B = \\dfrac{\\sqrt{x}-8}{(\\sqrt{x}-8)(\\sqrt{x}+8)} - \\dfrac{\\sqrt{x}(\\sqrt{x}+8)}{(\\sqrt{x}-8)(\\sqrt{x}+8)} + \\dfrac{2x-\\sqrt{x}+8}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}-8-x-8\\sqrt{x}+2x-\\sqrt{x}+8}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{x-8\\sqrt{x}}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}-8)}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}+8}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030204023",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $\\sqrt{9(x+2)^2} = 12$.",
+  "dap_an": "2; -6",
+  "loi_giai": "$\\sqrt{9(x+2)^2} = 12$\n$3|x+2|=12$\n$|x+2|=4$\nTH1: $x+2=4 \\Rightarrow x=2$.\nTH2: $x + 2 = -4 \\Rightarrow x = -6$.\nVậy $x = -6$ hoặc $x = 2$.",
+  "nhan_cu": "Rút gọn Căn thức › Tìm x ứng dụng Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030305011",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $M=\\dfrac{\\sqrt{x}+8}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm GTLN của $M$.",
+  "dap_an": "2",
+  "loi_giai": "$M=\\dfrac{\\sqrt{x}+8}{\\sqrt{x}+4}=1+\\dfrac{4}{\\sqrt{x}+4}$.\nVì $x\\ge0$ nên $\\sqrt{x}\\ge0$, suy ra $\\sqrt{x}+4\\ge4$.\n$\\Rightarrow\\dfrac{4}{\\sqrt{x}+4}\\le\\dfrac{4}{4}$.\n$\\Rightarrow1+\\dfrac{4}{\\sqrt{x}+4}\\le1+1$.\n$\\Rightarrow M\\le2$.\nDấu bằng xảy ra khi $\\sqrt{x}+4=4\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$.\nVậy GTLN của $M$ là $2$ khi $x=0$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109010302020",
+  "loai": "tra_loi_ngan",
+  "de": "Hai công nhân cùng sơn cửa cho một công trình trong 3 ngày thì xong việc. Nếu người thứ nhất làm một mình trong 8 ngày, sau đó có thêm người thứ hai đến làm tiếp trong 1 ngày nữa thì xong việc. Hỏi mỗi người nếu làm một mình thì mất bao lâu để xong việc.",
+  "dap_an": "12;4",
+  "loi_giai": "Gọi số ngày mà người thứ nhất và người thứ hai làm một mình xong công việc lần lượt là $x,y$ (ngày) ($x,y>3$).\nMỗi ngày người thợ thứ nhất làm được $\\dfrac{1}{x}$ công việc.\nMỗi ngày người thợ thứ hai làm được $\\dfrac{1}{y}$ công việc.\nTrong 3 ngày người thợ thứ nhất làm được: $3 \\cdot \\dfrac{1}{x}$ (công việc).\nTrong 3 ngày người thợ thứ hai làm được: $3 \\cdot \\dfrac{1}{y}$ (công việc).\nTa có PT: $3\\cdot\\dfrac{1}{x} + 3\\cdot\\dfrac{1}{y} = 1$ (1).\nNếu người thứ nhất làm một mình trong $8$ ngày, sau đó có thêm người thứ hai đến làm tiếp trong $1$ ngày nữa thì xong việc.\nKhi đó người thợ thứ nhất làm trong: 8 + 1 = 9 (ngày), người thợ thứ hai làm trong 1 ngày.\nTrong 9 ngày người thợ thứ nhất l …",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Công việc chung - riêng"
+ },
+ {
+  "ma_cau": "T109010306037",
+  "loai": "tra_loi_ngan",
+  "de": "Một khách du lịch khởi hành từ ga Hà Nội, đi tuyến tàu thứ nhất trong 2 giờ, sau đó đi tiếp bằng tuyến tàu thứ hai trong 5 giờ thì đến ga Vinh, cách ga Hà Nội 320 km. Để đi từ ga Vinh về ga Hà Nội, người đó đi tuyến tàu thứ hai trong 2 giờ, sau đó phải đi tiếp bằng tuyến tàu thứ nhất trong 4 giờ. Hỏi vận tốc của mỗi tuyến tàu bằng bao nhiêu, coi vận tốc của mỗi tuyến tàu không thay đổi?",
+  "dap_an": "60; 40",
+  "loi_giai": "Gọi vận tốc của tuyến tàu thứ nhất và tuyến tàu thứ hai lần lượt là $x, y$ (km/giờ, $x, y > 0$).\nQuãng đường đi được khi đi tuyến tàu thứ nhất trong 2 giờ là: $2x$ (km).\nQuãng đường đi được khi đi tuyến tàu thứ hai trong 5 giờ là: $5y$ (km).\nTa có PT: $2x + 5y = 320$ (1).\nQuãng đường đi được khi đi tuyến tàu thứ hai trong 2 giờ là: $2y$ (km).\nQuãng đường đi được khi đi tuyến tàu thứ nhất trong 4 giờ là: $4x$ (km).\nTa có PT: $4x + 2y = 320$ (2).\nTừ (1) và (2) ta có HPT:\n$\\begin{cases} 2x + 5y = 320 \\\\ 4x + 2y = 320 \\end{cases}$\nGiải HPT ta được: $x = 60$; $y = 40$ (TMĐK).\nVậy vận tốc của tuyến tàu thứ nhất là 60 km/giờ, vận tốc của tuyến tàu thứ hai là 40 km/giờ.",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Cổ điển"
+ },
+ {
+  "ma_cau": "T109030305040",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}}{2\\sqrt{x}+5}$ $(x\\ge0)$. Tìm GTNN của $P$.",
+  "dap_an": "0",
+  "loi_giai": "$P=\\dfrac{2\\sqrt{x}}{2\\sqrt{x}+5}=\\dfrac{2\\sqrt{x}+5-5}{2\\sqrt{x}+5}=1-\\dfrac{5}{2\\sqrt{x}+5}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow2\\sqrt{x}+5\\ge5$.\n$\\Rightarrow\\dfrac{5}{2\\sqrt{x}+5}\\le1$.\n$\\Rightarrow-\\dfrac{5}{2\\sqrt{x}+5}\\ge-1$.\n$\\Rightarrow1-\\dfrac{5}{2\\sqrt{x}+5}\\ge0$.\n$\\Rightarrow P\\ge0$.\nDấu bằng xảy ra khi $2\\sqrt{x}+5=5\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$.\nVậy GTNN của $P$ là $0$ khi $x=0$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109020401009",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(x + 4) \\cdot (2x - 8) = 0$.",
+  "dap_an": "{-4;4}",
+  "loi_giai": "$(x + 4) \\cdot (2x - 8) = 0$\nTH1: $x + 4 = 0$\n$x = -4$\nTH2: $2x - 8 = 0$\n$x = 4$\nVậy phương trình có nghiệm $x \\in \\{-4; 4\\}$.",
+  "nhan_cu": "Phương trình tích › Phương trình tích dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030201021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{7}{\\sqrt{x-7}}$.",
+  "dap_an": "$x>7$",
+  "loi_giai": "ĐKXĐ: $x-7>0\\Rightarrow x>7$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109020101012",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $-3x - 5 = 0$",
+  "dap_an": "$-\\dfrac{5}{3}$",
+  "loi_giai": "$-3x - 5 = 0$\\n$-3x = 5$\\n$x = -\\dfrac{5}{3}$\\nVậy phương trình có nghiệm $x = -\\dfrac{5}{3}$.",
+  "nhan_cu": "Phương trình bậc nhất một ẩn › Phương trình bậc nhất một ẩn dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030305042",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{5\\sqrt{x}}{5\\sqrt{x}+4}$ $(x\\ge0)$. Tìm GTNN của $P$.",
+  "dap_an": "0",
+  "loi_giai": "$P=\\dfrac{5\\sqrt{x}}{5\\sqrt{x}+4}=\\dfrac{5\\sqrt{x}+4-4}{5\\sqrt{x}+4}=1-\\dfrac{4}{5\\sqrt{x}+4}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow5\\sqrt{x}+4\\ge4$.\n$\\Rightarrow\\dfrac{4}{5\\sqrt{x}+4}\\le1$.\n$\\Rightarrow-\\dfrac{4}{5\\sqrt{x}+4}\\ge-1$.\n$\\Rightarrow1-\\dfrac{4}{5\\sqrt{x}+4}\\ge0$.\n$\\Rightarrow P\\ge0$.\nDấu bằng xảy ra khi $5\\sqrt{x}+4=4\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$.\nVậy GTNN của $P$ là $0$ khi $x=0$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109080501001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A=3(x-1)^2+2$. CMR : $A \\ge 2$",
+  "loi_giai": "Ta có $(x-1)^2 \\ge 0$\\nSuy ra $3(x-1)^2 \\ge 0$\\n$3(x-1)^2+2 \\ge 2$\\n$A \\ge 2(dpcm)$",
+  "nhan_cu": "Tính chất của bất đẳng thức › Chứng minh bất đẳng thức dạng đa thức"
+ },
+ {
+  "ma_cau": "T109000000095",
+  "loai": "tu_luan",
+  "de": "Cô Lan có 1 tỷ đồng tiền tiết kiệm và quyết định chia số tiền này làm hai phần để gửi vào hai ngân hàng khác nhau. Ngân hàng thứ nhất áp dụng mức lãi suất $5\\%$/năm, còn ngân hàng thứ hai áp dụng mức lãi suất $8\\%$/năm. Sau đúng một năm, tổng số tiền lãi cô Lan nhận được từ cả hai khoản gửi là $62$ triệu đồng. Tính số tiền cô Lan đã gửi vào mỗi ngân hàng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số tiền gửi ở hai ngân hàng cộng lại bằng số vốn ban đầu, còn tiền lãi mỗi nơi bằng số tiền gửi nhân với lãi suất.\n**Bước 1.** Đổi số vốn về cùng đơn vị với tiền lãi (triệu đồng) rồi gọi số tiền gửi ở mỗi ngân hàng là một ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ việc hai khoản gửi chia hết toàn bộ số vốn.\n**Bước 3.** Lập phương trình thứ hai từ tổng tiền lãi sau một năm, mỗi khoản lãi bằng số tiền gửi nhân lãi suất tương ứng.\n**Bước 4.** Giải hệ bằng phương pháp thế, kiểm tra điều kiện rồi trả lời số tiền gửi vào từng ngân hàng.\n**Phần 2. Trình bày**\nĐổi $1$ tỷ đồng $=1000$ triệu đồng.\nGọi số tiền cô Lan gửi vào ngân hàng thứ nhất và ngân hàng thứ hai  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020302014",
+  "loai": "tra_loi_ngan",
+  "de": "Một mảnh vườn hình chữ nhật có chiều dài lớn hơn chiều rộng 12 m . Nếu giảm chiều dài 3m và tăng chiều rộng 4m thì diện tích mảnh vườn tăng thêm 42m². Tính diện tích mảnh vườn.",
+  "dap_an": "108",
+  "loi_giai": "Gợi chiều rộng mảnh vườn là $x$ ($m$, $x > 0$).\nVì chiều dài lớn hơn chiều rộng 12 m nên chiều dài mảnh vườn là: $x+12$ (m).\nDiện tích mảnh vườn ban đầu là: $x(x+12)$ ($m^2$)\nNếu giảm chiều dài đi 3m thì chiều dài mới là: $(x+12)-3 = x+9$ (m).\nNếu tăng chiều rộng thêm 4m thì chiều rộng mới là: $x+4$ (m)\nDiện tích mảnh vườn lúc sau là: $(x+9)(x+4)$ ($m^2$)\nVì diện tích tăng thêm 42 $m^2$ nên ta có PT:\n$(x+9)(x+4)-x(x+12)=42$\n$(x^2+13x+36)-(x^2+12x)=42$\n$x^2+13x+36-x^2-12x=42$\n$x=6$ (tm)\nChiều dài mảnh vườn là: $6+12=18$ (m)\nDiện tích mảnh vườn là: $18 \\cdot 6 = 108$ ($m^2$)\nVậy diện tích mảnh vườn là $108$ $m^2$.",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Diện tích"
+ },
+ {
+  "ma_cau": "T109020301035",
+  "loai": "tra_loi_ngan",
+  "de": "Một công nhân may phải hoàn thành 5000 khẩu trang trong một thời gian dự định. Do tăng năng suất thêm 50 chiếc mỗi ngày nên không những hoàn thành sớm 1 ngày mà công nhân đó còn làm thêm được 20% số khẩu trang so với dự định. Hỏi công nhân may phải hoàn thành theo dự định là bao nhiêu ngày?",
+  "dap_an": "25",
+  "loi_giai": "Gọi số khẩu trang người công nhân phải may mỗi ngày theo dự định là $x$ (cái, $x \\in N^*$).\nThời gian cần hoàn thành theo dự định là: $\\dfrac{5000}{x}$ (ngày).\nDo tăng năng suất thêm 50 chiếc khẩu trang mỗi ngày nên số khẩu trang người công nhân phải may mỗi ngày thực tế là: $x + 50$ (cái).\nSố khẩu trang người công nhân may được thực tế là: $5000 + 5000 \\cdot 20\\% = 6000$ (cái).\nThời gian hoàn thành thực tế là: $\\dfrac{6000}{x + 50}$ (ngày).\nVì người đó hoàn thành sớm kế hoạch 1 ngày nên ta có PT:\n$\\frac{5000}{x} - \\frac{6000}{x + 50} = 1$\n$\\frac{5000(x + 50) - 6000x}{x(x + 50)} = 1$\n$\\frac{5000x + 250000 - 6000x}{x(x + 50)} = 1$\n$\\frac{250000 - 1000x}{x^2 + 50x} = 1$\n$x^2 + 50x = 250000 - 1 …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Năng suất"
+ },
+ {
+  "ma_cau": "T109030305017",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{5\\sqrt{x}-6}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm GTNN của $P$.",
+  "dap_an": "-\\dfrac{3}{2}",
+  "loi_giai": "$P=\\dfrac{5\\sqrt{x}-6}{\\sqrt{x}+4}=\\dfrac{5(\\sqrt{x}+4)-26}{\\sqrt{x}+4}=5-\\dfrac{26}{\\sqrt{x}+4}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+4\\ge4$.\n$\\Rightarrow\\dfrac{26}{\\sqrt{x}+4}\\le\\dfrac{26}{4}$.\n$\\Rightarrow\\dfrac{26}{\\sqrt{x}+4}\\le\\dfrac{13}{2}$.\n$\\Rightarrow-\\dfrac{26}{\\sqrt{x}+4}\\ge-\\dfrac{13}{2}$.\n$\\Rightarrow5-\\dfrac{26}{\\sqrt{x}+4}\\ge5-\\dfrac{13}{2}$.\n$\\Rightarrow P\\ge-\\dfrac{3}{2}$.\nDấu bằng xảy ra khi $\\sqrt{x}+4=4\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$.\nVậy GTNN của $P$ là $-\\dfrac{3}{2}$ khi $x=0$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000065",
+  "loai": "tu_luan",
+  "de": "Cho $a,\\ b,\\ c$ là các số thực. Chứng minh bất đẳng thức: $\\dfrac{a^3+b^3}{2}\\ge\\left(\\dfrac{a+b}{2}\\right)^3$, với $a,\\ b\\ge0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** xét hiệu hai vế rồi phân tích tử thức thành nhân tử, trong đó có một thừa số là bình phương và một thừa số là $a+b$, chính thừa số này cần điều kiện $a,\\ b\\ge0$.\n**Bước 1.** Lập hiệu vế trái trừ vế phải rồi quy đồng mẫu số về $8$ để gộp thành một phân thức duy nhất.\n**Bước 2.** Khai triển $(a+b)^3$ bằng hằng đẳng thức, rút gọn các hạng tử đồng dạng ở tử thức.\n**Bước 3.** Phân tích tử thức thành nhân tử bằng cách nhóm hạng tử và đặt nhân tử chung, rồi dùng hằng đẳng thức hiệu hai bình phương.\n**Bước 4.** Xét dấu từng thừa số: bình phương thì không âm với mọi số thực, còn thừa số kia chỉ chắc chắn không âm nhờ điều kiện đề cho; từ đó kết luận.\n**Chú ý:** nếu …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080101012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức : $A = (4-x)(x+2)$",
+  "dap_an": "9",
+  "loi_giai": "Ta có $A = (4-x)(x+2) = -x^2 + 2x + 8 = -(x^2 - 2x + 1) + 8 + 1 = -(x-1)^2 + 9$\\nVì $(x-1)^2 \\ge 0 \\Rightarrow -(x-1)^2 \\le 0 \\Rightarrow -(x-1)^2 + 9 \\le 9 \\Rightarrow A \\le 9$\\nDấu '=' xảy ra khi $(x-1)^2 = 0 \\Rightarrow x=1$\\nVậy GTLN của A là 9 khi $x=1$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức một biến bậc hai"
+ },
+ {
+  "ma_cau": "T109030201047",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-2}}$.",
+  "dap_an": "$x>2$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-2>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>2\\end{cases}\\Rightarrow x>2$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109030305059",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=-\\dfrac{6}{\\sqrt{x}-3}$ $(x\\ge0;x\ne9)$. Tìm các giá trị nguyên dương của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "10",
+  "loi_giai": "TH1: Với $1\\le x<9\\Rightarrow\\sqrt{x}-3<0\\Rightarrow P>0$.\nTH2: Với $x>9$ mà $x$ là số nguyên dương $\\Rightarrow x\\ge10\\Rightarrow\\sqrt{x}-3\\ge\\sqrt{10}-3>0$.\nDo đó $\\dfrac{6}{\\sqrt{x}-3}\\le\\dfrac{6}{\\sqrt{10}-3}$.\n$\\Rightarrow-\\dfrac{6}{\\sqrt{x}-3}\\ge-\\dfrac{6}{\\sqrt{10}-3}$.\n$\\Rightarrow P\\ge-\\dfrac{6}{\\sqrt{10}-3}$.\nDấu bằng xảy ra khi $x=10$ (thỏa mãn).\nVì ở TH1 thì $P>0$ còn tại $x=10$ thì $P<0$.\nVậy $x=10$ thì $P$ đạt giá trị nhỏ nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109030203105",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-2} - \\dfrac{\\sqrt{x}+2}{3-\\sqrt{x}} - \\dfrac{x-3\\sqrt{x}+5}{x-5\\sqrt{x}+6}$ với $x \\ge 0; x \\ne 4; x \\ne 9$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}+3}{\\sqrt{x}-2}$",
+  "loi_giai": "$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-2} - \\dfrac{\\sqrt{x}+2}{3-\\sqrt{x}} - \\dfrac{x-3\\sqrt{x}+5}{x-5\\sqrt{x}+6}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-2} + \\dfrac{\\sqrt{x}+2}{\\sqrt{x}-3} - \\dfrac{x-3\\sqrt{x}+5}{(\\sqrt{x}-2)(\\sqrt{x}-3)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}-3)+(\\sqrt{x}+2)(\\sqrt{x}-2)-x+3\\sqrt{x}-5}{(\\sqrt{x}-2)(\\sqrt{x}-3)}$\n$B = \\dfrac{x-3\\sqrt{x}+x-4-x+3\\sqrt{x}-5}{(\\sqrt{x}-2)(\\sqrt{x}-3)}$\n$B = \\dfrac{x-9}{(\\sqrt{x}-2)(\\sqrt{x}-3)}$\n$B = \\dfrac{(\\sqrt{x}-3)(\\sqrt{x}+3)}{(\\sqrt{x}-2)(\\sqrt{x}-3)}$\n$B = \\dfrac{\\sqrt{x}+3}{\\sqrt{x}-2}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030201030",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{16}{\\sqrt{x-16}}$.",
+  "dap_an": "$x>16$",
+  "loi_giai": "ĐKXĐ: $x-16>0\\Rightarrow x>16$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109020102013",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $5x - (2 - 4x) = 7 + 3(x - 1)$.",
+  "dap_an": "1",
+  "loi_giai": "$5x - (2 - 4x) = 7 + 3(x - 1)$\n$5x - 2 + 4x = 7 + 3x - 3$\n$5x + 4x - 3x = 7 - 3 + 2$\n$6x = 6$\n$x = 1$\nVậy phương trình có nghiệm $x = 1$.",
+  "nhan_cu": "Phương trình bậc nhất một ẩn › Phương trình quy về phương trình bậc nhất một ẩn - Dạng đa thức"
+ },
+ {
+  "ma_cau": "T109030305044",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}-2}$ $(x\\in\\mathbb{N};x\ne4)$. Tìm $x\\in\\mathbb {N}$ để $P$ có giá trị lớn nhất.",
+  "dap_an": "5",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}-2}=\\dfrac{\\sqrt{x}-2+6}{\\sqrt{x}-2}=1+\\dfrac{6}{\\sqrt{x}-2}$.\nTH1: Với $0\\le x<4\\Rightarrow\\sqrt{x}-2<0\\Rightarrow P<1$.\nTH2: Với $x>4$ mà $x\\in\\mathbb{N}\\Rightarrow x\\ge5\\Rightarrow\\sqrt{x}-2\\ge\\sqrt{5}-2>0$.\nDo đó $\\dfrac{6}{\\sqrt{x}-2}\\le\\dfrac{6}{\\sqrt{5}-2}$.\n$\\Rightarrow P\\le1+\\dfrac{6}{\\sqrt{5}-2}$.\nDấu bằng xảy ra khi $x=5$ (thỏa mãn).\nVậy $x=5$ thì $P$ có giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109080103001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = x^2 + \\dfrac{16}{x}$; $x > 0$",
+  "dap_an": "12",
+  "loi_giai": "Bước 1: Nhầm dấu “=” xảy ra :\nLý thuyết gốc: BĐT Cosi 3 số: $A = x^2 + \\dfrac{16}{x} = x^2 + \\dfrac{8}{x} + \\dfrac{8}{x} \\ge 3\\sqrt[3]{x^2 \\cdot \\dfrac{8}{x} \\cdot \\dfrac{8}{x}} = 12$\nVậy dấu bằng xảy ra khi $x^2 = \\dfrac{8}{x} \\Rightarrow x = 2$. Khi đó $A = 12$\nBước 2: Trình bày\nXét $A - 12 = x^2 + \\dfrac{16}{x} - 12 = \\dfrac{x^3 + 16 - 12x}{x} = \\dfrac{(x-2)^2(x+4)}{x}$\nVì $x > 0 \\Rightarrow x+4 > 0$ mà $(x-2)^2 \\ge 0 \\Rightarrow \\dfrac{(x-2)^2(x+4)}{x} \\ge 0$\nSuy ra $A - 12 \\ge 0 \\Rightarrow A \\ge 12$\nDấu “=” xảy ra khi $(x-2)^2 = 0 \\Rightarrow x = 2$\nVậy GTNN của A là 12 khi $x = 2$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức bậc 3 dạng ứng dụng Cauchy chiều xuôi"
+ },
+ {
+  "ma_cau": "T109020401011",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(x + 6) \\cdot (3x - 12) = 0$.",
+  "dap_an": "{-6;4}",
+  "loi_giai": "$(x + 6) \\cdot (3x - 12) = 0$\nTH1: $x + 6 = 0$\n$x = -6$\nTH2: $3x - 12 = 0$\n$x = 4$\nVậy phương trình có nghiệm $x \\in \\{-6; 4\\}$.",
+  "nhan_cu": "Phương trình tích › Phương trình tích dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030203035",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{\\sqrt{x}-8}{\\sqrt{x}+8} + \\dfrac{\\sqrt{x}+8}{\\sqrt{x}-8} - \\dfrac{x-8\\sqrt{x}+128}{x-64}$ với $x \\ge 0; x\ne 64$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-8}$",
+  "loi_giai": "$B = \\dfrac{\\sqrt{x}-8}{\\sqrt{x}+8} + \\dfrac{\\sqrt{x}+8}{\\sqrt{x}-8} - \\dfrac{x-8\\sqrt{x}+128}{x-64}$\n$B = \\dfrac{(\\sqrt{x}-8)^2}{(\\sqrt{x}-8)(\\sqrt{x}+8)} + \\dfrac{(\\sqrt{x}+8)^2}{(\\sqrt{x}-8)(\\sqrt{x}+8)} - \\dfrac{x-8\\sqrt{x}+128}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{x-16\\sqrt{x}+64+x+16\\sqrt{x}+64-x+8\\sqrt{x}-128}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{x+8\\sqrt{x}}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}+8)}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-8}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109090401022",
+  "loai": "tra_loi_ngan",
+  "de": "Trong Quý I năm 2026, một cửa hàng kinh doanh xe máy dự định bán hai loại xe 110 phân khối gồm xe ga và xe số với số vốn ban đầu không vượt quá 1 tỉ đồng. Giá nhập và lợi nhuận dự kiến của mỗi loại xe được tính trong bảng sau:\nLoại xe ga: Giá nhập 25 triệu đồng/chiếc. Lợi nhuận dự kiến 4 triệu đồng/chiếc.\nLoại xe số: Giá nhập 10 triệu đồng/chiếc. Lợi nhuận dự kiến 2 triệu đồng/chiếc.\nCửa hàng ước tính rằng tổng nhu cầu thị trường trong Quý I không vượt quá 70 chiếc cho cả hai loại xe. Hỏi cửa hàng cần nhập về bao nhiêu chiếc xe mỗi loại để lợi nhuận thu được là lớn nhất?",
+  "dap_an": "20 xe ga và 50 xe số",
+  "loi_giai": "Gọi $x$ là số xe ga và $y$ là số xe số mà cửa hàng nhập về.\nĐiều kiện: $x \\ge 0$, $y \\ge 0$.\nTổng số vốn không vượt quá 1 tỷ đồng (1000 triệu đồng), vậy $25x + 10y \\le 1000 \\Leftrightarrow 5x + 2y \\le 200$.\nTổng nhu cầu thị trường không vượt quá 70 chiếc, vậy $x + y \\le 70$.\nLợi nhuận thu được là $L = 4x + 2y$.\nTa cần tìm giá trị lớn nhất của $L = 4x + 2y$ với các điều kiện:\n$x \\ge 0$\n$y \\ge 0$\n$5x + 2y \\le 200$\n$x + y \\le 70$\nVẽ miền điều kiện trên mặt phẳng tọa độ.\nCác đỉnh của miền đa giác là các giao điểm của các đường thẳng biên:\n(1) Giao điểm của $x=0$ và $y=0$ là $(0,0)$. $L(0,0) = 0$.\n(2) Giao điểm của $x=0$ và $x+y=70$ là $(0,70)$. $L(0,70) = 4(0) + 2(70) = 140$.\n(3) Giao điểm của $ …",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109030203099",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{2x}{x-25} + \\dfrac{5}{\\sqrt{x}-5} + \\dfrac{5}{\\sqrt{x}+5}$ với $x \\ge 0; x \\ne 25$.",
+  "dap_an": "$\\dfrac{2\\sqrt{x}}{\\sqrt{x}-5}$",
+  "loi_giai": "$B = \\dfrac{2x}{x-25} + \\dfrac{5}{\\sqrt{x}-5} + \\dfrac{5}{\\sqrt{x}+5}$\n$B = \\dfrac{2x}{(\\sqrt{x}-5)(\\sqrt{x}+5)} + \\dfrac{5(\\sqrt{x}+5)}{(\\sqrt{x}-5)(\\sqrt{x}+5)} + \\dfrac{5(\\sqrt{x}-5)}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{2x+10\\sqrt{x}}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{2\\sqrt{x}(\\sqrt{x}+5)}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{2\\sqrt{x}}{\\sqrt{x}-5}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109020301030",
+  "loai": "tra_loi_ngan",
+  "de": "Theo kế hoạch, một nông trường cao su phải khai thác 384 tấn mủ trong một thời gian nhất định. Trên thực tế, mỗi ngày nông trường đều khai thác vượt định mức 3 tấn nên nông trường đã khai thác được 385 tấn và xong trước thời hạn 1 ngày. Hỏi theo kế hoạch mỗi ngày nông trường phải khai thác bao nhiêu tấn mủ cao su?",
+  "dap_an": "32",
+  "loi_giai": "Gọi số tấn mủ cao su nông trường phải khai thác mỗi ngày theo kế hoạch là $x$ (tấn, $x > 0$).\nThời gian khai thác 384 tấn mủ theo kế hoạch là: $\\dfrac{384}{x}$ (ngày).\nTrên thực tế, mỗi ngày nông trường đều khai thác vượt định mức 3 tấn nên số tấn mủ cao su nông trường khai thác mỗi ngày thực tế là: $x+3$ (tấn).\nThời gian khai thác 385 tấn thực tế là: $\\dfrac{385}{x+3}$ (ngày).\nVì khai thác xong trước thời hạn 1 ngày nên ta có PT:\n$\\dfrac{384}{x} - \\dfrac{385}{x+3} = 1$\n$\\dfrac{384(x+3)-385x}{x(x+3)} = 1$\n$\\dfrac{384x+1152-385x}{x(x+3)} = 1$\n$\\dfrac{1152-x}{x^2+3x} = 1$\n$x^2+3x = 1152-x$\n$x^2+4x-1152 = 0$\n$(x+36)(x-32) = 0$\nTH1: $x+36 = 0$\n$x = -36$ (Loại)\nTH2: $x-32 = 0$\n$x = 32$ (TMĐK)\nVậy …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Năng suất"
+ },
+ {
+  "ma_cau": "T109020401017",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(x + 1)\\cdot (4x - 8) = 0$.",
+  "dap_an": "{-1;2}",
+  "loi_giai": "$(x + 1)\\cdot (4x - 8) = 0$\nTH1: $x + 1 = 0$\n$x = -1$\nTH2: $4x - 8 = 0$\n$x = 2$\nVậy phương trình có nghiệm $x \\in \\{-1; 2\\}$.",
+  "nhan_cu": "Phương trình tích › Phương trình tích dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000103",
+  "loai": "tu_luan",
+  "de": "Cho hai số dương $x,\\ y$ thỏa mãn điều kiện $x+y=2$. Chứng minh rằng $x^2y^2(x^2+y^2)\\le2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thức chỉ phụ thuộc vào tích $t=xy$ vì $x^2+y^2=(x+y)^2-2xy$ và $x+y=2$ đã biết, nên đưa bài toán về một biến $t$.\n**Bước 1.** Đặt $t=xy$, chứng minh $0<t\\le1$ bằng cách xét hiệu $1-xy$ rồi biến đổi về bình phương $(x-y)^2$ nhờ giả thiết $x+y=2$.\n**Bước 2.** Viết $x^2+y^2$ theo $t$ bằng hằng đẳng thức bình phương của một tổng, rồi thay vào vế trái để được một đa thức bậc ba của $t$.\n**Bước 3.** Xét hiệu $2$ trừ vế trái, phân tích đa thức bậc ba thành nhân tử (nhẩm một nghiệm của đa thức rồi chia).\n**Bước 4.** Xét dấu từng nhân tử với $0<t\\le1$ để kết luận hiệu không âm, rồi tìm khi nào dấu \"=\" xảy ra.\n**Phần 2. Trình bày**\nĐặt $t=xy$. Vì $x,y>0$ nên $t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020103009",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\dfrac{2x+1}{x-1} - \\dfrac{x-1}{x+1} + \\dfrac{x^2+2x-3}{1-x^2} = 0$",
+  "dap_an": "Vô nghiệm",
+  "loi_giai": "ĐKXĐ: $x \\neq 1$, $x \\neq -1$.\n$\\dfrac{2x+1}{x-1} - \\dfrac{x-1}{x+1} - \\dfrac{x^2+2x-3}{x^2-1} = 0$\n$\\dfrac{(2x+1)(x+1)}{(x-1)(x+1)} - \\dfrac{(x-1)(x-1)}{(x-1)(x+1)} - \\dfrac{x^2+2x-3}{(x-1)(x+1)} = 0$\n$\\dfrac{(2x+1)(x+1)-(x-1)(x-1)-(x^2+2x-3)}{(x-1)(x+1)} = 0$\n$(2x+1)(x+1)-(x-1)(x-1)-(x^2+2x-3) = 0$\n$2x^2+3x+1-(x^2-2x+1)-(x^2+2x-3) = 0$\n$2x^2+3x+1-x^2+2x-1-x^2-2x+3 = 0$\n$3x+3 = 0$\n$3x = -3$\n$x = -1$ (ktm)\nVậy phương trình vô nghiệm.",
+  "nhan_cu": "Phương trình bậc nhất một ẩn › Phương trình quy về phương trình bậc nhất một ẩn - Dạng phân thức"
+ },
+ {
+  "ma_cau": "T109000000070",
+  "loai": "tu_luan",
+  "de": "Cho $a,\\ b,\\ c,\\ d$ là các số dương. Chứng minh: $1<\\dfrac{a}{a+b+c}+\\dfrac{b}{b+c+d}+\\dfrac{c}{c+d+a}+\\dfrac{d}{d+a+b}<2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $S=a+b+c+d$ rồi kẹp mỗi phân số giữa phân số có mẫu $S$ và tử cũ, và phân số có mẫu $S$ và tử cộng thêm số hạng còn thiếu.\n**Bước 1.** Với vế bên trái, mỗi mẫu của đề thiếu đúng một số dương so với $S$, nên mẫu nhỏ hơn $S$ và phân số lớn hơn phân số cùng tử có mẫu $S$.\n**Bước 2.** Cộng bốn bất đẳng thức ở bước 1 để tổng bốn tử chia $S$ rút gọn thành một số.\n**Bước 3.** Với vế bên phải, chứng minh một nhận xét tổng quát bằng cách xét hiệu: thêm cùng một số dương vào tử và mẫu của phân số nhỏ hơn $1$ thì phân số lớn lên.\n**Bước 4.** Áp dụng nhận xét cho từng phân số, số được thêm chính là số hạng bị thiếu trong mẫu, rồi cộng bốn bất đẳng thức để được vế  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305012",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $M=\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+5}$ $(x\\ge0)$. Tìm GTLN của $M$.",
+  "dap_an": "2",
+  "loi_giai": "$M=\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+5}=1+\\dfrac{5}{\\sqrt{x}+5}$.\nVì $x\\ge0$ nên $\\sqrt{x}\\ge0$, suy ra $\\sqrt{x}+5\\ge5$.\n$\\Rightarrow\\dfrac{5}{\\sqrt{x}+5}\\le\\dfrac{5}{5}$.\n$\\Rightarrow1+\\dfrac{5}{\\sqrt{x}+5}\\le1+1$.\n$\\Rightarrow M\\le2$.\nDấu bằng xảy ra khi $\\sqrt{x}+5=5\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$.\nVậy GTLN của $M$ là $2$ khi $x=0$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109010302006",
+  "loai": "tra_loi_ngan",
+  "de": "Hai vòi nước cùng chảy vào một bể không có nước thì sau 4 giờ đầy bể. Nếu mở vòi 1 chảy một mình trong 15 phút rồi khóa lại, mở tiếp vòi 2 chảy trong 45 phút thì cả hai vòi chảy được $\\dfrac{1}{6}$ bể. Tính thời gian mỗi vòi chảy một mình đầy bể.",
+  "dap_an": "24; 4,8",
+  "loi_giai": "Đổi 15 phút = $\\dfrac{1}{4}$ giờ, 45 phút = $\\dfrac{3}{4}$ giờ.\nGọi thời gian mà vòi thứ nhất và vòi thứ hai chảy một mình đầy bể lần lượt là $x, y$ (giờ) ($x,y > 4$).\nMỗi giờ vòi thứ nhất chảy được $\\dfrac{1}{x}$ (bể).\nMỗi giờ vòi thứ hai chảy được $\\dfrac{1}{y}$ (bể).\n4 giờ vòi thứ nhất chảy được $4 \\cdot \\dfrac{1}{x}$ (bể).\n4 giờ vòi thứ hai chảy được $4 \\cdot \\dfrac{1}{y}$ (bể).\nDo hai vòi cùng chảy trong 4 giờ thì đầy bể nên ta có PT: $4 \\cdot \\dfrac{1}{x} + 4 \\cdot \\dfrac{1}{y} = 1$ (1).\n15 phút vòi thứ nhất chảy được $\\dfrac{1}{4} \\cdot \\dfrac{1}{x}$ (bể).\n45 phút vòi thứ hai chảy được $\\dfrac{3}{4} \\cdot \\dfrac{1}{y}$ (bể).\nTa có PT: $\\dfrac{1}{4} \\cdot \\dfrac{1}{x} + \\dfrac{3}{4} \\c …",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Công việc chung - riêng"
+ },
+ {
+  "ma_cau": "T109030201045",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{1}{\\sqrt{x-15}-3}$.",
+  "dap_an": "$x\\ge15$ và $x\\ne24$.",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x-15\\ge0\\\\\\sqrt{x-15}\\ne3\\end{cases}\\Rightarrow\\begin{cases}x\\ge15\\\\x-15\\ne9\\end{cases}\\Rightarrow\\begin{cases}x\\ge15\\\\x\\ne24\\end{cases}$\nVậy $x\\ge15$ và $x\\ne24$.",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109030201010",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của $\\sqrt{x-11}$.",
+  "dap_an": "$x\\ge11$",
+  "loi_giai": "ĐKXĐ: $x\\ge11$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109030203121",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-3} + \\dfrac{6\\sqrt{x}}{9-x} - \\dfrac{3}{\\sqrt{x}+3}$ với $x \\ge 0; x \\ne 9$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+3}$",
+  "loi_giai": "$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-3} + \\dfrac{6\\sqrt{x}}{9-x} - \\dfrac{3}{\\sqrt{x}+3}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-3} - \\dfrac{6\\sqrt{x}}{(\\sqrt{x}-3)(\\sqrt{x}+3)} - \\dfrac{3}{\\sqrt{x}+3}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}+3)-6\\sqrt{x}-3(\\sqrt{x}-3)}{(\\sqrt{x}-3)(\\sqrt{x}+3)}$\n$B = \\dfrac{x-6\\sqrt{x}+9}{(\\sqrt{x}-3)(\\sqrt{x}+3)}$\n$B = \\dfrac{(\\sqrt{x}-3)^2}{(\\sqrt{x}-3)(\\sqrt{x}+3)}$\n$B = \\dfrac{\\sqrt{x}-3}{\\sqrt{x}+3}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030203006",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A = \\dfrac{\\sqrt{x}}{\\sqrt{x}+7} + \\dfrac{14\\sqrt{x}+49}{x+7\\sqrt{x}}$ với $x > 0$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}}$",
+  "loi_giai": "$A = \\dfrac{\\sqrt{x}}{\\sqrt{x}+7} + \\dfrac{14\\sqrt{x}+49}{x+7\\sqrt{x}}$\n$A = \\dfrac{\\sqrt{x}\\cdot\\sqrt{x}}{\\sqrt{x}(\\sqrt{x}+7)} + \\dfrac{14\\sqrt{x}+49}{\\sqrt{x}(\\sqrt{x}+7)}$\n$A = \\dfrac{x+14\\sqrt{x}+49}{\\sqrt{x}(\\sqrt{x}+7)}$\n$A = \\dfrac{(\\sqrt{x}+7)^2}{\\sqrt{x}(\\sqrt{x}+7)}$\n$A = \\dfrac{\\sqrt{x}+7}{\\sqrt{x}}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109110301001",
+  "loai": "tra_loi_ngan",
+  "de": "Viết tỉ số lượng giác sau thành tỉ số lượng giác của một góc nhỏ hơn $45^\\circ$: $\\sin 63^\\circ$.",
+  "dap_an": "sin 63° = cos 27°",
+  "loi_giai": "Hai góc nhọn phụ nhau thì sin góc này bằng cos góc kia: $\\sin\\alpha=\\cos(90^\\circ-\\alpha)$.\n$\\sin 63^\\circ=\\cos(90^\\circ-63^\\circ)=\\cos 27^\\circ$\nVì $27^\\circ<45^\\circ$ nên $\\sin 63^\\circ=\\cos 27^\\circ$ là tỉ số lượng giác của góc nhỏ hơn $45^\\circ$ cần tìm.",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T109030204021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $\\sqrt{36x^2 -504x+1764} =12$.",
+  "dap_an": "5; 9",
+  "loi_giai": "$\\sqrt{36x^2-504x+1764} = 12$\n$\\sqrt{(6x-42)^2} = 12$\n$|6x-42|=12$\nTH1: $6x-42 = 12 \\Rightarrow 6x = 54 \\Rightarrow x=9$.\nTH2: $6x-42 = -12 \\Rightarrow 6x = 30 \\Rightarrow x = 5$.\nVậy $x = 5$ hoặc $x = 9$.",
+  "nhan_cu": "Rút gọn Căn thức › Tìm x ứng dụng Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030203046",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{x-3\\sqrt{x}-88}{x-64} + \\dfrac{11}{\\sqrt{x}-8}$ với $x \\ge 0; x \\ne 64$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-8}$",
+  "loi_giai": "$B = \\dfrac{x-3\\sqrt{x}-88}{x-64} + \\dfrac{11}{\\sqrt{x}-8}$\n$B = \\dfrac{x-3\\sqrt{x}-88}{(\\sqrt{x}-8)(\\sqrt{x}+8)} + \\dfrac{11(\\sqrt{x}+8)}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{x-3\\sqrt{x}-88+11\\sqrt{x}+88}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{x+8\\sqrt{x}}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}+8)}{(\\sqrt{x}-8)(\\sqrt{x}+8)}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-8}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030201049",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-5}}$.",
+  "dap_an": "$x>5$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-5>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>5\\end{cases}\\Rightarrow x>5$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109020401026",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(x - 7)\\cdot (5x + 10) = 0$.",
+  "dap_an": "{7; -2}",
+  "loi_giai": "$(x - 7)\\cdot (5x + 10) = 0$\nTH1: $x - 7 = 0$\n$x = 7$\nTH2: $5x + 10 = 0$\n$x = -2$\nVậy phương trình có nghiệm $x \\in \\{7; -2\\}$.",
+  "nhan_cu": "Phương trình tích › Phương trình tích dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030204022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $\\sqrt{4(x-3)^2} = 10$.",
+  "dap_an": "-2; 8",
+  "loi_giai": "$\\sqrt{4(x-3)^2} = 10$\n$2|x-3|=10$\n$|x-3|=5$\nTH1: $x-3=5 \\Rightarrow x=8$.\nTH2: $x-3= -5 \\Rightarrow x = -2$.\nVậy $x = -2$ hoặc $x = 8$.",
+  "nhan_cu": "Rút gọn Căn thức › Tìm x ứng dụng Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109000000064",
+  "loai": "tu_luan",
+  "de": "Cho $a,\\ b,\\ c$ là các số thực. Chứng minh bất đẳng thức: $ab\\le\\left(\\dfrac{a+b}{2}\\right)^2\\le\\dfrac{a^2+b^2}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bất đẳng thức kép thì chứng minh từng vế, mỗi vế xét hiệu của hai biểu thức rồi biến đổi hiệu đó về bình phương của một biểu thức.\n**Bước 1.** Tách bất đẳng thức kép thành hai bất đẳng thức riêng: vế thứ nhất so $ab$ với $\\left(\\dfrac{a+b}{2}\\right)^2$, vế thứ hai so $\\left(\\dfrac{a+b}{2}\\right)^2$ với $\\dfrac{a^2+b^2}{2}$.\n**Bước 2.** Với mỗi bất đẳng thức, lập hiệu \"vế lớn trừ vế nhỏ\", khai triển hằng đẳng thức $(a+b)^2$ rồi quy đồng mẫu số.\n**Bước 3.** Thu gọn tử thức để nhận ra một hằng đẳng thức, từ đó thấy hiệu bằng một bình phương chia cho số dương nên không âm.\n**Bước 4.** Kết luận từng vế, ghép lại thành bất đẳng thức kép và nêu khi nào dấu bằng x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030203065",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $A = \\left( \\dfrac{2}{\\sqrt{x}-8} + \\dfrac{3}{2\\sqrt{x}+1} - \\dfrac{5\\sqrt{x}-25}{2x-15\\sqrt{x}-8} \\right) : \\dfrac{2\\sqrt{x}+3}{4x-32\\sqrt{x}}$ với $x > 0; x \\ne 64$.",
+  "dap_an": "$\\dfrac{4\\sqrt{x}}{2\\sqrt{x}+1}$",
+  "loi_giai": "$A = \\left( \\dfrac{2}{\\sqrt{x}-8} + \\dfrac{3}{2\\sqrt{x}+1} - \\dfrac{5\\sqrt{x}-25}{2x-15\\sqrt{x}-8} \\right) : \\dfrac{2\\sqrt{x}+3}{4x-32\\sqrt{x}}$\n$A = \\left( \\dfrac{2(2\\sqrt{x}+1)}{(\\sqrt{x}-8)(2\\sqrt{x}+1)} + \\dfrac{3(\\sqrt{x}-8)}{(\\sqrt{x}-8)(2\\sqrt{x}+1)} - \\dfrac{5\\sqrt{x}-25}{(\\sqrt{x}-8)(2\\sqrt{x}+1)} \\right) : \\dfrac{2\\sqrt{x}+3}{4\\sqrt{x}(\\sqrt{x}-8)}$\n$A = \\dfrac{4\\sqrt{x}+2+3\\sqrt{x}-24-5\\sqrt{x}+25}{(\\sqrt{x}-8)(2\\sqrt{x}+1)} : \\dfrac{2\\sqrt{x}+3}{4\\sqrt{x}(\\sqrt{x}-8)}$\n$A = \\dfrac{2\\sqrt{x}+3}{(\\sqrt{x}-8)(2\\sqrt{x}+1)} : \\dfrac{2\\sqrt{x}+3}{4\\sqrt{x}(\\sqrt{x}-8)}$\n$A = \\dfrac{2\\sqrt{x}+3}{(\\sqrt{x}-8)(2\\sqrt{x}+1)} \\cdot \\dfrac{4\\sqrt{x}(\\sqrt{x}-8)}{2\\sqrt{x}+3}$\n$A = \\dfrac{4\\ …",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030201036",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{1}{\\sqrt{x-6}-3}$.",
+  "dap_an": "$x\\ge6$ và $x\\ne15$.",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x-6\\ge0\\\\\\sqrt{x-6}\\ne3\\end{cases}\\Rightarrow\\begin{cases}x\\ge6\\\\x-6\\ne9\\end{cases}\\Rightarrow\\begin{cases}x\\ge6\\\\x\\ne15\\end{cases}$\nVậy $x\\ge6$ và $x\\ne15$.",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109030203005",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A = \\dfrac{\\sqrt{x}}{\\sqrt{x}+6} + \\dfrac{12\\sqrt{x}+36}{x+6\\sqrt{x}}$ với $x > 0$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}+6}{\\sqrt{x}}$",
+  "loi_giai": "$A = \\dfrac{\\sqrt{x}}{\\sqrt{x}+6} + \\dfrac{12\\sqrt{x}+36}{x+6\\sqrt{x}}$\n$A = \\dfrac{\\sqrt{x}\\cdot\\sqrt{x}}{\\sqrt{x}(\\sqrt{x}+6)} + \\dfrac{12\\sqrt{x}+36}{\\sqrt{x}(\\sqrt{x}+6)}$\n$A = \\dfrac{x+12\\sqrt{x}+36}{\\sqrt{x}(\\sqrt{x}+6)}$\n$A = \\dfrac{(\\sqrt{x}+6)^2}{\\sqrt{x}(\\sqrt{x}+6)}$\n$A = \\dfrac{\\sqrt{x}+6}{\\sqrt{x}}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030201057",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-13}}$.",
+  "dap_an": "$x>13$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-13>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>13\\end{cases}\\Rightarrow x>13$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109030203022",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{x+25}{x-25} + \\dfrac{5}{\\sqrt{x}+5}$ với $x \\ge 0; x \\ne 25$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-5}$",
+  "loi_giai": "$B = \\dfrac{x+25}{x-25} + \\dfrac{5}{\\sqrt{x}+5}$\n$B = \\dfrac{x+25}{(\\sqrt{x}-5)(\\sqrt{x}+5)} + \\dfrac{5(\\sqrt{x}-5)}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{x+25+5\\sqrt{x}-25}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{x+5\\sqrt{x}}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{\\sqrt{x}(\\sqrt{x}+5)}{(\\sqrt{x}-5)(\\sqrt{x}+5)}$\n$B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-5}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109030201013",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của $\\sqrt{x-14}$.",
+  "dap_an": "$x\\ge14$",
+  "loi_giai": "ĐKXĐ: $x\\ge14$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109020401019",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(2x - 4)\\cdot (x + 3) = 0$.",
+  "dap_an": "{2;-3}",
+  "loi_giai": "$(2x - 4)\\cdot (x + 3) = 0$\nTH1: $2x - 4 = 0$\n$x = 2$\nTH2: $x + 3 = 0$\n$x = -3$\nVậy phương trình có nghiệm $x \\in \\{2; -3\\}$.",
+  "nhan_cu": "Phương trình tích › Phương trình tích dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030305018",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}-3}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm GTNN của $P$.",
+  "dap_an": "-\\dfrac{3}{4}",
+  "loi_giai": "$P=\\dfrac{2\\sqrt{x}-3}{\\sqrt{x}+4}=\\dfrac{2(\\sqrt{x}+4)-11}{\\sqrt{x}+4}=2-\\dfrac{11}{\\sqrt{x}+4}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+4\\ge4$.\n$\\Rightarrow\\dfrac{11}{\\sqrt{x}+4}\\le\\dfrac{11}{4}$.\n$\\Rightarrow-\\dfrac{11}{\\sqrt{x}+4}\\ge-\\dfrac{11}{4}$.\n$\\Rightarrow2-\\dfrac{11}{\\sqrt{x}+4}\\ge2-\\dfrac{11}{4}$.\n$\\Rightarrow P\\ge-\\dfrac{3}{4}$.\nDấu bằng xảy ra khi $\\sqrt{x}+4=4\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$.\nVậy GTNN của $P$ là $-\\dfrac{3}{4}$ khi $x=0$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109080502001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A = 2 - \\dfrac{5}{(x+1)^2 + 1}$. Chứng minh rằng $A \\ge -3$",
+  "dap_an": "-3",
+  "loi_giai": "Ta có\n$(x+1)^2 \\ge 0$\nSuy ra\n$(x+1)^2 + 1 \\ge 1$\n$\\dfrac{5}{(x+1)^2 + 1} \\le \\dfrac{5}{1} = 5$\n$2 - \\dfrac{5}{(x+1)^2 + 1} \\ge 2 - 5$\n$A \\ge -3(dpcm)$",
+  "nhan_cu": "Tính chất của bất đẳng thức › Chứng minh bất đẳng thức dạng phân thức"
+ },
+ {
+  "ma_cau": "T109030305020",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{3\\sqrt{x}-2}{\\sqrt{x}+1}$ với $x$ là số nguyên dương. Tìm giá trị của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{3\\sqrt{x}-2}{\\sqrt{x}+1}=\\dfrac{3(\\sqrt{x}+1)-5}{\\sqrt{x}+1}=3-\\dfrac{5}{\\sqrt{x}+1}$.\nVì $x$ là số nguyên dương nên\n$x\\ge1\\Rightarrow\\sqrt{x}\\ge1\\Rightarrow\\sqrt{x}+1\\ge2$.\n$\\Rightarrow\\dfrac{5}{\\sqrt{x}+1}\\le\\dfrac{5}{2}$.\n$\\Rightarrow-\\dfrac{5}{\\sqrt{x}+1}\\ge-\\dfrac{5}{2}$.\n$\\Rightarrow3-\\dfrac{5}{\\sqrt{x}+1}\\ge3-\\dfrac{5}{2}$.\n$\\Rightarrow P\\ge\\dfrac{1}{2}$.\nDấu bằng xảy ra khi $\\sqrt{x}+1=2\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$.\nVậy $P$ đạt giá trị nhỏ nhất là $\\dfrac{1}{2}$ khi $x=1$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109030204005",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $\\sqrt{x-4}+\\dfrac{1}{5}\\sqrt{25x-100} = \\dfrac{1}{3}\\sqrt{9x-36}+5$.",
+  "dap_an": "29",
+  "loi_giai": "Với điều kiện xác định $x \\ge 4$, ta có:\n$\\sqrt{x-4}+\\dfrac{1}{5}\\sqrt{25x-100} = \\dfrac{1}{3}\\sqrt{9x-36}+5$\n$\\sqrt{x-4}+\\dfrac{1}{5}\\sqrt{25(x-4)}=\\dfrac{1}{3}\\sqrt{9(x-4)}+5$\n$\\sqrt{x-4}+\\sqrt{x-4}= \\sqrt{x-4}+5$\n$\\sqrt{x-4}=5$\n$x-4=25$\n$x = 29$ (thỏa mãn điều kiện).",
+  "nhan_cu": "Rút gọn Căn thức › Tìm x ứng dụng Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109000000088",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} x+2y=1 \\\\ 2x+3y=4 \\end{cases}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình thứ nhất có hệ số của $x$ bằng $1$, nên rút $x$ theo $y$ rồi thế sang phương trình thứ hai.\n**Bước 1.** Chọn phương trình có ẩn với hệ số bằng $1$ để rút ẩn đó theo ẩn còn lại, như vậy không xuất hiện phân số.\n**Bước 2.** Thế biểu thức vừa rút được vào phương trình còn lại, thu gọn và giải phương trình một ẩn.\n**Bước 3.** Thay giá trị vừa tìm vào biểu thức đã rút để tính ẩn còn lại, rồi kết luận nghiệm của hệ.\n**Phần 2. Trình bày**\nTừ phương trình thứ nhất, ta có:\n$x=1-2y$ (1)\nThế vào phương trình thứ hai, ta được:\n$2(1-2y)+3y=4$\n$2-4y+3y=4$\n$-y=2$\n$y=-2$\nThay $y=-2$ vào (1), ta được:\n$x=1-2\\cdot(-2)=5$\nVậy hệ phương trình đã cho có nghiệm duy …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000003",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} -2x+6y=8 \\\\ 3x-9y=-12 \\end{cases}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi khử ẩn, phải đọc đúng dạng của phương trình thu được vì nó cho biết hệ có tìm được cặp nghiệm duy nhất hay không.\n**Bước 1.** Chọn cách cộng đại số: nhân hai vế của hai phương trình với các số thích hợp để hệ số của $x$ trở thành hai số đối nhau.\n**Bước 2.** Cộng từng vế hai phương trình mới, rồi quan sát phương trình thu được có còn ẩn hay không và hai vế có khớp nhau hay không.\n**Bước 3.** Nếu phương trình thu được đúng với mọi giá trị của hai ẩn thì nó không cho thêm thông tin gì: quay lại một phương trình của đề, rút một ẩn theo ẩn kia để viết nghiệm tổng quát.\n**Bước 4.** Thử vài cặp $(x;y)$ lấy từ nghiệm tổng quát vào cả hai phương trình của  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109010302001",
+  "loai": "tra_loi_ngan",
+  "de": "Hai đội xe chở cát để san lấp một khu đất. Nếu hai đội cùng làm thì sau 8 ngày xong công việc.\nĐội thứ nhất làm 6 ngày thì bị điều đi làm việc khác sau đó đội thứ hai làm tiếp trong 9 ngày thì xong công việc. Hỏi mỗi đội làm một mình bao lâu xong công việc?",
+  "dap_an": "24; 12",
+  "loi_giai": "Gọi số ngày mà đội thứ nhất và đội thứ hai làm một mình xong công việc lần lượt là $x,y$ (ngày)\n$(x,y > 8)$.\nMỗi ngày đội thứ nhất làm được: $\\dfrac{1}{x}$ (công việc).\nMỗi ngày đội thứ hai làm được: $\\dfrac{1}{y}$ (công việc).\nMỗi ngày cả hai đội làm được: $\\dfrac{1}{8}$ công việc\nDo đó ta có PT:\n$\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{8}$ (1)\nĐội thứ nhất làm 6 ngày sau đó đội thứ hai làm tiếp trong 9 ngày thì xong công việc nên ta có PT:\n$\\dfrac{6}{x} + \\dfrac{9}{y} = 1$ (2)\nTừ (1) và (2) ta có HPT:\n$\\begin{cases}\n\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{8}\\\\\n\\dfrac{6}{x} + \\dfrac{9}{y} = 1\n\\end{cases}$\nGiải hệ PT thu được $x = 24; y = 12$ (TMĐK)\nVậy đội thứ nhất làm một mình thì sau 24 n …",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Công việc chung - riêng"
+ },
+ {
+  "ma_cau": "T109020101046",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $-6x - 18 = 0$",
+  "dap_an": "-3",
+  "loi_giai": "$-6x - 18 = 0$\\n$-6x = 18$\\n$x = -3$\\nVậy phương trình có nghiệm $x = -3$.",
+  "nhan_cu": "Phương trình bậc nhất một ẩn › Phương trình bậc nhất một ẩn dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030201005",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của $\\sqrt{x-6}$.",
+  "dap_an": "$x\\ge6$",
+  "loi_giai": "ĐKXĐ: $x\\ge6$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109010201027",
+  "loai": "tra_loi_ngan",
+  "de": "Giải hệ phương trình: $\\begin{cases} 2x + 5y = -3 \\\\ 2x + y = 1 \\ \\end{cases}$.",
+  "dap_an": "(1;-1)",
+  "loi_giai": "$\\begin{cases} 2x + 5y = -3 \\quad (1) \\\\ 2x + y = 1 \\quad (2) \\\\ \\end{cases}$\nTrừ hai vế của phương trình (1) cho phương trình (2) ta được:\n$4y = -4$\n$y = -1$\nThay $y = -1$ vào phương trình (2) ta được:\n$2x + (-1) = 1$\n$2x = 2$\n$x = 1$\nVậy hệ phương trình đã cho có nghiệm $(x;y) = (1;-1)$.",
+  "nhan_cu": "Hệ phương trình bậc nhất hai ẩn › Giải hệ phương trình bậc nhất hai ẩn cơ bản"
+ }
+]
