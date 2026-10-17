@@ -71,7 +71,7 @@ export const NEN_ERP: NenErp[] = [
   { id: 'erp_cn_ns002', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns002.jpg', rieng_cho: ['NS002'] },
   { id: 'erp_cn_ns009', ten: 'Nền của Quỳnh Trang', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
   { id: 'erp_cn_ns004', ten: 'Sân thượng sau mưa', url: '/bk-ui/erp/nen/ca-nhan/ns004.jpg', rieng_cho: ['NS004'] },
-  { id: 'erp_cn_ns008', ten: 'Vịt vàng', url: '/bk-ui/erp/nen/ca-nhan/ns008.jpg', rieng_cho: ['NS008'] },
+  { id: 'erp_cn_ns008', ten: 'Vịt vàng', url: '/bk-ui/erp/nen/ca-nhan/ns008.jpg', rieng_cho: ['NS008', 'NS009'] },
 ]
 // Hình nền người này được thấy (dùng chung + hình riêng của đúng mã nhân sự).
 export const nenErpCho = (maNs: string | null | undefined): NenErp[] =>
