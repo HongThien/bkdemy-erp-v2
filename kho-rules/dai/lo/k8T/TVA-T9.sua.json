@@ -1,0 +1,17 @@
+{
+  "T9V.2a@p218": {
+    "sach_in_sai": "trang PDF 218, §9 ví dụ 2: đề in (x+7)(2x+1) = 0, dòng đầu lời giải in (x-7)(2x+1); các ý a, b, c của lời giải đều dùng nhân tử x+7. Kho ghi (x+7)(2x+1)."
+  },
+  "T9V.2b@p218": {
+    "sach_in_sai": "trang PDF 218, §9 ví dụ 2: dòng đầu lời giải in (x-7)(2x+1), đề in (x+7)(2x+1); ý b của lời giải dùng x+7 = 0. Kho ghi (x+7)(2x+1)."
+  },
+  "T9V.2c@p218": {
+    "sach_in_sai": "trang PDF 218, §9 ví dụ 2 ý c: dòng đầu lời giải in (x-7)(2x+1) thay cho (x+7)(2x+1), và in \"2x - 1 = 0 có nghiệm x = -1/2\" (đúng là 2x + 1 = 0). Kết luận cuối của sách (-7 và -1/2) đúng."
+  },
+  "T9V.3@p218": {
+    "sach_in_sai": "trang PDF 219, §9 ví dụ 3, câu cuối lời giải: in \"không thể có trường hợp cả ba số a-1, b-1, c-1 đều dương mà chỉ có một trong ba số đó dương (hai số kia âm)\" — tự mâu thuẫn (có lẽ định viết đều âm). Lời giải kho lập luận lại theo số thừa số âm là chẵn."
+  },
+  "T9V.6b@p219": {
+    "sach_in_sai": "trang PDF 219, §9 ví dụ 6 ý b: đề in tích (n+1)(n+2)...(2n) chia hết cho 3^n — sai với n = 1 (tích bằng 2); lời giải sách (đầu trang PDF 220) viết tích (n+1)(n+2)...(3n). Hai nhóm số trong lời giải in số hạng cuối là 3n+1, 3n+2 (đúng là 3n-2, 3n-1); lời giải sách dừng ở bước viết tích thành ba nhóm. Kho ghi đề với (3n)."
+  }
+}

@@ -1,0 +1,1028 @@
+[
+ {
+  "ma_nguon": "T9V.1@p218",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040102",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch toàn lớp 7 Mátxcơva, vòng II, 1961) Chứng minh rằng không thể có các số nguyên $a,b,c,d$ nào thỏa mãn các đẳng thức: $abcd-a=1961$; $abcd-b=961$; $abcd-c=61$; $abcd-d=1$.",
+  "noi_dung_sach": "(Đề thi vô địch toàn lớp 7 Mátxcơva, vòng II, 1961) Chứng minh rằng không thể có các số nguyên $a,b,c,d$ nào thỏa mãn các đẳng thức: $abcd-a=1961$; $abcd-b=961$; $abcd-c=61$; $abcd-d=1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn đẳng thức đều có dạng \"một số nguyên nhân một số nguyên bằng một số lẻ\" nên cả bốn số phải lẻ; nhưng khi đó $abcd-a$ lại chẵn, trong khi vế phải $1961$ là số lẻ.\n\n**Bước 1.** Giả sử tồn tại bốn số nguyên thỏa mãn rồi đặt nhân tử chung ở vế trái từng đẳng thức để viết mỗi đẳng thức thành tích hai số nguyên.\n\n**Bước 2.** Dùng tính chất tích hai số nguyên là số lẻ khi và chỉ khi cả hai thừa số đều lẻ để suy ra từng số $a,b,c,d$ đều là số lẻ.\n\n**Bước 3.** Từ tính lẻ của bốn số suy ra tính chẵn lẻ của $abcd-a$ rồi đối chiếu với vế phải của đẳng thức đầu để tìm ra mâu thuẫn.\n\n**Chú ý:** Chỉ cần xét chẵn lẻ là đủ, không cần tìm các ước của $1961$, $961$, $61$; dạng toán \"chứng minh không tồn tại\" thường kết thúc bằng một mâu thuẫn về tính chẵn lẻ hoặc số dư.\n\n**Phần 2. Trình bày**\n\nGiả sử tồn tại các số nguyên $a,b,c,d$ thỏa mãn bốn đẳng thức đã cho.\n\nĐặt nhân tử chung ở vế trái:\n\n$a(bcd-1)=1961$ $(1)$; $b(acd-1)=961$ $(2)$; $c(abd-1)=61$ $(3)$; $d(abc-1)=1$ $(4)$.\n\nVế phải của $(1)$ là số lẻ nên vế trái là tích của hai số nguyên lẻ, suy ra $a$ lẻ.\n\nHoàn toàn tương tự, từ $(2)$, $(3)$, $(4)$ có $b$, $c$, $d$ đều lẻ.\n\nBốn số $a,b,c,d$ đều lẻ nên tích $abcd$ lẻ, do đó $abcd-a$ là hiệu của hai số lẻ, là một số chẵn.\n\nNhưng theo $(1)$ thì $abcd-a=1961$ là số lẻ, mâu thuẫn.\n\nVậy không tồn tại các số nguyên $a,b,c,d$ thỏa mãn các đẳng thức đã cho.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "chứng minh bằng phản chứng",
+   "tính chẵn lẻ",
+   "phân tích thành nhân tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 218): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.2a@p218",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các nghiệm số của phương trình $(x+7)(2x+1)=0$ trong trường hợp ẩn $x$ chỉ lấy giá trị trên tập hợp $\\mathbb{N}$ các số tự nhiên.",
+  "noi_dung_sach": "Tìm tất cả các nghiệm số của phương trình $(x+7)(2x+1)=0$ trong trường hợp ẩn $x$ chỉ lấy giá trị trên tập hợp $\\mathbb{N}$ các số tự nhiên.",
+  "dap_an": "$S=\\varnothing$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là tích của hai nhân tử nên phương trình bằng $0$ khi một nhân tử bằng $0$; nhưng ở tập số tự nhiên cần xem có số tự nhiên nào làm một nhân tử bằng $0$ hay không.\n\n**Bước 1.** Nhắc lại rằng một tích bằng $0$ khi và chỉ khi có ít nhất một thừa số bằng $0$, nên phải xét từng nhân tử của vế trái.\n\n**Bước 2.** Đánh giá dấu của hai nhân tử $x+7$ và $2x+1$ khi $x$ chạy trên tập số tự nhiên, thay vì giải từng phương trình bậc nhất.\n\n**Bước 3.** Từ dấu của hai nhân tử rút ra dấu của tích rồi so với số $0$ để kết luận về tập nghiệm.\n\n**Chú ý:** Nghiệm của $x+7=0$ và $2x+1=0$ phải thuộc tập số mà đề cho thì mới được nhận; đổi tập số thì kết luận có thể khác hẳn.\n\n**Phần 2. Trình bày**\n\nTích $(x+7)(2x+1)$ bằng $0$ khi và chỉ khi $x+7=0$ hoặc $2x+1=0$.\n\nVới mọi $x\\in\\mathbb{N}$ ta có $x\\geq0$, nên $x+7>0$ và $2x+1>0$.\n\nTích của hai số dương luôn dương, không thể bằng $0$.\n\nVậy phương trình vô nghiệm trên $\\mathbb{N}$, tức $S=\\varnothing$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phương trình tích",
+   "tập hợp số tự nhiên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 218): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 218, §9 ví dụ 2: đề in () — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.2b@p218",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các nghiệm số của phương trình $(x+7)(2x+1)=0$ trong trường hợp ẩn $x$ chỉ lấy giá trị trên tập hợp $\\mathbb{Z}$ các số nguyên.",
+  "noi_dung_sach": "Tìm tất cả các nghiệm số của phương trình $(x+7)(2x+1)=0$ trong trường hợp ẩn $x$ chỉ lấy giá trị trên tập hợp $\\mathbb{Z}$ các số nguyên.",
+  "dap_an": "$S=\\{-7\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình tích cho từng nhân tử bằng $0$; nhân tử nào cho nghiệm không phải số nguyên thì bị loại vì $x$ chỉ được lấy giá trị nguyên.\n\n**Bước 1.** Cho từng nhân tử của vế trái bằng $0$ vì tích chỉ bằng $0$ khi có ít nhất một thừa số bằng $0$.\n\n**Bước 2.** Giải hai phương trình bậc nhất nhận được rồi xem nghiệm của mỗi phương trình có phải là số nguyên hay không.\n\n**Bước 3.** Chỉ giữ lại các nghiệm thuộc tập số nguyên rồi viết tập nghiệm của phương trình đã cho.\n\n**Chú ý:** Nghiệm hữu tỉ không nguyên của một nhân tử vẫn là nghiệm của phương trình trên tập số hữu tỉ, nhưng ở đây phải loại vì $x$ bị giới hạn trong tập số nguyên.\n\n**Phần 2. Trình bày**\n\n$(x+7)(2x+1)=0\\Leftrightarrow x+7=0$ hoặc $2x+1=0$.\n\n$x+7=0\\Leftrightarrow x=-7$, và $-7\\in\\mathbb{Z}$ nên nhận.\n\n$2x+1=0\\Leftrightarrow x=-\\dfrac{1}{2}$, mà $-\\dfrac{1}{2}\\notin\\mathbb{Z}$ nên loại.\n\nVậy trên $\\mathbb{Z}$ phương trình có đúng một nghiệm: $S=\\{-7\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phương trình tích",
+   "tập hợp số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 218): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 218, §9 ví dụ 2: dòng đầ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.2c@p218",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các nghiệm số của phương trình $(x+7)(2x+1)=0$ trong trường hợp ẩn $x$ lấy giá trị trên tập hợp $\\mathbb{Q}$ các số hữu tỉ.",
+  "noi_dung_sach": "Tìm tất cả các nghiệm số của phương trình $(x+7)(2x+1)=0$ trong trường hợp ẩn $x$ lấy giá trị trên tập hợp $\\mathbb{Q}$ các số hữu tỉ.",
+  "dap_an": "$S=\\left\\{-7;-\\dfrac{1}{2}\\right\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là tích của hai nhị thức bậc nhất nên cho từng nhị thức bằng $0$; trên tập số hữu tỉ mọi nghiệm tìm được đều được nhận.\n\n**Bước 1.** Cho từng nhân tử của vế trái bằng $0$ vì tích chỉ bằng $0$ khi có ít nhất một thừa số bằng $0$.\n\n**Bước 2.** Giải riêng từng phương trình bậc nhất nhận được để tìm hai giá trị của $x$.\n\n**Bước 3.** Kiểm tra hai giá trị đó có là số hữu tỉ hay không rồi viết tập nghiệm của phương trình đã cho.\n\n**Chú ý:** Cùng một phương trình nhưng đổi tập số của ẩn thì tập nghiệm có thể thay đổi: số nghiệm trên tập số hữu tỉ có thể nhiều hơn trên tập số nguyên hay tự nhiên.\n\n**Phần 2. Trình bày**\n\n$(x+7)(2x+1)=0\\Leftrightarrow x+7=0$ hoặc $2x+1=0$.\n\n$x+7=0\\Leftrightarrow x=-7$.\n\n$2x+1=0\\Leftrightarrow x=-\\dfrac{1}{2}$.\n\nCả hai giá trị đều là số hữu tỉ nên đều nhận.\n\nVậy $S=\\left\\{-7;-\\dfrac{1}{2}\\right\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phương trình tích",
+   "tập hợp số hữu tỉ"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 218): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 218, §9 ví dụ 2 ý c: dòn) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "dat"
+ },
+ {
+  "ma_nguon": "T9V.3@p218",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T030101",
+  "nhom_soan": "T18T030101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch Nam Tư, 1976) Chứng minh rằng nếu tích của ba số bằng $1$ và tổng của chúng lớn hơn tổng các số nghịch đảo của chúng thì có một trong ba số đó lớn hơn $1$.",
+  "noi_dung_sach": "(Đề thi vô địch Nam Tư, 1976) Chứng minh rằng nếu tích của ba số bằng $1$ và tổng của chúng lớn hơn tổng các số nghịch đảo của chúng thì có một trong ba số đó lớn hơn $1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn chứng minh có một số lớn hơn $1$ thì xét tích $(a-1)(b-1)(c-1)$: nhờ $abc=1$ khai triển ra đúng hiệu \"tổng trừ tổng nghịch đảo\" mà giả thiết cho là dương, rồi dùng dấu của tích.\n\n**Bước 1.** Khai triển $(a-1)(b-1)(c-1)$ và dùng $abc=1$ để rút gọn, chỉ còn lại tổng ba số trừ đi tổng các tích từng đôi.\n\n**Bước 2.** Biến đổi tổng các tích từng đôi thành tổng các số nghịch đảo bằng cách chia cho tích $abc=1$ rồi so sánh với giả thiết để biết dấu của tích.\n\n**Bước 3.** Từ việc tích ba số dương suy ra số thừa số âm là chẵn, rồi chỉ ra rằng luôn có ít nhất một thừa số dương.\n\n**Chú ý:** Tích dương không có nghĩa là cả ba thừa số dương, vì còn khả năng có hai thừa số âm; trong mọi khả năng vẫn có một thừa số dương nên kết luận không đổi.\n\n**Phần 2. Trình bày**\n\nVì $abc=1$ nên $a,b,c\\neq0$ và $ab+bc+ca=abc\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$.\n\n$(a-1)(b-1)(c-1)=abc-(ab+bc+ca)+(a+b+c)-1$\n\n$=(a+b+c)-(ab+bc+ca)$ (vì $abc=1$)\n\n$=(a+b+c)-\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)>0$ theo giả thiết.\n\nTích ba số $a-1,b-1,c-1$ dương nên cả ba đều khác $0$ và số thừa số âm là số chẵn, tức là $0$ hoặc $2$.\n\nNếu không có thừa số âm thì cả ba $a-1,b-1,c-1$ đều dương.\n\nNếu có hai thừa số âm thì thừa số còn lại dương.\n\nTrong cả hai trường hợp có ít nhất một trong ba số $a-1,b-1,c-1$ dương, tức có một trong ba số $a,b,c$ lớn hơn $1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét tích (a−1)(b−1)(c−1)",
+   "dấu của tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 218): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 219, §9 ví dụ 3, câu cuố) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.4@p219",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T010302",
+  "nhom_soan": "T18T010302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho đa thức $P(x)=ax^2+bx+c$. Chứng minh rằng nếu $P(x)$ có ba nghiệm số phân biệt $\\alpha,\\beta,\\gamma$ thì $a=b=c=0$ tức là $P(x)=0$ với mọi $x$.",
+  "noi_dung_sach": "Cho đa thức $P(x)=ax^2+bx+c$. Chứng minh rằng nếu $P(x)$ có ba nghiệm số phân biệt $\\alpha,\\beta,\\gamma$ thì $a=b=c=0$ tức là $P(x)=0$ với mọi $x$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba nghiệm phân biệt cho ba đẳng thức; trừ vế theo vế hai lần để mỗi lần ra một nhân tử $\\alpha-\\beta$ (hoặc tương tự) khác $0$ rồi chia đi, lần lượt triệt tiêu từng hệ số.\n\n**Bước 1.** Viết ba đẳng thức $P(\\alpha)=0$, $P(\\beta)=0$, $P(\\gamma)=0$ rồi trừ vế theo vế đẳng thức thứ nhất cho đẳng thức thứ hai để mất hệ số $c$.\n\n**Bước 2.** Phân tích vế trái thành tích, chia cho nhân tử $\\alpha-\\beta$ khác $0$ để được một đẳng thức chỉ chứa $a$ và $b$; làm tương tự cho cặp thứ nhất và thứ ba.\n\n**Bước 3.** Trừ vế theo vế hai đẳng thức chỉ chứa $a$ và $b$ rồi chia cho nhân tử khác $0$ để tìm hệ số $a$.\n\n**Bước 4.** Thế ngược lên các đẳng thức trước để tìm lần lượt $b$ rồi $c$, sau đó kết luận về đa thức.\n\n**Chú ý:** Việc chia cho $\\alpha-\\beta$ hay $\\beta-\\gamma$ chỉ được phép vì các nghiệm đôi một khác nhau; nếu hai nghiệm trùng nhau thì không thể kết luận các hệ số bằng $0$.\n\n**Phần 2. Trình bày**\n\nVì $\\alpha,\\beta,\\gamma$ là nghiệm của $P(x)$ nên\n\n$a\\alpha^2+b\\alpha+c=0$ $(1)$; $a\\beta^2+b\\beta+c=0$ $(2)$; $a\\gamma^2+b\\gamma+c=0$ $(3)$.\n\nLấy $(1)$ trừ $(2)$: $a(\\alpha^2-\\beta^2)+b(\\alpha-\\beta)=0\\Leftrightarrow(\\alpha-\\beta)[a(\\alpha+\\beta)+b]=0$.\n\nVì $\\alpha\\neq\\beta$ nên $a(\\alpha+\\beta)+b=0$ $(4)$.\n\nLấy $(1)$ trừ $(3)$, tương tự và vì $\\alpha\\neq\\gamma$ ta có $a(\\alpha+\\gamma)+b=0$ $(5)$.\n\nLấy $(4)$ trừ $(5)$: $a(\\beta-\\gamma)=0$.\n\nVì $\\beta\\neq\\gamma$ nên $a=0$.\n\nThay $a=0$ vào $(4)$ được $b=0$; thay $a=b=0$ vào $(1)$ được $c=0$.\n\nVậy $P(x)=0x^2+0x+0=0$ với mọi $x$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "trừ vế theo vế",
+   "phân tích thành nhân tử",
+   "chứng minh trực tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 219): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.5@p219",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T010401",
+  "nhom_soan": "T18T010401",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm số dư trong phép chia của biểu thức $(x+2)(x+4)(x+6)(x+8)+2008$ cho đa thức $x^2+10x+21$.",
+  "noi_dung_sach": "Tìm số dư trong phép chia của biểu thức $(x+2)(x+4)(x+6)(x+8)+2008$ cho đa thức $x^2+10x+21$.",
+  "dap_an": "$1993$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ghép các nhân tử đầu với cuối và hai nhân tử giữa thì được hai tam thức chỉ khác nhau hằng số, đều chứa $x^2+10x$; đặt chính đa thức chia làm ẩn phụ để biểu thức thành đa thức bậc hai theo ẩn phụ đó.\n\n**Bước 1.** Nhân $(x+2)(x+8)$ và $(x+4)(x+6)$ để thấy hai tích cùng có phần $x^2+10x$ rồi viết chúng qua đa thức chia $x^2+10x+21$.\n\n**Bước 2.** Đặt đa thức chia làm ẩn phụ $t$ và khai triển biểu thức thành đa thức bậc hai theo $t$, nhớ cộng cả số $2008$.\n\n**Bước 3.** Viết biểu thức dưới dạng $t$ nhân một đa thức cộng với một hằng số rồi đổi $t$ trở lại để chỉ ra thương và số dư.\n\n**Chú ý:** Số dư phải có bậc nhỏ hơn bậc của đa thức chia; ở đây số dư là một hằng số nên thỏa điều kiện này.\n\n**Phần 2. Trình bày**\n\n$(x+2)(x+4)(x+6)(x+8)+2008=[(x+2)(x+8)][(x+4)(x+6)]+2008$\n\n$=(x^2+10x+16)(x^2+10x+24)+2008$.\n\nĐặt $t=x^2+10x+21$, khi đó $x^2+10x+16=t-5$ và $x^2+10x+24=t+3$, nên\n\n$(x+2)(x+4)(x+6)(x+8)+2008=(t-5)(t+3)+2008=t^2-2t+1993=t(t-2)+1993$.\n\nThay lại $t=x^2+10x+21$: $(x+2)(x+4)(x+6)(x+8)+2008=(x^2+10x+21)(x^2+10x+19)+1993$.\n\nSố $1993$ có bậc $0$, nhỏ hơn bậc của $x^2+10x+21$, nên đó là số dư.\n\nVậy số dư trong phép chia là $1993$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ",
+   "phép chia đa thức có dư"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 219): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.6a@p219",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng với mọi số $n$ nguyên dương: $(n+1)(n+2)(n+3)\\cdots(2n)$ chia hết cho $2^n$.",
+  "noi_dung_sach": "Chứng minh rằng với mọi số $n$ nguyên dương: $(n+1)(n+2)(n+3)\\cdots(2n)$ chia hết cho $2^n$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích $n$ số nguyên liên tiếp từ $n+1$ đến $2n$ chính là thương của hai giai thừa; tách các số chẵn ra khỏi tử thì thấy chúng sinh ra đúng $n$ thừa số $2$.\n\n**Bước 1.** Viết tích đã cho thành thương của tích các số từ $1$ đến $2n$ chia cho tích các số từ $1$ đến $n$.\n\n**Bước 2.** Tách tử thành tích các số lẻ nhân với tích các số chẵn từ $2$ đến $2n$.\n\n**Bước 3.** Đặt thừa số $2$ ra khỏi từng số chẵn rồi rút gọn với mẫu để một lũy thừa của $2$ xuất hiện, còn phần còn lại là một số nguyên.\n\n**Chú ý:** Tích các số lẻ trong dấu móc không chứa thừa số $2$ nào, nên tích đã cho chứa đúng $n$ thừa số $2$, không nhiều hơn.\n\n**Phần 2. Trình bày**\n\n$(n+1)(n+2)(n+3)\\cdots(2n)=\\dfrac{1\\cdot2\\cdot3\\cdots(2n)}{1\\cdot2\\cdot3\\cdots n}$\n\n$=\\left[1\\cdot3\\cdot5\\cdots(2n-1)\\right]\\cdot\\dfrac{2\\cdot4\\cdot6\\cdots(2n)}{1\\cdot2\\cdot3\\cdots n}$.\n\nMỗi số chẵn trong $2,4,6,\\ldots,2n$ có dạng $2k$ với $k=1{,}2,\\ldots,n$ nên\n\n$2\\cdot4\\cdot6\\cdots(2n)=2^n\\cdot(1\\cdot2\\cdot3\\cdots n)$.\n\nDo đó $(n+1)(n+2)(n+3)\\cdots(2n)=2^n\\cdot\\left[1\\cdot3\\cdot5\\cdots(2n-1)\\right]$.\n\nThừa số trong dấu móc là một số nguyên dương nên tích đã cho chia hết cho $2^n$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "biến đổi tích thành thương của hai giai thừa",
+   "tách thừa số 2"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 219): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T9V.6b@p219",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040101",
+  "nhom_soan": "T18T040101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng với mọi số $n$ nguyên dương: $(n+1)(n+2)(n+3)\\cdots(3n)$ chia hết cho $3^n$.",
+  "noi_dung_sach": "Chứng minh rằng với mọi số $n$ nguyên dương: $(n+1)(n+2)(n+3)\\cdots(3n)$ chia hết cho $3^n$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cũng như với $2^n$, viết tích $n$ số liên tiếp thành thương của hai giai thừa rồi tách các bội của $3$ ra để lộ đúng $n$ thừa số $3$; điều này đúng cho tích từ $n+1$ đến $3n$.\n\n**Bước 1.** Viết tích các số từ $n+1$ đến $3n$ thành thương của tích các số từ $1$ đến $3n$ chia cho tích các số từ $1$ đến $n$.\n\n**Bước 2.** Chia các số từ $1$ đến $3n$ thành ba nhóm theo số dư khi chia cho $3$ rồi viết tử thành tích của ba nhóm đó.\n\n**Bước 3.** Đặt thừa số $3$ ra khỏi từng bội của $3$ để nhóm các bội đó cho ra $3^n$ nhân với giai thừa của $n$, rồi rút gọn với mẫu.\n\n**Chú ý:** Hai nhóm còn lại gồm các số không chia hết cho $3$, mỗi nhóm có đúng $n$ số hạng; chúng là các số nguyên nên không ảnh hưởng đến tính chia hết cho $3^n$.\n\n**Phần 2. Trình bày**\n\nXét tích $A=(n+1)(n+2)(n+3)\\cdots(3n)$.\n\nTa có\n\n$A=\\dfrac{1\\cdot2\\cdot3\\cdots(3n)}{1\\cdot2\\cdot3\\cdots n}$\n\n$=\\left[1\\cdot4\\cdot7\\cdots(3n-2)\\right]\\cdot\\left[2\\cdot5\\cdot8\\cdots(3n-1)\\right]\\cdot\\dfrac{3\\cdot6\\cdot9\\cdots(3n)}{1\\cdot2\\cdot3\\cdots n}$.\n\nCác bội của $3$ từ $3$ đến $3n$ có dạng $3k$ với $k=1{,}2,\\ldots,n$ nên\n\n$3\\cdot6\\cdot9\\cdots(3n)=3^n\\cdot(1\\cdot2\\cdot3\\cdots n)$.\n\nDo đó $A=3^n\\cdot\\left[1\\cdot4\\cdot7\\cdots(3n-2)\\right]\\cdot\\left[2\\cdot5\\cdot8\\cdots(3n-1)\\right]$.\n\nHai thừa số trong dấu móc là các số nguyên dương nên $A$ chia hết cho $3^n$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "biến đổi tích thành thương của hai giai thừa",
+   "tách thừa số 3"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 219): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 219, §9 ví dụ 6 ý b: đề ) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.1@p220",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040303",
+  "nhom_soan": "T18T040303",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình sau trên tập số nguyên: $x^2-6xy+13y^2=100$.",
+  "noi_dung_sach": "Giải phương trình sau trên tập số nguyên: $x^2-6xy+13y^2=100$.",
+  "dap_an": "$(x;y)\\in\\{(10;0);(-10;0);(17;3);(1;3);(-17;-3);(-1;-3);(6;4);(18;4);(-18;-4);(-6;-4);(15;5);(-15;-5)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái tách được thành một bình phương cộng với $4y^2$, nên phương trình bị chặn mạnh: $y$ chỉ nhận hữu hạn giá trị, rồi mỗi giá trị cho một bình phương cụ thể để tìm $x$.\n\n**Bước 1.** Tách $13y^2=9y^2+4y^2$ để gom $x^2-6xy+9y^2$ thành bình phương của một hiệu, đưa phương trình về dạng $(x-3y)^2$ bằng $4$ lần một biểu thức theo $y$.\n\n**Bước 2.** Vì vế trái là bình phương nên không âm; suy ra miền giá trị của $y$, đồng thời vế trái chia hết cho $4$ nên $x-3y$ là số chẵn, đặt $x-3y=2k$ để đưa về tổng hai bình phương bằng một số cho trước.\n\n**Bước 3.** Liệt kê các số chính phương không vượt quá giá trị đó và chọn những cặp $(y^2;k^2)$ có tổng đúng bằng giá trị này.\n\n**Bước 4.** Với từng $y$ vừa chọn, tìm $k$ (cả hai dấu) rồi tính $x=3y+2k$ để ghi đủ các cặp nghiệm.\n\n**Chú ý:** Cả $y$ lẫn $k$ đều có thể âm; đếm lại đủ số nghiệm, đừng bỏ sót các cặp đối nhau hoặc các giá trị của $x$ ứng với dấu $\\pm$ của $k$.\n\n**Phần 2. Trình bày**\n\n$x^2-6xy+13y^2=100\\Leftrightarrow(x^2-6xy+9y^2)+4y^2=100\\Leftrightarrow(x-3y)^2=4(25-y^2)$.\n\nVế trái là bình phương nên $25-y^2\\ge0$, tức $y^2\\le25$.\n\nVì $(x-3y)^2$ chia hết cho $4$ nên $x-3y$ chẵn; đặt $x-3y=2k$ ($k\\in\\mathbb{Z}$), phương trình trở thành $y^2+k^2=25$.\n\nCác số chính phương không vượt quá $25$ là $0;1;4;9;16;25$, trong đó cặp có tổng $25$ chỉ là $\\{0;25\\}$ và $\\{9;16\\}$.\n\nDo đó $(y^2;k^2)\\in\\{(0;25);(9;16);(16;9);(25;0)\\}$.\n\n$y=0$, $k=\\pm5$: $x=\\pm10$, được $(10;0)$, $(-10;0)$.\n\n$y=3$, $k=\\pm4$: $x=9\\pm8\\in\\{17;1\\}$, được $(17;3)$, $(1;3)$.\n\n$y=-3$, $k=\\pm4$: $x=-9\\pm8\\in\\{-1;-17\\}$, được $(-1;-3)$, $(-17;-3)$.\n\n$y=4$, $k=\\pm3$: $x=12\\pm6\\in\\{18;6\\}$, được $(18;4)$, $(6;4)$.\n\n$y=-4$, $k=\\pm3$: $x=-12\\pm6\\in\\{-6;-18\\}$, được $(-6;-4)$, $(-18;-4)$.\n\n$y=5$, $k=0$: $x=15$, được $(15;5)$; $y=-5$, $k=0$: $x=-15$, được $(-15;-5)$.\n\nVậy $(x;y)\\in\\{(10;0);(-10;0);(17;3);(1;3);(-17;-3);(-1;-3);(6;4);(18;4);(-18;-4);(-6;-4);(15;5);(-15;-5)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về tổng hai bình phương",
+   "đánh giá miền giá trị của ẩn",
+   "số chính phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 220): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.2@p221",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên của phương trình: $\\dfrac{yz}{x}+\\dfrac{xz}{y}+\\dfrac{xy}{z}=3$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên của phương trình: $\\dfrac{yz}{x}+\\dfrac{xz}{y}+\\dfrac{xy}{z}=3$.",
+  "dap_an": "$(x;y;z)\\in\\{(1;1;1);(1;-1;-1);(-1;1;-1);(-1;-1;1)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Sau khi khử mẫu, vế trái là tổng ba số dương có tích các bình phương liên hệ với $xyz$, nên bất đẳng thức Cô-si cho ba số chặn được $xyz$ từ trên; kết hợp với tính nguyên dương của $xyz$ chỉ còn một giá trị.\n\n**Bước 1.** Đặt điều kiện các ẩn khác $0$ rồi nhân hai vế với $xyz$ để mất mẫu, được tổng ba bình phương ở vế trái.\n\n**Bước 2.** Nhận xét vế trái luôn dương để suy ra dấu của tích $xyz$.\n\n**Bước 3.** Áp dụng bất đẳng thức Cô-si cho ba số không âm ở vế trái rồi so sánh với vế phải để chặn $xyz$ từ trên.\n\n**Bước 4.** Dùng điều kiện $xyz$ là số nguyên dương để chốt giá trị $xyz$, từ đó liệt kê các bộ nguyên có tích đó rồi thử lại.\n\n**Chú ý:** Cô-si chỉ cho điều kiện cần nên phải thử lại các bộ tìm được; cần để ý dấu của các ẩn vì chúng có thể âm miễn là tích dương.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $x,y,z\\neq0$.\n\nNhân hai vế với $xyz$:\n\n$y^2z^2+z^2x^2+x^2y^2=3xyz$.\n\nVế trái dương nên $xyz>0$.\n\nÁp dụng bất đẳng thức Cô-si cho ba số dương $y^2z^2$, $z^2x^2$, $x^2y^2$:\n\n$y^2z^2+z^2x^2+x^2y^2\\ge3\\sqrt[3]{x^4y^4z^4}=3xyz\\sqrt[3]{xyz}$.\n\nDo đó $3xyz\\ge3xyz\\sqrt[3]{xyz}$, chia hai vế cho $3xyz>0$ được $\\sqrt[3]{xyz}\\le1$, tức $xyz\\le1$.\n\nMà $xyz$ là số nguyên dương nên $xyz=1$, suy ra $|x|=|y|=|z|=1$ và số ẩn bằng $-1$ là chẵn.\n\nTa được $(1;1;1)$, $(1;-1;-1)$, $(-1;1;-1)$, $(-1;-1;1)$.\n\nThử lại: với $x,y,z\\in\\{\\pm1\\}$ và $xyz=1$ ta có $\\dfrac{yz}{x}=xyz=1$, tương tự hai phân thức còn lại cũng bằng $1$, tổng bằng $3$.\n\nVậy $(x;y;z)\\in\\{(1;1;1);(1;-1;-1);(-1;1;-1);(-1;-1;1)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "khử mẫu",
+   "bất đẳng thức Cô-si cho ba số không âm"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 221): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.3@p221",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040303",
+  "nhom_soan": "T18T040303",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên của phương trình: $y^2=1+x+x^2+x^3+x^4$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên của phương trình: $y^2=1+x+x^2+x^3+x^4$.",
+  "dap_an": "$(x;y)\\in\\{(0;1);(0;-1);(-1;1);(-1;-1);(3;11);(3;-11)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân $4$ hai vế thì vế phải là đa thức bậc bốn nằm sát một bình phương $(2x^2+x+1)^2$; hai bình phương $(2x^2+x)^2$ và $(2x^2+x+2)^2$ kẹp $4y^2$ lại, mà giữa chúng chỉ còn một bình phương nguyên.\n\n**Bước 1.** Xét riêng $x=0$ rồi với $x\\neq0$ nhân $4$ hai vế để so sánh $4y^2$ với bình phương của đa thức bậc hai cùng bậc.\n\n**Bước 2.** Xét hiệu $4y^2-(2x^2+x)^2$ và chỉ ra nó luôn dương bằng cách đưa tam thức bậc hai về bình phương cộng một hằng số dương.\n\n**Bước 3.** Xét hiệu $(2x^2+x+2)^2-4y^2$ và chỉ ra nó dương khi $x\\neq0$.\n\n**Bước 4.** Vì $|2y|$ là số nguyên bị kẹp giữa hai số nguyên cách nhau $2$ đơn vị nên nó chỉ nhận một giá trị, rồi thay vào để giải phương trình theo $x$.\n\n**Chú ý:** Muốn bỏ dấu giá trị tuyệt đối khi kẹp phải chứng minh $2x^2+x\\ge0$ với mọi $x$ nguyên; ca $x=0$ phải xét riêng vì khi đó hiệu ở bước 3 bằng $0$ chứ không dương.\n\n**Phần 2. Trình bày**\n\nNếu $x=0$ thì $y^2=1$, suy ra $y=\\pm1$.\n\nNếu $x\\neq0$: $4y^2=4x^4+4x^3+4x^2+4x+4$.\n\n$4y^2-(2x^2+x)^2=3x^2+4x+4=3\\left(x+\\dfrac{2}{3}\\right)^2+\\dfrac{8}{3}>0$.\n\n$(2x^2+x+2)^2-4y^2=(4x^4+4x^3+9x^2+4x+4)-(4x^4+4x^3+4x^2+4x+4)=5x^2>0$.\n\nSuy ra $(2x^2+x)^2<(2y)^2<(2x^2+x+2)^2$.\n\nVới $x$ nguyên khác $0$, $2x^2+x=x(2x+1)>0$ (hai thừa số cùng dấu), nên $2x^2+x<|2y|<2x^2+x+2$, do đó $|2y|=2x^2+x+1$.\n\nVậy $4y^2=(2x^2+x+1)^2$, tức $4x^4+4x^3+4x^2+4x+4=4x^4+4x^3+5x^2+2x+1$.\n\n$\\Leftrightarrow x^2-2x-3=0\\Leftrightarrow(x+1)(x-3)=0\\Leftrightarrow x=-1$ hoặc $x=3$.\n\nVới $x=-1$: $y^2=1-1+1-1+1=1$, $y=\\pm1$.\n\nVới $x=3$: $y^2=1+3+9+27+81=121$, $y=\\pm11$.\n\nVậy $(x;y)\\in\\{(0;1);(0;-1);(-1;1);(-1;-1);(3;11);(3;-11)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhân bốn hai vế",
+   "kẹp giữa hai bình phương của hai số nguyên cách nhau 2 đơn vị",
+   "xét hiệu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 221): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.4@p221",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình sau trong tập các số nguyên: $1+x+x^2+x^3=y^3$ (1)",
+  "noi_dung_sach": "Giải phương trình sau trong tập các số nguyên: $1+x+x^2+x^3=y^3$ (1)",
+  "dap_an": "$(x;y)\\in\\{(0;1);(-1;0)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái là đa thức bậc ba có hạng tử đầu $x^3$ nên $y^3$ nằm sát $x^3$; chỉ cần kẹp $y^3$ giữa hai lập phương liên tiếp cách nhau hai đơn vị là xác định được $y$ theo $x$.\n\n**Bước 1.** Tính hiệu $y^3-x^3$ và chỉ ra nó dương bằng cách đưa tam thức bậc hai về bình phương cộng một hằng số dương.\n\n**Bước 2.** Tính hiệu $(x+2)^3-y^3$ bằng cách khai triển $(x+2)^3$ rồi chỉ ra hiệu này cũng luôn dương.\n\n**Bước 3.** Vì hàm lập phương tăng nên suy ra $y$ nằm giữa $x$ và $x+2$, rồi dùng tính nguyên để xác định $y$ theo $x$.\n\n**Bước 4.** Thay biểu thức của $y$ vào phương trình và giải phương trình theo $x$.\n\n**Chú ý:** So sánh hai lập phương tương đương so sánh hai cơ số, kể cả khi cơ số âm; đừng quên tính $y$ sau khi tìm được $x$.\n\n**Phần 2. Trình bày**\n\n$y^3-x^3=x^2+x+1=\\left(x+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$.\n\n$(x+2)^3-y^3=(x^3+6x^2+12x+8)-(x^3+x^2+x+1)=5x^2+11x+7=5\\left(x+\\dfrac{11}{10}\\right)^2+\\dfrac{19}{20}>0$.\n\nVậy $x^3<y^3<(x+2)^3$, suy ra $x<y<x+2$.\n\nVì $x,y$ nguyên nên $y=x+1$.\n\nThay vào phương trình: $1+x+x^2+x^3=(x+1)^3=x^3+3x^2+3x+1$.\n\n$\\Leftrightarrow2x^2+2x=0\\Leftrightarrow x(x+1)=0\\Leftrightarrow x=0$ hoặc $x=-1$.\n\nVới $x=0$ thì $y=1$; với $x=-1$ thì $y=0$.\n\nVậy $(x;y)\\in\\{(0;1);(-1;0)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "kẹp giữa hai lập phương của hai số nguyên cách nhau 2 đơn vị",
+   "xét hiệu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 221): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.5@p221",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên dương của phương trình sau: $5(x+y+z+t)+10=2xyzt$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên dương của phương trình sau: $5(x+y+z+t)+10=2xyzt$.",
+  "dap_an": "$(x;y;z;t)$ là một hoán vị của $(35;3;1;1)$ hoặc của $(9;5;1;1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bốn ẩn có vai trò như nhau nên sắp thứ tự được; khi đó vế trái bị chặn theo ẩn lớn nhất, suy ra tích ba ẩn nhỏ nhất bị chặn, và các ẩn nhỏ chỉ nhận ít giá trị để thử.\n\n**Bước 1.** Giả sử $x\\ge y\\ge z\\ge t\\ge1$ rồi thay mọi ẩn ở vế trái bằng ẩn lớn nhất để chặn $yzt$ từ trên, qua đó chặn được $t$.\n\n**Bước 2.** Xét từng giá trị của $t$; với mỗi $t$ lại chặn $yz$ rồi chặn $z$ theo cùng cách.\n\n**Bước 3.** Với từng cặp $(t;z)$, đưa phương trình còn hai ẩn $x,y$ về dạng tích hai thừa số bằng một hằng số bằng cách nhân rồi cộng thêm số thích hợp.\n\n**Bước 4.** Liệt kê ước của hằng số, loại các ước không thỏa điều kiện thứ tự $x\\ge y\\ge z$ và tính nguyên, được các bộ đã sắp xếp.\n\n**Bước 5.** Hoán vị các bộ tìm được để có mọi nghiệm của bài toán.\n\n**Chú ý:** Sau khi giả sử thứ tự, các bộ tìm được chỉ là bộ sắp xếp; đừng quên kết luận cả các hoán vị của chúng.\n\n**Phần 2. Trình bày**\n\nVì vai trò của $x,y,z,t$ như nhau nên giả sử $x\\ge y\\ge z\\ge t\\ge1$.\n\n$2xyzt=5(x+y+z+t)+10\\le20x+10\\le30x$ nên $2yzt\\le30$, tức $yzt\\le15$.\n\nDo đó $t^3\\le yzt\\le15$, suy ra $t\\le2$.\n\n**Trường hợp $t=1$:** $2xyz=5(x+y+z)+15\\le15x+15\\le30x$, nên $yz\\le15$, suy ra $z^2\\le yz\\le15$, tức $z\\le3$.\n\nVới $z=1$: $2xy=5(x+y)+20\\Leftrightarrow4xy-10x-10y=40\\Leftrightarrow(2x-5)(2y-5)=65$.\n\nVì $x\\ge y\\ge1$ nên $2x-5\\ge2y-5\\ge-3$; nếu hai thừa số cùng âm thì chúng thuộc $\\{-3;-2;-1\\}$ nên tích không quá $9$, loại.\n\nVậy cả hai dương: $(2x-5;2y-5)\\in\\{(65;1);(13;5)\\}$, cho $(x;y)=(35;3)$ hoặc $(9;5)$.\n\nVới $z=2$: $4xy=5(x+y)+25\\Leftrightarrow(4x-5)(4y-5)=125$.\n\nVì $y\\ge2$ nên $4y-5\\ge3$, và $(4y-5)^2\\le125$ nên $4y-5\\le11$; ước của $125$ trong khoảng $[3;11]$ chỉ có $5$, cho $y=\\dfrac{5}{2}$ không nguyên.\n\nLoại.\n\nVới $z=3$: $6xy=5(x+y)+30\\Leftrightarrow(6x-5)(6y-5)=205$.\n\nVì $y\\ge3$ nên $6y-5\\ge13$, và $(6y-5)^2\\le205$ nên $6y-5\\le14$; các ước của $205=5\\cdot41$ là $1;5;41;205$, không có ước nào trong $[13;14]$.\n\nLoại.\n\n**Trường hợp $t=2$:** $4xyz=5(x+y+z)+20\\le15x+20\\le25x$ (vì $x\\ge2$), nên $4yz\\le25$, tức $yz\\le6$.\n\nVới $y\\ge z\\ge2$ chỉ có $(y;z)=(2;2)$ hoặc $(3;2)$.\n\nVới $(y;z)=(2;2)$: $16x=5(x+4)+20\\Leftrightarrow11x=40$, không có $x$ nguyên.\n\nVới $(y;z)=(3;2)$: $24x=5(x+5)+20\\Leftrightarrow19x=45$, không có $x$ nguyên.\n\nVậy các nghiệm sắp xếp là $(x;y;z;t)=(35;3;1;1)$ và $(9;5;1;1)$.\n\nNghiệm của phương trình là mọi hoán vị của $(35;3;1;1)$ hoặc của $(9;5;1;1)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giả sử thứ tự các ẩn (không mất tính tổng quát)",
+   "chặn ẩn nhỏ nhất bằng bất đẳng thức",
+   "đưa về phương trình tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 221): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.6@p222",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Thi vào lớp 10 chuyên ĐHKHTN - ĐHQGHN năm 2002) Tìm nghiệm nguyên của phương trình: $x+xy+y=9$.",
+  "noi_dung_sach": "(Thi vào lớp 10 chuyên ĐHKHTN - ĐHQGHN năm 2002) Tìm nghiệm nguyên của phương trình: $x+xy+y=9$.",
+  "dap_an": "$(x;y)\\in\\{(0;9);(9;0);(1;4);(4;1);(-2;-11);(-11;-2);(-3;-6);(-6;-3)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình có hạng tử $xy$ và hai hạng tử bậc nhất $x$, $y$, nên cộng thêm một hằng số vào hai vế thì vế trái phân tích được thành tích hai nhị thức, còn vế phải là một số nguyên cho trước.\n\n**Bước 1.** Cộng thêm $1$ vào hai vế để nhóm các hạng tử của vế trái thành tích của hai nhị thức bậc nhất.\n\n**Bước 2.** Vì $x,y$ nguyên nên mỗi nhị thức là một ước nguyên (kể cả ước âm) của vế phải; liệt kê tất cả các ước đó.\n\n**Bước 3.** Với mỗi ước chọn cho một nhị thức, suy ra nhị thức kia rồi tính lần lượt $x$ và $y$ để ghi đủ các cặp nghiệm.\n\n**Chú ý:** Phải lấy cả ước âm của vế phải; phương trình đối xứng theo $x,y$ nên nghiệm đi theo từng cặp hoán đổi.\n\n**Phần 2. Trình bày**\n\n$x+xy+y=9\\Leftrightarrow(x+xy)+(y+1)=10\\Leftrightarrow(x+1)(y+1)=10$.\n\nVì $x,y$ nguyên nên $x+1$ là ước của $10$: $x+1\\in\\{\\pm1;\\pm2;\\pm5;\\pm10\\}$ và $y+1=\\dfrac{10}{x+1}$.\n\n$x+1=1$ thì $y+1=10$, được $(x;y)=(0;9)$.\n\n$x+1=-1$ thì $y+1=-10$, được $(x;y)=(-2;-11)$.\n\n$x+1=2$ thì $y+1=5$, được $(x;y)=(1;4)$.\n\n$x+1=-2$ thì $y+1=-5$, được $(x;y)=(-3;-6)$.\n\n$x+1=5$ thì $y+1=2$, được $(x;y)=(4;1)$.\n\n$x+1=-5$ thì $y+1=-2$, được $(x;y)=(-6;-3)$.\n\n$x+1=10$ thì $y+1=1$, được $(x;y)=(9;0)$.\n\n$x+1=-10$ thì $y+1=-1$, được $(x;y)=(-11;-2)$.\n\nVậy $(x;y)\\in\\{(0;9);(9;0);(1;4);(4;1);(-2;-11);(-11;-2);(-3;-6);(-6;-3)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về phương trình tích",
+   "ước nguyên của một số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 222): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.7@p222",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên của phương trình sau: $y^2=x(x+1)(x+7)(x+8)$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên của phương trình sau: $y^2=x(x+1)(x+7)(x+8)$.",
+  "dap_an": "$(x;y)\\in\\{(1;12);(-9;12);(1;-12);(-9;-12);(0;0);(-8;0);(-1;0);(-7;0);(-4;12);(-4;-12)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ghép các thừa số đối xứng $x(x+8)$ và $(x+1)(x+7)$ thì cùng chứa $x^2+8x$; đặt ẩn phụ thì vế phải thành $z^2+7z$, nhân $4$ lên là một bình phương trừ $49$, tức hiệu hai bình phương bằng $49$.\n\n**Bước 1.** Ghép các thừa số của vế phải theo cặp có tổng hai số hạng bằng nhau để cùng xuất hiện một biểu thức bậc hai của $x$.\n\n**Bước 2.** Đặt biểu thức đó làm ẩn phụ rồi nhân $4$ hai vế để đưa phương trình về dạng một bình phương trừ một hằng số.\n\n**Bước 3.** Chuyển về dạng hiệu hai bình phương và phân tích thành tích hai thừa số nguyên bằng $49$, rồi liệt kê mọi cặp ước (cả âm).\n\n**Bước 4.** Với mỗi cặp thừa số, lập hệ gồm tổng và hiệu của chúng để tìm $y$ và ẩn phụ.\n\n**Bước 5.** Với mỗi giá trị của ẩn phụ, giải phương trình bậc hai theo $x$ để tìm các giá trị nguyên của $x$ rồi ghép với $y$.\n\n**Chú ý:** Số $49$ có sáu cặp ước có thứ tự (kể cả âm), không phải ba; đừng quên giải ngược về $x$ và ghép đủ $y$ ở từng trường hợp.\n\n**Phần 2. Trình bày**\n\n$y^2=x(x+1)(x+7)(x+8)=(x^2+8x)(x^2+8x+7)$.\n\nĐặt $z=x^2+8x$ ($z$ nguyên) thì $y^2=z^2+7z$, nên $4y^2=4z^2+28z=(2z+7)^2-49$, tức\n\n$(2z+7)^2-(2y)^2=49\\Leftrightarrow(2z-2y+7)(2z+2y+7)=49$.\n\nĐặt $A=2z-2y+7$, $B=2z+2y+7$ thì $AB=49$, $y=\\dfrac{B-A}{4}$, $z=\\dfrac{A+B-14}{4}$.\n\n$(A;B)=(1;49)$: $y=12$, $z=9$.\n\n$(A;B)=(49;1)$: $y=-12$, $z=9$.\n\n$(A;B)=(-1;-49)$: $y=-12$, $z=-16$.\n\n$(A;B)=(-49;-1)$: $y=12$, $z=-16$.\n\n$(A;B)=(7;7)$: $y=0$, $z=0$.\n\n$(A;B)=(-7;-7)$: $y=0$, $z=-7$.\n\nVới $z=9$: $x^2+8x-9=0\\Leftrightarrow(x-1)(x+9)=0\\Leftrightarrow x=1$ hoặc $x=-9$; ghép $y=\\pm12$ được $(1;12)$, $(1;-12)$, $(-9;12)$, $(-9;-12)$.\n\nVới $z=-16$: $x^2+8x+16=0\\Leftrightarrow(x+4)^2=0\\Leftrightarrow x=-4$; ghép $y=\\pm12$ được $(-4;12)$, $(-4;-12)$.\n\nVới $z=0$: $x(x+8)=0\\Leftrightarrow x=0$ hoặc $x=-8$, ghép $y=0$ được $(0;0)$, $(-8;0)$.\n\nVới $z=-7$: $x^2+8x+7=0\\Leftrightarrow(x+1)(x+7)=0\\Leftrightarrow x=-1$ hoặc $x=-7$, ghép $y=0$ được $(-1;0)$, $(-7;0)$.\n\nVậy $(x;y)\\in\\{(1;12);(-9;12);(1;-12);(-9;-12);(0;0);(-8;0);(-1;0);(-7;0);(-4;12);(-4;-12)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ",
+   "nhân bốn hai vế để đưa về hiệu hai bình phương",
+   "phương trình tích",
+   "ước của 49"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 222): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.8@p223",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xác định tất cả các cặp số nguyên dương $(x;n)$ thỏa mãn phương trình sau: $x^3+3367=2^n$.",
+  "noi_dung_sach": "Xác định tất cả các cặp số nguyên dương $(x;n)$ thỏa mãn phương trình sau: $x^3+3367=2^n$.",
+  "dap_an": "$(x;n)=(9;12)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn dùng hiệu hai lập phương thì phải biến $2^n$ thành một lập phương, tức chứng minh $n$ chia hết cho $3$; việc này làm được bằng đồng dư modulo $7$ vì $3367$ chia hết cho $7$ và lập phương chỉ cho vài số dư rất ít.\n\n**Bước 1.** Lấy phương trình theo modulo $7$ rồi so sánh tập số dư của lập phương với tập số dư của $2^n$ để chứng minh $n$ chia hết cho $3$.\n\n**Bước 2.** Đặt $n=3m$ để đưa về hiệu hai lập phương $(2^m)^3-x^3$ rồi phân tích thành tích của $2^m-x$ với một thừa số còn lại.\n\n**Bước 3.** Phân tích $3367$ ra thừa số nguyên tố, rồi chặn $2^m-x$ vừa là ước dương vừa có lập phương nhỏ hơn $3367$ để chỉ còn vài giá trị.\n\n**Bước 4.** Với mỗi ước còn lại, thay vào để tính tích $x\\cdot2^m$, rồi so sánh số mũ của $2$ ở hai vế (thừa số còn lại là số lẻ) để loại hoặc tìm $m$.\n\n**Chú ý:** Đồng dư modulo $7$ chỉ chứng minh được $3\\mid n$, chưa cho nghiệm; bước chặn $2^m-x$ cần cả điều kiện ước của $3367$ lẫn điều kiện lập phương nhỏ hơn $3367$.\n\n**Phần 2. Trình bày**\n\n$3367=7\\cdot481=7\\cdot13\\cdot37$ chia hết cho $7$ nên $x^3\\equiv2^n\\pmod{7}$.\n\nSố dư của lập phương khi chia cho $7$ chỉ là $0;1;6$.\n\nVì $2^3=8\\equiv1\\pmod{7}$ nên nếu $3\\nmid n$ thì $2^n\\equiv2$ hoặc $4\\pmod{7}$, mâu thuẫn.\n\nVậy $n=3m$ với $m$ nguyên dương.\n\nPhương trình thành $(2^m)^3-x^3=3367$, tức\n\n$(2^m-x)\\left[(2^m-x)^2+3x\\cdot2^m\\right]=3367$. (1)\n\nĐặt $d=2^m-x$ thì $d$ là ước dương của $3367$ và $d^3<d\\left(d^2+3x\\cdot2^m\\right)=3367$, nên $d\\le15$.\n\nCác ước của $3367$ không quá $15$ là $1;7;13$.\n\n$d=1$: (1) cho $1+3x\\cdot2^m=3367$, nên $x\\cdot2^m=1122$; mà $x=2^m-1$ nên $2^m(2^m-1)=2\\cdot561$.\n\nVì $2^m-1$ lẻ nên $2^m=2$, $m=1$, khi đó vế trái bằng $2\\ne1122$.\n\nVô nghiệm.\n\n$d=13$: (1) cho $169+3x\\cdot2^m=3367\\div13=259$, nên $x\\cdot2^m=30$; mà $x=2^m-13$ nên $2^m(2^m-13)=2\\cdot15$.\n\nVì $2^m-13$ lẻ nên $2^m=2$, $m=1$, khi đó vế trái bằng $-22\\ne30$.\n\nVô nghiệm.\n\n$d=7$: (1) cho $49+3x\\cdot2^m=481$, nên $x\\cdot2^m=144$; mà $x=2^m-7$ nên $2^m(2^m-7)=2^4\\cdot3^2$.\n\nVì $2^m-7$ lẻ nên $2^m=2^4$, $m=4$, khi đó $2^m-7=9$ đúng, $x=16-7=9$ và $n=3m=12$.\n\nThử lại: $9^3+3367=729+3367=4096=2^{12}$.\n\nVậy $(x;n)=(9;12)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đồng dư modulo 7",
+   "số dư của lập phương và của luỹ thừa của 2",
+   "hằng đẳng thức hiệu hai lập phương",
+   "ước của 3367"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 223): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.9@p224",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040303",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên của phương trình sau: $19x^2+28y^2=729$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên của phương trình sau: $19x^2+28y^2=729$.",
+  "dap_an": "$S=\\varnothing$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ số $28$ chia hết cho $4$ còn $729$ chia $4$ dư $1$, nên khi xét modulo $4$ số hạng chứa $y$ biến mất và chỉ còn một điều kiện cho $x^2$; mà số chính phương chỉ có vài số dư khi chia cho $4$.\n\n**Bước 1.** Xét từng số hạng của phương trình theo modulo $4$ để biết số hạng nào triệt tiêu và hai vế còn lại bằng bao nhiêu.\n\n**Bước 2.** Thu gọn đồng dư thức về dạng chỉ chứa $x^2$ để có điều kiện về số dư của $x^2$ khi chia cho $4$.\n\n**Bước 3.** Liệt kê các số dư có thể có của số chính phương khi chia cho $4$ rồi đối chiếu để kết luận phương trình có nghiệm nguyên hay không.\n\n**Chú ý:** Có thể giải bằng cách khác: viết $19x^2+28y^2=(18x^2+27y^2)+(x^2+y^2)$ để suy ra $x,y$ cùng chia hết cho $3$, đặt $x=3u$, $y=3v$ rồi lặp lại lập luận; hạ xuống $19s^2+28t^2=9$ thì mâu thuẫn vì $s,t$ không đồng thời bằng $0$ nên vế trái $\\ge19$.\n\n**Phần 2. Trình bày**\n\nGiả sử phương trình có nghiệm nguyên $(x;y)$.\n\nVì $28y^2$ chia hết cho $4$ nên $19x^2+28y^2\\equiv19x^2\\equiv3x^2\\pmod{4}$, còn $729=4\\cdot182+1\\equiv1\\pmod{4}$.\n\nDo đó $3x^2\\equiv1\\pmod{4}$; nhân hai vế với $3$ được $x^2\\equiv3\\pmod{4}$.\n\nSố chính phương chia $4$ chỉ dư $0$ (khi $x$ chẵn) hoặc $1$ (khi $x$ lẻ), không bao giờ dư $3$.\n\nMâu thuẫn.\n\nVậy phương trình không có nghiệm nguyên: $S=\\varnothing$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đồng dư modulo 4",
+   "số dư của số chính phương",
+   "tính chia hết cho 3 (xuống thang)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 224): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10V.10@p224",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040303",
+  "nhom_soan": "T18T040303",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên của phương trình sau: $2x^6+y^2-2x^3y=320$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên của phương trình sau: $2x^6+y^2-2x^3y=320$.",
+  "dap_an": "$(x;y)\\in\\{(2;-8);(2;24);(-2;-24);(-2;8)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái viết được thành tổng hai bình phương $(x^3)^2+(x^3-y)^2$; đặt ẩn phụ rồi dùng chẵn lẻ (modulo $4$) để chia dần cho $4$ cho tới khi còn một tổng hai bình phương nhỏ, dễ liệt kê.\n\n**Bước 1.** Gom vế trái thành tổng của $(x^3)^2$ và một bình phương nữa rồi đặt hai ẩn phụ để được tổng hai bình phương bằng một hằng số.\n\n**Bước 2.** Chứng minh hai ẩn phụ cùng chẵn bằng cách xét số dư modulo $4$ của tổng hai bình phương cùng lẻ, rồi đặt mỗi ẩn bằng hai lần ẩn mới.\n\n**Bước 3.** Lặp lại lập luận chẵn lẻ cho tới khi hằng số không còn chia hết cho $4$, được tổng hai bình phương nhỏ.\n\n**Bước 4.** Liệt kê các cặp ẩn cuối có tổng bình phương đúng bằng hằng số này, rồi dùng điều kiện $x^3$ là lập phương của số nguyên để loại cặp không thỏa.\n\n**Bước 5.** Quay ngược các phép đặt ẩn để tính $x$ và $y$ cho từng cặp còn lại.\n\n**Chú ý:** Mỗi lần xuống thang đều phải nêu lí do hằng số chia hết cho $4$ (ở đây $320$, $80$, $20$); tới $5$ thì dừng vì $5$ không chia hết cho $4$.\n\n**Phần 2. Trình bày**\n\n$2x^6+y^2-2x^3y=320\\Leftrightarrow(x^3)^2+(x^3-y)^2=320$.\n\nĐặt $u=x^3$, $v=x^3-y$ ($u,v\\in\\mathbb{Z}$): $u^2+v^2=320$.\n\nVế trái chẵn nên $u,v$ cùng tính chẵn lẻ.\n\nNếu cùng lẻ thì $u^2+v^2\\equiv2\\pmod{4}$, mà $320\\equiv0\\pmod{4}$, mâu thuẫn.\n\nVậy $u,v$ cùng chẵn, đặt $u=2u_1$, $v=2v_1$: $u_1^2+v_1^2=80$.\n\nVì $80\\equiv0\\pmod{4}$ nên lập luận tương tự $u_1,v_1$ cùng chẵn, đặt $u_1=2u_2$, $v_1=2v_2$: $u_2^2+v_2^2=20$.\n\nVì $20\\equiv0\\pmod{4}$ nên $u_2,v_2$ cùng chẵn, đặt $u_2=2u_3$, $v_2=2v_3$: $u_3^2+v_3^2=5$.\n\nCác số chính phương không vượt quá $5$ là $0;1;4$, nên $\\{u_3^2;v_3^2\\}=\\{1;4\\}$, tức $(u_3;v_3)$ là $(\\pm1;\\pm2)$ hoặc $(\\pm2;\\pm1)$.\n\nTa có $u=8u_3=x^3$ nên $x$ chẵn; đặt $x=2k$ thì $u_3=k^3$ là lập phương của một số nguyên.\n\nTrong các giá trị $\\pm1;\\pm2$ chỉ $\\pm1$ là lập phương, nên $u_3=\\pm1$ và $v_3=\\pm2$.\n\n$u_3=1$: $x=2$; $u_3=-1$: $x=-2$.\n\nVà $y=x^3-v=8u_3-8v_3=8(u_3-v_3)$.\n\n$(u_3;v_3)=(1;2)$: $x=2$, $y=-8$.\n\n$(u_3;v_3)=(1;-2)$: $x=2$, $y=24$.\n\n$(u_3;v_3)=(-1;2)$: $x=-2$, $y=-24$.\n\n$(u_3;v_3)=(-1;-2)$: $x=-2$, $y=8$.\n\nVậy $(x;y)\\in\\{(2;-8);(2;24);(-2;-24);(-2;8)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ",
+   "tổng hai bình phương",
+   "chẵn lẻ và số dư modulo 4",
+   "xuống thang",
+   "lập phương của số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 224): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.1@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Thi vào lớp 10 chuyên, ĐHKHTN – ĐHQGHN, năm 2000) Tìm tất cả các cặp số nguyên $(x;y)$ thỏa mãn: $y(x-1)=x^2+2$.",
+  "noi_dung_sach": "(Thi vào lớp 10 chuyên, ĐHKHTN – ĐHQGHN, năm 2000) Tìm tất cả các cặp số nguyên $(x;y)$ thỏa mãn: $y(x-1)=x^2+2$.",
+  "dap_an": "$(x;y)\\in\\{(4;6);(2;6);(-2;-2);(0;-2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình chỉ bậc nhất đối với $y$ nên rút được $y$ theo $x$ thành một phân thức; tách phần nguyên ra thì phần còn lại là phân số có tử là một hằng số, nghĩa là mẫu của nó buộc phải là ước của hằng số ấy.\n\n**Bước 1.** Nhận xét $x=1$ không thể là nghiệm vì khi đó vế trái bằng $0$ còn vế phải khác $0$, rồi rút $y$ theo $x$.\n\n**Bước 2.** Chia tử cho mẫu để tách phần nguyên, chỉ để lại một phân số có tử là hằng số.\n\n**Bước 3.** Vì $y$ và phần nguyên đều nguyên nên phân số còn lại cũng phải nguyên; từ đó liệt kê các ước (cả dương lẫn âm) của hằng số để tìm $x-1$.\n\n**Bước 4.** Với mỗi giá trị của $x$, tính $y$ rồi kết luận các cặp số nguyên.\n\n**Chú ý:** Ước của một số nguyên gồm cả ước âm; bỏ sót ước âm là mất một nửa số nghiệm.\n\n**Phần 2. Trình bày**\n\nVới $x=1$ vế trái bằng $0$, vế phải bằng $3$ nên $x=1$ không là nghiệm.\n\nVới $x\\neq1$:\n\n$y=\\dfrac{x^2+2}{x-1}=\\dfrac{(x-1)(x+1)+3}{x-1}=x+1+\\dfrac{3}{x-1}$\n\nVì $x,y\\in\\mathbb Z$ nên $\\dfrac{3}{x-1}\\in\\mathbb Z$, tức $x-1\\in\\{1;-1;3;-3\\}$.\n\n$x-1=1\\Rightarrow x=2,\\ y=2+1+3=6$\n\n$x-1=-1\\Rightarrow x=0,\\ y=0+1-3=-2$\n\n$x-1=3\\Rightarrow x=4,\\ y=4+1+1=6$\n\n$x-1=-3\\Rightarrow x=-2,\\ y=-2+1-1=-2$\n\nVậy $(x;y)\\in\\{(4;6);(2;6);(-2;-2);(0;-2)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên",
+   "ước của một số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.2@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $x,y\\in\\mathbb Z$ thỏa mãn: $2x^2-2xy=5x-y-19$.",
+  "noi_dung_sach": "Tìm $x,y\\in\\mathbb Z$ thỏa mãn: $2x^2-2xy=5x-y-19$.",
+  "dap_an": "$(x;y)\\in\\{(0;-19);(1;16);(9;8);(-8;-11)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển các hạng tử chứa $y$ sang một vế thì $y$ đứng cạnh nhân tử $2x-1$; chia ra được $y$ bằng một phần nguyên cộng một phân số có tử là hằng số, nên $2x-1$ phải là ước của hằng số đó.\n\n**Bước 1.** Đưa các hạng tử chứa $y$ về cùng một vế, đặt $y$ làm nhân tử chung để viết phương trình dưới dạng $y\\cdot(2x-1)=$ một đa thức theo $x$.\n\n**Bước 2.** Vì $x$ nguyên nên $2x-1\\neq0$; rút $y$ rồi chia đa thức tử cho $2x-1$ để tách phần nguyên.\n\n**Bước 3.** Phân số còn lại phải nguyên, nên $2x-1$ thuộc tập các ước của hằng số ở tử; liệt kê đủ ước dương và ước âm.\n\n**Bước 4.** Tính $x$ rồi $y$ cho từng ước và ghi lại các cặp số nguyên.\n\n**Chú ý:** $2x-1$ luôn là số lẻ, nên mọi ước của hằng số ở tử đều dùng được; đừng nhầm sang $x-1$ hay $2x+1$.\n\n**Phần 2. Trình bày**\n\n$2x^2-2xy=5x-y-19\\Leftrightarrow 2x^2-5x+19=2xy-y\\Leftrightarrow 2x^2-5x+19=y(2x-1)$\n\nVì $x$ nguyên nên $2x-1\\neq0$, do đó:\n\n$y=\\dfrac{2x^2-5x+19}{2x-1}=\\dfrac{(2x-1)(x-2)+17}{2x-1}=x-2+\\dfrac{17}{2x-1}$\n\nVì $x,y\\in\\mathbb Z$ nên $\\dfrac{17}{2x-1}\\in\\mathbb Z$, tức $2x-1\\in\\{1;-1;17;-17\\}$.\n\n$2x-1=1\\Rightarrow x=1,\\ y=1-2+17=16$\n\n$2x-1=-1\\Rightarrow x=0,\\ y=0-2-17=-19$\n\n$2x-1=17\\Rightarrow x=9,\\ y=9-2+1=8$\n\n$2x-1=-17\\Rightarrow x=-8,\\ y=-8-2-1=-11$\n\nVậy $(x;y)\\in\\{(0;-19);(1;16);(9;8);(-8;-11)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên",
+   "ước của một số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.3@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Trích đề thi học sinh giỏi Toán toàn quốc – Lớp 9, năm 1976) Tìm nghiệm nguyên dương của phương trình: $xy^2+2xy-243y+x=0$.",
+  "noi_dung_sach": "(Trích đề thi học sinh giỏi Toán toàn quốc – Lớp 9, năm 1976) Tìm nghiệm nguyên dương của phương trình: $xy^2+2xy-243y+x=0$.",
+  "dap_an": "$(x;y)\\in\\{(54;2);(24;8)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gom ba hạng tử chứa $x$ thì được $x(y+1)^2$; hai số nguyên liên tiếp $y+1$ và $y$ nguyên tố cùng nhau, nên $(y+1)^2$ không \"ăn\" được thừa số nào của $y$ và phải là ước của hằng số $243$.\n\n**Bước 1.** Đặt $x$ làm nhân tử chung của các hạng tử chứa $x$ để đưa phương trình về dạng $x(y+1)^2=243y$.\n\n**Bước 2.** Chứng tỏ $(y+1)^2$ nguyên tố cùng nhau với $y$, từ đó suy ra $(y+1)^2$ là ước của $243$.\n\n**Bước 3.** Phân tích $243$ ra lũy thừa của một số nguyên tố để chỉ ra $y+1$ phải có dạng nào, rồi dùng điều kiện $y$ nguyên dương để loại các giá trị không hợp lệ.\n\n**Bước 4.** Với mỗi $y$ còn lại, tính $x$ từ phương trình ở Bước 1 và kết luận.\n\n**Chú ý:** Phải loại $y+1=1$ vì khi đó $y=0$ không là số nguyên dương.\n\n**Phần 2. Trình bày**\n\n$xy^2+2xy-243y+x=0\\Leftrightarrow x(y^2+2y+1)=243y\\Leftrightarrow x(y+1)^2=243y$\n\nHai số nguyên liên tiếp $y+1$ và $y$ nguyên tố cùng nhau nên $(y+1)^2$ và $y$ nguyên tố cùng nhau.\n\nMà $243y\\vdots(y+1)^2$ nên $243\\vdots(y+1)^2$.\n\nVì $243=3^5$ nên $y+1=3^k$ với $2k\\le5$, tức $k\\in\\{0;1;2\\}$, hay $y+1\\in\\{1;3;9\\}$.\n\nVì $y\\ge1$ nên $y+1\\ge2$, do đó $y+1\\in\\{3;9\\}$.\n\n$y+1=3\\Rightarrow y=2,\\ x=\\dfrac{243\\cdot2}{3^2}=54$\n\n$y+1=9\\Rightarrow y=8,\\ x=\\dfrac{243\\cdot8}{9^2}=24$\n\nVậy $(x;y)\\in\\{(54;2);(24;8)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hai số nguyên liên tiếp nguyên tố cùng nhau",
+   "ước là lũy thừa của một số nguyên tố"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.4a@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên của phương trình: $xyz=4(x+y+z)$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên của phương trình: $xyz=4(x+y+z)$.",
+  "dap_an": "Mọi hoán vị của các bộ: $(t;-t;0)$ với $t\\in\\mathbb Z$; $(24;5;1)$; $(14;6;1)$; $(9;8;1)$; $(10;3;2)$; $(6;4;2)$; $(-6;1;2)$; $(-16;1;3)$; và các bộ số đối của chúng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình đối xứng ba ẩn, nên với ba ẩn dương ta sắp thứ tự $x\\ge y\\ge z$ rồi đánh giá $4(x+y+z)\\le12x$ để chặn được ẩn nhỏ nhất; còn các nghiệm có ẩn bằng $0$ hoặc âm phải xét riêng.\n\n**Bước 1.** Xét riêng trường hợp có một ẩn bằng $0$, vì khi đó vế trái bằng $0$ và suy ra ngay quan hệ giữa hai ẩn còn lại.\n\n**Bước 2.** Với ba ẩn khác $0$, nhận xét rằng đổi dấu cả ba ẩn vẫn cho nghiệm, nên chỉ cần xét các bộ có không quá một ẩn âm.\n\n**Bước 3.** Với ba ẩn dương, giả sử $x\\ge y\\ge z$ và đánh giá để chặn $z$, rồi với mỗi giá trị của $z$ đưa phương trình về dạng tích hai nhân tử bằng một hằng số; dùng điều kiện thứ tự để loại bớt ước.\n\n**Bước 4.** Với đúng một ẩn âm, rút ẩn âm theo hai ẩn dương; điều kiện để ẩn ấy dương cho một bất đẳng thức chặn tích của hai ẩn dương.\n\n**Bước 5.** Tổng hợp các bộ tìm được cùng các hoán vị và các bộ số đối của chúng.\n\n**Chú ý:** Đề cho nghiệm nguyên nên bộ có số $0$ hoặc số âm vẫn là nghiệm; lúc dùng phép chia hay bất đẳng thức phải chắc rằng các ẩn đang dương.\n\n**Phần 2. Trình bày**\n\n**Trường hợp 1: có một ẩn bằng $0$.** Giả sử $z=0$ thì $xyz=0$ nên $x+y+z=0$, tức $y=-x$.\n\nTa được các bộ $(t;-t;0)$ với $t\\in\\mathbb Z$ (kể cả $(0;0;0)$) và các hoán vị.\n\n**Trường hợp 2: cả ba ẩn khác $0$.** Nếu $(x;y;z)$ là nghiệm thì $(-x;-y;-z)$ cũng là nghiệm (hai vế cùng đổi dấu), nên chỉ cần tìm các nghiệm có không quá một ẩn âm.\n\n**Trường hợp 2a: ba ẩn dương.** Vì vai trò của $x,y,z$ như nhau nên giả sử $x\\ge y\\ge z\\ge1$.\n\n$xyz=4(x+y+z)\\le12x\\Rightarrow yz\\le12\\Rightarrow z^2\\le12\\Rightarrow z\\in\\{1;2;3\\}$\n\nVới $z=1$: $xy=4(x+y+1)\\Leftrightarrow(x-4)(y-4)=20$.\n\nNếu $y-4<0$ thì $x-4\\ge y-4\\ge-3$ và tích $(x-4)(y-4)$ có hai thừa số âm trong $[-3;-1]$ nên không vượt quá $9$, không thể bằng $20$.\n\nVậy $x-4\\ge y-4>0$ (tích bằng $20\\neq0$), do đó $(x-4;y-4)\\in\\{(20;1);(10;2);(5;4)\\}$, tức $(x;y)\\in\\{(24;5);(14;6);(9;8)\\}$.\n\nVới $z=2$: $2xy=4(x+y+2)\\Leftrightarrow(x-2)(y-2)=8$ và $y\\ge2$ nên $(x-2;y-2)\\in\\{(8;1);(4;2)\\}$, tức $(x;y)\\in\\{(10;3);(6;4)\\}$.\n\nVới $z=3$: $3xy=4(x+y+3)\\Leftrightarrow(3x-4)(3y-4)=52$.\n\nVì $y\\ge3$ nên $3y-4\\ge5$, mà $(3y-4)^2\\le(3x-4)(3y-4)=52$ nên $3y-4\\le7$, suy ra $3y-4=5$ (ứng với $y=3$).\n\nNhưng $5\\nmid52$ nên không có nghiệm.\n\nVậy ba ẩn dương cho: $(24;5;1)$, $(14;6;1)$, $(9;8;1)$, $(10;3;2)$, $(6;4;2)$ và các hoán vị.\n\n**Trường hợp 2b: đúng một ẩn âm.** Giả sử $x=-a$ với $a\\ge1$ và $y,z\\ge1$, $y\\le z$.\n\nPhương trình thành:\n\n$-ayz=4(y+z-a)\\Leftrightarrow a(4-yz)=4(y+z)>0$\n\nSuy ra $yz<4$, tức $(y;z)\\in\\{(1;1);(1;2);(1;3)\\}$.\n\n$(y;z)=(1;1)$ cho $a=\\dfrac{8}{3}$, không nguyên, loại.\n\n$(y;z)=(1;2)$ cho $a=\\dfrac{12}{2}=6$, được $(-6;1;2)$.\n\n$(y;z)=(1;3)$ cho $a=\\dfrac{16}{1}=16$, được $(-16;1;3)$.\n\nCác bộ có hai hoặc ba ẩn âm là số đối của các bộ ở Trường hợp 2a và 2b.\n\nVậy nghiệm nguyên của phương trình gồm mọi hoán vị của: $(t;-t;0)$ với $t\\in\\mathbb Z$; $(24;5;1)$; $(14;6;1)$; $(9;8;1)$; $(10;3;2)$; $(6;4;2)$; $(-6;1;2)$; $(-16;1;3)$ và các bộ số đối của chúng.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giả sử thứ tự (không mất tổng quát)",
+   "đánh giá chặn ẩn nhỏ nhất",
+   "đưa về phương trình tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 226, hướng dẫn bài tập 4) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.5@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các số nguyên $x,y$ thỏa mãn: $x+y=xy$.",
+  "noi_dung_sach": "Tìm tất cả các số nguyên $x,y$ thỏa mãn: $x+y=xy$.",
+  "dap_an": "$(x;y)\\in\\{(2;2);(0;0)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình có hạng tử $xy$ cùng hai hạng tử bậc nhất $x$, $y$ (dạng $xy-x-y$); thêm một hằng số thích hợp vào hai vế thì vế một phân tích được thành tích hai nhị thức, còn vế kia là một số nguyên cố định.\n\n**Bước 1.** Chuyển các hạng tử về một vế để có $xy-x-y$ rồi tìm hằng số cần cộng vào hai vế để vế trái phân tích được thành tích.\n\n**Bước 2.** Phân tích vế trái thành tích hai nhị thức dạng $(x-a)(y-b)$ và viết vế phải là một số nguyên.\n\n**Bước 3.** Hai nhân tử đều là số nguyên nên chúng là cặp ước của vế phải; liệt kê mọi cặp ước kể cả cặp ước âm.\n\n**Bước 4.** Từ từng cặp ước suy ra $x$ và $y$ rồi kết luận.\n\n**Chú ý:** Vế phải bằng $1$ nên ngoài cặp $(1;1)$ còn có cặp $(-1;-1)$; bỏ cặp thứ hai là thiếu nghiệm $(0;0)$.\n\n**Phần 2. Trình bày**\n\n$x+y=xy\\Leftrightarrow xy-x-y=0\\Leftrightarrow xy-x-y+1=1\\Leftrightarrow(x-1)(y-1)=1$\n\nVì $x,y\\in\\mathbb Z$ nên $x-1$ và $y-1$ là các số nguyên có tích bằng $1$, do đó:\n\n$x-1=1$ và $y-1=1$, tức $x=2,\\ y=2$.\n\n$x-1=-1$ và $y-1=-1$, tức $x=0,\\ y=0$.\n\nVậy $(x;y)\\in\\{(2;2);(0;0)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thêm bớt để đưa về tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.6@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T020101",
+  "nhom_soan": "T18T020101",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi vô địch toán 7 Matxcơva, 1985) Tìm tất cả các giá trị của $x,y$ sao cho: $xy+1=x+y$.",
+  "noi_dung_sach": "(Đề thi vô địch toán 7 Matxcơva, 1985) Tìm tất cả các giá trị của $x,y$ sao cho: $xy+1=x+y$.",
+  "dap_an": "$x=1$ và $y$ tùy ý, hoặc $y=1$ và $x$ tùy ý",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển hết về một vế rồi nhóm $xy-x$ với $1-y$ thì xuất hiện nhân tử chung $y-1$, đưa phương trình về dạng tích bằng $0$.\n\n**Bước 1.** Chuyển các hạng tử ở vế phải sang vế trái để vế phải bằng $0$.\n\n**Bước 2.** Nhóm hạng tử có $x$ với hạng tử tự do sao cho mỗi nhóm chứa nhân tử $y-1$, rồi đặt nhân tử chung.\n\n**Bước 3.** Một tích bằng $0$ khi một trong các nhân tử bằng $0$; từ đó nêu các giá trị của $x$ và $y$ thỏa mãn.\n\n**Chú ý:** Mỗi nhân tử bằng $0$ chỉ ràng buộc một ẩn, ẩn còn lại tùy ý; đừng chỉ ghi cặp $(1;1)$.\n\n**Phần 2. Trình bày**\n\n$xy+1=x+y\\Leftrightarrow xy-x-y+1=0$\n\n$\\Leftrightarrow x(y-1)-(y-1)=0$\n\n$\\Leftrightarrow(x-1)(y-1)=0$\n\n$\\Leftrightarrow x=1$ hoặc $y=1$\n\nVậy các giá trị cần tìm là $x=1$ với $y$ tùy ý, hoặc $y=1$ với $x$ tùy ý.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử đưa về phương trình tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.7@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số thực $u,v$ biết: $u^3+v^3=7$ và $uv=-2$.",
+  "noi_dung_sach": "Tìm các số thực $u,v$ biết: $u^3+v^3=7$ và $uv=-2$.",
+  "dap_an": "$(u;v)\\in\\{(2;-1);(-1;2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập phương hai vế của $uv=-2$ thì có tổng $u^3+v^3$ và tích $u^3v^3$ đều biết, nên $u^3$ và $v^3$ là hai nghiệm của một phương trình bậc hai.\n\n**Bước 1.** Lập phương hai vế của $uv=-2$ để có giá trị của tích $u^3v^3$; lưu ý với số thực thì $uv=-2$ và $(uv)^3=-8$ là tương đương.\n\n**Bước 2.** Đặt $a=u^3$, $b=v^3$ để có hệ tổng $a+b=7$ và tích $ab=-8$, rồi thế $a$ theo $b$ để được phương trình bậc hai.\n\n**Bước 3.** Giải phương trình bậc hai bằng cách tách hạng tử để phân tích thành tích, tìm các cặp $(a;b)$.\n\n**Bước 4.** Với mỗi cặp, lấy căn bậc ba (duy nhất trong số thực) để tìm $u$ và $v$ rồi kết luận.\n\n**Chú ý:** Căn bậc ba của một số thực luôn tồn tại và duy nhất, nên mỗi cặp $(a;b)$ cho đúng một cặp $(u;v)$.\n\n**Phần 2. Trình bày**\n\nVì $u,v\\in\\mathbb R$ nên $uv=-2\\Leftrightarrow(uv)^3=-8\\Leftrightarrow u^3v^3=-8$.\n\nĐặt $a=u^3$, $b=v^3$, ta có $a+b=7$ và $ab=-8$.\n\nTừ $a=7-b$ thế vào $ab=-8$: $(7-b)b=-8\\Leftrightarrow b^2-7b-8=0$\n\n$\\Leftrightarrow(b+1)(b-8)=0\\Leftrightarrow b=-1$ hoặc $b=8$\n\n$b=-1\\Rightarrow a=8$, tức $u^3=8$, $v^3=-1$, suy ra $u=2$, $v=-1$.\n\n$b=8\\Rightarrow a=-1$, tức $u^3=-1$, $v^3=8$, suy ra $u=-1$, $v=2$.\n\nVậy $(u;v)\\in\\{(2;-1);(-1;2)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ ($u^3,v^3$)",
+   "thế"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.8@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm nghiệm nguyên $x,y$ của phương trình $x^2-xy=6x-5y-8$.",
+  "noi_dung_sach": "Tìm nghiệm nguyên $x,y$ của phương trình $x^2-xy=6x-5y-8$.",
+  "dap_an": "$(x;y)\\in\\{(2;0);(4;0);(6;8);(8;8)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển các hạng tử chứa $y$ sang một vế thì $y$ đứng cạnh nhân tử $x-5$; rút $y$ theo $x$ rồi tách phần nguyên thì còn lại một phân số có tử là hằng số, buộc $x-5$ là ước của hằng số đó.\n\n**Bước 1.** Gom các hạng tử chứa $y$ về cùng một vế, đặt $y$ làm nhân tử chung để viết phương trình dưới dạng đa thức theo $x$ bằng $y(x-5)$.\n\n**Bước 2.** Kiểm tra giá trị của $x$ làm nhân tử $x-5$ bằng $0$ có là nghiệm không, rồi rút $y$ và chia đa thức để tách phần nguyên.\n\n**Bước 3.** Phân số còn lại phải nguyên nên $x-5$ là ước của hằng số ở tử; liệt kê đủ ước dương và ước âm.\n\n**Bước 4.** Tính $x$ rồi $y$ cho từng ước và kết luận.\n\n**Chú ý:** Bước loại giá trị $x$ làm mẫu bằng $0$ không được bỏ: nó cho biết lúc nào mới được chia hai vế cho $x-5$.\n\n**Phần 2. Trình bày**\n\n$x^2-xy=6x-5y-8\\Leftrightarrow x^2-6x+8=xy-5y\\Leftrightarrow x^2-6x+8=y(x-5)$\n\nVới $x=5$ vế trái bằng $3$, vế phải bằng $0$ nên $x=5$ không là nghiệm.\n\nVới $x\\neq5$:\n\n$y=\\dfrac{x^2-6x+8}{x-5}=\\dfrac{(x-5)(x-1)+3}{x-5}=x-1+\\dfrac{3}{x-5}$\n\nVì $x,y\\in\\mathbb Z$ nên $\\dfrac{3}{x-5}\\in\\mathbb Z$, tức $x-5\\in\\{1;-1;3;-3\\}$.\n\n$x-5=1\\Rightarrow x=6,\\ y=5+3=8$\n\n$x-5=-1\\Rightarrow x=4,\\ y=3-3=0$\n\n$x-5=3\\Rightarrow x=8,\\ y=7+1=8$\n\n$x-5=-3\\Rightarrow x=2,\\ y=1-1=0$\n\nVậy $(x;y)\\in\\{(2;0);(4;0);(6;8);(8;8)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên",
+   "ước của một số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.9@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi HSG lớp 9 tỉnh Phú Thọ năm 2003 – 2004) Tìm nghiệm nguyên dương của phương trình: $xy-2x-3y+1=0$.",
+  "noi_dung_sach": "(Đề thi HSG lớp 9 tỉnh Phú Thọ năm 2003 – 2004) Tìm nghiệm nguyên dương của phương trình: $xy-2x-3y+1=0$.",
+  "dap_an": "$(x;y)\\in\\{(4;7);(8;3)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển các hạng tử chứa $y$ về một vế thì $y$ đứng cạnh nhân tử $x-3$; rút $y$ theo $x$ rồi tách phần nguyên ra thì còn lại một phân số có tử là hằng số, nên $x-3$ phải là ước của hằng số đó.\n\n**Bước 1.** Đặt $y$ làm nhân tử chung của các hạng tử chứa $y$ để đưa phương trình về dạng $y(x-3)=$ một đa thức theo $x$.\n\n**Bước 2.** Loại giá trị $x$ làm nhân tử $x-3$ bằng $0$, rồi rút $y$ và tách phần nguyên.\n\n**Bước 3.** Vì phân số còn lại phải nguyên nên $x-3$ là ước của hằng số ở tử; liệt kê đủ ước dương và ước âm.\n\n**Bước 4.** Tính $x$ và $y$ từng trường hợp, chỉ giữ các cặp mà cả hai số đều dương theo yêu cầu của đề.\n\n**Chú ý:** Đề chỉ lấy nghiệm nguyên dương nên các ước âm dẫn đến $x\\le0$ hoặc $y<0$ đều phải loại.\n\n**Phần 2. Trình bày**\n\n$xy-2x-3y+1=0\\Leftrightarrow y(x-3)=2x-1$\n\nVới $x=3$ vế trái bằng $0$, vế phải bằng $5$ nên $x=3$ không là nghiệm.\n\nVới $x\\neq3$:\n\n$y=\\dfrac{2x-1}{x-3}=\\dfrac{2(x-3)+5}{x-3}=2+\\dfrac{5}{x-3}$\n\nVì $x,y\\in\\mathbb Z$ nên $\\dfrac{5}{x-3}\\in\\mathbb Z$, tức $x-3\\in\\{1;-1;5;-5\\}$.\n\n$x-3=1\\Rightarrow x=4,\\ y=2+5=7$, thỏa.\n\n$x-3=-1\\Rightarrow x=2,\\ y=2-5=-3<0$, loại.\n\n$x-3=5\\Rightarrow x=8,\\ y=2+1=3$, thỏa.\n\n$x-3=-5\\Rightarrow x=-2<0$, loại.\n\nVậy $(x;y)\\in\\{(4;7);(8;3)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên",
+   "ước của một số nguyên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.10@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình nghiệm nguyên dương: $xy+yz+zx=xyz+2$.",
+  "noi_dung_sach": "Giải phương trình nghiệm nguyên dương: $xy+yz+zx=xyz+2$.",
+  "dap_an": "$(x;y;z)=(1;1;1)$ và các hoán vị của $(4;3;2)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình đối xứng ba ẩn nên được sắp thứ tự $x\\ge y\\ge z$; khi đó mỗi tích trong $xy+yz+zx$ không vượt quá $xy$, nhờ vậy chặn được $z$ rất nhỏ rồi từng giá trị của $z$ đưa phương trình về dạng tích.\n\n**Bước 1.** Giả sử $x\\ge y\\ge z\\ge1$ và đánh giá vế trái $xy+yz+zx$ không vượt quá $3xy$ để so với vế phải $xyz+2$.\n\n**Bước 2.** Từ bất đẳng thức đó suy ra một chặn trên cho $z$, vì $z$ nguyên dương nên chỉ còn vài giá trị cần thử.\n\n**Bước 3.** Với từng giá trị của $z$, thay vào phương trình rồi biến đổi về dạng tích hai nhân tử bằng một hằng số.\n\n**Bước 4.** Dùng điều kiện thứ tự $x\\ge y\\ge z$ để chọn đúng cặp ước, rồi lấy cả các hoán vị của nghiệm tìm được.\n\n**Chú ý:** Sau khi sắp thứ tự, nhớ viết lại nghiệm thành mọi hoán vị, vì đề không yêu cầu $x\\ge y\\ge z$.\n\n**Phần 2. Trình bày**\n\nVì vai trò của $x,y,z$ như nhau nên giả sử $x\\ge y\\ge z\\ge1$.\n\nKhi đó $yz\\le xy$ và $zx\\le xy$ nên $xy+yz+zx\\le3xy$.\n\nTừ phương trình: $xyz+2=xy+yz+zx\\le3xy$, suy ra $xyz<3xy$, tức $z<3$, nên $z\\in\\{1;2\\}$.\n\nVới $z=1$: $xy+y+x=xy+2\\Leftrightarrow x+y=2$.\n\nVì $x,y\\ge1$ nên $x=y=1$.\n\nVới $z=2$: $xy+2y+2x=2xy+2\\Leftrightarrow xy-2x-2y+2=0\\Leftrightarrow(x-2)(y-2)=2$.\n\nVì $x\\ge y\\ge2$ nên $x-2\\ge y-2\\ge0$, mà tích bằng $2$ nên $x-2=2$, $y-2=1$, tức $x=4$, $y=3$.\n\nVậy nghiệm nguyên dương của phương trình là $(x;y;z)=(1;1;1)$ và các hoán vị của $(4;3;2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giả sử thứ tự (không mất tổng quát)",
+   "đánh giá chặn ẩn nhỏ nhất",
+   "đưa về phương trình tích"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.11@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình nghiệm nguyên dương $\\dfrac{1}{x}-\\dfrac{1}{y}=\\dfrac{1}{3}$.",
+  "noi_dung_sach": "Giải phương trình nghiệm nguyên dương $\\dfrac{1}{x}-\\dfrac{1}{y}=\\dfrac{1}{3}$.",
+  "dap_an": "$(x;y)=(2;6)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai ẩn đều nằm ở mẫu nên rút $x$ theo $y$ rồi tách phần nguyên; phần phân số còn lại có tử là hằng số, buộc mẫu phải là ước của hằng số đó.\n\n**Bước 1.** Chuyển $\\dfrac1y$ sang vế phải và quy đồng để rút $x$ thành một phân thức của $y$.\n\n**Bước 2.** Tách phân thức đó thành một số nguyên cộng với một phân số có tử là hằng số.\n\n**Bước 3.** Vì $x$ nguyên nên mẫu của phân số còn lại phải là ước của tử, rồi dùng điều kiện $y>0$ để chọn ước phù hợp.\n\n**Bước 4.** Tính $x$ từ $y$ vừa tìm và thử lại vào phương trình.\n\n**Chú ý:** Mẫu $y+3$ luôn lớn hơn hoặc bằng $4$ nên chỉ được lấy các ước dương của tử mà lớn hơn $3$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{x}-\\dfrac{1}{y}=\\dfrac{1}{3}\\Leftrightarrow\\dfrac{1}{x}=\\dfrac{1}{y}+\\dfrac{1}{3}=\\dfrac{y+3}{3y}\\Leftrightarrow x=\\dfrac{3y}{y+3}=3-\\dfrac{9}{y+3}$\n\nVì $x$ nguyên nên $\\dfrac{9}{y+3}$ nguyên, tức $y+3$ là ước dương của $9$.\n\nMà $y\\ge1$ nên $y+3\\ge4$, do đó $y+3=9$, suy ra $y=6$.\n\nKhi đó $x=3-1=2$.\n\nThử lại: $\\dfrac12-\\dfrac16=\\dfrac13$, đúng.\n\nVậy $(x;y)=(2;6)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách phần nguyên",
+   "ước của một số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.12@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình nghiệm nguyên dương $\\dfrac{1}{x}+\\dfrac{1}{y}=\\dfrac{1}{3}+\\dfrac{1}{xy}$.",
+  "noi_dung_sach": "Giải phương trình nghiệm nguyên dương $\\dfrac{1}{x}+\\dfrac{1}{y}=\\dfrac{1}{3}+\\dfrac{1}{xy}$.",
+  "dap_an": "$(x;y)\\in\\{(9;4);(6;5);(4;9);(5;6)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình đối xứng theo $x,y$ nên có thể giả sử $x\\ge y$; khi đó $\\dfrac1x\\le\\dfrac1y$, dùng nó để chặn $\\dfrac13$ và suy ra $y$ chỉ nhận vài giá trị nhỏ, rồi thử từng giá trị.\n\n**Bước 1.** Giả sử $x\\ge y$ rồi đưa hạng tử $\\dfrac1{xy}$ sang vế trái để biểu diễn $\\dfrac13$ bằng một tổng các phân thức.\n\n**Bước 2.** Thay $\\dfrac1x$ bằng số hạng lớn hơn $\\dfrac1y$ để được bất đẳng thức, rồi so sánh với $\\dfrac2y$ để rút ra cận trên của $y$.\n\n**Bước 3.** Quy đồng phương trình về dạng $x(y-3)=3(y-1)$ rồi tính $x$ lần lượt với từng giá trị của $y$ trong khoảng đã chặn.\n\n**Bước 4.** Chỉ nhận các cặp có $x$ nguyên dương và $x\\ge y$, rồi hoán đổi hai số để lấy đủ nghiệm.\n\n**Chú ý:** Quy đồng ngay còn cho cách khác: phương trình tương đương $(x-3)(y-3)=6$, rồi xét các ước của $6$ với $x,y\\ge1$.\n\n**Phần 2. Trình bày**\n\nPhương trình đối xứng theo $x,y$ nên giả sử $x\\ge y$, tức $\\dfrac1x\\le\\dfrac1y$.\n\nKhi đó:\n\n$\\dfrac13=\\dfrac1x+\\dfrac1y-\\dfrac1{xy}\\le\\dfrac2y-\\dfrac1{xy}=\\dfrac{2x-1}{xy}<\\dfrac{2x}{xy}=\\dfrac2y$\n\nSuy ra $y<6$, tức $y\\in\\{1;2;3;4;5\\}$.\n\nQuy đồng phương trình: $3y+3x=xy+3\\Leftrightarrow x(y-3)=3(y-1)$.\n\nVới $y=3$: $0=6$, vô lí.\n\nVới $y=1$: $-2x=0$, $x=0$, loại.\n\nVới $y=2$: $-x=3$, $x=-3$, loại.\n\nVới $y=4$: $x=9$, thỏa $x\\ge y$.\n\nVới $y=5$: $2x=12$, $x=6$, thỏa $x\\ge y$.\n\nHoán đổi vai trò $x,y$, ta được các cặp còn lại.\n\nVậy $(x;y)\\in\\{(9;4);(6;5);(4;9);(5;6)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "giả sử thứ tự hai ẩn (phương trình đối xứng)",
+   "đánh giá bằng bất đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.14@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040302",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số tự nhiên $2<x<y<z<t<u$ thỏa mãn: $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}+\\dfrac{1}{t}+\\dfrac{1}{u}=1$.",
+  "noi_dung_sach": "Tìm các số tự nhiên $2<x<y<z<t<u$ thỏa mãn: $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}+\\dfrac{1}{t}+\\dfrac{1}{u}=1$.",
+  "dap_an": "$(x;y;z;t;u)=(3;4;5;6;20)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số tăng dần $x<y<z<t<u$ nên nghịch đảo của chúng giảm dần; nếu một số lớn hơn mức cho phép thì cả tổng nhỏ hơn $1$, nhờ vậy chặn được từng số theo thứ tự từ nhỏ đến lớn.\n\n**Bước 1.** Giả sử $x\\ge4$ rồi thay mỗi số còn lại bằng giá trị nhỏ nhất có thể để chặn trên tổng các nghịch đảo và loại trường hợp này.\n\n**Bước 2.** Với $x=3$, đưa về tổng bốn nghịch đảo bằng $\\dfrac23$ và lập luận tương tự để xác định $y$.\n\n**Bước 3.** Khi đã biết $x,y$, còn tổng ba nghịch đảo; thay hai số hạng sau bằng số hạng lớn nhất để chặn $z$ trong một khoảng hữu hạn.\n\n**Bước 4.** Xét lần lượt từng giá trị của $z$, chặn $t$ bằng cách tương tự rồi tính $u$ từ phần còn lại và kiểm tra $u$ nguyên.\n\n**Chú ý:** Cách chặn \"mọi số lấy giá trị nhỏ nhất\" chỉ đủ để chốt $x$ và $y$; từ $z$ trở đi phải xét riêng từng giá trị.\n\n**Phần 2. Trình bày**\n\nVì $2<x<y<z<t<u$ là các số tự nhiên nên $x\\ge3$.\n\nNếu $x\\ge4$ thì $y\\ge5$, $z\\ge6$, $t\\ge7$, $u\\ge8$, suy ra\n\n$1=\\dfrac1x+\\dfrac1y+\\dfrac1z+\\dfrac1t+\\dfrac1u\\le\\dfrac14+\\dfrac15+\\dfrac16+\\dfrac17+\\dfrac18=\\dfrac{743}{840}<1$, vô lí.\n\nVậy $x=3$ và $\\dfrac1y+\\dfrac1z+\\dfrac1t+\\dfrac1u=\\dfrac23$.\n\nNếu $y\\ge5$ thì $z\\ge6$, $t\\ge7$, $u\\ge8$, suy ra $\\dfrac23\\le\\dfrac15+\\dfrac16+\\dfrac17+\\dfrac18=\\dfrac{533}{840}<\\dfrac{560}{840}=\\dfrac23$, vô lí.\n\nVậy $y=4$ và $\\dfrac1z+\\dfrac1t+\\dfrac1u=\\dfrac23-\\dfrac14=\\dfrac5{12}$.\n\nVì $z<t<u$ nên $\\dfrac5{12}<\\dfrac3z$, suy ra $z<\\dfrac{36}5$; mà $z\\ge5$ nên $z\\in\\{5;6;7\\}$.\n\nVới $z=5$: $\\dfrac1t+\\dfrac1u=\\dfrac5{12}-\\dfrac15=\\dfrac{13}{60}$.\n\nVì $t<u$ nên $\\dfrac{13}{60}<\\dfrac2t$, tức $t<\\dfrac{120}{13}$; mà $t\\ge6$ nên $t\\in\\{6;7;8;9\\}$.\n\nVới $t=6$: $\\dfrac1u=\\dfrac{13}{60}-\\dfrac16=\\dfrac1{20}$, được $u=20$, thỏa $u>t$.\n\nVới $t=7;8;9$: $\\dfrac1u$ lần lượt bằng $\\dfrac{31}{420};\\dfrac{11}{120};\\dfrac{19}{180}$, cho $u=\\dfrac{420}{31};\\dfrac{120}{11};\\dfrac{180}{19}$ đều không nguyên, loại.\n\nVới $z=6$: $\\dfrac1t+\\dfrac1u=\\dfrac5{12}-\\dfrac16=\\dfrac14$.\n\nVì $t<u$ nên $\\dfrac14<\\dfrac2t$, tức $t<8$; mà $t\\ge7$ nên $t=7$, khi đó $\\dfrac1u=\\dfrac14-\\dfrac17=\\dfrac3{28}$, $u=\\dfrac{28}3$ không nguyên, loại.\n\nVới $z=7$: $\\dfrac1t+\\dfrac1u=\\dfrac{23}{84}$.\n\nVì $t\\ge8$ nên $\\dfrac1t+\\dfrac1u<\\dfrac2t\\le\\dfrac14=\\dfrac{21}{84}<\\dfrac{23}{84}$, vô lí.\n\nVậy $(x;y;z;t;u)=(3;4;5;6;20)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đánh giá theo thứ tự các ẩn",
+   "chặn tổng các nghịch đảo"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.15@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số tự nhiên $m,n$ thỏa mãn: $19m+84n=1984$.",
+  "noi_dung_sach": "Tìm các số tự nhiên $m,n$ thỏa mãn: $19m+84n=1984$.",
+  "dap_an": "$(m;n)\\in\\{(100;1);(16;20)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là phương trình bậc nhất hai ẩn với hai hệ số nguyên tố cùng nhau; chỉ cần một nghiệm riêng là suy ra được mọi nghiệm nguyên, rồi ép điều kiện không âm để chọn các nghiệm tự nhiên.\n\n**Bước 1.** Tìm một nghiệm riêng bằng cách tách $1984$ thành tổng của một bội của $19$ và một bội của $84$.\n\n**Bước 2.** Trừ vế theo vế phương trình đã cho với đẳng thức của nghiệm riêng để được $19\\cdot(\\ldots)=84\\cdot(\\ldots)$.\n\n**Bước 3.** Dùng $19$ và $84$ nguyên tố cùng nhau để suy ra mỗi vế chia hết cho số kia, rồi viết công thức nghiệm tổng quát theo một tham số nguyên $k$.\n\n**Bước 4.** Giải điều kiện $m\\ge0$, $n\\ge0$ để chặn $k$ trong vài giá trị rồi liệt kê các cặp nghiệm.\n\n**Chú ý:** Công thức nghiệm tổng quát cho cả nghiệm âm; đừng quên ràng buộc \"tự nhiên\" ở bước cuối.\n\n**Phần 2. Trình bày**\n\nTa thấy $1984=1900+84=19\\cdot100+84\\cdot1$, nên $(m;n)=(100;1)$ là một nghiệm.\n\nTrừ vế theo vế $19m+84n=1984$ cho $19\\cdot100+84\\cdot1=1984$ được $19(100-m)=84(n-1)$.\n\nVì $19$ và $84$ nguyên tố cùng nhau nên $84\\mid(100-m)$; đặt $100-m=84k$ ($k\\in\\mathbb{Z}$), khi đó $n-1=19k$.\n\nVậy $m=100-84k$, $n=1+19k$ với $k\\in\\mathbb{Z}$.\n\n$m\\ge0\\Leftrightarrow k\\le\\dfrac{100}{84}$ nên $k\\le1$; $n\\ge0\\Leftrightarrow k\\ge-\\dfrac1{19}$ nên $k\\ge0$.\n\nSuy ra $k\\in\\{0;1\\}$.\n\nVới $k=0$: $(m;n)=(100;1)$.\n\nVới $k=1$: $(m;n)=(16;20)$.\n\nVậy $(m;n)\\in\\{(100;1);(16;20)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nghiệm riêng của phương trình bậc nhất hai ẩn",
+   "hai số nguyên tố cùng nhau"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.16@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các số có hai chữ số mà nó chia hết cho tích các chữ số.",
+  "noi_dung_sach": "Tìm tất cả các số có hai chữ số mà nó chia hết cho tích các chữ số.",
+  "dap_an": "$S=\\{11;12;15;24;36\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số $\\overline{xy}=10x+y$ chia hết cho tích $xy$ thì chia hết cho từng thừa số $x$ và $y$; điều đó buộc $y$ là bội của $x$, nên đặt $y=kx$ để chặn $k$ rồi chốt $x$.\n\n**Bước 1.** Viết số cần tìm là $10x+y$ với các chữ số đều khác $0$ (vì tích các chữ số phải khác $0$) và từ $x\\mid10x+y$ suy ra $x\\mid y$.\n\n**Bước 2.** Đặt $y=kx$ rồi đặt nhân tử chung $x$ để đưa điều kiện chia hết về dạng $kx\\mid10+k$.\n\n**Bước 3.** Suy ra $k$ phải là ước của $10$ và loại các giá trị của $k$ làm $y$ không còn là một chữ số.\n\n**Bước 4.** Với mỗi giá trị $k$ còn lại, giải điều kiện $kx\\mid10+k$ cùng điều kiện $y\\le9$ để tìm $x$ và viết ra số.\n\n**Chú ý:** Điều kiện \"$k$ là ước của $10$\" mới là điều kiện cần; phải xét tiếp $kx\\mid10+k$, chẳng hạn $k=1$ chỉ cho $x=1$ chứ không phải mọi số dạng $\\overline{xx}$.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $\\overline{xy}=10x+y$ với $1\\le x\\le9$, $1\\le y\\le9$ (nếu $y=0$ thì tích các chữ số bằng $0$, không thể chia).\n\nVì $xy\\mid10x+y$ nên $x\\mid10x+y$, suy ra $x\\mid y$.\n\nĐặt $y=kx$ ($k\\in\\mathbb{N}^*$).\n\nKhi đó $10x+y=x(10+k)$ và $xy=kx^2$, nên điều kiện trở thành $kx\\mid10+k$.\n\nSuy ra $k\\mid10+k$, tức $k\\mid10$, nên $k\\in\\{1;2;5;10\\}$.\n\nVới $k=10$ thì $y=10x>9$, loại.\n\nVới $k=1$: $x\\mid11$, suy ra $x=1$, $y=1$, được số $11$.\n\nVới $k=2$: $2x\\mid12$, tức $x\\mid6$; vì $y=2x\\le9$ nên $x\\in\\{1;2;3\\}$, được các số $12;24;36$.\n\nVới $k=5$: $5x\\mid15$, tức $x\\mid3$; vì $y=5x\\le9$ nên $x=1$, được số $15$.\n\nVậy các số cần tìm là $11;12;15;24;36$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chia hết",
+   "đặt $y=kx$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 228, hướng dẫn bài tập 1) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.17@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các số có năm chữ số sao cho số đó bằng $45$ lần tích các chữ số của nó.",
+  "noi_dung_sach": "Tìm tất cả các số có năm chữ số sao cho số đó bằng $45$ lần tích các chữ số của nó.",
+  "dap_an": "$77175$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bằng $45$ lần tích các chữ số nên chia hết cho $5$ và $9$; xét lần lượt chữ số hàng đơn vị, hàng chục, rồi tổng ba chữ số đầu và tích của chúng để thu hẹp đến vài khả năng cần thử.\n\n**Bước 1.** Dùng điều kiện chia hết cho $5$ và tích các chữ số khác $0$ để xác định chữ số hàng đơn vị.\n\n**Bước 2.** Vì số chia hết cho $25$, suy ra hai chữ số cuối có hai khả năng, rồi dùng tính chẵn lẻ của số đó để chọn chữ số hàng chục.\n\n**Bước 3.** Dùng dấu hiệu chia hết cho $9$ cùng tính lẻ của ba chữ số đầu để tìm tổng của chúng.\n\n**Bước 4.** Dùng điều kiện số có đúng năm chữ số để chặn tích ba chữ số đầu, rồi liệt kê các bộ ba thỏa và thử lại từng bộ.\n\n**Chú ý:** Bộ ba chữ số tìm được mới chỉ là điều kiện cần; phải tính số $M$ rồi đối chiếu các chữ số của nó với bộ ba đó.\n\n**Phần 2. Trình bày**\n\nGọi số cần tìm là $M=\\overline{abcde}$ ($1\\le a\\le9$, $0\\le b,c,d,e\\le9$), khi đó $M=45\\cdot a\\cdot b\\cdot c\\cdot d\\cdot e$.\n\nVì $5\\mid45$ nên $5\\mid M$, suy ra $e\\in\\{0;5\\}$.\n\nNếu $e=0$ thì $M=0$, vô lí.\n\nVậy $e=5$ và $M=225\\cdot a\\cdot b\\cdot c\\cdot d$.\n\nDo $25\\mid M$ nên $25\\mid\\overline{d5}$, suy ra $\\overline{d5}\\in\\{25;75\\}$, tức $d\\in\\{2;7\\}$.\n\nNếu $d=2$ thì $M=450\\cdot a\\cdot b\\cdot c$ là số chẵn, mà $M$ tận cùng bằng $5$ là số lẻ, vô lí.\n\nVậy $d=7$ và $M=1575\\cdot a\\cdot b\\cdot c$.\n\nVì $M$ lẻ nên $a,b,c$ đều lẻ.\n\nVì $9\\mid M$ nên tổng các chữ số $a+b+c+12$ chia hết cho $9$; mà $a+b+c\\le27$ nên $a+b+c\\in\\{6;15;24\\}$.\n\nTổng ba số lẻ là số lẻ, vậy $a+b+c=15$.\n\nVì $M<100000$ nên $a\\cdot b\\cdot c<\\dfrac{100000}{1575}<64$, tức $a\\cdot b\\cdot c\\le63$.\n\nCác bộ ba chữ số lẻ có tổng $15$ là $\\{1;5;9\\}$, $\\{1;7;7\\}$, $\\{3;3;9\\}$, $\\{3;5;7\\}$, $\\{5;5;5\\}$, với tích lần lượt $45;49;81;105;125$.\n\nChỉ có tích $45$ và $49$ thỏa $\\le63$.\n\nNếu $a\\cdot b\\cdot c=45$ thì $M=1575\\cdot45=70875$; các chữ số đầu $7;0;8$ không phải bộ $\\{1;5;9\\}$, loại.\n\nNếu $a\\cdot b\\cdot c=49$ thì $M=1575\\cdot49=77175$; các chữ số $7;7;1;7;5$ có tích $7\\cdot7\\cdot1\\cdot7\\cdot5=1715$ và $45\\cdot1715=77175$, thỏa mãn.\n\nVậy số cần tìm là $77175$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "dấu hiệu chia hết cho 5, 25, 9",
+   "tính chẵn lẻ",
+   "chặn bằng điều kiện số có năm chữ số"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.18@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040302",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình nghiệm nguyên $x^3+x^2y+xy^2+y^3=8(x^2+xy+y^2+1)$.",
+  "noi_dung_sach": "Giải phương trình nghiệm nguyên $x^3+x^2y+xy^2+y^3=8(x^2+xy+y^2+1)$.",
+  "dap_an": "$(x;y)\\in\\{(2;8);(8;2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái nhóm được thành $(x+y)(x^2+y^2)$ còn vế phải chia hết cho $8$; xét tính chẵn lẻ để biết $x,y$ cùng tính chẵn lẻ, rồi so sánh độ lớn hai vế để chặn $x+y$ trong một khoảng nhỏ.\n\n**Bước 1.** Nhóm vế trái thành $(x+y)(x^2+y^2)$ và dùng vế phải là số chẵn để chứng minh $x,y$ cùng tính chẵn lẻ.\n\n**Bước 2.** Xét riêng trường hợp $x=y$ và chứng tỏ phương trình một ẩn thu được không có nghiệm nguyên.\n\n**Bước 3.** Khi $x\\neq y$, dùng $\\lvert x-y\\rvert\\ge2$ để có $x^2+y^2\\ge2xy+4$, rồi chuyển phương trình về dạng tích và so sánh hai vế để chặn $x+y$.\n\n**Bước 4.** Với mỗi giá trị của $x+y$ trong khoảng đó, tính $xy$ rồi tìm $x$ bằng cách hoàn chỉnh bình phương.\n\n**Chú ý:** Khi so sánh hai vế phải xét cả trường hợp $2xy+2<0$; chỉ dùng $x^2+y^2\\ge2xy+4$ là chưa đủ.\n\n**Phần 2. Trình bày**\n\n$x^3+x^2y+xy^2+y^3=(x+y)(x^2+y^2)$, nên phương trình là $(x+y)(x^2+y^2)=8(x^2+xy+y^2+1)$.\n\nVế phải chẵn.\n\nNếu $x+y$ lẻ thì một trong hai số $x,y$ lẻ, số kia chẵn nên $x^2+y^2$ lẻ; khi đó vế trái lẻ, vô lí.\n\nVậy $x+y$ chẵn, tức $x,y$ cùng tính chẵn lẻ.\n\nTrường hợp $x=y$: $4x^3=8(3x^2+1)\\Leftrightarrow x^2(x-6)=2$.\n\nKhi đó $x^2\\mid2$ nên $x=\\pm1$; thử $x=1$ cho $-5\\neq2$, thử $x=-1$ cho $-7\\neq2$.\n\nVô nghiệm.\n\nTrường hợp $x\\neq y$: $x-y$ là số chẵn khác $0$ nên $\\lvert x-y\\rvert\\ge2$, suy ra $(x-y)^2\\ge4$, tức $x^2+y^2\\ge2xy+4$.\n\nTa chứng minh $x^2+y^2>\\lvert2xy+2\\rvert$.\n\nNếu $2xy+2\\ge0$ thì $x^2+y^2\\ge2xy+4>2xy+2$.\n\nNếu $2xy+2<0$ thì $x^2+y^2\\ge-2xy>-2xy-2=\\lvert2xy+2\\rvert$ (vì $(x+y)^2\\ge0$).\n\nPhương trình tương đương $(x^2+y^2)(x+y-8)=8xy+8=4(2xy+2)$.\n\nLấy giá trị tuyệt đối hai vế:\n\n$(x^2+y^2)\\lvert x+y-8\\rvert=4\\lvert2xy+2\\rvert<4(x^2+y^2)$\n\nSuy ra $\\lvert x+y-8\\rvert<4$, tức $4<x+y<12$; mà $x+y$ chẵn nên $x+y\\in\\{6;8;10\\}$.\n\nĐặt $s=x+y$, $p=xy$, khi đó $x^2+y^2=s^2-2p$ và phương trình trở thành $(s^2-2p)(s-8)=8p+8$.\n\nVới $s=6$: $(36-2p)(-2)=8p+8\\Rightarrow p=-20$.\n\nKhi đó $x(6-x)=-20$, tức $(x-3)^2=29$, không là số chính phương, loại.\n\nVới $s=8$: $0=8p+8\\Rightarrow p=-1$.\n\nKhi đó $x(8-x)=-1$, tức $(x-4)^2=17$, không là số chính phương, loại.\n\nVới $s=10$: $(100-2p)\\cdot2=8p+8\\Rightarrow p=16$.\n\nKhi đó $x(10-x)=16$, tức $(x-5)^2=9$, suy ra $x=8$ hoặc $x=2$, tương ứng $y=2$ hoặc $y=8$.\n\nVậy $(x;y)\\in\\{(2;8);(8;2)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét tính chẵn lẻ",
+   "đánh giá bằng bất đẳng thức",
+   "phân tích thành nhân tử"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.19@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040303",
+  "nhom_soan": "T18T040303",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giải phương trình nghiệm nguyên $x(1+x+x^2)=4y(y+1)$.",
+  "noi_dung_sach": "Giải phương trình nghiệm nguyên $x(1+x+x^2)=4y(y+1)$.",
+  "dap_an": "$(x;y)\\in\\{(0;0);(0;-1)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng $1$ vào hai vế thì vế phải thành bình phương $(2y+1)^2$ và vế trái thành tích $(1+x)(1+x^2)$; hai thừa số nguyên tố cùng nhau có tích là số chính phương thì mỗi thừa số là số chính phương, từ đó $x^2$ và $1+x^2$ cùng là bình phương.\n\n**Bước 1.** Cộng $1$ vào hai vế để vế phải viết được thành bình phương của một số lẻ và vế trái thành tích hai thừa số.\n\n**Bước 2.** Dùng vế phải là số lẻ dương để suy ra cả hai thừa số đều lẻ và đều dương.\n\n**Bước 3.** Gọi $d$ là một ước chung của hai thừa số và chứng minh $d$ phải bằng $1$, tức hai thừa số nguyên tố cùng nhau.\n\n**Bước 4.** Kết luận hai thừa số đều là số chính phương, dùng tính chất hai số chính phương liên tiếp để tìm $x$, rồi thay vào tìm $y$.\n\n**Chú ý:** Muốn kết luận \"tích là số chính phương nên từng thừa số là số chính phương\" thì các thừa số phải nguyên tố cùng nhau và dương.\n\n**Phần 2. Trình bày**\n\n$x(1+x+x^2)=4y(y+1)\\Leftrightarrow1+x+x^2+x^3=4y^2+4y+1\\Leftrightarrow(1+x)(1+x^2)=(2y+1)^2$.\n\nVế phải là số lẻ dương nên $1+x$ và $1+x^2$ đều lẻ; vì $1+x^2>0$ và tích dương nên $1+x>0$.\n\nGọi $d$ là một ước chung dương của $1+x$ và $1+x^2$.\n\nKhi đó $d$ lẻ.\n\nVì $d\\mid1+x$ nên $d\\mid(1+x)(1-x)=1-x^2$; kết hợp với $d\\mid1+x^2$ ta có $d\\mid(1+x^2)+(1-x^2)=2$.\n\nMà $d$ lẻ nên $d=1$.\n\nVậy $1+x$ và $1+x^2$ là hai số nguyên dương nguyên tố cùng nhau có tích là số chính phương, nên mỗi số đều là số chính phương.\n\nDo đó $x^2$ và $1+x^2$ là hai số chính phương liên tiếp.\n\nĐặt $x^2=m^2$, $1+x^2=n^2$ ($m,n\\in\\mathbb{N}$) thì $(n-m)(n+m)=1$, suy ra $n+m=1$ và $n-m=1$, tức $m=0$, vậy $x=0$.\n\nVới $x=0$: $(2y+1)^2=1\\Leftrightarrow y=0$ hoặc $y=-1$.\n\nVậy $(x;y)\\in\\{(0;0);(0;-1)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hai số nguyên tố cùng nhau có tích là số chính phương",
+   "hai số chính phương liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.20@p225",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng không thể có các số nguyên $x,y$ thỏa mãn phương trình $x^3-y^3=1993$.",
+  "noi_dung_sach": "Chứng minh rằng không thể có các số nguyên $x,y$ thỏa mãn phương trình $x^3-y^3=1993$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai lập phương phân tích được thành $(x-y)(x^2+xy+y^2)$ và $1993$ là số nguyên tố, nên chỉ có hai cách viết $1993$ thành tích hai ước dương; ta chứng tỏ cả hai cách đều không có nghiệm nguyên.\n\n**Bước 1.** Phân tích $x^3-y^3$ thành tích và chỉ ra hai thừa số đều dương.\n\n**Bước 2.** Dùng $1993$ là số nguyên tố để liệt kê các cặp thừa số có thể xảy ra.\n\n**Bước 3.** Với cặp $x-y=1$, thay $x=y+1$ để đưa về một phương trình bậc hai của $y$ rồi chứng tỏ nó không có nghiệm nguyên.\n\n**Bước 4.** Với cặp còn lại, đánh giá $x^2+xy+y^2$ theo $(x-y)^2$ để chỉ ra mâu thuẫn.\n\n**Chú ý:** Có thể làm ngắn hơn bằng số dư: lập phương của một số nguyên chia $9$ dư $0$, $1$ hoặc $8$ nên $x^3-y^3$ chia $9$ chỉ dư $0$, $1$, $2$, $7$, $8$; trong khi $1993$ chia $9$ dư $4$.\n\n**Phần 2. Trình bày**\n\nGiả sử có các số nguyên $x,y$ thỏa $x^3-y^3=1993$.\n\nKhi đó $(x-y)(x^2+xy+y^2)=1993$.\n\nTa có $x^2+xy+y^2=\\left(x+\\dfrac y2\\right)^2+\\dfrac34y^2\\ge0$, và khác $0$ vì tích bằng $1993\\neq0$; do đó $x^2+xy+y^2>0$ và $x-y>0$.\n\nVậy $x-y$ và $x^2+xy+y^2$ là các ước nguyên dương của số nguyên tố $1993$, nên chỉ xảy ra hai trường hợp.\n\nTrường hợp 1: $x-y=1$ và $x^2+xy+y^2=1993$.\n\nThay $x=y+1$:\n\n$(y+1)^2+(y+1)y+y^2=1993\\Leftrightarrow3y^2+3y=1992\\Leftrightarrow(2y+1)^2=2657$\n\nMà $51^2=2601<2657<2704=52^2$ nên $2657$ không là số chính phương, trường hợp này vô nghiệm nguyên.\n\nTrường hợp 2: $x-y=1993$ và $x^2+xy+y^2=1$.\n\nTa có $4(x^2+xy+y^2)=(x-y)^2+3(x+y)^2\\ge(x-y)^2$, suy ra $4\\ge1993^2$, vô lí.\n\nCả hai trường hợp đều mâu thuẫn, vậy không có số nguyên $x,y$ thỏa mãn $x^3-y^3=1993$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức hiệu hai lập phương",
+   "số nguyên tố"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 225): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.21@p226",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040303",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho một số $A$ gồm bốn chữ số và $A$ là một số chính phương. Nếu ta thêm vào mỗi chữ số của $A$ một đơn vị thì ta được một số $B$ cũng là một số chính phương. Hãy tìm các số $A$ và $B$.",
+  "noi_dung_sach": "Cho một số $A$ gồm bốn chữ số và $A$ là một số chính phương. Nếu ta thêm vào mỗi chữ số của $A$ một đơn vị thì ta được một số $B$ cũng là một số chính phương. Hãy tìm các số $A$ và $B$.",
+  "dap_an": "$A=2025$ và $B=3136$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm $1$ vào mỗi chữ số của một số có bốn chữ số là cộng thêm $1111$; hai số chính phương hơn kém nhau $1111$ nên $y^2-x^2=1111$ phân tích được thành tích để tìm $x,y$.\n\n**Bước 1.** Đặt $A=x^2$, $B=y^2$ rồi chỉ ra $B-A=1111$ vì mỗi chữ số của $A$ được tăng thêm một đơn vị.\n\n**Bước 2.** Phân tích $y^2-x^2$ thành $(y-x)(y+x)$ và viết $1111$ thành tích các ước của nó.\n\n**Bước 3.** Dùng điều kiện $A,B$ có bốn chữ số để chặn $x,y$ và loại cặp ước không phù hợp.\n\n**Bước 4.** Giải hệ hai phương trình bậc nhất còn lại để tìm $x,y$, rồi tính $A,B$ và đối chiếu với đề.\n\n**Chú ý:** Phép cộng $1111$ chỉ đúng khi không chữ số nào của $A$ bằng $9$; đề đã ngầm cho điều đó.\n\n**Phần 2. Trình bày**\n\nĐặt $A=x^2$, $B=y^2$ với $x,y\\in\\mathbb{N}$, $x<y$.\n\nThêm $1$ vào mỗi chữ số của $A$ nghĩa là cộng thêm $1000+100+10+1$, nên $B-A=1111$:\n\n$y^2-x^2=1111\\Leftrightarrow(y-x)(y+x)=1111=11\\cdot101$\n\nVì $A,B$ có bốn chữ số nên $32\\le x<y\\le99$, suy ra $0<y-x<y+x\\le197$.\n\nCác ước dương của $1111$ là $1;11;101;1111$ ($11$ và $101$ đều là số nguyên tố), nên chỉ có hai khả năng: $y-x=1$, $y+x=1111$ (loại vì $y+x\\le197$) hoặc $y-x=11$, $y+x=101$.\n\nGiải $y-x=11$, $y+x=101$ được $y=56$, $x=45$.\n\nKhi đó $A=45^2=2025$ và $B=56^2=3136$, đúng là $A$ với mỗi chữ số tăng thêm $1$.\n\nVậy $A=2025$ và $B=3136$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hiệu hai bình phương",
+   "phân tích số thành tích các ước"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 226): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.22@p226",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040103",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm cặp số tự nhiên $x,y$ sao cho tổng của một trong hai số đó với $1$ thì chia hết cho số kia.",
+  "noi_dung_sach": "Tìm cặp số tự nhiên $x,y$ sao cho tổng của một trong hai số đó với $1$ thì chia hết cho số kia.",
+  "dap_an": "$(x;y)\\in\\{(1;1);(1;2);(2;1);(2;3);(3;2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai điều kiện chia hết hai chiều \"$y\\mid x+1$ và $x\\mid y+1$\" gộp lại thành $xy\\mid x+y+1$, tức $x+y+1=p\\cdot xy$; chia hai vế cho $xy$ thì thấy $p$ chỉ nhận vài giá trị nhỏ.\n\n**Bước 1.** Nhân hai điều kiện chia hết để có $xy\\mid(x+1)(y+1)$, rồi tách $xy$ khỏi tích đó để được $xy\\mid x+y+1$.\n\n**Bước 2.** Đặt $x+y+1=p\\cdot xy$ và chia hai vế cho $xy$ để chặn $p$ bằng một bất đẳng thức đơn giản.\n\n**Bước 3.** Với mỗi giá trị của $p$, giải phương trình $x+y+1=p\\cdot xy$ trong số nguyên dương, giả sử $x\\le y$ để chặn $x$.\n\n**Bước 4.** Hoán đổi hai số để lấy đủ các cặp rồi thử lại điều kiện của đề.\n\n**Chú ý:** Giá trị $x=1$ phải xét riêng vì khi đó điều kiện \"$x\\mid y+1$\" luôn đúng; đừng bỏ sót các cặp có chứa $1$.\n\n**Phần 2. Trình bày**\n\nVì phải chia cho số kia nên $x,y\\ge1$.\n\nĐiều kiện là $y\\mid x+1$ và $x\\mid y+1$; bài đối xứng nên giả sử $x\\le y$.\n\nTừ hai điều kiện, $xy\\mid(x+1)(y+1)=xy+x+y+1$, suy ra $xy\\mid x+y+1$.\n\nĐặt $x+y+1=p\\cdot xy$ ($p\\in\\mathbb{N}^*$), tức\n\n$\\dfrac1x+\\dfrac1y+\\dfrac1{xy}=p\\le1+1+1=3$\n\nnên $p\\in\\{1;2;3\\}$.\n\nVới $p=3$: ba số hạng đều không vượt quá $1$ mà tổng bằng $3$ nên $x=y=1$.\n\nVới $p=2$: $x+y+1=2xy$.\n\nNếu $x\\ge2$ thì $y\\ge2$ và $2xy\\ge4y>2y+1\\ge x+y+1$, vô lí.\n\nVậy $x=1$, khi đó $y+2=2y$, suy ra $y=2$.\n\nVới $p=1$: $xy=x+y+1\\Leftrightarrow(x-1)(y-1)=2$.\n\nVì $0\\le x-1\\le y-1$ và tích bằng $2$ nên $x-1=1$, $y-1=2$, tức $(x;y)=(2;3)$.\n\nHoán đổi hai số, ta được các cặp $(1;1)$, $(1;2)$, $(2;1)$, $(2;3)$, $(3;2)$.\n\nThử lại: $(1;2)$ có $1+1=2\\vdots2$ và $2+1=3\\vdots1$; $(2;3)$ có $2+1=3\\vdots3$ và $3+1=4\\vdots2$; $(1;1)$ hiển nhiên thỏa.\n\nVậy $(x;y)\\in\\{(1;1);(1;2);(2;1);(2;3);(3;2)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chia hết",
+   "đánh giá bằng bất đẳng thức"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 226): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 229–230, hướng dẫn bài t) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.23@p226",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số nguyên $x,y$ thỏa phương trình $x^2+xy+y^2=x^2y^2$.",
+  "noi_dung_sach": "Tìm các số nguyên $x,y$ thỏa phương trình $x^2+xy+y^2=x^2y^2$.",
+  "dap_an": "$(x;y)\\in\\{(0;0);(1;-1);(-1;1)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân vế trái với $4$ rồi cộng $4xy$ thì thành bình phương $(2x+2y)^2$, còn vế phải thành $(2xy+1)^2-1$; hai bình phương hơn kém $1$ cho tích hai số nguyên bằng $1$.\n\n**Bước 1.** Nhân hai vế với $4$ rồi cộng thêm $4xy$ để vế trái thành $(2x+2y)^2$ và vế phải thành $(2xy+1)^2-1$.\n\n**Bước 2.** Chuyển về dạng hiệu hai bình phương bằng $1$ và phân tích thành tích hai số nguyên.\n\n**Bước 3.** Vì tích hai số nguyên bằng $1$ nên hai số đó bằng nhau, từ đó suy ra quan hệ giữa $x$ và $y$.\n\n**Bước 4.** Thay quan hệ vừa tìm vào phương trình ban đầu để giải nốt và thử lại.\n\n**Chú ý:** Tích hai số nguyên bằng $1$ có hai khả năng, hai số cùng bằng $1$ hoặc cùng bằng $-1$; cả hai đều cho hai thừa số bằng nhau.\n\n**Phần 2. Trình bày**\n\n$x^2+xy+y^2=x^2y^2\\Rightarrow4(x^2+xy+y^2)+4xy=4x^2y^2+4xy$\n\n$\\Leftrightarrow(2x+2y)^2=(2xy+1)^2-1$\n\n$\\Leftrightarrow(2xy+1)^2-(2x+2y)^2=1$\n\n$\\Leftrightarrow(2xy+1+2x+2y)(2xy+1-2x-2y)=1$\n\nHai thừa số là số nguyên có tích bằng $1$ nên cùng bằng $1$ hoặc cùng bằng $-1$, tức bằng nhau:\n\n$2xy+1+2x+2y=2xy+1-2x-2y\\Leftrightarrow x+y=0$\n\nThay $y=-x$ vào phương trình ban đầu: $x^2-x^2+x^2=x^4\\Leftrightarrow x^2(x^2-1)=0\\Leftrightarrow x\\in\\{0;1;-1\\}$.\n\nVậy $(x;y)\\in\\{(0;0);(1;-1);(-1;1)\\}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức hiệu hai bình phương",
+   "tích hai số nguyên bằng $1$"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 226): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.24@p226",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040203",
+  "nhom_soan": "T18T040203",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm tất cả các số nguyên dương $n$ sao cho: $n^4+n^3+1$ là số chính phương.",
+  "noi_dung_sach": "Tìm tất cả các số nguyên dương $n$ sao cho: $n^4+n^3+1$ là số chính phương.",
+  "dap_an": "$S=\\{2\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $n^4+n^3+1$ lớn hơn $(n^2)^2$ nên nếu nó là số chính phương thì phải bằng $(n^2+k)^2$ với $k$ nguyên dương; so sánh hai vế cho một hệ thức giữa $n$ và $k$ để chặn.\n\n**Bước 1.** Chỉ ra $n^4+n^3+1>(n^2)^2$ để đặt biểu thức bằng $(n^2+k)^2$ với $k$ nguyên dương.\n\n**Bước 2.** Khai triển, rút gọn để được hệ thức $n^2(n-2k)=k^2-1$.\n\n**Bước 3.** Xét riêng $k=1$ để tìm $n$ rồi thử lại vào biểu thức của đề.\n\n**Bước 4.** Với $k\\ge2$, dùng vế phải dương để chặn $n-2k$ rồi so sánh $n$ với $k$ để chỉ ra mâu thuẫn.\n\n**Chú ý:** Phải thử lại giá trị $n$ tìm được vì các bước trên chỉ cho điều kiện cần.\n\n**Phần 2. Trình bày**\n\nGiả sử $n^4+n^3+1$ là số chính phương.\n\nVì $n^3+1>0$ nên $n^4+n^3+1>n^4=(n^2)^2$, do đó $n^4+n^3+1=(n^2+k)^2$ với $k\\in\\mathbb{N}^*$.\n\n$n^4+n^3+1=n^4+2kn^2+k^2\\Leftrightarrow n^2(n-2k)=k^2-1\\ge0$\n\nVới $k=1$: $n^2(n-2)=0$, suy ra $n=2$.\n\nThử lại: $2^4+2^3+1=25=5^2$, thỏa mãn.\n\nVới $k\\ge2$: $k^2-1>0$ nên $n-2k\\ge1$, suy ra $n\\ge2k+1>k$.\n\nMặt khác $n^2\\le n^2(n-2k)=k^2-1<k^2$ nên $n<k$, mâu thuẫn.\n\nVậy $n=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "kẹp giữa hai số chính phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 226): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.25@p226",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T040103",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm số nguyên có chín chữ số $A=\\overline{a_1a_2a_3b_1b_2b_3a_1a_2a_3}$ trong đó $a_1\\neq0$ và $\\overline{b_1b_2b_3}=2\\overline{a_1a_2a_3}$, đồng thời $A$ có thể viết được dưới dạng $A=p_1^2\\cdot p_2^2\\cdot p_3^2\\cdot p_4^2$ với $p_1,p_2,p_3,p_4$ là bốn số nguyên tố khác nhau.",
+  "noi_dung_sach": "Tìm số nguyên có chín chữ số $A=\\overline{a_1a_2a_3b_1b_2b_3a_1a_2a_3}$ trong đó $a_1\\neq0$ và $\\overline{b_1b_2b_3}=2\\overline{a_1a_2a_3}$, đồng thời $A$ có thể viết được dưới dạng $A=p_1^2\\cdot p_2^2\\cdot p_3^2\\cdot p_4^2$ với $p_1,p_2,p_3,p_4$ là bốn số nguyên tố khác nhau.",
+  "dap_an": "$A=289578289$ hoặc $A=361722361$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi $N=\\overline{a_1a_2a_3}$ thì $A=N\\cdot1001^2$ với $1001=7\\cdot11\\cdot13$; so với dạng $A=(p_1p_2p_3p_4)^2$ (mỗi số nguyên tố có mũ đúng $2$) suy ra $N$ là bình phương của một số nguyên tố mới.\n\n**Bước 1.** Viết $A$ theo $N$ rồi nhóm thành $N\\cdot(10^3+1)^2$ và phân tích $1001$ ra thừa số nguyên tố.\n\n**Bước 2.** So sánh số mũ của từng số nguyên tố trong $A=p_1^2p_2^2p_3^2p_4^2$ để suy ra $N$ là bình phương của một số nguyên tố khác $7$, $11$, $13$.\n\n**Bước 3.** Dùng $N\\ge100$ và $\\overline{b_1b_2b_3}=2N<1000$ để chặn số nguyên tố đó trong một khoảng nhỏ.\n\n**Bước 4.** Liệt kê các số nguyên tố trong khoảng, loại các số đã có mặt trong $1001$, rồi viết ra số $A$ tương ứng.\n\n**Chú ý:** Đề hỏi số $A$ chín chữ số, nên phải viết đủ $A$ chứ không dừng ở ba chữ số đầu.\n\n**Phần 2. Trình bày**\n\nĐặt $N=\\overline{a_1a_2a_3}$ thì $\\overline{b_1b_2b_3}=2N$ và\n\n$A=N\\cdot10^6+2N\\cdot10^3+N=N(10^6+2\\cdot10^3+1)=N(10^3+1)^2=N\\cdot7^2\\cdot11^2\\cdot13^2$\n\nVì $A=p_1^2p_2^2p_3^2p_4^2$ với bốn số nguyên tố khác nhau nên mỗi số nguyên tố trong phân tích của $A$ có số mũ đúng $2$.\n\nCác số $7,11,13$ đã có mũ $2$ nên $N$ không chia hết cho chúng; còn $N>1$ phải chứa đúng một số nguyên tố $p$ nữa với mũ $2$.\n\nVậy $N=p^2$, với $p$ là số nguyên tố khác $7,11,13$.\n\nVì $N\\ge100$ nên $p\\ge10$.\n\nVì $2N=\\overline{b_1b_2b_3}<1000$ nên $N<500$, suy ra $p\\le22$.\n\nCác số nguyên tố $p$ thỏa $10<p\\le22$ là $11;13;17;19$; loại $11$ và $13$, còn $p\\in\\{17;19\\}$.\n\nVới $p=17$: $N=289$, $2N=578$, được $A=289578289$.\n\nVới $p=19$: $N=361$, $2N=722$, được $A=361722361$.\n\nVậy $A=289578289$ hoặc $A=361722361$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "phân tích thừa số nguyên tố",
+   "tính chất của số chính phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 226): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 230, hướng dẫn bài tập 2) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "T10B.26@p226",
+  "lo": 11,
+  "khoi": "8T",
+  "dang_chinh": "T18T040301",
+  "nhom_soan": "T18T040301",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $n\\in\\mathbb{Z}$ để $n+26$ và $n-11$ đều là lập phương của một số nguyên dương.",
+  "noi_dung_sach": "Tìm $n\\in\\mathbb{Z}$ để $n+26$ và $n-11$ đều là lập phương của một số nguyên dương.",
+  "dap_an": "$S=\\{38\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số $n+26$ và $n-11$ hơn kém nhau $37$ nên hai lập phương hơn kém $37$; hiệu hai lập phương phân tích thành tích và $37$ là số nguyên tố, nên chỉ còn một cách chia các thừa số.\n\n**Bước 1.** Đặt $n+26=a^3$, $n-11=b^3$ với $a,b$ nguyên dương rồi trừ vế theo vế để được $a^3-b^3=37$.\n\n**Bước 2.** Phân tích $a^3-b^3$ thành $(a-b)(a^2+ab+b^2)$ và dùng $37$ là số nguyên tố để chia các thừa số, chú ý thừa số nào lớn hơn.\n\n**Bước 3.** Thay $a=b+1$ vào thừa số còn lại để được một phương trình bậc hai rồi tìm $a$, $b$ nguyên dương.\n\n**Bước 4.** Tính $n$ từ $a$ rồi thử lại điều kiện của đề.\n\n**Chú ý:** Thừa số $a^2+ab+b^2$ luôn lớn hơn $a-b$, nên $37$ chỉ chia thành $1\\cdot37$ theo đúng thứ tự đó.\n\n**Phần 2. Trình bày**\n\nĐặt $n+26=a^3$, $n-11=b^3$ với $a,b\\in\\mathbb{N}^*$.\n\nTrừ vế theo vế: $a^3-b^3=37$, nên $a>b$ và\n\n$(a-b)(a^2+ab+b^2)=37$\n\nTa có $a\\ge2$ nên $a^2+ab+b^2>a^2\\ge a>a-b$.\n\nVì $37$ là số nguyên tố nên $a-b=1$ và $a^2+ab+b^2=37$.\n\nThay $b=a-1$: $a^2+a(a-1)+(a-1)^2=37\\Leftrightarrow3a^2-3a-36=0\\Leftrightarrow a^2-a-12=0\\Leftrightarrow(a-4)(a+3)=0$.\n\nVì $a>0$ nên $a=4$, $b=3$.\n\nKhi đó $n=a^3-26=64-26=38$.\n\nThử lại: $38+26=64=4^3$ và $38-11=27=3^3$.\n\nVậy $n=38$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức hiệu hai lập phương",
+   "số nguyên tố"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 226): máy không đối chiếu được đề với kết quả sách (SÁCH IN SAI (người soát đã mở ảnh): trang PDF 228, phần hướng dẫn §10:) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ }
+]

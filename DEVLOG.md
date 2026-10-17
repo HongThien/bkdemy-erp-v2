@@ -37989,3 +37989,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Gốc:** ô chọn chủ đề `w-auto` giãn theo tên chủ đề DÀI NHẤT của khối (K6 dài hơn K7) + thanh `flex-wrap` ⇒ K6 gãy dòng, nút ✅ Duyệt kho rơi xuống dòng 2.
 - **Sửa (`BanDoMoi.tsx`):** bỏ nhãn "nháp · chưa ảnh hưởng bản đồ đang chạy" · ô chủ đề rộng CỐ ĐỊNH 240px (tên dài cắt "…", rê chuột thấy đủ) · thanh `flex-nowrap`, nút giữ cỡ; khi hẹp thì dòng tiến độ (2 dòng nhỏ) co/cắt trước, dãy nút khối co sau cùng (cuộn ngang, thanh cuộn mảnh).
 - **Kiểm (app local, 1920px ghim menu):** K6 · K7 · K12 cùng cao 57px, không tràn, dãy khối đủ, tiến độ hiện đủ. Ở 1500px + ghim menu: dãy khối phải cuộn (thiếu chỗ thật) — bỏ ghim menu thì vừa.
+
+## 17/10 — 8T lô 11: TVA §9 + §10 (44 câu) — lô lớn, trạm song song
+- **Thùy (qua phiên 8T):** "chạy tiếp phần Đại 8T … thấy kho còn thiếu nhiều, làm LÔ LỚN HƠN, giao nhiều trạm Sonnet chép + soạn song song". Dựng ảnh trang TVA p76–231; giao 3 agent Sonnet lập mục lục §4–§6, §7–§8, §9–§10 (đọc từng ảnh, báo ví dụ/bài tập/hướng dẫn mỗi trang + đề xuất chia trạm); §9–§10 xong trước nên làm thành lô 11 ngay, §4–§8 chờ mục lục.
+- **4 trạm Sonnet chép song song:** §9 ví dụ (10 khối) · §10 ví dụ (10) · §10 bài tập 1–10 (10) · §10 bài tập 11–26 (15). Soát đối chiếu từng trang ảnh p218–231 và tự giải lại đáp số: đúng, trừ các chỗ ghi ở `k8T.md` §8 (ví dụ 6b §9 đề sai; bài tập 22 §10 sách bỏ sót 2 cặp; bài tập 4a sách chỉ giải nguyên dương). Dòng nguồn đề in NGAY DƯỚI đề (bài 1, 3, 6, 9, 13) ⇒ gán cho bài ngay trên.
+- **Ghi kho:** 44 câu, tự duyệt 34 (cổng không kiểm máy được nghiệm nguyên ⇒ cờ `khong_kiem_duoc`, người soát = tôi), 10 câu dạng chờ (hai lượt gán lệch). Kho Đại 8T: **958 câu · 906 đã duyệt · 52 chưa**.
+- **Bẫy:** trang xem 167 ảnh PNG = 19,7 MB > 16 MB (giới hạn Artifact) ⇒ đổi `cat()` trong `can-xem.mjs` sang JPEG chất lượng 72, còn 8,9 MB. Mỗi lô thêm ~50–60 ảnh ≈ +2 MB ⇒ còn dư chừng 3–4 lô; sau đó phải tách trang xem theo khối/đợt.
+- Chưa push. Commit riêng các tệp 8T.

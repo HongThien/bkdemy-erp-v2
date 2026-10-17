@@ -1,0 +1,35 @@
+{
+  "T9V.2a@p218": {
+    "sach_in_sai": "trang PDF 218, §9 ví dụ 2: đề in (x+7)(2x+1) = 0, dòng đầu lời giải in (x-7)(2x+1); các ý a, b, c của lời giải đều dùng nhân tử x+7. Kho ghi (x+7)(2x+1)."
+  },
+  "T9V.2b@p218": {
+    "sach_in_sai": "trang PDF 218, §9 ví dụ 2: dòng đầu lời giải in (x-7)(2x+1), đề in (x+7)(2x+1); ý b của lời giải dùng x+7 = 0. Kho ghi (x+7)(2x+1)."
+  },
+  "T9V.2c@p218": {
+    "sach_in_sai": "trang PDF 218, §9 ví dụ 2 ý c: dòng đầu lời giải in (x-7)(2x+1) thay cho (x+7)(2x+1), và in \"2x - 1 = 0 có nghiệm x = -1/2\" (đúng là 2x + 1 = 0). Kết luận cuối của sách (-7 và -1/2) đúng."
+  },
+  "T9V.3@p218": {
+    "sach_in_sai": "trang PDF 219, §9 ví dụ 3, câu cuối lời giải: in \"không thể có trường hợp cả ba số a-1, b-1, c-1 đều dương mà chỉ có một trong ba số đó dương (hai số kia âm)\" — tự mâu thuẫn (có lẽ định viết đều âm). Lời giải kho lập luận lại theo số thừa số âm là chẵn."
+  },
+  "T9V.6b@p219": {
+    "sach_in_sai": "trang PDF 219, §9 ví dụ 6 ý b: đề in tích (n+1)(n+2)...(2n) chia hết cho 3^n — sai với n = 1 (tích bằng 2); lời giải sách (đầu trang PDF 220) viết tích (n+1)(n+2)...(3n). Hai nhóm số trong lời giải in số hạng cuối là 3n+1, 3n+2 (đúng là 3n-2, 3n-1); lời giải sách dừng ở bước viết tích thành ba nhóm. Kho ghi đề với (3n)."
+  },
+  "T10B.4a@p225": {
+    "sach_in_sai": "trang PDF 226, hướng dẫn bài tập 4a §10: đề yêu cầu nghiệm nguyên nhưng lời giải sách chia cho x và giả sử x ≥ y ≥ z nên chỉ xét nguyên dương; đáp số sách thiếu các nghiệm có số 0 hoặc số âm (vd (5;-5;0), (-6;1;2), (-16;1;3)). Kho giải trọn trên số nguyên."
+  },
+  "T10B.16@p225": {
+    "sach_in_sai": "trang PDF 228, hướng dẫn bài tập 16 §10: theo cách đặt y = kx, sách in \"khi k = 2 ta có x = 2y\", \"khi k = 5 ta có x = 5y\" (đúng là y = 2x, y = 5x). Đáp số 11; 12; 15; 24; 36 đúng."
+  },
+  "T10B.22@p226": {
+    "sach_in_sai": "trang PDF 229–230, hướng dẫn bài tập 22 §10: sách giả sử x, y > 1 nhưng đáp số lại có (1;1); ở p = 2 kết luận \"vô nghiệm\" trong khi (1;2) cho p = 2 và thỏa đề (1+1 chia hết cho 2, 2+1 chia hết cho 1). Đáp số sách 3 cặp thiếu (1;2), (2;1). Kho ghi đủ 5 cặp."
+  },
+  "T10B.25@p226": {
+    "sach_in_sai": "trang PDF 230, hướng dẫn bài tập 25 §10: dòng thứ ba in (10^6 + 2 + 1), đúng là 10^6 + 2.10^3 + 1 = 1002001 như dòng sau; sách dừng ở ba chữ số đầu 289 hoặc 361, không viết số A chín chữ số mà đề hỏi. Kho ghi A."
+  },
+  "T10B.26@p226": {
+    "sach_in_sai": "trang PDF 228, phần hướng dẫn §10: lời giải mang nhãn \"13\" thực ra là lời giải của đề bài 26 (n + 26 và n - 11 đều là lập phương, n = 38); bài tập 13 không có hướng dẫn trong sách."
+  },
+  "T9V.7@p220": {
+    "bo": "trùng nguyên đề với T18T010301084 đã có trong kho (§3 bài tập 10: cùng giả thiết 3a^2 + 3b^2 = 10ab, b > a > 0, cùng biểu thức P = (a-b)/(a+b))"
+  }
+}

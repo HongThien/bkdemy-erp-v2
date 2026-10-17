@@ -25,8 +25,8 @@ let soAnh = 0
 /** cắt một dải ngang của trang PDF ⇒ data URI */
 function cat(trang, y, cao, pdf = PDF, rong = 900) {
   const ra = join(tam, `a${++soAnh}`)
-  execFileSync('pdftoppm', ['-r', '150', '-gray', '-f', String(trang), '-l', String(trang), '-x', '0', '-y', String(y), '-W', String(rong), '-H', String(cao), '-png', '-singlefile', pdf, ra])
-  return `data:image/png;base64,${readFileSync(ra + '.png').toString('base64')}`
+  execFileSync('pdftoppm', ['-r', '150', '-gray', '-f', String(trang), '-l', String(trang), '-x', '0', '-y', String(y), '-W', String(rong), '-H', String(cao), '-jpeg', '-jpegopt', 'quality=72', '-singlefile', pdf, ra])
+  return `data:image/jpeg;base64,${readFileSync(ra + '.jpg').toString('base64')}`
 }
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const toan = (tex) => { try { return katex.renderToString(tex, { output: 'mathml', throwOnError: true, strict: 'ignore' }) } catch { return `<code>${esc(tex)}</code>` } }
@@ -35,9 +35,9 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
@@ -356,6 +356,60 @@ F.push(
 const GHI_CHU_LO10 = `<p class="dan">Lô 10 — Trần Thị Vân Anh §3 Phân thức hữu tỉ (87 câu). Tôi không nhập 7 câu trùng: Dạng 4 ví dụ 2 và Dạng 5 ví dụ 4 (sách in lại bài tập 54, 51 của §2); Dạng 5 ví dụ 8 và Dạng 7 ví dụ 1 (nguyên đề đã có trong kho từ trước); bài tập 7 (sách in lại bài tập 1 a ngay trong §3); bài tập 11 (lặp Dạng 3 ví dụ 1); bài tập 17 (lặp §2 Dạng 7 ví dụ 8). Giữ làm biến thể vì đề khác form: bài tập 13 (bỏ điều kiện "khác nhau đôi một" nên đáp số là ${toan('-1')} hoặc ${toan('8')}) bên cạnh Dạng 3 ví dụ 6; bài tập 28, 29 (chứng minh) bên cạnh Dạng 7 ví dụ 3, 2 (tính tổng); Dạng 7 ví dụ 4 bên cạnh Dạng 3 ví dụ 4; Dạng 4 ví dụ 3 c (giả thiết ${toan('\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0')}) bên cạnh câu trong kho có giả thiết ${toan('(a+b+c)^2=a^2+b^2+c^2')}.</p>
 <p class="dan">Lỗi in trong lời giải ở §3, kho ghi bản đúng: Dạng 7 ví dụ 4 (tử thiếu ${toan('-3abc')}), bài tập 4 (mẫu in ${toan('(x+1)(3x-1)')}, đúng là ${toan('(x-1)(3x-1)')}), bài tập 18 (in ${toan('c^2')} ở chỗ phải là ${toan('b^2')}), bài tập 22 (in ${toan('2a+2c-a')}, đúng là ${toan('2b+2c-a')}), bài tập 33 (sai một dấu ở dòng đầu). Dạng 3 ví dụ 4: sách ghi "xem bài 42" cho ${toan('a^3+b^3+c^3=3abc')}, kho nêu thẳng hằng đẳng thức.</p>`
 
+// ── LÔ 11 (TVA §9 Các bài toán tổng hợp + §10 Phương trình nghiệm nguyên) ───
+E.push(
+  lechT('T9V.1@p218', anhT(218, 175, 585, '§9 ví dụ 1, đề và lời giải của sách'),
+    'Chọn nhóm nào? Chứng minh không có bốn số nguyên thoả hệ: xét chẵn lẻ (vế phải lẻ nên cả bốn số lẻ, rồi $abcd-a$ chẵn). Tôi nghiêng về **Nghiệm nguyên › Dùng bất đẳng thức, xét số dư**.'),
+  lechT('T10V.8@p223', anhT(223, 555, 755, '§10 ví dụ 8, đề và lời giải của sách'),
+    'Chọn nhóm nào? Bước khoá là xét số dư khi chia cho $7$ để có $n=3m$, rồi mới đưa về tích. Tôi nghiêng về **Nghiệm nguyên › Dùng bất đẳng thức, xét số dư**.'),
+  lechT('T10V.9@p224', anhT(224, 85, 610, '§10 ví dụ 9, đề và hai cách giải của sách'),
+    'Chọn nhóm nào? Cả hai cách đều là số dư (chia hết cho $3$ rồi xuống thang; hoặc mod $4$). Tôi nghiêng về **Nghiệm nguyên › Dùng bất đẳng thức, xét số dư**.'),
+  lechT('T10B.7@p225', anhT(225, 655, 55, '§10 bài tập 7, đề') + anhT(227, 595, 365, '§10 bài tập 7, hướng dẫn của sách'),
+    'Chọn nhóm nào? Hệ hai phương trình hai ẩn thực $u^3+v^3=7$, $uv=-2$; sách đặt $x=v^3$ ra phương trình bậc hai. Bản đồ 8T chưa có nhóm hệ phương trình; lượt gán độc lập xếp **Phương trình › Bậc cao**. Tôi nghiêng theo lượt đó.'),
+  lechT('T10B.12@p225', anhT(225, 935, 85, '§10 bài tập 12, đề') + anhT(228, 825, 235, '§10 bài tập 12, hướng dẫn của sách'),
+    'Chọn nhóm nào? Sách giả sử $x\\ge y$ rồi chặn; nhưng quy đồng thì ra $(x-3)(y-3)=6$. Tôi nghiêng về **Nghiệm nguyên › Đưa về tích, dùng tính chia hết**.'),
+  lechT('T10B.17@p225', anhT(225, 1315, 75, '§10 bài tập 17, đề') + anhT(229, 825, 310, '§10 bài tập 17, hướng dẫn của sách'),
+    'Chọn nhóm nào? Tìm số có năm chữ số bằng $45$ lần tích các chữ số, giải bằng dấu hiệu chia hết cho $5$, $25$, $9$. Tôi nghiêng về **Chia hết › Tìm số, tìm điều kiện để chia hết**.'),
+  lechT('T10B.18@p225', anhT(225, 1385, 85, '§10 bài tập 18, đề') + anhT(229, 1145, 460, '§10 bài tập 18, hướng dẫn của sách (đầu)') + anhT(230, 90, 125, '§10 bài tập 18, hướng dẫn của sách (cuối)'),
+    'Chọn nhóm nào? Chẵn lẻ rồi so sánh độ lớn hai vế để chặn $x+y$. Tôi nghiêng về **Nghiệm nguyên › Dùng bất đẳng thức, xét số dư**.'),
+  lechT('T10B.21@p226', anhT(226, 80, 110, '§10 bài tập 21, đề') + anhT(230, 955, 315, '§10 bài tập 21, hướng dẫn của sách'),
+    'Chọn nhóm nào? Đề hỏi tìm số $A$ để $A$ và $B$ đều là số chính phương (lời giải là $(y-x)(y+x)=1111$). Tôi nghiêng về **Số nguyên tố, số chính phương › Tìm số để biểu thức là số chính phương**.'),
+  lechT('T10B.23@p226', anhT(226, 260, 60, '§10 bài tập 23, đề') + anhT(231, 370, 175, '§10 bài tập 23, hướng dẫn của sách'),
+    'Chọn nhóm nào? Đưa về hiệu hai bình phương bằng $1$, tức tích hai số nguyên bằng $1$. Tôi nghiêng về **Nghiệm nguyên › Đưa về tích, dùng tính chia hết**.'),
+  lechT('T10B.25@p226', anhT(226, 395, 140, '§10 bài tập 25, đề') + anhT(231, 845, 295, '§10 bài tập 25, hướng dẫn của sách'),
+    'Chọn nhóm nào? Việc chính là phân tích $1002001=7^2\\cdot11^2\\cdot13^2$ rồi so số mũ của các số nguyên tố. Tôi nghiêng về **Số nguyên tố, số chính phương › Số nguyên tố, hợp số**.'),
+)
+F.push(
+  the('Trần Thị Vân Anh §9, ví dụ 2 — đề in (x+7), lời giải in (x−7)', anhT(218, 760, 600, '§9 ví dụ 2, đề và lời giải của sách')
+    + muc('Vấn đề', doan('Đề in $(x+7)(2x+1)=0$, dòng đầu lời giải in $(x-7)(2x+1)$; ý a, b, c của lời giải đều dùng $x+7$. Ý c còn in "$2x-1=0$ có nghiệm $x=-\\dfrac{1}{2}$" (đúng là $2x+1=0$). Kết luận cuối của sách đúng. Ví dụ có ba tập số độc lập nên tôi tách ba câu.')) + muc('Trong kho (ý a)', trongKho('T9V.2a@p218', { loiGiai: false })),
+    'Kho ghi đề $(x+7)(2x+1)=0$, đáp án $\\varnothing$; $\\{-7\\}$; $\\{-7;-\\dfrac{1}{2}\\}$.', 'bao'),
+  the('Trần Thị Vân Anh §9, ví dụ 3 — câu kết của lời giải tự mâu thuẫn', anhT(218, 1380, 110, '§9 ví dụ 3, đề') + anhT(219, 85, 250, '§9 ví dụ 3, phần cuối lời giải của sách')
+    + muc('Vấn đề', doan('Sách in "không thể có trường hợp cả ba số $a-1,b-1,c-1$ đều dương mà chỉ có một trong ba số đó dương (hai số kia âm)" — tự mâu thuẫn. Lập luận đúng: tích dương nên số thừa số âm là $0$ hoặc $2$, trong cả hai trường hợp có một thừa số dương.')) + muc('Trong kho', trongKho('T9V.3@p218')),
+    'Kho viết lại lập luận theo số thừa số âm.', 'bao'),
+  the('Trần Thị Vân Anh §9, ví dụ 6 b — đề in tích đến (2n), lời giải dùng (3n)', anhT(219, 1195, 110, '§9 ví dụ 6, đề') + anhT(220, 75, 200, '§9 ví dụ 6, lời giải của sách (ý b)')
+    + muc('Vấn đề', doan('Đề ý b in $(n+1)(n+2)\\cdots(2n)$ chia hết cho $3^n$: sai với $n=1$ (tích bằng $2$). Lời giải sách viết "tích $(n+1)(n+2)\\cdots(3n)$". Sách còn in số hạng cuối hai nhóm là $3n+1$, $3n+2$ (đúng là $3n-2$, $3n-1$) và dừng ở bước viết tích thành ba nhóm, không rút gọn, không kết luận.')) + muc('Trong kho', trongKho('T9V.6b@p219')),
+    'Kho sửa đề thành $(n+1)\\cdots(3n)$ và soạn lời giải đủ.', 'bao'),
+  the('Trần Thị Vân Anh §10, bài tập 4 a — đề "nghiệm nguyên", sách chỉ giải nguyên dương', anhT(225, 355, 170, '§10 bài tập 4, đề') + anhT(226, 1065, 520, '§10 bài tập 4 a, hướng dẫn của sách')
+    + muc('Vấn đề', doan('Đề yêu cầu nghiệm **nguyên**; sách chia cho $x$ và giả sử $x\\ge y\\ge z$ nên chỉ xét nguyên dương, đáp số 5 bộ cùng hoán vị. Còn các nghiệm có số $0$ hoặc số âm, vd $(5;-5;0)$, $(-6;1;2)$, $(-16;1;3)$. Ý b, c của bài sách không giải nên tôi không nhập.')) + muc('Trong kho', trongKho('T10B.4a@p225')),
+    'Kho giải trọn trên $\\mathbb Z$ nên đáp án dài hơn sách. Nếu chị muốn đề là "nguyên dương" thì bảo, tôi đổi đề và bỏ phần số $0$, số âm.', 'bao'),
+  the('Trần Thị Vân Anh §10, bài tập 16 — sách in x = 2y thay cho y = 2x', anhT(225, 1280, 35, '§10 bài tập 16, đề') + anhT(229, 520, 295, '§10 bài tập 16, hướng dẫn của sách')
+    + muc('Vấn đề', doan('Theo cách đặt $y=kx$, sách in "khi $k=2$ ta có $x=2y$", "khi $k=5$ ta có $x=5y$" (đúng là $y=2x$, $y=5x$). Đáp số $11;12;15;24;36$ đúng.')) + muc('Trong kho', trongKho('T10B.16@p225')),
+    'Kho viết đúng $y=kx$.', 'bao'),
+  the('Trần Thị Vân Anh §10, bài tập 22 — sách bỏ sót hai cặp', anhT(226, 190, 95, '§10 bài tập 22, đề') + anhT(230, 1265, 340, '§10 bài tập 22, hướng dẫn của sách (đầu)') + anhT(231, 85, 285, '§10 bài tập 22, hướng dẫn của sách (cuối)')
+    + muc('Vấn đề', doan('Sách giả sử $x,y>1$ nhưng đáp số lại có $(1;1)$, và ở $p=2$ kết luận "vô nghiệm". Thực ra $(1;2)$ thoả: $1+1=2$ chia hết cho $2$, $2+1=3$ chia hết cho $1$. Sách ghi $3$ cặp, thiếu $(1;2)$ và $(2;1)$.')) + muc('Trong kho', trongKho('T10B.22@p226')),
+    'Kho ghi đủ 5 cặp $(1;1),(1;2),(2;1),(2;3),(3;2)$. Nếu chị hiểu đề là $x,y>1$ thì đáp số chỉ còn $(2;3),(3;2)$, bảo tôi sửa.', 'bao'),
+  the('Trần Thị Vân Anh §10, bài tập 25 — sách dừng ở ba chữ số đầu', anhT(226, 395, 140, '§10 bài tập 25, đề') + anhT(231, 845, 295, '§10 bài tập 25, hướng dẫn của sách')
+    + muc('Vấn đề', doan('Dòng thứ ba sách in $(10^6+2+1)$, đúng là $10^6+2\\cdot10^3+1=1002001$ như dòng ngay sau. Sách dừng ở $\\overline{a_1a_2a_3}=289$ hoặc $361$ mà không viết số $A$ chín chữ số đề hỏi.')) + muc('Trong kho', trongKho('T10B.25@p226')),
+    'Kho viết ra $A=289578289$ hoặc $361722361$. Thẻ chọn nhóm của bài này ở mục "Cần chị quyết".', 'bao'),
+  the('Trần Thị Vân Anh §10 — hướng dẫn nhãn "13" là của bài 26, bài 13 không có hướng dẫn', anhT(225, 1030, 50, '§10 bài tập 13, đề') + anhT(226, 545, 70, '§10 bài tập 26, đề') + anhT(228, 1065, 335, 'Hướng dẫn mang nhãn "13" (đề bài 26)')
+    + muc('Vấn đề', doan('Hướng dẫn nhãn "13" là lời giải của đề bài 26 ($n+26$ và $n-11$ đều là lập phương, $n=38$). Bài 13 thật $(x^2+y)(x+y^2)=(x-y)^3$ không có hướng dẫn nên tôi không nhập. Cùng lý do không nhập bài 4 ý b, c.')) + muc('Trong kho', trongKho('T10B.26@p226')),
+    'Bài 26 lấy lời giải từ nhãn "13". Bài 13, bài 4 b, c, và 5 bài "tự giải" cuối §10 (không có đáp số) không nhập.', 'bao'),
+  the('Trần Thị Vân Anh §9, ví dụ 7 — không nhập vì trùng', anhT(220, 275, 520, '§9 ví dụ 7, đề và lời giải của sách')
+    + muc('Đã có trong kho', khoMa('T18T010301084')),
+    'Ví dụ 7 là nguyên đề bài tập 10 của §3 (đã có trong kho từ lô 10), nên tôi không nhập lại.', 'bao'),
+)
+const GHI_CHU_LO11 = `<p class="dan">Lô 11 — Trần Thị Vân Anh §9 Các bài toán tổng hợp (7 ví dụ) và §10 Một số phương pháp giải phương trình nghiệm nguyên (10 ví dụ + 26 bài tập; 44 câu). Bài tập §10 lấy lời giải ở "Hướng dẫn và đáp số"; bài 13, bài 4 ý b, c không có hướng dẫn và 5 bài tự giải cuối §10 không có đáp số nên không nhập. Ví dụ 5 §10 sách rút gọn ("giải tương tự cho các trường hợp còn lại"), ví dụ 6 b §9 sách dừng dở, bài 2 chỉ có đáp số: kho soạn đủ lời giải. Một số lời giải sách bỏ bước (ví dụ 4 §10 không chứng minh ${toan('x^3<y^3<(x+2)^3')}, bài 14 "tiếp tục lập luận như trên" không đủ để chặn ${toan('z')}): kho bổ sung, đáp số vẫn khớp. Mười câu hai lượt gán nhóm lệch nhau đang ở dạng chờ, thẻ ở mục "Cần chị quyết".</p>`
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -386,12 +440,12 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau mười lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8–10: §1, §2, §3 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–10: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<p class="dan">Kho Đại 8T sau mười một lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8–11: §1, §2, §3, §9, §10 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–11: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
 <h2 id="e">Cần chị quyết — ${cauDb.filter((r) => !r.da_duyet).length} câu chưa duyệt, ${E.length} thẻ</h2>
-<p class="dan">Bốn mươi câu đang ở "Chưa phân dạng": 36 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Hai câu còn lại: bài 48 b chương IV (đề sách in sai) và ví dụ 7 Dạng 5 §3 của quyển Trần Thị Vân Anh (sách không trình bày bước chính — thẻ cuối mục). Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8, 9, 10 (quyển Trần Thị Vân Anh) ở cuối.</p>
+<p class="dan">Năm mươi câu đang ở "Chưa phân dạng": 46 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Hai câu còn lại: bài 48 b chương IV (đề sách in sai) và ví dụ 7 Dạng 5 §3 của quyển Trần Thị Vân Anh (sách không trình bày bước chính — thẻ cuối mục). Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8, 9, 10, 11 (quyển Trần Thị Vân Anh) ở cuối.</p>
 ${E.join('\n')}
-<h2 id="f">Lô 3 đến lô 10 — đã làm, chị xem</h2>
+<h2 id="f">Lô 3 đến lô 11 — đã làm, chị xem</h2>
 <p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu), lô 4 (chương III — 93 câu), lô 5 (chương IV — 130 câu) lô 6 (ôn tập cuối năm phần Đại, phụ lục A — 79 câu) và lô 7 (phụ lục C — 70 câu; các thẻ của lô 7 ở cuối mục). Hai câu trước đây tôi để chờ chị (bài 73 chương III, bài 31 phụ lục A) nay đã duyệt vì phụ lục C in lại đúng bản kho đang ghi — thẻ của hai bài này có thêm ảnh đó. Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
 ${F.join('\n')}
 ${GHI_CHU_LO4}
@@ -401,6 +455,7 @@ ${GHI_CHU_LO7}
 ${GHI_CHU_LO8}
 ${GHI_CHU_LO9}
 ${GHI_CHU_LO10}
+${GHI_CHU_LO11}
 <p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
 <p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
 <p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>
