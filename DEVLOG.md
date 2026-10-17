@@ -37983,3 +37983,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sửa — mig `202610171150_fn_mcq_metric_nhanh` (ĐÃ ÁP bằng `--only`):** SECURITY DEFINER + chặn 1 lần `la_thanh_vien()` (nhân sự vốn đọc hết các bảng này qua policy staff ⇒ kết quả như cũ), thu quyền public/anon; `create statistics` trên `jsonb_typeof(dap_an_hs)` + index phủ `bai_test_cau(form_tn_id) include (id)`; CTE chỉ lấy cột cần; thêm khoá phụ thứ tự (ly_do/ma_cau) cho phần tử trùng số.
 - **Kiểm:** so jsonb cũ = mới trong REPEATABLE READ…ROLLBACK, 5 kho × 4 khoảng ngày = 20 ca KHỚP (chỉ khác thứ tự phần tử bằng số — vốn tuỳ plan); tsa/hinh_hoc vẫn bị `_mcq_kiem_kho` chặn y cũ; người ngoài bị chặn. dai: ~0,2s (với jwt nhân sự). App local đăng nhập Admin: ô metric hiện lại (Đã sinh 15038 · Chờ 4032 · Duyệt 10749 · 248 câu ≥30 lượt).
 - **Bài học:** đo hiệu năng hàm INVOKER bằng role owner là đo SAI — owner bỏ qua RLS. Hàm tổng hợp nội bộ quét bảng lớn có RLS `… OR la_thanh_vien()` ⇒ DEFINER + chặn 1 lần ở đầu.
+
+## 17/10 — Bản đồ mới: thanh đầu màn một dòng ở mọi khối + bỏ chữ "nháp" (Thùy 17/10)
+- **Thùy:** "Duyệt kho của Khối 6 bị xuống dòng, khối 7 không" · "chữ nháp – chưa ảnh hưởng… bỏ đi, có ý nghĩa gì đâu".
+- **Gốc:** ô chọn chủ đề `w-auto` giãn theo tên chủ đề DÀI NHẤT của khối (K6 dài hơn K7) + thanh `flex-wrap` ⇒ K6 gãy dòng, nút ✅ Duyệt kho rơi xuống dòng 2.
+- **Sửa (`BanDoMoi.tsx`):** bỏ nhãn "nháp · chưa ảnh hưởng bản đồ đang chạy" · ô chủ đề rộng CỐ ĐỊNH 240px (tên dài cắt "…", rê chuột thấy đủ) · thanh `flex-nowrap`, nút giữ cỡ; khi hẹp thì dòng tiến độ (2 dòng nhỏ) co/cắt trước, dãy nút khối co sau cùng (cuộn ngang, thanh cuộn mảnh).
+- **Kiểm (app local, 1920px ghim menu):** K6 · K7 · K12 cùng cao 57px, không tràn, dãy khối đủ, tiến độ hiện đủ. Ở 1500px + ghim menu: dãy khối phải cuộn (thiếu chỗ thật) — bỏ ghim menu thì vừa.

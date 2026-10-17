@@ -244,14 +244,15 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   return (
     <div className="flex h-full min-h-0 flex-col">
       {/* Đầu màn: khối · CHỦ ĐỀ (dropdown, mỗi màn 1 chủ đề) · bản đồ cũ · tiến độ */}
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-slate-200 bg-white px-4 py-2">
+      {/* MỘT dòng ở mọi khối (Thùy 17/10: K6 gãy dòng, K7 không): nút giữ cỡ, chỉ chữ tiến độ co lại */}
+      <div className="flex flex-nowrap items-center gap-x-3 border-b border-slate-200 bg-white px-4 py-2 [&>*]:shrink-0">
         <span className="text-[14px] font-semibold text-slate-900">🆕 Bản đồ mới</span>
-        <span className="rounded bg-amber-100 px-1.5 text-[11px] font-medium text-amber-800">nháp · chưa ảnh hưởng bản đồ đang chạy</span>
-        {dauMan}
+        {/* dãy nút khối: màn hẹp thì cuộn ngang thay vì đẩy cả thanh xuống dòng */}
+        <span className="flex min-w-0 !shrink overflow-x-auto [scrollbar-width:thin]">{dauMan}</span>
         <span className="flex items-center gap-1.5">
           <span className="ml-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chủ đề</span>
           <select value={chuDe?.id ?? ''} onChange={(e) => chonChuDe(e.target.value)} disabled={!cay.chu_de.length}
-            className={`${inp} w-auto max-w-[420px] py-1 text-[13px] font-medium`}>
+            title={chuDe?.ten} className={`${inp} !w-[240px] truncate py-1 text-[13px] font-medium`}>
             {!cay.chu_de.length && <option value="">— chưa có chủ đề —</option>}
             {cay.chu_de.map((cd, i) => <option key={cd.id} value={cd.id}>{i + 1}. {cd.ten}{cd.nhanh !== 'toan' ? ` · ${BDM_NHANH.find((n) => n.id === cd.nhanh)?.nhan ?? cd.nhanh}` : ''}</option>)}
           </select>
@@ -280,9 +281,9 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             ✅ Duyệt kho{canDuyet ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{canDuyet}</span> : null}
           </button>
         )}
-        <span className={`ml-auto flex gap-3 text-[11.5px] text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
-          <span>Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
-          <span>Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
+        <span className={`ml-auto flex min-w-0 !shrink-[1000] flex-col items-end overflow-hidden text-[11px] leading-tight text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
+          <span className="max-w-full truncate">Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
+          <span className="max-w-full truncate">Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
         </span>
       </div>
       {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
