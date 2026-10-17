@@ -1,0 +1,50 @@
+[
+ {
+  "ma_cau": "T106040302018",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=5$ và $a+b=60$.",
+  "dap_an": "(5;55), (55;5), (25;35), (35;25)",
+  "loi_giai": "Ta có $(a,b)=5$ nên $\\begin{cases}a=5m\\\\b=5n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=60$ nên $5m+5n=60\\Rightarrow 5(m+n)=60\\Rightarrow m+n=12$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&11&5&7\\\\\\hline n&11&1&7&5\\\\\\hline a&5&55&25&35\\\\\\hline b&55&5&35&25\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(5;55);(55;5);(25;35);(35;25)\\}$."
+ },
+ {
+  "ma_cau": "T106040103033",
+  "loai": "tra_loi_ngan",
+  "de": "Cô giáo chủ nhiệm muốn chia 40 quyển vở, 60 bút bi và 100 gói bánh thành các phần thưởng như nhau. Hỏi có thể chia được nhiều nhất bao nhiêu phần thưởng? Khi đó mỗi phần thưởng có bao nhiêu quyển vở, bút bi và gói bánh?",
+  "dap_an": "20 phần thưởng; mỗi phần thưởng có 2 quyển vở, 3 bút bi và 5 gói bánh.",
+  "loi_giai": "Gọi số phần thưởng có thể chia được nhiều nhất là $x$ ($x\\in N^*$, phần thưởng).\nVì cần chia 40 quyển vở, 60 bút bi và 100 gói bánh thành các phần thưởng đều nhau và nhiều phần thưởng nhất nên $x=\\text{UCLN}(40,60,100)$.\n$40=2^3\\cdot 5$\n$60=2^2\\cdot 3\\cdot 5$\n$100=2^2\\cdot 5^2$\n$\\text{UCLN}(40,60,100)=2^2\\cdot 5=20$\nVậy có thể chia nhiều nhất thành 20 phần thưởng.\nSố quyển vở ở mỗi phần thưởng là:\n$40:20=2$ (quyển)\nSố bút bi ở mỗi phần thưởng là:\n$60:20=3$ (bút)\nSố gói bánh ở mỗi phần thưởng là:\n$100:20=5$ (gói)."
+ },
+ {
+  "ma_cau": "T106040104019",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $72 \\vdots n$ và $90 \\vdots n$ và $n<9$.",
+  "dap_an": "1;2;3;6",
+  "loi_giai": "Vì $72 \\vdots n$ và $90 \\vdots n$ nên $n\\in \\text{UC}(72;90)$.\nĐể tìm $\\text{UC}(72;90)$ ta sẽ tìm $UCLN(72,90)$.\n$72=2^3\\cdot 3^2$\n$90=2\\cdot 3^2\\cdot 5$\n$UCLN(72,90)=2\\cdot 3^2=18$.\n$\\Rightarrow \\text{UC}(72;90)=U(18)=\\{1;2;3;6;9;18\\}$.\n$\\Rightarrow n\\in\\{1;2;3;6;9;18\\}$.\nMà $n<9$ nên $n\\in\\{1;2;3;6\\}$."
+ },
+ {
+  "ma_cau": "T106040203045",
+  "loai": "tra_loi_ngan",
+  "de": "Một số lượng các gói bim bim được mang đi đóng thành các bịch lớn. Khi đóng 14, 18 hay 21 gói đều vừa đủ. Hỏi số lượng gói bim bim ban đầu là bao nhiêu, biết số gói bim bim nằm trong khoảng từ 500 tới 550 gói.",
+  "dap_an": "504",
+  "loi_giai": "Gọi số gói bim bim ban đầu là $x$ (gói, $x\\in N^*$).\nVì khi đóng 14, 18 hay 21 gói đều vừa đủ nên $x\\vdots 14$; $x\\vdots 18$; $x\\vdots 21$\n$\\Rightarrow x\\in BC(14,18,21)$.\n$14=2\\cdot 7$\n$18=2\\cdot 3^2$\n$21=3\\cdot 7$\n$BCNN(14,18,21)=2\\cdot 3^2\\cdot 7=126$\n$\\Rightarrow BC(14,18,21)=B(126)=\\{0;126;252;378;504;630;....\\}$\nVì số gói bim bim nằm trong khoảng từ 500 tới 550 gói nên $x=504$.\nVậy ban đầu có 504 gói bim bim."
+ },
+ {
+  "ma_cau": "T106030401080",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ để $2x+7$ chia hết cho $x-3$.",
+  "dap_an": "4;16",
+  "loi_giai": "Ta có $2x+7=2(x-3)+13$.\nVì $2(x-3)$ chia hết cho $x-3$ nên để $2x+7$ chia hết cho $x-3$ thì $13$ chia hết cho $x-3$.\nSuy ra $x-3\\in U(13)=\\{1;13\\}$.\nVậy $x\\in\\{4;16\\}$."
+ },
+ {
+  "ma_cau": "T106030402004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $3x + 4y \\vdots 19$. Chứng minh rằng $4x - y \\vdots 19$.",
+  "loi_giai": "Ta có : $3x + 4y \\vdots 19$\nSuy ra $5(3x + 4y) \\vdots 19$\n$15x + 20y \\vdots 19$\nMà $(15x + 20y) + (4x - y) = 19x + 19y = 19(x + y) \\vdots 19$\nSuy ra $4x - y \\vdots 19$"
+ },
+ {
+  "ma_cau": "T106030503002",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $(a,b)=1$.\nChứng minh $a+3b$ và $a+2b$ nguyên tố cùng nhau.",
+  "dap_an": "$a+3b$ và $a+2b$ nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(a+3b,a+2b)$.\n$\\Rightarrow \\begin{cases}a+3b\\vdots d\\\\a+2b\\vdots d\\end{cases}$\n$\\Rightarrow (a+3b)-(a+2b)\\vdots d$\n$\\Rightarrow b\\vdots d$\nMà $a+2b\\vdots d\\Rightarrow a\\vdots d$.\nTa có $a\\vdots d,b\\vdots d\\Rightarrow d\\in \\text{UC}(a,b)$.\nMà $(a,b)=1\\Rightarrow d=1$.\nVậy $a+3b$ và $a+2b$ nguyên tố cùng nhau."
+ }
+]

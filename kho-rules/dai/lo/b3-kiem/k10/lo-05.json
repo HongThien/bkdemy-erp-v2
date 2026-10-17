@@ -1,0 +1,869 @@
+[
+ {
+  "ma_cau": "T110030107010",
+  "loai": "trac_nghiem",
+  "de": "Biểu thức $(\\cot a + \\tan a)^2$ bằng",
+  "lua_chon": [
+   "$\\dfrac{1}{\\sin^2 \\alpha} - \\dfrac{1}{\\cos^2 \\alpha}$",
+   "$\\cot^2 a + \\tan^2 a$.",
+   "$\\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha}$",
+   "$\\cot^2 a\\tan^2 a + 2$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có: $(\\cot a + \\tan a)^2 = \\cot^2 a + 2\\cot a.\\tan a + \\tan^2 a = (\\cot^2 a + 1) + (\\tan^2 a + 1) = \\dfrac{1}{\\sin^2 a} + \\dfrac{1}{\\cos^2 a}$."
+ },
+ {
+  "ma_cau": "T110020203014",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} -x+y+2 \\ge 0 \\\\ x+3y-1 < 0 \\end{cases}$?",
+  "lua_chon": [
+   "$E(1;-1)$",
+   "$F(0;1)$",
+   "$G(3;0)$",
+   "$H(-2;2)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $E(1;-1)$: Ta được $\\begin{cases} -1-1+2 = 0 \\ge 0 \\text{ (Đúng)} \\\\ 1+3(-1)-1 = -3 < 0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $E$ thuộc miền nghiệm.\nKiểm tra đáp án B với $F(0;1)$: Ta được $\\begin{cases} -0+1+2 = 3 \\ge 0 \\text{ (Đúng)} \\\\ 0+3(1)-1 = 2 < 0 \\text{ (Sai)} \\end{cases}$\n$\\Rightarrow$ Điểm $F$ không thuộc miền nghiệm.\nKiểm tra đáp án C với $G(3;0)$: Ta được $\\begin{cases} -3+0+2 = -1 \\ge 0 \\text{ (Sai)} \\\\ 3+0-1 = 2 < 0 \\text{ (Sai)} \\end{cases}$\n$\\Rightarrow$ Điểm $G$ không thuộc miền nghiệm.\nKiểm tra đáp án D với $H(-2;2)$: Ta được $\\begin{cases} -(-2)+2+2 = 6 \\ge 0 …"
+ },
+ {
+  "ma_cau": "T110030107048",
+  "loai": "trac_nghiem",
+  "de": "Tính tổng $T = \\cos^2 2^\\circ + \\cos^2 4^\\circ + \\cos^2 6^\\circ + \\ldots + \\cos^2 86^\\circ + \\cos^2 88^\\circ$.",
+  "lua_chon": [
+   "44",
+   "22",
+   "23",
+   "21"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tổng có 44 số hạng. Ghép cặp $\\cos^2 x^\\circ + \\cos^2 (90^\\circ - x^\\circ) = \\cos^2 x^\\circ + \\sin^2 x^\\circ = 1$ với $x = 2, 4, \\ldots, 44$\nđược 22 cặp.\nVậy $T = 22$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110030104031",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\tan \\gamma = \\dfrac{1}{3}$. Tính giá trị của biểu thức $C = \\cot(90^{\\circ} - \\gamma) - 2\\tan(180^{\\circ} - \\gamma)$.",
+  "lua_chon": [
+   "1",
+   " -1",
+   "$\\dfrac{2}{3}$",
+   "$\\dfrac{4}{3}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\gamma$ và $90^{\\circ} - \\gamma$ là hai góc phụ nhau nên $\\cot(90^{\\circ} - \\gamma) = \\tan \\gamma$.\nVì $\\gamma$ và $180^{\\circ} - \\gamma$ là hai góc bù nhau nên $\\tan(180^{\\circ} - \\gamma) = -\\tan \\gamma$.\n$C = \\tan \\gamma - 2(-\\tan \\gamma) = 3\\tan \\gamma = 3 \\cdot \\dfrac{1}{3} = 1$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110030106082",
+  "loai": "trac_nghiem",
+  "de": "Cho góc nhọn $\\alpha$ thỏa mãn $\\cot \\alpha = 2$. Khẳng định nào sau đây đúng về biểu thức $N = \\sin^2 \\alpha + 2 \\sin \\alpha \\cos \\alpha$?",
+  "lua_chon": [
+   "$N = \\dfrac{3}{5}$",
+   " $N = \\dfrac{3}{5}$",
+   " $N = -1$",
+   " $N = 1$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} \\Leftrightarrow \\sin^2 \\alpha = \\dfrac{1}{1 + \\cot^2 \\alpha} = \\dfrac{1}{1 + 2^2} = \\dfrac{1}{5}$.\nVì $\\alpha$ là góc nhọn $\\Rightarrow \\sin \\alpha > 0 \\Rightarrow \\sin \\alpha = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5} \\Rightarrow \\cos \\alpha = \\cot \\alpha \\cdot \\sin \\alpha = 2 \\cdot \\dfrac{\\sqrt{5}}{5} = \\dfrac{2\\sqrt{5}}{5}$.\nVậy $N = \\dfrac{1}{5} + 2 \\cdot \\dfrac{\\sqrt{5}}{5} \\cdot \\dfrac{2\\sqrt{5}}{5} = \\dfrac{1}{5} + \\dfrac{4 \\cdot 5}{25} = \\dfrac{1}{5} + \\dfrac{20}{25} = \\dfrac{1}{5} + \\dfrac{4}{5} = 1$.\nChọn D."
+ },
+ {
+  "ma_cau": "T110030102005",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là góc nhọn ($0^\\circ < \\alpha < 90^\\circ$). Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\sin \\alpha < 0$.",
+   "$\\cos \\alpha < 0$.",
+   "$\\tan \\alpha < 0$.",
+   "$\\cot \\alpha > 0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $\\alpha$ là góc nhọn nên $\\alpha$ thuộc góc phần tư I, do đó $\\sin \\alpha > 0$, $\\cos \\alpha > 0$, $\\tan \\alpha > 0$, $\\cot \\alpha > 0$.\nA. $\\sin \\alpha < 0$ là sai.\nB. $\\cos \\alpha < 0$ là sai.\nC. $\\tan \\alpha < 0$ là sai.\nD. $\\cot \\alpha > 0$ là đúng.\nChọn D."
+ },
+ {
+  "ma_cau": "T110030104032",
+  "loai": "trac_nghiem",
+  "de": "Tính giá trị của biểu thức $D = 2\\sin(90^\\circ - x)\\cos x + 2\\sin(180^\\circ - x)\\sin x - 5$.",
+  "lua_chon": [
+   "-1",
+   "-2",
+   "-3",
+   "3"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $x$ và $90^\\circ - x$ là hai góc phụ nhau nên $\\sin(90^\\circ - x) = \\cos x$.\nVì $x$ và $180^\\circ - x$ là hai góc bù nhau nên $\\sin(180^\\circ - x) = \\sin x$.\n$D = 2\\cos x \\cdot \\cos x + 2\\sin x \\cdot \\sin x - 5 = 2\\cos^2 x + 2\\sin^2 x - 5 = 2 - 5 = -3$.\nChọn C."
+ },
+ {
+  "ma_cau": "T110020203003",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây KHÔNG thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}x-2y+3>0\\\\ 3x+y-2\\leq0\\end{cases}$?",
+  "lua_chon": [
+   "P(-2;0).",
+   "Q(-1;-1).",
+   "M(-3;1).",
+   "N(-1;0)."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $P(-2;0)$: Thay $x = -2, y = 0$ vào hệ, ta được\n$\\begin{cases} -2 - 2(0) + 3 = 1 > 0 \\text{ (Đúng)} \\\\ 3(-2) + 0 - 2 = -8 \\leq 0 \\text{ (Đúng)} \\end{cases}$. Điểm $P$ thuộc miền nghiệm.\nKiểm tra đáp án B với $Q(-1;-1)$: Thay $x = -1, y = -1$ vào hệ, ta được\n$\\begin{cases} -1 - 2(-1) + 3 = 4 > 0 \\text{ (Đúng)} \\\\ 3(-1) + (-1) - 2 = -6 \\leq 0 \\text{ (Đúng)} \\end{cases}$. Điểm $Q$ thuộc miền nghiệm.\nKiểm tra đáp án C với $M(-3;1)$: Thay $x = -3, y = 1$ vào hệ, ta được\n$\\begin{cases} -3 - 2(1) + 3 = -2 > 0 \\text{ (Sai)} \\\\ 3(-3) + 1 - 2 = -10 \\leq 0 \\text{ (Đúng)} \\end{cases}$. Điểm $M$ khôn …"
+ },
+ {
+  "ma_cau": "T110030106003",
+  "loai": "trac_nghiem",
+  "de": "$\\cos \\alpha$ bằng bao nhiêu nếu $\\cot \\alpha = -\\dfrac{1}{2}$ ($0^\\circ \\le \\alpha \\le 180^\\circ$) ?",
+  "lua_chon": [
+   "$\\pm \\dfrac{\\sqrt{5}}{5}$.",
+   "$\\dfrac{\\sqrt{5}}{2}$.",
+   "$- \\dfrac{\\sqrt{5}}{5}$.",
+   "$- \\dfrac{1}{3}$. "
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\cot\\alpha = -\\dfrac{1}{2} \\Rightarrow \\tan\\alpha = -2$.\n$1+\\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1+\\tan^2 \\alpha} = \\dfrac{1}{1+(-2)^2} = \\dfrac{1}{5} \\Rightarrow \\begin{cases} \\cos\\alpha = \\dfrac{\\sqrt{5}}{5} \\\\ \\cos\\alpha = -\\dfrac{\\sqrt{5}}{5} \\end{cases}$\nVới $0^\\circ \\le \\alpha \\le 180^\\circ \\Rightarrow \\sin\\alpha > 0$ và $\\cot\\alpha = -\\dfrac{1}{2} \\Rightarrow \\cos\\alpha < 0$.\nVậy $\\cos\\alpha = -\\dfrac{\\sqrt{5}}{5}$."
+ },
+ {
+  "ma_cau": "T110020202082",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ nào dưới đây có phần không tô đậm biểu diễn tập nghiệm của hệ bất phương trình sau?\nHệ bất phương trình:\n$$\\begin{cases}y>0\\\\2x+y<6\\\\x-2y>-2\\end{cases}$$",
+  "lua_chon": [
+   "Hình 1",
+   "Hình 2",
+   "Hình 3",
+   "Hình 4"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Bất phương trình $y>0$ lấy nửa mặt phẳng phía trên trục $Ox$.\n- Đường thẳng $2x+y=6$ đi qua $(3;0)$ và $(0;6)$.\nThử $O(0;0)\\Rightarrow 0<6$ (đúng) $\\Rightarrow$ lấy nửa chứa $O$.\n- Đường thẳng $x-2y=-2$ đi qua $(-2;0)$ và $(0;1)$.\nThử $O(0;0)\\Rightarrow 0>-2$ (đúng) $\\Rightarrow$ lấy nửa chứa $O$.\n- Đối chiếu với các hình vẽ, hình biểu diễn đúng miền nghiệm là Hình 2 (Đáp án B).",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110010203063",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch trong hình vẽ sau đây là biểu diễn của tập hợp nào? [hình]",
+  "lua_chon": [
+   "[-5;0).",
+   "[-5;0].",
+   "(-5;0].",
+   "(-5;0)."
+  ],
+  "dap_an": "C",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110020203032",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}x-y+3>0\\\\-x+2y-2\\le 0\\\\y\\ge 0\\end{cases}$?",
+  "lua_chon": [
+   "$M(0;-1)$",
+   "$N(-4;0)$",
+   "$P(2;1)$",
+   "$Q(0;2)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $M(0;-1)$: Ta được $\\begin{cases}0+1+3=4>0\\ \\text{(Đúng)}\\\\0-2-2=-4\\le 0\\ \\text{(Đúng)}\\\\-1\\ge 0\\ \\text{(Sai)}\\end{cases}$\n$\\Rightarrow$ Điểm $M$ không thuộc miền nghiệm.\nKiểm tra đáp án B với $N(-4;0)$: Ta được $\\begin{cases}-4-0+3=-1>0\\ \\text{(Sai)}\\\\4+0-2=2\\le 0\\ \\text{(Sai)}\\\\0\\ge 0\\ \\text{(Đúng)}\\end{cases}$\n$\\Rightarrow$ Điểm $N$ không thuộc miền nghiệm.\nKiểm tra đáp án C với $P(2;1)$: Ta được $\\begin{cases}2-1+3=4>0\\ \\text{(Đúng)}\\\\-2+2-2=-2\\le 0\\ \\text{(Đúng)}\\\\1\\ge 0\\ \\text{(Đúng)}\\end{cases}$\n$\\Rightarrow$ Điểm $P$ thuộc miền nghiệm.\nKiểm tra đáp án D với $Q(0;2)$: Ta được $\\be …"
+ },
+ {
+  "ma_cau": "T110030107055",
+  "loai": "trac_nghiem",
+  "de": "Với $\\alpha \\ne 90^{\\circ}$, rút gọn biểu thức $(1 + \\tan \\alpha)^2 + (1 - \\tan \\alpha)^2$ ta được",
+  "lua_chon": [
+   "$2$",
+   "$2 \\tan^2 \\alpha$",
+   "$\\dfrac{2}{\\cos^2 \\alpha}$",
+   "$\\dfrac{1}{\\cos^2 \\alpha}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $(1 + \\tan \\alpha)^2 + (1 - \\tan \\alpha)^2 = 2 + 2 \\tan^2 \\alpha = 2(1 + \\tan^2 \\alpha) = \\dfrac{2}{\\cos^2 \\alpha}$.\nChọn C."
+ },
+ {
+  "ma_cau": "T110030106067",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\tan \\alpha = \\sqrt{2}$ và $0^\\circ < \\alpha < 90^\\circ$. Tìm $\\sin \\alpha$.",
+  "lua_chon": [
+   "$-\\dfrac{\\sqrt{6}}{3}$",
+   "$\\dfrac{\\sqrt{3}}{3}$",
+   "$\\dfrac{\\sqrt{6}}{3}$",
+   "$\\dfrac{2}{3}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + (\\sqrt{2})^2} = \\dfrac{1}{3}$.\nSuy ra $\\cos \\alpha = \\pm \\dfrac{\\sqrt{3}}{3}$.\nVì $0^\\circ < \\alpha < 90^\\circ \\Rightarrow \\cos \\alpha > 0$.\nDo đó $\\cos \\alpha = \\dfrac{\\sqrt{3}}{3}$. Vậy $\\sin \\alpha = \\tan \\alpha \\cdot \\cos \\alpha = \\sqrt{2} \\cdot \\dfrac{\\sqrt{3}}{3} = \\dfrac{\\sqrt{6}}{3}$.\nChọn C."
+ },
+ {
+  "ma_cau": "T110010205019",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 11A có 45 học sinh, mỗi học sinh đều chơi ít nhất một trong ba nhạc cụ: Piano, Guitar, Violin.\nQua thống kê có 22 học sinh chơi Piano, 25 học sinh chơi Guitar, 20 học sinh chơi Violin. Biết có\n10 học sinh chơi cả Piano và Guitar, 8 học sinh chơi cả Guitar và Violin, 9 học sinh chơi cả Piano\nvà Violin. Hỏi có bao nhiêu học sinh chơi được cả ba nhạc cụ?",
+  "dap_an": "5",
+  "loi_giai": "Gọi $A, B, C$ lần lượt là tập hợp học sinh chơi Piano, Guitar, Violin.\nTheo đề bài:\n$n(A \\cup B \\cup C) = 45$\n$n(A) = 22, n(B) = 25, n(C) = 20$\n$n(A \\cap B) = 10, n(B \\cap C) = 8, n(A \\cap C) = 9$\nGọi $x = n(A \\cap B \\cap C)$ là số học sinh chơi cả ba nhạc cụ ($x \\in \\mathbb{N}^*$).\nTa có:\n$n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - n(A \\cap B) - n(B \\cap C) - n(A \\cap C) + x$\n$\\Leftrightarrow 45 = 22 + 25 + 20 - 10 - 8 - 9 + x$\n$\\Leftrightarrow 45 = 40 + x$\n$\\Leftrightarrow x = 5$\nVậy có 5 học sinh chơi được cả ba nhạc cụ."
+ },
+ {
+  "ma_cau": "T110020104007",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn An mang 200.000 đồng đi nhà sách để mua một số quyển tập và bút. Biết rằng giá một quyển tập là 15.000 đồng và giá của một cây bút là 7.000 đồng. Bạn An có thể mua được tối đa bao nhiêu quyển tập nếu bạn đã mua 10 cây bút.",
+  "dap_an": "8",
+  "loi_giai": "Số tiền bạn An dùng để mua 10 cây bút là: $10 \\times 7.000 = 70.000$ (đồng).\nSố tiền còn lại để mua tập là: $200.000 - 70.000 = 130.000$ (đồng).\nSố quyển tập bạn An có thể mua được tối đa là: $130.000 \\div 15.000 \\approx 8.66$.\nVì số quyển tập phải là số nguyên nên số quyển tập bạn An mua được tối đa là 8 quyển."
+ },
+ {
+  "ma_cau": "T110030106084",
+  "loai": "trac_nghiem",
+  "de": "Góc $\\alpha$ thỏa mãn $90^\\circ < \\alpha < 180^\\circ$ và $\\cot \\alpha = -3$. Tính $P = 10 \\cos^2 \\alpha + 3 \\tan \\alpha$.",
+  "lua_chon": [
+   "8",
+   "10",
+   "0",
+   "-8"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} \\Leftrightarrow \\sin^2 \\alpha = \\dfrac{1}{1 + \\cot^2 \\alpha} = \\dfrac{1}{10} \\Rightarrow \\cos^2 \\alpha = 1 - \\sin^2 \\alpha = \\dfrac{9}{10}$.\nMặt khác $\\tan \\alpha = \\dfrac{1}{\\cot \\alpha} = -\\dfrac{1}{3}$.\nVậy $P = 10 \\cdot \\dfrac{9}{10} + 3 \\cdot \\left(-\\dfrac{1}{3}\\right) = 8$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110030105033",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha \\neq 90^{\\circ}$. Biểu thức $P = \\mathrm{cos}^2 \\alpha \\cdot \\mathrm{tan}^2 \\alpha + \\mathrm{cos}^2 \\alpha$ bằng",
+  "lua_chon": [
+   "$\\mathrm{cos}^2 \\alpha$.",
+   "1.",
+   "$\\mathrm{sin}^2 \\alpha$.",
+   "2."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Đặt nhân tử chung: $P = \\mathrm{cos}^2 \\alpha (1 + \\mathrm{tan}^2 \\alpha) = \\mathrm{cos}^2 \\alpha \\cdot \\dfrac{1}{\\mathrm{cos}^2 \\alpha} = 1$. Chọn B."
+ },
+ {
+  "ma_cau": "T110030105014",
+  "loai": "trac_nghiem",
+  "de": "Công thức nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\sin^2 \\alpha = 1+\\cot^2 \\alpha$ .",
+   "$\\sin^2 \\alpha = \\dfrac{1}{1+\\cot^2 \\alpha}$ .",
+   "$\\sin^2 \\alpha = \\dfrac{1}{1-\\cot^2 \\alpha}$ .",
+   "$\\sin^2 \\alpha = 1-\\cot^2 \\alpha$ ."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $1+\\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} \\Rightarrow \\sin^2 \\alpha = \\dfrac{1}{1+\\cot^2 \\alpha}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020203075",
+  "loai": "trac_nghiem",
+  "de": "Cho hệ bất phương trình $\\begin{cases} x+3y-2\\ge 0 \\\\ 2x+y+1\\le 0 \\end{cases}$. Trong các điểm sau, điểm nào thuộc miền nghiệm của hệ bất phương trình?",
+  "lua_chon": [
+   "$M\\left(0;1\\right)$.",
+   "$N\\left(-1;1\\right)$.",
+   "$P\\left(1;3\\right)$.",
+   "$Q\\left(-1;0\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta thay toạ độ từng điểm vào hệ $\\begin{cases} x+3y-2\\ge 0 \\\\ 2x+y+1\\le 0 \\end{cases}$.\nVới $M\\left(0;1\\right)$: $0+3\\cdot 1-2=1\\ge 0$ (đúng) nhưng $2\\cdot 0+1+1=2\\le 0$ (sai) nên $M$ không thuộc miền nghiệm.\nVới $N\\left(-1;1\\right)$: $-1+3\\cdot 1-2=0\\ge 0$ (đúng) và $2\\cdot \\left(-1\\right)+1+1=0\\le 0$ (đúng) nên $N$ thuộc miền nghiệm.\nVới $P\\left(1;3\\right)$: $1+3\\cdot 3-2=8\\ge 0$ (đúng) nhưng $2\\cdot 1+3+1=6\\le 0$ (sai) nên $P$ không thuộc miền nghiệm.\nVới $Q\\left(-1;0\\right)$: $-1+3\\cdot 0-2=-3\\ge 0$ (sai) nên $Q$ không thuộc miền nghiệm.\nVậy điểm $N\\left(-1;1\\right)$ thuộc miền nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110030102019",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là một góc nhọn. Trong các nhận xét sau, nhận xét nào không chính xác?",
+  "lua_chon": [
+   "$\\sin \\alpha > 0$.",
+   "$\\cos \\alpha > 0$.",
+   "$\\tan \\alpha > 0$.",
+   "$\\cot \\alpha < 0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $\\alpha$ là góc nhọn nên $0^{\\circ} < \\alpha < 90^{\\circ}$, do đó $\\sin \\alpha > 0$, $\\cos \\alpha > 0$, $\\tan \\alpha > 0$, $\\cot \\alpha > 0$.\nA. $\\sin \\alpha > 0$ là đúng.\nB. $\\cos \\alpha > 0$ là đúng.\nC. $\\tan \\alpha > 0$ là đúng.\nD. $\\cot \\alpha < 0$ là sai.\nChọn D."
+ },
+ {
+  "ma_cau": "T110030102022",
+  "loai": "trac_nghiem",
+  "de": "Với góc $\\alpha$ nằm trong khoảng $90^\\circ < \\alpha < 180^\\circ$, phát biểu nào dưới đây không đúng?",
+  "lua_chon": [
+   "$\\cos \\alpha < 0$.",
+   "$\\tan \\alpha < 0$.",
+   "$\\cot \\alpha < 0$.",
+   "$\\sin \\alpha < 0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\alpha$ thuộc góc phần tư II, do đó $\\sin \\alpha > 0$, $\\cos \\alpha < 0$, $\\tan \\alpha < 0$, $\\cot \\alpha < 0$.\nA. $\\cos \\alpha < 0$ là đúng.\nB. $\\tan \\alpha < 0$ là đúng.\nC. $\\cot \\alpha < 0$ là đúng.\nD. $\\sin \\alpha < 0$ là sai.\nChọn D."
+ },
+ {
+  "ma_cau": "T110010203066",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch trong hình vẽ sau đây là biểu diễn của tập hợp nào?",
+  "lua_chon": [
+   "$(-\\infty;-3]$",
+   "$(-\\infty;-3)$",
+   "$[-3;+\\infty)$",
+   "$(-3;+\\infty)$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110030106079",
+  "loai": "trac_nghiem",
+  "de": "Cho góc tù $\\alpha$ có $\\tan \\alpha = -\\dfrac{3}{4}$. Biểu thức $A = \\sin \\alpha + \\cos \\alpha$ có giá trị bằng",
+  "lua_chon": [
+   "$\\dfrac{1}{5}$",
+   "$-\\dfrac{1}{5}$",
+   "$\\dfrac{7}{5}$",
+   "$-\\dfrac{7}{5}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + \\dfrac{9}{16}} = \\dfrac{16}{25}$.\nVì $\\alpha$ là góc tù $\\Rightarrow \\cos \\alpha < 0 \\Rightarrow \\cos \\alpha = -\\dfrac{4}{5} \\Rightarrow \\sin \\alpha = \\tan \\alpha \\cdot \\cos \\alpha = \\dfrac{3}{5}$.\nVậy $A = \\dfrac{3}{5} + \\left( -\\dfrac{4}{5} \\right) = -\\dfrac{1}{5}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110030106060",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\cot \\alpha = 2$ với $0^\\circ < \\alpha < 180^\\circ$. Tính $\\sin \\alpha$.",
+  "lua_chon": [
+   "$\\dfrac{\\sqrt{5}}{5}$",
+   "$-\\dfrac{\\sqrt{5}}{5}$",
+   "$\\dfrac{2\\sqrt{5}}{5}$",
+   "$\\dfrac{1}{5}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} \\Leftrightarrow \\sin^2 \\alpha = \\dfrac{1}{1 + \\cot^2 \\alpha} = \\dfrac{1}{1 + 2^2} = \\dfrac{1}{5}$.\nSuy ra $\\sin \\alpha = \\pm \\dfrac{\\sqrt{5}}{5}$.\nVới $0^\\circ < \\alpha < 180^\\circ \\Rightarrow \\sin \\alpha > 0$.\nVậy $\\sin \\alpha = \\dfrac{\\sqrt{5}}{5}$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110020203054",
+  "loai": "trac_nghiem",
+  "de": "Trong mặt phẳng $Oxy$, điểm nào dưới đây thuộc miền nghiệm của hệ $\\begin{cases} 3x-y>1 \\\\ x+2y\\le 2 \\end{cases}$?",
+  "lua_chon": [
+   "$P\\left(1;-1\\right)$.",
+   "$N\\left(1;1\\right)$.",
+   "$M\\left(1;2\\right)$.",
+   "$Q\\left(0;1\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta lần lượt thay tọa độ các điểm vào hệ bất phương trình $\\begin{cases} 3x-y>1 \\\\ x+2y\\le 2 \\end{cases}$:\n• Với $P\\left(1;-1\\right)$: ta có $\\begin{cases} 3\\left(1\\right)-\\left(-1\\right)=4>1 \\\\ 1+2\\left(-1\\right)=-1\\le 2 \\end{cases}$ (đúng). Vậy $P$ thuộc miền nghiệm.\n• Với $N\\left(1;1\\right)$: ta có $\\begin{cases} 3\\left(1\\right)-1=2>1 \\\\ 1+2\\left(1\\right)=3\\le 2 \\end{cases}$ (sai ở bất phương trình thứ hai).\n• Với $M\\left(1;2\\right)$: ta có $3\\left(1\\right)-2=1>1$ (sai).\n• Với $Q\\left(0;1\\right)$: ta có $3\\left(0\\right)-1=-1>1$ (sai).\nVậy điểm $P\\left(1;-1\\right)$ thuộc miền nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203061",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây không thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} 2x+3y-1>0 \\\\ 5x-y+4<0 \\end{cases}$?",
+  "lua_chon": [
+   "$\\left(-2;4\\right)$.",
+   "$\\left(-1;4\\right)$.",
+   "$\\left(0;0\\right)$.",
+   "$\\left(-3;4\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay toạ độ từng điểm vào hệ bất phương trình $\\begin{cases} 2x+3y-1>0 \\\\ 5x-y+4<0 \\end{cases}$:\nVới $\\left(-2;4\\right)$: $2\\left(-2\\right)+3\\left(4\\right)-1=7>0$ và $5\\left(-2\\right)-4+4=-10<0$ (thoả mãn).\nVới $\\left(-1;4\\right)$: $2\\left(-1\\right)+3\\left(4\\right)-1=9>0$ và $5\\left(-1\\right)-4+4=-5<0$ (thoả mãn).\nVới $\\left(0;0\\right)$: $2\\left(0\\right)+3\\left(0\\right)-1=-1<0$ (không thoả mãn bất phương trình $2x+3y-1>0$).\nVới $\\left(-3;4\\right)$: $2\\left(-3\\right)+3\\left(4\\right)-1=5>0$ và $5\\left(-3\\right)-4+4=-15<0$ (thoả mãn).\nVậy điểm $\\left(0;0\\right)$ không thuộc miền nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110030107052",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thỏa mãn $\\sin \\alpha + \\cos \\alpha = \\dfrac{5}{4}$. Biểu thức $H = \\sin^3 \\alpha + \\cos^3 \\alpha - 2 \\sin \\alpha \\cos \\alpha + 1$ có giá trị là",
+  "lua_chon": [
+   "$H = \\dfrac{261}{128}$",
+   "$H = \\dfrac{43}{128}$",
+   "$H = \\dfrac{171}{128}$",
+   "$H = \\dfrac{115}{128}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $(\\sin \\alpha + \\cos \\alpha)^2 = 1 + 2 \\sin \\alpha \\cos \\alpha = \\dfrac{25}{16} \\Rightarrow \\sin \\alpha \\cos \\alpha = \\dfrac{9}{32}$.\n$\\sin^3 \\alpha + \\cos^3 \\alpha = (\\sin \\alpha + \\cos \\alpha)(1 - \\sin \\alpha \\cos \\alpha) = \\dfrac{5}{4} \\cdot \\dfrac{23}{32} = \\dfrac{115}{128}$.\nVậy $H = \\dfrac{115}{128} - 2 \\cdot \\dfrac{9}{32} + 1 = \\dfrac{171}{128}$.\nChọn C."
+ },
+ {
+  "ma_cau": "T110020203027",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} -x+y+1>0 \\ x+y-2 \\le 0 \\ x-3<0 \\end{cases}$?",
+  "lua_chon": [
+   "$P(3;0)$",
+   "$Q(0;1)$",
+   "$R(2;2)$",
+   "$S(0;-2)$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $P(3;0)$: Ta được $\\begin{cases} -3+0+1=-2>0 \\text{ (Sai)} \\\\ 3+0-2=1 \\le 0 \\text{ (Sai)} \\\\ 3-3=0<0 \\text{ (Sai)} \\end{cases}$.\n$\\Rightarrow$ Điểm $P$ không thuộc miền nghiệm.\nKiểm tra đáp án B với $Q(0;1)$: Ta được $\\begin{cases} -0+1+1=2>0 \\text{ (Đúng)} \\\\ 0+1-2=-1 \\le 0 \\text{ (Đúng)} \\\\ 0-3=-3<0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $Q$ thuộc miền nghiệm.\nKiểm tra đáp án C với $R(2;2)$: Ta được $\\begin{cases} -2+2+1=1>0 \\text{ (Đúng)} \\\\ 2+2-2=2 \\le 0 \\text{ (Sai)} \\\\ 2-3=-1<0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $R$ không thuộc miền nghiệm.\nKiểm tra đáp án D với …"
+ },
+ {
+  "ma_cau": "T110030106058",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin \\alpha = \\dfrac{\\sqrt{3}}{3}$ với $0^\\circ < \\alpha < 90^\\circ$. Giá trị của biểu thức $T = \\dfrac{\\tan \\alpha + \\cot \\alpha}{\\tan \\alpha - \\cot \\alpha}$ bằng",
+  "lua_chon": [
+   "3",
+   "$\\dfrac{1}{3}$",
+   "-3",
+   "$-\\dfrac{1}{3}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\sin^2 \\alpha + \\cos^2 \\alpha = 1 \\Leftrightarrow \\cos^2 \\alpha = 1 - \\sin^2 \\alpha = \\dfrac{2}{3}$\n$\\Leftrightarrow \\left[\\begin{array}{l}\\cos \\alpha = \\dfrac{\\sqrt{6}}{3}\\\\\n\\cos \\alpha = -\\dfrac{\\sqrt{6}}{3}\\end{array}\\right.$\nVì $0^\\circ < \\alpha < 90^\\circ \\Rightarrow \\cos \\alpha = \\dfrac{\\sqrt{6}}{3} \\Rightarrow \\tan \\alpha = \\dfrac{\\sqrt{2}}{2}$, $\\cot \\alpha = \\sqrt{2}$.\nVậy $T = \\dfrac{\\dfrac{\\sqrt{2}}{2} + \\sqrt{2}}{\\dfrac{\\sqrt{2}}{2} - \\sqrt{2}} = -3$.\nChọn C."
+ },
+ {
+  "ma_cau": "T110010203053",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau:\\\\ $A = \\{x \\in R \\vert -3 \\le x < 2\\}$ và $B = \\{x \\in R \\vert -1 < x < 4\\}$.\\\\ Xác định $A \\cap B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$(-1; 2)$",
+  "loi_giai": "Ta có: $A = [-3; 2)$ và $B = (-1; 4)$.\\\\ Giao của hai tập hợp $A$ và $B$ là tập gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\\\\ Do đó: $A \\cap B = (-1; 2)$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/f35c04c0-c20d-4d55-a589-3f99a37cd34d.png)"
+ },
+ {
+  "ma_cau": "T110010203055",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau:\n$A = \\{x \\in R | -5 \\le x \\le -1\\}$ và $B = \\{x \\in R | -2 < x \\le 3\\}$.\nXác định $A \\cup B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[-5; 3]$",
+  "loi_giai": "Ta có: $A = [-5; -1]$ và $B = (-2; 3]$.\nHợp của hai tập hợp $A$ và $B$ là tập gồm các phần tử thuộc $A$ hoặc thuộc $B$.\nDo đó: $A \\cup B = [-5; 3]$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a4f53f72-773f-4e45-9346-bd9036ae0ef2.png)"
+ },
+ {
+  "ma_cau": "T110030106095",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là góc tù và $\\sin \\alpha =\\dfrac{5}{13}$. Giá trị của $\\cos \\alpha$ là",
+  "lua_chon": [
+   "$-\\dfrac{12}{13}$.",
+   "$\\dfrac{12}{13}$.",
+   "$\\dfrac{8}{13}$.",
+   "$-\\dfrac{8}{13}$."
+  ],
+  "loi_giai": "Vì $\\alpha$ là góc tù nên $90^\\circ<\\alpha <180^\\circ$, suy ra $\\cos \\alpha <0$.\nÁp dụng hằng đẳng thức lượng giác cơ bản $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$, ta có\n$\\cos ^{2}\\alpha =1-\\sin ^{2}\\alpha =1-\\left(\\dfrac{5}{13}\\right)^{2}=1-\\dfrac{25}{169}=\\dfrac{144}{169}.$\nVì $\\cos \\alpha <0$ nên ta chọn\n$\\cos \\alpha =-\\sqrt{\\dfrac{144}{169}}=-\\dfrac{12}{13}.$\nVậy $\\cos \\alpha =-\\dfrac{12}{13}$."
+ },
+ {
+  "ma_cau": "T110030106064",
+  "loai": "trac_nghiem",
+  "de": "Góc $\\alpha$ thỏa mãn $0^\\circ < \\alpha < 90^\\circ$ và $\\cot \\alpha = \\dfrac{1}{2}$. Giá trị của $\\cos \\alpha$ bằng",
+  "lua_chon": [
+   "$\\dfrac{2\\sqrt{5}}{5}$",
+   "$-\\dfrac{\\sqrt{5}}{5}$",
+   "$\\pm \\dfrac{\\sqrt{5}}{5}$",
+   "$\\dfrac{\\sqrt{5}}{5}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} \\Leftrightarrow \\sin^2 \\alpha = \\dfrac{1}{1 + \\cot^2 \\alpha} = \\dfrac{1}{1 + \\left(\\dfrac{1}{2}\\right)^2} = \\dfrac{4}{5}$.\nSuy ra $\\sin \\alpha = \\pm \\dfrac{2\\sqrt{5}}{5}$.\nVới $0^\\circ < \\alpha < 90^\\circ \\Rightarrow \\sin \\alpha > 0$.\nDo đó $\\sin \\alpha = \\dfrac{2\\sqrt{5}}{5}$. Vậy $\\cos \\alpha = \\cot \\alpha \\cdot \\sin \\alpha = \\dfrac{\\sqrt{5}}{5}$.\nChọn D."
+ },
+ {
+  "ma_cau": "T110020203008",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây không thuộc miền nghiệm của hệ bất phương trình\n$$\\begin{cases} -x+3y-2 \\ge 0 \\\\ 2x+y+1 > 0 \\end{cases}$$",
+  "lua_chon": [
+   "$P(0;2)$",
+   "$Q(1;2)$",
+   "$R(0;1)$",
+   "$S(-1;1)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $P(0;2)$: Ta được $\\begin{cases} -0+3(2)-2 = 4 \\ge 0 \\text{ (Đúng)} \\\\ 2(0)+2+1 = 3 > 0 \\text{ (Đúng)} \\end{cases}$.\nKiểm tra đáp án B với $Q(1;2)$: Ta được $\\begin{cases} -1+3(2)-2 = 3 \\ge 0 \\text{ (Đúng)} \\\\ 2(1)+2+1 = 5 > 0 \\text{ (Đúng)} \\end{cases}$.\nKiểm tra đáp án C với $R(0;1)$: Ta được $\\begin{cases} -0+3(1)-2 = 1 \\ge 0 \\text{ (Đúng)} \\\\ 2(0)+1+1 = 2 > 0 \\text{ (Đúng)} \\end{cases}$.\nKiểm tra đáp án D với $S(-1;1)$: Ta được $\\begin{cases} -(-1)+3(1)-2 = 2 \\ge 0 \\text{ (Đúng)} \\\\ 2(-1)+1+1 = 0 > 0 \\text{ (Sai)} \\end{cases}$.\n$\\\\Rightarrow$ Điểm $S$ không thuộc miền nghiệm.\nChọn D."
+ },
+ {
+  "ma_cau": "T110030101039",
+  "loai": "trac_nghiem",
+  "de": "Tính giá trị của biểu thức $K = \\cos 0^\\circ + \\sin 90^\\circ - \\tan 45^\\circ$.",
+  "lua_chon": [
+   "$K = 0$.",
+   "$K = 1$.",
+   "$K = 2$.",
+   "$K = 3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\cos 0^\\circ = 1$, $\\sin 90^\\circ = 1$, $\\tan 45^\\circ = 1$.\n$K = 1+1-1=1$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020202085",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ nào dưới đây có phần không tô đậm biểu diễn tập nghiệm của hệ bất phương trình sau?\nHệ bất phương trình: $ \\begin{cases} x-y<2 \\\\ x+y>-2 \\\\ y<2 \\end{cases} $",
+  "lua_chon": [
+   "A. Hình 1",
+   "B. Hình 2",
+   "C. Hình 3",
+   "D. Hình 4"
+  ],
+  "dap_an": "A",
+  "loi_giai": "- Đường thẳng $x-y=2$ đi qua $(2;0)$ và $(0;-2)$.\nThử $O(0;0) \\Rightarrow 0<2$ (đúng) $ \\Rightarrow $ lấy nửa chứa $O$.\n- Đường thẳng $x+y=-2$ đi qua $(-2;0)$ và $(0;-2)$.\nThử $O(0;0) \\Rightarrow 0>-2$ (đúng) $ \\Rightarrow $ lấy nửa chứa $O$.\n- Đường thẳng $y=2$. Thử $O(0;0) \\Rightarrow 0<2$ (đúng) $ \\Rightarrow $ lấy nửa dưới.\n- Đối chiếu với các hình vẽ, hình biểu diễn đúng miền nghiệm là Hình 1 (Đáp án A).",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110020202047",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x-2y \\le 4 \\\\ x-y \\ge -1\\end{cases}$",
+   "$\\begin{cases}2x+y < 4 \\\\ x-y > -1\\end{cases}$",
+   "$\\begin{cases}2x-y < 4 \\\\ x+y > -1\\end{cases}$",
+   "$\\begin{cases}x+2y \\ge 4 \\\\ 2x+y \\le -1\\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $2x-y=4$.\n+ $d_2$ có phương trình $x+y=-1$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>$, $<$.\n- Chọn điểm $M(0; 1)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $2x-y$: $0-1 = -1 < 4 \\Rightarrow 2x-y < 4$.\n+ Thay $M$ vào $x+y$: $0+1=1 > -1 \\Rightarrow x+y > -1$.\n- Vậy hệ bất phương trình đúng là C.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110030107014",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$, với $\\sin \\alpha + \\cos \\alpha = \\dfrac{4}{3}$. Tính giá trị của biểu thức $H = \\sin^3 \\alpha + \\cos^3 \\alpha - 5 \\sin \\alpha \\cos \\alpha + 2$.",
+  "lua_chon": [
+   "$H = \\dfrac{37}{54}$",
+   "$H = \\dfrac{47}{54}$",
+   "$H = -\\dfrac{61}{54}$",
+   "$H = -\\dfrac{15}{54}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa\ncó $\\sin \\alpha + \\cos \\alpha = \\dfrac{4}{3} \\Rightarrow (\\sin \\alpha + \\cos \\alpha)^2 = \\dfrac{16}{9} \\Leftrightarrow \\sin^2 \\alpha + \\cos^2 \\alpha + 2\\sin \\alpha.\\cos \\alpha = \\dfrac{16}{9} \\Rightarrow \\sin \\alpha.\\cos \\alpha = \\dfrac{7}{18}$\nSuy ra\n$H = \\sin^3 \\alpha + \\cos^3 \\alpha - 5\\sin \\alpha \\cos \\alpha + 2$\n$= (\\sin \\alpha + \\cos \\alpha)^3 - 3\\sin \\alpha.\\cos \\alpha (\\sin \\alpha + \\cos \\beta) - 5\\sin \\alpha.\\cos \\alpha + 2$\n$= \\left(\\dfrac{4}{3}\\right)^3 - 3.\\dfrac{7}{18}.\\dfrac{4}{3} - 5.\\dfrac{7}{18} + 2 = \\dfrac{47}{54}$"
+ },
+ {
+  "ma_cau": "T110020202053",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\left\\{\\begin{matrix}3x+y\\le 3\\\\x+y\\ge -2\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x+3y<3\\\\x-y>-2\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x-3y>3\\\\2x+y<-2\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}3x-y\\ge 3\\\\x+2y\\le -2\\end{matrix}\\right.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Lời giải chi tiết:\n- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $x+3y=3$.\n+ $d_2$ có phương trình $x-y=-2$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>$, $<$.\n- Chọn điểm $M(0;0)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $x+3y$: $0+0=0<3\\Rightarrow x+3y<3$.\n+ Thay $M$ vào $x-y$: $0-0=0>-2\\Rightarrow x-y>-2$.\n- Vậy hệ bất phương trình đúng là B.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110030106051",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\cos\\alpha = -\\dfrac{1}{3}$ với $90^\\circ < \\alpha < 180^\\circ$. Biểu thức $A = \\tan\\alpha + 4\\cot\\alpha$ có giá trị bằng",
+  "lua_chon": [
+   "$-3\\sqrt{2}$",
+   "$3\\sqrt{2}$",
+   "$-\\sqrt{2}$",
+   "$\\sqrt{2}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\sin^2\\alpha + \\cos^2\\alpha = 1 \\Leftrightarrow \\sin^2\\alpha = 1 - \\cos^2\\alpha = \\dfrac{8}{9}$\n$$\\Leftrightarrow \\left[\\begin{array}{l}\\sin\\alpha = \\dfrac{2\\sqrt{2}}{3}\\\\\n\\sin\\alpha = -\\dfrac{2\\sqrt{2}}{3}\\end{array}\\right.$$\nVì $90^\\circ < \\alpha < 180^\\circ \\Rightarrow \\sin\\alpha = \\dfrac{2\\sqrt{2}}{3} \\Rightarrow \\tan\\alpha = -2\\sqrt{2}$, $\\cot\\alpha = -\\dfrac{1}{2\\sqrt{2}}$.\nVậy $A = \\tan\\alpha + 4\\cot\\alpha = -2\\sqrt{2} - \\sqrt{2} = -3\\sqrt{2}$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110030101022",
+  "loai": "trac_nghiem",
+  "de": "Trên nửa đường tròn đơn vị cho điểm $M(x_0;y_0)$ sao cho $\\widehat{xOM} = \\alpha$, với $x_0 \\neq 0$. Khi đó giá trị lượng giác $\\tan\\alpha$ bằng",
+  "lua_chon": [
+   "$\\dfrac{x_0}{y_0}$",
+   "$\\dfrac{y_0}{x_0}$",
+   "$x_0$",
+   "$y_0$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{y_0}{x_0}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020203067",
+  "loai": "trac_nghiem",
+  "de": "Miền tam giác $ABC$kể cả ba cạnh sau đây là miền nghiệm của một hệ bất phương trình nào đó, điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình ấy?",
+  "lua_chon": [
+   "$\\left(3;1\\right)$.",
+   "$\\left(-4;1\\right)$.",
+   "$\\left(1;0\\right)$.",
+   "$\\left(5;-4\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát hình vẽ, miền nghiệm là miền tam giác $ABC$ kể cả ba cạnh với $A\\left(0;2\\right)$, $B\\left(2;0,4\\right)$ và $C\\left(0;-2\\right)$.\n- Cạnh $AC$ nằm trên trục tung $Oy$ với $x=0$ và $-2\\le y\\le 2$.\n- Phương trình đường thẳng $AB$ đi qua $A\\left(0;2\\right)$ và $B\\left(2;0,4\\right)$ là $y=-0,8x+2$.\n- Phương trình đường thẳng $BC$ đi qua $C\\left(0;-2\\right)$ và $B\\left(2;0,4\\right)$ là $y=1,2x-2$.\nDo đó miền tam giác $ABC$ được xác định bởi hệ bất phương trình\n$\\begin{cases} x\\ge 0 \\\\ y\\le -0,8x+2 \\\\ y\\ge 1,2x-2. \\end{cases}$\nKiểm tra các điểm đã cho:\n- Điểm $\\left(3;1\\right)$ có $x=3>2$ không thuộc miền tam giác.\n- Điểm $\\left(-4;1\\right)$ có $x=-4<0$ không thỏa mãn $x\\ge 0$.\n- Điểm $\\le …",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110030106030",
+  "loai": "trac_nghiem",
+  "de": "Cho góc nhọn $\\alpha$ có $\\sin\\alpha = \\dfrac{3}{5}$. Tính $\\cos\\alpha$.",
+  "lua_chon": [
+   "$\\cos\\alpha = \\dfrac{4}{5}$",
+   "$\\cos\\alpha = -\\dfrac{4}{5}$",
+   "$\\cos\\alpha = \\dfrac{16}{25}$",
+   "$\\cos\\alpha = \\dfrac{3}{4}"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\cos\\alpha = \\pm\\sqrt{1 - \\sin^2\\alpha} = \\pm\\sqrt{1 - \\dfrac{9}{25}} = \\pm\\dfrac{4}{5}$.\nMặt khác $\\alpha$ là góc nhọn nên $\\cos\\alpha > 0 \\Rightarrow \\cos\\alpha = \\dfrac{4}{5}$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110030105017",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\alpha \\ne 0^\\circ, 180^\\circ$. Giá trị của biểu thức $\\sin^2 \\alpha(1+\\cot^2 \\alpha)$ luôn bằng",
+  "lua_chon": [
+   "$\\sin^2 \\alpha$",
+   "$1$",
+   "$\\cos^2 \\alpha$",
+   "$\\cot^2 \\alpha$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $1+\\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha}$ nên $\\sin^2 \\alpha(1+\\cot^2 \\alpha)=1$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020203015",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}3x+y-5\\le0\\\\x-2y+1\\ge0\\end{cases}$?",
+  "lua_chon": [
+   "$M(2;3)$.",
+   "$N(0;2)$.",
+   "$P(-1;-1)$.",
+   "$Q(4;0)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $M(2;3)$: Ta được $\\begin{cases}3(2)+3-5=4\\le0\\\\2-2(3)+1=-3\\ge0\\end{cases}$ (Sai)\n$\\Rightarrow$ Điểm M không thuộc miền nghiệm.\nKiểm tra đáp án B với $N(0;2)$: Ta được $\\begin{cases}0+2-5=-3\\le0\\\\0-2(2)+1=-3\\ge0\\end{cases}$ (Sai)\n$\\Rightarrow$ Điểm N không thuộc miền nghiệm.\nKiểm tra đáp án C với $P(-1;-1)$: Ta được $\\begin{cases}3(-1)-1-5=-9\\le0\\\\-1-2(-1)+1=2\\ge0\\end{cases}$ (Đúng)\n$\\Rightarrow$ Điểm P thuộc miền nghiệm.\nKiểm tra đáp án D với $Q(4;0)$: Ta được $\\begin{cases}3(4)+0-5=7\\le0\\\\4-0+1=5\\ge0\\end{cases}$ (Sai)\n$\\Rightarrow$ Điểm Q không thuộc miền nghiệm.\nChọn C."
+ },
+ {
+  "ma_cau": "T110030103021",
+  "loai": "trac_nghiem",
+  "de": "Cho hai góc $\\alpha$ và $\\beta$ phụ nhau, tức là $\\alpha + \\beta = 90^\\circ$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\sin \\alpha = \\cos \\beta$.",
+   "$\\cos \\alpha = -\\sin \\beta$.",
+   "$\\tan \\alpha = -\\cot \\beta$.",
+   "$\\cot \\alpha = -\\tan \\beta$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\alpha + \\beta = 90^\\circ$ nên $\\beta = 90^\\circ - \\alpha$.\nDo đó $\\sin \\alpha = \\cos \\beta$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110020203006",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây không thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}x+y-2 \\le 0 \\\\ 2x-3y+6 > 0\\end{cases}$?",
+  "lua_chon": [
+   "A. $K(0;0)$.",
+   "B. $L(1;0)$.",
+   "C. $I(0;1)$.",
+   "D. $J(3;3)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $K(0;0)$: Ta được $\\begin{cases}0+0-2 = -2 \\le 0\\text{ (Đúng)} \\\\ 0-0+6 = 6 > 0\\text{ (Đúng)}\\end{cases}$\nKiểm tra đáp án B với $L(1;0)$: Ta được $\\begin{cases}1+0-2 = -1 \\le 0\\text{ (Đúng)} \\\\ 2(1)-0+6 = 8 > 0\\text{ (Đúng)}\\end{cases}$\nKiểm tra đáp án C với $I(0;1)$: Ta được $\\begin{cases}0+1-2 = -1 \\le 0\\text{ (Đúng)} \\\\ 0-3(1)+6 = 3 > 0\\text{ (Đúng)}\\end{cases}$\nKiểm tra đáp án D với $J(3;3)$: Ta được $\\begin{cases}3+3-2 = 4 \\le 0\\text{ (Sai)} \\\\ 2(3)-3(3)+6 = 3 > 0\\text{ (Đúng)}\\end{cases}$\n$\\Rightarrow$ Điểm $J$ không thuộc miền nghiệm.\nChọn D."
+ },
+ {
+  "ma_cau": "T110030106090",
+  "loai": "trac_nghiem",
+  "de": "Cho biết $\\cos \\alpha =-\\dfrac{2}{3}$. Tính $\\tan \\alpha$?",
+  "lua_chon": [
+   "$\\dfrac{5}{4}$.",
+   "$\\dfrac{\\sqrt{5}}{2}$.",
+   "$-\\dfrac{\\sqrt{5}}{2}$.",
+   "$-\\dfrac{5}{2}$."
+  ],
+  "loi_giai": "Với $0^\\circ\\le \\alpha \\le 180^\\circ$, vì $\\cos \\alpha =-\\dfrac{2}{3}<0$ nên $\\alpha \\in (90^\\circ;180^\\circ]$, do đó $\\sin \\alpha >0$.\nÁp dụng hằng đẳng thức $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$, ta có\n$\\sin ^{2}\\alpha =1-\\cos ^{2}\\alpha =1-\\left(-\\dfrac{2}{3}\\right)^{2}=1-\\dfrac{4}{9}=\\dfrac{5}{9}.$\nVì $\\sin \\alpha >0$ nên $\\sin \\alpha =\\dfrac{\\sqrt{5}}{3}$.\nSuy ra\n$\\tan \\alpha =\\dfrac{\\sin \\alpha }{\\cos \\alpha }=\\dfrac{\\dfrac{\\sqrt{5}}{3}}{-\\dfrac{2}{3}}=-\\dfrac{\\sqrt{5}}{2}.$\nVậy $\\tan \\alpha =-\\dfrac{\\sqrt{5}}{2}$."
+ },
+ {
+  "ma_cau": "T110010203056",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $\\mathbb{R}$ sau:\n$A = \\{ x \\in \\mathbb{R} | 1 < x \\le 5 \\}$ và $B = \\{ x \\in \\mathbb{R} | -1 \\le x \\le 3 \\}$.\nXác định $A \\cup B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[-1; 5]$",
+  "loi_giai": "Ta có: $A = (1; 5]$ và $B = [-1; 3]$.\nHợp của hai tập hợp $A$ và $B$ là tập gồm các phần tử thuộc $A$ hoặc thuộc $B$.\nDo đó: $A \\cup B = [-1; 5]$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9ab0cdb7-c9b6-43b4-b72b-252b4bd5ece9.png)"
+ },
+ {
+  "ma_cau": "T110030107054",
+  "loai": "trac_nghiem",
+  "de": "Với $\\alpha \\ne 0^{\\circ}; 90^{\\circ}; 180^{\\circ}$, biểu thức $(\\tan \\alpha - \\cot \\alpha)^2$ bằng",
+  "lua_chon": [
+   "$\\tan^2 \\alpha - \\cot^2 \\alpha$",
+   "$\\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha} - 4$",
+   "$\\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha}$",
+   "$\\dfrac{1}{\\sin^2 \\alpha} - \\dfrac{1}{\\cos^2 \\alpha}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $(\\tan \\alpha - \\cot \\alpha)^2 = \\tan^2 \\alpha + \\cot^2 \\alpha - 2 \\tan \\alpha \\cot \\alpha = \\left(\\dfrac{1}{\\cos^2 \\alpha} - 1\\right) + \\left(\\dfrac{1}{\\sin^2 \\alpha} - 1\\right) - 2$\n$= \\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha} - 4$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020202077",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ nào dưới đây có phần không tô đậm biểu diễn tập nghiệm của hệ bất phương trình sau?\nHệ bất phương trình:\n$$\\begin{cases} 2x+y<4 \\\\ x-2y>-2 \\end{cases}$$",
+  "lua_chon": [
+   "Hình 1",
+   "Hình 2",
+   "Hình 3",
+   "Hình 4"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Vẽ đường thẳng nét đứt $d_1: 2x+y=4$ đi qua $(2;0)$ và $(0;4)$.\n- Thử $O(0;0)$: $0<4$ (đúng) $\\Rightarrow$ lấy phần chứa $O$.\n- Vẽ đường thẳng nét đứt $d_2: x-2y=-2$ đi qua $(-2;0)$ và $(0;1)$.\n- Thử $O(0;0)$: $0>-2$ (đúng) $\\Rightarrow$ lấy phần chứa $O$.\n- Đối chiếu với các hình vẽ, hình biểu diễn đúng miền nghiệm là Hình 2 (Đáp án B).",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110020203028",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}4x - y + 2 \\ge 0\\\\x - 2y < 0 \\\\x + y > 0 \\end{cases}$?",
+  "lua_chon": [
+   "$M(-1;0)$",
+   "N $(0;-1)$",
+   "P $(1;2)$",
+   "Q $(-2;-3)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $M(-1;0)$: Ta được $\\begin{cases} -4 - 0 + 2 = -2 \\ge 0 \\text{ (Sai)}\\\\ -1 - 0 = -1 < 0 \\text{ (Đúng)}\\\\ -1 + 0 = -1 > 0 \\text{ (Sai)}\\end{cases}$.\n$\\Rightarrow$ Điểm $M$ không thuộc miền nghiệm.\nKiểm tra đáp án B với $N(0;-1)$: Ta được $\\begin{cases} 0 + 1 + 2 = 3 \\ge 0 \\text{ (Đúng)}\\\\ 0 + 2 = 2 < 0 \\text{ (Sai)}\\\\ 0 - 1 = -1 > 0 \\text{ (Sai)}\\end{cases}$.\n$\\Rightarrow$ Điểm $N$ không thuộc miền nghiệm.\nKiểm tra đáp án C với $P(1;2)$: Ta được $\\begin{cases} 4 - 2 + 2 = 4 \\ge 0 \\text{ (Đúng)}\\\\ 1 - 4 = -3 < 0 \\text{ (Đúng)}\\\\ 1 + 2 = 3 > 0 \\text{ (Đúng)}\\end{cases}$.\n$\\Rightarrow$ Điểm  …"
+ },
+ {
+  "ma_cau": "T110030106083",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là góc tù và $\\tan \\alpha = -2$. Giá trị của $E = 5 \\sin \\alpha \\cos \\alpha$ bằng",
+  "lua_chon": [
+   "2",
+   "$-2$",
+   "$-10$",
+   "10"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + (-2)^2} = \\dfrac{1}{5}$.\nVì $\\alpha$ là góc tù $\\Rightarrow \\cos \\alpha < 0 \\Rightarrow \\cos \\alpha = -\\dfrac{1}{\\sqrt{5}} = -\\dfrac{\\sqrt{5}}{5} \\Rightarrow \\sin \\alpha = \\tan \\alpha \\cdot \\cos \\alpha = -2 \\cdot \\left(-\\dfrac{\\sqrt{5}}{5}\\right) = \\dfrac{2\\sqrt{5}}{5}$.\nVậy $E = 5 \\cdot \\dfrac{2\\sqrt{5}}{5} \\cdot \\left(-\\dfrac{\\sqrt{5}}{5}\\right) = 5 \\cdot \\dfrac{-2 \\cdot 5}{25} = 5 \\cdot \\dfrac{-10}{25} = 5 \\cdot \\left(-\\dfrac{2}{5}\\right) = -2$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110010203048",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau: $A = \\{x \\in R|x \\le 2\\}$ và $B = \\{x \\in R|-3 \\le x < 5\\}$. Xác định $A \\cap B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[-3;2]$",
+  "loi_giai": "Ta có: $A = (-\\infty;2]$ và $B = [-3;5)$.\nGiao của hai tập hợp $A$ và $B$ là tập gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nDo đó: $A \\cap B = [-3;2]$."
+ },
+ {
+  "ma_cau": "T110030106073",
+  "loai": "trac_nghiem",
+  "de": "Nếu $\\tan \\alpha = -\\dfrac{5}{12}$ ($0^\\circ \\leq \\alpha \\leq 180^\\circ$) thì $\\cos \\alpha$ bằng bao nhiêu?",
+  "lua_chon": [
+   "$\\dfrac{12}{13}$",
+   "$-\\dfrac{12}{13}$",
+   "$\\dfrac{5}{13}$",
+   "$\\dfrac{144}{169}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + \\left(-\\dfrac{5}{12}\\right)^2} = \\dfrac{144}{169}$.\nSuy ra $\\cos \\alpha = \\pm \\dfrac{12}{13}$.\nVới $0^\\circ \\leq \\alpha \\leq 180^\\circ \\Rightarrow \\sin \\alpha > 0$ và $\\tan \\alpha = -\\dfrac{5}{12} \\Rightarrow \\cos \\alpha < 0$.\nVậy $\\cos \\alpha = -\\dfrac{12}{13}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020202037",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x+2y>4\\\\2x-y \\le -2\\end{cases}$",
+   "$\\begin{cases}2x+y<4\\\\x-2y>-2\\end{cases}$",
+   "$\\begin{cases}2x-y \\ge 4\\\\x+2y \\le -2\\end{cases}$",
+   "$\\begin{cases}x+y<2\\\\2x-2y>-2\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $2x+y=4$.\n+ $d_2$ có phương trình $x-2y=-2$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(0;0)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $2x+y$: $0+0=0<4 \\implies 2x+y<4$.\n+ Thay $M$ vào $x-2y$: $0-0=0>-2 \\implies x-2y>-2$.\n- Vậy hệ bất phương trình đúng là B.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110030106046",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\cos\\alpha = -\\dfrac{1}{3}$ và $\\alpha$ là góc tù. Tính $\\cot\\alpha$.",
+  "lua_chon": [
+   "$\\cot\\alpha = \\dfrac{\\sqrt{2}}{4}$",
+   "$\\cot\\alpha = -\\dfrac{\\sqrt{2}}{4}$",
+   "$\\cot\\alpha = -2\\sqrt{2}$",
+   "$\\cot\\alpha = 2\\sqrt{2}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\sin\\alpha = \\pm\\sqrt{1 - \\cos^2\\alpha} = \\pm\\sqrt{1 - \\dfrac{1}{9}} = \\pm\\dfrac{2\\sqrt{2}}{3}$.\nMặt khác $\\alpha$ là góc tù nên $\\sin\\alpha > 0 \\Rightarrow \\sin\\alpha = \\dfrac{2\\sqrt{2}}{3}$.\nSuy ra $\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha} = \\dfrac{-\\dfrac{1}{3}}{\\dfrac{2\\sqrt{2}}{3}} = -\\dfrac{1}{2\\sqrt{2}} = -\\dfrac{\\sqrt{2}}{4}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110030102011",
+  "loai": "trac_nghiem",
+  "de": "Góc $\\alpha$ thỏa mãn $0^\\circ < \\alpha < 90^\\circ$. Phát biểu nào sau đây về dấu của các giá trị lượng giác là đúng?",
+  "lua_chon": [
+   "$\\cot \\alpha > 0$.",
+   "$\\cos \\alpha < 0$.",
+   "$\\sin \\alpha < 0$.",
+   "$\\tan \\alpha < 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $0^\\circ < \\alpha < 90^\\circ$ nên $\\alpha$ thuộc góc phần tư I, do đó $\\sin \\alpha > 0$, $\\cos \\alpha > 0$, $\\tan \\alpha > 0$, $\\cot \\alpha > 0$.\nA. $\\cot \\alpha > 0$ là đúng.\nB. $\\cos \\alpha < 0$ là sai.\nC. $\\sin \\alpha < 0$ là sai.\nD. $\\tan \\alpha < 0$ là sai.\nChọn A."
+ },
+ {
+  "ma_cau": "T110030103005",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thỏa mãn $90^\\circ < \\alpha < 180^\\circ$. Trong các đẳng thức sau đây, đẳng thức nào sai?",
+  "lua_chon": [
+   "$\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$.",
+   "$\\cot(180^\\circ - \\alpha) = \\cot \\alpha$.",
+   "$\\sin(180^\\circ - \\alpha) = \\sin \\alpha$.",
+   "$\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$.  "
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$, $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$, $\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$, $\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$.\nA. Đúng.\nB. Sai.\nC. Đúng.\nD. Đúng.\nChọn B."
+ },
+ {
+  "ma_cau": "T110010203062",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch trong hình vẽ sau đây là biểu diễn của tập hợp nào?",
+  "lua_chon": [
+   "$[2;4)$",
+   "$(2;4]$",
+   "$[2;4]$",
+   "$(2;4)$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T110030105037",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha \\neq 0^{\\circ}$; $180^{\\circ}$. Giá trị của biểu thức $M = (1 + \\cot^2 \\alpha) \\sin^2 \\alpha$ là",
+  "lua_chon": [
+   "1.",
+   "0.",
+   "$\\sin^2 \\alpha$.",
+   "$1 + \\sin^2 \\alpha$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Thay $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha}$ ta được $M = \\dfrac{1}{\\sin^2 \\alpha} \\cdot \\sin^2 \\alpha = 1$. Chọn A."
+ },
+ {
+  "ma_cau": "T110010206001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp khác rỗng $A = [m + 1; 2m - 1]$ và $B = (0; 6)$. Có bao nhiêu giá trị $m$ nguyên để $A \\subset B$?",
+  "dap_an": "2",
+  "loi_giai": "Để tập hợp $A$ khác rỗng:\n$m + 1 \\le 2m - 1 \\Leftrightarrow m \\ge 2$\nĐể $A \\subset B$:\n$\\begin{cases} m + 1 > 0 \\\\ 2m - 1 < 6 \\end{cases} \\Leftrightarrow \\begin{cases} m > -1 \\\\ m < \\dfrac{7}{2} \\end{cases} \\Leftrightarrow -1 < m < \\dfrac{7}{2}$\nKết hợp điều kiện $m \\ge 2$, ta được:\n$2 \\le m < \\dfrac{7}{2}$\nVì $m \\in \\mathbb{Z} \\Rightarrow m \\in \\{2; 3\\}$.\nVậy có $2$ giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán."
+ },
+ {
+  "ma_cau": "T110030105010",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha \\ne 0^\\circ, 90^\\circ, 180^\\circ$. Trong các đẳng thức dưới đây, đẳng thức nào sai?",
+  "lua_chon": [
+   "$\\tan\\alpha \\cdot \\cot\\alpha = 1$.",
+   "$\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$.",
+   "$\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$.",
+   "$\\sin^2\\alpha + \\cos^2\\alpha = 1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$.\nVậy đẳng thức sai là B.\nChọn B."
+ },
+ {
+  "ma_cau": "T110020203044",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây không thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}x+y>1\\\\x-2y<2\\\\x+2y>0\\end{cases}$?",
+  "lua_chon": [
+   "$I(1;1)$.",
+   " $J(2;1)$.",
+   " $K(0;2)$.",
+   " $L(0;0)."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $I(1;1)$: Ta được $\\begin{cases}1+1=2>1\\ (Đúng)\\\\1-2=-1<2\\ (Đúng)\\\\1+2=3>0\\ (Đúng)\\end{cases}$\n$\\Rightarrow$ Điểm $I$ thuộc miền nghiệm.\nKiểm tra đáp án B với $J(2;1)$: Ta được $\\begin{cases}2+1=3>1\\ (Đúng)\\\\2-2=0<2\\ (Đúng)\\\\2+2=4>0\\ (Đúng)\\end{cases}$\n$\\Rightarrow$ Điểm $J$ thuộc miền nghiệm.\nKiểm tra đáp án C với $K(0;2)$: Ta được $\\begin{cases}0+2=2>1\\ (Đúng)\\\\0-4=-4<2\\ (Đúng)\\\\0+4=4>0\\ (Đúng)\\end{cases}$\n$\\Rightarrow$ Điểm $K$ thuộc miền nghiệm.\nKiểm tra đáp án D với $L(0;0)$: Ta được $\\begin{cases}0+0=0>1\\ (Sai)\\\\0-0=0<2\\ (Đúng)\\\\0+0=0>0\\ (Sai)\\end{cases}$\n$\\Rightarrow$ Điểm $L$ khô …"
+ },
+ {
+  "ma_cau": "T110010205013",
+  "loai": "tra_loi_ngan",
+  "de": "Một câu lạc bộ thể thao có các thành viên tham gia ba môn: Bóng đá, Cầu lông và Bơi lội. Thống kê cho thấy có 12 người tham gia cả Bóng đá và Cầu lông, 9 người tham gia cả Cầu lông và Bơi lội, 10 người tham gia cả Bóng đá và Bơi lội, và có 4 người tham gia cả ba môn. Hỏi có bao nhiêu thành viên tham gia đúng 2 môn thể thao?",
+  "dap_an": "19",
+  "loi_giai": "Gọi $A, B, C$ lần lượt là tập hợp các thành viên chơi Bóng đá, Cầu lông, Bơi lội.\nTheo đề bài:\n$n(A \\cap B) = 12, n(B \\cap C) = 9, n(A \\cap C) = 10$\n$n(A \\cap B \\cap C) = 4$\nSố thành viên chỉ tham gia đúng 2 môn là:\n$N = [n(A \\cap B) - n(A \\cap B \\cap C)] + [n(B \\cap C) - n(A \\cap B \\cap C)] + [n(A \\cap C) - n(A \\cap B \\cap C)]$\n$\\Rightarrow N = (12 - 4) + (9 - 4) + (10 - 4) = 8 + 5 + 6 = 19$\nVậy có 19 thành viên tham gia đúng 2 môn."
+ },
+ {
+  "ma_cau": "T110030107044",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của biểu thức $A = \\cos^2 20^\\circ + \\cos^2 35^\\circ + \\cos^2 70^\\circ + \\cos^2 55^\\circ$ là",
+  "lua_chon": [
+   "2",
+   "4",
+   "1",
+   "0"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\cos 70^\\circ = \\sin 20^\\circ$, $\\cos 55^\\circ = \\sin 35^\\circ$.\nSuy ra $A = (\\cos^2 20^\\circ + \\sin^2 20^\\circ) + (\\cos^2 35^\\circ + \\sin^2 35^\\circ) = 1 + 1 = 2$.\nChọn A."
+ },
+ {
+  "ma_cau": "T110020203043",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây không thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} -x+2y-2 \\le 0 \\\\ 2x+y+1 > 0 \\\\ y \\le 2 \\end{cases}$?",
+  "lua_chon": [
+   "$M(0;0)$",
+   "$N(1;1)$",
+   "$P(-1;3)$",
+   "$Q(2;2)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $M(0;0)$: Ta được $\\begin{cases} -(0)+2(0)-2 = -2 \\le 0 \\text{ (Đúng)} \\\\ 2(0)+(0)+1 = 1 > 0 \\text{ (Đúng)} \\\\ 0 \\le 2 \\text{ (Đúng)} \\end{cases}$.\n$\\Rightarrow$ Điểm $M$ thuộc miền nghiệm.\nKiểm tra đáp án B với $N(1;1)$: Ta được $\\begin{cases} -(1)+2(1)-2 = -1 \\le 0 \\text{ (Đúng)} \\\\ 2(1)+(1)+1 = 4 > 0 \\text{ (Đúng)} \\\\ 1 \\le 2 \\text{ (Đúng)} \\end{cases}$.\n$\\Rightarrow$ Điểm $N$ thuộc miền nghiệm.\nKiểm tra đáp án C với $P(-1;3)$: Ta được $\\begin{cases} -(-1)+2(3)-2 = 5 \\le 0 \\text{ (Sai)} \\\\ 2(-1)+(3)+1 = 2 > 0 \\text{ (Đúng)} \\\\ 3 \\le 2 \\text{ (Sai)} \\end{cases}$.\n$\\Rightarrow$ Điểm $P$ …"
+ },
+ {
+  "ma_cau": "T110020203017",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} -2x + 5y - 1 > 0 \\\\ 3x + 2y - 4 < 0 \\end{cases}$?",
+  "lua_chon": [
+   "$X(-1;1)$",
+   "$Y(1;0)$",
+   "$Z(2;2)$",
+   "$W(0;0)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $X(-1;1)$: Ta được $\\begin{cases} -2(-1) + 5(1) - 1 = 6 > 0 \\text{ (Đúng)} \\\\ 3(-1) + 2(1) - 4 = -5 < 0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $X$ thuộc miền nghiệm.\nKiểm tra đáp án B với $Y(1;0)$: Ta được $\\begin{cases} -2(1) + 0 - 1 = -3 > 0 \\text{ (Sai)} \\\\ 3(1) + 0 - 4 = -1 < 0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $Y$ không thuộc miền nghiệm.\nKiểm tra đáp án C với $Z(2;2)$: Ta được $\\begin{cases} -2(2) + 5(2) - 1 = 5 > 0 \\text{ (Đúng)} \\\\ 3(2) + 2(2) - 4 = 6 < 0 \\text{ (Sai)} \\end{cases}$\n$\\Rightarrow$ Điểm $Z$ không thuộc miền nghiệm.\nKiểm tra đáp án D với $W(0;0)$ …"
+ },
+ {
+  "ma_cau": "T110030106061",
+  "loai": "trac_nghiem",
+  "de": "Cho góc nhọn $\\alpha$ có $\\tan \\alpha = \\dfrac{1}{2}$. Giá trị của $\\sin \\alpha$ là",
+  "lua_chon": [
+   "$\\dfrac{2\\sqrt{5}}{5}$",
+   "$-\\dfrac{\\sqrt{5}}{5}$",
+   "$\\dfrac{\\sqrt{5}}{5}$",
+   "$\\pm \\dfrac{\\sqrt{5}}{5}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + \\left(\\dfrac{1}{2}\\right)^2} = \\dfrac{4}{5}$.\nSuy ra $\\cos \\alpha = \\pm \\dfrac{2\\sqrt{5}}{5}$.\nVì $\\alpha$ là góc nhọn $\\Rightarrow \\cos \\alpha > 0$.\nDo đó $\\cos \\alpha = \\dfrac{2\\sqrt{5}}{5}$. Vậy $\\sin \\alpha = \\tan \\alpha \\cdot \\cos \\alpha = \\dfrac{\\sqrt{5}}{5}$.\nChọn C."
+ }
+]

@@ -1,0 +1,55 @@
+[
+ {
+  "ma_cau": "T110030106086",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\sin \\alpha =\\dfrac{1}{3}$ với $90^\\circ<\\alpha <180^\\circ$. Tính $\\tan \\alpha =-\\dfrac{\\sqrt{a}}{b}$ thì $T=a^{2}+b^{2}$ bằng bao nhiêu?",
+  "dap_an": "20",
+  "loi_giai": "Vì $90^\\circ<\\alpha <180^\\circ$ nên $\\cos \\alpha <0$.\nTừ $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$ ta có\n$\\cos ^{2}\\alpha =1-\\left(\\dfrac{1}{3}\\right)^{2}=\\dfrac{8}{9} \\Rightarrow \\cos \\alpha =-\\dfrac{2\\sqrt{2}}{3}.$\nDo đó\n$\\tan \\alpha =\\dfrac{\\sin \\alpha }{\\cos \\alpha }=\\dfrac{\\dfrac{1}{3}}{-\\dfrac{2\\sqrt{2}}{3}}=-\\dfrac{1}{2\\sqrt{2}}=-\\dfrac{\\sqrt{2}}{4}.$\nSo sánh với dạng $\\tan \\alpha =-\\dfrac{\\sqrt{a}}{b}$ ta được $a=2$ và $b=4$.\nVậy $T=a^{2}+b^{2}=2^{2}+4^{2}=4+16=20$."
+ },
+ {
+  "ma_cau": "T110030105007",
+  "loai": "trac_nghiem",
+  "de": "Chọn biểu thức thích hợp để hoàn thành đẳng thức $1+\\mathrm{cot}^2 \\alpha =\\ldots\\left(\\alpha \\neq 0^{\\circ}, 180^{\\circ}\\right)$.",
+  "lua_chon": [
+   "$\\dfrac{1}{\\cos ^2 \\alpha}$",
+   "$\\dfrac{1}{\\tan ^2 \\alpha}$",
+   "$\\dfrac{1}{\\sin ^2 \\alpha}$",
+   "$\\dfrac{1}{\\mathrm{cot}^2 \\alpha}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $1+\\mathrm{cot}^2 \\alpha =\\dfrac{1}{\\sin ^2 \\alpha}$.\nChọn C."
+ },
+ {
+  "ma_cau": "T110030107061",
+  "loai": "trac_nghiem",
+  "de": "Với $\\alpha \\neq 0^{\\circ}; 90^{\\circ}; 180^{\\circ}$, giá trị của biểu thức $N = (1 + \\tan^2 \\alpha) \\cos^2 \\alpha + (1 + \\cot^2 \\alpha) \\sin^2 \\alpha$ là",
+  "lua_chon": [
+   "1",
+   "2",
+   "0",
+   "3"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $N = \\dfrac{1}{\\cos^2 \\alpha} \\cdot \\cos^2 \\alpha + \\dfrac{1}{\\sin^2 \\alpha} \\cdot \\sin^2 \\alpha = 1 + 1 = 2$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110030106075",
+  "loai": "trac_nghiem",
+  "de": "Biết $90^{\\circ} < \\alpha < 180^{\\circ}$ và $\\tan \\alpha = -2\\sqrt{2}$. Giá trị của $\\sin \\alpha$ là",
+  "lua_chon": [
+   "$-\\dfrac{2\\sqrt{2}}{3}$",
+   "$\\dfrac{2\\sqrt{2}}{3}$",
+   "$\\dfrac{1}{3}$",
+   "$\\dfrac{8}{9}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $1+\\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1+\\tan^2 \\alpha} = \\dfrac{1}{1+(-2\\sqrt{2})^2} = \\dfrac{1}{9}$.\nSuy ra $\\cos \\alpha = \\pm\\dfrac{1}{3}$.\nVị $90^{\\circ} < \\alpha < 180^{\\circ} \\Rightarrow \\cos \\alpha < 0$.\nDo đó $\\cos \\alpha = -\\dfrac{1}{3}$. Vậy $\\sin \\alpha = \\tan \\alpha \\cdot \\cos \\alpha = -2\\sqrt{2} \\cdot \\left(-\\dfrac{1}{3}\\right) = \\dfrac{2\\sqrt{2}}{3}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T110030104013",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\sin x = 0.3$. Tính giá trị biểu thức $T = \\cos(90^\\circ - x) + \\sin(180^\\circ - x)$.",
+  "dap_an": "0.6",
+  "loi_giai": "Vì $x$ và $90^\\circ - x$ là hai góc phụ nhau nên $\\cos(90^\\circ - x) = \\sin x$.\nVì $x$ và $180^\\circ - x$ là hai góc bù nhau nên $\\sin(180^\\circ - x) = \\sin x$.\n$T = \\sin x + \\sin x = 2 \\sin x = 2 \\cdot 0.3 = 0.6$."
+ }
+]

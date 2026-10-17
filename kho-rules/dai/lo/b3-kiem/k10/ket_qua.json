@@ -1,0 +1,3552 @@
+[
+ {
+  "ma_cau": "T110030106097",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin, tính tan bằng hệ thức cơ bản và xét dấu.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203038",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110010203077",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020202042",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203009",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình hai ẩn.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107045",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Biểu thức không biến, ghép góc phụ nhau và dùng sin²+cos²=1.",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030107042",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106002",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính biểu thức chứa tan, cot của góc đó.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203064",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030103017",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Hệ thức đúng giữa hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030107049",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tổng sin² các góc đặc biệt, ghép cặp góc phụ nhau.",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030102024",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030107058",
+  "may": "NDB00563",
+  "chac": "vua",
+  "ly_do": "Rút gọn biểu thức bằng tan·cot=1; cũng có thể xếp nhận diện hệ thức cơ bản (NDB00557).",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203063",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203037",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020102018",
+  "may": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của một bất phương trình bậc nhất hai ẩn.",
+  "hien": "NDB00539",
+  "nguon": "gan_cum",
+  "cum": "DCUM01311",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030106034",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030103010",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Chọn hệ thức đúng của hai góc bù nhau 180°−α.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030104014",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa cos(90°−α), sin(180°−α) bằng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110020203049",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203048",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106101",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính sin bằng hệ thức cơ bản.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106008",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010206013",
+  "may": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để A giao B khác rỗng.",
+  "hien": "NDB00537",
+  "nguon": "gan_cum",
+  "cum": "DCUM01308",
+  "dang_cu": "T110010206"
+ },
+ {
+  "ma_cau": "T110030107015",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính biểu thức chứa cos², tan² của góc đó.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030105008",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản sai.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030106062",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203065",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105034",
+  "may": "NDB00563",
+  "chac": "vua",
+  "ly_do": "Rút gọn biểu thức bằng tan·cot=1; cũng có thể xếp nhận diện hệ thức cơ bản (NDB00557).",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020102030",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030106055",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và góc tù, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030107043",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203047",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203051",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110010203076",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203056",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203041",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203080",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203034",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030101003",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính giá trị lượng giác các góc đặc biệt để tìm đẳng thức sai.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030106102",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106038",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc nhọn, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203082",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107004",
+  "may": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính sin⁴+cos⁴ qua bình phương tổng.",
+  "hien": "NDB00560",
+  "nguon": "gan_cum",
+  "cum": "DCUM01558",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030103023",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Hệ thức đúng giữa hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110010203072",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203058",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107064",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106006",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính biểu thức chứa tan, cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106037",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cos và tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020102034",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030106098",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106050",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203042",
+  "may": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tìm hiệu A\\B của hai tập hợp dạng khoảng.",
+  "hien": "NDB00521",
+  "nguon": "gan_cum",
+  "cum": "DCUM01295",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030107011",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030101009",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110020203086",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn cặp số không là nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203040",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105035",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng theo hệ thức lượng giác cơ bản.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030103024",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Nhận định không chính xác về hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020203021",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020202055",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030101010",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng theo giá trị lượng giác của 150°.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110010204047",
+  "may": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Tìm số người chỉ mua đúng một trong hai loại (tổng A\\B và B\\A), hơi khác mô tả NDB00528.",
+  "hien": "NDB00528",
+  "nguon": "gan_cum",
+  "cum": "DCUM01403",
+  "dang_cu": "T110010204"
+ },
+ {
+  "ma_cau": "T110030106052",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020102037",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030107062",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106012",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102007",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110010203051",
+  "may": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao A∩B của hai tập hợp.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020202038",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106068",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203067",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030105021",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức tan·cot=1.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030103007",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng của hai góc bù nhau 180°−α.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110010203060",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030103020",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Phát biểu không đúng về hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030102012",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030104030",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa sin(90°−β), cos(180°−β) bằng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110030106080",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020102012",
+  "may": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho sẵn bất phương trình, chọn miền nghiệm của nó.",
+  "hien": "NDB00538",
+  "nguon": "gan_cum",
+  "cum": "DCUM01305",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030107002",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Biểu thức không biến, ghép góc phụ nhau (51°+39°, 55°+35°).",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203050",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107066",
+  "may": "NDB00890",
+  "chac": "vua",
+  "ly_do": "Cho tan+cot, tìm cos; gần dạng cho một giá trị lượng giác nhưng giả thiết không phải một giá trị đơn.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106020",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106078",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102004",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110020203023",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030103002",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng của hai góc bù nhau 180°−x.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110010203052",
+  "may": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao A∩B của hai tập hợp.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030107050",
+  "may": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính sin⁴+cos⁴ qua bình phương tổng.",
+  "hien": "NDB00560",
+  "nguon": "gan_cum",
+  "cum": "DCUM01558",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203073",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107047",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tổng sin² các góc từ 1° đến 89°, ghép cặp góc phụ nhau.",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203042",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030101024",
+  "may": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Cho tọa độ điểm M trên nửa đường tròn đơn vị, tìm sin.",
+  "hien": "NDB00549",
+  "nguon": "gan_cum",
+  "cum": "DCUM01478",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110020203012",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030104017",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa cos(90°−x), sin(180°−x) bằng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110020202054",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203036",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020102038",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110010204030",
+  "may": "NDB00529",
+  "chac": "cao",
+  "ly_do": "Tính số học sinh không đăng ký môn nào trong hai môn.",
+  "hien": "NDB00529",
+  "nguon": "gan_cum",
+  "cum": "DCUM01404",
+  "dang_cu": "T110010204"
+ },
+ {
+  "ma_cau": "T110030106091",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203068",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106005",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106096",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030101008",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110010203069",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203020",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203057",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105027",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cot=1/tan.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030106085",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan và góc nhọn, tính biểu thức chứa sin, cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030101002",
+  "may": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Định nghĩa tan theo tọa độ điểm M trên nửa đường tròn đơn vị.",
+  "hien": "NDB00549",
+  "nguon": "gan_cum",
+  "cum": "DCUM01478",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110010203001",
+  "may": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao A∩B của hai khoảng/đoạn.",
+  "hien": "NDB00519",
+  "nguon": "gan_cum",
+  "cum": "DCUM01292",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106017",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020201017",
+  "may": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ không phải hệ bất phương trình bậc nhất hai ẩn.",
+  "hien": "NDB00543",
+  "nguon": "gan_cum",
+  "cum": "DCUM01310",
+  "dang_cu": "T110020201"
+ },
+ {
+  "ma_cau": "T110030106059",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106066",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030107060",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng biến đổi tự do, không thuộc dạng cố định.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030102027",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110010203065",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030104029",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa cos(90°−α), sin(180°−α) bằng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110030106077",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan và góc nhọn, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030103022",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030101035",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030102026",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110020203007",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203066",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi miền nghiệm của hệ không chứa điểm nào, thử điểm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105012",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cơ bản của cot².",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020202052",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203016",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105015",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức lượng giác cơ bản không đúng.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030105023",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+cot²α=1/sin²α.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030103019",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Đẳng thức sai về hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110010204036",
+  "may": "NDB00527",
+  "chac": "cao",
+  "ly_do": "Tìm số phần tử của một tập hợp n(A) khi biết n(A∪B), n(B), n(A∩B).",
+  "hien": "NDB00527",
+  "nguon": "gan_cum",
+  "cum": "DCUM01287",
+  "dang_cu": "T110010204"
+ },
+ {
+  "ma_cau": "T110030106054",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính biểu thức chứa cos, tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030101034",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030107009",
+  "may": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Khai triển (sin+cos)² giống ví dụ nhận diện hệ thức, nhưng cũng có thể xếp rút gọn biểu thức khác (NDB00563).",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020202083",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030105003",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản đúng.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110010203049",
+  "may": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp A∪B của hai tập hợp.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203022",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110010205007",
+  "may": "NDB00531",
+  "chac": "cao",
+  "ly_do": "Bài toán 3 tập hợp, tính tổng số phần tử thuộc ít nhất một tập.",
+  "hien": "NDB00531",
+  "nguon": "gan_cum",
+  "cum": "DCUM01289",
+  "dang_cu": "T110010205"
+ },
+ {
+  "ma_cau": "T110020102032",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110020202046",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203068",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106019",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính biểu thức chứa sin², cos².",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030103014",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Chọn hệ thức đúng của hai góc bù nhau 180°−α.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020102036",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110020203076",
+  "may": "NDB00885",
+  "chac": "vua",
+  "ly_do": "Điểm A thuộc miền nghiệm của hệ chứa tham số m, tìm khoảng m; bản đồ thiếu dạng có tham số.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107046",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Biểu thức không biến, ghép các góc phụ nhau.",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106074",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106011",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203036",
+  "may": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao A∩B của hai tập hợp dạng đoạn/nửa khoảng.",
+  "hien": "NDB00519",
+  "nguon": "gan_cum",
+  "cum": "DCUM01292",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030107039",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106076",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot và góc nhọn, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030103004",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng của hai góc bù nhau 180°−x.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030102016",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110010203007",
+  "may": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp A∪B của hai tập hợp.",
+  "hien": "NDB00520",
+  "nguon": "gan_cum",
+  "cum": "DCUM01293",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020202049",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203055",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030103008",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề đúng của hai góc bù nhau 180°−α.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020203031",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030101038",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110020203002",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106035",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203035",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020202051",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030105002",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức đúng của cot α.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020202048",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203081",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn cặp số không là nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105032",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cơ bản của cot².",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030106092",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020202043",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho miền nghiệm, chọn hệ; các đáp án khác hệ số nên phải lập phương trình đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106036",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105016",
+  "may": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Điền biểu thức thiếu của hệ thức cos²(1+tan²)=1; cũng có thể xếp rút gọn biểu thức (NDB00563).",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030107012",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng biến đổi tự do.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110010203050",
+  "may": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tìm hiệu A\\B của hai tập hợp.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203010",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Thử điểm vào hệ bất phương trình, hỏi điểm không thuộc miền nghiệm.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106099",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203070",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Hỏi phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106039",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203019",
+  "may": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Tìm phần bù của A trong E.",
+  "hien": "NDB00522",
+  "nguon": "gan_cum",
+  "cum": "DCUM01296",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106041",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và góc tù, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105005",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản sai.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030107057",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng biến đổi tự do.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030107040",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203024",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030103018",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Mệnh đề đúng về hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030106013",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102028",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030103013",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Phát biểu sai về hai góc bù nhau 180°−x.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020202079",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030102018",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030101040",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110020102039",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030103015",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Khẳng định đúng về hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030106088",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203013",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ hai bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030102010",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030101036",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác góc đặc biệt không chứa biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110010203054",
+  "may": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp A∪B của hai tập hợp.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203071",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ bốn bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203026",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020102035",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm; bốn đáp án cùng hệ số, chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030107041",
+  "may": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính biểu thức bậc nhất trên bậc nhất của sin, cos.",
+  "hien": "NDB00562",
+  "nguon": "gan_cum",
+  "cum": "DCUM01561",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030101021",
+  "may": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Định nghĩa cos theo tọa độ điểm M trên nửa đường tròn đơn vị.",
+  "hien": "NDB00549",
+  "nguon": "gan_cum",
+  "cum": "DCUM01478",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030106043",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và góc tù, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106001",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010206007",
+  "may": "NDB00536",
+  "chac": "cao",
+  "ly_do": "Tìm số m nguyên để A giao B bằng rỗng.",
+  "hien": "NDB00536",
+  "nguon": "gan_cum",
+  "cum": "DCUM01300",
+  "dang_cu": "T110010206"
+ },
+ {
+  "ma_cau": "T110030104016",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa cot(90°−γ), tan(180°−γ) bằng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110020203072",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của hệ bất phương trình, thử từng cặp.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106032",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin của góc tù, tính cos bằng sin²+cos²=1 và xét dấu.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020102033",
+  "may": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo miền nghiệm, 4 đáp án cùng hệ số chỉ khác chiều.",
+  "hien": "NDB00540",
+  "nguon": "gan_cum",
+  "cum": "DCUM01312",
+  "dang_cu": "T110020102"
+ },
+ {
+  "ma_cau": "T110030107006",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Biến đổi đại số tự do tan, sin ra giá trị biểu thức.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030102006",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu các giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030106042",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc nhọn, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106103",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot bằng hệ thức cơ bản.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105025",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản sai.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020203005",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203085",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ, thay toạ độ kiểm tra.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110010203073",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030101033",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác của các góc đặc biệt, không biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030105011",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Chọn biểu thức đúng của tan² theo hệ thức cơ bản.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030106104",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203069",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030102013",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030105026",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản không đúng.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030102025",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110010203075",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030103011",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức lượng giác của hai góc bù nhau.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020202040",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106040",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc nhọn, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030107005",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Biến đổi (cot a+tan a)² theo hệ thức cơ bản, trùng ví dụ dạng.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110010203061",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030107003",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác bằng biến đổi tự do.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020202076",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106004",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105028",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cos² theo tan².",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030106009",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106016",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020202036",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106045",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc nhọn, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105029",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+cot²=1/sin².",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030106056",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính biểu thức chứa tan, cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106033",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030101004",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác của các góc đặc biệt, không biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030106089",
+  "may": "NDB00890",
+  "chac": "vua",
+  "ly_do": "Cho hệ thức 3cos-sin=1 tính tan; gần dạng cho một GTLG nhưng có thể là dạng khác.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102015",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110020203079",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203004",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105018",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức sin/cos = tan.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020202045",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030103006",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức lượng giác của hai góc bù nhau.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110030107056",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác bằng biến đổi tự do.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020202078",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030103001",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức lượng giác của hai góc bù nhau.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020203064",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030105001",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức tan = sin/cos.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030104015",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức có sin(90-β), cos(180-β) bằng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110030107013",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác bằng biến đổi tự do.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106018",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot theo tham số a, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106015",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106093",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105009",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+tan²=1/cos².",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110010203071",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020202044",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203084",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020202039",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020104001",
+  "may": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua tập và bút, cố định 10 bút, tìm số tập tối đa.",
+  "hien": "NDB00541",
+  "nguon": "gan_cum",
+  "cum": "DCUM01369",
+  "dang_cu": "T110020104"
+ },
+ {
+  "ma_cau": "T110030106010",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203087",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020202050",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030102020",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030101023",
+  "may": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Xác định cot theo toạ độ điểm trên nửa đường tròn đơn vị.",
+  "hien": "NDB00549",
+  "nguon": "gan_cum",
+  "cum": "DCUM01478",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110030106024",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính biểu thức chứa sin², cos².",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102009",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110020203062",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203011",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203088",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030102008",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030107010",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Biến đổi (cot a+tan a)² theo hệ thức cơ bản, trùng ví dụ dạng.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203014",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107048",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tính tổng cos² các góc ghép cặp phụ nhau, không biến.",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030104031",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức có cot(90-γ), tan(180-γ), dùng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110030106082",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot góc nhọn, tính biểu thức chứa sin, cos qua sin, cos cụ thể.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102005",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030104032",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức có sin(90-x), sin(180-x), dùng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ },
+ {
+  "ma_cau": "T110020203003",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106003",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020202082",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110010203063",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110020203032",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107055",
+  "may": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức theo tan bằng biến đổi tự do.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106067",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan góc nhọn, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010205019",
+  "may": "NDB00533",
+  "chac": "cao",
+  "ly_do": "Bài toán 3 tập hợp, tìm số phần tử thuộc cả ba.",
+  "hien": "NDB00533",
+  "nguon": "gan_cum",
+  "cum": "DCUM01291",
+  "dang_cu": "T110010205"
+ },
+ {
+  "ma_cau": "T110020104007",
+  "may": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua tập và bút, cố định 10 bút, tìm số tập tối đa.",
+  "hien": "NDB00541",
+  "nguon": "gan_cum",
+  "cum": "DCUM01369",
+  "dang_cu": "T110020104"
+ },
+ {
+  "ma_cau": "T110030106084",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot góc tù, tính biểu thức chứa cos², tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105033",
+  "may": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Rút gọn bằng 1+tan²=1/cos²; có thể là nhận diện hệ thức hoặc rút gọn khác (NDB00563).",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030105014",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Chọn công thức đúng của sin² theo cot².",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020203075",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030102019",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030102022",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110010203066",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106079",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan góc tù, tính sin+cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106060",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203054",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203061",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030107052",
+  "may": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức chứa sin³+cos³ và sin·cos.",
+  "hien": "NDB00560",
+  "nguon": "gan_cum",
+  "cum": "DCUM01558",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203027",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106058",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính biểu thức chứa tan, cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203053",
+  "may": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Xác định giao của hai tập hợp và biểu diễn trục số.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110010203055",
+  "may": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Xác định hợp của hai tập hợp và biểu diễn trục số.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106095",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106064",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot góc nhọn, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020203008",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030101039",
+  "may": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác của các góc đặc biệt, không biến.",
+  "hien": "NDB00550",
+  "nguon": "gan_cum",
+  "cum": "DCUM01480",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110020202085",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020202047",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030107014",
+  "may": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức chứa sin³+cos³ và sin·cos.",
+  "hien": "NDB00560",
+  "nguon": "gan_cum",
+  "cum": "DCUM01558",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020202053",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106051",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc tù, tính biểu thức chứa tan, cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030101022",
+  "may": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Xác định tan theo toạ độ điểm trên nửa đường tròn đơn vị.",
+  "hien": "NDB00549",
+  "nguon": "gan_cum",
+  "cum": "DCUM01478",
+  "dang_cu": "T110030101"
+ },
+ {
+  "ma_cau": "T110020203067",
+  "may": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Miền tam giác từ hình, cần lập hệ rồi chọn điểm; phụ thuộc hình, cũng gần NDB00885.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106030",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc nhọn, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105017",
+  "may": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Rút gọn sin²(1+cot²) bằng hệ thức cơ bản; cũng có thể là NDB00563.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020203015",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030103021",
+  "may": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác của hai góc phụ nhau.",
+  "hien": "NDB00553",
+  "nguon": "gan_cum",
+  "cum": "DCUM01483",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110020203006",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106090",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính tan.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203056",
+  "may": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Xác định hợp của hai tập hợp và biểu diễn trục số.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030107054",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Biến đổi (tan-cot)² theo hệ thức cơ bản, tương tự ví dụ dạng.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020202077",
+  "may": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình miền nghiệm đúng.",
+  "hien": "NDB00546",
+  "nguon": "gan_cum",
+  "cum": "DCUM01395",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110020203028",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106083",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan góc tù, tính 5sin·cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110010203048",
+  "may": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Xác định giao của hai tập hợp và biểu diễn trục số.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030106073",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110020202037",
+  "may": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng.",
+  "hien": "NDB00544",
+  "nguon": "gan_cum",
+  "cum": "DCUM01381",
+  "dang_cu": "T110020202"
+ },
+ {
+  "ma_cau": "T110030106046",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc tù, tính cot.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01522",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030102011",
+  "may": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn.",
+  "hien": "NDB00889",
+  "nguon": "doi_ung",
+  "cum": "DCUM01481",
+  "dang_cu": "T110030102"
+ },
+ {
+  "ma_cau": "T110030103005",
+  "may": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức lượng giác của hai góc bù nhau.",
+  "hien": "NDB00552",
+  "nguon": "gan_cum",
+  "cum": "DCUM01482",
+  "dang_cu": "T110030103"
+ },
+ {
+  "ma_cau": "T110010203062",
+  "may": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số là tập hợp nào.",
+  "hien": "NDB00524",
+  "nguon": "gan_cum",
+  "cum": "DCUM01298",
+  "dang_cu": "T110010203"
+ },
+ {
+  "ma_cau": "T110030105037",
+  "may": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Rút gọn (1+cot²)sin² bằng hệ thức cơ bản; cũng có thể là NDB00563.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110010206001",
+  "may": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để A là tập con của B.",
+  "hien": "NDB00535",
+  "nguon": "gan_cum",
+  "cum": "DCUM01299",
+  "dang_cu": "T110010206"
+ },
+ {
+  "ma_cau": "T110030105010",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức lượng giác cơ bản sai.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110020203044",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110010205013",
+  "may": "NDB00532",
+  "chac": "cao",
+  "ly_do": "Bài toán 3 tập hợp, tìm số phần tử thuộc đúng 2 tập.",
+  "hien": "NDB00532",
+  "nguon": "gan_cum",
+  "cum": "DCUM01290",
+  "dang_cu": "T110010205"
+ },
+ {
+  "ma_cau": "T110030107044",
+  "may": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức cos² các góc ghép cặp phụ nhau, không biến.",
+  "hien": "NDB00561",
+  "nguon": "gan_cum",
+  "cum": "DCUM01559",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110020203043",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ ba bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01380",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110020203017",
+  "may": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ bất phương trình.",
+  "hien": "NDB00885",
+  "nguon": "doi_ung",
+  "cum": "DCUM01379",
+  "dang_cu": "T110020203"
+ },
+ {
+  "ma_cau": "T110030106061",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan góc nhọn, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030106086",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính tan rồi đổi sang dạng yêu cầu.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030105007",
+  "may": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Hoàn thành hệ thức 1+cot² theo hệ thức cơ bản.",
+  "hien": "NDB00557",
+  "nguon": "gan_cum",
+  "cum": "DCUM01484",
+  "dang_cu": "T110030105"
+ },
+ {
+  "ma_cau": "T110030107061",
+  "may": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Rút gọn bằng 1+tan²=1/cos², 1+cot²=1/sin²; cũng có thể là NDB00563.",
+  "hien": "NDB00563",
+  "nguon": "gan_cum",
+  "cum": "DCUM01563",
+  "dang_cu": "T110030107"
+ },
+ {
+  "ma_cau": "T110030106075",
+  "may": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan góc tù, tính sin.",
+  "hien": "NDB00890",
+  "nguon": "doi_ung",
+  "cum": "DCUM01523",
+  "dang_cu": "T110030106"
+ },
+ {
+  "ma_cau": "T110030104013",
+  "may": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức có cos(90-x), sin(180-x), dùng công thức đảo pha.",
+  "hien": "NDB00556",
+  "nguon": "gan_cum",
+  "cum": "DCUM01488",
+  "dang_cu": "T110030104"
+ }
+]

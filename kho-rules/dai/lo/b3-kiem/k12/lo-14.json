@@ -1,0 +1,980 @@
+[
+ {
+  "ma_cau": "T112070101053",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$ tâm $O$, gọi $I,I'$ lần lượt là tâm của hình bình hành $ABCD,A'B'C'D'$ (hình vẽ). Khẳng định nào sau đây sai? [hình]",
+  "lua_chon": [
+   "$\\overrightarrow{AC'} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'}$.",
+   "$\\overrightarrow{OI} + \\overrightarrow{OI'} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{AB} + \\overrightarrow{AA'} = \\overrightarrow{AD} + \\overrightarrow{DD'}$",
+   "$\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CC'} = \\overrightarrow{AD'} + \\overrightarrow{D'O} + \\overrightarrow{OC'}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\overrightarrow{AB} + \\overrightarrow{AA'} = \\overrightarrow{AB'}$.\nVà $\\overrightarrow{AD} + \\overrightarrow{DD'} = \\overrightarrow{AD'}$.\nDo tứ giác $AB'D'C$ không phải là hình bình hành nên $\\overrightarrow{AB'} \\neq \\overrightarrow{AD'}$.\nVậy khẳng định $\\overrightarrow{AB} + \\overrightarrow{AA'} = \\overrightarrow{AD} + \\overrightarrow{DD'}$ sai.\nCác khẳng định còn lại đều đúng dựa vào quy tắc hình hộp và tính chất trung điểm.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010303002",
+  "loai": "trac_nghiem",
+  "de": "Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y=\\dfrac{2x-5}{x+1}$ là:",
+  "lua_chon": [
+   "0.",
+   "2.",
+   "3.",
+   "1."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $\\lim_{x \\to -1^-} y = +\\infty$; $\\lim_{x \\to -1^+} y = -\\infty$.\nSuy ra đường thẳng $x=-1$ là tiệm cận đứng của đồ thị hàm số.\n$\\lim_{x \\to +\\infty} \\dfrac{2x-5}{x+1} = 2$; $\\lim_{x \\to -\\infty} \\dfrac{2x-5}{x+1} = 2$.\nSuy ra $y=2$ là tiệm cận ngang của đồ thị hàm số.\nTổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số là: $2$."
+ },
+ {
+  "ma_cau": "T112010202092",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$ và có bảng xét dấu của đạo hàm như sau:\nSố điểm cực đại của hàm số đã cho là",
+  "lua_chon": [
+   "$2$.",
+   "$5$.",
+   "$4$.",
+   "$3$."
+  ],
+  "loi_giai": "Dựa vào bảng xét dấu đạo hàm, ta thấy $y'$ đổi dấu từ dương sang âm khi đi qua $x=-2$ và $x=5$.\nDo đó, hàm số đã cho có $2$ điểm cực đại.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112050302006",
+  "loai": "tra_loi_ngan",
+  "de": "Một bể chứa nước hình trụ thẳng đứng đang đầy nước. Khi mở một nút xả ở đáy bể, nước chảy ra ngoài với tốc độ giảm thể tích tỷ lệ thuận với căn bậc hai của chiều cao mực nước hiện tại trong bể (do áp suất giảm). Nếu gọi $V(t)$ là thể tích nước còn lại trong bể sau $t$ phút, tốc độ thay đổi thể tích được mô tả bởi phương trình: $V'(t)=-k\\sqrt{V(t)}$ (với $k>0$). Biết bể ban đầu có lượng nước là $144$ lít. Sau $10$ phút xả, lượng nước còn lại trong bể là $64$ lít. Hỏi sau bao nhiêu phút kể từ lúc mở nút xả thì bể sẽ cạn hoàn toàn?",
+  "dap_an": "30",
+  "loi_giai": "Phương trình tốc độ thay đổi thể tích nước là $V'(t)=-k\\sqrt{V(t)}$.\nBiến đổi phương trình thành\n$\\dfrac{dV}{\\sqrt{V}}=-kdt$.\nLấy nguyên hàm hai vế, ta được\n$2\\sqrt{V}=-kt+C$.\nTại thời điểm ban đầu $t=0$, thể tích nước là $V(0)=144$ lít, suy ra\n$2\\sqrt{144}=C\\Rightarrow C=24$.\nDo đó, phương trình thể tích nước là $2\\sqrt{V}=-kt+24$.\nTại thời điểm $t=10$ phút, thể tích nước còn lại là $V(10)=64$ lít, suy ra\n$2\\sqrt{64}=-10k+24\\Rightarrow 16=-10k+24\\Rightarrow 10k=8\\Rightarrow k=0,8$.\nKhi bể cạn hoàn toàn thì $V(t)=0$, ta có\n$2\\sqrt{0}=-0,8t+24\\Rightarrow 0,8t=24\\Rightarrow t=30$ (phút).\nVậy sau $30$ phút kể từ lúc mở nút xả thì bể sẽ cạn hoàn toàn."
+ },
+ {
+  "ma_cau": "T112010101104",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng xét dấu đạo hàm như sau:\nHàm số đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(-3;-1\\right)$.",
+   "$\\left(-\\infty;-3\\right)$.",
+   "$\\left(-3;1\\right)$.",
+   "$\\left(-1;+\\infty \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Dựa vào bảng xét dấu của $f'\\left(x\\right)$, ta thấy $f'\\left(x\\right)>0$ với mọi $x\\in \\left(-3;-1\\right)$ và $x \\in \\left(1; +\\infty\\right)$.\nDo đó, hàm số đồng biến trên các khoảng $\\left(-3;-1\\right)$ và $\\left(1;+\\infty \\right)$.\nVậy hàm số đồng biến trên khoảng $\\left(-3;-1\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201031",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số bậc ba $y=ax^{3}+bx^{2}+cx+d$ ($a\\ne 0$) có điểm $A\\left(-1;3\\right)$ và $B\\left(1;-1\\right)$ là hai điểm cực trị. Tính $S=a^{2}+b^{2}+c^{2}+d^{2}$.",
+  "loi_giai": "Ta có đạo hàm $y'=3ax^{2}+2bx+c$.\nVì hàm số đạt cực trị tại $x=-1$ và $x=1$ nên $y'\\left(-1\\right)=0$ và $y'\\left(1\\right)=0$.\nTa có hệ phương trình: $\\begin{cases} 3a-2b+c=0 \\\\ 3a+2b+c=0 \\end{cases}\\Leftrightarrow \\begin{cases} b=0 \\\\ c=-3a \\end{cases}$.\nĐồ thị hàm số đi qua hai điểm $A\\left(-1;3\\right)$ và $B\\left(1;-1\\right)$ nên $y\\left(-1\\right)=3$ và $y\\left(1\\right)=-1$.\nThay tọa độ hai điểm vào ta được hệ phương trình: $\\begin{cases} -a+b-c+d=3 \\\\ a+b+c+d=-1 \\end{cases}$.\nThay $b=0$ và $c=-3a$ vào hệ trên, ta có: $\\begin{cases} -a-\\left(-3a\\right)+d=3 \\\\ a+\\left(-3a\\right)+d=-1 \\end{cases}\\Leftrightarrow \\begin{cases} 2a+d=3 \\\\ -2a+d=-1 \\end{cases}$.\nCộng hai phương trình vế theo vế  …"
+ },
+ {
+  "ma_cau": "T112010101108",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng xét dấu đạo hàm như sau\nHàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(-\\infty;2\\right)$.",
+   "$\\left(3;4\\right)$.",
+   "$\\left(4;+\\infty \\right)$.",
+   "$\\left(1;3\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào bảng xét dấu đạo hàm, ta thấy $y'<0$ trên các khoảng $\\left(-\\infty;1\\right)$ và $\\left(3;4\\right)$.\nDo đó, hàm số đã cho nghịch biến trên khoảng $\\left(3;4\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112070103020",
+  "loai": "trac_nghiem",
+  "de": "Cho hai vecto $\\vec{a}$ và $\\vec{b}$ thỏa mãn $|\\vec{a}| = |\\vec{b}| = 1$ và hai vecto $\\vec{u} = \\dfrac{2}{5}\\vec{a} - 3\\vec{b}$ và $\\vec{v} = \\vec{a} + \\vec{b}$ vuông góc với nhau.\nXác định góc $\\alpha$ giữa hai vecto $\\vec{a}$ và $\\vec{b}$.",
+  "lua_chon": [
+   "$\\alpha = 90^o$.",
+   "$\\alpha = 180^o$.",
+   "$\\alpha = 60^o$.",
+   "$\\alpha = 45^o$."
+  ]
+ },
+ {
+  "ma_cau": "T112010201034",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)=x^{3}-3x+2$. Giá trị cực đại của hàm số đã cho bằng",
+  "lua_chon": [
+   "$-1$.",
+   "$0$.",
+   "$1$.",
+   "$4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=3x^{2}-3$.\nCho $f'\\left(x\\right)=0\\Leftrightarrow 3x^{2}-3=0\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=-1. \\end{array}\\right.$\nBảng biến thiên:\nDựa vào bảng biến thiên, giá trị cực đại của hàm số là $4$."
+ },
+ {
+  "ma_cau": "T112010101046",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên\nChọn khẳng định đúng?",
+  "lua_chon": [
+   "Hàm số nghịch biến trên $\\left(-1;+\\infty \\right)$.",
+   "Hàm số nghịch biến trên $\\left(-1;1\\right)$.",
+   "Hàm số đồng biến trên $\\left(-1;1\\right)$.",
+   "Hàm số đồng biến trên $\\left(-\\infty;-1\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dựa vào bảng biến thiên, trên khoảng $\\left(-1;1\\right)$ ta có $y'>0$ và mũi tên đi lên từ $0$ đến $4$.\nDo đó, hàm số đồng biến trên khoảng $\\left(-1;1\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201043",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$, có đạo hàm $f'\\left(x\\right)=2x\\left(x-1\\right)^{2}\\left(2-x\\right)^{3}$. Số điểm cực đại của đồ thị hàm số là.",
+  "loi_giai": "Ta có $f'\\left(x\\right)=2x\\left(x-1\\right)^{2}\\left(2-x\\right)^{3}=-2x\\left(x-1\\right)^{2}\\left(x-2\\right)^{3}$.\nCho $f'\\left(x\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=0 \\\\ x=1 \\\\ x=2. \\end{array}\\right.$\nTrong đó:\n• $x=1$ là nghiệm bội chẵn (bội $2$) nên đạo hàm $f'\\left(x\\right)$ không đổi dấu khi đi qua $x=1$.\n• $x=0$ và $x=2$ là các nghiệm bội lẻ nên đạo hàm $f'\\left(x\\right)$ đổi dấu khi đi qua các điểm này.\nBảng biến thiên:\nDựa vào bảng biến thiên, đạo hàm $f'\\left(x\\right)$ đổi dấu từ dương sang âm duy nhất một lần khi đi qua điểm $x=2$.\nDo đó, hàm số đạt cực đại tại điểm $x=2$.\nVậy đồ thị hàm số có đúng $1$ điểm cực đại là $\\left(2;f\\left(2\\right)\\right)$."
+ },
+ {
+  "ma_cau": "T112010201094",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)=x\\left(x-1\\right)\\left(x-2\\right)$. Số điểm cực trị của hàm số đã cho là",
+  "lua_chon": [
+   "$0$.",
+   "$1$.",
+   "$2$.",
+   "$3$."
+  ],
+  "loi_giai": "Ta có $f\\left(x\\right)=x\\left(x^{2}-3x+2\\right)=x^{3}-3x^{2}+2x$.\nĐạo hàm $f'\\left(x\\right)=3x^{2}-6x+2$.\nPhương trình $f'\\left(x\\right)=0\\Leftrightarrow 3x^{2}-6x+2=0$ có $\\Delta '=\\left(-3\\right)^{2}-3\\cdot 2=3>0$.\nDo phương trình $f'\\left(x\\right)=0$ có hai nghiệm phân biệt và $f'\\left(x\\right)$ đổi dấu qua các nghiệm này nên hàm số có $2$ điểm cực trị."
+ },
+ {
+  "ma_cau": "T112010102081",
+  "loai": "trac_nghiem",
+  "de": "Trong các hàm số sau, hàm số nào đồng biến trên khoảng $\\left(-\\infty;+\\infty \\right)$?",
+  "lua_chon": [
+   "$y=x^{3}+4x$.",
+   "$y=\\dfrac{x+1}{x+4}$.",
+   "$y=x^{2}+4x$.",
+   "$y=\\dfrac{x^{2}+9}{x}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét hàm số $y=x^{3}+4x$:\nTập xác định $D=\\mathbb{R}$.\nTa có $y'=3x^{2}+4>0$ với mọi $x\\in \\mathbb{R}$.\nDo đó, hàm số $y=x^{3}+4x$ đồng biến trên khoảng $\\left(-\\infty;+\\infty \\right)$."
+ },
+ {
+  "ma_cau": "T112010101218",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như hình bên\nHàm số $y=f\\left(x\\right)$ đồng biến trong khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(3;12\\right)$.",
+   "$\\left(-1;4\\right)$.",
+   "$\\left(7;10\\right)$.",
+   "$\\left(-4;-3\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào bảng biến thiên đã cho, hàm số $y=f\\left(x\\right)$ đồng biến trên các khoảng $\\left(-\\infty;3\\right)$ và $\\left(8;+\\infty \\right)$.\nVì $\\left(-4;-3\\right)\\subset \\left(-\\infty;3\\right)$ nên hàm số cũng đồng biến trên khoảng $\\left(-4;-3\\right)$.\nVậy hàm số đồng biến trên khoảng $\\left(-4;-3\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010101157",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=ax^{3}+bx^{2}+cx+d\\left(a,b,c,d\\in \\mathbb{R},a\\ne 0\\right)$ có đồ thị là đường cong như hình bên. Hàm số đã cho nghịch biến trên miền nào dưới đây?",
+  "lua_chon": [
+   "$\\left(-\\infty;+\\infty \\right)$.",
+   "$\\left(2;+\\infty \\right)$.",
+   "$\\left(-1;1\\right)$.",
+   "$\\left(-\\infty;0\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát đồ thị hàm số, ta thấy:\nHàm số đạt cực đại tại điểm $x=-1$ và đạt cực tiểu tại điểm $x=1$.\nTrên khoảng $\\left(-1;1\\right)$, đường cong đồ thị đi xuống theo chiều từ trái sang phải.\nVậy hàm số đã cho nghịch biến trên khoảng $\\left(-1;1\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112070101006",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A_1B_1C_1D_1$. Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\vec{A_1A} + \\vec{A_1B_1} + \\vec{A_1D_1} = \\vec{A_1C_1}$",
+   "$\\vec{A_1A} + \\vec{A_1B_1} + \\vec{A_1D_1} = \\vec{C_1A}$",
+   "$\\vec{A_1A} + \\vec{A_1B_1} + \\vec{A_1D_1} = \\vec{A_1C}$",
+   "$\\vec{A_1A} + \\vec{A_1B_1} + \\vec{A_1D_1} = \\vec{CA_1}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo quy tắc hình hộp, ta có $\\vec{A_1A} + \\vec{A_1B_1} + \\vec{A_1D_1} = \\vec{A_1C}$.\nVậy phát biểu đúng là $\\vec{A_1A} + \\vec{A_1B_1} + \\vec{A_1D_1} = \\vec{A_1C}$."
+ },
+ {
+  "ma_cau": "T112010102127",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\dfrac{2x+5}{x+1}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên các khoảng $\\left(-\\infty;-1\\right)$; $\\left(-1;+\\infty \\right)$",
+   "Hàm số nghịch biến trên $\\mathbb{R}\\setminus \\{-1\\}$.",
+   "Hàm số đồng biến trên $\\mathbb{R}\\setminus \\{-1\\}$.",
+   "Hàm số nghịch biến trên các khoảng $\\left(-\\infty;-1\\right)$; $\\left(-1;+\\infty \\right)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-1\\}$.\nTa có $y'=\\dfrac{2\\cdot 1-5\\cdot 1}{\\left(x+1\\right)^{2}}=\\dfrac{-3}{\\left(x+1\\right)^{2}}<0,\\forall x\\ne -1$.\nVậy hàm số nghịch biến trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(-1;+\\infty \\right)$."
+ },
+ {
+  "ma_cau": "T112010202088",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như sau:\nGiá trị cực tiểu của hàm số đã cho bằng",
+  "lua_chon": [
+   "$0$.",
+   "$3$.",
+   "$2$.",
+   "$-4$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào bảng biến thiên đã cho, hàm số đạt cực tiểu tại điểm $x=3$ và giá trị cực tiểu của hàm số là $y_{CT}=f\\left(3\\right)=-4$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010101177",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số bậc ba $y=ax^{3}+bx^{2}+cx+d$($a\\ne 0$) có đồ thị như hình vẽ. Hàm số nghịch biến trên khoảng nào trong các khoảng dưới đây?",
+  "lua_chon": [
+   "$\\left(-\\infty;-1\\right)$.",
+   "$\\left(-1;1\\right)$.",
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(-4;0\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào đồ thị hàm số, ta thấy hàm số nghịch biến (đồ thị đi xuống từ trái sang phải) trên khoảng $\\left(-1;1\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112070101007",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp tứ giác đều $S.ABCD$. Gọi $O$ là giao điểm của $AC$ và $BD$. Phát biểu nào sau đây là đúng? [hình]",
+  "lua_chon": [
+   "$\\vec{SA} + \\vec{SB} + \\vec{SC} + \\vec{SD} = 2\\vec{SO}$",
+   "$\\vec{SA} + \\vec{SB} + \\vec{SC} + \\vec{SD} = 4\\vec{SO}$",
+   "$\\vec{SA} + \\vec{SB} + \\vec{SC} + \\vec{SD} = \\vec{SO}$",
+   "$\\vec{SA} + \\vec{SB} + \\vec{SC} + \\vec{SD} = \\vec{0}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $S.ABCD$ là hình chóp tứ giác đều nên $ABCD$ là hình vuông và $O$ là trung điểm của $AC$, $BD$.\nTa có $\\vec{SA} + \\vec{SC} = 2\\vec{SO}$ (tính chất trung điểm).\nTương tự, $\\vec{SB} + \\vec{SD} = 2\\vec{SO}$.\nCộng vế theo vế, ta được $\\vec{SA} + \\vec{SB} + \\vec{SC} + \\vec{SD} = 4\\vec{SO}$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010102184",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\dfrac{x-1}{x+1}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số nghịch biến trên $\\mathbb{R}\\setminus \\{-1\\}$.",
+   "Hàm số đồng biến trên $\\mathbb{R}\\setminus \\{-1\\}$.",
+   "Hàm số đồng biến trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(-1;-\\infty \\right)$.",
+   "Hàm số đồng biến trên $\\left(-\\infty;-1\\right)\\cup \\left(-1;-\\infty \\right)$."
+  ],
+  "loi_giai": "Tập xác định: $D=\\mathbb{R}\\setminus \\{-1\\}$.\nTa có $y'=\\dfrac{1\\cdot 1-\\left(-1\\right)\\cdot 1}{\\left(x+1\\right)^{2}}=\\dfrac{2}{\\left(x+1\\right)^{2}}>0$, $\\forall x\\ne -1$.\nBảng biến thiên:\nDo đó, hàm số đồng biến trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(-1;+\\infty \\right)$.\nTheo quy ước toán học, không dùng ký hiệu $\\mathbb{R}\\setminus \\{-1\\}$ hay dấu $\\cup$ để kết luận khoảng đơn điệu của hàm số.\nVậy khẳng định đúng là phương án C (phương án C trong đề có lỗi in ấn $\\left(-1;-\\infty \\right)$ thay cho $\\left(-1;+\\infty \\right)$)."
+ },
+ {
+  "ma_cau": "T112010202157",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như sau\nHỏi hàm số có bao nhiêu điểm cực trị?",
+  "lua_chon": [
+   "$1$.",
+   "$0$.",
+   "$2$.",
+   "$3$."
+  ],
+  "loi_giai": "Dựa vào bảng biến thiên, ta thấy:\n• Hàm số không xác định tại $x=0$ nên $x=0$ không phải là điểm cực trị của hàm số (mặc dù đạo hàm $y'$ có đổi dấu khi qua $x=0$).\n• Đạo hàm $y'$ đổi dấu từ dương sang âm khi qua $x=-1$ và hàm số xác định tại $x=-1$ nên $x=-1$ là một điểm cực đại của hàm số.\n• Đạo hàm $y'$ đổi dấu từ dương sang âm khi qua $x=1$ và hàm số xác định tại $x=1$ nên $x=1$ là một điểm cực đại của hàm số.\nVậy hàm số đã cho có $2$ điểm cực trị.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010202115",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $f\\left(x\\right)$ liên tục trên $\\mathbb{R}$ có bảng xét dấu của $f'\\left(x\\right)$ như sau:\nSố điểm cực trị của hàm số $f\\left(x\\right)$ là bao nhiêu?",
+  "dap_an": "3",
+  "loi_giai": "Vì hàm số $f\\left(x\\right)$ liên tục trên $\\mathbb{R}$, ta quan sát sự đổi dấu của $f'\\left(x\\right)$ qua các điểm:\n• Khi qua $x=-3$, $f'\\left(x\\right)$ đổi dấu từ dương sang âm nên $x=-3$ là một điểm cực đại.\n• Khi qua $x=0$, $f'\\left(x\\right)$ đổi dấu từ âm sang dương nên $x=0$ là một điểm cực tiểu.\n• Khi qua $x=2$, $f'\\left(x\\right)$ đổi dấu từ dương sang âm nên $x=2$ là một điểm cực đại.\nNhư vậy, đạo hàm $f'\\left(x\\right)$ đổi dấu khi đi qua $3$ điểm $x=-3$, $x=0$, $x=2$.\nVậy số điểm cực trị của hàm số $f\\left(x\\right)$ là $3$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010202024",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)$ có bảng biến thiên như sau:\nHàm số đã cho có bao nhiêu điểm cực trị?",
+  "lua_chon": [
+   "$3$.",
+   "$0$.",
+   "$2$.",
+   "$1$."
+  ],
+  "loi_giai": "Dựa vào bảng biến thiên, ta thấy $f'\\left(x\\right)$ đổi dấu khi đi qua hai điểm $x=-1$ và $x=2$.\nDo đó, hàm số đã cho có $2$ điểm cực trị.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201136",
+  "loai": "trac_nghiem",
+  "de": "Hàm số $f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=x^{2}\\left(x-1\\right)\\left(x-2\\right)^{2025}$, $\\forall x\\in \\mathbb{R}$. Hàm số $f\\left(x\\right)$ có bao nhiêu điểm cực đại?",
+  "lua_chon": [
+   "$1$.",
+   "$2026$.",
+   "$2$.",
+   "$2025$."
+  ],
+  "loi_giai": "Tập xác định: $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=0\\Leftrightarrow x^{2}\\left(x-1\\right)\\left(x-2\\right)^{2025}=0\\Leftrightarrow \\left[\\begin{array}{l} x=0 \\\\ x=1 \\\\ x=2. \\end{array}\\right.$\nBảng xét dấu của đạo hàm $f'\\left(x\\right)$:\nCăn cứ vào bảng xét dấu, ta thấy $f'\\left(x\\right)$ chỉ đổi dấu từ dương sang âm khi đi qua điểm $x=1$.\nDo đó, hàm số $f\\left(x\\right)$ có đúng $1$ điểm cực đại (tại $x=1$)."
+ },
+ {
+  "ma_cau": "T112010101200",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đồ thị như hình vẽ bên. Hàm số đã cho đồng biến trên khoảng",
+  "lua_chon": [
+   "$\\left(-2;3\\right)$.",
+   "$\\left(-4;0\\right)$.",
+   "$\\left(-1;1\\right)$.",
+   "$\\left(1;3\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Quan sát đồ thị hàm số, trên khoảng $\\left(1;3\\right)$ đồ thị đi lên từ trái sang phải.\nDo đó, hàm số đã cho đồng biến trên khoảng $\\left(1;3\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010104040",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đạo hàm $f'\\left(x\\right)$ xác định và liên tục trên $\\mathbb{R}$ và $f'\\left(x\\right)$ có đồ thị như hình vẽ dưới đây:\nXét tính đúng sai của các khẳng định sau:",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Quan sát đồ thị hàm số $y=f'\\left(x\\right)$, trên khoảng $\\left(-1;1\\right)$, đồ thị nằm hoàn toàn phía dưới trục hoành nên $f'\\left(x\\right)<0$ với mọi $x \\in \\left(-1; 1\\right)$.",
+    "noi_dung": "$f'\\left(x\\right)<0\\forall x\\in \\left(-1;1\\right)$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Phương trình $f'\\left(x\\right)=0$ có $3$ nghiệm phân biệt $x=-1$, $x=1$, $x=3$.\n\nĐạo hàm $f'\\left(x\\right)$ đổi dấu khi đi qua cả ba điểm này nên hàm số $y=f\\left(x\\right)$ có $3$ điểm cực trị.",
+    "noi_dung": "Hàm số $y=f\\left(x\\right)$ có hai cực trị"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Trên khoảng $\\left(1;+\\infty \\right)$, ta có $f'\\left(x\\right)>0$ trên khoảng $\\left(1;3\\right)$ và $f'\\left(x\\right)<0$ trên khoảng $\\left(3;+\\infty \\right)$.\n\nDo đó hàm số $f\\left(x\\right)$ đạt giá trị lớn nhất trên khoảng $\\left(1;+\\infty \\right)$ tại $x=3$, tức là $\\max\\limits_{\\left(1;+\\infty \\right)}f\\left(x\\right)=f\\left(3\\right)$.",
+    "noi_dung": "$\\max\\limits_{\\left(1;+\\infty \\right)}f\\left(x\\right)=f\\left(2\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Xét hàm số $g\\left(x\\right)=f\\left(3-2x\\right)$, ta có $g'\\left(x\\right)=-2f'\\left(3-2x\\right)$.\n\nHàm số $g\\left(x\\right)$ đồng biến khi:\n\n$g'\\left(x\\right)\\ge 0\\Leftrightarrow f'\\left(3-2x\\right)\\le 0\\Leftrightarrow \\left[\\begin{array}{l} -1\\le 3-2x\\le 1 \\\\ 3-2x\\ge 3 \\end{array}\\right.\\Leftrightarrow \\left[\\begin{array}{l} 1\\le x\\le 2 \\\\ x\\le 0. \\end{array}\\right.$\n\nDo đó hàm số $y=f\\left(3-2x\\right)$ đồng biến trên khoảng $\\left(-\\infty;0\\right)$.",
+    "noi_dung": "Hàm số $y=f\\left(3-2x\\right)$ đồng biến trên khoảng $\\left(-\\infty;0\\right)$"
+   }
+  ],
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010202105",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như sau:\nKhi đó, điểm cực đại của hàm số là:",
+  "lua_chon": [
+   "$x=2$.",
+   "$x=4$.",
+   "$x=0$.",
+   "$x=1$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Căn cứ vào bảng biến thiên, đạo hàm $y'$ đổi dấu từ dương sang âm khi đi qua điểm $x=2$.\nDo đó, điểm cực đại của hàm số đã cho là $x=2$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201091",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\dfrac{1}{3}x^{3}-2x^{2}+3x-1$. Hàm số đạt cực đại tại:",
+  "lua_chon": [
+   "$x=-1$.",
+   "$x=\\dfrac{1}{3}$.",
+   "$x=3$.",
+   "$x=1$."
+  ],
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $y'=x^{2}-4x+3$.\nPhương trình $y'=0\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=3. \\end{array}\\right.$\nBảng biến thiên:\nDựa vào bảng biến thiên, hàm số đạt cực đại tại $x=1$."
+ },
+ {
+  "ma_cau": "T112010102238",
+  "loai": "tu_luan",
+  "de": "Tìm các khoảng đơn điệu của hàm số $y=\\dfrac{1}{3}x^{3}+2x^{2}+3x+2$.",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có đạo hàm $y'=x^{2}+4x+3$.\nCho $y'=0\\Leftrightarrow x^{2}+4x+3=0\\Leftrightarrow \\left[\\begin{array}{l} x=-1 \\\\ x=-3. \\end{array}\\right.$\nBảng biến thiên:\nVậy hàm số đồng biến trên các khoảng $\\left(-\\infty;-3\\right)$ và $\\left(-1;+\\infty \\right)$; nghịch biến trên khoảng $\\left(-3;-1\\right)$."
+ },
+ {
+  "ma_cau": "T112040102030",
+  "loai": "trac_nghiem",
+  "de": "Họ nguyên hàm của hàm số $f(x) = \\dfrac{1}{x} + \\sin x$ là",
+  "lua_chon": [
+   "$\\ln x - \\cos x + C$.",
+   "$\\dfrac{1}{x^2} - \\cos x + C$.",
+   "$\\ln|x| + \\cos x + C$.",
+   "$\\ln|x| - \\cos x + C$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D.\nTa có $\\int f(x)\\,dx = \\int\\left(\\dfrac{1}{x} + \\sin x\\right)\\,dx = \\int\\dfrac{1}{x}\\,dx + \\int \\sin x\\,dx = \\ln|x| - \\cos x + C$."
+ },
+ {
+  "ma_cau": "T112010202149",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như sau:\nGiá trị cực đại của hàm số $y=f\\left(x\\right)$ bằng",
+  "lua_chon": [
+   "$1$.",
+   "$5$.",
+   "$0$.",
+   "$-3$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Căn cứ vào bảng biến thiên của hàm số $y=f\\left(x\\right)$:\nĐạo hàm $y'$ đổi dấu từ dương sang âm khi qua điểm $x=1$, do đó hàm số đạt cực đại tại $x=1$ và giá trị cực đại của hàm số là $y_{CD}=f\\left(1\\right)=0$.\nHàm số đạt cực tiểu tại $x=-3$ và giá trị cực tiểu của hàm số là $y_{CT}=f\\left(-3\\right)=5$.\nVậy giá trị cực đại của hàm số đã cho bằng $0$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010202193",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có bảng biến thiên như sau\nGiá trị cực đại của hàm số $y=f\\left(x\\right)$ là",
+  "lua_chon": [
+   "$y=-3$.",
+   "$y=-6$.",
+   "$x=-7$.",
+   "$x=-4$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào bảng biến thiên, hàm số đạt cực đại tại $x=-4$ và giá trị cực đại là $y_{CD}=-3$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112040201002",
+  "loai": "trac_nghiem",
+  "de": "Một quả bóng được ném lên từ độ cao $24,5$ m với vận tốc được tính bởi công thức: $v(t) = -9,8t + 19,6$ (m/s). Công thức tính độ cao của quả bóng theo thời gian $t$.",
+  "lua_chon": [
+   "$h(t) = -4,9t^2 + 19,6t$",
+   "B. $h(t) = -4,9t^2 + 19,6t + 24,5$",
+   "C. $h(t) = -4,9t^2 + 19,6t + 5$",
+   "D. $h(t) = -4,9t^2 + 19,6t + C$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Gọi $h(t)$ là độ cao của quả bóng tại thời điểm $t$ ($h(t)$tính theo mét, $t$ tính theo giây).\nKhi đó, ta có: $h(t) = \\int (-9,8t + 19,6) dt = -4,9t^2 + 19,6t + C$\nQuả bóng được ném lên từ độ cao $24,5$ m tức là tại thời điểm $t = 0$ thì $h = 24,5$hay $h(0) = 24,5 \\Rightarrow C = 24,5$\nVậy công thức tính độ cao $h(t)$của quả bóng theo thời gian $t$ là: $h(t) = -4,9t^2 + 19,6t + 24,5$"
+ },
+ {
+  "ma_cau": "T112010202131",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$ và có bảng biến thiên như sau.\nGiá trị cực đại của hàm số đã cho bằng",
+  "lua_chon": [
+   "$-2$.",
+   "$2$.",
+   "$-1$.",
+   "$1$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dựa vào bảng biến thiên, hàm số đạt cực đại tại $x=-1$.\nGiá trị cực đại của hàm số là $y_{CD}=1$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010104022",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đồ thị hàm số $y=f'\\left(x\\right)$ như hình vẽ.",
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Trên khoảng $\\left(2;3\\right)$, đồ thị hàm số $y=f'\\left(x\\right)$ nằm phía dưới trục hoành nên $f'\\left(x\\right)<0$ với mọi $x\\in \\left(2;3\\right)$.\n\nDo đó hàm số nghịch biến trên khoảng $\\left(2;3\\right)$.",
+    "noi_dung": "Hàm số đồng biến trên khoảng $\\left(2;3\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Trên khoảng $\\left(0;3\\right)$, phương trình $f'\\left(x\\right)=0$ có nghiệm duy nhất $x=1$.\n\nQua điểm $x=1$, $f'\\left(x\\right)$ đổi dấu từ dương sang âm nên $x=1$ là một điểm cực đại của hàm số.\n\nVậy trên khoảng $\\left(0;3\\right)$ hàm số có đúng một điểm cực đại.",
+    "noi_dung": "Trên khoảng $\\left(0;3\\right)$ hàm số có một điểm cực đại"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Dựa vào dấu của $f'\\left(x\\right)$, trên đoạn $\\left[-1;3\\right]$ hàm số tăng từ $f\\left(-1\\right)$ lên $f\\left(1\\right)$ rồi giảm từ $f\\left(1\\right)$ xuống $f\\left(3\\right)$, nên phương trình $f\\left(x\\right)=0$ chỉ có tối đa hai nghiệm trên khoảng $\\left(-1;3\\right)$.\n\nHơn nữa, số nghiệm của phương trình $f\\left(x\\right)=0$ còn phụ thuộc vào giá trị của $f\\left(x\\right)$, không thể luôn có $3$ nghiệm phân biệt.",
+    "noi_dung": "Trên khoảng $\\left(-1;3\\right)$ phương trình $f\\left(x\\right)=0$ luôn có ba nghiệm phân biệt"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Từ giả thiết $f\\left(-1\\right)+f\\left(0\\right)-2f\\left(1\\right)=f\\left(3\\right)-f\\left(2\\right)$, ta có:\n\n$f\\left(-1\\right)-f\\left(3\\right)=2f\\left(1\\right)-f\\left(0\\right)-f\\left(2\\right)=(f\\left(1\\right)-f\\left(0\\right))+(f\\left(1\\right)-f\\left(2\\right)).$\n\nVì hàm số đồng biến trên $\\left(-1;1\\right)$ nên $f\\left(1\\right)>f\\left(0\\right) ⟹ f\\left(1\\right)-f\\left(0\\right)>0$.\n\nVì hàm số nghịch biến trên $\\left(1;3\\right)$ nên $f\\left(1\\right)>f\\left(2\\right) ⟹ f\\left(1\\right)-f\\left(2\\right)>0$.\n\nSuy ra $f\\left(-1\\right)-f\\left(3\\right)>0\\Leftrightarrow f\\left(-1\\right)>f\\left(3\\right)$.\n\nMặt khác, hàm số đạt cực đại tại $x=1$ trên $\\left[-1;3\\right]$ nên giá trị nhỏ nhất của hàm số trên $\\left[-1;3\\right]$ là $\\min \\{f\\left(-1\\right),f\\left(3\\right)\\}=f\\left(3\\right)$.\n\nVậy $\\min\\limits_{\\left[-1;3\\right]}f\\left(x\\right)=f\\left(3\\right)$.",
+    "noi_dung": "Cho $f\\left(-1\\right)+f\\left(0\\right)-2f\\left(1\\right)=f\\left(3\\right)-f\\left(2\\right)$ thì $\\min\\limits_{\\left[-1;3\\right]}f\\left(x\\right)=f\\left(3\\right)$"
+   }
+  ],
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010202121",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đồ thị như hình bên\nHàm số $y=f\\left(x\\right)$ đạt cực đại tại điểm:",
+  "lua_chon": [
+   "$x=0$.",
+   "$x=3$.",
+   "$x=1$.",
+   "$x=2$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Quan sát đồ thị hàm số $y=f\\left(x\\right)$, ta thấy trên khoảng $\\left(-1;3\\right)$, đồ thị đạt điểm cao nhất tại điểm có tọa độ $\\left(2;2\\right)$.\nTại điểm này, hàm số chuyển từ đồng biến sang nghịch biến khi đi qua $x=2$.\nVậy hàm số $y=f\\left(x\\right)$ đạt cực đại tại điểm $x=2$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010102214",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $f\\left(x\\right)=\\dfrac{x^{2}-4x+6}{x-2}$ có đồ thị $\\left(C\\right)$.",
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Điểm cực tiểu của hàm số là $x=2+\\sqrt{2}$, còn $2\\sqrt{2}$ là giá trị cực tiểu của hàm số.",
+    "noi_dung": "Điểm cực tiểu của hàm số là $2\\sqrt{2}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là\n\n$y=\\dfrac{\\left(x^{2}-4x+6\\right)'}{\\left(x-2\\right)'}=2x-4.$\n\nThay toạ độ điểm $M\\left(1;-2\\right)$ vào phương trình đường thẳng ta được $-2=2\\left(1\\right)-4$ (thỏa mãn).\n\nVậy đường thẳng đi qua hai điểm cực trị đi qua điểm $M\\left(1;-2\\right)$.",
+    "noi_dung": "Phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số đi qua điểm $M\\left(1;-2\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Căn cứ vào bảng biến thiên, giá trị cực đại của hàm số là $y_{CD}=f\\left(2-\\sqrt{2}\\right)=-2\\sqrt{2}$.",
+    "noi_dung": "Giá trị cực đại của hàm số là $-2\\sqrt{2}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Khoảng cách giữa hai điểm cực trị $A$ và $B$ là\n\n$AB=\\sqrt{\\left(2\\sqrt{2})^{2}+(4\\sqrt{2}\\right)^{2}}=\\sqrt{8+32}=\\sqrt{40}=2\\sqrt{10}\\ne \\sqrt{10}.$",
+    "noi_dung": "Khoảng cách giữa hai điểm cực trị của đồ thị hàm số đã cho là $\\sqrt{10}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T112070103024",
+  "loai": "trac_nghiem",
+  "de": "Cho hai vecto $\\vec{a}, \\vec{b}$ thỏa mãn: $|\\vec{a}| = 4;|\\vec{b}| = 3;|\\vec{a} - \\vec{b}| = 4$. Gọi $\\alpha$ là góc giữa hai vecto $\\vec{a}, \\vec{b}$. Chọn khẳng định đúng?",
+  "lua_chon": [
+   "$\\cos\\alpha = \\dfrac{3}{8}$.",
+   "$\\alpha = 30^0$.",
+   "$\\cos\\alpha = \\dfrac{1}{3}$.",
+   "$\\alpha = 60^0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $(\\vec{a} - \\vec{b})^2 = |\\vec{a}|^2 + |\\vec{b}|^2 - 2\\vec{a}.\\vec{b} \\Rightarrow \\vec{a}.\\vec{b} = \\dfrac{9}{2}$.\nDo đó: $\\cos\\alpha = \\dfrac{\\vec{a}.\\vec{b}}{|\\vec{a}|.|\\vec{b}|} = \\dfrac{3}{8}$."
+ },
+ {
+  "ma_cau": "T112010202191",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=ax^{4}+bx^{2}+c$, $\\left(a,b,c\\in \\mathbb{R}\\right)$có đồ thị là đường cong trong hình bên.\nĐiểm cực tiểu của hàm số đã cho là",
+  "lua_chon": [
+   "$x=0$.",
+   "$x=1$.",
+   "$x=2$.",
+   "$x=-1$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Dựa vào đồ thị hàm số, ta thấy hàm số đạt cực tiểu tại $x=0$ với giá trị cực tiểu tương ứng là $y_{CT}=1$.\nVậy điểm cực tiểu của hàm số đã cho là $x=0$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112070101060",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$ (tham khảo hình vẽ).\nKhẳng định nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} = 2\\overrightarrow{SO}$.",
+   "$\\overrightarrow{SB} + \\overrightarrow{SD} = \\overrightarrow{SO}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SC} = 2\\overrightarrow{SO}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} + \\overrightarrow{SD} = 2\\overrightarrow{SO}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $O$ là tâm của hình bình hành $ABCD$ nên $O$ là trung điểm của $AC$.\nSuy ra $\\overrightarrow{SA} + \\overrightarrow{SC} = 2\\overrightarrow{SO}$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010202204",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như hình vẽ.\nGiá trị cực đại của hàm số là:",
+  "lua_chon": [
+   "$y=2$.",
+   "$x=0$.",
+   "$x=2$.",
+   "$y=-2$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát bảng biến thiên, ta thấy hàm số đạt cực đại tại điểm $x=2$ và giá trị cực đại tương ứng là $y_{CD}=2$ (hoặc $y=2$).\nVậy giá trị cực đại của hàm số là $y=2$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010301037",
+  "loai": "trac_nghiem",
+  "de": "Đường thẳng $2y+1=0$ là tiệm cận ngang của hàm số nào sau đây?",
+  "lua_chon": [
+   "$y=\\dfrac{x+1}{2x+1}$",
+   "$y=\\dfrac{x^2+x+1}{1-2x}$",
+   "$y=\\dfrac{2x+1}{1-x}$",
+   "$y=\\dfrac{3-x^2}{2x^2-3x+1}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hàm số $y=\\dfrac{x+1}{2x+1}$ có tiệm cận ngang $y=\\dfrac{1}{2}$.\nHàm số $y=\\dfrac{x^2+x+1}{1-2x}$ không có tiệm cận ngang.\nHàm số $y=\\dfrac{2x+1}{1-x}$ có tiệm cận ngang $y=-2$.\nHàm số $y=\\dfrac{3-x^2}{2x^2-3x+1}$ có tiệm cận ngang $y=-\\dfrac{1}{2}\\iff 2y+1=0$."
+ },
+ {
+  "ma_cau": "T112010202025",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ xác định, liên tục trên $\\mathbb{R}$ và có bảng biến thiên như sau.\nGiá trị cực đại của hàm số là",
+  "lua_chon": [
+   "$x=5$.",
+   "$x=-2$.",
+   "$y=-2$.",
+   "$y=5$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$.\nDựa vào bảng biến thiên, ta thấy đạo hàm đổi dấu từ dương sang âm khi qua điểm $x=1$.\nDo đó, hàm số đạt cực đại tại điểm $x=1$ và giá trị cực đại của hàm số là $y=5$ (hay $y_{CD}=5$).",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010101166",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có bảng biến thiên như sau:\nHàm số đã cho nghịch biến trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(0;1\\right).$.",
+   "$\\left(-\\infty;2\\right).$.",
+   "$\\left(4;+\\infty \\right).$.",
+   "$\\left(-1;1\\right).$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát bảng biến thiên, ta thấy $f'\\left(x\\right)<0$ trên các khoảng $\\left(-1;0\\right)$ và $\\left(0;1\\right)$.\nDo đó, hàm số đã cho nghịch biến trên các khoảng $\\left(-1;0\\right)$ và $\\left(0;1\\right)$.\nĐối chiếu với các phương án, khoảng $\\left(0;1\\right)$ thỏa mãn yêu cầu bài toán.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010101002",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = f(x)$ có bảng biến thiên như sau: [hình] Hàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(-1;0)$",
+   "$(-\\infty;0)$",
+   "$(1;+\\infty)$",
+   "$(0;1)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào bảng biến thiên ta có hàm số đã cho nghịch biến trên các khoảng $(0;1)$ và $(-\\infty;-1)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010102176",
+  "loai": "trac_nghiem",
+  "de": "Hàm số $y=x^{4}-8x^{2}+2025$đồng biến trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(-\\infty;0\\right)$.",
+   "$\\left(0;+\\infty \\right)$.",
+   "$\\left(-2;0\\right)$.",
+   "$\\left(-\\infty;+\\infty \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tập xác định: $D=\\mathbb{R}$.\nTa có $y'=4x^{3}-16x=4x\\left(x^{2}-4\\right)$.\nCho $y'=0\\Leftrightarrow \\left[\\begin{array}{l} x=-2 \\\\ x=0 \\\\ x=2. \\end{array}\\right.$\nBảng biến thiên:\nCăn cứ vào bảng biến thiên, hàm số đồng biến trên các khoảng $\\left(-2;0\\right)$ và $\\left(2;+\\infty \\right)$.\nVậy hàm số đồng biến trên khoảng $\\left(-2;0\\right)$."
+ },
+ {
+  "ma_cau": "T112010202187",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có bảng biến thiên như hình vẽ bên. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\min\\limits_{\\mathbb{R}}y=4$.",
+   "$y_{CT}=0$.",
+   "$\\max\\limits_{\\mathbb{R}}y=5$.",
+   "$y_{CD}=5$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào bảng biến thiên, ta thấy hàm số đạt cực đại tại $x=1$ và giá trị cực đại là $y_{CD}=5$.\nGiá trị cực tiểu của hàm số là $y_{CT}=4$.\nHàm số không có giá trị lớn nhất và nhỏ nhất trên $\\mathbb{R}$ vì $\\lim\\limits_{x\\to -\\infty }y=+\\infty$ và $\\lim\\limits_{x\\to +\\infty }y=-\\infty$.\nVậy mệnh đề đúng là $y_{CD}=5$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010102076",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$ và có đạo hàm $f'\\left(x\\right)=x^{2}\\left(3-x\\right)\\left(x+1\\right)$ với mọi $x\\in \\mathbb{R}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$f\\left(-2\\right)<f\\left(-1\\right)$.",
+   "$f\\left(3\\right)>f\\left(4\\right)$.",
+   "$f\\left(2\\right)>f\\left(3\\right)$.",
+   "$f\\left(-1\\right)>f\\left(2\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=x^{2}\\left(3-x\\right)\\left(x+1\\right)$.\nCho $f'\\left(x\\right) = 0 \\Leftrightarrow \\left[\\begin{array}{l}x = 0\\\\x = 3\\\\x = -1.\\end{array}\\right.$\nBảng biến thiên:\nTừ bảng biến thiên, ta thấy:\n• Hàm số nghịch biến trên khoảng $\\left(-\\infty;-1\\right)$. Vì $-2<-1$ nên $f\\left(-2\\right)>f\\left(-1\\right)$.\n• Hàm số đồng biến trên khoảng $\\left(-1;3\\right)$. Vì $-1<2<3$ nên $f\\left(-1\\right)<f\\left(2\\right)<f\\left(3\\right)$.\n• Hàm số nghịch biến trên khoảng $\\left(3;+\\infty \\right)$. Vì $3<4$ nên $f\\left(3\\right)>f\\left(4\\right)$.\nVậy khẳng định đúng là $f\\left(3\\right)>f\\left(4\\right)$."
+ },
+ {
+  "ma_cau": "T112010102072",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=\\left(x-3\\right)^{2}\\left(1-x\\right)$ với mọi $x\\in \\mathbb{R}$. Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(1;3\\right)$.",
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(3;+\\infty \\right)$.",
+   "$\\left(-\\infty;1\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=\\left(x-3\\right)^{2}\\left(1-x\\right)$.\nVì $\\left(x-3\\right)^{2}\\ge 0$ với mọi $x\\in \\mathbb{R}$ nên:\n$f'\\left(x\\right)>0\\Leftrightarrow \\begin{cases} 1-x>0 \\\\ x\\ne 3 \\end{cases}\\Leftrightarrow x<1.$\nBảng biến thiên:\nDựa vào bảng biến thiên, hàm số đồng biến trên khoảng $\\left(-\\infty;1\\right)$."
+ },
+ {
+  "ma_cau": "T112010101006",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = f(x)$ có đồ thị là đường cong trong hình bên. [hình] Hàm số đã cho nghịch biến trong khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(0;1)$.",
+   "$(-\\infty;0)$.",
+   "$(0;+\\infty)$.",
+   "$(-1;1)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có: đồ thị hàm số đi xuống trên khoảng $(0;1)$ nên hàm số nghịch biến trên khoảng $(0;1)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010101004",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = f(x)$ có bảng biến thiên như sau: [hình] Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(-1;+\\infty)$.",
+   "$(-1;4)$.",
+   "$(0;1)$.",
+   "$(-1;0)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Từ bảng biến thiên suy ra hàm số đã cho đồng biến trên $(-1;0)$ và $(1;+\\infty)$",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201144",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\dfrac{x^{2}+x-1}{x-1}$ có hai điểm cực trị $x_{1},x_{2}$. Khi đó $x_{1}+x_{2}$ bằng bao nhiêu?",
+  "dap_an": "2",
+  "loi_giai": "Tập xác định: $D=\\mathbb{R}\\setminus \\{1\\}$.\nTa có:\n$y=\\dfrac{x^{2}+x-1}{x-1}=x+2+\\dfrac{1}{x-1}.$\nĐạo hàm:\n$y'=1-\\dfrac{1}{\\left(x-1\\right)^{2}}=\\dfrac{\\left(x-1\\right)^{2}-1}{\\left(x-1\\right)^{2}}=\\dfrac{x^{2}-2x}{\\left(x-1\\right)^{2}}.$\nCho $y'=0\\Leftrightarrow x^{2}-2x=0\\Leftrightarrow \\left[\\begin{array}{l} x_{1}=0 \\\\ x_{2}=2. \\end{array}\\right.$\nCả hai nghiệm đều thuộc tập xác định $D$ và $y'$ đổi dấu khi qua hai nghiệm này, do đó hàm số có hai điểm cực trị là $x_{1}=0$ và $x_{2}=2$.\nKhi đó:\n$x_{1}+x_{2}=0+2=2.$\nVậy $x_{1}+x_{2}=2$."
+ },
+ {
+  "ma_cau": "T112010101075",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như sau:\nHàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(-1;1\\right)$.",
+   "$\\left(-2;2\\right)$.",
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(-2;1\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Dựa vào bảng biến thiên, ta thấy $f'\\left(x\\right)<0$ trên khoảng $\\left(-1;1\\right)$.\nVậy hàm số đã cho nghịch biến trên khoảng $\\left(-1;1\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010302020",
+  "loai": "trac_nghiem",
+  "de": "(Sở Ninh Bình 2025) Cho hàm số $y=\\dfrac{ax+b}{cx+d}$ (với $c \\neq 0; ad-bc \\neq 0$) có đồ thị như hình vẽ dưới đây.",
+  "lua_chon": [
+   "$x-2=0$",
+   "$x+1=0$",
+   "$y+1=0$",
+   "$y-2=0$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010102070",
+  "loai": "trac_nghiem",
+  "de": "Hàm số $y=2x^{3}-6x-3$ nghịch biến trên khoảng nào?",
+  "lua_chon": [
+   "$\\left(-1;1\\right)$.",
+   "$\\left(-\\infty;-1\\right)$.",
+   "$\\mathbb{R}$.",
+   "$\\left(1;+\\infty \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $y'=6x^{2}-6$.\n$y'=0\\Leftrightarrow 6x^{2}-6=0\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=-1. \\end{array}\\right.$\nBảng biến thiên:\nDựa vào bảng biến thiên, hàm số nghịch biến trên khoảng $\\left(-1;1\\right)$."
+ },
+ {
+  "ma_cau": "T112010102094",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=x\\left(x-4\\right)^{3}$ với mọi $x$ thuộc $\\mathbb{R}$. Các mệnh đề sau đúng hay sai?",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hàm số đồng biến trên khoảng $\\left(-\\infty;0\\right)$ nên cũng đồng biến trên khoảng $\\left(-3;0\\right)\\subset \\left(-\\infty;0\\right)$.",
+    "noi_dung": "Hàm số $f\\left(x\\right)$ đồng biến trên khoảng $\\left(-3;0\\right)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Trên khoảng $\\left(-2;1\\right)$, đạo hàm $f'\\left(x\\right)$ đổi dấu khi đi qua điểm $x=0$ nên hàm số không nghịch biến trên khoảng $\\left(-2;1\\right)$.",
+    "noi_dung": "Hàm số $f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-2;1\\right)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hàm số nghịch biến trên khoảng $\\left(0;4\\right)$, mà $1,3\\in \\left(0;4\\right)$ và $1<3$ nên $f\\left(1\\right)>f\\left(3\\right)$.",
+    "noi_dung": "$f\\left(1\\right)>f\\left(3\\right)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hàm số đồng biến trên khoảng $\\left(4;+\\infty \\right)$, mà $5,6\\in \\left(4;+\\infty \\right)$ và $5<6$ nên $f\\left(5\\right)<f\\left(6\\right)$.",
+    "noi_dung": "$f\\left(5\\right)<f\\left(6\\right)$."
+   }
+  ]
+ },
+ {
+  "ma_cau": "T112040103044",
+  "loai": "trac_nghiem",
+  "de": "Tìm họ nguyên hàm của hàm số $y = x^2 - 3^x + \\dfrac{1}{x}$.",
+  "lua_chon": [
+   "$\\dfrac{x^3}{3} - \\dfrac{3^x}{\\ln 3} - \\dfrac{1}{x^2} + C, C \\in \\mathbb{R}$.",
+   "$\\dfrac{x^3}{3} - 3^x + \\dfrac{1}{x^2} + C, C \\in \\mathbb{R}$.",
+   "$\\dfrac{x^3}{3} - \\dfrac{3^x}{\\ln 3} + \\ln|x| + C, C \\in \\mathbb{R}$.",
+   "$\\dfrac{x^3}{3} - \\dfrac{3^x}{\\ln 3} - \\ln|x| + C, C \\in \\mathbb{R}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có: $\\int\\left(x^2 - 3^x + \\dfrac{1}{x}\\right)dx = \\dfrac{x^3}{3} - \\dfrac{3^x}{\\ln 3} + \\ln|x| + C, C \\in \\mathbb{R}$."
+ },
+ {
+  "ma_cau": "T112010201062",
+  "loai": "trac_nghiem",
+  "de": "Tìm điểm cực tiểu của đồ thị hàm số $y=\\dfrac{1}{3}x^{3}-2x^{2}+3x+1$.",
+  "lua_chon": [
+   "$x=1$.",
+   "$\\left(1;\\dfrac{7}{3}\\right)$.",
+   "$x=3$.",
+   "$\\left(3;1\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $y'=x^{2}-4x+3$.\nCho $y'=0\\Leftrightarrow x^{2}-4x+3=0\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=3. \\end{array}\\right.$\nVới $x=1$ thì $y=\\dfrac{7}{3}$; với $x=3$ thì $y=1$.\nBảng biến thiên:\nCăn cứ vào bảng biến thiên, hàm số đạt cực tiểu tại $x=3$ và giá trị cực tiểu là $y_{CT}=1$.\nVậy điểm cực tiểu của đồ thị hàm số là $\\left(3;1\\right)$."
+ },
+ {
+  "ma_cau": "T112010102067",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=x^{3}-3x^{2}-9x+1$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "Hàm số nghịch biến trên $\\left(-\\infty;-1\\right)$ và $\\left(3;+\\infty \\right)$.",
+   "Hàm số đồng biến trên $\\left(-1;3\\right)$.",
+   "Hàm số nghịch biến trên $\\left(-1;3\\right)$.",
+   "Hàm số đồng biến trên $\\left(-\\infty;1\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $y'=3x^{2}-6x-9=3\\left(x^{2}-2x-3\\right)$.\nCho $y'=0\\Leftrightarrow \\left[\\begin{array}{l} x=-1 \\\\ x=3. \\end{array}\\right.$\nBảng biến thiên:\nDựa vào bảng biến thiên, hàm số đồng biến trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(3;+\\infty \\right)$; nghịch biến trên khoảng $\\left(-1;3\\right)$.\nVậy khẳng định đúng là: Hàm số nghịch biến trên $\\left(-1;3\\right)$."
+ },
+ {
+  "ma_cau": "T112010301001",
+  "loai": "trac_nghiem",
+  "de": "Đường tiệm cận ngang của đồ thị hàm số $y = \\dfrac{2x + 1}{x + 2}$ có phương trình là:",
+  "lua_chon": [
+   "$x = -2$",
+   "$y = 3$",
+   "$x = -1$",
+   "$y = 2$"
+  ]
+ },
+ {
+  "ma_cau": "T112010102044",
+  "loai": "trac_nghiem",
+  "de": "Hàm số nào dưới đây đồng biến trên khoảng $(-\\infty;+\\infty)$?",
+  "lua_chon": [
+   "$y = \\dfrac{x-1}{x-2}$",
+   "$y = -x^3 - 3x$",
+   "$y = x^3 + x$",
+   "$y = \\dfrac{x+1}{x+3}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $y = x^3 + x \\Rightarrow y' = 3x^2 + 1 > 0,\\ \\forall x \\in \\mathbb{R}$."
+ },
+ {
+  "ma_cau": "T112010102104",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $y=f\\left(x\\right)=\\dfrac{x^{3}}{3}-2x^{2}+3x+\\dfrac{2}{3}$.",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Dựa vào bảng biến thiên, $f'\\left(x\\right)<0$ trên khoảng $\\left(1;3\\right)$ nên hàm số nghịch biến trên khoảng $\\left(1;3\\right)$.",
+    "noi_dung": "Hàm số nghịch biến trên khoảng $\\left(1;3\\right)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hàm số đạt cực đại tại $x=1$ với giá trị cực đại là $y_{CD}=f\\left(1\\right)=2\\ne 1$.",
+    "noi_dung": "Giá trị cực đại của hàm số là $1$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hàm số đạt cực tiểu tại $x=3$ với giá trị cực tiểu là $y_{CT}=f\\left(3\\right)=\\dfrac{2}{3}$.\n\nTổng giá trị cực đại và giá trị cực tiểu của hàm số là\n\n$y_{CD}+y_{CT}=2+\\dfrac{2}{3}=\\dfrac{8}{3}\\ne \\dfrac{7}{3}.$",
+    "noi_dung": "Tổng giá trị cực đại và giá trị cực tiểu của hàm số là $\\dfrac{7}{3}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hai điểm cực trị của đồ thị hàm số là $A\\left(1;2\\right)$ và $B\\left(3;\\dfrac{2}{3}\\right)$.\n\nTa có $\\overrightarrow{AB}=\\left(2;-\\dfrac{4}{3}\\right)=\\dfrac{2}{3}\\left(3;-2\\right)$, suy ra vectơ pháp tuyến của đường thẳng $AB$ là $\\overrightarrow{n}=\\left(2;3\\right)$.\n\nPhương trình đường thẳng $AB$ đi qua hai điểm cực trị là\n\n$2\\left(x-1\\right)+3\\left(y-2\\right)=0\\Leftrightarrow 2x+3y-8=0.$\n\nĐường tròn $\\left(C\\right) :\\left(x-2\\right)^{2}+\\left(y+1\\right)^{2}=9$ có tâm $I\\left(2;-1\\right)$ và bán kính $R=3$.\n\nKhoảng cách từ tâm $I$ đến đường thẳng $AB$ là\n\n$d\\left(I,AB\\right)=\\dfrac{|2\\cdot 2+3\\cdot \\left(-1\\right)-8|}{\\sqrt{2^{2}+3^{2}}}=\\dfrac{7}{\\sqrt{13}}=\\dfrac{7\\sqrt{13}}{13}.$\n\nVì $d\\left(I,AB\\right)=\\dfrac{7}{\\sqrt{13}}<3=R$ nên đường thẳng $AB$ cắt đường tròn $\\left(C\\right)$ tại $2$ điểm phân biệt.",
+    "noi_dung": "Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số cắt đường tròn $\\left(C\\right) :\\left(x-2\\right)^{2}+\\left(y+1\\right)^{2}=9$ tại $2$ điểm phân biệt."
+   }
+  ]
+ },
+ {
+  "ma_cau": "T112070101051",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Mệnh đề nào dưới đây là sai?",
+  "lua_chon": [
+   "$\\vec{AB'} + \\vec{BC'} = \\vec{AC}$.",
+   "$\\vec{AC} + \\vec{DD'} = \\vec{AC'}$.",
+   "$\\vec{A'B'} + \\vec{AD} = \\vec{AC}$.",
+   "$\\vec{AD} + \\vec{CC'} = \\vec{AD'}$."
+  ],
+  "dap_an": "D"
+ },
+ {
+  "ma_cau": "T112010104032",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$. Hàm số $y=f'\\left(x\\right)$có đồ thị như hình dưới đây\nHàm số $y=f\\left(x\\right)$ nghịch biến trên",
+  "lua_chon": [
+   "$\\left(1;2\\right)$.",
+   "$\\left(0;2\\right)$.",
+   "$\\left(0;1\\right)$.",
+   "$\\left(-\\infty;0\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát đồ thị hàm số đạo hàm $y=f'\\left(x\\right)$, ta thấy $f'\\left(x\\right)\\le 0$ trên các đoạn $(-\\infty;-1]$ và $\\left[1;2\\right]$ (ứng với phần đồ thị nằm phía dưới hoặc trên trục hoành).\nDo đó, hàm số $y=f\\left(x\\right)$ nghịch biến trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(1;2\\right)$.\nVậy trong các phương án đã cho, hàm số $y=f\\left(x\\right)$ nghịch biến trên khoảng $\\left(1;2\\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201060",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$. Đồ thị hàm số $f'\\left(x\\right)$là đồ thị một hàm số bậc $3$ như hình vẽ.\nSố điểm cực tiểu của hàm số $y=f\\left(x\\right)$ là",
+  "lua_chon": [
+   "$3$.",
+   "$1$.",
+   "$2$.",
+   "$0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Từ đồ thị của hàm số $f'\\left(x\\right)$, ta thấy:\n- $f'\\left(x\\right)$ cắt trục hoành tại $x=-1$ và đổi dấu từ dương sang âm khi qua $x=-1$. Do đó $x=-1$ là điểm cực đại của hàm số $y=f\\left(x\\right)$.\n- $f'\\left(x\\right)$ tiếp xúc với trục hoành tại $x=2$ và không đổi dấu (luôn âm hoặc bằng $0$ lân cận $x=2$). Do đó $x=2$ không phải là điểm cực trị.\nVậy hàm số $y=f\\left(x\\right)$ không có điểm cực tiểu nào.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010101019",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = f(x)$ có bảng biến thiên như hình vẽ. Chọn mệnh đề đúng.",
+  "lua_chon": [
+   "Hàm số đã cho đồng biến trên khoảng $(\\dfrac{1}{2};+\\infty)$.",
+   "Hàm số đã cho đồng biến trên khoảng $(-\\infty;3)$.",
+   "Hàm số đã cho nghịch biến trên khoảng $(3;+\\infty)$.",
+   "Hàm số đã cho nghịch biến trên các khoảng $(-\\infty;\\dfrac{1}{2})$ và $(3;+\\infty)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Từ bảng biến thiên ta thấy hàm số đã cho nghịch biến trên khoảng $(3;+\\infty)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010201048",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=\\left(x-3\\right)\\left(x^{2}-5\\right)\\left(x^{4}-25\\right)$. Hỏi hàm số đã cho có mấy điểm cực trị?",
+  "dap_an": "1",
+  "loi_giai": "Ta có $x^{4}-25=\\left(x^{2}-5\\right)\\left(x^{2}+5\\right)$.\nBiến đổi biểu thức đạo hàm:\n$f'\\left(x\\right)=\\left(x-3\\right)\\left(x^{2}-5\\right)\\left(x^{2}-5\\right)\\left(x^{2}+5\\right)=\\left(x-3\\right)\\left(x^{2}-5\\right)^{2}\\left(x^{2}+5\\right).$\nTa thấy:\n- $x^{2}+5>0$ với mọi $x\\in \\mathbb{R}$.\n- $\\left(x^{2}-5\\right)^{2}\\ge 0$ với mọi $x\\in \\mathbb{R}$, triệt tiêu tại $x=\\pm \\sqrt{5}$ nhưng không đổi dấu qua hai điểm này.\n- Thừa số $\\left(x-3\\right)$ đổi dấu từ âm sang dương khi $x$ đi qua $x=3$.\nDo đó, $f'\\left(x\\right)$ chỉ đổi dấu đúng một lần khi qua điểm $x=3$.\nVậy hàm số đã cho có đúng $1$ điểm cực trị."
+ },
+ {
+  "ma_cau": "T112010202041",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đồ thị như hình vẽ.\nCực tiểu của hàm số bằng",
+  "lua_chon": [
+   "$-1$.",
+   "$-4$.",
+   "$0$.",
+   "$2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát đồ thị hàm số, ta thấy điểm cực tiểu của đồ thị là $\\left(0;-4\\right)$.\nDo đó, hàm số đạt cực tiểu tại $x=0$ và cực tiểu (giá trị cực tiểu) của hàm số bằng $y_{CT}=-4$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T112010102245",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$ và có đạo hàm $f'\\left(x\\right)=x+2$ với mọi $x\\in \\mathbb{R}$. Hàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(2;+\\infty \\right)$.",
+   "$\\left(-\\infty;-2\\right)$.",
+   "$\\left(-\\infty;2\\right)$.",
+   "$\\left(-2;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=x+2$.\n$f'\\left(x\\right)=0\\Leftrightarrow x+2=0\\Leftrightarrow x=-2$.\nBảng biến thiên:\nCăn cứ vào bảng biến thiên, hàm số nghịch biến trên khoảng $\\left(-\\infty;-2\\right)$ và đồng biến trên khoảng $\\left(-2;+\\infty \\right)$.\nVậy hàm số nghịch biến trên khoảng $\\left(-\\infty;-2\\right)$."
+ }
+]

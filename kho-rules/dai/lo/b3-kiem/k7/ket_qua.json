@@ -1,0 +1,1012 @@
+[
+ {
+  "ma_cau": "077022220401029",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTLN với hai số hạng giá trị tuyệt đối cùng loại; có thể coi là nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401074",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp lũy thừa chẵn và căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077020101031",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "077022220401041",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTNN tổng hai bình phương cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301016",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực gồm căn và giá trị tuyệt đối.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077022220401006",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501045",
+  "may": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x: VT tổng hai GTTĐ, VP phân thức mẫu bình phương cộng 1.",
+  "hien": "NDB00465",
+  "nguon": "gan_cum",
+  "cum": "DCUM01552",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "07702220301002",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077022220401005",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301012",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077022220401025",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp căn bậc hai và bình phương.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401010",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401004",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501019",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401051",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một bình phương.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401036",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401086",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức tổng hợp bình phương và giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501018",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "T107020501040",
+  "may": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x: VT tổng hai GTTĐ, VP phân thức mẫu x^2+1.",
+  "hien": "NDB00465",
+  "nguon": "gan_cum",
+  "cum": "DCUM01552",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "0770220201005",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ },
+ {
+  "ma_cau": "T107020501010",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "T107020501015",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "T107020501033",
+  "may": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x: VT tổng hai GTTĐ, VP phân thức mẫu bình phương cộng 1.",
+  "hien": "NDB00465",
+  "nguon": "gan_cum",
+  "cum": "DCUM01552",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "07702220301001",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "07702220301008",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "T107020501003",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401063",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp bình phương và giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401076",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức tổng hợp căn bậc hai và giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301020",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077022220401031",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTLN với hai số hạng GTTĐ cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401043",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTNN tổng hai lũy thừa chẵn cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077020101035",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "T107020501014",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401013",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401034",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077020101024",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "077022220401070",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp bình phương và căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077020101036",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "T107020501029",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401050",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một lũy thừa chẵn.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301028",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077022220401016",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401073",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp bình phương và căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "0770220201004",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ },
+ {
+  "ma_cau": "T107020501006",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "0770220201006",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ },
+ {
+  "ma_cau": "T107020501017",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077020101007",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "07702220301006",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "T107020501020",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401040",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTNN tổng hai lũy thừa chẵn cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301015",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "0770220201010",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ },
+ {
+  "ma_cau": "077020101032",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "07702220301026",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077020101038",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "077020101029",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "0770220201001",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ },
+ {
+  "ma_cau": "077022220401020",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401054",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức tổng hợp bình phương và giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401039",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTNN tổng hai lũy thừa chẵn cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401024",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp căn bậc hai và lũy thừa chẵn.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401065",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501007",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401012",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401021",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp căn bậc hai và bình phương.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301010",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "T107020501004",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "T107020501008",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401022",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp căn bậc hai và bình phương.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501011",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "T107020501012",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401003",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401049",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một bình phương.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401032",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTLN với hai số hạng GTTĐ cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301023",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "07702220301022",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "T107020501026",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077020101033",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "077022220401038",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức chỉ chứa một giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501041",
+  "may": "NDB00465",
+  "chac": "cao",
+  "ly_do": "Tìm x: VT tổng hai GTTĐ, VP phân thức mẫu bình phương cộng 1.",
+  "hien": "NDB00465",
+  "nguon": "gan_cum",
+  "cum": "DCUM01552",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "07702220301030",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "0770220201007",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ },
+ {
+  "ma_cau": "077022220401061",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp bình phương và giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401075",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp bình phương và căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401064",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501009",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401053",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức tổng hợp bình phương và giá trị tuyệt đối.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "T107020501030",
+  "may": "NDB00463",
+  "chac": "cao",
+  "ly_do": "GTNN tổng hai GTTĐ, áp dụng |a|+|b|>=|a+b|.",
+  "hien": "NDB00463",
+  "nguon": "gan_cum",
+  "cum": "DCUM01550",
+  "dang_cu": "T107020403"
+ },
+ {
+  "ma_cau": "077022220401019",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401044",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTNN tổng hai lũy thừa chẵn cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401067",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301027",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "077022220401009",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077020101027",
+  "may": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì và viết gọn STP vô hạn tuần hoàn.",
+  "hien": "NDB00443",
+  "nguon": "gan_cum",
+  "cum": "DCUM01307",
+  "dang_cu": "T107020101"
+ },
+ {
+  "ma_cau": "077022220401023",
+  "may": "NDB00808",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức tổng hợp căn bậc hai và bình phương.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401066",
+  "may": "NDB00462",
+  "chac": "cao",
+  "ly_do": "GTLN phân thức có mẫu chứa một giá trị tuyệt đối.",
+  "hien": "NDB00462",
+  "nguon": "gan_cum",
+  "cum": "DCUM01507",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401008",
+  "may": "NDB00461",
+  "chac": "cao",
+  "ly_do": "GTLN biểu thức chỉ chứa một căn bậc hai.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "077022220401027",
+  "may": "NDB00808",
+  "chac": "vua",
+  "ly_do": "GTLN với hai số hạng GTTĐ cùng loại; nhiều biểu thức hoặc cơ bản.",
+  "hien": "NDB00461",
+  "nguon": "gan_cum",
+  "cum": "DCUM01506",
+  "dang_cu": "T107020401"
+ },
+ {
+  "ma_cau": "07702220301003",
+  "may": "NDB00455",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số thực có căn bậc hai.",
+  "hien": "NDB00455",
+  "nguon": "gan_cum",
+  "cum": "DCUM01607",
+  "dang_cu": "T107020301"
+ },
+ {
+  "ma_cau": "0770220201011",
+  "may": "NDB00449",
+  "chac": "cao",
+  "ly_do": "Xác định số hữu tỉ, số vô tỉ trong nhóm số cho trước.",
+  "hien": "NDB00449",
+  "nguon": "gan_cum",
+  "cum": "DCUM01340",
+  "dang_cu": "T107020201"
+ }
+]

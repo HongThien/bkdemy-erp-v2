@@ -1,0 +1,212 @@
+[
+ {
+  "ma_cau": "T108020202085",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $P = 4x^2 + 2y^2 - 4xy + 4x - 8y + 2034$.",
+  "dap_an": "2024",
+  "loi_giai": "Ta có: P = $4x^2 + 2y^2 - 4xy + 4x - 8y + 2034 = 2(x - y + 2)^2 + 2(x - 1)^2 + 2024$.\nVì $2(x - y + 2)^2 \\geq 0$ và $2(x - 1)^2 \\geq 0$ nên $P \\geq 2024$.\nDấu \"=\" xảy ra khi $x - y + 2 = 0$ và $x - 1 = 0$.\nSuy ra $x = 1$, $y = 3$.\nVậy GTNN của P là $2024$, đạt được khi $x = 1$, $y = 3$.",
+  "A": {
+   "id": "NDB00698",
+   "ten": "GTLN - GTNN của biểu thức hai biến sử dụng bình phương 3 số - Dạng 2 bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108020202081",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $M = x^2 + y^2 – xy – x – y + 2026$.",
+  "dap_an": "2025",
+  "loi_giai": "Ta có $M = \\dfrac{1}{2}[(x-y)^2 + (x-1)^2 + (y-1)^2] + 2025$.\nVì $(x-y)^2 \\ge 0$, $(x-1)^2 \\ge 0$ và $(y-1)^2 \\ge 0$ nên $M \\ge 2025$.\nDấu \"=\" xảy ra khi $x-y=0, x-1=0$ và $y-1=0$.\nSuy ra $x=y=1$.\nVậy GTNN của M là $2025$, đạt được khi $x=y=1$.",
+  "A": {
+   "id": "NDB00699",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng ba bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108020202091",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $M = x^2 - 2x(y+1) + 3y^2 + 2025$.",
+  "dap_an": "\\dfrac{4047}{2}",
+  "loi_giai": "Ta có:\n$M = x^2 - 2x(y+1) + 3y^2 + 2025 = (x - y - 1)^2 + 2\\left(y - \\dfrac{1}{2}\\right)^2 + \\dfrac{4047}{2}$.\nVì $(x - y - 1)^2 \\geq 0$ và $2\\left(y - \\dfrac{1}{2}\\right)^2 \\geq 0$ nên $M \\geq \\dfrac{4047}{2}$.\nDấu \"=\" xảy ra khi $x - y - 1 = 0$ và $y - \\dfrac{1}{2} = 0$.\nSuy ra $x = \\dfrac{3}{2}, y = \\dfrac{1}{2}$.\nVậy GTNN của M là $\\dfrac{4047}{2}$, đạt được khi $x = \\dfrac{3}{2}, y = \\dfrac{1}{2}$.",
+  "A": {
+   "id": "NDB00698",
+   "ten": "GTLN - GTNN của biểu thức hai biến sử dụng bình phương 3 số - Dạng 2 bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108020401061",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $a^2 + b^2 + c^2 = ab + bc + ca$. Chứng minh rằng $a = b = c$",
+  "dap_an": "$a=b=c$",
+  "loi_giai": "Ta có $a^2 + b^2 + c^2 = ab + bc + ca$\n$\\Rightarrow 2a^2 + 2b^2 + 2c^2 = 2ab + 2bc + 2ca$\n$\\Rightarrow (a^2 + b^2 - 2ab) + (b^2 + c^2 - 2bc) + (c^2 + a^2 - 2ca) = 0$\n$\\Rightarrow (a-b)^2 + (b-c)^2 + (c-a)^2 = 0$\nVì $(a-b)^2 \\ge 0;(b-c)^2 \\ge 0;(c-a)^2 \\ge 0$ nên $\\Rightarrow (a-b)^2 + (b-c)^2 + (c-a)^2 \\ge 0$\nDấu '=' xảy ra khi $(a-b)^2 = (b-c)^2 = (c-a)^2 = 0 \\Rightarrow a = b = c$",
+  "A": {
+   "id": "NDB00692",
+   "ten": "Viết đa thức thành tích ứng dụng hiệu hai bình phương hoặc ngược lại"
+  },
+  "B": {
+   "id": "NDB00468",
+   "ten": "Cụm a=b=c"
+  }
+ },
+ {
+  "ma_cau": "T108020202066",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 5x^2 - 8xy + 5y^2 - 4x - 4y + 15$",
+  "dap_an": "7",
+  "loi_giai": "Ta có $A = (4x^2 - 8xy + 4y^2) + (x^2 - 4x + 4) + (y^2 - 4y + 4) + 15 - 4 - 4$\n$A = (2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7$\nVì $(2x - 2y)^2 \\geq 0$; $(x - 2)^2 \\geq 0$; $(y - 2)^2 \\geq 0$\nNên $(2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7 \\geq 7 \\Rightarrow A \\geq 7.$\nDấu ' $=$ ' xảy ra khi $\\begin{cases}(2x - 2y)^2 = 0\\\\(x - 2)^2 = 0\\\\(y - 2)^2 = 0\\end{cases} \\Rightarrow x = 2; y = 2$",
+  "A": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00699",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng ba bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108020202082",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $C = x^2 - 4xy + 5y^2 + 10x - 22y + 30$.",
+  "dap_an": "4",
+  "loi_giai": "Ta có:\n$C = x^2 - 4xy + 5y^2 + 10x - 22y + 30 = (x - 2y + 5)^2 + (y - 1)^2 + 4$.\nVì $(x - 2y + 5)^2 \\ge 0$ và $(y - 1)^2 \\ge 0$ nên $C \\ge 4$.\nDấu \"=\" xảy ra khi $x - 2y + 5 = 0$ và $y - 1 = 0$.\nSuy ra $x = -3$, $y = 1$.\nVậy GTNN của C là 4, đạt được khi $x = -3$, $y = 1$.",
+  "A": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00698",
+   "ten": "GTLN - GTNN của biểu thức hai biến sử dụng bình phương 3 số - Dạng 2 bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108020202055",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 5x^2 - 8xy + 5y^2 - 4x - 4y + 15$",
+  "dap_an": "7",
+  "loi_giai": "Ta có $A=(4x^2 - 8xy + 4y^2) + (x^2 - 4x + 4) + (y^2 - 4y + 4) + 15 - 4 - 4$\n$A=(2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7$\nVì $(2x - 2y)^2 \\ge 0$; $(x - 2)^2 \\ge 0$; $(y - 2)^2 \\ge 0$\nNên $(2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7 \\ge 7 \\Rightarrow A \\ge 7$\nDấu '$=$' xảy ra khi $\\begin{cases} (2x - 2y)^2 = 0 \\ (x - 2)^2 = 0 \\ (y - 2)^2 = 0 \\end{cases} \\Rightarrow x = 2; y = 2$",
+  "A": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00699",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng ba bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108020301012",
+  "loai": "tra_loi_ngan",
+  "de": "$x^3 + \\ldots + 12x + \\ldots = (\\ldots)^3$",
+  "dap_an": "$x+2$",
+  "loi_giai": "$x^3 + 6x^2 + 12x + 8 = (x+2)^3$",
+  "A": {
+   "id": "NDB00969",
+   "ten": "Hoàn thiện biểu thức lập phương tổng hiệu"
+  },
+  "B": {
+   "id": "NDB00690",
+   "ten": "Khai triển hằng đẳng thức lập phương tổng hiệu"
+  }
+ },
+ {
+  "ma_cau": "T108030101007",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT $4x^2 - 12x = $",
+  "dap_an": "$4x(x - 3)$",
+  "loi_giai": "$4x^2 - 12x$\n$= 4x \\cdot x - 4x \\cdot 3$\n$= 4x(x - 3)$",
+  "A": {
+   "id": "NDB00471",
+   "ten": "Rút đơn thức, nhiều biến"
+  },
+  "B": {
+   "id": "NDB00470",
+   "ten": "Một biến - Rút số, rút đơn thức"
+  }
+ },
+ {
+  "ma_cau": "T108020202044",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 2x^2 - 4xy + 5y^2 - 4x - 2y + 13$",
+  "dap_an": "8",
+  "loi_giai": "Ta có : $A = (x^2 - 4xy + 4y^2) + (x^2 - 4x + 4) + (y^2 - 2y + 1) + 13 - 4 - 1$\n$A = (x - 2y)^2 + (x - 2)^2 + (y - 1)^2 + 8$\nVì $(x - 2y)^2 \\geq 0$; $(x - 2)^2 \\geq 0$; $(y - 1)^2 \\geq 0$\nNên $(x - 2y)^2 + (x - 2)^2 + (y - 1)^2 + 8 \\geq 8$. Suy ra $A \\geq 8$\nDấu ‘=’ xảy ra khi $\\begin{cases}(x - 2y)^2 = 0\\\\(x - 2)^2 = 0\\\\(y - 1)^2 = 0\\end{cases} \\Rightarrow x = 2; y = 1$\nVậy GTNN của A là 8 khi $x = 2; y = 1$",
+  "A": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00699",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng ba bình phương và ứng dụng"
+  }
+ },
+ {
+  "ma_cau": "T108010101023",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các biểu thức sau có bao nhiêu đa thức\n$x^2y$, $x+1$, $x^3+y^4-5z$, $5xym^2$, $x(x+3)$, $5+x^2$, $99$",
+  "dap_an": "4",
+  "loi_giai": "Trong các biểu thức trên có\n*   $x^2y$, $5xym^2$, $99$ là đơn thức\n*   $x+1$, $x^3+y^4-5z$, $x(x+3)$, $5+x^2$ là đa thức\nVậy có 4 đa thức.",
+  "A": {
+   "id": "NDB00664",
+   "ten": "Nhận biết Đơn thức"
+  },
+  "B": {
+   "id": "NDB00668",
+   "ten": "Nhận biết Đa thức"
+  }
+ },
+ {
+  "ma_cau": "T108030603025",
+  "loai": "tra_loi_ngan",
+  "de": "$x(x+5)-3x-15=0$",
+  "dap_an": "$x=-5; x=3$",
+  "loi_giai": "$x(x+5)-3x-15=0$\n$x(x+5)-3(x+5)=0$\n$(x+5)(x-3)=0$\nTrường hợp 1:\n$x+5=0$\n$x=-5$\nTrường hợp 2:\n$x-3=0$\n$x=3$\nVậy: $x=-5; x=3$",
+  "A": {
+   "id": "NDB00979",
+   "ten": "Tìm x sử dụng phương pháp rút nhân tử chung"
+  },
+  "B": {
+   "id": "NDB00980",
+   "ten": "Tìm x bằng cách phân tích đa thức thành nhân tử sử dụng nhóm hạng tử"
+  }
+ },
+ {
+  "ma_cau": "T108020301033",
+  "loai": "tra_loi_ngan",
+  "de": "......... $- 27x^2 +$ ......... $- 1 = ($ ......... $)^3$",
+  "dap_an": "$27x^3; 9x; (3x-1)$",
+  "loi_giai": "$27x^3 - 27x^2 + 9x + 1 = (3x - 1)^3$",
+  "A": {
+   "id": "NDB00690",
+   "ten": "Khai triển hằng đẳng thức lập phương tổng hiệu"
+  },
+  "B": {
+   "id": "NDB00969",
+   "ten": "Hoàn thiện biểu thức lập phương tổng hiệu"
+  }
+ },
+ {
+  "ma_cau": "T108020202083",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $M = 9x^2 + 6y^2 + 18x - 12xy - 12y - 27$.",
+  "dap_an": "-36",
+  "loi_giai": "Ta có:\n$M = 9x^2 + 6y^2 + 18x - 12xy - 12y - 27 = (3x - 2y + 3)^2 + 2y^2 - 36$.\nVì $(3x - 2y + 3)^2 \\ge 0$ và $2y^2 \\ge 0$ nên $M \\ge -36$.\nDấu \"=\" xảy ra khi $3x - 2y + 3 = 0$ và $y = 0$.\nSuy ra $x = -1$, $y = 0$.\nVậy GTNN của M là -36, đạt được khi $x = -1$, $y = 0$.",
+  "A": {
+   "id": "NDB00698",
+   "ten": "GTLN - GTNN của biểu thức hai biến sử dụng bình phương 3 số - Dạng 2 bình phương và ứng dụng"
+  },
+  "B": {
+   "id": "NDB00697",
+   "ten": "GTLN - GTNN của biểu thức hai biến dạng tổng hai bình phương và ứng dụng"
+  }
+ }
+]

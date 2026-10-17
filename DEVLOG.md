@@ -37958,3 +37958,21 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Claude:** `scripts/kho/nhan-xet.mjs` (--ds lấy việc + nội dung · --sua gói.json áp sửa + ghi xử lý CÙNG transaction, chỉ cột trong registry DT/CON, không đụng da_duyet · --khong · --thong-ke · --thu tự kiểm). Quy trình `docs/quy-trinh-sua-theo-nhan-xet.md`. Lịch: scheduled task `sua-kho-theo-nhan-xet` 22:00 mỗi ngày (máy công ty, app phải mở).
 - **Kiểm:** --sua --thu (câu Đại + ý hinh_y, cột jsonb) ⇒ da_sua, ROLLBACK · app local admin: nút có ở 20 thẻ Lời giải Claude / Trắc nghiệm AI / Bản đồ mới, khung mở–gõ–Huỷ (không gửi nhận xét thật vì append-only); RPC qua phiên thật 200. Kho đề thi + clone chỉ tsc, chưa mở trên app.
 - **Lỗi có sẵn lộ ra:** `fn_mcq_metric('dai')` ~4,8s (qua phiên thật chạm trần 8s) làm tab Trắc nghiệm AI hiện "Không có phiên bản nào" dù K8 có 538 form ⇒ metric `.catch(() => null)`, danh sách hiện lại. Hàm metric CHƯA tối ưu.
+
+## 17/10 (tiếp) — B3 kiểm lại câu gán qua CỤM cũ: máy đọc lại, phân xử mù, ghi thẳng câu máy đúng (Thùy chọn "(a) Ghi thẳng" + "Kiểm cả K8 và K12")
+- **Vì sao:** nhãn mẫu B3 (đối ứng cụm/dạng cũ → dạng bài) thô — câu gốc có dạng bài qua `gan_cum`/`doi_ung` của `_bdm_cau_giai` lẫn câu sai dạng. Gán cụm là SUY RA (không có dòng), `dai_bdm_gan_cau` ưu tiên hơn ⇒ ghi đè được mà không phá cụm.
+- **Dây chuyền:** `scripts/bdm-b3-kiem-cum.mjs` `xuat` (chỉ đọc; lô ≤70 câu ở `kho-rules/dai/lo/b3-kiem/k<khối>/`, KHÔNG nhãn hiện tại, KHÔNG `nhan_cu`; nhãn để ngoài agent ở `b3-kiem/_nhan/`; bỏ 90 câu mẫu đã kiểm sáng nay) → 18 agent Sonnet theo `b3/brief.md` → `so` (so nhãn, gom lệch theo cụm) → `px` lô phân xử **MÙ**: A/B đảo theo md5, Opus không biết bên nào là máy (`b3-kiem/px-brief.md`) → `px-doc` → `ghi` (ROLLBACK rồi `--ghi`).
+- **Luật ghi (Thùy):** máy `cao` lệch + phân xử máy đúng ⇒ `dai_bdm_gan_cau nguon='ai'` · người đúng / cả hai được ⇒ giữ nhãn cụm · máy `vua` lệch ⇒ `dai_bdm_de_xuat` chac `vua`, lý do "Kiểm lại nhãn cụm cũ: đang ở X «…», máy chọn Y «…»" · K12: chỉ ghi thẳng khi cả hai nhãn trong NCD00095 (NH-TP), còn lại ⇒ de_xuat `cao`. Điều kiện ghi: câu gốc còn sống, vẫn đang ở đúng nhãn cụm lúc kiểm, chưa có dòng gan_cau.
+- **Kết quả (đã ghi, commit DB):** "lệch" = máy mức cao khác nhãn cụm; phân xử máy / người / cả hai; gồm cả mẫu 17/10 sáng.
+  | Khối | đã kiểm | lệch | máy/người/cả hai | ghi thẳng | de_xuat | máy để trống |
+  |---|---|---|---|---|---|---|
+  | 6 | 1.007 | 9 | 8/1/0 | 8 | 5 | 1 |
+  | 7 | 191 | 37 | 34/2/1 | 34 | 11 | 0 |
+  | 8 | 184 | 14 | 10/1/3 | 10 | 11 | 13 |
+  | 9 | 685 | 140 | 137/0/3 | 137 | 18 | 5 |
+  | 10 | 445 | 36 | 36/0/0 | 36 | 11 | 0 |
+  | 11 | 768 | 80 | 70/2/8 | 70 | 62 | 7 |
+  | 12 | 1.016 | 26 | 24/0/2 | 5 (NH-TP) | 114 (19 cao ngoài NH-TP + 95 vừa) | 30 |
+  | **Σ** | **4.296** | **342** | **319/6/17** | **300** | **232** | **56** |
+- **Lệch dồn theo CỤM, không rải:** K9 DCUM01517 502→501 (58 câu "P so với hằng số" bị gắn "P so với biểu thức") · DCUM01520 505→506 (15) · K10 DCUM01381 544→886 (19) · DCUM01298 524→519/520/521 (9) · K7 DCUM01506 461→808 (15) · K11 dạng cũ T111030501 1022→1002/1003 (22). ⇒ đối ứng cụm đó sai cả loạt; câu MỚI vào các cụm này sẽ lại sai nếu vẫn gán qua cụm.
+- **Chưa làm / cần CEO:** 56 câu máy để trống (bản đồ thiếu dạng, vd K8 "tổng bình phương = 0 suy x,y", K12 "đơn điệu có tham số m", "cực trị từ đồ thị f'") — vẫn giữ nhãn cụm, chưa đưa ra hàng Thiếu dạng. Ranh giới mờ Opus nêu: K8 NDB00697/699/700 · K9 NDB00508/510 · K11 tích↔tổng (961/962, 963/966) · K12 805/806 (dich.md chỉ có tên, không mô tả).

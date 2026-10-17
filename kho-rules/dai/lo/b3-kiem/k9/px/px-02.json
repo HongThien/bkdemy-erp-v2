@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T109030302009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}}$ $(x>0)$. Tìm các giá trị nguyên của $x$ để $P>3$.",
+  "dap_an": "$x\\in\\{1;2;3\\}$",
+  "loi_giai": "Ta sẽ đưa về dạng $P-3>0$.\nXét $P-3=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}}-3=\\dfrac{4-2\\sqrt{x}}{\\sqrt{x}}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0$ nên để $P-3>0$ thì $4-2\\sqrt{x}>0$.\n$\\Rightarrow\\sqrt{x}<2$\n$\\Rightarrow x<4$\nKết hợp với điều kiện ta được $0<x<4$.\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{1;2;3\\}$.\nVậy $x\\in\\{1;2;3\\}$.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030302031",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm các số nguyên tố $x$ để $P\\le-\\dfrac{1}{3}$.",
+  "dap_an": "$x\\in\\{2;3\\}$",
+  "loi_giai": "Ta có $P\\le-\\dfrac{1}{3}\\Rightarrow P+\\dfrac{1}{3}\\le0$.\nXét $P+\\dfrac{1}{3}=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+1}+\\dfrac{1}{3}=\\dfrac{4\\sqrt{x}-8}{3(\\sqrt{x}+1)}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow3(\\sqrt{x}+1)>0$ nên để\n$P+\\dfrac{1}{3}\\le0$ thì $4\\sqrt{x}-8\\le0$.\n$\\Rightarrow\\sqrt{x}\\le2$\n$\\Rightarrow x\\le4$\nMà $x$ là số nguyên tố $\\Rightarrow x\\in\\{2;3\\}$.\nVậy $x\\in\\{2;3\\}$.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109010308013",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một phòng họp hình chữ nhật, ghế được sắp theo hàng và số ghế trong mỗi hàng là như nhau. Nếu kê bớt đi 2 hàng và mỗi hàng bớt đi 2 ghế thì tổng số ghế trong phòng họp đó giảm đi 88 ghế so với ban đầu. Nếu kê thêm 1 hàng và mỗi hàng kê thêm 2 ghế thì tổng số ghế trong phòng họp đó tăng thêm 74 ghế so với ban đầu. Tính số hàng ghế và số ghế trong phòng họp đó lúc ban đầu.",
+  "dap_an": "520",
+  "loi_giai": "Gọi số hàng ghế của phòng họp ban đầu là $x$ (hàng, $x\\in N^*$), số ghế mỗi hàng là $y$ (ghế, $y\\in N^*$).\nTổng số ghế ban đầu của phòng họp là: $xy$ (ghế).\nNếu bớt đi 2 hàng thì số hàng là: $x-2$ (hàng).\nNếu mỗi hàng bớt đi 2 ghế thì số ghế mỗi hàng là: $y-2$ (ghế).\nTổng số ghế lúc sau là: $(x-2)(y-2)$ (ghế).\nVì số ghế giảm đi 88 ghế nên ta có PT:\n$xy - (x-2)(y-2) = 88$\n$xy - (xy - 2x - 2y + 4) = 88$\n$xy - xy + 2x + 2y - 4 = 88$\n$2x + 2y = 92$ (1)\nNếu kê thêm 1 hàng thì số hàng là: $x+1$ (hàng).\nNếu mỗi hàng kê thêm 2 ghế thì số ghế mỗi hàng là: $y+2$ (ghế).\nTổng số ghế lúc sau là: $(x+1)(y+2)$ (ghế).\nVì số ghế tăng thêm 74 ghế nên ta có PT:\n$(x+1)(y+2) - xy = 74$\n$(xy + 2x + y + 2) - xy =  …",
+  "A": {
+   "id": "NDB00719",
+   "ten": "Các bài toán khác"
+  },
+  "B": {
+   "id": "NDB00716",
+   "ten": "Bài toán sắp xếp ghế"
+  }
+ },
+ {
+  "ma_cau": "T109030303037",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2(9-\\sqrt{x})}{\\sqrt{x}+9}$ $(x>0)$.\nTìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "$x\\in\\{9;81;729\\}$",
+  "loi_giai": "$P=\\dfrac{2(9-\\sqrt{x})}{\\sqrt{x}+9}=-2+\\dfrac{36}{\\sqrt{x}+9}$.\nĐể $P\\in\\mathbb{Z}$ thì $36:(\\sqrt{x}+9)$ hay $\\sqrt{x}+9\\in U(36)$.\nVì $\\sqrt{x}>0\\Rightarrow\\sqrt{x}+9>9\\Rightarrow\\sqrt{x}+9\\in\\{12;18;36\\}$.\n$\\Rightarrow x\\in\\{9;81;729\\}$.\nVậy với $x\\in\\{9;81;729\\}$ thì $P$ nguyên.",
+  "A": {
+   "id": "NDB00506",
+   "ten": "P có tử là một biểu thức"
+  },
+  "B": {
+   "id": "NDB00505",
+   "ten": "P có tử là một hằng số"
+  }
+ },
+ {
+  "ma_cau": "T109030302054",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm các số nguyên tố $x$ để $P<0$.",
+  "dap_an": "2;3;5;7",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+1>0$ nên để $P<0$ thì $\\sqrt{x}-3<0$.\n$\\sqrt{x}<3$\n$x<9$\nKết hợp với điều kiện ta được $0\\le x<9$.\nMà $x$ là số nguyên tố $\\Rightarrow x\\in\\{2;3;5;7\\}$.\nVậy $x\\in\\{2;3;5;7\\}$.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030304033",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{12}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "0; 4",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+4>0;12>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+4\\ge4\\Rightarrow P\\le3$.\nVậy $0<P\\le3$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow\\dfrac{12}{\\sqrt{x}+4}=2\\Rightarrow\\sqrt{x}+4=6\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow\\dfrac{12}{\\sqrt{x}+4}=3\\Rightarrow\\sqrt{x}+4=4\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{0;4\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "A": {
+   "id": "NDB00507",
+   "ten": "Tìm x để P nguyên dạng cơ bản."
+  },
+  "B": {
+   "id": "NDB00511",
+   "ten": "Tìm x để P nguyên tố"
+  }
+ },
+ {
+  "ma_cau": "T109030303011",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-1}$ $(x\\ge0;x\ne1)$. Tìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "{0;4;16}",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-1}=\\dfrac{\\sqrt{x}-1+3}{\\sqrt{x}-1}=1+\\dfrac{3}{\\sqrt{x}-1}$.\nĐể $P\\in\\mathbb{Z}$ thì $3 \\vdots (\\sqrt{x}-1)$ hay $\\sqrt{x}-1\\in U(3)=\\{\\pm1;\\pm3\\}$.\nVì $\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}-1\\ge-1\\Rightarrow\\sqrt{x}-1\\in\\{-1;1;3\\}$.\n$\\Rightarrow x\\in\\{0;4;16\\}$ (thỏa mãn ĐKXĐ).\nVậy với $x\\in\\{0;4;16\\}$ thì $P$ nguyên.",
+  "A": {
+   "id": "NDB00505",
+   "ten": "P có tử là một hằng số"
+  },
+  "B": {
+   "id": "NDB00506",
+   "ten": "P có tử là một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302076",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm các giá trị nguyên của $x$ để $P<\\dfrac{1}{2}$.",
+  "dap_an": "{0;1;2;3}",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên\n$P<\\dfrac{1}{2}\\Rightarrow\\dfrac{\\sqrt{x}}{\\sqrt{x}+2}<\\dfrac{1}{2}$.\n$2\\sqrt{x}<\\sqrt{x}+2$\n$\\sqrt{x}<2$\n$x<4$\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{0;1;2;3\\}$.\nVậy $x\\in\\{0;1;2;3\\}$.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109020402013",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $3x(x + 4) + x^2 - 16 = 0$",
+  "dap_an": "-4;1",
+  "loi_giai": "$3x(x + 4) + (x - 4)(x + 4) = 0$\n$(x + 4)(3x + x - 4) = 0$\n$(x + 4)(4x - 4) = 0$\nTH1: $x + 4 = 0$\n$x = -4$\nTH2: $4x - 4 = 0$\n$x = 1$\nVậy phương trình có nghiệm $x \\in \\{-4;1\\}$.",
+  "A": {
+   "id": "NDB00722",
+   "ten": "Phương trình tích"
+  },
+  "B": {
+   "id": "NDB00726",
+   "ten": "Phương trình quy về phương trình tích dùng biến đổi đa thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302070",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}}{\\sqrt{x}-6}$ $(x\\ge0;x \\ne36)$. Tìm số nguyên $x$ nhỏ nhất để $2P>1$.",
+  "dap_an": "37",
+  "loi_giai": "$2P>1\\Rightarrow2P-1>0$.\nXét $2P-1=\\dfrac{2\\sqrt{x}}{\\sqrt{x}-6}-1=\\dfrac{\\sqrt{x}+6}{\\sqrt{x}-6}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+6>0$ nên để $2P-1>0$ thì $\\sqrt{x}-6>0$.\n$\\Rightarrow\\sqrt{x}>6$\n$\\Rightarrow x>36$\nVì $x$ là số nguyên nhỏ nhất nên $x=37$.\nVậy số nguyên $x$ nhỏ nhất là 37.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030302045",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{6-\\sqrt{x}}{(\\sqrt{x}+3)^2}$ $(x\\ge0)$. Tìm số nguyên $x$ nhỏ nhất để $P\\le0$.",
+  "dap_an": "36",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow(\\sqrt{x}+3)^2>0$ nên để $P\\le0$ thì $6-\\sqrt{x}\\le0$.\n$\\sqrt{x}\\ge6$\n$x\\ge36$\nVì $x$ là số nguyên nhỏ nhất nên $x=36$.\nVậy số nguyên $x$ nhỏ nhất để $P\\le0$ là 36.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030304032",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{10}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "1/9; 4",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+3>0;10>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+3\\ge3\\Rightarrow P\\le\\dfrac{10}{3}$.\nVậy $0<P\\le\\dfrac{10}{3}$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow\\dfrac{10}{\\sqrt{x}+3}=2\\Rightarrow\\sqrt{x}+3=5\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow\\dfrac{10}{\\sqrt{x}+3}=3\\Rightarrow\\sqrt{x}+3=\\dfrac{10}{3}\\Rightarrow\\sqrt{x}=\\dfrac{1}{3}\\Rightarrow x=\\dfrac{1}{9}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{1}{9};4\\right\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "A": {
+   "id": "NDB00507",
+   "ten": "Tìm x để P nguyên dạng cơ bản."
+  },
+  "B": {
+   "id": "NDB00511",
+   "ten": "Tìm x để P nguyên tố"
+  }
+ },
+ {
+  "ma_cau": "T109020402007",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $5(3x-1) = (2x+3)(3x-1)$",
+  "dap_an": "\\dfrac{1}{3}; 1",
+  "loi_giai": "$5(3x-1) - (2x+3)(3x-1) = 0$\n$(3x-1)[5 - (2x+3)] = 0$\n$(3x-1)(5 - 2x - 3) = 0$\n$(3x-1)(-2x+2) = 0$\nTH1: $3x-1 = 0$\n$3x = 1$\n$x = \\dfrac{1}{3}$\nTH2: $-2x+2 = 0$\n$-2x = -2$\n$x = 1$\nVậy phương trình có hai nghiệm $x \\in \\left\\{\\dfrac{1}{3};1\\right\\}$.",
+  "A": {
+   "id": "NDB00722",
+   "ten": "Phương trình tích"
+  },
+  "B": {
+   "id": "NDB00726",
+   "ten": "Phương trình quy về phương trình tích dùng biến đổi đa thức"
+  }
+ },
+ {
+  "ma_cau": "T109030304053",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{5}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận\ngiá trị nguyên nhỏ nhất.",
+  "dap_an": "9",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+2>0\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}\\le\\dfrac{5}{2}\\Rightarrow P\\le\\dfrac{11}{2}$.\nVậy $3<P\\le\\dfrac{11}{2}$. Mà $P$ nguyên nên $P\\in\\{4;5\\}$.\nDo đó giá trị nguyên nhỏ nhất của $P$ là 4.\n$P=4\\Rightarrow3+\\dfrac{5}{\\sqrt{x}+2}=4\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=5\\Rightarrow\\sqrt{x}=3\\Rightarrow x=9$ (thỏa mãn ĐKXĐ).\nVậy $x=9$ thì $P$ nhận giá trị nguyên nhỏ nhất.",
+  "A": {
+   "id": "NDB00508",
+   "ten": "Tìm x để P nhận giá trị nguyên lớn/nhỏ nhất."
+  },
+  "B": {
+   "id": "NDB00507",
+   "ten": "Tìm x để P nguyên dạng cơ bản."
+  }
+ },
+ {
+  "ma_cau": "T109030303017",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-4}$ $(x\\ge0;x\ne16)$. Tìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "{9;25;81}",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-4}=1+\\dfrac{5}{\\sqrt{x}-4}$.\nĐể $P\\in\\mathbb{Z}$ thì $5 \\vdots (\\sqrt{x}-4)$ hay $\\sqrt{x}-4\\in U(5)=\\{\\pm1;\\pm5\\}$.\nVì $\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}-4\\ge-4\\Rightarrow\\sqrt{x}-4\\in\\{-1;1;5\\}$.\n$\\Rightarrow x\\in\\{9;25;81\\}$.\nVậy với $x\\in\\{9;25;81\\}$ thì $P$ nguyên.",
+  "A": {
+   "id": "NDB00506",
+   "ten": "P có tử là một biểu thức"
+  },
+  "B": {
+   "id": "NDB00505",
+   "ten": "P có tử là một hằng số"
+  }
+ },
+ {
+  "ma_cau": "T109010301020",
+  "loai": "tra_loi_ngan",
+  "de": "Một người thợ hồ đi mua 3 bao xi măng và 2 bao cát ở cửa hàng vật liệu xây dựng về trộn vữa hết tất cả 180 000 đồng theo giá niêm yết.\nTuy nhiên tới lúc thanh toán hóa đơn người thợ đó phải trả 201 000 đồng do mức giá niêm yết chưa bao gồm thuế giá trị gia tăng (VAT).\nBiết thuế VAT của xi măng và cát lần lượt là 10% và 15%.\nTính mức giá niêm yết của mỗi bao xi măng và cát.",
+  "dap_an": "40; 30",
+  "loi_giai": "Gọi giá niêm yết của mỗi bao xi măng và mỗi bao cát lần lượt là $x, y$ (nghìn đồng, $x, y > 0$).\nGiá niêm yết của 3 bao xi măng là: $3x$ (nghìn đồng).\nGiá niêm yết của 2 bao cát là: $2y$ (nghìn đồng).\nTa có PT: $3x + 2y = 180$ (1)\nGiá của mỗi bao xi măng (bao gồm cả VAT) là: $(100\\% + 10\\%)x = 110\\%x = 1,1x$ (nghìn đồng).\nGiá của mỗi bao cát (bao gồm cả VAT) là: $(100\\% + 15\\%)y = 115\\%y = 1,15y$ (nghìn đồng).\nGiá của 3 bao xi măng (bao gồm cả VAT) là: $3 \\cdot 1,1x = 3,3x$ (nghìn đồng).\nGiá của 2 bao cát (bao gồm cả VAT) là: $2 \\cdot 1,15y = 2,3y$ (nghìn đồng).\nTa có PT: $3,3x + 2,3y = 201$ (2)\nTừ (1) và (2) ta có HPT:\n$\\left\\{\\begin{matrix} 3x + 2y = 180 \\\\ 3,3x + 2,3y = 201 \\end{matrix}\\r …",
+  "A": {
+   "id": "NDB00715",
+   "ten": "Bài toán tăng giá/ giảm giá"
+  },
+  "B": {
+   "id": "NDB00717",
+   "ten": "Bài toán Lãi suất"
+  }
+ },
+ {
+  "ma_cau": "T109030302033",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-5}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm các số nguyên tố $x$\nđể $P\\le-\\dfrac{1}{3}$.",
+  "dap_an": "$x\\in\\{2;3;5;7\\}$",
+  "loi_giai": "Ta có $P\\le-\\dfrac{1}{3}\\Rightarrow P+\\dfrac{1}{3}\\le0$.\nXét $P+\\dfrac{1}{3}=\\dfrac{\\sqrt{x}-5}{\\sqrt{x}+3}+\\dfrac{1}{3}=\\dfrac{4\\sqrt{x}-12}{3(\\sqrt{x}+3)}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow3(\\sqrt{x}+3)>0$ nên để\n$P+\\dfrac{1}{3}\\le0$ thì $4\\sqrt{x}-12\\le0$.\n$\\Rightarrow\\sqrt{x}\\le3$\n$\\Rightarrow x\\le9$\nMà $x$ là số nguyên tố $\\Rightarrow x\\in\\{2;3;5;7\\}$.\nVậy $x\\in\\{2;3;5;7\\}$.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302060",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{3\\sqrt{x}+1}{\\sqrt{x}-6}$ $(x\\ge0;x \\ne36)$. Tìm số nguyên $x$ lớn nhất để $P<3$.",
+  "dap_an": "35",
+  "loi_giai": "$P<3\\Rightarrow P-3<0$.\nXét $P-3=\\dfrac{3\\sqrt{x}+1}{\\sqrt{x}-6}-3=\\dfrac{19}{\\sqrt{x}-6}$.\nVì $19>0$ nên để $P-3<0$ thì $\\sqrt{x}-6<0$.\n$\\Rightarrow\\sqrt{x}<6$\n$\\Rightarrow x<36$\nKết hợp với điều kiện ta được $0\\le x<36$.\nVì $x$ là số nguyên lớn nhất nên $x=35$.\nVậy số nguyên $x$ lớn nhất là 35.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030102002",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{13-2\\sqrt{22}}-\\sqrt{13+2\\sqrt{22}}$.",
+  "dap_an": "$-2\\sqrt2$",
+  "loi_giai": "$A=\\sqrt{13-2\\sqrt{22}}-\\sqrt{13+2\\sqrt{22}}$\n$A=\\sqrt{(\\sqrt{11}-\\sqrt2)^2}-\\sqrt{(\\sqrt{11}+\\sqrt2)^2}$\n$A=|\\sqrt{11}-\\sqrt2|-|\\sqrt{11}+\\sqrt2|$\n$A=\\sqrt{11}-\\sqrt2-(\\sqrt{11}+\\sqrt2)$\n$A=-2\\sqrt2$",
+  "A": {
+   "id": "NDB00483",
+   "ten": "Rút gọn biểu thức dạng trong căn có thể biến đổi thành bình phương"
+  },
+  "B": {
+   "id": "NDB00485",
+   "ten": "Rút gọn biểu thức sử dụng việc bình phương cả biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302038",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{3\\sqrt{x}}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm số tự nhiên $x$ lớn nhất\nđể $P\\le\\dfrac{5}{2}$.",
+  "dap_an": "100",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên\n$P\\le\\dfrac{5}{2}\\Rightarrow\\dfrac{3\\sqrt{x}}{\\sqrt{x}+2}\\le\\dfrac{5}{2}$.\n$6\\sqrt{x}\\le5(\\sqrt{x}+2)$\n$\\sqrt{x}\\le10$\n$x\\le100$\nVì $x$ là số tự nhiên lớn nhất nên $x=100$.\nVậy số tự nhiên $x$ lớn nhất là 100.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302013",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}}{\\sqrt{x}-4}$ $(x>0;x\\ne16)$. Tìm số nguyên $x$ nhỏ nhất để $P>1$.",
+  "dap_an": "$17$",
+  "loi_giai": "$P>1\\Rightarrow P-1>0$.\nXét $P-1=\\dfrac{2\\sqrt{x}}{\\sqrt{x}-4}-1=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}-4}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0\\Rightarrow\\sqrt{x}+4>0$ nên để $P-1>0$ thì $\\sqrt{x}-4>0$.\n$\\Rightarrow\\sqrt{x}>4$\n$\\Rightarrow x>16$\nKết hợp với điều kiện ta được $x>16$.\nVì $x$ là số nguyên nhỏ nhất nên $x=17$.\nVậy số nguyên $x$ nhỏ nhất để $P>1$ là 17.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030302052",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm các số nguyên tố $x$ để $P<0$.",
+  "dap_an": "$x\\in\\{2;3\\}$",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+3>0$ nên để $P<0$ thì $\\sqrt{x}-2<0$.\n$\\sqrt{x}<2$\n$x<4$\nKết hợp với điều kiện ta được $0\\le x<4$.\nMà $x$ là số nguyên tố $\\Rightarrow x\\in\\{2;3\\}$.\nVậy $x\\in\\{2;3\\}$.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030303038",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2(10-\\sqrt{x})}{\\sqrt{x}+10}$ $(x>0)$.\nTìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "$x\\in\\{100;900\\}$",
+  "loi_giai": "$P=\\dfrac{2(10-\\sqrt{x})}{\\sqrt{x}+10}=-2+\\dfrac{40}{\\sqrt{x}+10}$.\nĐể $P\\in\\mathbb{Z}$ thì $40:(\\sqrt{x}+10)$ hay $\\sqrt{x}+10\\in U(40)$.\nVì $\\sqrt{x}>0\\Rightarrow\\sqrt{x}+10>10\\Rightarrow\\sqrt{x}+10\\in\\{20;40\\}$.\n$\\Rightarrow x\\in\\{100;900\\}$.\nVậy với $x\\in\\{100;900\\}$ thì $P$ nguyên.",
+  "A": {
+   "id": "NDB00505",
+   "ten": "P có tử là một hằng số"
+  },
+  "B": {
+   "id": "NDB00506",
+   "ten": "P có tử là một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302073",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm các giá trị nguyên của $x$ để $P<\\dfrac{1}{3}$.",
+  "dap_an": "{0;1;2;3;4;5;6;7;8}",
+  "loi_giai": "Ta có $P<\\dfrac{1}{3}\\Rightarrow P-\\dfrac{1}{3}<0$.\nXét $P-\\dfrac{1}{3}=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+3}-\\dfrac{1}{3}=\\dfrac{2\\sqrt{x}-6}{3(\\sqrt{x}+3)}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow3(\\sqrt{x}+3)>0$ nên để $P-\\dfrac{1}{3}<0$ thì $2\\sqrt{x}-6<0$.\n$\\Rightarrow\\sqrt{x}<3$\n$\\Rightarrow x<9$\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{0;1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{0;1;2;3;4;5;6;7;8\\}$.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030303003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2(4-\\sqrt{x})}{\\sqrt{x}+4}$ $(x>0)$. Tìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "{16;144}",
+  "loi_giai": "$P=\\dfrac{2(4-\\sqrt{x})}{\\sqrt{x}+4}=-2+\\dfrac{16}{\\sqrt{x}+4}$.\nĐể $P\\in\\mathbb{Z}$ thì $16 \\vdots (\\sqrt{x}+4)$ hay $\\sqrt{x}+4\\in U(16)=\\{\\pm1;\\pm2;\\pm4;\\pm8;\\pm16\\}$.\nVì $\\sqrt{x}>0\\Rightarrow\\sqrt{x}+4>4\\Rightarrow\\sqrt{x}+4\\in\\{8;16\\}$.\n$\\Rightarrow x\\in\\{16;144\\}$ (thỏa mãn ĐKXĐ).\nVậy với $x\\in\\{16;144\\}$ thì $P$ nguyên.",
+  "A": {
+   "id": "NDB00506",
+   "ten": "P có tử là một biểu thức"
+  },
+  "B": {
+   "id": "NDB00505",
+   "ten": "P có tử là một hằng số"
+  }
+ },
+ {
+  "ma_cau": "T109030302012",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{3\\sqrt{x}}{\\sqrt{x}-3}$ $(x>0;x\\ne9)$. Tìm số nguyên $x$ nhỏ nhất để $P>2$.",
+  "dap_an": "$10$",
+  "loi_giai": "$P>2\\Rightarrow P-2>0$.\nXét $P-2=\\dfrac{3\\sqrt{x}}{\\sqrt{x}-3}-2=\\dfrac{\\sqrt{x}+6}{\\sqrt{x}-3}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0\\Rightarrow\\sqrt{x}+6>0$ nên để $P-2>0$ thì $\\sqrt{x}-3>0$.\n$\\Rightarrow\\sqrt{x}>3$\n$\\Rightarrow x>9$\nKết hợp với điều kiện ta được $x>9$.\nVì $x$ là số nguyên nhỏ nhất nên $x=10$.\nVậy số nguyên $x$ nhỏ nhất để $P>2$ là 10.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302064",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-3}$ $(x\\ge0;x \\ne9)$. Tìm các giá trị nguyên của $x$ để $P<1$.",
+  "dap_an": "0;1;2;3;4;5;6;7;8",
+  "loi_giai": "$P<1\\Rightarrow P-1<0$.\nXét $P-1=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-3}-1=\\dfrac{4}{\\sqrt{x}-3}$.\nVì $4>0$ nên để $P-1<0$ thì $\\sqrt{x}-3<0$.\n$\\Rightarrow\\sqrt{x}<3$\n$\\Rightarrow x<9$\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{0;1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{0;1;2;3;4;5;6;7;8\\}$.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030302074",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm các giá trị nguyên của $x$ để $P<\\dfrac{1}{3}$.",
+  "dap_an": "{0;1;2;3;4;5;6;7;8;9;10;11;12}",
+  "loi_giai": "Ta có $P<\\dfrac{1}{3}\\Rightarrow P-\\dfrac{1}{3}<0$.\nXét $P-\\dfrac{1}{3}=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}+1}-\\dfrac{1}{3}=\\dfrac{2\\sqrt{x}-7}{3(\\sqrt{x}+1)}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow3(\\sqrt{x}+1)>0$ nên để $P-\\dfrac{1}{3}<0$ thì $2\\sqrt{x}-7<0$.\n$\\Rightarrow\\sqrt{x}<\\dfrac{7}{2}$\n$\\Rightarrow x<\\dfrac{49}{4}$\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{0;1;2;3;4;5;6;7;8;9;10;11;12\\}$.\nVậy $x\\in\\{0;1;2;3;4;5;6;7;8;9;10;11;12\\}$.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109010301001",
+  "loai": "tra_loi_ngan",
+  "de": "Nhân dịp ngày Tết trung thu, một hãng bánh đã giảm giá nhiều mặt hàng để kích cầu mua sắm.\nGiá niêm yết của một chiếc bánh nướng và một chiếc bánh dẻo có tổng số tiền là 150 nghìn đồng. Tuy nhiên, trong dịp này bánh nướng giảm 20% giá niêm yết và bánh dẻo giảm 25% giá niêm yết. Vì thế, cô Liên đã mua hai mặt hàng trên với tổng số tiền là 117 nghìn đồng. Hỏi giá niêm yết của mỗi mặt hàng trên là bao nhiêu?",
+  "dap_an": "90; 60",
+  "loi_giai": "Gọi giá niêm yết của một chiếc bánh nướng và một chiếc bánh dẻo lần lượt là $x$; $y$ (nghìn đồng)\n($x,y>0$).\nTổng giá tiền niêm yết của một chiếc bánh nướng và một chiếc bánh dẻo là 150 nghìn đồng nên ta có PT:\n$x+y=150$ (1)\nGiá chiếc bánh nướng được giảm 20% nên còn: $x-20\\%x=80\\%x=0,8x$ (nghìn đồng).\nGiá chiếc bánh dẻo được giảm 25% nên còn: $y-25\\%y=75\\%y=0,75y$ (nghìn đồng).\nDo cô Liên chỉ phải trả 117 nghìn đồng nên ta có PT:\n$0,8x+0,75y=117$ (2)\nTừ (1) và (2) ta có hệ PT:\n$$\\begin{cases} x+y=150 \\\\ 0,8x+0,75y=117 \\end{cases}$$\nGiải HPT ta được: $x=90$; $y=60$ (TMĐK)\nVậy giá niêm yết của một chiếc bánh nướng là 90 nghìn đồng, giá niêm yết của một chiếc bánh dẻo là 60 nghìn đồng.",
+  "A": {
+   "id": "NDB00715",
+   "ten": "Bài toán tăng giá/ giảm giá"
+  },
+  "B": {
+   "id": "NDB00717",
+   "ten": "Bài toán Lãi suất"
+  }
+ },
+ {
+  "ma_cau": "T109030302006",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}}$ $(x>0)$. Tìm các giá trị nguyên của $x$ để $P>\\dfrac{4}{3}$.",
+  "dap_an": "$x\\in\\{1;2;3;4;5;6;7;8\\}$",
+  "loi_giai": "Ta sẽ đưa về dạng $P-\\dfrac{4}{3}>0$.\nXét $P-\\dfrac{4}{3}=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}}-\\dfrac{4}{3}=\\dfrac{3-\\sqrt{x}}{3\\sqrt{x}}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0\\Rightarrow3\\sqrt{x}>0$ nên để $P-\\dfrac{4}{3}>0$ thì\n$3-\\sqrt{x}>0$.\n$\\Rightarrow\\sqrt{x}<3$\n$\\Rightarrow x<9$\nKết hợp với điều kiện ta được $0<x<9$.\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{1;2;3;4;5;6;7;8\\}$.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030304079",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4-\\dfrac{6}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận giá trị nguyên lớn nhất.",
+  "dap_an": "16",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+2\\ge2\\Rightarrow0<\\dfrac{6}{\\sqrt{x}+2}\\le3$.\n$\\Rightarrow1\\le4-\\dfrac{6}{\\sqrt{x}+2}<4$.\nVậy $1\\le P<4$. Mà $P$ nguyên nên $P\\in\\{1;2;3\\}$.\nDo đó giá trị nguyên lớn nhất của $P$ là 3.\n$P=3\\Rightarrow4-\\dfrac{6}{\\sqrt{x}+2}=3\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=6\\Rightarrow\\sqrt{x}=4\\Rightarrow x=16$ (thỏa mãn ĐKXĐ).\nVậy $x=16$ thì $P$ nhận giá trị nguyên lớn nhất.",
+  "A": {
+   "id": "NDB00510",
+   "ten": "Biến đổi đảo dấu"
+  },
+  "B": {
+   "id": "NDB00508",
+   "ten": "Tìm x để P nhận giá trị nguyên lớn/nhỏ nhất."
+  }
+ },
+ {
+  "ma_cau": "T109030302041",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2-\\sqrt{x}}{(\\sqrt{x}+1)^2}$ $(x\\ge0)$. Tìm số nguyên $x$ nhỏ nhất để $P\\le0$.",
+  "dap_an": "4",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow(\\sqrt{x}+1)^2>0$ nên để $P\\le0$ thì $2-\\sqrt{x}\\le0$.\n$\\sqrt{x}\\ge2$\n$x\\ge4$\nVì $x$ là số nguyên nhỏ nhất nên $x=4$.\nVậy số nguyên $x$ nhỏ nhất để $P\\le0$ là 4.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030304036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=1+\\dfrac{4}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận\ngiá trị nguyên lớn nhất.",
+  "dap_an": "1",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+3>0\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+3\\ge3\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}\\le\\dfrac{4}{3}\\Rightarrow P\\le\\dfrac{7}{3}$.\nVậy $1<P\\le\\dfrac{7}{3}$. Mà $P$ nguyên nên $P=2$.\nDo đó giá trị nguyên lớn nhất của $P$ là 2.\n$P=2\\Rightarrow1+\\dfrac{4}{\\sqrt{x}+3}=2\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x=1$ thì $P$ nhận giá trị nguyên lớn nhất.",
+  "A": {
+   "id": "NDB00507",
+   "ten": "Tìm x để P nguyên dạng cơ bản."
+  },
+  "B": {
+   "id": "NDB00508",
+   "ten": "Tìm x để P nhận giá trị nguyên lớn/nhỏ nhất."
+  }
+ },
+ {
+  "ma_cau": "T109030302040",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{4\\sqrt{x}}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm số tự nhiên $x$ lớn nhất để $P\\le3$.",
+  "dap_an": "36",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên\n$P\\le3\\Rightarrow\\dfrac{4\\sqrt{x}}{\\sqrt{x}+2}\\le3$.\n$4\\sqrt{x}\\le3(\\sqrt{x}+2)$\n$\\sqrt{x}\\le6$\n$x\\le36$\nVì $x$ là số tự nhiên lớn nhất nên $x=36$.\nVậy số tự nhiên $x$ lớn nhất là 36.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm số tự nhiên $x$ lớn nhất\nđể $P\\le\\dfrac{3}{2}$.",
+  "dap_an": "9",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+1>0$ nên\n$P\\le\\dfrac{3}{2}\\Rightarrow\\dfrac{2\\sqrt{x}}{\\sqrt{x}+1}\\le\\dfrac{3}{2}$.\n$4\\sqrt{x}\\le3(\\sqrt{x}+1)$\n$\\sqrt{x}\\le3$\n$x\\le9$\nVì $x$ là số tự nhiên lớn nhất nên $x=9$.\nVậy số tự nhiên $x$ lớn nhất là 9.",
+  "A": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  },
+  "B": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  }
+ },
+ {
+  "ma_cau": "T109030304069",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{7\\sqrt{x}}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{\\dfrac{16}{25};\\dfrac{9}{4};25}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow P\\ge0$.\nVới $x>0$ thì $\\sqrt{x}+2>\\sqrt{x}\\Rightarrow P<7$.\nVậy $0\\le P<7$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3;5\\}$.\nTH1:\n$P=2\\Rightarrow7\\sqrt{x}=2(\\sqrt{x}+2)\\Rightarrow7\\sqrt{x}=2\\sqrt{x}+4\\Rightarrow5\\sqrt{x}=4\\Rightarrow\\sqrt{x}=\\dfrac{4}{5}\\Rightarrow x=\\dfrac{16}{25}$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow7\\sqrt{x}=3\\sqrt{x}+6\\Rightarrow4\\sqrt{x}=6\\Rightarrow\\sqrt{x}=\\dfrac{3}{2}\\Rightarrow x=\\dfrac{9}{4}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=5\\Rightarrow7\\sqrt{x}=5\\sqrt{x}+10\\Rightarrow2\\sqrt{x}=10\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{16}{25};\\dfrac{9}{4};25\\right\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "A": {
+   "id": "NDB00509",
+   "ten": "Cơ bản cần biến đổi"
+  },
+  "B": {
+   "id": "NDB00511",
+   "ten": "Tìm x để P nguyên tố"
+  }
+ },
+ {
+  "ma_cau": "T109030302004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-6}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P\\le0$.",
+  "dap_an": "$0\\le x\\le36$",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}-6}{\\sqrt{x}+2}$\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên để $P\\le0$ thì\n$\\sqrt{x}-6\\le0$.\n$\\sqrt{x}\\le6$\n$x\\le36$\nKết hợp với điều kiện ta được $0\\le x\\le36$.\nVậy $0\\le x\\le36$ thì $P\\le0$.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030302068",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}}{\\sqrt{x}-4}$ $(x\\ge0;x \\ne16)$. Tìm số nguyên $x$ nhỏ nhất để $2P>1$.",
+  "dap_an": "17",
+  "loi_giai": "$2P>1\\Rightarrow2P-1>0$.\nXét $2P-1=\\dfrac{2\\sqrt{x}}{\\sqrt{x}-4}-1=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}-4}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+4>0$ nên để $2P-1>0$ thì $\\sqrt{x}-4>0$.\n$\\Rightarrow\\sqrt{x}>4$\n$\\Rightarrow x>16$\nVì $x$ là số nguyên nhỏ nhất nên $x=17$.\nVậy số nguyên $x$ nhỏ nhất là 17.",
+  "A": {
+   "id": "NDB00501",
+   "ten": "Tìm x để P lớn/nhỏ hơn một số"
+  },
+  "B": {
+   "id": "NDB00502",
+   "ten": "Tìm x để P lớn/nhỏ hơn một biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T109030304054",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{6}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận\ngiá trị nguyên nhỏ nhất.",
+  "dap_an": "4",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+4>0\\Rightarrow\\dfrac{6}{\\sqrt{x}+4}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+4\\ge4\\Rightarrow\\dfrac{6}{\\sqrt{x}+4}\\le\\dfrac{3}{2}\\Rightarrow P\\le\\dfrac{9}{2}$.\nVậy $3<P\\le\\dfrac{9}{2}$. Mà $P$ nguyên nên $P=4$.\nDo đó giá trị nguyên nhỏ nhất của $P$ là 4.\n$P=4\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+4}=4\\Rightarrow\\dfrac{6}{\\sqrt{x}+4}=1\\Rightarrow\\sqrt{x}+4=6\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nVậy $x=4$ thì $P$ nhận giá trị nguyên nhỏ nhất.",
+  "A": {
+   "id": "NDB00508",
+   "ten": "Tìm x để P nhận giá trị nguyên lớn/nhỏ nhất."
+  },
+  "B": {
+   "id": "NDB00507",
+   "ten": "Tìm x để P nguyên dạng cơ bản."
+  }
+ },
+ {
+  "ma_cau": "T109030304009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+3}=\\dfrac{\\sqrt{x}+3+4}{\\sqrt{x}+3}=1+\\dfrac{4}{\\sqrt{x}+3}$.\nCó $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+3>0\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+3\\ge3\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}\\le\\dfrac{4}{3}\\Rightarrow P\\le1+\\dfrac{4}{3}=\\dfrac{7}{3}$.\nVậy $1<P\\le\\dfrac{7}{3}$. Mà $P$ nguyên nên $P=2$.\n$P=2\\Rightarrow1+\\dfrac{4}{\\sqrt{x}+3}=2\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x=1$ thì $P$ nguyên.",
+  "A": {
+   "id": "NDB00509",
+   "ten": "Cơ bản cần biến đổi"
+  },
+  "B": {
+   "id": "NDB00508",
+   "ten": "Tìm x để P nhận giá trị nguyên lớn/nhỏ nhất."
+  }
+ }
+]

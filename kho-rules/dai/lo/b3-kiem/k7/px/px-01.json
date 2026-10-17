@@ -1,0 +1,227 @@
+[
+ {
+  "ma_cau": "077022220401074",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $C=(x-1)^4+\\sqrt{y+3}+5$.",
+  "dap_an": "5",
+  "loi_giai": "Ta có: $(x-1)^4\\ge0$; $\\sqrt{y+3}\\ge0$.\n$\\Rightarrow (x-1)^4+\\sqrt{y+3}\\ge0$.\n$\\Rightarrow (x-1)^4+\\sqrt{y+3}+5\\ge0+5$.\n$\\Rightarrow C\\ge5$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(x-1)^4=0\\\\\\sqrt{y+3}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{1}x=1\\\\y=-3\\end{array}\\right.$.\nVậy GTNN của biểu thức $C$ là $5$ khi $x=1$ và $y=-3$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401025",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=\\sqrt{4x+8}+(y-5)^2-12$.",
+  "dap_an": "-12",
+  "loi_giai": "Ta có: $\\sqrt{4x+8}\\ge0$; $(y-5)^2\\ge0$.\n$\\Rightarrow \\sqrt{4x+8}+(y-5)^2\\ge0$.\n$\\Rightarrow \\sqrt{4x+8}+(y-5)^2-12\\ge0-12$.\n$\\Rightarrow B\\ge-12$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}\\sqrt{4x+8}=0\\\\(y-5)^2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}4x+8=0\\\\y-5=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2\\\\y=5\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-12$ khi $x=-2$ và $y=5$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401086",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=(3x-6)^2-(9x-18)^2-|x-y-5|+100$.",
+  "dap_an": "100",
+  "loi_giai": "Ta có: $(9x-18)^2=[3(3x-6)]^2=9(3x-6)^2$.\nSuy ra $A=(3x-6)^2-9(3x-6)^2-|x-y-5|+100$.\n$\\Rightarrow A=-8(3x-6)^2-|x-y-5|+100$.\nTa có: $-8(3x-6)^2\\le0$; $-|x-y-5|\\le0$.\n$\\Rightarrow -8(3x-6)^2-|x-y-5|\\le0$\n$\\Rightarrow -8(3x-6)^2-|x-y-5|+100\\le100$\n$\\Rightarrow A\\le100$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(3x-6)^2=0\\\\|x-y-5|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}3x-6=0\\\\x-y-5=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=2\\\\x-y-5=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=2\\\\y=-3\\end{array}\\right.$\nVậy GTLN của biểu thức $A$ là $100$ khi $x=2$ và $y=-3$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401063",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=(2x-4)^2+|y+5|-3$.",
+  "dap_an": "-3",
+  "loi_giai": "Ta có: $(2x-4)^2\\ge0$; $|y+5|\\ge0$.\n$\\Rightarrow (2x-4)^2+|y+5|\\ge0$.\n$\\Rightarrow (2x-4)^2+|y+5|-3\\ge0-3$.\n$\\Rightarrow A\\ge-3$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(2x-4)^2=0\\\\|y+5|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}2x-4=0\\\\y+5=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=2\\\\y=-5\\end{array}\\right.$\nVậy GTNN của biểu thức $A$ là $-3$ khi $x=2$ và $y=-5$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401076",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $D=-\\sqrt{x-\\dfrac{7}{3}}-\\left|y-\\dfrac{8}{3}\\right|+\\dfrac{10}{3}$.",
+  "dap_an": "\\dfrac{10}{3}",
+  "loi_giai": "Ta có: $\\sqrt{x-\\dfrac{7}{3}}\\ge0$; $\\left|y-\\dfrac{8}{3}\\right|\\ge0$.\n$\\Rightarrow -\\sqrt{x-\\dfrac{7}{3}}\\le0$; $-\\left|y-\\dfrac{8}{3}\\right|\\le0$.\n$\\Rightarrow -\\sqrt{x-\\dfrac{7}{3}}-\\left|y-\\dfrac{8}{3}\\right|+\\dfrac{10}{3}\\le\\dfrac{10}{3}$.\n$\\Rightarrow D\\le\\dfrac{10}{3}$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}\\sqrt{x-\\dfrac{7}{3}}=0\\\\\\left|y-\\dfrac{8}{3}\\right|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{1}x=\\dfrac{7}{3}\\\\y=\\dfrac{8}{3}\\end{array}\\right.$.\nVậy GTLN của biểu thức $D$ là $\\dfrac{10}{3}$ khi $x=\\dfrac{7}{3}$ và $y=\\dfrac{8}{3}$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401070",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $C=(x+1)^2+\\sqrt{y-3}+1$.",
+  "dap_an": "1",
+  "loi_giai": "Ta có: $(x+1)^2\\ge0$; $\\sqrt{y-3}\\ge0$.\n$\\Rightarrow (x+1)^2+\\sqrt{y-3}\\ge0$.\n$\\Rightarrow (x+1)^2+\\sqrt{y-3}+1\\ge0+1$.\n$\\Rightarrow C\\ge1$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x+1)^2=0\\\\\\sqrt{y-3}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x+1=0\\\\y-3=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-1\\\\y=3\\end{array}\\right.$\nVậy GTNN của biểu thức $C$ là $1$ khi $x=-1$ và $y=3$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401073",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $C=(2x-6)^2+\\sqrt{y}+1$.",
+  "dap_an": "1",
+  "loi_giai": "Ta có: $(2x-6)^2\\ge0$; $\\sqrt{y}\\ge0$.\n$\\Rightarrow (2x-6)^2+\\sqrt{y}\\ge0$.\n$\\Rightarrow (2x-6)^2+\\sqrt{y}+1\\ge0+1$.\n$\\Rightarrow C\\ge1$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array} {1}(2x-6)^2=0\\\\\\sqrt{y}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{1}x=3\\\\y=0\\end{array}\\right.$.\nVậy GTNN của biểu thức $C$ là $1$ khi $x=3$ và $y=0$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401054",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=-2(x-1)^2-3|y+4|-7$.",
+  "dap_an": "-7",
+  "loi_giai": "Ta có: $(x-1)^2\\ge0$; $|y+4|\\ge0$.\n$\\Rightarrow -2(x-1)^2\\le0$; $-3|y+4|\\le0$.\n$\\Rightarrow -2(x-1)^2-3|y+4|\\le0$\n$\\Rightarrow -2(x-1)^2-3|y+4|-7\\le-7$\n$\\Rightarrow B\\le-7$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x-1)^2=0\\\\|y+4|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x-1=0\\\\y+4=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=1\\\\y=-4\\end{array}\\right.$\nVậy GTLN của biểu thức $B$ là $-7$ khi $x=1$ và $y=-4$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401024",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=\\sqrt{5x+15}+(y-1)^4-7$.",
+  "dap_an": "-7",
+  "loi_giai": "Ta có: $\\sqrt{5x+15}\\ge0$; $(y-1)^4\\ge0$.\n$\\Rightarrow \\sqrt{5x+15}+(y-1)^4\\ge0$.\n$\\Rightarrow \\sqrt{5x+15}+(y-1)^4-7\\ge0-7$.\n$\\Rightarrow B\\ge-7$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}\\sqrt{5x+15}=0\\\\(y-1)^4=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}5x+15=0\\\\y-1=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-3\\\\y=1\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-7$ khi $x=-3$ và $y=1$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=\\sqrt{3x+8,4}+(y-2)^2-14,2$.",
+  "dap_an": "-14,2",
+  "loi_giai": "Ta có: $\\sqrt{3x+8,4}\\ge0$; $(y-2)^2\\ge0$.\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2\\ge0$.\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2-14,2\\ge0-14,2$.\n$\\Rightarrow B\\ge-14,2$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}\\sqrt{3x+8,4}=0\\\\(y-2)^2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}3x+8,4=0\\\\y-2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2,8\\\\y=2\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-14,2$ khi $x=-2,8$ và $y=2$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=\\sqrt{2x+6}+(y+1)^2-5$.",
+  "dap_an": "-5",
+  "loi_giai": "Ta có: $\\sqrt{2x+6}\\ge0$; $(y+1)^2\\ge0$.\n$\\Rightarrow \\sqrt{2x+6}+(y+1)^2\\ge0$.\n$\\Rightarrow \\sqrt{2x+6}+(y+1)^2-5\\ge0-5$.\n$\\Rightarrow B\\ge-5$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}\\sqrt{2x+6}=0\\\\(y+1)^2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}2x+6=0\\\\y+1=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-3\\\\y=-1\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-5$ khi $x=-3$ và $y=-1$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401061",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=3x^2+|y|-1$.",
+  "dap_an": "-1",
+  "loi_giai": "Ta có: $x^2\\ge0$; $|y|\\ge0$.\n$\\Rightarrow 3x^2\\ge0$.\n$\\Rightarrow 3x^2+|y|-1\\ge0+0-1$.\n$\\Rightarrow A\\ge-1$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}x=0\\\\y=0\\end{array}\\right.$.\nVậy GTNN của biểu thức $A$ là $-1$ khi $x=0$ và $y=0$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401075",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $C=(x+2)^2+2\\sqrt{y-4}-1$.",
+  "dap_an": "-1",
+  "loi_giai": "Ta có: $(x+2)^2\\ge0$; $\\sqrt{y-4}\\ge0$.\n$\\Rightarrow (x+2)^2\\ge0$; $2\\sqrt{y-4}\\ge0$.\n$\\Rightarrow (x+2)^2+2\\sqrt{y-4}\\ge0$\n$\\Rightarrow (x+2)^2+2\\sqrt{y-4}-1\\ge-1$\n$\\Rightarrow C\\ge-1$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x+2)^2=0\\\\\\sqrt{y-4}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x+2=0\\\\y-4=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2\\\\y=4\\end{array}\\right.$\nVậy GTNN của biểu thức $C$ là $-1$ khi $x=-2$ và $y=4$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401053",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=-(x+2)^2-|y-1|+3$.",
+  "dap_an": "3",
+  "loi_giai": "Ta có: $(x+2)^2\\ge0$; $|y-1|\\ge0$.\n$\\Rightarrow -(x+2)^2\\le0$; $-|y-1|\\le0$.\n$\\Rightarrow -(x+2)^2-|y-1|\\le0$\n$\\Rightarrow -(x+2)^2-|y-1|+3\\le3$\n$\\Rightarrow B\\le3$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x+2)^2=0\\\\|y-1|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x+2=0\\\\y-1=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2\\\\y=1\\end{array}\\right.$\nVậy GTLN của biểu thức $B$ là $3$ khi $x=-2$ và $y=1$.",
+  "A": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  }
+ },
+ {
+  "ma_cau": "077022220401023",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=\\sqrt{x-4}+(2y-6)^2-10$.",
+  "dap_an": "-10",
+  "loi_giai": "Ta có: $\\sqrt{x-4}\\ge0$; $(2y-6)^2\\ge0$.\n$\\Rightarrow \\sqrt{x-4}+(2y-6)^2\\ge0$.\n$\\Rightarrow \\sqrt{x-4}+(2y-6)^2-10\\ge0-10$.\n$\\Rightarrow B\\ge-10$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}\\sqrt{x-4}=0\\\\(2y-6)^2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x-4=0\\\\2y-6=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=4\\\\y=3\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-10$ khi $x=4$ và $y=3$.",
+  "A": {
+   "id": "NDB00808",
+   "ten": "Tổng hiệu nhiều biểu thức"
+  },
+  "B": {
+   "id": "NDB00461",
+   "ten": "Cơ bản 1 biểu thức"
+  }
+ }
+]

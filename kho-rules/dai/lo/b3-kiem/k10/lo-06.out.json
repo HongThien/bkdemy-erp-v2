@@ -1,0 +1,7 @@
+[
+{"ma_cau":"T110030106086","dang_bai_id":"NDB00890","chac":"cao","ly_do":"Cho sin góc tù, tính tan rồi đổi sang dạng yêu cầu."},
+{"ma_cau":"T110030105007","dang_bai_id":"NDB00557","chac":"cao","ly_do":"Hoàn thành hệ thức 1+cot² theo hệ thức cơ bản."},
+{"ma_cau":"T110030107061","dang_bai_id":"NDB00557","chac":"vua","ly_do":"Rút gọn bằng 1+tan²=1/cos², 1+cot²=1/sin²; cũng có thể là NDB00563."},
+{"ma_cau":"T110030106075","dang_bai_id":"NDB00890","chac":"cao","ly_do":"Cho tan góc tù, tính sin."},
+{"ma_cau":"T110030104013","dang_bai_id":"NDB00556","chac":"cao","ly_do":"Biểu thức có cos(90-x), sin(180-x), dùng công thức đảo pha."}
+]

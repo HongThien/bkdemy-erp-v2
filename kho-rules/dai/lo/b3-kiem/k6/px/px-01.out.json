@@ -1,0 +1,10 @@
+[
+{"ma_cau": "T106030402014", "chon": "B", "ly_do": "Chỉ nhân biểu thức đã cho với 5 rồi cộng biểu thức cần chứng minh được 19(x-y): nhân 1 biểu thức."},
+{"ma_cau": "T106020403010", "chon": "B", "ly_do": "x nằm trong dấu ngoặc (11+7x), lũy thừa chỉ là số: đúng nhóm tìm x có ngoặc - cơ bản."},
+{"ma_cau": "T106020503012", "chon": "B", "ly_do": "x ở số mũ, không có dấu ngoặc biểu thức; khớp ví dụ 2.3^{x+1}-7=47 của dạng x ở số mũ không ngoặc."},
+{"ma_cau": "T106030402009", "chon": "B", "ly_do": "Nhân biểu thức đã cho với 3, sau đó được 4(2x-5y): phải nhân hệ số cả hai biểu thức."},
+{"ma_cau": "T106020403016", "chon": "A", "ly_do": "x nằm trong ngoặc (x+2^3), x không là cơ số/số mũ: tìm x biểu thức chứa ngoặc cơ bản."},
+{"ma_cau": "T106030402017", "chon": "B", "ly_do": "Nhân đã cho với 3, kết quả ra 2(2x+3y): hệ số cả hai biểu thức đều được nhân."},
+{"ma_cau": "T106030501054", "chon": "A", "ly_do": "Hiệu tử và mẫu ra ngay 1, d=1 không cần loại ước khác: dạng cơ bản."},
+{"ma_cau": "T106030402001", "chon": "B", "ly_do": "Nhân đã cho với 4 rồi cộng biểu thức cần chứng minh được 11(x+2y): trùng ví dụ nhân 1 biểu thức."}
+]

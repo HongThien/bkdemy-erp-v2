@@ -1,0 +1,780 @@
+[
+ {
+  "ma_cau": "T111030501049",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ dưới đây là đồ thị hàm lượng giác $y=\\sin 2x$.\nHàm số $y=\\sin 2x$ nghịch biến trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(0;\\dfrac{\\pi }{4}\\right)$.",
+   "$\\left(-\\dfrac{3\\pi }{4};-\\dfrac{\\pi }{4}\\right)$.",
+   "$\\left(-1;0\\right)$.",
+   "$\\left(-\\dfrac{\\pi }{4};\\dfrac{\\pi }{4}\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát đồ thị hàm số $y=\\sin 2x$, trên khoảng $\\left(-\\dfrac{3\\pi }{4};-\\dfrac{\\pi }{4}\\right)$, đồ thị đi xuống từ trái sang phải (từ điểm $\\left(-\\dfrac{3\\pi }{4};1\\right)$ xuống điểm $\\left(-\\dfrac{\\pi }{4};-1\\right)$).\nDo đó, hàm số $y=\\sin 2x$ nghịch biến trên khoảng $\\left(-\\dfrac{3\\pi }{4};-\\dfrac{\\pi }{4}\\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010605022",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin x+\\cos x=\\dfrac{\\sqrt{2}}{2}$. Tính $\\sin 2x$?",
+  "lua_chon": [
+   "$\\sin 2x=\\dfrac{\\sqrt{2}}{2}$.",
+   "$\\sin 2x=-\\dfrac{\\sqrt{2}}{2}$.",
+   "$\\sin 2x=-\\dfrac{1}{2}$.",
+   "$\\sin 2x=\\dfrac{1}{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Bình phương hai vế của đẳng thức $\\sin x+\\cos x=\\dfrac{\\sqrt{2}}{2}$, ta được\n$\\left(\\sin x+\\cos x\\right)^{2}=\\left(\\dfrac{\\sqrt{2}}{2}\\right)^{2}\\Leftrightarrow \\sin ^{2}x+\\cos ^{2}x+2\\sin x\\cos x=\\dfrac{1}{2}.$\nMặt khác, ta có $\\sin ^{2}x+\\cos ^{2}x=1$ và $2\\sin x\\cos x=\\sin 2x$.\nDo đó\n$1+\\sin 2x=\\dfrac{1}{2}\\Leftrightarrow \\sin 2x=\\dfrac{1}{2}-1=-\\dfrac{1}{2}.$\nVậy $\\sin 2x=-\\dfrac{1}{2}$.",
+  "A": {
+   "id": "NDB00955",
+   "ten": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos"
+  },
+  "B": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111030501080",
+  "loai": "trac_nghiem",
+  "de": "Cho đồ thị hàm số $y=\\sin x$như sau:\nHàm số $y=\\sin x$ đồng biến trên khoảng:",
+  "lua_chon": [
+   "$\\left(\\dfrac{-\\pi }{2};\\pi \\right)$.",
+   "$\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$.",
+   "$\\left(\\dfrac{3\\pi }{2};\\dfrac{5\\pi }{2}\\right)$.",
+   "$\\left(-2\\pi;-\\pi \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hàm số $y=\\sin x$ đồng biến trên các khoảng có dạng $\\left(-\\dfrac{\\pi }{2}+k2\\pi;\\dfrac{\\pi }{2}+k2\\pi \\right)$ với $k\\in \\mathbb{Z}$.\nVới $k=1$, ta được khoảng đồng biến là $\\left(-\\dfrac{\\pi }{2}+2\\pi;\\dfrac{\\pi }{2}+2\\pi \\right)=\\left(\\dfrac{3\\pi }{2};\\dfrac{5\\pi }{2}\\right)$.\nQuan sát đồ thị đã cho:\n• Trên khoảng $\\left(\\dfrac{3\\pi }{2};\\dfrac{5\\pi }{2}\\right)$, đường cong đồ thị đi lên từ trái sang phải (từ giá trị $-1$ lên $1$), do đó hàm số đồng biến trên khoảng này.\n• Trên khoảng $\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$, đồ thị đi xuống từ trái sang phải nên hàm số nghịch biến.\n• Trên các khoảng $\\left(-\\dfrac{\\pi }{2};\\pi \\right)$ và $\\left(-2\\pi;-\\pi \\right)$, đồ thị vừa có  …",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111030501044",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cot 2x$",
+   "$y = - \\cot x$",
+   "$y = \\sin x + 1$",
+   "$y = \\cos 2x$"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010102044",
+  "loai": "trac_nghiem",
+  "de": "Cung tròn bán kính bằng 8,43 cm có số đo 3,85 rad có độ dài là",
+  "lua_chon": [
+   "32,46 cm.",
+   "32,45 cm.",
+   "32,47 cm.",
+   "32,5 cm."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Độ dài cung tròn được tính theo công thức: $l = \\alpha .R$\nThay số: $l = 3,85 \\times 8,43 \\approx 32,4555 \\approx 32,46$ cm.\nChọn A.",
+  "A": {
+   "id": "NDB00943",
+   "ten": "Tính độ dài cung tròn"
+  },
+  "B": {
+   "id": "NDB00567",
+   "ten": "Bài toán hỏi số đo góc mà vật thể hình tròn quay được"
+  }
+ },
+ {
+  "ma_cau": "T111030501030",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây? [hình]",
+  "lua_chon": [
+   "$y = \\sin x + 1$",
+   "$y = \\cos x - 1$",
+   "$y = \\tan x$",
+   "$y = -\\cot x"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111060205001",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Quang đang tiết kiệm tiền để mua một chiếc máy tính cầm tay Casio FX -880BTG có giá 700 nghìn đồng. Trong tháng đầu tiên, bạn Quang để dành được 100 nghìn đồng. Mỗi tháng tiếp theo bạn Quang để dành được 50 nghìn đồng và đưa vào số tiền tiết kiệm của mình. Hỏi ít nhất vào tháng thứ bao nhiêu thì bạn Quang mới có đủ tiền để mua chiếc máy tính đó?",
+  "dap_an": "13",
+  "loi_giai": "Gọi $n$ là số tháng ít nhất cần tiết kiệm ($n \\in \\mathbb{N}^*$).\nSố tiền tổng cộng bạn Quang có được ở tháng thứ $n$ tạo thành một cấp số cộng với $u_1 = 100$, công sai $d = 50$.\nSố tiền có được ở tháng thứ $n$ là: $u_n = 100 + (n - 1)50$.\nTa có bất phương trình: $100 + (n - 1)50 \\ge 700$\n$\\Leftrightarrow n \\ge 13$\nVậy ít nhất vào tháng thứ 13 bạn Quang mới có đủ tiền.",
+  "A": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  },
+  "B": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  }
+ },
+ {
+  "ma_cau": "T111020301052",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tích thành tổng để khai triển:\n$\\sin 3x \\cos x =$",
+  "dap_an": "$\\dfrac{1}{2}(\\sin 4x + \\sin 2x)$",
+  "loi_giai": "$\\sin 3x \\cos x = \\dfrac{1}{2}[\\sin(3x+x) + \\sin(3x-x)] = \\dfrac{1}{2}(\\sin 4x + \\sin 2x)$",
+  "A": {
+   "id": "NDB00962",
+   "ten": "Rút gọn biểu thức sử dụng công thức tích thành tổng"
+  },
+  "B": {
+   "id": "NDB00961",
+   "ten": "Nhận dạng công thức tích thành tổng"
+  }
+ },
+ {
+  "ma_cau": "T111030501065",
+  "loai": "trac_nghiem",
+  "de": "Cho đồ thị hàm số $y=\\sin x$như hình vẽ sau:\nMệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số $y=\\sin x$ đồng biến trên $\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$.",
+   "Hàm số $y=\\sin x$ đồng biến trên $\\left(\\dfrac{-3\\pi }{2};-\\pi \\right)$.",
+   "Hàm số $y=\\sin x$ nghịch biến trên $\\left(\\dfrac{-\\pi }{2};\\dfrac{\\pi }{2}\\right)$.",
+   "Hàm số $y=\\sin x$ đồng biến trên $\\left(-\\dfrac{\\pi }{2};0\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Quan sát đồ thị hàm số $y=\\sin x$, ta thấy:\n• Trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$, đồ thị đi lên từ trái sang phải nên hàm số đồng biến trên $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$. Do đó, hàm số đồng biến trên khoảng con $\\left(-\\dfrac{\\pi }{2};0\\right)$.\n• Trên khoảng $\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$ và $\\left(-\\dfrac{3\\pi }{2};-\\pi \\right)$, đồ thị đi xuống từ trái sang phải nên hàm số nghịch biến.\nVậy mệnh đề đúng là \" Hàm số $y=\\sin x$ đồng biến trên $\\left(-\\dfrac{\\pi }{2};0\\right)$\".",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111020203007",
+  "loai": "trac_nghiem",
+  "de": "Chọn đẳng thức đúng.",
+  "lua_chon": [
+   "$\\cos^2\\left(\\dfrac{\\pi}{4} + \\dfrac{a}{2}\\right) = \\dfrac{1 - \\sin a}{2}$.",
+   "$\\cos^2\\left(\\dfrac{\\pi}{4} + \\dfrac{a}{2}\\right) = \\dfrac{1 + \\sin a}{2}$.",
+   "$\\cos^2\\left(\\dfrac{\\pi}{4} + \\dfrac{a}{2}\\right) = \\dfrac{1 - \\cos a}{2}$.",
+   "$\\cos^2\\left(\\dfrac{\\pi}{4} + \\dfrac{a}{2}\\right) = \\dfrac{1 + \\cos a}{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\cos^2\\left(\\dfrac{\\pi}{4} + \\dfrac{a}{2}\\right) = \\dfrac{1 + \\cos\\left(\\dfrac{\\pi}{2} + a\\right)}{2} = \\dfrac{1 + \\sin(-a)}{2} = \\dfrac{1 - \\sin a}{2}$.",
+  "A": {
+   "id": "NDB00958",
+   "ten": "Nhận dạng công thức nhân đôi, hạ bậc"
+  },
+  "B": {
+   "id": "NDB00960",
+   "ten": "Rút gọn biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111010103007",
+  "loai": "tra_loi_ngan",
+  "de": "Một đồng hồ treo tường, kim giờ dài 10,57 cm và kim phút dài 13,34 cm.Trong 30 phút mũi kim giờ vạch lên cung tròn có độ dài là",
+  "dap_an": "2.77",
+  "loi_giai": "Ta có: 6 giờ thì kim giờ vạch lên 1 cung có số đo $\\pi$ nên 30 phút kim giờ vạch lên 1 cung có số đo là $\\dfrac{\\pi}{12}$, suy ra độ dài cung tròn mà nó vạch lên là $l = R.\\alpha = 10,57.\\dfrac{3,14}{12} \\approx 2,77$ cm.",
+  "A": {
+   "id": "NDB00943",
+   "ten": "Tính độ dài cung tròn"
+  },
+  "B": {
+   "id": "NDB00568",
+   "ten": "Bài toán tính quãng đường vật thể hình tròn di chuyển được"
+  }
+ },
+ {
+  "ma_cau": "T111030501043",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = 2\\tan x$",
+   "$y = \\cos 2x$",
+   "$y = 2\\cot x$",
+   "$y = -\\sin x"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111040102037",
+  "loai": "trac_nghiem",
+  "de": "Số nghiệm thực của phương trình $2\\sin x+1=0$ trên đoạn $\\left[-\\dfrac{3\\pi}{2};10\\pi\\right]$ là:",
+  "lua_chon": [
+   "12.",
+   "11.",
+   "21.",
+   "20."
+  ],
+  "loi_giai": "**Lời giải:**\nTa có $2\\sin x + 1 = 0 \\iff \\sin x = -\\frac{1}{2} \\iff x = -\\frac{\\pi}{6} + k2\\pi$ hoặc $x = \\frac{7\\pi}{6} + k2\\pi$ ($k \\in \\mathbb{Z}$).\nVì $x \\in \\left[-\\frac{3\\pi}{2}; 10\\pi\\right]$, xét từng họ nghiệm:\n* Họ nghiệm $x = -\\frac{\\pi}{6} + k2\\pi$: $-\\frac{3\\pi}{2} \\le -\\frac{\\pi}{6} + k2\\pi \\le 10\\pi \\iff -\\frac{3}{2} + \\frac{1}{6} \\le 2k \\le 10 + \\frac{1}{6} \\iff -\\frac{2}{3} \\le k \\le \\frac{61}{12} \\implies k \\in \\{0; 1; 2; 3; 4; 5\\}$ (có 6 nghiệm).\n* Họ nghiệm $x = \\frac{7\\pi}{6} + k2\\pi$: $-\\frac{3\\pi}{2} \\le \\frac{7\\pi}{6} + k2\\pi \\le 10\\pi \\iff -\\frac{3}{2} - \\frac{7}{6} \\le 2k \\le 10 - \\frac{7}{6} \\iff -\\frac{4}{3} \\le k \\le \\frac{53}{12} \\implies k \\in \\{-1; 0; 1; 2; 3 …",
+  "A": {
+   "id": "NDB01009",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 2 họ nghiệm"
+  },
+  "B": {
+   "id": "NDB00577",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 1 họ nghiệm"
+  }
+ },
+ {
+  "ma_cau": "T111010606002",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức: $\\cos 2x\\cos x-\\sin 2x\\sin x$, ta được:",
+  "lua_chon": [
+   "$\\cos x$.",
+   "$\\sin x$.",
+   "$\\cos 3x$.",
+   "$\\sin 3x$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Áp dụng công thức cộng $\\cos \\left(a+b\\right)=\\cos a\\cos b-\\sin a\\sin b$, ta có\n$\\cos 2x\\cos x-\\sin 2x\\sin x=\\cos \\left(2x+x\\right)=\\cos 3x.$\nVậy rút gọn biểu thức ta được $\\cos 3x$.",
+  "A": {
+   "id": "NDB00960",
+   "ten": "Rút gọn biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  },
+  "B": {
+   "id": "NDB00984",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức cộng"
+  }
+ },
+ {
+  "ma_cau": "T111020301012",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tích thành tổng để khai triển:\nsin 2a sin b =",
+  "dap_an": "$-\\dfrac{1}{2}[\\cos(2a+b) - \\cos(2a-b)]$",
+  "loi_giai": "$\\sin 2a \\sin b = -\\dfrac{1}{2}[\\cos(2a+b) - \\cos(2a-b)]$",
+  "A": {
+   "id": "NDB00962",
+   "ten": "Rút gọn biểu thức sử dụng công thức tích thành tổng"
+  },
+  "B": {
+   "id": "NDB00961",
+   "ten": "Nhận dạng công thức tích thành tổng"
+  }
+ },
+ {
+  "ma_cau": "T111010201001",
+  "loai": "trac_nghiem",
+  "de": "Có bao nhiêu điểm $M$ trên đường tròn định hướng gốc $A$ thỏa mãn $\\overline{AM} = \\dfrac{\\pi}{6} + \\dfrac{k2\\pi}{3}$, $k \\in \\mathbb{Z}$?",
+  "lua_chon": [
+   "6.",
+   "4.",
+   "3.",
+   "8."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Có 3 điểm $M$ trên đường tròn định hướng gốc $A$ thỏa mãn $\\overline{AM} = \\dfrac{\\pi}{6} + \\dfrac{k2\\pi}{3}$, $k \\in \\mathbb{Z}$, ứng với các giá trị là số dư của phép chia $k$ cho 3.",
+  "A": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111020401012",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:\n$\\cos 2a - \\cos b =$",
+  "dap_an": "$-2 \\sin \\dfrac{2a+b}{2} \\sin \\dfrac{2a-b}{2}$",
+  "loi_giai": "$\\cos 2a - \\cos b = -2 \\sin \\dfrac{2a+b}{2} \\sin \\dfrac{2a-b}{2}$",
+  "A": {
+   "id": "NDB00966",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức tổng thành tích"
+  },
+  "B": {
+   "id": "NDB00963",
+   "ten": "Nhận dạng công thức tổng thành tích"
+  }
+ },
+ {
+  "ma_cau": "T111020401045",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:\n$\\cos 2x + \\cos x =$",
+  "dap_an": "$2\\cos \\dfrac{3x}{2}\\cos \\dfrac{x}{2}$",
+  "loi_giai": "$\\cos 2x + \\cos x = 2\\cos \\dfrac{2x+x}{2}\\cos \\dfrac{2x-x}{2}$\n$= 2\\cos \\dfrac{3x}{2}\\cos \\dfrac{x}{2}$",
+  "A": {
+   "id": "NDB00966",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức tổng thành tích"
+  },
+  "B": {
+   "id": "NDB00963",
+   "ten": "Nhận dạng công thức tổng thành tích"
+  }
+ },
+ {
+  "ma_cau": "T111030501013",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\sin x - 1$",
+   "$y = 1 - \\cos 2x$",
+   "$y = -2\\sin x$",
+   "$y = -\\cos x"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111010606005",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức $M=\\cos 2x\\cdot \\cos x+\\sin 2x\\cdot \\sin x$ ta được kết quả là:",
+  "lua_chon": [
+   "$M=\\sin x$.",
+   "$M=\\sin 3x$.",
+   "$M=\\cos x$.",
+   "$M=\\cos 3x$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Áp dụng công thức cộng $\\cos \\left(a-b\\right)=\\cos a\\cos b+\\sin a\\sin b$, ta có:\n$M=\\cos 2x\\cdot \\cos x+\\sin 2x\\cdot \\sin x=\\cos \\left(2x-x\\right)=\\cos x.$\nVậy $M=\\cos x$.",
+  "A": {
+   "id": "NDB00984",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức cộng"
+  },
+  "B": {
+   "id": "NDB00960",
+   "ten": "Rút gọn biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111010103013",
+  "loai": "trac_nghiem",
+  "de": "Bánh xe đạp có đường kính 55 cm (kể cả lốp). Nếu chạy với vận tốc 40 km/h thì trong 25 giây bánh xe quay được số vòng gần bằng với kết quả nào dưới đây?",
+  "lua_chon": [
+   "52.",
+   "161.",
+   "322.",
+   "200."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $r = \\dfrac{55}{2}\\,\\text{cm} = \\dfrac{0,55}{2}\\,\\text{m}$; $40\\,\\text{km/h} = \\dfrac{40000}{3600}\\,\\text{m/s}$.\nGọi $l$ là quãng đường đi được trong 25 giây.\nGọi $x$ là số vòng bánh xe quay được trong 25 giây.\nKhi đó $l = 2\\pi r.x$.\nMà $l = \\dfrac{25.40000}{3600} = \\dfrac{2500}{9}$ suy ra $x = \\dfrac{l}{2\\pi r} = 160,7 \\approx 161$ vòng.",
+  "A": {
+   "id": "NDB00944",
+   "ten": "Bài toán tính góc/số vòng quay được khi biết tốc độ dài"
+  },
+  "B": {
+   "id": "NDB00568",
+   "ten": "Bài toán tính quãng đường vật thể hình tròn di chuyển được"
+  }
+ },
+ {
+  "ma_cau": "T111030501040",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = 2\\cos x$",
+   "$y = 2\\cot x$",
+   "$y = \\cot x + 1$",
+   "$y = -\\tan x"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111020401023",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:\nsin $2a$ + sin $b$ =",
+  "dap_an": "$2\\sin\\dfrac{2a+b}{2}\\cos\\dfrac{2a-b}{2}$",
+  "loi_giai": "sin $2a$ + sin $b$ = $2\\sin\\dfrac{2a+b}{2}\\cos\\dfrac{2a-b}{2}$",
+  "A": {
+   "id": "NDB00963",
+   "ten": "Nhận dạng công thức tổng thành tích"
+  },
+  "B": {
+   "id": "NDB00966",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức tổng thành tích"
+  }
+ },
+ {
+  "ma_cau": "T111030501071",
+  "loai": "trac_nghiem",
+  "de": "Hàm số nào dưới đây có đồ thị như hình vẽ?",
+  "lua_chon": [
+   "$y=2\\cos \\dfrac{x}{2}$.",
+   "$y=2\\sin \\dfrac{x}{2}$.",
+   "$y=1+2\\cos x$.",
+   "$y=\\sin x+2$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát đồ thị hàm số, ta thấy:\n• Đồ thị đi qua điểm $\\left(0;2\\right)$. Thay $x=0$ vào các phương án:\n• Với $y=2\\cos \\dfrac{x}{2}$, ta có $y\\left(0\\right)=2\\cos 0=2$ (thỏa mãn).\n• Với $y=2\\sin \\dfrac{x}{2}$, ta có $y\\left(0\\right)=2\\sin 0=0\\ne 2$ (loại).\n• Với $y=1+2\\cos x$, ta có $y\\left(0\\right)=1+2\\cos 0=3\\ne 2$ (loại).\n• Với $y=\\sin x+2$, ta có $y\\left(0\\right)=2$ (thỏa mãn).\n• Đồ thị đi qua điểm $\\left(\\pi;0\\right)$. Thay $x=\\pi$ vào hai hàm số còn lại:\n• Với $y=2\\cos \\dfrac{x}{2}$, ta có $y\\left(\\pi \\right)=2\\cos \\dfrac{\\pi }{2}=0$ (thỏa mãn).\n• Với $y=\\sin x+2$, ta có $y\\left(\\pi \\right)=\\sin \\pi +2=2\\ne 0$ (loại).\nVậy đồ thị đã cho là của hàm số $y=2\\cos \\dfrac{x}{2}$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010301029",
+  "loai": "trac_nghiem",
+  "de": "Cho $2\\pi < \\alpha < \\dfrac{5\\pi}{2}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\tan \\alpha > 0$; $\\cot \\alpha > 0$.",
+   "$\\tan \\alpha < 0$; $\\cot \\alpha < 0$.",
+   "$\\tan \\alpha > 0$; $\\cot \\alpha < 0$.",
+   "$\\tan \\alpha < 0$; $\\cot \\alpha > 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $2\\pi < \\alpha < \\dfrac{5\\pi}{2}$\n$\\Rightarrow \\pi < \\alpha - \\pi < \\dfrac{3\\pi}{2}$. Vậy điểm cuối cung $\\alpha - \\pi$ thuộc góc phần tư thứ III\n$\\Rightarrow \\begin{cases} \\tan \\alpha > 0 \\\\ \\cot \\alpha > 0 \\end{cases}$",
+  "A": {
+   "id": "NDB00946",
+   "ten": "Xác định dấu của giá trị lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111030501019",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cos x + 1$",
+   "$y = \\sin x + 1$",
+   "$y = 2\\cos x$",
+   "$y = \\sin 2x + 1"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111010605037",
+  "loai": "trac_nghiem",
+  "de": "Nếu $\\sin x+\\cos x=\\dfrac{1}{3}$ thì $\\sin 2x$ bằng",
+  "lua_chon": [
+   "$\\dfrac{3}{4}$.",
+   "$\\dfrac{3}{8}$.",
+   "$\\dfrac{\\sqrt{2}}{2}$.",
+   "$\\dfrac{-8}{9}$."
+  ],
+  "loi_giai": "Bình phương hai vế của đẳng thức $\\sin x+\\cos x=\\dfrac{1}{3}$, ta được:\n$\\left(\\sin x+\\cos x\\right)^{2}=\\left(\\dfrac{1}{3}\\right)^{2}\\Leftrightarrow \\sin ^{2}x+2\\sin x\\cos x+\\cos ^{2}x=\\dfrac{1}{9}.$\nÁp dụng các hệ thức $\\sin ^{2}x+\\cos ^{2}x=1$ và $\\sin 2x=2\\sin x\\cos x$, ta có:\n$1+\\sin 2x=\\dfrac{1}{9}\\Leftrightarrow \\sin 2x=\\dfrac{1}{9}-1=-\\dfrac{8}{9}.$\nVậy $\\sin 2x=-\\dfrac{8}{9}$.",
+  "A": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  },
+  "B": {
+   "id": "NDB00955",
+   "ten": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos"
+  }
+ },
+ {
+  "ma_cau": "T111030501012",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cos x$",
+   "$y = -2\\sin x$",
+   "$y = \\dfrac{1}{2}\\cos x$",
+   "$y = 2\\cos x"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đồ thị hàm số trên là một đường hình sin.\nTại $x = 0$, $y = 2$.\nTa có $y = \\cos x$ tại $x = 0$, $y = \\cos 0 = 1$ (loại A).\n$y = -2\\sin x$ tại $x = 0$, $y = -2\\sin 0 = 0$ (loại B).\n$y = \\dfrac{1}{2}\\cos x$ tại $x = 0$, $y = \\dfrac{1}{2}\\cos 0 = \\dfrac{1}{2}$ (loại C).\n$y = 2\\cos x$ tại $x = 0$, $y = 2\\cos 0 = 2$ (chọn D).\nNgoài ra ta có thể kiểm tra thêm các điểm $x = \\dfrac{\\pi}{2}$, $x = \\pi$, $x = \\dfrac{3\\pi}{2}$,... thì đồ thị hàm số $y = 2\\cos x$ hoàn toàn phù hợp với hình vẽ.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111030501010",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\sin 2x$",
+   "$y = -\\cos x$",
+   "$y = -2\\sin x$",
+   "$y = \\sin x$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111030501038",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây? [hình: đồ thị hàm số lượng giác]",
+  "lua_chon": [
+   "y = 2sinx",
+   "y = sinx",
+   "y = 2tanx",
+   "y = tan2x"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111020301023",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tích thành tổng để khai triển:\n$\\cos 3x \\cos x =$",
+  "dap_an": "$\\dfrac{1}{2}(\\cos 4x + \\cos 2x)$",
+  "loi_giai": "$\\cos 3x \\cos x = \\dfrac{1}{2}[\\cos(3x + x) + \\cos(3x - x)]$\n$= \\dfrac{1}{2}(\\cos 4x + \\cos 2x)$",
+  "A": {
+   "id": "NDB00962",
+   "ten": "Rút gọn biểu thức sử dụng công thức tích thành tổng"
+  },
+  "B": {
+   "id": "NDB00961",
+   "ten": "Nhận dạng công thức tích thành tổng"
+  }
+ },
+ {
+  "ma_cau": "T111010201027",
+  "loai": "trac_nghiem",
+  "de": "Cho đường tròn lượng giác gốc $A$ như hình vẽ dưới đây. [hình]\nĐiểm biểu diễn cung có số đo $\\dfrac{5\\pi}{2}$ là điểm",
+  "lua_chon": [
+   "Điểm $E$.",
+   "Điểm $F$.",
+   "Điểm $B$.",
+   "Điểm $B'$.\n"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nTa có: $\\dfrac{5\\pi}{2} = 2\\pi + \\dfrac{\\pi}{2}$. Do đó, điểm biểu diễn của cung có số đo $\\dfrac{5\\pi}{2}$ là điểm biểu diễn của cung có số đo $\\dfrac{\\pi}{2}$, đó là điểm $B$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111060205012",
+  "loai": "tra_loi_ngan",
+  "de": "Một kỹ sư nông nghiệp theo dõi sự phát triển của một giống cây công nghiệp mới. Sau tuần đầu tiên gieo trồng, cây đạt chiều cao 24 cm. Nhờ điều kiện chăm sóc tốt, mỗi tuần tiếp theo cây cao thêm trung bình 7 cm. Đề xuất thu hoạch mầm được đưa ra khi cây đạt chiều cao tối thiểu 150 cm. Hỏi ít nhất vào tuần thứ bao nhiêu thì có thể tiến hành thu hoạch?",
+  "dap_an": "19",
+  "loi_giai": "Gọi $n$ là số tuần ít nhất để cây đạt chiều cao yêu cầu ($n \\in \\mathbb{N}^*$).\nChiều cao của cây ở tuần thứ $n$ là một cấp số cộng với $u_1 = 24$ và công sai $d = 7$.\nChiều cao của cây ở tuần thứ $n$ là: $u_n = 24 + (n-1)7$.\nTa có bất phương trình: $24 + (n-1)7 \\ge 150$\n$\\Leftrightarrow n \\ge 19$\nVậy ít nhất vào tuần thứ 19 có thể tiến hành thu hoạch.",
+  "A": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  },
+  "B": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  }
+ },
+ {
+  "ma_cau": "T111020401056",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:\n$\\cos 2x - \\cos x =$",
+  "dap_an": "-$2\\sin\\dfrac{3x}{2}\\sin\\dfrac{x}{2}$",
+  "loi_giai": "$\\cos 2x - \\cos x = -2\\sin\\dfrac{2x+x}{2}\\sin\\dfrac{2x-x}{2}$\n$= -2\\sin\\dfrac{3x}{2}\\sin\\dfrac{x}{2}$",
+  "A": {
+   "id": "NDB00963",
+   "ten": "Nhận dạng công thức tổng thành tích"
+  },
+  "B": {
+   "id": "NDB00966",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức tổng thành tích"
+  }
+ },
+ {
+  "ma_cau": "T111030501073",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\cos x$có đồ thị như hình vẽ dưới đây:\nHàm số $y=\\cos x$ đồng biến trên khoảng nào trong các khoảng sau:",
+  "lua_chon": [
+   "$\\left(0;\\pi \\right)$.",
+   "$\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$.",
+   "$\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$.",
+   "$\\left(\\pi;2\\pi \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào đồ thị hàm số $y=\\cos x$, trên khoảng $\\left(\\pi;2\\pi \\right)$ đồ thị có hướng đi lên từ trái sang phải.\nDo đó, hàm số $y=\\cos x$ đồng biến trên khoảng $\\left(\\pi;2\\pi \\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111030501035",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cos 2x$",
+   "$y = \\cos x - 1$",
+   "$y = - \\tan x$",
+   "$y = \\sin x + 1"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010201030",
+  "loai": "tu_luan",
+  "de": "Biểu diễn trên đường tròn lượng giác các điểm ngọn của cung lượng giác có số đo là $-1485^o$.",
+  "loi_giai": "Ta có $sđAB = -1485^o = -45^o + (-4).360^o$\nVậy điểm cuối $M$ của cung $AB$ sẽ trùng với điểm ngọn của cung $-45^o$.\nSuy ra $M$ là điểm chính giữa của cung nhỏ $AB'$.",
+  "A": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111010605012",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\dfrac{3-4\\cos 2\\alpha +\\cos 4\\alpha }{3+4\\cos 2\\alpha +\\cos 4\\alpha }=k\\tan ^{n}\\alpha$, với $k,n\\in \\mathbb{Z}$. Khi đó hiệu $n-k$ bằng",
+  "lua_chon": [
+   "$4$.",
+   "$2$.",
+   "$5$.",
+   "$3$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Biến đổi tử thức, ta có\n$3-4\\cos 2\\alpha +\\cos 4\\alpha =3-4\\cos 2\\alpha +\\left(2\\cos ^{2}2\\alpha -1\\right)=2\\cos ^{2}2\\alpha -4\\cos 2\\alpha +2=2\\left(\\cos 2\\alpha -1\\right)^{2}.$\nVì $\\cos 2\\alpha -1=-2\\sin ^{2}\\alpha$ nên\n$3-4\\cos 2\\alpha +\\cos 4\\alpha =2\\left(-2\\sin ^{2}\\alpha \\right)^{2}=8\\sin ^{4}\\alpha.$\nBiến đổi mẫu thức, ta có\n$3+4\\cos 2\\alpha +\\cos 4\\alpha =3+4\\cos 2\\alpha +\\left(2\\cos ^{2}2\\alpha -1\\right)=2\\cos ^{2}2\\alpha +4\\cos 2\\alpha +2=2\\left(\\cos 2\\alpha +1\\right)^{2}.$\nVì $\\cos 2\\alpha +1=2\\cos ^{2}\\alpha$ nên\n$3+4\\cos 2\\alpha +\\cos 4\\alpha =2\\left(2\\cos ^{2}\\alpha \\right)^{2}=8\\cos ^{4}\\alpha.$\nDo đó\n$\\dfrac{3-4\\cos 2\\alpha +\\cos 4\\alpha }{3+4\\cos 2\\alpha +\\cos 4\\alpha }=\\df …",
+  "A": {
+   "id": "NDB00960",
+   "ten": "Rút gọn biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  },
+  "B": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111030501020",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = 2\\sin x$",
+   "$y = \\dfrac{1}{2}\\cos x$",
+   "$y = \\cos x + 1$",
+   "$y = \\sin 2x + 1"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111040102018",
+  "loai": "trac_nghiem",
+  "de": "Hỏi trên $[0; \\dfrac{\\pi}{2}]$, phương trình $\\sin x = \\dfrac{1}{2}$ có bao nhiêu nghiệm?",
+  "lua_chon": [
+   "1.",
+   "2.",
+   "3.",
+   "4."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có: $\\sin x = \\dfrac{1}{2} \\Leftrightarrow \\begin{cases} x = \\dfrac{\\pi}{6} + k2\\pi \\\\ x = \\dfrac{5\\pi}{6} + k2\\pi \\end{cases} (k \\in \\mathbb{Z})$.\nTrên đoạn $[0; \\dfrac{\\pi}{2}]$ chỉ có một nghiệm $x = \\dfrac{\\pi}{6}$ thoả mãn.",
+  "A": {
+   "id": "NDB01009",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 2 họ nghiệm"
+  },
+  "B": {
+   "id": "NDB00577",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 1 họ nghiệm"
+  }
+ }
+]

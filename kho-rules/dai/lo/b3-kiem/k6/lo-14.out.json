@@ -1,0 +1,9 @@
+[
+{"ma_cau":"T106040302018","dang_bai_id":"NDB00416","chac":"cao","ly_do":"Tìm a, b biết ƯCLN = 5 và tổng a+b = 60."},
+{"ma_cau":"T106040103033","dang_bai_id":"NDB00404","chac":"cao","ly_do":"Toán lời văn chia phần thưởng nhiều nhất, dùng ƯCLN ba số."},
+{"ma_cau":"T106040104019","dang_bai_id":"NDB00405","chac":"cao","ly_do":"Tìm n biết hai số chia hết cho n và có điều kiện chặn n<9."},
+{"ma_cau":"T106040203045","dang_bai_id":"NDB00410","chac":"cao","ly_do":"Toán lời văn đóng 14, 18, 21 gói vừa đủ, bội chung trong khoảng."},
+{"ma_cau":"T106030401080","dang_bai_id":"NDB00381","chac":"cao","ly_do":"2x+7 chia hết cho x-3: hệ số 2 chia hết cho 1, tách 2(x-3)+13."},
+{"ma_cau":"T106030402004","dang_bai_id":"NDB00382","chac":"cao","ly_do":"Cho 3x+4y chia hết cho 19, chứng minh 4x-y: nhân biểu thức đã cho với 5."},
+{"ma_cau":"T106030503002","dang_bai_id":"NDB00397","chac":"cao","ly_do":"a+3b và a+2b hệ số của a bằng nhau, lấy hiệu để khử a, có ƯCLN(a,b)=1."}
+]

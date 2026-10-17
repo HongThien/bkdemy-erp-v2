@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T109030101047",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{75}+\\dfrac12\\sqrt{12}-0{,}5\\sqrt{48}$.",
+  "dap_an": "$4\\sqrt{3}$",
+  "loi_giai": "$A=\\sqrt{75}+\\dfrac12\\sqrt{12}-0{,}5\\sqrt{48}$\n$A=5\\sqrt{3}+\\dfrac12\\cdot2\\sqrt{3}-0{,}5\\cdot4\\sqrt{3}$\n$A=5\\sqrt{3}+\\sqrt{3}-2\\sqrt{3}$\n$A=4\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030102046",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{32-2\\sqrt{87}}-\\sqrt{32+2\\sqrt{87}}$.",
+  "dap_an": "$-2\\sqrt{3}$",
+  "loi_giai": "$A=\\sqrt{32-2\\sqrt{87}}-\\sqrt{32+2\\sqrt{87}}$\n$A=\\sqrt{(\\sqrt{29}-\\sqrt{3})^2}-\\sqrt{(\\sqrt{29}+\\sqrt{3})^2}$\n$A=|\\sqrt{29}-\\sqrt{3}|-|\\sqrt{29}+\\sqrt{3}|$\n$A=\\sqrt{29}-\\sqrt{3}-(\\sqrt{29}+\\sqrt{3})$\n$A=-2\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030202026",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}-2}$ tại $|x-1|=8$.",
+  "dap_an": "2",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne4$.\n$|x-1|=8$\nTH1: $x-1=8\\Rightarrow x=9$ (tm ĐKXĐ).\nTH2: $x-1=-8\\Rightarrow x=-7$ (Ktm ĐKXĐ).\nThay $x=9$ vào $A$ ta được: $A=\\dfrac{\\sqrt{9}-1}{\\sqrt{9}-2}=\\dfrac{3-1}{3-2}=2$."
+ },
+ {
+  "ma_cau": "T109030302006",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}}$ $(x>0)$. Tìm các giá trị nguyên của $x$ để $P>\\dfrac{4}{3}$.",
+  "dap_an": "$x\\in\\{1;2;3;4;5;6;7;8\\}$",
+  "loi_giai": "Ta sẽ đưa về dạng $P-\\dfrac{4}{3}>0$.\nXét $P-\\dfrac{4}{3}=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}}-\\dfrac{4}{3}=\\dfrac{3-\\sqrt{x}}{3\\sqrt{x}}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0\\Rightarrow3\\sqrt{x}>0$ nên để $P-\\dfrac{4}{3}>0$ thì\n$3-\\sqrt{x}>0$.\n$\\Rightarrow\\sqrt{x}<3$\n$\\Rightarrow x<9$\nKết hợp với điều kiện ta được $0<x<9$.\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{1;2;3;4;5;6;7;8\\}$."
+ },
+ {
+  "ma_cau": "T109030304079",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4-\\dfrac{6}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận giá trị nguyên lớn nhất.",
+  "dap_an": "16",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+2\\ge2\\Rightarrow0<\\dfrac{6}{\\sqrt{x}+2}\\le3$.\n$\\Rightarrow1\\le4-\\dfrac{6}{\\sqrt{x}+2}<4$.\nVậy $1\\le P<4$. Mà $P$ nguyên nên $P\\in\\{1;2;3\\}$.\nDo đó giá trị nguyên lớn nhất của $P$ là 3.\n$P=3\\Rightarrow4-\\dfrac{6}{\\sqrt{x}+2}=3\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=6\\Rightarrow\\sqrt{x}=4\\Rightarrow x=16$ (thỏa mãn ĐKXĐ).\nVậy $x=16$ thì $P$ nhận giá trị nguyên lớn nhất."
+ },
+ {
+  "ma_cau": "T109030101009",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $9\\sqrt{2}-\\sqrt{50}-2\\sqrt{8}$.",
+  "dap_an": "0",
+  "loi_giai": "$9\\sqrt{2}-\\sqrt{50}-2\\sqrt{8}$\n$=9\\sqrt{2}-5\\sqrt{2}-2\\cdot2\\sqrt{2}$\n$=9\\sqrt{2}-5\\sqrt{2}-4\\sqrt{2}$\n$=0$"
+ },
+ {
+  "ma_cau": "T109010305011",
+  "loai": "tra_loi_ngan",
+  "de": "Hai bến sông A và B cách nhau 200 km . Một ca nô xuôi dòng từ bến A đến bến B rồi ngược từ B trở về A hết tổng thời gian là 9 giờ. Biết thời gian ca nô xuôi dòng 5 km bằng thời gian ca nô ngược dòng 4 km . Tính tốc độ của ca nô khi nước yên lặng (tốc độ riêng của ca nô) và tốc độ của dòng nước.",
+  "dap_an": "45; 5",
+  "loi_giai": "Gọi tốc độ riêng của ca nô và tốc độ dòng nước lần lượt là $x$, $y$ (km/giờ) ($x > y > 0$).\nTốc độ của ca nô khi xuôi dòng là: $x + y$ (km/giờ)\nTốc độ của ca nô khi ngược dòng là: $x - y$ (km/giờ)\nThời gian ca nô đi xuôi dòng $200$ km là: $\\dfrac{200}{x+y}$ (giờ)\nThời gian ca nô đi ngược dòng $200$ km là: $\\dfrac{200}{x-y}$ (giờ)\nTa có phương trình: $\\dfrac{200}{x+y} + \\dfrac{200}{x-y} = 9$ (1)\nThời gian ca nô đi xuôi dòng $5$ km là: $\\dfrac{5}{x+y}$ (giờ)\nThời gian ca nô đi ngược dòng $4$ km là: $\\dfrac{4}{x-y}$ (giờ)\nTa có phương trình: $\\dfrac{5}{x+y} = \\dfrac{4}{x-y}$ hay $\\dfrac{5}{x+y} - \\dfrac{4}{x-y} = 0$ (2)\nTừ (1) và (2) ta có hệ phương trình:\n$$\\left\\{\\begin{matrix}\\dfrac{200}{x+y …"
+ },
+ {
+  "ma_cau": "T109030302030",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=-\\dfrac{2}{\\sqrt{x}-6}$ $(x\\ge0;x \\ne36)$. Tìm $x$ để $P>0$.",
+  "dap_an": "$0\\le x<36$",
+  "loi_giai": "$P=-\\dfrac{2}{\\sqrt{x}-6}$\nVì $-2<0$ nên để $P>0$ thì $\\sqrt{x}-6<0$.\n$\\sqrt{x}<6$\n$x<36$\nKết hợp với điều kiện ta được $0\\le x<36$.\nVậy $0\\le x<36$ thì $P>0$."
+ },
+ {
+  "ma_cau": "T109030102074",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{12+8\\sqrt{2}}-\\sqrt{12-8\\sqrt{2}}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=\\sqrt{12+8\\sqrt{2}}-\\sqrt{12-8\\sqrt{2}}$\n$A=\\sqrt{(2+2\\sqrt{2})^2}-\\sqrt{(2-2\\sqrt{2})^2}$\n$A=|2+2\\sqrt{2}|-|2-2\\sqrt{2}|$\n$A=2+2\\sqrt{2}-(2\\sqrt{2}-2)$\n$A=2+2\\sqrt{2}-2\\sqrt{2}+2$\n$A=4$"
+ },
+ {
+  "ma_cau": "T109010204012",
+  "loai": "tra_loi_ngan",
+  "de": "Giải hệ phương trình: $\\begin{cases}\n4|x-3|-|y|=5 \\\\\n2|x-3|+3|y|=13\n\\end{cases}$",
+  "dap_an": "(5;3);(1;3);(5;-3);(1;-3)",
+  "loi_giai": "Đặt $|x-3|=u$ ($u \\ge 0$), $|y|=v$ ($v \\ge 0$).\nHệ phương trình trở thành:\n$$\\begin{cases}\n4u-v=5 \\quad (1) \\\\\n2u+3v=13 \\quad (2)\n\\end{cases}$$\nTừ phương trình (1) ta có: $v=4u-5$.\nThay $v=4u-5$ vào phương trình (2) ta được:\n$2u+3(4u-5)=13$\n$2u+12u-15=13$\n$14u=28$\n$u=2$ (tmđk)\nThay $u=2$ vào $v=4u-5$ ta được:\n$v=4.2-5$\n$v=3$ (tmđk)\nSuy ra\n$$\\begin{cases}\n|x-3|=2 \\quad (3) \\\\\n|y|=3 \\quad (4)\n\\end{cases}$$\nGiải phương trình (3):\n$|x-3|=2$\nTH1: $x-3=2 \\Rightarrow x=5$\nTH2: $x-3=-2 \\Rightarrow x=1$\nGiải phương trình (4):\n$|y|=3$\nTH1: $y=3$\nTH2: $y=-3$\nVậy hệ phương trình có nghiệm $(x;y) \\in \\{(5;3);(1;3);(5;-3);(1;-3)\\}$."
+ },
+ {
+  "ma_cau": "T109030202007",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-3}$ tại $x=25$.",
+  "dap_an": "\\dfrac{7}{2}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne9$.\nThay $x=25$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{25}+2}{\\sqrt{25}-3}=\\dfrac{5+2}{5-3}=\\dfrac{7}{2}$."
+ },
+ {
+  "ma_cau": "T109030304003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{7}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "1/9;9/4;25",
+  "loi_giai": "Ta có: $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$; $7>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{7}{\\sqrt{x}+2}\\le\\dfrac{7}{2}\\Rightarrow P\\le\\dfrac{7}{2}$.\nVậy $0<P\\le\\dfrac{7}{2}$. Mà $P$ nguyên nên $P\\in\\{1;2;3\\}$.\nTH1:\n$P=1\\Rightarrow\\dfrac{7}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=7\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=2\\Rightarrow\\dfrac{7}{\\sqrt{x}+2}=2\\Rightarrow\\sqrt{x}+2=\\dfrac{7}{2}\\Rightarrow\\sqrt{x}=\\dfrac{3}{2}\\Rightarrow x=\\dfrac{9}{4}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=3\\Rightarrow\\dfrac{7}{\\sqrt{x}+2}=3\\Rightarrow\\sqrt{x}+2=\\dfrac{7}{3}\\Rightarrow\\sqrt{x}=\\dfrac{1}{3}\\Rightarrow x=\\dfrac{1}{9}$ (thỏa mãn ĐKXĐ).\nVậy để $P$ nhận giá trị nguyê …"
+ },
+ {
+  "ma_cau": "T109020201019",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $-5x - 3 \\geq 2$.",
+  "dap_an": "x \\leq -1",
+  "loi_giai": "$-5x - 3 \\geq 2$\n$-5x \\geq 2 + 3$\n$-5x \\geq 5$\n$5x \\leq -5$\n$x \\leq -1$\nVậy tập nghiệm của bất phương trình là $x \\leq -1$."
+ },
+ {
+  "ma_cau": "T109030304013",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=2+\\dfrac{6}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm tất cả các giá trị của $x$ để $P$ nhận giá trị nguyên.",
+  "dap_an": "0;1;16",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}>0\\Rightarrow P>2$.\nMặt khác $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}\\le3\\Rightarrow P\\le5$.\nVậy $2<P\\le5$. Mà $P$ nguyên nên $P\\in\\{3;4;5\\}$.\nTH1:\n$P=3\\Rightarrow2+\\dfrac{6}{\\sqrt{x}+2}=3\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}=4\\Rightarrow x=16$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=4\\Rightarrow2+\\dfrac{6}{\\sqrt{x}+2}=4\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}=2\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=5\\Rightarrow2+\\dfrac{6}{\\sqrt{x}+2}=5\\Rightarrow\\dfrac{6}{\\sqrt{x}+2}=3\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{0;1;16\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030101022",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{27}+\\dfrac13\\sqrt{108}-0{,}75\\sqrt{48}$.",
+  "dap_an": "$2\\sqrt{3}$",
+  "loi_giai": "$A=\\sqrt{27}+\\dfrac13\\sqrt{108}-0{,}75\\sqrt{48}$\n$A=3\\sqrt{3}+\\dfrac13\\cdot6\\sqrt{3}-0{,}75\\cdot4\\sqrt{3}$\n$A=3\\sqrt{3}+2\\sqrt{3}-3\\sqrt{3}$\n$A=2\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030302041",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2-\\sqrt{x}}{(\\sqrt{x}+1)^2}$ $(x\\ge0)$. Tìm số nguyên $x$ nhỏ nhất để $P\\le0$.",
+  "dap_an": "4",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow(\\sqrt{x}+1)^2>0$ nên để $P\\le0$ thì $2-\\sqrt{x}\\le0$.\n$\\sqrt{x}\\ge2$\n$x\\ge4$\nVì $x$ là số nguyên nhỏ nhất nên $x=4$.\nVậy số nguyên $x$ nhỏ nhất để $P\\le0$ là 4."
+ },
+ {
+  "ma_cau": "T109030102034",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{17-2\\sqrt{66}}-\\sqrt{17+2\\sqrt{66}}$.",
+  "dap_an": "$-2\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{17-2\\sqrt{66}}-\\sqrt{17+2\\sqrt{66}}$\n$A=\\sqrt{(\\sqrt{11}-\\sqrt{6})^2}-\\sqrt{(\\sqrt{11}+\\sqrt{6})^2}$\n$A=|\\sqrt{11}-\\sqrt{6}|-|\\sqrt{11}+\\sqrt{6}|$\n$A=\\sqrt{11}-\\sqrt{6}-(\\sqrt{11}+\\sqrt{6})$\n$A=-2\\sqrt{6}$"
+ },
+ {
+  "ma_cau": "T109030102022",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{7-\\sqrt{13}}+\\sqrt{7+\\sqrt{13}}$.",
+  "dap_an": "$\\sqrt{26}$",
+  "loi_giai": "$A=\\sqrt{7-\\sqrt{13}}+\\sqrt{7+\\sqrt{13}}$\n$A=\\sqrt{\\dfrac{28-4\\sqrt{13}}{4}}+\\sqrt{\\dfrac{28+4\\sqrt{13}}{4}}$\n$A=\\sqrt{\\dfrac{26-2\\sqrt2\\cdot\\sqrt{26}+2}{4}}+\\sqrt{\\dfrac{26+2\\sqrt2\\cdot\\sqrt{26}+2}{4}}$\n$A=\\dfrac12\\sqrt{(\\sqrt{26}-\\sqrt2)^2}+\\dfrac12\\sqrt{(\\sqrt{26}+\\sqrt2)^2}$\n$A=\\dfrac12(\\sqrt{26}-\\sqrt2)+\\dfrac12(\\sqrt{26}+\\sqrt2)$\n$A=\\sqrt{26}$"
+ },
+ {
+  "ma_cau": "T109010307030",
+  "loai": "tra_loi_ngan",
+  "de": "Một thửa ruộng hình chữ nhật. Nếu tăng chiều dài thêm 2 m và chiều rộng thêm 3 m thì diện tích tăng $100 m^2$. Nếu chiều dài và chiều rộng cùng giảm 2 m thì diện tích giảm đi $68 m^2$. Tính diện tích thửa ruộng đó.",
+  "dap_an": "308",
+  "loi_giai": "Gọi chiều dài và chiều rộng của thửa ruộng lần lượt là $x, y$ (m) ($x > y > 0$).\nDiện tích thửa ruộng là: $xy$ ($m^2$)\nChiều dài sau khi tăng thêm 2 m là: $x+2$ (m)\nChiều rộng sau khi tăng thêm 3 m là: $y+3$ (m)\nDiện tích của thửa ruộng lúc sau là: $(x+2)(y+3)$ ($m^2$)\nVì diện tích tăng thêm $100 m^2$ nên ta có PT:\n$(x+2)(y+3) = xy+100$\n$xy+3x+2y+6 = xy+100$\n$3x+2y = 94$ (1)\nChiều dài sau khi giảm đi 2 m là: $x-2$ (m)\nChiều rộng sau khi giảm đi 2 m là: $y-2$ (m)\nDiện tích của thửa ruộng lúc sau là: $(x-2)(y-2)$ ($m^2$)\nVì diện tích giảm đi $68 m^2$ nên ta có PT:\n$(x-2)(y-2) = xy-68$\n$xy-2x-2y+4 = xy-68$\n$-2x-2y = -72$ (2)\nTừ (1) và (2) ta có hệ phương trình:\n$\\left\\{\\begin{matrix} 3x+2y = 94 …"
+ },
+ {
+  "ma_cau": "T109010202014",
+  "loai": "tra_loi_ngan",
+  "de": "Giải hệ phương trình: $\\begin{cases} (x-2)(y+1)=xy-1 \\\\ (x+1)(y-3)=xy-7 \\end{cases}$",
+  "dap_an": "(7/5;1/5)",
+  "loi_giai": "Ta có hệ phương trình:\n$$\\begin{cases} (x-2)(y+1)=xy-1 \\\\ (x+1)(y-3)=xy-7 \\end{cases}$$\n$$\\begin{cases} xy+x-2y-2=xy-1 \\\\ xy-3x+y-3=xy-7 \\end{cases}$$\n$$\\begin{cases} x-2y=1 \\quad (1) \\\\ -3x+y=-4 \\quad (2) \\end{cases}$$\nTừ phương trình $(1)$ ta có: $x=2y+1$.\nThay $x=2y+1$ vào phương trình $(2)$ ta được:\n$-3(2y+1)+y=-4$\n$-6y-3+y=-4$\n$-5y=-1$\n$y=\\dfrac{1}{5}$\nThay $y=\\dfrac{1}{5}$ vào $x=2y+1$ ta có:\n$x=2 \\cdot \\dfrac{1}{5} + 1 $\n$x= \\dfrac{7}{5}$\nVậy hệ phương trình có nghiệm $(x;y)=(\\dfrac{7}{5};\\dfrac{1}{5})$."
+ },
+ {
+  "ma_cau": "T109030304073",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4+\\dfrac{3}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "{1}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+2>0\\Rightarrow\\dfrac{3}{\\sqrt{x}+2}>0\\Rightarrow P>4$.\nMặt khác $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{3}{\\sqrt{x}+2}\\le\\dfrac{3}{2}\\Rightarrow P\\le\\dfrac{11}{2}$.\nVậy $4<P\\le\\dfrac{11}{2}$. Mà $P$ nguyên nên $P=5$.\n$P=5\\Rightarrow4+\\dfrac{3}{\\sqrt{x}+2}=5\\Rightarrow\\dfrac{3}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=3\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x=1$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109020201034",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $-4x + 5 \\le 13$.",
+  "dap_an": "x \\ge -2",
+  "loi_giai": "$-4x + 5 \\le 13$\n$-4x \\le 13 - 5$\n$-4x \\le 8$\n$4x \\ge -8$\n$x \\ge -2$\nVậy tập nghiệm của bất phương trình là $x \\ge -2$."
+ },
+ {
+  "ma_cau": "T109030102110",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{129+20\\sqrt{26}}+\\sqrt{51-10\\sqrt{26}}$.",
+  "dap_an": "$3\\sqrt{26}$",
+  "loi_giai": "$A=\\sqrt{129+20\\sqrt{26}}+\\sqrt{51-10\\sqrt{26}}$\n$A=\\sqrt{(2\\sqrt{26}+5)^2}+\\sqrt{(\\sqrt{26}-5)^2}$\n$A=|2\\sqrt{26}+5|+|\\sqrt{26}-5|$\n$A=2\\sqrt{26}+5+\\sqrt{26}-5$\n$A=3\\sqrt{26}$"
+ },
+ {
+  "ma_cau": "T109030102053",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{11+4\\sqrt{7}}-\\sqrt{10-2\\sqrt{21}}$.",
+  "dap_an": "$2+\\sqrt{3}$",
+  "loi_giai": "$A=\\sqrt{11+4\\sqrt{7}}-\\sqrt{10-2\\sqrt{21}}$\n$A=\\sqrt{(2+\\sqrt{7})^2}-\\sqrt{(\\sqrt{7}-\\sqrt{3})^2}$\n$A=|2+\\sqrt{7}|-|\\sqrt{7}-\\sqrt{3}|$\n$A=2+\\sqrt{7}-(\\sqrt{7}-\\sqrt{3})$\n$A=2+\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030101119",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\dfrac{5}{\\sqrt{6}+1}-2\\sqrt{6}+\\sqrt{(3-\\sqrt{6})^2}$.",
+  "dap_an": "$2-2\\sqrt{6}$",
+  "loi_giai": "$\\dfrac{5}{\\sqrt{6}+1}-2\\sqrt{6}+\\sqrt{(3-\\sqrt{6})^2}$\n$=\\dfrac{5(\\sqrt{6}-1)}{(\\sqrt{6}+1)(\\sqrt{6}-1)}-2\\sqrt{6}+|3-\\sqrt{6}|$\n$=\\dfrac{5(\\sqrt{6}-1)}{6-1}-2\\sqrt{6}+|3-\\sqrt{6}|$\n$=\\sqrt{6}-1-2\\sqrt{6}+(3-\\sqrt{6})$\n$=2-2\\sqrt{6}$"
+ },
+ {
+  "ma_cau": "T109030101059",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $3\\sqrt{7}-\\sqrt{28}+4\\sqrt{63}-3\\sqrt{112}$.",
+  "dap_an": "$\\sqrt{7}$",
+  "loi_giai": "$3\\sqrt{7}-\\sqrt{28}+4\\sqrt{63}-3\\sqrt{112}$\n$=3\\sqrt{7}-2\\sqrt{7}+4\\cdot3\\sqrt{7}-3\\cdot4\\sqrt{7}$\n$=3\\sqrt{7}-2\\sqrt{7}+12\\sqrt{7}-12\\sqrt{7}$\n$=\\sqrt{7}$"
+ },
+ {
+  "ma_cau": "T109030102060",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{17+4\\sqrt{13}}-\\sqrt{18-2\\sqrt{65}}$.",
+  "dap_an": "$2+\\sqrt{5}$",
+  "loi_giai": "$A=\\sqrt{17+4\\sqrt{13}}-\\sqrt{18-2\\sqrt{65}}$\n$A=\\sqrt{(2+\\sqrt{13})^2}-\\sqrt{(\\sqrt{13}-\\sqrt{5})^2}$\n$A=|2+\\sqrt{13}|-|\\sqrt{13}-\\sqrt{5}|$\n$A=2+\\sqrt{13}-(\\sqrt{13}-\\sqrt{5})$\n$A=2+\\sqrt{5}$"
+ },
+ {
+  "ma_cau": "T109030304087",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4+\\dfrac{5}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "{\\dfrac{1}{4};9}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+2>0\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}>0\\Rightarrow P>4$.\nMặt khác $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}\\le\\dfrac{5}{2}\\Rightarrow P\\le\\dfrac{13}{2}$.\nVậy $4<P\\le\\dfrac{13}{2}$. Mà $P$ nguyên nên $P\\in\\{5;6\\}$.\nTH1:\n$P=5\\Rightarrow4+\\dfrac{5}{\\sqrt{x}+2}=5\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=5\\Rightarrow\\sqrt{x}=3\\Rightarrow x=9$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=6\\Rightarrow4+\\dfrac{5}{\\sqrt{x}+2}=6\\Rightarrow\\dfrac{5}{\\sqrt{x}+2}=2\\Rightarrow\\sqrt{x}+2=\\dfrac{5}{2}\\Rightarrow\\sqrt{x}=\\dfrac{1}{2}\\Rightarrow x=\\dfrac{1}{4}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{1}{4};9\\right\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030304086",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{2}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+2>0\\Rightarrow\\dfrac{2}{\\sqrt{x}+2}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{2}{\\sqrt{x}+2}\\le1\\Rightarrow P\\le4$.\nVậy $3<P\\le4$. Mà $P$ nguyên nên $P=4$.\n$P=4\\Rightarrow3+\\dfrac{2}{\\sqrt{x}+2}=4\\Rightarrow\\dfrac{2}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=2\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x=0$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030101073",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\dfrac{\\sqrt{14}-\\sqrt{28}}{\\sqrt4-\\sqrt8}$.",
+  "dap_an": "$\\dfrac{\\sqrt{14}}2$",
+  "loi_giai": "$\\dfrac{\\sqrt{14}-\\sqrt{28}}{\\sqrt{4}-\\sqrt{8}}$\n$=\\dfrac{\\sqrt{7}(\\sqrt{2}-2)}{\\sqrt{2}(\\sqrt{2}-2)}$\n$=\\dfrac{\\sqrt{7}}{\\sqrt{2}}$\n$=\\dfrac{\\sqrt{14}}{2}$"
+ },
+ {
+  "ma_cau": "T109030304036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=1+\\dfrac{4}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận\ngiá trị nguyên lớn nhất.",
+  "dap_an": "1",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+3>0\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+3\\ge3\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}\\le\\dfrac{4}{3}\\Rightarrow P\\le\\dfrac{7}{3}$.\nVậy $1<P\\le\\dfrac{7}{3}$. Mà $P$ nguyên nên $P=2$.\nDo đó giá trị nguyên lớn nhất của $P$ là 2.\n$P=2\\Rightarrow1+\\dfrac{4}{\\sqrt{x}+3}=2\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x=1$ thì $P$ nhận giá trị nguyên lớn nhất."
+ },
+ {
+  "ma_cau": "T109020201032",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $-3x - 4 > 5$.",
+  "dap_an": "x < -3",
+  "loi_giai": "$-3x - 4 > 5$\n$-3x > 5 + 4$\n$-3x > 9$\n$3x < -9$\n$x < -3$\nVậy tập nghiệm của bất phương trình là $x < -3$."
+ },
+ {
+  "ma_cau": "T109030302040",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{4\\sqrt{x}}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm số tự nhiên $x$ lớn nhất để $P\\le3$.",
+  "dap_an": "36",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên\n$P\\le3\\Rightarrow\\dfrac{4\\sqrt{x}}{\\sqrt{x}+2}\\le3$.\n$4\\sqrt{x}\\le3(\\sqrt{x}+2)$\n$\\sqrt{x}\\le6$\n$x\\le36$\nVì $x$ là số tự nhiên lớn nhất nên $x=36$.\nVậy số tự nhiên $x$ lớn nhất là 36."
+ },
+ {
+  "ma_cau": "T109030304049",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-5}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "{1;25}",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}-5}{\\sqrt{x}+3}=1-\\dfrac{8}{\\sqrt{x}+3}$.\nCó $\\sqrt{x}+3\\ge3\\Rightarrow0<\\dfrac{8}{\\sqrt{x}+3}\\le\\dfrac{8}{3}$.\n$\\Rightarrow-\\dfrac{8}{3}\\le-\\dfrac{8}{\\sqrt{x}+3}<0$.\n$\\Rightarrow-\\dfrac{5}{3}\\le P<1$.\nMà $P$ nguyên nên $P\\in\\{-1;0\\}$.\nTH1: $P=-1\\Rightarrow\\dfrac{\\sqrt{x}-5}{\\sqrt{x}+3}=-1\\Rightarrow\\sqrt{x}-5=-\\sqrt{x}-3\\Rightarrow2\\sqrt{x}=2\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH2: $P=0\\Rightarrow\\sqrt{x}-5=0\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ)."
+ },
+ {
+  "ma_cau": "T109030202050",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-8}{\\sqrt{x}-2}$ tại $|x-1|=728$.",
+  "dap_an": "\\dfrac{19}{25}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne4$.\n$|x-1|=728$\nTH1: $x-1=728\\Rightarrow x=729$ (tm ĐKXĐ).\nTH2: $x-1=-728\\Rightarrow x=-727$ (Ktm ĐKXĐ).\nThay $x=729$ vào $A$ ta được: $A=\\dfrac{\\sqrt{729}-8}{\\sqrt{729}-2}=\\dfrac{27-8}{27-2}=\\dfrac{19}{25}$."
+ },
+ {
+  "ma_cau": "T109020202021",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $7x + 5 < 4(x + 2)$",
+  "dap_an": "$x < 1$",
+  "loi_giai": "$7x + 5 < 4(x + 2)$\\n$7x + 5 < 4x + 8$\\n$7x - 4x < 8 - 5$\\n$3x < 3$\\n$x < 1$\\nVậy tập nghiệm của bất phương trình là $x < 1$."
+ },
+ {
+  "ma_cau": "T109030101078",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{(1-\\sqrt{6})^2}-\\sqrt{96}+\\dfrac{18}{\\sqrt{6}}$.",
+  "dap_an": "-1",
+  "loi_giai": "$\\sqrt{(1-\\sqrt{6})^2}-\\sqrt{96}+\\dfrac{18}{\\sqrt{6}}$\n$=|1-\\sqrt{6}|-4\\sqrt{6}+3\\sqrt{6}$\n$=\\sqrt{6}-1-4\\sqrt{6}+3\\sqrt{6}$\n$=-1$"
+ },
+ {
+  "ma_cau": "T109030304017",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{12}{\\sqrt{x}+5}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "1;49",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+5>0$; $12>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+5\\ge5\\Rightarrow\\dfrac{12}{\\sqrt{x}+5}\\le\\dfrac{12}{5}\\Rightarrow P\\le\\dfrac{12}{5}$.\nVậy $0<P\\le\\dfrac{12}{5}$. Mà $P$ nguyên nên $P\\in\\{1;2\\}$.\nTH1:\n$P=1\\Rightarrow\\dfrac{12}{\\sqrt{x}+5}=1\\Rightarrow\\sqrt{x}+5=12\\Rightarrow\\sqrt{x}=7\\Rightarrow x=49$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=2\\Rightarrow\\dfrac{12}{\\sqrt{x}+5}=2\\Rightarrow\\sqrt{x}+5=6\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{1;49\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030101036",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=(8\\sqrt{2}-2\\sqrt{50}+\\sqrt{18})\\sqrt{2}$.",
+  "dap_an": "2",
+  "loi_giai": "$A=(8\\sqrt{2}-2\\sqrt{50}+\\sqrt{18})\\sqrt{2}$\n$A=(8\\sqrt{2}-2\\cdot5\\sqrt{2}+3\\sqrt{2})\\sqrt{2}$\n$A=(8\\sqrt{2}-10\\sqrt{2}+3\\sqrt{2})\\sqrt{2}$\n$A=\\sqrt{2}\\cdot\\sqrt{2}$\n$A=2$"
+ },
+ {
+  "ma_cau": "T109030101045",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{18}{5+\\sqrt{7}}+\\sqrt{(2-\\sqrt{7})^2}$.",
+  "dap_an": "3",
+  "loi_giai": "$B=\\dfrac{18}{5+\\sqrt{7}}+\\sqrt{(2-\\sqrt{7})^2}$\n$B=\\dfrac{18(5-\\sqrt{7})}{(5+\\sqrt{7})(5-\\sqrt{7})}+|2-\\sqrt{7}|$\n$B=\\dfrac{18(5-\\sqrt{7})}{25-7}+|2-\\sqrt{7}|$\n$B=5-\\sqrt{7}+(\\sqrt{7}-2)$\n$B=3$"
+ },
+ {
+  "ma_cau": "T109030102008",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{15+6\\sqrt6}-\\sqrt{8-4\\sqrt3}$.",
+  "dap_an": "$3+\\sqrt2$",
+  "loi_giai": "$A=\\sqrt{15+6\\sqrt6}-\\sqrt{8-4\\sqrt3}$\n$A=\\sqrt{(3+\\sqrt6)^2}-\\sqrt{(\\sqrt6-\\sqrt2)^2}$\n$A=|3+\\sqrt6|-|\\sqrt6-\\sqrt2|$\n$A=3+\\sqrt6-(\\sqrt6-\\sqrt2)$\n$A=3+\\sqrt2$"
+ },
+ {
+  "ma_cau": "T109030302036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm số tự nhiên $x$ lớn nhất\nđể $P\\le\\dfrac{3}{2}$.",
+  "dap_an": "9",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+1>0$ nên\n$P\\le\\dfrac{3}{2}\\Rightarrow\\dfrac{2\\sqrt{x}}{\\sqrt{x}+1}\\le\\dfrac{3}{2}$.\n$4\\sqrt{x}\\le3(\\sqrt{x}+1)$\n$\\sqrt{x}\\le3$\n$x\\le9$\nVì $x$ là số tự nhiên lớn nhất nên $x=9$.\nVậy số tự nhiên $x$ lớn nhất là 9."
+ },
+ {
+  "ma_cau": "T109030102136",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{11-\\sqrt{21}}+\\sqrt{11+\\sqrt{21}}$.",
+  "dap_an": "$\\sqrt{42}$",
+  "loi_giai": "$A=\\sqrt{11-\\sqrt{21}}+\\sqrt{11+\\sqrt{21}}$\n$A=\\sqrt{\\dfrac{44-4\\sqrt{21}}{4}}+\\sqrt{\\dfrac{44+4\\sqrt{21}}{4}}$\n$A=\\sqrt{\\dfrac{42-2\\sqrt{2}\\cdot \\sqrt{42}+2}{4}}+\\sqrt{\\dfrac{42+2\\sqrt{2}\\cdot \\sqrt{42}+2}{4}}$\n$A=\\dfrac{1}{2}\\sqrt{(\\sqrt{42}-\\sqrt{2})^2}+\\dfrac{1}{2}\\sqrt{(\\sqrt{42}+\\sqrt{2})^2}$\n$A=\\dfrac{1}{2}(\\sqrt{42}-\\sqrt{2})+\\dfrac{1}{2}(\\sqrt{42}+\\sqrt{2})$\n$A=\\sqrt{42}$"
+ },
+ {
+  "ma_cau": "T109030102104",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{169+24\\sqrt{17}}+\\sqrt{33-8\\sqrt{17}}$.",
+  "dap_an": "$4\\sqrt{17}$",
+  "loi_giai": "$A=\\sqrt{169+24\\sqrt{17}}+\\sqrt{33-8\\sqrt{17}}$\n$A=\\sqrt{(3\\sqrt{17}+4)^2}+\\sqrt{(\\sqrt{17}-4)^2}$\n$A=|3\\sqrt{17}+4|+|\\sqrt{17}-4|$\n$A=3\\sqrt{17}+4+\\sqrt{17}-4$\n$A=4\\sqrt{17}$"
+ },
+ {
+  "ma_cau": "T109010202015",
+  "loai": "tra_loi_ngan",
+  "de": "Giải hệ phương trình: $\\begin{cases} (x+3)(y-2)=xy-4 \\\\ (x-1)(y+1)=xy+3 \\end{cases}$",
+  "dap_an": "(14;10)",
+  "loi_giai": "Ta có hệ phương trình:\n$$\\begin{cases} (x+3)(y-2)=xy-4 \\\\ (x-1)(y+1)=xy+3 \\end{cases}$$\n$$\\begin{cases} xy-2x+3y-6=xy-4 \\\\ xy+x-y-1=xy+3 \\end{cases}$$\n$$\\begin{cases} -2x+3y=2 \\quad (1) \\\\ x-y=4 \\quad (2) \\end{cases}$$\nTừ phương trình $(2)$ ta có: $x=y+4$.\nThay $x=y+4$ vào phương trình $(1)$ ta được:\n$-2(y+4)+3y=2$\n$-2y-8+3y=2$\n$y=10$\nThay $y=10$ vào $x=y+4$ ta có:\n$x=10+4=14$\nVậy hệ phương trình có nghiệm $(x;y)=(14;10)$."
+ },
+ {
+  "ma_cau": "T109030102083",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{27+18\\sqrt{2}}-\\sqrt{27-18\\sqrt{2}}$.",
+  "dap_an": "$6$",
+  "loi_giai": "$A=\\sqrt{27+18\\sqrt{2}}-\\sqrt{27-18\\sqrt{2}}$\n$A=\\sqrt{(3+3\\sqrt{2})^2}-\\sqrt{(3-3\\sqrt{2})^2}$\n$A=|3+3\\sqrt{2}|-|3-3\\sqrt{2}|$\n$A=3+3\\sqrt{2}-(3\\sqrt{2}-3)$\n$A=3+3\\sqrt{2}-3\\sqrt{2}+3$\n$A=6$"
+ },
+ {
+  "ma_cau": "T109010307014",
+  "loai": "tra_loi_ngan",
+  "de": "Một mảnh vườn hình chữ nhật có chiều dài lớn hơn chiều rộng 3 m . Nếu giảm chiều rộng đi 2 m và giảm chiều dài đi 3 m thì diện tích mảnh vườn giảm đi 120m$^2$. Tính chiều dài và chiều rộng của mảnh vườn ban đầu.",
+  "dap_an": "27; 24",
+  "loi_giai": "Gọi chiều dài và chiều rộng của mảnh vườn lần lượt là $x, y$ (m) ($x> y > 0$).\nVì chiều dài lớn hơn chiều rộng 3m nên ta có PT: $x - y = 3$ (m) (1).\nNếu giảm chiều rộng đi 2m thì chiều rộng mới là: $y - 2$ (m).\nNếu giảm chiều dài đi 3m thì chiều dài mới là: $x - 3$ (m).\nKhi đó diện tích mảnh vườn giảm đi 120m$^2$ nên ta có PT:\n$(x-3)(y-2) = xy-120$\n$xy - 2x - 3y + 6 = xy - 120$\n$-2x - 3y = -126$ (2)\nTừ (1) và (2) ta có HPT:\n$$\\begin{cases} x - y = 3 \\\\ -2x - 3y = -126 \\end{cases}$$\nGiải hệ PT trên ta được: $x=27; y=24$ (TMĐK)\nVậy mảnh vườn có chiều dài là 27m và chiều rộng là 24m."
+ },
+ {
+  "ma_cau": "T109030102036",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{19-2\\sqrt{34}}-\\sqrt{19+2\\sqrt{34}}$.",
+  "dap_an": "$-2\\sqrt{2}$",
+  "loi_giai": "$A=\\sqrt{19-2\\sqrt{34}}-\\sqrt{19+2\\sqrt{34}}$\n$A=\\sqrt{(\\sqrt{17}-\\sqrt{2})^2}-\\sqrt{(\\sqrt{17}+\\sqrt{2})^2}$\n$A=|\\sqrt{17}-\\sqrt{2}|-|\\sqrt{17}+\\sqrt{2}|$\n$A=\\sqrt{17}-\\sqrt{2}-(\\sqrt{17}+\\sqrt{2})$\n$A=-2\\sqrt{2}$"
+ },
+ {
+  "ma_cau": "T109030101039",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=(8\\sqrt{7}-2\\sqrt{175}+\\sqrt{63})\\sqrt{7}$.",
+  "dap_an": "7",
+  "loi_giai": "$A=(8\\sqrt{7}-2\\sqrt{175}+\\sqrt{63})\\sqrt{7}$\n$A=(8\\sqrt{7}-2\\cdot5\\sqrt{7}+3\\sqrt{7})\\sqrt{7}$\n$A=(8\\sqrt{7}-10\\sqrt{7}+3\\sqrt{7})\\sqrt{7}$\n$A=\\sqrt{7}\\cdot\\sqrt{7}$\n$A=7$"
+ },
+ {
+  "ma_cau": "T109030303009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{15}{\\sqrt{x}+2}$ $(x>0)$. Tìm các giá trị nguyên dương của $x$ để $P$ nguyên.",
+  "dap_an": "{1;9;169}",
+  "loi_giai": "Để $P\\in\\mathbb{Z}$ thì $15 \\vdots (\\sqrt{x}+2)$ hay $\\sqrt{x}+2\\in U(15)=\\{\\pm1;\\pm3;\\pm5;\\pm15\\}$.\nVì $\\sqrt{x}>0\\Rightarrow\\sqrt{x}+2>2\\Rightarrow\\sqrt{x}+2\\in\\{3;5;15\\}$.\n$\\Rightarrow x\\in\\{1;9;169\\}$.\nVậy với $x\\in\\{1;9;169\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030304069",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{7\\sqrt{x}}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{\\dfrac{16}{25};\\dfrac{9}{4};25}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow P\\ge0$.\nVới $x>0$ thì $\\sqrt{x}+2>\\sqrt{x}\\Rightarrow P<7$.\nVậy $0\\le P<7$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3;5\\}$.\nTH1:\n$P=2\\Rightarrow7\\sqrt{x}=2(\\sqrt{x}+2)\\Rightarrow7\\sqrt{x}=2\\sqrt{x}+4\\Rightarrow5\\sqrt{x}=4\\Rightarrow\\sqrt{x}=\\dfrac{4}{5}\\Rightarrow x=\\dfrac{16}{25}$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow7\\sqrt{x}=3\\sqrt{x}+6\\Rightarrow4\\sqrt{x}=6\\Rightarrow\\sqrt{x}=\\dfrac{3}{2}\\Rightarrow x=\\dfrac{9}{4}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=5\\Rightarrow7\\sqrt{x}=5\\sqrt{x}+10\\Rightarrow2\\sqrt{x}=10\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{16}{25};\\dfrac{9}{4};25\\right\\}$ thì $P$ nhận giá trị là số nguyên tố."
+ },
+ {
+  "ma_cau": "T109030102025",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{10-\\sqrt{19}}+\\sqrt{10+\\sqrt{19}}$.",
+  "dap_an": "$\\sqrt{38}$",
+  "loi_giai": "$A=\\sqrt{10-\\sqrt{19}}+\\sqrt{10+\\sqrt{19}}$\n$A=\\sqrt{\\dfrac{40-4\\sqrt{19}}{4}}+\\sqrt{\\dfrac{40+4\\sqrt{19}}{4}}$\n$A=\\sqrt{\\dfrac{38-2\\sqrt2\\cdot\\sqrt{38}+2}{4}}+\\sqrt{\\dfrac{38+2\\sqrt2\\cdot\\sqrt{38}+2}{4}}$\n$A=\\dfrac12\\sqrt{(\\sqrt{38}-\\sqrt2)^2}+\\dfrac12\\sqrt{(\\sqrt{38}+\\sqrt2)^2}$\n$A=\\dfrac12(\\sqrt{38}-\\sqrt2)+\\dfrac12(\\sqrt{38}+\\sqrt2)$\n$A=\\sqrt{38}$"
+ },
+ {
+  "ma_cau": "T109030202010",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}-1}$ tại $x=9$.",
+  "dap_an": "3",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne1$.\nThay $x=9$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{9}+3}{\\sqrt{9}-1}=\\dfrac{3+3}{3-1}=3$."
+ },
+ {
+  "ma_cau": "T109030101092",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{45}+5\\sqrt{20}-3\\sqrt{80}$.",
+  "dap_an": "$4\\sqrt{5}$",
+  "loi_giai": "$2\\sqrt{45}+5\\sqrt{20}-3\\sqrt{80}$\n$=2\\cdot3\\sqrt{5}+5\\cdot2\\sqrt{5}-3\\cdot4\\sqrt{5}$\n$=6\\sqrt{5}+10\\sqrt{5}-12\\sqrt{5}$\n$=4\\sqrt{5}$"
+ },
+ {
+  "ma_cau": "T109030101020",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{46}{5+\\sqrt{2}}+\\sqrt{(2-2\\sqrt{2})^2}$.",
+  "dap_an": "8",
+  "loi_giai": "$B=\\dfrac{46}{5+\\sqrt{2}}+\\sqrt{(2-2\\sqrt{2})^2}$\n$B=\\dfrac{46(5-\\sqrt{2})}{(5+\\sqrt{2})(5-\\sqrt{2})}+|2-2\\sqrt{2}|$\n$B=\\dfrac{46(5-\\sqrt{2})}{25-2}+|2-2\\sqrt{2}|$\n$B=2(5-\\sqrt{2})+(2\\sqrt{2}-2)$\n$B=8$"
+ },
+ {
+  "ma_cau": "T109010202009",
+  "loai": "tra_loi_ngan",
+  "de": "Giải hệ phương trình: $\\begin{cases}\n2(x - 2) + 3(1 + y) = -2 \\\\\n3(x - 2) - 2(1 + y) = -3\n\\end{cases}$",
+  "dap_an": "(1;-1)",
+  "loi_giai": "Ta có hệ phương trình:\n$$\\begin{cases}\n2(x - 2) + 3(1 + y) = -2 \\\\\n3(x - 2) - 2(1 + y) = -3\n\\end{cases}$$\n$$\\begin{cases}\n2x - 4 + 3 + 3y = -2 \\\\\n3x - 6 - 2 - 2y = -3\n\\end{cases}$$\n$$\\begin{cases}\n2x + 3y = -1 \\quad (1) \\\\\n3x - 2y = 5 \\quad (2)\n\\end{cases}$$\nNhân hai vế của phương trình (1) với $3$, nhân hai vế của phương trình (2) với $2$ ta được:\n$$\\begin{cases}\n6x + 9y = -3 \\quad (3) \\\\\n6x - 4y = 10 \\quad (4)\n\\end{cases}$$\nTrừ hai vế của phương trình (3) cho phương trình (4) ta được:\n$$(6x + 9y) - (6x - 4y) = -3 - 10$$\n$$13y = -13$$\n$$y = -1$$\nThay $y = -1$ vào phương trình (1) ta được:\n$$2x + 3 \\cdot (-1) = -1$$\n$$2x - 3 = -1$$\n$$2x = 2$$\n$$x = 1$$\nVậy hệ phương trình có nghiệm $(x;y) =  …"
+ },
+ {
+  "ma_cau": "T109030102013",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{13+4\\sqrt3}+\\sqrt{4-2\\sqrt3}$.",
+  "dap_an": "$3\\sqrt3$",
+  "loi_giai": "$A=\\sqrt{13+4\\sqrt3}+\\sqrt{4-2\\sqrt3}$\n$A=\\sqrt{(2\\sqrt3+1)^2}+\\sqrt{(\\sqrt3-1)^2}$\n$A=|2\\sqrt3+1|+|\\sqrt3-1|$\n$A=2\\sqrt3+1+\\sqrt3-1$\n$A=3\\sqrt3$"
+ },
+ {
+  "ma_cau": "T109030302004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-6}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P\\le0$.",
+  "dap_an": "$0\\le x\\le36$",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}-6}{\\sqrt{x}+2}$\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên để $P\\le0$ thì\n$\\sqrt{x}-6\\le0$.\n$\\sqrt{x}\\le6$\n$x\\le36$\nKết hợp với điều kiện ta được $0\\le x\\le36$.\nVậy $0\\le x\\le36$ thì $P\\le0$."
+ },
+ {
+  "ma_cau": "T109030302068",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}}{\\sqrt{x}-4}$ $(x\\ge0;x \\ne16)$. Tìm số nguyên $x$ nhỏ nhất để $2P>1$.",
+  "dap_an": "17",
+  "loi_giai": "$2P>1\\Rightarrow2P-1>0$.\nXét $2P-1=\\dfrac{2\\sqrt{x}}{\\sqrt{x}-4}-1=\\dfrac{\\sqrt{x}+4}{\\sqrt{x}-4}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+4>0$ nên để $2P-1>0$ thì $\\sqrt{x}-4>0$.\n$\\Rightarrow\\sqrt{x}>4$\n$\\Rightarrow x>16$\nVì $x$ là số nguyên nhỏ nhất nên $x=17$.\nVậy số nguyên $x$ nhỏ nhất là 17."
+ },
+ {
+  "ma_cau": "T109030304054",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{6}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận\ngiá trị nguyên nhỏ nhất.",
+  "dap_an": "4",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+4>0\\Rightarrow\\dfrac{6}{\\sqrt{x}+4}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+4\\ge4\\Rightarrow\\dfrac{6}{\\sqrt{x}+4}\\le\\dfrac{3}{2}\\Rightarrow P\\le\\dfrac{9}{2}$.\nVậy $3<P\\le\\dfrac{9}{2}$. Mà $P$ nguyên nên $P=4$.\nDo đó giá trị nguyên nhỏ nhất của $P$ là 4.\n$P=4\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+4}=4\\Rightarrow\\dfrac{6}{\\sqrt{x}+4}=1\\Rightarrow\\sqrt{x}+4=6\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nVậy $x=4$ thì $P$ nhận giá trị nguyên nhỏ nhất."
+ },
+ {
+  "ma_cau": "T109030102111",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=(\\sqrt{7}+\\sqrt{2})\\sqrt{9-2\\sqrt{14}}$.",
+  "dap_an": "$5$",
+  "loi_giai": "$A=(\\sqrt{7}+\\sqrt{2})\\sqrt{9-2\\sqrt{14}}$\n$A=(\\sqrt{7}+\\sqrt{2})\\sqrt{(\\sqrt{7}-\\sqrt{2})^2}$\n$A=(\\sqrt{7}+\\sqrt{2})|\\sqrt{7}-\\sqrt{2}|$\n$A=(\\sqrt{7}+\\sqrt{2})(\\sqrt{7}-\\sqrt{2})$\n$A=7-2$\n$A=5$"
+ },
+ {
+  "ma_cau": "T109030102031",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{10-2\\sqrt{21}}-\\sqrt{10+2\\sqrt{21}}$.",
+  "dap_an": "$-2\\sqrt{3}$",
+  "loi_giai": "$A=\\sqrt{10-2\\sqrt{21}}-\\sqrt{10+2\\sqrt{21}}$\n$A=\\sqrt{(\\sqrt{7}-\\sqrt{3})^2}-\\sqrt{(\\sqrt{7}+\\sqrt{3})^2}$\n$A=|\\sqrt{7}-\\sqrt{3}|-|\\sqrt{7}+\\sqrt{3}|$\n$A=\\sqrt{7}-\\sqrt{3}-(\\sqrt{7}+\\sqrt{3})$\n$A=-2\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030101066",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{32}-4\\sqrt{\\dfrac1{2}}-\\dfrac{\\sqrt{2}+\\sqrt{6}}{1+\\sqrt{3}}$.",
+  "dap_an": "$5\\sqrt{2}$",
+  "loi_giai": "$2\\sqrt{32}-4\\sqrt{\\dfrac1{2}}-\\dfrac{\\sqrt{2}+\\sqrt{6}}{1+\\sqrt{3}}$\n$=8\\sqrt{2}-2\\sqrt{2}-\\dfrac{\\sqrt{2}(1+\\sqrt{3})}{1+\\sqrt{3}}$\n$=8\\sqrt{2}-2\\sqrt{2}-\\sqrt{2}$\n$=5\\sqrt{2}$"
+ },
+ {
+  "ma_cau": "T109030101054",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{7}-\\sqrt{28}+5\\sqrt{112}-7\\sqrt{175}$.",
+  "dap_an": "$-15\\sqrt{7}$",
+  "loi_giai": "$2\\sqrt{7}-\\sqrt{28}+5\\sqrt{112}-7\\sqrt{175}$\n$=2\\sqrt{7}-2\\sqrt{7}+5\\cdot4\\sqrt{7}-7\\cdot5\\sqrt{7}$\n$=2\\sqrt{7}-2\\sqrt{7}+20\\sqrt{7}-35\\sqrt{7}$\n$=-15\\sqrt{7}$"
+ },
+ {
+  "ma_cau": "T109020202023",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $2(x - 5) \\le 5x + 1$",
+  "dap_an": "$x \\ge -\\dfrac{11}{3}$",
+  "loi_giai": "$2(x - 5) \\le 5x + 1$\\n$2x - 10 \\le 5x + 1$\\n$-10 - 1 \\le 5x - 2x$\\n$-11 \\le 3x$\\n$x \\ge -\\dfrac{11}{3}$\\nVậy tập nghiệm của bất phương trình là $x \\ge -\\dfrac{11}{3}$."
+ },
+ {
+  "ma_cau": "T109030101113",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{45}-2\\sqrt{20}+4-2\\sqrt{5}$.",
+  "dap_an": "4",
+  "loi_giai": "$2\\sqrt{45}-2\\sqrt{20}+4-2\\sqrt{5}$\n$=2\\cdot3\\sqrt{5}-2\\cdot2\\sqrt{5}+4-2\\sqrt{5}$\n$=6\\sqrt{5}-4\\sqrt{5}+4-2\\sqrt{5}$\n$=4$"
+ },
+ {
+  "ma_cau": "T109010307017",
+  "loai": "tra_loi_ngan",
+  "de": "Một miếng đất hình chữ nhật có chiều dài lớn hơn chiều rộng 7 m . Nếu giảm chiều rộng đi 2 m và giảm chiều dài đi 5 m thì diện tích miếng đất giảm đi 151m$^2$. Tính chiều dài và chiều rộng của miếng đất ban đầu.",
+  "dap_an": "28; 21",
+  "loi_giai": "Gọi chiều dài và chiều rộng của miếng đất lần lượt là $x, y$ (m) ($x> y > 0$).\nVì chiều dài lớn hơn chiều rộng 7m nên ta có PT: $x - y = 7$ (m) (1).\nNếu giảm chiều rộng đi 2m thì chiều rộng mới là: $y - 2$ (m).\nNếu giảm chiều dài đi 5m thì chiều dài mới là: $x - 5$ (m).\nKhi đó diện tích miếng đất giảm đi 151m$^2$ nên ta có PT:\n$(x-5)(y-2) = xy-151$\n$xy - 2x - 5y + 10 = xy - 151$\n$-2x - 5y = -161$ (2)\nTừ (1) và (2) ta có HPT:\n$$\\begin{cases} x - y = 7 \\\\ -2x - 5y = -161 \\end{cases}$$\nGiải hệ PT trên ta được: $x=28; y=21$ (TMĐK)\nVậy miếng đất có chiều dài là 28m và chiều rộng là 21m."
+ },
+ {
+  "ma_cau": "T109030301020",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}+1}$ $(x\\ge0;x \\ne1)$. Tìm $x$ để $P^2=4$.",
+  "dap_an": "9",
+  "loi_giai": "TH1: $P=2$.\n$\\dfrac{\\sqrt{x}+5}{\\sqrt{x}+1}=2$\n$\\sqrt{x}+5=2(\\sqrt{x}+1)$\n$\\sqrt{x}+5=2\\sqrt{x}+2$\n$\\sqrt{x}=3$\n$x=9$ (TMĐK).\nTH2: $P=-2$.\n$\\dfrac{\\sqrt{x}+5}{\\sqrt{x}+1}=-2$\n$\\sqrt{x}+5=-2(\\sqrt{x}+1)$\n$\\sqrt{x}+5=-2\\sqrt{x}-2$\n$3\\sqrt{x}=-7$\n$\\sqrt{x}=-\\dfrac{7}{3}$ (Vô lí).\nVậy $x=9$ thì $P^2=4$."
+ },
+ {
+  "ma_cau": "T109030304083",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{7\\sqrt{x}}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{\\dfrac{4}{25};\\dfrac{9}{16};\\dfrac{25}{4}}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow P\\ge0$.\nVới $x>0$ thì $\\sqrt{x}+1>\\sqrt{x}\\Rightarrow P<7$.\nVậy $0\\le P<7$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3;5\\}$.\nTH1:\n$P=2\\Rightarrow7\\sqrt{x}=2\\sqrt{x}+2\\Rightarrow5\\sqrt{x}=2\\Rightarrow\\sqrt{x}=\\dfrac{2}{5}\\Rightarrow x=\\dfrac{4}{25}$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow7\\sqrt{x}=3\\sqrt{x}+3\\Rightarrow4\\sqrt{x}=3\\Rightarrow\\sqrt{x}=\\dfrac{3}{4}\\Rightarrow x=\\dfrac{9}{16}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=5\\Rightarrow7\\sqrt{x}=5\\sqrt{x}+5\\Rightarrow2\\sqrt{x}=5\\Rightarrow\\sqrt{x}=\\dfrac{5}{2}\\Rightarrow x=\\dfrac{25}{4}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{4}{25};\\dfrac{9}{16};\\dfrac{25}{4}\\right\\}$ thì $P$ nhận giá trị là số nguyên tố."
+ },
+ {
+  "ma_cau": "T109030304009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+3}=\\dfrac{\\sqrt{x}+3+4}{\\sqrt{x}+3}=1+\\dfrac{4}{\\sqrt{x}+3}$.\nCó $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+3>0\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+3\\ge3\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}\\le\\dfrac{4}{3}\\Rightarrow P\\le1+\\dfrac{4}{3}=\\dfrac{7}{3}$.\nVậy $1<P\\le\\dfrac{7}{3}$. Mà $P$ nguyên nên $P=2$.\n$P=2\\Rightarrow1+\\dfrac{4}{\\sqrt{x}+3}=2\\Rightarrow\\dfrac{4}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x=1$ thì $P$ nguyên."
+ }
+]

@@ -1,0 +1,6782 @@
+[
+ {
+  "ma_cau": "T111030501047",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong 4 hàm cơ bản tan, cos, cot, sin.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104043",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét dãy nào không giảm, dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111020201002",
+  "may": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đẳng thức nhân đôi, hạ bậc đúng/sai.",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111060102001",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và một giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501049",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Dựa vào đồ thị sin2x xác định khoảng nghịch biến.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040401026",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060202076",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u6 và công sai d, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010605022",
+  "may": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Biết sinx+cosx, bình phương để tính sin2x.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060204005",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, giải u1, d rồi tính tổng.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060101047",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính ba số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060101052",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u4.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104002",
+  "may": "NDB00598",
+  "chac": "cao",
+  "ly_do": "Câu lý thuyết định nghĩa dãy số tăng.",
+  "hien": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111030501006",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, phương án lẫn hàm mở rộng và cơ bản, không có lời giải.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060204006",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hai phương trình tổng số hạng, lập hệ u1, d tìm công sai.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060102018",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060102050",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 65, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501080",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Dựa vào đồ thị sinx xác định khoảng đồng biến.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020403024",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng cosx+cos2x+cos3x bằng tổng thành tích.",
+  "hien": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ {
+  "ma_cau": "T111030501044",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (cot2x, -cotx...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060102012",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020302089",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho cos2x, tính tích cos cos bằng công thức tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111010102044",
+  "may": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung tròn l=R.alpha.",
+  "hien": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111040401013",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải phương trình tanx=căn3 và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111040401005",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060102014",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060202048",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030501030",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị, phương án gồm hàm mở rộng sinx+1, cosx-1.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060201025",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng qua số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060202105",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho số hạng tổng quát của CSC, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060101066",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính ba số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104027",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040401002",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060102004",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060205001",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, tìm n để u_n đạt giá trị cần.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111040402011",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị sin cắt y=1/2; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111040401015",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải sin2x=1 và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111020402055",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Biểu thức hiệu hai sin, hợp cả công thức cộng lẫn tổng thành tích.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111060104012",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111010103025",
+  "may": "NDB00567",
+  "chac": "vua",
+  "ly_do": "Tính góc bánh xe quay theo vòng/giây, không khớp hẳn dạng nan hoa hay tốc độ dài.",
+  "hien": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111020301052",
+  "may": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Khai triển tích sin3x cosx bằng công thức tích thành tổng.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111060101065",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính ba số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104023",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040402005",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111040402027",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị sin cắt y=căn3/2; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111020202005",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a, tính giá trị lượng giác góc a/2 bằng công thức hạ bậc.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060303001",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111040401011",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải sinx=1/2 và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060101055",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u2.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060102024",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501065",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Dựa vào đồ thị sinx chọn mệnh đề đúng về tính đơn điệu.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060304061",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Bài toán tăng trưởng dân số theo cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060204008",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm u1.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111040401010",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111030204013",
+  "may": "NDB00997",
+  "chac": "vua",
+  "ly_do": "Hạ bậc đưa về Asin+Bcos rồi chia căn; có thể xếp dạng dùng công thức đưa về hàm cơ bản.",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111020203007",
+  "may": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đẳng thức hạ bậc đúng.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111010103007",
+  "may": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung kim giờ vạch được, l=R.alpha.",
+  "hien": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111060202079",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u15 và công sai d, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060204015",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm u1, d.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060104031",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét dãy nào tăng, dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111030202025",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN bằng tổng thành tích đưa về cosx.",
+  "hien": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ {
+  "ma_cau": "T111060201004",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060104007",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040402002",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111020402019",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Biểu thức hiệu hai sin, hợp cả công thức cộng lẫn tổng thành tích.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111060204036",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Cho quan hệ tổng Sn và số hạng, lập hệ tìm u1, d.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060205003",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, Sn, tìm n.",
+  "hien": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111020403013",
+  "may": "NDB00966",
+  "chac": "vua",
+  "ly_do": "Rút gọn dùng cả tổng thành tích và công thức cộng.",
+  "hien": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ {
+  "ma_cau": "T111030501050",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong 4 hàm cơ bản.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060201027",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng qua số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111040402029",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị |sinx| cắt đường thẳng; cũng có thể xếp dạng đếm nghiệm.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111030501043",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm lượng giác mở rộng (2tanx, cos2x, 2cotx).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202047",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040102037",
+  "may": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm 2sinx+1=0 trên đoạn, phương trình có 2 họ nghiệm.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111020402031",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Cho sinx, hiệu hai cos; hợp cả tổng thành tích lẫn công thức cộng.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111020201028",
+  "may": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Áp dụng công thức hạ bậc khai triển sin^2 a.",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111060101039",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010606002",
+  "may": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức cộng cos(2x+x).",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111020301012",
+  "may": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Khai triển tích sin2a sinb bằng công thức tích thành tổng.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111010605032",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sinx và khoảng của x, tính sin2x bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501007",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, đáp án là sinx cơ bản nhưng phương án nhiễu là hàm mở rộng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030104015",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của y=3sin2x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060204025",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S3, S5 lập hệ tìm u1, d; gần cả hai dạng quan hệ số hạng và tổng.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060102044",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060104028",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111010201001",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Đếm điểm biểu diễn trên đường tròn của họ góc pi/6+k2pi/3.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060202060",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u5, u9, tìm u1.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060202071",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u4 và công sai d, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040102049",
+  "may": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm cos3x=0 trên nửa khoảng, một họ nghiệm.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111060304056",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tiền lương tăng 5% mỗi năm, tìm số hạng thứ n của cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111020401012",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Khai triển cos2a-cosb bằng công thức tổng thành tích.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060102017",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060102043",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 31, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020401089",
+  "may": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Nhận dạng công thức sai, trộn công thức cộng, tổng thành tích, tích thành tổng.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111020401045",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Khai triển cos2x+cosx bằng công thức tổng thành tích.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060205006",
+  "may": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, tính tổng số ghế.",
+  "hien": "NDB00614",
+  "nguon": "gan_cum",
+  "cum": "DCUM01459",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060102035",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 41, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060104036",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét dãy nào giảm, dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040102007",
+  "may": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Giải tan(x/2+pi/6)=-1 trên khoảng, một họ nghiệm.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111030104001",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm hàm có chu kỳ 2pi trong các hàm cơ bản.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111030501013",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (-2sinx...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111010605008",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cosx và khoảng của x, tính sin2x.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040401008",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111010605011",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin alpha, tính sin2alpha bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060101029",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030204007",
+  "may": "NDB00997",
+  "chac": "vua",
+  "ly_do": "Hạ bậc đưa về Asin+Bcos rồi chia căn; cũng gần dạng dùng công thức đưa về hàm cơ bản.",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111030501072",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, đáp án là cosx cơ bản nhưng phương án nhiễu là hàm mở rộng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060304089",
+  "may": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Gửi tiết kiệm định kỳ mỗi tháng thêm 6 triệu, tính số tiền sau 3 tháng.",
+  "hien": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060101059",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u4.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060202041",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp u3, u4, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111020401094",
+  "may": "NDB00963",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức tổng thành tích sai.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060205009",
+  "may": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, tính tổng số viên gạch.",
+  "hien": "NDB00614",
+  "nguon": "gan_cum",
+  "cum": "DCUM01459",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060304058",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Khấu hao giảm 20% mỗi năm, tìm giá trị sau n năm (cấp số nhân).",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010606005",
+  "may": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức cộng cos(2x-x).",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111020402073",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho giá trị sin2x, cosx, tính tổng ba sin bằng tổng thành tích.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111010103013",
+  "may": "NDB00944",
+  "chac": "cao",
+  "ly_do": "Biết vận tốc xe và bán kính bánh, tính số vòng quay trong thời gian.",
+  "hien": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111030501040",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (-tanx, 2cotx...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040402017",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị |sinx| cắt đường thẳng; cũng có thể xếp dạng đếm nghiệm.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111020403018",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức sin, cos bằng tổng thành tích.",
+  "hien": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ {
+  "ma_cau": "T111020401023",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Khai triển sin2a+sinb bằng công thức tổng thành tích.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060202040",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp u2, u3, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402022",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị cos cắt y=-1/2; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060204041",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Cho quan hệ giữa tổng và số hạng, lập hệ tìm u1, d.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030202054",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN bằng công thức nhân đôi đưa về cos2x.",
+  "hien": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ {
+  "ma_cau": "T111060303009",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111030501071",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (2cos x/2...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202099",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho số hạng tổng quát của CSC, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010301029",
+  "may": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Cho khoảng của alpha, xác định dấu tan, cot.",
+  "hien": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ {
+  "ma_cau": "T111040402015",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị sin cắt y=0; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060102015",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060102007",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501019",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (sinx+1...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040401032",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111030501069",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm giá trị x để sinx=1 theo đồ thị; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020202010",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin alpha và khoảng, tính sin2 alpha bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060102016",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060204017",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm u1, d tính S15.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111040401003",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111020403030",
+  "may": "NDB00966",
+  "chac": "vua",
+  "ly_do": "Rút gọn tử bằng tổng thành tích, mẫu bằng nhân đôi; hai dạng cùng hợp lý.",
+  "hien": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ {
+  "ma_cau": "T111030401059",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của y=sin(2x/3).",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111040401022",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111010605037",
+  "may": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Biết sinx+cosx, bình phương để tính sin2x.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111020301074",
+  "may": "NDB00961",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức tích thành tổng đúng.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111060101031",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060303005",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111030104007",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của y=sinx.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101019",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính hai số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030501012",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (2cosx...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060101020",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính ba số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030501010",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (-cosx, -2sinx...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040402008",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060202070",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u4, u8, tìm các yếu tố khác (tổng S8).",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060204027",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S5, S7 lập hệ tìm u1, d; gần cả hai dạng quan hệ số hạng và tổng.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060303006",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111060202077",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u8 và công sai d, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030501038",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (2tanx, tan2x...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111010605023",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tính cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060202097",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho số hạng tổng quát của CSC, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030204001",
+  "may": "NDB00997",
+  "chac": "cao",
+  "ly_do": "Tìm min của y=sinx+cosx bằng cách đưa về dạng Asinx+Bcosx.",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111020302078",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho sin alpha, tính tích cos cos bằng công thức tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111060204013",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm u1, d.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060202061",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u3, u7, tìm u10.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060202082",
+  "may": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cho tổng S7 và công sai d, tìm u1.",
+  "hien": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111020301023",
+  "may": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Khai triển cos3x cosx bằng công thức tích thành tổng.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111010201027",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Xác định điểm biểu diễn của cung 5pi/2 trên đường tròn lượng giác.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060101016",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u4.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104001",
+  "may": "NDB00598",
+  "chac": "cao",
+  "ly_do": "Câu lý thuyết định nghĩa dãy số tăng.",
+  "hien": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040402014",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị |cosx| cắt đường thẳng; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111030401066",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của y=cosx.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111040101055",
+  "may": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos(2x+pi/6)=0 dạng cos(ax+b).",
+  "hien": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111040401018",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải 2sinx+căn3=0 và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060201038",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng qua số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060101008",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060102027",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111010605015",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sinx và khoảng của x, tính sin2x.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501067",
+  "may": "NDB01022",
+  "chac": "vua",
+  "ly_do": "Chọn hình là đồ thị y=sinx, đề lỗi mã tikz, nội dung phụ thuộc hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104035",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bởi công thức u_n.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060205005",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, Sn, tìm n.",
+  "hien": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060204039",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Cho quan hệ giữa tổng và số hạng, lập hệ tìm u1, d.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030501079",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong 4 hàm cơ bản.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060101009",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030501042",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, đáp án là cotx cơ bản nhưng phương án nhiễu là hàm mở rộng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040101094",
+  "may": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình sin(2x/3-pi/3)=0 dạng sin(ax+b).",
+  "hien": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111060202042",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp u4, u5, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060202045",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp u15, u16, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111020203015",
+  "may": "NDB00960",
+  "chac": "vua",
+  "ly_do": "Rút gọn dùng hằng đẳng thức rồi nhân đôi; có thể xếp biến đổi đại số tự do.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060205012",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, tìm n để u_n đạt giá trị cần.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060202084",
+  "may": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cho tổng S5 và công sai d, tìm u1.",
+  "hien": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030104010",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của y=sin2x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111020203012",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060101050",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u2.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060304031",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Lương tăng 6% mỗi kỳ, tìm số hạng thứ n của cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111020401056",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Khai triển cos2x-cosx bằng công thức tổng thành tích.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111020402037",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Cho cosx, tổng hai sin; hợp cả tổng thành tích lẫn công thức cộng.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111060101035",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020203014",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi góc x/2.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060102049",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 70, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030401078",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai về chu kỳ của các hàm lượng giác cơ bản.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060102025",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060201018",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060101033",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020203001",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111040101076",
+  "may": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải 2sinx-1=0 đưa về sinx=sin alpha.",
+  "hien": "NDB00575",
+  "nguon": "gan_cum",
+  "cum": "DCUM01320",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111060204018",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm u1, d tính u20.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030501073",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Dựa vào đồ thị cosx xác định khoảng đồng biến.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060303004",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111060101022",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020202059",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a và khoảng, tính sin2a, cos2a, tan2a.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501035",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (cosx-1...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020303015",
+  "may": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Rút gọn tích ba cos bằng công thức tích thành tổng.",
+  "hien": "NDB00962",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010609"
+ },
+ {
+  "ma_cau": "T111010605020",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sinx, tính cos2x+1 bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040401031",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111010201030",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Xác định điểm ngọn biểu diễn cung -1485 độ trên đường tròn.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111010605012",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi, hạ bậc.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501020",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm số lượng giác mở rộng (cosx+1...).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060101056",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u3.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060101017",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính số hạng thứ tư.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010605038",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cosx và khoảng của x, tính sin2x.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111020203004",
+  "may": "NDB00960",
+  "chac": "vua",
+  "ly_do": "Rút gọn dùng hằng đẳng thức rồi nhân đôi; có thể xếp biến đổi đại số tự do.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060204014",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm u1, d.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111040102018",
+  "may": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm sinx=1/2 trên đoạn, phương trình có 2 họ nghiệm.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111030501037",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, đáp án là tanx cơ bản nhưng phương án nhiễu là hàm mở rộng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060102048",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 37, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060101037",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030501076",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài toán hình chữ nhật có đỉnh nằm trên đồ thị hàm lượng giác, tính độ dài cạnh.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020402001",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Cho sin2x, tổng hai sin; hợp cả tổng thành tích lẫn công thức cộng.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111010605021",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin alpha, tính cos2alpha bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060104014",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060201015",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111030501059",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong 4 hàm cơ bản.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104016",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060204010",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ hai phương trình về quan hệ số hạng, tìm công sai.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060101067",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính ba số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204031",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S6, S9 lập hệ tìm u1, d; gần cả hai dạng quan hệ số hạng và tổng.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060202039",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp u2, u3, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060205007",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, Sn, tìm n.",
+  "hien": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060202044",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng liên tiếp u10, u11, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060304044",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tiền lương tăng 5% mỗi năm, tìm số hạng thứ n của cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060202069",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u2, u5, tìm các yếu tố khác (tổng S10).",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060104042",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét dãy nào giảm, dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060102038",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 25, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060201041",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng qua số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060102006",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060202032",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u1, u2, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060101011",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính u3.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060101049",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính số hạng thứ ba.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111040402012",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị cos cắt y=-1/2; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111040401019",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải sinx=0 và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111030501027",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, đáp án là sinx cơ bản nhưng phương án nhiễu là hàm mở rộng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030501053",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Dựa vào đồ thị cosx xác định khoảng đồng biến.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202029",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u1, u2, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060205015",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1, d, tìm n để u_n đạt giá trị cần.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111040402009",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060304009",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Bài toán lãi kép tính số tiền sau n tháng.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010201017",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Xác định góc phần tư điểm cuối của cung 26pi/3.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060202054",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u4, u10, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060104017",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060104010",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040102001",
+  "may": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Giải sin(2x+2pi/5)=0 trên khoảng, một họ nghiệm.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111040101124",
+  "may": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải căn3+3tanx=0 đưa về tanx=tan alpha.",
+  "hien": "NDB00575",
+  "nguon": "gan_cum",
+  "cum": "DCUM01320",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111030501032",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị, đáp án là cosx cơ bản nhưng phương án nhiễu là hàm mở rộng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111010605024",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a, tính cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060101063",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, tính hai số hạng đầu.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104041",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bởi công thức u_n có tham số a.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060304034",
+  "may": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Lương tăng 10% mỗi năm, tính tổng 10 số hạng đầu của cấp số nhân.",
+  "hien": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010201029",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Xác định điểm ngọn biểu diễn cung 25pi/4 trên đường tròn.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111030401023",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của y=1-sin5x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111020202033",
+  "may": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Biết sina+cosa, bình phương tính sin2a rồi cos2a, tan2a.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111010605010",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin alpha, tính cos2alpha bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040401025",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm M,N biểu diễn nghiệm.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060201036",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng qua số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111020401067",
+  "may": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Khai triển sin2x+sinx bằng công thức tổng thành tích.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060102032",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho u_n và giá trị 16, tìm số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060104030",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét dãy nào giảm, dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111020402007",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Cho cos2x, tổng hai cos; hợp cả tổng thành tích lẫn công thức cộng.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111020302023",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho sin2x, tính tích sin cos bằng công thức tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111040402030",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm theo đồ thị cos cắt y=1/3; cũng có thể xếp dạng đếm nghiệm trên đoạn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060202031",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u1, u2, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402010",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060101023",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060304087",
+  "may": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Bài toán vay trả góp hằng tháng, tính số nợ còn lại.",
+  "hien": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060304002",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Dân số tăng đều theo tỉ lệ %, tính giá trị sau n năm bằng cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111030501056",
+  "may": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Đơn điệu của y=sin x trên khoảng cho kèm đồ thị, cũng hợp 01006; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060101004",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010101034",
+  "may": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi pi/9 rad sang độ.",
+  "hien": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060101041",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204042",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Hệ giữa số hạng và tổng S3, S6 của cấp số cộng, lập hệ u1, d.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060202052",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng u3, u7, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030104018",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm y=cos x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101005",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u4 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010102012",
+  "may": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung 40 độ của đường tròn bán kính 10.",
+  "hien": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111060204028",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S3, S6 của cấp số cộng; cũng có thể xếp 00608, không có dạng hai tổng riêng.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060202063",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng u4, u8, tìm u2.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010606004",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức dùng công thức nhân đôi và hạ bậc.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111030501004",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, chọn trong 4 hàm sin, cos, tan, cot cơ bản.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060201006",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060101002",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060205016",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Cho u1, d và un đạt ngưỡng, tìm n trong bài thực tế cấp số cộng.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111010101001",
+  "may": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 315 độ sang rad.",
+  "hien": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060102003",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số đã cho là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020202014",
+  "may": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, bình phương để tính sin2x.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111010605004",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos x, tính cos2x bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060102042",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, tìm thứ tự của số hạng bằng 48.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020203008",
+  "may": "NDB00966",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân thức dùng cả tổng thành tích và nhân đôi, cũng hợp 00960.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111030501008",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị trong các hàm mở rộng nhưng có cả y=cos x cơ bản (01022); đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030104012",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm y=sin x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111030401060",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Xác định hàm nào có chu kì 2pi bằng chu kì các hàm cơ bản.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101057",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u2 từ công thức số hạng tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010605026",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a, tính cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060204003",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ về quan hệ giữa các số hạng, giải u1, d rồi tính u10.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111020301063",
+  "may": "NDB00961",
+  "chac": "vua",
+  "ly_do": "Khai triển tích sin3x cos x bằng tích thành tổng; không có dạng đúng, cũng gần 00962.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111020203011",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi, hạ bậc.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111040402001",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm hoành độ giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060101046",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính hai số hạng đầu từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010201033",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Xác định góc phần tư của điểm biểu diễn các góc lượng giác.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060101053",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010201026",
+  "may": "NDB00569",
+  "chac": "vua",
+  "ly_do": "Cho hình hai điểm M,N, hỏi số đo cung; cũng hợp 00581; đề có hình.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111040402004",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm hoành độ giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111030401029",
+  "may": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Chu kì của cos^2 x - 1 phải hạ bậc trước, không đúng dạng (ax+b) cơ bản.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101003",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060304015",
+  "may": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Lương tăng theo giai đoạn thành cấp số nhân, tính tổng các số hạng.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060101061",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u6 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111010605001",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tính cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060202104",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức số hạng tổng quát của cấp số cộng, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402023",
+  "may": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Đếm số nghiệm trên đoạn bằng số giao điểm của đường thẳng với đồ thị cho sẵn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060202050",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng liên tiếp, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030501063",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hình chữ nhật có đỉnh trên đồ thị y=sin x, tính độ dài cạnh; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040102043",
+  "may": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm của phương trình sin cơ bản có 2 họ nghiệm trên đoạn.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111060101064",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính hai số hạng đầu từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204030",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S2, S5 của cấp số cộng; cũng có thể xếp 00608.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030202013",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Đưa 2sinx cosx về sin2x để tìm max min.",
+  "hien": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ {
+  "ma_cau": "T111020201001",
+  "may": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Chọn công thức sai, 3 ý công thức cộng nhưng có thêm công thức nhân đôi (00958).",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111030202036",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Biến đổi về hàm cơ bản bằng công thức nhân đôi rồi tìm giá trị nhỏ nhất.",
+  "hien": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ {
+  "ma_cau": "T111030104009",
+  "may": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Hỏi hàm nào tuần hoàn, lý thuyết về tuần hoàn, gần nhất dạng chu kỳ.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111030501068",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong các hàm lượng giác mở rộng sin(x/2), cos(x/4).",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060304062",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Giá trị xe giảm 8% mỗi năm, tính giá trị sau n năm theo cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010605002",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a, tính cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040401001",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi hai điểm cho trên đường tròn lượng giác.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111040102012",
+  "may": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm phương trình cos cơ bản có 1 họ nghiệm trên đoạn.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111060104024",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét dãy tăng trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040402020",
+  "may": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm trên đoạn bằng số giao điểm với đồ thị cho sẵn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060101027",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060102029",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy bằng 4/5.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060102010",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy bằng 5/7.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501066",
+  "may": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Nhiều phát biểu về tính chất đồ thị y=cos x, không có dạng riêng; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030401001",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kì của y=sin(5x-pi/4).",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101054",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u2 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030401072",
+  "may": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Hỏi hàm nào không tuần hoàn, lý thuyết tuần hoàn, gần nhất dạng chu kỳ.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060201019",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111020203010",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi, hạ bậc.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111040402021",
+  "may": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm trên đoạn bằng số giao điểm với đồ thị cho sẵn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060101062",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 từ công thức số hạng tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060304059",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Gửi tiết kiệm lãi kép, tính vốn lẫn lãi sau n tháng.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060201024",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng biết số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111020203009",
+  "may": "NDB00956",
+  "chac": "vua",
+  "ly_do": "Rút gọn biến đổi tự do với tan, cot và cos2a, cũng có thể xếp 00960.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060201030",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng biết số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111030501033",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong các hàm mở rộng 2sinx, 2cosx, 2tanx.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040102025",
+  "may": "NDB00577",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm phương trình sin(5x-pi/3)=1 có 1 họ nghiệm trên đoạn.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111060102011",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060202075",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u3 và công sai, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010605034",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tính sin2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111010605025",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tính cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040402006",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm hoành độ giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060202086",
+  "may": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cho S6 và công sai, tìm u1.",
+  "hien": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010606006",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn sin2x/(1+cos2x) bằng công thức nhân đôi.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111010605014",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a và khoảng của a, tính sin2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111020301001",
+  "may": "NDB00961",
+  "chac": "vua",
+  "ly_do": "Khai triển tích cos2a cosb bằng tích thành tổng; không có dạng đúng, gần 00962.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111020402091",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho sin2x, tính biểu thức bằng hiệu sin6x - sin2x (tổng thành tích).",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111020202004",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tính cos2a và cos4a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060201037",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng biết số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060304010",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Diện tích rừng giảm x% mỗi năm, giá trị sau n năm theo cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010301023",
+  "may": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Cho góc a trong một khoảng, xác định dấu của sin và cos.",
+  "hien": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ {
+  "ma_cau": "T111020402061",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho cos a, cos b, tính cos(a+b)+cos(a-b) bằng công thức cộng, cũng gần 00964.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111060102037",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, tìm thứ tự của số hạng -16.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501060",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị y=f(x), xác định tính đồng biến trên khoảng.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111010102001",
+  "may": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung có số đo pi/8 trên đường tròn r=5.",
+  "hien": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111030501070",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, chọn trong 4 hàm sin, cos, tan, cot cơ bản.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060102020",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030104008",
+  "may": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Hỏi hàm nào không tuần hoàn, lý thuyết tuần hoàn, gần nhất dạng chu kỳ.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101001",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020202015",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin x, tính biểu thức chứa sin2x, cos2x bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501054",
+  "may": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, chọn trong 4 hàm sin, cos, tan, cot cơ bản.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060204001",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ về quan hệ giữa các số hạng, giải u1, d rồi tính S50.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111040401021",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi hai điểm cho trên đường tròn lượng giác.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060101048",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u4 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111040401014",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải phương trình lượng giác và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060104038",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060204029",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S4, S8 của cấp số cộng; cũng có thể xếp 00608.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060204024",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ về tổng các số hạng u1+u3, u2+u5, giải u1, d rồi tính S5.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060102030",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060101010",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060202073",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u5 và công sai, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060204023",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ về tổng các số hạng u1+u3, u2+u5, giải u1, d rồi tính S5.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111010606001",
+  "may": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn bằng công thức cộng cos(2x-x) sau khi quy đồng.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111020402067",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho sin a, sin b, tính cos(a+b)-cos(a-b) bằng công thức cộng, cũng gần 00965.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111030104017",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm y=cos x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111040401006",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi hai điểm cho trên đường tròn lượng giác.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111030204037",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Đưa 4sin2x cos2x về sin4x để tìm tập giá trị.",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111060102033",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, tìm thứ tự của số hạng -5.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020202003",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho cos2x, tính sin x, cos x rồi sin(x+pi/3), cos(2x-pi/4): trộn hạ bậc và công thức cộng.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040101033",
+  "may": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình tan(x/2+15 độ) = hằng số về dạng tan(ax+b)=tan.",
+  "hien": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111060202046",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng liên tiếp, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060102009",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030104004",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của các hàm lượng giác cơ bản và đếm hàm có chu kì 2pi.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060304037",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Giá trị xe giảm 8% mỗi năm, tính giá trị sau n năm theo cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111030104014",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Xác định hàm nào có chu kì pi trong các hàm cơ bản.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060304054",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Giá trị xe giảm 13% mỗi năm, tính giá trị sau n năm theo cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060201017",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111040401004",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi hai điểm cho trên đường tròn lượng giác.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111020201008",
+  "may": "NDB00958",
+  "chac": "vua",
+  "ly_do": "Chỉ viết lại công thức sin2a, gần nhất dạng nhận dạng công thức nhân đôi.",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111020203016",
+  "may": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức gộp thành cos(2a) bằng công thức cộng.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060202102",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức số hạng tổng quát của cấp số cộng, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060201031",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng biết số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111010606003",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức bằng công thức nhân đôi, hạ bậc.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060102013",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030204030",
+  "may": "NDB00997",
+  "chac": "cao",
+  "ly_do": "Tìm min của hàm dạng Asinx+Bcosx bằng cách chia căn(A^2+B^2).",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111010605027",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho tan a, tính tan2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111020301043",
+  "may": "NDB00961",
+  "chac": "vua",
+  "ly_do": "Khai triển tích sin3x sinx bằng tích thành tổng; không có dạng đúng, gần 00962.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111030401084",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của các hàm lượng giác cơ bản và đếm hàm có chu kì pi.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111030501064",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị trong hàm mở rộng 1±sinx nhưng có thêm hàm cơ bản (01022); đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020202013",
+  "may": "NDB00955",
+  "chac": "vua",
+  "ly_do": "Cho sin2a, tính sin a - cos a bằng bình phương; gần dạng sin+cos, không khớp hẳn.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060102047",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, tìm thứ tự của số hạng 88.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020401001",
+  "may": "NDB00963",
+  "chac": "vua",
+  "ly_do": "Khai triển cos2a+cosb bằng tổng thành tích; chỉ viết công thức, gần nhất dạng nhận dạng.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111040401020",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải phương trình lượng giác và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111040402016",
+  "may": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm trên đoạn bằng số giao điểm với đồ thị cho sẵn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111010605031",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho tan a, tính tan2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060101038",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060202037",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng liên tiếp, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402018",
+  "may": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm trên đoạn bằng số giao điểm với đồ thị cho sẵn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111020401078",
+  "may": "NDB00963",
+  "chac": "vua",
+  "ly_do": "Khai triển sin2a - sinb bằng tổng thành tích; chỉ viết công thức, gần nhất dạng nhận dạng.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060101012",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020202074",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos a, tính sin2a, cos2a, tan2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060204040",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Hệ giữa các tổng S7, S4+S5 của cấp số cộng; cũng có thể xếp 00608.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111020202009",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho cos2x, tính sin x, cos x rồi sin(x+pi/3), cos(2x-pi/4): trộn hạ bậc và công thức cộng.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060202080",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u9 và công sai, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060104003",
+  "may": "NDB00598",
+  "chac": "cao",
+  "ly_do": "Câu lý thuyết về định nghĩa dãy số giảm.",
+  "hien": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040401009",
+  "may": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi hai điểm cho trên đường tròn lượng giác.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060101043",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020202057",
+  "may": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Cho sin2a, tìm các GTLG của a bằng công thức nhân đôi, hạ bậc; cũng gần 00949.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060102039",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, tìm thứ tự của số hạng 43.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030401056",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm y=tan x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060201039",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng biết số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060104015",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét dãy tăng trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111030501051",
+  "may": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm lượng giác, xác định khoảng nghịch biến.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202068",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng u3, u6, tính tổng 5 số hạng đầu.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030204038",
+  "may": "NDB00999",
+  "chac": "vua",
+  "ly_do": "Hạ cos2x về sin x rồi đặt t bậc 2, cũng gần 00996.",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111060101044",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060201005",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060201042",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng biết số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060201014",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Tìm dãy không phải cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060304088",
+  "may": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Gửi tiết kiệm định kỳ hằng tháng có lãi kép.",
+  "hien": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111020301034",
+  "may": "NDB00961",
+  "chac": "vua",
+  "ly_do": "Khai triển tích sin2a cosb bằng tích thành tổng; không có dạng đúng, gần 00962.",
+  "hien": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ {
+  "ma_cau": "T111060104025",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét dãy giảm trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111010101007",
+  "may": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi 5pi/4 rad sang độ.",
+  "hien": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060201021",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111030501075",
+  "may": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Đơn điệu của y=cos x trên khoảng kèm đồ thị, cũng hợp 01006; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020202007",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho cos a, tính cos(2a+pi/3), tan(3pi/4-2a): trộn nhân đôi và công thức cộng.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060102023",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501081",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chọn bảng biến thiên của hàm lượng giác cos2x trên đoạn; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104021",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét dãy tăng trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060201032",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Tìm dãy không phải cấp số cộng trong các dãy cho bằng công thức.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060101026",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204016",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ về quan hệ giữa các số hạng u1+u4, u2+u5, tìm u12.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060304042",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Giá trị xe giảm 5% mỗi năm, tính giá trị sau n năm theo cấp số nhân.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060204035",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Hệ giữa số hạng và tổng S4+u5, S6 của cấp số cộng.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060101014",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính hai số hạng đầu từ công thức tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020402079",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho cos2x, cosx, tính cosx+cos2x+cos3x bằng tổng thành tích.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111060102040",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, tìm thứ tự của số hạng 61.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020402025",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho sin x, tính cos(2x+pi/3)+cos(2x-pi/3) bằng công thức cộng, cũng gần 00964.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111030204036",
+  "may": "NDB00997",
+  "chac": "cao",
+  "ly_do": "Tìm max min của hàm dạng Asinx+Bcosx+C bằng cách chia căn(A^2+B^2).",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111060102031",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức un, xác định số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111010301012",
+  "may": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Cho góc trong một khoảng, xác định dấu của các giá trị lượng giác.",
+  "hien": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ {
+  "ma_cau": "T111060201008",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Tìm dãy không phải cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060101030",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060201007",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111010605019",
+  "may": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Cho cos a, tính sin(2a-pi/6): trộn nhân đôi và công thức cộng.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111040101012",
+  "may": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos x = hằng số về dạng cos x = cos alpha.",
+  "hien": "NDB00575",
+  "nguon": "gan_cum",
+  "cum": "DCUM01320",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111060104020",
+  "may": "NDB00599",
+  "chac": "vua",
+  "ly_do": "Xét dãy giảm trong các dãy liệt kê nhưng dùng tính đơn điệu của sin, cos; cũng gần 00600.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060201011",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111040101044",
+  "may": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình tan(x/2-pi/3) = hằng số về dạng tan(ax+b)=tan alpha.",
+  "hien": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ {
+  "ma_cau": "T111030501078",
+  "may": "NDB01006",
+  "chac": "vua",
+  "ly_do": "Đơn điệu của y=cos x trên khoảng cho bằng công thức, lời giải dùng đồ thị; cũng hợp 01003.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202059",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng u2, u5, tìm u1.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111020202080",
+  "may": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Biết sin a + cos a, bình phương để tính sin2a.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111020302001",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho cos2x, tính tích cos cos bằng công thức tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111030501058",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị trong hàm mở rộng cos2x, sin2x nhưng có thêm hàm cơ bản (01022); đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030501011",
+  "may": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị trong các hàm lượng giác mở rộng 2sinx, -2sinx, sin2x+1.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104022",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét dãy giảm trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060202074",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u7 và công sai, tìm u1.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402028",
+  "may": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm trên đoạn bằng số giao điểm với đồ thị cho sẵn.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060104044",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060204033",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S5, S10 của cấp số cộng; cũng có thể xếp 00608.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030202042",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Biến đổi bằng công thức lượng giác về sin^2 2x rồi đánh giá min của hàm.",
+  "hien": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ {
+  "ma_cau": "T111060204019",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S4, S6 lập hệ tìm u1, d; không khớp hẳn 00608 hay 00613.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060104039",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng giảm của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060205014",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1, d, un lớn hơn giá trị, tìm n.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111030501052",
+  "may": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Xét đơn điệu hàm sin trên khoảng, đề có hình đồ thị; cũng hợp 01006.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202058",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u4, u8 của cấp số cộng, tìm số hạng đầu.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030104002",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm số lượng giác tan x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111020302056",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho cos a, cos b, tính tích cos(a+b)cos(a-b) bằng công thức tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111020203002",
+  "may": "NDB00960",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức bằng nhân đôi, hạ bậc; bản đồ không có dạng chứng minh riêng.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111020302067",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho sin α, tính tích sin(α+π/6)sin(α-π/6) bằng tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111060202055",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u3, u8 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060204034",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S3, S7 lập hệ tìm u1, d; không khớp hẳn 00608 hay 00613.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030501055",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'đọc đồ thị xác định khoảng hàm số nhận giá trị dương/âm'; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060101006",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng thứ 3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204004",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Cho hệ về quan hệ các số hạng của cấp số cộng, tìm u1.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030501029",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (sin2x, sinx+1...), đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104008",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm của dãy cho bằng cách liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111020202022",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a và khoảng của a, tính sin2a, cos2a, tan2a bằng nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111020202051",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin α, tính cos4α bằng công thức nhân đôi hai lần.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060101032",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104029",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Tìm dãy tăng trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111030401035",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của tổng hai hàm cos3x + cos5x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060202053",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u6 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060304052",
+  "may": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số nhân u1=8, q=2, tính tổng 12 số hạng.",
+  "hien": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060101018",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060304057",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tăng lương theo kỳ, cấp số nhân, tìm số hạng u5 (giống lãi kép).",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060202043",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u5, u6 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402013",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm f(x)=√3/2 dựa vào đồ thị |sin x|; đề có hình, cũng hợp 01009.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060304036",
+  "may": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Giá khoan tăng 5% mỗi mét, cấp số nhân, tính tổng 50 số hạng.",
+  "hien": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060303008",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để các số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111030501014",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111010605007",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tính sin2a+cos2a bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030204019",
+  "may": "NDB00997",
+  "chac": "cao",
+  "ly_do": "Min của hàm dạng A sinx + B cosx, chia cho căn(A^2+B^2).",
+  "hien": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ {
+  "ma_cau": "T111030501003",
+  "may": "NDB01022",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị 4 hàm cơ bản, nhưng đề phụ thuộc hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060304085",
+  "may": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Bài toán trả góp lãi kép với số tiền trả đều hằng tháng.",
+  "hien": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060104011",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Tìm dãy giảm trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060202057",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u3, u6 của cấp số cộng, tìm số hạng đầu.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010605009",
+  "may": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Ý cos α (00949) và tan2α (00959) thuộc hai dạng liền kề; chọn ý trọng tâm.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060101045",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u5 của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060101042",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060201040",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng từ số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060204026",
+  "may": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Cho hai tổng S4, S6 lập hệ tìm u1, d; không khớp hẳn 00608 hay 00613.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111020402013",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho sin2x, tính hiệu hai cos bằng công thức tổng thành tích.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111060304024",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Khấu hao giảm 20% mỗi năm, cấp số nhân, tìm giá trị sau 6 năm.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060102046",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 55 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111040401027",
+  "may": "NDB00581",
+  "chac": "vua",
+  "ly_do": "Tìm phương trình từ điểm biểu diễn nghiệm M, N; đề có hình không thấy được.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060202098",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức số hạng tổng quát của cấp số cộng, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040401007",
+  "may": "NDB00581",
+  "chac": "vua",
+  "ly_do": "Tìm phương trình từ điểm biểu diễn nghiệm M, N; đề có hình không thấy được.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060102008",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 10/17 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060204044",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Hệ quan hệ giữa tổng S_n và số hạng u3, lập hệ tìm u1, d.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060202051",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u5 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030501017",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020202045",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin α, tính biểu thức chứa sin2α, cos2α bằng nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501028",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020303011",
+  "may": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức tích thành tổng.",
+  "hien": "NDB00962",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010609"
+ },
+ {
+  "ma_cau": "T111060104009",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Tìm dãy giảm trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111020403007",
+  "may": "NDB00966",
+  "chac": "vua",
+  "ly_do": "Rút gọn: tử dùng tổng thành tích, mẫu dùng công thức cộng với cot; hai dạng.",
+  "hien": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ {
+  "ma_cau": "T111060303007",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111020202016",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos2α, dùng hạ bậc tìm các giá trị lượng giác của α.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060202064",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u5, u10 của cấp số cộng, tìm số hạng thứ 7.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060104005",
+  "may": "NDB00598",
+  "chac": "cao",
+  "ly_do": "Câu lý thuyết về tính tăng giảm của dãy số.",
+  "hien": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040401017",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải phương trình tan x và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111020203003",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức nhân đôi, hạ bậc.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060201016",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060101025",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng thứ 3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204002",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Cho quan hệ các số hạng của cấp số cộng, lập hệ tìm u1, d.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060202072",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u10 và công sai, tìm số hạng đầu.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060102022",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 7/9 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020402043",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho cos x, tính hiệu hai sin bằng công thức tổng thành tích.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111030104016",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm số lượng giác cot x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111010201028",
+  "may": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Xác định số đo cung từ điểm cuối M trên hình; đề có hình, cũng hợp 00569.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111020201005",
+  "may": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi: chọn khẳng định sai.",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111020303021",
+  "may": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức tích thành tổng.",
+  "hien": "NDB00962",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010609"
+ },
+ {
+  "ma_cau": "T111020402085",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho sin x, tính biểu thức dùng tổng thành tích sin3x - sinx và nhân đôi.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111030104003",
+  "may": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Chọn hàm tuần hoàn trong các hàm; gần dạng chu kỳ nhưng không đúng mô tả.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111040402024",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm f(x)=0 dựa vào đồ thị cos; đề có hình, cũng hợp 01009.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111040401029",
+  "may": "NDB00581",
+  "chac": "vua",
+  "ly_do": "Tìm phương trình từ điểm biểu diễn nghiệm M, N; đề có hình không thấy được.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111010605018",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos α, tính cos2α bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111030501031",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (-sinx, cosx-1...), đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030104013",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Xác định chu kỳ của hàm số lượng giác sin x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060102034",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 37 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501057",
+  "may": "NDB01022",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị 4 hàm cơ bản, nhưng đề phụ thuộc hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202036",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u3 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402026",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm f(x)=1/2 dựa vào đồ thị |cos x|; đề có hình, cũng hợp 01009.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060202083",
+  "may": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cho tổng S12 và công sai, tìm số hạng đầu.",
+  "hien": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060304049",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tăng dân số theo công thức lãi kép, tìm giá trị sau n năm.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010201025",
+  "may": "NDB00569",
+  "chac": "vua",
+  "ly_do": "Xác định điểm biểu diễn cung 7π/6 trên hình; đề có hình không thấy được.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111030501002",
+  "may": "NDB01022",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị 4 hàm cơ bản, nhưng đề phụ thuộc hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111020201003",
+  "may": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi: chọn công thức sai.",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111060101013",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u5 của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111030501026",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040402025",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm f(x)=-1 dựa vào đồ thị sin; đề có hình, cũng hợp 01009.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060102019",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 13/31 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020302012",
+  "may": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho cos2x, tính tích hai sin bằng công thức tích thành tổng.",
+  "hien": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ {
+  "ma_cau": "T111020402092",
+  "may": "NDB00964",
+  "chac": "cao",
+  "ly_do": "Cho sin4x, tính biểu thức dùng tổng thành tích sin12x - sin4x.",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111030401046",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm cos^2 x - 1 sau hạ bậc.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111020401034",
+  "may": "NDB00963",
+  "chac": "cao",
+  "ly_do": "Áp dụng công thức tổng thành tích để khai triển sin2a - sin b.",
+  "hien": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ {
+  "ma_cau": "T111060104040",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính giảm của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040102031",
+  "may": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm phương trình sin trên đoạn với hai họ nghiệm.",
+  "hien": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ {
+  "ma_cau": "T111030104011",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Xác định chu kỳ của hàm số lượng giác cos x.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060202065",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u3, u8 của cấp số cộng, tìm số hạng thứ 12.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060101051",
+  "may": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111020202063",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho tan a, tính sin2a, cos2a, tan2a bằng nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060202028",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u3 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060202066",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u5 của cấp số cộng, tìm các yếu tố khác.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111030202019",
+  "may": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Tập giá trị của hàm đưa về sin6x bằng công thức nhân đôi.",
+  "hien": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ {
+  "ma_cau": "T111060303010",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111020201006",
+  "may": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi (3/4 phương án), chọn khẳng định sai.",
+  "hien": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ {
+  "ma_cau": "T111060205011",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1, d, un lớn hơn giá trị, tìm n.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111030401012",
+  "may": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kỳ của hàm sin(ax+b).",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111060101036",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060204009",
+  "may": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Cho hệ quan hệ các số hạng của cấp số cộng, tìm u1, d rồi tính S10.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111030501018",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030501036",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111040401030",
+  "may": "NDB00581",
+  "chac": "vua",
+  "ly_do": "Tìm phương trình từ điểm biểu diễn nghiệm M, N; đề có hình không thấy được.",
+  "hien": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060202101",
+  "may": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho số hạng tổng quát của cấp số cộng, tìm công sai.",
+  "hien": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010103001",
+  "may": "NDB00568",
+  "chac": "cao",
+  "ly_do": "Bánh xe quay số vòng cho trước, tính quãng đường đi được.",
+  "hien": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111060205002",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1, d, Sn, tìm n.",
+  "hien": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060102051",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 112 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060104045",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng giảm của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111010102033",
+  "may": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung tròn theo bán kính và góc ở tâm.",
+  "hien": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ {
+  "ma_cau": "T111060101034",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060102036",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 50 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060204037",
+  "may": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Hệ quan hệ giữa tổng S_n và số hạng u3, lập hệ tìm u1, d.",
+  "hien": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111060101024",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060104032",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng giảm của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060202078",
+  "may": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho u12 và công sai, tìm số hạng đầu.",
+  "hien": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402019",
+  "may": "NDB00584",
+  "chac": "vua",
+  "ly_do": "Đếm nghiệm f(x)=1/4 dựa vào đồ thị |sin x|; đề có hình, cũng hợp 01009.",
+  "hien": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060205013",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1, d, un lớn hơn giá trị, tìm n.",
+  "hien": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060201043",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng từ số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060201028",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng từ số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111030501015",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060104013",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Tìm dãy tăng trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060202034",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u1, u2 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111010605003",
+  "may": "NDB00955",
+  "chac": "cao",
+  "ly_do": "Biết tổng sin+cos, tính sin2a bằng cách bình phương.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060304039",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tăng dân số theo tỉ lệ năm, cấp số nhân, tìm giá trị sau n năm.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060104026",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Tìm dãy tăng trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111040401016",
+  "may": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos2x=0 và biểu diễn nghiệm trên đường tròn lượng giác.",
+  "hien": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ {
+  "ma_cau": "T111060303003",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111010201031",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Biểu diễn điểm ngọn của cung lượng giác trên đường tròn lượng giác.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111020203005",
+  "may": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức nhân đôi, hạ bậc.",
+  "hien": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ {
+  "ma_cau": "T111060304060",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Giá trị ô tô giảm 5% mỗi năm, cấp số nhân, tìm giá trị sau 10 năm.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060102005",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 3/10 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060303002",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111060303011",
+  "may": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân rồi tìm số hạng tiếp theo.",
+  "hien": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ {
+  "ma_cau": "T111060201029",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng từ số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111010605028",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos α, tính biểu thức chứa cos2α bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060104047",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tính tăng giảm của dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060104034",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Tìm dãy tăng trong các dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111010605035",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin α, tính cos2α bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060304050",
+  "may": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Vi khuẩn phân đôi theo kỳ, cấp số nhân, tìm số lượng sau n kỳ.",
+  "hien": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111030501005",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030104005",
+  "may": "NDB01004",
+  "chac": "vua",
+  "ly_do": "Xác định chu kỳ từ đồ thị; đề có hình không thấy được.",
+  "hien": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ {
+  "ma_cau": "T111020402049",
+  "may": "NDB00964",
+  "chac": "vua",
+  "ly_do": "Tính sin(a+b)+sin(a-b) bằng tổng thành tích; cũng có thể dùng công thức cộng (00968).",
+  "hien": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ {
+  "ma_cau": "T111020403035",
+  "may": "NDB00962",
+  "chac": "vua",
+  "ly_do": "Rút gọn dùng tích thành tổng rồi tổng thành tích; hai dạng rút gọn.",
+  "hien": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ {
+  "ma_cau": "T111030501001",
+  "may": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng, đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060304086",
+  "may": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Bài toán gửi tiết kiệm định kỳ hằng tháng với lãi kép.",
+  "hien": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111060202062",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u2, u6 của cấp số cộng, tìm số hạng thứ 9.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060202081",
+  "may": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cho tổng S4 và công sai, tìm số hạng đầu.",
+  "hien": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111060102026",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 5/22 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111030501077",
+  "may": "NDB01004",
+  "chac": "vua",
+  "ly_do": "Xác định chu kỳ của cos ax từ đồ thị; đề có hình không thấy được.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111030501061",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'bài toán hình học (hình chữ nhật) với điểm trên đồ thị sin'; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060202033",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u1, u2 của cấp số cộng, tìm công sai.",
+  "hien": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ {
+  "ma_cau": "T111040402007",
+  "may": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm hai đồ thị bằng phương trình hoành độ giao điểm.",
+  "hien": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ {
+  "ma_cau": "T111060304048",
+  "may": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số nhân u1=16, q=1/2, tính tổng 7 số hạng.",
+  "hien": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ {
+  "ma_cau": "T111010605029",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'bài toán thực tế/hình học dùng công thức cộng của tan'; đề có hình.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111010605006",
+  "may": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Đúng/Sai 4 ý rải nhiều dạng: nhân đôi, tổng thành tích, công thức cộng tan.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060204020",
+  "may": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u4, u7 của cấp số cộng, tìm u1 và d.",
+  "hien": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ {
+  "ma_cau": "T111010101013",
+  "may": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi số đo góc từ độ sang radian.",
+  "hien": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111060104006",
+  "may": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Tìm dãy giảm trong các dãy cho bằng liệt kê số hạng.",
+  "hien": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060101021",
+  "may": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính u3 của dãy cho bởi hệ thức truy hồi.",
+  "hien": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ {
+  "ma_cau": "T111060201026",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng từ số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111010605005",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos x và khoảng của x, tính sin2x bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111010201032",
+  "may": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Biểu diễn điểm ngọn của cung lượng giác trên đường tròn lượng giác.",
+  "hien": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ {
+  "ma_cau": "T111030501062",
+  "may": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Xét đơn điệu hàm cos trên khoảng, đề có hình đồ thị; cũng hợp 01006.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111010605030",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cos α và khoảng của α, tính sin2α bằng công thức nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060104037",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Tìm dãy không tăng trong các dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111010301001",
+  "may": "NDB00946",
+  "chac": "cao",
+  "ly_do": "Cho α trong khoảng, xác định dấu của sin và cos.",
+  "hien": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ {
+  "ma_cau": "T111060201023",
+  "may": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng từ số hạng tổng quát.",
+  "hien": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111060102045",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 97 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111020202039",
+  "may": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sin α, tính sin2(α+π) bằng nhân đôi.",
+  "hien": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ {
+  "ma_cau": "T111060205004",
+  "may": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho sẵn u1, d, tính tổng 30 số hạng.",
+  "hien": "NDB00614",
+  "nguon": "gan_cum",
+  "cum": "DCUM01459",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060201001",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ {
+  "ma_cau": "T111030501074",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'bất phương trình lượng giác sin2x>=0 giải bằng đồ thị'; đề có hình.",
+  "hien": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ {
+  "ma_cau": "T111060205008",
+  "may": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1, d, Sn, tìm n.",
+  "hien": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ {
+  "ma_cau": "T111060102028",
+  "may": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho công thức u_n, xác định 5/54 là số hạng thứ mấy.",
+  "hien": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ {
+  "ma_cau": "T111060104033",
+  "may": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Tìm dãy giảm trong các dãy cho bởi công thức số hạng tổng quát.",
+  "hien": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ {
+  "ma_cau": "T111060201010",
+  "may": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng trong các dãy cho bằng liệt kê.",
+  "hien": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ }
+]

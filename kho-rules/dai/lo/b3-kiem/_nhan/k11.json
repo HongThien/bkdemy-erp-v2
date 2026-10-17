@@ -1,0 +1,4070 @@
+{
+ "T111030501047": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104043": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111020201002": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111060102001": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030501049": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040401026": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060202076": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111010605022": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060204005": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060101047": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060101052": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060104002": {
+  "db": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ "T111030501006": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060204006": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060102018": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060102050": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111030501080": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020403024": {
+  "db": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ "T111030501044": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060102012": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111020302089": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111010102044": {
+  "db": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ "T111040401013": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111040401005": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060102014": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060202048": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030501030": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060201025": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060202105": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111060101066": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060104027": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111040401002": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060102004": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060205001": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111040402011": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111040401015": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111020402055": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111060104012": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111010103025": {
+  "db": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ "T111020301052": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111060101065": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060104023": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111040402005": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111040402027": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111020202005": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060303001": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111040401011": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111060101055": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060102024": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030501065": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060304061": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060204008": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111040401010": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111030204013": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111020203007": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111010103007": {
+  "db": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ "T111060202079": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111060204015": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060104031": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111030202025": {
+  "db": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ "T111060201004": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060104007": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111040402002": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111020402019": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111060204036": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060205003": {
+  "db": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ "T111020403013": {
+  "db": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ "T111030501050": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060201027": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111040402029": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111030501043": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202047": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040102037": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111020402031": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111020201028": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111060101039": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111010606002": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111020301012": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111010605032": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501007": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030104015": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060204025": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060102044": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111060104028": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111010201001": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111060202060": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060202071": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111040102049": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111060304056": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111020401012": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060102017": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060102043": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111020401089": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111020401045": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060205006": {
+  "db": "NDB00614",
+  "nguon": "gan_cum",
+  "cum": "DCUM01459",
+  "dang_cu": "T111060205"
+ },
+ "T111060102035": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111060104036": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111040102007": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111030104001": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111030501013": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111010605008": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040401008": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111010605011": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060101029": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111030204007": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111030501072": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060304089": {
+  "db": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ "T111060101059": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060202041": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111020401094": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060205009": {
+  "db": "NDB00614",
+  "nguon": "gan_cum",
+  "cum": "DCUM01459",
+  "dang_cu": "T111060205"
+ },
+ "T111060304058": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111010606005": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111020402073": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111010103013": {
+  "db": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ "T111030501040": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040402017": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111020403018": {
+  "db": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ "T111020401023": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060202040": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040402022": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060204041": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111030202054": {
+  "db": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ "T111060303009": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111030501071": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202099": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111010301029": {
+  "db": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ "T111040402015": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060102015": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060102007": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030501019": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040401032": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111030501069": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020202010": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060102016": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060204017": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111040401003": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111020403030": {
+  "db": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ "T111030401059": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111040401022": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111010605037": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111020301074": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111060101031": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060303005": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111030104007": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101019": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111030501012": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060101020": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111030501010": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040402008": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111060202070": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060204027": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060303006": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111060202077": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111030501038": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111010605023": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060202097": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111030204001": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111020302078": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111060204013": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060202061": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060202082": {
+  "db": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ "T111020301023": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111010201027": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111060101016": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060104001": {
+  "db": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ "T111040402014": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111030401066": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111040101055": {
+  "db": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ "T111040401018": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111060201038": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060101008": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060102027": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111010605015": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501067": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104035": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060205005": {
+  "db": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ "T111060204039": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111030501079": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060101009": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111030501042": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040101094": {
+  "db": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ "T111060202042": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060202045": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111020203015": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060205012": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111060202084": {
+  "db": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ "T111030104010": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111020203012": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060101050": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060304031": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111020401056": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111020402037": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111060101035": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111020203014": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060102049": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111030401078": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060102025": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060201018": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060101033": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111020203001": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111040101076": {
+  "db": "NDB00575",
+  "nguon": "gan_cum",
+  "cum": "DCUM01320",
+  "dang_cu": "T111040101"
+ },
+ "T111060204018": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111030501073": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060303004": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111060101022": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111020202059": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501035": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020303015": {
+  "db": "NDB00962",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010609"
+ },
+ "T111010605020": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040401031": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111010201030": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111010605012": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501020": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060101056": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060101017": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111010605038": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111020203004": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060204014": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111040102018": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111030501037": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060102048": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111060101037": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111030501076": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020402001": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111010605021": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060104014": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060201015": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111030501059": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104016": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060204010": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060101067": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060204031": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060202039": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060205007": {
+  "db": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ "T111060202044": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060304044": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060202069": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060104042": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060102038": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111060201041": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060102006": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060202032": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060101011": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060101049": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111040402012": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111040401019": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111030501027": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030501053": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202029": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060205015": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111040402009": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111060304009": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111010201017": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111060202054": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060104017": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060104010": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111040102001": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111040101124": {
+  "db": "NDB00575",
+  "nguon": "gan_cum",
+  "cum": "DCUM01320",
+  "dang_cu": "T111040101"
+ },
+ "T111030501032": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111010605024": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060101063": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060104041": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060304034": {
+  "db": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ "T111010201029": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111030401023": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111020202033": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111010605010": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040401025": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060201036": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111020401067": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060102032": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111060104030": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111020402007": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111020302023": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111040402030": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060202031": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040402010": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111060101023": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060304087": {
+  "db": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ "T111060304002": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111030501056": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060101004": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111010101034": {
+  "db": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ "T111060101041": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060204042": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060202052": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030104018": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101005": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111010102012": {
+  "db": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ "T111060204028": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060202063": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111010606004": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111030501004": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060201006": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060101002": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060205016": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111010101001": {
+  "db": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ "T111060102003": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111020202014": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111010605004": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060102042": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111020203008": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111030501008": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030104012": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111030401060": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101057": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111010605026": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060204003": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111020301063": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111020203011": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111040402001": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111060101046": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111010201033": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111060101053": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111010201026": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111040402004": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111030401029": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101003": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060304015": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060101061": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111010605001": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060202104": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111040402023": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060202050": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030501063": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040102043": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111060101064": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060204030": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111030202013": {
+  "db": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ "T111020201001": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111030202036": {
+  "db": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ "T111030104009": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111030501068": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060304062": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111010605002": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040401001": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111040102012": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111060104024": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111040402020": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060101027": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060102029": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060102010": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030501066": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030401001": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101054": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111030401072": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060201019": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111020203010": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111040402021": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060101062": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060304059": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060201024": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111020203009": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060201030": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111030501033": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040102025": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111060102011": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060202075": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111010605034": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111010605025": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040402006": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111060202086": {
+  "db": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ "T111010606006": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111010605014": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111020301001": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111020402091": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111020202004": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060201037": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060304010": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111010301023": {
+  "db": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ "T111020402061": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111060102037": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111030501060": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111010102001": {
+  "db": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ "T111030501070": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060102020": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030104008": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101001": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111020202015": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501054": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060204001": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111040401021": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060101048": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111040401014": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111060104038": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060204029": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060204024": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060102030": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060101010": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060202073": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111060204023": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111010606001": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111020402067": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111030104017": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111040401006": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111030204037": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111060102033": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111020202003": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040101033": {
+  "db": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ "T111060202046": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060102009": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030104004": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060304037": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111030104014": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060304054": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060201017": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111040401004": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111020201008": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111020203016": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060202102": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111060201031": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111010606003": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060102013": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030204030": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111010605027": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111020301043": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111030401084": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111030501064": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020202013": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060102047": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111020401001": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111040401020": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111040402016": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111010605031": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060101038": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060202037": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040402018": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111020401078": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060101012": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111020202074": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060204040": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111020202009": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060202080": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111060104003": {
+  "db": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ "T111040401009": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060101043": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111020202057": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060102039": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111030401056": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060201039": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060104015": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111030501051": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202068": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030204038": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111060101044": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060201005": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060201042": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060201014": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060304088": {
+  "db": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ "T111020301034": {
+  "db": "NDB00961",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010607"
+ },
+ "T111060104025": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111010101007": {
+  "db": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ "T111060201021": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111030501075": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020202007": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060102023": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030501081": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104021": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060201032": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060101026": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060204016": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060304042": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060204035": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060101014": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111020402079": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111060102040": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111020402025": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111030204036": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111060102031": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111010301012": {
+  "db": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ "T111060201008": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060101030": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060201007": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111010605019": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111040101012": {
+  "db": "NDB00575",
+  "nguon": "gan_cum",
+  "cum": "DCUM01320",
+  "dang_cu": "T111040101"
+ },
+ "T111060104020": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060201011": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111040101044": {
+  "db": "NDB00576",
+  "nguon": "gan_cum",
+  "cum": "DCUM01321",
+  "dang_cu": "T111040101"
+ },
+ "T111030501078": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202059": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111020202080": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111020302001": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111030501058": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030501011": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104022": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060202074": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111040402028": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060104044": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060204033": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111030202042": {
+  "db": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ "T111060204019": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060104039": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060205014": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111030501052": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202058": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030104002": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111020302056": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111020203002": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111020302067": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111060202055": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060204034": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111030501055": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060101006": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060204004": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111030501029": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104008": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111020202022": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111020202051": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060101032": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060104029": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111030401035": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060202053": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060304052": {
+  "db": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ "T111060101018": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060304057": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060202043": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040402013": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060304036": {
+  "db": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ "T111060303008": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111030501014": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111010605007": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030204019": {
+  "db": "NDB00997",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030204"
+ },
+ "T111030501003": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060304085": {
+  "db": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ "T111060104011": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060202057": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111010605009": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060101045": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111060101042": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060201040": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060204026": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111020402013": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111060304024": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060102046": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111040401027": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060202098": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111040401007": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060102008": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060204044": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060202051": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030501017": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020202045": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501028": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020303011": {
+  "db": "NDB00962",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010609"
+ },
+ "T111060104009": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111020403007": {
+  "db": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ "T111060303007": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111020202016": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060202064": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060104005": {
+  "db": "NDB00598",
+  "nguon": "gan_cum",
+  "cum": "DCUM01412",
+  "dang_cu": "T111060104"
+ },
+ "T111040401017": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111020203003": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060201016": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111060101025": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060204002": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111060202072": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111060102022": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111020402043": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111030104016": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111010201028": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111020201005": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111020303021": {
+  "db": "NDB00962",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010609"
+ },
+ "T111020402085": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111030104003": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111040402024": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111040401029": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111010605018": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111030501031": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030104013": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060102034": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111030501057": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202036": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040402026": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060202083": {
+  "db": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ "T111060304049": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111010201025": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111030501002": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111020201003": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111060101013": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111030501026": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040402025": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060102019": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111020302012": {
+  "db": "NDB00965",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010608"
+ },
+ "T111020402092": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111030401046": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111020401034": {
+  "db": "NDB00963",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010610"
+ },
+ "T111060104040": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111040102031": {
+  "db": "NDB00577",
+  "nguon": "gan_cum",
+  "cum": "DCUM01325",
+  "dang_cu": "T111040102"
+ },
+ "T111030104011": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060202065": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060101051": {
+  "db": "NDB00593",
+  "nguon": "gan_cum",
+  "cum": "DCUM01411",
+  "dang_cu": "T111060101"
+ },
+ "T111020202063": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060202028": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060202066": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111030202019": {
+  "db": "NDB00996",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030202"
+ },
+ "T111060303010": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111020201006": {
+  "db": "NDB00958",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010604"
+ },
+ "T111060205011": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111030401012": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111060101036": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060204009": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111030501018": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030501036": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111040401030": {
+  "db": "NDB00581",
+  "nguon": "gan_cum",
+  "cum": "DCUM01362",
+  "dang_cu": "T111040401"
+ },
+ "T111060202101": {
+  "db": "NDB00610",
+  "nguon": "gan_cum",
+  "cum": "DCUM01440",
+  "dang_cu": "T111060202"
+ },
+ "T111010103001": {
+  "db": "NDB00568",
+  "nguon": "gan_cum",
+  "cum": "DCUM01530",
+  "dang_cu": "T111010102"
+ },
+ "T111060205002": {
+  "db": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ "T111060102051": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111060104045": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111010102033": {
+  "db": "NDB00567",
+  "nguon": "gan_cum",
+  "cum": "DCUM01529",
+  "dang_cu": "T111010102"
+ },
+ "T111060101034": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060102036": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01434",
+  "dang_cu": "T111060102"
+ },
+ "T111060204037": {
+  "db": "NDB00613",
+  "nguon": "gan_cum",
+  "cum": "DCUM01458",
+  "dang_cu": "T111060204"
+ },
+ "T111060101024": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060104032": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060202078": {
+  "db": "NDB00607",
+  "nguon": "gan_cum",
+  "cum": "DCUM01437",
+  "dang_cu": "T111060202"
+ },
+ "T111040402019": {
+  "db": "NDB00584",
+  "nguon": "gan_cum",
+  "cum": "DCUM01370",
+  "dang_cu": "T111040402"
+ },
+ "T111060205013": {
+  "db": "NDB00616",
+  "nguon": "gan_cum",
+  "cum": "DCUM01461",
+  "dang_cu": "T111060205"
+ },
+ "T111060201043": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060201028": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111030501015": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060104013": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060202034": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111010605003": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060304039": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060104026": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111040401016": {
+  "db": "NDB00582",
+  "nguon": "gan_cum",
+  "cum": "DCUM01365",
+  "dang_cu": "T111040401"
+ },
+ "T111060303003": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111010201031": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111020203005": {
+  "db": "NDB00960",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010606"
+ },
+ "T111060304060": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111060102005": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060303002": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111060303011": {
+  "db": "NDB01025",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111060306"
+ },
+ "T111060201029": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111010605028": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060104047": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060104034": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111010605035": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060304050": {
+  "db": "NDB00617",
+  "nguon": "gan_cum",
+  "cum": "DCUM01620",
+  "dang_cu": "T111060304"
+ },
+ "T111030501005": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030104005": {
+  "db": "NDB00994",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030104"
+ },
+ "T111020402049": {
+  "db": "NDB00964",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010611"
+ },
+ "T111020403035": {
+  "db": "NDB00966",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010612"
+ },
+ "T111030501001": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060304086": {
+  "db": "NDB00619",
+  "nguon": "gan_cum",
+  "cum": "DCUM01623",
+  "dang_cu": "T111060304"
+ },
+ "T111060202062": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111060202081": {
+  "db": "NDB00608",
+  "nguon": "gan_cum",
+  "cum": "DCUM01438",
+  "dang_cu": "T111060202"
+ },
+ "T111060102026": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111030501077": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111030501061": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060202033": {
+  "db": "NDB00606",
+  "nguon": "gan_cum",
+  "cum": "DCUM01436",
+  "dang_cu": "T111060202"
+ },
+ "T111040402007": {
+  "db": "NDB00583",
+  "nguon": "gan_cum",
+  "cum": "DCUM01366",
+  "dang_cu": "T111040402"
+ },
+ "T111060304048": {
+  "db": "NDB00618",
+  "nguon": "gan_cum",
+  "cum": "DCUM01621",
+  "dang_cu": "T111060304"
+ },
+ "T111010605029": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111010605006": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060204020": {
+  "db": "NDB00612",
+  "nguon": "gan_cum",
+  "cum": "DCUM01457",
+  "dang_cu": "T111060204"
+ },
+ "T111010101013": {
+  "db": "NDB00564",
+  "nguon": "gan_cum",
+  "cum": "DCUM01528",
+  "dang_cu": "T111010101"
+ },
+ "T111060104006": {
+  "db": "NDB00599",
+  "nguon": "gan_cum",
+  "cum": "DCUM01413",
+  "dang_cu": "T111060104"
+ },
+ "T111060101021": {
+  "db": "NDB00592",
+  "nguon": "gan_cum",
+  "cum": "DCUM01410",
+  "dang_cu": "T111060101"
+ },
+ "T111060201026": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111010605005": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111010201032": {
+  "db": "NDB00565",
+  "nguon": "gan_cum",
+  "cum": "DCUM01531",
+  "dang_cu": "T111010101"
+ },
+ "T111030501062": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111010605030": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060104037": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111010301001": {
+  "db": "NDB00569",
+  "nguon": "gan_cum",
+  "cum": "DCUM01533",
+  "dang_cu": "T111010106"
+ },
+ "T111060201023": {
+  "db": "NDB00604",
+  "nguon": "gan_cum",
+  "cum": "DCUM01422",
+  "dang_cu": "T111060201"
+ },
+ "T111060102045": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01435",
+  "dang_cu": "T111060102"
+ },
+ "T111020202039": {
+  "db": "NDB00959",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111010605"
+ },
+ "T111060205004": {
+  "db": "NDB00614",
+  "nguon": "gan_cum",
+  "cum": "DCUM01459",
+  "dang_cu": "T111060205"
+ },
+ "T111060201001": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ },
+ "T111030501074": {
+  "db": "NDB01022",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T111030501"
+ },
+ "T111060205008": {
+  "db": "NDB00615",
+  "nguon": "gan_cum",
+  "cum": "DCUM01460",
+  "dang_cu": "T111060205"
+ },
+ "T111060102028": {
+  "db": "NDB01021",
+  "nguon": "doi_ung",
+  "cum": "DCUM01420",
+  "dang_cu": "T111060102"
+ },
+ "T111060104033": {
+  "db": "NDB00600",
+  "nguon": "gan_cum",
+  "cum": "DCUM01415",
+  "dang_cu": "T111060104"
+ },
+ "T111060201010": {
+  "db": "NDB00603",
+  "nguon": "gan_cum",
+  "cum": "DCUM01419",
+  "dang_cu": "T111060201"
+ }
+}

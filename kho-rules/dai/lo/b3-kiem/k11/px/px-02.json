@@ -1,0 +1,631 @@
+[
+ {
+  "ma_cau": "T111030501053",
+  "loai": "trac_nghiem",
+  "de": "Cho đồ thị hàm số $y=\\cos x$có đồ thị là đường cong trong hình bên. Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(0;\\pi \\right)$.",
+   "$\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$.",
+   "$\\left(\\pi;2\\pi \\right)$.",
+   "$\\left(-\\dfrac{3\\pi }{2};-\\pi \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát đồ thị hàm số $y=\\cos x$, ta thấy:\n• Trên khoảng $\\left(0;\\pi \\right)$, đồ thị hàm số đi xuống từ trái sang phải nên hàm số nghịch biến trên khoảng $\\left(0;\\pi \\right)$.\n• Trên khoảng $\\left(\\pi;2\\pi \\right)$, đồ thị hàm số đi lên từ trái sang phải từ điểm $\\left(\\pi;-1\\right)$ đến điểm $\\left(2\\pi;1\\right)$ nên hàm số đồng biến trên khoảng $\\left(\\pi;2\\pi \\right)$.\n• Trên khoảng $\\left(-\\dfrac{3\\pi }{2};-\\pi \\right)$, đồ thị hàm số đi xuống từ trái sang phải nên hàm số nghịch biến.\n• Trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$, hàm số đồng biến trên khoảng $\\left(-\\dfrac{\\pi }{2};0\\right)$ và nghịch biến trên khoảng $\\left(0;\\dfrac{\\pi }{2}\\right)$.\nVậy hàm số đã c …",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  }
+ },
+ {
+  "ma_cau": "T111060205015",
+  "loai": "tra_loi_ngan",
+  "de": "Một vận động viên đang rèn luyện thể lực để tham gia giải Half-Marathon (bán marathon) với mục tiêu phải hoàn thành cự ly chạy dài nhất trong một buổi tập đạt mức tối thiểu $21 \\text{ km}$. Tuần đầu tiên, cự ly chạy dài nhất của vận động viên là $5 \\text{ km}$. Theo giáo án tập luyện, mỗi tuần tiếp theo cự ly chạy dài nhất sẽ được tăng thêm $2 \\text{ km}$ so với tuần trước đó. Hỏi ít nhất vào tuần thứ bao nhiêu vận động viên sẽ đạt được mục tiêu cự ly của giáo án?",
+  "dap_an": "9",
+  "loi_giai": "Gọi $n$ là số tuần ít nhất để đạt mục tiêu cự ly ($n \\in \\mathbb{N}^*$).\nCự ly chạy dài nhất ở tuần thứ $n$ tạo thành một cấp số cộng với $u_1 = 5$ và công sai $d = 2$.\nCự ly ở tuần thứ $n$ là: $u_n = 5 + (n-1)2$.\nTa có bất phương trình: $5 + (n-1)2 \\ge 21$\n$\\Leftrightarrow n \\ge 9$\nVậy ít nhất vào tuần thứ 9 vận động viên sẽ đạt mục tiêu.",
+  "A": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  },
+  "B": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  }
+ },
+ {
+  "ma_cau": "T111010201017",
+  "loai": "trac_nghiem",
+  "de": "Trên đường tròn lượng giác, điểm cuối của cung có số đo $\\dfrac{26\\pi}{3}$ nằm ở góc phần tư thứ mấy?",
+  "lua_chon": [
+   "IV.",
+   "III.",
+   "I.",
+   "II."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có: $\\dfrac{26\\pi}{3} = \\dfrac{2\\pi}{3} + 8\\pi$ nên điểm cuối của cung có số đo $\\dfrac{26\\pi}{3}$ trùng với điểm cuối của cung có số đo\n$\\dfrac{2\\pi}{3}$ thuộc góc phần tư số II.",
+  "A": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111010201029",
+  "loai": "tu_luan",
+  "de": "Biểu diễn trên đường tròn lượng giác điểm ngọn của cung lượng giác có số đo là $\\dfrac{25\\pi}{4}$",
+  "loi_giai": "Ta có: $sđAM = \\dfrac{25\\pi}{4} = \\dfrac{\\pi}{4} + \\dfrac{24\\pi}{4} = \\dfrac{\\pi}{4} + 6\\pi = \\dfrac{\\pi}{4} + 2.3\\pi$\nVậy điểm cuối $M$ của cung $AM$ sẽ trùng với điểm ngọn của cung $\\dfrac{\\pi}{4}$.\nSuy ra $M$ là điểm chính giữa của cung nhỏ $AB$.",
+  "A": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111020202033",
+  "loai": "tu_luan",
+  "de": "Tính $\\sin 2a$; $\\cos 2a$; $\\tan 2a$, biết: $\\sin a + \\cos a = \\dfrac{1}{2}$ và $\\dfrac{\\pi}{2} < a < \\dfrac{3\\pi}{4}$",
+  "dap_an": "$-\\dfrac{3}{4}$; $-\\dfrac{\\sqrt{7}}{4}$; $\\dfrac{3\\sqrt{7}}{7}$",
+  "loi_giai": "Ta có: $(\\sin a + \\cos a)^2 = \\left(\\dfrac{1}{2}\\right)^2 \\Leftrightarrow \\sin^2 a + \\cos^2 a + 2\\sin a\\cos a = \\dfrac{1}{4}$\n$\\Leftrightarrow 1 + \\sin 2a = \\dfrac{1}{4} \\Leftrightarrow \\sin 2a = -\\dfrac{3}{4}$\nVì $\\dfrac{\\pi}{2} < a < \\dfrac{3\\pi}{4}$ nên $\\pi < 2a < \\dfrac{3\\pi}{2}$. Do đó $\\cos 2a < 0$.\nMặt khác: $\\sin^2 (2a) + \\cos^2 (2a) = 1$ suy ra $\\cos 2a = -\\sqrt{1-\\sin^2 (2a)} = -\\sqrt{1-\\left(-\\dfrac{3}{4}\\right)^2} = -\\dfrac{\\sqrt{7}}{4}$.\nDo đó: $\\tan 2a = \\dfrac{\\sin 2a}{\\cos 2a} = \\dfrac{-\\dfrac{3}{4}}{-\\dfrac{\\sqrt{7}}{4}} = \\dfrac{3}{\\sqrt{7}} = \\dfrac{3\\sqrt{7}}{7}$.",
+  "A": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  },
+  "B": {
+   "id": "NDB00955",
+   "ten": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos"
+  }
+ },
+ {
+  "ma_cau": "T111020401067",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:sin 2x + sin x =",
+  "dap_an": "$2sin \\dfrac{3x}{2} cos \\dfrac{x}{2}$",
+  "loi_giai": "$sin 2x + sin x = 2sin \\dfrac{2x+x}{2} cos \\dfrac{2x-x}{2}$$= 2sin \\dfrac{3x}{2} cos \\dfrac{x}{2}$",
+  "A": {
+   "id": "NDB00966",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức tổng thành tích"
+  },
+  "B": {
+   "id": "NDB00963",
+   "ten": "Nhận dạng công thức tổng thành tích"
+  }
+ },
+ {
+  "ma_cau": "T111010102012",
+  "loai": "trac_nghiem",
+  "de": "Một đường tròn có bán kính $R=10$ cm. Độ dài cung $40^{\\circ}$ trên đường tròn gần bằng",
+  "lua_chon": [
+   "11 cm.",
+   "13 cm.",
+   "7 cm.",
+   "9 cm."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Đổi đơn vị $40^{\\circ} \\rightarrow \\dfrac{40\\pi}{180} = \\dfrac{2\\pi}{9} \\Rightarrow$ độ dài cung $l = \\dfrac{2\\pi}{9} . 10 = \\dfrac{20\\pi}{9} = 6,9813 \\approx 7$ cm.\nChọn C",
+  "A": {
+   "id": "NDB00567",
+   "ten": "Bài toán hỏi số đo góc mà vật thể hình tròn quay được"
+  },
+  "B": {
+   "id": "NDB00943",
+   "ten": "Tính độ dài cung tròn"
+  }
+ },
+ {
+  "ma_cau": "T111060205016",
+  "loai": "tra_loi_ngan",
+  "de": "Một trạm cung cấp nước sạch sử dụng máy bơm để bơm nước vào một bể chứa lớn. Giờ đầu tiên, máy bơm đưa được $350 \\text{ lít}$ nước vào bể. Trong mỗi giờ tiếp theo, máy hoạt động ổn định và lượng nước ở trong bể tăng thêm $150 \\text{ lít}$. Bể sẽ kích hoạt chuông báo đầy khi lượng nước bên trong đạt từ $2000 \\text{ lít}$ trở lên. Hỏi ít nhất vào giờ thứ bao nhiêu thì chuông báo đầy sẽ kêu?",
+  "dap_an": "12",
+  "loi_giai": "Gọi $n$ là số giờ ít nhất để chuông báo đầy kêu ($n \\in \\mathbb{N}^*$).\nLượng nước trong bể ở giờ thứ $n$ tạo thành một cấp số cộng với $u_1 = 350$ và công sai $d = 150$.\nLượng nước trong bể ở giờ thứ $n$ là: $u_n = 350 + (n-1)150$.\nTa có bất phương trình: $350 + (n-1)150 \\ge 2000$\n$\\Leftrightarrow n \\ge 12$\nVậy ít nhất vào giờ thứ 12 chuông sẽ kêu.",
+  "A": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  },
+  "B": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  }
+ },
+ {
+  "ma_cau": "T111020202014",
+  "loai": "trac_nghiem",
+  "de": "Nếu $\\sin x + \\cos x = \\dfrac{1}{2}$ thì $\\sin 2x$ bằng",
+  "lua_chon": [
+   "$\\dfrac{3}{4}$",
+   "$\\dfrac{3}{8}$",
+   "$\\dfrac{\\sqrt{2}}{2}$",
+   "$-\\dfrac{3}{4}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\sin x + \\cos x = \\dfrac{1}{2} \\Leftrightarrow \\sin^2 x + 2\\sin x \\cos x + \\cos^2 x = \\dfrac{1}{4}$\n$\\Leftrightarrow \\sin 2x = -\\dfrac{3}{4}$",
+  "A": {
+   "id": "NDB00955",
+   "ten": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos"
+  },
+  "B": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111010201033",
+  "loai": "dung_sai",
+  "de": "Biểu diễn góc lượng giác trên đường tròn lượng giác. Khi đó:\na) $125^{\\circ}$ là điểm $M$ thuộc góc phần tư thứ II\nb) $405^{\\circ}$ là điểm $N$ thuộc góc phần tư thứ III\nc) $\\dfrac{19\\pi}{3}$ là điểm $P$ thuộc góc phần tư thứ II\nd) $-\\dfrac{13\\pi}{6}$ là điểm $Q$ thuộc góc phần tư thứ IV",
+  "dap_an": "Đ S S Đ",
+  "loi_giai": "a) Đúng: Điểm biểu diễn của góc lượng giác có số đo $125^{\\circ}$ là điểm $M$ thuộc góc phần tư thứ II của đường tròn lượng giác thoả mãn $AOM = 125^{\\circ}$\nb) Sai: Ta có: $405^{\\circ} = 45^{\\circ} + 360^{\\circ}$. Vì vậy điểm biểu diễn của góc lượng giác $405^{\\circ}$ là điểm $N$ thuộc góc phần tư thứ $I$ của đường tròn lượng giác và thoả mãn $AON = 45^{\\circ}$\nc) Sai: Ta có: $\\dfrac{19\\pi}{3} = \\dfrac{18\\pi + \\pi}{3} = \\dfrac{\\pi}{3} + 2\\pi$. Vì vậy điểm biểu diễn của góc lượng giác $\\dfrac{19\\pi}{3}$ là điểm $P$ thuộc góc phần tư thứ $I$ của đường tròn lượng giác và thoả mãn $AOP = \\dfrac{\\pi}{3}$\nd) Đúng: Ta có: $-\\dfrac{13\\pi}{6} = \\dfrac{-12\\pi - \\pi}{6} = -\\dfrac{\\pi}{6} - 2\\pi$. Vì v …",
+  "A": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111060304015",
+  "loai": "tu_luan",
+  "de": "Một cử nhân kinh tế mới ra trường làm việc cho một công ty với mức lương khởi điểm là $10$ triệu đồng/ 1 tháng. Cứ sau $10$ tháng làm việc, mức lương của kĩ sư đó lại được tăng thêm $10\\%$. Hỏi sau $6$ năm làm việc tổng số tiền lương kĩ sư đó nhận được là bao nhiêu?",
+  "loi_giai": "Thời gian $6$ năm làm việc tương ứng với $6\\cdot 12=72$ tháng.\nTa chia $72$ tháng thành $7$ giai đoạn đầu (mỗi giai đoạn gồm $10$ tháng) và giai đoạn cuối gồm $2$ tháng.\nMức lương khởi điểm mỗi tháng ở giai đoạn $1$ là $u_{1}=10$ (triệu đồng).\nCứ sau $10$ tháng làm việc, mức lương được tăng thêm $10\\%$, do đó mức lương mỗi tháng ở giai đoạn thứ $k$ ($1\\le k\\le 7$) là\n$u_{k}=10\\cdot \\left(1+0,1\\right)^{k-1}=10\\cdot {1,1}^{k-1} \\left(\\text{trieu dong}\\right).$\nTổng số tiền lương nhận được trong mỗi giai đoạn thứ $k$ (gồm $10$ tháng) là\n$T_{k}=10\\cdot u_{k}=100\\cdot {1,1}^{k-1} \\left(\\text{trieu dong}\\right).$\nDãy $\\left(T_{k}\\right)$ với $k=1,2,\\dots,7$ là một cấp số nhân có số hạng đầu $T_{1} …",
+  "A": {
+   "id": "NDB00617",
+   "ten": "Bài toán lãi kép (hoặc tương tự)"
+  },
+  "B": {
+   "id": "NDB00618",
+   "ten": "Cho sẵn u1, d - Tính tổng n số hạng"
+  }
+ },
+ {
+  "ma_cau": "T111040102043",
+  "loai": "trac_nghiem",
+  "de": "Số nghiệm thực của phương trình $2\\sin x+1=0$ trên đoạn $\\left[-\\dfrac{3\\pi}{2};10\\pi\\right]$ là:",
+  "lua_chon": [
+   "12.",
+   "11.",
+   "21.",
+   "20."
+  ],
+  "dap_an": "12.",
+  "loi_giai": "$2\\sin x+1=0 \\Leftrightarrow \\sin x=-\\dfrac{1}{2} \\Leftrightarrow \\left[\\begin{array}{l}x=-\\dfrac{\\pi}{6}+k2\\pi\\\\x=\\dfrac{7\\pi}{6}+k2\\pi\\end{array}\\right.$ ($k\\in\\mathbb{Z}$).\nXét $x=-\\dfrac{\\pi}{6}+k2\\pi \\in \\left[-\\dfrac{3\\pi}{2};10\\pi\\right]$: $-\\dfrac{3\\pi}{2}\\le -\\dfrac{\\pi}{6}+k2\\pi\\le 10\\pi \\Leftrightarrow -\\dfrac{2}{3}\\le k\\le \\dfrac{61}{12}$, $k\\in\\mathbb{Z}$ nên $k\\in\\{0,1,2,3,4,5\\}$: 6 nghiệm.\nXét $x=\\dfrac{7\\pi}{6}+k2\\pi \\in \\left[-\\dfrac{3\\pi}{2};10\\pi\\right]$: $-\\dfrac{4}{3}\\le k\\le \\dfrac{53}{12}$, $k\\in\\mathbb{Z}$ nên $k\\in\\{-1,0,1,2,3,4\\}$: 6 nghiệm.\nHai họ nghiệm không trùng nhau nên tổng cộng có $6+6=12$ nghiệm.\nChọn A.",
+  "A": {
+   "id": "NDB01009",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 2 họ nghiệm"
+  },
+  "B": {
+   "id": "NDB00577",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 1 họ nghiệm"
+  }
+ },
+ {
+  "ma_cau": "T111030501068",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình dưới đây là đồ thị của một hàm số trong bốn hàm số được liệt kê ở bốn phương án A, B, C, D?\nHỏi hàm số đó là hàm số nào?",
+  "lua_chon": [
+   "$y=-\\cos \\dfrac{x}{4}$.",
+   "$y=\\sin \\dfrac{x}{2}$.",
+   "$y=\\sin \\left(-\\dfrac{x}{2}\\right)$.",
+   "$y=\\cos \\dfrac{x}{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát đồ thị ta thấy:\nĐồ thị đi qua gốc toạ độ $O\\left(0;0\\right)$. Do $-\\cos 0=-1\\ne 0$ và $\\cos 0=1\\ne 0$ nên loại các phương án $y=-\\cos \\dfrac{x}{4}$ và $y=\\cos \\dfrac{x}{2}$.\nVới $x=\\pi$, giá trị hàm số là $y=1$.\nThay $x=\\pi$ vào hai hàm số còn lại:\n• Với $y=\\sin \\dfrac{x}{2}$, ta có $y\\left(\\pi \\right)=\\sin \\dfrac{\\pi }{2}=1$ (thoả mãn).\n• Với $y=\\sin \\left(-\\dfrac{x}{2}\\right)$, ta có $y\\left(\\pi \\right)=\\sin \\left(-\\dfrac{\\pi }{2}\\right)=-1\\ne 1$ (loại).\nVậy đồ thị đã cho là của hàm số $y=\\sin \\dfrac{x}{2}$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  },
+  "B": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  }
+ },
+ {
+  "ma_cau": "T111030501033",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = 2\\sin x$",
+   "$y = \\tan x$",
+   "$y = 2\\cos x$",
+   "$y = 2\\tan x$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010301023",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\dfrac{\\pi}{2} < a < \\pi$. Kết quả đúng là",
+  "lua_chon": [
+   "$\\sin a > 0$, $\\cos a > 0$.",
+   "$\\sin a < 0$, $\\cos a < 0$.",
+   "$\\sin a > 0$, $\\cos a < 0$.",
+   "$\\sin a < 0$, $\\cos a > 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $\\dfrac{\\pi}{2} < a < \\pi$ suy ra $\\sin a > 0$, $\\cos a < 0$.",
+  "A": {
+   "id": "NDB00946",
+   "ten": "Xác định dấu của giá trị lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111030501060",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đồ thị như hình bên dưới. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên $\\left(0;\\pi \\right)$.",
+   "Hàm số đồng biến trên $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$.",
+   "Hàm số đồng biến trên $\\left(-\\pi;0\\right)$.",
+   "Hàm số đồng biến trên $\\left(\\dfrac{\\pi }{2};\\pi \\right)$."
+  ],
+  "loi_giai": "Quan sát đồ thị hàm số $y=f\\left(x\\right)$, ta thấy:\n- Trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$, khi $x$ tăng từ $-\\dfrac{\\pi }{2}$ đến $\\dfrac{\\pi }{2}$, đường cong đồ thị đi lên từ trái sang phải từ điểm $\\left(-\\dfrac{\\pi }{2};-1\\right)$ đến điểm $\\left(\\dfrac{\\pi }{2};1\\right)$.\nDo đó, hàm số đồng biến trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$.\n- Trên khoảng $\\left(0;\\pi \\right)$, hàm số đồng biến trên $\\left(0;\\dfrac{\\pi }{2}\\right)$ và nghịch biến trên $\\left(\\dfrac{\\pi }{2};\\pi \\right)$.\n- Trên khoảng $\\left(-\\pi;0\\right)$, hàm số nghịch biến trên $\\left(-\\pi;-\\dfrac{\\pi }{2}\\right)$ và đồng biến trên $\\left(-\\dfrac{\\pi }{2};0\\right)$.\n- Trên khoản …",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010102001",
+  "loai": "trac_nghiem",
+  "de": "Trên đường tròn bán kính $r=5$, độ dài của cung có số đo $\\dfrac{\\pi}{8}$ là",
+  "lua_chon": [
+   "$l=\\dfrac{\\pi}{8}$",
+   "$l=\\dfrac{5\\pi}{4}$",
+   "$l=\\dfrac{5\\pi}{8}$",
+   "Kết quả khác."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nĐộ dài cung $AB: l=r.\\alpha = 5.\\dfrac{\\pi}{8} = \\dfrac{5\\pi}{8}$.",
+  "A": {
+   "id": "NDB00943",
+   "ten": "Tính độ dài cung tròn"
+  },
+  "B": {
+   "id": "NDB00567",
+   "ten": "Bài toán hỏi số đo góc mà vật thể hình tròn quay được"
+  }
+ },
+ {
+  "ma_cau": "T111010606001",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức $M=\\dfrac{\\cos 2x}{\\sin x}+\\dfrac{\\sin 2x}{\\cos x}$ ta được kết quả là",
+  "lua_chon": [
+   "$M=\\dfrac{1}{\\cos x}$.",
+   "$M=1$.",
+   "$M=\\dfrac{1}{\\sin x}$.",
+   "$M=\\dfrac{\\cos 3x}{\\sin x\\cdot \\cos x}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Điều kiện: $\\sin x\\ne 0$ và $\\cos x\\ne 0$.\nQuy đồng mẫu số biểu thức $M$, ta được\n$M=\\dfrac{\\cos 2x\\cos x+\\sin 2x\\sin x}{\\sin x\\cos x}.$\nÁp dụng công thức cộng $\\cos \\left(a-b\\right)=\\cos a\\cos b+\\sin a\\sin b$, ta có\n$M=\\dfrac{\\cos \\left(2x-x\\right)}{\\sin x\\cos x}=\\dfrac{\\cos x}{\\sin x\\cos x}=\\dfrac{1}{\\sin x}.$\nVậy $M=\\dfrac{1}{\\sin x}$.",
+  "A": {
+   "id": "NDB00960",
+   "ten": "Rút gọn biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  },
+  "B": {
+   "id": "NDB00984",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức cộng"
+  }
+ },
+ {
+  "ma_cau": "T111030204037",
+  "loai": "tra_loi_ngan",
+  "de": "Tập giá trị của hàm số $y=5+4\\sin 2x\\cos 2x$ là $T=\\left[a;b\\right]$, tính $b-a$.",
+  "dap_an": "4",
+  "loi_giai": "Ta có:\n$y=5+4\\sin 2x\\cos 2x=5+2\\left(2\\sin 2x\\cos 2x\\right)=5+2\\sin 4x.$\nVì $-1\\le \\sin 4x\\le 1$ với mọi $x\\in \\mathbb{R}$, nên:\n$5+2\\left(-1\\right)\\le y\\le 5+2\\left(1\\right)\\Leftrightarrow 3\\le y\\le 7.$\nDo đó tập giá trị của hàm số là $T=\\left[3;7\\right]$, suy ra $a=3$ và $b=7$.\nVậy $b-a=7-3=4$.",
+  "A": {
+   "id": "NDB00996",
+   "ten": "Tìm tập giá trị hoặc min max của hàm số lượng giác sử dụng công thức lượng giác để đưa về hàm cơ bản"
+  },
+  "B": {
+   "id": "NDB00997",
+   "ten": "Tìm min max của hàm có dạng Asinx+Bcosx"
+  }
+ },
+ {
+  "ma_cau": "T111020203016",
+  "loai": "trac_nghiem",
+  "de": "Gọi $M = \\cos(a + b).\\cos(a - b) - \\sin(a + b).\\sin(a - b)$ thì:",
+  "lua_chon": [
+   "$M = 1 - 2\\cos^2 a$.",
+   "$M = 1 - 2\\sin^2 a$.",
+   "$M = \\cos 4a$.",
+   "$M = \\sin 4a$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $M = \\cos(a + b).\\cos(a - b) - \\sin(a + b).\\sin(a - b) = \\cos(a + b + a - b) = \\cos 2a = 1 - 2\\sin^2 a$.",
+  "A": {
+   "id": "NDB00984",
+   "ten": "Rút gọn biểu thức lượng giác sử dụng công thức cộng"
+  },
+  "B": {
+   "id": "NDB00960",
+   "ten": "Rút gọn biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111030501051",
+  "loai": "trac_nghiem",
+  "de": "Cho đồ thị hàm số lượng giác ở hình sau:\nKhoảng nghịch biến của hàm số là",
+  "lua_chon": [
+   "$\\left(-2\\pi;-\\dfrac{\\pi }{2}\\right)$.",
+   "$\\left(-\\pi;0\\right)$.",
+   "$\\left(0;\\pi \\right)$.",
+   "$\\left(-\\pi;\\pi \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát đồ thị hàm số $y=\\cos x$, ta thấy:\n- Trên khoảng $\\left(0;\\pi \\right)$, đồ thị hàm số đi xuống từ trái sang phải (từ điểm $\\left(0;1\\right)$ xuống điểm $\\left(\\pi;-1\\right)$), do đó hàm số nghịch biến trên khoảng $\\left(0;\\pi \\right)$.\n- Trên khoảng $\\left(-\\pi;0\\right)$, đồ thị hàm số đi lên từ trái sang phải, do đó hàm số đồng biến trên khoảng $\\left(-\\pi;0\\right)$.\nVậy khoảng nghịch biến của hàm số là $\\left(0;\\pi \\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01003",
+   "ten": "Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111010301012",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\dfrac{7\\pi}{4} < \\alpha < 2\\pi$ . Xét câu nào sau đây đúng?",
+  "lua_chon": [
+   "$\\tan \\alpha > 0$.",
+   "$\\cot \\alpha > 0$.",
+   "$\\cos \\alpha > 0$.",
+   "$\\sin \\alpha > 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nDo $\\dfrac{7\\pi}{4} < \\alpha < 2\\pi$ nên $\\dfrac{3\\pi}{2} + \\dfrac{\\pi}{4} < \\alpha < 2\\pi$ suy ra $\\alpha$ thuộc góc phần tư thứ IV nên đáp án C đúng.",
+  "A": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00946",
+   "ten": "Xác định dấu của giá trị lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111020202080",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin a + \\cos a = \\dfrac{\\sqrt{10}}{5}$ với $\\dfrac{-\\pi}{4}<a<0$. Giá trị của $\\sin 2a$ bằng",
+  "lua_chon": [
+   "$\\dfrac{3}{5}$",
+   "$-\\dfrac{3}{5}$",
+   "$\\dfrac{4}{5}$",
+   "$-\\dfrac{4}{5}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Bình phương hai vế của đẳng thức $\\sin a + \\cos a = \\frac{\\sqrt{10}}{5}$, ta được:$(\\sin a + \\cos a)^2 = \\left(\\frac{\\sqrt{10}}{5}\\right)^2$$\\Leftrightarrow \\sin^2 a + \\cos^2 a + 2\\sin a \\cos a = \\frac{10}{25}$\nSử dụng các công thức lượng giác cơ bản $\\sin^2 a + \\cos^2 a = 1$ và $\\sin 2a = 2\\sin a \\cos a$:$1 + \\sin 2a = \\frac{2}{5}$$\\Leftrightarrow \\sin 2a = \\frac{2}{5} - 1 = -\\frac{3}{5}$",
+  "A": {
+   "id": "NDB00955",
+   "ten": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos"
+  },
+  "B": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111030501011",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = -\\sin x$",
+   "$y = \\sin 2x + 1$",
+   "$y = -2\\sin x$",
+   "$y = 2\\sin x"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB01002",
+   "ten": "Nhận diện đồ thị của các hàm số lượng giác mở rộng"
+  },
+  "B": {
+   "id": "NDB01022",
+   "ten": "Nhận diện 4 đồ thị hàm số lượng giác cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T111060205014",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà hàng, nhân viên xếp chồng các ghế nhựa lên nhau để cất giữ. Chiếc ghế đầu tiên đặt dưới sàn có chiều cao $44 \\text{ cm}$. Cứ mỗi chiếc ghế xếp chồng lên trên sẽ làm chiều cao của toàn bộ chồng ghế tăng thêm $12 \\text{ cm}$. Hỏi chồng ghế đó có ít nhất bao nhiêu chiếc nếu chiều cao của cả chồng ghế lớn hơn hoặc bằng $200 \\text{ cm}$?",
+  "dap_an": "14",
+  "loi_giai": "Gọi $n$ là số chiếc ghế ít nhất cần xếp ($n \\in \\mathbb{N}^*$).\nChiều cao của chồng ghế gồm $n$ chiếc tạo thành cấp số cộng với $u_1 = 44$ và công sai $d = 12$.\nChiều cao của chồng $n$ ghế là: $u_n = 44 + (n-1)12$.\nTa có bất phương trình: $44 + (n-1)12 \\ge 200$\n$\\Leftrightarrow n \\ge 14$\nVậy chồng ghế cần có ít nhất 14 chiếc.",
+  "A": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  },
+  "B": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  }
+ },
+ {
+  "ma_cau": "T111040102031",
+  "loai": "trac_nghiem",
+  "de": "Số nghiệm của phương trình $2\\sin x+1=0$ trong đoạn $[0; 2024\\pi]$ là",
+  "lua_chon": [
+   "2024.",
+   "1012.",
+   "2048.",
+   "4048."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Lời giải:**\nXét phương trình: $2\\sin x + 1 = 0 \\iff \\sin x = -\\frac{1}{2} \\iff \\sin x = \\sin\\left(-\\frac{\\pi}{6}\\right)$\n$$\\iff \\left[\\begin{array}{l} x = -\\frac{\\pi}{6} + k2\\pi \\\\ x = \\frac{7\\pi}{6} + k2\\pi \\end{array}\\right. \\quad (k \\in \\mathbb{Z})$$\nVì $x \\in [0; 2024\\pi]$ nên ta xét hai họ nghiệm:\n* **Trường hợp 1:** $x = -\\frac{\\pi}{6} + k2\\pi$\n$$0 \\le -\\frac{\\pi}{6} + k2\\pi \\le 2024\\pi \\iff \\frac{1}{6} \\le 2k \\le 2024 + \\frac{1}{6} \\iff \\frac{1}{12} \\le k \\le 1012 + \\frac{1}{12}$$\nVì $k \\in \\mathbb{Z}$ nên $k \\in \\{1; 2; \\dots; 1012\\}$. Do đó có $1012$ nghiệm.\n* **Trường hợp 2:** $x = \\frac{7\\pi}{6} + k2\\pi$\n$$0 \\le \\frac{7\\pi}{6} + k2\\pi \\le 2024\\pi \\iff -\\frac{7}{6} \\le 2k \\le 202 …",
+  "A": {
+   "id": "NDB00577",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 1 họ nghiệm"
+  },
+  "B": {
+   "id": "NDB01009",
+   "ten": "Giải phương trình lượng giác cơ bản trên khoảng/đoạn với phương trình có 2 họ nghiệm"
+  }
+ },
+ {
+  "ma_cau": "T111060205011",
+  "loai": "tra_loi_ngan",
+  "de": "Một người sáng tạo nội dung trên mạng xã hội đặt mục tiêu đạt được nút bạc với 100 000 người theo dõi. Trong tháng đầu tiên lập kênh, người đó thu hút được 15 000 lượt theo dõi. Nhờ duy trì đăng video đều đặn, mỗi tháng tiếp theo kênh tăng thêm được 8 500 lượt theo dõi. Hỏi ít nhất đến tháng thứ bao nhiêu kể từ khi lập kênh, người đó sẽ đạt được mục tiêu đề ra?",
+  "dap_an": "11",
+  "loi_giai": "Gọi $n$ là số tháng ít nhất để kênh đạt mục tiêu ($n \\in \\mathbb{N}^*$).\nSố lượt theo dõi lũy kế ở tháng thứ $n$ là một cấp số cộng có $u_1 = 15000$ và công sai $d = 8500$.\nSố lượt theo dõi ở tháng thứ $n$ là: $u_n = 15000 + (n-1)8500$.\nTa có bất phương trình: $15000 + (n-1)8500 \\ge 100000$\n$\\Leftrightarrow n \\ge 11$\nVậy ít nhất đến tháng thứ 11 người đó sẽ đạt mục tiêu.",
+  "A": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  },
+  "B": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  }
+ },
+ {
+  "ma_cau": "T111010102033",
+  "loai": "trac_nghiem",
+  "de": "Một đường tròn có bán kính 15 cm. Tìm độ dài cung tròn có góc ở tâm bằng $30^{\\circ}$ là",
+  "lua_chon": [
+   "$\\dfrac{5\\pi}{2}$",
+   "$\\dfrac{\\pi}{3}$",
+   "$\\dfrac{2\\pi}{5}$",
+   "$\\dfrac{5\\pi}{3}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Cung tròn có góc ở tâm bằng $30^{\\circ}$ nên số đo của cung tròn bằng $n^{\\circ} = 30^{\\circ}$. Khi đó độ dài của cung tròn là: $l = \\dfrac{\\pi R.n^{\\circ}}{180^{\\circ}} = \\dfrac{\\pi.15.30^{\\circ}}{180^{\\circ}} = \\dfrac{5\\pi}{2}$.",
+  "A": {
+   "id": "NDB00567",
+   "ten": "Bài toán hỏi số đo góc mà vật thể hình tròn quay được"
+  },
+  "B": {
+   "id": "NDB00943",
+   "ten": "Tính độ dài cung tròn"
+  }
+ },
+ {
+  "ma_cau": "T111060205013",
+  "loai": "tra_loi_ngan",
+  "de": "Một thư viện trường học đang xây dựng kho sách tham khảo với mục tiêu có tối thiểu 300 đầu sách. Trong tuần đầu tiên phát động, thư viện thu thập được 45 đầu sách. Kể từ tuần thứ hai, mỗi tuần thư viện nhận thêm được cố định 15 đầu sách từ nguồn tài trợ. Hỏi ít nhất vào tuần thứ bao nhiêu thư viện sẽ đạt được mục tiêu đã đề ra?",
+  "dap_an": "18",
+  "loi_giai": "Gọi $n$ là số tuần ít nhất để thư viện đạt mục tiêu ($n \\in \\mathbb{N}^*$).\nSố lượng sách thư viện có được ở tuần thứ $n$ là một cấp số cộng với $u_1 = 45$ và công sai $d = 15$.\nSố lượng sách ở tuần thứ $n$ là: $u_n = 45 + (n-1)15$.\nTa có bất phương trình: $45 + (n-1)15 \\ge 300$\n$\\Leftrightarrow n \\ge 18$\nVậy ít nhất vào tuần thứ 18 thư viện sẽ đạt mục tiêu.",
+  "A": {
+   "id": "NDB00615",
+   "ten": "Cho u1, d, Sn hoặc un, tìm n"
+  },
+  "B": {
+   "id": "NDB00616",
+   "ten": "Cho u1, d; tìm n để Sn lơn hơn hoặc bằng 1 giá trị"
+  }
+ },
+ {
+  "ma_cau": "T111010605003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\sin a+\\cos a=\\dfrac{1}{3}$. Biết giá trị $\\sin 2a=\\dfrac{m}{n}$. Tính giá trị biểu thức $A=m^{2}+n^{2}$ (biết $\\dfrac{m}{n}$ là phân số tối giản và $m\\in \\mathbb{Z},n\\in \\mathbb{N}$).",
+  "dap_an": "145",
+  "loi_giai": "Bình phương hai vế của đẳng thức $\\sin a+\\cos a=\\dfrac{1}{3}$, ta được:\n$\\left(\\sin a+\\cos a\\right)^{2}=\\left(\\dfrac{1}{3}\\right)^{2}\\Leftrightarrow \\sin ^{2}a+2\\sin a\\cos a+\\cos ^{2}a=\\dfrac{1}{9}.$\nVì $\\sin ^{2}a+\\cos ^{2}a=1$ và $\\sin 2a=2\\sin a\\cos a$ nên\n$1+\\sin 2a=\\dfrac{1}{9}\\Leftrightarrow \\sin 2a=\\dfrac{1}{9}-1=-\\dfrac{8}{9}.$\nVì $\\dfrac{m}{n}$ là phân số tối giản với $m\\in \\mathbb{Z}$ và $n\\in \\mathbb{N}$ nên $m=-8$ và $n=9$.\nKhi đó, giá trị của biểu thức $A$ là\n$A=m^{2}+n^{2}=\\left(-8\\right)^{2}+9^{2}=64+81=145.$\nVậy $A=145$.",
+  "A": {
+   "id": "NDB00955",
+   "ten": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos"
+  },
+  "B": {
+   "id": "NDB00959",
+   "ten": "Cho một giá trị lượng giác, tính giá trị của biểu thức sử dụng công thức nhân đôi, hạ bậc"
+  }
+ },
+ {
+  "ma_cau": "T111010201031",
+  "loai": "tu_luan",
+  "de": "Biểu diễn trên đường tròn lượng giác các điểm ngọn của cung lượng giác có số đo là:\n$\\dfrac{\\pi}{6} + k\\dfrac{2\\pi}{4}; k \\in \\mathbb{Z}$ .",
+  "loi_giai": "Ta có $sđAM = \\dfrac{\\pi}{6} + k\\dfrac{2\\pi}{4}$ nên có 4 điểm ngọn trên đường tròn lượng giác.\nVới $k = 0 \\Rightarrow sđAM = \\dfrac{\\pi}{6}$ có điểm ngọn là $M$\nVới $k = 1 \\Rightarrow sđAN = \\dfrac{\\pi}{6} + \\dfrac{\\pi}{2}$ có điểm ngọn là $N$\nVới $k = 2 \\Rightarrow sđAP = \\dfrac{\\pi}{6} + \\pi$ có điểm ngọn là $P$\nVới $k = 3 \\Rightarrow sđAQ = \\dfrac{\\pi}{6} + \\dfrac{3\\pi}{2}$ có điểm ngọn là $Q$\nVới $k = 4 \\Rightarrow sđAR = \\dfrac{\\pi}{6} + 2\\pi$ có điểm ngọn là $R$.\nLúc này điểm ngọn $R$ trùng với $M$.\nVậy bốn điểm $M,N,P,Q$ tạo thành một hình vuông nội tiếp đường tròn lượng giác.",
+  "A": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111060204020",
+  "loai": "trac_nghiem",
+  "de": "Cấp số cộng $(u_n)$ có $\\begin{cases} u_4 = 10 \\\\ u_7 = 19 \\end{cases}$. Tìm $u_1$ và $d$.",
+  "lua_chon": [
+   "$u_1 = 1, d = 3$",
+   " $u_1 = 3, d = 1$",
+   " $u_1 = 1, d = -3$",
+   " $u_1 = -1, d = 3$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hệ phương trình:\n$\\begin{cases} u_1 + 3d = 10 \\\\ u_1 + 6d = 19 \\end{cases}$\nTrừ vế phương trình dưới cho trên: $3d = 9 \\Rightarrow d = 3$.\nThế vào: $u_1 + 9 = 10 \\Rightarrow u_1 = 1$.\nCặp nghiệm duy nhất là $u_1 = 1, d = 3$, các phương án nhiễu sai.\nChọn A.",
+  "A": {
+   "id": "NDB00612",
+   "ten": "Cho mối quan hệ của các số hạng"
+  },
+  "B": {
+   "id": "NDB00606",
+   "ten": "Cho 2 hoặc nhiều số hạng bất kỳ"
+  }
+ },
+ {
+  "ma_cau": "T111010201032",
+  "loai": "tu_luan",
+  "de": "Biểu diễn trên đường tròn lượng giác các điểm ngọn của cung lượng giác có số đo là\n$k\\dfrac{\\pi}{3}; k \\in \\mathbb{Z}$",
+  "loi_giai": "Ta có $sđAM = k\\dfrac{2\\pi}{6}$ nên có 6 điểm ngọn trên đường tròn lượng giác.\nVới $k = 0 \\Rightarrow sđAM = 0$ có điểm ngọn là $M$\nVới $k = 1 \\Rightarrow sđAN = \\dfrac{\\pi}{3}$ có điểm ngọn là $N$\nVới $k = 2 \\Rightarrow sđAP = \\dfrac{2\\pi}{3}$ có điểm ngọn là $P$\nVới $k = 3 \\Rightarrow sđAQ = \\pi$ có điểm ngọn là $Q$\nVới $k = 4 \\Rightarrow sđAR = \\dfrac{4\\pi}{3}$ có điểm ngọn là $R$\nVới $k = 5 \\Rightarrow sđAS = \\dfrac{5\\pi}{3}$ có điểm ngọn là $S$\nVới $k = 6 \\Rightarrow sđAT = 2\\pi$ có điểm ngọn là $T$\nLúc này điểm ngọn $T$ trùng với $M$. Vậy sáu điểm $M;N;P;Q;R;S$ tạo thành một lục giác đều nội tiếp đường tròn lượng giác.",
+  "A": {
+   "id": "NDB00565",
+   "ten": "Số đo góc lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ },
+ {
+  "ma_cau": "T111010301001",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\dfrac{\\pi}{2} < a < \\pi$. Kết quả đúng là",
+  "lua_chon": [
+   "$\\sin a > 0$, $\\cos a > 0$.",
+   "$\\sin a < 0$, $\\cos a < 0$.",
+   "$\\sin a > 0$, $\\cos a < 0$.",
+   "$\\sin a < 0$, $\\cos a > 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nVì $\\dfrac{\\pi}{2} < a < \\pi$ suy ra $\\sin a > 0$, $\\cos a < 0$.",
+  "A": {
+   "id": "NDB00946",
+   "ten": "Xác định dấu của giá trị lượng giác"
+  },
+  "B": {
+   "id": "NDB00569",
+   "ten": "Xác định điểm biểu diễn của góc lượng giác"
+  }
+ }
+]

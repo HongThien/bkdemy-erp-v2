@@ -1,0 +1,513 @@
+[
+ {
+  "ma_cau": "T108020202091",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $M = x^2 - 2x(y+1) + 3y^2 + 2025$.",
+  "dap_an": "\\dfrac{4047}{2}",
+  "loi_giai": "Ta có:\n$M = x^2 - 2x(y+1) + 3y^2 + 2025 = (x - y - 1)^2 + 2\\left(y - \\dfrac{1}{2}\\right)^2 + \\dfrac{4047}{2}$.\nVì $(x - y - 1)^2 \\geq 0$ và $2\\left(y - \\dfrac{1}{2}\\right)^2 \\geq 0$ nên $M \\geq \\dfrac{4047}{2}$.\nDấu \"=\" xảy ra khi $x - y - 1 = 0$ và $y - \\dfrac{1}{2} = 0$.\nSuy ra $x = \\dfrac{3}{2}, y = \\dfrac{1}{2}$.\nVậy GTNN của M là $\\dfrac{4047}{2}$, đạt được khi $x = \\dfrac{3}{2}, y = \\dfrac{1}{2}$."
+ },
+ {
+  "ma_cau": "T108020501022",
+  "loai": "tra_loi_ngan",
+  "de": "Vídụ: $x^3 + \\text{.........} = (x+3)(\\text{...............})$",
+  "dap_an": "27; $x^2 - 3x + 9$",
+  "loi_giai": "$x^3 + 27 = (x+3)(x^2 - 3x + 9)$"
+ },
+ {
+  "ma_cau": "T108020105007",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A = 3x^2 - 4x + 5$",
+  "dap_an": "\\dfrac{11}{3}",
+  "loi_giai": "Ta có $A = 3\\left( x^2 - \\dfrac{4}{3}x + \\dfrac{4}{9} \\right) + 5 - 3.\\dfrac{4}{9} = 3\\left( x - \\dfrac{2}{3} \\right)^2 + \\dfrac{11}{3}$\nVì $\\left( x - \\dfrac{2}{3} \\right)^2 \\geq 0 \\Rightarrow 3\\left( x - \\dfrac{2}{3} \\right)^2 \\geq 0 \\Rightarrow 3\\left( x - \\dfrac{2}{3} \\right)^2 + \\dfrac{11}{3} \\geq \\dfrac{11}{3}$\nSuy ra $A \\geq \\dfrac{11}{3}$\nDấu '$=$' xảy ra khi $\\left( x - \\dfrac{2}{3} \\right)^2 = 0 \\Rightarrow x = \\dfrac{2}{3}$\nVậy GTNN của A là $\\dfrac{11}{3}$ khi $x = \\dfrac{2}{3}$"
+ },
+ {
+  "ma_cau": "T108020103043",
+  "loai": "tra_loi_ngan",
+  "de": "$........... + 20x + 25 = (\\dots\\dots\\dots\\dots\\dots\\dots)^{2}$",
+  "dap_an": "$4x^2; 2x+5$",
+  "loi_giai": "$4x^2 + 20x + 25 = (2x+5)^2$"
+ },
+ {
+  "ma_cau": "T108010302053",
+  "loai": "tra_loi_ngan",
+  "de": "$-5u^2v(4uv^2 - 3vw + 2uw^2)$",
+  "dap_an": "-20u^3v^3 + 15u^2v^2w - 10u^3vw^2",
+  "loi_giai": "$-5u^2v(4uv^2 - 3vw + 2uw^2) = -20u^3v^3 + 15u^2v^2w - 10u^3vw^2$"
+ },
+ {
+  "ma_cau": "T108020202080",
+  "loai": "tra_loi_ngan",
+  "de": "Chứng minh biểu thức sau có giá trị luôn dương với mọi giá trị của $x$:\n$M = 2023+2x^2-6xy-6(x-2y) +2024y^2$.",
+  "dap_an": "M > 0 với mọi x, y",
+  "loi_giai": "Ta có:\n$M = 2023+2x^2-6xy-6x+12y+2024y^2$\n$= (x-3y)^2+(x-3)^2 + (y+6)^2 +2014y^2 +1978$.\nVì $(x-3y)^2 \\ge 0$, $(x-3)^2 \\ge 0$, $(y+6)^2 \\ge 0$, $2014y^2 \\ge 0$ và $1978 > 0$ nên $M > 0$ với mọi $x$, $y$.\nVậy biểu thức M luôn có giá trị dương."
+ },
+ {
+  "ma_cau": "T108020401050",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $(a-b+c-d)(a+b-c-d)=$ .............",
+  "dap_an": "$(a-d)^2-(b-c)^2$",
+  "loi_giai": "$(a-b+c-d)(a+b-c-d) = [(a-d)-(b-c)][(a-d)+(b-c)] = (a-d)^2-(b-c)^2$"
+ },
+ {
+  "ma_cau": "T108020203060",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A = 2x^2 + 5y^2 - 4xy-4x+2y-3$.",
+  "dap_an": "-\\dfrac{16}{3}",
+  "loi_giai": "Ta có:\n$A=2x^2+5y^2-4xy-4x+2y-3 = 2(x-y-1)^2 +3\\left(y-\\dfrac{1}{3}\\right)^2 - \\dfrac{16}{3}$.\nVì $2(x-y-1)^2 \\geq 0$ và $3\\left(y-\\dfrac{1}{3}\\right)^2 \\geq 0$ nên $A \\geq -\\dfrac{16}{3}$.\nDấu \"=\" xảy ra khi $x-y-1=0$ và $y-\\dfrac{1}{3}=0$.\nSuy ra $x = \\dfrac{4}{3}, y = \\dfrac{1}{3}$.\nVậy GTNN của A là $-\\dfrac{16}{3}$, đạt được khi $x = \\dfrac{4}{3}, y = \\dfrac{1}{3}$."
+ },
+ {
+  "ma_cau": "T108020401061",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $a^2 + b^2 + c^2 = ab + bc + ca$. Chứng minh rằng $a = b = c$",
+  "dap_an": "$a=b=c$",
+  "loi_giai": "Ta có $a^2 + b^2 + c^2 = ab + bc + ca$\n$\\Rightarrow 2a^2 + 2b^2 + 2c^2 = 2ab + 2bc + 2ca$\n$\\Rightarrow (a^2 + b^2 - 2ab) + (b^2 + c^2 - 2bc) + (c^2 + a^2 - 2ca) = 0$\n$\\Rightarrow (a-b)^2 + (b-c)^2 + (c-a)^2 = 0$\nVì $(a-b)^2 \\ge 0;(b-c)^2 \\ge 0;(c-a)^2 \\ge 0$ nên $\\Rightarrow (a-b)^2 + (b-c)^2 + (c-a)^2 \\ge 0$\nDấu '=' xảy ra khi $(a-b)^2 = (b-c)^2 = (c-a)^2 = 0 \\Rightarrow a = b = c$"
+ },
+ {
+  "ma_cau": "T108010301049",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính:\n$(3a^2b^5c).(6a^3bc^2)$",
+  "dap_an": "$18a^5b^6c^3$",
+  "loi_giai": "$(3a^2b^5c).(6a^3bc^2)$\n$= (3.6).(a^2.a^3).(b^5.b).(c.c^2)$\n$= 18a^{2+3}b^{5+1}c^{1+2}$\n$= 18a^5b^6c^3$."
+ },
+ {
+  "ma_cau": "T108020103064",
+  "loai": "tra_loi_ngan",
+  "de": "$\\ldots\\ldots\\ldots\\ldots\\ldots\\ldots\\ldots + 25 = (2x + \\ldots\\ldots\\ldots\\ldots)^2$",
+  "dap_an": "$4x^2 + 20x + 25 = (2x + 5)^2$",
+  "loi_giai": "$4x^2 + 20x + 25 = (2x + 5)^2$"
+ },
+ {
+  "ma_cau": "T108030401013",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $2x^2+7x+5$ thành nhân tử.",
+  "dap_an": "$(x+1)(2x+5)$",
+  "loi_giai": "$2x^2 + 7x + 5$\n$= 2x^2 + 2x + 5x + 5$\n$= 2x(x + 1) + 5(x + 1)$\n$= (x + 1)(2x + 5)."
+ },
+ {
+  "ma_cau": "T108020202090",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm các số thực $x$, $y$ thỏa mãn $x^2 + 26y^2 - 10xy + 14x - 76y + 58 = 0$.",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "x=8, y=3",
+  "loi_giai": "Ta có:\n$x^2 + 26y^2 - 10xy + 14x - 76y + 58 = (x-5y+7)^2 + (y-3)^2$.\nDo đó $(x-5y+7)^2 + (y-3)^2 = 0$.\nVì các số hạng đều không âm nên $x-5y+7=0$ và $y-3=0$."
+ },
+ {
+  "ma_cau": "T108030101005",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $12x - 30 =................................$",
+  "dap_an": "$6(2x-5)$",
+  "loi_giai": "Ta có:\n$12x - 30 = 6 \\cdot 2x - 6 \\cdot 5 = 6(2x - 5)$"
+ },
+ {
+  "ma_cau": "T108020203063",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $A = 2x^2 +4y^2 + 6x-4y - 4xy + 2030$.",
+  "dap_an": "2025",
+  "loi_giai": "Ta có:\n$A = 2x^2 + 4y^2 +6x-4y-4xy + 2030$\n$=2\\left(x-y+\\dfrac{3}{2}\\right)^2 +2\\left(y+\\dfrac{1}{2}\\right)^2 +2025$.\nVì $2\\left(x-y+\\dfrac{3}{2}\\right)^2 \\geq 0$ và $2\\left(y+\\dfrac{1}{2}\\right)^2 \\geq 0$ nên $A \\geq 2025$.\nDấu \"=\" xảy ra khi $x-y+\\dfrac{3}{2}=0$ và $y+\\dfrac{1}{2}=0$.\nSuy ra $y = -\\dfrac{1}{2}$ và $x = -2$.\nVậy GTNN của A là $2025$, đạt được khi $x = -2, y = -\\dfrac{1}{2}$."
+ },
+ {
+  "ma_cau": "T108010303001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $(x^2 + 2y)(xy - y^2)$",
+  "dap_an": "$x^3y - x^2y^2 + 2xy^2 - 2y^3$",
+  "loi_giai": "$(x^2 + 2y)(xy - y^2)$\n$= x^2 \\cdot xy - x^2 \\cdot y^2 + 2y \\cdot xy - 2y \\cdot y^2$\n$= x^3y - x^2y^2 + 2xy^2 - 2y^3$"
+ },
+ {
+  "ma_cau": "T108020501044",
+  "loai": "tra_loi_ngan",
+  "de": "VÍ DỤ :\n................................=(..................)(x^2 + 4x + ................)",
+  "dap_an": "$(x-4)(x^2+4x+16)$",
+  "loi_giai": "Giải :\nx^3 - 64 = (x-4)(x^2+4x+16)"
+ },
+ {
+  "ma_cau": "T108020202089",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các số $x$, $y$ thỏa mãn đẳng thức $5x^2 + 5y^2 + 8xy - 2x + 2y + 2 = 0$. Tính giá trị của biểu thức $M = (x+y)^{2023} + (x-2)^{2024} + (y+1)^{2025}$.",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "1",
+  "loi_giai": "Từ giả thiết, ta có:\n$5x^2 + 5y^2 + 8xy - 2x + 2y + 2 = \\dfrac{9}{2}(x+y)^2 + \\dfrac{1}{2}(x-y-2)^2 = 0$.\nVì $\\dfrac{9}{2}(x+y)^2 \\ge 0$ và $\\dfrac{1}{2}(x-y-2)^2 \\ge 0$ nên $x+y=0$ và $x-y-2=0$.\nSuy ra $x=1$, $y=-1$.\nKhi đó $M = (1-1)^{2023} + (1-2)^{2024} + (-1+1)^{2025} = 0+1+0=1$.\nVậy $M=1$."
+ },
+ {
+  "ma_cau": "T108030401019",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $2x^2+3x-5$ thành nhân tử.",
+  "dap_an": "$(x-1)(2x+5)$",
+  "loi_giai": "$$2x^2+3x-5$$\n$$= 2x^2+5x-2x-5$$\n$$= x(2x+5) - (2x+5)$$\n$$= (x-1)(2x+5).$$"
+ },
+ {
+  "ma_cau": "T108030102022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết : $3x(2x-1)+6(2x-1)=0$",
+  "dap_an": "-2; 1/2",
+  "loi_giai": "$(2x-1)(3x+6)=0$\nTrường hợp 1 :\n$2x-1=0$\n $\\Rightarrow x=\\dfrac{1}{2}$\nTrường hợp 2\n $3x+6=0\\Rightarrow x=-2$\nVậy $x=\\dfrac{1}{2}$ hoặc $x=-2$"
+ },
+ {
+  "ma_cau": "T108020202078",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $G = x^2 + 5y^2 - 4xy - 8y + 24$.",
+  "dap_an": "8",
+  "loi_giai": "Ta có:\n$G = x^2 + 5y^2 - 4xy - 8y + 24$\n$=(x-2y)^2 + (y-4)^2 + 8$.\nVì $(x-2y)^2 \\ge 0$ và $(y-4)^2 \\ge 0$ nên $G \\ge 8$.\nDấu \"=\" xảy ra khi $x-2y=0$ và $y-4=0$.\nSuy ra $y = 4, x=8$.\nVậy GTNN của G là $8$, đạt được khi $x=8, y = 4$."
+ },
+ {
+  "ma_cau": "T108020202088",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $A = \\dfrac{17}{2}(x+y)^2 + \\dfrac{1}{2}(x-y-2)^2 + 3$.",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "3",
+  "loi_giai": "Ta có: $A = \\dfrac{17}{2}(x+y)^2 + \\dfrac{1}{2}(x-y-2)^2 + 3$.\nVì $\\dfrac{17}{2}(x+y)^2 \\ge 0$ và $\\dfrac{1}{2}(x-y-2)^2 \\ge 0$ nên $A \\ge 3$.\nDấu \"=\" xảy ra khi $x+y=0$ và $x-y-2=0$.\nSuy ra $x=1$, $y=-1$.\nVậy GTNN của $A$ là 3, đạt được khi $x=1$, $y=-1$."
+ },
+ {
+  "ma_cau": "T108010302001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $2x^2y.(4x^2+6xy)$",
+  "dap_an": "$8x^4y+12x^3y^2$",
+  "loi_giai": "$2x^2y.(4x^2+6xy)=2x^2y.4x^2+2x^2y.6xy=8x^4y+12x^3y^2$"
+ },
+ {
+  "ma_cau": "T108010303054",
+  "loai": "tra_loi_ngan",
+  "de": "$(4x-1)(3x+2)(2-x)$",
+  "dap_an": "-12x^3 + 19x^2 + 12x - 4",
+  "loi_giai": "$(4x-1)(3x+2)(2-x) = (12x^2+5x-2)(2-x)$\n$= -12x^3 + 19x^2 + 12x - 4$"
+ },
+ {
+  "ma_cau": "T108030101071",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $2x(x-2) + 3(x-2) = ..........................$",
+  "dap_an": "$(x-2)(2x+3)$",
+  "loi_giai": "Ta có: $2x(x-2) + 3(x-2) = (x-2)(2x+3)$."
+ },
+ {
+  "ma_cau": "T108030501010",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $8x^3 + 2x^2 - 13x + 3$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+  "dap_an": "$(x - 1)(2x + 3)(4x - 1)$",
+  "loi_giai": "Đặt $A = 8x^3 + 2x^2 - 13x + 3$.\nNhẩm thấy:\n$A(1) = 8 + 2 - 13 + 3 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 8x^3 - 8x^2 + 10x^2 - 10x - 3x + 3$\n$= 8x^2(x - 1) + 10x(x - 1) - 3(x - 1)$\n$= (x - 1)(8x^2 + 10x - 3)$\n$= (x - 1)(8x^2 + 12x - 2x - 3)$\n$= (x - 1)[4x(2x + 3) - (2x + 3)]$\n$= (x - 1)(2x + 3)(4x - 1)$.\nVậy $A = (x - 1)(2x + 3)(4x - 1)$."
+ },
+ {
+  "ma_cau": "T108030602055",
+  "loai": "tra_loi_ngan",
+  "de": "$x^2(x + 5) = 4x + 20$",
+  "dap_an": "$x = -5; x = -2; x = 2$",
+  "loi_giai": "$x^2(x + 5) = 4x + 20$\n$x^2(x + 5) - 4(x + 5) = 0$\n$(x + 5)(x^2 - 4) = 0$\nTrường hợp 1:\n$x + 5 = 0$\n$x = -5$\nTrường hợp 2:\n$x^2 - 4 = 0$\n$x^2 = 4$\n$x = \\pm 2$\nVậy:\n$x = -5; x = -2; x = 2$"
+ },
+ {
+  "ma_cau": "T108010202024",
+  "loai": "tra_loi_ngan",
+  "de": "Cho đa thức: $A = 3xy(x^2 + y) - y(x^2 + 5) + 19$ và $B = y(x^3 - x^2) + 11y^2 - 27$.\nTính $A - B$.",
+  "dap_an": "$A - B = 2x^3y + 3xy^2 - 11y^2 - 5y + 46$",
+  "loi_giai": "Ta có:\n$A = 3xy(x^2 + y) - y(x^2 + 5) + 19$\n$A = 3x^3y + 3xy^2 - x^2y - 5y + 19$\n$B = y(x^3 - x^2) + 11y^2 - 27$\n$B = x^3y - x^2y + 11y^2 - 27$\nThực hiện phép trừ hai đa thức $A$ và $B$:\n$A - B = (3x^3y + 3xy^2 - x^2y - 5y + 19) - (x^3y - x^2y + 11y^2 - 27)$\n$A - B = 3x^3y + 3xy^2 - x^2y - 5y + 19 - x^3y + x^2y - 11y^2 + 27$\n$A - B = (3x^3y - x^3y) + 3xy^2 + (-x^2y + x^2y) - 11y^2 - 5y + (19 + 27)$\n$A - B = 2x^3y + 3xy^2 - 11y^2 - 5y + 46$"
+ },
+ {
+  "ma_cau": "T108030603037",
+  "loai": "tra_loi_ngan",
+  "de": "$x^2 + 4x + 4 - 25 = 0$",
+  "dap_an": "x = -7; x = 3",
+  "loi_giai": "$x^2 + 4x + 4 - 25 = 0$\n$(x + 2)^2 - 25 = 0$\n$(x + 2)^2 = 25$\n$x + 2 = \\pm5$\n$x = 3; x = -7$"
+ },
+ {
+  "ma_cau": "T108030501009",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $3x^3 + x^2 - 10x - 8$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+  "dap_an": "$(x + 1)(x - 2)(3x + 4)$",
+  "loi_giai": "Đặt $A = 3x^3 + x^2 - 10x - 8$.\nNhẩm thấy:\n$A(-1) = -3 + 1 + 10 - 8 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 3x^3 + 3x^2 - 2x^2 - 2x - 8x - 8$\n$= 3x^2(x + 1) - 2x(x + 1) - 8(x + 1)$\n$= (x + 1)(3x^2 - 2x - 8)$\n$= (x + 1)(3x^2 + 4x - 6x - 8)$\n$= (x + 1)[x(3x + 4) - 2(3x + 4)]$\n$= (x + 1)(x - 2)(3x + 4)$.\nVậy $A = (x + 1)(x - 2)(3x + 4)$."
+ },
+ {
+  "ma_cau": "T108020202079",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $B = x^2 + 2y^2 + 2xy + 2024 - 2y$.",
+  "dap_an": "2023",
+  "loi_giai": "Ta có:\n$B = x^2 + 2y^2 + 2xy + 2024 - 2y = (x + y)^2 + (y-1)^2 + 2023$.\nVì $(x+y)^2 \\ge 0$ và $(y-1)^2 \\ge 0$ nên $B \\ge 2023$.\nDấu \"=\" xảy ra khi $x+y=0$ và $y-1=0$.\nSuy ra $x=-1$, $y=1$.\nVậy GTNN của B là $2023$, đạt được khi $x=-1$, $y=1$."
+ },
+ {
+  "ma_cau": "T108020104001",
+  "loai": "tra_loi_ngan",
+  "de": "Tách bình phương $A = x^2 + 4x + 7$",
+  "dap_an": "$(x+2)^2 + 3$",
+  "loi_giai": "$A = (x^2 + 4x + 4) + 7 - 4 = (x+2)^2 + 3$"
+ },
+ {
+  "ma_cau": "T108030603049",
+  "loai": "tra_loi_ngan",
+  "de": "$x^2 - 2x + 1 - 9x^2 = 0$",
+  "dap_an": "$x = -\\dfrac{1}{2}; x = \\dfrac{1}{4}$",
+  "loi_giai": "$x^2 - 2x + 1 - 9x^2 = 0$\n$-8x^2 - 2x + 1 = 0$\n$8x^2 + 2x - 1 = 0$\n$8x^2 + 4x - 2x - 1 = 0$\n$4x(2x + 1) - (2x + 1) = 0$\n$(2x + 1)(4x - 1) = 0$\nTrường hợp 1:\n$2x + 1 = 0$\n$x = -\\dfrac{1}{2}$\nTrường hợp 2:\n$4x - 1 = 0$\n$x = \\dfrac{1}{4}$\nVậy:\n$x = -\\dfrac{1}{2}; x = \\dfrac{1}{4}$"
+ },
+ {
+  "ma_cau": "T108030101006",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $10y - 24=...........................$",
+  "dap_an": "$2(5y-12)$",
+  "loi_giai": "Ta có:\n$10y - 24 = 2 \\cdot 5y - 2 \\cdot 12 = 2(5y - 12)$"
+ },
+ {
+  "ma_cau": "T108010101012",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các biểu thức sau, có bao nhiêu đơn thức:\n$99x^{100}$, $-1$, $1-y$, $\\dfrac{1}{x}-2$, $\\dfrac{5}{-9}x$, $2\\sqrt{x}$, $4y(1-x)$",
+  "dap_an": "3",
+  "loi_giai": "Trong các biểu thức trên có các đơn thức: $99x^{100}$, $-1$, $\\dfrac{5}{-9}x$.\n$1-y$; $4y(1-x)$ là đa thức\n$\\dfrac{1}{x}-2$ là phân thức\n$2\\sqrt{x}$ là căn thức\nVậy có 3 đơn thức."
+ },
+ {
+  "ma_cau": "T108030401031",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $x^4+4x^2-5$ thành nhân tử.",
+  "dap_an": "$(x-1)(x+1)(x^2+5)$",
+  "loi_giai": "$x^4 + 4x^2 - 5$\n$= x^4 + 5x^2 - x^2 - 5$\n$= x^2(x^2 + 5) - (x^2 + 5)$\n$= (x^2 + 5)(x^2 - 1)$\n$= (x - 1)(x + 1)(x^2 + 5).$"
+ },
+ {
+  "ma_cau": "T108010301001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $4x^2yz \\cdot (-3xyz^2)$",
+  "dap_an": "-12x^3y^2z^3",
+  "loi_giai": "$4x^2yz \\cdot (-3xyz^2) = -12x^3y^2z^3$"
+ },
+ {
+  "ma_cau": "T108030401025",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $x^2-4x-5$ thành nhân tử.",
+  "dap_an": "$(x+1)(x-5)$",
+  "loi_giai": "$x^2 - 4x - 5$\n$= x^2 + x - 5x - 5$\n$= x(x + 1) - 5(x + 1)$\n$= (x + 1)(x - 5)$."
+ },
+ {
+  "ma_cau": "T108020202066",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 5x^2 - 8xy + 5y^2 - 4x - 4y + 15$",
+  "dap_an": "7",
+  "loi_giai": "Ta có $A = (4x^2 - 8xy + 4y^2) + (x^2 - 4x + 4) + (y^2 - 4y + 4) + 15 - 4 - 4$\n$A = (2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7$\nVì $(2x - 2y)^2 \\geq 0$; $(x - 2)^2 \\geq 0$; $(y - 2)^2 \\geq 0$\nNên $(2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7 \\geq 7 \\Rightarrow A \\geq 7.$\nDấu ' $=$ ' xảy ra khi $\\begin{cases}(2x - 2y)^2 = 0\\\\(x - 2)^2 = 0\\\\(y - 2)^2 = 0\\end{cases} \\Rightarrow x = 2; y = 2$"
+ },
+ {
+  "ma_cau": "T108030101077",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $3x(x+4)+4y(x+4)+5(x+4)=$",
+  "dap_an": "$(x+4)(3x+4y+5)$",
+  "loi_giai": "$(x+4)(3x+4y+5)$"
+ },
+ {
+  "ma_cau": "T108020202082",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $C = x^2 - 4xy + 5y^2 + 10x - 22y + 30$.",
+  "dap_an": "4",
+  "loi_giai": "Ta có:\n$C = x^2 - 4xy + 5y^2 + 10x - 22y + 30 = (x - 2y + 5)^2 + (y - 1)^2 + 4$.\nVì $(x - 2y + 5)^2 \\ge 0$ và $(y - 1)^2 \\ge 0$ nên $C \\ge 4$.\nDấu \"=\" xảy ra khi $x - 2y + 5 = 0$ và $y - 1 = 0$.\nSuy ra $x = -3$, $y = 1$.\nVậy GTNN của C là 4, đạt được khi $x = -3$, $y = 1$."
+ },
+ {
+  "ma_cau": "T108020103085",
+  "loai": "tra_loi_ngan",
+  "de": "$............... + 20x + ................ = (2x................)^2$",
+  "dap_an": "$4x^2$; $25$; $5$",
+  "loi_giai": "$4x^2 + 20x + 25 = (2x+5)^2$"
+ },
+ {
+  "ma_cau": "T108020202055",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 5x^2 - 8xy + 5y^2 - 4x - 4y + 15$",
+  "dap_an": "7",
+  "loi_giai": "Ta có $A=(4x^2 - 8xy + 4y^2) + (x^2 - 4x + 4) + (y^2 - 4y + 4) + 15 - 4 - 4$\n$A=(2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7$\nVì $(2x - 2y)^2 \\ge 0$; $(x - 2)^2 \\ge 0$; $(y - 2)^2 \\ge 0$\nNên $(2x - 2y)^2 + (x - 2)^2 + (y - 2)^2 + 7 \\ge 7 \\Rightarrow A \\ge 7$\nDấu '$=$' xảy ra khi $\\begin{cases} (2x - 2y)^2 = 0 \\ (x - 2)^2 = 0 \\ (y - 2)^2 = 0 \\end{cases} \\Rightarrow x = 2; y = 2$"
+ },
+ {
+  "ma_cau": "T108020201022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của $B = -x^2 - y^2 + 2x + 6y - 1$",
+  "dap_an": "9",
+  "loi_giai": "Ta có $B = -x^2 - y^2 + 2x + 6y - 1 = -(x^2 - 2x + 1) - (y^2 - 6y + 9) - 1 + 1 + 9$\n$B = -(x-1)^2 - (y-3)^2 + 9$\nVì $(x-1)^2 \\ge 0$; $(y-3)^2 \\ge 0$ nên $-(x-1)^2 - (y-3)^2 + 9 \\le 9$ hay $B \\le 9$.\nDấu '$=$' xảy ra khi\n$\\begin{cases} (x-1)^2 = 0 \\\\ (y-3)^2 = 0 \\end{cases} \\Rightarrow \\begin{cases} x=1 \\\\ y=3 \\end{cases}$\nVậy GTLN của B là $9$ khi $x=1$; $y=3$"
+ },
+ {
+  "ma_cau": "T108020203057",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các số x, y thỏa mãn $x^2 + y^2 - 3x-3y+xy+3=0$. Tính giá trị của biểu thức $Q = (x-y)^{2023} + (x-2)^{2024} + y^{2025}$.",
+  "dap_an": "2",
+  "loi_giai": "Ta có $x^2 + y^2 -3x-3y+xy+3=0$.\n$2x^2 + 2y^2-6x-6y + 2xy + 6 = 0$\n$(x+y-2)^2+(x-1)^2+(y-1)^2 = 0$\nTa có $(x+y-2)^2 \\geq 0;(x-1)^2 \\geq 0;(y-1)^2 \\geq 0 \\Rightarrow(x+y-2)^2+(x-1)^2+(y-1)^2 \\geq 0$\nDấu “=” xảy ra khi $x = y =1$. Khi đó $Q=2$"
+ },
+ {
+  "ma_cau": "T108010404001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm m nguyên để $(2x^m y^6 + 4x^5 y^5)$ chia hết cho $7x^5 y^m$",
+  "dap_an": "5",
+  "loi_giai": "Để $(2x^m y^6 + 4x^5 y^5) \\vdots 7x^5 y^m$ thì bậc của x,y của tất cả đơn thức đa thức phải lớn hơn hoặc bằng bậc của x,y trong đơn thức\nTa có : $(2x^m y^6 + 4x^5 y^5) : 7x^5 y^m = 2x^m y^6 : 7x^5 y^m + 4x^5 y^5 : 7x^5 y^m = \\dfrac{2}{7}x^{m-5}y^{6-m} + \\dfrac{4}{7}y^{5-m}$\nĐể $(2x^m y^6 + 4x^5 y^5) \\vdots 7x^5 y^m$ thì $\\begin{cases} m-5 \\ge 0 \\\\ 6-m \\ge 0 \\\\ 5-m \\ge 0 \\end{cases} \\Rightarrow \\begin{cases} m \\ge 5 \\\\ m \\le 6 \\\\ m \\le 5 \\end{cases} \\Rightarrow m = 5$"
+ },
+ {
+  "ma_cau": "T108020301012",
+  "loai": "tra_loi_ngan",
+  "de": "$x^3 + \\ldots + 12x + \\ldots = (\\ldots)^3$",
+  "dap_an": "$x+2$",
+  "loi_giai": "$x^3 + 6x^2 + 12x + 8 = (x+2)^3$"
+ },
+ {
+  "ma_cau": "T108010101034",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các biểu thức sau, có bao nhiêu đơn thức:\n$-6x^2 y^3$, $a^2-4a+4$, $\\dfrac{7m^4}{3}$, $\\sqrt{2a-b}$, $\\dfrac{2}{x-1}$, $15$, $3xy+2y$, $-\\dfrac{1}{2}a^3b$",
+  "dap_an": "4",
+  "loi_giai": "Trong các biểu thức trên có các đơn thức: $-6x^2y^3$, $\\dfrac{7m^4}{3}$, $15$, $-\\dfrac{1}{2}a^3b$.\n$a^2-4a+4$; $3xy+2y$ là đa thức.\n$\\sqrt{2a-b}$ là căn thức.\n$\\dfrac{2}{x-1}$ là phân thức.\nVậy có $4$ đơn thức."
+ },
+ {
+  "ma_cau": "T108030101007",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT $4x^2 - 12x = $",
+  "dap_an": "$4x(x - 3)$",
+  "loi_giai": "$4x^2 - 12x$\n$= 4x \\cdot x - 4x \\cdot 3$\n$= 4x(x - 3)$"
+ },
+ {
+  "ma_cau": "T108020202044",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 2x^2 - 4xy + 5y^2 - 4x - 2y + 13$",
+  "dap_an": "8",
+  "loi_giai": "Ta có : $A = (x^2 - 4xy + 4y^2) + (x^2 - 4x + 4) + (y^2 - 2y + 1) + 13 - 4 - 1$\n$A = (x - 2y)^2 + (x - 2)^2 + (y - 1)^2 + 8$\nVì $(x - 2y)^2 \\geq 0$; $(x - 2)^2 \\geq 0$; $(y - 1)^2 \\geq 0$\nNên $(x - 2y)^2 + (x - 2)^2 + (y - 1)^2 + 8 \\geq 8$. Suy ra $A \\geq 8$\nDấu ‘=’ xảy ra khi $\\begin{cases}(x - 2y)^2 = 0\\\\(x - 2)^2 = 0\\\\(y - 1)^2 = 0\\end{cases} \\Rightarrow x = 2; y = 1$\nVậy GTNN của A là 8 khi $x = 2; y = 1$"
+ },
+ {
+  "ma_cau": "T108030602079",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, biết:\n$3x(x-2) + x^2 - 4 = 0$",
+  "dap_an": "$x = -\\dfrac{1}{2}; x = 2$",
+  "loi_giai": "$3x(x-2) + x^2 - 4 = 0$\n$3x(x-2) + (x-2)(x+2) = 0$\n$(x-2)(4x+2) = 0$\nTrường hợp 1:\n$x - 2 = 0$\n$x = 2$\nTrường hợp 2:\n$4x + 2 = 0$\n$x = -\\dfrac{1}{2}$\nVậy:\n$x = -\\dfrac{1}{2}; x = 2$"
+ },
+ {
+  "ma_cau": "T108020202070",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x,y$ biết: $x^2 + y^2 - xy - x - y + 1 = 0$",
+  "dap_an": "x=1, y=1",
+  "loi_giai": "$x^2 + y^2 - xy - x - y + 1 = 0$\n$2x^2 + 2y^2 - 2xy - 2x - 2y + 2 = 0$\n$(x^2 - 2xy + y^2) + (x^2 - 2x + 1) + (y^2 - 2y + 1) = 0$\n$(x - y)^2 + (x - 1)^2 + (y - 1)^2 = 0$\nVì $(x - y)^2 \\ge 0$; $(x - 1)^2 \\ge 0$; $(y - 1)^2 \\ge 0$\nSuy ra $(x - y)^2 + (x - 1)^2 + (y - 1)^2 \\ge 0$\nDấu '=' xảy ra khi $x = y = 1$"
+ },
+ {
+  "ma_cau": "T108010201018",
+  "loai": "tra_loi_ngan",
+  "de": "Thu gọn đa thức: $A = 5xy^2 - 9xy^2 + 6xy^2$.",
+  "dap_an": "2xy^2",
+  "loi_giai": "Giải:\nA = $5xy^2 - 9xy^2 + 6xy^2$\nA = $(5-9+6)xy^2$\nA = $2xy^2$"
+ },
+ {
+  "ma_cau": "T108010303052",
+  "loai": "tra_loi_ngan",
+  "de": "$(5x-2)(3x+1)(2-x)$",
+  "dap_an": "-15x^3 + 31x^2 - 4",
+  "loi_giai": "$(5x-2)(3x+1)(2-x) = (15x^2-x-2)(2-x)$\n$= -15x^3 + 31x^2 - 4$"
+ },
+ {
+  "ma_cau": "T108030603031",
+  "loai": "tra_loi_ngan",
+  "de": "$$x^2 - 6x + 9 - 16 = 0$$",
+  "dap_an": "$x = -1; x = 7$",
+  "loi_giai": "$$x^2 - 6x + 9 - 16 = 0$$\n$$(x - 3)^2 - 16 = 0$$\n$$(x - 3)^2 = 16$$\n$$x - 3 = \\pm4$$\n$$x = 7; x = -1$$\nVậy:$$x = -1; x = 7$$"
+ },
+ {
+  "ma_cau": "T108010202025",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các đa thức $A = x^2 + 5xy + 10y^3$, $B = 7x^2 - xy + z^4$ và $C = y^3 + 2z^4 - 4xy$.\nTính: $C - A - B$.",
+  "dap_an": "-9y^3 + z^4 - 8xy - 8x^2",
+  "loi_giai": "$C - A - B = y^3 + 2z^4 - 4xy - x^2 - 5xy - 10y^3 - 7x^2 + xy - z^4$\n$= (y^3 - 10y^3) + (2z^4 - z^4) + (-4xy - 5xy + xy) + (-x^2 - 7x^2)$\n$= -9y^3 + z^4 - 8xy - 8x^2$"
+ },
+ {
+  "ma_cau": "T108020104043",
+  "loai": "tra_loi_ngan",
+  "de": "Tách bình phương $A = 2x^2 - 4x + 9$",
+  "dap_an": "$2(x - 1)^2 + 7$",
+  "loi_giai": "$A = 2(x^2 - 2x + 1) + 9 - 2 \\times 1$\n$A = 2(x - 1)^2 + 7$"
+ },
+ {
+  "ma_cau": "T108020105028",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức $B = -2x^2 + 3x + 4$",
+  "dap_an": "\\dfrac{41}{8}",
+  "loi_giai": "Ta có $B = -2\\left( x^2 - \\dfrac{3}{2}x + \\dfrac{9}{16} \\right) + 4 + 2.\\dfrac{9}{16} = -2\\left( x - \\dfrac{3}{4} \\right)^2 + \\dfrac{41}{8}$\nVì $\\left( x - \\dfrac{3}{4} \\right)^2 \\geq 0 \\Rightarrow -2\\left( x - \\dfrac{3}{4} \\right)^2 \\leq 0 \\Rightarrow -2\\left( x - \\dfrac{3}{4} \\right)^2 + \\dfrac{41}{8} \\leq \\dfrac{41}{8}$\nDấu '$$=$$' xảy ra khi $\\left( x - \\dfrac{3}{4} \\right)^2 = 0 \\Rightarrow x = \\dfrac{3}{4}$\nVậy GTLN của B là $\\dfrac{41}{8}$ khi $x = \\dfrac{3}{4}$"
+ },
+ {
+  "ma_cau": "T108010303023",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $(x^2 - x + 1)(2x^2 - 3x - 1)$",
+  "dap_an": "2x^4-5x^3+4x^2-2x-1",
+  "loi_giai": "$(x^2 - x + 1)(2x^2 - 3x - 1) = 2x^4 - 3x^3 - x^2 - 2x^3 + 3x^2 + x + 2x^2 - 3x - 1$\\n$= 2x^4 - 5x^3 + 4x^2 - 2x - 1$"
+ },
+ {
+  "ma_cau": "T108030101001",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT : $6x - 15 = .....................................$",
+  "dap_an": "$3(2x-5)$",
+  "loi_giai": "Ta có:\n$6x - 15 = 3 \\cdot 2x - 3 \\cdot 5 = 3(2x - 5)$"
+ },
+ {
+  "ma_cau": "T108020701036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\dfrac{1}{a} + \\dfrac{1}{b} + \\dfrac{1}{c} = 1$; $\\dfrac{1}{a^2} + \\dfrac{1}{b^2} + \\dfrac{1}{c^2} = \\dfrac{1}{3}$. Tính $M = 3a + 4b + 5c$",
+  "dap_an": "36",
+  "loi_giai": "Đặt $\\dfrac{1}{a} = x$; $\\dfrac{1}{b} = y$; $\\dfrac{1}{c} = z$.\nTừ đề bài suy ra : $x + y + z = 1$; $x^2 + y^2 + z^2 = \\dfrac{1}{3}$; $M = \\dfrac{3}{x} + \\dfrac{4}{y} + \\dfrac{5}{z}$\nTa có $(x + y + z)^2 = x^2 + y^2 + z^2 + 2(xy + yz + zx)$\nSuy ra $1^2 = \\dfrac{1}{3} + 2(xy + yz + zx) \\Rightarrow xy + yz + zx = \\dfrac{1}{3}$\nSuy ra $x^2 + y^2 + z^2 = xy + yz + zx$\n$\\Rightarrow x^2 + y^2 + z^2 - xy - yz - zx = 0$\n$\\dfrac{1}{2}[(x - y)^2 + (y - z)^2 + (z - x)^2] = 0$\n$\\Rightarrow x = y = z$\nMà $x + y + z = 1 \\Rightarrow x = y = z = \\dfrac{1}{3}$\nSuy ra $M = \\dfrac{3}{\\dfrac{1}{3}} + \\dfrac{4}{\\dfrac{1}{3}} + \\dfrac{5}{\\dfrac{1}{3}} = 36$"
+ },
+ {
+  "ma_cau": "T108010101023",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các biểu thức sau có bao nhiêu đa thức\n$x^2y$, $x+1$, $x^3+y^4-5z$, $5xym^2$, $x(x+3)$, $5+x^2$, $99$",
+  "dap_an": "4",
+  "loi_giai": "Trong các biểu thức trên có\n*   $x^2y$, $5xym^2$, $99$ là đơn thức\n*   $x+1$, $x^3+y^4-5z$, $x(x+3)$, $5+x^2$ là đa thức\nVậy có 4 đa thức."
+ },
+ {
+  "ma_cau": "T108030603025",
+  "loai": "tra_loi_ngan",
+  "de": "$x(x+5)-3x-15=0$",
+  "dap_an": "$x=-5; x=3$",
+  "loi_giai": "$x(x+5)-3x-15=0$\n$x(x+5)-3(x+5)=0$\n$(x+5)(x-3)=0$\nTrường hợp 1:\n$x+5=0$\n$x=-5$\nTrường hợp 2:\n$x-3=0$\n$x=3$\nVậy: $x=-5; x=3$"
+ },
+ {
+  "ma_cau": "T108030602043",
+  "loai": "tra_loi_ngan",
+  "de": "$x(x+2)-3(x+2)=0$",
+  "dap_an": "$x=-2$; $x=3$",
+  "loi_giai": "$x(x+2)-3(x+2)=0$\n$(x+2)(x-3)=0$\nTrường hợp 1:\n$x+2=0$\n$x=-2$\nTrường hợp 2:\n$x-3=0$\n$x=3$\nVậy: $x=-2$; $x=3$"
+ },
+ {
+  "ma_cau": "T108010201012",
+  "loai": "tra_loi_ngan",
+  "de": "Tính hiệu của hai đơn thức sau: $7x^2y^3$ và $4x^2y^3$.",
+  "dap_an": "$3x^2y^3$",
+  "loi_giai": "* Giải:\nHiệu của hai đơn thức: $7x^2y^3 - 4x^2y^3 = (7-4)x^2y^3 = 3x^2y^3$"
+ },
+ {
+  "ma_cau": "T108020103022",
+  "loai": "tra_loi_ngan",
+  "de": "$9x^2 - ......... + 25 = (.................)^2$",
+  "dap_an": "$30x$, $3x-5$",
+  "loi_giai": "$9x^2 - 30x + 25 = (3x-5)^2$"
+ },
+ {
+  "ma_cau": "T108020301033",
+  "loai": "tra_loi_ngan",
+  "de": "......... $- 27x^2 +$ ......... $- 1 = ($ ......... $)^3$",
+  "dap_an": "$27x^3; 9x; (3x-1)$",
+  "loi_giai": "$27x^3 - 27x^2 + 9x + 1 = (3x - 1)^3$"
+ },
+ {
+  "ma_cau": "T108010303055",
+  "loai": "tra_loi_ngan",
+  "de": "$(3x-2)(5x+1)(3-x)$",
+  "dap_an": "-15x^3 + 52x^2 - 19x - 6",
+  "loi_giai": "$(3x-2)(5x+1)(3-x) = (15x^2-7x-2)(3-x)$\n$= -15x^3 + 52x^2 - 19x - 6$"
+ },
+ {
+  "ma_cau": "T108020202083",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $M = 9x^2 + 6y^2 + 18x - 12xy - 12y - 27$.",
+  "dap_an": "-36",
+  "loi_giai": "Ta có:\n$M = 9x^2 + 6y^2 + 18x - 12xy - 12y - 27 = (3x - 2y + 3)^2 + 2y^2 - 36$.\nVì $(3x - 2y + 3)^2 \\ge 0$ và $2y^2 \\ge 0$ nên $M \\ge -36$.\nDấu \"=\" xảy ra khi $3x - 2y + 3 = 0$ và $y = 0$.\nSuy ra $x = -1$, $y = 0$.\nVậy GTNN của M là -36, đạt được khi $x = -1$, $y = 0$."
+ },
+ {
+  "ma_cau": "T108020202077",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các số thực $x, y$ thỏa mãn $x^2 + y^2 - 4x + 2y + 5 = 0$. Tính giá trị của biểu thức $P = (x-3)^{2025} + (y+2)^{2026}$.",
+  "dap_an": "0",
+  "loi_giai": "Từ giả thiết:\n$x^2 + y^2 - 4x + 2y + 5 = 0$.\nTa có:\n$(x-2)^2 + (y+1)^2 = 0$.\nVì $(x-2)^2 \\ge 0$ và $(y+1)^2 \\ge 0$ nên $x-2=0$ và $y+1=0$.\nSuy ra $x = 2, y = -1$.\nKhi đó:\n$P = (2-3)^{2025} + (-1+2)^{2026} = (-1)^{2025} + 1^{2026} = -1+1=0$.\nVậy $P=0$."
+ }
+]

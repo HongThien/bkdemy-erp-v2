@@ -1,0 +1,815 @@
+[
+ {
+  "ma_cau": "T111060102047",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = n^2 + 5n + 4$. Số 88 là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét phương trình $u_n = 88:$\\n$n^2 + 5n + 4 = 88$\\n$\\Leftrightarrow n^2 + 5n - 84 = 0$\\n$\\Leftrightarrow \\begin{cases} n = 7 \\text{ (thỏa mãn)} \\\\ n = -12 \\text{ (loại)} \\end{cases}$\\nChọn B."
+ },
+ {
+  "ma_cau": "T111020401001",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:\n$\\cos 2a + \\cos b = $",
+  "dap_an": "$2\\cos \\dfrac{2a+b}{2}\\cos \\dfrac{2a-b}{2}$",
+  "loi_giai": "$\\cos 2a + \\cos b = 2\\cos \\dfrac{2a+b}{2}\\cos \\dfrac{2a-b}{2}$"
+ },
+ {
+  "ma_cau": "T111040401020",
+  "loai": "tu_luan",
+  "de": "Giải phương trình lượng giác sau và biểu diễn các nghiệm trên đường tròn lượng giác:\n$\\cos 3x = 1$",
+  "dap_an": "$x = \\dfrac{k2\\pi}{3}$",
+  "loi_giai": "Phương trình đặc biệt:\n$\\cos 3x = 1 \\Leftrightarrow 3x = k2\\pi\\ \\ (k\\in \\mathbb{Z})$\n$\\Leftrightarrow x = \\dfrac{k2\\pi}{3}$\nBiểu diễn trên đường tròn lượng giác:\n- Chu kỳ $\\dfrac{2\\pi}{3}$ nên tập nghiệm có 3 điểm trên đường tròn cách đều nhau.\n- Thay $k = 0 \\Rightarrow x = 0$ (điểm $M_1$).\n- Thay $k = 1 \\Rightarrow x = \\dfrac{2\\pi}{3}$ (điểm $M_2$).\n- Thay $k = 2 \\Rightarrow x = \\dfrac{4\\pi}{3}$ (điểm $M_3$)."
+ },
+ {
+  "ma_cau": "T111040402016",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\cos x$ có đồ thị là đường cong như hình vẽ.\nTrong đoạn $[-2\\pi; 2\\pi]$, phương trình $f(x)=\\dfrac{\\sqrt{2}}{2}$ có số nghiệm là",
+  "lua_chon": [
+   "5.",
+   "4.",
+   "6.",
+   "2."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Kẻ đường thẳng $y=\\dfrac{\\sqrt{2}}{2}$ cắt đồ thị hàm số $y=\\cos x$ trên đoạn $[-2\\pi; 2\\pi]$.\nDựa vào đồ thị, ta thấy đường thẳng cắt đồ thị tại đúng 4 điểm phân biệt.\nVậy phương trình đã cho có 4 nghiệm.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111010605031",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\tan \\alpha =3$. Giá trị của biểu thức $P=\\tan 2\\alpha +1$ bằng",
+  "lua_chon": [
+   "$\\dfrac{3}{5}$.",
+   "$\\dfrac{8}{5}$.",
+   "$\\dfrac{1}{4}$.",
+   "$-\\dfrac{3}{4}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Áp dụng công thức nhân đôi đối với hàm số tang, ta có\n$\\tan 2\\alpha =\\dfrac{2\\tan \\alpha }{1-\\tan ^{2}\\alpha }=\\dfrac{2\\cdot 3}{1-3^{2}}=\\dfrac{6}{-8}=-\\dfrac{3}{4}.$\nKhi đó, giá trị của biểu thức $P$ là\n$P=\\tan 2\\alpha +1=-\\dfrac{3}{4}+1=\\dfrac{1}{4}.$\nVậy $P=\\dfrac{1}{4}$."
+ },
+ {
+  "ma_cau": "T111060101038",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ có $u_1 = 5$; $u_n = \\dfrac{u_{n-1}}{n-1}$ với $n \\geq 2$. Giá trị $u_3$ là",
+  "lua_chon": [
+   "5",
+   "$\\dfrac{5}{2}$",
+   "$\\dfrac{5}{6}$",
+   "1"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $u_1 = 5$.\n$u_2 = \\dfrac{5}{2-1} = 5$.\n$u_3 = \\dfrac{5}{3-1} = \\dfrac{5}{2}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T111060202037",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng có $u_2 = -2$; $u_3 = 1$. Công sai $d$ của cấp số cộng bằng",
+  "lua_chon": [
+   "3.",
+   "-3.",
+   "-1.",
+   "-2."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Công sai $d = u_3 - u_2 = 1 - (-2) = 3$.\nChọn A."
+ },
+ {
+  "ma_cau": "T111040402018",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\cos x$ có đồ thị là đường cong như hình vẽ.\n[hình]\nTrong đoạn $\\left[-\\dfrac{\\pi}{2};3\\pi\\right]$, phương trình $f(x)=\\dfrac{2}{3}$ có số nghiệm là",
+  "lua_chon": [
+   "5.",
+   "6.",
+   "3.",
+   "4."
+  ],
+  "dap_an": "D",
+  "loi_giai": "- Kẻ đường thẳng $y=\\dfrac{2}{3}$ cắt đồ thị hàm số $y=\\cos x$ trên đoạn $\\left[-\\dfrac{\\pi}{2};3\\pi\\right]$.\n- Dựa vào đồ thị, ta thấy đường thẳng cắt đồ thị tại đúng 4 điểm phân biệt.\n- Vậy phương trình đã cho có 4 nghiệm.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111020401078",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tổng thành tích để khai triển:\n$\\sin 2a - \\sin b =$",
+  "dap_an": "2\\cos\\dfrac{3x}{2}\\sin\\dfrac{x}{2}",
+  "loi_giai": "$\\sin 2x - \\sin x = 2\\cos\\dfrac{2x + x}{2}\\sin\\dfrac{2x - x}{2}$\n$= 2\\cos\\dfrac{3x}{2}\\sin\\dfrac{x}{2}$"
+ },
+ {
+  "ma_cau": "T111060101012",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = 3n - 2$. Số hạng thứ ba của dãy là",
+  "lua_chon": [
+   "$u_3 = 7$.",
+   "$u_3 = 6$.",
+   "$u_3 = 9$.",
+   "$u_3 = 8$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $u_3 = 3 \\cdot 3 - 2 = 7$."
+ },
+ {
+  "ma_cau": "T111020202074",
+  "loai": "tu_luan",
+  "de": "Tính $\\sin 2a$, $\\cos 2a$, $\\tan 2a$, biết $\\cos a = \\dfrac{12}{13}$ và $0 < a < \\dfrac{\\pi}{2}$.",
+  "dap_an": "$\\sin 2a = \\dfrac{120}{169}$; $\\cos 2a = \\dfrac{119}{169}$; $\\tan 2a = \\dfrac{120}{119}$",
+  "loi_giai": "Vì $0 < a < \\dfrac{\\pi}{2}$ nên $\\sin a > 0$, suy ra $\\sin a = \\sqrt{1 - \\cos^2 a} = \\sqrt{1 - (\\dfrac{12}{13})^2} = \\dfrac{5}{13}$.\nTừ đó, ta tính được $\\sin 2a = 2 \\sin a \\cos a = 2 \\cdot \\dfrac{5}{13} \\cdot \\dfrac{12}{13} = \\dfrac{120}{169}$\nvà $\\cos 2a = 2 \\cos^2 a - 1 = 2 \\cdot (\\dfrac{12}{13})^2 - 1 = \\dfrac{119}{169}$.\nSuy ra $\\tan 2a = \\dfrac{\\sin 2a}{\\cos 2a} = \\dfrac{120}{119}$."
+ },
+ {
+  "ma_cau": "T111060204040",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ thỏa mãn $\\begin{cases}S_7=7\\\\ S_4+S_5=20\\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.",
+  "lua_chon": [
+   "$u_1 = -4, d = 1$",
+   "$u_1 = 4, d = -1$",
+   "$u_1 = 4, d = 1$",
+   "$u_1 = -4, d = -1$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Sử dụng công thức của cấp số cộng, ta có hệ:\n$\\begin{cases} \\dfrac{7}{2}(2u_1 + 6d) = 7 \\\\ \\dfrac{4}{2}(2u_1 + 3d) + \\dfrac{5}{2}(2u_1 + 4d) = 20 \\end{cases} \\Leftrightarrow \\begin{cases} u_1 + 3d = 1 \\\\ 9u_1 + 16d = 20 \\end{cases} \\Leftrightarrow \\begin{cases} u_1 = 4 \\\\ d = -1 \\end{cases}$\nChọn B."
+ },
+ {
+  "ma_cau": "T111020202009",
+  "loai": "tu_luan",
+  "de": "Cho $\\cos 2x = -\\dfrac{4}{5}$, với $\\dfrac{\\pi}{4} < x < \\dfrac{\\pi}{2}$.\nTính $\\sin x$, $\\cos x$, $\\sin \\left(x + \\dfrac{\\pi}{3}\\right)$, $\\cos \\left(2x - \\dfrac{\\pi}{4}\\right)$",
+  "loi_giai": "Vì $\\dfrac{\\pi}{4} < x < \\dfrac{\\pi}{2}$ nên $\\sin x > 0, \\cos x > 0$. Áp dụng công thức hạ bậc, ta có\n$\\sin^2 x = \\dfrac{1 - \\cos 2x}{2} = \\dfrac{9}{10} \\Rightarrow \\sin x = \\dfrac{3}{\\sqrt{10}}$.\n$\\cos^2 x = \\dfrac{1 + \\cos 2x}{2} = \\dfrac{1}{10} \\Rightarrow \\cos x = \\dfrac{1}{\\sqrt{10}}$.\nTheo công thức cộng, ta có\n$\\sin \\left(x + \\dfrac{\\pi}{3}\\right) = \\sin x \\cos \\dfrac{\\pi}{3} + \\cos x \\sin \\dfrac{\\pi}{3} = \\dfrac{3}{\\sqrt{10}} \\cdot \\dfrac{1}{2} + \\dfrac{1}{\\sqrt{10}} \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{3 + \\sqrt{3}}{2\\sqrt{10}}$\n$\\cos \\left(2x - \\dfrac{\\pi}{4}\\right) = \\cos 2x \\cos \\dfrac{\\pi}{4} + \\sin 2x \\sin \\dfrac{\\pi}{4} = -\\dfrac{4}{5} \\cdot \\dfrac{\\sqrt{2}}{2} + \\dfrac{3}{5} \\ …"
+ },
+ {
+  "ma_cau": "T111060202080",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có $u_9 = -10$ và công sai $d = -3$. Số hạng đầu $u_1$ của cấp số cộng bằng",
+  "lua_chon": [
+   "14.",
+   "-34.",
+   "-14.",
+   "11."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$u_1 = u_9 - 8d = -10 - 8(-3) = 14$.\nChọn A."
+ },
+ {
+  "ma_cau": "T111060104003",
+  "loai": "trac_nghiem",
+  "de": "Dãy số $(u_n)$ được gọi là dãy số giảm nếu xét hiệu số $H = u_{n+1} - u_n$ với mọi $n \\in \\mathrm{N}^*$, ta luôn có:",
+  "lua_chon": [
+   "$H > 0$",
+   "$H < 0$",
+   "$H = 0$",
+   "$H \\geq 0$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dãy số giảm khi $u_{n+1} < u_n \\Rightarrow u_{n+1} - u_n < 0$. Do đó hiệu số $H < 0$."
+ },
+ {
+  "ma_cau": "T111040401009",
+  "loai": "trac_nghiem",
+  "de": "Phương trình nào dưới đây có tập nghiệm biểu diễn trên đường tròn lượng giác là 2 điểm $M,N$?",
+  "lua_chon": [
+   "$\\sqrt{2} \\cos x-1=0$.",
+   "$\\sqrt{2} \\sin x+1=0$.",
+   "$\\sqrt{2} \\sin x-1=0$.",
+   "$\\sqrt{2} \\cos x+1=0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "- Quan sát thấy $M,N$ có cùng hoành độ âm là $x=-\\dfrac{\\sqrt{2}}{2}$.\n- Biểu diễn cho họ nghiệm của phương trình:\n$\\cos x = -\\dfrac{\\sqrt{2}}{2} \\Leftrightarrow \\sqrt{2} \\cos x = -1 \\Leftrightarrow \\sqrt{2} \\cos x+1 = 0$.\n- Chọn đáp án $\\sqrt{2} \\cos x+1 = 0$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111060101043",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ biết $u_n = 2n + 1$. Số hạng $u_3$ bằng",
+  "lua_chon": [
+   "3",
+   "8",
+   "6",
+   "7"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Thay $n = 3$ vào công thức: $u_3 = 2 \\cdot 3 + 1 = 7$.\nChọn D."
+ },
+ {
+  "ma_cau": "T111020202057",
+  "loai": "tu_luan",
+  "de": "Tính các giá trị lượng giác của góc $\\alpha$, biết $\\sin 2\\alpha = \\dfrac{24}{25}$ và $0 < \\alpha < \\dfrac{\\pi}{4}$.",
+  "dap_an": "$\\cos \\alpha = \\dfrac{4}{5}$; $\\sin \\alpha = \\dfrac{3}{5}$; $\\tan \\alpha = \\dfrac{3}{4}$; $\\cot \\alpha = \\dfrac{4}{3}$",
+  "loi_giai": "Vì $0 < \\alpha < \\dfrac{\\pi}{4}$ nên $0 < 2\\alpha < \\dfrac{\\pi}{2}$, suy ra $\\cos 2\\alpha > 0$.\nTa có $\\cos 2\\alpha = \\sqrt{1 - \\sin^2 2\\alpha} = \\sqrt{1 - \\left(\\dfrac{24}{25}\\right)^2} = \\dfrac{7}{25}$.\nMặt khác, áp dụng công thức $\\cos 2\\alpha = 2 \\cos^2 \\alpha - 1 = 1 - 2 \\sin^2 \\alpha = \\dfrac{7}{25}$, ta suy ra\n$\\cos^2 \\alpha = \\dfrac{16}{25}$ và $\\sin^2 \\alpha = \\dfrac{9}{25}$.\nVì $0 < \\alpha < \\dfrac{\\pi}{4}$ nên $\\cos \\alpha > 0$ và $\\sin \\alpha > 0$, do đó $\\cos \\alpha = \\dfrac{4}{5}$ và $\\sin \\alpha = \\dfrac{3}{5}$.\nTừ đây tính được $\\tan \\alpha = \\dfrac{\\sin \\alpha}{\\cos \\alpha} = \\dfrac{3}{4}$ và $\\cot \\alpha = \\dfrac{1}{\\tan \\alpha} = \\dfrac{4}{3}$."
+ },
+ {
+  "ma_cau": "T111060102039",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = 2n + 9$. Số 43 là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "15",
+   "16",
+   "17",
+   "18"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét phương trình $u_n = 43$:\n$2n + 9 = 43$\n$\\Leftrightarrow 2n = 34$\n$\\Leftrightarrow n = 17$ (thỏa mãn)"
+ },
+ {
+  "ma_cau": "T111030401056",
+  "loai": "tu_luan",
+  "de": "Hàm số $y = \\tan x$ tuần hoàn với chu kỳ bằng bao nhiêu?",
+  "lua_chon": [
+   "$T = 4\\pi$",
+   "$T = \\dfrac{\\pi}{2}$",
+   "$T = 2\\pi$",
+   "$T = \\pi$"
+  ],
+  "dap_an": "D"
+ },
+ {
+  "ma_cau": "T111060201039",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào là một cấp số cộng?",
+  "lua_chon": [
+   "$\\mathrm{u_n = \\dfrac{3^n}{n+4}}$",
+   "$\\mathrm{u_n = \\dfrac{n+4}{5}}$",
+   "$\\mathrm{u_n = n^2-4}$",
+   "$\\mathrm{u_n = \\dfrac{4}{n+5}}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: Hàm số mũ $\\Rightarrow$ Loại.\nXét C: Hàm bậc 2 $\\Rightarrow$ Loại.\nXét D: Ẩn $n$ dưới mẫu $\\Rightarrow$ Loại.\nXét B: Hàm bậc 1 ($\\mathrm{u_n = \\dfrac{1}{5}n + \\dfrac{4}{5}}$) $\\Rightarrow$ Thỏa mãn.\nChọn B."
+ },
+ {
+  "ma_cau": "T111060104015",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào dưới đây là dãy số tăng?",
+  "lua_chon": [
+   "5; 3; 1; -1; \\ldots",
+   "$-\\dfrac{1}{2}$; $-\\dfrac{1}{4}$; $-\\dfrac{1}{8}$; $-\\dfrac{1}{16}$; \\ldots",
+   "10; 10; 10; 10; \\ldots",
+   "$\\dfrac{3}{2}$; 1; $\\dfrac{1}{2}$; 0; \\ldots"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét các đáp án:\nA. Có $5 > 3 > 1 > \\ldots \\Rightarrow$ Dãy số giảm. (Loại)\nB. Có $-0.5 < -0.25 < -0.125 < \\ldots \\Rightarrow$ Dãy số tăng. (Thỏa mãn)\nC. Dãy số không đổi. (Loại)\nD. Có $1.5 > 1 > 0.5 > \\ldots \\Rightarrow$ Dãy số giảm. (Loại)\nChọn B."
+ },
+ {
+  "ma_cau": "T111030501051",
+  "loai": "trac_nghiem",
+  "de": "Cho đồ thị hàm số lượng giác ở hình sau:\nKhoảng nghịch biến của hàm số là",
+  "lua_chon": [
+   "$\\left(-2\\pi;-\\dfrac{\\pi }{2}\\right)$.",
+   "$\\left(-\\pi;0\\right)$.",
+   "$\\left(0;\\pi \\right)$.",
+   "$\\left(-\\pi;\\pi \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát đồ thị hàm số $y=\\cos x$, ta thấy:\n- Trên khoảng $\\left(0;\\pi \\right)$, đồ thị hàm số đi xuống từ trái sang phải (từ điểm $\\left(0;1\\right)$ xuống điểm $\\left(\\pi;-1\\right)$), do đó hàm số nghịch biến trên khoảng $\\left(0;\\pi \\right)$.\n- Trên khoảng $\\left(-\\pi;0\\right)$, đồ thị hàm số đi lên từ trái sang phải, do đó hàm số đồng biến trên khoảng $\\left(-\\pi;0\\right)$.\nVậy khoảng nghịch biến của hàm số là $\\left(0;\\pi \\right)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111060202068",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có $u_3 = -5$ và $u_6 = -14$. Giá trị của tổng 5 số hạng đầu tiên của cấp số cộng này bằng bao nhiêu?",
+  "lua_chon": [
+   "-15.",
+   "25.",
+   "-25.",
+   "-30."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $d = \\dfrac{u_6-u_3}{6-3} = \\dfrac{-14-(-5)}{3} = -3$.\nSố hạng đầu: $u_1 = u_3 - 2d = -5 - 2(-3) = 1$.\nTổng 5 số hạng đầu: $S_5 = \\dfrac{5}{2}[2u_1 + 4d] = \\dfrac{5}{2}[2(1) + 4(-3)] = \\dfrac{5}{2}[-10] = -25$.\nChọn C."
+ },
+ {
+  "ma_cau": "T111030204038",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tập giá trị của hàm số $y=2-2\\sin x-\\cos 2x$là $T=\\left[a;b\\right]$. Tính giá trị biểu thức $P=10a-2b$?",
+  "dap_an": "-5",
+  "loi_giai": "Ta có $\\cos 2x=1-2\\sin ^{2}x$, do đó\n$y=2-2\\sin x-\\left(1-2\\sin ^{2}x\\right)=2\\sin ^{2}x-2\\sin x+1.$\nĐặt $t=\\sin x$, với $x\\in \\mathbb{R}$ thì $t \\in \\left[-1; 1\\right]$.\nHàm số trở thành $f\\left(t\\right)=2t^{2}-2t+1$ với $t \\in \\left[-1; 1\\right]$.\nĐây là hàm số bậc hai có $a=2>0$, hoành độ đỉnh là $t=-\\dfrac{-2}{2\\cdot 2}=\\dfrac{1}{2}\\in \\left[-1;1\\right]$.\nTa có $f\\left(\\dfrac{1}{2}\\right)=\\dfrac{1}{2}$, $f\\left(-1\\right)=5$ và $f\\left(1\\right)=1$.\nBảng biến thiên của $f\\left(t\\right)$ trên đoạn $\\left[-1;1\\right]$:\nCăn cứ vào bảng biến thiên, tập giá trị của hàm số là $T=\\left[\\dfrac{1}{2};5\\right]$.\nDo đó $a=\\dfrac{1}{2}$ và $b=5$.\nVậy giá trị biểu thức $P=10a-2b=10\\cdot \\dfrac{1}{2}-2\\ …"
+ },
+ {
+  "ma_cau": "T111060101044",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = 3n - 2$. Số hạng thứ ba của dãy là",
+  "lua_chon": [
+   "$u_3 = 7$",
+   "$u_3 = 6$",
+   "$u_3 = 9$",
+   "$u_3 = 8"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Thay $n = 3$ vào công thức: $u_3 = 3 \\cdot 3 - 2 = 7$.\nChọn A."
+ },
+ {
+  "ma_cau": "T111060201005",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào là một cấp số cộng?",
+  "lua_chon": [
+   "$1; -3; -5; -7; -9$.",
+   "$1; -3; -7; -11; -15$.",
+   "$1; -3; -6; -9; -12$.",
+   "$1; -2; -4; -6; -8$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: $-3 - 1 = -4 \\neq -5 - (-3) = -2 \\Rightarrow$ Loại.\nXét B: $-3 - 1 = -7 - (-3) = -11 - (-7) = -15 - (-11) = -4 \\Rightarrow$ Thỏa mãn.\nXét C: $-3 - 1 = -4 \\neq -6 - (-3) = -3 \\Rightarrow$ Loại.\nXét D: $-2 - 1 = -3 \\neq -4 - (-2) = -2 \\Rightarrow$ Loại.\nChọn B."
+ },
+ {
+  "ma_cau": "T111060201042",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là một cấp số cộng?",
+  "lua_chon": [
+   "$u_n = -5$.",
+   "$u_n = -5^n$.",
+   "$u_n = \\dfrac{-5}{n}$.",
+   "$u_n = (-5)^n$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét B, D: Hàm số mũ $\\Rightarrow$ Loại.\nXét C: Ẩn $n$ dưới mẫu $\\Rightarrow$ Loại.\nXét A: Đây là hàm hằng (cấp số cộng với công sai $d = 0$) $\\Rightarrow$ Thỏa mãn.\nChọn A."
+ },
+ {
+  "ma_cau": "T111060201014",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào không phải là cấp số cộng?",
+  "lua_chon": [
+   "11; 22; 33; 44; 55.",
+   "-1; -3; -6; -10; -15.",
+   "$\\dfrac{1}{5}; \\dfrac{2}{5}; \\dfrac{3}{5}; \\dfrac{4}{5}; 1.$",
+   "-20; -15; -10; -5; 0."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: $22 - 11 = 33 - 22 = \\dots = 11 \\Rightarrow$ Là CSC.\nXét B: $-3 - (-1) = -2 \\neq -6 - (-3) = -3 \\Rightarrow$ Không là CSC (Thỏa mãn).\nXét C: $\\dfrac{2}{5} - \\dfrac{1}{5} = \\dfrac{3}{5} - \\dfrac{2}{5} = \\dots = \\dfrac{1}{5} \\Rightarrow$ Là CSC.\nXét D: $-15 - (-20) = -10 - (-15) = \\dots = 5 \\Rightarrow$ Là CSC.\nChọn B."
+ },
+ {
+  "ma_cau": "T111060304088",
+  "loai": "tra_loi_ngan",
+  "de": "Để tích lũy tiền cho việc học đại học của con gái, cô Hoa quyết định hằng tháng bỏ ra 500 nghìn đồng vào tài khoản tiết kiệm, được trả lãi 0,5% cộng dồn hàng tháng. Cô ấy sẽ tích luỹ được bao nhiêu triệu đồng vào thời điểm gửi khoản tiền thứ 180? (làm tròn đến hàng đơn vị).",
+  "dap_an": "145",
+  "loi_giai": "Gọi số tiền gửi hàng tháng là $A = 500$ (nghìn đồng), lãi suất hàng tháng là $r = 0,5\\% = 0,005$.\nTại thời điểm gửi khoản tiền thứ 180: - Khoản tiền thứ nhất sau 179 tháng tích luỹ có giá trị là $A(1+r)^{179}$.\n- Khoản tiền thứ hai sau 178 tháng tích luỹ có giá trị là $A(1+r)^{178}$.\n...\n- Khoản tiền thứ 179 sau 1 tháng tích luỹ có giá trị là $A(1+r)$.\n- Khoản tiền thứ 180 vừa gửi vào có giá trị là $A$.\nTổng số tiền cô Hoa tích luỹ được tại thời điểm gửi khoản tiền thứ 180 là\n$T = A + A(1+r) + A(1+r)^2 + ... + A(1+r)^{179}$.\nĐây là tổng của 180 số hạng đầu của cấp số nhân có số hạng đầu $u_1 = A$ và công bội $q = 1 + r$.\nÁp dụng công thức tính tổng cấp số nhân:\n$T = A \\dfrac{(1+r)^{180} - 1} …"
+ },
+ {
+  "ma_cau": "T111020301034",
+  "loai": "tu_luan",
+  "de": "Áp dụng công thức tích thành tổng để khai triển:\nsin 2a cos b =",
+  "dap_an": "$\\dfrac{1}{2}[\\sin(2a+b) + \\sin(2a-b)]$",
+  "loi_giai": "$\\sin 2a \\cos b = \\dfrac{1}{2}[\\sin(2a+b) + \\sin(2a-b)]$"
+ },
+ {
+  "ma_cau": "T111060104025",
+  "loai": "trac_nghiem",
+  "de": "Cho các dãy số, dãy số nào là dãy số giảm?",
+  "lua_chon": [
+   "$\\sqrt{5}; \\sqrt{5}; \\sqrt{5};...$",
+   "$\\sqrt{10}; \\sqrt{8}; \\sqrt{6}; \\sqrt{4};...$",
+   "$-5; -10; -15; -10;...$",
+   "$0; 1; 3; 6; 10;...$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét các đáp án:\nA. Dãy số không đổi. (Loại)\nB. Có $\\sqrt{10} > \\sqrt{8} > \\sqrt{6} > \\sqrt{4} \\Rightarrow$ Dãy số giảm. (Thỏa mãn)\nC. Có $-5 > -10 > -15$ nhưng $-15 < -10 \\Rightarrow$ Dãy không tăng không giảm. (Loại)\nD. Có $0 < 1 < 3 <... \\Rightarrow$ Dãy số tăng. (Loại)\nChọn B."
+ },
+ {
+  "ma_cau": "T111010101007",
+  "loai": "trac_nghiem",
+  "de": "Cung tròn có số đo là $\\dfrac{5\\pi}{4}$. Hãy chọn số đo độ của cung tròn đó trong các cung tròn sau đây?",
+  "lua_chon": [
+   "5°.",
+   "15°.",
+   "172°.",
+   "225°."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có: $a° = \\dfrac{\\alpha}{\\pi}.180° = \\dfrac{5\\pi}{4\\pi}.180° = 225°$."
+ },
+ {
+  "ma_cau": "T111060201021",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là một cấp số cộng?",
+  "lua_chon": [
+   "30; 25; 20; 15; 10.",
+   "2; 5; 10; 17; 26.",
+   "3; -6; 12; -24; 48.",
+   "1; 1,5; 2,5; 3,5; 4,5."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét A: $25 - 30 = 20 - 25 = 15 - 20 = 10 - 15 = -5 \\Rightarrow$ Thỏa mãn.\nXét B: $5 - 2 = 3 \\neq 10 - 5 = 5 \\Rightarrow$ Loại.\nXét C: $-6 - 3 = -9 \\neq 12 - (-6) = 18 \\Rightarrow$ Loại.\nXét D: $1,5 - 1 = 0,5 \\neq 2,5 - 1,5 = 1 \\Rightarrow$ Loại.\nChọn A."
+ },
+ {
+  "ma_cau": "T111030501075",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\cos x$có đồ thị là đường cong ở hình bên dưới.\nHàm số $y=\\cos x$ nghịch biến trên khoảng",
+  "lua_chon": [
+   "$\\left(0;\\pi \\right)$.",
+   "$\\left(\\pi;2\\pi \\right)$.",
+   "$\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$.",
+   "$\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát đồ thị hàm số $y=\\cos x$ trên các khoảng:\n- Trên khoảng $\\left(0;\\pi \\right)$, đồ thị hàm số là đường cong đi xuống từ trái sang phải (từ điểm $\\left(0;1\\right)$ xuống điểm $\\left(\\pi;-1\\right)$), do đó hàm số $y=\\cos x$ nghịch biến trên khoảng $\\left(0;\\pi \\right)$.\n- Trên khoảng $\\left(\\pi;2\\pi \\right)$, đồ thị hàm số là đường cong đi lên từ trái sang phải, do đó hàm số đồng biến trên khoảng $\\left(\\pi;2\\pi \\right)$.\n- Trên khoảng $\\left(-\\dfrac{\\pi }{2};\\dfrac{\\pi }{2}\\right)$, hàm số đồng biến trên $\\left(-\\dfrac{\\pi }{2};0\\right)$ và nghịch biến trên $\\left(0;\\dfrac{\\pi }{2}\\right)$.\n- Trên khoảng $\\left(\\dfrac{\\pi}{2}; \\dfrac{3\\pi}{2}\\right)$, hàm số nghịch biến trên $\\left(\\d …",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111020202007",
+  "loai": "tu_luan",
+  "de": "Cho $\\cos \\alpha =\\dfrac{11}{61}$ và $-\\dfrac{\\pi }{2}<\\alpha <0$, tính giá trị của biểu thức $\\cos \\left(2\\alpha +\\dfrac{\\pi }{3}\\right)$ và $\\tan \\left(\\dfrac{3\\pi }{4}-2\\alpha \\right)$.",
+  "dap_an": "$-\\dfrac{3479+1320\\sqrt{3}}{7442}$, $\\dfrac{4799}{2159}$",
+  "loi_giai": "Vì $-\\dfrac{\\pi }{2}<\\alpha <0$ nên $\\sin \\alpha <0$.\nDo đó, $\\sin \\alpha =-\\sqrt{1-\\cos ^{2}\\alpha }=-\\sqrt{1-\\left(\\dfrac{11}{61}\\right)^{2}}=-\\sqrt{1-\\dfrac{121}{3721}}=-\\sqrt{\\dfrac{3600}{3721}}=-\\dfrac{60}{61}$.\n*) Ta có $\\cos 2\\alpha =2\\cos ^{2}\\alpha -1=2\\cdot \\left(\\dfrac{11}{61}\\right)^{2}-1=2\\cdot \\dfrac{121}{3721}-1=\\dfrac{242}{3721}-1=-\\dfrac{3479}{3721}$.\n$\\sin 2\\alpha =2\\sin \\alpha \\cos \\alpha =2\\cdot \\left(-\\dfrac{60}{61}\\right)\\cdot \\dfrac{11}{61}=-\\dfrac{1320}{3721}$.\n$\\Rightarrow \\cos \\left(2\\alpha +\\dfrac{\\pi }{3}\\right)=\\cos 2\\alpha \\cos \\dfrac{\\pi }{3}-\\sin 2\\alpha \\sin \\dfrac{\\pi }{3}=(-\\dfrac{3479}{3721})\\cdot \\dfrac{1}{2}-(-\\dfrac{1320}{3721})\\cdot \\dfrac{\\sqrt{3}}{2} …"
+ },
+ {
+  "ma_cau": "T111060102023",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = \\dfrac{n-2}{n^2-3n+7}$. Số $\\dfrac{3}{17}$ là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "4",
+   "6",
+   "5",
+   "7"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét phương trình $u_n = \\dfrac{3}{17}$.\n$\\dfrac{n-2}{n^2-3n+7} = \\dfrac{3}{17}$\n$\\Leftrightarrow 17n-34 = 3n^2-9n+21$\n$\\Leftrightarrow 3n^2 - 26n + 55 = 0$\n$\\Leftrightarrow \\left[\\begin{array}{l} n=5 \\text{ (thỏa mãn)} \\\\ n=\\dfrac{11}{3} \\text{ (loại)} \\end{array}\\right.$"
+ },
+ {
+  "ma_cau": "T111030501081",
+  "loai": "trac_nghiem",
+  "de": "Bảng biến thiên của hàm số $y=f\\left(x\\right)=\\cos 2x$trên đoạn $\\left[-\\dfrac{\\pi }{2};\\dfrac{3\\pi }{2}\\right]$ là:",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "loi_giai": "Xét hàm số $y=\\cos 2x$ trên đoạn $\\left[-\\dfrac{\\pi }{2};\\dfrac{3\\pi }{2}\\right]$:\n- Tại $x=-\\dfrac{\\pi }{2}\\Rightarrow y=\\cos \\left(-\\pi \\right)=-1$.\n- Tại $x=0\\Rightarrow y=\\cos 0=1$.\n- Tại $x=\\dfrac{\\pi }{2}\\Rightarrow y=\\cos \\pi =-1$.\n- Tại $x=\\pi \\Rightarrow y=\\cos 2\\pi =1$.\n- Tại $x=\\dfrac{3\\pi }{2}\\Rightarrow y=\\cos 3\\pi =-1$.\nSự biến thiên của hàm số trên các đoạn con:\n- Trên đoạn $\\left[-\\dfrac{\\pi }{2};0\\right]$, hàm số đồng biến từ $-1$ đến $1$.\n- Trên đoạn $\\left[0;\\dfrac{\\pi }{2}\\right]$, hàm số nghịch biến từ $1$ đến $-1$.\n- Trên đoạn $\\left[\\dfrac{\\pi }{2};\\pi \\right]$, hàm số đồng biến từ $-1$ đến $1$.\n- Trên đoạn $\\left[\\pi;\\dfrac{3\\pi }{2}\\right]$, hàm số nghịch biến từ $1$ …",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111060104021",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào là dãy số tăng?",
+  "lua_chon": [
+   "$1.1; 1.01; 1.001; 1.0001; ...$",
+   "$0.9; 0.99; 0.999; 0.9999; ...$",
+   "$5; 4.9; 4.8; 4.7; ...$",
+   "$-0.1; -0.2; -0.3; -0.4; ...$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét các đáp án:\nA. Có $1.1 > 1.01 > 1.001 > ...\\Rightarrow$ Dãy số giảm. (Loại)\nB. Có $0.9 < 0.99 < 0.999 < ...\\Rightarrow$ Dãy số tăng. (Thỏa mãn)\nC. Có $5 > 4.9 > 4.8 > ...\\Rightarrow$ Dãy số giảm. (Loại)\nD. Có $-0.1 > -0.2 > -0.3 > ...\\Rightarrow$ Dãy số giảm. (Loại)\nChọn B."
+ },
+ {
+  "ma_cau": "T111060201032",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây không phải là cấp số cộng?",
+  "lua_chon": [
+   "$u_n = -7n + 1$",
+   "$u_n = 2n + 10$",
+   "$u_n = n^2 - n + 1$",
+   "$u_n = \\dfrac{4n-1}{5}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét A, B, D: Đều là hàm bậc 1 $\\Rightarrow$ Là CSC.\nXét C: Hàm bậc 2 $\\Rightarrow$ Không là CSC (Thỏa mãn yêu cầu đề).\nChọn C."
+ },
+ {
+  "ma_cau": "T111060101026",
+  "loai": "trac_nghiem",
+  "de": "Dãy số $(u_n)$ cho bởi $u_1 = 2; u_n = u_{n-1} - n$ với $n \\ge 2$. Giá trị của $u_3$ là",
+  "lua_chon": [
+   "$-1$",
+   "$-3$",
+   "$0$",
+   "$-2$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $u_1 = 2$.\n$u_2 = 2 - 2 = 0$.\n$u_3 = 0 - 3 = -3$.\nChọn B."
+ },
+ {
+  "ma_cau": "T111060204016",
+  "loai": "trac_nghiem",
+  "de": "Tìm số hạng thứ 12 của cấp số cộng $(u_n)$ biết $\\left\\{\\begin{matrix}u_1 + u_4 = 11\\\\u_2 + u_5 = 15\\end{matrix}\\right.$.",
+  "lua_chon": [
+   "24,5",
+   "22,5",
+   "26,5",
+   "28,5"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có hệ phương trình:\n$\\left\\{\\begin{matrix}2u_1 + 3d = 11\\\\2u_1 + 5d = 15\\end{matrix}\\right.$\nLấy phương trình dưới trừ phương trình trên: $2d = 4 \\Rightarrow d = 2$.\nSuy ra $2u_1 + 6 = 11 \\Rightarrow 2u_1 = 5 \\Rightarrow u_1 = 2,5$.\nKhi đó $u_{12} = 2,5 + 11(2) = 24,5$. Chỉ có đáp án A đúng.\nChọn A."
+ },
+ {
+  "ma_cau": "T111060304042",
+  "loai": "tra_loi_ngan",
+  "de": "Một gia đình mua một chiếc ô tô giá $800$ triệu đồng. Trung bình sau mỗi năm sử dụng, giá trị còn lại của ô tô giảm đi $5\\%$ (so với năm trước đó). Sau $10$ năm, giá trị của ô tô ước tính còn bao nhiêu triệu đồng? (Kết quả làm tròn đến hàng đơn vị của triệu đồng)?",
+  "dap_an": "479",
+  "loi_giai": "Sau mỗi năm sử dụng, giá trị của ô tô còn lại bằng $100\\%-5\\%=95\\%=0,95$ giá trị của năm trước đó.\nGiá trị của chiếc ô tô qua các năm lập thành một cấp số nhân có số hạng đầu là giá trị ban đầu $V_{0}=800$ (triệu đồng) và công bội $q=0,95$.\nSau $10$ năm sử dụng, giá trị ước tính của chiếc ô tô là\n$V_{10}=V_{0}\\cdot q^{10}=800\\cdot \\left(0,95\\right)^{10}\\approx 478,99 \\left(\\text{trieu dong}\\right).$\nLàm tròn đến hàng đơn vị của triệu đồng, ta được kết quả là $479$ triệu đồng."
+ },
+ {
+  "ma_cau": "T111060204035",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ thỏa mãn $\\begin{cases}S_4+u_5=25\\\\ S_6=36\\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.",
+  "lua_chon": [
+   "$u_1 = 1, d = 2$",
+   "$u_1 = 2, d = 1$",
+   "$u_1 = -1, d = 2$",
+   "$u_1 = 1, d = -2$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Sử dụng công thức của cấp số cộng, ta có hệ:\n$\\begin{cases} \\dfrac{4}{2}(2u_1 + 3d) + (u_1 + 4d) = 25 \\\\ \\dfrac{6}{2}(2u_1 + 5d) = 36 \\end{cases} \\Leftrightarrow \\begin{cases} 5u_1 + 10d = 25 \\\\ 6u_1 + 15d = 36 \\end{cases} \\Leftrightarrow \\begin{cases} u_1 = 1 \\\\ d = 2 \\end{cases}$\nChọn A."
+ },
+ {
+  "ma_cau": "T111060101014",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ có số hạng tổng quát $u_n = \\dfrac{n}{2^{n-1}}$ (với $n \\in \\mathbb{N}^*$). Hai số hạng đầu tiên của dãy số đã cho lần lượt là",
+  "lua_chon": [
+   "$u_1 = \\dfrac{1}{2}; u_2 = \\dfrac{2}{3}$",
+   "$u_1 = 1; u_2 = 1$",
+   "$u_1 = \\dfrac{1}{2}; u_2 = \\dfrac{1}{4}$",
+   "$u_1 = 1; u_2 = \\dfrac{1}{2}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $u_1 = \\dfrac{1}{2^{1-1}} = 1$ và $u_2 = \\dfrac{2}{2^{2-1}} = \\dfrac{2}{2} = 1$.\nVậy hai số hạng đầu tiên là $1; \\dfrac{2}{3}$.\nChọn B."
+ },
+ {
+  "ma_cau": "T111020402079",
+  "loai": "tu_luan",
+  "de": "Cho $\\cos 2x = \\dfrac{1}{5}$ và $\\cos x = \\dfrac{3}{4}$. Tính: $S = \\cos x + \\cos 2x + \\cos 3x$",
+  "dap_an": "$\\dfrac{1}{2}$",
+  "loi_giai": "$\\mathrm{S} = (\\cos 3x + \\cos x) + \\cos 2x$\\n$\\mathrm{S} = 2 \\cos 2x \\cos x + \\cos 2x$\\n$\\mathrm{S} = \\cos 2x (2 \\cos x + 1)$\\n$\\mathrm{S} = \\dfrac{1}{5} \\left( 2 \\cdot \\dfrac{3}{4} + 1 \\right)$\\n$\\mathrm{S} = \\dfrac{1}{5} \\left( \\dfrac{3}{2} + 1 \\right)$\\n$\\mathrm{S} = \\dfrac{1}{5} \\left( \\dfrac{5}{2} \\right)$\\n$\\mathrm{S} = \\dfrac{1}{2}$"
+ },
+ {
+  "ma_cau": "T111060102040",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = 8n - 3$. Số 61 là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét phương trình $u_n = 61$:\n$8n - 3 = 61$\n$\\Leftrightarrow 8n = 64$\n$\\Leftrightarrow n = 8$ (thỏa mãn)"
+ },
+ {
+  "ma_cau": "T111020402025",
+  "loai": "tu_luan",
+  "de": "Cho $\\sin x = \\dfrac{1}{3}$.\nTính: $F = \\cos \\left(2x + \\dfrac{\\pi}{3}\\right) + \\cos \\left(2x - \\dfrac{\\pi}{3}\\right)$",
+  "dap_an": "\\dfrac{7}{9}",
+  "loi_giai": "$F = \\cos \\left(2x + \\dfrac{\\pi}{3}\\right) + \\cos \\left(2x - \\dfrac{\\pi}{3}\\right)$\n$= 2 \\cos 2x \\cos \\dfrac{\\pi}{3}$\n$= 2(1 - 2\\sin^2 x) \\cdot \\dfrac{1}{2}$\n$= 1 - 2\\left(\\dfrac{1}{3}\\right)^2 = \\dfrac{7}{9}$"
+ },
+ {
+  "ma_cau": "T111030204036",
+  "loai": "tra_loi_ngan",
+  "de": "Gọi $M$ và $m$ lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\\sin x+\\sqrt{3}\\cos x+3$. Tính $M+m$.",
+  "dap_an": "6",
+  "loi_giai": "Biến đổi hàm số đã cho:\n$y=\\sin x+\\sqrt{3}\\cos x+3=2\\left(\\dfrac{1}{2}\\sin x+\\dfrac{\\sqrt{3}}{2}\\cos x\\right)+3=2\\sin \\left(x+\\dfrac{\\pi }{3}\\right)+3.$\nVì $-1\\le \\sin \\left(x+\\dfrac{\\pi }{3}\\right)\\le 1$ với mọi $x\\in \\mathbb{R}$, nên\n$-2+3\\le 2\\sin \\left(x+\\dfrac{\\pi }{3}\\right)+3\\le 2+3\\Leftrightarrow 1\\le y\\le 5.$\nDo đó:\n- Giá trị lớn nhất của hàm số là $M=5$, đạt được khi $\\sin \\left(x+\\dfrac{\\pi }{3}\\right)=1\\Leftrightarrow x=\\dfrac{\\pi }{6}+k2\\pi \\left(k\\in\\mathbb{Z}\\right)$.\n- Giá trị nhỏ nhất của hàm số là $m=1$, đạt được khi $\\sin \\left(x+\\dfrac{\\pi }{3}\\right)=-1\\Leftrightarrow x=-\\dfrac{5\\pi }{6}+k2\\pi \\left(k\\in\\mathbb{Z}\\right)$.\nVậy $M+m=5+1=6$."
+ },
+ {
+  "ma_cau": "T111060102031",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = \\dfrac{n-1}{2n^2-3n+5}$. Số $\\dfrac{5}{59}$ là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét phương trình $u_n = \\dfrac{5}{59}$.\n$\\dfrac{n-1}{2n^2-3n+5} = \\dfrac{5}{59}$\n$\\Leftrightarrow 59n-59 = 10n^2-15n+25$\n$\\Leftrightarrow 10n^2-74n+84 = 0$\n$\\Leftrightarrow \\begin{cases} n = 6 \\text{ (thỏa mãn)} \\\\ n = \\dfrac{7}{5} \\text{ (loại)} \\end{cases}$\nChọn C."
+ },
+ {
+  "ma_cau": "T111010301012",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\dfrac{7\\pi}{4} < \\alpha < 2\\pi$ . Xét câu nào sau đây đúng?",
+  "lua_chon": [
+   "$\\tan \\alpha > 0$.",
+   "$\\cot \\alpha > 0$.",
+   "$\\cos \\alpha > 0$.",
+   "$\\sin \\alpha > 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nDo $\\dfrac{7\\pi}{4} < \\alpha < 2\\pi$ nên $\\dfrac{3\\pi}{2} + \\dfrac{\\pi}{4} < \\alpha < 2\\pi$ suy ra $\\alpha$ thuộc góc phần tư thứ IV nên đáp án C đúng."
+ },
+ {
+  "ma_cau": "T111060201008",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây không phải là cấp số cộng?",
+  "lua_chon": [
+   "$5; 9; 13; 17; 21$.",
+   "$-1; -4; -7; -10; -13$.",
+   "$2; 4; 7; 11; 16$.",
+   "$\\dfrac{1}{3}; \\dfrac{2}{3}; 1; \\dfrac{4}{3}; \\dfrac{5}{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét A: $9 - 5 = 13 - 9 = 17 - 13 = 21 - 17 = 4 \\Rightarrow$ Là CSC.\nXét B: $-4 - (-1) = -7 - (-4) = -10 - (-7) = -13 - (-10) = -3 \\Rightarrow$ Là CSC.\nXét C: $4 - 2 = 2 \\neq 7 - 4 = 3 \\Rightarrow$ Không là CSC (Thỏa mãn).\nXét D: $\\dfrac{2}{3} - \\dfrac{1}{3} = 1 - \\dfrac{2}{3} = ... = \\dfrac{1}{3} \\Rightarrow$ Là CSC.\nChọn C."
+ },
+ {
+  "ma_cau": "T111060101030",
+  "loai": "trac_nghiem",
+  "de": "Dãy số $(u_n)$ có hệ thức $u_1 = 2$; $u_n = u_{n-1} + n^2$ với $n \\geq 2$. Giá trị $u_3$ là",
+  "lua_chon": [
+   "6",
+   "15",
+   "10",
+   "14"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $u_1 = 2$.\n$u_2 = 2 + 2^2 = 6$.\n$u_3 = 6 + 3^2 = 15$.\nChọn B."
+ },
+ {
+  "ma_cau": "T111060201007",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là một cấp số cộng?",
+  "lua_chon": [
+   "-2; 0; 3; 7; 12.",
+   "10; 7; 4; 1; -2.",
+   "1; 3; 9; 27; 81.",
+   "$\\dfrac{1}{2}; \\dfrac{1}{3}; \\dfrac{1}{4}; \\dfrac{1}{5}; \\dfrac{1}{6}; \\dfrac{1}{7}.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: $0 - (-2) = 2 \\neq 3 - 0 = 3 \\Rightarrow$ Loại.\nXét B: $7 - 10 = 4 - 7 = 1 - 4 = -2 - 1 = -3 \\Rightarrow$ Thỏa mãn.\nXét C: $3 - 1 = 2 \\neq 9 - 3 = 6 \\Rightarrow$ Loại.\nXét D: $\\dfrac{1}{3} - \\dfrac{1}{2} = -\\dfrac{1}{6} \\neq \\dfrac{1}{4} - \\dfrac{1}{3} = -\\dfrac{1}{12} \\Rightarrow$ Loại.\nChọn B."
+ },
+ {
+  "ma_cau": "T111010605019",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\cos \\alpha =-\\dfrac{1}{2}$ và $\\dfrac{\\pi }{2}<\\alpha <\\pi$. Tính giá trị của $P=\\sin \\left(2\\alpha -\\dfrac{\\pi }{6}\\right)$.",
+  "lua_chon": [
+   "$P=-1$.",
+   "$P=1$.",
+   "$P=-\\dfrac{\\sqrt{3}}{2}$.",
+   "$P=-\\dfrac{1}{2}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $\\dfrac{\\pi }{2}<\\alpha <\\pi$ nên điểm biểu diễn $M$ của góc $\\alpha$ nằm ở góc phần tư thứ hai, do đó $\\sin \\alpha >0$.\nÁp dụng hằng đẳng thức $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$, ta có\n$\\sin ^{2}\\alpha =1-\\cos ^{2}\\alpha =1-\\left(-\\dfrac{1}{2}\\right)^{2}=1-\\dfrac{1}{4}=\\dfrac{3}{4}.$\nVì $\\sin \\alpha >0$ nên $\\sin \\alpha =\\sqrt{\\dfrac{3}{4}}=\\dfrac{\\sqrt{3}}{2}$.\nÁp dụng công thức nhân đôi:\n$\\sin 2\\alpha =2\\sin \\alpha \\cos \\alpha =2\\cdot \\dfrac{\\sqrt{3}}{2}\\cdot \\left(-\\dfrac{1}{2}\\right)=-\\dfrac{\\sqrt{3}}{2}$\n$\\cos 2\\alpha =2\\cos ^{2}\\alpha -1=2\\cdot \\left(-\\dfrac{1}{2}\\right)^{2}-1=2\\cdot \\dfrac{1}{4}-1=-\\dfrac{1}{2}.$\nÁp dụng công thức cộng cho biểu thức $P$, ta có\n$P=\\sin \\left(2\\a …"
+ },
+ {
+  "ma_cau": "T111040101012",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $2\\cos x = -\\sqrt{2}$",
+  "dap_an": "$x = \\dfrac{3\\pi}{4} + k2\\pi$, $x = -\\dfrac{3\\pi}{4} + k2\\pi$",
+  "loi_giai": "$2\\cos x = -\\sqrt{2} \\Leftrightarrow \\cos x = -\\dfrac{\\sqrt{2}}{2}$\n$\\Leftrightarrow \\cos x = \\cos \\dfrac{3\\pi}{4}$\n$\\Leftrightarrow \\begin{cases} x = \\dfrac{3\\pi}{4} + k2\\pi \\\\ x = -\\dfrac{3\\pi}{4} + k2\\pi \\end{cases}$ ($k \\in \\mathbb{Z}$)"
+ },
+ {
+  "ma_cau": "T111060104020",
+  "loai": "trac_nghiem",
+  "de": "Cho các dãy số. Dãy số nào là dãy số giảm?",
+  "lua_chon": [
+   "$\\sin(1^\\circ); \\sin(2^\\circ); \\sin(3^\\circ); ...$",
+   "$\\cos(1^\\circ); \\cos(2^\\circ); \\cos(3^\\circ); ...$",
+   "$2; 4; 6; 8; ...$",
+   "$-\\dfrac{1}{2}; -\\dfrac{1}{3}; -\\dfrac{1}{4}; ...$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét các đáp án:\nA. Hàm sin trên khoảng $(0;90^\\circ)$ là hàm đồng biến nên giá trị tăng. (Loại)\nB. Hàm cos trên khoảng $(0;90^\\circ)$ là hàm nghịch biến nên giá trị giảm: $\\cos(1^\\circ) > \\cos(2^\\circ) > \\cos(3^\\circ) > ...\\Rightarrow$ Dãy số giảm. (Thỏa mãn)\nC. Dãy số tăng. (Loại)\nD. Có $-0.5 < -0.33 < -0.25 < ...\\Rightarrow$ Dãy số tăng. (Loại)\nChọn B."
+ },
+ {
+  "ma_cau": "T111060201011",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là một cấp số cộng?",
+  "lua_chon": [
+   "2; 6; 12; 20; 30.",
+   "$-3; 0; 3; 6; 9$.",
+   "1; 2; 5; 10; 17.",
+   "$-1; -2; -4; -8; -16$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: $6 - 2 = 4 \\ne 12 - 6 = 6 \\Rightarrow$ Loại.\nXét B: $0 - (-3) = 3 - 0 = 6 - 3 = 9 - 6 = 3 \\Rightarrow$ Thỏa mãn.\nXét C: $2 - 1 = 1 \\ne 5 - 2 = 3 \\Rightarrow$ Loại.\nXét D: $-2 - (-1) = -1 \\ne -4 - (-2) = -2 \\Rightarrow$ Loại.\nChọn B."
+ },
+ {
+  "ma_cau": "T111040101044",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $\\tan \\left(\\dfrac{x}{2} - \\dfrac{\\pi}{3}\\right) = -\\sqrt{3}$",
+  "dap_an": "$x = 2k\\pi, k \\in \\mathbb{Z}$",
+  "loi_giai": "$\\tan \\left(\\dfrac{x}{2} - \\dfrac{\\pi}{3}\\right) = -\\sqrt{3} \\Leftrightarrow \\tan \\left(\\dfrac{x}{2} - \\dfrac{\\pi}{3}\\right) = \\tan \\left(-\\dfrac{\\pi}{3}\\right)$\n$\\Leftrightarrow \\dfrac{x}{2} - \\dfrac{\\pi}{3} = -\\dfrac{\\pi}{3} + k\\pi, k \\in \\mathbb{Z}$\n$\\Leftrightarrow \\dfrac{x}{2} = k\\pi$\n$\\Leftrightarrow x = 2k\\pi, k \\in \\mathbb{Z}$"
+ },
+ {
+  "ma_cau": "T111030501078",
+  "loai": "trac_nghiem",
+  "de": "Xét hàm số $y=\\cos x$trên đoạn $\\left[-\\pi;\\pi \\right]$. Khẳng định nào sau đây là sai?",
+  "lua_chon": [
+   "Hàm số nghịch biến trên khoảng $\\left(0;\\pi \\right)$.",
+   "Hàm số đồng biến trên khoảng $\\left(-\\pi;0\\right)$.",
+   "Hàm số nghịch biến trên khoảng $\\left(-\\pi;0\\right)$.",
+   "Hàm số đồng biến trên khoảng $\\left(-\\dfrac{\\pi }{2};0\\right)$."
+  ],
+  "loi_giai": "Dựa vào đồ thị hàm số $y=\\cos x$ trên đoạn $\\left[-\\pi;\\pi \\right]$:\n- Trên khoảng $\\left(-\\pi;0\\right)$, đồ thị hàm số đi lên từ trái sang phải (từ điểm $\\left(-\\pi;-1\\right)$ đến điểm $\\left(0;1\\right)$), nên hàm số đồng biến trên khoảng $\\left(-\\pi;0\\right)$ và đồng biến trên mọi khoảng con của nó như $\\left(-\\dfrac{\\pi }{2};0\\right)$.\n- Trên khoảng $\\left(0;\\pi \\right)$, đồ thị hàm số đi xuống từ trái sang phải (từ điểm $\\left(0;1\\right)$ đến điểm $\\left(\\pi;-1\\right)$), nên hàm số nghịch biến trên khoảng $\\left(0;\\pi \\right)$.\nDo đó, khẳng định \" Hàm số nghịch biến trên khoảng $\\left(-\\pi;0\\right)$\"\\ là sai.\nVậy khẳng định sai là C.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111060202059",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có $u_2 = 10$ và $u_5 = 4$. Số hạng đầu của cấp số cộng đã cho bằng",
+  "lua_chon": [
+   "-2.",
+   "8.",
+   "14.",
+   "12."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $d = \\dfrac{u_5-u_2}{5-2} = \\dfrac{4-10}{3} = -2$.\nSố hạng đầu: $u_1 = u_2 - d = 10 - (-2) = 12$.\nChọn D."
+ },
+ {
+  "ma_cau": "T111020202080",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin a + \\cos a = \\dfrac{\\sqrt{10}}{5}$ với $\\dfrac{-\\pi}{4}<a<0$. Giá trị của $\\sin 2a$ bằng",
+  "lua_chon": [
+   "$\\dfrac{3}{5}$",
+   "$-\\dfrac{3}{5}$",
+   "$\\dfrac{4}{5}$",
+   "$-\\dfrac{4}{5}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Bình phương hai vế của đẳng thức $\\sin a + \\cos a = \\frac{\\sqrt{10}}{5}$, ta được:$(\\sin a + \\cos a)^2 = \\left(\\frac{\\sqrt{10}}{5}\\right)^2$$\\Leftrightarrow \\sin^2 a + \\cos^2 a + 2\\sin a \\cos a = \\frac{10}{25}$\nSử dụng các công thức lượng giác cơ bản $\\sin^2 a + \\cos^2 a = 1$ và $\\sin 2a = 2\\sin a \\cos a$:$1 + \\sin 2a = \\frac{2}{5}$$\\Leftrightarrow \\sin 2a = \\frac{2}{5} - 1 = -\\frac{3}{5}$"
+ },
+ {
+  "ma_cau": "T111020302001",
+  "loai": "tu_luan",
+  "de": "Cho $\\cos 2x = \\dfrac{1}{4}$. Tính: $A = \\cos\\left(x+\\dfrac{\\pi}{6}\\right)\\cos\\left(x-\\dfrac{\\pi}{6}\\right)$",
+  "dap_an": "\\dfrac{3}{8}",
+  "loi_giai": "$A = \\cos\\left(x+\\dfrac{\\pi}{6}\\right)\\cos\\left(x-\\dfrac{\\pi}{6}\\right) = \\dfrac{1}{2}\\left\\{\\cos\\left[\\left(x+\\dfrac{\\pi}{6}\\right)+\\left(x-\\dfrac{\\pi}{6}\\right)\\right]+\\cos\\left[\\left(x+\\dfrac{\\pi}{6}\\right)-\\left(x-\\dfrac{\\pi}{6}\\right)\\right]\\right\\}$\n$= \\dfrac{1}{2}\\left(\\cos 2x + \\cos\\dfrac{\\pi}{3}\\right)$\n$= \\dfrac{1}{2}\\left(\\dfrac{1}{4} + \\dfrac{1}{2}\\right) = \\dfrac{3}{8}$"
+ },
+ {
+  "ma_cau": "T111030501058",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị trong hình vẽ là đồ thị của một trong các hàm số được cho ở các phương án A, B, C, D.\nHỏi hàm số đó là hàm số nào?",
+  "lua_chon": [
+   "$y=\\cos 2x$.",
+   "$y=\\sin x$.",
+   "$y=\\sin 2x$.",
+   "$y=\\cos x$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát đồ thị đã cho: - Đồ thị hàm số đi qua điểm $\\left(0;1\\right)$, nghĩa là với $x=0$ thì $y=1$.\nVì $\\sin 0=0$ nên ta loại các phương án $y=\\sin x$ và $y=\\sin 2x$.\n- Đồ thị hàm số đi qua điểm $\\left(\\dfrac{\\pi }{2};-1\\right)$, nghĩa là với $x=\\dfrac{\\pi }{2}$ thì $y=-1$.\nThay $x=\\dfrac{\\pi }{2}$ vào hàm số $y=\\cos 2x$, ta được $y=\\cos \\left(2\\cdot\\dfrac{\\pi }{2}\\right)=\\cos \\pi =-1$ (thỏa mãn).\nThay $x=\\dfrac{\\pi }{2}$ vào hàm số $y=\\cos x$, ta được $y=\\cos \\dfrac{\\pi }{2}=0\\ne -1$ (loại).\nVậy đồ thị đã cho là đồ thị của hàm số $y=\\cos 2x$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111030501011",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = -\\sin x$",
+   "$y = \\sin 2x + 1$",
+   "$y = -2\\sin x$",
+   "$y = 2\\sin x"
+  ],
+  "dap_an": "D",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111060104022",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là dãy số giảm?",
+  "lua_chon": [
+   "$\\pi; 2\\pi; 3\\pi; 4\\pi; ...$",
+   "$\\dfrac{\\pi}{2}; \\dfrac{\\pi}{3}; \\dfrac{\\pi}{4}; \\dfrac{\\pi}{5}; ...$",
+   "$-\\pi; -\\dfrac{\\pi}{2}; -\\dfrac{\\pi}{3}; ...$",
+   "$e; e^2; e^3; e^4; ...$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét các đáp án:\nA. Có $\\pi < 2\\pi < 3\\pi < ...\\Rightarrow$ Dãy số tăng. (Loại)\nB. Có $\\dfrac{\\pi}{2} > \\dfrac{\\pi}{3} > \\dfrac{\\pi}{4} > ...\\Rightarrow$ Dãy số giảm. (Thỏa mãn)\nC. Có $-\\pi < -\\dfrac{\\pi}{2} < -\\dfrac{\\pi}{3} < ...\\Rightarrow$ Dãy số tăng. (Loại)\nD. Có $e < e^2 < e^3 < ...\\Rightarrow$ Dãy số tăng. (Loại)\nChọn B."
+ },
+ {
+  "ma_cau": "T111060202074",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có $u_7 = 10$ và công sai $d = 5$. Số hạng đầu $u_1$ của cấp số cộng bằng",
+  "lua_chon": [
+   "-20.",
+   "40.",
+   "-15.",
+   "20."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$u_1 = u_7 - 6d = 10 - 6(5) = -20$."
+ },
+ {
+  "ma_cau": "T111040402028",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\cos x$ có đồ thị là đường cong như hình vẽ. Trong đoạn $[-\\dfrac{\\pi}{2}; \\dfrac{5\\pi}{2}]$, phương trình $f(x)=1$ có số nghiệm là",
+  "lua_chon": [
+   "3.",
+   "1.",
+   "4.",
+   "2."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Kẻ đường thẳng $y=1$ cắt đồ thị hàm số $y=\\cos x$ trên đoạn $[-\\dfrac{\\pi}{2}; \\dfrac{5\\pi}{2}]$.\nDựa vào đồ thị, ta thấy đường thẳng cắt đồ thị tại đúng 2 điểm phân biệt.\nVậy phương trình đã cho có 2 nghiệm.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "T111060104044",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là dãy số tăng?",
+  "lua_chon": [
+   "$u_n = \\dfrac{(-2)^n}{n}$",
+   "$u_n = n - \\sqrt{n}$",
+   "$u_n = \\dfrac{n+1}{n+2}$",
+   "Cả B và C"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Lần lượt thay $n = 1,2,3,4,5$:\nA. $u_1 = -2, u_2 = 2, u_3 \\approx -2.66, u_4 = 4, u_5 = -6.4 \\Rightarrow$ Dãy đan dấu. (Loại)\nB. $u_1 = 0, u_2 \\approx 0.58, u_3 \\approx 1.26, u_4 = 2, u_5 \\approx 2.76 \\Rightarrow 0 < 0.58 < 1.26 < 2 < 2.76 \\Rightarrow$ Dãy tăng.\nC. $u_1 \\approx 0.66, u_2 = 0.75, u_3 = 0.8, u_4 \\approx 0.83, u_5 \\approx 0.85 \\Rightarrow 0.66 < 0.75 < 0.8 < 0.83 < 0.85 \\Rightarrow$ Dãy tăng.\nVậy cả B và C đều là dãy tăng.\nChọn D."
+ },
+ {
+  "ma_cau": "T111060204033",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có $\\begin{cases} S_5 = 60 \\\\ S_{10} = 270 \\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.",
+  "lua_chon": [
+   "$u_1 = 6, d = 0$",
+   "$u_1 = 0, d = -6$",
+   "$u_1 = 0, d = 6$",
+   "$u_1 = 1, d = 6"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Sử dụng công thức tổng của cấp số cộng, ta có hệ:\\n$$\\begin{cases} \\dfrac{5}{2}(2u_1 + 4d) = 60 \\\\ \\dfrac{10}{2}(2u_1 + 9d) = 270 \\end{cases} \\Leftrightarrow \\begin{cases} u_1 = 0 \\\\ d = 6 \\end{cases}$$\\nChọn C."
+ }
+]

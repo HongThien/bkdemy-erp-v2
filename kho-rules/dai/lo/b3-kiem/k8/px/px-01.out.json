@@ -1,0 +1,16 @@
+[
+ {"ma_cau": "T108020202085", "chon": "A", "ly_do": "Tách được 2(x-y+2)^2 + 2(x-1)^2: một bình phương 3 số cộng một bình phương, đúng dạng 2 bình phương của 698; 697 cần (x±y)^2 không có hằng số."},
+ {"ma_cau": "T108020202081", "chon": "A", "ly_do": "Hệ số xy là -1, phải nhân đôi rồi tách thành 3 bình phương: đúng biến thể khó nhất mà mô tả 699 nêu."},
+ {"ma_cau": "T108020202091", "chon": "A", "ly_do": "(x-y-1)^2 + 2(y-1/2)^2: bình phương 3 số + 1 bình phương, đúng 698; 697 chỉ có (x±y)^2 thuần."},
+ {"ma_cau": "T108020401061", "chon": "B", "ly_do": "Từ a²+b²+c²=ab+bc+ca suy ra tổng 3 bình phương bằng 0 nên a=b=c: đúng cụm a=b=c; không phải hiệu hai bình phương."},
+ {"ma_cau": "T108020202066", "chon": "ca_hai", "ly_do": "(2x-2y)^2+(x-2)^2+(y-2)^2: theo mô tả và cách nhóm thì là 697 (có cả hai bình phương phụ), theo tên thì là 699 (3 bình phương). Ranh giới mờ."},
+ {"ma_cau": "T108020202082", "chon": "B", "ly_do": "(x-2y+5)^2 + (y-1)^2: bình phương 3 số + 1 bình phương, đúng 698; 697 cần (x±y)^2 không có hằng số."},
+ {"ma_cau": "T108020202055", "chon": "ca_hai", "ly_do": "Giống câu 066: (2x-2y)^2+(x-2)^2+(y-2)^2 khớp mô tả 697 (có cả hai) lẫn tên 699 (tổng 3 bình phương)."},
+ {"ma_cau": "T108020301012", "chon": "A", "ly_do": "Điền chỗ trống để thành (x+2)^3: đúng hoàn thiện biểu thức lập phương, không phải khai triển."},
+ {"ma_cau": "T108030101007", "chon": "B", "ly_do": "Đa thức một biến 4x^2-12x, rút đơn thức 4x: đúng dạng một biến rút số/đơn thức."},
+ {"ma_cau": "T108020202044", "chon": "ca_hai", "ly_do": "(x-2y)^2+(x-2)^2+(y-1)^2: khớp mô tả 697 (bình phương xy không hằng số, có cả hai) và tên 699 (3 bình phương)."},
+ {"ma_cau": "T108010101023", "chon": "B", "ly_do": "Đề hỏi có bao nhiêu đa thức, trùng ví dụ của 668 Nhận biết Đa thức."},
+ {"ma_cau": "T108030603025", "chon": "B", "ly_do": "Phải nhóm -3x-15 thành -3(x+5) rồi mới rút (x+5): đó là nhóm hạng tử, không phải nhân tử chung có sẵn."},
+ {"ma_cau": "T108020301033", "chon": "B", "ly_do": "Điền các chỗ trống để thành (3x-1)^3: đúng hoàn thiện lập phương tổng hiệu."},
+ {"ma_cau": "T108020202083", "chon": "A", "ly_do": "(3x-2y+3)^2 + 2y^2: bình phương 3 số + 1 bình phương, đúng 698; 697 không có hằng số trong bình phương xy."}
+]

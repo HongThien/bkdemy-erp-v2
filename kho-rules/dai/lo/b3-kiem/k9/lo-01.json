@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T109030202005",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-4}{\\sqrt{x}-2}$ tại $x=25$.",
+  "dap_an": "\\dfrac{1}{3}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne4$.\nThay $x=25$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{25}-4}{\\sqrt{25}-2}=\\dfrac{5-4}{5-2}=\\dfrac{1}{3}$."
+ },
+ {
+  "ma_cau": "T109030101072",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\dfrac{\\sqrt{12}-\\sqrt{24}}{\\sqrt4-\\sqrt8}$.",
+  "dap_an": "$\\sqrt{3}$",
+  "loi_giai": "$\\dfrac{\\sqrt{12}-\\sqrt{24}}{\\sqrt{4}-\\sqrt{8}}$\n$=\\dfrac{\\sqrt{6}(\\sqrt{2}-2)}{\\sqrt{2}(\\sqrt{2}-2)}$\n$=\\dfrac{\\sqrt{6}}{\\sqrt{2}}$\n$=\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109020202027",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $(x-3)(2x+1) > 2x^2 + 5x - 4$.",
+  "dap_an": "$x < \\dfrac{1}{10}$",
+  "loi_giai": "$(x-3)(2x+1) > 2x^2 + 5x - 4\\\\\n2x^2 + x - 6x - 3 > 2x^2 + 5x - 4\\\\\n2x^2 + x - 6x - 2x^2 - 5x > -4 + 3\\\\\n-10x > -1\\\\\nx < \\dfrac{1}{10}\\\\$\nVậy tập nghiệm của bất phương trình là $x < \\dfrac{1}{10}$"
+ },
+ {
+  "ma_cau": "T109030102071",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{4+2\\sqrt{3}}-\\sqrt{4-2\\sqrt{3}}$.",
+  "dap_an": "$2$",
+  "loi_giai": "$A=\\sqrt{4+2\\sqrt{3}}-\\sqrt{4-2\\sqrt{3}}$\n$A=\\sqrt{(1+\\sqrt{3})^2}-\\sqrt{(1-\\sqrt{3})^2}$\n$A=|1+\\sqrt{3}|-|1-\\sqrt{3}|$\n$A=1+\\sqrt{3}-(\\sqrt{3}-1)$\n$A=1+\\sqrt{3}-\\sqrt{3}+1$\n$A=2$"
+ },
+ {
+  "ma_cau": "T109030302008",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}}$ $(x>0)$. Tìm các giá trị nguyên của $x$ để $P>2$.",
+  "dap_an": "$x\\in\\{1;2;3;4;5;6;7;8\\}$",
+  "loi_giai": "Ta sẽ đưa về dạng $P-2>0$.\nXét $P-2=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}}-2=\\dfrac{3-\\sqrt{x}}{\\sqrt{x}}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0$ nên để $P-2>0$ thì $3-\\sqrt{x}>0$.\n$\\Rightarrow\\sqrt{x}<3$\n$\\Rightarrow x<9$\nKết hợp với điều kiện ta được $0<x<9$.\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{1;2;3;4;5;6;7;8\\}$."
+ },
+ {
+  "ma_cau": "T109030302007",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}}$ $(x>0)$. Tìm các giá trị nguyên của $x$ để $P>2$.",
+  "dap_an": "$x\\in\\{1;2;3\\}$",
+  "loi_giai": "Ta sẽ đưa về dạng $P-2>0$.\nXét $P-2=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}}-2=\\dfrac{2-\\sqrt{x}}{\\sqrt{x}}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0$ nên để $P-2>0$ thì $2-\\sqrt{x}>0$.\n$\\Rightarrow\\sqrt{x}<2$\n$\\Rightarrow x<4$\nKết hợp với điều kiện ta được $0<x<4$.\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{1;2;3\\}$.\nVậy $x\\in\\{1;2;3\\}$."
+ },
+ {
+  "ma_cau": "T109030101077",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{(1-\\sqrt{5})^2}-\\sqrt{80}+\\dfrac{15}{\\sqrt{5}}$.",
+  "dap_an": "-1",
+  "loi_giai": "$\\sqrt{(1-\\sqrt{5})^2}-\\sqrt{80}+\\dfrac{15}{\\sqrt{5}}$\n$=|1-\\sqrt{5}|-4\\sqrt{5}+3\\sqrt{5}$\n$=\\sqrt{5}-1-4\\sqrt{5}+3\\sqrt{5}$\n$=-1$"
+ },
+ {
+  "ma_cau": "T109030304041",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{16}{\\sqrt{x}+5}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "{\\dfrac{1}{9};9;121}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+5>0;16>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+5\\ge5\\Rightarrow\\dfrac{16}{\\sqrt{x}+5}\\le\\dfrac{16}{5}\\Rightarrow P\\le\\dfrac{16}{5}$.\nVậy $0<P\\le\\dfrac{16}{5}$. Mà $P$ nguyên nên $P\\in\\{1;2;3\\}$.\nTH1:\n$P=1\\Rightarrow\\dfrac{16}{\\sqrt{x}+5}=1\\Rightarrow\\sqrt{x}+5=16\\Rightarrow\\sqrt{x}=11\\Rightarrow x=121$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=2\\Rightarrow\\dfrac{16}{\\sqrt{x}+5}=2\\Rightarrow\\sqrt{x}+5=8\\Rightarrow\\sqrt{x}=3\\Rightarrow x=9$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=3\\Rightarrow\\dfrac{16}{\\sqrt{x}+5}=3\\Rightarrow\\sqrt{x}+5=\\dfrac{16}{3}\\Rightarrow\\sqrt{x}=\\dfrac{1}{3}\\Rightarrow x=\\dfrac{1}{9}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{1}{9};9;121\\right\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030302050",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P<\\dfrac{1}{2}$.",
+  "dap_an": "$0\\le x<49$",
+  "loi_giai": "Ta có $P<\\dfrac{1}{2}\\Rightarrow P-\\dfrac{1}{2}<0$.\nXét $P-\\dfrac{1}{2}=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+1}-\\dfrac{1}{2}=\\dfrac{\\sqrt{x}-7}{2(\\sqrt{x}+1)}$.\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow2(\\sqrt{x}+1)>0$ nên để $P-\\dfrac{1}{2}<0$ thì $\\sqrt{x}-7<0$.\n$\\Rightarrow\\sqrt{x}<7$\n$\\Rightarrow x<49$\nKết hợp với điều kiện ta được $0\\le x<49$.\nVậy $0\\le x<49$."
+ },
+ {
+  "ma_cau": "T109010309001",
+  "loai": "tra_loi_ngan",
+  "de": "Hai anh Bắc và Nam đi xe máy, khởi hành cùng lúc từ hai địa điểm cách nhau 150 km , đi ngược chiều nhau và gặp nhau sau 2 giờ. Biết rằng nếu anh Bắc tăng tốc độ thêm 5km/h và anh Nam giảm tốc độ 5km/h thì tốc độ của anh Bắc gấp đôi tốc độ của anh Nam. Tìm tốc độ của mỗi người.",
+  "dap_an": "45, 30",
+  "loi_giai": "Gọi tốc của của anh Bắc là $x$ (km/h) ($x>0$), vận tốc của anh Nam là $y$ (km/h) ($y>0$).\nQuãng đường anh Bắc đi được trong 2 giờ là: $2x$ (km)\nQuãng đường anh Nam đi được trong 2 giờ là: $2y$ (km).\nVì hai xe đi ngược chiều nhau và gặp nhau sau 2 giờ nên ta có PT: $2x+2y=150$ (1)\nTốc độ của anh Bắc nếu tăng thêm 5 km/h là: $x+5$ (km/h)\nTốc độ của anh Nam nếu giảm đi 5 km/h là: $y-5$ (km/h)\nKhi đó tốc độ của anh Bắc gấp đôi tốc độ của anh Nam nên ta có PT:\n$x+5=2(y-5)$\n$x-2y = -15$ (2)\nTừ (1) và (2) ta có hệ PT:\n$$\\begin{cases} 2x+2y=150 \\\\ x-2y=-15 \\end{cases}$$\nGiải hệ phương trình ta được: $x=45, y=30$ (tmđk).\nVậy tốc độ của anh Bắc là 45 km/h, tốc độ của anh Nam là 30 km/h."
+ },
+ {
+  "ma_cau": "T109030303030",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}}{6\\sqrt{x}-5}$ $\\left(x\\ge0;x\\ne\\dfrac{25}{36}\\right)$.\nTìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "$x\\in\\{0;1\\}$",
+  "loi_giai": "TH1: Xét $x=0\\Rightarrow P=0$ (thỏa mãn).\nTH2: Xét $x>0$:\n$6P=\\dfrac{6\\sqrt{x}}{6\\sqrt{x}-5}$\n$6P=\\dfrac{6\\sqrt{x}-5+5}{6\\sqrt{x}-5}$\n$6P=1+\\dfrac{5}{6\\sqrt{x}-5}$\nĐể $P$ nguyên thì $6P$ nguyên, do đó $\\dfrac{5}{6\\sqrt{x}-5}$ nguyên.\nVì $x$ là số nguyên, $\\sqrt{x}$ chỉ có thể là số nguyên hoặc số vô tỉ.\nNếu $\\sqrt{x}$ vô tỉ thì $6\\sqrt{x}-5$ vô tỉ, nên $\\dfrac{5}{6\\sqrt{x}-5}$ không thể là số nguyên.\nVậy $\\sqrt{x}$ là số nguyên, suy ra $6\\sqrt{x}-5$ là số nguyên.\nDo đó $6\\sqrt{x}-5\\in U(5)=\\{-5;-1;1;5\\}$.\nTH2.1: $6\\sqrt{x}-5=1$\n$6\\sqrt{x}=6$\n$\\sqrt{x}=1$\n$x=1$ (thỏa mãn).\nTH2.2: $6\\sqrt{x}-5=-1$\n$6\\sqrt{x}=4$\n$\\sqrt{x}=\\dfrac{2}{3}$\n$x=\\dfrac{4}{9}$ (loại).\nTH2.3: $6\\sqrt{x}-5=5$\n$6\\sqrt{x}= …"
+ },
+ {
+  "ma_cau": "T109030102004",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{17-2\\sqrt{66}}-\\sqrt{17+2\\sqrt{66}}$.",
+  "dap_an": "$-2\\sqrt6$",
+  "loi_giai": "$A=\\sqrt{17-2\\sqrt{66}}-\\sqrt{17+2\\sqrt{66}}$\n$A=\\sqrt{(\\sqrt{11}-\\sqrt6)^2}-\\sqrt{(\\sqrt{11}+\\sqrt6)^2}$\n$A=|\\sqrt{11}-\\sqrt6|-|\\sqrt{11}+\\sqrt6|$\n$A=\\sqrt{11}-\\sqrt6-(\\sqrt{11}+\\sqrt6)$\n$A=-2\\sqrt6$"
+ },
+ {
+  "ma_cau": "T109030101114",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{54}-2\\sqrt{24}+9-2\\sqrt{6}$.",
+  "dap_an": "9",
+  "loi_giai": "$2\\sqrt{54}-2\\sqrt{24}+9-2\\sqrt{6}$\n$=2\\cdot3\\sqrt{6}-2\\cdot2\\sqrt{6}+9-2\\sqrt{6}$\n$=6\\sqrt{6}-4\\sqrt{6}+9-2\\sqrt{6}$\n$=9$"
+ },
+ {
+  "ma_cau": "T109030303035",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{15}{\\sqrt{x}-5}$ $(x\\ge0;x\\ne25)$.\nTìm số nguyên $x$ để $P$ có giá trị nguyên lớn nhất.",
+  "dap_an": "$x=36$",
+  "loi_giai": "Để $P\\in\\mathbb{Z}$ thì $15:(\\sqrt{x}-5)$ hay $\\sqrt{x}-5\\in U(15)=\\{\\pm1;\\pm3;\\pm5;\\pm15\\}$.\nGiá trị nguyên lớn nhất của $P$ đạt được khi $\\sqrt{x}-5=1$.\n$\\sqrt{x}=6$\n$x=36$ (thỏa mãn ĐKXĐ).\nKhi đó $P=15$.\nVậy $x=36$ thì $P$ có giá trị nguyên lớn nhất."
+ },
+ {
+  "ma_cau": "T109010304012",
+  "loai": "tra_loi_ngan",
+  "de": "Một tàu hỏa dự định đi từ A đến B trong một thời gian nhất định. Nếu tàu hỏa chạy nhanh hơn 20km/h thì đến nơi sớm hơn dự định là 3 giờ. Nếu tàu hỏa chạy chậm hơn 10km/h thì đến nơi muộn hơn dự định là 4 giờ. Tính vận tốc và thời gian dự định của tàu hỏa.",
+  "dap_an": "28; 7.2",
+  "loi_giai": "Gọi vận tốc dự định của tàu hỏa là $x$ (km/giờ) và thời gian dự định là $y$ (giờ) ($x>10, y>3$).\nQuãng đường AB là: $xy$ (km).\nNếu tàu hỏa chạy nhanh hơn 20km/h thì đến nơi sớm hơn dự định là 3 giờ. Khi đó ta có:\nVận tốc tàu hỏa khi đó là: $x+20$ (km/giờ).\nThời gian tàu hỏa đi hết quãng đường AB là: $y-3$ (giờ).\nQuãng đường AB là: $(x+20)(y-3)$.\nTa có PT:\n$(x+20)(y-3)=xy$\n$xy-3x+20y-60=xy$\n$-3x+20y=60$ (1)\nNếu tàu hỏa chạy chậm hơn 10km/h thì đến nơi muộn hơn dự định là 4 giờ. Khi đó ta có:\nVận tốc tàu hỏa khi đó là: $x-10$ (km/giờ).\nThời gian tàu hỏa đi hết quãng đường AB là: $y+4$ (giờ).\nQuãng đường AB là: $(x-10)(y+4)$.\nTa có PT:\n$(x-10)(y+4)=xy$\n$xy+4x-10y-40=xy$\n$4x-10y=40$ (2)\nTừ (1) v …"
+ },
+ {
+  "ma_cau": "T109030304006",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0;1",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}+1}=\\dfrac{\\sqrt{x}+1+2}{\\sqrt{x}+1}=1+\\dfrac{2}{\\sqrt{x}+1}$.\nCó $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}\\le2\\Rightarrow1+\\dfrac{2}{\\sqrt{x}+1}\\le3\\Rightarrow P\\le3$.\nVậy $1<P\\le3$. Mà $P$ nguyên nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow1+\\dfrac{2}{\\sqrt{x}+1}=2\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}+1=2\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow1+\\dfrac{2}{\\sqrt{x}+1}=3\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}+1=1\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{0;1\\}$ th …"
+ },
+ {
+  "ma_cau": "T109030304095",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{18}{\\sqrt{x}+6}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị tự nhiên.",
+  "dap_an": "{0;9;144}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+6>0;18>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+6\\ge6\\Rightarrow P\\le3$.\nVậy $0<P\\le3$. Mà $P$ là số tự nhiên nên $P\\in\\{1;2;3\\}$.\nTH1:\n$P=1\\Rightarrow\\dfrac{18}{\\sqrt{x}+6}=1\\Rightarrow\\sqrt{x}+6=18\\Rightarrow\\sqrt{x}=12\\Rightarrow x=144$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=2\\Rightarrow\\dfrac{18}{\\sqrt{x}+6}=2\\Rightarrow\\sqrt{x}+6=9\\Rightarrow\\sqrt{x}=3\\Rightarrow x=9$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=3\\Rightarrow\\dfrac{18}{\\sqrt{x}+6}=3\\Rightarrow\\sqrt{x}+6=6\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{0;9;144\\}$ thì $P$ nhận giá trị tự nhiên."
+ },
+ {
+  "ma_cau": "T109030102126",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=(\\sqrt{23}+\\sqrt{2})\\sqrt{25-2\\sqrt{46}}$.",
+  "dap_an": "$21$",
+  "loi_giai": "$A=(\\sqrt{23}+\\sqrt{2})\\sqrt{25-2\\sqrt{46}}$\n$A=(\\sqrt{23}+\\sqrt{2})\\sqrt{(\\sqrt{23}-\\sqrt{2})^2}$\n$A=(\\sqrt{23}+\\sqrt{2})|\\sqrt{23}-\\sqrt{2}|$\n$A=(\\sqrt{23}+\\sqrt{2})(\\sqrt{23}-\\sqrt{2})$\n$A=23-2$\n$A=21$"
+ },
+ {
+  "ma_cau": "T109030304063",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=1+\\dfrac{9}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{\\dfrac{1}{4};25}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+4>0\\Rightarrow\\dfrac{9}{\\sqrt{x}+4}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+4\\ge4\\Rightarrow\\dfrac{9}{\\sqrt{x}+4}\\le\\dfrac{9}{4}\\Rightarrow P\\le\\dfrac{13}{4}$.\nVậy $1<P\\le\\dfrac{13}{4}$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow1+\\dfrac{9}{\\sqrt{x}+4}=2\\Rightarrow\\dfrac{9}{\\sqrt{x}+4}=1\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow1+\\dfrac{9}{\\sqrt{x}+4}=3\\Rightarrow\\dfrac{9}{\\sqrt{x}+4}=2\\Rightarrow\\sqrt{x}+4=\\dfrac{9}{2}\\Rightarrow\\sqrt{x}=\\dfrac{1}{2}\\Rightarrow x=\\dfrac{1}{4}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{1}{4};25\\right\\}$ thì $P$ nhận giá trị là số nguyên tố."
+ },
+ {
+  "ma_cau": "T109090401021",
+  "loai": "tra_loi_ngan",
+  "de": "Một cơ sở sản xuất cần chứa đựng 55 kg thực phẩm vào hai loại hộp loại lớn và loại nhỏ.\nLoại lớn: mỗi hộp chứa được 6 kg, giá mua là 10 nghìn đồng/hộp.\nLoại nhỏ: mỗi hộp chứa được 4 kg, giá mua là 7 nghìn đồng/hộp.\nHỏi chi phí mua vỏ hộp nhỏ nhất mà cơ sở đó cần chi trả để đựng hết 55 kg thực phẩm trên là bao nhiêu?",
+  "dap_an": "94",
+  "loi_giai": "Gọi $x$ là số hộp loại lớn, $y$ là số hộp loại nhỏ cần mua, với $x,y\\in\\mathbb{N}$.\nĐể chứa hết 55 kg thực phẩm, ta có: $6x+4y\\geq55$\nVì $6x+4y$ là số chẵn nên: $6x+4y\\geq56$.\nHay: $3x+2y\\geq28$. $(1)$\nMặt khác, mỗi hộp chứa nhiều nhất $6$ kg.\nVì $9$ hộp chỉ có thể chứa nhiều nhất: $9\\cdot6=54<55$ (kg).\nNên cơ sở phải mua ít nhất $10$ hộp.\nDo đó:\n$x+y\\geq10$. $(2)$\nGọi $T$ là chi phí mua hộp, tính theo nghìn đồng.\nTa có:\n$T=10x+7y$ $=3(3x+2y)+(x+y)$.\nTừ $(1)$ và $(2)$, suy ra:\n$T\\geq3\\cdot28+10$ $=94$.\nVậy: $T\\geq94$.\nDấu “=” xảy ra khi và chỉ khi đồng thời:\n$3x+2y=28$.\n$x+y=10$.\nSuy ra:\n$x=8$.\n$y=2$.\nVới $x=8$, $y=2$, ta có:\n$6\\cdot8+4\\cdot2=56\\geq55$.\nVậy chi phí nhỏ nhất mà cơ sở phải trả …"
+ },
+ {
+  "ma_cau": "T109030102023",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{8-\\sqrt{15}}+\\sqrt{8+\\sqrt{15}}$.",
+  "dap_an": "$\\sqrt{30}$",
+  "loi_giai": "$A=\\sqrt{8-\\sqrt{15}}+\\sqrt{8+\\sqrt{15}}$\n$A=\\sqrt{\\dfrac{32-4\\sqrt{15}}{4}}+\\sqrt{\\dfrac{32+4\\sqrt{15}}{4}}$\n$A=\\sqrt{\\dfrac{30-2\\sqrt2\\cdot\\sqrt{30}+2}{4}}+\\sqrt{\\dfrac{30+2\\sqrt2\\cdot\\sqrt{30}+2}{4}}$\n$A=\\dfrac12\\sqrt{(\\sqrt{30}-\\sqrt2)^2}+\\dfrac12\\sqrt{(\\sqrt{30}+\\sqrt2)^2}$\n$A=\\dfrac12(\\sqrt{30}-\\sqrt2)+\\dfrac12(\\sqrt{30}+\\sqrt2)$\n$A=\\sqrt{30}$"
+ },
+ {
+  "ma_cau": "T109030202065",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{5\\sqrt{x}+4}{3\\sqrt{x}-1}$ tại $x=289$.",
+  "dap_an": "\\dfrac{89}{50}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne\\dfrac{1}{9}$.\nThay $x=289$ (thỏa mãn ĐKXĐ) vào $A$ ta được:\n$A=\\dfrac{5\\sqrt{289}+4}{3\\sqrt{289}-1}=\\dfrac{5\\cdot17+4}{3\\cdot17-1}=\\dfrac{89}{50}$."
+ },
+ {
+  "ma_cau": "T109030302065",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-3}$ $(x\\ge0;x \\ne9)$. Tìm các giá trị nguyên của $x$ để $P<1$.",
+  "dap_an": "0;1;2;3;4;5;6;7;8",
+  "loi_giai": "$P<1\\Rightarrow P-1<0$.\nXét $P-1=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-3}-1=\\dfrac{5}{\\sqrt{x}-3}$.\nVì $5>0$ nên để $P-1<0$ thì $\\sqrt{x}-3<0$.\n$\\Rightarrow\\sqrt{x}<3$\n$\\Rightarrow x<9$\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{0;1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{0;1;2;3;4;5;6;7;8\\}$."
+ },
+ {
+  "ma_cau": "T109030102081",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{31+12\\sqrt{3}}-\\sqrt{31-12\\sqrt{3}}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=\\sqrt{31+12\\sqrt{3}}-\\sqrt{31-12\\sqrt{3}}$\n$A=\\sqrt{(2+3\\sqrt{3})^2}-\\sqrt{(2-3\\sqrt{3})^2}$\n$A=|2+3\\sqrt{3}|-|2-3\\sqrt{3}|$\n$A=2+3\\sqrt{3}-(3\\sqrt{3}-2)$\n$A=2+3\\sqrt{3}-3\\sqrt{3}+2$\n$A=4$"
+ },
+ {
+  "ma_cau": "T109030301030",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}$ $(x>0;x \\ne1)$. Tìm $x$ để $P^3-27=0$.",
+  "dap_an": "4",
+  "loi_giai": "$P^3-27=0$\n$P^3=27$\n$P=3$\n$\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}=3$\n$\\sqrt{x}+1=3(\\sqrt{x}-1)$\n$\\sqrt{x}+1=3\\sqrt{x}-3$\n$2\\sqrt{x}=4$\n$\\sqrt{x}=2$\n$x=4$ (TMĐK).\nVậy $x=4$ thì $P^3-27=0$."
+ },
+ {
+  "ma_cau": "T109030101101",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $M=\\dfrac{2}{\\sqrt{3}-1}-\\sqrt{12}+\\sqrt{(2-\\sqrt{3})^2}-3$.",
+  "dap_an": "$-2\\sqrt{3}$",
+  "loi_giai": "$M=\\dfrac{2}{\\sqrt{3}-1}-\\sqrt{12}+\\sqrt{(2-\\sqrt{3})^2}-3$\n$M=\\dfrac{2(\\sqrt{3}+1)}{(\\sqrt{3}-1)(\\sqrt{3}+1)}-2\\sqrt{3}+|2-\\sqrt{3}|-3$\n$M=\\dfrac{2(\\sqrt{3}+1)}{3-1}-2\\sqrt{3}+|2-\\sqrt{3}|-3$\n$M=\\sqrt{3}+1-2\\sqrt{3}+(2-\\sqrt{3})-3$\n$M=-2\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030101048",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{125}+\\dfrac12\\sqrt{20}-0{,}5\\sqrt{80}$.",
+  "dap_an": "$4\\sqrt{5}$",
+  "loi_giai": "$A=\\sqrt{125}+\\dfrac12\\sqrt{20}-0{,}5\\sqrt{80}$\n$A=5\\sqrt{5}+\\dfrac12\\cdot2\\sqrt{5}-0{,}5\\cdot4\\sqrt{5}$\n$A=5\\sqrt{5}+\\sqrt{5}-2\\sqrt{5}$\n$A=4\\sqrt{5}$"
+ },
+ {
+  "ma_cau": "T109030102042",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{25-2\\sqrt{46}}-\\sqrt{25+2\\sqrt{46}}$.",
+  "dap_an": "$-2\\sqrt{2}$",
+  "loi_giai": "$A=\\sqrt{25-2\\sqrt{46}}-\\sqrt{25+2\\sqrt{46}}$\n$A=\\sqrt{(\\sqrt{23}-\\sqrt{2})^2}-\\sqrt{(\\sqrt{23}+\\sqrt{2})^2}$\n$A=|\\sqrt{23}-\\sqrt{2}|-|\\sqrt{23}+\\sqrt{2}|$\n$A=\\sqrt{23}-\\sqrt{2}-(\\sqrt{23}+\\sqrt{2})$\n$A=-2\\sqrt{2}$"
+ },
+ {
+  "ma_cau": "T109030302001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P\\le0$.",
+  "dap_an": "$0\\le x\\le9$",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+2}$\nVì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0$ nên để $P\\le0$ thì\n$\\sqrt{x}-3\\le0$.\n$\\sqrt{x}\\le3$\n$x\\le9$\nKết hợp với điều kiện ta được $0\\le x\\le9$.\nVậy $0\\le x\\le9$ thì $P\\le0$."
+ },
+ {
+  "ma_cau": "T109030202055",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-4}{2\\sqrt{x}-1}$ tại $x=49$.",
+  "dap_an": "\\dfrac{3}{13}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne\\dfrac{1}{4}$.\nThay $x=49$ (thỏa mãn ĐKXĐ) vào $A$ ta được:\n$A=\\dfrac{\\sqrt{49}-4}{2\\sqrt{49}-1}=\\dfrac{7-4}{2\\cdot7-1}=\\dfrac{3}{13}$."
+ },
+ {
+  "ma_cau": "T109020201029",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $6x - 10 > 8$.",
+  "dap_an": "x > 3",
+  "loi_giai": "6x - 10 > 8\n6x > 8 + 10\n6x > 18\nx > 3\nVậy tập nghiệm của bất phương trình là $x > 3$."
+ },
+ {
+  "ma_cau": "T109030304081",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{5\\sqrt{x}}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{\\dfrac{4}{9};\\dfrac{9}{4}}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow P\\ge0$.\nVới $x>0$ thì $\\sqrt{x}+1>\\sqrt{x}\\Rightarrow P<5$.\nVậy $0\\le P<5$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow\\dfrac{5\\sqrt{x}}{\\sqrt{x}+1}=2\\Rightarrow5\\sqrt{x}=2\\sqrt{x}+2\\Rightarrow3\\sqrt{x}=2\\Rightarrow\\sqrt{x}=\\dfrac{2}{3}\\Rightarrow x=\\dfrac{4}{9}$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow5\\sqrt{x}=3\\sqrt{x}+3\\Rightarrow2\\sqrt{x}=3\\Rightarrow\\sqrt{x}=\\dfrac{3}{2}\\Rightarrow x=\\dfrac{9}{4}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{4}{9};\\dfrac{9}{4}\\right\\}$ thì $P$ nhận giá trị là số nguyên tố."
+ },
+ {
+  "ma_cau": "T109010304013",
+  "loai": "tra_loi_ngan",
+  "de": "Một thuyền dự định đi từ bến A đến bến B trong một thời gian nhất định. Nếu thuyền đi nhanh hơn 6km/h thì đến nơi sớm hơn dự định là 1 giờ 30 phút. Nếu thuyền đi chậm hơn 4km/h thì đến nơi muộn hơn dự định là 2 giờ 15 phút. Tính vận tốc và thời gian dự định của thuyền.",
+  "dap_an": "12; 4.5",
+  "loi_giai": "Gọi vận tốc dự định của thuyền là $x$ (km/giờ) và thời gian dự định là $y$ (giờ) ($x>4, y>2.25$).\nĐổi 1 giờ 30 phút $= 1.5$ giờ. Đổi 2 giờ 15 phút $= 2.25$ giờ.\nQuãng đường AB là: $xy$ (km).\nNếu thuyền đi nhanh hơn 6km/h thì đến nơi sớm hơn dự định là 1.5 giờ. Khi đó ta có:\nVận tốc thuyền khi đó là: $x+6$ (km/giờ).\nThời gian thuyền đi hết quãng đường AB là: $y-1.5$ (giờ).\nQuãng đường AB là: $(x+6)(y-1.5)$.\nTa có PT:\n$(x+6)(y-1.5)=xy$\n$xy-1.5x+6y-9=xy$\n$-1.5x+6y=9$ (1)\nNếu thuyền đi chậm hơn 4km/h thì đến nơi muộn hơn dự định là 2.25 giờ. Khi đó ta có:\nVận tốc thuyền khi đó là: $x-4$ (km/giờ).\nThời gian thuyền đi hết quãng đường AB là: $y+2.25$ (giờ).\nQuãng đường AB là: $(x-4)(y+2.25)$.\nTa có …"
+ },
+ {
+  "ma_cau": "T109030102139",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{16-\\sqrt{31}}+\\sqrt{16+\\sqrt{31}}$.",
+  "dap_an": "$\\sqrt{62}$",
+  "loi_giai": "$A=\\sqrt{16-\\sqrt{31}}+\\sqrt{16+\\sqrt{31}}$\n$A=\\sqrt{\\dfrac{64-4\\sqrt{31}}{4}}+\\sqrt{\\dfrac{64+4\\sqrt{31}}{4}}$\n$A=\\sqrt{\\dfrac{62-2\\sqrt{2}\\cdot \\sqrt{62}+2}{4}}+\\sqrt{\\dfrac{62+2\\sqrt{2}\\cdot \\sqrt{62}+2}{4}}$\n$A=\\dfrac{1}{2}\\sqrt{(\\sqrt{62}-\\sqrt{2})^2}+\\dfrac{1}{2}\\sqrt{(\\sqrt{62}+\\sqrt{2})^2}$\n$A=\\dfrac{1}{2}(\\sqrt{62}-\\sqrt{2})+\\dfrac{1}{2}(\\sqrt{62}+\\sqrt{2})$\n$A=\\sqrt{62}$"
+ },
+ {
+  "ma_cau": "T109020202020",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $5x - 2 > 2(x - 4)$",
+  "dap_an": "$x > -2$",
+  "loi_giai": "$5x - 2 > 2(x - 4)$\\n$5x - 2 > 2x - 8$\\n$5x - 2x > -8 + 2$\\n$3x > -6$\\n$x > -2$\\nVậy tập nghiệm của bất phương trình là $x > -2$."
+ },
+ {
+  "ma_cau": "T109030202016",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-4}{\\sqrt{x}-1}$ tại $x=36$.",
+  "dap_an": "\\dfrac{2}{5}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne1$.\nThay $x=36$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{36}-4}{\\sqrt{36}-1}=\\dfrac{6-4}{6-1}=\\dfrac{2}{5}$."
+ },
+ {
+  "ma_cau": "T109030302079",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm các giá trị nguyên của $x$ để $P<\\dfrac{1}{2}$.",
+  "dap_an": "{0;1;2;3;4;5;6;7;8}",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+3>0$ nên\n$P<\\dfrac{1}{2}\\Rightarrow\\dfrac{\\sqrt{x}}{\\sqrt{x}+3}<\\dfrac{1}{2}$.\n$2\\sqrt{x}<\\sqrt{x}+3$\n$\\sqrt{x}<3$\n$x<9$\nMà $x$ là số nguyên $\\Rightarrow x\\in\\{0;1;2;3;4;5;6;7;8\\}$.\nVậy $x\\in\\{0;1;2;3;4;5;6;7;8\\}$."
+ },
+ {
+  "ma_cau": "T109010304018",
+  "loai": "tra_loi_ngan",
+  "de": "Một ô tô dự định đi từ nhà về quê trong khoảng thời gian nhất định. Nếu ô tô chạy nhanh hơn 20km/h mỗi giờ thì đến nơi sớm hơn so với dự định là 2 giờ. Nếu ô tô chạy chậm hơn 20km/h mỗi giờ thì đến nơi chậm mất so với dự định là 4 giờ. Tính vận tốc và thời gian dự định của ô tô.",
+  "dap_an": "60; 8",
+  "loi_giai": "Gọi vận tốc dự định của ô tô là $x$ (km/giờ) và thời gian dự định là $y$ (giờ) ($x > 20, y > 2$).\nQuãng đường từ nhà về quê là: $xy$ (km).\nNếu ô tô chạy nhanh hơn 20km/h mỗi giờ thì đến nơi sớm hơn so với dự định là 2 giờ. Khi đó ta có:\nVận tốc ô tô khi đó là: $x + 20$ (km/giờ).\nThời gian ô tô đi hết quãng đường là: $y - 2$ (giờ).\nQuãng đường là: $(x+20)(y-2)$ (km).\nVì quãng đường không đổi nên ta có PT:\n$(x+20)(y-2) = xy$\n${xy - 2x + 20y - 40 = xy}$\n${-2x + 20y = 40}$ (1)\nNếu ô tô chạy chậm hơn 20km/h mỗi giờ thì đến nơi chậm hơn so với dự định là 4 giờ. Khi đó ta có:\nVận tốc ô tô khi đó là: $x - 20$ (km/giờ).\nThời gian ô tô đi hết quãng đường là: $y + 4$ (giờ).\nQuãng đường là: $(x-20)(y+4) …"
+ },
+ {
+  "ma_cau": "T109030202024",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-5}{\\sqrt{x}-1}$ tại $x=49$.",
+  "dap_an": "\\dfrac{1}{3}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne1$.\nThay $x=49$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{49}-5}{\\sqrt{49}-1}=\\dfrac{7-5}{7-1}=\\dfrac{1}{3}$."
+ },
+ {
+  "ma_cau": "T109030102055",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{9+4\\sqrt{5}}-\\sqrt{7-2\\sqrt{10}}$.",
+  "dap_an": "$2+\\sqrt{2}$",
+  "loi_giai": "$A=\\sqrt{9+4\\sqrt{5}}-\\sqrt{7-2\\sqrt{10}}$\n$A=\\sqrt{(2+\\sqrt{5})^2}-\\sqrt{(\\sqrt{5}-\\sqrt{2})^2}$\n$A=|2+\\sqrt{5}|-|\\sqrt{5}-\\sqrt{2}|$\n$A=2+\\sqrt{5}-(\\sqrt{5}-\\sqrt{2})$\n$A=2+\\sqrt{2}$"
+ },
+ {
+  "ma_cau": "T109030102096",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{58+12\\sqrt{6}}+\\sqrt{10-4\\sqrt{6}}$.",
+  "dap_an": "$4\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{58+12\\sqrt{6}}+\\sqrt{10-4\\sqrt{6}}$\n$A=\\sqrt{(3\\sqrt{6}+2)^2}+\\sqrt{(\\sqrt{6}-2)^2}$\n$A=|3\\sqrt{6}+2|+|\\sqrt{6}-2|$\n$A=3\\sqrt{6}+2+\\sqrt{6}-2$\n$A=4\\sqrt{6}$"
+ },
+ {
+  "ma_cau": "T109030101105",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $M=\\dfrac{9}{\\sqrt{10}-1}-\\sqrt{40}+\\sqrt{(4-\\sqrt{10})^2}-5$.",
+  "dap_an": "$-2\\sqrt{10}$",
+  "loi_giai": "$M=\\dfrac{9}{\\sqrt{10}-1}-\\sqrt{40}+\\sqrt{(4-\\sqrt{10})^2}-5$\n$M=\\dfrac{9(\\sqrt{10}+1)}{(\\sqrt{10}-1)(\\sqrt{10}+1)}-2\\sqrt{10}+|4-\\sqrt{10}|-5$\n$M=\\dfrac{9(\\sqrt{10}+1)}{10-1}-2\\sqrt{10}+|4-\\sqrt{10}|-5$\n$M=\\sqrt{10}+1-2\\sqrt{10}+(4-\\sqrt{10})-5$\n$M=-2\\sqrt{10}$"
+ },
+ {
+  "ma_cau": "T109030304075",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=6+\\dfrac{2}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "{0;1}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}>0\\Rightarrow P>6$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}\\le2\\Rightarrow P\\le8$.\nVậy $6<P\\le8$. Mà $P$ nguyên nên $P\\in\\{7;8\\}$.\nTH1:\n$P=7\\Rightarrow6+\\dfrac{2}{\\sqrt{x}+1}=7\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=8\\Rightarrow6+\\dfrac{2}{\\sqrt{x}+1}=8\\Rightarrow\\dfrac{2}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{0;1\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030301021",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+1}$ $(x\\ge0;x \\ne1)$. Tìm $x$ để $P^2=4$.",
+  "dap_an": "25",
+  "loi_giai": "TH1: $P=2$.\n$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+1}=2$\n$\\sqrt{x}+7=2(\\sqrt{x}+1)$\n$\\sqrt{x}+7=2\\sqrt{x}+2$\n$\\sqrt{x}=5$\n$x=25$ (TMĐK).\nTH2: $P=-2$.\n$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+1}=-2$\n$\\sqrt{x}+7=-2(\\sqrt{x}+1)$\n$\\sqrt{x}+7=-2\\sqrt{x}-2$\n$3\\sqrt{x}=-9$\n$\\sqrt{x}=-3$ (Vô lí).\nVậy $x=25$ thì $P^2=4$."
+ },
+ {
+  "ma_cau": "T109010304011",
+  "loai": "tra_loi_ngan",
+  "de": "Một xe máy dự định đi từ địa điểm A đến địa điểm B trong một khoảng thời gian xác định. Nếu xe máy chạy nhanh hơn 15km/h thì đến nơi sớm hơn dự định là 2 giờ. Nếu xe máy chạy chậm hơn 10km/h thì đến nơi muộn hơn dự định là 3 giờ. Tính vận tốc và thời gian dự định của xe máy.",
+  "dap_an": "30; 6",
+  "loi_giai": "Gọi vận tốc dự định của xe máy là $x$ (km/giờ) và thời gian dự định là $y$ (giờ) ($x>10, y>2$).\nQuãng đường AB là: $xy$ (km).\nNếu xe máy chạy nhanh hơn 15km/h thì đến nơi sớm hơn dự định là 2 giờ. Khi đó ta có:\nVận tốc xe máy khi đó là: $x+15$ (km/giờ).\nThời gian xe máy đi hết quãng đường AB là: $y-2$ (giờ).\nQuãng đường AB là: $(x+15)(y-2)$.\nTa có PT:\n$(x+15)(y-2)=xy$\n$xy-2x+15y-30=xy$\n$-2x+15y=30$ (1)\nNếu xe máy chạy chậm hơn 10km/h thì đến nơi muộn hơn dự định là 3 giờ. Khi đó ta có:\nVận tốc xe máy khi đó là: $x-10$ (km/giờ).\nThời gian xe máy đi hết quãng đường AB là: $y+3$ (giờ).\nQuãng đường AB là: $(x-10)(y+3)$.\nTa có PT:\n$(x-10)(y+3)=xy$\n$xy+3x-10y-30=xy$\n$3x-10y=30$ (2)\nTừ (1) và (2) t …"
+ },
+ {
+  "ma_cau": "T109030101070",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{112}-14\\sqrt{\\dfrac1{7}}-\\dfrac{2\\sqrt{7}+\\sqrt{21}}{2+\\sqrt{3}}$.",
+  "dap_an": "$5\\sqrt{7}$",
+  "loi_giai": "$2\\sqrt{112}-14\\sqrt{\\dfrac1{7}}-\\dfrac{2\\sqrt{7}+\\sqrt{21}}{2+\\sqrt{3}}$\n$=8\\sqrt{7}-2\\sqrt{7}-\\dfrac{\\sqrt{7}(2+\\sqrt{3})}{2+\\sqrt{3}}$\n$=8\\sqrt{7}-2\\sqrt{7}-\\sqrt{7}$\n$=5\\sqrt{7}$"
+ },
+ {
+  "ma_cau": "T109030304007",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}+2}=\\dfrac{\\sqrt{x}+2+3}{\\sqrt{x}+2}=1+\\dfrac{3}{\\sqrt{x}+2}$.\nCó $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+2>0\\Rightarrow\\dfrac{3}{\\sqrt{x}+2}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+2\\ge2\\Rightarrow\\dfrac{3}{\\sqrt{x}+2}\\le\\dfrac{3}{2}\\Rightarrow P\\le1+\\dfrac{3}{2}=\\dfrac{5}{2}$.\nVậy $1<P\\le\\dfrac{5}{2}$. Mà $P$ nguyên nên $P=2$.\n$P=2\\Rightarrow1+\\dfrac{3}{\\sqrt{x}+2}=2\\Rightarrow\\dfrac{3}{\\sqrt{x}+2}=1\\Rightarrow\\sqrt{x}+2=3\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x=1$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030301033",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}-5}$ $(x>0;x \\ne25)$. Tìm $x$ để $P^3-27=0$.",
+  "dap_an": "100",
+  "loi_giai": "$P^3-27=0$\n$P^3=27$\n$P=3$\n$\\dfrac{\\sqrt{x}+5}{\\sqrt{x}-5}=3$\n$\\sqrt{x}+5=3(\\sqrt{x}-5)$\n$\\sqrt{x}+5=3\\sqrt{x}-15$\n$2\\sqrt{x}=20$\n$\\sqrt{x}=10$\n$x=100$ (TMĐK).\nVậy $x=100$ thì $P^3-27=0$."
+ },
+ {
+  "ma_cau": "T109030303015",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}-3}$ $(x\\ge0;x\ne9)$. Tìm $x$ nguyên để $P$ nguyên.",
+  "dap_an": "{1;4;16;25;49;121}",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}-3}=\\dfrac{\\sqrt{x}-3+8}{\\sqrt{x}-3}=1+\\dfrac{8}{\\sqrt{x}-3}$.\nĐể $P\\in\\mathbb{Z}$ thì $8 \\vdots (\\sqrt{x}-3)$ hay $\\sqrt{x}-3\\in U(8)=\\{\\pm1;\\pm2;\\pm4;\\pm8\\}$.\nVì $\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}-3\\ge-3\\Rightarrow\\sqrt{x}-3\\in\\{-2;-1;1;2;4;8\\}$.\n$\\Rightarrow x\\in\\{1;4;16;25;49;121\\}$ (thỏa mãn ĐKXĐ).\nVậy với $x\\in\\{1;4;16;25;49;121\\}$ thì $P$ nguyên."
+ },
+ {
+  "ma_cau": "T109030302017",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}(\\sqrt{x}-4)}{4}$ $(x\\ge0)$. Tìm $x$ để $P\\le\\sqrt{x}-4$.",
+  "dap_an": "16",
+  "loi_giai": "Để $P\\le\\sqrt{x}-4$ thì\n$\\dfrac{\\sqrt{x}(\\sqrt{x}-4)}{4}\\le\\sqrt{x}-4$\n$\\dfrac{x-4\\sqrt{x}}{4}\\le\\dfrac{4\\sqrt{x}-16}{4}$\n$x-8\\sqrt{x}+16\\le0$\n$(\\sqrt{x}-4)^2\\le0$\nVì $(\\sqrt{x}-4)^2\\ge0$ với mọi $x$ thỏa mãn ĐKXĐ nên suy ra\n$\\sqrt{x}-4=0$\n$x=16$ (tm ĐKXĐ).\nVậy $x=16$."
+ },
+ {
+  "ma_cau": "T109020202030",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $(x+1)(2x+1) < 2x^2 - 3x - 3$.",
+  "dap_an": "$x < -\\dfrac{2}{3}$",
+  "loi_giai": "$(x+1)(2x+1) < 2x^2 - 3x - 3\\\\\n2x^2 + x + 2x + 1 < 2x^2 - 3x - 3\\\\\n2x^2 + x + 2x - 2x^2 + 3x < -3 - 1\\\\\n6x < -4\\\\x < -\\dfrac{2}{3}\\\\$\nVậy tập nghiệm của bất phương trình là $x < -\\dfrac{2}{3}$."
+ },
+ {
+  "ma_cau": "T109030102019",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=(\\sqrt{13}+\\sqrt5)\\sqrt{18-2\\sqrt{65}}$.",
+  "dap_an": "$8$",
+  "loi_giai": "$A=(\\sqrt{13}+\\sqrt5)\\sqrt{18-2\\sqrt{65}}$\n$A=(\\sqrt{13}+\\sqrt5)\\sqrt{(\\sqrt{13}-\\sqrt5)^2}$\n$A=(\\sqrt{13}+\\sqrt5)|\\sqrt{13}-\\sqrt5|$\n$A=(\\sqrt{13}+\\sqrt5)(\\sqrt{13}-\\sqrt5)$\n$A=13-5$\n$A=8$"
+ },
+ {
+  "ma_cau": "T109030102079",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{19+6\\sqrt{2}}-\\sqrt{19-6\\sqrt{2}}$.",
+  "dap_an": "$2$",
+  "loi_giai": "$A=\\sqrt{19+6\\sqrt{2}}-\\sqrt{19-6\\sqrt{2}}$\n$A=\\sqrt{(1+3\\sqrt{2})^2}-\\sqrt{(1-3\\sqrt{2})^2}$\n$A=|1+3\\sqrt{2}|-|1-3\\sqrt{2}|$\n$A=1+3\\sqrt{2}-(3\\sqrt{2}-1)$\n$A=1+3\\sqrt{2}-3\\sqrt{2}+1$\n$A=2$"
+ },
+ {
+  "ma_cau": "T109030304004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{10}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "1;36",
+  "loi_giai": "Ta có: $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+4>0$; $10>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+4\\ge4\\Rightarrow\\dfrac{10}{\\sqrt{x}+4}\\le\\dfrac{10}{4}=\\dfrac{5}{2}\\Rightarrow P\\le\\dfrac{5}{2}$.\nVậy $0<P\\le\\dfrac{5}{2}$. Mà $P$ nguyên nên $P\\in\\{1;2\\}$.\nTH1:\n$P=1\\Rightarrow\\dfrac{10}{\\sqrt{x}+4}=1\\Rightarrow\\sqrt{x}+4=10\\Rightarrow\\sqrt{x}=6\\Rightarrow x=36$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=2\\Rightarrow\\dfrac{10}{\\sqrt{x}+4}=2\\Rightarrow\\sqrt{x}+4=5\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy để $P$ nhận giá trị nguyên thì $x\\in\\{1;36\\}$."
+ },
+ {
+  "ma_cau": "T109030101109",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{28}-2\\sqrt{63}-3\\sqrt{112}+\\sqrt{175}$.",
+  "dap_an": "$-11\\sqrt{7}$",
+  "loi_giai": "$\\sqrt{28}-2\\sqrt{63}-3\\sqrt{112}+\\sqrt{175}$\n$=2\\sqrt{7}-2\\cdot3\\sqrt{7}-3\\cdot4\\sqrt{7}+5\\sqrt{7}$\n$=2\\sqrt{7}-6\\sqrt{7}-12\\sqrt{7}+5\\sqrt{7}$\n$=-11\\sqrt{7}$"
+ },
+ {
+  "ma_cau": "T109020304016",
+  "loai": "tra_loi_ngan",
+  "de": "Một ô tô dự định đi từ A đến B cách nhau 120 km trong một thời gian quy định. Sau khi đi được 1 giờ thì ô tô bị chặn bởi xe cứu hỏa 10 phút. Do đó để đến B đúng hạn xe phải tăng vận tốc thêm 6 km/h. Tính vận tốc lúc đầu của ô tô.",
+  "dap_an": "48",
+  "loi_giai": "Đổi 10 phút = $\\dfrac{1}{6}$ giờ.\nGọi vận tốc lúc đầu của ô tô là $x (km/h, x > 0)$.\nThời gian ô tô dự định đi từ A đến B là: $\\dfrac{120}{x}$ (giờ).\nQuãng đường ô tô đi được trong 1 giờ theo dự định là: $x \\cdot 1 = x$ (km).\nQuãng đường còn lại là: $120 - x$ (km).\nVận tốc của ô tô khi tăng thêm 6 km/h là: $x + 6$ (km/h).\nThời gian ô tô đi trên quãng đường còn lại là: $\\dfrac{120 - x}{x + 6}$ (giờ).\nTổng thời gian ô tô đi từ A đến B thực tế là: $1 + \\dfrac{1}{6} + \\dfrac{120 - x}{x + 6}$ (giờ).\nVì xe vẫn đến B đúng hạn nên ta có PT:\n$\\dfrac{120}{x} = 1 + \\dfrac{1}{6} + \\dfrac{120 - x}{x + 6}$\n$\\dfrac{120}{x} = \\dfrac{7}{6} + \\dfrac{120 - x}{x + 6}$\n$\\dfrac{120}{x} - \\dfrac{120 - x}{x + 6} =  …"
+ },
+ {
+  "ma_cau": "T109030101053",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $2\\sqrt{6}-\\sqrt{24}+5\\sqrt{96}-7\\sqrt{150}$.",
+  "dap_an": "$-15\\sqrt{6}$",
+  "loi_giai": "$2\\sqrt{6}-\\sqrt{24}+5\\sqrt{96}-7\\sqrt{150}$\n$=2\\sqrt{6}-2\\sqrt{6}+5\\cdot4\\sqrt{6}-7\\cdot5\\sqrt{6}$\n$=2\\sqrt{6}-2\\sqrt{6}+20\\sqrt{6}-35\\sqrt{6}$\n$=-15\\sqrt{6}$"
+ },
+ {
+  "ma_cau": "T109030101038",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=(8\\sqrt{6}-2\\sqrt{150}+\\sqrt{54})\\sqrt{6}$.",
+  "dap_an": "6",
+  "loi_giai": "$A=(8\\sqrt{6}-2\\sqrt{150}+\\sqrt{54})\\sqrt{6}$\n$A=(8\\sqrt{6}-2\\cdot5\\sqrt{6}+3\\sqrt{6})\\sqrt{6}$\n$A=(8\\sqrt{6}-10\\sqrt{6}+3\\sqrt{6})\\sqrt{6}$\n$A=\\sqrt{6}\\cdot\\sqrt{6}$\n$A=6$"
+ },
+ {
+  "ma_cau": "T109030302014",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{4\\sqrt{x}}{\\sqrt{x}-5}$ $(x>0;x\\ne25)$. Tìm số nguyên $x$ nhỏ nhất để $P>3$.",
+  "dap_an": "$26$",
+  "loi_giai": "$P>3\\Rightarrow P-3>0$.\nXét $P-3=\\dfrac{4\\sqrt{x}}{\\sqrt{x}-5}-3=\\dfrac{\\sqrt{x}+15}{\\sqrt{x}-5}$.\nVì $x>0\\Rightarrow\\sqrt{x}>0\\Rightarrow\\sqrt{x}+15>0$ nên để $P-3>0$ thì $\\sqrt{x}-5>0$.\n$\\Rightarrow\\sqrt{x}>5$\n$\\Rightarrow x>25$\nKết hợp với điều kiện ta được $x>25$.\nVì $x$ là số nguyên nhỏ nhất nên $x=26$.\nVậy số nguyên $x$ nhỏ nhất để $P>3$ là 26."
+ },
+ {
+  "ma_cau": "T109030101043",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{29}{6+\\sqrt{7}}+\\sqrt{(2-\\sqrt{7})^2}$.",
+  "dap_an": "4",
+  "loi_giai": "$B=\\dfrac{29}{6+\\sqrt{7}}+\\sqrt{(2-\\sqrt{7})^2}$\n$B=\\dfrac{29(6-\\sqrt{7})}{(6+\\sqrt{7})(6-\\sqrt{7})}+|2-\\sqrt{7}|$\n$B=\\dfrac{29(6-\\sqrt{7})}{36-7}+|2-\\sqrt{7}|$\n$B=6-\\sqrt{7}+(\\sqrt{7}-2)$\n$B=4$"
+ },
+ {
+  "ma_cau": "T109030101076",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{(1-\\sqrt{2})^2}-\\sqrt{32}+\\dfrac{6}{\\sqrt{2}}$.",
+  "dap_an": "-1",
+  "loi_giai": "$\\sqrt{(1-\\sqrt{2})^2}-\\sqrt{32}+\\dfrac{6}{\\sqrt{2}}$\n$=|1-\\sqrt{2}|-4\\sqrt{2}+3\\sqrt{2}$\n$=\\sqrt{2}-1-4\\sqrt{2}+3\\sqrt{2}$\n$=-1$"
+ },
+ {
+  "ma_cau": "T109030202011",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}-4}$ tại $x=36$.",
+  "dap_an": "$\\dfrac{5}{2}$",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne16$.\nThay $x=36$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{36}-1}{\\sqrt{36}-4}=\\dfrac{6-1}{6-4}=\\dfrac{5}{2}$."
+ },
+ {
+  "ma_cau": "T109030102067",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{21+4\\sqrt{17}}-\\sqrt{20-2\\sqrt{51}}$.",
+  "dap_an": "$2+\\sqrt{3}$",
+  "loi_giai": "$A=\\sqrt{21+4\\sqrt{17}}-\\sqrt{20-2\\sqrt{51}}$\n$A=\\sqrt{(2+\\sqrt{17})^2}-\\sqrt{(\\sqrt{17}-\\sqrt{3})^2}$\n$A=|2+\\sqrt{17}|-|\\sqrt{17}-\\sqrt{3}|$\n$A=2+\\sqrt{17}-(\\sqrt{17}-\\sqrt{3})$\n$A=2+\\sqrt{3}$"
+ },
+ {
+  "ma_cau": "T109030102037",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{20-2\\sqrt{91}}-\\sqrt{20+2\\sqrt{91}}$.",
+  "dap_an": "$-2\\sqrt{7}$",
+  "loi_giai": "$A=\\sqrt{20-2\\sqrt{91}}-\\sqrt{20+2\\sqrt{91}}$\n$A=\\sqrt{(\\sqrt{13}-\\sqrt{7})^2}-\\sqrt{(\\sqrt{13}+\\sqrt{7})^2}$\n$A=|\\sqrt{13}-\\sqrt{7}|-|\\sqrt{13}+\\sqrt{7}|$\n$A=\\sqrt{13}-\\sqrt{7}-(\\sqrt{13}+\\sqrt{7})$\n$A=-2\\sqrt{7}$"
+ },
+ {
+  "ma_cau": "T109030304014",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{5}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm tất cả các giá trị của $x$ để $P$ nhận giá trị nguyên.",
+  "dap_an": "0;1/16;4/9;9/4;16",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{5}{\\sqrt{x}+1}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{5}{\\sqrt{x}+1}\\le5\\Rightarrow P\\le8$.\nVậy $3<P\\le8$. Mà $P$ nguyên nên $P\\in\\{4;5;6;7;8\\}$.\nTH1:\n$P=4\\Rightarrow3+\\dfrac{5}{\\sqrt{x}+1}=4\\Rightarrow\\dfrac{5}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}=4\\Rightarrow x=16$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=5\\Rightarrow3+\\dfrac{5}{\\sqrt{x}+1}=5\\Rightarrow\\dfrac{5}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}+1=\\dfrac{5}{2}\\Rightarrow\\sqrt{x}=\\dfrac{3}{2}\\Rightarrow x=\\dfrac{9}{4}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=6\\Rightarrow3+\\dfrac{5}{\\sqrt{x}+1}=6\\Rightarrow\\dfrac{5}{\\sqrt{x}+1}=3\\Rightarrow\\sqrt{x}+1=\\dfrac{5}{3}\\Rightarrow\\sqrt{x}=\\dfrac{2}{3}\\Rightarrow  …"
+ },
+ {
+  "ma_cau": "T109030202034",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}-5}$ tại $|x-1|=120$.",
+  "dap_an": "\\dfrac{4}{3}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne25$.\n$|x-1|=120$\nTH1: $x-1=120\\Rightarrow x=121$ (tm ĐKXĐ).\nTH2: $x-1=-120\\Rightarrow x=-119$ (Ktm ĐKXĐ).\nThay $x=121$ vào $A$ ta được: $A=\\dfrac{\\sqrt{121}-3}{\\sqrt{121}-5}=\\dfrac{11-3}{11-5}=\\dfrac{4}{3}$."
+ },
+ {
+  "ma_cau": "T109030304030",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=5+\\dfrac{3}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0; 1/4; 4",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{3}{\\sqrt{x}+1}>0\\Rightarrow P>5$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{3}{\\sqrt{x}+1}\\le3\\Rightarrow P\\le8$.\nVậy $5<P\\le8$. Mà $P$ nguyên nên $P\\in\\{6;7;8\\}$.\nTH1:\n$P=6\\Rightarrow5+\\dfrac{3}{\\sqrt{x}+1}=6\\Rightarrow\\dfrac{3}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=7\\Rightarrow5+\\dfrac{3}{\\sqrt{x}+1}=7\\Rightarrow\\dfrac{3}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}+1=\\dfrac{3}{2}\\Rightarrow\\sqrt{x}=\\dfrac{1}{2}\\Rightarrow x=\\dfrac{1}{4}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=8\\Rightarrow5+\\dfrac{3}{\\sqrt{x}+1}=8\\Rightarrow\\dfrac{3}{\\sqrt{x}+1}=3\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{0;\\dfrac{1}{ …"
+ },
+ {
+  "ma_cau": "T109030102020",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=(\\sqrt{10}+\\sqrt6)\\sqrt{16-4\\sqrt{15}}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=(\\sqrt{10}+\\sqrt6)\\sqrt{16-4\\sqrt{15}}$\n$A=(\\sqrt{10}+\\sqrt6)\\sqrt{(\\sqrt{10}-\\sqrt6)^2}$\n$A=(\\sqrt{10}+\\sqrt6)|\\sqrt{10}-\\sqrt6|$\n$A=(\\sqrt{10}+\\sqrt6)(\\sqrt{10}-\\sqrt6)$\n$A=10-6$\n$A=4$"
+ },
+ {
+  "ma_cau": "T109030301017",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}-8}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P=2\\sqrt{x}-17$.",
+  "dap_an": "81",
+  "loi_giai": "Vì $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow\\sqrt{x}+1>0$ nên ta có:\n$\\dfrac{2\\sqrt{x}-8}{\\sqrt{x}+1}=2\\sqrt{x}-17$\n$2\\sqrt{x}-8=(2\\sqrt{x}-17)(\\sqrt{x}+1)$\n$2\\sqrt{x}-8=2x+2\\sqrt{x}-17\\sqrt{x}-17$\n$2\\sqrt{x}-8=2x-15\\sqrt{x}-17$\n$2x-17\\sqrt{x}-9=0$\n$(2\\sqrt{x}+1)(\\sqrt{x}-9)=0$\nTH1: $2\\sqrt{x}+1=0$\n$\\sqrt{x}=-\\dfrac{1}{2}$ (Loại).\nTH2: $\\sqrt{x}-9=0$\n$\\sqrt{x}=9$\n$x=81$ (thỏa mãn).\nVậy $x=81$ thì $P=2\\sqrt{x}-17$."
+ },
+ {
+  "ma_cau": "T109030302019",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}(\\sqrt{x}-4)}{6}$ $(x\\ge0)$. Tìm $x$ để $P\\le\\sqrt{x}-\\dfrac{25}{6}$.",
+  "dap_an": "25",
+  "loi_giai": "Để $P\\le\\sqrt{x}-\\dfrac{25}{6}$ thì\n$\\dfrac{\\sqrt{x}(\\sqrt{x}-4)}{6}\\le\\sqrt{x}-\\dfrac{25}{6}$\n$\\dfrac{x-4\\sqrt{x}}{6}\\le\\dfrac{6\\sqrt{x}-25}{6}$\n$x-10\\sqrt{x}+25\\le0$\n$(\\sqrt{x}-5)^2\\le0$\nVì $(\\sqrt{x}-5)^2\\ge0$ với mọi $x$ thỏa mãn ĐKXĐ nên suy ra\n$\\sqrt{x}-5=0$\n$x=25$ (tm ĐKXĐ).\nVậy $x=25$."
+ }
+]

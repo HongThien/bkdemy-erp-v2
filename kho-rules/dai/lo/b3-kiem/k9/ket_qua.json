@@ -1,0 +1,5952 @@
+[
+ {
+  "ma_cau": "T109030202005",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=25 sau khi kiểm ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101072",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Phân thức căn ở tử mẫu rút gọn nhân tử; cũng có thể xếp rút gọn căn của số.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020202027",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển tích, thu gọn rồi giải bất phương trình bậc nhất.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030102071",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa được về bình phương của tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302008",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số, xét hiệu P-2.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302007",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số, xét hiệu P-2.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101077",
+  "may": "NDB00481",
+  "chac": "vua",
+  "ly_do": "Có căn dạng bình phương nhưng trộn thêm căn ở mẫu và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304041",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P rồi xét P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030302050",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số, xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109010309001",
+  "may": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe đi ngược chiều gặp nhau, lập hệ theo vận tốc và thời gian gặp.",
+  "hien": "NDB00711",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010309"
+ },
+ {
+  "ma_cau": "T109030303030",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, chia tử cho mẫu rồi xét ước.",
+  "hien": "NDB00506",
+  "nguon": "gan_cum",
+  "cum": "DCUM01521",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030102004",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00485",
+  "nguon": "gan_cum",
+  "cum": "DCUM01467",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101114",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn và cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303035",
+  "may": "NDB00505",
+  "chac": "vua",
+  "ly_do": "x nguyên, P nguyên theo ước của hằng số nhưng hỏi thêm giá trị lớn nhất, gần NDB00508.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109010304012",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Lập hệ vận tốc và thời gian dự định theo s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030304006",
+  "may": "NDB00509",
+  "chac": "cao",
+  "ly_do": "Tử chứa căn, chia tử cho mẫu rồi đánh giá P trong khoảng.",
+  "hien": "NDB00508",
+  "nguon": "gan_cum",
+  "cum": "DCUM01509",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304095",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P rồi xét P tự nhiên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102126",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304063",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109090401021",
+  "may": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí hai biến nguyên có miền điều kiện; bản đồ chỉ có dạng gần đúng.",
+  "hien": "NDB00514",
+  "nguon": "gan_cum",
+  "cum": "DCUM01388",
+  "dang_cu": "T109090401"
+ },
+ {
+  "ma_cau": "T109030102023",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202065",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=289.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302065",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số, xét hiệu P-1.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102081",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301030",
+  "may": "NDB00499",
+  "chac": "vua",
+  "ly_do": "P^3=27 quy về P là hằng số, nhưng có thể xếp cùng nhóm bình phương/lũy thừa của P.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101101",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, căn dạng bình phương và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101048",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102042",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302001",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030202055",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=49.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109020201029",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chuyển vế rồi chia.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030304081",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109010304013",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Lập hệ vận tốc và thời gian dự định theo s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030102139",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020202020",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển ngoặc rồi giải bất phương trình bậc nhất.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030202016",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=36.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302079",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109010304018",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Lập hệ vận tốc và thời gian dự định theo s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030202024",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=49.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102055",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102096",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101105",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, căn dạng bình phương và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304075",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P=6+hằng/(căn+1) nguyên, đánh giá khoảng; ranh giới với NDB00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030301021",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Cho P^2=4, xét hai trường hợp P=±2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109010304011",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Lập hệ vận tốc và thời gian dự định theo s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030101070",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn đưa thừa số ra ngoài, căn ở mẫu và rút gọn nhân tử chung.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304007",
+  "may": "NDB00509",
+  "chac": "cao",
+  "ly_do": "Tử chứa căn, chia tử cho mẫu rồi đánh giá P trong khoảng.",
+  "hien": "NDB00508",
+  "nguon": "gan_cum",
+  "cum": "DCUM01509",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030301033",
+  "may": "NDB00499",
+  "chac": "vua",
+  "ly_do": "P^3=27 quy về P là hằng số, nhưng có thể xếp cùng nhóm bình phương/lũy thừa của P.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030303015",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, chia tử cho mẫu rồi xét ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030302017",
+  "may": "NDB00502",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một biểu thức.",
+  "hien": "NDB00503",
+  "nguon": "gan_cum",
+  "cum": "DCUM01518",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020202030",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển tích rồi giải bất phương trình bậc nhất.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030102019",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102079",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304004",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P rồi xét P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101109",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020304016",
+  "may": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Cùng quãng đường lập phương trình, nhưng có dừng giữa chừng rồi tăng tốc, không khớp trọn.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030101053",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101038",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn, thu gọn rồi nhân căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302014",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số, xét hiệu P-3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101043",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101076",
+  "may": "NDB00481",
+  "chac": "vua",
+  "ly_do": "Căn dạng bình phương trộn thêm đưa thừa số ra ngoài và căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202011",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=36.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102067",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102037",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304014",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P=3+hằng/(căn+1) nguyên, đánh giá khoảng; ranh giới với NDB00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202034",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi cho giá trị tuyệt đối |x-1|=120.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304030",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P=5+hằng/(căn+1) nguyên, đánh giá khoảng; ranh giới với NDB00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102020",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301017",
+  "may": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng một biểu thức chứa căn.",
+  "hien": "NDB00500",
+  "nguon": "gan_cum",
+  "cum": "DCUM01515",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030302019",
+  "may": "NDB00502",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một biểu thức.",
+  "hien": "NDB00503",
+  "nguon": "gan_cum",
+  "cum": "DCUM01518",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030202033",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi cho giá trị tuyệt đối |x-1|=99.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101084",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn, thu gọn rồi nhân căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303034",
+  "may": "NDB00505",
+  "chac": "vua",
+  "ly_do": "x nguyên, P nguyên theo ước của hằng số nhưng hỏi thêm giá trị lớn nhất, gần NDB00508.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030101108",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101079",
+  "may": "NDB00481",
+  "chac": "vua",
+  "ly_do": "Có căn dạng bình phương nhưng trộn thêm căn ở mẫu và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101082",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn, thu gọn rồi nhân căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102039",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304048",
+  "may": "NDB00510",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu ra 1 trừ phân thức, đánh giá phần âm để xét P nguyên.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202019",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=64.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030303028",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, biến đổi rồi xét ước.",
+  "hien": "NDB00506",
+  "nguon": "gan_cum",
+  "cum": "DCUM01521",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030302077",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030202040",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi cho giá trị tuyệt đối |x-1|=288.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304058",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109010301011",
+  "may": "NDB00719",
+  "chac": "vua",
+  "ly_do": "Hệ hai tổ tăng năng suất theo phần trăm; không hẳn công việc chung riêng, gần NDB00715.",
+  "hien": "NDB00717",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010301"
+ },
+ {
+  "ma_cau": "T109030102122",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030303026",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, biến đổi rồi xét ước.",
+  "hien": "NDB00506",
+  "nguon": "gan_cum",
+  "cum": "DCUM01521",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030101057",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030301007",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Cho |P|=2, xét hai trường hợp P=±2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101015",
+  "may": "NDB00481",
+  "chac": "cao",
+  "ly_do": "Căn của bình phương một biểu thức, xét dấu trị tuyệt đối.",
+  "hien": "NDB00481",
+  "nguon": "gan_cum",
+  "cum": "DCUM01463",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101086",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, rút gọn phân thức và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202063",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=225.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302048",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102018",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301001",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 32.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109010305010",
+  "may": "NDB00712",
+  "chac": "cao",
+  "ly_do": "Ca nô xuôi dòng ngược dòng, lập hệ vận tốc riêng và vận tốc dòng nước.",
+  "hien": "NDB00712",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010305"
+ },
+ {
+  "ma_cau": "T109030202008",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=36.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109010204004",
+  "may": "NDB00706",
+  "chac": "cao",
+  "ly_do": "Hệ chứa giá trị tuyệt đối, đặt ẩn phụ u=|x+2|, v=|y+1|.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030202038",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi cho giá trị tuyệt đối |x-1|=224.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302072",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030303007",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "x nguyên, P tử hằng số, mẫu là ước của hằng số.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030102029",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301005",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Cho |P|=2, xét hai trường hợp P=±2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101068",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn đưa thừa số ra ngoài, căn ở mẫu và rút gọn nhân tử chung.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102098",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202058",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=100.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302063",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số, xét hiệu P-1.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101023",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101021",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102026",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301026",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 5/2.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102076",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020202028",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển tích rồi giải bất phương trình bậc nhất.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030101102",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, căn dạng bình phương và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202014",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=36.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030301004",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 64.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030302011",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số, xét hiệu P-1.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102095",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030303036",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, biến đổi rồi xét ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109010202005",
+  "may": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển, thu gọn hệ về bậc nhất hai ẩn rồi giải.",
+  "hien": "NDB00704",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010202"
+ },
+ {
+  "ma_cau": "T109030101103",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, căn dạng bình phương và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202035",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi cho giá trị tuyệt đối |x-1|=143.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102128",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010304016",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Lập hệ vận tốc và thời gian dự định theo s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030101111",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302066",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để 2P lớn hơn một số, xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102116",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101064",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020304058",
+  "may": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Cùng quãng đường lập phương trình, nhưng có nghỉ giữa chừng rồi tăng tốc, không khớp trọn.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030303033",
+  "may": "NDB00505",
+  "chac": "vua",
+  "ly_do": "x nguyên, P nguyên theo ước của hằng số nhưng hỏi thêm giá trị lớn nhất, gần NDB00508.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109020402019",
+  "may": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Khai triển, phân tích x^2-9, đặt nhân tử chung đưa về phương trình tích.",
+  "hien": "NDB00722",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020402"
+ },
+ {
+  "ma_cau": "T109030102070",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010307020",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hình chữ nhật cho chu vi, thay đổi kích thước, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030301034",
+  "may": "NDB00499",
+  "chac": "vua",
+  "ly_do": "P^3=27 quy về P là hằng số, nhưng có thể xếp cùng nhóm bình phương/lũy thừa của P.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101006",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303001",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, biến đổi rồi xét ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030102038",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301014",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Cho P^2=4, xét hai trường hợp P=±2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030304070",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030302047",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102007",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304076",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P để tìm giá trị nguyên lớn nhất.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102066",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302078",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304068",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102027",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302032",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một số, xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102058",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102097",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302053",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn 0.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109010309015",
+  "may": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe cùng chiều và ngược chiều, lập hệ theo vận tốc tương đối.",
+  "hien": "NDB00711",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010309"
+ },
+ {
+  "ma_cau": "T109030303014",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, chia tử cho mẫu rồi xét ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030102114",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030301029",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 13/6.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102024",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304012",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P=3+hằng/(căn+2) nguyên, đánh giá khoảng; ranh giới với NDB00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304051",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P để tìm giá trị nguyên nhỏ nhất.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202062",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=196.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302062",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số, xét hiệu P-1.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302029",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn 0, xét dấu mẫu.",
+  "hien": "NDB00501",
+  "nguon": "gan_cum",
+  "cum": "DCUM01516",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102105",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304026",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P=2+hằng/(căn+1) nguyên, đánh giá khoảng; ranh giới với NDB00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102117",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương hiệu, nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101028",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, rút gọn phân thức rồi nhân liên hợp.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102030",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102062",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102102",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020201033",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chia hai vế cho số âm đổi chiều.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109020403011",
+  "may": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Phương trình ẩn ở mẫu, mẫu x^2-2x-3 phải phân tích nhân tử để quy đồng.",
+  "hien": "NDB00723",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020403"
+ },
+ {
+  "ma_cau": "T109030102021",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304034",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030302016",
+  "may": "NDB00502",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một biểu thức.",
+  "hien": "NDB00503",
+  "nguon": "gan_cum",
+  "cum": "DCUM01518",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101100",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302002",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng 0.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304023",
+  "may": "NDB00509",
+  "chac": "vua",
+  "ly_do": "P tử chứa căn, đánh giá khoảng bằng so mẫu với tử, không chia tử cho mẫu.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102014",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101104",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu, căn dạng bình phương và đưa thừa số ra ngoài.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020403017",
+  "may": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ, quy đồng khử mẫu.",
+  "hien": "NDB00723",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020403"
+ },
+ {
+  "ma_cau": "T109030102032",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304060",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101095",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302049",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030303016",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, chia tử cho mẫu rồi xét ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109010307022",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hình chữ nhật cho chu vi, thay đổi kích thước, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030301008",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Cho |P|=2, xét hai trường hợp P=±2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102091",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010301015",
+  "may": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia vốn thành hai phần, lãi suất khác nhau, lập hệ.",
+  "hien": "NDB00717",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010301"
+ },
+ {
+  "ma_cau": "T109030301003",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 72.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030304044",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P rồi xét P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102068",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102135",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030303005",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nguyên, tử là biểu thức căn, biến đổi rồi xét ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109020305001",
+  "may": "NDB00731",
+  "chac": "cao",
+  "ly_do": "Ca nô xuôi ngược dòng, cho vận tốc dòng nước và tổng thời gian, lập phương trình.",
+  "hien": "NDB00731",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020305"
+ },
+ {
+  "ma_cau": "T109030304022",
+  "may": "NDB00509",
+  "chac": "vua",
+  "ly_do": "P tử chứa căn, đánh giá khoảng bằng so mẫu với tử, không chia tử cho mẫu.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101004",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính căn của số rồi thực hiện phép nhân chia.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202037",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi cho giá trị tuyệt đối |x-1|=195.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304024",
+  "may": "NDB00509",
+  "chac": "vua",
+  "ly_do": "P tử chứa căn, đánh giá khoảng bằng so mẫu với tử, không chia tử cho mẫu.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304031",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102059",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102073",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn đưa về bình phương tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020402031",
+  "may": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung x+1 đưa phương trình về dạng tích.",
+  "hien": "NDB00722",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020402"
+ },
+ {
+  "ma_cau": "T109030304047",
+  "may": "NDB00510",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu ra 1 trừ phân thức, đánh giá phần âm để xét P nguyên.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020202029",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển tích rồi giải bất phương trình bậc nhất.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030302009",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số, xét hiệu P-3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020403001",
+  "may": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ, quy đồng khử mẫu.",
+  "hien": "NDB00723",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020403"
+ },
+ {
+  "ma_cau": "T109030202013",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị A tại x=64.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102134",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Phải nhân/chia hệ số (nhân 4/4) mới đưa về bình phương.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010304001",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Lập hệ vận tốc và thời gian dự định theo s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109020201028",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chuyển vế rồi chia.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030301013",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Cho P^2=4, xét hai trường hợp P=±2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101001",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính căn của số rồi thực hiện phép nhân chia.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302031",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một hằng số (kèm điều kiện x nguyên tố).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020201035",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chuyển vế rồi đổi chiều khi chia số âm.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030301031",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "P^3=27 suy ra P=3, rồi giải P bằng hằng số.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101035",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức chứa căn của số, đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303024",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P có tử là hằng số, tìm x nguyên để P nguyên, dùng ước của hằng số.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109010307015",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về kích thước và diện tích khu đất hình chữ nhật.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030101088",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn căn ở mẫu cần trục căn với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101029",
+  "may": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Biểu thức có phân thức căn ở mẫu, rút gọn và trục căn thức ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101052",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030301019",
+  "may": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng một biểu thức chứa căn (2√x-25).",
+  "hien": "NDB00500",
+  "nguon": "gan_cum",
+  "cum": "DCUM01515",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101094",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304082",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P rồi xét P nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109010308013",
+  "may": "NDB00716",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình số hàng ghế và số ghế mỗi hàng, tổng ghế = tích hai đại lượng.",
+  "hien": "NDB00719",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010308"
+ },
+ {
+  "ma_cau": "T109030102084",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (4±2√5)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101093",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010204011",
+  "may": "NDB00706",
+  "chac": "cao",
+  "ly_do": "Hệ có giá trị tuyệt đối, đặt u=|x+1|, v=|y-3|.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030303037",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức chứa căn, chia tử cho mẫu, tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109090401001",
+  "may": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí thuê xe có miền điều kiện hai biến; chưa rõ thuộc 'Dùng hệ' hay 'Xét x nguyên'.",
+  "hien": "NDB00513",
+  "nguon": "gan_cum",
+  "cum": "DCUM01387",
+  "dang_cu": "T109090401"
+ },
+ {
+  "ma_cau": "T109030101019",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010308006",
+  "may": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Số trang cố định, đổi năng suất mỗi ngày thì đổi số ngày; giải bằng hệ nên cũng có thể là dạng khác.",
+  "hien": "NDB00719",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010308"
+ },
+ {
+  "ma_cau": "T109030101081",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn của số, đưa thừa số ra ngoài rồi nhân.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304043",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên bằng đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102011",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (2±√7)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302054",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn 0 (kèm điều kiện x nguyên tố).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304033",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304091",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, P tự nhiên, đánh giá khoảng của P rồi xét từng giá trị.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030303011",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức, chia tử cho mẫu, tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030202041",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=323, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109010204001",
+  "may": "NDB00705",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn phụ dạng phân thức nhưng mẫu còn chứa |x|, cũng gần dạng giá trị tuyệt đối.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030301023",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "P^2=4 nên xét P=2 hoặc P=-2, đúng dạng bình phương của P.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030202018",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=81 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302076",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nhỏ hơn 1/2.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020402013",
+  "may": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Phân tích x^2-16 và đặt nhân tử chung (x+4) để đưa về phương trình tích.",
+  "hien": "NDB00722",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020402"
+ },
+ {
+  "ma_cau": "T109030302070",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên nhỏ nhất để 2P>1, tức P lớn hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020201026",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản 3x+5>=14.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030302045",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên nhỏ nhất để P<=0, xét dấu tử.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102103",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010203001",
+  "may": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ chứa 1/x, 1/y, đặt ẩn phụ u,v dạng phân thức.",
+  "hien": "NDB00705",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010203"
+ },
+ {
+  "ma_cau": "T109030304032",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020304007",
+  "may": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Chênh lệch thời gian, nhưng quãng đường đi và về khác nhau (100 và 120 km) nên không đúng 'cùng quãng đường'.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109010304014",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về vận tốc và thời gian dự định, quãng đường s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030101083",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn của số, đưa thừa số ra ngoài rồi nhân.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101031",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn của số, đưa thừa số ra ngoài rồi khai triển.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020402007",
+  "may": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Chuyển vế, đặt nhân tử chung (3x-1) để đưa về phương trình tích.",
+  "hien": "NDB00722",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020402"
+ },
+ {
+  "ma_cau": "T109030303008",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x nguyên dương để P nguyên, dùng ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109090401011",
+  "may": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu lợi nhuận có miền điều kiện hai biến; chưa rõ thuộc 'Dùng hệ' hay 'Xét x nguyên'.",
+  "hien": "NDB00513",
+  "nguon": "gan_cum",
+  "cum": "DCUM01387",
+  "dang_cu": "T109090401"
+ },
+ {
+  "ma_cau": "T109010202013",
+  "may": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển các tích, thu gọn thành hệ bậc nhất hai ẩn rồi giải.",
+  "hien": "NDB00704",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010202"
+ },
+ {
+  "ma_cau": "T109020305017",
+  "may": "NDB00731",
+  "chac": "cao",
+  "ly_do": "Ca nô xuôi ngược cùng quãng đường, cho vận tốc dòng nước và tổng thời gian.",
+  "hien": "NDB00731",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020305"
+ },
+ {
+  "ma_cau": "T109030304053",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên nhỏ nhất, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304059",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030303032",
+  "may": "NDB00508",
+  "chac": "vua",
+  "ly_do": "Hỏi P nguyên lớn nhất nhưng x nguyên và giải bằng ước, gần dạng 505.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030303017",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức, chia tử cho mẫu, tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304042",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304064",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304085",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304092",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, P tự nhiên, đánh giá khoảng của P rồi xét từng giá trị.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020202013",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển ngoặc, thu gọn, chuyển vế để giải bất phương trình.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109020304012",
+  "may": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Cùng quãng đường 4 km, hai vận tốc, lệch thời gian, nhưng đổi xe giữa chừng nên không khớp hẳn.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109020201001",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản 2x+4>=10.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109020202001",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bất phương trình có x ở hai vế, chuyển vế thu gọn.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109020304022",
+  "may": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Cùng quãng đường 10 km, hai vận tốc, lệch thời gian, nhưng đổi xe giữa chừng nên không khớp hẳn.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030202042",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=360, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304002",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102113",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức 13-2√22 trong căn viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304090",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P dạng hằng số cộng phân thức tử hằng số, đánh giá khoảng để P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101067",
+  "may": "NDB00480",
+  "chac": "vua",
+  "ly_do": "Trộn khử mẫu căn, đưa thừa số ra ngoài và rút gọn phân thức căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303027",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức chứa căn, biến đổi để tìm x nguyên làm P nguyên.",
+  "hien": "NDB00506",
+  "nguon": "gan_cum",
+  "cum": "DCUM01521",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030202028",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=24, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109010301020",
+  "may": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Giá niêm yết cộng thuế VAT 10% và 15%, lập hệ hai ẩn.",
+  "hien": "NDB00717",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010301"
+ },
+ {
+  "ma_cau": "T109030101017",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302033",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một hằng số (kèm điều kiện x nguyên tố).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302060",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên lớn nhất để P nhỏ hơn 3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020201013",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, đổi chiều khi chia số âm.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030304046",
+  "may": "NDB00510",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu ra 1 - 5/(√x+2), đánh giá biểu thức trừ phân thức để P nguyên.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102002",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√11±√2)^2.",
+  "hien": "NDB00485",
+  "nguon": "gan_cum",
+  "cum": "DCUM01467",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202031",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=63, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030301027",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 7/3.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101063",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030301012",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "P^2=4 nên xét P=2 hoặc P=-2, đúng dạng bình phương của P.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030301006",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "|P|=2 nên xét hai trường hợp P=2 và P=-2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101012",
+  "may": "NDB00481",
+  "chac": "cao",
+  "ly_do": "Có căn dạng bình phương √((√18-5)^2), dùng giá trị tuyệt đối.",
+  "hien": "NDB00481",
+  "nguon": "gan_cum",
+  "cum": "DCUM01463",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102085",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (4±2√6)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101117",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102033",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√13±√5)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102017",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "9-2√14 viết thành bình phương (√7-√2)^2 rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010307023",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về chu vi và diện tích mảnh vườn hình chữ nhật.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109010204008",
+  "may": "NDB00705",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn phụ dạng phân thức nhưng mẫu còn chứa |x|, cũng gần dạng giá trị tuyệt đối.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030302028",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn 0, xét dấu mẫu.",
+  "hien": "NDB00501",
+  "nguon": "gan_cum",
+  "cum": "DCUM01516",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304025",
+  "may": "NDB00509",
+  "chac": "vua",
+  "ly_do": "P có tử và mẫu đều chứa căn, đánh giá khoảng của P; cách đánh giá khác mẫu của dạng 509.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202048",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=624, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101033",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn của số, đưa thừa số ra ngoài rồi khai triển.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304088",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P dạng hằng số cộng phân thức tử hằng số, đánh giá khoảng để P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202002",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=16 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302038",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x tự nhiên lớn nhất để P nhỏ hơn hoặc bằng 5/2.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030301018",
+  "may": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng một biểu thức chứa căn (2√x-21).",
+  "hien": "NDB00500",
+  "nguon": "gan_cum",
+  "cum": "DCUM01515",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030101096",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030301009",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "|P|=2 nên xét hai trường hợp P=2 và P=-2.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102054",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202064",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=256 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102087",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (3±2√7)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202053",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=25 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304061",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101118",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304045",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030302013",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên nhỏ nhất để P lớn hơn 1.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304093",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, P tự nhiên, đánh giá khoảng của P rồi xét từng giá trị.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030302052",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn 0 (kèm điều kiện x nguyên tố).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030202030",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=48, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304050",
+  "may": "NDB00510",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu ra 1 - 11/(√x+4), đánh giá biểu thức trừ phân thức để P nguyên.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101055",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101069",
+  "may": "NDB00480",
+  "chac": "vua",
+  "ly_do": "Trộn khử mẫu căn, đưa thừa số ra ngoài và rút gọn phân thức căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102133",
+  "may": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Tổng √(8-√15)+√(8+√15): làm được bằng nhân hệ số (484) hoặc bình phương cả biểu thức (485).",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304016",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102009",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (1±√3)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030303038",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức chứa căn, chia tử cho mẫu, tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030302073",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nhỏ hơn 1/3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030301022",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "P^2=4 nên xét P=2 hoặc P=-2, đúng dạng bình phương của P.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109010202001",
+  "may": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển các ngoặc, thu gọn thành hệ bậc nhất hai ẩn rồi giải.",
+  "hien": "NDB00704",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010202"
+ },
+ {
+  "ma_cau": "T109030303006",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x nguyên dương để P nguyên, dùng ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030303003",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức, chia tử cho mẫu, tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030101071",
+  "may": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Phân thức có căn ở mẫu, đặt nhân tử chung và rút gọn phân thức.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304094",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, P tự nhiên, đánh giá khoảng của P rồi xét từng giá trị.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101008",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302012",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên nhỏ nhất để P lớn hơn 2.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101025",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202012",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=49 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302064",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nhỏ hơn 1.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102094",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020304001",
+  "may": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, hai vận tốc khác nhau, chênh lệch thời gian 30 phút.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030102080",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (1±3√3)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302074",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P nhỏ hơn 1/3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102057",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102109",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√26±5)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202046",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=528, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109010301001",
+  "may": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Giá niêm yết, giảm 20% và 25%, lập hệ hai ẩn.",
+  "hien": "NDB00717",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010301"
+ },
+ {
+  "ma_cau": "T109030102056",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010304009",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về vận tốc và thời gian dự định, quãng đường s=vt.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109030101007",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102118",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "19-2√34 viết thành bình phương (√17-√2)^2 rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101041",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101047",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102046",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√29±√3)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202026",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=8, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302006",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên để P lớn hơn 4/3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304079",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng của P.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101009",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010305011",
+  "may": "NDB00712",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình ca nô xuôi dòng và ngược dòng, vận tốc riêng và vận tốc dòng nước.",
+  "hien": "NDB00712",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010305"
+ },
+ {
+  "ma_cau": "T109030302030",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn 0, xét dấu mẫu.",
+  "hien": "NDB00501",
+  "nguon": "gan_cum",
+  "cum": "DCUM01516",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102074",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (2±2√2)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010204012",
+  "may": "NDB00706",
+  "chac": "cao",
+  "ly_do": "Hệ có giá trị tuyệt đối, đặt u=|x-3|, v=|y|.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030202007",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=25 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304003",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020201019",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, đổi chiều khi chia số âm.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030304013",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P dạng hằng số cộng phân thức tử hằng số, đánh giá khoảng để P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101022",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302041",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên nhỏ nhất để P nhỏ hơn hoặc bằng 0.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102034",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√11±√6)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102022",
+  "may": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Tổng √(7-√13)+√(7+√13): làm được bằng nhân hệ số (484) hoặc bình phương cả biểu thức (485).",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010307030",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về kích thước và diện tích thửa ruộng hình chữ nhật.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109010202014",
+  "may": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển các tích, thu gọn thành hệ bậc nhất hai ẩn rồi giải.",
+  "hien": "NDB00704",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010202"
+ },
+ {
+  "ma_cau": "T109030304073",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P dạng hằng số cộng phân thức tử hằng số, đánh giá khoảng để P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020201034",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, đổi chiều khi chia số âm.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030102110",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102053",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101119",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101059",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102060",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304087",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P dạng hằng số cộng phân thức tử hằng số, đánh giá khoảng để P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304086",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P dạng hằng số cộng phân thức tử hằng số, đánh giá khoảng để P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101073",
+  "may": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Phân thức có căn ở mẫu, đặt nhân tử chung và rút gọn phân thức.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304036",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020201032",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, đổi chiều khi chia số âm.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030302040",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x tự nhiên lớn nhất để P nhỏ hơn hoặc bằng 3.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304049",
+  "may": "NDB00510",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu ra 1 - 8/(√x+3), đánh giá biểu thức trừ phân thức để P nguyên.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202050",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính A khi biết |x-1|=728, giải trị tuyệt đối rồi đối chiếu ĐKXĐ.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109020202021",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển ngoặc, thu gọn, chuyển vế để giải bất phương trình.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030101078",
+  "may": "NDB00481",
+  "chac": "vua",
+  "ly_do": "Trộn căn dạng bình phương, đưa thừa số ra ngoài và khử căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304017",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101036",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn của số, đưa thừa số ra ngoài rồi nhân.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101045",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102008",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302036",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x tự nhiên lớn nhất để P nhỏ hơn hoặc bằng 3/2.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102136",
+  "may": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Tổng √(11-√21)+√(11+√21): làm được bằng nhân hệ số (484) hoặc bình phương cả biểu thức (485).",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102104",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010202015",
+  "may": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển các tích, thu gọn thành hệ bậc nhất hai ẩn rồi giải.",
+  "hien": "NDB00704",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010202"
+ },
+ {
+  "ma_cau": "T109030102083",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (3±3√2)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010307014",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về kích thước và diện tích mảnh vườn hình chữ nhật.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030102036",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√17±√2)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101039",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn của số, đưa thừa số ra ngoài rồi nhân.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303009",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x nguyên dương để P nguyên, dùng ước.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304069",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102025",
+  "may": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Tổng √(10-√19)+√(10+√19): làm được bằng nhân hệ số (484) hoặc bình phương cả biểu thức (485).",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202010",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x=9 sau khi kiểm tra ĐKXĐ.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101092",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101020",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu với căn dạng bình phương; trọng tâm là căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010202009",
+  "may": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển ngoặc, thu gọn thành hệ bậc nhất hai ẩn rồi giải.",
+  "hien": "NDB00704",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010202"
+ },
+ {
+  "ma_cau": "T109030102013",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai biểu thức trong căn đều viết được thành bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302004",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng 0, xét dấu tử.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302068",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên nhỏ nhất để 2P>1, tức P lớn hơn một số.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304054",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên nhỏ nhất, đánh giá khoảng của P.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102111",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "9-2√14 viết thành bình phương (√7-√2)^2 rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102031",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn viết được thành bình phương (√7±√3)^2.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101066",
+  "may": "NDB00480",
+  "chac": "vua",
+  "ly_do": "Trộn khử mẫu căn, đưa thừa số ra ngoài và rút gọn phân thức căn ở mẫu.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101054",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020202023",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển ngoặc, thu gọn, chuyển vế để giải bất phương trình.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030101113",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010307017",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình về kích thước và diện tích miếng đất hình chữ nhật.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030301020",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "P^2=4 nên xét P=2 hoặc P=-2, đúng dạng bình phương của P.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030304083",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304009",
+  "may": "NDB00509",
+  "chac": "cao",
+  "ly_do": "P có tử là biểu thức, chia tử cho mẫu rồi đánh giá khoảng của P để P nguyên.",
+  "hien": "NDB00508",
+  "nguon": "gan_cum",
+  "cum": "DCUM01509",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101056",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các căn đồng dạng sau khi đưa thừa số ra ngoài căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202001",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay giá trị x=9 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102090",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn đưa được về bình phương của tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010301023",
+  "may": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Gửi tiền hai ngân hàng, lãi suất khác nhau, lập hệ.",
+  "hien": "NDB00717",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010301"
+ },
+ {
+  "ma_cau": "T109030302015",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số (P>2), xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030304066",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304074",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101099",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương, hai dạng hợp lý.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010307018",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Ao hình chữ nhật, thay đổi kích thước làm đổi diện tích, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030301032",
+  "may": "NDB00499",
+  "chac": "vua",
+  "ly_do": "P^3=27 suy ra P=3 rồi tìm x; có thể xếp P là hằng số, đề dùng luỹ thừa.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102124",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn dưới dạng a-2√b đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020305006",
+  "may": "NDB00731",
+  "chac": "cao",
+  "ly_do": "Cho vận tốc dòng nước, quãng đường xuôi ngược, tổng thời gian, tìm vận tốc thực.",
+  "hien": "NDB00731",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020305"
+ },
+ {
+  "ma_cau": "T109010204007",
+  "may": "NDB00705",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn phụ phân thức nhưng có |x| trong mẫu; có thể xếp 00706.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030102035",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±2√b đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101050",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ các căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101034",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn căn của số, nhân phân phối và cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102064",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dưới dạng bình phương của tổng/hiệu hai căn.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102016",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√2 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101110",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304027",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020304024",
+  "may": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chuyển động đổi vận tốc giữa chừng, cho tổng thời gian (lập phương trình).",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030102112",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 10-2√21 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302057",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số (P<3), xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030202059",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=121 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302034",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một số, xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302059",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số (P<2), xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101065",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102140",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Chia 4 trong căn để đưa về bình phương, cần nhân thêm hệ số.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102106",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√c đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304089",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202027",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=15, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101089",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn rút gọn, trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102101",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√c đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010203010",
+  "may": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ phân thức theo x-1 và y+2, đặt ẩn phụ u,v.",
+  "hien": "NDB00705",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010203"
+ },
+ {
+  "ma_cau": "T109020304052",
+  "may": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chuyển động tăng tốc giữa chừng, cho tổng thời gian (lập phương trình).",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030101087",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn rút gọn, trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202017",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=25 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101115",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303021",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, mẫu là ước của 4, tìm x nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304015",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030102108",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√c đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304040",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304020",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P để tìm P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202054",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=36 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030301010",
+  "may": "NDB00498",
+  "chac": "cao",
+  "ly_do": "P^2=4 suy ra P=±2, xét hai trường hợp.",
+  "hien": "NDB00498",
+  "nguon": "gan_cum",
+  "cum": "DCUM01513",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030303022",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, mẫu là ước của 6, tìm x nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030102115",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 15-2√26 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030303018",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu, 1+7/(√x-4), tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304001",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P để tìm P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202009",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=25 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030302080",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số (P<1/2).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302071",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số (P<1/3), xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109010204010",
+  "may": "NDB00706",
+  "chac": "cao",
+  "ly_do": "Hệ chứa |x-1| và |y+2|, đặt ẩn phụ giá trị tuyệt đối.",
+  "hien": "NDB00706",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010204"
+ },
+ {
+  "ma_cau": "T109030102045",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±2√b đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109020201027",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất một ẩn cơ bản.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030303013",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu, 1+6/(√x-2), tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030101003",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức căn của số bằng tính chất căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030304071",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030301016",
+  "may": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng biểu thức chứa căn (2√x-13).",
+  "hien": "NDB00500",
+  "nguon": "gan_cum",
+  "cum": "DCUM01515",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102077",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√3 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101046",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302044",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng 0, xét dấu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030101044",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020304063",
+  "may": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chuyển động dừng sửa xe rồi tăng vận tốc, cùng thời gian dự tính.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109020304038",
+  "may": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chuyển động đi về quãng đường khác nhau, vận tốc khác nhau, cho hiệu thời gian.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030304084",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101097",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101011",
+  "may": "NDB00481",
+  "chac": "cao",
+  "ly_do": "Căn của bình phương một biểu thức, dùng giá trị tuyệt đối.",
+  "hien": "NDB00481",
+  "nguon": "gan_cum",
+  "cum": "DCUM01463",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101062",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202025",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=121 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109090303007",
+  "may": "NDB00512",
+  "chac": "vua",
+  "ly_do": "Bồn hộp chữ nhật cho thể tích, tối ưu chi phí; có hình, mô tả dạng 00512 quá ngắn.",
+  "hien": "NDB00512",
+  "nguon": "gan_cum",
+  "cum": "DCUM01386",
+  "dang_cu": "T109090303"
+ },
+ {
+  "ma_cau": "T109030303023",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, mẫu là ước của 8, tìm x nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304038",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030302010",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn một số (7/2), xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302055",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn 0, xét dấu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020201036",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất một ẩn cơ bản, đổi chiều khi chia số âm.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109010307021",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Mảnh vườn chữ nhật, thay đổi kích thước làm đổi diện tích, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030102093",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√6 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202051",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=9 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109010305001",
+  "may": "NDB00712",
+  "chac": "cao",
+  "ly_do": "Du thuyền xuôi dòng ngược dòng, lập hệ tìm vận tốc riêng và vận tốc dòng nước.",
+  "hien": "NDB00712",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010305"
+ },
+ {
+  "ma_cau": "T109030101116",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303025",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, mẫu là ước của 10, tìm x nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109010305005",
+  "may": "NDB00712",
+  "chac": "cao",
+  "ly_do": "Ca nô xuôi ngược dòng, lập hệ tìm vận tốc riêng và vận tốc dòng nước.",
+  "hien": "NDB00712",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010305"
+ },
+ {
+  "ma_cau": "T109030202061",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=169 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102123",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 22-2√57 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101027",
+  "may": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức và trục căn ở mẫu rồi nhân.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030202056",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=64 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030202039",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=255, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102028",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Chia 4 trong căn để đưa về bình phương, cần nhân thêm hệ số.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304011",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020305011",
+  "may": "NDB00731",
+  "chac": "vua",
+  "ly_do": "Bè trôi tìm vận tốc dòng trước, sau đó là bài tổng thời gian xuôi ngược; không khớp hẳn mô tả.",
+  "hien": "NDB00731",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020305"
+ },
+ {
+  "ma_cau": "T109030302027",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn 0, xét dấu.",
+  "hien": "NDB00501",
+  "nguon": "gan_cum",
+  "cum": "DCUM01516",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030301025",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 3.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030304018",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P để tìm P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109010307024",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Hình chữ nhật, thay đổi kích thước làm đổi diện tích, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030102006",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√2 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102052",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√2 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010203006",
+  "may": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ phân thức, đặt ẩn phụ u=1/(x+1), v=y/(y-2).",
+  "hien": "NDB00705",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010203"
+ },
+ {
+  "ma_cau": "T109030302067",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để 2P>1 tức P lớn hơn một số, xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109010307036",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Khu vườn chữ nhật, quan hệ chu vi, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109020201030",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất một ẩn cơ bản.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030102131",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Chia 4 trong căn để đưa về bình phương, cần nhân thêm hệ số.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302042",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng 0, xét dấu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020304039",
+  "may": "NDB00737",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường đi và về, vận tốc khác nhau, cho tổng thời gian.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030102075",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√3 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101098",
+  "may": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102001",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±2√b đưa về bình phương.",
+  "hien": "NDB00485",
+  "nguon": "gan_cum",
+  "cum": "DCUM01467",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202044",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=440, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030202043",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=399, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030301015",
+  "may": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng biểu thức chứa căn (2√x-5).",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030102051",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√c đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030303010",
+  "may": "NDB00505",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, mẫu là ước của 18, tìm x nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030101085",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn, cộng trừ rồi nhân căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030101032",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn căn của số, nhân phân phối và cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020305007",
+  "may": "NDB00731",
+  "chac": "cao",
+  "ly_do": "Cho vận tốc dòng nước, quãng đường xuôi ngược, tổng thời gian, tìm vận tốc riêng.",
+  "hien": "NDB00731",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020305"
+ },
+ {
+  "ma_cau": "T109030102086",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√3 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102130",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 31-2√58 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102005",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√c đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302018",
+  "may": "NDB00502",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một biểu thức chứa căn.",
+  "hien": "NDB00503",
+  "nguon": "gan_cum",
+  "cum": "DCUM01518",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109020304021",
+  "may": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chuyển động đổi phương tiện/vận tốc giữa chừng, cho hiệu thời gian.",
+  "hien": "NDB00729",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020304"
+ },
+ {
+  "ma_cau": "T109030304067",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00509",
+  "nguon": "gan_cum",
+  "cum": "DCUM01510",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101051",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302075",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn một số (1/3), xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102092",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√2 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304056",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00511",
+  "nguon": "gan_cum",
+  "cum": "DCUM01512",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202047",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=575, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030101091",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109010309012",
+  "may": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe đi ngược chiều gặp nhau, lập hệ tìm vận tốc.",
+  "hien": "NDB00711",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010309"
+ },
+ {
+  "ma_cau": "T109020201007",
+  "may": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất một ẩn cơ bản.",
+  "hien": "NDB00727",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020201"
+ },
+ {
+  "ma_cau": "T109030302069",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để 2P>1 tức P lớn hơn một số, xét hiệu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302003",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng 0, xét dấu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030302026",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P lớn hơn 0, xét dấu.",
+  "hien": "NDB00501",
+  "nguon": "gan_cum",
+  "cum": "DCUM01516",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102089",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√7 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102065",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dưới dạng bình phương của tổng/hiệu.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202004",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=16 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030202029",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=35, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030303004",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu, -2+20/(√x+5), tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030101075",
+  "may": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức chứa căn bằng đặt nhân tử chung.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109020402037",
+  "may": "NDB00726",
+  "chac": "vua",
+  "ly_do": "Khai triển rồi đưa về (x-4)^2=0; có thể xếp 00726 hoặc 00722.",
+  "hien": "NDB00722",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020402"
+ },
+ {
+  "ma_cau": "T109030302043",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng 0, xét dấu.",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109010304017",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Chuyển động thường, quãng đường không đổi, lập hệ tìm vận tốc và thời gian dự định.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109020305005",
+  "may": "NDB00731",
+  "chac": "cao",
+  "ly_do": "Cho vận tốc dòng nước, quãng đường xuôi ngược, tổng thời gian, tìm vận tốc thực.",
+  "hien": "NDB00731",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020305"
+ },
+ {
+  "ma_cau": "T109030301002",
+  "may": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 50.",
+  "hien": "NDB00499",
+  "nguon": "gan_cum",
+  "cum": "DCUM01514",
+  "dang_cu": "T109030301"
+ },
+ {
+  "ma_cau": "T109030304005",
+  "may": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P tử hằng số, đánh giá khoảng của P để tìm P nguyên.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030202049",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=675, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030102138",
+  "may": "NDB00484",
+  "chac": "cao",
+  "ly_do": "Chia 4 trong căn để đưa về bình phương, cần nhân thêm hệ số.",
+  "hien": "NDB00484",
+  "nguon": "gan_cum",
+  "cum": "DCUM01466",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109010307007",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Mảnh đất chữ nhật, thay đổi kích thước làm giảm diện tích, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030303031",
+  "may": "NDB00505",
+  "chac": "vua",
+  "ly_do": "P tử hằng số giải bằng ước, nhưng hỏi nguyên lớn nhất nên cũng gần 00508.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304035",
+  "may": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Đánh giá khoảng của P rồi xét P là số nguyên tố.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101112",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030302037",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một số (P<=2).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030102127",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 26-2√69 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030101037",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn, cộng trừ rồi nhân căn.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030303012",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Chia tử cho mẫu, 1+5/(√x-2), tìm x nguyên để P nguyên.",
+  "hien": "NDB00505",
+  "nguon": "gan_cum",
+  "cum": "DCUM01520",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109010307016",
+  "may": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Thửa ruộng chữ nhật, thay đổi kích thước làm giảm diện tích, lập hệ.",
+  "hien": "NDB00720",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010307"
+ },
+ {
+  "ma_cau": "T109030102061",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dưới dạng bình phương của tổng/hiệu hai căn.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102119",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 20-2√51 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030202032",
+  "may": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Giá trị x cho qua |x-1|=80, giải hai trường hợp rồi thay vào.",
+  "hien": "NDB00487",
+  "nguon": "gan_cum",
+  "cum": "DCUM01390",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030304077",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109020202007",
+  "may": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển, thu gọn đưa về bất phương trình bậc nhất một ẩn.",
+  "hien": "NDB00728",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109020202"
+ },
+ {
+  "ma_cau": "T109030101010",
+  "may": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng.",
+  "hien": "NDB00480",
+  "nguon": "gan_cum",
+  "cum": "DCUM01462",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102003",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±2√b đưa về bình phương.",
+  "hien": "NDB00485",
+  "nguon": "gan_cum",
+  "cum": "DCUM01467",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030304052",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên nhỏ nhất, đánh giá khoảng.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304072",
+  "may": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P đã ở dạng số nguyên cộng phân thức tử hằng; khớp 00507 hoặc 00509.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109010304008",
+  "may": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Chuyển động thường, quãng đường không đổi, lập hệ tìm vận tốc và thời gian dự định.",
+  "hien": "NDB00710",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T109010304"
+ },
+ {
+  "ma_cau": "T109090303001",
+  "may": "NDB00512",
+  "chac": "vua",
+  "ly_do": "Hầm hộp chữ nhật cho thể tích, tối ưu diện tích toàn phần; mô tả dạng 00512 quá ngắn.",
+  "hien": "NDB00512",
+  "nguon": "gan_cum",
+  "cum": "DCUM01386",
+  "dang_cu": "T109090303"
+ },
+ {
+  "ma_cau": "T109030101026",
+  "may": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức và trục căn ở mẫu rồi nhân.",
+  "hien": "NDB00482",
+  "nguon": "gan_cum",
+  "cum": "DCUM01464",
+  "dang_cu": "T109030101"
+ },
+ {
+  "ma_cau": "T109030102120",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Căn 22-2√85 đưa về bình phương rồi nhân liên hợp.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030102107",
+  "may": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Hai căn dạng a±b√19 đưa về bình phương.",
+  "hien": "NDB00483",
+  "nguon": "gan_cum",
+  "cum": "DCUM01465",
+  "dang_cu": "T109030102"
+ },
+ {
+  "ma_cau": "T109030302039",
+  "may": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhỏ hơn hoặc bằng một số (P<=3).",
+  "hien": "NDB00502",
+  "nguon": "gan_cum",
+  "cum": "DCUM01517",
+  "dang_cu": "T109030302"
+ },
+ {
+  "ma_cau": "T109030202022",
+  "may": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Thay x=81 vào biểu thức chứa căn.",
+  "hien": "NDB00486",
+  "nguon": "gan_cum",
+  "cum": "DCUM01389",
+  "dang_cu": "T109030202"
+ },
+ {
+  "ma_cau": "T109030303029",
+  "may": "NDB00506",
+  "chac": "cao",
+  "ly_do": "Biến đổi 5P=1+4/(5√x-4), dùng ước, tìm x nguyên để P nguyên.",
+  "hien": "NDB00506",
+  "nguon": "gan_cum",
+  "cum": "DCUM01521",
+  "dang_cu": "T109030303"
+ },
+ {
+  "ma_cau": "T109030304039",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng.",
+  "hien": "NDB00507",
+  "nguon": "gan_cum",
+  "cum": "DCUM01508",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030304080",
+  "may": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất, đánh giá khoảng.",
+  "hien": "NDB00510",
+  "nguon": "gan_cum",
+  "cum": "DCUM01511",
+  "dang_cu": "T109030304"
+ },
+ {
+  "ma_cau": "T109030101013",
+  "may": "NDB00481",
+  "chac": "cao",
+  "ly_do": "Căn của bình phương một biểu thức, dùng giá trị tuyệt đối.",
+  "hien": "NDB00481",
+  "nguon": "gan_cum",
+  "cum": "DCUM01463",
+  "dang_cu": "T109030101"
+ }
+]

@@ -1,0 +1,118 @@
+[
+ {
+  "ma_cau": "T106030402014",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $3x - 5y \\vdots 19$. Chứng minh rằng: $4x + 6y \\vdots 19$",
+  "loi_giai": "Ta có: $3x - 5y \\vdots 19$\nSuy ra $5(3x - 5y) \\vdots 19$\n$15x - 25y \\vdots 19$\nMà $(15x - 25y) + (4x + 6y) = 19x - 19y = 19(x - y) \\vdots 19$\nSuy ra $4x + 6y \\vdots 19$",
+  "A": {
+   "id": "NDB00383",
+   "ten": "Nhân 2 biểu thức"
+  },
+  "B": {
+   "id": "NDB00382",
+   "ten": "Nhân 1 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T106020403010",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $(11+7x):3^2 = 3^2$.",
+  "dap_an": "10",
+  "loi_giai": "$(11+7x):3^2 = 3^2$\n$11+7x = 3^2 \\cdot 3^2$\n$11+7x = 81$\n$7x = 81-11$\n$7x = 70$\n$x = 70:7$\n$x = 10$\nV\\u1eady $x = 10$.",
+  "A": {
+   "id": "NDB00357",
+   "ten": "Tìm x có chứa luỹ thừa số"
+  },
+  "B": {
+   "id": "NDB00364",
+   "ten": "Cơ bản"
+  }
+ },
+ {
+  "ma_cau": "T106020503012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết $12 + 3^{x+1} = 174 - 3^4$",
+  "dap_an": "3",
+  "loi_giai": "$12 + 3^{x+1} = 174 - 3^4$\n$12 + 3^{x+1} = 174 - 81$\n$12 + 3^{x+1} = 93$\n$3^{x+1} = 93 - 12$\n$3^{x+1} = 81 = 3^4$\n$x+1 = 4$\n$x = 3$",
+  "A": {
+   "id": "NDB00363",
+   "ten": "x ở Số mũ"
+  },
+  "B": {
+   "id": "NDB00359",
+   "ten": "x ở Số mũ"
+  }
+ },
+ {
+  "ma_cau": "T106030402009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $5x - y \\vdots 23$. Chứng minh rằng $2x - 5y \\vdots 23$.",
+  "loi_giai": "Ta có: $5x - y \\vdots 23 \\Rightarrow 3(5x - y) \\vdots 23 \\Rightarrow 15x - 3y \\vdots 23$\nMà : $23(x - y) \\vdots 23$ nên $23(x - y) - (15x - 3y) \\vdots 23$\n$8x - 20y \\vdots 23$\n$\\Rightarrow 4(2x - 5y) \\vdots 23$\nMà $4 \\not\\vdots 23 \\Rightarrow 2x - 5y \\vdots 23$",
+  "A": {
+   "id": "NDB00382",
+   "ten": "Nhân 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00383",
+   "ten": "Nhân 2 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T106020403016",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $150 - (x+2^3)\\cdot 6 = 30$.",
+  "dap_an": "12",
+  "loi_giai": "$150 - (x+2^3)\\cdot 6 = 30$\n$(x+2^3)\\cdot 6 = 150 - 30$\n$(x+2^3)\\cdot 6 = 120$\n$x+2^3 = 120 : 6$\n$x+2^3 = 20$\n$x = 20 - 2^3$\n$x = 20 - 8$\n$x = 12$\nVậy $x = 12$.",
+  "A": {
+   "id": "NDB00364",
+   "ten": "Cơ bản"
+  },
+  "B": {
+   "id": "NDB00357",
+   "ten": "Tìm x có chứa luỹ thừa số"
+  }
+ },
+ {
+  "ma_cau": "T106030402017",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $5x - 2y \\vdots 19$. Chứng minh rằng: $2x + 3y \\vdots 19$",
+  "loi_giai": "Ta có: $5x - 2y \\vdots 19 \\Rightarrow 3(5x - 2y) \\vdots 19 \\Rightarrow 15x - 6y \\vdots 19$\nMà: $19x \\vdots 19$ nên $19x - 3(5x - 2y) \\vdots 19$\n$\\Rightarrow 4x + 6y \\vdots 19$\n$\\Rightarrow 2(2x + 3y) \\vdots 19$\nMà $2 \\not\\vdots 19 \\Rightarrow 2x + 3y \\vdots 19$",
+  "A": {
+   "id": "NDB00382",
+   "ten": "Nhân 1 biểu thức"
+  },
+  "B": {
+   "id": "NDB00383",
+   "ten": "Nhân 2 biểu thức"
+  }
+ },
+ {
+  "ma_cau": "T106030501054",
+  "loai": "tra_loi_ngan",
+  "de": "Chứng minh rằng với mọi số tự nhiên $n$ thì $\\dfrac{n+2}{n+1}$ luôn là phân số tối giản.",
+  "dap_an": "\\dfrac{n+2}{n+1}",
+  "loi_giai": "Gọi $d=(n+2,n+1)$.\n$\\Rightarrow \\begin{cases}n+2\\vdots d\\\\n+1\\vdots d\\end{cases}$\n$\\Rightarrow (n+2)-(n+1)\\vdots d$\n$\\Rightarrow 1\\vdots d$\n$\\Rightarrow d=1$.\nVậy $\\dfrac{n+2}{n+1}$ là phân số tối giản.",
+  "A": {
+   "id": "NDB00391",
+   "ten": "Chứng minh phân số tối giản dạng cơ bản"
+  },
+  "B": {
+   "id": "NDB00392",
+   "ten": "Chứng minh phân số tối giản dạng Khó"
+  }
+ },
+ {
+  "ma_cau": "T106030402001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $2x + 3y \\vdots 11$. Chứng minh rằng $3x + 10y \\vdots 11$.",
+  "loi_giai": "Ta có: $2x + 3y \\vdots 11$\nSuy ra $4(2x + 3y) \\vdots 11$\n$8x + 12y \\vdots 11$\nMà $(8x + 12y) + (3x + 10y) = 11x + 22y = 11(x + 2y) \\vdots 11$\nSuy ra $3x + 10y \\vdots 11$",
+  "A": {
+   "id": "NDB00383",
+   "ten": "Nhân 2 biểu thức"
+  },
+  "B": {
+   "id": "NDB00382",
+   "ten": "Nhân 1 biểu thức"
+  }
+ }
+]

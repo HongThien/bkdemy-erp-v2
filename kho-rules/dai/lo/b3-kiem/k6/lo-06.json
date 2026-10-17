@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T106030302027",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích $100$ ra thừa số nguyên tố.",
+  "dap_an": "$2^2\\cdot 5^2$",
+  "loi_giai": "$100:2=50$\n$50:2=25$\n$25:5=5$\n$5:5=1$\n$\\Rightarrow 100=2^2\\cdot 5^2$."
+ },
+ {
+  "ma_cau": "T106030502003",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên tố $r$ sao cho $r+5$, $r+9$ là số nguyên tố.",
+  "dap_an": "2",
+  "loi_giai": "TH1: $r=2\\Rightarrow \\begin{cases}r+5=2+5=7\\\\r+9=2+9=11\\end{cases}$ (thỏa mãn).\nTH2: $r>2$.\nVì $r$ là số nguyên tố lớn hơn 2 nên $r$ chia 2 dư 1 $\\Rightarrow r=2k+1$ (với $k\\in N^*$).\n$\\Rightarrow r+5=2k+1+5=2k+6\\vdots 2\\Rightarrow r+5$ không phải SNT (loại).\nVậy chỉ có $r=2$ thỏa mãn."
+ },
+ {
+  "ma_cau": "T106040104022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $96 \\vdots n$ và $144 \\vdots n$ và $n<30$.",
+  "dap_an": "1;2;3;4;6;8;12;16;24",
+  "loi_giai": "Vì $96 \\vdots n$ và $144 \\vdots n$ nên $n\\in \\text{UC}(96;144)$.\nĐể tìm $\\text{UC}(96;144)$ ta sẽ tìm $UCLN(96,144)$.\n$96=2^5\\cdot 3$\n$144=2^4\\cdot 3^2$\n$UCLN(96,144)=2^4\\cdot 3=48$.\n$\\Rightarrow \\text{UC}(96;144)=U(48)=\\{1;2;3;4;6;8;12;16;24;48\\}$.\n$\\Rightarrow n\\in\\{1;2;3;4;6;8;12;16;24;48\\}$.\nMà $n<30$ nên $n\\in\\{1;2;3;4;6;8;12;16;24\\}$."
+ },
+ {
+  "ma_cau": "T106040203034",
+  "loai": "tra_loi_ngan",
+  "de": "Số học sinh khối 6 của một trường khi xếp hàng 28, 42, 70 đều vừa đủ. Tính số học sinh khối 6 của trường đó biết rằng số học sinh đó chưa đến 700.",
+  "dap_an": "420",
+  "loi_giai": "Gọi số học sinh của khối 6 là $x$ (học sinh, $x\\in N^*$).\nVì khi xếp hàng 28, 42, 70 đều vừa đủ nên $x\\vdots 28$; $x\\vdots 42$; $x\\vdots 70$\n$\\Rightarrow x\\in BC(28,42,70)$.\n$28=2^2\\cdot 7$\n$42=2\\cdot 3\\cdot 7$\n$70=2\\cdot 5\\cdot 7$\n$BCNN(28,42,70)=2^2\\cdot 3\\cdot 5\\cdot 7=420$\n$\\Rightarrow BC(28,42,70)=B(420)=\\{0;420;840;....\\}$\nVì số học sinh chưa đến 700 nên $x=420$.\nVậy khối 6 có 420 học sinh."
+ },
+ {
+  "ma_cau": "T106030502004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên tố $s$ sao cho $s+9$, $s+11$ là số nguyên tố.",
+  "dap_an": "2",
+  "loi_giai": "TH1: $s=2\\Rightarrow \\begin{cases}s+9=2+9=11\\\\s+11=2+11=13\\end{cases}$ (thỏa mãn).\nTH2: $s>2$.\nVì $s$ là số nguyên tố lớn hơn 2 nên $s$ chia 2 dư 1 $\\Rightarrow s=2k+1$ (với $k\\in N^*$).\n$\\Rightarrow s+9=2k+1+9=2k+10\\vdots 2\\Rightarrow s+9$ không phải SNT (loại).\nVậy chỉ có $s=2$ thỏa mãn."
+ },
+ {
+  "ma_cau": "T106030401123",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ để $4x+11$ chia hết cho $x-3$.",
+  "dap_an": "4;26",
+  "loi_giai": "Ta có $4x+11=4(x-3)+23$.\nVì $4(x-3)$ chia hết cho $x-3$ nên để $4x+11$ chia hết cho $x-3$ thì $23$ chia hết cho $x-3$.\nSuy ra $x-3\\in U(23)=\\{1;23\\}$.\nVậy $x\\in\\{4;26\\}$."
+ },
+ {
+  "ma_cau": "T106040302012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=4$ và $a+b=32$.",
+  "dap_an": "(4;28), (28;4), (12;20), (20;12)",
+  "loi_giai": "Ta có $(a,b)=4$ nên $\\begin{cases}a=4m\\\\b=4n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=32$ nên $4m+4n=32\\Rightarrow 4(m+n)=32\\Rightarrow m+n=8$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&7&3&5\\\\\\hline n&7&1&5&3\\\\\\hline a&4&28&12&20\\\\\\hline b&28&4&20&12\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(4;28);(28;4);(12;20);(20;12)\\}$."
+ },
+ {
+  "ma_cau": "T106040203059",
+  "loai": "tra_loi_ngan",
+  "de": "Ba bạn An, Bình, Cường cùng học một trường nhưng ở ba lớp khác nhau. An cứ 4 ngày trực nhật một lần, Bình 6 ngày một lần và Cường 10 ngày một lần. Lần đầu cả ba bạn cùng trực nhật vào một ngày. Hỏi sau ít nhất bao nhiêu ngày thì ba bạn lại cùng trực nhật vào một ngày?",
+  "dap_an": "60",
+  "loi_giai": "Gọi số ngày ít nhất để ba bạn lại cùng trực nhật vào một ngày là $x$ $(x\\in \\mathrm{N}^*, \\text{ ngày})$.\nVì An cứ 4 ngày trực nhật một lần, Bình 6 ngày một lần và Cường 10 ngày một lần nên $x\\vdots 4; x\\vdots 6; x\\vdots 10$.\nVì $x$ là số ngày ít nhất khác 0 nên $x=\\mathrm{BCNN}(4,6,10)$.\n$4=2^2$\n$6=2\\cdot 3$\n$10=2\\cdot 5$\n$\\mathrm{BCNN}(4,6,10)=2^2\\cdot 3\\cdot 5=60$\nVậy sau ít nhất 60 ngày thì ba bạn lại cùng trực nhật vào một ngày."
+ },
+ {
+  "ma_cau": "T106030503003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $(a,b)=1$.\nChứng minh $a+4b$ và $a+3b$ nguyên tố cùng nhau.",
+  "dap_an": "$a+4b$ và $a+3b$ nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(a+4b,a+3b)$.\n$\\Rightarrow \\begin{cases}a+4b\\vdots d\\\\a+3b\\vdots d\\end{cases}$\n$\\Rightarrow (a+4b)-(a+3b)\\vdots d$\n$\\Rightarrow b\\vdots d$\nMà $a+3b\\vdots d\\Rightarrow a\\vdots d$.\nTa có $a\\vdots d,b\\vdots d\\Rightarrow d\\in \\text{UC}(a,b)$.\nMà $(a,b)=1\\Rightarrow d=1$.\nVậy $a+4b$ và $a+3b$ nguyên tố cùng nhau."
+ },
+ {
+  "ma_cau": "T106030202022",
+  "loai": "tu_luan",
+  "de": "Tìm chữ số tự nhiên $a$ để số $\\overline{450a}$ thỏa mãn điều kiện chia hết cho $3$.",
+  "dap_an": "$a\\in\\{0;3;6;9\\}$",
+  "loi_giai": "Gọi $a$ là chữ số cần tìm ($a\\in\\{0;1;2;\\ldots;9\\}$).\nTổng các chữ số của số $\\overline{450a}$ là $4+5+0+a=9+a$.\nĐể $\\overline{450a}\\vdots 3$ thì $(9+a)\\vdots 3$.\nVì $a\\in\\{0;1;2;\\ldots;9\\}$ nên $a\\in\\{0;3;6;9\\}$."
+ },
+ {
+  "ma_cau": "T106030101013",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm các số tự nhiên a sao cho: $a \\in \\text{Ư}(18)$ và $a>4$.",
+  "dap_an": "6; 9; 18",
+  "loi_giai": "Ta có: $U(18) = \\{1; 2; 3; 6; 9; 18\\}$.\nVì $a \\in U(18)$ và $a>4$ nên $a \\in \\{6; 9; 18\\}$."
+ },
+ {
+  "ma_cau": "T106030101051",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm tất cả các ước của 64",
+  "dap_an": "1; 2; 4; 8; 16; 32; 64",
+  "loi_giai": "1; 2; 4; 8; 16; 32; 64"
+ },
+ {
+  "ma_cau": "T106030301053",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là Hợp số: $1; 3; 17; 21; 34; 43; 44; 46$.",
+  "dap_an": "21; 34; 44; 46",
+  "loi_giai": "Các Hợp số là: $21; 34; 44; 46$."
+ },
+ {
+  "ma_cau": "T106040102003",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng định nghĩa của $28$ và $42$.",
+  "dap_an": "14",
+  "loi_giai": "$U(28)=\\{1;2;4;7;14;28\\}$\n$U(42)=\\{1;2;3;6;7;14;21;42\\}$\n$UCLN(28,42)=14$"
+ },
+ {
+  "ma_cau": "T106030301011",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là Số nguyên tố: $13; 20; 21; 23; 29; 39; 43; 49; 53$.",
+  "dap_an": "13; 23; 29; 43; 53",
+  "loi_giai": "Các Số nguyên tố là: $13; 23; 29; 43; 53$."
+ },
+ {
+  "ma_cau": "T106040201005",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $BC(7;8)$.",
+  "dap_an": "0;56;112;....",
+  "loi_giai": "$B(7)=\\{0;7;14;21;28;35;42;49;56;....\\}$\n$B(8)=\\{0;8;16;24;32;40;48;56;....\\}$\n$BC(7;8)=\\{0;56;112;....\\}$"
+ },
+ {
+  "ma_cau": "T106040302010",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=3$ và $a+b=36$.",
+  "dap_an": "(3;33), (33;3), (15;21), (21;15)",
+  "loi_giai": "Ta có $(a,b)=3$ nên $\\begin{cases}a=3m\\\\b=3n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=36$ nên $3m+3n=36\\Rightarrow 3(m+n)=36\\Rightarrow m+n=12$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&11&5&7\\\\\\hline n&11&1&7&5\\\\\\hline a&3&33&15&21\\\\\\hline b&33&3&21&15\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(3;33);(33;3);(15;21);(21;15)\\}$."
+ },
+ {
+  "ma_cau": "T106030301058",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là Hợp số: $0; 2; 8; 12; 17; 23; 42; 56$.",
+  "dap_an": "8; 12; 42; 56",
+  "loi_giai": "Các Hợp số là: $8; 12; 42; 56$."
+ },
+ {
+  "ma_cau": "T106020303007",
+  "loai": "tu_luan",
+  "de": "Tìm x biết: $3x + 27 = 45$",
+  "dap_an": "6",
+  "loi_giai": "$3x = 45 - 27$\n$3x = 18$\n$x = 18:3$\n$x = 6$"
+ },
+ {
+  "ma_cau": "T106020601039",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $A=1+2^2+2^4+\\ldots+2^{24}$.",
+  "dap_an": "$\\dfrac{2^{26}-1}{3}$",
+  "loi_giai": "$2^2A=2^2+2^4+2^6+\\ldots+2^{26}$\n$2^2A-A=2^{26}-1$\n$3A=2^{26}-1$\n$A=\\dfrac{2^{26}-1}{3}$"
+ },
+ {
+  "ma_cau": "T106040204025",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $n:12$, $n:18$, $n:20$ và $100<n<500$.",
+  "dap_an": "180;360",
+  "loi_giai": "Vì $n:12$, $n:18$, $n:20$ nên $n\\in BC(12;18;20)$.\nĐể tìm $BC(12;18;20)$ ta sẽ tìm $BCNN(12,18,20)$.\n$12=2^2\\cdot 3$\n$18=2\\cdot 3^2$\n$20=2^2\\cdot 5$\n$\\Rightarrow BCNN(12,18,20)=2^2\\cdot 3^2\\cdot 5=180$.\n$BC(12;18;20)=B(180)=\\{0;180;360;540;....\\}$\nVì $100<n<500$ nên $n\\in\\{180;360\\}$."
+ },
+ {
+  "ma_cau": "T106030502048",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm tất cả các số tự nhiên $d$ sao cho $d+2,d+4,d+8,d+10,d+14,d+16$ đều là số nguyên tố.",
+  "dap_an": "3",
+  "loi_giai": "TH1: $d\\vdots 5\\Rightarrow d=5k$ $(k\\in N)\\Rightarrow d+10=5k+10\\vdots 5$.\nVì $d+10$ là số nguyên tố và $d+10\\vdots 5$ nên $d+10=5$ (vô lí).\nVậy loại.\nTH2: $d$ chia 5 dư 1 $\\Rightarrow d=5k+1$ $(k\\in N)\\Rightarrow d+4=5k+1+4=5k+5\\vdots 5$.\nVì $d+4$ là số nguyên tố và $d+4\\vdots 5$ nên $d+4=5\\Rightarrow d=1$.\nTuy nhiên với $d=1$ thì $d+8=9$ không phải SNT.\nVậy loại.\nTH3: $d$ chia 5 dư 2 $\\Rightarrow d=5k+2$ $(k\\in N)\\Rightarrow d+8=5k+2+8=5k+10\\vdots 5$.\nVì $d+8$ là số nguyên tố và $d+8\\vdots 5$ nên $d+8=5$ (vô lí).\nVậy loại.\nTH4: $d$ chia 5 dư 3 $\\Rightarrow d=5k+3$ $(k\\in N)\\Rightarrow d+2=5k+3+2=5k+5\\vdots 5$.\nVì $d+2$ là số nguyên tố và $d+2\\vdots 5$ nên $d+2=5\\Rightarrow d=3$.\nVới $d=3$  …"
+ },
+ {
+  "ma_cau": "T106040103036",
+  "loai": "tra_loi_ngan",
+  "de": "Cô giáo chủ nhiệm muốn chia 84 quyển vở, 60 bút chì và 72 tập giấy thành một số phần thưởng như nhau. Hỏi có thể chia được nhiều nhất bao nhiêu phần thưởng? Mỗi phần thưởng có bao nhiêu quyển vở, bao nhiêu bút chì và bao nhiêu tập giấy?",
+  "dap_an": "12 phần thưởng; mỗi phần thưởng có 7 quyển vở, 5 bút chì và 6 tập giấy.",
+  "loi_giai": "Gọi số phần thưởng có thể chia được nhiều nhất là $x$ ($x\\in N^*$, phần thưởng).\nVì cần chia 84 quyển vở, 60 bút chì và 72 tập giấy thành các phần thưởng đều nhau và nhiều phần thưởng nhất nên $x=\\text{UCLN}(84,60,72)$.\n$84=2^2\\cdot 3\\cdot 7$\n$60=2^2\\cdot 3\\cdot 5$\n$72=2^3\\cdot 3^2$\n$\\text{UCLN}(84,60,72)=2^2\\cdot 3=12$\nVậy có thể chia nhiều nhất thành 12 phần thưởng.\nSố quyển vở ở mỗi phần thưởng là:\n$84:12=7$ (quyển)\nSố bút chì ở mỗi phần thưởng là:\n$60:12=5$ (bút)\nSố tập giấy ở mỗi phần thưởng là:\n$72:12=6$ (tập)."
+ },
+ {
+  "ma_cau": "T106040203063",
+  "loai": "tra_loi_ngan",
+  "de": "Ba bạn Đức, Quân, Phong cùng học một trường nhưng ở ba lớp khác nhau. Đức cứ 10 ngày trực nhật một lần, Quân 15 ngày một lần và Phong 20 ngày một lần. Lần đầu cả ba bạn cùng trực nhật vào một ngày. Hỏi sau ít nhất bao nhiêu ngày thì ba bạn lại cùng trực nhật vào một ngày?",
+  "dap_an": "60",
+  "loi_giai": "Gọi số ngày ít nhất để ba bạn lại cùng trực nhật vào một ngày là $x$ $(x\\in \\mathrm{N}^*, \\text{ ngày})$.\nVì Đức cứ 10 ngày trực nhật một lần, Quân 15 ngày một lần và Phong 20 ngày một lần nên $x\\vdots 10; x\\vdots 15; x\\vdots 20$.\nVì $x$ là số ngày ít nhất khác 0 nên $x=\\mathrm{BCNN}(10,15,20)$.\n$10=2\\cdot 5$\n$15=3\\cdot 5$\n$20=2^2\\cdot 5$\n$\\mathrm{BCNN}(10,15,20)=2^2\\cdot 3\\cdot 5=60$\nVậy sau ít nhất 60 ngày thì ba bạn lại cùng trực nhật vào một ngày."
+ },
+ {
+  "ma_cau": "T106040102008",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng định nghĩa của $54$ và $72$.",
+  "dap_an": "18",
+  "loi_giai": "$U(54)=\\{1;2;3;6;9;18;27;54\\}$\n$U(72)=\\{1;2;3;4;6;8;9;12;18;24;36;72\\}$\n$UCLN(54,72)=18$"
+ },
+ {
+  "ma_cau": "T106040302005",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=2$ và $a+b=24$.",
+  "dap_an": "(2;22), (22;2), (10;14), (14;10)",
+  "loi_giai": "Ta có $(a,b)=2$ nên $\\begin{cases}a=2m\\\\b=2n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=24$ nên $2m+2n=24\\Rightarrow 2(m+n)=24\\Rightarrow m+n=12$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&11&5&7\\\\\\hline n&11&1&7&5\\\\\\hline a&2&22&10&14\\\\\\hline b&22&2&14&10\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(2;22);(22;2);(10;14);(14;10)\\}$."
+ },
+ {
+  "ma_cau": "T106030202025",
+  "loai": "tu_luan",
+  "de": "Tìm chữ số tự nhiên $a$ để số $\\overline{32a}$ thỏa mãn điều kiện: chia hết cho $3$ mà không chia hết cho $9$.",
+  "dap_an": "$a\\in\\{1;7\\}$",
+  "loi_giai": "Gọi $a$ là chữ số cần tìm ($a\\in\\{0;1;2;\\ldots;9\\}$).\nTổng các chữ số của số $\\overline{32a}$ là $3+2+a=5+a$.\nĐể $\\overline{32a}\\vdots 3$ thì $(5+a)\\vdots 3$. Suy ra $a\\in\\{1;4;7\\}$.\nĐể $\\overline{32a}\\not\\vdots 9$ thì $a\\ne 4$.\nDo đó $a\\in\\{1;7\\}$."
+ },
+ {
+  "ma_cau": "T106040103049",
+  "loai": "tra_loi_ngan",
+  "de": "Một trung tâm y tế có 28 bác sĩ chuyên khoa, 42 bác sĩ đa khoa và 70 điều dưỡng viên. Hỏi có thể chia nhiều nhất thành bao nhiêu đội để số người thuộc từng nhóm được chia đều vào mỗi đội?",
+  "dap_an": "14",
+  "loi_giai": "Gọi số đội có thể chia được nhiều nhất là $x$ ($x\\in N^*$, đội).\nVì cần chia 28 bác sĩ chuyên khoa, 42 bác sĩ đa khoa và 70 điều dưỡng viên thành các đội đều nhau và nhiều đội nhất nên $x=\\text{UCLN}(28,42,70)$.\n$28=2^2\\cdot 7$\n$42=2\\cdot 3\\cdot 7$\n$70=2\\cdot 5\\cdot 7$\n$\\text{UCLN}(28,42,70)=2\\cdot 7=14$\nVậy có thể thành lập nhiều nhất 14 đội."
+ },
+ {
+  "ma_cau": "T106040104003",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ lớn nhất sao cho $56 \\vdots n$ và $84 \\vdots n$.",
+  "dap_an": "28",
+  "loi_giai": "Vì $n$ là số tự nhiên lớn nhất sao cho $56 \\vdots n$ và $84 \\vdots n$ nên $n=UCLN(56,84)$.\n$56=2^3\\cdot 7$\n$84=2^2\\cdot 3\\cdot 7$\nVậy $n=UCLN(56,84)=2^2\\cdot 7=28$."
+ },
+ {
+  "ma_cau": "T106030301030",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là Số nguyên tố: $4; 10; 13; 25; 39; 52; 54$.",
+  "dap_an": "13",
+  "loi_giai": "Số nguyên tố là: $13$."
+ },
+ {
+  "ma_cau": "T106030501025",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $n$ là số tự nhiên. Chứng tỏ rằng $n+1$ và $n+2$ là các số nguyên tố cùng nhau.",
+  "dap_an": "$n+1$ và $n+2$ là các số nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(n+1,n+2)$.\n$\\Rightarrow \\begin{cases}n+1\\vdots d\\\\n+2\\vdots d\\end{cases}$\n$\\Rightarrow (n+2)-(n+1)\\vdots d$\n$\\Rightarrow 1\\vdots d$\n$\\Rightarrow d=1$\nVậy $n+1$ và $n+2$ là các số nguyên tố cùng nhau."
+ },
+ {
+  "ma_cau": "T106030501009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $n$ là số tự nhiên. Chứng tỏ rằng $n+6$ và $n+7$ là các số nguyên tố cùng nhau.",
+  "dap_an": "$n+6$ và $n+7$ là các số nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(n+6,n+7)$.\n$\\Rightarrow \\begin{cases}n+6\\vdots d\\\\n+7\\vdots d\\end{cases}$\n$\\Rightarrow (n+7)-(n+6)\\vdots d$\n$\\Rightarrow 1\\vdots d$\n$\\Rightarrow d=1$"
+ },
+ {
+  "ma_cau": "T106030503018",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $(a,b)=1$.\nChứng minh $7a+8b$ và $8a+9b$ là hai số nguyên tố cùng nhau.",
+  "dap_an": "$7a+8b$ và $8a+9b$ là hai số nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(7a+8b,8a+9b)$.\n$\\Rightarrow \\begin{cases}7a+8b\\vdots d\\\\8a+9b\\vdots d\\end{cases}$\n$\\Rightarrow \\begin{cases}8(7a+8b)\\vdots d\\\\7(8a+9b)\\vdots d\\end{cases}$\n$\\Rightarrow \\begin{cases}56a+64b\\vdots d\\\\56a+63b\\vdots d\\end{cases}$\n$\\Rightarrow (56a+64b)-(56a+63b)\\vdots d$\n$\\Rightarrow b\\vdots d$\n$\\Rightarrow \\begin{cases}9(7a+8b)\\vdots d\\\\8(8a+9b)\\vdots d\\end{cases}$\n$\\Rightarrow \\begin{cases}63a+72b\\vdots d\\\\64a+72b\\vdots d\\end{cases}$\n$\\Rightarrow (64a+72b)-(63a+72b)\\vdots d$\n$\\Rightarrow a\\vdots d$\nTa có $a\\vdots d,b\\vdots d\\Rightarrow d\\in \\text{UC}(a,b)$.\nMà $(a,b)=1\\Rightarrow d=1$.\nVậy $7a+8b$ và $8a+9b$ là hai số nguyên tố cùng nhau."
+ },
+ {
+  "ma_cau": "T106040101006",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $\\text{UC}(32;48)$.",
+  "dap_an": "1;2;4;8;16",
+  "loi_giai": "$U(32)=\\{1;2;4;8;16;32\\}$\n$U(48)=\\{1;2;3;4;6;8;12;16;24;48\\}$\n$\\text{UC}(32;48)=\\{1;2;4;8;16\\}$"
+ },
+ {
+  "ma_cau": "T106020501054",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $798-298:\\left[19-2.\\left(5^2-22\\right)^2\\right]\\cdot{1^{2024}}$",
+  "dap_an": "500",
+  "loi_giai": "$798 - 298 : \\left[19 - 2 \\cdot \\left(5^2 - 22\\right)^2\\right] \\cdot 1^{2024}$\n$= 798 - 298 : \\left[19 - 2 \\cdot \\left(25 - 22\\right)^2\\right] \\cdot 1$\n$= 798 - 298 : \\left[19 - 2 \\cdot 3^2\\right] \\cdot 1$\n$= 798 - 298 : \\left[19 - 2 \\cdot 9\\right] \\cdot 1$\n$= 798 - 298 : \\left[19 - 18\\right] \\cdot 1$\n$= 798 - 298 : 1 \\cdot 1$\n$= 798 - 298$\n$= 500$"
+ },
+ {
+  "ma_cau": "T106040103009",
+  "loai": "tra_loi_ngan",
+  "de": "Có 42 chiếc bút và 63 quyển vở được chia thành các phần thưởng sao cho số bút và số vở được chia đều vào các phần thưởng.\nBiết số phần thưởng nhiều hơn 3.\na) Hỏi có mấy cách chia phần thưởng?\nb) Trong mỗi cách chia, mỗi phần thưởng có bao nhiêu chiếc bút và bao nhiêu quyển vở?",
+  "dap_an": "2",
+  "loi_giai": "Gọi số phần thưởng là $x$ (phần thưởng) $(x\\in \\mathrm{N^*})$.\nVì 42 chiếc bút và 63 quyển vở được chia đều vào các phần thưởng nên $x\\in \\text{UC}(42,63)$.\n$42=2\\cdot 3\\cdot 7$\n$63=3^2\\cdot 7$\n$\\text{UCLN}(42,63)=3\\cdot 7=21$\n$\\text{UC}(42,63)=\\text{U}(21)=\\{1;3;7;21\\}$\nVì số phần thưởng nhiều hơn 3 nên $x\\in\\{7;21\\}$.\nVới $x=7$: mỗi phần thưởng có $42:7=6$ chiếc bút và $63:7=9$ quyển vở.\nVới $x=21$: mỗi phần thưởng có $42:21=2$ chiếc bút và $63:21=3$ quyển vở.\nVậy có 2 cách chia phần thưởng."
+ },
+ {
+  "ma_cau": "T106040302017",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=5$ và $a+b=50$.",
+  "dap_an": "(5;45), (45;5), (15;35), (35;15)",
+  "loi_giai": "Ta có $(a,b)=5$ nên $\\begin{cases}a=5m\\\\b=5n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=50$ nên $5m+5n=50\\Rightarrow 5(m+n)=50\\Rightarrow m+n=10$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&9&3&7\\\\\\hline n&9&1&7&3\\\\\\hline a&5&45&15&35\\\\\\hline b&45&5&35&15\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(5;45);(45;5);(15;35);(35;15)\\}$."
+ },
+ {
+  "ma_cau": "T106040104021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $63 \\vdots n$ và $81 \\vdots n$ và $n<10$.",
+  "dap_an": "1;3;9",
+  "loi_giai": "Vì $63 \\vdots n$ và $81 \\vdots n$ nên $n\\in \\text{UC}(63;81)$.\nĐể tìm $\\text{UC}(63;81)$ ta sẽ tìm $UCLN(63,81)$.\n$63=3^2\\cdot 7$\n$81=3^4$\n$UCLN(63,81)=3^2=9$.\n$\\Rightarrow \\text{UC}(63;81)=U(9)=\\{1;3;9\\}$.\n$\\Rightarrow n\\in\\{1;3;9\\}$.\nMà $n<10$ nên $n\\in\\{1;3;9\\}$."
+ },
+ {
+  "ma_cau": "T106030502002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên tố $q$ sao cho $q+3$, $q+5$ là số nguyên tố.",
+  "dap_an": "2",
+  "loi_giai": "TH1: $q=2\\Rightarrow \\begin{cases}q+3=2+3=5\\\\q+5=2+5=7\\end{cases}$ (thỏa mãn).\nTH2: $q>2$.\nVì $q$ là số nguyên tố lớn hơn 2 nên $q$ chia 2 dư 1 $\\Rightarrow q=2k+1$ (với $k\\in N^*$).\n$\\Rightarrow q+3=2k+1+3=2k+4\\vdots 2\\Rightarrow q+3$ không phải SNT (loại).\nVậy chỉ có $q=2$ thỏa mãn."
+ },
+ {
+  "ma_cau": "T106030501036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $n$ là số tự nhiên. Chứng tỏ rằng $2n+12$ và $2n+13$ là các số nguyên tố cùng nhau.",
+  "dap_an": "$2n+12$ và $2n+13$ là các số nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(2n+12,2n+13)$.\n$\\Rightarrow \\begin{cases}2n+12\\vdots d\\\\2n+13\\vdots d\\end{cases}$\n$\\Rightarrow (2n+13)-(2n+12)\\vdots d$\n$\\Rightarrow 1\\vdots d$\n$\\Rightarrow d=1$\nVậy $2n+12$ và $2n+13$ là các số nguyên tố cùng nhau."
+ },
+ {
+  "ma_cau": "T106030302033",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích $117$ ra thừa số nguyên tố.",
+  "dap_an": "$3^2\\cdot 13$",
+  "loi_giai": "$117:3=39$\n$39:3=13$\n$13:13=1$\n$\\Rightarrow 117=3^2\\cdot 13$."
+ },
+ {
+  "ma_cau": "T106020403040",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $5^{x+1} - 24 = 101$.",
+  "dap_an": "2",
+  "loi_giai": "$5^{x+1} - 24 = 101$\n$5^{x+1} = 101 + 24$\n$5^{x+1} = 125$\n$5^{x+1} = 5^3$\n$x+1 = 3$\n$x = 3-1$\n$x = 2$\nVậy $x = 2$."
+ },
+ {
+  "ma_cau": "T106030401120",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ để $x+18$ chia hết cho $x-3$.",
+  "dap_an": "4;6;10;24",
+  "loi_giai": "Ta có $x+18=(x-3)+21$.\nVì $x-3$ chia hết cho $x-3$ nên để $x+18$ chia hết cho $x-3$ thì $21$ chia hết cho $x-3$.\nSuy ra $x-3\\in U(21)=\\{1;3;7;21\\}$.\nVậy $x\\in\\{4;6;10;24\\}$."
+ },
+ {
+  "ma_cau": "T106040203039",
+  "loai": "tra_loi_ngan",
+  "de": "Một đơn vị bộ đội khi xếp 18 hàng, 24 hàng, 30 hàng đều vừa đủ, biết số người của đơn vị trong khoảng từ 700 đến 800 người. Tính số người của đơn vị đó.",
+  "dap_an": "720",
+  "loi_giai": "Gọi số người của đơn vị là $x$ (người, $x\\in N^*$).\nVì khi xếp 18 hàng, 24 hàng, 30 hàng đều vừa đủ nên $x\\vdots 18$; $x\\vdots 24$; $x\\vdots 30$\n$\\Rightarrow x\\in BC(18,24,30)$.\n$18=2\\cdot 3^2$\n$24=2^3\\cdot 3$\n$30=2\\cdot 3\\cdot 5$\n$BCNN(18,24,30)=2^3\\cdot 3^2\\cdot 5=360$\n$\\Rightarrow BC(18,24,30)=B(360)=\\{0;360;720;1080;....\\}$\nVì số người của đơn vị trong khoảng từ 700 đến 800 người nên $x=720$.\nVậy đơn vị có 720 người."
+ },
+ {
+  "ma_cau": "T106030101049",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm tất cả các ước của 48",
+  "dap_an": "1; 2; 3; 4; 6; 8; 12; 16; 24; 48",
+  "loi_giai": "1; 2; 3; 4; 6; 8; 12; 16; 24; 48"
+ },
+ {
+  "ma_cau": "T106040204004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ nhỏ nhất khác $0$ biết rằng $n:10$ và $n:15$.",
+  "dap_an": "30",
+  "loi_giai": "Vì $n$ là số tự nhiên nhỏ nhất khác $0$ sao cho $n:10$ và $n:15$ nên\n$n=BCNN(10,15)$.\n$10=2\\cdot 5$\n$15=3\\cdot 5$\n$\\Rightarrow BCNN(10,15)=2\\cdot 3\\cdot 5=30$.\nVậy $n=30$."
+ },
+ {
+  "ma_cau": "T106030401092",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ để $3n+7$ chia hết cho $2n+1$.",
+  "dap_an": "0;5",
+  "loi_giai": "Vì $3n+7$ chia hết cho $2n+1$ nên $2(3n+7)$ chia hết cho $2n+1$.\nTa có $2(3n+7)=6n+14=3(2n+1)+11$.\nVì $3(2n+1)$ chia hết cho $2n+1$ nên $11$ chia hết cho $2n+1$.\nSuy ra $2n+1\\in U(11)=\\{1;11\\}$.\nSuy ra $n\\in\\{0;5\\}$.\nThử lại ta thấy $n=0$ và $n=5$ đều thỏa mãn.\nVậy $n\\in\\{0;5\\}$."
+ },
+ {
+  "ma_cau": "T106020601018",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $B=1-3+3^2-...+\\text{3}^{100}$",
+  "dap_an": "$\\dfrac{\\text{3}^{101}+1}{4}$",
+  "loi_giai": "Ta có $3B=3.(1-3+3^2-...+\\text{3}^{100})=\\text{3}^1-\\text{3}^2+\\text{3}^3-...+\\text{3}^{101}$\nSuy ra $3B+B=(\\text{3}^1-\\text{3}^2+\\text{3}^3-...+\\text{3}^{101})+(1-3+3^2-...+\\text{3}^{100})$\n$4B=\\text{3}^{101}+1$\n$B=\\dfrac{\\text{3}^{101}+1}{4}$"
+ },
+ {
+  "ma_cau": "T106030201021",
+  "loai": "tu_luan",
+  "de": "Tìm chữ số $a$ để số $\\overline{2026a}$ chia hết cho cả $2$ và $5$.",
+  "dap_an": "$a = 0$",
+  "loi_giai": "Để số $\\overline{2026a}$ chia hết cho $2$, chữ số tận cùng $a$ phải là chữ số chẵn $0;2;4;6;8$.\nĐể số $\\overline{2026a}$ chia hết cho $5$, chữ số tận cùng $a$ phải bằng $0$ hoặc $5$.\nKết hợp cả hai điều kiện trên, chữ số thỏa mãn là $a=0$.\nKhi đó, ta được số $20260$ chia hết cho cả $2$ và $5$."
+ },
+ {
+  "ma_cau": "T106040202013",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN bằng định nghĩa của $5; 10$ và $20$.",
+  "dap_an": "20",
+  "loi_giai": "$B(5)=\\{0;5;10;15;20;25;30;....\\}$\n$B(10)=\\{0;10;20;30;40;....\\}$\n$B(20)=\\{0;20;40;....\\}$\n$\\Rightarrow BCNN(5,10,20)=20$"
+ },
+ {
+  "ma_cau": "T106040104033",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $56 \\vdots n$ và $84 \\vdots n$ và $3<n<20$.",
+  "dap_an": "4;7;14",
+  "loi_giai": "Vì $56 \\vdots n$ và $84 \\vdots n$ nên $n\\in \\text{UC}(56;84)$.\nĐể tìm $\\text{UC}(56;84)$ ta sẽ tìm $UCLN(56,84)$.\n$56=2^3\\cdot 7$\n$84=2^2\\cdot 3\\cdot 7$\n$UCLN(56,84)=2^2\\cdot 7=28$.\n$\\Rightarrow \\text{UC}(56;84)=U(28)=\\{1;2;4;7;14;28\\}$.\n$\\Rightarrow n\\in\\{1;2;4;7;14;28\\}$.\nMà $3<n<20$ nên $n\\in\\{4;7;14\\}$."
+ },
+ {
+  "ma_cau": "T106040102011",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng định nghĩa của $12; 18$ và $30$.",
+  "dap_an": "6",
+  "loi_giai": "$U(12)=\\{1;2;3;4;6;12\\}$\n$U(18)=\\{1;2;3;6;9;18\\}$\n$U(30)=\\{1;2;3;5;6;10;15;30\\}$\n$UCLN(12,18,30)=6$"
+ },
+ {
+  "ma_cau": "T106030302048",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích $176$ ra thừa số nguyên tố.",
+  "dap_an": "$2^4\\cdot 11$",
+  "loi_giai": "$176:2=88$\n$88:2=44$\n$44:2=22$\n$22:2=11$\n$11:11=1$\n$\\Rightarrow 176=2^4\\cdot 11$."
+ },
+ {
+  "ma_cau": "T106030301048",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là Hợp số: $2; 4; 11; 13; 17; 31; 37; 47; 50$.",
+  "dap_an": "4; 50",
+  "loi_giai": "Các Hợp số là: $4; 50$."
+ },
+ {
+  "ma_cau": "T106040204011",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ nhỏ nhất khác $0$ biết rằng $n:21$ và $n:28$.",
+  "dap_an": "84",
+  "loi_giai": "Vì $n$ là số tự nhiên nhỏ nhất khác $0$ sao cho $n:21$ và $n:28$ nên\n$n=BCNN(21,28)$.\n$21=3\\cdot 7$\n$28=2^2\\cdot 7$\n$\\Rightarrow BCNN(21,28)=2^2\\cdot 3\\cdot 7=84$.\nVậy $n=84$."
+ },
+ {
+  "ma_cau": "T106040302004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=2$ và $a+b=20$.",
+  "dap_an": "(2;18), (18;2), (6;14), (14;6)",
+  "loi_giai": "Ta có $(a,b)=2$ nên $\\begin{cases}a=2m\\\\b=2n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=20$ nên $2m+2n=20\\Rightarrow 2(m+n)=20\\Rightarrow m+n=10$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&9&3&7\\\\\\hline n&9&1&7&3\\\\\\hline a&2&18&6&14\\\\\\hline b&18&2&14&6\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(2;18);(18;2);(6;14);(14;6)\\}$."
+ },
+ {
+  "ma_cau": "T106020601001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $B=1+3+3^2+...+3^{100}$",
+  "dap_an": "$\\dfrac{3^{101}-1}{2}$",
+  "loi_giai": "Ta có $3B=3.(1+3+3^2+...+3^{100})=3^1+3^2+3^3+...+3^{101}$\nSuy ra $3B-B=(3^1+3^2+3^3+...+3^{101})-(1+3+3^2+...+3^{100})$\n$2B=3^{101}-1$\n$B=\\dfrac{3^{101}-1}{2}$"
+ },
+ {
+  "ma_cau": "T106040204028",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $n:6$, $n:8$, $n:9$ và $50<n<250$.",
+  "dap_an": "72;144;216",
+  "loi_giai": "Vì $n:6$, $n:8$, $n:9$ nên $n\\in BC(6;8;9)$.\nĐể tìm $BC(6;8;9)$ ta sẽ tìm $BCNN(6,8,9)$.\n$6=2\\cdot 3$\n$8=2^3$\n$9=3^2$\n$\\Rightarrow BCNN(6,8,9)=2^3\\cdot 3^2=72$.\n$BC(6;8;9)=B(72)=\\{0;72;144;216;288;....\\}$\nVì $50<n<250$ nên $n\\in\\{72;144;216\\}$."
+ },
+ {
+  "ma_cau": "T106040103042",
+  "loai": "tra_loi_ngan",
+  "de": "Một chuyến hàng cứu trợ có 210 thùng mì tôm, 280 thùng nước uống và 350 hộp sữa. Người ta muốn chia thành các phần quà đều nhau. Hỏi có thể chia được nhiều nhất bao nhiêu phần quà?",
+  "dap_an": "70",
+  "loi_giai": "Gọi số phần quà có thể chia được nhiều nhất là $x$ ($x\\in N^*$, phần quà).\nVì cần chia 210 thùng mì tôm, 280 thùng nước uống và 350 hộp sữa thành các phần quà đều nhau và nhiều phần quà nhất nên $x=\\text{UCLN}(210,280,350)$.\n$210=2\\cdot 3\\cdot 5\\cdot 7$\n$280=2^3\\cdot 5\\cdot 7$\n$350=2\\cdot 5^2\\cdot 7$\n$\\text{UCLN}(210,280,350)=2\\cdot 5\\cdot 7=70$\nVậy có thể chia nhiều nhất thành 70 phần quà."
+ },
+ {
+  "ma_cau": "T106030301010",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là Số nguyên tố: $6; 9; 19; 24; 45; 51; 55$.",
+  "dap_an": "19",
+  "loi_giai": "Số nguyên tố là: $19$."
+ },
+ {
+  "ma_cau": "T106040103057",
+  "loai": "tra_loi_ngan",
+  "de": "Học sinh khối 6 có 144 nữ và 96 nam tham gia lao động. Thầy phụ trách muốn chia thành các tổ sao cho số nam và số nữ mỗi tổ đều bằng nhau. Hỏi có thể chia nhiều nhất thành mấy tổ? Mỗi tổ lúc đó có bao nhiêu nam, bao nhiêu nữ?",
+  "dap_an": "48 tổ; mỗi tổ có 2 học sinh nam và 3 học sinh nữ.",
+  "loi_giai": "Gọi số tổ có thể chia được nhiều nhất là $x$ ($x\\in N^*$, tổ).\nVì cần chia 96 nam và 144 nữ thành các tổ đều nhau và nhiều tổ nhất nên\n$x=\\text{UCLN}(96,144)$.\n$96=2^5\\cdot 3$\n$144=2^4\\cdot 3^2$\n$\\text{UCLN}(96,144)=2^4\\cdot 3=48$\nVậy có thể chia nhiều nhất thành 48 tổ.\nSố học sinh nam ở mỗi tổ là:\n$96:48=2$ (học sinh)\nSố học sinh nữ ở mỗi tổ là:\n$144:48=3$ (học sinh)."
+ },
+ {
+  "ma_cau": "T106030401045",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ để $4n+7$ chia hết cho $5n+3$.",
+  "dap_an": "4",
+  "loi_giai": "Vì $4n+7$ chia hết cho $5n+3$ nên $5(4n+7)$ chia hết cho $5n+3$.\n$5(4n+7)=4(5n+3)+23$.\nVì $4(5n+3)$ chia hết cho $5n+3$ nên $23$ chia hết cho $5n+3$.\nSuy ra $5n+3\\in U(23)=\\{1;23\\}$.\nDo đó $n=4$.\nThử lại thấy $n=4$ thoả mãn.\nVậy $n=4$."
+ },
+ {
+  "ma_cau": "T106030403007",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A = 2 + 2^2 + 2^3 + 2^4 + ... + 2^{12}$. Chứng minh rằng $A$ chia hết cho 7.",
+  "dap_an": "Có",
+  "loi_giai": "$A = 2 + 2^2 + 2^3 + 2^4 + ... + 2^{12}$\n$A = (2 + 2^2 + 2^3) + (2^4 + 2^5 + 2^6) + ... + (2^{10} + 2^{11} + 2^{12})$\n$A = 2(1 + 2 + 2^2) + 2^4(1 + 2 + 2^2) + ... + 2^{10}(1 + 2 + 2^2)$\n$A = 2\\cdot 7 + 2^4\\cdot 7 + ... + 2^{10}\\cdot 7$\n$A = 7(2 + 2^4 + ... + 2^{10})$\nSuy ra $A \\vdots 7$."
+ },
+ {
+  "ma_cau": "T106030502041",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên tố $x$ để $x+6$, $x+8$, $x+12$, $x+14$ đều là các số nguyên tố.",
+  "dap_an": "5",
+  "loi_giai": "TH1: $x\\vdots 5\\Rightarrow x=5$.\n$\\Rightarrow x+6=11; x+8=13;x+12=17;x+14=19$.\n$\\Rightarrow x=5$ thỏa mãn.\nTH2: $x$ chia 5 dư 1 $\\Rightarrow x=5k+1$.\n$\\Rightarrow x+14=5k+1+14=5k+15\\vdots 5$ (loại).\nTH3: $x$ chia 5 dư 2 $\\Rightarrow x=5k+2$.\n$\\Rightarrow x+8=5k+2+8=5k+10\\vdots 5$ (loại).\nTH4: $x$ chia 5 dư 3 $\\Rightarrow x=5k+3$.\n$\\Rightarrow x+12=5k+3+12=5k+15\\vdots 5$ (loại).\nTH5: $x$ chia 5 dư 4 $\\Rightarrow x=5k+4$.\n$\\Rightarrow x+6=5k+4+6=5k+10\\vdots 5$ (loại).\nVậy $x=5$ là số nguyên tố cần tìm."
+ },
+ {
+  "ma_cau": "T106040202037",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN bằng cách phân tích ra thừa số nguyên tố của $15; 20$ và $30$.",
+  "dap_an": "60",
+  "loi_giai": "$15=3\\cdot 5$\n$20=2^2\\cdot 5$\n$30=2\\cdot 3\\cdot 5$\n$\\Rightarrow BCNN(15,20,30)=2^2\\cdot 3\\cdot 5=60$"
+ },
+ {
+  "ma_cau": "T106030501008",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $n$ là số tự nhiên. Chứng tỏ rằng $n+4$ và $n+5$ là các số nguyên tố cùng nhau.",
+  "dap_an": "$n+4$ và $n+5$ là các số nguyên tố cùng nhau.",
+  "loi_giai": "Gọi $d=(n+4,n+5)$.\n$\\Rightarrow \\begin{cases}n+4\\vdots d\\\\n+5\\vdots d\\end{cases}$\n$\\Rightarrow (n+5)-(n+4)\\vdots d$\n$\\Rightarrow 1\\vdots d$\n$\\Rightarrow d=1$\nVậy $n+4$ và $n+5$ là các số nguyên tố cùng nhau."
+ },
+ {
+  "ma_cau": "T106030401032",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ để $3n+7$ chia hết cho $2n+2$.",
+  "dap_an": "3",
+  "loi_giai": "Vì $3n+7$ chia hết cho $2n+2$ nên $2(3n+7)$ chia hết cho $2n+2$.\n$2(3n+7)=3(2n+2)+8$.\nVì $3(2n+2)$ chia hết cho $2n+2$ nên $8$ chia hết cho $2n+2$.\nSuy ra $2n+2\\in U(8)=\\{1;2;4;8\\}$.\nDo đó $n\\in\\{0;1;3\\}$.\nThử lại ta thấy chỉ có $n=3$ thỏa mãn.\nVậy $n=3$."
+ },
+ {
+  "ma_cau": "T106030302069",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích $250$ ra thừa số nguyên tố.",
+  "dap_an": "$2\\cdot 5^3$",
+  "loi_giai": "$250:2=125$\n$125:5=25$\n$25:5=5$\n$5:5=1$\n$\\Rightarrow 250=2\\cdot 5^3$."
+ },
+ {
+  "ma_cau": "T106030302067",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích $243$ ra thừa số nguyên tố.",
+  "dap_an": "$3^5$",
+  "loi_giai": "$243:3=81$\n$81:3=27$\n$27:3=9$\n$9:3=3$\n$3:3=1$\n$\\Rightarrow 243=3^5$."
+ },
+ {
+  "ma_cau": "T106030302066",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích $242$ ra thừa số nguyên tố.",
+  "dap_an": "$2\\cdot 11^2$",
+  "loi_giai": "$242:2=121$\n$121:11=11$\n$11:11=1$\n$\\Rightarrow 242=2\\cdot 11^2$."
+ }
+]

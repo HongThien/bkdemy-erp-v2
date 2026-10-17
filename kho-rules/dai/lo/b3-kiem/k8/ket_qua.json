@@ -1,0 +1,1842 @@
+[
+ {
+  "ma_cau": "T108030101004",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số của đa thức một biến 5y-25.",
+  "hien": "NDB00470",
+  "nguon": "gan_cum",
+  "cum": "DCUM01423",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108030501001",
+  "may": "NDB00478",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc 3 phân tích bằng nhẩm nghiệm nguyên khác ±1 (x=-2).",
+  "hien": "NDB00478",
+  "nguon": "gan_cum",
+  "cum": "DCUM01471",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108030602049",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Đảo dấu rút nhân tử chung (x-3) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108010201029",
+  "may": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Thu gọn bằng cộng trừ các đơn thức đồng dạng.",
+  "hien": "NDB00671",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010201"
+ },
+ {
+  "ma_cau": "T108010202048",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cho hai đa thức A, B, tính B-A.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108020202085",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách hai bình phương trong đó có bình phương ba số (x-y+2)^2.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010303053",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, nhân đa thức với đa thức lần lượt.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108010202042",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba đa thức nhiều biến A+B-C.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108030401037",
+  "may": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2 khác 1, phân tích bằng tách hạng tử.",
+  "hien": "NDB00476",
+  "nguon": "gan_cum",
+  "cum": "DCUM01469",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108010401045",
+  "may": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức nhiều biến cho đơn thức.",
+  "hien": "NDB00676",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010401"
+ },
+ {
+  "ma_cau": "T108030602061",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (3x-2) rồi chia hai trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108020501001",
+  "may": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Phân tích hiệu hai lập phương 8x^3-27 thành tích.",
+  "hien": "NDB00691",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020501"
+ },
+ {
+  "ma_cau": "T108030603013",
+  "may": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Tìm x bằng nhóm hạng tử rồi chia trường hợp.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108020101001",
+  "may": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của tổng (x+1)^2.",
+  "hien": "NDB00688",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020101"
+ },
+ {
+  "ma_cau": "T108020701042",
+  "may": "NDB00467",
+  "chac": "cao",
+  "ly_do": "Tính a^4+b^4+c^4 từ bình phương liên tiếp (dạng mũ 4).",
+  "hien": "NDB00467",
+  "nguon": "gan_cum",
+  "cum": "DCUM01357",
+  "dang_cu": "T108020701"
+ },
+ {
+  "ma_cau": "T108020202081",
+  "may": "NDB00699",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, hệ số xy là -1, nhân đôi thành tổng ba bình phương.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030602067",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Đảo dấu rút nhân tử chung (x-3) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108020501033",
+  "may": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Điền nhân tử thứ hai của x^3-8, hiệu hai lập phương.",
+  "hien": "NDB00691",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020501"
+ },
+ {
+  "ma_cau": "T108010301043",
+  "may": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân ba đơn thức nhiều biến.",
+  "hien": "NDB00673",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010301"
+ },
+ {
+  "ma_cau": "T108010101040",
+  "may": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm số đơn thức trong các biểu thức cho trước.",
+  "hien": "NDB00664",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010101"
+ },
+ {
+  "ma_cau": "T108020104075",
+  "may": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách tam thức thành bình phương, hệ số x^2 âm khác 1.",
+  "hien": "NDB00693",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020104"
+ },
+ {
+  "ma_cau": "T108020203055",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTLN hai biến, tách hai bình phương gồm (x-y-1)^2 và (y-2)^2.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010403001",
+  "may": "NDB00678",
+  "chac": "cao",
+  "ly_do": "Chia đa thức một biến cho x-1, có dư.",
+  "hien": "NDB00678",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010403"
+ },
+ {
+  "ma_cau": "T108010202012",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cho hai đa thức A, B, tính A-B.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108030401001",
+  "may": "NDB00475",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=1, phân tích bằng tách hạng tử.",
+  "hien": "NDB00475",
+  "nguon": "gan_cum",
+  "cum": "DCUM01468",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108020103001",
+  "may": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền chỗ trống hoàn thiện bình phương của tổng.",
+  "hien": "NDB00689",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020103"
+ },
+ {
+  "ma_cau": "T108030101060",
+  "may": "NDB00471",
+  "chac": "cao",
+  "ly_do": "Rút đơn thức làm nhân tử chung, đa thức nhiều biến.",
+  "hien": "NDB00471",
+  "nguon": "gan_cum",
+  "cum": "DCUM01424",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020203056",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (x-3)^2 và (x-y-1)^2 có bình phương ba số.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108030101104",
+  "may": "NDB00473",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung đa thức sau khi đảo dấu 3-7x thành 7x-3.",
+  "hien": "NDB00473",
+  "nguon": "gan_cum",
+  "cum": "DCUM01426",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020202076",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010301028",
+  "may": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức nhiều biến.",
+  "hien": "NDB00673",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010301"
+ },
+ {
+  "ma_cau": "T108030101002",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 4y-12.",
+  "hien": "NDB00470",
+  "nguon": "gan_cum",
+  "cum": "DCUM01423",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020203059",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTLN hai biến, tách (x-2y+1)^2 và (y+7/4)^2, có bình phương ba số.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010302054",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108030101003",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 8x-20.",
+  "hien": "NDB00470",
+  "nguon": "gan_cum",
+  "cum": "DCUM01423",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108030401049",
+  "may": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=-3, phân tích bằng tách hạng tử.",
+  "hien": "NDB00476",
+  "nguon": "gan_cum",
+  "cum": "DCUM01469",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108010301039",
+  "may": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân ba đơn thức nhiều biến.",
+  "hien": "NDB00673",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010301"
+ },
+ {
+  "ma_cau": "T108010302055",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108030501007",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=-1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108020202087",
+  "may": "NDB00699",
+  "chac": "vua",
+  "ly_do": "GTNN hai biến hệ số xy lớn, chuẩn là tổng ba bình phương nhưng đáp án giải kiểu khác.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010202001",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng hai đa thức nhiều biến A(x)+B(x).",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108010202031",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba đa thức A-B+C.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108020701029",
+  "may": "NDB00468",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn nghịch đảo rồi a=b=c; có thể là dạng phân thức NDB00466.",
+  "hien": "NDB00466",
+  "nguon": "gan_cum",
+  "cum": "DCUM01356",
+  "dang_cu": "T108020701"
+ },
+ {
+  "ma_cau": "T108030501008",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108030401007",
+  "may": "NDB00476",
+  "chac": "vua",
+  "ly_do": "Hệ số x^2=-1: có thể xếp cụm hệ số 1 hoặc khác 1.",
+  "hien": "NDB00475",
+  "nguon": "gan_cum",
+  "cum": "DCUM01468",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108010303012",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108010402022",
+  "may": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức.",
+  "hien": "NDB00677",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010402"
+ },
+ {
+  "ma_cau": "T108020701018",
+  "may": "NDB00468",
+  "chac": "cao",
+  "ly_do": "Từ tổng và tổng bình phương suy ra a=b=c rồi tính.",
+  "hien": "NDB00468",
+  "nguon": "gan_cum",
+  "cum": "DCUM01368",
+  "dang_cu": "T108020701"
+ },
+ {
+  "ma_cau": "T108030104061",
+  "may": "NDB00475",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=1, tách hạng tử.",
+  "hien": "NDB00475",
+  "nguon": "gan_cum",
+  "cum": "DCUM01468",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108030602073",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Nhóm rút nhân tử chung (x+4) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108030501012",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108030104055",
+  "may": "NDB00475",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=1, tách hạng tử.",
+  "hien": "NDB00475",
+  "nguon": "gan_cum",
+  "cum": "DCUM01468",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108020202022",
+  "may": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tổng (x+2y)^2+(y+2)^2 hai số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010401039",
+  "may": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức.",
+  "hien": "NDB00676",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010401"
+ },
+ {
+  "ma_cau": "T108010302044",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108020203062",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108020401001",
+  "may": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Viết 9x^2-16 thành tích bằng hiệu hai bình phương.",
+  "hien": "NDB00692",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020401"
+ },
+ {
+  "ma_cau": "T108020203001",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010402001",
+  "may": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức.",
+  "hien": "NDB00677",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010402"
+ },
+ {
+  "ma_cau": "T108030603019",
+  "may": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Tìm x bằng nhóm hạng tử rồi chia trường hợp.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108020301001",
+  "may": "NDB00690",
+  "chac": "cao",
+  "ly_do": "Khai triển lập phương của tổng (x+1)^3.",
+  "hien": "NDB00690",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020301"
+ },
+ {
+  "ma_cau": "T108020203064",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (3x-2y+3)^2 và 2y^2, có bình phương ba số.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108030501005",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=-1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108020202084",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020104054",
+  "may": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách tam thức bậc hai hệ số x^2=3 thành bình phương.",
+  "hien": "NDB00693",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020104"
+ },
+ {
+  "ma_cau": "T108020201001",
+  "may": "NDB00696",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến độc lập, tách (x+1)^2+(y+2)^2.",
+  "hien": "NDB00696",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020201"
+ },
+ {
+  "ma_cau": "T108020202001",
+  "may": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tổng (x+y)^2+(x-2)^2.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020701046",
+  "may": "NDB00468",
+  "chac": "vua",
+  "ly_do": "Suy ra a=b=c rồi tính tổng nghịch đảo; có thể là dạng phân thức NDB00466.",
+  "hien": "NDB00468",
+  "nguon": "gan_cum",
+  "cum": "DCUM01368",
+  "dang_cu": "T108020701"
+ },
+ {
+  "ma_cau": "T108030603061",
+  "may": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Tìm x bằng nhóm hạng tử rồi chia trường hợp.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108030603007",
+  "may": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Tìm x bằng nhóm hạng tử rồi chia trường hợp.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108020202091",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (x-y-1)^2 và bình phương thứ hai, có bình phương ba số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020501022",
+  "may": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Điền khuyết phân tích tổng hai lập phương x^3+27.",
+  "hien": "NDB00691",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020501"
+ },
+ {
+  "ma_cau": "T108020105007",
+  "may": "NDB00695",
+  "chac": "cao",
+  "ly_do": "GTNN tam thức bậc hai một biến 3x^2-4x+5.",
+  "hien": "NDB00695",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020105"
+ },
+ {
+  "ma_cau": "T108020103043",
+  "may": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền chỗ trống hoàn thiện bình phương của tổng.",
+  "hien": "NDB00689",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020103"
+ },
+ {
+  "ma_cau": "T108010302053",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108020202080",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh biểu thức hai biến luôn dương bằng tổng các bình phương.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020401050",
+  "may": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Viết tích dạng (A-B)(A+B) thành hiệu hai bình phương.",
+  "hien": "NDB00692",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020401"
+ },
+ {
+  "ma_cau": "T108020203060",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách 2(x-y-1)^2 và bình phương thứ hai, có bình phương ba số.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108020401061",
+  "may": "NDB00468",
+  "chac": "cao",
+  "ly_do": "Từ a^2+b^2+c^2=ab+bc+ca chứng minh a=b=c.",
+  "hien": "NDB00692",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020401"
+ },
+ {
+  "ma_cau": "T108010301049",
+  "may": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức nhiều biến.",
+  "hien": "NDB00673",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010301"
+ },
+ {
+  "ma_cau": "T108020103064",
+  "may": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền chỗ trống hoàn thiện bình phương của tổng.",
+  "hien": "NDB00689",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020103"
+ },
+ {
+  "ma_cau": "T108030401013",
+  "may": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=2, phân tích bằng tách hạng tử.",
+  "hien": "NDB00476",
+  "nguon": "gan_cum",
+  "cum": "DCUM01469",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108020202090",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x,y từ điều kiện tổng bình phương bằng 0.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030101005",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 12x-30.",
+  "hien": "NDB00470",
+  "nguon": "gan_cum",
+  "cum": "DCUM01423",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020203063",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách hai bình phương trong đó có (x-y+3/2)^2.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010303001",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108020501044",
+  "may": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Điền khuyết phân tích hiệu hai lập phương x^3-64.",
+  "hien": "NDB00691",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020501"
+ },
+ {
+  "ma_cau": "T108020202089",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030401019",
+  "may": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=2, phân tích bằng tách hạng tử.",
+  "hien": "NDB00476",
+  "nguon": "gan_cum",
+  "cum": "DCUM01469",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108030102022",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (2x-1) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108020202078",
+  "may": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tổng (x-2y)^2+(y-4)^2 hai số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020202088",
+  "may": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Đề cho sẵn dạng tổng hai bình phương, chỉ lập luận GTNN; có thể là dạng khác.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010302001",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108010303054",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108030101071",
+  "may": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là đa thức (x-2).",
+  "hien": "NDB00472",
+  "nguon": "gan_cum",
+  "cum": "DCUM01425",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108030501010",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108030602055",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (x+5) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108010202024",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cho hai đa thức A, B, tính A-B.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108030603037",
+  "may": "NDB00980",
+  "chac": "vua",
+  "ly_do": "Tìm x gom ba hạng tử thành bình phương rồi hiệu hai bình phương; bảng không có dạng tìm x bằng hằng đẳng thức.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108030501009",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=-1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108020202079",
+  "may": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tổng (x+y)^2+(y-1)^2 hai số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020104001",
+  "may": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách tam thức hệ số x^2=1 thành bình phương.",
+  "hien": "NDB00693",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020104"
+ },
+ {
+  "ma_cau": "T108030603049",
+  "may": "NDB00981",
+  "chac": "vua",
+  "ly_do": "Tìm x: thu về tam thức rồi tách hạng tử, hoặc gom hằng đẳng thức.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108030101006",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 10y-24.",
+  "hien": "NDB00470",
+  "nguon": "gan_cum",
+  "cum": "DCUM01423",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108010101012",
+  "may": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm số đơn thức trong các biểu thức cho trước.",
+  "hien": "NDB00664",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010101"
+ },
+ {
+  "ma_cau": "T108030401031",
+  "may": "NDB00475",
+  "chac": "vua",
+  "ly_do": "Tam thức bậc hai theo x^2, tách hạng tử; có thể là đặt ẩn phụ NDB00978.",
+  "hien": "NDB00475",
+  "nguon": "gan_cum",
+  "cum": "DCUM01468",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108010301001",
+  "may": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức nhiều biến.",
+  "hien": "NDB00673",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010301"
+ },
+ {
+  "ma_cau": "T108030401025",
+  "may": "NDB00475",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=1, tách hạng tử.",
+  "hien": "NDB00475",
+  "nguon": "gan_cum",
+  "cum": "DCUM01468",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108020202066",
+  "may": "NDB00699",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách thành tổng ba bình phương.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030101077",
+  "may": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là đa thức (x+4).",
+  "hien": "NDB00472",
+  "nguon": "gan_cum",
+  "cum": "DCUM01425",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020202082",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (x-2y+5)^2 và (y-1)^2, có bình phương ba số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020103085",
+  "may": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền chỗ trống hoàn thiện bình phương của tổng.",
+  "hien": "NDB00689",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020103"
+ },
+ {
+  "ma_cau": "T108020202055",
+  "may": "NDB00699",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách thành tổng ba bình phương.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020201022",
+  "may": "NDB00696",
+  "chac": "cao",
+  "ly_do": "GTLN hai biến độc lập, tách -(x-1)^2-(y-3)^2.",
+  "hien": "NDB00696",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020201"
+ },
+ {
+  "ma_cau": "T108020203057",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010404001",
+  "may": "NDB00679",
+  "chac": "cao",
+  "ly_do": "Tìm m để đa thức chia hết cho đơn thức.",
+  "hien": "NDB00679",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010404"
+ },
+ {
+  "ma_cau": "T108020301012",
+  "may": "NDB00969",
+  "chac": "cao",
+  "ly_do": "Điền khuyết hoàn thiện lập phương của tổng.",
+  "hien": "NDB00690",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020301"
+ },
+ {
+  "ma_cau": "T108010101034",
+  "may": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm số đơn thức trong các biểu thức cho trước.",
+  "hien": "NDB00664",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010101"
+ },
+ {
+  "ma_cau": "T108030101007",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút đơn thức làm nhân tử chung, đa thức một biến.",
+  "hien": "NDB00471",
+  "nguon": "gan_cum",
+  "cum": "DCUM01424",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020202044",
+  "may": "NDB00699",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách thành tổng ba bình phương.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030602079",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (x-2) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108020202070",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x,y từ điều kiện tổng bình phương bằng 0.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010201018",
+  "may": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Thu gọn bằng cộng trừ đơn thức đồng dạng.",
+  "hien": "NDB00671",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010201"
+ },
+ {
+  "ma_cau": "T108010303052",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108030603031",
+  "may": "NDB00980",
+  "chac": "vua",
+  "ly_do": "Tìm x gom ba hạng tử thành bình phương rồi hiệu hai bình phương; bảng không có dạng tìm x bằng hằng đẳng thức.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108010202025",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba đa thức C-A-B.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108020104043",
+  "may": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách tam thức hệ số x^2=2 thành bình phương.",
+  "hien": "NDB00693",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020104"
+ },
+ {
+  "ma_cau": "T108020105028",
+  "may": "NDB00695",
+  "chac": "cao",
+  "ly_do": "GTLN tam thức bậc hai một biến.",
+  "hien": "NDB00695",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020105"
+ },
+ {
+  "ma_cau": "T108010303023",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108030101001",
+  "may": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 6x-15.",
+  "hien": "NDB00470",
+  "nguon": "gan_cum",
+  "cum": "DCUM01423",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020701036",
+  "may": "NDB00468",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn nghịch đảo rồi a=b=c; có thể là dạng phân thức NDB00466.",
+  "hien": "NDB00466",
+  "nguon": "gan_cum",
+  "cum": "DCUM01356",
+  "dang_cu": "T108020701"
+ },
+ {
+  "ma_cau": "T108010101023",
+  "may": "NDB00668",
+  "chac": "cao",
+  "ly_do": "Đếm số đa thức trong các biểu thức cho trước.",
+  "hien": "NDB00664",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010101"
+ },
+ {
+  "ma_cau": "T108030603025",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Nhóm rút nhân tử chung (x+5) rồi chia trường hợp tìm x.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108030602043",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (x+2) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108010201012",
+  "may": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Trừ hai đơn thức đồng dạng.",
+  "hien": "NDB00671",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010201"
+ },
+ {
+  "ma_cau": "T108020103022",
+  "may": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền chỗ trống hoàn thiện bình phương của hiệu.",
+  "hien": "NDB00689",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020103"
+ },
+ {
+  "ma_cau": "T108020301033",
+  "may": "NDB00969",
+  "chac": "cao",
+  "ly_do": "Điền khuyết hoàn thiện lập phương của hiệu.",
+  "hien": "NDB00690",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020301"
+ },
+ {
+  "ma_cau": "T108010303055",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108020202083",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (3x-2y+3)^2 và 2y^2, có bình phương ba số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108020202077",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030603043",
+  "may": "NDB00981",
+  "chac": "vua",
+  "ly_do": "Tìm x: thu về tam thức rồi tách hạng tử, hoặc gom hằng đẳng thức.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108030603055",
+  "may": "NDB00982",
+  "chac": "vua",
+  "ly_do": "Bậc 3 giải bằng nhẩm nghiệm, nhưng nhóm hạng tử cũng làm được (NDB00980).",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108030302001",
+  "may": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Tìm x bằng nhóm hạng tử rồi chia trường hợp.",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108020101022",
+  "may": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của tổng (2x+1)^2.",
+  "hien": "NDB00688",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020101"
+ },
+ {
+  "ma_cau": "T108020203049",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x,y từ điều kiện tổng ba bình phương bằng 0.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108030603073",
+  "may": "NDB00982",
+  "chac": "vua",
+  "ly_do": "Bậc 3 giải bằng nhẩm nghiệm x=2, nhưng nhóm hạng tử cũng làm được (NDB00980).",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108020202033",
+  "may": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tổng (2x+y)^2+(x-2)^2 hai số.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108030101083",
+  "may": "NDB00473",
+  "chac": "cao",
+  "ly_do": "Đảo dấu 3-y thành y-3 rồi rút nhân tử chung đa thức.",
+  "hien": "NDB00473",
+  "nguon": "gan_cum",
+  "cum": "DCUM01426",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020101043",
+  "may": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của tổng (4x+1)^2.",
+  "hien": "NDB00688",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020101"
+ },
+ {
+  "ma_cau": "T108010401033",
+  "may": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức nhiều biến cho đơn thức.",
+  "hien": "NDB00676",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010401"
+ },
+ {
+  "ma_cau": "T108010201001",
+  "may": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Cộng hai đơn thức đồng dạng.",
+  "hien": "NDB00671",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010201"
+ },
+ {
+  "ma_cau": "T108010302052",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108020203018",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: từ điều kiện tổng bình phương bằng 0 suy ra x,y rồi tính giá trị biểu thức.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010101001",
+  "may": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm số đơn thức trong các biểu thức cho trước.",
+  "hien": "NDB00664",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010101"
+ },
+ {
+  "ma_cau": "T108020105001",
+  "may": "NDB00695",
+  "chac": "cao",
+  "ly_do": "GTNN tam thức bậc hai một biến.",
+  "hien": "NDB00695",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020105"
+ },
+ {
+  "ma_cau": "T108010403022",
+  "may": "NDB00678",
+  "chac": "cao",
+  "ly_do": "Chia đa thức một biến cho đa thức một biến, có dư.",
+  "hien": "NDB00678",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010403"
+ },
+ {
+  "ma_cau": "T108030501006",
+  "may": "NDB00478",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=2.",
+  "hien": "NDB00478",
+  "nguon": "gan_cum",
+  "cum": "DCUM01471",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108020203028",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (x-y-1)^2 và (y+1)^2, có bình phương ba số.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108030501004",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=-1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108020401044",
+  "may": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích dạng (A-b)(A+b) viết thành hiệu hai bình phương.",
+  "hien": "NDB00692",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020401"
+ },
+ {
+  "ma_cau": "T108020203061",
+  "may": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh biểu thức hai biến luôn dương bằng tổng các bình phương.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108020401022",
+  "may": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích (2+3x)(2-3x) viết thành hiệu hai bình phương.",
+  "hien": "NDB00692",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020401"
+ },
+ {
+  "ma_cau": "T108030603067",
+  "may": "NDB00982",
+  "chac": "vua",
+  "ly_do": "Bậc 3 giải bằng nhẩm nghiệm x=2, nhưng nhóm hạng tử cũng làm được (NDB00980).",
+  "hien": "NDB00980",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030603"
+ },
+ {
+  "ma_cau": "T108010401001",
+  "may": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức nhiều biến cho đơn thức.",
+  "hien": "NDB00676",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010401"
+ },
+ {
+  "ma_cau": "T108020203058",
+  "may": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (x-y-1)^2 và bình phương thứ hai, có bình phương ba số.",
+  "hien": "NDB00698",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020203"
+ },
+ {
+  "ma_cau": "T108010301007",
+  "may": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức nhiều biến.",
+  "hien": "NDB00673",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010301"
+ },
+ {
+  "ma_cau": "T108010202013",
+  "may": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cho hai đa thức A, B, tính A-B.",
+  "hien": "NDB00672",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010202"
+ },
+ {
+  "ma_cau": "T108020202086",
+  "may": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Tách bình phương tìm điểm đạt GTNN rồi tính biểu thức khác; có thể xếp dạng tính giá trị.",
+  "hien": "NDB00697",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020202"
+ },
+ {
+  "ma_cau": "T108010302051",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108030101049",
+  "may": "NDB00471",
+  "chac": "cao",
+  "ly_do": "Rút đơn thức làm nhân tử chung, đa thức nhiều biến.",
+  "hien": "NDB00471",
+  "nguon": "gan_cum",
+  "cum": "DCUM01424",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108030501011",
+  "may": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Phân tích bậc 3 bằng nhẩm nghiệm x=-1.",
+  "hien": "NDB00477",
+  "nguon": "gan_cum",
+  "cum": "DCUM01470",
+  "dang_cu": "T108030105"
+ },
+ {
+  "ma_cau": "T108010302033",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ },
+ {
+  "ma_cau": "T108030101028",
+  "may": "NDB00471",
+  "chac": "cao",
+  "ly_do": "Rút đơn thức làm nhân tử chung, đa thức nhiều biến.",
+  "hien": "NDB00471",
+  "nguon": "gan_cum",
+  "cum": "DCUM01424",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020201043",
+  "may": "NDB00696",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến độc lập, tách 2(x+1)^2+3(y+1)^2.",
+  "hien": "NDB00696",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020201"
+ },
+ {
+  "ma_cau": "T108030401043",
+  "may": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x^2=6, phân tích bằng tách hạng tử.",
+  "hien": "NDB00476",
+  "nguon": "gan_cum",
+  "cum": "DCUM01469",
+  "dang_cu": "T108030104"
+ },
+ {
+  "ma_cau": "T108010303044",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108020701030",
+  "may": "NDB00466",
+  "chac": "vua",
+  "ly_do": "Bình phương tổng các phân thức nghịch đảo; có thể xếp dạng a=b=c (NDB00468).",
+  "hien": "NDB00466",
+  "nguon": "gan_cum",
+  "cum": "DCUM01356",
+  "dang_cu": "T108020701"
+ },
+ {
+  "ma_cau": "T108020104022",
+  "may": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách tam thức hệ số x^2=1 thành bình phương.",
+  "hien": "NDB00693",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020104"
+ },
+ {
+  "ma_cau": "T108030102001",
+  "may": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (x-2) rồi chia trường hợp tìm x.",
+  "hien": "NDB00979",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108030602"
+ },
+ {
+  "ma_cau": "T108030101115",
+  "may": "NDB00473",
+  "chac": "cao",
+  "ly_do": "Đảo dấu y-2x thành 2x-y rồi rút nhân tử chung đa thức.",
+  "hien": "NDB00473",
+  "nguon": "gan_cum",
+  "cum": "DCUM01426",
+  "dang_cu": "T108030101"
+ },
+ {
+  "ma_cau": "T108020401033",
+  "may": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích (2y+x)(2y-x) viết thành hiệu hai bình phương.",
+  "hien": "NDB00692",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108020401"
+ },
+ {
+  "ma_cau": "T108010303051",
+  "may": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, nhân đa thức với đa thức.",
+  "hien": "NDB00675",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010303"
+ },
+ {
+  "ma_cau": "T108010401012",
+  "may": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức nhiều biến cho đơn thức.",
+  "hien": "NDB00676",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010401"
+ },
+ {
+  "ma_cau": "T108010302022",
+  "may": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến.",
+  "hien": "NDB00674",
+  "nguon": "doi_ung",
+  "cum": null,
+  "dang_cu": "T108010302"
+ }
+]

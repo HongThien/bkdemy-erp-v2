@@ -1,0 +1,217 @@
+[
+ {
+  "ma_cau": "T107020501011",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|2x+4|+|2x-10|$.",
+  "dap_an": "14",
+  "loi_giai": "$A=|2x+4|+|2x-10|$\n$A=|2x+4|+|10-2x|$\n$A\\ge|2x+4+10-2x|$\n$A\\ge14$\nDấu bằng xảy ra khi $(2x+4)(10-2x)\\ge0\\Rightarrow -2\\le x\\le5$.\nVậy GTNN của $A$ là $14$ khi $-2\\le x\\le5$."
+ },
+ {
+  "ma_cau": "T107020501012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|3x+6|+|3x-12|$.",
+  "dap_an": "18",
+  "loi_giai": "$A=|3x+6|+|3x-12|$\n$A=|3x+6|+|12-3x|$\n$A\\ge|3x+6+12-3x|$\n$A\\ge18$\nDấu bằng xảy ra khi $(3x+6)(12-3x)\\ge0\\Rightarrow -2\\le x\\le4$.\nVậy GTNN của $A$ là $18$ khi $-2\\le x\\le4$."
+ },
+ {
+  "ma_cau": "077022220401003",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=2|x-4|+17$.",
+  "dap_an": "17",
+  "loi_giai": "Ta có: $|x-4|\\ge0$.\n$\\Rightarrow 2|x-4|\\ge0$.\n$\\Rightarrow 2|x-4|+17\\ge0+17$.\n$\\Rightarrow A\\ge17$.\nDấu bằng xảy ra khi $|x-4|=0\\Rightarrow x=4$.\nVậy GTNN của biểu thức $A$ là $17$ khi $x=4$."
+ },
+ {
+  "ma_cau": "077022220401049",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{3}{(3x+3)^2+6}$.",
+  "dap_an": "\\dfrac{1}{2}",
+  "loi_giai": "Ta có: $(3x+3)^2\\ge0$.\n$\\Rightarrow (3x+3)^2+6\\ge6$.\n$\\Rightarrow \\dfrac{3}{(3x+3)^2+6}\\le\\dfrac{3}{6}$.\n$\\Rightarrow A\\le\\dfrac{1}{2}$.\nDấu bằng xảy ra khi $(3x+3)^2=0\\Rightarrow 3x+3=0\\Rightarrow x=-1$.\nVậy GTLN của biểu thức $A$ là $\\dfrac{1}{2}$ khi $x=-1$."
+ },
+ {
+  "ma_cau": "077022220401032",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=7-|5x-5|-|y|$.",
+  "dap_an": "7",
+  "loi_giai": "Ta có: $|5x-5|\\ge0$; $|y|\\ge0$.\n$\\Rightarrow -|5x-5|-|y|\\le0$.\n$\\Rightarrow 7-|5x-5|-|y|\\le7+0$.\n$\\Rightarrow A\\le7$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}|5x-5|=0\\\\|y|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}5x-5=0\\\\y=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=1\\\\y=0\\end{array}\\right.$\nVậy GTLN của biểu thức $A$ là $7$ khi $x=1$ và $y=0$."
+ },
+ {
+  "ma_cau": "07702220301023",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{43};|-6,4|;6,3;\\left|-\\dfrac{13}{2}\\right|;\\sqrt{40}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "6,3;\\sqrt{40};|-6,4|;\\left|-\\dfrac{13}{2}\\right|;\\sqrt{43}",
+  "loi_giai": "Ta có: $|-6,4|=6,4$; $\\left|-\\dfrac{13}{2}\\right|=\\dfrac{13}{2}=6,5$.\nMà $6,3=\\sqrt{39,69}$; $6,4=\\sqrt{40,96}$. Vì $\\sqrt{39,69}<\\sqrt{40}<\\sqrt{40,96}$ nên $6,3<\\sqrt{40}<6,4<6,5$.\nLại có $6,5=\\sqrt{42,25}<\\sqrt{43}$.\nVậy ta sắp xếp: $6,3;\\sqrt{40};|-6,4|;\\left|-\\dfrac{13}{2}\\right|;\\sqrt{43}$."
+ },
+ {
+  "ma_cau": "07702220301022",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{37};|-5,9|;5,8;|-6|;\\sqrt{34}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "5,8;\\sqrt{34};|-5,9|;|-6|;\\sqrt{37}",
+  "loi_giai": "Ta có: $|-5,9|=5,9$; $|-6|=6$.\nMà $5,8=\\sqrt{33,64}$; $5,9=\\sqrt{34,81}$. Vì $\\sqrt{33,64}<\\sqrt{34}<\\sqrt{34,81}$ nên $5,8<\\sqrt{34}<5,9<6$.\nLại có $6=\\sqrt{36}<\\sqrt{37}$.\nVậy ta sắp xếp: $5,8;\\sqrt{34};|-5,9|;|-6|;\\sqrt{37}$."
+ },
+ {
+  "ma_cau": "T107020501026",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+5|+|x+11|$.",
+  "dap_an": "6",
+  "loi_giai": "$A=|x+5|+|x+11|$\n$A=|x+5|+|-x-11|$\n$A\\ge|x+5+(-x-11)|$\n$A\\ge|-6|$\n$A\\ge6$\nDấu bằng xảy ra khi $(x+5)(-x-11)\\ge0\\Rightarrow -11\\le x\\le-5$.\nVậy GTNN của $A$ là $6$ khi $-11\\le x\\le-5$."
+ },
+ {
+  "ma_cau": "077020101033",
+  "loai": "tra_loi_ngan",
+  "de": "Xác định chu kỳ của số thập phân vô hạn tuần hoàn dưới đây và viết gọn số thập phân đó bằng cách sử dụng chu kỳ: $0,814814814\\ldots$",
+  "dap_an": "814; 0,(814)",
+  "loi_giai": "Chu kỳ: $814$.\nViết gọn: $0,(814)$."
+ },
+ {
+  "ma_cau": "077022220401038",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=6|2x-1|-4$.",
+  "dap_an": "-4",
+  "loi_giai": "Ta có: $|2x-1|\\ge0$.\n$\\Rightarrow 6|2x-1|\\ge0$.\n$\\Rightarrow 6|2x-1|-4\\ge0-4$.\n$\\Rightarrow A\\ge-4$.\nDấu bằng xảy ra khi $|2x-1|=0\\Rightarrow 2x-1=0\\Rightarrow x=\\dfrac{1}{2}$.\nVậy GTNN của biểu thức $A$ là $-4$ khi $x=\\dfrac{1}{2}$."
+ },
+ {
+  "ma_cau": "T107020501041",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|x+2|+|x-5|=\\dfrac{7}{(x-1)^2+1}$.",
+  "dap_an": "1",
+  "loi_giai": "$|x+2|+|x-5|=\\dfrac{7}{(x-1)^2+1}$\nXét VT:\n$|x+2+x-5|=|x+2|+|5-x|\\ge|x+2+5-x|=7$.\nXét VP:\n$(x-1)^2\\ge0$\n$\\Rightarrow (x-1)^2+1\\ge1$\n$\\Rightarrow \\dfrac{7}{(x-1)^2+1}\\le\\dfrac{7}{1}=7$.\nVậy VT$\\ge7$, VP$\\le7\\Rightarrow |x+2|+|x-5|=\\dfrac{7}{(x-1)^2+1}=7$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array} {1}(x+2)(5-x)\\ge0\\\\(x-\n1)^2=0\\end{array}\\right.\\Rightarrow x=1$.\nVậy $x=1$."
+ },
+ {
+  "ma_cau": "07702220301030",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{113};|-10,5|;10,3;\\left|-\\dfrac{53}{5}\\right|;\\sqrt{110}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "10,3;\\sqrt{110};|-10,5|;\\left|-\\dfrac{53}{5}\\right|;\\sqrt{113}",
+  "loi_giai": "Ta có: $|-10,5|=10,5$; $\\left|-\\dfrac{53}{5}\\right|=\\dfrac{53}{5}=10,6$.\nMà $10,3=\\sqrt{106,09}$; $10,5=\\sqrt{110,25}$. Vì $\\sqrt{106,09}<\\sqrt{110}<\\sqrt{110,25}$ nên $10,3<\\sqrt{110}<10,5<10,6$.\nLại có $10,6=\\sqrt{112,36}<\\sqrt{113}$.\nVậy ta sắp xếp: $10,3;\\sqrt{110};|-10,5|;\\left|-\\dfrac{53}{5}\\right|;\\sqrt{113}$."
+ },
+ {
+  "ma_cau": "0770220201007",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là số hữu tỉ? Số nào là số vô tỉ?: $8,4;\\ 0,(12);\\ -\\sqrt{121};\\ \\sqrt{8};\\ 2,5(3);\\ \\sqrt{21};\\ \\pi$.",
+  "loi_giai": "Số hữu tỉ là: $8,4;0,(12);\\ -\\sqrt{121};2,5(3)$.\nSố vô tỉ là: $\\sqrt{8};\\sqrt{21};\\ \\pi$."
+ },
+ {
+  "ma_cau": "077022220401061",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=3x^2+|y|-1$.",
+  "dap_an": "-1",
+  "loi_giai": "Ta có: $x^2\\ge0$; $|y|\\ge0$.\n$\\Rightarrow 3x^2\\ge0$.\n$\\Rightarrow 3x^2+|y|-1\\ge0+0-1$.\n$\\Rightarrow A\\ge-1$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}x=0\\\\y=0\\end{array}\\right.$.\nVậy GTNN của biểu thức $A$ là $-1$ khi $x=0$ và $y=0$."
+ },
+ {
+  "ma_cau": "077022220401075",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $C=(x+2)^2+2\\sqrt{y-4}-1$.",
+  "dap_an": "-1",
+  "loi_giai": "Ta có: $(x+2)^2\\ge0$; $\\sqrt{y-4}\\ge0$.\n$\\Rightarrow (x+2)^2\\ge0$; $2\\sqrt{y-4}\\ge0$.\n$\\Rightarrow (x+2)^2+2\\sqrt{y-4}\\ge0$\n$\\Rightarrow (x+2)^2+2\\sqrt{y-4}-1\\ge-1$\n$\\Rightarrow C\\ge-1$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x+2)^2=0\\\\\\sqrt{y-4}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x+2=0\\\\y-4=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2\\\\y=4\\end{array}\\right.$\nVậy GTNN của biểu thức $C$ là $-1$ khi $x=-2$ và $y=4$."
+ },
+ {
+  "ma_cau": "077022220401064",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=\\dfrac{4}{|x+4|+2}$.",
+  "dap_an": "2",
+  "loi_giai": "Ta có: $|x+4|\\ge0$.\n$\\Rightarrow |x+4|+2\\ge2$.\n$\\Rightarrow \\dfrac{4}{|x+4|+2}\\le\\dfrac{4}{2}$.\n$\\Rightarrow B\\le2$.\nDấu bằng xảy ra khi $|x+4|=0\\Rightarrow x=-4$.\nVậy GTLN của biểu thức $B$ là $2$ khi $x=-4$."
+ },
+ {
+  "ma_cau": "T107020501009",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+1|+|x-7|$.",
+  "dap_an": "8",
+  "loi_giai": "$A=|x+1|+|x-7|$\n$A=|x+1|+|7-x|$\n$A\\ge|x+1+7-x|$\n$A\\ge8$\nDấu bằng xảy ra khi $(x+1)(7-x)\\ge0\\Rightarrow -1\\le x\\le7$.\nVậy GTNN của $A$ là $8$ khi $-1\\le x\\le7$."
+ },
+ {
+  "ma_cau": "077022220401053",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=-(x+2)^2-|y-1|+3$.",
+  "dap_an": "3",
+  "loi_giai": "Ta có: $(x+2)^2\\ge0$; $|y-1|\\ge0$.\n$\\Rightarrow -(x+2)^2\\le0$; $-|y-1|\\le0$.\n$\\Rightarrow -(x+2)^2-|y-1|\\le0$\n$\\Rightarrow -(x+2)^2-|y-1|+3\\le3$\n$\\Rightarrow B\\le3$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x+2)^2=0\\\\|y-1|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x+2=0\\\\y-1=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2\\\\y=1\\end{array}\\right.$\nVậy GTLN của biểu thức $B$ là $3$ khi $x=-2$ và $y=1$."
+ },
+ {
+  "ma_cau": "T107020501030",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+4|+|x+7|$.",
+  "dap_an": "3",
+  "loi_giai": "$A=|x+4|+|x+7|$\n$A=|x+4|+|-x-7|$\n$A\\ge|x+4+(-x-7)|$\n$A\\ge|-3|$\n$A\\ge3$\nDấu bằng xảy ra khi $(x+4)(-x-7)\\ge0\\Rightarrow -7\\le x\\le-4$.\nVậy GTNN của $A$ là $3$ khi $-7\\le x\\le-4$."
+ },
+ {
+  "ma_cau": "077022220401019",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{4}{|x|+5}$.",
+  "dap_an": "\\dfrac{4}{5}",
+  "loi_giai": "Ta có: $|x|\\ge0$.\n$\\Rightarrow |x|+5\\ge5$.\n$\\Rightarrow \\dfrac{4}{|x|+5}\\le\\dfrac{4}{5}$.\n$\\Rightarrow A\\le\\dfrac{4}{5}$.\nDấu bằng xảy ra khi $|x|=0\\Rightarrow x=0$.\nVậy GTLN của biểu thức $A$ là $\\dfrac{4}{5}$ khi $x=0$."
+ },
+ {
+  "ma_cau": "077022220401044",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=(x-1)^2+(2y+6)^4-15$.",
+  "dap_an": "-15",
+  "loi_giai": "Ta có: $(x-1)^2\\ge0$; $(2y+6)^4\\ge0$.\n$\\Rightarrow (x-1)^2+(2y+6)^4\\ge0$.\n$\\Rightarrow (x-1)^2+(2y+6)^4-15\\ge0-15$.\n$\\Rightarrow B\\ge-15$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(x-1)^2=0\\\\(2y+6)^4=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x-1=0\\\\2y+6=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=1\\\\y=-3\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-15$ khi $x=1$ và $y=-3$."
+ },
+ {
+  "ma_cau": "077022220401067",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=\\dfrac{9}{|x|+9}$.",
+  "dap_an": "1",
+  "loi_giai": "Ta có: $|x|\\ge0$.\n$\\Rightarrow |x|+9\\ge9$.\n$\\Rightarrow \\dfrac{9}{|x|+9}\\le\\dfrac{9}{9}$.\n$\\Rightarrow B\\le1$.\nDấu bằng xảy ra khi $|x|=0\\Rightarrow x=0$.\nVậy GTLN của biểu thức $B$ là $1$ khi $x=0$."
+ },
+ {
+  "ma_cau": "07702220301027",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{76};|-8,6|;8,5;\\left|-\\dfrac{87}{10}\\right|;\\sqrt{73}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "8,5;\\sqrt{73};|-8,6|;\\left|-\\dfrac{87}{10}\\right|;\\sqrt{76}",
+  "loi_giai": "Ta có: $|-8,6|=8,6$; $\\left|-\\dfrac{87}{10}\\right|=\\dfrac{87}{10}=8,7$.\nMà $8,5=\\sqrt{72,25}$; $8,6=\\sqrt{73,96}$. Vì $\\sqrt{72,25}<\\sqrt{73}<\\sqrt{73,96}$ nên $8,5<\\sqrt{73}<8,6<8,7$.\nLại có $8,7=\\sqrt{75,69}<\\sqrt{76}$.\nVậy ta sắp xếp: $8,5;\\sqrt{73};|-8,6|;\\left|-\\dfrac{87}{10}\\right|;\\sqrt{76}$."
+ },
+ {
+  "ma_cau": "077022220401009",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=10-\\sqrt{x-4}$.",
+  "dap_an": "10",
+  "loi_giai": "Ta có: $\\sqrt{x-4}\\ge0$.\n$\\Rightarrow -\\sqrt{x-4}\\le0$.\n$\\Rightarrow10-\\sqrt{x-4}\\le10+0$.\n$\\Rightarrow A\\le10$.\nDấu bằng xảy ra khi $\\sqrt{x-4}=0\\Rightarrow x-4=0\\Rightarrow x=4$.\nVậy GTLN của biểu thức $A$ là $10$ khi $x=4$."
+ },
+ {
+  "ma_cau": "077020101027",
+  "loai": "tra_loi_ngan",
+  "de": "Xác định chu kỳ của số thập phân vô hạn tuần hoàn dưới đây và viết gọn số thập phân đó bằng cách sử dụng chu kỳ: $0,444444\\ldots$",
+  "dap_an": "4; 0,(4)",
+  "loi_giai": "Chu kỳ: $4$.\nViết gọn: $0,(4)$."
+ },
+ {
+  "ma_cau": "077022220401023",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $B=\\sqrt{x-4}+(2y-6)^2-10$.",
+  "dap_an": "-10",
+  "loi_giai": "Ta có: $\\sqrt{x-4}\\ge0$; $(2y-6)^2\\ge0$.\n$\\Rightarrow \\sqrt{x-4}+(2y-6)^2\\ge0$.\n$\\Rightarrow \\sqrt{x-4}+(2y-6)^2-10\\ge0-10$.\n$\\Rightarrow B\\ge-10$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}\\sqrt{x-4}=0\\\\(2y-6)^2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x-4=0\\\\2y-6=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=4\\\\y=3\\end{array}\\right.$\nVậy GTNN của biểu thức $B$ là $-10$ khi $x=4$ và $y=3$."
+ },
+ {
+  "ma_cau": "077022220401066",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=\\dfrac{5}{|2x+6|+1}$.",
+  "dap_an": "5",
+  "loi_giai": "Ta có: $|2x+6|\\ge0$.\n$\\Rightarrow |2x+6|+1\\ge1$.\n$\\Rightarrow \\dfrac{5}{|2x+6|+1}\\le\\dfrac{5}{1}$.\n$\\Rightarrow B\\le5$.\nDấu bằng xảy ra khi $|2x+6|=0\\Rightarrow 2x+6=0\\Rightarrow x=-3$.\nVậy GTLN của biểu thức $B$ là $5$ khi $x=-3$."
+ },
+ {
+  "ma_cau": "077022220401008",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=25-\\sqrt{3x+6}$.",
+  "dap_an": "25",
+  "loi_giai": "Ta có: $\\sqrt{3x+6}\\ge0$.\n$\\Rightarrow -\\sqrt{3x+6}\\le0$.\n$\\Rightarrow25-\\sqrt{3x+6}\\le25+0$.\n$\\Rightarrow A\\le25$.\nDấu bằng xảy ra khi $\\sqrt{3x+6}=0\\Rightarrow 3x+6=0\\Rightarrow x=-2$.\nVậy GTLN của biểu thức $A$ là $25$ khi $x=-2$."
+ },
+ {
+  "ma_cau": "077022220401027",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=4-|5x-2|-|3y+12|$.",
+  "dap_an": "4",
+  "loi_giai": "Ta có: $|5x-2|\\ge0$; $|3y+12|\\ge0$.\n$\\Rightarrow -|5x-2|-|3y+12|\\le0$.\n$\\Rightarrow 4-|5x-2|-|3y+12|\\le4+0$.\n$\\Rightarrow A\\le4$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}|5x-2|=0\\\\|3y+12|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}5x-2=0\\\\3y+12=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=\\dfrac{2}{5}\\\\y=-4\\end{array}\\right.$\nVậy GTLN của biểu thức $A$ là $4$ khi $x=\\dfrac{2}{5}$ và $y=-4$."
+ },
+ {
+  "ma_cau": "07702220301003",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $4;\\sqrt{19};-5,4;\\dfrac{17}{4};\\sqrt{24}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "-5,4;4;\\dfrac{17}{4};\\sqrt{19};\\sqrt{24}",
+  "loi_giai": "Ta có:\n$-5,4<4$.\n$4=\\dfrac{16}{4}<\\dfrac{17}{4}$.\n$\\dfrac{17}{4}=\\sqrt{\\dfrac{289}{16}}<\\sqrt{19}$.\nMà $19<24$ nên $\\sqrt{19}<\\sqrt{24}$.\nVậy ta sắp xếp: $-5,4;4;\\dfrac{17}{4};\\sqrt{19};\\sqrt{24}$."
+ },
+ {
+  "ma_cau": "0770220201011",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là số hữu tỉ? Số nào là số vô tỉ?: $7,125;\\ 2,(1);\\ -\\sqrt{169};\\ \\sqrt{18};0,4(7);\\ \\sqrt{29};\\ \\pi$.",
+  "loi_giai": "Số hữu tỉ là: $7,125;\\ 2,(1);\\ -\\sqrt{169};0,4(7)$.\nSố vô tỉ là: $\\sqrt{18};\\ \\sqrt{29};\\ \\pi$."
+ }
+]

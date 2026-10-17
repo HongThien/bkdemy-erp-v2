@@ -1,0 +1,571 @@
+[
+ {
+  "ma_cau": "T112010102208",
+  "loai": "trac_nghiem",
+  "de": "Cho $y=f\\left(x\\right)$ có $f'\\left(x\\right)=x\\left(x-2\\right),\\forall x\\in \\mathbb{R}$. Hàm số $y=f\\left(x\\right)$ nghịch biến trên khoảng nào?",
+  "lua_chon": [
+   "$\\left(0;2\\right)$.",
+   "$\\left(2;+\\infty \\right)$.",
+   "$\\left(-\\infty;0\\right)$.",
+   "$\\left(0;+\\infty \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=x\\left(x-2\\right)$, suy ra $f'\\left(x\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=0 \\\\ x=2. \\end{array}\\right.$\nBảng xét dấu của $f'\\left(x\\right)$:\nDựa vào bảng xét dấu, ta thấy $f'\\left(x\\right)<0$ với mọi $x\\in \\left(0;2\\right)$.\nVậy hàm số nghịch biến trên khoảng $\\left(0;2\\right)$.",
+  "A": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  },
+  "B": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112010102051",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=5x^{2}+1$, $\\forall x\\in \\mathbb{R}$. Mệnh đề nào dưới đây là đúng?",
+  "lua_chon": [
+   "$f\\left(-1\\right)\\ge f\\left(1\\right)$.",
+   "$f\\left(-1\\right)<f\\left(1\\right)$.",
+   "$f\\left(-1\\right)>f\\left(1\\right)$.",
+   "$f\\left(-1\\right)=f\\left(1\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $f'\\left(x\\right)=5x^{2}+1>0$ với mọi $x\\in \\mathbb{R}$ (vì $x^{2}\\ge 0\\Rightarrow 5x^{2}+1\\ge 1>0$).\nDo đó, hàm số $y=f\\left(x\\right)$ đồng biến trên $\\mathbb{R}$.\nVì $-1<1$ nên theo định nghĩa hàm số đồng biến, ta có $f\\left(-1\\right)<f\\left(1\\right)$.",
+  "A": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  },
+  "B": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112010102195",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm trên $\\mathbb{R}$ thoả mãn $f'\\left(x\\right)=-x^{2}+5x-4$. Hàm số đã cho nghịch biến trên khoảng nào trong các khoảng dưới đây?",
+  "lua_chon": [
+   "$\\left(-\\infty;4\\right)$.",
+   "$\\left(5;+\\infty \\right)$.",
+   "$\\left(-\\infty;+\\infty \\right)$.",
+   "$\\left(1;4\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=-x^{2}+5x-4$.\nGiải phương trình $f'\\left(x\\right)=0\\Leftrightarrow -x^{2}+5x-4=0\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=4. \\end{array}\\right.$\nBảng xét dấu của $f'\\left(x\\right)$:\nTừ bảng xét dấu, ta thấy $f'\\left(x\\right)<0$ với mọi $x\\in \\left(-\\infty;1\\right)$ và $x\\in \\left(4;+\\infty \\right)$.\nDo đó, hàm số nghịch biến trên các khoảng $\\left(-\\infty;1\\right)$ và $\\left(4;+\\infty \\right)$.\nVì $\\left(5;+\\infty \\right)\\subset \\left(4;+\\infty \\right)$ nên hàm số đã cho nghịch biến trên khoảng $\\left(5;+\\infty \\right)$.",
+  "A": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  },
+  "B": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112010102099",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=-x+1$ với mọi $x\\in \\mathbb{R}$. Hàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(-\\infty;-1\\right)$.",
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(-\\infty;1\\right)$.",
+   "$\\left(-1;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định: $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=-x+1$; $f'\\left(x\\right)=0\\Leftrightarrow x=1$.\nBảng xét dấu $f'\\left(x\\right)$:\nTa thấy $f'\\left(x\\right)<0$ với mọi $x\\in \\left(1;+\\infty \\right)$.\nVậy hàm số đã cho nghịch biến trên khoảng $\\left(1;+\\infty \\right)$.",
+  "A": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010102103",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ liên tục trên $\\mathbb{R}$ và có đạo hàm $f'\\left(x\\right)=x^{2}\\left(3-x\\right)\\left(x+1\\right)$ với mọi $x\\in \\mathbb{R}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$f\\left(3\\right)>f\\left(4\\right)$.",
+   "$f\\left(2\\right)>f\\left(3\\right)$.",
+   "$f\\left(-1\\right)>f\\left(2\\right)$.",
+   "$f\\left(-2\\right)<f\\left(-1\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $f'\\left(x\\right)=x^{2}\\left(3-x\\right)\\left(x+1\\right)$.\nCho $f'\\left(x\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=-1 \\\\ x=0 \\\\ x=3. \\end{array}\\right.$\nBảng xét dấu của $f'\\left(x\\right)$:\nDựa vào bảng xét dấu: - Trên khoảng $\\left(3;+\\infty \\right)$, ta có $f'\\left(x\\right)<0$ nên hàm số nghịch biến trên khoảng $\\left(3;+\\infty \\right)$. Do $3<4$ nên $f\\left(3\\right)>f\\left(4\\right)$.\n- Trên khoảng $\\left(-1;3\\right)$, ta có $f'\\left(x\\right)\\ge 0$ và $f'\\left(x\\right)=0$ tại $x=0$ nên hàm số đồng biến trên $\\left(-1;3\\right)$. Do đó $f\\left(2\\right)<f\\left(3\\right)$ và $f\\left(-1\\right)<f\\left(2\\right)$.\n- Trên khoảng $\\left(-\\infty;-1\\right)$, ta …",
+  "A": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010102045",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = (x-2)^2(1-x)$ với mọi $x \\in \\mathbb{R}$. Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(1;2)$",
+   "$(1;+\\infty)$",
+   "$(2;+\\infty)$",
+   "$(-\\infty;1)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $f'(x) > 0 \\Leftrightarrow (x-2)^2(1-x) > 0 \\Leftrightarrow \\begin{cases} 1-x > 0 \\\\ (x-2)^2 > 0 \\end{cases} \\Leftrightarrow \\begin{cases} x < 1 \\\\ x \\neq 2 \\end{cases} \\Leftrightarrow x < 1.\nVậy hàm số đồng biến trên khoảng $(-\\infty;1)$.",
+  "A": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  },
+  "B": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112040201021",
+  "loai": "tu_luan",
+  "de": "Khi được thả từ độ cao $20\\ m$, một vật rơi với gia tốc không đổi $a=10\\ m/s^2$. Sau khi rơi được $t$ giây thì vật có tốc độ bao nhiêu?",
+  "dap_an": "20",
+  "loi_giai": "Kí hiệu $v(t)$ là tốc độ của vật, $s(t)$ là quãng đường vật đi được cho đến thời điểm $t$ giây kể từ khi vật bắt đầu rơi.\nVì $a(t)=v'(t)$ với mọi $t\\ge 0$ nên $v(t)=\\int a(t)dt=\\int 10dt=10t+C$.\nTa có $v(0)=0$ nên $10.0+C=0$ hay $C=0$. Vậy $v(t)=10t\\ (m/s)$.\nVì $v(t)=s'(t)$ với mọi $t\\ge 0$ nên $s(t)=\\int v(t)dt=\\int 10t\\ dt=5t^2+C$.\nTa có $s(0)=0$ nên $5.0^2+C=0$ hay $C=0$. Vậy $s(t)=5t^2\\ (m)$.\nVật rơi từ độ cao $20\\ m$ nên $s(t)\\le 20 \\Leftrightarrow 5t^2\\le 20 \\Leftrightarrow 0\\le t\\le 2$ (giây).\nVậy tốc độ vật rơi theo yêu cầu đề bài là $v(2)=20\\ m/s$.",
+  "A": {
+   "id": "NDB00757",
+   "ten": "Tính toán các đại lượng dựa trên các đại lượng đã cho với chuyển động bay/rơi"
+  },
+  "B": {
+   "id": "NDB00749",
+   "ten": "Bài toán thực tế liên quan đến quãng đường, vận tốc, gia tốc"
+  }
+ },
+ {
+  "ma_cau": "T112040201020",
+  "loai": "trac_nghiem",
+  "de": "Một viên đạn được bắn thẳng đứng lên trên từ mặt đất. Giả sử tại thời điểm $t$ giây (coi $t=0$ là thời điểm viên đạn được bắn lên), vận tốc của nó được cho bởi $v(t)=25-9,8t (m/s)$. Độ cao của viên đạn (tính từ mặt đất) đạt giá trị lớn nhất là",
+  "lua_chon": [
+   "$\\dfrac{125}{49}$.",
+   "$\\dfrac{3125}{98}$.",
+   "$\\dfrac{2375}{392}$.",
+   "$\\dfrac{1125}{98}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Gọi $h(t)$ là độ cao của viên đạn bắn lên từ mặt đất sau $t$ giây kể từ thời điểm đạn được bắn lên.\nKhi đó $h(t)=\\int v(t)d(t)=\\int(25-9,8t)d(t)=25t-4,9t^2+C (m)$.\nDo $h(0)=0$ nên $C=0 \\Rightarrow h(t)=-4,9t^2+25t (m)$.\nVây viên đạn đạt độ cao lớn nhất là $h=-\\dfrac{\\Delta}{4a}=\\dfrac{3125}{98} (m)$ khi $t=-\\dfrac{b}{2a}=\\dfrac{125}{49}$ giây.",
+  "A": {
+   "id": "NDB00757",
+   "ten": "Tính toán các đại lượng dựa trên các đại lượng đã cho với chuyển động bay/rơi"
+  },
+  "B": {
+   "id": "NDB00749",
+   "ten": "Bài toán thực tế liên quan đến quãng đường, vận tốc, gia tốc"
+  }
+ },
+ {
+  "ma_cau": "T112010101079",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)=ax^{4}+bx^{3}+cx^{2}+dx+e$có đạo hàm $f'\\left(x\\right)$ và đồ thị hàm số $y=f'\\left(x\\right)$ cắt trục hoành tại các điểm có hoành độ $-1,0,2$ như hình bên. Hỏi hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(0;2\\right)$.",
+   "$\\left(-1;0\\right)$.",
+   "$\\left(-\\infty;-1\\right)$.",
+   "$\\left(1;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào đồ thị hàm số $y=f'\\left(x\\right)$, ta thấy $f'\\left(x\\right)>0$ khi $x\\in \\left(-1;0\\right)$ hoặc $x\\in \\left(2;+\\infty \\right)$.\nDo đó hàm số $y=f\\left(x\\right)$ đồng biến trên các khoảng $\\left(-1;0\\right)$ và $\\left(2;+\\infty \\right)$.\nĐối chiếu với các đáp án, ta chọn khoảng $\\left(-1;0\\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  },
+  "B": {
+   "id": "NDB00807",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112010101156",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đạo hàm trên $\\mathbb{R}$ và hàm số $y=f'\\left(x\\right)$ có đồ thị như hình sau\nHàm số $y=f\\left(x\\right)$ đồng biến trên khoảng nào trong các khoảng sau?",
+  "lua_chon": [
+   "$\\left(0;1\\right)$.",
+   "$\\left(0;2\\right)$.",
+   "$\\left(-\\infty;0\\right)$.",
+   "$\\left(1;2\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Từ đồ thị của hàm số $y=f'\\left(x\\right)$, ta thấy $f'\\left(x\\right)>0$ trên các khoảng $\\left(0;1\\right)$ và $\\left(2;+\\infty \\right)$.\nVậy hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng $\\left(0;1\\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  },
+  "B": {
+   "id": "NDB00807",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112010101062",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\dfrac{1}{4}x^{4}+\\dfrac{1}{3}x^{3}-x^{2}$có đồ thị như hình vẽ bên.\nHàm số đã cho đồng biến trên khoảng",
+  "lua_chon": [
+   "$\\left(-\\infty;-2\\right)$.",
+   "$\\left(1;2\\right)$.",
+   "$\\left(-2;1\\right)$.",
+   "$\\left(0;2\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nTa có $y'=x^{3}+x^{2}-2x=x\\left(x-1\\right)\\left(x+2\\right)$.\nGiải $y'=0\\Leftrightarrow \\left[\\begin{array}{l} x=-2 \\\\ x=0 \\\\ x=1. \\end{array}\\right.$\nBảng xét dấu $y'$:\nSuy ra hàm số đồng biến trên các khoảng $\\left(-2;0\\right)$ và $\\left(1;+\\infty \\right)$.\nVì $\\left(1;2\\right)\\subset \\left(1;+\\infty \\right)$ nên hàm số đồng biến trên khoảng $\\left(1;2\\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  },
+  "B": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010102101",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $f\\left(x\\right)=2\\sin x-x$trên đoạn $\\left[-\\pi;\\pi \\right]$.",
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Hàm số đã cho có đạo hàm là $f'\\left(x\\right)=2\\cos x-1$.\n\nXét phương trình $f'\\left(x\\right)=0\\Leftrightarrow 2\\cos x-1=0\\Leftrightarrow \\cos x=\\dfrac{1}{2}$.\n\nTrên đoạn $\\left[-\\pi;\\pi \\right]$, phương trình có đúng hai nghiệm là $x=-\\dfrac{\\pi }{3}$ và $x=\\dfrac{\\pi }{3}$.",
+    "noi_dung": "Phương trình $f'\\left(x\\right)=0$ có hai nghiệm trên đoạn $\\left[-\\pi;\\pi \\right]$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Tọa độ hai điểm cực trị của đồ thị hàm số là $A\\left(-\\dfrac{\\pi }{3};-\\sqrt{3}+\\dfrac{\\pi }{3}\\right)$ và $B\\left(\\dfrac{\\pi }{3};\\sqrt{3}-\\dfrac{\\pi }{3}\\right)$.\n\nKhoảng cách giữa hai điểm cực trị là\n\n$AB=\\sqrt{\\left(\\dfrac{2\\pi }{3}\\right)^{2}+\\left(2\\sqrt{3}-\\dfrac{2\\pi }{3}\\right)^{2}}\\approx 2,5.$",
+    "noi_dung": "Khoảng cách giữa hai điểm cực trị của đồ thị hàm số trên đoạn $\\left[-\\pi;\\pi \\right]$ là $2,5$ (kết quả làm tròn đến hàng phần mười)"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Ta có $f'\\left(x\\right)=\\left(2\\sin x-x\\right)'=2\\cos x-1$.",
+    "noi_dung": "Hàm số đã cho có đạo hàm là $f'\\left(x\\right)=2\\cos x-1$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Bảng biến thiên của hàm số $f\\left(x\\right)$ trên đoạn $\\left[-\\pi;\\pi \\right]$:\n\nCăn cứ bảng biến thiên, khi đi qua điểm $x=-\\dfrac{\\pi }{3}$, đạo hàm $f'\\left(x\\right)$ đổi dấu từ âm sang dương nên $x=-\\dfrac{\\pi }{3}$ là điểm cực tiểu của hàm số.\n\nKhi đi qua điểm $x=\\dfrac{\\pi }{3}$, đạo hàm $f'\\left(x\\right)$ đổi dấu từ dương sang âm nên $x=\\dfrac{\\pi }{3}$ là điểm cực đại của hàm số.\n\nVậy điểm cực đại của hàm số $f\\left(x\\right)$ trên đoạn $\\left[-\\pi;\\pi \\right]$ là $x=\\dfrac{\\pi }{3}$, do đó mệnh đề đã cho là sai.",
+    "noi_dung": "Điểm cực đại của hàm số $f\\left(x\\right)$ trên đoạn $\\left[-\\pi;\\pi \\right]$ là $x=-\\dfrac{\\pi }{3}$"
+   }
+  ],
+  "A": {
+   "id": "NDB00811",
+   "ten": "Tìm cực trị của hàm số cho trước"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010104025",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=\\left(-x+2\\right)\\left(x+1\\right)$ với mọi $x\\in \\mathbb{R}$. Hàm số $f\\left(x-3\\right)$ đồng biến trên bao nhiêu khoảng?",
+  "loi_giai": "Đặt $g\\left(x\\right)=f\\left(x-3\\right)$.\nTập xác định của hàm số là $D=\\mathbb{R}$.\nTa có đạo hàm:\n$g'\\left(x\\right)=\\left(x-3\\right)'\\cdot f'\\left(x-3\\right)=f'\\left(x-3\\right)=(-\\left(x-3\\right)+2)(\\left(x-3\\right)+1)=\\left(5-x\\right)\\left(x-2\\right).$\nCho $g'\\left(x\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=2 \\\\ x=5. \\end{array}\\right.$\nBảng biến thiên của hàm số $g\\left(x\\right)$:\nDựa vào bảng biến thiên, hàm số $g\\left(x\\right)=f\\left(x-3\\right)$ đồng biến trên khoảng $\\left(2;5\\right)$.\nVậy hàm số $f\\left(x-3\\right)$ đồng biến trên đúng $1$ khoảng.",
+  "A": {
+   "id": "NDB00807",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f'"
+  },
+  "B": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112040201008",
+  "loai": "trac_nghiem",
+  "de": "Một viên đạn được bắn thẳng đứng lên trên từ độ cao $1m$. Giả sử tại thời điểm $t$ giây (coi $t = 0$ là thời điểm viên đạn được bắn lên), vận tốc của nó được cho bởi $v(t) = 25 - 9,8t$ ($m/s$). Độ cao của viên đạn (tính từ mặt đất) đạt giá trị lớn nhất là",
+  "lua_chon": [
+   "$\\dfrac{125}{49}$.",
+   "$\\dfrac{3223}{98}$.",
+   "$\\dfrac{3375}{98}$.",
+   "$\\dfrac{3225}{98}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Gọi $h(t)$ là độ cao của viên đạn bắn lên từ mặt đất sau $t$ giây kể từ thời điểm đạn được bắn lên.\nKhi đó $h(t) = \\int v(t) \\ dt = \\int (25 - 9,8t) \\ dt = 25t - 4,9t^2 + C \\ (m)$.\nDo $h(0) = 1$ nên $C = 1 \\Rightarrow h(t) = -4,9t^2 + 25t + 1 \\ (m)$.\nVậy viên đạn đạt độ cao lớn nhất là $h = -\\dfrac{\\Delta}{4a} = \\dfrac{3223}{98} \\ (m)$ khi $t = -\\dfrac{b}{2a} = \\dfrac{125}{49}$ giây.",
+  "A": {
+   "id": "NDB00757",
+   "ten": "Tính toán các đại lượng dựa trên các đại lượng đã cho với chuyển động bay/rơi"
+  },
+  "B": {
+   "id": "NDB00749",
+   "ten": "Bài toán thực tế liên quan đến quãng đường, vận tốc, gia tốc"
+  }
+ },
+ {
+  "ma_cau": "T112010202188",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ xác định và liên tục trên khoảng $\\left(-\\infty;+\\infty \\right)$, có bảng biến thiên như hình sau:\nMệnh đề nào sau đây đúng ?",
+  "lua_chon": [
+   "Hàm số nghịch biến trên khoảng $\\left(-\\infty;-1\\right)$.",
+   "Hàm số nghịch biến trên khoảng $\\left(-\\infty;2\\right)$.",
+   "Hàm số đồng biến trên khoảng $\\left(1;+\\infty \\right)$.",
+   "Hàm số đồng biến trên khoảng $\\left(-1;+\\infty \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Từ bảng biến thiên, ta thấy $y'>0$ trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(1;+\\infty \\right)$.\nSuy ra hàm số đồng biến trên các khoảng $\\left(-\\infty;-1\\right)$ và $\\left(1;+\\infty \\right)$.\nĐối chiếu với các phương án, mệnh đề đúng là hàm số đồng biến trên khoảng $\\left(1;+\\infty \\right)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00812",
+   "ten": "Tìm cực trị qua bảng biến thiên hoặc đồ thị hàm số"
+  },
+  "B": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112050202001",
+  "loai": "tu_luan",
+  "de": "Cho số thực $a>1$, tính tích phân $\\int_{0}^{a}|x-1|dx$ theo $a$.",
+  "dap_an": "$$\\dfrac{a^{2}}{2}-a+1$$",
+  "loi_giai": "Ta có hàm số $f(x)=x-1$ có một nguyên hàm $F(x)=\\dfrac{x^{2}}{2}-x$\nTa lại có $\\int_{0}^{a}|x-1|dx=\\int_{0}^{1}|x-1|dx+\\int_{1}^{a}|x-1|dx=\\int_{0}^{1}-(x-1)dx+\\int_{1}^{a}(x-1)dx$\n$=F(0)-F(1)+F(a)-F(1)=\\dfrac{a^{2}}{2}-a+1$.",
+  "A": {
+   "id": "NDB00627",
+   "ten": "Tích phân hàm số có chứa giá trị tuyệt đối"
+  },
+  "B": {
+   "id": "NDB00628",
+   "ten": "Tích phân hàm số nhiều dạng trên đừng đoạn"
+  }
+ },
+ {
+  "ma_cau": "T112010302019",
+  "loai": "trac_nghiem",
+  "de": "(Cụm trường Nguyễn Hiền - Lê Hồng Phong - Quảng Nam 2025) Cho hàm số $y=f(x)$ có đồ thị như hình bên dưới. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "Đồ thị hàm số có tiệm cận đứng $x=0$, không có tiệm cận ngang.",
+   "Đồ thị hàm số có tiệm cận ngang $y=0$, có tiệm cận đứng $X=1$.",
+   "Đồ thị hàm số có tiệm cận ngang $y=0$, không có tiệm cận đứng.",
+   "Đồ thị hàm số có tiệm cận đứng $x=0$, tiệm cận ngang $y=1$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nDựa vào đồ thị ta thấy đồ thị hàm số có tiệm cận đứng là trục $Ox: x=0$, tiệm cận ngang $y=1$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00621",
+   "ten": "Tìm tiệm cận khi biết đồ thị hoặc bảng biến thiên"
+  },
+  "B": {
+   "id": "NDB00623",
+   "ten": "Tìm tiệm cận đứng khi biết đồ thị và bảng thiến thiên"
+  }
+ },
+ {
+  "ma_cau": "T112010102135",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có đạo hàm $f'\\left(x\\right)=x^{2}+2x-3$, $\\forall x\\in \\mathbb{R}$. Có bao nhiêu giá trị nguyên của tham số $m$ thuộc đoạn $\\left[-10;20\\right]$ để hàm số $g\\left(x\\right)=f(x^{2}+3x-m)+m^{2}+1$ đồng biến trên khoảng $\\left(0;2\\right)$?",
+  "dap_an": "18",
+  "loi_giai": "Ta có $f'\\left(t\\right)=t^{2}+2t-3=\\left(t-1\\right)\\left(t+3\\right)$.\nSuy ra $f'\\left(t\\right)\\ge 0\\Leftrightarrow \\left[\\begin{array}{l} t\\ge 1 \\\\ t\\le -3. \\end{array}\\right.$\nĐạo hàm của hàm số $g\\left(x\\right)$ là:\n$g'\\left(x\\right)=\\left(2x+3\\right)f'\\left(x^{2}+3x-m\\right).$\nVới mọi $x\\in \\left(0;2\\right)$, ta có $2x+3>0$.\nDo đó, hàm số $g\\left(x\\right)$ đồng biến trên khoảng $\\left(0;2\\right)$ khi và chỉ khi\n$g'\\left(x\\right)\\ge 0,\\forall x\\in \\left(0;2\\right)\\Leftrightarrow f'\\left(x^{2}+3x-m\\right)\\ge 0,\\forall x\\in \\left(0;2\\right).$\nĐiều này tương đương với:\n$\\left[\\begin{array}{l} x^{2}+3x-m\\ge 1,\\forall x\\in \\left(0;2\\right) \\\\ x^{2}+3x-m\\le -3,\\forall x\\in \\left(0;2\\right) \\end{ …",
+  "A": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  },
+  "B": {
+   "id": "NDB00806",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết hàm f'"
+  }
+ },
+ {
+  "ma_cau": "T112010102193",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$ có bảng biến thiên như sau:\nKhẳng định nào sau đây sai",
+  "lua_chon": [
+   "$f\\left(-1\\right)<f\\left(0\\right)$.",
+   "$f\\left(3\\right)<f\\left(4\\right)$.",
+   "$f\\left(2\\right)<f\\left(3\\right)$.",
+   "$f\\left(-2\\right)<f\\left(-1\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dựa vào bảng biến thiên, trên khoảng $\\left(-\\infty;-1\\right)$ ta có $y'<0$ nên hàm số nghịch biến.\nVì $-2<-1$ nên $f\\left(-2\\right)>f\\left(-1\\right)$.\nDo đó khẳng định $f\\left(-2\\right)<f\\left(-1\\right)$ là sai.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010102187",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)$ xác định trên $\\mathbb{R}$ và có bảng xét dấu đạo hàm $f'\\left(x\\right)$ như sau:\nKhẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$f\\left(-1\\right)>f\\left(3\\right)$.",
+   "$f\\left(6\\right)>f\\left(8\\right)$.",
+   "$f\\left(-3\\right)>f\\left(-1\\right)$.",
+   "$f\\left(5\\right)<f\\left(6\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Dựa vào bảng xét dấu của đạo hàm $f'\\left(x\\right)$, ta có:\nTrên khoảng $\\left(-1;6\\right)$, $f'\\left(x\\right)<0$ nên hàm số $f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-1;6\\right)$.\nVì $-1<3<6$ nên $f\\left(-1\\right)>f\\left(3\\right)$, do đó khẳng định $f\\left(-1\\right)>f\\left(3\\right)$ là đúng.\nMặt khác:\nTrên khoảng $\\left(6;+\\infty \\right)$, $f'\\left(x\\right)>0$ nên hàm số đồng biến, suy ra $f\\left(6\\right)<f\\left(8\\right)$ (phương án B sai).\nTrên khoảng $\\left(-\\infty;-1\\right)$, $f'\\left(x\\right)>0$ nên hàm số đồng biến, suy ra $f\\left(-3\\right)<f\\left(-1\\right)$ (phương án C sai).\nTrên khoảng $\\left(-1;6\\right)$, do hàm số nghịch biến nên với $5<6$ suy ra $f\\left(5\\right)>f\\left(6\\r …",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112050105010",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = f(x)$ có tập xác định là $[-3;3]$ và có đồ thị như hình vẽ. Giá trị của $\\int_{-3}^3 f(x) dx$ bằng",
+  "lua_chon": [
+   "6.",
+   "5.",
+   "12.",
+   "10."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $\\int_{-3}^3 f(x) dx = \\int_{-3}^{-2} f(x) dx + \\int_{-2}^1 f(x) dx + \\int_1^3 f(x) dx = -S_{ABCD} + S_{CDEF} + S_{EFGH}$\n$= -\\dfrac{1}{2}.1.1 + \\dfrac{1}{2}.1.3 + \\dfrac{1}{2}.2.4 = 5$",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00777",
+   "ten": "Tính diện tích hình phẳng trên đồ thị"
+  },
+  "B": {
+   "id": "NDB00755",
+   "ten": "Tích phân của hàm số nhiều dạng cho bởi đồ thị"
+  }
+ },
+ {
+  "ma_cau": "T112010101020",
+  "loai": "trac_nghiem",
+  "de": "Hỏi hàm số $y = 2x^4+1$ đồng biến trên khoảng nào?",
+  "lua_chon": [
+   "$(-\\infty;0)$",
+   "(-1;2)",
+   "$(0;+\\infty)$",
+   "(-2;3)"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$y = 2x^4+1$. Tập xác định: $D = \\mathbb{R}$\nTa có: $y' = 8x^3$; $y'=0 \\Leftrightarrow 8x^3 = 0 \\Leftrightarrow x=0$ suy ra $y(0)=1$\nGiới hạn: $\\lim_{x \\to -\\infty} y = +\\infty$; $\\lim_{x \\to +\\infty} y = +\\infty$\n[bảng biến thiên]\nVậy hàm số đồng biến trên khoảng $(0;+\\infty)$.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010101076",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$xác định, có đạo hàm trên $\\mathbb{R}$ và $f'\\left(x\\right)$ có đồ thị như hình vẽ sau đây\nMệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số $y=f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-\\dfrac{5}{2};-2\\right)$.",
+   "Hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng $\\left(-\\dfrac{1}{2};0\\right)$.",
+   "Hàm số $y=f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-2;+\\infty \\right)$.",
+   "Hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng $\\left(-\\infty;-3\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dựa vào đồ thị hàm số $y=f'\\left(x\\right)$, ta có:\nTrên khoảng $\\left(-\\infty;-3\\right)$, $f'\\left(x\\right)<0\\Rightarrow$ hàm số $y=f\\left(x\\right)$ nghịch biến.\nTrên khoảng $\\left(-3;-2\\right)$, $f'\\left(x\\right)>0\\Rightarrow$ hàm số $y=f\\left(x\\right)$ đồng biến.\nTrên khoảng $\\left(-2;+\\infty \\right)$, $f'\\left(x\\right)\\le 0$ (dấu bằng chỉ xảy ra tại $x=0$) $\\Rightarrow$ hàm số $y=f\\left(x\\right)$ nghịch biến.\nĐối chiếu với các đáp án, ta thấy hàm số nghịch biến trên khoảng $\\left(-2;+\\infty \\right)$ là đúng.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00807",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f'"
+  },
+  "B": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010101190",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$xác định, có đạo hàm trên $\\mathbb{R}$ và $f'\\left(x\\right)$ có đồ thị như hình vẽ bên dưới.\nMệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số $y=f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-2;+\\infty \\right)$.",
+   "Hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng $\\left(-\\dfrac{1}{2};0\\right)$.",
+   "Hàm số $y=f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-\\dfrac{5}{2};-2\\right)$.",
+   "Hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng $\\left(-\\infty;-3\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Dựa vào đồ thị hàm số $y=f'\\left(x\\right)$, ta xác định được dấu của $f'\\left(x\\right)$ trên các khoảng như sau:\nTrên các khoảng $\\left(-\\infty;-3\\right)$ và $\\left(-2;+\\infty \\right)$, phần đồ thị của hàm số $y=f'\\left(x\\right)$ nằm phía dưới trục hoành và tiếp xúc với trục hoành tại $x=0$, do đó $f'\\left(x\\right)\\le 0$ với mọi $x\\in \\left(-\\infty;-3\\right)\\cup \\left(-2;+\\infty \\right)$.\nSuy ra hàm số $y=f\\left(x\\right)$ nghịch biến trên các khoảng $\\left(-\\infty;-3\\right)$ và $\\left(-2;+\\infty \\right)$.\nTrên khoảng $\\left(-3;-2\\right)$, phần đồ thị của hàm số $y=f'\\left(x\\right)$ nằm phía trên trục hoành nên $f'\\left(x\\right)>0$.\nSuy ra hàm số $y=f\\left(x\\right)$ đồng biến trên khoảng $\\le …",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00807",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f'"
+  },
+  "B": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010102214",
+  "loai": "dung_sai",
+  "de": "Cho hàm số $f\\left(x\\right)=\\dfrac{x^{2}-4x+6}{x-2}$ có đồ thị $\\left(C\\right)$.",
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Điểm cực tiểu của hàm số là $x=2+\\sqrt{2}$, còn $2\\sqrt{2}$ là giá trị cực tiểu của hàm số.",
+    "noi_dung": "Điểm cực tiểu của hàm số là $2\\sqrt{2}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là\n\n$y=\\dfrac{\\left(x^{2}-4x+6\\right)'}{\\left(x-2\\right)'}=2x-4.$\n\nThay toạ độ điểm $M\\left(1;-2\\right)$ vào phương trình đường thẳng ta được $-2=2\\left(1\\right)-4$ (thỏa mãn).\n\nVậy đường thẳng đi qua hai điểm cực trị đi qua điểm $M\\left(1;-2\\right)$.",
+    "noi_dung": "Phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số đi qua điểm $M\\left(1;-2\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T112000000",
+    "loi_giai": "Căn cứ vào bảng biến thiên, giá trị cực đại của hàm số là $y_{CD}=f\\left(2-\\sqrt{2}\\right)=-2\\sqrt{2}$.",
+    "noi_dung": "Giá trị cực đại của hàm số là $-2\\sqrt{2}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T112000000",
+    "loi_giai": "Khoảng cách giữa hai điểm cực trị $A$ và $B$ là\n\n$AB=\\sqrt{\\left(2\\sqrt{2})^{2}+(4\\sqrt{2}\\right)^{2}}=\\sqrt{8+32}=\\sqrt{40}=2\\sqrt{10}\\ne \\sqrt{10}.$",
+    "noi_dung": "Khoảng cách giữa hai điểm cực trị của đồ thị hàm số đã cho là $\\sqrt{10}$"
+   }
+  ],
+  "A": {
+   "id": "NDB00811",
+   "ten": "Tìm cực trị của hàm số cho trước"
+  },
+  "B": {
+   "id": "NDB00805",
+   "ten": "Xét tính đơn điệu của khi biết hàm số"
+  }
+ },
+ {
+  "ma_cau": "T112010101074",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)$có đạo hàm liên tục trên $\\mathbb{R}$ và có đồ thị hàm số $f'\\left(x\\right)$ là đường cong trong hình bên. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "Hàm số $f\\left(x\\right)$ nghịch biến trên khoảng $\\left(0;2\\right)$.",
+   "Hàm số $f\\left(x\\right)$ nghịch biến trên khoảng $\\left(-1;1\\right)$.",
+   "Hàm số $f\\left(x\\right)$ đồng biến trên khoảng $\\left(1;2\\right)$.",
+   "Hàm số $f\\left(x\\right)$ đồng biến trên khoảng $\\left(-2;1\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Dựa vào đồ thị hàm số $y=f'\\left(x\\right)$, ta thấy: $f'\\left(x\\right)<0$ khi $x\\in \\left(-\\infty;-2\\right)$ hoặc $x\\in \\left(0;2\\right)$.\n$f'\\left(x\\right)>0$ khi $x\\in \\left(-2;0\\right)$ hoặc $x\\in \\left(2;+\\infty \\right)$.\nDo đó, hàm số $y=f\\left(x\\right)$ nghịch biến trên các khoảng $\\left(-\\infty;-2\\right)$ và $\\left(0;2\\right)$; đồng biến trên các khoảng $\\left(-2;0\\right)$ và $\\left(2;+\\infty \\right)$.\nĐối chiếu với các đáp án, ta thấy mệnh đề \" Hàm số $f\\left(x\\right)$ nghịch biến trên khoảng $\\left(0;2\\right)$\" là đúng.",
+  "co_hinh": true,
+  "A": {
+   "id": "NDB00807",
+   "ten": "Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f'"
+  },
+  "B": {
+   "id": "NDB00804",
+   "ten": "Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số"
+  }
+ }
+]
