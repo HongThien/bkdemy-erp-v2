@@ -8,6 +8,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as api from '../../lib/kho/api'
 import type { BaiKho, MoHinhLuyen, YKho } from '../../lib/kho/hinhCay'
 import { MathText } from '../kho/ui'
+import { useNhanXet, NutCanSua, NhanXetCu } from './CanSua'
 
 const TRANG = 30
 const NHO: Record<string, { bai: BaiKho[]; het: boolean; vt: number }> = {}
@@ -46,6 +47,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
   useEffect(() => { cuon.current?.scrollTo({ top: 0 }) }, [vt])           // sang bài khác ⇒ đọc lại từ đầu đề
 
   const b = bai[vt] ?? null
+  const nhanXet = useNhanXet('hinh_bai', 'toan')   // "✎ Cần sửa": bài một màn ⇒ không ẩn, hiện dải chờ sửa + sang bài kế
   const den = useCallback(async (i: number) => {
     if (i < 0) return
     if (i < bai.length) { setVt(i); return }
@@ -114,8 +116,11 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
         <span className="ml-2 text-[12px] text-slate-500">đã duyệt nội dung <b className="text-slate-800">{soDaDuyet}</b>/{bai.length} bài đang nạp{tong ? ` · còn ${tong.so_bai} bài chưa có mô hình` : ''}</span>
         <button onClick={() => { setVt(0); void nap([]) }} className="rounded-md border border-slate-200 px-2 py-0.5 text-[12px] text-slate-500 hover:bg-slate-50" title="Quét lại từ đầu">↻</button>
         {b && (
+          <span className="ml-auto"><NutCanSua doiTuong="hinh_bai" mon="toan" ma={b.id} man={`Duyệt kho › Hình luyện · ${b.ma_bai}`} khau="de"
+            onXong={(t) => { nhanXet.vaNX(t); void den(vt + 1) }} /></span>)}
+        {b && (
           <button onClick={duyetBai} disabled={!!ban}
-            className={`ml-auto h-9 rounded-lg px-4 text-[13.5px] font-semibold shadow-sm disabled:opacity-50 ${daDuyet(b) ? 'border border-slate-300 bg-white text-slate-600' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>
+            className={`h-9 rounded-lg px-4 text-[13.5px] font-semibold shadow-sm disabled:opacity-50 ${daDuyet(b) ? 'border border-slate-300 bg-white text-slate-600' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}>
             {ban === 'bai' ? '⏳…' : daDuyet(b) ? '↩ Bỏ duyệt bài này' : '✓ Duyệt bài → bài kế'}
           </button>)}
       </div>
@@ -129,6 +134,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
         // ⭐ CEO 14/10: HÌNH ĐI THEO Ý — mỗi hàng = (chữ | hình của chính nó). Hình ý = hình riêng của ý (hinh_y.anh_de);
         // ý không dựng thêm ⇒ dùng hình của ý gần nhất phía trước, không có thì hình bài (hinh_bai.anh_de).
         <div ref={cuon} className="min-h-0 flex-1 overflow-auto px-6 py-4">
+          {nhanXet.cua('toan', b.id) && <div className="mb-3"><NhanXetCu hienChoSua t={nhanXet.cua('toan', b.id)} /></div>}
           <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px]">
             <span className="rounded bg-teal-50 px-1.5 py-0.5 font-mono font-semibold text-teal-700">{b.ma_bai}</span>
             <span className="min-w-0 flex-1 truncate text-slate-500" title={b.nguon ?? ''}>{b.nguon ?? 'chưa rõ nguồn'}</span>

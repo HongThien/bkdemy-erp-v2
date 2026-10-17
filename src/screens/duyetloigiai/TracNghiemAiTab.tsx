@@ -15,6 +15,8 @@ import { useLocDang, ChonDang } from './LocDang'
 import { nhanhCuaMon, NHANH_LABEL, listFormTnChoDuyet, duyetFormTn, duyetFormTnBatch, tuChoiFormTn, listMcqRule, mcqMetric, type FormTnChoDuyet, type LuaChonTn, type KhoMon, type McqRule, type McqMetric } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { myNhanSuId } from '../../lib/nhansu'
+import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import type { MonNX } from '../../lib/kho/nhanXet'
 
 const CHU = ['A', 'B', 'C', 'D']
 const PAGE_SIZE_OPTIONS = [20, 50]
@@ -31,6 +33,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
   const [edit, setEdit] = useState<Record<string, LuaChonTn[]>>({})      // id → bản đang sửa
   const [tuChoi, setTuChoi] = useState<Record<string, string>>({})      // id → lý do đang gõ (mở ô từ chối)
   const [thongBao, setThongBao] = useState<string | null>(null)
+  const nhanXet = useNhanXet('form_tn')   // "✎ Cần sửa": form chờ Claude sửa tạm ẩn
   const [page, setPage] = useState(0)
   const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0])
   const [loai, setLoai] = useState<Set<string>>(new Set())              // id bị BỎ CHỌN khỏi lượt "Duyệt tất cả" (không phải Từ chối)
@@ -44,7 +47,8 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
       const [lists, rl, mt] = await Promise.all([
         Promise.all(kho.map((k) => listFormTnChoDuyet(k, khoi))),
         kho.length ? listMcqRule(kho[0]) : Promise.resolve([] as McqRule[]),
-        kho.length ? mcqMetric(kho[0]) : Promise.resolve(null),
+        // metric chỉ là số đo phụ — fn_mcq_metric ~5s, qua phiên thật hay chạm trần 8s ⇒ lỗi KHÔNG được chặn danh sách (17/10)
+        kho.length ? mcqMetric(kho[0]).catch(() => null) : Promise.resolve(null),
       ])
       if (my !== reqId.current) return
       setRows(kho.flatMap((k, i) => lists[i].map((r) => ({ ...r, mon: k }))))
@@ -86,7 +90,9 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
   }
 
   // Lọc theo DẠNG (Thùy 06/10, LocDang.tsx dùng chung mọi tab duyệt) — phân trang chạy trên phần đã lọc
-  const locDang = useLocDang(rows, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang }))
+  const rowsCon = rows.filter((r) => !nhanXet.dangChoSua(r.mon, r.id))
+  const soChoSua = rows.length - rowsCon.length
+  const locDang = useLocDang(rowsCon, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang }))
   const rowsLoc = locDang.loc
   const totalPages = Math.max(1, Math.ceil(rowsLoc.length / pageSize))
   const pageC = Math.min(page, totalPages - 1)
@@ -157,6 +163,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
         : rows.length === 0 ? <p className="text-sm text-slate-400">Không có phiên bản trắc nghiệm nào chờ duyệt ở {mon} khối {khoi}.</p>
         : (
           <ul className="space-y-3">
+            {soChoSua > 0 && <li className="list-none"><DongChoSua n={soChoSua} /></li>}
             {pageRows.map((r) => {
               const lc = edit[r.id] ?? r.lua_chon
               const dangSua = !!edit[r.id]
@@ -183,6 +190,8 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
                         <button onClick={() => setEdit((e) => { const { [r.id]: _, ...rest } = e; return rest })}
                           className="rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-slate-500 ring-1 ring-slate-200">Huỷ sửa</button>
                       )}
+                      <NutCanSua nho doiTuong="form_tn" mon={r.mon as MonNX} ma={r.id} man={`Duyệt kho › Trắc nghiệm AI · câu ${r.ma_cau}`} khau="dap_an"
+                        onXong={(t) => { nhanXet.vaNX(t); bao(`✎ Đã gửi nhận xét form ${r.ma_cau} — chờ Claude sửa`) }} />
                       <button onClick={() => setTuChoi((t) => (moTuChoi ? (({ [r.id]: _, ...rest }) => rest)(t) : { ...t, [r.id]: '' }))} disabled={busy === r.id}
                         className="rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-rose-600 ring-1 ring-rose-200 hover:bg-rose-50">✕ Từ chối</button>
                       <button onClick={() => onDuyet(r)} disabled={busy === r.id}
@@ -191,6 +200,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
                       </button>
                     </div>
                   </div>
+                  {nhanXet.cua(r.mon, r.id) && <div className="mb-3"><NhanXetCu t={nhanXet.cua(r.mon, r.id)} /></div>}
                   <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-5">
                     <div>
                       <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>

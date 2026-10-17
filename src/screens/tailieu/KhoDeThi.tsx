@@ -24,6 +24,8 @@ import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import DeThiPrintView from './DeThiPrintView'
 import { GiaoDeModal, DaGanPanel, LuotThiPanel } from './DuyetDeThi'
+import { useNhanXet, NutCanSua, NhanXetCu } from '../duyetloigiai/CanSua'
+import { monTuKho, type MonNX, type TrangThaiNX } from '../../lib/kho/nhanXet'
 
 const MONS = MON_DE_THI
 // 3 tab đầu = ĐỀ THI (suy động ở DB); tab "Đề cương" = tài liệu ôn tập, tách riêng khỏi đề thi (CEO 10/10, mig 202610102204)
@@ -288,6 +290,10 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   const [msg, setMsg] = useState<{ ok: boolean; t: string } | null>(null)
   const pdfRef = useRef<HTMLInputElement>(null)
   const flash = (ok: boolean, t: string) => { setMsg({ ok, t }); setTimeout(() => setMsg(null), ok ? 2500 : 7000) }
+  // "✎ Cần sửa" (Thùy 17/10): nhận xét cho từng CÂU (không rút khỏi đề — đề giữ cấu trúc) và cho CẢ ĐỀ
+  const nxCau = useNhanXet('cau')
+  const nxDe = useNhanXet('de_thi')
+  const monDe: MonNX = d?.mon === 'KHTN' ? 'khtn' : d?.mon === 'Tiếng Anh' ? 'anh' : d?.mon === 'TSA' ? 'tsa' : 'toan'
 
   // Tải lại CẤU TRÚC (phần + câu) ở nền — giữ nguyên danh sách đang hiện tới khi có bản mới.
   async function taiCau(deMon: string) {
@@ -413,6 +419,8 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
             : <button onClick={() => pdfRef.current?.click()} className="rounded-md border border-dashed border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-500 hover:border-indigo-400">📎 Đính kèm đề gốc</button>}
           <button onClick={() => setPrinting(true)} disabled={!caus?.length} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-700 hover:border-indigo-400 disabled:opacity-40">🖨 In</button>
           <button onClick={() => setGiao(true)} disabled={!caus?.length} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">📱 Giao</button>
+          <NutCanSua doiTuong="de_thi" mon={monDe} ma={id} man={`Kho đề thi › ${ten}`} khau="khac"
+            onXong={(t) => { nxDe.vaNX(t); flash(true, 'Đã gửi nhận xét cho cả đề — chờ Claude sửa') }} />
           <button onClick={duyet} disabled={busy || !thieu || soChan > 0 || !caus?.length}
             title={soChan ? 'Còn câu thiếu đáp án / phương án — bổ sung rồi mới duyệt được' : 'Xác nhận nội dung + đáp án cả đề. Câu đã có dạng vào kho chuẩn.'}
             className="rounded-md bg-emerald-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
@@ -423,6 +431,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
 
       <div className="flex min-h-0 flex-1">
         <div className="min-h-0 min-w-0 flex-1 overflow-auto p-5">
+          {nxDe.cua(monDe, id) && <div className="mb-3"><NhanXetCu hienChoSua t={nxDe.cua(monDe, id)} /></div>}
           <div className="mx-auto max-w-[980px] space-y-5">
             <details className="rounded-xl border border-slate-200 bg-white px-4 py-2.5">
               <summary className="cursor-pointer text-[12.5px] font-medium text-slate-600">Thông tin đề: {[meta.nguon, meta.nam, meta.thoiGianPhut ? `${meta.thoiGianPhut} phút` : null, `thang ${meta.thangDiem}`].filter(Boolean).join(' · ')}</summary>
@@ -468,7 +477,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                             </div>
                           )}
                           {moiNl && <NguLieuBlock nl={nl[maNl!]} />}
-                          <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []} nhan={nhanGoc[c.ma_cau]} nhom={gr ? { y: gr.y, dan: gr.dan } : undefined}
+                          <CauThe nx={nxCau.cua(monTuKho(c.kho), c.ma_cau)} onCanSua={(t) => { nxCau.vaNX(t); flash(true, `Đã gửi nhận xét ${c.ma_cau} — chờ Claude sửa`) }} c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []} nhan={nhanGoc[c.ma_cau]} nhom={gr ? { y: gr.y, dan: gr.dan } : undefined}
                             dau={i === 0} cuoi={i === cs.length - 1}
                             soDong={soDong[c.ma_cau] ?? dongMacDinhDeThi(c.loai_cau)} onSoDong={(n) => datSoDong({ [c.ma_cau]: n })}
                             onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
@@ -556,7 +565,8 @@ function DongCaPhan({ onDat }: { onDat: (n: number) => void }) {
     <ODong value="" onDat={onDat} title="Gõ số rồi Enter: đặt số dòng kẻ cho MỌI câu tự luận / trả lời ngắn của phần này (bản in)" /></label>
 }
 
-function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho }: {
+function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho, nx, onCanSua }: {
+  nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
   c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; nhan?: string; nhom?: { y: string; dan: string }; dau: boolean; cuoi: boolean
   soDong: number; onSoDong: (n: number) => void
   onChonDang: (md: number | null) => void
@@ -584,11 +594,13 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, s
             <ODong value={soDong} onDat={onSoDong} title="Số dòng kẻ để HS viết câu này (bản in) — 0 = không kẻ" /></label>}
           <button disabled={dau} onClick={() => onDoiCho(-1)} title="Đưa lên" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-500 hover:border-indigo-300 disabled:opacity-30">↑</button>
           <button disabled={cuoi} onClick={() => onDoiCho(1)} title="Đưa xuống" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-500 hover:border-indigo-300 disabled:opacity-30">↓</button>
+          {!c.xoa && <NutCanSua nho doiTuong="cau" mon={monTuKho(c.kho)} ma={c.ma_cau} man={`Kho đề thi · ${nhan ?? `câu ${so}`}`} onXong={onCanSua} />}
           {!c.xoa && <button onClick={() => setSoan((v) => !v)} className={`rounded border px-2 py-0.5 text-[12px] font-medium ${soan ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{soan ? 'Đóng sửa' : '✎ Sửa nội dung'}</button>}
           <button onClick={onBo} title="Bỏ khỏi đề (câu vẫn còn trong kho)" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
         </span>
       </div>
 
+      {nx && <div className="mb-2"><NhanXetCu hienChoSua t={nx} /></div>}
       {ghiChu.length > 0 && (
         <ul className="mb-2 space-y-1">
           {ghiChu.map((g, i) => <li key={i} className="rounded-lg bg-sky-50 px-2.5 py-1.5 text-[12.5px] text-sky-900">📝 {g}</li>)}

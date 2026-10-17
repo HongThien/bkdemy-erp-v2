@@ -10,6 +10,8 @@ import {
   KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopDem, khopDich, khopGiao, khopGo, khopHang, khopPhamVi, khopQuyet, khopUngVien,
   type KhopCau, type KhopDem, type KhopDich, type KhopHang, type KhopPhamVi,
 } from '../../lib/kho/bdmKhop'
+import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
@@ -30,6 +32,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const [locCD, setLocCD] = useState(true)   // chỉ câu thuộc CHỦ ĐỀ đang xem trên bản đồ (khi nhúng trong Bản đồ mới)
   const cd = chuDeId && locCD ? chuDeId : null
   const req = useRef(0)
+  const nhanXet = useNhanXet('cau', 'toan')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
 
   const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h) }
 
@@ -115,7 +118,9 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
             </p>
           ) : (
             <ul className="space-y-3">
-              {rows.map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem} />)}
+              {rows.some((c) => nhanXet.dangChoSua('toan', c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua('toan', c.ma_cau)).length} /></li>}
+              {rows.filter((c) => !nhanXet.dangChoSua('toan', c.ma_cau)).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
+                nx={nhanXet.cua('toan', c.ma_cau)} onCanSua={nhanXet.vaNX} />)}
               {tong > rows.length && <li className="py-2 text-center text-[12px] text-slate-400">… còn {tong - rows.length} câu, xong câu trên sẽ tự nạp thêm</li>}
             </ul>
           )}
@@ -124,8 +129,8 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   )
 }
 
-function CauCard({ c, hang, dich, onQuyet, onXem }: {
-  c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void
+function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua }: {
+  c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
   onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi', dangBai?: string | null, lyDo?: string | null) => Promise<void>
 }) {
   const [chon, setChon] = useState<string | null>(null)
@@ -145,7 +150,9 @@ function CauCard({ c, hang, dich, onQuyet, onXem }: {
       <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
         <span className="font-mono text-slate-400">{c.ma_cau}</span>
         {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
+        <span className="ml-auto"><NutCanSua nho doiTuong="cau" mon="toan" ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} /></span>
       </div>
+      {nx && <div className="mb-2"><NhanXetCu t={nx} /></div>}
       <div className="grid gap-3">
         <div className="min-w-0 text-[14px] text-slate-800">
           <MathText>{c.noi_dung}</MathText>

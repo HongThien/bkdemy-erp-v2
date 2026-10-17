@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { listCloneChoDuyet, duyetCloneChoDuyet, tuChoiCloneChoDuyet, tenDangTheoMa, type CloneChoDuyet } from '../../lib/kho/api'
 import { MathText } from './ui'
 import { myNhanSuId } from '../../lib/nhansu'
+import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from '../duyetloigiai/CanSua'
 
 const XEM_TRUOC = 3 // mỗi dạng mở sẵn mấy câu (bấm "xem cả" để mở hết)
 
@@ -35,11 +36,14 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
   useEffect(() => { if (!bao) return; const t = setTimeout(() => setBao(null), 2500); return () => clearTimeout(t) }, [bao])
 
   // nhóm theo dạng, giữ thứ tự xuất hiện (created_at tăng dần)
+  // "✎ Cần sửa" (Thùy 17/10): clone chờ Claude sửa tạm ẩn khỏi hàng
+  const nhanXet = useNhanXet('clone', 'toan')
+  const soChoSua = rows.filter((r) => nhanXet.dangChoSua('toan', r.id)).length
   const nhom = useMemo(() => {
     const m = new Map<string, CloneChoDuyet[]>()
-    for (const r of rows) { if (!m.has(r.dang_chinh)) m.set(r.dang_chinh, []); m.get(r.dang_chinh)!.push(r) }
+    for (const r of rows) { if (nhanXet.dangChoSua('toan', r.id)) continue; if (!m.has(r.dang_chinh)) m.set(r.dang_chinh, []); m.get(r.dang_chinh)!.push(r) }
     return [...m.entries()]
-  }, [rows])
+  }, [rows, nhanXet])
   const boKhoiDs = (id: string) => setRows((prev) => prev.filter((x) => x.id !== id))
 
   async function onDuyet(r: CloneChoDuyet) {
@@ -71,7 +75,8 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-3">
         <button onClick={onClose} className="text-[14px] text-slate-500 hover:text-indigo-600">← Bản đồ kiến thức</button>
         <span className="text-[15px] font-semibold text-slate-800">Câu chờ duyệt</span>
-        <span className="text-[12px] text-slate-400">{rows.length} câu · {nhom.length} dạng — câu clone chưa vào kho</span>
+        <span className="text-[12px] text-slate-400">{rows.length - soChoSua} câu · {nhom.length} dạng — câu clone chưa vào kho</span>
+        <DongChoSua n={soChoSua} />
         {bao && <span className="ml-auto rounded-md bg-emerald-50 px-3 py-1 text-[13px] font-medium text-emerald-700">✓ {bao}</span>}
       </div>
       {loi && <div className="border-b border-rose-200 bg-rose-50 px-6 py-2 text-[13px] text-rose-700">{loi}</div>}
@@ -100,6 +105,7 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
                             {r.parent_ma_cau && <span>clone từ <b className="text-slate-500">{r.parent_ma_cau}</b></span>}
                             <span className="ml-auto">{new Date(r.created_at).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}</span>
                           </div>
+                          {nhanXet.cua('toan', r.id) && <div className="mb-2"><NhanXetCu t={nhanXet.cua('toan', r.id)} /></div>}
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
@@ -117,6 +123,7 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
                             </div>
                           </div>
                           <div className="mt-3 flex justify-end gap-2 border-t border-slate-100 pt-3">
+                            <NutCanSua doiTuong="clone" mon="toan" ma={r.id} man={`Kho › Câu clone chờ duyệt · từ ${r.parent_ma_cau ?? '?'}`} onXong={(t) => { nhanXet.vaNX(t); setBao('Đã gửi nhận xét — chờ Claude sửa') }} />
                             <button onClick={() => onTuChoi(r)} disabled={busyId === r.id || !!lo}
                               className="rounded-md px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>
                             <button onClick={() => onDuyet(r)} disabled={busyId === r.id || !!lo}

@@ -19,6 +19,8 @@ import { MathText, TextAnh, NguLieuBlock, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import { myNhanSuId } from '../../lib/nhansu'
+import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import type { MonNX, TrangThaiNX } from '../../lib/kho/nhanXet'
 
 type Row = CauHangDuyet & { mon: KhoMon }
 // Phần riêng câu Tiếng Anh (ngữ liệu dùng chung + dạng đề + unit) — RPC hàng duyệt dùng chung không trả các cột này.
@@ -54,6 +56,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const [nhanh, setNhanh] = useState<KhoMon | 'all'>('all')
   const [anhThem, setAnhThem] = useState<AnhThem>(KHONG_ANH)
   const reqId = useRef(0)
+  const nhanXet = useNhanXet('cau')   // "✎ Cần sửa": câu chờ Claude sửa tạm ẩn, sửa xong hiện lại kèm nhận xét
 
   async function reload() {
     const my = ++reqId.current
@@ -81,7 +84,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   function xong(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
 
   // Lọc theo chip nhánh; batch 20 câu / lần (CEO 11/09). Sau khi duyệt/từ chối trong batch, câu bị filter khỏi rows → batch tự dịch xuống.
-  const rowsNhanh = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
+  const rowsNhanh = (nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)).filter((r) => !nhanXet.dangChoSua(r.mon, r.ma_cau))
+  const soChoSua = rows.filter((r) => nhanXet.dangChoSua(r.mon, r.ma_cau)).length
   // Lọc theo DẠNG (Thùy 06/10) — lựa chọn = các dạng đang có câu trong hàng duyệt (LocDang.tsx, dùng chung mọi tab duyệt).
   const locDang = useLocDang(rowsNhanh, (r) => layDangLoc(r, loc))
   const rowsShown = locDang.loc
@@ -149,7 +153,9 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
           : rowsShown.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon}{nhanh !== 'all' ? ` · ${NHANH_LABEL[nhanh]}` : ''} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
           : (
             <>
+              <div className="mb-3"><DongChoSua n={soChoSua} /></div>
               <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll}
+                nx={nhanXet.cua(r.mon, r.ma_cau)} onCanSua={(t) => { nhanXet.vaNX(t); bao(`✎ Đã gửi nhận xét ${r.ma_cau} — chờ Claude sửa`); onChanged?.() }}
                 anh={r.mon === 'anh' ? { cau: anhThem.cau[r.ma_cau], nl: anhThem.cau[r.ma_cau]?.ngu_lieu ? anhThem.nguLieu[anhThem.cau[r.ma_cau].ngu_lieu!] : undefined } : undefined} onXong={(msg) => xong(r, msg)}
                 onSua={(s) => { if (s) suaRef.current.set(keyOf(r), s); else suaRef.current.delete(keyOf(r)) }} />)}</ul>
               {rowsShown.length > batch.length && (
@@ -163,7 +169,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
 }
 
 // 1 thẻ duyệt: state sửa cục bộ, so với bản gốc để chỉ gửi key ĐÃ ĐỔI (DB: key vắng = giữ nguyên).
-function The({ r, mon, busyAll, onXong, onSua, anh }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void; anh?: { cau?: CauAnhThem; nl?: NguLieu } }) {
+function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void; anh?: { cau?: CauAnhThem; nl?: NguLieu }; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void }) {
   const laAnh = r.mon === 'anh'
   const Chu = laAnh ? TextAnh : MathText   // câu Anh: chữ thường + gạch chân, không công thức / tự in đậm
   const [de, setDe] = useState(r.noi_dung)
@@ -247,6 +253,7 @@ function The({ r, mon, busyAll, onXong, onSua, anh }: { r: Row; mon: string; bus
         {!r.kho_chuan && <span className="rounded bg-rose-50 px-1.5 py-0.5 text-rose-700" title="Chỗ chọn câu cho HS/ET không lấy câu này tới khi duyệt">ngoài kho chuẩn</span>}
         <span className="text-slate-400">· vào kho {fmtTs(r.created_at)}</span>
         <div className="ml-auto flex items-center gap-1.5">
+          <NutCanSua nho doiTuong="cau" mon={r.mon as MonNX} ma={r.ma_cau} man="Duyệt kho › câu" onXong={onCanSua} />
           <button onClick={() => setTuChoi(tuChoi === null ? '' : null)} disabled={busy || busyAll}
             className="rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>
           {/* Dạng chờ "Chưa phân dạng": thiếu data (dạng thật) ⇒ disable là đúng luật §6; DB cũng chặn (trg_chan_duyet_dang_cho). */}
@@ -257,6 +264,8 @@ function The({ r, mon, busyAll, onXong, onSua, anh }: { r: Row; mon: string; bus
           </button>
         </div>
       </div>
+
+      {nx && <div className="mb-3"><NhanXetCu t={nx} /></div>}
 
       {/* Dạng + cụm — sửa tại chỗ: dạng qua popup tìm kiếm, cụm là pill theo dạng đang chọn */}
       <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">

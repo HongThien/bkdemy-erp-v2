@@ -27,12 +27,13 @@ import { listBienTheChoDuyetLoiGiai, duyetLoiGiaiBienThe, type BienTheChoDuyetLo
 import { MathText } from '../kho/ui'
 import { coKhoHinh } from '../../lib/tailieu'
 import { myNhanSuId } from '../../lib/nhansu'
+import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 import { useMonScope } from '../../hooks/useMonScope'
 import { useStore } from '../../store/useStore'
 
 const HINH_LABEL = { bien_the: 'Hình (biến thể)', bai_toan_goc: 'Hình (bài toán gốc)' }
 const BATCH_SIZE = 20
-type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: string; duyet: () => Promise<void> }
+type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: string; duyet: () => Promise<void>; dt: 'hinh_bien_the' | 'hinh_cach_giai'; id: string }
 // 'tn' = "Trắc nghiệm AI" (spec-mcq-form.md §6, 08/09): phiên bản 4 phương án AI sinh cho câu tính toán — sống ở TracNghiemAiTab.tsx.
 // 'dien' = "Điền ô AI" (spec-dien-o.md, 09/09): lời giải chứng minh hình có ô trống — sống ở DienOAiTab.tsx (chỉ môn Toán, kho hình).
 // 'dung_sai' (CEO 12/09): câu Đúng/Sai là LOẠI RIÊNG — bộ lọc riêng trên thanh tab, UI duyệt theo từng mệnh đề (DuyetDungSaiTab).
@@ -64,6 +65,10 @@ export default function DuyetLoiGiaiScreen() {
   // CŨ trả về SAU có thể ghi đè response MỚI (đã dính thật lúc test 28/08). Chỉ áp kết quả nếu
   // vẫn là request MỚI NHẤT lúc nó resolve xong (CLAUDE.md §2: "React: reset state ngay trước async query").
   const reqId = useRef(0)
+  // "✎ Cần sửa" cho lời giải Hình (biến thể · bài toán gốc) — chờ Claude sửa thì tạm ẩn
+  const nxBienThe = useNhanXet('hinh_bien_the', 'toan')
+  const nxCachGiai = useNhanXet('hinh_cach_giai', 'toan')
+  const nxCua = (r: Row) => (r.dt === 'hinh_bien_the' ? nxBienThe : nxCachGiai)
 
   // Scope④ theo môn — cùng khuôn KhoScreen: chỉ hiện môn được phân; môn đang chọn không được phép → nhảy về môn đầu.
   const me = useStore((s) => s.me)
@@ -106,11 +111,11 @@ export default function DuyetLoiGiaiScreen() {
       if (myReqId !== reqId.current) return
       const tuBienThe = (r: BienTheChoDuyetLoiGiai): Row => ({
         key: `hinh:${r.id}`, nhanh: HINH_LABEL.bien_the, khoi: r.khoi, deBai: r.deBai, loiGiai: r.loiGiai,
-        duyet: () => duyetLoiGiaiBienThe(r.id, nguoiDuyet),
+        duyet: () => duyetLoiGiaiBienThe(r.id, nguoiDuyet), dt: 'hinh_bien_the', id: r.id,
       })
       const tuCachGiai = (r: CachGiaiChoDuyetLoiGiai): Row => ({
         key: `hinh_goc:${r.id}`, nhanh: HINH_LABEL.bai_toan_goc, khoi: r.khoi, deBai: r.deBai, loiGiai: r.loiGiai,
-        duyet: () => duyetLoiGiaiCachGiai(r.id, nguoiDuyet),
+        duyet: () => duyetLoiGiaiCachGiai(r.id, nguoiDuyet), dt: 'hinh_cach_giai', id: r.id,
       })
       setRows([...hinh.map(tuBienThe), ...hinhGoc.map(tuCachGiai)])
     } catch (e: any) { if (myReqId === reqId.current) setErr(e.message ?? String(e)) }
@@ -124,7 +129,8 @@ export default function DuyetLoiGiaiScreen() {
     catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyKey(null) }
   }
   // Batch 20 (CEO 11/09) — cùng nhịp với các tab kho khác.
-  const batchHinh = rows.slice(0, BATCH_SIZE)
+  const rowsHinhCon = rows.filter((r) => !nxCua(r).dangChoSua('toan', r.id))
+  const batchHinh = rowsHinhCon.slice(0, BATCH_SIZE)
   async function onDuyetTatCa() {
     if (!batchHinh.length || !confirm(`Duyệt cả ${batchHinh.length} bài Hình trong batch này? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
@@ -205,17 +211,21 @@ export default function DuyetLoiGiaiScreen() {
           : rows.length === 0 ? <p className="text-sm text-slate-400">Không có bài Hình nào chờ duyệt ở khối {khoi}.</p>
           : (
             <>
+            <div className="mb-3"><DongChoSua n={rows.length - rowsHinhCon.length} /></div>
             <ul className="space-y-3">
               {batchHinh.map((r) => (
                 <li key={r.key} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                   <div className="mb-2 flex items-center gap-2 text-[12px] text-slate-400">
                     <span className="rounded bg-sky-50 px-2 py-0.5 font-medium text-sky-700">{r.nhanh}</span>
                     <span>Khối {r.khoi}</span>
+                    <span className="ml-auto" />
+                    <NutCanSua nho doiTuong={r.dt} mon="toan" ma={r.id} man={`Duyệt kho › Hình · ${r.nhanh}`} onXong={(t) => nxCua(r).vaNX(t)} />
                     <button onClick={() => onDuyet(r)} disabled={busyKey === r.key || busyAll}
-                      className="ml-auto rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+                      className="rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
                       {busyKey === r.key ? '⏳…' : '✓ Duyệt'}
                     </button>
                   </div>
+                  {nxCua(r).cua('toan', r.id) && <div className="mb-3"><NhanXetCu t={nxCua(r).cua('toan', r.id)} /></div>}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
@@ -229,8 +239,8 @@ export default function DuyetLoiGiaiScreen() {
                 </li>
               ))}
             </ul>
-            {rows.length > batchHinh.length && (
-              <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batchHinh.length}</b> bài Hình — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+            {rowsHinhCon.length > batchHinh.length && (
+              <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rowsHinhCon.length - batchHinh.length}</b> bài Hình — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
             )}
             </>
           )}

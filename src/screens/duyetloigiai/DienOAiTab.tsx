@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import { listFormDienChoDuyet, duyetFormDien, tuChoiFormDien, listHinhLyDo, type FormDienChoDuyet, type HinhLyDo } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { myNhanSuId } from '../../lib/nhansu'
+import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 
 const CHU = ['A', 'B', 'C', 'D']
 const BATCH_SIZE = 20
@@ -27,6 +28,7 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
   const [tuChoi, setTuChoi] = useState<Record<string, string>>({})
   const [thongBao, setThongBao] = useState<string | null>(null)
   const reqId = useRef(0)
+  const nhanXet = useNhanXet('form_dien', 'toan')   // "✎ Cần sửa": form chờ Claude sửa tạm ẩn
 
   async function reload() {
     const my = ++reqId.current
@@ -53,7 +55,8 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
   }
 
   // Batch 20 (CEO 11/09).
-  const batch = rows.slice(0, BATCH_SIZE)
+  const rowsCon = rows.filter((r) => !nhanXet.dangChoSua('toan', r.id))
+  const batch = rowsCon.slice(0, BATCH_SIZE)
   async function onDuyetTatCa() {
     if (!batch.length || !confirm(`Duyệt cả ${batch.length} form điền ô trong batch này? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
@@ -78,13 +81,14 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
         : (
           <>
             <div className="mb-3 flex flex-wrap items-center gap-3">
-              <span className="text-[12px] text-slate-500">Batch <b className="text-slate-800">{batch.length}</b>/<b>{rows.length}</b> form</span>
+              <span className="text-[12px] text-slate-500">Batch <b className="text-slate-800">{batch.length}</b>/<b>{rowsCon.length}</b> form</span>
               <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
                 className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
                 {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
               </button>
             </div>
           <ul className="space-y-3">
+            {rows.length > rowsCon.length && <li className="list-none"><DongChoSua n={rows.length - rowsCon.length} /></li>}
             {batch.map((r) => {
               const oByBuoc = new Map(r.o.map((o) => [o.buoc, o]))
               const mo = r.id in tuChoi
@@ -95,6 +99,8 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
                     <span className="font-mono text-slate-500">{r.ma}</span>
                     <span>· khối {r.khoi} · {r.o.length} ô</span>
                     <div className="ml-auto flex items-center gap-1.5">
+                      <NutCanSua nho doiTuong="form_dien" mon="toan" ma={r.id} man={`Duyệt kho › Điền ô AI · ${r.ma}`}
+                        onXong={(t) => { nhanXet.vaNX(t); bao(`✎ Đã gửi nhận xét ${r.ma} — chờ Claude sửa`) }} />
                       <button onClick={() => setTuChoi((t) => (mo ? (({ [r.id]: _, ...rest }) => rest)(t) : { ...t, [r.id]: '' }))} disabled={busy === r.id}
                         className="rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-rose-600 ring-1 ring-rose-200 hover:bg-rose-50">✕ Từ chối</button>
                       <button onClick={() => onDuyet(r)} disabled={busy === r.id}
@@ -133,6 +139,7 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
                       })}
                     </div>
                   </div>
+                  {nhanXet.cua('toan', r.id) && <div className="mt-3"><NhanXetCu t={nhanXet.cua('toan', r.id)} /></div>}
                   {mo && (
                     <div className="mt-3 flex items-center gap-2 rounded-lg bg-rose-50 px-3 py-2">
                       <input autoFocus value={tuChoi[r.id]} onChange={(e) => setTuChoi((t) => ({ ...t, [r.id]: e.target.value }))} onKeyDown={(e) => { if (e.key === 'Enter') onTuChoi(r) }}
