@@ -17,8 +17,8 @@ import MucUuTienCase, { type DoiMucUuTien } from './MucUuTienCase'
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 const KHUNG_GIO = Array.from({ length: (22 - 6) * 2 + 1 }, (_, i) => `${String(6 + Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`)
 // Thùy 24/09: màu nhận diện CHỈ ở tag loại — ô nhỏ tô đặc, chữ trắng (Yếu đỏ · Đuổi xanh da trời · Bù cam). Dòng nền trắng, không tô cả dòng (rối mắt).
-const LOAI_CLS: Record<LoaiBoTro, string> = { yeu: 'bg-rose-600 text-white', duoi: 'bg-sky-600 text-white', bu: 'bg-orange-500 text-white' }
-const LOAI_ROW: Record<LoaiBoTro, string> = { yeu: 'bg-white border-slate-300', duoi: 'bg-white border-slate-300', bu: 'bg-white border-slate-300' } // viền xám rõ (Thùy: không viền nhìn không đẹp)
+const LOAI_CLS: Record<LoaiBoTro, string> = { yeu: 'bg-rose-600 text-white', duoi: 'bg-sky-600 text-white', bu: 'bg-orange-500 text-white', hinh: 'bg-violet-600 text-white' }
+const LOAI_ROW: Record<LoaiBoTro, string> = { yeu: 'bg-white border-slate-300', duoi: 'bg-white border-slate-300', bu: 'bg-white border-slate-300', hinh: 'bg-white border-slate-300' } // viền xám rõ (Thùy: không viền nhìn không đẹp)
 const POLL_MS = 15000
 // Nhớ ngày + môn đang xem khi rời màn (CLAUDE.md §2 "rời màn rồi quay lại = đúng chỗ cũ").
 const NHO: { ngay: string | null; mon: string; khu: 'truc' | 'rieng' } = { ngay: null, mon: '', khu: 'truc' }
@@ -103,7 +103,7 @@ export default function LichPhongScreen() {
         <header className="mb-4 flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
             <h1 className="text-[22px] font-bold text-slate-800">Lịch phòng · đang diễn ra</h1>
-            <p className="mt-1 text-[12.5px] text-slate-500">Mọi bổ trợ trong ngày. Bấm "+ Xếp" trên ca trực để xếp em (Đuổi → Bù → Yếu). 1 đv = 30' × 1 TA · Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 1 · tối đa 3 em/TA. Ca đầy khi đủ người HOẶC đủ đơn vị.</p>
+            <p className="mt-1 text-[12.5px] text-slate-500">Mọi bổ trợ trong ngày. Bấm "+ Xếp" trên ca trực để xếp em (Đuổi → Bù → Yếu). 1 đv = 30' × 1 TA · Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 1 · Hình như Yếu · tối đa 3 em/TA. Ca đầy khi đủ người HOẶC đủ đơn vị.</p>
           </div>
           {/* Ngày: 3 ô quanh ngày chọn + mũi tên + chọn thẳng (Thùy 24/09: gọn, tiết kiệm chỗ) */}
           <div className="flex items-center gap-1 rounded-2xl bg-white p-1.5 ring-1 ring-slate-200">
@@ -126,7 +126,7 @@ export default function LichPhongScreen() {
           </div>
           {mons.length > 1 && <select value={monF} onChange={(e) => setMonF(e.target.value)} className="rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-[13px]"><option value="">Tất cả môn</option>{mons.map((m) => <option key={m} value={m}>{m}</option>)}</select>}
           <span className="flex items-center gap-2 text-[11.5px] text-slate-500">
-            {(['yeu', 'duoi', 'bu'] as const).map((k) => <span key={k} className={`rounded-full px-2 py-0.5 font-bold ${LOAI_CLS[k]}`}>{LOAI_TEN[k]}</span>)}
+            {(['yeu', 'hinh', 'duoi', 'bu'] as const).map((k) => <span key={k} className={`rounded-full px-2 py-0.5 font-bold ${LOAI_CLS[k]}`}>{LOAI_TEN[k]}</span>)}
           </span>
           <label className="ml-auto flex items-center gap-1.5 text-[12px] text-slate-500"><input type="checkbox" checked={hienHuy} onChange={(e) => setHienHuy(e.target.checked)} /> hiện ca đã huỷ</label>
           <button onClick={() => { taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }} title="Tải lại" className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">↻</button>
@@ -213,7 +213,7 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
   const [tab, setTab] = useState<LoaiBoTro>('duoi')
   const [busy, setBusy] = useState<string | null>(null)
   const daXep = new Set(ca.hs.map((h) => `${h.loai}|${h.hoc_sinh_id}`))
-  useEffect(() => { ungVienCa(ca.id).then((d) => { setData(d); if (!d.duoi.length) setTab(d.bu.length ? 'bu' : 'yeu') }).catch((e: any) => setLoi(e?.message ?? String(e))) }, [ca.id])
+  useEffect(() => { ungVienCa(ca.id).then((d) => { setData(d); if (!d.duoi.length) setTab(d.bu.length ? 'bu' : d.yeu.length || !d.hinh.length ? 'yeu' : 'hinh') }).catch((e: any) => setLoi(e?.message ?? String(e))) }, [ca.id])
   const list = data ? data[tab].filter((u) => !daXep.has(`${u.loai}|${u.hoc_sinh_id}`)) : []
   const con = ca.don_vi - ca.don_vi_dung
   // Thùy 29/09: sửa mức/ưu tiên em Yếu ngay trong hàng chờ (control chung) — hạ L0 ⇒ rời hàng chờ; đổi ưu tiên ⇒ sắp lại
@@ -229,8 +229,8 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
           <div className="flex items-center gap-2"><h2 className="text-[15px] font-bold text-slate-900">{hhmm(ca.gio_bat_dau)}–{hhmm(ca.gio_ket_thuc)}{ca.phong ? ` · ${ca.phong}` : ''}{ca.khoi ? ` · Khối ${ca.khoi}` : ''} · {ca.mon} — {ca.nhan_su_ten ?? '?'}{ca.so_ta === 2 ? ` + ${ca.nhan_su_2_ten ?? '?'}` : ''}</h2><button onClick={onDong} className="ml-auto h-8 w-8 rounded-md text-slate-400 hover:bg-slate-100">✕</button></div>
           <div className="mt-2"><ThanhDonVi c={ca} /></div>
           <div className="mt-2 flex flex-wrap items-center gap-1.5">
-            {(['duoi', 'bu', 'yeu'] as const).map((k) => <button key={k} onClick={() => setTab(k)} className={`rounded-full px-3 py-1 text-[12px] font-bold ${tab === k ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'}`}>{LOAI_TEN[k]} {data ? `(${data[k].length})` : ''}</button>)}
-            <span className="ml-auto text-[11.5px] text-slate-400">Ưu tiên: Đuổi → Bù → Yếu · trong tab đã sắp cao → thấp · còn {con} đv · {soDep(data?.ca.cho_hs ?? 3 * ca.so_ta - ca.so_hs_xn)} suất (S 0,5 · A 0,75 · B/C 1)</span>
+            {(['duoi', 'bu', 'yeu', 'hinh'] as const).map((k) => <button key={k} onClick={() => setTab(k)} className={`rounded-full px-3 py-1 text-[12px] font-bold ${tab === k ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'}`}>{LOAI_TEN[k]} {data ? `(${data[k].length})` : ''}</button>)}
+            <span className="ml-auto text-[11.5px] text-slate-400">Ưu tiên: Đuổi → Bù → Yếu → Hình · trong tab đã sắp cao → thấp · còn {con} đv · {soDep(data?.ca.cho_hs ?? 3 * ca.so_ta - ca.so_hs_xn)} suất (S 0,5 · A 0,75 · B/C 1)</span>
           </div>
         </div>
         <div className="overflow-auto px-5 py-3">

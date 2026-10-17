@@ -8,26 +8,27 @@ import BoTroScreen from './BoTroScreen'
 import XepLichBoTroYeuScreen from '../danhgia/XepLichBoTroYeuScreen'
 import DuyetBoTroYeuScreen from '../danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from '../danhgia/NoiDungBoTroYeuScreen'
-import HinhYeuScreen from './HinhYeuScreen'
+import BoTroHinhScreen from './BoTroHinhScreen'
 import TrangThaiCaBoTroScreen from '../danhgia/TrangThaiCaBoTroScreen'
 import DanhGiaCaBoTroScreen from '../danhgia/DanhGiaCaBoTroScreen'
 import LichPhongScreen from './LichPhongScreen'
 import LichTrucScreen from './LichTrucScreen'
 import BoTroDashboardScreen from './BoTroDashboardScreen'
 
-export type BoTroTab = 'dashboard' | 'duoi' | 'bu' | 'yeu' | 'lichphong' | 'lichtruc'
+export type BoTroTab = 'dashboard' | 'duoi' | 'bu' | 'yeu' | 'hinh' | 'lichphong' | 'lichtruc'
 const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'dashboard', ten: 'Dashboard', mo_ta: 'Tiến độ theo tuần: chốt bao nhiêu ca, thực tế chạy được bao nhiêu — 3 tuần gần nhất' }, // Thùy 13/10
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
   { k: 'yeu', ten: 'Yếu', mo_ta: 'Trọn luồng bổ trợ yếu: duyệt → nội dung → xếp → trạng thái → đánh giá ca' },
+  { k: 'hinh', ten: 'Hình', mo_ta: 'Bổ trợ Hình (17/10): độc lập với Yếu — Trang/Lộc tự mở ca, xếp ở Lịch phòng, tài liệu theo buổi, cuối buổi chỉ nhận xét' },
   { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Đang diễn ra của cả 3 loại + xếp chung theo đơn vị ca trực' },
   { k: 'lichtruc', ten: 'Lịch trực', mo_ta: 'Ca trực cố định hằng tuần của trợ giảng' },
 ]
 // Thùy 24/09: CẢ folder "Bổ trợ yếu" ở Quản lý chất lượng (Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) chuyển vào đây, cùng Xếp bổ trợ —
 // thanh toggle theo đúng thứ tự luồng: Duyệt → Nội dung → Xếp → Trạng thái ca → Đánh giá ca.
-export type YeuSub = 'duyet' | 'noidung' | 'xep' | 'trangthai' | 'danhgia' | 'hinh'
-const YEU_SUB: [YeuSub, string][] = [['duyet', 'Duyệt bổ trợ'], ['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca'], ['hinh', 'Hình yếu']] // Thùy 14/10: Hình theo mô hình — bổ trợ theo dạng chưa thấy
+export type YeuSub = 'duyet' | 'noidung' | 'xep' | 'trangthai' | 'danhgia'
+const YEU_SUB: [YeuSub, string][] = [['duyet', 'Duyệt bổ trợ'], ['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca']] // 17/10: tab 'Hình yếu' (theo mô hình) ẨN — thay bằng tab Hình (BoTroHinhScreen); code + DB cũ giữ nguyên
 const NHO: { tab: BoTroTab; yeu: YeuSub } = { tab: 'lichphong', yeu: 'xep' }
 let capNhat: ((t: BoTroTab) => void) | null = null
 // Nhảy tới đúng tab từ nơi khác (Việc của tôi, Trợ lý…): gọi TRƯỚC hoặc SAU setStaffLeaf('botro') đều được.
@@ -45,7 +46,7 @@ function YeuTab() {
           ))}
         </div>
       </div>
-      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : sub === 'hinh' ? <HinhYeuScreen /> : <XepLichBoTroYeuScreen />}
+      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : <XepLichBoTroYeuScreen />}
     </div>
   )
 }
@@ -67,7 +68,7 @@ export default function BoTroHubScreen({ mo }: { mo?: { tab: BoTroTab; yeu?: Yeu
         ))}
         <span className="ml-auto hidden text-[11.5px] text-slate-400 md:inline">{TABS.find((t) => t.k === tab)?.mo_ta}</span>
       </div>
-      {tab === 'dashboard' ? <BoTroDashboardScreen /> : tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
+      {tab === 'dashboard' ? <BoTroDashboardScreen /> : tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'hinh' ? <BoTroHinhScreen /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
     </div>
   )
 }

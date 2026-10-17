@@ -3,8 +3,8 @@
 // Mọi số liệu tính ở DB (mig 202609241100, §2.0); file này chỉ gọi RPC + gõ kiểu.
 import { supabase } from './supabase'
 
-export type LoaiBoTro = 'duoi' | 'bu' | 'yeu'
-export const LOAI_TEN: Record<LoaiBoTro, string> = { duoi: 'Đuổi', bu: 'Bù', yeu: 'Yếu' }
+export type LoaiBoTro = 'duoi' | 'bu' | 'yeu' | 'hinh'
+export const LOAI_TEN: Record<LoaiBoTro, string> = { duoi: 'Đuổi', bu: 'Bù', yeu: 'Yếu', hinh: 'Hình' }
 
 export type HsTrongCa = {
   bhh_id: string; buoi_hoc_id: string; loai: LoaiBoTro
@@ -30,7 +30,7 @@ export type UngVien = {
 }
 export type UngVienCa = {
   ca: { id: string; don_vi: number; don_vi_dung: number; don_vi_cho: number; con: number; so_hs_xn: number; cho_hs: number; toi_da_hs: number; phut: number }
-  duoi: UngVien[]; bu: UngVien[]; yeu: UngVien[]
+  duoi: UngVien[]; bu: UngVien[]; yeu: UngVien[]; hinh: UngVien[]
 }
 
 export async function tomTatNgay(tu: string, den: string): Promise<NgayTomTat[]> {

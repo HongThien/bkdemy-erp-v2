@@ -357,3 +357,16 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Một nguồn:** `fn_ta_cau_cua_em(hs, buoi, so_ngay, gioi_han)` (chỉ nhân sự) đọc bản chụp `bai_test_cau` — đúng đề/hình/lựa chọn/ngữ liệu em thấy — cộng bài làm của em (chọn gì, đúng/sai). Phủ 7 loại bài: luyện · test cuối ca · retest · đuổi luyện/test · bù luyện/test.
 - **Màn:** khối "👁 Câu em đang làm" (`CauCuaEmTA`) trong ca yếu · ca đuổi (mỗi em có mặt) · ca bù. Câu em đang đứng tự mở; đáp án đúng + lời giải chi tiết (+ ảnh lời giải) chỉ hiện khi TA bấm hoặc em đã trả lời. Mặc định lấy bài của ngày buổi; nút "Xem 7 ngày gần nhất".
 - **Giới hạn biết trước:** câu chưa có lời giải trong kho hiện nút "(chưa có)"; "đang làm" suy từ câu chưa trả lời đầu tiên (HS có thể đang ở câu khác nếu làm nhảy cóc); dạng Hình theo mô hình học trên giấy nên không có câu app.
+
+## 24. Cập nhật 17/10 — BỔ TRỢ HÌNH (loại thứ 4, độc lập với Yếu Đại)
+
+- **Vì sao riêng:** Hình chưa có bản đồ kiến thức ⇒ không dạng, không kho MCQ, không đo, máy không đề xuất được. Mọi chỗ dính BẢN ĐỒ/KHO khác Yếu Đại; còn lại (ca trực, đơn vị, suất, trần) DÙNG CHUNG.
+  Thùy 17/10: *"hình đang xây bản đồ mới, logic có thể đổi nên bỏ cái cũ đi"* ⇒ nhánh "Hình theo mô hình" (§20–21) bị ẨN khỏi giao diện (tab "Hình yếu" ở Yếu, hộp `HinhYeuTA` ở app TA — code + DB giữ nguyên, chưa xoá).
+- **Case = HS × ĐỢT** (`bo_tro_hinh`: lý do bắt buộc · mức L1–L3 · ưu tiên · trạng thái dang_xu/hoan_thanh · ket_qua on/can_them/bo/day_xong · `case_truoc_id` vòng sau). Không có bảng dạng. Ghi vết bằng trigger vào `bo_tro_hinh_log`.
+- **Duyệt:** CHỈ Trang/Lộc tự mở (ERP › Bổ trợ › **Hình** › "+ Mở ca Hình"; `fn_bthinh_mo`). Giai đoạn tạm: chưa nhận báo động/đề xuất máy.
+- **Xếp lịch:** như Yếu — Lịch phòng › ca trực › "+ Xếp" › tab **Hình** (`fn_ca_bo_tro_ung_vien.hinh`, `fn_ca_bo_tro_xep(p_loai='hinh')`). Đơn vị L1 = 1, L2/L3 = 4; suất 3/TA theo bậc lớp; `buoi_hoc.loai='bo_tro_hinh'`, `buoi_hoc_hs.bo_tro_hinh_id`; 1 buổi chờ học/case (trigger).
+  **Trần 70 em / 20 Cao tính GỘP Yếu + Hình** (hai trigger cùng advisory lock).
+- **Tài liệu:** gắn theo BUỔI (`bo_tro_hinh_tai_lieu`, `fn_bthinh_gan_tai_lieu`) từ kho tài liệu (`tai_lieu`, môn Toán — gồm tài liệu builder). Hiện ở ERP (nút 📎) và app TA. Buổi chưa có tài liệu ⇒ chip vàng.
+- **Ca diễn ra (app TA, `CaHinhTA.tsx`):** điểm danh → tài liệu → nhận xét → Hoàn tất (`fn_bthinh_hoan_tat`). Không test, không đánh giá mức. Người đứng ca: L1/L2 là TA, L3 là GV (theo người trực của ca).
+- **Kết thúc:** như Đại — người dạy Hoàn tất ca ⇒ case `day_xong`, trừ tick "còn học tiếp". Trang/Lộc đóng tay được (`fn_bthinh_dong`: ổn / cần thêm / bỏ).
+- **Chưa làm (việc treo):** Dashboard tuần (`fn_bo_tro_dashboard_tuan`) · tự kiểm hiển thị (`fn_bo_tro_tu_kiem`) · lịch trên app HS (`fn_hs_lich_bo_tro`) · dọn ca không diễn ra (`fn_btyeu_don_ca_khong_dien_ra`) · theo dõi sống trong Lịch phòng · công/lương TA (`_ta_buoi_thieu_cong`) · báo cáo trợ lý · mở case từ báo động/máy khi có bản đồ Hình · đánh giá khi có bản đồ. Lịch phòng/app TA hiển thị OK; các hàm trên hiện chỉ biết Yếu/Bù/Đuổi.

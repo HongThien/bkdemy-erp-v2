@@ -37993,3 +37993,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 17/10/2026 — Hình học: gán câu hình đề cương + đề giữa kì I vào bài "Ôn thi giữa kì I" (K7, K8)
 - **Làm:** mig `202610171740` đổi `dang_chinh`+`thu_tu` của câu HHC đã bóc từ Kho đề thi (đề cương + đề tên có "giữa") từ "Chưa phân dạng — Hình học 7/8" sang HH00138 (K7: 103 câu) và HH00139 (K8: 230 câu). Đề cương xếp trước, rồi đề thi. `ma_cau` giữ nguyên. Chưa duyệt câu nào (da_duyet=false), chưa viết lý thuyết cho 3 bài Ôn thi.
 - **Chưa làm — K9 (HH00140 còn 0 câu):** câu hình của 2 đề cương Toán 9 (hệ thức lượng/tỉ số lượng giác, 33 câu `T309…`) nằm ở `hgt_cau_hoi`, không phải `hinh_hoc_cau_hoi`; chuyển bảng = đổi mã gốc, copy = nhân đôi. Chờ Thùy chọn.
+
+## 2026-10-17 — Bổ trợ Hình (loại thứ 4)
+- **Làm:** mig `202610171805_bo_tro_hinh_loi` ĐÃ ÁP (bảng `bo_tro_hinh` + log + tài liệu, cột `buoi_hoc_hs.bo_tro_hinh_id`, CHECK `buoi_hoc_loai_check` nới thêm `bo_tro_hinh`, trần 70/20 gộp Yếu+Hình, RPC `fn_bthinh_*`, vá `fn_ca_bo_tro_xep/ngay/ung_vien`, `_ca_bo_tro_don_vi`, 2 trigger buổi). Lấy thân hàm từ `pg_get_functiondef` bản đang chạy (script sinh `scripts/_gen_bthinh_mig.mjs`), thử trong BEGIN…ROLLBACK (`scripts/_dry_mig.mjs` + `_test_bthinh.sql`) trước khi áp.
+- **UI:** `BoTroHinhScreen` (tab Hình ở hub) · Lịch phòng thêm loại Hình · app TA `CaHinhTA` · lib `botro_hinh.ts`. Tab "Hình yếu" cũ + hộp `HinhYeuTA` ẨN (không xoá).
+- **Quyết định (Thùy):** Hình độc lập Yếu; case = HS × đợt; chỉ Trang/Lộc mở; chung ca trực/suất/trần; tài liệu theo buổi; cuối buổi chỉ nhận xét; kết thúc như Đại.
+- **Sai/gặp:** `npm run migrate` không dùng được lúc này (19 file treo của phiên khác, `so_tay_revoke_anon` lỗi quyền) ⇒ áp riêng bằng `--only`. Thử mở case với ưu tiên Cao bị trần 20/20 chặn — chứng tỏ trần gộp chạy.
+- **Treo:** xem spec-bo-tro.md §24.
