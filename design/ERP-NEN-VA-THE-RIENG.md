@@ -138,3 +138,9 @@ Một lớp trang trí GẮN vào card, có chuyển động nhẹ, khai theo m�
 - Ảnh: `NS008_vit_dung.png` + `NS008_vit_buoc_1.png` + `NS008_vit_buoc_2.png` (quay mặt PHẢI, nền trong suốt, cùng cỡ). Script nén **cắt CHUNG 1 khung cho cả bộ** (cắt riêng từng hình sẽ làm thân nhảy chỗ khi đổi dáng).
 - `VIT_DI` trong `erpSkin.ts` + `components/VitDi.tsx`. Vòng 24s thuần CSS: đi sang phải (2 dáng bước đổi nhau + nhún) → đứng nghỉ → lật ngang quay đầu → đi sang trái → đứng nghỉ. Quãng đường = bề ngang card (tính theo %, không cần đo bằng JS).
 - Chỉnh: `cao` (chiều cao vịt px), `chim` (chân lún xuống mặt card). Máy bật "giảm chuyển động" ⇒ vịt đứng yên.
+
+### 8c. Thú cưng khác trên mép card
+
+- **Corgi NS002** (`NS002_corgi_dung|buoc_1|buoc_2|lac_1|lac_2`): cùng `VitDi.tsx` — thêm 2 dáng LẮC lúc nghỉ giữa đường, `goc`/`nay` lớn hơn để đi "lắc lư". Các dáng vẽ lệch cỡ/vị trí nên script **căn chân vào ĐÁY khung** (khác bộ vịt chỉ cắt chung).
+- **Hai bạn đi gặp nhau NS009** (`NS009_hachi_*` + `NS009_usagi_*`, mỗi bạn: `dung · buoc_1 · buoc_2 · chao_1 · chao_2 · gian`): `components/DoiBan.tsx`, khai `DOI_BAN` trong `erpSkin.ts`. Vòng 30s: đi gặp nhau giữa card → vẫy chào ~3s → đi tiếp về hai đầu → quay đầu → gặp lần nữa → về chỗ cũ.
+  **Bấm vào một bạn ⇒ cả hai đứng sững, dáng giận (lắc + 💢) 2,6s rồi đi tiếp đúng chỗ.** Dáng `gian` vẽ nhìn THẲNG, các dáng còn lại quay PHẢI. Máy bật "giảm chuyển động" ⇒ đứng yên, bấm không có hiệu ứng.

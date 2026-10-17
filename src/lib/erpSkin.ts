@@ -101,6 +101,14 @@ export const DANG_RIENG: Record<string, DangRieng> = {
     cardBorder: '2.5px solid #4a3b32', cardShadow: '0 4px 0 rgba(74,59,50,0.28)',
     radius: '22px', blur: 'none',
   },
+  // NS009 — "Bé tròn picnic": thẻ trắng sữa viền nâu #4a342a dày (đúng nét viền của các bé), bo 24px rất tròn, bóng CỨNG lệch xuống,
+  // chữ nâu ấm; nhấn HỒNG DÂU như má hồng trong tranh, ô con hồng phấn. Thẻ trắng + viền nâu tách rõ khỏi nền xanh trời / khăn caro xanh.
+  NS009: {
+    surface: '#fffdf8', surface2: '#ffe4ec', ink: '#4a342a', muted: '#8a7468', line: 'rgba(74,52,42,0.2)',
+    acc: '#d94a7a', accInk: '#ffffff', badge: '#d94a7a', badgeInk: '#ffffff',
+    cardBorder: '2.5px solid #4a342a', cardShadow: '0 4px 0 rgba(74,52,42,0.3)',
+    radius: '24px', blur: 'none',
+  },
 }
 // MÈO NGỦ trên card "Chào …" (components/MeoNgu.tsx). Đơn vị px trừ khi ghi "tỉ lệ".
 //   rong: bề ngang thân · phai: cách mép PHẢI card · chim: thân lún xuống mặt card bấy nhiêu px
@@ -112,9 +120,26 @@ export const MEO_NGU: Record<string, MeoNguCfg> = {
 }
 // VỊT ĐI LẠI trên mép card "Chào …" (components/VitDi.tsx): 3 dáng cắt chung 1 khung (ĐỨNG · BƯỚC 1 · BƯỚC 2), mặt quay PHẢI (code tự lật khi quay đầu).
 //   cao: chiều cao vịt (px) · chim: chân lún xuống mặt card bấy nhiêu px · tiLe: rộng÷cao của file đã nén (script in ra)
-export type VitDiCfg = { dung: string; buoc1: string; buoc2: string; tiLe: number; cao: number; chim: number }
+//   lac1 / lac2 (tuỳ chọn): 2 dáng LẮC MÔNG đổi nhau nhanh lúc nghỉ giữa đường (không có ⇒ đứng yên bằng dáng `dung`)
+//   goc: độ nghiêng mỗi bước (độ, mặc định 3) · nay: độ nảy mỗi bước (px, mặc định 4) — tăng lên cho dáng đi "lắc lư" hơn
+export type VitDiCfg = { dung: string; buoc1: string; buoc2: string; lac1?: string; lac2?: string; tiLe: number; cao: number; chim: number; goc?: number; nay?: number }
 export const VIT_DI: Record<string, VitDiCfg> = {
+  // NS002 — corgi: vừa đi vừa lắc mông (nghiêng 6° mỗi bước, nảy 3px), nghỉ giữa đường thì lắc mông tại chỗ
+  NS002: { dung: '/bk-ui/erp/nen/ca-nhan/ns002_corgi_dung.webp', buoc1: '/bk-ui/erp/nen/ca-nhan/ns002_corgi_buoc_1.webp', buoc2: '/bk-ui/erp/nen/ca-nhan/ns002_corgi_buoc_2.webp', lac1: '/bk-ui/erp/nen/ca-nhan/ns002_corgi_lac_1.webp', lac2: '/bk-ui/erp/nen/ca-nhan/ns002_corgi_lac_2.webp', tiLe: 1.25, cao: 64, chim: 4, goc: 6, nay: 3 },
   NS008: { dung: '/bk-ui/erp/nen/ca-nhan/ns008_vit_dung.webp', buoc1: '/bk-ui/erp/nen/ca-nhan/ns008_vit_buoc_1.webp', buoc2: '/bk-ui/erp/nen/ca-nhan/ns008_vit_buoc_2.webp', tiLe: 0.778, cao: 78, chim: 6 },
+}
+// HAI BẠN ĐI GẶP NHAU rồi chào, bấm vào thì giận (components/DoiBan.tsx). Mỗi bạn 6 dáng cắt chung 1 khung, vẽ quay PHẢI:
+//   dung · buoc1 · buoc2 (đi) · chao1 · chao2 (vẫy tay) · gian (nhìn thẳng, giận). `a` đi từ TRÁI sang, `b` từ PHẢI sang.
+//   cao: chiều cao cả hai (px) · chim: chân lún xuống mặt card · tiLe mỗi bạn: rộng÷cao file đã nén (script in ra)
+export type DoiBanNv = { dung: string; buoc1: string; buoc2: string; chao1: string; chao2: string; gian: string; tiLe: number }
+export type DoiBanCfg = { a: DoiBanNv; b: DoiBanNv; cao: number; chim: number }
+const dbNv = (ma: string, ten: string, tiLe: number): DoiBanNv => {
+  const f = (d: string) => `/bk-ui/erp/nen/ca-nhan/${ma}_${ten}_${d}.webp`
+  return { dung: f('dung'), buoc1: f('buoc_1'), buoc2: f('buoc_2'), chao1: f('chao_1'), chao2: f('chao_2'), gian: f('gian'), tiLe }
+}
+export const DOI_BAN: Record<string, DoiBanCfg> = {
+  // NS009 — mèo tóc xanh (a) đi từ trái, thỏ vàng (b) đi từ phải; gặp nhau giữa card, vẫy chào, đi tiếp
+  NS009: { a: dbNv('ns009', 'hachi', 0.836), b: dbNv('ns009', 'usagi', 0.656), cao: 62, chim: 5 },
 }
 
 const BIEN_RIENG: Record<keyof DangRieng, string> = {

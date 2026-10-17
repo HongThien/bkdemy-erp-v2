@@ -3,6 +3,8 @@
 //   NS###_meo_than.png     → ns###_meo_than.webp      (TRANG TRÍ nền trong suốt: cắt sát viền, ≤600 rộng)
 //   NS###_meo_duoi.png     → ns###_meo_duoi.webp      (đuôi mèo — cắt sát phần thấy được, gốc đuôi ở mép trên)
 //   NS###_vit_dung|buoc_1|buoc_2.png → ns###_vit_*.webp (BỘ DÁNG: cắt CHUNG 1 khung cho cả bộ để các dáng không lệch nhau, ≤360 cao)
+//   NS###_hachi_* / usagi_* (dung|buoc_1|buoc_2|chao_1|chao_2|gian) → mỗi nhân vật 1 khung riêng, cùng cách CĂN đáy
+//   NS###_corgi_dung|buoc_1|buoc_2|lac_1|lac_2.png → ns###_corgi_*.webp (BỘ DÁNG, các dáng vẽ lệch cỡ/vị trí nên CĂN: chân chạm ĐÁY khung, giữa theo chiều ngang)
 // Chạy: node scripts/erp-nen-ca-nhan.mjs   — quét cả thư mục. Quy ước: design/ERP-NEN-VA-THE-RIENG.md
 import { loadImage, createCanvas } from '@napi-rs/canvas'
 import fs from 'node:fs'
@@ -20,7 +22,8 @@ function hopBao(x, W, H) {
 }
 
 // Bộ dáng (vit_*): hộp bao CHUNG theo từng mã nhân sự — cắt riêng từng hình sẽ làm thân nhảy chỗ khi đổi dáng.
-const BO_DANG = /^vit_(dung|buoc_1|buoc_2)$/i
+const BO_DANG = /^(vit_(dung|buoc_1|buoc_2)|corgi_(dung|buoc_1|buoc_2|lac_1|lac_2)|(hachi|usagi)_(dung|buoc_1|buoc_2|chao_1|chao_2|gian))$/i
+const CAN_DAY = /^(corgi|hachi|usagi)_/i   // bộ này căn theo đáy (chân) + giữa, thay vì giữ nguyên vị trí gốc
 const chung = {}
 for (const f of fs.readdirSync(SRC)) {
   const m = /^(NS\d+)_(.+)\.(png|webp)$/i.exec(f)
@@ -29,6 +32,7 @@ for (const f of fs.readdirSync(SRC)) {
   const c0 = createCanvas(im.width, im.height), x0 = c0.getContext('2d'); x0.drawImage(im, 0, 0)
   const [bx, by, bw, bh] = hopBao(x0, im.width, im.height), k = m[1].toLowerCase()
   const u = chung[k]
+  if (CAN_DAY.test(m[2])) { const g = (chung[k + ':can:' + m[2].split('_')[0]] ??= { w: 0, h: 0 }); g.w = Math.max(g.w, bw); g.h = Math.max(g.h, bh); continue }
   chung[k] = u ? [Math.min(u[0], bx), Math.min(u[1], by), Math.max(u[2], bx + bw), Math.max(u[3], by + bh)] : [bx, by, bx + bw, by + bh]
 }
 
@@ -37,6 +41,19 @@ for (const f of fs.readdirSync(SRC).sort()) {
   if (!m) { if (!f.startsWith('.') && !f.startsWith('_')) console.warn('Bỏ qua (tên không dạng NS###_ten.png):', f); continue }
   const ten = m[1].toLowerCase()
   const im = await loadImage(`${SRC}/${f}`)
+
+  if (BO_DANG.test(m[2]) && CAN_DAY.test(m[2])) {
+    const g = chung[ten + ':can:' + m[2].split('_')[0]], c0 = createCanvas(im.width, im.height), x0 = c0.getContext('2d'); x0.drawImage(im, 0, 0)
+    const [bx, by, bw, bh] = hopBao(x0, im.width, im.height)
+    const k = Math.min(1, 360 / Math.max(g.w, g.h)), W = Math.round(g.w * k), H = Math.round(g.h * k)
+    const c = createCanvas(W, H), x = c.getContext('2d')
+    x.imageSmoothingQuality = 'high'
+    x.drawImage(c0, bx, by, bw, bh, Math.round((W - bw * k) / 2), H - Math.round(bh * k), Math.round(bw * k), Math.round(bh * k))
+    const buf = await c.encode('webp', 88), ra = `${ten}_${m[2].toLowerCase()}.webp`
+    fs.writeFileSync(`${OUT}/${ra}`, buf)
+    console.log(`${f} → ${ra} ${W}x${H} (tỉ lệ ${(W / H).toFixed(3)}) ${Math.round(buf.length / 1024)} KB`)
+    continue
+  }
 
   if (BO_DANG.test(m[2])) {
     const [u0, u1, u2, u3] = chung[ten], bw = u2 - u0, bh = u3 - u1
