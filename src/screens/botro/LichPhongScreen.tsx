@@ -303,7 +303,7 @@ function TuKiemHienThi() {
   useEffect(chay, [])
   if (loi) return <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] font-semibold text-rose-700 ring-1 ring-rose-200">⚠ Tự kiểm hiển thị lỗi: {loi}</p>
   if (!kq) return <p className="mb-3 text-[12px] text-slate-400">Đang tự kiểm: ca bổ trợ có hiện trên app TA/HS không…</p>
-  const TEN: Record<LoiHienThi['loai'], string> = { bo_tro_yeu: 'Yếu', bu: 'Bù', bo_tro_duoi: 'Đuổi' }
+  const TEN: Record<LoiHienThi['loai'], string> = { bo_tro_yeu: 'Yếu', bu: 'Bù', bo_tro_duoi: 'Đuổi', bo_tro_hinh: 'Hình' }
   return (
     <div className={`mb-3 rounded-xl px-3 py-2 text-[12.5px] ring-1 ${kq.loi.length ? 'bg-rose-50 text-rose-800 ring-rose-300' : 'bg-emerald-50 text-emerald-800 ring-emerald-200'}`}>
       <div className="flex items-center gap-2">

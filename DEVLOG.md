@@ -38000,3 +38000,4 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Quyết định (Thùy):** Hình độc lập Yếu; case = HS × đợt; chỉ Trang/Lộc mở; chung ca trực/suất/trần; tài liệu theo buổi; cuối buổi chỉ nhận xét; kết thúc như Đại.
 - **Sai/gặp:** `npm run migrate` không dùng được lúc này (19 file treo của phiên khác, `so_tay_revoke_anon` lỗi quyền) ⇒ áp riêng bằng `--only`. Thử mở case với ưu tiên Cao bị trần 20/20 chặn — chứng tỏ trần gộp chạy.
 - **Treo:** xem spec-bo-tro.md §24.
+- **Phần 2 (cùng ngày):** mig `202610171841_bo_tro_hinh_phan2` ĐÃ ÁP — vá `fn_bo_tro_dashboard_tuan`, `fn_bo_tro_tu_kiem`, `fn_btyeu_don_ca_khong_dien_ra`, `fn_hs_lich_bo_tro`, `_ta_buoi_thieu_cong`, `fn_ta_hom_nay`, `_ta_doi_chieu`, `_ta_lop_cua_buoi` (sinh từ bản đang chạy, thử ROLLBACK trước: tự kiểm không báo lỗi, dashboard đếm đúng 1 lượt Hình "cho", `_ta_lop_cua_buoi` ra lớp Toán của em). Quyết định: công buổi Hình = loại việc `bo_tro_yeu`.

@@ -10,6 +10,7 @@ const LOAI: { k: LoaiBT; ten: string; vach: string }[] = [
   { k: 'bo_tro_yeu', ten: 'Yếu', vach: 'border-l-amber-400' },
   { k: 'bu', ten: 'Bù', vach: 'border-l-sky-400' },
   { k: 'bo_tro_duoi', ten: 'Đuổi', vach: 'border-l-violet-400' },
+  { k: 'bo_tro_hinh', ten: 'Hình', vach: 'border-l-fuchsia-400' },
 ]
 // Thứ tự = thứ tự trên thanh tiến độ. `thanh` = màu đoạn trên thanh; `pill` = ô trạng thái (pill mềm, không khối đặc).
 const TT: { k: Exclude<TtLuot, 'go'>; ten: string; thanh: string; pill: string; giai: string }[] = [
