@@ -151,7 +151,7 @@ function CreateModal({ khoi, mon, nhanh, onClose, onCreated }: { khoi: string; m
       {coBanDoMoi && (
         <label className="mb-3 flex items-start gap-2 rounded-md border border-emerald-200 bg-emerald-50/50 px-3 py-2 text-[12.5px] text-slate-700">
           <input type="checkbox" checked={banDoMoi} onChange={(e) => setBanDoMoi(e.target.checked)} className="mt-0.5" />
-          <span><b>🆕 Theo bản đồ mới</b> (nhóm bài · dạng bài) <span className="text-slate-400">— đang thử: chưa xuất PDF / gán lớp được</span></span>
+          <span><b>🆕 Theo bản đồ mới</b> (nhóm bài · dạng bài) <span className="text-slate-400">— đang thử: chưa gán lớp được</span></span>
         </label>
       )}
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}

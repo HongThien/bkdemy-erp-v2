@@ -2,7 +2,7 @@
 // Buổi → NHÓM bài (chọn cả nhóm hoặc dạng bài lẻ từ nhiều nhóm) → DẠNG BÀI (lý thuyết · ví dụ · bài luyện) · BTVN theo NHÓM.
 // Không còn chuyên đề trong thẻ buổi / bản in (A3). Khung giống builder cũ: thanh trên · cây trái · thẻ buổi · tự lưu.
 // Mọi đặt buổi / gợi ý câu ở DB (fn_tl_bdm_*); sau mỗi thao tác VÁ đúng buổi/phần đó tại chỗ, không tải lại cả giáo trình.
-// Bước 2/6: chưa có Xem/Xuất PDF (bước 3) và Trích xuất/Gán lớp (bước 4).
+// In / xem trước: PrintView chung (tự nhận ban_do='moi', in theo A3). Chưa có Trích xuất/Gán lớp (bước 4).
 import { useEffect, useState } from 'react'
 import { addBuoi, listBuoiTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
 import {
@@ -16,6 +16,8 @@ import { AnhMmEditCtx } from '../anhMmCtx'
 import { ColSel, MaCau, AnhXem, AnhMmCtl, CheDoHinhBtn, ApplyLinesAll, MAU_PRESET } from '../TaiLieuBuilder'
 import BoChonNhom from './BoChonNhom'
 import ChonCauBdm from './ChonCauBdm'
+import PrintView from '../PrintView'
+import { useStore } from '../../../store/useStore'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const filterKey = (id: string) => `tlb_buoi_${id}`   // buổi đang soạn — tiện ích riêng mỗi máy (như builder cũ)
@@ -36,6 +38,8 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
   const [saved, setSaved] = useState(false)
   const [boChon, setBoChon] = useState<NdBuoi | null>(null)
   const [chonCau, setChonCau] = useState<MoChonCau | null>(null)
+  const [inAll, setInAll] = useState(false)                 // 🖨 Xem / Xuất PDF cả giáo trình
+  const [xemBuoi, setXemBuoi] = useState<string | null>(null) // 👁 Xem nhanh bản in 1 buổi
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
@@ -157,7 +161,8 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
     <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false }}>
       <div className="flex h-full flex-col bg-[#fafafb]">
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
-          <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
+          {/* Như builder cũ: điểm "xong 1 lượt sửa" DUY NHẤT là lúc đóng ⇒ xếp hàng làm link PDF ở đây (không mỗi lần tự lưu). */}
+          <button onClick={() => { if (!chiXem) useStore.getState().enqueueLinkGen(id, 'giao_trinh'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
           <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
           <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Giáo trình theo bản đồ kiến thức mới (nhóm bài · dạng bài)">🆕 Bản đồ mới</span>
           {chiXem && <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">Bản lưu trữ · chỉ xem</span>}
@@ -170,8 +175,9 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
             </select>
           </label>
           <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
+          <button onClick={() => setInAll(true)} className="ml-auto rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">🖨 Xem / Xuất PDF</button>
           {!chiXem && (
-            <label className="ml-auto flex items-center gap-1.5 text-[12px] text-slate-500">Màu
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu
               <span className="flex gap-1">{MAU_PRESET.map(([c, n]) => (
                 <button key={c} title={n} onClick={() => saveCh({ mau: c })} className={`h-6 w-6 rounded-full border-2 ${(ch.mau ?? '#E91E8C') === c ? 'border-slate-800' : 'border-white shadow'}`} style={{ background: c }} />
               ))}</span>
@@ -199,7 +205,8 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
                     <input defaultValue={b.tieu_de ?? ''} disabled={chiXem} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== b.tieu_de) doiTenBuoi(b, v) }}
                       className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
                     <span className="text-[12px] text-slate-400">{b.nhom.length} nhóm · {b.nhom.reduce((s, n) => s + n.dang_bai.length, 0)} dạng bài</span>
-                    {!chiXem && <button onClick={() => setBoChon(b)} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn nhóm / dạng bài</button>}
+                    <button onClick={() => setXemBuoi(b.id)} title="Xem nhanh bản in CHỈ buổi này" className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem buổi</button>
+                    {!chiXem && <button onClick={() => setBoChon(b)} className="shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn nhóm / dạng bài</button>}
                     {!chiXem && <button onClick={() => boBuoi(b)} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>}
                   </div>
                   <div className="space-y-4 p-4">
@@ -237,6 +244,8 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
             onClose={() => setChonCau(null)}
             onConfirm={async (ms) => { await datCau(chonCau.phanId, ms); vaCau(chonCau.phanId, ms); setChonCau(null) }} />
         )}
+        {inAll && <PrintView id={id} onClose={() => setInAll(false)} />}
+        {xemBuoi && <PrintView id={id} onlyBuoiId={xemBuoi} onClose={() => setXemBuoi(null)} />}
       </div>
     </AnhMmEditCtx.Provider>
   )

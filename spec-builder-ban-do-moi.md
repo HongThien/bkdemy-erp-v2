@@ -126,7 +126,7 @@ BTVN (phiếu riêng như cũ): theo nhóm, câu xếp theo dạng bài
 |---|---|---|
 | 1 ✅ 17/10 | Migration: 2 cột `tai_lieu` + hàm B3 (trừ chuyển đổi) + test ROLLBACK — **ĐÃ ÁP** mig `202610172312` + 3 mig sửa tốc độ dưới RLS `…2336` `…2340` `…2342`; test 44/44 (`scripts/_test_builder_bdm_b1.mjs`) | `npm run schema` sạch, test đủ |
 | 2 ✅ 17/10 | Bộ chọn + thẻ nhóm/dạng bài + tự lưu — `screens/tailieu/bdm/` (`BuilderBanDoMoi` · `BoChonNhom` · `ChonCauBdm`) + `lib/tailieuBdm.ts`; ô "🆕 Theo bản đồ mới" khi tạo giáo trình Toán·Đại, **mặc định TẮT** tới khi xong bước 3+4. Đã kiểm bằng phiên đăng nhập thật (K7) | soạn 1 buổi K7 thật trên app local, có cả nhóm trọn và dạng bài lẻ từ 2 nhóm |
-| 3 | In/preview A3 | PDF buổi K7 đúng LT nhóm → LT dạng bài → ví dụ → luyện, không có chuyên đề |
+| 3 ✅ 18/10 | In/preview A3 — nhánh `DocBdm` trong `PrintView.tsx` (dispatch theo `ban_do`, dùng chung paged.js/masthead/CauFlow/BtvnSheet ⇒ Xem buổi, Xuất PDF, in nhanh, lấy link đều chạy); builder có 👁 Xem buổi + 🖨 Xem / Xuất PDF, đóng builder xếp hàng làm link PDF như cũ. Kiểm trên app: buổi 6 trang, cả giáo trình 10 trang | PDF buổi K7 đúng LT nhóm → LT dạng bài → ví dụ → luyện, không có chuyên đề |
 | 4 | Trích xuất + ôn tập + đánh giá + test online (B4) | gán 1 lớp thử, app GV hiện đủ câu, ôn tập ra đúng nhóm |
 | 5 | Chuyển 87 giáo trình cũ (B2) | số câu trước = sau; báo cáo `chua_khop` gửi CEO |
 | 6 | Mở HGT qua registry + chuyển giáo trình HGT | câu HGT có trong `_bdm_cau_giai` bản HGT |
