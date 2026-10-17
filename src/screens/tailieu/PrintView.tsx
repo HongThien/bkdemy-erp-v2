@@ -531,11 +531,16 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
     id: n.btvn!.phan_id, tai_lieu_id: taiLieu.id, thu_tu: n.stt, loai_phan: 'btvn' as const, ref_ma: null,
     tieu_de: `Nhóm ${n.stt}: ${n.ten ?? ''}`, noi_dung: null, caus: caus(n.btvn!.caus), maCaus: n.btvn!.caus,
   })) as PhanResolved[]
+  // Ôn tập (phiếu BTVN của lớp) → "PHẦN ÔN TẬP" của BtvnSheet, mỗi nhóm ôn 1 card, số câu chạy tiếp.
+  const onTapCua = (b: NoiDung['buoi'][number]) => (b.on_tap ?? []).filter((o) => o.caus.length).map((o, i) => ({
+    id: o.phan_id, tai_lieu_id: taiLieu.id, thu_tu: i, loai_phan: 'ontap' as const, ref_ma: null,
+    tieu_de: o.ten ?? '', noi_dung: null, caus: caus(o.caus), maCaus: o.caus,
+  })) as PhanResolved[]
   const sheet = (b: NoiDung['buoi'][number], hoTen: string | undefined, key: string) => (
-    <BtvnSheet key={key} btvns={btvnCua(b)} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.tieu_de ?? ''} linesByCau={linesByCau} colByCau={colByCau}
+    <BtvnSheet key={key} btvns={btvnCua(b)} ontaps={onTapCua(b)} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.tieu_de ?? ''} linesByCau={linesByCau} colByCau={colByCau}
       hinhCheDoByCau={hinhCheDoByCau} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
   )
-  const coBtvn = (b: NoiDung['buoi'][number]) => b.nhom.some((n) => n.btvn?.caus.length)
+  const coBtvn = (b: NoiDung['buoi'][number]) => b.nhom.some((n) => n.btvn?.caus.length) || (b.on_tap ?? []).some((o) => o.caus.length)
   return (
     <div className={`pv-doc${scope === 'btvn' ? ' pv-doc-btvn' : ''}`} style={{ '--pv-accent': accent } as CSSProperties}>
       {!onlyBuoiId && scope !== 'btvn' && taiLieu.loai !== 'giao_trinh_buoi' && (

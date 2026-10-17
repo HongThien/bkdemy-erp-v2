@@ -2,7 +2,7 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, coKhoHinh, laMaHinh } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, coKhoHinh, laMaHinh, PHAN_LUYEN } from './tailieu'
 import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
 import { listDang as listDangHinh } from './kho/hinh'
@@ -822,7 +822,9 @@ export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, m
     const lopId = (b as any).lop_id as string | null
     const doc = lopId ? await getGiaoTrinhBuoiDoc(lopId, (b as any).ngay) : null
     // phần không trỏ dạng (ref_ma trống) = phần của ĐỀ THI gán làm bài trên lớp ⇒ dạng lấy theo từng câu
-    if (doc) mds = (await getTaiLieuFull(doc.id)).phans.filter((p) => p.loai_phan === 'dang').flatMap((p) => (p.ref_ma ? [p.ref_ma] : p.caus.map((c) => c.dang_chinh)))
+    // Giáo trình BẢN ĐỒ MỚI: phần luyện trỏ nhóm/dạng bài mới (NNB/NDB, không phải mã dạng đo) ⇒ dạng lấy THEO CÂU
+    // (KP đi theo câu — spec-builder-ban-do-moi.md A0); chỉ phần 'dang' cũ mới tin ref_ma.
+    if (doc) mds = (await getTaiLieuFull(doc.id)).phans.filter((p) => PHAN_LUYEN.includes(p.loai_phan)).flatMap((p) => (p.loai_phan === 'dang' && p.ref_ma ? [p.ref_ma] : p.caus.map((c) => c.dang_chinh)))
   } else if (nguon === 'et') mds = (await loadETForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else if (nguon === 'mt') mds = (await loadMTForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else mds = (await loadBTVNForBuoi(buoiId)).caus.map((c) => c.dang_chinh)

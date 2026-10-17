@@ -94,6 +94,12 @@ export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[])
 // giống 'dang'/'btvn'. KHÔNG có CHECK constraint thật trên loai_phan (verify pg_constraint) → thêm giá trị
 // mới KHÔNG cần migration, chỉ cần mọi chỗ lọc 'dang'/'btvn' cân nhắc có nên gộp thêm 'ontap' hay không.
 export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'custom'
+  | 'nhom' | 'dang_bai' | 'nhom_chua_phan' | 'chua_khop' | 'btvn_nhom' | 'ontap_nhom' // giáo trình BẢN ĐỒ MỚI (spec-builder-ban-do-moi.md B1)
+// Phần nào chứa câu GÌ — MỘT chỗ cho mọi bên đọc tài liệu (test online, đánh giá, test đầu vào…), gồm cả giáo trình cũ
+// ('dang'/'btvn'/'ontap') lẫn bản đồ mới. Thêm loại phần mới = thêm vào đây, không rải `loai_phan === …` khắp nơi.
+export const PHAN_LUYEN: readonly string[] = ['dang', 'dang_bai', 'nhom_chua_phan', 'chua_khop'] // câu luyện trên lớp
+export const PHAN_BTVN: readonly string[] = ['btvn', 'btvn_nhom']
+export const PHAN_ONTAP: readonly string[] = ['ontap', 'ontap_nhom']
 // btvnLinesByCau = số dòng kẻ (chấm chấm) để HS viết, RIÊNG cho TỪNG bài BTVN (key = ma_cau).
 // Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
 // etFormByCau = FORM HIỂN THỊ của câu TRONG ET (khác loai_cau của kho) — vd câu kho "trả lời ngắn"
@@ -617,7 +623,7 @@ export async function getTaiLieuFull(id: string, opts?: { onlyBuoiId?: string })
 export async function layCauTheoThuTu(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
   const custom = full.phans.filter((p) => p.loai_phan === 'custom')
-  const source = custom.length ? custom : full.phans.filter((p) => p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap')
+  const source = custom.length ? custom : full.phans.filter((p) => PHAN_LUYEN.includes(p.loai_phan) || PHAN_BTVN.includes(p.loai_phan) || PHAN_ONTAP.includes(p.loai_phan))
   return source.flatMap((p) => p.caus)
 }
 
@@ -704,7 +710,7 @@ export function tieuDeBuoiLop(tieuDeMaster: string | null | undefined, stt: numb
   if (/^buổi\s*\d+/i.test(t)) return t.replace(/^buổi\s*\d+/i, `Buổi ${stt}`)
   return t ? `Buổi ${stt} · ${t}` : `Buổi ${stt}`
 }
-const tenDocBuoi = (loai: string, tenLop: string, ngay: string, tieuDe: string) =>
+export const tenDocBuoi = (loai: string, tenLop: string, ngay: string, tieuDe: string) =>
   `${loai === 'btvn' ? 'BTVN' : 'GT'} ${tenLop} ${ngay.split('-').reverse().join('/')} · ${tieuDe}`
 
 // Đánh lại số buổi CHO CẢ LỚP theo thứ tự ngày. Trả về doc nào đã ĐỔI NỘI DUNG HIỂN THỊ (tên/tiêu đề
@@ -856,7 +862,7 @@ export async function getBTVNByBuoi(lopId: string, ngay: string): Promise<{ id: 
 }
 export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'btvn' || p.loai_phan === 'ontap').flatMap((p) => p.caus)
+  return full.phans.filter((p) => PHAN_BTVN.includes(p.loai_phan) || PHAN_ONTAP.includes(p.loai_phan)).flatMap((p) => p.caus)
 }
 // Giáo trình buổi (lớp+ngày) — doc loai='giao_trinh_buoi' (từ trích xuất). Dùng để khớp buổi ↔ test online.
 export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<{ id: string } | null> {
@@ -867,7 +873,7 @@ export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<
 // Câu BÀI LUYỆN của giáo trình buổi (loai_phan='dang') — online chỉ giao BT, KHÔNG lý thuyết.
 export async function getGiaoTrinhBuoiCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'dang').flatMap((p) => p.caus)
+  return full.phans.filter((p) => PHAN_LUYEN.includes(p.loai_phan)).flatMap((p) => p.caus)
 }
 // Đặt LẠI toàn bộ câu ET theo thứ tự (UI tự dedup trong đề — trong buổi không trùng).
 // Bump `updated_at`: sửa CÂU chỉ đụng tai_lieu_cau nên trước đây KHÔNG để lại dấu thời gian nào —

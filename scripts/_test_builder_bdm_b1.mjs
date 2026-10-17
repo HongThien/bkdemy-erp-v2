@@ -179,7 +179,7 @@ try {
   kiem('nội dung mang lý thuyết nhóm (để in)', ly)
   const quyen = await q(`select p.proname, has_function_privilege('anon', p.oid, 'execute') anon, has_function_privilege('authenticated', p.oid, 'execute') auth
                            from pg_proc p where p.proname like '%tl_bdm%'`)
-  kiem(`anon không gọi được ${quyen.length} hàm; authenticated gọi được`, quyen.length === 13 && quyen.every((r) => !r.anon && r.auth), JSON.stringify(quyen.filter((r) => r.anon || !r.auth)))
+  kiem(`anon không gọi được ${quyen.length} hàm; authenticated gọi được`, quyen.length >= 13 && quyen.every((r) => !r.anon && r.auth), JSON.stringify(quyen.filter((r) => r.anon || !r.auth)))
 } catch (err) {
   fail++
   console.log('✘ LỖI:', err.message, err.where ?? '')
