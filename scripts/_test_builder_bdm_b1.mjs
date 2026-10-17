@@ -5,7 +5,7 @@ import fs from 'fs'
 
 const env = Object.fromEntries(fs.readFileSync('.env', 'utf8').split('\n').filter((l) => /^[A-Z_]+=/.test(l))
   .map((l) => [l.split('=')[0], l.slice(l.indexOf('=') + 1).trim().replace(/^"|"$/g, '')]))
-const MIG = 'supabase/migrations/202610172312_builder_ban_do_moi.sql'
+const MIGS = ['supabase/migrations/202610172312_builder_ban_do_moi.sql', 'supabase/migrations/202610172336_builder_ban_do_moi_toc_do.sql', 'supabase/migrations/202610172340_builder_ban_do_moi_cau_da_dung.sql', 'supabase/migrations/202610172342_builder_ban_do_moi_ghi_nhanh.sql']
 const c = new pg.Client({ connectionString: env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await c.connect()
 
@@ -20,8 +20,13 @@ const loiKhi = async (sql, args) => {
 
 try {
   await c.query('begin')
-  await c.query(fs.readFileSync(MIG, 'utf8'))
+  for (const m of MIGS) await c.query(fs.readFileSync(m, 'utf8'))
   console.log('✔ migration áp được (trong transaction)')
+  // Helper đọc kho (security definer) kiểm thành viên qua JWT ⇒ giả lập JWT tài khoản admin trong transaction.
+  const [ad] = await q("select tk.id from tai_khoan tk join nhan_su ns on ns.id = tk.nhan_su_id where lower(ns.email) = 'admin@gmail.com' limit 1")
+  await q("select set_config('request.jwt.claims', $1, true)", [JSON.stringify({ sub: ad.id, role: 'authenticated', email: 'admin@gmail.com' })])
+  const [{ tv }] = await q('select la_thanh_vien() tv')
+  kiem('JWT giả lập là thành viên', tv)
 
   // ── 1. Cây chọn K7 ──
   let t0 = Date.now()
@@ -80,7 +85,7 @@ try {
   const bu = nd.buoi[0]
   kiem('trả đúng 1 buổi, 2 nhóm theo thứ tự chọn', nd.buoi.length === 1 && bu.nhom.map((n) => n.id).join() === [A.id, B.id].join())
   kiem('nhóm A đủ dạng bài theo thứ tự chọn, B chỉ 1 dạng bài lẻ', bu.nhom[0].dang_bai.map((d) => d.id).join() === dsAall.join() && bu.nhom[1].dang_bai.length === 1)
-  kiem('mỗi nhóm có BTVN', bu.nhom.every((n) => n.btvn && n.btvn.caus.length > 0))
+  kiem(`mỗi nhóm có BTVN đủ 4 câu khi kho đủ (${bu.nhom.map((n) => n.btvn?.caus.length).join('/')})`, bu.nhom.every((n) => n.btvn && n.btvn.caus.length === 4))
   const tatCa = bu.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.btvn?.caus ?? []), ...(n.chua_phan?.caus ?? [])])
   kiem(`không trùng câu trong buổi (${tatCa.length} câu)`, new Set(tatCa).size === tatCa.length)
   kiem('dạng bài có câu ⇒ có câu luyện (mặc định 2)', bu.nhom[0].dang_bai.filter((d) => A.dang_bai.find((x) => x.id === d.id).so_cau >= 2).every((d) => d.caus.length === 2))
@@ -159,6 +164,14 @@ try {
     kiem(`nhóm không có dạng bài ⇒ câu luyện vào "chưa phân" (${n4.chua_phan?.caus.length ?? 0} câu) + BTVN`, (n4.chua_phan?.caus.length ?? 0) > 0 && n4.btvn.caus.length > 0)
   } else kiem('tìm được nhóm K4 không dạng bài có câu để thử', false)
 
+  // ── 8b. Không phải thành viên ⇒ helper đọc kho từ chối ──
+  await q("select set_config('request.jwt.claims', '{}', true)")
+  const eTv = await loiKhi("select count(*) from _tl_bdm_cau_vi_tri('7')")
+  kiem('không có JWT thành viên ⇒ từ chối đọc kho', eTv && eTv.includes('Chỉ nhân sự'), eTv)
+  const eGhi = await loiKhi(`select fn_tl_bdm_dat_buoi($1, $2, '[]'::jsonb)`, [tl.id, b1.id])
+  kiem('không có JWT thành viên ⇒ từ chối ghi (hàm ghi chạy quyền chủ vẫn kiểm)', eGhi && eGhi.includes('Chỉ nhân sự'), eGhi)
+  await q("select set_config('request.jwt.claims', $1, true)", [JSON.stringify({ sub: ad.id, role: 'authenticated', email: 'admin@gmail.com' })])
+
   // ── 9. Nội dung cả giáo trình + quyền ──
   const [{ nd_all: ndAll }] = await q(`select fn_tl_bdm_noi_dung($1) nd_all`, [tl.id])
   kiem('noi_dung cả giáo trình: 2 buổi đúng thứ tự', ndAll.buoi.map((b) => b.tieu_de).join() === 'Buổi 1,Buổi 2')
@@ -166,7 +179,7 @@ try {
   kiem('nội dung mang lý thuyết nhóm (để in)', ly)
   const quyen = await q(`select p.proname, has_function_privilege('anon', p.oid, 'execute') anon, has_function_privilege('authenticated', p.oid, 'execute') auth
                            from pg_proc p where p.proname like '%tl_bdm%'`)
-  kiem(`anon không gọi được ${quyen.length} hàm; authenticated gọi được`, quyen.length === 12 && quyen.every((r) => !r.anon && r.auth), JSON.stringify(quyen.filter((r) => r.anon || !r.auth)))
+  kiem(`anon không gọi được ${quyen.length} hàm; authenticated gọi được`, quyen.length === 13 && quyen.every((r) => !r.anon && r.auth), JSON.stringify(quyen.filter((r) => r.anon || !r.auth)))
 } catch (err) {
   fail++
   console.log('✘ LỖI:', err.message, err.where ?? '')

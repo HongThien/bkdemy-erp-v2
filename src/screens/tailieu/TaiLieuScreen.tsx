@@ -6,6 +6,7 @@ import { useMonScope } from '../../hooks/useMonScope'
 import { usePagedList } from '../../hooks/usePagedList'
 import { Shell, Field, inp } from '../kho/ui'
 import TaiLieuBuilder from './TaiLieuBuilder'
+import BuilderBanDoMoi from './bdm/BuilderBanDoMoi'
 
 const PAGE = 20 // "20 tài liệu gần nhất" (Thùy 09-10) — xem usePagedList
 
@@ -24,6 +25,7 @@ export default function TaiLieuScreen() {
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
   const [creating, setCreating] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
+  const [moiMo, setMoiMo] = useState<string | null>(null)   // giáo trình bản đồ mới vừa tạo (list chưa kịp tải lại)
   const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
   useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
@@ -49,6 +51,9 @@ export default function TaiLieuScreen() {
   // sort ở client — CHỈ sắp lại trang đã tải (không phải tính toán nghiệp vụ, thuần UI).
   const shown = [...list].sort((a, b) => sort === 'ten' ? a.ten.localeCompare(b.ten, 'vi') : (b.created_at ?? '').localeCompare(a.created_at ?? ''))
 
+  // Giáo trình theo bản đồ mới mở builder mới (spec-builder-ban-do-moi.md) — dispatch theo cột ban_do, không đoán.
+  const openTl = list.find((t) => t.id === openId)
+  if (openId && (openTl?.ban_do === 'moi' || moiMo === openId)) return <BuilderBanDoMoi id={openId} onClose={() => { setOpenId(null); setMoiMo(null); reload() }} />
   if (openId) return <TaiLieuBuilder id={openId} onClose={() => { setOpenId(null); reload() }} />
 
   return (
@@ -100,7 +105,7 @@ export default function TaiLieuScreen() {
             <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
               {shown.map((t) => (
                 <div key={t.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-4">
-                  <div className="text-[16px] font-semibold text-slate-900">{t.ten}</div>
+                  <div className="flex items-start gap-2"><div className="min-w-0 flex-1 text-[16px] font-semibold text-slate-900">{t.ten}</div>{t.ban_do === 'moi' && <span className="shrink-0 rounded bg-emerald-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-emerald-700">🆕 Bản đồ mới</span>}</div>
                   <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi}{t.ma_chuyen_de ? ` · chuyên đề ${t.ma_chuyen_de}` : ''}</div>
                   <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>
                   <div className="mt-3 flex gap-2">
@@ -119,20 +124,23 @@ export default function TaiLieuScreen() {
           )}
       </div>
 
-      {creating && <CreateModal khoi={khoi === ALL ? DEFAULT_KHOI : khoi} mon={mon} nhanh={mon === 'Toán' ? nhanh : null} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
+      {creating && <CreateModal khoi={khoi === ALL ? DEFAULT_KHOI : khoi} mon={mon} nhanh={mon === 'Toán' ? nhanh : null} onClose={() => setCreating(false)} onCreated={(id, moi) => { setCreating(false); reload(); if (moi) setMoiMo(id); setOpenId(id) }} />}
     </div>
   )
 }
 
-function CreateModal({ khoi, mon, nhanh, onClose, onCreated }: { khoi: string; mon: string; nhanh: string | null; onClose: () => void; onCreated: (id: string) => void }) {
+function CreateModal({ khoi, mon, nhanh, onClose, onCreated }: { khoi: string; mon: string; nhanh: string | null; onClose: () => void; onCreated: (id: string, moi: boolean) => void }) {
   const [ten, setTen] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // Builder bản đồ mới: hiện chỉ cho Toán · Đại (HGT đợt 2). Mặc định TẮT tới khi xong In (bước 3) + Gán lớp (bước 4) — spec B6.
+  const coBanDoMoi = mon === 'Toán' && nhanh === null
+  const [banDoMoi, setBanDoMoi] = useState(false)
 
   async function create() {
     if (!ten.trim()) return
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ ten: ten.trim(), khoi, mon, nhanh }); onCreated(tl.id) }
+    try { const moi = coBanDoMoi && banDoMoi; const tl = await createTaiLieu({ ten: ten.trim(), khoi, mon, nhanh, ban_do: moi ? 'moi' : 'cu' }); onCreated(tl.id, moi) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
 
@@ -140,6 +148,12 @@ function CreateModal({ khoi, mon, nhanh, onClose, onCreated }: { khoi: string; m
     <Shell title={`Tạo giáo trình · ${mon}${nhanh === 'hinh_gt' ? ' · Hình giải tích' : ''} · Khối ${khoi}`} onClose={onClose}>
       <Field label="Tên giáo trình"><input value={ten} onChange={(e) => setTen(e.target.value)} className={inp} placeholder="vd: Ôn tập Phân số" autoFocus /></Field>
       <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào Builder → bấm <b>+ Thêm chuyên đề</b> (thêm nhiều chuyên đề để gộp thành 1 tài liệu lớn).</div>
+      {coBanDoMoi && (
+        <label className="mb-3 flex items-start gap-2 rounded-md border border-emerald-200 bg-emerald-50/50 px-3 py-2 text-[12.5px] text-slate-700">
+          <input type="checkbox" checked={banDoMoi} onChange={(e) => setBanDoMoi(e.target.checked)} className="mt-0.5" />
+          <span><b>🆕 Theo bản đồ mới</b> (nhóm bài · dạng bài) <span className="text-slate-400">— đang thử: chưa xuất PDF / gán lớp được</span></span>
+        </label>
+      )}
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>

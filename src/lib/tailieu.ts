@@ -202,7 +202,7 @@ export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
 // stt_lop = SỐ BUỔI CỦA LỚP (1,2,3…) cho doc vận hành bám (lop_id, ngay) — xem §"Bộ giáo trình riêng
 // của lớp" phía dưới. NULL với master/ET/đề thi (không thuộc lớp nào).
 // nhanh: chỉ có ý nghĩa trong mon='Toán' — null = Đại (mặc định, mã cũ) | 'hinh_gt' = Hình giải tích.
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null }
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null; ban_do?: 'cu' | 'moi'; luu_tru_tu?: string | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
 export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
 export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
@@ -279,10 +279,10 @@ export async function listTaiLieuFacets(): Promise<{ loai: string; mon: string }
   if (error) throw error
   return (data ?? []) as { loai: string; mon: string }[]
 }
-export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
+export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string; ban_do?: 'cu' | 'moi' }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', ban_do: input.ban_do ?? 'cu', created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
