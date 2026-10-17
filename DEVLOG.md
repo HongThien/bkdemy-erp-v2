@@ -38025,3 +38025,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Đọc:** `TaiLieuBuilder.tsx` + `tailieu.ts` (buổi → dạng → luyện/BTVN, `ref_ma = ma_dang`, gợi ý câu xếp hạng ở client) · `spec-ban-do-4-tang.md` + `banDoMoi.ts` + DB live (chỉ đọc): dạng bài có LT + ví dụ, chuyên đề KHÔNG có ô LT, `_bdm_cau_giai` chỉ đọc `dai_cau_hoi`, B5 chưa làm. Bên dùng `loai_phan`: tailieu/PrintView/ontap/gami:825/testonline.
 - **Đề xuất:** `spec-builder-ban-do-moi.md` — chọn NHÓM rồi tick dạng bài · luyện theo dạng bài, BTVN theo nhóm · in LT nhóm → (LT + ví dụ + luyện) từng dạng bài · giáo trình cũ để nguyên, cột `tai_lieu.ban_do` · 3 loại phần mới · 5 hàm DB (gợi ý câu xuống DB).
 - **Phát hiện:** B5 "nhóm mới nhận lại mã nhóm cũ" trái luật mã gốc 14/10 — builder mới trỏ id `NNB`/`NDB` sẽ mồ côi. Đề xuất B5 giữ id, đối ứng KP ở cột riêng. **Chờ Thùy chốt A1–A4 + B2.**
+
+### 17/10 (tiếp) — Builder bản đồ mới: CEO chốt phần A + luật mã
+- **Thùy chốt:** (1) nhóm là chính, vẫn chọn dạng bài lẻ từ nhiều nhóm trong 1 buổi · (2) BTVN theo nhóm bài · (3) bỏ hẳn chuyên đề khỏi bản in/thẻ buổi — chỉ còn LT nhóm + LT/ví dụ dạng bài · (4) giáo trình mới tạo bằng builder mới, 87 giáo trình cũ CHUYỂN QUA làm bản lưu trữ ("đằng nào cũng làm lại mastery") · mã: "không đổi mã = đi theo câu hỏi; mã chỉ để duy nhất".
+- **Sửa spec:** `spec-builder-ban-do-moi.md` (A0 luật mã, A1–A4, B1 thêm `nhom_chua_phan`/`chua_khop` + cột `luu_tru_tu`, B2 chuyển giáo trình cũ theo câu — số câu trước = sau, không bỏ câu) · `spec-ban-do-4-tang.md` §0 ghi chú B5 không nhận lại mã cũ.
+- **Chưa build.** Bước kế: B6 bước 1 (migration + hàm DB).
