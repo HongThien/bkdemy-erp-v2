@@ -248,7 +248,8 @@ export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe:
 // của dòng cuối trang trước) cho "Tải thêm". Xem hook dùng chung `usePagedList` (src/hooks).
 export const PAGE_MOI_NHAT = 20
 const PAGE_SEARCH = 200
-export type ListPageOpts = { before?: string; search?: string; limit?: number }
+// banDo: lá "Giáo trình" (cũ) và "Giáo trình (bản đồ mới)" là 2 chức năng riêng (Thùy 18/10) ⇒ mỗi lá chỉ thấy giáo trình của mình.
+export type ListPageOpts = { before?: string; search?: string; limit?: number; banDo?: 'cu' | 'moi' }
 // nhanh: undefined = không lọc (mọi nhánh) · null = CHỈ Đại (nhanh is null) · string = CHỈ nhánh đó.
 export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null, opts?: ListPageOpts): Promise<TaiLieu[]> {
   // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
@@ -257,6 +258,7 @@ export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: stri
   if (mon) q = q.eq('mon', mon)
   if (nhanh === null) q = q.is('nhanh', null)
   else if (nhanh) q = q.eq('nhanh', nhanh)
+  if (opts?.banDo) q = q.eq('ban_do', opts.banDo)
   if (opts?.before) q = q.lt('created_at', opts.before)
   if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
   q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))

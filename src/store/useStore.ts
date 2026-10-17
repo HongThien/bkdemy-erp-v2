@@ -361,6 +361,7 @@ export const canAccessAdmin = (q: MyQuyen | null): boolean => accessibleLeaves(q
 // giáo trình/ET (kho có sẵn → ghép ra tài liệu). Xem leaf `nhapkho` (tab "Nhập đề thi").
 export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:giao_trinh', ten: 'Giáo trình' },
+  { id: 'lamtailieu:giao_trinh_bdm', ten: 'Giáo trình (bản đồ mới)' }, // Thùy 18/10: lá RIÊNG song song lá cũ, hoàn thiện rồi mới bỏ lá cũ (spec-builder-ban-do-moi.md)
   { id: 'lamtailieu:giao_trinh_hinh', ten: 'Giáo trình (Hình)' },   // ⭐ 08-08 "chuyển nhà": ngang hàng Đại, không còn chôn trong rail Kho
   { id: 'lamtailieu:et', ten: 'ET' },
   { id: 'lamtailieu:mt', ten: 'MT' },

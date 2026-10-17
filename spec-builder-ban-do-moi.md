@@ -63,6 +63,9 @@ BTVN (phiếu riêng như cũ): theo nhóm, câu xếp theo dạng bài
 - Số hiển thị (Nhóm 2, Dạng bài 2.3, Câu 5) suy lúc in, không lưu.
 
 ### A4. Giáo trình MỚI tạo bằng builder mới · giáo trình CŨ CHUYỂN QUA để lưu trữ
+- **⭐ Thùy 18/10: HAI LÁ RIÊNG trên cây** (như "Bản đồ kiến thức (Kho)" / "Bản đồ mới"): Làm tài liệu › **Giáo trình** (cũ — chỉ thấy + tạo `ban_do='cu'`)
+  và › **Giáo trình (bản đồ mới)** (`lamtailieu:giao_trinh_bdm`, màn `bdm/GiaoTrinhBdmScreen` — chỉ thấy + tạo `ban_do='moi'`). Builder mới riêng hẳn builder cũ.
+  **Hoàn thiện cái mới rồi mới bỏ cái cũ** (gỡ lá cũ = việc riêng, Luật xoá).
 - Tạo mới: luôn theo bản đồ mới.
 - **87 giáo trình cũ: chuyển sang khuôn mới làm bản LƯU TRỮ** — CEO: mastery đằng nào cũng làm lại theo câu, nên chuyển theo câu là đủ, không phải đoán nhóm.
 - Bản lưu trữ: xem/in/nhân bản thành giáo trình mới được; không soạn tiếp trên nó.
