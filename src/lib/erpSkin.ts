@@ -62,14 +62,15 @@ export const NEN_TU_CHON = 'tu_chon'
 // trang trí của style (nhân vật góc trái, bong bóng, hoạ tiết) tự bỏ — y như ảnh cá nhân.
 // `rieng_cho` = danh sách mã nhân sự (ma_ns) được thấy hình đó trong bảng chọn; bỏ trống = ai cũng thấy.
 // Hình thiết kế riêng theo order: file gốc ở design/bk-ui-src/erp-ca-nhan/, bản nén ở public/bk-ui/erp/nen/ca-nhan/.
-export type NenErp = { id: string; ten: string; url: string; rieng_cho?: string[] }
+// `viTri` (tuỳ chọn) = vị trí ảnh khi bị xén theo khung (CSS background-position, mặc định 'center'): ảnh có chữ sát mép trên thì đặt 'center 10%' (hoặc 'center top') để không bị cắt khi màn rộng xén ảnh theo chiều dọc.
+export type NenErp = { id: string; ten: string; url: string; rieng_cho?: string[]; viTri?: string }
 export const NEN_ERP: NenErp[] = [
   { id: 'erp_ke_hoc_thuat', ten: 'Kệ học thuật', url: '/bk-ui/erp/nen/ke_hoc_thuat.jpg' },
   { id: 'erp_pegboard', ten: 'Bảng đục lỗ', url: '/bk-ui/erp/nen/pegboard.jpg' },
   { id: 'erp_lang_bk', ten: 'Làng BK', url: '/bk-ui/erp/nen/lang_bk.jpg' },
   // Hình riêng theo order — thêm 1 dòng/ảnh (nén bằng `node scripts/erp-nen-ca-nhan.mjs`)
   { id: 'erp_cn_ns002', ten: 'Của tôi', url: '/bk-ui/erp/nen/ca-nhan/ns002.jpg', rieng_cho: ['NS002'] },
-  { id: 'erp_cn_ns009', ten: 'Nền của Quỳnh Trang', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'] },
+  { id: 'erp_cn_ns009', ten: 'Nền của Quỳnh Trang', url: '/bk-ui/erp/nen/ca-nhan/ns009.jpg', rieng_cho: ['NS009'], viTri: 'center 10%' },
   { id: 'erp_cn_ns004', ten: 'Sân thượng sau mưa', url: '/bk-ui/erp/nen/ca-nhan/ns004.jpg', rieng_cho: ['NS004'] },
   { id: 'erp_cn_ns008', ten: 'Vịt vàng', url: '/bk-ui/erp/nen/ca-nhan/ns008.jpg', rieng_cho: ['NS008', 'NS009'] },
 ]
@@ -161,7 +162,8 @@ export function useSkinErp() {
   return useMemo(() => {
     const skin = skinErp(gd.skin)
     // Ảnh nền ĐÈ hình nền của style: ảnh người dùng tự đưa lên, hoặc 1 trong NEN_ERP.
-    const nenUrl = gd.nen === NEN_TU_CHON ? (gd.nen_url ?? null) : (NEN_ERP.find((n) => n.id === gd.nen)?.url ?? null)
+    const nenCo = gd.nen === NEN_TU_CHON ? undefined : NEN_ERP.find((n) => n.id === gd.nen)
+    const nenUrl = gd.nen === NEN_TU_CHON ? (gd.nen_url ?? null) : (nenCo?.url ?? null)
     const tuChon = !!nenUrl
     const cd = cheDoErp(skin, gd)
     const nv = (cd === 'toi' ? skin.nhanVatToi : undefined) ?? skin.nhanVat
@@ -169,7 +171,7 @@ export function useSkinErp() {
       skin, cd, gd,
       nenId: tuChon ? (gd.nen as string) : layHinhNen(skin as Skin, gd.nen).id,
       // Gắn lên khối gốc (thanh trên / trang chính): bên trong chỉ dùng `var(--sk-*)`.
-      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${nenUrl}") center / cover no-repeat`, '--sk-goc': 'none' } : {}), ...bienRieng(maNs) } as CSSProperties,
+      bien: { ...bienCss(skin as Skin, cd, gd.nen, doc), ...(tuChon ? { '--sk-page': `url("${nenUrl}") ${nenCo?.viTri ?? 'center'} / cover no-repeat`, '--sk-goc': 'none' } : {}), ...bienRieng(maNs) } as CSSProperties,
       anhNhom: anhNhom(skin),
       iconMatNa: !!skin.anhOMask,   // style đơn sắc: icon là mặt nạ, tô bằng màu chữ
       // Nền ảnh cá nhân ⇒ BỎ các asset trang trí của style (nhân vật, hoạ tiết góc, gạch) — ảnh của người dùng là chính.
