@@ -1,6 +1,6 @@
 // CA BỔ TRỢ HÌNH — phía TRỢ GIẢNG / GV (Thùy 17/10). Dưới ca bổ trợ yếu trong tab Bổ trợ.
 // Khác Đại: không dạng/luyện/test (chưa có bản đồ Hình) — điểm danh → xem TÀI LIỆU buổi (do GV gắn ở ERP) → nhận xét → Hoàn tất.
-// Hoàn tất như Đại: case KẾT THÚC, trừ khi tick "còn học tiếp" (khi đó OPS xếp buổi kế). Nguồn: fn_bthinh_viec_cua_toi · fn_bthinh_hoan_tat.
+// Hoàn tất ⇒ case KẾT THÚC luôn (17/10: 1 tuần bổ trợ 1 lần, tuần sau duyệt lại). Nguồn: fn_bthinh_viec_cua_toi · fn_bthinh_hoan_tat.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState } from 'react'
 import { viecHinhCuaToi, diemDanhCaHinh, hoanTatCaHinh, MUC_HINH_TEN, UU_TIEN_HINH_TEN, type ViecCaHinh } from '../../lib/botro_hinh'
@@ -44,7 +44,6 @@ export default function CaHinhTA() {
 
 function ChiTiet({ c, onVa, onXong }: { c: ViecCaHinh; onVa: (fn: (c: ViecCaHinh) => ViecCaHinh) => void; onXong: () => void }) {
   const [nx, setNx] = useState(c.nhan_xet ?? '')
-  const [conTiep, setConTiep] = useState(false)
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   const [kt, setKt] = useState<string | null>(null)
@@ -57,9 +56,9 @@ function ChiTiet({ c, onVa, onXong }: { c: ViecCaHinh; onVa: (fn: (c: ViecCaHinh
   async function hoanTat() {
     setBusy(true); setLoi(null)
     try {
-      const r = await hoanTatCaHinh(c.buoi_id, nx, conTiep)
+      await hoanTatCaHinh(c.buoi_id, nx, false)
       onVa((x) => ({ ...x, danh_gia_xong_at: new Date().toISOString(), nhan_xet: nx }))
-      setKt(r.ket_thuc_case ? '🎉 Đã hoàn tất — ca bổ trợ Hình của em KẾT THÚC.' : '✓ Đã hoàn tất buổi — ca còn mở, OPS xếp buổi kế.')
+      setKt('🎉 Đã hoàn tất — ca bổ trợ Hình của em KẾT THÚC (1 tuần bổ trợ 1 lần, tuần sau duyệt lại).')
       onXong()
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -80,7 +79,6 @@ function ChiTiet({ c, onVa, onXong }: { c: ViecCaHinh; onVa: (fn: (c: ViecCaHinh
           </div>))}</div>}
       <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-[#63709A]">③ Nhận xét cuối buổi</p>
       <textarea value={nx} onChange={(e) => setNx(e.target.value)} disabled={xong} rows={3} placeholder="Em làm được gì, còn vướng chỗ nào, cần ôn tiếp phần nào…" className="mt-1 w-full rounded-xl border border-[#DCE6FF] bg-white p-2 text-[13px] disabled:bg-slate-50" />
-      {!xong && <label className="mt-1.5 flex items-center gap-1.5 text-[12px] text-[#63709A]"><input type="checkbox" checked={conTiep} onChange={(e) => setConTiep(e.target.checked)} />Em còn học tiếp (không kết thúc ca — OPS xếp buổi kế)</label>}
       {loi && <p className="mt-2 rounded-xl bg-rose-50 px-3 py-2 text-[12px] font-semibold text-rose-700">{loi}</p>}
       {kt && <p className="mt-2 rounded-xl bg-[#E4F8EC] px-3 py-2 text-[12px] font-semibold text-[#1E8A52]">{kt}</p>}
       {!xong && <button disabled={busy || c.diem_danh !== 'co_mat' || !nx.trim()} onClick={hoanTat} className="mt-2 w-full rounded-full bg-[#8B6BEF] py-2 text-[13px] font-bold text-white disabled:opacity-40">{busy ? '…' : 'Hoàn tất ca'}</button>}

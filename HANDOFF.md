@@ -9,6 +9,12 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+- **⭐⭐⭐⭐⭐ DUYỆT BỔ TRỢ 2 VÒNG + CHỐT TUẦN + 1 TUẦN BỔ TRỢ 1 LẦN (Thùy 17/10; BUILD + ÁP DB `202610172355` + PUSH; ERP CHƯA deploy, CHƯA thử Chốt tuần/Duyệt chính thức bằng dữ liệu thật). ĐỌC `spec-bo-tro.md` §25.**
+  - **Màn Duyệt viết lại:** 3 subtab **👁 Đang theo dõi (Vòng 2) · 🚨 Báo động · 📉 Điểm thấp (Vòng 1)**, mỗi màn 1 HS, máy KHÔNG đề xuất. Vòng 1 chỉ "Đưa vào theo dõi"/"Bỏ qua" (không slot); Vòng 2 "Duyệt chính thức" mới mở case + trừ slot (đường duyệt cũ). Em hết tín hiệu ⇒ người duyệt **gỡ tay**. Em ở 2 tab ⇒ duyệt ở đâu biến mất cả hai.
+  - **KHÔNG realtime:** thứ 2 bấm **Chốt tuần** (engine TS quét cả lớp, vài chục giây) ⇒ ảnh chụp `bo_tro_chot_tuan(_hs)`; Điểm thấp + Theo dõi đọc ảnh chụp, **chỉ Báo động live**. ET 4 buổi (so lớp, màu: <85% TB hoặc 2 cuối = đỏ đậm…, đếm theo SỐ NGƯỜI) + BTVN 4 buổi Đ/C/S tính ở DB `fn_botro_et_btvn`.
+  - **1 tuần chỉ 1 lần:** `fn_btyeu_hoan_tat` + `fn_bthinh_hoan_tat` ⇒ case KẾT THÚC ngay dù chưa hết dạng yếu (tuần sau duyệt lại). Khẩn giữa tuần = loại **Bổ trợ Khẩn cấp — CHƯA LÀM**. Trần 70/20 đếm gộp Yếu+Hình (đã sửa cả `fn_btyeu_suc_chua`/`kiem_suc_chua`).
+  - **Việc kế:** thử Chốt tuần 1 lần thật (ghi DB) + 1 ca Duyệt chính thức · Bổ trợ Khẩn cấp · port quét Chốt tuần sang SQL · ET online (`bai_lam_cau`) chưa vào điểm ET · luật 2 cuối/đầu khi quá nửa lớp cùng điểm.
+
 - **⭐⭐⭐⭐ BỔ TRỢ HÌNH — LOẠI THỨ 4, ĐỘC LẬP VỚI YẾU ĐẠI (Thùy 17/10; BUILD + ÁP DB `202610171805` + `202610171841` + PUSH; ERP + app TA CHƯA deploy, chưa thử bằng đăng nhập thật). ĐỌC `spec-bo-tro.md` §24 TRƯỚC khi sửa.**
   - **"Case" = hồ sơ bổ trợ Hình của 1 em** (`bo_tro_hinh`: HS × ĐỢT, lý do bắt buộc · mức L1–L3 · ưu tiên · `case_truoc_id` vòng sau; log `bo_tro_hinh_log` bằng trigger). Không dạng/kho/đo/đề xuất máy vì Hình chưa có bản đồ; khi có bản đồ mới thêm đo + nguồn máy.
   - **Luồng:** Trang/Lộc tự mở (ERP Bổ trợ › tab **Hình**, `fn_bthinh_mo`) → xếp ở Lịch phòng (ca trực › "+ Xếp" › tab Hình; đơn vị L1=1 / L2,L3=4, suất 3/TA theo bậc; `buoi_hoc.loai='bo_tro_hinh'`, `buoi_hoc_hs.bo_tro_hinh_id`, 1 buổi chờ học/case) → GV gắn **tài liệu theo BUỔI** (`bo_tro_hinh_tai_lieu` ← kho `tai_lieu`/builder) → app TA `CaHinhTA` (điểm danh → tài liệu → nhận xét → Hoàn tất, `fn_bthinh_hoan_tat`). Hoàn tất ⇒ case kết thúc `day_xong` trừ tick "còn học tiếp"; Trang/Lộc đóng tay (ổn/cần thêm/bỏ). Cuối buổi chỉ NHẬN XÉT, không test/đánh giá.

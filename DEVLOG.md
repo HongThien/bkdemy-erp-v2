@@ -38045,3 +38045,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Kiểm trên app (admin, K7):** tạo · thêm buổi · chọn 1 nhóm trọn + 1 dạng bài lẻ nhóm khác · ↻ Gợi ý đổi câu không trùng · Chọn câu (★ dạng bài đang soạn, khoá 3 câu đã dùng) · tắt LT nhóm lưu DB. **Chưa bấm thử:** ▲▼ dạng bài/nhóm, ✕ câu, dòng/2 cột/cỡ ảnh, xoá buổi.
 - **Dữ liệu thử còn trên DB:** giáo trình `[TEST] Builder bản đồ mới K7` (id d626c150…, 2 buổi) — chờ Thùy gật mới xoá (Luật xoá).
 - **Tiếp:** bước 3 (In/preview A3) → bước 4 (trích xuất/ôn tập/đánh giá) → bật mặc định ô "Theo bản đồ mới".
+
+## 2026-10-17 (tối) — Duyệt bổ trợ 2 vòng + chốt tuần + 1 tuần 1 lần
+- **Làm:** mig `202610172355` ĐÃ ÁP (bảng theo dõi/chốt tuần, `fn_botro_*`, `fn_btyeu_hoan_tat` kết thúc case luôn, `fn_bthinh_hoan_tat` bỏ "còn học tiếp", `fn_btyeu_suc_chua`/`kiem_suc_chua` đếm gộp Hình). Viết lại `DuyetBoTroYeuScreen` (3 subtab, 1 HS/màn, ET tô màu, BTVN Đ/C/S, nút Chốt tuần). Thử ROLLBACK trước; đã mở màn trên dev (Báo động 14 em live, tie "cùng 4 bạn" hiện đúng).
+- **Quyết định (Thùy):** 15% = tương đối; 2 cuối/đầu đếm theo số người, cần chú thích; Báo động live, còn lại theo ảnh chụp tuần thứ 2; em ở cả 2 tab; hết tín hiệu thì người duyệt gỡ tay; bổ trợ 1 lần/tuần kể cả chưa hết dạng yếu (cả Yếu lẫn Hình); khẩn giữa tuần = Bổ trợ Khẩn cấp (chưa làm).
+- **Sai/gặp:** `pg_get_functiondef` của `fn_btyeu_hoan_tat` có CRLF ⇒ script sinh migration phải chuẩn hoá `\r\n` trước khi vá chuỗi. `fn_btyeu_suc_chua` cũ chỉ đếm Yếu ⇒ bộ đếm màn Duyệt sai khi có ca Hình.
+- **Treo:** thử Chốt tuần + Duyệt chính thức bằng dữ liệu thật · Bổ trợ Khẩn cấp · port quét sang SQL.

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-415 bảng · 25 view · 0 enum · 194 trigger · 1153 function
+418 bảng · 25 view · 0 enum · 194 trigger · 1159 function
 
 ## _app_secrets
 
@@ -416,6 +416,32 @@
 | actor | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## bo_tro_chot_tuan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tuan | date |  |  |  |  |
+| mon | text |  |  |  |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+| chot_boi | uuid | Y |  |  |  |
+| so_diem_thap | integer |  | 0 |  |  |
+| so_theo_doi | integer |  | 0 |  |  |
+
+## bo_tro_chot_tuan_hs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| chot_id | uuid |  |  | PK FK→bo_tro_chot_tuan.id |  |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| loai | text |  |  | PK | `diem_thap` · `theo_doi` |
+| lop | text | Y |  |  |  |
+| khoi | text | Y |  |  |  |
+| ly_do | text[] |  | '{}'::text[] |  |  |
+| kenh | text[] |  | '{}'::text[] |  |  |
+| uu_tien | integer |  | 0 |  |  |
+| du_lieu | jsonb |  | '{}'::jsonb |  |  |
+
 ## bo_tro_duoi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -487,6 +513,23 @@
 | ghi_chu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | created_by | uuid | Y |  |  |  |
+
+## bo_tro_theo_doi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| vao_at | timestamp with time zone |  | now() |  |  |
+| vao_boi | uuid | Y |  |  |  |
+| nguon | text |  |  |  | `bao_dong` · `diem_thap` |
+| ghi_chu | text | Y |  |  |  |
+| so_lieu_vao | jsonb |  | '{}'::jsonb |  |  |
+| trang_thai | text |  | 'theo_doi'::text |  | `theo_doi` · `bo_qua` · `len_chinh_thuc` · `go` |
+| ket_thuc_at | timestamp with time zone | Y |  |  |  |
+| ket_thuc_boi | uuid | Y |  |  |  |
+| ly_do_ket_thuc | text | Y |  |  |  |
 
 ## bo_tro_yeu
 
@@ -4785,7 +4828,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -8179,8 +8222,14 @@ WITH luot AS (
 - `fn_bo_tro_dashboard_tuan(p_den date DEFAULT NULL::date, p_so_tuan integer DEFAULT 3)` → jsonb
 - `fn_bo_tro_trong_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_bo_tro_tu_kiem(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
+- `fn_botro_bao_dong(p_mon text)` → jsonb
 - `fn_botro_cham_tay(p_bai_test_cau uuid, p_verdict text)` → jsonb
+- `fn_botro_chot_tuan(p_mon text, p_ung_vien jsonb, p_theo_doi_cd jsonb DEFAULT '[]'::jsonb)` → uuid
+- `fn_botro_danh_sach_tuan(p_mon text, p_loai text)` → jsonb
+- `fn_botro_et_btvn(p_hs uuid, p_n integer DEFAULT 4)` → jsonb
 - `fn_botro_giay_nop(p_bai_test uuid)` → jsonb
+- `fn_botro_theo_doi_ket_thuc(p_id uuid, p_trang_thai text, p_ly_do text DEFAULT NULL::text)` → void
+- `fn_botro_theo_doi_vao(p_hs uuid, p_mon text, p_nguon text, p_ghi_chu text DEFAULT NULL::text, p_bo_qua boolean DEFAULT false)` → uuid
 - `fn_bt_dong_cau(p_bt uuid, p_cau uuid[])` → jsonb
 - `fn_bt_mo_cau(p_bt uuid, p_cau uuid[])` → jsonb
 - `fn_bt_mo_phan_dau(p_bt uuid)` → jsonb
@@ -8484,8 +8533,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -8847,8 +8896,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -8918,8 +8967,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -8950,6 +8999,7 @@ WITH luot AS (
 | bo_tro_hinh | bo_tro_hinh_ly_do_ck | `CHECK ((length(TRIM(BOTH FROM ly_do)) > 0))` |
 | bo_tro_hinh | bo_tro_hinh_muc_ck | `CHECK ((muc = ANY (ARRAY[1, 2, 3])))` |
 | bo_tro_hinh | bo_tro_hinh_uu_tien_ck | `CHECK (((uu_tien >= 1) AND (uu_tien <= 3)))` |
+| bo_tro_theo_doi | bo_tro_theo_doi_dong_ck | `CHECK (((trang_thai = 'theo_doi'::text) OR (ket_thuc_at IS NOT NULL)))` |
 | bo_tro_yeu | bo_tro_yeu_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
 | bo_tro_yeu | bo_tro_yeu_muc_ck | `CHECK (((muc IS NULL) OR (muc = ANY (ARRAY[1, 2, 3]))))` |
 | bo_tro_yeu | bo_tro_yeu_muc_may_ck | `CHECK (((muc_may_de_xuat IS NULL) OR (muc_may_de_xuat = ANY (ARRAY[1, 2, 3]))))` |
