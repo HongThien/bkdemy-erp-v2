@@ -46,7 +46,7 @@ function KhoiET({ et }: { et: BuoiET[] }) {
         <span><i className="mr-1 inline-block h-3 w-3 rounded border border-green-200 bg-green-100 align-middle" />Xanh nhạt: từ TB trở lên</span>
         <span><i className="mr-1 inline-block h-3 w-3 rounded bg-green-600 align-middle" />Xanh: &gt;115% TB hoặc 2 đầu lớp</span>
       </div>
-      <p className="mt-1.5 text-[11.5px] text-slate-500">ⓘ <b>"15%" là 15% của TB lớp</b> (TB lớp 70% → đỏ đậm khi &lt;59,5%), không phải 15 điểm. <b>"2 cuối / 2 đầu lớp" đếm theo SỐ NGƯỜI, không theo vị trí:</b> 4 bạn cùng điểm thấp nhất thì cả 4 đều đỏ đậm. Mỗi ô ghi rõ lý do bị tô màu đó.</p>
+      <p className="mt-1.5 text-[11.5px] text-slate-500">ⓘ <b>"15%" là 15% của TB lớp</b> (TB lớp 70% → đỏ đậm khi &lt;59,5%), không phải 15 điểm. <b>"2 cuối / 2 đầu lớp" đếm theo SỐ NGƯỜI, không theo vị trí:</b> 4 bạn cùng điểm thấp nhất thì cả 4 đều đỏ đậm — trừ khi QUÁ NỬA lớp cùng điểm (khi đó không áp luật này). Mỗi ô ghi rõ lý do bị tô màu đó.</p>
     </>
   )
 }
