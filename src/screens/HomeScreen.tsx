@@ -558,7 +558,7 @@ export default function HomeScreen() {
         )}
         <div className="min-w-0 flex-1">
           {/* HÀNG ĐẦU: lời chào · vị trí 2 (cạnh lời chào) · nút Tuỳ chỉnh / Giao diện */}
-          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'} style={!isMobile && (meo || vit || ban) ? { paddingTop: Math.max(12, (meo ? meoCao(meo) - meo.chim : 0), (vit ? vit.cao - vit.chim : 0) + 4, (ban ? ban.cao - ban.chim : 0) + 4) } : undefined}>
+          <div className={isMobile ? 'mb-4 space-y-3' : 'mb-5 flex flex-wrap items-start gap-4 pt-3'} style={!isMobile && (meo || vit || ban) ? { paddingTop: Math.max(12, (meo ? meoCao(meo) - meo.chim : 0), (vit ? vit.cao - vit.chim : 0) + 4, (ban ? ban.cao - ban.chim + 28 : 0) + 4) } : undefined}>
             {!coNv && coTrai && <div className={isMobile ? '' : 'w-[340px] shrink-0'}>{oVitri(0)}</div>}
             {/* MỘT BOX HỒ SƠ: avatar to (bấm để đổi ảnh) · lời chào · Hòm thư nằm TRONG box */}
             <div className={`relative flex shrink-0 items-center gap-4 ${isMobile ? 'px-3 py-3' : 'px-5 py-4'}`} style={tam}>

@@ -1,7 +1,7 @@
 // HAI BẠN ĐI LẠI GẶP NHAU trên mép card "Chào …" (trang trí riêng theo mã nhân sự — cấu hình ở `DOI_BAN` trong lib/erpSkin.ts).
 // Vòng 30 giây, thuần CSS: A đi từ TRÁI sang phải, B đi từ PHẢI sang trái → gặp nhau giữa card, dừng, quay vào nhau VẪY TAY CHÀO ≈3s
 //   → đi tiếp về hai đầu (đi ngang qua nhau) → nghỉ, quay đầu → gặp nhau lần nữa, chào → đi về chỗ cũ → lặp.
-// BẤM vào một trong hai bạn ⇒ cả hai đứng sững, đổi sang dáng GIẬN (lắc nhanh + 💢) ≈2,6s rồi đi tiếp đúng chỗ đang đi.
+// BẤM vào một trong hai bạn ⇒ cả hai đứng sững, đổi sang dáng GIẬN (lắc nhanh + 💢) ≈2,6s, bạn bị bấm hiện bong bóng lời nhắn "Aishhhhh", rồi đi tiếp đúng chỗ đang đi.
 // Mọi dáng nền trong suốt vẽ QUAY PHẢI (code tự lật). Gắn vào phần tử `position: relative` (card). Không bắt chuột trừ 2 bạn.
 // Máy bật "giảm chuyển động" ⇒ hai bạn đứng yên ở 2 đầu, bấm không có hiệu ứng.
 import { useEffect, useRef, useState } from 'react'
@@ -19,6 +19,7 @@ const CSS = `
 @keyframes dbHai1 { 0%,49.99% { opacity: 1 } 50%,100% { opacity: 0 } }
 @keyframes dbHai2 { 0%,49.99% { opacity: 0 } 50%,100% { opacity: 1 } }
 @keyframes dbNhun { 0%,100% { transform: translateY(0) rotate(-3deg) } 50% { transform: translateY(-3px) rotate(3deg) } }
+@keyframes dbBong { 0% { transform: translateX(-50%) scale(.5); opacity: 0 } 55% { transform: translateX(-50%) scale(1.12); opacity: 1 } 100% { transform: translateX(-50%) scale(1); opacity: 1 } }
 @keyframes dbRung { 0%,100% { transform: translateX(0) rotate(-5deg) } 50% { transform: translateX(2px) rotate(5deg) } }
 .db-a { animation: dbA 30s linear infinite }
 .db-b { animation: dbB 30s linear infinite }
@@ -37,6 +38,8 @@ const CSS = `
 .db-root.db-gian .db-di, .db-root.db-gian .db-chao, .db-root.db-gian .db-nghi { animation-play-state: paused }
 .db-root.db-gian .db-di, .db-root.db-gian .db-chao, .db-root.db-gian .db-nghi { visibility: hidden }
 .db-root.db-gian .db-gianl { opacity: 1; animation: dbRung .16s ease-in-out infinite }
+.db-bong { position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%); white-space: nowrap; padding: 3px 11px 4px; border: 2px solid #4a342a; border-radius: 14px; background: #fffdf8; color: #4a342a; font: 800 13px/1.2 system-ui, sans-serif; letter-spacing: .2px; box-shadow: 0 2px 0 rgba(74,52,42,.3); animation: dbBong .28s ease-out both; pointer-events: none }
+.db-bong::after { content: ''; position: absolute; left: 50%; bottom: -7px; width: 9px; height: 9px; margin-left: -5px; background: #fffdf8; border-right: 2px solid #4a342a; border-bottom: 2px solid #4a342a; transform: rotate(45deg) }
 .db-gianl i { position: absolute; top: -6px; right: -4px; font-style: normal; font-size: 16px; line-height: 1 }
 @media (prefers-reduced-motion: reduce) {
   .db-a, .db-b, .db-fa, .db-fb, .db-di, .db-chao, .db-nghi, .db-h1, .db-h2, .db-c1, .db-c2, .db-nhun { animation: none }
@@ -46,10 +49,11 @@ const CSS = `
 `
 
 const GIAN_MS = 2600
+const LOI_GIAN = 'Aishhhhh'   // lời nhắn hiện trên đầu bạn bị bấm
 
 export const doiBanRong = (n: DoiBanNv, cao: number) => n.tiLe * cao
 
-function Ban({ nv, cao, chim, pos, flip, tren, onBam }: { nv: DoiBanNv; cao: number; chim: number; pos: string; flip: string; tren: number; onBam: () => void }) {
+function Ban({ nv, cao, chim, pos, flip, tren, onBam, loi }: { nv: DoiBanNv; cao: number; chim: number; pos: string; flip: string; tren: number; onBam: () => void; loi?: string }) {
   const w = doiBanRong(nv, cao)
   const img = (src: string, cls: string) => <img src={src} alt="" draggable={false} className={cls} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
   return (
@@ -62,27 +66,28 @@ function Ban({ nv, cao, chim, pos, flip, tren, onBam }: { nv: DoiBanNv; cao: num
         <div className="db-chao" style={{ position: 'absolute', inset: 0 }}>{img(nv.chao1, 'db-c1')}{img(nv.chao2, 'db-c2')}</div>
         <div className="db-gianl" style={{ position: 'absolute', inset: 0 }}>{img(nv.gian, '')}<i>💢</i></div>
       </div>
+      {loi && <span className="db-bong">{loi}</span>}
     </div>
   )
 }
 
 export default function DoiBan({ cfg }: { cfg: DoiBanCfg }) {
-  const [gian, setGian] = useState(false)
+  const [gian, setGian] = useState<'a' | 'b' | null>(null)   // bạn nào vừa bị bấm (lời nhắn hiện trên đầu bạn đó)
   const hen = useRef<number | undefined>(undefined)
   useEffect(() => () => window.clearTimeout(hen.current), [])
-  const bam = () => {
+  const bam = (ai: 'a' | 'b') => () => {
     try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return } catch { /* bỏ qua */ }
-    setGian(true)
+    setGian(ai)
     window.clearTimeout(hen.current)
-    hen.current = window.setTimeout(() => setGian(false), GIAN_MS)
+    hen.current = window.setTimeout(() => setGian(null), GIAN_MS)
   }
   return (
     <>
       <style>{CSS}</style>
       <div aria-hidden className={`db-root${gian ? ' db-gian' : ''}`}
         style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 0, zIndex: 3, pointerEvents: 'none', ['--wa' as any]: `${doiBanRong(cfg.a, cfg.cao)}px`, ['--wb' as any]: `${doiBanRong(cfg.b, cfg.cao)}px` }}>
-        <Ban nv={cfg.b} cao={cfg.cao} chim={cfg.chim} pos="db-b" flip="db-fb" tren={1} onBam={bam} />
-        <Ban nv={cfg.a} cao={cfg.cao} chim={cfg.chim} pos="db-a" flip="db-fa" tren={2} onBam={bam} />
+        <Ban nv={cfg.b} cao={cfg.cao} chim={cfg.chim} pos="db-b" flip="db-fb" tren={1} onBam={bam('b')} loi={gian === 'b' ? LOI_GIAN : undefined} />
+        <Ban nv={cfg.a} cao={cfg.cao} chim={cfg.chim} pos="db-a" flip="db-fa" tren={2} onBam={bam('a')} loi={gian === 'a' ? LOI_GIAN : undefined} />
       </div>
     </>
   )
