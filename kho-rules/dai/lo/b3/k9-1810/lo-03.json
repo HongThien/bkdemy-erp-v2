@@ -1,0 +1,507 @@
+[
+ {
+  "ma_cau": "T109000000500",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $5(3x-1)=(2x+3)(3x-1)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế cùng chứa thừa số $3x-1$, nên chuyển vế rồi đặt thừa số chung để đưa về phương trình tích, không chia hai vế cho $3x-1$ vì có thể mất nghiệm.\n**Bước 1.** Chuyển vế phải sang vế trái để vế phải bằng $0$, vì phương trình tích cần có dạng tích các thừa số bằng $0$.\n**Bước 2.** Nhận ra $3x-1$ là thừa số chung của hai hạng tử, đặt nó ra ngoài rồi thu gọn biểu thức còn lại trong ngoặc.\n**Bước 3.** Cho từng thừa số bằng $0$ và giải hai phương trình bậc nhất một ẩn, mỗi thừa số cho một nghiệm.\n**Chú ý:** nếu chia hai vế cho $3x-1$ thì sẽ làm mất nghiệm $x=\\dfrac{1}{3}$ là giá trị làm thừa số đó bằng $0$.\n**Phần 2. Trình bày**\n$5(3x-1)=(2x+3)(3x-1)$\n$5(3x-1) …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000226",
+  "loai": "tra_loi_ngan",
+  "de": "Một rạp chiếu phim có $120$ ghế, giá vé hiện tại là $100$ nghìn đồng mỗi vé. Với giá vé này, tất cả các ghế đều được bán hết cho mỗi suất chiếu. Ban quản lý rạp phim đang xem xét việc tăng giá vé để tối ưu hóa doanh thu. Sau khi thử nghiệm, rạp phim nhận thấy cứ mỗi lần tăng giá thêm $5$ nghìn đồng, số ghế bị bỏ trống sẽ tăng thêm $4$ ghế. Hỏi mức giá vé mới là bao nhiêu để rạp phim đạt doanh thu lớn nhất?",
+  "dap_an": "125",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu là tích của giá vé và số vé bán được, cả hai đều phụ thuộc vào số lần tăng giá, nên doanh thu là một đa thức bậc hai của số lần tăng; đưa về dạng một bình phương cộng một hằng số để tìm giá trị lớn nhất.\n**Bước 1.** Chọn ẩn là số lần tăng giá thêm $5$ nghìn đồng, rồi biểu diễn giá vé mới và số vé bán được qua ẩn đó.\n**Bước 2.** Lập biểu thức doanh thu bằng giá vé nhân số vé bán được, rồi phá ngoặc thu gọn thành đa thức bậc hai.\n**Bước 3.** Đặt thừa số chung rồi hoàn thành bình phương của một hiệu để doanh thu có dạng một số trừ đi một biểu thức luôn không âm.\n**Bước 4.** Chỉ ra giá trị ẩn làm bình phương bằng $0$, kiểm tra giá trị đó hợp lí với đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000322",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(2x+1)(6-3x)=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái đã là một **tích** và vế phải bằng $0$, nên chỉ cần cho từng thừa số bằng $0$.\n**Bước 1.** Nhận ra phương trình đã ở dạng phương trình tích $A \\cdot B=0$ nên không cần khai triển ngoặc.\n**Bước 2.** Một tích bằng $0$ khi có ít nhất một thừa số bằng $0$, nên tách thành hai phương trình bậc nhất một ẩn.\n**Bước 3.** Giải từng phương trình bậc nhất bằng cách chuyển vế rồi chia hai vế cho hệ số của $x$.\n**Bước 4.** Kết luận bằng lời, nêu đủ cả hai nghiệm vừa tìm được.\n**Phần 2. Trình bày**\nTa có $(2x+1)(6-3x)=0$.\nSuy ra $2x+1=0$ hoặc $6-3x=0$.\n• $2x+1=0$ suy ra $2x=-1$ suy ra $x=-\\dfrac{1}{2}$.\n• $6-3x=0$ suy ra $3x=6$ suy ra $x=2$.\nVậy phương trình đã c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000206",
+  "loai": "tu_luan",
+  "de": "Mức lương tối thiểu theo quy định ở Pháp năm 2022 là $10{,}25$ € cho mỗi giờ làm việc. Trong dịp hè, Laurent David làm thêm tại một khách sạn theo mức lương tối thiểu như quy định và anh ấy muốn kiếm được ít nhất $1500$ € trong mùa hè này.\na) Hãy viết một bất phương trình mô tả tình huống này.\nb) Hỏi anh ấy cần làm việc ít nhất bao nhiêu giờ để kiếm được số tiền trên? (€ là viết tắt của Euro, là loại tiền tệ mà 20 nước thuộc liên minh Châu Âu đang sử dụng chung)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"ít nhất $1500$ €\" nghĩa là số tiền kiếm được phải **lớn hơn hoặc bằng** $1500$ €, nên lập bất phương trình với dấu $\\ge$, không phải phương trình.\n**Bước 1.** Ý a: chọn ẩn là số giờ làm việc, rồi biểu diễn số tiền kiếm được bằng lương mỗi giờ nhân với số giờ.\n**Bước 2.** Dịch cụm \"ít nhất\" thành dấu $\\ge$ và so sánh số tiền kiếm được với mục tiêu để viết bất phương trình.\n**Bước 3.** Ý b: giải bất phương trình vừa lập bằng cách chia hai vế cho một số dương, nên chiều bất đẳng thức giữ nguyên.\n**Bước 4.** Đối chiếu nghiệm với ý nghĩa thực tế của số giờ làm việc để chọn số giờ nhỏ nhất thoả mãn rồi trả lời.\n**Chú ý:** nghiệm tìm được là số thập phân, cần ng …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000381",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bài toán bằng cách lập bất phương trình:\nBạn An mang 100000 đồng đến nhà sách. An mua một cuốn sách tham khảo hết 45000 đồng. Với số tiền còn lại, An dự định mua bút. Mỗi chiếc bút có giá 8000 đồng. Hỏi An có thể mua tối đa bao nhiêu chiếc bút?",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"tối đa\" nghĩa là tổng số tiền tiêu không vượt quá số tiền đang có, nên lập bất phương trình dạng \"$\\le$\".\n**Bước 1.** Gọi số bút An mua là ẩn $x$ và nêu điều kiện của $x$ (số tự nhiên), rồi tính số tiền An còn lại sau khi mua sách.\n**Bước 2.** Biểu diễn số tiền mua $x$ chiếc bút theo $x$ và lập bất phương trình so với số tiền còn lại.\n**Bước 3.** Giải bất phương trình, rồi chọn số tự nhiên lớn nhất thoả mãn nghiệm tìm được.\n**Chú ý:** nghiệm của bất phương trình là số thập phân nhưng số bút phải là số tự nhiên, nên phải lấy phần nguyên.\n**Phần 2. Trình bày**\nGọi $x$ là số chiếc bút An mua được ($x$ là số tự nhiên).\nSố tiền An còn lại sau khi mua sách là $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000432",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $\\dfrac{x+1}{x-3}-\\dfrac{x-2}{3+x}=\\dfrac{3}{x^2-9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x^2-9=(x-3)(x+3)$ chính là mẫu chung của cả ba phân thức, nên sau khi đặt điều kiện xác định ta quy đồng rồi khử mẫu.\n**Bước 1.** Phân tích $x^2-9$ thành nhân tử để thấy mẫu chung, từ đó tìm điều kiện xác định (các mẫu khác $0$).\n**Bước 2.** Quy đồng mẫu hai phân thức ở vế trái rồi khử mẫu hai vế để được phương trình không còn ẩn ở mẫu.\n**Bước 3.** Khai triển các tích, thu gọn và giải phương trình bậc nhất vừa nhận được.\n**Bước 4.** Đối chiếu nghiệm tìm được với điều kiện xác định rồi kết luận.\n**Chú ý:** có dấu trừ đứng trước tích $(x-2)(x-3)$ nên khi bỏ ngoặc phải đổi dấu cả ba hạng tử.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x-3\\ne0$ và $x+3\\ne0$, t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000127",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Phong có 20 chiếc sticker mang đổi quà tặng. Phong muốn đổi lấy 2 chiếc bút bi và $x$ quyển sổ. Biết rằng, để đổi lấy một chiếc bút bi cần 3 chiếc sticker, một quyển sổ cần 4 chiếc sticker. Hỏi bạn Phong có thể đổi được nhiều nhất bao nhiêu quyển sổ?",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số sticker cần dùng **không được vượt quá** số sticker Phong có, nên lập một bất phương trình bậc nhất ẩn $x$.\n**Bước 1.** Tính số sticker cần cho 2 chiếc bút bi và số sticker cần cho $x$ quyển sổ, rồi cộng lại.\n**Bước 2.** Lập bất phương trình: tổng số sticker cần dùng nhỏ hơn hoặc bằng số sticker đang có.\n**Bước 3.** Giải bất phương trình tìm giới hạn của $x$.\n**Bước 4.** Vì $x$ là số quyển sổ nên chỉ nhận số nguyên không âm, từ đó chọn giá trị lớn nhất.\n**Chú ý:** nghiệm của bất phương trình có thể là số thập phân, nhưng số quyển sổ phải là số nguyên.\n**Phần 2. Trình bày**\nSố sticker cần để đổi 2 chiếc bút bi là $2 \\cdot 3=6$ (chiếc).\nSố sticker cần để  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000390",
+  "loai": "tu_luan",
+  "de": "Một lão nông chia đất cho con trai để người con canh tác riêng, biết rằng người con sẽ được chọn mảnh đất hình chữ nhật có chu vi $800$ m. Hỏi anh ta phải chọn mảnh đất có kích thước như thế nào để diện tích canh tác là lớn nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chu vi cố định nên tổng hai kích thước không đổi; diện tích là một biểu thức bậc hai của một kích thước, đưa về dạng \"hằng số trừ một bình phương\" để tìm giá trị lớn nhất.\n**Bước 1.** Đặt ẩn là chiều dài và chiều rộng, rồi dùng công thức chu vi để tìm tổng của chúng.\n**Bước 2.** Thay chiều rộng bằng biểu thức theo chiều dài để diện tích chỉ còn một ẩn.\n**Bước 3.** Biến đổi diện tích về dạng hằng số trừ một bình phương bằng cách thêm bớt cùng một số.\n**Bước 4.** Vì bình phương không âm nên diện tích không vượt quá hằng số đó; tìm giá trị ẩn làm bình phương bằng $0$ rồi tính kích thước còn lại.\n**Chú ý:** kết luận phải nêu cả hai kích thước và diện tích lớn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000444",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $2x(x-7)-3(x-7)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai hạng tử có chung thừa số $(x-7)$, đặt nó ra ngoài để đưa phương trình về dạng tích.\n**Bước 1.** Quan sát vế trái thấy cả hai hạng tử đều chứa thừa số chung $(x-7)$.\n**Bước 2.** Đặt thừa số chung ra ngoài để vế trái thành tích của hai thừa số; không được chia hai vế cho $(x-7)$ vì sẽ mất nghiệm.\n**Bước 3.** Cho từng thừa số bằng $0$, giải hai phương trình bậc nhất rồi kết luận.\n**Phần 2. Trình bày**\nTa có $2x(x-7)-3(x-7)=0$.\nSuy ra $(x-7)(2x-3)=0$.\nDo đó $x-7=0$ hoặc $2x-3=0$.\n• $x-7=0$ suy ra $x=7$.\n• $2x-3=0$ suy ra $2x=3$, do đó $x=\\dfrac{3}{2}$.\nVậy phương trình đã cho có hai nghiệm là $x=7$ và $x=\\dfrac{3}{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000277",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình sau: $\\dfrac{3}{x+3}-\\dfrac{2}{3-x}=\\dfrac{3x+5}{x^2-9}$",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình có ẩn ở mẫu nên phải tìm điều kiện xác định trước, rồi quy đồng khử mẫu và đối chiếu nghiệm với điều kiện.\n**Bước 1.** Phân tích mẫu $x^2-9$ thành nhân tử và nhận ra $3-x$ là số đối của $x-3$, từ đó tìm điều kiện để các mẫu khác $0$ và chọn mẫu chung.\n**Bước 2.** Đổi dấu để các mẫu có cùng nhân tử, quy đồng rồi khử mẫu để được một phương trình bậc nhất.\n**Bước 3.** Giải phương trình bậc nhất vừa có.\n**Bước 4.** So nghiệm tìm được với điều kiện xác định để nhận hoặc loại.\n**Chú ý:** đổi dấu $3-x$ thành $-(x-3)$ thì dấu trừ phía trước phân thức phải đổi thành dấu cộng.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne-3$ và $x\\ne3$.\nVì $3-x=-(x-3) …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000140",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $\\dfrac{3x+5}{2}-1\\le\\dfrac{x+2}{3}+x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai vế với mẫu chung dương $6$ để khử mẫu mà không đổi chiều bất đẳng thức, rồi đưa về bất phương trình bậc nhất một ẩn.\n**Bước 1.** Chọn mẫu chung của hai phân số là $6$, nhân cả hai vế với $6$ (số dương nên giữ nguyên chiều), chú ý nhân cả số $-1$ và số hạng $x$.\n**Bước 2.** Bỏ ngoặc và thu gọn từng vế để được bất phương trình có dạng $ax+b\\le cx+d$.\n**Bước 3.** Chuyển các số hạng chứa $x$ về một vế, số hạng tự do về vế còn lại; hệ số của $x$ sau cùng là số dương nên không đổi chiều.\n**Bước 4.** Kết luận nghiệm của bất phương trình bằng lời.\n**Chú ý:** chỉ đổi chiều bất đẳng thức khi nhân hoặc chia hai vế với số âm.\n**Phần 2. Trình bày**\n$\\dfrac{3x+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000262",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} 5x+6y=4 \\\\ 4x-9y=17 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ số của $y$ là $6$ và $-9$, chọn bội chung nhỏ nhất $18$ để làm hai hệ số của $y$ đối nhau rồi cộng từng vế.\n**Bước 1.** Tìm số nhân thích hợp cho từng phương trình để hệ số của $y$ trở thành hai số đối nhau.\n**Bước 2.** Nhân cả hai vế của từng phương trình với số đã chọn, chú ý nhân cả vế phải, rồi cộng từng vế để mất $y$.\n**Bước 3.** Giải phương trình một ẩn $x$, sau đó thay vào một phương trình ban đầu để tìm $y$ và kết luận.\n**Chú ý:** nên thử lại nghiệm vào cả hai phương trình của hệ để tránh sai dấu.\n**Phần 2. Trình bày**\nNhân hai vế của phương trình thứ nhất với $3$, nhân hai vế của phương trình thứ hai với $2$, ta được hệ:\n$\\begin{cases} 15x+18y= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000240",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập phương trình hoặc hệ phương trình: Bạn Bình mua một quyển từ điển và một món đồ chơi với tổng giá tiền theo niêm yết là $750$ nghìn đồng. Vì Bình mua đúng dịp cửa hàng có chương trình khuyến mãi nên khi thanh toán giá quyển từ điển được giảm $20\\%$, giá món đồ chơi được giảm $10\\%$. Do đó Bình chỉ phải trả $630$ nghìn đồng. Hỏi giá mỗi món đồ trên khi chưa giảm giá là bao nhiêu tiền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (giá hai món) và hai thông tin: tổng giá trước giảm và tổng giá sau giảm, nên lập được hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn ẩn là giá niêm yết của từng món, đặt điều kiện dương và nhỏ hơn tổng tiền.\n**Bước 2.** Lập phương trình thứ nhất từ tổng giá niêm yết của hai món.\n**Bước 3.** Giảm $20\\%$ nghĩa là chỉ còn trả $80\\%$ giá, giảm $10\\%$ là còn $90\\%$ giá; lập phương trình thứ hai từ tổng số tiền thực trả.\n**Bước 4.** Giải hệ bằng phương pháp thế, kiểm tra điều kiện rồi trả lời giá của từng món.\n**Chú ý:** \"giảm $20\\%$\" không có nghĩa là nhân với $0{,}2$; số tiền còn phải trả là $100\\%-20\\%=80\\%$.\n**Phần 2. Trình …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000136",
+  "loai": "tu_luan",
+  "de": "Cho các số $a,b,c,d$ thoả mãn $0<a,b,c,d<1$. Chứng minh rằng: $(1-a)(1-b)(1-c)(1-d)>1-a-b-c-d$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thêm từng thừa số một: chứng minh bất đẳng thức cho hai số, rồi nhân hai vế với thừa số dương kế tiếp (không đổi chiều) và bỏ đi một hạng tử dương, cứ thế cho tới đủ bốn số.\n**Bước 1.** Khai triển $(1-a)(1-b)$ và so với $1-a-b$: hiệu của chúng là $ab$, dương vì $a$, $b$ dương.\n**Bước 2.** Nhân hai vế bất đẳng thức vừa có với $1-c$, là số dương vì $c<1$ nên chiều bất đẳng thức giữ nguyên.\n**Bước 3.** Khai triển vế phải mới; ngoài $1-a-b-c$ còn thừa hạng tử $c(a+b)$ dương, bỏ đi hạng tử này ta được bất đẳng thức cho ba số.\n**Bước 4.** Lặp lại với thừa số $1-d>0$: nhân hai vế rồi bỏ hạng tử dương $d(a+b+c)$ để được điều phải chứng minh.\n**Chú ý:** vế phải $1- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000451",
+  "loai": "tu_luan",
+  "de": "Giải phương trình $2x(x-3)-5(x-3)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai hạng tử cùng có thừa số chung $(x-3)$; đặt thừa số chung ra ngoài thì vế trái trở thành một tích.\n**Bước 1.** Nhận ra hai hạng tử $2x(x-3)$ và $5(x-3)$ có chung nhân tử $(x-3)$.\n**Bước 2.** Đặt nhân tử chung để đưa vế trái về dạng tích hai biểu thức bậc nhất, vế phải vẫn bằng $0$.\n**Bước 3.** Cho từng thừa số bằng $0$ rồi giải hai phương trình bậc nhất và kết luận.\n**Chú ý:** không chia hai vế cho $x-3$, vì như vậy sẽ mất một nghiệm.\n**Phần 2. Trình bày**\n$2x(x-3)-5(x-3)=0$\n$(x-3)(2x-5)=0$\nSuy ra $x-3=0$ hoặc $2x-5=0$.\n• $x-3=0$ suy ra $x=3$.\n• $2x-5=0$ suy ra $2x=5$ suy ra $x=\\dfrac{5}{2}$.\nVậy phương trình đã cho có hai nghiệm là $x=3$ và $x=\\dfrac{5 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000379",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $5(x+2)+(x+2)(x-2)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai hạng tử ở vế trái có nhân tử chung $x+2$, nên đưa phương trình về dạng tích bằng $0$.\n**Bước 1.** Nhận ra thừa số $x+2$ xuất hiện ở cả hai hạng tử và đặt nó làm nhân tử chung, không khai triển hết các ngoặc.\n**Bước 2.** Thu gọn biểu thức trong ngoặc còn lại để có phương trình dạng tích hai nhân tử bậc nhất bằng $0$.\n**Bước 3.** Cho từng nhân tử bằng $0$ (một tích bằng $0$ khi có một thừa số bằng $0$), giải hai phương trình bậc nhất và nêu cả hai nghiệm.\n**Chú ý:** không chia hai vế cho $x+2$ vì có thể làm mất nghiệm.\n**Phần 2. Trình bày**\n$5(x+2)+(x+2)(x-2)=0$\n$(x+2)[5+(x-2)]=0$\n$(x+2)(x+3)=0$\n$x+2=0$ hoặc $x+3=0$\nVới $x+2=0$ suy ra $x=-2$.\nVới $x+3=0$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000309",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} x+y=0 \\\\ 4x+3y=2 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình thứ nhất rất đơn giản (hệ số của $x$ và $y$ đều là 1, vế phải bằng 0) nên dùng phương pháp thế: rút một ẩn rồi thế vào phương trình còn lại.\n**Bước 1.** Từ phương trình thứ nhất, rút $y$ theo $x$.\n**Bước 2.** Thế biểu thức vừa rút vào phương trình thứ hai để được một phương trình chỉ chứa $x$ rồi giải.\n**Bước 3.** Thay giá trị của $x$ vừa tìm được vào biểu thức rút ở bước 1 để tìm $y$, rồi kết luận nghiệm của hệ.\n**Phần 2. Trình bày**\nTừ $x+y=0$ ta có $y=-x$ (1).\nThế vào phương trình $4x+3y=2$ ta được:\n$4x+3(-x)=2$\n$4x-3x=2$\n$x=2$\nThay $x=2$ vào (1) ta được $y=-2$.\nVậy hệ phương trình đã cho có nghiệm là $(x;y)=(2;-2)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000455",
+  "loai": "tu_luan",
+  "de": "Để chuẩn bị cho bữa tiệc sinh nhật, cô Lan mua hai loại trái cây là xoài và cam. Giá xoài là 40 nghìn đồng/kg, giá cam là 60 nghìn đồng/kg. Cô Lan đã mua 6 kg trái cây (gồm xoài và cam) hết 280 nghìn đồng. Hỏi cô Lan đã mua bao nhiêu kilôgam xoài và bao nhiêu kilôgam cam?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (số kilôgam mỗi loại) và hai điều kiện (tổng khối lượng, tổng số tiền) nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn ẩn là số kilôgam xoài và số kilôgam cam, nêu điều kiện của ẩn.\n**Bước 2.** Từ tổng khối lượng viết phương trình thứ nhất; từ tổng số tiền (giá một kilôgam nhân số kilôgam của từng loại) viết phương trình thứ hai.\n**Bước 3.** Rút một ẩn từ phương trình thứ nhất rồi thế vào phương trình thứ hai để giải hệ.\n**Bước 4.** Đối chiếu nghiệm với điều kiện của ẩn và trả lời đủ cả hai loại trái cây.\n**Phần 2. Trình bày**\nGọi số kilôgam xoài cô Lan đã mua là $x$ (kg), số kilôgam cam là $y$ (kg), với $x>0$, $y>0 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000504",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} (x-4)(2y+1)=(2x+5)(y-2) \\\\ (x+4)(2y-1)=2xy+4x+5y-3 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi khai triển, hạng tử $2xy$ có mặt ở cả hai vế của mỗi phương trình và triệt tiêu, nên hệ trở về hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Khai triển hai tích ở phương trình thứ nhất, chuyển vế và thu gọn để đưa về dạng $ax+by=c$.\n**Bước 2.** Làm tương tự với phương trình thứ hai, chú ý dấu khi khai triển tích có thừa số $2y-1$.\n**Bước 3.** Quan sát hai phương trình mới thấy hệ số của $x$ đối nhau, nên cộng từng vế để khử $x$ và tìm $y$.\n**Bước 4.** Thay $y$ vào một phương trình để tìm $x$, rồi kiểm tra lại bằng phương trình còn lại.\n**Chú ý:** nghiệm của hệ này là các phân số, nên tính cẩn thận khi chuyển vế và quy đồng.\n**Phần 2. Trình bày** …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000122",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\dfrac{2}{x-2}+\\dfrac{3}{x+2}=\\dfrac{13}{x^2-4}$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình có ẩn ở mẫu nên phải tìm **điều kiện xác định** trước, mẫu chung là $x^2-4=(x-2)(x+2)$.\n**Bước 1.** Phân tích mẫu $x^2-4$ thành nhân tử rồi nêu điều kiện để các mẫu khác 0.\n**Bước 2.** Quy đồng mẫu ở vế trái và khử mẫu chung để đưa về phương trình bậc nhất.\n**Bước 3.** Giải phương trình bậc nhất thu được bằng cách bỏ ngoặc, thu gọn, chuyển vế.\n**Bước 4.** Đối chiếu giá trị tìm được với điều kiện xác định rồi mới kết luận.\n**Chú ý:** nếu giá trị tìm được vi phạm điều kiện xác định thì phải loại.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne2$ và $x\\ne-2$.\nVì $x^2-4=(x-2)(x+2)$ nên quy đồng và khử mẫu, ta được:\n$2(x+2)+3(x-2)=13$\n$2x+4+3x-6=13 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000230",
+  "loai": "tu_luan",
+  "de": "Hỏi $x=-1$ có phải là một nghiệm của bất phương trình $2x-1\\ge-5$ không? Vì sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** một số là nghiệm của bất phương trình khi thay vào hai vế ta được một khẳng định đúng.\n**Bước 1.** Thay giá trị $x=-1$ vào vế trái $2x-1$ của bất phương trình và tính ra một số cụ thể.\n**Bước 2.** So sánh số vừa tính được với vế phải $-5$ theo đúng chiều dấu $\\ge$ của đề (chú ý so sánh hai số âm).\n**Bước 3.** Nếu khẳng định thu được là đúng thì $-1$ là nghiệm, nếu sai thì không phải; nêu lí do bằng chính phép so sánh đó.\n**Phần 2. Trình bày**\nThay $x=-1$ vào vế trái của bất phương trình, ta được $2\\cdot(-1)-1=-3$.\nVì $-3>-5$ nên $-3\\ge-5$ là khẳng định đúng.\nVậy $x=-1$ là một nghiệm của bất phương trình $2x-1\\ge-5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000222",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $x+5 \\le 3x-9$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa các hạng tử chứa $x$ về một vế, số hạng tự do về vế còn lại rồi chia cho hệ số của $x$.\n**Bước 1.** Chuyển vế các hạng tử: khi chuyển một hạng tử sang vế bên kia thì phải đổi dấu hạng tử đó.\n**Bước 2.** Thu gọn hai vế để được bất phương trình có dạng $ax \\ge b$ hoặc $ax \\le b$.\n**Bước 3.** Chia hai vế cho hệ số của $x$, chú ý xem hệ số đó dương hay âm để biết có phải đổi chiều bất đẳng thức hay không.\n**Chú ý:** chỉ đổi chiều bất đẳng thức khi nhân hoặc chia hai vế với một số âm.\n**Phần 2. Trình bày**\n$x+5 \\le 3x-9$\n$x-3x \\le -9-5$ (chuyển vế)\n$-2x \\le -14$\n$x \\ge 7$ (chia hai vế cho $-2<0$ nên đổi chiều)\nVậy nghiệm của bất phương trình là $x \\ge 7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000436",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(x+5)(2x-4)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái đã là tích của hai nhân tử và vế phải bằng $0$, nên phương trình quy về việc cho từng nhân tử bằng $0$.\n**Bước 1.** Nhận ra vế trái là tích hai biểu thức bậc nhất, một tích bằng $0$ khi có ít nhất một thừa số bằng $0$.\n**Bước 2.** Cho từng nhân tử bằng $0$ rồi giải hai phương trình bậc nhất một ẩn.\n**Bước 3.** Gộp các giá trị tìm được và kết luận phương trình có hai nghiệm.\n**Phần 2. Trình bày**\n$(x+5)(2x-4)=0$\nSuy ra $x+5=0$ hoặc $2x-4=0$.\n• $x+5=0$ suy ra $x=-5$\n• $2x-4=0$ suy ra $2x=4$ suy ra $x=2$\nVậy phương trình đã cho có hai nghiệm là $x=-5$ và $x=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000217",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình:\n$\\begin{cases} \\dfrac{3}{x+1}+\\dfrac{1}{y-2}=2 \\\\ \\dfrac{2}{x+1}-\\dfrac{3}{y-2}=5 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ẩn $x$, $y$ nằm ở mẫu nhưng hai biểu thức $\\dfrac{1}{x+1}$ và $\\dfrac{1}{y-2}$ lặp lại, nên đặt chúng làm hai ẩn phụ để được hệ bậc nhất.\n**Bước 1.** Tìm điều kiện để các mẫu số khác $0$ trước khi biến đổi.\n**Bước 2.** Đặt hai ẩn phụ $u$, $v$ cho hai phân thức lặp lại, viết lại hệ theo $u$, $v$ rồi giải bằng cộng đại số.\n**Bước 3.** Từ giá trị của $u$, $v$ quay về tìm $x$, $y$ qua các phương trình đặt ẩn phụ.\n**Bước 4.** Đối chiếu $x$, $y$ với điều kiện xác định rồi kết luận nghiệm.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne-1$, $y\\ne2$.\nĐặt $u=\\dfrac{1}{x+1}$, $v=\\dfrac{1}{y-2}$. Hệ đã cho trở thành:\n$\\begin{cases} 3u+v=2 \\\\ 2u-3v=5 \\end{cases}$\nNhân …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000351",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(x+1)\\left(3-\\dfrac{1}{2}x\\right)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái đã là một tích và vế phải bằng $0$, nên dùng tính chất: tích bằng $0$ khi có ít nhất một thừa số bằng $0$.\n**Bước 1.** Nhận ra phương trình đã ở dạng phương trình tích $A \\cdot B=0$ với hai thừa số $x+1$ và $3-\\dfrac{1}{2}x$, không cần khai triển.\n**Bước 2.** Cho từng thừa số bằng $0$ để được hai phương trình bậc nhất một ẩn.\n**Bước 3.** Giải từng phương trình rồi kết luận bằng lời: phương trình có hai nghiệm.\n**Chú ý:** không chia hai vế cho một biểu thức chứa ẩn vì sẽ làm mất nghiệm.\n**Phần 2. Trình bày**\nTa có $(x+1)\\left(3-\\dfrac{1}{2}x\\right)=0$\nSuy ra $x+1=0$ hoặc $3-\\dfrac{1}{2}x=0$.\n• $x+1=0$ suy ra $x=-1$.\n• $3-\\dfrac{1}{2}x=0$ suy ra $\\df …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000315",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(3x-6)(x+5)=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái là tích hai biểu thức, vế phải bằng $0$ nên dùng tính chất: tích bằng $0$ khi có một thừa số bằng $0$.\n**Bước 1.** Nhận ra đây là phương trình tích, không cần khai triển ngoặc.\n**Bước 2.** Cho từng thừa số bằng $0$ để được hai phương trình bậc nhất một ẩn.\n**Bước 3.** Giải từng phương trình rồi kết luận đủ cả hai nghiệm.\n**Phần 2. Trình bày**\n$(3x-6)(x+5)=0$\nSuy ra $3x-6=0$ hoặc $x+5=0$.\n• $3x-6=0$ suy ra $3x=6$, do đó $x=2$.\n• $x+5=0$ suy ra $x=-5$.\nVậy phương trình đã cho có hai nghiệm là $x=2$ và $x=-5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000470",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $\\dfrac{1-2x}{4}-2\\le\\dfrac{1-5x}{8}+x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bất phương trình có mẫu số dương nên nhân hai vế với mẫu chung dương để khử mẫu mà không đổi chiều; chỉ đổi chiều khi chia hoặc nhân với số âm.\n**Bước 1.** Chọn mẫu chung của hai phân số là $8$ (một số dương) rồi nhân cả hai vế với $8$ để bỏ mẫu.\n**Bước 2.** Phá ngoặc, thu gọn từng vế của bất phương trình mới.\n**Bước 3.** Chuyển các hạng tử chứa $x$ sang một vế, các số hạng tự do sang vế còn lại.\n**Bước 4.** Chia hai vế cho hệ số của $x$; nếu hệ số đó âm thì phải đổi chiều bất phương trình.\n**Phần 2. Trình bày**\nNhân hai vế với $8>0$, ta được:\n$2(1-2x)-16\\le1-5x+8x$\n$2-4x-16\\le1+3x$\n$-4x-14\\le1+3x$\n$-4x-3x\\le1+14$\n$-7x\\le15$\nChia hai vế cho $-7<0$ nên đổi  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000392",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $(x-3)(2x+7)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái là tích của hai thừa số bậc nhất còn vế phải bằng $0$, nên đây là **phương trình tích**: tích bằng $0$ khi ít nhất một thừa số bằng $0$.\n**Bước 1.** Nhận ra vế trái đã là tích và vế phải bằng $0$, nên không cần khai triển.\n**Bước 2.** Cho từng thừa số bằng $0$ để tách thành hai phương trình bậc nhất một ẩn.\n**Bước 3.** Giải từng phương trình, chú ý hệ số $2$ ở thừa số thứ hai nên nghiệm là phân số, rồi kết luận đủ hai nghiệm.\n**Chú ý:** không chia hai vế cho một thừa số chứa $x$ vì sẽ mất nghiệm.\n**Phần 2. Trình bày**\n$(x-3)(2x+7)=0$\nSuy ra $x-3=0$ hoặc $2x+7=0$.\n• Với $x-3=0$, ta có $x=3$.\n• Với $2x+7=0$, ta có $2x=-7$, suy ra $x=-\\dfrac{7}{2}$.\nV …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000331",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà hát có $150$ ghế, giá vé hiện tại là $120$ nghìn đồng mỗi vé. Với giá vé này, tất cả các ghế đều được bán hết cho mỗi chương trình. Ban quản lý nhà hát đang xem xét việc tăng giá vé để tối ưu hóa doanh thu. Sau khi thử nghiệm, nhà hát nhận thấy cứ mỗi lần tăng giá thêm $5$ nghìn đồng, số ghế bị bỏ trống sẽ tăng thêm $3$ ghế. Hỏi mức giá vé mới là bao nhiêu để nhà hát đạt doanh thu cao nhất?",
+  "dap_an": "185",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu là tích của giá vé với số ghế bán được, cả hai đều phụ thuộc số lần tăng giá, nên doanh thu là một biểu thức bậc hai của số lần tăng giá.\n**Bước 1.** Chọn ẩn là số lần tăng giá, rồi biểu diễn giá vé mới và số ghế bán được theo ẩn đó.\n**Bước 2.** Viết doanh thu bằng tích của hai biểu thức này, khai triển và thu gọn thành đa thức bậc hai.\n**Bước 3.** Đưa đa thức về dạng một số trừ đi một bình phương bằng cách hoàn thành bình phương, vì bình phương luôn không âm.\n**Bước 4.** Tìm giá trị của ẩn để bình phương bằng $0$, kiểm tra giá trị đó hợp lí rồi tính giá vé mới.\n**Phần 2. Trình bày**\nGọi $x$ là số lần tăng giá vé ($x\\in\\mathbb{N}$, $x\\le50$ để số …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000219",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập hệ phương trình:\nQuãng đường đi từ Hà Nội vào Quảng Bình khoảng $500$ km. Lúc $7$ giờ xe khách đi từ Hà Nội vào Quảng Bình, lúc $8$ giờ xe tải đi từ Quảng Bình ra Hà Nội. Hai xe gặp nhau lúc $12$ giờ. Tính vận tốc của mỗi xe biết vận tốc xe khách hơn vận tốc xe tải là $10$ km/h.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai xe đi ngược chiều và gặp nhau, nên tổng quãng đường hai xe đã đi tới lúc gặp bằng cả quãng đường Hà Nội – Quảng Bình.\n**Bước 1.** Chọn hai ẩn là vận tốc của xe khách và vận tốc của xe tải, ghi đơn vị và điều kiện.\n**Bước 2.** Phương trình thứ nhất lấy từ điều kiện vận tốc xe khách hơn vận tốc xe tải $10$ km/h.\n**Bước 3.** Tính thời gian mỗi xe đã đi tới lúc gặp nhau (xe tải xuất phát muộn hơn), rồi lập phương trình thứ hai theo công thức quãng đường bằng vận tốc nhân thời gian.\n**Bước 4.** Giải hệ bằng phương pháp thế, đối chiếu điều kiện và trả lời vận tốc của từng xe.\n**Phần 2. Trình bày**\nGọi vận tốc của xe khách là $x$ (km/h), vận tốc của xe tải là …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000132",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $\\dfrac{3x+5}{4}-\\dfrac{x-4}{6}\\le\\dfrac{3x+7}{3}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai vế với mẫu chung dương $12$ để khử mẫu mà không đổi chiều bất đẳng thức; chiều chỉ đổi ở bước chia cho số âm.\n**Bước 1.** Chọn mẫu chung của $4$, $6$, $3$ là $12$ và nhân cả hai vế với $12$ (số dương nên giữ nguyên chiều).\n**Bước 2.** Bỏ ngoặc cẩn thận, chú ý dấu trừ đứng trước phân số thứ hai làm đổi dấu cả $x-4$.\n**Bước 3.** Chuyển các hạng tử chứa $x$ về một vế, hạng tử tự do về vế còn lại.\n**Bước 4.** Chia hai vế cho hệ số của $x$; nếu hệ số âm thì phải đổi chiều bất đẳng thức.\n**Phần 2. Trình bày**\n$\\dfrac{3x+5}{4}-\\dfrac{x-4}{6}\\le\\dfrac{3x+7}{3}$\nNhân hai vế với $12>0$, ta được:\n$3(3x+5)-2(x-4)\\le4(3x+7)$\n$9x+15-2x+8\\le12x+28$\n$7x+23\\le12x+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000247",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập phương trình hoặc hệ phương trình.\nNhân dịp Lễ Quốc khánh, một siêu thị điện máy đã giảm giá nhiều mặt hàng để kích cầu mua sắm. Giá niêm yết một ti vi và một điều hòa có tổng số tiền là 30 triệu đồng, nhưng trong đợt này giá một ti vi giảm 30% giá bán và giá một điều hòa giảm 15% giá bán nên nhà Chi đã mua một ti vi và một điều hòa trên với tổng số tiền là 21,84 triệu đồng. Hỏi giá mỗi món đồ trên khi chưa giảm giá là bao nhiêu tiền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giảm $30\\%$ thì giá bán còn $70\\%$ giá niêm yết, giảm $15\\%$ thì còn $85\\%$; từ đó lập hai phương trình theo hai giá niêm yết.\n**Bước 1.** Chọn ẩn là giá niêm yết của ti vi và giá niêm yết của điều hòa (đơn vị triệu đồng), đặt điều kiện cho hai ẩn.\n**Bước 2.** Phương trình thứ nhất lấy từ tổng giá niêm yết của hai món đồ.\n**Bước 3.** Phương trình thứ hai lấy từ tổng số tiền thực trả: giá bán của mỗi món bằng tỉ lệ phần trăm còn lại nhân với giá niêm yết.\n**Bước 4.** Giải hệ bằng phương pháp thế rồi đối chiếu điều kiện và trả lời cho cả hai món đồ.\n**Chú ý:** giảm giá $30\\%$ không có nghĩa là nhân với $0{,}3$ mà là nhân với $1-0{,}3=0{,}7$.\n**Phần 2. Trình  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000228",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $\\dfrac{4}{x+3}-\\dfrac{x-1}{3-x}=\\dfrac{x^2+x+1}{x^2-9}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu số $x^2-9=(x-3)(x+3)$ chính là tích hai mẫu còn lại (sau khi đổi dấu $3-x$ thành $x-3$), nên mẫu chung dễ tìm; đừng quên điều kiện xác định.\n**Bước 1.** Tìm điều kiện để mọi mẫu số khác $0$, rồi đổi dấu mẫu $3-x$ thành $x-3$ (kèm đổi dấu phân thức) để các mẫu cùng dạng.\n**Bước 2.** Phân tích $x^2-9$ thành nhân tử, chọn mẫu chung là $(x-3)(x+3)$ và quy đồng các phân thức ở vế trái.\n**Bước 3.** Khử mẫu (hai vế cùng mẫu), khai triển rồi thu gọn; các hạng tử $x^2$ hai vế triệt tiêu, còn phương trình bậc nhất.\n**Bước 4.** Giải phương trình bậc nhất rồi đối chiếu nghiệm với điều kiện xác định trước khi kết luận.\n**Chú ý:** sau khi đổi dấu mẫu $3-x$, dấu trừ  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000348",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} 2x+3y=2 \\\\ 2x-y=-1 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai phương trình có cùng hệ số $2$ của ẩn $x$, nên trừ từng vế là khử được $x$ ngay, không cần nhân thêm.\n**Bước 1.** Quan sát hệ số của $x$ ở hai phương trình để chọn phương pháp cộng đại số (ở đây là phép trừ).\n**Bước 2.** Trừ từng vế hai phương trình để được phương trình chỉ còn ẩn $y$ và giải ra $y$.\n**Bước 3.** Thế giá trị $y$ vừa tìm vào một phương trình có hệ số đơn giản để tìm $x$.\n**Bước 4.** Kết luận nghiệm dưới dạng cặp $(x;y)$.\n**Phần 2. Trình bày**\n$\\begin{cases} 2x+3y=2 \\\\ 2x-y=-1 \\end{cases}$\nTrừ từng vế phương trình thứ nhất cho phương trình thứ hai, ta được:\n$(2x+3y)-(2x-y)=2-(-1)$\n$4y=3$\n$y=\\dfrac{3}{4}$\nThay $y=\\dfrac{3}{4}$ vào phương t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000395",
+  "loai": "tu_luan",
+  "de": "Quãng đường $AB$ dài 108 km. Hai ô tô cùng khởi hành một lúc để đi từ $A$ đến $B$. Biết ô tô thứ nhất chạy nhanh hơn ô tô thứ hai là 6 km/h nên ô tô thứ hai đến muộn hơn ô tô thứ nhất là 12 phút. Tính vận tốc của mỗi xe.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cùng quãng đường $108$ km, ô tô chậm hơn đi lâu hơn đúng $12$ phút (đổi ra giờ), nên lập phương trình **hiệu hai thời gian**.\n**Bước 1.** Gọi vận tốc ô tô thứ hai là ẩn $x$ và biểu diễn vận tốc ô tô thứ nhất theo $x$, nhớ đặt điều kiện của $x$.\n**Bước 2.** Tính thời gian đi của từng xe bằng quãng đường chia vận tốc, đổi $12$ phút ra giờ rồi lập phương trình: thời gian xe chậm trừ thời gian xe nhanh.\n**Bước 3.** Quy đồng, khử mẫu để đưa về phương trình có dạng $x^2+6x-\\text{số}=0$.\n**Bước 4.** Phương trình này chưa dùng công thức nghiệm được, nên hoàn thành bình phương ở vế trái rồi phân tích thành tích hai thừa số bậc nhất để giải.\n**Bước 5.** Đối chiếu ng …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000320",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Ngân mang $100\\,000$ đồng đến nhà sách. Ngân mua một cuốn sách tham khảo hết $40\\,000$ đồng. Với số tiền còn lại, Ngân dự định mua bút. Mỗi chiếc bút có giá $5\\,500$ đồng. Hỏi Ngân có thể mua tối đa bao nhiêu chiếc bút?",
+  "dap_an": "10",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số tiền mua bút không được vượt quá số tiền còn lại, nên bài toán dẫn tới một bất phương trình bậc nhất với ẩn là số chiếc bút.\n**Bước 1.** Tính số tiền còn lại sau khi mua sách tham khảo.\n**Bước 2.** Gọi ẩn là số chiếc bút (số nguyên dương) rồi lập bất phương trình: tổng tiền mua bút không vượt quá số tiền còn lại.\n**Bước 3.** Giải bất phương trình rồi chọn số nguyên lớn nhất thoả mãn để trả lời.\n**Phần 2. Trình bày**\nSố tiền còn lại sau khi mua sách là $100\\,000-40\\,000=60\\,000$ (đồng).\nGọi $x$ là số chiếc bút Ngân có thể mua ($x$ là số nguyên dương).\nSố tiền mua $x$ chiếc bút là $5\\,500x$ (đồng), không vượt quá $60\\,000$ đồng nên $5\\,500x\\le60\\,000$.\n$x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000360",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $\\dfrac{4x+5}{3}+x<3x+1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khử mẫu bằng cách nhân hai vế với số dương $3$ (không đổi chiều), rồi giải như bất phương trình bậc nhất một ẩn; chia cho số âm thì phải đổi chiều.\n**Bước 1.** Nhân hai vế với $3$ để khử mẫu, nhớ nhân cả hạng tử $x$ và cả vế phải.\n**Bước 2.** Chuyển các hạng tử chứa $x$ về một vế, các số về vế còn lại rồi thu gọn.\n**Bước 3.** Chia hai vế cho hệ số của $x$; hệ số này âm nên phải đổi chiều bất đẳng thức, rồi kết luận bằng lời.\n**Phần 2. Trình bày**\n$\\dfrac{4x+5}{3}+x<3x+1$\nNhân hai vế với $3$, ta được $4x+5+3x<9x+3$.\n$7x+5<9x+3$\n$7x-9x<3-5$\n$-2x<-2$\nChia hai vế cho $-2<0$ nên đổi chiều: $x>1$.\nVậy nghiệm của bất phương trình là $x>1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000494",
+  "loai": "tra_loi_ngan",
+  "de": "Bác Bình có mảnh vườn hình vuông $ABCD$ có cạnh bằng 10 m. Ở bốn góc vườn, bác Bình muốn trồng hoa thành các hình tam giác vuông bằng nhau (hình vẽ). Hãy tính khoảng cách từ góc vườn $A$ đến vị trí $E$ sao cho tứ giác $EFGH$ có chu vi nhỏ nhất.",
+  "dap_an": "5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bốn cạnh của $EFGH$ là bốn cạnh huyền của các tam giác vuông bằng nhau, nên chu vi nhỏ nhất khi một cạnh huyền nhỏ nhất; bình phương cạnh huyền là một biểu thức bậc hai của khoảng cách $AE$ nên dùng hoàn thành bình phương.\n**Bước 1.** Từ bốn tam giác vuông bằng nhau, suy ra bốn cạnh $EF$, $FG$, $GH$, $HE$ bằng nhau, nên chu vi $EFGH$ gấp bốn lần $EF$ và chỉ cần làm $EF$ nhỏ nhất.\n**Bước 2.** Đặt $AE=x$ và nêu điều kiện của $x$, rồi dùng các cạnh bằng nhau của hai tam giác vuông cạnh nhau để biểu diễn $BF$ và $BE$ theo $x$.\n**Bước 3.** Áp dụng định lí Pythagore cho tam giác $BEF$ để viết $EF^2$ theo $x$, rồi biến đổi về dạng $a(x-m)^2+n$ với $a>0$.\n**Bước 4 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000266",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $(x+2)^2+x(x-3)\\ge2x^2+5x-4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khai triển hai vế thì các hạng tử $x^2$ ở hai vế triệt tiêu, bất phương trình trở về dạng bậc nhất một ẩn.\n**Bước 1.** Khai triển hằng đẳng thức bình phương một tổng và nhân đơn thức với đa thức ở vế trái, rồi thu gọn.\n**Bước 2.** Chuyển các hạng tử chứa $x$ về một vế, hạng tử tự do về vế còn lại, và thu gọn.\n**Bước 3.** Chia hai vế cho hệ số của $x$, chú ý hệ số này âm hay dương để đổi chiều đúng, rồi kết luận.\n**Chú ý:** chia hai vế cho một số âm thì phải đổi chiều bất đẳng thức.\n**Phần 2. Trình bày**\n$(x+2)^2+x(x-3)\\ge2x^2+5x-4$\n$x^2+4x+4+x^2-3x\\ge2x^2+5x-4$\n$2x^2+x+4\\ge2x^2+5x-4$\n$x-5x\\ge-4-4$ (chuyển vế)\n$-4x\\ge-8$\n$x\\le2$ (chia hai vế cho $-4<0$ nên  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000330",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bài toán bằng cách lập bất phương trình:\nBạn Nam được bố mẹ thưởng $100\\,000$ đồng vì tháng 10 bạn đã có rất nhiều tiến bộ trong học tập. Bạn dự định sẽ mua một hộp bút có giá là $45\\,000$ đồng. Số tiền còn lại Nam dự định mua bút. Mỗi chiếc bút có giá $8\\,000$ đồng. Hỏi Nam có thể mua nhiều nhất được bao nhiêu chiếc bút?",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số tiền mua bút chỉ được **nhỏ hơn hoặc bằng** số tiền còn lại sau khi mua hộp bút, đó là chỗ xuất hiện bất phương trình.\n**Bước 1.** Tính số tiền còn lại sau khi mua hộp bút từ số tiền được thưởng.\n**Bước 2.** Gọi ẩn là số chiếc bút, viết số tiền mua bút theo ẩn rồi lập bất phương trình so với số tiền còn lại.\n**Bước 3.** Giải bất phương trình rồi dùng điều kiện số bút là số tự nhiên để chọn giá trị lớn nhất phù hợp.\n**Phần 2. Trình bày**\nSố tiền còn lại sau khi mua hộp bút là $100\\,000-45\\,000=55\\,000$ (đồng).\nGọi $x$ là số chiếc bút Nam có thể mua ($x\\in\\mathbb{N}$).\nSố tiền mua $x$ chiếc bút là $8\\,000x$ (đồng).\nTheo đề bài ta có bất phương trình: $8\\, …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000124",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} 2x-3y=11 \\\\ 4x+y=1 \\end{cases}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ở phương trình thứ hai hệ số của $y$ bằng 1 nên rút $y$ theo $x$ rồi **thế** vào phương trình thứ nhất để còn một ẩn.\n**Bước 1.** Chọn phương trình có ẩn với hệ số 1 để rút ẩn đó theo ẩn kia, tránh phải chia phân số.\n**Bước 2.** Thế biểu thức vừa rút vào phương trình còn lại, bỏ ngoặc, thu gọn rồi giải phương trình một ẩn.\n**Bước 3.** Thay giá trị ẩn vừa tìm vào biểu thức đã rút để tìm ẩn còn lại, rồi kết luận nghiệm.\n**Chú ý:** khi thế vào $-3y$, phải đổi dấu cả hai hạng tử trong ngoặc.\n**Phần 2. Trình bày**\nTừ phương trình thứ hai, ta có $y=1-4x$ (1).\nThế vào phương trình thứ nhất, ta được:\n$2x-3(1-4x)=11$\n$2x-3+12x=11$\n$14x=14$\n$x=1$\nThay $x=1$ vào (1), …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000243",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $\\dfrac{3}{x+2}-\\dfrac{4}{2-x}=\\dfrac{7}{x^2-4}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình có ẩn ở mẫu thì phải tìm điều kiện xác định trước, và chỉ nhận nghiệm thoả điều kiện đó.\n**Bước 1.** Tìm điều kiện để các mẫu khác $0$, chú ý $x^2-4$ phân tích được thành $(x-2)(x+2)$.\n**Bước 2.** Đổi mẫu $2-x$ thành $-(x-2)$ để cả ba mẫu cùng gồm các nhân tử $x+2$ và $x-2$, từ đó chọn mẫu chung.\n**Bước 3.** Quy đồng rồi khử mẫu để được một phương trình bậc nhất, sau đó giải phương trình này.\n**Bước 4.** Đối chiếu giá trị tìm được với điều kiện xác định rồi mới kết luận.\n**Chú ý:** khi đổi mẫu $2-x$ thành $x-2$, dấu trừ đứng trước phân thức $\\dfrac{4}{2-x}$ biến thành dấu cộng.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x+2\\ne0$ và $2-x\\ne0$ v …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000272",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} 4x-3y=7 \\\\ x-2y=3 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình thứ hai có hệ số của $x$ bằng $1$ nên rút $x$ theo $y$ rất gọn, rồi dùng phương pháp thế.\n**Bước 1.** Chọn phương trình có ẩn với hệ số $1$ và rút ẩn đó theo ẩn còn lại.\n**Bước 2.** Thế biểu thức vừa rút vào phương trình kia để được một phương trình bậc nhất một ẩn rồi giải.\n**Bước 3.** Thay giá trị ẩn vừa tìm vào biểu thức đã rút để tìm ẩn còn lại, sau đó kết luận nghiệm của hệ.\n**Chú ý:** nên thử lại nghiệm vào cả hai phương trình của hệ để chắc không nhầm dấu.\n**Phần 2. Trình bày**\nTừ phương trình thứ hai, ta có $x=3+2y$ (1).\nThế (1) vào phương trình thứ nhất, ta được:\n$4(3+2y)-3y=7$\n$12+8y-3y=7$\n$5y=-5$\n$y=-1$\nThay $y=-1$ vào (1), ta được  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000123",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $2(x-1)>5x+4$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giải bất phương trình bậc nhất như giải phương trình, nhưng khi chia hai vế cho một số **âm** thì phải **đổi chiều** bất đẳng thức.\n**Bước 1.** Bỏ ngoặc ở vế trái bằng cách nhân 2 với từng hạng tử trong ngoặc.\n**Bước 2.** Chuyển các hạng tử chứa $x$ sang một vế, hạng tử tự do sang vế kia (đổi dấu khi chuyển) rồi thu gọn.\n**Bước 3.** Chia hai vế cho hệ số của $x$, nhớ đổi chiều nếu hệ số đó âm, rồi kết luận nghiệm.\n**Phần 2. Trình bày**\n$2(x-1)>5x+4$\n$2x-2>5x+4$\n$2x-5x>4+2$\n$-3x>6$\nChia hai vế cho $-3<0$ nên đổi chiều bất đẳng thức, ta được $x<-2$.\nVậy nghiệm của bất phương trình là $x<-2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000462",
+  "loai": "tra_loi_ngan",
+  "de": "Một người nông dân muốn rào một khu đất hình chữ nhật có chu vi $60$ m để xây dựng một vườn hoa. Với chiều rộng của khu đất là $x$ (m), tìm $x$ để diện tích vườn hoa xây được lớn nhất.",
+  "dap_an": "15",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu diễn diện tích theo $x$ thành một tam thức bậc hai có hệ số của $x^2$ âm, rồi hoàn thành bình phương để thấy giá trị lớn nhất.\n**Bước 1.** Từ chu vi suy ra nửa chu vi, rồi biểu diễn chiều dài theo $x$ và nêu điều kiện của $x$.\n**Bước 2.** Viết diện tích là tích chiều dài và chiều rộng, khai triển thành biểu thức theo $x$.\n**Bước 3.** Biến đổi biểu thức diện tích về dạng một hằng số trừ đi một bình phương bằng cách hoàn thành bình phương.\n**Bước 4.** Dùng tính chất bình phương không âm để chặn trên diện tích, tìm khi nào dấu bằng xảy ra và đối chiếu điều kiện của $x$.\n**Phần 2. Trình bày**\nNửa chu vi khu đất là $60:2=30$ (m). Chiều rộng là $x$ (m) nên  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000160",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} 3x+5y=1 \\\\ 2x-y=-8 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ở phương trình thứ hai, hệ số của $y$ là $-1$ nên rút $y$ theo $x$ rất gọn, không sinh phân số; dùng phương pháp thế.\n**Bước 1.** Chọn ẩn có hệ số $\\pm1$ để rút: từ phương trình thứ hai viết $y$ theo $x$.\n**Bước 2.** Thế biểu thức của $y$ vào phương trình thứ nhất để được phương trình chỉ còn ẩn $x$, rồi giải.\n**Bước 3.** Thay giá trị $x$ vừa tìm vào biểu thức rút ở bước 1 để có $y$, rồi kết luận nghiệm dạng cặp số.\n**Thử lại:** thay cặp nghiệm vào cả hai phương trình của hệ để chắc chắn đều thoả mãn.\n**Phần 2. Trình bày**\nTừ phương trình thứ hai, ta có $y=2x+8$ (1).\nThế vào phương trình thứ nhất, ta được:\n$3x+5(2x+8)=1$\n$3x+10x+40=1$\n$13x=-39$\n$x=-3$\nThay …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000305",
+  "loai": "tra_loi_ngan",
+  "de": "Từ một tấm tôn hình chữ nhật có chiều rộng $30$ cm và chiều dài $3$ m người ta gò thành một máng nước có dạng hình hộp chữ nhật không có nắp và thông hai đầu (như hình vẽ). Tính chiều cao $x$ (cm) của máng nước để thể tích của máng nước lớn nhất.",
+  "dap_an": "7,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết thể tích máng theo $x$ rồi biến đổi về dạng một hằng số trừ đi một bình phương nhân với số dương; thể tích lớn nhất khi bình phương đó bằng $0$.\n**Bước 1.** Đọc hình: mỗi mép của chiều rộng $30$ cm được gấp lên thành thành máng cao $x$ cm, nên đáy máng có chiều rộng bằng $30$ trừ hai lần $x$; đổi chiều dài $3$ m ra centimét cho cùng đơn vị.\n**Bước 2.** Tìm điều kiện của $x$ (các kích thước phải dương), rồi viết thể tích hình hộp chữ nhật bằng tích chiều dài, chiều rộng đáy và chiều cao.\n**Bước 3.** Biến đổi biểu thức bậc hai của $x$ bằng cách đặt hệ số $-2$ ra ngoài và hoàn thành bình phương.\n**Bước 4.** Đánh giá: bình phương luôn không âm nên thể tíc …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000471",
+  "loai": "tu_luan",
+  "de": "Hưởng ứng \"Ngày sách và Văn hóa đọc Việt Nam năm 2025\", thư viện của trường được một Nhà sách tặng cho hai thùng sách, gồm một thùng sách tham khảo môn Toán và một thùng sách tham khảo môn Ngữ văn. Nếu chuyển $10$ cuốn sách Toán sang thùng sách Ngữ văn thì lúc này hai thùng có số sách bằng nhau. Nếu chuyển $20$ cuốn sách Ngữ văn sang thùng sách Toán thì lúc này số sách trong thùng sách Toán gấp đôi số sách trong thùng Ngữ văn. Hỏi ban đầu mỗi thùng có bao nhiêu cuốn sách?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tình huống chuyển sách cho hai phương trình bậc nhất hai ẩn, ghép lại thành hệ phương trình để giải.\n**Bước 1.** Chọn ẩn là số sách ban đầu của mỗi thùng, kèm điều kiện để mỗi thùng còn đủ sách sau khi chuyển.\n**Bước 2.** Tình huống thứ nhất: viết số sách mỗi thùng sau khi chuyển rồi cho hai số đó bằng nhau để lập phương trình thứ nhất.\n**Bước 3.** Tình huống thứ hai: viết lại số sách mỗi thùng, cho số sách thùng Toán bằng hai lần số sách thùng Ngữ văn để lập phương trình thứ hai.\n**Bước 4.** Giải hệ hai phương trình bằng phương pháp cộng đại số (trừ từng vế), đối chiếu điều kiện rồi trả lời cả hai thùng.\n**Phần 2. Trình bày**\nGọi số cuốn sách ban đầu  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000317",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} 3x-y=4 \\\\ 2x+3y=-1 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ số của $y$ trong hai phương trình là $-1$ và $3$, nên chỉ cần nhân phương trình thứ nhất với $3$ để hệ số của $y$ đối nhau rồi cộng đại số.\n**Bước 1.** Chọn ẩn để khử là $y$ và tìm số cần nhân vào phương trình thứ nhất.\n**Bước 2.** Cộng từng vế hai phương trình của hệ mới để mất $y$, giải ra $x$.\n**Bước 3.** Thế $x$ vừa tìm vào một phương trình ban đầu để tìm $y$ rồi kết luận.\n**Chú ý:** khi nhân phải nhân cả hai vế của phương trình, kể cả vế phải.\n**Phần 2. Trình bày**\nNhân hai vế của phương trình thứ nhất với $3$, ta được hệ $\\begin{cases} 9x-3y=12 \\\\ 2x+3y=-1 \\end{cases}$\nCộng từng vế hai phương trình của hệ mới, ta được $11x=11$ suy ra $x=1$.\nThay $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000164",
+  "loai": "tu_luan",
+  "de": "Giải phương trình $(2x-3)(4x-5)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái đã là tích của hai biểu thức, vế phải bằng $0$, nên dùng quy tắc: tích bằng $0$ khi có ít nhất một thừa số bằng $0$.\n**Bước 1.** Nhận ra phương trình có dạng $A \\cdot B=0$ với $A$, $B$ là hai biểu thức bậc nhất, nên không cần khai triển.\n**Bước 2.** Cho từng thừa số bằng $0$ rồi giải hai phương trình bậc nhất một ẩn vừa thu được.\n**Bước 3.** Gộp hai kết quả và kết luận phương trình có hai nghiệm.\n**Phần 2. Trình bày**\n$(2x-3)(4x-5)=0$\nSuy ra $2x-3=0$ hoặc $4x-5=0$.\n• $2x-3=0$ suy ra $2x=3$ suy ra $x=\\dfrac{3}{2}$.\n• $4x-5=0$ suy ra $4x=5$ suy ra $x=\\dfrac{5}{4}$.\nVậy phương trình đã cho có hai nghiệm là $x=\\dfrac{3}{2}$ và $x=\\dfrac{5}{4}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000350",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập phương trình hoặc hệ phương trình:\nTrong kì thi tuyển sinh vào lớp 10 THPT năm học 2024 – 2025, hai trường THCS A và B có tất cả $750$ học sinh dự thi. Trong số học sinh của trường A dự thi có $80\\%$ số học sinh trúng tuyển, còn trong số học sinh trường B dự thi có $70\\%$ số học sinh trúng tuyển. Biết tổng số học sinh trúng tuyển của hai trường là $560$ học sinh. Tính số học sinh dự thi của mỗi trường?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (số học sinh dự thi của hai trường) và hai dữ kiện về tổng, nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn hai ẩn là số học sinh dự thi của trường A và của trường B, kèm điều kiện là số nguyên dương.\n**Bước 2.** Lập phương trình thứ nhất từ tổng số học sinh dự thi của hai trường.\n**Bước 3.** Lập phương trình thứ hai từ tổng số học sinh trúng tuyển, đổi phần trăm sang số thập phân để biểu diễn số học sinh trúng tuyển mỗi trường.\n**Bước 4.** Giải hệ bằng phương pháp thế, đối chiếu với điều kiện rồi trả lời đủ câu hỏi của đề.\n**Chú ý:** $80\\%$ của $x$ là $0{,}8x$ chứ không phải $80x$.\n**Phần 2. Trình bày**\nGọi số học  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000410",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $2x(2x+1)-3(2x+1)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai hạng tử ở vế trái cùng chứa thừa số chung $(2x+1)$, đặt ra ngoài thì vế trái thành một tích bằng $0$.\n**Bước 1.** Nhìn ra nhân tử chung $(2x+1)$ của hai hạng tử, rồi đặt nhân tử chung để đưa vế trái về dạng tích hai thừa số.\n**Bước 2.** Dùng tính chất: tích bằng $0$ khi có ít nhất một thừa số bằng $0$, nên cho từng thừa số bằng $0$.\n**Bước 3.** Giải hai phương trình bậc nhất một ẩn vừa lập rồi kết luận đủ cả hai nghiệm.\n**Chú ý:** không chia hai vế cho $(2x+1)$ vì sẽ làm mất một nghiệm.\n**Phần 2. Trình bày**\n$2x(2x+1)-3(2x+1)=0$\n$(2x+1)(2x-3)=0$\nSuy ra $2x+1=0$ hoặc $2x-3=0$.\n• $2x+1=0$ suy ra $2x=-1$ nên $x=-\\dfrac{1}{2}$.\n• $2x-3=0$ suy ra $2x=3$ nên …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000218",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bài toán sau bằng cách lập hệ phương trình:\nTìm số tự nhiên có hai chữ số biết rằng tổng các chữ số của nó bằng $10$. Nếu viết hai chữ số của số đó theo thứ tự ngược lại thì được số mới lớn hơn số ban đầu $54$ đơn vị.",
+  "dap_an": "28",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số có hai chữ số $\\overline{xy}$ bằng $10x+y$; đảo thứ tự hai chữ số thì thành $10y+x$.\n**Bước 1.** Chọn hai ẩn là chữ số hàng chục và chữ số hàng đơn vị, nêu điều kiện của mỗi chữ số.\n**Bước 2.** Lập phương trình thứ nhất từ điều kiện tổng hai chữ số đã cho.\n**Bước 3.** Lập phương trình thứ hai bằng cách viết số mới trừ số ban đầu rồi so với số đơn vị hơn kém đề cho.\n**Bước 4.** Giải hệ hai phương trình, đối chiếu điều kiện của chữ số rồi trả lời đúng điều đề hỏi.\n**Phần 2. Trình bày**\nGọi chữ số hàng chục của số cần tìm là $x$, chữ số hàng đơn vị là $y$ ($x,y\\in\\mathbb{N}$, $1\\le x\\le9$, $0\\le y\\le9$).\nSố ban đầu là $10x+y$.\nTổng các chữ số bằng $10$ nên …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000449",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $a+b=1$ và $a,b>0$. Tìm giá trị nhỏ nhất của biểu thức: $P=\\left(1+\\dfrac{1}{a}\\right)^2+\\left(1+\\dfrac{1}{b}\\right)^2$.",
+  "dap_an": "18",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đoán giá trị nhỏ nhất đạt khi $a=b$ (do hai biến đối xứng và có tổng cố định), rồi chứng minh mọi giá trị của $P$ không nhỏ hơn giá trị đó bằng cách dùng $(x-y)^2\\ge0$.\n**Bước 1.** Đặt $x=1+\\dfrac{1}{a}$ và $y=1+\\dfrac{1}{b}$ để $P$ trở thành tổng hai bình phương, rồi dùng $(x-y)^2\\ge0$ để chặn $x^2+y^2$ bởi $(x+y)^2$.\n**Bước 2.** Tính $x+y$ theo tích $ab$ bằng cách quy đồng $\\dfrac{1}{a}+\\dfrac{1}{b}$ và dùng điều kiện $a+b=1$.\n**Bước 3.** Dùng $(a-b)^2\\ge0$ để chặn tích $ab$ từ trên, từ đó chặn $x+y$ từ dưới.\n**Bước 4.** Ghép các bất đẳng thức để có cận dưới của $P$, rồi chỉ ra giá trị của $a$, $b$ làm dấu bằng xảy ra để cận đó thật sự đạt được.\n**Phần 2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000362",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} \\dfrac{1}{x-1}-\\dfrac{3}{y-4}=-2 \\\\ \\dfrac{2}{x-1}+\\dfrac{1}{y-4}=3 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai ẩn $x$, $y$ nằm ở mẫu nhưng xuất hiện dưới dạng $\\dfrac{1}{x-1}$ và $\\dfrac{1}{y-4}$ nên đặt hai biểu thức đó làm ẩn phụ để đưa về hệ bậc nhất.\n**Bước 1.** Nêu điều kiện để các mẫu khác $0$ trước khi biến đổi.\n**Bước 2.** Đặt $u=\\dfrac{1}{x-1}$, $v=\\dfrac{1}{y-4}$ để được hệ phương trình bậc nhất hai ẩn $u$, $v$.\n**Bước 3.** Giải hệ theo $u$, $v$ bằng phương pháp thế (rút $v$ từ phương trình thứ hai vì hệ số của $v$ bằng $1$).\n**Bước 4.** Trả về ẩn cũ: từ giá trị của $u$, $v$ giải hai phương trình để tìm $x$, $y$, rồi đối chiếu điều kiện.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne1$, $y\\ne4$.\nĐặt $u=\\dfrac{1}{x-1}$, $v=\\dfrac{1}{y-4}$, ta được hệ: …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000425",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $5(x-3)-7\\le-6x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đây là bất phương trình bậc nhất một ẩn; chỉ cần đổi dấu bất đẳng thức khi nhân hoặc chia hai vế với số âm.\n**Bước 1.** Phá ngoặc ở vế trái rồi thu gọn các số hạng giống nhau.\n**Bước 2.** Chuyển các số hạng chứa $x$ về một vế và các số hạng tự do về vế còn lại, nhớ đổi dấu khi chuyển vế.\n**Bước 3.** Chia hai vế cho hệ số của $x$ (kiểm tra hệ số dương hay âm để biết có đổi chiều không) rồi kết luận.\n**Chú ý:** hệ số của $x$ ở bước cuối quyết định chiều của bất đẳng thức.\n**Phần 2. Trình bày**\n$5(x-3)-7\\le-6x$\n$5x-15-7\\le-6x$\n$5x-22\\le-6x$\n$5x+6x\\le22$\n$11x\\le22$\n$x\\le2$ (chia hai vế cho $11>0$ nên không đổi chiều).\nVậy nghiệm của bất phương trình là $x\\le2$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000121",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $(2x-3)\\left(\\dfrac{1}{3}x+7\\right)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái là tích của hai biểu thức, vế phải bằng 0, nên đây là **phương trình tích**: tích bằng 0 khi ít nhất một thừa số bằng 0.\n**Bước 1.** Nhận ra vế trái đã là tích hai thừa số bậc nhất và vế phải bằng 0, nên không cần khai triển.\n**Bước 2.** Cho từng thừa số bằng 0 để tách thành hai phương trình bậc nhất một ẩn.\n**Bước 3.** Giải từng phương trình, chú ý hệ số $\\dfrac{1}{3}$ ở phương trình thứ hai, rồi kết luận đủ hai nghiệm.\n**Chú ý:** không chia hai vế cho một thừa số chứa $x$ vì sẽ mất nghiệm.\n**Phần 2. Trình bày**\n$(2x-3)\\left(\\dfrac{1}{3}x+7\\right)=0$\nSuy ra $2x-3=0$ hoặc $\\dfrac{1}{3}x+7=0$.\n• Với $2x-3=0$, ta có $2x=3$, suy ra $x=\\dfrac{3}{2}$.\n• …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000190",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} \\dfrac{1}{x-2}-\\dfrac{1}{y-1}=2 \\\\ \\dfrac{2}{x-2}+\\dfrac{3}{y-1}=1 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ẩn chỉ xuất hiện dưới dạng $\\dfrac{1}{x-2}$ và $\\dfrac{1}{y-1}$, nên đặt hai biểu thức này làm ẩn phụ để được hệ phương trình bậc nhất hai ẩn.\n**Bước 1.** Nêu điều kiện để các mẫu khác $0$ rồi đặt hai ẩn phụ thay cho hai phân thức.\n**Bước 2.** Viết lại hệ theo hai ẩn phụ, lúc này cả hai phương trình đều là bậc nhất hai ẩn.\n**Bước 3.** Giải hệ bằng phương pháp cộng đại số: nhân phương trình thứ nhất với $3$ để hệ số của một ẩn đối nhau rồi cộng hai phương trình.\n**Bước 4.** Thay ngược giá trị ẩn phụ vừa tìm để giải ra $x$ và $y$, rồi đối chiếu với điều kiện ban đầu.\n**Phần 2. Trình bày**\nĐiều kiện: $x\\neq2$, $y\\neq1$.\nĐặt $u=\\dfrac{1}{x-2}$, $v=\\dfrac{1}{y- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000363",
+  "loai": "tu_luan",
+  "de": "Bác Hùng có $500$ triệu đồng để đầu tư vào hai khoản trái phiếu và gửi tiết kiệm ngân hàng với kỳ hạn $1$ năm. Lãi suất ngân hàng và trái phiếu mỗi năm lần lượt là $6\\%$ và $7\\%$. Tính số tiền mà bác Hùng đầu tư vào mỗi khoản để sau $1$ năm bác nhận được $532$ triệu đồng cả gốc và lãi từ hai khoản đầu tư đó.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (số tiền mỗi khoản) và hai điều kiện (tổng vốn, tổng tiền sau một năm) nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn ẩn là số tiền (triệu đồng) gửi ngân hàng và số tiền đầu tư trái phiếu, đặt điều kiện hợp lí cho hai ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng vốn ban đầu; lập phương trình thứ hai từ tổng cả gốc và lãi sau một năm, trong đó mỗi khoản nhân với $1$ cộng lãi suất tương ứng.\n**Bước 3.** Giải hệ bằng phương pháp thế: rút một ẩn từ phương trình thứ nhất rồi thế vào phương trình thứ hai.\n**Bước 4.** Đối chiếu với điều kiện của ẩn và trả lời đủ cả hai khoản đầu tư.\n**Chú ý:** lãi suất ngân hàng là $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000159",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $\\dfrac{x+2}{x-2}-\\dfrac{x-2}{x+2}=\\dfrac{4}{x^2-4}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình có ẩn ở mẫu, nên phải tìm điều kiện xác định trước, rồi quy đồng khử mẫu và cuối cùng đối chiếu nghiệm với điều kiện.\n**Bước 1.** Phân tích $x^2-4$ thành nhân tử để thấy mẫu chung là $(x-2)(x+2)$ và suy ra các giá trị của $x$ làm mẫu bằng $0$.\n**Bước 2.** Quy đồng mẫu hai vế rồi khử mẫu, được một phương trình không còn ẩn ở mẫu.\n**Bước 3.** Khai triển hai bình phương, thu gọn và giải phương trình bậc nhất vừa có.\n**Bước 4.** Đối chiếu nghiệm tìm được với điều kiện xác định rồi mới kết luận.\n**Chú ý:** nếu quên đối chiếu điều kiện thì có thể nhận nhầm nghiệm ngoại lai.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne2$ và $x\\ne-2$ (vì $x^2-4=(x- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000434",
+  "loai": "tu_luan",
+  "de": "Giải bài toán bằng cách lập hệ phương trình:\nMột lớp học có 40 học sinh, trong đó nam nhiều hơn nữ. Nhân dịp 20/10, thầy giáo đưa cả lớp 260 000 đồng để mỗi bạn nam mua một bông hoa tặng các bạn nữ giá 5000 đồng/bông, mỗi bạn nữ tự mua cho mình một cái kẹp tóc giá 8000 đồng/cái và được cửa hàng trả lại 3000 đồng. Hỏi lớp có bao nhiêu học sinh nam và bao nhiêu học sinh nữ?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng cùng nói về cả lớp: sĩ số (40 em) và số tiền đã chi (tiền đưa trừ tiền trả lại); mỗi đại lượng cho một phương trình.\n**Bước 1.** Chọn hai ẩn là số học sinh nam và số học sinh nữ, nêu điều kiện (số nguyên dương, nam nhiều hơn nữ).\n**Bước 2.** Lập phương trình thứ nhất từ sĩ số của lớp.\n**Bước 3.** Lập phương trình thứ hai từ tiền: tiền hoa của các bạn nam cộng tiền kẹp tóc của các bạn nữ bằng tiền thầy đưa trừ đi tiền cửa hàng trả lại.\n**Bước 4.** Giải hệ bằng phương pháp thế, đối chiếu điều kiện rồi trả lời hai câu hỏi của đề.\n**Chú ý:** khoản 3000 đồng được trả lại là tiền thừa, nên phải trừ khỏi $260\\,000$ đồng trước khi so với tiền đã c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000138",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $4x^2=(x-12)^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế đều là bình phương của một biểu thức ($4x^2=(2x)^2$), nên chuyển vế rồi dùng hằng đẳng thức hiệu hai bình phương để đưa về phương trình tích.\n**Bước 1.** Chuyển $(x-12)^2$ sang vế trái để vế phải bằng $0$, viết $4x^2$ dưới dạng $(2x)^2$.\n**Bước 2.** Áp dụng hằng đẳng thức $A^2-B^2=(A-B)(A+B)$ với $A=2x$, $B=x-12$ rồi thu gọn từng ngoặc.\n**Bước 3.** Cho từng nhân tử bằng $0$ và giải hai phương trình bậc nhất, rồi kết luận bằng lời.\n**Chú ý:** không khai căn hai vế rồi chỉ lấy một dấu, vì sẽ sót nghiệm; cách phân tích nhân tử tự động cho đủ cả hai nghiệm.\n**Phần 2. Trình bày**\n$4x^2=(x-12)^2$\n$4x^2-(x-12)^2=0$\n$(2x)^2-(x-12)^2=0$\n$(2x-x+12)(2x+x-12)=0 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000339",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $2x-7=-x+1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đây là phương trình bậc nhất một ẩn, ta chuyển các hạng tử chứa $x$ về một vế và các số hạng tự do về vế còn lại.\n**Bước 1.** Chuyển hạng tử $-x$ sang vế trái và số $-7$ sang vế phải, nhớ đổi dấu mỗi hạng tử khi chuyển vế.\n**Bước 2.** Thu gọn hai vế để đưa phương trình về dạng $ax=b$.\n**Bước 3.** Chia hai vế cho hệ số $a$ của $x$ để tìm nghiệm rồi kết luận.\n**Chú ý:** nghiệm có thể là phân số, không cần làm tròn mà giữ nguyên dạng phân số.\n**Phần 2. Trình bày**\n$2x-7=-x+1$\n$2x+x=1+7$\n$3x=8$\n$x=\\dfrac{8}{3}$\nVậy phương trình đã cho có nghiệm là $x=\\dfrac{8}{3}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000291",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập phương trình hoặc hệ phương trình.\nBạn An muốn mua hai quyển sách tham khảo Toán và Ngữ văn tại nhà sách. Tổng giá bìa (giá gốc) của hai quyển sách tham khảo này là $450\\,000$ đồng. Nhân dịp đầu năm học mới, nhà sách giảm giá $20\\%$ cho quyển sách tham khảo Toán và $10\\%$ cho quyển sách tham khảo Ngữ văn. Do đó, bạn An chỉ phải trả tổng cộng $380\\,000$ đồng. Hỏi giá bìa (giá gốc) của mỗi quyển sách tham khảo trên là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gọi giá gốc của hai quyển làm hai ẩn; một phương trình nói về tổng giá gốc, phương trình kia nói về tổng số tiền phải trả sau giảm giá (giảm $20\\%$ nghĩa là trả $80\\%$, giảm $10\\%$ nghĩa là trả $90\\%$).\n**Bước 1.** Chọn hai ẩn là giá bìa của từng quyển (đơn vị đồng) và nêu điều kiện của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng giá bìa của hai quyển.\n**Bước 3.** Biểu diễn số tiền phải trả cho mỗi quyển sau khi giảm giá, rồi lập phương trình thứ hai từ tổng số tiền An đã trả.\n**Bước 4.** Giải hệ vừa lập bằng phương pháp thế, đối chiếu điều kiện rồi trả lời cho cả hai quyển.\n**Chú ý:** số tiền phải trả sau giảm giá là phần còn lại của giá gốc, không  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000280",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập hệ phương trình:\nSân bóng rổ của trường học là một hình chữ nhật có chu vi là $70$ m. Nếu tăng chiều dài thêm $6$ m và giảm chiều rộng đi $1$ m thì diện tích của sân tăng thêm $50$ $m^2$. Tính chiều dài và chiều rộng ban đầu của sân bóng rổ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai đại lượng cần tìm là chiều dài và chiều rộng, nên chọn hai ẩn và lập hai phương trình: một từ chu vi, một từ sự thay đổi diện tích.\n**Bước 1.** Chọn ẩn là chiều dài $x$ và chiều rộng $y$ ban đầu, nêu điều kiện của hai ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ chu vi: nửa chu vi bằng chiều dài cộng chiều rộng.\n**Bước 3.** Lập phương trình thứ hai: diện tích mới trừ diện tích cũ bằng mức tăng, rồi khai triển và thu gọn để các số hạng $xy$ triệt tiêu.\n**Bước 4.** Giải hệ hai phương trình bậc nhất hai ẩn, đối chiếu điều kiện rồi trả lời.\n**Chú ý:** chiều rộng giảm $1$ m mà vẫn phải dương nên $y>1$.\n**Phần 2. Trình bày**\nGọi chiều dài ban đầu của sân là  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000197",
+  "loai": "tu_luan",
+  "de": "Một mảnh vườn hình vuông có kích thước một cạnh bằng $x$ ($x>0$, m). Người ta mở rộng mảnh vườn đó thành hình chữ nhật có chiều rộng là $x$ (m) và chiều dài là $x+3$ (m).\na) Viết biểu thức thu gọn $S$ biểu thị phần diện tích tăng thêm của mảnh vườn theo $x$.\nb) Tìm $x$ biết rằng phần diện tích tăng thêm của mảnh vườn là 21 $m^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phần diện tích tăng thêm bằng diện tích hình chữ nhật mới trừ diện tích hình vuông cũ; ý b chỉ là giải phương trình bậc nhất khi cho biểu thức ở ý a bằng 21.\n**Bước 1.** Ý a: biểu thị diện tích hình vuông cạnh $x$ và diện tích hình chữ nhật có hai kích thước $x$ và $x+3$ theo $x$.\n**Bước 2.** Ý a: lấy diện tích hình chữ nhật trừ diện tích hình vuông, nhân đơn thức với đa thức rồi thu gọn.\n**Bước 3.** Ý b: cho biểu thức $S$ đã thu gọn bằng 21, được một phương trình bậc nhất ẩn $x$ và giải nó.\n**Bước 4.** Ý b: đối chiếu nghiệm với điều kiện $x>0$ rồi kết luận.\n**Phần 2. Trình bày**\na) Diện tích mảnh vườn hình vuông ban đầu là $x^2$ ($m^2$).\nDiện tích mảnh vư …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000370",
+  "loai": "tu_luan",
+  "de": "Trong một siêu thị, giá niêm yết của một chiếc tivi và một chiếc tủ lạnh có tổng số tiền là $25$ triệu đồng. Tuy nhiên, siêu thị đang có chương trình ưu đãi, tivi được giảm giá $10\\%$ và tủ lạnh được giảm giá $20\\%$ so với giá niêm yết. Vì thế bác Hà đến siêu thị đó mua một chiếc tivi và một chiếc tủ lạnh trên với tổng số tiền là $21$ triệu đồng. Hỏi giá niêm yết của mỗi mặt hàng trên là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (giá niêm yết của tivi và của tủ lạnh) và hai dữ kiện về tổng tiền, nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn ẩn là giá niêm yết của từng mặt hàng (đơn vị triệu đồng) và nêu điều kiện của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng giá niêm yết; phương trình thứ hai từ tổng giá sau khi giảm, nhớ giảm $10\\%$ nghĩa là chỉ trả $90\\%$ giá niêm yết.\n**Bước 3.** Giải hệ bằng phương pháp thế, đối chiếu điều kiện rồi trả lời đủ cả hai mặt hàng.\n**Chú ý:** hệ số trong phương trình thứ hai là phần trăm giá phải trả ($90\\%$ và $80\\%$), không phải phần trăm được giảm.\n**Phần 2. Trình bày**\nGọi giá niêm yết của chiếc …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000505",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập phương trình hoặc hệ phương trình: Bác An đến siêu thị điện máy mua một máy hút ẩm và một quạt cây với tổng số tiền theo giá niêm yết là $20$ triệu đồng. Tuy nhiên, do siêu thị khuyến mại để tri ân khách hàng nhân dịp $20/10$ nên giá của máy hút ẩm và quạt cây đã lần lượt giảm $20\\%$ và $15\\%$ so với giá niêm yết. Do đó bác An đã được giảm $3{,}62$ triệu đồng khi mua hai sản phẩm trên. Hỏi giá niêm yết của máy hút ẩm, quạt cây là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng cần tìm (hai giá niêm yết) và hai thông tin độc lập: tổng giá niêm yết, và tổng số tiền được giảm tính theo phần trăm của từng giá.\n**Bước 1.** Gọi giá niêm yết của máy hút ẩm và của quạt cây là hai ẩn (đơn vị triệu đồng) và nêu điều kiện của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ thông tin hai sản phẩm có tổng giá niêm yết là $20$ triệu đồng.\n**Bước 3.** Lập phương trình thứ hai: số tiền giảm của mỗi sản phẩm bằng phần trăm giảm nhân với giá niêm yết, và tổng hai khoản giảm là $3{,}62$ triệu đồng.\n**Bước 4.** Giải hệ bằng phương pháp thế, đối chiếu điều kiện rồi trả lời đủ cả hai giá niêm yết kèm đơn vị.\n**Chú ý:** đổi phần trăm san …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000150",
+  "loai": "tu_luan",
+  "de": "Cho $a$, $b$ là các số thực và $a\\ge2b$. Chứng minh: $2a+7\\ge a+2b+7$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so sánh hai vế cần chứng minh với giả thiết $a\\ge2b$: hai vế khác nhau đúng ở chỗ $2a$ so với $a+2b$.\n**Bước 1.** Nhận xét vế trái và vế phải đều có số hạng $7$, nên chỉ cần quan tâm tới phần còn lại.\n**Bước 2.** Chọn số cần cộng vào hai vế của giả thiết để vế trái trở thành $2a+7$ và vế phải trở thành $a+2b+7$.\n**Bước 3.** Áp dụng tính chất: cộng cùng một số vào hai vế của bất đẳng thức thì được bất đẳng thức cùng chiều.\n**Phần 2. Trình bày**\nTa có $a\\ge2b$.\nCộng hai vế của bất đẳng thức với $a+7$ (tính chất liên hệ giữa thứ tự và phép cộng), ta được $a+(a+7)\\ge2b+(a+7)$.\nHay $2a+7\\ge a+2b+7$.\nVậy $2a+7\\ge a+2b+7$ (đpcm).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000165",
+  "loai": "tu_luan",
+  "de": "Giải phương trình $5x(x-2)-3(x-2)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai hạng tử ở vế trái cùng chứa nhân tử $(x-2)$, đặt nó ra ngoài để đưa về phương trình tích; không chia hai vế cho $x-2$ vì sẽ mất nghiệm.\n**Bước 1.** Tìm nhân tử chung của hai hạng tử $5x(x-2)$ và $3(x-2)$.\n**Bước 2.** Đặt nhân tử chung ra ngoài để vế trái thành tích của hai biểu thức bậc nhất.\n**Bước 3.** Cho từng thừa số bằng $0$, giải hai phương trình bậc nhất rồi kết luận.\n**Chú ý:** nếu chia hai vế cho $x-2$ thì làm mất nghiệm $x=2$.\n**Phần 2. Trình bày**\n$5x(x-2)-3(x-2)=0$\n$(x-2)(5x-3)=0$\nSuy ra $x-2=0$ hoặc $5x-3=0$.\n• $x-2=0$ suy ra $x=2$.\n• $5x-3=0$ suy ra $5x=3$ suy ra $x=\\dfrac{3}{5}$.\nVậy phương trình đã cho có hai nghiệm là $x=2$ và $x=\\dfra …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

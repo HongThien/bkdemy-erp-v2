@@ -1,0 +1,46 @@
+[
+ {
+  "ma_cau": "T109000000329",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $-15x+4(2x-1)\\ge10(x+3)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khi chia hai vế cho một số **âm** thì phải đổi chiều bất đẳng thức.\n**Bước 1.** Bỏ ngoặc ở cả hai vế bằng cách nhân số ngoài ngoặc với từng hạng tử bên trong.\n**Bước 2.** Thu gọn mỗi vế rồi chuyển các hạng tử chứa $x$ sang một vế, hạng tử tự do sang vế kia (đổi dấu khi chuyển vế).\n**Bước 3.** Chia hai vế cho hệ số của $x$, nhớ xét dấu của hệ số này để biết có đổi chiều hay không.\n**Bước 4.** Kết luận nghiệm của bất phương trình bằng lời.\n**Chú ý:** bước chia hai vế cho số âm là chỗ dễ sai nhất của dạng này.\n**Phần 2. Trình bày**\n$-15x+4(2x-1)\\ge10(x+3)$\n$-15x+8x-4\\ge10x+30$\n$-7x-4\\ge10x+30$\n$-7x-10x\\ge30+4$\n$-17x\\ge34$\n$x\\le-2$ (chia hai vế cho $-17<0$ nên …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000237",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases}3x-y=5\\\\5x+2y=23\\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ số của $y$ ở hai phương trình là $-1$ và $2$, chỉ cần nhân phương trình thứ nhất với một số là hai hệ số đối nhau và cộng đại số được.\n**Bước 1.** Chọn khử ẩn $y$ vì hệ số $-1$ và $2$ dễ làm đối nhau: nhân hai vế của phương trình thứ nhất với số thích hợp.\n**Bước 2.** Cộng từng vế hai phương trình của hệ mới để được phương trình một ẩn $x$ rồi giải.\n**Bước 3.** Thay giá trị $x$ vừa tìm vào một phương trình của hệ ban đầu để tìm $y$, rồi kết luận nghiệm.\n**Chú ý:** khi nhân phải nhân cả hai vế, kể cả vế phải.\n**Phần 2. Trình bày**\nNhân hai vế của phương trình thứ nhất với $2$, ta được hệ:\n$\\begin{cases}6x-2y=10\\\\5x+2y=23\\end{cases}$\nCộng từng vế hai phươ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000484",
+  "loai": "tu_luan",
+  "de": "Một người mua một cái bàn là và một cái quạt điện với tổng số tiền theo giá niêm yết là $750$ nghìn đồng. Khi trả tiền người đó được khuyến mãi giảm giá $10\\%$ đối với giá tiền bàn là và $20\\%$ đối với giá tiền quạt điện so với giá niêm yết. Vì vậy người đó phải trả tổng cộng $625$ nghìn đồng. Tính giá tiền của cái bàn là và cái quạt điện theo giá niêm yết.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bài toán có hai đại lượng chưa biết (giá niêm yết của bàn là và của quạt điện) và hai mối quan hệ (tổng giá niêm yết, tổng tiền phải trả) nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Gọi hai ẩn là giá niêm yết của bàn là và của quạt điện (đơn vị nghìn đồng) và nêu điều kiện của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng giá niêm yết; lập phương trình thứ hai từ tiền thực trả, trong đó giảm giá $10\\%$ thì chỉ trả $90\\%$ giá niêm yết, giảm $20\\%$ thì chỉ trả $80\\%$.\n**Bước 3.** Giải hệ bằng phương pháp thế: rút một ẩn từ phương trình thứ nhất rồi thế vào phương trình thứ hai.\n**Bước 4.** Đối chiếu điều kiện của ẩn và trả lời đủ cả hai câu  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000201",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\dfrac{x-1}{x}+\\dfrac{1}{x+1}=\\dfrac{2x+1}{x^2+x}$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình có ẩn ở mẫu nên phải tìm điều kiện xác định trước và đối chiếu nghiệm với điều kiện đó sau cùng.\n**Bước 1.** Phân tích mẫu $x^2+x$ thành nhân tử, từ đó tìm điều kiện để các mẫu khác $0$ và chọn mẫu chung.\n**Bước 2.** Quy đồng mẫu hai vế rồi khử mẫu, thu được một phương trình không còn ẩn ở mẫu.\n**Bước 3.** Đưa phương trình về dạng bậc hai rồi phân tích thành nhân tử để đưa về phương trình tích.\n**Bước 4.** Đối chiếu từng nghiệm với điều kiện xác định, loại nghiệm làm cho mẫu bằng $0$ rồi kết luận.\n**Chú ý:** quên bước đối chiếu điều kiện sẽ nhận nhầm nghiệm ngoại lai.\n**Phần 2. Trình bày**\nTa có $x^2+x=x(x+1)$.\nĐiều kiện xác định: $x\\ne0$ và $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000441",
+  "loai": "tu_luan",
+  "de": "Giải bài toán bằng cách lập phương trình hoặc hệ phương trình.\nHai lớp 9A và 9B có tổng số 82 học sinh. Trong dịp tết trồng cây, mỗi học sinh lớp 9A trồng 2 cây, mỗi học sinh lớp 9B trồng 3 cây, nên cả hai lớp trồng được 206 cây. Tính số học sinh của mỗi lớp?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai ẩn là số học sinh của hai lớp; mỗi dữ kiện (tổng số học sinh, tổng số cây) cho một phương trình, từ đó lập được một hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Gọi số học sinh lớp 9A là $x$ và lớp 9B là $y$, nêu điều kiện của hai ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng số học sinh, phương trình thứ hai từ tổng số cây (số cây mỗi lớp bằng số cây mỗi bạn nhân với số học sinh).\n**Bước 3.** Giải hệ bằng phương pháp thế hoặc cộng đại số để tìm $x$ và $y$.\n**Bước 4.** Đối chiếu nghiệm với điều kiện của bài toán rồi trả lời đúng câu hỏi.\n**Phần 2. Trình bày**\nGọi số học sinh lớp 9A là $x$ (học sinh), số học sinh lớp 9B là $y$ (học sinh), với $x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000293",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(x+2)^2-x(x-3)+10=0$.",
+  "dap_an": "-2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi khai triển và thu gọn, hạng tử $x^2$ triệt tiêu nên phương trình chỉ còn là phương trình bậc nhất một ẩn.\n**Bước 1.** Khai triển $(x+2)^2$ bằng hằng đẳng thức bình phương của một tổng và nhân $-x$ vào $(x-3)$, chú ý đổi dấu cả hai hạng tử trong ngoặc.\n**Bước 2.** Thu gọn các hạng tử đồng dạng để đưa phương trình về dạng $ax+b=0$.\n**Bước 3.** Chuyển vế rồi chia hai vế cho hệ số của $x$ để tìm nghiệm, sau đó kết luận bằng lời.\n**Chú ý:** dấu trừ đứng trước $x(x-3)$ làm đổi dấu cả hai hạng tử khi bỏ ngoặc.\n**Phần 2. Trình bày**\n$(x+2)^2-x(x-3)+10=0$\n$x^2+4x+4-x^2+3x+10=0$\n$7x+14=0$\n$7x=-14$\n$x=-2$\nVậy phương trình đã cho có nghiệm là $x=-2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

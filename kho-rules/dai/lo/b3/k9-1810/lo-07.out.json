@@ -1,0 +1,38 @@
+[
+ {
+  "ma_cau": "T109000000329",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc hai vế, thu gọn rồi giải bất phương trình bậc nhất, chia số âm đổi chiều."
+ },
+ {
+  "ma_cau": "T109000000237",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng cộng đại số nhân hệ số."
+ },
+ {
+  "ma_cau": "T109000000484",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng giảm giá 10% và 20%, cho tổng niêm yết và tổng tiền phải trả."
+ },
+ {
+  "ma_cau": "T109000000201",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2+x phân tích thành x(x+1), phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000441",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Hai lớp cho tổng học sinh và tổng số cây trồng, lập hệ, không thuộc giá/lãi/mua bán."
+ },
+ {
+  "ma_cau": "T109000000293",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Khai triển thu gọn, x^2 triệt tiêu, còn phương trình bậc nhất một ẩn."
+ }
+]
