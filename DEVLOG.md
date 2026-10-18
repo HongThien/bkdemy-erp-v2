@@ -38212,3 +38212,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **UI:** `HinhLuyenChuaPhanTab.tsx` 3 hàng (Chờ duyệt·tự luận / Đã bỏ qua / Kho riêng), nút "⤼ Bỏ qua" + hộp lý do (khuôn Cần sửa), hàng bỏ qua hiện lý do + "Khôi phục", ô đổi "loại" để sửa khi máy xếp nhầm (đổi sang phía bên kia thì bài rời hàng, vá tại chỗ). `scripts/hinh-luyen/nhap_tu_de_thi.mjs` ghi `loai_cau` lúc nhập.
 - **Chưa làm/để ngỏ:** "kho riêng" hiện chỉ là hàng xem + đổi loại trong cùng màn, CHƯA có luồng dùng (làm sau khi Thùy chốt kho trắc nghiệm Hình dùng vào đâu). Chưa mở UI bằng phiên đăng nhập thật (typecheck sạch trên file đụng tới; RPC kiểm bằng SQL).
 - **Bẫy tự dính:** lỡ gõ `node scripts/migrate.mjs --help` khi sổ có 17 file treo của người khác — lần này không áp gì (kiểm `--status` lại 854/863), nhưng đúng loại lệnh memory đã cấm.
+
+## 18/10 — Hình–Luyện: tầng NHÓM MÔ HÌNH giữa Chủ đề và Mô hình (Thùy 18/10, mig 202610181651 ĐÃ ÁP)
+- **Thùy:** cần thêm 1 tầng trên mô hình = nhóm mô hình (gồm những mô hình tương đồng), vì dàn phẳng tầng mô hình thì nhiều, khó theo dõi. Chốt: nhóm trong 1 chủ đề · mô hình bắt buộc thuộc 1 nhóm · nhóm có mô tả nhận biết.
+- **DB:** `hinh_nhom_mo_hinh` (mã NMH… bất biến) + `hinh_mo_hinh.nhom_mh_id` + trigger khớp nhóm↔chủ đề + log chung `dai_bdm_log` + RPC sắp / xoá (chỉ rỗng) / tạo mô hình trong nhóm. Thử ROLLBACK 9/9 (`scripts/kho/test_nhom_mo_hinh.mjs`) rồi `--only`. (Seq NMH đã chạy 2 số trong lúc thử — mã không cấp lại, đúng luật.)
+- **App:** `CayNhanh.tsx` cột trái nhóm theo nhóm (gập/mở, ▲▼, ✎ tên + mô tả, xoá khi rỗng, kéo mô hình sang nhóm), "⚠ Chưa xếp nhóm" cho 8 mô hình K8 đang có, "＋ Mô hình" chọn nhóm. API `hinhCay.ts`. spec-hinh-cay-nhanh §12.
+- **Kiểm:** app local K8 › "Hình chữ nhật – Hình thoi – Hình vuông": 8 mô hình ở Chưa xếp nhóm, ＋ Mô hình khoá khi chưa có nhóm, khung tạo nhóm mở/Huỷ. KHÔNG tạo nhóm thật (bản đồ là việc của Thùy) ⇒ kéo-thả + nhóm có mô hình chỉ kiểm ở DB, chưa bấm trên app.

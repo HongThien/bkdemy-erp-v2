@@ -290,3 +290,41 @@ export async function demKhoMoHinh(khoi: string): Promise<Map<string, DemKho>> {
   return new Map(((data ?? []) as { mo_hinh_id: string; so_chuoi: number | string; so_y: number | string; so_y_da_gan: number | string }[])
     .map((r) => [r.mo_hinh_id, { so_chuoi: Number(r.so_chuoi), so_y: Number(r.so_y), so_y_da_gan: Number(r.so_y_da_gan) }]))
 }
+
+// ── NHÓM MÔ HÌNH (mig 202610181651, Thùy 18/10): Chủ đề → Nhóm mô hình → Mô hình. Nhóm chỉ GOM (không kế thừa, không đo riêng).
+export type NhomMoHinh = { id: string; chu_de_id: string; ten: string; mo_ta: string; thu_tu: number }
+export async function nhomMoHinhCuaChuDe(chuDeId: string): Promise<NhomMoHinh[]> {
+  const { data, error } = await supabase.from('hinh_nhom_mo_hinh').select('id, chu_de_id, ten, mo_ta, thu_tu').eq('chu_de_id', chuDeId).order('thu_tu').limit(500)
+  if (error) throw error
+  return (data ?? []) as NhomMoHinh[]
+}
+export async function themNhomMoHinh(chuDeId: string, ten: string, moTa = ''): Promise<NhomMoHinh> {
+  const { data, error } = await supabase.from('hinh_nhom_mo_hinh').insert({ chu_de_id: chuDeId, ten: ten.trim(), mo_ta: moTa.trim() })
+    .select('id, chu_de_id, ten, mo_ta, thu_tu').single()
+  if (error) throw error
+  return data as NhomMoHinh
+}
+export async function suaNhomMoHinh(id: string, v: { ten: string; mo_ta: string }): Promise<void> {
+  const { error } = await supabase.from('hinh_nhom_mo_hinh').update({ ten: v.ten.trim(), mo_ta: v.mo_ta.trim(), updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+export async function sapNhomMoHinh(ids: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_nhom_mh_sap', { p_ids: ids })
+  if (error) throw error
+}
+/** Chỉ xoá được nhóm RỖNG (DB chặn nhóm còn mô hình). */
+export async function xoaNhomMoHinh(id: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_nhom_mh_xoa', { p_id: id })
+  if (error) throw error
+}
+/** Tạo mô hình luyện ngay trong nhóm (khối + chủ đề theo nhóm), 1 transaction. */
+export async function taoMoHinhTrongNhom(nhomId: string, ten: string, giaThiet: string, anh: string | null): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_hl_tao_mo_hinh_trong_nhom', { p_nhom: nhomId, p_ten: ten, p_gia_thiet: giaThiet, p_anh: anh })
+  if (error) throw error
+  return data as string
+}
+/** Chuyển mô hình sang nhóm khác (DB tự khớp chủ đề theo nhóm). */
+export async function doiNhomMoHinh(moHinhId: string, nhomId: string): Promise<void> {
+  const { error } = await supabase.from('hinh_mo_hinh').update({ nhom_mh_id: nhomId, updated_at: new Date().toISOString() }).eq('id', moHinhId)
+  if (error) throw error
+}

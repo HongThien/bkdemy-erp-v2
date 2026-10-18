@@ -20,6 +20,8 @@ export type MoHinh = {
   // CÂY NHÁNH (spec-hinh-cay-nhanh.md, mig 202610140048). `neo_baitoan_id` = bài mẹ nơi nhánh rẽ ra (null = gốc cây /
   // mô hình con kiểu cũ); cha của nhánh SUY từ neo, không lưu. `la_mo_hinh=false` = nhánh inline.
   neo_baitoan_id?: string | null; la_mo_hinh?: boolean; chu_de_id?: string | null; thu_tu?: number | null
+  // NHÓM MÔ HÌNH (mig 202610181651, Thùy 18/10): mô hình gốc luyện thuộc 1 nhóm trong chủ đề; null = nhánh / mô hình cũ / chưa xếp
+  nhom_mh_id?: string | null
 }
 export type CanhMoHinh = { mo_hinh_id: string; cha_id: string }
 export type BaiToan = {

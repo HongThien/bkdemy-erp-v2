@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-419 bảng · 25 view · 0 enum · 195 trigger · 1166 function
+420 bảng · 25 view · 0 enum · 198 trigger · 1171 function
 
 ## _app_secrets
 
@@ -2920,6 +2920,7 @@ END |  |  |
 | neo_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
 | la_mo_hinh | boolean |  | true |  |  |
 | thu_tu | integer | Y |  |  |  |
+| nhom_mh_id | text | Y |  | FK→hinh_nhom_mo_hinh.id |  |
 
 ## hinh_mo_hinh_cha
 
@@ -2937,6 +2938,18 @@ END |  |  |
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_nhom_mo_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('NMH'::text \|\| lpad((nextval('hinh_nhom_mo_hinh_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| chu_de_id | text |  |  | FK→dai_bdm_chu_de.id |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_y
 
@@ -3469,7 +3482,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -7748,6 +7761,9 @@ WITH luot AS (
 | hinh_hoc_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hinh_hoc_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
 | hinh_mo_hinh | hinh_mo_hinh_neo_chk_trg | BEFORE | INSERT/UPDATE | hinh_mo_hinh_neo_chk |
+| hinh_mo_hinh | trg_hl_mo_hinh_khop_nhom | BEFORE | INSERT/UPDATE | _hl_mo_hinh_khop_nhom |
+| hinh_nhom_mo_hinh | trg_hl_nhom_mh_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hinh_nhom_mo_hinh | trg_hl_nhom_mh_thu_tu | BEFORE | INSERT | _hl_nhom_mh_thu_tu |
 | hinh_y | hinh_y_bump_bai | AFTER | INSERT/DELETE/UPDATE | _hl_y_bump_bai |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoat_dong_phong | trg_log_hoat_dong_phong | AFTER | INSERT/UPDATE | log_hoat_dong_phong |
@@ -7916,6 +7932,8 @@ WITH luot AS (
 - `_hl_duong_mo_hinh(p_mh uuid)` → uuid[]
 - `_hl_ghi_loi_giai(p_bai uuid, p_loi_giai text, p_tien_de uuid[])` → void
 - `_hl_ket_qua(p_goc uuid, p_nhanh_moi uuid DEFAULT NULL::uuid)` → jsonb
+- `_hl_mo_hinh_khop_nhom()` → trigger
+- `_hl_nhom_mh_thu_tu()` → trigger
 - `_hl_y_bump_bai()` → trigger
 - `_hom_thu_gui(p_nhan uuid, p_loai text, p_tieu_de text, p_noi_dung text, p_lien_ket text, p_tu uuid)` → void
 - `_hom_thu_tg_gay()` → trigger
@@ -8520,11 +8538,14 @@ WITH luot AS (
 - `fn_hl_khoi_phuc_bai(p_bai uuid)` → void
 - `fn_hl_mo_hinh_luyen(p_khoi text)` → TABLE(id uuid, ma text, ten text, chu_de_id text, so_bai bigint)
 - `fn_hl_mo_hinh_se_mat(p_id uuid)` → jsonb
+- `fn_hl_nhom_mh_sap(p_ids text[])` → void
+- `fn_hl_nhom_mh_xoa(p_id text)` → void
 - `fn_hl_re_nhanh(p_bai_ids uuid[], p_ten text DEFAULT NULL::text, p_gia_thiet_them text DEFAULT NULL::text)` → jsonb
 - `fn_hl_sai_nhanh(p_goc uuid)` → TABLE(baitoan_id uuid, ma text, tien_de_id uuid, ma_tien_de text)
 - `fn_hl_so_hien_thi(p_goc uuid)` → TABLE(baitoan_id uuid, mo_hinh_id uuid, so text, ma text)
 - `fn_hl_sua_bai(p_bai uuid, p_phat_bieu text, p_gia_thiet_rieng text DEFAULT NULL::text, p_loi_giai text DEFAULT NULL::text, p_anh text DEFAULT NULL::text, p_tien_de uuid[] DEFAULT '{}'::uuid[])` → jsonb
 - `fn_hl_tao_mo_hinh(p_khoi text, p_ten text, p_gia_thiet text, p_anh text DEFAULT NULL::text)` → uuid
+- `fn_hl_tao_mo_hinh_trong_nhom(p_nhom text, p_ten text, p_gia_thiet text, p_anh text)` → text
 - `fn_hl_them_bai(p_nhanh uuid, p_phat_bieu text, p_gia_thiet_rieng text DEFAULT NULL::text, p_loi_giai text DEFAULT NULL::text, p_anh text DEFAULT NULL::text, p_tien_de uuid[] DEFAULT '{}'::uuid[])` → jsonb
 - `fn_hl_tien_do(p_khoi text)` → TABLE(mo_hinh_id uuid, ma text, ten text, phan text, so_bai_kho bigint, so_bai_chua_hinh bigint, so_y bigint, so_y_chua_duyet bigint, so_y_chua_gan bigint, so_bai_mo_hinh bigint)
 - `fn_hl_xoa_mo_hinh(p_id uuid)` → jsonb
@@ -9142,6 +9163,7 @@ WITH luot AS (
 | hinh_hoc_cum_tien_de | hinh_hoc_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
+| hinh_nhom_mo_hinh | hinh_nhom_mo_hinh_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
 | hoi_dap_bot | hoi_dap_bot_id_check | `CHECK ((id = 1))` |
 | hs_giai_thuong | hs_giai_thuong_xu_check | `CHECK ((xu >= 0))` |
