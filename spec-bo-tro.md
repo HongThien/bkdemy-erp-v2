@@ -374,7 +374,7 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   **Công/lương: buổi Hình tính như buổi Yếu** (loại việc `bo_tro_yeu`, lớp suy từ lớp Toán em đang học) — Thùy chưa nói khác, đổi thì tách loại việc riêng.
   Còn treo thật: theo dõi sống (Đang luyện/Im lâu) trong Lịch phòng cho Hình (không có dữ liệu luyện) · báo cáo trợ lý (`_troly_*`) chưa đếm Hình · mở case từ báo động/máy khi có bản đồ Hình.
 
-## 24. Cập nhật 17/10 — Luyện ≠ test cuối ca
+## 26. Cập nhật 17/10 — Luyện ≠ test cuối ca
 
 - **Luật (Thùy 17/10):** trong một ca bổ trợ yếu, đề luyện và đề test cuối ca PHẢI khác nhau — khác mã câu VÀ khác đề (cùng chữ + hình + lựa chọn tính là một đề).
 - **Cách làm:** `_btyeu_chon_cau_khac` chỉ trả câu CHƯA gặp trong ca. Test cuối ca lấy theo cụm, thiếu thì sang cụm khác của dạng, không lặp. Luyện (app HS + phiếu giấy) chừa 2 câu mỗi dạng cho test; hết câu mới thì ôn lại câu em đã luyện trong ca. Dạng ≤2 câu đủ điều kiện ⇒ học trên giấy.
