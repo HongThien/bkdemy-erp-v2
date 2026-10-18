@@ -1,0 +1,219 @@
+{
+ "khoi": "5T",
+ "chuyen_de": "T15T0302 Bài toán công việc chung riêng (CEO tạo 18/10)",
+ "lan_chay": "gan-opus-5T-cv-20261018",
+ "model": "claude-opus-5-5",
+ "kiem": {
+  "model": "claude-sonnet-5-5",
+  "lan_chay": "gan-mu-sonnet-5T-cv-20261018"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000175",
+   "ma_nguon": "VD 3.1",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Cộng phần việc mỗi giờ của hai người làm chung từ đầu."
+  },
+  {
+   "ma_cau": "T15T000000176",
+   "ma_nguon": "VD 3.2",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Biết làm chung và một người, trừ để tìm người kia, không đổi người giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000177",
+   "ma_nguon": "LT 3.1",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Cộng phần bể mỗi giờ của hai vòi cùng chảy từ đầu."
+  },
+  {
+   "ma_cau": "T15T000000178",
+   "ma_nguon": "LT 3.2",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Cộng phần việc mỗi giờ hai người làm chung rồi lấy 1 chia."
+  },
+  {
+   "ma_cau": "T15T000000179",
+   "ma_nguon": "LT 3.3",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Cộng phần bể mỗi giờ của ba vòi cùng chảy."
+  },
+  {
+   "ma_cau": "T15T000000020",
+   "ma_nguon": "LT 3.4",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Vòi vào và vòi ra cùng mở từ đầu, phần bể mỗi giờ = hiệu, không đổi giữa chừng; vẫn là khuôn tốc độ chung riêng."
+  },
+  {
+   "ma_cau": "T15T000000180",
+   "ma_nguon": "LT 3.5",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Biết làm chung và một người, trừ để tìm người còn lại."
+  },
+  {
+   "ma_cau": "T15T000000181",
+   "ma_nguon": "LT 3.6",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Biết cả ba đội và hai đội, trừ tìm đội C; không đổi người giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000182",
+   "ma_nguon": "LT 3.7",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Hai vòi chảy cùng nhau từ đầu, chỉ khác là bể có sẵn 1/4 nước nên làm phần còn lại; không đổi vòi giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000183",
+   "ma_nguon": "LT 3.8",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Tìm tốc độ vòi hai từ bể rỗng rồi áp cho phần còn trống; chỉ một vòi chạy suốt, không đổi người giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000184",
+   "ma_nguon": "LT 3.9",
+   "dang": "T15T030202",
+   "ly_do": "máy gặt làm 3 giờ rồi bị điều đi, máy khác làm tiếp",
+   "dang_mu": "T15T030202",
+   "chac_mu": "cao",
+   "ly_do_mu": "Máy thứ nhất gặt 3 giờ rồi bị thay bằng máy khác: đổi máy giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000021",
+   "ma_nguon": "LT 3.10",
+   "dang": "T15T030202",
+   "ly_do": "anh làm 5 phút rồi em mới đến làm cùng",
+   "dang_mu": "T15T030202",
+   "chac_mu": "cao",
+   "ly_do_mu": "Anh làm một mình 5 phút rồi em vào làm cùng: hai giai đoạn khác người làm."
+  },
+  {
+   "ma_cau": "T15T000000185",
+   "ma_nguon": "LT 3.11",
+   "dang": "T15T030202",
+   "ly_do": "làm chung 1 giờ rồi Nam rút, Hằng làm nốt",
+   "dang_mu": "T15T030202",
+   "chac_mu": "cao",
+   "ly_do_mu": "Hai người làm chung 1 giờ rồi Nam rút, Hằng làm tiếp: đổi người giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000186",
+   "ma_nguon": "LT 3.12",
+   "dang": "T15T030202",
+   "ly_do": "trâu ăn 4 phút rồi nghé đến ăn cùng",
+   "dang_mu": "T15T030202",
+   "chac_mu": "cao",
+   "ly_do_mu": "Trâu ăn một mình 4 phút rồi nghé vào ăn cùng: hai giai đoạn."
+  },
+  {
+   "ma_cau": "T15T000000187",
+   "ma_nguon": "LT 3.13",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Tính tốc độ mỗi đội từ phần làm được trong số giờ cho trước rồi cộng, cùng làm chung từ đầu."
+  },
+  {
+   "ma_cau": "T15T000000188",
+   "ma_nguon": "LT 3.14",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "thap",
+   "ly_do_mu": "Cho làm chung và hỗn hợp 2 giờ người 1 + 3 giờ người 2, so sánh để tách tốc độ; không có đổi người rõ ràng theo giai đoạn."
+  },
+  {
+   "ma_cau": "T15T000000189",
+   "ma_nguon": "LT 3.15",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Cho tốc độ từng cặp, cộng rồi chia 2; không đổi người giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000706",
+   "ma_nguon": "ON 72",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Cộng phần bể mỗi giờ của hai vòi cùng chảy."
+  },
+  {
+   "ma_cau": "T15T000000707",
+   "ma_nguon": "ON 73",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Cộng phần việc mỗi giờ của ba người làm chung."
+  },
+  {
+   "ma_cau": "T15T000000708",
+   "ma_nguon": "ON 74",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "cao",
+   "ly_do_mu": "Biết làm chung và một người, trừ để tìm người kia."
+  },
+  {
+   "ma_cau": "T15T000000709",
+   "ma_nguon": "ON 75",
+   "dang": "T15T030202",
+   "ly_do": "hai thợ làm 3 giờ rồi thợ cả bận, thợ phụ làm nốt",
+   "dang_mu": "T15T030202",
+   "chac_mu": "cao",
+   "ly_do_mu": "Hai thợ làm chung 3 giờ rồi thợ cả nghỉ, thợ phụ làm nốt 6 giờ."
+  },
+  {
+   "ma_cau": "T15T000000710",
+   "ma_nguon": "ON 76",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Vòi vào và vòi ra cùng mở từ đầu, lấy hiệu; không đổi giữa chừng."
+  },
+  {
+   "ma_cau": "T15T000000711",
+   "ma_nguon": "ON 77",
+   "dang": "T15T030201",
+   "ly_do": "người / vòi tham gia suốt từ đầu, cộng–trừ phần việc 1 đơn vị thời gian",
+   "dang_mu": "T15T030201",
+   "chac_mu": "vua",
+   "ly_do_mu": "Cho thời gian từng cặp vòi, cộng chia 2 rồi trừ tìm vòi ba; không đổi giữa chừng."
+  }
+ ]
+}

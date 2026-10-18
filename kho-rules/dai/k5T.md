@@ -309,6 +309,19 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 - Dữ liệu lượt gán: `lo/k5T-gan-tile.json` (30 câu: 24 gán, 6 lệch) · `lo/k5T-gan-tile-2.json` (6 câu lệch, gán sau khi CEO chốt). Cả 30 câu đã vào bản đồ
   (`030101`: 3 · `030102`: 4 · `030103`: 12 · `030104`: 11). Dạng chờ 5T còn 819 câu.
 
+### 8.2 Chuyên đề `T15T0302` Bài toán công việc chung riêng (CEO tạo 18/10, 2 dạng, chưa có mô tả nhận biết) ↔ CĐ3 của sách + ON 72–77
+
+| Dạng | Dấu hiệu (theo phương pháp của lời giải đã ghi kho) | Câu đã gán 18/10 |
+|---|---|---|
+| `030201` Công việc chung riêng cơ bản | người / vòi tham gia **suốt từ đầu**: đổi ra "phần việc trong 1 đơn vị thời gian" rồi cộng (làm chung), trừ (tìm người còn lại, vòi tháo), hoặc cho theo cặp / theo từng phần | VD 3.1 · VD 3.2 · LT 3.1–3.8 · LT 3.13–3.15 · ON 72 · 73 · 74 · 76 · 77 |
+| `030202` Có thay đổi công việc giữa chừng | **giai đoạn đầu và giai đoạn sau khác nhau** (có người vào, rút, thay thế sau một lúc) ⇒ tính phần việc giai đoạn đầu, lấy phần còn lại cho giai đoạn sau | LT 3.9 · LT 3.10 · LT 3.11 · LT 3.12 · ON 75 |
+
+- Bể **có sẵn** một phần nước (LT 3.7, LT 3.8) là điều kiện đầu, không phải đổi người giữa chừng ⇒ dạng cơ bản. Vòi vào trừ vòi ra mở cùng lúc từ đầu (LT 3.4, ON 76) ⇒ cơ bản.
+- Opus xếp và Sonnet gán mù **trùng 23/23** ⇒ ghi không cần hỏi. Hai trạm tự dùng cùng một ranh giới (tên dạng chưa có mô tả).
+- ⏳ Nếu CEO muốn "công việc chung riêng cơ bản" chỉ gồm bài KHÔNG có vòi tháo (LT 3.4, ON 76 sang dạng khác), hoặc LT 3.7 / 3.8 sang `030202` — báo, đổi bằng `gan-dang.mjs`.
+- **Loại khỏi chuyên đề:** LT 7.12 (thừa–thiếu, nhắc "hoàn thành công việc" nhưng không phải bài công việc chung). Các bài LT 5.x, ON 68 nhắc "một công việc" nằm ở `T15T0301` (tỉ lệ), giữ nguyên.
+- Dữ liệu lượt gán: `lo/k5T-gan-cv.json` (23 câu). Dạng chờ 5T còn 796 câu.
+
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
 | Ngày | Câu | CEO sửa gì | Luật rút ra |
