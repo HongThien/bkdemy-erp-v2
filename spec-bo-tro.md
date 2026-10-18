@@ -374,12 +374,6 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   **Công/lương: buổi Hình tính như buổi Yếu** (loại việc `bo_tro_yeu`, lớp suy từ lớp Toán em đang học) — Thùy chưa nói khác, đổi thì tách loại việc riêng.
   Còn treo thật: theo dõi sống (Đang luyện/Im lâu) trong Lịch phòng cho Hình (không có dữ liệu luyện) · báo cáo trợ lý (`_troly_*`) chưa đếm Hình · mở case từ báo động/máy khi có bản đồ Hình.
 
-## 26. Cập nhật 17/10 — Luyện ≠ test cuối ca
-
-- **Luật (Thùy 17/10):** trong một ca bổ trợ yếu, đề luyện và đề test cuối ca PHẢI khác nhau — khác mã câu VÀ khác đề (cùng chữ + hình + lựa chọn tính là một đề).
-- **Cách làm:** `_btyeu_chon_cau_khac` chỉ trả câu CHƯA gặp trong ca. Test cuối ca lấy theo cụm, thiếu thì sang cụm khác của dạng, không lặp. Luyện (app HS + phiếu giấy) chừa 2 câu mỗi dạng cho test; hết câu mới thì ôn lại câu em đã luyện trong ca. Dạng ≤2 câu đủ điều kiện ⇒ học trên giấy.
-- **Ngoại lệ có chủ đích:** hết câu mới ở mọi dạng đã luyện ⇒ test lấy lại 1 dạng kém nhất để khỏi rỗng (cờ `test_lap_cau`); retest (HOLD) và bù/đuổi chưa áp luật này.
-
 ## 25. Cập nhật 17/10 — DUYỆT BỔ TRỢ 2 VÒNG + CHỐT TUẦN + 1 TUẦN BỔ TRỢ 1 LẦN (Thùy)
 
 - **Vấn đề:** hàng duyệt quá dài, duyệt dồn đầu thì cuối hết slot. **Giải pháp:** 2 vòng. Vòng 1 (tab **📉 Điểm thấp** + **🚨 Báo động**) chỉ đưa em vào **👁 Đang theo dõi** (không chiếm slot, không mở case). Vòng 2 (tab Đang theo dõi) mới **Duyệt chính thức** — đi đúng đường cũ (`kiemSucChua` → `duyetLevel` → mở case → `fn_btyeu_fill_dang_yeu`), lúc này mới trừ slot. Mockup: `docs/mockup-duyet-bo-tro-2-vong.html`.
@@ -391,3 +385,9 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Trần gộp Yếu + Hình:** `fn_btyeu_suc_chua` / `fn_btyeu_kiem_suc_chua` (bộ đếm + kiểm trước khi duyệt) trước đây chỉ đếm Yếu — đã sửa đếm cả Hình (trigger thì đã gộp từ §24).
 - **DB:** mig `202610172355_botro_duyet_2_vong_chot_tuan` (bảng `bo_tro_theo_doi` [theo_doi | bo_qua | len_chinh_thuc | go] · `bo_tro_chot_tuan` · `bo_tro_chot_tuan_hs`; `fn_botro_et_btvn` · `fn_botro_chot_tuan` · `fn_botro_danh_sach_tuan` · `fn_botro_bao_dong` · `fn_botro_theo_doi_vao` · `fn_botro_theo_doi_ket_thuc`). Code: `src/lib/botro_tuan.ts`, `DuyetBoTroYeuScreen.tsx` (viết lại), `danhgia.ts` `listCandidatesLop(lopId, giu?)`.
 - **Nợ biết trước:** (1) bước QUÉT của Chốt tuần vẫn là engine TS ở trình duyệt (vi phạm §2.0, chấp nhận vì chạy tay 1 lần/tuần) — port sang SQL khi có thời gian; (2) màn Duyệt cũ dùng `DuyetKhoi`/`CandidateDetailBody` không còn được màn này gọi (vẫn dùng ở Dashboard học tập); (3) thái độ không còn ở màn này; (4) chưa thử "Chốt tuần" và "Duyệt chính thức" bằng dữ liệu thật (sẽ ghi vào DB thật).
+
+## 26. Cập nhật 17/10 — Luyện ≠ test cuối ca
+
+- **Luật (Thùy 17/10):** trong một ca bổ trợ yếu, đề luyện và đề test cuối ca PHẢI khác nhau — khác mã câu VÀ khác đề (cùng chữ + hình + lựa chọn tính là một đề).
+- **Cách làm:** `_btyeu_chon_cau_khac` chỉ trả câu CHƯA gặp trong ca. Test cuối ca lấy theo cụm, thiếu thì sang cụm khác của dạng, không lặp. Luyện (app HS + phiếu giấy) chừa 2 câu mỗi dạng cho test; hết câu mới thì ôn lại câu em đã luyện trong ca. Dạng ≤2 câu đủ điều kiện ⇒ học trên giấy.
+- **Ngoại lệ có chủ đích:** hết câu mới ở mọi dạng đã luyện ⇒ test lấy lại 1 dạng kém nhất để khỏi rỗng (cờ `test_lap_cau`); retest (HOLD) và bù/đuổi chưa áp luật này.
