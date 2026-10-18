@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-421 bảng · 25 view · 0 enum · 198 trigger · 1172 function
+424 bảng · 25 view · 0 enum · 201 trigger · 1172 function
 
 ## _app_secrets
 
@@ -1149,6 +1149,7 @@
 | nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
 | actor | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
+| chu_de_id | text | Y |  | FK→dai_bdm_chu_de.id |  |
 
 ## dai_bdm_chu_de
 
@@ -2233,6 +2234,38 @@ END |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
+
+## hgt_bdm_cau_thieu_dang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→hgt_cau_hoi.ma_cau |  |
+| chu_de_id | text | Y |  | FK→dai_bdm_chu_de.id |  |
+| ly_do | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `nguoi` · `ai` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## hgt_bdm_de_xuat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→hgt_cau_hoi.ma_cau |  |
+| dang_bai_id | text |  |  | FK→dai_bdm_dang_bai.id |  |
+| chac | text |  | 'vua'::text |  | `cao` · `vua` |
+| ly_do | text |  | ''::text |  |  |
+| nguon | text |  | 'ai'::text |  | `nguoi` · `ai` |
+| at | timestamp with time zone |  | now() |  |  |
+
+## hgt_bdm_gan_cau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→hgt_cau_hoi.ma_cau |  |
+| dang_bai_id | text |  |  | FK→dai_bdm_dang_bai.id |  |
+| nguon | text |  |  |  | `nguoi` · `ai` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
 
 ## hgt_cau_form_tn
 
@@ -4872,7 +4905,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -7751,6 +7784,9 @@ WITH luot AS (
 | han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | hgt_ban_do | trg_hgt_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | hgt_ban_do | trg_hgt_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| hgt_bdm_cau_thieu_dang | trg_hgt_bdm_cau_thieu_dang_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hgt_bdm_de_xuat | trg_hgt_bdm_de_xuat_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_cau_form_tn | hgt_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | hgt_cau_form_tn_kiem |
 | hgt_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |

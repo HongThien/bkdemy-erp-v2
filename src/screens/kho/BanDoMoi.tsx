@@ -38,7 +38,7 @@ const HIEN_KHOP_CU = false
 
 // Bản đồ mới → KHO (Thùy 18/10: "chưa thấy đường đi từ bản đồ mới vào kho"): bấm số câu trên thẻ dạng bài / nút 📚 ở nhóm / ⚠ Chưa khớp ở chủ đề
 // ⇒ danh sách câu thật (đề · đáp án · lời giải · cờ duyệt/kho chuẩn/kiểm máy). Cầu nối module-level: màn chỉ có 1 bản, đỡ luồn prop qua 4 tầng.
-type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop'; id: string; ten: string }
+type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang'; id: string; ten: string }
 let moKho: (m: KhoMo) => void = () => {}
 
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
@@ -286,9 +286,17 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           <button onClick={() => setChon({ loai: 'chu_de' })} title="Sửa tên / thứ tự / xoá chủ đề"
             className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
         )}
-        {chuDe && khuon === 'bon_tang' && chuDe.nhanh === 'toan' && (
-          <button onClick={() => moKho({ loai: 'chua_khop', id: chuDe.id, ten: chuDe.ten })} title="Câu AI chưa xếp được vào dạng bài nào của chủ đề này (rổ chưa khớp)"
-            className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[12.5px] font-medium text-amber-800 hover:border-amber-400">⚠ Chưa khớp</button>
+        {chuDe && khuon === 'bon_tang' && (
+          <>
+            <button onClick={() => moKho({ loai: 'de_xuat', id: chuDe.id, ten: chuDe.ten })} title="Câu AI đã đề xuất dạng bài nhưng chưa chắc — chờ người duyệt"
+              className="rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-[12.5px] font-medium text-sky-800 hover:border-sky-400">💡 Đề xuất</button>
+            <button onClick={() => moKho({ loai: 'thieu_dang', id: chuDe.id, ten: chuDe.ten })} title="Câu thuộc chủ đề này mà AI không xếp được vào dạng bài nào (có thể cần thêm dạng bài)"
+              className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[12.5px] font-medium text-amber-800 hover:border-amber-400">⚠ Thiếu dạng</button>
+            {chuDe.nhanh === 'toan' && (
+              <button onClick={() => moKho({ loai: 'chua_khop', id: chuDe.id, ten: chuDe.ten })} title="Rổ chưa khớp cũ (lượt gán 10/10) — chưa phân loại tiếp"
+                className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12.5px] font-medium text-slate-600 hover:border-slate-400">Chưa khớp</button>
+            )}
+          </>
         )}
         <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
         {HIEN_KHOP_CU && khuon === 'bon_tang' && <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
@@ -1283,7 +1291,7 @@ function KhoModal({ mo, onDong }: { mo: KhoMo; onDong: () => void }) {
     const f = (e: KeyboardEvent) => { if (e.key === 'Escape') onDong() }
     window.addEventListener('keydown', f); return () => window.removeEventListener('keydown', f)
   }, [onDong])
-  const tieuDe = mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
+  const tieuDe = mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'de_xuat' ? 'AI đề xuất — chờ duyệt' : mo.loai === 'thieu_dang' ? 'Thiếu dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
       <div className="flex h-full max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -1313,7 +1321,7 @@ function KhoModal({ mo, onDong }: { mo: KhoMo; onDong: () => void }) {
   )
 }
 function CauKho({ r, nhom }: { r: KhoCauRow; nhom: boolean }) {
-  const nguonGan = r.nguon_gan === 'chua_khop' ? null : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : r.nguon_gan.startsWith('gan_cum') ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
+  const nguonGan = r.nguon_gan === 'chua_khop' || r.nguon_gan === 'thieu_dang' ? null : r.nguon_gan.startsWith('de_xuat') ? 'AI đề xuất (chưa chắc)' : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : r.nguon_gan.startsWith('gan_cum') ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
   const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
   return (
     <div className={`rounded-lg border bg-white p-3 shadow-sm ${r.la_goc ? 'border-slate-200' : 'ml-6 border-dashed border-slate-300'}`}>
@@ -1326,9 +1334,9 @@ function CauKho({ r, nhom }: { r: KhoCauRow; nhom: boolean }) {
         {r.kiem_may === 'nghi' && chip('bg-rose-100 text-rose-700', 'máy nghi đáp số')}
         {r.kiem_may === 'khong_kiem_duoc' && chip('bg-slate-100 text-slate-500', 'máy không kiểm được')}
         {nguonGan && chip('bg-violet-50 text-violet-700', nguonGan)}
-        {nhom && r.dang_bai && <span className="text-[11px] text-violet-600">› <MathText>{r.dang_bai}</MathText></span>}
+        {(nhom || r.nguon_gan.startsWith('de_xuat')) && r.dang_bai && <span className="text-[11px] text-violet-600">› <MathText>{r.dang_bai}</MathText></span>}
       </div>
-      {r.ly_do && <div className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[12px] text-amber-800">Vì sao chưa khớp: {r.ly_do}</div>}
+      {r.ly_do && <div className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[12px] text-amber-800">{r.nguon_gan.startsWith('de_xuat') ? 'Lý do đề xuất' : r.nguon_gan === 'thieu_dang' ? 'Vì sao thiếu dạng' : 'Vì sao chưa khớp'}: {r.ly_do}</div>}
       <div className="text-[13.5px] leading-relaxed text-slate-900"><MathText>{r.noi_dung}</MathText></div>
       {r.anh_de && <img src={r.anh_de} alt="" className="mt-2 max-h-56 rounded border border-slate-200" />}
       {r.lua_chon && r.lua_chon.length > 0 && (
