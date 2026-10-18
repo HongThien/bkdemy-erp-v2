@@ -262,6 +262,9 @@ body.dangTham #nutTrai, body.dangTham #btnShop { opacity: .45; }
 .viDong { display: flex; align-items: center; gap: 4px; font-size: 18px; flex-wrap: wrap; }
 .viDong img { width: 30px; height: 30px; }
 .viPhu { margin: 2px 0 10px; }
+.thuCungThe .ic { font-size: 40px; line-height: 1; width: 48px; text-align: center; }
+.thuCungThe .moc { font-size: 11px; color: var(--mo); display: flex; justify-content: space-between; margin-top: -2px; }
+.thuCungThe.chua { opacity: .92; background: #fffaf0; }
 .dongBan { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 14px; background: #fff; border: 2px solid #e8d4a6; margin-bottom: 6px; flex-wrap: wrap; }
 .dongBan > img { width: 42px; height: 42px; }
 .dongBan .giua { flex: 1; min-width: 140px; }

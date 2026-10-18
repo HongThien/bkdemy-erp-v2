@@ -38074,3 +38074,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ### 18/10 — Xoá dữ liệu thử của builder bản đồ mới (Thùy gật rõ: "Xoá giáo trình [TEST]… và 2 tài liệu ngày 05/01/2099 của lớp TEST · Toán 7")
 - **Đã xoá (1 transaction, lá → gốc, kiểm đủ 2 + 1 dòng mới chốt):** `tai_lieu` 7c8f47fe… (GT TEST · Toán 7 05/01/2099) · dd396a22… (BTVN cùng ngày) · d626c150… ([TEST] Builder bản đồ mới K7) ⇒ cascade 25 `tai_lieu_phan` + 26 `tai_lieu_cau` (chỉ liên kết, câu trong kho không đụng). Trước khi xoá đã dò mọi FK trỏ `tai_lieu`: không bài test / điểm nào trỏ vào. Sau xoá: 0 tài liệu, 0 phần còn lại; lớp TEST · Toán 7 về 0 tài liệu.
+
+## 18/10 — Nông trại: màn quản lý THÚ CƯNG (Thùy: "ngoài nuôi chó có thể nuôi các con khác, phải mua")
+- **Làm:** nút 🐾 "Thú cưng" trên HUD mở màn quản lý: mỗi bé 1 thẻ (💗 thiện cảm, mốc ★20/50/100, hiệu ứng, nút xoa đầu/vuốt ve/cho ăn 1 lần/ngày). Bé chưa có hiện nút **Mua · 📘điểm học tập** (chó 15 · mèo 30 · chim 45), khoá theo cấp (mèo 5, chim 7). Danh mục `D.THU` data-driven (icon, mota) — thêm loài = 1 dòng + mô hình scene. Mèo/chim trước đây tắt ở pha 1, nay mở theo cấp; mèo pha 1 chỉ tha phân bón. Chạm vào thú chưa mua ⇒ mở màn Thú cưng thay vì chợ. Gợi ý Mèo/Chim ở thanh chỉ đường trỏ tới nút 🐾.
+- **Kiểm:** `tools/test-engine.mjs` ✓ (sửa 2 khẳng định cũ "pha 1 tắt"); harness trình duyệt: panel demo + chế độ tài khoản (mua mèo: điểm 40→10, thông báo, thẻ chuyển sang đã nuôi). Chưa thử với phiên đăng nhập thật.
+- **Chưa:** chỉ có chó/mèo/chim — loài mới (ngựa, cừu, heo, bò…) cần mô hình 3D dựng bằng code + giá/cấp, chờ Thùy chọn loài.

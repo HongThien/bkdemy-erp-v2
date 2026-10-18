@@ -52,6 +52,7 @@ function hieuUng(su, chon) {
     else if (e.loai === 'trom') { S.hat({ loai: 'ruong', i: e.j }, 'la', 6); AM.on('soat'); }
     else if (e.loai === 'choDuoi') { thongBao('🐶 Gâu gâu! Chó nhà bạn đuổi em chạy mất rồi — mất 1 lượt'); AM.on('loi'); }
     else if (e.loai === 'ban') AM.on('xu');
+    else if (e.loai === 'muaThu') { thongBao('🎉 Em có thêm bé ' + D.THU[e.thu].ten.toLowerCase() + '!'); AM.on('sao'); if (chon) S.hat(chon, 'tim', 8); }
     else if (e.loai === 'hdXong') { thongBao('🎉 Em đã học xong! Mai nhớ ghé thăm nông trại nhé'); hoaGiay(); }
     else if (e.loai === 'lenCap') { setTimeout(() => { AM.on('lenCap'); hoaGiay(); }, 700); hangLenCap.push(e); if (hangLenCap.length === 1) setTimeout(() => moLenCap(hangLenCap[0]), 900); }
   }
@@ -342,12 +343,40 @@ function veLo() {
 const LOI_TC = { cho: tc => 'Đuổi trộm ' + Math.round(L.choDuoi[E.mocTc(tc)] * 100) + '%', meo: tc => 'Tha quà mỗi ngày ' + Math.round(L.meoQua(tc) * 100) + '%', chim: tc => tc >= L.chimBatSau ? 'Mỗi sáng bắt 1 con sâu' : 'Tới ' + L.chimBatSau + ' thiện cảm thì bắt sâu giúp' };
 function chamThu(k) {
   const T = D.THU[k], chon = { loai: 'thu', id: k };
-  if (dht() && !E.thuMo(s, k)) { if (T.capMua > 30) return; if (s.cap < T.capMua) return thongBao(T.ten + ' có bán ở cấp ' + T.capMua); dongBong(); return moCho('mua'); }
+  if (dht() && !E.thuMo(s, k)) { if (T.capMua > 30) return; if (s.cap < T.capMua) return thongBao(T.ten + ' có bán ở cấp ' + T.capMua); dongBong(); return moThuCung(); }
   if (T.cap > 30 && !E.thuMo(s, k)) return;
   if (!dht() && s.cap < T.cap) return thongBao(T.ten + ' đến ở cấp ' + T.cap);
   const kq = E.choiThu(s, k);
   if (kq.ok) lam(kq, chon); else if (!/rồi/.test(kq.loi)) { thongBao(kq.loi); AM.on('loi'); }
   moBong(chon, () => { const x = E.thuTT(s, k); return { key: 'tc' + x.tc + x.roi, html: `<h4>${T.ten} · 💗 ${x.tc}/100</h4><div class="thanhNho"><i style="width:${x.tc}%"></i></div><div class="phu">${LOI_TC[k](x.tc)}<br>${x.roi ? 'Hôm nay ' + T.viec.toLowerCase() + ' rồi — mai nhé' : T.viec + ' mỗi ngày 1 lần'}${T.an ? ' · tốn 1 ' + ten(T.an).toLowerCase() : ''}</div>` }; });
+}
+
+// ---------- MÀN QUẢN LÝ THÚ CƯNG (Thùy 18/10): ngoài chó nuôi thêm các bé khác, PHẢI MUA bằng điểm học tập ----------
+function moThuCung() { moBang('Thú cưng', veThuCung); }
+function veThuCung() {
+  E.lamMoi(s);
+  const ds = Object.keys(D.THU).filter(k => D.THU[k].capMua <= 30 || E.thuMo(s, k));   // loài chưa bán thì ẩn
+  const key = ['tc', s.diem, s.cap, E.so(s, 'lua_mi'), ds.map(k => { const x = s.thu[k]; return k + ':' + (E.thuMo(s, k) ? 1 : 0) + ':' + x.tc + ':' + x.d; }).join(',')].join('|');
+  const co = ds.filter(k => E.thuMo(s, k)).length;
+  const the = k => {
+    const T = D.THU[k], x = E.thuTT(s, k);
+    if (x.mo) {
+      const thieu = T.an && E.so(s, T.an) < 1, mocT = L.tcMoc;
+      return `<div class="dongBan thuCungThe"><span class="ic">${T.icon}</span><div class="giua"><b>${T.ten}</b> <span class="nho">💗 ${x.tc}/100 · ${T.mota}</span>
+        <div class="thanhNho"><i style="width:${x.tc}%"></i></div><div class="moc"><span>${mocT.map(m => (x.tc >= m ? '★' : '☆') + m).join('  ')}</span></div>
+        <div class="nho">${LOI_TC[k](x.tc)}</div></div>
+        <button class="nut ${x.roi || thieu ? 'xam' : 'vang'}" data-tcchoi="${k}">${x.roi ? 'Mai chơi tiếp' : thieu ? 'Cần 1 ' + ten(T.an).toLowerCase() : T.viec + ' ›'}</button></div>`;
+    }
+    const khoa = dht() ? s.cap < T.capMua : true, lyDo = dht() ? '🔒 cấp ' + T.capMua : '🔒 cấp ' + T.cap;
+    return `<div class="dongBan thuCungThe chua"><span class="ic">${T.icon}</span><div class="giua"><b>${T.ten}</b> <span class="nho">${T.mota}</span>
+      <div class="nho">${khoa ? 'Em đủ cấp ' + T.capMua + ' thì mua được' : 'Chưa nuôi — mua để đưa bé về nhà'}</div></div>
+      ${khoa ? `<span class="nho">${lyDo}</span>` : `<button class="nut ${s.diem >= T.diem ? 'vang' : 'xam'}" data-tcmua="${k}">Mua · 📘${T.diem}</button>`}</div>`;
+  };
+  const html = `<p class="nho" style="margin-top:0">Đã nuôi <b>${co}/${ds.length}</b> bé${dht() ? ' · 📘 <b>' + s.diem + '</b> điểm học tập' : ''}. Mỗi bé chơi cùng em <b>1 lần mỗi ngày</b> — càng quý em, bé càng giúp được nhiều.</p>` + ds.map(the).join('');
+  return { key, html, gan: el => {
+    el.querySelectorAll('[data-tcmua]').forEach(b => b.onclick = () => lam(E.muaThu(s, b.dataset.tcmua), { loai: 'thu', id: b.dataset.tcmua }));
+    el.querySelectorAll('[data-tcchoi]').forEach(b => b.onclick = () => lam(E.choiThu(s, b.dataset.tcchoi), { loai: 'thu', id: b.dataset.tcchoi }));
+  } };
 }
 
 // ---------- CHỖ TRANG TRÍ ----------
@@ -747,6 +776,7 @@ function batDau(state) {
   $('btnKho').onclick = moKho;
   $('btnShop').onclick = () => { if (xem != null) return thongBao('Về nhà rồi ra chợ nhé'); moCho(); };
   $('btnBan').onclick = moBanBe;
+  $('btnThuCung').onclick = () => { if (xem != null) return thongBao('Về nhà rồi quản lý thú cưng nhé'); moThuCung(); };
   $('btnThu').onclick = () => { if (xem != null) return; moThu(); };
   $('nutVe').onclick = veNha;
   $('btnMenu').onclick = moMenu;
@@ -765,5 +795,5 @@ function cheDoTaiKhoan() {
   $('btnTua').style.display = 'none'; $('btnDiem').style.display = 'none';
   $('diemBox').style.cursor = 'pointer'; $('diemBox').onclick = moDiem;
 }
-window.NT_UI = { batDau, capHud, cheDoTaiKhoan, napBan, napViec, get s() { return s; }, get xem() { return xem; }, lam, thongBao, sangBan, veNha, _cb: cb, _moKho: moKho, _moCho: moCho, _moBanBe: moBanBe, _moThu: moThu };
+window.NT_UI = { batDau, capHud, cheDoTaiKhoan, napBan, napViec, get s() { return s; }, get xem() { return xem; }, lam, thongBao, sangBan, veNha, _cb: cb, _moKho: moKho, _moCho: moCho, _moBanBe: moBanBe, _moThuCung: moThuCung, _moThu: moThu };
 })();
