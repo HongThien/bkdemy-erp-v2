@@ -38066,13 +38066,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - `bdm-b3-xuat-lo.mjs` thêm `--dot <tên>` (thư mục `b3/k<khối>-<tên>`, mẫu `_mau/k<khối>-<tên>.json`) và LUÔN bỏ câu đang ở hàng duyệt (de_xuat / thieu_dang) — trước đó script coi câu hàng duyệt là "chưa gán" (lượt đầu không sao vì hàng rỗng).
 - K9-1810: 7 lô (396 câu + 30 mẫu) · 2 agent Sonnet · mẫu cao 24/24 sau phân xử (1 câu "cả hai", như 17/10) ⇒ ĐÃ GHI: 295 ghi thẳng · 54 chưa chắc · 47 thiếu dạng. K9 đề thi 21,7% → 74,2% đã xếp. Bản đồ mới không đổi từ 17/10.
 
-<<<<<<< HEAD
 ## 18/10 — Duyệt kho ở Bản đồ mới: mở cho team Học thuật (Thùy 18/10, mig 202610181119 ĐÃ ÁP)
 - **Thùy:** "mở quyền duyệt kho cho team học thuật, hiện tại hình như chỉ có mỗi t".
 - **Gốc:** vai trò Học thuật ĐÃ có lá `bdm` + `duyetloigiai`, nhưng hàng duyệt khớp bản đồ mới lọc qua `_bdm_duyet_duoc` = admin HOẶC có phạm vi (`dai_bdm_duyet_pham_vi`) — chưa ai được giao phạm vi ⇒ chỉ admin thấy.
 - **Sửa:** `_bdm_duyet_duoc` thêm nhánh: chưa có dòng phạm vi nào + `co_quyen_ghi('duyetloigiai')` ⇒ duyệt mọi khối. Theo vai trò (vai_tro_chuc_nang), không gắn cứng team. Ai đã có phạm vi vẫn chỉ phạm vi đó.
 - **Kiểm (ROLLBACK, jwt claims):** Học thuật (Dương Hiếu Hoà) K9 trước 0 / sau chưa chắc 174 · thiếu dạng 108 · kiểm mẫu 101; Trợ giảng vẫn 0; ≤0,2s. Rồi `--only`.
-=======
 ## 17/10 (tiếp) — B3 kiểm lại câu gán qua CỤM cũ: máy đọc lại, phân xử mù, ghi thẳng câu máy đúng (Thùy chọn "(a) Ghi thẳng" + "Kiểm cả K8 và K12")
 - **Vì sao:** nhãn mẫu B3 (đối ứng cụm/dạng cũ → dạng bài) thô — câu gốc có dạng bài qua `gan_cum`/`doi_ung` của `_bdm_cau_giai` lẫn câu sai dạng. Gán cụm là SUY RA (không có dòng), `dai_bdm_gan_cau` ưu tiên hơn ⇒ ghi đè được mà không phá cụm.
 - **Dây chuyền:** `scripts/bdm-b3-kiem-cum.mjs` `xuat` (chỉ đọc; lô ≤70 câu ở `kho-rules/dai/lo/b3-kiem/k<khối>/`, KHÔNG nhãn hiện tại, KHÔNG `nhan_cu`; nhãn để ngoài agent ở `b3-kiem/_nhan/`; bỏ 90 câu mẫu đã kiểm sáng nay) → 18 agent Sonnet theo `b3/brief.md` → `so` (so nhãn, gom lệch theo cụm) → `px` lô phân xử **MÙ**: A/B đảo theo md5, Opus không biết bên nào là máy (`b3-kiem/px-brief.md`) → `px-doc` → `ghi` (ROLLBACK rồi `--ghi`).
@@ -38201,4 +38199,3 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sai / bắt được ở soát:** trục căn thức ở mẫu (Ch III) ở 4 đề; "ba góc vuông ⇒ hình chữ nhật" ở ~10 đề; tính tiếp từ số đã làm tròn; hình giải lộ điều phải chứng minh (GKI-53) hoặc vẽ sai dữ kiện (GKI-32, 30, 50); nhãn La Mã làm đề mất cấu trúc "Bài N có ý a b c"; GKI-36, 54 gộp lại bài hình chung dữ kiện đã tách nhầm.
 - **Quyết định:** hình lượng giác thực tế cũng vào `hinh_hoc` (không `hgt`) theo ý Thùy "tất cả bài Hình"; mô tả + câu còn cờ ở `kho-rules/dai/k9.md` §11 và `kho-rules/dai/k9-bo-de-can-xem.html`.
 
->>>>>>> origin/main
