@@ -38239,3 +38239,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Còn thiếu dạng trong bản đồ (CEO quyết, Claude không sửa bản đồ):** Oxyz — cực trị, mô hình thực tế, chuyển động, quỹ tích, toạ độ hoá hình không gian, chắn trục/tứ diện OABC, hình chiếu (đường/điểm), VTTĐ hai mặt cầu, nhận biết PT mặt cầu (5 dạng bài đang 0 câu). NH-TP — hàm ẩn, đổi biến, từng phần, bất đẳng thức tích phân, giá trị trung bình.
 - **Chưa làm:** màn DUYỆT đề xuất cho HGT (chỉ xem được trong modal kho; chưa có RPC chấp nhận đề xuất HGT).
 - **Sai / lưu ý:** `git pull --rebase --autostash` hỏng vì file untracked của phiên khác trùng commit mới → push bằng worktree tạm `../_bk_push_tmp` + cherry-pick (08be8b52); worktree tạm chờ Thùy gật mới xoá. API max_rows = 1000 nên mọi đọc danh sách phải phân trang bằng offset.
+
+### [18/10] Kiểm đáp số độc lập câu NH-TP K12 (1.186 câu gốc chưa kiểm máy)
+- **Làm:** 24 lô × ≤50 câu (TN/Đ-S/TLN, đề KHÔNG kèm đáp án) cho subagent Sonnet tự giải độc lập (brief `kiem/BRIEF-KIEM.md`), rồi so với đáp án kho bằng `so-kiem.mjs` (TN chữ cái · Đ/S từng ý · TLN so số có quy đổi LaTeX). KHÔNG ghi gì vào DB (không đặt kiem_may).
+- **Kết quả:** khớp 1.040 · lệch 77 (agent chắc 53, không chắc 24; 19 câu có hình) · agent không giải được 69 (thiếu hình / đề lỗi). 478 câu tự luận không kiểm tự động. Chi tiết + đề + hai đáp án: `reports/kiem-dap-so-nhtp-k12-18-10.html`.
+- **Lưu ý đọc kết quả:** "lệch" ≠ kho sai — nhiều ca là ĐỀ tự mâu thuẫn (số trong ý khác số tính ra, đơn vị, hằng số C, phương án trùng nhau) nên cần người nhìn từng ca; ca chắc mà lệch là nhóm ưu tiên xem. Hai ví dụ lặp lại: câu trắc nghiệm có 2 phương án giống hệt (kho chọn một, agent chọn cái kia) và ý Đ/S mà đề tự ghi số sai.
