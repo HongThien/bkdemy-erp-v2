@@ -192,17 +192,44 @@ export type BaiKho = {
   id: string; ma_bai: string; khoi: string | null; nguon: string | null; nguon_ma_cau: string | null
   de_bai: string; gia_thiet_chung: string | null; huong_dan: string | null; anh_de: string | null; can_tach_tay: boolean
   mo_hinh_id: string | null   // mô hình luyện đã gán cho CẢ BÀI (null = chưa)
+  loai_cau: LoaiCauHL         // mô hình luyện CHỈ lấy 'tu_luan'; loại khác ở "kho riêng" (mig 202610181623)
+  bo_qua_at: string | null; bo_qua_ly_do: string | null; bo_qua_ten: string | null   // "Bỏ qua" = không duyệt vào kho, kèm lý do
   y: YKho[]
 }
+export type LoaiCauHL = 'tu_luan' | 'trac_nghiem' | 'dung_sai' | 'tra_loi_ngan'
+export const NHAN_LOAI_CAU_HL: Record<LoaiCauHL, string> = { tu_luan: 'Tự luận', trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng/Sai', tra_loi_ngan: 'Trả lời ngắn' }
+/** Ba hàng của màn: chờ duyệt (tự luận) · đã bỏ qua · kho riêng (không phải tự luận) */
+export type CheDoHL = 'cho' | 'bo_qua' | 'khac'
 export type BaiMoHinhLuyen = {
   baitoan_id: string; ma: string; so: string; phat_bieu: string
   goc_id: string; goc_ma: string; goc_ten: string; nhanh_id: string; nhanh_ten: string
 }
 /** Bài kho còn ít nhất 1 ý chưa gán bài mô hình — hàng "chưa phân mô hình" của Duyệt kho. Phân trang ở DB. */
-export async function khoChuaPhanMoHinh(khoi: string, gioiHan = 30, boQua = 0): Promise<BaiKho[]> {
-  const { data, error } = await supabase.rpc('fn_hl_kho_chua_phan', { p_khoi: khoi, p_gioi_han: gioiHan, p_bo_qua: boQua })
+export async function khoChuaPhanMoHinh(khoi: string, gioiHan = 30, boQua = 0, cheDo: CheDoHL = 'cho'): Promise<BaiKho[]> {
+  const { data, error } = await supabase.rpc('fn_hl_kho_chua_phan', { p_khoi: khoi, p_gioi_han: gioiHan, p_bo_qua: boQua, p_che_do: cheDo })
   if (error) throw error
   return (data ?? []) as BaiKho[]
+}
+/** Số bài của hai hàng phụ trong một khối: đã bỏ qua · kho riêng (không tự luận). Đếm ở DB. */
+export async function demHangPhuHL(khoi: string): Promise<{ bo_qua: number; khac: number }> {
+  const { data, error } = await supabase.rpc('fn_hl_dem_hang_phu', { p_khoi: khoi })
+  if (error) throw error
+  const r = ((data ?? []) as { bo_qua: number | string; khac: number | string }[])[0]
+  return { bo_qua: Number(r?.bo_qua ?? 0), khac: Number(r?.khac ?? 0) }
+}
+/** "Bỏ qua": không duyệt bài vào kho — BẮT BUỘC có lý do (DB từ chối nếu trống). */
+export async function boQuaBaiKho(baiId: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_bo_qua_bai', { p_bai: baiId, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function khoiPhucBaiKho(baiId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_khoi_phuc_bai', { p_bai: baiId })
+  if (error) throw error
+}
+/** Đổi loại câu của bài (vd máy xếp nhầm trắc nghiệm → đưa về tự luận). */
+export async function doiLoaiBaiKho(baiId: string, loai: LoaiCauHL): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_doi_loai_bai', { p_bai: baiId, p_loai: loai })
+  if (error) throw error
 }
 export async function demChuaPhanMoHinh(): Promise<{ khoi: string | null; so_bai: number; so_y: number }[]> {
   const { data, error } = await supabase.rpc('fn_hl_dem_chua_phan')

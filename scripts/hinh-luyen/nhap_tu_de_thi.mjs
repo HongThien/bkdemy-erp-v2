@@ -136,9 +136,9 @@ try {
   for (const x of ra) {
     if (x.da_co) continue
     const [b] = await q(
-      `insert into hinh_bai(de_bai, anh_de, nguon, khoi, trang_thai, gia_thiet_chung, huong_dan, nguon_ma_cau, can_tach_tay)
-       values ($1,$2,$3,$4,'tam',$5,$6,$7,$8) returning id`,
-      [x.de_bai, x.anh_de, x.ten_de, khoi, x.chung, x.huongDan, x.nguon_ma_cau, x.loai === 'khong_tach'])
+      `insert into hinh_bai(de_bai, anh_de, nguon, khoi, trang_thai, gia_thiet_chung, huong_dan, nguon_ma_cau, can_tach_tay, loai_cau)
+       values ($1,$2,$3,$4,'tam',$5,$6,$7,$8,$9) returning id`,
+      [x.de_bai, x.anh_de, x.ten_de, khoi, x.chung, x.huongDan, x.nguon_ma_cau, x.loai === 'khong_tach', x.loai_cau]) // loai_cau = loại câu gốc (mig 202610181623): hàng duyệt mô hình chỉ lấy 'tu_luan'
     nBai++
     for (let i = 0; i < x.y.length; i++) {
       const y = x.y[i]
