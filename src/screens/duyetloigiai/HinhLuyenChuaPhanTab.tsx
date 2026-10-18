@@ -154,7 +154,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
     <div className="flex min-h-0 flex-1 flex-col">
       {/* 3 hàng: chờ duyệt (tự luận) · đã bỏ qua · kho riêng (trắc nghiệm, đúng/sai, trả lời ngắn) */}
       <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-200 bg-slate-50 px-6 py-1.5">
-        {([['cho', 'Chờ duyệt · tự luận', tong?.so_bai], ['bo_qua', 'Đã bỏ qua', phu?.bo_qua], ['khac', 'Kho riêng · trắc nghiệm / đúng-sai / trả lời ngắn', phu?.khac]] as [CheDoHL, string, number | undefined][]).map(([id, nhan, n]) => (
+        {([['cho', 'Chờ duyệt · tự luận', tong?.so_bai], ['bo_qua', 'Đã từ chối', phu?.bo_qua], ['khac', 'Kho riêng · trắc nghiệm / đúng-sai / trả lời ngắn', phu?.khac]] as [CheDoHL, string, number | undefined][]).map(([id, nhan, n]) => (
           <button key={id} onClick={() => setCheDo(id)}
             className={`rounded-full border px-3 py-1 text-[12.5px] ${cheDo === id ? 'border-teal-600 bg-teal-600 font-semibold text-white' : 'border-slate-300 bg-white text-slate-600 hover:border-teal-400'}`}>
             {nhan}{n != null ? <span className={`ml-1.5 rounded-full px-1.5 text-[11px] ${cheDo === id ? 'bg-white/25' : 'bg-slate-100 text-slate-500'}`}>{n}</span> : null}
@@ -186,7 +186,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
 
       {!b ? (
         <div className="flex flex-1 items-center justify-center text-sm text-slate-400">
-          {dangTai ? 'Đang tải…' : cheDo === 'cho' ? `Khối ${khoi} không còn bài tự luận nào chưa có mô hình.` : cheDo === 'bo_qua' ? `Khối ${khoi} chưa bỏ qua bài nào.` : `Khối ${khoi} chưa có bài trắc nghiệm / đúng-sai / trả lời ngắn nào ở kho riêng.`}
+          {dangTai ? 'Đang tải…' : cheDo === 'cho' ? `Khối ${khoi} không còn bài tự luận nào chưa có mô hình.` : cheDo === 'bo_qua' ? `Khối ${khoi} chưa từ chối bài nào.` : `Khối ${khoi} chưa có bài trắc nghiệm / đúng-sai / trả lời ngắn nào ở kho riêng.`}
         </div>
       ) : (
         // ⭐ CEO 14/10: HÌNH ĐI THEO Ý — mỗi hàng = (chữ | hình của chính nó). Hình ý = hình riêng của ý (hinh_y.anh_de);
@@ -211,7 +211,7 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
           {cheDo === 'bo_qua' && (
             <div className="mb-3 rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5">
               <div className="mb-1 flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-slate-600 px-2.5 py-0.5 text-[12.5px] font-semibold text-white">⤼ Đã bỏ qua — không duyệt vào kho</span>
+                <span className="rounded-full bg-slate-600 px-2.5 py-0.5 text-[12.5px] font-semibold text-white">✕ Đã từ chối — không vào kho</span>
                 {b.bo_qua_at && <span className="text-[11.5px] text-slate-500">{b.bo_qua_ten || '?'} · {NGAY(b.bo_qua_at)}</span>}
                 <button onClick={() => void khoiPhuc()} disabled={ban === 'qua'} className="ml-auto h-8 rounded-lg border border-teal-400 bg-white px-3 text-[13px] font-semibold text-teal-700 hover:bg-teal-50 disabled:opacity-50">↩ Khôi phục vào hàng duyệt</button>
               </div>
@@ -340,29 +340,29 @@ function NutBoQua({ ma, busy, onXacNhan }: { ma: string; busy: boolean; onXacNha
   }
   return (
     <>
-      <button onClick={() => setMo(true)} disabled={busy} title="Không duyệt bài này vào kho — ghi lý do; bài rời hàng duyệt (xem lại ở “Đã bỏ qua”)"
-        className="rounded-md border border-slate-400 bg-slate-100 px-3 py-1.5 text-[13px] font-medium text-slate-700 hover:bg-slate-200 disabled:opacity-50">⤼ Bỏ qua</button>
+      <button onClick={() => setMo(true)} disabled={busy} title="Từ chối: bài không vào kho — ghi lý do; bài rời hàng duyệt (xem lại ở “Đã từ chối”)"
+        className="rounded-md border border-slate-400 bg-slate-100 px-3 py-1.5 text-[13px] font-medium text-slate-700 hover:bg-slate-200 disabled:opacity-50">✕ Từ chối</button>
       {mo && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={() => !dang && setMo(false)}>
           <div className="w-full max-w-lg rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center gap-2 rounded-t-xl bg-slate-600 px-4 py-2.5 text-white">
-              <span className="flex-1 text-[14px] font-semibold">⤼ Bỏ qua · <code className="text-[12.5px] font-normal">{ma}</code></span>
+              <span className="flex-1 text-[14px] font-semibold">✕ Từ chối · <code className="text-[12.5px] font-normal">{ma}</code></span>
               <button onClick={() => setMo(false)} disabled={dang} className="text-white/80 hover:text-white">✕</button>
             </div>
             <div className="flex flex-col gap-3 p-4">
               <label className="flex flex-col gap-1">
-                <span className="text-[11.5px] font-semibold uppercase tracking-wide text-slate-500">Vì sao không đưa bài này vào kho</span>
+                <span className="text-[11.5px] font-semibold uppercase tracking-wide text-slate-500">Vì sao từ chối — bài không hợp lý ở đâu</span>
                 <textarea autoFocus value={nd} onChange={(e) => setNd(e.target.value)} rows={4}
                   onKeyDown={(e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) void gui() }}
                   placeholder={'Ghi ngắn gọn lý do, vd:\n· Đề quá khó / ngoài chương trình\n· Trùng với bài HLB00xxx\n· Hình cần vẽ lại, tạm gác'}
                   className="rounded-md border border-slate-300 p-2.5 text-[13.5px] outline-none focus:border-slate-500" />
               </label>
-              <p className="text-[11.5px] text-slate-500">Bài KHÔNG được duyệt vào kho và rời hàng chờ duyệt. Khác “Cần sửa”: không có ai sửa lại — muốn dùng lại thì vào “Đã bỏ qua” bấm Khôi phục.</p>
+              <p className="text-[11.5px] text-slate-500">Bài KHÔNG được duyệt vào kho và rời hàng chờ duyệt. Khác “Cần sửa”: không có ai sửa lại — muốn dùng lại thì vào “Đã từ chối” bấm Khôi phục. Lý do được lưu để Claude rút luật, không đưa bài kiểu này vào nữa.</p>
               {loi && <div className="text-[12.5px] text-rose-600">⚠ {loi}</div>}
               <div className="flex justify-end gap-2">
                 <button onClick={() => setMo(false)} disabled={dang} className="rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
                 <button onClick={() => void gui()} disabled={!nd.trim() || dang}
-                  className="rounded-md bg-slate-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-slate-700 disabled:opacity-40">{dang ? 'Đang ghi…' : 'Bỏ qua bài này (Ctrl+Enter)'}</button>
+                  className="rounded-md bg-slate-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-slate-700 disabled:opacity-40">{dang ? 'Đang ghi…' : 'Từ chối bài này (Ctrl+Enter)'}</button>
               </div>
             </div>
           </div>

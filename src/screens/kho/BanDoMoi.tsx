@@ -26,6 +26,8 @@ import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
 import { MathText, inp } from './ui'
 import KhopBanDoMoiTab from '../duyetloigiai/KhopBanDoMoiTab'
+import HinhLuyenChuaPhanTab from '../duyetloigiai/HinhLuyenChuaPhanTab'
+import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
 import { khopDem } from '../../lib/kho/bdmKhop'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
@@ -108,6 +110,12 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
     khopDem(khoi).then((d) => setCanDuyet(d.de_xuat + d.trong + d.thieu + d.mau)).catch(() => setCanDuyet(null))
   }, [khoi])
   useEffect(() => { napCanDuyet() }, [napCanDuyet])
+  // Hình–Luyện: lối tắt Duyệt kho = bài kho chờ gán mô hình của khối (Thùy 18/10: "giống Đại số — đường tắt ở bản đồ mới")
+  const [canDuyetHinh, setCanDuyetHinh] = useState<number | null>(null)
+  const napCanDuyetHinh = useCallback(() => {
+    demChuaPhanMoHinh().then((ds) => setCanDuyetHinh(ds.find((x) => x.khoi === khoi)?.so_bai ?? 0)).catch(() => setCanDuyetHinh(null))
+  }, [khoi])
+  useEffect(() => { napCanDuyetHinh() }, [napCanDuyetHinh])
   // "Xem trên bản đồ": nhảy tới chủ đề › chuyên đề chứa dạng bài và làm sáng nó ~4 giây (không mở popup, không đổi dữ liệu)
   const xemDangBai = (id: string) => {
     if (!cay) return
@@ -275,10 +283,11 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
           📦 Bản đồ cũ{cay.tong.dang_cu_chua_gan ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{cay.tong.dang_cu_chua_gan}</span> : null}
         </button>}
-        {khuon === 'bon_tang' && chuDe && (
-          <button onClick={() => { if (duyet && xemBanDo) setXemBanDo(false); else { setDuyet(!duyet); setXemBanDo(false) } }} title="Duyệt câu AI đã xếp vào dạng bài (kho tạm · phạm vi người duyệt · kiểm mẫu) — mở toàn màn"
+        {(khuon === 'bon_tang' || khuon === 'hinh_luyen') && chuDe && (
+          <button onClick={() => { if (duyet && xemBanDo) setXemBanDo(false); else { setDuyet(!duyet); setXemBanDo(false) } }}
+            title={khuon === 'hinh_luyen' ? 'Duyệt bài Hình vào kho Luyện (gán mô hình · từ chối kèm lý do) — mở toàn màn' : 'Duyệt câu AI đã xếp vào dạng bài (kho tạm · phạm vi người duyệt · kiểm mẫu) — mở toàn màn'}
             className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${duyet ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : 'border-slate-200 text-slate-600 hover:border-emerald-400'}`}>
-            ✅ Duyệt kho{canDuyet ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{canDuyet}</span> : null}
+            ✅ Duyệt kho{(khuon === 'hinh_luyen' ? canDuyetHinh : canDuyet) ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{khuon === 'hinh_luyen' ? canDuyetHinh : canDuyet}</span> : null}
           </button>
         )}
         <span className={`ml-auto flex min-w-0 !shrink-[1000] flex-col items-end overflow-hidden text-[11px] leading-tight text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
@@ -410,17 +419,21 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       )}
 
       {/* ── DUYỆT KHO toàn màn (che cả thanh trên + menu trái của ERP) ── */}
-      {duyet && chuDe && khuon === 'bon_tang' && (
+      {duyet && chuDe && (khuon === 'bon_tang' || khuon === 'hinh_luyen') && (
         <div className={`fixed inset-0 z-[65] flex flex-col bg-slate-50 ${xemBanDo ? 'hidden' : ''}`}>
           <div className="flex shrink-0 items-center gap-3 border-b border-emerald-700 bg-emerald-600 px-5 py-2.5 text-white">
             <span className="text-[15px] font-semibold">✅ Duyệt kho</span>
             <span className="text-[13px] text-white/80">Khối {khoi} · <MathText>{chuDe.ten}</MathText></span>
-            {canDuyet ? <span className="rounded-full bg-white/20 px-2 py-0.5 text-[12px] font-medium">{canDuyet} câu cần xử lý</span> : null}
+            {khuon === 'hinh_luyen'
+              ? <span className="text-[13px] text-white/80">· bài Hình chờ vào kho Luyện{canDuyetHinh ? ` (${canDuyetHinh} bài)` : ''}</span>
+              : canDuyet ? <span className="rounded-full bg-white/20 px-2 py-0.5 text-[12px] font-medium">{canDuyet} câu cần xử lý</span> : null}
             <button onClick={() => setDuyet(false)} className="ml-auto rounded-md bg-white/15 px-3 py-1.5 text-[13px] font-semibold hover:bg-white/25">✕ Về bản đồ</button>
           </div>
           <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col bg-white shadow-sm">
-            <KhopBanDoMoiTab key={khoi} khoi={khoi} chuDeId={chuDe.id} onChanged={napCanDuyet}
-              onXem={(id) => { setXemBanDo(true); xemDangBai(id) }} />
+            {khuon === 'hinh_luyen'
+              ? <HinhLuyenChuaPhanTab key={khoi} khoi={khoi} onChanged={napCanDuyetHinh} />
+              : <KhopBanDoMoiTab key={khoi} khoi={khoi} chuDeId={chuDe.id} onChanged={napCanDuyet}
+                  onXem={(id) => { setXemBanDo(true); xemDangBai(id) }} />}
           </div>
         </div>
       )}

@@ -131,11 +131,14 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
 
 function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua }: {
   c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
-  onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi', dangBai?: string | null, lyDo?: string | null) => Promise<void>
+  onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi' | 'tu_choi' | 'kho_rac', dangBai?: string | null, lyDo?: string | null) => Promise<void>
 }) {
   const [chon, setChon] = useState<string | null>(null)
   const [moThieu, setMoThieu] = useState(false)
   const [lyDo, setLyDo] = useState('')
+  const [moTuChoi, setMoTuChoi] = useState(false)   // Thùy 18/10: từ chối kèm lý do (bắt buộc), tuỳ chọn câu hỏng → kho rác
+  const [lyDoTc, setLyDoTc] = useState('')
+  const [rac, setRac] = useState(false)
   const [ban, setBan] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   const opts: Opt[] = useMemo(() => dich.map((d) => ({ id: d.id, label: d.dang_bai, sub: `${d.chu_de} › ${d.chuyen_de} › ${d.nhom}` })), [dich])
@@ -186,8 +189,26 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua }: {
               {hang === 'mau' ? 'Sai → đổi sang dạng này' : 'Chuyển câu vào dạng này'}
             </button>
           </div>
-          {hang === 'de_xuat' && (
-            <button disabled={ban} onClick={() => chay(() => onQuyet(c, 'bo_de_xuat'))} className="w-full text-left text-[12px] text-slate-500 underline-offset-2 hover:underline">✗ Đề xuất sai — bỏ, câu về “Chưa có dạng”</button>
+          {moTuChoi ? (
+            <div className="space-y-1.5 rounded-md border border-rose-200 bg-rose-50 p-2">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-rose-700">✕ Từ chối — vì sao không hợp lý</div>
+              <textarea autoFocus value={lyDoTc} onChange={(e) => setLyDoTc(e.target.value)} rows={2}
+                onKeyDown={(e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && lyDoTc.trim()) void chay(() => onQuyet(c, rac ? 'kho_rac' : 'tu_choi', null, lyDoTc)) }}
+                placeholder={rac ? 'Câu hỏng ở đâu (đề lỗi, thiếu dữ kiện, trùng…)' : 'vd: đây là PT tích chứ không phải dạng này · câu hình học, không thuộc Đại…'}
+                className="w-full rounded-md border border-rose-200 bg-white px-2 py-1 text-[12.5px]" />
+              <label className="flex cursor-pointer items-center gap-1.5 text-[12px] text-rose-800">
+                <input type="checkbox" checked={rac} onChange={(e) => setRac(e.target.checked)} /> Câu hỏng / không dùng được → đưa vào kho rác
+              </label>
+              <div className="flex gap-2">
+                <button disabled={ban || !lyDoTc.trim()} onClick={() => chay(() => onQuyet(c, rac ? 'kho_rac' : 'tu_choi', null, lyDoTc))}
+                  className="rounded-md bg-rose-600 px-3 py-1 text-[12.5px] font-medium text-white disabled:opacity-30">{rac ? 'Từ chối + kho rác' : 'Từ chối'}</button>
+                <button onClick={() => { setMoTuChoi(false); setLyDoTc(''); setRac(false) }} className="text-[12px] text-slate-500 hover:underline">Huỷ</button>
+              </div>
+              <p className="text-[11px] text-rose-700/80">{rac ? 'Câu vào kho rác (khôi phục được ở Duyệt kho).' : 'AI xếp sai: gỡ chỗ AI đặt, câu về “Chưa có dạng”.'} Lý do được lưu để Claude rút luật, không xếp kiểu này nữa.</p>
+            </div>
+          ) : (
+            <button disabled={ban} onClick={() => { setMoTuChoi(true); if (hang === 'trong') setRac(true) }}
+              className="w-full rounded-md border border-rose-200 px-3 py-1 text-left text-[12.5px] font-medium text-rose-600 hover:bg-rose-50">✕ Từ chối — ghi lý do</button>
           )}
           {(hang === 'trong' || hang === 'de_xuat') && (
             moThieu ? (

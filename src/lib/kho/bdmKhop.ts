@@ -22,7 +22,7 @@ export type KhopCau = {
 }
 export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; nhom_id: string; chuyen_de: string; chuyen_de_id: string; chu_de: string; chu_de_id: string }
 export type KhopPhamVi = { id: number; tai_khoan_id: string; khoi: string; chu_de_id: string | null; chu_de: string | null; nguoi: string; cua_toi: boolean }
-export type KhopHanhDong = 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi'
+export type KhopHanhDong = 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi' | 'tu_choi' | 'kho_rac'   // Thùy 18/10: từ chối kèm lý do (kho_rac = câu hỏng)
 
 const go = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> => {
   const { data, error } = await supabase.rpc(fn, args)
