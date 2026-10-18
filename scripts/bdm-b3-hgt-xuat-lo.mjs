@@ -43,7 +43,7 @@ const rows = await q(`
   select h.ma_cau, h.loai_cau, h.noi_dung, h.lua_chon, h.menh_de, h.dap_an, h.anh_de, h.parent_ma_cau,
          b.ten_dang dang_cu, b.ten_chuyen_de chuyen_de_cu
     from hgt_cau_hoi h join hgt_ban_do b on b.ma_dang = h.dang_chinh
-   where h.xoa_at is null and b.khoi = $1
+   where h.xoa_at is null and h.loai_cau <> 'dung_sai' and b.khoi = $1
      and not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = h.ma_cau)
      and not exists (select 1 from hgt_bdm_de_xuat e where e.ma_cau = h.ma_cau)
      and not exists (select 1 from hgt_bdm_cau_thieu_dang t where t.ma_cau = h.ma_cau)

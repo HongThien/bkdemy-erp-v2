@@ -38,7 +38,7 @@ const HIEN_KHOP_CU = false
 
 // Bản đồ mới → KHO (Thùy 18/10: "chưa thấy đường đi từ bản đồ mới vào kho"): bấm số câu trên thẻ dạng bài / nút 📚 ở nhóm / ⚠ Chưa khớp ở chủ đề
 // ⇒ danh sách câu thật (đề · đáp án · lời giải · cờ duyệt/kho chuẩn/kiểm máy). Cầu nối module-level: màn chỉ có 1 bản, đỡ luồn prop qua 4 tầng.
-type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang'; id: string; ten: string }
+type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai'; id: string; ten: string }
 let moKho: (m: KhoMo) => void = () => {}
 
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
@@ -292,6 +292,10 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
               className="rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-[12.5px] font-medium text-sky-800 hover:border-sky-400">💡 Đề xuất</button>
             <button onClick={() => moKho({ loai: 'thieu_dang', id: chuDe.id, ten: chuDe.ten })} title="Câu thuộc chủ đề này mà AI không xếp được vào dạng bài nào (có thể cần thêm dạng bài)"
               className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[12.5px] font-medium text-amber-800 hover:border-amber-400">⚠ Thiếu dạng</button>
+            {(chuDe.so_ds ?? 0) > 0 && (
+              <button onClick={() => moKho({ loai: 'dung_sai', id: chuDe.id, ten: chuDe.ten })} title="Kho Đúng/Sai của chủ đề: mỗi câu có 4 ý ứng 4 dạng nên không nằm trong kho dạng bài"
+                className="rounded-md border border-violet-200 bg-violet-50 px-2 py-1 text-[12.5px] font-medium text-violet-800 hover:border-violet-400">✔✘ Kho Đúng/Sai ({chuDe.so_ds})</button>
+            )}
             {chuDe.nhanh === 'toan' && (
               <button onClick={() => moKho({ loai: 'chua_khop', id: chuDe.id, ten: chuDe.ten })} title="Rổ chưa khớp cũ (lượt gán 10/10) — chưa phân loại tiếp"
                 className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12.5px] font-medium text-slate-600 hover:border-slate-400">Chưa khớp</button>
@@ -1291,7 +1295,7 @@ function KhoModal({ mo, onDong }: { mo: KhoMo; onDong: () => void }) {
     const f = (e: KeyboardEvent) => { if (e.key === 'Escape') onDong() }
     window.addEventListener('keydown', f); return () => window.removeEventListener('keydown', f)
   }, [onDong])
-  const tieuDe = mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'de_xuat' ? 'AI đề xuất — chờ duyệt' : mo.loai === 'thieu_dang' ? 'Thiếu dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
+  const tieuDe = mo.loai === 'dung_sai' ? 'Kho Đúng/Sai của chủ đề' : mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'de_xuat' ? 'AI đề xuất — chờ duyệt' : mo.loai === 'thieu_dang' ? 'Thiếu dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
       <div className="flex h-full max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -1321,7 +1325,7 @@ function KhoModal({ mo, onDong }: { mo: KhoMo; onDong: () => void }) {
   )
 }
 function CauKho({ r, nhom }: { r: KhoCauRow; nhom: boolean }) {
-  const nguonGan = r.nguon_gan === 'chua_khop' || r.nguon_gan === 'thieu_dang' ? null : r.nguon_gan.startsWith('de_xuat') ? 'AI đề xuất (chưa chắc)' : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : r.nguon_gan.startsWith('gan_cum') ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
+  const nguonGan = r.nguon_gan === 'chua_khop' || r.nguon_gan === 'thieu_dang' || r.nguon_gan === 'dung_sai' ? null : r.nguon_gan.startsWith('de_xuat') ? 'AI đề xuất (chưa chắc)' : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : r.nguon_gan.startsWith('gan_cum') ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
   const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
   return (
     <div className={`rounded-lg border bg-white p-3 shadow-sm ${r.la_goc ? 'border-slate-200' : 'ml-6 border-dashed border-slate-300'}`}>
