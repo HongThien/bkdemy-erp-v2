@@ -282,7 +282,7 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; gioi
 // điểm danh ⇒ nút "Vào ca" (CaBoTroHS). Bù/đuổi chỉ để em + PH biết lịch (làm bài trong ca là việc của TA/GV).
 // Màu nhãn 3 loại: yếu = cảnh báo (cam), bù = nhấn của skin, đuổi = tím cố định (chỉ để phân biệt loại —
 // tím tầm trung, đọc được trên thẻ sáng lẫn tối).
-const LOAI_MAU: Record<LichBoTro['loai'], string> = { bo_tro_yeu: MAU.canhBao, bu: MAU.acc, bo_tro_duoi: '#8b6cf0' }
+const LOAI_MAU: Record<LichBoTro['loai'], string> = { bo_tro_yeu: MAU.canhBao, bu: MAU.acc, bo_tro_duoi: '#8b6cf0', bo_tro_hinh: '#c04fd8' }
 export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onVaoCa: (c: LichBoTro) => void }) {
   return (
     <ManHS className="!gap-0">

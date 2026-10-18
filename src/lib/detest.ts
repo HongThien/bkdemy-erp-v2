@@ -8,7 +8,7 @@
 // (KHÔNG dựng lại de_test CRUD, cũng KHÔNG "ghim/trỏ"). Nguồn = MT + Đề thi (mọi master TRỪ ET/GT/BTVN).
 // Mỗi khối×môn 1 đề đang dùng (bản sinh mới nhất), đề cũ giữ làm lịch sử. Xem section ĐỀ TEST ĐẦU VÀO.
 import { supabase } from './supabase'
-import { khoCuaMon, nhanhCuaMon, nhanhCuaCau, laMaHinh, getTaiLieuFull, listPhan, copyPhanInto, type TaiLieu } from './tailieu'
+import { khoCuaMon, nhanhCuaMon, nhanhCuaCau, laMaHinh, getTaiLieuFull, listPhan, copyPhanInto, PHAN_LUYEN, PHAN_BTVN, PHAN_ONTAP, type TaiLieu } from './tailieu'
 import { pickCuaHinhRow } from './mt'
 import { loadLuoi } from './kho/hinh'
 import { updateUngVien, toggleViec } from './tuyensinh'
@@ -175,7 +175,7 @@ export async function ganDeCaTest(caTestId: string, taiLieuId: string): Promise<
   const full = await getTaiLieuFull(taiLieuId)
   const tl = full.taiLieu
   const custom = full.phans.filter((p) => p.loai_phan === 'custom')
-  const phans = custom.length ? custom : full.phans.filter((p) => p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap')
+  const phans = custom.length ? custom : full.phans.filter((p) => PHAN_LUYEN.includes(p.loai_phan) || PHAN_BTVN.includes(p.loai_phan) || PHAN_ONTAP.includes(p.loai_phan))
   // 1) Duyệt câu THEO THỨ TỰ trong đề (maCaus, không phải caus — caus đã rụng hàng Hình), gom dạng theo bảng bản đồ.
   const dangTheoBang = new Map<string, Set<string>>()
   const hinhMas: string[] = []

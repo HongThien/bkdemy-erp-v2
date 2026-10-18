@@ -20,7 +20,7 @@ function MaCau({ ma }: { ma: string }) {
 // trắc nghiệm nếu có chứ mới nhìn rõ". Tái dùng splitStem để tách ĐỀ + ý con / đáp án nhúng, kèm:
 //   · menh_de (câu Đúng/Sai) với nhãn Đ/S highlight · lua_chon (TN) với ✓ ở đáp án đúng · ảnh đề.
 // KHÔNG hiện lời giải / ảnh đáp án đầy đủ (đã đủ dữ kiện để chọn đúng câu; đỡ phình label).
-function CauPreview({ c }: { c: CauHoi }) {
+export function CauPreview({ c }: { c: CauHoi }) {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const { stem, grid, emb } = splitStem(c)

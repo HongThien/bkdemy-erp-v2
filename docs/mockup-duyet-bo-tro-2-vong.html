@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup — Duyệt bổ trợ 2 vòng</title>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0;--ind:#4f46e5;
+ --r2:#b91c1c;--r2bg:#fee2e2;--r1:#c2410c;--r1bg:#ffedd5;--g1:#15803d;--g1bg:#dcfce7;--g2:#fff;--g2bg:#16a34a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:10px 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.top b.t{font-size:15px;margin-right:6px}
+.pill{border:0;border-radius:999px;padding:6px 14px;font-weight:600;font-size:13px;background:#f1f5f9;color:#475569;cursor:pointer}
+.pill.on{background:var(--ind);color:#fff}
+.sub{padding:12px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.chip{border-radius:999px;padding:3px 11px;font-weight:700;border:1px solid #cbd5e1;background:#fff}
+.chip.hot{background:#e11d48;color:#fff;border-color:#e11d48}.chip.ok{background:#eef2ff;color:#4338ca;border-color:#c7d2fe}
+.note{color:var(--mut)}
+.wrap{display:grid;grid-template-columns:270px 1fr;gap:16px;padding:0 24px 40px;max-width:1500px;margin:0 auto}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.rail{background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;align-self:start;max-height:80vh;overflow:auto}
+.rail h4{margin:6px 8px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.it{display:flex;gap:8px;align-items:center;padding:8px;border-radius:10px;cursor:pointer}
+.it:hover{background:#f8fafc}.it.on{background:#eef2ff;outline:1px solid #c7d2fe}
+.it .n{font-weight:600}.it .m{font-size:11.5px;color:var(--mut)}.it .d{margin-left:auto;font-size:11px;font-weight:700}
+.it.done{opacity:.45}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.main{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.hd{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.av{width:52px;height:52px;border-radius:50%;background:#c7d2fe;color:#3730a3;display:grid;place-items:center;font-weight:800;font-size:19px}
+.hd h2{margin:0;font-size:20px}.hd .meta{color:var(--mut);font-size:12.5px;margin-top:2px}
+.nav{margin-left:auto;display:flex;align-items:center;gap:8px}
+.nav button{border:1px solid var(--line);background:#fff;border-radius:10px;width:36px;height:34px;font-size:16px;cursor:pointer}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tag{font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 10px;background:#f1f5f9;color:#475569}
+.tag.al{background:#e11d48;color:#fff}.tag.et{background:#ffe4e6;color:#9f1239}.tag.bt{background:#fef3c7;color:#92400e}.tag.cd{background:#e0e7ff;color:#3730a3}
+.sec{margin-top:16px}.sec h3{margin:0 0 8px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);display:flex;gap:8px;align-items:center}
+.sec h3 small{text-transform:none;letter-spacing:0;font-weight:500}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}@media(max-width:760px){.g4{grid-template-columns:repeat(2,1fr)}}
+.box{border-radius:14px;padding:12px 14px;border:1px solid transparent}
+.box .dt{font-size:11.5px;opacity:.85}.box .v{font-size:26px;font-weight:800;line-height:1.1;margin:2px 0}
+.box .l{font-size:12px}.box .rk{font-size:11.5px;font-weight:700;margin-top:4px}
+.c-r2{background:#991b1b;color:#fff}.c-r1{background:var(--r1bg);color:var(--r1);border-color:#fed7aa}
+.c-g1{background:var(--g1bg);color:var(--g1);border-color:#bbf7d0}.c-g2{background:var(--g2bg);color:#fff}
+.legend{display:flex;gap:8px;flex-wrap:wrap;font-size:11.5px;margin-top:8px}
+.legend span{display:inline-flex;gap:5px;align-items:center}.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.bt{border:1px solid var(--line);border-radius:14px;padding:11px 13px}
+.bt .dt{font-size:11.5px;color:var(--mut)}.bt .pc{font-size:22px;font-weight:800}
+.dcs{display:flex;height:9px;border-radius:99px;overflow:hidden;margin:7px 0 5px;background:#e2e8f0}
+.dcs i{display:block}.dcs .D{background:#16a34a}.dcs .C{background:#f59e0b}.dcs .S{background:#e11d48}
+.dl{font-size:12px;display:flex;gap:10px;font-weight:600}.dl b{display:inline-block;min-width:8px}
+.dl .D{color:#15803d}.dl .C{color:#b45309}.dl .S{color:#be123c}
+table{width:100%;border-collapse:collapse;font-size:13px}th{font-size:11px;color:var(--mut);font-weight:600;text-align:left;padding:4px 6px}
+td{padding:6px;border-top:1px solid #f1f5f9}.bar{height:8px;border-radius:99px;background:#e2e8f0;position:relative;min-width:90px}.bar i{position:absolute;inset:0 auto 0 0;border-radius:99px}
+.act{margin-top:20px;padding:14px 16px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.act .lbl{font-weight:700}.btn{border:0;border-radius:10px;padding:9px 16px;font-weight:700;font-size:13.5px;cursor:pointer}
+.b1{background:var(--ind);color:#fff}.b2{background:#f1f5f9;color:#475569}.b3{background:#e11d48;color:#fff}.bg{background:#16a34a;color:#fff}
+select,input.t{border:1px solid #cbd5e1;border-radius:9px;padding:8px 10px;font-size:13px;background:#fff}
+.btn .kbd{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5);color:inherit;margin-left:4px}
+.hint{font-size:11.5px;color:var(--mut)}.kbd{border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:5px;padding:0 5px;font-size:11px;background:#fff}
+.slot{height:8px;border-radius:99px;background:#e2e8f0;overflow:hidden;width:150px;display:inline-block;vertical-align:middle}.slot i{display:block;height:100%;background:var(--ind)}
+.snap{margin:0 24px 10px;max-width:1452px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:12.5px}
+.live{background:#dcfce7;color:#166534;border-radius:99px;padding:2px 9px;font-weight:700;font-size:11.5px}.frz{background:#e0e7ff;color:#3730a3;border-radius:99px;padding:2px 9px;font-weight:700;font-size:11.5px}
+.cmp{margin-top:14px;background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:9px 12px;font-size:12.5px;color:#312e81}
+.callout{margin:0 24px 12px;max-width:1452px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px 14px;font-size:12.5px;color:#78350f}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:99px;font-size:13px;opacity:0;transition:.25s;pointer-events:none}.toast.on{opacity:1}
+</style></head><body>
+<div class="top">
+  <b class="t">Bổ trợ › Yếu › Duyệt bổ trợ</b>
+  <button class="pill on" id="tab_td" onclick="setV('td')">👁 Đang theo dõi <span id="n_td"></span></button>
+  <button class="pill" id="tab_bd" onclick="setV('bd')">🚨 Báo động <span id="n_bd"></span></button>
+  <button class="pill" id="tab_dt" onclick="setV('dt')">📉 Điểm thấp <span id="n_dt"></span></button>
+  <span class="note" style="font-size:12px;margin-left:6px">Vòng 2 = Đang theo dõi · Vòng 1 = Báo động + Điểm thấp</span>
+  <span style="margin-left:auto;display:flex;gap:8px"><select><option>Toán</option></select><select><option>Tất cả khối</option><option>Khối 7</option></select></span>
+</div>
+<div class="sub">
+  <span class="chip">Đang bổ trợ chính thức <b>58/70</b></span>
+  <span class="chip">Ưu tiên Cao <b>14/20</b></span>
+  <span class="slot"><i style="width:83%"></i></span><span class="note">còn 12 slot</span>
+  <span class="chip ok">👁 Đang theo dõi <b id="soTheoDoi">41</b> — KHÔNG chiếm slot</span>
+</div>
+<div class="snap" id="snap"></div>
+<div class="callout" id="callout"></div>
+<div class="wrap">
+  <aside class="rail"><h4 id="railT"></h4><div id="rail"></div></aside>
+  <section class="main" id="main"></section>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== dữ liệu mẫu =====
+const LOP_ET = { // điểm ET của CẢ LỚP mỗi buổi (để thấy luật tô màu chạy đúng cả khi bằng điểm)
+  '02/10':[91,88,85,84,82,80,78,76,75,74,73,72,70,68,66,64,62,60,58,55,50,40,40,40,40],
+  '25/09':[90,87,86,83,81,79,77,75,74,72,70,69,67,65,63,61,60,57,55,52,48,45,35,35,28],
+  '18/09':[93,90,88,86,84,82,80,79,77,75,73,71,69,67,65,63,60,58,55,53,50,47,44,42,38],
+  '11/09':[89,86,84,82,80,78,76,74,72,70,68,66,64,62,60,58,56,54,52,50,48,46,44,40,36]};
+const HS = [
+ {id:1,ten:'Nguyễn Minh Khôi',ma:'HS0412',lop:'7A2',khoi:7,bac:'A',kenh:['et','bt','al'],al:'🚨 Thầy Hưng báo: "mất gốc phân số, ET 2 buổi liền trống"',
+  et:[['02/10',40],['25/09',45],['18/09',44],['11/09',46]],
+  bt:[['03/10',{D:3,C:2,S:5}],['26/09',{D:4,C:1,S:5}],['19/09',{D:2,C:3,S:5}],['12/09',{D:3,C:3,S:4}]],
+  cd:[['Phân số & số hữu tỉ',0.72,0.41],['Phương trình bậc nhất',0.68,0.55],['Tỉ lệ thức',0.50,0.52]], v2:{ngay:'05/10',nguoi:'Trang',gc:'Theo dõi 2 tuần xem ET có tụt tiếp'}},
+ {id:2,ten:'Lê Thu Hà',ma:'HS0388',lop:'7A2',khoi:7,bac:'A',kenh:['et'],al:'',
+  et:[['02/10',72],['25/09',70],['18/09',66],['11/09',68]],
+  bt:[['03/10',{D:8,C:1,S:1}],['26/09',{D:7,C:2,S:1}],['19/09',{D:9,C:0,S:1}],['12/09',{D:8,C:1,S:1}]],
+  cd:[['Phân số & số hữu tỉ',0.80,0.74],['Tỉ lệ thức',0.70,0.68]], v2:{ngay:'01/10',nguoi:'Lộc',gc:''}},
+ {id:3,ten:'Phạm Đức Anh',ma:'HS0501',lop:'7S1',khoi:7,bac:'S',kenh:['bt','cd'],al:'',
+  et:[['02/10',85],['25/09',50],['18/09',86],['11/09',88]],
+  bt:[['03/10',{D:2,C:2,S:6}],['26/09',{D:1,C:2,S:7}],['19/09',{D:3,C:1,S:6}],['12/09',{D:2,C:3,S:5}]],
+  cd:[['Đường thẳng song song',0.76,0.48],['Quan hệ giữa các góc',0.66,0.44]], v2:{ngay:'28/09',nguoi:'Trang',gc:'ET tốt nhưng BTVN rất yếu'}}];
+const DS = {td:[3,2], bd:[1], dt:[1,2,3]}; // em 1 vừa báo động vừa điểm thấp ⇒ hiện ở CẢ HAI tab
+let V = 'td', cur = 0, xong = new Set(), lop = 'et';
+const SNAP = {ngay:'Thứ 2 13/10', luc:'08:12', ai:'Trang'};
+
+// ===== luật tô màu ET (chạy thật trên dữ liệu lớp mẫu) =====
+function tb(a){return a.reduce((s,x)=>s+x,0)/a.length}
+function mauET(ngay,diem){
+  const a = LOP_ET[ngay], m = tb(a), sorted=[...a].sort((x,y)=>x-y), desc=[...a].sort((x,y)=>y-x);
+  const botNguong = sorted[1], topNguong = desc[1];            // điểm của người thứ 2 từ cuối / từ đầu
+  const cuoi = diem<=botNguong, dau = diem>=topNguong;           // bằng điểm ⇒ cùng nhóm (đếm theo SỐ NGƯỜI, không theo vị trí)
+  const hang = a.filter(x=>x>diem).length+1, soBang = a.filter(x=>x===diem).length;
+  let cls,ten;
+  if (diem < m*0.85 || cuoi){cls='c-r2';ten='Đỏ đậm'}
+  else if (diem < m){cls='c-r1';ten='Đỏ nhạt'}
+  else if (diem > m*1.15 || dau){cls='c-g2';ten='Xanh'}
+  else {cls='c-g1';ten='Xanh nhạt'}
+  const why = diem<m*0.85?'dưới 85% TB lớp':cuoi?'nhóm 2 cuối lớp':diem>m*1.15?'trên 115% TB lớp':dau?'nhóm 2 đầu lớp':'';
+  return {cls,ten,tbl:m,hang,n:a.length,soBang,why};
+}
+const D=(t)=>`<div class="toast on">${t}</div>`;
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(window._t);window._t=setTimeout(()=>e.classList.remove('on'),1800)}
+
+function setV(v){V=v;cur=0;render()}
+document.addEventListener('DOMContentLoaded',()=>{})
+function ds(){return DS[V].map(i=>HS.find(h=>h.id===i))}
+function conLai(k){return DS[k].filter(i=>!xong.has(i)).length}
+function go(d){const n=ds().length;cur=(cur+d+n)%n;render()}
+function xu(msg){const h=ds()[cur];xong.add(h.id);toast(msg);const l=ds();let nx=l.findIndex((x,i)=>i>=cur&&!xong.has(x.id));if(nx<0)nx=l.findIndex(x=>!xong.has(x.id));if(nx>=0)cur=nx;render()}
+
+function etHTML(h){
+  const boxes=h.et.map(([ng,d])=>{const m=mauET(ng,d);return `<div class="box ${m.cls}"><div class="dt">ET ${ng}</div><div class="v">${d}%</div>
+  <div class="l">TB lớp ${m.tbl.toFixed(0)}% · ngưỡng đỏ đậm ${(m.tbl*0.85).toFixed(0)}%</div>
+  <div class="rk">Hạng ${m.hang}/${m.n}${m.soBang>1?` (cùng ${m.soBang} bạn)`:''} · ${m.ten}${m.why?` — ${m.why}`:''}</div></div>`}).join('');
+  return `<div class="g4">${boxes}</div>
+  <div class="legend"><span><i style="background:#991b1b"></i>Đỏ đậm: &lt;85% TB lớp hoặc 2 cuối lớp</span><span><i style="background:#ffedd5;border:1px solid #fed7aa"></i>Đỏ nhạt: 85% TB → TB</span><span><i style="background:#dcfce7;border:1px solid #bbf7d0"></i>Xanh nhạt: trên TB</span><span><i style="background:#16a34a"></i>Xanh: &gt;115% TB hoặc 2 đầu lớp</span></div>
+  <div class="hint" style="margin-top:6px">ⓘ <b>"15%" là 15% của TB lớp</b> (TB lớp 70% → đỏ đậm khi &lt;59,5%), không phải 15 điểm. <b>"2 cuối / 2 đầu lớp" đếm theo SỐ NGƯỜI, không theo vị trí:</b> 4 bạn cùng điểm thấp nhất thì cả 4 đều đỏ đậm. Mỗi ô ghi rõ lý do bị tô màu đó.</div>`;
+}
+function btHTML(h){
+  return `<div class="g4">`+h.bt.map(([ng,x])=>{const t=x.D+x.C+x.S,p=Math.round(100*x.D/t);
+    return `<div class="bt"><div class="dt">BTVN ${ng} · ${t} câu</div><div class="pc" style="color:${p<40?'#be123c':p<70?'#b45309':'#15803d'}">${p}% đúng</div>
+    <div class="dcs"><i class="D" style="width:${100*x.D/t}%"></i><i class="C" style="width:${100*x.C/t}%"></i><i class="S" style="width:${100*x.S/t}%"></i></div>
+    <div class="dl"><span class="D">Đ <b>${x.D}</b> (${Math.round(100*x.D/t)}%)</span><span class="C">C <b>${x.C}</b> (${Math.round(100*x.C/t)}%)</span><span class="S">S <b>${x.S}</b> (${Math.round(100*x.S/t)}%)</span></div></div>`}).join('')+`</div>`;
+}
+function cdHTML(h){
+  return `<table><tr><th>Chuyên đề</th><th>Trước</th><th>Nay</th><th style="width:140px"></th><th>Δ</th></tr>`+h.cd.map(([t,a,b])=>{const d=Math.round((b-a)*100);
+  return `<tr><td>${t}</td><td>${Math.round(a*100)}%</td><td><b>${Math.round(b*100)}%</b></td><td><div class="bar"><i style="width:${b*100}%;background:${b<.5?'#e11d48':b<.7?'#f59e0b':'#16a34a'}"></i></div></td><td style="color:${d<0?'#be123c':'#15803d'};font-weight:700">${d>0?'+':''}${d}</td></tr>`}).join('')+`</table>`;
+}
+function cmpHTML(h){return `<div class="cmp"><b>Từ lúc vào theo dõi (${h.v2.ngay}) đến lần chốt ${SNAP.ngay.replace('Thứ 2 ','')}:</b> ET TB 4 buổi <b>${h.id==3?'69% → 67%':'48% → 47%'}</b> · BTVN đúng <b>${h.id==3?'24% → 22%':'55% → 58%'}</b> · ${h.id==3?'chưa cải thiện':'nhích nhẹ'}</div>`}
+function actHTML(h){
+  if(V!='td') return `<div class="act"><span class="lbl">Vòng 1 — đưa vào theo dõi?</span>
+   <input class="t" id="gc" placeholder="Ghi chú vì sao theo dõi (không bắt buộc)" style="flex:1;min-width:220px">
+   <button class="btn b1" onclick="xu('👁 Đã đưa ${h.ten} vào danh sách theo dõi (không chiếm slot)')">👁 Đưa vào theo dõi <span class="kbd">Enter</span></button>
+   <button class="btn b2" onclick="xu('Bỏ qua ${h.ten} — hiện lại nếu tín hiệu mạnh hơn')">Bỏ qua <span class="kbd">S</span></button>
+   <div class="hint" style="flex-basis:100%">Vòng 1 KHÔNG tốn slot, KHÔNG mở case, không cần chọn mức. ${h.al?'Em này có báo động 🚨 — có thể nhảy thẳng sang Vòng 2.':''}</div></div>`;
+  return `<div class="act"><span class="lbl">Vòng 2 — duyệt chính thức</span>
+   <select id="lv"><option>L1 · trước/sau giờ</option><option selected>L2 · buổi riêng (TA)</option><option>L3 · buổi riêng (GV cao cấp)</option></select>
+   <select><option>Ưu tiên Thường</option><option>Ưu tiên Cao (14/20)</option><option>Ưu tiên Thấp</option></select>
+   <button class="btn bg" onclick="xu('✅ ${h.ten} → Bổ trợ chính thức (chiếm 1 slot: 59/70)')">✅ Duyệt chính thức <span class="kbd">Enter</span></button>
+   <button class="btn b2" onclick="xu('Giữ ${h.ten} ở danh sách theo dõi')">Giữ theo dõi</button>
+   <button class="btn b3" onclick="xu('Gỡ ${h.ten} khỏi theo dõi')">Gỡ khỏi theo dõi</button>
+   <div class="hint" style="flex-basis:100%">Chỉ lúc này mới trừ slot (còn 12). Bổ trợ tuần này 1 lần rồi tự kết thúc — chưa hết dạng yếu thì tuần sau xét lại. Hết slot ⇒ nút Duyệt khoá, vẫn Giữ/Gỡ được. Em hết tín hiệu vẫn nằm đây tới khi người duyệt <b>Gỡ tay</b>.</div></div>`;
+}
+function render(){
+  const l=ds(), h=l[cur];
+  ['td','bd','dt'].forEach(k=>{document.getElementById('tab_'+k).className='pill'+(V==k?' on':'');document.getElementById('n_'+k).textContent='('+conLai(k)+')'});
+  document.getElementById('soTheoDoi').textContent=41;
+  document.getElementById('snap').innerHTML = V=='bd'
+    ? '<span class="live">● LIVE</span> <span><b>Báo động</b> hiện ngay khi GV/TA bấm chuông — không chờ chốt tuần.</span>'
+    : '<span class="frz">❄ ẢNH CHỤP TUẦN</span> <span>Chốt <b>'+SNAP.ngay+'</b> · '+SNAP.luc+' · bởi '+SNAP.ai+' — cả tuần mọi người xem cùng một bộ số liệu.</span><span style="margin-left:auto"><button class="btn b2" onclick="toast(\'Quét lại toàn bộ lớp mất vài chục giây — chỉ làm thứ 2\')">↻ Chốt lại tuần này</button></span>';
+  document.getElementById('callout').innerHTML = V=='td'
+   ? '<b>Vòng 2 · Theo dõi → Chính thức (thứ 2):</b> chỉ em ĐÃ vào theo dõi. Số liệu làm mới theo lần chốt tuần, kèm so với <b>lúc vào theo dõi</b>. Duyệt chính thức = bổ trợ <b>1 lần trong tuần</b> rồi tự kết thúc (dù chưa hết dạng yếu), tuần sau xét lại. Việc khẩn giữa tuần → loại <b>Bổ trợ Khẩn cấp</b>, không ở đây.'
+   : V=='bd' ? '<b>Vòng 1 · 🚨 Báo động:</b> em bị GV/TA bấm chuông (ET/MT/BTVN/đánh giá/hổng nền). Quyết <b>có đáng theo dõi không</b> — chưa tốn slot.'
+   : '<b>Vòng 1 · 📉 Điểm thấp:</b> em máy gom từ ET · BTVN · chuyên đề (ảnh chụp tuần). Quyết <b>có đáng theo dõi không</b> — chưa tốn slot. Em nào có thêm báo động vẫn hiện ở đây, kèm chip 🚨; duyệt xong ở tab nào thì biến mất ở cả hai.';
+  document.getElementById('railT').textContent = V=='td'?'Đang theo dõi':V=='bd'?'Báo động':'Điểm thấp';
+  document.getElementById('rail').innerHTML = l.map((x,i)=>{const c=x.et.some(([n,d])=>mauET(n,d).cls==='c-r2')?'#991b1b':'#f59e0b';
+    return `<div class="it ${i==cur?'on':''} ${xong.has(x.id)?'done':''}" onclick="cur=${i};render()"><span class="dot" style="background:${c}"></span><div><div class="n">${x.ten}</div><div class="m">${x.lop} · K${x.khoi}${x.bac}</div></div><span class="d">${xong.has(x.id)?'✓':(x.kenh.includes('al')?'🚨':'')}</span></div>`}).join('');
+  const kn={et:'<span class="tag et">ET</span>',bt:'<span class="tag bt">BTVN</span>',cd:'<span class="tag cd">Chuyên đề</span>',al:'<span class="tag al">🚨 Báo động</span>'};
+  document.getElementById('main').innerHTML = `
+   <div class="hd"><div class="av">${h.ten.split(' ').slice(-1)[0][0]}</div>
+    <div><h2>${h.ten} <span class="note" style="font-size:13px;font-weight:500">${h.ma}</span></h2><div class="meta">Lớp ${h.lop} · Khối ${h.khoi} bậc ${h.bac} · Toán</div></div>
+    <div class="nav"><span class="note">${cur+1} / ${l.length}</span><button onclick="go(-1)" title="Em trước (←)">‹</button><button onclick="go(1)" title="Em kế (→)">›</button></div></div>
+   <div class="tags"><span class="note" style="font-size:12px">Lý do:</span>${h.kenh.map(k=>kn[k]).join('')}${V=='dt'&&h.kenh.includes('al')?'<span class="tag" style="background:#fff1f2;color:#be123c;border:1px dashed #fda4af">cũng ở tab 🚨 Báo động</span>':''}${V=='bd'&&h.kenh.some(k=>k!='al')?'<span class="tag" style="background:#fff7ed;color:#c2410c;border:1px dashed #fdba74">cũng ở tab 📉 Điểm thấp</span>':''}${V=='td'?`<span class="tag" style="background:#eef2ff;color:#4338ca">👁 theo dõi từ ${h.v2.ngay} · ${h.v2.nguoi}${h.v2.gc?' — “'+h.v2.gc+'”':''}</span>`:''}</div>
+   ${h.al&&V!='td'?`<div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:9px 12px;font-size:13px;color:#9f1239">${h.al}</div>`:''}
+   <div class="sec"><h3>ET 4 buổi gần nhất <small>— so với cả lớp ${h.lop}</small></h3>${etHTML(h)}</div>
+   <div class="sec"><h3>BTVN 4 buổi gần nhất <small>— Đ = đúng · C = chưa trọn · S = sai</small></h3>${btHTML(h)}</div>
+   <div class="sec"><h3>Điểm chuyên đề <small>— như cũ</small></h3>${cdHTML(h)}</div>
+   ${V=='td'?cmpHTML(h):''}
+   ${actHTML(h)}
+   <div class="hint" style="margin-top:8px">Phím tắt: <span class="kbd">←</span> <span class="kbd">→</span> đổi em · <span class="kbd">Enter</span> xác nhận · duyệt xong tự nhảy sang em kế, KHÔNG reload danh sách.</div>`;
+}
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});
+render();
+</script></body></html>

@@ -42,7 +42,7 @@ export default function TaiLieuScreen() {
   // ⭐ 09-10 (Thùy: "rất nhiều builder tải cực lâu khi số lượng lớn") — mặc định chỉ PAGE giáo trình mới
   // nhất/khối+môn (+"Tải thêm"); gõ tìm → server-side ilike, không còn lọc trên list đã tải hết.
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
-    async ({ before, search }) => mon ? listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined, { before, search, limit: PAGE }) : [],
+    async ({ before, search }) => mon ? listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined, { before, search, limit: PAGE, banDo: 'cu' }) : [], // giáo trình bản đồ mới ở lá riêng
     (t) => t.created_at,
     PAGE, q, [khoi, mon, nhanh],
   )

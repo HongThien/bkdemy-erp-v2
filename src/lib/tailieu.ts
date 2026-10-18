@@ -94,6 +94,12 @@ export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[])
 // giống 'dang'/'btvn'. KHÔNG có CHECK constraint thật trên loai_phan (verify pg_constraint) → thêm giá trị
 // mới KHÔNG cần migration, chỉ cần mọi chỗ lọc 'dang'/'btvn' cân nhắc có nên gộp thêm 'ontap' hay không.
 export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'custom'
+  | 'nhom' | 'dang_bai' | 'nhom_chua_phan' | 'chua_khop' | 'btvn_nhom' | 'ontap_nhom' // giáo trình BẢN ĐỒ MỚI (spec-builder-ban-do-moi.md B1)
+// Phần nào chứa câu GÌ — MỘT chỗ cho mọi bên đọc tài liệu (test online, đánh giá, test đầu vào…), gồm cả giáo trình cũ
+// ('dang'/'btvn'/'ontap') lẫn bản đồ mới. Thêm loại phần mới = thêm vào đây, không rải `loai_phan === …` khắp nơi.
+export const PHAN_LUYEN: readonly string[] = ['dang', 'dang_bai', 'nhom_chua_phan', 'chua_khop'] // câu luyện trên lớp
+export const PHAN_BTVN: readonly string[] = ['btvn', 'btvn_nhom']
+export const PHAN_ONTAP: readonly string[] = ['ontap', 'ontap_nhom']
 // btvnLinesByCau = số dòng kẻ (chấm chấm) để HS viết, RIÊNG cho TỪNG bài BTVN (key = ma_cau).
 // Không có entry cho câu nào → dùng DEFAULT_BTVN_LINES. (HS làm thẳng vào phiếu, không làm vào vở.)
 // etFormByCau = FORM HIỂN THỊ của câu TRONG ET (khác loai_cau của kho) — vd câu kho "trả lời ngắn"
@@ -202,7 +208,7 @@ export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
 // stt_lop = SỐ BUỔI CỦA LỚP (1,2,3…) cho doc vận hành bám (lop_id, ngay) — xem §"Bộ giáo trình riêng
 // của lớp" phía dưới. NULL với master/ET/đề thi (không thuộc lớp nào).
 // nhanh: chỉ có ý nghĩa trong mon='Toán' — null = Đại (mặc định, mã cũ) | 'hinh_gt' = Hình giải tích.
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null }
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null; ban_do?: 'cu' | 'moi'; luu_tru_tu?: string | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
 export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
 export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
@@ -242,7 +248,8 @@ export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe:
 // của dòng cuối trang trước) cho "Tải thêm". Xem hook dùng chung `usePagedList` (src/hooks).
 export const PAGE_MOI_NHAT = 20
 const PAGE_SEARCH = 200
-export type ListPageOpts = { before?: string; search?: string; limit?: number }
+// banDo: lá "Giáo trình" (cũ) và "Giáo trình (bản đồ mới)" là 2 chức năng riêng (Thùy 18/10) ⇒ mỗi lá chỉ thấy giáo trình của mình.
+export type ListPageOpts = { before?: string; search?: string; limit?: number; banDo?: 'cu' | 'moi' }
 // nhanh: undefined = không lọc (mọi nhánh) · null = CHỈ Đại (nhanh is null) · string = CHỈ nhánh đó.
 export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null, opts?: ListPageOpts): Promise<TaiLieu[]> {
   // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
@@ -251,6 +258,7 @@ export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: stri
   if (mon) q = q.eq('mon', mon)
   if (nhanh === null) q = q.is('nhanh', null)
   else if (nhanh) q = q.eq('nhanh', nhanh)
+  if (opts?.banDo) q = q.eq('ban_do', opts.banDo)
   if (opts?.before) q = q.lt('created_at', opts.before)
   if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
   q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))
@@ -279,10 +287,10 @@ export async function listTaiLieuFacets(): Promise<{ loai: string; mon: string }
   if (error) throw error
   return (data ?? []) as { loai: string; mon: string }[]
 }
-export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
+export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string; ban_do?: 'cu' | 'moi' }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', created_by: user?.id ?? null })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', ban_do: input.ban_do ?? 'cu', created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
@@ -617,7 +625,7 @@ export async function getTaiLieuFull(id: string, opts?: { onlyBuoiId?: string })
 export async function layCauTheoThuTu(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
   const custom = full.phans.filter((p) => p.loai_phan === 'custom')
-  const source = custom.length ? custom : full.phans.filter((p) => p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap')
+  const source = custom.length ? custom : full.phans.filter((p) => PHAN_LUYEN.includes(p.loai_phan) || PHAN_BTVN.includes(p.loai_phan) || PHAN_ONTAP.includes(p.loai_phan))
   return source.flatMap((p) => p.caus)
 }
 
@@ -704,7 +712,7 @@ export function tieuDeBuoiLop(tieuDeMaster: string | null | undefined, stt: numb
   if (/^buổi\s*\d+/i.test(t)) return t.replace(/^buổi\s*\d+/i, `Buổi ${stt}`)
   return t ? `Buổi ${stt} · ${t}` : `Buổi ${stt}`
 }
-const tenDocBuoi = (loai: string, tenLop: string, ngay: string, tieuDe: string) =>
+export const tenDocBuoi = (loai: string, tenLop: string, ngay: string, tieuDe: string) =>
   `${loai === 'btvn' ? 'BTVN' : 'GT'} ${tenLop} ${ngay.split('-').reverse().join('/')} · ${tieuDe}`
 
 // Đánh lại số buổi CHO CẢ LỚP theo thứ tự ngày. Trả về doc nào đã ĐỔI NỘI DUNG HIỂN THỊ (tên/tiêu đề
@@ -856,7 +864,7 @@ export async function getBTVNByBuoi(lopId: string, ngay: string): Promise<{ id: 
 }
 export async function getBTVNCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'btvn' || p.loai_phan === 'ontap').flatMap((p) => p.caus)
+  return full.phans.filter((p) => PHAN_BTVN.includes(p.loai_phan) || PHAN_ONTAP.includes(p.loai_phan)).flatMap((p) => p.caus)
 }
 // Giáo trình buổi (lớp+ngày) — doc loai='giao_trinh_buoi' (từ trích xuất). Dùng để khớp buổi ↔ test online.
 export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<{ id: string } | null> {
@@ -867,7 +875,7 @@ export async function getGiaoTrinhBuoiDoc(lopId: string, ngay: string): Promise<
 // Câu BÀI LUYỆN của giáo trình buổi (loai_phan='dang') — online chỉ giao BT, KHÔNG lý thuyết.
 export async function getGiaoTrinhBuoiCaus(taiLieuId: string): Promise<CauHoi[]> {
   const full = await getTaiLieuFull(taiLieuId)
-  return full.phans.filter((p) => p.loai_phan === 'dang').flatMap((p) => p.caus)
+  return full.phans.filter((p) => PHAN_LUYEN.includes(p.loai_phan)).flatMap((p) => p.caus)
 }
 // Đặt LẠI toàn bộ câu ET theo thứ tự (UI tự dedup trong đề — trong buổi không trùng).
 // Bump `updated_at`: sửa CÂU chỉ đụng tai_lieu_cau nên trước đây KHÔNG để lại dấu thời gian nào —

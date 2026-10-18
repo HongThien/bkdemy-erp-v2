@@ -7,27 +7,27 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
-- dòng 47 — Bài học 10→15/10 — Bổ trợ (đừng đạp lại)
-- dòng 59 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
-- dòng 137 — Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
-- dòng 542 — Bài học 08–09/09 — form câu, sinh bằng máy, quét kho
-- dòng 571 — Bài học 12/08 — đọc dữ liệu & viết tài liệu
-- dòng 618 — Bài học 12/08 (phần 2) — dựng sản phẩm & bẫy kỹ thuật
-- dòng 705 — Bài học 08/09 — kho chuẩn & làm việc song song 2 phiên
-- dòng 734 — Bài học 08–09/09 — hạ tầng đa phiên & deploy
-- dòng 739 — Bài học 09/09 — BTVN ảnh xuyên 2 repo, tool vẽ, role RO
-- dòng 761 — Bài học 09/09 tối — test đầu vào (luồng "biến mất im lặng")
-- dòng 770 — Bài học 10–13/09 — test đầu vào: phiếu từ kit ChatGPT, form GV, phân công, asset
-- dòng 803 — Bài học 10/09 tối — Claude nhập câu vào kho (HGT PT mặt phẳng)
-- dòng 810 — Bài học 28/09 (đêm) — hàm Postgres chậm do CTE bị inline + trần timeout của app
-- dòng 821 — Bài học 28/09 — thiết kế gamification HS với CEO (spec `spec-thanh-tuu-nhiem-vu.md`)
-- dòng 857 — Bài học 29/09 — trợ lý: báo cáo Sư phạm + tổng kết tuần
-- dòng 928 — Bài học 18–20/09 — quyền EXECUTE của function trên Supabase (sổ tay kiến thức)
-- dòng 942 — Bài học 26/09 — hệ sự kiện (plpgsql · test theo vai · test UI qua ô trình duyệt ẩn)
-- dòng 955 — Bài học 26–27/09 — game chạy thật (sự kiện) + game trong buổi học
-- dòng 1010 — Bài học 20/09 — `format()` trong plpgsql, và lỗi bị UI nuốt
-- dòng 1020 — Bài học 20/09 (phiên 3) — lọc vs xếp hạng, và "đã áp rồi"
-- dòng 1031 — Bài học 16–27/09 — kho Hình học phase Học (cắm bảng mới vào module cũ)
+- dòng 47 — Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
+- dòng 65 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
+- dòng 146 — Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
+- dòng 551 — Bài học 08–09/09 — form câu, sinh bằng máy, quét kho
+- dòng 580 — Bài học 12/08 — đọc dữ liệu & viết tài liệu
+- dòng 627 — Bài học 12/08 (phần 2) — dựng sản phẩm & bẫy kỹ thuật
+- dòng 714 — Bài học 08/09 — kho chuẩn & làm việc song song 2 phiên
+- dòng 743 — Bài học 08–09/09 — hạ tầng đa phiên & deploy
+- dòng 748 — Bài học 09/09 — BTVN ảnh xuyên 2 repo, tool vẽ, role RO
+- dòng 770 — Bài học 09/09 tối — test đầu vào (luồng "biến mất im lặng")
+- dòng 779 — Bài học 10–13/09 — test đầu vào: phiếu từ kit ChatGPT, form GV, phân công, asset
+- dòng 812 — Bài học 10/09 tối — Claude nhập câu vào kho (HGT PT mặt phẳng)
+- dòng 819 — Bài học 28/09 (đêm) — hàm Postgres chậm do CTE bị inline + trần timeout của app
+- dòng 830 — Bài học 28/09 — thiết kế gamification HS với CEO (spec `spec-thanh-tuu-nhiem-vu.md`)
+- dòng 866 — Bài học 29/09 — trợ lý: báo cáo Sư phạm + tổng kết tuần
+- dòng 937 — Bài học 18–20/09 — quyền EXECUTE của function trên Supabase (sổ tay kiến thức)
+- dòng 951 — Bài học 26/09 — hệ sự kiện (plpgsql · test theo vai · test UI qua ô trình duyệt ẩn)
+- dòng 964 — Bài học 26–27/09 — game chạy thật (sự kiện) + game trong buổi học
+- dòng 1019 — Bài học 20/09 — `format()` trong plpgsql, và lỗi bị UI nuốt
+- dòng 1029 — Bài học 20/09 (phiên 3) — lọc vs xếp hạng, và "đã áp rồi"
+- dòng 1040 — Bài học 16–27/09 — kho Hình học phase Học (cắm bảng mới vào module cũ)
 
 ---
 
@@ -44,7 +44,7 @@
 - **Lỗi đã mắc (14/10):** soạn+soát+ghi 14 đề CKI-7 xong mà chỉ báo bằng bảng chữ + tên PNG, Thùy phải đòi lại HTML. Trạm SOÁT đã cắt ảnh cho CEO nhưng KHÔNG ai gom thành một trang — **bước "dựng HTML duyệt" là bước cuối BẮT BUỘC của mọi dây chuyền kho**, ngang hàng "ghi DB". Thiếu HTML = lô chưa xong.
 - **Cũng nhớ:** phản hồi cuối của lượt phải NÊU ĐƯỜNG DẪN file HTML (link bấm được) trước, rồi mới tóm tắt chỗ cần quyết.
 
-### Bài học 10→15/10 — Bổ trợ (đừng đạp lại)
+### Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 
 - **⭐⭐ Đường ống nhiều tầng + MỘT điểm sai ⇒ lỗi hiện ở mọi tầng, nhưng chỉ sửa được ở một chỗ.** Dạng yếu "không đồng bộ bản đồ" (12/10) không nằm ở màn ca của em (đọc thẳng bản đồ, 0 mã chết) mà ở nơi TÍNH dạng yếu (đọc mã dạng CHÉP trên dòng đo). Đo bằng DB thật từng tầng trước khi sửa; đừng sửa chỗ hiển thị.
 - **⭐ Muốn đưa một kiểu nội dung mới vào đường ống sẵn có: thêm NHÁNH vào registry + view giả-bảng cùng cột**, đừng viết lại đường ống. Hình mô hình vào case = 4 view `hmh_*` + 1 dòng ở mỗi hàm registry (`_kho_nhanh_cua_dang`, `_kho_ban_do_tbl`, `_kho_cau_tbl`, `_kho_lt_tbl`, `_kho_muc_do_dang`); KHÔNG đưa vào `_kho_ds_nhanh` thì các vòng đếm kho / tự luyện không thấy. **View đọc bảng có RLS phải `security_invoker = true`** (chủ view = chủ bảng bypass RLS ⇒ học sinh đọc được lời giải).
@@ -55,6 +55,12 @@
 - **Danh sách có khoá tuần tự phải XẾP THEO THỨ TỰ KHOÁ**, không theo lúc tạo — nếu không người đọc thấy "dạng liền trước xong mà vẫn khoá" (dạng độ khó 3 nằm lẫn giữa độ khó 2). Ghi rõ "chờ «dạng nào»".
 - **Phiên dev không đăng nhập được tài khoản HS** (chỉ quick-login Admin; `hs.html` chặn nhân sự). Kiểm màn HS bằng: lấy dữ liệu THẬT của 1 em qua RPC nhân sự (`fn_duoi_tien_trinh(hs)`), vá `supabase.rpc` rồi dựng component độc lập (import module qua Vite dev, `createRoot` từ `/node_modules/.vite/deps/react-dom_client.js?v=…`). Nhớ: vá `supabase.rpc` lần sau sẽ bọc lên bản đã vá ⇒ dữ liệu cũ (đã dính 15/10).
 - **Gợi nhớ "người dùng thật bấm gì":** TA mở ca bù/đuổi ngoài lịch trực; em không nhớ mã HS (⇒ mã phải hiện ở MỌI việc); chị Thùy đọc số không đơn vị là hiểu sai. Mỗi tính năng bổ trợ mới: tự hỏi "TA cầm iPad của em lúc 21h sẽ thấy gì".
+
+- **⭐⭐ Loại trừ "câu đã gặp" ở nơi gọi KHÔNG đủ nếu hàm con có nhánh "lặp lại".** Luyện≠test (17/10): `fn_btyeu_dong_ca` truyền danh sách tránh, nhưng `_btyeu_chon_cau` gọi theo cụm tự lặp trong cụm khi cụm hết ⇒ vẫn bốc câu cũ và nhánh "sang cụm khác" của người gọi không bao giờ chạy (hàm con luôn trả đủ). Đọc ĐỊNH NGHĨA hàm con trước khi tin "đã loại trừ". Đo bằng dữ liệu thật rồi mới đoán nguyên nhân: tưởng do kho mỏng, đo ra 20/32 ca trùng có kho >15 câu.
+- **⭐ Đổi hành vi hàm dùng chung ⇒ THÊM hàm mới, đổi từng nơi gọi; KHÔNG đổi chữ ký/xoá hàm cũ** (`_btyeu_chon_cau` còn retest/bù/đuổi dùng; drop = luật xoá). "Cùng đề" so md5(chữ đề|hình|lựa chọn), không so mã (kho có câu trùng nội dung khác mã) và không so mỗi chữ đề (câu "Cho hình vẽ…" khác hình là khác đề).
+- **Mô phỏng cả ca trong transaction ROLLBACK:** đóng vai HS (`request.jwt.claims` sub = tai_khoan của em) gọi RPC luyện nhiều lượt, chèn `bai_lam`/`bai_lam_cau` trực tiếp để "em trả lời", đổi vai Admin đóng ca, đo trùng; chạy cả hàm CŨ để chắc phép đo bắt được lỗi (14/18 → 0/18) và cả ca dở dang lúc deploy. `update buoi_hoc.ngay/diem_danh` bên trong tx để mượn ca sắp tới — hoàn tác hết.
+- **Mỗi entry app (`main-*.tsx`) tự nạp CSS — thiếu `katex/dist/katex.min.css` thì `MathText` hiện "x2" thay vì x² và KHÔNG báo lỗi** (app TA thiếu từ lâu, khối "Câu trả lời ngắn" bị suốt). Thêm màn dùng `MathText` vào entry mới ⇒ kiểm entry đó đã nạp CSS công thức.
+- **Màn "xem câu" cho nhân sự: đọc BẢN CHỤP đề (`bai_test_cau`), không đọc kho** — kho có thể đã sửa/xoá sau khi em làm; và chỉ lộ đáp án khi người bấm (iPad của TA hay đặt chung bàn với em).
 
 ### Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
 

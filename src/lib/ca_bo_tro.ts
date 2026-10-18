@@ -3,8 +3,8 @@
 // Mọi số liệu tính ở DB (mig 202609241100, §2.0); file này chỉ gọi RPC + gõ kiểu.
 import { supabase } from './supabase'
 
-export type LoaiBoTro = 'duoi' | 'bu' | 'yeu'
-export const LOAI_TEN: Record<LoaiBoTro, string> = { duoi: 'Đuổi', bu: 'Bù', yeu: 'Yếu' }
+export type LoaiBoTro = 'duoi' | 'bu' | 'yeu' | 'hinh'
+export const LOAI_TEN: Record<LoaiBoTro, string> = { duoi: 'Đuổi', bu: 'Bù', yeu: 'Yếu', hinh: 'Hình' }
 
 export type HsTrongCa = {
   bhh_id: string; buoi_hoc_id: string; loai: LoaiBoTro
@@ -30,7 +30,7 @@ export type UngVien = {
 }
 export type UngVienCa = {
   ca: { id: string; don_vi: number; don_vi_dung: number; don_vi_cho: number; con: number; so_hs_xn: number; cho_hs: number; toi_da_hs: number; phut: number }
-  duoi: UngVien[]; bu: UngVien[]; yeu: UngVien[]
+  duoi: UngVien[]; bu: UngVien[]; yeu: UngVien[]; hinh: UngVien[]
 }
 
 export async function tomTatNgay(tu: string, den: string): Promise<NgayTomTat[]> {
@@ -79,7 +79,7 @@ export async function taoCaTay(input: { ngay: string; gio_bat_dau: string; gio_k
 
 // ── TỰ KIỂM HIỂN THỊ (Thùy 30/09: "đừng để trợ giảng lại chạy vào báo không có ca") — mig 202609301510. Hệ đóng vai TA đứng ca + từng HS,
 // gọi đúng hàm app đang gọi, báo ca nào không hiện (kèm lý do: chưa gán TA · TA nghỉ · chưa có tài khoản · thiếu quyền · app không hiện).
-export type LoiHienThi = { buoi_id: string; loai: 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi'; ngay: string; gio: string | null; ta: string | null; hs: string[]; loi: string[] }
+export type LoiHienThi = { buoi_id: string; loai: 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi' | 'bo_tro_hinh'; ngay: string; gio: string | null; ta: string | null; hs: string[]; loi: string[] }
 export async function tuKiemBoTro(den?: string): Promise<{ tu: string; den: string; so_ca: number; loi: LoiHienThi[] }> {
   const { data, error } = await supabase.rpc('fn_bo_tro_tu_kiem', { p_tu: null, p_den: den ?? null })
   if (error) throw error

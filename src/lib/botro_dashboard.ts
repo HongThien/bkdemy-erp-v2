@@ -3,7 +3,7 @@
 // file này chỉ gọi RPC + gõ kiểu.
 import { supabase } from './supabase'
 
-export type LoaiBT = 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi'
+export type LoaiBT = 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi' | 'bo_tro_hinh'
 // go = đã gỡ khỏi lịch (đổi lịch) — KHÔNG tính vào "chốt"
 export type TtLuot = 'hoan_tat' | 'dang_do' | 'vang' | 'khong_dien_ra' | 'qua_han' | 'cho' | 'go'
 export type SoLoai = { chot: number; da_chay: number; hoan_tat: number; dang_do: number; vang: number; khong_dien_ra: number; qua_han: number; cho: number; go: number }

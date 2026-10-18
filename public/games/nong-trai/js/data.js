@@ -86,10 +86,11 @@ I.dong_xu_co = { id: 'dong_xu_co', ten: 'Đồng xu cổ', loai: 'quy', gia: 50 
 
 // ---------- THÚ CƯNG (spec §5.8): mỗi con 1 lần/ngày, +5 thiện cảm, mốc 20/50/100 ----------
 const THU = {
-  // diem = giá mua bằng ĐIỂM HỌC TẬP (chỉ khi chơi theo tài khoản — Thùy 12/10 "mua thú cưng nữa"); capMua = cấp tối thiểu để mua (SAU = chưa bán ở pha này)
-  cho:  { ten: 'Chó', cap: 1, viec: 'Xoa đầu', diem: 15, capMua: 1 },
-  meo:  { ten: 'Mèo', cap: PHA >= 2 ? 5 : SAU, viec: 'Vuốt ve', diem: 30, capMua: PHA >= 2 ? 5 : SAU },
-  chim: { ten: 'Chim', cap: PHA >= 2 ? 7 : SAU, viec: 'Cho ăn', an: 'lua_mi', diem: 45, capMua: PHA >= 2 ? 7 : SAU },   // cho chim ăn tốn 1 lúa mì
+  // DANH MỤC THÚ CƯNG (Thùy 18/10: màn quản lý thú cưng — nuôi thêm các bé khác nhưng PHẢI MUA). Thêm loài = thêm 1 dòng + mô hình trong scene.
+  // diem = giá mua bằng ĐIỂM HỌC TẬP (chơi theo tài khoản) · capMua = cấp nông trại tối thiểu để được mua (SAU = chưa bán) · an = món cần cho bé ăn mỗi lần chơi.
+  cho:  { ten: 'Chó', cap: 1, viec: 'Xoa đầu', diem: 15, capMua: 1, icon: '🐶', mota: 'Canh vườn, đuổi kẻ đến hái trộm' },
+  meo:  { ten: 'Mèo', cap: 5, viec: 'Vuốt ve', diem: 30, capMua: 5, icon: '🐱', mota: 'Thỉnh thoảng tha quà về nhà' },
+  chim: { ten: 'Chim', cap: 7, viec: 'Cho ăn', an: 'lua_mi', diem: 45, capMua: 7, icon: '🐦', mota: 'Bắt sâu giúp em mỗi sáng' },   // cho chim ăn tốn 1 lúa mì
 };
 
 // ---------- CẤP NÔNG TRẠI (điểm nhà nông — KHÔNG gọi EXP để khỏi lẫn với EXP ra xu) ----------

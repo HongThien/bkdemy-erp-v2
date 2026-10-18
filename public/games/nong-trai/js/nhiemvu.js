@@ -71,9 +71,9 @@ const MEO = [
   { id: 'mo_o', cap: D.LUAT.oMo[0].cap, muc: s => ({ loai: 'ruong', i: s.oMo }), loi: 'Em mở được Ô RUỘNG MỚI rồi! Chạm vào ô đất có biển, trả bằng điểm học tập. Điểm có được khi làm bài trên app.' },
   { id: 'ga', cap: D.VAT.ga.cap, muc: () => ({ loai: 'chuong', id: 'ga' }), loi: 'Có CHUỒNG GÀ rồi! Mua gà ở chuồng, cho gà ăn lúa mì hoặc ngô, sáng mai gà đẻ trứng — thỉnh thoảng có cả phân bón.' },
   { id: 'lo', cap: D.LO_CAP, muc: () => ({ loai: 'lo' }), loi: 'LÒ BÁNH mở rồi! Mỗi ngày nướng 1 mẻ, sáng mai lấy bánh. Bánh bán được giá hơn nông sản.' },
-  { id: 'meo', cap: D.THU.meo.cap, muc: () => ({ loai: 'thu', id: 'meo' }), loi: 'Một bé MÈO đến ở nhà em! Vuốt ve mỗi ngày — mèo quý em thì thỉnh thoảng tha quà về.' },
+  { id: 'meo', cap: D.THU.meo.cap, muc: () => '#btnThuCung', loi: 'Em đã có thể nuôi MÈO! Mở THÚ CƯNG để mua mèo — vuốt ve mỗi ngày, mèo quý em thì thỉnh thoảng tha quà về.' },
   { id: 'bo', cap: D.VAT.bo.cap, muc: () => ({ loai: 'chuong', id: 'bo' }), loi: 'Có BÃI CỎ BÒ rồi! Bò ăn ngô hoặc bí, sáng mai cho sữa. Sữa bán được giá cao.' },
-  { id: 'chim', cap: D.THU.chim.cap, muc: () => ({ loai: 'thu', id: 'chim' }), loi: 'CHIM đến cột ăn rồi! Cho chim ăn 1 lúa mì mỗi ngày — chim quý em thì sáng nào cũng bắt sâu giúp.' },
+  { id: 'chim', cap: D.THU.chim.cap, muc: () => '#btnThuCung', loi: 'Em đã có thể nuôi CHIM! Mở THÚ CƯNG để mua chim — cho ăn 1 lúa mì mỗi ngày, chim quý em thì sáng nào cũng bắt sâu giúp.' },
 ];
 function meoKe(s) { if (hdBuoc(s)) return null; s.meo = s.meo || {}; const m = MEO.find(m => m.cap <= s.cap && !s.meo[m.id]); return m ? Object.assign({}, m, { muc: m.muc(s) }) : null; }
 function meoXong(s, id) { s.meo = s.meo || {}; s.meo[id] = 1; }

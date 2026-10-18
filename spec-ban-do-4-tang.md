@@ -20,6 +20,10 @@
 | **B4 Duyệt** | **Học thuật** | Duyệt theo từng dạng bài; câu không chắc hoặc lệch hẳn nhãn cũ lên trước | Dùng bình thường |
 | **B5 Chuyển** | Claude | Sao lưu → áp 1 lần (nhóm mới **nhận lại mã nhóm cũ** tương ứng — đối ứng suy từ nhãn câu; nhóm cũ hết vai ⇒ `xoa_at` + `gop_vao`) → §10 mastery đi theo câu → báo cáo trước/sau → mở lại | **Dừng toàn bộ** |
 
+> **⭐ CEO 17/10 — B5 KHÔNG đổi mã:** *"logic không đổi mã là đi theo câu hỏi thôi, vì mọi dữ liệu đánh giá trỏ về câu hỏi; mã chủ yếu để tạo ra sự duy nhất."*
+> ⇒ Bỏ ý "nhóm mới nhận lại mã nhóm cũ" ở dòng B5 trên. Nhóm/dạng bài giữ mã `NNB…`/`NDB…` từ lúc sinh; mastery làm lại theo câu
+> (nhóm của lần đo = nhóm hiện tại của câu). Giáo trình mới bám mã này (`spec-builder-ban-do-moi.md` A0).
+
 - **Không màn chia đôi cũ|mới** (CEO 08/10): CEO tự chép lý thuyết vì đằng nào cũng phải review.
 - **Câu về sau:** câu nào chưa có dạng bài = việc trong hàng đợi học thuật (luật bất biến, không bảng việc); câu mới vào kho đi qua cùng bộ khớp B3.
 - **Thứ tự** (dự kiến): soạn khối nào khớp khối đó, **K6 trước** (đã có cụm người gán ⇒ đo được độ chính xác khớp trước khi chạy ~15 nghìn câu gốc). Chuyển (B5) vẫn **1 lần ở cuối**.

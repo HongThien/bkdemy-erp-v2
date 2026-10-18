@@ -543,8 +543,10 @@ async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise
   return { daDuyet, reset }
 }
 
-export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
+// `giu` (17/10, Chốt tuần): lấy thêm chuyên đề của các em ĐANG THEO DÕI ở lớp này (kể cả khi không còn là candidate) để ghi ảnh chụp tuần.
+export async function listCandidatesLop(lopId: string, giu?: { hsIds: Set<string>; out: Map<string, ChuyenDeStat[]> }): Promise<Candidate[]> {
   const sheets = await getStatSheetLop(lopId)
+  if (giu) for (const s of sheets) if (giu.hsIds.has(s.hoc_sinh_id)) giu.out.set(s.hoc_sinh_id, s.chuyenDes)
   const { daDuyet, reset } = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon)
     : { daDuyet: new Map<string, string>(), reset: new Set<string>() }
   const out: Candidate[] = []

@@ -587,7 +587,7 @@ function capNhat(s) {
     });
     // mèo tha quà
     if (thuMo(s, 'meo') && bam(s.hat + '|meo|' + d) < LUAT.meoQua(s.thu.meo.tc)) {
-      const tts = Object.keys(TRANG_TRI), id = bam(s.hat + '|meoL|' + d) < 0.7 ? 'phan_bon' : tts[Math.floor(bam(s.hat + '|meoT|' + d) * tts.length)];
+      const tts = Object.keys(TRANG_TRI), id = (bam(s.hat + '|meoL|' + d) < 0.7 || D.PHA < 2) ? 'phan_bon' : tts[Math.floor(bam(s.hat + '|meoT|' + d) * tts.length)];
       them(s, id, 1); thuTin(s, d, 'meo', 'qua', null, id, 1);
     }
   }

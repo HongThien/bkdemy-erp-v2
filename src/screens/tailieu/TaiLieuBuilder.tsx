@@ -23,7 +23,7 @@ import { useStore } from '../../store/useStore'
 export { KhoPicker } // re-export — ETScreen/MTScreen/BTScreen import KhoPicker từ đây (giữ nguyên, khỏi sửa 3 nơi)
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
-const MAU_PRESET = [['#E91E8C', 'Hồng'], ['#F7941E', 'Cam'], ['#2D9CDB', 'Xanh dương'], ['#16a34a', 'Xanh lá'], ['#7c3aed', 'Tím']]
+export const MAU_PRESET = [['#E91E8C', 'Hồng'], ['#F7941E', 'Cam'], ['#2D9CDB', 'Xanh dương'], ['#16a34a', 'Xanh lá'], ['#7c3aed', 'Tím']]
 
 // Gom phan → BUỔI (cho builder): giữ marker + ghép dang↔btvn theo ma_dang. Phan rời (data cũ) bỏ qua.
 type BuoiUI = { marker: PhanResolved; dangs: PhanResolved[]; btvnByMa: Record<string, PhanResolved> }
@@ -360,7 +360,7 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
 
 // Áp số dòng cho CẢ dạng cùng lúc (Thùy 07-16) — gõ số rồi Enter/blur mới ghi (tránh ghi đè N câu mỗi
 // keystroke). Ghi xong vẫn sửa riêng từng câu bình thường (áp cả dạng chỉ là 1 lần ghi đè, không khoá).
-function ApplyLinesAll({ maCaus, onApply }: { maCaus: string[]; onApply: (n: number) => void }) {
+export function ApplyLinesAll({ maCaus, onApply }: { maCaus: string[]; onApply: (n: number) => void }) {
   const [val, setVal] = useState('')
   const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(50, +val || 0))); setVal('') }
   return (
@@ -375,7 +375,7 @@ function ApplyLinesAll({ maCaus, onApply }: { maCaus: string[]; onApply: (n: num
 
 // Số cột khi in — RIÊNG TỪNG CÂU. Mặc định 1 cột; tích = 2 cột. Các câu tích 2 cột LIỀN NHAU tự xếp cạnh
 // nhau (mỗi câu 1 cột), cách xa thì không ghép; câu lẻ = nửa trang. Tối đa 2 cột (câu ngắn cho tiết kiệm giấy).
-function ColSel({ value, onChange }: { value: number; onChange: (n: number) => void }) {
+export function ColSel({ value, onChange }: { value: number; onChange: (n: number) => void }) {
   return (
     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
       <input type="checkbox" checked={value === 2} onChange={(e) => onChange(e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
@@ -385,7 +385,7 @@ function ColSel({ value, onChange }: { value: number; onChange: (n: number) => v
 }
 
 // Badge mã câu — chỉ hiện khi SOẠN (đối chiếu với Tìm câu), KHÔNG lên bản in HS.
-function MaCau({ ma }: { ma: string }) {
+export function MaCau({ ma }: { ma: string }) {
   return <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
 }
 
@@ -415,7 +415,7 @@ function CauRow({ no, c, col, onCol, onRemove, cheDo, onCheDo }: { no: number; c
 
 // Ảnh xem trước trong dòng câu: chưa đặt cỡ ⇒ thu nhỏ như cũ (max-h-40); đã đặt ⇒ hiện ĐÚNG bề rộng in (mm, 96 dpi) để thấy ngay
 //   tỉ lệ (bị cột builder cắt thì co theo khung — chỉ để xem). Câu đang ẩn hình khi in ⇒ mờ đi.
-function AnhXem({ ma, url, cheDo }: { ma: string; url: string; cheDo?: CheDoHinh }) {
+export function AnhXem({ ma, url, cheDo }: { ma: string; url: string; cheDo?: CheDoHinh }) {
   const mm = useContext(AnhMmEditCtx).mm[ma]
   const mo = cheDo === 'khong' ? ' opacity-30' : ''
   return mm > 0
@@ -426,7 +426,7 @@ function AnhXem({ ma, url, cheDo }: { ma: string; url: string; cheDo?: CheDoHinh
 // ⭐ 12/10 (Thùy): cỡ ảnh đề khi IN = % ẢNH GỐC (100% = cỡ gốc: PNG có DPI thì theo DPI, còn lại theo pixel 96 dpi).
 //   Để trống = tự động (vừa cột, tối đa 60mm — như cũ). Lưu cả % (hiển thị) lẫn mm (in, không phải đoán lúc dựng trang).
 //   Ảnh cầm thước (hinh-doan-thang-thuoc.mjs, 600 dpi) bấm 100% = ĐÚNG cm. Ghi khi rời ô / Enter, không ghi từng phím.
-function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
+export function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
   const { mm, pct, set } = useContext(AnhMmEditCtx)
   const [goc, setGoc] = useState<number | null>(null)
   const [txt, setTxt] = useState('')
@@ -462,7 +462,7 @@ function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
 
 // ⭐ 21/09 (CEO): nút xoay 3 chế độ IN hình (chỉ nhánh 'hinh_hoc', chỉ câu có anh_de).
 //   Xoay vòng: hien → o_trong → khong → hien (cheDoKe từ lib/kho/hinhGiaoTrinh — dùng chung với builder Hình Luyện).
-function CheDoHinhBtn({ cur, onChange }: { cur: CheDoHinh; onChange: (v: CheDoHinh) => void }) {
+export function CheDoHinhBtn({ cur, onChange }: { cur: CheDoHinh; onChange: (v: CheDoHinh) => void }) {
   const { baChe } = useContext(AnhMmEditCtx)
   // 12/10: nhánh khác Hình học Bài chỉ có hiện ↔ ẩn (không có 'ô trống' cho HS vẽ).
   const ke = (c: CheDoHinh): CheDoHinh => (baChe ? cheDoKe(c) : c === 'khong' ? 'hien' : 'khong')
