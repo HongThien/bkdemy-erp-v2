@@ -13,7 +13,7 @@ export type BdmDangCuRef = { ma: string; ten: string }
 export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_ly_thuyet: boolean; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
 export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[] }
 export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; dang_cu: BdmDangCuRef[]; chua_gan: number; nhom: BdmNhom[] }
-export type BdmChuDe = { id: string; ten: string; thu_tu: number; nhanh: BdmNhanh; o: BdmO[] }
+export type BdmChuDe = { id: string; ten: string; thu_tu: number; nhanh: BdmNhanh; so_ds?: number; o: BdmO[] }
 export type BdmChuyenDe = { id: string; ten: string; so_chu_de: number; khoi: string[] }
 // tong: tổng hợp khối (dạng cũ CỦA khối) — khối xong khi dang_cu_chua_gan = 0 và cau_chua_gan = 0
 export type BdmTong = { dang_cu: number; dang_cu_chua_gan: number; cau_dang_cu_chua_gan: number; cau: number; cau_chua_gan: number }
@@ -290,7 +290,7 @@ export type KhoCauRow = {
   anh_de: string | null; anh_dap_an: string | null; da_duyet: boolean; kho_chuan: boolean; kiem_may: string | null
   nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
 }
-export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
+export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
   const { data, error } = await supabase.rpc('fn_bdm_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
   if (error) loi(error)
   return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
