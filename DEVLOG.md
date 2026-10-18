@@ -38264,3 +38264,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Kết quả (đọc lại bằng kết nối riêng):** 185 câu mới (tự luận 62 · TLN 74 · trắc nghiệm 28 · Đ/S 21), da_duyet=false, 145 có anh_de, 73 có anh_dap_an, ảnh HTTP 200. 1 câu trùng bản đã có (T1120000002566). **21 câu Đ/S vào `dai_bdm_kho_ds` NCD00095** (không vào kho dạng) + 84 mệnh đề đồng bộ `dai_cau_menh_de`.
 - **Dừng 18 câu (bước tách không chắc):** 8 câu có công thức đọc hỏng (EQ-FAILED) · 10 câu E1/E2/E3 nguồn không có dòng "Đáp án" (E3 76–98 còn thiếu cả chữ "Lời giải"). Báo cáo: `reports/nbv-12-18-18-cau-chua-nhap.html`.
 - **Chưa làm:** gán dạng (185 câu nằm dạng chờ — chạy B3 sau khi Thùy muốn); dạng bài từng ý của 21 câu Đ/S; kiểm đáp số độc lập các câu mới (đáp án lấy từ lời giải của nguồn, chưa kiểm máy).
+
+## 18/10 — 4 bài "thể tích hình có thiết diện" → dạng cũ T112040403 (Thùy 18/10)
+- **Thùy:** đẩy các bài trong `Documents\thể tích hình có thiết diện.pdf` vào dạng «Thể tích vật thể tính theo mặt cắt vuông góc trục hoành» (bản đồ cũ).
+- **Phát hiện:** cả 4 bài ĐÃ CÓ trong kho ở dạng chờ T112000000 (nhập 18/10 từ NBV 12-18 E3/F + 1 đề Đông Đô) ⇒ KHÔNG nhập trùng. Lều = T1120000002698 · cốc nghiêng = T1120000001262 · Sport Hub = T1120000002741 · giao hai ¼ trụ = T1120000002743.
+- **Làm (`kho-rules/dai/lo/k12-the-tich-thiet-dien/ghi.mjs`, ROLLBACK rồi --ghi):** đổi dạng 4 câu → T112040403 (mã bất biến, kho_doi_dang_log 4 dòng) · điền đáp án còn thiếu đã tự giải kiểm (240 · ≈115586 m³ · 2a³/3) · …2743 sửa 3 ký hiệu Word sót `[[sym:Symbol:F0B7]]` → "•". Lời giải/hình/da_duyet giữ nguyên (chưa duyệt). Dạng giờ 17 câu. Sổ `docs/hinh-3d/so-theo-doi.md`: điền mã câu cho mô hình 43/44/47.
+- **Sai rồi sửa:** báo nhầm "NBV mất chữ s" — do chính truy vấn của tôi (`regexp_replace(...,'s+')` vì thoát `\s` hỏng trong `node -e`); kiểm lại 0/185 câu.
