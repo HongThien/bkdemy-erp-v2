@@ -1,0 +1,522 @@
+[
+ {
+  "ma": "T8D1C1.1@p177",
+  "noi_dung": "Chứng minh rằng: $(x-1)(x-2)(x-3)(x-4)\\ge-1$."
+ },
+ {
+  "ma": "T8D1C2.1@p178",
+  "noi_dung": "Cho các số dương $a$ và $b$ thỏa mãn điều kiện $a+b=1$. Chứng minh rằng $\\left(1+\\dfrac{1}{a}\\right)\\left(1+\\dfrac{1}{b}\\right)\\ge9$."
+ },
+ {
+  "ma": "T8D1C2.2@p178",
+  "noi_dung": "Cho $a+b>1$. Chứng minh rằng $a^4+b^4>\\dfrac{1}{8}$."
+ },
+ {
+  "ma": "T8D1C2.3@p179",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{a^2}{b^2}+\\dfrac{b^2}{c^2}+\\dfrac{c^2}{a^2}\\ge\\dfrac{c}{b}+\\dfrac{b}{a}+\\dfrac{a}{c}$."
+ },
+ {
+  "ma": "T8D1C2.4@p179",
+  "noi_dung": "Chứng minh các bất đẳng thức với $a,b,c$ là các số dương:\n\na) $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)\\ge9$;\n\nb) $\\dfrac{a}{b+c}+\\dfrac{b}{c+a}+\\dfrac{c}{a+b}\\ge1{,}5$."
+ },
+ {
+  "ma": "T8D1C2.5@p180",
+  "noi_dung": "Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $\\dfrac{1}{a+b-c}+\\dfrac{1}{b+c-a}+\\dfrac{1}{c+a-b}\\ge\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$."
+ },
+ {
+  "ma": "T8D1C2.6@p180",
+  "noi_dung": "Cho $x\\ge0$, $y\\ge0$, $z\\ge0$. Chứng minh rằng: $(x+y)(y+z)(z+x)\\ge8xyz$."
+ },
+ {
+  "ma": "T8D1C2.7a@p180",
+  "noi_dung": "Chứng minh rằng với mọi giá trị của biến $x$, đa thức sau đây nhận giá trị dương: $x^2-6x+10$."
+ },
+ {
+  "ma": "T8D1C2.7b@p180",
+  "noi_dung": "Chứng minh rằng với mọi giá trị của biến $x$, đa thức sau đây nhận giá trị dương: $x^2+x+1$."
+ },
+ {
+  "ma": "T8D1C2.7c@p180",
+  "noi_dung": "Chứng minh rằng với mọi giá trị của biến $x$, đa thức sau đây nhận giá trị dương: $(x-3)(x-5)+4$."
+ },
+ {
+  "ma": "T8D1C2.8@p181",
+  "noi_dung": "Chứng minh rằng với mọi $x\\ge0$, $y\\ge0$: $\\left(\\dfrac{x+y}{2}\\right)^2\\ge xy$."
+ },
+ {
+  "ma": "T8D1C2.9@p181",
+  "noi_dung": "Cho $a>b>0$, $c>d>0$. Chứng minh rằng $ac>bd$."
+ },
+ {
+  "ma": "T8D1C2.10@p181",
+  "noi_dung": "Chứng minh rằng: $\\dfrac{1}{2^2}+\\dfrac{1}{3^2}+\\dots+\\dfrac{1}{n^2}<1$ với $n\\in\\mathbb N$, $n>1$."
+ },
+ {
+  "ma": "T8D1C2.11@p181",
+  "noi_dung": "(Thi vô địch toán lớp 9, Liên Xô 1990) Chứng minh rằng với mọi số $t$ ta đều có: $t^4-t+\\dfrac{1}{2}>0$."
+ },
+ {
+  "ma": "T8D1C2.12a@p182",
+  "noi_dung": "Cho $a,b,c,d$ là các số nguyên thỏa $a\\le b\\le c\\le d$ và $a+d=b+c$. Chứng minh rằng $a^2+b^2+c^2+d^2$ là tổng của ba số chính phương."
+ },
+ {
+  "ma": "T8D1C2.12b@p182",
+  "noi_dung": "Cho $a,b,c,d$ là các số nguyên thỏa $a\\le b\\le c\\le d$ và $a+d=b+c$. Chứng minh rằng $bc\\ge ad$."
+ },
+ {
+  "ma": "T8D1C2.13@p182",
+  "noi_dung": "Cho $a,b$ là hai số thực thỏa $a^3+b^3=2$. Chứng minh rằng $0<a+b\\le2$."
+ },
+ {
+  "ma": "T8D1C2.14@p182",
+  "noi_dung": "Chứng minh với mọi số thực $x,y,z$ luôn có: $\\lvert x+y-z\\rvert+\\lvert y+z-x\\rvert+\\lvert z+x-y\\rvert+\\lvert x+y+z\\rvert\\ge2\\left(\\lvert x\\rvert+\\lvert y\\rvert+\\lvert z\\rvert\\right)$ $(*)$."
+ },
+ {
+  "ma": "T8D1C2.15@p183",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{a^3+b^3}{2ab}+\\dfrac{b^3+c^3}{2bc}+\\dfrac{c^3+a^3}{2ca}\\ge a+b+c$."
+ },
+ {
+  "ma": "T8D1C2.16@p183",
+  "noi_dung": "Chứng minh rằng: $\\dfrac{1}{5}+\\dfrac{1}{13}+\\dots+\\dfrac{1}{2002^2+2003^2}<\\dfrac{1}{2}$."
+ },
+ {
+  "ma": "T8D1C2.17@p184",
+  "noi_dung": "Chứng minh rằng với mọi $x,y\\neq0$, ta có: $\\dfrac{x^2}{y^2}+\\dfrac{y^2}{x^2}+4\\ge3\\left(\\dfrac{x}{y}+\\dfrac{y}{x}\\right)$."
+ },
+ {
+  "ma": "T8D1C2.18@p184",
+  "noi_dung": "Chứng minh bất đẳng thức: $a^3+b^3\\ge a^2b+ab^2$ với $a>0$, $b>0$."
+ },
+ {
+  "ma": "T8D1C2.19@p184",
+  "noi_dung": "Chứng minh rằng $a,b,c$ là các số dương bất kì, ta có: $\\dfrac{a}{b+c}+\\dfrac{b}{c+a}+\\dfrac{c}{a+b}\\ge\\dfrac{3}{2}$."
+ },
+ {
+  "ma": "T8D1C2.20@p184",
+  "noi_dung": "Chứng minh rằng ta có: $\\dfrac{1}{p-a}+\\dfrac{1}{p-b}+\\dfrac{1}{p-c}\\ge2\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)$ với $a,b,c$ là ba cạnh và $p$ là nửa chu vi của một tam giác."
+ },
+ {
+  "ma": "T8D1C2.21@p185",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng $\\dfrac{a^3}{b}+\\dfrac{b^3}{c}+\\dfrac{c^3}{a}\\ge ab+bc+ca$."
+ },
+ {
+  "ma": "T8D1C2.22a@p185",
+  "noi_dung": "Chứng minh bất đẳng thức: $a^2+b^2+c^2\\ge ab+bc+ca$ với mọi $a,b,c$."
+ },
+ {
+  "ma": "T8D1C2.22b@p185",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{a^8+b^8+c^8}{a^3b^3c^3}\\ge\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$ ($a>0,b>0,c>0$)."
+ },
+ {
+  "ma": "T8D1C2.22c@p185",
+  "noi_dung": "Chứng minh bất đẳng thức: $a^2+b^2+c^2+d^2+e^2\\ge a(b+c+d+e)$ với mọi $a,b,c,d,e$."
+ },
+ {
+  "ma": "T8D1C2.23@p186",
+  "noi_dung": "Cho các số dương $a,b,c$, chứng minh rằng: $1<\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+a}<2$."
+ },
+ {
+  "ma": "T8D1C2.24@p186",
+  "noi_dung": "Chứng minh rằng với $a\\ge b\\ge1$: $\\dfrac{1}{1+a^2}+\\dfrac{1}{1+b^2}\\ge\\dfrac{2}{1+ab}$ $(*)$."
+ },
+ {
+  "ma": "T8D1C3.1@p186",
+  "noi_dung": "Cho $a^2+b^2\\le2$. Chứng minh rằng $a+b\\le2$."
+ },
+ {
+  "ma": "T8D1C4.1@p187",
+  "noi_dung": "Cho $a+b+c=1$. Chứng minh rằng: $a^2+b^2+c^2\\ge\\dfrac13$."
+ },
+ {
+  "ma": "T8D1C4.2@p187",
+  "noi_dung": "Chứng minh bất đẳng thức: $abc\\ge(b+c-a)(a+c-b)(a+b-c)$ với $a,b,c$ là độ dài ba cạnh của một tam giác."
+ },
+ {
+  "ma": "T8D1C4.3@p188",
+  "noi_dung": "Chứng minh rằng: $x^3+y^3+z^3-3xyz=(x+y+z)(x^2+y^2+z^2-xy-yz-zx)$ với mọi số thực $x,y,z$. Suy ra với $a,b,c$ là các số dương ta luôn có: $a+b+c\\ge3\\sqrt[3]{abc}$."
+ },
+ {
+  "ma": "T8D1C4.4@p188",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng: $(a-1)(a-3)(a-4)(a-6)+10>0$; $\\forall a$."
+ },
+ {
+  "ma": "T8D1C4.5@p188",
+  "noi_dung": "Cho $x,y$ là hai số thực khác $0$. Chứng minh: $\\dfrac{x^2}{y^2}+\\dfrac{y^2}{x^2}+4\\ge3\\left(\\dfrac{x}{y}+\\dfrac{y}{x}\\right)$."
+ },
+ {
+  "ma": "T8D1C5.1@p189",
+  "noi_dung": "Chứng minh với mọi số thực $x,y,z,t$ ta luôn có bất đẳng thức sau: $x^2+y^2+z^2+t^2\\ge x(y+z+t)$. Đẳng thức xảy ra khi nào?"
+ },
+ {
+  "ma": "T8D1C5.2@p189",
+  "noi_dung": "Chứng minh rằng: $\\dfrac{a^2+b^2+c^2}{3}\\ge\\left(\\dfrac{a+b+c}{3}\\right)^2$."
+ },
+ {
+  "ma": "T8D1C5.3@p189",
+  "noi_dung": "(Đề TS lớp 10 chuyên Lê Hồng Phong – TPHCM 2003-2004) Cho $x>0$; $y>0$; $x+y\\le1$. Chứng minh $\\dfrac{1}{x^2+xy}+\\dfrac{1}{y^2+xy}\\ge4$."
+ },
+ {
+  "ma": "T8D1C5.4@p190",
+  "noi_dung": "Cho $0<a<b<c<d$. Chứng minh $(b+c)\\left(\\dfrac1b+\\dfrac1c\\right)<\\dfrac{(a+d)^2}{ad}$."
+ },
+ {
+  "ma": "T8D1C5.5a@p190",
+  "noi_dung": "Chứng minh rằng: $x^2+y^2\\ge\\dfrac{(x+y)^2}{2}$."
+ },
+ {
+  "ma": "T8D1C5.5b@p190",
+  "noi_dung": "Chứng minh rằng: $x^4+y^4\\ge\\dfrac{(x+y)^4}{8}$."
+ },
+ {
+  "ma": "T8D1C6.1@p191",
+  "noi_dung": "Chứng minh bất đẳng thức $abc\\ge(b+c-a)(a+c-b)(a+b-c)$ với $a$, $b$, $c$ là các số dương."
+ },
+ {
+  "ma": "T8D1C7.1@p191",
+  "noi_dung": "Chứng minh rằng: $x^8-x^7+x^2-x+1>0$."
+ },
+ {
+  "ma": "T8D2C1.1a@p192",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=2x^2-8x+1$."
+ },
+ {
+  "ma": "T8D2C1.1b@p192",
+  "noi_dung": "Tìm giá trị lớn nhất của $B=-5x^2-4x+1$."
+ },
+ {
+  "ma": "T8D2C1.1c@p192",
+  "noi_dung": "Cho tam thức bậc hai $P=ax^2+bx+c$.\n\nTìm giá trị nhỏ nhất của $P$ nếu $a>0$.\n\nTìm giá trị lớn nhất của $P$ nếu $a<0$."
+ },
+ {
+  "ma": "T8D2C1.2a@p192",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức $(x-1)(x+2)(x+3)(x+6)$."
+ },
+ {
+  "ma": "T8D2C1.2b@p192",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức $x^2-4x+y^2-8y+6$."
+ },
+ {
+  "ma": "T8D2C1.3a@p193",
+  "noi_dung": "Phân tích đa thức $P(x)$ thành nhân tử: $P(x)=3x^2-27x+54$.\n\nVới giá trị nào của $x$ thì $P(x)$ nhận giá trị không âm?"
+ },
+ {
+  "ma": "T8D2C1.3b@p193",
+  "noi_dung": "Tìm $m$ và $p$ sao cho biểu thức $A=m^2-4mp+5p^2+10m-22p+28$ đạt giá trị nhỏ nhất. Tính giá trị ấy."
+ },
+ {
+  "ma": "T8D2C1.4@p193",
+  "noi_dung": "Tìm giá trị nhỏ nhất của hàm số: $y=2x^2-x+5$."
+ },
+ {
+  "ma": "T8D2C1.5@p193",
+  "noi_dung": "Cho $x$, $y$ là hai số thực thỏa mãn $(x+y)^2+7(x+y)+y^2+10=0$. Tìm giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $P=x+y+1$."
+ },
+ {
+  "ma": "T8D2C1.6@p194",
+  "noi_dung": "Cho $a^3+b^3=2$. Tìm giá trị lớn nhất của biểu thức $A=a+b$."
+ },
+ {
+  "ma": "T8D2C1.7@p194",
+  "noi_dung": "Cho biểu thức $M=x^2-5x+y^2+xy-4y+2014$. Với giá trị nào của $x$, $y$ thì $M$ đạt giá trị nhỏ nhất? Tìm giá trị nhỏ nhất đó."
+ },
+ {
+  "ma": "T8D2C2.1@p194",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=x^3+y^3+xy$ biết rằng $x+y=1$."
+ },
+ {
+  "ma": "T8D2C2.2@p195",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức: $A=(x-1)^2+(x-3)^2$."
+ },
+ {
+  "ma": "T8D2C2.3@p195",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=x(x-3)(x-4)(x-7)$."
+ },
+ {
+  "ma": "T8D2C2.4a@p195",
+  "noi_dung": "Cho $x+y+z=3$. Tìm giá trị nhỏ nhất của $A=x^2+y^2+z^2$."
+ },
+ {
+  "ma": "T8D2C2.4b@p195",
+  "noi_dung": "Cho $x+y+z=3$. Tìm giá trị lớn nhất của $B=xy+yz+zx$."
+ },
+ {
+  "ma": "T8D2C2.4c@p195",
+  "noi_dung": "Cho $x+y+z=3$. Tìm giá trị nhỏ nhất của $A+B$, trong đó $A=x^2+y^2+z^2$ và $B=xy+yz+zx$."
+ },
+ {
+  "ma": "T8D2C3.1@p196",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=\\dfrac{2}{6x-5-9x^2}$."
+ },
+ {
+  "ma": "T8D2C3.2@p197",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=\\dfrac{3x^2-8x+6}{x^2-2x+1}$."
+ },
+ {
+  "ma": "T8D2C3.3@p197",
+  "noi_dung": "Tìm giá trị của $x$ để biểu thức $P=\\dfrac{x^2+x+1}{x^2+2x+1}$ $(x\\neq-1)$ đạt giá trị nhỏ nhất."
+ },
+ {
+  "ma": "T8D2C3.4@p198",
+  "noi_dung": "Tìm giá trị lớn nhất, giá trị nhỏ nhất của: $A=\\dfrac{3-4x}{x^2+1}$."
+ },
+ {
+  "ma": "T8D2C3.5@p198",
+  "noi_dung": "Tìm giá trị lớn nhất, giá trị nhỏ nhất của $A=\\dfrac{x^4+1}{(x^2+1)^2}$."
+ },
+ {
+  "ma": "T8D2C3.6@p199",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức $B=\\dfrac{x^2-2x+2006}{x^2}$ (với $x\\neq0$)."
+ },
+ {
+  "ma": "T8D2C3.7a@p199",
+  "noi_dung": "Tìm giá trị lớn nhất của hàm số $y=-2x^2+x-1$."
+ },
+ {
+  "ma": "T8D2C3.7b@p199",
+  "noi_dung": "Tìm giá trị lớn nhất của hàm số $y=\\dfrac{x+1}{x^3-x^2+2x+4}$."
+ },
+ {
+  "ma": "T8D2C3.8a@p200",
+  "noi_dung": "Tìm giá trị nhỏ nhất của hàm số $y=\\dfrac{x^2}{4}+x-1$."
+ },
+ {
+  "ma": "T8D2C3.8b@p200",
+  "noi_dung": "Tìm giá trị nhỏ nhất của hàm số $y=\\dfrac{x^2+2x+2}{x^2+2x+3}$."
+ },
+ {
+  "ma": "T8D2C3.9@p200",
+  "noi_dung": "Tìm giá trị nhỏ nhất của hàm số: $y=\\dfrac{x^2+2x-1}{2x^2+4x+9}$."
+ },
+ {
+  "ma": "T8D2C3.10@p200",
+  "noi_dung": "Tìm giá trị lớn nhất của $P=\\dfrac{x^2}{1+x^4}$."
+ },
+ {
+  "ma": "T8D2C3.11@p201",
+  "noi_dung": "Tìm giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $P=\\dfrac{x^2+1}{x^2-x+1}$."
+ },
+ {
+  "ma": "T8D2C3.12@p201",
+  "noi_dung": "Cho $x>0$, hãy tìm giá trị nhỏ nhất của biểu thức:\n$P=\\dfrac{\\left(x+\\dfrac{1}{x}\\right)^6-\\left(x^6+\\dfrac{1}{x^6}\\right)-2}{\\left(x+\\dfrac{1}{x}\\right)^3+x^3+\\dfrac{1}{x^3}}$"
+ },
+ {
+  "ma": "T8D2C4.1@p202",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=(3x-1)^2-4\\lvert3x-1\\rvert+5$."
+ },
+ {
+  "ma": "T8D2C4.2@p202",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $B=\\lvert x-2\\rvert+\\lvert x-3\\rvert$."
+ },
+ {
+  "ma": "T8D2C4.3@p202",
+  "noi_dung": "Tìm giá trị nhỏ nhất của $A=\\lvert x-1\\rvert+\\lvert x-7\\rvert+\\lvert x-9\\rvert$."
+ },
+ {
+  "ma": "T8D2C4.4@p202",
+  "noi_dung": "Tìm giá trị nhỏ nhất của hàm số $y=\\dfrac{1}{2}\\lvert x+3\\rvert-4$."
+ },
+ {
+  "ma": "T8D2C5.1@p203",
+  "noi_dung": "Chứng minh: $(ab+cd)^2\\le(a^2+c^2)(b^2+d^2)$ (bất đẳng thức Bu-nhi-a-cốp-xki).\n\nÁp dụng: Cho $x+4y=5$. Tìm giá trị nhỏ nhất của biểu thức $M=4x^2+4y^2$."
+ },
+ {
+  "ma": "T8D2C5.2@p203",
+  "noi_dung": "Cho $x^2+y^2=52$. Tìm giá trị lớn nhất của $A=2x+3y$."
+ },
+ {
+  "ma": "T8D2C6.1@p204",
+  "noi_dung": "Tìm giá trị lớn nhất của $A=(x^2-3x+1)(21+3x-x^2)$."
+ },
+ {
+  "ma": "T8D2C6.2@p204",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức $B=\\dfrac{16x^2+4x+1}{2x}$ với $x>0$."
+ },
+ {
+  "ma": "T8D2C6.3@p204",
+  "noi_dung": "Tìm giá trị lớn nhất của $A=ab+bc+cd$, biết rằng $a,b,c,d$ là các số không âm có tổng bằng $1$."
+ },
+ {
+  "ma": "T8D2C6.4@p205",
+  "noi_dung": "Tìm giá trị lớn nhất của biểu thức $A=\\dfrac{y}{5-(x+y)}$ với $x,y$ là các số tự nhiên."
+ },
+ {
+  "ma": "T8D2C6.5@p205",
+  "noi_dung": "Tìm giá trị nhỏ nhất và giá trị lớn nhất của tích $xy$, biết rằng $x$ và $y$ là các số nguyên dương thỏa mãn $x+y=2005$."
+ },
+ {
+  "ma": "T8D2C6.6@p206",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức $A=\\lvert11^m-5^n\\rvert$ với $m,n$ là các số nguyên dương."
+ },
+ {
+  "ma": "T8B.1@p206",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{a^2}{4}+b^2+c^2\\ge ab-ac+2bc$."
+ },
+ {
+  "ma": "T8B.2@p206",
+  "noi_dung": "Chứng minh bất đẳng thức: $a^2+b^2+1\\ge ab+a+b$."
+ },
+ {
+  "ma": "T8B.3@p206",
+  "noi_dung": "Chứng minh bất đẳng thức: $x^2+y^2+z^2\\ge2xy-2zx+2yz$."
+ },
+ {
+  "ma": "T8B.4@p206",
+  "noi_dung": "Chứng minh bất đẳng thức: $x^4+y^4+z^2+1\\ge2x(xy^2-x+z+1)$."
+ },
+ {
+  "ma": "T8B.5@p206",
+  "noi_dung": "Chứng minh rằng: Nếu $a+b\\ge1$ thì $a^3+b^3\\ge\\dfrac{1}{4}$."
+ },
+ {
+  "ma": "T8B.6@p206",
+  "noi_dung": "Cho $a,b,c$ thỏa mãn $a^2+b^2+c^2=3$. Chứng minh rằng $ab+bc+ca+a+b+c\\le6$."
+ },
+ {
+  "ma": "T8B.7@p206",
+  "noi_dung": "Cho $a,b>0$. Chứng minh bất đẳng thức: $\\dfrac{a}{a^2+b^2}+\\dfrac{b}{b^2+c^2}+\\dfrac{c}{a^2+c^2}\\le\\dfrac12\\left(\\dfrac1a+\\dfrac1b+\\dfrac1c\\right)$."
+ },
+ {
+  "ma": "T8B.8@p206",
+  "noi_dung": "Cho $a;b;c>0$ và $a+b+c\\le1$. Chứng minh rằng: $\\dfrac{1}{a^2+2bc}+\\dfrac{1}{b^2+2ac}+\\dfrac{1}{c^2+2ab}\\ge9$."
+ },
+ {
+  "ma": "T8B.9@p206",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{x^2}{1+16x^4}+\\dfrac{y^2}{1+16y^4}\\le\\dfrac14$, $\\forall x,y\\in\\mathbb R$."
+ },
+ {
+  "ma": "T8B.10a@p207",
+  "noi_dung": "Cho $a,b,c$ là số đo độ dài ba cạnh của một tam giác. Chứng minh bất đẳng thức: $ab+bc+ca\\le a^2+b^2+c^2<2(ab+bc+ca)$."
+ },
+ {
+  "ma": "T8B.10b@p207",
+  "noi_dung": "Cho $a,b,c$ là số đo độ dài ba cạnh của một tam giác. Chứng minh bất đẳng thức: $abc\\ge(a+b-c)(a+c-b)(b+c-a)$."
+ },
+ {
+  "ma": "T8B.10c@p207",
+  "noi_dung": "Cho $a,b,c$ là số đo độ dài ba cạnh của một tam giác. Chứng minh bất đẳng thức: $2a^2b^2+2b^2c^2+2c^2a^2-a^4-b^4-c^4>0$."
+ },
+ {
+  "ma": "T8B.11@p207",
+  "noi_dung": "Cho $a,b,c>0$, chứng minh bất đẳng thức: $\\dfrac{1}{a^3+b^3+abc}+\\dfrac{1}{b^3+c^3+abc}+\\dfrac{1}{c^3+a^3+abc}\\le\\dfrac{1}{abc}$."
+ },
+ {
+  "ma": "T8B.12@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\left(\\dfrac{a+b}{2}\\right)^2\\le\\dfrac{a^2+b^2}{2}$."
+ },
+ {
+  "ma": "T8B.13@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $(a^{10}+b^{10})(a^2+b^2)\\ge(a^8+b^8)(a^4+b^4)$."
+ },
+ {
+  "ma": "T8B.14@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{a^2+a+1}{a^2-a+1}>0$."
+ },
+ {
+  "ma": "T8B.15@p207",
+  "noi_dung": "Cho hai số $a$ và $b$ cùng dấu. Chứng minh rằng nếu $a<b$ thì $\\dfrac1a>\\dfrac1b$."
+ },
+ {
+  "ma": "T8B.16@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $a^2+b^2+c^2+3\\ge2(a+b+c)$."
+ },
+ {
+  "ma": "T8B.17a@p207",
+  "noi_dung": "Cho $a+b=1$. Chứng minh bất đẳng thức $a^2+b^2\\ge\\dfrac12$."
+ },
+ {
+  "ma": "T8B.17b@p207",
+  "noi_dung": "Cho $a_1+a_2+a_3+\\dots+a_n=1$. Chứng minh bất đẳng thức: $a_1^2+a_2^2+a_3^2+\\dots+a_n^2\\ge\\dfrac1n$."
+ },
+ {
+  "ma": "T8B.17c@p207",
+  "noi_dung": "Cho $a_1+a_2+a_3+\\dots+a_n=k$. Chứng minh bất đẳng thức: $a_1^2+a_2^2+a_3^2+\\dots+a_n^2\\ge\\dfrac{k^2}{n}$."
+ },
+ {
+  "ma": "T8B.18@p207",
+  "noi_dung": "Cho $a+b>2$. Chứng minh bất đẳng thức $a^2+b^2>2$."
+ },
+ {
+  "ma": "T8B.19@p207",
+  "noi_dung": "Cho $a>2$, $b>2$. Chứng minh bất đẳng thức $ab>a+b$."
+ },
+ {
+  "ma": "T8B.20@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $(x-1)(x-3)(x-4)(x-6)+9\\ge0$."
+ },
+ {
+  "ma": "T8B.21@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $4a(a+b)(a+1)(a+b+1)+b^2\\ge0$."
+ },
+ {
+  "ma": "T8B.22@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $4a^2b^2>(a^2+b^2-c^2)^2$ với $a,b,c$ là ba cạnh của một tam giác."
+ },
+ {
+  "ma": "T8B.23@p207",
+  "noi_dung": "Chứng minh bất đẳng thức: $a(b-c)^2+b(c-a)^2+c(a+b)^2>a^3+b^3+c^3$ với $a,b,c$ là ba cạnh của một tam giác."
+ },
+ {
+  "ma": "T8B.24@p207",
+  "noi_dung": "Cho ba số dương $a,b,c$ có tích bằng $1$ và $a+b+c>\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$.\n\na) Chứng minh: $(a-1)(b-1)(c-1)>0$.\n\nb) Chứng minh trong ba số $a,b,c$ có một số lớn hơn $1$, hai số nhỏ hơn $1$."
+ },
+ {
+  "ma": "T8B.25@p208",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{a}{b}+\\dfrac{b}{a}\\ge2$ với $ab>0$."
+ },
+ {
+  "ma": "T8B.26@p208",
+  "noi_dung": "Chứng minh bất đẳng thức: $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)\\ge9$ với $a,b,c>0$."
+ },
+ {
+  "ma": "T8B.27@p208",
+  "noi_dung": "Tìm giá trị nhỏ nhất của: $x^2-2x+y^2+4y+5$."
+ },
+ {
+  "ma": "T8B.28@p208",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{x-y}{x+y}<\\dfrac{x^2-y^2}{x^2+y^2}$ với $x>y>0$."
+ },
+ {
+  "ma": "T8B.29@p208",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{1}{2^2}+\\dfrac{1}{3^2}+\\dfrac{1}{4^2}+\\dots+\\dfrac{1}{n^2}<1$ với mọi số tự nhiên $n\\ge2$."
+ },
+ {
+  "ma": "T8B.30@p208",
+  "noi_dung": "Chứng minh bất đẳng thức: $\\dfrac{1}{2^2}+\\dfrac{1}{4^2}+\\dfrac{1}{6^2}+\\dots+\\dfrac{1}{(2n)^2}<\\dfrac{1}{2}$ với mọi số tự nhiên $n\\ge2$."
+ },
+ {
+  "ma": "T8B.31@p208",
+  "noi_dung": "Tìm giá trị lớn nhất của: $\\dfrac{3}{4x^2-4x+5}$."
+ },
+ {
+  "ma": "T8B.32@p208",
+  "noi_dung": "Tìm giá trị nhỏ nhất của: $\\dfrac{1}{2x-x^2-4}$."
+ },
+ {
+  "ma": "T8B.33@p208",
+  "noi_dung": "Tìm giá trị lớn nhất của: $\\dfrac{3x^2+6x+10}{x^2+2x+3}$."
+ },
+ {
+  "ma": "T8B.34@p208",
+  "noi_dung": "Tìm giá trị nhỏ nhất của: $\\dfrac{4x^2-2x+1}{x^2}$."
+ },
+ {
+  "ma": "T8B.35@p208",
+  "noi_dung": "Tìm giá trị lớn nhất của: $\\dfrac{2x+1}{x^2+2}$."
+ },
+ {
+  "ma": "T8B.36@p208",
+  "noi_dung": "Tìm giá trị nhỏ nhất và lớn nhất của: $\\dfrac{4x+3}{x^2+1}$."
+ },
+ {
+  "ma": "T8B.37@p208",
+  "noi_dung": "Tìm giá trị nhỏ nhất của: $\\dfrac{x^4+2x^3+8x+16}{x^4-2x^3+8x^2-8x+16}$."
+ },
+ {
+  "ma": "T8B.38a@p208",
+  "noi_dung": "Chứng minh rằng nếu hai số dương có tích không đổi thì tổng của chúng nhỏ nhất khi và chỉ khi hai số ấy bằng nhau."
+ },
+ {
+  "ma": "T8B.38b@p208",
+  "noi_dung": "Tìm giá trị nhỏ nhất của: $8x+\\dfrac{2}{x}$ với $x>0$."
+ }
+]

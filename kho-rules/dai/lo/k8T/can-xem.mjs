@@ -35,9 +35,9 @@ const dong = (s) => esc(s).replace(/\$([^$]+)\$/g, (_, t) => toan(t.replace(/&am
 const doan = (s) => String(s).split(/\n\n+/).map((d) => `<p>${dong(d).replace(/\n/g, '<br>')}</p>`).join('')
 
 // ── dữ liệu: lô đã dựng + mã câu trên DB ────────────────────────────────────
-const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
-const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
-const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
+const lo = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10', 'TVA-T8'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.json'), 'utf8'))).map((c) => [c.ma_nguon, c]))
+const bai = Object.fromEntries(['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10', 'TVA-T8'].flatMap((t) => JSON.parse(readFileSync(join(DIR, t + '.bai.json'), 'utf8'))).map((b) => [b.ma, b]))
+const mu = Object.assign({}, ...['NDT-D1-ptnt', 'NDT-D1-hdt-chia-ot', 'NDT-D1s16-D2', 'NDT-D3-pt', 'NDT-D4-bdt', 'NDT-ON-PA', 'NDT-PC', 'TVA-T1', 'TVA-T2', 'TVA-T3', 'TVA-T9T10', 'TVA-T8'].map((t) => JSON.parse(readFileSync(join(DIR, t + '.mu.json'), 'utf8')).cau))
 const env = Object.fromEntries(readFileSync(join(GOC, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const db = new pg.Client({ connectionString: env.DATABASE_URL_RO ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect(); await db.query('begin read only')
@@ -280,7 +280,7 @@ const GHI_CHU_LO7 = `<p class="dan">Lô 7 (phụ lục C — 10 đề rèn luy�
 <p class="dan">Lỗi in khác của sách ở phụ lục C, kho ghi theo bản đúng: Đề 1 bài 6 b (in "12 đợt", đúng là 12 đội) · Đề 2 bài 2 b (đề in ${toan('S^2')}, lời giải tính ${toan('S')}) · Đề 9 bài 2 a (cách 2 kết luận dư 1987 trong khi phép chia ra 2002) · và các lỗi trong lời giải ở Đề 2 bài 3 a, Đề 3 bài 2 a, 6 a, Đề 4 bài 2 a, Đề 5 bài 2 b, 3 b, Đề 6 bài 1 a, 2 b, 6 b, Đề 7 bài 2 b, 3 a, 3 b, Đề 8 bài 3 a, 3 b, Đề 9 bài 1 a, Đề 10 bài 2 a, 2 b. Sách lập luận chưa đủ, kho bổ sung: Đề 5 bài 6 b (chứng minh số trung điểm ít nhất là ${toan('4029')} cho vị trí bất kì), Đề 6 bài 6 a (so sánh ${toan('1{,}025^9')}, ${toan('1{,}025^{10}')} với ${toan('1{,}28')}), Đề 9 bài 6 b, Đề 10 bài 6 b. Đề 6 bài 6 b: đề in "mỗi người ngồi giữa hai người quen nhau", kho hiểu theo lời giải của sách là mỗi người quen cả hai người ngồi cạnh.</p>`
 
 // ── LÔ 8 (TVA §1 — Chia đa thức: 9 ví dụ + 22 bài tập) ─────────────────────
-const lechT = (ma, hinh, nghieng) => the(`Trần Thị Vân Anh, ${/^T\d+V/.test(ma) ? 'ví dụ' : 'bài tập'} ${bai[ma]?.bai}${bai[ma]?.y ? ' ý ' + bai[ma].y : ''} (§${ma.match(/^T(\d+)/)?.[1]}) — hai lượt gán nhóm lệch nhau`, hinh + muc('Trong kho', trongKho(ma))
+const lechT = (ma, hinh, nghieng) => the(`Trần Thị Vân Anh, ${/^T\d+(V|D)/.test(ma) ? 'ví dụ' : 'bài tập'} ${bai[ma]?.bai}${bai[ma]?.y ? ' ý ' + bai[ma].y : ''} (§${ma.match(/^T(\d+)/)?.[1]}) — hai lượt gán nhóm lệch nhau`, hinh + muc('Trong kho', trongKho(ma))
   + muc('Lượt soạn chọn', `<p>${esc(tenN(lo[ma]?.nhom_soan))}</p>`) + muc('Lượt gán độc lập chọn', `<p>${esc(tenN(mu[ma]?.dang))}${mu[ma]?.ly_do ? ` <span class="mo">— ${esc(mu[ma].ly_do)}</span>` : ''}</p>`), nghieng)
 E.push(
   lechT('T1B.1n5@p12', anhT(12, 165, 260, '§1 bài tập 1, đề (năm ý)') + anhT(14, 195, 420, '§1 bài tập 1, hướng dẫn của sách'),
@@ -410,6 +410,67 @@ F.push(
 )
 const GHI_CHU_LO11 = `<p class="dan">Lô 11 — Trần Thị Vân Anh §9 Các bài toán tổng hợp (7 ví dụ) và §10 Một số phương pháp giải phương trình nghiệm nguyên (10 ví dụ + 26 bài tập; 44 câu). Bài tập §10 lấy lời giải ở "Hướng dẫn và đáp số"; bài 13, bài 4 ý b, c không có hướng dẫn và 5 bài tự giải cuối §10 không có đáp số nên không nhập. Ví dụ 5 §10 sách rút gọn ("giải tương tự cho các trường hợp còn lại"), ví dụ 6 b §9 sách dừng dở, bài 2 chỉ có đáp số: kho soạn đủ lời giải. Một số lời giải sách bỏ bước (ví dụ 4 §10 không chứng minh ${toan('x^3<y^3<(x+2)^3')}, bài 14 "tiếp tục lập luận như trên" không đủ để chặn ${toan('z')}): kho bổ sung, đáp số vẫn khớp. Mười câu hai lượt gán nhóm lệch nhau đang ở dạng chờ, thẻ ở mục "Cần chị quyết".</p>`
 
+// ── LÔ 12 (TVA §8 — Bất đẳng thức và cực trị: 53 ví dụ + 38 bài tập; 112 câu) ──
+const CH = (ma, ...a) => lechT(ma, a.slice(0, -1).join(''), a[a.length - 1])
+E.push(
+  CH('T8D1C2.3@p179', anhT(179, 95, 400, '§8 Dạng 1 Cách 2 ví dụ 3, đề và lời giải của sách'),
+    'Chọn nhóm nào? Chỉ cần $x^2+y^2\\ge2xy$ cho từng cặp rồi cộng. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C2.4@p179', anhT(179, 495, 560, '§8 Dạng 1 Cách 2 ví dụ 4, đề và lời giải của sách'),
+    'Chọn nhóm nào (cả ý a và ý b)? Khai triển rồi dùng $\\dfrac xy+\\dfrac yx\\ge2$; ý b áp dụng ý a. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C2.9@p181', anhT(181, 500, 230, '§8 Dạng 1 Cách 2 ví dụ 9, đề và lời giải của sách'),
+    'Chọn nhóm nào? Chỉ nhân hai vế với số dương rồi bắc cầu. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương** vì bản đồ không có nhóm "tính chất bất đẳng thức", còn **Bất phương trình bậc nhất** là nhóm của lượt gán độc lập.'),
+  CH('T8D1C2.11@p181', anhT(181, 1215, 330, '§8 Dạng 1 Cách 2 ví dụ 11, đề và lời giải của sách'),
+    'Chọn nhóm nào? Tách thành hai bình phương rồi chỉ ra chúng không cùng bằng $0$. Tôi nghiêng về **Hằng đẳng thức › Đưa về tổng các bình phương** (cùng nhóm với ví dụ 7 a, b, c).'),
+  CH('T8D1C2.14@p182', anhT(182, 1145, 470, '§8 Dạng 1 Cách 2 ví dụ 14, đề') + anhT(183, 60, 330, 'Ví dụ 14, phần cuối lời giải của sách'),
+    'Chọn nhóm nào? Đặt $a,b,c$ rồi dùng $\\lvert a\\rvert+\\lvert b\\rvert=\\lvert a+b\\rvert$ khi $ab\\ge0$ và $\\lvert AB\\rvert\\ge AB$ — kỹ thuật giá trị tuyệt đối, không phải Cô-si. Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8D1C2.19@p184', anhT(184, 855, 600, '§8 Dạng 1 Cách 2 ví dụ 19, đề và lời giải của sách'),
+    'Chọn nhóm nào? Bất đẳng thức Nesbitt; lời giải của sách (và của kho) là trừ $\\dfrac12$ từng phân số rồi nhóm thành bình phương, tức xét hiệu. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C2.20@p184', anhT(184, 1475, 120, '§8 Dạng 1 Cách 2 ví dụ 20, đề') + anhT(185, 60, 370, 'Ví dụ 20, lời giải của sách'),
+    'Chọn nhóm nào? Bất đẳng thức tam giác để mẫu dương rồi xét hiệu. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C2.21@p185', anhT(185, 435, 370, '§8 Dạng 1 Cách 2 ví dụ 21, đề và lời giải của sách'),
+    'Chọn nhóm nào? Chứng minh $a^3+b^3\\ge ab(a+b)$ rồi chia cho $b$ và cộng ba bất đẳng thức hoán vị. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C3.1@p186', anhT(185, 1520, 90, '§8 Dạng 1 Cách 3 ví dụ (đề)') + anhT(186, 70, 400, 'Cách 3, lời giải của sách (hai cách)'),
+    'Chọn nhóm nào? Sách đặt trong mục "phương pháp phản chứng" nhưng cũng có cách trực tiếp. Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8D1C4.1@p187', anhT(186, 475, 610, '§8 Dạng 1 Cách 4 ví dụ 1, đề và lời giải của sách'),
+    'Chọn nhóm nào? Đổi biến $a=\\dfrac13+x$ (mục "đổi biến phụ" của sách). Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8D1C4.4@p188', anhT(187, 845, 400, '§8 Dạng 1 Cách 4 ví dụ 4, đề và lời giải của sách'),
+    'Chọn nhóm nào? Ghép nhân tử rồi đặt ẩn phụ $t$ để được $t^2+1>0$. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C5.2@p189', anhT(189, 705, 310, '§8 Dạng 1 Cách 5 ví dụ 2, đề và lời giải của sách'),
+    'Chọn nhóm nào? Dùng $x^2+y^2\\ge2xy$ cho từng cặp. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C5.5b@p190', anhT(190, 735, 160, '§8 Dạng 1 Cách 5 ví dụ 5, đề') + anhT(190, 1510, 100, 'Ví dụ 5 b, đầu lời giải') + anhT(191, 70, 300, 'Ví dụ 5 b, phần sau của lời giải'),
+    'Chọn nhóm nào? Dùng hai lần $u^2+v^2\\ge\\dfrac{(u+v)^2}{2}$. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8D1C6.1@p191', anhT(191, 380, 650, '§8 Dạng 1 Cách 6 ví dụ 1, đề và lời giải của sách'),
+    'Chọn nhóm nào? Sắp thứ tự các biến rồi xét hai trường hợp (mục "sắp thứ tự" của sách). Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8D1C7.1@p191', anhT(191, 1050, 560, '§8 Dạng 1 Cách 7 ví dụ 1, đề và lời giải của sách'),
+    'Chọn nhóm nào? Chia hai khoảng $x\\ge1$ và $x<1$ (mục "xét từng khoảng" của sách). Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8B.6@p206', anhT(206, 1060, 80, '§8 bài tập 6, đề') + anhT(209, 875, 230, '§8 bài tập 6, hướng dẫn của sách'),
+    'Chọn nhóm nào? Dùng $x^2+y^2\\ge2xy$ và $a^2+1\\ge2a$ rồi cộng. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8B.9@p206', anhT(206, 1400, 60, '§8 bài tập 9, đề') + anhT(209, 1460, 90, 'Bài tập 9, hướng dẫn của sách (đầu)') + anhT(210, 80, 100, 'Bài tập 9, hướng dẫn của sách (cuối)'),
+    'Chọn nhóm nào? Dùng $1+16x^4\\ge8x^2$ rồi làm trội mẫu. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8B.17b@p207', anhT(207, 730, 330, '§8 bài tập 17, đề (ba ý)') + anhT(212, 860, 570, 'Bài tập 17, hướng dẫn của sách'),
+    'Chọn nhóm nào (cả ý b và ý c)? Đổi biến $a_i=\\dfrac1n+x_i$ để tách tổng bình phương. Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8B.17c@p207', '', 'Cùng bài 17, ảnh sách ở thẻ ngay trên. Tôi nghiêng về **Bất đẳng thức › Làm trội, phản chứng và các kỹ thuật khác**.'),
+  CH('T8B.24@p207', anhT(207, 1480, 120, '§8 bài tập 24, đề (ý a)') + anhT(208, 60, 60, 'Bài tập 24 ý b, đề') + anhT(213, 1195, 360, 'Bài tập 24, hướng dẫn của sách') + anhT(214, 60, 120, 'Bài tập 24 b, đuôi hướng dẫn'),
+    'Chọn nhóm nào? Ý a là biến đổi có điều kiện, ý b suy luận về dấu của tích. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+  CH('T8B.26@p208', anhT(208, 192, 90, '§8 bài tập 26, đề') + anhT(214, 305, 140, 'Bài tập 26, hướng dẫn của sách'),
+    'Chọn nhóm nào? Khai triển rồi dùng $\\dfrac xy+\\dfrac yx\\ge2$ ba lần. Tôi nghiêng về **Bất đẳng thức › Xét hiệu, biến đổi tương đương**.'),
+)
+F.push(
+  the('Trần Thị Vân Anh §8, Dạng 1 Cách 2 ví dụ 20 — dòng thứ ba của lời giải in sai', anhT(184, 1475, 120, 'Ví dụ 20, đề') + anhT(185, 60, 370, 'Ví dụ 20, lời giải của sách')
+    + muc('Vấn đề', doan('Dòng thứ ba in tử $2(a-b)^2$ và mẫu $(b+c-a)(a+c-b)$, thiếu thừa số $c$. Thử $a=2$, $b=1$, $c=2$: vế dòng hai bằng $\\dfrac13$, tổng dòng ba in ra bằng $\\dfrac43$. Kết luận "$\\ge0$" vẫn đúng.')) + muc('Trong kho', trongKho('T8D1C2.20@p184')),
+    'Kho giải lại bằng đẳng thức đúng $\\dfrac1x+\\dfrac1y-\\dfrac2c=\\dfrac{2(a-b)^2}{c\\,xy}$.', 'bao'),
+  the('Trần Thị Vân Anh §8, Dạng 2 Cách 3 ví dụ 3 — Cách 2 của sách chỉ đúng khi x > 0', anhT(197, 690, 850, 'Dạng 2 Cách 3 ví dụ 3, đề và lời giải của sách')
+    + muc('Vấn đề', doan('Cách 2 lập luận "$x\\cdot\\dfrac1x=1$ không đổi nên $x+\\dfrac1x$ nhỏ nhất khi $\\dfrac1x=x$", chỉ đúng với $x>0$; đề không cho $x>0$ (khi $x<0$ thì $x+\\dfrac1x\\le-2$ và bất đẳng thức đảo chiều). Dòng cuối còn in "$P-1=\\dfrac14$" (đúng là $-\\dfrac14$). Cách 1 của sách đúng.')) + muc('Trong kho', trongKho('T8D2C3.3@p197')),
+    'Kho đi Cách 1 (hoàn thành bình phương theo $\\dfrac1{x+1}$), Cách 2 ghi vào Chú ý là cách không dùng được.', 'bao'),
+  the('Trần Thị Vân Anh §8, Dạng 2 Cách 3 ví dụ 6 — ba dòng biến đổi giữa in sai', anhT(199, 415, 500, 'Dạng 2 Cách 3 ví dụ 6, đề và lời giải của sách')
+    + muc('Vấn đề', doan('Ba dòng giữa in sai: mẫu $2006x$ (đúng $2006x^2$); tử $(x-2006)^2+2006x^2$ thay vì $+2005x^2$ trên $2006x^2$; $(x-2006)^2+2005$ thay vì $(x-2006)^2$. Dòng kết luận đúng.')) + muc('Trong kho', trongKho('T8D2C3.6@p199')),
+    'Kho viết lại các dòng đúng.', 'bao'),
+  the('Trần Thị Vân Anh §8, Dạng 2 Cách 6 ví dụ 3 — Cách 1 giả sử thứ tự không hợp lệ', anhT(204, 1205, 390, 'Dạng 2 Cách 6 ví dụ 3, đề và Cách 1') + anhT(205, 60, 200, 'Ví dụ 3, Cách 1 (tiếp) và Cách 2')
+    + muc('Vấn đề', doan('Cách 1 mở đầu "Giả sử $a\\ge b\\ge c\\ge d\\ge0$" nhưng $A=ab+bc+cd$ không đối xứng theo cả bốn biến nên không được giả sử thứ tự bất kì. Kết luận $\\max A=\\dfrac14$ vẫn đúng.')) + muc('Trong kho', trongKho('T8D2C6.3@p204')),
+    'Kho đi Cách 2: $A\\le(a+c)(b+d)\\le\\dfrac14$.', 'bao'),
+)
+const GHI_CHU_LO12 = `<p class="dan">Lô 12 — Trần Thị Vân Anh §8 Bất đẳng thức và cực trị (53 ví dụ + 38 bài tập; 112 câu, sáu trạm chép song song, soát đối chiếu ảnh p177–216; lô đầu tiên của luồng "bất đẳng thức lên trước" theo ý chị). Tôi không nhập 18 câu trùng nguyên đề với kho: Dạng 1 Cách 2 ví dụ 5, 13, 17, 18, 22 a, 22 c · Cách 4 ví dụ 2, 5 · Cách 5 ví dụ 5 a · bài tập 10 b, 11, 16, 22, 23, 25, 28, 29, 30 (phần lớn trùng bài của chương IV quyển Nguyễn Đức Tấn mà sách này in lại; ví dụ 17 và Cách 4 ví dụ 5 là cùng một bài sách giải hai lần, trùng bài 18 b của phụ lục chương IV). Giữ làm biến thể khác form: bài tập 12 (viết ${toan('\\left(\\dfrac{a+b}{2}\\right)^2\\le\\dfrac{a^2+b^2}{2}')} khác dạng bài 10 c chương IV) · bài tập 26 (ý a của ví dụ 4 Cách 2) · Cách 6 ví dụ 1 (các số dương, khác bản tam giác). Lỗi in khác của sách, kho ghi bản đúng: Cách 2 ví dụ 1 ("Cách giải khác" in ${toan('1-\\dfrac1a')}), ví dụ 6 (thiếu trường hợp hai số bằng 0), ví dụ 14 (số hạng ${toan('\\lvert y+x-z\\rvert')}), ví dụ 19 (bỏ mất ${toan('\\dfrac12')} ở mẫu); Cách 3 ví dụ 5 ("max A = 2" in nhầm), ví dụ 7 a ("nhỏ nhất" in nhầm), Cách 5 ví dụ 1 (thiếu bình phương), Cách 6 ví dụ 5 (thiếu "y ="); bài tập 7 (đề thiếu ${toan('c>0')}), bài tập 9 (mẫu ${toan('1-16y^4')}), bài tập 17 (chữ ý hướng dẫn lệch đề), bài tập 26 (dấu trừ sau số 3). Các chỗ sách giải thiếu bước (không chứng minh bất đẳng thức phụ, "dễ thấy", "giải tương tự") kho đều viết đủ. Hai mươi mốt câu hai lượt gán nhóm lệch nhau đang ở dạng chờ — gần hết là ranh giới <em>Xét hiệu</em> hay <em>Bất đẳng thức quen thuộc</em> hay <em>Kỹ thuật khác</em> — thẻ ở mục "Cần chị quyết".</p>`
+
 const html = `<title>8T — câu cần chị xem</title>
 <style>
 /* bố cục: một cột đọc, mỗi câu một thẻ: ảnh sách ở trên, các mục nhãn–nội dung ở dưới, việc cần quyết ở cuối thẻ (theo k6-chua-chac.html) */
@@ -440,12 +501,12 @@ math{font-size:1.08em}.katex{white-space:nowrap}
 </style>
 <main>
 <h1>Khối 8T — câu cần chị xem</h1>
-<p class="dan">Kho Đại 8T sau mười một lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8–11: §1, §2, §3, §9, §10 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
-<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–11: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
+<p class="dan">Kho Đại 8T sau mười hai lô (lô 1–7: trọn phần Đại của quyển Chuyên đề bồi dưỡng HSG Toán 8, Nguyễn Đức Tấn; lô 8–12: §1, §2, §3, §8, §9, §10 của quyển Bồi dưỡng HSG Toán Đại số 8, Trần Thị Vân Anh): ${cauDb.length} câu, ${cauDb.filter((r) => r.da_duyet).length} câu đã duyệt. Từ 10/10 câu qua cổng được tự duyệt; câu ở mục "Cần chị quyết" thì chưa. Ảnh là trang sách gốc cắt từ PDF. Khung xám là câu đang nằm trong kho; bấm "Lời giải đang để trong kho" để xem lời giải đầy đủ.</p>
+<nav><a href="#e">Cần chị quyết (${E.length})</a><a href="#f">Lô 3–12: đã làm, chị xem (${F.length})</a><a href="#a">A. Hai cặp trùng (${A.length})</a><a href="#b">B. Sách in sai, đề thiếu (${B.length})</a><a href="#c">C. Máy nghi trùng (${C.length})</a><a href="#d">D. Nhóm đã chốt (${D.length})</a></nav>
 <h2 id="e">Cần chị quyết — ${cauDb.filter((r) => !r.da_duyet).length} câu chưa duyệt, ${E.length} thẻ</h2>
-<p class="dan">Năm mươi câu đang ở "Chưa phân dạng": 46 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Hai câu còn lại: bài 48 b chương IV (đề sách in sai) và ví dụ 7 Dạng 5 §3 của quyển Trần Thị Vân Anh (sách không trình bày bước chính — thẻ cuối mục). Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8, 9, 10, 11 (quyển Trần Thị Vân Anh) ở cuối.</p>
+<p class="dan">Bảy mươi mốt câu đang ở "Chưa phân dạng": 67 câu hai lượt gán nhóm độc lập chọn khác nhau (thẻ có chữ "hai lượt gán nhóm lệch nhau"), bài 89 b chương I chưa nhóm nào khớp, và ba bài bất biến – tô màu của phụ lục A (một thẻ) bản đồ chưa có nhóm. Chị chọn nhóm, tôi xếp và duyệt. Hai câu còn lại: bài 48 b chương IV (đề sách in sai) và ví dụ 7 Dạng 5 §3 của quyển Trần Thị Vân Anh (sách không trình bày bước chính — thẻ cuối mục). Thẻ xếp theo lô: lô 3, 5, 6 (ôn tập cuối năm, phụ lục A), lô 7 (phụ lục C), rồi lô 8, 9, 10, 11, 12 (quyển Trần Thị Vân Anh) ở cuối.</p>
 ${E.join('\n')}
-<h2 id="f">Lô 3 đến lô 11 — đã làm, chị xem</h2>
+<h2 id="f">Lô 3 đến lô 12 — đã làm, chị xem</h2>
 <p class="dan">Những chỗ tôi phải tự quyết khi nhập lô 3 (chương I §1, §6 và cả chương II — 105 câu), lô 4 (chương III — 93 câu), lô 5 (chương IV — 130 câu) lô 6 (ôn tập cuối năm phần Đại, phụ lục A — 79 câu) và lô 7 (phụ lục C — 70 câu; các thẻ của lô 7 ở cuối mục). Hai câu trước đây tôi để chờ chị (bài 73 chương III, bài 31 phụ lục A) nay đã duyệt vì phụ lục C in lại đúng bản kho đang ghi — thẻ của hai bài này có thêm ảnh đó. Các câu này đã vào kho và đã duyệt; chị thấy chỗ nào không ổn thì bảo, tôi sửa.</p>
 ${F.join('\n')}
 ${GHI_CHU_LO4}
@@ -456,6 +517,7 @@ ${GHI_CHU_LO8}
 ${GHI_CHU_LO9}
 ${GHI_CHU_LO10}
 ${GHI_CHU_LO11}
+${GHI_CHU_LO12}
 <p class="dan">Sách dừng giữa chừng, kho soạn tiếp đến kết quả: chương I bài 62 b, 62 c (sách in nhầm nhãn lời giải là "63"); chương II bài 17 (kết quả ${toan('\\dfrac{7}{x(x+1)}')}), bài 22, bài 48 (giá trị nhỏ nhất ${toan('2000')} khi ${toan('x=3')}), bài 50.</p>
 <p class="dan">Lỗi in của sách ở chương II, kho ghi theo biểu thức đúng: bài 10 a (mẫu in ${toan('(z-y)^2')} thay cho ${toan('(z-x)^2')}), bài 13 (tử in ${toan('48x^2y')} thay cho ${toan('48x^2')}), bài 14 (mẫu in ${toan('4(x+5)(x+5)')}), bài 34 (phần trong ngoặc ${toan('\\dfrac{2abc}{(b-c)(c-a)(a-b)}')} không đúng, không ảnh hưởng kết quả), bài 51 b (in ${toan('\\dfrac{x^2}{b}')} thay cho ${toan('\\dfrac{y^2}{b}')}), bài 51 c (in dấu cộng ở chỗ phải là dấu trừ).</p>
 <p class="dan">Chương I bài 5 ("biểu thức nào có giá trị không phụ thuộc vào biến?") giữ nguyên là một câu ba biểu thức như sách, không tách.</p>
