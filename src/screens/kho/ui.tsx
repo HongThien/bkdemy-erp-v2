@@ -34,8 +34,11 @@ export const tex = (s: string, display: boolean) => {
     .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
     .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
     // Phẩy THẬP PHÂN "1,46": KaTeX coi "," là dấu câu, chèn khoảng ⇒ hiện "1, 46" (HS báo "công thức lỗi" 10/10, ~1.800 câu
-    // kho viết vậy). Quy ước VN: phẩy giữa 2 chữ số = thập phân, liệt kê dùng ";" ⇒ bọc {,} cho KaTeX coi là ký tự thường.
-    .replace(/(\d),(?=\d)/g, '$1{,}')
+    // kho viết vậy) ⇒ bọc {,} cho KaTeX coi là ký tự thường. NHƯNG kho cũng có phẩy LIỆT KÊ ($7,11,13$, $BCNN(8,10,12)$,
+    // ƯCLN(12,18), A(1,2) — ~350 câu) mà bọc thì dính liền như số thập phân. Nên chỉ bọc khi cụm số có ĐÚNG 1 phẩy và
+    // không đứng ngay sau "tên(" (hàm / điểm). "(1,7)^2", "-0,35", "x_{1,2}" vẫn là thập phân/chỉ số ⇒ bọc.
+    .replace(/\d+(?:,\d+)+/g, (cum: string, o: number, s: string) =>
+      cum.split(',').length === 2 && !/[A-Za-zÀ-ỹ}]\($/.test(s.slice(Math.max(0, o - 2), o)) ? cum.replace(',', '{,}') : cum)
   // macros: CÙNG 1 file với ô nhập MathLive (lib/math/macros) → soạn thấy sao, in / test online ra vậy.
   // Bọc thêm span mang data-latex = nguồn LaTeX: để COPY từ vùng đã render trả về `$…$` (xem installTexCopy) —
   // output:'html' không có MathML annotation nên copy-tex của KaTeX không dùng được, tự gắn nguồn vào DOM.

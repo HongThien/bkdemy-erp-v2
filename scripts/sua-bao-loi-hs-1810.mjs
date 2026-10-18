@@ -77,12 +77,10 @@ for (const [ma, [da, key, lc]] of Object.entries(SUA_FORM)) {
   log.push({ ma, form: true, cu: cu.lua_chon.map(e => e.text), moi: lc.map(e => e.text), da });
 }
 
-// ── 3. Thu hồi duyệt các form máy sinh HỎNG (phẩy thập phân / cách hàng nghìn bị đọc thành nhiều số) ──
-const BAD = String.raw`((q.dap_an ~ '\d,\d' and q.dap_an !~ ';' and f.key_gia_tri ~ ';') or (regexp_replace(q.dap_an,'\$','','g') ~ '\d \d{3}([^0-9]|$)' and f.key_gia_tri !~ ' '))`;
-const thuHoi = await q(`update dai_cau_form_tn f set da_duyet = false,
-    tu_choi_ly_do = '[18/10 Claude] Máy sinh đọc sai đáp số (phẩy thập phân / dấu cách hàng nghìn thành nhiều số) — cần sinh lại'
-  from dai_cau_hoi q where q.ma_cau = f.ma_cau and f.da_duyet and f.xoa_at is null and ${BAD}
-    and f.ma_cau <> all($1) returning f.ma_cau`, [Object.keys(SUA_FORM)]);
+// ── 3. (BỎ 18/10) Thu hồi form máy sinh hỏng — CHUYỂN sang phiên "Sinh lại form TN" (form-tn-sinh-lai-1810.md).
+// Bộ lọc cũ `\d,\d` bắt NHẦM 15 form ĐÚNG (T103020304001–013, T104010302012/013): ở đó phẩy là dấu LIỆT KÊ nhiều đáp số
+// ("8,20,28,36"), không phải phẩy thập phân. Bài học: phẩy giữa 2 chữ số chưa chắc là thập phân — phải nhìn cả dạng đáp số.
+const thuHoi = [];
 
 // ── 4. Chấm lại bài đã làm: key ảnh chụp sai (đúng theo NỘI DUNG phương án, không theo vị trí) ──
 const CHAM = [
