@@ -281,3 +281,17 @@ export const viDuDangBaiApi: LyThuyetApi = {
     if (error) loi(error)
   },
 }
+
+// ── Bản đồ mới → KHO: câu của 1 dạng bài / 1 nhóm / rổ "chưa khớp" của 1 chủ đề (mig 202610181756, chỉ đọc) ──
+export type KhoCauLoc = 'tat_ca' | 'da_duyet' | 'chua_duyet' | 'kho_chuan'
+export type KhoCauRow = {
+  tong: number; ma_cau: string; loai_cau: string; noi_dung: string; lua_chon: string[] | null
+  menh_de: { noi_dung?: string; dap_an?: string }[] | null; dap_an: string | null; loi_giai: string | null
+  anh_de: string | null; anh_dap_an: string | null; da_duyet: boolean; kho_chuan: boolean; kiem_may: string | null
+  nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
+}
+export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
+  const { data, error } = await supabase.rpc('fn_bdm_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
+  if (error) loi(error)
+  return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
+}
