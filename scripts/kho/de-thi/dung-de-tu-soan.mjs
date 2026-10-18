@@ -41,7 +41,7 @@ const loi = [], nhac = []
 const NHAN_CHAM = !['8', '9'].includes(String(KHOI))
 const KHO_DUOC = ['7', '8'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 // khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
-const DANG_HINH_K9 = 'HH00140'
+const DANG_HINH_K9 = process.env.DANG_HINH_K9 || 'HH00140' // bộ đề cuối kì 1 K9 (18/10) đặt DANG_HINH_K9=<mã bài> khi chạy k9-cki-ghi-*.sh
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)
 if (!mTen) loi.push('thiếu dòng đầu "# ĐỀ | <tên đề>"')
 const meta = Object.fromEntries([...md.slice(0, md.search(/^## /m)).matchAll(/^([a-z_]+):\s*(.+)$/gm)].map((m) => [m[1], m[2].trim()]))
