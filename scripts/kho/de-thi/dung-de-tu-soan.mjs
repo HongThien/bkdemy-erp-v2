@@ -39,11 +39,16 @@ const loi = [], nhac = []
 // Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10)
 // · khối 9 dấu nhân \cdot (k9.md §3), hệ thức lượng vào HGT (hgt/k9.md).
 const NHAN_CHAM = !['8', '9'].includes(String(KHOI))
-const KHO_DUOC = ['7', '8'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
+const KHO_DUOC = ['7', '8'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
+// khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
+const DANG_HINH_K9 = 'HH00140'
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)
 if (!mTen) loi.push('thiếu dòng đầu "# ĐỀ | <tên đề>"')
 const meta = Object.fromEntries([...md.slice(0, md.search(/^## /m)).matchAll(/^([a-z_]+):\s*(.+)$/gm)].map((m) => [m[1], m[2].trim()]))
 
+// nhãn La Mã của đề (Bài IIa, Câu IV.1…) ⇒ số Ả Rập (Bài 2a, Câu 4.1): nhom-bai.mjs chỉ gom ý a b c / nhóm bài cho nhãn dạng chữ số (GKI-20 K9, 18/10)
+const LA_MA = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10 }
+const chuanNhan = (n) => n.replace(/^(Bài|Câu)\s+(X|IX|VIII|VII|VI|IV|V|III|II|I)(?=[.\sa-z]|$)/, (_, t, r) => `${t} ${LA_MA[r]}`)
 const gon = (s) => s.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim()
 function kiemCongThuc(nhan, cho, s) {
   if (!s) return
@@ -117,8 +122,8 @@ for (const kp of khoiPhan) {
     for (const f of [...anh, ...anhGiai]) if (!existsSync(join(LV, 'img', f))) loi.push(`${nhan}: không có hình img/${f}`)
     if (anhGiai.length > 1) nhac.push(`${nhan}: ${anhGiai.length} hình giải — ERP chỉ giữ hình đầu`)
     if (anh.length > 1) nhac.push(`${nhan}: ${anh.length} hình — ERP chỉ giữ hình đầu`)
-    cau.push({ phan: thuTu, so: ++so, nhan: mc[1].trim(), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: dapAn, dap_an_nguon: 'claude_giai',
-      menh_de: null, loi_giai: loiGiai, anh, anh_giai: anhGiai, dang: null, canh_bao: canhBao })
+    cau.push({ phan: thuTu, so: ++so, nhan: chuanNhan(mc[1].trim()), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: dapAn, dap_an_nguon: 'claude_giai',
+      menh_de: null, loi_giai: loiGiai, anh, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
   }
   if (!so) loi.push(`Phần ${thuTu}: không có câu nào`)
 }

@@ -38079,3 +38079,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Làm:** nút 🐾 "Thú cưng" trên HUD mở màn quản lý: mỗi bé 1 thẻ (💗 thiện cảm, mốc ★20/50/100, hiệu ứng, nút xoa đầu/vuốt ve/cho ăn 1 lần/ngày). Bé chưa có hiện nút **Mua · 📘điểm học tập** (chó 15 · mèo 30 · chim 45), khoá theo cấp (mèo 5, chim 7). Danh mục `D.THU` data-driven (icon, mota) — thêm loài = 1 dòng + mô hình scene. Mèo/chim trước đây tắt ở pha 1, nay mở theo cấp; mèo pha 1 chỉ tha phân bón. Chạm vào thú chưa mua ⇒ mở màn Thú cưng thay vì chợ. Gợi ý Mèo/Chim ở thanh chỉ đường trỏ tới nút 🐾.
 - **Kiểm:** `tools/test-engine.mjs` ✓ (sửa 2 khẳng định cũ "pha 1 tắt"); harness trình duyệt: panel demo + chế độ tài khoản (mua mèo: điểm 40→10, thông báo, thẻ chuyển sang đã nuôi). Chưa thử với phiên đăng nhập thật.
 - **Chưa:** chỉ có chó/mèo/chim — loài mới (ngựa, cừu, heo, bò…) cần mô hình 3D dựng bằng code + giá/cấp, chờ Thùy chọn loài.
+
+## 18/10/2026 (tiếp) — Bộ đề GKI Toán 9 (58 đề) vào Kho đề thi + câu Hình vào HH00140
+- **Thùy:** "Giải đề giữa kì 9 và đưa lên khu đề cương – đề thi. Sau đó đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9" (`BO_DE_GKI_9_24MB.pdf`, 76 trang scan).
+- **Làm:** 76 trang ⇒ 58 đề (đọc tiêu đề từng trang bằng tờ ghép đầu trang), `chuan-bi.mjs` tách từng đề; 58 trạm soạn Sonnet + 58 trạm soát Opus giải mù (trần 20 subagent song song); cổng `--khoi 9`; `k9-ghi-het.sh` ghi tuần tự: 58 đề · 531 câu (Đại 406, Hình 125).
+- **Sửa công cụ:** (1) `dung-de-tu-soan.mjs`: khối 9 nhận `kho=hinh_hoc`, câu hình tự `dang='HH00140'`; nhãn La Mã ⇒ Ả Rập. (2) `nhom-bai.mjs`: lời dẫn các ý khác nhau vẫn gom nhóm (`dan=''`). (3) `KhoDeThi.tsx`, `DeThiPrintView.tsx`: không hiện / in dòng lời dẫn rỗng (CẦN deploy). (4) `k9-ghi-de.sh`, `k9-ghi-het.sh`.
+- **Sai / bắt được ở soát:** trục căn thức ở mẫu (Ch III) ở 4 đề; "ba góc vuông ⇒ hình chữ nhật" ở ~10 đề; tính tiếp từ số đã làm tròn; hình giải lộ điều phải chứng minh (GKI-53) hoặc vẽ sai dữ kiện (GKI-32, 30, 50); nhãn La Mã làm đề mất cấu trúc "Bài N có ý a b c"; GKI-36, 54 gộp lại bài hình chung dữ kiện đã tách nhầm.
+- **Quyết định:** hình lượng giác thực tế cũng vào `hinh_hoc` (không `hgt`) theo ý Thùy "tất cả bài Hình"; mô tả + câu còn cờ ở `kho-rules/dai/k9.md` §11 và `kho-rules/dai/k9-bo-de-can-xem.html`.
+

@@ -473,7 +473,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                                 <span className="text-[14px] font-bold text-indigo-800">{gr!.nhan}</span>
                                 <span className="text-[11px] text-indigo-500">{gr!.n} ý — mỗi ý là một câu riêng trong kho</span>
                               </div>
-                              <div className="mt-1 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={d.mon}>{gr!.dan}</ChuMon></div>
+                              {gr!.dan && <div className="mt-1 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={d.mon}>{gr!.dan}</ChuMon></div>}
                             </div>
                           )}
                           {moiNl && <NguLieuBlock nl={nl[maNl!]} />}
