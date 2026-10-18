@@ -33,6 +33,9 @@ export const tex = (s: string, display: boolean) => {
   const fixed = widenSingleHat(fixAccentScript(s))
     .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
     .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
+    // Phẩy THẬP PHÂN "1,46": KaTeX coi "," là dấu câu, chèn khoảng ⇒ hiện "1, 46" (HS báo "công thức lỗi" 10/10, ~1.800 câu
+    // kho viết vậy). Quy ước VN: phẩy giữa 2 chữ số = thập phân, liệt kê dùng ";" ⇒ bọc {,} cho KaTeX coi là ký tự thường.
+    .replace(/(\d),(?=\d)/g, '$1{,}')
   // macros: CÙNG 1 file với ô nhập MathLive (lib/math/macros) → soạn thấy sao, in / test online ra vậy.
   // Bọc thêm span mang data-latex = nguồn LaTeX: để COPY từ vùng đã render trả về `$…$` (xem installTexCopy) —
   // output:'html' không có MathML annotation nên copy-tex của KaTeX không dùng được, tự gắn nguồn vào DOM.

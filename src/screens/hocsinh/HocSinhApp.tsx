@@ -1292,9 +1292,14 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
           </button>
           </>
         ) : (
-          <button onClick={() => setIdx((i) => i + 1)} disabled={!!nhung?.ban}
+          // Câu CUỐI mà còn câu chưa làm (em lướt qua bằng "Câu tiếp" hay ô số câu): trước đây nút ghi "Câu tiếp" nhưng
+          // idx+1 = total ⇒ nhảy thẳng màn kết quả khi chưa làm xong (HS báo 13/10). Giờ quay về câu chưa làm đầu tiên.
+          <button onClick={() => {
+              const chuaLam = caus.findIndex((c) => !st[c.id]?.kq && !st[c.id]?.boQua)
+              setIdx((i) => (i + 1 < total || chuaLam < 0 ? i + 1 : chuaLam))
+            }} disabled={!!nhung?.ban}
             className={`flex-1 font-semibold ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[21px]' : 'py-3 text-[20px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
-            {idx + 1 < total ? (nhung ? 'Đòn kế tiếp ➜' : 'Câu tiếp →') : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
+            {idx + 1 < total ? (nhung ? 'Đòn kế tiếp ➜' : 'Câu tiếp →') : (daXongHet ? 'Xem kết quả →' : `Còn ${caus.filter((c) => !st[c.id]?.kq && !st[c.id]?.boQua).length} câu chưa làm →`)}
           </button>
         )}
       </div>
@@ -1777,11 +1782,17 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
         setAnhTL(ds); setUrlTL(await kyAnhTuLuan(ds.map((a) => a.path)).catch(() => ({})))
       }
       if (bl.bat_dau_at) setBatDau(new Date(bl.bat_dau_at).getTime())
-      setAns(await getETDapAnDaLuu(bl.id) as Record<string, Chon>)
+      // GỘP, không thay: đề bấm được từ setDe ở trên, đáp án đã lưu về SAU (thi thử còn chờ ký URL ảnh) — thay cả
+      // map thì câu em vừa bấm trong khoảng đó bị nhảy về lựa chọn cũ (HS báo 12/10 "ấn câu này chọn câu khác").
+      const daLuu = await getETDapAnDaLuu(bl.id) as Record<string, Chon>
+      setAns((loc) => ({ ...daLuu, ...loc }))
       if (bl.trang_thai === 'da_nop') { nopRef.current = true; nhanReveal(await nopET(bl.id)) }
     })().catch(console.error)
   }, [test.id, hocSinhId]) // eslint-disable-line
   useEffect(() => { setGoiY(false) }, [idx])
+  // Lưu đáp án NỐI ĐUÔI theo từng câu: bấm A rồi B thật nhanh mà 2 lệnh lưu chạy song song thì có thể A tới DB sau B
+  // ⇒ màn hiện B, DB giữ A, nộp bài/F5 hiện A.
+  const hangLuu = useRef<Record<string, Promise<unknown>>>({})
   // KHÔNG XÁO (Thùy 29/09, xem ghi chú `caus` trong LamBai): thứ tự câu = đúng phiếu giấy của mã đề em
   // được gán — et_de đã `order by bc.thu_tu` theo bien_the của bai_lam nên dùng thẳng `de`.
   const caus = de ?? []
@@ -1809,7 +1820,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   async function luu(cauId: string, v: Chon) {
     if (daNop || !baiLamId) return
     setAns((s) => ({ ...s, [cauId]: v }))
-    try { await luuDapAnET(baiLamId, cauId, v); setLoi(null) } catch (e: any) { console.error(e); setLoi(e?.message ?? 'Không lưu được đáp án') }
+    const p = (hangLuu.current[cauId] ?? Promise.resolve()).catch(() => {}).then(() => luuDapAnET(baiLamId, cauId, v))
+    hangLuu.current[cauId] = p
+    try { await p; setLoi(null) } catch (e: any) { console.error(e); setLoi(e?.message ?? 'Không lưu được đáp án') }
   }
   async function doNop() {
     if (!baiLamId || nopRef.current) return
