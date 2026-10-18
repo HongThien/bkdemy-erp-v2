@@ -34,8 +34,12 @@ export function tinhNhomBai(cau) {
       const ys = mem.map((c) => { const t = RE_Y.exec(c.nhan); return t[2] ?? t[3] })
       const dan = catLoiDan(tienToChung(mem.map((c) => c.noi_dung ?? '')))
       const du = mem.map((c) => (dan && c.noi_dung.startsWith(dan) ? c.noi_dung.slice(dan.length).trim() : null))
-      if (!dan || du.some((x) => !x)) canhBao.push(`${m[1]}: không tách được lời dẫn chung (${mem.length} câu) — để nguyên từng câu`)
-      else nhomBai.push({ nhan: m[1], dan, cau: mem.map((c, k) => ({ ma_cau: c.ma_cau, y: ys[k] })) })
+      if (!dan || du.some((x) => !x)) {
+        // Lời dẫn các ý KHÁC nhau (vd 1a "Giải phương trình…", 1b "Giải bất phương trình…" — bộ đề K9 18/10): vẫn gom thành MỘT bài có các ý a) b) c)
+        // đúng cấu trúc đề gốc; dan = '' ⇒ màn đề hiện nguyên nội dung từng ý (boLoiDan không cắt gì). Trước đây để rời từng câu ⇒ đề mất "Bài 1 có 3 ý".
+        canhBao.push(`${m[1]}: lời dẫn các ý khác nhau (${mem.length} câu) — vẫn gom thành một bài, mỗi ý giữ lời dẫn riêng`)
+        nhomBai.push({ nhan: m[1], dan: '', cau: mem.map((c, k) => ({ ma_cau: c.ma_cau, y: ys[k] })) })
+      } else nhomBai.push({ nhan: m[1], dan, cau: mem.map((c, k) => ({ ma_cau: c.ma_cau, y: ys[k] })) })
     }
     i = j + 1
   }

@@ -38017,3 +38017,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Ghi kho:** 112 câu, tự duyệt 91, 21 câu dạng chờ (20 câu là cùng một ranh giới xét hiệu ↔ bất đẳng thức quen thuộc ↔ kỹ thuật khác). Kho Đại 8T: **1070 câu · 997 đã duyệt · 73 chưa**.
 - **Bẫy:** `sach_in_sai` của bài tập 17 b, c ghi nhầm trang PDF 211 (đúng 212) — đã vào DB, không sửa (lịch sử ghi bất biến), trang xem ghi đúng. Trang xem 206 ảnh JPEG = 11,3 MB; trần Artifact 16 MB ⇒ lô sau cần tách trang xem. Ghi `k8T-can-xem.html` một lần báo EBUSY (Artifact đang đọc) — thử lại sau vài giây là được.
 - Chưa push. Commit riêng các tệp 8T.
+
+## 18/10/2026 (tiếp) — Bộ đề GKI Toán 9 (58 đề) vào Kho đề thi + câu Hình vào HH00140
+- **Thùy:** "Giải đề giữa kì 9 và đưa lên khu đề cương – đề thi. Sau đó đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9" (`BO_DE_GKI_9_24MB.pdf`, 76 trang scan).
+- **Làm:** 76 trang ⇒ 58 đề (đọc tiêu đề từng trang bằng tờ ghép đầu trang), `chuan-bi.mjs` tách từng đề; 58 trạm soạn Sonnet + 58 trạm soát Opus giải mù (trần 20 subagent song song); cổng `--khoi 9`; `k9-ghi-het.sh` ghi tuần tự: 58 đề · 531 câu (Đại 406, Hình 125).
+- **Sửa công cụ:** (1) `dung-de-tu-soan.mjs`: khối 9 nhận `kho=hinh_hoc`, câu hình tự `dang='HH00140'`; nhãn La Mã ⇒ Ả Rập. (2) `nhom-bai.mjs`: lời dẫn các ý khác nhau vẫn gom nhóm (`dan=''`). (3) `KhoDeThi.tsx`, `DeThiPrintView.tsx`: không hiện / in dòng lời dẫn rỗng (CẦN deploy). (4) `k9-ghi-de.sh`, `k9-ghi-het.sh`.
+- **Sai / bắt được ở soát:** trục căn thức ở mẫu (Ch III) ở 4 đề; "ba góc vuông ⇒ hình chữ nhật" ở ~10 đề; tính tiếp từ số đã làm tròn; hình giải lộ điều phải chứng minh (GKI-53) hoặc vẽ sai dữ kiện (GKI-32, 30, 50); nhãn La Mã làm đề mất cấu trúc "Bài N có ý a b c"; GKI-36, 54 gộp lại bài hình chung dữ kiện đã tách nhầm.
+- **Quyết định:** hình lượng giác thực tế cũng vào `hinh_hoc` (không `hgt`) theo ý Thùy "tất cả bài Hình"; mô tả + câu còn cờ ở `kho-rules/dai/k9.md` §11 và `kho-rules/dai/k9-bo-de-can-xem.html`.

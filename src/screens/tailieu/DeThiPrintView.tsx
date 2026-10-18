@@ -166,7 +166,7 @@ function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
       if (r.k > 0) continue // các ý sau đã gộp vào ý đầu
       const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
       if (mem.some((m) => !m)) { ra.push({ c, lines: dong(c) }); continue } // thiếu ý trong phần ⇒ để nguyên từng câu
-      const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].join('\n')
+      const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].filter((x) => x !== '').join('\n')
       const loiGiai = mem.map((m, i) => (m.loi_giai ? `**${r.g.cau[i].y})**\n${m.loi_giai}` : '')).filter(Boolean).join('\n\n')
       ra.push({ c: { ...mem[0], noi_dung: noiDung, loi_giai: loiGiai || null, loai_cau: 'tu_luan', dap_an: null, lua_chon: null, menh_de: null }, lines: mem.reduce((t: number, m: any) => t + dong(m), 0) })
     }
